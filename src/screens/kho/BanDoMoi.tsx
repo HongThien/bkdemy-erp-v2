@@ -15,7 +15,8 @@ import {
   getCay, themChuDe, suaChuDe, themChuyenDeVaoChuDe, suaChuyenDe, xoaChuDeTronGoi, xoaChuyenDeKhoiChuDe, xoaNhomTronGoi,
   themNhom, suaNhom, themDangBai, suaDangBai, xoaDangBai, sapXep, chuyenNhom, chuyenDangBai, chuyenO,
   nangDangBai, haNhom, gopChuyenDe, getLyThuyetNhom, getViDuDangBai, getLyThuyetDangBai, lyThuyetNhomApi, viDuDangBaiApi, lyThuyetDangBaiApi,
-  getDangCu, ganDangCu, goDoiUng, goDoiUngTheoDich, getCauChuaGan, ganCau, ganCum, BDM_NHANH, khuonCuaVung, doiVungChuDe, type BdmNhanh,
+  getDangCu, ganDangCu, goDoiUng, goDoiUngTheoDich, getCauChuaGan, ganCau, ganCum, getKhoCau, BDM_NHANH, khuonCuaVung, doiVungChuDe, type BdmNhanh,
+  type KhoCauRow, type KhoCauLoc,
   type BdmCay, type BdmChuDe, type BdmO, type BdmNhom, type BdmDangBai, type BdmDangCu, type BdmDangCuRef, type BdmDich, type BdmCauChuaGan,
 } from '../../lib/kho/banDoMoi'
 import KhoHinhHocScreen from './hinh/KhoHinhHocScreen'
@@ -34,6 +35,11 @@ import { khopDem } from '../../lib/kho/bdmKhop'
 // (ngăn 📦, nhãn dạng cũ, ⚠ câu chưa gán, dòng "Khớp bản đồ cũ", bảng gán câu). Bảng/hàm DB vẫn giữ: tới bước XẾP BÀI
 // (kho-rules/README.md bước 3 — Claude đọc bản đồ mới để gán, học thuật duyệt) thì bật lại bảng gán câu.
 const HIEN_KHOP_CU = false
+
+// Bản đồ mới → KHO (Thùy 18/10: "chưa thấy đường đi từ bản đồ mới vào kho"): bấm số câu trên thẻ dạng bài / nút 📚 ở nhóm / ⚠ Chưa khớp ở chủ đề
+// ⇒ danh sách câu thật (đề · đáp án · lời giải · cờ duyệt/kho chuẩn/kiểm máy). Cầu nối module-level: màn chỉ có 1 bản, đỡ luồn prop qua 4 tầng.
+type KhoMo = { loai: 'dang_bai' | 'nhom' | 'chua_khop'; id: string; ten: string }
+let moKho: (m: KhoMo) => void = () => {}
 
 // Nhớ chủ đề / chuyên đề đang xem + ngăn bản đồ cũ — sống tới F5 (CLAUDE §2: rời màn quay lại đúng chỗ cũ)
 const NHO: { chuDe: Record<string, string>; chuyenDe: Record<string, string>; nganCu: boolean; duyet: boolean } = { chuDe: {}, chuyenDe: {}, nganCu: false, duyet: false }
@@ -72,6 +78,8 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
   const [hover, setHover] = useState<string | null>(null)
   const [dangKeo, setDangKeo] = useState<Keo['loai'] | null>(null)
   const [lt, setLt] = useState<{ loai: LoaiNoiDung; id: string; ten: string; current: LyThuyet; lan: number } | null>(null)
+  const [khoMo, setKhoMo] = useState<KhoMo | null>(null)
+  useEffect(() => { moKho = setKhoMo; return () => { moKho = () => {} } }, [])
   const [nganCu, setNganCu] = useState(NHO.nganCu)
   // B4 Duyệt khớp (Thùy 16/10): chế độ chia đôi — bản đồ bên trái, hàng đợi duyệt bên phải; số câu cần xem tính ở DB (fn_bdm_khop_dem)
   const [duyet, setDuyetRaw] = useState(NHO.duyet)
@@ -278,6 +286,10 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
           <button onClick={() => setChon({ loai: 'chu_de' })} title="Sửa tên / thứ tự / xoá chủ đề"
             className="rounded-md border border-slate-200 px-2 py-1 text-[12.5px] text-slate-600 hover:border-indigo-300 hover:text-indigo-700">⚙ Chủ đề</button>
         )}
+        {chuDe && khuon === 'bon_tang' && chuDe.nhanh === 'toan' && (
+          <button onClick={() => moKho({ loai: 'chua_khop', id: chuDe.id, ten: chuDe.ten })} title="Câu AI chưa xếp được vào dạng bài nào của chủ đề này (rổ chưa khớp)"
+            className="rounded-md border border-amber-200 bg-amber-50 px-2 py-1 text-[12.5px] font-medium text-amber-800 hover:border-amber-400">⚠ Chưa khớp</button>
+        )}
         <ThemNhanh nhan="+ Chủ đề" goiY="Tên chủ đề…" onThem={(ten) => lam(() => themChuDe(khoi, ten), 'Đã thêm chủ đề')} />
         {HIEN_KHOP_CU && khuon === 'bon_tang' && <button onClick={() => setNganCu(!nganCu)} title="Ngăn dạng cũ — kéo dạng cũ thả vào dạng bài / nhóm / chuyên đề để gắn"
           className={`rounded-lg border px-2.5 py-1 text-[12.5px] font-medium ${nganCu ? 'border-amber-400 bg-amber-50 text-amber-800' : 'border-slate-200 text-slate-600 hover:border-amber-300'}`}>
@@ -448,6 +460,7 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
         <BangGanCau g={ganMo} onDong={() => setGanMo(null)} onDaGan={(n) => { thongBao(n); void napLai() }} />
       )}
 
+      {khoMo && <KhoModal mo={khoMo} onDong={() => setKhoMo(null)} />}
       {lt && (
         <LyThuyetModal key={`${lt.loai}:${lt.id}:${lt.lan}`} ma={lt.id} ten={`${lt.loai === 'db_vd' ? 'Ví dụ' : 'Lý thuyết'} — ${lt.ten}`} current={lt.current}
           api={lt.loai === 'nhom' ? lyThuyetNhomApi : lt.loai === 'db_lt' ? lyThuyetDangBaiApi : viDuDangBaiApi}
@@ -592,6 +605,8 @@ function BoxNhom(p: {
           className={`shrink-0 rounded px-1.5 py-0.5 text-[11px] font-semibold ${n.co_ly_thuyet ? 'bg-sky-400/30 text-white hover:bg-sky-400/50' : 'bg-white/15 text-white/80 hover:bg-white/30'}`}>
           📖{n.co_ly_thuyet ? '' : ' +LT'}
         </button>
+        <button onClick={(e) => { e.stopPropagation(); moKho({ loai: 'nhom', id: n.id, ten: n.ten }) }} draggable={false}
+          title="Mở KHO: mọi câu của các dạng bài trong nhóm này" className="shrink-0 rounded bg-white/15 px-1.5 py-0.5 text-[11px] font-semibold text-white/90 hover:bg-white/30">📚</button>
         <DauTienDo moTa={!!n.mo_ta.trim()} noiDung={n.co_ly_thuyet} nhanNoiDung="lý thuyết" />
       </div>
       {p.sapHa && <div className="bg-violet-600 px-3 py-1.5 text-center text-[11.5px] font-semibold text-white">⤵ Thả: hạ thành DẠNG BÀI của nhóm này</div>}
@@ -638,7 +653,10 @@ function CardDangBai(p: {
         <MathText>{d.ten}</MathText>
         {HIEN_KHOP_CU && d.dang_cu.length > 0 && <span title={'Dạng cũ gắn thẳng vào đây (câu tự về): ' + d.dang_cu.map((x) => x.ten).join(' · ')} className="ml-1 text-[10px] text-amber-600">📦{d.dang_cu.length}</span>}
       </span>
-      {HIEN_KHOP_CU && d.so_cau > 0 && <span title="Số câu đang thuộc dạng bài này" className="shrink-0 rounded bg-white px-1 text-[10.5px] text-violet-600">{d.so_cau} câu</span>}
+      {d.so_cau > 0 && (
+        <button onClick={(e) => { e.stopPropagation(); moKho({ loai: 'dang_bai', id: d.id, ten: d.ten }) }} draggable={false}
+          title="Mở KHO: các câu thuộc dạng bài này" className="shrink-0 rounded bg-white px-1.5 text-[10.5px] font-semibold text-violet-700 ring-1 ring-violet-200 hover:bg-violet-100">📚 {d.so_cau}</button>
+      )}
       <DauTienDo moTa={!!d.mo_ta.trim()} noiDung={d.co_ly_thuyet} nhanNoiDung="lý thuyết" noiDung2={d.co_vi_du} nhanNoiDung2="ví dụ" />
     </div>
   )
@@ -901,7 +919,10 @@ function ChiTiet(p: {
         <span>📝 Ví dụ</span><span className="text-[11.5px] font-normal">{d.co_vi_du ? 'đã có — bấm để sửa' : 'chưa có — bấm để dán'}</span>
       </button>
     </div>
-    {HIEN_KHOP_CU && <div className="text-[12px] text-slate-500">Đang có <b>{d.so_cau}</b> câu (kể cả bản sao).</div>}
+    <button onClick={() => moKho({ loai: 'dang_bai', id: d.id, ten: d.ten })} disabled={d.so_cau === 0}
+      className="flex flex-col items-start rounded-md border border-emerald-200 bg-emerald-50 px-3 py-2 text-[13px] font-semibold text-emerald-700 hover:bg-emerald-100 disabled:opacity-50">
+      <span>📚 Kho câu</span><span className="text-[11.5px] font-normal">{d.so_cau > 0 ? `${d.so_cau} câu (kể cả bản sao) — bấm để xem` : 'chưa có câu nào thuộc dạng bài này'}</span>
+    </button>
     {HIEN_KHOP_CU && <DangCuChiTiet ds={d.dang_cu} chuaGan={0} truongHop="① mọi câu tự về dạng bài này (nếu dạng cũ chỉ gắn đúng chỗ này)"
       onGo={goCu({ dangBai: d.id })} />}
     <ChonDich nhan="⇄ Chuyển sang nhóm khác" moTa="Hoặc kéo card thả vào box nhóm khác (cùng chuyên đề)."
@@ -1229,6 +1250,105 @@ function ThuTuChuDe({ cay, cd, lam }: { cay: BdmCay; cd: BdmChuDe; lam: (viec: (
       <span>Thứ tự trong khối: <b>{i + 1}</b>/{ids.length}</span>
       <button disabled={i <= 0} onClick={() => doi(-1)} className="rounded border border-slate-200 px-2 py-0.5 disabled:opacity-30">▲ lên</button>
       <button disabled={i >= ids.length - 1} onClick={() => doi(1)} className="rounded border border-slate-200 px-2 py-0.5 disabled:opacity-30">▼ xuống</button>
+    </div>
+  )
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+// KHO CỦA DẠNG BÀI / NHÓM / RỔ CHƯA KHỚP — danh sách câu thật, phân trang 40 (fn_bdm_kho_cau, mig 202610181756).
+// Chỉ ĐỌC: duyệt/sửa câu vẫn ở ✅ Duyệt kho và màn Kho; ở đây để THẤY câu nào đang nằm đâu.
+// ════════════════════════════════════════════════════════════════════════════
+const LOC_KHO: { id: KhoCauLoc; nhan: string }[] = [
+  { id: 'tat_ca', nhan: 'Tất cả' }, { id: 'chua_duyet', nhan: 'Chưa duyệt' }, { id: 'da_duyet', nhan: 'Đã duyệt' }, { id: 'kho_chuan', nhan: 'Kho chuẩn' },
+]
+const NHAN_LOAI: Record<string, string> = { trac_nghiem: 'Trắc nghiệm', dung_sai: 'Đúng/Sai', tra_loi_ngan: 'Trả lời ngắn', tu_luan: 'Tự luận' }
+function KhoModal({ mo, onDong }: { mo: KhoMo; onDong: () => void }) {
+  const [loc, setLoc] = useState<KhoCauLoc>('tat_ca')
+  const [rows, setRows] = useState<KhoCauRow[]>([])
+  const [tong, setTong] = useState(0)
+  const [dang, setDang] = useState(true)
+  const [loi, setLoi] = useState<string | null>(null)
+  const req = useRef(0)
+  const TRANG = 40
+  const tai = (batDau: number) => {
+    const my = ++req.current
+    setDang(true); setLoi(null)
+    getKhoCau(mo.loai, mo.id, loc, TRANG, batDau)
+      .then((r) => { if (my !== req.current) return; setRows((a) => (batDau === 0 ? r : [...a, ...r])); if (r.length) setTong(r[0].tong) })
+      .catch((e) => { if (my === req.current) setLoi(e instanceof Error ? e.message : String(e)) })
+      .finally(() => { if (my === req.current) setDang(false) })
+  }
+  useEffect(() => { setRows([]); setTong(0); tai(0) }, [mo.loai, mo.id, loc]) // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    const f = (e: KeyboardEvent) => { if (e.key === 'Escape') onDong() }
+    window.addEventListener('keydown', f); return () => window.removeEventListener('keydown', f)
+  }, [onDong])
+  const tieuDe = mo.loai === 'chua_khop' ? 'Chưa khớp dạng bài' : mo.loai === 'nhom' ? 'Kho của nhóm' : 'Kho của dạng bài'
+  return (
+    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-900/40 p-6" onClick={onDong}>
+      <div className="flex h-full max-h-[92vh] w-full max-w-4xl flex-col overflow-hidden rounded-xl bg-slate-50 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div className="flex flex-wrap items-center gap-3 border-b border-slate-200 bg-white px-4 py-2.5">
+          <span className="text-[14px] font-semibold text-slate-900">📚 {tieuDe}</span>
+          <span className="min-w-0 flex-1 truncate text-[13px] text-slate-600"><MathText>{mo.ten}</MathText></span>
+          <span className="text-[12px] text-slate-500"><b>{tong}</b> câu{rows.length < tong ? ` · đang hiện ${rows.length}` : ''}</span>
+          <span className="flex items-center gap-0.5 rounded-lg bg-slate-100 p-0.5">
+            {LOC_KHO.map((x) => (
+              <button key={x.id} onClick={() => setLoc(x.id)}
+                className={`rounded-md px-2 py-0.5 text-[12px] font-medium ${loc === x.id ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-500 hover:text-slate-800'}`}>{x.nhan}</button>
+            ))}
+          </span>
+          <button onClick={onDong} className="rounded-md px-2 py-1 text-[13px] text-slate-500 hover:bg-slate-100">✕</button>
+        </div>
+        <div className="min-h-0 flex-1 space-y-3 overflow-y-auto p-4">
+          {loi && <div className="rounded-md bg-rose-50 px-3 py-2 text-[12.5px] text-rose-700">{loi}</div>}
+          {!dang && !loi && rows.length === 0 && <div className="py-10 text-center text-[13px] text-slate-400">Không có câu nào{loc !== 'tat_ca' ? ' ở bộ lọc này' : ''}.</div>}
+          {rows.map((r) => <CauKho key={r.ma_cau} r={r} nhom={mo.loai === 'nhom'} />)}
+          {dang && <div className="py-3 text-center text-[12.5px] text-slate-400">Đang tải…</div>}
+          {!dang && rows.length < tong && (
+            <button onClick={() => tai(rows.length)} className="mx-auto block rounded-md border border-slate-300 bg-white px-4 py-1.5 text-[12.5px] font-medium text-slate-700 hover:border-indigo-300">Tải thêm {Math.min(TRANG, tong - rows.length)} câu</button>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
+function CauKho({ r, nhom }: { r: KhoCauRow; nhom: boolean }) {
+  const nguonGan = r.nguon_gan === 'chua_khop' ? null : r.nguon_gan.endsWith(':ai') ? 'AI gán' : r.nguon_gan.endsWith(':nguoi') ? 'người gán' : r.nguon_gan.startsWith('gan_cum') ? 'gán theo cụm' : r.nguon_gan.startsWith('doi_ung') ? 'theo dạng cũ' : r.nguon_gan
+  const chip = (c: string, t: string) => <span className={`rounded px-1.5 py-0.5 text-[10.5px] font-semibold ${c}`}>{t}</span>
+  return (
+    <div className={`rounded-lg border bg-white p-3 shadow-sm ${r.la_goc ? 'border-slate-200' : 'ml-6 border-dashed border-slate-300'}`}>
+      <div className="mb-1.5 flex flex-wrap items-center gap-1.5">
+        <code className="text-[11px] text-slate-400">{r.ma_cau}</code>
+        {chip('bg-slate-100 text-slate-600', NHAN_LOAI[r.loai_cau] ?? r.loai_cau)}
+        {!r.la_goc && chip('bg-slate-100 text-slate-500', 'bản sao')}
+        {r.kho_chuan ? chip('bg-emerald-100 text-emerald-700', 'kho chuẩn') : r.da_duyet ? chip('bg-sky-100 text-sky-700', 'đã duyệt') : chip('bg-amber-100 text-amber-700', 'chưa duyệt')}
+        {r.kiem_may === 'khop' && chip('bg-emerald-50 text-emerald-700', 'máy kiểm khớp')}
+        {r.kiem_may === 'nghi' && chip('bg-rose-100 text-rose-700', 'máy nghi đáp số')}
+        {r.kiem_may === 'khong_kiem_duoc' && chip('bg-slate-100 text-slate-500', 'máy không kiểm được')}
+        {nguonGan && chip('bg-violet-50 text-violet-700', nguonGan)}
+        {nhom && r.dang_bai && <span className="text-[11px] text-violet-600">› <MathText>{r.dang_bai}</MathText></span>}
+      </div>
+      {r.ly_do && <div className="mb-1.5 rounded bg-amber-50 px-2 py-1 text-[12px] text-amber-800">Vì sao chưa khớp: {r.ly_do}</div>}
+      <div className="text-[13.5px] leading-relaxed text-slate-900"><MathText>{r.noi_dung}</MathText></div>
+      {r.anh_de && <img src={r.anh_de} alt="" className="mt-2 max-h-56 rounded border border-slate-200" />}
+      {r.lua_chon && r.lua_chon.length > 0 && (
+        <ul className="mt-1.5 grid grid-cols-1 gap-x-4 gap-y-0.5 text-[13px] text-slate-700 sm:grid-cols-2">
+          {r.lua_chon.map((o, i) => <li key={i}><b className="mr-1 text-slate-500">{'ABCD'[i] ?? i + 1}.</b><MathText>{o}</MathText></li>)}
+        </ul>
+      )}
+      {r.menh_de && r.menh_de.length > 0 && (
+        <ul className="mt-1.5 space-y-0.5 text-[13px] text-slate-700">
+          {r.menh_de.map((m, i) => <li key={i}><b className="mr-1 text-slate-500">{'abcd'[i] ?? i + 1})</b><MathText>{m.noi_dung ?? ''}</MathText> <span className={m.dap_an === 'D' ? 'font-semibold text-emerald-600' : 'font-semibold text-rose-600'}>[{m.dap_an === 'D' ? 'Đúng' : 'Sai'}]</span></li>)}
+        </ul>
+      )}
+      {r.dap_an && <div className="mt-1.5 text-[12.5px] text-slate-600">Đáp án: <b className="text-emerald-700"><MathText>{r.dap_an}</MathText></b></div>}
+      {r.loi_giai && (
+        <details className="mt-1.5 text-[12.5px] text-slate-600">
+          <summary className="cursor-pointer text-indigo-600">Lời giải</summary>
+          <div className="mt-1 whitespace-pre-wrap leading-relaxed"><MathText>{r.loi_giai}</MathText></div>
+          {r.anh_dap_an && <img src={r.anh_dap_an} alt="" className="mt-2 max-h-56 rounded border border-slate-200" />}
+        </details>
+      )}
     </div>
   )
 }
