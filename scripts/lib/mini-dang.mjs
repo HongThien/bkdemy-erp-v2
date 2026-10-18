@@ -2,6 +2,7 @@
 // văn bản RIÊNG (không phải công thức toán chung), nên đọc bằng regex trên câu chữ thay vì tokenize/parse.
 // Dùng CHUNG kiểu Rat {p,q} BigInt với mcq-auto.mjs (không import qua lại — copy 6 hàm cơ bản, giữ ĐỘC LẬP
 // để không dính vòng import; 2 file cùng 1 quy ước `texR`/`fmtV` nên format số giữ nhất quán).
+import { docMotSo, tachPhan, lamSachSo, vietSo, coThapPhan } from './so-vn.mjs'
 
 const gcd = (a, b) => { a = a < 0n ? -a : a; b = b < 0n ? -b : b; while (b) { [a, b] = [b, a % b] } return a }
 export const R = (p, q = 1n) => { if (q === 0n) return null; if (q < 0n) { p = -p; q = -q } const g = gcd(p, q) || 1n; return { p: p / g, q: q / g } }
@@ -4229,13 +4230,31 @@ export function timXPhanThucCanBac2(noiDung, rule) {
 // khi không tách được 1 công thức sai riêng. Khảo sát xác nhận đáp số toàn cụm ~98% (459/469) là "1 số",
 // "2 số cách nhau ; hoặc ,", hoặc "N hoặc M" — KHÁC MỌI dạng khác trong file này: hàm nhận ĐÁP SỐ (không phải
 // noi_dung) làm đầu vào — mcq-auto.mjs phải gọi khác đi (dispatch riêng, xem ANSWER_DANG).
-function parseSoThucTe(s) {
+// ⚠ SỬA 18/10 (sự cố 448 form TN hỏng, chủ yếu Toán 5): bản cũ tách đáp số theo CẢ ';' LẪN ',' ⇒ "12,61" thành 2 số
+// "12;61", và đọc "30 000" như phép nhân 30·000 = 0. Máy tự kiểm bằng chính parser này nên không lộ. Giờ việc
+// "phẩy nào là phẩy thập phân, cách nào là cách hàng nghìn" CHỈ quyết ở scripts/lib/so-vn.mjs (theo khối của dạng:
+// khối ≤4 "24,51" là 2 số, khối ≥5 là số thập phân). Mỗi giá trị nhớ KHUÔN viết của nó (thập phân mấy chữ số,
+// có cách hàng nghìn không, hỗn số) để phương án nhiễu viết CÙNG khuôn với đáp số kho — đề hỏi số thập phân thì
+// 4 phương án là số thập phân, không bao giờ ra phân số. Tham số thứ 3 `ctx = { dang, noiDung }` (mcq-auto truyền).
+function hon_so(t) { // "8 5/10" · "8\dfrac{5}{10}" → hỗn số, GIỮ mẫu như kho viết
+  const m = t.match(/^(-?)(\d+)\s*\\[dt]?frac\{(\d+)\}\{(\d+)\}$/) || t.match(/^(-?)(\d+)\s+()()(\d+)\/(\d+)$/); if (!m) return null
+  const a = BigInt(m[2]), b = BigInt(m[3] || m[5]), c = BigInt(m[4] || m[6]); if (c === 0n || b >= c) return null
+  const v = R((a * c + b) * (m[1] ? -1n : 1n), c)
+  return { v, fmt: { loai: 'hon_so', mau: c } }
+}
+function parseSoThucTe(s, ctx = {}) { // → { v: Rat, fmt } | null
   let t = String(s).trim()
   const labelM = t.match(/^[A-Za-zĐđ]\w*\s*=\s*(.+)$/) // nhãn biến đứng trước 1 giá trị, vd "x=1", "a=25"
   if (labelM) t = labelM[1].trim()
-  const c = parseDonThucCore(t.replace(',', '.')); return (c && c.vars.size === 0 && !c.hasIrrational) ? c.coef : null
+  const so = docMotSo(t, { thapPhan: coThapPhan(ctx.dang) }); if (so) return so
+  const hs = hon_so(lamSachSo(t)); if (hs) return hs
+  if (/\d\s+\d/.test(lamSachSo(t))) return null // 2 chữ số cách nhau mà không phải hàng nghìn/hỗn số — KHÔNG đọc thành phép nhân
+  const c = parseDonThucCore(t.replace(/\{,\}/g, '.').replace(',', '.')); return (c && c.coef && c.vars.size === 0 && !c.hasIrrational) ? { v: c.coef, fmt: null } : null
 }
-function tachDapSoThucTe(rawClean0) { // → {vals: Rat[], sep} hoặc null — dùng chung cho canon lẫn sinh nhiễu
+function tachDapSoThucTe(rawClean0, ctx = {}) { // → {vals: Rat[], fmts, sep} hoặc null — dùng chung cho canon lẫn sinh nhiễu
+  const tp = { thapPhan: coThapPhan(ctx.dang) }
+  const doc = (arr) => { const xs = arr.map((p) => parseSoThucTe(p, ctx)); return xs.some((x) => !x) ? null : xs }
+  const goi = (xs, sep) => xs && { vals: xs.map((x) => x.v), fmts: xs.map((x) => x.fmt), sep }
   const rawClean = rawClean0.replace(/\s*\([^()]*\)\s*$/, '').trim() || rawClean0 // bỏ ghi chú trong ngoặc Ở CUỐI, vd "x=-3 (khi đó B=1)" — chỉ khi bỏ xong vẫn còn nội dung
   // ký hiệu tập hợp "n ∈ {-4;-2;0;2}" hoặc LaTeX "n \in \{-4,-6\}" (có tiền tố, .*? quét tới ∈/\in) HOẶC
   // trần "{4;36}" (khảo sát 01/10 khối 9 T109030302-304) — nhánh trần bắt buộc CẢ CHUỖI đúng = "{...}", không
@@ -4244,49 +4263,123 @@ function tachDapSoThucTe(rawClean0) { // → {vals: Rat[], sep} hoặc null — 
   // DEVLOG 01/10). SET nên khi so sánh phải SẮP XẾP (khác cặp có thứ tự).
   const setM = rawClean.match(/^.*?(?:∈|\\in)\s*\\?\{([^{}\\]+)\\?\}$/) || rawClean.match(/^\{([^{}\\]+)\}$/)
   if (setM) {
-    const parts = setM[1].split(/[;,]/).map((p) => p.trim()).filter(Boolean); if (parts.length < 1 || parts.length > 4) return null
-    const vals = parts.map(parseSoThucTe); if (vals.some((v) => !v)) return null
-    return { vals, sep: ' ∈ {} ' }
+    const parts = tachPhan(setM[1], tp); if (parts.length < 1 || parts.length > 4) return null
+    return goi(doc(parts), ' ∈ {} ')
   }
   const clean = rawClean.startsWith('(') && rawClean.endsWith(')') ? rawClean.slice(1, -1).trim() : rawClean // "(3; 8/3; -8/3)" — bóc ngoặc bọc ngoài cả bộ
   const hoacM = clean.match(/^(.+?)\s*hoặc\s*(.+)$/)
-  if (hoacM) { const a = parseSoThucTe(hoacM[1]), b = parseSoThucTe(hoacM[2]); return (a && b) ? { vals: [a, b], sep: ' hoặc ' } : null }
+  if (hoacM) return goi(doc([hoacM[1], hoacM[2]]), ' hoặc ')
+  const vaM = clean.match(/^([^;]+?)\s+và\s+([^;]+)$/) // "72 và 417,6" — 2 giá trị có thứ tự, viết lại bằng ';'
+  if (vaM) return goi(doc([vaM[1], vaM[2]]), ';')
   const duM = clean.match(/^(.+?)\s*dư\s*(.+)$/) // phép chia có dư, vd "27 dư 14" — thứ tự CÓ Ý NGHĨA (thương rồi số dư)
-  if (duM) { const a = parseSoThucTe(duM[1]), b = parseSoThucTe(duM[2]); return (a && b) ? { vals: [a, b], sep: ' dư ' } : null }
-  const parts = clean.split(/[;,]/).map((p) => p.trim()).filter(Boolean); if (parts.length < 1 || parts.length > 4) return null
-  const vals = parts.map(parseSoThucTe); if (vals.some((v) => !v)) return null
-  return { vals, sep: ';' }
+  if (duM) return goi(doc([duM[1], duM[2]]), ' dư ')
+  const parts = tachPhan(clean, tp); if (parts.length < 1 || parts.length > 4) return null
+  return goi(doc(parts), ';')
 }
-function renderDapSoThucTe(vals, sep) {
-  if (sep === ' hoặc ') { const arr = [...vals].sort(cmp); return `${texR(arr[0])} hoặc ${texR(arr[1])}` }
-  if (sep === ' dư ') return `${texR(vals[0])} dư ${texR(vals[1])}` // KHÔNG sort — thương/dư có thứ tự cố định
-  if (sep === ' ∈ {} ') { const arr = [...vals].sort(cmp); return `∈ {${arr.map(texR).join(';')}}` } // SET — sắp xếp để so sánh ổn định
-  return vals.map(texR).join(';')
-}
-export function chuanHoaDapSoThucTe(s) {
-  const clean = String(s ?? '').replace(/\$/g, '').trim()
-  const t = tachDapSoThucTe(clean); if (!t) return clean
-  return renderDapSoThucTe(t.vals, t.sep)
-}
-export function evalDapSoThucTeKetQua(s) { const t = chuanHoaDapSoThucTe(s); return t || null }
-export function sinhNhieuDapSoThucTe(dapAn, rule) {
-  const clean = String(dapAn ?? '').replace(/\$/g, '').trim()
-  const parsed = tachDapSoThucTe(clean); if (!parsed) return null
-  const { vals, sep } = parsed
-  const render = (arr) => renderDapSoThucTe(arr, sep)
-  const dungText = render(vals)
-  if (!rule) return { text: dungText }
-  if (rule === 'R343') {
-    if (vals.length >= 2) { const cp = [vals[1], vals[0], ...vals.slice(2)]; const t = render(cp); if (t === dungText) return null; return { text: t, ds: sep === ' dư ' ? 'hoán đổi nhầm thương và số dư' : 'hoán đổi nhầm 2 giá trị' } }
-    const t = render([mul(vals[0], R(2n))]); if (t === dungText) return null
-    return { text: t, ds: 'tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)' }
+function vietGiaTri(v, fmt, tex) {
+  if (fmt?.loai === 'thap_phan' || fmt?.loai === 'nguyen') { const s = vietSo(v, fmt, { tex }); if (s != null) return s }
+  if (fmt?.loai === 'hon_so' && v.p > 0n) {
+    const a = v.p / v.q, du = R(v.p - a * v.q, v.q), b = du.p * fmt.mau / du.q
+    if ((du.p * fmt.mau) % du.q === 0n && a > 0n && b > 0n) return tex ? `${a}\\dfrac{${b}}{${fmt.mau}}` : `${a} ${b}/${fmt.mau}`
   }
-  if (rule === 'R344') { const cp = [...vals]; cp[0] = add(cp[0], R(1n)); const t = render(cp); if (t === dungText) return null; return { text: t, ds: 'tính lệch 1 đơn vị ở giá trị thứ nhất' } }
-  if (rule === 'R345') { const cp = [...vals]; cp[0] = sub(cp[0], R(1n)); const t = render(cp); if (t === dungText) return null; return { text: t, ds: 'tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)' } }
+  return texR(v)
+}
+// tex=true ⇒ text phương án (KaTeX: {,} · \, · ";\ "); tex=false ⇒ key_gia_tri (so sánh: ',' · không cách · ';').
+function renderDapSoThucTe(vals, sep, fmts = [], tex = false) {
+  const pairs = vals.map((v, i) => [v, fmts[i]]), w = ([v, f]) => vietGiaTri(v, f, tex)
+  const sorted = () => [...pairs].sort((a, b) => cmp(a[0], b[0]))
+  if (sep === ' hoặc ') { const arr = sorted(); return `${w(arr[0])} hoặc ${w(arr[1])}` }
+  if (sep === ' dư ') return `${w(pairs[0])} dư ${w(pairs[1])}` // KHÔNG sort — thương/dư có thứ tự cố định
+  if (sep === ' ∈ {} ') return `∈ {${sorted().map(w).join(';')}}` // SET — sắp xếp để so sánh ổn định
+  return pairs.map(w).join(tex ? ';\\ ' : ';')
+}
+export function chuanHoaDapSoThucTe(s, dang) {
+  const clean = String(s ?? '').replace(/\$/g, '').trim()
+  const t = tachDapSoThucTe(clean, { dang }); if (!t) return clean
+  return renderDapSoThucTe(t.vals, t.sep, t.fmts, false)
+}
+export function evalDapSoThucTeKetQua(s, dang) { const t = chuanHoaDapSoThucTe(s, dang); return t || null }
+// Dạng mà "quên phần nguyên" là lỗi THẬT (đổi phân số/hỗn số/đơn vị ↔ số thập phân, đọc–viết số thập phân).
+const QUEN_PHAN_NGUYEN_DANG = new Set(['T105040103', 'T105040105', 'T105040107', 'T105040108', 'T105100203', 'T105100204'])
+const RE_SAP_XEP = /sắp xếp|theo thứ tự|bé đến lớn|lớn đến bé|nhỏ đến lớn|lớn đến nhỏ|tăng dần|giảm dần/i
+export function sinhNhieuDapSoThucTe(dapAn, rule, ctx = {}) {
+  const clean = String(dapAn ?? '').replace(/\$/g, '').trim()
+  const parsed = tachDapSoThucTe(clean, ctx); if (!parsed) return null
+  const { vals, fmts, sep } = parsed
+  const render = (arr, fs = fmts) => renderDapSoThucTe(arr, sep, fs, true)
+  const dungText = render(vals), dungKey = renderDapSoThucTe(vals, sep, fmts, false)
+  if (!rule) return { text: dungText }
+  const ra = (arr, ds, fs = fmts) => { const k = renderDapSoThucTe(arr, sep, fs, false); return k === dungKey ? null : { text: render(arr, fs), ds } }
+  const f0 = fmts[0]
+  const thapPhan1 = vals.length === 1 && f0?.loai === 'thap_phan'
+  const sapXep = vals.length >= 3 && sep === ';' && RE_SAP_XEP.test(String(ctx.noiDung ?? '')) && fmts.every((f) => f?.loai === 'nguyen' || f?.loai === 'thap_phan')
+  const nghin = fmts.some((f) => f?.nghin)
+  // bước "1 đơn vị" theo khuôn số: số thập phân ⇒ 1 đơn vị ở chữ số cuối; số tròn chục/trăm/nghìn ⇒ 1 đơn vị ở hàng khác 0 cuối cùng
+  const buoc = (v, f) => {
+    if (f?.loai === 'thap_phan') return R(1n, 10n ** BigInt(f.dp))
+    if (f?.loai === 'nguyen' && f.nghin && v.q === 1n && v.p !== 0n) { let p = v.p < 0n ? -v.p : v.p, s = 1n; while (p % 10n === 0n && p / 10n >= 1n) { p /= 10n; s *= 10n } return R(s) }
+    return R(1n)
+  }
+  // ── SẮP XẾP dãy số (T105010103…): nhiễu = HOÁN VỊ của chính các số đề cho, không bịa số mới ──
+  if (sapXep) {
+    if (rule === 'R343') return ra([vals[1], vals[0], ...vals.slice(2)], 'đổi chỗ nhầm 2 số đứng đầu', [fmts[1], fmts[0], ...fmts.slice(2)])
+    if (rule === 'R368') return ra([...vals].reverse(), 'sắp xếp ngược chiều (bé đến lớn ↔ lớn đến bé)', [...fmts].reverse())
+    if (rule === 'R369') { // 2 số cạnh nhau GẦN nhau nhất — chỗ dễ so nhầm nhất
+      let k = 0, best = null
+      for (let i = 0; i + 1 < vals.length; i++) { const d = sub(vals[i + 1], vals[i]), ad = d.p < 0n ? R(-d.p, d.q) : d; if (!best || cmp(ad, best) < 0) { best = ad; k = i } }
+      const v2 = [...vals], f2 = [...fmts]; [v2[k], v2[k + 1]] = [v2[k + 1], v2[k]]; [f2[k], f2[k + 1]] = [f2[k + 1], f2[k]]
+      return ra(v2, 'so sánh nhầm 2 số gần nhau, đổi chỗ chúng', f2)
+    }
+    if (rule === 'R370') { // so theo chữ số đầu tiên (như so chữ) thay vì đếm số chữ số trước
+      const tang = cmp(vals[0], vals[vals.length - 1]) <= 0
+      const idx = vals.map((_, i) => i).sort((a, b) => { const sa = vietSo(vals[a], { loai: 'thap_phan', dp: 0 }, { tex: false }), sb = vietSo(vals[b], { loai: 'thap_phan', dp: 0 }, { tex: false }); return (sa < sb ? -1 : sa > sb ? 1 : 0) * (tang ? 1 : -1) })
+      return ra(idx.map((i) => vals[i]), 'so sánh theo chữ số đầu tiên, không đếm số chữ số trước', idx.map((i) => fmts[i]))
+    }
+    return null
+  }
+  // ── MỘT số thập phân: lỗi thật của HS với số thập phân ──
+  if (thapPhan1) {
+    const v = vals[0], f = f0, ten = (x) => R(x.p * 10n, x.q), chia10 = (x) => R(x.p, x.q * 10n)
+    if (rule === 'R363') return ra([ten(v)], 'đặt dấu phẩy lệch 1 hàng sang phải (gấp 10 lần)', [{ ...f, dp: Math.max(f.dp - 1, 0), loai: f.dp > 1 ? 'thap_phan' : 'nguyen' }])
+    if (rule === 'R364') return ra([chia10(v)], 'đặt dấu phẩy lệch 1 hàng sang trái (bằng 1/10)', [{ ...f, dp: f.dp + 1 }])
+    if (rule === 'R365') { // bỏ sót chữ số 0 ngay sau dấu phẩy (0,08 → 0,8; 7,05 → 7,5) — không có thì viết thừa một chữ số 0 (12,61 → 12,061)
+      const s = vietSo(v, f, { tex: false }), [a, b] = s.split(',')
+      const b2 = b.startsWith('0') && b.length > 1 ? b.slice(1) : '0' + b
+      const x = docMotSo(`${a},${b2}`); if (!x) return null
+      return ra([x.v], b.startsWith('0') && b.length > 1 ? 'bỏ sót chữ số 0 ngay sau dấu phẩy' : 'viết thừa chữ số 0 ngay sau dấu phẩy', [x.fmt])
+    }
+    if (rule === 'R366') { // +1 ở chữ số cuối; chữ số cuối là 9 thì −1 (khỏi ra "109,0")
+      const len = vietSo(v, f, { tex: false }); return ra([len.endsWith('9') ? sub(v, buoc(v, f)) : add(v, buoc(v, f))], 'tính lệch 1 đơn vị ở chữ số thập phân cuối (dự phòng)')
+    }
+    if (rule === 'R367') {
+      if (!QUEN_PHAN_NGUYEN_DANG.has(ctx.dang) || v.p / v.q === 0n) return null
+      const nguyen = v.p / v.q; return ra([sub(v, R(nguyen))], 'quên phần nguyên, chỉ viết phần thập phân')
+    }
+    return null
+  }
+  if (['R363', 'R364', 'R366', 'R367', 'R368', 'R369', 'R370'].includes(rule)) return null
+  // ── Số nguyên có cách hàng nghìn (lớp 4–5): thêm "bỏ sót/viết thừa chữ số 0" và "lệch 1 chữ số 0" ──
+  if (rule === 'R365') {
+    if (!nghin) return null
+    const s = vietSo(vals[0], { loai: 'nguyen' }, { tex: false })
+    const i0 = s.indexOf('0', 1), s2 = i0 > 0 ? s.slice(0, i0) + s.slice(i0 + 1) : s[0] + '0' + s.slice(1)
+    return ra([R(BigInt(s2)), ...vals.slice(1)], i0 > 0 ? 'viết sót một chữ số 0' : 'viết thừa một chữ số 0')
+  }
+  if (rule === 'R103') { if (!nghin) return null; return ra([R(vals[0].p * 10n, vals[0].q), ...vals.slice(1)], 'lệch một chữ số 0 (gấp 10 lần)') }
+  if (rule === 'R343') {
+    if (vals.length >= 2) return ra([vals[1], vals[0], ...vals.slice(2)], sep === ' dư ' ? 'hoán đổi nhầm thương và số dư' : 'hoán đổi nhầm 2 giá trị', [fmts[1], fmts[0], ...fmts.slice(2)])
+    if (nghin || f0?.loai === 'thap_phan' || f0?.loai === 'hon_so') return null // "gấp đôi" không phải lỗi có nghĩa với số viết sẵn
+    return ra([mul(vals[0], R(2n))], 'tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)')
+  }
+  if (rule === 'R344') { const cp = [...vals]; cp[0] = add(cp[0], buoc(cp[0], f0)); return ra(cp, 'tính lệch 1 đơn vị ở giá trị thứ nhất') }
+  // số có cách hàng nghìn mà hàng đơn vị khác 0 (50 714): ±1 là nhiễu yếu — chỉ giữ R344, nhường chỗ cho R365/R103
+  const motDonVi = nghin && vals.length === 1 && cmp(buoc(vals[0], f0), R(1n)) === 0
+  if ((rule === 'R345' || rule === 'R346') && motDonVi) return null
+  if (rule === 'R345') { const cp = [...vals]; cp[0] = sub(cp[0], buoc(cp[0], f0)); return ra(cp, 'tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)') }
   if (rule === 'R346') {
-    const idx = vals.length >= 2 ? vals.length - 1 : 0, delta = vals.length >= 2 ? R(1n) : R(-2n)
-    const cp = [...vals]; cp[idx] = add(cp[idx], delta); const t = render(cp); if (t === dungText) return null
-    return { text: t, ds: vals.length >= 2 ? 'tính lệch 1 đơn vị ở giá trị thứ hai' : 'tính lệch giá trị (cứu ca trùng công thức)' }
+    const idx = vals.length >= 2 ? vals.length - 1 : 0, b = buoc(vals[idx], fmts[idx]), delta = vals.length >= 2 ? b : mul(b, R(-2n))
+    const cp = [...vals]; cp[idx] = add(cp[idx], delta)
+    return ra(cp, vals.length >= 2 ? 'tính lệch 1 đơn vị ở giá trị thứ hai' : 'tính lệch giá trị (cứu ca trùng công thức)')
   }
   return null
 }

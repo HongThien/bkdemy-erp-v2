@@ -10,12 +10,16 @@
 //   4) node scripts/mcq-sinh.mjs --ghi kq.json [--model claude-fable-5-1]
 //        → verify lại rồi INSERT dai_cau_form_tn (nguon='ai', da_duyet=false), mỗi câu 1 transaction; câu đã có form
 //          hiệu lực → bỏ qua, không đè. Trigger DB kiểm lần nữa (4 phương án / 1 đúng / rule tồn tại).
+//   5) --thay "<lý do>" (18/10, sinh lại form hỏng): --verify/--ghi nhận cả câu ĐANG có form CHƯA DUYỆT; --ghi đưa form cũ vào
+//        kho rác (xoa_at, tu_choi_ly_do = lý do) rồi insert form mới trong CÙNG transaction. Form ĐÃ DUYỆT không bao giờ bị thay
+//        (phải thu hồi duyệt trước — quyết định của người, không phải của script).
 // Kết nối: DATABASE_URL trong .env (cùng cách các script khác).
 import pg from 'pg'
 import { readFileSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { parseHuuTi, hinhThuc, ratEq } from './lib/huuti.mjs'
+import { kiemKeyVoiDapAn } from './lib/so-vn.mjs'
 import { chuanHoaFactorText, evalFactorText, chuanHoaTapText, evalTapText, chuanHoaThuTu, evalThuTu, chuanHoaPhanBien, evalPhanBien, chuanHoaDonThucKetQua, evalDonThucKetQua, chuanHoaDaThuc, evalDaThucKetQua, chuanHoaChiaDaThuc, evalChiaDaThucKetQua, chuanHoaDkChiaHet, evalDkChiaHetKetQua, chuanHoaHoanThienBP, evalHoanThienBPKetQua, chuanHoaTachBinhPhuong, evalTachBinhPhuongKetQua, chuanHoaTongHieuLapPhuong, evalTongHieuLapPhuongKetQua, chuanHoaRutNhanTuChung, evalRutNhanTuChungKetQua, chuanHoaDanhSachNghiem, evalDanhSachNghiemKetQua, chuanHoaBatDangThuc, evalBatDangThucKetQua, chuanHoaCapNghiem, evalCapNghiemKetQua, chuanHoaCanThucKetQua, evalCanThucKetQuaVal, chuanHoaDkxdCanThuc, evalDkxdCanThucKetQua, chuanHoaDapSoThucTe, evalDapSoThucTeKetQua, chuanHoaPtPhanThucKetQua, evalPtPhanThucKetQua, chuanHoaRutGonCanKetQua, evalRutGonCanKetQuaVal, chuanHoaHePtTongTich, evalHePtTongTichKetQua } from './lib/mini-dang.mjs'
 // (T108010501/T108020101 dùng lại chuanHoaDaThuc/evalDaThucKetQua — đáp số là 1 đa thức, giống T108010202/302/303)
 // (T108010301 dùng lại chuanHoaDonThucKetQua/evalDonThucKetQua — đáp số vẫn là 1 đơn thức)
@@ -27,6 +31,7 @@ const env = envf(join(root, '.env'))
 const args = process.argv.slice(2)
 const opt = (k, d) => { const i = args.indexOf(k); return i >= 0 && args[i + 1] && !args[i + 1].startsWith('--') ? args[i + 1] : d }
 const has = (k) => args.includes(k)
+const THAY = opt('--thay') // lý do thay form cũ chưa duyệt — xem mục 5) ở đầu file
 
 // Pool 1 (spec §2) — 9 dạng lớp 7 "Số hữu tỉ" nhóm tính toán.
 const POOL1 = ['T107010201', 'T107010202', 'T107010203', 'T107010206', 'T107010207', 'T107010401', 'T107010403', 'T107010404', 'T107010301']
@@ -46,7 +51,8 @@ const TEXT_DANG = new Set(['T106030302', 'T106030301', 'T106040104', 'T106040204
   'T109010203', 'T109020204', 'T109080106', 'T109080502', 'T109110201',
   'T105040203', 'T107020401', 'T103020306', 'T106040203', 'T105040207', 'T108030601', 'T104040103', 'T103020307', 'T105020201', 'T105040103', 'T103020304', 'T111040403', 'T105040205', 'T104020101', 'T104040105', 'T110020204', 'T105020402', 'T105030202', 'T105030101', 'T110010204', 'T105030201', 'T106040303', 'T103020103', 'T111030105', 'T105020301', 'T104010104', 'T105100203', 'T110010205', 'T105010202', 'T107020402', 'T111040301', 'T104010401', 'T105040206', 'T111040103', 'T104010103', 'T104050102', 'T104010102', 'T105020203', 'T15T020204', 'T104050201', 'T105020103', 'T104010101', 'T104010403', 'T111030204', 'T104020102', 'T111040204', 'T111060205', 'T104010402', 'T111040302', 'T104010301', 'T111030203', 'T15T020202', 'T107020102', 'T104010202', 'T110010206', 'T104010106', 'T110020104', 'T104010305', 'T15T020203', 'T111060204', 'T104050101', 'T104050103', 'T107020103', 'T111060102', 'T111040203', 'T110010203', 'T111010501', 'T105010103', 'T107020303', 'T111040102', 'T111030202', 'T111010608', 'T111010502', 'T107030301', 'T104010302', 'T106020701', 'T107030401', 'T111060302', 'T108050203', 'T111010606', 'T111010611', 'T111060306', 'T108050301', 'T111010605', 'T111060303', 'T110030104', 'T108050204', 'T104030103', 'T111050102', 'T111050302', 'T108050205', 'T108050501', 'T108050401', 'T111050201', 'T108050201', 'T111050402', 'T103020202', 'T105020401', 'T104040102', 'T14T100101', 'T105040208', 'T105030203', 'T105100101', 'T103020308', 'T111060305', 'T106030401', 'T104020103', 'T105020202', 'T104020104', 'T105030102', 'T14T100102', 'T105040202', 'T108040501', 'T105040201', 'T103020305', 'T104040201', 'T107030101', 'T108040101', 'T103020102', 'T107010205', 'T103020302', 'T105040105', 'T111010103', 'T111010602', 'T107030201', 'T15T020201', 'T105010102', 'T103020303', 'T105040204', 'T103020301', 'T107020101', 'T108050302', 'T103020201', 'T105020102', 'T105010101', 'T108050202', 'T106030403', 'T105010104', 'T109030302', 'T109030304', 'T105040108', 'T105100204', 'T104010304', 'T103020101', 'T105040107', 'T106040103', 'T14T100103', 'T104030105', 'T104010303', 'T111060304', 'T109030303', 'T108040201', 'T103010103',
   'T312010803', 'T312010103', 'T312010702', 'T312010505', 'T312010401', 'T312010202', 'T312010201', 'T312010801', 'T312010504', 'T312010402', 'T312010102', 'T312010602', 'T312010802', 'T312010705', 'T312010603', 'T312010209', 'T312010210', 'T312010205', 'T312010301', 'T312010403', 'T312010107', 'T312010503',
-  'T109030305', 'T309010103', 'T309010105', 'T309010402', 'T309010301', 'T309010401', 'T309010102'])
+  'T109030305', 'T309010103', 'T309010105', 'T309010402', 'T309010301', 'T309010401', 'T309010102',
+  'T105040110', 'T105040209', 'T105100402', 'T105100405', 'T105100407', 'T105100408', 'T106020207', 'T110030203']) // 8 dạng cuối: ghi danh 18/10 (form 14–16/10 sinh ngoài repo, xem mcq-auto.mjs ANSWER_DANG_LIST)
 const TEXT_FN = {
   T106030302: { canon: chuanHoaFactorText, val: evalFactorText },
   T106030301: { canon: chuanHoaTapText, val: evalTapText },
@@ -361,6 +367,14 @@ const TEXT_FN = {
   T309010301: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
   T309010401: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
   T309010102: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105040110: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105040209: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105100402: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105100405: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105100407: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T105100408: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T106020207: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
+  T110030203: { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua },
   T109020203: { canon: chuanHoaBatDangThuc, val: evalBatDangThucKetQua },
   T109020103: { canon: chuanHoaPtPhanThucKetQua, val: evalPtPhanThucKetQua },
   T109020403: { canon: chuanHoaPtPhanThucKetQua, val: evalPtPhanThucKetQua },
@@ -414,9 +428,9 @@ async function list() {
   for (const r of rows) {
     if (laHinhThucText(r.dang_chinh, r.dap_an)) { // đáp số là BIỂU THỨC/TẬP — kiểm bằng fn.val riêng theo dạng, không qua parseHuuTi
       const fn = TEXT_FN[r.dang_chinh]
-      const n2 = fn.val(r.dap_an)
+      const n2 = fn.val(r.dap_an, r.dang_chinh) // dang: chuanHoaDapSoThucTe cần khối để đọc phẩy thập phân (18/10); hàm khác bỏ qua
       if (n2 == null) { bo.push({ ma_cau: r.ma_cau, dap_an: r.dap_an, ly_do: 'không tính được giá trị' }); continue }
-      if (cau.length < n) cau.push({ ...r, key_gia_tri: fn.canon(r.dap_an), hinh_thuc: r.dang_chinh === 'T106030301' ? 'tap' : 'bieu_thuc' })
+      if (cau.length < n) cau.push({ ...r, key_gia_tri: fn.canon(r.dap_an, r.dang_chinh), hinh_thuc: r.dang_chinh === 'T106030301' ? 'tap' : 'bieu_thuc' })
       continue
     }
     const p = parseHuuTi(r.dap_an)
@@ -439,7 +453,7 @@ async function list() {
 function kiemCauText(item, dbRow, ruleMap) {
   const err = []
   const fn = TEXT_FN[dbRow.dang_chinh]
-  const key = fn.canon(dbRow.dap_an), nKey = fn.val(dbRow.dap_an)
+  const key = fn.canon(dbRow.dap_an, dbRow.dang_chinh), nKey = fn.val(dbRow.dap_an, dbRow.dang_chinh)
   if (nKey == null) return [`đáp số kho không parse được: ${dbRow.dap_an}`]
   const lc = item.lua_chon
   if (!Array.isArray(lc) || lc.length !== 4) return ['phải đúng 4 phương án']
@@ -447,10 +461,13 @@ function kiemCauText(item, dbRow, ruleMap) {
   if (dungIdx.length !== 1) err.push('phải đúng 1 phương án dung=true')
   if (!LETTERS.includes(item.dap_an)) err.push('dap_an phải A..D')
   else if (dungIdx.length === 1 && LETTERS[dungIdx[0]] !== item.dap_an) err.push(`dap_an=${item.dap_an} không khớp vị trí dung (${LETTERS[dungIdx[0]]})`)
-  const texts = lc.map((x) => fn.canon(x.text)), vals = lc.map((x) => fn.val(x.text))
+  const texts = lc.map((x) => fn.canon(x.text, dbRow.dang_chinh)), vals = lc.map((x) => fn.val(x.text, dbRow.dang_chinh))
   vals.forEach((v, i) => { if (v == null) err.push(`phương án ${LETTERS[i]} không parse được`) })
   if (err.length) return err
   if (texts[dungIdx[0]] !== key) err.push(`phương án đúng (${texts[dungIdx[0]]}) ≠ đáp số kho (${key})`)
+  // Nhân chứng ĐỘC LẬP với fn.canon (18/10): key và phương án đúng phải cùng CHỮ SỐ + cùng giá trị với đáp số kho đọc
+  // theo quy ước VN (so-vn.mjs). Trước đó key so với chính parser sinh ra nó ⇒ 448 form "12,61"→"12;61" lọt cổng.
+  err.push(...kiemKeyVoiDapAn({ dapAn: dbRow.dap_an, key, textDung: lc[dungIdx[0]].text, texts: lc.map((x) => x.text), dang: dbRow.dang_chinh }))
   if (vals[dungIdx[0]] !== nKey) err.push(`phương án đúng tính ra ${vals[dungIdx[0]]} ≠ giá trị thật ${nKey}`)
   for (let i = 0; i < 4; i++) for (let j = i + 1; j < 4; j++) if (texts[i] === texts[j]) err.push(`${LETTERS[i]} và ${LETTERS[j]} cùng biểu thức ${texts[i]}`)
   const rs = lc.filter((x) => !x.dung).map((x) => x.rule)
@@ -478,6 +495,8 @@ function kiemCau(item, dbRow, ruleMap) {
   if (err.length) return err
   // Đúng phải = key kho
   const pd = parsed[dungIdx[0]]
+  // Nhân chứng ĐỘC LẬP (18/10): đáp số kho là số thập phân thì phương án đúng phải viết ĐÚNG số đó, cả 4 phương án là số thuần
+  err.push(...kiemKeyVoiDapAn({ dapAn: dbRow.dap_an, key: null, textDung: lc[dungIdx[0]].text, texts: lc.map((x) => x.text), dang: dbRow.dang_chinh }))
   if (pd.canon !== key.canon) err.push(`phương án đúng (${pd.canon}) ≠ đáp số kho (${key.canon})`)
   // Khác nhau đôi một theo GIÁ TRỊ
   for (let i = 0; i < 4; i++) for (let j = i + 1; j < 4; j++) if (parsed[i].canon === parsed[j].canon) err.push(`${LETTERS[i]} và ${LETTERS[j]} cùng giá trị ${parsed[i].canon}`)
@@ -507,7 +526,7 @@ async function verify(file, quiet = false) {
   const { rows } = await c.query(`
     select q.ma_cau, q.dap_an, q.dang_chinh from ${CAU_TBL} q
     where q.ma_cau = any($1) and q.xoa_at is null and q.lua_chon is null and q.menh_de is null
-      and not exists (select 1 from ${TBL} f where f.ma_cau = q.ma_cau and f.xoa_at is null)`, [mas])
+      and not exists (select 1 from ${TBL} f where f.ma_cau = q.ma_cau and f.xoa_at is null and ($2::boolean is not true or f.da_duyet))`, [mas, !!THAY])
   const db = new Map(rows.map((r) => [r.ma_cau, r]))
   let ok = 0, fail = 0, boN = 0
   const pass = [], phanBo = Object.fromEntries(LETTERS.map((l) => [l, 0]))
@@ -530,9 +549,10 @@ async function ghi(file) {
   let n = 0, skip = 0
   for (const it of pass) {
     const { rows } = await c.query(`select dap_an, dang_chinh from ${CAU_TBL} where ma_cau = $1`, [it.ma_cau])
-    const keyCanon = laHinhThucText(rows[0]?.dang_chinh, rows[0]?.dap_an) ? TEXT_FN[rows[0]?.dang_chinh].canon(rows[0]?.dap_an ?? '') : parseHuuTi(rows[0]?.dap_an ?? '').canon
+    const keyCanon = laHinhThucText(rows[0]?.dang_chinh, rows[0]?.dap_an) ? TEXT_FN[rows[0]?.dang_chinh].canon(rows[0]?.dap_an ?? '', rows[0]?.dang_chinh) : parseHuuTi(rows[0]?.dap_an ?? '').canon
     await c.query('begin')
     try {
+      if (THAY) await c.query(`update ${TBL} set xoa_at = now(), tu_choi_ly_do = $2 where ma_cau = $1 and xoa_at is null and not da_duyet`, [it.ma_cau, THAY])
       const r = await c.query(`
         insert into ${TBL} (ma_cau, lua_chon, dap_an, key_gia_tri, nguon, ai_model)
         select $1, $2::jsonb, $3, $4, 'ai', $5

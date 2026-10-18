@@ -1,0 +1,2522 @@
+[
+ {
+  "ma_cau": "T105030101013",
+  "dang": "T105030101",
+  "ten_dang": "Chuyển từ hỗn số sang phân số, phân số thập phân và ngược lại",
+  "de": "Viết phân số sau dưới dạng hỗn số:\\dfrac{31}{10}",
+  "dap_an_kho": "$3\\dfrac{1}{10}$",
+  "key": "\\dfrac{31}{10}",
+  "phuong_an": [
+   "✔ $\\dfrac{31}{10}$",
+   "$\\dfrac{41}{10}$",
+   "$\\dfrac{21}{10}$",
+   "$\\dfrac{11}{10}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030101014",
+  "dang": "T105030101",
+  "ten_dang": "Chuyển từ hỗn số sang phân số, phân số thập phân và ngược lại",
+  "de": "Viết phân số sau dưới dạng hỗn số:\\dfrac{17}{5}",
+  "dap_an_kho": "$3\\dfrac{2}{5}$",
+  "key": "\\dfrac{17}{5}",
+  "phuong_an": [
+   "$\\dfrac{34}{5}$",
+   "✔ $\\dfrac{17}{5}$",
+   "$\\dfrac{22}{5}$",
+   "$\\dfrac{12}{5}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030101015",
+  "dang": "T105030101",
+  "ten_dang": "Chuyển từ hỗn số sang phân số, phân số thập phân và ngược lại",
+  "de": "Viết phân số sau dưới dạng hỗn số:\\dfrac{23}{7}",
+  "dap_an_kho": "$3\\dfrac{2}{7}$",
+  "key": "\\dfrac{23}{7}",
+  "phuong_an": [
+   "$\\dfrac{46}{7}$",
+   "$\\dfrac{30}{7}$",
+   "✔ $\\dfrac{23}{7}$",
+   "$\\dfrac{9}{7}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030101016",
+  "dang": "T105030101",
+  "ten_dang": "Chuyển từ hỗn số sang phân số, phân số thập phân và ngược lại",
+  "de": "Viết phân số sau dưới dạng hỗn số:\\dfrac{45}{8}",
+  "dap_an_kho": "$5\\dfrac{5}{8}$",
+  "key": "\\dfrac{45}{8}",
+  "phuong_an": [
+   "$\\dfrac{45}{4}$",
+   "$\\dfrac{37}{8}$",
+   "$\\dfrac{29}{8}$",
+   "✔ $\\dfrac{45}{8}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030101017",
+  "dang": "T105030101",
+  "ten_dang": "Chuyển từ hỗn số sang phân số, phân số thập phân và ngược lại",
+  "de": "Viết phân số sau dưới dạng hỗn số:\\dfrac{53}{9}",
+  "dap_an_kho": "$5\\dfrac{8}{9}$",
+  "key": "\\dfrac{53}{9}",
+  "phuong_an": [
+   "✔ $\\dfrac{53}{9}$",
+   "$\\dfrac{62}{9}$",
+   "$\\dfrac{44}{9}$",
+   "$\\dfrac{35}{9}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030101018",
+  "dang": "T105030101",
+  "ten_dang": "Chuyển từ hỗn số sang phân số, phân số thập phân và ngược lại",
+  "de": "Viết phân số sau dưới dạng hỗn số:\\dfrac{25}{4}",
+  "dap_an_kho": "$6\\dfrac{1}{4}$",
+  "key": "\\dfrac{25}{4}",
+  "phuong_an": [
+   "$\\dfrac{25}{2}$",
+   "✔ $\\dfrac{25}{4}$",
+   "$\\dfrac{29}{4}$",
+   "$\\dfrac{21}{4}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030101019",
+  "dang": "T105030101",
+  "ten_dang": "Chuyển từ hỗn số sang phân số, phân số thập phân và ngược lại",
+  "de": "Viết phân số sau dưới dạng hỗn số:$\\dfrac{3005}{1000}$",
+  "dap_an_kho": "$3\\dfrac{5}{1000}$",
+  "key": "\\dfrac{601}{200}",
+  "phuong_an": [
+   "$\\dfrac{601}{100}$",
+   "$\\dfrac{801}{200}$",
+   "✔ $\\dfrac{601}{200}$",
+   "$\\dfrac{201}{200}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030101020",
+  "dang": "T105030101",
+  "ten_dang": "Chuyển từ hỗn số sang phân số, phân số thập phân và ngược lại",
+  "de": "Viết phân số sau dưới dạng hỗn số:$\\dfrac{2015}{1000}$",
+  "dap_an_kho": "$2\\dfrac{15}{1000}$",
+  "key": "\\dfrac{403}{200}",
+  "phuong_an": [
+   "$\\dfrac{403}{100}$",
+   "$\\dfrac{203}{200}$",
+   "$\\dfrac{3}{200}$",
+   "✔ $\\dfrac{403}{200}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030101021",
+  "dang": "T105030101",
+  "ten_dang": "Chuyển từ hỗn số sang phân số, phân số thập phân và ngược lại",
+  "de": "Viết phân số sau dưới dạng hỗn số:$\\dfrac{5003}{1000}$",
+  "dap_an_kho": "$5\\dfrac{3}{1000}$",
+  "key": "\\dfrac{5003}{1000}",
+  "phuong_an": [
+   "✔ $\\dfrac{5003}{1000}$",
+   "$\\dfrac{6003}{1000}$",
+   "$\\dfrac{4003}{1000}$",
+   "$\\dfrac{3003}{1000}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 2,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030101022",
+  "dang": "T105030101",
+  "ten_dang": "Chuyển từ hỗn số sang phân số, phân số thập phân và ngược lại",
+  "de": "Viết phân số sau dưới dạng hỗn số:$\\dfrac{125}{10}$",
+  "dap_an_kho": "$12\\dfrac{5}{10}$",
+  "key": "\\dfrac{25}{2}",
+  "phuong_an": [
+   "$25$",
+   "✔ $\\dfrac{25}{2}$",
+   "$\\dfrac{27}{2}$",
+   "$\\dfrac{23}{2}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030101023",
+  "dang": "T105030101",
+  "ten_dang": "Chuyển từ hỗn số sang phân số, phân số thập phân và ngược lại",
+  "de": "Viết phân số sau dưới dạng hỗn số:$\\dfrac{432}{100}$",
+  "dap_an_kho": "$4\\dfrac{32}{100}$",
+  "key": "\\dfrac{108}{25}",
+  "phuong_an": [
+   "$\\dfrac{216}{25}$",
+   "$\\dfrac{133}{25}$",
+   "✔ $\\dfrac{108}{25}$",
+   "$\\dfrac{58}{25}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 2,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030101024",
+  "dang": "T105030101",
+  "ten_dang": "Chuyển từ hỗn số sang phân số, phân số thập phân và ngược lại",
+  "de": "Viết phân số sau dưới dạng hỗn số:$\\dfrac{7008}{1000}$",
+  "dap_an_kho": "$7\\dfrac{8}{1000}$",
+  "key": "\\dfrac{876}{125}",
+  "phuong_an": [
+   "$\\dfrac{1752}{125}$",
+   "$\\dfrac{751}{125}$",
+   "$\\dfrac{626}{125}$",
+   "✔ $\\dfrac{876}{125}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030101025",
+  "dang": "T105030101",
+  "ten_dang": "Chuyển từ hỗn số sang phân số, phân số thập phân và ngược lại",
+  "de": "Viết phân số sau dưới dạng hỗn số:$\\dfrac{6012}{100}$",
+  "dap_an_kho": "$60\\dfrac{12}{100}$",
+  "key": "\\dfrac{1503}{25}",
+  "phuong_an": [
+   "✔ $\\dfrac{1503}{25}$",
+   "$\\dfrac{1528}{25}$",
+   "$\\dfrac{1478}{25}$",
+   "$\\dfrac{1453}{25}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030101026",
+  "dang": "T105030101",
+  "ten_dang": "Chuyển từ hỗn số sang phân số, phân số thập phân và ngược lại",
+  "de": "Viết phân số sau dưới dạng hỗn số:$\\dfrac{84}{10}$",
+  "dap_an_kho": "$8\\dfrac{4}{10}$",
+  "key": "\\dfrac{42}{5}",
+  "phuong_an": [
+   "$\\dfrac{84}{5}$",
+   "✔ $\\dfrac{42}{5}$",
+   "$\\dfrac{47}{5}$",
+   "$\\dfrac{37}{5}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030101027",
+  "dang": "T105030101",
+  "ten_dang": "Chuyển từ hỗn số sang phân số, phân số thập phân và ngược lại",
+  "de": "Viết phân số sau dưới dạng hỗn số:$\\dfrac{2507}{500}$",
+  "dap_an_kho": "$5\\dfrac{7}{500}$",
+  "key": "\\dfrac{2507}{500}",
+  "phuong_an": [
+   "$\\dfrac{2507}{250}$",
+   "$\\dfrac{3007}{500}$",
+   "✔ $\\dfrac{2507}{500}$",
+   "$\\dfrac{1507}{500}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030101028",
+  "dang": "T105030101",
+  "ten_dang": "Chuyển từ hỗn số sang phân số, phân số thập phân và ngược lại",
+  "de": "Viết phân số sau dưới dạng hỗn số:$\\dfrac{121}{20}$",
+  "dap_an_kho": "$6\\dfrac{1}{20}$",
+  "key": "\\dfrac{121}{20}",
+  "phuong_an": [
+   "$\\dfrac{121}{10}$",
+   "$\\dfrac{101}{20}$",
+   "$\\dfrac{81}{20}$",
+   "✔ $\\dfrac{121}{20}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030101029",
+  "dang": "T105030101",
+  "ten_dang": "Chuyển từ hỗn số sang phân số, phân số thập phân và ngược lại",
+  "de": "Viết phân số sau dưới dạng hỗn số:$\\dfrac{10001}{1000}$",
+  "dap_an_kho": "$10\\dfrac{1}{1000}$",
+  "key": "\\dfrac{10001}{1000}",
+  "phuong_an": [
+   "✔ $\\dfrac{10001}{1000}$",
+   "$\\dfrac{11001}{1000}$",
+   "$\\dfrac{9001}{1000}$",
+   "$\\dfrac{8001}{1000}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030101030",
+  "dang": "T105030101",
+  "ten_dang": "Chuyển từ hỗn số sang phân số, phân số thập phân và ngược lại",
+  "de": "Viết phân số sau dưới dạng hỗn số:\n$\\dfrac{23}{5}$",
+  "dap_an_kho": "4\\dfrac{3}{5}",
+  "key": "\\dfrac{23}{5}",
+  "phuong_an": [
+   "$\\dfrac{46}{5}$",
+   "✔ $\\dfrac{23}{5}$",
+   "$\\dfrac{28}{5}$",
+   "$\\dfrac{18}{5}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 2,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030101031",
+  "dang": "T105030101",
+  "ten_dang": "Chuyển từ hỗn số sang phân số, phân số thập phân và ngược lại",
+  "de": "Viết phân số sau dưới dạng hỗn số:\n$\\dfrac{17}{3}$",
+  "dap_an_kho": "5\\dfrac{2}{3}",
+  "key": "\\dfrac{17}{3}",
+  "phuong_an": [
+   "$\\dfrac{34}{3}$",
+   "$\\dfrac{20}{3}$",
+   "✔ $\\dfrac{17}{3}$",
+   "$\\dfrac{11}{3}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030101032",
+  "dang": "T105030101",
+  "ten_dang": "Chuyển từ hỗn số sang phân số, phân số thập phân và ngược lại",
+  "de": "Viết phân số sau dưới dạng hỗn số:\n$\\dfrac{31}{4}$",
+  "dap_an_kho": "7\\dfrac{3}{4}",
+  "key": "\\dfrac{31}{4}",
+  "phuong_an": [
+   "$\\dfrac{31}{2}$",
+   "$\\dfrac{27}{4}$",
+   "$\\dfrac{23}{4}$",
+   "✔ $\\dfrac{31}{4}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030101033",
+  "dang": "T105030101",
+  "ten_dang": "Chuyển từ hỗn số sang phân số, phân số thập phân và ngược lại",
+  "de": "Viết phân số sau dưới dạng hỗn số:\n$\\dfrac{25}{6}$",
+  "dap_an_kho": "4\\dfrac{1}{6}",
+  "key": "\\dfrac{25}{6}",
+  "phuong_an": [
+   "✔ $\\dfrac{25}{6}$",
+   "$\\dfrac{31}{6}$",
+   "$\\dfrac{19}{6}$",
+   "$\\dfrac{13}{6}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030101034",
+  "dang": "T105030101",
+  "ten_dang": "Chuyển từ hỗn số sang phân số, phân số thập phân và ngược lại",
+  "de": "Viết phân số sau dưới dạng hỗn số:\n$\\dfrac{37}{7}$",
+  "dap_an_kho": "5\\dfrac{2}{7}",
+  "key": "\\dfrac{37}{7}",
+  "phuong_an": [
+   "$\\dfrac{74}{7}$",
+   "✔ $\\dfrac{37}{7}$",
+   "$\\dfrac{44}{7}$",
+   "$\\dfrac{30}{7}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030101035",
+  "dang": "T105030101",
+  "ten_dang": "Chuyển từ hỗn số sang phân số, phân số thập phân và ngược lại",
+  "de": "Viết phân số sau dưới dạng hỗn số:\n$\\dfrac{29}{8}$",
+  "dap_an_kho": "3\\dfrac{5}{8}",
+  "key": "\\dfrac{29}{8}",
+  "phuong_an": [
+   "$\\dfrac{29}{4}$",
+   "$\\dfrac{37}{8}$",
+   "✔ $\\dfrac{29}{8}$",
+   "$\\dfrac{13}{8}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030102028",
+  "dang": "T105030102",
+  "ten_dang": "Viết, đọc hỗn số, biểu diễn hỗn số trên tia số",
+  "de": "Viết hỗn số thích hợp:\\nTám và ba phần năm:",
+  "dap_an_kho": "$8\\dfrac{3}{5}$",
+  "key": "\\dfrac{43}{5}",
+  "phuong_an": [
+   "✔ $\\dfrac{43}{5}$",
+   "$\\dfrac{48}{5}$",
+   "$\\dfrac{38}{5}$",
+   "$\\dfrac{33}{5}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030201001",
+  "dang": "T105030201",
+  "ten_dang": "Cộng - trừ hỗn số",
+  "de": "Tính: $1\\dfrac{5}{6} + 2\\dfrac{1}{3}$",
+  "dap_an_kho": "$4\\dfrac{1}{6}$",
+  "key": "\\dfrac{25}{6}",
+  "phuong_an": [
+   "$\\dfrac{25}{3}$",
+   "✔ $\\dfrac{25}{6}$",
+   "$\\dfrac{31}{6}$",
+   "$\\dfrac{19}{6}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 2,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030201002",
+  "dang": "T105030201",
+  "ten_dang": "Cộng - trừ hỗn số",
+  "de": "Tính: $2\\dfrac{3}{4} + 1\\dfrac{1}{2}$",
+  "dap_an_kho": "$4\\dfrac{1}{4}$",
+  "key": "\\dfrac{17}{4}",
+  "phuong_an": [
+   "$\\dfrac{17}{2}$",
+   "$\\dfrac{21}{4}$",
+   "✔ $\\dfrac{17}{4}$",
+   "$\\dfrac{9}{4}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 4,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030201003",
+  "dang": "T105030201",
+  "ten_dang": "Cộng - trừ hỗn số",
+  "de": "Tính: $3\\dfrac{2}{5} + 1\\dfrac{1}{2}$",
+  "dap_an_kho": "$4\\dfrac{9}{10}$",
+  "key": "\\dfrac{49}{10}",
+  "phuong_an": [
+   "$\\dfrac{49}{5}$",
+   "$\\dfrac{39}{10}$",
+   "$\\dfrac{29}{10}$",
+   "✔ $\\dfrac{49}{10}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030201004",
+  "dang": "T105030201",
+  "ten_dang": "Cộng - trừ hỗn số",
+  "de": "Tính: $1\\dfrac{1}{2} + 2\\dfrac{2}{3}$",
+  "dap_an_kho": "$4\\dfrac{1}{6}$",
+  "key": "\\dfrac{25}{6}",
+  "phuong_an": [
+   "✔ $\\dfrac{25}{6}$",
+   "$\\dfrac{31}{6}$",
+   "$\\dfrac{19}{6}$",
+   "$\\dfrac{13}{6}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030201005",
+  "dang": "T105030201",
+  "ten_dang": "Cộng - trừ hỗn số",
+  "de": "Tính: $4\\dfrac{1}{3} + 1\\dfrac{1}{2}$",
+  "dap_an_kho": "$5\\dfrac{5}{6}$",
+  "key": "\\dfrac{35}{6}",
+  "phuong_an": [
+   "$\\dfrac{35}{3}$",
+   "✔ $\\dfrac{35}{6}$",
+   "$\\dfrac{41}{6}$",
+   "$\\dfrac{29}{6}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030201006",
+  "dang": "T105030201",
+  "ten_dang": "Cộng - trừ hỗn số",
+  "de": "Tính: $2\\dfrac{5}{8} + 1\\dfrac{1}{4}$",
+  "dap_an_kho": "$3\\dfrac{7}{8}$",
+  "key": "\\dfrac{31}{8}",
+  "phuong_an": [
+   "$\\dfrac{31}{4}$",
+   "$\\dfrac{39}{8}$",
+   "✔ $\\dfrac{31}{8}$",
+   "$\\dfrac{15}{8}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030201007",
+  "dang": "T105030201",
+  "ten_dang": "Cộng - trừ hỗn số",
+  "de": "Tính: $6\\dfrac{1}{4} - 1\\dfrac{1}{12}$",
+  "dap_an_kho": "$5\\dfrac{1}{6}$",
+  "key": "\\dfrac{31}{6}",
+  "phuong_an": [
+   "$\\dfrac{31}{3}$",
+   "$\\dfrac{25}{6}$",
+   "$\\dfrac{19}{6}$",
+   "✔ $\\dfrac{31}{6}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030201008",
+  "dang": "T105030201",
+  "ten_dang": "Cộng - trừ hỗn số",
+  "de": "Tính: $7\\dfrac{1}{3} - 2\\dfrac{1}{9}$",
+  "dap_an_kho": "$5\\dfrac{2}{9}$",
+  "key": "\\dfrac{47}{9}",
+  "phuong_an": [
+   "✔ $\\dfrac{47}{9}$",
+   "$\\dfrac{56}{9}$",
+   "$\\dfrac{38}{9}$",
+   "$\\dfrac{29}{9}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030201009",
+  "dang": "T105030201",
+  "ten_dang": "Cộng - trừ hỗn số",
+  "de": "Tính: $8\\dfrac{2}{5} - 3\\dfrac{3}{10}$",
+  "dap_an_kho": "$5\\dfrac{1}{10}$",
+  "key": "\\dfrac{51}{10}",
+  "phuong_an": [
+   "$\\dfrac{51}{5}$",
+   "✔ $\\dfrac{51}{10}$",
+   "$\\dfrac{61}{10}$",
+   "$\\dfrac{41}{10}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030201010",
+  "dang": "T105030201",
+  "ten_dang": "Cộng - trừ hỗn số",
+  "de": "Tính: $9\\dfrac{3}{7} - 4\\dfrac{5}{14}$",
+  "dap_an_kho": "$5\\dfrac{1}{14}$",
+  "key": "\\dfrac{71}{14}",
+  "phuong_an": [
+   "$\\dfrac{71}{7}$",
+   "$\\dfrac{85}{14}$",
+   "✔ $\\dfrac{71}{14}$",
+   "$\\dfrac{43}{14}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030201011",
+  "dang": "T105030201",
+  "ten_dang": "Cộng - trừ hỗn số",
+  "de": "Tính: $10\\dfrac{2}{3} - 5\\dfrac{1}{6}$",
+  "dap_an_kho": "$5\\dfrac{1}{2}$",
+  "key": "\\dfrac{11}{2}",
+  "phuong_an": [
+   "$11$",
+   "$\\dfrac{9}{2}$",
+   "$\\dfrac{7}{2}$",
+   "✔ $\\dfrac{11}{2}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 2,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030201012",
+  "dang": "T105030201",
+  "ten_dang": "Cộng - trừ hỗn số",
+  "de": "Tính: $11\\dfrac{5}{6} - 6\\dfrac{1}{12}$",
+  "dap_an_kho": "$5\\dfrac{3}{4}$",
+  "key": "\\dfrac{23}{4}",
+  "phuong_an": [
+   "✔ $\\dfrac{23}{4}$",
+   "$\\dfrac{27}{4}$",
+   "$\\dfrac{19}{4}$",
+   "$\\dfrac{15}{4}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030201013",
+  "dang": "T105030201",
+  "ten_dang": "Cộng - trừ hỗn số",
+  "de": "Tính: $7\\dfrac{1}{5} - 3\\dfrac{4}{5}$",
+  "dap_an_kho": "$3\\dfrac{2}{5}$",
+  "key": "\\dfrac{17}{5}",
+  "phuong_an": [
+   "$\\dfrac{34}{5}$",
+   "✔ $\\dfrac{17}{5}$",
+   "$\\dfrac{22}{5}$",
+   "$\\dfrac{12}{5}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 2,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030201014",
+  "dang": "T105030201",
+  "ten_dang": "Cộng - trừ hỗn số",
+  "de": "Tính: $8\\dfrac{1}{3} - 2\\dfrac{2}{3}$",
+  "dap_an_kho": "$5\\dfrac{2}{3}$",
+  "key": "\\dfrac{17}{3}",
+  "phuong_an": [
+   "$\\dfrac{34}{3}$",
+   "$\\dfrac{20}{3}$",
+   "✔ $\\dfrac{17}{3}$",
+   "$\\dfrac{11}{3}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 2,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030201015",
+  "dang": "T105030201",
+  "ten_dang": "Cộng - trừ hỗn số",
+  "de": "Tính: $9\\dfrac{2}{7} - 4\\dfrac{5}{7}$",
+  "dap_an_kho": "$4\\dfrac{4}{7}$",
+  "key": "\\dfrac{32}{7}",
+  "phuong_an": [
+   "$\\dfrac{64}{7}$",
+   "$\\dfrac{25}{7}$",
+   "$\\dfrac{18}{7}$",
+   "✔ $\\dfrac{32}{7}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 2,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030201016",
+  "dang": "T105030201",
+  "ten_dang": "Cộng - trừ hỗn số",
+  "de": "Tính: $10\\dfrac{1}{4} - 5\\dfrac{3}{4}$",
+  "dap_an_kho": "$4\\dfrac{1}{2}$",
+  "key": "\\dfrac{9}{2}",
+  "phuong_an": [
+   "✔ $\\dfrac{9}{2}$",
+   "$\\dfrac{11}{2}$",
+   "$\\dfrac{7}{2}$",
+   "$\\dfrac{5}{2}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030201017",
+  "dang": "T105030201",
+  "ten_dang": "Cộng - trừ hỗn số",
+  "de": "Tính: $12\\dfrac{1}{6} - 6\\dfrac{5}{6}$",
+  "dap_an_kho": "$5\\dfrac{1}{3}$",
+  "key": "\\dfrac{16}{3}",
+  "phuong_an": [
+   "$\\dfrac{32}{3}$",
+   "✔ $\\dfrac{16}{3}$",
+   "$\\dfrac{19}{3}$",
+   "$\\dfrac{13}{3}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030201018",
+  "dang": "T105030201",
+  "ten_dang": "Cộng - trừ hỗn số",
+  "de": "Tính: $11\\dfrac{3}{8} - 7\\dfrac{5}{8}$",
+  "dap_an_kho": "$3\\dfrac{3}{4}$",
+  "key": "\\dfrac{15}{4}",
+  "phuong_an": [
+   "$\\dfrac{15}{2}$",
+   "$\\dfrac{19}{4}$",
+   "✔ $\\dfrac{15}{4}$",
+   "$\\dfrac{7}{4}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 2,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030201019",
+  "dang": "T105030201",
+  "ten_dang": "Cộng - trừ hỗn số",
+  "de": "Tính: $3\\dfrac{2}{7} + 4\\dfrac{3}{14}$",
+  "dap_an_kho": "$7\\dfrac{1}{2}$",
+  "key": "\\dfrac{15}{2}",
+  "phuong_an": [
+   "$15$",
+   "$\\dfrac{13}{2}$",
+   "$\\dfrac{11}{2}$",
+   "✔ $\\dfrac{15}{2}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 2,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030201020",
+  "dang": "T105030201",
+  "ten_dang": "Cộng - trừ hỗn số",
+  "de": "Tính: $2\\dfrac{1}{3} + 1\\dfrac{1}{6}$",
+  "dap_an_kho": "$3\\dfrac{1}{2}$",
+  "key": "\\dfrac{7}{2}",
+  "phuong_an": [
+   "✔ $\\dfrac{7}{2}$",
+   "$\\dfrac{9}{2}$",
+   "$\\dfrac{5}{2}$",
+   "$\\dfrac{3}{2}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030201022",
+  "dang": "T105030201",
+  "ten_dang": "Cộng - trừ hỗn số",
+  "de": "Tính: $6\\dfrac{1}{5} + 1\\dfrac{3}{10}$",
+  "dap_an_kho": "$7\\dfrac{1}{2}$",
+  "key": "\\dfrac{15}{2}",
+  "phuong_an": [
+   "$15$",
+   "$\\dfrac{17}{2}$",
+   "✔ $\\dfrac{15}{2}$",
+   "$\\dfrac{11}{2}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030201023",
+  "dang": "T105030201",
+  "ten_dang": "Cộng - trừ hỗn số",
+  "de": "Tính: $1\\dfrac{1}{2} + 3\\dfrac{1}{4}$",
+  "dap_an_kho": "$4\\dfrac{3}{4}$",
+  "key": "\\dfrac{19}{4}",
+  "phuong_an": [
+   "$\\dfrac{19}{2}$",
+   "$\\dfrac{15}{4}$",
+   "$\\dfrac{11}{4}$",
+   "✔ $\\dfrac{19}{4}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030201024",
+  "dang": "T105030201",
+  "ten_dang": "Cộng - trừ hỗn số",
+  "de": "Tính: $4\\dfrac{2}{3} + 2\\dfrac{1}{9}$",
+  "dap_an_kho": "$6\\dfrac{7}{9}$",
+  "key": "\\dfrac{61}{9}",
+  "phuong_an": [
+   "✔ $\\dfrac{61}{9}$",
+   "$\\dfrac{70}{9}$",
+   "$\\dfrac{52}{9}$",
+   "$\\dfrac{43}{9}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030202043",
+  "dang": "T105030202",
+  "ten_dang": "Nhân, chia hỗn số",
+  "de": "Kho thứ nhất có $2\\dfrac{1}{3}$ tấn gạo.\nKho thứ hai có số gạo gấp $1\\dfrac{1}{2}$ lần số gạo ở kho thứ nhất.\nKho thứ ba có số gạo bằng một nửa số gạo ở kho thứ hai.\nTính tổng số gạo ở cả ba kho. Ghi ",
+  "dap_an_kho": "$7\\dfrac{7}{12}$",
+  "key": "\\dfrac{91}{12}",
+  "phuong_an": [
+   "$\\dfrac{91}{6}$",
+   "✔ $\\dfrac{91}{12}$",
+   "$\\dfrac{103}{12}$",
+   "$\\dfrac{79}{12}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030202044",
+  "dang": "T105030202",
+  "ten_dang": "Nhân, chia hỗn số",
+  "de": "Cửa hàng thứ nhất có $3\\dfrac{1}{2}$ kg đường.\nCửa hàng thứ hai có số đường gấp $1\\dfrac{1}{3}$ lần số đường ở cửa hàng thứ nhất.\nCửa hàng thứ ba có số đường bằng một nửa số đường ở cửa hàng thứ hai.\n",
+  "dap_an_kho": "$10\\dfrac{1}{2}$",
+  "key": "\\dfrac{21}{2}",
+  "phuong_an": [
+   "$21$",
+   "$\\dfrac{23}{2}$",
+   "✔ $\\dfrac{21}{2}$",
+   "$\\dfrac{17}{2}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030202045",
+  "dang": "T105030202",
+  "ten_dang": "Nhân, chia hỗn số",
+  "de": "Cuộn vải thứ nhất dài $1\\dfrac{1}{4}$ m.\nCuộn vải thứ hai dài gấp $2\\dfrac{1}{2}$ lần cuộn vải thứ nhất.\nCuộn vải thứ ba dài bằng một nửa cuộn vải thứ hai.\nTính tổng chiều dài của cả ba cuộn vải. Ghi ",
+  "dap_an_kho": "$5\\dfrac{15}{16}$",
+  "key": "\\dfrac{95}{16}",
+  "phuong_an": [
+   "$\\dfrac{95}{8}$",
+   "$\\dfrac{79}{16}$",
+   "$\\dfrac{63}{16}$",
+   "✔ $\\dfrac{95}{16}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030202046",
+  "dang": "T105030202",
+  "ten_dang": "Nhân, chia hỗn số",
+  "de": "Bình nước thứ nhất chứa $4\\dfrac{1}{5}$ lít nước.\nBình nước thứ hai chứa lượng nước gấp $1\\dfrac{1}{4}$ lần lượng nước ở bình thứ nhất.\nBình nước thứ ba chứa lượng nước bằng một nửa lượng nước ở bình ",
+  "dap_an_kho": "$12\\dfrac{3}{40}$",
+  "key": "\\dfrac{483}{40}",
+  "phuong_an": [
+   "✔ $\\dfrac{483}{40}$",
+   "$\\dfrac{523}{40}$",
+   "$\\dfrac{443}{40}$",
+   "$\\dfrac{403}{40}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030202047",
+  "dang": "T105030202",
+  "ten_dang": "Nhân, chia hỗn số",
+  "de": "Thửa ruộng thứ nhất rộng $2\\dfrac{2}{5}$ ha.\nThửa ruộng thứ hai rộng gấp $1\\dfrac{1}{6}$ lần thửa ruộng thứ nhất.\nThửa ruộng thứ ba rộng bằng một nửa thửa ruộng thứ hai.\nTính tổng diện tích của cả ba ",
+  "dap_an_kho": "$6\\dfrac{3}{5}$",
+  "key": "\\dfrac{33}{5}",
+  "phuong_an": [
+   "$\\dfrac{66}{5}$",
+   "✔ $\\dfrac{33}{5}$",
+   "$\\dfrac{38}{5}$",
+   "$\\dfrac{28}{5}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105030202048",
+  "dang": "T105030202",
+  "ten_dang": "Nhân, chia hỗn số",
+  "de": "Xe thứ nhất chở $3\\dfrac{3}{4}$ tạ trái cây.\nXe thứ hai chở lượng trái cây gấp $1\\dfrac{1}{5}$ lần lượng trái cây ở xe thứ nhất.\nXe thứ ba chở lượng trái cây bằng một nửa lượng trái cây ở xe thứ hai.\n",
+  "dap_an_kho": "$10\\dfrac{1}{2}$",
+  "key": "\\dfrac{21}{2}",
+  "phuong_an": [
+   "$21$",
+   "$\\dfrac{23}{2}$",
+   "✔ $\\dfrac{21}{2}$",
+   "$\\dfrac{17}{2}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105040103001",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Chuyển phân số thập phân $\\dfrac{48}{10}$ thành số thập phân.",
+  "dap_an_kho": "4.8",
+  "key": "\\dfrac{24}{5}",
+  "phuong_an": [
+   "✔ $\\dfrac{24}{5}$",
+   "$\\dfrac{29}{5}$",
+   "$\\dfrac{19}{5}$",
+   "$\\dfrac{14}{5}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103002",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Chuyển phân số thập phân $\\dfrac{75}{10}$ thành số thập phân.",
+  "dap_an_kho": "7.5",
+  "key": "\\dfrac{15}{2}",
+  "phuong_an": [
+   "$15$",
+   "✔ $\\dfrac{15}{2}$",
+   "$\\dfrac{17}{2}$",
+   "$\\dfrac{13}{2}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103003",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Chuyển phân số thập phân $\\dfrac{123}{100}$ thành số thập phân.",
+  "dap_an_kho": "1.23",
+  "key": "\\dfrac{123}{100}",
+  "phuong_an": [
+   "$\\dfrac{123}{50}$",
+   "$\\dfrac{223}{100}$",
+   "✔ $\\dfrac{123}{100}$",
+   "$-\\dfrac{77}{100}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103004",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Chuyển phân số thập phân $\\dfrac{5}{10}$ thành số thập phân.",
+  "dap_an_kho": "0.5",
+  "key": "\\dfrac{1}{2}",
+  "phuong_an": [
+   "$1$",
+   "$-\\dfrac{1}{2}$",
+   "$-\\dfrac{3}{2}$",
+   "✔ $\\dfrac{1}{2}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103005",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Chuyển phân số thập phân $\\dfrac{205}{100}$ thành số thập phân.",
+  "dap_an_kho": "2.05",
+  "key": "\\dfrac{41}{20}",
+  "phuong_an": [
+   "✔ $\\dfrac{41}{20}$",
+   "$\\dfrac{61}{20}$",
+   "$\\dfrac{21}{20}$",
+   "$\\dfrac{1}{20}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103006",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Chuyển phân số thập phân $\\dfrac{3789}{1000}$ thành số thập phân.",
+  "dap_an_kho": "3.789",
+  "key": "\\dfrac{3789}{1000}",
+  "phuong_an": [
+   "$\\dfrac{3789}{500}$",
+   "✔ $\\dfrac{3789}{1000}$",
+   "$\\dfrac{4789}{1000}$",
+   "$\\dfrac{2789}{1000}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103013",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Viết hỗn số $4\\dfrac{7}{10}$ thành số thập phân.",
+  "dap_an_kho": "4.7",
+  "key": "\\dfrac{47}{10}",
+  "phuong_an": [
+   "✔ $\\dfrac{47}{10}$",
+   "$\\dfrac{57}{10}$",
+   "$\\dfrac{37}{10}$",
+   "$\\dfrac{27}{10}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 2,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103014",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Viết hỗn số $5\\dfrac{3}{10}$ thành số thập phân.",
+  "dap_an_kho": "5.3",
+  "key": "\\dfrac{53}{10}",
+  "phuong_an": [
+   "$\\dfrac{53}{5}$",
+   "✔ $\\dfrac{53}{10}$",
+   "$\\dfrac{63}{10}$",
+   "$\\dfrac{43}{10}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103015",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Viết hỗn số $1\\dfrac{25}{100}$ thành số thập phân.",
+  "dap_an_kho": "1.25",
+  "key": "\\dfrac{5}{4}",
+  "phuong_an": [
+   "$\\dfrac{5}{2}$",
+   "$\\dfrac{9}{4}$",
+   "✔ $\\dfrac{5}{4}$",
+   "$-\\dfrac{3}{4}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103016",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Viết hỗn số $6\\dfrac{9}{10}$ thành số thập phân.",
+  "dap_an_kho": "6.9",
+  "key": "\\dfrac{69}{10}",
+  "phuong_an": [
+   "$\\dfrac{69}{5}$",
+   "$\\dfrac{59}{10}$",
+   "$\\dfrac{49}{10}$",
+   "✔ $\\dfrac{69}{10}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 2,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103017",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Viết hỗn số $10\\dfrac{1}{100}$ thành số thập phân.",
+  "dap_an_kho": "10.01",
+  "key": "\\dfrac{1001}{100}",
+  "phuong_an": [
+   "✔ $\\dfrac{1001}{100}$",
+   "$\\dfrac{1101}{100}$",
+   "$\\dfrac{901}{100}$",
+   "$\\dfrac{801}{100}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103018",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Viết hỗn số $2\\dfrac{345}{1000}$ thành số thập phân.",
+  "dap_an_kho": "2.345",
+  "key": "\\dfrac{469}{200}",
+  "phuong_an": [
+   "$\\dfrac{469}{100}$",
+   "✔ $\\dfrac{469}{200}$",
+   "$\\dfrac{669}{200}$",
+   "$\\dfrac{269}{200}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103019",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Viết hỗn số $122\\dfrac{51}{100}$ thành số thập phân.",
+  "dap_an_kho": "122.51",
+  "key": "\\dfrac{12251}{100}",
+  "phuong_an": [
+   "$\\dfrac{12251}{50}$",
+   "$\\dfrac{12351}{100}$",
+   "✔ $\\dfrac{12251}{100}$",
+   "$\\dfrac{12051}{100}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103020",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Viết hỗn số $78\\dfrac{23}{100}$ thành số thập phân.",
+  "dap_an_kho": "78.23",
+  "key": "\\dfrac{7823}{100}",
+  "phuong_an": [
+   "$\\dfrac{7823}{50}$",
+   "$\\dfrac{7723}{100}$",
+   "$\\dfrac{7623}{100}$",
+   "✔ $\\dfrac{7823}{100}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103021",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Viết hỗn số $5\\dfrac{7}{10}$ thành số thập phân.",
+  "dap_an_kho": "5.7",
+  "key": "\\dfrac{57}{10}",
+  "phuong_an": [
+   "✔ $\\dfrac{57}{10}$",
+   "$\\dfrac{67}{10}$",
+   "$\\dfrac{47}{10}$",
+   "$\\dfrac{37}{10}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103022",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Viết hỗn số $245\\dfrac{9}{100}$ thành số thập phân.",
+  "dap_an_kho": "245.09",
+  "key": "\\dfrac{24509}{100}",
+  "phuong_an": [
+   "$\\dfrac{24509}{50}$",
+   "✔ $\\dfrac{24509}{100}$",
+   "$\\dfrac{24609}{100}$",
+   "$\\dfrac{24409}{100}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103023",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Viết hỗn số $10\\dfrac{145}{1000}$ thành số thập phân.",
+  "dap_an_kho": "10.145",
+  "key": "\\dfrac{2029}{200}",
+  "phuong_an": [
+   "$\\dfrac{2029}{100}$",
+   "$\\dfrac{2229}{200}$",
+   "✔ $\\dfrac{2029}{200}$",
+   "$\\dfrac{1629}{200}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 2,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103024",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Viết hỗn số $99\\dfrac{6}{10}$ thành số thập phân.",
+  "dap_an_kho": "99.6",
+  "key": "\\dfrac{498}{5}",
+  "phuong_an": [
+   "$\\dfrac{996}{5}$",
+   "$\\dfrac{493}{5}$",
+   "$\\dfrac{488}{5}$",
+   "✔ $\\dfrac{498}{5}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103025",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Viết số thập phân 7,19 thành hỗn số có chứa phân số thập phân.",
+  "dap_an_kho": "$7\\dfrac{19}{100}$",
+  "key": "\\dfrac{719}{100}",
+  "phuong_an": [
+   "✔ $\\dfrac{719}{100}$",
+   "$\\dfrac{819}{100}$",
+   "$\\dfrac{619}{100}$",
+   "$\\dfrac{519}{100}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 2,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105040103026",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Viết số thập phân 5,23 thành hỗn số có chứa phân số thập phân.",
+  "dap_an_kho": "$5\\dfrac{23}{100}$",
+  "key": "\\dfrac{523}{100}",
+  "phuong_an": [
+   "$\\dfrac{523}{50}$",
+   "✔ $\\dfrac{523}{100}$",
+   "$\\dfrac{623}{100}$",
+   "$\\dfrac{423}{100}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105040103027",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Viết số thập phân 12,07 thành hỗn số có chứa phân số thập phân.",
+  "dap_an_kho": "$12\\dfrac{7}{100}$",
+  "key": "\\dfrac{1207}{100}",
+  "phuong_an": [
+   "$\\dfrac{1207}{50}$",
+   "$\\dfrac{1307}{100}$",
+   "✔ $\\dfrac{1207}{100}$",
+   "$\\dfrac{1007}{100}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105040103028",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Viết số thập phân 8,5 thành hỗn số có chứa phân số thập phân.",
+  "dap_an_kho": "$8\\dfrac{5}{10}$",
+  "key": "\\dfrac{17}{2}",
+  "phuong_an": [
+   "$17$",
+   "$\\dfrac{15}{2}$",
+   "$\\dfrac{13}{2}$",
+   "✔ $\\dfrac{17}{2}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105040103029",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Viết số thập phân 4,1 thành hỗn số có chứa phân số thập phân.",
+  "dap_an_kho": "$4\\dfrac{1}{10}$",
+  "key": "\\dfrac{41}{10}",
+  "phuong_an": [
+   "✔ $\\dfrac{41}{10}$",
+   "$\\dfrac{51}{10}$",
+   "$\\dfrac{31}{10}$",
+   "$\\dfrac{21}{10}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105040103030",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Viết số thập phân 9,45 thành hỗn số có chứa phân số thập phân.",
+  "dap_an_kho": "$9\\dfrac{45}{100}$",
+  "key": "\\dfrac{189}{20}",
+  "phuong_an": [
+   "$\\dfrac{189}{10}$",
+   "✔ $\\dfrac{189}{20}$",
+   "$\\dfrac{209}{20}$",
+   "$\\dfrac{169}{20}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105040103031",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Viết số thập phân 5,08 thành hỗn số có chứa phân số thập phân.",
+  "dap_an_kho": "5\\dfrac{8}{100}",
+  "key": "\\dfrac{127}{25}",
+  "phuong_an": [
+   "$\\dfrac{254}{25}$",
+   "$\\dfrac{152}{25}$",
+   "✔ $\\dfrac{127}{25}$",
+   "$\\dfrac{77}{25}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105040103032",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Viết số thập phân 3,15 thành hỗn số có chứa phân số thập phân.",
+  "dap_an_kho": "3\\dfrac{15}{100}",
+  "key": "\\dfrac{63}{20}",
+  "phuong_an": [
+   "$\\dfrac{63}{10}$",
+   "$\\dfrac{43}{20}$",
+   "$\\dfrac{23}{20}$",
+   "✔ $\\dfrac{63}{20}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 2,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105040103033",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Viết số thập phân 10,03 thành hỗn số có chứa phân số thập phân.",
+  "dap_an_kho": "10\\dfrac{3}{100}",
+  "key": "\\dfrac{1003}{100}",
+  "phuong_an": [
+   "✔ $\\dfrac{1003}{100}$",
+   "$\\dfrac{1103}{100}$",
+   "$\\dfrac{903}{100}$",
+   "$\\dfrac{803}{100}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105040103034",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Viết số thập phân 1,25 thành hỗn số có chứa phân số thập phân.",
+  "dap_an_kho": "1\\dfrac{25}{100}",
+  "key": "\\dfrac{5}{4}",
+  "phuong_an": [
+   "$\\dfrac{5}{2}$",
+   "✔ $\\dfrac{5}{4}$",
+   "$\\dfrac{9}{4}$",
+   "$\\dfrac{1}{4}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105040103035",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Viết số thập phân 8,50 thành hỗn số có chứa phân số thập phân.",
+  "dap_an_kho": "8\\dfrac{50}{100}",
+  "key": "\\dfrac{17}{2}",
+  "phuong_an": [
+   "$17$",
+   "$\\dfrac{19}{2}$",
+   "✔ $\\dfrac{17}{2}$",
+   "$\\dfrac{13}{2}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105040103036",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Viết số thập phân 2,07 thành hỗn số có chứa phân số thập phân.",
+  "dap_an_kho": "2\\dfrac{7}{100}",
+  "key": "\\dfrac{207}{100}",
+  "phuong_an": [
+   "$\\dfrac{207}{50}$",
+   "$\\dfrac{107}{100}$",
+   "$\\dfrac{7}{100}$",
+   "✔ $\\dfrac{207}{100}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T105040103037",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Chuyển phân số $\\dfrac{3}{25}$ thành số thập phân.",
+  "dap_an_kho": "0.12",
+  "key": "\\dfrac{3}{25}",
+  "phuong_an": [
+   "✔ $\\dfrac{3}{25}$",
+   "$\\dfrac{28}{25}$",
+   "$-\\dfrac{22}{25}$",
+   "$-\\dfrac{47}{25}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103038",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Chuyển phân số $\\dfrac{7}{20}$ thành số thập phân.",
+  "dap_an_kho": "0.35",
+  "key": "\\dfrac{7}{20}",
+  "phuong_an": [
+   "$\\dfrac{7}{10}$",
+   "✔ $\\dfrac{7}{20}$",
+   "$\\dfrac{27}{20}$",
+   "$-\\dfrac{13}{20}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 2,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103039",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Chuyển phân số $\\dfrac{1}{4}$ thành số thập phân.",
+  "dap_an_kho": "0.25",
+  "key": "\\dfrac{1}{4}",
+  "phuong_an": [
+   "$\\dfrac{1}{2}$",
+   "$\\dfrac{5}{4}$",
+   "✔ $\\dfrac{1}{4}$",
+   "$-\\dfrac{7}{4}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103040",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Chuyển phân số $\\dfrac{11}{50}$ thành số thập phân.",
+  "dap_an_kho": "0.22",
+  "key": "\\dfrac{11}{50}",
+  "phuong_an": [
+   "$\\dfrac{11}{25}$",
+   "$-\\dfrac{39}{50}$",
+   "$-\\dfrac{89}{50}$",
+   "✔ $\\dfrac{11}{50}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 3,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103041",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Chuyển phân số $\\dfrac{9}{10}$ thành số thập phân.",
+  "dap_an_kho": "0.9",
+  "key": "\\dfrac{9}{10}",
+  "phuong_an": [
+   "✔ $\\dfrac{9}{10}$",
+   "$\\dfrac{19}{10}$",
+   "$-\\dfrac{1}{10}$",
+   "$-\\dfrac{11}{10}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103042",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Chuyển phân số $\\dfrac{13}{125}$ thành số thập phân.",
+  "dap_an_kho": "0.104",
+  "key": "\\dfrac{13}{125}",
+  "phuong_an": [
+   "$\\dfrac{26}{125}$",
+   "✔ $\\dfrac{13}{125}$",
+   "$\\dfrac{138}{125}$",
+   "$-\\dfrac{112}{125}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103043",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Chuyển phân số $\\dfrac{7}{125}$ thành số thập phân.",
+  "dap_an_kho": "0.056",
+  "key": "\\dfrac{7}{125}",
+  "phuong_an": [
+   "$\\dfrac{14}{125}$",
+   "$\\dfrac{132}{125}$",
+   "✔ $\\dfrac{7}{125}$",
+   "$-\\dfrac{243}{125}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103044",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Chuyển phân số $\\dfrac{3}{4}$ thành số thập phân.",
+  "dap_an_kho": "0.75",
+  "key": "\\dfrac{3}{4}",
+  "phuong_an": [
+   "$\\dfrac{3}{2}$",
+   "$-\\dfrac{1}{4}$",
+   "$-\\dfrac{5}{4}$",
+   "✔ $\\dfrac{3}{4}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 2,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103045",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Chuyển phân số $\\dfrac{9}{20}$ thành số thập phân.",
+  "dap_an_kho": "0.45",
+  "key": "\\dfrac{9}{20}",
+  "phuong_an": [
+   "✔ $\\dfrac{9}{20}$",
+   "$\\dfrac{29}{20}$",
+   "$-\\dfrac{11}{20}$",
+   "$-\\dfrac{31}{20}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103046",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Chuyển phân số $\\dfrac{11}{50}$ thành số thập phân.",
+  "dap_an_kho": "0.22",
+  "key": "\\dfrac{11}{50}",
+  "phuong_an": [
+   "$\\dfrac{11}{25}$",
+   "✔ $\\dfrac{11}{50}$",
+   "$\\dfrac{61}{50}$",
+   "$-\\dfrac{39}{50}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103047",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Chuyển phân số $\\dfrac{13}{250}$ thành số thập phân.",
+  "dap_an_kho": "0.052",
+  "key": "\\dfrac{13}{250}",
+  "phuong_an": [
+   "$\\dfrac{13}{125}$",
+   "$\\dfrac{263}{250}$",
+   "✔ $\\dfrac{13}{250}$",
+   "$-\\dfrac{487}{250}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103048",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Chuyển phân số $\\dfrac{1}{8}$ thành số thập phân.",
+  "dap_an_kho": "0.125",
+  "key": "\\dfrac{1}{8}",
+  "phuong_an": [
+   "$\\dfrac{1}{4}$",
+   "$-\\dfrac{7}{8}$",
+   "$-\\dfrac{15}{8}$",
+   "✔ $\\dfrac{1}{8}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103049",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Chuyển hỗn số $2\\dfrac{4}{5}$ thành số thập phân.",
+  "dap_an_kho": "2.8",
+  "key": "\\dfrac{14}{5}",
+  "phuong_an": [
+   "✔ $\\dfrac{14}{5}$",
+   "$\\dfrac{19}{5}$",
+   "$\\dfrac{9}{5}$",
+   "$\\dfrac{4}{5}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103050",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Chuyển hỗn số $3\\dfrac{1}{2}$ thành số thập phân.",
+  "dap_an_kho": "3.5",
+  "key": "\\dfrac{7}{2}",
+  "phuong_an": [
+   "$7$",
+   "✔ $\\dfrac{7}{2}$",
+   "$\\dfrac{9}{2}$",
+   "$\\dfrac{5}{2}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103051",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Chuyển hỗn số $5\\dfrac{3}{4}$ thành số thập phân.",
+  "dap_an_kho": "5.75",
+  "key": "\\dfrac{23}{4}",
+  "phuong_an": [
+   "$\\dfrac{23}{2}$",
+   "$\\dfrac{27}{4}$",
+   "✔ $\\dfrac{23}{4}$",
+   "$\\dfrac{15}{4}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103052",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Chuyển hỗn số $1\\dfrac{7}{20}$ thành số thập phân.",
+  "dap_an_kho": "1.35",
+  "key": "\\dfrac{27}{20}",
+  "phuong_an": [
+   "$\\dfrac{27}{10}$",
+   "$\\dfrac{7}{20}$",
+   "$-\\dfrac{13}{20}$",
+   "✔ $\\dfrac{27}{20}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103053",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Chuyển hỗn số $4\\dfrac{1}{8}$ thành số thập phân.",
+  "dap_an_kho": "4.125",
+  "key": "\\dfrac{33}{8}",
+  "phuong_an": [
+   "✔ $\\dfrac{33}{8}$",
+   "$\\dfrac{41}{8}$",
+   "$\\dfrac{25}{8}$",
+   "$\\dfrac{17}{8}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T105040103054",
+  "dang": "T105040103",
+  "ten_dang": "Chuyển từ phân số thập phân, hỗn số sang số thập phân và ngược lại",
+  "de": "Chuyển hỗn số $6\\dfrac{13}{25}$ thành số thập phân.",
+  "dap_an_kho": "6.52",
+  "key": "\\dfrac{163}{25}",
+  "phuong_an": [
+   "$\\dfrac{326}{25}$",
+   "✔ $\\dfrac{163}{25}$",
+   "$\\dfrac{188}{25}$",
+   "$\\dfrac{138}{25}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T107010403013",
+  "dang": "T107010403",
+  "ten_dang": "Tìm x vận dụng Thứ tự thực hiện phép tính - Quy tắc chuyển vế",
+  "de": "Tìm $x$ biết : $x - (1,5 - 2\\dfrac{3}{5}) = \\dfrac{9}{10}$",
+  "dap_an_kho": "-0,2",
+  "key": "-1/5",
+  "phuong_an": [
+   "✔ $-\\dfrac{1}{5}$",
+   "$-\\dfrac{31}{20}$",
+   "$\\dfrac{1}{5}$",
+   "$-\\dfrac{1}{10}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 3,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T107010403014",
+  "dang": "T107010403",
+  "ten_dang": "Tìm x vận dụng Thứ tự thực hiện phép tính - Quy tắc chuyển vế",
+  "de": "Tìm $x$ biết : $x - (2,5 - 3\\dfrac{1}{2}) = \\dfrac{1}{5}$",
+  "dap_an_kho": "-0,8",
+  "key": "-4/5",
+  "phuong_an": [
+   "$\\dfrac{6}{5}$",
+   "✔ $-\\dfrac{4}{5}$",
+   "$-\\dfrac{61}{20}$",
+   "$\\dfrac{4}{5}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 5,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T107010403015",
+  "dang": "T107010403",
+  "ten_dang": "Tìm x vận dụng Thứ tự thực hiện phép tính - Quy tắc chuyển vế",
+  "de": "Tìm $x$ biết : $x - (4,2 - 1\\dfrac{1}{5}) = \\dfrac{3}{10}$",
+  "dap_an_kho": "3,3",
+  "key": "33/10",
+  "phuong_an": [
+   "$-\\dfrac{27}{10}$",
+   "$-\\dfrac{12}{25}$",
+   "✔ $\\dfrac{33}{10}$",
+   "$-\\dfrac{33}{10}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 5,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T107010403016",
+  "dang": "T107010403",
+  "ten_dang": "Tìm x vận dụng Thứ tự thực hiện phép tính - Quy tắc chuyển vế",
+  "de": "Tìm $x$ biết : $x - (0,8 - 2\\dfrac{1}{4}) = \\dfrac{3}{4}$",
+  "dap_an_kho": "-0,7",
+  "key": "-7/10",
+  "phuong_an": [
+   "$\\dfrac{11}{5}$",
+   "$-\\dfrac{71}{50}$",
+   "$-\\dfrac{17}{4}$",
+   "✔ $-\\dfrac{7}{10}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 4,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T107010403017",
+  "dang": "T107010403",
+  "ten_dang": "Tìm x vận dụng Thứ tự thực hiện phép tính - Quy tắc chuyển vế",
+  "de": "Tìm $x$ biết : $x - (5,5 - 1\\dfrac{1}{2}) = \\dfrac{2}{5}$",
+  "dap_an_kho": "4,4",
+  "key": "22/5",
+  "phuong_an": [
+   "✔ $\\dfrac{22}{5}$",
+   "$-\\dfrac{18}{5}$",
+   "$-\\dfrac{11}{20}$",
+   "$-\\dfrac{22}{5}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 5,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T107010403018",
+  "dang": "T107010403",
+  "ten_dang": "Tìm x vận dụng Thứ tự thực hiện phép tính - Quy tắc chuyển vế",
+  "de": "Tìm $x$ biết : $x - (3,75 - 1\\dfrac{1}{2}) = \\dfrac{1}{4}$",
+  "dap_an_kho": "2,5",
+  "key": "5/2",
+  "phuong_an": [
+   "$-\\dfrac{7}{8}$",
+   "✔ $\\dfrac{5}{2}$",
+   "$\\dfrac{25}{4}$",
+   "$-\\dfrac{5}{2}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 5,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T107010403025",
+  "dang": "T107010403",
+  "ten_dang": "Tìm x vận dụng Thứ tự thực hiện phép tính - Quy tắc chuyển vế",
+  "de": "Tìm $x$ biết : $\\dfrac{1}{3}(x - 3) = (-4) \\cdot \\dfrac{7}{8}$",
+  "dap_an_kho": "-7,5",
+  "key": "-15/2",
+  "phuong_an": [
+   "✔ $-\\dfrac{15}{2}$",
+   "$-\\dfrac{27}{2}$",
+   "$\\dfrac{61}{21}$",
+   "$\\dfrac{27}{2}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 5,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "077020101050",
+  "dang": "T107020101",
+  "ten_dang": "Nhận biết STP hữu hạn, STP vô hạn tuần hoàn",
+  "de": "Viết các phân số sau dưới dạng số thập phân: $\\dfrac{23}{50}$; $\\dfrac{5}{12}$; $-\\dfrac{7}{20}$; $\\dfrac{25}{11}$.",
+  "dap_an_kho": "$0.46$; $0.41(6)$; $-0.35$; $2,(27)$",
+  "key": "\\dfrac{23}{50};\\dfrac{123}{50};-\\dfrac{7}{20};2",
+  "phuong_an": [
+   "$\\dfrac{23}{25};\\dfrac{123}{50};-\\dfrac{7}{20};2$",
+   "$-\\dfrac{27}{50};\\dfrac{123}{50};-\\dfrac{7}{20};2$",
+   "$\\dfrac{23}{50};\\dfrac{123}{50};-\\dfrac{7}{20};3$",
+   "✔ $\\dfrac{23}{50};\\dfrac{123}{50};-\\dfrac{7}{20};2$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 11,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "077020101054",
+  "dang": "T107020101",
+  "ten_dang": "Nhận biết STP hữu hạn, STP vô hạn tuần hoàn",
+  "de": "Viết các phân số sau dưới dạng số thập phân: $\\dfrac{9}{25}$; $\\dfrac{13}{18}$; $-\\dfrac{23}{40}$; $\\dfrac{37}{15}$.",
+  "dap_an_kho": "$0.36$; $0.7(2)$; $-0.575$; $2.4(6)$",
+  "key": "\\dfrac{9}{25};\\dfrac{7}{5};-\\dfrac{23}{40};\\dfrac{12}{5}",
+  "phuong_an": [
+   "✔ $\\dfrac{9}{25};\\dfrac{7}{5};-\\dfrac{23}{40};\\dfrac{12}{5}$",
+   "$\\dfrac{34}{25};\\dfrac{7}{5};-\\dfrac{23}{40};\\dfrac{12}{5}$",
+   "$-\\dfrac{16}{25};\\dfrac{7}{5};-\\dfrac{23}{40};\\dfrac{12}{5}$",
+   "$\\dfrac{9}{25};\\dfrac{7}{5};-\\dfrac{23}{40};\\dfrac{17}{5}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 7,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "077020101058",
+  "dang": "T107020101",
+  "ten_dang": "Nhận biết STP hữu hạn, STP vô hạn tuần hoàn",
+  "de": "Viết các phân số sau dưới dạng số thập phân: $\\dfrac{39}{80}$; $\\dfrac{11}{15}$; $-\\dfrac{13}{20}$; $\\dfrac{47}{22}$.",
+  "dap_an_kho": "$0.4875$; $0.7(3)$; $-0.65$; $2.1(36)$",
+  "key": "\\dfrac{39}{80};\\dfrac{21}{10};-\\dfrac{13}{20};\\dfrac{21}{10}",
+  "phuong_an": [
+   "$\\dfrac{39}{40};\\dfrac{21}{10};-\\dfrac{13}{20};\\dfrac{21}{10}$",
+   "✔ $\\dfrac{39}{80};\\dfrac{21}{10};-\\dfrac{13}{20};\\dfrac{21}{10}$",
+   "$\\dfrac{119}{80};\\dfrac{21}{10};-\\dfrac{13}{20};\\dfrac{21}{10}$",
+   "$-\\dfrac{41}{80};\\dfrac{21}{10};-\\dfrac{13}{20};\\dfrac{21}{10}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 9,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "07702202202069",
+  "dang": "T107020202",
+  "ten_dang": "Thực hiện phép tính liên quan đến Căn bậc hai",
+  "de": "Tính: $9:\\left(-\\dfrac{3}{2}\\right)^2+\\dfrac{2}{3}\\sqrt{\\dfrac{9}{4}}-(-2024)^0+0,25$.",
+  "dap_an_kho": "4,25",
+  "key": "17/4",
+  "phuong_an": [
+   "$-\\dfrac{15}{4}$",
+   "✔ $\\dfrac{17}{4}$",
+   "$\\dfrac{21}{4}$",
+   "$\\dfrac{161}{40}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 12,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "07702202202070",
+  "dang": "T107020202",
+  "ten_dang": "Thực hiện phép tính liên quan đến Căn bậc hai",
+  "de": "Tính: $16:\\left(-\\dfrac{4}{2}\\right)^2+\\dfrac{3}{4}\\sqrt{\\dfrac{16}{9}}-(-15)^0+0,5$.",
+  "dap_an_kho": "4,5",
+  "key": "9/2",
+  "phuong_an": [
+   "$-\\dfrac{7}{2}$",
+   "$\\dfrac{11}{2}$",
+   "✔ $\\dfrac{9}{2}$",
+   "$\\dfrac{81}{20}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 10,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "07702202202071",
+  "dang": "T107020202",
+  "ten_dang": "Thực hiện phép tính liên quan đến Căn bậc hai",
+  "de": "Tính: $25:\\left(-\\dfrac{5}{2}\\right)^2+\\dfrac{4}{15}\\sqrt{\\dfrac{225}{16}}-(-31)^0+0,2$.",
+  "dap_an_kho": "4,2",
+  "key": "21/5",
+  "phuong_an": [
+   "$-\\dfrac{19}{5}$",
+   "$\\dfrac{26}{5}$",
+   "$\\dfrac{201}{50}$",
+   "✔ $\\dfrac{21}{5}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 12,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "07702202202072",
+  "dang": "T107020202",
+  "ten_dang": "Thực hiện phép tính liên quan đến Căn bậc hai",
+  "de": "Tính: $36:\\left(-\\dfrac{6}{3}\\right)^2+\\dfrac{5}{12}\\sqrt{\\dfrac{144}{25}}-(-8)^0+0,75$.",
+  "dap_an_kho": "9,75",
+  "key": "39/4",
+  "phuong_an": [
+   "✔ $\\dfrac{39}{4}$",
+   "$-\\dfrac{33}{4}$",
+   "$\\dfrac{43}{4}$",
+   "$\\dfrac{363}{40}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 11,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "07702202202073",
+  "dang": "T107020202",
+  "ten_dang": "Thực hiện phép tính liên quan đến Căn bậc hai",
+  "de": "Tính: $49:\\left(-\\dfrac{7}{2}\\right)^2+\\dfrac{1}{2}\\sqrt{4}-(-11)^0+0,4$.",
+  "dap_an_kho": "4,4",
+  "key": "22/5",
+  "phuong_an": [
+   "$-\\dfrac{18}{5}$",
+   "✔ $\\dfrac{22}{5}$",
+   "$\\dfrac{101}{25}$",
+   "$-\\dfrac{33}{5}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 11,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "07702202202078",
+  "dang": "T107020202",
+  "ten_dang": "Thực hiện phép tính liên quan đến Căn bậc hai",
+  "de": "Tính: $\\left(-\\dfrac{3}{2}\\right)^2\\cdot0,4-\\sqrt{\\dfrac{4}{25}}:\\dfrac{2}{5}+(-13)^0$.",
+  "dap_an_kho": "0,9",
+  "key": "9/10",
+  "phuong_an": [
+   "$-\\dfrac{9}{10}$",
+   "$-\\dfrac{6}{5}$",
+   "✔ $\\dfrac{9}{10}$",
+   "$\\dfrac{9}{4}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 12,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T110030203027",
+  "dang": "T110030203",
+  "ten_dang": "Giải tam giác và bài toán thực tế áp dụng định lý sin",
+  "de": "Tam giác $ABC$ có $BC = 10$ và $\\widehat{A} = 45^\\circ$. Tính bán kính $R$ của đường tròn ngoại tiếp tam giác $ABC$ (kết quả làm tròn đến hai chữ số thập phân).",
+  "dap_an_kho": "7.07",
+  "key": "\\dfrac{707}{100}",
+  "phuong_an": [
+   "$\\dfrac{707}{50}$",
+   "$\\dfrac{807}{100}$",
+   "✔ $\\dfrac{707}{100}$",
+   "$\\dfrac{607}{100}$"
+  ],
+  "da_duyet": false,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T111060304031",
+  "dang": "T111060304",
+  "ten_dang": "Bài toán thực tế về cấp số nhân",
+  "de": "Một kĩ sư được một công ty thuê với mức lương hằng tháng là $26$ triệu đồng và nhận được mức tăng lương sau mỗi $6$ tháng là $6\\%$. Hỏi mức lương tháng đầu của người kĩ sư đó trong năm thứ ba làm việc",
+  "dap_an_kho": "32.8",
+  "key": "\\dfrac{164}{5}",
+  "phuong_an": [
+   "$\\dfrac{328}{5}$",
+   "$\\dfrac{159}{5}$",
+   "$\\dfrac{154}{5}$",
+   "✔ $\\dfrac{164}{5}$"
+  ],
+  "da_duyet": false,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T111060304057",
+  "dang": "T111060304",
+  "ten_dang": "Bài toán thực tế về cấp số nhân",
+  "de": "Một kĩ sư được một công ty thuê với mức lương hàng tháng là 26 triệu đồng và nhận được mức tăng lương sau mỗi 6 tháng là 6%. Hỏi mức lương tháng đầu của người kĩ sư đó trong năm thứ ba làm việc cho cô",
+  "dap_an_kho": "32.8",
+  "key": "\\dfrac{164}{5}",
+  "phuong_an": [
+   "✔ $\\dfrac{164}{5}$",
+   "$\\dfrac{169}{5}$",
+   "$\\dfrac{159}{5}$",
+   "$\\dfrac{154}{5}$"
+  ],
+  "da_duyet": false,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T111060304081",
+  "dang": "T111060304",
+  "ten_dang": "Bài toán thực tế về cấp số nhân",
+  "de": "Một chuỗi quầy cà phê báo cáo: tổng doanh thu 6 tháng đầu năm đạt 18 tỷ đồng, trong đó tháng 6 đạt 3,5 tỷ đồng. Để đạt kế hoạch cả năm, công ty này đặt chỉ tiêu: từ tháng 7 trở đi mỗi tháng doanh thu ",
+  "dap_an_kho": "45.7",
+  "key": "\\dfrac{457}{10}",
+  "phuong_an": [
+   "$\\dfrac{457}{5}$",
+   "$\\dfrac{467}{10}$",
+   "✔ $\\dfrac{457}{10}$",
+   "$\\dfrac{437}{10}$"
+  ],
+  "da_duyet": false,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T112030101030",
+  "dang": "T112000000",
+  "ten_dang": "Chưa phân dạng",
+  "de": "Một bể ban đầu chứa 150 lít nước. Sau đó, cứ mỗi phút người ta bơm thêm 50 lít nước, đồng thời cho vào bể 20 gam chất khử trùng (hòa tan). Gọi $f(t)$ (gam/lít) là nồng độ chất khử trùng trong bể sau $",
+  "dap_an_kho": "0.4",
+  "key": "\\dfrac{2}{5}",
+  "phuong_an": [
+   "✔ $\\dfrac{2}{5}$",
+   "$\\dfrac{4}{5}$",
+   "$\\dfrac{7}{5}$",
+   "$-\\dfrac{8}{5}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": false
+ },
+ {
+  "ma_cau": "T15T020206013",
+  "dang": "T15T020201",
+  "ten_dang": "Bài toán về tính chất của số thập phân",
+  "de": "Viết số thập phân $1,4$ thành hỗn số có chứa phân số thập phân.",
+  "dap_an_kho": "$1\\dfrac{4}{10}$",
+  "key": "\\dfrac{7}{5}",
+  "phuong_an": [
+   "$\\dfrac{14}{5}$",
+   "$\\dfrac{12}{5}$",
+   "$-\\dfrac{3}{5}$",
+   "✔ $\\dfrac{7}{5}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 1,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T15T020206014",
+  "dang": "T15T020201",
+  "ten_dang": "Bài toán về tính chất của số thập phân",
+  "de": "Viết số thập phân $10,08$ thành hỗn số có chứa phân số thập phân.",
+  "dap_an_kho": "$10\\dfrac{8}{100}$",
+  "key": "\\dfrac{252}{25}",
+  "phuong_an": [
+   "✔ $\\dfrac{252}{25}$",
+   "$\\dfrac{504}{25}$",
+   "$\\dfrac{227}{25}$",
+   "$\\dfrac{202}{25}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T15T020206015",
+  "dang": "T15T020201",
+  "ten_dang": "Bài toán về tính chất của số thập phân",
+  "de": "Viết số thập phân $125,0002$ thành hỗn số có chứa phân số thập phân.",
+  "dap_an_kho": "$125\\dfrac{2}{10000}$",
+  "key": "\\dfrac{625001}{5000}",
+  "phuong_an": [
+   "$\\dfrac{630001}{5000}$",
+   "✔ $\\dfrac{625001}{5000}$",
+   "$\\dfrac{620001}{5000}$",
+   "$\\dfrac{615001}{5000}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ },
+ {
+  "ma_cau": "T15T020206016",
+  "dang": "T15T020201",
+  "ten_dang": "Bài toán về tính chất của số thập phân",
+  "de": "Viết số thập phân $3003,621$ thành hỗn số có chứa phân số thập phân.",
+  "dap_an_kho": "$3003\\dfrac{621}{1000}$",
+  "key": "\\dfrac{3003621}{1000}",
+  "phuong_an": [
+   "$\\dfrac{3003621}{500}$",
+   "$\\dfrac{3004621}{1000}$",
+   "✔ $\\dfrac{3003621}{1000}$",
+   "$\\dfrac{3002621}{1000}$"
+  ],
+  "da_duyet": true,
+  "ai_model": "claude-fable-5-1",
+  "nguon": "ai",
+  "n_lam": 0,
+  "thu_hoi": false,
+  "gia_tri_dung": true
+ }
+]

@@ -12,6 +12,7 @@
 // Hình thức: đáp án đúng phải có ≥1 distractor CÙNG kiểu (nguyên/phân số/tập); kiểu khác được phép (xem verify).
 import { readFileSync, writeFileSync } from 'node:fs'
 import { parseHuuTi } from './lib/huuti.mjs'
+import { kiemKeyVoiDapAn } from './lib/so-vn.mjs'
 import { tinhTuanHoan, layTron, soSanhTimXY, phanTichNguyenTo, chuanHoaFactorText, evalFactorText, nhanBietNguyenToHopSo, chuanHoaTapText, evalTapText, uclnBcnnDinhNghia, tapUcBc, uocBoiCoBan, ucBcCoBan, tongTapHopNhoHon, sapXepSoHuuTi, chuanHoaThuTu, evalThuTu, bacDonThuc, heSoDonThuc, demDonThucTrongDanhSach, demDongDang, phanBienDonThuc, chuanHoaPhanBien, evalPhanBien, congTruDonThucDongDang, chuanHoaDonThucKetQua, evalDonThucKetQua, congTruDaThuc, chuanHoaDaThuc, evalDaThucKetQua, nhanDonThuc, nhanDonDaThuc, nhanDaThuc, chiaDonThuc, chiaDaChoDon, chiaDaThucMotBien, chuanHoaChiaDaThuc, evalChiaDaThucKetQua, dieuKienChiaHetDonThuc, chuanHoaDkChiaHet, evalDkChiaHetKetQua, rutGonBieuThuc, timXQuaRutGon, tinhGiaTriRutGon, khaiTrienBinhPhuong, vietThanhBinhPhuong, hoanThienBinhPhuong, chuanHoaHoanThienBP, evalHoanThienBPKetQua, tachBinhPhuong, chuanHoaTachBinhPhuong, evalTachBinhPhuongKetQua, gtlnGtnnBacHai, gtlnGtnnHaiBien, khaiTrienLapPhuong, tinhGiaTriLapPhuong, vietThanhTichHieuBinhPhuong, tinhGiaTriHieuBinhPhuong, tongHieuLapPhuong, chuanHoaTongHieuLapPhuong, evalTongHieuLapPhuongKetQua, tinhGiaTriApDungLapPhuong, tongBinhLapPhuongHaiBien, tongLapPhuongCongThemHangSo, rutNhanTuChung, chuanHoaRutNhanTuChung, evalRutNhanTuChungKetQua, nhomHangTu, phanTichTamThucBac2, tachHangTuKetHop, phanTichNhamNghiem, timXPhuongTrinhTich2Hang, chuanHoaDanhSachNghiem, evalDanhSachNghiemKetQua, giaiPtBacBaQuaNhom, giaiBptBacNhat, chuanHoaBatDangThuc, evalBatDangThucKetQua, timXTichHaiNhiThuc, giaiPtQuyVeTich, gtlnGtnnBacHaiCoDieuKien, chuanHoaCapNghiem, evalCapNghiemKetQua, giaiHePtBacNhatHaiAn, tinhGiaTriCanThuc, tinhGiaTriCanThucTheoX, chuanHoaCanThucKetQua, evalCanThucKetQuaVal, timDkxdCanThuc, chuanHoaDkxdCanThuc, evalDkxdCanThucKetQua, timXPtCanThucTuyenTinh, timXPhanThucCanBac2, chuanHoaDapSoThucTe, sinhNhieuDapSoThucTe, giaiPtPhanThucBacNhat, chuanHoaPtPhanThucKetQua, evalPtPhanThucKetQua, rutGonPhanThucCan, chuanHoaRutGonCanKetQua, evalRutGonCanKetQuaVal, giaiHePtTongTich, chuanHoaHePtTongTich, evalHePtTongTichKetQua, gtnnAmGm2So, gtnnAmGm2SoNguyen, gtnnAmGm3So, gtlnAmGm3SoTich } from './lib/mini-dang.mjs'
 
 // ── Rat (BigInt) ──────────────────────────────────────────────────────────────────────────────────────────────
@@ -856,7 +857,13 @@ const ANSWER_DANG_LIST = ['T109010301', 'T109010302', 'T109010304', 'T109010305'
   // Khối 9 Đại — dạng mới (01/10)
   'T109030305',
   // HGT khối 9 (01/10) — 6 dạng
-  'T309010103', 'T309010105', 'T309010402', 'T309010301', 'T309010401', 'T309010102']
+  'T309010103', 'T309010105', 'T309010402', 'T309010301', 'T309010401', 'T309010102',
+  // 8 dạng có form sinh 14–16/10 từ một worktree agent bằng CHÍNH hàm này mà chưa ghi danh ở đây — ghi danh 18/10 để sinh lại được
+  'T105040110', 'T105040209', 'T105100402', 'T105100405', 'T105100407', 'T105100408', 'T106020207', 'T110030203']
+// Rule chỉ nhánh ANSWER_DANG dùng (18/10): số thập phân R363–R367, sắp xếp R368–R370, R103 cho số có cách hàng nghìn.
+// KHÔNG thêm vào ALL (ALL còn dùng cho nhánh AST). ANSWER_DU_PHONG = rule có du_phong=true trong dai_mcq_rule.
+const ANSWER_RULE_THEM = ['R363', 'R364', 'R365', 'R366', 'R367', 'R368', 'R369', 'R370', 'R103']
+const ANSWER_DU_PHONG = new Set(['R345', 'R366', 'R103'])
 const ANSWER_DANG = Object.fromEntries(ANSWER_DANG_LIST.map((d) => [d, sinhNhieuDapSoThucTe]))
 const TEXT_DANG = { T106030302: phanTichNguyenTo, T106030301: nhanBietNguyenToHopSo, T106040104: tapUcBc, T106040204: tapUcBc, T106030101: uocBoiCoBan, T106040101: ucBcCoBan, T106040201: ucBcCoBan, T107010103: sapXepSoHuuTi, T108010103: phanBienDonThuc, T108010201: congTruDonThucDongDang, T108010202: congTruDaThuc, T108010301: nhanDonThuc, T108010302: nhanDonDaThuc, T108010303: nhanDaThuc, T108010401: chiaDonThuc, T108010402: chiaDaChoDon, T108010403: chiaDaThucMotBien, T108010404: dieuKienChiaHetDonThuc, T108010501: rutGonBieuThuc, T108020101: khaiTrienBinhPhuong, T108020102: vietThanhBinhPhuong, T108020103: hoanThienBinhPhuong, T108020104: tachBinhPhuong, T108020301: khaiTrienLapPhuong, T108020401: vietThanhTichHieuBinhPhuong, T108040301: vietThanhTichHieuBinhPhuong, T108020501: tongHieuLapPhuong, T108020601: rutGonBieuThuc, T108030101: rutNhanTuChung, T108030102: nhomHangTu, T108030103: phanTichTamThucBac2, T108030104: tachHangTuKetHop, T108030105: phanTichNhamNghiem, T108030602: timXPhuongTrinhTich2Hang, T108030603: giaiPtBacBaQuaNhom, T109020201: giaiBptBacNhat, T109020202: giaiBptBacNhat, T109020203: giaiBptBacNhat, T109020103: giaiPtPhanThucBacNhat, T109020403: giaiPtPhanThucBacNhat, T109030203: rutGonPhanThucCan, T109010401: giaiHePtTongTich, T109020401: timXTichHaiNhiThuc, T109020402: giaiPtQuyVeTich, T109080102: gtlnGtnnBacHaiCoDieuKien, T109010201: giaiHePtBacNhatHaiAn, T109010202: giaiHePtBacNhatHaiAn, T109030101: tinhGiaTriCanThuc, T109030102: tinhGiaTriCanThuc, T109030201: timDkxdCanThuc, T109030202: tinhGiaTriCanThucTheoX, T109030301: timXPhanThucCanBac2 }
 const TEXT_FN = {
@@ -983,22 +990,27 @@ for (const q of pool.cau) {
   // như 1 lưới an toàn (bắt lỗi format/parse), dù về bản chất luôn khớp vì res.text bắt nguồn từ chính dap_an.
   const answerFn = ANSWER_DANG[q.dang_chinh]
   if (answerFn) {
-    let res; try { res = answerFn(q.dap_an, null) } catch { res = null }
+    // ctx (18/10): khối của dạng quyết "24,51" là 2 số (khối ≤4) hay số thập phân; noi_dung để nhận ra câu SẮP XẾP.
+    const ctx = { dang: q.dang_chinh, noiDung: q.noi_dung }
+    let res; try { res = answerFn(q.dap_an, null, ctx) } catch { res = null }
     if (!res || !res.text) { bo.push([q.ma_cau, 'đáp số kho không nhận dạng được (khác 1 số / 2 số / "N hoặc M")']); continue }
-    const correctText = chuanHoaDapSoThucTe(q.dap_an), cText = chuanHoaDapSoThucTe(res.text)
+    const correctText = chuanHoaDapSoThucTe(q.dap_an, q.dang_chinh), cText = chuanHoaDapSoThucTe(res.text, q.dang_chinh)
     if (cText !== correctText) { lech.push([q.ma_cau, cText, correctText, q.noi_dung.slice(0, 70)]); bo.push([q.ma_cau, `máy ra ${cText} ≠ đáp số kho ${correctText}`]); continue }
+    // Nhân chứng ĐỘC LẬP (so-vn.mjs): lưới cũ ở trên so parser với CHÍNH nó nên mù với lỗi đọc số (sự cố 18/10).
+    const loiKey = kiemKeyVoiDapAn({ dapAn: q.dap_an, key: cText, textDung: res.text, dang: q.dang_chinh })
+    if (loiKey.length) { bo.push([q.ma_cau, 'đọc sai đáp số kho: ' + loiKey.join(' · ')]); continue }
     const uu = UU_TIEN[q.dang_chinh] ?? []
-    const order = [...uu, ...ALL.filter((r) => !uu.includes(r))]
+    const order = [...uu, ...ALL.filter((r) => !uu.includes(r)), ...ANSWER_RULE_THEM.filter((r) => !uu.includes(r))]
     const cands = []; const seen = new Set([cText])
     for (const r of order) {
-      let rres; try { rres = answerFn(q.dap_an, r) } catch { rres = null }
+      let rres; try { rres = answerFn(q.dap_an, r, ctx) } catch { rres = null }
       if (!rres || !rres.text) continue
-      const c = chuanHoaDapSoThucTe(rres.text); if (seen.has(c)) continue
+      const c = chuanHoaDapSoThucTe(rres.text, q.dang_chinh); if (seen.has(c)) continue
       seen.add(c); cands.push({ r, c, ds: rres.ds || DS[r], text: rres.text })
     }
     if (debug) { console.log(q.noi_dung); console.log('đúng', cText); for (const c of cands) console.log('  ', c.r, c.c, '|', c.ds) }
     const byXoayVong = (a, b) => (ruleUsed[a.r] ?? 0) - (ruleUsed[b.r] ?? 0) || order.indexOf(a.r) - order.indexOf(b.r)
-    const pick = [...cands].sort(byXoayVong).slice(0, 3)
+    const pick = []; for (const cd of [...cands].sort(byXoayVong)) { if (pick.length === 3) break; if (ANSWER_DU_PHONG.has(cd.r) && pick.some((p) => ANSWER_DU_PHONG.has(p.r))) continue; pick.push(cd) } // ≤1 rule dự phòng/câu
     if (pick.length < 3) { bo.push([q.ma_cau, `chỉ tìm được ${pick.length} distractor hợp lệ (${cands.map((c) => c.r + '=' + c.c).join(', ')})`]); continue }
     for (const p of pick) ruleUsed[p.r] = (ruleUsed[p.r] ?? 0) + 1
     pick.sort((a, b) => order.indexOf(a.r) - order.indexOf(b.r))
