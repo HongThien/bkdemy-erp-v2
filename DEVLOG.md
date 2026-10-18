@@ -38199,3 +38199,7 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Sai / bắt được ở soát:** trục căn thức ở mẫu (Ch III) ở 4 đề; "ba góc vuông ⇒ hình chữ nhật" ở ~10 đề; tính tiếp từ số đã làm tròn; hình giải lộ điều phải chứng minh (GKI-53) hoặc vẽ sai dữ kiện (GKI-32, 30, 50); nhãn La Mã làm đề mất cấu trúc "Bài N có ý a b c"; GKI-36, 54 gộp lại bài hình chung dữ kiện đã tách nhầm.
 - **Quyết định:** hình lượng giác thực tế cũng vào `hinh_hoc` (không `hgt`) theo ý Thùy "tất cả bài Hình"; mô tả + câu còn cờ ở `kho-rules/dai/k9.md` §11 và `kho-rules/dai/k9-bo-de-can-xem.html`.
 
+## 18/10/2026 (tiếp) — Hai tiếp tuyến cắt nhau: đẩy 5 câu Hình vào HH00109 (K9)
+- **Thùy:** "đẩy thêm các bài liên quan đến hai tiếp tuyến cắt nhau vào bài Hai tiếp tuyến cắt nhau ở phần Hình – học lớp 9". Tìm trong kho `hinh_hoc` (ngoài HH00109, đủ mọi dạng): bộ đề GKI vừa nhập KHÔNG có câu nào; có 5 câu mà ĐỀ nói về hai tiếp tuyến từ một điểm ngoài: HHC002110, 002131 (đã duyệt), 002137 (HH00108) · HHC002134 (HH00108, hai tiếp tuyến AM, AN) · HHC002027 (HH00110, hai tiếp tuyến chung cắt nhau tại A).
+- **Làm:** `lo/k9/bo-de/chuyen-tiep-tuyen.mjs --ghi` — chỉ đổi `dang_chinh` ⇒ HH00109 (mã câu bất biến, guard theo dạng cũ, 1 transaction). HH00109: 33 → 38 câu.
+- **Để nguyên (ranh giới):** HHC002013, 002017, 002018, 002021 (HH00110) dùng "hai tiếp tuyến cắt nhau" làm BƯỚC trong lời giải nhưng đề là bài hai đường tròn tiếp xúc; HHC002139 (HH00108) có hai tiếp tuyến SONG SONG (BM, CN) không cắt nhau.
