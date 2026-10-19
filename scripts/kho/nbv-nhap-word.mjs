@@ -30,7 +30,7 @@ const args = process.argv.slice(2)
 const opt = (k, d) => { const i = args.indexOf(k); return i >= 0 && args[i + 1] && !args[i + 1].startsWith('--') ? args[i + 1] : d }
 const GHI = args.includes('--ghi')
 const vao = opt('--in'), thuMucDocx = opt('--docx'), chuDe = opt('--chu-de', 'NCD00095')
-if (!vao || !thuMucDocx) { console.error('Dùng: node scripts/kho/nbv-nhap-word.mjs --in <parse.json> --docx <thư mục .docx> [--chu-de NCD..] [--ghi]'); process.exit(2) }
+if (!vao) { console.error('Dùng: node scripts/kho/nbv-nhap-word.mjs --in <parse.json> [--docx <thư mục .docx>] [--chu-de NCD..] [--ghi]  (mỗi câu có thể mang đường dẫn docx riêng ở trường "docx")'); process.exit(2) }
 
 const cau = JSON.parse(fs.readFileSync(vao, 'utf8'))
 const tot = cau.filter((o) => !o.loi?.length)
@@ -70,7 +70,7 @@ function sangPng(buf, kieu) {
 const zips = new Map()
 async function zipCua(file) {
   if (!zips.has(file)) {
-    const p = path.join(thuMucDocx, file + '.docx')
+    const p = file.toLowerCase().endsWith('.docx') ? file : path.join(thuMucDocx ?? '', file + '.docx')
     if (!fs.existsSync(p)) throw new Error('không thấy ' + p)
     zips.set(file, await JSZip.loadAsync(fs.readFileSync(p)))
   }
@@ -103,14 +103,14 @@ async function ghepAnh(file, ten) {
 const anh = new Map()
 const loiAnh = []
 for (const o of tot) {
-  const file = o.file
+  const file = o.docx || o.file
   const [d, l] = [await ghepAnh(file, o.img_de || []), await ghepAnh(file, o.img_lg || [])]
-  if (d.loi || l.loi) { loiAnh.push(`${file.slice(0, 2)} ${o.so}: ${d.loi || l.loi}`); o.bo_anh = true; continue }
+  if (d.loi || l.loi) { loiAnh.push(`${o.file.slice(0, 2)} ${o.so}: ${d.loi || l.loi}`); o.bo_anh = true; continue }
   anh.set(o, { de: d.buf, lg: l.buf })
   const luu = opt('--luu-anh')
   if (luu) {
     fs.mkdirSync(luu, { recursive: true })
-    const ten = `${file.slice(0, 2).replace(/\W/g, '')}${o.so}`
+    const ten = `${o.file.slice(0, 2).replace(/\W/g, '')}${o.so}`
     if (d.buf) fs.writeFileSync(path.join(luu, ten + '-de.png'), d.buf)
     if (l.buf) fs.writeFileSync(path.join(luu, ten + '-lg.png'), l.buf)
   }
