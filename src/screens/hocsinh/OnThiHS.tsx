@@ -152,7 +152,7 @@ function CauDoc({ c }: { c: CauOnThi }) {
         <div className="mt-2 flex flex-col gap-2">
           {ds
             ? <p><b>Đáp án:</b> {c.menh_de!.map((m, i) => `${'abcd'[i] ?? i + 1}) ${m.dap_an === 'D' ? 'Đúng' : 'Sai'}`).join(' · ')}</p>
-            : c.dap_an ? <p><b>Đáp án:</b> <MathText>{c.dap_an}</MathText></p> : <p style={{ color: 'var(--sk-doc-muted)' }}>Câu này chưa có đáp án.</p>}
+            : c.dap_an ? <p><b>Đáp án:</b> <MathText>{c.dap_an}</MathText></p> : (c.loi_giai || c.anh_dap_an) ? null : <p style={{ color: 'var(--sk-doc-muted)' }}>Câu này chưa có đáp án.</p>}   // tự luận: kết quả nằm trong lời giải, không có cột đáp án riêng
           {c.loi_giai && <div><b>Lời giải:</b><MathText>{c.loi_giai}</MathText></div>}
           {c.anh_dap_an && <img src={c.anh_dap_an} alt="hình lời giải" className="max-h-72 rounded-lg bg-white" />}
         </div>
