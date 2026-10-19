@@ -38334,3 +38334,8 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **App:** ③ Kho bài: mỗi ý dòng chip (⌥ dạng tím · ◦ bổ đề vàng · ✨ gợi ý nét đứt ✓/✕ · ＋ nhãn lọc theo khối) + bộ lọc "theo nhãn / còn ý chưa có nhãn". Cột trái Hình – Luyện có 🏷 Dạng bài / 🏷 Bổ đề mở màn `Catalog` (dời từ kho cũ; z-[65] trên thanh ERP). Kho cũ: bỏ mục Catalog ở rail, form cách giải tắt chọn dạng/bổ đề (`SUA_NHAN_KHO_CU=false`, giá trị cũ vẫn lưu nguyên; 15 cách giải có dạng + 7 liên kết bổ đề giữ, không xoá).
 - **Kiểm (app local 1920, K8 › Tứ giác › MH.072):** 61 ý có "＋ nhãn"; ô chọn chỉ 7 dạng + 5 bổ đề lớp 8 (8 dạng lớp 9 bị loại); danh mục mở được, có ✕ Đóng. Không dán nhãn thật.
 - **Chưa làm:** bước Claude gợi ý nhãn cho 300 ý — chờ Thùy dựng đủ danh mục (hiện K8: 7 dạng, 5 bổ đề). Lọc theo nhãn ⇒ tạo tài liệu: làm khi cần.
+
+## 19/10/2026 (tiếp) — K8: lý thuyết nhóm/dạng không chứa ví dụ
+- Thùy: "phần lý thuyết nhóm bài – dạng bài không có ví dụ, vì đã có phần ví dụ riêng; nhiều chỗ m để lẫn ví dụ vào đấy" (phần lớn do chính em gắn ví dụ vào lý thuyết ở lượt rà format trước — hiểu sai rằng ví dụ cũ trong lý thuyết thì "tag lại" là đủ).
+- Chuyển 13 trường (LT dạng 688/689/692/693/695/696/697; LT nhóm 00999/01006/01007/01009/01010/01387) sang `vi_du` đích hoặc bỏ nếu trùng; quét K8 lại: chỉ còn NDB00698 (nháp). Đích của ví dụ nhóm: NDB00970 / NDB00468 / NDB00469 / NDB00976 / NDB00977 — chọn theo nội dung, có ghi ở mục H ghi chú K8.
+- Khối khác (quét thô, chưa sửa): 6 (34 nhóm), 9 (24), 4T (25), 10 (11), 11 (16), 5 (15), 5T (12), 7 (5), 3 (6), 4 (6), 12 (1) có ví dụ trong lý thuyết nhóm/dạng — chờ Thùy chốt đích nhận ví dụ trước khi chuyển hàng loạt.

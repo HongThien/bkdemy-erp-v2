@@ -82,3 +82,11 @@ NDB00466, NDB00467, NDB00468 (Hằng đẳng thức › Bình phương của cá
 - **NDB00679 ô ví dụ:** Thùy vừa tự sửa (bỏ khối `##TC` trùng) nên guard bỏ qua. Vẫn còn lệch toán: đề $4x^5y^m$ nhưng lời giải thay thành $y^5$ rồi kết luận $m=5$ (theo đề thì $m\in\{5,6\}$); đề ghi "tìm m, n" nhưng chỉ có m.
 - **NDB00698** (chưa có mô tả; 35 đoạn LT + 35 đoạn ví dụ trùng nhau, số `$` lẻ, nhãn `**Bước 1…**`): đang là bản nháp của Thùy — chưa làm.
 - Đoạn "trần" còn lại ở NDB00664/665/668/674/676/678 là phần LỜI GIẢI nối tiếp sau "Bài giải:" (đúng thiết kế: lời giải không đóng khung) — không phải lỗi.
+
+## H. Lý thuyết KHÔNG chứa ví dụ (Thùy 19/10)
+Ví dụ chỉ ở ô `vi_du` của dạng bài. Đã chuyển khỏi `ly_thuyet` (nối vào `vi_du` đích, không mất chữ):
+- **Lý thuyết dạng** → ví dụ của chính dạng: NDB00688 (1) · 689 (1) · 692 (1) · 693 (5) · 695 (2) · 696 (2) · 697 (4).
+- **Lý thuyết nhóm** → ví dụ của dạng khớp nhất: NNB00999 → NDB00970 (1) · NNB01006 → **NDB00468** (2, ví dụ $a=b=c$; dạng này chưa có mô tả) · NNB01007 → **NDB00469** (1; chưa có mô tả) · NNB01009 → NDB00976 (1) · NNB01010 → NDB00977 (3).
+- NNB01387: ví dụ trùng đúng ví dụ đã có ở NDB00673 ⇒ bỏ (kèm một dòng `##CY` bàn về ví dụ đó).
+- Nhóm NNB00999 và NNB01006 giờ **không còn lý thuyết** (chỉ có ví dụ trước đó) — chị cần thì bảo em soạn lý thuyết cho hai nhóm này.
+- Còn: **NDB00698** (bản nháp, chưa mô tả; lý thuyết có 2 ví dụ) — chưa làm.
