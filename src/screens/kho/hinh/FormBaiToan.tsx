@@ -18,9 +18,8 @@ import type { BaiToan, Luoi } from '../../../lib/kho/hinh'
 import { MathText, inp } from '../ui'
 import { MathTextarea } from '../../../components/math/MathTextarea'
 import { AnhInput, Btn, Cap, Fig, IngestBaiButton, Ma, OcrButton, tron } from './hinhUi'
-// Thùy 19/10: Dạng bài / Bổ đề nay là NHÃN của từng ý ở kho mới (Bản đồ mới › Hình – Luyện). Kho cũ thôi sửa —
-// giá trị cũ của cách giải (dang_id, bổ đề) vẫn lưu nguyên khi bấm Lưu.
-const SUA_NHAN_KHO_CU = false
+// Thùy 19/10: Dạng bài / Bổ đề nay là NHÃN của từng ý ở kho mới (Bản đồ mới › Hình – Luyện). Kho cũ cắt hẳn
+// liên hệ (mig 202610191734 xoá danh mục cũ, gỡ dang_id + hinh_cach_bo_de) — form này không đọc/ghi dạng, bổ đề nữa.
 
 export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, tienDeMacDinh, onClose, onDone }: {
   L: Luoi
@@ -46,7 +45,6 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, tienDe
   // Node MỚI: hệ ĐIỀN SẴN cấp = gợi ý (1 + max cấp tiền đề), vẫn sửa tay được. Node đang SỬA: giữ cấp cũ,
   // coi như người đã chốt (không auto-đè). Người gõ tay 1 lần → `capTuNhap` = true, hệ thôi điền lại.
   const [capTuNhap, setCapTuNhap] = useState(!!sua)
-  const [dangId, setDangId] = useState(cachCu?.dang_id ?? '')
   const [loiGiai, setLoiGiai] = useState(cachCu?.loi_giai ?? '')
   const [anhGiai, setAnhGiai] = useState<string | null>(cachCu?.anh_loi_giai ?? null)
   // Hình: mặc định mượn của mô hình. Node bật "hình riêng" → tự vẽ (anh_chuan). Cùng mô hình không có
@@ -63,7 +61,6 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, tienDe
     const truoc = api.nodeTruoc(L, sua?.mo_hinh_id ?? moHinhMacDinh ?? '')
     return truoc ? [truoc.id] : []
   })
-  const [boDe, setBoDe] = useState<string[]>(cachCu ? api.boDeCuaCach(L, cachCu.id) : [])
   // VAN "cho sẵn ở đề": tiền đề nào bật thì giả thiết phụ CỦA NÓ trồi lên ĐỀ của bài (giảm độ khó — HS
   // khỏi tự dựng). Tắt = giả thiết phụ chỉ hiện trong bước giải. Cờ đặt trên CẠNH tiền đề (keo_gt_phu).
   const [vanIds, setVanIds] = useState<Set<string>>(() =>
@@ -73,10 +70,6 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, tienDe
   const [loi, setLoi] = useState<string | null>(null)
   const [gan, setGan] = useState<BaiToan[]>([])
 
-  // Dạng chọn được = LÁ của cây dạng: cách xử lý (cap='dang'), HOẶC loại câu hỏi chưa tách con
-  // (loại chưa có cách xử lý con thì chính nó là dạng terminal). Nhờ vậy mọi dạng tạo ở M6 đều chọn được,
-  // không bắt buộc phải luôn có tầng "cách xử lý".
-  const dangLa = L.dang.filter((d) => d.cap === 'dang' || (d.cap === 'loai_ch' && !L.dang.some((x) => x.cha_id === d.id)))
   const maCap = useMemo(() => api.maPhanCapMap(L), [L])
   const giaThietMoHinh = api.giaThietDayDu(L, moHinhId)
   // ⭐ Nền kế thừa THẬT (Thùy 17/08): bài có tiền đề thì kế thừa giả thiết của tiền đề CHÍNH (cấp cao nhất
@@ -136,10 +129,9 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, tienDe
       // lời giải/tiền đề/bổ đề là CẤU TRÚC, PHẢI lưu được bất kể đã phân loại Dạng hay chưa — bỏ gate.
       {
         const cachId = cachCu
-          ? (await api.updateCachGiai(cachCu.id, { dang_id: dangId || null, loi_giai: loiGiai || null, anh_loi_giai: anhLoiGiai }), cachCu.id)
-          : (await api.createCachGiai({ baitoan_id: btId!, dang_id: dangId || null, ten: 'cách ngắn nhất', loi_giai: loiGiai || null, anh_loi_giai: anhLoiGiai, la_mac_dinh: true })).id
+          ? (await api.updateCachGiai(cachCu.id, { loi_giai: loiGiai || null, anh_loi_giai: anhLoiGiai }), cachCu.id)
+          : (await api.createCachGiai({ baitoan_id: btId!, dang_id: null, ten: 'cách ngắn nhất', loi_giai: loiGiai || null, anh_loi_giai: anhLoiGiai, la_mac_dinh: true })).id
         await api.setTienDe(cachId, btId!, tienDe, vanIds)
-        await api.setBoDeCuaCach(cachId, boDe)
       }
       await onDone(); onClose()
     } catch (e: any) { setLoi(e.message ?? String(e)); setSaving(false) }
@@ -279,16 +271,8 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, tienDe
             </div>
           </div>
 
-          {/* ── PHẢI: lời giải + tiền đề + bổ đề ── */}
+          {/* ── PHẢI: lời giải + tiền đề ── */}
           <div className="min-w-0 space-y-3 overflow-y-auto p-5">
-            {SUA_NHAN_KHO_CU && <div>
-              <Lbl>Dạng (loại câu hỏi › cách xử lý)</Lbl>
-              <select className={inp} value={dangId} onChange={(e) => setDangId(e.target.value)}>
-                <option value="">— chưa gắn dạng —</option>
-                {dangLa.map((d) => <option key={d.id} value={d.id}>{api.tenDangDayDu(L, d.id)}</option>)}
-              </select>
-            </div>}
-
             <div>
               <Lbl>Lời giải</Lbl>
               <MathTextarea className={`${inp} h-28`} value={loiGiai} onChange={setLoiGiai} />
@@ -351,21 +335,6 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, tienDe
               {themTd && <CayTienDe L={L} moHinhId={moHinhId} daChon={tienDe} chuId={sua?.id} onPick={themTienDe} />}
             </div>
 
-            {/* Bổ đề */}
-            {SUA_NHAN_KHO_CU && <div className="rounded-xl border border-slate-200 p-3">
-              <div className="mb-1.5 text-[12px] font-semibold uppercase tracking-wide text-slate-600">Bổ đề <span className="font-normal normal-case text-slate-400">— có bổ đề ⇒ độ khó +1 bậc</span></div>
-              <div className="flex flex-wrap gap-1.5">
-                {L.boDe.map((b) => (
-                  <button key={b.id} type="button"
-                    onClick={() => setBoDe((a) => (a.includes(b.id) ? a.filter((x) => x !== b.id) : [...a, b.id]))}
-                    className={`rounded-full border px-2.5 py-1 text-[11.5px] font-medium transition ${
-                      boDe.includes(b.id) ? 'border-amber-400 bg-amber-100 text-amber-800' : 'border-slate-300 bg-white text-slate-500 hover:bg-slate-50'}`}>
-                    ◦ {b.ten}
-                  </button>
-                ))}
-                {!L.boDe.length && <span className="text-[12px] text-slate-400">— danh mục bổ đề còn trống (màn Bổ đề) —</span>}
-              </div>
-            </div>}
           </div>
         </div>
 

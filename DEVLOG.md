@@ -38355,3 +38355,8 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 ### 19/10 — [Kho K7] Thùy gửi PDF "giải đề và nhập đề" Nguyễn Trường Tộ giữa kì I: là CHÍNH đề GKI-16 (đã ghi 14/10) + đáp án chính thức
 - File de-giua-hoc-ky-1-toan-7-...-nguyen-truong-to-ha-noi-2.pdf = 2 trang đề + 3 trang đáp án/hướng dẫn chấm. Cùng nội dung GKI-16 (Câu 4 "m ⊥ n", Bài 4 hai đường song song, Bài 5 dãy phân số) ⇒ KHÔNG nhập lại (trùng).
 - Đối chiếu đáp án chính thức với bản soạn: 17/17 khớp (chi tiết ở GKI-16.soat.md). Bản PDF lưu ở K7/GKI-16/dap-an-chinh-thuc.pdf. Thư mục K7/GKI-37 do tôi dựng nhầm lúc mở file (cùng nội dung) — giữ nguyên chờ Thùy cho phép xoá.
+
+### 19/10 — [Hình] Xoá danh mục Dạng bài / Bổ đề cũ + cắt liên hệ kho cũ (Thùy)
+- Thùy: "Dạng bài và bổ đề hiện không có tác dụng gì — xoá liên hệ kho cũ cho đỡ lằng nhằng". Đã liệt kê trước khi xoá, Thùy gật (kể cả DH.019/DH.023 có ở canh_bao_yeu + bo_tro_yeu_dang — lịch sử đó giờ chỉ còn mã, không tra được tên).
+- Mig 202610191734 (Thùy tự chạy — auto mode chặn lệnh xoá): xoá 15 hinh_dang (K7 1 · K8 7 · K9 7) + 5 hinh_bo_de K8 + 7 hinh_cach_bo_de; 15 hinh_cach_giai bỏ dang_id (lời giải giữ). Thử ROLLBACK trước: 0/0/0, 375 cách giải còn đủ.
+- FormBaiToan (kho cũ) gỡ hẳn ô Dạng + Bổ đề và đoạn ghi dang_id/setBoDeCuaCach. Danh mục nhập lại từ đầu ở Bản đồ Hình mới (nhãn từng ý). Chuông báo động Hình: picker dạng trống tới khi có danh mục mới.
