@@ -38284,3 +38284,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Đáp án do AI tìm (21 câu nguồn không ghi key):** 1 agent Sonnet tự giải độc lập rồi đối chiếu lời giải nguồn: 21/22 chốt, khớp nguồn (13 TN không hình, 8 câu có hình tự giải được từ chữ); q17 (quả cầu bị khoan lõi) lời giải nguồn ra phần lõi nhưng tự giải ra phần còn lại ⇒ không nhập. Danh sách ở `kiem-toan-bo/ds-da-ai.json` (scratchpad). dap_an của 21 câu này là AI-đề-xuất, chưa người xem.
 - **Dừng 29 câu** (công thức đọc hỏng EQ-FAILED, nguồn mâu thuẫn gạch chân vs "Chọn X", 3 câu Đ/S định dạng lạ, 1 câu thiếu lời giải, câu q17): `reports/nhtp-k12-cau-chua-nhap.html`.
 - **Chưa làm:** gán dạng 167 câu (nằm dạng chờ); kiểm đáp số độc lập các câu mới; dạng bài từng ý của câu Đ/S; các thư mục .rar chưa giải nén (12-19 Ôn tập chương…).
+
+## 19/10/2026 — K8 bản đồ mới: rà lại thẻ lý thuyết/ví dụ theo spec-format-noidung.md
+- **Thùy nhắc:** viết lý thuyết/ví dụ phải dùng đúng thẻ (`##VD` cho ví dụ, `##TC` cho tính chất…), có quy tắc hiển thị sẵn. Lần 14/10 tôi điền 43 LT + 42 ví dụ mà CHƯA đọc `spec-format-noidung.md`/`lythuyetBlocks.ts` (dùng thẻ đúng nhờ nhớ ngữ cảnh, không nhờ spec).
+- **Rà bằng script** (đoạn không thẻ · ví dụ chèn trong khối LT · `##VD` không kế "Bài giải"): lỗi THẬT chỉ ở NDB00692 (agent chèn dòng trống giữa ý a) và b) của đề ⇒ ý b) rơi ngoài khung ví dụ). Sửa: gộp liền.
+- **Chỉnh thêm theo đúng nghĩa thẻ:** định lý ⇒ `##ĐL` (Bézout NDB00477/478/982, định lý chia có dư NDB00678 tách `##ĐL` + `##ĐN`); bỏ "ví dụ …" chèn trong `##TC/##PP` (NDB00668/669/969/699/472/473/978); NDB00671 câu lý thuyết trần trong ô ví dụ ⇒ `##TC`. Mỗi sửa guard bằng chuỗi cũ, chỉ đụng nội dung do tôi viết (script `va-tag-k8.mjs`).
+- **Không đụng (của Thùy/bản cũ):** 11 ô ví dụ (NDB00664–679) và ~13 lý thuyết cũ (NDB00688–698) còn đoạn chưa gắn thẻ — chờ Thùy bảo có gắn không.
