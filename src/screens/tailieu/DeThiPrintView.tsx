@@ -228,4 +228,11 @@ const DETHI_CSS = `
 .pv-dethi-meta{font-size:12px;color:#64748b;margin-top:4px}
 .pv-dethi .pv-h-dang{border-bottom:none;padding-bottom:0}
 .pv-empty{color:#8a9097;font-style:italic;margin-top:10px}
+/* ⭐ 19/10 (Thùy: "tự sang trang khi chưa hết chỗ trống"): .pv-cau mặc định break-inside:avoid ⇒ bài nhiều ý + dòng kẻ
+   (đo đề GKI Toán 7 Trưng Vương: Câu 5 cao 246mm, Câu 8 201mm, Câu 10 199mm) không vừa chỗ còn lại ⇒ CẢ CÂU nhảy trang,
+   bỏ trống 120–257mm. Cho câu CHẢY qua trang như giáo trình/BTVN (.gtbk-card-body .pv-cau, .pv-btvn .pv-cau); phương án TN /
+   dòng Đ-S / cặp dòng kẻ / hình tự giữ khối. ĐỪNG thêm `.pv-math:first-child{break-after:avoid}` như giáo trình: đo cùng đề,
+   có dòng đó thì CẢ Phần 1 bị đẩy sang trang 2 (trang 1 chỉ còn đầu đề, trống 193mm); bỏ đi ⇒ 11 → 7 trang, mỗi trang dư ≤13mm. */
+.pv-dethi .pv-cau{break-inside:auto}
+.pv-dethi .pv-opts{break-inside:avoid}
 `
