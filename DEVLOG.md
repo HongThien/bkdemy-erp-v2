@@ -38379,3 +38379,4 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 ### 19/10 — [Đề thi · bản in] Hết nhảy trang khi còn chỗ trống (Thùy)
 - Nguyên nhân: .pv-cau break-inside:avoid ⇒ bài nhiều ý + dòng kẻ cao 200–250mm nhảy nguyên khối sang trang sau. Đo đề GKI Toán 7 Trưng Vương: 11 trang, trang 2 trống 257mm, trang 6 trống 123mm, trang 9 trống 203mm.
 - Sửa DETHI_CSS: .pv-dethi .pv-cau{break-inside:auto} + .pv-opts giữ khối ⇒ 7 trang, mỗi trang dư ≤13mm. Thử thêm .pv-math:first-child{break-after:avoid} như giáo trình thì cả Phần 1 bị đẩy sang trang 2 (trang 1 trống 193mm) ⇒ KHÔNG dùng.
+- SỬA LỖI do chính commit trên: trong chú thích CSS (nằm trong template literal DETHI_CSS) tôi viết cụm có dấu backtick ⇒ đóng chuỗi sớm ⇒ Vite báo "Missing semicolon", ERP trắng màn. Đổi sang ngoặc kép. Bài học: sửa CSS-trong-template xong PHẢI chạy tsc lại (lượt 2 tôi bỏ qua).
