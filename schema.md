@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-430 bảng · 25 view · 0 enum · 215 trigger · 1178 function
+432 bảng · 25 view · 0 enum · 215 trigger · 1178 function
 
 ## _app_secrets
 
@@ -2638,6 +2638,7 @@ END |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
 | khoi | text | Y |  |  |  |
+| mo_ta | text |  | ''::text |  |  |
 
 ## hinh_bo_de_ly_thuyet
 
@@ -2648,6 +2649,16 @@ END |  |  |
 | file_url | text | Y |  |  |  |
 | ten_file | text | Y |  |  |  |
 | cap_nhat_at | timestamp with time zone |  | now() |  |  |
+
+## hinh_bo_de_vi_du
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| bo_de_id | uuid |  |  | PK FK→hinh_bo_de.id |  |
+| noi_dung | text | Y |  |  |  |
+| file_url | text | Y |  |  |  |
+| ten_file | text | Y |  |  |  |
+| cap_nhat_at | timestamp with time zone | Y | now() |  |  |
 
 ## hinh_cach_bo_de
 
@@ -2698,6 +2709,7 @@ END |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
 | khoi | text | Y |  |  |  |
+| mo_ta | text |  | ''::text |  |  |
 
 ## hinh_dang_ly_thuyet
 
@@ -2708,6 +2720,16 @@ END |  |  |
 | file_url | text | Y |  |  |  |
 | ten_file | text | Y |  |  |  |
 | cap_nhat_at | timestamp with time zone |  | now() |  |  |
+
+## hinh_dang_vi_du
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| dang_id | uuid |  |  | PK FK→hinh_dang.id |  |
+| noi_dung | text | Y |  |  |  |
+| file_url | text | Y |  |  |  |
+| ten_file | text | Y |  |  |  |
+| cap_nhat_at | timestamp with time zone | Y | now() |  |  |
 
 ## hinh_form_dien
 
@@ -3593,7 +3615,7 @@ END |  |  |
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| mon | text |  |  | PK FK→thanh_tuu.mon |  |
+| mon | text |  |  | PK FK→huy_hieu.mon |  |
 | huy_hieu_key | text |  |  | PK FK→huy_hieu.key |  |
 | thanh_tuu_key | text |  |  | PK FK→thanh_tuu.key |  |
 | vai | text |  |  |  | `chuan` · `them` |
@@ -4969,8 +4991,8 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
-| mon | text |  |  | FK→sotay_ct_hinh.mon |  |
-| khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
+| mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
+| khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
 | ten | text |  |  |  |  |

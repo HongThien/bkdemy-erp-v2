@@ -24,11 +24,8 @@ function MDang({ L, khoi, reload }: { L: Luoi; khoi: string; reload: () => Promi
   const [chon, setChon] = useState<string | null>(null)
   const [q, setQ] = useState('')
   const [form, setForm] = useState<{ id?: string; cap: 'loai_ch' | 'dang'; cha?: string | null } | null>(null)
-  const [ltMap, setLtMap] = useState<LtMap>({})
-  const [ltModal, setLtModal] = useState<{ id: string; ten: string } | null>(null)
-
-  const napLt = () => api.hinhDangLyThuyet.list().then((m) => setLtMap(m as LtMap)).catch(() => { /* */ })
-  useEffect(() => { napLt() }, [])
+  const nd = useNoiDung(api.hinhDangLyThuyet, api.hinhDangViDu)
+  const [soan, setSoan] = useState<{ loai: 'lt' | 'vd'; id: string; lan: number } | null>(null)
 
   const theo = useMemo(() => api.baiToanTheoDang(L), [L])
   const rollup = useMemo(() => api.demTheoDangRollup(L), [L])
@@ -41,7 +38,7 @@ function MDang({ L, khoi, reload }: { L: Luoi; khoi: string; reload: () => Promi
   const RowDang = ({ id, ten, ton }: { id: string; ten: string; ton: 'dg' | 'loai' }) => (
     <button onClick={() => setChon(id)}
       className={`flex w-full items-center gap-2 rounded-lg px-2 py-1.5 text-left transition ${chon === id ? 'bg-violet-50' : 'hover:bg-slate-50'}`}>
-      <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${coLt(ltMap, id) ? 'bg-emerald-500' : 'bg-slate-200'}`} title={coLt(ltMap, id) ? 'đã có lý thuyết' : 'chưa có lý thuyết'} />
+      <Cham3 moTa={!!L.dang.find((x) => x.id === id)?.mo_ta?.trim()} lt={coLt(nd.lt, id)} vd={coLt(nd.vd, id)} />
       {ton === 'dg' ? <Tag ton="dg">… {ten}</Tag> : <span className="text-[12.5px] font-medium text-slate-700">{ten}</span>}
       <span className="flex-1" />
       <Ma>{theo.get(id)?.length ?? 0} bài toán</Ma>
@@ -55,7 +52,7 @@ function MDang({ L, khoi, reload }: { L: Luoi; khoi: string; reload: () => Promi
         <Btn kind="pri" onClick={() => setForm({ cap: 'loai_ch' })}>＋ Loại câu hỏi</Btn>
       </div>
       <p className="mb-4 max-w-3xl text-[12.5px] text-slate-500">
-        Hai tầng: <b>loại câu hỏi › cách xử lý</b>. Dán cho <b>từng ý</b> ở tab ③ Kho bài (Hình – Luyện); ý lớp trên dùng được nhãn lớp dưới. Mỗi dạng gắn được <b>lý thuyết/phương pháp</b> (chấm <span className="text-emerald-600">●</span> = đã có).
+        Hai tầng: <b>loại câu hỏi › cách xử lý</b>. Dán cho <b>từng ý</b> ở tab ③ Kho bài (Hình – Luyện); ý lớp trên dùng được nhãn lớp dưới. Mỗi dạng có <b>mô tả · lý thuyết · ví dụ</b> (3 chấm <span className="text-emerald-600">●</span><span className="text-sky-600">●</span><span className="text-violet-600">●</span> = đã có).
       </p>
 
       <div className="grid items-start gap-4 lg:grid-cols-[1fr_380px]">
@@ -106,19 +103,11 @@ function MDang({ L, khoi, reload }: { L: Luoi; khoi: string; reload: () => Promi
                 </div>
               </div>
 
-              {/* Lý thuyết / phương pháp của dạng (chỉ ở TERMINAL dạng) — tái dùng editor của Đại */}
+              {/* Mô tả · Lý thuyết · Ví dụ của dạng (chỉ ở TERMINAL dạng = nhãn dán được) */}
               {laTerminal(d.id) && (
-                <div className="mb-3 rounded-lg border border-violet-200 bg-violet-50/50 px-2.5 py-2">
-                  <div className="flex items-center gap-2">
-                    <span className="text-[11px] font-semibold uppercase tracking-wide text-violet-700">Lý thuyết / phương pháp</span>
-                    <Btn className="ml-auto h-6 px-2 text-[11px]" onClick={() => setLtModal({ id: d.id, ten: api.tenDangDayDu(L, d.id) })}>
-                      {coLt(ltMap, d.id) ? '✎ Sửa' : '＋ Soạn'}
-                    </Btn>
-                  </div>
-                  {coLt(ltMap, d.id)
-                    ? <div className="mt-1.5 max-h-40 overflow-y-auto text-[12px] leading-relaxed text-slate-700"><MathText>{ltMap[d.id]?.noi_dung ?? ''}</MathText></div>
-                    : <div className="mt-1 text-[11.5px] text-slate-400">Chưa có — bấm Soạn (gõ tay hoặc dán ảnh/PDF → AI bóc LaTeX).</div>}
-                </div>
+                <KhoiNoiDung id={d.id} moTa={d.mo_ta ?? ''} lt={nd.lt} vd={nd.vd}
+                  onLuuMoTa={async (m) => { try { await api.updateDang(d.id, { mo_ta: m }); await reload() } catch (e: any) { alert(e.message) } }}
+                  onMo={(loai) => setSoan({ loai, id: d.id, lan: Date.now() })} />
               )}
 
               <DsBaiToan L={L} ds={theo.get(d.id) ?? []} />
@@ -134,9 +123,12 @@ function MDang({ L, khoi, reload }: { L: Luoi; khoi: string; reload: () => Promi
       </div>
 
       {form && <FormDang L={L} khoi={khoi} init={form} onClose={() => setForm(null)} onDone={reload} />}
-      {ltModal && (
-        <LyThuyetModal ma={ltModal.id} ten={ltModal.ten} current={ltMap[ltModal.id] as any} api={api.hinhDangLyThuyet as any}
-          onClose={() => setLtModal(null)} onSaved={() => { setLtModal(null); napLt() }} />
+      {soan && (
+        <SoanNoiDung ds={loaiCh.flatMap((lc) => { const con = L.dang.filter((x) => x.cha_id === lc.id); return con.length ? con : [lc] })
+            .map((x) => ({ id: x.id, ten: api.tenDangDayDu(L, x.id), moTa: x.mo_ta ?? '' }))}
+          dang={soan} lt={nd.lt} vd={nd.vd} apiLt={api.hinhDangLyThuyet} apiVd={api.hinhDangViDu as any}
+          onDi={(loai, id) => { setChon(id); setSoan({ loai, id, lan: Date.now() }) }} onDong={() => setSoan(null)}
+          onDaLuu={() => { nd.nap(); setSoan((s) => (s ? { ...s, lan: Date.now() } : s)) }} />
       )}
     </>
   )
@@ -147,10 +139,8 @@ function MBoDe({ L, khoi, reload }: { L: Luoi; khoi: string; reload: () => Promi
   const [chon, setChon] = useState<string | null>(null)
   const [q, setQ] = useState('')
   const [form, setForm] = useState<{ id?: string } | null>(null)
-  const [ltMap, setLtMap] = useState<LtMap>({})
-  const [ltModal, setLtModal] = useState<{ id: string; ten: string } | null>(null)
-  const napLt = () => api.hinhBoDeLyThuyet.list().then((m) => setLtMap(m as LtMap)).catch(() => { /* */ })
-  useEffect(() => { napLt() }, [])
+  const nd = useNoiDung(api.hinhBoDeLyThuyet, api.hinhBoDeViDu as any)
+  const [soan, setSoan] = useState<{ loai: 'lt' | 'vd'; id: string; lan: number } | null>(null)
   const theo = useMemo(() => api.baiToanTheoBoDe(L), [L])
   const b = chon ? L.boDe.find((x) => x.id === chon) : null
 
@@ -163,7 +153,7 @@ function MBoDe({ L, khoi, reload }: { L: Luoi; khoi: string; reload: () => Promi
       <p className="mb-4 max-w-3xl text-[12.5px] text-slate-500">
         Danh mục <b>phẳng</b>. Bổ đề = <b>mối nối</b> bắc cầu giữa nửa-xuôi (giả thiết) và nửa-ngược (câu hỏi) —
         nhãn chẩn đoán, <b>không phải trục đo ngang hàng</b> với mô hình và dạng. Có bổ đề ⇒ độ khó +1 bậc.
-        Mỗi bổ đề soạn được <b>lý thuyết + ví dụ</b> (bóc từ ảnh/PDF; chấm <span className="text-emerald-600">●</span> = đã có).
+        Mỗi bổ đề có <b>mô tả · lý thuyết · ví dụ</b> (bóc từ ảnh/PDF; 3 chấm <span className="text-emerald-600">●</span><span className="text-sky-600">●</span><span className="text-violet-600">●</span> = đã có).
       </p>
 
       <div className="grid items-start gap-4 lg:grid-cols-[1fr_380px]">
@@ -173,7 +163,7 @@ function MBoDe({ L, khoi, reload }: { L: Luoi; khoi: string; reload: () => Promi
           {L.boDe.filter((x) => !q.trim() || x.ten.toLowerCase().includes(q.toLowerCase())).map((x) => (
             <button key={x.id} onClick={() => setChon(x.id)}
               className={`flex w-full items-center gap-2 rounded-lg px-2 py-1.5 text-left transition ${chon === x.id ? 'bg-amber-50' : 'hover:bg-slate-50'}`}>
-              <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${coLt(ltMap, x.id) ? 'bg-emerald-500' : 'bg-slate-200'}`} title={coLt(ltMap, x.id) ? 'đã có lý thuyết' : 'chưa có lý thuyết'} />
+              <Cham3 moTa={!!x.mo_ta?.trim()} lt={coLt(nd.lt, x.id)} vd={coLt(nd.vd, x.id)} />
               <Tag ton="bd">◦ {x.ten}</Tag>
               <span className="flex-1" />
               <Ma>{theo.get(x.id)?.length ?? 0} bài toán</Ma>
@@ -196,18 +186,10 @@ function MBoDe({ L, khoi, reload }: { L: Luoi; khoi: string; reload: () => Promi
               </div>
               <Sol className="mb-3">{b.phat_bieu}</Sol>
 
-              {/* Lý thuyết + ví dụ của bổ đề — tái dùng NGUYÊN editor lý thuyết của Đại (bóc ảnh/PDF). */}
-              <div className="mb-3 rounded-lg border border-violet-200 bg-violet-50/50 px-2.5 py-2">
-                <div className="flex items-center gap-2">
-                  <span className="text-[11px] font-semibold uppercase tracking-wide text-violet-700">Lý thuyết / ví dụ</span>
-                  <Btn className="ml-auto h-6 px-2 text-[11px]" onClick={() => setLtModal({ id: b.id, ten: b.ten })}>
-                    {coLt(ltMap, b.id) ? '✎ Sửa' : '＋ Soạn'}
-                  </Btn>
-                </div>
-                {coLt(ltMap, b.id)
-                  ? <div className="mt-1.5 max-h-40 overflow-y-auto text-[12px] leading-relaxed text-slate-700"><MathText>{ltMap[b.id]?.noi_dung ?? ''}</MathText></div>
-                  : <div className="mt-1 text-[11.5px] text-slate-400">Chưa có — bấm Soạn (gõ tay hoặc dán ảnh/PDF → AI bóc LaTeX).</div>}
-              </div>
+              {/* Mô tả · Lý thuyết · Ví dụ của bổ đề — tái dùng editor lý thuyết của Đại (bóc ảnh/PDF) */}
+              <KhoiNoiDung id={b.id} moTa={b.mo_ta ?? ''} lt={nd.lt} vd={nd.vd}
+                onLuuMoTa={async (m) => { try { await api.updateBoDe(b.id, { mo_ta: m }); await reload() } catch (e: any) { alert(e.message) } }}
+                onMo={(loai) => setSoan({ loai, id: b.id, lan: Date.now() })} />
 
               <DsBaiToan L={L} ds={theo.get(b.id) ?? []} />
               <div className="mt-3 rounded-lg border border-amber-300 bg-amber-50 px-2.5 py-2 text-[11.5px] leading-relaxed text-amber-800">
@@ -220,11 +202,94 @@ function MBoDe({ L, khoi, reload }: { L: Luoi; khoi: string; reload: () => Promi
       </div>
 
       {form && <FormBoDe L={L} khoi={khoi} id={form.id} onClose={() => setForm(null)} onDone={reload} />}
-      {ltModal && (
-        <LyThuyetModal ma={ltModal.id} ten={ltModal.ten} current={ltMap[ltModal.id] as any} api={api.hinhBoDeLyThuyet as any}
-          onClose={() => setLtModal(null)} onSaved={() => { setLtModal(null); napLt() }} />
+      {soan && (
+        <SoanNoiDung ds={L.boDe.map((x) => ({ id: x.id, ten: x.ten, moTa: x.mo_ta ?? '' }))}
+          dang={soan} lt={nd.lt} vd={nd.vd} apiLt={api.hinhBoDeLyThuyet} apiVd={api.hinhBoDeViDu as any}
+          onDi={(loai, id) => { setChon(id); setSoan({ loai, id, lan: Date.now() }) }} onDong={() => setSoan(null)}
+          onDaLuu={() => { nd.nap(); setSoan((s) => (s ? { ...s, lan: Date.now() } : s)) }} />
       )}
     </>
+  )
+}
+
+// ══════════════════ MÔ TẢ · LÝ THUYẾT · VÍ DỤ của một nhãn (Thùy 19/10 — giống dạng bài bên Đại) ══════════════════
+type ApiND = typeof api.hinhDangLyThuyet
+function useNoiDung(apiLt: ApiND, apiVd: ApiND) {
+  const [lt, setLt] = useState<LtMap>({})
+  const [vd, setVd] = useState<LtMap>({})
+  const nap = () => {
+    apiLt.list().then((m) => setLt(m as LtMap)).catch(() => { /* */ })
+    apiVd.list().then((m) => setVd(m as LtMap)).catch(() => { /* */ })
+  }
+  useEffect(() => { nap() }, [])   // eslint-disable-line react-hooks/exhaustive-deps
+  return { lt, vd, nap }
+}
+/** 3 chấm: mô tả · lý thuyết · ví dụ (xanh = đã có) */
+function Cham3({ moTa, lt, vd }: { moTa: boolean; lt: boolean; vd: boolean }) {
+  const c = (co: boolean, t: string, mau: string) => <span title={(co ? 'đã có ' : 'chưa có ') + t} className={`h-1.5 w-1.5 rounded-full ${co ? mau : 'bg-slate-200'}`} />
+  return <span className="flex shrink-0 gap-0.5">{c(moTa, 'mô tả', 'bg-emerald-500')}{c(lt, 'lý thuyết', 'bg-sky-500')}{c(vd, 'ví dụ', 'bg-violet-500')}</span>
+}
+/** Khối trong panel bên phải: mô tả (rời ô là lưu) + 2 thẻ Lý thuyết / Ví dụ có xem trước */
+function KhoiNoiDung({ id, moTa, lt, vd, onLuuMoTa, onMo }: {
+  id: string; moTa: string; lt: LtMap; vd: LtMap; onLuuMoTa: (m: string) => void; onMo: (loai: 'lt' | 'vd') => void
+}) {
+  const [v, setV] = useState(moTa)
+  useEffect(() => { setV(moTa) }, [id, moTa])
+  const the = (loai: 'lt' | 'vd', m: LtMap, nhan: string, mau: string) => (
+    <div className={`rounded-lg border px-2.5 py-2 ${mau}`}>
+      <div className="flex items-center gap-2">
+        <span className="text-[11px] font-semibold uppercase tracking-wide">{nhan}</span>
+        <Btn className="ml-auto h-6 px-2 text-[11px]" onClick={() => onMo(loai)}>{coLt(m, id) ? '✎ Sửa' : '＋ Soạn'}</Btn>
+      </div>
+      {coLt(m, id)
+        ? <div className="mt-1.5 max-h-32 overflow-y-auto text-[12px] leading-relaxed text-slate-700"><MathText>{m[id]?.noi_dung ?? ''}</MathText></div>
+        : <div className="mt-1 text-[11.5px] text-slate-400">Chưa có — bấm Soạn (gõ tay hoặc dán ảnh/PDF → AI bóc LaTeX).</div>}
+    </div>
+  )
+  return (
+    <div className="mb-3 space-y-2">
+      <label className="block">
+        <span className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Mô tả nhận biết</span>
+        <textarea value={v} onChange={(e) => setV(e.target.value)} onBlur={() => { if (v.trim() !== moTa.trim()) onLuuMoTa(v.trim()) }} rows={3}
+          placeholder="Dấu hiệu nhận ra: đề cho gì, hỏi gì, khác các nhãn gần nó ở đâu… (rời ô là lưu)"
+          className={`${inpCls} mt-1 text-[12.5px] ${moTa.trim() ? '' : 'border-amber-300 bg-amber-50'}`} />
+      </label>
+      {the('lt', lt, '📖 Lý thuyết', 'border-sky-200 bg-sky-50/50 text-sky-800')}
+      {the('vd', vd, '📝 Ví dụ', 'border-violet-200 bg-violet-50/50 text-violet-800')}
+    </div>
+  )
+}
+/** Khung soạn LT/VD kèm thanh ◀ Trước · [Lý thuyết | Ví dụ] · Sau ▶ chạy nối tiếp qua danh sách nhãn (như Bản đồ mới Đại) */
+function SoanNoiDung({ ds, dang, lt, vd, apiLt, apiVd, onDi, onDong, onDaLuu }: {
+  ds: { id: string; ten: string; moTa: string }[]; dang: { loai: 'lt' | 'vd'; id: string; lan: number }
+  lt: LtMap; vd: LtMap; apiLt: ApiND; apiVd: ApiND
+  onDi: (loai: 'lt' | 'vd', id: string) => void; onDong: () => void; onDaLuu: () => void
+}) {
+  const i = Math.max(0, ds.findIndex((x) => x.id === dang.id))
+  const buoc = i * 2 + (dang.loai === 'vd' ? 1 : 0), tong = ds.length * 2
+  const cur = ds[i]
+  const di = (b: number, roiDuoc: () => boolean) => { if (b >= 0 && b < tong && b !== buoc && roiDuoc()) onDi(b % 2 ? 'vd' : 'lt', ds[Math.floor(b / 2)].id) }
+  const nut = 'flex h-9 shrink-0 items-center gap-1 rounded-md border px-3 text-[13px] font-semibold disabled:opacity-30'
+  return (
+    <LyThuyetModal key={`${dang.loai}:${dang.id}:${dang.lan}`} ma={dang.id} ten={`${dang.loai === 'vd' ? 'Ví dụ' : 'Lý thuyết'} — ${cur?.ten ?? ''}`}
+      current={(dang.loai === 'vd' ? vd : lt)[dang.id] as any} api={(dang.loai === 'vd' ? apiVd : apiLt) as any}
+      onClose={onDong} onSaved={onDaLuu}
+      dauTrang={(roiDuoc) => (
+        <div className="border-b border-indigo-200 bg-indigo-50/70 px-6 py-2.5">
+          <div className="flex flex-wrap items-center gap-2">
+            <button onClick={() => di(buoc - 1, roiDuoc)} disabled={buoc === 0} className={`${nut} border-slate-300 bg-white text-slate-600`}>◀ Trước</button>
+            <div className="flex shrink-0 overflow-hidden rounded-md border border-indigo-300 bg-white">
+              <button onClick={() => di(i * 2, roiDuoc)} className={`h-9 px-4 text-[13px] font-semibold ${dang.loai === 'lt' ? 'bg-indigo-600 text-white' : 'text-indigo-700 hover:bg-indigo-50'}`}>📖 Lý thuyết</button>
+              <button onClick={() => di(i * 2 + 1, roiDuoc)} className={`h-9 px-4 text-[13px] font-semibold ${dang.loai === 'vd' ? 'bg-indigo-600 text-white' : 'text-indigo-700 hover:bg-indigo-50'}`}>📝 Ví dụ</button>
+            </div>
+            <button onClick={() => di(buoc + 1, roiDuoc)} disabled={buoc >= tong - 1} className={`${nut} border-indigo-400 bg-indigo-600 text-white`}>Sau ▶</button>
+            <b className="min-w-0 flex-1 truncate pl-2 text-[13px] text-slate-800">{cur?.ten}</b>
+            <span className="shrink-0 text-[12px] text-slate-500">{i + 1}/{ds.length}</span>
+            {cur && <Cham3 moTa={!!cur.moTa.trim()} lt={coLt(lt, cur.id)} vd={coLt(vd, cur.id)} />}
+          </div>
+          {cur && <div className={`mt-1.5 truncate text-[12px] ${cur.moTa.trim() ? 'text-slate-600' : 'text-amber-600'}`}>Mô tả: {cur.moTa.trim() || 'chưa có — soạn ở danh mục'}</div>}
+        </div>
+      )} />
   )
 }
 

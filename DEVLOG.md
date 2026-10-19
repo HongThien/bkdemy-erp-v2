@@ -38339,3 +38339,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - Thùy: "phần lý thuyết nhóm bài – dạng bài không có ví dụ, vì đã có phần ví dụ riêng; nhiều chỗ m để lẫn ví dụ vào đấy" (phần lớn do chính em gắn ví dụ vào lý thuyết ở lượt rà format trước — hiểu sai rằng ví dụ cũ trong lý thuyết thì "tag lại" là đủ).
 - Chuyển 13 trường (LT dạng 688/689/692/693/695/696/697; LT nhóm 00999/01006/01007/01009/01010/01387) sang `vi_du` đích hoặc bỏ nếu trùng; quét K8 lại: chỉ còn NDB00698 (nháp). Đích của ví dụ nhóm: NDB00970 / NDB00468 / NDB00469 / NDB00976 / NDB00977 — chọn theo nội dung, có ghi ở mục H ghi chú K8.
 - Khối khác (quét thô, chưa sửa): 6 (34 nhóm), 9 (24), 4T (25), 10 (11), 11 (16), 5 (15), 5T (12), 7 (5), 3 (6), 4 (6), 12 (1) có ví dụ trong lý thuyết nhóm/dạng — chờ Thùy chốt đích nhận ví dụ trước khi chuyển hàng loạt.
+
+## 19/10 — Danh mục Dạng bài / Bổ đề Hình: Mô tả · Lý thuyết · Ví dụ như Đại (Thùy 19/10, mig 202610191656 ĐÃ ÁP)
+- **Thùy:** bổ đề và dạng bài có lý thuyết riêng, cần chỗ nhập liệu giống lý thuyết + ví dụ (bên Đại).
+- **Đã có trước:** màn danh mục (🏷 ở Hình – Luyện) có Lý thuyết cho dạng (`hinh_dang_ly_thuyet`) + bổ đề (`hinh_bo_de_ly_thuyet`) — cả 2 bảng 0 dòng.
+- **Thêm:** cột `mo_ta` ở `hinh_dang`/`hinh_bo_de` · bảng `hinh_dang_vi_du`/`hinh_bo_de_vi_du` (cùng khuôn *_ly_thuyet) · API `hinhDangViDu`/`hinhBoDeViDu` · `Catalog.tsx`: khối Mô tả (rời ô là lưu) + 📖 Lý thuyết + 📝 Ví dụ có xem trước, 3 chấm mỗi dòng, khung soạn `LyThuyetModal` kèm thanh ◀ Trước · LT|VD · Sau ▶ chạy nối tiếp danh sách (dạng: theo thứ tự cây; bổ đề: theo danh mục). Lưu ⇒ ở lại đúng bước.
+- **Kiểm (app local 1920, K8 › Tứ giác › 🏷 Dạng bài):** panel có đủ 3 phần; Sau ▶: LT dạng 1 → VD dạng 1 → LT dạng 2 (2/7). Không lưu nội dung thật. Thử mig trong ROLLBACK trước khi `--only`.
