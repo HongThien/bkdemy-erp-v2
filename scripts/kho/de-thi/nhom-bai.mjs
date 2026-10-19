@@ -6,7 +6,8 @@
 // Nhãn ý: "Bài 2a" · "Câu 9b" · "Bài 23 (B)". Nhóm = ≥ 2 câu LIÊN TIẾP cùng bài, MỌI câu đều có ý.
 // Lời dẫn (`dan`) = tiền tố chung của nội dung các ý, cắt về cuối cụm ": " (nếu có) hoặc cuối câu ". " — và PHẢI là tiền tố thật của
 // từng câu (còn phần dư không rỗng), không thì bỏ cả nhóm (để nguyên từng câu) và ghi cảnh báo.
-const RE_Y = /^((?:Bài|Câu) \d+)\s*(?:\(([A-Za-z])\)|([a-z]))$/
+// Tiền tố tuỳ chọn cho đề cương có nhiều phần cùng đánh số lại từ 1 (Thành Công 19/10: "Hình Bài 2a", "Đề 1 Bài 2a") — nhãn vẫn duy nhất mà gom ý đúng.
+const RE_Y = /^((?:(?:Đại|Hình|Khác|Đề \d|Dạng \d|ĐMH) )?(?:Bài|Câu) \d+)\s*(?:\(([A-Za-z])\)|([a-z]))$/
 
 const tienToChung = (xs) => {
   let p = xs[0] ?? ''
