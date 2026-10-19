@@ -272,7 +272,8 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
 
   return (
     <div className="flex h-full min-h-0 gap-4">
-      <aside className="w-[250px] shrink-0">
+      {/* Thùy 19/10: cột mô hình ĐỨNG YÊN — chỉ cột phải (chuỗi · nhóm · kho bài) cuộn */}
+      <aside className="flex min-h-0 w-[250px] shrink-0 flex-col">
         <div className="mb-2 flex items-center justify-between gap-1">
           <span className="text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Mô hình luyện · khối {khoi}</span>
           <span className="flex gap-1">
@@ -283,7 +284,7 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
           </span>
         </div>
         <input className={inpCls} placeholder="Tìm mô hình…" value={tim} onChange={(e) => setTim(e.target.value)} />
-        <div className="mt-2 max-h-[calc(100vh-230px)] space-y-1.5 overflow-y-auto pr-1">
+        <div className="mt-2 max-h-[calc(100vh-230px)] min-h-0 flex-1 space-y-1.5 overflow-y-auto pr-1">
           {chuDeId ? (
             <>
               {nhoms.map((n, i) => {
@@ -345,7 +346,7 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
         </div>
       </aside>
 
-      <div className="min-w-0 flex-1">
+      <div className="min-h-0 min-w-0 flex-1 overflow-y-auto pr-1">
         {!gocMH ? <Empty icon="🌿">Chọn một mô hình ở bên trái, hoặc bấm ＋ Mô hình để tạo mô hình mới.</Empty> : (
           <>
             <div className="mb-1 flex flex-wrap items-center gap-2">

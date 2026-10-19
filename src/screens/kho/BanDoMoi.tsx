@@ -1230,7 +1230,7 @@ function HinhLuyenTrongBanDo({ khoi, chuDeId }: { khoi: string; chuDeId: string 
   useEffect(() => { void nap() }, [nap])
   if (loi) return <div className="p-8 text-sm text-rose-600">Không tải được lưới Hình: {loi}</div>
   if (!L) return <div className="flex h-full items-center justify-center text-sm text-slate-400">Đang tải mô hình…</div>
-  return <div className="h-full p-5"><CayNhanh L={L} khoi={khoi} reload={nap} chuDeId={chuDeId} /></div>
+  return <div className="h-full min-h-0 overflow-hidden p-5"><CayNhanh L={L} khoi={khoi} reload={nap} chuDeId={chuDeId} /></div>
 }
 
 export default function BanDoMoiScreen() {

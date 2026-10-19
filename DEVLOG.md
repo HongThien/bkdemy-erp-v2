@@ -38315,3 +38315,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - `CayNhanh.tsx` (Bản đồ mới › chủ đề Hình–Luyện): trước đây nhóm mặc định MỞ, bấm để gấp (`gapNhom`, chỉ nhớ tới F5). Đổi thành `moNhom` (id → đang mở): **mặc định thu gọn, chỉ hiện tên nhóm + số mô hình**, người dùng tự mở. Đang gõ tìm thì vẫn mở hết để thấy kết quả. Nhóm vừa nhận mô hình (tạo mới / kéo thả / đổi nhóm) tự mở ra để thấy kết quả.
 - **Nhớ qua các lần truy cập:** `NHO` (module-level, sống tới F5) giờ nạp từ + ghi vào `localStorage['bk.cayNhanh.v1']`: nhóm nào đang mở · mô hình đang xem · tab (Chuỗi/Nhóm/Kho) · nhánh đã gấp · panel mở/đóng. localStorage chỉ là tiện ích theo người dùng (try/catch, hỏng thì chạy như chưa có); KHÔNG nhớ ô tìm.
 - Kiểm: `tsc` sạch ở file đụng tới; chưa mở được màn bằng phiên đăng nhập thật.
+
+## 19/10 — Bản đồ mới › Hình – Luyện: cột mô hình đứng yên khi cuộn kho bài (Thùy 19/10)
+- **Thùy:** "cột mô hình cần freeze để khi vào kho thì không bị kéo xuống".
+- **Gốc:** cả màn Cây nhánh nằm trong MỘT khung cuộn (khung của Bản đồ mới) ⇒ cuộn tab ③ Kho bài là cuộn luôn cột trái.
+- **Sửa:** khung bọc `HinhLuyenTrongBanDo` `h-full min-h-0 overflow-hidden`; `CayNhanh` cột trái `flex flex-col min-h-0` (danh sách nhóm/mô hình tự cuộn bên trong), cột phải `min-h-0 flex-1 overflow-y-auto` tự cuộn.
+- **Kiểm (app local 1920, K8 › Tứ giác › MH.072 › ③ Kho bài):** cột phải cuộn 1.500/6.491 px, cột trái + ô mô hình đứng nguyên (top 132 → 132).
