@@ -58,3 +58,27 @@ NDB00466, NDB00467, NDB00468 (Hằng đẳng thức › Bình phương của cá
 - NDB00695 ví dụ 2: "Vậy **GTNN** của B" phải là **GTLN**.
 - NDB00696 ví dụ 2: "Vậy GTLN của **A**" phải là của **B**.
 - NDB00692, NDB00693 (ví dụ 5): thiếu dấu `$` đóng.
+
+## G. Rà format lý thuyết K8 theo spec-format-noidung.md (19/10)
+**Quét bằng parser thật** (`parseLyThuyetBlocks` + `splitViDu` trên mọi `ly_thuyet`/`vi_du` của dạng + nhóm K8 — 617 khối): mỗi khối có thẻ đúng · mỗi `##VD` có "Bài giải" · không còn khối trần chứa markdown (`**`, `*`, `•`) · số `$` chẵn — **trừ NDB00698** (xem dưới).
+**Đã gắn thẻ lại 19 trường** (so từ-với-từ cũ/mới để chắc không mất chữ; ghi có guard "DB còn y hệt bản rà"):
+- Lý thuyết dạng: NDB00688, 689, 690, 691, 692, 693, 695, 696, 697 · nhóm: NNB00999, 01006, 01007, 01009, 01010, 01387.
+- Ô ví dụ: NDB00672, 673, 674, 676.
+- Đổi: công thức/quy tắc → `##TC`, các bước → `##PP` (bỏ "Bước N", bullet `*`/`•`), ví dụ → `##VD` + "Bài giải:", nhãn `**Ví dụ**` bỏ (tag tự đánh số), ghi chú → `##CY`/`##NX`, định lý → `##ĐL`.
+**Sửa lỗi trong nội dung (đã kiểm):**
+| Chỗ | Cũ | Mới |
+|---|---|---|
+| NNB00999 (tính giá trị, x=98) | $(998+2)^3=1000^3=10^9$ | $(98+2)^3=100^3=10^6$ |
+| NDB00697 ví dụ 4 | $+17$, $A\ge17$, thiếu "Vậy" | $+7$ ($15-4-4$), $A\ge7$, thêm "Vậy GTNN của A là 7 khi x=2; y=2" |
+| NDB00695 ví dụ 2 | "Vậy GTNN của B" | GTLN |
+| NDB00696 ví dụ 2 | "Vậy GTLN của A" | của B |
+| NDB00696 ví dụ 1 | đề thừa chữ `1` sau `$` | bỏ |
+| NDB00692 · 693 (VD5) · NNB01006 | thiếu `$` đóng cuối | thêm |
+| NDB00672 ví dụ | dòng kết quả cuối mất dấu `=` | thêm `=` |
+| NNB01009 | một dòng "Ưu tiên nhóm" lặp 2 lần | bỏ bản lặp |
+| nhiều chỗ | gạch ngang `–`/`−` trong công thức | `-` |
+**Em BỔ SUNG (lý thuyết dạng đang chỉ có ví dụ, không có lý thuyết — Thùy xem có muốn giữ):** NDB00688 `##TC` bình phương tổng/hiệu · NDB00692 `##TC` hiệu hai bình phương · NDB00696 `##PP` 3 bước (từ cách giải trong ví dụ).
+**KHÔNG đụng:**
+- **NDB00679 ô ví dụ:** Thùy vừa tự sửa (bỏ khối `##TC` trùng) nên guard bỏ qua. Vẫn còn lệch toán: đề $4x^5y^m$ nhưng lời giải thay thành $y^5$ rồi kết luận $m=5$ (theo đề thì $m\in\{5,6\}$); đề ghi "tìm m, n" nhưng chỉ có m.
+- **NDB00698** (chưa có mô tả; 35 đoạn LT + 35 đoạn ví dụ trùng nhau, số `$` lẻ, nhãn `**Bước 1…**`): đang là bản nháp của Thùy — chưa làm.
+- Đoạn "trần" còn lại ở NDB00664/665/668/674/676/678 là phần LỜI GIẢI nối tiếp sau "Bài giải:" (đúng thiết kế: lời giải không đóng khung) — không phải lỗi.
