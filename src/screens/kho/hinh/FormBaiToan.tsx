@@ -18,6 +18,9 @@ import type { BaiToan, Luoi } from '../../../lib/kho/hinh'
 import { MathText, inp } from '../ui'
 import { MathTextarea } from '../../../components/math/MathTextarea'
 import { AnhInput, Btn, Cap, Fig, IngestBaiButton, Ma, OcrButton, tron } from './hinhUi'
+// Thùy 19/10: Dạng bài / Bổ đề nay là NHÃN của từng ý ở kho mới (Bản đồ mới › Hình – Luyện). Kho cũ thôi sửa —
+// giá trị cũ của cách giải (dang_id, bổ đề) vẫn lưu nguyên khi bấm Lưu.
+const SUA_NHAN_KHO_CU = false
 
 export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, tienDeMacDinh, onClose, onDone }: {
   L: Luoi
@@ -278,13 +281,13 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, tienDe
 
           {/* ── PHẢI: lời giải + tiền đề + bổ đề ── */}
           <div className="min-w-0 space-y-3 overflow-y-auto p-5">
-            <div>
+            {SUA_NHAN_KHO_CU && <div>
               <Lbl>Dạng (loại câu hỏi › cách xử lý)</Lbl>
               <select className={inp} value={dangId} onChange={(e) => setDangId(e.target.value)}>
                 <option value="">— chưa gắn dạng —</option>
                 {dangLa.map((d) => <option key={d.id} value={d.id}>{api.tenDangDayDu(L, d.id)}</option>)}
               </select>
-            </div>
+            </div>}
 
             <div>
               <Lbl>Lời giải</Lbl>
@@ -349,7 +352,7 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, tienDe
             </div>
 
             {/* Bổ đề */}
-            <div className="rounded-xl border border-slate-200 p-3">
+            {SUA_NHAN_KHO_CU && <div className="rounded-xl border border-slate-200 p-3">
               <div className="mb-1.5 text-[12px] font-semibold uppercase tracking-wide text-slate-600">Bổ đề <span className="font-normal normal-case text-slate-400">— có bổ đề ⇒ độ khó +1 bậc</span></div>
               <div className="flex flex-wrap gap-1.5">
                 {L.boDe.map((b) => (
@@ -362,7 +365,7 @@ export default function FormBaiToan({ L, moHinhMacDinh, sua, phatBieuGoi, tienDe
                 ))}
                 {!L.boDe.length && <span className="text-[12px] text-slate-400">— danh mục bổ đề còn trống (màn Bổ đề) —</span>}
               </div>
-            </div>
+            </div>}
           </div>
         </div>
 

@@ -9,6 +9,7 @@ import type { BaiToan, Luoi, MoHinh } from '../../../lib/kho/hinh'
 import type { BaiCay, ChuoiKho, DemKho, KetQuaCay } from '../../../lib/kho/hinhCay'
 import { MathText } from '../ui'
 import { AnhInput, Btn, Empty, Fig, Ma, Note, OcrButton, Seg, inpCls, tron } from './hinhUi'
+import Catalog from './Catalog'
 
 type BaiX = BaiToan & { so: string }
 // ⭐ Thùy 19/10: danh sách mô hình MẶC ĐỊNH THU GỌN (chỉ hiện tên nhóm), người dùng tự mở; hệ thống NHỚ trạng thái các lần truy cập
@@ -78,6 +79,7 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
   const [moNhom, setMoNhom] = useState<Record<string, boolean>>(NHO.moNhom)   // id nhóm → true = đang mở; MẶC ĐỊNH THU GẠN (chỉ hiện tên nhóm)
   const moRa = (id: string | null) => { if (id) setMoNhom((g) => (g[id] ? g : { ...g, [id]: true })) }   // nhóm vừa nhận mô hình ⇒ mở ra để thấy kết quả
   const [keoVao, setKeoVao] = useState<string | null>(null)   // nhóm đang được kéo mô hình vào (viền sáng)
+  const [moDanhMuc, setMoDanhMuc] = useState<'dang' | 'bode' | null>(null)   // Thùy 19/10: danh mục Dạng bài / Bổ đề dời sang kho mới
   const [hopBai, setHopBai] = useState<{ id: string | null; nhanh: string } | null>(null)                               // thêm / sửa bài
   const soRef = useRef(new Map<string, string>())      // số hiển thị đang có (từ RPC) — giữ qua các lần lưới nạp lại
   const khung = useRef<HTMLDivElement>(null)
@@ -283,6 +285,12 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
               onClick={() => setHopMH({ id: null, ten: '', gt: '', anh: null, nhom: (gocMH && goc.find((m) => m.id === gocId)?.nhom_mh_id) || nhoms[0]?.id || null })}>＋ Mô hình</Btn>
           </span>
         </div>
+        {chuDeId && (
+          <div className="mb-2 flex gap-1">
+            <Btn className="!h-7 flex-1 !px-2 !text-[12px]" onClick={() => setMoDanhMuc('dang')} title="Danh mục nhãn Dạng bài (dán cho từng ý ở tab Kho bài)">🏷 Dạng bài</Btn>
+            <Btn className="!h-7 flex-1 !px-2 !text-[12px]" onClick={() => setMoDanhMuc('bode')} title="Danh mục nhãn Bổ đề (dán cho từng ý ở tab Kho bài)">🏷 Bổ đề</Btn>
+          </div>
+        )}
         <input className={inpCls} placeholder="Tìm mô hình…" value={tim} onChange={(e) => setTim(e.target.value)} />
         <div className="mt-2 max-h-[calc(100vh-230px)] min-h-0 flex-1 space-y-1.5 overflow-y-auto pr-1">
           {chuDeId ? (
@@ -378,7 +386,7 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
             {loi && <div className="mb-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-[12.5px] text-red-700">{loi} <button className="ml-2 underline" onClick={() => setLoi(null)}>đóng</button></div>}
 
             {tab === 'kho'
-              ? <TabKho gocId={gocId!} coBai={(id) => baiById.has(id)} onMo={(id) => { setCur(id); setPop(id) }} />
+              ? <TabKho gocId={gocId!} L={L} khoi={khoi} coBai={(id) => baiById.has(id)} onMo={(id) => { setCur(id); setPop(id) }} />
               : tab === 'chuoi'
               ? <TabChuoi {...{ gocId: gocId!, lan, nhanhs, baiById, nhanhById, gapLai, conCu, sai, sel, cur, mo, duong, doSau, baiCaNhanh, coSai, conCuaNhanh, khung, L }}
                   onTick={(id) => setSel((p) => { const n = new Set(p); n.has(id) ? n.delete(id) : n.add(id); return n })}
@@ -446,6 +454,16 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
           </div>
         </div>
       )}
+      {moDanhMuc && (
+        <div className="fixed inset-0 z-[65] flex flex-col bg-slate-50">
+          <div className="flex shrink-0 items-center gap-3 border-b border-slate-200 bg-white px-5 py-2.5">
+            <span className="text-[15px] font-semibold text-slate-900">🏷 Danh mục {moDanhMuc === 'dang' ? 'Dạng bài' : 'Bổ đề'} · Hình</span>
+            <span className="text-[12px] text-slate-500">Nhãn dán cho từng ý ở tab ③ Kho bài · ý lớp trên dùng được nhãn lớp dưới, không chiều ngược</span>
+            <Btn className="ml-auto" onClick={() => setMoDanhMuc(null)}>✕ Đóng</Btn>
+          </div>
+          <div className="min-h-0 flex-1 overflow-auto p-5"><Catalog L={L} khoi={khoi} loai={moDanhMuc} reload={reload} /></div>
+        </div>
+      )}
       {hopNhom && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-5" onClick={() => setHopNhom(null)}>
           <div className="w-full max-w-lg rounded-2xl bg-white p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
@@ -478,8 +496,18 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
 
 /** ③ KHO BÀI của mô hình — CEO 14/10: "kho là các chuỗi bài, mỗi chuỗi 1 dòng".
  *  Một chuỗi = một bài kho với các ý a → b → c; mỗi ý hiện số bài mô hình nó gán (bấm để mở bài đó). Bấm dòng để xem đề + lời giải. */
-function TabKho({ gocId, coBai, onMo }: { gocId: string; coBai: (id: string) => boolean; onMo: (baitoanId: string) => void }) {
+function TabKho({ gocId, L, khoi, coBai, onMo }: { gocId: string; L: Luoi; khoi: string; coBai: (id: string) => boolean; onMo: (baitoanId: string) => void }) {
   const [rows, setRows] = useState<ChuoiKho[] | null>(null)
+  // NHÃN Dạng bài / Bổ đề của từng ý (Thùy 19/10) — vá tại chỗ sau mỗi thao tác
+  const [nhan, setNhan] = useState<api.NhanY[]>([])
+  const [deXuat, setDeXuat] = useState<api.DeXuatNhanY[]>([])
+  const [locNhan, setLocNhan] = useState('')            // '' | 'chua' | 'dang:<id>' | 'bo_de:<id>'
+  const [them, setThem] = useState<string | null>(null)  // ý đang mở ô thêm nhãn
+  const [loiNhan, setLoiNhan] = useState<string | null>(null)
+  const soK = (k: string | null) => (k ? parseInt(k, 10) || 0 : 0)
+  const dungDuoc = (k: string | null) => !k || soK(k) <= soK(khoi)   // nhãn lớp ≤ khối đang xem
+  const tenNhan = (loai: api.LoaiNhanY, id: string) => loai === 'dang'
+    ? (L.dang.find((d) => d.id === id)?.ten ?? '?') : (L.boDe.find((b) => b.id === id)?.ten ?? '?')
   const [loi, setLoi] = useState<string | null>(null)
   const [mo, setMo] = useState<string | null>(null)
   const [tim, setTim] = useState('')
@@ -487,14 +515,39 @@ function TabKho({ gocId, coBai, onMo }: { gocId: string; coBai: (id: string) => 
   useEffect(() => {
     let huy = false
     setRows(null); setLoi(null); setMo(null)
-    api.khoCuaMoHinh(gocId).then((r) => { if (!huy) setRows(r) }).catch((e) => { if (!huy) setLoi(e.message ?? String(e)) })
+    api.khoCuaMoHinh(gocId).then(async (r) => {
+      if (huy) return
+      setRows(r)
+      const n = await api.nhanCuaCacY(r.flatMap((c) => c.y.map((y) => y.id)))
+      if (!huy) { setNhan(n.nhan); setDeXuat(n.deXuat) }
+    }).catch((e) => { if (!huy) setLoi(e.message ?? String(e)) })
     return () => { huy = true }
   }, [gocId])
+  const datNhan = async (yId: string, loai: api.LoaiNhanY, nhanId: string, bat: boolean) => {
+    setLoiNhan(null)
+    try {
+      await api.datNhanY(yId, loai, nhanId, bat)
+      setNhan((p) => bat ? [...p.filter((x) => !(x.y_id === yId && x.loai === loai && x.nhan_id === nhanId)), { y_id: yId, loai, nhan_id: nhanId, nguon: 'nguoi' }]
+        : p.filter((x) => !(x.y_id === yId && x.loai === loai && x.nhan_id === nhanId)))
+      setDeXuat((p) => p.filter((x) => !(x.y_id === yId && x.loai === loai && x.nhan_id === nhanId)))
+    } catch (e: any) { setLoiNhan(e.message ?? String(e)) }
+  }
+  const quyet = async (d: api.DeXuatNhanY, nhanVao: boolean) => {
+    setLoiNhan(null)
+    try {
+      await api.quyetDeXuatNhanY(d.id, nhanVao)
+      setDeXuat((p) => p.filter((x) => x.id !== d.id))
+      if (nhanVao) setNhan((p) => [...p, { y_id: d.y_id, loai: d.loai, nhan_id: d.nhan_id, nguon: 'ai' }])
+    } catch (e: any) { setLoiNhan(e.message ?? String(e)) }
+  }
   const hien = useMemo(() => {
     const k = tim.trim().toLowerCase()
-    return (rows ?? []).filter((c) => (!conThieu || c.y.some((y) => !y.so))
+    const [locLoai, locId] = locNhan.split(':')
+    const yHop = (yId: string) => locNhan === 'chua' ? !nhan.some((x) => x.y_id === yId)
+      : nhan.some((x) => x.y_id === yId && x.loai === locLoai && x.nhan_id === locId)
+    return (rows ?? []).filter((c) => (!conThieu || c.y.some((y) => !y.so)) && (!locNhan || c.y.some((y) => yHop(y.id)))
       && (!k || `${c.ma_bai} ${c.nguon ?? ''} ${c.gia_thiet_chung ?? ''} ${c.y.map((y) => y.noi_dung).join(' ')}`.toLowerCase().includes(k)))
-  }, [rows, tim, conThieu])
+  }, [rows, tim, conThieu, locNhan, nhan])
   if (loi) return <div className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-[12.5px] text-red-700">{loi}</div>
   if (!rows) return <div className="py-8 text-center text-[13px] text-slate-400">Đang tải kho…</div>
   if (!rows.length) return <Empty icon="📚">Kho của mô hình này chưa có chuỗi nào. Gán bài ở <b>Duyệt kho › Hình luyện · chưa phân mô hình</b> (nút “＋ Gán mô hình”).</Empty>
@@ -505,8 +558,15 @@ function TabKho({ gocId, coBai, onMo }: { gocId: string; coBai: (id: string) => 
         <label className="flex cursor-pointer items-center gap-1.5 text-[12.5px] text-slate-600">
           <input type="checkbox" checked={conThieu} onChange={(e) => setConThieu(e.target.checked)} /> chỉ chuỗi còn ý chưa gán
         </label>
-        <span className="text-[12px] text-slate-400">{hien.length}/{rows.length} chuỗi</span>
+        <select className={inpCls + ' !w-64'} value={locNhan} onChange={(e) => setLocNhan(e.target.value)} title="Lọc chuỗi có ý mang nhãn này">
+          <option value="">— lọc theo nhãn —</option>
+          <option value="chua">⚠ còn ý chưa có nhãn</option>
+          <optgroup label="Dạng bài">{L.dang.filter((d) => dungDuoc(d.khoi)).map((d) => <option key={d.id} value={`dang:${d.id}`}>{d.ten}</option>)}</optgroup>
+          <optgroup label="Bổ đề">{L.boDe.filter((b) => dungDuoc(b.khoi)).map((b) => <option key={b.id} value={`bo_de:${b.id}`}>{b.ten}</option>)}</optgroup>
+        </select>
+        <span className="text-[12px] text-slate-400">{hien.length}/{rows.length} chuỗi{deXuat.length ? ` · ✨ ${deXuat.length} gợi ý nhãn chờ duyệt` : ''}</span>
       </div>
+      {loiNhan && <div className="mb-2 rounded-lg border border-red-200 bg-red-50 px-3 py-1.5 text-[12.5px] text-red-700">{loiNhan} <button className="ml-2 underline" onClick={() => setLoiNhan(null)}>đóng</button></div>}
       {/* Thùy 15/10: "view bé quá, mỗi chuỗi phải to gấp 2–3 lần mới đọc được" ⇒ mỗi chuỗi = một CARD đọc được ngay:
           hình to bên trái, đề + từng ý nguyên văn cỡ 15px bên phải, chip bài mô hình cạnh ý. Bấm "Lời giải" mới mở
           lời giải + hình riêng của ý — không còn trạng thái "hàng gập 1 dòng". */}
@@ -540,6 +600,32 @@ function TabKho({ gocId, coBai, onMo }: { gocId: string; coBai: (id: string) => 
                       <b className="shrink-0 text-violet-700">{y.nhan ? `${y.nhan})` : '•'}</b>
                       <div className="min-w-0 flex-1"><MathText>{y.noi_dung}</MathText></div>
                       {y.so && <span className="shrink-0 self-start font-mono text-[12px] text-teal-700">→ {y.so}</span>}
+                    </div>
+                    {/* Nhãn Dạng bài / Bổ đề của ý — chip đặc = đã dán · chip ✨ nét đứt = Claude gợi ý chờ duyệt */}
+                    <div className="mt-1.5 flex flex-wrap items-center gap-1 text-[12px]">
+                      {nhan.filter((x) => x.y_id === y.id).map((x) => (
+                        <span key={x.loai + x.nhan_id} className={`flex items-center gap-1 rounded-full px-2 py-0.5 ${x.loai === 'dang' ? 'bg-violet-100 text-violet-800' : 'bg-amber-100 text-amber-800'}`}
+                          title={(x.loai === 'dang' ? 'Dạng bài' : 'Bổ đề') + (x.nguon === 'ai' ? ' · Claude gợi ý, đã duyệt' : '')}>
+                          {x.loai === 'dang' ? '⌥' : '◦'} {tron(tenNhan(x.loai, x.nhan_id))}
+                          <button onClick={() => void datNhan(y.id, x.loai, x.nhan_id, false)} className="opacity-50 hover:opacity-100" title="Gỡ nhãn">✕</button>
+                        </span>))}
+                      {deXuat.filter((d) => d.y_id === y.id).map((d) => (
+                        <span key={d.id} className="flex items-center gap-1 rounded-full border border-dashed border-sky-400 bg-sky-50 px-2 py-0.5 text-sky-800" title={`Claude gợi ý: ${d.ly_do}`}>
+                          ✨ {d.loai === 'dang' ? 'Dạng' : 'Bổ đề'}: {tron(tenNhan(d.loai, d.nhan_id))}
+                          <button onClick={() => void quyet(d, true)} className="font-bold text-emerald-700" title="Đúng — dán nhãn">✓</button>
+                          <button onClick={() => void quyet(d, false)} className="text-rose-600" title="Sai — bỏ gợi ý">✕</button>
+                        </span>))}
+                      {them === y.id ? (
+                        <select autoFocus className="rounded border border-slate-300 bg-white px-1.5 py-0.5 text-[12px]" value=""
+                          onBlur={() => setThem(null)}
+                          onChange={(e) => { const [lo, id] = e.target.value.split(':'); if (id) void datNhan(y.id, lo as api.LoaiNhanY, id, true); setThem(null) }}>
+                          <option value="">— chọn nhãn —</option>
+                          <optgroup label="Dạng bài">{L.dang.filter((d) => dungDuoc(d.khoi) && !nhan.some((x) => x.y_id === y.id && x.nhan_id === d.id)).map((d) => <option key={d.id} value={`dang:${d.id}`}>{d.ten}</option>)}</optgroup>
+                          <optgroup label="Bổ đề">{L.boDe.filter((b) => dungDuoc(b.khoi) && !nhan.some((x) => x.y_id === y.id && x.nhan_id === b.id)).map((b) => <option key={b.id} value={`bo_de:${b.id}`}>{b.ten}</option>)}</optgroup>
+                        </select>
+                      ) : (
+                        <button onClick={() => setThem(y.id)} className="rounded-full border border-slate-300 px-2 py-0.5 text-slate-500 hover:border-violet-400 hover:text-violet-700">＋ nhãn</button>
+                      )}
                     </div>
                     {dangMo && y.loi_giai && (
                       <div className="mt-2 border-t border-slate-200 pt-2 text-[14px] leading-relaxed text-slate-700"><MathText>{y.loi_giai}</MathText></div>)}

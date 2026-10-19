@@ -1,5 +1,6 @@
 // M6 — Dạng bài (2 tầng: loại câu hỏi › cách xử lý) · M7 — Bổ đề (danh mục PHẲNG).
-// Cả hai gắn ở CÁCH GIẢI của bài toán nhỏ, KHÔNG gắn ở ý. Toàn nhánh Hình, dùng chung mọi họ.
+// Thùy 19/10: nay là NHÃN dán cho TỪNG Ý của kho Luyện (hinh_y_dang / hinh_y_bo_de) — nhãn lớp dưới dùng được cho ý lớp trên.
+// (Trước 19/10 gắn ở cách giải của bài toán nhỏ — liên kết cũ giữ nguyên, kho cũ thôi sửa.)
 //
 // Tra ngược = giá trị chính của hai màn này: chọn 1 dạng/bổ đề → thấy các bài toán nhỏ
 // dùng nó, kèm tag mô hình → một dạng trải nhiều họ.
@@ -54,7 +55,7 @@ function MDang({ L, khoi, reload }: { L: Luoi; khoi: string; reload: () => Promi
         <Btn kind="pri" onClick={() => setForm({ cap: 'loai_ch' })}>＋ Loại câu hỏi</Btn>
       </div>
       <p className="mb-4 max-w-3xl text-[12.5px] text-slate-500">
-        Hai tầng: <b>loại câu hỏi › cách xử lý</b>. Gắn ở <b>cách giải</b> của bài toán nhỏ. Mỗi dạng gắn được <b>lý thuyết/phương pháp</b> (chấm <span className="text-emerald-600">●</span> = đã có).
+        Hai tầng: <b>loại câu hỏi › cách xử lý</b>. Dán cho <b>từng ý</b> ở tab ③ Kho bài (Hình – Luyện); ý lớp trên dùng được nhãn lớp dưới. Mỗi dạng gắn được <b>lý thuyết/phương pháp</b> (chấm <span className="text-emerald-600">●</span> = đã có).
       </p>
 
       <div className="grid items-start gap-4 lg:grid-cols-[1fr_380px]">

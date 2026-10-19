@@ -71,10 +71,7 @@ export default function KhoHinhScreen({ khoi }: { khoi: string }) {
       { key: 'tlchuan', icon: '⎙', ten: 'Tài liệu chuẩn' },
       { key: 'soan', icon: '✎', ten: 'Soạn tài liệu (ad-hoc)' },
     ] },
-    { nhom: 'Catalog', items: [
-      { key: 'dang', icon: '⌥', ten: 'Dạng bài', n: L.dang.filter((d) => d.cap === 'dang').length },
-      { key: 'bode', icon: '◦', ten: 'Bổ đề', n: L.boDe.length },
-    ] },
+    // Thùy 19/10: danh mục Dạng bài / Bổ đề DỜI sang kho mới (Bản đồ mới › Hình – Luyện › 🏷) — kho cũ thôi sửa.
   ]
 
   return (

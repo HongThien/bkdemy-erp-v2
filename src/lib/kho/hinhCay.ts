@@ -328,3 +328,33 @@ export async function doiNhomMoHinh(moHinhId: string, nhomId: string): Promise<v
   const { error } = await supabase.from('hinh_mo_hinh').update({ nhom_mh_id: nhomId, updated_at: new Date().toISOString() }).eq('id', moHinhId)
   if (error) throw error
 }
+
+// ── NHÃN DẠNG BÀI / BỔ ĐỀ cho từng Ý (mig 202610191644, Thùy 19/10) — để lọc + làm tài liệu, không đo.
+// Luật khối ở DB: nhãn.khoi ≤ khối của bài. Claude gợi ý (hinh_y_nhan_de_xuat) → người nhận/bác.
+export type LoaiNhanY = 'dang' | 'bo_de'
+export type NhanY = { y_id: string; loai: LoaiNhanY; nhan_id: string; nguon: 'nguoi' | 'ai' }
+export type DeXuatNhanY = { id: number; y_id: string; loai: LoaiNhanY; nhan_id: string; ly_do: string }
+export async function nhanCuaCacY(yIds: string[]): Promise<{ nhan: NhanY[]; deXuat: DeXuatNhanY[] }> {
+  const nhan: NhanY[] = [], deXuat: DeXuatNhanY[] = []
+  for (let i = 0; i < yIds.length; i += 100) {
+    const lo = yIds.slice(i, i + 100)
+    const [a, b, d] = await Promise.all([
+      supabase.from('hinh_y_dang').select('y_id, dang_id, nguon').in('y_id', lo).limit(5000),
+      supabase.from('hinh_y_bo_de').select('y_id, bo_de_id, nguon').in('y_id', lo).limit(5000),
+      supabase.from('hinh_y_nhan_de_xuat').select('id, y_id, loai, nhan_id, ly_do').in('y_id', lo).limit(5000),
+    ])
+    if (a.error) throw a.error; if (b.error) throw b.error; if (d.error) throw d.error
+    for (const r of a.data ?? []) nhan.push({ y_id: r.y_id, loai: 'dang', nhan_id: r.dang_id, nguon: r.nguon })
+    for (const r of b.data ?? []) nhan.push({ y_id: r.y_id, loai: 'bo_de', nhan_id: r.bo_de_id, nguon: r.nguon })
+    deXuat.push(...((d.data ?? []) as DeXuatNhanY[]))
+  }
+  return { nhan, deXuat }
+}
+export async function datNhanY(yId: string, loai: LoaiNhanY, nhanId: string, bat: boolean): Promise<void> {
+  const { error } = await supabase.rpc('fn_hl_y_nhan_dat', { p_y: yId, p_loai: loai, p_nhan: nhanId, p_bat: bat })
+  if (error) throw error
+}
+export async function quyetDeXuatNhanY(id: number, nhan: boolean, lyDo = ''): Promise<void> {
+  const { error } = await supabase.rpc('fn_hl_y_nhan_quyet', { p_de_xuat: id, p_nhan: nhan, p_ly_do: lyDo })
+  if (error) throw error
+}
