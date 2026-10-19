@@ -3,6 +3,7 @@
 //
 //   node scripts/hinh-luyen/nhap_tu_de_thi.mjs --khoi 8            # chạy khô: tách + báo cáo, ghi bản nháp JSON, KHÔNG ghi DB
 //   node scripts/hinh-luyen/nhap_tu_de_thi.mjs --khoi 8 --ghi      # ghi DB (1 transaction); bài đã nhập (theo nguon_ma_cau) thì bỏ qua
+//   --loc '<regex>'  chỉ lấy đề có TÊN khớp (không phân biệt hoa thường), vd K7 19/10: --loc 'giữa học kì 1|giữa kì I'
 //
 // Luật tách (máy làm phần CHẮC, phần không chắc để nguyên và gắn cờ — §1.5 thà bỏ trống còn hơn đánh sai):
 //   · ĐỀ: mốc ý = "a)" "b)" "c)"… nối tiếp nhau. Trước "a)" = giả thiết chung. Câu dẫn cuối kết thúc bằng ":" ("Chứng minh rằng:")
@@ -16,6 +17,7 @@ import pg from 'pg'
 
 const arg = (k, d = null) => { const i = process.argv.indexOf(k); return i >= 0 ? (process.argv[i + 1] ?? true) : d }
 const khoi = String(arg('--khoi', '8'))
+const LOC = arg('--loc')   // regex trên tên đề (Postgres ~*)
 const THU = process.argv.includes('--thu')          // ghi thật rồi ROLLBACK — kiểm ràng buộc/trigger mà không để lại gì
 const GHI = process.argv.includes('--ghi') || THU
 const txt = readFileSync(new URL('../../.env', import.meta.url), 'utf8')
@@ -27,9 +29,9 @@ const q = async (s, p) => (await c.query(s, p)).rows
 
 // ── tách theo mốc NỐI TIẾP: họ chữ a) b) c)… hoặc họ số 1) 2) 3)… ──
 // Chữ: mốc đứng đầu dòng hoặc sau khoảng trắng. Số: CHỈ nhận ở đầu dòng (tránh "(1)", "hình 1)" giữa câu).
-function tachMotHo(s, ho) {
+function tachMotHo(s, ho, tu0 = 0) {
   const moc = []
-  let i = 0, tu = 0
+  let i = 0, tu = tu0
   while (i < ho.length) {
     const re = ho === SO
       ? new RegExp(String.raw`(^|\n)[ \t]*\*{0,2}` + ho[i] + String.raw`\)\*{0,2}[ \t]+`, 'g')
@@ -60,6 +62,17 @@ function tachCauDan(chung) {
   if (/^[^.!?\n]{2,80}:\s*$/.test(chung)) return { chung: '', dan: chung.trim() }
   return { chung, dan: '' }
 }
+function tachLoiGiaiCuoi(s, ho, n) {
+  const dau = new RegExp(String.raw`(^|
+|[ 	])[ 	]*\*{0,2}` + ho[0] + String.raw`\)\*{0,2}[ 	]+`, 'g')
+  const viTri = []; let m
+  while ((m = dau.exec(s))) viTri.push(m.index)
+  for (let k = viTri.length - 1; k >= 0; k--) {
+    const t = tachMotHo(s, ho, viTri[k])
+    if (t && t.y.length === n) return t
+  }
+  return null
+}
 const boDau = (s) => s.replace(/^\*\*Phần\s*\d+[^*]*\*\*\s*/i, '').trim()
 
 function tachBai(r) {
@@ -74,12 +87,24 @@ function tachBai(r) {
     return { loai: 'mot_y', chung: null, huongDan, y: [{ nhan: null, hoi: de, loiGiai: trinhBay || null }], co }
   }
   // câu Đúng/Sai nhiều mệnh đề: các mệnh đề ĐỘC LẬP, lời giải thường gộp/đảo thứ tự ⇒ không phải chuỗi ý — để nguyên 1 ý, gắn cờ
-  if (/đúng hay sai|khẳng định nào đúng|đúng\s*\/\s*sai/i.test(d.truoc)) {
+  // (K7 19/10) đề không ghi chữ "đúng sai" nhưng lời giải chốt "khẳng định a) đúng / b) sai" ⇒ vẫn là câu Đúng/Sai
+  const lgDungSai = /khẳng định\s*[a-h]\)?\s*(là\s*)?(đúng|sai)|kết luận:\s*\n?\s*[a-h]\)\s*(đúng|sai)/i.test(trinhBay)
+  if (r.loai_cau === 'dung_sai' || lgDungSai || /đúng hay sai|khẳng định nào đúng|đúng\s*\/\s*sai|tính đúng sai|đúng sai của/i.test(d.truoc)) {
     co.push('dang_dung_sai: để nguyên 1 ý')
     return { loai: 'khong_tach', chung: null, huongDan, y: [{ nhan: null, hoi: de, loiGiai: trinhBay || null }], co }
   }
+  // (K7 19/10) mô tả hình "Theo hình vẽ: …" đặt SAU ý cuối ⇒ thuộc giả thiết chung, không thuộc ý cuối
+  const cuoi = d.y[d.y.length - 1], iTheo = cuoi.text.search(/\n\s*Theo hình vẽ/i)
+  if (iTheo > 0) {
+    const theo = cuoi.text.slice(iTheo).trim(); cuoi.text = cuoi.text.slice(0, iTheo).trim()
+    const dong = d.truoc.split('\n')   // câu dẫn "…:" ở dòng cuối phải đứng SAU mô tả hình để còn gắn vào từng ý
+    if (/:\s*$/.test(dong[dong.length - 1] ?? '')) dong.splice(dong.length - 1, 0, theo); else dong.push(theo)
+    d.truoc = dong.join('\n').trim()
+  }
   const { chung, dan } = tachCauDan(d.truoc)
-  const g = tachTheoMoc(trinhBay, d.ho)
+  // Lời giải hay mở đầu bằng khối "GT … KL: a) …; b) …" ⇒ chuỗi mốc ĐẦU TIÊN là danh sách KL, không phải lời giải.
+  // Lấy chuỗi mốc a→n (n = số ý của đề) BẮT ĐẦU MUỘN NHẤT; mọi thứ trước nó (GT/KL, vẽ hình) vào đầu lời giải ý a. (K7 19/10)
+  const g = tachLoiGiaiCuoi(trinhBay, d.ho, d.y.length) ?? tachTheoMoc(trinhBay, d.ho)
   if (!g || g.y.length !== d.y.length || g.y.some((x, i) => x.nhan !== d.y[i].nhan)) {
     co.push(`can_tach_tay: đề ${d.y.length} ý, lời giải ${g ? g.y.length : 0} đoạn`)
     return { loai: 'khong_tach', chung: null, huongDan, y: [{ nhan: null, hoi: de, loiGiai: trinhBay || null }], co }
@@ -104,7 +129,8 @@ const nguon = await q(`
     join tai_lieu_cau tc on tc.phan_id = p.id
     join hinh_hoc_cau_hoi h on h.ma_cau = tc.ma_cau
    where t.loai = 'de_thi' and t.khoi = $1 and h.xoa_at is null and h.loai_cau in ('tu_luan', 'tra_loi_ngan')
-   order by h.ma_cau, t.created_at`, [khoi])
+     and ($2::text is null or t.ten ~* $2)
+   order by h.ma_cau, t.created_at`, [khoi, LOC === true ? null : LOC])
 const daCo = new Set((await q(`select nguon_ma_cau from hinh_bai where nguon_ma_cau is not null`).catch(() => [])).map((r) => r.nguon_ma_cau))
 
 const ra = []

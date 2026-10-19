@@ -1,0 +1,1053 @@
+[
+ {
+  "nguon_ma_cau": "HHC002605",
+  "loai_cau": "tra_loi_ngan",
+  "ten_de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Ngôi Sao Hoàng Mai",
+  "de_bai": "Cho $Oa$ và $Ob$ là hai tia đối nhau, tia $Om$ tạo với tia $Oa$ một góc $\\widehat{aOm}=58^\\circ$. Tính $\\widehat{bOm}$.",
+  "dap_an": "122",
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/HHC002605-e2605260-578e-4dd2-84f4-ad39c47758c4.png",
+  "anh_loi_giai": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/HHC002605-e2605260-578e-4dd2-84f4-ad39c47758c4.png",
+  "da_co": false,
+  "loai": "mot_y",
+  "chung": null,
+  "huongDan": "**Mấu chốt:** hai tia $Oa$, $Ob$ đối nhau nên hai góc $\\widehat{aOm}$ và $\\widehat{bOm}$ kề bù, tổng số đo của chúng là $180^\\circ$.\n\n**Bước 1.** Nhận ra vị trí: $\\widehat{aOm}$ và $\\widehat{bOm}$ có chung cạnh $Om$, còn hai cạnh kia là hai tia đối nhau $Oa$, $Ob$.\n\n**Bước 2.** Kết luận hai góc này là hai góc kề bù rồi dùng tính chất tổng hai góc kề bù bằng $180^\\circ$.\n\n**Bước 3.** Lấy $180^\\circ$ trừ số đo góc đã cho để ra số đo góc cần tính.\n\n**Chú ý:** góc $\\widehat{bOm}$ là góc tù vì nó kề bù với một góc nhọn.",
+  "y": [
+   {
+    "nhan": null,
+    "hoi": "Cho $Oa$ và $Ob$ là hai tia đối nhau, tia $Om$ tạo với tia $Oa$ một góc $\\widehat{aOm}=58^\\circ$. Tính $\\widehat{bOm}$.",
+    "loiGiai": "Vì $Oa$ và $Ob$ là hai tia đối nhau nên $\\widehat{aOm}$ và $\\widehat{bOm}$ là hai góc kề bù.\n\nDo đó $\\widehat{aOm}+\\widehat{bOm}=180^\\circ$ (hai góc kề bù).\n\n$58^\\circ+\\widehat{bOm}=180^\\circ$\n\n$\\widehat{bOm}=180^\\circ-58^\\circ=122^\\circ$\n\nVậy $\\widehat{bOm}=122^\\circ$."
+   }
+  ],
+  "co": []
+ },
+ {
+  "nguon_ma_cau": "HHC002606",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Ngôi Sao Hoàng Mai",
+  "de_bai": "Cho $Ox$ và $Oy$ là hai tia đối nhau. Vẽ tia $Ot$ và $Oz$ sao cho $\\widehat{yOt}=40^\\circ$; $\\widehat{xOz}=100^\\circ$ (tia $Ot$ nằm giữa hai tia $Oy$ và $Oz$).\na) Vẽ hình và tính số đo của $\\widehat{zOy}$.\nb) Tính $\\widehat{zOt}$. Chứng minh $Ot$ là tia phân giác của $\\widehat{zOy}$.",
+  "dap_an": null,
+  "anh_de": null,
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "nhieu_y",
+  "chung": "Cho $Ox$ và $Oy$ là hai tia đối nhau. Vẽ tia $Ot$ và $Oz$ sao cho $\\widehat{yOt}=40^\\circ$; $\\widehat{xOz}=100^\\circ$ (tia $Ot$ nằm giữa hai tia $Oy$ và $Oz$).",
+  "huongDan": "**Mấu chốt:** ý a) dùng hai góc kề bù $\\widehat{xOz}$ và $\\widehat{zOy}$; ý b) dùng tia $Ot$ nằm giữa để cộng góc, rồi so sánh hai góc $\\widehat{zOt}$ và $\\widehat{yOt}$ để kết luận tia phân giác.\n\n**Bước 1.** Ý a) Vẽ hình theo đúng số đo đề cho: vẽ đường thẳng chứa hai tia đối nhau $Ox$, $Oy$, rồi vẽ hai tia $Oz$, $Ot$ về cùng một phía của đường thẳng đó.\n\n**Bước 2.** Ý a) Vì $Ox$, $Oy$ đối nhau nên $\\widehat{xOz}$ và $\\widehat{zOy}$ kề bù, lấy $180^\\circ$ trừ $\\widehat{xOz}$ để tính $\\widehat{zOy}$.\n\n**Bước 3.** Ý b) Tia $Ot$ nằm giữa $Oy$ và $Oz$ nên $\\widehat{yOt}$ cộng $\\widehat{zOt}$ bằng $\\widehat{zOy}$, từ đó tính $\\widehat{zOt}$.\n\n**Bước 4.** Ý b) Tia phân giác là tia nằm giữa hai cạnh và chia góc thành hai góc bằng nhau, nên so sánh $\\widehat{zOt}$ với $\\widehat{yOt}$ để kết luận.\n\n**Chú ý:** phải nêu rõ tia $Ot$ nằm giữa hai tia $Oy$, $Oz$ trước khi cộng góc và trước khi kết luận tia phân giác.",
+  "y": [
+   {
+    "nhan": "a",
+    "hoi": "Vẽ hình và tính số đo của $\\widehat{zOy}$.",
+    "loiGiai": "Cách vẽ: vẽ đường thẳng $xy$ và lấy điểm $O$ trên đường thẳng đó, khi đó $Ox$ và $Oy$ là hai tia đối nhau. Dùng thước đo góc vẽ tia $Oz$ sao cho $\\widehat{xOz}=100^\\circ$, rồi vẽ tia $Ot$ cùng phía với $Oz$ đối với đường thẳng $xy$ sao cho $\\widehat{yOt}=40^\\circ$ và $Ot$ nằm giữa $Oy$, $Oz$.\n\nVì $Ox$ và $Oy$ là hai tia đối nhau nên $\\widehat{xOz}$ và $\\widehat{zOy}$ là hai góc kề bù.\n\n$\\widehat{xOz}+\\widehat{zOy}=180^\\circ$ (hai góc kề bù)\n\n$100^\\circ+\\widehat{zOy}=180^\\circ$\n\n$\\widehat{zOy}=180^\\circ-100^\\circ=80^\\circ$\n\nVậy $\\widehat{zOy}=80^\\circ$."
+   },
+   {
+    "nhan": "b",
+    "hoi": "Tính $\\widehat{zOt}$. Chứng minh $Ot$ là tia phân giác của $\\widehat{zOy}$.",
+    "loiGiai": "Vì tia $Ot$ nằm giữa hai tia $Oy$ và $Oz$ (giả thiết) nên $\\widehat{yOt}+\\widehat{zOt}=\\widehat{zOy}$.\n\n$40^\\circ+\\widehat{zOt}=80^\\circ$\n\n$\\widehat{zOt}=80^\\circ-40^\\circ=40^\\circ$\n\nVậy $\\widehat{zOt}=40^\\circ$.\n\nTa có tia $Ot$ nằm giữa hai tia $Oy$ và $Oz$ (giả thiết) và $\\widehat{zOt}=\\widehat{yOt}=40^\\circ$.\n\nVậy $Ot$ là tia phân giác của $\\widehat{zOy}$."
+   }
+  ],
+  "co": []
+ },
+ {
+  "nguon_ma_cau": "HHC002607",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Ngôi Sao Hoàng Mai",
+  "de_bai": "Cho góc $\\widehat{xOm}=50^\\circ$. Vẽ tia $Oy$ là tia đối của tia $Ox$.\na) Vẽ hình và tính số đo của góc $\\widehat{yOm}$.\nb) Trên cùng nửa mặt phẳng bờ $xy$ chứa tia $Om$, vẽ thêm tia $On$ sao cho $\\widehat{yOn}=80^\\circ$. Chứng minh tia $Om$ là tia phân giác của $\\widehat{xOn}$.",
+  "dap_an": null,
+  "anh_de": null,
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "nhieu_y",
+  "chung": "Cho góc $\\widehat{xOm}=50^\\circ$. Vẽ tia $Oy$ là tia đối của tia $Ox$.",
+  "huongDan": "**Mấu chốt:** hai tia đối nhau tạo ra các cặp góc kề bù, và muốn chứng minh phân giác phải chỉ ra tia nằm giữa cùng hai góc bằng nhau.\n\n**Bước 1.** Ý a: vẽ đường thẳng $xy$ đi qua $O$ rồi dùng thước đo góc vẽ tia $Om$ tạo với $Ox$ một góc $50^\\circ$.\n\n**Bước 2.** Nhận ra $\\widehat{xOm}$ và $\\widehat{yOm}$ có chung cạnh $Om$ và hai cạnh còn lại là hai tia đối nhau nên là hai góc kề bù, từ đó tính $\\widehat{yOm}$.\n\n**Bước 3.** Ý b: tính $\\widehat{xOn}$ nhờ $\\widehat{xOn}$ và $\\widehat{yOn}$ cũng là hai góc kề bù.\n\n**Bước 4.** So $\\widehat{xOm}$ với $\\widehat{xOn}$ trên cùng nửa mặt phẳng để chỉ ra tia $Om$ nằm giữa $Ox$ và $On$, rồi tính $\\widehat{mOn}$.\n\n**Bước 5.** So hai góc $\\widehat{xOm}$ và $\\widehat{mOn}$ để kết luận tia $Om$ là tia phân giác.",
+  "y": [
+   {
+    "nhan": "a",
+    "hoi": "Vẽ hình và tính số đo của góc $\\widehat{yOm}$.",
+    "loiGiai": "Cách vẽ hình: vẽ đường thẳng $xy$, lấy điểm $O$ trên đường thẳng đó; dùng thước đo góc vẽ tia $Om$ nằm trên một nửa mặt phẳng bờ $xy$ sao cho $\\widehat{xOm}=50^\\circ$.\n\nVì $Ox$ và $Oy$ là hai tia đối nhau nên $\\widehat{xOm}$ và $\\widehat{yOm}$ là hai góc kề bù.\n\n$\\widehat{yOm}=180^\\circ-\\widehat{xOm}=180^\\circ-50^\\circ=130^\\circ$"
+   },
+   {
+    "nhan": "b",
+    "hoi": "Trên cùng nửa mặt phẳng bờ $xy$ chứa tia $Om$, vẽ thêm tia $On$ sao cho $\\widehat{yOn}=80^\\circ$. Chứng minh tia $Om$ là tia phân giác của $\\widehat{xOn}$.",
+    "loiGiai": "Vì $Ox$ và $Oy$ là hai tia đối nhau nên $\\widehat{xOn}$ và $\\widehat{yOn}$ là hai góc kề bù.\n\n$\\widehat{xOn}=180^\\circ-\\widehat{yOn}=180^\\circ-80^\\circ=100^\\circ$\n\nHai tia $Om$ và $On$ cùng nằm trên một nửa mặt phẳng bờ $xy$ chứa tia $Ox$ và $\\widehat{xOm}=50^\\circ<100^\\circ=\\widehat{xOn}$ nên tia $Om$ nằm giữa hai tia $Ox$ và $On$.\n\nDo đó $\\widehat{xOm}+\\widehat{mOn}=\\widehat{xOn}$.\n\n$\\widehat{mOn}=\\widehat{xOn}-\\widehat{xOm}=100^\\circ-50^\\circ=50^\\circ$\n\nTa có $Om$ nằm giữa hai tia $Ox$, $On$ và $\\widehat{xOm}=\\widehat{mOn}=50^\\circ$.\n\nVậy $Om$ là tia phân giác của $\\widehat{xOn}$."
+   }
+  ],
+  "co": []
+ },
+ {
+  "nguon_ma_cau": "HHC002608",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Ngôi Sao Hoàng Mai",
+  "de_bai": "Cho hình vẽ bên, biết $\\widehat{xAn}=70^\\circ$, $\\widehat{ABa}=110^\\circ$ (theo hình: $x$, $A$, $B$, $y$ theo thứ tự đó cùng nằm trên một đường thẳng; $A$ thuộc $mn$, $B$ thuộc $ab$; hai tia $An$ và $Ba$ nằm về hai phía khác nhau của đường thẳng $xy$). Chứng minh $mn\\parallel ab$.",
+  "dap_an": null,
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/HHC002608-718fe7b4-e592-4dcb-8179-4dc9aeaea882.png",
+  "anh_loi_giai": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/HHC002608-718fe7b4-e592-4dcb-8179-4dc9aeaea882.png",
+  "da_co": false,
+  "loai": "mot_y",
+  "chung": null,
+  "huongDan": "**Mấu chốt:** hai đường thẳng song song nhận biết được nhờ một cặp góc so le trong (hoặc đồng vị) bằng nhau, nên phải tạo ra cặp góc như vậy từ góc đã cho.\n\n**Bước 1.** Nhận ra đường thẳng $xy$ cắt $mn$ tại $A$ và cắt $ab$ tại $B$ nên cần một cặp góc so le trong hoặc đồng vị ở $A$ và $B$.\n\n**Bước 2.** Từ $\\widehat{xAn}$ tìm góc kề bù với nó tại đỉnh $A$, đó là góc $\\widehat{BAn}$.\n\n**Bước 3.** So $\\widehat{BAn}$ với $\\widehat{ABa}$ rồi xác định hai góc này ở vị trí so le trong.\n\n**Bước 4.** Kết luận hai đường thẳng song song theo dấu hiệu nhận biết.",
+  "y": [
+   {
+    "nhan": null,
+    "hoi": "Cho hình vẽ bên, biết $\\widehat{xAn}=70^\\circ$, $\\widehat{ABa}=110^\\circ$ (theo hình: $x$, $A$, $B$, $y$ theo thứ tự đó cùng nằm trên một đường thẳng; $A$ thuộc $mn$, $B$ thuộc $ab$; hai tia $An$ và $Ba$ nằm về hai phía khác nhau của đường thẳng $xy$). Chứng minh $mn\\parallel ab$.",
+    "loiGiai": "Vì $x$, $A$, $B$ thẳng hàng và $A$ nằm giữa $x$ và $B$ nên $Ax$ và $AB$ là hai tia đối nhau, do đó $\\widehat{xAn}$ và $\\widehat{BAn}$ là hai góc kề bù.\n\n$\\widehat{BAn}=180^\\circ-\\widehat{xAn}=180^\\circ-70^\\circ=110^\\circ$\n\nTa có $\\widehat{BAn}=\\widehat{ABa}=110^\\circ$.\n\nHai góc $\\widehat{BAn}$ và $\\widehat{ABa}$ ở vị trí so le trong (đường thẳng $AB$ cắt $mn$ tại $A$, cắt $ab$ tại $B$; $An$ và $Ba$ nằm về hai phía của $AB$).\n\nVậy $mn\\parallel ab$ (có một cặp góc so le trong bằng nhau)."
+   }
+  ],
+  "co": []
+ },
+ {
+  "nguon_ma_cau": "HHC002609",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Ngôi Sao Hoàng Mai",
+  "de_bai": "Cho hình vẽ bên, biết $Ay$ là phân giác của $\\widehat{xAC}$; $\\widehat{BAC}=100^\\circ$; $\\widehat{ABC}=40^\\circ$ (theo hình: $B$, $A$, $x$ thẳng hàng, $Ax$ là tia đối của tia $AB$).\na) Tính số đo $\\widehat{xAC}$ và $\\widehat{xAy}$. Từ đó chứng minh $Ay\\parallel BC$.\nb) Kẻ tia $Az$ nằm trong góc $\\widehat{BAC}$ sao cho góc $\\widehat{zAy}=90^\\circ$. Chứng minh tia $Az$ là phân giác của $\\widehat{BAC}$.",
+  "dap_an": null,
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/HHC002609-a8faa885-70ad-4fd8-b19c-ed544af61c2c.png",
+  "anh_loi_giai": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/HHC002609-a8faa885-70ad-4fd8-b19c-ed544af61c2c.png",
+  "da_co": false,
+  "loai": "nhieu_y",
+  "chung": "Cho hình vẽ bên, biết $Ay$ là phân giác của $\\widehat{xAC}$; $\\widehat{BAC}=100^\\circ$; $\\widehat{ABC}=40^\\circ$ (theo hình: $B$, $A$, $x$ thẳng hàng, $Ax$ là tia đối của tia $AB$).",
+  "huongDan": "**Mấu chốt:** $\\widehat{xAC}$ và $\\widehat{BAC}$ kề bù nên tính được $\\widehat{xAC}$; phân giác chia đôi góc đó để so với $\\widehat{ABC}$ ở vị trí đồng vị.\n\n**Bước 1.** Ý a: nhận ra $Ax$ và $AB$ là hai tia đối nhau nên $\\widehat{xAC}$ kề bù với $\\widehat{BAC}$, từ đó tính $\\widehat{xAC}$.\n\n**Bước 2.** Dùng tính chất tia phân giác để chia đôi $\\widehat{xAC}$ và tìm số đo $\\widehat{xAy}$.\n\n**Bước 3.** So $\\widehat{xAy}$ với $\\widehat{ABC}$: hai góc này ở vị trí đồng vị nên bằng nhau thì hai đường thẳng song song.\n\n**Bước 4.** Ý b: tìm vị trí tia $AC$ so với hai tia $Ay$, $Az$ rồi dùng $\\widehat{zAy}=90^\\circ$ để tìm $\\widehat{CAz}$.\n\n**Bước 5.** Tính $\\widehat{BAz}$ từ $\\widehat{BAC}$ và $\\widehat{CAz}$, rồi so hai góc $\\widehat{BAz}$, $\\widehat{CAz}$ để kết luận phân giác.",
+  "y": [
+   {
+    "nhan": "a",
+    "hoi": "Tính số đo $\\widehat{xAC}$ và $\\widehat{xAy}$. Từ đó chứng minh $Ay\\parallel BC$.",
+    "loiGiai": "Vì $Ax$ và $AB$ là hai tia đối nhau nên $\\widehat{xAC}$ và $\\widehat{BAC}$ là hai góc kề bù.\n\n$\\widehat{xAC}=180^\\circ-\\widehat{BAC}=180^\\circ-100^\\circ=80^\\circ$\n\nVì $Ay$ là tia phân giác của $\\widehat{xAC}$ nên $\\widehat{xAy}=\\widehat{yAC}=\\widehat{xAC}:2=80^\\circ:2=40^\\circ$.\n\nTa có $\\widehat{xAy}=\\widehat{ABC}=40^\\circ$.\n\nHai góc $\\widehat{xAy}$ và $\\widehat{ABC}$ ở vị trí đồng vị (đường thẳng $AB$ cắt $Ay$ tại $A$, cắt $BC$ tại $B$).\n\nVậy $Ay\\parallel BC$ (có một cặp góc đồng vị bằng nhau)."
+   },
+   {
+    "nhan": "b",
+    "hoi": "Kẻ tia $Az$ nằm trong góc $\\widehat{BAC}$ sao cho góc $\\widehat{zAy}=90^\\circ$. Chứng minh tia $Az$ là phân giác của $\\widehat{BAC}$.",
+    "loiGiai": "Vì $Ay$ nằm trong $\\widehat{xAC}$, $Az$ nằm trong $\\widehat{BAC}$ mà $\\widehat{xAC}$ và $\\widehat{BAC}$ là hai góc kề bù nên tia $AC$ nằm giữa hai tia $Ay$ và $Az$.\n\nDo đó $\\widehat{yAC}+\\widehat{CAz}=\\widehat{yAz}$.\n\n$40^\\circ+\\widehat{CAz}=90^\\circ$\n\n$\\widehat{CAz}=90^\\circ-40^\\circ=50^\\circ$\n\nVì $Az$ nằm trong $\\widehat{BAC}$ nên $\\widehat{BAz}+\\widehat{zAC}=\\widehat{BAC}$.\n\n$\\widehat{BAz}=100^\\circ-50^\\circ=50^\\circ$\n\nTa có $Az$ nằm giữa hai tia $AB$, $AC$ và $\\widehat{BAz}=\\widehat{zAC}=50^\\circ$.\n\nVậy $Az$ là tia phân giác của $\\widehat{BAC}$."
+   }
+  ],
+  "co": []
+ },
+ {
+  "nguon_ma_cau": "HHC002610",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Ngôi Sao Hoàng Mai",
+  "de_bai": "Cho hình vẽ bên, biết $OA\\perp OB$, $\\widehat{yAt}=40^\\circ$, $\\widehat{xOy}=140^\\circ$ và $\\widehat{OBz}=130^\\circ$ (theo hình: $O$, $A$, $y$ theo thứ tự đó thẳng hàng; hai tia $Ox$ và $At$ nằm về hai phía của đường thẳng $OA$; hai tia $Ox$ và $Bz$ nằm về hai phía của đường thẳng $OB$; hai điểm $A$ và $B$ nằm về hai phía của đường thẳng $Ox$). Chứng minh:\na) $At\\parallel Ox$.\nb) $Bz\\parallel Ox$.",
+  "dap_an": null,
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/HHC002610-7e0d31fc-0c56-40de-af7a-7526fff36716.png",
+  "anh_loi_giai": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/HHC002610-7e0d31fc-0c56-40de-af7a-7526fff36716.png",
+  "da_co": false,
+  "loai": "nhieu_y",
+  "chung": "Cho hình vẽ bên, biết $OA\\perp OB$, $\\widehat{yAt}=40^\\circ$, $\\widehat{xOy}=140^\\circ$ và $\\widehat{OBz}=130^\\circ$ (theo hình: $O$, $A$, $y$ theo thứ tự đó thẳng hàng; hai tia $Ox$ và $At$ nằm về hai phía của đường thẳng $OA$; hai tia $Ox$ và $Bz$ nằm về hai phía của đường thẳng $OB$; hai điểm $A$ và $B$ nằm về hai phía của đường thẳng $Ox$).",
+  "huongDan": "**Mấu chốt:** song song chứng minh được nhờ cặp góc so le trong bằng nhau; ý b cần tìm $\\widehat{xOB}$ qua tia đối của tia $Ox$ rồi so với $\\widehat{OBz}$.\n\n**Bước 1.** Ý a: vì $A$ nằm trên tia $Oy$ nên đổi $\\widehat{xOy}$ thành góc $\\widehat{xOA}$ có đỉnh $O$ và một cạnh là $OA$.\n\n**Bước 2.** Từ $\\widehat{yAt}$ tính góc kề bù $\\widehat{OAt}$ tại $A$ rồi so với $\\widehat{xOA}$.\n\n**Bước 3.** Chỉ ra hai góc này ở vị trí so le trong và bằng nhau để kết luận $At\\parallel Ox$.\n\n**Bước 4.** Ý b: vẽ tia $Ox'$ là tia đối của tia $Ox$, tính $\\widehat{x'OA}$ rồi dùng $\\widehat{AOB}=90^\\circ$ để tìm $\\widehat{x'OB}$.\n\n**Bước 5.** Suy ra $\\widehat{xOB}$ nhờ hai góc kề bù, rồi so với $\\widehat{OBz}$ ở vị trí so le trong để kết luận.",
+  "y": [
+   {
+    "nhan": "a",
+    "hoi": "Chứng minh: $At\\parallel Ox$.",
+    "loiGiai": "Vì $A$ nằm trên tia $Oy$ nên tia $OA$ trùng với tia $Oy$, do đó $\\widehat{xOA}=\\widehat{xOy}=140^\\circ$.\n\nVì $O$, $A$, $y$ thẳng hàng và $A$ nằm giữa $O$ và $y$ nên $AO$ và $Ay$ là hai tia đối nhau, do đó $\\widehat{OAt}$ và $\\widehat{yAt}$ là hai góc kề bù.\n\n$\\widehat{OAt}=180^\\circ-\\widehat{yAt}=180^\\circ-40^\\circ=140^\\circ$\n\nTa có $\\widehat{xOA}=\\widehat{OAt}=140^\\circ$.\n\nHai góc $\\widehat{xOA}$ và $\\widehat{OAt}$ ở vị trí so le trong (đường thẳng $OA$ cắt $Ox$ tại $O$, cắt $At$ tại $A$; $Ox$ và $At$ nằm về hai phía của $OA$).\n\nVậy $At\\parallel Ox$."
+   },
+   {
+    "nhan": "b",
+    "hoi": "Chứng minh: $Bz\\parallel Ox$.",
+    "loiGiai": "Vẽ tia $Ox'$ là tia đối của tia $Ox$.\n\nVì $Ox$ và $Ox'$ là hai tia đối nhau nên $\\widehat{xOA}$ và $\\widehat{x'OA}$ là hai góc kề bù.\n\n$\\widehat{x'OA}=180^\\circ-\\widehat{xOA}=180^\\circ-140^\\circ=40^\\circ$\n\nVì $OA\\perp OB$ nên $\\widehat{AOB}=90^\\circ$.\n\nVì $A$ và $B$ nằm về hai phía của đường thẳng $xx'$ nên một trong hai tia $Ox$, $Ox'$ nằm giữa hai tia $OA$ và $OB$. Do $\\widehat{xOA}=140^\\circ>90^\\circ=\\widehat{AOB}$ nên tia $Ox$ không nằm giữa $OA$ và $OB$; suy ra tia $Ox'$ nằm giữa hai tia $OA$ và $OB$.\n\nDo đó $\\widehat{x'OA}+\\widehat{x'OB}=\\widehat{AOB}$.\n\n$\\widehat{x'OB}=\\widehat{AOB}-\\widehat{x'OA}=90^\\circ-40^\\circ=50^\\circ$\n\nVì $Ox$ và $Ox'$ là hai tia đối nhau nên $\\widehat{xOB}$ và $\\widehat{x'OB}$ là hai góc kề bù.\n\n$\\widehat{xOB}=180^\\circ-\\widehat{x'OB}=180^\\circ-50^\\circ=130^\\circ$\n\nTa có $\\widehat{xOB}=\\widehat{OBz}=130^\\circ$.\n\nHai góc $\\widehat{xOB}$ và $\\widehat{OBz}$ ở vị trí so le trong (đường thẳng $OB$ cắt $Ox$ tại $O$, cắt $Bz$ tại $B$; $Ox$ và $Bz$ nằm về hai phía của $OB$).\n\nVậy $Bz\\parallel Ox$."
+   }
+  ],
+  "co": []
+ },
+ {
+  "nguon_ma_cau": "HHC002611",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Ngôi Sao Hoàng Mai",
+  "de_bai": "Cho hình vẽ bên. Biết $\\widehat{OAx}=30^\\circ$, $\\widehat{OBy}=150^\\circ$, $\\widehat{AOB}=60^\\circ$ và $Ot$ là tia phân giác của $\\widehat{AOB}$ (theo hình: hai tia $Ax$ và $Ot$ nằm về hai phía của đường thẳng $OA$; hai tia $Ot$ và $By$ nằm cùng phía đối với đường thẳng $OB$). Chứng minh:\na) $Ax\\parallel Ot$.\nb) $By\\parallel Ot$.",
+  "dap_an": null,
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/HHC002611-707efdd3-0684-490e-8863-ee69f2895dc0.png",
+  "anh_loi_giai": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/HHC002611-707efdd3-0684-490e-8863-ee69f2895dc0.png",
+  "da_co": false,
+  "loai": "nhieu_y",
+  "chung": "Cho hình vẽ bên. Biết $\\widehat{OAx}=30^\\circ$, $\\widehat{OBy}=150^\\circ$, $\\widehat{AOB}=60^\\circ$ và $Ot$ là tia phân giác của $\\widehat{AOB}$ (theo hình: hai tia $Ax$ và $Ot$ nằm về hai phía của đường thẳng $OA$; hai tia $Ot$ và $By$ nằm cùng phía đối với đường thẳng $OB$).",
+  "huongDan": "**Mấu chốt:** tính hai góc nửa của $\\widehat{AOB}$ nhờ tia phân giác rồi so với các góc đã cho để tìm cặp góc so le trong hoặc đồng vị bằng nhau.\n\n**Bước 1.** Dùng tính chất tia phân giác để tính $\\widehat{AOt}$ và $\\widehat{tOB}$ từ $\\widehat{AOB}$.\n\n**Bước 2.** Ý a: so $\\widehat{OAx}$ với $\\widehat{AOt}$ rồi xác định hai góc này ở vị trí so le trong.\n\n**Bước 3.** Ý b: vẽ thêm tia $Bm$ là tia đối của tia $BO$ để tạo ra một góc đồng vị với $\\widehat{tOB}$ tại đỉnh $B$.\n\n**Bước 4.** Tính góc $\\widehat{yBm}$ kề bù với $\\widehat{OBy}$, so với $\\widehat{tOB}$ rồi kết luận song song.",
+  "y": [
+   {
+    "nhan": "a",
+    "hoi": "Chứng minh: $Ax\\parallel Ot$.",
+    "loiGiai": "Vì $Ot$ là tia phân giác của $\\widehat{AOB}$ nên $\\widehat{AOt}=\\widehat{tOB}=\\widehat{AOB}:2=60^\\circ:2=30^\\circ$.\n\nTa có $\\widehat{OAx}=\\widehat{AOt}=30^\\circ$.\n\nHai góc $\\widehat{OAx}$ và $\\widehat{AOt}$ ở vị trí so le trong (đường thẳng $OA$ cắt $Ax$ tại $A$, cắt $Ot$ tại $O$; $Ax$ và $Ot$ nằm về hai phía của $OA$).\n\nVậy $Ax\\parallel Ot$."
+   },
+   {
+    "nhan": "b",
+    "hoi": "Chứng minh: $By\\parallel Ot$.",
+    "loiGiai": "Vẽ tia $Bm$ là tia đối của tia $BO$.\n\nVì $BO$ và $Bm$ là hai tia đối nhau nên $\\widehat{OBy}$ và $\\widehat{yBm}$ là hai góc kề bù.\n\n$\\widehat{yBm}=180^\\circ-\\widehat{OBy}=180^\\circ-150^\\circ=30^\\circ$\n\nTa có $\\widehat{tOB}=\\widehat{yBm}=30^\\circ$.\n\nHai góc $\\widehat{tOB}$ và $\\widehat{yBm}$ ở vị trí đồng vị (đường thẳng $OB$ cắt $Ot$ tại $O$, cắt $By$ tại $B$; $Ot$ và $By$ nằm cùng phía của $OB$).\n\nVậy $By\\parallel Ot$."
+   }
+  ],
+  "co": []
+ },
+ {
+  "nguon_ma_cau": "HHC002692",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Tây Mỗ",
+  "de_bai": "Cho hình vẽ sau, biết $\\widehat{B_1}=40^\\circ$, $\\widehat{C_2}=40^\\circ$. Xét tính đúng sai các mệnh đề sau:\nTrên hình, ba đường thẳng $a$, $b$, $c$ nằm ngang theo thứ tự từ trên xuống; $A\\in a$, $B\\in b$, $C\\in c$; $AB$ vuông góc với $a$ tại $A$ và vuông góc với $b$ tại $B$ (có dấu vuông góc ở $A$ và $B$); $\\widehat{B_1}$ là góc tạo bởi đường thẳng $b$ (phía bên trái $B$) và đoạn $BC$; $\\widehat{C_2}$ là góc tạo bởi đoạn $CB$ và đường thẳng $c$ (phía bên phải $C$).\na) Vì $\\widehat{B_1}=\\widehat{C_2}=40^\\circ$ và $\\widehat{B_1}$, $\\widehat{C_2}$ là hai góc so le trong nên $b\\parallel c$.\nb) Vì $a\\perp AB$, $b\\perp AB$ nên $\\widehat{aAB}=\\widehat{ABb}=90^\\circ$.\nc) Góc $\\widehat{aAB}$, $\\widehat{ABb}$ là hai góc trong cùng phía và $\\widehat{aAB}+\\widehat{ABb}=180^\\circ$.\nd) Vì $a\\parallel b$, $b\\parallel c$ nên $a\\parallel c$.",
+  "dap_an": null,
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-10/ee038314-dcdb-4dcd-b101-80a25a0f6ed8_c67abdf9_p2c3.png",
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "khong_tach",
+  "chung": null,
+  "huongDan": "**Mấu chốt:** xét từng mệnh đề bằng dấu hiệu nhận biết hai đường thẳng song song (cặp góc so le trong bằng nhau) và tính chất bắc cầu của quan hệ song song.\n\n**Bước 1.** Xét mệnh đề a): xác định $\\widehat{B_1}$, $\\widehat{C_2}$ có ở vị trí so le trong đối với hai đường thẳng $b$, $c$ và cát tuyến $BC$ hay không.\n\n**Bước 2.** Xét mệnh đề b): nhớ rằng hai đường thẳng vuông góc tạo ra góc vuông.\n\n**Bước 3.** Xét mệnh đề c): xác định hai góc $\\widehat{aAB}$, $\\widehat{ABb}$ có nằm cùng phía với cạnh $AB$ không rồi cộng hai số đo.\n\n**Bước 4.** Xét mệnh đề d): kiểm tra hai đường thẳng $a$, $b$ có song song hay không rồi dùng quan hệ song song với đường thẳng thứ ba.",
+  "y": [
+   {
+    "nhan": null,
+    "hoi": "Cho hình vẽ sau, biết $\\widehat{B_1}=40^\\circ$, $\\widehat{C_2}=40^\\circ$. Xét tính đúng sai các mệnh đề sau:\nTrên hình, ba đường thẳng $a$, $b$, $c$ nằm ngang theo thứ tự từ trên xuống; $A\\in a$, $B\\in b$, $C\\in c$; $AB$ vuông góc với $a$ tại $A$ và vuông góc với $b$ tại $B$ (có dấu vuông góc ở $A$ và $B$); $\\widehat{B_1}$ là góc tạo bởi đường thẳng $b$ (phía bên trái $B$) và đoạn $BC$; $\\widehat{C_2}$ là góc tạo bởi đoạn $CB$ và đường thẳng $c$ (phía bên phải $C$).\na) Vì $\\widehat{B_1}=\\widehat{C_2}=40^\\circ$ và $\\widehat{B_1}$, $\\widehat{C_2}$ là hai góc so le trong nên $b\\parallel c$.\nb) Vì $a\\perp AB$, $b\\perp AB$ nên $\\widehat{aAB}=\\widehat{ABb}=90^\\circ$.\nc) Góc $\\widehat{aAB}$, $\\widehat{ABb}$ là hai góc trong cùng phía và $\\widehat{aAB}+\\widehat{ABb}=180^\\circ$.\nd) Vì $a\\parallel b$, $b\\parallel c$ nên $a\\parallel c$.",
+    "loiGiai": "a) Đúng, vì $\\widehat{B_1}$ và $\\widehat{C_2}$ nằm giữa hai đường thẳng $b$, $c$ và ở hai phía của cát tuyến $BC$ nên là hai góc so le trong; mà $\\widehat{B_1}=\\widehat{C_2}=40^\\circ$ nên $b\\parallel c$ (dấu hiệu nhận biết hai đường thẳng song song).\n\nb) Đúng, vì $a\\perp AB$ tại $A$ và $b\\perp AB$ tại $B$ nên $\\widehat{aAB}=\\widehat{ABb}=90^\\circ$ (hai đường thẳng vuông góc tạo thành góc vuông).\n\nc) Đúng, vì hai tia $Aa$ và $Bb$ cùng nằm về một phía của đường thẳng $AB$ nên $\\widehat{aAB}$ và $\\widehat{ABb}$ là hai góc trong cùng phía, và $\\widehat{aAB}+\\widehat{ABb}=90^\\circ+90^\\circ=180^\\circ$.\n\nd) Đúng, vì $a\\perp AB$ và $b\\perp AB$ nên $a\\parallel b$ (hai đường thẳng phân biệt cùng vuông góc với một đường thẳng thứ ba); theo ý a) có $b\\parallel c$. Do đó $a\\parallel c$ (hai đường thẳng phân biệt cùng song song với một đường thẳng thứ ba)."
+   }
+  ],
+  "co": [
+   "dang_dung_sai: để nguyên 1 ý"
+  ]
+ },
+ {
+  "nguon_ma_cau": "HHC002693",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Tây Mỗ",
+  "de_bai": "Cho hình vẽ, biết $Ax$ là tia phân giác của $\\widehat{CAy}$. Xét tính đúng sai các mệnh đề sau:\nTrên hình, $\\widehat{BAC}=80^\\circ$, $\\widehat{ACB}=55^\\circ$; ba điểm $B$, $A$, $y$ thẳng hàng ($A$ nằm giữa $B$ và $y$).\na) Số đo góc $\\widehat{yAC}$ là $90^\\circ$.\nb) Vì $Ax$ là tia phân giác của $\\widehat{CAy}$ nên $\\widehat{yAx}=\\widehat{xAC}=50^\\circ$.\nc) Góc $\\widehat{xAC}=\\widehat{ACB}=50^\\circ$ là hai góc so le trong bằng nhau.\nd) Ta có $Ax\\parallel BC$ vì $\\widehat{xAC}=\\widehat{ACB}$ và $\\widehat{xAC}$, $\\widehat{ACB}$ là hai góc so le trong bằng nhau.",
+  "dap_an": null,
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-10/9da9410a-98fa-450c-9928-a968563e84ce_c67abdf9_p2c4.png",
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "khong_tach",
+  "chung": null,
+  "huongDan": "**Mấu chốt:** tính trước $\\widehat{yAC}$ nhờ hai góc kề bù tại $A$, sau đó dùng tia phân giác để tính các góc còn lại rồi xét từng mệnh đề.\n\n**Bước 1.** Nhận ra $Ay$ và $AB$ là hai tia đối nhau nên $\\widehat{BAC}$ và $\\widehat{CAy}$ là hai góc kề bù, từ đó tính $\\widehat{yAC}$.\n\n**Bước 2.** Xét mệnh đề a) bằng cách so số đo $\\widehat{yAC}$ vừa tính với $90^\\circ$.\n\n**Bước 3.** Dùng định nghĩa tia phân giác để tính $\\widehat{yAx}$, $\\widehat{xAC}$ rồi xét mệnh đề b).\n\n**Bước 4.** Xét mệnh đề c) và d) bằng cách so $\\widehat{xAC}$ với $\\widehat{ACB}=55^\\circ$ trên hình và nhớ dấu hiệu nhận biết cần hai góc so le trong bằng nhau.",
+  "y": [
+   {
+    "nhan": null,
+    "hoi": "Cho hình vẽ, biết $Ax$ là tia phân giác của $\\widehat{CAy}$. Xét tính đúng sai các mệnh đề sau:\nTrên hình, $\\widehat{BAC}=80^\\circ$, $\\widehat{ACB}=55^\\circ$; ba điểm $B$, $A$, $y$ thẳng hàng ($A$ nằm giữa $B$ và $y$).\na) Số đo góc $\\widehat{yAC}$ là $90^\\circ$.\nb) Vì $Ax$ là tia phân giác của $\\widehat{CAy}$ nên $\\widehat{yAx}=\\widehat{xAC}=50^\\circ$.\nc) Góc $\\widehat{xAC}=\\widehat{ACB}=50^\\circ$ là hai góc so le trong bằng nhau.\nd) Ta có $Ax\\parallel BC$ vì $\\widehat{xAC}=\\widehat{ACB}$ và $\\widehat{xAC}$, $\\widehat{ACB}$ là hai góc so le trong bằng nhau.",
+    "loiGiai": "Vì $B$, $A$, $y$ thẳng hàng nên $\\widehat{BAC}$ và $\\widehat{CAy}$ là hai góc kề bù.\n\n$\\widehat{CAy}=180^\\circ-\\widehat{BAC}=180^\\circ-80^\\circ=100^\\circ$ (hai góc kề bù)\n\nVì $Ax$ là tia phân giác của $\\widehat{CAy}$ nên $\\widehat{yAx}=\\widehat{xAC}=\\dfrac{1}{2}\\widehat{CAy}=100^\\circ:2=50^\\circ$.\n\na) Sai, vì $\\widehat{yAC}=100^\\circ$, không phải $90^\\circ$.\n\nb) Đúng, vì $Ax$ là tia phân giác của $\\widehat{CAy}$ nên $\\widehat{yAx}=\\widehat{xAC}=50^\\circ$.\n\nc) Sai, vì $\\widehat{xAC}=50^\\circ$ còn $\\widehat{ACB}=55^\\circ$ nên $\\widehat{xAC}\\ne\\widehat{ACB}$.\n\nd) Sai, vì $\\widehat{xAC}=50^\\circ\\ne55^\\circ=\\widehat{ACB}$ nên hai góc so le trong không bằng nhau, không suy ra được $Ax\\parallel BC$."
+   }
+  ],
+  "co": [
+   "dang_dung_sai: để nguyên 1 ý"
+  ]
+ },
+ {
+  "nguon_ma_cau": "HHC002694",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Tây Mỗ",
+  "de_bai": "Cho hình vẽ. Biết $a\\parallel b$, $\\widehat{DAB}=90^\\circ$, $\\widehat{DCB}=130^\\circ$. Xét tính đúng sai các mệnh đề sau:\nTrên hình, $D$ và $C$ nằm trên đường thẳng $a$, $A$ và $B$ nằm trên đường thẳng $b$, đường thẳng $AD$ vuông góc với $b$ tại $A$ (có dấu vuông góc); đường thẳng $BC$ cắt $a$ tại $C$ và cắt $b$ tại $B$; $\\widehat{D_1}$ nằm phía trên $a$, bên phải đường thẳng $AD$; $\\widehat{C_1}$ nằm phía trên $a$, bên phải đường thẳng $BC$; $\\widehat{B_1}$ và $\\widehat{B_2}$ nằm phía trên $b$, lần lượt bên phải và bên trái đường thẳng $BC$.\na) Vì $a\\parallel b$ nên $\\widehat{D_1}=\\widehat{DAB}=90^\\circ$ (hai góc so le trong).\nb) Góc $\\widehat{DCB}$ và $\\widehat{C_1}$ đối đỉnh nên $\\widehat{C_1}=130^\\circ$.\nc) Vì $a\\parallel b$ nên $\\widehat{B_2}=\\widehat{DCB}=130^\\circ$ (hai góc đồng vị).\nd) Vì $\\widehat{B_1}+\\widehat{B_2}=180^\\circ$ nên $\\widehat{B_2}=50^\\circ$.",
+  "dap_an": null,
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-10/77512207-8b15-4146-bebb-d7fab9e61d18_c67abdf9_p2c5.png",
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "khong_tach",
+  "chung": null,
+  "huongDan": "**Mấu chốt:** tìm số đo các góc $\\widehat{C_1}$, $\\widehat{B_1}$, $\\widehat{B_2}$ từ $\\widehat{DCB}=130^\\circ$ rồi xét xem lý do ở từng mệnh đề đúng cặp góc nào.\n\n**Bước 1.** Xét mệnh đề a): xác định vị trí của $\\widehat{D_1}$ và $\\widehat{DAB}$ đối với hai đường thẳng song song và cát tuyến $AD$ rồi gọi tên cặp góc.\n\n**Bước 2.** Xét mệnh đề b) bằng cách kiểm tra $\\widehat{DCB}$ và $\\widehat{C_1}$ có phải hai góc đối đỉnh không, rồi suy ra số đo $\\widehat{C_1}$.\n\n**Bước 3.** Xét mệnh đề c): xác định vị trí của $\\widehat{B_2}$ và $\\widehat{DCB}$ đối với cát tuyến $BC$ để gọi đúng tên cặp góc.\n\n**Bước 4.** Xét mệnh đề d): tính $\\widehat{B_1}$ nhờ cặp góc đồng vị với $\\widehat{C_1}$, rồi dùng hai góc kề bù để tìm $\\widehat{B_2}$.",
+  "y": [
+   {
+    "nhan": null,
+    "hoi": "Cho hình vẽ. Biết $a\\parallel b$, $\\widehat{DAB}=90^\\circ$, $\\widehat{DCB}=130^\\circ$. Xét tính đúng sai các mệnh đề sau:\nTrên hình, $D$ và $C$ nằm trên đường thẳng $a$, $A$ và $B$ nằm trên đường thẳng $b$, đường thẳng $AD$ vuông góc với $b$ tại $A$ (có dấu vuông góc); đường thẳng $BC$ cắt $a$ tại $C$ và cắt $b$ tại $B$; $\\widehat{D_1}$ nằm phía trên $a$, bên phải đường thẳng $AD$; $\\widehat{C_1}$ nằm phía trên $a$, bên phải đường thẳng $BC$; $\\widehat{B_1}$ và $\\widehat{B_2}$ nằm phía trên $b$, lần lượt bên phải và bên trái đường thẳng $BC$.\na) Vì $a\\parallel b$ nên $\\widehat{D_1}=\\widehat{DAB}=90^\\circ$ (hai góc so le trong).\nb) Góc $\\widehat{DCB}$ và $\\widehat{C_1}$ đối đỉnh nên $\\widehat{C_1}=130^\\circ$.\nc) Vì $a\\parallel b$ nên $\\widehat{B_2}=\\widehat{DCB}=130^\\circ$ (hai góc đồng vị).\nd) Vì $\\widehat{B_1}+\\widehat{B_2}=180^\\circ$ nên $\\widehat{B_2}=50^\\circ$.",
+    "loiGiai": "a) Sai, vì $\\widehat{D_1}$ và $\\widehat{DAB}$ cùng nằm phía trên mỗi đường thẳng $a$, $b$ và cùng bên phải cát tuyến $AD$ nên là hai góc đồng vị, không phải so le trong (dù số đo $\\widehat{D_1}=\\widehat{DAB}=90^\\circ$ vẫn đúng).\n\nb) Đúng, vì $\\widehat{DCB}$ và $\\widehat{C_1}$ là hai góc đối đỉnh nên $\\widehat{C_1}=\\widehat{DCB}=130^\\circ$.\n\nc) Sai, vì $\\widehat{B_2}$ và $\\widehat{DCB}$ cùng nằm giữa hai đường thẳng $a$, $b$ và cùng bên trái cát tuyến $BC$ nên là hai góc trong cùng phía, không phải hai góc đồng vị; do $a\\parallel b$ nên $\\widehat{B_2}+\\widehat{DCB}=180^\\circ$, suy ra $\\widehat{B_2}=50^\\circ\\ne130^\\circ$.\n\nd) Đúng, vì $a\\parallel b$ nên $\\widehat{B_1}=\\widehat{C_1}=130^\\circ$ (hai góc đồng vị); $\\widehat{B_1}$ và $\\widehat{B_2}$ là hai góc kề bù nên $\\widehat{B_2}=180^\\circ-\\widehat{B_1}=180^\\circ-130^\\circ=50^\\circ$."
+   }
+  ],
+  "co": [
+   "dang_dung_sai: để nguyên 1 ý"
+  ]
+ },
+ {
+  "nguon_ma_cau": "HHC002695",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Tây Mỗ",
+  "de_bai": "Cho hình vẽ bên, biết $a\\parallel b$. Tính góc $\\widehat{AOB}$?\nTheo hình: điểm $A$ thuộc đường thẳng $a$, điểm $B$ thuộc đường thẳng $b$, điểm $O$ nằm giữa hai đường thẳng $a$ và $b$. Gọi $Ax$ là tia của đường thẳng $a$ hướng về phía bên phải (phía có điểm $O$), $By$ là tia của đường thẳng $b$ hướng về phía bên phải. Biết $\\widehat{xAO}=35^\\circ$ và $\\widehat{yBO}=55^\\circ$.",
+  "dap_an": null,
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-10/13c03e1b-1db0-46e5-ab8d-1c44c82e79e3_c67abdf9_p6c1.png",
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "mot_y",
+  "chung": null,
+  "huongDan": "**Mấu chốt:** kẻ qua $O$ một đường thẳng song song với $a$ thì đường này chia góc $\\widehat{AOB}$ thành hai góc, mỗi góc so le trong với một góc đã cho.\n\n**Bước 1.** Qua $O$ kẻ đường thẳng song song với $a$ (theo tiên đề Euclid chỉ có một đường như vậy); vì $a\\parallel b$ nên đường này cũng song song với $b$.\n\n**Bước 2.** Dùng tính chất hai đường thẳng song song để tìm góc tạo bởi $OA$ và đường vừa kẻ: nó so le trong với góc $35^\\circ$ ở $A$.\n\n**Bước 3.** Làm tương tự ở phía $B$: góc tạo bởi $OB$ và đường vừa kẻ so le trong với góc $55^\\circ$ ở $B$.\n\n**Bước 4.** Chỉ ra tia vừa kẻ nằm giữa hai tia $OA$, $OB$ (vì $A$, $B$ ở hai phía của đường vừa kẻ) rồi cộng hai góc.",
+  "y": [
+   {
+    "nhan": null,
+    "hoi": "Cho hình vẽ bên, biết $a\\parallel b$. Tính góc $\\widehat{AOB}$?\nTheo hình: điểm $A$ thuộc đường thẳng $a$, điểm $B$ thuộc đường thẳng $b$, điểm $O$ nằm giữa hai đường thẳng $a$ và $b$. Gọi $Ax$ là tia của đường thẳng $a$ hướng về phía bên phải (phía có điểm $O$), $By$ là tia của đường thẳng $b$ hướng về phía bên phải. Biết $\\widehat{xAO}=35^\\circ$ và $\\widehat{yBO}=55^\\circ$.",
+    "loiGiai": "Qua $O$ kẻ đường thẳng $tt'$ song song với đường thẳng $a$, trong đó $Ot$ là tia nằm bên trái $O$.\n\nVì $a\\parallel b$ và $tt'\\parallel a$ nên $tt'\\parallel b$ (hai đường thẳng phân biệt cùng song song với đường thẳng thứ ba).\n\nVì $tt'\\parallel a$ nên $\\widehat{AOt}=\\widehat{xAO}=35^\\circ$ (hai góc so le trong).\n\nVì $tt'\\parallel b$ nên $\\widehat{BOt}=\\widehat{yBO}=55^\\circ$ (hai góc so le trong).\n\nHai điểm $A$ và $B$ nằm ở hai phía khác nhau của đường thẳng $tt'$ (vì $O$ nằm giữa hai đường thẳng $a$ và $b$) nên tia $Ot$ nằm giữa hai tia $OA$ và $OB$.\n\nDo đó $\\widehat{AOB}=\\widehat{AOt}+\\widehat{BOt}=35^\\circ+55^\\circ=90^\\circ$.\n\nVậy $\\widehat{AOB}=90^\\circ$."
+   }
+  ],
+  "co": []
+ },
+ {
+  "nguon_ma_cau": "HHC002696",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Tây Mỗ",
+  "de_bai": "Cho hình vẽ.\nTheo hình: tam giác $ABC$ có $M$ thuộc cạnh $AB$, $N$ thuộc cạnh $AC$; đường thẳng $xy$ đi qua $A$ ($Ax$ nằm bên trái, $Ay$ nằm bên phải). Gọi $Mz$ là tia đối của tia $MN$ và $Nk$ là tia đối của tia $NM$. Biết $\\widehat{xAB}=53^\\circ$; $\\widehat{AMz}=127^\\circ$; $\\widehat{CNk}=73^\\circ$; $\\widehat{ACB}=73^\\circ$.\na) Chứng minh: $xy\\parallel MN\\parallel BC$.\nb) Tính $\\widehat{BAC}$ và $\\widehat{ABC}$?",
+  "dap_an": null,
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-10/d80b5eba-dbaa-4280-bf3e-f4fec9ff4202_c67abdf9_p6c2.png",
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "nhieu_y",
+  "chung": "Cho hình vẽ.\nTheo hình: tam giác $ABC$ có $M$ thuộc cạnh $AB$, $N$ thuộc cạnh $AC$; đường thẳng $xy$ đi qua $A$ ($Ax$ nằm bên trái, $Ay$ nằm bên phải). Gọi $Mz$ là tia đối của tia $MN$ và $Nk$ là tia đối của tia $NM$. Biết $\\widehat{xAB}=53^\\circ$; $\\widehat{AMz}=127^\\circ$; $\\widehat{CNk}=73^\\circ$; $\\widehat{ACB}=73^\\circ$.",
+  "huongDan": "**Mấu chốt:** muốn chứng minh hai đường thẳng song song chỉ cần một cặp góc so le trong (hoặc đồng vị) bằng nhau; các góc còn lại tính bằng góc kề bù, so le trong, đồng vị và góc bẹt.\n\n**Bước 1.** Ý a) Với $xy$ và $MN$: đổi góc $127^\\circ$ sang góc kề bù $\\widehat{AMN}$ rồi so với $\\widehat{xAM}$ để tìm cặp góc so le trong bằng nhau.\n\n**Bước 2.** Ý a) Với $MN$ và $BC$: hai góc $73^\\circ$ ở $N$ và ở $C$ là cặp góc so le trong bằng nhau, từ đó suy ra hai đường thẳng song song.\n\n**Bước 3.** Ý a) Có $xy\\parallel MN$ và $MN\\parallel BC$ thì dùng tính chất bắc cầu của song song để gộp thành $xy\\parallel MN\\parallel BC$.\n\n**Bước 4.** Ý b) Tính $\\widehat{ABC}$ từ cặp góc đồng vị $\\widehat{AMN}$ và $\\widehat{ABC}$ (do $MN\\parallel BC$).\n\n**Bước 5.** Ý b) Tính $\\widehat{BAC}$ bằng cách lấy góc bẹt $\\widehat{xAy}$ trừ hai góc đã biết ở hai bên: $\\widehat{xAB}$ và $\\widehat{CAy}$ (góc $\\widehat{CAy}$ so le trong với $\\widehat{ACB}$).\n\n**Chú ý:** phải nêu rõ $Ax$, $Ay$ là hai tia đối nhau và các tia $AB$, $AC$ nằm giữa chúng trước khi cộng các góc thành $180^\\circ$.",
+  "y": [
+   {
+    "nhan": "a",
+    "hoi": "Chứng minh: $xy\\parallel MN\\parallel BC$.",
+    "loiGiai": "Vì $Mz$ và $MN$ là hai tia đối nhau nên $\\widehat{AMz}$ và $\\widehat{AMN}$ là hai góc kề bù.\n\n$\\widehat{AMz}+\\widehat{AMN}=180^\\circ$ (hai góc kề bù)\n\n$127^\\circ+\\widehat{AMN}=180^\\circ$\n\n$\\widehat{AMN}=180^\\circ-127^\\circ=53^\\circ$\n\nĐiểm $M$ thuộc tia $AB$ nên $\\widehat{xAM}=\\widehat{xAB}=53^\\circ$.\n\nTa có $\\widehat{xAM}=\\widehat{AMN}=53^\\circ$ và hai góc này ở vị trí so le trong nên $xy\\parallel MN$.\n\nTa có $\\widehat{CNk}=\\widehat{NCB}=73^\\circ$ (vì $N$ thuộc tia $CA$ nên $\\widehat{NCB}=\\widehat{ACB}=73^\\circ$) và hai góc này ở vị trí so le trong nên $MN\\parallel BC$.\n\nVì $xy\\parallel MN$ và $MN\\parallel BC$ nên $xy\\parallel MN\\parallel BC$ (hai đường thẳng phân biệt cùng song song với đường thẳng thứ ba)."
+   },
+   {
+    "nhan": "b",
+    "hoi": "Tính $\\widehat{BAC}$ và $\\widehat{ABC}$?",
+    "loiGiai": "Vì $MN\\parallel BC$ nên $\\widehat{ABC}=\\widehat{AMN}=53^\\circ$ (hai góc đồng vị).\n\nVì $xy\\parallel BC$ nên $\\widehat{CAy}=\\widehat{ACB}=73^\\circ$ (hai góc so le trong).\n\nHai tia $Ax$, $Ay$ đối nhau, các tia $AB$, $AC$ nằm cùng phía với đường thẳng $xy$ và nằm giữa hai tia $Ax$, $Ay$ (theo hình) nên:\n\n$\\widehat{xAB}+\\widehat{BAC}+\\widehat{CAy}=180^\\circ$ (góc bẹt)\n\n$53^\\circ+\\widehat{BAC}+73^\\circ=180^\\circ$\n\n$\\widehat{BAC}=180^\\circ-53^\\circ-73^\\circ=54^\\circ$\n\nVậy $\\widehat{BAC}=54^\\circ$ và $\\widehat{ABC}=53^\\circ$."
+   }
+  ],
+  "co": []
+ },
+ {
+  "nguon_ma_cau": "HHC002697",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Tây Mỗ",
+  "de_bai": "Cho hình vẽ biết $\\widehat{ACB}=40^\\circ$; $\\widehat{BAC}=100^\\circ$, $AD$ là tia phân giác của $\\widehat{CAE}$. Chứng minh $AD\\parallel BC$.\nTheo hình: điểm $E$ nằm trên tia đối của tia $AB$ (ba điểm $B$, $A$, $E$ thẳng hàng và $A$ nằm giữa $B$ và $E$); điểm $D$ nằm trong góc $\\widehat{CAE}$.",
+  "dap_an": null,
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-10/28b9d2be-4313-437e-9d42-a3fba2e1b39c_c67abdf9_p6c3.png",
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "mot_y",
+  "chung": null,
+  "huongDan": "**Mấu chốt:** tìm góc $\\widehat{CAD}$ rồi so sánh nó với $\\widehat{ACB}$: hai góc bằng nhau ở vị trí so le trong thì $AD\\parallel BC$.\n\n**Bước 1.** Nhận ra $AB$ và $AE$ là hai tia đối nhau nên $\\widehat{BAC}$ và $\\widehat{CAE}$ là hai góc kề bù, từ đó tính $\\widehat{CAE}$.\n\n**Bước 2.** Dùng $AD$ là tia phân giác của $\\widehat{CAE}$ để tính $\\widehat{CAD}$ bằng một nửa $\\widehat{CAE}$.\n\n**Bước 3.** So sánh $\\widehat{CAD}$ với $\\widehat{ACB}$ và chỉ ra chúng ở vị trí so le trong đối với cát tuyến $AC$.\n\n**Bước 4.** Áp dụng dấu hiệu nhận biết hai đường thẳng song song để kết luận.",
+  "y": [
+   {
+    "nhan": null,
+    "hoi": "Cho hình vẽ biết $\\widehat{ACB}=40^\\circ$; $\\widehat{BAC}=100^\\circ$, $AD$ là tia phân giác của $\\widehat{CAE}$. Chứng minh $AD\\parallel BC$.\nTheo hình: điểm $E$ nằm trên tia đối của tia $AB$ (ba điểm $B$, $A$, $E$ thẳng hàng và $A$ nằm giữa $B$ và $E$); điểm $D$ nằm trong góc $\\widehat{CAE}$.",
+    "loiGiai": "Vì $E$ nằm trên tia đối của tia $AB$ nên $AB$ và $AE$ là hai tia đối nhau, do đó $\\widehat{BAC}$ và $\\widehat{CAE}$ là hai góc kề bù.\n\n$\\widehat{BAC}+\\widehat{CAE}=180^\\circ$ (hai góc kề bù)\n\n$100^\\circ+\\widehat{CAE}=180^\\circ$\n\n$\\widehat{CAE}=180^\\circ-100^\\circ=80^\\circ$\n\nVì $AD$ là tia phân giác của $\\widehat{CAE}$ nên $\\widehat{CAD}=\\dfrac{1}{2}\\widehat{CAE}=\\dfrac{1}{2}.80^\\circ=40^\\circ$.\n\nTa có $\\widehat{CAD}=\\widehat{ACB}=40^\\circ$.\n\nHai góc $\\widehat{CAD}$ và $\\widehat{ACB}$ ở vị trí so le trong ($D$ và $B$ nằm ở hai phía khác nhau của đường thẳng $AC$) và bằng nhau nên $AD\\parallel BC$ (dấu hiệu nhận biết hai đường thẳng song song).\n\nVậy $AD\\parallel BC$."
+   }
+  ],
+  "co": []
+ },
+ {
+  "nguon_ma_cau": "HHC002698",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Tây Mỗ",
+  "de_bai": "Cho hình (H2). Biết $\\widehat{aAc}=123^\\circ$; $\\widehat{ABC}=57^\\circ$, $\\widehat{ADC}=90^\\circ$.\nTheo hình: đường thẳng $c$ cắt $a$ tại $A$ và cắt $b$ tại $B$; đường thẳng $d$ cắt $a$ tại $D$ và cắt $b$ tại $C$ ($D$ nằm bên phải $A$, $C$ nằm bên phải $B$); $\\widehat{aAc}$ là góc ở đỉnh $A$ tạo bởi phần bên trái của đường thẳng $a$ và phần phía trên của đường thẳng $c$.\na) Kể tên một cặp góc đồng vị ở hình vẽ bên.\nb) Tính $\\widehat{BAD}$?\nc) Chứng minh $a\\parallel b$.\nd) Tính $\\widehat{BCD}$?",
+  "dap_an": null,
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-10/867de586-ecda-4a2f-b5aa-c9478c07e946_c67abdf9_p6c4.png",
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "nhieu_y",
+  "chung": "Cho hình (H2). Biết $\\widehat{aAc}=123^\\circ$; $\\widehat{ABC}=57^\\circ$, $\\widehat{ADC}=90^\\circ$.\nTheo hình: đường thẳng $c$ cắt $a$ tại $A$ và cắt $b$ tại $B$; đường thẳng $d$ cắt $a$ tại $D$ và cắt $b$ tại $C$ ($D$ nằm bên phải $A$, $C$ nằm bên phải $B$); $\\widehat{aAc}$ là góc ở đỉnh $A$ tạo bởi phần bên trái của đường thẳng $a$ và phần phía trên của đường thẳng $c$.",
+  "huongDan": "**Mấu chốt:** từ góc $123^\\circ$ cho sẵn suy ra góc kề bù $57^\\circ$, trùng với $\\widehat{ABC}=57^\\circ$ ở vị trí đồng vị nên $a\\parallel b$; có $a\\parallel b$ và $d\\perp a$ thì $d\\perp b$.\n\n**Bước 1.** Ý a) Gọi cát tuyến $c$ cắt hai đường thẳng $a$, $b$ rồi kể tên một cặp góc ở cùng một vị trí so với $c$ và so với $a$, $b$.\n\n**Bước 2.** Ý b) Tìm $\\widehat{BAD}$ bằng cách nhận ra nó là góc đối đỉnh với góc $\\widehat{aAc}=123^\\circ$ nên bằng nhau.\n\n**Bước 3.** Ý c) Tính góc kề bù với $\\widehat{BAD}$ tại $A$ (nằm giữa $c$ và $AD$) rồi so với $\\widehat{ABC}$: chúng là cặp góc đồng vị và bằng nhau.\n\n**Bước 4.** Ý d) Dùng $a\\parallel b$ vừa chứng minh: một đường thẳng vuông góc với $a$ thì cũng vuông góc với $b$, từ đó tính $\\widehat{BCD}$.\n\n**Chú ý:** ở ý d) có thể dùng hai góc trong cùng phía $\\widehat{ADC}$ và $\\widehat{BCD}$ bù nhau cho cùng kết quả.",
+  "y": [
+   {
+    "nhan": "a",
+    "hoi": "Kể tên một cặp góc đồng vị ở hình vẽ bên.",
+    "loiGiai": "Trên đường thẳng $c$ lấy điểm $E$ nằm phía trên điểm $A$ (điểm $A$ nằm giữa $B$ và $E$).\n\nHai đường thẳng $a$, $b$ bị cắt bởi đường thẳng $c$. Một cặp góc đồng vị là $\\widehat{EAD}$ và $\\widehat{ABC}$ (hai góc cùng nằm bên phải đường thẳng $c$ và cùng nằm phía trên đường thẳng $a$, $b$ tương ứng)."
+   },
+   {
+    "nhan": "b",
+    "hoi": "Tính $\\widehat{BAD}$?",
+    "loiGiai": "Hai tia $AB$ và $AE$ là hai tia đối nhau; phần bên trái của $a$ và tia $AD$ là hai tia đối nhau. Do đó $\\widehat{BAD}$ và $\\widehat{aAc}$ là hai góc đối đỉnh.\n\nSuy ra $\\widehat{BAD}=\\widehat{aAc}=123^\\circ$ (hai góc đối đỉnh)."
+   },
+   {
+    "nhan": "c",
+    "hoi": "Chứng minh $a\\parallel b$.",
+    "loiGiai": "Vì $AB$ và $AE$ là hai tia đối nhau nên $\\widehat{EAD}$ và $\\widehat{BAD}$ là hai góc kề bù.\n\n$\\widehat{EAD}+\\widehat{BAD}=180^\\circ$ (hai góc kề bù)\n\n$\\widehat{EAD}+123^\\circ=180^\\circ$\n\n$\\widehat{EAD}=180^\\circ-123^\\circ=57^\\circ$\n\nTa có $\\widehat{EAD}=\\widehat{ABC}=57^\\circ$ và hai góc này ở vị trí đồng vị nên $a\\parallel b$ (dấu hiệu nhận biết hai đường thẳng song song)."
+   },
+   {
+    "nhan": "d",
+    "hoi": "Tính $\\widehat{BCD}$?",
+    "loiGiai": "Ta có $\\widehat{ADC}=90^\\circ$ nên $d\\perp a$.\n\nVì $a\\parallel b$ và $d\\perp a$ nên $d\\perp b$ (một đường thẳng vuông góc với một trong hai đường thẳng song song thì cũng vuông góc với đường thẳng còn lại).\n\nVậy $\\widehat{BCD}=90^\\circ$."
+   }
+  ],
+  "co": [
+   "loi_giai_co_doan_mo_dau_chung"
+  ]
+ },
+ {
+  "nguon_ma_cau": "HHC002699",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Tây Mỗ",
+  "de_bai": "Cho hình vẽ, biết $\\widehat{mAB}=60^\\circ$; $\\widehat{DBe}=75^\\circ$; $\\widehat{ACD}=60^\\circ$.\nTheo hình: $A$, $B$ nằm trên đường thẳng $e$ ($B$ bên phải $A$); $C$, $D$ nằm trên đường thẳng $f$ ($D$ bên phải $C$); $A$, $C$ nằm trên một đường thẳng cắt $e$, $f$, trong đó $Am$ là tia đối của tia $AC$; $B$, $D$ nằm trên một đường thẳng cắt $e$, $f$, trong đó $Dt$ là tia đối của tia $DB$; $Be$ là tia của đường thẳng $e$ nằm bên phải $B$ (tia đối của tia $BA$).\n1) Chứng minh $AB\\parallel CD$.\n2) Tính số đo $\\widehat{CDt}$.\n3) Vẽ $Ax$ là tia phân giác của $\\widehat{mAB}$, $Cy$ là tia phân giác của $\\widehat{ACD}$. Chứng minh $Ax\\parallel Cy$.",
+  "dap_an": null,
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-10/ae53b7a0-fa9e-431c-add2-0332a5c02722_c67abdf9_p6c5.png",
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "nhieu_y",
+  "chung": "Cho hình vẽ, biết $\\widehat{mAB}=60^\\circ$; $\\widehat{DBe}=75^\\circ$; $\\widehat{ACD}=60^\\circ$.\nTheo hình: $A$, $B$ nằm trên đường thẳng $e$ ($B$ bên phải $A$); $C$, $D$ nằm trên đường thẳng $f$ ($D$ bên phải $C$); $A$, $C$ nằm trên một đường thẳng cắt $e$, $f$, trong đó $Am$ là tia đối của tia $AC$; $B$, $D$ nằm trên một đường thẳng cắt $e$, $f$, trong đó $Dt$ là tia đối của tia $DB$; $Be$ là tia của đường thẳng $e$ nằm bên phải $B$ (tia đối của tia $BA$).",
+  "huongDan": "**Mấu chốt:** hai đường $AB$, $CD$ bị cắt bởi đường thẳng $AC$ nên tìm cặp góc đồng vị bằng nhau; các câu sau dùng tính chất của hai đường thẳng song song vừa chứng minh.\n\n**Bước 1.** Ý 1) Chỉ ra $\\widehat{mAB}$ và $\\widehat{ACD}$ là cặp góc đồng vị đối với cát tuyến $AC$, hai góc đều bằng $60^\\circ$ nên $AB\\parallel CD$.\n\n**Bước 2.** Ý 2) Dùng $AB\\parallel CD$ để chuyển góc $75^\\circ$ ở $B$ xuống đỉnh $D$ thành một góc đồng vị với nó (lấy thêm một điểm trên $f$ bên phải $D$).\n\n**Bước 3.** Ý 2) Tính $\\widehat{CDt}$ là góc kề bù với góc đồng vị vừa tìm ở bước trước.\n\n**Bước 4.** Ý 3) Dùng tia phân giác chia mỗi góc $60^\\circ$ thành hai góc bằng nhau để tính $\\widehat{mAx}$ và $\\widehat{ACy}$.\n\n**Bước 5.** Ý 3) So sánh hai góc đó: chúng ở vị trí đồng vị đối với cát tuyến $AC$ và bằng nhau, từ đó kết luận hai tia song song.\n\n**Chú ý:** góc $\\widehat{CDt}$ là góc tù vì nó kề bù với góc nhọn $75^\\circ$ (tức đồng vị với $\\widehat{DBe}$ qua $AB\\parallel CD$).",
+  "y": [
+   {
+    "nhan": "1",
+    "hoi": "Chứng minh $AB\\parallel CD$.",
+    "loiGiai": "Ta có $\\widehat{mAB}=60^\\circ$ và $\\widehat{ACD}=60^\\circ$.\n\nHai góc $\\widehat{mAB}$ và $\\widehat{ACD}$ ở vị trí đồng vị (tia $Am$ cùng hướng với tia $CA$, tia $AB$ cùng hướng với tia $CD$) và bằng nhau nên $AB\\parallel CD$ (dấu hiệu nhận biết hai đường thẳng song song)."
+   },
+   {
+    "nhan": "2",
+    "hoi": "Tính số đo $\\widehat{CDt}$.",
+    "loiGiai": "Lấy điểm $F$ trên đường thẳng $f$ nằm bên phải điểm $D$, khi đó $DC$ và $DF$ là hai tia đối nhau.\n\nVì $AB\\parallel CD$ nên $\\widehat{FDt}=\\widehat{DBe}=75^\\circ$ (hai góc đồng vị).\n\nVì $DC$ và $DF$ là hai tia đối nhau nên $\\widehat{CDt}$ và $\\widehat{FDt}$ là hai góc kề bù.\n\n$\\widehat{CDt}+\\widehat{FDt}=180^\\circ$ (hai góc kề bù)\n\n$\\widehat{CDt}=180^\\circ-75^\\circ=105^\\circ$\n\nVậy $\\widehat{CDt}=105^\\circ$."
+   },
+   {
+    "nhan": "3",
+    "hoi": "Vẽ $Ax$ là tia phân giác của $\\widehat{mAB}$, $Cy$ là tia phân giác của $\\widehat{ACD}$. Chứng minh $Ax\\parallel Cy$.",
+    "loiGiai": "Vì $Ax$ là tia phân giác của $\\widehat{mAB}$ nên $\\widehat{mAx}=\\dfrac{1}{2}\\widehat{mAB}=\\dfrac{1}{2}.60^\\circ=30^\\circ$.\n\nVì $Cy$ là tia phân giác của $\\widehat{ACD}$ nên $\\widehat{ACy}=\\dfrac{1}{2}\\widehat{ACD}=\\dfrac{1}{2}.60^\\circ=30^\\circ$.\n\nTa có $\\widehat{mAx}=\\widehat{ACy}=30^\\circ$.\n\nHai góc $\\widehat{mAx}$ và $\\widehat{ACy}$ ở vị trí đồng vị (tia $Am$ cùng hướng với tia $CA$, các tia $Ax$ và $Cy$ cùng nằm về một phía của đường thẳng $AC$) và bằng nhau nên $Ax\\parallel Cy$."
+   }
+  ],
+  "co": []
+ },
+ {
+  "nguon_ma_cau": "HHC002700",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Tây Mỗ",
+  "de_bai": "Cho hình vẽ, biết $\\widehat{ABC}=118^\\circ$, $\\widehat{BAD}=112^\\circ$, $\\widehat{ADE}=50^\\circ$. Vì sao $BC\\parallel DE$?\nTheo hình: $B$, $A$, $D$ là ba đỉnh của đường gấp khúc $BAD$ nằm giữa hai đường thẳng $BC$ và $DE$; $C$ và $E$ nằm ở hai phía khác nhau của đường thẳng $BD$.",
+  "dap_an": null,
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-10/def2d442-88be-4535-8a0a-51036d9cab92_c67abdf9_p6c6.png",
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "mot_y",
+  "chung": null,
+  "huongDan": "**Mấu chốt:** kẻ qua $A$ một tia song song với $BC$ để chia góc $\\widehat{BAD}$ thành hai góc, rồi chứng minh tia đó cũng song song với $DE$.\n\n**Bước 1.** Qua $A$ kẻ tia $Am$ song song với $BC$ và cùng hướng với tia $BC$, tia này nằm giữa hai tia $AB$ và $AD$.\n\n**Bước 2.** Dùng hai góc trong cùng phía bù nhau để tính $\\widehat{BAm}$ từ $\\widehat{ABC}=118^\\circ$.\n\n**Bước 3.** Lấy $\\widehat{BAD}$ trừ $\\widehat{BAm}$ để tính $\\widehat{mAD}$ (vì tia $Am$ nằm giữa $AB$ và $AD$).\n\n**Bước 4.** So sánh $\\widehat{mAD}$ với $\\widehat{ADE}$: hai góc so le trong bằng nhau nên $Am\\parallel DE$, rồi nối hai quan hệ song song để suy ra $BC\\parallel DE$.",
+  "y": [
+   {
+    "nhan": null,
+    "hoi": "Cho hình vẽ, biết $\\widehat{ABC}=118^\\circ$, $\\widehat{BAD}=112^\\circ$, $\\widehat{ADE}=50^\\circ$. Vì sao $BC\\parallel DE$?\nTheo hình: $B$, $A$, $D$ là ba đỉnh của đường gấp khúc $BAD$ nằm giữa hai đường thẳng $BC$ và $DE$; $C$ và $E$ nằm ở hai phía khác nhau của đường thẳng $BD$.",
+    "loiGiai": "Qua $A$ kẻ tia $Am$ song song với $BC$ và cùng hướng với tia $BC$.\n\nHai điểm $B$ và $D$ nằm ở hai phía khác nhau của đường thẳng $Am$ nên tia $Am$ nằm giữa hai tia $AB$ và $AD$.\n\nVì $Am\\parallel BC$ nên $\\widehat{BAm}+\\widehat{ABC}=180^\\circ$ (hai góc trong cùng phía).\n\n$\\widehat{BAm}+118^\\circ=180^\\circ$\n\n$\\widehat{BAm}=180^\\circ-118^\\circ=62^\\circ$\n\nVì tia $Am$ nằm giữa hai tia $AB$ và $AD$ nên $\\widehat{BAm}+\\widehat{mAD}=\\widehat{BAD}$.\n\n$62^\\circ+\\widehat{mAD}=112^\\circ$\n\n$\\widehat{mAD}=112^\\circ-62^\\circ=50^\\circ$\n\nTa có $\\widehat{mAD}=\\widehat{ADE}=50^\\circ$ và hai góc này ở vị trí so le trong nên $Am\\parallel DE$.\n\nVì $Am\\parallel BC$ và $Am\\parallel DE$ nên $BC\\parallel DE$ (hai đường thẳng phân biệt cùng song song với đường thẳng thứ ba).\n\nVậy $BC\\parallel DE$."
+   }
+  ],
+  "co": []
+ },
+ {
+  "nguon_ma_cau": "HHC002701",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Tây Mỗ",
+  "de_bai": "Cho hình vẽ. Chứng minh: $a\\parallel b\\parallel c$.\nTheo hình: $M$ thuộc đường thẳng $a$, $N$ thuộc đường thẳng $b$, $P$ thuộc đường thẳng $c$; $Ma$ là tia của $a$ bên phải $M$, $Nb$ là tia của $b$ bên trái $N$, $Pc$ là tia của $c$ bên trái $P$. Biết $\\widehat{NMa}=145^\\circ$; $\\widehat{MNb}=145^\\circ$; $\\widehat{MNP}=85^\\circ$; $\\widehat{NPc}=50^\\circ$.",
+  "dap_an": null,
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-10/a5e05276-a24d-4937-94bd-c7fe0d5a7996_c67abdf9_p6c7.png",
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "mot_y",
+  "chung": null,
+  "huongDan": "**Mấu chốt:** chứng minh từng cặp song song bằng một cặp góc so le trong bằng nhau: cặp $a$, $b$ nhờ hai góc $145^\\circ$, cặp $b$, $c$ nhờ góc ở $N$ so le trong với góc $50^\\circ$ ở $P$.\n\n**Bước 1.** Với $a$, $b$ và cát tuyến $MN$: chỉ ra hai góc $145^\\circ$ ở $M$ và ở $N$ là cặp góc so le trong bằng nhau để suy ra $a\\parallel b$.\n\n**Bước 2.** Với $b$, $c$ và cát tuyến $NP$: cần một góc ở $N$ so le trong với góc $50^\\circ$ ở $P$, đó là góc giữa $NP$ và phần bên phải của $b$.\n\n**Bước 3.** Tìm góc đó bằng cách lấy góc kề bù của $145^\\circ$ ở $N$ rồi trừ khỏi $\\widehat{MNP}=85^\\circ$ (tia bên phải của $b$ nằm giữa $NM$ và $NP$).\n\n**Bước 4.** So sánh góc vừa tìm với $50^\\circ$ ở $P$: hai góc so le trong bằng nhau nên $b\\parallel c$; ghép với $a\\parallel b$ để kết luận.",
+  "y": [
+   {
+    "nhan": null,
+    "hoi": "Cho hình vẽ. Chứng minh: $a\\parallel b\\parallel c$.\nTheo hình: $M$ thuộc đường thẳng $a$, $N$ thuộc đường thẳng $b$, $P$ thuộc đường thẳng $c$; $Ma$ là tia của $a$ bên phải $M$, $Nb$ là tia của $b$ bên trái $N$, $Pc$ là tia của $c$ bên trái $P$. Biết $\\widehat{NMa}=145^\\circ$; $\\widehat{MNb}=145^\\circ$; $\\widehat{MNP}=85^\\circ$; $\\widehat{NPc}=50^\\circ$.",
+    "loiGiai": "Xét hai đường thẳng $a$, $b$ và cát tuyến $MN$: hai góc $\\widehat{NMa}$ và $\\widehat{MNb}$ ở vị trí so le trong (hai tia $Ma$, $Nb$ nằm ở hai phía của đường thẳng $MN$) và $\\widehat{NMa}=\\widehat{MNb}=145^\\circ$ nên $a\\parallel b$.\n\nXét hai đường thẳng $b$, $c$ và cát tuyến $NP$: gọi $Nx$ là tia đối của tia $Nb$ (tia nằm bên phải $N$).\n\nVì $Nb$ và $Nx$ là hai tia đối nhau nên $\\widehat{MNb}$ và $\\widehat{MNx}$ là hai góc kề bù.\n\n$\\widehat{MNx}=180^\\circ-\\widehat{MNb}=180^\\circ-145^\\circ=35^\\circ$\n\nTia $Nx$ nằm giữa hai tia $NM$ và $NP$ (theo hình) nên $\\widehat{MNx}+\\widehat{xNP}=\\widehat{MNP}$.\n\n$35^\\circ+\\widehat{xNP}=85^\\circ$\n\n$\\widehat{xNP}=85^\\circ-35^\\circ=50^\\circ$\n\nHai góc $\\widehat{xNP}$ và $\\widehat{NPc}$ ở vị trí so le trong và $\\widehat{xNP}=\\widehat{NPc}=50^\\circ$ nên $b\\parallel c$.\n\nTa có $a\\parallel b$ và $b\\parallel c$ nên $a\\parallel b\\parallel c$ (hai đường thẳng phân biệt cùng song song với một đường thẳng thứ ba thì song song với nhau)."
+   }
+  ],
+  "co": []
+ },
+ {
+  "nguon_ma_cau": "HHC002778",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2024-2025 — THCS Vạn Phúc, huyện Thanh Trì, Hà Nội",
+  "de_bai": "Cho hình bên, biết $a\\perp c$, $b\\perp c$ và $\\widehat{BAb}=55^\\circ$.\na) Chứng minh: $a\\parallel b$;\nb) Tính số đo góc $\\widehat{B_2}$; $\\widehat{B_3}$.\nc) Gọi $Bx$ là tia phân giác của góc $\\widehat{B_1}$. Tia $Bx$ cắt đường thẳng $b$ tại $E$. Tính số đo góc $\\widehat{BEb}$?\n(Học sinh vẽ lại hình và ghi giả thiết, kết luận)",
+  "dap_an": null,
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-10/d38c9c31-d44f-425e-96c1-a38b42576ca2_570dd7fb_p2c9.png",
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "nhieu_y",
+  "chung": "Cho hình bên, biết $a\\perp c$, $b\\perp c$ và $\\widehat{BAb}=55^\\circ$.",
+  "huongDan": "**Mấu chốt:** hai đường thẳng cùng vuông góc với đường thẳng thứ ba thì song song; từ đó chuyển góc $55^\\circ$ sang đỉnh $B$ bằng các cặp góc đồng vị, kề bù, đối đỉnh, trong cùng phía.\n\n**Bước 1.** Ý a: nhận ra $a$ và $b$ cùng vuông góc với $c$ để suy ra quan hệ giữa $a$ và $b$.\n\n**Bước 2.** Ý b: dùng $a\\parallel b$ để lấy số đo $\\widehat{B_3}$ từ góc $55^\\circ$ (cặp góc đồng vị), rồi dùng hai góc kề bù để tính $\\widehat{B_2}$.\n\n**Bước 3.** Ý c: tìm $\\widehat{B_1}$ nhờ liên hệ với $\\widehat{B_2}$ hoặc $\\widehat{B_3}$, rồi dùng tia phân giác để chia đôi góc đó.\n\n**Bước 4.** Dùng $a\\parallel b$ một lần nữa: góc vừa tìm ở đỉnh $B$ và góc $\\widehat{BEb}$ là hai góc trong cùng phía của hai đường thẳng song song bị cắt bởi $Bx$, nên tổng hai góc đó là $180^\\circ$.\n\n**Chú ý:** $\\widehat{B_1}$ là góc tù, không phải góc $55^\\circ$.",
+  "y": [
+   {
+    "nhan": "a",
+    "hoi": "Chứng minh: $a\\parallel b$;",
+    "loiGiai": "GT: $a\\perp c$, $b\\perp c$, $\\widehat{BAb}=55^\\circ$, $Bx$ là tia phân giác của $\\widehat{B_1}$, $Bx$ cắt $b$ tại $E$.\n\nKL: a) $a\\parallel b$; b) $\\widehat{B_2}=?$, $\\widehat{B_3}=?$; c) $\\widehat{BEb}=?$\n\nVì $a\\perp c$ và $b\\perp c$ nên $a\\parallel b$ (hai đường thẳng cùng vuông góc với đường thẳng thứ ba)."
+   },
+   {
+    "nhan": "b",
+    "hoi": "Tính số đo góc $\\widehat{B_2}$; $\\widehat{B_3}$.",
+    "loiGiai": "Vì $a\\parallel b$ nên $\\widehat{B_3}=\\widehat{BAb}=55^\\circ$ (hai góc đồng vị).\n\nVì $\\widehat{B_2}$ và $\\widehat{B_3}$ là hai góc kề bù nên $\\widehat{B_2}+\\widehat{B_3}=180^\\circ$.\n\nSuy ra $\\widehat{B_2}=180^\\circ-\\widehat{B_3}=180^\\circ-55^\\circ=125^\\circ$.\n\nVậy $\\widehat{B_2}=125^\\circ$; $\\widehat{B_3}=55^\\circ$."
+   },
+   {
+    "nhan": "c",
+    "hoi": "Gọi $Bx$ là tia phân giác của góc $\\widehat{B_1}$. Tia $Bx$ cắt đường thẳng $b$ tại $E$. Tính số đo góc $\\widehat{BEb}$?\n(Học sinh vẽ lại hình và ghi giả thiết, kết luận)",
+    "loiGiai": "Vì $\\widehat{B_1}$ và $\\widehat{B_2}$ là hai góc đối đỉnh nên $\\widehat{B_1}=\\widehat{B_2}=125^\\circ$.\n\nGọi $Ba$ là tia nằm trên đường thẳng $a$, ở bên phải điểm $B$. Vì $Bx$ là tia phân giác của $\\widehat{B_1}$ nên $\\widehat{aBx}=\\dfrac{\\widehat{B_1}}{2}=\\dfrac{125^\\circ}{2}=62,5^\\circ$.\n\nVì $a\\parallel b$ nên $\\widehat{aBx}+\\widehat{BEb}=180^\\circ$ (hai góc trong cùng phía).\n\nSuy ra $\\widehat{BEb}=180^\\circ-62,5^\\circ=117,5^\\circ$.\n\nVậy $\\widehat{BEb}=117,5^\\circ$."
+   }
+  ],
+  "co": [
+   "loi_giai_co_doan_mo_dau_chung"
+  ]
+ },
+ {
+  "nguon_ma_cau": "HHC002785",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Ba Đồn, phường Ba Đồn (mã đề 01)",
+  "de_bai": "Cho hình vẽ. Biết $MN=PQ$; $MQ=NP$. Trong hình, $E$ nằm trên $MN$ và $PE\\perp MN$ tại $E$; $M$ nằm giữa $Q$ và $F$; $E$ nằm giữa $F$ và $P$.\na) Chứng minh $\\triangle MNP=\\triangle PQM$.\nb) Chứng minh $MN\\parallel PQ$.\nc) Tính số đo góc $QFP$, biết $\\widehat{Q}=60^\\circ$.",
+  "dap_an": null,
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-10/9eed5862-0960-4674-af99-90df939f57f7_4a7ef8c0_p2c6.png",
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "nhieu_y",
+  "chung": "Cho hình vẽ. Biết $MN=PQ$; $MQ=NP$. Trong hình, $E$ nằm trên $MN$ và $PE\\perp MN$ tại $E$; $M$ nằm giữa $Q$ và $F$; $E$ nằm giữa $F$ và $P$.",
+  "huongDan": "**Mấu chốt:** ý a) dùng ba cặp cạnh bằng nhau (c.c.c); ý b) dùng cặp góc tương ứng so le trong; ý c) dùng song song và vuông góc để biết góc tại $P$, rồi tổng ba góc tam giác.\n\n**Bước 1.** Ý a): liệt kê ba cặp cạnh tương ứng của hai tam giác $MNP$ và $PQM$, trong đó một cặp là cạnh chung.\n\n**Bước 2.** Ý b): từ hai tam giác bằng nhau suy ra cặp góc tương ứng; hai góc này là hai góc so le trong tạo bởi hai đường thẳng $MN$, $PQ$ với đường thẳng $MP$.\n\n**Bước 3.** Ý c): dùng $MN\\parallel PQ$ vừa chứng minh và $PE\\perp MN$ để suy ra $PE$ cũng vuông góc với $PQ$, tức biết số đo góc tại đỉnh $P$ của tam giác $FQP$.\n\n**Bước 4.** Ý c): vì $M$ nằm giữa $Q$ và $F$ nên góc tại $Q$ của tam giác $FQP$ chính là góc $Q$ đã cho; áp dụng tổng ba góc của tam giác để tính góc $QFP$.\n\n**Chú ý:** chứng minh hai đường thẳng song song bằng cặp góc so le trong, không viết \"vì song song nên góc bằng nhau\" ở ý b).",
+  "y": [
+   {
+    "nhan": "a",
+    "hoi": "Chứng minh $\\triangle MNP=\\triangle PQM$.",
+    "loiGiai": "Xét $\\triangle MNP$ và $\\triangle PQM$ có:\n\n$MN=PQ$ (giả thiết)\n\n$NP=QM$ (giả thiết)\n\n$MP$ là cạnh chung\n\nDo đó $\\triangle MNP=\\triangle PQM$ (c.c.c)."
+   },
+   {
+    "nhan": "b",
+    "hoi": "Chứng minh $MN\\parallel PQ$.",
+    "loiGiai": "Vì $\\triangle MNP=\\triangle PQM$ nên $\\widehat{NMP}=\\widehat{QPM}$ (hai góc tương ứng).\n\nHai góc $\\widehat{NMP}$ và $\\widehat{QPM}$ ở vị trí so le trong (đường thẳng $MP$ cắt hai đường thẳng $MN$, $PQ$).\n\nVậy $MN\\parallel PQ$ (hai góc so le trong bằng nhau)."
+   },
+   {
+    "nhan": "c",
+    "hoi": "Tính số đo góc $QFP$, biết $\\widehat{Q}=60^\\circ$.",
+    "loiGiai": "Vì $MN\\parallel PQ$ và $PE\\perp MN$ nên $PE\\perp PQ$ (một đường thẳng vuông góc với một trong hai đường thẳng song song thì vuông góc với đường thẳng kia).\n\nMà $F$ nằm trên đường thẳng $PE$ nên $\\widehat{FPQ}=90^\\circ$.\n\nVì $M$ nằm giữa $Q$ và $F$ nên tia $QF$ trùng tia $QM$, do đó $\\widehat{FQP}=\\widehat{MQP}=60^\\circ$.\n\nXét $\\triangle FQP$ có $\\widehat{QFP}+\\widehat{FQP}+\\widehat{FPQ}=180^\\circ$ (tổng ba góc của một tam giác).\n\nSuy ra $\\widehat{QFP}=180^\\circ-60^\\circ-90^\\circ=30^\\circ$.\n\nVậy $\\widehat{QFP}=30^\\circ$."
+   }
+  ],
+  "co": []
+ },
+ {
+  "nguon_ma_cau": "HHC002792",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Bát Tràng, xã Bát Tràng (mã đề: Đề 1)",
+  "de_bai": "Cho hình vẽ, biết hai đường thẳng $xy$ và $zt$ cắt nhau tại $O$, $\\widehat{xOt}=60^\\circ$.\na) Tính số đo góc $\\widehat{zOy}$?\nb) Tính số đo góc $\\widehat{xOz}$?\nc) Vẽ $Om$ là tia phân giác của góc $\\widehat{xOz}$. Tính số đo góc $\\widehat{mOy}$?",
+  "dap_an": null,
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-10/7d4966bb-399c-412e-93e6-a53f1707d4b6_89ef29d6_p2c7.png",
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "nhieu_y",
+  "chung": "Cho hình vẽ, biết hai đường thẳng $xy$ và $zt$ cắt nhau tại $O$, $\\widehat{xOt}=60^\\circ$.",
+  "huongDan": "**Mấu chốt:** hai đường thẳng cắt nhau tạo ra các cặp góc đối đỉnh (bằng nhau) và các cặp góc kề bù (tổng bằng $180^\\circ$).\n\n**Bước 1.** Ý a: nhận ra $\\widehat{zOy}$ đối đỉnh với góc đã cho số đo nên hai góc bằng nhau.\n\n**Bước 2.** Ý b: $\\widehat{xOz}$ kề bù với $\\widehat{zOy}$ vì $Ox$ và $Oy$ là hai tia đối nhau, nên lấy $180^\\circ$ trừ số đo vừa tìm.\n\n**Bước 3.** Ý c: tia phân giác chia góc $\\widehat{xOz}$ thành hai góc bằng nhau, mỗi góc bằng một nửa số đo góc $\\widehat{xOz}$.\n\n**Bước 4.** $\\widehat{mOy}$ kề bù với $\\widehat{xOm}$ vì $Ox$, $Oy$ đối nhau, nên lấy $180^\\circ$ trừ số đo $\\widehat{xOm}$.",
+  "y": [
+   {
+    "nhan": "a",
+    "hoi": "Tính số đo góc $\\widehat{zOy}$?",
+    "loiGiai": "Vì $xy$ và $zt$ cắt nhau tại $O$ nên $\\widehat{zOy}$ và $\\widehat{xOt}$ là hai góc đối đỉnh.\n\nDo đó $\\widehat{zOy}=\\widehat{xOt}=60^\\circ$."
+   },
+   {
+    "nhan": "b",
+    "hoi": "Tính số đo góc $\\widehat{xOz}$?",
+    "loiGiai": "Vì $Ox$ và $Oy$ là hai tia đối nhau nên $\\widehat{xOz}$ và $\\widehat{zOy}$ là hai góc kề bù.\n\nDo đó $\\widehat{xOz}=180^\\circ-\\widehat{zOy}=180^\\circ-60^\\circ=120^\\circ$."
+   },
+   {
+    "nhan": "c",
+    "hoi": "Vẽ $Om$ là tia phân giác của góc $\\widehat{xOz}$. Tính số đo góc $\\widehat{mOy}$?",
+    "loiGiai": "Vẽ tia $Om$ nằm trong góc $\\widehat{xOz}$ sao cho $\\widehat{xOm}=\\widehat{mOz}$.\n\nVì $Om$ là tia phân giác của $\\widehat{xOz}$ nên $\\widehat{xOm}=\\dfrac{1}{2}\\widehat{xOz}=\\dfrac{1}{2}.120^\\circ=60^\\circ$.\n\nVì $Ox$ và $Oy$ là hai tia đối nhau nên $\\widehat{xOm}$ và $\\widehat{mOy}$ là hai góc kề bù.\n\nDo đó $\\widehat{mOy}=180^\\circ-\\widehat{xOm}=180^\\circ-60^\\circ=120^\\circ$."
+   }
+  ],
+  "co": []
+ },
+ {
+  "nguon_ma_cau": "HHC002793",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Bát Tràng, xã Bát Tràng (mã đề: Đề 1)",
+  "de_bai": "Cho hình vẽ, biết $AB\\perp xy$ tại $A$, $AB\\perp mn$ tại $B$, đường thẳng $EF$ cắt $xy$ tại $C$ và cắt $mn$ tại $D$, $\\widehat{xCE}=80^\\circ$. Vẽ hình và viết giả thiết, kết luận của bài toán, sau đó:\na) Chứng minh: $xy\\parallel mn$.\nb) Tính số đo góc $\\widehat{CDB}$?\nc) Kẻ $DH$ vuông góc với $xy$ tại $H$. Tính góc $\\widehat{CDH}$?",
+  "dap_an": null,
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-10/e58a9bbc-7995-4ed8-a328-269102c3ed5a_89ef29d6_p2c8.png",
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "nhieu_y",
+  "chung": "Cho hình vẽ, biết $AB\\perp xy$ tại $A$, $AB\\perp mn$ tại $B$, đường thẳng $EF$ cắt $xy$ tại $C$ và cắt $mn$ tại $D$, $\\widehat{xCE}=80^\\circ$.",
+  "huongDan": "**Mấu chốt:** hình có hai đường thẳng cùng vuông góc với $AB$, nên chứng minh song song trước rồi dùng tính chất của hai đường thẳng song song để chuyển góc từ $C$ sang $D$.\n\n**Bước 1.** Đọc hình để viết giả thiết (hai đường vuông góc với $AB$, đường cắt $EF$, góc $80^\\circ$ tại $C$, đường kẻ $DH$) và kết luận (ba yêu cầu a, b, c).\n\n**Bước 2.** Ý a: dùng quan hệ từ vuông góc đến song song, áp dụng cho hai đường thẳng cùng vuông góc với đường thẳng $AB$.\n\n**Bước 3.** Ý b: tìm góc kề bù với $\\widehat{xCE}$ tại $C$, rồi chuyển sang đỉnh $D$ nhờ cặp góc so le trong của hai đường thẳng song song vừa chứng minh.\n\n**Bước 4.** Ý c: $DH\\perp xy$ mà $xy\\parallel mn$ nên $DH$ cũng vuông góc với $mn$, từ đó biết số đo góc tạo bởi $DH$ và tia $DB$.\n\n**Bước 5.** Xác định vị trí tia $DH$ đối với hai tia $DB$, $DC$ rồi lấy số đo $\\widehat{CDB}$ trừ số đo góc vừa tìm.",
+  "y": [
+   {
+    "nhan": "a",
+    "hoi": "Vẽ hình và viết giả thiết, kết luận của bài toán, sau đó: Chứng minh: $xy\\parallel mn$.",
+    "loiGiai": "Vẽ hình: vẽ đường thẳng $AB$; vẽ đường thẳng $xy$ vuông góc với $AB$ tại $A$ và đường thẳng $mn$ vuông góc với $AB$ tại $B$.\n\nVẽ đường thẳng $EF$ cắt $xy$ tại $C$, cắt $mn$ tại $D$ sao cho $\\widehat{xCE}=80^\\circ$; kẻ $DH\\perp xy$ tại $H$.\n\nGT: $AB\\perp xy$ tại $A$; $AB\\perp mn$ tại $B$; $EF$ cắt $xy$ tại $C$, cắt $mn$ tại $D$; $\\widehat{xCE}=80^\\circ$; $DH\\perp xy$ tại $H$.\n\nKL: a) $xy\\parallel mn$; b) $\\widehat{CDB}=?$; c) $\\widehat{CDH}=?$\n\nVì $AB\\perp xy$ và $AB\\perp mn$ (giả thiết) nên $xy\\parallel mn$ (hai đường thẳng phân biệt cùng vuông góc với một đường thẳng thứ ba)."
+   },
+   {
+    "nhan": "b",
+    "hoi": "Vẽ hình và viết giả thiết, kết luận của bài toán, sau đó: Tính số đo góc $\\widehat{CDB}$?",
+    "loiGiai": "Vì $C$ nằm trên đường thẳng $EF$ nên $CE$ và $CD$ là hai tia đối nhau, do đó $\\widehat{xCE}$ và $\\widehat{xCD}$ là hai góc kề bù.\n\n$\\widehat{xCD}=180^\\circ-\\widehat{xCE}=180^\\circ-80^\\circ=100^\\circ$.\n\nVì $xy\\parallel mn$ nên $\\widehat{CDB}=\\widehat{xCD}$ (hai góc so le trong).\n\nVậy $\\widehat{CDB}=100^\\circ$."
+   },
+   {
+    "nhan": "c",
+    "hoi": "Vẽ hình và viết giả thiết, kết luận của bài toán, sau đó: Kẻ $DH$ vuông góc với $xy$ tại $H$. Tính góc $\\widehat{CDH}$?",
+    "loiGiai": "Vì $xy\\parallel mn$ và $DH\\perp xy$ nên $DH\\perp mn$ (một đường thẳng vuông góc với một trong hai đường thẳng song song thì vuông góc với đường còn lại).\n\nDo đó $\\widehat{HDB}=90^\\circ$.\n\nVì $xy\\parallel mn$ nên hai điểm $H$, $C$ thuộc $xy$ cùng nằm trên một nửa mặt phẳng bờ $mn$, do đó hai tia $DH$, $DC$ cùng nằm trên một nửa mặt phẳng bờ là đường thẳng chứa tia $DB$.\n\nTrên nửa mặt phẳng đó có $\\widehat{HDB}=90^\\circ<100^\\circ=\\widehat{CDB}$ nên tia $DH$ nằm giữa hai tia $DB$ và $DC$.\n\nSuy ra $\\widehat{HDB}+\\widehat{CDH}=\\widehat{CDB}$.\n\n$\\widehat{CDH}=\\widehat{CDB}-\\widehat{HDB}=100^\\circ-90^\\circ=10^\\circ$."
+   }
+  ],
+  "co": [
+   "loi_giai_co_doan_mo_dau_chung"
+  ]
+ },
+ {
+  "nguon_ma_cau": "HHC002798",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Thanh Miện (đề chẵn)",
+  "de_bai": "Cho hình vẽ ($A$ nằm trên đường thẳng $xy$), biết $\\widehat{xAB}=70^\\circ$, $\\widehat{ACB}=55^\\circ$; $\\widehat{yAC}=55^\\circ$. Xét tính đúng sai của các khẳng định dưới đây:\na) $\\widehat{xAB}$ và $\\widehat{CAB}$ là hai góc kề bù.\nb) $\\widehat{BAC}=60^\\circ$.\nc) $AC$ là tia phân giác của góc $\\widehat{BAy}$.\nd) $xy\\parallel BC$.",
+  "dap_an": null,
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-10/052a0c26-888e-4e79-a757-713dd25b68d2_70fc109d_p2c2.png",
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "khong_tach",
+  "chung": null,
+  "huongDan": "**Mấu chốt:** tính trước $\\widehat{BAC}$ nhờ ba góc kề nhau tại đỉnh $A$ trên đường thẳng $xy$ có tổng $180^\\circ$, rồi xét từng mệnh đề.\n\n**Bước 1.** Nhận ra $Ax$ và $Ay$ là hai tia đối nhau nên ba góc $\\widehat{xAB}$, $\\widehat{BAC}$, $\\widehat{CAy}$ ghép thành góc bẹt.\n\n**Bước 2.** Từ tổng ba góc bằng $180^\\circ$, suy ra số đo $\\widehat{BAC}$ rồi xét mệnh đề b).\n\n**Bước 3.** Xét mệnh đề a) bằng định nghĩa hai góc kề bù: chung một cạnh và hai cạnh còn lại là hai tia đối nhau.\n\n**Bước 4.** Xét mệnh đề c) bằng cách so hai góc $\\widehat{BAC}$ và $\\widehat{CAy}$ và xem tia $AC$ có nằm giữa $AB$, $Ay$ không.\n\n**Bước 5.** Xét mệnh đề d) bằng cách tìm cặp góc so le trong trên hình rồi so số đo.",
+  "y": [
+   {
+    "nhan": null,
+    "hoi": "Cho hình vẽ ($A$ nằm trên đường thẳng $xy$), biết $\\widehat{xAB}=70^\\circ$, $\\widehat{ACB}=55^\\circ$; $\\widehat{yAC}=55^\\circ$. Xét tính đúng sai của các khẳng định dưới đây:\na) $\\widehat{xAB}$ và $\\widehat{CAB}$ là hai góc kề bù.\nb) $\\widehat{BAC}=60^\\circ$.\nc) $AC$ là tia phân giác của góc $\\widehat{BAy}$.\nd) $xy\\parallel BC$.",
+    "loiGiai": "Vì $A$ nằm trên đường thẳng $xy$ nên $Ax$ và $Ay$ là hai tia đối nhau.\n\nTia $AB$ nằm giữa hai tia $Ax$ và $AC$, tia $AC$ nằm giữa hai tia $AB$ và $Ay$ nên $\\widehat{xAB}+\\widehat{BAC}+\\widehat{CAy}=180^\\circ$.\n\n$70^\\circ+\\widehat{BAC}+55^\\circ=180^\\circ$\n\n$\\widehat{BAC}=180^\\circ-70^\\circ-55^\\circ=55^\\circ$\n\na) Sai, vì $\\widehat{xAB}$ và $\\widehat{CAB}$ có chung cạnh $AB$ nhưng hai cạnh còn lại $Ax$ và $AC$ không phải hai tia đối nhau (hoặc vì $70^\\circ+55^\\circ=125^\\circ\\ne180^\\circ$).\n\nb) Sai, vì $\\widehat{BAC}=55^\\circ$, không phải $60^\\circ$.\n\nc) Đúng, vì $\\widehat{BAC}=\\widehat{CAy}=55^\\circ$ và tia $AC$ nằm giữa hai tia $AB$, $Ay$ nên $AC$ là tia phân giác của $\\widehat{BAy}$.\n\nd) Đúng, vì $\\widehat{yAC}=\\widehat{ACB}=55^\\circ$ và hai góc này ở vị trí so le trong nên $xy\\parallel BC$."
+   }
+  ],
+  "co": [
+   "dang_dung_sai: để nguyên 1 ý"
+  ]
+ },
+ {
+  "nguon_ma_cau": "HHC002799",
+  "loai_cau": "tra_loi_ngan",
+  "ten_de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Thanh Miện (đề chẵn)",
+  "de_bai": "Cho hình vẽ, biết $MN\\perp MP$; $MN\\perp NQ$; $\\widehat{MPQ}=135^\\circ$. Hỏi số đo $\\widehat{NQP}$ bằng bao nhiêu độ?",
+  "dap_an": "45",
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-10/37e28fe2-5575-4241-b070-42409c7d73a7_70fc109d_p3c4.png",
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "mot_y",
+  "chung": null,
+  "huongDan": "**Mấu chốt:** hai đường thẳng cùng vuông góc với $MN$ thì song song, rồi dùng hai góc trong cùng phía bù nhau.\n\n**Bước 1.** Từ hai điều kiện vuông góc với $MN$, suy ra hai đường thẳng $MP$ và $NQ$ song song với nhau.\n\n**Bước 2.** Nhận ra $PQ$ là cát tuyến và xác định $\\widehat{MPQ}$, $\\widehat{NQP}$ là cặp góc trong cùng phía.\n\n**Bước 3.** Dùng tính chất hai đường thẳng song song: hai góc trong cùng phía bù nhau, từ đó tính góc cần tìm.",
+  "y": [
+   {
+    "nhan": null,
+    "hoi": "Cho hình vẽ, biết $MN\\perp MP$; $MN\\perp NQ$; $\\widehat{MPQ}=135^\\circ$. Hỏi số đo $\\widehat{NQP}$ bằng bao nhiêu độ?",
+    "loiGiai": "Vì $MN\\perp MP$ và $MN\\perp NQ$ nên $MP\\parallel NQ$ (hai đường thẳng cùng vuông góc với $MN$).\n\nĐường thẳng $PQ$ cắt $MP$ và $NQ$ nên $\\widehat{MPQ}$ và $\\widehat{NQP}$ là hai góc trong cùng phía.\n\nVì $MP\\parallel NQ$ nên $\\widehat{MPQ}+\\widehat{NQP}=180^\\circ$ (hai góc trong cùng phía).\n\n$\\widehat{NQP}=180^\\circ-135^\\circ=45^\\circ$\n\nVậy $\\widehat{NQP}=45^\\circ$."
+   }
+  ],
+  "co": []
+ },
+ {
+  "nguon_ma_cau": "HHC002800",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Thanh Miện (đề chẵn)",
+  "de_bai": "Cho hình vẽ bên, biết $Ay$ là phân giác của $\\widehat{xAC}$; $\\widehat{BAC}=100^\\circ$; $\\widehat{ABC}=40^\\circ$ (theo hình: $B$, $A$, $x$ thẳng hàng, $Ax$ là tia đối của tia $AB$).\na) Tính góc $\\widehat{xAC}$ và $\\widehat{xAy}$. Từ đó chứng minh $Ay\\parallel BC$.\nb) Kẻ tia $Az$ nằm trong $\\widehat{BAC}$ sao cho $\\widehat{zAy}=90^\\circ$. Chứng minh tia $Az$ là phân giác của $\\widehat{BAC}$.",
+  "dap_an": null,
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-10/47a0ad2d-79bd-4dd8-bcd1-600992c2fedf_70fc109d_p4c3.png",
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "nhieu_y",
+  "chung": "Cho hình vẽ bên, biết $Ay$ là phân giác của $\\widehat{xAC}$; $\\widehat{BAC}=100^\\circ$; $\\widehat{ABC}=40^\\circ$ (theo hình: $B$, $A$, $x$ thẳng hàng, $Ax$ là tia đối của tia $AB$).",
+  "huongDan": "**Mấu chốt:** $\\widehat{xAC}$ và $\\widehat{BAC}$ kề bù nên tính được $\\widehat{xAC}$; phân giác chia đôi góc đó để so với $\\widehat{ABC}$ ở vị trí đồng vị.\n\n**Bước 1.** Ý a: nhận ra $Ax$ và $AB$ là hai tia đối nhau nên $\\widehat{xAC}$ kề bù với $\\widehat{BAC}$, từ đó tính $\\widehat{xAC}$.\n\n**Bước 2.** Dùng tính chất tia phân giác để chia đôi $\\widehat{xAC}$ và tìm số đo $\\widehat{xAy}$.\n\n**Bước 3.** So $\\widehat{xAy}$ với $\\widehat{ABC}$: hai góc này ở vị trí đồng vị nên bằng nhau thì hai đường thẳng song song.\n\n**Bước 4.** Ý b: tìm vị trí tia $AC$ so với hai tia $Ay$, $Az$ rồi dùng $\\widehat{zAy}=90^\\circ$ để tìm $\\widehat{CAz}$.\n\n**Bước 5.** Tính $\\widehat{BAz}$ từ $\\widehat{BAC}$ và $\\widehat{CAz}$, rồi so hai góc $\\widehat{BAz}$, $\\widehat{CAz}$ để kết luận phân giác.",
+  "y": [
+   {
+    "nhan": "a",
+    "hoi": "Tính góc $\\widehat{xAC}$ và $\\widehat{xAy}$. Từ đó chứng minh $Ay\\parallel BC$.",
+    "loiGiai": "Vì $Ax$ và $AB$ là hai tia đối nhau nên $\\widehat{xAC}$ và $\\widehat{BAC}$ là hai góc kề bù.\n\n$\\widehat{xAC}=180^\\circ-\\widehat{BAC}=180^\\circ-100^\\circ=80^\\circ$\n\nVì $Ay$ là tia phân giác của $\\widehat{xAC}$ nên $\\widehat{xAy}=\\widehat{yAC}=\\widehat{xAC}:2=80^\\circ:2=40^\\circ$.\n\nTa có $\\widehat{xAy}=\\widehat{ABC}=40^\\circ$.\n\nHai góc $\\widehat{xAy}$ và $\\widehat{ABC}$ ở vị trí đồng vị nên $Ay\\parallel BC$."
+   },
+   {
+    "nhan": "b",
+    "hoi": "Kẻ tia $Az$ nằm trong $\\widehat{BAC}$ sao cho $\\widehat{zAy}=90^\\circ$. Chứng minh tia $Az$ là phân giác của $\\widehat{BAC}$.",
+    "loiGiai": "Vì $Ay$ nằm trong $\\widehat{xAC}$, $Az$ nằm trong $\\widehat{BAC}$ mà $\\widehat{xAC}$ và $\\widehat{BAC}$ là hai góc kề bù nên tia $AC$ nằm giữa hai tia $Ay$ và $Az$.\n\nDo đó $\\widehat{yAC}+\\widehat{CAz}=\\widehat{yAz}$.\n\n$40^\\circ+\\widehat{CAz}=90^\\circ$\n\n$\\widehat{CAz}=90^\\circ-40^\\circ=50^\\circ$\n\nVì $Az$ nằm trong $\\widehat{BAC}$ nên $\\widehat{BAz}+\\widehat{zAC}=\\widehat{BAC}$.\n\n$\\widehat{BAz}=100^\\circ-50^\\circ=50^\\circ$\n\nTa có $Az$ nằm giữa hai tia $AB$, $AC$ và $\\widehat{BAz}=\\widehat{zAC}=50^\\circ$.\n\nVậy $Az$ là tia phân giác của $\\widehat{BAC}$."
+   }
+  ],
+  "co": []
+ },
+ {
+  "nguon_ma_cau": "HHC002807",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Lý Tự Trọng (đề không ghi quận / phường / xã và không ghi mã đề)",
+  "de_bai": "Cho định lí: \"Một đường thẳng vuông góc với một trong hai đường thẳng song song thì nó cũng vuông góc với đường thẳng còn lại\"\na) Vẽ hình minh họa nội dung định lí trên.\nb) Chỉ ra giả thiết, kết luận của định lí trên.",
+  "dap_an": null,
+  "anh_de": null,
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "nhieu_y",
+  "chung": "Cho định lí: \"Một đường thẳng vuông góc với một trong hai đường thẳng song song thì nó cũng vuông góc với đường thẳng còn lại\"",
+  "huongDan": "**Mấu chốt:** định lí viết dạng \"nếu … thì …\" thì phần sau \"nếu\" là giả thiết, phần sau \"thì\" là kết luận.\n\n**Bước 1.** Đọc định lí và xác định các đối tượng có trong đó: hai đường thẳng song song và một đường thẳng thứ ba.\n\n**Bước 2.** Vẽ hình theo đúng nội dung: hai đường thẳng song song, rồi đường thẳng thứ ba vuông góc với một trong hai đường đó.\n\n**Bước 3.** Viết lại định lí dưới dạng \"nếu … thì …\" để tách phần đã cho và phần cần suy ra.\n\n**Bước 4.** Dùng kí hiệu cho các đường thẳng đã đặt tên trên hình để ghi giả thiết và kết luận gọn gàng.",
+  "y": [
+   {
+    "nhan": "a",
+    "hoi": "Vẽ hình minh họa nội dung định lí trên.",
+    "loiGiai": "Vẽ hình:\n\nVẽ hai đường thẳng $a$ và $b$ song song với nhau.\n\nVẽ đường thẳng $c$ vuông góc với $a$ tại $A$, đường thẳng $c$ cắt $b$ tại $B$ và đánh dấu góc vuông tại $A$."
+   },
+   {
+    "nhan": "b",
+    "hoi": "Chỉ ra giả thiết, kết luận của định lí trên.",
+    "loiGiai": "Định lí được phát biểu lại: nếu đường thẳng $c$ vuông góc với một trong hai đường thẳng song song $a$ và $b$ thì $c$ vuông góc với đường thẳng còn lại.\n\nGiả thiết (GT): $a\\parallel b$; $c\\perp a$.\n\nKết luận (KL): $c\\perp b$."
+   }
+  ],
+  "co": []
+ },
+ {
+  "nguon_ma_cau": "HHC002808",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Lý Tự Trọng (đề không ghi quận / phường / xã và không ghi mã đề)",
+  "de_bai": "Cho hình bên, biết $AB=AC$ và $MB=MC$ (các cạnh có cùng kí hiệu trên hình thì bằng nhau).\na) Chứng minh $\\triangle ABM=\\triangle ACM$.\nb) Chứng minh $\\widehat{ABM}=\\widehat{ACM}$.",
+  "dap_an": null,
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-10/5f26d417-5b8a-46e3-a876-e0bdfceec2e9_bc1cd5e6_p2c5.png",
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "nhieu_y",
+  "chung": "Cho hình bên, biết $AB=AC$ và $MB=MC$ (các cạnh có cùng kí hiệu trên hình thì bằng nhau).",
+  "huongDan": "**Mấu chốt:** chọn trường hợp bằng nhau của tam giác theo dữ kiện đã có: đếm xem có mấy cặp cạnh bằng nhau và cặp cạnh nào là cạnh chung.\n\n**Bước 1.** Ý a: đọc hình để liệt kê các cặp cạnh bằng nhau của hai tam giác $ABM$ và $ACM$ (kể cả cạnh chung).\n\n**Bước 2.** Đối chiếu với các trường hợp bằng nhau của tam giác để chọn trường hợp khớp với ba cặp yếu tố vừa liệt kê.\n\n**Bước 3.** Viết chứng minh theo khuôn: \"Xét hai tam giác\", từng cặp yếu tố kèm lí do, rồi kết luận kèm tên trường hợp.\n\n**Bước 4.** Ý b: dùng kết quả ý a, hai tam giác bằng nhau thì các góc tương ứng bằng nhau, từ đó suy ra hai góc cần chứng minh.\n\n**Chú ý:** viết đỉnh tương ứng theo cùng thứ tự ($A$–$B$–$M$ ứng với $A$–$C$–$M$) để các góc tương ứng đúng.",
+  "y": [
+   {
+    "nhan": "a",
+    "hoi": "Chứng minh $\\triangle ABM=\\triangle ACM$.",
+    "loiGiai": "Xét $\\triangle ABM$ và $\\triangle ACM$ có:\n\n$AB=AC$ (giả thiết)\n\n$MB=MC$ (giả thiết)\n\n$AM$ là cạnh chung\n\nDo đó $\\triangle ABM=\\triangle ACM$ (c.c.c)."
+   },
+   {
+    "nhan": "b",
+    "hoi": "Chứng minh $\\widehat{ABM}=\\widehat{ACM}$.",
+    "loiGiai": "Vì $\\triangle ABM=\\triangle ACM$ (câu a) nên $\\widehat{ABM}=\\widehat{ACM}$ (hai góc tương ứng)."
+   }
+  ],
+  "co": []
+ },
+ {
+  "nguon_ma_cau": "HHC002810",
+  "loai_cau": "tra_loi_ngan",
+  "ten_de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Nguyễn Trường Tộ (đề chính thức)",
+  "de_bai": "Tìm số đo $x$ của góc $ABC$ ở hình vẽ bên. (Theo hình: hai đường thẳng nằm ngang cùng vuông góc với đường thẳng đứng đi qua $C$; đường thẳng $AB$ cắt đường nằm ngang phía trên tại $A$ và đường nằm ngang phía dưới tại $B$, điểm $C$ nằm trên đường nằm ngang phía dưới, bên trái $B$; góc ở $A$ nằm phía trên đường nằm ngang, giữa phần đường thẳng $AB$ kéo dài lên phía trên và phần đường nằm ngang bên phải $A$, có số đo $120^\\circ$; $x$ là số đo góc $ABC$.)",
+  "dap_an": "60",
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/HHC002810-b04cfc36-ad83-4616-8f0f-421afeeeb418.png",
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "mot_y",
+  "chung": null,
+  "huongDan": "**Mấu chốt:** hai đường nằm ngang cùng vuông góc với đường đứng nên song song, rồi dùng góc kề bù và hai góc so le trong.\n\n**Bước 1.** Nhìn hai dấu vuông góc trên hình để kết luận hai đường nằm ngang song song với nhau.\n\n**Bước 2.** Từ góc $120^\\circ$ ở $A$, tìm góc kề bù với nó nằm giữa đường nằm ngang bên phải $A$ và đường thẳng $AB$.\n\n**Bước 3.** Do hai đường nằm ngang song song, so sánh góc vừa tìm với góc $ABC$ là cặp góc so le trong để suy ra $x$.\n\n**Chú ý:** góc $120^\\circ$ là góc tù nằm ở phía trên, còn $x$ nằm ở phía dưới và bên trái đường $AB$ nên không được lấy thẳng $120^\\circ$.",
+  "y": [
+   {
+    "nhan": null,
+    "hoi": "Tìm số đo $x$ của góc $ABC$ ở hình vẽ bên. (Theo hình: hai đường thẳng nằm ngang cùng vuông góc với đường thẳng đứng đi qua $C$; đường thẳng $AB$ cắt đường nằm ngang phía trên tại $A$ và đường nằm ngang phía dưới tại $B$, điểm $C$ nằm trên đường nằm ngang phía dưới, bên trái $B$; góc ở $A$ nằm phía trên đường nằm ngang, giữa phần đường thẳng $AB$ kéo dài lên phía trên và phần đường nằm ngang bên phải $A$, có số đo $120^\\circ$; $x$ là số đo góc $ABC$.)",
+    "loiGiai": "Gọi $a$ là đường thẳng nằm ngang đi qua $A$, $b$ là đường thẳng nằm ngang đi qua $B$ và $C$, $c$ là đường thẳng đứng đi qua $C$.\n\nVì $a\\perp c$ và $b\\perp c$ nên $a\\parallel b$ (cùng vuông góc với một đường thẳng).\n\nGọi $M$ là điểm nằm trên tia đối của tia $AB$ và $N$ là điểm nằm trên $a$, bên phải $A$. Theo hình, $\\widehat{MAN}=120^\\circ$.\n\nVì $\\widehat{MAN}$ và $\\widehat{NAB}$ là hai góc kề bù nên $\\widehat{NAB}=180^\\circ-120^\\circ=60^\\circ$.\n\nVì $a\\parallel b$ nên $\\widehat{ABC}=\\widehat{NAB}=60^\\circ$ (hai góc so le trong).\n\nVậy $x=60^\\circ$."
+   }
+  ],
+  "co": []
+ },
+ {
+  "nguon_ma_cau": "HHC002811",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Nguyễn Trường Tộ (đề chính thức)",
+  "de_bai": "Vẽ lại hình vào bài kiểm tra, viết GT – KL rồi làm bài tập sau:\nCho hình vẽ có $xx'\\parallel yy'$, $\\widehat{xAC}=50^\\circ$, $\\widehat{AHy'}=\\widehat{AKt'}=90^\\circ$. (Theo hình: $A$ nằm trên $xx'$; $B$ và $H$ nằm trên $yy'$; $C$ và $K$ nằm trên $tt'$; ba điểm $A,H,K$ thẳng hàng; ba điểm $A,B,C$ thẳng hàng, $B$ nằm giữa $A$ và $C$, tia $Cz'$ là tia đối của tia $CA$.)\na) Chứng tỏ $yy'\\parallel tt'$.\nb) Tính số đo các góc: $\\widehat{ABy'}$; $\\widehat{tCz'}$.\nc) Vẽ tia $Am$ là tia phân giác của $\\widehat{xAC}$, tia $Cn$ là tia phân giác của $\\widehat{tCA}$, $Am$ và $Cn$ cắt nhau tại $I$. Chứng tỏ $Am$ vuông góc với $Cn$.",
+  "dap_an": null,
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/HHC002811-16dcc3a3-6bc9-4cf4-8384-f3c06cac894b.png",
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "nhieu_y",
+  "chung": "Vẽ lại hình vào bài kiểm tra, viết GT – KL rồi làm bài tập sau:\nCho hình vẽ có $xx'\\parallel yy'$, $\\widehat{xAC}=50^\\circ$, $\\widehat{AHy'}=\\widehat{AKt'}=90^\\circ$. (Theo hình: $A$ nằm trên $xx'$; $B$ và $H$ nằm trên $yy'$; $C$ và $K$ nằm trên $tt'$; ba điểm $A,H,K$ thẳng hàng; ba điểm $A,B,C$ thẳng hàng, $B$ nằm giữa $A$ và $C$, tia $Cz'$ là tia đối của tia $CA$.)",
+  "huongDan": "**Mấu chốt:** dùng hai góc vuông để có song song, rồi chuyển số đo góc xuống từng đường nhờ so le trong, đồng vị, đối đỉnh; ý c kẻ thêm đường song song qua $I$ để ghép hai nửa góc.\n\n**Bước 1.** Ý a: nhận ra $\\widehat{AHy'}$ và $\\widehat{AKt'}$ là cặp góc đồng vị cùng bằng $90^\\circ$ khi cát tuyến là đường thẳng $AK$.\n\n**Bước 2.** Ý b: vì $xx'\\parallel yy'$ và $A,B,C$ thẳng hàng, dùng cặp góc so le trong để chuyển $50^\\circ$ từ đỉnh $A$ sang đỉnh $B$.\n\n**Bước 3.** Vì $yy'\\parallel tt'$ (câu a), dùng cặp góc đồng vị để chuyển số đo sang đỉnh $C$, rồi dùng hai góc đối đỉnh để được góc $\\widehat{tCz'}$.\n\n**Bước 4.** Ý c: tính số đo hai góc được chia đôi, $\\widehat{xAC}$ đã biết, còn $\\widehat{tCA}$ tính qua góc kề bù với $\\widehat{ACt'}$; từ đó biết số đo hai nửa góc.\n\n**Bước 5.** Qua $I$ kẻ đường thẳng song song với $xx'$, chia góc $\\widehat{AIC}$ thành hai góc và dùng so le trong để so sánh mỗi góc với một nửa góc đã tính.\n\n**Chú ý:** $\\widehat{tCA}$ là góc tù, kề bù với $\\widehat{ACt'}$ chứ không phải đối đỉnh hay so le trong với góc $50^\\circ$.",
+  "y": [
+   {
+    "nhan": "a",
+    "hoi": "Chứng tỏ $yy'\\parallel tt'$.",
+    "loiGiai": "GT: $xx'\\parallel yy'$; $\\widehat{xAC}=50^\\circ$; $\\widehat{AHy'}=\\widehat{AKt'}=90^\\circ$; $Am$ là tia phân giác của $\\widehat{xAC}$; $Cn$ là tia phân giác của $\\widehat{tCA}$; $Am$ cắt $Cn$ tại $I$.\n\nKL: a) $yy'\\parallel tt'$; b) $\\widehat{ABy'}=?$; $\\widehat{tCz'}=?$; c) $Am\\perp Cn$.\n\nVì $A,H,K$ thẳng hàng nên $\\widehat{AHy'}$ và $\\widehat{AKt'}$ là hai góc đồng vị.\n\nMà $\\widehat{AHy'}=\\widehat{AKt'}=90^\\circ$ nên $yy'\\parallel tt'$."
+   },
+   {
+    "nhan": "b",
+    "hoi": "Tính số đo các góc: $\\widehat{ABy'}$; $\\widehat{tCz'}$.",
+    "loiGiai": "Vì $B$ nằm giữa $A$ và $C$ nên tia $AB$ trùng tia $AC$, do đó $\\widehat{xAB}=\\widehat{xAC}=50^\\circ$.\n\nVì $xx'\\parallel yy'$ nên $\\widehat{ABy'}=\\widehat{xAB}=50^\\circ$ (hai góc so le trong).\n\nVì $yy'\\parallel tt'$ nên $\\widehat{ACt'}=\\widehat{ABy'}=50^\\circ$ (hai góc đồng vị).\n\nVì $\\widehat{tCz'}$ và $\\widehat{ACt'}$ là hai góc đối đỉnh nên $\\widehat{tCz'}=\\widehat{ACt'}=50^\\circ$.\n\nVậy $\\widehat{ABy'}=50^\\circ$ và $\\widehat{tCz'}=50^\\circ$."
+   },
+   {
+    "nhan": "c",
+    "hoi": "Vẽ tia $Am$ là tia phân giác của $\\widehat{xAC}$, tia $Cn$ là tia phân giác của $\\widehat{tCA}$, $Am$ và $Cn$ cắt nhau tại $I$. Chứng tỏ $Am$ vuông góc với $Cn$.",
+    "loiGiai": "Vì $Am$ là tia phân giác của $\\widehat{xAC}$ nên $\\widehat{xAI}=\\dfrac12.\\widehat{xAC}=\\dfrac12.50^\\circ=25^\\circ$.\n\nVì $\\widehat{tCA}$ và $\\widehat{ACt'}$ là hai góc kề bù nên $\\widehat{tCA}=180^\\circ-50^\\circ=130^\\circ$.\n\nVì $Cn$ là tia phân giác của $\\widehat{tCA}$ nên $\\widehat{tCI}=\\dfrac12.\\widehat{tCA}=\\dfrac12.130^\\circ=65^\\circ$.\n\nQua $I$ kẻ đường thẳng $pq$ song song với $xx'$ ($q$ nằm bên phải $I$). Vì $xx'\\parallel tt'$ (cùng song song với $yy'$) nên $pq\\parallel tt'$.\n\nVì $I$ nằm giữa hai đường thẳng $xx'$ và $tt'$ nên tia $Iq$ nằm giữa hai tia $IA$ và $IC$.\n\nVì $pq\\parallel xx'$ nên $\\widehat{AIq}=\\widehat{xAI}=25^\\circ$ (hai góc so le trong).\n\nVì $pq\\parallel tt'$ nên $\\widehat{CIq}=\\widehat{tCI}=65^\\circ$ (hai góc so le trong).\n\nDo đó $\\widehat{AIC}=\\widehat{AIq}+\\widehat{CIq}=25^\\circ+65^\\circ=90^\\circ$.\n\nVậy $Am\\perp Cn$."
+   }
+  ],
+  "co": [
+   "loi_giai_co_doan_mo_dau_chung"
+  ]
+ },
+ {
+  "nguon_ma_cau": "HHC002813",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Trưng Vương (đề chính thức)",
+  "de_bai": "a) Vẽ hình theo các diễn đạt sau:\n+ Vẽ góc $\\widehat{xOy}$ có số đo bằng $60^\\circ$. Lấy điểm $A$ thuộc tia $Ox$.\n+ Vẽ đường thẳng $m$ đi qua điểm $A$ và song song với tia $Oy$.\n+ Vẽ đường thẳng $d$ đi qua điểm $A$ và vuông góc với tia $Oy$ tại điểm $B$.\nb) Chứng minh đường thẳng $d$ vuông góc với đường thẳng $m$.",
+  "dap_an": null,
+  "anh_de": null,
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "nhieu_y",
+  "chung": null,
+  "huongDan": "**Mấu chốt:** $m$ song song với $Oy$ và $d$ vuông góc với $Oy$ nên $d$ cũng vuông góc với $m$.\n\n**Bước 1.** Ý a: dùng thước đo góc vẽ $\\widehat{xOy}=60^\\circ$, rồi lấy điểm $A$ bất kì trên tia $Ox$.\n\n**Bước 2.** Dùng thước thẳng và êke vẽ qua $A$ đường thẳng $m$ song song với $Oy$, rồi vẽ qua $A$ đường thẳng $d$ vuông góc với $Oy$.\n\n**Bước 3.** Ý b: ghi lại hai điều đã biết từ cách vẽ về quan hệ của $m$ và $d$ với đường thẳng $Oy$.\n\n**Bước 4.** Vận dụng tính chất: một đường thẳng vuông góc với một trong hai đường thẳng song song thì vuông góc với đường thẳng còn lại.\n\n**Chú ý:** số đo $60^\\circ$ chỉ để vẽ hình, không dùng trong chứng minh.",
+  "y": [
+   {
+    "nhan": "a",
+    "hoi": "Vẽ hình theo các diễn đạt sau:\n+ Vẽ góc $\\widehat{xOy}$ có số đo bằng $60^\\circ$. Lấy điểm $A$ thuộc tia $Ox$.\n+ Vẽ đường thẳng $m$ đi qua điểm $A$ và song song với tia $Oy$.\n+ Vẽ đường thẳng $d$ đi qua điểm $A$ và vuông góc với tia $Oy$ tại điểm $B$.",
+    "loiGiai": "Cách vẽ:\n\nDùng thước đo góc vẽ góc $\\widehat{xOy}=60^\\circ$ rồi lấy điểm $A$ trên tia $Ox$.\n\nQua $A$ vẽ đường thẳng $m$ song song với tia $Oy$ (dùng êke và thước thẳng).\n\nQua $A$ vẽ đường thẳng $d$ vuông góc với tia $Oy$, cắt $Oy$ tại $B$ (dùng êke)."
+   },
+   {
+    "nhan": "b",
+    "hoi": "Chứng minh đường thẳng $d$ vuông góc với đường thẳng $m$.",
+    "loiGiai": "Ta có $m\\parallel Oy$ (cách vẽ) và $d\\perp Oy$ tại $B$ (cách vẽ).\n\nMà một đường thẳng vuông góc với một trong hai đường thẳng song song thì cũng vuông góc với đường thẳng còn lại.\n\nVậy $d\\perp m$."
+   }
+  ],
+  "co": []
+ },
+ {
+  "nguon_ma_cau": "HHC002814",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Trưng Vương (đề chính thức)",
+  "de_bai": "Cho hình bên.\na) Biết góc $\\widehat{aAm}=90^\\circ$ và góc $\\widehat{bBA}=90^\\circ$. Chứng minh đường thẳng $a$ song song với đường thẳng $b$.\nb) Biết góc $\\widehat{aMN}=120^\\circ$. Tính số đo góc $\\widehat{MNB}$ và góc $\\widehat{MNb}$.\nc) Biết tia $NP$ là tia phân giác của góc $\\widehat{MNB}$ và tia $Pt$ song song với tia $MN$. Chứng minh tia $Pt$ là tia phân giác của góc $\\widehat{NPA}$.",
+  "dap_an": null,
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-10/72e4ca61-88fd-438f-9a21-efa01d1657af_1bfcb265_p2c9.png",
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "nhieu_y",
+  "chung": "Cho hình bên.",
+  "huongDan": "**Mấu chốt:** nhận ra $a$, $b$ cùng vuông góc với đường thẳng $m$ rồi dùng hai đường thẳng song song để chuyển số đo góc qua các cặp so le trong, đồng vị và kề bù.\n\n**Bước 1.** Ý a: từ hai góc vuông tại $A$ và $B$, kết luận cả $a$ và $b$ cùng vuông góc với đường thẳng đi qua $A$, $B$.\n\n**Bước 2.** Ý b: vì $a\\parallel b$ nên góc $\\widehat{aMN}$ bằng góc so le trong ở đỉnh $N$; từ đó có $\\widehat{MNB}$ rồi dùng kề bù tìm $\\widehat{MNb}$.\n\n**Bước 3.** Ý c: từ tia phân giác $NP$ tính $\\widehat{MNP}$, rồi dùng $Pt\\parallel MN$ để suy ra $\\widehat{NPt}$ qua cặp góc so le trong.\n\n**Bước 4.** Cũng nhờ $Pt\\parallel MN$ tính $\\widehat{tPA}$ qua cặp góc đồng vị với một góc kề bù của $\\widehat{aMN}$.\n\n**Bước 5.** So sánh hai góc $\\widehat{NPt}$ và $\\widehat{tPA}$, giải thích tia $Pt$ nằm giữa hai tia $PN$, $PA$ rồi kết luận phân giác.\n\n**Chú ý:** tia $Pt$ chỉ là phân giác khi nằm giữa hai tia $PN$ và $PA$; phải nêu rõ điều này.",
+  "y": [
+   {
+    "nhan": "a",
+    "hoi": "Biết góc $\\widehat{aAm}=90^\\circ$ và góc $\\widehat{bBA}=90^\\circ$. Chứng minh đường thẳng $a$ song song với đường thẳng $b$.",
+    "loiGiai": "Vì $\\widehat{aAm}=90^\\circ$ nên $a\\perp m$ tại $A$.\n\nVì $\\widehat{bBA}=90^\\circ$ nên $b\\perp AB$, mà $A$, $B$ thuộc đường thẳng $m$ nên $b\\perp m$.\n\nHai đường thẳng phân biệt $a$ và $b$ cùng vuông góc với đường thẳng $m$.\n\nVậy $a\\parallel b$ (hai đường thẳng phân biệt cùng vuông góc với một đường thẳng thứ ba thì song song với nhau)."
+   },
+   {
+    "nhan": "b",
+    "hoi": "Biết góc $\\widehat{aMN}=120^\\circ$. Tính số đo góc $\\widehat{MNB}$ và góc $\\widehat{MNb}$.",
+    "loiGiai": "Vì $a\\parallel b$ nên $\\widehat{MNB}=\\widehat{aMN}$ (hai góc so le trong).\n\nMà $\\widehat{aMN}=120^\\circ$ nên $\\widehat{MNB}=120^\\circ$.\n\nVì hai tia $NB$ và $Nb$ đối nhau nên $\\widehat{MNB}+\\widehat{MNb}=180^\\circ$ (hai góc kề bù).\n\n$\\widehat{MNb}=180^\\circ-120^\\circ=60^\\circ$\n\nVậy $\\widehat{MNB}=120^\\circ$ và $\\widehat{MNb}=60^\\circ$."
+   },
+   {
+    "nhan": "c",
+    "hoi": "Biết tia $NP$ là tia phân giác của góc $\\widehat{MNB}$ và tia $Pt$ song song với tia $MN$. Chứng minh tia $Pt$ là tia phân giác của góc $\\widehat{NPA}$.",
+    "loiGiai": "Vì $NP$ là tia phân giác của góc $\\widehat{MNB}$ nên $\\widehat{MNP}=\\dfrac{1}{2}\\widehat{MNB}=\\dfrac{1}{2}.120^\\circ=60^\\circ$.\n\nVì $Pt\\parallel MN$ nên $\\widehat{NPt}=\\widehat{MNP}=60^\\circ$ (hai góc so le trong).\n\nVì hai tia $Ma$ và $MP$ đối nhau nên $\\widehat{aMN}+\\widehat{PMN}=180^\\circ$ (hai góc kề bù), suy ra $\\widehat{PMN}=180^\\circ-120^\\circ=60^\\circ$.\n\nVì $Pt\\parallel MN$ nên $\\widehat{tPA}=\\widehat{PMN}=60^\\circ$ (hai góc đồng vị).\n\nDo đó $\\widehat{NPt}=\\widehat{tPA}=60^\\circ$.\n\nTia $Pt$ nằm giữa hai tia $PN$, $PA$ (theo hình vẽ) và $\\widehat{NPt}=\\widehat{tPA}$.\n\nVậy tia $Pt$ là tia phân giác của góc $\\widehat{NPA}$."
+   }
+  ],
+  "co": []
+ },
+ {
+  "nguon_ma_cau": "HHC002818",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Vĩnh Niệm, phường An Biên",
+  "de_bai": "Trong hình sau: Cho $Ax\\perp c$ và $By\\perp c$, $\\widehat{CAx}=40^\\circ$, $\\widehat{CBy}=30^\\circ$. Theo hình vẽ: điểm $C$ nằm giữa hai đường thẳng $Ax$ và $By$, ba điểm $A,B,C$ cùng nằm về một phía của đường thẳng $c$.\na) Cho điểm $C$ nằm ngoài đường thẳng $x$. Đường thẳng đi qua $C$ và song song với đường thẳng $x$ là duy nhất;\nb) $Ax\\perp By$ (vì $Ax\\perp c$ và $By\\perp c$);\nc) Kẻ $Cz$ đi qua $C$ và song song với $Ax$ mà $Ax\\parallel By$ (vì $Ax\\perp c$ và $By\\perp c$) thì $Cz$ cũng song song với $By$;\nd) Số đo $\\widehat{ACB}=70^\\circ$.",
+  "dap_an": null,
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-10/1ad9b097-13c6-44e0-b31f-e9fff2f5b2ca_71fe612b_p2c2.png",
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "khong_tach",
+  "chung": null,
+  "huongDan": "**Mấu chốt:** hai đường thẳng cùng vuông góc với $c$ thì song song với nhau; từ đó dùng tiên đề Euclid và hai góc so le trong để kiểm từng mệnh đề.\n\n**Bước 1.** Mệnh đề a): đối chiếu với tiên đề Euclid về đường thẳng đi qua một điểm ngoài đường thẳng cho trước và song song với nó.\n\n**Bước 2.** Mệnh đề b): hai đường thẳng $Ax$, $By$ cùng vuông góc với $c$ thì quan hệ giữa chúng là gì, rồi so với đề.\n\n**Bước 3.** Mệnh đề c): hai đường thẳng cùng song song với một đường thẳng thứ ba thì có song song với nhau không.\n\n**Bước 4.** Mệnh đề d): kẻ tia từ $C$ song song với $Ax$ để chia góc $\\widehat{ACB}$ thành hai góc, mỗi góc bằng một góc đã biết ở hình.",
+  "y": [
+   {
+    "nhan": null,
+    "hoi": "Trong hình sau: Cho $Ax\\perp c$ và $By\\perp c$, $\\widehat{CAx}=40^\\circ$, $\\widehat{CBy}=30^\\circ$. Theo hình vẽ: điểm $C$ nằm giữa hai đường thẳng $Ax$ và $By$, ba điểm $A,B,C$ cùng nằm về một phía của đường thẳng $c$.\na) Cho điểm $C$ nằm ngoài đường thẳng $x$. Đường thẳng đi qua $C$ và song song với đường thẳng $x$ là duy nhất;\nb) $Ax\\perp By$ (vì $Ax\\perp c$ và $By\\perp c$);\nc) Kẻ $Cz$ đi qua $C$ và song song với $Ax$ mà $Ax\\parallel By$ (vì $Ax\\perp c$ và $By\\perp c$) thì $Cz$ cũng song song với $By$;\nd) Số đo $\\widehat{ACB}=70^\\circ$.",
+    "loiGiai": "a) Theo tiên đề Euclid, qua điểm $C$ nằm ngoài đường thẳng $x$ chỉ có một đường thẳng song song với $x$. Vậy khẳng định a) đúng.\n\nb) Vì $Ax\\perp c$ và $By\\perp c$ nên $Ax\\parallel By$ (hai đường thẳng phân biệt cùng vuông góc với đường thẳng thứ ba). Do đó $Ax$ không vuông góc với $By$. Vậy khẳng định b) sai.\n\nc) Vì $Cz\\parallel Ax$ và $Ax\\parallel By$ nên $Cz\\parallel By$ (hai đường thẳng phân biệt cùng song song với đường thẳng thứ ba). Vậy khẳng định c) đúng.\n\nd) Kẻ tia $Cz$ nằm giữa hai tia $CA$ và $CB$ sao cho $Cz\\parallel Ax$.\n\nVì $Cz\\parallel Ax$ nên $\\widehat{ACz}=\\widehat{CAx}=40^\\circ$ (hai góc so le trong).\n\nVì $Cz\\parallel Ax$ và $Ax\\parallel By$ nên $Cz\\parallel By$, suy ra $\\widehat{BCz}=\\widehat{CBy}=30^\\circ$ (hai góc so le trong).\n\nVì tia $Cz$ nằm giữa hai tia $CA$ và $CB$ nên $\\widehat{ACB}=\\widehat{ACz}+\\widehat{BCz}=40^\\circ+30^\\circ=70^\\circ$.\n\nVậy khẳng định d) đúng.\n\nKết luận: a) đúng, b) sai, c) đúng, d) đúng."
+   }
+  ],
+  "co": [
+   "dang_dung_sai: để nguyên 1 ý"
+  ]
+ },
+ {
+  "nguon_ma_cau": "HHC002819",
+  "loai_cau": "tra_loi_ngan",
+  "ten_de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Vĩnh Niệm, phường An Biên",
+  "de_bai": "Cho hình vẽ, biết $AB\\parallel CD\\parallel OE$, $\\widehat{A}=40^\\circ$; $AO$ vuông góc với $OC$. Hỏi số đo của góc $\\widehat{OCD}$ bằng bao nhiêu độ?\nTheo hình vẽ: $\\widehat{A}=\\widehat{BAO}$; $B$ nằm bên phải $A$, $E$ nằm bên trái $O$ và $D$ nằm bên phải $C$; tia $OE$ nằm giữa hai tia $OA$ và $OC$.",
+  "dap_an": "50",
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-10/97b82e09-78aa-4685-a05b-5428fbebcbc3_71fe612b_p3c4.png",
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "mot_y",
+  "chung": null,
+  "huongDan": "**Mấu chốt:** đi từ góc đã biết $\\widehat{A}$, qua góc vuông $\\widehat{AOC}$, tới $\\widehat{OCD}$ nhờ hai cặp góc so le trong.\n\n**Bước 1.** Dùng $AB\\parallel OE$ để chuyển số đo góc $\\widehat{A}$ sang góc $\\widehat{AOE}$ ở đỉnh $O$ (hai góc so le trong).\n\n**Bước 2.** Dùng $AO\\perp OC$ để biết $\\widehat{AOC}$, rồi vì tia $OE$ nằm giữa $OA$ và $OC$ nên tìm được $\\widehat{EOC}$ bằng phép trừ góc.\n\n**Bước 3.** Dùng $OE\\parallel CD$ để chuyển số đo $\\widehat{EOC}$ sang góc $\\widehat{OCD}$ (hai góc so le trong).\n\n**Chú ý:** hai đường thẳng cùng song song với $OE$ nên $AB\\parallel CD$, chỉ cần dùng từng cặp một.",
+  "y": [
+   {
+    "nhan": null,
+    "hoi": "Cho hình vẽ, biết $AB\\parallel CD\\parallel OE$, $\\widehat{A}=40^\\circ$; $AO$ vuông góc với $OC$. Hỏi số đo của góc $\\widehat{OCD}$ bằng bao nhiêu độ?\nTheo hình vẽ: $\\widehat{A}=\\widehat{BAO}$; $B$ nằm bên phải $A$, $E$ nằm bên trái $O$ và $D$ nằm bên phải $C$; tia $OE$ nằm giữa hai tia $OA$ và $OC$.",
+    "loiGiai": "Vì $AB\\parallel OE$ nên $\\widehat{AOE}=\\widehat{BAO}=40^\\circ$ (hai góc so le trong).\n\nVì $AO\\perp OC$ nên $\\widehat{AOC}=90^\\circ$.\n\nVì tia $OE$ nằm giữa hai tia $OA$ và $OC$ nên $\\widehat{AOE}+\\widehat{EOC}=\\widehat{AOC}$.\n\nSuy ra $\\widehat{EOC}=90^\\circ-40^\\circ=50^\\circ$.\n\nVì $OE\\parallel CD$ nên $\\widehat{OCD}=\\widehat{EOC}=50^\\circ$ (hai góc so le trong).\n\nVậy $\\widehat{OCD}=50^\\circ$."
+   }
+  ],
+  "co": []
+ },
+ {
+  "nguon_ma_cau": "HHC002820",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Vĩnh Niệm, phường An Biên",
+  "de_bai": "Cho $\\triangle ABC$ có $\\widehat{B}=80^\\circ$, $\\widehat{C}=30^\\circ$. Tia phân giác của góc $A$ cắt $BC$ tại $D$. Tính $\\widehat{ADC}$, $\\widehat{ADB}$.",
+  "dap_an": null,
+  "anh_de": null,
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "mot_y",
+  "chung": null,
+  "huongDan": "**Mấu chốt:** tổng ba góc của tam giác cho góc $A$, phân giác chia đôi góc $A$, rồi mỗi góc tại $D$ tính trong một tam giác nhỏ.\n\n**Bước 1.** Dùng tổng ba góc của $\\triangle ABC$ để tìm số đo góc $\\widehat{A}$ từ hai góc đã cho.\n\n**Bước 2.** Vì $AD$ là tia phân giác nên chia đôi $\\widehat{A}$ để có số đo của $\\widehat{DAC}$ và $\\widehat{BAD}$.\n\n**Bước 3.** Xét $\\triangle ADC$, dùng tổng ba góc để tính $\\widehat{ADC}$ từ $\\widehat{DAC}$ và $\\widehat{C}$.\n\n**Bước 4.** Tính $\\widehat{ADB}$ từ hai góc kề bù tại $D$, hoặc kiểm lại bằng tổng ba góc của $\\triangle ABD$.\n\n**Thử lại:** trong $\\triangle ABD$, tổng $\\widehat{B}+\\widehat{BAD}+\\widehat{ADB}$ phải bằng $180^\\circ$.",
+  "y": [
+   {
+    "nhan": null,
+    "hoi": "Cho $\\triangle ABC$ có $\\widehat{B}=80^\\circ$, $\\widehat{C}=30^\\circ$. Tia phân giác của góc $A$ cắt $BC$ tại $D$. Tính $\\widehat{ADC}$, $\\widehat{ADB}$.",
+    "loiGiai": "Xét $\\triangle ABC$ có $\\widehat{A}+\\widehat{B}+\\widehat{C}=180^\\circ$ (tổng ba góc của tam giác).\n\nSuy ra $\\widehat{A}=180^\\circ-80^\\circ-30^\\circ=70^\\circ$.\n\nVì $AD$ là tia phân giác của $\\widehat{A}$ nên $\\widehat{BAD}=\\widehat{DAC}=\\dfrac{70^\\circ}{2}=35^\\circ$.\n\nXét $\\triangle ADC$ có $\\widehat{DAC}+\\widehat{C}+\\widehat{ADC}=180^\\circ$ (tổng ba góc của tam giác).\n\nSuy ra $\\widehat{ADC}=180^\\circ-35^\\circ-30^\\circ=115^\\circ$.\n\nVì $D$ nằm giữa $B$ và $C$ nên $\\widehat{ADB}$ và $\\widehat{ADC}$ là hai góc kề bù, suy ra $\\widehat{ADB}=180^\\circ-115^\\circ=65^\\circ$.\n\nVậy $\\widehat{ADC}=115^\\circ$ và $\\widehat{ADB}=65^\\circ$."
+   }
+  ],
+  "co": []
+ },
+ {
+  "nguon_ma_cau": "HHC002823",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Trưng Vương, phường Hải Châu (không ghi mã đề)",
+  "de_bai": "Cho hình vẽ. Biết $\\widehat{ABC}=120^\\circ$, $\\widehat{xAz}=110^\\circ$, $\\widehat{ADC}=70^\\circ$.\na) Tính số đo góc $\\widehat{tBA}$.\nb) Giải thích tại sao $xx'\\parallel yy'$.",
+  "dap_an": null,
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-10/a147f102-87f8-4cbd-b63c-b3beeb478fcc_ea9c1807_p2c7.png",
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "nhieu_y",
+  "chung": "Cho hình vẽ. Biết $\\widehat{ABC}=120^\\circ$, $\\widehat{xAz}=110^\\circ$, $\\widehat{ADC}=70^\\circ$.",
+  "huongDan": "**Mấu chốt:** ý a dùng hai góc kề bù trên đường thẳng $tC$; ý b tạo ra một cặp góc so le trong bằng nhau từ góc $110^\\circ$ nhờ góc kề bù.\n\n**Bước 1.** Ý a: nhận ra $t$, $B$, $C$ thẳng hàng nên $\\widehat{tBA}$ và $\\widehat{ABC}$ là hai góc kề bù.\n\n**Bước 2.** Lấy $180^\\circ$ trừ đi số đo góc đã biết để được số đo góc cần tìm.\n\n**Bước 3.** Ý b: tìm góc $\\widehat{xAD}$ từ $\\widehat{xAz}$ bằng góc kề bù vì $z$, $A$, $D$ thẳng hàng.\n\n**Bước 4.** So sánh góc $\\widehat{xAD}$ với $\\widehat{ADC}$: hai góc này ở vị trí so le trong đối với cát tuyến $AD$.\n\n**Bước 5.** Dùng dấu hiệu nhận biết hai đường thẳng song song: hai góc so le trong bằng nhau thì hai đường thẳng song song.",
+  "y": [
+   {
+    "nhan": "a",
+    "hoi": "Tính số đo góc $\\widehat{tBA}$.",
+    "loiGiai": "Vì $B$ nằm giữa $t$ và $C$ nên $\\widehat{tBA}$ và $\\widehat{ABC}$ là hai góc kề bù (hình vẽ).\n\nDo đó $\\widehat{tBA}+\\widehat{ABC}=180^\\circ$.\n\n$\\widehat{tBA}=180^\\circ-120^\\circ=60^\\circ$\n\nVậy $\\widehat{tBA}=60^\\circ$."
+   },
+   {
+    "nhan": "b",
+    "hoi": "Giải thích tại sao $xx'\\parallel yy'$.",
+    "loiGiai": "Vì $A$ nằm giữa $z$ và $D$ nên $\\widehat{xAz}$ và $\\widehat{xAD}$ là hai góc kề bù.\n\nDo đó $\\widehat{xAD}=180^\\circ-\\widehat{xAz}=180^\\circ-110^\\circ=70^\\circ$.\n\nMà $\\widehat{ADC}=70^\\circ$ (giả thiết) nên $\\widehat{xAD}=\\widehat{ADC}$.\n\nHai góc $\\widehat{xAD}$ và $\\widehat{ADC}$ ở vị trí so le trong và bằng nhau.\n\nVậy $xx'\\parallel yy'$ (dấu hiệu nhận biết hai đường thẳng song song)."
+   }
+  ],
+  "co": []
+ },
+ {
+  "nguon_ma_cau": "HHC002824",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Chu Văn An, phường Thanh Khê (mã đề A)",
+  "de_bai": "Cho hai đường thẳng $xy$ và $ab$ cắt nhau tại $E$, biết $\\widehat{xEa}=60^\\circ$ (học sinh vẽ hình vào giấy làm bài).\na) Tính số đo các góc: $\\widehat{xEb}$ và $\\widehat{yEb}$?\nb) Vẽ tia $Em$ là tia phân giác của $\\widehat{xEb}$. Tính số đo góc $\\widehat{mEy}$?",
+  "dap_an": null,
+  "anh_de": null,
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "nhieu_y",
+  "chung": "Cho hai đường thẳng $xy$ và $ab$ cắt nhau tại $E$, biết $\\widehat{xEa}=60^\\circ$ (học sinh vẽ hình vào giấy làm bài).",
+  "huongDan": "**Mấu chốt:** hai đường thẳng cắt nhau tạo ra các cặp góc kề bù và đối đỉnh; tia phân giác chia góc thành hai góc bằng nhau.\n\n**Bước 1.** Vẽ hai đường thẳng $xy$ và $ab$ cắt nhau tại $E$ rồi đánh dấu góc $\\widehat{xEa}$ bằng $60^\\circ$.\n\n**Bước 2.** Ý a: tìm góc kề bù với $\\widehat{xEa}$ để tính $\\widehat{xEb}$, và góc đối đỉnh với $\\widehat{xEa}$ để tính $\\widehat{yEb}$.\n\n**Bước 3.** Ý b: vẽ tia phân giác $Em$ của $\\widehat{xEb}$ rồi dùng định nghĩa tia phân giác để tính $\\widehat{xEm}$.\n\n**Bước 4.** Vì $Ex$ và $Ey$ là hai tia đối nhau nên $\\widehat{xEm}$ và $\\widehat{mEy}$ kề bù, từ đó tính được $\\widehat{mEy}$.\n\n**Chú ý:** $\\widehat{mEy}$ không phải là nửa của $\\widehat{xEb}$; nó kề bù với góc $\\widehat{xEm}$ chứ không phải là góc được chia đôi.",
+  "y": [
+   {
+    "nhan": "a",
+    "hoi": "Tính số đo các góc: $\\widehat{xEb}$ và $\\widehat{yEb}$?",
+    "loiGiai": "Vẽ hai đường thẳng $xy$ và $ab$ cắt nhau tại $E$ sao cho $\\widehat{xEa}=60^\\circ$.\n\nVì $\\widehat{xEa}$ và $\\widehat{xEb}$ là hai góc kề bù nên $\\widehat{xEa}+\\widehat{xEb}=180^\\circ$ (hai góc kề bù).\n\n$\\widehat{xEb}=180^\\circ-\\widehat{xEa}=180^\\circ-60^\\circ=120^\\circ$\n\nVì $\\widehat{yEb}$ và $\\widehat{xEa}$ là hai góc đối đỉnh nên $\\widehat{yEb}=\\widehat{xEa}=60^\\circ$ (hai góc đối đỉnh).\n\nVậy $\\widehat{xEb}=120^\\circ$ và $\\widehat{yEb}=60^\\circ$."
+   },
+   {
+    "nhan": "b",
+    "hoi": "Vẽ tia $Em$ là tia phân giác của $\\widehat{xEb}$. Tính số đo góc $\\widehat{mEy}$?",
+    "loiGiai": "Vì $Em$ là tia phân giác của $\\widehat{xEb}$ nên $\\widehat{xEm}=\\dfrac{1}{2}.\\widehat{xEb}=\\dfrac{1}{2}.120^\\circ=60^\\circ$ (tính chất tia phân giác).\n\nVì $\\widehat{xEm}$ và $\\widehat{mEy}$ là hai góc kề bù nên $\\widehat{xEm}+\\widehat{mEy}=180^\\circ$ (hai góc kề bù).\n\n$\\widehat{mEy}=180^\\circ-\\widehat{xEm}=180^\\circ-60^\\circ=120^\\circ$\n\nVậy $\\widehat{mEy}=120^\\circ$."
+   }
+  ],
+  "co": [
+   "loi_giai_co_doan_mo_dau_chung"
+  ]
+ },
+ {
+  "nguon_ma_cau": "HHC002827",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Lê Thị Hồng Gấm, phường Thanh Khê (mã đề B)",
+  "de_bai": "Hãy vẽ lại hình sau đây. Biết $\\widehat{xBc}=45^\\circ$, $\\widehat{aAy}=135^\\circ$, $cd\\perp mn$ tại $C$.\na) Gọi tên góc đối đỉnh với $\\widehat{xAa}$.\nb) Chứng minh $ab\\parallel cd$.\nc) Vẽ tia $Cz$ là tia phân giác của $\\widehat{nCd}$. Chứng minh $Cz\\parallel xy$.",
+  "dap_an": null,
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-10/b5d92c49-3f12-48c5-9d66-c8f7f869b0ef_3a8dd111_p2c10.png",
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "nhieu_y",
+  "chung": "Hãy vẽ lại hình sau đây. Biết $\\widehat{xBc}=45^\\circ$, $\\widehat{aAy}=135^\\circ$, $cd\\perp mn$ tại $C$.",
+  "huongDan": "**Mấu chốt:** đưa các góc đã cho về cùng một cát tuyến $xy$ để nhận ra cặp góc so le trong ở câu b) và cặp góc đồng vị ở câu c).\n\n**Bước 1.** Tìm góc đối đỉnh bằng cách thay mỗi cạnh của góc đã cho bằng tia đối của nó.\n\n**Bước 2.** Ở câu b), dùng hai góc kề bù tại $A$ để tính góc còn lại phía bên kia, rồi so sánh với góc cho tại $B$ xem có phải cặp góc so le trong bằng nhau không.\n\n**Bước 3.** Ở câu c), từ $cd\\perp mn$ tính số đo góc $\\widehat{nCd}$, rồi dùng tia phân giác để tìm số đo góc mới tại $C$.\n\n**Bước 4.** Tìm góc tại $B$ đối đỉnh với góc đã cho, so sánh với góc mới tại $C$ để thấy cặp góc đồng vị bằng nhau và kết luận hai đường thẳng song song.\n\n**Chú ý:** luôn nói rõ vì sao hai góc ở vị trí so le trong hoặc đồng vị, và vì sao tia nằm trên cạnh của góc khác.",
+  "y": [
+   {
+    "nhan": "a",
+    "hoi": "Gọi tên góc đối đỉnh với $\\widehat{xAa}$.",
+    "loiGiai": "Cách vẽ hình: vẽ đường thẳng $cd$ và vẽ đường thẳng $mn$ vuông góc với $cd$ tại $C$.\n\nLấy điểm $B$ trên $cd$ ở bên phải $C$, vẽ đường thẳng $xy$ đi qua $B$ sao cho $\\widehat{xBc}=45^\\circ$ (tia $Bx$ nằm cùng phía với tia $Cm$ đối với đường thẳng $cd$).\n\nLấy điểm $A$ trên tia $Bx$, vẽ đường thẳng $ab$ đi qua $A$ sao cho $\\widehat{aAy}=135^\\circ$ (tia $Aa$ nằm cùng phía với tia $Bc$ đối với đường thẳng $xy$).\n\nHai tia $Ax$ và $Ay$ là hai tia đối nhau; hai tia $Aa$ và $Ab$ là hai tia đối nhau.\n\nDo đó góc đối đỉnh với $\\widehat{xAa}$ là $\\widehat{yAb}$."
+   },
+   {
+    "nhan": "b",
+    "hoi": "Chứng minh $ab\\parallel cd$.",
+    "loiGiai": "Vì $\\widehat{aAy}$ và $\\widehat{yAb}$ là hai góc kề bù nên $\\widehat{aAy}+\\widehat{yAb}=180^\\circ$ (hai góc kề bù).\n\nSuy ra $\\widehat{yAb}=180^\\circ-135^\\circ=45^\\circ$.\n\nVì $B$ nằm trên tia $Ay$ nên $\\widehat{bAB}=\\widehat{yAb}=45^\\circ$.\n\nVì $A$ nằm trên tia $Bx$ nên $\\widehat{ABc}=\\widehat{xBc}=45^\\circ$ (giả thiết).\n\nDo đó $\\widehat{bAB}=\\widehat{ABc}$.\n\nHai góc $\\widehat{bAB}$ và $\\widehat{ABc}$ ở vị trí so le trong nên $ab\\parallel cd$ (dấu hiệu nhận biết hai đường thẳng song song)."
+   },
+   {
+    "nhan": "c",
+    "hoi": "Vẽ tia $Cz$ là tia phân giác của $\\widehat{nCd}$. Chứng minh $Cz\\parallel xy$.",
+    "loiGiai": "Vì $cd\\perp mn$ tại $C$ nên $\\widehat{nCd}=90^\\circ$ (giả thiết).\n\nVì $Cz$ là tia phân giác của $\\widehat{nCd}$ nên $\\widehat{zCd}=\\dfrac{\\widehat{nCd}}{2}=\\dfrac{90^\\circ}{2}=45^\\circ$ (tính chất tia phân giác).\n\nHai góc $\\widehat{yBd}$ và $\\widehat{xBc}$ là hai góc đối đỉnh nên $\\widehat{yBd}=\\widehat{xBc}=45^\\circ$ (tính chất hai góc đối đỉnh).\n\nSuy ra $\\widehat{zCd}=\\widehat{yBd}=45^\\circ$.\n\nHai góc $\\widehat{zCd}$ và $\\widehat{yBd}$ ở vị trí đồng vị nên $Cz\\parallel By$, tức là $Cz\\parallel xy$ (dấu hiệu nhận biết hai đường thẳng song song)."
+   }
+  ],
+  "co": [
+   "loi_giai_co_doan_mo_dau_chung"
+  ]
+ },
+ {
+  "nguon_ma_cau": "HHC002832",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Phúc Hòa, xã Phúc Thọ (đề chính thức)",
+  "de_bai": "Cho hình vẽ dưới đây, biết $a\\perp d$, $b\\perp d$ và $\\widehat{ACD}=70^\\circ$, $\\widehat{DEF}=110^\\circ$.\n(Hình vẽ: đường thẳng $d$ cắt $a$, $b$, $c$ lần lượt tại $A$, $B$, $F$; đường thẳng $e$ cắt $a$, $b$, $c$ lần lượt tại $C$, $D$, $E$; $\\widehat{D_1}=\\widehat{BDC}$, $\\widehat{D_2}$ là góc tạo bởi tia $DC$ và tia đối của tia $DB$.)\na) Chứng tỏ $a\\parallel b$.\nb) Tính $\\widehat{D_2}$, $\\widehat{D_1}$.\nc) Chứng tỏ $b\\parallel c$ và $c\\perp d$.\nd) Tia phân giác của $\\widehat{BDE}$ cắt tia phân giác của $\\widehat{DEF}$ tại $I$. Tính góc $\\widehat{DIE}$.",
+  "dap_an": null,
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-10/610eb73f-e154-4d52-9f4c-9f7314357749_fe552a33_p2c8.png",
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "nhieu_y",
+  "chung": "Cho hình vẽ dưới đây, biết $a\\perp d$, $b\\perp d$ và $\\widehat{ACD}=70^\\circ$, $\\widehat{DEF}=110^\\circ$.\n(Hình vẽ: đường thẳng $d$ cắt $a$, $b$, $c$ lần lượt tại $A$, $B$, $F$; đường thẳng $e$ cắt $a$, $b$, $c$ lần lượt tại $C$, $D$, $E$; $\\widehat{D_1}=\\widehat{BDC}$, $\\widehat{D_2}$ là góc tạo bởi tia $DC$ và tia đối của tia $DB$.)",
+  "huongDan": "**Mấu chốt:** mỗi ý dùng kết quả của ý trước: song song ở ý a cho các góc ở ý b, các góc ở ý b cho song song ở ý c, rồi tính góc ở ý d.\n\n**Bước 1.** Ý a: hai đường thẳng cùng vuông góc với đường thẳng $d$ thì song song với nhau.\n\n**Bước 2.** Ý b: dùng $a\\parallel b$ để tìm $\\widehat{D_1}$ từ góc $\\widehat{ACD}$ (hai góc trong cùng phía), rồi tìm $\\widehat{D_2}$ nhờ hai góc kề bù.\n\n**Bước 3.** Ý c: nhận ra $\\widehat{D_1}$ và $\\widehat{DEF}$ là hai góc đồng vị có số đo bằng nhau, suy ra $b\\parallel c$ (dấu hiệu nhận biết), rồi từ $b\\perp d$ suy ra $c\\perp d$.\n\n**Bước 4.** Ý d: tính $\\widehat{BDE}$ nhờ nó đối đỉnh với $\\widehat{D_2}$, rồi dùng định nghĩa tia phân giác để tìm hai góc $\\widehat{IDE}$, $\\widehat{IED}$ là nửa của $\\widehat{BDE}$, $\\widehat{DEF}$.\n\n**Bước 5.** Ý d: dùng tổng ba góc của tam giác $DIE$ để tính góc $\\widehat{DIE}$.\n\n**Chú ý:** ý d dùng $\\widehat{BDE}$ (bằng $\\widehat{D_2}$ vì đối đỉnh), không dùng $\\widehat{D_1}$.",
+  "y": [
+   {
+    "nhan": "a",
+    "hoi": "Chứng tỏ $a\\parallel b$.",
+    "loiGiai": "Vì $a\\perp d$ và $b\\perp d$ nên $a\\parallel b$ (hai đường thẳng cùng vuông góc với đường thẳng thứ ba)."
+   },
+   {
+    "nhan": "b",
+    "hoi": "Tính $\\widehat{D_2}$, $\\widehat{D_1}$.",
+    "loiGiai": "Vì $a\\parallel b$ nên $\\widehat{ACD}+\\widehat{D_1}=180^\\circ$ (hai góc trong cùng phía).\n\n$\\widehat{D_1}=180^\\circ-70^\\circ=110^\\circ$.\n\nVì $\\widehat{D_1}$ và $\\widehat{D_2}$ là hai góc kề bù nên $\\widehat{D_1}+\\widehat{D_2}=180^\\circ$.\n\n$\\widehat{D_2}=180^\\circ-110^\\circ=70^\\circ$."
+   },
+   {
+    "nhan": "c",
+    "hoi": "Chứng tỏ $b\\parallel c$ và $c\\perp d$.",
+    "loiGiai": "Ta có $\\widehat{D_1}=\\widehat{DEF}=110^\\circ$.\n\nMà $\\widehat{D_1}$ và $\\widehat{DEF}$ ở vị trí đồng vị nên $b\\parallel c$ (dấu hiệu nhận biết hai đường thẳng song song).\n\nVì $b\\parallel c$ và $b\\perp d$ nên $c\\perp d$ (một đường thẳng vuông góc với một trong hai đường thẳng song song thì cũng vuông góc với đường thẳng còn lại)."
+   },
+   {
+    "nhan": "d",
+    "hoi": "Tia phân giác của $\\widehat{BDE}$ cắt tia phân giác của $\\widehat{DEF}$ tại $I$. Tính góc $\\widehat{DIE}$.",
+    "loiGiai": "Vì $\\widehat{BDE}$ và $\\widehat{D_2}$ là hai góc đối đỉnh nên $\\widehat{BDE}=\\widehat{D_2}=70^\\circ$.\n\nVì $DI$ là tia phân giác của $\\widehat{BDE}$ nên $\\widehat{IDE}=\\dfrac{\\widehat{BDE}}{2}=\\dfrac{70^\\circ}{2}=35^\\circ$.\n\nVì $EI$ là tia phân giác của $\\widehat{DEF}$ nên $\\widehat{IED}=\\dfrac{\\widehat{DEF}}{2}=\\dfrac{110^\\circ}{2}=55^\\circ$.\n\nXét tam giác $DIE$ có $\\widehat{DIE}+\\widehat{IDE}+\\widehat{IED}=180^\\circ$ (tổng ba góc của một tam giác).\n\n$\\widehat{DIE}=180^\\circ-35^\\circ-55^\\circ=90^\\circ$."
+   }
+  ],
+  "co": []
+ },
+ {
+  "nguon_ma_cau": "HHC002838",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Phương Đông, xã Trà Liên (không ghi mã đề)",
+  "de_bai": "Cho hình vẽ bên (đường thẳng $c$ vuông góc với cả $a$ và $b$ theo kí hiệu góc vuông trên hình; một đường thẳng cắt $a$ tại $A$ và cắt $b$ tại $B$; $\\widehat{B_1}=75^\\circ$).\na) Vì sao $a\\parallel b$?\nb) Tính số đo của $\\widehat{A_3}$; $\\widehat{A_4}$; $\\widehat{A_1}$.",
+  "dap_an": null,
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-10/ef74dad9-ea4c-4c2c-97f3-b7370cae3cb4_d151259c_p2c6.png",
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "nhieu_y",
+  "chung": "Cho hình vẽ bên (đường thẳng $c$ vuông góc với cả $a$ và $b$ theo kí hiệu góc vuông trên hình; một đường thẳng cắt $a$ tại $A$ và cắt $b$ tại $B$; $\\widehat{B_1}=75^\\circ$).",
+  "huongDan": "**Mấu chốt:** hai đường thẳng cùng vuông góc với một đường thẳng thứ ba thì song song, sau đó dùng tính chất hai đường thẳng song song để chuyển số đo góc.\n\n**Bước 1.** Ý a: tìm trên hình hai đường thẳng $a$, $b$ cùng tạo góc vuông với đường thẳng $c$.\n\n**Bước 2.** Ý a: dùng tính chất \"cùng vuông góc với đường thẳng thứ ba\" để kết luận quan hệ giữa $a$ và $b$.\n\n**Bước 3.** Ý b: tìm cặp góc so le trong của $\\widehat{A_3}$ để chuyển số đo $75^\\circ$ từ đỉnh $B$ sang đỉnh $A$.\n\n**Bước 4.** Tính $\\widehat{A_4}$ nhờ quan hệ kề bù với $\\widehat{A_3}$ trên cùng một đường thẳng.\n\n**Bước 5.** Tính $\\widehat{A_1}$ nhờ quan hệ đối đỉnh với $\\widehat{A_3}$.",
+  "y": [
+   {
+    "nhan": "a",
+    "hoi": "Vì sao $a\\parallel b$?",
+    "loiGiai": "Ta có $a\\perp c$ và $b\\perp c$ (kí hiệu góc vuông trên hình).\n\nVậy $a\\parallel b$ (hai đường thẳng phân biệt cùng vuông góc với đường thẳng thứ ba)."
+   },
+   {
+    "nhan": "b",
+    "hoi": "Tính số đo của $\\widehat{A_3}$; $\\widehat{A_4}$; $\\widehat{A_1}$.",
+    "loiGiai": "Vì $a\\parallel b$ nên $\\widehat{A_3}=\\widehat{B_1}=75^\\circ$ (hai góc so le trong).\n\nVì $\\widehat{A_3}$ và $\\widehat{A_4}$ là hai góc kề bù nên $\\widehat{A_4}=180^\\circ-\\widehat{A_3}=180^\\circ-75^\\circ=105^\\circ$.\n\nVì $\\widehat{A_1}$ và $\\widehat{A_3}$ là hai góc đối đỉnh nên $\\widehat{A_1}=\\widehat{A_3}=75^\\circ$.\n\nVậy $\\widehat{A_3}=75^\\circ$; $\\widehat{A_4}=105^\\circ$; $\\widehat{A_1}=75^\\circ$."
+   }
+  ],
+  "co": []
+ },
+ {
+  "nguon_ma_cau": "HHC002844",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Quế Thuận (đề chính)",
+  "de_bai": "Cho hình vẽ sau, hãy chỉ ra:\na) Các cặp góc kề bù.\nb) Các cặp góc đối đỉnh.\nTheo hình vẽ: $A$, $F$, $E$ thẳng hàng; $B$, $C$, $D$ thẳng hàng; đoạn thẳng $AD$ cắt đoạn thẳng $FC$ tại $G$.",
+  "dap_an": null,
+  "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-10/65a05e38-c896-40e9-8982-7376d883b83e_ca7df339_p2c6.png",
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "nhieu_y",
+  "chung": "Theo hình vẽ: $A$, $F$, $E$ thẳng hàng; $B$, $C$, $D$ thẳng hàng; đoạn thẳng $AD$ cắt đoạn thẳng $FC$ tại $G$.",
+  "huongDan": "**Mấu chốt:** hai góc kề bù có một cạnh chung và hai cạnh còn lại là hai tia đối nhau; hai góc đối đỉnh do hai đường thẳng cắt nhau tạo thành.\n\n**Bước 1.** Đọc hình để biết những bộ ba điểm nào thẳng hàng và hai đường thẳng nào cắt nhau.\n\n**Bước 2.** Tại mỗi điểm nằm giữa hai điểm khác trên một đường thẳng, tìm tia xuất phát từ điểm đó rồi lập các cặp góc kề bù.\n\n**Bước 3.** Tìm giao điểm của hai đường thẳng cắt nhau, ở đó có hai cặp góc đối đỉnh.\n\n**Chú ý:** hai góc kề nhau chưa chắc đã kề bù; phải có hai cạnh còn lại là hai tia đối nhau.",
+  "y": [
+   {
+    "nhan": "a",
+    "hoi": "Cho hình vẽ sau, hãy chỉ ra: Các cặp góc kề bù.",
+    "loiGiai": "Theo hình vẽ: $A$, $F$, $E$ thẳng hàng; $B$, $C$, $D$ thẳng hàng; $A$, $G$, $D$ thẳng hàng; $F$, $G$, $C$ thẳng hàng.\n\nCác cặp góc kề bù:\n\nTại $F$: $FA$ và $FE$ là hai tia đối nhau nên $\\widehat{AFC}$ và $\\widehat{EFC}$ là hai góc kề bù.\n\nTại $C$: $CB$ và $CD$ là hai tia đối nhau nên $\\widehat{BCF}$ và $\\widehat{DCF}$ là hai góc kề bù.\n\nTại $G$: $GA$ và $GD$ là hai tia đối nhau, $GF$ và $GC$ là hai tia đối nhau nên các cặp góc kề bù là $\\widehat{AGF}$ và $\\widehat{AGC}$; $\\widehat{AGC}$ và $\\widehat{CGD}$; $\\widehat{CGD}$ và $\\widehat{DGF}$; $\\widehat{DGF}$ và $\\widehat{AGF}$."
+   },
+   {
+    "nhan": "b",
+    "hoi": "Cho hình vẽ sau, hãy chỉ ra: Các cặp góc đối đỉnh.",
+    "loiGiai": "Hai đường thẳng $AD$ và $FC$ cắt nhau tại $G$ nên các cặp góc đối đỉnh là: $\\widehat{AGF}$ và $\\widehat{CGD}$; $\\widehat{AGC}$ và $\\widehat{FGD}$."
+   }
+  ],
+  "co": [
+   "loi_giai_co_doan_mo_dau_chung"
+  ]
+ },
+ {
+  "nguon_ma_cau": "HHC002845",
+  "loai_cau": "tu_luan",
+  "ten_de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Quế Thuận (đề chính)",
+  "de_bai": "Cho $\\triangle ABC$ có $\\widehat{ABC}=70^\\circ$, $\\widehat{ACB}=40^\\circ$. Vẽ tia $Cx$ là tia đối của tia $CB$. Vẽ tia $Cy$ là tia phân giác của $\\widehat{ACx}$.\na) Tính $\\widehat{ACx}$, $\\widehat{xCy}$.\nb) Chứng minh rằng $AB\\parallel Cy$.",
+  "dap_an": null,
+  "anh_de": null,
+  "anh_loi_giai": null,
+  "da_co": false,
+  "loai": "nhieu_y",
+  "chung": "Cho $\\triangle ABC$ có $\\widehat{ABC}=70^\\circ$, $\\widehat{ACB}=40^\\circ$. Vẽ tia $Cx$ là tia đối của tia $CB$. Vẽ tia $Cy$ là tia phân giác của $\\widehat{ACx}$.",
+  "huongDan": "**Mấu chốt:** $Cx$ là tia đối của $CB$ nên $\\widehat{ACx}$ kề bù với $\\widehat{ACB}$; còn $AB\\parallel Cy$ được chứng minh bằng một cặp góc đồng vị bằng nhau.\n\n**Bước 1.** Vẽ hình theo đề: tam giác $ABC$, kéo dài $BC$ về phía $C$ được tia $Cx$, rồi vẽ tia phân giác $Cy$ của $\\widehat{ACx}$.\n\n**Bước 2.** Ý a: nhận ra $\\widehat{ACx}$ và $\\widehat{ACB}$ là hai góc kề bù để tính $\\widehat{ACx}$.\n\n**Bước 3.** Dùng tia phân giác $Cy$ chia $\\widehat{ACx}$ thành hai góc bằng nhau để tính $\\widehat{xCy}$.\n\n**Bước 4.** Ý b: tìm cặp góc đồng vị tạo bởi đường thẳng $BC$ cắt $AB$ và $Cy$, rồi so sánh số đo của chúng.\n\n**Bước 5.** Dùng dấu hiệu nhận biết hai đường thẳng song song để kết luận.",
+  "y": [
+   {
+    "nhan": "a",
+    "hoi": "Tính $\\widehat{ACx}$, $\\widehat{xCy}$.",
+    "loiGiai": "Vẽ hình: vẽ $\\triangle ABC$ có $\\widehat{ABC}=70^\\circ$, $\\widehat{ACB}=40^\\circ$; kéo dài $BC$ về phía $C$ được tia $Cx$; vẽ tia $Cy$ nằm trong $\\widehat{ACx}$ sao cho $Cy$ là tia phân giác của $\\widehat{ACx}$.\n\nVì $Cx$ là tia đối của tia $CB$ nên $\\widehat{ACx}$ và $\\widehat{ACB}$ là hai góc kề bù.\n\nSuy ra $\\widehat{ACx}+\\widehat{ACB}=180^\\circ$.\n\n$\\widehat{ACx}=180^\\circ-40^\\circ=140^\\circ$.\n\nVì $Cy$ là tia phân giác của $\\widehat{ACx}$ nên $\\widehat{xCy}=\\dfrac{\\widehat{ACx}}{2}=\\dfrac{140^\\circ}{2}=70^\\circ$."
+   },
+   {
+    "nhan": "b",
+    "hoi": "Chứng minh rằng $AB\\parallel Cy$.",
+    "loiGiai": "Ta có $\\widehat{ABC}=70^\\circ$ (giả thiết) và $\\widehat{xCy}=70^\\circ$ (chứng minh trên).\n\nSuy ra $\\widehat{ABC}=\\widehat{xCy}$.\n\nHai đường thẳng $AB$ và $Cy$ bị cắt bởi đường thẳng $BC$; tia $Cy$ nằm trong $\\widehat{ACx}$ nên $A$ và $y$ nằm cùng phía đối với $BC$. Do đó $\\widehat{ABC}$ và $\\widehat{xCy}$ là hai góc đồng vị.\n\nVậy $AB\\parallel Cy$ (hai góc đồng vị bằng nhau)."
+   }
+  ],
+  "co": [
+   "loi_giai_co_doan_mo_dau_chung"
+  ]
+ }
+]

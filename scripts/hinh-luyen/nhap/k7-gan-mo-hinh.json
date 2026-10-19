@@ -1,0 +1,20 @@
+{
+  "_ghi_chu": "K7 19/10 — gán bài kho Luyện (nguồn: đề cương + đề KT giữa học kì 1 lớp 7) vào mô hình chủ đề NCD00177 'Đường thẳng song song'. Claude Opus phân loại bằng đề + hình đề + hình cấu hình mô hình. Chỉ gán khi CHẮC; còn lại để 'chưa phân mô hình'.",
+  "gan": {
+    "MH.076": ["HHC002608", "HHC002694", "HHC002698", "HHC002699", "HHC002778", "HHC002793", "HHC002799", "HHC002810", "HHC002814", "HHC002823", "HHC002827", "HHC002838"],
+    "MH.085": ["HHC002692", "HHC002696", "HHC002811", "HHC002832"],
+    "MH.086": ["HHC002610"],
+    "MH.087": ["HHC002695", "HHC002818", "HHC002819"]
+  },
+  "chua_chac": {
+    "HHC002700": "hai tia ngược hướng (BC sang phải, DE sang trái), đỉnh A nằm TRONG dải — gần Vây cá nhưng Vây cá có đỉnh ngoài dải",
+    "HHC002611": "hai tia ngược hướng (Ax trái, By phải), đỉnh O trong dải + tia phụ Ot — giống HHC002700",
+    "HHC002701": "ba đường a, b, c nối bằng đường gấp khúc M–N–P, chứng minh a ∥ b ∥ c — không khớp hẳn MH.085 (MH.085 có cát tuyến thẳng)"
+  },
+  "ho_moi_de_xuat": {
+    "ten": "Phân giác góc ngoài của tam giác song song với cạnh đối (hoặc đường thẳng qua đỉnh song song cạnh đối)",
+    "bai": ["HHC002609", "HHC002800", "HHC002697", "HHC002845", "HHC002693", "HHC002798"],
+    "ghi_chu": "HHC002609 và HHC002800 là CÙNG một bài (2 đề dùng chung)"
+  },
+  "ngoai_chu_de": ["HHC002605", "HHC002606", "HHC002607", "HHC002792", "HHC002824", "HHC002844", "HHC002785", "HHC002808", "HHC002820", "HHC002807", "HHC002813"]
+}
