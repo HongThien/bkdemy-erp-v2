@@ -11,8 +11,24 @@ import { MathText } from '../ui'
 import { AnhInput, Btn, Empty, Fig, Ma, Note, OcrButton, Seg, inpCls, tron } from './hinhUi'
 
 type BaiX = BaiToan & { so: string }
-const NHO: { gocId: string | null; tab: 'chuoi' | 'nhom' | 'kho'; gap: Record<string, string[]>; mo: boolean; cuon: Record<string, [number, number]>; tim: string; gapNhom: Record<string, boolean> } =
-  { gocId: null, tab: 'chuoi', gap: {}, mo: true, cuon: {}, tim: '', gapNhom: {} }
+// ⭐ Thùy 19/10: danh sách mô hình MẶC ĐỊNH THU GỌN (chỉ hiện tên nhóm), người dùng tự mở; hệ thống NHỚ trạng thái các lần truy cập
+// trước (nhóm nào đang mở · mô hình đang xem · tab · nhánh đã gấp) — module-level cho tới F5 + localStorage cho các lần sau.
+// localStorage chỉ là tiện ích theo từng người dùng/trình duyệt (CLAUDE.md §2): lỗi/bị chặn thì cứ chạy như chưa có gì.
+type Nho = { gocId: string | null; tab: 'chuoi' | 'nhom' | 'kho'; gap: Record<string, string[]>; mo: boolean; cuon: Record<string, [number, number]>; tim: string; moNhom: Record<string, boolean> }
+const LS_NHO = 'bk.cayNhanh.v1'
+const docNho = (): Partial<Nho> => { try { return JSON.parse(localStorage.getItem(LS_NHO) ?? '{}') ?? {} } catch { return {} } }
+const luuNho = () => { try { localStorage.setItem(LS_NHO, JSON.stringify({ gocId: NHO.gocId, tab: NHO.tab, gap: NHO.gap, mo: NHO.mo, moNhom: NHO.moNhom })) } catch { /* bỏ qua */ } }
+const NHO: Nho = (() => {
+  const s = docNho()
+  return {
+    gocId: typeof s.gocId === 'string' ? s.gocId : null,
+    tab: s.tab === 'nhom' || s.tab === 'kho' ? s.tab : 'chuoi',
+    gap: s.gap && typeof s.gap === 'object' ? s.gap : {},
+    mo: typeof s.mo === 'boolean' ? s.mo : true,
+    cuon: {}, tim: '',
+    moNhom: s.moNhom && typeof s.moNhom === 'object' ? s.moNhom : {},   // id nhóm → true = ĐANG MỞ (vắng = thu gọn)
+  }
+})()
 
 // màu theo độ sâu nhánh (0 = thân). Thẻ giả thiết thêm = khối màu ĐẶC; dải làn + viền thẻ bài = tông nhạt.
 const MAU = [
@@ -59,7 +75,8 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
   // NHÓM MÔ HÌNH (Thùy 18/10): Chủ đề → Nhóm mô hình → Mô hình. Chỉ khi mở từ Bản đồ mới (có chủ đề).
   const [nhoms, setNhoms] = useState<api.NhomMoHinh[]>([])
   const [hopNhom, setHopNhom] = useState<{ id: string | null; ten: string; moTa: string } | null>(null)
-  const [gapNhom, setGapNhom] = useState<Record<string, boolean>>(NHO.gapNhom)
+  const [moNhom, setMoNhom] = useState<Record<string, boolean>>(NHO.moNhom)   // id nhóm → true = đang mở; MẶC ĐỊNH THU GẠN (chỉ hiện tên nhóm)
+  const moRa = (id: string | null) => { if (id) setMoNhom((g) => (g[id] ? g : { ...g, [id]: true })) }   // nhóm vừa nhận mô hình ⇒ mở ra để thấy kết quả
   const [keoVao, setKeoVao] = useState<string | null>(null)   // nhóm đang được kéo mô hình vào (viền sáng)
   const [hopBai, setHopBai] = useState<{ id: string | null; nhanh: string } | null>(null)                               // thêm / sửa bài
   const soRef = useRef(new Map<string, string>())      // số hiển thị đang có (từ RPC) — giữ qua các lần lưới nạp lại
@@ -68,11 +85,12 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
   const setGocId = (id: string | null) => { NHO.gocId = id; setGocIdRaw(id) }
   useEffect(() => { api.demKhoMoHinh(khoi).then(setDemKho).catch(() => {}) }, [khoi])
   useEffect(() => { if (chuDeId) api.nhomMoHinhCuaChuDe(chuDeId).then(setNhoms).catch((e) => setLoi(e.message ?? String(e))) }, [chuDeId])
-  useEffect(() => { NHO.gapNhom = gapNhom }, [gapNhom])
+  useEffect(() => { NHO.moNhom = moNhom }, [moNhom])
   useEffect(() => { NHO.tab = tab }, [tab])
   useEffect(() => { NHO.mo = mo }, [mo])
   useEffect(() => { NHO.tim = tim }, [tim])
   useEffect(() => { if (gocId) NHO.gap[gocId] = [...gapLai] }, [gapLai, gocId])
+  useEffect(() => { luuNho() }, [moNhom, tab, mo, gapLai, gocId])   // nhớ cho các lần truy cập sau (sau khi NHO đã cập nhật ở các effect trên)
   const bao = (s: string) => { setThongBao(s); window.setTimeout(() => setThongBao((x) => (x === s ? null : x)), 2600) }
 
   // ── ĐỔI gốc (đổi ngữ cảnh ⇒ reset là đúng): lấy số hiển thị + cờ sai nhánh từ DB ──
@@ -176,12 +194,12 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
         await api.updateMoHinh(hopMH.id, { ten: hopMH.ten.trim(), gia_thiet: hopMH.gt.trim(), anh_cau_hinh: hopMH.anh })
         const cu = goc.find((m) => m.id === hopMH.id)?.nhom_mh_id ?? null
         if (chuDeId && hopMH.nhom && hopMH.nhom !== cu) await api.doiNhomMoHinh(hopMH.id, hopMH.nhom)
-        await reload(); bao('Đã lưu mô hình')
+        moRa(hopMH.nhom); await reload(); bao('Đã lưu mô hình')
       } else {
         const id = chuDeId && hopMH.nhom
           ? await api.taoMoHinhTrongNhom(hopMH.nhom, hopMH.ten, hopMH.gt, hopMH.anh)
           : await api.taoMoHinhLuyen(khoi, hopMH.ten, hopMH.gt, hopMH.anh)
-        await reload(); setGocId(id); bao('Đã tạo mô hình — bấm “＋ Thêm bài” để dựng thân')
+        moRa(hopMH.nhom); await reload(); setGocId(id); bao('Đã tạo mô hình — bấm “＋ Thêm bài” để dựng thân')
       }
       setHopMH(null)
     } catch (e: any) { setLoi(e.message ?? String(e)) }
@@ -231,7 +249,7 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
   }
   const chuyenMH = async (mhId: string, nhomId: string) => {
     if (goc.find((m) => m.id === mhId)?.nhom_mh_id === nhomId) return
-    try { await api.doiNhomMoHinh(mhId, nhomId); await reload(); bao('Đã chuyển mô hình sang nhóm ' + (nhoms.find((n) => n.id === nhomId)?.ten ?? '')) }
+    try { await api.doiNhomMoHinh(mhId, nhomId); moRa(nhomId); await reload(); bao('Đã chuyển mô hình sang nhóm ' + (nhoms.find((n) => n.id === nhomId)?.ten ?? '')) }
     catch (e: any) { setLoi(e.message ?? String(e)) }
   }
   const batGap = (id: string) => setGapLai((p) => { const n = new Set(p); n.has(id) ? n.delete(id) : n.add(id); return n })
@@ -271,7 +289,7 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
               {nhoms.map((n, i) => {
                 const ds = gocLoc.filter((m) => m.nhom_mh_id === n.id)
                 if (tim.trim() && !ds.length) return null
-                const gap = !!gapNhom[n.id] && !tim.trim()
+                const gap = !moNhom[n.id] && !tim.trim()   // đang tìm thì mở hết để thấy kết quả
                 return (
                   <div key={n.id}
                     onDragOver={(e) => { if (e.dataTransfer.types.includes('text/mh')) { e.preventDefault(); setKeoVao(n.id) } }}
@@ -279,8 +297,8 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
                     onDrop={(e) => { e.preventDefault(); setKeoVao(null); const id = e.dataTransfer.getData('text/mh'); if (id) void chuyenMH(id, n.id) }}
                     className={`rounded-lg border bg-slate-50/60 ${keoVao === n.id ? 'border-teal-500 ring-2 ring-teal-300' : 'border-slate-200'}`}>
                     <div className="group flex items-center gap-1 px-1.5 py-1">
-                      <button onClick={() => setGapNhom((g) => ({ ...g, [n.id]: !g[n.id] }))} className="w-4 shrink-0 text-[11px] text-slate-400">{gap ? '▸' : '▾'}</button>
-                      <button onClick={() => setGapNhom((g) => ({ ...g, [n.id]: !g[n.id] }))} className="min-w-0 flex-1 truncate text-left text-[12.5px] font-semibold text-slate-700" title={n.mo_ta || n.ten}>
+                      <button onClick={() => setMoNhom((g) => ({ ...g, [n.id]: !g[n.id] }))} className="w-4 shrink-0 text-[11px] text-slate-400">{gap ? '▸' : '▾'}</button>
+                      <button onClick={() => setMoNhom((g) => ({ ...g, [n.id]: !g[n.id] }))} className="min-w-0 flex-1 truncate text-left text-[12.5px] font-semibold text-slate-700" title={n.mo_ta || n.ten}>
                         <span className="mr-1 text-[11px] font-normal text-slate-400">{i + 1}.</span>{tron(n.ten)}
                       </button>
                       <span className="shrink-0 rounded-full bg-slate-200/80 px-1.5 text-[10.5px] text-slate-600">{ds.length}</span>

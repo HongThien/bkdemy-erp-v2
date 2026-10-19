@@ -38304,3 +38304,14 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 
 ## 19/10/2026 (tiếp) — Hình luyện K8: chuyển nhóm mô hình "Đi từ Hình bình hành" sang chủ đề "Tứ giác"
 - NMH00005: `hinh_nhom_mo_hinh.chu_de_id` NCD00179 (Hình bình hành) → NCD00178 (Tứ giác), xếp cuối (`thu_tu` 6, sau NMH00006 "Hình bình hành được tạo ra" Thùy vừa tạo). Mô hình MH.075 trong nhóm đổi `chu_de_id` theo. Thứ tự UPDATE: nhóm trước, mô hình sau — trigger `_hl_mo_hinh_khop_nhom` nếu mô hình đổi chủ đề trước thì sẽ TỰ GỠ `nhom_mh_id` (null) vì nhóm chưa theo. Không có hàm RPC "chuyển nhóm mô hình" nên làm bằng script 1 transaction; log trong `dai_bdm_log`. Chủ đề NCD00179 giờ không còn nhóm mô hình nào (chưa đụng).
+
+## 19/10 — K10 chuyên đề Hệ thức lượng: duyệt lại câu "chưa chắc" + "chưa có dạng" theo dạng mới/dạng sửa mô tả (Thùy)
+- Phạm vi: dạng mới NDB01034 (R ngoại tiếp), NDB01035 (dùng S tìm yếu tố khác), dạng sửa mô tả NDB00773. Pool 170 câu = 127 đề xuất (`dai_bdm_de_xuat` vào 13 dạng của 3 nhóm) + 43 `thieu_dang` K10. **26 câu Đúng/Sai bỏ khỏi gán dạng** (luật 18/10: `_bdm_cam_dung_sai`; 20/26 đã ở `dai_bdm_kho_ds`).
+- Làm: `kho-rules/dai/lo/k10-htl/` — gán MÙ 4 lượt Sonnet (mỗi câu 2 trạm độc lập, `brief-gan.md`) → `gop.json` → Claude soát tay từng câu cần xem (60 câu + 47 trùng đề xuất) → `quyet-dinh.mjs` → `scripts/_k10_htl_ghi.mjs --ghi`.
+- Ghi: 52 câu vào `dai_bdm_gan_cau` (nguon 'ai': 773×8, 01035×13, 01034×10, 771×13, 767×3, 772×4, 769×1); 15 đề xuất cập nhật dạng+lý do (vẫn 'vừa'); 9 câu chỉ-dùng-tan ghi chú "không khớp dạng nào" (KHÔNG xoá/chuyển). Trang duyệt: `kho-rules/dai/k10-htl-duyet-lai.html`.
+- Phát hiện: (1) nhóm bài thực tế đo đạc chỉ dùng tan (~14 câu) không có dạng — gợi ý Thùy thêm dạng; (2) nhiều cặp câu trùng nội dung (178/204046, 188/300/204022, 333/204016, 390/204026, 377/204050, 206/203019…) — chưa gộp/xoá; (3) hai trạm Sonnet chỉ mở 2–3 ảnh nên phần lớn câu có hình ra "vừa" — Claude soát theo lời giải (`sin/cos/tan` trong lời giải) thay vì tin nhãn trạm.
+
+## 19/10/2026 (tiếp) — Hình luyện: danh sách nhóm mô hình mặc định THU GỌN + nhớ trạng thái
+- `CayNhanh.tsx` (Bản đồ mới › chủ đề Hình–Luyện): trước đây nhóm mặc định MỞ, bấm để gấp (`gapNhom`, chỉ nhớ tới F5). Đổi thành `moNhom` (id → đang mở): **mặc định thu gọn, chỉ hiện tên nhóm + số mô hình**, người dùng tự mở. Đang gõ tìm thì vẫn mở hết để thấy kết quả. Nhóm vừa nhận mô hình (tạo mới / kéo thả / đổi nhóm) tự mở ra để thấy kết quả.
+- **Nhớ qua các lần truy cập:** `NHO` (module-level, sống tới F5) giờ nạp từ + ghi vào `localStorage['bk.cayNhanh.v1']`: nhóm nào đang mở · mô hình đang xem · tab (Chuỗi/Nhóm/Kho) · nhánh đã gấp · panel mở/đóng. localStorage chỉ là tiện ích theo người dùng (try/catch, hỏng thì chạy như chưa có); KHÔNG nhớ ô tìm.
+- Kiểm: `tsc` sạch ở file đụng tới; chưa mở được màn bằng phiên đăng nhập thật.
