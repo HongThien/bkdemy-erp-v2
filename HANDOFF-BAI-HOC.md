@@ -7,6 +7,7 @@
 ## Mục lục (số dòng trong file này)
 
 - dòng 36 — ⭐⭐⭐ LUẬT DUYỆT (Thùy 14/10, "nói bao lần rồi") — MỌI KHỐI, MỌI LÔ: muốn Thùy duy�
+- Bài học 17→19/10 — Bản đồ mới · Hình–Luyện · Kho đề thi (bản in) (ngay dưới LUẬT DUYỆT)
 - dòng 47 — Bài học 10→17/10 — Bổ trợ (đừng đạp lại)
 - dòng 65 — Bài học 14/10 — Hình–Luyện cây nhánh + kho bài
 - dòng 146 — Bài học 28/09–02/10 — luồng kho + đề thi (nhập, gán vào buổi, đọc PDF)
@@ -43,6 +44,16 @@
 - **File để cạnh `.soan.md`, mở bằng double-click là xem** (ảnh nhúng base64, KaTeX qua CDN). Đã có: `GKI` → `lo/k7/can-xem/index.html` (chỉ ảnh — thiếu đề/lời giải, nên làm lại theo khuôn mới khi cần), `DC-01.html`, `DC-02.html`, `CKI-7-duyet.html`.
 - **Lỗi đã mắc (14/10):** soạn+soát+ghi 14 đề CKI-7 xong mà chỉ báo bằng bảng chữ + tên PNG, Thùy phải đòi lại HTML. Trạm SOÁT đã cắt ảnh cho CEO nhưng KHÔNG ai gom thành một trang — **bước "dựng HTML duyệt" là bước cuối BẮT BUỘC của mọi dây chuyền kho**, ngang hàng "ghi DB". Thiếu HTML = lô chưa xong.
 - **Cũng nhớ:** phản hồi cuối của lượt phải NÊU ĐƯỜNG DẪN file HTML (link bấm được) trước, rồi mới tóm tắt chỗ cần quyết.
+
+### Bài học 17→19/10 — Bản đồ mới · Hình–Luyện · Kho đề thi (bản in)
+
+- **⭐ Lớp phủ (overlay/modal) trong ERP phải z ≥ 65** — header ERP là `z-[60]`; z-50 nằm DƯỚI header, nút đóng bị che (đã dính 2 lần: Duyệt kho full màn, Catalog Hình).
+- **⭐ Cột cố định + cột cuộn riêng:** khung ngoài `h-full min-h-0 overflow-hidden`, cột trái `flex min-h-0 flex-col`, cột phải `min-h-0 flex-1 overflow-y-auto`. Thiếu `min-h-0` ở bất kỳ tầng flex nào ⇒ cả hai cột cuộn chung (Thùy báo 2 lần ở Cây nhánh).
+- **⭐ Bản in paged.js: `break-inside:avoid` trên khối CAO (câu nhiều ý + dòng kẻ) ⇒ nhảy nguyên khối sang trang mới, bỏ trống tới 257mm.** Đề thi giờ `.pv-dethi .pv-cau{break-inside:auto}` (giữ khối chỉ cho phương án TN / dòng Đ-S / cặp dòng kẻ / hình). **Đừng** thêm `.pv-math:first-child{break-after:avoid}` cho đề thi: đo thật, nó đẩy CẢ Phần 1 sang trang 2. Đo bằng JS trong Browser pane (khoảng trống cuối mỗi `.pagedjs_page`); **pane ẩn ⇒ paged.js không dựng xong (watchdog 30s)** — mở pane (`show_pane preview`) trước khi đo.
+- **⭐ CSS nằm trong template literal JS: CẤM dấu backtick trong chú thích** — đóng chuỗi sớm, Vite "Missing semicolon", ERP trắng màn (19/10 đã push lên main 1 commit lỗi). Sửa xong PHẢI chạy `tsc` lại dù chỉ sửa chú thích.
+- **Ghi `cau_hinh` jsonb dùng chung nhiều tính năng:** đọc bản DB rồi trộn ĐÚNG khoá đang sửa (`patchCauHinhDeThi`/`tronCauHinh`, null = bỏ khoá) — ghi nguyên object từ state client sẽ đè meta đề/số dòng do màn khác ghi.
+- **Trigger PL/pgSQL dùng chung nhiều bảng:** không tham chiếu `NEW.<cột>` mà bảng kia không có — tách nhánh `IF TG_TABLE_NAME = …` (lỗi "record new has no field" chỉ hiện khi bảng đó INSERT).
+- **Xoá danh mục có tham chiếu CHỮ (mã `DH.xxx` trong `canh_bao_yeu`/`bo_tro_yeu_dang`):** dò mọi cột text khớp mã trước khi đề xuất xoá, nêu cho Thùy chọn kho rác hay xoá cứng. Auto mode chặn tự áp migration xoá dữ liệu ⇒ viết + thử ROLLBACK, đưa lệnh cho Thùy chạy.
 
 ### Bài học 10→17/10 — Bổ trợ (đừng đạp lại)
 
