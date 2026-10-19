@@ -38360,3 +38360,8 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - Thùy: "Dạng bài và bổ đề hiện không có tác dụng gì — xoá liên hệ kho cũ cho đỡ lằng nhằng". Đã liệt kê trước khi xoá, Thùy gật (kể cả DH.019/DH.023 có ở canh_bao_yeu + bo_tro_yeu_dang — lịch sử đó giờ chỉ còn mã, không tra được tên).
 - Mig 202610191734 (Thùy tự chạy — auto mode chặn lệnh xoá): xoá 15 hinh_dang (K7 1 · K8 7 · K9 7) + 5 hinh_bo_de K8 + 7 hinh_cach_bo_de; 15 hinh_cach_giai bỏ dang_id (lời giải giữ). Thử ROLLBACK trước: 0/0/0, 375 cách giải còn đủ.
 - FormBaiToan (kho cũ) gỡ hẳn ô Dạng + Bổ đề và đoạn ghi dang_id/setBoDeCuaCach. Danh mục nhập lại từ đầu ở Bản đồ Hình mới (nhãn từng ý). Chuông báo động Hình: picker dạng trống tới khi có danh mục mới.
+
+### 19/10 — [Kho K7] Vẽ hình cho câu hình học trong đề thi/đề cương chưa có hình (Thùy: "còn 1 số bài chưa có hình mn vẽ đi")
+- Quét 31 đề/đề cương Toán 7: 86 câu hình học chưa có anh_de. Xuất 9 gói TH-1…TH-9 (scripts/anh/ve_thieu_hinh_xuat.mjs) → 9 trạm Sonnet (mỗi câu tự quyết vẽ/không vẽ) → tôi soát cả 52 hình trên bảng tổng, sửa 3 hình (HHC002817/002820 thêm cung phân giác đề cho; HHC002952 dời nhãn 60° khỏi tia Oz) → gan_hinh --ghi (không đuôi ⇒ anh_de + anh_dap_an; URL cũ không có nên không cần --thay).
+- 52 hình vẽ, 34 câu không vẽ (khái niệm thuần hoặc hình đúng dữ kiện lộ đáp án). Trang xem: kho-rules/dai/lo/k7/hinh-moi-bo-sung.html (scripts/anh/ve_thieu_hinh_html.mjs).
+- Trạm không báo câu nào sai đề/lời giải; chỉ lưu ý HHC002954 (đề không nói hướng Mz, Mt — chọn zMt nhọn) và HHC002950 (hình ABDC ra chữ nhật, lộ ý b).
