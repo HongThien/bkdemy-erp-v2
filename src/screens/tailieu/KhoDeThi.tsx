@@ -14,9 +14,13 @@ import {
   getDeThi, createDeThi, renameDeThi, deThiMeta, updateDeThiMeta, attachPdfGoc, addPhanDeThi, listPhanDeThi,
   deThiCau, deThiThieu, duyetDeThi, suaCauDeThi, themCauVaoPhan, bangCuaKho, nhanhCuaKhoPicker, canhBaoNhap, nhanGocCau, nhomBaiCuaDe, boLoiDan,
   demKhoDeThi, listKhoDeThi, KHO_DE_CUA_MON, MON_DE_THI, soDongDeThi, setSoDongDeThi, coDongKeDeThi, dongMacDinhDeThi,
+  patchCauHinhDeThi, tronCauHinh,
   type DeThi, type DeThiMeta, type DeThiCau, type DeThiThieu, type DeThiDong, type Kho, type LoiDeThi, type SuaCauPatch, type TabKhoDe,
 } from '../../lib/dethi'
-import { setCauOfPhan, deletePhan, type TaiLieuPhan } from '../../lib/tailieu'
+import { setCauOfPhan, deletePhan, updatePhan, type TaiLieuPhan } from '../../lib/tailieu'
+import type { CheDoHinh } from '../../lib/kho/hinhGiaoTrinh'
+import { ColSel, AnhXem, AnhMmCtl, CheDoHinhBtn, MAU_PRESET } from './TaiLieuBuilder'
+import { AnhMmEditCtx } from './anhMmCtx'
 import { KHOI_OPTIONS, DEFAULT_KHOI, uploadKhoFile, searchCau, type CauTimThay, type MenhDe } from '../../lib/kho/api'
 import { MathText, ChuMon, NguLieuBlock, inp } from '../kho/ui'
 import { MathTextarea } from '../../components/math/MathTextarea'
@@ -288,8 +292,12 @@ export function DeThiSoan({ id, onClose, tuKho }: { id: string; onClose: () => v
   const [lamMoiLuot, setLamMoiLuot] = useState(0)
   const [busy, setBusy] = useState(false)
   const [msg, setMsg] = useState<{ ok: boolean; t: string } | null>(null)
+  const [saved, setSaved] = useState(false)                    // "✓ Đã lưu" như builder giáo trình
+  const [xemPhan, setXemPhan] = useState<string | null>(null)  // 👁 Xem nhanh bản in 1 phần
   const pdfRef = useRef<HTMLInputElement>(null)
-  const flash = (ok: boolean, t: string) => { setMsg({ ok, t }); setTimeout(() => setMsg(null), ok ? 2500 : 7000) }
+  useEffect(() => { if (!saved) return; const t = setTimeout(() => setSaved(false), 2000); return () => clearTimeout(t) }, [saved])
+  // Lưu thường ⇒ chỉ bật badge "✓ Đã lưu"; thông báo khác (duyệt, gửi nhận xét, lỗi) mới hiện chữ.
+  const flash = (ok: boolean, t: string) => { if (ok && t === 'Đã lưu') { setSaved(true); return } setMsg({ ok, t }); if (ok) setSaved(true); setTimeout(() => setMsg(null), ok ? 2500 : 7000) }
   // "✎ Cần sửa" (Thùy 17/10): nhận xét cho từng CÂU (không rút khỏi đề — đề giữ cấu trúc) và cho CẢ ĐỀ
   const nxCau = useNhanXet('cau')
   const nxDe = useNhanXet('de_thi')
@@ -387,7 +395,20 @@ export function DeThiSoan({ id, onClose, tuKho }: { id: string; onClose: () => v
   // Số dòng kẻ câu TỰ LUẬN trên bản in: vá `d.cau_hinh` tại chỗ rồi ghi (không tải lại đề). patch = 1 câu hoặc cả phần.
   async function datSoDong(patch: Record<string, number>) {
     setD((x) => (x ? { ...x, cau_hinh: { ...x.cau_hinh, btvnLinesByCau: { ...soDongDeThi(x), ...patch } } } : x))
-    try { await setSoDongDeThi(id, patch); flash(true, 'Đã lưu số dòng') } catch (e: any) { flash(false, e.message ?? String(e)) }
+    try { await setSoDongDeThi(id, patch); flash(true, 'Đã lưu') } catch (e: any) { flash(false, e.message ?? String(e)) }
+  }
+  // Cấu hình IN theo câu như builder giáo trình (2 cột · chế độ hình · cỡ ảnh · màu): vá `d.cau_hinh` tại chỗ rồi ghi đúng khoá đó.
+  async function luuCh(patch: Record<string, unknown>) {
+    setD((x) => (x ? { ...x, cau_hinh: tronCauHinh(x.cau_hinh, patch) } : x))
+    try { await patchCauHinhDeThi(id, patch); flash(true, 'Đã lưu') } catch (e: any) { flash(false, e.message ?? String(e)) }
+  }
+  const onAnhMm = (ma: string, v: { pct: number; mm: number } | null) => {
+    const co = v && v.mm > 0
+    luuCh({ anhMmByCau: { [ma]: co ? v!.mm : null }, anhPctByCau: { [ma]: co ? v!.pct : null } })
+  }
+  async function doiTenPhan(p: TaiLieuPhan, t: string) {
+    try { await updatePhan(p.id, { tieu_de: t }); setPhans((ps) => ps.map((x) => (x.id === p.id ? { ...x, tieu_de: t } : x))); flash(true, 'Đã lưu') }
+    catch (e: any) { flash(false, e.message ?? String(e)) }
   }
   function dong() { useStore.getState().enqueueLinkGen(id, 'de_thi'); onClose() }
 
@@ -397,39 +418,56 @@ export function DeThiSoan({ id, onClose, tuKho }: { id: string; onClose: () => v
   const soGhiChu = Object.keys(ghiChu).length
   const canXem = (c: DeThiCau) => (loiCua.get(c.ma_cau)?.length ?? 0) > 0 || (ghiChu[c.ma_cau]?.length ?? 0) > 0
   const soDong = soDongDeThi(d)
+  const ch = d.cau_hinh as { colByCau?: Record<string, number>; hinhCheDoByCau?: Record<string, CheDoHinh>; anhMmByCau?: Record<string, number>; anhPctByCau?: Record<string, number>; mau?: string }
+  const jump = (elId: string) => document.getElementById(elId)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
   return (
+    <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: onAnhMm, baChe: true }}>
     <div className="flex h-full flex-col bg-[#fafafb]">
+      {/* Khung như builder giáo trình: thanh trên (tên · tự lưu · Xem/Xuất PDF · màu) · dải tình trạng · cây trái · thẻ phần */}
       <div className="flex flex-wrap items-center gap-2.5 border-b border-slate-200 bg-white px-5 py-2.5">
         <button onClick={dong} className="text-[13px] font-medium text-slate-400 hover:text-indigo-600">← {tuKho ? 'Kho đề thi' : 'Quay lại'}</button>
-        <input value={ten} onChange={(e) => setTen(e.target.value)} onBlur={luuTen} className="min-w-[260px] flex-1 rounded-md border border-transparent px-2 py-1 text-[15px] font-semibold text-slate-900 hover:border-slate-200 focus:border-indigo-400 focus:outline-none" />
-        <span className="rounded bg-violet-50 px-2 py-0.5 text-[11px] font-medium text-violet-600">{d.mon} · Khối {d.khoi}</span>
-        {d.duyet_at && <span className="rounded bg-emerald-50 px-2 py-0.5 text-[11px] font-medium text-emerald-700">✓ Đã duyệt {ngayVN(d.duyet_at)}</span>}
+        <input value={ten} onChange={(e) => setTen(e.target.value)} onBlur={luuTen} className={`${inp} h-9 min-w-[260px] max-w-[520px] flex-1 font-semibold`} placeholder="Tên đề" />
+        <span className="rounded bg-violet-50 px-2 py-0.5 text-[11px] font-semibold text-violet-700">{d.mon} · Khối {d.khoi}</span>
+        {d.duyet_at && <span className="rounded bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700">✓ Đã duyệt {ngayVN(d.duyet_at)}</span>}
+        <span className={`rounded-md px-2 py-0.5 text-[11px] font-medium transition ${saved ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-400'}`}>{saved ? '✓ Đã lưu' : '↻ Tự động lưu'}</span>
+        <div className="ml-auto flex flex-wrap items-center gap-2">
+          <button onClick={() => setGiao(true)} disabled={!caus?.length} className="whitespace-nowrap rounded-md border border-emerald-300 bg-emerald-50 px-3 py-1.5 text-sm font-medium text-emerald-700 hover:bg-emerald-100 disabled:opacity-40">📱 Giao</button>
+          <NutCanSua doiTuong="de_thi" mon={monDe} ma={id} man={`Kho đề thi › ${ten}`} khau="khac"
+            onXong={(t) => { nxDe.vaNX(t); flash(true, 'Đã gửi nhận xét cho cả đề — chờ Claude sửa') }} />
+          <button onClick={duyet} disabled={busy || !thieu || soChan > 0 || !caus?.length}
+            title={soChan ? 'Còn câu thiếu đáp án / phương án — bổ sung rồi mới duyệt được' : 'Xác nhận nội dung + đáp án cả đề. Câu đã có dạng vào kho chuẩn.'}
+            className="whitespace-nowrap rounded-md bg-emerald-600 px-4 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-emerald-500 disabled:opacity-40">
+            {busy ? 'Đang duyệt…' : d.duyet_at ? '✅ Duyệt lại' : '✅ Duyệt đề'}
+          </button>
+          <button onClick={() => setPrinting(true)} disabled={!caus?.length} className="whitespace-nowrap rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">🖨 Xem / Xuất PDF</button>
+          <label className="flex items-center gap-1.5 text-[12px] text-slate-500">Màu
+            <span className="flex gap-1">{MAU_PRESET.map(([c, n]) => (
+              <button key={c} title={n} onClick={() => luuCh({ mau: c })} className={`h-6 w-6 rounded-full border-2 ${(ch.mau ?? '#2D9CDB') === c ? 'border-slate-800' : 'border-white shadow'}`} style={{ background: c }} />
+            ))}</span>
+          </label>
+        </div>
+      </div>
+      <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 bg-slate-50 px-5 py-1.5">
         {thieu && (soChan > 0
           ? <span className="rounded bg-rose-50 px-2 py-0.5 text-[12px] font-medium text-rose-700">{soChan}/{thieu.tong} câu thiếu đáp án</span>
           : <span className="rounded bg-emerald-50 px-2 py-0.5 text-[12px] font-medium text-emerald-700">Đủ đáp án · {thieu.tong} câu</span>)}
         {soChuaDang > 0 && <span className="rounded bg-amber-50 px-2 py-0.5 text-[12px] text-amber-800" title="Đề vẫn dùng được; câu chưa có dạng chưa tính mastery cho tới khi gán dạng">{soChuaDang} câu chưa đủ dạng</span>}
         {soGhiChu > 0 && <span className="rounded bg-sky-50 px-2 py-0.5 text-[12px] text-sky-800">{soGhiChu} ghi chú lúc nhập</span>}
-        {msg && <span className={`text-[12px] ${msg.ok ? 'text-emerald-600' : 'text-rose-600'}`}>{msg.ok ? '✓ ' : ''}{msg.t}</span>}
+        {msg && <span className={`text-[12px] ${msg.ok ? 'text-emerald-600' : 'text-rose-600'}`}>{msg.ok ? '✓ ' : '⚠ '}{msg.t}</span>}
         <div className="ml-auto flex items-center gap-2">
           <label className="flex items-center gap-1.5 text-[12px] text-slate-600"><input type="checkbox" checked={chiCanXem} onChange={(e) => setChiCanXem(e.target.checked)} /> Chỉ câu cần xem</label>
           <input ref={pdfRef} type="file" accept="application/pdf" hidden onChange={(e) => { const f = e.target.files?.[0]; if (f) dinhKemGoc(f); e.target.value = '' }} />
           {meta.pdfGocUrl
-            ? <button onClick={() => setXemGoc((v) => !v)} className={`rounded-md border px-2.5 py-1.5 text-[12px] font-medium ${xemGoc ? 'border-indigo-400 bg-indigo-50 text-indigo-700' : 'border-slate-300 text-slate-600 hover:border-indigo-400'}`}>📎 Đề gốc {xemGoc ? '(đang mở)' : ''}</button>
-            : <button onClick={() => pdfRef.current?.click()} className="rounded-md border border-dashed border-slate-300 px-2.5 py-1.5 text-[12px] font-medium text-slate-500 hover:border-indigo-400">📎 Đính kèm đề gốc</button>}
-          <button onClick={() => setPrinting(true)} disabled={!caus?.length} className="rounded-md border border-slate-300 px-3 py-1.5 text-[13px] font-medium text-slate-700 hover:border-indigo-400 disabled:opacity-40">🖨 In</button>
-          <button onClick={() => setGiao(true)} disabled={!caus?.length} className="rounded-md border border-emerald-300 bg-emerald-50 px-3 py-1.5 text-[13px] font-medium text-emerald-700 hover:bg-emerald-100 disabled:opacity-40">📱 Giao</button>
-          <NutCanSua doiTuong="de_thi" mon={monDe} ma={id} man={`Kho đề thi › ${ten}`} khau="khac"
-            onXong={(t) => { nxDe.vaNX(t); flash(true, 'Đã gửi nhận xét cho cả đề — chờ Claude sửa') }} />
-          <button onClick={duyet} disabled={busy || !thieu || soChan > 0 || !caus?.length}
-            title={soChan ? 'Còn câu thiếu đáp án / phương án — bổ sung rồi mới duyệt được' : 'Xác nhận nội dung + đáp án cả đề. Câu đã có dạng vào kho chuẩn.'}
-            className="rounded-md bg-emerald-600 px-4 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-emerald-500 disabled:opacity-40">
-            {busy ? 'Đang duyệt…' : d.duyet_at ? '✅ Duyệt lại' : '✅ Duyệt đề'}
-          </button>
+            ? <button onClick={() => setXemGoc((v) => !v)} className={`rounded-md border px-2.5 py-1 text-[12px] font-medium ${xemGoc ? 'border-indigo-400 bg-indigo-50 text-indigo-700' : 'border-slate-300 bg-white text-slate-600 hover:border-indigo-400'}`}>📎 Đề gốc {xemGoc ? '(đang mở)' : ''}</button>
+            : <button onClick={() => pdfRef.current?.click()} className="rounded-md border border-dashed border-slate-300 bg-white px-2.5 py-1 text-[12px] font-medium text-slate-500 hover:border-indigo-400">📎 Đính kèm đề gốc</button>}
         </div>
       </div>
 
       <div className="flex min-h-0 flex-1">
+        <aside className="w-[270px] shrink-0 overflow-auto border-r border-slate-200 bg-white p-3">
+          <CayDe ten={ten} phans={phans} cauCuaPhan={cauCuaPhan} nhanGoc={nhanGoc} nhomCua={nhomCua} loiCua={loiCua} ghiChu={ghiChu} onJump={jump} />
+        </aside>
         <div className="min-h-0 min-w-0 flex-1 overflow-auto p-5">
           {nxDe.cua(monDe, id) && <div className="mb-3"><NhanXetCu hienChoSua t={nxDe.cua(monDe, id)} /></div>}
           <div className="mx-auto max-w-[980px] space-y-5">
@@ -449,15 +487,22 @@ export function DeThiSoan({ id, onClose, tuKho }: { id: string; onClose: () => v
               const hien = cs.filter((c) => !(chiCanXem && !canXem(c)))
               const nlCua = (c: DeThiCau) => nd[c.ma_cau]?.ngu_lieu ?? null
               return (
-                <div key={p.id}>
-                  <div className="mb-2 flex items-center gap-2">
-                    <p className="text-[14px] font-bold uppercase tracking-wide text-slate-700">{p.tieu_de}</p>
-                    <span className="text-[12px] text-slate-400">{cs.length} câu</span>
-                    {cs.some((c) => coDongKeDeThi(c.loai_cau)) && <DongCaPhan onDat={(n) => datSoDong(Object.fromEntries(cs.filter((c) => coDongKeDeThi(c.loai_cau)).map((c) => [c.ma_cau, n])))} />}
-                    <button onClick={() => setThemVao(themVao === p.id ? null : p.id)} className="ml-auto rounded-md border border-slate-200 bg-white px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-300">+ Thêm câu có sẵn trong kho</button>
-                    <button onClick={() => xoaPhan(p)} className="text-[12px] text-slate-300 hover:text-rose-600">Xoá phần</button>
+                <div key={p.id} id={`p-${p.id}`} className="scroll-mt-3 overflow-hidden rounded-xl border border-indigo-200 bg-white">
+                  <div className="flex flex-wrap items-center gap-2 bg-indigo-600 px-3 py-2 text-white">
+                    <input key={p.tieu_de ?? ''} defaultValue={p.tieu_de ?? ''} onBlur={(e) => { const v = e.target.value.trim(); if (v && v !== p.tieu_de) doiTenPhan(p, v) }}
+                      onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur() }} title="Bấm để sửa tên phần"
+                      className="min-w-[200px] max-w-[420px] flex-1 rounded-md border border-transparent bg-transparent px-1.5 py-0.5 text-[14px] font-bold uppercase tracking-wide text-white outline-none placeholder:text-white/60 hover:border-white/40 focus:border-white focus:bg-white/10" />
+                    <span className="text-[12px] text-white/80">{cs.length} câu</span>
+                    <span className="ml-auto flex flex-wrap items-center gap-2">
+                      {cs.some((c) => coDongKeDeThi(c.loai_cau)) && <DongCaPhan toi onDat={(n) => datSoDong(Object.fromEntries(cs.filter((c) => coDongKeDeThi(c.loai_cau)).map((c) => [c.ma_cau, n])))} />}
+                      <button onClick={() => setXemPhan(p.id)} disabled={!cs.length} title="Xem nhanh bản in CHỈ phần này" className="whitespace-nowrap rounded-md bg-white/15 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-white/25 disabled:opacity-40">👁 Xem phần</button>
+                      <button onClick={() => setThemVao(themVao === p.id ? null : p.id)} className="whitespace-nowrap rounded-md bg-white px-2.5 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-50">+ Thêm câu có sẵn trong kho</button>
+                      <button onClick={() => xoaPhan(p)} title="Xoá phần khỏi đề (câu vẫn còn trong kho)" className="text-[12px] text-white/70 hover:text-white">✕</button>
+                    </span>
                   </div>
+                  <div className="space-y-3 p-3">
                   {themVao === p.id && <ThemCauCoSan mon={d.mon} onPick={(ma, kho) => themCau(p.id, ma, kho)} />}
+                  {cs.length === 0 && <div className="text-[12px] italic text-slate-400">Phần chưa có câu — bấm “+ Thêm câu có sẵn trong kho”.</div>}
                   <div className="space-y-3">
                     {hien.map((c, k) => {
                       const i = cs.indexOf(c)
@@ -466,7 +511,7 @@ export function DeThiSoan({ id, onClose, tuKho }: { id: string; onClose: () => v
                       const gr = nhomCua.get(c.ma_cau)
                       const dauBai = gr && (k === 0 || nhomCua.get(hien[k - 1].ma_cau)?.nhan !== gr.nhan)
                       return (
-                        <div key={c.ma_cau} className={gr ? 'ml-3 border-l-2 border-indigo-200 pl-3' : ''}>
+                        <div key={c.ma_cau} id={`c-${c.ma_cau}`} className={`scroll-mt-3 ${gr ? 'ml-3 border-l-2 border-indigo-200 pl-3' : ''}`}>
                           {dauBai && (
                             <div className="-ml-3 mb-2 rounded-xl border border-indigo-200 bg-indigo-50 px-4 py-2.5">
                               <div className="flex flex-wrap items-baseline gap-2">
@@ -480,11 +525,14 @@ export function DeThiSoan({ id, onClose, tuKho }: { id: string; onClose: () => v
                           <CauThe nx={nxCau.cua(monTuKho(c.kho), c.ma_cau)} onCanSua={(t) => { nxCau.vaNX(t); flash(true, `Đã gửi nhận xét ${c.ma_cau} — chờ Claude sửa`) }} c={c} mon={d.mon} so={i + 1} nd={nd[c.ma_cau]} tenDang={tenDang} loi={loiCua.get(c.ma_cau) ?? []} ghiChu={ghiChu[c.ma_cau] ?? []} nhan={nhanGoc[c.ma_cau]} nhom={gr ? { y: gr.y, dan: gr.dan } : undefined}
                             dau={i === 0} cuoi={i === cs.length - 1}
                             soDong={soDong[c.ma_cau] ?? dongMacDinhDeThi(c.loai_cau)} onSoDong={(n) => datSoDong({ [c.ma_cau]: n })}
+                            cot={ch.colByCau?.[c.ma_cau] ?? 1} onCot={(n) => luuCh({ colByCau: { [c.ma_cau]: n } })}
+                            cheDo={ch.hinhCheDoByCau?.[c.ma_cau] ?? 'hien'} onCheDo={(v) => luuCh({ hinhCheDoByCau: { [c.ma_cau]: v } })}
                             onChonDang={(md) => setPick({ c, md })} onSua={(patch, localNd) => sua(c, patch, localNd)}
                             onBo={() => boCau(c)} onDoiCho={(h) => doiCho(c, h)} />
                         </div>
                       )
                     })}
+                  </div>
                   </div>
                 </div>
               )
@@ -507,7 +555,49 @@ export function DeThiSoan({ id, onClose, tuKho }: { id: string; onClose: () => v
 
       {pick && <DangPickerOne khoi={d.khoi} mon={d.mon} nhanh={nhanhCuaKhoPicker(pick.c.kho)} onClose={() => setPick(null)} onPick={(ma) => chonDang(ma)} />}
       {printing && <DeThiPrintView id={id} onClose={() => setPrinting(false)} />}
+      {xemPhan && <DeThiPrintView id={id} onlyPhanId={xemPhan} onClose={() => setXemPhan(null)} />}
       {giao && <GiaoDeModal de={d} thoiGianMacDinh={meta.thoiGianPhut} onClose={() => setGiao(false)} onDone={() => setLamMoiLuot((n) => n + 1)} />}
+    </div>
+    </AnhMmEditCtx.Provider>
+  )
+}
+
+// Cây trái (như builder giáo trình): Phần → Câu, chấm màu = tình trạng (đỏ: chặn duyệt · vàng: cần xem · xanh: ổn). Bấm = nhảy tới.
+function CayDe({ ten, phans, cauCuaPhan, nhanGoc, nhomCua, loiCua, ghiChu, onJump }: {
+  ten: string; phans: TaiLieuPhan[]; cauCuaPhan: (pid: string) => DeThiCau[]; nhanGoc: Record<string, string>
+  nhomCua: Map<string, { nhan: string; y: string }>; loiCua: Map<string, LoiDeThi[]>; ghiChu: Record<string, string[]>; onJump: (elId: string) => void
+}) {
+  const item = 'flex w-full items-center gap-1.5 rounded px-2 py-1 text-left text-[13px] hover:bg-slate-100'
+  return (
+    <div>
+      <div className="mb-2 truncate px-1 text-[13px] font-bold text-slate-700">📄 {ten || 'Đề thi'}</div>
+      {phans.length === 0 && <div className="px-2 py-3 text-[12px] italic text-slate-400">Chưa có phần.</div>}
+      {phans.map((p) => {
+        const cs = cauCuaPhan(p.id)
+        return (
+          <div key={p.id} className="mb-1">
+            <button onClick={() => onJump(`p-${p.id}`)} className={`${item} font-semibold text-indigo-700`}>
+              <span className="min-w-0 flex-1 truncate">📑 {p.tieu_de}</span><span className="shrink-0 text-[11px] font-normal text-slate-300">{cs.length}</span>
+            </button>
+            <div className="ml-2 border-l border-slate-100 pl-1">
+              {cs.map((c, i) => {
+                const loi = loiCua.get(c.ma_cau) ?? []
+                const chan = loi.some((x) => !CHI_CANH_BAO.has(x))
+                const canh = loi.length > 0 || (ghiChu[c.ma_cau]?.length ?? 0) > 0
+                const gr = nhomCua.get(c.ma_cau)
+                const nhan = gr ? `${gr.nhan} ${gr.y})` : (nhanGoc[c.ma_cau] ?? `Câu ${i + 1}`)
+                return (
+                  <button key={c.ma_cau} onClick={() => onJump(`c-${c.ma_cau}`)} className={`${item} text-[12px] text-slate-600`} title={c.ma_cau}>
+                    <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${c.xoa ? 'bg-slate-300' : chan ? 'bg-rose-500' : canh ? 'bg-amber-400' : 'bg-emerald-500'}`} />
+                    <span className="min-w-0 flex-1 truncate">{nhan}</span>
+                    <span className="shrink-0 font-mono text-[10px] text-slate-300">{c.ma_cau}</span>
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+        )
+      })}
     </div>
   )
 }
@@ -560,15 +650,16 @@ function ODong({ value, onDat, title }: { value: number | ''; onDat: (n: number)
     className="w-12 rounded border border-slate-200 px-1 py-0.5 text-center text-[12px] text-slate-700 focus:border-indigo-400 focus:outline-none" />
 }
 // Đặt nhanh số dòng cho MỌI câu tự luận + trả lời ngắn của 1 phần (vd "Phần 2. Tự luận").
-function DongCaPhan({ onDat }: { onDat: (n: number) => void }) {
-  return <label className="flex items-center gap-1 text-[11px] text-slate-400">Dòng kẻ · cả phần
+function DongCaPhan({ onDat, toi }: { onDat: (n: number) => void; toi?: boolean }) {
+  return <label className={`flex items-center gap-1 text-[11px] ${toi ? 'text-white/85' : 'text-slate-400'}`}>Dòng kẻ · cả phần
     <ODong value="" onDat={onDat} title="Gõ số rồi Enter: đặt số dòng kẻ cho MỌI câu tự luận / trả lời ngắn của phần này (bản in)" /></label>
 }
 
-function CauThe({ c, mon, so, nd, tenDang, loi, ghiChu, nhan, nhom, dau, cuoi, soDong, onSoDong, onChonDang, onSua, onBo, onDoiCho, nx, onCanSua }: {
+function CauThe({ c, mon, so, nd, tenDang, loi, ghiChu, nhan, nhom, dau, cuoi, soDong, onSoDong, cot, onCot, cheDo, onCheDo, onChonDang, onSua, onBo, onDoiCho, nx, onCanSua }: {
   nx?: TrangThaiNX; onCanSua: (t: TrangThaiNX) => void
   c: DeThiCau; mon: string; so: number; nd?: NoiDungCau; tenDang: Record<string, string>; loi: LoiDeThi[]; ghiChu: string[]; nhan?: string; nhom?: { y: string; dan: string }; dau: boolean; cuoi: boolean
   soDong: number; onSoDong: (n: number) => void
+  cot: number; onCot: (n: number) => void; cheDo: CheDoHinh; onCheDo: (v: CheDoHinh) => void
   onChonDang: (md: number | null) => void
   onSua: (patch: SuaCauPatch, localNd?: Partial<NoiDungCau>) => Promise<boolean>
   onBo: () => void; onDoiCho: (huong: -1 | 1) => void
@@ -590,8 +681,6 @@ function CauThe({ c, mon, so, nd, tenDang, loi, ghiChu, nhan, nhom, dau, cuoi, s
         {c.da_duyet && <span className="text-[11px] text-emerald-600">✓ kho chuẩn</span>}
         {loi.map((x) => <span key={x} className={`rounded px-1.5 py-0.5 text-[11px] ${CHI_CANH_BAO.has(x) ? 'bg-amber-50 text-amber-800' : 'bg-rose-50 text-rose-700'}`}>{LOI_TEN[x]}</span>)}
         <span className="ml-auto flex items-center gap-1">
-          {coDongKeDeThi(c.loai_cau) && !c.xoa && <label className="mr-1 flex items-center gap-1 text-[11px] text-slate-400">dòng
-            <ODong value={soDong} onDat={onSoDong} title="Số dòng kẻ để HS viết câu này (bản in) — 0 = không kẻ" /></label>}
           <button disabled={dau} onClick={() => onDoiCho(-1)} title="Đưa lên" className="rounded border border-slate-200 px-1.5 text-[12px] text-slate-500 hover:border-indigo-300 disabled:opacity-30">↑</button>
           <button disabled={cuoi} onClick={() => onDoiCho(1)} title="Đưa xuống" className="rounded border border-slate-200 px-1.5 text-[12px] text-slate-500 hover:border-indigo-300 disabled:opacity-30">↓</button>
           {!c.xoa && <NutCanSua nho doiTuong="cau" mon={monTuKho(c.kho)} ma={c.ma_cau} man={`Kho đề thi · ${nhan ?? `câu ${so}`}`} onXong={onCanSua} />}
@@ -600,6 +689,17 @@ function CauThe({ c, mon, so, nd, tenDang, loi, ghiChu, nhan, nhom, dau, cuoi, s
         </span>
       </div>
 
+      {/* Cấu hình IN của câu — cùng bộ nút với builder giáo trình (dòng kẻ · 2 cột · chế độ hình · cỡ ảnh) */}
+      {!c.xoa && (
+        <div className="mb-2 flex flex-wrap items-center gap-3 rounded-lg bg-slate-50 px-2.5 py-1">
+          <span className="text-[11px] font-medium text-slate-400">🖨 Bản in:</span>
+          {coDongKeDeThi(c.loai_cau) && <label className="flex items-center gap-1 text-[11px] text-slate-400">dòng
+            <ODong value={soDong} onDat={onSoDong} title="Số dòng kẻ để HS viết câu này (bản in) — 0 = không kẻ" /></label>}
+          <ColSel value={cot} onChange={onCot} />
+          {nd?.anh_de && <CheDoHinhBtn cur={cheDo} onChange={onCheDo} />}
+          {nd?.anh_de && <AnhMmCtl ma={c.ma_cau} url={nd.anh_de} />}
+        </div>
+      )}
       {nx && <div className="mb-2"><NhanXetCu hienChoSua t={nx} /></div>}
       {ghiChu.length > 0 && (
         <ul className="mb-2 space-y-1">
@@ -621,7 +721,7 @@ function CauThe({ c, mon, so, nd, tenDang, loi, ghiChu, nhan, nhom, dau, cuoi, s
             : <SoanCau c={c} nd={nd} onHuy={() => setSoan(false)} onLuu={async (patch, localNd) => { if (await onSua(patch, localNd)) setSoan(false) }} />)
         : (<>
           {nd?.noi_dung && <div className="mb-2 text-[14px] leading-relaxed text-slate-800"><ChuMon mon={mon}>{nhom ? boLoiDan(nd.noi_dung, nhom.dan) : nd.noi_dung}</ChuMon></div>}
-          {nd?.anh_de && <img src={nd.anh_de} alt="hình của đề" className="mb-2 max-h-72 rounded border border-slate-200" />}
+          {nd?.anh_de && <div className="mb-2"><AnhXem ma={c.ma_cau} url={nd.anh_de} cheDo={cheDo} /></div>}
 
           {c.loai_cau === 'trac_nghiem' && (
             <div className="grid gap-1.5 sm:grid-cols-2">

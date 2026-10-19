@@ -88,6 +88,27 @@ export async function setSoDongDeThi(id: string, patch: Record<string, number>):
   const { error } = await supabase.from('tai_lieu').update({ cau_hinh: cauHinh, updated_at: new Date().toISOString() }).eq('id', id)
   if (error) throw error
 }
+// Cấu hình IN theo câu như builder giáo trình (Thùy 19/10): `colByCau` (2 cột) · `hinhCheDoByCau` (hiện/ô trống/ẩn hình) ·
+// `anhMmByCau` + `anhPctByCau` (cỡ ảnh) · `mau`. Đọc lại bản DB rồi trộn ĐÚNG khoá được sửa (không đè meta/số dòng của đề):
+// giá trị là object ⇒ trộn vào map cũ (giá trị null ⇒ bỏ khoá đó); còn lại ⇒ đặt thẳng.
+export function tronCauHinh<T extends Record<string, unknown>>(goc: T, patch: Record<string, unknown>): T {
+  const ch: Record<string, unknown> = { ...goc }
+  for (const [k, v] of Object.entries(patch)) {
+    if (v && typeof v === 'object' && !Array.isArray(v)) {
+      const m = { ...((ch[k] as Record<string, unknown>) ?? {}) }
+      for (const [mk, mv] of Object.entries(v as Record<string, unknown>)) { if (mv == null) delete m[mk]; else m[mk] = mv }
+      ch[k] = m
+    } else ch[k] = v
+  }
+  return ch as T
+}
+export async function patchCauHinhDeThi(id: string, patch: Record<string, unknown>): Promise<void> {
+  const { data: cur, error: e0 } = await supabase.from('tai_lieu').select('cau_hinh').eq('id', id).single()
+  if (e0) throw e0
+  const ch = tronCauHinh(((cur as { cau_hinh?: Record<string, unknown> }).cau_hinh ?? {}) as Record<string, unknown>, patch)
+  const { error } = await supabase.from('tai_lieu').update({ cau_hinh: ch, updated_at: new Date().toISOString() }).eq('id', id)
+  if (error) throw error
+}
 
 // ── PHẦN (Phần I/II…) = tai_lieu_phan loai_phan='custom', mỗi phần giữ CÂU THEO THỨ TỰ GỐC ──
 export async function listPhanDeThi(taiLieuId: string): Promise<TaiLieuPhan[]> {
