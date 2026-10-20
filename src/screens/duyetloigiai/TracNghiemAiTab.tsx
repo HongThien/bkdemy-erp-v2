@@ -16,6 +16,7 @@ import { nhanhCuaMon, NHANH_LABEL, listFormTnChoDuyet, duyetFormTn, duyetFormTnB
 import { MathText, inp } from '../kho/ui'
 import { myNhanSuId } from '../../lib/nhansu'
 import { useNhanXet, NutCanSua, NhanXetCu, DongChoSua } from './CanSua'
+import { useDeSau, NutDeSau, NhanDeSau } from './DeSau'
 import type { MonNX } from '../../lib/kho/nhanXet'
 
 const CHU = ['A', 'B', 'C', 'D']
@@ -34,6 +35,7 @@ export default function TracNghiemAiTab({ mon, khoi }: { mon: string; khoi: stri
   const [tuChoi, setTuChoi] = useState<Record<string, string>>({})      // id → lý do đang gõ (mở ô từ chối)
   const [thongBao, setThongBao] = useState<string | null>(null)
   const nhanXet = useNhanXet('form_tn')   // "✎ Cần sửa": form chờ Claude sửa tạm ẩn
+  const deSau = useDeSau('form_tn')       // "⏭ Để sau": form chưa muốn quyết xuống cuối hàng (Thùy 20/10)
   const [page, setPage] = useState(0)
   const [pageSize, setPageSize] = useState(PAGE_SIZE_OPTIONS[0])
   const [loai, setLoai] = useState<Set<string>>(new Set())              // id bị BỎ CHỌN khỏi lượt "Duyệt tất cả" (không phải Từ chối)
@@ -90,14 +92,14 @@ export default function TracNghiemAiTab({ mon, khoi }: { mon: string; khoi: stri
   }
 
   // Lọc theo DẠNG (Thùy 06/10, LocDang.tsx dùng chung mọi tab duyệt) — phân trang chạy trên phần đã lọc
-  const rowsCon = rows.filter((r) => !nhanXet.dangChoSua(r.mon, r.id))
+  const rowsCon = deSau.xep(rows.filter((r) => !nhanXet.dangChoSua(r.mon, r.id)), (r) => [r.mon, r.id])
   const soChoSua = rows.length - rowsCon.length
   const locDang = useLocDang(rowsCon, (r) => ({ ma: r.dang_chinh, ten: r.ten_dang }))
   const rowsLoc = locDang.loc
   const totalPages = Math.max(1, Math.ceil(rowsLoc.length / pageSize))
   const pageC = Math.min(page, totalPages - 1)
   const pageRows = rowsLoc.slice(pageC * pageSize, pageC * pageSize + pageSize)
-  const seDuyet = pageRows.filter((r) => !loai.has(r.id))
+  const seDuyet = pageRows.filter((r) => !loai.has(r.id) && !deSau.luc(r.mon, r.id))   // "Để sau" không bị duyệt hàng loạt cuốn theo
 
   async function onDuyetTatCa() {
     if (!seDuyet.length) return
@@ -181,7 +183,9 @@ export default function TracNghiemAiTab({ mon, khoi }: { mon: string; khoi: stri
                     <span>{r.ten_dang}</span>
                     <span>· đáp số kho <code className="rounded bg-slate-100 px-1">{r.dap_an_kho}</code> → <b>{r.key_gia_tri}</b></span>
                     <span>· đúng <b className="text-emerald-700">{r.dap_an}</b></span>
+                    <NhanDeSau at={deSau.luc(r.mon, r.id)} />
                     <div className="ml-auto flex items-center gap-1.5">
+                      <NutDeSau nho disabled={busy === r.id} onDeSau={() => deSau.ghi(r.mon as MonNX, r.id, `Duyệt kho › Trắc nghiệm AI · câu ${r.ma_cau}`).then(() => bao(`⏭ Form ${r.ma_cau} xuống cuối hàng — duyệt sau`))} />
                       {!dangSua && (
                         <button onClick={() => setEdit((e) => ({ ...e, [r.id]: r.lua_chon.map((x) => ({ ...x })) }))} disabled={busy === r.id}
                           className="rounded-md bg-white px-2.5 py-1 text-[12px] font-medium text-slate-600 ring-1 ring-slate-200 hover:text-slate-900">✎ Sửa</button>

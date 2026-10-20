@@ -28,6 +28,7 @@ import { MathText } from '../kho/ui'
 import { coKhoHinh } from '../../lib/tailieu'
 import { myNhanSuId } from '../../lib/nhansu'
 import { useNhanXet, NutCanSua, NhanXetCu, DongChoSua } from './CanSua'
+import { useDeSau, xepDeSau, NutDeSau, NhanDeSau } from './DeSau'
 import { useMonScope } from '../../hooks/useMonScope'
 import { useStore } from '../../store/useStore'
 
@@ -69,6 +70,10 @@ export default function DuyetLoiGiaiScreen() {
   const nxBienThe = useNhanXet('hinh_bien_the', 'toan')
   const nxCachGiai = useNhanXet('hinh_cach_giai', 'toan')
   const nxCua = (r: Row) => (r.dt === 'hinh_bien_the' ? nxBienThe : nxCachGiai)
+  // "⏭ Để sau" (Thùy 20/10): bài chưa muốn quyết xuống cuối hàng
+  const dsBienThe = useDeSau('hinh_bien_the', 'toan')
+  const dsCachGiai = useDeSau('hinh_cach_giai', 'toan')
+  const dsCua = (r: Row) => (r.dt === 'hinh_bien_the' ? dsBienThe : dsCachGiai)
 
   // Scope④ theo môn — cùng khuôn KhoScreen: chỉ hiện môn được phân; môn đang chọn không được phép → nhảy về môn đầu.
   const me = useStore((s) => s.me)
@@ -129,14 +134,15 @@ export default function DuyetLoiGiaiScreen() {
     catch (e: any) { alert(e.message ?? String(e)) } finally { setBusyKey(null) }
   }
   // Batch 20 (CEO 11/09) — cùng nhịp với các tab kho khác.
-  const rowsHinhCon = rows.filter((r) => !nxCua(r).dangChoSua('toan', r.id))
+  const rowsHinhCon = xepDeSau(rows.filter((r) => !nxCua(r).dangChoSua('toan', r.id)), (r) => dsCua(r).luc('toan', r.id))
   const batchHinh = rowsHinhCon.slice(0, BATCH_SIZE)
+  const batchDuyet = batchHinh.filter((r) => !dsCua(r).luc('toan', r.id))   // "Để sau" không bị duyệt hàng loạt cuốn theo
   async function onDuyetTatCa() {
-    if (!batchHinh.length || !confirm(`Duyệt cả ${batchHinh.length} bài Hình trong batch này? Câu không đạt hãy Từ chối trước.`)) return
+    if (!batchDuyet.length || !confirm(`Duyệt cả ${batchDuyet.length} bài Hình trong batch này? Câu không đạt hãy Từ chối trước.`)) return
     setBusyAll(true)
     try {
       const done = new Set<string>()
-      for (const r of batchHinh) {
+      for (const r of batchDuyet) {
         try { await r.duyet(); done.add(r.key) }
         catch { /* bỏ qua câu lỗi, tiếp tục */ }
       }
@@ -190,9 +196,9 @@ export default function DuyetLoiGiaiScreen() {
         {hienHinh && (
           <>
             <span className="ml-auto text-[12px] text-slate-500">Batch <b className="text-slate-800">{batchHinh.length}</b>/<b>{rows.length}</b> bài Hình</span>
-            <button onClick={onDuyetTatCa} disabled={!batchHinh.length || busyAll}
+            <button onClick={onDuyetTatCa} disabled={!batchDuyet.length || busyAll}
               className="rounded-md bg-emerald-600 px-3.5 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-emerald-500 disabled:opacity-40">
-              {busyAll ? '⏳ Đang duyệt…' : `✓ Duyệt tất cả batch (${batchHinh.length})`}
+              {busyAll ? '⏳ Đang duyệt…' : `✓ Duyệt tất cả batch (${batchDuyet.length})`}
             </button>
           </>
         )}
@@ -218,7 +224,9 @@ export default function DuyetLoiGiaiScreen() {
                   <div className="mb-2 flex items-center gap-2 text-[12px] text-slate-400">
                     <span className="rounded bg-sky-50 px-2 py-0.5 font-medium text-sky-700">{r.nhanh}</span>
                     <span>Khối {r.khoi}</span>
+                    <NhanDeSau at={dsCua(r).luc('toan', r.id)} />
                     <span className="ml-auto" />
+                    <NutDeSau nho disabled={busyKey === r.key || busyAll} onDeSau={() => dsCua(r).ghi('toan', r.id, `Duyệt kho › Hình · ${r.nhanh}`)} />
                     <NutCanSua nho doiTuong={r.dt} mon="toan" ma={r.id} man={`Duyệt kho › Hình · ${r.nhanh}`} onXong={(t) => nxCua(r).vaNX(t)} />
                     <button onClick={() => onDuyet(r)} disabled={busyKey === r.key || busyAll}
                       className="rounded-md bg-emerald-600 px-3 py-1 text-[12px] font-medium text-white shadow-sm hover:bg-emerald-500 disabled:opacity-40">

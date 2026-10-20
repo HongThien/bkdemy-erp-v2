@@ -9,6 +9,7 @@ import * as api from '../../lib/kho/api'
 import { NHAN_LOAI_CAU_HL, type BaiKho, type CheDoHL, type LoaiCauHL, type MoHinhLuyen, type YKho } from '../../lib/kho/hinhCay'
 import { MathText } from '../kho/ui'
 import { useNhanXet, NutCanSua, NhanXetCu } from './CanSua'
+import { useDeSau, NutDeSau, NhanDeSau } from './DeSau'
 
 const TRANG = 30
 // ⭐ Thùy 18/10: mô hình luyện CHỈ lấy bài TỰ LUẬN ⇒ hàng 'cho' = tự luận chưa duyệt; trắc nghiệm / đúng sai / trả lời ngắn nằm ở
@@ -30,17 +31,20 @@ export default function HinhLuyenChuaPhanTab({ khoi, onChanged }: { khoi: string
   const [ban, setBan] = useState<string | null>(null)
   const [phong, setPhong] = useState<string | null>(null)                // hình đang phóng to
   const cuon = useRef<HTMLDivElement>(null)
+  // "⏭ Để sau" (Thùy 20/10): bài chưa muốn quyết xuống cuối hàng. Offset nạp trang = SỐ bài đã nạp nên xếp lại không lệch trang.
+  const deSau = useDeSau('hinh_bai', 'toan')
+  const xepBai = deSau.xep
 
   const nap = useCallback(async (themVao: BaiKho[]): Promise<BaiKho[]> => {
     setDangTai(true); setLoi(null)
     try {
       const moi = await api.khoChuaPhanMoHinh(khoi, TRANG, themVao.length, cheDo)
-      const ds = [...themVao, ...moi]
+      const ds = xepBai([...themVao, ...moi], (x) => ['toan', x.id])   // bài mới nạp đứng TRƯỚC bài đã để sau
       setBai(ds); setHet(moi.length < TRANG)
       return ds
     } catch (e: any) { setLoi(e.message ?? String(e)); return themVao }
     finally { setDangTai(false) }
-  }, [khoi, cheDo])
+  }, [khoi, cheDo, xepBai])
 
   // đếm nền (không xoá danh sách): hàng chờ duyệt + hai hàng phụ
   const napDem = useCallback(() => {
@@ -60,8 +64,21 @@ export default function HinhLuyenChuaPhanTab({ khoi, onChanged }: { khoi: string
   useEffect(() => { NHO[khoaNho(khoi, cheDo)] = { bai, het, vt } }, [bai, het, vt, khoi, cheDo])
   useEffect(() => { cuon.current?.scrollTo({ top: 0 }) }, [vt])           // sang bài khác ⇒ đọc lại từ đầu đề
 
+  // danh sách "để sau" tải xong (sau danh sách bài đã nhớ) ⇒ xếp lại một lần, vẫn đứng ở bài đang xem
+  useEffect(() => {
+    if (!deSau.daNap) return
+    const s = xepBai(bai, (x) => ['toan', x.id])
+    if (s !== bai) { const cur = bai[vt]; setBai(s); setVt(Math.max(0, cur ? s.indexOf(cur) : 0)) }
+  }, [deSau.daNap]) // eslint-disable-line react-hooks/exhaustive-deps
+
   const b = bai[vt] ?? null
   const nhanXet = useNhanXet('hinh_bai', 'toan')   // "✎ Cần sửa": bài một màn ⇒ không ẩn, hiện dải chờ sửa + sang bài kế
+  // Để sau: ghi DB rồi chuyển bài này xuống cuối phần đã nạp — đứng nguyên vị trí, bài kế dồn lên
+  const deSauBai = async () => {
+    if (!b) return
+    await deSau.ghi('toan', b.id, `Duyệt kho › Hình luyện · ${b.ma_bai}`)
+    setBai((prev) => [...prev.filter((x) => x.id !== b.id), b])
+  }
   const den = useCallback(async (i: number) => {
     if (i < 0) return
     if (i < bai.length) { setVt(i); return }
@@ -172,6 +189,8 @@ export default function HinhLuyenChuaPhanTab({ khoi, onChanged }: { khoi: string
         <button onClick={() => { setVt(0); void nap([]); napDem() }} className="rounded-md border border-slate-200 px-2 py-0.5 text-[12px] text-slate-500 hover:bg-slate-50" title="Quét lại từ đầu">↻</button>
         {b && cheDo === 'cho' && (
           <span className="ml-auto flex items-center gap-2">
+            <NhanDeSau at={deSau.luc('toan', b.id)} />
+            <NutDeSau disabled={!!ban} onDeSau={deSauBai} />
             <NutBoQua ma={b.ma_bai} busy={ban === 'qua'} onXacNhan={boQua} />
             <NutCanSua doiTuong="hinh_bai" mon="toan" ma={b.id} man={`Duyệt kho › Hình luyện · ${b.ma_bai}`} khau="de"
               onXong={(t) => { nhanXet.vaNX(t); void den(vt + 1) }} />
