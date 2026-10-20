@@ -7,6 +7,7 @@
 ## Mục lục (số dòng trong file này)
 
 - dòng 36 — ⭐⭐⭐ LUẬT DUYỆT (Thùy 14/10, "nói bao lần rồi") — MỌI KHỐI, MỌI LÔ: muốn Thùy duy�
+- Bài học 14→20/10 — Kho K7 (đề thi, đề cương, bản đồ, hình) (ngay dưới LUẬT DUYỆT)
 - Bài học 17→19/10 — Bản đồ mới · Hình–Luyện · Kho đề thi (bản in) (ngay dưới LUẬT DUYỆT)
 - dòng 47 — Bài học 10→17/10 — Bổ trợ (đừng đạp lại)
 - dòng 65 — Bài học 14/10 — Hình–Luyện cây nhánh + kho bài
@@ -44,6 +45,18 @@
 - **File để cạnh `.soan.md`, mở bằng double-click là xem** (ảnh nhúng base64, KaTeX qua CDN). Đã có: `GKI` → `lo/k7/can-xem/index.html` (chỉ ảnh — thiếu đề/lời giải, nên làm lại theo khuôn mới khi cần), `DC-01.html`, `DC-02.html`, `CKI-7-duyet.html`.
 - **Lỗi đã mắc (14/10):** soạn+soát+ghi 14 đề CKI-7 xong mà chỉ báo bằng bảng chữ + tên PNG, Thùy phải đòi lại HTML. Trạm SOÁT đã cắt ảnh cho CEO nhưng KHÔNG ai gom thành một trang — **bước "dựng HTML duyệt" là bước cuối BẮT BUỘC của mọi dây chuyền kho**, ngang hàng "ghi DB". Thiếu HTML = lô chưa xong.
 - **Cũng nhớ:** phản hồi cuối của lượt phải NÊU ĐƯỜNG DẪN file HTML (link bấm được) trước, rồi mới tóm tắt chỗ cần quyết.
+
+### Bài học 14→20/10 — Kho K7 (đề thi, đề cương, bản đồ, hình)
+
+- **⭐ Nội dung BẢN ĐỒ (lý thuyết/ví dụ/dạng/gán dạng): làm xong chỉ là ĐỀ XUẤT trong HTML; ghi DB CHỈ khi Thùy nói rõ "ghi".** 20/10 "Claude điền" bị tôi hiểu thành ghi thẳng 6 trường ⇒ Thùy gắt "t đã bảo m ghi đâu" ⇒ phải gỡ về trống (Luật xoá: hỏi trước, gỡ chỉ khi nội dung còn y bản tôi ghi). Mẫu trang chọn Giữ/Gỡ/Sửa: \`K7-de-xuat-5-dang-so-thuc.html\`.
+- **⭐ Muốn Thùy quyết gì ⇒ MỘT file HTML có nút chọn + "Sao chép câu trả lời"** (\`scripts/kho/de-thi/build-cau-hoi-html.mjs\`; danh sách chỗ cần quyết sinh bằng \`QUYET_JSON=… build-duyet-html.mjs\`). Báo cáo cuối nêu link file trước.
+- **Trạng thái gán dạng của bản đồ mới KHÔNG đọc từ cột \`dai_cau_hoi.dang_chinh\`** (câu nhập từ đề vẫn \`T107000000\`): đọc ở \`dai_bdm_gan_cau\` + \`dai_bdm_de_xuat\` + \`dai_bdm_cau_thieu_dang\`. 20/10 tôi báo nhầm "395 câu chưa có trạng thái" vì chỉ xét 2 bảng sau; \`bdm-b3-xuat-lo.mjs\` báo 0 câu chưa gán mới lộ.
+- **Trạm sinh JSON làm MẤT dấu \`\\\` của LaTeX** (\`\\left\`→\`left\`, \`\\dfrac\`→\`dfrac\`, \`\\right\`→ký tự điều khiển/xuống dòng): cổng cũ (\`$\` chẵn + JSON hợp lệ) và cả KaTeX parse đều KHÔNG bắt được vì \`left(dfrac{1}{3})\` là chữ hợp lệ. Kiểm bắt buộc trước khi ghi: không ký tự điều khiển; không từ ASCII ≥2 chữ trần trong \`$…$\` (ngoài \`\\text{}\`, ngoài \`cases\`); trạm ghi bằng công cụ Write với \`\\\\\`. Script kiểm cũng phải viết bằng Write (heredoc bash ăn \`\\\`).
+- **Luật phạm vi (CEO 19–20/10): đề/câu có kiến thức KÌ 2 không phải KNTT HK1 ⇒ bỏ** (tỉ lệ thức, dãy tỉ số bằng nhau, tỉ lệ thuận/nghịch, hình hộp/lăng trụ/lập phương, đa thức). Phải ghi vào brief soạn VÀ soát: trạm soạn vẫn để lọt câu tỉ lệ thức (DC-04 Khác Bài 4), chỉ trạm soát bắt được.
+- **Trạm SOÁT lỡ mở \`.soan.md\` trước khi giải mù xong** (3/6 trạm đề cương) ⇒ 30–40 câu đầu không mù hoàn toàn. Brief soát phải CẤM mở \`.soan.md\` tới khi \`.kiem.md\` đủ.
+- **Đề rỗng do người tạo trong app vẫn có 1 dòng \`linkgen_jobs\` (pending, attempt 0) + 1 phần** — khi xoá đề phải kèm job; chạy thử ROLLBACK + kiểm FK (\`pg_constraint confrelid='tai_lieu'\`) trước.
+- **Vẽ hình cho câu hỏi "khái niệm" (song song/vuông góc suy ra từ cặp góc bằng nhau):** vẽ đúng dữ kiện thì hình tự lộ đáp án; chỉ đánh dấu điều ĐỀ CHO (cung góc bằng nhau, ô vuông), không vẽ mũi tên song song. Hình đề + đáp án cùng một tệp (không đuôi) trừ khi lời giải cần thêm đường phụ (dùng đuôi \`_de\`).
+- **Xoá câu khỏi kho: \`xoa_at\` (kho rác), không xoá cứng** (câu nhập từ đề không có FK trỏ vào nhưng \`tai_lieu_cau\` trỏ bằng text). Gỡ câu khỏi đề cương = xoá \`tai_lieu_cau\` + dọn \`cau_hinh.deThi.nhanCau/nhomBai/canhBaoCau\`.
 
 ### Bài học 17→19/10 — Bản đồ mới · Hình–Luyện · Kho đề thi (bản in)
 
