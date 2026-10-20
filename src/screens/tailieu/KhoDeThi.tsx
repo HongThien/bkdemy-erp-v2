@@ -383,7 +383,8 @@ export function DeThiSoan({ id, onClose, tuKho }: { id: string; onClose: () => v
       const r = await duyetDeThi(id)
       const at = new Date().toISOString()
       setD((x) => (x ? { ...x, duyet_at: at } : x))
-      flash(true, `Đã duyệt đề — ${r.so_cau} câu vào kho chuẩn${r.so_cau_cho_dang ? `, ${r.so_cau_cho_dang} câu chờ có dạng` : ''}.`)
+      // Duyệt đề = duyệt NỘI DUNG mọi câu; phân dạng là việc riêng, làm sau (Thùy 20/10, mig 202610202045)
+      flash(true, `Đã duyệt đề — ${r.so_cau} câu đã duyệt nội dung${r.so_cau_cho_dang ? `; ${r.so_cau_cho_dang} câu còn chờ phân dạng (Duyệt kho › Chưa phân dạng / Bản đồ mới — làm sau)` : ''}.`)
       deThiCau(id).then(setCaus).catch(() => {})
     } catch (e: any) { flash(false, e.message ?? String(e)) } finally { setBusy(false) }
   }
@@ -466,7 +467,7 @@ export function DeThiSoan({ id, onClose, tuKho }: { id: string; onClose: () => v
           <NutCanSua doiTuong="de_thi" mon={monDe} ma={id} man={`Kho đề thi › ${ten}`} khau="khac"
             onXong={(t) => { nxDe.vaNX(t); flash(true, 'Đã gửi nhận xét cho cả đề — chờ Claude sửa') }} />
           <button onClick={duyet} disabled={busy || !thieu || soChan > 0 || !caus?.length}
-            title={soChan ? 'Còn câu thiếu đáp án / phương án — bổ sung rồi mới duyệt được' : 'Xác nhận nội dung + đáp án cả đề. Câu đã có dạng vào kho chuẩn.'}
+            title={soChan ? 'Còn câu thiếu đáp án / phương án — bổ sung rồi mới duyệt được' : 'Xác nhận nội dung + đáp án cả đề. Không cần phân đủ dạng — câu chưa có dạng phân sau.'}
             className="whitespace-nowrap rounded-md bg-emerald-600 px-4 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-emerald-500 disabled:opacity-40">
             {busy ? 'Đang duyệt…' : d.duyet_at ? '✅ Duyệt lại' : '✅ Duyệt đề'}
           </button>
