@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T106000000797",
+  "dang_bai_id": "NDB00364",
+  "chac": "vua",
+  "ly_do": "Tìm x có ngoặc lồng, chỉ cộng trừ; mô tả 00364 nhắc lũy thừa, 00349 chỉ 2 số."
+ },
+ {
+  "ma_cau": "T106000000709",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x khi tích các thừa số chứa x bằng 0."
+ },
+ {
+  "ma_cau": "T106000000735",
+  "dang_bai_id": "NDB00404",
+  "chac": "cao",
+  "ly_do": "Chia đều có dư rồi tìm số phần quà nhiều nhất: ƯCLN của các số đã trừ số dư."
+ },
+ {
+  "ma_cau": "T1060000001046",
+  "dang_bai_id": "NDB00385",
+  "chac": "vua",
+  "ly_do": "Chứng minh chia hết 7 (ghép 3 số) và 42 (còn 2, 3); đề dãy lỗi 2+2^1."
+ },
+ {
+  "ma_cau": "T106000000888",
+  "dang_bai_id": "NDB00364",
+  "chac": "vua",
+  "ly_do": "Tìm x có ngoặc lồng, chỉ cộng trừ; cùng kiểu câu 87-(73-x)=20."
+ },
+ {
+  "ma_cau": "T106000000516",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc số nguyên Ch III: so sánh số nguyên."
+ },
+ {
+  "ma_cau": "T106000000467",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc số nguyên Ch III: tìm x nguyên có nhân."
+ },
+ {
+  "ma_cau": "T106000000590",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm số nguyên tố p, q từ phương trình sau khi rút gọn (10p+q^3=58)."
+ },
+ {
+  "ma_cau": "T106000000543",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc số nguyên Ch III: số nguyên âm trong thực tế (độ sâu, độ cao)."
+ },
+ {
+  "ma_cau": "T106020701002",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tổng dãy phân số dạng 1/(n(n+2)) tìm x."
+ },
+ {
+  "ma_cau": "T106000000635",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc số nguyên Ch III: số nguyên âm trong thực tế (độ sâu, độ cao)."
+ },
+ {
+  "ma_cau": "T106000000520",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc số nguyên Ch III: cộng số nguyên tính hợp lí."
+ },
+ {
+  "ma_cau": "T106020801006",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: so sánh hai lũy thừa bằng cách đưa về cùng cơ số."
+ },
+ {
+  "ma_cau": "T106000000986",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: dạng tổng quát của số chia hết / chia dư cho một số."
+ },
+ {
+  "ma_cau": "T106000000644",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc số nguyên Ch III: cộng hai số nguyên."
+ },
+ {
+  "ma_cau": "T106000000998",
+  "dang_bai_id": "NDB00335",
+  "chac": "vua",
+  "ly_do": "Ý a,b về quan hệ ∈, ý c,d về đếm/liệt kê phần tử: trộn 00335 và 00336."
+ },
+ {
+  "ma_cau": "T106000000743",
+  "dang_bai_id": "NDB00375",
+  "chac": "vua",
+  "ly_do": "Tìm chữ số để chia hết cho cả 2 và 9: trộn dấu hiệu 2 (00373) và 9 (00375)."
+ },
+ {
+  "ma_cau": "T106000000585",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc số nguyên Ch III: tìm x nguyên có ngoặc."
+ },
+ {
+  "ma_cau": "T106000000560",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm bộ ba số tự nhiên khi biết tổng kèm ƯCLN (đặt a=dm...)."
+ },
+ {
+  "ma_cau": "T106000000958",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x,y tự nhiên bằng cách đưa về tích bằng hằng số (ước của 12)."
+ },
+ {
+  "ma_cau": "T106000000536",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc số nguyên Ch III: cộng số nguyên tính hợp lí."
+ },
+ {
+  "ma_cau": "T106000000750",
+  "dang_bai_id": "NDB00364",
+  "chac": "vua",
+  "ly_do": "Tìm x có số chia chứa ngoặc (2x-1); cũng gần 00350 (x ở số bị trừ)."
+ },
+ {
+  "ma_cau": "T106000000823",
+  "dang_bai_id": "NDB00375",
+  "chac": "vua",
+  "ly_do": "Tìm x để chia hết cho 5 và 3: trộn dấu hiệu 5 (00373) và 3 (00375)."
+ },
+ {
+  "ma_cau": "T106000000482",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc số nguyên Ch III: tìm x nguyên có ngoặc."
+ },
+ {
+  "ma_cau": "T106000000462",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc số nguyên Ch III: tổng các số nguyên trong khoảng."
+ },
+ {
+  "ma_cau": "T106000000529",
+  "dang_bai_id": "NDB00392",
+  "chac": "vua",
+  "ly_do": "Phân số rút gọn được: cùng kĩ thuật gọi d=ƯCLN khử n như 00392 nhưng bài ngược, thêm khoảng n."
+ },
+ {
+  "ma_cau": "T106000000928",
+  "dang_bai_id": "NDB00359",
+  "chac": "cao",
+  "ly_do": "Tìm x ở số mũ trong tổng hai lũy thừa cùng cơ số, đặt 5^x chung rồi đưa về cùng cơ số."
+ },
+ {
+  "ma_cau": "T106000000724",
+  "dang_bai_id": "NDB00359",
+  "chac": "vua",
+  "ly_do": "Tìm x ở số mũ nhưng hai cơ số 5 và 2 khác nhau, cần biến đổi thêm."
+ },
+ {
+  "ma_cau": "T106000000937",
+  "dang_bai_id": "NDB00375",
+  "chac": "vua",
+  "ly_do": "Tìm hai chữ số chia hết cho 5 và 9: trộn dấu hiệu 5 (00373) và 9 (00375)."
+ },
+ {
+  "ma_cau": "T106000000607",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc số nguyên Ch III: nhân số nguyên, rút nhân tử chung."
+ },
+ {
+  "ma_cau": "T106000000608",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc số nguyên Ch III: thứ tự phép tính có số nguyên âm (-2)."
+ },
+ {
+  "ma_cau": "T106000000697",
+  "dang_bai_id": "NDB00356",
+  "chac": "vua",
+  "ly_do": "Rút gọn phân số lũy thừa: đưa 4^10, 8^7 về cơ số 2 để ẩn thừa số chung; có thể là 00354."
+ },
+ {
+  "ma_cau": "T106000000787",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x là thừa số của một phép nhân đơn (5x=145)."
+ },
+ {
+  "ma_cau": "T106000000307",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc số nguyên Ch III: tìm x với kết quả số nguyên âm."
+ },
+ {
+  "ma_cau": "T106000000637",
+  "dang_bai_id": "NDB00411",
+  "chac": "vua",
+  "ly_do": "Chia dư lệch đều (thiếu 1) tìm số nhỏ nhất: bội chung, nhưng không có khoảng chặn; gần 00412."
+ },
+ {
+  "ma_cau": "T106000000739",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: chứng minh một số là số chính phương."
+ },
+ {
+  "ma_cau": "T106000000579",
+  "dang_bai_id": "NDB00402",
+  "chac": "cao",
+  "ly_do": "Đề chỉ yêu cầu tìm ƯCLN của hai số."
+ },
+ {
+  "ma_cau": "T106000000615",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc số nguyên Ch III: cộng số nguyên tính hợp lí."
+ },
+ {
+  "ma_cau": "T1060000001026",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x khi tích các thừa số chứa x bằng 0."
+ },
+ {
+  "ma_cau": "T106000000488",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc số nguyên Ch III: tìm x nguyên, tích bằng 0."
+ },
+ {
+  "ma_cau": "T106000000427",
+  "dang_bai_id": "NDB01215",
+  "chac": "cao",
+  "ly_do": "Toán thực tế: 84 quyển chia xấp đều, số quyển/xấp là ước của 84 trong khoảng 8 đến 12."
+ },
+ {
+  "ma_cau": "T1060000001001",
+  "dang_bai_id": "NDB00403",
+  "chac": "vua",
+  "ly_do": "Chia tổ: ý a,b về ƯC, ý c,d về ƯCLN; trộn 00403 và 00404."
+ },
+ {
+  "ma_cau": "T106000000648",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc số nguyên Ch III: tìm x với kết quả số nguyên âm."
+ },
+ {
+  "ma_cau": "T106000000383",
+  "dang_bai_id": "NDB01215",
+  "chac": "cao",
+  "ly_do": "Toán thực tế: số bạn mỗi nhóm là ước của 36 lớn hơn 3, tìm số nhóm nhiều nhất, ít nhất."
+ },
+ {
+  "ma_cau": "T106000000517",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc số nguyên Ch III: nhiệt độ âm trong thực tế."
+ },
+ {
+  "ma_cau": "T106000000483",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc số nguyên Ch III: nhiệt độ âm trong thực tế."
+ },
+ {
+  "ma_cau": "T106000000397",
+  "dang_bai_id": "NDB01215",
+  "chac": "cao",
+  "ly_do": "Toán thực tế: số bánh là bội của 8 trong khoảng 46 đến 52."
+ },
+ {
+  "ma_cau": "T106000000714",
+  "dang_bai_id": "NDB00359",
+  "chac": "vua",
+  "ly_do": "Tìm x ở số mũ qua (5^x)^2 và lũy thừa 125; kết quả 2x=7 không tự nhiên, đề nghi lỗi."
+ },
+ {
+  "ma_cau": "T106000000920",
+  "dang_bai_id": "NDB00364",
+  "chac": "vua",
+  "ly_do": "Tìm x có ngoặc (7x-15):3=9, chỉ cộng trừ nhân chia; gần 00350."
+ },
+ {
+  "ma_cau": "T106000000978",
+  "dang_bai_id": "NDB00349",
+  "chac": "vua",
+  "ly_do": "Tìm x ở số bị trừ lồng hai phép trừ (x-29)-11=0; có thể xếp 00364."
+ },
+ {
+  "ma_cau": "T106000000696",
+  "dang_bai_id": "NDB00356",
+  "chac": "vua",
+  "ly_do": "Rút gọn phân số lũy thừa: đưa 9^5, 27^3 về cơ số 3 để ẩn thừa số chung; có thể là 00354."
+ },
+ {
+  "ma_cau": "T106000000028",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc số nguyên Ch III: nhận biết tập số nguyên âm."
+ },
+ {
+  "ma_cau": "T106000000289",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc số nguyên Ch III: số đối."
+ },
+ {
+  "ma_cau": "T106000000404",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc số nguyên Ch III: quy tắc bỏ dấu ngoặc."
+ },
+ {
+  "ma_cau": "T106000000611",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc số nguyên Ch III: tìm x nguyên, tích bằng 0."
+ },
+ {
+  "ma_cau": "T106000000625",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc số nguyên Ch III: đếm số nguyên trong khoảng."
+ },
+ {
+  "ma_cau": "T106000000730",
+  "dang_bai_id": "NDB00359",
+  "chac": "vua",
+  "ly_do": "Tìm x ở số mũ với ba cơ số khác nhau 4,5,6; cần gom thành 120^x."
+ },
+ {
+  "ma_cau": "T106000000684",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tổng các tích hai số liên tiếp 1.2+2.3+..."
+ },
+ {
+  "ma_cau": "T106000000567",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc số nguyên Ch III: cộng số nguyên tính hợp lí."
+ },
+ {
+  "ma_cau": "T106000000976",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm chữ số tận cùng của biểu thức lũy thừa."
+ },
+ {
+  "ma_cau": "T106000000304",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc số nguyên Ch III: tính hợp lí với số nguyên âm."
+ },
+ {
+  "ma_cau": "T106000000155",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: cấu tạo thập phân của số tự nhiên."
+ },
+ {
+  "ma_cau": "T106000000616",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc số nguyên Ch III: tính hợp lí với số nguyên âm."
+ },
+ {
+  "ma_cau": "T106000000609",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc số nguyên Ch III: tìm x nguyên với kết quả nguyên."
+ },
+ {
+  "ma_cau": "T106000000565",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc số nguyên Ch III: nhiệt độ âm trong thực tế."
+ },
+ {
+  "ma_cau": "T106000000849",
+  "dang_bai_id": "NDB00384",
+  "chac": "vua",
+  "ly_do": "Chứng minh chia hết 4 (ghép 2 số, 00384) và 13 (ghép 3 số, 00385): hai dạng."
+ },
+ {
+  "ma_cau": "T106000000118",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: chứng minh biểu thức chia hết với p nguyên tố lớn hơn 3 (xét số dư)."
+ },
+ {
+  "ma_cau": "T106000000519",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc số nguyên Ch III: bỏ dấu ngoặc."
+ },
+ {
+  "ma_cau": "T106000000729",
+  "dang_bai_id": "NDB00359",
+  "chac": "vua",
+  "ly_do": "Tìm x ở số mũ với ba cơ số khác nhau 2,3,5; cần gom thành 30^x."
+ },
+ {
+  "ma_cau": "T106000000604",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc số nguyên Ch III: bỏ dấu ngoặc."
+ }
+]

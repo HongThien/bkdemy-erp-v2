@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T306000000071",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Lời văn vườn, chỉ tính diện tích và chu vi; cũng hợp dạng tính thuần 01218"
+ },
+ {
+  "ma_cau": "T306000000072",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "So sánh chu vi lục giác đều và tam giác đều để tìm cạnh"
+ },
+ {
+  "ma_cau": "T306000000073",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Lát gạch sàn, tính diện tích và chi phí theo giá gạch"
+ },
+ {
+  "ma_cau": "T306000000074",
+  "dang_bai_id": "NDB01220",
+  "chac": "vua",
+  "ly_do": "Nhận biết lục giác đều qua hình ảnh, phụ thuộc hình"
+ },
+ {
+  "ma_cau": "T306000000075",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Tính diện tích hình thoi từ hai đường chéo, đổi đơn vị"
+ },
+ {
+  "ma_cau": "T306000000076",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Mảnh vườn, lối đi xung quanh, số cây hoa: bài toán thực tế"
+ },
+ {
+  "ma_cau": "T306000000077",
+  "dang_bai_id": "NDB01220",
+  "chac": "vua",
+  "ly_do": "Nhận biết tam giác đều qua hình, phụ thuộc hình"
+ },
+ {
+  "ma_cau": "T306000000078",
+  "dang_bai_id": "NDB01221",
+  "chac": "vua",
+  "ly_do": "Đường chéo chính của lục giác: khái niệm tính chất, cũng gần nhận biết"
+ },
+ {
+  "ma_cau": "T306000000079",
+  "dang_bai_id": "NDB01218",
+  "chac": "vua",
+  "ly_do": "Chu vi hình thoi (hàng rào) một bước; có thể xem là lời văn"
+ },
+ {
+  "ma_cau": "T306000000080",
+  "dang_bai_id": "NDB01221",
+  "chac": "cao",
+  "ly_do": "Hình bình hành có cạnh đối bằng nhau, suy ra PQ, MQ"
+ },
+ {
+  "ma_cau": "T306000000081",
+  "dang_bai_id": "NDB01221",
+  "chac": "cao",
+  "ly_do": "Chọn phát biểu sai về tính chất hình chữ nhật"
+ },
+ {
+  "ma_cau": "T306000000082",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Hồ bơi kích thước theo hình vẽ, lát gạch; phụ thuộc hình"
+ },
+ {
+  "ma_cau": "T306000000083",
+  "dang_bai_id": "NDB01221",
+  "chac": "cao",
+  "ly_do": "Tam giác đều có ba cạnh bằng nhau suy ra AB"
+ },
+ {
+  "ma_cau": "T306000000084",
+  "dang_bai_id": "NDB01220",
+  "chac": "vua",
+  "ly_do": "Nhận biết lục giác đều qua đặc điểm đỉnh, góc, cạnh"
+ },
+ {
+  "ma_cau": "T306000000085",
+  "dang_bai_id": "NDB01221",
+  "chac": "cao",
+  "ly_do": "Chọn khẳng định sai về tính chất hình chữ nhật"
+ },
+ {
+  "ma_cau": "T306000000086",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Tính diện tích hình thoi từ hai đường chéo"
+ },
+ {
+  "ma_cau": "T306000000087",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Tìm chiều rộng từ chu vi rồi tính diện tích hình chữ nhật"
+ },
+ {
+  "ma_cau": "T306000000088",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Hàng rào ruộng vuông, thu hoạch rau, tính tiền: lời văn"
+ },
+ {
+  "ma_cau": "T306000000089",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Từ chu vi hình thoi tính cạnh"
+ },
+ {
+  "ma_cau": "T306000000090",
+  "dang_bai_id": "NDB01220",
+  "chac": "vua",
+  "ly_do": "Nhận biết hình vuông qua hình, phụ thuộc hình"
+ },
+ {
+  "ma_cau": "T306000000091",
+  "dang_bai_id": "NDB01221",
+  "chac": "cao",
+  "ly_do": "Chọn khẳng định đúng về tính chất các hình"
+ },
+ {
+  "ma_cau": "T306000000092",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Tính chu vi và diện tích hình thoi có số liệu"
+ },
+ {
+  "ma_cau": "T306000000093",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Mảnh đất trồng hoa, số cây theo diện tích: lời văn"
+ },
+ {
+  "ma_cau": "T306000000094",
+  "dang_bai_id": "NDB01218",
+  "chac": "vua",
+  "ly_do": "Chu vi, diện tích hình vuông, chữ nhật phụ thuộc hình; tìm cạnh"
+ },
+ {
+  "ma_cau": "T306000000095",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Tính diện tích hình thoi từ hai đường chéo"
+ },
+ {
+  "ma_cau": "T306000000096",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: trục đối xứng, nhận biết qua hình"
+ },
+ {
+  "ma_cau": "T306000000097",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Đất hình thang, nền nhà, ao: tính diện tích phần còn lại"
+ },
+ {
+  "ma_cau": "T306000000098",
+  "dang_bai_id": "NDB01221",
+  "chac": "vua",
+  "ly_do": "Từ chu vi suy cạnh rồi đường chéo chính lục giác đều"
+ },
+ {
+  "ma_cau": "T306000000099",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Từ chu vi hình vuông tính diện tích"
+ },
+ {
+  "ma_cau": "T306000000100",
+  "dang_bai_id": "NDB01220",
+  "chac": "vua",
+  "ly_do": "Đếm tam giác đều trong hình, phụ thuộc hình"
+ },
+ {
+  "ma_cau": "T306000000101",
+  "dang_bai_id": "NDB01221",
+  "chac": "cao",
+  "ly_do": "Đếm khẳng định đúng về tính chất các hình"
+ },
+ {
+  "ma_cau": "T306000000102",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Từ chu vi hình vuông tính cạnh và diện tích"
+ },
+ {
+  "ma_cau": "T306000000103",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Vườn hoa mở rộng, ốp gạch báo giá; phụ thuộc hình"
+ },
+ {
+  "ma_cau": "T306000000104",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: số trục đối xứng của hình"
+ },
+ {
+  "ma_cau": "T306000000105",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Tính diện tích hình vuông từ chu vi"
+ },
+ {
+  "ma_cau": "T306000000106",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: trục đối xứng, nhận biết qua hình"
+ },
+ {
+  "ma_cau": "T306000000107",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Sân vườn, bồn hoa thoi, chi phí cỏ; kích thước trong hình"
+ },
+ {
+  "ma_cau": "T306000000108",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: gọi tên hình và đếm trục đối xứng"
+ },
+ {
+  "ma_cau": "T306000000109",
+  "dang_bai_id": "NDB01220",
+  "chac": "vua",
+  "ly_do": "Nhận biết hình lục giác đều từ ảnh tổ ong"
+ },
+ {
+  "ma_cau": "T306000000110",
+  "dang_bai_id": "NDB01220",
+  "chac": "vua",
+  "ly_do": "Đếm tam giác đều trong hình ghép, phụ thuộc hình"
+ },
+ {
+  "ma_cau": "T306000000111",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Tính diện tích hình chữ nhật có đổi đơn vị"
+ },
+ {
+  "ma_cau": "T306000000112",
+  "dang_bai_id": "NDB01221",
+  "chac": "cao",
+  "ly_do": "Chọn khẳng định sai về tính chất các hình"
+ },
+ {
+  "ma_cau": "T306000000113",
+  "dang_bai_id": "NDB01218",
+  "chac": "vua",
+  "ly_do": "Diện tích hình thoi tìm đường chéo; ý b phụ thuộc hình"
+ },
+ {
+  "ma_cau": "T306000000114",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Mảnh đất, vườn hoa thoi, diện tích phần còn lại; phụ thuộc hình"
+ },
+ {
+  "ma_cau": "T306000000115",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Tính chu vi hình chữ nhật có số liệu"
+ },
+ {
+  "ma_cau": "T306000000116",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: trục đối xứng, nhận biết qua hình"
+ },
+ {
+  "ma_cau": "T306000000117",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Sân trường, bồn hoa, nhiều ý thực tế; phụ thuộc hình"
+ },
+ {
+  "ma_cau": "T306000000118",
+  "dang_bai_id": "NDB01218",
+  "chac": "vua",
+  "ly_do": "Chu vi hình thoi (viền khung ảnh) một bước; có thể xem là lời văn"
+ },
+ {
+  "ma_cau": "T306000000119",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: trục đối xứng của biển báo"
+ },
+ {
+  "ma_cau": "T306000000120",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Mảnh vườn, lối đi, trồng cà chua; bố trí lối đi theo hình vẽ"
+ },
+ {
+  "ma_cau": "T306000000121",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Khu đất hình thang cân, kích thước theo hình; cũng hợp tính thuần"
+ },
+ {
+  "ma_cau": "T306000000122",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: tâm đối xứng của hình"
+ },
+ {
+  "ma_cau": "T306000000123",
+  "dang_bai_id": "NDB01220",
+  "chac": "vua",
+  "ly_do": "Đếm hình bình hành trong hình, phụ thuộc hình"
+ },
+ {
+  "ma_cau": "T306000000124",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: số trục đối xứng của hình"
+ },
+ {
+  "ma_cau": "T306000000125",
+  "dang_bai_id": "NDB01218",
+  "chac": "vua",
+  "ly_do": "So sánh diện tích các hình theo hình vẽ, phụ thuộc hình"
+ },
+ {
+  "ma_cau": "T306000000126",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Sân bóng, đường đi xung quanh; tính diện tích, phụ thuộc hình"
+ },
+ {
+  "ma_cau": "T306000000127",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: tâm đối xứng, nhận biết qua hình"
+ },
+ {
+  "ma_cau": "T306000000128",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Từ diện tích và đường cao hình bình hành tìm cạnh đáy"
+ },
+ {
+  "ma_cau": "T306000000129",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Mảnh đất, khu hình bình hành trồng cây; phụ thuộc hình"
+ },
+ {
+  "ma_cau": "T306000000130",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: trục đối xứng, nhận biết qua hình"
+ },
+ {
+  "ma_cau": "T306000000131",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Từ diện tích và đáy hình bình hành tìm chiều cao"
+ },
+ {
+  "ma_cau": "T306000000132",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Khu đất, vườn hoa hình bình hành, trồng hoa; phụ thuộc hình"
+ },
+ {
+  "ma_cau": "T306000000133",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Tìm cạnh còn lại rồi tính chu vi hình chữ nhật"
+ },
+ {
+  "ma_cau": "T306000000134",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Tính diện tích hình bình hành từ đáy và chiều cao"
+ },
+ {
+  "ma_cau": "T306000000135",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: trục đối xứng của biển báo"
+ },
+ {
+  "ma_cau": "T306000000136",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: vẽ hình chữ nhật và trục đối xứng"
+ },
+ {
+  "ma_cau": "T306000000137",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Hai mảnh vườn vuông và thang cân, kích thước theo hình"
+ },
+ {
+  "ma_cau": "T306000000138",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: hình không có trục đối xứng"
+ },
+ {
+  "ma_cau": "T306000000139",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Tính diện tích hình bình hành từ đáy và chiều cao"
+ },
+ {
+  "ma_cau": "T306000000140",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Lát nền phòng bằng gạch vuông, tính số viên: lời văn"
+ }
+]

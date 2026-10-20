@@ -1,5 +1,6 @@
 // B3 Khớp — XUẤT đầu vào cho máy khớp của một khối (CHỈ ĐỌC DB). Spec: spec-ban-do-4-tang.md §13.
 //   node scripts/bdm-b3-xuat-lo.mjs <khoi> [--lo 70] [--mau 90] [--dot <tên>]
+//   --hang: đợt KHỚP LẠI — chỉ câu gốc đang ở hàng duyệt (chưa chắc / thiếu dạng), khi bản đồ vừa được sửa.
 //   --dot: đợt BỔ SUNG (câu mới nhập sau lượt đầu) ⇒ thư mục k<khoi>-<tên>, mẫu _mau/k<khoi>-<tên>.json;
 //          gop/lech-mau gọi với khối = "<khoi>-<tên>". Câu đang ở hàng duyệt (de_xuat / thieu_dang) luôn bị bỏ.
 // Ghi vào kho-rules/dai/lo/b3/k<khoi>/:
@@ -17,6 +18,7 @@ const khoi = args[0]
 const so = (k, d) => { const i = args.indexOf(k); return i >= 0 ? +args[i + 1] : d }
 const LO = so('--lo', 70), MAU = so('--mau', 90)
 const iDot = args.indexOf('--dot'), DOT = iDot >= 0 ? args[iDot + 1] : null
+const HANG = args.includes('--hang') // ĐỢT KHỚP LẠI: lấy câu gốc ĐANG Ở hàng duyệt (de_xuat / thieu_dang) thay cho câu chưa gán — dùng khi người vừa sửa/thêm dạng bài (20/10)
 if (!khoi) { console.error('Dùng: node scripts/bdm-b3-xuat-lo.mjs <khoi> [--lo 70] [--mau 90]'); process.exit(2) }
 
 const env = fs.readFileSync('.env', 'utf8').match(/^\s*DATABASE_URL\s*=\s*(.+?)\s*$/m)[1].replace(/^["']|["']$/g, '')
@@ -49,7 +51,7 @@ const cau = (await c.query(`
 await c.query('rollback'); await c.end()
 
 const dbIds = new Set(dich.map((d) => d.id))
-const chua = cau.filter((r) => !r.dang_bai_id && !r.o_hang) // câu đã ở hàng duyệt: người đang xử lý, không khớp lại
+const chua = cau.filter((r) => !r.dang_bai_id && (HANG ? r.o_hang : !r.o_hang)) // mặc định: bỏ câu ở hàng duyệt (người đang xử lý); --hang: CHỈ câu ở hàng duyệt
 // mẫu: câu do NGƯỜI nối (cụm cũ / dạng cũ 1 chỗ), đích nằm trong bảng đích nhánh Toán
 const mauDs = cau.filter((r) => r.dang_bai_id && (r.nguon === 'gan_cum' || r.nguon === 'doi_ung') && dbIds.has(r.dang_bai_id))
   .sort((a, b) => a.h.localeCompare(b.h)).slice(0, MAU)

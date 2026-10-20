@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T306000000141",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: trục/tâm đối xứng của hình (chữ cái)"
+ },
+ {
+  "ma_cau": "T306000000142",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Tổng độ dài thanh khung đèn thang cân: tình huống thực tế nhưng bản chất tính chu vi; có hình"
+ },
+ {
+  "ma_cau": "T306000000143",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Hình vuông biết chu vi, tính diện tích"
+ },
+ {
+  "ma_cau": "T306000000144",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Sân vườn: chu vi, diện tích, tiền trồng cỏ; kích thước thoi phụ thuộc hình"
+ },
+ {
+  "ma_cau": "T306000000145",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: diện tích hình quy luật tự đồng dạng (Sierpinski)"
+ },
+ {
+  "ma_cau": "T306000000146",
+  "dang_bai_id": "NDB01221",
+  "chac": "cao",
+  "ly_do": "Khẳng định về tính chất hình vuông (đường chéo bằng nhau, cạnh đối song song)"
+ },
+ {
+  "ma_cau": "T306000000147",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Chữ nhật biết chu vi và chiều dài, tìm chiều rộng"
+ },
+ {
+  "ma_cau": "T306000000148",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: trục đối xứng của hình"
+ },
+ {
+  "ma_cau": "T306000000149",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Vườn thoi, ao thang cân: chu vi, diện tích, sản lượng cá; phụ thuộc hình"
+ },
+ {
+  "ma_cau": "T306000000150",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Sàn vuông lát gạch, đếm gạch trên đường chéo suy số gạch; bài đố ứng dụng"
+ },
+ {
+  "ma_cau": "T306000000151",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: trục đối xứng của hình"
+ },
+ {
+  "ma_cau": "T306000000152",
+  "dang_bai_id": "NDB01221",
+  "chac": "vua",
+  "ly_do": "Bốn mệnh đề về hình thoi: đường chéo, đối xứng, diện tích, chu vi; trộn dạng"
+ },
+ {
+  "ma_cau": "T306000000153",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tâm/trục đối xứng của hình"
+ },
+ {
+  "ma_cau": "T306000000154",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Mảnh đất, sân khấu thang cân: diện tích và tiền; kích thước theo hình"
+ },
+ {
+  "ma_cau": "T306000000155",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tâm đối xứng của hình"
+ },
+ {
+  "ma_cau": "T306000000156",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Chữ nhật biết chu vi và chiều rộng, tính diện tích"
+ },
+ {
+  "ma_cau": "T306000000157",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Mảnh vườn mở rộng thang cân, chu vi, diện tích, tiền cây quất; phụ thuộc hình"
+ },
+ {
+  "ma_cau": "T306000000158",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Uốn dây thép hình thoi: thực chất tính chu vi, tình huống thực tế ngắn"
+ },
+ {
+  "ma_cau": "T306000000159",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Phòng học: chu vi, diện tích, số viên gạch lát nền"
+ },
+ {
+  "ma_cau": "T306000000160",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Lục giác đều biết chu vi, tìm độ dài cạnh"
+ },
+ {
+  "ma_cau": "T306000000161",
+  "dang_bai_id": "NDB01220",
+  "chac": "vua",
+  "ly_do": "Nhận biết tam giác đều trong các hình; phụ thuộc hình"
+ },
+ {
+  "ma_cau": "T306000000162",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Chữ nhật biết chu vi, tìm tổng dài và rộng"
+ },
+ {
+  "ma_cau": "T306000000163",
+  "dang_bai_id": "NDB01221",
+  "chac": "cao",
+  "ly_do": "Tìm khẳng định sai về tính chất các hình (chéo, cạnh)"
+ },
+ {
+  "ma_cau": "T306000000164",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Mảnh đất, vườn hoa, lối đi: hàng rào, diện tích; theo hình vẽ"
+ },
+ {
+  "ma_cau": "T306000000165",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Hình vuông cạnh 8 cm, tính chu vi và diện tích"
+ },
+ {
+  "ma_cau": "T306000000166",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Hình vuông biết chu vi, tính diện tích"
+ },
+ {
+  "ma_cau": "T306000000167",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Hình vuông biết diện tích, tính cạnh và chu vi"
+ },
+ {
+  "ma_cau": "T306000000168",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Chữ nhật có hai kích thước, tính chu vi và diện tích"
+ },
+ {
+  "ma_cau": "T306000000169",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Chữ nhật biết chu vi và chiều dài, tính rộng và diện tích"
+ },
+ {
+  "ma_cau": "T306000000170",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Chữ nhật biết rộng và diện tích, tính chu vi"
+ },
+ {
+  "ma_cau": "T306000000171",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Nền nhà: chu vi, diện tích, số viên gạch lát"
+ },
+ {
+  "ma_cau": "T306000000172",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Phòng chữ nhật lát gạch vuông, tính số viên gạch"
+ },
+ {
+  "ma_cau": "T306000000173",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Hình thang biết hai đáy và chiều cao, tính diện tích"
+ },
+ {
+  "ma_cau": "T306000000174",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Hình thang biết diện tích và hai đáy, tìm chiều cao"
+ },
+ {
+  "ma_cau": "T306000000175",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Hình thang cân: chu vi và diện tích có số liệu"
+ },
+ {
+  "ma_cau": "T306000000176",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Hình vuông và chữ nhật cùng diện tích, tìm cạnh"
+ },
+ {
+  "ma_cau": "T306000000177",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Khu đất có bồn hoa, diện tích phần còn lại; tình huống thực tế nhưng tính thuần"
+ },
+ {
+  "ma_cau": "T306000000178",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Vườn chia ba phần, diện tích mỗi phần; kích thước theo hình, có tam giác"
+ },
+ {
+  "ma_cau": "T306000000179",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Sân có 4 góc trồng hoa, diện tích lát gạch và chi phí; đề đủ số liệu"
+ },
+ {
+  "ma_cau": "T306000000180",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: vẽ hình phẳng theo yêu cầu"
+ },
+ {
+  "ma_cau": "T306000000181",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Bồn hoa thoi trong vườn chữ nhật, số cây; kích thước thoi theo hình"
+ },
+ {
+  "ma_cau": "T306000000182",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Tường dán giấy trừ cửa sổ, tính diện tích và chi phí; đề đủ số liệu"
+ },
+ {
+  "ma_cau": "T306000000183",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Vườn vuông có lối đi, diện tích trồng rau, hàng rào; phụ thuộc hình vẽ"
+ },
+ {
+  "ma_cau": "T306000000184",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Thửa ruộng thang cân, diện tích, sản lượng thóc; kích thước theo hình"
+ },
+ {
+  "ma_cau": "T306000000185",
+  "dang_bai_id": "NDB01220",
+  "chac": "vua",
+  "ly_do": "Nhận biết lục giác đều trong hình ảnh; phụ thuộc hình"
+ },
+ {
+  "ma_cau": "T306000000186",
+  "dang_bai_id": "NDB01221",
+  "chac": "cao",
+  "ly_do": "Bốn khẳng định về đường chéo, cạnh, góc các hình; đếm số đúng"
+ },
+ {
+  "ma_cau": "T306000000187",
+  "dang_bai_id": "NDB01221",
+  "chac": "cao",
+  "ly_do": "Bình hành: hai đường chéo cắt nhau tại trung điểm, tính OA+OB"
+ },
+ {
+  "ma_cau": "T306000000188",
+  "dang_bai_id": "NDB01221",
+  "chac": "cao",
+  "ly_do": "Chọn khẳng định đúng về tính chất hình thang cân"
+ },
+ {
+  "ma_cau": "T306000000189",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Hình vuông cùng chu vi với chữ nhật, tính diện tích"
+ },
+ {
+  "ma_cau": "T306000000190",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Mảnh vườn chữ nhật: chu vi, số khóm hoa theo khoảng cách"
+ },
+ {
+  "ma_cau": "T306000000191",
+  "dang_bai_id": "NDB01219",
+  "chac": "cao",
+  "ly_do": "Thửa ruộng: diện tích, sản lượng thóc, tiền bán"
+ },
+ {
+  "ma_cau": "T306000000192",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Vườn vuông mở rộng, diện tích tăng, tìm diện tích ban đầu; bài đố, có hình"
+ },
+ {
+  "ma_cau": "T306000000193",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Túi xách thang cân, diện tích, da bọc các mặt; còn phụ thuộc hình"
+ },
+ {
+  "ma_cau": "T306000000194",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Mảnh đất chữ nhật, đường bình hành, diện tích còn lại; theo hình vẽ"
+ },
+ {
+  "ma_cau": "T306000000195",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Vườn chữ nhật có hồ thoi, diện tích trồng hoa, tiền; phụ thuộc hình"
+ },
+ {
+  "ma_cau": "T306000000196",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Lô đất vuông, hồ cá thang cân, tường rào; kích thước theo hình"
+ },
+ {
+  "ma_cau": "T306000000197",
+  "dang_bai_id": "NDB01220",
+  "chac": "vua",
+  "ly_do": "Nhận biết dạng hình (lục giác đều, thoi, thang cân) trong đồ vật; theo hình"
+ },
+ {
+  "ma_cau": "T306000000198",
+  "dang_bai_id": "NDB01221",
+  "chac": "cao",
+  "ly_do": "Bốn khẳng định về đường chéo các hình; đếm số đúng"
+ },
+ {
+  "ma_cau": "T306000000199",
+  "dang_bai_id": "NDB01218",
+  "chac": "vua",
+  "ly_do": "Diện tích hình bình hành theo kích thước trên hình"
+ },
+ {
+  "ma_cau": "T306000000200",
+  "dang_bai_id": "NDB01218",
+  "chac": "vua",
+  "ly_do": "Chu vi hình thang cân theo kích thước trên hình"
+ },
+ {
+  "ma_cau": "T306000000201",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Mảnh đất, sân khấu thang cân: diện tích và tiền; kích thước theo hình"
+ },
+ {
+  "ma_cau": "T306000000202",
+  "dang_bai_id": "NDB01220",
+  "chac": "vua",
+  "ly_do": "Nhận biết tam giác đều trong các hình; phụ thuộc hình"
+ },
+ {
+  "ma_cau": "T306000000203",
+  "dang_bai_id": "NDB01220",
+  "chac": "vua",
+  "ly_do": "Nhận biết hình vuông trong các hình; phụ thuộc hình"
+ },
+ {
+  "ma_cau": "T306000000204",
+  "dang_bai_id": "NDB01220",
+  "chac": "vua",
+  "ly_do": "Nhận biết lục giác đều trong các hình; phụ thuộc hình"
+ },
+ {
+  "ma_cau": "T306000000205",
+  "dang_bai_id": "NDB01220",
+  "chac": "vua",
+  "ly_do": "Nhận biết hình ảnh có tam giác đều; phụ thuộc hình"
+ },
+ {
+  "ma_cau": "T306000000206",
+  "dang_bai_id": "NDB01220",
+  "chac": "vua",
+  "ly_do": "Đếm số hình thoi trong hình; phụ thuộc hình"
+ },
+ {
+  "ma_cau": "T306000000207",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Hình vuông cạnh 5 cm, tính chu vi và diện tích"
+ },
+ {
+  "ma_cau": "T306000000208",
+  "dang_bai_id": "NDB01221",
+  "chac": "cao",
+  "ly_do": "Chọn khẳng định sai về tính chất các hình (bình hành, thoi, chữ nhật)"
+ },
+ {
+  "ma_cau": "T306000000209",
+  "dang_bai_id": "NDB01218",
+  "chac": "cao",
+  "ly_do": "Chữ nhật biết diện tích và một cạnh, tính chu vi"
+ },
+ {
+  "ma_cau": "T306000000210",
+  "dang_bai_id": "NDB01219",
+  "chac": "vua",
+  "ly_do": "Sợi dây uốn hình vuông, tính độ dài dây tức chu vi; tình huống thực tế ngắn"
+ }
+]
