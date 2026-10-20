@@ -469,3 +469,44 @@ Theo phương án §0 (08/10). Cột "Nhân sự" = có phải dừng không.
   | 11 | 1.882 | 691 | 294 | 65/66 (98,5%) |
   **Nhãn mẫu = đối ứng CỤM cũ → dạng bài, THÔ:** đo thô ra 69–95%, phân xử từng câu thì gần hết là máy đúng (vd "P < 0" bị gắn "P < biểu thức"; "P nguyên lớn nhất" bị gắn "P nguyên cơ bản"). Hệ quả: các câu đã có dạng bài qua đối ứng cụm (K6 1.007 · K7 191 · K9 685 · K10 445 · K11 768 câu gốc) **có lẫn câu sai dạng**. **Đã kiểm lại 17/10 chiều (Thùy: ghi thẳng, kiểm cả K8 + K12):** `scripts/bdm-b3-kiem-cum.mjs` (máy đọc lại → phân xử MÙ A/B → ghi) — 4.296 câu gốc K6–K12, 342 lệch mức cao, phân xử 319 máy đúng ⇒ 300 ghi thẳng `nguon='ai'` (K12 chỉ trong NH-TP), 232 vào `dai_bdm_de_xuat` (lệch mức vừa + K12 ngoài NH-TP); lệch dồn theo cụm (vd K9 DCUM01517 58 câu). Chi tiết DEVLOG 17/10.
   **Bài học:** câu MẪU (đáp án) phải để NGOÀI thư mục agent đọc (`b3/_mau/`) — 17/10 hai agent mở `mau.json` và chỉnh cả câu thật theo nhãn cụm thô ⇒ 8 lô phải chạy lại (bản cũ giữ ở `*.nhin-mau.json`).
+
+## 14. Vòng lặp "CEO sửa bản đồ → máy điền + phân lại" và chủ đề SỐ NGUYÊN K6 (CEO chốt 21/10)
+
+> Nguồn: Thùy 21/10 — "mỗi lần t cập nhật bản đồ, m sẽ phân lại dạng 1 lần những câu chưa phân, nên ko cần hỏi t" + "Dựng bản đồ, fill mô tả, lý thuyết và ví dụ theo cái m chia, sau đó t sẽ fix". Memory: `ban-do-moi-cap-nhat-thi-phan-lai-khong-hoi.md`. Chi tiết chạy: DEVLOG 21/10.
+
+### 14.1 Phân vai (không đổi): Claude ĐỀ XUẤT, Thùy QUYẾT
+- Bản đồ là việc của CEO. Chủ đề **Số nguyên** là ngoại lệ do Thùy YÊU CẦU: Claude đề xuất 4 tầng → Thùy bảo dựng → Claude dựng vào DB → **Thùy sửa trên màn bản đồ**. Sau đó mọi thứ Claude làm chỉ là *điền ô rỗng + phân lại câu*, không đổi cấu trúc Thùy đã chỉnh.
+- Mã gốc bất biến (CLAUDE.md §2): Claude chỉ INSERT, không đổi tên/di chuyển/xoá nhóm-dạng của Thùy. Nhóm trùng với nhóm cũ (NNB00914/00915 ↔ nhóm 5.2/5.3 Số nguyên) để NGUYÊN, báo Thùy.
+
+### 14.2 Quy trình mỗi khi bản đồ đổi (tự làm, không hỏi)
+1. **Phát hiện dạng/nhóm mới hoặc ô rỗng:** `dai_bdm_dang_bai` thiếu `mo_ta` / `ly_thuyet` / `vi_du`; `dai_bdm_nhom` thiếu `ly_thuyet` / `mo_ta`.
+2. **Điền** (script có kiểm; mẫu: `kho-rules/dai/lo/k6/ban-do-moi/ghi-dang-moi-2010c.mjs`, `ghi-so-nguyen-noidung.mjs`):
+   - Chỉ ghi ô RỖNG — điều kiện `coalesce(btrim(col),'')=''` nằm trong CÙNG câu UPDATE (không đè nếu Thùy vừa gõ).
+   - Chạy thử (ROLLBACK) trước, `--ghi` sau. KaTeX render được; **dấu nhân = `.`** (cấm `\cdot` `\times`); mọi số liệu ví dụ kiểm bằng máy độc lập với lời giải (BigInt / vét cạn / `kiem` eval).
+   - Định dạng `##TC` `##PP` `##CY` (nhóm + dạng), `##VD` + `**Hướng dẫn giải:**` (dạng); xem `spec-format-noidung.md`.
+   - Phạm vi lớp: K6 chỉ dùng SGK Ch I–III + hình Ch IV; **cấm giá trị tuyệt đối, chuyển vế, (a^m)^n làm quy tắc, phân số âm**.
+3. **Phân lại 1 lượt** những câu chưa phân (hàng `dai_bdm_de_xuat` + `dai_bdm_cau_thieu_dang`), kèm `--lai-ai "<regex>"` để cho phép câu AI-gán-cũ chuyển sang dạng mới:
+   `bdm-b3-xuat-lo.mjs <khoi> --hang [--lai-ai "…"] --dot <tên>` → N lô Sonnet theo `kho-rules/dai/lo/b3/brief.md` → `bdm-b3-gop-lo.mjs <khoi>-<tên>` (**mẫu phải ≥ ~100%**, K6 luôn 90/90) → `bdm-b3-khop-lai-hang.mjs <dir>` (thử) → `--ghi`.
+   - `cao` → gán thẳng (rút khỏi hàng) · `vừa` → `de_xuat` · trống → `thieu_dang`.
+   - **Chỉ đụng dòng `nguon='ai'`**; dòng `nguon='nguoi'` KHÔNG BAO GIỜ bị ghi đè hay xoá. Đổi dạng câu AI cũ được; không xoá câu.
+   - Việc rút dòng hàng đợi của đúng câu vừa gán/đổi là một phần của lượt này (Thùy cho phép không hỏi từng lượt); xoá bất cứ thứ gì NGOÀI phạm vi đó vẫn theo "Luật xoá".
+   - Mẫu kiểm lệch (< 100%) hoặc agent làm sai thứ tự → DỪNG và báo Thùy, không ghi.
+4. **Báo cáo + commit** (DEVLOG, commit theo đường dẫn rõ ràng); không push khi Thùy chưa nói (trừ khi đã nói "push đi").
+
+### 14.3 K6 — chủ đề SỐ NGUYÊN (`NCD00189`, nhánh toán)
+Nguồn dựng: SGK Toán 6 KNTT tập 1 Chương III (Bài 13–17) · sách Củng cố tập 1 Ch III (Bài 1–5 + Ôn tập) · 150 câu số nguyên thật trong kho. Đề xuất ở `kho-rules/dai/lo/k6/ban-do-moi/de-xuat-so-nguyen.{md,html,json}`; dựng DB bằng `tao-ban-do-so-nguyen.mjs` (mã vị trí → `so-nguyen-ma.json`); nội dung soạn bằng `brief-so-nguyen.md` → `so-nguyen-nd/cd-*.json` → `ghi-so-nguyen-noidung.mjs`.
+
+| Chuyên đề (5) | Nhóm (22) |
+|---|---|
+| Tập hợp số nguyên và thứ tự | Số nguyên âm & ý nghĩa thực tế · Số đối · Trục số, so sánh, sắp xếp · Liệt kê, đếm, tính tổng |
+| Thực hiện phép tính Số nguyên | Cộng trừ · Quy tắc dấu ngoặc · Nhân chia · Tính thuận tiện · Thứ tự thực hiện phép tính · Biểu thức chứa chữ · Toán thực tế |
+| Tìm x Số nguyên | Cộng trừ · Ngoặc, nhân chia · Có luỹ thừa · Tích bằng 0 |
+| Quan hệ chia hết trong tập hợp Số nguyên | Ước và bội · Số nguyên thoả điều kiện chia hết · an+b ⋮ cn+d |
+| Các bài toán nâng cao liên quan đến số nguyên | Tổng dãy xen dấu · Tìm x,y dạng tích · Tìm x,y dạng tổng→tích · GTNN/GTLN |
+
+- 50 dạng; mỗi dạng có mô tả nhận biết + lý thuyết + 2 ví dụ (99 ví dụ, 99 phép kiểm số true). Lý thuyết nhóm = kiến thức chung; dạng = phương pháp + ví dụ.
+- **Tên có ký hiệu ℤ đổi thành chữ** ("trong tập hợp Số nguyên") cho đồng bộ với chủ đề cũ.
+- **Giá trị tuyệt đối KHÔNG có dạng riêng** — SGK KNTT 6 Ch III không dạy.
+- Nhóm trống trong kho (chưa câu nào, giữ vì có trong SGK/Củng cố): Nhân-chia (dạng chia, so sánh tích), Biểu thức chứa chữ, Tổng dãy xen dấu, Tìm x,y dạng tích, GTNN. Dạng "Biểu diễn trên trục số" 0 câu vì đề dựa vào hình.
+- **Chưa chắc / để Thùy quyết:** GTNN hai biến (VD2); bước tách `4x=2(2x+1)−2` (dạng "đẳng thức dạng tổng"); ví dụ 8 cặp nghiệm (dạng `(x+m)(y+n)=a`); ví dụ dạng kho 0 câu là tự soạn. Sách Củng cố sai đáp án: B4 10A.c (đúng `(−6;4)`), Ôn tập 29 (GTNN tại `x=−1`) — ví dụ dùng bản đúng.
+- **Còn hở sau lượt phân 21/10 (296 câu: cao 132 · vừa 105 · trống 59):** ~59 câu trống phần lớn là khoảng trống bản đồ Số tự nhiên/chia hết (tổng dãy phân số/tích, Dirichlet/bất biến, số chính phương, giá trị chữ số theo hàng, kí hiệu ℕ ℕ* ℤ, chứng minh chia hết, đếm ước, chia có dư) và "tìm x tự nhiên có ngoặc không luỹ thừa" (tạm gán NDB00364 mức vừa).
