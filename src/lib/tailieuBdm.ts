@@ -142,6 +142,34 @@ export const SO_CAU_ON_TAP = 2         // câu / nhóm ôn (như cũ: CAP_CAU_MO
 export function cauCuaBuoi(b: NdBuoi): string[] {
   return b.nhom.flatMap((n) => [...n.dang_bai.flatMap((d) => d.caus), ...(n.chua_phan?.caus ?? []), ...(n.btvn?.caus ?? [])]).concat(b.chua_khop?.caus ?? [])
 }
+// ── ET theo bản đồ mới (mig 202610202008) — lưu y khuôn ET cũ (tai_lieu loai='et', ban_do='moi'), chỉ khác cách CHỌN câu ──
+export type EtDeXuat = { giao_trinh: string | null; dang_bai: { id: string; nhom_id: string; ten: string }[] }
+/** Dạng bài đã dạy buổi đó (giáo trình buổi bản đồ mới của lớp + ngày) — điền sẵn kế hoạch ET. */
+export async function etDeXuat(lopId: string, ngay: string): Promise<EtDeXuat> {
+  const { data, error } = await supabase.rpc('fn_tl_bdm_et_de_xuat', { p_lop: lopId, p_ngay: ngay })
+  if (error) throw error
+  return data as EtDeXuat
+}
+/** Câu → dạng bài / nhóm (mở lại ET đã lưu). */
+export async function etViTri(khoi: string, maCaus: string[]): Promise<{ ma_cau: string; dang_bai_id: string | null; nhom_id: string | null }[]> {
+  if (!maCaus.length) return []
+  const { data, error } = await supabase.rpc('fn_tl_bdm_et_vi_tri', { p_khoi: khoi, p_ma: maCaus })
+  if (error) throw error
+  return (data ?? []) as { ma_cau: string; dang_bai_id: string | null; nhom_id: string | null }[]
+}
+/** Đề 2 & 3 (cùng dạng bài + cùng cụm + cùng form; thiếu thì trùng trong cụm). base theo thứ tự đề gốc. */
+export async function etMaDe(khoi: string, base: { ma_cau: string; dang_bai: string; form: string }[]): Promise<{ etMaDe: Record<string, string[]>; etFormByCau: Record<string, string> }> {
+  const { data, error } = await supabase.rpc('fn_tl_bdm_et_ma_de', { p_khoi: khoi, p_base: base })
+  if (error) throw error
+  return data as { etMaDe: Record<string, string[]>; etFormByCau: Record<string, string> }
+}
+/** N câu ít dùng nhất của 1 dạng bài (né p_tru) — luật gợi ý chung của builder mới. */
+export async function goiYDangBai(nhomId: string, dangBaiId: string, n: number, tru: string[]): Promise<string[]> {
+  const { data, error } = await supabase.rpc('fn_tl_bdm_goi_y', { p_nhom: nhomId, p_dang_bai: [dangBaiId], p_so: { _tong: n }, p_tru: tru })
+  if (error) throw error
+  return (data ?? []) as string[]
+}
+
 // Lỗi RPC → câu người đọc được (P0001 do hàm DB raise đã là tiếng Việt).
 export function loiDoc(e: unknown): string {
   const m = (e as { message?: string })?.message ?? String(e)

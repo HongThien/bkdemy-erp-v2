@@ -238,6 +238,8 @@ export function ETEditor({ et, onClose, presetHinh }: { et?: ETView; onClose?: (
     ;(async () => {
       const doc = await getETByBuoi(lopId, ngay)
       if (!alive || !doc || doc.id === savedId) return
+      // ET soạn ở mục "ET (bản đồ mới)" (ban_do='moi') — không nạp vào màn cũ (Thùy 20/10: 2 bản tách hẳn); DB cũng chặn trộn.
+      if (doc.ban_do === 'moi') { setErr('Buổi này đã có ET soạn theo bản đồ MỚI — sửa ở mục "ET (bản đồ mới)".'); return }
       await fillFromET(doc.id)
       if (!alive) return
       setSavedId(doc.id)

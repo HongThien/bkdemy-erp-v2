@@ -642,10 +642,11 @@ export async function listET(lopId?: string): Promise<ETDoc[]> {
   if (error) throw error
   return (data ?? []) as ETDoc[]
 }
-export async function createET(input: { lopId: string; ngay: string; ten: string; khoi: string; mon?: string; nhanh?: string | null }): Promise<ETDoc> {
+// banDo: 'moi' = ET soạn ở mục "ET (bản đồ mới)" (bdm/ETBdmEditor) — mặc định 'cu' như trước (DB default).
+export async function createET(input: { lopId: string; ngay: string; ten: string; khoi: string; mon?: string; nhanh?: string | null; banDo?: 'cu' | 'moi' }): Promise<ETDoc> {
   const { data: { user } } = await supabase.auth.getUser()
   const { data, error } = await supabase.from('tai_lieu')
-    .insert({ loai: 'et', ten: input.ten, khoi: input.khoi, mon: input.mon ?? 'Toán', nhanh: input.nhanh ?? null, lop_id: input.lopId, ngay: input.ngay, created_by: user?.id ?? null })
+    .insert({ loai: 'et', ten: input.ten, khoi: input.khoi, mon: input.mon ?? 'Toán', nhanh: input.nhanh ?? null, lop_id: input.lopId, ngay: input.ngay, created_by: user?.id ?? null, ...(input.banDo ? { ban_do: input.banDo } : {}) })
     .select().single()
   if (error) throw error
   return data as ETDoc

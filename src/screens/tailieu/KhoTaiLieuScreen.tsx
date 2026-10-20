@@ -25,6 +25,7 @@ import DeThiPrintView from './DeThiPrintView'
 import MTPrintView from './MTPrintView'
 import TaiLieuBuilder from './TaiLieuBuilder'
 import { ETEditor, type ETView } from './ETScreen'
+import ETBdmEditor from './bdm/ETBdmEditor'
 import { DeThiEditor } from './DeThiScreen'
 import { MTEditor } from './MTScreen'
 import SearchSelect from '../../components/SearchSelect'
@@ -330,7 +331,10 @@ export default function KhoTaiLieuScreen() {
   // Sửa tại chỗ: mở builder full-screen. Link PDF tự làm mới NGAY TRONG chính editor lúc đóng (nút
   // "← ..."/"← Kho tài liệu" của mỗi editor tự enqueueLinkGen trước khi gọi onClose) — không cần lặp
   // lại ở đây nữa (07-12, dọn theo pivot gen-tại-lúc-sửa).
-  if (editEt) return <ETEditor et={editEt} onClose={() => { setEditEt(null); reload() }} />
+  // ET bản đồ mới (ban_do='moi') mở bằng màn RIÊNG (bdm/ETBdmEditor) — ET cũ mở ETEditor như trước (Thùy 20/10: tách hẳn 2 bản).
+  if (editEt) return editEt.ban_do === 'moi'
+    ? <ETBdmEditor et={editEt} onClose={() => { setEditEt(null); reload() }} />
+    : <ETEditor et={editEt} onClose={() => { setEditEt(null); reload() }} />
   if (editEtHinh) return <ETEditor presetHinh={editEtHinh} onClose={() => { setEditEtHinh(null); reload() }} />
   if (editGt) return <TaiLieuBuilder id={editGt} onClose={() => { setEditGt(null); reload() }} />
   if (editDeThi) return <DeThiEditor id={editDeThi} onClose={() => { setEditDeThi(null); reload() }} />

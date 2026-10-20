@@ -28,6 +28,7 @@ import TaiLieuScreen from './tailieu/TaiLieuScreen'
 import GiaoTrinhHinhEntry from './tailieu/GiaoTrinhHinhEntry'
 import GiaoTrinhBdmScreen from './tailieu/bdm/GiaoTrinhBdmScreen'
 import ETScreen from './tailieu/ETScreen'
+import ETBdmEditor from './tailieu/bdm/ETBdmEditor'
 import MTScreen from './tailieu/MTScreen'
 import BTScreen from './tailieu/BTScreen'
 import KhoTaiLieuScreen from './tailieu/KhoTaiLieuScreen'
@@ -723,6 +724,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'lamtailieu:giao_trinh_bdm' ? <GiaoTrinhBdmScreen />
       : staffLeaf === 'lamtailieu:giao_trinh_hinh' ? <GiaoTrinhHinhEntry />
       : staffLeaf === 'lamtailieu:et' ? <ETScreen />
+      : staffLeaf === 'lamtailieu:et_bdm' ? <ETBdmEditor />
       : staffLeaf === 'lamtailieu:mt' ? <MTScreen />
       : staffLeaf === 'tl' ? <KhoTaiLieuScreen />
       : staffLeaf === 'khodethi' ? <KhoDeThiScreen />
