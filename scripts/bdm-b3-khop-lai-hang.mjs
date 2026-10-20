@@ -5,7 +5,7 @@
 //   cao   ⇒ ghi dai_bdm_gan_cau (nguon 'ai'), rút khỏi hàng duyệt (xoá dòng de_xuat / thieu_dang của câu)
 //   vừa   ⇒ có dòng de_xuat (thêm / cập nhật dạng + lý do); rút khỏi thieu_dang
 //   trống ⇒ có dòng thieu_dang (thêm / cập nhật lý do); rút khỏi de_xuat
-// CHỈ đụng dòng nguon='ai' (quyết định của người — nguon='nguoi' — giữ nguyên). Không đè câu đã có dai_bdm_gan_cau. Trigger bản đồ mới tự ghi dai_bdm_log.
+// Câu đã có gan_cau nguon='ai' mà máy chọn dạng khác (mức cao) ⇒ ĐỔI dạng (không xoá). CHỈ đụng dòng nguon='ai' (quyết định của người — nguon='nguoi' — giữ nguyên). Không đè câu đã có dai_bdm_gan_cau. Trigger bản đồ mới tự ghi dai_bdm_log.
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import pg from 'pg'
@@ -28,6 +28,16 @@ await c.connect()
 try {
   await c.query('begin')
   const ma = (a) => a.map((x) => x.ma_cau)
+  // 0) CÂU ĐÃ CÓ gan_cau nguon='ai' (đợt --lai-ai của xuat-lo): máy 'cao' chọn dạng KHÁC ⇒ đổi dạng (chỉ nguon 'ai', không đụng người). Không xoá dòng nào.
+  const doi = await c.query(`
+    update dai_bdm_gan_cau g set dang_bai_id = t.db, at = now()
+      from unnest($1::text[], $2::text[]) t(ma_cau, db)
+     where g.ma_cau = t.ma_cau and g.nguon = 'ai' and g.dang_bai_id <> t.db
+       and exists (select 1 from dai_bdm_dang_bai d where d.id = t.db)
+    returning g.ma_cau, t.db`, [ma(cao), cao.map((x) => x.dang_bai_id)])
+  console.log(`ĐỔI DẠNG câu AI cũ: ${doi.rowCount}`)
+  for (const r of doi.rows) console.log('   ', r.ma_cau, '→', r.db)
+
   // 1) CAO ⇒ gan_cau + rút khỏi hàng
   const g = await c.query(`
     insert into dai_bdm_gan_cau (ma_cau, dang_bai_id, nguon)
