@@ -1,0 +1,177 @@
+// de-xuat-so-nguyen.mjs — dựng ĐỀ XUẤT bản đồ 4 tầng cho chủ đề SỐ NGUYÊN (K6, SGK KNTT tập 1 Chương III) → .md (paste-ready) + .html (xem cây, ví dụ câu thật).
+//   node kho-rules/dai/lo/k6/ban-do-moi/de-xuat-so-nguyen.mjs <câu-số-nguyên.json> <ra-thư-mục>
+// Nguồn: SGK Toán 6 KNTT tập 1 (Bài 13–17) · Sách Củng cố 6 tập 1 Chương III (Bài 1–5 + Ôn tập, 6 dạng/bài) · 150 câu số nguyên trong kho K6 (45 đề thi + đề cương, đo 21/10).
+// KHÔNG ghi DB — bản đồ là việc của CEO; đây chỉ là đề xuất. Số câu = ƯỚC LƯỢNG theo bộ lọc chữ (dùng để cân cỡ nhóm, không phải số đã gán).
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
+import { join } from 'node:path'
+
+const [NGUON, RA] = process.argv.slice(2)
+if (!NGUON || !RA) { console.error('Dùng: node …/de-xuat-so-nguyen.mjs <câu-số-nguyên.json> <ra-thư-mục>'); process.exit(2) }
+const cau = new Map(JSON.parse(readFileSync(NGUON, 'utf8')).map((r) => [r.ma_cau, r]))
+const ma = (l4) => 'T106000000' + String(+l4).padStart(3, '0')
+
+// ── CÂY ĐỀ XUẤT ──────────────────────────────────────────────────────────────
+// dang: [tên, mô tả nhận biết, ~số câu trong kho, [4 số cuối mã câu ví dụ], nguồn]
+const CHUDE = 'Số nguyên'
+const CD = [
+  { ten: 'Tập hợp số nguyên và thứ tự', ngu: 'SGK Bài 13 · Củng cố Bài 1', nhom: [
+    { ten: 'Số nguyên âm và ý nghĩa thực tế', mt: 'Làm quen số nguyên âm: đọc, viết, nhận biết số nguyên dương / âm / 0 và dùng số âm để biểu thị đại lượng ngược hướng.', lt: 'Số nguyên dương, số nguyên âm, số 0 · tập hợp ℤ · khi nào dùng số âm (nhiệt độ dưới 0, dưới mực nước biển, nợ, lỗ).', dang: [
+      ['Nhận biết số nguyên dương, số nguyên âm', 'Đề cho một dãy số hoặc tập hợp, hỏi số nào là số nguyên dương / âm, tập nào chỉ gồm số nguyên âm.', 2, ['0028', '0547'], 'Củng cố B1 D1 · SGK 13'],
+      ['Dùng số nguyên âm biểu thị đại lượng thực tế', 'Chuyển câu chữ ("sâu 150 m dưới mực nước biển", "39°C dưới 0°C") thành số nguyên âm, hoặc diễn đạt lại một số âm bằng lời.', 4, ['0038', '0403', '0287', '0543'], 'Củng cố B1 D1 · SGK 13 Vận dụng 1'],
+    ] },
+    { ten: 'Số đối', mt: 'Hai số đối nhau, kí hiệu −a, tổng bằng 0.', lt: 'Số đối của a là −a; số đối của 0 là 0; −(−a) = a; tổng hai số đối bằng 0.', dang: [
+      ['Tìm số đối của một số', 'Cho một số nguyên (có thể viết dạng −(−15), 5−a), yêu cầu tìm số đối.', 7, ['0578', '0601', '0550', '0515'], 'SGK 14 · Củng cố B2 D1'],
+      ['Tập hợp gồm các phần tử và số đối của chúng', 'Cho tập hợp M, viết tập gồm các phần tử của M và số đối của chúng.', 2, ['0402', '0505'], 'Đề thi (không có trong SGK)'],
+    ] },
+    { ten: 'Trục số, so sánh và sắp xếp số nguyên', mt: 'Biểu diễn số nguyên trên trục số, so sánh hai số, sắp xếp nhiều số, tìm số nguyên theo điều kiện về thứ tự.', lt: 'Trục số, chiều dương / âm · điểm a nằm trước b thì a < b · số âm < 0 < số dương · a > b > 0 ⇒ −a < −b.', dang: [
+      ['Biểu diễn và đọc số nguyên trên trục số', 'Vẽ trục số, biểu diễn các điểm, đọc số tại điểm cho trước, khoảng cách tới gốc O.', 0, [], 'SGK 13 Luyện tập 2 · Củng cố B1 D2 (kho chưa có câu vì hay dùng hình)'],
+      ['So sánh hai số nguyên', 'Điền dấu <, >, = hoặc chọn số lớn hơn / nhỏ hơn giữa hai (ba) số nguyên.', 2, ['0516'], 'SGK 13 · Củng cố B1 D3'],
+      ['Sắp xếp các số nguyên theo thứ tự', 'Sắp xếp dãy số (hoặc nhiệt độ các thành phố / hành tinh) tăng dần, giảm dần; tìm nhiệt độ thấp nhất / cao nhất.', 13, ['0592', '0461', '0472', '0029'], 'SGK 13 Ví dụ 1, Vận dụng 2 · Củng cố B1 D3'],
+      ['Tìm số nguyên theo điều kiện về thứ tự', 'Tìm số nguyên lớn nhất bé hơn −9, số nguyên âm nhỏ nhất có hai chữ số, điền chữ số * để bất đẳng thức đúng.', 3, ['0502', '0563', '0475'], 'Củng cố B1 D4 (10A) · SGK 3.18'],
+    ] },
+    { ten: 'Tập hợp số nguyên: liệt kê, đếm, tính tổng', mt: 'Làm việc với tập hợp {x ∈ ℤ | a < x ≤ b}: liệt kê, đếm phần tử, tính tổng.', lt: 'Đọc điều kiện có / không có dấu bằng ở hai đầu · liệt kê đủ các số nguyên · ghép cặp số đối để tính tổng nhanh.', dang: [
+      ['Viết tập hợp số nguyên bằng cách liệt kê', 'Cho {x ∈ ℤ | −2 < x ≤ 3} yêu cầu viết các phần tử.', 3, ['0430', '0457', '0638'], 'SGK 3.8, 3.26 · Củng cố B1 D4'],
+      ['Đếm số phần tử của tập hợp số nguyên', 'Hỏi có bao nhiêu số nguyên thoả mãn −10 < x ≤ 10 (cả đề tính số phần tử của tập hợp).', 2, ['0530', '0625'], 'Đề thi'],
+      ['Tính tổng các số nguyên thoả điều kiện', 'Tính tổng các số nguyên x thoả −5 < x ≤ 4: ghép cặp số đối, chỉ còn các số không có số đối.', 5, ['0605', '0462', '0434', '0593'], 'SGK 3.26, 3.31 · Củng cố B2 D2 (9A)'],
+      ['Nhận định đúng / sai về số nguyên', 'Chọn khẳng định đúng / sai, hoặc đánh Đ / S các ý về ℤ, số nguyên âm, số đối.', 4, ['0548', '0546', '0401', '0518'], 'Đề thi'],
+    ] },
+  ] },
+  { ten: 'Thực hiện phép tính Số nguyên', ngu: 'SGK Bài 14–17 · Củng cố Bài 2–5', nhom: [
+    { ten: 'Cộng, trừ số nguyên', mt: 'Cộng hai số nguyên cùng dấu / khác dấu, trừ hai số nguyên, tổng nhiều số hạng.', lt: 'Quy tắc cộng hai số nguyên âm · cộng hai số nguyên khác dấu (hiệu hai phần số tự nhiên, dấu của số lớn hơn) · trừ: a − b = a + (−b).', dang: [
+      ['Cộng hai số nguyên', 'Một phép cộng hai số nguyên (cùng dấu hoặc khác dấu, có thể có số đối).', 3, ['0551', '0566', '0303', '0290'], 'SGK 14 · Củng cố B2 D2'],
+      ['Trừ hai số nguyên', 'Một phép trừ hai số nguyên, đổi trừ thành cộng với số đối.', 0, [], 'SGK 14 · Củng cố B2 D2'],
+      ['Cộng, trừ nhiều số nguyên', 'Dãy cộng trừ nhiều số hạng (không / có ngoặc đơn giản) — làm lần lượt từ trái sang phải.', 2, ['0477', '0435'], 'Củng cố B2 D2 (8A)'],
+    ] },
+    { ten: 'Quy tắc dấu ngoặc', mt: 'Bỏ dấu ngoặc có dấu + hoặc − đằng trước.', lt: 'Ngoặc có dấu "+" đằng trước: giữ nguyên dấu · có dấu "−": đổi dấu tất cả các số hạng trong ngoặc.', dang: [
+      ['Nhận biết kết quả khi bỏ dấu ngoặc', 'Trắc nghiệm: bỏ dấu ngoặc của biểu thức −(−3+5−7), 37−(−163+84)−116… được biểu thức nào.', 2, ['0404', '0519'], 'SGK 15 · Củng cố B3'],
+      ['Bỏ dấu ngoặc rồi tính', 'Bỏ ngoặc tròn / vuông rồi tính một tổng, hiệu.', 0, [], 'Củng cố B3 D1 (kho đang xếp chung với "Tính hợp lí")'],
+    ] },
+    { ten: 'Nhân, chia số nguyên', mt: 'Nhân hai số nguyên (cùng dấu, khác dấu, với 0), dấu của tích nhiều thừa số, chia hết hai số nguyên.', lt: 'Nhân hai số nguyên khác dấu: tích âm · cùng dấu: tích dương · a.0 = 0 · dấu của thương: (+):(+)→(+), (−):(−)→(+), khác dấu → (−).', dang: [
+      ['Nhân hai số nguyên', 'Tính tích hai số nguyên (khác dấu, cùng dấu), có thể nhiều thừa số.', 1, ['0491'], 'SGK 16 · Củng cố B4 D1'],
+      ['Chia hai số nguyên', 'Thực hiện phép chia hết số nguyên, xác định dấu của thương.', 0, [], 'SGK 17 · Củng cố B5 D1 (kho chưa có câu riêng)'],
+      ['So sánh tích với một số (không tính kết quả)', 'So sánh a.b với 0 hoặc với một số khác bằng dấu của tích.', 0, [], 'Củng cố B4 D2 (4A, 5A)'],
+    ] },
+    { ten: 'Tính thuận tiện với số nguyên', mt: 'Tính hợp lí tổng, hiệu, biểu thức có nhân bằng giao hoán, kết hợp, phân phối.', lt: 'Giao hoán, kết hợp của phép cộng · cộng hai số đối bằng 0 · phân phối a(b + c) = ab + ac và a(b − c) = ab − ac.', dang: [
+      ['Tính hợp lí tổng, hiệu (giao hoán, kết hợp, số đối)', 'Tổng / hiệu nhiều số hạng có cặp số đối hoặc số tròn trăm: nhóm lại để tính nhanh.', 19, ['0507', '0594', '0595', '0463'], 'SGK 14 Ví dụ 3 · Củng cố B2 D4, B3 D1'],
+      ['Tính hợp lí: rút thừa số chung', 'Biểu thức dạng a.b + a.c, a.b − a.c có thừa số chung rõ ràng.', 5, ['0493', '0582', '0479'], 'SGK 16 Ví dụ 3, LT chung · Củng cố B4 D1'],
+      ['Tính hợp lí: ẩn thừa số chung', 'Phải biến đổi số (viết −57.84 + 57.16...) mới thấy thừa số chung.', 2, ['0464', '0537'], 'Củng cố ÔT 7A, 7B'],
+    ] },
+    { ten: 'Thứ tự thực hiện phép tính trong ℤ', mt: 'Tính giá trị biểu thức có ngoặc ( ), [ ], { }, luỹ thừa, nhân chia, cộng trừ với số nguyên.', lt: 'Ngoặc trước, luỹ thừa rồi nhân chia, cuối cùng cộng trừ · luỹ thừa của số âm: (−1)^n.', dang: [
+      ['Biểu thức cơ bản (không luỹ thừa)', 'Nhân, chia, cộng, trừ số nguyên có một cấp ngoặc.', 3, ['0408', '0436'], 'Củng cố ÔT 1A, 5B'],
+      ['Biểu thức có luỹ thừa và nhiều cấp ngoặc', 'Có luỹ thừa số mũ tự nhiên, (−1)^2024, ngoặc lồng nhau.', 4, ['0508', '0407', '0478'], 'Củng cố ÔT 3A, 5A, 20'],
+    ] },
+    { ten: 'Biểu thức chứa chữ', mt: 'Tính giá trị biểu thức khi biết giá trị của biến; rút gọn biểu thức chứa chữ bằng quy tắc dấu ngoặc.', lt: 'Thay giá trị của biến rồi tính · bỏ ngoặc, nhóm các số hạng đồng dạng.', dang: [
+      ['Tính giá trị biểu thức khi biết giá trị biến', 'Cho a = −5, b = 7 … tính A = a − b + c.', 0, [], 'SGK 3.17, 3.23 · Củng cố B2 D3, B3 D2'],
+      ['Rút gọn biểu thức chứa chữ', 'Bỏ dấu ngoặc và thu gọn: A = −(24 − x) + 4.', 0, [], 'Củng cố B3 D3'],
+    ] },
+    { ten: 'Toán thực tế với số nguyên', mt: 'Bài toán lời văn đưa về cộng, trừ, nhân số nguyên.', lt: 'Chọn dấu cho từng đại lượng (tăng +, giảm −), lập biểu thức rồi tính.', dang: [
+      ['Nhiệt độ, độ cao tăng giảm', 'Nhiệt độ buổi sáng −9°C, buổi chiều tăng 4°C; tàu ngầm ở −200 m nổi lên 45 m; chim bay…', 9, ['0442', '0643', '0503', '0414'], 'SGK 14 Vận dụng · Củng cố B2 D6'],
+      ['Thưởng – phạt, lãi – lỗ, nhân với số âm', 'Một đại lượng thay đổi x mỗi ngày trong 26 ngày; lương theo sản phẩm đạt / không đạt.', 0, [], 'SGK 3.49, LT chung 16–17 · Củng cố B4 D4'],
+    ] },
+  ] },
+  { ten: 'Tìm x Số nguyên', ngu: 'Củng cố Bài 2, 4 · Ôn tập chương · đề thi', nhom: [
+    { ten: 'Tìm x cộng trừ Số nguyên', mt: 'x ở vị trí số hạng, số bị trừ hoặc số trừ trong phép cộng, trừ.', lt: 'Quy tắc tìm thành phần chưa biết: số hạng = tổng − số hạng kia; số bị trừ = hiệu + số trừ; số trừ = số bị trừ − hiệu (có số âm).', dang: [
+      ['Tìm x là số hạng, số bị trừ', 'x + 13 = −19; x − 16 = −36.', 8, ['0466', '0584', '0597', '0409'], 'Củng cố B2 D5'],
+      ['Tìm x là số trừ', '23 − x = 19; 75 − x = −24.', 4, ['0539', '0307', '0524'], 'Củng cố B2 D5 (14A)'],
+    ] },
+    { ten: 'Tìm x biểu thức chứa ngoặc, nhân chia', mt: 'Phương trình bậc nhất một ẩn qua các bước tìm thành phần chưa biết, có ngoặc tròn / nhiều cấp.', lt: 'Coi cụm chứa x là một số: cô lập dần x từ ngoài vào trong.', dang: [
+      ['Cơ bản (nhân chia, một cấp)', '2x − 11 = −17; x : 2 − 5 = −8; 16 : x − 2 = 6.', 3, ['0649', '0481', '0610'], 'Củng cố ÔT'],
+      ['Có ngoặc, x trong ngoặc', '15 − (2 − x) = −7; (x + 18).(−40) = 80; 71 − (24 − 3x) = 23.', 8, ['0525', '0467', '0620', '0650'], 'Củng cố B3, ÔT'],
+    ] },
+    { ten: 'Tìm x có luỹ thừa', mt: 'Biểu thức chứa luỹ thừa của số nguyên hoặc luỹ thừa của cụm chứa x.', lt: 'Tính luỹ thừa đã biết rồi tìm x; luỹ thừa bậc lẻ có nghiệm duy nhất, bậc chẵn cần xét hai trường hợp (−a)^2 = a^2.', dang: [
+      ['Luỹ thừa là số đã biết', '(x − 18) − 2^3 = −23; 11 + 2x = 2^3 − 3^2.', 2, ['0410', '0541'], 'Đề thi'],
+      ['Luỹ thừa chứa x (cơ số hoặc số mũ)', '5^x − 31 = −6; (x + 1)^3 + 9 = −116; 584 − (x − 1)^3 = −416; 25 − (3 + x)^2 = 3.(−2)^3.', 2, ['0573', '0621'], 'Củng cố ÔT 23'],
+    ] },
+    { ten: 'Tìm x khi tích bằng 0', mt: 'Tích các thừa số bằng 0 thì có một thừa số bằng 0.', lt: 'a.b = 0 ⇒ a = 0 hoặc b = 0 · với nhiều thừa số, xét từng thừa số · thừa số x² + 9 luôn dương nên không bằng 0.', dang: [
+      ['Hai thừa số bậc nhất', '(x + 2).(x − 3) = 0; (x − 3)(2x − 8) = 0.', 4, ['0542', '0488', '0611', '0526'], 'SGK 16 · Củng cố B4 D3'],
+      ['Có thừa số bậc hai hoặc nhiều thừa số', '(x² + 9)(x − 2) = 0; (x² − 9)(10 + 5x) = 0; x(x² − 25)(x³ − 8) = 0.', 3, ['0622', '0411'], 'Củng cố ÔT 8, 23'],
+    ] },
+  ] },
+  { ten: 'Quan hệ chia hết trong ℤ', ngu: 'SGK Bài 17 · Củng cố Bài 5', nhom: [
+    { ten: 'Ước và bội của số nguyên', mt: 'Phép chia hết, ước, bội, ước chung của số nguyên (có cả số âm).', lt: 'a ⋮ b ⇔ a = bq (q ∈ ℤ) · b là ước của a thì −b cũng là ước · tìm ước: ước dương và số đối.', dang: [
+      ['Tìm tất cả các ước của một số nguyên', 'Ư(−30), Ư(22): lấy ước dương cùng số đối.', 4, ['0602', '0639'], 'SGK 17 VD 3 · Củng cố B5 D2'],
+      ['Tìm bội và ước chung', 'Tìm 6 bội của −4; tìm ƯC của 12 và −24; bội của 4 nằm giữa −20 và 20.', 0, [], 'SGK 17 · Củng cố B5 D2'],
+    ] },
+    { ten: 'Tìm số nguyên thoả điều kiện chia hết', mt: 'a ⋮ x, x ⋮ b kèm điều kiện về khoảng giá trị.', lt: 'x ∈ Ư(a) hoặc x ∈ B(b); ƯC, BC; lọc theo điều kiện kèm theo.', dang: [
+      ['x là ước (bội) của số cho trước, có điều kiện', '−8 ⋮ x và 12 ⋮ x; x ⋮ 3 và −6 < x < 6.', 0, [], 'Củng cố B5 D3'],
+    ] },
+    { ten: 'Tìm n để an+b chia hết cho cn+d (trong ℤ)', mt: 'Biểu thức bậc nhất chia hết cho biểu thức bậc nhất trên ℤ; có thể là phân số nhận giá trị nguyên.', lt: 'Đưa về số chia hết cho (cn + d) bằng tính chất chia hết của tổng, hiệu; n nguyên nên lấy cả ước âm.', dang: [
+      ['Tử là số tự nhiên (a ⋮ (x + b))', '−13 ⋮ (x + 1); 3 ⋮ (n − 1).', 0, [], 'Củng cố B5 D4'],
+      ['Hệ số tử bằng / chia hết hệ số mẫu', 'x + 6 ⋮ x; 3x − 5 ⋮ x − 1; 4n + 3 ⋮ 2n + 1.', 0, [], 'Củng cố B5 D4, ÔT 11, 25'],
+      ['Phân số có giá trị nguyên', '(4n + 5)/(2n − 1) nhận giá trị nguyên.', 1, ['0441'], 'Đề thi'],
+      ['Bậc hai chia hết cho bậc nhất', 'n² + 2n − 5 ⋮ n + 2; 2x² + 5 ⋮ x (nâng cao).', 0, [], 'Củng cố B5 D4 (9A c), BT 16'],
+    ] },
+  ] },
+  { ten: 'Các bài toán nâng cao liên quan đến số nguyên', ngu: 'Củng cố Bài 2, 4, ÔT · đề thi', nhom: [
+    { ten: 'Tổng dãy số nguyên xen dấu', mt: 'Tính tổng 1 − 2 + 3 − 4 + … bằng cách ghép cặp.', lt: 'Ghép 2 hay 4 số hạng liên tiếp thành các nhóm bằng nhau rồi đếm số nhóm.', dang: [
+      ['Ghép hai số hạng liên tiếp', 'A = 1 − 2 + 3 − 4 + … + 59 − 60; −2 + 4 − 6 + … + 100.', 0, [], 'Củng cố B2 D4 (12A), ÔT 13'],
+      ['Ghép bốn số hạng / số hạng cách đều', 'A = (−1) + 5 + (−9) + 13 + … + 85.', 0, [], 'Củng cố B2 D4 (12B)'],
+    ] },
+    { ten: 'Tìm x, y ∈ ℤ thoả điều kiện dạng tích', mt: 'x.y = a hoặc (x + m)(y + n) = a với a nguyên khác 0 (có thể kèm x < y).', lt: 'Phân tích a thành tích hai số nguyên bằng mọi cách (cả cặp âm), mỗi cặp cho một nghiệm.', dang: [
+      ['x.y = a (có thể kèm x < y)', 'x.y = −9 và x < y; x.y = 7 và x > y.', 0, [], 'Củng cố B4 D5 (10)'],
+      ['(x + m)(y + n) = a', '(x + 1)(y − 3) = −5; (x − 4)(y + 3) = −3.', 0, [], 'Củng cố B4 D5, ÔT 12, 26'],
+    ] },
+    { ten: 'Tìm x, y ∈ ℤ đưa điều kiện dạng tổng về dạng tích', mt: 'Biến đổi 2xy − 4x + y = 14 thành (2x + 1)(y − 2) = k.', lt: 'Tách số hạng để đặt thừa số chung, đưa về dạng tích bằng một hằng số.', dang: [
+      ['Đẳng thức dạng tổng', '2xy − 4x + y = 14; xy + 3x − 2y = 51.', 1, ['0470'], 'Đề thi'],
+    ] },
+    { ten: 'Giá trị nhỏ nhất, lớn nhất của biểu thức', mt: 'Tìm GTNN của A = −7 + (x + 1)² dựa vào bình phương luôn ≥ 0.', lt: 'Một bình phương luôn lớn hơn hoặc bằng 0 ⇒ biểu thức nhỏ nhất khi bình phương bằng 0.', dang: [
+      ['GTNN chứa bình phương', 'A = −7 + (x + 1)²; B = (x − 2)² − 17.', 0, [], 'Củng cố ÔT 29 (nâng cao — Thùy quyết có đưa vào K6)'],
+    ] },
+  ] },
+]
+
+// ── tính ───────────────────────────────────────────────────────────────────
+let nNhom = 0, nDang = 0, nCau = 0
+for (const cd of CD) for (const nh of cd.nhom) { nNhom++; nh.n = 0; for (const d of nh.dang) { nDang++; nh.n += d[2]; nCau += d[2] } }
+const loi = []
+for (const cd of CD) for (const nh of cd.nhom) for (const d of nh.dang) for (const l4 of d[3]) if (!cau.has(ma(l4))) loi.push(`${d[0]}: không thấy câu ${ma(l4)}`)
+if (loi.length) { console.error('✘ ' + loi.join('\n')); process.exit(3) }
+
+// ── MD ─────────────────────────────────────────────────────────────────────
+const md = [`# Đề xuất bản đồ 4 tầng — chủ đề **${CHUDE}** (Toán 6, SGK Kết nối tri thức tập 1 · Chương III)`, '',
+  `> Nguồn: SGK Toán 6 KNTT tập 1 (Bài 13–17) · sách *Củng cố Toán 6* tập 1, Chương III (Bài 1–5 + Ôn tập, mỗi bài chia dạng 1A/1B…) · 150 câu số nguyên đang có trong kho K6 (45 đề thi + đề cương, đo 21/10).`,
+  `> Cấu trúc: **1 chủ đề · ${CD.length} chuyên đề · ${nNhom} nhóm bài · ${nDang} dạng bài.** Số câu = ước lượng bằng bộ lọc chữ (để cân cỡ nhóm), CHƯA phải số đã gán.`, '']
+for (const [i, cd] of CD.entries()) {
+  md.push(`## ${i + 1}. Chuyên đề: ${cd.ten}`, `*(${cd.ngu})*`, '')
+  for (const [j, nh] of cd.nhom.entries()) {
+    md.push(`### ${i + 1}.${j + 1} Nhóm bài: ${nh.ten}  — ~${nh.n} câu trong kho`, `- **Mô tả:** ${nh.mt}`, `- **Lý thuyết nhóm (gợi ý):** ${nh.lt}`)
+    for (const d of nh.dang) md.push(`  - **${d[0]}** (~${d[2]} câu) — ${d[1]} *[${d[4]}]*`)
+    md.push('')
+  }
+}
+mkdirSync(RA, { recursive: true })
+writeFileSync(join(RA, 'de-xuat-so-nguyen.md'), md.join('\n'))
+
+// ── HTML ───────────────────────────────────────────────────────────────────
+const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+const fmt = (s) => String(s ?? '').split(/(\$[^$]+\$)/g).map((p) => (p.startsWith('$') && p.endsWith('$') && p.length > 1 ? p.replace(/&/g, '&amp;').replace(/</g, '&lt;') : esc(p).replace(/\n/g, '<br>'))).join('')
+const ex = (l4) => { const r = cau.get(ma(l4)); const nd = String(r.noi_dung).replace(/\s+/g, ' ').slice(0, 170); return `<div class="ex"><code>${esc(r.ma_cau)}</code> ${fmt(nd)}${nd.length >= 170 ? '…' : ''}</div>` }
+const h = [`<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Đề xuất bản đồ Số nguyên K6</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<style>
+body{font:15px/1.6 system-ui,'Segoe UI',sans-serif;max-width:1000px;margin:0 auto;padding:16px;color:#1a1a2e;background:#fafafb}
+h1{font-size:22px}.sum{background:#fff;border:1px solid #dde;border-radius:10px;padding:10px 16px;margin-bottom:14px}
+details{margin:6px 0}details>summary{cursor:pointer}
+.cd{background:#4c6fff;color:#fff;border-radius:8px;padding:8px 12px;font-weight:700;font-size:16px;margin-top:18px;list-style:none}
+.cdn{font-weight:400;font-size:12px;opacity:.9}
+.nhom{background:#fff;border:1px solid #dde;border-radius:10px;padding:8px 14px;margin:8px 0}.nhom>summary{font-weight:600;color:#2d3a8c}
+.mt{color:#556;font-size:13.5px;margin:4px 0}.lt{background:#f7f4fd;border-left:4px solid #7c5cbf;padding:4px 10px;font-size:13px;margin:6px 0;border-radius:0 8px 8px 0}
+.dang{border-top:1px dashed #ccd;padding:6px 0 6px 10px}.dang b{color:#b23a72}.n{color:#888;font-size:12px}.src{color:#1b7a36;font-size:12px}
+.ex{font-size:13px;color:#334;margin:2px 0 2px 14px;border-left:3px solid #2D9CDB;padding-left:8px}.ex code{font-size:11px;color:#999}
+.zero{color:#c0392b}
+</style></head><body>
+<h1>Đề xuất bản đồ 4 tầng — chủ đề Số nguyên (Toán 6)</h1>
+<div class="sum">Nguồn: SGK KNTT tập 1 Bài 13–17 · sách Củng cố tập 1 Chương III · 150 câu số nguyên trong kho K6.<br><b>1 chủ đề · ${CD.length} chuyên đề · ${nNhom} nhóm bài · ${nDang} dạng bài.</b> Số câu là ước lượng (<span class="zero">đỏ = kho chưa có câu</span>, dạng vẫn có trong SGK / sách Củng cố).</div>`]
+for (const [i, cd] of CD.entries()) {
+  h.push(`<details open><summary class="cd">${i + 1}. ${esc(cd.ten)} <span class="cdn">— ${esc(cd.ngu)}</span></summary>`)
+  for (const [j, nh] of cd.nhom.entries()) {
+    h.push(`<details class="nhom"><summary>${i + 1}.${j + 1} ${esc(nh.ten)} <span class="n">· ~${nh.n} câu</span></summary><div class="mt">${esc(nh.mt)}</div><div class="lt"><b>Lý thuyết nhóm (gợi ý):</b> ${esc(nh.lt)}</div>`)
+    for (const d of nh.dang) h.push(`<div class="dang"><b>${esc(d[0])}</b> <span class="n ${d[2] ? '' : 'zero'}">· ~${d[2]} câu</span><div class="mt">${esc(d[1])}</div><div class="src">${esc(d[4])}</div>${d[3].map(ex).join('')}</div>`)
+    h.push('</details>')
+  }
+  h.push('</details>')
+}
+h.push(`<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<script>renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})</script></body></html>`)
+writeFileSync(join(RA, 'de-xuat-so-nguyen.html'), h.join('\n'))
+console.log(`✔ ${RA}: ${CD.length} chuyên đề · ${nNhom} nhóm · ${nDang} dạng · ~${nCau} câu`)

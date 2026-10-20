@@ -38461,3 +38461,8 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 ### 20/10 (tối) — [Kho K7] Tổng kết + trang câu hỏi cho Thùy trả lời
 - Thùy hỏi 746 câu "chờ" thuộc trạng thái nào (chỉ có "chưa chắc" / "không có dạng"): đo DB — 746 câu dạng chờ T107000000 (0 đã duyệt, đều từ đề thi/đề cương) = 152 "thiếu dạng" (AI) + 199 có đề xuất độ chắc "vừa" (= chưa chắc) + 395 CHƯA có trạng thái nào (chưa chạy B5; đề cương 216, GKI 107, CKI 72) — kiểu thứ ba.
 - Dựng K7-cau-hoi-cho-Thuy.html: 12 quyết định chung + 73 chỗ Chưa chắc có ảnh, nút chọn + ghi chú + "Sao chép câu trả lời" (scripts/kho/de-thi/build-cau-hoi-html.mjs; QUYET_JSON=… build-duyet-html.mjs sinh danh sách chỗ quyết).
+
+### 21/10 — [Bản đồ mới · K6] Đề xuất bản đồ 4 tầng chủ đề SỐ NGUYÊN (Thùy yêu cầu)
+- Đọc SGK KNTT 6 tập 1 Chương III (Bài 13–17), sách Củng cố Ch III (Bài 1–5 + Ôn tập) và 150 câu số nguyên thật trong kho (lọc chữ, loại "số nguyên tố"). Đề xuất: 1 chủ đề · 5 chuyên đề · 22 nhóm · 50 dạng (Tập hợp ℤ & thứ tự · Thực hiện phép tính · Tìm x · Chia hết trong ℤ · Nâng cao). KHÔNG ghi DB — bản đồ là việc của Thùy.
+- Ra: kho-rules/dai/lo/k6/ban-do-moi/de-xuat-so-nguyen.{md,html,mjs} (mjs dựng md+html; mã câu ví dụ kiểm có thật). Số câu/dạng là ƯỚC LƯỢNG theo bộ lọc chữ; ~20 dạng chưa có câu trong kho (có trong SGK/Củng cố).
+- Lưu ý: NNB00914/00915 (tìm x,y dạng tích/tổng, đang rỗng dưới Chia hết) trùng nhóm 5.2/5.3 đề xuất; SGK KNTT 6 Ch III không dạy giá trị tuyệt đối.
