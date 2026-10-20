@@ -94,6 +94,7 @@ for (const ma of MAS) {
   body.push(`<article id="${ma}"><h2>${ma} · ${esc(tieu)}</h2><div class="sub">${nCau} câu${ket ? ' · ' + esc(ket) : ''}</div>${sec.join('\n')}${ghi.trim() ? `<h3>Ghi chú cho người duyệt</h3><div class="note">${para(ghi.replace(/^- /gm, '• '))}</div>` : ''}</article>`)
 }
 for (const t of them.filter((x) => !MAS.includes(x.ma))) quyet.push({ ma: t.ma, tieu: t.tieu || t.ma, cau: t.cau, anh: t.anh || [], trang: t.trang || '', vd: t.vd })
+if (process.env.QUYET_JSON) writeFileSync(process.env.QUYET_JSON, JSON.stringify(quyet))
 const anhHtml = (n) => { const p = join(D, 'can-xem', n); return existsSync(p) ? `<img class="goc" src="${b64(p)}" alt="${n}">` : `<p class="loi">thiếu ảnh ${n}</p>` }
 const quyetHtml = quyet.map((q, k) => `<section class="qt"><div class="tit">${k + 1}. <span class="ma">${q.ma}</span> · ${esc(q.cau)} · ${MAS.includes(q.ma) ? `<a href="#${idOf(q.ma, q.cau)}">xem đề + lời giải ↓</a>` : ""}</div>
 <div class="meta">${esc(q.tieu)}${q.trang ? ` · trang ${esc(q.trang)} của file PDF gốc` : ''}</div><div class="vd">${fmt(q.vd)}</div>${q.anh.length ? q.anh.map(anhHtml).join('') : '<p class="meta">(chưa có ảnh nguyên câu — xem đề + lời giải bên dưới)</p>'}</section>`).join('\n')
