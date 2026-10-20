@@ -14,8 +14,8 @@ import {
   getDeThi, createDeThi, renameDeThi, deThiMeta, updateDeThiMeta, attachPdfGoc, addPhanDeThi, listPhanDeThi,
   deThiCau, deThiThieu, duyetDeThi, suaCauDeThi, themCauVaoPhan, bangCuaKho, nhanhCuaKhoPicker, canhBaoNhap, nhanGocCau, nhomBaiCuaDe, boLoiDan,
   demKhoDeThi, listKhoDeThi, KHO_DE_CUA_MON, MON_DE_THI, soDongDeThi, setSoDongDeThi, coDongKeDeThi, dongMacDinhDeThi,
-  patchCauHinhDeThi, tronCauHinh, KY_DE, dangMoiCuaDe, dichMoi, ganDangMoi,
-  type DeThi, type KyDe, type DangMoi, type DichMoi, type DeThiMeta, type DeThiCau, type DeThiThieu, type DeThiDong, type Kho, type LoiDeThi, type SuaCauPatch, type TabKhoDe,
+  patchCauHinhDeThi, tronCauHinh, KY_DE, dangMoiCuaDe, dichMoi, ganDangMoi, namHocKhoDeThi, tenNamHoc,
+  type DeThi, type KyDe, type LocNamHoc, type DangMoi, type DichMoi, type DeThiMeta, type DeThiCau, type DeThiThieu, type DeThiDong, type Kho, type LoiDeThi, type SuaCauPatch, type TabKhoDe,
 } from '../../lib/dethi'
 import { setCauOfPhan, deletePhan, updatePhan, type TaiLieuPhan } from '../../lib/tailieu'
 import type { CheDoHinh } from '../../lib/kho/hinhGiaoTrinh'
@@ -55,8 +55,8 @@ export function hopLePhieu4O(s: string): boolean {
 
 // ═══════════ DANH SÁCH ═══════════
 // Màn hàng đợi ⇒ nhớ bộ lọc + danh sách + vị trí cuộn ở module-level; mở đề rồi quay lại đứng đúng chỗ cũ.
-const NHO: { mon: string | null; khoi: string | null; ky: KyDe | null; tab: TabKhoDe; tim: string; rows: DeThiDong[]; het: boolean; scrollTop: number; coDuLieu: boolean } =
-  { mon: null, khoi: null, ky: null, tab: 'cho_duyet', tim: '', rows: [], het: false, scrollTop: 0, coDuLieu: false }
+const NHO: { mon: string | null; khoi: string | null; ky: KyDe | null; namHoc: LocNamHoc; tab: TabKhoDe; tim: string; rows: DeThiDong[]; het: boolean; scrollTop: number; coDuLieu: boolean } =
+  { mon: null, khoi: null, ky: null, namHoc: null, tab: 'cho_duyet', tim: '', rows: [], het: false, scrollTop: 0, coDuLieu: false }
 
 export default function KhoDeThiScreen() {
   const { allowedMons: monScope, isAll } = useMonScope()
@@ -65,6 +65,9 @@ export default function KhoDeThiScreen() {
   useEffect(() => { if (allowedMons.length && !allowedMons.includes(mon)) setMon(allowedMons[0]) }, [allowedMons.join(',')]) // eslint-disable-line
   const [khoi, setKhoi] = useState<string | null>(NHO.khoi)
   const [ky, setKy] = useState<KyDe | null>(NHO.ky)
+  const [namHoc, setNamHoc] = useState<LocNamHoc>(NHO.namHoc)
+  const [dsNamHoc, setDsNamHoc] = useState<{ nam: number[]; co_chua_ro: boolean } | null>(null)
+  useEffect(() => { let song = true; namHocKhoDeThi(mon).then((r) => { if (song) setDsNamHoc(r) }).catch(() => {}); return () => { song = false } }, [mon])
   const [tab, setTab] = useState<TabKhoDe>(NHO.tab)
   // tab trạng thái đề thi người dùng đứng gần nhất — bấm "Đề thi" từ "Đề cương" quay lại đúng chỗ đó
   const tabDeThiCuoi = useRef<TabKhoDe>(NHO.tab === 'de_cuong' ? 'cho_duyet' : NHO.tab)
@@ -81,12 +84,12 @@ export default function KhoDeThiScreen() {
   const cuon = useRef<HTMLDivElement>(null)
   const lanDau = useRef(true)
 
-  const nho = (r: DeThiDong[], h: boolean) => { Object.assign(NHO, { mon, khoi, ky, tab, tim, rows: r, het: h, coDuLieu: true }) }
-  // Đổi NGỮ CẢNH (môn / khối / kỳ / tab / từ khoá) ⇒ tải lại từ đầu. Lần mount đầu mà đã có cache đúng ngữ cảnh ⇒ dùng cache.
+  const nho = (r: DeThiDong[], h: boolean) => { Object.assign(NHO, { mon, khoi, ky, namHoc, tab, tim, rows: r, het: h, coDuLieu: true }) }
+  // Đổi NGỮ CẢNH (môn / khối / kỳ / năm học / tab / từ khoá) ⇒ tải lại từ đầu. Lần mount đầu mà đã có cache đúng ngữ cảnh ⇒ dùng cache.
   useEffect(() => {
     if (lanDau.current) {
       lanDau.current = false
-      if (NHO.coDuLieu && NHO.mon === mon && NHO.khoi === khoi && NHO.ky === ky && NHO.tab === tab && NHO.tim === tim) {
+      if (NHO.coDuLieu && NHO.mon === mon && NHO.khoi === khoi && NHO.ky === ky && NHO.namHoc === namHoc && NHO.tab === tab && NHO.tim === tim) {
         requestAnimationFrame(() => { if (cuon.current) cuon.current.scrollTop = NHO.scrollTop })
         return
       }
@@ -94,23 +97,23 @@ export default function KhoDeThiScreen() {
     let song = true
     setLoading(true); setLoi(null); setRows([])
     const t = setTimeout(() => {
-      listKhoDeThi(mon, khoi, tab, tim, ky).then((r) => { if (song) { setRows(r); setHet(r.length < 25); nho(r, r.length < 25) } })
+      listKhoDeThi(mon, khoi, tab, tim, ky, namHoc).then((r) => { if (song) { setRows(r); setHet(r.length < 25); nho(r, r.length < 25) } })
         .catch((e) => { if (song) setLoi(e.message ?? String(e)) }).finally(() => { if (song) setLoading(false) })
     }, tim ? 300 : 0)
     return () => { song = false; clearTimeout(t) }
-  }, [mon, khoi, ky, tab, tim]) // eslint-disable-line
-  useEffect(() => { let song = true; demKhoDeThi(mon, khoi, ky).then((d) => { if (song) setDem(d) }).catch(() => {}); return () => { song = false } }, [mon, khoi, ky, openId])
+  }, [mon, khoi, ky, namHoc, tab, tim]) // eslint-disable-line
+  useEffect(() => { let song = true; demKhoDeThi(mon, khoi, ky, namHoc).then((d) => { if (song) setDem(d) }).catch(() => {}); return () => { song = false } }, [mon, khoi, ky, namHoc, openId])
 
   async function taiThem() {
     if (!rows.length) return
     setThem(true)
-    try { const r = await listKhoDeThi(mon, khoi, tab, tim, ky, rows[rows.length - 1].created_at); const all = [...rows, ...r]; setRows(all); setHet(r.length < 25); nho(all, r.length < 25) }
+    try { const r = await listKhoDeThi(mon, khoi, tab, tim, ky, namHoc, rows[rows.length - 1].created_at); const all = [...rows, ...r]; setRows(all); setHet(r.length < 25); nho(all, r.length < 25) }
     catch (e: any) { setLoi(e.message ?? String(e)) } finally { setThem(false) }
   }
   // Quay lại từ màn sửa: làm mới NỀN đúng trang đang xem (không xoá danh sách, không cuộn về đầu).
   function dongDe() {
     setOpenId(null)
-    listKhoDeThi(mon, khoi, tab, tim, ky).then((r) => {
+    listKhoDeThi(mon, khoi, tab, tim, ky, namHoc).then((r) => {
       setRows((prev) => { const moi = new Map(r.map((x) => [x.id, x])); const giu = prev.filter((x) => !moi.has(x.id) && x.created_at < (r[r.length - 1]?.created_at ?? '')); const all = [...r, ...giu]; nho(all, het); return all })
     }).catch(() => {})
     requestAnimationFrame(() => { if (cuon.current) cuon.current.scrollTop = NHO.scrollTop })
@@ -158,6 +161,13 @@ export default function KhoDeThiScreen() {
           <option value="">Mọi kỳ</option>
           {KY_DE.map((k) => <option key={k.key} value={k.key}>{k.ten}</option>)}
         </select>
+        {/* Lọc NĂM HỌC (Thùy 20/10) — suy ở DB từ tên đề + năm, sửa tay ở "Thông tin đề" */}
+        <select value={namHoc ?? ''} onChange={(e) => setNamHoc(e.target.value || null)} title="Năm học" className={`rounded-md border px-2 py-1.5 text-[13px] ${namHoc ? 'border-indigo-300 bg-indigo-50 font-medium text-indigo-700' : 'border-slate-200 bg-white text-slate-700'}`}>
+          <option value="">Mọi năm học</option>
+          {(dsNamHoc?.nam ?? []).map((n) => <option key={n} value={String(n)}>{tenNamHoc(n)}</option>)}
+          {dsNamHoc?.co_chua_ro && <option value="chua_ro">Chưa rõ năm học</option>}
+          {namHoc && namHoc !== 'chua_ro' && !(dsNamHoc?.nam ?? []).includes(+namHoc) && <option value={namHoc}>{tenNamHoc(+namHoc)}</option>}
+        </select>
         <input value={tim} onChange={(e) => setTim(e.target.value)} placeholder="Tìm theo tên đề…" className="w-64 rounded-md border border-slate-200 px-2.5 py-1.5 text-[13px] focus:border-indigo-400 focus:outline-none" />
         <button onClick={() => setTao(true)} className="ml-auto rounded-md border border-slate-300 px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-400">+ Tạo đề trống</button>
       </div>
@@ -183,7 +193,7 @@ export default function KhoDeThiScreen() {
                     <tr key={r.id} onClick={() => setOpenId(r.id)} className="cursor-pointer border-t border-slate-100 hover:bg-indigo-50/40">
                       <td className="px-4 py-2.5">
                         <div className="font-medium text-slate-800">{r.ten}</div>
-                        <div className="text-[12px] text-slate-400">{[TEN_KY[r.ky], r.nguon && r.nguon !== 'le' && r.nguon !== 'noctorium' ? r.nguon : null, r.nam, r.co_de_goc ? '📎 có đề gốc' : null].filter(Boolean).join(' · ')}</div>
+                        <div className="text-[12px] text-slate-400">{[TEN_KY[r.ky], r.nam_hoc != null ? `năm học ${tenNamHoc(r.nam_hoc)}` : null, r.nguon && r.nguon !== 'le' && r.nguon !== 'noctorium' ? r.nguon : null, r.co_de_goc ? '📎 có đề gốc' : null].filter(Boolean).join(' · ')}</div>
                       </td>
                       <td className="px-3 py-2.5 text-slate-600">{r.khoi}</td>
                       <td className="px-3 py-2.5 text-slate-600">{r.so_cau}</td>
@@ -493,11 +503,15 @@ export function DeThiSoan({ id, onClose, tuKho }: { id: string; onClose: () => v
           <div className="mx-auto max-w-[980px] space-y-5">
             <details className="rounded-xl border border-slate-200 bg-white px-4 py-2.5">
               <summary className="cursor-pointer text-[12.5px] font-medium text-slate-600">Thông tin đề: {[meta.nguon, meta.nam, meta.thoiGianPhut ? `${meta.thoiGianPhut} phút` : null, `thang ${meta.thangDiem}`].filter(Boolean).join(' · ')}</summary>
-              <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+              <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-7">
                 <O label="Nguồn (trường/sở)"><input defaultValue={meta.nguon} onBlur={(e) => luuMeta({ nguon: e.target.value })} className={inp} /></O>
                 <O label="Kỳ"><select value={meta.ky ?? ''} onChange={(e) => luuMeta({ ky: (e.target.value || undefined) as KyDe | undefined })} className={inp}>
                   <option value="">Theo tên đề</option>
                   {KY_DE.map((k) => <option key={k.key} value={k.key}>{k.ten}</option>)}
+                </select></O>
+                <O label="Năm học"><select value={meta.namHoc ?? ''} onChange={(e) => luuMeta({ namHoc: e.target.value ? +e.target.value : undefined })} className={inp}>
+                  <option value="">Theo tên đề</option>
+                  {Array.from({ length: 8 }, (_, i) => new Date().getFullYear() + 1 - i).map((n) => <option key={n} value={n}>{tenNamHoc(n)}</option>)}
                 </select></O>
                 <O label="Cấp"><input defaultValue={meta.cap} onBlur={(e) => luuMeta({ cap: e.target.value })} className={inp} /></O>
                 <O label="Năm"><input type="number" defaultValue={meta.nam ?? ''} onBlur={(e) => luuMeta({ nam: e.target.value ? +e.target.value : null })} className={inp} /></O>

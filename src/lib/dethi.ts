@@ -18,6 +18,7 @@ export const KY_DE: { key: KyDe; ten: string }[] = [
 export type DeThiMeta = {
   kieu?: 'de_cuong'      // đề cương ôn tập (tab "Đề cương" của Kho đề thi); vắng = đề thi
   ky?: KyDe              // kỳ đặt tay; vắng = suy từ tên đề
+  namHoc?: number        // năm học đặt tay (số năm ĐẦU, 2025 = 2025–2026); vắng = DB suy (_de_thi_nam_hoc)
   nguon: string          // trường/sở
   cap: string            // vd 'vao_10', 'thpt_qg' — free text, vocab tái dùng nếu có
   nam: number | null
@@ -224,15 +225,23 @@ export type DeThiDong = {
   id: string; ten: string; khoi: string; mon: string; created_at: string; updated_at: string; duyet_at: string | null
   nguon: string | null; nam: number | null; co_de_goc: boolean
   so_cau: number; so_chan: number; so_chua_dang: number; so_canh_bao_nhap: number; so_luot: number; luot_gan_nhat: string | null
-  ky: KyDe
+  ky: KyDe; nam_hoc: number | null
 }
-export async function demKhoDeThi(mon: string, khoi: string | null, ky: KyDe | null): Promise<Record<TabKhoDe, number>> {
-  const { data, error } = await supabase.rpc('fn_de_thi_dem', { p_mon: mon, p_khoi: khoi, p_ky: ky })
+// Lọc năm học: '2025' (= 2025–2026) | 'chua_ro' | null = mọi năm (Thùy 20/10, mig 202610201833)
+export type LocNamHoc = string | null
+export const tenNamHoc = (n: number) => `${n}–${n + 1}`
+export async function namHocKhoDeThi(mon: string): Promise<{ nam: number[]; co_chua_ro: boolean }> {
+  const { data, error } = await supabase.rpc('fn_de_thi_nam_hoc', { p_mon: mon })
+  if (error) throw error
+  return data as { nam: number[]; co_chua_ro: boolean }
+}
+export async function demKhoDeThi(mon: string, khoi: string | null, ky: KyDe | null, namHoc: LocNamHoc): Promise<Record<TabKhoDe, number>> {
+  const { data, error } = await supabase.rpc('fn_de_thi_dem', { p_mon: mon, p_khoi: khoi, p_ky: ky, p_nam_hoc: namHoc })
   if (error) throw error
   return data as Record<TabKhoDe, number>
 }
-export async function listKhoDeThi(mon: string, khoi: string | null, tab: TabKhoDe, tim: string, ky: KyDe | null, truoc?: string | null): Promise<DeThiDong[]> {
-  const { data, error } = await supabase.rpc('fn_de_thi_ds', { p_mon: mon, p_khoi: khoi, p_tab: tab, p_tim: tim || null, p_gioi_han: 25, p_truoc: truoc ?? null, p_ky: ky })
+export async function listKhoDeThi(mon: string, khoi: string | null, tab: TabKhoDe, tim: string, ky: KyDe | null, namHoc: LocNamHoc, truoc?: string | null): Promise<DeThiDong[]> {
+  const { data, error } = await supabase.rpc('fn_de_thi_ds', { p_mon: mon, p_khoi: khoi, p_tab: tab, p_tim: tim || null, p_gioi_han: 25, p_truoc: truoc ?? null, p_ky: ky, p_nam_hoc: namHoc })
   if (error) throw error
   return (data ?? []) as DeThiDong[]
 }
