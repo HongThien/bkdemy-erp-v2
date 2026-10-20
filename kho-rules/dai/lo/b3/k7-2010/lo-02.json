@@ -1,0 +1,591 @@
+[
+ {
+  "ma_cau": "T107000000736",
+  "loai": "tu_luan",
+  "de": "Bác Ba gửi vào ngân hàng $50$ triệu đồng với kì hạn $1$ năm, lãi suất $4,3\\%$/năm. Hết kì hạn $1$ năm, bác rút $\\dfrac{1}{2}$ số tiền (kể cả gốc lẫn lãi). Tính số tiền bác Ba còn lại trong ngân hàng.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hết kì hạn, số tiền cả gốc lẫn lãi là gốc nhân $(100\\%+\\text{lãi suất})$; bác rút một nửa thì còn lại một nửa số đó.\n**Bước 1.** Tính số tiền cả gốc lẫn lãi sau một năm bằng cách nhân tiền gửi với $100\\%$ cộng lãi suất.\n**Bước 2.** Hiểu \"rút $\\dfrac{1}{2}$ số tiền\" nghĩa là số tiền còn lại cũng bằng $\\dfrac{1}{2}$ tổng gốc lẫn lãi.\n**Bước 3.** Nhân tổng số tiền với $\\dfrac{1}{2}$ rồi ghi kết quả kèm đơn vị.\n**Phần 2. Trình bày**\nSố tiền cả gốc lẫn lãi bác Ba có sau $1$ năm là:\n$50.(100\\%+4,3\\%)=52,15$ (triệu đồng)\nSố tiền bác Ba còn lại trong ngân hàng là:\n$52,15.\\dfrac{1}{2}=26,075$ (triệu đồng)\nVậy bác Ba còn lại $26,075$ triệu đồng, tức $26075000$ đồng.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "07702220301019",
+  "loai": "tra_loi_ngan",
+  "de": "Sắp xếp các số $\\sqrt{21};|-4,4|;4,3;\\left|-\\dfrac{9}{2}\\right|;\\sqrt{19}$ theo giá trị từ bé đến lớn.",
+  "dap_an": "4,3;\\sqrt{19};|-4,4|;\\left|-\\dfrac{9}{2}\\right|;\\sqrt{21}",
+  "loi_giai": "Ta có: $|-4,4|=4,4$; $\\left|-\\dfrac{9}{2}\\right|=\\dfrac{9}{2}=4,5$.\nMà $4,3=\\sqrt{18,49}$; $4,4=\\sqrt{19,36}$. Vì $\\sqrt{18,49}<\\sqrt{19}<\\sqrt{19,36}$ nên $4,3<\\sqrt{19}<4,4<4,5$.\nLại có $4,5=\\sqrt{20,25}<\\sqrt{21}$.\nVậy ta sắp xếp: $4,3;\\sqrt{19};|-4,4|;\\left|-\\dfrac{9}{2}\\right|;\\sqrt{21}$.",
+  "nhan_cu": "Tập hợp số thực. Giá trị tuyệt đối › So sánh, sắp xếp Số thực"
+ },
+ {
+  "ma_cau": "T107000000504",
+  "loai": "trac_nghiem",
+  "de": "Chu vi tam giác có độ dài ba cạnh $\\dfrac{13}{4}$ cm; $\\dfrac{11}{3}$ cm; $\\dfrac{9}{2}$ cm bằng:",
+  "lua_chon": [
+   "$\\dfrac{33}{9}$ cm",
+   "$\\dfrac{33}{12}$ cm",
+   "$\\dfrac{137}{12}$ cm",
+   "$\\dfrac{135}{12}$ cm"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** chu vi tam giác bằng tổng độ dài ba cạnh nên phải cộng ba phân số có mẫu khác nhau.\n**Bước 1.** Nhớ công thức chu vi tam giác là tổng độ dài ba cạnh, rồi viết phép cộng ba phân số tương ứng.\n**Bước 2.** Tìm mẫu chung của ba mẫu $4$, $3$ và $2$ rồi quy đồng từng phân số về mẫu chung đó.\n**Bước 3.** Cộng các tử, giữ nguyên mẫu, kiểm tra xem kết quả còn rút gọn được không.\n**Phần 2. Trình bày**\nChu vi tam giác là:\n$\\dfrac{13}{4}+\\dfrac{11}{3}+\\dfrac{9}{2}=\\dfrac{39}{12}+\\dfrac{44}{12}+\\dfrac{54}{12}$\n$=\\dfrac{39+44+54}{12}$\n$=\\dfrac{137}{12}$ (cm)\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000702",
+  "loai": "tra_loi_ngan",
+  "de": "Thực hiện phép tính (tính hợp lí nếu có thể): $\\dfrac{1}{3}-(-0,5)-2\\dfrac{5}{6}$",
+  "dap_an": "-2",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đổi số thập phân và hỗn số ra phân số rồi quy đồng, chú ý dấu trừ đứng trước ngoặc.\n**Bước 1.** Phá dấu ngoặc có dấu trừ đứng trước nên phải đổi dấu số hạng trong ngoặc.\n**Bước 2.** Đổi số thập phân $0,5$ và hỗn số $2\\dfrac{5}{6}$ ra phân số.\n**Bước 3.** Quy đồng các phân số về cùng mẫu dương rồi cộng trừ các tử số.\n**Phần 2. Trình bày**\n$\\dfrac{1}{3}-(-0,5)-2\\dfrac{5}{6}$\n$=\\dfrac{1}{3}+\\dfrac{1}{2}-\\dfrac{17}{6}$\n$=\\dfrac{2}{6}+\\dfrac{3}{6}-\\dfrac{17}{6}$\n$=\\dfrac{-12}{6}$\n$=-2$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "077022220401014",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTLN của biểu thức: $A=\\dfrac{4}{|x-3|+1}$.",
+  "dap_an": "4",
+  "loi_giai": "Ta có: $|x-3|\\ge0$.\n$\\Rightarrow |x-3|+1\\ge1$.\n$\\Rightarrow \\dfrac{4}{|x-3|+1}\\le\\dfrac{4}{1}$.\n$\\Rightarrow A\\le4$.\nDấu bằng xảy ra khi $|x-3|=0\\Rightarrow x-3=0\\Rightarrow x=3$.\nVậy GTLN của biểu thức $A$ là $4$ khi $x=3$.",
+  "nhan_cu": "GTLN-GTNN của biểu thức › Tìm GTLN - GTNN của biểu thức ứng dụng Căn bậc hai và GTTĐ"
+ },
+ {
+  "ma_cau": "T107000000600",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x$, biết: $1,5x-2\\dfrac{1}{3}x=1,5-\\dfrac{2}{3}$",
+  "dap_an": "-1",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** vế trái có hai số hạng cùng chứa $x$, nên đặt $x$ làm thừa số chung rồi gộp hệ số.\n**Bước 1.** Đổi số thập phân và hỗn số ra phân số để mọi hệ số đều là phân số.\n**Bước 2.** Đặt $x$ ra ngoài làm thừa số chung ở vế trái và tính hiệu hai hệ số, đồng thời tính vế phải.\n**Bước 3.** Chia hai vế cho hệ số của $x$ để tìm $x$.\n**Phần 2. Trình bày**\n$1,5x-2\\dfrac{1}{3}x=1,5-\\dfrac{2}{3}$\n$\\dfrac{3}{2}x-\\dfrac{7}{3}x=\\dfrac{3}{2}-\\dfrac{2}{3}$\n$\\left(\\dfrac{3}{2}-\\dfrac{7}{3}\\right)x=\\dfrac{9}{6}-\\dfrac{4}{6}$\n$\\dfrac{-5}{6}x=\\dfrac{5}{6}$\n$x=\\dfrac{5}{6}:\\dfrac{-5}{6}$\n$x=-1$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107020501002",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức $A=|x-1|+|x-6|$.",
+  "dap_an": "5",
+  "loi_giai": "$A=|x-1|+|x-6|$\n$A=|x-1|+|6-x|$\n$A\\ge|x-1+6-x|$\n$A\\ge5$\nDấu bằng xảy ra khi $(x-1)(6-x)\\ge0\\Rightarrow 1\\le x\\le6$.\nVậy GTNN của $A$ là $5$ khi $1\\le x\\le6$.",
+  "nhan_cu": "GTLN-GTNN của biểu thức › Tìm GTLN-GTNN của biểu thức ứng dụng BĐT GTTĐ."
+ },
+ {
+  "ma_cau": "T107000000637",
+  "loai": "trac_nghiem",
+  "de": "Chọn câu trả lời sai trong các câu sau:",
+  "lua_chon": [
+   "$0,21>\\dfrac{1}{5}$",
+   "$-2,5=\\dfrac{-5}{2}$",
+   "$-0,6<\\dfrac{-2}{3}$",
+   "$\\dfrac{1}{2}>0,2$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đề hỏi câu sai nên phải kiểm tra từng so sánh bằng cách đưa hai số về cùng dạng.\n**Bước 1.** Đổi các phân số ở mỗi phương án sang số thập phân hoặc quy đồng để so sánh trực tiếp.\n**Bước 2.** Kiểm tra phương án có dấu bằng bằng cách đưa hai vế về cùng một dạng số.\n**Bước 3.** Với số âm, so sánh hai số đối của chúng rồi đảo chiều dấu bất đẳng thức.\n**Bước 4.** Chọn phương án có so sánh không đúng.\n**Chú ý:** trong hai số âm, số nào có giá trị tuyệt đối lớn hơn thì số đó nhỏ hơn.\n**Phần 2. Trình bày**\nA. $\\dfrac{1}{5}=0,2$ và $0,21>0,2$ nên $0,21>\\dfrac{1}{5}$ là khẳng định đúng.\nB. $\\dfrac{-5}{2}=-2,5$ nên $-2,5=\\dfrac{-5}{2}$ là khẳng định đúng.\nC. $-0,6=\\d …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "077022220401015",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTLN của biểu thức: $A=\\dfrac{5}{|x+2|+1}$.",
+  "dap_an": "5",
+  "loi_giai": "Ta có: $|x+2|\\ge0$.\n$\\Rightarrow |x+2|+1\\ge1$.\n$\\Rightarrow \\dfrac{5}{|x+2|+1}\\le\\dfrac{5}{1}$.\n$\\Rightarrow A\\le5$.\nDấu bằng xảy ra khi $|x+2|=0\\Rightarrow x+2=0\\Rightarrow x=-2$.\nVậy GTLN của biểu thức $A$ là $5$ khi $x=-2$.",
+  "nhan_cu": "GTLN-GTNN của biểu thức › Tìm GTLN - GTNN của biểu thức ứng dụng Căn bậc hai và GTTĐ"
+ },
+ {
+  "ma_cau": "T107000000585",
+  "loai": "tu_luan",
+  "de": "Thực hiện phép tính (tính hợp lí nếu có thể): $\\left(-\\dfrac{8}{12}\\right).0,75+1\\dfrac{3}{4}:\\left(-\\dfrac{7}{12}\\right)+\\left(\\dfrac{3}{2}\\right)^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đưa mọi số về phân số tối giản, tính luỹ thừa, rồi làm nhân chia trước và cộng trừ sau.\n**Bước 1.** Rút gọn $\\dfrac{8}{12}$, đổi $0,75$ và hỗn số ra phân số, tính luỹ thừa $\\left(\\dfrac{3}{2}\\right)^2$.\n**Bước 2.** Thực hiện hai phép nhân, chia để mỗi số hạng thành một số đơn giản.\n**Bước 3.** Quy đồng ba số hạng về cùng mẫu dương rồi cộng các tử.\n**Phần 2. Trình bày**\n$\\left(-\\dfrac{8}{12}\\right).0,75+1\\dfrac{3}{4}:\\left(-\\dfrac{7}{12}\\right)+\\left(\\dfrac{3}{2}\\right)^2$\n$=\\left(-\\dfrac{2}{3}\\right).\\dfrac{3}{4}+\\dfrac{7}{4}.\\left(-\\dfrac{12}{7}\\right)+\\dfrac{9}{4}$\n$=-\\dfrac{1}{2}+(-3)+\\dfrac{9}{4}$\n$=\\dfrac{-2}{4}+\\dfrac{-12}{4}+\\dfrac{9}{4}$\n$=\\dfrac{- …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107020501046",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x$ biết: $|x-1|+|x-7|=\\dfrac{6}{(x-4)^2+1}$.",
+  "dap_an": "4",
+  "loi_giai": "$|x-1|+|x-7|=\\dfrac{6}{(x-4)^2+1}$\nXét VT:\n$|x-1|+|x-7|=|x-1|+|7-x|\\ge|x-1+7-x|=6$.\nXét VP:\n$(x-4)^2\\ge0$\n$\\Rightarrow (x-4)^2+1\\ge1$\n$\\Rightarrow \\dfrac{6}{(x-4)^2+1}\\le\\dfrac{6}{1}=6$.\nVậy VT$\\ge6$, VP$\\le6\\Rightarrow |x-1|+|x-7|=\\dfrac{6}{(x-4)^2+1}=6$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array}{1}(x-1)(7-x)\\ge0\\\\(x-\n4)^2=0\\end{array}\\right.\\Rightarrow x=4$.\nVậy $x=4$.",
+  "nhan_cu": "GTLN-GTNN của biểu thức › Tìm GTLN-GTNN của biểu thức ứng dụng BĐT GTTĐ."
+ },
+ {
+  "ma_cau": "T107000000728",
+  "loai": "tra_loi_ngan",
+  "de": "Thực hiện phép tính: $\\left(1\\dfrac{3}{4}-0,25\\right).2\\dfrac{1}{3}$",
+  "dap_an": "3,5",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đổi hỗn số và số thập phân về phân số, tính ngoặc trước rồi mới nhân.\n**Bước 1.** Đổi hai hỗn số và số thập phân $0,25$ về phân số để cùng một dạng.\n**Bước 2.** Tính hiệu trong ngoặc, rút gọn kết quả.\n**Bước 3.** Nhân kết quả trong ngoặc với hỗn số đã đổi, rút gọn trước khi nhân.\n**Phần 2. Trình bày**\n$\\left(1\\dfrac{3}{4}-0,25\\right).2\\dfrac{1}{3}$\n$=\\left(\\dfrac{7}{4}-\\dfrac{1}{4}\\right).\\dfrac{7}{3}$\n$=\\dfrac{6}{4}.\\dfrac{7}{3}$\n$=\\dfrac{3}{2}.\\dfrac{7}{3}$\n$=\\dfrac{7}{2}$\n$=3,5$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000744",
+  "loai": "tu_luan",
+  "de": "Tìm $x$, biết: $\\dfrac{1}{6}:\\left(1\\dfrac{1}{8}+2x\\right)=-0,75$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** cụm trong ngoặc là số chia nên bằng số bị chia chia cho thương; sau đó cô lập $2x$ rồi mới tìm $x$.\n**Bước 1.** Đổi hỗn số và số thập phân về phân số, nhận ra cụm trong ngoặc là số chia.\n**Bước 2.** Tính cụm trong ngoặc bằng cách lấy số bị chia chia cho thương.\n**Bước 3.** Chuyển $1\\dfrac{1}{8}$ sang vế phải (đổi dấu) để được giá trị của $2x$.\n**Bước 4.** Quy đồng, tính hiệu rồi chia cho $2$ để tìm $x$.\n**Phần 2. Trình bày**\n$\\dfrac{1}{6}:\\left(1\\dfrac{1}{8}+2x\\right)=-0,75$\n$\\dfrac{1}{6}:\\left(\\dfrac{9}{8}+2x\\right)=\\dfrac{-3}{4}$\n$\\dfrac{9}{8}+2x=\\dfrac{1}{6}:\\dfrac{-3}{4}$\n$\\dfrac{9}{8}+2x=\\dfrac{-2}{9}$\n$2x=\\dfrac{-2}{9}-\\dfrac{9}{8}$\n$2x=\\dfrac{-16}{7 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000695",
+  "loai": "trac_nghiem",
+  "de": "Điểm $A$ biểu diễn số hữu tỉ nào?\nTheo hình: trên trục số có các điểm nguyên $-2$; $-1$; $0$; $1$; $2$, mỗi đoạn đơn vị được chia thành $3$ phần bằng nhau; điểm $A$ nằm bên phải điểm $1$, cách điểm $1$ đúng một phần (là điểm chia đầu tiên sau điểm $1$).",
+  "lua_chon": [
+   "$\\dfrac{3}{4}$",
+   "$\\dfrac{1}{3}$",
+   "$\\dfrac{5}{3}$",
+   "$\\dfrac{4}{3}$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đếm số phần mà mỗi đoạn đơn vị được chia ra để biết độ dài một phần, rồi tính khoảng cách từ gốc $0$ tới điểm $A$.\n**Bước 1.** Đếm số phần bằng nhau trong một đoạn đơn vị, từ đó suy ra mỗi phần bằng bao nhiêu đơn vị.\n**Bước 2.** Xác định điểm $A$ nằm bên phải $0$ và đã vượt qua điểm $1$ bao nhiêu phần.\n**Bước 3.** Cộng $1$ với phần vượt thêm để viết toạ độ của $A$ thành một phân số rồi đối chiếu với các phương án.\n**Phần 2. Trình bày**\nMỗi đoạn đơn vị được chia thành $3$ phần bằng nhau nên mỗi phần dài $\\dfrac{1}{3}$ đơn vị.\nĐiểm $A$ nằm bên phải điểm $1$ một phần, nên $A$ biểu diễn số $1+\\dfrac{1}{3}=\\dfrac{3}{3}+\\dfrac{1}{3}=\\dfrac{4}{3}$.\nChọn D.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "07702220301029",
+  "loai": "tra_loi_ngan",
+  "de": "Sắp xếp các số $\\sqrt{101};|-9,8|;9,7;|-10|;\\sqrt{95}$ theo giá trị từ bé đến lớn.",
+  "dap_an": "9,7;\\sqrt{95};|-9,8|;|-10|;\\sqrt{101}",
+  "loi_giai": "Ta có: $|-9,8|=9,8$; $|-10|=10$.\nMà $9,7=\\sqrt{94,09}$; $9,8=\\sqrt{96,04}$. Vì $\\sqrt{94,09}<\\sqrt{95}<\\sqrt{96,04}$ nên $9,7<\\sqrt{95}<9,8<10$.\nLại có $10=\\sqrt{100}<\\sqrt{101}$.\nVậy ta sắp xếp: $9,7;\\sqrt{95};|-9,8|;|-10|;\\sqrt{101}$.",
+  "nhan_cu": "Tập hợp số thực. Giá trị tuyệt đối › So sánh, sắp xếp Số thực"
+ },
+ {
+  "ma_cau": "T107000000597",
+  "loai": "tu_luan",
+  "de": "Tìm $x$, biết: $\\dfrac{8}{5}x+\\dfrac{4}{9}=\\dfrac{1}{3}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** cô lập số hạng chứa $x$ bằng chuyển vế trước, rồi chia hai vế cho hệ số $\\dfrac{8}{5}$.\n**Bước 1.** Chuyển vế $\\dfrac{4}{9}$ sang vế phải và đổi dấu thành phép trừ.\n**Bước 2.** Quy đồng hai phân số ở vế phải rồi trừ các tử.\n**Bước 3.** Chia hai vế cho $\\dfrac{8}{5}$ bằng cách nhân với số nghịch đảo.\n**Phần 2. Trình bày**\n$\\dfrac{8}{5}x+\\dfrac{4}{9}=\\dfrac{1}{3}$\n$\\dfrac{8}{5}x=\\dfrac{1}{3}-\\dfrac{4}{9}$\n$\\dfrac{8}{5}x=\\dfrac{3}{9}-\\dfrac{4}{9}$\n$\\dfrac{8}{5}x=\\dfrac{-1}{9}$\n$x=\\dfrac{-1}{9}:\\dfrac{8}{5}$\n$x=\\dfrac{-1}{9}.\\dfrac{5}{8}$\n$x=\\dfrac{-5}{72}$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "07702220301009",
+  "loai": "tra_loi_ngan",
+  "de": "Sắp xếp các số $10;\\sqrt{107};-11,3;\\dfrac{31}{3};\\sqrt{120}$ theo giá trị từ bé đến lớn.",
+  "dap_an": "-11,3;10;\\dfrac{31}{3};\\sqrt{107};\\sqrt{120}",
+  "loi_giai": "Ta có:\n$-11,3<10$.\n$10=\\dfrac{30}{3}<\\dfrac{31}{3}$.\n$\\dfrac{31}{3}=\\sqrt{\\dfrac{961}{9}}<\\sqrt{107}$.\nMà $107<120$ nên $\\sqrt{107}<\\sqrt{120}$.\nVậy ta sắp xếp: $-11,3;10;\\dfrac{31}{3};\\sqrt{107};\\sqrt{120}$.",
+  "nhan_cu": "Tập hợp số thực. Giá trị tuyệt đối › So sánh, sắp xếp Số thực"
+ },
+ {
+  "ma_cau": "077022220401069",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTLN của biểu thức: $B=\\dfrac{7}{|x+5|+7}$.",
+  "dap_an": "1",
+  "loi_giai": "Ta có: $|x+5|\\ge0$.\n$\\Rightarrow |x+5|+7\\ge7$.\n$\\Rightarrow \\dfrac{7}{|x+5|+7}\\le\\dfrac{7}{7}$.\n$\\Rightarrow B\\le1$.\nDấu bằng xảy ra khi $|x+5|=0\\Rightarrow x=-5$.\nVậy GTLN của biểu thức $B$ là $1$ khi $x=-5$.",
+  "nhan_cu": "GTLN-GTNN của biểu thức › Tìm GTLN - GTNN của biểu thức ứng dụng Căn bậc hai và GTTĐ"
+ },
+ {
+  "ma_cau": "T107000000556",
+  "loai": "tu_luan",
+  "de": "Tính đến hết năm $2021$, dân số của Thủ đô Hà Nội là $8,1$ triệu người với dự báo tăng trưởng đều đặn $2\\%$ hằng năm. Hỏi dân số tính đến hết năm $2023$ của Hà Nội theo dự báo là bao nhiêu?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** từ hết năm $2021$ đến hết năm $2023$ là hai năm, mỗi năm dân số tăng $2\\%$ so với năm trước nên nhân hai lần với $(100\\%+2\\%)$.\n**Bước 1.** Đếm số năm tăng từ mốc $2021$ đến mốc $2023$ để biết phải tính mấy lần.\n**Bước 2.** Tính dân số hết năm $2022$ bằng cách nhân dân số hết năm $2021$ với $(100\\%+2\\%)$.\n**Bước 3.** Nhân tiếp kết quả với $(100\\%+2\\%)$ để được dân số hết năm $2023$.\n**Phần 2. Trình bày**\nDân số của Hà Nội tính đến hết năm $2022$ là:\n$8,1.(100\\%+2\\%)=8,1.1,02=8,262$ (triệu người)\nDân số của Hà Nội tính đến hết năm $2023$ là:\n$8,262.(100\\%+2\\%)=8,262.1,02=8,42724$ (triệu người)\nVậy theo dự báo, dân số Hà Nội tính đến hết năm $2023$ là $8,427 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000765",
+  "loai": "tu_luan",
+  "de": "Tìm giá trị của $x$, biết: $\\left(x-\\dfrac{1}{2}\\right)^3+7=15$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** cô lập luỹ thừa chứa $x$, đưa vế phải về luỹ thừa cùng số mũ $3$ rồi so sánh hai cơ số.\n**Bước 1.** Chuyển $7$ sang vế phải, đổi dấu để luỹ thừa $\\left(x-\\dfrac{1}{2}\\right)^3$ đứng một mình ở vế trái.\n**Bước 2.** Viết số ở vế phải dưới dạng luỹ thừa bậc $3$ của một số.\n**Bước 3.** Vì hai luỹ thừa bậc lẻ bằng nhau nên hai cơ số bằng nhau, từ đó tìm $x$.\n**Phần 2. Trình bày**\n$\\left(x-\\dfrac{1}{2}\\right)^3+7=15$\n$\\left(x-\\dfrac{1}{2}\\right)^3=15-7$\n$\\left(x-\\dfrac{1}{2}\\right)^3=8$\n$\\left(x-\\dfrac{1}{2}\\right)^3=2^3$\n$x-\\dfrac{1}{2}=2$\n$x=2+\\dfrac{1}{2}$\n$x=\\dfrac{5}{2}$\nVậy $x=\\dfrac{5}{2}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000638",
+  "loai": "trac_nghiem",
+  "de": "Cho trục số sau: Điểm biểu diễn số $\\dfrac{-2}{5}$ trên trục số là:\nTheo hình: trên trục số, đoạn đơn vị từ $0$ đến $1$ được chia thành $5$ phần bằng nhau; điểm $O$ biểu diễn số $0$; các điểm $C$, $D$ nằm bên trái $O$, cách $O$ lần lượt $3$ và $2$ vạch chia; các điểm $A$, $B$ nằm bên phải $O$, cách $O$ lần lượt $2$ và $6$ vạch chia.",
+  "lua_chon": [
+   "$A$",
+   "$B$",
+   "$C$",
+   "$D$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mẫu của phân số cho biết đoạn đơn vị chia làm mấy phần, tử cho biết đi bao nhiêu vạch và về phía nào.\n**Bước 1.** Đếm số phần bằng nhau của đoạn đơn vị trên trục số để so với mẫu số của phân số.\n**Bước 2.** Dựa vào dấu của tử số để biết điểm nằm bên trái hay bên phải điểm gốc.\n**Bước 3.** Lấy giá trị tuyệt đối của tử số làm số vạch cần đếm từ điểm gốc.\n**Bước 4.** Đối chiếu vị trí vừa tìm với bốn điểm đã cho để chọn đáp án.\n**Phần 2. Trình bày**\nĐoạn đơn vị được chia thành $5$ phần bằng nhau nên mỗi vạch chia ứng với $\\dfrac{1}{5}$.\n$\\dfrac{-2}{5}$ là số âm nên nằm bên trái điểm $O$, cách $O$ hai vạch chia.\nĐiểm cách $O$ hai vạch về bên trái là điểm $D$.\nC …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000709",
+  "loai": "tu_luan",
+  "de": "Tìm $x$, biết: $\\dfrac{-2}{5}+\\dfrac{5}{6}x=\\dfrac{-4}{15}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** cô lập số hạng chứa $x$ bằng cách chuyển $\\dfrac{-2}{5}$ sang vế phải, rồi chia cho hệ số của $x$.\n**Bước 1.** Chuyển $\\dfrac{-2}{5}$ sang vế phải và đổi dấu để được $\\dfrac{5}{6}x$ bằng một hiệu.\n**Bước 2.** Quy đồng và tính hiệu ở vế phải.\n**Bước 3.** Chia kết quả cho hệ số $\\dfrac{5}{6}$ bằng cách nhân với số nghịch đảo rồi rút gọn.\n**Phần 2. Trình bày**\n$\\dfrac{-2}{5}+\\dfrac{5}{6}x=\\dfrac{-4}{15}$\n$\\dfrac{5}{6}x=\\dfrac{-4}{15}+\\dfrac{2}{5}$\n$\\dfrac{5}{6}x=\\dfrac{-4}{15}+\\dfrac{6}{15}$\n$\\dfrac{5}{6}x=\\dfrac{2}{15}$\n$x=\\dfrac{2}{15}:\\dfrac{5}{6}$\n$x=\\dfrac{2}{15}.\\dfrac{6}{5}$\n$x=\\dfrac{4}{25}$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000544",
+  "loai": "tu_luan",
+  "de": "Tìm $x$, biết: $\\left(\\dfrac{1}{2}-x\\right)+\\dfrac{3}{4}=\\sqrt{\\dfrac{16}{25}}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tính căn ở vế phải thành một phân số trước, rồi cô lập $x$ từ ngoài vào trong.\n**Bước 1.** Tính $\\sqrt{\\dfrac{16}{25}}$ bằng cách khai căn tử và khai căn mẫu.\n**Bước 2.** Chuyển $\\dfrac{3}{4}$ sang vế phải để tìm giá trị của ngoặc $\\left(\\dfrac{1}{2}-x\\right)$.\n**Bước 3.** Chuyển $\\dfrac{1}{2}$ sang vế phải rồi đổi dấu hai vế để tìm $x$.\n**Phần 2. Trình bày**\nVì $\\left(\\dfrac{4}{5}\\right)^2=\\dfrac{16}{25}$ nên $\\sqrt{\\dfrac{16}{25}}=\\dfrac{4}{5}$.\n$\\left(\\dfrac{1}{2}-x\\right)+\\dfrac{3}{4}=\\dfrac{4}{5}$\n$\\dfrac{1}{2}-x=\\dfrac{4}{5}-\\dfrac{3}{4}$\n$\\dfrac{1}{2}-x=\\dfrac{1}{20}$\n$x=\\dfrac{1}{2}-\\dfrac{1}{20}$\n$x=\\dfrac{9}{20}$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "0770220201002",
+  "loai": "tra_loi_ngan",
+  "de": "Trong các số sau, số nào là số hữu tỉ? Số nào là số vô tỉ?: $2,5;\\ 0,(3);\\ \\pi;\\ \\sqrt{5};\\ 1,2(7);\\ -\\sqrt{64};\\ \\sqrt{11}$.",
+  "loi_giai": "Số hữu tỉ là: $2,5;\\ 0,(3);\\ 1,2(7);\\ -\\sqrt{64}$.\nSố vô tỉ là: $\\pi;\\ \\sqrt{5};\\sqrt{11}$.",
+  "nhan_cu": "Số vô tỉ. Căn bậc hai số học › Nhận biết số vô tỉ, căn bậc hai số học"
+ },
+ {
+  "ma_cau": "T107000000716",
+  "loai": "tu_luan",
+  "de": "Một cửa hàng bán quần áo có chương trình khuyến mãi như sau: Khách hàng có thẻ thành viên sẽ được giảm $15\\%$ tổng số tiền của hóa đơn. Bạn Bình có thẻ thành viên, bạn mua hai chiếc áo sơ mi, mỗi áo đều có giá $200000$ đồng và một quần Jeans với giá $350000$ đồng. Bạn đưa cho người thu ngân $1$ triệu đồng. Hỏi bạn Bình được trả lại bao nhiêu tiền?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** giảm $15\\%$ tính trên cả hóa đơn, nên phải tính tổng tiền hàng trước rồi mới giảm, sau đó lấy tiền đưa trừ đi tiền phải trả.\n**Bước 1.** Tính tổng tiền của hai chiếc áo sơ mi và một quần Jeans khi chưa giảm giá.\n**Bước 2.** Tính số tiền phải trả sau khi giảm $15\\%$ trên tổng hóa đơn.\n**Bước 3.** Đổi $1$ triệu đồng ra đơn vị đồng rồi lấy số tiền đưa trừ đi số tiền phải trả để tìm tiền trả lại.\n**Phần 2. Trình bày**\nTổng tiền hàng khi chưa giảm giá là:\n$2.200000+350000=750000$ (đồng)\nSố tiền Bình phải trả sau khi giảm $15\\%$ là:\n$750000.(100\\%-15\\%)=750000.0,85=637500$ (đồng)\nSố tiền Bình được trả lại là:\n$1000000-637500=362500$ (đồng)\nVậy bạn Bình được trả  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000513",
+  "loai": "tu_luan",
+  "de": "Tính: $\\left(1\\dfrac{2}{3}\\right)^4$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hỗn số không luỹ thừa được ngay, phải đổi hỗn số thành phân số rồi mới luỹ thừa cả tử và mẫu.\n**Bước 1.** Đổi hỗn số $1\\dfrac{2}{3}$ thành phân số có tử bằng $1.3+2$.\n**Bước 2.** Viết luỹ thừa bậc bốn của phân số thành luỹ thừa của tử chia cho luỹ thừa của mẫu.\n**Bước 3.** Tính $5^4$ và $3^4$ rồi ghép thành kết quả.\n**Chú ý:** không được tính $1^4$ và $\\left(\\dfrac{2}{3}\\right)^4$ riêng rồi cộng lại.\n**Phần 2. Trình bày**\n$\\left(1\\dfrac{2}{3}\\right)^4=\\left(\\dfrac{5}{3}\\right)^4$\n$=\\dfrac{5^4}{3^4}$\n$=\\dfrac{625}{81}$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107020501016",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức $A=|3x+9|+|3x-15|$.",
+  "dap_an": "24",
+  "loi_giai": "$A=|3x+9|+|3x-15|$\n$A=|3x+9|+|15-3x|$\n$A\\ge|3x+9+15-3x|$\n$A\\ge24$\nDấu bằng xảy ra khi $(3x+9)(15-3x)\\ge0\\Rightarrow -3\\le x\\le5$.\nVậy GTNN của $A$ là $24$ khi $-3\\le x\\le5$.",
+  "nhan_cu": "GTLN-GTNN của biểu thức › Tìm GTLN-GTNN của biểu thức ứng dụng BĐT GTTĐ."
+ },
+ {
+  "ma_cau": "T107000000640",
+  "loai": "trac_nghiem",
+  "de": "Viết $0,8^4$ dưới dạng bình phương ta được:",
+  "lua_chon": [
+   "$0,8^6$",
+   "$0,8^8$",
+   "$0,8^{16}$",
+   "$0,8^2$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** viết $0,8^4$ dưới dạng bình phương nghĩa là tìm cơ số mà khi bình phương lên thì được $0,8^4$.\n**Bước 1.** Tách số mũ $4$ thành tích của hai thừa số để dùng công thức luỹ thừa của luỹ thừa.\n**Bước 2.** Áp dụng $\\left(a^m\\right)^n=a^{m.n}$ theo chiều ngược lại để thấy cơ số của bình phương.\n**Bước 3.** Đối chiếu cơ số vừa tìm được với các phương án đã cho.\n**Chú ý:** phương án D thực chất là cơ số $0,8^2$ của bình phương, không phải giá trị $0,8^2$.\n**Phần 2. Trình bày**\n$0,8^4=0,8^{2.2}=\\left(0,8^2\\right)^2$\nVậy $0,8^4$ viết dưới dạng bình phương là bình phương của $0,8^2$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000613",
+  "loai": "tu_luan",
+  "de": "Tìm $x$, biết: $3.\\left(|x|-\\dfrac{4}{5}\\right)+0,2=0,5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** cô lập $|x|$ từ ngoài vào trong (chuyển vế, chia cho $3$, chuyển vế), rồi vì $|x|$ bằng một số dương nên $x$ có hai giá trị đối nhau.\n**Bước 1.** Chuyển vế $0,2$ rồi chia hai vế cho $3$ để bỏ thừa số $3$ ngoài ngoặc.\n**Bước 2.** Chuyển vế $-\\dfrac{4}{5}$ để cô lập $|x|$ ở một vế.\n**Bước 3.** Vế còn lại là số dương nên $x$ bằng số đó hoặc số đối của nó.\n**Phần 2. Trình bày**\n$3.\\left(|x|-\\dfrac{4}{5}\\right)+0,2=0,5$\n$3.\\left(|x|-\\dfrac{4}{5}\\right)=0,5-0,2$\n$3.\\left(|x|-\\dfrac{4}{5}\\right)=0,3$\n$|x|-\\dfrac{4}{5}=0,3:3$\n$|x|-\\dfrac{4}{5}=0,1$\n$|x|=0,1+0,8$\n$|x|=0,9$\nTH1: $x=0,9$.\nTH2: $x=-0,9$.\nVậy $x\\in\\{0,9;-0,9\\}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107020501024",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức $A=|x+4|+|x+9|$.",
+  "dap_an": "5",
+  "loi_giai": "$A=|x+4|+|x+9|$\n$A=|x+4|+|-x-9|$\n$A\\ge|x+4+(-x-9)|$\n$A\\ge|-5|$\n$A\\ge5$\nDấu bằng xảy ra khi $(x+4)(-x-9)\\ge0\\Rightarrow -9\\le x\\le-4$.\nVậy GTNN của $A$ là $5$ khi $-9\\le x\\le-4$.",
+  "nhan_cu": "GTLN-GTNN của biểu thức › Tìm GTLN-GTNN của biểu thức ứng dụng BĐT GTTĐ."
+ },
+ {
+  "ma_cau": "T107000000526",
+  "loai": "tu_luan",
+  "de": "Thực hiện phép tính: $3.\\left(\\dfrac{-2}{3}\\right)^2-2.\\left(\\dfrac{-2}{3}\\right)+4.\\left(\\dfrac{-2}{3}\\right)^0$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** luỹ thừa làm trước, trong đó luỹ thừa bậc $0$ của số khác $0$ luôn bằng $1$; rồi nhân; rồi cộng trừ.\n**Bước 1.** Tính các luỹ thừa: bình phương của $\\dfrac{-2}{3}$ và luỹ thừa $0$ của nó.\n**Bước 2.** Thực hiện ba phép nhân với $3$, $2$ và $4$, chú ý dấu của tích có thừa số âm.\n**Bước 3.** Cộng các số hạng, quy đồng về cùng mẫu rồi rút gọn.\n**Phần 2. Trình bày**\n$3.\\left(\\dfrac{-2}{3}\\right)^2-2.\\left(\\dfrac{-2}{3}\\right)+4.\\left(\\dfrac{-2}{3}\\right)^0$\n$=3.\\dfrac{4}{9}-2.\\dfrac{-2}{3}+4.1$\n$=\\dfrac{4}{3}+\\dfrac{4}{3}+4$\n$=\\dfrac{8}{3}+\\dfrac{12}{3}$\n$=\\dfrac{20}{3}$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "07702220301007",
+  "loai": "tra_loi_ngan",
+  "de": "Sắp xếp các số $8;\\sqrt{73};-9,2;\\dfrac{17}{2};\\sqrt{80}$ theo giá trị từ bé đến lớn.",
+  "dap_an": "-9,2;8;\\dfrac{17}{2};\\sqrt{73};\\sqrt{80}",
+  "loi_giai": "Ta có:\n$-9,2<8$.\n$8=\\dfrac{16}{2}<\\dfrac{17}{2}$.\n$\\dfrac{17}{2}=\\sqrt{\\dfrac{289}{4}}<\\sqrt{73}$.\nMà $73<80$ nên $\\sqrt{73}<\\sqrt{80}$.\nVậy ta sắp xếp: $-9,2;8;\\dfrac{17}{2};\\sqrt{73};\\sqrt{80}$.",
+  "nhan_cu": "Tập hợp số thực. Giá trị tuyệt đối › So sánh, sắp xếp Số thực"
+ },
+ {
+  "ma_cau": "T107000000727",
+  "loai": "tu_luan",
+  "de": "Thực hiện phép tính: $\\left(\\dfrac{-1}{3}\\right)^3:\\dfrac{1}{9}+\\left(\\dfrac{-2026}{2027}\\right)^0+1,5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tính luỹ thừa trước (luỹ thừa bậc $0$ của số khác $0$ bằng $1$), rồi chia, cuối cùng mới cộng.\n**Bước 1.** Nhận ra thứ tự: luỹ thừa trước, phép chia sau, phép cộng cuối cùng.\n**Bước 2.** Tính hai luỹ thừa, chú ý luỹ thừa bậc lẻ của số âm là số âm và luỹ thừa bậc $0$ có giá trị đặc biệt.\n**Bước 3.** Đổi phép chia thành phép nhân với số nghịch đảo rồi thực hiện.\n**Bước 4.** Cộng các số hạng còn lại sau khi quy đồng về cùng mẫu.\n**Phần 2. Trình bày**\n$\\left(\\dfrac{-1}{3}\\right)^3:\\dfrac{1}{9}+\\left(\\dfrac{-2026}{2027}\\right)^0+1,5$\n$=\\dfrac{-1}{27}:\\dfrac{1}{9}+1+1,5$\n$=\\dfrac{-1}{27}.9+1+1,5$\n$=\\dfrac{-1}{3}+\\dfrac{5}{2}$\n$=\\dfrac{-2}{6}+\\dfrac{15}{6}$\n$=\\df …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "07702220301011",
+  "loai": "tra_loi_ngan",
+  "de": "Sắp xếp các số $12;\\sqrt{151};-13,2;\\dfrac{49}{4};\\sqrt{168}$ theo giá trị từ bé đến lớn.",
+  "dap_an": "-13,2;12;\\dfrac{49}{4};\\sqrt{151};\\sqrt{168}",
+  "loi_giai": "Ta có:\n$-13,2<12$.\n$12=\\dfrac{48}{4}<\\dfrac{49}{4}$.\n$\\dfrac{49}{4}=\\sqrt{\\dfrac{2401}{16}}<\\sqrt{151}$.\nMà $151<168$ nên $\\sqrt{151}<\\sqrt{168}$.\nVậy ta sắp xếp: $-13,2;12;\\dfrac{49}{4};\\sqrt{151};\\sqrt{168}$.",
+  "nhan_cu": "Tập hợp số thực. Giá trị tuyệt đối › So sánh, sắp xếp Số thực"
+ },
+ {
+  "ma_cau": "T107000000721",
+  "loai": "tu_luan",
+  "de": "Tính $A=1-2+2^2-2^3+2^4-\\dots+2^{2022}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mỗi số hạng bằng số hạng đứng trước nhân với $-2$, nên nhân $A$ với $2$ rồi cộng với $A$ thì các số hạng ở giữa triệt tiêu.\n**Bước 1.** Nhận ra quy luật của $A$: số mũ tăng dần từ $0$ đến $2022$ và dấu cộng trừ xen kẽ, số hạng cuối mang dấu cộng.\n**Bước 2.** Nhân hai vế với $2$ để các số hạng của $2A$ lệch đi một vị trí so với $A$ và có dấu ngược lại.\n**Bước 3.** Cộng $A$ với $2A$ vế theo vế để các cặp số hạng đối nhau triệt tiêu, chỉ còn số hạng đầu của $A$ và số hạng cuối của $2A$.\n**Bước 4.** Chia kết quả cho $3$ để tìm $A$.\n**Phần 2. Trình bày**\n$A=1-2+2^2-2^3+2^4-\\dots-2^{2021}+2^{2022}$\n$2A=2-2^2+2^3-2^4+2^5-\\dots-2^{2022}+2^{2023}$\nCộng vế theo vế h …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000762",
+  "loai": "tu_luan",
+  "de": "Thực hiện phép tính: $\\dfrac{3^{29}.4^{16}}{27^9.8^{11}}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** viết mọi thừa số về luỹ thừa của $2$ và $3$ rồi rút gọn các luỹ thừa cùng cơ số.\n**Bước 1.** Phân tích $4$, $27$ và $8$ thành luỹ thừa của $2$ hoặc của $3$.\n**Bước 2.** Dùng quy tắc luỹ thừa của một luỹ thừa để đưa tử và mẫu về tích hai luỹ thừa cơ số $2$ và $3$.\n**Bước 3.** Chia các luỹ thừa cùng cơ số ở tử cho mẫu rồi viết kết quả dưới dạng phân số.\n**Phần 2. Trình bày**\n$\\dfrac{3^{29}.4^{16}}{27^9.8^{11}}=\\dfrac{3^{29}.\\left(2^2\\right)^{16}}{\\left(3^3\\right)^9.\\left(2^3\\right)^{11}}$\n$=\\dfrac{3^{29}.2^{32}}{3^{27}.2^{33}}$\n$=\\dfrac{3^{29-27}}{2^{33-32}}$\n$=\\dfrac{3^2}{2}$\n$=\\dfrac{9}{2}$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000570",
+  "loai": "tu_luan",
+  "de": "So sánh hai biểu thức: $3^{4000}$ và $9^{2000}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đưa $9^{2000}$ về cơ số $3$ rồi so sánh hai số mũ.\n**Bước 1.** Viết $9$ thành luỹ thừa của $3$.\n**Bước 2.** Dùng quy tắc luỹ thừa của luỹ thừa để tính số mũ mới của $3$.\n**Bước 3.** So sánh hai luỹ thừa cùng cơ số và cùng số mũ.\n**Phần 2. Trình bày**\n$9^{2000}=\\left(3^2\\right)^{2000}=3^{4000}$\nVậy $3^{4000}=9^{2000}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "077022220401035",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức: $A=5|x+2|-9$.",
+  "dap_an": "-9",
+  "loi_giai": "Ta có: $|x+2|\\ge0$.\n$\\Rightarrow 5|x+2|\\ge0$.\n$\\Rightarrow 5|x+2|-9\\ge0-9$.\n$\\Rightarrow A\\ge-9$.\nDấu bằng xảy ra khi $|x+2|=0\\Rightarrow x=-2$.\nVậy GTNN của biểu thức $A$ là $-9$ khi $x=-2$.",
+  "nhan_cu": "GTLN-GTNN của biểu thức › Tìm GTLN - GTNN của biểu thức ứng dụng Căn bậc hai và GTTĐ"
+ },
+ {
+  "ma_cau": "T107000000700",
+  "loai": "trac_nghiem",
+  "de": "Giá trị của biểu thức $M=\\dfrac{6}{14}+\\dfrac{5}{13}+\\dfrac{4}{7}-\\dfrac{18}{13}$ bằng:",
+  "lua_chon": [
+   "$M=0$",
+   "$M=2$",
+   "$M=\\dfrac{3}{11}$",
+   "$M=\\dfrac{11}{3}$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** nhóm các phân số cùng mẫu (sau khi rút gọn) với nhau để cộng trừ cho nhanh.\n**Bước 1.** Rút gọn phân số $\\dfrac{6}{14}$ để thấy nó có cùng mẫu với $\\dfrac{4}{7}$.\n**Bước 2.** Dùng tính chất giao hoán và kết hợp để nhóm các phân số mẫu $7$ lại với nhau, các phân số mẫu $13$ lại với nhau.\n**Bước 3.** Cộng trừ từng nhóm rồi cộng hai kết quả với nhau.\n**Phần 2. Trình bày**\n$M=\\dfrac{6}{14}+\\dfrac{5}{13}+\\dfrac{4}{7}-\\dfrac{18}{13}$\n$=\\dfrac{3}{7}+\\dfrac{5}{13}+\\dfrac{4}{7}-\\dfrac{18}{13}$\n$=\\left(\\dfrac{3}{7}+\\dfrac{4}{7}\\right)+\\left(\\dfrac{5}{13}-\\dfrac{18}{13}\\right)$\n$=1+(-1)=0$\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000789",
+  "loai": "tu_luan",
+  "de": "Tìm $x$, biết: $x-\\dfrac{1}{3}=-1\\dfrac{2}{9}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** chuyển $\\dfrac{1}{3}$ sang vế phải và đổi dấu để tìm $x$.\n**Bước 1.** Đổi hỗn số ở vế phải thành phân số, chú ý dấu âm đứng trước cả hỗn số.\n**Bước 2.** Chuyển $\\dfrac{1}{3}$ sang vế phải, đổi dấu thành cộng.\n**Bước 3.** Quy đồng rồi cộng hai phân số để tìm $x$.\n**Phần 2. Trình bày**\n$x-\\dfrac{1}{3}=-1\\dfrac{2}{9}$\n$x-\\dfrac{1}{3}=\\dfrac{-11}{9}$\n$x=\\dfrac{-11}{9}+\\dfrac{1}{3}$\n$x=\\dfrac{-11}{9}+\\dfrac{3}{9}$\n$x=\\dfrac{-8}{9}$\nVậy $x=\\dfrac{-8}{9}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000653",
+  "loai": "tra_loi_ngan",
+  "de": "Thực hiện phép tính: $6,8+2^3+9,6:3$",
+  "dap_an": "18",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** luỹ thừa và phép chia được tính trước, sau đó cộng các số thập phân thuận tiện.\n**Bước 1.** Tính luỹ thừa $2^3$ và thương $9,6:3$ trước phép cộng.\n**Bước 2.** Nhóm hai số thập phân có tổng tròn chục để cộng nhanh.\n**Bước 3.** Cộng kết quả với số còn lại.\n**Phần 2. Trình bày**\n$6,8+2^3+9,6:3$\n$=6,8+8+3,2$\n$=(6,8+3,2)+8$\n$=10+8$\n$=18$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "07702220301005",
+  "loai": "tra_loi_ngan",
+  "de": "Sắp xếp các số $6;\\sqrt{40};-7,5;\\dfrac{25}{4};\\sqrt{48}$ theo giá trị từ bé đến lớn.",
+  "dap_an": "-7,5;6;\\dfrac{25}{4};\\sqrt{40};\\sqrt{48}",
+  "loi_giai": "Ta có:\n$-7,5<6$.\n$6=\\dfrac{24}{4}<\\dfrac{25}{4}$.\n$\\dfrac{25}{4}=\\sqrt{\\dfrac{625}{16}}<\\sqrt{40}$.\nMà $40<48$ nên $\\sqrt{40}<\\sqrt{48}$.\nVậy ta sắp xếp: $-7,5;6;\\dfrac{25}{4};\\sqrt{40};\\sqrt{48}$.",
+  "nhan_cu": "Tập hợp số thực. Giá trị tuyệt đối › So sánh, sắp xếp Số thực"
+ },
+ {
+  "ma_cau": "T107000000758",
+  "loai": "tra_loi_ngan",
+  "de": "Thực hiện phép tính: $\\dfrac{-3}{7}+\\left(3-\\dfrac{3}{4}\\right)-\\left(2,25-\\dfrac{10}{7}\\right)$",
+  "dap_an": "1",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đổi $2,25$ ra phân số rồi phá ngoặc, các số hạng đối nhau sẽ triệt tiêu.\n**Bước 1.** Đổi số thập phân $2,25$ thành phân số và tính nhanh giá trị trong ngoặc thứ nhất để so sánh hai ngoặc.\n**Bước 2.** Phá ngoặc có dấu trừ đứng trước thì đổi dấu mọi số hạng trong ngoặc đó.\n**Bước 3.** Nhóm các số hạng đối nhau và các phân số cùng mẫu $7$ rồi cộng.\n**Phần 2. Trình bày**\n$\\dfrac{-3}{7}+\\left(3-\\dfrac{3}{4}\\right)-\\left(2,25-\\dfrac{10}{7}\\right)$\n$=\\dfrac{-3}{7}+\\dfrac{9}{4}-\\left(\\dfrac{9}{4}-\\dfrac{10}{7}\\right)$\n$=\\dfrac{-3}{7}+\\dfrac{9}{4}-\\dfrac{9}{4}+\\dfrac{10}{7}$\n$=\\left(\\dfrac{-3}{7}+\\dfrac{10}{7}\\right)+\\left(\\dfrac{9}{4}-\\dfrac{9}{4}\\right)$\n$=1+0$\n$ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000618",
+  "loai": "tu_luan",
+  "de": "Nhiệt độ $T$ ($^\\circ C$) của môi trường không khí và độ cao $h$ (mét) ở một địa phương được liên hệ bởi công thức: $T=28-\\dfrac{3}{500}.h$\na) Đỉnh Phan Xi Păng cao khoảng $3143$ m thì nhiệt độ trên đỉnh núi là bao nhiêu? (làm tròn đến chữ số thập phân thứ nhất)\nb) Nhiệt độ bên ngoài một tàu bay đang bay là $-5,6^\\circ C$, vậy tàu bay đang bay ở độ cao bao nhiêu mét so với mặt đất?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** ý a) thay $h=3143$ vào công thức để tính $T$, ý b) thay $T=-5,6$ rồi tìm $h$ như một bài tìm số chưa biết.\n**Bước 1.** Ý a) Thay $h=3143$ vào công thức, nhân phân số $\\dfrac{3}{500}$ với $3143$ rồi lấy $28$ trừ đi tích đó.\n**Bước 2.** Ý a) Làm tròn kết quả đến chữ số thập phân thứ nhất bằng cách so sánh chữ số thập phân thứ hai với $5$.\n**Bước 3.** Ý b) Thay $T=-5,6$ vào công thức rồi chuyển vế để cô lập tích $\\dfrac{3}{500}.h$.\n**Bước 4.** Ý b) Tìm $h$ bằng cách chia vế còn lại cho $\\dfrac{3}{500}$, tức nhân với số nghịch đảo, rồi ghi kết quả kèm đơn vị mét.\n**Phần 2. Trình bày**\na) Với $h=3143$ thì nhiệt độ trên đỉnh núi là:\n$T=28-\\dfrac{3}{500}.3143=28- …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107020501032",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x$ biết: $|2x-4|+|2x-12|=\\dfrac{8}{(x-4)^2+1}$.",
+  "dap_an": "4",
+  "loi_giai": "$|2x-4|+|2x-12|=\\dfrac{8}{(x-4)^2+1}$\nXét VT:\n$|2x-4|+|2x-12|=|2x-4|+|12-2x|\\ge|2x-4+12-2x|=8$.\nXét VP:\n$(x-4)^2\\ge0$\n$\\Rightarrow (x-4)^2+1\\ge1$\n$\\Rightarrow \\dfrac{8}{(x-4)^2+1}\\le\\dfrac{8}{1}=8$.\nVậy VT$\\ge8$, VP$\\le8\\Rightarrow |2x-4|+|2x-12|=\\dfrac{8}{(x-4)^2+1}=8$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array}{1}(2x-4)(12-2x)\\ge0\\\\(x-4)^2=0\\end{array}\\right.\\Rightarrow x=4$.\nVậy $x=4$.",
+  "nhan_cu": "GTLN-GTNN của biểu thức › Tìm GTLN-GTNN của biểu thức ứng dụng BĐT GTTĐ."
+ },
+ {
+  "ma_cau": "T107000000530",
+  "loai": "tra_loi_ngan",
+  "de": "Thực hiện phép tính: $0,1.\\sqrt{225}-\\sqrt{\\dfrac{1}{4}}$",
+  "dap_an": "1",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** khai căn hai số $225$ và $\\dfrac{1}{4}$ trước, rồi mới nhân và trừ.\n**Bước 1.** Tìm căn bậc hai số học của $225$ bằng cách tìm số không âm có bình phương bằng $225$.\n**Bước 2.** Tìm căn bậc hai số học của $\\dfrac{1}{4}$ bằng cách khai căn cả tử và mẫu.\n**Bước 3.** Nhân $0,1$ với kết quả thứ nhất rồi trừ kết quả thứ hai.\n**Phần 2. Trình bày**\n$0,1.\\sqrt{225}-\\sqrt{\\dfrac{1}{4}}$\n$=0,1.15-\\dfrac{1}{2}$ (vì $15^2=225$ và $\\left(\\dfrac{1}{2}\\right)^2=\\dfrac{1}{4}$)\n$=1,5-0,5$\n$=1$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000624",
+  "loai": "tu_luan",
+  "de": "Tìm $x$ nguyên để biểu thức sau có giá trị nguyên: $A=\\dfrac{x-5}{x}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tách phân số thành một số nguyên cộng với một phân số có tử là hằng số, khi đó $A$ nguyên chỉ khi hằng số đó chia hết cho mẫu.\n**Bước 1.** Nêu điều kiện mẫu khác $0$ rồi tách $\\dfrac{x-5}{x}$ thành hiệu của $1$ và một phân số có tử là số $5$.\n**Bước 2.** Vì $x$ nguyên nên $A$ nguyên khi và chỉ khi $\\dfrac{5}{x}$ nguyên, tức là $x$ là ước của $5$.\n**Bước 3.** Liệt kê các ước nguyên của $5$ (cả ước dương và ước âm) rồi đối chiếu điều kiện.\n**Phần 2. Trình bày**\nĐiều kiện: $x\\ne0$.\n$A=\\dfrac{x-5}{x}=\\dfrac{x}{x}-\\dfrac{5}{x}=1-\\dfrac{5}{x}$\nVì $x$ nguyên nên $A$ nguyên khi và chỉ khi $\\dfrac{5}{x}$ nguyên, tức là $x$ là ước của $5$.\nCác ước nguyên của $5$ là  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000745",
+  "loai": "tu_luan",
+  "de": "Tìm $x$, biết: $\\left(\\dfrac{-2}{3}\\right)^9:x=\\left(\\dfrac{-2}{3}\\right)^7$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $x$ là số chia nên bằng số bị chia chia cho thương; hai luỹ thừa cùng cơ số nên chia bằng cách trừ số mũ.\n**Bước 1.** Nhận ra $x$ là số chia, nên muốn tìm $x$ ta lấy số bị chia chia cho thương.\n**Bước 2.** Viết phép chia hai luỹ thừa cùng cơ số $\\dfrac{-2}{3}$ và áp dụng công thức trừ số mũ.\n**Bước 3.** Tính luỹ thừa còn lại thành một phân số.\n**Phần 2. Trình bày**\n$\\left(\\dfrac{-2}{3}\\right)^9:x=\\left(\\dfrac{-2}{3}\\right)^7$\n$x=\\left(\\dfrac{-2}{3}\\right)^9:\\left(\\dfrac{-2}{3}\\right)^7$\n$x=\\left(\\dfrac{-2}{3}\\right)^{9-7}$\n$x=\\left(\\dfrac{-2}{3}\\right)^2$\n$x=\\dfrac{4}{9}$\nVậy $x=\\dfrac{4}{9}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000788",
+  "loai": "tu_luan",
+  "de": "Thực hiện phép tính: $\\dfrac{3}{7}.\\dfrac{-2}{5}-\\dfrac{3}{7}.\\dfrac{3}{5}+\\left(\\dfrac{4}{5}\\right)^4:\\left(\\dfrac{4}{5}\\right)^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai tích đầu có thừa số chung $\\dfrac{3}{7}$ nên đặt ra ngoài ngoặc, còn phép chia hai luỹ thừa cùng cơ số tính bằng cách trừ số mũ.\n**Bước 1.** Nhận ra thừa số chung $\\dfrac{3}{7}$ ở hai tích đầu và phép chia hai luỹ thừa cùng cơ số ở số hạng cuối.\n**Bước 2.** Đặt thừa số chung và tính tổng trong ngoặc; rút gọn luỹ thừa bằng cách trừ hai số mũ.\n**Bước 3.** Quy đồng hai kết quả rồi cộng để được kết quả cuối cùng.\n**Phần 2. Trình bày**\n$\\dfrac{3}{7}.\\dfrac{-2}{5}-\\dfrac{3}{7}.\\dfrac{3}{5}+\\left(\\dfrac{4}{5}\\right)^4:\\left(\\dfrac{4}{5}\\right)^3$\n$=\\dfrac{3}{7}.\\left(\\dfrac{-2}{5}-\\dfrac{3}{5}\\right)+\\dfrac{4}{5}$\n$=\\dfrac{3}{7}.(-1)+\\dfrac{4}{5}$\n$=\\dfrac{-1 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "077022220401002",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức: $A=|3x+6|+2024$.",
+  "dap_an": "2024",
+  "loi_giai": "Ta có: $|3x+6|\\ge0$.\n$\\Rightarrow |3x+6|+2024\\ge0+2024$.\n$\\Rightarrow A\\ge2024$.\nDấu bằng xảy ra khi $|3x+6|=0\\Rightarrow 3x+6=0\\Rightarrow x=-2$.\nVậy GTNN của biểu thức $A$ là $2024$ khi $x=-2$.",
+  "nhan_cu": "GTLN-GTNN của biểu thức › Tìm GTLN - GTNN của biểu thức ứng dụng Căn bậc hai và GTTĐ"
+ },
+ {
+  "ma_cau": "077022220401018",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTLN của biểu thức: $A=\\dfrac{9}{|3x+6|+1}$.",
+  "dap_an": "9",
+  "loi_giai": "Ta có: $|3x+6|\\ge0$.\n$\\Rightarrow |3x+6|+1\\ge1$.\n$\\Rightarrow \\dfrac{9}{|3x+6|+1}\\le\\dfrac{9}{1}$.\n$\\Rightarrow A\\le9$.\nDấu bằng xảy ra khi $|3x+6|=0\\Rightarrow 3x+6=0\\Rightarrow x=-2$.\nVậy GTLN của biểu thức $A$ là $9$ khi $x=-2$.",
+  "nhan_cu": "GTLN-GTNN của biểu thức › Tìm GTLN - GTNN của biểu thức ứng dụng Căn bậc hai và GTTĐ"
+ },
+ {
+  "ma_cau": "07702220301018",
+  "loai": "tra_loi_ngan",
+  "de": "Sắp xếp các số $\\sqrt{17};|-3,9|;3,8;|-4|;\\sqrt{15}$ theo giá trị từ bé đến lớn.",
+  "dap_an": "3,8;\\sqrt{15};|-3,9|;|-4|;\\sqrt{17}",
+  "loi_giai": "Ta có: $|-3,9|=3,9$; $|-4|=4$.\nMà $3,8=\\sqrt{14,44}$; $3,9=\\sqrt{15,21}$. Vì $\\sqrt{14,44}<\\sqrt{15}<\\sqrt{15,21}$ nên $3,8<\\sqrt{15}<3,9<4$.\nLại có $4=\\sqrt{16}<\\sqrt{17}$.\nVậy ta sắp xếp: $3,8;\\sqrt{15};|-3,9|;|-4|;\\sqrt{17}$.",
+  "nhan_cu": "Tập hợp số thực. Giá trị tuyệt đối › So sánh, sắp xếp Số thực"
+ },
+ {
+  "ma_cau": "T107000000547",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x$, biết: $\\dfrac{2}{5}x-\\dfrac{1}{2}=\\dfrac{3}{5}x+\\dfrac{7}{10}$",
+  "dap_an": "-6",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $x$ có mặt ở cả hai vế nên gom các số hạng chứa $x$ về vế trái, các số hạng tự do về vế phải.\n**Bước 1.** Chuyển $\\dfrac{3}{5}x$ sang vế trái và $-\\dfrac{1}{2}$ sang vế phải, đổi dấu từng số hạng.\n**Bước 2.** Thu gọn hệ số của $x$ ở vế trái và cộng hai phân số ở vế phải.\n**Bước 3.** Chia hai vế cho hệ số của $x$ để tìm $x$.\n**Phần 2. Trình bày**\n$\\dfrac{2}{5}x-\\dfrac{1}{2}=\\dfrac{3}{5}x+\\dfrac{7}{10}$\n$\\dfrac{2}{5}x-\\dfrac{3}{5}x=\\dfrac{7}{10}+\\dfrac{1}{2}$\n$\\dfrac{-1}{5}x=\\dfrac{7}{10}+\\dfrac{5}{10}$\n$\\dfrac{-1}{5}x=\\dfrac{6}{5}$\n$x=\\dfrac{6}{5}:\\dfrac{-1}{5}$\n$x=-6$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "077022220401017",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTLN của biểu thức: $A=\\dfrac{7}{|x-1|+2}$.",
+  "dap_an": "\\dfrac{7}{2}",
+  "loi_giai": "Ta có: $|x-1|\\ge0$.\n$\\Rightarrow |x-1|+2\\ge2$.\n$\\Rightarrow \\dfrac{7}{|x-1|+2}\\le\\dfrac{7}{2}$.\n$\\Rightarrow A\\le\\dfrac{7}{2}$.\nDấu bằng xảy ra khi $|x-1|=0\\Rightarrow x-1=0\\Rightarrow x=1$.\nVậy GTLN của biểu thức $A$ là $\\dfrac{7}{2}$ khi $x=1$.",
+  "nhan_cu": "GTLN-GTNN của biểu thức › Tìm GTLN - GTNN của biểu thức ứng dụng Căn bậc hai và GTTĐ"
+ },
+ {
+  "ma_cau": "T107020501034",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x$ biết: $|3x+3|+|3x-9|=\\dfrac{12}{(x-1)^2+1}$.",
+  "dap_an": "1",
+  "loi_giai": "$|3x+3|+|3x-9|=\\dfrac{12}{(x-1)^2+1}$\nXét VT:\n$|3x+3|+|3x-9|=|3x+3|+|9-3x|\\ge|3x+3+9-3x|=12$.\nXét VP:\n$(x-1)^2\\ge0$\n$\\Rightarrow (x-1)^2+1\\ge1$\n$\\Rightarrow \\dfrac{12}{(x-1)^2+1}\\le\\dfrac{12}{1}=12$.\nVậy VT$\\ge12$, VP$\\le12\\Rightarrow |3x+3|+|3x-9|=\\dfrac{12}{(x-1)^2+1}=12$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array}{1}(3x+3)(9-3x)\\ge0\\\\(x-1)^2=0\\end{array}\\right.\\Rightarrow x=1$.\nVậy $x=1$.",
+  "nhan_cu": "GTLN-GTNN của biểu thức › Tìm GTLN-GTNN của biểu thức ứng dụng BĐT GTTĐ."
+ },
+ {
+  "ma_cau": "T107000000773",
+  "loai": "tu_luan",
+  "de": "Nhân dịp khai trương, một cửa hàng bánh Pizza giảm giá $10\\%$ tất cả các sản phẩm và giảm thêm $5\\%$ trên giá đã giảm khi mua từ hai sản phẩm trở lên. Bác Lan mua một Pizza rau củ size vừa giá $129000$ đồng/chiếc và một Pizza thập cẩm size lớn giá $249000$ đồng/chiếc. Hỏi nếu bác Lan đưa cho nhân viên thu ngân $500000$ đồng thì bác được trả lại bao nhiêu tiền?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** bác Lan mua hai sản phẩm nên được cả hai lần giảm giá, lần thứ hai tính trên giá đã giảm lần thứ nhất.\n**Bước 1.** Tính tổng giá niêm yết của hai chiếc Pizza.\n**Bước 2.** Tính giá sau lần giảm $10\\%$, rồi tính tiếp giá sau lần giảm thêm $5\\%$ trên giá vừa tìm.\n**Bước 3.** Lấy số tiền bác Lan đưa trừ số tiền phải trả để được số tiền trả lại.\n**Chú ý:** hai lần giảm giá liên tiếp không cộng thành một lần giảm $15\\%$.\n**Phần 2. Trình bày**\nTổng giá niêm yết của hai chiếc Pizza là:\n$129000+249000=378000$ (đồng)\nSố tiền sau khi giảm $10\\%$ là:\n$378000.(100\\%-10\\%)=340200$ (đồng)\nSố tiền bác Lan phải trả sau khi giảm thêm $5\\%$ là:\n$340200.(100\\%-5\\%)=323190$ (đ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000577",
+  "loai": "tra_loi_ngan",
+  "de": "Thực hiện phép tính (tính hợp lí nếu có thể): $\\dfrac{6}{5}+\\left(\\dfrac{-3}{8}\\right)+\\dfrac{-1}{5}+\\dfrac{11}{8}$",
+  "dap_an": "2",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** bốn phân số chỉ có hai loại mẫu là $5$ và $8$, nên ghép các phân số cùng mẫu thành từng cặp.\n**Bước 1.** Dùng tính chất giao hoán và kết hợp để đưa các phân số mẫu $5$ lại gần nhau.\n**Bước 2.** Cộng riêng từng cặp phân số cùng mẫu, mỗi cặp cho kết quả là một số nguyên.\n**Bước 3.** Cộng hai kết quả nguyên vừa tìm được.\n**Phần 2. Trình bày**\n$\\dfrac{6}{5}+\\left(\\dfrac{-3}{8}\\right)+\\dfrac{-1}{5}+\\dfrac{11}{8}$\n$=\\left(\\dfrac{6}{5}+\\dfrac{-1}{5}\\right)+\\left(\\dfrac{-3}{8}+\\dfrac{11}{8}\\right)$\n$=\\dfrac{5}{5}+\\dfrac{8}{8}$\n$=1+1$\n$=2$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "077020101040",
+  "loai": "tra_loi_ngan",
+  "de": "Viết các phân số sau dưới dạng số thập phân: $\\dfrac{7}{25};\\dfrac{5}{6};-\\dfrac{13}{50};\\dfrac{17}{12}$.",
+  "dap_an": "0,28; 0,8(3); -0,26; 1,41(6)",
+  "loi_giai": "$\\dfrac{7}{25}=0,28$\n$\\dfrac{5}{6}=0,8(3)$\n$-\\dfrac{13}{50}=-0,26$\n$\\dfrac{17}{12}=1,41(6)$.",
+  "nhan_cu": "Số thập phân vô hạn tuần hoàn › Nhận biết STP hữu hạn, STP vô hạn tuần hoàn"
+ },
+ {
+  "ma_cau": "T107000000754",
+  "loai": "trac_nghiem",
+  "de": "Kết quả của phép tính $3^4.\\left(\\dfrac{5}{3}\\right)^4$ là",
+  "lua_chon": [
+   "$\\dfrac{5}{3}$",
+   "$125$",
+   "$\\left(\\dfrac{5}{3}\\right)^8$",
+   "$625$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai luỹ thừa cùng số mũ thì nhân hai cơ số rồi giữ nguyên số mũ.\n**Bước 1.** Nhận ra hai thừa số cùng có số mũ $4$ nên gộp được thành một luỹ thừa của tích hai cơ số.\n**Bước 2.** Nhân hai cơ số, rút gọn phân số để được một số nguyên.\n**Bước 3.** Tính luỹ thừa của số vừa tìm rồi so với các phương án.\n**Phần 2. Trình bày**\n$3^4.\\left(\\dfrac{5}{3}\\right)^4=\\left(3.\\dfrac{5}{3}\\right)^4$\n$=5^4$\n$=625$\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107020501043",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x$ biết: $|x-2|+|x-8|=\\dfrac{6}{(x-5)^2+1}$.",
+  "dap_an": "5",
+  "loi_giai": "$|x-2|+|x-8|=\\dfrac{6}{(x-5)^2+1}$\nXét VT:\n$|x-2|+|x-8|=|x-2|+|8-x|\\ge|x-2+8-x|=6$.\nXét VP:\n$(x-5)^2\\ge0$\n$\\Rightarrow (x-5)^2+1\\ge1$\n$\\Rightarrow \\dfrac{6}{(x-5)^2+1}\\le\\dfrac{6}{1}=6$.\nVậy VT$\\ge6$, VP$\\le6\\Rightarrow |x-2|+|x-8|=\\dfrac{6}{(x-5)^2+1}=6$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array}{1}(x-2)(8-x)\\ge0\\\\(x-\n5)^2=0\\end{array}\\right.\\Rightarrow x=5$.\nVậy $x=5$.",
+  "nhan_cu": "GTLN-GTNN của biểu thức › Tìm GTLN-GTNN của biểu thức ứng dụng BĐT GTTĐ."
+ },
+ {
+  "ma_cau": "T107000000562",
+  "loai": "tu_luan",
+  "de": "Tìm số nguyên $n$, biết: $\\dfrac{-5}{12}<\\dfrac{n}{5}<\\dfrac{1}{4}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** quy đồng về mẫu chung $60$ rồi liệt kê các số nguyên $n$ thoả mãn bất đẳng thức của các tử.\n**Bước 1.** Tìm mẫu chung của ba mẫu $12$, $5$ và $4$ rồi quy đồng cả ba phân số.\n**Bước 2.** Suy ra điều kiện của $12n$ từ việc so sánh các tử cùng mẫu dương.\n**Bước 3.** Tìm các bội của $12$ nằm trong khoảng đó, từ đó liệt kê các giá trị nguyên của $n$.\n**Phần 2. Trình bày**\n$\\dfrac{-5}{12}<\\dfrac{n}{5}<\\dfrac{1}{4}$\n$\\dfrac{-25}{60}<\\dfrac{12n}{60}<\\dfrac{15}{60}$\n$-25<12n<15$\nVì $12n$ là bội của $12$ nên $12n\\in\\{-24;-12;0;12\\}$.\n$n\\in\\{-2;-1;0;1\\}$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107020501039",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x$ biết: $|2x+4|+|2x-8|=\\dfrac{12}{(x-1)^2+1}$.",
+  "dap_an": "1",
+  "loi_giai": "$|2x+4|+|2x-8|=\\dfrac{12}{(x-1)^2+1}$\nXét VT:\n$|2x+4|+|2x-8|=|2x+4|+|8-2x|\\ge|2x+4+8-2x|=12$.\nXét VP:\n$(x-1)^2\\ge0$\n$\\Rightarrow (x-1)^2+1\\ge1$\n$\\Rightarrow \\dfrac{12}{(x-1)^2+1}\\le\\dfrac{12}{1}=12$.\nVậy VT$\\ge12$, VP$\\le12\\Rightarrow |2x+4|+|2x-8|=\\dfrac{12}{(x-1)^2+1}=12$.\nDấu bằng xảy ra khi $\\left\\{\\begin{array}{l}(2x+4)(8-2x)\\ge0\\\\ (x-1)^2=0\\end{array}\\right.$ $\\Rightarrow x=1 $.\nVậy $x=1$.",
+  "nhan_cu": "GTLN-GTNN của biểu thức › Tìm GTLN-GTNN của biểu thức ứng dụng BĐT GTTĐ."
+ },
+ {
+  "ma_cau": "T107000000518",
+  "loai": "tra_loi_ngan",
+  "de": "Tính: $\\left(\\dfrac{8}{9}\\right)^3.\\left(\\dfrac{9}{4}\\right)^3$",
+  "dap_an": "8",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai luỹ thừa cùng số mũ thì viết được thành luỹ thừa của tích hai cơ số.\n**Bước 1.** Nhận ra hai thừa số cùng số mũ $3$ nhưng khác cơ số.\n**Bước 2.** Gộp thành luỹ thừa của tích: $x^n.y^n=(x.y)^n$.\n**Bước 3.** Tính tích hai cơ số (rút gọn được rất nhiều) rồi luỹ thừa kết quả.\n**Phần 2. Trình bày**\n$\\left(\\dfrac{8}{9}\\right)^3.\\left(\\dfrac{9}{4}\\right)^3=\\left(\\dfrac{8}{9}.\\dfrac{9}{4}\\right)^3$\n$=2^3$\n$=8$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000642",
+  "loai": "trac_nghiem",
+  "de": "Số nào trong các số sau là số vô tỉ?",
+  "lua_chon": [
+   "$\\dfrac{2}{3}$",
+   "$\\sqrt{2}$",
+   "$3,5$",
+   "$\\sqrt{16}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** số vô tỉ là số thập phân vô hạn không tuần hoàn, nên các số viết được dưới dạng phân số đều là số hữu tỉ.\n**Bước 1.** Xét từng phương án xem có viết được dưới dạng phân số hay không.\n**Bước 2.** Tính giá trị các căn bậc hai là số chính phương để biết nó có phải số hữu tỉ không.\n**Bước 3.** Chọn phương án còn lại không viết được dưới dạng phân số.\n**Phần 2. Trình bày**\n$\\dfrac{2}{3}$ là phân số nên là số hữu tỉ.\n$3,5=\\dfrac{7}{2}$ là số hữu tỉ.\n$\\sqrt{16}=4$ là số hữu tỉ.\n$\\sqrt{2}$ không viết được dưới dạng phân số (số thập phân vô hạn không tuần hoàn) nên là số vô tỉ.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000746",
+  "loai": "tu_luan",
+  "de": "Một cửa hàng pizza niêm yết giá tiền như sau:\nBánh cỡ to: $11,5$ đô la; bánh cỡ trung: $9,5$ đô la; bánh cỡ nhỏ: $6,25$ đô la.\nBạn Linda muốn mua $2$ cái bánh cỡ to, $3$ cái bánh cỡ trung và $3$ cái bánh cỡ nhỏ. Bạn đưa cho người bán hàng $100$ đô la. Hỏi người bán hàng phải trả lại cho Linda bao nhiêu tiền?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tiền trả lại bằng số tiền Linda đưa trừ đi tổng tiền ba loại bánh; tiền mỗi loại là số bánh nhân với giá một cái.\n**Bước 1.** Tính tiền của từng loại bánh bằng cách nhân số bánh với giá một cái.\n**Bước 2.** Cộng tiền ba loại bánh để được số tiền Linda phải trả.\n**Bước 3.** Lấy $100$ đô la trừ đi số tiền phải trả để tìm tiền trả lại, rồi đối chiếu: tiền trả lại phải nhỏ hơn $100$ đô la.\n**Phần 2. Trình bày**\nSố tiền mua $2$ bánh cỡ to là:\n$2.11,5=23$ (đô la)\nSố tiền mua $3$ bánh cỡ trung là:\n$3.9,5=28,5$ (đô la)\nSố tiền mua $3$ bánh cỡ nhỏ là:\n$3.6,25=18,75$ (đô la)\nTổng số tiền Linda phải trả là:\n$23+28,5+18,75=70,25$ (đô la)\nSố tiền người bán hàng phải tr …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000720",
+  "loai": "tu_luan",
+  "de": "Tìm $x$, biết: $\\dfrac{1}{x(x+1)}+\\dfrac{1}{(x+1)(x+2)}+\\dfrac{1}{(x+2)(x+3)}-\\dfrac{1}{x}=\\dfrac{1}{2010}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mỗi phân số có mẫu là tích hai số liên tiếp tách được thành hiệu hai phân số, nên ba phân số đầu triệt tiêu gần hết.\n**Bước 1.** Nêu điều kiện của $x$ để các mẫu số đều khác $0$.\n**Bước 2.** Tách từng phân số có mẫu là tích hai thừa số liên tiếp thành hiệu của hai phân số.\n**Bước 3.** Cộng ba hiệu đó, các số hạng đối nhau triệt tiêu, rồi kết hợp với $-\\dfrac{1}{x}$ ở vế trái.\n**Bước 4.** Đưa đẳng thức còn lại về hai phân số có cùng tử $1$, hai phân số bằng nhau có cùng tử thì mẫu bằng nhau.\n**Phần 2. Trình bày**\nĐiều kiện: $x\\ne0$, $x\\ne-1$, $x\\ne-2$, $x\\ne-3$.\nVới $a\\ne0$, $a\\ne-1$ ta có $\\dfrac{1}{a}-\\dfrac{1}{a+1}=\\dfrac{(a+1)-a}{a.(a+1)}=\\dfrac{1}{a.(a …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "07702220301017",
+  "loai": "tra_loi_ngan",
+  "de": "Sắp xếp các số $\\sqrt{13};|-3,5|;3,4;\\left|-\\dfrac{18}{5}\\right|;\\sqrt{12}$ theo giá trị từ bé đến lớn.",
+  "dap_an": "3,4;\\sqrt{12};|-3,5|;\\left|-\\dfrac{18}{5}\\right|;\\sqrt{13}",
+  "loi_giai": "Ta có: $|-3,5|=3,5$; $\\left|-\\dfrac{18}{5}\\right|=\\dfrac{18}{5}=3,6$.\nMà $3,4=\\sqrt{11,56}$; $3,5=\\sqrt{12,25}$. Vì $\\sqrt{11,56}<\\sqrt{12}<\\sqrt{12,25}$ nên $3,4<\\sqrt{12}<3,5<3,6$.\nLại có $3,6=\\sqrt{12,96}<\\sqrt{13}$.\nVậy ta sắp xếp: $3,4;\\sqrt{12};|-3,5|;\\left|-\\dfrac{18}{5}\\right|;\\sqrt{13}$.",
+  "nhan_cu": "Tập hợp số thực. Giá trị tuyệt đối › So sánh, sắp xếp Số thực"
+ },
+ {
+  "ma_cau": "T107020501022",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức $A=|x+1|+|x+6|$.",
+  "dap_an": "5",
+  "loi_giai": "$A=|x+1|+|x+6|$\n$A=|x+1|+|-x-6|$\n$A\\ge|x+1+(-x-6)|$\n$A\\ge|-5|$\n$A\\ge5$\nDấu bằng xảy ra khi $(x+1)(-x-6)\\ge0\\Rightarrow -6\\le x\\le-1$.\nVậy GTNN của $A$ là $5$ khi $-6\\le x\\le-1$.",
+  "nhan_cu": "GTLN-GTNN của biểu thức › Tìm GTLN-GTNN của biểu thức ứng dụng BĐT GTTĐ."
+ },
+ {
+  "ma_cau": "T107000000752",
+  "loai": "trac_nghiem",
+  "de": "$x^7$ là kết quả của phép tính nào trong các phép tính sau?",
+  "lua_chon": [
+   "$x^8.x^1$",
+   "$x^6:x^1$",
+   "$x^7.x^1$",
+   "$x^6.x^1$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tính kết quả từng phương án bằng quy tắc nhân, chia luỹ thừa cùng cơ số rồi tìm phương án cho số mũ bằng $7$.\n**Bước 1.** Nhớ quy tắc: nhân hai luỹ thừa cùng cơ số thì cộng số mũ, chia thì trừ số mũ.\n**Bước 2.** Áp dụng quy tắc cho từng phương án để tìm số mũ của kết quả.\n**Bước 3.** Chọn phương án có kết quả là luỹ thừa của $x$ với số mũ đúng bằng số mũ đề cho.\n**Phần 2. Trình bày**\n$x^8.x^1=x^{8+1}=x^9$\n$x^6:x^1=x^{6-1}=x^5$\n$x^7.x^1=x^{7+1}=x^8$\n$x^6.x^1=x^{6+1}=x^7$\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T107000000542",
+  "loai": "tu_luan",
+  "de": "Tìm $x$, biết: $\\left(x+\\dfrac{1}{3}\\right)-\\dfrac{2}{5}=\\dfrac{-1}{4}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** làm từ ngoài vào trong: trước hết tìm giá trị của ngoặc $\\left(x+\\dfrac{1}{3}\\right)$, sau đó mới tìm $x$.\n**Bước 1.** Chuyển $\\dfrac{2}{5}$ sang vế phải để tìm giá trị của ngoặc.\n**Bước 2.** Quy đồng và cộng hai phân số ở vế phải.\n**Bước 3.** Chuyển $\\dfrac{1}{3}$ sang vế phải rồi quy đồng để tính $x$.\n**Phần 2. Trình bày**\n$\\left(x+\\dfrac{1}{3}\\right)-\\dfrac{2}{5}=\\dfrac{-1}{4}$\n$x+\\dfrac{1}{3}=\\dfrac{-1}{4}+\\dfrac{2}{5}$\n$x+\\dfrac{1}{3}=\\dfrac{-5}{20}+\\dfrac{8}{20}$\n$x+\\dfrac{1}{3}=\\dfrac{3}{20}$\n$x=\\dfrac{3}{20}-\\dfrac{1}{3}$\n$x=\\dfrac{9}{60}-\\dfrac{20}{60}$\n$x=\\dfrac{-11}{60}$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

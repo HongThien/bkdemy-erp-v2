@@ -1,0 +1,552 @@
+[
+ {
+  "ma_cau": "T109030301028",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{2\\sqrt{x}-1}{\\sqrt{x}-1}$ $(x\\ge0;x \\ne1)$. Tìm $x$ để $P=\\dfrac{11}{5}$.",
+  "dap_an": "36",
+  "loi_giai": "$\\dfrac{2\\sqrt{x}-1}{\\sqrt{x}-1}=\\dfrac{11}{5}$\n$5(2\\sqrt{x}-1)=11(\\sqrt{x}-1)$\n$10\\sqrt{x}-5=11\\sqrt{x}-11$\n$\\sqrt{x}=6$\n$x=36$ (TMĐK).\nVậy $x=36$ thì $P=\\dfrac{11}{5}$.",
+  "nhan_cu": "Câu C rút gọn › Tìm x để P thoả mãn Đẳng thức"
+ },
+ {
+  "ma_cau": "T109030101060",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $3\\sqrt{10}-\\sqrt{40}+4\\sqrt{90}-3\\sqrt{160}$.",
+  "dap_an": "$\\sqrt{10}$",
+  "loi_giai": "$3\\sqrt{10}-\\sqrt{40}+4\\sqrt{90}-3\\sqrt{160}$\n$=3\\sqrt{10}-2\\sqrt{10}+4\\cdot3\\sqrt{10}-3\\cdot4\\sqrt{10}$\n$=3\\sqrt{10}-2\\sqrt{10}+12\\sqrt{10}-12\\sqrt{10}$\n$=\\sqrt{10}$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109030101120",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $\\dfrac{6}{\\sqrt{7}+1}-2\\sqrt{7}+\\sqrt{(3-\\sqrt{7})^2}$.",
+  "dap_an": "$2-2\\sqrt{7}$",
+  "loi_giai": "$\\dfrac{6}{\\sqrt{7}+1}-2\\sqrt{7}+\\sqrt{(3-\\sqrt{7})^2}$\n$=\\dfrac{6(\\sqrt{7}-1)}{(\\sqrt{7}+1)(\\sqrt{7}-1)}-2\\sqrt{7}+|3-\\sqrt{7}|$\n$=\\dfrac{6(\\sqrt{7}-1)}{7-1}-2\\sqrt{7}+|3-\\sqrt{7}|$\n$=\\sqrt{7}-1-2\\sqrt{7}+(3-\\sqrt{7})$\n$=2-2\\sqrt{7}$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109030101049",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $A=\\sqrt{150}+\\dfrac12\\sqrt{24}-0{,}5\\sqrt{96}$.",
+  "dap_an": "$4\\sqrt{6}$",
+  "loi_giai": "$A=\\sqrt{150}+\\dfrac12\\sqrt{24}-0{,}5\\sqrt{96}$\n$A=5\\sqrt{6}+\\dfrac12\\cdot2\\sqrt{6}-0{,}5\\cdot4\\sqrt{6}$\n$A=5\\sqrt{6}+\\sqrt{6}-2\\sqrt{6}$\n$A=4\\sqrt{6}$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109030101018",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $B=\\dfrac{8}{3+\\sqrt{5}}+\\sqrt{(3-2\\sqrt{5})^2}$.",
+  "dap_an": "3",
+  "loi_giai": "$B=\\dfrac{8}{3+\\sqrt{5}}+\\sqrt{(3-2\\sqrt{5})^2}$\n$B=\\dfrac{8(3-\\sqrt{5})}{9-5}+|3-2\\sqrt{5}|$\n$B=2(3-\\sqrt{5})+(2\\sqrt{5}-3)$\n$B=3$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109000000574",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm một số tự nhiên có hai chữ số biết rằng tổng của hai chữ số bằng $12$. Nếu viết số đó theo thứ tự ngược lại thì được một số mới lớn hơn số ban đầu là $54$ đơn vị.",
+  "dap_an": "39",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** số có hai chữ số gồm chữ số hàng chục $x$ và chữ số hàng đơn vị $y$ là $10x+y$; hai điều kiện của đề cho hai phương trình bậc nhất hai ẩn.\n**Bước 1.** Gọi chữ số hàng chục là $x$, chữ số hàng đơn vị là $y$ và nêu điều kiện của hai chữ số.\n**Bước 2.** Lập phương trình thứ nhất từ điều kiện tổng hai chữ số bằng $12$.\n**Bước 3.** Viết số mới sau khi đổi chỗ hai chữ số, lập hiệu \"số mới trừ số cũ\" bằng $54$ rồi thu gọn thành phương trình bậc nhất hai ẩn.\n**Bước 4.** Giải hệ hai phương trình bằng phương pháp cộng đại số để tìm $x$ và $y$.\n**Bước 5.** Đối chiếu $x$, $y$ với điều kiện của chữ số rồi viết lại số cần tìm.\n**Chú ý:** khi đổi chỗ hai chữ số, số mới l …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000621",
+  "loai": "tu_luan",
+  "de": "Giải bất phương trình sau: $x(x-2)\\le x^2-5$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai vế đều có $x^2$ nên sau khi bỏ ngoặc, hạng tử $x^2$ triệt tiêu và bất phương trình trở thành bất phương trình bậc nhất một ẩn.\n**Bước 1.** Nhân đơn thức $x$ với đa thức $x-2$ để bỏ dấu ngoặc ở vế trái.\n**Bước 2.** Chuyển các hạng tử chứa $x$ sang một vế, hạng tử tự do sang vế còn lại; hai hạng tử $x^2$ cùng trừ đi nên mất.\n**Bước 3.** Chia hai vế cho hệ số của $x$, nhớ đổi chiều bất đẳng thức nếu hệ số đó là số âm, rồi kết luận nghiệm.\n**Chú ý:** chia cả hai vế cho một số âm thì dấu bất đẳng thức đổi chiều.\n**Phần 2. Trình bày**\nTa có $x(x-2)\\le x^2-5$\n$x^2-2x\\le x^2-5$\n$-2x\\le-5$ (chuyển $x^2$ từ vế phải sang vế trái và rút gọn)\n$x\\ge\\dfrac{5}{2}$ (ch …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109020202024",
+  "loai": "tra_loi_ngan",
+  "de": "Giải bất phương trình: $2 - 3x > 2(x + 6)$",
+  "dap_an": "$x < -2$",
+  "loi_giai": "$2 - 3x > 2(x + 6)$\\n$2 - 3x > 2x + 12$\\n$-3x - 2x > 12 - 2$\\n$-5x > 10$\\n$x < -2$\\nVậy tập nghiệm của bất phương trình là $x < -2$.",
+  "nhan_cu": "Bất phương trình bậc nhất một ẩn › Giải bất phương trình quy về bất phương trình bậc nhất một ẩn -  Dạng đa thức"
+ },
+ {
+  "ma_cau": "T109030102082",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{49+12\\sqrt{5}}-\\sqrt{49-12\\sqrt{5}}$.",
+  "dap_an": "$4$",
+  "loi_giai": "$A=\\sqrt{49+12\\sqrt{5}}-\\sqrt{49-12\\sqrt{5}}$\n$A=\\sqrt{(2+3\\sqrt{5})^2}-\\sqrt{(2-3\\sqrt{5})^2}$\n$A=|2+3\\sqrt{5}|-|2-3\\sqrt{5}|$\n$A=2+3\\sqrt{5}-(3\\sqrt{5}-2)$\n$A=2+3\\sqrt{5}-3\\sqrt{5}+2$\n$A=4$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - Ứng dụng hẳng đẳng thức chứa căn"
+ },
+ {
+  "ma_cau": "T109030301011",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}+7}{\\sqrt{x}+2}$ $(x\\ge0)$. Tìm $x$ để $P^2=4$.",
+  "dap_an": "9",
+  "loi_giai": "TH1: $P=2$.\n$\\dfrac{\\sqrt{x}+7}{\\sqrt{x}+2}=2$\n$\\sqrt{x}+7=2(\\sqrt{x}+2)$\n$\\sqrt{x}+7=2\\sqrt{x}+4$\n$\\sqrt{x}=3$\n$x=9$ (TMĐK).\nTH2: $P=-2$.\n$\\dfrac{\\sqrt{x}+7}{\\sqrt{x}+2}=-2$\n$\\sqrt{x}+7=-2(\\sqrt{x}+2)$\n$\\sqrt{x}+7=-2\\sqrt{x}-4$\n$3\\sqrt{x}=-11$\n$\\sqrt{x}=-\\dfrac{11}{3}$ (Vô lí).\nVậyy $x=9$ thì $P^2=4$.",
+  "nhan_cu": "Câu C rút gọn › Tìm x để P thoả mãn Đẳng thức"
+ },
+ {
+  "ma_cau": "T109030102010",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{9+4\\sqrt5}-\\sqrt{9-4\\sqrt5}$.",
+  "dap_an": "$4$",
+  "loi_giai": "$A=\\sqrt{9+4\\sqrt5}-\\sqrt{9-4\\sqrt5}$\n$A=\\sqrt{(2+\\sqrt5)^2}-\\sqrt{(2-\\sqrt5)^2}$\n$A=|2+\\sqrt5|-|2-\\sqrt5|$\n$A=2+\\sqrt5-(\\sqrt5-2)$\n$A=4$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - Ứng dụng hẳng đẳng thức chứa căn"
+ },
+ {
+  "ma_cau": "T109020304028",
+  "loai": "tra_loi_ngan",
+  "de": "Hai ô tô khởi hành cùng một lúc từ A đến B. Vận tốc của ô tô thứ nhất lớn hơn vận tốc của ô tô thứ hai là $15 \\text{km/h}$ nên ô tô thứ nhất đến trước ô tô thứ hai $30$ phút. Tính vận tốc mỗi ô tô biết quãng đường AB dài $150 \\text{ km}$.",
+  "dap_an": "75; 60",
+  "loi_giai": "Đổi $30$ phút $= \\dfrac{1}{2}$ (giờ)\nGọi vận tốc của ô tô thứ nhất là $x$ (km/h, $x > 0$).\nVận tốc ô tô thứ nhất lớn hơn vận tốc của ô tô thứ hai là $15 \\text{ km/h}$ nên vận tốc của ô tô thứ hai là: $x - 15$ (km/h).\nThời gian ô tô thứ nhất đi quãng đường AB là: $\\dfrac{150}{x}$ (giờ)\nThời gian ô tô thứ hai đi quãng đường AB là: $\\dfrac{150}{x-15}$ (giờ)\nVì ô tô thứ nhất đến trước ô tô thứ hai $30$ phút nên ta có PT:\n$\\dfrac{150}{x-15} - \\dfrac{150}{x} = \\dfrac{1}{2}$\n$\\dfrac{150x - 150(x - 15)}{x(x - 15)} = \\dfrac{1}{2}$\n$\\dfrac{150x - 150x + 2250}{x(x - 15)} = \\dfrac{1}{2}$\n$\\dfrac{2250}{x(x - 15)} = \\dfrac{1}{2}$\n$x(x - 15) = 2 \\cdot 2250$\n$x^2 - 15x - 4500 = 0$\n$(x + 60)(x - 75) = 0$\nTH1 …",
+  "nhan_cu": "Giải toán bằng cách lập phương trình › Bài toán Chuyển động cổ điển"
+ },
+ {
+  "ma_cau": "T109030101005",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $\\sqrt{36}\\cdot\\sqrt{25}+\\sqrt{625}:\\sqrt{25}$.",
+  "dap_an": "35",
+  "loi_giai": "$\\sqrt{36}\\cdot\\sqrt{25}+\\sqrt{625}:\\sqrt{25}$\n$=6\\cdot5+25:5$\n$=30+5$\n$=35$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109030102078",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{29+12\\sqrt{5}}-\\sqrt{29-12\\sqrt{5}}$.",
+  "dap_an": "$6$",
+  "loi_giai": "$A=\\sqrt{29+12\\sqrt{5}}-\\sqrt{29-12\\sqrt{5}}$\n$A=\\sqrt{(3+2\\sqrt{5})^2}-\\sqrt{(3-2\\sqrt{5})^2}$\n$A=|3+2\\sqrt{5}|-|3-2\\sqrt{5}|$\n$A=3+2\\sqrt{5}-(2\\sqrt{5}-3)$\n$A=3+2\\sqrt{5}-2\\sqrt{5}+3$\n$A=6$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - Ứng dụng hẳng đẳng thức chứa căn"
+ },
+ {
+  "ma_cau": "T109030101107",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $\\sqrt{12}-2\\sqrt{27}-3\\sqrt{48}+\\sqrt{75}$.",
+  "dap_an": "$-11\\sqrt{3}$",
+  "loi_giai": "$\\sqrt{12}-2\\sqrt{27}-3\\sqrt{48}+\\sqrt{75}$\n$=2\\sqrt{3}-2\\cdot3\\sqrt{3}-3\\cdot4\\sqrt{3}+5\\sqrt{3}$\n$=2\\sqrt{3}-6\\sqrt{3}-12\\sqrt{3}+5\\sqrt{3}$\n$=-11\\sqrt{3}$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109000000598",
+  "loai": "tu_luan",
+  "de": "Cho hai biểu thức $A=\\dfrac{\\sqrt{x}-1}{\\sqrt{x}+1}$ và $B=\\dfrac{\\sqrt{x}+3}{\\sqrt{x}+1}-\\dfrac{5}{1-\\sqrt{x}}+\\dfrac{4}{x-1}$ với $x\\ge0$, $x\\ne1$.\na) Tính giá trị của biểu thức $A$ khi $x=64$.\nb) Chứng minh: $B=\\dfrac{\\sqrt{x}+6}{\\sqrt{x}-1}$.\nc) Đặt $P=A \\cdot B$. Tìm $x$ để $P^2=4$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mẫu chung của ba phân thức trong $B$ là $x-1=(\\sqrt{x}-1)(\\sqrt{x}+1)$, và phải đổi $1-\\sqrt{x}=-(\\sqrt{x}-1)$ để mẫu cùng dạng; sang ý c thì $P$ rút gọn rất gọn rồi mới giải phương trình.\n**Bước 1.** Ý a: kiểm tra $x=64$ thoả điều kiện, tính $\\sqrt{x}=8$ rồi thay vào biểu thức $A$.\n**Bước 2.** Ý b: đổi dấu phân thức thứ hai để mẫu là $\\sqrt{x}-1$, viết $x-1$ thành tích rồi quy đồng ba phân thức về mẫu chung $(\\sqrt{x}-1)(\\sqrt{x}+1)$.\n**Bước 3.** Ý b: nhân các đa thức ở tử, cộng các hạng tử đồng dạng rồi phân tích tử thành nhân tử để rút gọn nhân tử chung với mẫu.\n**Bước 4.** Ý c: thay $B$ ở ý b vào $P=A \\cdot B$ và rút gọn nhân tử $\\sqrt{x}-1$ để có $P$  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030102015",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{28+8\\sqrt6}+\\sqrt{10-4\\sqrt6}$.",
+  "dap_an": "$3\\sqrt6$",
+  "loi_giai": "$A=\\sqrt{28+8\\sqrt6}+\\sqrt{10-4\\sqrt6}$\n$A=\\sqrt{(2\\sqrt6+2)^2}+\\sqrt{(\\sqrt6-2)^2}$\n$A=|2\\sqrt6+2|+|\\sqrt6-2|$\n$A=2\\sqrt6+2+\\sqrt6-2$\n$A=3\\sqrt6$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - Ứng dụng hẳng đẳng thức chứa căn"
+ },
+ {
+  "ma_cau": "T109030304021",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{7\\sqrt{x}}{3\\sqrt{x}+1}$ $(x\\ge0)$. Tìm $x$ để $P$ nguyên.",
+  "dap_an": "0; 1/16; 4",
+  "loi_giai": "Ta có $x\\ge0\\Rightarrow\\sqrt{x}\\ge0\\Rightarrow P\\ge0$.\nVới $x>0$ thì $\\sqrt{x}>0\\Rightarrow3\\sqrt{x}+1>3\\sqrt{x}$.\n$\\Rightarrow\\dfrac{7\\sqrt{x}}{3\\sqrt{x}+1}<\\dfrac{7\\sqrt{x}}{3\\sqrt{x}}=\\dfrac{7}{3}$.\nDo đó $0\\le P<\\dfrac{7}{3}$. Mà $P$ nguyên nên $P\\in\\{0;1;2\\}$.\nTH1:\n$P=0\\Rightarrow\\dfrac{7\\sqrt{x}}{3\\sqrt{x}+1}=0\\Rightarrow7\\sqrt{x}=0\\Rightarrow\\sqrt{x}=0\\Rightarrow x=0$ (thỏa mãn ĐKXĐ).\nTH2:\n$P=1\\Rightarrow\\dfrac{7\\sqrt{x}}{3\\sqrt{x}+1}=1\\Rightarrow7\\sqrt{x}=3\\sqrt{x}+1\\Rightarrow4\\sqrt{x}=1\\Rightarrow\\sqrt{x}=\\dfrac{1}{4}\\Rightarrow x=\\dfrac{1}{16}$ (thỏa mãn ĐKXĐ).\nTH3:\n$P=2\\Rightarrow\\dfrac{7\\sqrt{x}}{3\\sqrt{x}+1}=2\\Rightarrow7\\sqrt{x}=6\\sqrt{x}+2\\Rightarrow\\sqrt{x}=2\\Rightarrow x=4$ …",
+  "nhan_cu": "Câu C rút gọn › Tìm x để P nguyên"
+ },
+ {
+  "ma_cau": "T109030102132",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{7-\\sqrt{13}}+\\sqrt{7+\\sqrt{13}}$.",
+  "dap_an": "$\\sqrt{26}$",
+  "loi_giai": "$A=\\sqrt{7-\\sqrt{13}}+\\sqrt{7+\\sqrt{13}}$\n$A=\\sqrt{\\dfrac{28-4\\sqrt{13}}{4}}+\\sqrt{\\dfrac{28+4\\sqrt{13}}{4}}$\n$A=\\sqrt{\\dfrac{26-2\\sqrt{2}\\cdot \\sqrt{26}+2}{4}}+\\sqrt{\\dfrac{26+2\\sqrt{2}\\cdot \\sqrt{26}+2}{4}}$\n$A=\\dfrac{1}{2}\\sqrt{(\\sqrt{26}-\\sqrt{2})^2}+\\dfrac{1}{2}\\sqrt{(\\sqrt{26}+\\sqrt{2})^2}$\n$A=\\dfrac{1}{2}(\\sqrt{26}-\\sqrt{2})+\\dfrac{1}{2}(\\sqrt{26}+\\sqrt{2})$\n$A=\\sqrt{26}$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - Ứng dụng hẳng đẳng thức chứa căn"
+ },
+ {
+  "ma_cau": "T109030101042",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $B=\\dfrac{44}{5+\\sqrt{3}}+\\sqrt{(3-2\\sqrt{3})^2}$.",
+  "dap_an": "7",
+  "loi_giai": "$B=\\dfrac{44}{5+\\sqrt{3}}+\\sqrt{(3-2\\sqrt{3})^2}$\n$B=\\dfrac{44(5-\\sqrt{3})}{(5+\\sqrt{3})(5-\\sqrt{3})}+|3-2\\sqrt{3}|$\n$B=\\dfrac{44(5-\\sqrt{3})}{25-3}+|3-2\\sqrt{3}|$\n$B=2(5-\\sqrt{3})+(2\\sqrt{3}-3)$\n$B=7$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109000000587",
+  "loai": "tu_luan",
+  "de": "Giải bất phương trình $\\dfrac{x-2}{5}+3\\le\\dfrac{x}{10}-\\dfrac{2x-1}{2}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** nhân hai vế với mẫu chung dương để khử mẫu mà không phải đổi chiều bất đẳng thức; nhớ nhân cả số hạng $3$.\n**Bước 1.** Tìm mẫu chung của các mẫu $5$, $10$, $2$ rồi nhân cả hai vế với số đó, nhớ nhân luôn cả số hạng không có mẫu.\n**Bước 2.** Bỏ ngoặc ở mỗi vế, chú ý dấu trừ đứng trước phân thức cuối làm đổi dấu cả hai hạng tử trong ngoặc, rồi thu gọn.\n**Bước 3.** Chuyển các hạng tử chứa $x$ sang một vế, các số sang vế còn lại.\n**Bước 4.** Chia hai vế cho hệ số của $x$ và xét hệ số đó dương hay âm để biết có đổi chiều bất đẳng thức không.\n**Chú ý:** chỉ đổi chiều bất đẳng thức khi nhân hoặc chia hai vế với số âm.\n**Phần 2. Trình bày**\n$\\dfrac{x-2}{5}+3\\le\\df …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000627",
+  "loai": "tu_luan",
+  "de": "Rút gọn biểu thức sau: $\\sqrt{20}-2\\sqrt{45}-3\\sqrt{80}+\\sqrt{125}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mỗi số dưới dấu căn đều chứa thừa số chính phương nhân với $5$, nên đưa thừa số chính phương ra ngoài thì mọi số hạng cùng chứa $\\sqrt{5}$ và cộng trừ được các hệ số.\n**Bước 1.** Phân tích từng số dưới dấu căn thành tích của một số chính phương với $5$.\n**Bước 2.** Đưa thừa số chính phương ra ngoài dấu căn để mỗi số hạng có dạng một số nhân với $\\sqrt{5}$.\n**Bước 3.** Cộng trừ các hệ số của $\\sqrt{5}$ theo đúng dấu của từng số hạng rồi kết luận.\n**Chú ý:** dấu trừ đứng trước $2\\sqrt{45}$ và $3\\sqrt{80}$ phải nhân với cả hệ số đã đưa ra ngoài căn.\n**Phần 2. Trình bày**\n$\\sqrt{20}-2\\sqrt{45}-3\\sqrt{80}+\\sqrt{125}$\n$=\\sqrt{4 \\cdot 5}-2\\sqrt{9 \\cdot 5}-3\\sqrt{ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030304028",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=3+\\dfrac{6}{\\sqrt{x}+1}$ $(x\\ge0)$. Tìm $x$ để $P$ nguyên.",
+  "dap_an": "0; 1/25; 1/4; 1; 4; 25",
+  "loi_giai": "Có $x\\ge0\\Rightarrow\\sqrt{x}+1>0\\Rightarrow\\dfrac{6}{\\sqrt{x}+1}>0\\Rightarrow P>3$.\nMặt khác $\\sqrt{x}+1\\ge1\\Rightarrow\\dfrac{6}{\\sqrt{x}+1}\\le6\\Rightarrow P\\le9$.\nVậy $3<P\\le9$. Mà $P$ nguyên nên $P\\in\\{4;5;6;7;8;9\\}$.\nTH1:\n$P=4\\Rightarrow3+\\dfrac{6}{\\sqrt{x}+1}=4\\Rightarrow\\dfrac{6}{\\sqrt{x}+1}=1\\Rightarrow\\sqrt{x}=5\\Rightarrow x=25$ (thỏa mãn ĐKXĐ).\nTH2:\n$P=5\\Rightarrow3+\\dfrac{6}{\\sqrt{x}+1}=5\\Rightarrow\\dfrac{6}{\\sqrt{x}+1}=2\\Rightarrow\\sqrt{x}=2\\Rightarrow x=4$ (thỏa mãn ĐKXĐ).\nTH3:\n$P=6\\Rightarrow3+\\dfrac{6}{\\sqrt{x}+1}=6\\Rightarrow\\dfrac{6}{\\sqrt{x}+1}=3\\Rightarrow\\sqrt{x}=1\\Rightarrow x=1$ (thỏa mãn ĐKXĐ).\nTH4:\n$P=7\\Rightarrow3+\\dfrac{6}{\\sqrt{x}+1}=7\\Rightarrow\\dfrac{6}{\\sqrt{x}+1} …",
+  "nhan_cu": "Câu C rút gọn › Tìm x để P nguyên"
+ },
+ {
+  "ma_cau": "T109030304078",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=4-\\dfrac{5}{\\sqrt{x}+3}$ $(x\\ge0)$. Tìm giá trị của $x$ để $P$ nhận giá trị nguyên lớn nhất.",
+  "dap_an": "4",
+  "loi_giai": "Có $x\\ge0\\Rightarrow\\sqrt{x}+3\\ge3\\Rightarrow0<\\dfrac{5}{\\sqrt{x}+3}\\le\\dfrac{5}{3}$.\n$\\Rightarrow\\dfrac{7}{3}\\le4-\\dfrac{5}{\\sqrt{x}+3}<4$.\nVậy $\\dfrac{7}{3}\\le P<4$. Mà $P$ nguyên nên $P=3$.\nDo đó giá trị nguyên lớn nhất của $P$ là 3.\n$P=3\\Rightarrow4-\\dfrac{5}{\\sqrt{x}+3}=3\\Rightarrow\\dfrac{5}{\\sqrt{x}+3}=1\\Rightarrow\\sqrt{x}+3=5\\Rightarrow\\sqrt{x}=2\\Rightarrow x=4$ (thỏa mãn ĐKXĐ).\nVậy $x=4$ thì $P$ nhận giá trị nguyên lớn nhất.",
+  "nhan_cu": "Câu C rút gọn › Tìm x để P nguyên"
+ },
+ {
+  "ma_cau": "T109030102063",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{15+4\\sqrt{11}}-\\sqrt{17-2\\sqrt{66}}$.",
+  "dap_an": "$2+\\sqrt{6}$",
+  "loi_giai": "$A=\\sqrt{15+4\\sqrt{11}}-\\sqrt{17-2\\sqrt{66}}$\n$A=\\sqrt{(2+\\sqrt{11})^2}-\\sqrt{(\\sqrt{11}-\\sqrt{6})^2}$\n$A=|2+\\sqrt{11}|-|\\sqrt{11}-\\sqrt{6}|$\n$A=2+\\sqrt{11}-(\\sqrt{11}-\\sqrt{6})$\n$A=2+\\sqrt{6}$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - Ứng dụng hẳng đẳng thức chứa căn"
+ },
+ {
+  "ma_cau": "T109030101030",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $B=\\left(\\dfrac{\\sqrt{12}+\\sqrt{6}}{1+\\sqrt{2}}+\\dfrac{23}{\\sqrt{29}-\\sqrt{6}}\\right)(\\sqrt{29}-\\sqrt{24})$.",
+  "dap_an": "5",
+  "loi_giai": "$B=\\left(\\dfrac{\\sqrt{12}+\\sqrt{6}}{1+\\sqrt{2}}+\\dfrac{23}{\\sqrt{29}-\\sqrt{6}}\\right)(\\sqrt{29}-\\sqrt{24})$\n$B=\\left(\\dfrac{\\sqrt{6}(\\sqrt{2}+1)}{1+\\sqrt{2}}+\\dfrac{23(\\sqrt{29}+\\sqrt{6})}{29-6}\\right)(\\sqrt{29}-2\\sqrt{6})$\n$B=(\\sqrt{6}+\\sqrt{29}+\\sqrt{6})(\\sqrt{29}-2\\sqrt{6})$\n$B=(\\sqrt{29}+2\\sqrt{6})(\\sqrt{29}-2\\sqrt{6})$\n$B=29-24$\n$B=5$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109020202026",
+  "loai": "tra_loi_ngan",
+  "de": "Giải bất phương trình: $(x+2)(3x-1) < 3x^2 - 5x + 3$.",
+  "dap_an": "$x < \\dfrac{1}{2}$",
+  "loi_giai": "$(x+2)(3x-1) < 3x^2 - 5x + 3\\\\\n3x^2 - x + 6x - 2 < 3x^2 - 5x + 3\\\\\n3x^2 - x + 6x - 3x^2 + 5x < 3 + 2\\\\\n10x < 5\\\\x < \\dfrac{5}{10}\\\\\nx < \\dfrac{1}{2}\\\\$\nVậy tập nghiệm của bất phương trình là $x < \\dfrac{1}{2}$.",
+  "nhan_cu": "Bất phương trình bậc nhất một ẩn › Giải bất phương trình quy về bất phương trình bậc nhất một ẩn -  Dạng đa thức"
+ },
+ {
+  "ma_cau": "T109030102100",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{19+6\\sqrt{10}}+\\sqrt{19-6\\sqrt{10}}$.",
+  "dap_an": "$2\\sqrt{10}$",
+  "loi_giai": "$A=\\sqrt{19+6\\sqrt{10}}+\\sqrt{19-6\\sqrt{10}}$\n$A=\\sqrt{(\\sqrt{10}+3)^2}+\\sqrt{(\\sqrt{10}-3)^2}$\n$A=|\\sqrt{10}+3|+|\\sqrt{10}-3|$\n$A=\\sqrt{10}+3+\\sqrt{10}-3$\n$A=2\\sqrt{10}$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - Ứng dụng hẳng đẳng thức chứa căn"
+ },
+ {
+  "ma_cau": "T109010309007",
+  "loai": "tra_loi_ngan",
+  "de": "Lúc 7 giờ, có một ô tô đi từ A đến B. Lúc 8 giờ, có một xe máy đi từ B về A. Hai xe gặp nhau lúc 9 giờ. Biết vận tốc của ô tô gấp đôi vận tốc xe máy và quãng đường AB dài 200 km. Tính vận tốc của ô tô và xe máy.",
+  "dap_an": "80; 40",
+  "loi_giai": "Gọi vận tốc của ô tô và xe máy lần lượt là $x,y$ (km/h) ($x > y > 0$).\nThời gian ô tô đi từ lúc xuất phát đến lúc gặp nhau là: $9 - 7 = 2$ (giờ)\nThời gian xe máy đi từ lúc xuất phát đến lúc gặp nhau là: $9 - 8 = 1$ (giờ)\nQuãng đường ô tô đi được là: $2x$ (km)\nQuãng đường xe máy đi được là: $1y$ (km)\nVì hai xe đi ngược chiều và gặp nhau lúc 9 giờ nên ta có PT: $2x + y = 200$ (1)\nVận tốc ô tô gấp đôi vận tốc xe máy nên ta có PT:\n$x = 2y$\n$x - 2y = 0$ (2)\nTừ (1) và (2) ta có HPT:\n$$\\begin{cases} 2x + y = 200 \\\\ x - 2y = 0 \\end{cases}$$\nGiải HPT ta được: $x = 80; y = 40$ (tmdk)\nVậy vận tốc của ô tô là 80 km/h, vận tốc của xe máy là 40 km/h.",
+  "nhan_cu": "Giải toán bằng cách lập Hệ phương trình › Bài toán Chuyển động Cùng chiều - Ngược chiều"
+ },
+ {
+  "ma_cau": "T109030304062",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=1+\\dfrac{8}{\\sqrt{x}+3}$ $(x\\ge0)$. Tìm $x$ để $P$ nhận giá trị là số nguyên tố.",
+  "dap_an": "{1;25}",
+  "loi_giai": "Có $x\\ge0\\Rightarrow\\sqrt{x}+3>0\\Rightarrow\\dfrac{8}{\\sqrt{x}+3}>0\\Rightarrow P>1$.\nMặt khác $\\sqrt{x}+3\\ge3\\Rightarrow\\dfrac{8}{\\sqrt{x}+3}\\le\\dfrac{8}{3}\\Rightarrow P\\le\\dfrac{11}{3}$.\nVậy $1<P\\le\\dfrac{11}{3}$. Mà $P$ là số nguyên tố nên $P\\in\\{2;3\\}$.\nTH1:\n$P=2\\Rightarrow1+\\dfrac{8}{\\sqrt{x}+3}=2\\Rightarrow\\dfrac{8}{\\sqrt{x}+3}=1\\Rightarrow\\sqrt{x}+3=8\\Rightarrow\\sqrt{x}=5\\Rightarrow x=25$ (thỏa mãn ĐKXĐ).\nTH2:\n$P=3\\Rightarrow1+\\dfrac{8}{\\sqrt{x}+3}=3\\Rightarrow\\dfrac{8}{\\sqrt{x}+3}=2\\Rightarrow\\sqrt{x}+3=4\\Rightarrow\\sqrt{x}=1\\Rightarrow x=1$ (thỏa mãn ĐKXĐ).\nVậy $x\\in\\{1;25\\}$ thì $P$ nhận giá trị là số nguyên tố.",
+  "nhan_cu": "Câu C rút gọn › Tìm x để P nguyên"
+ },
+ {
+  "ma_cau": "T109030101014",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $B=\\sqrt{6}+\\sqrt{(\\sqrt{6}-3)^2}$.",
+  "dap_an": "3",
+  "loi_giai": "$B=\\sqrt{6}+\\sqrt{(\\sqrt{6}-3)^2}$\n$B=\\sqrt{6}+|\\sqrt{6}-3|$\n$B=\\sqrt{6}+(3-\\sqrt{6})$\n$B=3$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109030301024",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}+10}{\\sqrt{x}+1}$ $(x\\ge0;x \\ne1)$. Tìm $x$ để $P^2=4$.",
+  "dap_an": "64",
+  "loi_giai": "TH1: $P=2$.\n$\\dfrac{\\sqrt{x}+10}{\\sqrt{x}+1}=2$\n$\\sqrt{x}+10=2(\\sqrt{x}+1)$\n$\\sqrt{x}+10=2\\sqrt{x}+2$\n$\\sqrt{x}=8$\n$x=64$ (TMĐK).\nTH2: $P=-2$.\n$\\dfrac{\\sqrt{x}+10}{\\sqrt{x}+1}=-2$\n$\\sqrt{x}+10=-2(\\sqrt{x}+$\n$\\sqrt{x}+10=-2\\sqrt{x}-2$\n$3\\sqrt{x}=-12$\n$\\sqrt{x}=-4$ (Vô lí).\nVậy $x=64$ thì $P^2=4$.",
+  "nhan_cu": "Câu C rút gọn › Tìm x để P thoả mãn Đẳng thức"
+ },
+ {
+  "ma_cau": "T109030202060",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị của biểu thức $A=\\dfrac{\\sqrt{x}+6}{3\\sqrt{x}-2}$ tại $x=144$.",
+  "dap_an": "\\dfrac{9}{17}",
+  "loi_giai": "ĐKXĐ: $x\\ge0; x\\ne\\dfrac{4}{9}$.\nThay $x=144$ (thỏa mãn ĐKXĐ) vào $A$ ta được:\n$A=\\dfrac{\\sqrt{144}+6}{3\\sqrt{144}-2}=\\dfrac{12+6}{3\\cdot12-2}=\\dfrac{18}{34}=\\dfrac{9}{17}$.",
+  "nhan_cu": "Rút gọn Căn thức › Tính giá trị Căn thức khi biết giá trị của biến"
+ },
+ {
+  "ma_cau": "T109030202020",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị của biểu thức $A=\\dfrac{\\sqrt{x}+2}{\\sqrt{x}-6}$ tại $x=49$.",
+  "dap_an": "9",
+  "loi_giai": "ĐKXĐ: $x\\ge0; x\\ne36$.\nThay $x=49$ (tm ĐKXĐ) vào $A$ ta được: $A=\\dfrac{\\sqrt{49}+2}{\\sqrt{49}-6}=\\dfrac{7+2}{7-6}=9$.",
+  "nhan_cu": "Rút gọn Căn thức › Tính giá trị Căn thức khi biết giá trị của biến"
+ },
+ {
+  "ma_cau": "T109030101024",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $A=\\sqrt{54}+\\dfrac13\\sqrt{216}-0{,}75\\sqrt{96}$.",
+  "dap_an": "$2\\sqrt{6}$",
+  "loi_giai": "$A=\\sqrt{54}+\\dfrac13\\sqrt{216}-0{,}75\\sqrt{96}$\n$A=3\\sqrt{6}+\\dfrac13\\cdot6\\sqrt{6}-0{,}75\\cdot4\\sqrt{6}$\n$A=3\\sqrt{6}+2\\sqrt{6}-3\\sqrt{6}$\n$A=2\\sqrt{6}$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109010304019",
+  "loai": "tra_loi_ngan",
+  "de": "Một thuyền dự định đi từ bến A đến bến B trong khoảng thời gian nhất định. Nếu thuyền chạy nhanh hơn 15km/h mỗi giờ thì đến nơi sớm hơn so với dự định là 3 giờ. Nếu thuyền chạy chậm hơn 10km/h mỗi giờ thì đến nơi chậm mất so với dự định là 4 giờ. Tính vận tốc và thời gian dự định của thuyền.",
+  "dap_an": "35; 10",
+  "loi_giai": "Gọi vận tốc dự định của thuyền là $x$ (km/giờ) và thời gian dự định là $y$ (giờ) ($x > 15, y > 3$).\nQuãng đường AB là: $xy$ (km).\nNếu thuyền chạy nhanh hơn 15km/h mỗi giờ thì đến nơi sớm hơn so với dự định là 3 giờ. Khi đó ta có:\nVận tốc thuyền khi đó là: $x + 15$ (km/giờ).\nThời gian thuyền đi hết quãng đường AB là: $y - 3$ (giờ).\nQuãng đường AB là: $(x+15)(y-3)$.\nTa có PT:\n$(x+15)(y-3) = xy$\n${xy - 3x + 15y - 45 = xy}$\n${-3x + 15y = 45}$ (1)\nNếu thuyền chạy chậm hơn 10km/h mỗi giờ thì đến nơi chậm hơn so với dự định là 4 giờ. Khi đó ta có:\nVận tốc thuyền khi đó là: $x - 10$ (km/giờ).\nThời gian thuyền đi hết quãng đường AB là: $y + 4$ (giờ).\nQuãng đường AB là: $(x-10)(y+4)$.\nTa có PT:\n$(x-10 …",
+  "nhan_cu": "Giải toán bằng cách lập Hệ phương trình › Bài toán Chuyển động thường"
+ },
+ {
+  "ma_cau": "T109000000619",
+  "loai": "tu_luan",
+  "de": "Một trang chữ của một tạp chí cần diện tích là $384$ $cm^2$. Biết rằng trang giấy được căn lề trên là $3$ cm, lề dưới là $3$ cm; lề phải là $2$ cm, lề trái là $2$ cm. Hỏi chiều ngang và chiều dọc tối ưu của trang giấy lần lượt là bao nhiêu để diện tích trang giấy là nhỏ nhất?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** diện tích trang giấy phụ thuộc hai ẩn nhưng tích hai kích thước của phần chữ cố định bằng $384$, nên đưa về một ẩn rồi so sánh diện tích với giá trị nhỏ nhất dự đoán bằng hằng đẳng thức bình phương.\n**Bước 1.** Gọi chiều ngang và chiều dọc của phần chữ là hai ẩn có tích bằng $384$, rồi biểu diễn kích thước trang giấy bằng cách cộng thêm các lề.\n**Bước 2.** Viết diện tích trang giấy rồi khai triển, dùng điều kiện tích bằng $384$ để đưa về biểu thức chỉ còn một ẩn.\n**Bước 3.** Tìm giá trị nhỏ nhất bằng cách xét hiệu giữa diện tích và một hằng số, biến đổi hiệu đó thành phân thức có tử là bình phương.\n**Bước 4.** Tìm giá trị của ẩn làm bình phương bằng $0$, s …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030102048",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{33-2\\sqrt{62}}-\\sqrt{33+2\\sqrt{62}}$.",
+  "dap_an": "$-2\\sqrt{2}$",
+  "loi_giai": "$A=\\sqrt{33-2\\sqrt{62}}-\\sqrt{33+2\\sqrt{62}}$\n$A=\\sqrt{(\\sqrt{31}-\\sqrt{2})^2}-\\sqrt{(\\sqrt{31}+\\sqrt{2})^2}$\n$A=|\\sqrt{31}-\\sqrt{2}|-|\\sqrt{31}+\\sqrt{2}|$\n$A=\\sqrt{31}-\\sqrt{2}-(\\sqrt{31}+\\sqrt{2})$\n$A=-2\\sqrt{2}$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - Ứng dụng hẳng đẳng thức chứa căn"
+ },
+ {
+  "ma_cau": "T109000000618",
+  "loai": "tu_luan",
+  "de": "Giải bài toán bằng cách lập hệ phương trình.\nMột mảnh đất hình chữ nhật có chu vi $126$ m, nếu giảm chiều dài $2$ m và tăng chiều rộng thêm $2$ m thì diện tích tăng thêm $10$ $m^2$. Tính chiều dài và chiều rộng của mảnh vườn.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** chu vi cho tổng chiều dài và chiều rộng bằng một nửa chu vi; điều kiện về diện tích, sau khi khai triển, các hạng tử $xy$ triệt tiêu và còn lại một phương trình bậc nhất.\n**Bước 1.** Gọi chiều dài và chiều rộng là hai ẩn, đặt điều kiện cho ẩn rồi lập phương trình thứ nhất từ chu vi.\n**Bước 2.** Biểu diễn chiều dài, chiều rộng mới và diện tích mới, rồi lập phương trình thứ hai từ việc diện tích tăng thêm $10$ $m^2$.\n**Bước 3.** Khai triển, thu gọn phương trình thứ hai về dạng bậc nhất hai ẩn.\n**Bước 4.** Giải hệ hai phương trình bậc nhất hai ẩn bằng phương pháp cộng đại số, đối chiếu điều kiện rồi trả lời.\n**Phần 2. Trình bày**\nGọi chiều dài và chiều rộng c …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030202036",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị của biểu thức $A=\\dfrac{\\sqrt{x}-7}{\\sqrt{x}-1}$ tại $|x-1|=168$.",
+  "dap_an": "\\dfrac{1}{2}",
+  "loi_giai": "ĐKXĐ: $x\\ge0; x\\ne1$.\n$|x-1|=168$\nTH1: $x-1=168\\Rightarrow x=169$ (tm ĐKXĐ).\nTH2: $x-1=-168\\Rightarrow x=-167$ (Ktm ĐKXĐ).\nThay $x=169$ vào $A$ ta được: $A=\\dfrac{\\sqrt{169}-7}{\\sqrt{169}-1}=\\dfrac{13-7}{13-1}=\\dfrac{1}{2}$.",
+  "nhan_cu": "Rút gọn Căn thức › Tính giá trị Căn thức khi biết giá trị của biến"
+ },
+ {
+  "ma_cau": "T109030202003",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị của biểu thức $A=\\dfrac{\\sqrt{x}-3}{\\sqrt{x}-1}$ tại $x=25$.",
+  "dap_an": "\\dfrac{1}{2}",
+  "loi_giai": "ĐKXĐ: $x\\ge0; x\\ne1$.\nThay $x=25$ (tm ĐKXĐ) vào $A$ ta được: $A=\\dfrac{\\sqrt{25}-3}{\\sqrt{25}-1}=\\dfrac{5-3}{5-1}=\\dfrac{1}{2}$.",
+  "nhan_cu": "Rút gọn Căn thức › Tính giá trị Căn thức khi biết giá trị của biến"
+ },
+ {
+  "ma_cau": "T109030101080",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $\\sqrt{(1-\\sqrt{10})^2}-\\sqrt{160}+\\dfrac{30}{\\sqrt{10}}$.",
+  "dap_an": "-1",
+  "loi_giai": "$\\sqrt{(1-\\sqrt{10})^2}-\\sqrt{160}+\\dfrac{30}{\\sqrt{10}}$\n$=|1-\\sqrt{10}|-4\\sqrt{10}+3\\sqrt{10}$\n$=\\sqrt{10}-1-4\\sqrt{10}+3\\sqrt{10}$\n$=-1$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109000000642",
+  "loai": "tu_luan",
+  "de": "Giải bất phương trình $\\dfrac{x-1}{6}+\\dfrac{x+1}{2}\\le\\dfrac{3x-5}{4}+\\dfrac{1}{2}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** khử mẫu bằng cách nhân hai vế với mẫu chung là một số **dương**, nhờ đó chiều của bất phương trình giữ nguyên.\n**Bước 1.** Tìm mẫu chung nhỏ nhất của $6$, $2$, $4$, $2$ rồi nhân cả hai vế với số đó; số này dương nên không đổi chiều.\n**Bước 2.** Bỏ ngoặc ở cả hai vế, chú ý nhân đúng cả hạng tử không chứa $x$ với mẫu chung.\n**Bước 3.** Chuyển các hạng tử chứa $x$ về một vế, hằng số về vế còn lại rồi kết luận bằng lời.\n**Phần 2. Trình bày**\n$\\dfrac{x-1}{6}+\\dfrac{x+1}{2}\\le\\dfrac{3x-5}{4}+\\dfrac{1}{2}$\nNhân hai vế với $12>0$, ta được $2(x-1)+6(x+1)\\le3(3x-5)+6$.\nSuy ra $2x-2+6x+6\\le9x-15+6$.\nSuy ra $8x+4\\le9x-9$.\nChuyển vế, ta được $4+9\\le9x-8x$, suy ra $13\\l …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000561",
+  "loai": "tu_luan",
+  "de": "Một công ty du lịch dự định tổ chức một tour du lịch xuyên Việt nhân kỉ niệm ngày giải phóng hoàn toàn miền Nam 30 – 4. Công ty dự định nếu giá tour là 2 triệu đồng thì sẽ có khoảng 200 người tham gia. Để thu hút nhiều người tham gia, công ty sẽ quyết định giảm giá và cứ mỗi lần giảm giá 100 nghìn đồng/1 tour thì sẽ có thêm 20 người tham gia. Hỏi công ty phải giảm giá tour còn bao nhiêu để doanh thu từ tour xuyên Việt đó là lớn nhất.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** doanh thu $=$ giá một tour $\\cdot$ số người tham gia; cả hai đại lượng đều phụ thuộc vào số lần giảm giá, nên doanh thu là một biểu thức bậc hai của ẩn đó, đưa về dạng hằng số trừ một bình phương để tìm giá trị lớn nhất.\n**Bước 1.** Chọn ẩn là số lần giảm giá và đổi cùng một đơn vị tiền (triệu đồng), vì $100$ nghìn đồng bằng $0{,}1$ triệu đồng.\n**Bước 2.** Biểu diễn giá tour và số người tham gia theo ẩn đó, rồi lập biểu thức doanh thu và khai triển, thu gọn.\n**Bước 3.** Biến đổi doanh thu thành dạng hằng số trừ một số dương nhân với bình phương, bằng cách hoàn thành bình phương cho phần chứa ẩn.\n**Bước 4.** Từ tính chất bình phương không âm, tìm giá trị lớ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030202015",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị của biểu thức $A=\\dfrac{\\sqrt{x}-1}{\\sqrt{x}-5}$ tại $x=49$.",
+  "dap_an": "3",
+  "loi_giai": "ĐKXĐ: $x\\ge0; x\\ne25$.\nThay $x=49$ (tm ĐKXĐ) vào $A$ ta được: $A=\\dfrac{\\sqrt{49}-1}{\\sqrt{49}-5}=\\dfrac{7-1}{7-5}=3$.",
+  "nhan_cu": "Rút gọn Căn thức › Tính giá trị Căn thức khi biết giá trị của biến"
+ },
+ {
+  "ma_cau": "T109030102099",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{9+4\\sqrt{5}}+\\sqrt{9-4\\sqrt{5}}$.",
+  "dap_an": "$2\\sqrt{5}$",
+  "loi_giai": "$A=\\sqrt{9+4\\sqrt{5}}+\\sqrt{9-4\\sqrt{5}}$\n$A=\\sqrt{(\\sqrt{5}+2)^2}+\\sqrt{(\\sqrt{5}-2)^2}$\n$A=|\\sqrt{5}+2|+|\\sqrt{5}-2|$\n$A=\\sqrt{5}+2+\\sqrt{5}-2$\n$A=2\\sqrt{5}$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - Ứng dụng hẳng đẳng thức chứa căn"
+ },
+ {
+  "ma_cau": "T109020202022",
+  "loai": "tra_loi_ngan",
+  "de": "Giải bất phương trình: $6x + 1 \\ge 2(x + 7)$",
+  "dap_an": "$x \\ge \\dfrac{13}{4}$",
+  "loi_giai": "$6x + 1 \\ge 2(x + 7)$\\n$6x + 1 \\ge 2x + 14$\\n$6x - 2x \\ge 14 - 1$\\n$4x \\ge 13$\\n$x \\ge \\dfrac{13}{4}$\\nVậy tập nghiệm của bất phương trình là $x \\ge \\dfrac{13}{4}$.",
+  "nhan_cu": "Bất phương trình bậc nhất một ẩn › Giải bất phương trình quy về bất phương trình bậc nhất một ẩn -  Dạng đa thức"
+ },
+ {
+  "ma_cau": "T109090401020",
+  "loai": "tra_loi_ngan",
+  "de": "Để gây quỹ từ thiện, lớp 9A tổ chức hoạt động bán hàng ở hội chợ xuân với hai mặt hàng là nước chanh và khoai tây chiên. Lớp đó thiết kế hai thực đơn.\nThực đơn 1 có giá 35 nghìn đồng, bao gồm hai cốc nước chanh và một túi khoai tây chiên.\nThực đơn 2 có giá 60 nghìn đồng, bao gồm ba cốc nước chanh và hai túi khoai tây chiên.\nBiết rằng lớp đó chỉ làm được không quá 165 cốc nước chanh và 100 túi khoai tây chiên.\nSố tiền lớn nhất mà lớp đó có thể nhận được sau khi bán hết hàng là bao nhiêu đồng?",
+  "dap_an": "3150000",
+  "loi_giai": "Gọi $x$ là số thực đơn 1 bán được và $y$ là số thực đơn 2 bán được. ($x, y$ là các số tự nhiên).\nSố cốc nước chanh cần dùng là $2x + 3y$.\nSố túi khoai tây chiên cần dùng là $x + 2y$.\nTheo đề bài, ta có các bất đẳng thức:\n$2x + 3y \\le 165$\n$x + 2y \\le 100$\n$x \\ge 0$, $y \\ge 0$\nSố tiền thu được là $T = 35000x + 60000y$.\nMục tiêu là tìm giá trị lớn nhất của $T$.\nTừ các bất đẳng thức trên, ta vẽ miền nghiệm trên mặt phẳng tọa độ.\nCác đỉnh của miền nghiệm là các điểm giao của các đường thẳng biên:\n1. Giao của $x=0$ và $y=0$ là $(0, 0)$. $T = 0$.\n2. Giao của $x=0$ và $2x + 3y = 165$ (hay $3y = 165$) là $(0, 55)$. $T = 60000 \\times 55 = 3300000$.\n3. Giao của $y=0$ và $x + 2y = 100$ (hay $x=100$) là …",
+  "nhan_cu": "Bài toán tối ưu doanh thu chi phí 2 biến › Bài toán tối ưu doanh thu chi phí có miền điều kiện"
+ },
+ {
+  "ma_cau": "T109030304019",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{14}{\\sqrt{x}+5}$ $(x\\ge0)$. Tìm $x$ để $P$ nguyên.",
+  "dap_an": "4; 81",
+  "loi_giai": "Ta có $x\\ge0\\Rightarrow\\sqrt{x}+5>0;14>0\\Rightarrow P>0$.\nMà $\\sqrt{x}+5\\ge5\\Rightarrow\\dfrac{14}{\\sqrt{x}+5}\\le\\dfrac{14}{5}\\Rightarrow P\\le\\dfrac{14}{5}$.\nVậy $0<P\\le\\dfrac{14}{5}$. Mà $P$ nguyên nên $P\\in\\{1;2\\}$.\nTH1:\n$P=1\\Rightarrow\\dfrac{14}{\\sqrt{x}+5}=1\\Rightarrow\\sqrt{x}+5=14\\Rightarrow\\sqrt{x}=9\\Rightarrow x=81$ (thỏa mãn ĐKXĐ).\nTH2:\n$P=2\\Rightarrow\\dfrac{14}{\\sqrt{x}+5}=2\\Rightarrow\\sqrt{x}+5=7\\Rightarrow\\sqrt{x}=2\\Rightarrow x=4$ (thỏa mãn ĐKXĐ).\nVậy $x\\in\\{4;81\\}$ thì $P$ nguyên.",
+  "nhan_cu": "Câu C rút gọn › Tìm x để P nguyên"
+ },
+ {
+  "ma_cau": "T109030101074",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $\\dfrac{\\sqrt{20}-\\sqrt{40}}{\\sqrt4-\\sqrt8}$.",
+  "dap_an": "$\\sqrt{5}$",
+  "loi_giai": "$\\dfrac{\\sqrt{20}-\\sqrt{40}}{\\sqrt{4}-\\sqrt{8}}$\n$=\\dfrac{\\sqrt{10}(\\sqrt{2}-2)}{\\sqrt{2}(\\sqrt{2}-2)}$\n$=\\dfrac{\\sqrt{10}}{\\sqrt{2}}$\n$=\\sqrt{5}$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109030101016",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $B=\\dfrac{26}{4+\\sqrt{3}}+\\sqrt{(1-2\\sqrt{3})^2}$.",
+  "dap_an": "7",
+  "loi_giai": "$B=\\dfrac{26}{4+\\sqrt{3}}+\\sqrt{(1-2\\sqrt{3})^2}$\n$B=\\dfrac{26(4-\\sqrt{3})}{(4+\\sqrt{3})(4-\\sqrt{3})}+|1-2\\sqrt{3}|$\n$B=\\dfrac{26(4-\\sqrt{3})}{16-3}+|1-2\\sqrt{3}|$\n$B=2(4-\\sqrt{3})+(2\\sqrt{3}-1)$\n$B=7$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109030102137",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{12-\\sqrt{23}}+\\sqrt{12+\\sqrt{23}}$.",
+  "dap_an": "$\\sqrt{46}$",
+  "loi_giai": "$A=\\sqrt{12-\\sqrt{23}}+\\sqrt{12+\\sqrt{23}}$\n$A=\\sqrt{\\dfrac{48-4\\sqrt{23}}{4}}+\\sqrt{\\dfrac{48+4\\sqrt{23}}{4}}$\n$A=\\sqrt{\\dfrac{46-2\\sqrt{2}\\cdot \\sqrt{46}+2}{4}}+\\sqrt{\\dfrac{46+2\\sqrt{2}\\cdot \\sqrt{46}+2}{4}}$\n$A=\\dfrac{1}{2}\\sqrt{(\\sqrt{46}-\\sqrt{2})^2}+\\dfrac{1}{2}\\sqrt{(\\sqrt{46}+\\sqrt{2})^2}$\n$A=\\dfrac{1}{2}(\\sqrt{46}-\\sqrt{2})+\\dfrac{1}{2}(\\sqrt{46}+\\sqrt{2})$\n$A=\\sqrt{46}$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - Ứng dụng hẳng đẳng thức chứa căn"
+ },
+ {
+  "ma_cau": "T109000000593",
+  "loai": "tra_loi_ngan",
+  "de": "Giải phương trình: $\\sqrt{x-1}+\\dfrac{3}{2}\\sqrt{4x-4}-\\sqrt{\\dfrac{18x-18}{2}}=5$.",
+  "dap_an": "26",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** ba căn đều đưa được về bội của cùng một căn $\\sqrt{x-1}$, nên phương trình thu gọn rất nhiều.\n**Bước 1.** Tìm điều kiện để mọi biểu thức dưới dấu căn đều không âm.\n**Bước 2.** Đưa thừa số ra ngoài dấu căn ở hai căn sau: viết $4x-4$ và $\\dfrac{18x-18}{2}$ thành tích của một số chính phương với $x-1$.\n**Bước 3.** Cộng trừ các số hạng chứa $\\sqrt{x-1}$ để phương trình chỉ còn một căn bằng một số.\n**Bước 4.** Bình phương hai vế (hai vế đều không âm) rồi giải ra $x$ và đối chiếu điều kiện.\n**Phần 2. Trình bày**\nĐiều kiện xác định: $x-1\\ge0$ và $4x-4\\ge0$ và $\\dfrac{18x-18}{2}\\ge0$, tức là $x\\ge1$.\nTa có $\\sqrt{4x-4}=\\sqrt{4(x-1)}=2\\sqrt{x-1}$ nên $\\dfrac{3}{2}\\ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030304057",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{18}{\\sqrt{x}+4}$ $(x\\ge0)$. Tìm $x$ để $P$ nhận giá trị là số nguyên tố.",
+  "dap_an": "{4;25}",
+  "loi_giai": "Ta có $x\\ge0\\Rightarrow\\sqrt{x}+4>0;18>0\\Rightarrow P>0$.\nMà $\\sqrt{x}+4\\ge4\\Rightarrow P\\le\\dfrac{9}{2}$.\nVậy $0<P\\le\\dfrac{9}{2}$. Mà $P$ là số nguyên tố nên $P\\in\\{2;3\\}$.\nTH1:\n$P=2\\Rightarrow\\dfrac{18}{\\sqrt{x}+4}=2\\Rightarrow\\sqrt{x}+4=9\\Rightarrow\\sqrt{x}=5\\Rightarrow x=25$ (thỏa mãn ĐKXĐ).\nTH2:\n$P=3\\Rightarrow\\dfrac{18}{\\sqrt{x}+4}=3\\Rightarrow\\sqrt{x}+4=6\\Rightarrow\\sqrt{x}=2\\Rightarrow x=4$ (thỏa mãn ĐKXĐ).\nVậy $x\\in\\{4;25\\}$ thì $P$ nhận giá trị là số nguyên tố.",
+  "nhan_cu": "Câu C rút gọn › Tìm x để P nguyên"
+ },
+ {
+  "ma_cau": "T109020403007",
+  "loai": "tra_loi_ngan",
+  "de": "Giải phương trình: $\\dfrac{3x-1}{x-2} - \\dfrac{2x-3}{x+2} + \\dfrac{2x^2+7x-2}{4-x^2} = 0$.",
+  "dap_an": "3",
+  "loi_giai": "ĐKXĐ: $x \\neq 2, x \\neq -2$.\n$\\dfrac{3x-1}{x-2} - \\dfrac{2x-3}{x+2} - \\dfrac{2x^2+7x-2}{x^2-4} = 0$\n$\\dfrac{(3x-1)(x+2)}{(x-2)(x+2)} - \\dfrac{(2x-3)(x-2)}{(x-2)(x+2)} - \\dfrac{2x^2+7x-2}{(x-2)(x+2)} = 0$\n$\\dfrac{(3x-1)(x+2)-(2x-3)(x-2)-(2x^2+7x-2)}{(x-2)(x+2)} = 0$\n$(3x-1)(x+2)-(2x-3)(x-2)-(2x^2+7x-2) = 0$\n$3x^2+5x-2-(2x^2-7x+6)-(2x^2+7x-2)=0$\n$3x^2+5x-2-2x^2+7x-6-2x^2-7x+2=0$\n$-x^2+5x-6=0$\n$x^2-5x+6=0$\n$(x-2)(x-3)=0$\nTH1: $x-2=0$\n$x=2$ (ktm)\nTH2: $x-3=0$\n$x=3$ (tmdk)\nVậy phương trình có nghiệm $x=3$.",
+  "nhan_cu": "Phương trình tích › Phương trình quy về phương trình tích -  Dạng phân thức"
+ },
+ {
+  "ma_cau": "T109030101058",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $3\\sqrt{6}-\\sqrt{24}+4\\sqrt{54}-3\\sqrt{96}$.",
+  "dap_an": "$\\sqrt{6}$",
+  "loi_giai": "$3\\sqrt{6}-\\sqrt{24}+4\\sqrt{54}-3\\sqrt{96}$\n$=3\\sqrt{6}-2\\sqrt{6}+4\\cdot3\\sqrt{6}-3\\cdot4\\sqrt{6}$\n$=3\\sqrt{6}-2\\sqrt{6}+12\\sqrt{6}-12\\sqrt{6}$\n$=\\sqrt{6}$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109030202057",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị của biểu thức $A=\\dfrac{3\\sqrt{x}+2}{2\\sqrt{x}-3}$ tại $x=81$.",
+  "dap_an": "\\dfrac{29}{15}",
+  "loi_giai": "ĐKXĐ: $x\\ge0; x\\ne\\dfrac{9}{4}$.\nThay $x=81$ (thỏa mãn ĐKXĐ) vào $A$ ta được:\n$A=\\dfrac{3\\sqrt{81}+2}{2\\sqrt{81}-3}=\\dfrac{3\\cdot9+2}{2\\cdot9-3}=\\dfrac{29}{15}$.",
+  "nhan_cu": "Rút gọn Căn thức › Tính giá trị Căn thức khi biết giá trị của biến"
+ },
+ {
+  "ma_cau": "T109030101040",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $A=(8\\sqrt{10}-2\\sqrt{250}+\\sqrt{90})\\sqrt{10}$.",
+  "dap_an": "10",
+  "loi_giai": "$A=(8\\sqrt{10}-2\\sqrt{250}+\\sqrt{90})\\sqrt{10}$\n$A=(8\\sqrt{10}-2\\cdot5\\sqrt{10}+3\\sqrt{10})\\sqrt{10}$\n$A=(8\\sqrt{10}-10\\sqrt{10}+3\\sqrt{10})\\sqrt{10}$\n$A=\\sqrt{10}\\cdot\\sqrt{10}$\n$A=10$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109010308007",
+  "loai": "tra_loi_ngan",
+  "de": "Hưởng ứng 'Ngày sách và Văn hóa đọc Việt Nam năm 2025', thư viện của trường được một Nhà sách tặng cho hai thùng sách, gồm một thùng sách tham khảo môn Toán và một thùng sách tham khảo môn Ngữ Văn. Nếu chuyển 10 cuốn sách Toán sang thùng sách Ngữ Văn thì lúc này hai thùng có số sách bằng nhau. Nếu chuyển 20 cuốn sách Ngữ Văn sang thùng sách Toán thì lúc này số sách trong thùng sách Toán gấp đôi số sách trong thùng Ngữ Văn. Hỏi ban đầu mỗi thùng có bao nhiêu cuốn sách?",
+  "dap_an": "100; 80",
+  "loi_giai": "Gọi số sách Toán là $x$ (quyển) ($x \\in \\mathbb{N}^{*}$, $x > 10$) và số sách Ngữ Văn là $y$ quyển ($y \\in \\mathbb{N}^{*}$, $y > 20$).\nNếu chuyển $10$ cuốn sách Toán sang thùng sách Ngữ Văn thì lúc này hai thùng có số sách bằng nhau. Do đó ta có PT:\n$x-10=y+10$\n$x-y=20$ (1)\nNếu chuyển $20$ cuốn sách Ngữ Văn sang thùng sách Toán thì lúc này số sách trong thùng sách Toán gấp đôi số sách trong thùng Ngữ Văn. Do đó ta có PT:\n$x+20=2(y-20)$\n$x-2y=-60$ (2)\nTừ (1) và (2) ta có HPT:\n$\\left\\{ \\begin{array}{l} x-y=20 \\\\ x-2y=-60 \\end{array} \\right.$\nGiải hệ PT thu được: $x=100$; $y=80$ (TMĐK).\nVậy ban đầu thùng sách Toán có 100 quyển sách, thùng sách Văn có 80 quyển sách.",
+  "nhan_cu": "Giải toán bằng cách lập Hệ phương trình › Các bài toán khác"
+ },
+ {
+  "ma_cau": "T109030301036",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}-4}{\\sqrt{x}}$ $(x>0)$. Tìm $x$ để $2P=2\\sqrt{x}-8$.",
+  "dap_an": "{1;16}",
+  "loi_giai": "$\\dfrac{2(\\sqrt{x}-4)}{\\sqrt{x}}=2\\sqrt{x}-8$\n$2\\sqrt{x}-8=2x-8\\sqrt{x}$\n$2x-10\\sqrt{x}+8=0$\n$x-5\\sqrt{x}+4=0$\n$(\\sqrt{x}-1)(\\sqrt{x}-4)=0$\nTH1: $\\sqrt{x}-1=0$\n$x=1$ (TMĐK).\nTH2: $\\sqrt{x}-4=0$\n$x=16$ (TMĐK).\nVậy $x\\in\\{1;16\\}$.",
+  "nhan_cu": "Câu C rút gọn › Tìm x để P thoả mãn Đẳng thức"
+ },
+ {
+  "ma_cau": "T109030202006",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị của biểu thức $A=\\dfrac{\\sqrt{x}+1}{\\sqrt{x}-2}$ tại $x=16$.",
+  "dap_an": "\\dfrac{5}{2}",
+  "loi_giai": "ĐKXĐ: $x\\ge0; x\\ne4$.\nThay $x=16$ (tm ĐKXĐ) vào $A$ ta được: $A=\\dfrac{\\sqrt{16}+1}{\\sqrt{16}-2}=\\dfrac{4+1}{4-2}=\\dfrac{5}{2}$.",
+  "nhan_cu": "Rút gọn Căn thức › Tính giá trị Căn thức khi biết giá trị của biến"
+ },
+ {
+  "ma_cau": "T109000000586",
+  "loai": "tu_luan",
+  "de": "Giải hệ phương trình $\\begin{cases} x-3y=-5 \\\\ 2x+5y=12 \\end{cases}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hệ số của $x$ trong phương trình thứ nhất bằng $1$ nên rút $x$ theo $y$ rồi thế là gọn nhất.\n**Bước 1.** Chọn phương trình thứ nhất để rút $x$ theo $y$, vì hệ số của $x$ ở đó bằng $1$ nên không xuất hiện phân số.\n**Bước 2.** Thế biểu thức của $x$ vừa rút vào phương trình thứ hai để chỉ còn một ẩn $y$, rồi giải phương trình bậc nhất đó.\n**Bước 3.** Thay giá trị của $y$ vừa tìm vào biểu thức rút ở bước 1 để tính $x$, rồi viết nghiệm của hệ.\n**Chú ý:** khi thế phải đặt biểu thức của $x$ trong ngoặc để nhân đúng cho hệ số $2$.\n**Phần 2. Trình bày**\nTừ phương trình thứ nhất ta có $x=3y-5$ (1).\nThế (1) vào phương trình thứ hai, ta được:\n$2(3y-5)+5y=12$\n$6y-10+5y …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030304029",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=4+\\dfrac{4}{\\sqrt{x}+1}$ $(x\\ge0)$. Tìm $x$ để $P$ nguyên.",
+  "dap_an": "0; 1/9; 1; 9",
+  "loi_giai": "Có $x\\ge0\\Rightarrow\\sqrt{x}+1>0\\Rightarrow\\dfrac{4}{\\sqrt{x}+1}>0\\Rightarrow P>4$.\nMặt khác $\\sqrt{x}+1\\ge1\\Rightarrow\\dfrac{4}{\\sqrt{x}+1}\\le4\\Rightarrow P\\le8$.\nVậy $4<P\\le8$. Mà $P$ nguyên nên $P\\in\\{5;6;7;8\\}$.\nTH1:\n$P=5\\Rightarrow4+\\dfrac{4}{\\sqrt{x}+1}=5\\Rightarrow\\dfrac{4}{\\sqrt{x}+1}=1\\Rightarrow\\sqrt{x}=3\\Rightarrow x=9$ (thỏa mãn ĐKXĐ).\nTH2:\n$P=6\\Rightarrow4+\\dfrac{4}{\\sqrt{x}+1}=6\\Rightarrow\\dfrac{4}{\\sqrt{x}+1}=2\\Rightarrow\\sqrt{x}=1\\Rightarrow x=1$ (thỏa mãn ĐKXĐ).\nTH3:\n$P=7\\Rightarrow4+\\dfrac{4}{\\sqrt{x}+1}=7\\Rightarrow\\dfrac{4}{\\sqrt{x}+1}=3\\Rightarrow\\sqrt{x}+1=\\dfrac{4}{3}\\Rightarrow\\sqrt{x}=\\dfrac{1}{3}\\Rightarrow x=\\dfrac{1}{9}$ (thỏa mãn ĐKXĐ).\nTH4:\n$P=8\\Rightarrow4+\\dfr …",
+  "nhan_cu": "Câu C rút gọn › Tìm x để P nguyên"
+ },
+ {
+  "ma_cau": "T109000000581",
+  "loai": "tu_luan",
+  "de": "Cho hai biểu thức: $A=\\dfrac{\\sqrt{x}+2}{\\sqrt{x}-1}$ và $B=\\dfrac{x-3\\sqrt{x}-4}{x-1}+\\dfrac{4}{\\sqrt{x}-1}$ với $x\\ge0$, $x\\ne1$.\na) Tính giá trị biểu thức $A$ khi $x=25$.\nb) Chứng minh rằng: $B=\\dfrac{\\sqrt{x}}{\\sqrt{x}-1}$.\nc) Tìm giá trị của $x$ để $Q=\\dfrac{2B}{A}$ là số nguyên tố.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai mẫu của $B$ đều chia hết cho $\\sqrt{x}-1$ (vì $x-1=(\\sqrt{x}-1)(\\sqrt{x}+1)$), nên rút gọn $B$ trước; ý c dùng kết quả ý b để đưa $Q$ về một biểu thức theo $\\sqrt{x}$ rồi đánh giá.\n**Bước 1.** Ý a: kiểm tra $x=25$ thoả mãn điều kiện, tính $\\sqrt{25}$ rồi thay vào biểu thức $A$.\n**Bước 2.** Ý b: phân tích tử $x-3\\sqrt{x}-4$ và mẫu $x-1$ thành nhân tử để rút gọn phân số thứ nhất, sau đó cộng hai phân thức cùng mẫu $\\sqrt{x}-1$.\n**Bước 3.** Ý c: thay kết quả của $B$ vào $Q=\\dfrac{2B}{A}$, chia hai phân thức bằng cách nhân với phân thức nghịch đảo để rút gọn $Q$.\n**Bước 4.** Viết $Q$ dưới dạng \"số nguyên trừ một phân số dương\" rồi so sánh $Q$ với $2$, vì s …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030202021",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị của biểu thức $A=\\dfrac{\\sqrt{x}-8}{\\sqrt{x}-3}$ tại $x=100$.",
+  "dap_an": "\\dfrac{2}{7}",
+  "loi_giai": "ĐKXĐ: $x\\ge0; x\\ne9$.\nThay $x=100$ (tm ĐKXĐ) vào $A$ ta được: $A=\\dfrac{\\sqrt{100}-8}{\\sqrt{100}-3}=\\dfrac{10-8}{10-3}=\\dfrac{2}{7}$.",
+  "nhan_cu": "Rút gọn Căn thức › Tính giá trị Căn thức khi biết giá trị của biến"
+ },
+ {
+  "ma_cau": "T109030301035",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}-3}{\\sqrt{x}}$ $(x>0)$. Tìm $x$ để $2P=2\\sqrt{x}-6$.",
+  "dap_an": "{1;9}",
+  "loi_giai": "$\\dfrac{2(\\sqrt{x}-3)}{\\sqrt{x}}=2\\sqrt{x}-6$\n$2\\sqrt{x}-6=2x-6\\sqrt{x}$\n$2x-8\\sqrt{x}+6=0$\n$x-4\\sqrt{x}+3=0$\n$(\\sqrt{x}-1)(\\sqrt{x}-3)=0$\nTH1: $\\sqrt{x}-1=0$\n$x=1$ (TMĐK).\nTH2: $\\sqrt{x}-3=0$\n$x=9$ (TMĐK).\nVậy $x\\in\\{1;9\\}$.",
+  "nhan_cu": "Câu C rút gọn › Tìm x để P thoả mãn Đẳng thức"
+ },
+ {
+  "ma_cau": "T109030101090",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $B=\\dfrac{6\\sqrt{2}-6}{\\sqrt{2}-1}-\\dfrac{19}{\\sqrt{6}-5}+\\sqrt{(5-\\sqrt{6})^2}$.",
+  "dap_an": "16",
+  "loi_giai": "$B=\\dfrac{6\\sqrt{2}-6}{\\sqrt{2}-1}-\\dfrac{19}{\\sqrt{6}-5}+\\sqrt{(5-\\sqrt{6})^2}$\n$B=\\dfrac{6(\\sqrt{2}-1)}{\\sqrt{2}-1}-\\dfrac{19}{\\sqrt{6}-5}+\\sqrt{(5-\\sqrt{6})^2}$\n$B=6-\\dfrac{19(\\sqrt{6}+5)}{6-25}+|5-\\sqrt{6}|$\n$B=6+(\\sqrt{6}+5)+(5-\\sqrt{6})$\n$B=16$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - dạng cơ bản"
+ },
+ {
+  "ma_cau": "T109030202052",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị của biểu thức $A=\\dfrac{\\sqrt{x}+1}{\\sqrt{x}-2}$ tại $x=16$.",
+  "dap_an": "\\dfrac{5}{2}",
+  "loi_giai": "ĐKXĐ: $x\\ge0; x\\ne4$.\nThay $x=16$ (thỏa mãn ĐKXĐ) vào $A$ ta được:\n$A=\\dfrac{\\sqrt{16}+1}{\\sqrt{16}-2}=\\dfrac{4+1}{4-2}=\\dfrac{5}{2}$.",
+  "nhan_cu": "Rút gọn Căn thức › Tính giá trị Căn thức khi biết giá trị của biến"
+ },
+ {
+  "ma_cau": "T109030304065",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=1+\\dfrac{11}{\\sqrt{x}+5}$ $(x\\ge0)$. Tìm $x$ để $P$ nhận giá trị là số nguyên tố.",
+  "dap_an": "{\\dfrac{1}{4};36}",
+  "loi_giai": "Có $x\\ge0\\Rightarrow\\sqrt{x}+5>0\\Rightarrow\\dfrac{11}{\\sqrt{x}+5}>0\\Rightarrow P>1$.\nMặt khác $\\sqrt{x}+5\\ge5\\Rightarrow\\dfrac{11}{\\sqrt{x}+5}\\le\\dfrac{11}{5}\\Rightarrow P\\le\\dfrac{16}{5}$.\nVậy $1<P\\le\\dfrac{16}{5}$. Mà $P$ là số nguyên tố nên $P\\in\\{2;3\\}$.\nTH1:\n$P=2\\Rightarrow1+\\dfrac{11}{\\sqrt{x}+5}=2\\Rightarrow\\dfrac{11}{\\sqrt{x}+5}=1\\Rightarrow\\sqrt{x}=6\\Rightarrow x=36$ (thỏa mãn ĐKXĐ).\nTH2:\n$P=3\\Rightarrow1+\\dfrac{11}{\\sqrt{x}+5}=3\\Rightarrow\\dfrac{11}{\\sqrt{x}+5}=2\\Rightarrow\\sqrt{x}+5=\\dfrac{11}{2}\\Rightarrow\\sqrt{x}=\\dfrac{1}{2}\\Rightarrow x=\\dfrac{1}{4}$ (thỏa mãn ĐKXĐ).\nVậy $x\\in\\left\\{\\dfrac{1}{4};36\\right\\}$ thì $P$ nhận giá trị là số nguyên tố.",
+  "nhan_cu": "Câu C rút gọn › Tìm x để P nguyên"
+ },
+ {
+  "ma_cau": "T109030102088",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn $A=\\sqrt{44+16\\sqrt{7}}-\\sqrt{44-16\\sqrt{7}}$.",
+  "dap_an": "$8$",
+  "loi_giai": "$A=\\sqrt{44+16\\sqrt{7}}-\\sqrt{44-16\\sqrt{7}}$\n$A=\\sqrt{(4+2\\sqrt{7})^2}-\\sqrt{(4-2\\sqrt{7})^2}$\n$A=|4+2\\sqrt{7}|-|4-2\\sqrt{7}|$\n$A=4+2\\sqrt{7}-(2\\sqrt{7}-4)$\n$A=4+2\\sqrt{7}-2\\sqrt{7}+4$\n$A=8$",
+  "nhan_cu": "Rút gọn biểu thức chứa căn bậc hai của số › Rút gọn biểu thức chứa căn - Ứng dụng hẳng đẳng thức chứa căn"
+ }
+]

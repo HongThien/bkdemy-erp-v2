@@ -1,0 +1,320 @@
+[
+ {
+  "ma_cau": "T109000000635",
+  "dang_bai_id": "NDB00704",
+  "chac": "cao",
+  "ly_do": "Khai triển các tích để đưa về hệ bậc nhất hai ẩn rồi giải."
+ },
+ {
+  "ma_cau": "T109000000544",
+  "dang_bai_id": "NDB00501",
+  "chac": "vua",
+  "ly_do": "Câu nhiều ý: tính A, chứng minh B, tìm x để P nhỏ hơn một số; các ý rải nhiều dạng."
+ },
+ {
+  "ma_cau": "T109000000576",
+  "dang_bai_id": "NDB01203",
+  "chac": "vua",
+  "ly_do": "Tăng giá vé làm ghế trống tăng, tìm giá cho doanh thu lớn nhất; cùng cấu trúc nhưng chiều tăng-giảm ngược."
+ },
+ {
+  "ma_cau": "T109000000622",
+  "dang_bai_id": "NDB00704",
+  "chac": "cao",
+  "ly_do": "Có ngoặc cần khai triển để đưa về hệ bậc nhất hai ẩn rồi giải."
+ },
+ {
+  "ma_cau": "T109000000588",
+  "dang_bai_id": "NDB00498",
+  "chac": "vua",
+  "ly_do": "Câu nhiều ý: tính A, chứng minh B, tìm x để |P|=hằng số; các ý rải nhiều dạng."
+ },
+ {
+  "ma_cau": "T109000000566",
+  "dang_bai_id": "NDB00725",
+  "chac": "cao",
+  "ly_do": "Phương trình ẩn ở mẫu có mẫu x^2-1 cần phân tích nhân tử."
+ },
+ {
+  "ma_cau": "T109000000615",
+  "dang_bai_id": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Có trục căn ở mẫu và căn của bình phương, trộn hai dạng."
+ },
+ {
+  "ma_cau": "T109000000579",
+  "dang_bai_id": "NDB00822",
+  "chac": "cao",
+  "ly_do": "Giải phương trình căn bằng cách đưa các căn về cùng dạng đơn giản."
+ },
+ {
+  "ma_cau": "T109000000564",
+  "dang_bai_id": "NDB00712",
+  "chac": "cao",
+  "ly_do": "Du thuyền xuôi dòng, ngược dòng, lập hệ tìm vận tốc riêng và vận tốc dòng nước."
+ },
+ {
+  "ma_cau": "T109000000589",
+  "dang_bai_id": "NDB00716",
+  "chac": "vua",
+  "ly_do": "Số xe nhân sức chở bằng tổng hàng, gần dạng sắp xếp ghế; cũng có thể xếp bài toán khác."
+ },
+ {
+  "ma_cau": "T109000000532",
+  "dang_bai_id": "NDB00501",
+  "chac": "vua",
+  "ly_do": "Câu nhiều ý: tính A, chứng minh B, tìm x tự nhiên lớn nhất thoả bất đẳng thức; các ý rải nhiều dạng."
+ },
+ {
+  "ma_cau": "T109000000560",
+  "dang_bai_id": "NDB00717",
+  "chac": "cao",
+  "ly_do": "Vay hai ngân hàng với lãi suất khác nhau, biết tổng vốn và tổng lãi."
+ },
+ {
+  "ma_cau": "T109000000513",
+  "dang_bai_id": "NDB01205",
+  "chac": "cao",
+  "ly_do": "Số máy tối ưu: chi phí lắp mỗi máy cộng chi phí giám sát theo giờ."
+ },
+ {
+  "ma_cau": "T109000000557",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "Khử mẫu bất phương trình rồi đưa về bậc nhất một ẩn."
+ },
+ {
+  "ma_cau": "T109000000596",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc nhánh Thống kê: bảng tần số ghép nhóm, tần số tương đối, không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T109000000616",
+  "dang_bai_id": "NDB00501",
+  "chac": "vua",
+  "ly_do": "Câu nhiều ý: tính A, chứng minh B, tìm x nguyên để P nhỏ hơn 1; các ý rải nhiều dạng."
+ },
+ {
+  "ma_cau": "T109000000617",
+  "dang_bai_id": "NDB00938",
+  "chac": "cao",
+  "ly_do": "Thi 20 câu, đúng cộng điểm sai trừ điểm, tìm số câu đúng tối thiểu."
+ },
+ {
+  "ma_cau": "T109000000554",
+  "dang_bai_id": "NDB00514",
+  "chac": "vua",
+  "ly_do": "Thuê hai loại xe với biến nguyên, tối ưu chi phí; chưa rõ xếp Xét x nguyên hay Dùng hệ."
+ },
+ {
+  "ma_cau": "T109000000603",
+  "dang_bai_id": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Có trục căn ở mẫu và căn của bình phương, trộn hai dạng."
+ },
+ {
+  "ma_cau": "T109000000594",
+  "dang_bai_id": "NDB00718",
+  "chac": "vua",
+  "ly_do": "Số người, giá vé hai loại và giảm 5%; gần dạng mua đồ nhưng có yếu tố giảm giá."
+ },
+ {
+  "ma_cau": "T109000000609",
+  "dang_bai_id": "NDB00718",
+  "chac": "cao",
+  "ly_do": "Tìm đơn giá hai loại vé từ số lượng và tổng tiền thanh toán."
+ },
+ {
+  "ma_cau": "T109000000533",
+  "dang_bai_id": "NDB01205",
+  "chac": "cao",
+  "ly_do": "Số máy tối ưu: chi phí thiết lập mỗi máy cộng chi phí giám sát theo giờ."
+ },
+ {
+  "ma_cau": "T109000000568",
+  "dang_bai_id": "NDB00501",
+  "chac": "vua",
+  "ly_do": "Câu nhiều ý: tính A, chứng minh B, tìm số nguyên tố x để P âm; các ý rải nhiều dạng."
+ },
+ {
+  "ma_cau": "T109000000606",
+  "dang_bai_id": "NDB01205",
+  "chac": "cao",
+  "ly_do": "Số máy tối ưu: chi phí thiết lập mỗi máy cộng chi phí giám sát theo giờ."
+ },
+ {
+  "ma_cau": "T109000000556",
+  "dang_bai_id": "NDB00822",
+  "chac": "cao",
+  "ly_do": "Giải phương trình căn bằng cách đưa các căn về cùng dạng đơn giản."
+ },
+ {
+  "ma_cau": "T109000000602",
+  "dang_bai_id": "NDB00480",
+  "chac": "cao",
+  "ly_do": "Đưa thừa số ra ngoài căn rồi nhân phân phối, rút gọn."
+ },
+ {
+  "ma_cau": "T109000000605",
+  "dang_bai_id": "NDB00710",
+  "chac": "cao",
+  "ly_do": "Chuyển động thường, ẩn vận tốc và thời gian dự định, tìm quãng đường."
+ },
+ {
+  "ma_cau": "T109000000569",
+  "dang_bai_id": "NDB00718",
+  "chac": "cao",
+  "ly_do": "Tìm số vé hai loại từ tổng số vé và tổng tiền thu được."
+ },
+ {
+  "ma_cau": "T109000000608",
+  "dang_bai_id": "NDB00726",
+  "chac": "vua",
+  "ly_do": "Chuyển vế dùng hằng đẳng thức a^2-b^2 đưa về tích; cũng có thể xếp phương trình tích."
+ },
+ {
+  "ma_cau": "T109000000599",
+  "dang_bai_id": "NDB00716",
+  "chac": "vua",
+  "ly_do": "Số xe nhân sức chở bằng tổng người, gần dạng sắp xếp ghế; cũng có thể xếp bài toán khác."
+ },
+ {
+  "ma_cau": "T109000000643",
+  "dang_bai_id": "NDB00715",
+  "chac": "cao",
+  "ly_do": "Tổng giá niêm yết hai mặt hàng, mỗi mặt hàng giảm phần trăm khác nhau."
+ },
+ {
+  "ma_cau": "T109000000519",
+  "dang_bai_id": "NDB01212",
+  "chac": "vua",
+  "ly_do": "Tam giác vuông ABC qua điểm A cố định, tìm diện tích nhỏ nhất; đề có hình, dạng chỉ gần giống."
+ },
+ {
+  "ma_cau": "T109000000567",
+  "dang_bai_id": "NDB00728",
+  "chac": "cao",
+  "ly_do": "Khử mẫu bất phương trình rồi đưa về bậc nhất một ẩn."
+ },
+ {
+  "ma_cau": "T109000000578",
+  "dang_bai_id": "NDB00482",
+  "chac": "vua",
+  "ly_do": "Trộn đưa thừa số ra ngoài căn và trục căn ở mẫu."
+ },
+ {
+  "ma_cau": "T109000000624",
+  "dang_bai_id": "NDB00501",
+  "chac": "vua",
+  "ly_do": "Câu nhiều ý: tính A, chứng minh B, tìm x nguyên nhỏ nhất để 2P>1; các ý rải nhiều dạng."
+ },
+ {
+  "ma_cau": "T109000000625",
+  "dang_bai_id": "NDB00714",
+  "chac": "vua",
+  "ly_do": "Hai máy làm việc với thời gian khác nhau, tổng sản phẩm cho trước; chưa rõ xếp năng suất hay thay đổi."
+ },
+ {
+  "ma_cau": "T109000000585",
+  "dang_bai_id": "NDB00723",
+  "chac": "cao",
+  "ly_do": "Phương trình ẩn ở mẫu cơ bản: ĐKXĐ, khử mẫu, đối chiếu nghiệm."
+ },
+ {
+  "ma_cau": "T109000000570",
+  "dang_bai_id": "NDB00936",
+  "chac": "cao",
+  "ly_do": "Lập bất phương trình từ ngân sách để tìm số quyển vở tối đa."
+ },
+ {
+  "ma_cau": "T109000000638",
+  "dang_bai_id": "NDB00732",
+  "chac": "vua",
+  "ly_do": "Năng suất tăng làm thời gian đổi, nhưng khối lượng cũng thay đổi 120 thành 150."
+ },
+ {
+  "ma_cau": "T109000000631",
+  "dang_bai_id": "NDB00715",
+  "chac": "vua",
+  "ly_do": "Hai đơn vị vượt mức theo phần trăm khác nhau, giống cấu trúc tăng/giảm giá nhưng là sản lượng."
+ },
+ {
+  "ma_cau": "T109000000565",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tối ưu chi phí viền hai hình vuông với tổng diện tích cho trước (có hình)."
+ },
+ {
+  "ma_cau": "T109000000559",
+  "dang_bai_id": "NDB00732",
+  "chac": "cao",
+  "ly_do": "Khối lượng 400 sản phẩm không đổi, tăng năng suất làm sớm 1 ngày."
+ },
+ {
+  "ma_cau": "T109000000558",
+  "dang_bai_id": "NDB00502",
+  "chac": "vua",
+  "ly_do": "Câu nhiều ý: tính A, chứng minh B, tìm x để P nhỏ hơn một biểu thức; các ý rải nhiều dạng."
+ },
+ {
+  "ma_cau": "T109000000636",
+  "dang_bai_id": "NDB00499",
+  "chac": "vua",
+  "ly_do": "Câu nhiều ý: tính A, chứng minh B, tìm x để P bằng hằng số; các ý rải nhiều dạng."
+ },
+ {
+  "ma_cau": "T109000000604",
+  "dang_bai_id": "NDB00824",
+  "chac": "cao",
+  "ly_do": "Biểu thức dưới căn là bình phương, đưa về giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "T109000000592",
+  "dang_bai_id": "NDB00481",
+  "chac": "vua",
+  "ly_do": "Trộn căn của bình phương, đưa thừa số ra ngoài và căn ở mẫu."
+ },
+ {
+  "ma_cau": "T109000000590",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: hình chữ nhật nội tiếp nửa hình tròn, tìm cạnh cho diện tích lớn nhất (có hình)."
+ },
+ {
+  "ma_cau": "T109000000511",
+  "dang_bai_id": "NDB00501",
+  "chac": "vua",
+  "ly_do": "Câu nhiều ý: tính A, chứng minh B, tìm x để P dương; các ý rải nhiều dạng."
+ },
+ {
+  "ma_cau": "T109000000633",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Chuyển vế, đặt nhân tử chung (2x-1) đưa về phương trình tích."
+ },
+ {
+  "ma_cau": "T109000000613",
+  "dang_bai_id": "NDB00722",
+  "chac": "cao",
+  "ly_do": "Phương trình đã ở dạng tích bằng 0."
+ },
+ {
+  "ma_cau": "T109000000640",
+  "dang_bai_id": "NDB00501",
+  "chac": "vua",
+  "ly_do": "Câu nhiều ý: tính A, chứng minh B, tìm x nguyên để P nhỏ hơn 1/2; các ý rải nhiều dạng."
+ },
+ {
+  "ma_cau": "T109000000575",
+  "dang_bai_id": "NDB00936",
+  "chac": "vua",
+  "ly_do": "Bất phương trình thực tế tìm số tuần tối thiểu; dạng gần nhất tìm số lượng tối đa nhưng chiều ngược."
+ },
+ {
+  "ma_cau": "T109000000620",
+  "dang_bai_id": "NDB00726",
+  "chac": "cao",
+  "ly_do": "Nhóm hạng tử, đặt nhân tử chung (x-3) đưa về phương trình tích."
+ }
+]
