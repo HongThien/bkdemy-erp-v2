@@ -1,0 +1,101 @@
+{
+  "cd": 3,
+  "nhom": [
+    {
+      "ten": "Tìm x cộng trừ Số nguyên",
+      "ly_thuyet": "##TC\nSố hạng chưa biết = tổng − số hạng đã biết: $x+a=b$ thì $x=b-a$.\nSố bị trừ = hiệu + số trừ: $x-a=b$ thì $x=b+a$.\nSố trừ = số bị trừ − hiệu: $a-x=b$ thì $x=a-b$.\nTrừ một số là cộng với số đối của nó: $a-b=a+(-b)$.\n\n##PP\nBước 1: tính vế phải (nếu là biểu thức) ra một số.\nBước 2: xác định $x$ đang là số hạng, số bị trừ hay số trừ.\nBước 3: áp dụng đúng quy tắc tìm thành phần chưa biết, rồi cộng, trừ số nguyên.\nBước 4: thử lại bằng cách thay $x$ vào đề.\n\n##CY\nCẩn thận dấu khi trừ số âm: $-36-(-16)=-36+16=-20$.\nHai dạng $x-a=b$ và $a-x=b$ khác nhau: ở dạng thứ hai $x=a-b$, không phải $b-a$.",
+      "dang": [
+        {
+          "ten": "Tìm x là số hạng, số bị trừ",
+          "ly_thuyet": "##PP\nNếu $x$ là số hạng: lấy tổng trừ số hạng kia, $x+a=b$ thì $x=b-a$.\nNếu $x$ là số bị trừ: lấy hiệu cộng số trừ, $x-a=b$ thì $x=b+a$.\nVế phải là biểu thức thì tính ra một số trước.\n\n##CY\nKhi $x$ trừ đi một số dương ($x-16=-36$) thì $x=-36+16$, phải cộng chứ không trừ.\nSố hạng $x$ đứng sau ($-7+x=-2$) vẫn là số hạng: $x=-2-(-7)=-2+7$.",
+          "vi_du": "##VD\nTìm số nguyên $x$, biết:\na) $x+13=-19$\nb) $-7+x=-2$\n**Hướng dẫn giải:**\na) $x$ là số hạng nên $x=-19-13$.\n\n$x=-19+(-13)=-32$.\n\nb) $x$ là số hạng nên $x=-2-(-7)$.\n\n$x=-2+7=5$.\n\nVậy a) $x=-32$; b) $x=5$.\n\n##VD\nTìm số nguyên $x$, biết:\na) $x-16=-36$\nb) $x-25=10+(-5)$\n**Hướng dẫn giải:**\na) $x$ là số bị trừ nên $x=-36+16$.\n\n$x=-20$.\n\nb) Tính vế phải: $10+(-5)=5$, nên $x-25=5$.\n\n$x$ là số bị trừ nên $x=5+25=30$.\n\nVậy a) $x=-20$; b) $x=30$.",
+          "kiem": [
+            "[...Array(401).keys()].map(i=>i-200).filter(x=>x+13===-19).join()==='-32' && [...Array(401).keys()].map(i=>i-200).filter(x=>-7+x===-2).join()==='5'",
+            "[...Array(401).keys()].map(i=>i-200).filter(x=>x-16===-36).join()==='-20' && [...Array(401).keys()].map(i=>i-200).filter(x=>x-25===10+(-5)).join()==='30'"
+          ]
+        },
+        {
+          "ten": "Tìm x là số trừ",
+          "ly_thuyet": "##PP\nNếu $x$ là số trừ: lấy số bị trừ trừ hiệu, $a-x=b$ thì $x=a-b$.\nHiệu là số âm thì $a-b$ trở thành trừ một số âm, đổi thành cộng với số đối: $75-(-24)=75+24$.\nThử lại: lấy số bị trừ trừ $x$ vừa tìm, phải ra đúng hiệu.\n\n##CY\nLỗi hay gặp: viết $x=b-a$ (hiệu trừ số bị trừ). Với $23-x=19$ phải là $x=23-19=4$, không phải $19-23$.",
+          "vi_du": "##VD\nTìm số nguyên $x$, biết $23-x=19$.\n**Hướng dẫn giải:**\n$x$ là số trừ nên $x=$ số bị trừ $-$ hiệu.\n\n$x=23-19=4$.\n\nThử lại: $23-4=19$ đúng.\n\nVậy $x=4$.\n\n##VD\nTìm số nguyên $x$, biết:\na) $75-x=-24$\nb) $-6-x=-10$\n**Hướng dẫn giải:**\na) $x$ là số trừ nên $x=75-(-24)$.\n\n$x=75+24=99$.\n\nb) $x$ là số trừ nên $x=-6-(-10)$.\n\n$x=-6+10=4$.\n\nVậy a) $x=99$; b) $x=4$.",
+          "kiem": [
+            "[...Array(401).keys()].map(i=>i-200).filter(x=>23-x===19).join()==='4'",
+            "[...Array(401).keys()].map(i=>i-200).filter(x=>75-x===-24).join()==='99' && [...Array(401).keys()].map(i=>i-200).filter(x=>-6-x===-10).join()==='4'"
+          ]
+        }
+      ]
+    },
+    {
+      "ten": "Tìm x biểu thức chứa ngoặc, nhân chia",
+      "ly_thuyet": "##TC\nThừa số chưa biết = tích : thừa số đã biết: $a.x=b$ thì $x=b:a$ (với $a\\ne 0$).\nSố bị chia = thương . số chia: $x:a=b$ thì $x=b.a$.\nSố chia = số bị chia : thương: $a:x=b$ thì $x=a:b$ (với $b\\ne 0$).\nChia hai số nguyên cùng dấu được thương dương, khác dấu được thương âm.\n\n##PP\nCoi cụm chứa $x$ (trong ngoặc, hoặc đứng trước dấu nhân, chia) là một số chưa biết.\nXác định phép tính ngoài cùng, tìm cụm đó theo quy tắc tìm thành phần chưa biết.\nLặp lại với cụm bên trong cho đến khi cô lập được $x$.\nThử lại bằng cách thay $x$ vào đề.\n\n##CY\nMỗi bước chỉ làm một phép tính ngoài cùng, không bỏ qua bước nào.\nPhép chia chỉ có nghĩa khi số chia khác $0$.\nKiểm tra dấu của tích, thương trước khi kết luận.",
+      "dang": [
+        {
+          "ten": "Cơ bản (nhân chia, một cấp)",
+          "ly_thuyet": "##PP\nĐưa về dạng $2x=\\dots$, $x:2=\\dots$ hoặc $16:x=\\dots$ bằng cách cộng hoặc trừ số hạng ở ngoài trước.\nSau đó áp dụng quy tắc: thừa số = tích : thừa số kia; số bị chia = thương . số chia; số chia = số bị chia : thương.\n\n##CY\nKhi $x$ là số chia ($16:x=8$) thì $x=16:8$, không phải $8:16$.\nNhớ đổi dấu đúng khi chuyển số hạng bằng cách cộng hoặc trừ hai vế cho cùng một số: $2x-11=-17$ thì $2x=-17+11$.",
+          "vi_du": "##VD\nTìm số nguyên $x$, biết:\na) $2x-11=-17$\nb) $x:2-5=-8$\n**Hướng dẫn giải:**\na) $2x$ là số bị trừ nên $2x=-17+11=-6$.\n\n$x$ là thừa số chưa biết nên $x=-6:2=-3$.\n\nb) $x:2$ là số bị trừ nên $x:2=-8+5=-3$.\n\n$x$ là số bị chia nên $x=(-3).2=-6$.\n\nVậy a) $x=-3$; b) $x=-6$.\n\n##VD\nTìm số nguyên $x$, biết:\na) $16:x-2=6$\nb) $(-30):x+4=-1$\n**Hướng dẫn giải:**\na) $16:x$ là số bị trừ nên $16:x=6+2=8$.\n\n$x$ là số chia nên $x=16:8=2$.\n\nb) $(-30):x$ là số hạng nên $(-30):x=-1-4=-5$.\n\n$x$ là số chia nên $x=(-30):(-5)=6$.\n\nVậy a) $x=2$; b) $x=6$.",
+          "kiem": [
+            "[...Array(401).keys()].map(i=>i-200).filter(x=>2*x-11===-17).join()==='-3' && [...Array(401).keys()].map(i=>i-200).filter(x=>x%2===0 && x/2-5===-8).join()==='-6'",
+            "[...Array(401).keys()].map(i=>i-200).filter(x=>x!==0 && 16%x===0 && 16/x-2===6).join()==='2' && [...Array(401).keys()].map(i=>i-200).filter(x=>x!==0 && 30%x===0 && (-30)/x+4===-1).join()==='6'"
+          ]
+        },
+        {
+          "ten": "Có ngoặc, x trong ngoặc",
+          "ly_thuyet": "##PP\nTìm dần từ ngoài vào trong: xác định cụm trong ngoặc là thành phần chưa biết của phép tính ngoài cùng và tính ra giá trị của cụm.\nKhi cụm có dạng $a-(\\dots)$ thì ngoặc là số trừ; khi cụm có dạng $(\\dots).a$ thì ngoặc là thừa số.\nBỏ ngoặc rồi tiếp tục tìm $x$ trong cụm vừa tính được.\n\n##CY\n$15-(2-x)=-7$: ngoặc $(2-x)$ là số trừ, nên $2-x=15-(-7)=22$, rồi $x=2-22$.\nKhông bỏ ngoặc tuỳ tiện khi phía trước có dấu trừ: phải đổi dấu mọi số hạng trong ngoặc.",
+          "vi_du": "##VD\nTìm số nguyên $x$, biết $15-(2-x)=-7$.\n**Hướng dẫn giải:**\n$(2-x)$ là số trừ nên $2-x=15-(-7)=15+7=22$.\n\n$x$ là số trừ nên $x=2-22=-20$.\n\nThử lại: $15-(2-(-20))=15-22=-7$ đúng.\n\nVậy $x=-20$.\n\n##VD\nTìm số nguyên $x$, biết:\na) $(x+18).(-40)=80$\nb) $71-(24-3x)=23$\n**Hướng dẫn giải:**\na) $(x+18)$ là thừa số chưa biết nên $x+18=80:(-40)=-2$.\n\n$x$ là số hạng nên $x=-2-18=-20$.\n\nb) $(24-3x)$ là số trừ nên $24-3x=71-23=48$.\n\n$3x$ là số trừ nên $3x=24-48=-24$.\n\n$x$ là thừa số chưa biết nên $x=(-24):3=-8$.\n\nVậy a) $x=-20$; b) $x=-8$.",
+          "kiem": [
+            "[...Array(401).keys()].map(i=>i-200).filter(x=>15-(2-x)===-7).join()==='-20'",
+            "[...Array(401).keys()].map(i=>i-200).filter(x=>(x+18)*(-40)===80).join()==='-20' && [...Array(401).keys()].map(i=>i-200).filter(x=>71-(24-3*x)===23).join()==='-8'"
+          ]
+        }
+      ]
+    },
+    {
+      "ten": "Tìm x có luỹ thừa",
+      "ly_thuyet": "##TC\n$a^n$ là tích của $n$ thừa số $a$. Luỹ thừa của số âm: số mũ chẵn cho kết quả dương, số mũ lẻ cho kết quả âm, ví dụ $(-2)^3=-8$, $(-3)^2=9$.\nCác luỹ thừa hay gặp: $2^3=8$, $3^3=27$, $4^3=64$, $5^3=125$, $10^3=1000$; $5^2=25$, $7^2=49$, $9^2=81$.\nSố mũ lẻ: có đúng một giá trị của $A$ thoả $A^3=k$, ví dụ $A^3=-125$ thì $A=-5$.\nSố mũ chẵn: $A^2=49$ thì $A=7$ hoặc $A=-7$ (vì $7^2=(-7)^2=49$).\n\n##PP\nTính các luỹ thừa đã biết giá trị, rồi cô lập cụm chứa $x$ bằng cách tìm thành phần chưa biết.\nNếu cụm là luỹ thừa $A^n=k$ thì viết $k$ thành một luỹ thừa số mũ $n$ để so sánh.\nHai luỹ thừa cùng cơ số (lớn hơn $1$) bằng nhau thì số mũ bằng nhau; cùng số mũ lẻ thì cơ số bằng nhau; cùng số mũ chẵn thì cơ số bằng nhau hoặc đối nhau.\n\n##CY\nSố mũ chẵn nhớ xét đủ hai trường hợp, không bỏ sót nghiệm âm.\nViết dấu ngoặc khi cơ số âm: $(-2)^2=4$ còn $-2^2=-4$.",
+      "dang": [
+        {
+          "ten": "Luỹ thừa là số đã biết",
+          "ly_thuyet": "##PP\nTính luỹ thừa số đã cho trước ($2^3=8$, $3^2=9$) rồi thay vào đề để được phương trình tìm thành phần chưa biết thông thường.\nSau đó tìm dần $x$ như các dạng ngoặc, cộng trừ, nhân chia.\n\n##CY\nTính luỹ thừa trước rồi mới cộng, trừ: $2^3-3^2=8-9=-1$, không phải $(2-3)^{3-2}$.",
+          "vi_du": "##VD\nTìm số nguyên $x$, biết $(x-18)-2^3=-23$.\n**Hướng dẫn giải:**\nTính $2^3=8$, đề trở thành $(x-18)-8=-23$.\n\n$(x-18)$ là số bị trừ nên $x-18=-23+8=-15$.\n\n$x$ là số bị trừ nên $x=-15+18=3$.\n\nVậy $x=3$.\n\n##VD\nTìm số nguyên $x$, biết $11+2x=2^3-3^2$.\n**Hướng dẫn giải:**\nTính vế phải: $2^3-3^2=8-9=-1$, đề trở thành $11+2x=-1$.\n\n$2x$ là số hạng nên $2x=-1-11=-12$.\n\n$x$ là thừa số chưa biết nên $x=(-12):2=-6$.\n\nVậy $x=-6$.",
+          "kiem": [
+            "[...Array(401).keys()].map(i=>i-200).filter(x=>(x-18)-2**3===-23).join()==='3'",
+            "[...Array(401).keys()].map(i=>i-200).filter(x=>11+2*x===2**3-3**2).join()==='-6'"
+          ]
+        },
+        {
+          "ten": "Luỹ thừa chứa x (cơ số hoặc số mũ)",
+          "ly_thuyet": "##PP\nĐưa về dạng một luỹ thừa chứa $x$ bằng một số: $5^x=k$ hoặc $(\\dots x\\dots)^n=k$, bằng cách tìm thành phần chưa biết.\nViết $k$ thành luỹ thừa cùng cơ số (nếu $x$ ở số mũ) hoặc cùng số mũ (nếu $x$ ở cơ số), rồi so sánh.\nSố mũ lẻ: một giá trị duy nhất. Số mũ chẵn: hai trường hợp (cơ số bằng $A$ hoặc bằng $-A$).\nCuối cùng giải tiếp $x+1=\\dots$ hoặc $3+x=\\dots$ bằng quy tắc tìm thành phần chưa biết.\n\n##CY\nSố mũ chẵn mà vế phải âm thì không có $x$ nào (bình phương của số nguyên không âm).\nThử lại từng nghiệm vào đề, đặc biệt ở trường hợp hai nghiệm.",
+          "vi_du": "##VD\nTìm số nguyên $x$, biết:\na) $5^x-31=-6$\nb) $(x+1)^3+9=-116$\n**Hướng dẫn giải:**\na) $5^x$ là số bị trừ nên $5^x=-6+31=25=5^2$.\n\nHai luỹ thừa cùng cơ số $5$ bằng nhau nên $x=2$.\n\nb) $(x+1)^3$ là số hạng nên $(x+1)^3=-116-9=-125=(-5)^3$.\n\nHai luỹ thừa cùng số mũ $3$ bằng nhau nên $x+1=-5$.\n\n$x=-5-1=-6$.\n\nVậy a) $x=2$; b) $x=-6$.\n\n##VD\nTìm số nguyên $x$, biết $25-(3+x)^2=3.(-2)^3$.\n**Hướng dẫn giải:**\nTính vế phải: $(-2)^3=-8$ nên $3.(-8)=-24$, đề trở thành $25-(3+x)^2=-24$.\n\n$(3+x)^2$ là số trừ nên $(3+x)^2=25-(-24)=49$.\n\nVì $7^2=(-7)^2=49$ nên $3+x=7$ hoặc $3+x=-7$.\n\nVới $3+x=7$ thì $x=7-3=4$. Với $3+x=-7$ thì $x=-7-3=-10$.\n\nVậy $x=4$ hoặc $x=-10$.",
+          "kiem": [
+            "[...Array(11).keys()].filter(x=>5**x-31===-6).join()==='2' && [...Array(401).keys()].map(i=>i-200).filter(x=>(x+1)**3+9===-116).join()==='-6'",
+            "[...Array(401).keys()].map(i=>i-200).filter(x=>25-(3+x)**2===3*(-2)**3).join()==='-10,4'"
+          ]
+        }
+      ]
+    },
+    {
+      "ten": "Tìm x khi tích bằng 0",
+      "ly_thuyet": "##TC\nTích bằng $0$ khi và chỉ khi có một thừa số bằng $0$: $a.b=0$ thì $a=0$ hoặc $b=0$.\nVới nhiều thừa số: $a.b.c=0$ thì $a=0$ hoặc $b=0$ hoặc $c=0$.\nBình phương của một số nguyên luôn không âm, nên $x^2+9\\ge 9>0$ không bao giờ bằng $0$.\n$x^2=9$ thì $x=3$ hoặc $x=-3$; $x^3=8$ thì $x=2$.\n\n##PP\nCho từng thừa số bằng $0$, mỗi trường hợp tìm $x$ bằng quy tắc tìm thành phần chưa biết.\nLoại thừa số không thể bằng $0$ (như $x^2+9$).\nLiệt kê mọi giá trị $x$ tìm được ở các trường hợp rồi kết luận.\n\n##CY\nPhải xét đủ mọi thừa số, ghi rõ chữ \"hoặc\", không bỏ sót nghiệm.\nThừa số $2x-8=0$ thì $2x=8$ rồi $x=4$, không dừng ở $2x=8$.\nChỉ dùng cách này khi vế phải bằng $0$; vế phải khác $0$ thì không được cho từng thừa số bằng số đó.",
+      "dang": [
+        {
+          "ten": "Hai thừa số bậc nhất",
+          "ly_thuyet": "##PP\nCho thừa số thứ nhất bằng $0$, tìm $x$; cho thừa số thứ hai bằng $0$, tìm $x$.\nKết luận có hai giá trị $x$ (có thể trùng nhau).\n\n##CY\nỞ thừa số có hệ số trước $x$ (như $2x-8$), tìm $2x$ trước rồi chia cho hệ số.\nHai giá trị tìm được đều là nghiệm, không chọn một giá trị.",
+          "vi_du": "##VD\nTìm số nguyên $x$, biết $(x+2).(x-3)=0$.\n**Hướng dẫn giải:**\nTích bằng $0$ nên $x+2=0$ hoặc $x-3=0$.\n\nVới $x+2=0$ thì $x=0-2=-2$.\n\nVới $x-3=0$ thì $x=0+3=3$.\n\nVậy $x=-2$ hoặc $x=3$.\n\n##VD\nTìm số nguyên $x$, biết $(x-3).(2x-8)=0$.\n**Hướng dẫn giải:**\nTích bằng $0$ nên $x-3=0$ hoặc $2x-8=0$.\n\nVới $x-3=0$ thì $x=3$.\n\nVới $2x-8=0$ thì $2x=8$, suy ra $x=8:2=4$.\n\nVậy $x=3$ hoặc $x=4$.",
+          "kiem": [
+            "[...Array(401).keys()].map(i=>i-200).filter(x=>(x+2)*(x-3)===0).join()==='-2,3'",
+            "[...Array(401).keys()].map(i=>i-200).filter(x=>(x-3)*(2*x-8)===0).join()==='3,4'"
+          ]
+        },
+        {
+          "ten": "Có thừa số bậc hai hoặc nhiều thừa số",
+          "ly_thuyet": "##PP\nCó $3$ thừa số trở lên thì cho từng thừa số bằng $0$.\nThừa số $x^2+k$ (với $k>0$) luôn dương nên không bằng $0$: loại.\nThừa số $x^2-k^2=0$ thì $x^2=k^2$, suy ra $x=k$ hoặc $x=-k$. Thừa số $x^3=k^3$ thì $x=k$.\n\n##CY\nThừa số $x$ đứng một mình cũng cho một trường hợp $x=0$.\nGộp nghiệm của mọi thừa số, liệt kê theo thứ tự tăng dần để khỏi sót.",
+          "vi_du": "##VD\nTìm số nguyên $x$, biết $(x^2+9).(x-2)=0$.\n**Hướng dẫn giải:**\nTích bằng $0$ nên $x^2+9=0$ hoặc $x-2=0$.\n\nVì $x^2\\ge 0$ nên $x^2+9\\ge 9$, không thể bằng $0$. Loại trường hợp này.\n\nVới $x-2=0$ thì $x=2$.\n\nVậy $x=2$.\n\n##VD\nTìm số nguyên $x$, biết $x.(x^2-25).(x^3-8)=0$.\n**Hướng dẫn giải:**\nTích bằng $0$ nên $x=0$ hoặc $x^2-25=0$ hoặc $x^3-8=0$.\n\nVới $x^2-25=0$ thì $x^2=25$, vì $5^2=(-5)^2=25$ nên $x=5$ hoặc $x=-5$.\n\nVới $x^3-8=0$ thì $x^3=8=2^3$ nên $x=2$.\n\nVậy $x\\in\\{-5;0;2;5\\}$.",
+          "kiem": [
+            "[...Array(401).keys()].map(i=>i-200).filter(x=>(x*x+9)*(x-2)===0).join()==='2'",
+            "[...Array(401).keys()].map(i=>i-200).filter(x=>x*(x*x-25)*(x**3-8)===0).join()==='-5,0,2,5'"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+{
+  "cd": 1,
+  "nhom": [
+    {
+      "ten": "Số nguyên âm và ý nghĩa thực tế",
+      "ly_thuyet": "##TC\nCác số tự nhiên $1; 2; 3; \\dots$ gọi là số nguyên dương. Các số $-1; -2; -3; \\dots$ gọi là số nguyên âm.\nSố $0$ không là số nguyên âm cũng không là số nguyên dương.\nTập hợp số nguyên $\\mathbb{Z}=\\{\\dots;-3;-2;-1;0;1;2;3;\\dots\\}$ gồm số nguyên âm, số $0$ và số nguyên dương. Mọi số tự nhiên đều là số nguyên.\nSố nguyên âm là số có dấu \"$-$\" đứng trước số khác $0$; $-5$ đọc là \"âm năm\".\nSố nguyên âm dùng để biểu thị các đại lượng có hai hướng ngược nhau: nhiệt độ trên $0^{\\circ}\\text{C}$ (dương) và dưới $0^{\\circ}\\text{C}$ (âm); độ cao trên mực nước biển (dương) và dưới mực nước biển (âm); số tiền có (dương) và số tiền nợ (âm); tăng (dương) và giảm (âm).\n\n##PP\nXác định mốc $0$ của đại lượng (mực nước biển, $0^{\\circ}\\text{C}$, ...) và chọn hướng dương.\nĐại lượng cùng hướng dương thì ghi số dương; đại lượng ngược hướng dương thì ghi số âm, kèm số đo của nó.\n\n##CY\nSố $0$ không âm, không dương; $-2021$ vẫn là số nguyên âm dù chữ số lớn.\n\"Sâu $150\\ \\text{m}$ dưới mực nước biển\" ứng với độ cao $-150\\ \\text{m}$ (không phải $150\\ \\text{m}$).",
+      "dang": [
+        {
+          "ten": "Nhận biết số nguyên dương, số nguyên âm",
+          "ly_thuyet": "##PP\nNhìn dấu của từng số: số khác $0$ có dấu \"$-$\" là số nguyên âm; số khác $0$ không có dấu \"$-$\" (hoặc có dấu \"$+$\") là số nguyên dương; số $0$ không thuộc loại nào.\nVới tập hợp \"chỉ gồm số nguyên âm\": kiểm từng phần tử, chỉ cần một phần tử là $0$ hoặc số dương thì loại tập đó.\n\n##CY\nSố $0$ không là số nguyên âm cũng không là số nguyên dương nên tập có phần tử $0$ không chỉ gồm số nguyên âm.\nĐừng nhầm số có chữ số lớn là số dương: $-2024$ là số âm.",
+          "vi_du": "##VD\nTrong các số $-15; 0; 7; -3; 12; +4$, số nào là số nguyên dương, số nào là số nguyên âm?\n**Hướng dẫn giải:**\nCác số có dấu \"$-$\" đứng trước: $-15$ và $-3$ là số nguyên âm.\n\nCác số lớn hơn $0$ không mang dấu \"$-$\": $7; 12; +4$ là số nguyên dương. Số $0$ không thuộc loại nào.\n\nVậy số nguyên dương là $7; 12; +4$, số nguyên âm là $-15; -3$.\n\n##VD\nTrong các tập hợp sau, tập hợp nào chỉ gồm các số nguyên âm?\n$A=\\{-5;-2;0\\}$; $B=\\{-9;-4;-1\\}$; $C=\\{-6;3;-2\\}$; $D=\\{1;2;3\\}$\n**Hướng dẫn giải:**\nTập $A$ có phần tử $0$ không là số nguyên âm, loại.\n\nTập $C$ có phần tử $3$ là số nguyên dương, loại. Tập $D$ chỉ gồm số nguyên dương, loại.\n\nTập $B$ có các phần tử $-9; -4; -1$ đều là số nguyên âm.\n\nVậy tập hợp chỉ gồm các số nguyên âm là $B$.",
+          "kiem": [
+            "[-15,0,7,-3,12,4].filter(x=>x>0).join()==='7,12,4' && [-15,0,7,-3,12,4].filter(x=>x<0).join()==='-15,-3'",
+            "[[-5,-2,0],[-9,-4,-1],[-6,3,-2],[1,2,3]].map(s=>s.every(x=>x<0)).join()==='false,true,false,false'"
+          ]
+        },
+        {
+          "ten": "Dùng số nguyên âm biểu thị đại lượng thực tế",
+          "ly_thuyet": "##PP\nBước 1: xác định mốc $0$ và hướng dương (trên mực nước biển, trên $0^{\\circ}\\text{C}$, số tiền có, tăng, ... là hướng dương).\nBước 2: đại lượng cùng hướng dương thì viết số dương; đại lượng ngược hướng (dưới, sâu, nợ, giảm, ...) thì viết số âm với số đo tương ứng.\nBước 3: nếu đề cho số âm và yêu cầu nói bằng lời thì làm ngược lại: số âm ứng với \"dưới\", \"sâu\", \"nợ\", ...\n\n##CY\nĐộ sâu $a$ mét dưới mực nước biển viết là độ cao $-a$ mét, độ cao $-a$ mét nghĩa là sâu $a$ mét.\n\"Độ cao\" và \"độ sâu\" là hai cách nói ngược nhau về cùng một vị trí, đọc kĩ đề xem đề hỏi đại lượng nào.",
+          "vi_du": "##VD\nHãy dùng số nguyên để biểu thị:\na) Nhiệt độ nóng chảy của thủy ngân là $39^{\\circ}\\text{C}$ dưới $0^{\\circ}\\text{C}$.\nb) Đỉnh Fansipan cao $3143\\ \\text{m}$ so với mực nước biển.\n**Hướng dẫn giải:**\nChọn $0^{\\circ}\\text{C}$ làm mốc: nhiệt độ trên $0^{\\circ}\\text{C}$ là số dương, nhiệt độ dưới $0^{\\circ}\\text{C}$ là số âm.\n\na) $39^{\\circ}\\text{C}$ dưới $0^{\\circ}\\text{C}$ được biểu thị bằng số nguyên âm $-39^{\\circ}\\text{C}$.\n\nb) Chọn mực nước biển làm mốc $0$: độ cao trên mực nước biển là số dương nên đỉnh Fansipan có độ cao $3143\\ \\text{m}$.\n\nVậy nhiệt độ nóng chảy của thủy ngân là $-39^{\\circ}\\text{C}$, độ cao của Fansipan là $3143\\ \\text{m}$.\n\n##VD\nMột tàu ngầm đang ở độ cao $-120\\ \\text{m}$ so với mực nước biển.\na) Hãy diễn đạt lại thông tin này bằng lời.\nb) Tàu ngầm đang ở độ sâu bao nhiêu mét?\n**Hướng dẫn giải:**\nMốc $0$ là mực nước biển; số âm $-120$ nghĩa là tàu ở phía dưới mực nước biển.\n\na) Tàu ngầm đang ở dưới mực nước biển $120\\ \\text{m}$.\n\nb) Độ sâu của tàu ngầm là $120\\ \\text{m}$.\n\nVậy tàu ngầm ở dưới mực nước biển $120\\ \\text{m}$, tức độ sâu $120\\ \\text{m}$.",
+          "kiem": [
+            "-39 < 0 && 3143 > 0",
+            "(()=>{const doCao=-120; return doCao<0 && -doCao===120})()"
+          ]
+        }
+      ]
+    },
+    {
+      "ten": "Số đối",
+      "ly_thuyet": "##TC\nHai số nguyên chỉ khác nhau về dấu (nằm hai phía của $0$ trên trục số và cách đều $0$) gọi là hai số đối nhau. Số đối của $a$ là $-a$.\nSố đối của $0$ là $0$. Số đối của số nguyên dương là số nguyên âm và ngược lại.\nSố đối của $-a$ là $a$, viết là $-(-a)=a$.\nTổng của hai số đối nhau bằng $0$.\n\n##PP\nMuốn tìm số đối của một số, ta đổi dấu số đó: thêm dấu \"$-$\" nếu là số dương, bỏ dấu \"$-$\" nếu là số âm, giữ nguyên nếu là $0$.\nNếu số cho dạng $-(-a)$ thì thu gọn trước (bằng $a$) rồi mới đổi dấu.\n\n##CY\nSố đối của một số không phải lúc nào cũng nhỏ hơn hoặc lớn hơn chính nó: số đối của $-3$ là $3$ (lớn hơn), số đối của $3$ là $-3$ (nhỏ hơn).\n$0$ là số duy nhất bằng số đối của chính nó.\nKhông nhầm số đối ($15$ và $-15$) với số viết ngược chữ số ($15$ và $51$).",
+      "dang": [
+        {
+          "ten": "Tìm số đối của một số",
+          "ly_thuyet": "##PP\nBước 1: nếu số cho dạng có nhiều dấu \"$-$\" như $-(-15)$ thì thu gọn về một số nguyên cụ thể.\nBước 2: đổi dấu số đó để được số đối.\n\n##CY\nSố đối của $-(-15)$ là $-15$ (vì $-(-15)=15$ rồi đổi dấu), không phải $15$.\nSố đối của số đối của một số là chính số đó.",
+          "vi_du": "##VD\nTìm số đối của mỗi số sau: $-21$; $14$; $0$.\n**Hướng dẫn giải:**\nSố đối của $-21$ là $-(-21)=21$.\n\nSố đối của $14$ là $-14$.\n\nSố đối của $0$ là $0$.\n\nVậy các số đối lần lượt là $21$; $-14$; $0$.\n\n##VD\na) Tìm số đối của $-(-15)$.\nb) Tìm số đối của số đối của $-7$.\n**Hướng dẫn giải:**\na) Ta có $-(-15)=15$. Số đối của $15$ là $-15$.\n\nb) Số đối của $-7$ là $7$. Số đối của $7$ là $-7$.\n\nVậy kết quả câu a) là $-15$, câu b) là $-7$.",
+          "kiem": [
+            "-(-21)===21 && -14===-(14) && -0===0",
+            "-(-(-15))===-15 && -(-(-7))===-7"
+          ]
+        },
+        {
+          "ten": "Tập hợp gồm các phần tử và số đối của chúng",
+          "ly_thuyet": "##PP\nBước 1: viết các phần tử của tập hợp đã cho.\nBước 2: với mỗi phần tử, viết số đối của nó (đổi dấu; số đối của $0$ là $0$).\nBước 3: gộp tất cả vào một tập hợp, mỗi số chỉ viết một lần, nên viết theo thứ tự tăng dần.\n\n##CY\nSố $0$ có số đối là chính nó nên chỉ viết một lần.\nNếu tập đã có cả $a$ và $-a$ thì số đối của $a$ đã nằm trong tập, không viết lặp.",
+          "vi_du": "##VD\nCho tập hợp $M=\\{2;0;-3\\}$. Viết tập hợp gồm các phần tử của $M$ và số đối của chúng.\n**Hướng dẫn giải:**\nSố đối của $2$ là $-2$, số đối của $0$ là $0$, số đối của $-3$ là $3$.\n\nGộp các phần tử của $M$ và các số đối, mỗi số viết một lần: $-3; -2; 0; 2; 3$.\n\nVậy tập hợp cần tìm là $\\{-3;-2;0;2;3\\}$.\n\n##VD\nCho tập hợp $B=\\{5;-5;1;-4\\}$. Viết tập hợp gồm các phần tử của $B$ và số đối của chúng.\n**Hướng dẫn giải:**\nSố đối của $5$ là $-5$, của $-5$ là $5$, của $1$ là $-1$, của $-4$ là $4$.\n\nHai số $5$ và $-5$ đã có sẵn trong $B$, nên các số mới chỉ là $-1$ và $4$.\n\nVậy tập hợp cần tìm là $\\{-5;-4;-1;1;4;5\\}$.",
+          "kiem": [
+            "[...new Set([2,0,-3].flatMap(x=>[x,-x]))].sort((a,b)=>a-b).join()==='-3,-2,0,2,3'",
+            "[...new Set([5,-5,1,-4].flatMap(x=>[x,-x]))].sort((a,b)=>a-b).join()==='-5,-4,-1,1,4,5'"
+          ]
+        }
+      ]
+    },
+    {
+      "ten": "Trục số, so sánh và sắp xếp số nguyên",
+      "ly_thuyet": "##TC\nTrục số: đường thẳng có gốc $O$ biểu diễn số $0$, chiều dương là chiều sang phải; các vạch cách đều nhau (cùng một đơn vị).\nĐiểm biểu diễn số nguyên dương nằm bên phải $O$, điểm biểu diễn số nguyên âm nằm bên trái $O$.\nĐiểm biểu diễn $m$ và $-m$ đều cách $O$ một khoảng bằng $m$ đơn vị (với $m$ là số nguyên dương).\nTrên trục số, nếu điểm $a$ nằm bên trái điểm $b$ thì $a<b$ (hay $b>a$). Kí hiệu $a\\le b$ nghĩa là \"$a<b$ hoặc $a=b$\".\nMọi số nguyên âm nhỏ hơn $0$ và nhỏ hơn mọi số nguyên dương: $\\text{số âm}<0<\\text{số dương}$.\nNếu $a, b$ là hai số nguyên dương và $a>b$ thì $-a<-b$.\n\n##PP\nSo sánh hai số nguyên: xét dấu trước. Số dương lớn hơn $0$ và lớn hơn mọi số âm; số âm nhỏ hơn $0$.\nHai số cùng dương: so như số tự nhiên. Hai số cùng âm: bỏ dấu \"$-$\", số nào lớn hơn thì ngược lại số đó nhỏ hơn.\nSắp xếp nhiều số: tách thành nhóm số âm, số $0$, số dương rồi xếp từng nhóm.\n\n##CY\nVới số âm, \"chữ số lớn\" lại là số nhỏ: $-100<-30$ vì $100>30$.\nNhiệt độ thấp nhất là số nhỏ nhất: $-200^{\\circ}\\text{C}$ thấp hơn $-80^{\\circ}\\text{C}$.",
+      "dang": [
+        {
+          "ten": "Biểu diễn và đọc số nguyên trên trục số",
+          "ly_thuyet": "##PP\nBước 1: vẽ đường thẳng, chọn gốc $O$ (số $0$), chiều dương sang phải, chia các vạch cách đều nhau.\nBước 2: số dương đặt bên phải $O$, số âm đặt bên trái $O$; số đơn vị cách $O$ bằng số đó khi bỏ dấu \"$-$\".\nBước 3: muốn đọc số tại một điểm, xem điểm nằm bên nào của $O$ rồi đếm số vạch tới $O$.\n\n##CY\nCác vạch phải cách đều nhau; điểm càng xa $O$ về bên trái thì số nguyên âm càng nhỏ.\nHai điểm biểu diễn hai số đối nhau thì nằm hai phía của $O$ và cách đều $O$.",
+          "vi_du": "##VD\nTrên trục số, điểm $A$ biểu diễn số $-3$, điểm $B$ biểu diễn số $2$, điểm $C$ biểu diễn số $-1$.\na) Những điểm nào nằm bên trái gốc $O$?\nb) Điểm nào cách $O$ xa nhất? Cách $O$ bao nhiêu đơn vị?\n**Hướng dẫn giải:**\na) Số nguyên âm được biểu diễn bên trái $O$. Các số $-3$ và $-1$ là số âm nên hai điểm $A$ và $C$ nằm bên trái $O$.\n\nb) Điểm $A$ cách $O$ $3$ đơn vị, điểm $B$ cách $O$ $2$ đơn vị, điểm $C$ cách $O$ $1$ đơn vị.\n\nVậy $A$ và $C$ nằm bên trái $O$; điểm $A$ cách $O$ xa nhất, cách $3$ đơn vị.\n\n##VD\nTrên trục số, điểm $M$ nằm bên trái $O$ và cách $O$ một khoảng $4$ đơn vị; điểm $N$ nằm bên phải $O$ và cách $O$ một khoảng $5$ đơn vị.\na) Điểm $M$ và điểm $N$ biểu diễn các số nguyên nào?\nb) Điểm biểu diễn số đối của số tại $M$ nằm bên nào của $O$ và cách $O$ bao nhiêu đơn vị?\n**Hướng dẫn giải:**\na) $M$ nằm bên trái $O$, cách $O$ $4$ đơn vị nên $M$ biểu diễn số $-4$. $N$ nằm bên phải $O$, cách $O$ $5$ đơn vị nên $N$ biểu diễn số $5$.\n\nb) Số đối của $-4$ là $4$. Điểm biểu diễn $4$ nằm bên phải $O$ và cách $O$ $4$ đơn vị.\n\nVậy $M$ biểu diễn $-4$, $N$ biểu diễn $5$; điểm biểu diễn số đối của số tại $M$ nằm bên phải $O$, cách $O$ $4$ đơn vị.",
+          "kiem": [
+            "[-3,2,-1].filter(x=>x<0).join()==='-3,-1' && Math.max(...[-3,2,-1].map(x=>Math.abs(x)))===3 && [-3,2,-1].find(x=>Math.abs(x)===3)===-3",
+            "(()=>{const M=-4,N=5; return M<0 && N>0 && -M===4 && -M>0})()"
+          ]
+        },
+        {
+          "ten": "So sánh hai số nguyên",
+          "ly_thuyet": "##PP\nBước 1: xét dấu. Số dương lớn hơn $0$ và lớn hơn mọi số âm; số âm nhỏ hơn $0$ và nhỏ hơn mọi số dương.\nBước 2: nếu hai số cùng dương, so như số tự nhiên; nếu hai số cùng âm, bỏ dấu \"$-$\" rồi so, số nào có phần số lớn hơn thì nhỏ hơn.\nBước 3: kết luận bằng dấu $<$, $>$ hoặc $=$.\n\n##CY\nSo sánh hai số âm dễ sai: $-25>-52$ vì $25<52$.\nCó thể kiểm bằng trục số: số nằm bên trái là số nhỏ hơn.",
+          "vi_du": "##VD\nSo sánh:\na) $-2$ và $5$\nb) $-10$ và $-2$\nc) $0$ và $-7$\n**Hướng dẫn giải:**\na) $-2$ là số âm, $5$ là số dương nên $-2<5$.\n\nb) Hai số đều âm; bỏ dấu \"$-$\" được $10$ và $2$, mà $10>2$ nên $-10<-2$.\n\nc) $-7$ là số âm nên nhỏ hơn $0$, tức $0>-7$.\n\nVậy $-2<5$; $-10<-2$; $0>-7$.\n\n##VD\nĐiền dấu $<$ hoặc $>$ thích hợp vào chỗ trống:\na) $-6\\ \\ldots\\ 0$\nb) $8\\ \\ldots\\ -9$\nc) $-25\\ \\ldots\\ -52$\n**Hướng dẫn giải:**\na) $-6$ là số âm nên nhỏ hơn $0$: $-6<0$.\n\nb) $8$ là số dương, $-9$ là số âm nên $8>-9$.\n\nc) Hai số đều âm; bỏ dấu \"$-$\" được $25$ và $52$, mà $25<52$ nên $-25>-52$.\n\nVậy a) $<$; b) $>$; c) $>$.",
+          "kiem": [
+            "[-2<5, -10<-2, 0>-7].every(Boolean)",
+            "[-6<0, 8>-9, -25>-52].every(Boolean) && !(-25<-52)"
+          ]
+        },
+        {
+          "ten": "Sắp xếp các số nguyên theo thứ tự",
+          "ly_thuyet": "##PP\nBước 1: tách các số thành nhóm số âm, số $0$, số dương.\nBước 2: xếp số dương như số tự nhiên; xếp số âm bằng cách bỏ dấu \"$-$\": số nào có phần số lớn hơn thì nhỏ hơn.\nBước 3: sắp theo thứ tự tăng dần: các số âm (từ nhỏ đến lớn), $0$, các số dương (từ nhỏ đến lớn); thứ tự giảm dần viết ngược lại.\nVới bài nhiệt độ: nơi lạnh nhất (thấp nhất) là số nhỏ nhất, nơi nóng nhất là số lớn nhất.\n\n##CY\nViết đủ các số đề cho, không bỏ sót số nào và không viết lặp.\nXếp tăng dần là từ nhỏ đến lớn, giảm dần là từ lớn đến nhỏ, đừng viết nhầm chiều.",
+          "vi_du": "##VD\nSắp xếp các số $-6; 1; 9; -100; -9; 20$ theo thứ tự tăng dần.\n**Hướng dẫn giải:**\nSố âm: $-6; -100; -9$. Bỏ dấu \"$-$\" được $6; 100; 9$, sắp tăng dần là $6<9<100$, nên các số âm theo thứ tự tăng dần là $-100<-9<-6$.\n\nSố dương: $1; 9; 20$ đã theo thứ tự tăng dần.\n\nSố âm đứng trước, rồi đến số dương.\n\nVậy thứ tự tăng dần là $-100; -9; -6; 1; 9; 20$.\n\n##VD\nCùng một thời điểm, nhiệt độ ở Mát-xcơ-va là $-7^{\\circ}\\text{C}$, ở Pa-ri là $-2^{\\circ}\\text{C}$, ở Hà Nội là $18^{\\circ}\\text{C}$, ở Yakutsk là $-35^{\\circ}\\text{C}$.\na) Nơi nào có nhiệt độ thấp nhất?\nb) Sắp xếp nhiệt độ các nơi theo thứ tự giảm dần.\n**Hướng dẫn giải:**\nBa nhiệt độ âm: bỏ dấu \"$-$\" được $7; 2; 35$, mà $35>7>2$ nên $-35<-7<-2$. Nhiệt độ $18^{\\circ}\\text{C}$ là số dương nên lớn nhất.\n\na) Nhiệt độ thấp nhất là $-35^{\\circ}\\text{C}$, ở Yakutsk.\n\nb) Thứ tự giảm dần là $18; -2; -7; -35$.\n\nVậy nơi lạnh nhất là Yakutsk; giảm dần: Hà Nội, Pa-ri, Mát-xcơ-va, Yakutsk.",
+          "kiem": [
+            "[-6,1,9,-100,-9,20].sort((a,b)=>a-b).join()==='-100,-9,-6,1,9,20'",
+            "(()=>{const t=[-7,-2,18,-35]; return Math.min(...t)===-35 && t.slice().sort((a,b)=>b-a).join()==='18,-2,-7,-35'})()"
+          ]
+        },
+        {
+          "ten": "Tìm số nguyên theo điều kiện về thứ tự",
+          "ly_thuyet": "##PP\nBước 1: đọc kĩ điều kiện: số âm hay dương, mấy chữ số, lớn nhất hay nhỏ nhất, \"bé hơn\" hay \"bé hơn hoặc bằng\".\nBước 2: dùng trục số: số nguyên liền trước của $a$ nằm sát bên trái $a$, số nguyên liền sau nằm sát bên phải $a$ (liền trước của $-9$ là $-10$).\nBước 3: với bài điền chữ số $*$, thử các chữ số $0; 1; \\dots; 9$ hoặc so sánh theo phần số rồi kết luận mọi giá trị thoả mãn.\n\n##CY\nSố nguyên âm lớn nhất là $-1$ (không phải $0$); số nguyên âm nhỏ nhất có hai chữ số là $-99$; số nguyên âm nhỏ nhất không tồn tại.\n\"Bé hơn $-9$\" không lấy $-9$: số nguyên lớn nhất bé hơn $-9$ là $-10$.",
+          "vi_du": "##VD\na) Tìm số nguyên lớn nhất bé hơn $-9$.\nb) Tìm số nguyên âm nhỏ nhất có hai chữ số.\n**Hướng dẫn giải:**\na) Các số nhỏ hơn $-9$ nằm bên trái $-9$ trên trục số; số sát bên trái $-9$ là $-10$ nên số lớn nhất bé hơn $-9$ là $-10$.\n\nb) Số nguyên âm có hai chữ số là các số $-10; -11; \\dots; -99$. Số có phần số lớn nhất thì nhỏ nhất, đó là $-99$.\n\nVậy câu a) là $-10$, câu b) là $-99$.\n\n##VD\nTìm chữ số $*$ để $-3*<-37$ (trong đó $3*$ là số có hai chữ số, chữ số hàng chục là $3$).\n**Hướng dẫn giải:**\nHai số đều âm, nên $-3*<-37$ khi và chỉ khi $3*>37$.\n\nSố $3*$ lớn hơn $37$ khi chữ số hàng đơn vị $*>7$, tức $*=8$ hoặc $*=9$.\n\nThử lại: $-38<-37$ và $-39<-37$ đều đúng.\n\nVậy $*\\in\\{8;9\\}$.",
+          "kiem": [
+            "Math.max(...[...Array(401).keys()].map(i=>i-200).filter(x=>x<-9))===-10 && Math.min(...[...Array(601).keys()].map(i=>i-300).filter(x=>x<0 && String(-x).length===2))===-99",
+            "[...Array(10).keys()].filter(d=>-(30+d)<-37).join()==='8,9'"
+          ]
+        }
+      ]
+    },
+    {
+      "ten": "Tập hợp số nguyên: liệt kê, đếm, tính tổng",
+      "ly_thuyet": "##TC\nTập hợp $\\{x\\in\\mathbb{Z}\\mid a<x\\le b\\}$ gồm các số nguyên $x$ lớn hơn $a$ và nhỏ hơn hoặc bằng $b$.\nDấu $<$ (hoặc $>$) không lấy số ở đầu mút; dấu $\\le$ (hoặc $\\ge$) lấy cả số ở đầu mút.\nHai số đối nhau có tổng bằng $0$.\n\n##PP\nĐọc điều kiện hai đầu để xác định số nguyên nhỏ nhất và lớn nhất thoả mãn, rồi liệt kê các số theo thứ tự tăng dần (nhớ cả số $0$).\nĐếm: đếm riêng số âm, số $0$, số dương rồi cộng lại, hoặc đếm trực tiếp danh sách vừa liệt kê.\nTính tổng: ghép các cặp số đối nhau (mỗi cặp có tổng $0$), phần còn lại là những số ở một đầu không có số đối trong tập; tổng cần tìm là tổng các số còn lại đó.\n\n##CY\nPhân biệt rõ $<$ và $\\le$ ở mỗi đầu: $-2<x$ bắt đầu từ $-1$, còn $-2\\le x$ bắt đầu từ $-2$.\nLiệt kê theo thứ tự tăng dần để không sót, và không quên số $0$.",
+      "dang": [
+        {
+          "ten": "Viết tập hợp số nguyên bằng cách liệt kê",
+          "ly_thuyet": "##PP\nBước 1: xác định số nguyên nhỏ nhất thoả mãn: nếu $a<x$ thì bắt đầu từ số liền sau $a$; nếu $a\\le x$ thì bắt đầu từ $a$.\nBước 2: xác định số nguyên lớn nhất thoả mãn: nếu $x<b$ thì dừng ở số liền trước $b$; nếu $x\\le b$ thì dừng ở $b$.\nBước 3: viết các số nguyên từ số nhỏ nhất đến số lớn nhất, cách nhau bởi dấu \";\", đặt trong ngoặc nhọn.\n\n##CY\nKhông quên số $0$ khi tập có cả số âm và số dương.\nKiểm tra lại hai đầu: đầu có dấu $<$ thì loại số đầu mút, đầu có dấu $\\le$ thì giữ.",
+          "vi_du": "##VD\nViết tập hợp $A=\\{x\\in\\mathbb{Z}\\mid -2<x\\le 3\\}$ bằng cách liệt kê các phần tử.\n**Hướng dẫn giải:**\nVì $-2<x$ nên $x$ bắt đầu từ số liền sau $-2$, đó là $-1$.\n\nVì $x\\le 3$ nên $x$ có thể bằng $3$.\n\nLiệt kê các số nguyên từ $-1$ đến $3$.\n\nVậy $A=\\{-1;0;1;2;3\\}$.\n\n##VD\nViết tập hợp $B=\\{x\\in\\mathbb{Z}\\mid -3\\le x<2\\}$ bằng cách liệt kê các phần tử.\n**Hướng dẫn giải:**\nVì $-3\\le x$ nên $x$ bắt đầu từ $-3$.\n\nVì $x<2$ nên $x$ dừng ở số liền trước $2$, đó là $1$.\n\nLiệt kê các số nguyên từ $-3$ đến $1$.\n\nVậy $B=\\{-3;-2;-1;0;1\\}$.",
+          "kiem": [
+            "[...Array(41).keys()].map(i=>i-20).filter(x=>-2<x&&x<=3).join()==='-1,0,1,2,3'",
+            "[...Array(41).keys()].map(i=>i-20).filter(x=>-3<=x&&x<2).join()==='-3,-2,-1,0,1'"
+          ]
+        },
+        {
+          "ten": "Đếm số phần tử của tập hợp số nguyên",
+          "ly_thuyet": "##PP\nBước 1: xác định số nguyên nhỏ nhất và lớn nhất thoả mãn điều kiện (chú ý dấu $<$ hay $\\le$ ở mỗi đầu).\nBước 2: đếm theo nhóm: số nguyên âm, số $0$, số nguyên dương thoả mãn.\nBước 3: cộng ba kết quả để được số phần tử.\n\n##CY\nĐừng quên số $0$ khi đếm (nếu $0$ thuộc khoảng).\nVới khoảng đối xứng, số nguyên âm và số nguyên dương có thể có số lượng khác nhau nếu hai đầu khác dấu $<$, $\\le$.",
+          "vi_du": "##VD\nCó bao nhiêu số nguyên $x$ thoả mãn $-10<x\\le 10$?\n**Hướng dẫn giải:**\nVì $-10<x$ nên $x$ bắt đầu từ $-9$; vì $x\\le 10$ nên $x$ dừng ở $10$.\n\nSố nguyên âm: $-9; -8; \\dots; -1$ có $9$ số.\n\nSố $0$: có $1$ số. Số nguyên dương: $1; 2; \\dots; 10$ có $10$ số.\n\nSố phần tử là $9+1+10=20$.\n\nVậy có $20$ số nguyên thoả mãn.\n\n##VD\nCó bao nhiêu số nguyên $x$ thoả mãn $-4\\le x<3$?\n**Hướng dẫn giải:**\nVì $-4\\le x$ nên $x$ bắt đầu từ $-4$; vì $x<3$ nên $x$ dừng ở $2$.\n\nSố nguyên âm: $-4; -3; -2; -1$ có $4$ số.\n\nSố $0$: có $1$ số. Số nguyên dương: $1; 2$ có $2$ số.\n\nSố phần tử là $4+1+2=7$.\n\nVậy có $7$ số nguyên thoả mãn.",
+          "kiem": [
+            "[...Array(41).keys()].map(i=>i-20).filter(x=>-10<x&&x<=10).length===20",
+            "[...Array(41).keys()].map(i=>i-20).filter(x=>-4<=x&&x<3).length===7"
+          ]
+        },
+        {
+          "ten": "Tính tổng các số nguyên thoả điều kiện",
+          "ly_thuyet": "##PP\nBước 1: liệt kê các số nguyên thoả điều kiện theo thứ tự tăng dần.\nBước 2: ghép các cặp số đối nhau (mỗi cặp có tổng bằng $0$) và gạch bỏ; số $0$ cũng không ảnh hưởng tổng.\nBước 3: cộng các số còn lại (những số ở một đầu không có số đối trong tập).\n\n##CY\nHai đầu của tập thường không đối xứng; số còn lại sau khi ghép cặp là những số ở đầu \"dài hơn\".\nNếu tập đối xứng quanh $0$ (từ $-n$ đến $n$) thì tổng bằng $0$.",
+          "vi_du": "##VD\nTính tổng các số nguyên $x$ thoả mãn $-4\\le x<7$.\n**Hướng dẫn giải:**\nCác số nguyên thoả mãn là $-4; -3; -2; -1; 0; 1; 2; 3; 4; 5; 6$.\n\nGhép các cặp số đối: $(-4)$ và $4$, $(-3)$ và $3$, $(-2)$ và $2$, $(-1)$ và $1$, mỗi cặp có tổng $0$; số $0$ cộng vào không đổi.\n\nCòn lại hai số $5$ và $6$, nên tổng là $5+6=11$.\n\nVậy tổng cần tìm là $11$.\n\n##VD\nTính tổng các số nguyên $x$ thoả mãn $-7<x<6$.\n**Hướng dẫn giải:**\nCác số nguyên thoả mãn là $-6; -5; -4; -3; -2; -1; 0; 1; 2; 3; 4; 5$.\n\nGhép các cặp số đối: $(-5)$ và $5$, $(-4)$ và $4$, $(-3)$ và $3$, $(-2)$ và $2$, $(-1)$ và $1$, mỗi cặp có tổng $0$; số $0$ cộng vào không đổi.\n\nCòn lại một số $-6$, nên tổng là $-6$.\n\nVậy tổng cần tìm là $-6$.",
+          "kiem": [
+            "[...Array(41).keys()].map(i=>i-20).filter(x=>-4<=x&&x<7).reduce((a,b)=>a+b,0)===11",
+            "[...Array(41).keys()].map(i=>i-20).filter(x=>-7<x&&x<6).reduce((a,b)=>a+b,0)===-6"
+          ]
+        },
+        {
+          "ten": "Nhận định đúng / sai về số nguyên",
+          "ly_thuyet": "##PP\nBước 1: đối chiếu từng khẳng định với định nghĩa: $\\mathbb{Z}$ gồm số nguyên âm, số $0$, số nguyên dương; số đối; thứ tự trên trục số.\nBước 2: muốn chỉ ra một khẳng định sai, tìm một ví dụ cụ thể làm nó sai; muốn khẳng định đúng, chứng tỏ nó đúng với mọi trường hợp.\nBước 3: chọn đáp án theo yêu cầu đề (đúng hay sai).\n\n##CY\nCác bẫy hay gặp: quên số $0$ ($\\mathbb{Z}$ không chỉ gồm số âm và số dương); số nguyên âm lớn nhất là $-1$; số nguyên âm nhỏ nhất có hai chữ số là $-99$ (không phải $-10$); số đối của $0$ là $0$.\nSố đối của một số có thể lớn hơn hoặc nhỏ hơn số đó, tuỳ dấu.",
+          "vi_du": "##VD\nKhẳng định nào sau đây là đúng?\nA. Số đối của một số nguyên luôn nhỏ hơn chính số nguyên đó.\nB. Tập hợp $\\mathbb{Z}$ chỉ gồm số nguyên âm và số nguyên dương.\nC. Mọi số tự nhiên đều là số nguyên.\nD. Số nguyên âm lớn nhất có hai chữ số là $-99$.\n**Hướng dẫn giải:**\nA sai: số đối của $-3$ là $3$ và $3>-3$.\n\nB sai: $\\mathbb{Z}$ còn có số $0$.\n\nD sai: số nguyên âm lớn nhất có hai chữ số là $-10$; $-99$ là số nhỏ nhất.\n\nC đúng: các số $0; 1; 2; \\dots$ đều thuộc $\\mathbb{Z}$.\n\nVậy khẳng định đúng là C.\n\n##VD\nGhi chữ Đ (đúng) hoặc S (sai) cho mỗi ý:\na) Số $0$ là số nguyên dương.\nb) Số đối của $-8$ là $8$.\nc) Số nguyên âm lớn nhất là $-1$.\nd) $-15>-12$.\n**Hướng dẫn giải:**\na) Sai, số $0$ không là số nguyên dương.\n\nb) Đúng, số đối của $-8$ là $8$.\n\nc) Đúng, các số nguyên âm là $-1; -2; -3; \\dots$ nên lớn nhất là $-1$.\n\nd) Sai, hai số đều âm mà $15>12$ nên $-15<-12$.\n\nVậy: a) S; b) Đ; c) Đ; d) S.",
+          "kiem": [
+            "[-3,0,5].some(a=>!(-a<a)) && Math.max(...[...Array(90).keys()].map(i=>-(i+10)))===-10 && Number.isInteger(7) && !(0>0||0<0)",
+            "[0>0,-(-8)===8,Math.max(...[...Array(100).keys()].map(i=>-(i+1)))===-1,-15>-12].join()==='false,true,true,false'"
+          ]
+        }
+      ]
+    }
+  ]
+}

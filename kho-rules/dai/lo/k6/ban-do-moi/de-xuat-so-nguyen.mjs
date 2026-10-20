@@ -174,4 +174,5 @@ for (const [i, cd] of CD.entries()) {
 h.push(`<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
 <script>renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})</script></body></html>`)
 writeFileSync(join(RA, 'de-xuat-so-nguyen.html'), h.join('\n'))
+writeFileSync(join(RA, 'de-xuat-so-nguyen.json'), JSON.stringify({ chude: CHUDE, cd: CD }, null, 1))
 console.log(`✔ ${RA}: ${CD.length} chuyên đề · ${nNhom} nhóm · ${nDang} dạng · ~${nCau} câu`)

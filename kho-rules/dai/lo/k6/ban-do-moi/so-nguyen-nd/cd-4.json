@@ -1,0 +1,86 @@
+{
+  "cd": 4,
+  "nhom": [
+    {
+      "ten": "Ước và bội của số nguyên",
+      "ly_thuyet": "##TC\nVới $a;b\\in\\mathbb{Z}$, $b\\ne 0$: nếu có số nguyên $q$ sao cho $a=b.q$ thì $a$ chia hết cho $b$, kí hiệu $a\\vdots b$. Khi đó $a$ là một bội của $b$ và $b$ là một ước của $a$.\nThương của hai số nguyên trong phép chia hết là số dương nếu hai số cùng dấu, là số âm nếu hai số khác dấu.\nNếu $b$ là một ước của $a$ thì $-b$ cũng là một ước của $a$. Nếu $a$ là một bội của $b$ thì $-a$ cũng là một bội của $b$.\nNếu $d$ vừa là ước của $a$, vừa là ước của $b$ thì $d$ gọi là ước chung của $a$ và $b$, kí hiệu $\\text{ƯC}(a;b)$.\nSố $0$ là bội của mọi số nguyên khác $0$. Số $1$ và $-1$ là ước của mọi số nguyên. Không có số nguyên nào chia hết cho $0$, nên $0$ không là ước của số nào.\n\n##PP\nMuốn tìm tất cả các ước của số nguyên $a$: tìm các ước dương của $a$ (nếu $a<0$ thì tìm ước dương của số đối của $a$), rồi viết thêm số đối của từng ước dương đó.\nMuốn tìm bội của số nguyên $a$: lấy $a$ nhân lần lượt với $0;\\pm 1;\\pm 2;\\pm 3;\\dots$, tức $\\text{B}(a)=\\{0;\\pm a;\\pm 2a;\\pm 3a;\\dots\\}$.\nMuốn tìm ước chung của hai số: viết tập ước của từng số rồi chọn các số có mặt ở cả hai tập.\n\n##CY\nƯớc của số nguyên đi theo cặp đối nhau: $\\text{Ư}(a)=\\text{Ư}(-a)$ và $\\text{B}(a)=\\text{B}(-a)$.\nLỗi hay gặp: chỉ viết ước dương mà quên ước âm, hoặc quên số $0$ khi liệt kê bội.",
+      "dang": [
+        {
+          "ten": "Tìm tất cả các ước của một số nguyên",
+          "ly_thuyet": "##PP\nBước 1: Tìm các ước dương của số đã cho (số âm thì lấy số đối của nó): lần lượt thử chia cho $1;2;3;\\dots$, mỗi lần chia hết thì ghi cả số chia lẫn thương, vì cả hai đều là ước.\nBước 2: Viết thêm số đối của từng ước dương vừa tìm.\nBước 3: Viết kết quả dưới dạng tập hợp, chẳng hạn $\\text{Ư}(6)=\\{\\pm 1;\\pm 2;\\pm 3;\\pm 6\\}$.\n\n##CY\nDừng thử chia khi số chia đã vượt quá thương vừa tìm được: lúc đó các cặp ước đã ghép đủ.\nSố nguyên tố $p$ chỉ có bốn ước là $\\pm 1;\\pm p$. Số ước nguyên của một số luôn gấp đôi số ước dương của nó.",
+          "vi_du": "##VD\nTìm tất cả các ước của $-30$.\n**Hướng dẫn giải:**\nTa tìm các ước dương của $30$: $30=1.30=2.15=3.10=5.6$.\n\nVậy các ước dương của $30$ là $1;2;3;5;6;10;15;30$.\n\nMỗi ước dương cùng với số đối của nó đều là ước của $-30$.\n\nVậy $\\text{Ư}(-30)=\\{\\pm 1;\\pm 2;\\pm 3;\\pm 5;\\pm 6;\\pm 10;\\pm 15;\\pm 30\\}$.\n\n##VD\nTìm tất cả các ước của:\na) $22$\nb) $-17$\n**Hướng dẫn giải:**\na) Ta có $22=1.22=2.11$ nên các ước dương của $22$ là $1;2;11;22$.\n\nVậy $\\text{Ư}(22)=\\{\\pm 1;\\pm 2;\\pm 11;\\pm 22\\}$.\n\nb) Thử chia $17$ cho $2;3;4$ đều có dư nên $17$ không chia hết cho các số đó (các số chia lớn hơn $4$ cho thương nhỏ hơn $4$, đã thử ở trên).\n\nDo đó các ước dương của $17$ chỉ là $1$ và $17$.\n\nVậy $\\text{Ư}(-17)=\\{\\pm 1;\\pm 17\\}$.",
+          "kiem": [
+            "[...Array(61).keys()].map(i=>i-30).filter(d=>d!==0&&(-30)%d===0).join()==='-30,-15,-10,-6,-5,-3,-2,-1,1,2,3,5,6,10,15,30'",
+            "[...Array(45).keys()].map(i=>i-22).filter(d=>d!==0&&22%d===0).join()==='-22,-11,-2,-1,1,2,11,22' && [...Array(35).keys()].map(i=>i-17).filter(d=>d!==0&&(-17)%d===0).join()==='-17,-1,1,17'"
+          ]
+        },
+        {
+          "ten": "Tìm bội và ước chung",
+          "ly_thuyet": "##PP\nTìm bội: viết các bội $a.k$ với $k=0;\\pm 1;\\pm 2;\\pm 3;\\dots$. Đề hỏi \"sáu bội\" thì chỉ cần nêu sáu số bất kì thoả mãn; đề cho khoảng giá trị thì liệt kê lần lượt các bội rồi chọn các số nằm trong khoảng đó.\nTìm ước chung: viết $\\text{Ư}$ của từng số, rồi chọn các số có mặt ở mọi tập.\n\n##CY\n\"Nằm giữa $-20$ và $20$\" nghĩa là $-20<x<20$, không lấy hai đầu mút.\nBội có vô số, đừng quên số $0$ và các bội âm. Ước chung của hai số bất kì luôn có $1$ và $-1$.",
+          "vi_du": "##VD\na) Tìm sáu bội của $-4$.\nb) Tìm các bội của $4$ nằm giữa $-20$ và $20$.\n**Hướng dẫn giải:**\na) Các bội của $-4$ có dạng $(-4).k$ với $k\\in\\mathbb{Z}$.\n\nCho $k=0;1;-1;2;-2;3$ ta được sáu bội: $0;-4;4;-8;8;-12$.\n\nb) Các bội của $4$ là $\\dots;-20;-16;-12;-8;-4;0;4;8;12;16;20;\\dots$\n\nVì $-20<x<20$ nên không lấy $-20$ và $20$.\n\nVậy các bội của $4$ nằm giữa $-20$ và $20$ là $-16;-12;-8;-4;0;4;8;12;16$.\n\n##VD\nTìm $\\text{ƯC}(-18;30)$.\n**Hướng dẫn giải:**\nTa có $\\text{Ư}(-18)=\\{\\pm 1;\\pm 2;\\pm 3;\\pm 6;\\pm 9;\\pm 18\\}$.\n\nTa có $\\text{Ư}(30)=\\{\\pm 1;\\pm 2;\\pm 3;\\pm 5;\\pm 6;\\pm 10;\\pm 15;\\pm 30\\}$.\n\nCác số có mặt ở cả hai tập là $\\pm 1;\\pm 2;\\pm 3;\\pm 6$.\n\nVậy $\\text{ƯC}(-18;30)=\\{\\pm 1;\\pm 2;\\pm 3;\\pm 6\\}$.",
+          "kiem": [
+            "[0,-4,4,-8,8,-12].every(b=>b%-4===0) && new Set([0,-4,4,-8,8,-12]).size===6 && [...Array(39).keys()].map(i=>i-19).filter(x=>x%4===0).join()==='-16,-12,-8,-4,0,4,8,12,16'",
+            "[...Array(61).keys()].map(i=>i-30).filter(d=>d!==0&&(-18)%d===0&&30%d===0).join()==='-6,-3,-2,-1,1,2,3,6'"
+          ]
+        }
+      ]
+    },
+    {
+      "ten": "Tìm số nguyên thoả điều kiện chia hết",
+      "ly_thuyet": "##TC\nNếu $a\\vdots x$ ($a\\ne 0$) thì $x\\in\\text{Ư}(a)$. Nếu $x\\vdots b$ thì $x\\in\\text{B}(b)$.\nNếu $a\\vdots x$ và $b\\vdots x$ thì $x\\in\\text{ƯC}(a;b)$. Nếu $x\\vdots a$ và $x\\vdots b$ thì $x$ là bội chung của $a$ và $b$.\nƯớc và bội của hai số đối nhau là như nhau: $\\text{Ư}(-a)=\\text{Ư}(a)$, $\\text{B}(-a)=\\text{B}(a)$; vì vậy $x\\vdots(-6)$ cũng có nghĩa là $x\\vdots 6$.\n\n##PP\nBước 1: Đổi từng điều kiện chia hết thành \"$x$ thuộc tập ước\" hoặc \"$x$ thuộc tập bội\".\nBước 2: Viết (liệt kê) các tập đó.\nBước 3: Lọc theo điều kiện kèm theo ($x>0$, $x<0$, $x$ nằm trong một khoảng,...); nếu có nhiều điều kiện chia hết thì chọn các giá trị thoả mãn tất cả.\nBước 4: Kết luận tập các số $x$.\n\n##CY\n$x=0$ thoả mãn $0\\vdots b$ với mọi $b\\ne 0$, nên khi tìm bội trong một khoảng phải xét cả $x=0$ nếu $0$ nằm trong khoảng. Ngược lại, trong $a\\vdots x$ thì $x\\ne 0$.\nĐiều kiện $x>0$ chỉ giữ các ước dương; điều kiện $x<0$ chỉ giữ các ước âm.",
+      "dang": [
+        {
+          "ten": "x là ước (bội) của số cho trước, có điều kiện",
+          "ly_thuyet": "##PP\nVới $a\\vdots x$: liệt kê $\\text{Ư}(a)$ (cả ước âm), sau đó lọc theo điều kiện kèm theo.\nVới $x\\vdots b$: liệt kê các bội của $b$ trong khoảng đề cho (lần lượt lấy $b.k$), sau đó lọc theo điều kiện còn lại.\nVới hai điều kiện cùng dạng ($a\\vdots x$ và $b\\vdots x$): viết hai tập ước rồi lấy các số có mặt ở cả hai.\nVới hai điều kiện bội ($x\\vdots a$ và $x\\vdots b$): liệt kê các bội của một số trong khoảng, rồi giữ lại các số cũng chia hết cho số kia.\n\n##CY\nĐọc kĩ khoảng: dấu $<$ không lấy đầu mút. Nhớ xét $x=0$ khi $0$ nằm trong khoảng đối với điều kiện bội.\nChia hết cho số âm giống chia hết cho số đối của nó, nên $x\\vdots(-6)$ thì cứ kiểm tra chia hết cho $6$.",
+          "vi_du": "##VD\nTìm số nguyên $x$, biết:\na) $8\\vdots x$ và $x>0$\nb) $-8\\vdots x$ và $12\\vdots x$\n**Hướng dẫn giải:**\na) Vì $8\\vdots x$ nên $x\\in\\text{Ư}(8)=\\{\\pm 1;\\pm 2;\\pm 4;\\pm 8\\}$.\n\nVì $x>0$ nên $x\\in\\{1;2;4;8\\}$.\n\nb) Vì $-8\\vdots x$ nên $x\\in\\text{Ư}(-8)=\\{\\pm 1;\\pm 2;\\pm 4;\\pm 8\\}$.\n\nVì $12\\vdots x$ nên $x\\in\\text{Ư}(12)=\\{\\pm 1;\\pm 2;\\pm 3;\\pm 4;\\pm 6;\\pm 12\\}$.\n\nCác số có mặt ở cả hai tập là $\\pm 1;\\pm 2;\\pm 4$.\n\nVậy $x\\in\\{-4;-2;-1;1;2;4\\}$.\n\n##VD\nTìm số nguyên $x$, biết:\na) $x\\vdots 3$ và $-6<x<6$\nb) $x\\vdots 4$, $x\\vdots(-6)$ và $-40<x<-10$\n**Hướng dẫn giải:**\na) Vì $x\\vdots 3$ nên $x\\in\\text{B}(3)=\\{0;\\pm 3;\\pm 6;\\pm 9;\\dots\\}$.\n\nVì $-6<x<6$ nên không lấy $\\pm 6$.\n\nVậy $x\\in\\{-3;0;3\\}$.\n\nb) Các bội của $4$ nằm giữa $-40$ và $-10$ là $-36;-32;-28;-24;-20;-16;-12$.\n\nTrong các số đó, những số chia hết cho $6$ (cũng là chia hết cho $-6$) là $-36=6.(-6)$; $-24=6.(-4)$; $-12=6.(-2)$.\n\nVậy $x\\in\\{-36;-24;-12\\}$.",
+          "kiem": [
+            "[...Array(41).keys()].map(i=>i-20).filter(x=>x>0&&8%x===0).join()==='1,2,4,8' && [...Array(81).keys()].map(i=>i-40).filter(x=>x!==0&&(-8)%x===0&&12%x===0).join()==='-4,-2,-1,1,2,4'",
+            "[...Array(11).keys()].map(i=>i-5).filter(x=>x%3===0).join()==='-3,0,3' && [...Array(29).keys()].map(i=>i-39).filter(x=>x%4===0&&x%-6===0).join()==='-36,-24,-12'"
+          ]
+        }
+      ]
+    },
+    {
+      "ten": "Tìm n để an+b chia hết cho cn+d (trong ℤ)",
+      "ly_thuyet": "##TC\nNếu $a\\vdots c$ và $b\\vdots c$ thì $(a+b)\\vdots c$ và $(a-b)\\vdots c$.\nNếu $a\\vdots c$ thì $a.k\\vdots c$ với mọi số nguyên $k$.\nNgược lại: nếu tổng $a+b$ chia hết cho $c$ và $a$ chia hết cho $c$ thì $b$ chia hết cho $c$; nếu hiệu $a-b$ chia hết cho $c$ và $a$ chia hết cho $c$ thì $b$ chia hết cho $c$.\nNếu $m\\vdots(cn+d)$ thì $cn+d\\in\\text{Ư}(m)$ (ước có thể là số âm).\n\n##PP\nBước 1: Tách biểu thức ở số bị chia thành (một số nguyên).(số chia) cộng với một số cố định $m$.\nBước 2: Vì phần đầu đã chia hết cho số chia, điều kiện đề bài trở thành $m\\vdots(cn+d)$, tức $cn+d\\in\\text{Ư}(m)$.\nBước 3: Cho $cn+d$ lần lượt bằng từng ước của $m$ (cả ước âm), tìm $n$ bằng cách tìm thành phần chưa biết.\nBước 4: Loại các giá trị $n$ không phải số nguyên, kết luận và thử lại.\n\n##CY\nVì $n$ là số nguyên nên phải lấy cả ước âm của $m$.\nKhi hệ số của $n$ ở số chia lớn hơn $1$, có ước làm $n$ không nguyên: phải loại, không được ghi vào kết quả.\nSố chia khác $0$, nhưng các ước của $m$ đều khác $0$ nên điều kiện này đã tự thoả.",
+      "dang": [
+        {
+          "ten": "Tử là số tự nhiên (a ⋮ (x + b))",
+          "ly_thuyet": "##PP\nBước 1: $a\\vdots(x+b)$ nghĩa là $x+b\\in\\text{Ư}(a)$.\nBước 2: Liệt kê $\\text{Ư}(a)$, nhớ cả ước âm.\nBước 3: Với mỗi ước $d$, giải $x+b=d$ để tìm $x$ (tìm số hạng chưa biết).\nBước 4: Kết luận tập các số $x$.\n\n##CY\nMỗi ước của $a$ cho đúng một số nguyên $x$ nên số nghiệm bằng số ước của $a$ (không loại giá trị nào).\nĐừng viết $x\\in\\text{Ư}(a)$: ước của $a$ là $x+b$ chứ không phải $x$.",
+          "vi_du": "##VD\nTìm số nguyên $x$ sao cho $11\\vdots(x-2)$.\n**Hướng dẫn giải:**\nVì $11\\vdots(x-2)$ nên $x-2\\in\\text{Ư}(11)=\\{\\pm 1;\\pm 11\\}$.\n\nVới $x-2=1$ thì $x=3$. Với $x-2=-1$ thì $x=1$.\n\nVới $x-2=11$ thì $x=13$. Với $x-2=-11$ thì $x=-9$.\n\nVậy $x\\in\\{-9;1;3;13\\}$.\n\n##VD\nTìm số nguyên $x$ sao cho $-13\\vdots(x+1)$.\n**Hướng dẫn giải:**\nVì $-13\\vdots(x+1)$ nên $x+1\\in\\text{Ư}(-13)=\\{\\pm 1;\\pm 13\\}$.\n\nVới $x+1=1$ thì $x=0$. Với $x+1=-1$ thì $x=-2$.\n\nVới $x+1=13$ thì $x=12$. Với $x+1=-13$ thì $x=-14$.\n\nVậy $x\\in\\{-14;-2;0;12\\}$.",
+          "kiem": [
+            "[...Array(101).keys()].map(i=>i-50).filter(x=>x-2!==0&&11%(x-2)===0).join()==='-9,1,3,13'",
+            "[...Array(101).keys()].map(i=>i-50).filter(x=>x+1!==0&&(-13)%(x+1)===0).join()==='-14,-2,0,12'"
+          ]
+        },
+        {
+          "ten": "Hệ số tử bằng / chia hết hệ số mẫu",
+          "ly_thuyet": "##PP\nBước 1: Nhân số chia $(cx+d)$ với một số nguyên $k$ sao cho hệ số của $x$ trong $k.(cx+d)$ bằng hệ số của $x$ ở số bị chia.\nBước 2: Lấy số bị chia trừ đi $k.(cx+d)$, được một số nguyên $m$. Vì $k.(cx+d)\\vdots(cx+d)$ nên điều kiện đề bài trở thành $m\\vdots(cx+d)$.\nBước 3: Suy ra $cx+d\\in\\text{Ư}(m)$; cho $cx+d$ bằng từng ước rồi tìm $x$, loại giá trị không nguyên.\n\n##CY\nTrường hợp số chia là $x$ (như $x+6\\vdots x$) thì $k=1$ và kết quả là $x\\in\\text{Ư}(m)$.\nKhi hệ số của $x$ ở số chia khác $1$ (như $2x+1$), phải kiểm tra từng ước xem $x$ có nguyên không.",
+          "vi_du": "##VD\nTìm số nguyên $x$ sao cho $x+6\\vdots x$.\n**Hướng dẫn giải:**\nVì $x\\vdots x$ và $(x+6)\\vdots x$ nên hiệu $(x+6)-x=6$ chia hết cho $x$.\n\nSuy ra $x\\in\\text{Ư}(6)=\\{\\pm 1;\\pm 2;\\pm 3;\\pm 6\\}$.\n\nVậy $x\\in\\{-6;-3;-2;-1;1;2;3;6\\}$.\n\n##VD\nTìm số nguyên $x$ sao cho:\na) $3x-5\\vdots x-1$\nb) $4x+3\\vdots 2x+1$\n**Hướng dẫn giải:**\na) Ta có $3(x-1)=3x-3\\vdots x-1$.\n\nHiệu $(3x-5)-3(x-1)=-2$ nên điều kiện đề bài trở thành $-2\\vdots x-1$, tức $x-1\\in\\text{Ư}(-2)=\\{\\pm 1;\\pm 2\\}$.\n\nVới $x-1=1$ thì $x=2$. Với $x-1=-1$ thì $x=0$. Với $x-1=2$ thì $x=3$. Với $x-1=-2$ thì $x=-1$.\n\nVậy $x\\in\\{-1;0;2;3\\}$.\n\nb) Ta có $2(2x+1)=4x+2\\vdots 2x+1$.\n\nHiệu $(4x+3)-2(2x+1)=1$ nên điều kiện đề bài trở thành $1\\vdots 2x+1$, tức $2x+1\\in\\{1;-1\\}$.\n\nVới $2x+1=1$ thì $2x=0$, nên $x=0$. Với $2x+1=-1$ thì $2x=-2$, nên $x=-1$.\n\nVậy $x\\in\\{-1;0\\}$.",
+          "kiem": [
+            "[...Array(101).keys()].map(i=>i-50).filter(x=>x!==0&&(x+6)%x===0).join()==='-6,-3,-2,-1,1,2,3,6'",
+            "[...Array(101).keys()].map(i=>i-50).filter(x=>x-1!==0&&(3*x-5)%(x-1)===0).join()==='-1,0,2,3' && [...Array(101).keys()].map(i=>i-50).filter(x=>2*x+1!==0&&(4*x+3)%(2*x+1)===0).join()==='-1,0'"
+          ]
+        },
+        {
+          "ten": "Phân số có giá trị nguyên",
+          "ly_thuyet": "##TC\nBiểu thức $\\dfrac{A}{B}$ ($B\\ne 0$) chính là thương $A:B$, nên nó có giá trị nguyên khi và chỉ khi $A\\vdots B$.\n\n##PP\nBước 1: Đổi yêu cầu \"có giá trị nguyên\" thành \"tử chia hết cho mẫu\".\nBước 2: Tách tử thành $k.(\\text{mẫu})$ cộng một số $m$ ($k$ nguyên), nên điều kiện thành $m\\vdots(\\text{mẫu})$.\nBước 3: Mẫu thuộc $\\text{Ư}(m)$; cho mẫu bằng từng ước (cả ước âm) rồi tìm $n$.\nBước 4: Loại giá trị $n$ không nguyên, thử lại.\n\n##CY\nKhi hệ số của $n$ ở mẫu lớn hơn $1$ thì thường có ước cho $n$ không nguyên (ví dụ $3n=-2$): ghi rõ \"loại\", không đưa vào kết quả.\nMẫu có thể là số âm: vẫn là số nguyên chia hết bình thường, thương là số âm nếu hai số khác dấu.",
+          "vi_du": "##VD\nTìm số nguyên $n$ để $\\dfrac{4n+5}{2n-1}$ có giá trị là một số nguyên.\n**Hướng dẫn giải:**\nĐể $\\dfrac{4n+5}{2n-1}$ là số nguyên thì $(4n+5)\\vdots(2n-1)$.\n\nTa có $4n+5=2(2n-1)+7$ và $2(2n-1)\\vdots(2n-1)$ nên điều kiện trở thành $7\\vdots(2n-1)$.\n\nSuy ra $2n-1\\in\\text{Ư}(7)=\\{\\pm 1;\\pm 7\\}$.\n\nVới $2n-1=1$ thì $2n=2$, nên $n=1$. Với $2n-1=-1$ thì $2n=0$, nên $n=0$.\n\nVới $2n-1=7$ thì $2n=8$, nên $n=4$. Với $2n-1=-7$ thì $2n=-6$, nên $n=-3$.\n\nVậy $n\\in\\{-3;0;1;4\\}$.\n\n##VD\nTìm số nguyên $n$ để $\\dfrac{6n-1}{3n+1}$ có giá trị là một số nguyên.\n**Hướng dẫn giải:**\nĐể $\\dfrac{6n-1}{3n+1}$ là số nguyên thì $(6n-1)\\vdots(3n+1)$.\n\nTa có $6n-1=2(3n+1)-3$ nên điều kiện trở thành $3\\vdots(3n+1)$, tức $3n+1\\in\\text{Ư}(3)=\\{\\pm 1;\\pm 3\\}$.\n\nVới $3n+1=1$ thì $3n=0$, nên $n=0$.\n\nVới $3n+1=-1$ thì $3n=-2$: không có số nguyên $n$ nào ($-2$ không chia hết cho $3$), loại.\n\nVới $3n+1=3$ thì $3n=2$: loại. Với $3n+1=-3$ thì $3n=-4$: loại.\n\nThử lại: $n=0$ thì $\\dfrac{6n-1}{3n+1}=-1:1=-1$ là số nguyên.\n\nVậy $n=0$.",
+          "kiem": [
+            "[...Array(201).keys()].map(i=>i-100).filter(n=>2*n-1!==0&&(4*n+5)%(2*n-1)===0).join()==='-3,0,1,4'",
+            "[...Array(201).keys()].map(i=>i-100).filter(n=>3*n+1!==0&&(6*n-1)%(3*n+1)===0).join()==='0'"
+          ]
+        },
+        {
+          "ten": "Bậc hai chia hết cho bậc nhất",
+          "ly_thuyet": "##PP\nBước 1: Viết $n^2=n.n$ và tách số bị chia thành (biểu thức).(số chia) cộng một số $m$; chẳng hạn $n^2+2n-5=n.(n+2)-5$, vì $n.(n+2)=n^2+2n$.\nBước 2: Vì $n.(n+2)\\vdots(n+2)$ nên điều kiện đề bài trở thành $m\\vdots(n+2)$ (ở ví dụ này $m=-5$).\nBước 3: Suy ra số chia thuộc $\\text{Ư}(m)$; giải từng trường hợp để tìm $n$.\nNếu sau khi trừ $n.(\\text{số chia})$ còn dư một hạng tử bậc nhất thì trừ tiếp một bội số nguyên của số chia, cho đến khi còn lại một số nguyên.\n\n##CY\nDạng này nâng cao: sai ở bước tách thường là sai dấu ở số dư $m$, nên khai triển lại để kiểm tra.\nSố chia có thể chỉ là $n$ (như $2x^2+5\\vdots x$), khi đó $x\\in\\text{Ư}(m)$ trực tiếp.",
+          "vi_du": "##VD\nTìm số nguyên $n$ sao cho $n^2+2n-5\\vdots n+2$.\n**Hướng dẫn giải:**\nTa có $n^2+2n-5=n.(n+2)-5$ và $n.(n+2)\\vdots(n+2)$.\n\nNên điều kiện đề bài trở thành $-5\\vdots(n+2)$, tức $n+2\\in\\text{Ư}(-5)=\\{\\pm 1;\\pm 5\\}$.\n\nVới $n+2=1$ thì $n=-1$. Với $n+2=-1$ thì $n=-3$.\n\nVới $n+2=5$ thì $n=3$. Với $n+2=-5$ thì $n=-7$.\n\nVậy $n\\in\\{-7;-3;-1;3\\}$.\n\n##VD\nTìm số nguyên $x$ sao cho $2x^2+5\\vdots x$.\n**Hướng dẫn giải:**\nTa có $2x^2=2x.x\\vdots x$.\n\nVì $(2x^2+5)\\vdots x$ nên hiệu $(2x^2+5)-2x^2=5$ chia hết cho $x$.\n\nSuy ra $x\\in\\text{Ư}(5)=\\{\\pm 1;\\pm 5\\}$.\n\nVậy $x\\in\\{-5;-1;1;5\\}$.",
+          "kiem": [
+            "[...Array(201).keys()].map(i=>i-100).filter(n=>n+2!==0&&(n*n+2*n-5)%(n+2)===0).join()==='-7,-3,-1,3'",
+            "[...Array(201).keys()].map(i=>i-100).filter(x=>x!==0&&(2*x*x+5)%x===0).join()==='-5,-1,1,5'"
+          ]
+        }
+      ]
+    }
+  ]
+}
