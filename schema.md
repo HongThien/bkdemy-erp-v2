@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-432 bảng · 25 view · 0 enum · 215 trigger · 1184 function
+433 bảng · 25 view · 0 enum · 215 trigger · 1187 function
 
 ## _app_secrets
 
@@ -3672,6 +3672,18 @@ END |  |  |
 | sau | jsonb | Y |  |  |  |
 | actor | uuid | Y |  |  |  |
 | ts | timestamp with time zone |  | now() |  |  |
+
+## kho_de_sau
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | bigint |  |  | PK |  |
+| doi_tuong | text |  |  |  | `cau` · `form_tn` · `form_dien` · `hinh_bai` · `hinh_bien_the` · `hinh_cach_giai` · `clone` · `de_thi` · `bdm_khop` |
+| mon | text |  |  |  | `toan` · `khtn` · `hgt` · `hinh_hoc` · `anh` · `tsa` |
+| ma | text |  |  |  |  |
+| man | text |  | ''::text |  |  |
+| nguoi | uuid | Y | current_nhan_su_id() | FK→nhan_su.id |  |
+| at | timestamp with time zone |  | now() |  |  |
 
 ## kho_doi_dang_log
 
@@ -8103,6 +8115,7 @@ WITH luot AS (
 - `_hs_lop_tu_luyen(p_hs uuid, p_mon text)` → uuid
 - `_hs_nhan_vat_chinh_ghi_log()` → trigger
 - `_hs_on_thi_khoi(p_mon text)` → text
+- `_hs_on_thi_ky_mo()` → text[]
 - `_hsta_chi_tieu_gio_bo_tro()` → numeric
 - `_hsta_chot_ghi_log()` → trigger
 - `_hsta_ti_trong(p_dau_viec text)` → numeric
@@ -8786,6 +8799,8 @@ WITH luot AS (
 - `fn_khao_sat_tong_quan(p_dot integer DEFAULT 1)` → jsonb
 - `fn_kho_cau_chua_giai(p_mon text, p_khoi text, p_limit integer DEFAULT 500)` → TABLE(ma_cau text, dang_chinh text, ten_dang text, ten_chuyen_de text, khoi text, loai_cau text, noi_dung text, lua_chon jsonb, menh_de jsonb, dap_an text, anh_de text, nguon text, created_at timestamp with time zone, yeu_cau_id uuid, yeu_cau_at timestamp with time zone, yeu_cau_ghi_chu text, yeu_cau_nguoi_giai uuid, yeu_cau_nguoi_giai_ten text, yeu_cau_trang_thai text)
 - `fn_kho_dat_giai(p_mon text, p_ma_cau text[], p_ghi_chu text, p_nguoi uuid)` → integer
+- `fn_kho_de_sau_ds(p_doi_tuong text, p_mon text DEFAULT NULL::text)` → TABLE(mon text, ma text, at timestamp with time zone)
+- `fn_kho_de_sau_ghi(p_doi_tuong text, p_mon text, p_ma text, p_man text DEFAULT ''::text)` → timestamp with time zone
 - `fn_kho_dem_cau_chua_giai(p_nhanh text[])` → TABLE(khoi text, so_cau bigint, so_cho_giai bigint)
 - `fn_kho_dem_hang_duyet(p_nhanh text[])` → TABLE(loc text, khoi text, so_cau bigint)
 - `fn_kho_doi_dang_tk(p_mon text, p_khoi text DEFAULT NULL::text, p_tu timestamp with time zone DEFAULT NULL::timestamp with time zone)` → TABLE(dang_cu text, ten_cu text, dang_moi text, ten_moi text, so_lan bigint, lan_cuoi timestamp with time zone, vi_du jsonb)
@@ -9348,6 +9363,7 @@ WITH luot AS (
 | hsta_ghi_them | hsta_ghi_them_noi_dung_check | `CHECK ((btrim(noi_dung) <> ''::text))` |
 | hsta_ghi_them | hsta_ghi_them_so_gio_check | `CHECK ((so_gio > (0)::numeric))` |
 | huy_hieu_thang_sao | huy_hieu_thang_sao_sao_check | `CHECK (((sao >= 1) AND (sao <= 5)))` |
+| kho_de_sau | kho_de_sau_ma_check | `CHECK ((btrim(ma) <> ''::text))` |
 | kho_nhan_xet | kho_nhan_xet_ma_check | `CHECK ((btrim(ma) <> ''::text))` |
 | kho_nhan_xet | kho_nhan_xet_noi_dung_check | `CHECK ((btrim(noi_dung) <> ''::text))` |
 | kho_nhan_xet_xu_ly | kho_nhan_xet_xu_ly_ghi_chu_check | `CHECK ((btrim(ghi_chu) <> ''::text))` |
