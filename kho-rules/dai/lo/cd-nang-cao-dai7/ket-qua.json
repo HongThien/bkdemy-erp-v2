@@ -1,0 +1,746 @@
+{
+ "vao": [
+  {
+   "ma_cau": "T107000000060",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Ngôi Sao Hoàng Mai",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01340",
+   "nhom_id": "NNB01646"
+  },
+  {
+   "ma_cau": "T107000000061",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Ngôi Sao Hoàng Mai",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01340",
+   "nhom_id": "NNB01646"
+  },
+  {
+   "ma_cau": "T107000000063",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Ngôi Sao Hoàng Mai",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01340",
+   "nhom_id": "NNB01646"
+  },
+  {
+   "ma_cau": "T107000000065",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Ngôi Sao Hoàng Mai",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01340",
+   "nhom_id": "NNB01646"
+  },
+  {
+   "ma_cau": "T107000000066",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Ngôi Sao Hoàng Mai",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01340",
+   "nhom_id": "NNB01646"
+  },
+  {
+   "ma_cau": "T107000000124",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Tây Mỗ",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00910",
+   "nhom_id": "NNB00951"
+  },
+  {
+   "ma_cau": "T107000000125",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Tây Mỗ",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00439",
+   "nhom_id": "NNB00952"
+  },
+  {
+   "ma_cau": "T107000000126",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Tây Mỗ",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01339",
+   "nhom_id": "NNB01645"
+  },
+  {
+   "ma_cau": "T107000000127",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Tây Mỗ",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01339",
+   "nhom_id": "NNB01645"
+  },
+  {
+   "ma_cau": "T107000000128",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Tây Mỗ",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00437",
+   "nhom_id": "NNB00948"
+  },
+  {
+   "ma_cau": "T107000000130",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Tây Mỗ",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01339",
+   "nhom_id": "NNB01645"
+  },
+  {
+   "ma_cau": "T107000000131",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Tây Mỗ",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01339",
+   "nhom_id": "NNB01645"
+  },
+  {
+   "ma_cau": "T107000000144",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2024-2025 — THCS Vạn Phúc, huyện Thanh Trì, Hà Nội",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00910",
+   "nhom_id": "NNB00951"
+  },
+  {
+   "ma_cau": "T107000000160",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Ba Đồn, phường Ba Đồn (mã đề 01)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00439",
+   "nhom_id": "NNB00952"
+  },
+  {
+   "ma_cau": "T107000000171",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Bát Tràng, xã Bát Tràng (mã đề: Đề 1)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00809",
+   "nhom_id": "NNB00971"
+  },
+  {
+   "ma_cau": "T107000000186",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Thanh Miện (đề chẵn)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00891",
+   "nhom_id": "NNB00940"
+  },
+  {
+   "ma_cau": "T107000000196",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Lý Tự Trọng (đề không ghi quận / phường / xã và không ghi mã đề)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00891",
+   "nhom_id": "NNB00940"
+  },
+  {
+   "ma_cau": "T107000000210",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Nguyễn Trường Tộ (đề chính thức)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00437",
+   "nhom_id": "NNB00948"
+  },
+  {
+   "ma_cau": "T107000000221",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Trưng Vương (đề chính thức)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00465",
+   "nhom_id": "NNB00973"
+  },
+  {
+   "ma_cau": "T107000000238",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Vĩnh Niệm, phường An Biên",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00891",
+   "nhom_id": "NNB00940"
+  },
+  {
+   "ma_cau": "T107000000255",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Trưng Vương, phường Hải Châu (không ghi mã đề)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00891",
+   "nhom_id": "NNB00940"
+  },
+  {
+   "ma_cau": "T107000000275",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Chu Văn An, phường Thanh Khê (mã đề A)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00891",
+   "nhom_id": "NNB00940"
+  },
+  {
+   "ma_cau": "T107000000309",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Phúc Hòa, xã Phúc Thọ (đề chính thức)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB01235",
+   "nhom_id": "NNB01500"
+  },
+  {
+   "ma_cau": "T107000000322",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Phương Đông, xã Trà Liên (không ghi mã đề)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00891",
+   "nhom_id": "NNB00940"
+  },
+  {
+   "ma_cau": "T107000000335",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Quế Thuận (đề chính)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00891",
+   "nhom_id": "NNB00940"
+  },
+  {
+   "ma_cau": "T107000000347",
+   "de": "Đề kiểm tra cuối học kì 1 Toán 7 năm 2024-2025 — Phòng GD-ĐT Bình Xuyên, huyện Bình Xuyên (Gia Khánh)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB01339",
+   "nhom_id": "NNB01645"
+  },
+  {
+   "ma_cau": "T107000000359",
+   "de": "Đề kiểm tra cuối học kì 1 Toán 7 năm 2025-2026 — THCS Thái Thịnh (đề chính thức)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00891",
+   "nhom_id": "NNB00940"
+  },
+  {
+   "ma_cau": "T107000000372",
+   "de": "Đề kiểm tra đánh giá cuối học kì 1 Toán 7 năm 2025-2026 — THCS Tân Triều",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00810",
+   "nhom_id": "NNB00971"
+  },
+  {
+   "ma_cau": "T107000000407",
+   "de": "Đề kiểm tra cuối học kì 1 Toán 7 năm 2025-2026 — THCS Tây Sơn, phường Hoà Cường",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB01339",
+   "nhom_id": "NNB01645"
+  },
+  {
+   "ma_cau": "T107000000420",
+   "de": "Đề kiểm tra cuối học kì 1 Toán 7 năm 2024-2025 — THCS Nguyễn Trãi, huyện Núi Thành (mã đề A)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00423",
+   "nhom_id": "NNB00938"
+  },
+  {
+   "ma_cau": "T107000000430",
+   "de": "Đề kiểm tra cuối học kì 1 Toán 7 năm 2025-2026 — THCS Lê Lợi, phường Ngũ Hành Sơn",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00935",
+   "nhom_id": "NNB01505"
+  },
+  {
+   "ma_cau": "T107000000444",
+   "de": "Đề kiểm tra cuối học kì 1 Toán 7 năm 2025-2026 — THCS Nguyễn Huệ, phường Hải Châu (Đề chính thức)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00891",
+   "nhom_id": "NNB00940"
+  },
+  {
+   "ma_cau": "T107000000455",
+   "de": "Đề kiểm tra cuối học kì 1 Toán 7 năm 2025-2026 — THCS Phước Bửu (Đề 1)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00891",
+   "nhom_id": "NNB00940"
+  },
+  {
+   "ma_cau": "T107000000499",
+   "de": "Đề kiểm tra cuối học kì 1 Toán 7 năm 2025-2026 — THCS Nguyễn Trường Tộ (đề chính thức)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB01339",
+   "nhom_id": "NNB01645"
+  },
+  {
+   "ma_cau": "T107000000558",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Thành Công",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01235",
+   "nhom_id": "NNB01500"
+  },
+  {
+   "ma_cau": "T107000000559",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Thành Công",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01235",
+   "nhom_id": "NNB01500"
+  },
+  {
+   "ma_cau": "T107000000560",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Thành Công",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01235",
+   "nhom_id": "NNB01500"
+  },
+  {
+   "ma_cau": "T107000000561",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Thành Công",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00794",
+   "nhom_id": "NNB00935"
+  },
+  {
+   "ma_cau": "T107000000562",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Thành Công",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00794",
+   "nhom_id": "NNB00935"
+  },
+  {
+   "ma_cau": "T107000000565",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Thành Công",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00883",
+   "nhom_id": "NNB00939"
+  },
+  {
+   "ma_cau": "T107000000566",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Thành Công",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00800",
+   "nhom_id": "NNB00943"
+  },
+  {
+   "ma_cau": "T107000000567",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Thành Công",
+   "ly_do": "phần nâng cao",
+   "de2": [
+    "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Ngô Quyền"
+   ],
+   "dang_bai_id": "NDB00436",
+   "nhom_id": "NNB00948"
+  },
+  {
+   "ma_cau": "T107000000568",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Thành Công",
+   "ly_do": "phần nâng cao",
+   "de2": [
+    "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Ngô Quyền"
+   ],
+   "dang_bai_id": "NDB00932",
+   "nhom_id": "NNB00955"
+  },
+  {
+   "ma_cau": "T107000000571",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Thành Công",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01347",
+   "nhom_id": "NNB01647"
+  },
+  {
+   "ma_cau": "T107000000573",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Thành Công",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01339",
+   "nhom_id": "NNB01645"
+  },
+  {
+   "ma_cau": "T107000000624",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Cao Bá Quát",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01344",
+   "nhom_id": "NNB01645"
+  },
+  {
+   "ma_cau": "T107000000625",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Cao Bá Quát",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01344",
+   "nhom_id": "NNB01645"
+  },
+  {
+   "ma_cau": "T107000000626",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Cao Bá Quát",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01344",
+   "nhom_id": "NNB01645"
+  },
+  {
+   "ma_cau": "T107000000627",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Cao Bá Quát",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00461",
+   "nhom_id": "NNB00971"
+  },
+  {
+   "ma_cau": "T107000000628",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Cao Bá Quát",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00808",
+   "nhom_id": "NNB00971"
+  },
+  {
+   "ma_cau": "T107000000629",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Cao Bá Quát",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00462",
+   "nhom_id": "NNB00971"
+  },
+  {
+   "ma_cau": "T107000000630",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Cao Bá Quát",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00461",
+   "nhom_id": "NNB00971"
+  },
+  {
+   "ma_cau": "T107000000631",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Cao Bá Quát",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00461",
+   "nhom_id": "NNB00971"
+  },
+  {
+   "ma_cau": "T107000000633",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Cao Bá Quát",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01342",
+   "nhom_id": "NNB00948"
+  },
+  {
+   "ma_cau": "T107000000634",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Cao Bá Quát",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01339",
+   "nhom_id": "NNB01645"
+  },
+  {
+   "ma_cau": "T107000000684",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Nguyễn Trường Tộ",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00436",
+   "nhom_id": "NNB00948"
+  },
+  {
+   "ma_cau": "T107000000688",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Nguyễn Trường Tộ",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00439",
+   "nhom_id": "NNB00952"
+  },
+  {
+   "ma_cau": "T107000000689",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Nguyễn Trường Tộ",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00461",
+   "nhom_id": "NNB00971"
+  },
+  {
+   "ma_cau": "T107000000690",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Nguyễn Trường Tộ",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00808",
+   "nhom_id": "NNB00971"
+  },
+  {
+   "ma_cau": "T107000000717",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Ngô Quyền",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00791",
+   "nhom_id": "NNB00938"
+  },
+  {
+   "ma_cau": "T107000000719",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Ngô Quyền",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01339",
+   "nhom_id": "NNB01645"
+  },
+  {
+   "ma_cau": "T107000000775",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Giảng Võ 2",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00800",
+   "nhom_id": "NNB00943"
+  },
+  {
+   "ma_cau": "T107000000776",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Giảng Võ 2",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB01344",
+   "nhom_id": "NNB01645"
+  },
+  {
+   "ma_cau": "T107000000777",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Giảng Võ 2",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00439",
+   "nhom_id": "NNB00952"
+  },
+  {
+   "ma_cau": "T107000000778",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Giảng Võ 2",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "dang_bai_id": "NDB00440",
+   "nhom_id": "NNB00952"
+  }
+ ],
+ "khongVao": [
+  {
+   "ma_cau": "T107000000062",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Ngôi Sao Hoàng Mai",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "vi_sao": "đã vào kho, dạng bài đang CHỜ DUYỆT (đề xuất)",
+   "nd": "Tìm tất cả các số hữu tỉ $x;y$ thoả mãn: $x+1=y\\sqrt{3}$."
+  },
+  {
+   "ma_cau": "T107000000064",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Ngôi Sao Hoàng Mai",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "vi_sao": "đã vào kho, dạng bài đang CHỜ DUYỆT (đề xuất)",
+   "nd": "Cho $A=\\dfrac{\\sqrt{x}+1}{\\sqrt{x}-2}$. Tìm tất cả các số nguyên dương $x$ ($x\\ne4$) để $A$ có giá trị là số nguyên."
+  },
+  {
+   "ma_cau": "T107000000123",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Tây Mỗ",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "vi_sao": "đã vào kho, dạng bài đang CHỜ DUYỆT (đề xuất)",
+   "nd": "So sánh $A$ và $B$, biết: $A=\\dfrac{1}{1011}.\\left(1+\\dfrac{1}{3}+\\dfrac{1}{5}+\\dots+\\dfrac{1}{2019}\\right)$ và $B=\\dfrac{1}{1010}.\\left(\\df"
+  },
+  {
+   "ma_cau": "T107000000129",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Tây Mỗ",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "vi_sao": "đã vào kho, dạng bài đang CHỜ DUYỆT (đề xuất)",
+   "nd": "Cho ba số $a,b,c$ thỏa mãn $0\\le a\\le b+1\\le c+2$ và $a+b+c=1$. Tìm giá trị nhỏ nhất của $c$."
+  },
+  {
+   "ma_cau": "T107000000294",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Lê Thị Hồng Gấm, phường Thanh Khê (mã đề B)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "vi_sao": "đã vào kho, có nhóm nhưng CHƯA CÓ DẠNG BÀI",
+   "nd": "Một mảnh đất hình vuông có diện tích $225\\ m^2$. Hãy tính cạnh của mảnh đất đó."
+  },
+  {
+   "ma_cau": "T107000000395",
+   "de": "Đề kiểm tra cuối học kì 1 Toán 7 năm 2025-2026 — THCS Phương Đông, xã Trà Liên (không ghi mã đề)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "vi_sao": "đã vào kho, bản đồ THIẾU DẠNG cho câu này",
+   "nd": "Kết quả tìm hiểu về khả năng tự nấu ăn của các bạn lớp 7/A được cho bởi bảng sau: Khả năng tự nấu ăn: Không đạt; Đạt; Giỏi; Xuất sắc. Số bạn"
+  },
+  {
+   "ma_cau": "T107000000463",
+   "de": "Đề kiểm tra cuối học kì 1 Toán 7 năm 2025-2026 — THCS Thành Công, phường Giảng Võ",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "vi_sao": "đã vào kho, dạng bài đang CHỜ DUYỆT (đề xuất)",
+   "nd": "Tìm số tự nhiên $n$ nhỏ nhất và $n>6$ để $2^6+2^9+2^n$ là số chính phương."
+  },
+  {
+   "ma_cau": "T107000000473",
+   "de": "Đề kiểm tra cuối học kì 1 Toán 7 năm 2025-2026 — Phòng Văn hóa - Xã hội, xã Đông Anh (đề chính thức)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "vi_sao": "đã vào kho, dạng bài đang CHỜ DUYỆT (đề xuất)",
+   "nd": "Cho biểu thức $A=(2x-5)^2-(15-6x)^2-\\left|x-y-1\\right|+2025$ a) Chứng tỏ $A\\le2025$ với mọi giá trị của $x$, $y$. b) Tìm $x$, $y$ để $A=2025"
+  },
+  {
+   "ma_cau": "T107000000485",
+   "de": "Đề kiểm tra cuối học kì 1 Toán 7 năm 2025-2026 — THCS Nghĩa An, xã Nghĩa Khánh (mã đề 101)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "vi_sao": "đã vào kho, bản đồ THIẾU DẠNG cho câu này",
+   "nd": "Biểu đồ hình quạt tròn ở hình bên biểu diễn kết quả thống kê (tính theo tỉ số phần trăm) chọn môn thể thao ưa thích nhất trong bốn môn: Bóng"
+  },
+  {
+   "ma_cau": "T107000000563",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Thành Công",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "vi_sao": "đã vào kho, dạng bài đang CHỜ DUYỆT (đề xuất)",
+   "nd": "Tính giá trị biểu thức: $M=\\dfrac{\\dfrac{2}{3}-\\dfrac{2}{5}-\\dfrac{2}{7}+\\dfrac{2}{11}}{\\dfrac{13}{3}-\\dfrac{13}{5}-\\dfrac{13}{7}+\\dfrac{13}"
+  },
+  {
+   "ma_cau": "T107000000564",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Thành Công",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "vi_sao": "đã vào kho, dạng bài đang CHỜ DUYỆT (đề xuất)",
+   "nd": "Tính giá trị biểu thức: $N=\\dfrac{\\dfrac{1}{6}-\\dfrac{1}{39}+\\dfrac{1}{51}}{\\dfrac{1}{8}-\\dfrac{1}{52}+\\dfrac{1}{68}}$"
+  },
+  {
+   "ma_cau": "T107000000569",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Thành Công",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "vi_sao": "đã vào kho, dạng bài đang CHỜ DUYỆT (đề xuất)",
+   "nd": "So sánh hai biểu thức: $8^{12}$ và $32^6$"
+  },
+  {
+   "ma_cau": "T107000000570",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Thành Công",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "vi_sao": "đã vào kho, dạng bài đang CHỜ DUYỆT (đề xuất)",
+   "nd": "So sánh hai biểu thức: $3^{4000}$ và $9^{2000}$"
+  },
+  {
+   "ma_cau": "T107000000572",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Thành Công",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "vi_sao": "đã vào kho, dạng bài đang CHỜ DUYỆT (đề xuất)",
+   "nd": "Tính giá trị của $x$, biết: $\\dfrac{1909-x}{91}+\\dfrac{1907-x}{93}+\\dfrac{1905-x}{95}+\\dfrac{1903-x}{97}+4=0$"
+  },
+  {
+   "ma_cau": "T107000000574",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Thành Công",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "vi_sao": "đã vào kho, dạng bài đang CHỜ DUYỆT (đề xuất)",
+   "nd": "Tính giá trị của $x$, biết: $\\dfrac{x+29}{31}-\\dfrac{x+27}{33}=\\dfrac{x+17}{43}-\\dfrac{x+15}{45}$"
+  },
+  {
+   "ma_cau": "T107000000575",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Thành Công",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "vi_sao": "đã vào kho, dạng bài đang CHỜ DUYỆT (đề xuất)",
+   "nd": "Tính giá trị của $x$, biết: $\\dfrac{1}{x(x+1)}+\\dfrac{1}{(x+1)(x+2)}+\\dfrac{1}{(x+2)(x+3)}-\\dfrac{1}{x}=\\dfrac{1}{2010}$"
+  },
+  {
+   "ma_cau": "T107000000632",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Cao Bá Quát",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "vi_sao": "đã vào kho, dạng bài đang CHỜ DUYỆT (đề xuất)",
+   "nd": "Tìm giá trị lớn nhất của biểu thức sau: $D=\\dfrac{5|x|+13}{|x|+2}$"
+  },
+  {
+   "ma_cau": "T107000000685",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Nguyễn Trường Tộ",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "vi_sao": "đã vào kho, dạng bài đang CHỜ DUYỆT (đề xuất)",
+   "nd": "Tính nhanh: $B=\\dfrac{3}{1.2}-\\dfrac{5}{2.3}+\\dfrac{7}{3.4}-\\dfrac{9}{4.5}+\\dots-\\dfrac{37}{18.19}+\\dfrac{39}{19.20}$"
+  },
+  {
+   "ma_cau": "T107000000686",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Nguyễn Trường Tộ",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "vi_sao": "đã vào kho, dạng bài đang CHỜ DUYỆT (đề xuất)",
+   "nd": "Tính nhanh: $C=\\dfrac{\\left(2+4+6+\\dots+100\\right).\\left(\\dfrac{1}{2}+\\dfrac{1}{4}+\\dfrac{1}{6}+\\dots+\\dfrac{1}{100}\\right).\\left(6,3.12-3,6"
+  },
+  {
+   "ma_cau": "T107000000687",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Nguyễn Trường Tộ",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "vi_sao": "đã vào kho, dạng bài đang CHỜ DUYỆT (đề xuất)",
+   "nd": "Cho biểu thức $A=1-\\dfrac{1}{2}+\\dfrac{1}{3}-\\dfrac{1}{4}+\\dfrac{1}{5}-\\dfrac{1}{6}+\\dots+\\dfrac{1}{49}-\\dfrac{1}{50}$. Chứng minh: $\\dfrac{"
+  },
+  {
+   "ma_cau": "T107000000718",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Ngô Quyền",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "vi_sao": "đã vào kho, dạng bài đang CHỜ DUYỆT (đề xuất)",
+   "nd": "Tính giá trị biểu thức: $F=\\dfrac{0,375-0,3+\\dfrac{3}{11}+\\dfrac{3}{12}}{0,625-0,5+\\dfrac{5}{11}+\\dfrac{5}{12}}$"
+  },
+  {
+   "ma_cau": "T107000000720",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Ngô Quyền",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "vi_sao": "đã vào kho, dạng bài đang CHỜ DUYỆT (đề xuất)",
+   "nd": "Tìm $x$, biết: $\\dfrac{1}{x(x+1)}+\\dfrac{1}{(x+1)(x+2)}+\\dfrac{1}{(x+2)(x+3)}-\\dfrac{1}{x}=\\dfrac{1}{2010}$"
+  },
+  {
+   "ma_cau": "T107000000721",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Ngô Quyền",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "vi_sao": "đã vào kho, dạng bài đang CHỜ DUYỆT (đề xuất)",
+   "nd": "Tính $A=1-2+2^2-2^3+2^4-\\dots+2^{2022}$."
+  },
+  {
+   "ma_cau": "T107000000722",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Ngô Quyền",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "vi_sao": "đã vào kho, dạng bài đang CHỜ DUYỆT (đề xuất)",
+   "nd": "a) Chứng minh rằng: $\\dfrac{1}{1.2}+\\dfrac{1}{3.4}+\\dfrac{1}{5.6}+\\dots+\\dfrac{1}{49.50}=\\dfrac{1}{26}+\\dfrac{1}{27}+\\dfrac{1}{28}+\\dots+\\df"
+  },
+  {
+   "ma_cau": "T107000000747",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Ngọc Thụy",
+   "ly_do": "câu Đại cuối đề cương (không có phần nâng cao)",
+   "de2": [],
+   "vi_sao": "đã vào kho, dạng bài đang CHỜ DUYỆT (đề xuất)",
+   "nd": "Tìm $x$, biết: $\\left(x+\\dfrac{1}{2}\\right)^{2026}=2-\\left(1+\\dfrac{1}{2}+\\dfrac{1}{2^2}+...+\\dfrac{1}{2^{2025}}+\\dfrac{1}{2^{2026}}\\right)$"
+  },
+  {
+   "ma_cau": "T107000000779",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Giảng Võ 2",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "vi_sao": "đã vào kho, dạng bài đang CHỜ DUYỆT (đề xuất)",
+   "nd": "Chứng tỏ rằng: $5^{27}<2^{63}<5^{28}$."
+  },
+  {
+   "ma_cau": "T107000000780",
+   "de": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Giảng Võ 2",
+   "ly_do": "phần nâng cao",
+   "de2": [],
+   "vi_sao": "đã vào kho, dạng bài đang CHỜ DUYỆT (đề xuất)",
+   "nd": "Tìm các số nguyên dương $m$ và $n$ sao cho $2^m-2^n=256$."
+  }
+ ]
+}

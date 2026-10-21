@@ -38542,3 +38542,7 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - Phân lại 429 câu (hàng duyệt + câu AI ở 00799/00800/00419/00420/01206/00789 + regex so sánh/nguyên/dãy bình phương): mẫu cao 89/89 đúng, 0 lệch. Hạ 5 câu cao→vừa (tự ngờ). Ghi: gan_cau +95, đổi dạng 19 câu AI, de_xuat 91, thieu_dang 48. `bdm-b3-xuat-lo.mjs` thêm `--lai-dang`.
 - Chưa động: 8 câu Hình `T1077033330401001..008` vẫn ở thieu_dang (chờ Thùy gật gỡ).
 - 21/10 (sau): Thùy gật xoá ⇒ đã xoá tai_lieu "[THỬ] Chuyên đề Hình K8" (ad2c564f…, cascade 3 phần + 18 dòng bài). Không còn dữ liệu thử của chuyên đề.
+
+### 21/10 — [Chuyên đề] "Chuyên đề nâng cao Đại số 7" dựng tự động (Thùy: gom câu nâng cao cuối của mọi đề thi + đề cương K7, THAM CHIẾU TỪ KHO, câu chưa vào kho thì báo)
+- scripts/_cd_nang_cao_dai7.mjs: đề cương = câu Đại trong phần "nâng cao"; đề thi = câu Đại cuối (+ ý cùng bài). 35 đề ⇒ 92 câu (bỏ trùng). Chỉ lấy câu có trong _tl_bdm_cau_vi_tri (kho chuẩn + dạng bài bản đồ mới) ⇒ 6 câu; 86 câu ở 30 đề CHƯA DUYỆT ⇒ kho-rules/dai/lo/cd-nang-cao-dai7/can-duyet.html.
+- Tạo qua đúng RPC builder (fn_tl_bdm_dat_buoi + dat_cau): tai_lieu a31234c2…, phần = chủ đề (Số hữu tỉ, Số thực), câu đúng dạng bài, BTVN để trống. --them chỉ THÊM câu mới (giữ chỗ Thùy sửa); --thu giả lập duyệt trong ROLLBACK: lên 65 câu (12 + 4 nhóm), 27 câu còn chờ dạng bài (24 đề xuất bản đồ, 1 chưa có dạng bài, 2 thiếu dạng).
