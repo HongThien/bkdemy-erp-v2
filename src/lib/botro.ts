@@ -62,45 +62,20 @@ export async function listCanBu(): Promise<CanBuItem[]> {
 
 export async function listLanNghiCanXep(): Promise<LanNghi[]> {
   const homNay = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Ho_Chi_Minh' })
-  const { data: vang } = await supabase.from('buoi_hoc_hs')
-    .select('id, hoc_sinh_id, buoi_hoc_id, hoc_sinh:hoc_sinh_id(ho_ten, ma_hs), buoi:buoi_hoc_id(loai, trang_thai, ngay, lop:lop_id(ten_lop, mon, khoi))')
-    .in('diem_danh', ['vang', 'vang_phep']).limit(LIMIT)
-  const abs = (vang ?? []).filter((r: any) => r.buoi?.loai === 'thuong' && r.buoi?.trang_thai !== 'huy')
-
-  // Mọi lần XẾP bù, kèm điểm danh ở buổi bù + trạng thái của chính buổi bù đó.
-  // Embed đặt TÊN CỘT rõ ràng (`buoi:buoi_hoc_id`) — buoi_hoc_hs có 2 FK về buoi_hoc, để
-  // PostgREST tự đoán là nhập nhằng rồi rỗng âm thầm (HANDOFF §"nhiều FK cùng đích").
-  const { data: links } = await supabase.from('buoi_hoc_hs')
-    .select('hoc_sinh_id, bu_cho_buoi_id, diem_danh, buoi:buoi_hoc_id(trang_thai)')
-    .not('bu_cho_buoi_id', 'is', null).limit(LIMIT)
-
-  const soLan = new Map<string, number>()          // đã xếp mấy lần
-  const conHieuLuc = new Set<string>()             // lần xếp còn "giữ chỗ" được
-  const lyDo = new Map<string, LyDoQuayLai>()      // vì sao phải xếp lại
-  for (const l of (links ?? []) as any[]) {
-    const k = `${l.hoc_sinh_id}|${l.bu_cho_buoi_id}`
-    soLan.set(k, (soLan.get(k) ?? 0) + 1)
-    if (l.buoi?.trang_thai === 'huy') { if (!conHieuLuc.has(k)) lyDo.set(k, 'buoi_bu_huy'); continue }
-    if (l.diem_danh === 'vang' || l.diem_danh === 'vang_phep') { if (!conHieuLuc.has(k)) lyDo.set(k, 'vang_buoi_bu'); continue }
-    // Chưa điểm danh (null) VẪN tính là còn hiệu lực — buổi bù chưa diễn ra hoặc chưa ai
-    // đánh dấu; kéo về hàng đợi lúc này là đẻ ra lượt xếp trùng.
-    conHieuLuc.add(k); lyDo.delete(k)
-  }
-
-  const { data: kb } = await supabase.from('bang_khong_bu').select('buoi_hoc_hs_id').limit(LIMIT)
-  const decided = new Set((kb ?? []).map((k: any) => k.buoi_hoc_hs_id))
-
-  return abs
-    .filter((r: any) => !conHieuLuc.has(`${r.hoc_sinh_id}|${r.buoi_hoc_id}`) && !decided.has(r.id))
-    .map((r: any) => {
-      const k = `${r.hoc_sinh_id}|${r.buoi_hoc_id}`
-      const ngay = ngayVN(r.buoi?.ngay)
-      const tuoiNgay = lechNgay(ngay, homNay)
-      const coLuat = ngay >= NGAY_AP_HAN_48H
+  // 21/10: "lần nghỉ nào còn cần xếp bù" tính Ở DB (fn_bu_lan_nghi_can_xep, mig 202610211452). Bản cũ dựng ở đây từ `buoi_hoc_hs`
+  // lọc vắng + `.limit(LIMIT)`: PostgREST chặn cứng 1000 dòng nên khi tổng lượt vắng vượt 1000 (1031) các lượt MỚI NHẤT rụng im lặng
+  // ⇒ Cần bù chỉ còn 3 em dù ~30 em chưa xếp. Luật giữ nguyên (vắng buổi thường · loại đã xếp còn hiệu lực · loại đã ghi không-bù);
+  // ở client chỉ còn tính tuổi ngày + quá hạn 48h để hiển thị.
+  const { data, error } = await supabase.rpc('fn_bu_lan_nghi_can_xep')
+  if (error) throw error
+  return ((data ?? []) as any[])
+    .map((r): LanNghi => {
+      const tuoiNgay = lechNgay(r.ngay, homNay)
+      const coLuat = r.ngay >= NGAY_AP_HAN_48H
       return {
-        id: r.id, hoc_sinh_id: r.hoc_sinh_id, ho_ten: r.hoc_sinh?.ho_ten ?? '?', ma_hs: r.hoc_sinh?.ma_hs ?? null,
-        buoi_me_id: r.buoi_hoc_id, ngay, lop: r.buoi?.lop?.ten_lop ?? '?', mon: r.buoi?.lop?.mon ?? '', khoi: r.buoi?.lop?.khoi ?? null,
-        soLanDaXep: soLan.get(k) ?? 0, lyDoQuayLai: lyDo.get(k) ?? null,
+        id: r.id, hoc_sinh_id: r.hoc_sinh_id, ho_ten: r.ho_ten ?? '?', ma_hs: r.ma_hs ?? null,
+        buoi_me_id: r.buoi_me_id, ngay: r.ngay, lop: r.lop ?? '?', mon: r.mon ?? '', khoi: r.khoi ?? null,
+        soLanDaXep: r.soLanDaXep ?? 0, lyDoQuayLai: (r.lyDoQuayLai ?? null) as LyDoQuayLai | null,
         tuoiNgay, coLuat, quaHan: coLuat && tuoiNgay > HAN_XEP_BU_NGAY,
       }
     })
