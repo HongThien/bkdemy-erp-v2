@@ -6,6 +6,7 @@
 //       node scripts/_cd_nang_cao_dai7.mjs --tao      → tạo chuyên đề (tai_lieu loai chuyen_de) qua đúng RPC builder
 //       node scripts/_cd_nang_cao_dai7.mjs --them     → chuyên đề đã có: chỉ THÊM câu mới vào kho (sau khi Thùy duyệt đề), giữ chỗ đã sửa
 //       thêm --thu để chạy thử trong ROLLBACK (giả lập mọi câu đã duyệt)
+//       --them --tat-ca (Thùy 21/10: chuyên đề ÔN TẬP ⇒ không cần duyệt): đưa HẾT câu nâng cao vào — dạng bài đã gán → đề xuất → khối chưa khớp
 import pg from 'pg'
 import fs from 'node:fs'
 const url = fs.readFileSync('.env', 'utf8').match(/^\s*DATABASE_URL\s*=\s*(.+?)\s*$/m)[1].replace(/^["']|["']$/g, '')
@@ -62,11 +63,33 @@ for (const x of ds) {
     : 'đã vào kho, CHƯA XẾP vào bản đồ mới'
   khongVao.push({ ...x, vi_sao: vi, nd: i?.nd ?? '' })
 }
+// --tat-ca (Thùy 21/10: "chuyên đề để ÔN TẬP, không dùng đánh giá ⇒ không cần duyệt, đưa hết vào"): bỏ điều kiện kho chuẩn/duyệt.
+// Chỗ của câu: (1) dạng bài đã gán (_bdm_cau_giai, không lọc kho chuẩn) · (2) dạng bài ĐỀ XUẤT chờ duyệt (tạm theo đề xuất, báo Thùy)
+// · (3) không có dạng bài ⇒ khối "chưa khớp" của chủ đề (thiếu dạng / chưa khớp) — người kéo vào sau.
+const TAT_CA = process.argv.includes('--tat-ca')
+const khop = []   // { ma_cau, chu_de_id }
+if (TAT_CA) {
+  const mas = ds.map((x) => x.ma_cau)
+  const cg = new Map((await q(`select g.ma_cau, g.dang_bai_id from _bdm_cau_giai(array(select b.ma_dang from dai_ban_do b where b.khoi = '7' union select unnest(_bdm_dang_cu_cua_khoi('7')))) g
+                                where g.ma_cau = any($1) and g.dang_bai_id is not null`, [mas])).map((r) => [r.ma_cau, r.dang_bai_id]))
+  const dx = new Map((await q(`select ma_cau, dang_bai_id from dai_bdm_de_xuat where ma_cau = any($1)`, [mas])).map((r) => [r.ma_cau, r.dang_bai_id]))
+  const cd = new Map((await q(`select ma_cau, chu_de_id from dai_bdm_cau_thieu_dang where ma_cau = any($1) and chu_de_id is not null
+                               union all select ma_cau, chu_de_id from dai_bdm_cau_chua_khop where ma_cau = any($1)`, [mas])).map((r) => [r.ma_cau, r.chu_de_id]))
+  vao.length = 0; khongVao.length = 0
+  for (const x of ds) {
+    const db = cg.get(x.ma_cau) ?? dx.get(x.ma_cau)
+    if (db) vao.push({ ...x, dang_bai_id: db, nguon: cg.has(x.ma_cau) ? 'gan' : 'de_xuat', nd: info.get(x.ma_cau)?.nd ?? '' })
+    else { khop.push({ ...x, chu_de_id: cd.get(x.ma_cau) ?? null, nd: info.get(x.ma_cau)?.nd ?? '' }); khongVao.push({ ...x, vi_sao: 'chưa có dạng bài ⇒ khối chưa khớp', nd: info.get(x.ma_cau)?.nd ?? '' }) }
+  }
+  console.log(`--tat-ca: dạng bài đã gán ${vao.filter((x) => x.nguon === 'gan').length} · theo ĐỀ XUẤT ${vao.filter((x) => x.nguon === 'de_xuat').length} · chưa khớp ${khop.length}`)
+  fs.mkdirSync(OUT, { recursive: true })
+  fs.writeFileSync(`${OUT}/tat-ca.json`, JSON.stringify({ vao, khop }, null, 1))
+}
 console.log(`${des.length} đề · ${ds.length} câu nâng cao (sau bỏ trùng) · vào chuyên đề ${vao.length} · chưa vào ${khongVao.length}`)
 const dem = {}; for (const x of khongVao) dem[x.vi_sao] = (dem[x.vi_sao] ?? 0) + 1
 console.log(dem)
 fs.mkdirSync(OUT, { recursive: true })
-if (!THU) fs.writeFileSync(`${OUT}/ket-qua.json`, JSON.stringify({ vao, khongVao }, null, 1))   // --thu: số liệu giả lập, không ghi đè kết quả thật
+if (!THU && !TAT_CA) fs.writeFileSync(`${OUT}/ket-qua.json`, JSON.stringify({ vao, khongVao }, null, 1))   // --thu: số liệu giả lập, không ghi đè kết quả thật
 
 // --them: chuyên đề ĐÃ CÓ (Thùy có thể đã sửa) ⇒ chỉ THÊM câu nâng cao mới vào kho từ lần trước (vd sau khi duyệt đề), không đụng phần đã có.
 if (process.argv.includes('--them')) {
@@ -76,7 +99,8 @@ if (process.argv.includes('--them')) {
   const daCo = new Set(nd.buoi.flatMap((b) => [...b.nhom.flatMap((n) => [...n.dang_bai.flatMap((d) => d.caus), ...(n.btvn?.caus ?? []), ...(n.chua_phan?.caus ?? [])]), ...(b.chua_khop?.caus ?? [])]))
   const moi = vao.filter((x) => !daCo.has(x.ma_cau))
   console.log(`--them: chuyên đề đang có ${daCo.size} câu · câu mới vào kho ${moi.length}`)
-  if (!moi.length) { await q('rollback'); await c.end(); process.exit(0) }
+  const khopMoi = khop.filter((x) => !daCo.has(x.ma_cau))
+  if (!moi.length && !khopMoi.length) { await q('rollback'); await c.end(); process.exit(0) }
   const db = await q(`select d.id, d.nhom_id, n.chu_de_id, cd.ten chu_de, cd.thu_tu cd_tt, n.thu_tu n_tt, d.thu_tu d_tt
                         from dai_bdm_dang_bai d join dai_bdm_nhom n on n.id = d.nhom_id join dai_bdm_chu_de cd on cd.id = n.chu_de_id where d.id = any($1)`, [[...new Set(moi.map((x) => x.dang_bai_id))]])
   for (const cdTen of [...new Set(db.map((r) => r.chu_de))]) {
@@ -99,9 +123,27 @@ if (process.argv.includes('--them')) {
       }
     }
   }
+  // câu chưa có dạng bài (--tat-ca) ⇒ khối "chưa khớp" của phần chủ đề (không có chủ đề ⇒ phần "Chưa xếp chủ đề")
+  if (khopMoi.length) {
+    const tenCd = new Map((await q(`select id, ten from dai_bdm_chu_de where id = any($1)`, [[...new Set(khopMoi.map((x) => x.chu_de_id).filter(Boolean))]])).map((r) => [r.id, r.ten]))
+    const [{ nd: ndK }] = await q(`select fn_tl_bdm_noi_dung($1) nd`, [tl.id])
+    for (const tenPhan of [...new Set(khopMoi.map((x) => tenCd.get(x.chu_de_id) ?? 'Chưa xếp chủ đề'))]) {
+      const mas = khopMoi.filter((x) => (tenCd.get(x.chu_de_id) ?? 'Chưa xếp chủ đề') === tenPhan).map((x) => x.ma_cau)
+      const b = ndK.buoi.find((x) => x.tieu_de === tenPhan)
+      let bId = b?.id
+      if (!bId) { const [{ m }] = await q(`select coalesce(max(thu_tu), -1) + 1 m from tai_lieu_phan where tai_lieu_id = $1`, [tl.id]); bId = (await q(`insert into tai_lieu_phan (tai_lieu_id, thu_tu, loai_phan, tieu_de) values ($1, $2, 'buoi', $3) returning id`, [tl.id, m, tenPhan]))[0].id }
+      let pk = b?.chua_khop?.phan_id
+      if (!pk) {   // khối chưa khớp đứng cuối phần (sau nhóm, trước phần kế)
+        const [{ m }] = await q(`select coalesce(max(thu_tu), -1) + 1 m from tai_lieu_phan where tai_lieu_id = $1`, [tl.id])
+        pk = (await q(`insert into tai_lieu_phan (tai_lieu_id, thu_tu, loai_phan, cha_id) values ($1, $2, 'chua_khop', $3) returning id`, [tl.id, m, bId]))[0].id
+      }
+      await q(`select fn_tl_bdm_dat_cau($1, $2)`, [pk, [...(b?.chua_khop?.caus ?? []), ...mas]])
+      await q(`select fn_tl_bdm_dat_buoi($1, $2, $3::jsonb)`, [tl.id, bId, JSON.stringify((ndK.buoi.find((x) => x.id === bId)?.nhom ?? []).map((n) => ({ nhom: n.id, dang_bai: n.dang_bai.map((d) => d.id) })))])   // xếp lại thứ tự phần con
+    }
+  }
   const [{ n }] = await q(`select count(*)::int n from tai_lieu_cau tc join tai_lieu_phan p on p.id = tc.phan_id where p.tai_lieu_id = $1`, [tl.id])
-  console.log(`Sau khi thêm: ${n} câu (trước ${daCo.size} + mới ${moi.length})`)
-  if (n !== daCo.size + moi.length) { await q('rollback'); console.log('LỆCH ⇒ ROLLBACK'); process.exit(1) }
+  console.log(`Sau khi thêm: ${n} câu (trước ${daCo.size} + mới ${moi.length} + chưa khớp ${khopMoi.length})`)
+  if (n !== daCo.size + moi.length + khopMoi.length) { await q('rollback'); console.log('LỆCH ⇒ ROLLBACK'); process.exit(1) }
   if (THU) { const [{ nd: ndThu }] = await q(`select fn_tl_bdm_noi_dung($1) nd`, [tl.id]); console.log('THỬ — phần:', ndThu.buoi.map((b) => `${b.tieu_de} (${b.nhom.length} nhóm)`).join(' · ')); await q('rollback'); console.log('--thu ⇒ ROLLBACK, không ghi gì'); await c.end(); process.exit(0) }
   await q('commit'); await c.end(); process.exit(0)
 }
