@@ -38573,3 +38573,10 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Bẫy:** regex Postgres `` = backspace, KHÔNG phải ranh giới từ (dùng `\M` / `(\s|$)`) — lần thử đầu "Toán 7" không bị bỏ.
 - **Client:** chỉ chuyên đề (loai chuyen_de) — PrintView (Đại, `cauItemParts` thêm `nguon`) và ChuyenDeHinhPrintView: dòng "Câu/Bài N. (nguồn)" riêng, nội dung câu xuống dòng; đợi nguồn rồi mới dựng trang (1 lần). Giáo trình không đổi.
 - **Kiểm app thật:** Hình 40/40 bài có nguồn; Đại 78/78 câu có nguồn (2 câu ở 2 đề cương Ngô Quyền; Thành Công).
+
+### 21/10 — [Chuyên đề] Lớp 8: "Chuyên đề nâng cao Đại số 8" + "Chuyên đề Hình Giữa kì 1" (K8) — Thùy "tương tự với lớp 8"
+- **Script nhận khối:** `_cd_nang_cao_dai7.mjs --khoi 8` (tên + thư mục kết quả theo khối; LOAI_TRU T107000000294 chỉ cho K7) · `_cd_hinh_gk1_7.mjs --khoi 8`.
+- **Đại 8** (tai_lieu fa15bd03-3791-4a5b-a5ef-80a8182ff7e7): 46 đề giữa kì ⇒ 49 câu nâng cao (bỏ trùng) — chạy `--tao --tat-ca` (16 câu có dạng bài: Đơn thức - đa thức · Hằng đẳng thức; 10 đã gán + 6 theo đề xuất) rồi `--them --tat-ca` (33 câu CHƯA CÓ dạng bài lẫn chủ đề trên bản đồ mới K8 ⇒ phần "Chưa xếp chủ đề", khối chưa khớp — Thùy kéo vào nhóm sau). Danh sách: kho-rules/dai/lo/cd-nang-cao-dai8/tat-ca.json.
+- **Hình 8** (tai_lieu 1092a867-f03a-40d6-a26d-3eda0e61b082): 84/84 bài Hình–Luyện K8 (đều từ đề / đề cương giữa kì 1) — 5 phần theo nhóm mô hình (39 · 6 · 1 · 4 · 3) + "Bài tập khác" 31 bài (chưa gán mô hình: 13 tự luận, 12 trả lời ngắn, 5 Đ/S, 1 TN).
+- **Mig 202610211841:** `_nguon_ngan` đổi "Nội dung ôn tập…" ⇒ "Đề cương…" (đề cương Ngọc Thụy in thành "Nội dung giữa kì I").
+- **Kiểm app thật:** bản in Đại 8 có nguồn 49/49 câu, Hình 8 có nguồn 84/84 bài.

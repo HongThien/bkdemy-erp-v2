@@ -2,6 +2,7 @@
 // THAM CHIẾU TỪ KHO (câu phải ở kho chuẩn + đã xếp dạng bài bản đồ mới — đúng tập builder dùng: _tl_bdm_cau_vi_tri). Câu chưa vào kho
 // (chưa duyệt / chưa xếp dạng bài) KHÔNG đưa vào — liệt kê cho Thùy.
 //   Câu nâng cao: đề cương = mọi câu Đại trong phần tên có "nâng cao"; đề thi = câu Đại cuối đề (+ các ý cùng bài nếu là bài nhiều ý).
+// Khối: --khoi 8 (mặc định 7) — Thùy 21/10 "tương tự với lớp 8". Tên + thư mục kết quả theo khối.
 // Chạy: node scripts/_cd_nang_cao_dai7.mjs            → chỉ đọc, in báo cáo + ghi kho-rules/dai/lo/cd-nang-cao-dai7/ket-qua.json
 //       node scripts/_cd_nang_cao_dai7.mjs --tao      → tạo chuyên đề (tai_lieu loai chuyen_de) qua đúng RPC builder
 //       node scripts/_cd_nang_cao_dai7.mjs --them     → chuyên đề đã có: chỉ THÊM câu mới vào kho (sau khi Thùy duyệt đề), giữ chỗ đã sửa
@@ -13,15 +14,16 @@ const url = fs.readFileSync('.env', 'utf8').match(/^\s*DATABASE_URL\s*=\s*(.+?)\
 const c = new pg.Client({ connectionString: url }); await c.connect()
 const q = async (s, a) => (await c.query(s, a)).rows
 const TAO = process.argv.includes('--tao')
-const TEN = 'Chuyên đề nâng cao Đại số 7'
-const OUT = 'kho-rules/dai/lo/cd-nang-cao-dai7'
+const KHOI = process.argv.includes('--khoi') ? process.argv[process.argv.indexOf('--khoi') + 1] : '7'
+const TEN = `Chuyên đề nâng cao Đại số ${KHOI}`
+const OUT = `kho-rules/dai/lo/cd-nang-cao-dai${KHOI}`
 
 await q('begin')
 const [ad] = await q("select tk.id from tai_khoan tk join nhan_su ns on ns.id = tk.nhan_su_id where lower(ns.email) = 'admin@gmail.com' limit 1")
 await q("select set_config('request.jwt.claims', $1, true)", [JSON.stringify({ sub: ad.id, role: 'authenticated' })])
 
 // CHỈ đề GIỮA KÌ (đề kiểm tra giữa kì + đề cương ôn tập giữa kì) — Thùy 21/10 "chỉ tính đề giữa kì thôi"
-const des = await q(`select id, ten, cau_hinh from tai_lieu where loai = 'de_thi' and mon = 'Toán' and khoi = '7' and ten ilike '%giữa%' order by created_at`)
+const des = await q(`select id, ten, cau_hinh from tai_lieu where loai = 'de_thi' and mon = 'Toán' and khoi = $1 and ten ilike '%giữa%' order by created_at`, [KHOI])
 const chon = []   // { ma_cau, de, ly_do }
 for (const d of des) {
   const cs = await q(`select stt, ma_cau, kho, phan_tieu_de, xoa from fn_de_thi_cau($1) order by stt`, [d.id])
@@ -42,13 +44,13 @@ for (const d of des) {
 const theoMa = new Map()
 for (const x of chon) { const o = theoMa.get(x.ma_cau); if (o) o.de2.push(x.de); else theoMa.set(x.ma_cau, { ...x, de2: [] }) }
 // Câu Thùy đã bỏ khỏi chuyên đề — không đưa lại khi chạy --them (21/10: T107000000294 là câu cuối đề GK nhưng KHÔNG phải nâng cao)
-const LOAI_TRU = new Set(['T107000000294'])
+const LOAI_TRU = new Set(KHOI === '7' ? ['T107000000294'] : [])
 const ds = [...theoMa.values()].filter((x) => !LOAI_TRU.has(x.ma_cau))
 
 // --thu: THỬ (ROLLBACK cuối) — giả lập mọi câu nâng cao đã duyệt nội dung để kiểm đường --them, không ghi gì
 const THU = process.argv.includes('--thu')
 if (THU) { await q(`select set_config('kho.duyet_noi_dung', 'on', true)`); await q(`update dai_cau_hoi set da_duyet = true where ma_cau = any($1) and not da_duyet`, [ds.map((x) => x.ma_cau)]) }
-const vt = new Map((await q(`select x.ma_cau, x.dang_bai_id, x.nhom_id from _tl_bdm_cau_vi_tri('7') x where x.ma_cau = any($1)`, [ds.map((x) => x.ma_cau)])).map((r) => [r.ma_cau, r]))
+const vt = new Map((await q(`select x.ma_cau, x.dang_bai_id, x.nhom_id from _tl_bdm_cau_vi_tri($2) x where x.ma_cau = any($1)`, [ds.map((x) => x.ma_cau), KHOI])).map((r) => [r.ma_cau, r]))
 const info = new Map((await q(`select c.ma_cau, c.da_duyet, c.kho_chuan, c.dang_chinh, left(regexp_replace(c.noi_dung, '\\s+', ' ', 'g'), 140) nd,
     exists (select 1 from dai_bdm_gan_cau g where g.ma_cau = c.ma_cau) gan, exists (select 1 from dai_bdm_de_xuat x where x.ma_cau = c.ma_cau) de_xuat,
     exists (select 1 from dai_bdm_cau_thieu_dang t where t.ma_cau = c.ma_cau) thieu
@@ -72,8 +74,8 @@ const TAT_CA = process.argv.includes('--tat-ca')
 const khop = []   // { ma_cau, chu_de_id }
 if (TAT_CA) {
   const mas = ds.map((x) => x.ma_cau)
-  const cg = new Map((await q(`select g.ma_cau, g.dang_bai_id from _bdm_cau_giai(array(select b.ma_dang from dai_ban_do b where b.khoi = '7' union select unnest(_bdm_dang_cu_cua_khoi('7')))) g
-                                where g.ma_cau = any($1) and g.dang_bai_id is not null`, [mas])).map((r) => [r.ma_cau, r.dang_bai_id]))
+  const cg = new Map((await q(`select g.ma_cau, g.dang_bai_id from _bdm_cau_giai(array(select b.ma_dang from dai_ban_do b where b.khoi = $2 union select unnest(_bdm_dang_cu_cua_khoi($2)))) g
+                                where g.ma_cau = any($1) and g.dang_bai_id is not null`, [mas, KHOI])).map((r) => [r.ma_cau, r.dang_bai_id]))
   const dx = new Map((await q(`select ma_cau, dang_bai_id from dai_bdm_de_xuat where ma_cau = any($1)`, [mas])).map((r) => [r.ma_cau, r.dang_bai_id]))
   const cd = new Map((await q(`select ma_cau, chu_de_id from dai_bdm_cau_thieu_dang where ma_cau = any($1) and chu_de_id is not null
                                union all select ma_cau, chu_de_id from dai_bdm_cau_chua_khop where ma_cau = any($1)`, [mas])).map((r) => [r.ma_cau, r.chu_de_id]))
@@ -95,7 +97,7 @@ if (!THU && !TAT_CA) fs.writeFileSync(`${OUT}/ket-qua.json`, JSON.stringify({ va
 
 // --them: chuyên đề ĐÃ CÓ (Thùy có thể đã sửa) ⇒ chỉ THÊM câu nâng cao mới vào kho từ lần trước (vd sau khi duyệt đề), không đụng phần đã có.
 if (process.argv.includes('--them')) {
-  const [tl] = await q(`select id from tai_lieu where loai = 'chuyen_de' and khoi = '7' and ten = $1 order by created_at limit 1`, [TEN])
+  const [tl] = await q(`select id from tai_lieu where loai = 'chuyen_de' and khoi = $2 and ten = $1 order by created_at limit 1`, [TEN, KHOI])
   if (!tl) { console.log('Chưa có chuyên đề — chạy --tao trước.'); await q('rollback'); process.exit(1) }
   const [{ nd }] = await q(`select fn_tl_bdm_noi_dung($1) nd`, [tl.id])
   const daCo = new Set(nd.buoi.flatMap((b) => [...b.nhom.flatMap((n) => [...n.dang_bai.flatMap((d) => d.caus), ...(n.btvn?.caus ?? []), ...(n.chua_phan?.caus ?? [])]), ...(b.chua_khop?.caus ?? [])]))
@@ -151,7 +153,7 @@ if (process.argv.includes('--them')) {
 }
 
 if (TAO && vao.length) {
-  const [daTao] = await q(`select id from tai_lieu where loai = 'chuyen_de' and khoi = '7' and ten = $1 limit 1`, [TEN])
+  const [daTao] = await q(`select id from tai_lieu where loai = 'chuyen_de' and khoi = $2 and ten = $1 limit 1`, [TEN, KHOI])
   if (daTao) { console.log(`Đã có "${TEN}" (${daTao.id}) — dùng --them để thêm câu mới, không tạo bản thứ 2.`); await q('rollback'); process.exit(1) }
   // dạng bài → nhóm → chủ đề (thứ tự bản đồ)
   const db = await q(`select d.id, d.nhom_id, n.chu_de_id, cd.ten chu_de, cd.thu_tu cd_tt, n.thu_tu n_tt, d.thu_tu d_tt
@@ -159,7 +161,7 @@ if (TAO && vao.length) {
                        where d.id = any($1)`, [[...new Set(vao.map((x) => x.dang_bai_id))]])
   const dbMap = new Map(db.map((r) => [r.id, r]))
   const chuDe = [...new Map(db.sort((a, b) => a.cd_tt - b.cd_tt).map((r) => [r.chu_de_id, r.chu_de])).entries()]
-  const [tl] = await q(`insert into tai_lieu (loai, ten, khoi, mon, nhanh, ban_do, created_by) values ('chuyen_de', $1, '7', 'Toán', null, 'moi', $2) returning id`, [TEN, ad.id])
+  const [tl] = await q(`insert into tai_lieu (loai, ten, khoi, mon, nhanh, ban_do, created_by) values ('chuyen_de', $1, $3, 'Toán', null, 'moi', $2) returning id`, [TEN, ad.id, KHOI])
   let tt = 0
   for (const [cdId, cdTen] of chuDe) {
     const [b] = await q(`insert into tai_lieu_phan (tai_lieu_id, thu_tu, loai_phan, tieu_de) values ($1, $2, 'buoi', $3) returning id`, [tl.id, tt++, cdTen])

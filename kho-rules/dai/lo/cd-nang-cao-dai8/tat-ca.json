@@ -1,0 +1,414 @@
+{
+ "vao": [
+  {
+   "ma_cau": "T108000000021",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2024-2025 — THCS Tam Khương, quận Đống Đa",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00680",
+   "nguon": "gan",
+   "nd": "Cho biểu thức $M=(x-a)(x-b)+(x-b)(x-c)+(x-c)(x-a)+x^2$. Tính $M$ theo $a$, $b$, $c$ biết rằng $x=\\dfrac{1}{2}a+\\dfrac{1}{2}b+\\dfrac{1}{2}c$."
+  },
+  {
+   "ma_cau": "T108000000040",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2024-2025 — THCS Ba Đình, quận Ba Đình (Hà Nội)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00468",
+   "nguon": "gan",
+   "nd": "Cho $a$, $b$, $c$ thỏa mãn đồng thời $a+b+c=6$ và $a^2+b^2+c^2=12$. Tính giá trị của biểu thức: $P=(a-3)^{2023}+(b-3)^{2024}+(c-3)^{2025}$"
+  },
+  {
+   "ma_cau": "T108000000059",
+   "de": "Đề khảo sát chất lượng giữa học kì 1 Toán 8 năm 2024-2025 — Phòng GD&ĐT huyện Vụ Bản",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00468",
+   "nguon": "de_xuat",
+   "nd": "Cho $a$, $b$, $c$ thỏa mãn đồng thời $a+b+c=6$ và $a^2+b^2+c^2=12$. Tính giá trị của biểu thức $C=(a-3)^{2024}+(b-3)^{2024}+(c-3)^{2024}$."
+  },
+  {
+   "ma_cau": "T108020202086",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2024-2025 — Phòng GD&ĐT huyện Sơn Động",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00697",
+   "nguon": "gan",
+   "nd": "Cho các số thực $x$, $y$ thỏa mãn $P = x^2 + 5y^2 - 4xy - 4x + 2y + 15$ đạt giá trị nhỏ nhất. Tính giá trị biểu thức $M = (x - 9)^{2024} + ("
+  },
+  {
+   "ma_cau": "T108000000215",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2025-2026 — THCS Nguyễn Du, phường Hoàn Kiếm",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00468",
+   "nguon": "gan",
+   "nd": "Cho $a,b,c$ thỏa mãn $a+b+c=0$ và $ab+bc+ac=0$. Tính giá trị của biểu thức $A=(a-1)^{2023}+b^{2024}+(c+1)^{2025}$."
+  },
+  {
+   "ma_cau": "T108000000287",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2025-2026 — THCS Văn Khê, phường Hà Đông",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00695",
+   "nguon": "gan",
+   "nd": "Một khách sạn có 50 phòng. Hiện tại mỗi phòng khách sạn cho thuê với giá 400 nghìn đồng/1 ngày và toàn bộ phòng đã được thuê hết. Biết cứ mỗ"
+  },
+  {
+   "ma_cau": "T108000000309",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2025-2026 — THCS Hoàng Hoa Thám, phường Ngọc Hà, Hà Nội",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00695",
+   "nguon": "de_xuat",
+   "nd": "Bác nông dân làm một hàng rào trồng rau hình chữ nhật có chiều dài song song với bờ tường. Bác chỉ làm ba mặt vì mặt thứ tư bác tận dụng luô"
+  },
+  {
+   "ma_cau": "T108000000347",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2025-2026 — THCS Chuyên Mỹ",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00974",
+   "nguon": "gan",
+   "nd": "Tìm $x$: $(x-3)^2+(5-x)(5+x)=4$"
+  },
+  {
+   "ma_cau": "T108000000384",
+   "de": "Đề đánh giá giữa học kì 1 Toán 8 năm 2024-2025 — THCS Tân Bình, TP. Hải Dương (đề chính thức)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00697",
+   "nguon": "gan",
+   "nd": "Tìm giá trị nhỏ nhất của biểu thức sau: $P=4x^2+2y^2-4xy+4x-8y+2034$"
+  },
+  {
+   "ma_cau": "T108020202083",
+   "de": "Đề khảo sát chất lượng giữa học kì 1 Toán 8 năm 2024-2025 — THCS Mỹ Tiến, thành phố Nam Định",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00698",
+   "nguon": "gan",
+   "nd": "Tìm giá trị nhỏ nhất của biểu thức $M = 9x^2 + 6y^2 + 18x - 12xy - 12y - 27$."
+  },
+  {
+   "ma_cau": "T108000000421",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2025-2026 — THCS Bát Tràng, xã Bát Tràng (đề 2)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00682",
+   "nguon": "de_xuat",
+   "nd": "Tính giá trị của biểu thức: $M=x^{10}-2026x^9+2026x^8-2026x^7+\\dots-2026x^3+2026x^2-2026x+2026$ với $x=2025$."
+  },
+  {
+   "ma_cau": "T108000000430",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2025-2026 — THCS Chu Văn An, phường Yên Sở (đề số 2 — đề chính thức)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00695",
+   "nguon": "gan",
+   "nd": "Một nông trại nghiên cứu việc trồng cây ăn quả trên mỗi $100$ ($m^2$) đất. Người ta thấy rằng nếu trồng $n$ cây trên $100$ ($m^2$) thì trung"
+  },
+  {
+   "ma_cau": "T108000000445",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2024-2025 — Phòng GD&ĐT huyện Tân Yên",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "dang_bai_id": "NDB00697",
+   "nguon": "gan",
+   "nd": "Cho các số $x$, $y$ thoả mãn $x^2+y^2-3x-3y+xy+3=0$. Tính giá trị của biểu thức $Q=(x-y)^{2023}+(x-2)^{2024}+y^{2025}$."
+  },
+  {
+   "ma_cau": "T108000000660",
+   "de": "Hướng dẫn ôn tập giữa học kì I Toán 8 năm 2026–2027 — Trường THCS Ngô Quyền, Hà Nội",
+   "ly_do": "câu Đại cuối đề cương (không có phần nâng cao)",
+   "de2": [],
+   "dang_bai_id": "NDB00468",
+   "nguon": "de_xuat",
+   "nd": "Cho các số $x,\\ y$ thỏa mãn đẳng thức $5x^2+5y^2+8xy-2x+2y+2=0$. Tính giá trị của biểu thức $M=(x+y)^{2023}+(x-2)^{2024}+(y+1)^{2025}$."
+  },
+  {
+   "ma_cau": "T108000000697",
+   "de": "Hướng dẫn ôn tập kiểm tra giữa kì I Toán 8 năm 2026–2027 — Trường THCS Giảng Võ 2, Hà Nội",
+   "ly_do": "câu Đại cuối đề cương (không có phần nâng cao)",
+   "de2": [],
+   "dang_bai_id": "NDB00468",
+   "nguon": "de_xuat",
+   "nd": "Cho $x,\\ y$ là hai số nguyên dương thỏa mãn $3x^2-4xy+2y^2=3$. Tính giá trị của biểu thức $A$ biết $A=(x-2)^{2025}+(y-3)^{2026}$."
+  },
+  {
+   "ma_cau": "T108000000770",
+   "de": "Đề cương giữa học kì I Toán 8 năm 2026–2027 — Trường THCS Thành Công, Hà Nội",
+   "ly_do": "câu Đại cuối đề cương (không có phần nâng cao)",
+   "de2": [],
+   "dang_bai_id": "NDB00468",
+   "nguon": "de_xuat",
+   "nd": "Tìm $x,\\ y,\\ z$ thỏa mãn $2x^2+2y^2+z^2+25-6y-2xy-8x+2z(y-x)=0$."
+  }
+ ],
+ "khop": [
+  {
+   "ma_cau": "T108000000008",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2024-2025 — THCS Thị trấn Cái Rồng, Vân Đồn (Quảng Ninh)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Cho $x$ là số gồm 22 chữ số 1, $y$ là số gồm 35 chữ số 1. Chứng minh rằng $xy-2$ chia hết cho 3."
+  },
+  {
+   "ma_cau": "T108000000031",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2024-2025 — THCS Nguyễn Công Trứ, quận Ba Đình",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Cho $a, b, c \\neq 0$ thỏa mãn $(a+b+c)\\left(\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}\\right)=1$. Tính giá trị của biểu thức: $P=(a^{2025}+b^{20"
+  },
+  {
+   "ma_cau": "T108000000048",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2024-2025 — THCS Vạn Phúc, quận Hà Đông",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Cho biểu thức $Q=(2n+1)(2n+3)-(4n-6)(n+1)+1$. Chứng minh $Q$ luôn chia hết cho 5 với mọi số nguyên $n$."
+  },
+  {
+   "ma_cau": "T108000000073",
+   "de": "Đề khảo sát chất lượng giữa học kì 1 Toán 8 năm 2024-2025 — Phòng GD&ĐT huyện Xuân Trường",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Gia đình bác Nam có một khu đất hình chữ nhật, một cạnh đã được xây tường bao (tham khảo hình vẽ dưới đây). Trên khu đất này bác Nam định cả"
+  },
+  {
+   "ma_cau": "T108000000082",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2024-2025 — đề không ghi tên trường",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Khu vườn trồng mía ban đầu có dạng một hình vuông chu vi là $20$ (m). Người ta mở rộng một chiều thêm $y$ (m), mở rộng chiều còn lại thêm $8"
+  },
+  {
+   "ma_cau": "T108000000093",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2025-2026 — THCS Phương Đông, xã Trà Liên",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Cho $a+b+c=2p$. Chứng minh: $2bc+b^2+c^2-a^2=4p(p-a)$."
+  },
+  {
+   "ma_cau": "T108000000107",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2025-2026 — THCS Quế Thuận (mã đề B)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Cho hai số $a>b>0$, $a^2+b^2=13$ và $ab=6$. Hãy tính giá trị của $a-b$."
+  },
+  {
+   "ma_cau": "T108000000119",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2024-2025 — Phòng GD&ĐT huyện Trực Ninh",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Chứng minh rằng nếu $m, n\\in\\mathbb{Z}$ thoả mãn $3m^2+m=4n^2+n$ và $m\\ge n$ thì $m-n$ và $4m+4n+1$ đều là số chính phương."
+  },
+  {
+   "ma_cau": "T108000000131",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2025-2026 — THCS Quế Thuận (mã đề A)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Cho hai số $a$, $b>0$, $a^2+b^2=13$ và $ab=6$. Hãy tính giá trị của $a+b$."
+  },
+  {
+   "ma_cau": "T108000000140",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2025-2026 — THCS Nguyễn Trãi (mã đề 2)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Chứng minh rằng nếu $x,y\\in\\mathbb{Z}$ thì $M=(xy-1)(x^{2023}+y^{2023})-(xy+1)(x^{2023}-y^{2023})$ chia hết cho 2."
+  },
+  {
+   "ma_cau": "T108000000153",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2025-2026 — THCS Quán Toan, phường Hồng An",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Tìm các cặp số nguyên $(x;y)$ thoả mãn đẳng thức $xy-x+2y-2=11$."
+  },
+  {
+   "ma_cau": "T108000000176",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2024-2025 — THCS Hoàng Văn Thụ (mã đề T801)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Cho $x$, $y$ thỏa mãn $x^2+25y^2-7xy=3xy-|x-2|$. Tính giá trị của $M=x^2-6xy+10y^2$."
+  },
+  {
+   "ma_cau": "T108000000205",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2025-2026 — THCS Quán Toan, phường Hồng An (đề 2)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Tìm các cặp số nguyên $(x;y)$ thoả mãn đẳng thức sau: $xy-x+2(y-1)=13$."
+  },
+  {
+   "ma_cau": "T108000000233",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2025-2026 — THCS Nguyễn Chơn, phường Thanh Khê",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Khu vườn của nhà bác Dương có dạng hình vuông. Bác Dương muốn dành một mảnh đất có dạng hình chữ nhật ở góc khu vườn làm nhà (hình vẽ). a) V"
+  },
+  {
+   "ma_cau": "T108000000245",
+   "de": "Đề khảo sát giữa học kì 1 Toán 8 năm 2025-2026 — THCS Tống Văn Trân, phường Nam Định",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Với các số thực $x,y,z$ thỏa mãn $0\\le x,y,z\\le 2$ và $x+y+z=3$. Tìm giá trị lớn nhất của biểu thức $Q=x^2+y^2+z^2$."
+  },
+  {
+   "ma_cau": "T108000000252",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2025-2026 — THCS Văn Yên, phường Hà Đông",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Cho $M$ là tích của 4 số nguyên liên tiếp. Chứng minh rằng $M+1$ là một số chính phương."
+  },
+  {
+   "ma_cau": "T108000000269",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2025-2026 — Trường TH&THCS Vạn An, phường Kinh Bắc",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Trên một đoạn sông thẳng, xuất phát cùng lúc từ một bến thuyền, thuyền đi xuôi dòng với tốc độ $x+3$ km/h, ca nô đi ngược dòng với tốc độ $2"
+  },
+  {
+   "ma_cau": "T108000000277",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2025-2026 — THCS Lý Tự Trọng",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Một sân gạch hình vuông có cạnh dài $a$ mét. Gia đình muốn mở rộng thêm mỗi bên cạnh 1 mét để có chỗ phơi đồ (như hình). a) Viết biểu thức b"
+  },
+  {
+   "ma_cau": "T108000000301",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2025-2026 — THCS Phú Lâm, xã Tiên Du",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Từ một sợi dây có độ dài $2$ m, An cắt ra thành hai đoạn không bằng nhau, mỗi đoạn có độ dài tính theo centimet là một số tự nhiên chia hết "
+  },
+  {
+   "ma_cau": "T108000000321",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2025-2026 — THCS Nguyên Khê, xã Phúc Thịnh (mã đề 02)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Một tấm bìa cứng hình chữ nhật có chiều dài là $x+43$ (cm) và chiều rộng là $x+30$ (cm). Người ta cắt ở mỗi góc của tấm bìa một hình vuông c"
+  },
+  {
+   "ma_cau": "T108000000339",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2025-2026 — THCS Nội Duệ, xã Tiên Du",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Bảng tính giá điện được cho như sau (minh họa): Từ 0 đến 50 kWh: 2 000 đồng / 1 kWh Từ 51 kWh – 100 kWh: giá 2 500 đồng / 1 kWh Từ 101 kWh –"
+  },
+  {
+   "ma_cau": "T108000000360",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2025-2026 — THCS Nguyễn Trường Tộ",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Cho $a$, $b$, $c$ thỏa mãn điều kiện $a+b+c=0$. Chứng minh rằng: $2(a^5+b^5+c^5)=5abc(a^2+b^2+c^2)$"
+  },
+  {
+   "ma_cau": "T108000000372",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2025-2026 — THCS Nguyễn Huy Tưởng",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Tìm đa thức $f(x)$ biết $f(x)$ chia cho $x-2$ thì dư 5, $f(x)$ chia cho $x-1$ thì dư 3, $f(x)$ chia cho $(x-1)(x-2)$ thì được thương là $2x-"
+  },
+  {
+   "ma_cau": "T108000000408",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2025-2026 — THCS Bát Tràng, xã Bát Tràng (đề 1)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Tính giá trị của biểu thức: $M=x^{10}-2025x^9+2025x^8-2025x^7+\\dots-2025x^3+2025x^2-2025x+2025$ với $x=2024$."
+  },
+  {
+   "ma_cau": "T108000000455",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2024-2025 — THCS Vạn Phúc, huyện Thanh Trì (Hà Nội)",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Biết $x$, $y$ là hai số nguyên dương thỏa mãn: $3x^2-4xy+2y^2=3$. Tính giá trị của biểu thức: $M=x^{2025}+(y-3)^{2025}$."
+  },
+  {
+   "ma_cau": "T108000000472",
+   "de": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2024-2025 — THCS Ngô Quyền, quận Lê Chân",
+   "ly_do": "câu Đại cuối đề",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Ao Vuông là một thắng cảnh độc đáo và nổi tiếng ở tỉnh Trà Vinh, Việt Nam. Mặt ao nước trong xanh và phẳng lặng được phủ bởi hoa sen, hoa sú"
+  },
+  {
+   "ma_cau": "T108000000521",
+   "de": "Đề cương ôn tập giữa học kì I Toán 8 năm 2026–2027 — Trường TH, THCS & THPT Ngôi Sao Hoàng Mai",
+   "ly_do": "câu Đại cuối đề cương (không có phần nâng cao)",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Chứng minh rằng $A=n^6-n^4+2n^3+2n^2$ không là số chính phương với $n$ là số tự nhiên lớn hơn 1."
+  },
+  {
+   "ma_cau": "T108000000594",
+   "de": "Đề cương ôn tập giữa học kì I Toán 8 năm 2026–2027 — Trường THCS Đoàn Thị Điểm, Hà Nội",
+   "ly_do": "câu Đại cuối đề cương (không có phần nâng cao)",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Chứng minh rằng: $A=n(n+5)-(n-3)(n+2)$ chia hết cho 6 với mọi $n\\in\\mathbb{Z}$."
+  },
+  {
+   "ma_cau": "T108000000595",
+   "de": "Đề cương ôn tập giữa học kì I Toán 8 năm 2026–2027 — Trường THCS Đoàn Thị Điểm, Hà Nội",
+   "ly_do": "câu Đại cuối đề cương (không có phần nâng cao)",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Chứng minh rằng: $B=(2n+1)(n^2-3n-1)-2n^3+1$ chia hết cho 5 với mọi $n\\in\\mathbb{Z}$."
+  },
+  {
+   "ma_cau": "T108000000596",
+   "de": "Đề cương ôn tập giữa học kì I Toán 8 năm 2026–2027 — Trường THCS Đoàn Thị Điểm, Hà Nội",
+   "ly_do": "câu Đại cuối đề cương (không có phần nâng cao)",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Chứng minh rằng: $C=\\left[(n-1)(n+1)-(n-7)(n-5)\\right]$ chia hết cho 12 với mọi $n\\in\\mathbb{Z}$."
+  },
+  {
+   "ma_cau": "T108000000597",
+   "de": "Đề cương ôn tập giữa học kì I Toán 8 năm 2026–2027 — Trường THCS Đoàn Thị Điểm, Hà Nội",
+   "ly_do": "câu Đại cuối đề cương (không có phần nâng cao)",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Chứng minh rằng: $E=(5a-3)(3b-5)-(3a-5)(5b-3)$ chia hết cho 16 với mọi $a,\\ b\\in\\mathbb{R}$."
+  },
+  {
+   "ma_cau": "T108000000643",
+   "de": "Đề cương ôn tập giữa học kì I Toán 8 năm 2026–2027 — Trường THCS & THPT Lương Thế Vinh, Hà Nội",
+   "ly_do": "câu Đại cuối đề cương (không có phần nâng cao)",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Cho $x,\\ y\\in\\mathbb{R}$ thỏa mãn $x^2+5y^2-4xy-4x+6y+5=0$. Tính $M=(x-6)^{2025}+(y-3)^{2026}$."
+  },
+  {
+   "ma_cau": "T108000000796",
+   "de": "Nội dung ôn tập giữa học kì I Toán 8 năm 2026–2027 — Trường THCS Ngọc Thụy, Hà Nội",
+   "ly_do": "câu Đại cuối đề cương (không có phần nâng cao)",
+   "de2": [],
+   "chu_de_id": null,
+   "nd": "Cho đa thức một biến $F(x)=ax^2+bx+c$. Biết $7a+b=0$. Chứng minh rằng: $F(10)\\cdot F(-3)$ là một số không âm."
+  }
+ ]
+}

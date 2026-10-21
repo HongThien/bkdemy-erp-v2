@@ -10,7 +10,9 @@ const url = fs.readFileSync('.env', 'utf8').match(/^\s*DATABASE_URL\s*=\s*(.+?)\
 const c = new pg.Client({ connectionString: url }); await c.connect()
 const q = async (s, a) => (await c.query(s, a)).rows
 const THU = process.argv.includes('--thu')
-const TEN = 'Chuyên đề Hình Giữa kì 1', KHOI = '7'
+// --khoi 8 (mặc định 7) — Thùy 21/10 "tương tự với lớp 8". Tên giống nhau, phân biệt bằng khối.
+const KHOI = process.argv.includes('--khoi') ? process.argv[process.argv.indexOf('--khoi') + 1] : '7'
+const TEN = 'Chuyên đề Hình Giữa kì 1'
 try {
   await q('begin')
   const [ad] = await q("select tk.id from tai_khoan tk join nhan_su ns on ns.id = tk.nhan_su_id where lower(ns.email) = 'admin@gmail.com' limit 1")
