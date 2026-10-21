@@ -11,6 +11,7 @@ import { useMonScope } from '../../../hooks/useMonScope'
 import { usePagedList } from '../../../hooks/usePagedList'
 import { Shell, Field, inp } from '../../kho/ui'
 import BuilderBanDoMoi from './BuilderBanDoMoi'
+import ChuyenDeHinhBuilder from './ChuyenDeHinhBuilder'
 
 const PAGE = 20
 const ALL = '__all__'
@@ -27,7 +28,9 @@ export default function GiaoTrinhBdmScreen({ loai = 'giao_trinh' }: { loai?: Loa
   const T = TEN[loai]
   const [khoi, setKhoi] = useState<string>(DEFAULT_KHOI)
   const [creating, setCreating] = useState(false)
-  const [openId, setOpenId] = useState<string | null>(null)
+  const [openId, setOpenIdRaw] = useState<string | null>(null)
+  const [openHinh, setOpenHinh] = useState(false)   // chuyên đề nhánh Hình ⇒ builder Hình–Luyện riêng
+  const setOpenId = (id: string | null, nhanh?: string | null) => { setOpenIdRaw(id); setOpenHinh(nhanh === 'hinh') }
   const [qLive, setQLive] = useState('')
   const [q, setQ] = useState('')
   useEffect(() => { const t = setTimeout(() => setQ(qLive), 300); return () => clearTimeout(t) }, [qLive])
@@ -37,11 +40,13 @@ export default function GiaoTrinhBdmScreen({ loai = 'giao_trinh' }: { loai?: Loa
   const profileLoading = !isAll && me === null
 
   const { rows: list, loading, loadingMore, hasMore, err, reload, loadMore } = usePagedList<TaiLieu>(
-    async ({ before, search }) => coQuyen ? listTaiLieu(khoi === ALL ? undefined : khoi, loai, MON, null, { before, search, limit: PAGE, banDo: 'moi' }) : [],
+    // chuyên đề: mọi nhánh (Đại · HGT · Hình) — giáo trình: chỉ Đại (nhanh null) như trước
+    async ({ before, search }) => coQuyen ? listTaiLieu(khoi === ALL ? undefined : khoi, loai, MON, loai === 'chuyen_de' ? undefined : null, { before, search, limit: PAGE, banDo: 'moi' }) : [],
     (t) => t.created_at,
     PAGE, q, [khoi, coQuyen, loai],
   )
 
+  if (openId && openHinh) return <ChuyenDeHinhBuilder id={openId} onClose={() => { setOpenId(null); reload() }} />
   if (openId) return <BuilderBanDoMoi id={openId} laChuyenDe={loai === 'chuyen_de'} onClose={() => { setOpenId(null); reload() }} />
 
   return (
@@ -79,10 +84,10 @@ export default function GiaoTrinhBdmScreen({ loai = 'giao_trinh' }: { loai?: Loa
                       <div className="min-w-0 flex-1 text-[16px] font-semibold text-slate-900">{t.ten}</div>
                       {t.luu_tru_tu && <span className="shrink-0 rounded bg-amber-50 px-1.5 py-0.5 text-[10.5px] font-semibold text-amber-700">Lưu trữ</span>}
                     </div>
-                    <div className="mt-1 text-[12px] text-slate-400">Khối {t.khoi}</div>
+                    <div className="mt-1 text-[12px] text-slate-400">Khối {t.khoi}{loai === 'chuyen_de' ? ` · ${t.nhanh === 'hinh' ? 'Hình' : t.nhanh === 'hinh_gt' ? 'Hình giải tích' : 'Đại số'}` : ''}</div>
                     <div className="mt-1 text-[11px] text-slate-400">Tạo {fmtNgay(t.created_at)}{t.updated_at && t.updated_at !== t.created_at ? ` · sửa ${fmtNgay(t.updated_at)}` : ''}</div>
                     <div className="mt-3 flex gap-2">
-                      <button onClick={() => setOpenId(t.id)} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500">Mở / Xuất</button>
+                      <button onClick={() => setOpenId(t.id, t.nhanh)} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500">Mở / Xuất</button>
                       <button onClick={async () => { if (confirm(`Xoá ${T.mot} "${t.ten}"?`)) { await deleteTaiLieu(t.id); reload() } }} className="rounded-md border border-slate-200 px-3 py-1.5 text-[13px] text-slate-500 hover:border-rose-300 hover:text-rose-600">Xoá</button>
                     </div>
                   </div>
@@ -97,19 +102,19 @@ export default function GiaoTrinhBdmScreen({ loai = 'giao_trinh' }: { loai?: Loa
           )}
       </div>
 
-      {creating && <TaoMoi loai={loai} khoi={khoi === ALL ? DEFAULT_KHOI : khoi} onClose={() => setCreating(false)} onCreated={(id) => { setCreating(false); reload(); setOpenId(id) }} />}
+      {creating && <TaoMoi loai={loai} khoi={khoi === ALL ? DEFAULT_KHOI : khoi} onClose={() => setCreating(false)} onCreated={(id, nhanh) => { setCreating(false); reload(); setOpenId(id, nhanh) }} />}
     </div>
   )
 }
 
-// Nhánh của chuyên đề (chọn 1 lần lúc tạo). Đại + HGT chạy theo bản đồ mới (HGT: mig 202610211629); Hình chờ builder Hình–Luyện.
+// Nhánh của chuyên đề (chọn 1 lần lúc tạo). Đại + HGT: builder bản đồ mới (HGT mig 202610211629); Hình: ChuyenDeHinhBuilder (mig 202610211633).
 const NHANH_CD: { id: string | null; ten: string; mo: boolean; ghi: string }[] = [
   { id: null, ten: 'Đại số', mo: true, ghi: 'nhóm bài · dạng bài (bản đồ mới)' },
   { id: 'hinh_gt', ten: 'Hình giải tích', mo: true, ghi: 'nhóm bài · dạng bài (bản đồ mới) — hiện có câu K6, K12; K10 đang xếp câu' },
-  { id: 'hinh', ten: 'Hình', mo: false, ghi: 'đang làm builder Hình–Luyện (mô hình · kho bài)' },
+  { id: 'hinh', ten: 'Hình', mo: true, ghi: 'Hình–Luyện: mô hình → bài trong kho (trọn ý)' },
 ]
 
-function TaoMoi({ loai, khoi, onClose, onCreated }: { loai: LoaiTL; khoi: string; onClose: () => void; onCreated: (id: string) => void }) {
+function TaoMoi({ loai, khoi, onClose, onCreated }: { loai: LoaiTL; khoi: string; onClose: () => void; onCreated: (id: string, nhanh: string | null) => void }) {
   const T = TEN[loai]
   const [nhanh, setNhanh] = useState<string | null>(null)
   const [ten, setTen] = useState('')
@@ -118,7 +123,7 @@ function TaoMoi({ loai, khoi, onClose, onCreated }: { loai: LoaiTL; khoi: string
   async function create() {
     if (!ten.trim()) return
     setBusy(true); setError(null)
-    try { const tl = await createTaiLieu({ loai, ten: ten.trim(), khoi, mon: MON, nhanh, ban_do: 'moi' }); onCreated(tl.id) }
+    try { const tl = await createTaiLieu({ loai, ten: ten.trim(), khoi, mon: MON, nhanh, ban_do: 'moi' }); onCreated(tl.id, nhanh) }
     catch (e: any) { setError(e.message ?? String(e)); setBusy(false) }
   }
   return (
