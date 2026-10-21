@@ -1,0 +1,492 @@
+=== N H5.3
+@ly_thuyet:
+##TC Liên hệ giữa hệ số và đặc điểm của đồ thị
+- Hàm bậc ba $y=ax^3+bx^2+cx+d$ ($a\ne0$) có $y'=3ax^2+2bx+c$.
+- $a>0$: đồ thị đi lên ở bên phải; $a<0$: đồ thị đi xuống ở bên phải. Đồ thị cắt $Oy$ tại $(0;d)$.
+- Nếu $y'=0$ có hai nghiệm $x_1,x_2$ (hai điểm cực trị) thì $x_1+x_2=-\dfrac{2b}{3a}$ và $x_1x_2=\dfrac{c}{3a}$.
+- Hàm $y=\dfrac{ax+b}{cx+d}$: tiệm cận đứng $x=-\dfrac{d}{c}$, tiệm cận ngang $y=\dfrac{a}{c}$, cắt $Ox$ tại $x=-\dfrac{b}{a}$, cắt $Oy$ tại $y=\dfrac{b}{d}$.
+- Hàm $y=\dfrac{ax^2+bx+c}{mx+n}$: tiệm cận đứng $x=-\dfrac{n}{m}$; tiệm cận xiên tìm bằng phép chia đa thức $y=px+q+\dfrac{r}{mx+n}$.
+
+##PP Từ đồ thị suy ra hệ số
+Đọc những yếu tố nhìn thấy rõ trên hình: hướng đi của hai nhánh, giao điểm với hai trục, tiệm cận, điểm cực trị.
+Mỗi yếu tố cho một dấu hoặc một phương trình theo công thức tương ứng ở trên.
+Đề hỏi dấu: suy từng dấu một (có thể dùng tổng và tích hai nghiệm của $y'=0$); đề hỏi giá trị: lập hệ phương trình rồi giải.
+Thay ngược lại điều kiện đã cho để kiểm tra, nhất là khi đề yêu cầu cực trị.
+
+##CY
+- Hàm phân thức có vô số cách viết (nhân tử và mẫu cùng một số), nên đề phải cố định một hệ số (ví dụ $c=1$ hoặc cho dấu của $c$) thì các hệ số còn lại mới xác định.
+- Dấu của $b$ và $c$ trong hàm bậc ba phụ thuộc cả dấu của $a$: dùng $-\dfrac{b}{a}$ cùng dấu với tổng và $\dfrac{c}{a}$ cùng dấu với tích hai hoành độ cực trị.
+
+=== H5.3.1
+@ly_thuyet:
+##TC Dấu của $a,b,c,d$ theo đồ thị hàm bậc ba
+- Dấu của $a$ theo nhánh bên phải của đồ thị; $d$ là tung độ giao điểm với $Oy$.
+- Gọi $S=x_1+x_2$, $P=x_1x_2$ là tổng và tích hoành độ hai điểm cực trị, khi đó $b=-\dfrac{3aS}{2}$ và $c=3aP$.
+- Suy ra: $b$ ngược dấu với $a\cdot S$ và $c$ cùng dấu với $a\cdot P$.
+- $S=0$ thì $b=0$; $P=0$ (một cực trị nằm trên $Oy$) thì $c=0$.
+
+##PP Xác định dấu của $a,b,c,d$
+Nhìn nhánh bên phải đi lên hay đi xuống để kết luận dấu của $a$.
+Đọc tung độ giao điểm với $Oy$ để kết luận dấu của $d$.
+Đọc hoành độ hai điểm cực trị rồi tính dấu của tổng $S$ và tích $P$.
+Kết luận $b$ ngược dấu $a\cdot S$, $c$ cùng dấu $a\cdot P$.
+
+##CY
+- Không kết luận dấu $b$ chỉ từ dấu của tổng $S$: phải nhân với dấu của $a$.
+- Một điểm cực trị nằm đúng trên trục tung cho $c=0$; hai hoành độ cực trị đối nhau cho $b=0$: lúc đó hệ số bằng $0$, không phải âm hay dương.
+
+@vi_du:
+##VD
+Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị như hình vẽ. Xác định dấu của $a,b,c,d$.
+[[HINH {"loai":"dothi","x":[-1,5],"y":[-4,7],"f":[{"e":"x^3-6*x^2+9*x+1","ten":"y=f(x)","xt":4.3}]}]]
+
+Bài giải:
+Nhánh bên phải đi lên nên $a>0$.
+Đồ thị cắt trục $Oy$ tại điểm $(0;1)$ nên $d=1>0$.
+Hai điểm cực trị có hoành độ $x_1=1$ và $x_2=3$, nên tổng $S=4>0$ và tích $P=3>0$.
+Vì $b=-\dfrac{3aS}{2}$ với $a>0$, $S>0$ nên $b<0$; vì $c=3aP$ với $a>0$, $P>0$ nên $c>0$.
+Vậy $a>0$, $b<0$, $c>0$, $d>0$.
+
+##VD
+Cho hàm số $y=ax^3+bx^2+cx+d$ có đồ thị như hình vẽ. Trong các số $a,b,c,d$ có bao nhiêu số dương, bao nhiêu số bằng $0$?
+[[HINH {"loai":"dothi","x":[-4,2],"y":[-4,4],"f":[{"e":"-x^3-3*x^2+2","ten":"y=f(x)","xt":1.2}]}]]
+
+Bài giải:
+Nhánh bên phải đi xuống nên $a<0$.
+Đồ thị cắt $Oy$ tại $(0;2)$ nên $d=2>0$.
+Hai điểm cực trị là $(-2;-2)$ và $(0;2)$, nên $x_1=-2$, $x_2=0$: tổng $S=-2$, tích $P=0$.
+Từ $c=3aP=0$ suy ra $c=0$.
+Vì $b=-\dfrac{3aS}{2}$ với $a<0$ và $S<0$ nên $aS>0$, do đó $b<0$.
+Vậy chỉ có một số dương là $d$, và một số bằng $0$ là $c$.
+
+=== H5.3.2
+@ly_thuyet:
+##TC Hệ số của hàm $y=\dfrac{ax+b}{cx+d}$ theo đồ thị
+- Tiệm cận đứng $x=-\dfrac{d}{c}$ cho dấu của $\dfrac{d}{c}$ (đường ở bên trái trục $Oy$ thì $\dfrac{d}{c}>0$).
+- Tiệm cận ngang $y=\dfrac{a}{c}$ cho tỉ số $\dfrac{a}{c}$.
+- Giao $Oy$ tại $\left(0;\dfrac{b}{d}\right)$, giao $Ox$ tại $\left(-\dfrac{b}{a};0\right)$.
+- Điều kiện của hàm: $c\ne0$ và $ad-bc\ne0$.
+
+##PP Xác định hệ số của hàm nhất biến
+Cố định hệ số theo đề (thường $c=1$ hoặc cho dấu của $c$).
+Hoành độ tiệm cận đứng cho $d$ (qua $-\dfrac{d}{c}$); tung độ tiệm cận ngang cho $a$ (qua $\dfrac{a}{c}$).
+Dùng giao điểm với $Oy$ (hoặc $Ox$) để tìm $b$ (qua $\dfrac{b}{d}$ hoặc $-\dfrac{b}{a}$).
+Đề hỏi dấu: suy dấu từ các tỉ số trên, bắt đầu từ hệ số đã biết dấu.
+
+##CY
+- Tiệm cận đứng là $x=-\dfrac{d}{c}$ (có dấu trừ): đường ở bên phải trục $Oy$ thì $\dfrac{d}{c}<0$.
+- Giao $Oy$ là $\dfrac{b}{d}$, không phải $b$; chỉ trùng khi $d=1$.
+
+@vi_du:
+##VD
+Cho hàm số $y=\dfrac{ax+b}{x+d}$ có đồ thị như hình vẽ. Tính $a+b+d$.
+[[HINH {"loai":"dothi","x":[-3,5],"y":[-4,8],"f":[{"e":"(2*x-4)/(x-1)","ten":"y=f(x)","xt":2.6}],"duong":[{"dung":1},{"ngang":2}]}]]
+
+Bài giải:
+Đồ thị có tiệm cận đứng $x=1$ mà tiệm cận đứng của hàm là $x=-d$ nên $d=-1$.
+Tiệm cận ngang là $y=2$ mà tiệm cận ngang của hàm là $y=a$ nên $a=2$.
+Đồ thị cắt $Oy$ tại $(0;4)$: $\dfrac{b}{d}=4$ nên $b=4d=-4$ (đồ thị cắt $Ox$ tại $x=2=-\dfrac{b}{a}$, khớp).
+Hàm số là $y=\dfrac{2x-4}{x-1}$ và $a+b+d=2-4-1=-3$.
+Vậy $a+b+d=-3$.
+
+##VD
+Cho hàm số $y=\dfrac{ax+b}{cx+d}$ với $c>0$ có đồ thị như hình vẽ. Xác định dấu của $a$, $b$, $d$.
+[[HINH {"loai":"dothi","x":[-5,3],"y":[-6,6],"f":[{"e":"(-2*x+2)/(x+1)","ten":"y=f(x)","xt":-4.6}],"duong":[{"dung":-1},{"ngang":-2}]}]]
+
+Bài giải:
+Tiệm cận ngang là $y=-2$ nên $\dfrac{a}{c}=-2<0$; vì $c>0$ nên $a<0$.
+Tiệm cận đứng là $x=-1$ nên $-\dfrac{d}{c}=-1$, tức $\dfrac{d}{c}=1>0$; vì $c>0$ nên $d>0$.
+Đồ thị cắt $Oy$ tại $(0;2)$ nên $\dfrac{b}{d}=2>0$; vì $d>0$ nên $b>0$.
+Vậy $a<0$, $b>0$, $d>0$.
+
+=== H5.3.3
+@ly_thuyet:
+##TC Hệ số của hàm $y=\dfrac{ax^2+bx+c}{mx+n}$ theo đồ thị
+- Chia đa thức để đưa về $y=px+q+\dfrac{r}{mx+n}$: tiệm cận xiên là $y=px+q$, tiệm cận đứng là $x=-\dfrac{n}{m}$.
+- Với dạng $y=\dfrac{x^2+bx+c}{x+d}$: $y=x+(b-d)+\dfrac{c-d(b-d)}{x+d}$.
+- Với dạng $y=\dfrac{ax^2+bx+c}{x+d}$: $y=ax+(b-ad)+\dfrac{c-d(b-ad)}{x+d}$.
+- Giao $Oy$ tại $\left(0;\dfrac{c}{d}\right)$; điểm mà đồ thị đi qua cho thêm một phương trình theo $a,b,c,d$.
+
+##PP Xác định hệ số của hàm bậc hai trên bậc nhất
+Hoành độ tiệm cận đứng cho mẫu: $x=1$ thì mẫu là $x-1$, tức $d=-1$.
+Hệ số góc của tiệm cận xiên cho $a$; tung độ tại gốc của tiệm cận xiên cho $b-ad$ nên tìm được $b$.
+Dùng giao điểm với $Oy$ hoặc một điểm mà đồ thị đi qua để tìm $c$.
+Thay ngược lại và kiểm tra tiệm cận xiên của hàm vừa tìm.
+
+##CY
+- Tung độ gốc của tiệm cận xiên là $b-ad$, không phải $b$; chỉ bằng $b$ khi $d=0$.
+- Giao $Oy$ là $\dfrac{c}{d}$, không phải $c$.
+
+@vi_du:
+##VD
+Cho hàm số $y=\dfrac{x^2+bx+c}{x+d}$ có đồ thị như hình vẽ (nét đứt là các tiệm cận). Tìm $b$, $c$, $d$.
+[[HINH {"loai":"dothi","x":[-4,6],"y":[-8,8],"f":[{"e":"(x^2+3)/(x-1)","ten":"y=f(x)","xt":5.2}],"duong":[{"dung":1},{"xien":[1,1]}]}]]
+
+Bài giải:
+Tiệm cận đứng là $x=1$ nên $x+d=x-1$, tức $d=-1$.
+Tiệm cận xiên đi qua $(0;1)$ và $(-1;0)$ nên có phương trình $y=x+1$. Mà $y=x+(b-d)+\dfrac{c-d(b-d)}{x+d}$ nên $b-d=1$, suy ra $b=0$.
+Đồ thị cắt $Oy$ tại $(0;-3)$ nên $\dfrac{c}{d}=-3$, suy ra $c=-3d=3$.
+Hàm số là $y=\dfrac{x^2+3}{x-1}=x+1+\dfrac{4}{x-1}$, đúng với tiệm cận xiên $y=x+1$.
+Vậy $b=0$, $c=3$, $d=-1$.
+
+##VD
+Cho hàm số $y=\dfrac{ax^2+bx+c}{x+d}$ có đồ thị như hình vẽ. Biết tiệm cận xiên của đồ thị có hệ số góc $2$ và đi qua điểm $(0;1)$. Tính $a+b+c+d$.
+[[HINH {"loai":"dothi","x":[-2,6],"y":[-8,14],"f":[{"e":"(2*x^2-3*x)/(x-2)","ten":"y=f(x)","xt":5.2}],"duong":[{"dung":2},{"xien":[2,1]}]}]]
+
+Bài giải:
+Tiệm cận đứng là $x=2$ nên $x+d=x-2$, tức $d=-2$.
+Tiệm cận xiên có hệ số góc $2$ nên $a=2$.
+Chia đa thức: $y=ax+(b-ad)+\dfrac{c-d(b-ad)}{x+d}=2x+(b+4)+\dots$; tiệm cận xiên là $y=2x+1$ nên $b+4=1$, suy ra $b=-3$.
+Đồ thị đi qua gốc toạ độ $O(0;0)$ nên $\dfrac{c}{d}=0$, suy ra $c=0$.
+Kiểm tra: $y=\dfrac{2x^2-3x}{x-2}=2x+1+\dfrac{2}{x-2}$, đúng tiệm cận xiên $y=2x+1$.
+Vậy $a+b+c+d=2-3+0-2=-3$.
+
+=== H5.3.4
+@ly_thuyet:
+##TC Lập công thức hàm số từ điều kiện
+- Điểm $A(x_0;y_0)$ thuộc đồ thị: $y(x_0)=y_0$.
+- Đạt cực trị tại $x_0$ (hàm có đạo hàm): $y'(x_0)=0$.
+- Có điểm cực trị $(x_0;y_0)$ thì có cả hai điều kiện $y'(x_0)=0$ và $y(x_0)=y_0$.
+- Số ẩn bằng số hệ số chưa biết; mỗi điều kiện cho một phương trình.
+
+##PP Lập hệ phương trình tìm hàm số
+Viết dạng tổng quát của hàm số với các hệ số chưa biết và tính $y'$.
+Chuyển từng điều kiện của đề thành một phương trình theo các hệ số.
+Giải hệ (khử dần, thường tìm được $b$ và $c$ theo $a$ trước).
+Thay hệ số vào, kiểm tra lại đạo hàm đổi dấu đúng loại cực trị đề cho (cực đại hay cực tiểu).
+
+##CY
+- Điều kiện $y'(x_0)=0$ chỉ là điều kiện cần của cực trị: phải kiểm tra $y'$ đổi dấu.
+- Với hàm phân thức, nhớ loại các giá trị làm mẫu bằng $0$ và dùng công thức đạo hàm thương cho đúng.
+
+@vi_du:
+##VD
+Tìm hàm số bậc ba $y=ax^3+bx^2+cx+d$ có điểm cực đại là $(1;5)$ và điểm cực tiểu là $(3;1)$.
+
+Bài giải:
+Ta có $y'=3ax^2+2bx+c$.
+Hàm số đạt cực trị tại $x=1$ và $x=3$ nên $3a+2b+c=0$ và $27a+6b+c=0$.
+Trừ hai phương trình: $24a+4b=0$ nên $b=-6a$, rồi $c=-3a-2b=9a$.
+Đồ thị đi qua $(3;1)$: $27a+9b+3c+d=1$, thay $b=-6a$, $c=9a$ được $27a-54a+27a+d=1$ nên $d=1$.
+Đồ thị đi qua $(1;5)$: $a+b+c+d=5$ nên $a-6a+9a+1=5$, suy ra $a=1$, $b=-6$, $c=9$.
+Kiểm tra: $y=x^3-6x^2+9x+1$ có $y'=3(x-1)(x-3)$ đổi dấu từ $+$ sang $-$ tại $x=1$ (cực đại, $y(1)=5$) và từ $-$ sang $+$ tại $x=3$ (cực tiểu, $y(3)=1$).
+Vậy $y=x^3-6x^2+9x+1$.
+
+##VD
+Cho hàm số $y=\dfrac{x^2+bx+c}{x-1}$. Biết hàm số đạt cực tiểu tại $x=3$ và giá trị cực tiểu bằng $6$. Tìm $b$ và $c$.
+
+Bài giải:
+Với $x\ne1$ ta có $y'=\dfrac{(2x+b)(x-1)-(x^2+bx+c)}{(x-1)^2}=\dfrac{x^2-2x-b-c}{(x-1)^2}$.
+Đạt cực trị tại $x=3$ nên $y'(3)=0$, tức $9-6-b-c=0$, suy ra $b+c=3$.
+Giá trị cực tiểu bằng $6$ nên $y(3)=\dfrac{9+3b+c}{2}=6$, suy ra $3b+c=3$.
+Trừ hai phương trình: $2b=0$ nên $b=0$ và $c=3$.
+Kiểm tra: $y'=\dfrac{x^2-2x-3}{(x-1)^2}=\dfrac{(x+1)(x-3)}{(x-1)^2}$ đổi dấu từ $-$ sang $+$ khi qua $x=3$, và $y(3)=\dfrac{12}{2}=6$ nên đúng là cực tiểu.
+Vậy $b=0$, $c=3$.
+
+=== N H5.4
+@ly_thuyet:
+##TC Đọc tính chất từ đồ thị và bảng biến thiên
+- Đồ thị đi lên (khi đi từ trái sang phải) trên khoảng nào thì hàm đồng biến trên khoảng đó; đi xuống thì nghịch biến.
+- Điểm cao nhất, thấp nhất trong lân cận là cực đại, cực tiểu. Điểm cực trị là hoành độ $x_0$; giá trị cực trị là tung độ $y_0$; điểm cực trị của đồ thị là $(x_0;y_0)$.
+- Hoành độ giao điểm của đồ thị với $Ox$ là nghiệm của $f(x)=0$; giao điểm với $Oy$ là $(0;f(0))$.
+- Số nghiệm của $f(x)=m$ bằng số giao điểm của đồ thị với đường thẳng ngang $y=m$.
+- GTLN, GTNN phải xét trên miền cụ thể (khoảng, đoạn hay cả $\mathbb{R}$).
+
+##PP Đọc đồ thị để chọn mệnh đề
+Xác định các khoảng đi lên, đi xuống và các điểm đổi chiều.
+Đọc toạ độ các điểm đặc biệt (cực trị, giao trục) từ lưới; chú ý đơn vị trên mỗi trục.
+Đối chiếu từng mệnh đề với dữ kiện đã đọc, đặc biệt phân biệt điểm cực trị với giá trị cực trị.
+Với số nghiệm: dịch đường $y=m$ từ dưới lên trên và đếm giao điểm.
+
+##CY
+- Cực đại, cực tiểu không phải GTLN, GTNN: hàm bậc ba trên $\mathbb{R}$ không có GTLN, GTNN.
+- Hàm phân thức nghịch biến (đồng biến) trên từng khoảng xác định, không nói được là nghịch biến trên hợp hai khoảng đó.
+
+=== H5.4.1
+@ly_thuyet:
+##TC Mệnh đề thường gặp khi đọc đồ thị
+- Đơn điệu: nói theo khoảng của $x$ (khoảng hoành độ), không nói theo $y$.
+- Hàm đạt cực đại tại $x=x_0$ khi đồ thị có đỉnh tại hoành độ $x_0$; giá trị cực đại là tung độ của đỉnh.
+- Số giao điểm với $Ox$ là số nghiệm của $f(x)=0$ (số lần đồ thị cắt hoặc chạm trục hoành).
+- Hàm phân thức: đọc thêm hai tiệm cận và kết luận không có cực trị.
+
+##PP Chọn mệnh đề đúng sai theo đồ thị
+Tìm các điểm đổi chiều và điểm cắt trục trên hình, ghi lại toạ độ.
+Lập danh sách khoảng đồng biến, khoảng nghịch biến.
+Đối chiếu từng mệnh đề: kiểm tra đúng khoảng, đúng "điểm" hay "giá trị", đúng loại cực trị.
+Mệnh đề nói về GTLN, GTNN thì kiểm tra miền xác định trước.
+
+##CY
+- "Đạt cực tiểu tại $x=-2$" khác "giá trị cực tiểu bằng $-2$": đọc kĩ hoành độ hay tung độ.
+- Đồ thị chỉ chạm trục hoành (không cắt) vẫn là một nghiệm của $f(x)=0$ nhưng không đổi dấu.
+
+@vi_du:
+##VD
+Cho hàm số $y=f(x)$ có đồ thị như hình vẽ. Mệnh đề nào đúng, mệnh đề nào sai?
+a) Hàm số đồng biến trên khoảng $(0;2)$.
+b) Hàm số nghịch biến trên khoảng $(-\infty;2)$.
+c) Hàm số đạt cực tiểu tại $x=-2$.
+d) Đồ thị cắt trục hoành tại ba điểm phân biệt.
+e) Giá trị lớn nhất của hàm số trên $\mathbb{R}$ bằng $2$.
+[[HINH {"loai":"dothi","x":[-2,4],"y":[-4,4],"f":[{"e":"-x^3+3*x^2-2","ten":"y=f(x)","xt":3.6}]}]]
+
+Bài giải:
+Đồ thị đi xuống trên $(-\infty;0)$, đi lên trên $(0;2)$ và đi xuống trên $(2;+\infty)$; điểm cực tiểu của đồ thị là $(0;-2)$, điểm cực đại là $(2;2)$.
+a) Đúng, vì đồ thị đi lên trên $(0;2)$.
+b) Sai, vì trên $(0;2)$ đồ thị đi lên nên hàm không nghịch biến trên $(-\infty;2)$.
+c) Sai, vì hàm đạt cực tiểu tại $x=0$; còn $-2$ là giá trị cực tiểu.
+d) Đúng, đồ thị cắt trục hoành tại ba điểm (một điểm có hoành độ $1$).
+e) Sai, vì đồ thị đi lên vô hạn về phía bên trái nên hàm không có giá trị lớn nhất trên $\mathbb{R}$; $2$ chỉ là giá trị cực đại.
+Vậy a) và d) đúng; b), c), e) sai.
+
+##VD
+Cho hàm số $y=f(x)$ có đồ thị như hình vẽ. Mệnh đề nào đúng, mệnh đề nào sai?
+a) Hàm số nghịch biến trên $\mathbb{R}\setminus\{1\}$.
+b) Hàm số không có cực trị.
+c) Đồ thị cắt trục hoành tại $(-2;0)$ và cắt trục tung tại $(0;-2)$.
+d) Đường thẳng $y=1$ là tiệm cận đứng của đồ thị.
+[[HINH {"loai":"dothi","x":[-5,5],"y":[-6,6],"f":[{"e":"(x+2)/(x-1)","ten":"y=f(x)","xt":4.5}],"duong":[{"dung":1},{"ngang":1}]}]]
+
+Bài giải:
+Đồ thị gồm hai nhánh, mỗi nhánh đi xuống trên khoảng $(-\infty;1)$ và $(1;+\infty)$; tiệm cận đứng là $x=1$, tiệm cận ngang là $y=1$.
+a) Sai, vì hàm chỉ nghịch biến trên từng khoảng $(-\infty;1)$ và $(1;+\infty)$: khi $x=0$ thì $y=-2$ còn $x=2$ thì $y=4$, tăng khi $x$ tăng.
+b) Đúng, đồ thị không có điểm đỉnh hay đáy.
+c) Đúng, đồ thị cắt $Ox$ tại $(-2;0)$ và cắt $Oy$ tại $(0;-2)$.
+d) Sai, $y=1$ là tiệm cận ngang; tiệm cận đứng là $x=1$.
+Vậy b), c) đúng; a), d) sai.
+
+=== H5.4.2
+@ly_thuyet:
+##TC Số nghiệm của phương trình chứa $f(x)$
+- Số nghiệm của $f(x)=m$ bằng số giao điểm của đồ thị $y=f(x)$ với đường thẳng ngang $y=m$.
+- Hàm bậc ba có hai cực trị $y_{\text{CĐ}}>y_{\text{CT}}$: $m>y_{\text{CĐ}}$ hoặc $m<y_{\text{CT}}$ cho 1 nghiệm; $m=y_{\text{CĐ}}$ hoặc $m=y_{\text{CT}}$ cho 2 nghiệm; $y_{\text{CT}}<m<y_{\text{CĐ}}$ cho 3 nghiệm.
+- Phương trình $pf(x)+q=0$ đưa về $f(x)=-\dfrac{q}{p}$.
+- Phương trình $|f(x)|=k$ ($k>0$) tách thành $f(x)=k$ hoặc $f(x)=-k$ rồi cộng số nghiệm.
+
+##PP Đếm nghiệm bằng đồ thị hoặc bảng biến thiên
+Đưa phương trình về dạng $f(x)=g(m)$ (hoặc $f(x)=k$) với vế phải là hằng.
+Xác định các giá trị cực trị và giới hạn ở hai đầu từ đồ thị hay bảng biến thiên.
+Trên mỗi khoảng đơn điệu, hàm nhận giá trị từ đầu này đến đầu kia đúng một lần: xét xem giá trị cần tìm có nằm trong khoảng giá trị đó không.
+Cộng số nghiệm của các khoảng; chú ý nghiệm trùng tại điểm cực trị chỉ đếm một lần.
+
+##CY
+- Đường $y=m$ chạm đúng điểm cực trị cho nghiệm kép: đếm là một nghiệm phân biệt trên chỗ chạm đó.
+- Khi đổi $2f(x)-5=0$ phải chia hai vế (thành $f(x)=\dfrac{5}{2}$), không đếm theo $f(x)=5$.
+
+@vi_du:
+##VD
+Cho hàm số $y=f(x)$ có đồ thị như hình vẽ.
+a) Tìm số nghiệm của các phương trình $f(x)=1$, $f(x)=-2$, $f(x)=3$.
+b) Tìm $m$ để phương trình $f(x)=m$ có ba nghiệm phân biệt và có đúng một nghiệm.
+[[HINH {"loai":"dothi","x":[-3,3],"y":[-4,4],"f":[{"e":"-x^3+3*x","ten":"y=f(x)","xt":-2.4}]}]]
+
+Bài giải:
+Đồ thị có điểm cực tiểu $(-1;-2)$ và điểm cực đại $(1;2)$.
+a) Đường $y=1$ nằm giữa $-2$ và $2$ nên cắt đồ thị tại $3$ điểm: $f(x)=1$ có $3$ nghiệm.
+Đường $y=-2$ đi qua điểm cực tiểu và cắt thêm một nhánh: $f(x)=-2$ có $2$ nghiệm.
+Đường $y=3>2$ chỉ cắt một nhánh: $f(x)=3$ có $1$ nghiệm.
+b) Ba nghiệm phân biệt khi $-2<m<2$; đúng một nghiệm khi $m<-2$ hoặc $m>2$.
+Vậy $f(x)=1$ có $3$ nghiệm, $f(x)=-2$ có $2$ nghiệm, $f(x)=3$ có $1$ nghiệm; $f(x)=m$ có ba nghiệm khi $-2<m<2$ và có một nghiệm khi $m<-2$ hoặc $m>2$.
+
+##VD
+Cho hàm số $y=f(x)$ liên tục trên $\mathbb{R}$ có bảng biến thiên như hình vẽ.
+a) Tìm $m$ để phương trình $f(x)=m$ có đúng hai nghiệm phân biệt.
+b) Tìm số nghiệm của phương trình $2f(x)-5=0$.
+c) Tìm số nghiệm của phương trình $|f(x)|=1$.
+[[HINH {"loai":"bbt","x":["-∞","0","2","+∞"],"dau":["+","-","+"],"y":["-∞","4","0","+∞"],"ten_ham":"f(x)","ten_dao":"f'(x)"}]]
+
+Bài giải:
+Từ bảng biến thiên: hàm đồng biến trên $(-\infty;0)$ nhận giá trị trong $(-\infty;4)$, nghịch biến trên $(0;2)$ nhận giá trị trong $(0;4)$, đồng biến trên $(2;+\infty)$ nhận giá trị trong $(0;+\infty)$.
+a) Phương trình $f(x)=m$ có đúng hai nghiệm khi đường $y=m$ chạm một điểm cực trị, tức $m=4$ hoặc $m=0$.
+b) Phương trình tương đương $f(x)=\dfrac{5}{2}$; vì $0<\dfrac{5}{2}<4$ nên mỗi khoảng trong ba khoảng cho một nghiệm: có $3$ nghiệm.
+c) $|f(x)|=1$ tương đương $f(x)=1$ hoặc $f(x)=-1$. Với $0<1<4$ có $3$ nghiệm; với $-1<0$ chỉ nhánh $(-\infty;0)$ nhận giá trị âm nên có $1$ nghiệm. Hai tập nghiệm không trùng nhau nên có $3+1=4$ nghiệm.
+Vậy a) $m=4$ hoặc $m=0$; b) $3$ nghiệm; c) $4$ nghiệm.
+
+=== H5.4.3
+@ly_thuyet:
+##TC Tâm đối xứng của đồ thị
+- Đồ thị hàm bậc ba $y=ax^3+bx^2+cx+d$ có tâm đối xứng là điểm $I(x_0;y_0)$ với $x_0=-\dfrac{b}{3a}$ (trung điểm hai điểm cực trị khi có), $y_0=y(x_0)$.
+- Đồ thị hàm $y=\dfrac{ax+b}{cx+d}$ nhận giao điểm hai tiệm cận $I\left(-\dfrac{d}{c};\dfrac{a}{c}\right)$ làm tâm đối xứng.
+- Hai điểm $A,B$ đối xứng nhau qua $I$ khi $I$ là trung điểm $AB$: $x_A+x_B=2x_I$, $y_A+y_B=2y_I$.
+- Đồ thị đối xứng qua $I(x_0;y_0)$ khi $f(2x_0-x)+f(x)=2y_0$ với mọi $x$ thuộc tập xác định.
+
+##PP Tìm tâm đối xứng và điểm đối xứng
+Xác định tâm $I$ theo dạng hàm: $x_0=-\dfrac{b}{3a}$ (bậc ba) hoặc giao hai tiệm cận (phân thức).
+Muốn chắc chắn, tịnh tiến gốc về $I$ bằng $x=X+x_0$, $y=Y+y_0$ rồi kiểm tra $Y$ là hàm lẻ của $X$.
+Điểm đối xứng với $A$ qua $I$ là $B(2x_0-x_A;2y_0-y_A)$.
+Kiểm tra $B$ thuộc đồ thị (thay vào hàm số).
+
+##CY
+- Tâm đối xứng của bậc ba có hoành độ $-\dfrac{b}{3a}$, không phải $-\dfrac{b}{2a}$ (đó là của parabol).
+- Tâm $I$ phải nằm trên đồ thị với hàm bậc ba, nhưng không nằm trên đồ thị với hàm phân thức.
+
+@vi_du:
+##VD
+Cho hàm số $y=x^3-3x^2+4x-2$ có đồ thị $(C)$. Tìm tâm đối xứng $I$ của $(C)$ và điểm $B$ đối xứng với $A(0;-2)$ qua $I$.
+
+Bài giải:
+Với $a=1$, $b=-3$ thì $x_0=-\dfrac{b}{3a}=1$ và $y_0=y(1)=1-3+4-2=0$ nên $I(1;0)$.
+Kiểm tra: đặt $x=X+1$, $y=Y$ thì $Y=(X+1)^3-3(X+1)^2+4(X+1)-2=X^3+X$ là hàm lẻ của $X$, nên $I$ là tâm đối xứng.
+Điểm $B$ đối xứng với $A$ qua $I$ có $x_B=2\cdot1-0=2$, $y_B=2\cdot0-(-2)=2$ nên $B(2;2)$.
+Thay vào hàm số: $y(2)=8-12+8-2=2$, nên $B\in(C)$.
+Vậy tâm đối xứng là $I(1;0)$ và $B(2;2)$.
+
+##VD
+Cho hàm số $y=\dfrac{2x+1}{x-1}$ có đồ thị $(C)$. Tìm tâm đối xứng $I$ của $(C)$. Tìm các điểm thuộc $(C)$ có hoành độ và tung độ đều là số nguyên, rồi chứng minh các điểm đó đối xứng với nhau từng cặp qua $I$.
+
+Bài giải:
+Tập xác định $D=\mathbb{R}\setminus\{1\}$; ta viết $y=\dfrac{2(x-1)+3}{x-1}=2+\dfrac{3}{x-1}$.
+Đồ thị có tiệm cận đứng $x=1$ và tiệm cận ngang $y=2$ nên tâm đối xứng là $I(1;2)$.
+Kiểm tra: đặt $x=X+1$, $y=Y+2$ thì $Y=\dfrac{3}{X}$ là hàm lẻ của $X$, nên $I(1;2)$ là tâm đối xứng của $(C)$.
+Với $x$ nguyên, $y$ nguyên khi $\dfrac{3}{x-1}$ nguyên, tức $x-1\in\{-3;-1;1;3\}$, hay $x\in\{-2;0;2;4\}$.
+Ta được bốn điểm $M_1(-2;1)$, $M_2(0;-1)$, $M_3(2;5)$, $M_4(4;3)$.
+$x_{M_1}+x_{M_4}=2=2x_I$ và $y_{M_1}+y_{M_4}=4=2y_I$ nên $M_1$, $M_4$ đối xứng nhau qua $I$.
+$x_{M_2}+x_{M_3}=2=2x_I$ và $y_{M_2}+y_{M_3}=4=2y_I$ nên $M_2$, $M_3$ đối xứng nhau qua $I$.
+Vậy $I(1;2)$; $(C)$ có bốn điểm toạ độ nguyên $M_1(-2;1)$, $M_2(0;-1)$, $M_3(2;5)$, $M_4(4;3)$, chia thành hai cặp đối xứng qua $I$ là $M_1,M_4$ và $M_2,M_3$.
+
+=== N H6.1
+@ly_thuyet:
+##TC Giao điểm của đồ thị với đường thẳng, với trục
+- Số giao điểm của $(C):y=f(x)$ và $d:y=g(x)$ bằng số nghiệm (thuộc tập xác định) của phương trình hoành độ giao điểm $f(x)=g(x)$.
+- Giao với $Ox$: $f(x)=0$; giao với $Oy$: điểm $(0;f(0))$.
+- Phương trình bậc hai $ax^2+bx+c=0$ có hai nghiệm phân biệt khi $\Delta>0$; khi đó $x_1+x_2=-\dfrac{b}{a}$, $x_1x_2=\dfrac{c}{a}$.
+- Nếu $A(x_1;y_1)$, $B(x_2;y_2)$ nằm trên đường thẳng $y=kx+n$ thì $y_i=kx_i+n$ và $AB^2=(1+k^2)(x_1-x_2)^2$.
+- Với bậc ba có nghiệm đặc biệt $x_0$ ta phân tích $f(x)-g(x)=(x-x_0)\cdot h(x)$ với $h$ bậc hai.
+
+##PP Giải bài toán tương giao
+Lập phương trình hoành độ giao điểm và chuyển vế về một vế bằng $0$ (kèm điều kiện xác định với hàm phân thức).
+Nhẩm nghiệm đặc biệt rồi phân tích thành nhân tử; còn lại phương trình bậc hai thì dùng $\Delta$ và Viète.
+Nếu tham số tách riêng được: cô lập $m$ (đưa về $g(x)=m$) rồi lập bảng biến thiên của $g$ để đếm nghiệm.
+Biểu diễn mọi điều kiện của đề qua tổng $S=x_1+x_2$ và tích $P=x_1x_2$, giải ra $m$ rồi đối chiếu điều kiện $\Delta>0$ và điều kiện xác định.
+
+##CY
+- Hàm phân thức: phải loại nghiệm làm mẫu bằng $0$ khỏi phương trình hoành độ giao điểm.
+- Khi tìm điều kiện cho nhiều nghiệm, không quên điều kiện các nghiệm phân biệt (loại trường hợp trùng nghiệm đặc biệt).
+- Điều kiện cần (tìm $m$) chưa đủ: luôn thử lại hoặc kiểm tra $\Delta>0$ ở cuối.
+
+=== H6.1.1
+@ly_thuyet:
+##TC Số nghiệm theo tham số bằng cô lập $m$
+- Phương trình $F(x)=m$ ($m$ cô lập) có số nghiệm bằng số giao điểm của đồ thị $y=F(x)$ với đường ngang $y=m$.
+- Khi hỏi nghiệm thuộc đoạn $[\alpha;\beta]$ thì lập bảng biến thiên của $F$ chỉ trên đoạn đó, kể cả giá trị tại hai đầu mút.
+- Nếu một nghiệm đã biết là $x_0$ thì xét thêm khi phương trình còn lại cũng có nghiệm $x_0$ (nghiệm trùng).
+
+##PP Đếm giao điểm bằng bảng biến thiên
+Lập phương trình hoành độ giao điểm; nếu có nghiệm chung với mọi $m$ thì tách ra.
+Cô lập $m$ về dạng $g(x)=m$ (nhớ loại các giá trị $x$ làm mẫu bằng $0$ hoặc các nghiệm đã tách).
+Lập bảng biến thiên của $g$ trên miền phù hợp, ghi các giá trị cực trị, giá trị đầu mút, giới hạn.
+So sánh $m$ với các giá trị đó để đếm nghiệm, rồi trả lời theo yêu cầu (ba nghiệm phân biệt, đúng hai nghiệm...).
+
+##CY
+- Đường ngang chạm đúng điểm cực trị thì có nghiệm kép (đếm là một nghiệm phân biệt); đầu mút đoạn có thể nhận hoặc không nhận $m$.
+- Khi tách nghiệm đặc biệt $x_0$, phải loại giá trị $m$ làm phương trình còn lại cũng nhận nghiệm $x_0$, vì lúc đó hai nghiệm trùng nhau.
+
+@vi_du:
+##VD
+Cho hàm số $y=x^3-3x^2+2$ có đồ thị $(C)$ và đường thẳng $d:y=m(x-1)$. Tìm $m$ để $d$ cắt $(C)$ tại ba điểm phân biệt.
+
+Bài giải:
+Phương trình hoành độ giao điểm: $x^3-3x^2+2=m(x-1)$.
+Vì $x^3-3x^2+2=(x-1)(x^2-2x-2)$ nên phương trình tương đương $(x-1)(x^2-2x-2-m)=0$, tức là $x=1$ hoặc $x^2-2x-2=m$ (2).
+Đặt $g(x)=x^2-2x-2$ có $g'(x)=2x-2$: bảng biến thiên cho $g$ giảm trên $(-\infty;1)$, tăng trên $(1;+\infty)$ và giá trị nhỏ nhất $g(1)=-3$.
+Để có ba giao điểm phân biệt, (2) phải có hai nghiệm phân biệt và đều khác $1$.
+(2) có hai nghiệm phân biệt khi $m>-3$; nghiệm $x=1$ của (2) xảy ra khi $m=g(1)=-3$, không nằm trong $m>-3$ nên không cần loại thêm.
+Vậy $m>-3$.
+
+##VD
+Tìm $m$ để đường thẳng $y=m$ cắt đồ thị hàm số $y=x^3-3x$ tại hai điểm phân biệt có hoành độ thuộc đoạn $[0;3]$.
+
+Bài giải:
+Phương trình hoành độ giao điểm: $x^3-3x=m$. Đặt $g(x)=x^3-3x$ trên đoạn $[0;3]$.
+Ta có $g'(x)=3x^2-3=0$ nên $x=1$ (loại $x=-1$ vì ngoài đoạn).
+Bảng biến thiên trên $[0;3]$: $g$ giảm từ $g(0)=0$ xuống $g(1)=-2$ trên $[0;1]$, rồi tăng từ $-2$ lên $g(3)=18$ trên $[1;3]$.
+Đường $y=m$ cắt đồ thị tại hai điểm khi cắt cả hai khoảng, tức $-2<m\le0$ (khi $m=0$ có $x=0$ và $x=\sqrt{3}$; khi $m=-2$ chỉ có $x=1$).
+Vậy $-2<m\le0$.
+
+=== H6.1.2
+@ly_thuyet:
+##TC Viète và hệ thức giữa các hoành độ giao điểm
+- Với $x_1,x_2$ là nghiệm của $ax^2+bx+c=0$: $S=x_1+x_2=-\dfrac{b}{a}$, $P=x_1x_2=\dfrac{c}{a}$.
+- Biểu diễn: $x_1^2+x_2^2=S^2-2P$, $\dfrac{1}{x_1}+\dfrac{1}{x_2}=\dfrac{S}{P}$, $(x_1-x_2)^2=S^2-4P$.
+- Với ba nghiệm $x_1,x_2,x_3$ của $x^3+px^2+qx+r=0$: $x_1+x_2+x_3=-p$, $x_1x_2+x_2x_3+x_3x_1=q$, $x_1x_2x_3=-r$.
+- Ba nghiệm lập cấp số cộng (số giữa $x_2$) khi $x_1+x_3=2x_2$; lập cấp số nhân khi $x_1x_3=x_2^2$.
+
+##PP Dùng Viète cho hệ thức hoành độ
+Tách nghiệm đặc biệt (độc lập với $m$) để còn lại phương trình bậc hai theo $x$.
+Tìm điều kiện phương trình bậc hai có hai nghiệm phân biệt khác nghiệm đã tách.
+Viết hệ thức của đề qua $S$ và $P$ rồi giải ra $m$.
+Với cấp số cộng hoặc cấp số nhân của ba nghiệm bậc ba: dùng Viète tìm nghiệm giữa, tìm $m$, thử lại bằng cách giải đủ ba nghiệm.
+
+##CY
+- Giải ra $m$ xong phải đối chiếu với điều kiện $\Delta>0$ và điều kiện khác nghiệm đã tách.
+- Với bài cấp số, điều kiện lập cấp số chỉ là điều kiện cần: phải thử lại có đúng ba nghiệm phân biệt.
+
+@vi_du:
+##VD
+Cho hàm số $y=x^3-3x^2+2x$ có đồ thị $(C)$ và đường thẳng $d:y=mx$. Tìm $m$ để $d$ cắt $(C)$ tại ba điểm phân biệt $O$, $A$, $B$ sao cho hoành độ $x_A,x_B$ thoả $x_A^2+x_B^2=7$.
+
+Bài giải:
+Phương trình hoành độ giao điểm: $x^3-3x^2+2x=mx$ nên $x(x^2-3x+2-m)=0$, tức $x=0$ (điểm $O$) hoặc $x^2-3x+2-m=0$ (1).
+$d$ cắt $(C)$ tại ba điểm phân biệt khi (1) có hai nghiệm phân biệt khác $0$: $\Delta=9-4(2-m)=4m+1>0$ và $2-m\ne0$.
+Hai nghiệm $x_A,x_B$ của (1) có $S=3$, $P=2-m$ nên $x_A^2+x_B^2=S^2-2P=9-2(2-m)=5+2m$.
+$5+2m=7$ suy ra $m=1$, thoả $4m+1=5>0$ và $m\ne2$.
+Vậy $m=1$.
+
+##VD
+Tìm $m$ để đồ thị hàm số $y=x^3-7x^2+mx-8$ cắt trục hoành tại ba điểm phân biệt có hoành độ lập thành một cấp số nhân.
+
+Bài giải:
+Phương trình hoành độ giao điểm: $x^3-7x^2+mx-8=0$ có ba nghiệm phân biệt $x_1,x_2,x_3$ lập cấp số nhân với số hạng giữa $x_2$ nên $x_1x_3=x_2^2$.
+Theo Viète, $x_1x_2x_3=8$, suy ra $x_2^3=8$, tức $x_2=2$ là nghiệm.
+Thay $x=2$: $8-28+2m-8=0$ nên $m=14$.
+Thử lại với $m=14$: $x^3-7x^2+14x-8=(x-2)(x^2-5x+4)=(x-1)(x-2)(x-4)$ có ba nghiệm phân biệt $1,2,4$ lập cấp số nhân công bội $2$.
+Vậy $m=14$.
+
+=== H6.1.3
+@ly_thuyet:
+##TC Hình học trên các giao điểm
+- Với $A(x_1;y_1)$, $B(x_2;y_2)$ thuộc đường thẳng $y=kx+n$: $AB^2=(1+k^2)(x_1-x_2)^2=(1+k^2)\left[S^2-4P\right]$.
+- Trung điểm $AB$: $\left(\dfrac{x_1+x_2}{2};\dfrac{y_1+y_2}{2}\right)$; trọng tâm tam giác $OAB$: $\left(\dfrac{x_1+x_2}{3};\dfrac{y_1+y_2}{3}\right)$.
+- Khoảng cách từ $O$ đến $d:kx-y+n=0$ là $\dfrac{|n|}{\sqrt{k^2+1}}$; diện tích tam giác $OAB$ bằng $\dfrac{1}{2}\cdot AB\cdot d(O,d)$.
+- Tung độ giao điểm tính từ $y_i=kx_i+n$, nên tổng $y_1+y_2=kS+2n$.
+
+##PP Tính độ dài, trung điểm, trọng tâm, diện tích
+Lập phương trình hoành độ giao điểm và điều kiện để $d$ cắt $(C)$ tại hai điểm phân biệt $A$, $B$.
+Tính $S=x_1+x_2$, $P=x_1x_2$ theo $m$ (Viète), tính tung độ qua phương trình của $d$.
+Biểu diễn đại lượng đề cho (độ dài $AB$, toạ độ trung điểm hoặc trọng tâm, diện tích) qua $S$ và $P$.
+Giải phương trình theo $m$, đối chiếu với điều kiện cắt tại hai điểm và điều kiện của đề (ví dụ $O$ không nằm trên $d$).
+
+##CY
+- $AB^2$ có hệ số $(1+k^2)$ chứ không phải $(x_1-x_2)^2$ đơn thuần, vì $A$, $B$ lệch cả theo $y$.
+- Tam giác $OAB$ chỉ tồn tại khi $O$ không nằm trên đường thẳng $d$.
+
+@vi_du:
+##VD
+Cho hàm số $y=\dfrac{2x-1}{x+1}$ có đồ thị $(C)$ và đường thẳng $d:y=x+m$. Tìm $m$ để $d$ cắt $(C)$ tại hai điểm phân biệt $A$, $B$ sao cho $AB=2\sqrt{2}$.
+
+Bài giải:
+Phương trình hoành độ giao điểm: $\dfrac{2x-1}{x+1}=x+m$ với $x\ne-1$, tương đương $x^2+(m-1)x+m+1=0$ (1).
+Thay $x=-1$ vào vế trái của (1): $1-(m-1)+m+1=3\ne0$ nên (1) không có nghiệm $x=-1$.
+$d$ cắt $(C)$ tại hai điểm khi $\Delta=(m-1)^2-4(m+1)=m^2-6m-3>0$.
+Vì $A(x_1;x_1+m)$, $B(x_2;x_2+m)$ nên $AB^2=2(x_1-x_2)^2=2\left[(x_1+x_2)^2-4x_1x_2\right]=2\Delta$.
+$AB=2\sqrt{2}$ khi $2\Delta=8$, tức $\Delta=4$, hay $m^2-6m-7=0$, suy ra $m=-1$ hoặc $m=7$; cả hai thoả $\Delta=4>0$.
+Vậy $m=-1$ hoặc $m=7$.
+
+##VD
+Cho hàm số $y=\dfrac{x+3}{x-1}$ có đồ thị $(C)$ và đường thẳng $d:y=2x+m$. Tìm $m$ để $d$ cắt $(C)$ tại hai điểm phân biệt $A$, $B$ sao cho trọng tâm $G$ của tam giác $OAB$ nằm trên đường thẳng $x+2y-2=0$.
+
+Bài giải:
+Phương trình hoành độ giao điểm: $\dfrac{x+3}{x-1}=2x+m$ với $x\ne1$, tương đương $x+3=(2x+m)(x-1)$, hay $2x^2+(m-3)x-m-3=0$ (1).
+Thay $x=1$ vào vế trái của (1): $2+(m-3)-m-3=-4\ne0$ nên (1) không có nghiệm $x=1$.
+$\Delta=(m-3)^2+8(m+3)=m^2+2m+33=(m+1)^2+32>0$ với mọi $m$, nên $d$ luôn cắt $(C)$ tại hai điểm phân biệt $A(x_1;2x_1+m)$, $B(x_2;2x_2+m)$.
+Theo Viète, $x_1+x_2=\dfrac{3-m}{2}$, suy ra $y_1+y_2=2(x_1+x_2)+2m=3+m$.
+Trọng tâm tam giác $OAB$ là $G\left(\dfrac{3-m}{6};\dfrac{3+m}{3}\right)$.
+$G$ thuộc đường thẳng $x+2y-2=0$ khi $\dfrac{3-m}{6}+\dfrac{2(3+m)}{3}-2=0$, tức $(3-m)+4(3+m)-12=0$, hay $3m+3=0$, suy ra $m=-1$.
+Với $m=-1$, đường thẳng $d:y=2x-1$ không đi qua $O$ nên tam giác $OAB$ tồn tại.
+Vậy $m=-1$.
+
+## GHI CHÚ CHO CEO
+- H5.3.3, H5.3.4 mô tả "tiệm cận xiên cho a, b" được hiểu: hệ số góc cho a, tung độ gốc của tiệm cận xiên (b - a.d) cho b; đã thể hiện trong lý thuyết dạng.
+- H5.4.3: hàm bậc ba tâm đối xứng = điểm uốn (x = -b/(3a)); chương trình 2018 không dạy điểm uốn nên lý thuyết chỉ dùng công thức x = -b/(3a) và kiểm tra bằng tịnh tiến gốc. (Trạm soát: x = -b/(3a) cũng là nghiệm của y''=0 — đạo hàm cấp hai có ở lớp 11; nếu CEO muốn có thể thêm một dòng ##TC nói vậy.)
+- H5.4.2 hai ví dụ: VD1 có hình đồ thị, VD2 có hình bảng biến thiên (đủ cả hai loại hình cho dạng ca-hai).
+- Trạm soát: H5.3.4 dùng lại hàm của dạng anh em (VD1 trùng hàm H5.3.1 VD1, VD2 trùng hàm H5.3.3 VD1). Không sai toán, chỉ kém đa dạng khi in cạnh nhau.

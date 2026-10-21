@@ -1,0 +1,521 @@
+=== N H7.1
+@ly_thuyet:
+##TC Mô hình toán học của đại lượng thực tế
+- Đề cho sẵn công thức $y=f(x)$ (hoặc $f(t)$) mô tả một đại lượng: lợi nhuận, nồng độ, nhiệt độ, lượng nước, số khách… Biến có nghĩa thực tế nên **miền xác định của bài toán** thường hẹp hơn miền xác định của công thức.
+- Biến thời gian $t\ge0$; số lượng thường $x\ge0$; số máy, số sản phẩm, số người là **số nguyên**; đề có thể giới hạn thêm $x\le M$.
+- Đạo hàm $f'$ cho biết đại lượng đang tăng ($f'>0$) hay giảm ($f'<0$).
+
+##TC Tìm GTLN, GTNN trên miền thực tế
+- Trên đoạn $[a;b]$: tính $f(a)$, $f(b)$ và $f$ tại các nghiệm của $f'=0$ thuộc $[a;b]$, rồi so sánh.
+- Trên khoảng hoặc nửa khoảng (ví dụ $t\ge0$): lập bảng biến thiên rồi đọc giá trị lớn nhất, nhỏ nhất.
+- Nếu hàm chỉ có một điểm cực trị trong khoảng đang xét thì cực đại (cực tiểu) đó cũng là giá trị lớn nhất (nhỏ nhất) trên khoảng.
+
+##PP Giải bài toán mô hình cho sẵn
+Đọc đề, xác định biến, đơn vị, **miền thực tế** của biến và điều đề hỏi (giá trị lớn nhất hay thời điểm đạt giá trị đó).
+Tính $f'$, giải $f'=0$, chọn các nghiệm thuộc miền thực tế.
+Lập bảng biến thiên hoặc so sánh giá trị tại nghiệm và hai đầu mút.
+Kết luận bằng ngữ cảnh: nêu cả giá trị của biến và giá trị của đại lượng, kèm đơn vị.
+
+##CY
+- Nghiệm của $f'=0$ nằm ngoài miền thực tế (âm, vượt giới hạn, không nguyên) thì phải loại hoặc xét riêng, không được kết luận ngay.
+- Phân biệt "thời điểm đạt lớn nhất" ($t$) với "giá trị lớn nhất" ($f(t)$); trả lời đúng điều đề hỏi.
+
+=== H7.1.1   (hình: không)
+@ly_thuyet:
+##TC Miền thực tế của biến
+- Biến liên tục trong đoạn $[a;b]$: dùng so sánh giá trị tại nghiệm và hai đầu mút.
+- Biến là số nguyên: GTLN, GTNN phải đạt tại một **giá trị nguyên** của biến.
+- Biến thời gian $t\ge0$ (không giới hạn trên): lập bảng biến thiên trên $[0;+\infty)$ và có thể cần xét $\lim_{t\to+\infty}$.
+
+##PP Tìm GTLN, GTNN trên miền thực tế
+Ghi rõ miền thực tế của biến theo đề (đoạn, nửa khoảng, tập số nguyên).
+Tìm nghiệm của $f'=0$ thuộc miền; tính $f$ tại nghiệm và đầu mút.
+Biến liên tục: so sánh các giá trị để chọn lớn nhất, nhỏ nhất.
+Biến nguyên: nếu nghiệm $x_0$ của $f'=0$ không nguyên, tính $f$ ở hai số nguyên sát $x_0$ (hai phía) và đầu mút nguyên rồi so sánh.
+Kết luận có đơn vị.
+
+##CY
+- Điểm cực trị $x_0$ không nguyên thì đáp án nguyên chưa chắc là số nguyên gần $x_0$ nhất: phải tính $f$ ở cả hai số nguyên kề $x_0$.
+- Cực trị ở ngoài miền thực tế không được dùng làm đáp án.
+
+@vi_du:
+##VD
+Một cửa hàng chi $x$ triệu đồng cho quảng cáo ($0\le x\le10$) thì lợi nhuận thu được là $P(x)=-x^3+9x^2$ (triệu đồng). Tìm mức chi quảng cáo để lợi nhuận lớn nhất và tìm lợi nhuận nhỏ nhất trong khoảng chi đã cho.
+
+Bài giải:
+Hàm $P(x)=-x^3+9x^2$ xác định trên $[0;10]$, có $P'(x)=-3x^2+18x=-3x(x-6)$.
+$P'(x)=0\Leftrightarrow x=0$ hoặc $x=6$, cả hai thuộc $[0;10]$.
+Tính $P(0)=0$, $P(6)=-216+324=108$, $P(10)=-1000+900=-100$.
+So sánh ba giá trị: lớn nhất là $108$ khi $x=6$, nhỏ nhất là $-100$ khi $x=10$.
+Vậy chi $6$ triệu đồng cho quảng cáo thì lợi nhuận lớn nhất, bằng $108$ triệu đồng; lợi nhuận nhỏ nhất là $-100$ triệu đồng (lỗ) khi chi $10$ triệu đồng.
+
+##VD
+Một xưởng sản xuất $x$ tấn sản phẩm mỗi ngày ($x$ là số nguyên, $1\le x\le6$) thì lợi nhuận là $P(x)=-x^3+7x^2$ (chục triệu đồng). Hỏi mỗi ngày xưởng nên sản xuất bao nhiêu tấn để lợi nhuận lớn nhất? Tính lợi nhuận đó.
+
+Bài giải:
+Xét hàm $P(x)=-x^3+7x^2$ trên $[1;6]$ có $P'(x)=-3x^2+14x=x(14-3x)$.
+$P'(x)=0\Leftrightarrow x=0$ (loại) hoặc $x=\dfrac{14}{3}\approx4{,}67$.
+Hàm tăng trên $\left(1;\dfrac{14}{3}\right)$ và giảm trên $\left(\dfrac{14}{3};6\right)$ nên điểm cực đại $x=\dfrac{14}{3}$ không nguyên.
+Vì $x$ nguyên, $P$ tăng trên $\left[1;\dfrac{14}{3}\right]$ và giảm trên $\left[\dfrac{14}{3};6\right]$ nên chỉ cần so sánh hai số nguyên sát $\dfrac{14}{3}$: $P(4)=-64+112=48$ và $P(5)=-125+175=50$.
+Vì $50>48$ nên lợi nhuận lớn nhất khi $x=5$.
+Vậy xưởng nên sản xuất $5$ tấn mỗi ngày, lợi nhuận lớn nhất là $50$ chục triệu đồng, tức $500$ triệu đồng.
+
+=== H7.1.2   (hình: không)
+@ly_thuyet:
+##TC Điều kiện cực trị và điều kiện đầu
+- Hàm $f$ đạt cực trị tại $x_0$ thì $f'(x_0)=0$ (với hàm có đạo hàm).
+- "Giá trị ban đầu" tức là $t=0$: $f(0)=\ldots$.
+- "Đạt giá trị lớn nhất bằng $M$ tại $t_0$" cho hai phương trình: $f'(t_0)=0$ và $f(t_0)=M$.
+
+##PP Tìm tham số của mô hình
+Viết các điều kiện đề cho thành phương trình: điều kiện ban đầu $f(0)=\ldots$, $f'(x_0)=0$, $f(x_0)=\ldots$.
+Giải hệ phương trình ẩn là các tham số $a$, $b$, $c$, …
+Thay tham số vào hàm, lập bảng biến thiên (hoặc kiểm tra dấu $f'$) để chắc chắn điểm $x_0$ đúng là cực đại hay cực tiểu như đề nói.
+Trả lời yêu cầu còn lại của đề (tính giá trị tại thời điểm khác, tìm GTLN…).
+
+##CY
+- Phải kiểm lại dấu $f'$ sau khi tìm được tham số: hệ phương trình cho ra tham số nhưng điểm đó có thể là cực tiểu chứ không phải cực đại.
+- Tham số thường bị ràng buộc bởi nghĩa thực tế (hệ số dương, $b>0$ để mẫu không triệt tiêu): loại nghiệm không thoả.
+
+@vi_du:
+##VD
+Nhiệt độ (đơn vị $^\circ\text{C}$) trong một phòng kính $t$ giờ sau khi bật máy sưởi được mô tả bởi $T(t)=at^2+bt+c$ ($0\le t\le8$). Biết lúc bật máy ($t=0$) nhiệt độ là $10^\circ\text{C}$ và nhiệt độ cao nhất là $26^\circ\text{C}$, đạt được sau $4$ giờ. Tìm $a$, $b$, $c$.
+
+Bài giải:
+Ta có $T'(t)=2at+b$.
+$T(0)=10$ nên $c=10$.
+Nhiệt độ cao nhất đạt khi $t=4$ nên $T'(4)=0$, tức $8a+b=0$, suy ra $b=-8a$.
+$T(4)=26$ nên $16a+4b+c=26$, hay $16a-32a+10=26$, suy ra $-16a=16$, $a=-1$, $b=8$.
+Kiểm tra: $T(t)=-t^2+8t+10$ có $T'(t)=-2t+8$ đổi dấu từ $+$ sang $-$ tại $t=4$ và $T(4)=-16+32+10=26$, đúng là cực đại.
+Vậy $a=-1$, $b=8$, $c=10$.
+
+##VD
+Nồng độ một loại thuốc trong máu bệnh nhân (mg/lít) sau $t$ giờ tiêm ($t\ge0$) được cho bởi $C(t)=\dfrac{at}{t^2+b}$ với $a>0$, $b>0$. Biết nồng độ lớn nhất là $5$ mg/lít và đạt được sau $3$ giờ. Tìm $a$, $b$ rồi tính nồng độ thuốc sau $6$ giờ.
+
+Bài giải:
+Với $t\ge0$ ta có $C'(t)=\dfrac{a(t^2+b)-at\cdot2t}{(t^2+b)^2}=\dfrac{a(b-t^2)}{(t^2+b)^2}$.
+Nồng độ lớn nhất tại $t=3$ nên $C'(3)=0$, tức $b-9=0$, suy ra $b=9$ (thoả $b>0$).
+Khi đó $C'(t)=\dfrac{a(9-t^2)}{(t^2+9)^2}$ đổi dấu từ $+$ sang $-$ tại $t=3$ (vì $a>0$) nên $t=3$ là điểm cực đại duy nhất trên $[0;+\infty)$, cũng là điểm lớn nhất.
+$C(3)=\dfrac{3a}{18}=\dfrac{a}{6}=5$ nên $a=30$.
+Suy ra $C(t)=\dfrac{30t}{t^2+9}$, và sau $6$ giờ $C(6)=\dfrac{180}{45}=4$.
+Vậy $a=30$, $b=9$; sau $6$ giờ nồng độ thuốc là $4$ mg/lít.
+
+=== H7.1.3   (hình: không)
+@ly_thuyet:
+##TC Dấu của đạo hàm và ý nghĩa thực tế
+- $f'(t)>0$ trên khoảng nào thì đại lượng **tăng** trong khoảng thời gian đó; $f'(t)<0$ thì **giảm**.
+- Điểm $f'$ đổi dấu từ $+$ sang $-$: đại lượng đạt cực đại, "chuyển từ tăng sang giảm". Đổi dấu từ $-$ sang $+$: cực tiểu, "chuyển từ giảm sang tăng".
+- Khoảng tăng, giảm chỉ xét trong miền thực tế của biến.
+
+##PP Xét tăng giảm của hàm mô hình
+Tìm miền thực tế của biến theo đề.
+Tính $f'$, giải $f'=0$ rồi lập bảng xét dấu $f'$ trong miền đó.
+Kết luận các khoảng $f'>0$ (tăng) và $f'<0$ (giảm), chỉ rõ thời điểm đổi chiều.
+Dịch kết quả sang ngôn ngữ bài toán (số khách tăng trong những ngày nào, lượng nước giảm trong những tháng nào…) và nếu đề hỏi thì nêu cực trị.
+
+##CY
+- Cực trị của hàm chưa chắc là GTLN, GTNN của đại lượng trên miền thực tế: nếu đề hỏi "lớn nhất, nhỏ nhất" phải so thêm với đầu mút.
+- Trả lời bằng ngữ cảnh (tháng, ngày, giờ) chứ không chỉ nêu khoảng của biến.
+
+@vi_du:
+##VD
+Lượng nước trong một hồ chứa (nghìn $\text{m}^3$) sau $t$ tháng kể từ đầu mùa được mô hình hoá bởi $V(t)=t^3-12t^2+36t+50$ ($0\le t\le10$). Trong những tháng nào lượng nước trong hồ tăng, trong những tháng nào giảm? Lượng nước thấp nhất trong thời gian xét là bao nhiêu?
+
+Bài giải:
+Hàm $V$ xác định trên $[0;10]$ có $V'(t)=3t^2-24t+36=3(t-2)(t-6)$.
+$V'(t)=0\Leftrightarrow t=2$ hoặc $t=6$.
+Bảng xét dấu: $V'>0$ trên $(0;2)$, $V'<0$ trên $(2;6)$, $V'>0$ trên $(6;10)$.
+Vậy lượng nước tăng từ tháng $0$ đến tháng $2$ và từ tháng $6$ đến tháng $10$, giảm từ tháng $2$ đến tháng $6$.
+Tính $V(0)=50$, $V(2)=8-48+72+50=82$, $V(6)=216-432+216+50=50$, $V(10)=1000-1200+360+50=210$.
+Giá trị nhỏ nhất là $50$, đạt tại $t=0$ và $t=6$.
+Vậy lượng nước tăng trong hai giai đoạn $(0;2)$ và $(6;10)$, giảm trong $(2;6)$; lượng nước thấp nhất là $50$ nghìn $\text{m}^3$ (lúc đầu mùa và sau $6$ tháng).
+
+##VD
+Số khách mỗi ngày của một quán ăn (đơn vị: chục khách) sau $t$ tuần mở cửa được mô tả bởi $K(t)=t^3-3t^2-9t+40$ ($0\le t\le6$). Khoảng thời gian nào số khách giảm liên tục? Sau bao nhiêu tuần số khách bắt đầu tăng trở lại và lúc đó là bao nhiêu khách?
+
+Bài giải:
+$K'(t)=3t^2-6t-9=3(t-3)(t+1)$.
+Trên $[0;6]$ chỉ có $t=3$ làm $K'=0$ (nghiệm $t=-1$ ngoài miền).
+$K'<0$ trên $(0;3)$ và $K'>0$ trên $(3;6)$.
+Do đó số khách giảm liên tục trong $3$ tuần đầu, sau $3$ tuần thì bắt đầu tăng trở lại.
+Lúc đó $K(3)=27-27-27+40=13$ chục khách, tức $130$ khách mỗi ngày.
+Vậy số khách giảm trong $3$ tuần đầu rồi tăng trở lại, khi đó quán có $130$ khách mỗi ngày (thấp nhất trong thời gian xét vì $K(0)=40$ và $K(6)=94$ đều lớn hơn $13$).
+
+=== N H7.2
+@ly_thuyet:
+##TC Bài toán tối ưu phải tự lập hàm
+- Đề mô tả hình (hộp, bể, lon, khung, đoạn dây) và một đại lượng **cố định** (thể tích, chu vi, độ dài dây…); hỏi đại lượng khác lớn nhất hoặc nhỏ nhất. Phải tự chọn ẩn và lập hàm một biến.
+- Công thức hay dùng: hình hộp chữ nhật $V=abc$, $S_{tp}=2(ab+bc+ca)$; hình trụ $V=\pi r^2h$, $S_{tp}=2\pi r^2+2\pi rh$; hình chữ nhật $S=ab$; hình tròn $S=\pi r^2$, chu vi $2\pi r$; tam giác đều cạnh $a$: $S=\dfrac{a^2\sqrt3}{4}$.
+
+##PP Lập hàm và tối ưu
+Gọi ẩn $x$ (một độ dài) và nêu **điều kiện của $x$** theo hình (độ dài dương, không vượt quá giới hạn).
+Dùng đại lượng cố định để biểu diễn mọi yếu tố còn lại theo $x$ (khử bớt biến).
+Lập hàm $f(x)$ cần tối ưu, tìm miền xác định theo điều kiện của $x$.
+Tính $f'$, giải $f'=0$, lập bảng biến thiên hoặc so sánh với đầu mút để tìm giá trị lớn nhất (nhỏ nhất).
+Trả lời bằng ngữ cảnh: kích thước hình và giá trị tối ưu, kèm đơn vị.
+
+##CY
+- Hàm cần tối ưu phải chỉ còn **một biến**; còn hai biến thì dùng đại lượng cố định để khử.
+- Quên điều kiện của $x$ (như $0<x<6$) dễ lấy phải nghiệm vô nghĩa; tại đầu mút của khoảng mở thì không đạt giá trị, nên dùng bảng biến thiên.
+- Có thể rút gọn hàm cần tối ưu (ví dụ chọn bình phương) nhưng phải đảm bảo hàm đó cùng chiều biến thiên với hàm gốc.
+
+=== H7.2.1   (hình: không)
+@ly_thuyet:
+##TC Hộp, bể, lon
+- Hộp chữ nhật đáy vuông cạnh $x$, cao $h$: $V=x^2h$; không nắp $S=x^2+4xh$; có nắp $S=2x^2+4xh$.
+- Hình trụ bán kính $r$, cao $h$: $V=\pi r^2h$; $S_{tp}=2\pi r^2+2\pi rh$.
+- Cắt bốn góc hình vuông cạnh $x$ của tấm bìa rồi gập thành hộp không nắp: đáy có hai cạnh giảm $2x$, chiều cao hộp bằng $x$.
+
+##PP Hộp, bể, lon
+Thể tích cố định $V$: rút chiều cao $h$ theo $x$ từ $V=x^2h$ (hoặc $V=\pi r^2h$).
+Thay vào diện tích (hoặc chi phí) để có hàm một biến; chi phí = đơn giá nhân diện tích từng phần (đáy, thành, nắp).
+Bài cắt bìa: biểu diễn ba kích thước của hộp theo $x$, lập $V(x)$ rồi tìm giá trị lớn nhất.
+Tìm miền của $x$, giải $f'=0$, kết luận bằng bảng biến thiên rồi tính các kích thước còn lại.
+
+##CY
+- Bể, hộp không nắp thì không tính diện tích nắp; chi phí đáy và thành thường có đơn giá khác nhau, phải nhân đúng từng phần.
+- Cắt góc phải thoả: kích thước đáy còn lại dương, nên $x<\dfrac{\text{cạnh nhỏ}}{2}$.
+
+@vi_du:
+##VD
+Từ một tấm bìa hình vuông cạnh $12$ cm, người ta cắt bỏ bốn hình vuông nhỏ cạnh $x$ (cm) ở bốn góc rồi gập lại thành một cái hộp không nắp. Tìm $x$ để thể tích hộp lớn nhất và tính thể tích đó.
+
+Bài giải:
+Hộp có đáy là hình vuông cạnh $12-2x$ và chiều cao $x$, điều kiện $0<x<6$.
+Thể tích $V(x)=x(12-2x)^2$.
+$V'(x)=(12-2x)^2-4x(12-2x)=(12-2x)(12-6x)=12(6-x)(2-x)$.
+Trên $(0;6)$, $V'(x)=0\Leftrightarrow x=2$; $V'>0$ trên $(0;2)$ và $V'<0$ trên $(2;6)$.
+Vậy $V$ đạt giá trị lớn nhất tại $x=2$, và $V(2)=2\cdot8^2=128$.
+Vậy khi $x=2$ cm thì hộp có thể tích lớn nhất bằng $128\ \text{cm}^3$.
+
+##VD
+Một bể chứa nước không nắp có dạng hình hộp đáy vuông, thể tích $162\ \text{m}^3$. Đơn giá làm đáy là $300$ nghìn đồng/$\text{m}^2$, làm mỗi mặt bên là $200$ nghìn đồng/$\text{m}^2$. Tìm kích thước bể để chi phí vật liệu thấp nhất và tính chi phí đó.
+
+Bài giải:
+Gọi cạnh đáy là $x$ (m), $x>0$, chiều cao là $h$ (m). Từ $x^2h=162$ suy ra $h=\dfrac{162}{x^2}$.
+Diện tích đáy là $x^2$; diện tích bốn mặt bên là $4xh=\dfrac{648}{x}$.
+Chi phí (nghìn đồng): $C(x)=300x^2+200\cdot\dfrac{648}{x}=300x^2+\dfrac{129600}{x}$ với $x>0$.
+$C'(x)=600x-\dfrac{129600}{x^2}=\dfrac{600(x^3-216)}{x^2}$.
+$C'(x)=0\Leftrightarrow x=6$; $C'<0$ trên $(0;6)$ và $C'>0$ trên $(6;+\infty)$ nên $C$ đạt nhỏ nhất tại $x=6$.
+Khi đó $h=\dfrac{162}{36}=4{,}5$ và $C(6)=300\cdot36+\dfrac{129600}{6}=10800+21600=32400$.
+Vậy bể có đáy vuông cạnh $6$ m, cao $4{,}5$ m thì chi phí thấp nhất là $32400$ nghìn đồng, tức $32{,}4$ triệu đồng.
+
+=== H7.2.2   (hình: không)
+@ly_thuyet:
+##TC Diện tích, chu vi hình phẳng
+- Hình chữ nhật hai cạnh $a$, $b$: chu vi $2(a+b)$, diện tích $ab$.
+- Rào ba cạnh với một cạnh là tường: tổng độ dài hàng rào $=2x+y$ nếu hai cạnh vuông góc tường dài $x$ và cạnh song song tường dài $y$.
+- Hình chữ nhật nội tiếp nửa đường tròn bán kính $R$ có đáy trên đường kính: nửa đáy $x$ thì chiều cao $\sqrt{R^2-x^2}$.
+
+##PP Diện tích lớn nhất
+Chọn ẩn là một cạnh (hoặc nửa cạnh) của hình và nêu điều kiện của ẩn.
+Dùng giả thiết (độ dài hàng rào cố định, hình nội tiếp…) để biểu diễn cạnh còn lại theo ẩn.
+Lập hàm diện tích $S(x)$ rồi tìm giá trị lớn nhất bằng đạo hàm và bảng biến thiên.
+Kết luận kích thước hình và diện tích lớn nhất.
+
+##CY
+- Với hình nội tiếp có căn, đạo hàm của $x\sqrt{R^2-x^2}$ chỉ xác định trên $(-R;R)$; nên xét $0<x<R$.
+- Đề hỏi diện tích của cả hình (nhân đôi nửa đáy $x$) thì không quên hệ số $2$.
+
+@vi_du:
+##VD
+Một người muốn rào một mảnh vườn hình chữ nhật dựa vào bức tường thẳng, chỉ rào ba cạnh còn lại bằng $100$ m lưới. Tính diện tích lớn nhất của mảnh vườn.
+
+Bài giải:
+Gọi $x$ (m) là độ dài mỗi cạnh vuông góc với tường, $0<x<50$. Cạnh song song với tường dài $100-2x$.
+Diện tích $S(x)=x(100-2x)=100x-2x^2$.
+$S'(x)=100-4x=0\Leftrightarrow x=25$; $S'>0$ trên $(0;25)$, $S'<0$ trên $(25;50)$.
+Vậy $S$ lớn nhất tại $x=25$, $S(25)=25\cdot50=1250$.
+Vậy mảnh vườn có diện tích lớn nhất là $1250\ \text{m}^2$ khi hai cạnh vuông góc tường dài $25$ m và cạnh còn lại dài $50$ m.
+
+##VD
+Tìm diện tích lớn nhất của hình chữ nhật nội tiếp nửa đường tròn bán kính $5$ cm, biết một cạnh của hình chữ nhật nằm trên đường kính của nửa đường tròn.
+
+Bài giải:
+Gọi $x$ là khoảng cách từ tâm đến mỗi đỉnh nằm trên đường kính, $0<x<5$. Chiều rộng hình chữ nhật là $2x$ và chiều cao là $\sqrt{25-x^2}$.
+Diện tích $S(x)=2x\sqrt{25-x^2}$.
+$S'(x)=2\sqrt{25-x^2}-\dfrac{2x^2}{\sqrt{25-x^2}}=\dfrac{2(25-2x^2)}{\sqrt{25-x^2}}$.
+$S'(x)=0\Leftrightarrow x^2=\dfrac{25}{2}\Leftrightarrow x=\dfrac{5\sqrt2}{2}$ (thuộc $(0;5)$).
+$S'>0$ khi $0<x<\dfrac{5\sqrt2}{2}$ và $S'<0$ khi $\dfrac{5\sqrt2}{2}<x<5$ nên $S$ lớn nhất tại $x=\dfrac{5\sqrt2}{2}$.
+Khi đó $S=2\cdot\dfrac{5\sqrt2}{2}\cdot\sqrt{25-\dfrac{25}{2}}=5\sqrt2\cdot\dfrac{5\sqrt2}{2}=25$.
+Vậy diện tích lớn nhất là $25\ \text{cm}^2$, khi hình chữ nhật có hai cạnh $5\sqrt2$ cm và $\dfrac{5\sqrt2}{2}$ cm.
+
+=== H7.2.3   (hình: không)
+@ly_thuyet:
+##TC Chia dây thành hai hình
+- Sợi dây dài $L$ cắt thành hai đoạn $x$ và $L-x$ ($0<x<L$), mỗi đoạn uốn thành một hình.
+- Hình vuông có chu vi $p$: cạnh $\dfrac{p}{4}$, diện tích $\dfrac{p^2}{16}$.
+- Hình tròn có chu vi $p$: bán kính $\dfrac{p}{2\pi}$, diện tích $\dfrac{p^2}{4\pi}$.
+- Tam giác đều có chu vi $p$: cạnh $\dfrac{p}{3}$, diện tích $\dfrac{\sqrt3p^2}{36}$.
+
+##PP Cắt dây
+Gọi $x$ là độ dài đoạn dây uốn hình thứ nhất, đoạn còn lại $L-x$, điều kiện $0<x<L$.
+Dùng công thức theo chu vi để viết diện tích từng hình theo $x$ và $L-x$.
+Lập tổng diện tích $S(x)$, tính $S'$ và giải $S'=0$.
+Đối chiếu giá trị tại điểm tới hạn, tại $x=0$ và $x=L$ (nếu cho phép dùng toàn bộ dây cho một hình) để kết luận nhỏ nhất, lớn nhất.
+
+##CY
+- Hàm tổng diện tích là tam thức bậc hai theo $x$ có hệ số của $x^2$ dương nên có giá trị nhỏ nhất ở đỉnh nhưng giá trị lớn nhất (nếu hỏi) nằm ở đầu mút.
+- Uốn hình nào cần dùng đúng công thức diện tích **theo chu vi**, không lẫn bán kính với chu vi.
+
+@vi_du:
+##VD
+Một sợi dây dài $60$ cm được cắt thành hai đoạn, mỗi đoạn uốn thành một hình vuông. Tìm độ dài hai đoạn để tổng diện tích hai hình vuông nhỏ nhất.
+
+Bài giải:
+Gọi $x$ (cm) là độ dài đoạn thứ nhất, $0<x<60$; đoạn thứ hai dài $60-x$.
+Cạnh hai hình vuông là $\dfrac{x}{4}$ và $\dfrac{60-x}{4}$.
+Tổng diện tích $S(x)=\dfrac{x^2}{16}+\dfrac{(60-x)^2}{16}$.
+$S'(x)=\dfrac{x}{8}-\dfrac{60-x}{8}=\dfrac{2x-60}{8}$, $S'(x)=0\Leftrightarrow x=30$.
+$S'<0$ trên $(0;30)$ và $S'>0$ trên $(30;60)$ nên $S$ nhỏ nhất tại $x=30$, $S(30)=\dfrac{900+900}{16}=112{,}5$.
+Vậy cắt dây thành hai đoạn bằng nhau, mỗi đoạn $30$ cm, thì tổng diện tích nhỏ nhất là $112{,}5\ \text{cm}^2$.
+
+##VD
+Một sợi dây dài $60$ cm được cắt thành hai đoạn: đoạn thứ nhất uốn thành hình vuông, đoạn thứ hai uốn thành hình tròn. Tìm độ dài đoạn uốn hình vuông để tổng diện tích hai hình nhỏ nhất và tính tổng diện tích đó.
+
+Bài giải:
+Gọi $x$ (cm) là độ dài đoạn uốn hình vuông, $0<x<60$; đoạn uốn hình tròn dài $60-x$.
+Hình vuông cạnh $\dfrac{x}{4}$ có diện tích $\dfrac{x^2}{16}$. Hình tròn có chu vi $60-x$ nên bán kính $\dfrac{60-x}{2\pi}$ và diện tích $\dfrac{(60-x)^2}{4\pi}$.
+Tổng diện tích $S(x)=\dfrac{x^2}{16}+\dfrac{(60-x)^2}{4\pi}$.
+$S'(x)=\dfrac{x}{8}-\dfrac{60-x}{2\pi}$; $S'(x)=0\Leftrightarrow\pi x=4(60-x)\Leftrightarrow x=\dfrac{240}{4+\pi}$.
+$S'$ đổi dấu từ $-$ sang $+$ tại điểm này (vì $S'$ là hàm bậc nhất tăng) nên $S$ nhỏ nhất tại $x=\dfrac{240}{4+\pi}\approx33{,}6$.
+Khi đó $60-x=\dfrac{60\pi}{4+\pi}$ và $S=\dfrac{3600}{(4+\pi)^2}+\dfrac{900\pi}{(4+\pi)^2}=\dfrac{900}{4+\pi}\approx126{,}0$.
+Vậy đoạn uốn hình vuông dài $\dfrac{240}{4+\pi}\approx33{,}6$ cm, và tổng diện tích nhỏ nhất là $\dfrac{900}{4+\pi}\approx126{,}0\ \text{cm}^2$.
+
+=== H7.2.4   (hình: đồ thị)
+@ly_thuyet:
+##TC Đặt hệ trục toạ độ
+- Chọn hệ trục thuận lợi: đặt trục đối xứng của parabol làm trục $Oy$ hoặc đặt một đầu cung tại gốc $O$.
+- Parabol có đỉnh $(0;h)$ cắt $Ox$ tại $(\pm c;0)$ có phương trình $y=h-\dfrac{h}{c^2}x^2$; parabol qua gốc $O$ và đỉnh $(p;q)$ có phương trình $y=-\dfrac{q}{p^2}x^2+\dfrac{2q}{p}x$.
+- Đồ thị bậc ba $y=ax^3+bx^2+cx+d$ (hoặc thiếu hệ số) đi qua các điểm cho trước: thay toạ độ để lập hệ phương trình tìm hệ số.
+
+##PP Lập phương trình đường cong rồi tối ưu
+Đặt hệ trục toạ độ phù hợp và ghi lại toạ độ các điểm đề cho.
+Dùng các điểm đó để lập hệ phương trình tìm hệ số của hàm $y=f(x)$.
+Gọi $M(x;f(x))$ là điểm cần tìm trên đường cong; viết diện tích (hoặc độ cao, độ dài) cần tối ưu theo $x$ với điều kiện của $x$.
+Tìm giá trị lớn nhất (nhỏ nhất) bằng đạo hàm và bảng biến thiên, trả lời bằng đơn vị thực tế.
+
+##CY
+- Hình chữ nhật nội tiếp parabol đối xứng qua $Oy$ có hai đỉnh $(\pm x;f(x))$: cạnh ngang là $2x$ chứ không phải $x$.
+- Đơn vị trên hai trục là mét hoặc cm tuỳ đề: không trộn lẫn khi đổi đơn vị.
+
+@vi_du:
+##VD
+Một cổng chào có dạng parabol, rộng $8$ m và cao $4$ m. Người ta muốn dựng một khung hình chữ nhật có hai đỉnh nằm trên mặt đất, hai đỉnh còn lại nằm trên parabol. Tìm kích thước khung để diện tích lớn nhất.
+[[HINH {"loai":"dothi","x":[-5,5],"y":[-1,5],"f":[{"e":"4-x^2/4","x":[-4,4],"ten":"(P)"}],"diem":[{"x":-4,"y":0,"nhan":"A"},{"x":4,"y":0,"nhan":"B"},{"x":0,"y":4,"nhan":"I"}]}]]
+
+Bài giải:
+Đặt hệ trục sao cho mặt đất là $Ox$ và trục đối xứng của cổng là $Oy$: parabol có đỉnh $I(0;4)$ và đi qua $A(-4;0)$, $B(4;0)$.
+Gọi phương trình $y=ax^2+4$. Vì đi qua $B(4;0)$ nên $16a+4=0$, $a=-\dfrac{1}{4}$, vậy $y=4-\dfrac{x^2}{4}$.
+Khung hình chữ nhật có hai đỉnh trên parabol là $(\pm x;\,4-\dfrac{x^2}{4})$ với $0<x<4$; chiều rộng $2x$, chiều cao $4-\dfrac{x^2}{4}$.
+Diện tích $S(x)=2x\left(4-\dfrac{x^2}{4}\right)=8x-\dfrac{x^3}{2}$.
+$S'(x)=8-\dfrac{3x^2}{2}=0\Leftrightarrow x^2=\dfrac{16}{3}\Leftrightarrow x=\dfrac{4}{\sqrt3}$ (thuộc $(0;4)$).
+$S'>0$ khi $0<x<\dfrac{4}{\sqrt3}$ và $S'<0$ khi $\dfrac{4}{\sqrt3}<x<4$ nên $S$ lớn nhất tại $x=\dfrac{4}{\sqrt3}$.
+Khi đó chiều rộng $2x=\dfrac{8\sqrt3}{3}$ m, chiều cao $4-\dfrac{4}{3}=\dfrac{8}{3}$ m, và $S=\dfrac{8\sqrt3}{3}\cdot\dfrac{8}{3}=\dfrac{64\sqrt3}{9}$.
+Vậy khung rộng $\dfrac{8\sqrt3}{3}\approx4{,}62$ m, cao $\dfrac{8}{3}\approx2{,}67$ m thì diện tích lớn nhất, bằng $\dfrac{64\sqrt3}{9}\approx12{,}32\ \text{m}^2$.
+
+##VD
+Trong hệ toạ độ $Oxy$ (đơn vị 1 m), một sườn đồi có dạng đồ thị hàm số $y=ax^3+bx^2$ đi qua $A(6;0)$ và $B(2;16)$. Điểm $M$ nằm trên phần đồ thị giữa $O$ và $A$ ($0<x_M<6$), $H$ là hình chiếu của $M$ trên trục $Ox$. Tìm vị trí $M$ để diện tích tam giác $MHA$ lớn nhất.
+[[HINH {"loai":"dothi","x":[-1,7],"y":[-4,36],"luoi":false,"f":[{"e":"6*x^2-x^3","x":[0,6],"ten":"y=f(x)"}],"diem":[{"x":6,"y":0,"nhan":"A"},{"x":2,"y":16,"nhan":"B"}]}]]
+
+Bài giải:
+Đồ thị qua $A(6;0)$: $216a+36b=0$ nên $b=-6a$. Đồ thị qua $B(2;16)$: $8a+4b=16$, thay $b=-6a$ được $-16a=16$, vậy $a=-1$, $b=6$.
+Hàm số là $y=-x^3+6x^2=x^2(6-x)$, dương trên $(0;6)$.
+Gọi $M(x;\,x^2(6-x))$ với $0<x<6$ thì $H(x;0)$, $HA=6-x$, $MH=x^2(6-x)$.
+Diện tích $S(x)=\dfrac12(6-x)\cdot x^2(6-x)=\dfrac12x^2(6-x)^2=\dfrac12\left[x(6-x)\right]^2$.
+$S'(x)=x(6-x)^2-x^2(6-x)=x(6-x)(6-2x)$; trên $(0;6)$, $S'(x)=0\Leftrightarrow x=3$.
+$S'>0$ trên $(0;3)$ và $S'<0$ trên $(3;6)$ nên $S$ lớn nhất tại $x=3$, $S(3)=\dfrac12\cdot9\cdot9=\dfrac{81}{2}$.
+Khi $x=3$ thì $M(3;27)$.
+Vậy $M(3;27)$ thì diện tích tam giác $MHA$ lớn nhất, bằng $\dfrac{81}{2}=40{,}5\ \text{m}^2$.
+
+=== N H7.3
+@ly_thuyet:
+##TC Tối ưu khoảng cách, đường đi, góc
+- Đề hỏi thời gian, chi phí, độ dài hoặc góc **nhỏ nhất (lớn nhất)** khi vị trí một điểm thay đổi; chọn ẩn là vị trí điểm đó (một độ dài hoặc một góc).
+- Khoảng cách giữa hai điểm $M(x_1;y_1)$, $N(x_2;y_2)$: $MN=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$. Định lí Pi-ta-go dùng để tính đoạn nghiêng.
+- Hệ thức tam giác vuông: $\sin\theta=\dfrac{\text{đối}}{\text{huyền}}$, $\cos\theta=\dfrac{\text{kề}}{\text{huyền}}$, $\tan\theta=\dfrac{\text{đối}}{\text{kề}}$.
+- Thời gian $=\dfrac{\text{quãng đường}}{\text{vận tốc}}$; chi phí $=$ đơn giá $\cdot$ độ dài.
+
+##PP Lập hàm theo một ẩn hình học
+Vẽ hình, ghi các độ dài đã biết, chọn ẩn $x$ (hoặc góc $\theta$) và nêu điều kiện của ẩn.
+Biểu diễn đại lượng cần tối ưu theo $x$ bằng Pi-ta-go hoặc tỉ số lượng giác.
+Tính đạo hàm, giải phương trình $f'=0$ (bình phương hai vế nếu có căn, chú ý điều kiện dấu).
+Lập bảng biến thiên (hoặc so sánh với đầu mút) để kết luận cực trị; trả lời bằng ngữ cảnh.
+
+##CY
+- Bình phương hai vế khi giải $f'=0$ có thể sinh nghiệm ngoại lai: thử lại nghiệm vào phương trình ban đầu và vào điều kiện của ẩn.
+- Khoảng cách nhỏ nhất của biểu thức có căn thì tối ưu bình phương (không có căn), nhưng nhớ khai căn trở lại ở kết luận.
+- Bài dùng góc $\theta$: điều kiện thường là $0<\theta<\dfrac{\pi}{2}$; nếu biến đổi theo $\tan\theta$ phải đảm bảo hàm cùng chiều biến thiên.
+
+=== H7.3.1   (hình: không)
+@ly_thuyet:
+##TC Hai môi trường, hai vận tốc hoặc hai đơn giá
+- Người đi từ $A$ cách bờ $a$ đến $B$ trên bờ; đi tới điểm $M$ trên bờ (cách chân đường vuông góc $H$ đoạn $x$) bằng môi trường 1 (vận tốc $v_1$ hoặc đơn giá $p_1$), rồi đi tiếp tới $B$ trên bờ bằng môi trường 2 ($v_2$, $p_2$).
+- Đoạn nghiêng $AM=\sqrt{a^2+x^2}$; đoạn trên bờ là $L-x$ (nếu $HB=L$).
+- Thời gian: $T(x)=\dfrac{\sqrt{a^2+x^2}}{v_1}+\dfrac{L-x}{v_2}$; chi phí: $C(x)=p_1\sqrt{a^2+x^2}+p_2(L-x)$.
+
+##PP Đường đi qua hai môi trường
+Gọi $x$ là độ dài $HM$, nêu điều kiện $0\le x\le L$.
+Viết hàm thời gian (hoặc chi phí) theo $x$ như trên.
+Tính $f'(x)=\dfrac{x}{v_1\sqrt{a^2+x^2}}-\dfrac{1}{v_2}$; giải $f'=0$ bằng cách đưa về $v_2x=v_1\sqrt{a^2+x^2}$ rồi bình phương.
+So sánh giá trị tại nghiệm với hai đầu mút (hoặc lập bảng biến thiên), chọn nhỏ nhất rồi trả lời.
+
+##CY
+- Hàm chứa căn: đạo hàm $\left(\sqrt{a^2+x^2}\right)'=\dfrac{x}{\sqrt{a^2+x^2}}$; đừng quên chia cho vận tốc (đơn giá).
+- Nghiệm tìm được phải thuộc $[0;L]$; nếu nằm ngoài thì giá trị nhỏ nhất ở đầu mút.
+
+@vi_du:
+##VD
+Một người ở vị trí $A$ trên một hòn đảo, cách bờ thẳng $3$ km, muốn đến vị trí $B$ trên bờ. Chân đường vuông góc hạ từ $A$ xuống bờ là $H$, $HB=8$ km. Người đó chèo thuyền từ $A$ đến một điểm $M$ trên đoạn $HB$ với vận tốc $3$ km/h, rồi đi bộ dọc bờ từ $M$ đến $B$ với vận tốc $5$ km/h. Tính $HM$ để tổng thời gian ít nhất và tính thời gian đó.
+
+Bài giải:
+Đặt $HM=x$ (km), $0\le x\le8$. Khi đó $AM=\sqrt{9+x^2}$ và $MB=8-x$.
+Thời gian $T(x)=\dfrac{\sqrt{9+x^2}}{3}+\dfrac{8-x}{5}$.
+$T'(x)=\dfrac{x}{3\sqrt{9+x^2}}-\dfrac15=0\Leftrightarrow5x=3\sqrt{9+x^2}$.
+Bình phương hai vế (hai vế cùng dương): $25x^2=81+9x^2$, suy ra $x^2=\dfrac{81}{16}$, $x=\dfrac94$ (thuộc $[0;8]$, thoả điều kiện $5x>0$).
+Tính $T(0)=1+\dfrac85=2{,}6$; $T\left(\dfrac94\right)=\dfrac{15/4}{3}+\dfrac{23/4}{5}=\dfrac54+\dfrac{23}{20}=2{,}4$; $T(8)=\dfrac{\sqrt{73}}{3}\approx2{,}85$.
+Giá trị nhỏ nhất là $2{,}4$ tại $x=\dfrac94$.
+Vậy $HM=\dfrac94=2{,}25$ km thì thời gian đi ít nhất, bằng $2{,}4$ giờ (tức $2$ giờ $24$ phút).
+
+##VD
+Cần đặt một đường ống dẫn dầu từ điểm $A$ trên đảo, cách bờ thẳng $2$ km, về kho $B$ trên bờ. Chân đường vuông góc hạ từ $A$ xuống bờ là $H$ và $HB=10$ km. Đường ống đặt từ $A$ tới một điểm $M$ trên $HB$ dưới nước với chi phí $5$ tỷ đồng/km, sau đó đặt dọc bờ từ $M$ tới $B$ với chi phí $4$ tỷ đồng/km. Tìm vị trí $M$ để chi phí thấp nhất và tính chi phí đó.
+
+Bài giải:
+Đặt $HM=x$ (km), $0\le x\le10$. Đoạn dưới nước dài $\sqrt{4+x^2}$, đoạn trên bờ dài $10-x$.
+Chi phí (tỷ đồng): $C(x)=5\sqrt{4+x^2}+4(10-x)$.
+$C'(x)=\dfrac{5x}{\sqrt{4+x^2}}-4=0\Leftrightarrow5x=4\sqrt{4+x^2}$.
+Bình phương: $25x^2=16(4+x^2)$, suy ra $9x^2=64$, $x=\dfrac83$ (thuộc $[0;10]$ và thoả $5x>0$).
+Khi đó $\sqrt{4+\dfrac{64}{9}}=\dfrac{10}{3}$ nên $C\left(\dfrac83\right)=5\cdot\dfrac{10}{3}+4\cdot\dfrac{22}{3}=\dfrac{50+88}{3}=46$.
+Các đầu mút: $C(0)=10+40=50$ và $C(10)=5\sqrt{104}\approx51$, đều lớn hơn $46$.
+Vậy đặt $M$ cách $H$ là $\dfrac83\approx2{,}67$ km thì chi phí thấp nhất, bằng $46$ tỷ đồng.
+
+=== H7.3.2   (hình: không)
+@ly_thuyet:
+##TC Khoảng cách và bình phương khoảng cách
+- Khoảng cách giữa điểm cố định $A(x_0;y_0)$ và điểm $M(x;f(x))$ trên đường cong: $d^2(x)=(x-x_0)^2+(f(x)-y_0)^2$.
+- Hai vật chuyển động đều: toạ độ mỗi vật là hàm bậc nhất của $t$; khoảng cách giữa chúng $d(t)=\sqrt{(x_1(t)-x_2(t))^2+(y_1(t)-y_2(t))^2}$.
+- $d$ nhỏ nhất khi và chỉ khi $d^2$ nhỏ nhất (vì $d\ge0$).
+
+##PP Khoảng cách ngắn nhất
+Chọn ẩn: hoành độ $x$ của điểm chuyển động trên đường cong, hoặc thời gian $t\ge0$ với hai vật.
+Viết toạ độ các điểm theo ẩn, lập $d^2=g(x)$ (hoặc $g(t)$), nêu miền của ẩn.
+Tính $g'$, giải $g'=0$, lập bảng biến thiên để tìm nhỏ nhất.
+Lấy căn bậc hai để ra khoảng cách; nếu hỏi thời điểm thì nêu cả $t$ và $d$.
+
+##CY
+- Đề hỏi $d$ thì cuối cùng phải khai căn; cái nhỏ nhất của $d^2$ không phải là đáp án.
+- Hai vật chuyển động cần đơn vị thống nhất (km và giờ); nếu một vật dừng hoặc đổi chiều sau thời điểm nào thì miền của $t$ thay đổi.
+
+@vi_du:
+##VD
+Tìm khoảng cách ngắn nhất từ điểm $A(0;3)$ đến một điểm $M$ nằm trên parabol $y=x^2$.
+
+Bài giải:
+Điểm $M(x;x^2)$ nên $d^2=AM^2=x^2+(x^2-3)^2=x^4-5x^2+9$ với $x\in\mathbb{R}$.
+Đặt $g(x)=x^4-5x^2+9$ thì $g'(x)=4x^3-10x=2x(2x^2-5)$.
+$g'(x)=0\Leftrightarrow x=0$ hoặc $x=\pm\sqrt{\dfrac52}$.
+$g(0)=9$ và $g\left(\pm\sqrt{\dfrac52}\right)=\dfrac{25}{4}-\dfrac{25}{2}+9=\dfrac{11}{4}$; $g(x)\to+\infty$ khi $x\to\pm\infty$ nên giá trị nhỏ nhất của $g$ là $\dfrac{11}{4}$.
+Vậy $d_{\min}=\sqrt{\dfrac{11}{4}}=\dfrac{\sqrt{11}}{2}$, đạt khi $M\left(\pm\sqrt{\dfrac52};\dfrac52\right)$.
+
+##VD
+Hai con đường thẳng vuông góc cắt nhau tại $O$. Lúc $t=0$, xe thứ nhất ở cách $O$ là $20$ km trên đường thứ nhất, chạy về phía $O$ với vận tốc $10$ km/h; xe thứ hai xuất phát từ $O$ trên đường thứ hai, chạy ra xa với vận tốc $5$ km/h. Hai xe cứ chạy mãi theo hướng đó. Sau bao lâu hai xe gần nhau nhất và khoảng cách khi đó là bao nhiêu?
+
+Bài giải:
+Đặt hệ trục: xe thứ nhất ở $A(20-10t;0)$ trên $Ox$, xe thứ hai ở $B(0;5t)$ trên $Oy$ với $t\ge0$.
+$d^2=(20-10t)^2+(5t)^2=125t^2-400t+400=g(t)$.
+$g'(t)=250t-400=0\Leftrightarrow t=1{,}6$; $g'<0$ trên $[0;1{,}6)$ và $g'>0$ trên $(1{,}6;+\infty)$ nên $g$ nhỏ nhất tại $t=1{,}6$.
+$g(1{,}6)=125\cdot2{,}56-640+400=320-640+400=80$.
+Suy ra $d_{\min}=\sqrt{80}=4\sqrt5\approx8{,}94$ km.
+Vậy sau $1{,}6$ giờ (tức $1$ giờ $36$ phút) hai xe gần nhau nhất, khi đó cách nhau $4\sqrt5\approx8{,}94$ km.
+
+=== H7.3.3   (hình: không)
+@ly_thuyet:
+##TC Vật dài nhất qua góc hành lang
+- Hai hành lang vuông góc có độ rộng $a$ và $b$. Xét đoạn thẳng chạm góc trong của khúc quẹo, hai đầu tựa vào hai tường ngoài, tạo góc $\theta$ với phương (chiều dài) của hành lang rộng $a$ ($0<\theta<\dfrac{\pi}{2}$).
+- Phần đoạn thẳng nằm trong hành lang rộng $a$ dài $\dfrac{a}{\sin\theta}$, phần nằm trong hành lang rộng $b$ dài $\dfrac{b}{\cos\theta}$, nên $\ell(\theta)=\dfrac{a}{\sin\theta}+\dfrac{b}{\cos\theta}$.
+- Vật dài $d$ qua được góc khi và chỉ khi $d\le\min\ell(\theta)$, trong đó $\ell_{\min}$ là độ dài nhỏ nhất của các đoạn thẳng chạm góc trong và tựa hai tường ngoài, **không phải** giá trị lớn nhất.
+- $\ell'(\theta)=0\Leftrightarrow\tan^3\theta=\dfrac{a}{b}$.
+
+##PP Thang, sào, ống qua góc hành lang
+Đặt góc $\theta\in\left(0;\dfrac{\pi}{2}\right)$ giữa vật và phương hành lang rộng $a$, dùng tam giác vuông để viết độ dài đoạn thẳng chạm góc trong và tựa hai tường ngoài: $\ell(\theta)=\dfrac{a}{\sin\theta}+\dfrac{b}{\cos\theta}$.
+Tính $\ell'(\theta)=\dfrac{-a\cos\theta}{\sin^2\theta}+\dfrac{b\sin\theta}{\cos^2\theta}$ rồi giải $\ell'=0$ để được $\tan^3\theta=\dfrac ab$.
+Tính $\sin\theta$, $\cos\theta$ tương ứng và $\ell_{\min}$; lập bảng biến thiên để chắc đó là nhỏ nhất.
+Kết luận: chiều dài lớn nhất của vật qua được là $\ell_{\min}$.
+
+##CY
+- Đáp án là **giá trị nhỏ nhất** của $\ell(\theta)$, vì vật chỉ qua được khi ngắn hơn mọi vị trí kẹt: nhầm với giá trị lớn nhất là lỗi phổ biến.
+- Phải để ý $\theta$ gắn với hành lang nào: đổi vai trò $\theta\leftrightarrow\dfrac{\pi}{2}-\theta$ thì đổi vị trí của $a$ và $b$.
+- Bỏ qua bề dày của vật, coi vật là một đoạn thẳng.
+
+@vi_du:
+##VD
+Một sào tre thẳng được đưa qua khúc quẹo vuông góc giữa hai hành lang cùng rộng $3$ m. Coi sào là một đoạn thẳng. Hỏi sào dài nhất là bao nhiêu mét để vẫn đưa qua được khúc quẹo?
+
+Bài giải:
+Xét đoạn thẳng chạm góc trong của khúc quẹo, hai đầu tựa vào hai tường ngoài; gọi $\theta\in\left(0;\dfrac{\pi}{2}\right)$ là góc giữa đoạn đó và phương của hành lang thứ nhất.
+Phần nằm trong hành lang thứ nhất dài $\dfrac{3}{\sin\theta}$, phần nằm trong hành lang thứ hai dài $\dfrac{3}{\cos\theta}$, nên $\ell(\theta)=\dfrac{3}{\sin\theta}+\dfrac{3}{\cos\theta}$.
+$\ell'(\theta)=\dfrac{-3\cos\theta}{\sin^2\theta}+\dfrac{3\sin\theta}{\cos^2\theta}=0\Leftrightarrow\sin^3\theta=\cos^3\theta\Leftrightarrow\tan\theta=1\Leftrightarrow\theta=\dfrac{\pi}{4}$.
+$\ell'<0$ khi $\theta<\dfrac{\pi}{4}$ và $\ell'>0$ khi $\theta>\dfrac{\pi}{4}$ nên $\ell_{\min}=\ell\left(\dfrac{\pi}{4}\right)=3\sqrt2+3\sqrt2=6\sqrt2\approx8{,}49$.
+Sào qua được khúc quẹo khi và chỉ khi độ dài sào không vượt quá mọi $\ell(\theta)$, tức không vượt $\ell_{\min}$.
+Vậy sào dài nhất là $6\sqrt2\approx8{,}49$ m.
+
+##VD
+Một ống sắt thẳng được đẩy qua chỗ rẽ vuông góc của hai đường hầm có độ rộng $27$ dm và $64$ dm. Tính chiều dài lớn nhất của ống (coi ống là đoạn thẳng) để đẩy qua được chỗ rẽ.
+
+Bài giải:
+Xét đoạn thẳng chạm góc trong của chỗ rẽ, hai đầu tựa vào hai tường ngoài; gọi $\theta\in\left(0;\dfrac{\pi}{2}\right)$ là góc giữa đoạn đó và phương đường hầm rộng $27$ dm.
+Phần nằm trong hầm rộng $27$ dm dài $\dfrac{27}{\sin\theta}$, phần nằm trong hầm rộng $64$ dm dài $\dfrac{64}{\cos\theta}$, nên $\ell(\theta)=\dfrac{27}{\sin\theta}+\dfrac{64}{\cos\theta}$.
+$\ell'(\theta)=\dfrac{-27\cos\theta}{\sin^2\theta}+\dfrac{64\sin\theta}{\cos^2\theta}=0\Leftrightarrow64\sin^3\theta=27\cos^3\theta\Leftrightarrow\tan^3\theta=\dfrac{27}{64}\Leftrightarrow\tan\theta=\dfrac34$.
+Do $0<\theta<\dfrac{\pi}{2}$ nên $\sin\theta=\dfrac35$, $\cos\theta=\dfrac45$.
+$\ell'<0$ khi $\tan\theta<\dfrac34$ và $\ell'>0$ khi $\tan\theta>\dfrac34$ nên $\ell_{\min}=\dfrac{27}{3/5}+\dfrac{64}{4/5}=45+80=125$ dm.
+Ống qua được khi và chỉ khi chiều dài ống không vượt $\ell_{\min}$.
+Vậy ống dài nhất đẩy qua được là $125$ dm, tức $12{,}5$ m.
+
+=== H7.3.4   (hình: không)
+@ly_thuyet:
+##TC Góc nhìn bằng hiệu hai góc
+- Điểm quan sát cách đường thẳng đứng chứa vật một khoảng $x$; mép dưới của vật cao $p$ và mép trên cao $q$ ($q>p>0$) so với mắt thì góc nhìn $\varphi=\alpha-\beta$ với $\tan\alpha=\dfrac qx$, $\tan\beta=\dfrac px$.
+- $\tan(\alpha-\beta)=\dfrac{\tan\alpha-\tan\beta}{1+\tan\alpha\tan\beta}=\dfrac{(q-p)x}{x^2+pq}$.
+- Với $\varphi\in\left(0;\dfrac{\pi}{2}\right)$, hàm $\tan$ đồng biến nên $\varphi$ lớn nhất khi và chỉ khi $\tan\varphi$ lớn nhất.
+
+##PP Góc nhìn lớn nhất
+Chọn ẩn là khoảng cách $x>0$ từ người (máy ảnh, cầu thủ) đến đường thẳng đứng chứa vật.
+Viết $\tan\alpha$ và $\tan\beta$ theo $x$ bằng tam giác vuông, rồi tính $\tan\varphi=\tan(\alpha-\beta)=\dfrac{(q-p)x}{x^2+pq}$.
+Tìm $x$ để $f(x)=\dfrac{(q-p)x}{x^2+pq}$ lớn nhất bằng đạo hàm và bảng biến thiên (được $x=\sqrt{pq}$).
+Tính góc lớn nhất từ $\tan\varphi$ và kết luận vị trí đứng tốt nhất.
+
+##CY
+- Góc lớn nhất khi $\tan$ lớn nhất chỉ đúng khi góc thuộc $\left(0;\dfrac{\pi}{2}\right)$; cần nhận xét này khi chuyển từ góc sang $\tan$.
+- Khoảng cách tốt nhất $x=\sqrt{pq}$ là **trung bình nhân** hai độ cao tính từ mắt; $p$, $q$ phải tính từ mức mắt, không phải từ mặt đất.
+
+@vi_du:
+##VD
+Một bức tranh cao $3$ m được treo trên tường sao cho mép dưới cao hơn tầm mắt người xem $1$ m. Người xem phải đứng cách tường bao xa để góc nhìn bức tranh lớn nhất? Tính $\tan$ của góc nhìn lớn nhất.
+
+Bài giải:
+Gọi $x$ (m) là khoảng cách từ người xem đến tường, $x>0$. Mép dưới và mép trên tranh cao hơn tầm mắt lần lượt $1$ m và $4$ m.
+Gọi $\alpha$, $\beta$ là góc nâng của mép trên, mép dưới thì $\tan\alpha=\dfrac4x$, $\tan\beta=\dfrac1x$, góc nhìn $\varphi=\alpha-\beta\in\left(0;\dfrac{\pi}{2}\right)$.
+$\tan\varphi=\dfrac{\frac4x-\frac1x}{1+\frac4{x^2}}=\dfrac{3x}{x^2+4}=f(x)$.
+$f'(x)=\dfrac{3(x^2+4)-3x\cdot2x}{(x^2+4)^2}=\dfrac{3(4-x^2)}{(x^2+4)^2}$; $f'=0\Leftrightarrow x=2$ ($x>0$).
+$f'>0$ trên $(0;2)$ và $f'<0$ trên $(2;+\infty)$ nên $f$ lớn nhất tại $x=2$, $f(2)=\dfrac{6}{8}=\dfrac34$.
+Vì $\tan$ đồng biến trên $\left(0;\dfrac{\pi}{2}\right)$ nên $\varphi$ lớn nhất khi $x=2$.
+Vậy người xem đứng cách tường $2$ m, khi đó $\tan\varphi=\dfrac34$ (góc nhìn khoảng $36{,}9^\circ$).
+
+##VD
+Một biển quảng cáo gắn trên toà nhà có mép dưới cách mặt đất $5{,}6$ m và mép trên cách mặt đất $10{,}6$ m. Một người cao $1{,}6$ m (tính tới mắt) đứng trên mặt đất cách toà nhà $x$ mét. Tìm $x$ để người đó nhìn biển với góc lớn nhất và tính $\tan$ của góc nhìn lớn nhất.
+
+Bài giải:
+So với tầm mắt, mép dưới biển cao $5{,}6-1{,}6=4$ m và mép trên cao $10{,}6-1{,}6=9$ m.
+Gọi $\alpha$, $\beta$ là góc nâng của mép trên, mép dưới thì $\tan\alpha=\dfrac9x$, $\tan\beta=\dfrac4x$, góc nhìn $\varphi=\alpha-\beta\in\left(0;\dfrac{\pi}{2}\right)$ ($x>0$).
+$\tan\varphi=\dfrac{\frac9x-\frac4x}{1+\frac{36}{x^2}}=\dfrac{5x}{x^2+36}=f(x)$.
+$f'(x)=\dfrac{5(x^2+36)-5x\cdot2x}{(x^2+36)^2}=\dfrac{5(36-x^2)}{(x^2+36)^2}$; $f'(x)=0\Leftrightarrow x=6$ ($x>0$).
+$f'>0$ trên $(0;6)$ và $f'<0$ trên $(6;+\infty)$ nên $f$ lớn nhất tại $x=6$, $f(6)=\dfrac{30}{72}=\dfrac{5}{12}$.
+Vì $\tan$ đồng biến trên $\left(0;\dfrac{\pi}{2}\right)$ nên góc nhìn lớn nhất khi $x=6$.
+Vậy người đó đứng cách toà nhà $6$ m, khi đó $\tan\varphi=\dfrac{5}{12}$ (góc nhìn khoảng $22{,}6^\circ$).
+
+## GHI CHÚ CHO CEO
+- Không có dạng nào lệch tên hoặc mơ hồ.
+- Nguồn không có lỗi cần ghi; các số liệu đều tự chọn lại cho kết quả đẹp rồi tự giải và kiểm bằng số.
+- H7.2.4: ví dụ 2 dùng đồ thị bậc ba thiếu hệ số $c$, $d$ (dạng $y=ax^3+bx^2$) để hệ hai ẩn giải được bằng hai điểm; ví dụ 1 là parabol. Cả hai đều có hình.
+- H7.3.3: vật dài nhất qua góc là giá trị NHỎ NHẤT của $\ell(\theta)$, đã nêu trong lý thuyết và bẫy. Quy ước góc (trạm soát đã kiểm bằng toạ độ): $\theta$ đo với phương hành lang rộng $a$ thì $\ell=\dfrac{a}{\sin\theta}+\dfrac{b}{\cos\theta}$.
+- H7.3.4: mô tả dạng không nói cho phép Cô-si nên trạm soát đã đổi ví dụ 2 và ##PP sang giải bằng đạo hàm (bản soạn dùng Cô-si). Nếu muốn giữ Cô-si làm cách thứ hai thì CEO quyết.

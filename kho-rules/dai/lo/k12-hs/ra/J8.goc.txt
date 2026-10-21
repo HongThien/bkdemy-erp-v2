@@ -1,0 +1,404 @@
+=== N H6.2
+@ly_thuyet:
+##TC Phương trình tiếp tuyến của đồ thị
+- Cho đồ thị $(C)$ của $y=f(x)$ và điểm $M_0(x_0;y_0)\in(C)$ (gọi là **tiếp điểm**). Hệ số góc của tiếp tuyến tại $M_0$ là $k=f'(x_0)$.
+- Phương trình tiếp tuyến tại $M_0$: $y=f'(x_0)(x-x_0)+f(x_0)$, trong đó $y_0=f(x_0)$.
+- Hai đường thẳng $y=k_1x+b_1$ và $y=k_2x+b_2$ song song (phân biệt) khi $k_1=k_2$ và $b_1\ne b_2$; vuông góc khi $k_1\cdot k_2=-1$.
+- Đường thẳng $Ax+By+C=0$ ($B\ne0$) có hệ số góc $-\dfrac{A}{B}$.
+
+##PP Viết tiếp tuyến khi biết điều kiện về tiếp điểm hoặc hệ số góc
+Gọi tiếp điểm $M_0(x_0;y_0)$ với $y_0=f(x_0)$ và hệ số góc $k=f'(x_0)$.
+Dùng điều kiện đề cho để tìm $x_0$: cho hoành độ thì có ngay; cho tung độ thì giải $f(x_0)=y_0$; cho hệ số góc thì giải $f'(x_0)=k$.
+Tính $f(x_0)$ và $f'(x_0)$ cho từng giá trị $x_0$ tìm được rồi viết $y=f'(x_0)(x-x_0)+f(x_0)$.
+Thu gọn về dạng $y=kx+b$ và kiểm tra điều kiện phụ của đề (ví dụ loại tiếp tuyến trùng với đường thẳng đã cho).
+
+##CY
+- Mỗi giá trị $x_0$ thoả điều kiện cho đúng một tiếp tuyến; đề hỏi "có bao nhiêu tiếp tuyến" thì đếm các tiếp tuyến phân biệt.
+- $x_0$ phải thuộc tập xác định của hàm số; viết nhầm $f(x_0)$ thành $f'(x_0)$ là lỗi hay gặp.
+
+=== H6.2.1
+@ly_thuyet:
+##TC Các cách cho tiếp điểm
+- Cho hoành độ $x_0$: tính $y_0=f(x_0)$. Cho tung độ $y_0$: giải $f(x)=y_0$ để tìm $x_0$ (có thể có nhiều nghiệm, mỗi nghiệm là một tiếp điểm).
+- Giao điểm với trục $Ox$ có $y_0=0$; giao điểm với trục $Oy$ có $x_0=0$.
+- Đồ thị hàm bậc ba nhận **điểm uốn** làm tâm đối xứng; hoành độ điểm uốn là nghiệm của $y''=0$ (cũng là trung điểm hai hoành độ cực trị).
+
+##PP Viết tiếp tuyến tại một điểm
+Xác định tiếp điểm $(x_0;y_0)$ từ điều kiện đề cho.
+Tính $y'$ rồi $k=y'(x_0)$.
+Thay vào $y=k(x-x_0)+y_0$ và thu gọn.
+
+##CY
+- Cho tung độ thì phương trình $f(x)=y_0$ có thể cho nhiều tiếp điểm: viết đủ mọi tiếp tuyến.
+- Với hàm phân thức, loại nghiệm $x_0$ làm mẫu bằng $0$.
+
+@vi_du:
+##VD
+Cho hàm số $y=x^3-3x^2+2$ có đồ thị $(C)$. Viết phương trình tiếp tuyến của $(C)$:
+a) tại điểm có hoành độ $x_0=3$;
+b) tại điểm uốn của $(C)$.
+
+Bài giải:
+Ta có $y'=3x^2-6x$ và $y''=6x-6$.
+a) Với $x_0=3$: $y_0=27-27+2=2$ và $k=y'(3)=27-18=9$.
+Tiếp tuyến là $y=9(x-3)+2$, tức $y=9x-25$.
+b) $y''=0\Leftrightarrow x=1$ nên điểm uốn có $x_0=1$, $y_0=1-3+2=0$ và $k=y'(1)=3-6=-3$.
+Tiếp tuyến là $y=-3(x-1)+0$, tức $y=-3x+3$.
+Vậy hai tiếp tuyến lần lượt là $y=9x-25$ và $y=-3x+3$.
+
+##VD
+Cho hàm số $y=\dfrac{2x-1}{x+1}$ có đồ thị $(C)$. Viết phương trình tiếp tuyến của $(C)$:
+a) tại giao điểm của $(C)$ với trục $Ox$;
+b) tại điểm của $(C)$ có tung độ bằng $1$.
+
+Bài giải:
+Tập xác định $\mathbb{R}\setminus\{-1\}$ và $y'=\dfrac{2(x+1)-(2x-1)}{(x+1)^2}=\dfrac{3}{(x+1)^2}$.
+a) Giao điểm với $Ox$: $y=0\Leftrightarrow 2x-1=0\Leftrightarrow x_0=\dfrac{1}{2}$.
+Hệ số góc $k=y'\left(\dfrac{1}{2}\right)=\dfrac{3}{\left(\frac{3}{2}\right)^2}=\dfrac{4}{3}$.
+Tiếp tuyến là $y=\dfrac{4}{3}\left(x-\dfrac{1}{2}\right)$, tức $y=\dfrac{4}{3}x-\dfrac{2}{3}$.
+b) $y=1\Leftrightarrow 2x-1=x+1\Leftrightarrow x_0=2$ (thoả $x_0\ne-1$).
+Hệ số góc $k=y'(2)=\dfrac{3}{9}=\dfrac{1}{3}$.
+Tiếp tuyến là $y=\dfrac{1}{3}(x-2)+1$, tức $y=\dfrac{1}{3}x+\dfrac{1}{3}$.
+Vậy hai tiếp tuyến là $y=\dfrac{4}{3}x-\dfrac{2}{3}$ và $y=\dfrac{1}{3}x+\dfrac{1}{3}$.
+
+=== H6.2.2
+@ly_thuyet:
+##TC Hệ số góc của tiếp tuyến song song, vuông góc
+- Tiếp tuyến song song với $d:y=ax+b$ thì $k=a$; tiếp tuyến vuông góc với $d$ ($a\ne0$) thì $k=-\dfrac{1}{a}$.
+- Hoành độ tiếp điểm là nghiệm của $f'(x_0)=k$; hàm bậc ba có $f'$ bậc hai nên phương trình này có thể có $0$, $1$ hoặc $2$ nghiệm.
+- Hàm $y=\dfrac{ax+b}{cx+d}$ có $y'=\dfrac{ad-bc}{(cx+d)^2}$ luôn cùng dấu với $ad-bc$, nên $k$ phải cùng dấu với $ad-bc$ thì mới có tiếp tuyến.
+
+##PP Viết tiếp tuyến song song hoặc vuông góc với đường thẳng cho trước
+Tìm hệ số góc $k$ của đường thẳng cần tìm từ đường thẳng đã cho (đưa về dạng $y=ax+b$ nếu cần).
+Giải $f'(x_0)=k$ để tìm các hoành độ tiếp điểm $x_0$.
+Với mỗi $x_0$, tính $y_0=f(x_0)$ rồi viết $y=k(x-x_0)+y_0$.
+Với trường hợp song song, loại tiếp tuyến trùng với đường thẳng đã cho.
+
+##CY
+- Tiếp tuyến song song với $d$ có thể trùng với $d$: phải so sánh hệ số tự do và loại nếu trùng.
+- Đường thẳng dạng $Ax+By+C=0$ phải đưa về $y=ax+b$ trước khi lấy hệ số góc.
+
+@vi_du:
+##VD
+Cho hàm số $y=x^3+3x^2-2$ có đồ thị $(C)$. Viết phương trình tiếp tuyến của $(C)$:
+a) song song với đường thẳng $d:y=9x+5$;
+b) vuông góc với đường thẳng $\Delta:x+24y+3=0$.
+
+Bài giải:
+Ta có $y'=3x^2+6x$.
+a) Hệ số góc $k=9$: $3x^2+6x=9\Leftrightarrow x^2+2x-3=0\Leftrightarrow x=1$ hoặc $x=-3$.
+Với $x_0=1$: $y_0=1+3-2=2$, tiếp tuyến $y=9(x-1)+2=9x-7$.
+Với $x_0=-3$: $y_0=-27+27-2=-2$, tiếp tuyến $y=9(x+3)-2=9x+25$.
+Cả hai đều có hệ số tự do khác $5$ nên không trùng $d$ và đều nhận.
+b) $\Delta$ có dạng $y=-\dfrac{1}{24}x-\dfrac{1}{8}$ nên hệ số góc tiếp tuyến là $k=24$.
+$3x^2+6x=24\Leftrightarrow x^2+2x-8=0\Leftrightarrow x=2$ hoặc $x=-4$.
+Với $x_0=2$: $y_0=8+12-2=18$, tiếp tuyến $y=24(x-2)+18=24x-30$.
+Với $x_0=-4$: $y_0=-64+48-2=-18$, tiếp tuyến $y=24(x+4)-18=24x+78$.
+Vậy a) $y=9x-7$ và $y=9x+25$; b) $y=24x-30$ và $y=24x+78$.
+
+##VD
+Cho hàm số $y=\dfrac{x+2}{x-1}$ có đồ thị $(C)$. Viết phương trình tiếp tuyến của $(C)$ song song với đường thẳng $d:y=-3x+10$.
+
+Bài giải:
+Tập xác định $\mathbb{R}\setminus\{1\}$ và $y'=\dfrac{1\cdot(-1)-2\cdot1}{(x-1)^2}=-\dfrac{3}{(x-1)^2}$.
+Tiếp tuyến song song với $d$ nên có hệ số góc $k=-3$.
+$-\dfrac{3}{(x-1)^2}=-3\Leftrightarrow(x-1)^2=1\Leftrightarrow x=2$ hoặc $x=0$.
+Với $x_0=2$: $y_0=4$, tiếp tuyến $y=-3(x-2)+4=-3x+10$, trùng với $d$ nên loại.
+Với $x_0=0$: $y_0=-2$, tiếp tuyến $y=-3x-2$, khác $d$ nên nhận.
+Vậy có đúng một tiếp tuyến thoả đề là $y=-3x-2$.
+
+=== H6.2.3
+@ly_thuyet:
+##TC Tiếp tuyến của hàm nhất biến và hai tiệm cận
+- Hàm $y=\dfrac{ax+b}{cx+d}$ ($c\ne0$, $ad-bc\ne0$) có tiệm cận đứng $x=-\dfrac{d}{c}$, tiệm cận ngang $y=\dfrac{a}{c}$, giao điểm hai tiệm cận $I\left(-\dfrac{d}{c};\dfrac{a}{c}\right)$ là tâm đối xứng.
+- Tiếp tuyến tại $M(x_0;y_0)$ cắt tiệm cận đứng tại $A$ và tiệm cận ngang tại $B$ thì $M$ là trung điểm của $AB$.
+- Tam giác $IAB$ vuông tại $I$ và có diện tích không đổi, bằng $\dfrac{2|ad-bc|}{c^2}$, không phụ thuộc vị trí của $M$.
+
+##PP Tính toạ độ A, B rồi khai thác tính chất
+Gọi $M(a;f(a))$ ($a$ thuộc tập xác định) và viết tiếp tuyến tại $M$.
+Cho tiếp tuyến cắt tiệm cận đứng để có $A$, cắt tiệm cận ngang để có $B$.
+Tính $IA$, $IB$ (là các giá trị tuyệt đối của hiệu toạ độ) rồi kiểm tra trung điểm hoặc diện tích $\dfrac{1}{2}IA\cdot IB$.
+Tìm $M$ để $AB$ nhỏ nhất: dùng $AB^2=IA^2+IB^2$ rồi Cô-si, nhớ nêu điều kiện dấu bằng.
+
+##CY
+- Viết đúng tiệm cận trước khi tìm giao điểm; $A$ nằm trên đường $x=-\dfrac{d}{c}$, $B$ nằm trên đường $y=\dfrac{a}{c}$.
+- Khi tìm giá trị nhỏ nhất bằng Cô-si phải chỉ ra dấu bằng xảy ra tại các $a$ nào và suy ra toạ độ $M$ (thường có hai điểm).
+
+@vi_du:
+##VD
+Cho hàm số $y=\dfrac{2x+1}{x-1}$ có đồ thị $(C)$ và $M$ là điểm bất kì thuộc $(C)$. Tiếp tuyến của $(C)$ tại $M$ cắt tiệm cận đứng và tiệm cận ngang lần lượt tại $A$ và $B$. Chứng minh $M$ là trung điểm của $AB$ và diện tích tam giác $IAB$ ($I$ là giao điểm hai tiệm cận) không đổi.
+
+Bài giải:
+Tiệm cận đứng $x=1$, tiệm cận ngang $y=2$ nên $I(1;2)$. Ta có $y'=-\dfrac{3}{(x-1)^2}$.
+Gọi $M\left(a;\dfrac{2a+1}{a-1}\right)$ với $a\ne1$. Tiếp tuyến tại $M$: $y=-\dfrac{3}{(a-1)^2}(x-a)+\dfrac{2a+1}{a-1}$.
+Cho $x=1$: $y=\dfrac{3}{a-1}+\dfrac{2a+1}{a-1}=\dfrac{2a+4}{a-1}$, nên $A\left(1;\dfrac{2a+4}{a-1}\right)$.
+Cho $y=2$: $-\dfrac{3}{(a-1)^2}(x-a)=2-\dfrac{2a+1}{a-1}=-\dfrac{3}{a-1}$, suy ra $x-a=a-1$, tức $x=2a-1$, nên $B(2a-1;2)$.
+Trung điểm của $AB$ có hoành độ $\dfrac{1+2a-1}{2}=a$ và tung độ $\dfrac{1}{2}\left(\dfrac{2a+4}{a-1}+2\right)=\dfrac{4a+2}{2(a-1)}=\dfrac{2a+1}{a-1}$, trùng với $M$.
+Ta có $IA=\left|\dfrac{2a+4}{a-1}-2\right|=\dfrac{6}{|a-1|}$ và $IB=|2a-1-1|=2|a-1|$.
+Tam giác $IAB$ vuông tại $I$ nên $S=\dfrac{1}{2}IA\cdot IB=\dfrac{1}{2}\cdot\dfrac{6}{|a-1|}\cdot2|a-1|=6$.
+Vậy $M$ luôn là trung điểm của $AB$ và diện tích tam giác $IAB$ luôn bằng $6$.
+
+##VD
+Cho hàm số $y=\dfrac{2x-3}{x-2}$ có đồ thị $(C)$. Gọi $M$ là điểm thuộc $(C)$ sao cho tiếp tuyến của $(C)$ tại $M$ cắt tiệm cận đứng và tiệm cận ngang lần lượt tại $A$, $B$. Tìm toạ độ $M$ để đoạn $AB$ ngắn nhất.
+
+Bài giải:
+Tiệm cận đứng $x=2$, tiệm cận ngang $y=2$ nên $I(2;2)$. Ta có $y'=-\dfrac{1}{(x-2)^2}$.
+Gọi $M\left(a;\dfrac{2a-3}{a-2}\right)$ với $a\ne2$. Tiếp tuyến tại $M$: $y=-\dfrac{1}{(a-2)^2}(x-a)+\dfrac{2a-3}{a-2}$.
+Cho $x=2$: $y=\dfrac{1}{a-2}+\dfrac{2a-3}{a-2}=\dfrac{2a-2}{a-2}$, nên $A\left(2;\dfrac{2a-2}{a-2}\right)$ và $IA=\left|\dfrac{2a-2}{a-2}-2\right|=\dfrac{2}{|a-2|}$.
+Cho $y=2$: $-\dfrac{1}{(a-2)^2}(x-a)=2-\dfrac{2a-3}{a-2}=-\dfrac{1}{a-2}$, suy ra $x=2a-2$, nên $B(2a-2;2)$ và $IB=|2a-4|=2|a-2|$.
+Tam giác $IAB$ vuông tại $I$ nên $AB^2=IA^2+IB^2=\dfrac{4}{(a-2)^2}+4(a-2)^2\ge2\sqrt{16}=8$ (Cô-si).
+Dấu bằng xảy ra khi $(a-2)^4=1\Leftrightarrow a-2=\pm1\Leftrightarrow a=3$ hoặc $a=1$.
+Khi đó $AB$ nhỏ nhất bằng $2\sqrt{2}$, tại $a=3$: $M(3;3)$ và tại $a=1$: $M(1;1)$.
+Vậy có hai điểm $M(3;3)$ và $M(1;1)$ làm $AB$ ngắn nhất.
+
+=== N H6.3
+@ly_thuyet:
+##TC Điểm di động trên đồ thị
+- Điểm $M$ thuộc đồ thị $(C)$ của $y=f(x)$ thì $M(t;f(t))$ với $t$ thuộc tập xác định: mọi đại lượng cần tìm được viết theo **một** ẩn $t$.
+- Khoảng cách hai điểm: $AB=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}$; từ $M(x_0;y_0)$ đến đường thẳng $Ax+By+C=0$: $d=\dfrac{|Ax_0+By_0+C|}{\sqrt{A^2+B^2}}$.
+- Bất đẳng thức Cô-si: với $a\ge0$, $b\ge0$ thì $a+b\ge2\sqrt{ab}$, dấu bằng khi $a=b$. Nếu $ab$ là hằng số thì $a+b$ có giá trị nhỏ nhất.
+- Hàm $y=y_I+\dfrac{K}{x-x_I}$ nhận $I(x_I;y_I)$ làm tâm đối xứng; hai nhánh nằm ở hai phía của đường $x=x_I$.
+
+##PP Tìm điểm trên đồ thị làm một đại lượng nhỏ nhất
+Đặt toạ độ điểm theo tham số, viết dạng thuận lợi (với hàm phân thức tách $y=\text{hằng}+\dfrac{K}{x-x_I}$ và đặt $x=x_I+u$).
+Lập biểu thức cần tối ưu (nên dùng bình phương khoảng cách để bỏ căn).
+Tìm giá trị nhỏ nhất bằng Cô-si khi hai số hạng có tích không đổi, nếu không thì khảo sát hàm một biến.
+Chỉ ra dấu bằng xảy ra tại giá trị tham số nào rồi suy ra toạ độ điểm.
+
+##CY
+- Tham số phải thuộc tập xác định và đúng nhánh mà đề nói.
+- Cô-si chỉ dùng cho các số hạng không âm, và phải chứng tỏ dấu bằng xảy ra được thì mới kết luận giá trị nhỏ nhất.
+
+=== H6.3.1
+@ly_thuyet:
+##TC Khoảng cách từ điểm trên đồ thị
+- Hàm $y=ax+b+\dfrac{K}{x-x_I}$ có tiệm cận đứng $x=x_I$ và tiệm cận xiên $y=ax+b$ (khi $a=0$ là tiệm cận ngang).
+- Điểm $M(x_I+u;\,y)$ cách tiệm cận đứng một khoảng $|u|$.
+- Với hàm $y=y_I+\dfrac{K}{x-x_I}$: điểm $M\left(x_I+u;y_I+\dfrac{K}{u}\right)$ cách tiệm cận đứng $|u|$, cách tiệm cận ngang $\dfrac{|K|}{|u|}$, và tích hai khoảng cách này bằng $|K|$ (không đổi).
+
+##PP Tìm M để khoảng cách nhỏ nhất
+Đặt $M(x_I+u;\,f(x_I+u))$ với $u\ne0$.
+Lập $d^2$ (đến một điểm) hoặc $d$ (đến một đường thẳng) theo $u$.
+Biến đổi để xuất hiện hai số hạng có tích không đổi và dùng Cô-si; không được thì khảo sát bằng bảng biến thiên.
+Giải điều kiện dấu bằng, kết luận toạ độ $M$ và giá trị nhỏ nhất.
+
+##CY
+- Khi bỏ dấu giá trị tuyệt đối trong khoảng cách đến đường thẳng, xét cả hai trường hợp $u>0$ và $u<0$ (đối với $u<0$ biểu thức đổi dấu).
+- Dấu bằng của Cô-si thường xảy ra tại hai giá trị $u$ đối nhau nên có hai điểm $M$.
+
+@vi_du:
+##VD
+Cho hàm số $y=\dfrac{2x+2}{x-1}$ có đồ thị $(C)$ và $I$ là giao điểm hai tiệm cận.
+a) Tìm điểm $M\in(C)$ sao cho độ dài $IM$ nhỏ nhất.
+b) Tìm giá trị nhỏ nhất của tổng khoảng cách từ $M\in(C)$ đến hai đường tiệm cận.
+
+Bài giải:
+Ta có $y=2+\dfrac{4}{x-1}$ nên tiệm cận đứng $x=1$, tiệm cận ngang $y=2$ và $I(1;2)$.
+Gọi $M\left(1+u;\,2+\dfrac{4}{u}\right)$ với $u\ne0$.
+a) $IM^2=u^2+\dfrac{16}{u^2}\ge2\sqrt{16}=8$ (Cô-si). Dấu bằng khi $u^2=\dfrac{16}{u^2}\Leftrightarrow u^4=16\Leftrightarrow u=\pm2$.
+Với $u=2$: $M(3;4)$; với $u=-2$: $M(-1;0)$. Khi đó $IM$ nhỏ nhất bằng $2\sqrt{2}$.
+b) Khoảng cách đến tiệm cận đứng là $|u|$, đến tiệm cận ngang là $\dfrac{4}{|u|}$.
+Tổng là $|u|+\dfrac{4}{|u|}\ge2\sqrt{4}=4$, dấu bằng khi $|u|=2$, tức cũng tại $M(3;4)$ hoặc $M(-1;0)$.
+Vậy a) $M(3;4)$ hoặc $M(-1;0)$ với $IM_{\min}=2\sqrt{2}$; b) giá trị nhỏ nhất của tổng khoảng cách bằng $4$.
+
+##VD
+Cho hàm số $y=\dfrac{x^2-x+2}{x-1}$ có đồ thị $(C)$. Tìm điểm $M\in(C)$ sao cho khoảng cách từ $M$ đến đường thẳng $\Delta:x+y-2=0$ nhỏ nhất.
+
+Bài giải:
+Ta có $y=x+\dfrac{2}{x-1}$. Gọi $M\left(1+u;\,1+u+\dfrac{2}{u}\right)$ với $u\ne0$.
+Khoảng cách $d(M,\Delta)=\dfrac{\left|(1+u)+\left(1+u+\frac{2}{u}\right)-2\right|}{\sqrt{2}}=\dfrac{\left|2u+\frac{2}{u}\right|}{\sqrt{2}}$.
+Hai số $2u$ và $\dfrac{2}{u}$ cùng dấu nên $\left|2u+\dfrac{2}{u}\right|=2|u|+\dfrac{2}{|u|}\ge2\sqrt{4}=4$ (Cô-si).
+Do đó $d\ge\dfrac{4}{\sqrt{2}}=2\sqrt{2}$, dấu bằng khi $2|u|=\dfrac{2}{|u|}\Leftrightarrow|u|=1$.
+Với $u=1$: $M(2;4)$; với $u=-1$: $M(0;-2)$. Hai điểm này đều thuộc $(C)$.
+Vậy khoảng cách nhỏ nhất bằng $2\sqrt{2}$, đạt tại $M(2;4)$ hoặc $M(0;-2)$.
+
+=== H6.3.2
+@ly_thuyet:
+##TC Hai điểm trên hai nhánh và cặp điểm đối xứng qua tâm
+- Hàm $y=y_I+\dfrac{K}{x-x_I}$ có tâm đối xứng $I(x_I;y_I)$: mọi điểm $A(x_I+u;y_I+\dfrac{K}{u})$ của đồ thị có điểm đối xứng qua $I$ là $B(x_I-u;y_I-\dfrac{K}{u})$ cũng thuộc đồ thị.
+- $A$, $B$ đối xứng qua $I$ khi và chỉ khi $I$ là trung điểm $AB$: $x_A+x_B=2x_I$ và $y_A+y_B=2y_I$.
+- Hai điểm $A$, $B$ thuộc hai nhánh khi $x_A$ và $x_B$ nằm ở hai phía của $x_I$ (với $K>0$: $A$ ở nhánh phải, $B$ ở nhánh trái).
+
+##PP Tham số hoá hai điểm
+Viết $y=y_I+\dfrac{K}{x-x_I}$ và xác định tâm $I$.
+Cặp đối xứng qua $I$: chọn $A(x_I+u;y_I+\dfrac{K}{u})$, suy ra $B(x_I-u;y_I-\dfrac{K}{u})$, $u\ne0$; cặp này ứng với $\pm u$.
+Hai điểm bất kì ở hai nhánh: $A(x_I+u;y_I+\dfrac{K}{u})$, $B(x_I-v;y_I-\dfrac{K}{v})$ với $u>0$, $v>0$.
+Lập $AB^2$ theo $u$ (hoặc $u,v$), đặt điều kiện đề cho hoặc tìm giá trị nhỏ nhất bằng Cô-si.
+
+##CY
+- Mỗi cặp đối xứng ứng với hai giá trị $\pm u$ nhưng chỉ là một cặp điểm (đổi vai $A$, $B$): đừng đếm hai lần.
+- Với hai điểm ở hai nhánh, nhớ $u>0$, $v>0$ để dùng được Cô-si; $AB$ nhỏ nhất xảy ra khi hai điểm đối xứng nhau qua $I$.
+
+@vi_du:
+##VD
+Cho hàm số $y=\dfrac{x+3}{x-1}$ có đồ thị $(C)$. Tìm hai điểm $A$, $B$ thuộc $(C)$ và đối xứng nhau qua tâm đối xứng $I$ của $(C)$ sao cho $AB=2\sqrt{10}$.
+
+Bài giải:
+Ta có $y=1+\dfrac{4}{x-1}$ nên tâm đối xứng $I(1;1)$.
+Gọi $A\left(1+u;\,1+\dfrac{4}{u}\right)$ với $u\ne0$. Điểm đối xứng với $A$ qua $I$ là $B\left(1-u;\,1-\dfrac{4}{u}\right)$, cũng thuộc $(C)$.
+$AB^2=(2u)^2+\left(\dfrac{8}{u}\right)^2=4u^2+\dfrac{64}{u^2}$.
+$AB=2\sqrt{10}\Leftrightarrow4u^2+\dfrac{64}{u^2}=40\Leftrightarrow u^4-10u^2+16=0\Leftrightarrow u^2=2$ hoặc $u^2=8$.
+Với $u^2=2$, chọn $u=\sqrt{2}$: $A(1+\sqrt{2};1+2\sqrt{2})$, $B(1-\sqrt{2};1-2\sqrt{2})$.
+Với $u^2=8$, chọn $u=2\sqrt{2}$: $A(1+2\sqrt{2};1+\sqrt{2})$, $B(1-2\sqrt{2};1-\sqrt{2})$.
+Vậy có hai cặp điểm thoả đề là các cặp $A$, $B$ nêu trên.
+
+##VD
+Cho hàm số $y=\dfrac{2x-1}{x-1}$ có đồ thị $(C)$. Gọi $A$, $B$ là hai điểm thuộc hai nhánh khác nhau của $(C)$. Tìm độ dài nhỏ nhất của đoạn $AB$ và toạ độ $A$, $B$ khi đó.
+
+Bài giải:
+Ta có $y=2+\dfrac{1}{x-1}$ nên tiệm cận đứng $x=1$. Gọi $A\left(1+u;\,2+\dfrac{1}{u}\right)$ (nhánh phải) và $B\left(1-v;\,2-\dfrac{1}{v}\right)$ (nhánh trái) với $u>0$, $v>0$.
+$AB^2=(u+v)^2+\left(\dfrac{1}{u}+\dfrac{1}{v}\right)^2=(u+v)^2+\dfrac{(u+v)^2}{(uv)^2}=(u+v)^2\left(1+\dfrac{1}{(uv)^2}\right)$.
+Vì $(u+v)^2\ge4uv$ nên $AB^2\ge4uv\left(1+\dfrac{1}{(uv)^2}\right)=4uv+\dfrac{4}{uv}\ge2\sqrt{16}=8$ (Cô-si).
+Dấu bằng xảy ra khi $u=v$ và $uv=1$, tức $u=v=1$.
+Khi đó $A(2;3)$, $B(0;1)$ (đối xứng nhau qua $I(1;2)$) và $AB=2\sqrt{2}$.
+Vậy độ dài nhỏ nhất của $AB$ bằng $2\sqrt{2}$, đạt tại $A(2;3)$ và $B(0;1)$.
+
+=== H6.3.3
+@ly_thuyet:
+##TC Điều kiện để điểm có toạ độ nguyên
+- Chia đa thức: $y=\dfrac{ax^2+bx+c}{x+d}=ax+b'+\dfrac{r}{x+d}$ (bậc hai trên bậc nhất), hay $y=a+\dfrac{r}{x+d}$ (bậc nhất trên bậc nhất), với $a,b',r,d$ nguyên.
+- Khi đó $x$ nguyên thì $y$ nguyên khi và chỉ khi $x+d$ là một **ước nguyên** của $r$.
+- Số ước nguyên của $r$ (kể cả ước âm) cho biết có tối đa bao nhiêu điểm.
+
+##PP Tìm điểm nguyên trên đồ thị
+Chia tử cho mẫu để viết $y$ dưới dạng đa thức cộng $\dfrac{r}{cx+d}$.
+Điều kiện $y$ nguyên với $x$ nguyên đưa về $cx+d$ là ước của $r$; liệt kê mọi ước nguyên (dương và âm).
+Giải $cx+d=$ từng ước để có $x$, giữ các $x$ nguyên.
+Tính $y$ tương ứng và kiểm tra $y$ nguyên; ghi toạ độ các điểm.
+
+##CY
+- Phải lấy cả ước âm, nếu không sẽ thiếu nửa số điểm.
+- Khi hệ số $c\ne1$ (mẫu $cx+d$), điều kiện "ước của $r$" chỉ là điều kiện cần: sau khi tìm $x$ nguyên phải thay lại kiểm tra $y$ có nguyên không.
+
+@vi_du:
+##VD
+Tìm các điểm có toạ độ nguyên thuộc đồ thị hàm số $y=\dfrac{2x+7}{x-1}$.
+
+Bài giải:
+Ta có $y=\dfrac{2(x-1)+9}{x-1}=2+\dfrac{9}{x-1}$.
+Với $x$ nguyên, $y$ nguyên khi và chỉ khi $x-1$ là ước nguyên của $9$, tức $x-1\in\{-9;-3;-1;1;3;9\}$.
+Lập bảng:
+$x-1=-9$: $x=-8$, $y=1$; $x-1=-3$: $x=-2$, $y=-1$; $x-1=-1$: $x=0$, $y=-7$;
+$x-1=1$: $x=2$, $y=11$; $x-1=3$: $x=4$, $y=5$; $x-1=9$: $x=10$, $y=3$.
+Vậy có $6$ điểm: $(-8;1)$, $(-2;-1)$, $(0;-7)$, $(2;11)$, $(4;5)$, $(10;3)$.
+
+##VD
+Tìm các điểm có toạ độ nguyên thuộc đồ thị hàm số $y=\dfrac{3x+1}{2x-1}$.
+
+Bài giải:
+Điều kiện $x\ne\dfrac{1}{2}$; với $x$ nguyên thì $2x-1$ là số lẻ khác $0$.
+Nếu $y$ nguyên thì $2x-1$ chia hết $3x+1$, nên chia hết $2(3x+1)-3(2x-1)=5$.
+Do đó $2x-1\in\{-5;-1;1;5\}$, suy ra $x\in\{-2;0;1;3\}$.
+Thử lại: $x=-2$: $y=\dfrac{-5}{-5}=1$; $x=0$: $y=\dfrac{1}{-1}=-1$; $x=1$: $y=\dfrac{4}{1}=4$; $x=3$: $y=\dfrac{10}{5}=2$. Cả bốn giá trị $y$ đều nguyên.
+Vậy có $4$ điểm: $(-2;1)$, $(0;-1)$, $(1;4)$, $(3;2)$.
+
+=== N H6.4
+@ly_thuyet:
+##TC Đếm nghiệm bằng đồ thị của f
+- Số nghiệm của $f(t)=m$ bằng số giao điểm của đồ thị $y=f(t)$ với đường thẳng $y=m$ (đường tiếp xúc tại cực trị tính là một nghiệm).
+- Đồ thị $y=|f(x)|$: giữ nguyên phần đồ thị $y=f(x)$ nằm trên hoặc ở trên trục $Ox$, lấy đối xứng qua $Ox$ phần nằm dưới $Ox$.
+- Đồ thị $y=f(|x|)$: giữ phần ứng với $x\ge0$ rồi lấy đối xứng phần đó qua trục $Oy$ (hàm số chẵn).
+- Với $t=u(x)$: giá trị $t$ khác nhau cho các nghiệm $x$ khác nhau, và mỗi $t$ chỉ nhận khi nằm trong tập giá trị của $u$.
+
+##PP Đếm nghiệm phương trình hợp
+Đặt $t=u(x)$ (hoặc $t=f(x)$ với $f(f(x))$) và tìm tập giá trị của $t$.
+Đọc từ đồ thị $f$: các nghiệm $t$ của phương trình theo $t$, kể cả vị trí so với miền giá trị của $t$.
+Với mỗi $t$ hợp lệ, đếm số nghiệm $x$ của $u(x)=t$ (bằng đồ thị hoặc bảng biến thiên của $u$).
+Cộng số nghiệm $x$ của mọi $t$ (không trùng nhau).
+
+##CY
+- Không đếm nhầm: mỗi nghiệm $t$ có thể cho $0$, $1$, $2$, ... nghiệm $x$ tuỳ miền giá trị của $u$.
+- Khi đọc đồ thị, chú ý các điểm cực trị: đường $y=m$ đi qua cực trị làm thay đổi số giao điểm.
+
+=== H6.4.1
+@ly_thuyet:
+##TC Phương trình f(u(x)) = m
+- Với $f(u(x))=m$: đặt $t=u(x)$, giải $f(t)=m$ bằng đồ thị, rồi giải $u(x)=t$.
+- Một số $u(x)$ thường gặp: $x^2$ (có $t\ge0$, $t>0$ cho $2$ nghiệm $x$, $t=0$ cho $1$ nghiệm); $x^2-2x$ (có $t\ge-1$); $|x|$ (có $t\ge0$).
+- Với $f(f(x))=m$: đặt $t=f(x)$, giải $f(t)=m$, rồi với từng $t$ giải $f(x)=t$ bằng chính đồ thị $f$.
+
+##PP Đếm nghiệm f(u(x)) = m và f(f(x)) = m
+Đặt $t=u(x)$ và tìm tập giá trị của $t$ (khảo sát $u$).
+Đọc đồ thị $f$ để tìm số nghiệm và vị trí các nghiệm $t$ của $f(t)=m$.
+Loại các $t$ ngoài tập giá trị, với mỗi $t$ còn lại đếm số nghiệm $x$ của $u(x)=t$.
+Cộng lại để có số nghiệm của phương trình.
+
+##CY
+- Với $t=x^2-2x=(x-1)^2-1$: $t=-1$ cho đúng một nghiệm $x=1$, còn $t>-1$ cho hai nghiệm.
+- Với $f(f(x))=m$: nghiệm $t$ nằm ngoài khoảng giữa cực tiểu và cực đại của $f$ chỉ cho $1$ nghiệm $x$; nghiệm $t$ ở giá trị cực trị cho $2$ nghiệm (một kép).
+
+@vi_du:
+##VD
+Cho hàm số bậc ba $y=f(x)$ có đồ thị như hình vẽ. Hỏi phương trình $f(x^2-2x)=-1$ có bao nhiêu nghiệm thực?
+[[HINH {"loai":"dothi","x":[-3,3],"y":[-4,4],"f":[{"e":"x^3-3*x","ten":"y=f(x)"}],"diem":[{"x":-1,"y":2},{"x":1,"y":-2}]}]]
+
+Bài giải:
+Đặt $t=x^2-2x=(x-1)^2-1$ nên $t\ge-1$; $t=-1$ ứng với đúng $1$ giá trị $x=1$, còn mỗi $t>-1$ ứng với đúng $2$ giá trị $x$.
+Phương trình đã cho trở thành $f(t)=-1$. Đường thẳng $y=-1$ cắt đồ thị $y=f(t)$ tại $3$ điểm có hoành độ $t_1<t_2<t_3$.
+Đọc đồ thị: $f(-2)=-2<-1<f(-1)=2$ nên $-2<t_1<-1$; $f(1)=-2<-1<f(0)=0$ nên $0<t_2<1$; $f(1)=-2<-1<f(2)=2$ nên $1<t_3<2$.
+Vì $t_1<-1$ nên $x^2-2x=t_1$ vô nghiệm; còn $t_2>-1$ và $t_3>-1$ nên mỗi giá trị cho $2$ nghiệm $x$.
+Vậy phương trình có $0+2+2=4$ nghiệm thực.
+
+##VD
+Cho hàm số bậc ba $y=f(x)$ có đồ thị như hình vẽ. Hỏi phương trình $f(f(x))=0$ có bao nhiêu nghiệm thực?
+[[HINH {"loai":"dothi","x":[-2,4],"y":[-5,3],"f":[{"e":"x^3-3*x^2","ten":"y=f(x)"}],"diem":[{"x":0,"y":0},{"x":2,"y":-4},{"x":3,"y":0}]}]]
+
+Bài giải:
+Đặt $t=f(x)$, phương trình trở thành $f(t)=0$. Từ đồ thị, đường $y=0$ tiếp xúc với đồ thị tại điểm cực đại $(0;0)$ và cắt đồ thị tại $(3;0)$, nên $f(t)=0\Leftrightarrow t=0$ hoặc $t=3$.
+Với $t=0$: $f(x)=0$ có $2$ nghiệm là $x=0$ (tiếp xúc) và $x=3$ (cắt).
+Với $t=3$: đường $y=3$ nằm phía trên điểm cực đại $(0;0)$ nên chỉ cắt đồ thị tại $1$ điểm, tức $f(x)=3$ có $1$ nghiệm.
+Hai giá trị $t$ khác nhau cho các nghiệm $x$ khác nhau, nên phương trình có $2+1=3$ nghiệm.
+Vậy phương trình $f(f(x))=0$ có $3$ nghiệm thực.
+
+=== H6.4.2
+@ly_thuyet:
+##TC Đồ thị |f(x)| và f(|x|)
+- $|f(x)|=\begin{cases}f(x)&\text{khi }f(x)\ge0\\-f(x)&\text{khi }f(x)<0\end{cases}$; đồ thị $y=|f(x)|$ nằm hoàn toàn phía trên hoặc trên $Ox$.
+- $|f(x)|=m$ với $m>0$ tương đương $f(x)=m$ hoặc $f(x)=-m$; với $m<0$ vô nghiệm; với $m=0$ chính là $f(x)=0$.
+- $f(|x|)=m$: các nghiệm $t$ dương của $f(t)=m$ mỗi nghiệm cho $2$ nghiệm $x=\pm t$; nghiệm $t=0$ cho $1$ nghiệm; nghiệm $t$ âm không cho nghiệm $x$.
+
+##PP Đếm nghiệm với giá trị tuyệt đối
+Vẽ (hoặc hình dung) đồ thị $y=|f(x)|$ hay $y=f(|x|)$ từ đồ thị $y=f(x)$ theo quy tắc lấy đối xứng.
+Xác định các điểm cực trị mới (giữ nguyên toạ độ, và các điểm trên trục).
+Cho đường thẳng $y=m$ chạy từ dưới lên, lập bảng số giao điểm theo từng khoảng của $m$.
+Lọc các giá trị $m$ thoả đề (đúng số nghiệm, giá trị nguyên, ...).
+
+##CY
+- Các điểm cực tiểu ở phía dưới $Ox$ khi lấy đối xứng trở thành cực đại; giá trị $m$ tại các điểm này làm số giao điểm thay đổi.
+- Với $f(|x|)$, đồ thị luôn đối xứng qua $Oy$ nên số nghiệm khác $0$ luôn chẵn.
+
+@vi_du:
+##VD
+Cho hàm số bậc ba $y=f(x)$ có đồ thị như hình vẽ.
+a) Hỏi phương trình $|f(x)|=1$ có bao nhiêu nghiệm?
+b) Tìm $m$ để phương trình $|f(x)|=m$ có đúng $4$ nghiệm phân biệt.
+[[HINH {"loai":"dothi","x":[-2,4],"y":[-4,4],"f":[{"e":"x^3-3*x^2+2","ten":"y=f(x)"}],"diem":[{"x":0,"y":2},{"x":2,"y":-2}]}]]
+
+Bài giải:
+Từ đồ thị: hàm số đạt cực đại tại $(0;2)$ và cực tiểu tại $(2;-2)$.
+a) $|f(x)|=1\Leftrightarrow f(x)=1$ hoặc $f(x)=-1$. Vì $-2<-1<1<2$ nên mỗi đường $y=1$ và $y=-1$ cắt đồ thị tại $3$ điểm, và hai tập nghiệm không trùng nhau. Vậy phương trình có $6$ nghiệm.
+b) Với $m<0$ phương trình vô nghiệm; với $m\ge0$ ta có $f(x)=m$ hoặc $f(x)=-m$.
+$m=0$: $f(x)=0$ có $3$ nghiệm. $0<m<2$: mỗi phương trình $f(x)=\pm m$ có $3$ nghiệm nên có $6$ nghiệm.
+$m=2$: $f(x)=2$ có $2$ nghiệm ($x=0$ tiếp xúc và $x=3$) và $f(x)=-2$ có $2$ nghiệm ($x=2$ tiếp xúc và $x=-1$), tổng $4$ nghiệm.
+$m>2$: $f(x)=m$ có $1$ nghiệm và $f(x)=-m$ có $1$ nghiệm, tổng $2$ nghiệm.
+Vậy a) có $6$ nghiệm; b) $m=2$.
+
+##VD
+Cho hàm số bậc ba $y=f(x)$ có đồ thị như hình vẽ. Có bao nhiêu giá trị nguyên của $m$ để phương trình $f(|x|)=m$ có đúng $6$ nghiệm phân biệt?
+[[HINH {"loai":"dothi","x":[-1,5],"y":[-4,6],"f":[{"e":"x^3-6*x^2+9*x-2","ten":"y=f(x)"}],"diem":[{"x":1,"y":2},{"x":3,"y":-2},{"x":0,"y":-2}]}]]
+
+Bài giải:
+Từ đồ thị: hàm số cắt $Oy$ tại $(0;-2)$, đạt cực đại tại $(1;2)$ và cực tiểu tại $(3;-2)$.
+Đặt $t=|x|\ge0$. Mỗi nghiệm $t>0$ của $f(t)=m$ cho $2$ nghiệm $x=\pm t$, nghiệm $t=0$ cho $1$ nghiệm, nghiệm $t<0$ bị loại.
+Phương trình có $6$ nghiệm $x$ khi và chỉ khi $f(t)=m$ có đúng $3$ nghiệm $t>0$.
+Trên $[0;+\infty)$ đồ thị đi từ $(0;-2)$ lên $(1;2)$ rồi xuống $(3;-2)$ rồi lên. Đường $y=m$ cắt phần này tại đúng $3$ điểm khi và chỉ khi $-2<m<2$.
+(Kiểm tra: $m=-2$ cho $t=0$ và $t=3$, được $3$ nghiệm $x$; $m=2$ cho $t=1$ và $t=4$, được $4$ nghiệm $x$.)
+Các giá trị nguyên $m\in\{-1;0;1\}$.
+Vậy có $3$ giá trị nguyên của $m$.
+
+## GHI CHÚ CHO CEO
+- H6.2.1: mô tả có "tại điểm uốn": phần lý thuyết nêu thêm $y''=0$ (hoành độ điểm uốn) vì ví dụ hàm bậc ba cần; nếu muốn bám sát chương trình chỉ dùng "trung điểm hai cực trị" thì sửa một dòng.
+- H6.3.1: ví dụ 2 dùng đường thẳng $\Delta:x+y-2=0$ (không phải tiệm cận), số liệu chọn để dấu bằng Cô-si đẹp.
+- H6.3.3: lý thuyết ghi rõ trường hợp mẫu có hệ số $c\ne1$ (ví dụ 2 là $\dfrac{3x+1}{2x-1}$), điều kiện ước chỉ là điều kiện cần.
+- H6.4.x: đề chỉ nói "như hình", hình vẽ từ công thức bậc ba cụ thể (không viết công thức trong đề); ví dụ H6.4.1 dùng hai hàm khác nhau, H6.4.2 hai hàm khác nhau.
+- H6.4.1 ví dụ 2 (f(f(x))=0) và H6.4.2 chưa có ví dụ bài toán tham số m với hợp f(f(x))=m; có thể bổ sung nếu CEO muốn khó hơn.

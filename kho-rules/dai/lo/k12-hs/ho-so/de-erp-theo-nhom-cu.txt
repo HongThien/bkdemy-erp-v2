@@ -1,0 +1,29 @@
+T112010101 Xét tính đơn điệu của hàm số khi biết bảng biến thiên hoặc đồ thị hàm số | giữa 151 ( 103 đề ) | khác 69
+T112010102 Xét tính đơn điệu của khi biết hàm số | giữa 141 ( 85 đề ) | khác 64
+T112010104 Xét tính đơn điệu dựa của hàm phức tạp khi biết đồ thị hàm số hoặc bảng biến thiên của hàm f' | giữa 41 ( 36 đề ) | khác 0
+T112010201 Tìm cực trị của hàm số cho trước | giữa 97 ( 75 đề ) | khác 32
+T112010202 Tìm cực trị qua bảng biến thiên hoặc đồ thị hàm số | giữa 156 ( 100 đề ) | khác 63
+T112010301 Tìm tiệm cận ngang của hàm số | giữa 50 ( 46 đề ) | khác 26
+T112010303 Tìm tiệm cận đứng của hàm số | giữa 41 ( 41 đề ) | khác 20
+T112010305 Tìm tiệm cận xiên của hàm số | giữa 82 ( 72 đề ) | khác 27
+T112010306 Tìm tiệm cận xiên của hàm số khi biết đồ thị hoặc bảng biến thiên | giữa 5 ( 5 đề ) | khác 4
+T112010308 Tìm tiệm cận bằng định nghĩa | giữa 10 ( 10 đề ) | khác 0
+T112010401 Tìm GTLN - GTNN của hàm số trên khoảng cho trước khi biết đồ thị hoặc bảng biến thiên | giữa 116 ( 93 đề ) | khác 25
+T112010402 Tìm GTLN - GTNN trên khoảng cho trước khi biết hàm số | giữa 153 ( 102 đề ) | khác 66
+T112010403 Ứng dụng GTLN - GTNN | giữa 3 ( 3 đề ) | khác 1
+T112010503 Bài toán liên quan đến hệ số hàm bậc 3 | giữa 20 ( 20 đề ) | khác 6
+T112010504 Bài toán liên quan đến đồ thị hàm số bậc 3 | giữa 70 ( 59 đề ) | khác 13
+T112010505 Bài toán liên quan đến cực trị hàm bậc 3 | giữa 27 ( 23 đề ) | khác 0
+T112010506 Bài toán liên quan đến các hệ số của hàm bậc nhất trên bậc nhất | giữa 4 ( 4 đề ) | khác 3
+T112010507 Bài toán liên quan đến đồ thị hàm số bậc nhất trên bậc nhất | giữa 46 ( 43 đề ) | khác 13
+T112010509 Bài toán liên quan hệ số của hàm bậc hai trên bậc nhất | giữa 2 ( 2 đề ) | khác 2
+T112010510 Bài toán liên quan đến đồ thị hàm bậc hai trên bậc nhất | giữa 52 ( 36 đề ) | khác 19
+T112010601 Các bài toán có sẵn mô hình : diện tích , thể tích , doanh thu, lợi nhuận, khỏang cách (đang phân lại — lô đầu) | giữa 197 ( 107 đề ) | khác 162
+T112010602 Các bài toán thực tế có sẵn biểu thức (đang phân lại — lô đầu) | giữa 198 ( 99 đề ) | khác 69
+T112010603 Tối ưu khi hàm số đã cho sẵn | giữa 7 ( 7 đề ) | khác 8
+T112010604 Tối ưu phải lập hàm từ hình học | giữa 10 ( 9 đề ) | khác 1
+T112010605 Tối ưu phải lập hàm từ kinh tế | giữa 6 ( 6 đề ) | khác 11
+T112010606 Tối ưu quãng đường – thời gian | giữa 2 ( 2 đề ) | khác 2
+T112010607 Chuyển động: quãng đường – vận tốc – gia tốc | giữa 6 ( 5 đề ) | khác 0
+T112010608 Tốc độ thay đổi của một đại lượng | giữa 4 ( 4 đề ) | khác 2
+T112010610 Tiệm cận và giới hạn dài hạn trong mô hình | giữa 1 ( 1 đề ) | khác 0

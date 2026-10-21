@@ -1,0 +1,561 @@
+=== N H2.4
+@ly_thuyet:
+##TC Điều kiện có cực trị theo từng loại hàm
+- Hàm bậc ba $y=ax^3+bx^2+cx+d$ ($a\ne0$): $y'=3ax^2+2bx+c$; có hai cực trị ⇔ $y'=0$ có hai nghiệm phân biệt ⇔ $\Delta'=b^2-3ac>0$; không có cực trị ⇔ $\Delta'\le0$.
+- Hàm trùng phương $y=ax^4+bx^2+c$ ($a\ne0$): $y'=2x(2ax^2+b)$; có ba cực trị ⇔ $ab<0$; chỉ có một cực trị (tại $x=0$) ⇔ $ab\ge0$.
+- Hàm phân thức $y=\dfrac{u}{v}$ (tử bậc hai, mẫu bậc nhất): $y'=\dfrac{g(x)}{v^2}$ với $g$ bậc hai; có cực đại và cực tiểu ⇔ $g(x)=0$ có hai nghiệm phân biệt và đều khác nghiệm của mẫu.
+
+##TC Định lí Viète cho hai điểm cực trị
+- $x_1,x_2$ là hai nghiệm của $y'=0$ ($y'=Ax^2+Bx+C$) thì $S=x_1+x_2=-\dfrac{B}{A}$, $P=x_1x_2=\dfrac{C}{A}$.
+- $x_1^2+x_2^2=S^2-2P$; $(x_1-x_2)^2=S^2-4P$; $x_1^3+x_2^3=S^3-3SP$.
+
+##PP Tìm tham số từ điều kiện của cực trị
+Tìm tập xác định, tính $y'$ và nêu điều kiện để $y'=0$ có nghiệm đúng như đề yêu cầu (hệ số cao nhất khác $0$, $\Delta'$, nghiệm khác nghiệm của mẫu).
+Gọi $x_1,x_2$ là các điểm cực trị, viết $S$ và $P$ theo $m$ rồi đưa hệ thức của đề về $S$, $P$.
+Cần toạ độ điểm cực trị thì thay vào $y$ (hoặc dùng phép chia như nhóm kế tiếp), rồi giải phương trình hay bất phương trình theo $m$.
+Đối chiếu với điều kiện có cực trị, loại giá trị không thoả; khi cần thử lại bằng bảng xét dấu $y'$.
+
+##CY
+- Hệ số của $x^3$ (cũng là hệ số của $x^2$ trong $y'$) chứa $m$: xét riêng trường hợp hệ số này bằng $0$ trước khi dùng $\Delta'$.
+- $y'=0$ có nghiệm kép thì $y'$ không đổi dấu, hàm số không có cực trị.
+- Giải xong phải đối chiếu với điều kiện có hai cực trị, tránh nhận giá trị làm $\Delta'\le0$.
+
+=== H2.4.1
+@ly_thuyet:
+##TC Hàm bậc ba có hoặc không có hai cực trị
+- Với $y=ax^3+bx^2+cx+d$: có hai cực trị ⇔ $\begin{cases} a\ne0 \\ \Delta'=b^2-3ac>0 \end{cases}$
+- Khi $a=0$ hàm thành bậc hai (nếu $b\ne0$) có đúng một cực trị, hoặc bậc nhất (nếu $b=0$) không có cực trị.
+- "Có cực đại và cực tiểu" cùng nghĩa với "có hai điểm cực trị".
+
+##PP Biện luận số cực trị của hàm bậc ba chứa tham số
+Tính $y'$ và xác định hệ số $a$ của $x^3$.
+Xét riêng giá trị $m$ làm $a=0$: hàm còn bậc hai hay bậc nhất, có mấy cực trị.
+Với $a\ne0$ lập $\Delta'$ và giải: hai cực trị ⇔ $\Delta'>0$, không cực trị ⇔ $\Delta'\le0$.
+Hợp các trường hợp, kết luận theo yêu cầu của đề.
+
+##CY
+- "Không có cực trị" gồm cả $\Delta'=0$, vì nghiệm kép làm $y'$ không đổi dấu.
+- Trường hợp $a=0$ cho hàm bậc hai vẫn có một cực trị, không được gộp vào "không có cực trị".
+- Đề yêu cầu "có hai cực trị" thì phải loại $m$ làm $a=0$ dù $\Delta'>0$.
+
+@vi_du:
+##VD
+Tìm $m$ để hàm số $y=x^3-3x^2+mx-1$ có hai điểm cực trị.
+
+Bài giải:
+Tập xác định $\mathbb{R}$, $y'=3x^2-6x+m$.
+Hệ số của $x^2$ trong $y'$ bằng $3\ne0$ nên hàm số có hai cực trị khi và chỉ khi $y'=0$ có hai nghiệm phân biệt.
+Điều kiện: $\Delta'=9-3m>0$, tức $m<3$.
+Vậy $m<3$.
+
+##VD
+Cho hàm số $y=(m-2)x^3+3x^2+mx-5$.
+a) Tìm $m$ để hàm số có cực đại và cực tiểu.
+b) Tìm $m$ để hàm số không có cực trị.
+
+Bài giải:
+Ta có $y'=3(m-2)x^2+6x+m$.
+Nếu $m=2$ thì $y'=6x+2$ đổi dấu một lần, hàm số có đúng một cực trị (hàm bậc hai $y=3x^2+2x-5$).
+Nếu $m\ne2$ thì $\Delta'=9-3m(m-2)=-3(m^2-2m-3)=-3(m+1)(m-3)$.
+a) Có cực đại và cực tiểu ⇔ $m\ne2$ và $\Delta'>0$ ⇔ $-1<m<3$ và $m\ne2$.
+b) Không có cực trị ⇔ $m\ne2$ và $\Delta'\le0$ ⇔ $m\le-1$ hoặc $m\ge3$ (giá trị $m=2$ bị loại vì khi đó hàm có một cực trị).
+Vậy a) $m\in(-1;2)\cup(2;3)$; b) $m\in(-\infty;-1]\cup[3;+\infty)$.
+
+=== H2.4.2
+@ly_thuyet:
+##TC Điều kiện để hàm số đạt cực trị tại $x_0$
+- Điều kiện cần: nếu hàm số có đạo hàm và đạt cực trị tại $x_0$ thì $y'(x_0)=0$.
+- Điều kiện đủ: $y'(x_0)=0$ và $y''(x_0)<0$ thì $x_0$ là điểm cực đại; $y'(x_0)=0$ và $y''(x_0)>0$ thì $x_0$ là điểm cực tiểu.
+- Đề cho thêm giá trị cực trị bằng $y_0$ thì có thêm phương trình $y(x_0)=y_0$.
+
+##PP Tìm hệ số khi biết điểm cực trị
+Viết $y'(x_0)=0$ (và $y(x_0)=y_0$ nếu đề cho giá trị cực trị) để được phương trình hoặc hệ theo các ẩn.
+Giải phương trình hoặc hệ, được các giá trị ứng viên.
+Thử lại từng giá trị bằng $y''(x_0)$ hoặc bảng xét dấu $y'$ để biết có đạt cực trị đúng loại đề yêu cầu hay không.
+Kết luận, loại giá trị không thoả.
+
+##CY
+- $y'(x_0)=0$ chỉ là điều kiện cần: nếu không thử lại sẽ nhận nhầm trường hợp $y'$ không đổi dấu (như $y=x^3$ tại $x=0$).
+- Khi $y''(x_0)=0$ không dùng được dấu của $y''$, phải lập bảng xét dấu $y'$.
+
+@vi_du:
+##VD
+Tìm $a,b$ để hàm số $y=x^3+ax^2+bx+1$ đạt cực đại tại $x=-1$ và giá trị cực đại bằng $5$.
+
+Bài giải:
+Ta có $y'=3x^2+2ax+b$.
+Đạt cực trị tại $x=-1$ nên $y'(-1)=0$, tức $3-2a+b=0$.
+Giá trị cực đại bằng $5$ nên $y(-1)=5$, tức $-1+a-b+1=5$, hay $a-b=5$.
+Từ $b=a-5$ thế vào $3-2a+b=0$ được $a=-2$, $b=-7$.
+Thử lại: $y'=3x^2-4x-7=(x+1)(3x-7)$ đổi dấu từ $+$ sang $-$ khi qua $x=-1$ nên đúng là cực đại, và $y(-1)=-1-2+7+1=5$.
+Vậy $a=-2$, $b=-7$.
+
+##VD
+Tìm $m$ để hàm số $y=\dfrac{1}{3}x^3-mx^2+(m^2-m+1)x+1$ đạt cực đại tại $x=1$.
+
+Bài giải:
+Ta có $y'=x^2-2mx+m^2-m+1$ và $y''=2x-2m$.
+Điều kiện cần: $y'(1)=0$ ⇔ $1-2m+m^2-m+1=0$ ⇔ $m^2-3m+2=0$ ⇔ $m=1$ hoặc $m=2$.
+Với $m=1$: $y'=(x-1)^2\ge0$ không đổi dấu nên hàm số không có cực trị, loại.
+Với $m=2$: $y''(1)=2-4=-2<0$ nên $x=1$ là điểm cực đại, nhận.
+Vậy $m=2$.
+
+=== H2.4.3
+@ly_thuyet:
+##TC Hai điểm cực trị là nghiệm của $y'=0$
+- Hàm có hai cực trị $x_1,x_2$ khi $y'=0$ có hai nghiệm phân biệt; điều kiện này luôn viết trước.
+- Viète: $S=x_1+x_2$, $P=x_1x_2$ tính từ hệ số của $y'$.
+- Hệ thức đối xứng đưa về $S,P$: $x_1^2+x_2^2=S^2-2P$, $(x_1-x_2)^2=S^2-4P$, $\dfrac{1}{x_1}+\dfrac{1}{x_2}=\dfrac{S}{P}$.
+- Hệ thức không đối xứng như $x_1+2x_2=b$: kết hợp với $x_1+x_2=S$ để tính $x_1,x_2$ theo $m$ rồi thay vào $P$.
+
+##PP Giải hệ thức giữa hai điểm cực trị
+Tìm điều kiện để $y'=0$ có hai nghiệm phân biệt (kèm $a\ne0$ nếu cần).
+Viết $S$, $P$ theo $m$.
+Hệ thức đối xứng: biến đổi về $S,P$ rồi giải phương trình theo $m$. Hệ thức không đối xứng: giải $x_1,x_2$ theo $m$ từ hệ thức và $x_1+x_2=S$, thế vào $x_1x_2=P$.
+Đối chiếu điều kiện đầu, kết luận.
+
+##CY
+- Quên điều kiện $\Delta'>0$ (và $a\ne0$) là lỗi hay gặp: nghiệm tìm được có thể làm hàm không có hai cực trị.
+- Đề quy ước thứ tự (như $x_1<x_2$, hay $x_1$ là điểm cực đại) mà hệ thức không đối xứng thì sau khi tìm $m$ phải giải lại $y'=0$ xem nghiệm nào đúng vai $x_1$, loại $m$ gán sai thứ tự.
+
+@vi_du:
+##VD
+Tìm $m$ để hàm số $y=x^3-3x^2+mx+1$ có hai điểm cực trị $x_1,x_2$ thoả $x_1^2+x_2^2=6$.
+
+Bài giải:
+Ta có $y'=3x^2-6x+m$. Hai cực trị ⇔ $\Delta'=9-3m>0$ ⇔ $m<3$.
+Theo Viète: $x_1+x_2=2$, $x_1x_2=\dfrac{m}{3}$.
+Khi đó $x_1^2+x_2^2=(x_1+x_2)^2-2x_1x_2=4-\dfrac{2m}{3}$.
+Giải $4-\dfrac{2m}{3}=6$ được $m=-3$, thoả $m<3$.
+Vậy $m=-3$.
+
+##VD
+Cho hàm số $y=\dfrac{1}{3}x^3-mx^2+(2m-3)x+1$. Tìm $m$ để hàm số có hai điểm cực trị $x_1,x_2$ thoả $x_1+2x_2=0$.
+
+Bài giải:
+Ta có $y'=x^2-2mx+2m-3$ và $\Delta'=m^2-2m+3=(m-1)^2+2>0$ với mọi $m$ nên luôn có hai cực trị.
+Theo Viète: $x_1+x_2=2m$, $x_1x_2=2m-3$.
+Từ $x_1+2x_2=0$ và $x_1+x_2=2m$ suy ra $x_2=-2m$, $x_1=4m$.
+Thế vào tích: $4m\cdot(-2m)=2m-3$ ⇔ $8m^2+2m-3=0$ ⇔ $m=\dfrac{1}{2}$ hoặc $m=-\dfrac{3}{4}$.
+Thử lại: $m=\dfrac{1}{2}$ cho $y'=x^2-x-2$ có nghiệm $2$ và $-1$ thoả $2+2\cdot(-1)=0$; $m=-\dfrac{3}{4}$ cho nghiệm $-3$ và $\dfrac{3}{2}$ thoả $-3+2\cdot\dfrac{3}{2}=0$.
+Vậy $m=\dfrac{1}{2}$ hoặc $m=-\dfrac{3}{4}$.
+
+=== H2.4.4
+@ly_thuyet:
+##TC Toạ độ và vị trí của hai điểm cực trị
+- Gọi $A(x_1;y_1)$, $B(x_2;y_2)$ là hai điểm cực trị; toạ độ tìm bằng cách giải $y'=0$ rồi thay vào $y$ khi nghiệm đẹp (hoặc dùng phép chia ở nhóm kế tiếp).
+- Hai điểm cực trị nằm về hai phía của $Ox$ ⇔ $y_1y_2<0$ (đồ thị cắt $Ox$ tại ba điểm); cùng phía ⇔ $y_1y_2>0$; tương tự với $Oy$ dùng $x_1x_2$.
+- Trung điểm $I\left(\dfrac{x_1+x_2}{2};\dfrac{y_1+y_2}{2}\right)$.
+- $A,B$ đối xứng qua điểm $I_0$ ⇔ $I_0$ là trung điểm $AB$; đối xứng qua đường thẳng $d$ ⇔ $AB\perp d$ và trung điểm $AB$ thuộc $d$.
+- $A,B$ cách đều đường thẳng $d$ ⇔ $AB\parallel d$ hoặc trung điểm $AB$ thuộc $d$.
+
+##PP Xét vị trí của hai điểm cực trị
+Tìm điều kiện để có hai cực trị; giải $y'=0$ (hoặc viết $x_1,x_2$ qua $m$).
+Tính $y_1,y_2$ để có toạ độ $A$, $B$ theo $m$.
+Dịch yêu cầu về điều kiện đại số: tích tung độ, trung điểm thuộc đường thẳng, tích vô hướng, hệ số góc, hay khoảng cách bằng nhau.
+Giải theo $m$, đối chiếu điều kiện có hai cực trị.
+
+##CY
+- Đối xứng qua đường thẳng cần đủ hai điều kiện (vuông góc và trung điểm thuộc đường); thiếu một điều kiện là sai.
+- Cách đều một đường thẳng có hai trường hợp (song song hoặc trung điểm thuộc đường), dễ bỏ sót một trường hợp.
+
+@vi_du:
+##VD
+Cho hàm số $y=x^3-3x^2+m$. Tìm $m$ để hai điểm cực trị của đồ thị hàm số:
+a) nằm về hai phía của trục hoành;
+b) đối xứng với nhau qua điểm $I(1;0)$.
+
+Bài giải:
+Tập xác định $\mathbb{R}$, $y'=3x^2-6x=3x(x-2)$ có hai nghiệm phân biệt $x=0$, $x=2$ nên đồ thị luôn có hai điểm cực trị $A(0;m)$ và $B(2;m-4)$.
+a) Hai điểm nằm về hai phía của $Ox$ ⇔ $y_Ay_B<0$ ⇔ $m(m-4)<0$ ⇔ $0<m<4$.
+b) Trung điểm của $AB$ là $\left(1;m-2\right)$; $A$, $B$ đối xứng qua $I(1;0)$ ⇔ $I$ là trung điểm $AB$ ⇔ $m-2=0$ ⇔ $m=2$.
+Vậy a) $0<m<4$; b) $m=2$.
+
+##VD
+Cho hàm số $y=x^3-3mx^2+3(m^2-1)x-m^3+3m$. Tìm $m$ để hai điểm cực trị của đồ thị cách đều đường thẳng $d:y=x-1$.
+
+Bài giải:
+Nhận xét $y=(x-m)^3-3(x-m)$, nên $y'=3(x-m)^2-3=3(x-m-1)(x-m+1)$ luôn có hai nghiệm $x=m\pm1$.
+Hai điểm cực trị là $A(m-1;2)$ và $B(m+1;-2)$, trung điểm $I(m;0)$, hệ số góc $AB=\dfrac{-2-2}{2}=-2$.
+Đường thẳng $d$ có hệ số góc $1\ne-2$ nên $AB$ không song song với $d$.
+Do đó $A,B$ cách đều $d$ khi và chỉ khi $I\in d$ ⇔ $0=m-1$ ⇔ $m=1$.
+Vậy $m=1$.
+
+=== H2.4.5
+@ly_thuyet:
+##TC Ba cực trị của hàm trùng phương
+- $y=ax^4+bx^2+c$ có ba cực trị ⇔ $ab<0$. Đặt $k=-\dfrac{b}{2a}>0$, ba điểm cực trị là $A(0;c)$, $B(-\sqrt{k};c-ak^2)$, $C(\sqrt{k};c-ak^2)$.
+- Tam giác $ABC$ cân tại $A$ với $AB^2=AC^2=k+a^2k^4$, $BC^2=4k$, đường cao từ $A$ có độ dài $|a|k^2$.
+- Vuông cân (tại $A$) ⇔ $a^2k^3=1$ ⇔ $b^3=-8a$.
+- Đều ⇔ $a^2k^3=3$ ⇔ $b^3=-24a$.
+- Diện tích $S_{ABC}=\dfrac{1}{2}\cdot BC\cdot|a|k^2=|a|k^{5/2}$.
+
+##PP Tam giác tạo bởi ba cực trị của hàm trùng phương
+Viết điều kiện ba cực trị $ab<0$ và gọi $k=-\dfrac{b}{2a}$.
+Xác định $A(0;c)$ và $B$, $C$ đối xứng qua $Oy$; tính $AB^2$, $BC^2$ theo $k$.
+Đưa điều kiện "vuông cân", "đều" hay "diện tích bằng $S_0$" về phương trình theo $k$ (hoặc dùng $b^3=-8a$, $b^3=-24a$).
+Giải ra $m$ và đối chiếu điều kiện $ab<0$.
+
+##CY
+- Tam giác $ABC$ luôn cân tại $A$; điều kiện vuông cân là vuông tại $A$, đừng đặt vuông tại $B$.
+- $b^3=-8a$ và $b^3=-24a$ chỉ dùng khi đã có $ab<0$; phải kiểm lại sau khi giải.
+
+@vi_du:
+##VD
+Tìm $m$ để đồ thị hàm số $y=x^4-2mx^2+m-1$ có ba điểm cực trị tạo thành một tam giác vuông cân.
+
+Bài giải:
+Ta có $a=1$, $b=-2m$. Ba cực trị ⇔ $ab<0$ ⇔ $m>0$.
+Với $k=m$, các điểm cực trị là $A(0;m-1)$, $B(-\sqrt{m};-m^2+m-1)$, $C(\sqrt{m};-m^2+m-1)$.
+Tam giác vuông cân tại $A$ ⇔ $\overrightarrow{AB}\cdot\overrightarrow{AC}=0$ ⇔ $-m+m^4=0$ ⇔ $m(m^3-1)=0$.
+Vì $m>0$ nên $m=1$.
+Vậy $m=1$.
+
+##VD
+Tìm $m$ để đồ thị hàm số $y=x^4-2(m-1)x^2+m-2$ có ba điểm cực trị tạo thành tam giác có diện tích bằng $4\sqrt{2}$.
+
+Bài giải:
+Ta có $a=1$, $b=-2(m-1)$. Ba cực trị ⇔ $ab<0$ ⇔ $m>1$.
+Đặt $k=m-1>0$. Hai điểm $B$, $C$ có hoành độ $\pm\sqrt{k}$ nên $BC=2\sqrt{k}$; khoảng cách từ $A$ đến $BC$ là $k^2$.
+Diện tích $S=\dfrac{1}{2}\cdot2\sqrt{k}\cdot k^2=k^{5/2}$.
+Giải $k^{5/2}=4\sqrt{2}=2^{5/2}$ được $k=2$, tức $m=3$ (thoả $m>1$).
+Vậy $m=3$.
+
+=== H2.4.6
+@ly_thuyet:
+##TC Cực đại, cực tiểu của hàm phân thức bậc hai trên bậc nhất
+- $y=\dfrac{u(x)}{v(x)}$ với $u$ bậc hai, $v=dx+e$: $y'=\dfrac{g(x)}{v^2}$, $g=u'v-uv'$ là tam thức bậc hai.
+- Hàm có cực đại và cực tiểu ⇔ $g(x)=0$ có hai nghiệm phân biệt đều khác $-\dfrac{e}{d}$ (nghiệm của mẫu).
+- Với dạng này hoặc có đủ cả cực đại và cực tiểu, hoặc không có cực trị nào.
+- Tại điểm cực trị $x_0$: $y(x_0)=\dfrac{u'(x_0)}{v'(x_0)}$.
+
+##PP Tìm $m$ để hàm phân thức có hai cực trị rồi tính đại lượng
+Tính $y'=\dfrac{g(x)}{v^2}$; tìm tập xác định.
+Đặt điều kiện: $\Delta_g>0$ và $g\left(-\dfrac{e}{d}\right)\ne0$; giải tìm $m$.
+Gọi $x_1,x_2$ là hai nghiệm của $g=0$, dùng Viète và $y(x_i)=\dfrac{u'(x_i)}{v'(x_i)}$ để tính các đại lượng đề hỏi (khoảng cách, tích giá trị cực trị…).
+Giải theo $m$ và đối chiếu điều kiện.
+
+##CY
+- Nghiệm của $g=0$ trùng nghiệm của mẫu thì không thuộc tập xác định, không phải điểm cực trị; vì vậy vẫn viết đủ điều kiện $g\left(-\dfrac{e}{d}\right)\ne0$ (khi $g\left(-\dfrac{e}{d}\right)=0$ thì tử và mẫu có nhân tử chung, hàm suy biến thành bậc nhất).
+- Hệ số của $x^2$ ở tử chứa $m$: xét riêng giá trị làm hệ số này bằng $0$, khi đó hàm thành bậc nhất trên bậc nhất và không có cực trị.
+
+@vi_du:
+##VD
+Tìm $m$ để hàm số $y=\dfrac{x^2+mx+1}{x+1}$ có cực đại và cực tiểu.
+
+Bài giải:
+Tập xác định $\mathbb{R}\setminus\{-1\}$.
+$y'=\dfrac{(2x+m)(x+1)-(x^2+mx+1)}{(x+1)^2}=\dfrac{x^2+2x+m-1}{(x+1)^2}$.
+Hàm có cực đại và cực tiểu ⇔ $g(x)=x^2+2x+m-1=0$ có hai nghiệm phân biệt khác $-1$.
+$\Delta'=1-(m-1)=2-m>0$ ⇔ $m<2$; và $g(-1)=m-2\ne0$ ⇔ $m\ne2$ (đã thoả khi $m<2$).
+Vậy $m<2$.
+
+##VD
+Cho hàm số $y=\dfrac{x^2+2x+m}{x-1}$. Tìm $m$ để hàm số có cực đại, cực tiểu và khoảng cách giữa hai điểm cực trị của đồ thị bằng $10$.
+
+Bài giải:
+Tập xác định $\mathbb{R}\setminus\{1\}$, $y'=\dfrac{(2x+2)(x-1)-(x^2+2x+m)}{(x-1)^2}=\dfrac{x^2-2x-2-m}{(x-1)^2}$.
+Hai cực trị ⇔ $g(x)=x^2-2x-2-m=0$ có hai nghiệm phân biệt khác $1$: $\Delta'=3+m>0$ và $g(1)=-3-m\ne0$, tức $m>-3$.
+Gọi $x_1,x_2$ là nghiệm, $x_1+x_2=2$, $x_1x_2=-2-m$; tại điểm cực trị $y=\dfrac{(x^2+2x+m)'}{(x-1)'}=2x+2$.
+Hai điểm cực trị $A(x_1;2x_1+2)$, $B(x_2;2x_2+2)$ nên $AB^2=(x_2-x_1)^2+4(x_2-x_1)^2=5(x_2-x_1)^2=5\left[(x_1+x_2)^2-4x_1x_2\right]=5(12+4m)$.
+$AB=10$ ⇔ $20(3+m)=100$ ⇔ $m=2$ (thoả $m>-3$).
+Vậy $m=2$.
+
+=== N H2.5
+@ly_thuyet:
+##TC Hai điểm cực trị $A$, $B$ và các công thức hình học
+- $A(x_A;y_A)$, $B(x_B;y_B)$: $AB=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}$.
+- Đường thẳng $\Delta:ax+by+c=0$ thì $d(M,\Delta)=\dfrac{|ax_M+by_M+c|}{\sqrt{a^2+b^2}}$; riêng $d(O,AB)$ lấy $M=O$.
+- Diện tích tam giác $OAB$ với $O$ là gốc toạ độ: $S=\dfrac{1}{2}\left|x_Ay_B-x_By_A\right|=\dfrac{1}{2}AB\cdot d(O,AB)$.
+- Hệ số góc $AB$: $k=\dfrac{y_B-y_A}{x_B-x_A}$; hai đường song song khi cùng hệ số góc (khác đường), vuông góc khi tích hệ số góc bằng $-1$.
+
+##PP Làm bài hình học về hai điểm cực trị
+Tìm điều kiện hàm có hai cực trị (luôn là bước đầu).
+Tìm phương trình đường thẳng $AB$ hoặc toạ độ $A$, $B$ theo $m$ (phép chia $y$ cho $y'$ với hàm bậc ba, $y=\dfrac{u'}{v'}$ với hàm phân thức).
+Áp dụng công thức khoảng cách, diện tích hay quan hệ song song, vuông góc, đối xứng mà đề yêu cầu.
+Giải theo $m$, đối chiếu điều kiện có hai cực trị và loại trường hợp suy biến (ví dụ $O$ thuộc $AB$ khi tính diện tích).
+
+##CY
+- Mọi kết luận về $AB$ chỉ có nghĩa khi hàm số có hai cực trị: phải đặt điều kiện trước.
+- Hàm trùng phương có ba cực trị không thẳng hàng nên không có "đường thẳng qua các điểm cực trị"; lấy phần dư của phép chia $y$ cho $y'$ dùng cho hàm bậc ba, còn hàm phân thức bậc hai trên bậc nhất dùng $y=\dfrac{u'}{v'}$.
+
+=== H2.5.1
+@ly_thuyet:
+##TC Phương trình đường thẳng qua hai điểm cực trị
+- Hàm bậc ba: viết $y=y'\cdot(px+q)+(rx+s)$. Tại điểm cực trị $y'=0$ nên $y=rx+s$; vậy đường thẳng qua hai điểm cực trị là $y=rx+s$ (phần dư).
+- Công thức phần dư với $y=ax^3+bx^2+cx+d$: $y=\left(\dfrac{2c}{3}-\dfrac{2b^2}{9a}\right)x+d-\dfrac{bc}{9a}$.
+- Hàm phân thức $y=\dfrac{u}{v}$: tại cực trị $u'v=uv'$ nên $y=\dfrac{u'}{v'}$; đường thẳng qua hai cực trị là $y=\dfrac{u'(x)}{v'(x)}$.
+
+##PP Viết phương trình đường thẳng qua hai điểm cực trị
+Tìm điều kiện để có hai cực trị (hàm bậc ba: $\Delta'>0$; hàm phân thức: $y'=0$ có hai nghiệm khác nghiệm mẫu).
+Chia $y$ cho $y'$ lấy phần dư (hàm bậc ba) hoặc tính $\dfrac{u'}{v'}$ (hàm phân thức).
+Phần dư (hoặc $\dfrac{u'}{v'}$) chính là phương trình đường thẳng cần tìm.
+Thử lại bằng một điểm cực trị cụ thể khi nghiệm đẹp.
+
+##CY
+- Phần dư chỉ là phương trình đường thẳng qua hai cực trị khi hai cực trị tồn tại; với tham số $m$ vẫn phải đặt điều kiện.
+- Hàm phân thức phải lấy $\dfrac{u'}{v'}$ (đạo hàm tử trên đạo hàm mẫu), không phải $\dfrac{u}{v}$ hay phần dư của phép chia $u$ cho $v$.
+
+@vi_du:
+##VD
+Viết phương trình đường thẳng đi qua hai điểm cực trị của đồ thị hàm số $y=x^3-3x^2-9x+1$.
+
+Bài giải:
+Ta có $y'=3x^2-6x-9=3(x+1)(x-3)$ có hai nghiệm phân biệt nên hàm số có hai cực trị.
+Chia $y$ cho $y'$: $y=\left(\dfrac{x}{3}-\dfrac{1}{3}\right)y'-8x-2$.
+Tại các điểm cực trị $y'=0$ nên $y=-8x-2$.
+Kiểm tra: cực trị $x=-1$ có $y=6$ và $-8\cdot(-1)-2=6$; cực trị $x=3$ có $y=-26$ và $-8\cdot3-2=-26$.
+Vậy đường thẳng cần tìm là $y=-8x-2$.
+
+##VD
+Viết phương trình đường thẳng đi qua hai điểm cực trị của đồ thị hàm số $y=\dfrac{x^2-2x+4}{x-1}$.
+
+Bài giải:
+Tập xác định $\mathbb{R}\setminus\{1\}$, $y'=\dfrac{(2x-2)(x-1)-(x^2-2x+4)}{(x-1)^2}=\dfrac{x^2-2x-2}{(x-1)^2}$.
+Phương trình $x^2-2x-2=0$ có hai nghiệm $1\pm\sqrt{3}$ đều khác $1$ nên hàm có hai cực trị.
+Với $u=x^2-2x+4$, $v=x-1$, tại điểm cực trị $y=\dfrac{u'}{v'}=\dfrac{2x-2}{1}=2x-2$.
+Kiểm tra: $x=1+\sqrt{3}$ có $x^2-2x+4=6$, $x-1=\sqrt{3}$ nên $y=\dfrac{6}{\sqrt{3}}=2\sqrt{3}$, và $2(1+\sqrt{3})-2=2\sqrt{3}$.
+Vậy đường thẳng cần tìm là $y=2x-2$.
+
+=== H2.5.2
+@ly_thuyet:
+##TC Độ dài $AB$, khoảng cách và diện tích với gốc toạ độ
+- $AB=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}$; khi $A,B$ nằm trên đường $y=kx+q$ thì $AB=|x_B-x_A|\sqrt{1+k^2}$.
+- $d(O,AB)=\dfrac{|c|}{\sqrt{a^2+b^2}}$ khi $AB:ax+by+c=0$.
+- $S_{OAB}=\dfrac{1}{2}\left|x_Ay_B-x_By_A\right|$.
+- Cần tổng và tích thì dùng Viète: $(x_B-x_A)^2=S^2-4P$.
+
+##PP Tính $AB$, $d(O,AB)$, diện tích $OAB$
+Tìm điều kiện có hai cực trị và toạ độ $A$, $B$ (giải $y'=0$ rồi thay vào $y$, hoặc viết qua $m$).
+Với độ dài: thay vào công thức khoảng cách giữa hai điểm.
+Với khoảng cách từ $O$: viết phương trình $AB$ rồi dùng công thức khoảng cách điểm tới đường thẳng.
+Với diện tích: dùng $\dfrac{1}{2}|x_Ay_B-x_By_A|$; nếu đề cho giá trị diện tích thì giải phương trình theo $m$ và loại trường hợp $O\in AB$.
+
+##CY
+- Công thức $\dfrac{1}{2}|x_Ay_B-x_By_A|$ chỉ đúng khi một đỉnh tam giác là gốc $O$.
+- Phải có dấu giá trị tuyệt đối; bỏ đi sẽ ra diện tích âm hoặc thiếu nghiệm.
+
+@vi_du:
+##VD
+Cho hàm số $y=x^3-3x^2+2$. Gọi $A$, $B$ là hai điểm cực trị của đồ thị. Tính độ dài $AB$, khoảng cách từ gốc toạ độ $O$ đến đường thẳng $AB$ và diện tích tam giác $OAB$.
+
+Bài giải:
+Ta có $y'=3x(x-2)$, nên hai điểm cực trị là $A(0;2)$ và $B(2;-2)$.
+$AB=\sqrt{2^2+(-4)^2}=\sqrt{20}=2\sqrt{5}$.
+Đường thẳng $AB$ đi qua $A(0;2)$ có hệ số góc $\dfrac{-2-2}{2-0}=-2$ nên có phương trình $2x+y-2=0$; do đó $d(O,AB)=\dfrac{|-2|}{\sqrt{5}}=\dfrac{2}{\sqrt{5}}$.
+Diện tích $S_{OAB}=\dfrac{1}{2}|0\cdot(-2)-2\cdot2|=2$ (kiểm tra: $\dfrac{1}{2}\cdot2\sqrt{5}\cdot\dfrac{2}{\sqrt{5}}=2$).
+Vậy $AB=2\sqrt{5}$, $d(O,AB)=\dfrac{2}{\sqrt{5}}$, $S_{OAB}=2$.
+
+##VD
+Cho hàm số $y=x^3-3mx+1$. Tìm $m$ để đồ thị có hai điểm cực trị $A$, $B$ sao cho diện tích tam giác $OAB$ bằng $2$.
+
+Bài giải:
+Ta có $y'=3x^2-3m$, hàm có hai cực trị ⇔ $m>0$, khi đó $x=\pm\sqrt{m}$.
+$y(\pm\sqrt{m})=\pm m\sqrt{m}\mp3m\sqrt{m}+1$, nên $A\left(-\sqrt{m};1+2m\sqrt{m}\right)$ và $B\left(\sqrt{m};1-2m\sqrt{m}\right)$.
+$x_Ay_B=-\sqrt{m}+2m^2$ và $x_By_A=\sqrt{m}+2m^2$, suy ra $x_Ay_B-x_By_A=-2\sqrt{m}$.
+$S_{OAB}=\dfrac{1}{2}\cdot2\sqrt{m}=\sqrt{m}$.
+$S_{OAB}=2$ ⇔ $\sqrt{m}=2$ ⇔ $m=4$ (thoả $m>0$).
+Vậy $m=4$.
+
+=== H2.5.3
+@ly_thuyet:
+##TC Quan hệ của $AB$ với đường thẳng hoặc điểm khác
+- $AB\parallel d$ ⇔ cùng hệ số góc và khác đường thẳng; $AB\perp d$ ⇔ tích hệ số góc bằng $-1$ (hoặc tích vô hướng hai vectơ chỉ phương bằng $0$).
+- $A,B$ đối xứng qua điểm $I_0$ ⇔ $I_0$ là trung điểm của $AB$.
+- $A,B$ đối xứng qua đường thẳng $d$ ⇔ $AB\perp d$ và trung điểm của $AB$ thuộc $d$.
+- $A,B,M$ thẳng hàng ⇔ $M$ thuộc đường thẳng $AB$.
+
+##PP Giải bài về quan hệ của $AB$ với đường hay điểm khác
+Đặt điều kiện có hai cực trị.
+Viết phương trình đường thẳng $AB$ (bằng phần dư) và toạ độ trung điểm $I$ của $AB$ theo $m$.
+Dịch quan hệ của đề (song song, vuông góc, đối xứng, thẳng hàng) thành phương trình theo hệ số góc hoặc toạ độ trung điểm.
+Giải theo $m$; loại trường hợp trùng đường (khi đề nói song song) và đối chiếu điều kiện có hai cực trị.
+
+##CY
+- Song song phải loại trường hợp trùng nhau.
+- Đối xứng qua đường thẳng cần đủ hai điều kiện: vuông góc và trung điểm thuộc đường.
+
+@vi_du:
+##VD
+Tìm $m$ để đồ thị hàm số $y=x^3-3mx+1$ có hai điểm cực trị $A$, $B$ sao cho đường thẳng $AB$ song song với đường thẳng $d:y=-4x+3$.
+
+Bài giải:
+$y'=3x^2-3m$, hàm có hai cực trị ⇔ $m>0$.
+Chia $y$ cho $y'$: $y=\dfrac{x}{3}y'-2mx+1$, nên đường thẳng $AB$ có phương trình $y=-2mx+1$.
+$AB\parallel d$ ⇔ $-2m=-4$ và $1\ne3$ ⇔ $m=2$ (thoả $m>0$).
+Vậy $m=2$.
+
+##VD
+Cho hàm số $y=x^3-3x^2+m$. Tìm $m$ để hai điểm cực trị $A$, $B$ của đồ thị đối xứng với nhau qua đường thẳng $d:x-2y+3=0$.
+
+Bài giải:
+$y'=3x(x-2)$ nên $A(0;m)$, $B(2;m-4)$, trung điểm $I(1;m-2)$.
+Hệ số góc $AB=\dfrac{-4}{2}=-2$; đường thẳng $d:y=\dfrac{1}{2}x+\dfrac{3}{2}$ có hệ số góc $\dfrac{1}{2}$ và $-2\cdot\dfrac{1}{2}=-1$ nên $AB\perp d$ với mọi $m$.
+Điều kiện còn lại: $I\in d$ ⇔ $1-2(m-2)+3=0$ ⇔ $8-2m=0$ ⇔ $m=4$.
+Vậy $m=4$.
+
+=== N H2.6
+@ly_thuyet:
+##TC Đồ thị của $|f(x)|$ và $f(|x|)$
+- Đồ thị $y=|f(x)|$: giữ phần đồ thị $f$ nằm trên $Ox$, lấy đối xứng phần nằm dưới $Ox$ qua $Ox$.
+- Đồ thị $y=f(|x|)$: giữ phần đồ thị $f$ ứng với $x\ge0$, lấy đối xứng phần đó qua $Oy$ (bỏ phần $x<0$ cũ), vì $f(|x|)$ là hàm chẵn.
+- Hai hàm này có thể đạt cực trị tại điểm "gãy" (không có đạo hàm), nên đếm cực trị bằng sự đổi chiều biến thiên trên đồ thị, không chỉ bằng nghiệm của $y'=0$.
+
+##TC Cực trị của hàm hợp $f(u(x))$
+- $g(x)=f(u(x))$ có $g'(x)=u'(x)\cdot f'(u(x))$.
+- Điểm cực trị của $g$ là nghiệm làm $g'$ đổi dấu, tức nghiệm bội lẻ của $g'(x)=0$.
+- $g'=0$ gồm: nghiệm của $u'(x)=0$ và nghiệm của $u(x)=a$ với mọi $a$ thoả $f'(a)=0$ (mà $f'$ đổi dấu tại $a$).
+
+##PP Đếm số cực trị của hàm chứa giá trị tuyệt đối hoặc hàm hợp
+Xác định hàm cần xét ($|f|$, $f(|x|)$ hay $f(u)$) và đạo hàm tương ứng.
+Đọc từ bảng biến thiên hoặc đồ thị: các cực trị của $f$ (hoặc nghiệm của $f'$), số nghiệm của $f(x)=0$.
+Đếm số nghiệm bội lẻ của phương trình $g'=0$, mỗi nghiệm một lần; điểm trùng nhau gộp lại và xét tổng bội.
+Cộng lại và kết luận, kiểm tra lại các điểm đặc biệt (cực trị trùng nghiệm, $x=0$ của $f(|x|)$).
+
+##CY
+- Nghiệm bội chẵn của $g'=0$ không làm $g'$ đổi dấu nên không cho cực trị.
+- Hai phương trình cùng cho một nghiệm $x$ thì cộng bội; tổng bội lẻ vẫn là điểm cực trị, chỉ tính một lần.
+- Điểm cực trị của $f$ mà $f=0$ tại đó (đồ thị tiếp xúc $Ox$) đã được đếm là cực trị của $f$, không đếm lần nữa như một giao điểm với $Ox$.
+
+=== H2.6.1
+@ly_thuyet:
+##TC Quy tắc đếm cho $|f(x)|$ và $f(|x|)$
+- $|f(x)|$: số cực trị $=p+q$; $p$ = số cực trị của $f$, $q$ = số nghiệm bội lẻ của $f(x)=0$ không trùng cực trị (đồ thị $f$ cắt $Ox$ tại điểm đó tạo "góc nhọn" của $|f|$).
+- $f(|x|)$: số cực trị $=2k+1$, $k$ = số cực trị của $f$ có hoành độ $x>0$.
+- Điểm $x=0$ luôn là điểm cực trị của $f(|x|)$ (hàm chẵn), không tính vào $k$.
+- Nghiệm của $f(x)=0$ đọc từ bảng biến thiên: mỗi lần giá trị đơn điệu đi qua $0$ là một nghiệm đơn.
+
+##PP Đếm cực trị của $|f(x)|$ và $f(|x|)$
+Đọc các cực trị của $f$ (hoành độ và giá trị) từ bảng biến thiên hoặc đồ thị.
+Đếm số nghiệm của $f(x)=0$ trên từng khoảng đơn điệu (hay số giao điểm với $Ox$), loại nghiệm trùng cực trị.
+Với $|f|$: cộng số cực trị của $f$ và số nghiệm đơn không trùng cực trị.
+Với $f(|x|)$: đếm số cực trị của $f$ có hoành độ dương, nhân $2$ rồi cộng $1$.
+
+##CY
+- Giá trị cực trị của $f$ bằng $0$ cho nghiệm kép trùng cực trị: không cộng thêm vào $q$.
+- Cực trị của $f$ tại $x=0$ (hoặc âm) không được đếm vào $k$.
+- $f(|x|)$ chỉ lấy phần $x\ge0$ của đồ thị $f$ rồi đối xứng; phần bên trái cũ của $f$ bị bỏ.
+
+@vi_du:
+##VD
+Cho hàm số $y=f(x)$ có đồ thị như hình vẽ. Tìm số điểm cực trị của hàm số $y=|f(x)|$ và của hàm số $y=f(|x|)$.
+[[HINH {"loai":"dothi","x":[-2,4],"y":[-4,3],"f":[{"e":"x^3-3*x^2+1","ten":"y=f(x)"}]}]]
+
+Bài giải:
+Từ đồ thị, $f$ có hai cực trị: cực đại tại $x=0$ (giá trị $1$) và cực tiểu tại $x=2$ (giá trị $-3$), nên $p=2$.
+Đồ thị cắt $Ox$ tại $3$ điểm phân biệt (nghiệm đơn của $f(x)=0$) và không điểm nào trùng cực trị, nên $q=3$.
+Số cực trị của $|f(x)|$ là $2+3=5$.
+Các cực trị của $f$ có hoành độ dương chỉ có $x=2$, nên $k=1$ và $f(|x|)$ có $2\cdot1+1=3$ cực trị (tại $x=-2$, $x=0$, $x=2$).
+Vậy $|f(x)|$ có $5$ cực trị và $f(|x|)$ có $3$ cực trị.
+
+##VD
+Cho hàm số $y=f(x)$ có bảng biến thiên như hình vẽ. Tìm số điểm cực trị của hàm số $y=|f(x)|$ và của hàm số $y=f(|x|)$.
+[[HINH {"loai":"bbt","x":["-∞","-1","1","+∞"],"dau":["+","-","+"],"y":["-∞","4","0","+∞"],"ten_dao":"f'(x)","ten_ham":"f(x)"}]]
+
+Bài giải:
+Hàm $f$ có hai cực trị: $x=-1$ (cực đại, giá trị $4$) và $x=1$ (cực tiểu, giá trị $0$), nên $p=2$.
+Giải $f(x)=0$ theo từng khoảng: trên $(-\infty;-1)$ hàm tăng từ $-\infty$ đến $4$ nên có đúng một nghiệm đơn; trên $(-1;1)$ hàm giảm từ $4$ về $0$ nên chỉ chạm $0$ tại $x=1$; trên $(1;+\infty)$ hàm tăng từ $0$ nên không có nghiệm nào nữa.
+Nghiệm $x=1$ trùng điểm cực tiểu nên không tính thêm, vậy $q=1$ và $|f(x)|$ có $2+1=3$ cực trị.
+Chỉ có cực trị $x=1$ của $f$ có hoành độ dương, nên $k=1$ và $f(|x|)$ có $2\cdot1+1=3$ cực trị.
+Vậy $|f(x)|$ có $3$ cực trị và $f(|x|)$ có $3$ cực trị.
+
+=== H2.6.2
+@ly_thuyet:
+##TC Đọc dữ kiện và đếm nghiệm của $g'(x)=u'(x)\cdot f'(u(x))$
+- Cho đồ thị $f'$: các giá trị $a$ là hoành độ giao điểm của đồ thị $f'$ với $Ox$ mà đồ thị cắt qua; điểm đồ thị $f'$ chỉ tiếp xúc $Ox$ thì bỏ.
+- Cho bảng biến thiên hay đồ thị của $f$: các giá trị $a$ là hoành độ các điểm cực trị của $f$.
+- Số nghiệm của $u(x)=a$ đếm bằng bảng biến thiên hoặc đồ thị của $u$; với $u$ bậc hai, nghiệm kép của $u(x)=a$ chính là hoành độ đỉnh, tức nghiệm của $u'(x)=0$.
+
+##PP Đếm cực trị của hàm hợp $f(u(x))$
+Tính $g'(x)=u'(x)\cdot f'(u(x))$.
+Từ bảng biến thiên hoặc đồ thị của $f$ (hay $f'$) xác định các giá trị $a_i$ mà $f'(a_i)=0$ và $f'$ đổi dấu.
+Giải $u'(x)=0$ và đếm số nghiệm của mỗi phương trình $u(x)=a_i$.
+Gộp các nghiệm (nghiệm trùng chỉ tính một lần, xét bội), đếm số nghiệm làm $g'$ đổi dấu.
+
+##CY
+- Nghiệm của $u'(x)=0$ mà $f'(u(x))\ne0$ tại đó vẫn là điểm cực trị (nếu $u'$ đổi dấu).
+- Nghiệm của $f'(a)=0$ mà $f'$ không đổi dấu tại $a$ không cho cực trị của $g$.
+- Khi $u(x)=a$ có nghiệm kép (trùng nghiệm $u'=0$) phải xét dấu riêng thay vì đếm hai lần.
+
+@vi_du:
+##VD
+Cho hàm số $y=f(x)$ có đồ thị của đạo hàm $f'(x)$ như hình vẽ. Tìm số điểm cực trị của hàm số $g(x)=f(x^2-2x)$.
+[[HINH {"loai":"dothi","x":[-1,3],"y":[-2,2],"f":[{"e":"x*(x-1)*(x-2)","ten":"y=f'(x)"}]}]]
+
+Bài giải:
+Đồ thị $f'$ cắt $Ox$ tại $x=0$, $x=1$, $x=2$ và đổi dấu tại cả ba điểm, nên $f'(t)=0$ ⇔ $t\in\{0;1;2\}$.
+Ta có $g'(x)=(2x-2)\,f'(x^2-2x)$.
+$g'(x)=0$ ⇔ $x=1$ hoặc $x^2-2x\in\{0;1;2\}$.
+Với $x^2-2x=0$ có $x=0$, $x=2$; với $x^2-2x=1$ có $x=1\pm\sqrt{2}$; với $x^2-2x=2$ có $x=1\pm\sqrt{3}$.
+Giá trị $x=1$ cho $x^2-2x=-1\notin\{0;1;2\}$ nên không trùng nghiệm nào; vậy có $1+2+2+2=7$ nghiệm phân biệt, mỗi nghiệm đơn nên $g'$ đổi dấu tại cả $7$ điểm.
+Vậy hàm số $g(x)$ có $7$ điểm cực trị.
+
+##VD
+Cho hàm số $y=f(x)$ có bảng biến thiên như hình vẽ. Tìm số điểm cực trị của hàm số $g(x)=f(x^2-4x)$.
+[[HINH {"loai":"bbt","x":["-∞","-4","5","+∞"],"dau":["+","-","+"],"y":["-∞","2","-3","+∞"],"ten_dao":"f'(x)","ten_ham":"f(x)"}]]
+
+Bài giải:
+Từ bảng biến thiên, $f'$ đổi dấu tại $x=-4$ và $x=5$ nên $f'(t)=0$ ⇔ $t=-4$ hoặc $t=5$.
+Ta có $g'(x)=(2x-4)\,f'(x^2-4x)$.
+Phương trình $x^2-4x=5$ có hai nghiệm $x=-1$ và $x=5$; tại hai điểm này $u'=2x-4\ne0$ và $f'$ đổi dấu nên $g'$ đổi dấu: có $2$ cực trị.
+Phương trình $x^2-4x=-4$ ⇔ $(x-2)^2=0$ chỉ có nghiệm kép $x=2$, trùng với nghiệm của $u'=2x-4=0$.
+Quanh $x=2$ ta có $x^2-4x\ge-4$, nên $f'(x^2-4x)$ không đổi dấu (luôn mang dấu của $f'$ ngay bên phải $-4$), trong khi $2x-4$ đổi dấu; do đó $g'$ đổi dấu tại $x=2$ và có thêm $1$ cực trị.
+Vậy hàm số $g(x)$ có $3$ điểm cực trị.
+
+=== H2.6.3
+@ly_thuyet:
+##TC Số cực trị của $f(u(x,m))$ theo tham số
+- Hàm trong thường có dạng $u=u_0(x)+m$: đồ thị $u$ là đồ thị $u_0$ tịnh tiến theo phương $Oy$, nên nghiệm của $u'=0$ không đổi còn các giá trị cực trị của $u$ chứa $m$.
+- Số nghiệm của $u(x)=a$ phụ thuộc vị trí của $a$ so với các giá trị cực trị của $u$ (hoặc giá trị nhỏ nhất, lớn nhất của $u$), mà các giá trị này chứa $m$.
+- Với $u$ bậc hai $u=(x-x_0)^2+h$: $u(x)=a$ có hai nghiệm khi $a>h$, một nghiệm kép khi $a=h$, vô nghiệm khi $a<h$.
+- Với $u$ bậc ba có cực đại $u_{\text{CĐ}}$, cực tiểu $u_{\text{CT}}$: $u(x)=a$ có $3$ nghiệm khi $u_{\text{CT}}<a<u_{\text{CĐ}}$, $2$ nghiệm khi $a$ bằng một trong hai giá trị cực trị, $1$ nghiệm khi $a$ nằm ngoài đoạn này.
+
+##PP Tìm $m$ để $f(u(x,m))$ có số cực trị cho trước
+Tính $g'=u'\cdot f'(u)$ và tìm các giá trị $a_i$ từ bảng biến thiên hay đồ thị của $f$ (hoặc $f'$).
+Lập bảng biến thiên của $u$ theo $m$ (cực trị của $u$ chứa $m$).
+Với từng $a_i$, đếm số nghiệm của $u(x)=a_i$ theo các khoảng của $m$; chú ý các giá trị $m$ làm $a_i$ trùng giá trị cực trị của $u$.
+Cộng với số nghiệm của $u'=0$ (nếu chưa tính), trừ nghiệm trùng, giải để số cực trị đúng bằng yêu cầu và đếm giá trị $m$ nguyên.
+
+##CY
+- Các giá trị $m$ làm $a_i$ bằng giá trị cực trị của $u$ phải xét riêng, vì khi đó nghiệm trùng nghiệm $u'=0$ và số cực trị thay đổi.
+- Kết quả theo $m$ thường là các khoảng; ghi đúng đầu mút (lấy hay bỏ) trước khi đếm giá trị nguyên.
+
+@vi_du:
+##VD
+Cho hàm số $y=f(x)$ có đồ thị của đạo hàm $f'(x)$ như hình vẽ. Có bao nhiêu giá trị nguyên của $m$ để hàm số $g(x)=f(x^2-2x+m)$ có đúng $3$ điểm cực trị?
+[[HINH {"loai":"dothi","x":[-2,6],"y":[-5,5],"f":[{"e":"x*(x-4)","ten":"y=f'(x)"}]}]]
+
+Bài giải:
+Đồ thị $f'$ cắt $Ox$ tại $x=0$ và $x=4$ (đổi dấu), nên $f'(t)=0$ ⇔ $t=0$ hoặc $t=4$.
+$g'(x)=(2x-2)\,f'(x^2-2x+m)$. Đặt $u=x^2-2x+m=(x-1)^2+m-1\ge m-1$.
+$g'=0$ ⇔ $x=1$ hoặc $(x-1)^2=1-m$ (do $u=0$) hoặc $(x-1)^2=5-m$ (do $u=4$).
+Nếu $m<1$: cả hai phương trình đều có hai nghiệm khác $1$, nên có $1+2+2=5$ cực trị.
+Nếu $m=1$: $u=0$ cho nghiệm kép $x=1$ trùng $u'=0$ (tổng bội lẻ, vẫn là cực trị); $u=4$ cho $2$ nghiệm; tổng $3$ cực trị.
+Nếu $1<m<5$: $u=0$ vô nghiệm, $u=4$ có hai nghiệm, cộng $x=1$: $3$ cực trị.
+Nếu $m\ge5$: $u=4$ vô nghiệm hoặc chỉ có $x=1$ (khi $m=5$), nên chỉ còn $1$ cực trị.
+Do đó $g$ có đúng $3$ cực trị ⇔ $1\le m<5$, tức $m\in\{1;2;3;4\}$.
+Vậy có $4$ giá trị nguyên của $m$.
+
+##VD
+Cho hàm số $y=f(x)$ có bảng biến thiên như hình vẽ. Có bao nhiêu giá trị nguyên của $m\in[-5;5]$ để hàm số $g(x)=f(x^3-3x+m)$ có đúng $6$ điểm cực trị?
+[[HINH {"loai":"bbt","x":["-∞","0","2","+∞"],"dau":["+","-","+"],"y":["-∞","1","-1","+∞"],"ten_dao":"f'(x)","ten_ham":"f(x)"}]]
+
+Bài giải:
+Từ bảng biến thiên, $f'(t)=0$ ⇔ $t=0$ hoặc $t=2$, và $f'$ đổi dấu tại cả hai giá trị.
+Đặt $u=x^3-3x+m$, ta có $u'=3x^2-3$ và $g'(x)=3(x^2-1)\,f'(u)$.
+$g'(x)=0$ ⇔ $x=\pm1$ hoặc $u=0$ hoặc $u=2$.
+$u$ đạt cực đại $u(-1)=m+2$ và cực tiểu $u(1)=m-2$, nên phương trình $u=a$ có ba nghiệm phân biệt khi $m-2<a<m+2$, có hai nghiệm (một nghiệm kép là $x=-1$ hoặc $x=1$) khi $a=m\pm2$, có một nghiệm khi $a$ nằm ngoài đoạn $[m-2;m+2]$.
+Hai điểm $x=\pm1$ luôn là điểm cực trị của $g$: tại đó $u'$ đổi dấu, còn $f'(u)$ giữ nguyên dấu (kể cả khi $u(\pm1)$ bằng $0$ hay $2$, vì quanh điểm cực trị của $u$ giá trị $u$ chỉ ở một phía của $a$).
+Nghiệm kép của $u=a$ trùng $x=\pm1$ nên không tạo điểm mới; mỗi nghiệm đơn của $u=a$ làm $f'(u)$ đổi dấu nên là một điểm cực trị mới.
+Vậy mỗi giá trị $a\in\{0;2\}$ cho thêm $3$ điểm cực trị khi $|m-a|<2$ và thêm $1$ điểm trong mọi trường hợp còn lại.
+Số điểm cực trị của $g$ là $2+3+3=8$, $2+3+1=6$ hoặc $2+1+1=4$; có đúng $6$ ⇔ đúng một trong hai điều kiện $|m|<2$, $|m-2|<2$ xảy ra.
+$|m|<2$ ⇔ $-2<m<2$; $|m-2|<2$ ⇔ $0<m<4$; đúng một điều kiện xảy ra ⇔ $-2<m\le0$ hoặc $2\le m<4$.
+Với $m$ nguyên thuộc $[-5;5]$ ta được $m\in\{-1;0;2;3\}$.
+Vậy có $4$ giá trị nguyên của $m$.
+
+## GHI CHÚ CHO CEO
+- Trạm soạn không mở hồ sơ nguồn; trạm soát đã đối chiếu với hồ sơ NBV (kiểu C11, C13–C24, phần F cực trị) và PNL (Bài 1 Dạng 03): các ví dụ cùng loại, cùng mức với bài thật (vd H2.6.3 ví dụ 1 giống kiểu f(x²−6x+m) của NBV F38, ví dụ 2 giống kiểu f(x³−3x²+m) / f(x³−mx²+…) của NBV F40–41).
+- H2.4.4 và H2.5.3 cùng phủ "đối xứng": H2.4.4 làm qua toạ độ hai điểm cực trị (ví dụ: hai phía Ox, đối xứng qua điểm, cách đều đường thẳng), H2.5.3 làm qua phương trình đường thẳng AB (song song, đối xứng qua đường thẳng). Ranh giới hai dạng cần CEO chốt khi xếp câu.
+- H2.4.6: mô tả nói "tính các đại lượng liên quan"; ví dụ 2 chọn khoảng cách giữa hai điểm cực trị.
+- H2.6.3 ví dụ 2 thuộc mức vận dụng cao (như đề thi thật); lời giải đã viết lại theo cách đếm gọn "mỗi giá trị a cho thêm 3 hoặc 1 điểm cực trị" thay cho liệt kê từng m.
+- Hình của H2.6 vẽ từ công thức cụ thể (f hoặc f′ là đa thức); ví dụ có bảng biến thiên dùng hàm trừu tượng, trạm soát đã kiểm bằng một hàm cụ thể khớp bảng.

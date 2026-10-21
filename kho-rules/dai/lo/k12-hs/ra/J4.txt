@@ -1,0 +1,585 @@
+=== N H3.1
+@ly_thuyet:
+##TC Giá trị lớn nhất, giá trị nhỏ nhất
+- Số $M$ là **giá trị lớn nhất** của $f$ trên tập $D$ nếu $f(x)\le M$ với mọi $x\in D$ và tồn tại $x_0\in D$ để $f(x_0)=M$. Kí hiệu $M=\max_{D}f(x)$.
+- Số $m$ là **giá trị nhỏ nhất** của $f$ trên $D$ nếu $f(x)\ge m$ với mọi $x\in D$ và tồn tại $x_0\in D$ để $f(x_0)=m$. Kí hiệu $m=\min_{D}f(x)$.
+- GTLN, GTNN là một **giá trị của $y$** (tung độ), điểm đạt được là giá trị của $x$.
+- Hàm số liên tục trên đoạn $[a;b]$ luôn có GTLN và GTNN trên đoạn đó.
+
+##PP Đọc GTLN, GTNN từ hình
+Xác định tập $D$ đề hỏi (đoạn, khoảng hay nửa khoảng) và chỉ xét phần hình nằm trong $D$.
+Liệt kê các điểm ứng viên: điểm cực trị thuộc $D$ và các đầu mút **thuộc** $D$.
+Với khoảng mở, đầu mút không thuộc $D$ nên giá trị tại đó (hoặc giới hạn) chỉ là cận, không phải GTLN, GTNN.
+Đọc tung độ của các ứng viên, lấy số lớn nhất và nhỏ nhất rồi kết luận có hay không có GTLN, GTNN.
+
+##CY
+- Trên đoạn $[a;b]$ phải xét cả hai đầu mút: GTLN, GTNN có thể nằm ở đầu mút chứ không ở cực trị.
+- Cực đại, cực tiểu chỉ là giá trị lớn nhất, nhỏ nhất **trong lân cận**; cực đại có thể nhỏ hơn giá trị ở đầu mút.
+- Đề hỏi $M+m$ hay $M-m$ thì cộng, trừ các tung độ, không cộng, trừ các hoành độ.
+
+=== H3.1.1
+@ly_thuyet:
+##TC Cao nhất, thấp nhất của đồ thị trên đoạn
+- Trên đoạn $[a;b]$, $M$ là tung độ của điểm cao nhất và $m$ là tung độ của điểm thấp nhất của phần đồ thị ứng với $a\le x\le b$.
+- Hai đầu mút $x=a$, $x=b$ luôn được xét.
+
+##PP Đọc GTLN, GTNN trên đoạn từ đồ thị
+Dùng hai đường thẳng đứng $x=a$, $x=b$ để chặn phần đồ thị cần xét.
+Tìm đỉnh, đáy của phần đồ thị đó và tung độ hai đầu mút.
+Điểm cao nhất cho $M$, điểm thấp nhất cho $m$, ghi cả hoành độ nơi đạt được.
+Tính $M+m$ hoặc $M-m$ nếu đề yêu cầu.
+
+##CY
+- Đồ thị có thể còn cao hơn hoặc thấp hơn ở ngoài đoạn $[a;b]$: không đọc đỉnh nằm ngoài đoạn.
+- GTNN có thể đạt tại nhiều điểm, khi đó tất cả các điểm đó đều đúng.
+
+@vi_du:
+##VD
+Cho hàm số $y=f(x)$ có đồ thị như hình vẽ. Tìm giá trị lớn nhất $M$, giá trị nhỏ nhất $m$ của $f(x)$ trên đoạn $[-2;1]$ và tính $M+m$.
+[[HINH {"loai":"dothi","x":[-3,3],"y":[-4,4],"f":[{"e":"x^3-3*x+1","ten":"y=f(x)"}]}]]
+
+Bài giải:
+Trên đoạn $[-2;1]$, đồ thị đi qua điểm đầu mút $(-2;-1)$, lên đỉnh $(-1;3)$ rồi đi xuống đến đầu mút $(1;-1)$.
+Điểm cao nhất có tung độ $3$ tại $x=-1$ nên $M=3$.
+Điểm thấp nhất có tung độ $-1$ tại hai đầu mút $x=-2$ và $x=1$ nên $m=-1$.
+Vậy $M=3$, $m=-1$ và $M+m=2$.
+
+##VD
+Cho hàm số $y=f(x)$ có đồ thị như hình vẽ. Tìm giá trị lớn nhất $M$, giá trị nhỏ nhất $m$ của $f(x)$ trên đoạn $[-1;2]$ và tính $M-m$.
+[[HINH {"loai":"dothi","x":[-2.5,2.5],"y":[-8,3],"f":[{"e":"-(x^4)+2*x^2+1","ten":"y=f(x)"}]}]]
+
+Bài giải:
+Trên đoạn $[-1;2]$, đồ thị bắt đầu tại $(-1;2)$, đi xuống đáy $(0;1)$, lên đỉnh $(1;2)$ rồi đi xuống điểm cuối $(2;-7)$.
+Điểm cao nhất có tung độ $2$ (đạt tại $x=-1$ và $x=1$) nên $M=2$.
+Điểm thấp nhất không phải đáy $(0;1)$ mà là đầu mút $(2;-7)$ nên $m=-7$.
+Vậy $M=2$, $m=-7$ và $M-m=9$.
+
+=== H3.1.2
+@ly_thuyet:
+##TC Đọc bảng biến thiên
+- Trên mỗi khoảng mũi tên đi lên thì hàm đồng biến, đi xuống thì nghịch biến.
+- Giá trị ở cột đầu mút chỉ **đạt được** khi đầu mút thuộc tập đang xét.
+- Giá trị $\pm\infty$ hoặc giá trị giới hạn ở đầu mở không đạt được.
+- Nếu chỉ có bảng xét dấu $f'$ thì chỉ biết hàm số đạt GTLN, GTNN **tại điểm nào**, không biết giá trị bằng bao nhiêu.
+
+##PP Đọc GTLN, GTNN từ bảng biến thiên
+Xác định tập $D$ của đề và các cột thuộc $D$.
+Với đầu mút thuộc $D$ và các cực trị nằm trong $D$, ghi giá trị $y$ ở cột tương ứng.
+Số lớn nhất (nhỏ nhất) trong các giá trị đạt được là GTLN (GTNN).
+Nếu giá trị cao nhất (thấp nhất) chỉ là giới hạn tại đầu mở hoặc $\pm\infty$ thì kết luận không có GTLN (GTNN).
+
+##CY
+- Cùng một bảng, tập $D$ khác nhau cho kết quả khác nhau: phải nêu rõ đang xét tập nào.
+- Cực đại không phải lúc nào cũng là GTLN: so với giá trị ở các đầu mút thuộc $D$.
+
+@vi_du:
+##VD
+Cho hàm số $y=f(x)$ liên tục trên đoạn $[-2;3]$ có bảng biến thiên như hình vẽ.
+a) Tìm giá trị lớn nhất và giá trị nhỏ nhất của $f(x)$ trên đoạn $[-2;3]$.
+b) Hàm số có giá trị nhỏ nhất, giá trị lớn nhất trên nửa khoảng $[-2;2)$ không?
+[[HINH {"loai":"bbt","x":["-2","-1","2","3"],"dau":["+","-","+"],"y":["0","4","-3","1"]}]]
+
+Bài giải:
+a) Các ứng viên trên $[-2;3]$ gồm hai đầu mút $f(-2)=0$, $f(3)=1$ và hai cực trị $f(-1)=4$, $f(2)=-3$.
+Số lớn nhất là $4$ (tại $x=-1$), số nhỏ nhất là $-3$ (tại $x=2$).
+b) Trên $[-2;2)$ hàm số tăng từ $0$ đến $4$ rồi giảm từ $4$ xuống gần $-3$ nhưng không đến được, vì $x=2$ không thuộc nửa khoảng.
+Giá trị lớn nhất là $4$ tại $x=-1$.
+Mọi giá trị của $f(x)$ trên $[-2;2)$ đều lớn hơn $-3$, nhưng $f(x)$ tiến sát $-3$ khi $x$ tiến tới $2$ nên không có giá trị nào nhỏ nhất: hàm số không có giá trị nhỏ nhất.
+Vậy a) $\max=4$, $\min=-3$; b) có GTLN bằng $4$, không có GTNN.
+
+##VD
+Cho hàm số $y=f(x)$ liên tục trên đoạn $[-3;4]$ có bảng biến thiên như hình vẽ.
+a) Tìm GTLN, GTNN của $f(x)$ trên khoảng $(-3;4)$.
+b) Tìm GTLN, GTNN của $f(x)$ trên đoạn $[-3;4]$.
+[[HINH {"loai":"bbt","x":["-3","0","4"],"dau":["-","+"],"y":["2","-1","5"]}]]
+
+Bài giải:
+a) Trên khoảng $(-3;4)$ hàm số giảm từ gần $2$ xuống $-1$ tại $x=0$ rồi tăng lên gần $5$.
+Hai đầu $x=-3$, $x=4$ không thuộc khoảng nên giá trị $5$ không đạt được, hàm số không có GTLN; GTNN là $-1$ tại $x=0$.
+b) Trên đoạn $[-3;4]$, hai đầu mút thuộc đoạn nên $f(-3)=2$ và $f(4)=5$ đều đạt được.
+Số lớn nhất là $5$ tại $x=4$, số nhỏ nhất là $-1$ tại $x=0$.
+Vậy a) không có GTLN, $\min=-1$; b) $\max=5$, $\min=-1$.
+
+=== H3.1.3
+@ly_thuyet:
+##TC Từ dấu của $f'$ suy ra chiều biến thiên của $f$
+- Đồ thị $f'$ nằm phía trên trục $Ox$ trên khoảng nào thì $f$ đồng biến trên khoảng đó; nằm phía dưới thì $f$ nghịch biến.
+- Nghiệm của $f'(x)=0$ là hoành độ giao điểm của đồ thị $f'$ với trục $Ox$.
+- Đề cho giả thiết nối các giá trị như $f(a)=f(b)$ hoặc $f(a)+f(b)=f(c)+f(d)$ để so sánh hai giá trị mà bảng biến thiên chưa so sánh được.
+
+##PP Lập bảng biến thiên của $f$ từ đồ thị $f'$
+Đọc nghiệm của $f'$ và dấu $f'$ trên từng khoảng thuộc đoạn đề cho; suy ra các khoảng đồng biến, nghịch biến.
+Lập bảng biến thiên của $f$ trên đoạn: ứng viên GTLN, GTNN là cực trị và hai đầu mút.
+Dùng đơn điệu để so sánh các cặp giá trị nằm trên cùng một khoảng đơn điệu.
+Với hai giá trị khác khoảng, dùng giả thiết nối để so sánh rồi kết luận điểm đạt GTLN, GTNN.
+
+##CY
+- Từ đồ thị $f'$ chỉ biết **dấu** $f'$ (tức chiều biến thiên của $f$), không biết giá trị của $f$.
+- Đồ thị $f'$ nằm trên trục $Ox$ không có nghĩa là $f(x)>0$.
+
+@vi_du:
+##VD
+Cho hàm số $y=f(x)$ liên tục trên $\mathbb{R}$, đồ thị của hàm số $y=f'(x)$ như hình vẽ. Biết $f(0)=f(3)$. Tìm các điểm thuộc đoạn $[0;3]$ tại đó $f(x)$ đạt giá trị lớn nhất, giá trị nhỏ nhất trên đoạn $[0;3]$.
+[[HINH {"loai":"dothi","x":[-1,3.5],"y":[-9,4],"f":[{"e":"-3*x^2+6*x","ten":"y=f'(x)"}]}]]
+
+Bài giải:
+Đồ thị $f'$ cắt trục $Ox$ tại $x=0$ và $x=2$, nằm phía trên trục $Ox$ trên $(0;2)$ và phía dưới trên $(2;3)$.
+Suy ra $f$ đồng biến trên $[0;2]$ và nghịch biến trên $[2;3]$, nên $f$ đạt giá trị lớn nhất tại $x=2$.
+Giá trị nhỏ nhất là số nhỏ hơn trong $f(0)$ và $f(3)$; theo giả thiết $f(0)=f(3)$ nên giá trị nhỏ nhất đạt tại cả $x=0$ và $x=3$.
+Vậy $f$ đạt GTLN tại $x=2$ và đạt GTNN tại $x=0$ và $x=3$.
+
+##VD
+Cho hàm số $y=f(x)$ liên tục trên $\mathbb{R}$, đồ thị của hàm số $y=f'(x)$ như hình vẽ. Biết $f(1)=f(4)$, $f(0)+f(1)=f(3)+f(4)$ và $f(1)-f(3)=\dfrac{4}{3}$. Gọi $M$, $m$ lần lượt là GTLN, GTNN của $f(x)$ trên đoạn $[0;4]$. Tính $M-m$.
+[[HINH {"loai":"dothi","x":[-1,5],"y":[-2,5],"f":[{"e":"x^2-4*x+3","ten":"y=f'(x)"}]}]]
+
+Bài giải:
+Đồ thị $f'$ cắt trục $Ox$ tại $x=1$, $x=3$; $f'>0$ trên $(0;1)$ và $(3;4)$, $f'<0$ trên $(1;3)$.
+Do đó $f$ đồng biến trên $[0;1]$, nghịch biến trên $[1;3]$ và đồng biến trên $[3;4]$.
+Các ứng viên GTLN là $f(1)$, $f(4)$ và GTNN là $f(0)$, $f(3)$.
+Giả thiết $f(1)=f(4)$ nên $M=f(1)=f(4)$.
+Từ $f(0)+f(1)=f(3)+f(4)$ và $f(1)=f(4)$ suy ra $f(0)=f(3)$ nên $m=f(0)=f(3)$.
+Vậy $M-m=f(1)-f(3)=\dfrac{4}{3}$.
+
+=== N H3.2
+@ly_thuyet:
+##TC Quy tắc tìm GTLN, GTNN
+- Hàm số liên tục trên đoạn $[a;b]$ thì có GTLN, GTNN trên đoạn đó, đạt tại các điểm tới hạn (nghiệm của $y'=0$ hoặc điểm $y'$ không xác định) hoặc tại đầu mút.
+- Trên khoảng, nửa khoảng hoặc $\mathbb{R}$: lập bảng biến thiên (có giới hạn ở đầu mở) rồi đọc; có thể không tồn tại GTLN hoặc GTNN.
+
+##PP Tìm GTLN, GTNN trên đoạn $[a;b]$
+Kiểm tra hàm số xác định và liên tục trên $[a;b]$; tính $y'$.
+Giải $y'=0$ (và tìm các điểm $y'$ không xác định), chỉ giữ các nghiệm thuộc $[a;b]$.
+Tính $y$ tại các nghiệm đó và tại hai đầu mút $a$, $b$.
+So sánh các giá trị: số lớn nhất là GTLN, số nhỏ nhất là GTNN; nêu điểm đạt được.
+
+##CY
+- Loại nghiệm của $y'=0$ nằm ngoài đoạn $[a;b]$ trước khi tính giá trị.
+- Phải tính giá trị tại **cả hai đầu mút**, không chỉ tại nghiệm của $y'$.
+- Hàm số đơn điệu trên đoạn thì GTLN, GTNN nằm ở hai đầu mút.
+
+=== H3.2.1
+@ly_thuyet:
+##TC Hàm đa thức
+- Hàm đa thức xác định và liên tục trên $\mathbb{R}$ nên luôn có GTLN, GTNN trên mọi đoạn $[a;b]$.
+- $y'$ của hàm bậc ba là tam thức bậc hai, của hàm trùng phương $y=ax^4+bx^2+c$ là $y'=2x(2ax^2+b)$.
+
+##PP Hàm đa thức trên đoạn
+Tính $y'$ và giải $y'=0$.
+Giữ các nghiệm thuộc $[a;b]$.
+Tính $y$ tại các nghiệm đã giữ và tại $a$, $b$.
+Chọn số lớn nhất và số nhỏ nhất.
+
+##CY
+- Với hàm trùng phương, nghiệm $x=\pm\sqrt{k}$ có thể có một nghiệm nằm ngoài đoạn: kiểm tra từng nghiệm.
+- Tính giá trị bằng cách thay vào hàm số ban đầu, không thay vào $y'$.
+
+@vi_du:
+##VD
+Tìm giá trị lớn nhất và giá trị nhỏ nhất của hàm số $y=x^3-3x^2-9x+5$ trên đoạn $[-2;4]$.
+
+Bài giải:
+Hàm số liên tục trên $[-2;4]$ và $y'=3x^2-6x-9=3(x+1)(x-3)$.
+$y'=0$ khi $x=-1$ hoặc $x=3$, cả hai đều thuộc $[-2;4]$.
+Ta có $y(-2)=3$, $y(-1)=10$, $y(3)=-22$, $y(4)=-15$.
+Vậy $\max_{[-2;4]}y=10$ tại $x=-1$ và $\min_{[-2;4]}y=-22$ tại $x=3$.
+
+##VD
+Tìm giá trị lớn nhất và giá trị nhỏ nhất của hàm số $y=x^4-4x^2+3$ trên đoạn $[-1;3]$.
+
+Bài giải:
+Hàm số liên tục trên $[-1;3]$ và $y'=4x^3-8x=4x(x^2-2)$.
+$y'=0$ khi $x=0$ hoặc $x=\pm\sqrt{2}$; trong đoạn $[-1;3]$ chỉ nhận $x=0$ và $x=\sqrt{2}$ (loại $x=-\sqrt{2}\approx-1{,}41$).
+Ta có $y(-1)=0$, $y(0)=3$, $y(\sqrt{2})=4-8+3=-1$, $y(3)=81-36+3=48$.
+Vậy $\max_{[-1;3]}y=48$ tại $x=3$ và $\min_{[-1;3]}y=-1$ tại $x=\sqrt{2}$.
+
+=== H3.2.2
+@ly_thuyet:
+##TC Hàm phân thức
+- $y=\dfrac{ax+b}{cx+d}$ có $y'=\dfrac{ad-bc}{(cx+d)^2}$ không đổi dấu trên mỗi khoảng xác định nên đơn điệu trên đoạn không chứa $x=-\dfrac{d}{c}$.
+- Hàm $y=\dfrac{ax^2+bx+c}{dx+e}$ có thể có hai cực trị: cần giải $y'=0$ và lập bảng biến thiên hoặc so sánh giá trị.
+- Đoạn $[a;b]$ phải nằm trong tập xác định, không chứa nghiệm của mẫu.
+
+##PP Hàm phân thức trên đoạn
+Kiểm tra đoạn $[a;b]$ không chứa nghiệm mẫu thức.
+Tính $y'$; nếu hàm bậc nhất/bậc nhất thì xét dấu $y'$ để biết đồng biến hay nghịch biến, GTLN, GTNN ở hai đầu mút.
+Nếu hàm bậc hai/bậc nhất thì giải $y'=0$, giữ nghiệm thuộc $[a;b]$.
+Tính giá trị tại các nghiệm và hai đầu mút rồi so sánh.
+
+##CY
+- Đạo hàm $y'$ của hàm bậc nhất/bậc nhất luôn cùng dấu với $ad-bc$; đừng bỏ sót dấu của tử số.
+- Rút gọn tử số của $y'$ trước khi giải nghiệm để tránh sai đại số.
+
+@vi_du:
+##VD
+Tìm giá trị lớn nhất và giá trị nhỏ nhất của hàm số $y=\dfrac{2x+1}{x-1}$ trên đoạn $[2;4]$.
+
+Bài giải:
+Đoạn $[2;4]$ không chứa $x=1$ nên hàm số xác định và liên tục trên đoạn đó.
+$y'=\dfrac{2\cdot(-1)-1\cdot1}{(x-1)^2}=-\dfrac{3}{(x-1)^2}<0$ nên hàm số nghịch biến trên $[2;4]$.
+Do đó $\max y=y(2)=5$ và $\min y=y(4)=3$.
+Vậy $\max_{[2;4]}y=5$ tại $x=2$ và $\min_{[2;4]}y=3$ tại $x=4$.
+
+##VD
+Tìm giá trị lớn nhất và giá trị nhỏ nhất của hàm số $y=\dfrac{x^2-3x+6}{x-1}$ trên đoạn $[2;6]$.
+
+Bài giải:
+Đoạn $[2;6]$ không chứa $x=1$. Ta có $y'=\dfrac{(2x-3)(x-1)-(x^2-3x+6)}{(x-1)^2}=\dfrac{x^2-2x-3}{(x-1)^2}=\dfrac{(x+1)(x-3)}{(x-1)^2}$.
+$y'=0$ khi $x=3$ (nghiệm $x=-1$ nằm ngoài đoạn).
+Ta có $y(2)=4$, $y(3)=3$, $y(6)=\dfrac{24}{5}$.
+Vậy $\max_{[2;6]}y=\dfrac{24}{5}$ tại $x=6$ và $\min_{[2;6]}y=3$ tại $x=3$.
+
+=== H3.2.3
+@ly_thuyet:
+##TC Hàm chứa căn thức
+- Tập xác định: biểu thức dưới $\sqrt{\ }$ phải $\ge0$; đoạn đề cho là tập xác định hoặc nằm trong đó.
+- $(\sqrt{u})'=\dfrac{u'}{2\sqrt{u}}$; tại điểm $u=0$ hàm vẫn xác định nhưng đạo hàm thì không, điểm đó thường là đầu mút của tập xác định nên phải tính giá trị tại đó.
+- Hàm chứa hai căn thường cho nghiệm $y'=0$ bằng cách chuyển vế, bình phương rồi kiểm tra điều kiện dấu.
+
+##PP Hàm chứa căn thức
+Tìm tập xác định (nếu đề không cho đoạn); hàm liên tục trên tập đó.
+Tính $y'$ và giải $y'=0$; khi bình phương hai vế phải kiểm tra điều kiện hai vế cùng dấu.
+Tính $y$ tại các nghiệm thuộc tập xác định và tại các đầu mút.
+So sánh các giá trị rồi kết luận.
+
+##CY
+- Bình phương hai vế làm xuất hiện nghiệm ngoại lai: thử lại điều kiện (ví dụ $\sqrt{4-x^2}=x$ đòi hỏi $x\ge0$).
+- Đầu mút của tập xác định (nơi biểu thức trong căn bằng $0$) luôn phải tính giá trị.
+
+@vi_du:
+##VD
+Tìm giá trị lớn nhất và giá trị nhỏ nhất của hàm số $y=x+\sqrt{4-x^2}$.
+
+Bài giải:
+Tập xác định $[-2;2]$. Với $x\in(-2;2)$ ta có $y'=1-\dfrac{x}{\sqrt{4-x^2}}$.
+$y'=0\Leftrightarrow\sqrt{4-x^2}=x$, cần $x\ge0$ và $4-x^2=x^2$, suy ra $x=\sqrt{2}$.
+Ta có $y(-2)=-2$, $y(\sqrt{2})=2\sqrt{2}$, $y(2)=2$.
+Vậy $\max y=2\sqrt{2}$ tại $x=\sqrt{2}$ và $\min y=-2$ tại $x=-2$.
+
+##VD
+Tìm giá trị lớn nhất và giá trị nhỏ nhất của hàm số $y=\sqrt{x+3}+\sqrt{6-x}$.
+
+Bài giải:
+Tập xác định $[-3;6]$. Với $x\in(-3;6)$ ta có $y'=\dfrac{1}{2\sqrt{x+3}}-\dfrac{1}{2\sqrt{6-x}}$.
+$y'=0\Leftrightarrow\sqrt{x+3}=\sqrt{6-x}\Leftrightarrow x+3=6-x\Leftrightarrow x=\dfrac{3}{2}$.
+Ta có $y(-3)=3$, $y\left(\dfrac{3}{2}\right)=2\sqrt{\dfrac{9}{2}}=3\sqrt{2}$, $y(6)=3$.
+Vậy $\max y=3\sqrt{2}$ tại $x=\dfrac{3}{2}$ và $\min y=3$ tại $x=-3$ và $x=6$.
+
+=== H3.2.4
+@ly_thuyet:
+##TC Đạo hàm của hàm lượng giác, mũ, logarit
+- $(\sin x)'=\cos x$, $(\cos x)'=-\sin x$, $(\tan x)'=\dfrac{1}{\cos^2x}$.
+- $(e^x)'=e^x$, $(a^x)'=a^x\ln a$.
+- $(\ln x)'=\dfrac{1}{x}$ với $x>0$.
+- Với hàm lượng giác, giải $y'=0$ chỉ trong đoạn đề cho; có thể đặt $t=\sin x$ hoặc $t=\cos x$ ($t\in[-1;1]$) đưa về hàm đa thức.
+
+##PP Hàm lượng giác, mũ, logarit trên đoạn
+Tính $y'$, giải $y'=0$ rồi chọn các nghiệm thuộc đoạn (đối với lượng giác, liệt kê nghiệm theo đường tròn lượng giác).
+Hàm lượng giác có thể quy về ẩn phụ $t=\sin x$ hay $t=\cos x$ với $t\in[-1;1]$ rồi khảo sát hàm của $t$ (nhớ miền của $t$).
+Tính $y$ tại các nghiệm và hai đầu mút; với mũ, logarit giữ giá trị dạng đúng ($e$, $\ln$) rồi so sánh bằng giá trị gần đúng.
+Kết luận GTLN, GTNN.
+
+##CY
+- $e^x>0$ nên dấu của $y'$ có thừa số $e^x$ chỉ phụ thuộc phần còn lại; logarit đòi $x>0$ nên đoạn phải nằm trong $(0;+\infty)$.
+- Khi so sánh các giá trị như $e^2-2$ và $e^{-2}+2$ cần đổi sang số gần đúng để chắc chắn.
+
+@vi_du:
+##VD
+Tìm giá trị lớn nhất và giá trị nhỏ nhất của hàm số $y=x-2\sin x$ trên đoạn $[0;\pi]$.
+
+Bài giải:
+$y'=1-2\cos x$. $y'=0\Leftrightarrow\cos x=\dfrac{1}{2}$, trong đoạn $[0;\pi]$ có nghiệm $x=\dfrac{\pi}{3}$.
+Ta có $y(0)=0$, $y\left(\dfrac{\pi}{3}\right)=\dfrac{\pi}{3}-\sqrt{3}\approx-0{,}685$, $y(\pi)=\pi$.
+Vậy $\max y=\pi$ tại $x=\pi$ và $\min y=\dfrac{\pi}{3}-\sqrt{3}$ tại $x=\dfrac{\pi}{3}$.
+
+##VD
+Tìm giá trị lớn nhất và giá trị nhỏ nhất của hàm số $y=x^2-2\ln x$ trên đoạn $\left[\dfrac{1}{e};e\right]$.
+
+Bài giải:
+Đoạn $\left[\dfrac{1}{e};e\right]$ nằm trong $(0;+\infty)$. Ta có $y'=2x-\dfrac{2}{x}=\dfrac{2(x^2-1)}{x}$.
+$y'=0$ khi $x=1$ (nhận), $x=-1$ loại.
+Ta có $y\left(\dfrac{1}{e}\right)=e^{-2}+2\approx2{,}14$, $y(1)=1$, $y(e)=e^2-2\approx5{,}39$.
+Vậy $\max y=e^2-2$ tại $x=e$ và $\min y=1$ tại $x=1$.
+
+=== H3.2.5
+@ly_thuyet:
+##TC Khoảng, nửa khoảng, toàn $\mathbb{R}$
+- Hàm liên tục trên khoảng hoặc nửa khoảng có thể không có GTLN hoặc GTNN.
+- Điểm cực trị duy nhất trên khoảng: nếu là cực tiểu thì là GTNN, nếu là cực đại thì là GTLN (của hàm trên khoảng đó).
+- Giới hạn $\lim_{x\to a^{\pm}}f(x)$ và $\lim_{x\to\pm\infty}f(x)$ ở đầu mở cho biết hàm có bị chặn về phía đó hay không.
+
+##PP Lập bảng biến thiên trên khoảng
+Tìm tập xác định, tính $y'$ và giải $y'=0$, chỉ giữ nghiệm thuộc khoảng đề cho.
+Tính các giới hạn tại đầu mở (và tại $\pm\infty$).
+Lập bảng biến thiên có giới hạn rồi đọc GTLN, GTNN của khoảng.
+Giá trị tiến tới nhưng không đạt (giới hạn tại đầu mở) không phải GTLN, GTNN; nếu hàm tiến tới $\pm\infty$ thì không có GTLN (GTNN) tương ứng.
+
+##CY
+- Đầu mở không đạt giá trị nên $\max$, $\min$ có thể không tồn tại dù hàm bị chặn (ví dụ $y=\dfrac{1}{x}$ trên $(0;1)$ bị chặn dưới bởi $1$ nhưng không đạt được).
+- Không áp dụng quy tắc đoạn (so với đầu mút) cho khoảng.
+
+@vi_du:
+##VD
+Tìm giá trị lớn nhất, giá trị nhỏ nhất (nếu có) của các hàm số sau:
+a) $y=x+\dfrac{4}{x}$ trên khoảng $(0;+\infty)$.
+b) $y=\dfrac{x}{x^2+1}$ trên $\mathbb{R}$.
+
+Bài giải:
+a) $y'=1-\dfrac{4}{x^2}=\dfrac{x^2-4}{x^2}$; trên $(0;+\infty)$, $y'=0$ khi $x=2$, $y'<0$ trên $(0;2)$ và $y'>0$ trên $(2;+\infty)$.
+Khi $x\to0^+$ thì $y\to+\infty$, khi $x\to+\infty$ thì $y\to+\infty$.
+Bảng biến thiên cho thấy hàm nghịch biến trên $(0;2)$, đồng biến trên $(2;+\infty)$ nên GTNN là $y(2)=4$, và không có GTLN vì $y$ nhận giá trị lớn tuỳ ý.
+b) $y'=\dfrac{1-x^2}{(x^2+1)^2}$; $y'=0$ khi $x=\pm1$.
+$y'<0$ trên $(-\infty;-1)$ và $(1;+\infty)$, $y'>0$ trên $(-1;1)$; $y(-1)=-\dfrac{1}{2}$, $y(1)=\dfrac{1}{2}$ và $\lim_{x\to\pm\infty}y=0$.
+Từ bảng biến thiên, hàm đạt cực tiểu $-\dfrac{1}{2}$ và cực đại $\dfrac{1}{2}$; vì các giới hạn $0$ nằm giữa hai giá trị này nên đó cũng là GTNN, GTLN.
+Vậy a) $\min=4$, không có $\max$; b) $\max=\dfrac{1}{2}$, $\min=-\dfrac{1}{2}$.
+
+##VD
+Cho hàm số $y=f(x)$ liên tục trên $\mathbb{R}$ có bảng biến thiên như hình vẽ. Tìm giá trị lớn nhất, giá trị nhỏ nhất (nếu có) của $f(x)$ trên nửa khoảng $(-\infty;1]$ và trên nửa khoảng $[-1;+\infty)$.
+[[HINH {"loai":"bbt","x":["-∞","-1","1","+∞"],"dau":["-","+","-"],"y":["+∞","-2","3","-∞"]}]]
+
+Bài giải:
+Trên $(-\infty;1]$: hàm giảm từ $+\infty$ xuống $-2$ tại $x=-1$ rồi tăng đến $f(1)=3$.
+Do $f(x)\to+\infty$ khi $x\to-\infty$ nên không có GTLN; GTNN là $-2$ tại $x=-1$.
+Trên $[-1;+\infty)$: hàm tăng từ $-2$ đến $3$ tại $x=1$ rồi giảm về $-\infty$.
+Do $f(x)\to-\infty$ khi $x\to+\infty$ nên không có GTNN; GTLN là $3$ tại $x=1$.
+Vậy trên $(-\infty;1]$ chỉ có $\min=-2$; trên $[-1;+\infty)$ chỉ có $\max=3$.
+
+=== N H3.3
+@ly_thuyet:
+##TC Hàm số có tham số
+- Với hàm $f(x,m)$ trên đoạn $[a;b]$: $\max f$ và $\min f$ là các biểu thức theo $m$.
+- Hàm đồng biến/nghịch biến trên đoạn (với mọi $m$ cho trước) thì $\max$, $\min$ ở hai đầu mút; xét dấu $y'$ có thể phụ thuộc $m$ nên phải chia trường hợp.
+- $m\ge f(x)$ nghiệm đúng $\forall x\in D\Leftrightarrow m\ge\max_Df$; $m\ge f(x)$ có nghiệm $x\in D\Leftrightarrow m\ge\min_Df$; tương tự với $\le$.
+
+##PP Giải bài toán có tham số bằng max, min
+Biểu diễn $\max$, $\min$ theo $m$ (hoặc tách $m$ về một vế: $m=g(x)$ rồi khảo sát $g$).
+Lập phương trình hoặc bất phương trình theo $m$ từ điều kiện của đề, chia trường hợp nếu $\max$, $\min$ đổi vị trí khi $m$ thay đổi.
+Giải ra $m$ và đối chiếu với điều kiện của từng trường hợp.
+Thử lại khi đề yêu cầu giá trị đạt được.
+
+##CY
+- Không chia trường hợp theo dấu $y'$ khi $y'$ chứa $m$ là lỗi hay gặp.
+- Phân biệt "nghiệm đúng với mọi $x$" (dùng $\max$) và "có nghiệm" (dùng $\min$).
+
+=== H3.3.1
+@ly_thuyet:
+##TC Cho GTLN hoặc GTNN bằng $k$
+- Hàm bậc nhất/bậc nhất $y=\dfrac{ax+b}{cx+d}$ đơn điệu trên đoạn không chứa $x=-\dfrac{d}{c}$ nên GTLN, GTNN đạt ở hai đầu mút.
+- Hàm $y=f(x)+m$: $\max=\max f+m$, $\min=\min f+m$ (cộng $m$ vào mọi giá trị).
+
+##PP Cho max, min bằng một số, tìm $m$
+Tính $y'$, xét dấu theo $m$ nếu cần để biết tính đơn điệu hoặc vị trí cực trị.
+Viết $\max$ hoặc $\min$ theo $m$ trong từng trường hợp.
+Cho bằng $k$ rồi giải phương trình theo $m$.
+Đối chiếu nghiệm với điều kiện của trường hợp đang xét.
+
+##CY
+- Mỗi trường hợp phải kiểm tra điều kiện ($m>-1$ hay $m<-1$ ...) của chính nó.
+- Trường hợp $y'\equiv0$ (hàm hằng) phải xét riêng.
+
+@vi_du:
+##VD
+Tìm tham số $m$ để giá trị nhỏ nhất của hàm số $y=\dfrac{x+m}{x-1}$ trên đoạn $[2;4]$ bằng $3$.
+
+Bài giải:
+$y'=\dfrac{(x-1)-(x+m)}{(x-1)^2}=\dfrac{-1-m}{(x-1)^2}$.
+Nếu $m>-1$ thì $y'<0$, hàm nghịch biến nên $\min y=y(4)=\dfrac{4+m}{3}=3\Rightarrow m=5$ (thoả $m>-1$).
+Nếu $m<-1$ thì $y'>0$, hàm đồng biến nên $\min y=y(2)=2+m=3\Rightarrow m=1$ (không thoả $m<-1$, loại).
+Nếu $m=-1$ thì $y=1$ với mọi $x\ne1$, giá trị nhỏ nhất bằng $1\ne3$ (loại).
+Vậy $m=5$.
+
+##VD
+Tìm tham số $m$ để giá trị lớn nhất của hàm số $y=x^3-3x+m$ trên đoạn $[0;2]$ bằng ba lần giá trị nhỏ nhất của nó.
+
+Bài giải:
+$y'=3x^2-3$, $y'=0$ khi $x=1$ (nhận) hoặc $x=-1$ (loại).
+Ta có $y(0)=m$, $y(1)=m-2$, $y(2)=m+2$.
+Vậy $\max y=m+2$ và $\min y=m-2$.
+Điều kiện $m+2=3(m-2)\Leftrightarrow2m=8\Leftrightarrow m=4$.
+Thử lại: với $m=4$ có $\max y=6$, $\min y=2$, đúng là $6=3\cdot2$.
+Vậy $m=4$.
+
+=== H3.3.2
+@ly_thuyet:
+##TC Hàm $y=|f(x)+m|$ trên đoạn
+- Gọi $K=\max_{[a;b]}f$ và $k=\min_{[a;b]}f$ ($K>k$). Vì $f$ liên tục nên $f(x)+m$ nhận mọi giá trị từ $m+k$ đến $m+K$.
+- GTLN: $\max_{[a;b]}|f(x)+m|=\max\{|m+K|,|m+k|\}$, cụ thể:
+- Nếu $m\ge-\dfrac{K+k}{2}$ thì $\max|f+m|=m+K$; nếu $m<-\dfrac{K+k}{2}$ thì $\max|f+m|=-(m+k)$.
+- GTNN: xét vị trí của $0$ so với đoạn $[m+k;m+K]$:
+- Nếu $m+k\ge0$ (tức $m\ge-k$) thì $\min|f+m|=m+k$.
+- Nếu $m+K\le0$ (tức $m\le-K$) thì $\min|f+m|=-(m+K)$.
+- Nếu $m+k<0<m+K$ (tức $-K<m<-k$) thì $\min|f+m|=0$.
+- $\max\{|u|,|v|\}\ge\dfrac{|u-v|}{2}$, dấu bằng khi $u=-v$; do đó $\max|f+m|\ge\dfrac{K-k}{2}$, dấu bằng khi $m=-\dfrac{K+k}{2}$.
+
+##PP Tìm $m$ để $\max$ hoặc $\min$ của $|f+m|$ thoả điều kiện
+Tìm $K$, $k$ của hàm $f$ (chưa có $m$) trên đoạn bằng đạo hàm.
+Bài về $\max$: chia hai trường hợp $m\ge-\dfrac{K+k}{2}$ (khi đó $\max=m+K$) và $m<-\dfrac{K+k}{2}$ (khi đó $\max=-(m+k)$).
+Bài về $\min$: chia ba trường hợp $m\ge-k$, $m\le-K$, $-K<m<-k$ theo các công thức ở trên.
+Trong mỗi trường hợp giải phương trình hoặc bất phương trình theo điều kiện của đề, giữ nghiệm thoả điều kiện của trường hợp đó.
+Gộp nghiệm các trường hợp; bài "$\max$ đạt nhỏ nhất" có ngay $m=-\dfrac{K+k}{2}$ và giá trị nhỏ nhất là $\dfrac{K-k}{2}$.
+
+##CY
+- Phải đối chiếu điều kiện của trường hợp (vế nào lớn hơn) với nghiệm vừa giải được.
+- Không thay $\max|f+m|$ bằng $|\max f+m|$.
+
+@vi_du:
+##VD
+Tìm tất cả các giá trị của tham số $m$ để giá trị lớn nhất của hàm số $y=|x^3-3x+m|$ trên đoạn $[0;2]$ bằng $3$.
+
+Bài giải:
+Đặt $f(x)=x^3-3x$. $f'(x)=3x^2-3=0$ có nghiệm $x=1\in[0;2]$; $f(0)=0$, $f(1)=-2$, $f(2)=2$ nên $K=2$, $k=-2$.
+Do đó $\max y=\max\{|m+2|,|m-2|\}$. Ta có $|m+2|\ge|m-2|\Leftrightarrow m\ge0$.
+Trường hợp $m\ge0$: $\max y=|m+2|=3\Leftrightarrow m=1$ hoặc $m=-5$, nhận $m=1$.
+Trường hợp $m<0$: $\max y=|m-2|=3\Leftrightarrow m=-1$ hoặc $m=5$, nhận $m=-1$.
+Vậy $m=1$ hoặc $m=-1$.
+
+##VD
+Tìm giá trị của tham số $m$ để giá trị lớn nhất của hàm số $y=|x^2-4x+m|$ trên đoạn $[-1;3]$ nhỏ nhất, và tìm giá trị nhỏ nhất đó.
+
+Bài giải:
+Đặt $f(x)=x^2-4x$. $f'(x)=2x-4=0$ khi $x=2\in[-1;3]$; $f(-1)=5$, $f(2)=-4$, $f(3)=-3$ nên $K=5$, $k=-4$.
+Ta có $\max y=\max\{|m+5|,|m-4|\}$ và $|m+5|\ge|m-4|\Leftrightarrow m\ge-\dfrac{1}{2}$.
+Nếu $m\ge-\dfrac{1}{2}$ thì $\max y=m+5\ge\dfrac{9}{2}$, dấu bằng khi $m=-\dfrac{1}{2}$.
+Nếu $m<-\dfrac{1}{2}$ thì $\max y=|m-4|=4-m>\dfrac{9}{2}$.
+Vậy $\max y$ nhỏ nhất bằng $\dfrac{9}{2}$ khi $m=-\dfrac{1}{2}$.
+
+=== H3.3.3
+@ly_thuyet:
+##TC Phương trình, bất phương trình chứa tham số
+- $m\ge f(x)$ nghiệm đúng với mọi $x\in D$ $\Leftrightarrow m\ge\max_Df$; $m\le f(x)$ nghiệm đúng với mọi $x\in D$ $\Leftrightarrow m\le\min_Df$.
+- $m\ge f(x)$ có nghiệm $x\in D$ $\Leftrightarrow m\ge\min_Df$; $m\le f(x)$ có nghiệm $x\in D$ $\Leftrightarrow m\le\max_Df$.
+- $f(x)=m$ có nghiệm $x\in D$ $\Leftrightarrow m$ thuộc tập giá trị của $f$ trên $D$; nếu $f$ liên tục trên đoạn thì tập giá trị là $[\min f;\max f]$.
+
+##PP Cô lập tham số rồi dùng max, min
+Biến đổi về dạng $m=f(x)$, $m\ge f(x)$ hay $m\le f(x)$ với $f$ không chứa $m$; ghi tập $D$ của $x$.
+Khảo sát $f$ trên $D$ bằng đạo hàm, lập bảng biến thiên và tìm $\max$, $\min$ (hoặc tập giá trị).
+Đối chiếu với đề: "nghiệm đúng" hay "có nghiệm", dấu $\ge$ hay $\le$.
+Kết luận tập giá trị của $m$.
+
+##CY
+- Nghiệm đúng $\forall x$ dùng $\max$ (cho $\ge$) hoặc $\min$ (cho $\le$); có nghiệm thì ngược lại.
+- Khi đặt ẩn phụ phải tìm miền của ẩn phụ trước khi tìm max, min.
+
+@vi_du:
+##VD
+Tìm tất cả các giá trị của tham số $m$ để bất phương trình $x^3-3x^2-9x\le m$ nghiệm đúng với mọi $x\in[-2;4]$.
+
+Bài giải:
+Đặt $f(x)=x^3-3x^2-9x$, $f'(x)=3x^2-6x-9=3(x+1)(x-3)$ với nghiệm $x=-1$, $x=3$ thuộc đoạn $[-2;4]$.
+Ta có $f(-2)=-2$, $f(-1)=5$, $f(3)=-27$, $f(4)=-20$ nên $\max_{[-2;4]}f=5$.
+Bất phương trình nghiệm đúng với mọi $x\in[-2;4]$ khi và chỉ khi $m\ge\max f=5$.
+Vậy $m\ge5$.
+
+##VD
+Cho phương trình $\sqrt{x-1}+\sqrt{5-x}=m$.
+a) Tìm $m$ để phương trình có nghiệm.
+b) Tìm $m$ để bất phương trình $\sqrt{x-1}+\sqrt{5-x}\le m$ nghiệm đúng với mọi $x$ thuộc tập xác định.
+
+Bài giải:
+Tập xác định $[1;5]$. Đặt $f(x)=\sqrt{x-1}+\sqrt{5-x}$; với $x\in(1;5)$ có $f'(x)=\dfrac{1}{2\sqrt{x-1}}-\dfrac{1}{2\sqrt{5-x}}$, $f'(x)=0$ khi $x=3$.
+Ta có $f(1)=2$, $f(3)=2\sqrt{2}$, $f(5)=2$ nên $\min f=2$ và $\max f=2\sqrt{2}$; $f$ liên tục nên tập giá trị là $[2;2\sqrt{2}]$.
+a) Phương trình $f(x)=m$ có nghiệm khi và chỉ khi $2\le m\le2\sqrt{2}$.
+b) Bất phương trình $f(x)\le m$ nghiệm đúng với mọi $x\in[1;5]$ khi và chỉ khi $m\ge\max f=2\sqrt{2}$.
+Vậy a) $2\le m\le2\sqrt{2}$; b) $m\ge2\sqrt{2}$.
+
+=== N H3.4
+@ly_thuyet:
+##TC Hàm hợp và biểu thức nhiều biến
+- Với $g(x)=f(u(x))$: đặt $t=u(x)$, $t$ chạy trong miền $T$ là tập giá trị của $u$; khi đó $\max g=\max_Tf$ và $\min g=\min_Tf$.
+- Biểu thức hai biến có ràng buộc: rút một biến hoặc đặt $t=x+y$ (hay $t=xy$...), tìm miền của $t$ rồi khảo sát hàm một biến.
+- Bất đẳng thức Cô-si: $a+b\ge2\sqrt{ab}$ với $a,b\ge0$; $(x+y)^2\le2(x^2+y^2)$.
+
+##PP Đưa về hàm một biến
+Chọn ẩn phụ $t$ (là $u(x)$ hoặc là tổng, tích của hai biến) làm cho biểu thức chỉ còn $t$.
+Tìm miền giá trị của $t$ từ ràng buộc hoặc từ hàm $u$ (đạo hàm, bất đẳng thức).
+Khảo sát hàm của $t$ trên miền đó (bảng biến thiên của $f$ hoặc đạo hàm).
+Kết luận GTLN, GTNN và chỉ ra giá trị của biến ban đầu để đạt được.
+
+##CY
+- Miền của $t$ phải **chính xác**: thiếu hoặc thừa đầu mút làm sai GTLN, GTNN.
+- Phải kiểm tra giá trị $t$ tại cực trị có ứng với biến ban đầu hay không (tồn tại $x$, $y$ thực).
+
+=== H3.4.1
+@ly_thuyet:
+##TC Hàm hợp
+- $g(x)=f(u(x))$, đặt $t=u(x)$ thì $g(x)=f(t)$ với $t\in T$, $T$ là tập giá trị của $u$.
+- Với $u(x)=a\sin x+b$ (hoặc $a\cos x+b$), $a\ne0$, thì $T=[b-|a|;b+|a|]$.
+- Với tam thức $u(x)=px^2+qx+r$ trên $\mathbb{R}$, gọi $u_0$ là giá trị tại đỉnh $x=-\dfrac{q}{2p}$: nếu $p>0$ thì $T=[u_0;+\infty)$, nếu $p<0$ thì $T=(-\infty;u_0]$.
+- GTLN, GTNN của $g$ chính là GTLN, GTNN của $f$ trên $T$; giá trị $x$ đạt được tìm bằng cách giải $u(x)=t_0$.
+
+##PP Hàm hợp $f(u(x))$ từ bảng biến thiên hoặc đồ thị $f'$
+Đặt $t=u(x)$ và tìm miền $T$ của $t$ (bằng bất đẳng thức hoặc khảo sát $u$).
+Xét dấu $f'$ trên $T$ từ bảng hoặc đồ thị $f'$, lập bảng biến thiên của $f$ trên $T$.
+Đọc GTLN, GTNN của $f$ trên $T$ (đầu mút thuộc $T$ và cực trị nằm trong $T$).
+Giải $u(x)=t_0$ để chỉ ra các giá trị $x$ đạt được.
+
+##CY
+- Không đọc GTLN, GTNN của $f$ trên cả bảng mà phải giới hạn trong $T$.
+- Nhiều giá trị $x$ cùng cho một $t_0$: nêu đủ hoặc ghi "đạt tại các $x$ thoả $u(x)=t_0$".
+
+@vi_du:
+##VD
+Cho hàm số $y=f(x)$ có bảng biến thiên như hình vẽ. Tìm giá trị lớn nhất và giá trị nhỏ nhất của hàm số $g(x)=f(2\sin x+1)$ trên $\mathbb{R}$.
+[[HINH {"loai":"bbt","x":["-∞","-1","3","+∞"],"dau":["+","-","+"],"y":["-∞","4","-2","+∞"]}]]
+
+Bài giải:
+Đặt $t=2\sin x+1$. Vì $-1\le\sin x\le1$ nên $t\in[-1;3]$ và $g(x)=f(t)$.
+Từ bảng biến thiên, $f$ nghịch biến trên $[-1;3]$ với $f(-1)=4$, $f(3)=-2$ nên $\max_{[-1;3]}f=4$ tại $t=-1$ và $\min_{[-1;3]}f=-2$ tại $t=3$.
+$t=-1$ ứng với $\sin x=-1$, $t=3$ ứng với $\sin x=1$ nên cả hai giá trị đều đạt được.
+Vậy $\max g=4$ khi $x=-\dfrac{\pi}{2}+k2\pi$ và $\min g=-2$ khi $x=\dfrac{\pi}{2}+k2\pi$ ($k\in\mathbb{Z}$).
+
+##VD
+Cho hàm số $y=f(x)$ liên tục trên $\mathbb{R}$, đồ thị hàm số $y=f'(x)$ như hình vẽ và $f(-1)=2$. Tìm giá trị lớn nhất của hàm số $g(x)=f(2x-x^2)$ và các giá trị $x$ để đạt giá trị đó.
+[[HINH {"loai":"dothi","x":[-3,5],"y":[-4,5],"f":[{"e":"x^2-2*x-3","ten":"y=f'(x)"}]}]]
+
+Bài giải:
+Đặt $t=2x-x^2=1-(x-1)^2\le1$, nên $t\in(-\infty;1]$ và $g(x)=f(t)$.
+Đồ thị $f'$ cắt trục $Ox$ tại $x=-1$ và $x=3$, nằm trên trục $Ox$ khi $x<-1$ hoặc $x>3$, nằm dưới khi $-1<x<3$; tức là $f'(t)>0$ khi $t<-1$ hoặc $t>3$ và $f'(t)<0$ khi $-1<t<3$.
+Trên $(-\infty;1]$: $f'>0$ với $t<-1$ và $f'<0$ với $-1<t\le1$, nên $f$ đồng biến trên $(-\infty;-1)$ và nghịch biến trên $(-1;1]$; do đó $\max_{(-\infty;1]}f=f(-1)=2$.
+Giá trị $t=-1$ ứng với $2x-x^2=-1\Leftrightarrow x^2-2x-1=0\Leftrightarrow x=1\pm\sqrt{2}$.
+Vậy $\max g=2$, đạt khi $x=1+\sqrt{2}$ hoặc $x=1-\sqrt{2}$.
+
+=== H3.4.2
+@ly_thuyet:
+##TC Biểu thức nhiều biến có ràng buộc
+- Ràng buộc bậc nhất $ax+by=c$: rút $y$ theo $x$ rồi thay vào biểu thức.
+- Ràng buộc đối xứng ($x^2+y^2=r^2$, $xy=\dots$): đặt $t=x+y$ và biểu diễn $xy=\dfrac{t^2-(x^2+y^2)}{2}$.
+- Miền của $t=x+y$ lấy từ $(x+y)^2\le2(x^2+y^2)$ hoặc từ điều kiện phương trình $X^2-tX+xy=0$ có nghiệm thực.
+
+##PP Rút biến hoặc đặt $t=x+y$
+Dùng ràng buộc để rút một biến (hoặc đặt $t=x+y$, biểu thị $xy$ theo $t$) và đưa biểu thức về hàm $P(t)$.
+Tìm miền của $t$ (kể cả điều kiện biến ban đầu như $x,y\ge0$).
+Khảo sát $P(t)$ trên miền đó: giải $P'(t)=0$, so sánh các giá trị tại nghiệm và đầu mút.
+Kiểm tra giá trị cực trị ứng với các biến $x,y$ thực rồi kết luận.
+
+##CY
+- Miền của $t$ thiếu điều kiện $x,y\ge0$ (hoặc giới hạn khác) làm đổi hẳn kết quả.
+- Dùng Cô-si khi đề cho biến dương; dấu bằng phải xảy ra được thì bất đẳng thức mới cho GTLN, GTNN.
+
+@vi_du:
+##VD
+Cho hai số thực không âm $x$, $y$ thoả $x+y=4$. Tìm giá trị lớn nhất và giá trị nhỏ nhất của $P=x^2y$.
+
+Bài giải:
+Từ $y=4-x$ và $y\ge0$ nên $x\in[0;4]$. Khi đó $P=x^2(4-x)=4x^2-x^3$.
+$P'=8x-3x^2=x(8-3x)$, $P'=0$ khi $x=0$ hoặc $x=\dfrac{8}{3}$, cả hai thuộc $[0;4]$.
+Ta có $P(0)=0$, $P\left(\dfrac{8}{3}\right)=\dfrac{64}{9}\cdot\dfrac{4}{3}=\dfrac{256}{27}$, $P(4)=0$.
+Vậy $\max P=\dfrac{256}{27}$ khi $x=\dfrac{8}{3}$, $y=\dfrac{4}{3}$ và $\min P=0$ khi $x=0$, $y=4$ hoặc $x=4$, $y=0$.
+
+##VD
+Cho hai số thực $x$, $y$ thoả $x^2+y^2=2$. Tìm giá trị lớn nhất và giá trị nhỏ nhất của $P=x+y+xy$.
+
+Bài giải:
+Đặt $t=x+y$. Vì $t^2\le2(x^2+y^2)=4$ nên $t\in[-2;2]$, và mọi giá trị trong $[-2;2]$ đều đạt được (chẳng hạn $x=\sqrt{2}\cos\theta$, $y=\sqrt{2}\sin\theta$).
+Ta có $xy=\dfrac{t^2-2}{2}$ nên $P(t)=t+\dfrac{t^2-2}{2}=\dfrac{t^2}{2}+t-1$.
+$P'(t)=t+1=0$ khi $t=-1\in[-2;2]$. Ta có $P(-2)=-1$, $P(-1)=-\dfrac{3}{2}$, $P(2)=3$.
+$t=2$ ứng với $x+y=2$, $xy=1$ nên $x=y=1$.
+$t=-1$ ứng với $x+y=-1$, $xy=-\dfrac{1}{2}$ nên $x$, $y$ là hai nghiệm của $X^2+X-\dfrac{1}{2}=0$, tức $X=\dfrac{-1\pm\sqrt{3}}{2}$.
+Vậy $\max P=3$ khi $x=y=1$ và $\min P=-\dfrac{3}{2}$ khi $(x;y)=\left(\dfrac{-1+\sqrt{3}}{2};\dfrac{-1-\sqrt{3}}{2}\right)$ hoặc $(x;y)=\left(\dfrac{-1-\sqrt{3}}{2};\dfrac{-1+\sqrt{3}}{2}\right)$.
+
+## GHI CHÚ CHO CEO
+- H3.1.3: các giả thiết nối ($f(0)=f(3)$; $f(1)=f(4)$ cùng $f(0)+f(1)=f(3)+f(4)$) được chọn cho khớp với hàm cụ thể ($f=-x^3+3x^2$ và $f=\frac{x^3}{3}-2x^2+3x$) để đề không tự mâu thuẫn với đồ thị $f'$ vẽ trên hình. Không dùng diện tích (cần tích phân).
+- H3.1.2 ví dụ 2 và H3.2.5 ví dụ 2: bảng biến thiên của hàm trừu tượng, giá trị ở đầu mút khoảng mở là giới hạn.
+- H3.4.1 ví dụ 1 dùng hình bảng biến thiên, ví dụ 2 dùng hình đồ thị $f'$ (đủ cả hai loại hình cho dạng "ca-hai").
+- (Trạm soát) H3.3.2: lý thuyết đã viết lại theo từng trường hợp cho cả $\max|f+m|$ (2 trường hợp) và $\min|f+m|$ (3 trường hợp), đã kiểm bằng quét số; hai ví dụ chỉ hỏi về $\max$ (một bài "bằng $a$", một bài "đạt nhỏ nhất"), chưa có ví dụ cho $\min|f+m|$ hay "không vượt quá".
+- (Trạm soát) H3.1.3: mô tả dạng nhắc "dùng diện tích" nhưng diện tích cần tích phân (chương sau) nên chỉ dùng giả thiết nối; ví dụ 2 cho sẵn $f(1)=f(4)$ nên giả thiết tổng chỉ còn dùng để suy ra $f(0)=f(3)$.
+- (Trạm soát) H3.3.3 ví dụ 1 dùng lại hàm của H3.2.1 ví dụ 1 (bỏ hằng số $5$) — đúng nhưng trùng.
