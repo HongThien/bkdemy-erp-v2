@@ -38552,3 +38552,10 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 ### 21/10 — [ERP Home] Yêu thích tối đa 12 mục (trước: 8) — Thùy
 - **Làm:** hằng `YEU_THICH_TOI_DA = 12` ở `lib/menu.ts`, dùng chung cho luật ghim (store `doiYeuThich`), cảnh liền (`canhLien` nhận tối đa 12 ô), trang đánh dấu ô (12 ô yêu thích), `YEU-CAU-ANH-STYLE-ERP.md` §A1/§C. Trang chính bố cục thường hiện đủ 12. Cảnh: hiện đúng số ô tranh có (`canh.yeuThichO.length` — 3 cảnh ghép cũ vẫn 8 ô vì hình vẽ cố định; mục 9–12 vẫn ở ☰ menu › ⭐ Yêu thích).
 - **Kiểm (`/xem-thu-erp.html`):** ghim 12 mục ⇒ Trang chính 12 ô; mục thứ 13 bị chặn, nhắc "tối đa 12 mục". `tsc` sạch. Không cần migration (mảng jsonb).
+
+### 21/10 — [Chuyên đề] Nâng cao Đại số 7: bỏ T107000000294 · chuyên đề không phân trên lớp / về nhà — Thùy
+- **Xoá câu:** Thùy bảo xoá T107000000294 (không phải nâng cao) ⇒ đã xoá khỏi chuyên đề (còn 78 câu); script `_cd_nang_cao_dai7.mjs` có `LOAI_TRU` để chạy --them không đưa lại.
+- **Sai (Thùy tưởng thiếu câu):** DB đủ 78 câu, nhưng builder NHỚ bộ lọc phần (localStorage `tlb_buoi_<id>`) đang để "Số thực" ⇒ chỉ hiện 16 câu. Sửa: chuyên đề luôn mở "Tất cả", không nhớ lọc (giáo trình vẫn nhớ như cũ).
+- **Thùy: "cái này không phải giáo trình, không phân biệt trên lớp / về nhà":** chuyên đề ẩn khối BTVN của nhóm (builder), màn in bỏ nút Toàn bộ / Chỉ giáo trình / Chỉ BTVN, nhãn "Bài luyện" ⇒ "Bài tập". Các dòng `btvn_nhom` rỗng do `fn_tl_bdm_dat_buoi` sinh vẫn còn (vô hại, không có câu).
+- **Thùy hỏi gộp 2 phần thành 1 rồi đổi ý "không gộp cũng được, vẫn in tất cả được"** ⇒ giữ 2 phần.
+- **Kiểm (app thật, admin):** builder 78 câu, lọc = Tất cả, không còn BTVN; bản in tiêu đề "Xem thử & xuất chuyên đề", 78 câu, nhãn "Bài tập". `tsc` sạch.

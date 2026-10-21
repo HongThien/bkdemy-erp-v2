@@ -199,6 +199,7 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
   // Giáo trình theo BẢN ĐỒ MỚI (spec-builder-ban-do-moi.md A3): khung nhóm → dạng bài lấy từ fn_tl_bdm_noi_dung;
   // câu vẫn lấy từ getTaiLieuFull (đã nạp đủ câu của mọi phần). Tài liệu cũ: bdm luôn null, hành vi không đổi.
   const [bdm, setBdm] = useState<NoiDung | null>(null)
+  const laCD = full?.taiLieu.loai === 'chuyen_de'   // chuyên đề: 1 tài liệu, không tách giáo trình / BTVN
   useEffect(() => {
     let cancelled = false
     setFull(null); setLopTen(null); setBdm(null)
@@ -382,17 +383,18 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
   return createPortal(
     <div className="pv-overlay fixed inset-0 z-[80] flex flex-col bg-slate-300/90">
       <div className="no-print flex items-center gap-3 border-b border-slate-300 bg-white px-5 py-2.5 shadow-sm">
-        <span className="text-sm font-semibold text-slate-800">{onlyBuoiId ? 'Xem thử buổi' : 'Xem thử & xuất giáo trình'}</span>
+        <span className="text-sm font-semibold text-slate-800">{onlyBuoiId ? (laCD ? 'Xem thử phần' : 'Xem thử buổi') : (laCD ? 'Xem thử & xuất chuyên đề' : 'Xem thử & xuất giáo trình')}</span>
         {onlyBuoiId && <span className="rounded-full bg-indigo-50 px-2.5 py-1 text-[12px] font-medium text-indigo-700" title="Chỉ xem buổi này — nút '🖨 Xem / Xuất PDF' ở thanh trên xem cả giáo trình">🗓️ {buoiTitle || 'Buổi'}</span>}
         <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
           <button onClick={() => setGv(false)} className={seg(!gv)}>Bản học sinh</button>
           <button onClick={() => setGv(true)} className={seg(gv)}>Bản giáo viên</button>
         </div>
-        <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5" title="Tách quyển: in giáo trình và BTVN thành 2 file PDF riêng">
+        {/* Chuyên đề (Thùy 21/10): một tài liệu duy nhất, không tách giáo trình / BTVN. */}
+        {!laCD && <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5" title="Tách quyển: in giáo trình và BTVN thành 2 file PDF riêng">
           <button onClick={() => setScope('all')} className={seg(scope === 'all')}>Toàn bộ</button>
           <button onClick={() => setScope('giaotrinh')} className={seg(scope === 'giaotrinh')}>Chỉ giáo trình</button>
           <button onClick={() => setScope('btvn')} className={seg(scope === 'btvn')}>Chỉ BTVN</button>
-        </div>
+        </div>}
         {scope === 'btvn' && (
           <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5" title={roster.length ? `${roster.length} HS có mặt — in mỗi HS 1 phiếu, tên sẵn` : 'Chưa điểm danh có mặt → chỉ in bản trống'}>
             <button onClick={() => setPerHS(false)} className={seg(!perHS)}>Bản trống</button>
@@ -540,6 +542,7 @@ function DocBdm({ full, bdm, gv, scope, lt = true, onlyBuoiId, perHS = false, ro
     <BtvnSheet key={key} btvns={btvnCua(b)} ontaps={onTapCua(b)} gv={gv} docTitle={taiLieu.ten} buoiTitle={b.tieu_de ?? ''} linesByCau={linesByCau} colByCau={colByCau}
       hinhCheDoByCau={hinhCheDoByCau} hoTen={hoTen} ngayPhat={ngayPhat} ngayNop={ngayNop} lopTen={lopTen} />
   )
+  const pill = taiLieu.loai === 'chuyen_de' ? 'Bài tập' : 'Bài luyện'   // chuyên đề không có trên lớp / về nhà
   const coBtvn = (b: NoiDung['buoi'][number]) => b.nhom.some((n) => n.btvn?.caus.length) || (b.on_tap ?? []).some((o) => o.caus.length)
   return (
     <div className={`pv-doc${scope === 'btvn' ? ' pv-doc-btvn' : ''}`} style={{ '--pv-accent': accent } as CSSProperties}>
@@ -568,7 +571,7 @@ function DocBdm({ full, bdm, gv, scope, lt = true, onlyBuoiId, perHS = false, ro
                     <div className="gtbk-card-head">
                       <span className="gtbk-code">{n.stt}.{d.stt}</span>
                       <div className="gtbk-card-title">{d.ten ?? ''}</div>
-                      <span className="gtbk-pill">Bài luyện</span>
+                      <span className="gtbk-pill">{pill}</span>
                     </div>
                     <div className="gtbk-card-body">
                       {lt && d.hien_lt && d.ly_thuyet?.trim() && <LyThuyetBody text={d.ly_thuyet} />}
@@ -585,7 +588,7 @@ function DocBdm({ full, bdm, gv, scope, lt = true, onlyBuoiId, perHS = false, ro
                     <div className="gtbk-card-head">
                       <span className="gtbk-code">{n.stt}</span>
                       <div className="gtbk-card-title">{n.dang_bai.length ? 'Luyện thêm' : (n.ten ?? '')}</div>
-                      <span className="gtbk-pill">Bài luyện</span>
+                      <span className="gtbk-pill">{pill}</span>
                     </div>
                     <div className="gtbk-card-body">
                       <CauFlow hop items={caus(n.chua_phan!.caus).map((c, i) => ({ key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: i + 1, c, gv, cheDoHinh: hinhCheDoByCau[c.ma_cau] }) }))} />
@@ -596,7 +599,7 @@ function DocBdm({ full, bdm, gv, scope, lt = true, onlyBuoiId, perHS = false, ro
             ))}
             {(b.chua_khop?.caus.length ?? 0) > 0 && (
               <section className="pv-sec gtbk-card">
-                <div className="gtbk-card-head"><div className="gtbk-card-title">Bài luyện thêm</div><span className="gtbk-pill">Bài luyện</span></div>
+                <div className="gtbk-card-head"><div className="gtbk-card-title">Bài luyện thêm</div><span className="gtbk-pill">{pill}</span></div>
                 <div className="gtbk-card-body">
                   <CauFlow hop items={caus(b.chua_khop!.caus).map((c, i) => ({ key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: i + 1, c, gv, cheDoHinh: hinhCheDoByCau[c.ma_cau] }) }))} />
                 </div>

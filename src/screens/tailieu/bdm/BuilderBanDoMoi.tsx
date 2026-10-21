@@ -66,7 +66,7 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
   }
   async function chonBuoiLoc(v: string) {
     setFilterBuoi(v)
-    try { localStorage.setItem(filterKey(id), v) } catch { /* private mode */ }
+    if (!laChuyenDe) try { localStorage.setItem(filterKey(id), v) } catch { /* private mode */ }
     await tai(v)
   }
   useEffect(() => {
@@ -75,8 +75,9 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
         const list = await listBuoiTaiLieu(id)
         setBuoiList(list)
         let nho: string | null = null
-        try { nho = localStorage.getItem(filterKey(id)) } catch { /* ignore */ }
-        const dau = nho && (nho === 'all' || list.some((b) => b.id === nho)) ? nho : (list.length ? list[list.length - 1].id : 'all')
+        // Chuyên đề luôn mở "Tất cả" (Thùy 21/10: nhớ lọc 1 phần ⇒ tưởng thiếu câu); giáo trình nhớ buổi đang soạn như cũ.
+        if (!laChuyenDe) try { nho = localStorage.getItem(filterKey(id)) } catch { /* ignore */ }
+        const dau = laChuyenDe ? 'all' : nho && (nho === 'all' || list.some((b) => b.id === nho)) ? nho : (list.length ? list[list.length - 1].id : 'all')
         setFilterBuoi(dau)
         await tai(dau)
       } catch (e) { setErr(loiDoc(e)) }
@@ -219,7 +220,7 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
                   <div className="space-y-4 p-4">
                     {b.nhom.length === 0 && <div className="text-[12px] italic text-slate-400">Chưa có nhóm — bấm “+ Chọn nhóm / dạng bài”.</div>}
                     {b.nhom.map((n, i) => (
-                      <NhomCard key={n.phan_id} n={n} chiXem={chiXem} cauMap={cauMap} cfg={cauHinhCau}
+                      <NhomCard key={n.phan_id} n={n} chiXem={chiXem} cauMap={cauMap} cfg={cauHinhCau} laChuyenDe={laChuyenDe}
                         canUp={i > 0} canDown={i < b.nhom.length - 1}
                         onMove={(dir) => { const c = chonCuaBuoi(b); const j = i + dir; [c[i], c[j]] = [c[j], c[i]]; datChon(b, c) }}
                         onBoNhom={() => datChon(b, chonCuaBuoi(b).filter((x) => x.nhom !== n.id))}
@@ -267,8 +268,9 @@ type CfgCau = {
 }
 
 // ── 1 NHÓM trong buổi: LT nhóm → dạng bài (LT · ví dụ · bài luyện) → chưa phân → BTVN nhóm ──
-function NhomCard({ n, chiXem, cauMap, cfg, canUp, canDown, onMove, onBoNhom, onDoiDangBai, onCo, onXoaCau, onGoiY, onChonCau }: {
-  n: NdNhom; chiXem: boolean; cauMap: Map<string, CauHoi>; cfg: CfgCau; canUp: boolean; canDown: boolean
+// Chuyên đề (Thùy 21/10): không phải giáo trình — KHÔNG có trên lớp / về nhà ⇒ ẩn khối BTVN, câu gọi chung "Bài tập".
+function NhomCard({ n, chiXem, cauMap, cfg, laChuyenDe = false, canUp, canDown, onMove, onBoNhom, onDoiDangBai, onCo, onXoaCau, onGoiY, onChonCau }: {
+  n: NdNhom; chiXem: boolean; cauMap: Map<string, CauHoi>; cfg: CfgCau; laChuyenDe?: boolean; canUp: boolean; canDown: boolean
   onMove: (dir: -1 | 1) => void; onBoNhom: () => void; onDoiDangBai: (ds: string[]) => void
   onCo: (phanId: string, patch: { hien_lt?: boolean; hien_vi_du?: boolean }) => void
   onXoaCau: (phanId: string, caus: string[], m: string) => void
@@ -278,6 +280,7 @@ function NhomCard({ n, chiXem, cauMap, cfg, canUp, canDown, onMove, onBoNhom, on
   const ids = n.dang_bai.map((d) => d.id)
   const doiCho = (i: number, j: number) => { const x = [...ids]; [x[i], x[j]] = [x[j], x[i]]; onDoiDangBai(x) }
   const coLt = !!(n.ly_thuyet?.trim() || n.ly_thuyet_file_url)
+  const BAI = laChuyenDe ? '📘 Bài tập' : '📘 Bài luyện'
   return (
     <div id={`p-${n.phan_id}`} className="scroll-mt-3 overflow-hidden rounded-xl border border-indigo-200">
       <div className="flex items-center gap-2 bg-indigo-600 px-3 py-2 text-white">
@@ -319,7 +322,7 @@ function NhomCard({ n, chiXem, cauMap, cfg, canUp, canDown, onMove, onBoNhom, on
                   {!chiXem && <button onClick={() => onDoiDangBai(ids.filter((x) => x !== d.id))} title="Bỏ dạng bài khỏi buổi" className="text-[12px] text-slate-400 hover:text-rose-600">✕</button>}
                 </span>
               </div>
-              <KhoiCau tieuDe="📘 Bài luyện" mau="sky" caus={d.caus} cauMap={cauMap} cfg={cfg} chiXem={chiXem} soMacDinh={SO_LUYEN_MAC_DINH}
+              <KhoiCau tieuDe={BAI} mau="sky" caus={d.caus} cauMap={cauMap} cfg={cfg} chiXem={chiXem} soMacDinh={SO_LUYEN_MAC_DINH}
                 onXoa={(m) => onXoaCau(d.phan_id, d.caus, m)}
                 onGoiY={(so) => onGoiY(d.phan_id, [d.id], so, d.caus)}
                 onChonCau={() => onChonCau(d.phan_id, d.caus, d.id)} />
@@ -328,14 +331,14 @@ function NhomCard({ n, chiXem, cauMap, cfg, canUp, canDown, onMove, onBoNhom, on
         })}
         {n.chua_phan && (
           <div className="rounded-lg border border-slate-200">
-            <KhoiCau tieuDe={n.dang_bai.length ? '📘 Bài luyện · câu chưa phân dạng bài' : '📘 Bài luyện (nhóm chưa chia dạng bài)'} mau="sky" caus={n.chua_phan.caus} cauMap={cauMap} cfg={cfg} chiXem={chiXem}
+            <KhoiCau tieuDe={n.dang_bai.length ? `${BAI} · câu chưa phân dạng bài` : `${BAI} (nhóm chưa chia dạng bài)`} mau="sky" caus={n.chua_phan.caus} cauMap={cauMap} cfg={cfg} chiXem={chiXem}
               soMacDinh={n.dang_bai.length ? undefined : { trac_nghiem: 3, tra_loi_ngan: 2, tu_luan: 1 }}
               onXoa={(m) => onXoaCau(n.chua_phan!.phan_id, n.chua_phan!.caus, m)}
               onGoiY={n.dang_bai.length ? undefined : (so) => onGoiY(n.chua_phan!.phan_id, null, so, n.chua_phan!.caus)}
               onChonCau={() => onChonCau(n.chua_phan!.phan_id, n.chua_phan!.caus, null)} />
           </div>
         )}
-        {n.btvn && (
+        {n.btvn && !laChuyenDe && (
           <div className="rounded-lg border border-orange-200 bg-orange-50/30">
             <KhoiCau tieuDe="📝 BTVN của nhóm" mau="orange" btvn caus={n.btvn.caus} cauMap={cauMap} cfg={cfg} chiXem={chiXem} soMacDinh={SO_BTVN_MAC_DINH}
               onXoa={(m) => onXoaCau(n.btvn!.phan_id, n.btvn!.caus, m)}

@@ -41,7 +41,9 @@ for (const d of des) {
 // bỏ trùng (1 câu dùng ở nhiều đề) — giữ lần đầu, ghi thêm đề
 const theoMa = new Map()
 for (const x of chon) { const o = theoMa.get(x.ma_cau); if (o) o.de2.push(x.de); else theoMa.set(x.ma_cau, { ...x, de2: [] }) }
-const ds = [...theoMa.values()]
+// Câu Thùy đã bỏ khỏi chuyên đề — không đưa lại khi chạy --them (21/10: T107000000294 là câu cuối đề GK nhưng KHÔNG phải nâng cao)
+const LOAI_TRU = new Set(['T107000000294'])
+const ds = [...theoMa.values()].filter((x) => !LOAI_TRU.has(x.ma_cau))
 
 // --thu: THỬ (ROLLBACK cuối) — giả lập mọi câu nâng cao đã duyệt nội dung để kiểm đường --them, không ghi gì
 const THU = process.argv.includes('--thu')
