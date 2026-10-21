@@ -38541,3 +38541,4 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - Điền 12 lý thuyết + 14 ví dụ + 1 mô tả cho NDB01036/1234/1235/1336/1337/1339–1347 (`kho-rules/dai/lo/k7/dien-lt-vd-2110.mjs`, chỉ ô trống; 14 phép kiểm số liệu đúng; Thùy tự điền mô tả 01342/01343 giữa chừng nên script bỏ qua). Mô tả 01346 của Thùy còn cụt ("bậc lũy tằ") — chưa sửa.
 - Phân lại 429 câu (hàng duyệt + câu AI ở 00799/00800/00419/00420/01206/00789 + regex so sánh/nguyên/dãy bình phương): mẫu cao 89/89 đúng, 0 lệch. Hạ 5 câu cao→vừa (tự ngờ). Ghi: gan_cau +95, đổi dạng 19 câu AI, de_xuat 91, thieu_dang 48. `bdm-b3-xuat-lo.mjs` thêm `--lai-dang`.
 - Chưa động: 8 câu Hình `T1077033330401001..008` vẫn ở thieu_dang (chờ Thùy gật gỡ).
+- 21/10 (sau): Thùy gật xoá ⇒ đã xoá tai_lieu "[THỬ] Chuyên đề Hình K8" (ad2c564f…, cascade 3 phần + 18 dòng bài). Không còn dữ liệu thử của chuyên đề.
