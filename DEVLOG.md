@@ -38510,3 +38510,8 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - Thùy chốt: mỗi chuyên đề 1 nhánh (chọn lúc tạo) · Hình lấy từ Hình–Luyện (mô hình · kho bài) · HGT nối câu vào bản đồ mới (bước 6 builder).
 - Phần 1 (xong): tai_lieu loai=chuyen_de ban_do=moi, dùng lại GiaoTrinhBdmScreen (prop loai) + BuilderBanDoMoi (laChuyenDe: ẩn Gán lớp, đơn vị "Phần"); DB builder chỉ kiểm ban_do nên không cần migration. Hộp tạo có chọn nhánh — Đại mở, HGT/Hình khoá kèm lý do. Sửa luôn lỗi cũ: Kho tài liệu mở giáo trình bản đồ mới bằng builder CŨ ⇒ giờ giáo trình/chuyên đề ban_do=moi mở BuilderBanDoMoi.
 - Còn: phần 2 HGT lên bản đồ mới (đề xuất HTML trước, ghi khi Thùy nói ghi) · phần 3 builder chuyên đề Hình–Luyện.
+
+### 21/10 — [K7] Phân dạng lại khối 7 sau khi Thùy thêm mô tả + dạng mới (B3 `k7-bs2110`)
+- Xuất 613 câu gốc (hàng duyệt + câu AI cũ có luỹ thừa/căn) + 90 mẫu → 11 lô Sonnet. Mẫu: cao 90/90 đúng, 0 câu lệch.
+- Kết quả 613 câu: cao 346 · vừa 215 · trống 52 (hạ 2 câu T107010203056/57 cao→vừa vì agent tự ngờ). Ghi: gan_cau +232 (nguon='ai'), đổi dạng 8 câu căn đơn → NDB01037 / NDB00934, rút de_xuat 113 + thieu_dang 119 (cao), de_xuat upsert 203, thieu_dang upsert 51. Không đụng nguon='nguoi'.
+- Còn thiếu dạng trong bản đồ (agent báo): Thống kê, toán thực tế Số thực (căn bậc hai), tìm x/n để phân thức nguyên (chia hết/ước), dãy phân số bình phương, làm trội/bất đẳng thức, tổng dãy số, so sánh luỹ thừa khác cơ số, tổng luỹ thừa cùng cơ số xen dấu, đổi phân số↔số thập phân; câu hình song song (Đường thẳng song song chưa có dạng).

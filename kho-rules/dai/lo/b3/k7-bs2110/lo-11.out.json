@@ -1,0 +1,5 @@
+[
+ {"ma_cau": "0770222204220402021", "dang_bai_id": "NDB00809", "chac": "cao", "ly_do": "Tổng luỹ thừa chẵn và luỹ thừa của căn đều không âm bằng 0, suy ra x, y."},
+ {"ma_cau": "T107000000129", "dang_bai_id": null, "chac": null, "ly_do": "Bản đồ thiếu dạng: bất đẳng thức chuỗi / tìm cực trị biến ràng buộc bằng cộng các bất đẳng thức."},
+ {"ma_cau": "07702202202061", "dang_bai_id": "NDB00933", "chac": "cao", "ly_do": "Biểu thức nhiều căn bậc hai cộng trừ nhân, không có giá trị tuyệt đối."}
+]
