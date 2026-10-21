@@ -8,8 +8,9 @@ import { norm } from '../../../components/SearchSelect'
 
 type Chon = { nhom: string; dang_bai: Set<string> }[]
 
-export default function BoChonNhom({ khoi, daChon, onClose, onConfirm }: {
-  khoi: string; daChon: ChonBuoi; onClose: () => void; onConfirm: (c: ChonBuoi) => Promise<void> | void
+// nhanh: nhánh bản đồ mới ('toan' Đại · 'hgt' Hình giải tích — chuyên đề HGT, Thùy 21/10)
+export default function BoChonNhom({ khoi, nhanh = 'toan', daChon, onClose, onConfirm }: {
+  khoi: string; nhanh?: string; daChon: ChonBuoi; onClose: () => void; onConfirm: (c: ChonBuoi) => Promise<void> | void
 }) {
   const [cay, setCay] = useState<ChonChuDe[] | null>(null)
   const [err, setErr] = useState<string | null>(null)
@@ -20,14 +21,14 @@ export default function BoChonNhom({ khoi, daChon, onClose, onConfirm }: {
   const [loiGhi, setLoiGhi] = useState<string | null>(null)   // lỗi khi dựng buổi — giữ popup + lựa chọn, báo tại chỗ
 
   useEffect(() => {
-    cayChon(khoi).then((c) => {
+    cayChon(khoi, nhanh).then((c) => {
       setCay(c)
       // Mở sẵn chủ đề của nhóm đầu tiên đã chọn, không có thì chủ đề đầu.
       const dau = daChon[0]?.nhom
       const cd = dau ? c.find((x) => x.chuyen_de.some((ch) => ch.nhom.some((n) => n.id === dau))) : null
       setChuDe((cd ?? c[0])?.id ?? null)
     }).catch((e) => setErr(e.message ?? String(e)))
-  }, [khoi]) // eslint-disable-line
+  }, [khoi, nhanh]) // eslint-disable-line
 
   // Tra nhóm theo id (để hiện tên ở cột "Đã chọn" + biết thứ tự dạng bài trên bản đồ).
   const nhomTheoId = useMemo(() => {

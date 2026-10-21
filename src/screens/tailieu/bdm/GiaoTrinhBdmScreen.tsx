@@ -102,10 +102,10 @@ export default function GiaoTrinhBdmScreen({ loai = 'giao_trinh' }: { loai?: Loa
   )
 }
 
-// Nhánh của chuyên đề (chọn 1 lần lúc tạo). Chỉ Đại chạy được hôm nay; HGT chờ nối câu HGT vào bản đồ mới, Hình chờ builder Hình–Luyện.
+// Nhánh của chuyên đề (chọn 1 lần lúc tạo). Đại + HGT chạy theo bản đồ mới (HGT: mig 202610211629); Hình chờ builder Hình–Luyện.
 const NHANH_CD: { id: string | null; ten: string; mo: boolean; ghi: string }[] = [
   { id: null, ten: 'Đại số', mo: true, ghi: 'nhóm bài · dạng bài (bản đồ mới)' },
-  { id: 'hinh_gt', ten: 'Hình giải tích', mo: false, ghi: 'đang nối câu HGT vào bản đồ mới' },
+  { id: 'hinh_gt', ten: 'Hình giải tích', mo: true, ghi: 'nhóm bài · dạng bài (bản đồ mới) — hiện có câu K6, K12; K10 đang xếp câu' },
   { id: 'hinh', ten: 'Hình', mo: false, ghi: 'đang làm builder Hình–Luyện (mô hình · kho bài)' },
 ]
 

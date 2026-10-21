@@ -49,6 +49,7 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
   useEffect(() => { if (!saved) return; const t = setTimeout(() => setSaved(false), 2000); return () => clearTimeout(t) }, [saved])
 
   const tl = nd ? { mon: nd.tai_lieu.mon, nhanh: nd.tai_lieu.nhanh, cau_hinh: ch } : null
+  const nhanhBdm = nd?.tai_lieu.nhanh === 'hinh_gt' ? 'hgt' : 'toan'   // nhánh bản đồ mới của tài liệu (chuyên đề HGT)
   const chiXem = !!nd?.tai_lieu.luu_tru_tu   // bản lưu trữ: chỉ xem (DB cũng chặn ghi)
 
   // Nạp nội dung câu còn thiếu (theo mã) — chỉ đọc, không tính gì.
@@ -241,7 +242,7 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
         </div>
 
         {boChon && (
-          <BoChonNhom khoi={nd.tai_lieu.khoi} daChon={chonCuaBuoi(boChon)} onClose={() => setBoChon(null)}
+          <BoChonNhom khoi={nd.tai_lieu.khoi} nhanh={nhanhBdm} daChon={chonCuaBuoi(boChon)} onClose={() => setBoChon(null)}
             onConfirm={async (c) => { vaBuoi(await datBuoi(id, boChon.id, c)); setBoChon(null) }} />
         )}
         {chonCau && (

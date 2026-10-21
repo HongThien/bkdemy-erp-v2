@@ -38515,3 +38515,7 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - Xuất 613 câu gốc (hàng duyệt + câu AI cũ có luỹ thừa/căn) + 90 mẫu → 11 lô Sonnet. Mẫu: cao 90/90 đúng, 0 câu lệch.
 - Kết quả 613 câu: cao 346 · vừa 215 · trống 52 (hạ 2 câu T107010203056/57 cao→vừa vì agent tự ngờ). Ghi: gan_cau +232 (nguon='ai'), đổi dạng 8 câu căn đơn → NDB01037 / NDB00934, rút de_xuat 113 + thieu_dang 119 (cao), de_xuat upsert 203, thieu_dang upsert 51. Không đụng nguon='nguoi'.
 - Còn thiếu dạng trong bản đồ (agent báo): Thống kê, toán thực tế Số thực (căn bậc hai), tìm x/n để phân thức nguyên (chia hết/ước), dãy phân số bình phương, làm trội/bất đẳng thức, tổng dãy số, so sánh luỹ thừa khác cơ số, tổng luỹ thừa cùng cơ số xen dấu, đổi phân số↔số thập phân; câu hình song song (Đường thẳng song song chưa có dạng).
+
+### 21/10 — [Chuyên đề · HGT] Builder bản đồ mới đọc câu Hình giải tích
+- Phát hiện: hgt_bdm_gan_cau/de_xuat/thieu_dang/kho_ds ĐÃ CÓ từ mig 202610181814 (gán K6 199, K12 780; đề xuất 650; thiếu dạng 356; K10 CHƯA có gì) ⇒ bỏ phần tạo bảng, chỉ mở _tl_bdm_cau_vi_tri thêm câu HGT đã gán (mig 202610211629) ⇒ cây chọn/kho câu/gợi ý/dat_buoi chạy cho nhánh hgt. Test 8/8 (K6 108 câu, K12 516 câu, đặt nhóm ra câu T3…).
+- Client: BoChonNhom nhận nhánh; BuilderBanDoMoi lấy nhánh từ tài liệu (hinh_gt ⇒ hgt); mở lựa chọn HGT khi tạo chuyên đề. Đã nhắn phiên B3 làm K10 (đề xuất + HTML, ghi khi Thùy nói ghi).
