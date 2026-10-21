@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T310000000772",
+  "dang_bai_id": "NDB00923",
+  "chac": "vua",
+  "ly_do": "Tìm ba đỉnh tam giác khi biết ba trung điểm cạnh; cũng gần NDB00925."
+ },
+ {
+  "ma_cau": "T310000000773",
+  "dang_bai_id": "NDB00922",
+  "chac": "vua",
+  "ly_do": "Ý a độ dài cạnh, ý b tìm đỉnh hình vuông."
+ },
+ {
+  "ma_cau": "T310000000774",
+  "dang_bai_id": "NDB00924",
+  "chac": "vua",
+  "ly_do": "Ý a điểm thẳng hàng; ý b,c đối xứng qua trục chưa có dạng."
+ },
+ {
+  "ma_cau": "T310000000775",
+  "dang_bai_id": "NDB00927",
+  "chac": "vua",
+  "ly_do": "Ý a,b cực trị véc tơ tổng; ý c tập hợp điểm chưa có dạng."
+ },
+ {
+  "ma_cau": "T310000000776",
+  "dang_bai_id": "NDB00923",
+  "chac": "vua",
+  "ly_do": "Ý a trọng tâm; ý b tâm ngoại tiếp và trực tâm chưa có dạng."
+ },
+ {
+  "ma_cau": "T310000000777",
+  "dang_bai_id": "NDB00941",
+  "chac": "vua",
+  "ly_do": "Tam giác vuông tại A qua tích vô hướng tọa độ, kèm chu vi, diện tích."
+ },
+ {
+  "ma_cau": "T310000000778",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tìm đỉnh hình vuông bằng tọa độ."
+ },
+ {
+  "ma_cau": "T310000000779",
+  "dang_bai_id": "NDB00922",
+  "chac": "vua",
+  "ly_do": "Ý a chân đường cao, ý b độ dài cạnh và góc C."
+ },
+ {
+  "ma_cau": "T310000000780",
+  "dang_bai_id": "NDB00923",
+  "chac": "vua",
+  "ly_do": "Ý a tìm đỉnh từ ba trung điểm, ý b so sánh trọng tâm."
+ },
+ {
+  "ma_cau": "T310000000781",
+  "dang_bai_id": "NDB00925",
+  "chac": "cao",
+  "ly_do": "Tìm D để ABCD là hình bình hành."
+ },
+ {
+  "ma_cau": "T310000000782",
+  "dang_bai_id": "NDB00925",
+  "chac": "vua",
+  "ly_do": "Tìm đỉnh hình thang theo tỉ lệ cạnh song song; cũng gần NDB00926."
+ },
+ {
+  "ma_cau": "T310000000783",
+  "dang_bai_id": "NDB00923",
+  "chac": "vua",
+  "ly_do": "Ý a thẳng hàng, ý b trọng tâm, ý c đỉnh hình thang."
+ },
+ {
+  "ma_cau": "T310000000784",
+  "dang_bai_id": "NDB00927",
+  "chac": "cao",
+  "ly_do": "Tìm M trên Ox để độ dài véc tơ tổng nhỏ nhất."
+ },
+ {
+  "ma_cau": "T310000000785",
+  "dang_bai_id": "NDB00942",
+  "chac": "cao",
+  "ly_do": "Góc giữa hai véc tơ cho tọa độ."
+ },
+ {
+  "ma_cau": "T310000000786",
+  "dang_bai_id": "NDB00921",
+  "chac": "vua",
+  "ly_do": "Ý a tọa độ phép toán, ý b tích vô hướng rồi nhân véc tơ."
+ },
+ {
+  "ma_cau": "T310000000787",
+  "dang_bai_id": "NDB00940",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng của hai véc tơ cho tọa độ."
+ },
+ {
+  "ma_cau": "T310000000788",
+  "dang_bai_id": "NDB00942",
+  "chac": "cao",
+  "ly_do": "Góc giữa hai véc tơ cho tọa độ."
+ },
+ {
+  "ma_cau": "T310000000789",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: chứng minh tứ giác là hình vuông bằng tọa độ."
+ },
+ {
+  "ma_cau": "T310000000790",
+  "dang_bai_id": "NDB00922",
+  "chac": "vua",
+  "ly_do": "Giải tam giác trong tọa độ: độ dài cạnh và góc, hai dạng."
+ },
+ {
+  "ma_cau": "T310000000791",
+  "dang_bai_id": "NDB00922",
+  "chac": "vua",
+  "ly_do": "Ý a độ dài đoạn thẳng, ý b chứng minh tam giác vuông cân."
+ },
+ {
+  "ma_cau": "T310000000792",
+  "dang_bai_id": "NDB00942",
+  "chac": "cao",
+  "ly_do": "Góc giữa hai véc tơ cho tọa độ."
+ },
+ {
+  "ma_cau": "T310000000793",
+  "dang_bai_id": "NDB00941",
+  "chac": "vua",
+  "ly_do": "Tìm C để tam giác vuông tại C qua tích vô hướng tọa độ."
+ },
+ {
+  "ma_cau": "T310000000794",
+  "dang_bai_id": "NDB00923",
+  "chac": "vua",
+  "ly_do": "Ý a thẳng hàng, ý b trọng tâm, ý c giải tam giác."
+ },
+ {
+  "ma_cau": "T310000000795",
+  "dang_bai_id": "NDB00915",
+  "chac": "vua",
+  "ly_do": "Tổng hợp ba lực chọn hệ trục tọa độ; đề dựa hình, cũng gần NDB00916."
+ },
+ {
+  "ma_cau": "T310000000796",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU HÌNH: bàn cờ trong hình, không xác định được nước đi quân mã."
+ },
+ {
+  "ma_cau": "T310000000797",
+  "dang_bai_id": "NDB00920",
+  "chac": "cao",
+  "ly_do": "Chuyển động thẳng đều, tìm tọa độ vị trí sau thời gian cho trước."
+ },
+ {
+  "ma_cau": "T310000000798",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tọa độ điểm và véc tơ trên trục số (MA=kMB)."
+ },
+ {
+  "ma_cau": "T310000000799",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tọa độ điểm và véc tơ trên trục số (đẳng thức véc tơ trên trục)."
+ },
+ {
+  "ma_cau": "T310000000800",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tọa độ điểm và véc tơ trên trục số (mệnh đề về độ dài đại số)."
+ },
+ {
+  "ma_cau": "T310000000801",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tọa độ điểm và véc tơ trên trục số (điểm đối xứng qua điểm)."
+ },
+ {
+  "ma_cau": "T310000000802",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tọa độ điểm và véc tơ trên trục số (trung điểm bốn điểm)."
+ },
+ {
+  "ma_cau": "T310000000803",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tọa độ điểm và véc tơ trên trục số (điểm thỏa đẳng thức véc tơ trên trục)."
+ },
+ {
+  "ma_cau": "T310000000804",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tọa độ điểm và véc tơ trên trục số (độ dài đoạn thẳng nhỏ nhất theo m)."
+ },
+ {
+  "ma_cau": "T310000000805",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tọa độ điểm và véc tơ trên trục số (mệnh đề về trung điểm)."
+ },
+ {
+  "ma_cau": "T310000000806",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tọa độ điểm và véc tơ trên trục số (điểm thỏa hệ thức độ dài)."
+ },
+ {
+  "ma_cau": "T310000000807",
+  "dang_bai_id": "NDB00918",
+  "chac": "cao",
+  "ly_do": "Tọa độ véc tơ cho dưới dạng i, j."
+ },
+ {
+  "ma_cau": "T310000000808",
+  "dang_bai_id": "NDB00918",
+  "chac": "cao",
+  "ly_do": "Tọa độ véc tơ cho dưới dạng i, j."
+ },
+ {
+  "ma_cau": "T310000000809",
+  "dang_bai_id": "NDB00918",
+  "chac": "cao",
+  "ly_do": "Tọa độ véc tơ cho dưới dạng i, j."
+ },
+ {
+  "ma_cau": "T310000000810",
+  "dang_bai_id": "NDB00922",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ từ tọa độ hai điểm."
+ },
+ {
+  "ma_cau": "T310000000811",
+  "dang_bai_id": "NDB00919",
+  "chac": "cao",
+  "ly_do": "Tọa độ véc tơ khi biết hai điểm."
+ },
+ {
+  "ma_cau": "T310000000812",
+  "dang_bai_id": "NDB00918",
+  "chac": "cao",
+  "ly_do": "Tọa độ véc tơ cho dưới dạng i, j."
+ },
+ {
+  "ma_cau": "T310000000813",
+  "dang_bai_id": "NDB00922",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ từ tọa độ hai điểm."
+ },
+ {
+  "ma_cau": "T310000000814",
+  "dang_bai_id": "NDB00919",
+  "chac": "cao",
+  "ly_do": "Tọa độ véc tơ khi biết hai điểm."
+ },
+ {
+  "ma_cau": "T310000000815",
+  "dang_bai_id": "NDB00921",
+  "chac": "cao",
+  "ly_do": "Tọa độ véc tơ chứa cộng và nhân số."
+ },
+ {
+  "ma_cau": "T310000000816",
+  "dang_bai_id": "NDB00921",
+  "chac": "cao",
+  "ly_do": "Tìm véc tơ x từ đẳng thức tọa độ."
+ },
+ {
+  "ma_cau": "T310000000817",
+  "dang_bai_id": "NDB00918",
+  "chac": "cao",
+  "ly_do": "Biểu diễn tọa độ qua i, j."
+ },
+ {
+  "ma_cau": "T310000000818",
+  "dang_bai_id": "NDB00921",
+  "chac": "cao",
+  "ly_do": "Tọa độ véc tơ chứa nhân số và trừ."
+ },
+ {
+  "ma_cau": "T310000000819",
+  "dang_bai_id": "NDB00921",
+  "chac": "cao",
+  "ly_do": "Tìm véc tơ x từ đẳng thức tọa độ."
+ },
+ {
+  "ma_cau": "T310000000820",
+  "dang_bai_id": "NDB00918",
+  "chac": "vua",
+  "ly_do": "Chọn véc tơ trong hình theo biểu diễn i, j; đề dựa hình."
+ },
+ {
+  "ma_cau": "T310000000821",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Tìm x để AB = x.AC, quan hệ cùng phương theo tọa độ."
+ },
+ {
+  "ma_cau": "T310000000822",
+  "dang_bai_id": "NDB00924",
+  "chac": "vua",
+  "ly_do": "Chọn cặp véc tơ không cùng phương, kiểm tra không có tham số."
+ },
+ {
+  "ma_cau": "T310000000823",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Tìm x để AB = x.BC, thẳng hàng theo tọa độ."
+ },
+ {
+  "ma_cau": "T310000000824",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Tìm x để hai véc tơ cùng phương."
+ },
+ {
+  "ma_cau": "T310000000825",
+  "dang_bai_id": "NDB00924",
+  "chac": "vua",
+  "ly_do": "Chọn cặp véc tơ không cùng phương, kiểm tra không có tham số."
+ },
+ {
+  "ma_cau": "T310000000826",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: hai véc tơ bằng nhau theo tọa độ, tìm tham số."
+ },
+ {
+  "ma_cau": "T310000000827",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Tìm m để hai véc tơ cùng phương."
+ },
+ {
+  "ma_cau": "T310000000828",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Tìm m để ba điểm thẳng hàng."
+ },
+ {
+  "ma_cau": "T310000000829",
+  "dang_bai_id": "NDB00924",
+  "chac": "vua",
+  "ly_do": "Kiểm tra hai véc tơ đối nhau hay ngược hướng qua tọa độ."
+ },
+ {
+  "ma_cau": "T310000000830",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Tìm m để hai véc tơ cùng phương."
+ },
+ {
+  "ma_cau": "T310000000831",
+  "dang_bai_id": "NDB00924",
+  "chac": "vua",
+  "ly_do": "Tìm ba điểm thẳng hàng trong bốn điểm cho tọa độ."
+ },
+ {
+  "ma_cau": "T310000000832",
+  "dang_bai_id": "NDB00913",
+  "chac": "vua",
+  "ly_do": "Tìm cặp véc tơ cùng phương theo tổ hợp của a, b không cùng phương."
+ },
+ {
+  "ma_cau": "T310000000833",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Tìm m để ba điểm thẳng hàng."
+ },
+ {
+  "ma_cau": "T310000000834",
+  "dang_bai_id": "NDB00918",
+  "chac": "cao",
+  "ly_do": "Biểu diễn tọa độ qua i, j."
+ },
+ {
+  "ma_cau": "T310000000835",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: phân tích véc tơ theo hai véc tơ cho trước bằng tọa độ (tìm m, n) (có thể gần NDB00909)."
+ },
+ {
+  "ma_cau": "T310000000836",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: phân tích véc tơ theo hai véc tơ cho trước bằng tọa độ (tìm m, n) (có thể gần NDB00909)."
+ },
+ {
+  "ma_cau": "T310000000837",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: phân tích véc tơ theo hai véc tơ cho trước bằng tọa độ (tìm m, n) (có thể gần NDB00909)."
+ },
+ {
+  "ma_cau": "T310000000838",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: phân tích véc tơ theo hai véc tơ cho trước bằng tọa độ (tìm m, n) (có thể gần NDB00909)."
+ },
+ {
+  "ma_cau": "T310000000839",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: phân tích véc tơ theo hai véc tơ cho trước bằng tọa độ (tìm m, n) (có thể gần NDB00909)."
+ },
+ {
+  "ma_cau": "T310000000840",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: phân tích véc tơ theo hai véc tơ cho trước bằng tọa độ (tìm m, n) (có thể gần NDB00909)."
+ },
+ {
+  "ma_cau": "T310000000841",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: phân tích véc tơ theo hai véc tơ cho trước bằng tọa độ (tìm m, n) (có thể gần NDB00909)."
+ }
+]

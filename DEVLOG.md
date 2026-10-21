@@ -38519,3 +38519,15 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 ### 21/10 — [Chuyên đề · HGT] Builder bản đồ mới đọc câu Hình giải tích
 - Phát hiện: hgt_bdm_gan_cau/de_xuat/thieu_dang/kho_ds ĐÃ CÓ từ mig 202610181814 (gán K6 199, K12 780; đề xuất 650; thiếu dạng 356; K10 CHƯA có gì) ⇒ bỏ phần tạo bảng, chỉ mở _tl_bdm_cau_vi_tri thêm câu HGT đã gán (mig 202610211629) ⇒ cây chọn/kho câu/gợi ý/dat_buoi chạy cho nhánh hgt. Test 8/8 (K6 108 câu, K12 516 câu, đặt nhóm ra câu T3…).
 - Client: BoChonNhom nhận nhánh; BuilderBanDoMoi lấy nhánh từ tài liệu (hinh_gt ⇒ hgt); mở lựa chọn HGT khi tạo chuyên đề. Đã nhắn phiên B3 làm K10 (đề xuất + HTML, ghi khi Thùy nói ghi).
+
+
+### [21/10] HGT lên bản đồ mới: K10 đề xuất dạng bài (B3, CHƯA GHI) + trang duyệt hàng chờ K6/K12
+- **Hiện trạng đo trước khi làm:** K12 (18/10) và K6 (20/10) đã khớp vào  (gán 979 · đề xuất 650 · thiếu dạng 356 · kho Đ/S 292). Chỉ K10 chưa có dòng nào. K9 nhánh hgt 0 dạng bài ⇒ bỏ.
+- **K10 (1.657 câu, chủ đề Véc tơ NCD00176, 31 dạng bài):**  (thêm lời giải vào lô) → 22 lô × 6 trạm Sonnet (brief , nhãn trống cố định KHÔNG THUỘC CHỦ ĐỀ / THIẾU DẠNG / THIẾU HÌNH / ĐỀ LỖI). Kết quả câu thường 1.471: **796 cao · 482 chưa chắc · 174 thiếu dạng · 9 đề lỗi · 8 thiếu hình · 2 ngoài chủ đề**; Đ/S 186 ⇒ kho Đ/S chủ đề Véc tơ (184 chắc · 2 cần xem vì nhắc phương trình đường).
+- **Đo độ tin (không có nhãn người làm mẫu):** 2 trạm Opus xếp MÙ 140 câu mức cao ⇒ khớp 136/140 (97,1%); câu Opus cũng chắc 126/126. 4 lệch đều giáp ranh, 3 rơi vào chồng chéo NDB00906 ↔ NDB00912 (bản đồ, chờ Thùy).
+- **Sai:** các trạm dùng CHUNG thư mục nháp ⇒ 1 trạm ghi đè script của trạm khác,  hỏng 1 lần (trạm tự phát hiện, ghi lại). Lần sau giao mỗi trạm thư mục nháp riêng. Đã kiểm lại cả 22 out: đủ câu, đúng thứ tự, mã hợp lệ, nhãn đúng.
+- **Không ghi DB** (luật Thùy 20/10). File đề xuất ; ghi khi Thùy nói "ghi": đọc 1471 câu · lỗi 0
+cao 796 · vua 482 · null 193
+chèn: gán 796/796 · đề xuất 482/482 · thiếu dạng 193/193
+↩ ROLLBACK (chạy thử) (câu thường) + Đ/S vào  (chưa có script, viết lúc ghi).
+- **Trang duyệt:** script mới  (đề + hình + đáp án + lời giải + dạng đề xuất, nhóm theo mức › dạng;  = đọc hàng chờ đang trong DB).  ·  (810: 484 chưa chắc + 326 không xếp) ·  (195). Xem local: launch  (cổng 5291).

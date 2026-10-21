@@ -40,7 +40,7 @@ for (const d of dich) {
 fs.writeFileSync(path.join(ra, 'bang-dich.md'), md)
 
 const rows = await q(`
-  select h.ma_cau, h.loai_cau, h.noi_dung, h.lua_chon, h.menh_de, h.dap_an, h.anh_de, h.parent_ma_cau,
+  select h.ma_cau, h.loai_cau, h.noi_dung, h.lua_chon, h.menh_de, h.dap_an, h.loi_giai, h.anh_de, h.parent_ma_cau,
          b.ten_dang dang_cu, b.ten_chuyen_de chuyen_de_cu
     from hgt_cau_hoi h join hgt_ban_do b on b.ma_dang = h.dang_chinh
    where h.xoa_at is null and h.loai_cau <> 'dung_sai' and b.khoi = $1
@@ -55,6 +55,7 @@ const gon = (r) => {
   if (r.lua_chon) o.lua_chon = r.lua_chon
   if (r.menh_de) o.menh_de = (Array.isArray(r.menh_de) ? r.menh_de : [r.menh_de]).map((m) => (typeof m === 'object' ? (m.noi_dung || JSON.stringify(m)) : m))
   if (r.dap_an) o.dap_an = r.dap_an
+  if (r.loi_giai) o.loi_giai = r.loi_giai.length > 600 ? r.loi_giai.slice(0, 600) + ' …' : r.loi_giai // lời giải giúp nhận phương pháp (21/10)
   return o
 }
 const all = rows.map(gon)

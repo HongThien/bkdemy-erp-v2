@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T310010102002",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Tổng bốn véc tơ rút gọn bằng quy tắc ba điểm."
+ },
+ {
+  "ma_cau": "T310010102003",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Tổng bốn véc tơ rút gọn bằng quy tắc ba điểm."
+ },
+ {
+  "ma_cau": "T310010102004",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Khẳng định sai về quy tắc ba điểm cho tổng."
+ },
+ {
+  "ma_cau": "T310010102005",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Mệnh đề sai về quy tắc ba điểm cho tổng."
+ },
+ {
+  "ma_cau": "T310010102006",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Đẳng thức tổng trong hình bình hành tâm O."
+ },
+ {
+  "ma_cau": "T310010102007",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Quy tắc hình bình hành cho CB+CD."
+ },
+ {
+  "ma_cau": "T310010102008",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Tổng bốn véc tơ rút gọn bằng quy tắc ba điểm."
+ },
+ {
+  "ma_cau": "T310010102010",
+  "dang_bai_id": "NDB00904",
+  "chac": "vua",
+  "ly_do": "Đẳng thức ba điểm trộn tổng và hiệu."
+ },
+ {
+  "ma_cau": "T310010102011",
+  "dang_bai_id": "NDB00904",
+  "chac": "vua",
+  "ly_do": "Mệnh đề sai trong hình bình hành, trộn tổng và hiệu."
+ },
+ {
+  "ma_cau": "T310010102012",
+  "dang_bai_id": "NDB00904",
+  "chac": "vua",
+  "ly_do": "Đẳng thức sai trong hình bình hành, trộn tổng và hiệu."
+ },
+ {
+  "ma_cau": "T310010102013",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Hiệu hai véc tơ cùng điểm đầu."
+ },
+ {
+  "ma_cau": "T310010102014",
+  "dang_bai_id": "NDB00904",
+  "chac": "vua",
+  "ly_do": "Khẳng định đúng trong tam giác, trộn tổng và hiệu."
+ },
+ {
+  "ma_cau": "T310010102015",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Hiệu AB-BC trong hình bình hành."
+ },
+ {
+  "ma_cau": "T310010102016",
+  "dang_bai_id": "NDB00904",
+  "chac": "vua",
+  "ly_do": "Đẳng thức ba điểm tùy ý trộn tổng và hiệu."
+ },
+ {
+  "ma_cau": "T310010102017",
+  "dang_bai_id": "NDB00904",
+  "chac": "vua",
+  "ly_do": "Đẳng thức ba điểm trộn tổng và hiệu."
+ },
+ {
+  "ma_cau": "T310010102018",
+  "dang_bai_id": "NDB00904",
+  "chac": "vua",
+  "ly_do": "Rút gọn tổng-hiệu bằng quy tắc hình bình hành; có cả phép hiệu."
+ },
+ {
+  "ma_cau": "T310010102019",
+  "dang_bai_id": "NDB00904",
+  "chac": "vua",
+  "ly_do": "Tổng hai véc tơ đối nhau trong hình vuông tâm O; có thể coi là NDB00903."
+ },
+ {
+  "ma_cau": "T310010102020",
+  "dang_bai_id": "NDB00904",
+  "chac": "vua",
+  "ly_do": "Tổng véc tơ với trung điểm các cạnh; có thể coi là NDB00903."
+ },
+ {
+  "ma_cau": "T310010102021",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Tổng MP+NP bằng quy tắc hình bình hành."
+ },
+ {
+  "ma_cau": "T310010102022",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Khẳng định đúng về tổng theo quy tắc ba điểm."
+ },
+ {
+  "ma_cau": "T310010102023",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Quy tắc hình bình hành cho AB+AD."
+ },
+ {
+  "ma_cau": "T310010102024",
+  "dang_bai_id": "NDB00905",
+  "chac": "vua",
+  "ly_do": "Đẳng thức sai trộn hiệu và tổng ba điểm."
+ },
+ {
+  "ma_cau": "T310010102025",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "Khẳng định về trung tuyến, trọng tâm; có thể coi là tổng hiệu."
+ },
+ {
+  "ma_cau": "T310010102026",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Tổng bốn véc tơ rút gọn bằng quy tắc ba điểm."
+ },
+ {
+  "ma_cau": "T310010102027",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Đẳng thức hiệu véc tơ trong hình bình hành tâm O."
+ },
+ {
+  "ma_cau": "T310010102028",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Tổng MB+AP với trung điểm, quy tắc hình bình hành."
+ },
+ {
+  "ma_cau": "T310010102029",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Rút gọn tổng bốn véc tơ bằng quy tắc ba điểm."
+ },
+ {
+  "ma_cau": "T310010102030",
+  "dang_bai_id": "NDB00904",
+  "chac": "vua",
+  "ly_do": "Tổng ba véc tơ trung tuyến qua trung điểm; có thể coi là NDB00909."
+ },
+ {
+  "ma_cau": "T310010102034",
+  "dang_bai_id": "NDB00905",
+  "chac": "vua",
+  "ly_do": "Mệnh đề sai trộn hiệu và tổng."
+ },
+ {
+  "ma_cau": "T310010102035",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Quy tắc hình bình hành cho AB+AD."
+ },
+ {
+  "ma_cau": "T310010102036",
+  "dang_bai_id": "NDB00904",
+  "chac": "vua",
+  "ly_do": "Tổng hai véc tơ đối nhau trong hình bình hành tâm O; có thể coi là NDB00903."
+ },
+ {
+  "ma_cau": "T310010102037",
+  "dang_bai_id": "NDB00904",
+  "chac": "vua",
+  "ly_do": "Tổng hai véc tơ đối nhau trong hình vuông tâm O; có thể coi là NDB00903."
+ },
+ {
+  "ma_cau": "T310010102038",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "Tính chất trung điểm với tổng hiệu; có thể coi là NDB00905."
+ },
+ {
+  "ma_cau": "T310010102039",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Tổng MP+NP bằng quy tắc hình bình hành."
+ },
+ {
+  "ma_cau": "T310010102040",
+  "dang_bai_id": "NDB00904",
+  "chac": "vua",
+  "ly_do": "Đẳng thức ba điểm tùy ý trộn tổng và hiệu."
+ },
+ {
+  "ma_cau": "T310010102041",
+  "dang_bai_id": "NDB00904",
+  "chac": "vua",
+  "ly_do": "Mệnh đề sai trong hình bình hành, trộn tổng và hiệu."
+ },
+ {
+  "ma_cau": "T310010102042",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Mệnh đề sai về quy tắc ba điểm cho tổng."
+ },
+ {
+  "ma_cau": "T310010102043",
+  "dang_bai_id": "NDB00904",
+  "chac": "vua",
+  "ly_do": "Rút gọn tổng-hiệu bằng quy tắc hình bình hành; có cả phép hiệu."
+ },
+ {
+  "ma_cau": "T310010102044",
+  "dang_bai_id": "NDB00904",
+  "chac": "vua",
+  "ly_do": "Tổng véc tơ với trung điểm các cạnh; có thể coi là NDB00903."
+ },
+ {
+  "ma_cau": "T310010102045",
+  "dang_bai_id": "NDB00904",
+  "chac": "vua",
+  "ly_do": "Đẳng thức ba điểm trộn tổng và hiệu."
+ },
+ {
+  "ma_cau": "T310010102046",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Tính chất hai véc tơ đối nhau."
+ },
+ {
+  "ma_cau": "T310010102047",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Đẳng thức hiệu véc tơ trong hình bình hành tâm O."
+ },
+ {
+  "ma_cau": "T310010102048",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Hiệu OB-OC trong hình vuông tâm O."
+ },
+ {
+  "ma_cau": "T310010102049",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Hiệu AO-DO trong hình bình hành tâm O."
+ },
+ {
+  "ma_cau": "T310010102050",
+  "dang_bai_id": "NDB00905",
+  "chac": "vua",
+  "ly_do": "Hiệu véc tơ với I trung điểm; có thể coi là NDB00907."
+ },
+ {
+  "ma_cau": "T310010102051",
+  "dang_bai_id": "NDB00905",
+  "chac": "vua",
+  "ly_do": "Đẳng thức bốn điểm bất kỳ trộn tổng và hiệu."
+ },
+ {
+  "ma_cau": "T310010102052",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Đẳng thức hiệu bốn điểm phân biệt."
+ },
+ {
+  "ma_cau": "T310010102053",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Đẳng thức tổng với hình bình hành và điểm M tùy ý."
+ },
+ {
+  "ma_cau": "T310010102054",
+  "dang_bai_id": "NDB00903",
+  "chac": "vua",
+  "ly_do": "Véc tơ đối của DN trong tam giác trung điểm, đề nhắc \"nhìn hình\"."
+ },
+ {
+  "ma_cau": "T310010102055",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Hiệu CB-CA theo quy tắc ba điểm."
+ },
+ {
+  "ma_cau": "T310010102056",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Tính BA-BC+DC trong hình bình hành."
+ },
+ {
+  "ma_cau": "T310010102057",
+  "dang_bai_id": "NDB00905",
+  "chac": "vua",
+  "ly_do": "Đẳng thức sai trong lục giác đều, trộn tổng và hiệu."
+ },
+ {
+  "ma_cau": "T310010102058",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Hiệu AB-AC cùng điểm đầu."
+ },
+ {
+  "ma_cau": "T310010102059",
+  "dang_bai_id": "NDB00905",
+  "chac": "vua",
+  "ly_do": "Đẳng thức bốn điểm trộn hiệu và tổng."
+ },
+ {
+  "ma_cau": "T310010102060",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ hiệu AB-AC trong tam giác vuông."
+ },
+ {
+  "ma_cau": "T310010102061",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Hiệu OB-OC trong hình vuông tâm O."
+ },
+ {
+  "ma_cau": "T310010102062",
+  "dang_bai_id": "NDB00905",
+  "chac": "vua",
+  "ly_do": "Tìm điểm M từ đẳng thức tổng-hiệu thành hình bình hành."
+ },
+ {
+  "ma_cau": "T310010102063",
+  "dang_bai_id": "NDB00905",
+  "chac": "vua",
+  "ly_do": "Mệnh đề sai trong hình bình hành, chủ yếu là hiệu."
+ },
+ {
+  "ma_cau": "T310010102064",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Đẳng thức hiệu với điểm O bất kỳ và hình bình hành."
+ },
+ {
+  "ma_cau": "T310010102065",
+  "dang_bai_id": "NDB00906",
+  "chac": "vua",
+  "ly_do": "Tập hợp điểm từ độ dài tổng bằng độ dài hiệu."
+ },
+ {
+  "ma_cau": "T310010102066",
+  "dang_bai_id": "NDB00906",
+  "chac": "vua",
+  "ly_do": "Điều kiện tam giác vuông từ độ dài tổng và hiệu."
+ },
+ {
+  "ma_cau": "T310010102067",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài hiệu AB-AC trong tam giác đều."
+ },
+ {
+  "ma_cau": "T310010102068",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ hiệu OA-CB trong hình vuông."
+ },
+ {
+  "ma_cau": "T310010102069",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ có tích với số và hiệu."
+ },
+ {
+  "ma_cau": "T310010102070",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "Hợp lực hai lực vuông góc."
+ },
+ {
+  "ma_cau": "T310010102071",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "Ba lực tác dụng lên vật đứng yên."
+ },
+ {
+  "ma_cau": "T310010103001",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ NP bằng độ dài đoạn thẳng."
+ },
+ {
+  "ma_cau": "T310010103002",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài các véc tơ trong tam giác đều."
+ },
+ {
+  "ma_cau": "T310010103003",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ AC bằng đường chéo hình vuông."
+ },
+ {
+  "ma_cau": "T310010103004",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ tổng AB+FE trong lục giác đều."
+ }
+]

@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T310000000702",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: chứng minh hệ thức bằng tích vô hướng (hình chữ nhật, điểm M tùy ý)."
+ },
+ {
+  "ma_cau": "T310000000703",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: chứng minh hệ thức bằng tích vô hướng (tam giác đều nội tiếp, tổng bình phương)."
+ },
+ {
+  "ma_cau": "T310000000704",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: chứng minh hệ thức bằng tích vô hướng (tứ giác, trung điểm hai đường chéo)."
+ },
+ {
+  "ma_cau": "T310000000705",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: chứng minh hệ thức bằng tích vô hướng (trung tuyến, trọng tâm, M bất kỳ)."
+ },
+ {
+  "ma_cau": "T310000000706",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: chứng minh hệ thức bằng tích vô hướng (trực tâm, trung điểm BC)."
+ },
+ {
+  "ma_cau": "T310000000707",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: chứng minh hệ thức bằng tích vô hướng (tổng ba tích vô hướng với trung tuyến bằng 0)."
+ },
+ {
+  "ma_cau": "T310000000708",
+  "dang_bai_id": "NDB00931",
+  "chac": "vua",
+  "ly_do": "Ý a tích vô hướng trong tam giác đều, ý b chứng minh vuông góc."
+ },
+ {
+  "ma_cau": "T310000000709",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: chứng minh hai đường vuông góc bằng tích vô hướng (tam giác vuông cân dựng ngoài)."
+ },
+ {
+  "ma_cau": "T310000000710",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: chứng minh hai đường vuông góc bằng tích vô hướng (tam giác vuông, trung điểm đường cao)."
+ },
+ {
+  "ma_cau": "T310000000711",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: chứng minh hai đường vuông góc bằng tích vô hướng (tam giác cân, trung điểm HD)."
+ },
+ {
+  "ma_cau": "T310000000712",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: chứng minh hai đường vuông góc bằng tích vô hướng (tứ giác, trực tâm)."
+ },
+ {
+  "ma_cau": "T310000000713",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: chứng minh hai đường vuông góc bằng tích vô hướng (tứ giác có hai đường chéo vuông góc)."
+ },
+ {
+  "ma_cau": "T310000000714",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: chứng minh hai đường vuông góc bằng tích vô hướng (hình chữ nhật, BM vuông MN)."
+ },
+ {
+  "ma_cau": "T310000000715",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: chứng minh hai đường vuông góc bằng tích vô hướng (tam giác vuông cân trong hình vuông)."
+ },
+ {
+  "ma_cau": "T310000000716",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: chứng minh hai đường vuông góc bằng tích vô hướng (tứ giác, trực tâm, trung điểm)."
+ },
+ {
+  "ma_cau": "T310000000717",
+  "dang_bai_id": "NDB00931",
+  "chac": "vua",
+  "ly_do": "Tìm x để hai đường vuông góc trong tam giác đều bằng tích vô hướng."
+ },
+ {
+  "ma_cau": "T310000000718",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: chứng minh hai đường vuông góc bằng tích vô hướng (tam giác cân nội tiếp, trọng tâm)."
+ },
+ {
+  "ma_cau": "T310000000719",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tập hợp điểm thỏa đẳng thức tích vô hướng / tổng bình phương độ dài (tập hợp là đường thẳng)."
+ },
+ {
+  "ma_cau": "T310000000720",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tập hợp điểm thỏa đẳng thức tích vô hướng / tổng bình phương độ dài (nhiều ý tập hợp điểm)."
+ },
+ {
+  "ma_cau": "T310000000721",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tập hợp điểm thỏa đẳng thức tích vô hướng / tổng bình phương độ dài (tập hợp là đường thẳng)."
+ },
+ {
+  "ma_cau": "T310000000722",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tập hợp điểm thỏa đẳng thức tích vô hướng / tổng bình phương độ dài (có trọng tâm G)."
+ },
+ {
+  "ma_cau": "T310000000723",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tập hợp điểm thỏa đẳng thức tích vô hướng / tổng bình phương độ dài (tam giác cân, đường tròn)."
+ },
+ {
+  "ma_cau": "T310000000724",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tập hợp điểm thỏa đẳng thức tích vô hướng / tổng bình phương độ dài (bốn điểm cố định)."
+ },
+ {
+  "ma_cau": "T310000000725",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tập hợp điểm thỏa đẳng thức tích vô hướng / tổng bình phương độ dài (MA^2+MB^2=k)."
+ },
+ {
+  "ma_cau": "T310000000726",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tập hợp điểm thỏa đẳng thức tích vô hướng / tổng bình phương độ dài (nhiều ý tập hợp điểm)."
+ },
+ {
+  "ma_cau": "T310000000727",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tập hợp điểm thỏa đẳng thức tích vô hướng / tổng bình phương độ dài (nhiều ý tập hợp điểm)."
+ },
+ {
+  "ma_cau": "T310000000728",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tập hợp điểm thỏa đẳng thức tích vô hướng / tổng bình phương độ dài (MA^2+MB^2=k^2)."
+ },
+ {
+  "ma_cau": "T310000000729",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tập hợp điểm thỏa đẳng thức tích vô hướng / tổng bình phương độ dài (tam giác ABC bất kỳ)."
+ },
+ {
+  "ma_cau": "T310000000730",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tập hợp điểm thỏa đẳng thức tích vô hướng / tổng bình phương độ dài (tổng bình phương độ dài)."
+ },
+ {
+  "ma_cau": "T310000000731",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tập hợp điểm thỏa đẳng thức tích vô hướng / tổng bình phương độ dài (MA.MB=k, đường tròn)."
+ },
+ {
+  "ma_cau": "T310000000732",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tập hợp điểm thỏa đẳng thức tích vô hướng / tổng bình phương độ dài (có trọng tâm G)."
+ },
+ {
+  "ma_cau": "T310000000733",
+  "dang_bai_id": "NDB00913",
+  "chac": "vua",
+  "ly_do": "Ý a,b tâm tỉ cự và thẳng hàng; ý c tập hợp điểm chưa có dạng."
+ },
+ {
+  "ma_cau": "T310000000734",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: chứng minh hệ thức bằng tích vô hướng (đại lượng không đổi) và tìm quỹ tích điểm M."
+ },
+ {
+  "ma_cau": "T310000000735",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tập hợp điểm thỏa đẳng thức tích vô hướng / tổng bình phương độ dài (quỹ tích điểm M)."
+ },
+ {
+  "ma_cau": "T310000000736",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tập hợp điểm thỏa đẳng thức tích vô hướng / tổng bình phương độ dài (hệ số tổng bằng 0)."
+ },
+ {
+  "ma_cau": "T310000000737",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tập hợp điểm thỏa đẳng thức tích vô hướng / tổng bình phương độ dài (tổng bình phương có trọng số)."
+ },
+ {
+  "ma_cau": "T310000000738",
+  "dang_bai_id": "NDB00918",
+  "chac": "cao",
+  "ly_do": "Tọa độ véc tơ cho dưới dạng i, j."
+ },
+ {
+  "ma_cau": "T310000000739",
+  "dang_bai_id": "NDB00918",
+  "chac": "vua",
+  "ly_do": "Đọc tọa độ véc tơ từ hình; đề không có hình trong chữ."
+ },
+ {
+  "ma_cau": "T310000000740",
+  "dang_bai_id": "NDB00918",
+  "chac": "vua",
+  "ly_do": "Ý a b biểu thị theo i, j, ý c tọa độ khi biết hai điểm; có hình."
+ },
+ {
+  "ma_cau": "T310000000741",
+  "dang_bai_id": "NDB00918",
+  "chac": "vua",
+  "ly_do": "Biểu thị véc tơ qua i, j rồi đọc tọa độ; đề dựa vào hình."
+ },
+ {
+  "ma_cau": "T310000000742",
+  "dang_bai_id": "NDB00921",
+  "chac": "cao",
+  "ly_do": "Tọa độ của tổng, hiệu, tích với số của hai véc tơ."
+ },
+ {
+  "ma_cau": "T310000000743",
+  "dang_bai_id": "NDB00921",
+  "chac": "cao",
+  "ly_do": "Tọa độ véc tơ chứa cộng, trừ, nhân số."
+ },
+ {
+  "ma_cau": "T310000000744",
+  "dang_bai_id": "NDB00921",
+  "chac": "vua",
+  "ly_do": "Ý a cộng trừ tọa độ, ý b kiểm tra cùng phương."
+ },
+ {
+  "ma_cau": "T310000000745",
+  "dang_bai_id": "NDB00921",
+  "chac": "vua",
+  "ly_do": "Ý a tọa độ phép toán, ý b tích vô hướng tọa độ."
+ },
+ {
+  "ma_cau": "T310000000746",
+  "dang_bai_id": "NDB00921",
+  "chac": "vua",
+  "ly_do": "Ý a tọa độ phép toán, ý b tích vô hướng rồi nhân với số."
+ },
+ {
+  "ma_cau": "T310000000747",
+  "dang_bai_id": "NDB00921",
+  "chac": "cao",
+  "ly_do": "Tọa độ tổng và hiệu hai véc tơ."
+ },
+ {
+  "ma_cau": "T310000000748",
+  "dang_bai_id": "NDB00921",
+  "chac": "cao",
+  "ly_do": "Tọa độ véc tơ chứa nhân số, trừ, cộng."
+ },
+ {
+  "ma_cau": "T310000000749",
+  "dang_bai_id": "NDB00921",
+  "chac": "cao",
+  "ly_do": "Tọa độ véc tơ tổ hợp và tìm x từ đẳng thức."
+ },
+ {
+  "ma_cau": "T310000000750",
+  "dang_bai_id": "NDB00924",
+  "chac": "vua",
+  "ly_do": "Chứng minh ba điểm thẳng hàng bằng tọa độ; cũng gần NDB00913."
+ },
+ {
+  "ma_cau": "T310000000751",
+  "dang_bai_id": "NDB00924",
+  "chac": "vua",
+  "ly_do": "Kiểm tra cùng hướng, ngược hướng, đối nhau qua tọa độ."
+ },
+ {
+  "ma_cau": "T310000000752",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: hai véc tơ bằng nhau theo tọa độ, tìm tham số."
+ },
+ {
+  "ma_cau": "T310000000753",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Tìm m để ba điểm thẳng hàng, khớp ví dụ mẫu."
+ },
+ {
+  "ma_cau": "T310000000754",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: hai véc tơ bằng nhau theo tọa độ, tìm tham số."
+ },
+ {
+  "ma_cau": "T310000000755",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: điểm đặc biệt trên trục, phân giác góc phần tư."
+ },
+ {
+  "ma_cau": "T310000000756",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "Tọa độ trung điểm và trọng tâm tam giác."
+ },
+ {
+  "ma_cau": "T310000000757",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "Tọa độ trung điểm và trọng tâm tam giác."
+ },
+ {
+  "ma_cau": "T310000000758",
+  "dang_bai_id": "NDB00922",
+  "chac": "vua",
+  "ly_do": "Ý a độ dài cạnh và góc B, ý b tâm đường tròn ngoại tiếp."
+ },
+ {
+  "ma_cau": "T310000000759",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: điểm đặc biệt trên trục, phân giác góc phần tư."
+ },
+ {
+  "ma_cau": "T310000000760",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: hình chiếu và điểm đối xứng trong hệ tọa độ."
+ },
+ {
+  "ma_cau": "T310000000761",
+  "dang_bai_id": "NDB00925",
+  "chac": "cao",
+  "ly_do": "Tìm D để ABCD là hình bình hành và giao điểm hai đường chéo."
+ },
+ {
+  "ma_cau": "T310000000762",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "Tọa độ trung điểm và trọng tâm tam giác."
+ },
+ {
+  "ma_cau": "T310000000763",
+  "dang_bai_id": "NDB00920",
+  "chac": "vua",
+  "ly_do": "Ý a AM=BC, ý b trung điểm và chứng minh BN=NM."
+ },
+ {
+  "ma_cau": "T310000000764",
+  "dang_bai_id": "NDB00923",
+  "chac": "vua",
+  "ly_do": "Tìm đỉnh tam giác khi biết ba trung điểm cạnh; cũng gần NDB00925."
+ },
+ {
+  "ma_cau": "T310000000765",
+  "dang_bai_id": "NDB00923",
+  "chac": "vua",
+  "ly_do": "Ý a thẳng hàng; ý b,c,d trung điểm và trọng tâm."
+ },
+ {
+  "ma_cau": "T310000000766",
+  "dang_bai_id": "NDB00923",
+  "chac": "vua",
+  "ly_do": "Ý a thẳng hàng; ý b,c trung điểm và trọng tâm."
+ },
+ {
+  "ma_cau": "T310000000767",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "Tọa độ trung điểm và trọng tâm tam giác."
+ },
+ {
+  "ma_cau": "T310000000768",
+  "dang_bai_id": "NDB00923",
+  "chac": "vua",
+  "ly_do": "Ý a trung điểm, ý b điểm thỏa NA=2NB (cũng NDB00926)."
+ },
+ {
+  "ma_cau": "T310000000769",
+  "dang_bai_id": "NDB00923",
+  "chac": "vua",
+  "ly_do": "Ý a thẳng hàng; ý b trọng tâm."
+ },
+ {
+  "ma_cau": "T310000000770",
+  "dang_bai_id": "NDB00925",
+  "chac": "vua",
+  "ly_do": "Ý a thẳng hàng, ý b hình bình hành, ý c điểm cách đều hai điểm."
+ },
+ {
+  "ma_cau": "T310000000771",
+  "dang_bai_id": "NDB00927",
+  "chac": "cao",
+  "ly_do": "Tìm C trên trục tung sao cho độ dài véc tơ tổng nhỏ nhất."
+ }
+]
