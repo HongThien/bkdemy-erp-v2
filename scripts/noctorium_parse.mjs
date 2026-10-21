@@ -129,9 +129,17 @@ const tidy = (t) => t.replace(/\s+/g, ' ').replace(/\s+([,;.)])/g, '$1').replace
 
 // ── Đoạn văn → { text (chữ + $latex$), imgs[] } ──────────────────────────────
 function para(p, rels) {
-  let s = ''; const imgs = []
+  let s = ''; const imgs = []; const gach = []
   const walkEl = (el) => {
     if (el.text != null) return
+    // Bản Noctorium "có đáp án": nhãn đáp án đúng được GẠCH CHÂN ("C." ở trắc nghiệm, "b)" ở ý Đúng của câu Đ/S)
+    if (el.name === 'w:r') {
+      const rpr = kid(el, 'w:rPr'); const u = rpr ? kid(rpr, 'w:u') : null
+      if (u && u.attrs['w:val'] !== 'none') {
+        const t = el.children.filter((c) => c.name === 'w:t').map(allText).join('')
+        const m = t.match(/^\s*([A-Da-d])\s*[.)]?\s*$/); if (m) gach.push(m[1])
+      }
+    }
     if (el.name === 'm:oMath' || el.name === 'm:oMathPara') { const t = tidy(omml(el)); if (t) s += `$${t}$`; return }
     if (el.name === 'w:t') { s += allText(el); return }
     if (el.name === 'a:blip' || el.name === 'v:imagedata') { const rid = el.attrs['r:embed'] ?? el.attrs['r:id']; const f = rels[rid]; if (f) imgs.push(f); s += '[[IMG]]'; return }
@@ -142,7 +150,7 @@ function para(p, rels) {
   walkEl(p)
   // "$a$$b$" liền nhau ⇒ gộp; "$ $" rỗng ⇒ bỏ
   s = s.replace(/\$\s*\$/g, '').replace(/\$\$/g, ' ').replace(/[ ]{2,}/g, ' ').trim()
-  return { text: s, imgs }
+  return { text: s, imgs, gach }
 }
 
 async function docParas(file) {
@@ -187,24 +195,24 @@ async function bocFile(file) {
   let curPhan = null, cur = null, mode = null // mode: 'de' | 'giai'
   const flush = () => { if (cur) { cau.push(cur); cur = null } }
   // Tách đoạn theo xuống dòng mềm (w:br): có đề gõ "Câu 1. …⏎a)Cho góc…⏎b)…" trong CÙNG 1 đoạn ⇒ mệnh đề bị nuốt vào đề bài
-  const lines = paras.slice(1).flatMap((p) => nfc(p.text).split('\n').map((text, i) => ({ text: text.trim(), imgs: i === 0 ? p.imgs : [] })))
+  const lines = paras.slice(1).flatMap((p) => nfc(p.text).split('\n').map((text, i) => ({ text: text.trim(), imgs: i === 0 ? p.imgs : [], gach: p.gach ?? [] })))
   for (let li = 0; li < lines.length; li++) {
     const p = lines[li]; const t = p.text
     const mp = t.match(/^Phần\s+(\d+)\s*:\s*(.+?)\s*$/i)
     if (mp) { flush(); const tenPhan = mp[2].trim(); const [dt, diem] = PHAN_MAP[tenPhan.toLowerCase()] ?? ['tu_luan', 0.5]; curPhan = { thu_tu: +mp[1], ten: tenPhan, dang_thuc: dt, diem_moi_cau: diem }; phan.push(curPhan); continue }
     const mc = t.match(/^Câu\s+(\d+)\s*\.\s*(.*)$/s)
     if (mc) {
-      flush(); cur = { so: +mc[1], phan: curPhan?.thu_tu ?? null, dang_thuc: curPhan?.dang_thuc ?? 'tu_luan', stem: [], imgs: [...p.imgs], luaChon: [], menhDe: [], giai: [], imgsGiai: [] }; mode = 'de'
+      flush(); cur = { so: +mc[1], phan: curPhan?.thu_tu ?? null, dang_thuc: curPhan?.dang_thuc ?? 'tu_luan', stem: [], imgs: [...p.imgs], luaChon: [], menhDe: [], giai: [], imgsGiai: [], gachTN: new Set(), gachDS: new Set() }; mode = 'de'
       // Phần sau "Câu k." đi qua bộ phân loại như 1 dòng thường (có đề gõ "Câu 1.\ta)Cho góc…" — mệnh đề nằm ngay dòng Câu)
-      const rest = mc[2].trim(); if (rest) lines.splice(li + 1, 0, { text: rest, imgs: [] })
+      const rest = mc[2].trim(); if (rest) lines.splice(li + 1, 0, { text: rest, imgs: [], gach: p.gach })
       continue
     }
     if (!cur) continue
     if (/^Lời giải\s*[:.]?\s*$/i.test(t)) { mode = 'giai'; continue }
     if (mode === 'de') {
       cur.imgs.push(...p.imgs)
-      if (/^[A-D]\.(\s|\$)/.test(t)) { cur.luaChon.push(t); continue }
-      if (/^[a-d]\)/.test(t)) { cur.menhDe.push(t); continue } // có đề viết dính "a)Cho góc…" không khoảng trắng
+      if (/^[A-D]\.(\s|\$)/.test(t)) { cur.luaChon.push(t); for (const g of p.gach ?? []) if (/[A-D]/.test(g)) cur.gachTN.add(g); continue }
+      if (/^[a-d]\)/.test(t)) { cur.menhDe.push(t); for (const g of p.gach ?? []) if (/[a-d]/.test(g)) cur.gachDS.add(g); continue } // có đề viết dính "a)Cho góc…" không khoảng trắng
       if (t && t !== '[[IMG]]') { if (cur.luaChon.length) cur.luaChon[cur.luaChon.length - 1] += '\n' + t; else if (cur.menhDe.length) cur.menhDe[cur.menhDe.length - 1] += '\n' + t; else cur.stem.push(t) }
     } else { cur.imgsGiai.push(...p.imgs); if (t && t !== '[[IMG]]') cur.giai.push(t) }
   }
@@ -290,16 +298,21 @@ for (const f of walk(A.de).filter(loc).filter((f) => !BO || !nfc(f).includes(BO)
       if (lc.length !== 4 || lc.map((x) => x.chu).join('') !== 'ABCD') tk.tn_khong_du_4++
       const g = c.giai.map(CHU); q.loi_giai = g.join('\n\n')
       const d = rutDapAnTN(q.lua_chon, g); q.dap_an = d.dap_an; q.dap_an_tin = d.tin; d.tin === 'may' ? tk.tn_may_rut++ : tk.tn_chua++
+      q.dap_an_gach = c.gachTN.size === 1 ? [...c.gachTN][0] : null; if (c.gachTN.size > 1) tk.tn_gach_nhieu = (tk.tn_gach_nhieu ?? 0) + 1; if (q.dap_an_gach) tk.tn_gach = (tk.tn_gach ?? 0) + 1
     } else if (c.dang_thuc === 'dung_sai') {
       // Mệnh đề a)…d); lời giải có "a) Đúng." / "a)  Sai." mở đầu từng ý
       const md = c.menhDe.map((t) => ({ chu: t[0], noi_dung: CHU(t.replace(/^[a-d]\)\s*/, '')) }))
       let cur = null
       for (const l of c.giai) { const m = nfc(l).match(/^([a-d])\)\s*(Đúng|Sai)\s*[.:]?\s*(.*)$/s); if (m) { cur = md.find((x) => x.chu === m[1]); if (cur) { cur.dap_an = m[2] === 'Đúng' ? 'D' : 'S'; cur.loi_giai = CHU(m[3]) } continue } if (cur) cur.loi_giai = (cur.loi_giai ? cur.loi_giai + '\n\n' : '') + CHU(l) }
-      q.menh_de = md.map(({ noi_dung, dap_an, loi_giai }) => ({ noi_dung, dap_an: dap_an ?? null, loi_giai: loi_giai ?? null }))
+      q.menh_de = md.map(({ chu, noi_dung, dap_an, loi_giai }) => ({ noi_dung, dap_an: dap_an ?? null, loi_giai: loi_giai ?? null, dap_an_gach: c.gachDS.size ? (c.gachDS.has(chu) ? 'D' : 'S') : null }))
+      if (c.gachDS.size) tk.ds_gach = (tk.ds_gach ?? 0) + 1
       if (md.length !== 4 || md.some((x) => !x.dap_an)) tk.ds_khong_du_4++
       q.loi_giai = null
     } else if (c.dang_thuc === 'tra_loi_ngan') {
       const g = c.giai.map(CHU); q.loi_giai = g.join('\n\n'); const d = rutDapAnTLN(g); q.dap_an = d.dap_an; q.dap_an_tin = d.tin; d.tin === 'may' ? tk.tln_may_rut++ : tk.tln_chua++
+      // Bản Noctorium "có đáp án": đề TLN kết bằng "Đáp án: $x$" ⇒ tách ra khỏi đề, ghi riêng (dap_an_de)
+      const mm = stem.match(/\s*Đáp án\s*:?\s*(.*?)\s*$/s)
+      if (mm) { q.noi_dung = stem.slice(0, mm.index).trim(); q.dap_an_de = mm[1].replace(/\$/g, '').replace(/\s+/g, '').replace(/\{,\}/g, '.').replace(/(\d),(\d)/g, '$1.$2').replace(/\.$/, ''); tk.tln_de = (tk.tln_de ?? 0) + 1 }
     } else { q.loi_giai = c.giai.map(CHU).join('\n\n'); q.dap_an = null; q.y = c.menhDe.map((t) => CHU(t)) }
     cauOut.push(q)
   }
