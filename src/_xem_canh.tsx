@@ -7,6 +7,7 @@ import { StrictMode, useEffect, useMemo, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import HomeScene from './screens/home/HomeScene'
 import { canhLien } from './lib/canhErp'
+import { YEU_THICH_TOI_DA } from './lib/menu'
 import './index.css'
 
 document.documentElement.style.setProperty('--app-z', '1')
@@ -20,7 +21,7 @@ const BANG: Khoa[] = [
 ]
 const dsKhoa = (soNhom: number): Khoa[] => [
   ...BANG,
-  ...Array.from({ length: 8 }, (_, i) => [
+  ...Array.from({ length: YEU_THICH_TOI_DA }, (_, i) => [
     { k: `fav${i + 1}.box`, nhan: `Yêu thích ${i + 1} · cả ô (vùng bấm)` },
     { k: `fav${i + 1}.label`, nhan: `Yêu thích ${i + 1} · chỗ ghi tên` },
     { k: `fav${i + 1}.star`, nhan: `Yêu thích ${i + 1} · chỗ ★ (bấm 1 điểm)`, diem: true },
@@ -41,7 +42,7 @@ const tron = (n: number) => Math.round(n)
 function dungManifest(v: Gia, soNhom: number, W: number, H: number, tenFile: string, tone: string, tokens: object) {
   const zones: Record<string, number[]> = {}
   for (const b of BANG) if (v[b.k]) zones[b.k] = v[b.k]
-  const favorite_slots = Array.from({ length: 8 }, (_, i) => i + 1).filter((i) => v[`fav${i}.box`])
+  const favorite_slots = Array.from({ length: YEU_THICH_TOI_DA }, (_, i) => i + 1).filter((i) => v[`fav${i}.box`])
     .map((i) => ({ box: v[`fav${i}.box`], ...(v[`fav${i}.label`] ? { label: v[`fav${i}.label`] } : {}), ...(v[`fav${i}.star`] ? { star: v[`fav${i}.star`] } : {}) }))
   const group_slots = Array.from({ length: soNhom }, (_, i) => i + 1).filter((i) => v[`grp${i}.box`])
     .map((i) => ({ box: v[`grp${i}.box`], ...(v[`grp${i}.label`] ? { label: v[`grp${i}.label`] } : {}), ...(v[`grp${i}.icon`] ? { icon: v[`grp${i}.icon`] } : {}), ...(v[`grp${i}.badge`] ? { badge: v[`grp${i}.badge`] } : {}) }))

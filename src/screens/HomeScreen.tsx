@@ -530,7 +530,8 @@ export default function HomeScreen() {
           )}
           tuyChinh={coSao ? <TuyChinh cacBox={cacBox} an={an} doi={dh.doiHomeAn} hep={false} dang={dangCard} doiDang={dh.doiHomeDangCard} notice={noticeTabs} doiNotice={dh.doiNoticeTab} /> : null}
           giaoDien={<ChonGiaoDien hep={false} />}
-          yeuThich={dsYeuThich.slice(0, 8).map((m) => ({ id: m.id, ten: m.ten, onMo: () => dh.di(m.id), onSao: coSao ? () => dh.doiYeuThich(m.id) : undefined }))}
+          // cảnh có bao nhiêu ô Yêu thích thì hiện bấy nhiêu (cảnh ghép cũ: 8; cảnh liền: theo tranh, tối đa 12) — mục dư vẫn có ở ☰ menu › ⭐ Yêu thích
+          yeuThich={dsYeuThich.slice(0, canh.yeuThichO.length).map((m) => ({ id: m.id, ten: m.ten, onMo: () => dh.di(m.id), onSao: coSao ? () => dh.doiYeuThich(m.id) : undefined }))}
           nhom={nhomCanh}
         />
       </section>

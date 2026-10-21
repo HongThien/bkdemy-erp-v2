@@ -22,7 +22,7 @@ bất kỳ chữ, số, ký hiệu, chữ giả nào** — kể cả trên giấ
 | 2 | **Bảng "Việc phát triển"** | bảng / tờ giấy ngang | 1 tiêu đề + 3 dòng có thanh % | 480 × 180 |
 | 3 | **Bảng Order** | bảng nhỏ / sổ mở / tấm bìa | 1 tiêu đề + 3 dòng | 380 × 240 |
 | 4 | **Thẻ hồ sơ** | thẻ / khung ảnh / bảng tên | ảnh đại diện tròn Ø60 bên trái + "Chào <tên>!" + ngày + biểu tượng thư nhỏ | 340 × 130 |
-| 5 | **8 ô Yêu thích** | 8 thẻ treo / ngăn kéo / hộp hồ sơ **cùng một họ** | tên một màn (≤ 24 ký tự, 2 dòng) + ★ nhỏ ở góc trên phải | mỗi ô 200 × 120 |
+| 5 | **12 ô Yêu thích** (mỗi người ghim tối đa 12 — Thùy 21/10; tranh ít ô hơn thì mục dư chỉ nằm ở menu) | 12 thẻ treo / ngăn kéo / hộp hồ sơ **cùng một họ** | tên một màn (≤ 24 ký tự, 2 dòng) + ★ nhỏ ở góc trên phải | mỗi ô 200 × 120 |
 | 6 | **4 ô nhóm** (có thể 6) | 4 ô **GIỐNG NHAU** (hộp, ngăn, khung) — **không gợi ý nội dung riêng của ô nào** | 1 icon phẳng ở giữa-trên + tên nhóm ở dưới + "n mục" ở góc | mỗi ô 200 × 130 |
 | 7 | **2 nút nhỏ** | 2 thẻ treo / nhãn nhỏ cạnh nhau | "Tuỳ chỉnh" · "Giao diện" | mỗi nút 110 × 44 |
 | 8 | *(tuỳ chọn)* biển "Yêu thích" | một biển nhỏ trên cụm 8 ô | "★ Yêu thích" | 200 × 40 |
@@ -87,7 +87,7 @@ Không cần gửi toạ độ chính xác — BKdemy tự khoanh ô trên ảnh
 ```
 
 - `zones.*`: `[x, y, w, h]` hoặc `{ box, inset?, ink? }` — `inset` = lề trong [trái, trên, phải, dưới], `ink` = màu chữ riêng ô đó.
-- `favorite_slots`: tối đa 8, theo thứ tự yêu thích 1 → 8. `group_slots`: 4 hoặc 6 — số ô nhóm Trang chính hiện = số ô ở đây.
+- `favorite_slots`: tối đa 12, theo thứ tự yêu thích 1 → 12. `group_slots`: 4 hoặc 6 — số ô nhóm Trang chính hiện = số ô ở đây.
 - Thiếu `label`/`icon` thì app tự lấy phần dưới / giữa-trên của ô. Ô yêu thích chưa ghim: app không in gì, tranh tự đứng.
 - Code đọc: `canhLien()` trong `src/lib/canhErp.ts` → `HomeScene` (luật chữ R1–R4 dùng chung với khuôn cũ).
 

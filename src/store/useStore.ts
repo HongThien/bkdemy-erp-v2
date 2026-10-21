@@ -5,6 +5,7 @@ import { myQuyen, type MyQuyen } from '../lib/quyen'
 import { setReadOnlyLeafGetter } from '../lib/supabase'
 import { getMyProfile, updateMenuYeuThich, updateErpGiaoDien, updateHomeBoCuc, type DangCard, type MyProfile, type MyScope } from '../lib/nhansu'
 import { enqueueLinkGenJob } from '../lib/linkgen'
+import { YEU_THICH_TOI_DA } from '../lib/menu'
 import type { User, Vai, NavGroup, NavLeaf, AdminLeaf } from '../types'
 
 // Kiểu + bản nhớ trên máy của giao diện ERP: 2 hàm thuần, KHÔNG import registry style ở đây (store được nhiều bundle dùng).
@@ -210,8 +211,8 @@ export const useStore = create<UiState>()(persist((set, get) => ({
     const me = get().me
     if (!me) return
     const cu = me.nhanSu.menu_yeu_thich ?? []
-    // Thiết kế chung (Thùy 14/10): Yêu thích tối đa 8 mục — đúng 8 ô trên Trang chính ở mọi style.
-    if (!cu.includes(id) && cu.length >= 8) { alert('Yêu thích tối đa 8 mục. Bỏ ★ một mục trước rồi ghim mục mới.'); return }
+    // Thiết kế chung: Yêu thích tối đa YEU_THICH_TOI_DA mục (Thùy 14/10: 8 → 21/10: 12).
+    if (!cu.includes(id) && cu.length >= YEU_THICH_TOI_DA) { alert(`Yêu thích tối đa ${YEU_THICH_TOI_DA} mục. Bỏ ★ một mục trước rồi ghim mục mới.`); return }
     const moi = cu.includes(id) ? cu.filter((x) => x !== id) : [...cu, id]
     const va = (ds: string[]) => set((s) => (s.me ? { me: { ...s.me, nhanSu: { ...s.me.nhanSu, menu_yeu_thich: ds } } } : {}))
     va(moi)

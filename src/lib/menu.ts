@@ -6,6 +6,8 @@ import type { NavGroup, NavLeaf } from '../types'
 
 export const LEAF_HOME = 'home'
 export const LEAF_VIEC = 'viec'
+// Số mục Yêu thích tối đa mỗi người ghim (Thùy 14/10: 8 · đổi 21/10: 12). MỘT chỗ cho mọi nơi dùng (luật ghim, cảnh, trang đánh dấu ô).
+export const YEU_THICH_TOI_DA = 12
 export const LEAF_PLAN = 'myplan'   // Kế hoạch của tôi (MyPlan, Thùy 16/10) — mọi nhân sự đều có
 // Trang của một nhóm trên Home = leaf 'home:<tên nhóm>' → Back quay đúng về trang nhóm vừa mở.
 export const leafNhom = (nhom: string) => `${LEAF_HOME}:${nhom}`

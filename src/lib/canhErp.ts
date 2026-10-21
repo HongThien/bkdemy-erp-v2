@@ -9,6 +9,7 @@
 // luật chữ R1–R4 + vùng bấm. Box nhóm = Ô TRỐNG CHUNG (Thùy chốt 14/10): app in tên nhóm + 1 icon dẹt, người dùng tự chọn
 // nhóm nào vào ô nào; ô yêu thích chưa ghim thì để nguyên tranh (tranh phải "đẹp khi trống"). Khuôn: design/YEU-CAU-ANH-STYLE-ERP.md
 // §A. Toạ độ ô đánh dấu bằng trang /xem-thu-canh.html (kéo chuột khoanh ô trên ảnh → xuất manifest).
+import { YEU_THICH_TOI_DA } from './menu'
 export type Rect = [number, number, number, number]   // x, y, w, h (px trên canvas của cảnh)
 
 export const CANH_ERP: { id: string; ten: string; moTa: string }[] = [
@@ -125,7 +126,7 @@ type ONhom = { box: Rect; label?: Rect; icon?: Rect; badge?: [number, number] }
 /** Manifest `kieu: "lien"` → Canh. Hàm THUẦN (không fetch) để trang đánh dấu ô xem thử ngay manifest đang soạn. */
 export function canhLien(m: Tho, id: string, base: string): Canh {
   const zs: Record<string, OTho> = m.zones ?? {}
-  const fav: OYeuThich[] = (Array.isArray(m.favorite_slots) ? m.favorite_slots : []).filter((s: OYeuThich) => s && laRect(s.box)).slice(0, 8)
+  const fav: OYeuThich[] = (Array.isArray(m.favorite_slots) ? m.favorite_slots : []).filter((s: OYeuThich) => s && laRect(s.box)).slice(0, YEU_THICH_TOI_DA)
   const grp: ONhom[] = (Array.isArray(m.group_slots) ? m.group_slots : []).filter((s: ONhom) => s && laRect(s.box))
   const yeuThichArt: Art[] = fav.map((s, i) => ({
     id: `favorite-slot-${i + 1}`, file: '', w: s.box[2], h: s.box[3], place: s.box, z: 0,
