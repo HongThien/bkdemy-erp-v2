@@ -1,6 +1,6 @@
 # Đề xuất bản đồ mới 4 tầng — K12 chủ đề "Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số" (chương Hàm số)
 
-> **⭐ BẢN CUỐI (21/10 tối):** cây chi tiết 4 tầng (**7 chuyên đề · 36 nhóm · 112 dạng**) kèm lý thuyết nhóm, lý thuyết dạng và 224 ví dụ có lời giải + 75 hình nằm ở **`kho-rules/dai/k12-ham-so-ban-do-moi-duyet.html`** (nguồn: `kho-rules/dai/lo/k12-hs/cau-truc.mjs` + `ra/J1…J10.txt`; dựng lại bằng `node kho-rules/dai/lo/k12-hs/duyet.mjs`). Cây ở dưới là bản đề xuất ĐẦU (nháp, số dạng khác chút) — **đọc HTML và `cau-truc.mjs` làm chuẩn**.
+> **⭐ BẢN CUỐI v2 (22/10) — theo logic của Thùy:** Phần 1 = các phương diện khảo sát (đơn điệu · cực trị · GTLN–GTNN · tiệm cận; MỘT chuyên đề, bài cơ bản) · Phần 2 = các loại hàm quan trọng (bài khó) · Phần 3 = tương giao · tiếp tuyến · khoảng cách · Phần 4 = thực tế. **4 chuyên đề · 30 nhóm · 112 dạng**, kèm lý thuyết nhóm + dạng, 224 ví dụ, 75 hình ở **`kho-rules/dai/k12-ham-so-ban-do-moi-duyet.html`** (nguồn: `kho-rules/dai/lo/k12-hs/cau-truc.mjs` v2 + `cau-truc-v1.mjs` + `ra/J1…J10.txt`, `ra/N1…N3.txt`; dựng lại bằng `node kho-rules/dai/lo/k12-hs/duyet.mjs`). Cây 7 chuyên đề ở dưới là bản đề xuất ĐẦU (nháp) — **đọc HTML và `cau-truc.mjs` làm chuẩn**.
 
 > **Trạng thái:** ĐỀ XUẤT của CTO (21/10/2026) để Thùy duyệt/sửa. **Chưa ghi gì vào DB** — bản đồ là việc của CEO (`kho-rules/README.md` §0), Claude chỉ đưa tư liệu + đề xuất.
 > Chủ đề giữ nguyên `NCD00094` (tên chương). Phần dưới là **chuyên đề → nhóm bài → dạng bài** (+ mô tả nhận biết, paste-ready).

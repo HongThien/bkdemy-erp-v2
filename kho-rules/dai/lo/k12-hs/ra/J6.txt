@@ -123,7 +123,7 @@ Giao điểm của hai tiệm cận là tâm đối xứng $I$.
 Khi đề cho $I$ thuộc một đường hay có tính chất khác, thay toạ độ $I$ (theo $m$) vào điều kiện rồi giải.
 
 ##CY
-- Hàm bậc ba cũng có tâm đối xứng (điểm uốn) nhưng cách tìm khác: không dùng tiệm cận.
+- Hàm bậc ba cũng có tâm đối xứng, hoành độ $x_0=-\dfrac{b}{3a}$ (nghiệm của $y''=0$) nhưng cách tìm khác: không dùng tiệm cận.
 - Cần kiểm tra điều kiện để đồ thị đúng dạng hypebol (như $ad-bc\ne0$) trước khi nói đến tâm đối xứng.
 
 @vi_du:
@@ -288,13 +288,13 @@ Vẽ đồ thị: vẽ tiệm cận trước (nét đứt), chấm các điểm 
 - Hai cực trị khi $y'=0$ có hai nghiệm phân biệt ($\Delta'=b^2-3ac>0$); không có cực trị khi $\Delta'=b^2-3ac\le0$ ($y'$ không đổi dấu, hàm đơn điệu trên $\mathbb{R}$).
 - Đồ thị có bốn dáng: $a>0$ hoặc $a<0$, mỗi trường hợp có hai cực trị hoặc không có cực trị.
 - Giới hạn: $a>0$ thì $\lim\limits_{x\to+\infty}y=+\infty$, $\lim\limits_{x\to-\infty}y=-\infty$; $a<0$ thì ngược lại.
-- Điểm uốn $I\left(-\dfrac{b}{3a};y\left(-\dfrac{b}{3a}\right)\right)$ (nghiệm của $y''=0$) là tâm đối xứng của đồ thị.
+- Tâm đối xứng của đồ thị là điểm $I\left(-\dfrac{b}{3a};y\left(-\dfrac{b}{3a}\right)\right)$ (hoành độ là nghiệm của $y''=0$).
 
 ##PP Khảo sát và vẽ hàm bậc ba
 Tập xác định $\mathbb{R}$; tính $y'$, giải $y'=0$ rồi xét dấu $y'$ (hai nghiệm thì dấu $y'$ trái dấu với $a$ giữa hai nghiệm).
 Nêu đơn điệu, cực trị và tính giới hạn ở $\pm\infty$ theo dấu $a$; lập bảng biến thiên.
-Tính $y''$, tìm điểm uốn là tâm đối xứng; tìm giao với $Oy$ (là $(0;d)$) và với $Ox$ nếu giải được.
-Vẽ đồ thị đi qua các điểm cực trị, điểm uốn, các giao điểm với trục; đồ thị đối xứng qua điểm uốn.
+Tìm tâm đối xứng có hoành độ $x_0=-\dfrac{b}{3a}$ (nghiệm của $y''=0$); tìm giao với $Oy$ (là $(0;d)$) và với $Ox$ nếu giải được.
+Vẽ đồ thị đi qua các điểm cực trị, tâm đối xứng, các giao điểm với trục; đồ thị đối xứng qua tâm đối xứng.
 
 ##CY
 - Bậc ba có hai dạng đồ thị theo dấu $a$: $a>0$ thì đồ thị đi lên về phía phải, $a<0$ thì đi xuống về phía phải.
@@ -312,7 +312,7 @@ Hàm số đồng biến trên $(-\infty;0)$ và $(2;+\infty)$, nghịch biến 
 Hàm số đạt cực đại tại $x=0$, $y_{\text{CĐ}}=2$; đạt cực tiểu tại $x=2$, $y_{\text{CT}}=-2$.
 Giới hạn: $\lim\limits_{x\to-\infty}y=-\infty$ và $\lim\limits_{x\to+\infty}y=+\infty$. Bảng biến thiên:
 [[HINH {"loai":"bbt","x":["-∞","0","2","+∞"],"dau":["+","-","+"],"y":["-∞","2","-2","+∞"],"ten_ham":"y"}]]
-**Đồ thị:** $y''=6x-6=0\Leftrightarrow x=1$, điểm uốn $I(1;0)$ là tâm đối xứng của đồ thị.
+**Đồ thị:** $y''=6x-6=0\Leftrightarrow x=1$, tâm đối xứng của đồ thị là $I(1;0)$.
 Giao với $Oy$: $(0;2)$. Giao với $Ox$: $x^3-3x^2+2=(x-1)(x^2-2x-2)=0\Leftrightarrow x=1$ hoặc $x=1\pm\sqrt3$.
 [[HINH {"loai":"dothi","x":[-2,4],"y":[-4,4],"f":[{"e":"x^3-3*x^2+2","ten":"(C)","xt":3.1}],"diem":[{"x":0,"y":2,"nhan":"CĐ"},{"x":2,"y":-2,"nhan":"CT"},{"x":1,"y":0,"nhan":"I"}]}]]
 Vậy đồ thị là đường cong đi qua các điểm trên, đối xứng qua $I(1;0)$.
@@ -328,7 +328,7 @@ Hàm số nghịch biến trên $(-\infty;-1)$ và $(1;+\infty)$, đồng biến
 Hàm số đạt cực tiểu tại $x=-1$, $y_{\text{CT}}=0$; đạt cực đại tại $x=1$, $y_{\text{CĐ}}=4$.
 Giới hạn: $\lim\limits_{x\to-\infty}y=+\infty$ và $\lim\limits_{x\to+\infty}y=-\infty$. Bảng biến thiên:
 [[HINH {"loai":"bbt","x":["-∞","-1","1","+∞"],"dau":["-","+","-"],"y":["+∞","0","4","-∞"],"ten_ham":"y"}]]
-**Đồ thị:** $y''=-6x=0\Leftrightarrow x=0$, $y(0)=2$ nên điểm uốn $I(0;2)$ là tâm đối xứng của đồ thị.
+**Đồ thị:** $y''=-6x=0\Leftrightarrow x=0$, $y(0)=2$ nên tâm đối xứng của đồ thị là $I(0;2)$.
 Giao với $Oy$: $(0;2)$. Giao với $Ox$: $-x^3+3x+2=-(x+1)^2(x-2)=0\Leftrightarrow x=-1$ hoặc $x=2$.
 [[HINH {"loai":"dothi","x":[-3,3],"y":[-3,6],"f":[{"e":"-(x^3)+3*x+2","ten":"(C)","xt":-2.1}],"diem":[{"x":-1,"y":0,"nhan":"CT"},{"x":1,"y":4,"nhan":"CĐ"},{"x":0,"y":2,"nhan":"I"},{"x":2,"y":0}]}]]
 Vậy đồ thị đi qua các điểm trên, chạm trục $Ox$ tại điểm cực tiểu $(-1;0)$, cắt $Ox$ tại $(2;0)$ và đối xứng qua $I(0;2)$.
@@ -453,7 +453,7 @@ Thử toạ độ giao điểm với trục hoặc điểm cực trị để ch�
 - Đồ thị hàm bậc ba $y=ax^3+bx^2+cx+d$ không có tiệm cận.
 - Đầu bên phải đi lên thì $a>0$, đi xuống thì $a<0$.
 - Có hai cực trị khi $y'=0$ có hai nghiệm phân biệt; đồ thị đơn điệu, không có cực trị khi $y'$ không đổi dấu.
-- Giao với $Oy$ là điểm $(0;d)$; điểm uốn là tâm đối xứng.
+- Giao với $Oy$ là điểm $(0;d)$; tâm đối xứng có hoành độ $-\dfrac{b}{3a}$.
 
 ##PP Chọn hàm bậc ba theo hình
 Đọc dáng đồ thị: có hai cực trị hay không, đầu bên phải đi lên hay đi xuống để suy ra dấu $a$.

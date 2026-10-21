@@ -1,0 +1,94 @@
+=== N P2.7
+@ly_thuyet:
+##TC Đạo hàm của hàm hợp
+- $g(x)=f(u(x))$ thì $g'(x)=u'(x)\cdot f'(u(x))$; $g'(x)=0\Leftrightarrow u'(x)=0$ hoặc $f'(u(x))=0$.
+- Dấu của $g'$ là tích dấu của $u'(x)$ và $f'(u(x))$. Hàm $f$ chỉ cho qua đồ thị hoặc bảng của $f'$ thì **chỉ biết dấu** $f'$, không biết giá trị $f$.
+- Hệ quả: trên khoảng $K$ mà $u$ đồng biến thì $g$ cùng chiều biến thiên với $f$ (theo $t$ chạy trong tập giá trị của $u$); $u$ nghịch biến thì $g$ ngược chiều với $f$. Đây là cơ sở của cách đặt $t=u(x)$ với $u$ là $\sin x$, $\cos x$, $\ln x$, $e^x$, $\sqrt{x}$...
+
+##TC Đặt $t=u(x)$ và đọc $f'$ theo biến $t$
+- Đồ thị (bảng xét dấu) của $f'$ vẽ theo biến $t$: $f'(t)>0$ khi đồ thị nằm trên $Ot$, $f'(t)<0$ khi nằm dưới, $f'(t)=0$ tại giao điểm với $Ot$.
+- Chỉ phần của $f'$ ứng với $t$ thuộc **tập giá trị của $u$** mới được dùng (ví dụ $u=x^2+c$ thì $t\ge c$).
+- Hàm có thêm hàm phụ: $g=f(u)+v$ thì $g'=u'\cdot f'(u)+v'$; đưa về $k[f'(t)-h(t)]$ rồi vẽ thêm đường $y=h(t)$ lên cùng hệ trục.
+- Bài có tham số trên khoảng $K$: tập giá trị của $u$ khi $x\in K$ phải nằm **trọn** trong khoảng mà $f'$ mang dấu cần có (kể cả đầu mút nếu $f'=0$ ở đó).
+
+##PP Xét đơn điệu của $g=f(u(x))$ khi biết $f'$
+Tính $g'(x)=u'(x)\cdot f'(u(x))$.
+Đọc từ hình các nghiệm của $f'(t)=0$ và dấu của $f'(t)$ trên từng khoảng của $t$.
+Thay $t=u(x)$: giải $u(x)=t_i$ và các bất phương trình $u(x)\in$ khoảng thích hợp, đối chiếu với tập giá trị của $u$.
+Lập bảng xét dấu $g'$ với mọi mốc của $u'=0$ và $u=t_i$; kết luận các khoảng đồng biến, nghịch biến.
+
+##CY
+- Quên nhân $u'(x)$, hoặc quên rằng $u'(x)<0$ làm **đổi chiều** bất phương trình ($g'\ge0\Leftrightarrow f'(u)\le0$).
+- Với $u$ bậc hai, mỗi giá trị $t$ khác giá trị tại đỉnh (và thuộc tập giá trị của $u$) ứng với hai giá trị $x$; đừng đọc $f'$ ở phần $t$ mà $u$ không bao giờ nhận.
+- Đếm thiếu các mốc của $u'=0$ khi lập bảng xét dấu $g'$.
+
+=== N P2.8
+@ly_thuyet:
+##TC Cực trị chỉ phụ thuộc vào sự đổi dấu của đạo hàm
+- Điểm cực trị là nghiệm làm đạo hàm **đổi dấu** (nghiệm bội lẻ); nghiệm bội chẵn của $g'=0$, hay chỗ đồ thị $f'$ chỉ tiếp xúc $Ox$, không cho cực trị.
+- Hàm $g=f(x)+ax$: $g'=f'(x)+a=0\Leftrightarrow f'(x)=-a$, đếm giao điểm mà đồ thị $f'$ **cắt** đường ngang $y=-a$.
+- Hàm hợp $g=f(u)$: $g'=u'\cdot f'(u)$, nghiệm gồm $u'(x)=0$ và $u(x)=a_i$ với $a_i$ là nghiệm đổi dấu của $f'$; nghiệm trùng thì cộng bội.
+
+##TC Hàm chứa giá trị tuyệt đối
+- $y=|f(x)|$: số cực trị $=p+q$, với $p$ là số cực trị của $f$ và $q$ là số nghiệm bội lẻ của $f(x)=0$ không trùng cực trị.
+- $y=f(|x|)$: số cực trị $=2k+1$, với $k$ là số cực trị của $f$ có hoành độ dương ($f$ xác định trên $\mathbb{R}$; điểm $x=0$ luôn là một cực trị của $f(|x|)$, không tính vào $k$).
+- Đồ thị đổi dạng: $|f|$ lật phần dưới $Ox$ lên; $f(|x|)$ giữ phần $x\ge0$ rồi đối xứng qua $Oy$. Điểm "gãy" cũng có thể là cực trị.
+
+##PP Đếm cực trị của hàm hợp hoặc hàm chứa trị tuyệt đối
+Xác định hàm cần xét và viết đạo hàm (hoặc dạng đồ thị) của nó theo $f$, $f'$.
+Đọc từ bảng biến thiên hoặc đồ thị: cực trị của $f$, nghiệm của $f'=0$, số nghiệm của $f=0$.
+Đếm các nghiệm bội lẻ của $g'=0$, gộp các nghiệm trùng, hoặc áp công thức $p+q$, $2k+1$.
+Bài có tham số $m$: lập bảng biến thiên của $u$ theo $m$, xét số nghiệm $u(x)=a_i$, chú ý các $m$ làm $a_i$ bằng giá trị cực trị của $u$.
+
+##CY
+- Đường ngang là $y=-a$, không phải $y=a$.
+- Nghiệm của $f(x)=0$ trùng cực trị của $f$ (tiếp xúc $Ox$) không được tính thêm vào $q$.
+- Nghiệm kép của $u(x)=a$ trùng $u'=0$ phải xét dấu riêng, không đếm hai lần.
+
+=== N P2.9
+@ly_thuyet:
+##TC Quy tắc chung về GTLN, GTNN
+- $f$ liên tục trên đoạn $[a;b]$ thì $\max$, $\min$ đạt tại đầu mút hoặc tại điểm cực trị thuộc đoạn; trên khoảng phải lập bảng biến thiên.
+- Từ đồ thị $f'$ suy ra chiều biến thiên của $f$, lập bảng biến thiên rồi so sánh các giá trị; hai giá trị khác khoảng đơn điệu cần giả thiết nối ($f(a)=f(b)$, ...).
+
+##TC Hàm hợp, nhiều biến, tham số
+- $g=f(u(x))$: đặt $t=u(x)$, tìm tập giá trị $T$ của $t$; khi đó $\max g=\max_T f$ và $\min g=\min_T f$. Ví dụ $u=a\sin x+b$ cho $T=[b-|a|;b+|a|]$.
+- Biểu thức nhiều biến có ràng buộc: rút một biến hoặc đặt $t=x+y$, $t=xy$ rồi tìm miền chính xác của $t$.
+- Cô lập tham số: $m\ge f(x)$ nghiệm đúng trên $D\Leftrightarrow m\ge\max_D f$; $m\ge f(x)$ có nghiệm $\Leftrightarrow m\ge\min_D f$ (với $\le$ ngược lại).
+- $y=|f(x)+m|$ trên đoạn có $K=\max f$, $k=\min f$: $\max=\max\{|m+K|,|m+k|\}$; $\min=0$ nếu $-K<m<-k$, các trường hợp khác lấy đầu mút gần $0$ hơn.
+
+##PP Giải bài GTLN, GTNN nâng cao
+Đưa về một biến: đặt $t=u(x)$ hoặc rút biến, rồi tìm miền của $t$.
+Khảo sát hàm theo $t$ trên miền đó (lập bảng biến thiên), biểu diễn $\max$, $\min$ theo $m$ nếu có tham số.
+Chia trường hợp theo vị trí của $m$ (dấu $y'$, vị trí của $0$ so với $[m+k;m+K]$), giải điều kiện đề cho.
+Đối chiếu nghiệm với điều kiện từng trường hợp, kiểm tra giá trị đạt được tồn tại.
+
+##CY
+- Miền của $t$ thiếu hoặc thừa đầu mút làm sai kết quả.
+- Không thay $\max|f+m|$ bằng $|\max f+m|$.
+- Nhầm "nghiệm đúng với mọi $x$" (dùng $\max$ hoặc $\min$ toàn miền) với "có nghiệm".
+
+=== N P2.10
+@ly_thuyet:
+##TC Tiệm cận của $\dfrac{1}{f(x)+m}$
+- Mỗi nghiệm $x_0$ của $f(x)=-m$ (mẫu bằng $0$) cho một tiệm cận đứng $x=x_0$; số nghiệm đếm bằng giao điểm của $y=-m$ với đồ thị $f$.
+- Tiệm cận ngang: nếu $\lim f=\pm\infty$ thì $y=0$; nếu $\lim f=L$ hữu hạn và $L+m\ne0$ thì $y=\dfrac{1}{L+m}$; nếu $L+m=0$ thì phía đó không có tiệm cận ngang; hai phía có thể cho hai đường khác nhau.
+
+##TC Đếm nghiệm của phương trình hợp
+- $f(u(x))=m$: đặt $t=u(x)$, giải $f(t)=m$ bằng đồ thị (số giao điểm của $y=f(t)$ với $y=m$), loại $t$ ngoài tập giá trị của $u$, rồi đếm nghiệm $u(x)=t$.
+- $f(f(x))=m$: đặt $t=f(x)$, giải $f(t)=m$, rồi với mỗi $t$ giải $f(x)=t$ trên chính đồ thị $f$.
+- $|f(x)|=m$ ($m>0$) $\Leftrightarrow f(x)=\pm m$; $m=0$ thì chính là $f(x)=0$; $m<0$ vô nghiệm. $f(|x|)=m$: nghiệm $t>0$ cho $x=\pm t$, $t=0$ cho một nghiệm, $t<0$ không cho nghiệm.
+
+##PP Đếm tiệm cận và nghiệm của hàm hợp
+Đặt ẩn phụ ($t=u(x)$, $t=f(x)$) hoặc đưa mẫu về dạng $f(x)=k$.
+Đọc đồ thị hoặc bảng biến thiên của $f$: số nghiệm và vị trí các nghiệm $t$ (so với cực trị và đầu mút).
+Với mỗi $t$ hợp lệ, đếm số nghiệm $x$ của $u(x)=t$ (hoặc $f(x)=t$); cộng lại, nghiệm trùng chỉ tính một lần.
+Với tiệm cận: tính thêm $\lim g$ ở hai phía $\pm\infty$ rồi cộng số đường tiệm cận.
+
+##CY
+- Giá trị đầu mút mở (giới hạn tại $\pm\infty$ hay tại điểm gián đoạn) không được đạt: $y=k$ chỉ cắt nhánh khi $k$ nằm trong khoảng giá trị mở.
+- Đường $y=m$ đi qua điểm cực trị làm số giao điểm thay đổi, nghiệm tiếp xúc tính là một nghiệm.
+- Mỗi $t$ có thể cho $0$, $1$ hoặc $2$ nghiệm $x$ tuỳ tập giá trị của $u$; không mặc định hai nghiệm.
+
+## GHI CHÚ CHO CEO
+- P2.7–P2.10 đã đối chiếu với lý thuyết dạng (H1.4.x, H1.5.5–6, H2.3.3, H2.6.x, H3.1.3, H3.3.x, H3.4.x, H4.3.4, H6.4.x): cùng ký hiệu, không mâu thuẫn. Không có điểm cần Thùy quyết riêng.

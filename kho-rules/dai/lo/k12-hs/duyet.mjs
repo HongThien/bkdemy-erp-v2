@@ -13,7 +13,7 @@ import { veHinh } from './ve.mjs'
 const DIR = dirname(fileURLToPath(import.meta.url))
 const katex = createRequire(join(DIR, '../../../../package.json'))('katex')
 const RA = join(DIR, 'ra')
-const tepRa = existsSync(RA) ? readdirSync(RA).filter((f) => /^J\d+\.txt$/.test(f)).sort((a, b) => parseInt(a.slice(1)) - parseInt(b.slice(1))) : []
+const tepRa = existsSync(RA) ? readdirSync(RA).filter((f) => /^[JN]\d+\.txt$/.test(f)).sort((a, b) => parseInt(a.slice(1)) - parseInt(b.slice(1))) : []
 const moi = {}
 for (const f of tepRa) for (const k of docTep(readFileSync(join(RA, f), 'utf8'))) moi[(k.la_nhom ? 'N ' : '') + k.id] = { ...k, tep: f }
 
@@ -52,8 +52,8 @@ for (const f of tepRa) {
   const t = readFileSync(join(RA, f), 'utf8').replace(/\r\n/g, '\n')
   const i = t.search(/^## GHI CHÚ CHO CEO/m)
   if (i >= 0) canXem.push({ nguon: `${f.replace('.txt', '')} · trạm soạn`, text: t.slice(i).split('\n').slice(1).join('\n').trim() })
-  const bb = join(RA, f.replace('.txt', '.soat.md'))
-  if (existsSync(bb)) { const s = readFileSync(bb, 'utf8').replace(/\r\n/g, '\n'); const j = s.search(/^## Cần CEO xem/m); if (j >= 0) canXem.push({ nguon: `${f.replace('.txt', '')} · trạm soát`, text: s.slice(j).split('\n').slice(1).join('\n').replace(/\n## [\s\S]*$/, '').trim() }) }
+  const bb = join(RA, /^Nd/.test(f) ? 'N.soat.md' : f.replace('.txt', '.soat.md'))
+  if (existsSync(bb) && !(/^N[23]/.test(f))) { const s = readFileSync(bb, 'utf8').replace(/\r\n/g, '\n'); const j = s.search(/^## Cần CEO xem/m); if (j >= 0) canXem.push({ nguon: `${f.replace('.txt', '')} · trạm soát`, text: s.slice(j).split('\n').slice(1).join('\n').replace(/\n## [\s\S]*$/, '').trim() }) }
 }
 const lienKet = (s) => dong(s).replace(/\b(H\d(?:\.\d+){1,2})\b/g, (m) => `<a href="#${m}">${m}</a>`)
 const xem = canXem.filter((x) => x.text && !/^Không\.?$/i.test(x.text)).map((x) => `<section class="ghi"><h3>${esc(x.nguon)}</h3>${x.text.split('\n').filter((l) => l.trim()).map((l) => `<p>${lienKet(l.replace(/^[-*]\s*/, ''))}</p>`).join('')}</section>`).join('')
@@ -63,18 +63,18 @@ const tk = THONG_KE()
 let html = '', soLtNhom = 0, soLtDang = 0, soVd = 0, soHinh = 0, thieu = 0
 const toc = []
 CAY.forEach((cd, ci) => {
-  html += `<h2 id="${cd.id}">${esc(cd.ten)} <span class="ma">${cd.id}</span></h2>`
+  html += `<h2 id="${cd.id}">Phần ${ci + 1} · ${esc(cd.ten)} <span class="ma">${cd.id}</span></h2><p class="mota-nhom">${dong(cd.mo_ta)}</p>`
   const sub = []
   for (const n of cd.nhom) {
-    const mn = moi['N ' + n.id]
+    const mn = moi['N ' + (n.cu ?? n.id)]
     if (mn?.lt) soLtNhom++
     sub.push(`<li><a href="#${n.id}">${esc(n.ten)}</a></li>`)
     html += `<section class="nhom-khoi" id="${n.id}"><h3 class="nhom">Nhóm bài · ${esc(n.ten)} <span class="ma">${n.id}</span> <span class="the ${n.bb ? 'bb' : 'nc'}">${n.bb ? 'bắt buộc' : 'nâng cao'}</span></h3>
 <p class="mota-nhom">${dong(n.mo_ta)}</p>
 <div class="phan"><div class="phan-t">Lý thuyết nhóm ${mn?.lt ? '' : '<span class="thieu">chưa soạn</span>'}</div>${noiDung(mn?.lt ?? '')}</div>`
     for (const d of n.dang) {
-      const [id, ten, mo, hinh] = d
-      const m = moi[id]
+      const [id, ten, mo, hinh, v1] = d
+      const m = moi[v1]
       if (m?.lt) soLtDang++
       if (m?.vd) { soVd += (m.vd.match(/^##VD/gm) || []).length; soHinh += (m.vd.match(/\[\[HINH/g) || []).length }
       if (!m?.vd) thieu++
@@ -91,13 +91,13 @@ CAY.forEach((cd, ci) => {
 const cauTruc = `<table class="ct"><thead><tr><th>Chuyên đề</th><th>Nhóm bài</th><th>Dạng bài</th></tr></thead><tbody>${CAY.map((cd) => cd.nhom.map((n, i) => `<tr>${i === 0 ? `<td rowspan="${cd.nhom.length}"><a href="#${cd.id}">${esc(cd.ten)}</a></td>` : ''}<td><a href="#${n.id}">${esc(n.ten)}</a> ${n.bb ? '' : '<span class="the nc">nâng cao</span>'}</td><td>${n.dang.map((d) => `<a href="#${d[0]}">${esc(d[1])}</a>`).join('<br>')}</td></tr>`).join('')).join('')}</tbody></table>`
 
 const CAU_HOI = [
-  ['CĐ7 tách 8 nhóm theo loại mô hình', 'Bản cũ có 10 nhóm thực tế (hai "thùng" 777 câu). Đồng ý cắt theo loại mô hình? Nhóm H7.7 (tốc độ liên quan) chỉ PNL có, kho 0 câu — giữ nâng cao hay bỏ?'],
-  ['CĐ6 có thuộc chương Hàm số không', 'Tương giao · tiếp tuyến · điểm di động · phương trình hợp: sách có nhiều (~100 câu nâng cao) nhưng bản cũ không có chuyên đề này. Giữ, chuyển chủ đề khác, hay bỏ?'],
-  ['Tham số m và hàm hợp rải trong từng chuyên đề', 'Đề xuất rải (H1.5, H2.4, H3.3, H4.4 …). Hay gom thành một chuyên đề "Bài toán tham số"?'],
-  ['Khảo sát chia theo kỹ năng', 'Bản cũ/Từ Tâm/PNL chia theo loại hàm; đề xuất chia theo kỹ năng (vẽ · nhận dạng · hệ số · đọc tính chất), loại hàm xuống dạng bài.'],
-  ['Tiệm cận tách theo cách làm', 'Đề xuất 3 nhóm: TCĐ–TCN từ công thức · TCX từ công thức · đọc từ hình; thay cho 7 nhóm cũ (hoặc 1 nhóm như cả 3 tác giả).'],
-  ['Nhóm nâng cao đặt bat_buoc = false', 'H1.4 · H2.6 · H3.4 · H6.x · H7.7 — ổn không?'],
-  ['Bản nháp hiện có trong ERP', 'ERP đang gom đơn điệu/cực trị/GTLN/tiệm cận vào một chuyên đề "Các đặc trưng của hàm số"; đề xuất này tách thành 4 chuyên đề. Nếu chị muốn giữ gom thì nói.'],
+  ['Tôi hiểu logic 4 phần của chị thế này — đúng chưa?', 'Phần 1 = 4 phương diện (đơn điệu · cực trị · GTLN–GTNN · tiệm cận) gom MỘT chuyên đề, bài cơ bản, chia nhóm theo "đề cho công thức" / "đề cho hình (BBT, đồ thị, f′)" · Phần 2 = các loại hàm quan trọng, bài khó rơi vào đây · Phần 3 = tương giao, tiếp tuyến, khoảng cách · Phần 4 = thực tế.'],
+  ['Phần 1 dùng loại hàm làm dạng bài', 'Ở Phần 1 các dạng "công thức" vẫn tách theo loại hàm (bậc ba, trùng phương, phân thức…) vì cách tính khác nhau (vd cực trị, tiệm cận). Nhóm Phần 1 chia theo nguồn dữ liệu của đề (công thức / hình) như bản cũ của chị.'],
+  ['Hàm hợp, hàm ẩn, hàm có tham số — để ở Phần 2 (đề xuất)', 'Tôi coi "hàm cho gián tiếp" (g=f(u(x)), hàm ẩn, |f(x)+m|…) là một loại hàm để đặt 4 nhóm P2.7–P2.10 (đơn điệu · cực trị · GTLN–GTNN · tiệm cận/phương trình), đều nâng cao. GTLN–GTNN có tham số m (P2.9) tôi cũng để ở đây vì là bài khó.'],
+  ['Trùng phương chung nhóm với bậc ba', 'Hàm trùng phương chỉ có 2 dạng nên gộp vào P2.3 "đơn điệu, cực trị có tham số của hàm bậc ba và hàm trùng phương". Muốn một nhóm riêng thì cần thêm dạng (nhận dạng đồ thị trùng phương, đơn điệu có tham số) — cần soạn thêm.'],
+  ['Hàm phân thức gộp 1/1 và 2/1 (P2.5, P2.6)', 'Khảo sát/nhận dạng/hệ số và các bài tham số gộp cả hai loại; mỗi dạng vẫn nói rõ loại nào. Chị muốn tách "nhất biến" và "bậc hai trên bậc nhất" thành nhóm riêng không?'],
+  ['Phần 3 và các nhóm "nâng cao"', 'Phần 3 (ôn từ lớp 11) và P2.7–P2.10, tốc độ liên quan (P4.7) đang đánh dấu nâng cao (không chặn "xong chuyên đề"). Phần 3 có nên bắt buộc không?'],
+  ['Chuyển đổi so với bản đề xuất đầu', 'Cây v1 (7 chuyên đề, 36 nhóm) đã đổi thành 4 chuyên đề, 30 nhóm; MỌI dạng bài (112), lý thuyết dạng và ví dụ giữ nguyên từ bản đã soát; chỉ viết lại lý thuyết cho các nhóm đổi chỗ. Ngoài ra còn các quy ước đã nêu ở mục "Điểm cần xem khi soạn" (vd tiệm cận khi ad−bc=0, điểm uốn → tâm đối xứng, Cô-si).'],
 ]
 
 const page = `<title>K12 Hàm số — bản đồ mới 4 tầng (đề xuất)</title>
@@ -139,7 +139,7 @@ math{font-size:1.06em}
 <aside><strong>Mục lục</strong><ul><li><a href="#tong-quan">Tổng quan cây 4 tầng</a></li><li><a href="#quyet">Cần chị quyết</a></li><li><a href="#xem">Điểm cần xem khi soạn</a></li>${toc.join('')}</ul></aside>
 <main>
 <h1>K12 · Hàm số — bản đồ mới 4 tầng (đề xuất)</h1>
-<p class="dan">Chủ đề <strong>${esc(CHU_DE.ten)}</strong> (<span class="ma">${CHU_DE.id}</span>) · ${tk.chuyen_de} chuyên đề · ${tk.nhom} nhóm bài · ${tk.dang} dạng bài. Làm đúng khuôn phần <em>Giới hạn lớp 11</em>: mỗi nhóm có lý thuyết chung; mỗi dạng có mô tả nhận biết, lý thuyết riêng, 2 ví dụ có lời giải; ví dụ cần hình thì có hình (đồ thị vẽ từ công thức, bảng biến thiên dựng từ dữ liệu). Nội dung hiện có: <strong>${soLtNhom}</strong>/${tk.nhom} lý thuyết nhóm · <strong>${soLtDang}</strong>/${tk.dang} lý thuyết dạng · <strong>${soVd}</strong> ví dụ · <strong>${soHinh}</strong> hình${thieu ? ` · còn <strong>${thieu}</strong> dạng chưa soạn` : ''}.</p>
+<p class="dan">Chủ đề <strong>${esc(CHU_DE.ten)}</strong> (<span class="ma">${CHU_DE.id}</span>) · ${tk.chuyen_de} chuyên đề (4 phần) · ${tk.nhom} nhóm bài · ${tk.dang} dạng bài. Làm đúng khuôn phần <em>Giới hạn lớp 11</em>: mỗi nhóm có lý thuyết chung; mỗi dạng có mô tả nhận biết, lý thuyết riêng, 2 ví dụ có lời giải; ví dụ cần hình thì có hình (đồ thị vẽ từ công thức, bảng biến thiên dựng từ dữ liệu). Nội dung hiện có: <strong>${soLtNhom}</strong>/${tk.nhom} lý thuyết nhóm · <strong>${soLtDang}</strong>/${tk.dang} lý thuyết dạng · <strong>${soVd}</strong> ví dụ · <strong>${soHinh}</strong> hình${thieu ? ` · còn <strong>${thieu}</strong> dạng chưa soạn` : ''}.</p>
 <p class="dan">Cơ sở: 3 tác giả (Từ Tâm, NBV, PNL) + 117 đề giữa kì K12 trên ERP + 25 đề GK1/HK1 của NBV. Trang này chỉ để review — <strong>chưa ghi vào DB</strong>. Mã H… là mã tạm; khi chị chốt mới sinh mã NNB/NDB. Thẻ <span class="the bb">bắt buộc</span> / <span class="the nc">nâng cao</span> = đề xuất <code>bat_buoc</code>.</p>
 <h2 id="tong-quan">Tổng quan cây 4 tầng</h2>
 ${cauTruc}

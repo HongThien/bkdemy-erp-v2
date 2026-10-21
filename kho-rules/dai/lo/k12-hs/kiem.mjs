@@ -11,14 +11,15 @@ import { readFileSync } from 'node:fs'
 import { createRequire } from 'node:module'
 import { pathToFileURL, fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
-import { CAY } from './cau-truc.mjs'
+import { CAY } from './cau-truc-v1.mjs'
+import { CAY as CAY2 } from './cau-truc.mjs'
 import { timHinh, veHinh } from './ve.mjs'
 
 const DIR = dirname(fileURLToPath(import.meta.url))
 const katex = createRequire(join(DIR, '../../../../package.json'))('katex')
 
 export const DANG = Object.fromEntries(CAY.flatMap((c) => c.nhom.flatMap((n) => n.dang.map((d) => [d[0], { ten: d[1], mo_ta: d[2], hinh: d[3], nhom: n.id }]))))
-export const NHOM = Object.fromEntries(CAY.flatMap((c) => c.nhom.map((n) => [n.id, n])))
+export const NHOM = Object.fromEntries([...CAY, ...CAY2].flatMap((c) => c.nhom.map((n) => [n.id, n])))
 
 export function docTep(txt) {
   const kq = []

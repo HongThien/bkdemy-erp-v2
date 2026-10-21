@@ -1,0 +1,114 @@
+=== N P1.2
+@ly_thuyet:
+##TC Đồng biến, nghịch biến và cách đọc
+- Hàm $f$ **đồng biến** trên khoảng $K$ nếu $x_1<x_2$ thì $f(x_1)<f(x_2)$; **nghịch biến** nếu $x_1<x_2$ thì $f(x_1)>f(x_2)$. Khoảng đơn điệu là khoảng của $x$.
+- Nếu $f'(x)>0$ trên $K$ thì $f$ đồng biến trên $K$; nếu $f'(x)<0$ trên $K$ thì $f$ nghịch biến trên $K$. Nếu $f'\ge0$ ($f'\le0$) và $f'=0$ chỉ tại hữu hạn điểm thì kết luận vẫn giữ nguyên.
+- Nguồn dữ kiện: bảng biến thiên (mũi tên lên là đồng biến, xuống là nghịch biến), đồ thị của $f$ (đi lên hay đi xuống từ trái sang phải) hoặc dấu của $f'$ (bảng xét dấu, đồ thị $y=f'(x)$, biểu thức).
+
+##TC Đọc dấu của $f'$ từ đồ thị $y=f'(x)$
+- Phần đồ thị nằm **trên** trục $Ox$ là $f'>0$, nằm **dưới** trục $Ox$ là $f'<0$, cắt trục $Ox$ là $f'=0$.
+- Điểm chạm trục $Ox$ mà đồ thị không đi sang bên kia thì $f'$ không đổi dấu, không làm $f$ đổi chiều.
+
+##PP Xác định khoảng đơn điệu từ dữ kiện cho trước
+Xác định các mốc chia trên trục hoành: điểm $f'$ bằng $0$ hoặc không xác định, điểm hàm không xác định.
+Xét chiều mũi tên (bảng, đồ thị của $f$) hoặc dấu của $f'$ trên từng khoảng giữa hai mốc liên tiếp.
+Ghi kết luận theo hoành độ $x$, khoảng $f'>0$ là đồng biến, khoảng $f'<0$ là nghịch biến.
+Nếu $f'$ cùng dấu hai bên một mốc mà hàm liên tục tại mốc đó thì nối hai khoảng thành một.
+Đối chiếu từng mệnh đề của đề với các khoảng đã đọc, chú ý khoảng đề cho phải nằm trọn trong một khoảng đơn điệu.
+
+##CY
+- Đề cho đồ thị của $f'$: hình đi lên hay đi xuống của đường cong đó không nói gì về chiều biến thiên của $f$, chỉ phần trên hay dưới trục $Ox$ mới quan trọng.
+- Không nối hai khoảng cùng chiều qua một điểm mà hàm không xác định (cột kẻ đôi) hay không liên tục.
+- Khoảng đơn điệu ghi theo $x$, không ghi theo tung độ $y$.
+
+=== N P1.4
+@ly_thuyet:
+##TC Điểm cực trị, giá trị cực trị
+- Cho $f$ xác định trên $K$ và $x_0\in K$. $x_0$ là **điểm cực đại** nếu tồn tại khoảng $(a;b)\ni x_0$ nằm trong $K$ sao cho $f(x)<f(x_0)$ với mọi $x\in(a;b)\setminus\{x_0\}$; điểm **cực tiểu** thì bất đẳng thức ngược lại.
+- Phân biệt ba đại lượng: điểm cực trị là hoành độ $x_0$; giá trị cực trị là tung độ $y_0=f(x_0)$; điểm cực trị của đồ thị là cặp $(x_0;y_0)$.
+- Nếu $f$ liên tục tại $x_0$ và $f'$ đổi dấu khi qua $x_0$ thì $x_0$ là điểm cực trị: đổi dấu $+\to-$ là cực đại, $-\to+$ là cực tiểu. Cực trị chỉ xét tại điểm hàm xác định.
+
+##TC Đọc từ hình
+- Bảng biến thiên: cột mà mũi tên đổi chiều và hàm xác định ở đó là điểm cực trị, giá trị cực trị là số ghi ở cột đó.
+- Đồ thị của $f$: đỉnh là cực đại, đáy là cực tiểu.
+- Đồ thị của $f'$ (hoặc bảng xét dấu $f'$): điểm cực trị của $f$ là giao điểm mà $f'$ đổi dấu; nghiệm bội chẵn của $f'=0$ (đồ thị $f'$ chỉ tiếp xúc $Ox$) không cho cực trị. Từ $f'$ không đọc được giá trị cực trị.
+
+##PP Đọc cực trị từ hình hoặc từ $f'$
+Tìm các vị trí hàm đổi chiều biến thiên, hoặc các điểm mà $f'$ đổi dấu.
+Loại các điểm tại đó hàm không xác định và các điểm $f'=0$ nhưng $f'$ không đổi dấu.
+Phân loại: tăng sang giảm là cực đại, giảm sang tăng là cực tiểu.
+Đọc hoành độ, tung độ tương ứng, rồi trả lời đúng đại lượng đề hỏi (điểm cực trị, giá trị cực trị hay điểm cực trị của đồ thị).
+
+##CY
+- Đề cho đồ thị của $f'$: đỉnh, đáy của đường cong đó không phải cực đại, cực tiểu của $f$.
+- Điểm gián đoạn (cột kẻ đôi, tiệm cận đứng) và đầu mút của đoạn không phải điểm cực trị.
+- Giá trị cực đại có thể nhỏ hơn giá trị cực tiểu, vì cực trị chỉ so sánh trong lân cận.
+
+=== N P1.6
+@ly_thuyet:
+##TC Giá trị lớn nhất, giá trị nhỏ nhất
+- $M=\max_D f(x)$ nếu $f(x)\le M$ với mọi $x\in D$ và tồn tại $x_0\in D$ để $f(x_0)=M$; $m=\min_D f(x)$ nếu $f(x)\ge m$ với mọi $x\in D$ và tồn tại $x_0\in D$ để $f(x_0)=m$.
+- GTLN, GTNN là một **giá trị của $y$** (tung độ); điểm đạt được là giá trị của $x$.
+- Hàm liên tục trên đoạn $[a;b]$ luôn có GTLN và GTNN trên đoạn đó, đạt tại cực trị thuộc $[a;b]$ hoặc tại hai đầu mút.
+- Trên khoảng hoặc nửa khoảng, đầu mút không thuộc $D$ thì giá trị (hoặc giới hạn) tại đó chỉ là cận, không phải GTLN, GTNN; hàm có thể không có GTLN hoặc GTNN.
+
+##PP Đọc GTLN, GTNN từ bảng biến thiên hoặc đồ thị
+Xác định tập $D$ đề hỏi và chỉ xét phần hình nằm trong $D$.
+Liệt kê ứng viên: điểm cực trị thuộc $D$ và các đầu mút thuộc $D$.
+Đọc tung độ của các ứng viên, so sánh để chọn số lớn nhất và nhỏ nhất.
+Kiểm tra giá trị đó có được đạt tại một điểm thuộc $D$ hay không rồi kết luận có hay không có GTLN, GTNN.
+Nếu đề hỏi $M+m$, $M-m$ thì tính trên các tung độ đã đọc.
+
+##CY
+- Trên đoạn $[a;b]$ phải xét cả hai đầu mút: GTLN, GTNN có thể nằm ở đầu mút chứ không ở cực trị.
+- Cực đại không nhất thiết là GTLN, cực tiểu không nhất thiết là GTNN.
+- Cộng, trừ các **tung độ**, không cộng, trừ hoành độ của điểm đạt.
+
+=== N P1.9
+@ly_thuyet:
+##TC Ba loại tiệm cận
+- **Tiệm cận ngang:** nếu $\lim_{x\to+\infty}f(x)=y_0$ hoặc $\lim_{x\to-\infty}f(x)=y_0$ thì $y=y_0$ là tiệm cận ngang. Hai phía có hai giá trị khác nhau thì có hai đường tiệm cận ngang.
+- **Tiệm cận đứng:** nếu $\lim_{x\to x_0^+}f(x)=\pm\infty$ hoặc $\lim_{x\to x_0^-}f(x)=\pm\infty$ thì $x=x_0$ là tiệm cận đứng. Chỉ cần giới hạn vô cực ở một phía.
+- **Tiệm cận xiên:** đường $y=ax+b$ ($a\ne0$) mà $\lim_{x\to\pm\infty}[f(x)-(ax+b)]=0$.
+
+##TC Đọc từ hình
+- Đồ thị tiến sát đường nằm ngang khi $x$ ra xa: tiệm cận ngang; bay lên hoặc rơi xuống vô hạn bên cạnh đường thẳng đứng $x=x_0$: tiệm cận đứng; bám đường chéo: tiệm cận xiên.
+- Bảng biến thiên: số hữu hạn ở đầu $-\infty$ hoặc $+\infty$ cho tiệm cận ngang; cột kẻ đôi có $\pm\infty$ ở một phía cho tiệm cận đứng.
+
+##PP Đọc và đếm tiệm cận
+Xét hai đầu $x\to-\infty$ và $x\to+\infty$: giá trị hữu hạn $y_0$ cho tiệm cận ngang $y=y_0$, hai giá trị trùng nhau chỉ tính một đường.
+Xét từng điểm gián đoạn $x_0$: có $\pm\infty$ ở ít nhất một phía thì $x=x_0$ là tiệm cận đứng.
+Nếu đề hỏi tiệm cận nói chung thì cộng thêm tiệm cận xiên (khi đồ thị bám đường chéo).
+Liệt kê rồi đếm, đối chiếu với từng mệnh đề của đề.
+
+##CY
+- Một phía $x\to\pm\infty$ mà $f$ tiến ra vô cực thì phía đó không có tiệm cận ngang; hai tiệm cận ngang khác nhau là hai đường.
+- Đồ thị có thể cắt tiệm cận, không cần "không chạm".
+- Cột có $y'=0$ hoặc điểm mà hàm có giá trị hữu hạn hai phía không cho tiệm cận đứng.
+- Tiệm cận ngang và tiệm cận xiên của cùng một phía không cùng tồn tại.
+
+=== N P3.3
+@ly_thuyet:
+##TC Công thức dùng chung
+- Điểm $M$ thuộc đồ thị của $y=f(x)$ thì $M(t;f(t))$ với $t$ thuộc tập xác định: mọi đại lượng cần tìm viết theo **một** ẩn $t$.
+- Hàm $y=y_I+\dfrac{K}{x-x_I}$ ($K\ne0$) có tiệm cận đứng $x=x_I$, tiệm cận ngang $y=y_I$ và tâm đối xứng $I(x_I;y_I)$. Hàm $y=\alpha x+\beta+\dfrac{K}{x-x_I}$ ($\alpha\ne0$) có tiệm cận đứng $x=x_I$ và tiệm cận xiên $y=\alpha x+\beta$, tâm đối xứng là giao hai tiệm cận.
+- Điểm $M(x_I+u;\,y_I+\dfrac{K}{u})$ ($u\ne0$) cách tiệm cận đứng $|u|$, cách tiệm cận ngang $\dfrac{|K|}{|u|}$, tích hai khoảng cách bằng $|K|$ không đổi. Điểm đối xứng với $M$ qua $I$ là $M'(x_I-u;\,y_I-\dfrac{K}{u})$ cũng thuộc đồ thị.
+- Khoảng cách hai điểm $AB=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}$; từ $M(x_0;y_0)$ đến $Ax+By+C=0$: $\dfrac{|Ax_0+By_0+C|}{\sqrt{A^2+B^2}}$.
+- Cô-si: với $a,b\ge0$ thì $a+b\ge2\sqrt{ab}$, dấu bằng khi $a=b$; nếu $ab$ không đổi thì $a+b$ có giá trị nhỏ nhất.
+
+##PP Bài khoảng cách, điểm di động gắn với tiệm cận
+Viết phương trình các tiệm cận và tâm đối xứng, đưa hàm về dạng $y=\text{hằng}+\dfrac{K}{x-x_I}$ bằng phép chia đa thức.
+Đặt toạ độ điểm theo một tham số, thường $x=x_I+u$ để các khoảng cách viết gọn.
+Lập biểu thức cần xét (nên dùng bình phương khoảng cách để bỏ căn); cặp đối xứng qua $I$ thì lấy $\pm u$.
+Tìm giá trị nhỏ nhất bằng Cô-si khi tích hai số hạng không đổi, nếu không thì khảo sát hàm một biến; bài diện tích, góc thì dùng công thức khoảng cách, tích vô hướng.
+Chỉ rõ dấu bằng đạt tại tham số nào, đối chiếu miền của tham số rồi suy ra toạ độ điểm.
+
+##CY
+- Khoảng cách tới tiệm cận ngang là $|y_0-y_I|$, không phải $|y_0|$; khoảng cách luôn lấy giá trị tuyệt đối.
+- Cô-si chỉ dùng cho số hạng không âm và phải chứng tỏ dấu bằng xảy ra được trong miền của tham số (nhánh mà đề nói, $u\ne0$).
+- Mỗi cặp điểm đối xứng ứng với hai giá trị $\pm u$ nhưng chỉ là một cặp, đừng đếm hai lần; hai điểm ở hai nhánh thì $u>0$, $v>0$ với $x_A=x_I+u$, $x_B=x_I-v$.
+- Điểm nguyên: sau khi tách phần nguyên, $x-x_I$ phải là ước của $K$.
+
+## GHI CHÚ CHO CEO
+- P1.2 và P1.4 gồm cả đọc từ $f'$ nên có thêm khung riêng về cách đọc đồ thị $y=f'(x)$; P1.9 có thêm định nghĩa tiệm cận xiên theo giới hạn (chương trình Toán 12 có dạy), cần Thùy xác nhận giữ.
+- P3.3 mở đầu bằng hàm dạng $y_I+K/(x-x_I)$ vì đó là loại thi nhiều nhất; câu "điểm nguyên" chỉ nhắc trong bẫy.
