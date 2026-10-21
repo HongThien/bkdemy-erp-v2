@@ -5,6 +5,7 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
 import { cdhNoiDung, type CdhNoiDung } from '../../../lib/chuyenDeHinh'
+import { nguonCau } from '../../../lib/tailieuBdm'
 import { MathText } from '../../kho/ui'
 import { CHROME_CSS, buildPagedCss, printWithFilename } from '../PrintView'
 
@@ -16,7 +17,12 @@ export default function ChuyenDeHinhPrintView({ id, onlyPhanId, onClose }: { id:
   const [rendering, setRendering] = useState(true)
   const srcRef = useRef<HTMLDivElement>(null)
   const dstRef = useRef<HTMLDivElement>(null)
-  useEffect(() => { cdhNoiDung(id, onlyPhanId ?? null).then(setNd).catch((e) => setErr(e.message ?? String(e))) }, [id, onlyPhanId])
+  const [nguon, setNguon] = useState<Record<string, string>>({})   // chú thích "đề cương / đề thi trường nào" từng bài (fn_tl_nguon_cau)
+  // Nạp nội dung + nguồn CÙNG LÚC rồi mới set ⇒ dựng trang 1 lần.
+  useEffect(() => {
+    Promise.all([cdhNoiDung(id, onlyPhanId ?? null), nguonCau(id)])
+      .then(([n, m]) => { setNguon(m); setNd(n) }).catch((e) => setErr(e.message ?? String(e)))
+  }, [id, onlyPhanId])
 
   useEffect(() => {
     if (!nd?.tai_lieu || !srcRef.current || !dstRef.current) return
@@ -68,14 +74,14 @@ export default function ChuyenDeHinhPrintView({ id, onlyPhanId, onClose }: { id:
       <div className="pv-scroll min-h-0 flex-1 overflow-auto py-6">
         {!nd ? <p className="text-center text-slate-400">{err ?? 'Đang tải…'}</p> : <div ref={dstRef} className="pv-pages" />}
       </div>
-      <div ref={srcRef} className="pv-src" aria-hidden>{nd && <Doc nd={nd} gv={gv} />}</div>
+      <div ref={srcRef} className="pv-src" aria-hidden>{nd && <Doc nd={nd} gv={gv} nguon={nguon} />}</div>
       <style>{CHROME_CSS}</style>
     </div>,
     document.body,
   )
 }
 
-function Doc({ nd, gv }: { nd: CdhNoiDung; gv: boolean }) {
+function Doc({ nd, gv, nguon }: { nd: CdhNoiDung; gv: boolean; nguon: Record<string, string> }) {
   const ch = (nd.tai_lieu?.cau_hinh ?? {}) as { mau?: string }
   let no = 0
   return (
@@ -97,9 +103,12 @@ function Doc({ nd, gv }: { nd: CdhNoiDung; gv: boolean }) {
                 // Như màn duyệt Hình–Luyện: đề = giả thiết chung (de_bai là bản gốc trọn — in nữa thì lặp). Không có giả thiết chung +
                 // 1 ý = "bài một ý": đề nằm trọn trong ý, hình = hình của ý (không có thì hình bài).
                 const motY = !b.gia_thiet_chung?.trim() && b.y.length === 1
-                const no_ = `<span class="pv-cau-no">Bài ${no}.</span> `
+                // Có nguồn (Thùy 21/10): dòng riêng "Bài N. (Đề thi … — THCS …)", nội dung bài xuống dòng dưới.
+                const ng = nguon[b.ma_bai]
+                const no_ = ng ? '' : `<span class="pv-cau-no">Bài ${no}.</span> `
                 return (
                   <div key={b.ma_bai} className="pv-cau cdh-bai">
+                    {ng && <div className="cdh-nguon"><span className="pv-cau-no">Bài {no}.</span> <i>({ng})</i></div>}
                     {!motY && <div className="pv-math"><MathText prefix={no_}>{b.gia_thiet_chung ?? ''}</MathText></div>}
                     {!motY && b.anh_de && <img className="pv-img" src={b.anh_de} alt="" />}
                     {b.y.map((y, i) => (
@@ -132,5 +141,7 @@ const CDH_CSS = `
 .pv-cdh .cdh-mh{margin-top:10px}
 .pv-cdh .cdh-mh-head{font-weight:800;font-size:15px;color:#334155;border-left:4px solid var(--pv-accent,#2D9CDB);padding:2px 0 2px 8px;margin:8px 0 6px;break-after:avoid}
 .pv-cdh .cdh-y{margin:4px 0 4px 14px}
+.pv-cdh .cdh-nguon{break-after:avoid;margin-bottom:2px}
+.pv-cdh .cdh-nguon i{color:#5b6470}
 .pv-empty{color:#8a9097;font-style:italic;margin-top:10px}
 `

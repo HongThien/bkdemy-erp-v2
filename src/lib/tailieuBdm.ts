@@ -36,6 +36,12 @@ export type NoiDung = {
   tai_lieu: { id: string; ten: string; khoi: string; mon: string; nhanh: string | null; ban_do: 'cu' | 'moi'; luu_tru_tu: string | null; cau_hinh: Record<string, unknown>; updated_at: string }
   buoi: NdBuoi[]
 }
+/** Nguồn từng câu / bài của 1 tài liệu (mã ⇒ "Đề thi giữa kì 1 năm 2025-2026 — THCS …") — chuyên đề in kèm (Thùy 21/10). Rút gọn tên ở DB. */
+export async function nguonCau(taiLieuId: string): Promise<Record<string, string>> {
+  const { data, error } = await supabase.rpc('fn_tl_nguon_cau', { p_tai_lieu: taiLieuId }).limit(5000)
+  if (error) throw error
+  return Object.fromEntries(((data ?? []) as { ma_cau: string; nguon: string }[]).map((r) => [r.ma_cau, r.nguon]))
+}
 export async function noiDung(taiLieuId: string, buoiId?: string | null): Promise<NoiDung> {
   const { data, error } = await supabase.rpc('fn_tl_bdm_noi_dung', { p_tai_lieu: taiLieuId, p_buoi: buoiId ?? null })
   if (error) throw error

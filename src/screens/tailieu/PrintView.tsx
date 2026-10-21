@@ -13,7 +13,7 @@ import { parseLyThuyetBlocks, laDauNhomBaiTap } from '../../lib/lythuyetBlocks'
 import { uploadKhoFile } from '../../lib/kho/api'
 import type { CauHoi } from '../../lib/kho/api'
 import { AnhMmCtx } from './anhMmCtx'
-import { noiDung as noiDungBdm, type NoiDung } from '../../lib/tailieuBdm'
+import { noiDung as noiDungBdm, nguonCau, type NoiDung } from '../../lib/tailieuBdm'
 
 // Bộ đếm render TOÀN CỤC → mỗi lần dựng trang có 1 class scope riêng (`pv-scope-N`) gắn lên container.
 // CSS chrome (::before/::after) prefix bằng class này ⇒ stylesheet paged.js chèn vào <head> chỉ khớp ĐÚNG
@@ -200,13 +200,15 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
   // câu vẫn lấy từ getTaiLieuFull (đã nạp đủ câu của mọi phần). Tài liệu cũ: bdm luôn null, hành vi không đổi.
   const [bdm, setBdm] = useState<NoiDung | null>(null)
   const laCD = full?.taiLieu.loai === 'chuyen_de'   // chuyên đề: 1 tài liệu, không tách giáo trình / BTVN
+  const [nguon, setNguon] = useState<Record<string, string> | null>(null)   // chuyên đề: chú thích nguồn từng câu (fn_tl_nguon_cau)
   useEffect(() => {
     let cancelled = false
-    setFull(null); setLopTen(null); setBdm(null)
+    setFull(null); setLopTen(null); setBdm(null); setNguon(null)
     getTaiLieuFull(id, onlyBuoiId ? { onlyBuoiId } : undefined).then((f) => {
       if (cancelled) return
       setFull(f)
       if (f.taiLieu.ban_do === 'moi') noiDungBdm(id, onlyBuoiId ?? null).then((n) => { if (!cancelled) setBdm(n) }).catch((e) => { if (!cancelled) setErr(e.message ?? String(e)) })
+      if (f.taiLieu.loai === 'chuyen_de') nguonCau(id).then((m) => { if (!cancelled) setNguon(m) }).catch((e) => { if (!cancelled) setErr(e.message ?? String(e)) })
       const lopId = (f.taiLieu as { lop_id?: string | null }).lop_id
       if (!['btvn', 'giao_trinh_buoi'].includes(f.taiLieu.loai) || !lopId) { setLopTen(''); return }
       listLop().then((ls) => { if (!cancelled) setLopTen(ls.find((l) => l.id === lopId)?.ten_lop ?? '') })
@@ -236,6 +238,7 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
   useEffect(() => {
     if (!full || !srcRef.current || !dstRef.current) return
     if (full.taiLieu.ban_do === 'moi' && !bdm) return // bản đồ mới: đợi khung nhóm/dạng bài
+    if (full.taiLieu.loai === 'chuyen_de' && !nguon) return // chuyên đề: đợi nguồn từng câu (không dựng trang 2 lần)
     if (lopTen === null) return // buoiDoc: đợi lopTen nạp xong hẳn — KHÔNG dựng trang 2 lần nữa (fix 07-16, xem comment lopTen)
     let cancelled = false
     setRendering(true); setRenderErr(null)
@@ -315,7 +318,7 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
         .finally(() => URL.revokeObjectURL(cssUrl))
     })()
     return () => { cancelled = true; clearTimeout(watchdog) }
-  }, [full, bdm, gv, scope, lopTen, onlyBuoiId, perHS, roster, ngayNop])
+  }, [full, bdm, nguon, gv, scope, lopTen, onlyBuoiId, perHS, roster, ngayNop])
 
   const seg = (on: boolean) => `rounded-md px-3 py-1 text-[13px] font-medium transition ${on ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
 
@@ -366,7 +369,7 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
     <>
       {/* Trang dựng để chụp: on-screen top-left (html2canvas chụp ổn định hơn ngoài -99999px), NHƯNG nằm SAU lớp phủ đục. */}
       <div style={{ position: 'fixed', top: 0, left: 0, zIndex: 88, width: '210mm', background: '#fff' }}><div ref={dstRef} className="pv-pages" /></div>
-      <div ref={srcRef} className="pv-src" aria-hidden>{full && <Doc full={full} bdm={bdm} gv={gv} scope={scope} lt={lt} perHS={perHS} roster={roster} ngayNop={ngayNop} lopTen={lopTen ?? ''} />}</div>
+      <div ref={srcRef} className="pv-src" aria-hidden>{full && <Doc full={full} bdm={bdm} nguon={nguon} gv={gv} scope={scope} lt={lt} perHS={perHS} roster={roster} ngayNop={ngayNop} lopTen={lopTen ?? ''} />}</div>
       {/* no-print: lớp phủ "đang xử lý" CHỈ hiện trên màn hình, KHÔNG bao giờ lọt vào bản in/PDF thật (dù
           window.print() có được gọi ngay khi lớp phủ còn đang hiện, @media print tự ẩn nó). */}
       <div className="no-print fixed inset-0 z-[95] flex items-center justify-center bg-white">
@@ -421,7 +424,7 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
             </>}
       </div>
       {/* Nguồn ẩn — chỉ để lấy HTML cho paged.js (KaTeX đã render sẵn trong này) */}
-      <div ref={srcRef} className="pv-src" aria-hidden>{full && <Doc full={full} bdm={bdm} gv={gv} scope={scope} lt={lt} onlyBuoiId={onlyBuoiId} perHS={perHS} roster={roster} ngayNop={ngayNop} lopTen={lopTen ?? ''} />}</div>
+      <div ref={srcRef} className="pv-src" aria-hidden>{full && <Doc full={full} bdm={bdm} nguon={nguon} gv={gv} scope={scope} lt={lt} onlyBuoiId={onlyBuoiId} perHS={perHS} roster={roster} ngayNop={ngayNop} lopTen={lopTen ?? ''} />}</div>
       <style>{CHROME_CSS}</style>
     </div>,
     document.body,
@@ -445,7 +448,7 @@ function buildBuois(phans: PhanResolved[]): Buoi[] {
 }
 
 type DocProps = {
-  full: TaiLieuFull; bdm?: NoiDung | null; gv: boolean; scope: 'all' | 'giaotrinh' | 'btvn'; lt?: boolean; onlyBuoiId?: string
+  full: TaiLieuFull; bdm?: NoiDung | null; nguon?: Record<string, string> | null; gv: boolean; scope: 'all' | 'giaotrinh' | 'btvn'; lt?: boolean; onlyBuoiId?: string
   perHS?: boolean; roster?: { id: string; ho_ten: string }[]; ngayNop?: string; lopTen?: string
 }
 // Bọc context cỡ ảnh IN theo câu (cau_hinh.anhMmByCau — Thùy 12/10) để mọi <AnhDe> bên trong đọc được mà khỏi khoan prop.
@@ -515,7 +518,7 @@ function DocInnerCu({ full, gv, scope, lt = true, onlyBuoiId, perHS = false, ros
 // Không còn chuyên đề. BTVN = phiếu riêng như cũ, mỗi NHÓM 1 card (dùng lại BtvnSheet, đầu card = tên nhóm).
 // Số "Nhóm 2 · 2.3" là số HIỂN THỊ (stt suy ở DB theo vị trí trong buổi) — không phải mã, đổi khi sắp lại là đúng.
 // ⚠ Như giáo trình cũ: KHÔNG bọc div quanh cả nhóm (Fragment) — lớp box lồng làm paged.js trắng trang/lặp nội dung.
-function DocBdm({ full, bdm, gv, scope, lt = true, onlyBuoiId, perHS = false, roster = [], ngayNop = '', lopTen = '' }: DocProps & { bdm: NoiDung }) {
+function DocBdm({ full, bdm, nguon, gv, scope, lt = true, onlyBuoiId, perHS = false, roster = [], ngayNop = '', lopTen = '' }: DocProps & { bdm: NoiDung }) {
   const { taiLieu } = full
   const ch = taiLieu.cau_hinh ?? {}
   const accent = ch.mau || '#E91E8C'
@@ -579,7 +582,7 @@ function DocBdm({ full, bdm, gv, scope, lt = true, onlyBuoiId, perHS = false, ro
                       {d.hien_vi_du && d.vi_du?.trim() && parseLyThuyetBlocks(d.vi_du).some((x) => x.loai !== 'text')
                         ? <LyThuyetBody text={d.vi_du} />
                         : d.hien_vi_du && <LtBlock title="Ví dụ" lt={d.vi_du?.trim() || d.vi_du_file_url ? { noi_dung: d.vi_du ?? '', file_url: d.vi_du_file_url, ten_file: null } : null} />}
-                      {d.caus.length > 0 && <CauFlow hop items={caus(d.caus).map((c, i) => ({ key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: i + 1, c, gv, cheDoHinh: hinhCheDoByCau[c.ma_cau] }) }))} />}
+                      {d.caus.length > 0 && <CauFlow hop items={caus(d.caus).map((c, i) => ({ key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: i + 1, c, gv, cheDoHinh: hinhCheDoByCau[c.ma_cau], nguon: nguon?.[c.ma_cau] }) }))} />}
                     </div>
                   </section>
                 ))}
@@ -591,7 +594,7 @@ function DocBdm({ full, bdm, gv, scope, lt = true, onlyBuoiId, perHS = false, ro
                       <span className="gtbk-pill">{pill}</span>
                     </div>
                     <div className="gtbk-card-body">
-                      <CauFlow hop items={caus(n.chua_phan!.caus).map((c, i) => ({ key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: i + 1, c, gv, cheDoHinh: hinhCheDoByCau[c.ma_cau] }) }))} />
+                      <CauFlow hop items={caus(n.chua_phan!.caus).map((c, i) => ({ key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: i + 1, c, gv, cheDoHinh: hinhCheDoByCau[c.ma_cau], nguon: nguon?.[c.ma_cau] }) }))} />
                     </div>
                   </section>
                 )}
@@ -601,7 +604,7 @@ function DocBdm({ full, bdm, gv, scope, lt = true, onlyBuoiId, perHS = false, ro
               <section className="pv-sec gtbk-card">
                 <div className="gtbk-card-head"><div className="gtbk-card-title">Bài luyện thêm</div><span className="gtbk-pill">{pill}</span></div>
                 <div className="gtbk-card-body">
-                  <CauFlow hop items={caus(b.chua_khop!.caus).map((c, i) => ({ key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: i + 1, c, gv, cheDoHinh: hinhCheDoByCau[c.ma_cau] }) }))} />
+                  <CauFlow hop items={caus(b.chua_khop!.caus).map((c, i) => ({ key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: i + 1, c, gv, cheDoHinh: hinhCheDoByCau[c.ma_cau], nguon: nguon?.[c.ma_cau] }) }))} />
                 </div>
               </section>
             )}
@@ -943,7 +946,8 @@ function AnhDe({ ma, src }: { ma: string; src: string }) {
 // `lines` (SỐ dòng kẻ viết tay, 0 nếu không có). Dòng kẻ tách riêng để CauColumns rải THÀNH TỪNG HÀNG lưới
 // (ngắt được giữa các dòng → lấp đáy trang), còn content thì giữ nguyên khối.
 export type CauPart = { key: string; content: React.ReactNode; lines: number; hasImg: boolean }
-export function cauItemParts({ no, c, gv, lines = 0, cheDoHinh, tienTo = 'Câu' }: { no: number; c: CauHoi; gv: boolean; lines?: number; cheDoHinh?: CheDoHinh; tienTo?: string }): { content: React.ReactNode; lines: number; hasImg: boolean } {
+// nguon (chuyên đề, Thùy 21/10): dòng "Câu N. (Đề thi … — THCS …)" riêng, nội dung câu xuống dòng dưới.
+export function cauItemParts({ no, c, gv, lines = 0, cheDoHinh, tienTo = 'Câu', nguon }: { no: number; c: CauHoi; gv: boolean; lines?: number; cheDoHinh?: CheDoHinh; tienTo?: string; nguon?: string }): { content: React.ReactNode; lines: number; hasImg: boolean } {
   const md = c.menh_de && c.menh_de.length ? c.menh_de : null // câu Đúng/Sai: 4 mệnh đề, mỗi cái Đ/S riêng
   const hasOpts = !!(c.lua_chon && c.lua_chon.length)
   const letter = (i: number) => String.fromCharCode(65 + i)
@@ -960,7 +964,8 @@ export function cauItemParts({ no, c, gv, lines = 0, cheDoHinh, tienTo = 'Câu' 
   return {
     content: (<>
       {/* THỨ TỰ: đề → HÌNH → ý con → phương án/Đ-S → lời giải GV (Thùy chốt) */}
-      <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">${tienTo} ${no}.</span> `}>{md ? c.noi_dung : stem}</MathText></div>
+      {nguon && <div className="pv-nguon" style={{ breakAfter: 'avoid' }}><span className="pv-cau-no">{tienTo} {no}.</span> <i style={{ color: '#5b6470' }}>({nguon})</i></div>}
+      <div className="pv-math"><MathText prefix={nguon ? '' : `<span class="pv-cau-no">${tienTo} ${no}.</span> `}>{md ? c.noi_dung : stem}</MathText></div>
       {anhBlock}
       {!md && grid && <OptGrid grid={grid} emb={emb} />}
       {md && (
