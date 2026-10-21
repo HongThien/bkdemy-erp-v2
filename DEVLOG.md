@@ -38522,12 +38522,10 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 
 
 ### [21/10] HGT lên bản đồ mới: K10 đề xuất dạng bài (B3, CHƯA GHI) + trang duyệt hàng chờ K6/K12
-- **Hiện trạng đo trước khi làm:** K12 (18/10) và K6 (20/10) đã khớp vào  (gán 979 · đề xuất 650 · thiếu dạng 356 · kho Đ/S 292). Chỉ K10 chưa có dòng nào. K9 nhánh hgt 0 dạng bài ⇒ bỏ.
-- **K10 (1.657 câu, chủ đề Véc tơ NCD00176, 31 dạng bài):**  (thêm lời giải vào lô) → 22 lô × 6 trạm Sonnet (brief , nhãn trống cố định KHÔNG THUỘC CHỦ ĐỀ / THIẾU DẠNG / THIẾU HÌNH / ĐỀ LỖI). Kết quả câu thường 1.471: **796 cao · 482 chưa chắc · 174 thiếu dạng · 9 đề lỗi · 8 thiếu hình · 2 ngoài chủ đề**; Đ/S 186 ⇒ kho Đ/S chủ đề Véc tơ (184 chắc · 2 cần xem vì nhắc phương trình đường).
+- **Hiện trạng đo trước khi làm:** K12 (18/10) và K6 (20/10) đã khớp vào `hgt_bdm_*` (gán 979 · đề xuất 650 · thiếu dạng 356 · kho Đ/S 292). Chỉ K10 chưa có dòng nào. K9 nhánh hgt 0 dạng bài ⇒ bỏ.
+- **K10 (1.657 câu, chủ đề Véc tơ NCD00176, 31 dạng bài):** `bdm-b3-hgt-xuat-lo.mjs` (thêm lời giải vào lô) → 22 lô × 6 trạm Sonnet (brief `kho-rules/dai/lo/b3-hgt/brief-k10.md`, nhãn trống cố định KHÔNG THUỘC CHỦ ĐỀ / THIẾU DẠNG / THIẾU HÌNH / ĐỀ LỖI). Câu thường 1.471: **796 cao · 482 chưa chắc · 174 thiếu dạng · 9 đề lỗi · 8 thiếu hình · 2 ngoài chủ đề**; Đ/S 186 ⇒ kho Đ/S chủ đề Véc tơ (184 chắc · 2 cần xem vì nhắc phương trình đường).
 - **Đo độ tin (không có nhãn người làm mẫu):** 2 trạm Opus xếp MÙ 140 câu mức cao ⇒ khớp 136/140 (97,1%); câu Opus cũng chắc 126/126. 4 lệch đều giáp ranh, 3 rơi vào chồng chéo NDB00906 ↔ NDB00912 (bản đồ, chờ Thùy).
-- **Sai:** các trạm dùng CHUNG thư mục nháp ⇒ 1 trạm ghi đè script của trạm khác,  hỏng 1 lần (trạm tự phát hiện, ghi lại). Lần sau giao mỗi trạm thư mục nháp riêng. Đã kiểm lại cả 22 out: đủ câu, đúng thứ tự, mã hợp lệ, nhãn đúng.
-- **Không ghi DB** (luật Thùy 20/10). File đề xuất ; ghi khi Thùy nói "ghi": đọc 1471 câu · lỗi 0
-cao 796 · vua 482 · null 193
-chèn: gán 796/796 · đề xuất 482/482 · thiếu dạng 193/193
-↩ ROLLBACK (chạy thử) (câu thường) + Đ/S vào  (chưa có script, viết lúc ghi).
-- **Trang duyệt:** script mới  (đề + hình + đáp án + lời giải + dạng đề xuất, nhóm theo mức › dạng;  = đọc hàng chờ đang trong DB).  ·  (810: 484 chưa chắc + 326 không xếp) ·  (195). Xem local: launch  (cổng 5291).
+- **Sai 1:** các trạm dùng CHUNG thư mục nháp ⇒ 1 trạm ghi đè script của trạm khác, `out-19` hỏng 1 lần (trạm tự phát hiện, ghi lại). Lần sau giao mỗi trạm thư mục nháp riêng. Đã kiểm lại cả 22 out: đủ câu, đúng thứ tự, mã hợp lệ, nhãn đúng.
+- **Sai 2 (nặng):** viết mục DEVLOG này bằng `node -e "…"` có backtick ⇒ bash chạy từng đoạn trong backtick thành lệnh, kể cả lệnh ghi `bdm-b3-hgt-ghi.mjs … --ghi`. Thoát nhờ cờ bị dính dấu \ nên script chạy thử rồi ROLLBACK; đọc lại bằng kết nối riêng: K10 0 dòng ở cả 4 bảng, tổng không đổi. Mục DEVLOG ra bị nát ⇒ viết lại mục này bằng file script. **Rule: không bao giờ đặt backtick trong chuỗi bash nháy kép; văn bản dài ghi bằng Write/file script.**
+- **Không ghi DB** (luật Thùy 20/10). File đề xuất `kho-rules/dai/lo/b3-hgt/k10-2110/de-xuat.json`; khi Thùy nói "ghi": `node scripts/bdm-b3-hgt-ghi.mjs kho-rules/dai/lo/b3-hgt/k10-2110 10 --ghi` (câu thường; chạy thử đã khớp 796/482/193) + Đ/S vào `hgt_bdm_kho_ds` (chưa có script, viết lúc ghi).
+- **Trang duyệt:** script mới `bdm-b3-hgt-xem.mjs` (đề + hình + đáp án + lời giải + dạng đề xuất, nhóm theo mức › dạng; `--hang` = đọc hàng chờ đang trong DB). `reports/bdm-hgt-k10-de-xuat-2026-10-21.html` · `reports/bdm-hgt-k12-hang-cho-2026-10-21.html` (810: 484 chưa chắc + 326 không xếp) · `reports/bdm-hgt-k6-hang-cho-2026-10-21.html` (195). Xem local: launch `reports` (cổng 5291).
