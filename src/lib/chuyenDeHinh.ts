@@ -4,9 +4,10 @@
 import { supabase } from './supabase'
 
 export type CdhY = { nhan: string | null; noi_dung: string; dap_an: string | null; loi_giai: string | null; anh_de: string | null; anh_loi_giai: string | null; gia_thiet_them: string | null }
-export type CdhBai = { ma_bai: string; id: string | null; de_bai: string | null; gia_thiet_chung: string | null; anh_de: string | null; con_trong_kho: boolean; y: CdhY[] }
+export type CdhBai = { ma_bai: string; id: string | null; de_bai: string | null; gia_thiet_chung: string | null; anh_de: string | null; con_trong_kho: boolean; loai_cau?: string | null; y: CdhY[] }
 export type CdhMoHinh = { phan_id: string; id: string | null; ma: string | null; ten: string | null; gia_thiet: string | null; anh: string | null; con_tren_ban_do: boolean; bai: CdhBai[] }
-export type CdhPhan = { id: string; tieu_de: string | null; thu_tu: number; mo_hinh: CdhMoHinh[] }
+// khac = khối "Bài chưa có mô hình" (bài chưa gán mô hình / không tự luận) — mig 202610211748
+export type CdhPhan = { id: string; tieu_de: string | null; thu_tu: number; mo_hinh: CdhMoHinh[]; khac: { phan_id: string; bai: CdhBai[] } | null }
 export type CdhNoiDung = {
   tai_lieu: { id: string; ten: string; khoi: string; mon: string; nhanh: string | null; loai: string; ban_do: string; cau_hinh: Record<string, unknown>; updated_at: string } | null
   buoi: CdhPhan[]

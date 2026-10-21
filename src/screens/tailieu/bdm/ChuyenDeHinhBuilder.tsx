@@ -94,13 +94,13 @@ export default function ChuyenDeHinhBuilder({ id, onClose }: { id: string; onClo
                   <span className="text-[14px]">📑</span>
                   <input defaultValue={p.tieu_de ?? ''} onBlur={(e) => { const v = e.target.value.trim(); if (v && v !== p.tieu_de) doiTenPhan(p, v) }}
                     className="w-[220px] rounded-md border border-transparent bg-transparent px-1.5 py-1 text-[15px] font-bold text-indigo-800 outline-none hover:border-slate-200 focus:border-indigo-400 focus:bg-white" />
-                  <span className="text-[12px] text-slate-400">{p.mo_hinh.length} mô hình · {p.mo_hinh.reduce((s, m) => s + m.bai.length, 0)} bài</span>
+                  <span className="text-[12px] text-slate-400">{p.mo_hinh.length} mô hình · {p.mo_hinh.reduce((s, m) => s + m.bai.length, 0) + (p.khac?.bai.length ?? 0)} bài</span>
                   <button onClick={() => setXemPhan(p.id)} className="ml-auto shrink-0 whitespace-nowrap rounded-md border border-indigo-200 bg-white px-2.5 py-1 text-[12px] font-medium text-indigo-600 hover:bg-indigo-50">👁 Xem phần</button>
                   <button onClick={() => setChonMh(p)} className="shrink-0 whitespace-nowrap rounded-md bg-indigo-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-indigo-500">+ Chọn mô hình</button>
                   <button onClick={() => xoaPhan(p)} title="Xoá phần" className="rounded border border-slate-200 px-1.5 py-1 text-[12px] text-slate-400 hover:border-rose-300 hover:text-rose-600">✕</button>
                 </div>
                 <div className="space-y-4 p-4">
-                  {p.mo_hinh.length === 0 && <div className="text-[12px] italic text-slate-400">Chưa có mô hình — bấm “+ Chọn mô hình”.</div>}
+                  {p.mo_hinh.length === 0 && !p.khac && <div className="text-[12px] italic text-slate-400">Chưa có mô hình — bấm “+ Chọn mô hình”.</div>}
                   {p.mo_hinh.map((m, i) => (
                     <div key={m.phan_id} id={`cdh-${m.phan_id}`} className="scroll-mt-3 overflow-hidden rounded-xl border border-teal-200">
                       <div className="flex items-center gap-2 bg-teal-600 px-3 py-2 text-white">
@@ -136,6 +136,28 @@ export default function ChuyenDeHinhBuilder({ id, onClose }: { id: string; onClo
                       </ol>
                     </div>
                   ))}
+                  {p.khac && (
+                    <div className="overflow-hidden rounded-xl border border-amber-200">
+                      <div className="flex items-center gap-2 bg-amber-50 px-3 py-2 text-amber-800">
+                        <span className="text-[13.5px] font-semibold">⚠ Bài chưa có mô hình</span>
+                        <span className="text-[11px]">{p.khac.bai.length} bài · chưa gán mô hình hoặc không phải tự luận — in ở cuối phần với tên "Bài tập khác"</span>
+                      </div>
+                      <ol className="space-y-1.5 bg-white p-3">
+                        {p.khac.bai.map((b, j) => (
+                          <li key={b.ma_bai} className="rounded-md border border-slate-100 bg-slate-50/50 px-2.5 py-1.5">
+                            <div className="flex items-center gap-2">
+                              <span className="text-[12px] font-bold text-slate-400">{j + 1}.</span>
+                              <span className="shrink-0 rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] text-slate-500">{b.ma_bai}</span>
+                              <span className="text-[11px] text-slate-400">{b.y.length} ý</span>
+                              <button onClick={() => datBai(p, { phan_id: p.khac!.phan_id } as CdhMoHinh, p.khac!.bai.filter((x) => x.ma_bai !== b.ma_bai).map((x) => x.ma_bai))} className="ml-auto text-[12px] text-slate-400 hover:text-rose-600">✕</button>
+                            </div>
+                            <div className="mt-1 line-clamp-3 text-[13px] leading-relaxed text-slate-700"><MathText>{b.gia_thiet_chung?.trim() || (b.y[0]?.noi_dung ?? '')}</MathText></div>
+                            {b.anh_de && <img src={b.anh_de} alt="" className="mt-1 max-h-28 rounded border border-slate-200" />}
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}

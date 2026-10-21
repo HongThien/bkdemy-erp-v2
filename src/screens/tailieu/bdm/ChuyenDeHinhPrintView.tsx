@@ -87,10 +87,11 @@ function Doc({ nd, gv }: { nd: CdhNoiDung; gv: boolean }) {
       {nd.buoi.map((p) => (
         <section key={p.id} className="pv-sec">
           <h2 className="pv-h-dang">{p.tieu_de}</h2>
-          {p.mo_hinh.length === 0 && <p className="pv-empty">Phần này chưa có mô hình.</p>}
-          {p.mo_hinh.map((m) => (
+          {p.mo_hinh.length === 0 && !p.khac?.bai.length && <p className="pv-empty">Phần này chưa có mô hình.</p>}
+          {/* Khối bài chưa có mô hình in cuối phần, đầu "Bài tập khác"; phần CHỈ có khối này thì không lặp đầu (tên phần đã nói). */}
+          {[...p.mo_hinh, ...(p.khac?.bai.length ? [{ phan_id: p.khac.phan_id, ten: p.mo_hinh.length ? 'Bài tập khác' : '', bai: p.khac.bai }] : [])].map((m) => (
             <div key={m.phan_id} className="cdh-mh">
-              <div className="cdh-mh-head">{m.ten ?? '(mô hình đã xoá khỏi bản đồ)'}</div>
+              {m.ten !== '' && <div className="cdh-mh-head">{m.ten ?? '(mô hình đã xoá khỏi bản đồ)'}</div>}
               {m.bai.map((b) => {
                 no += 1
                 // Như màn duyệt Hình–Luyện: đề = giả thiết chung (de_bai là bản gốc trọn — in nữa thì lặp). Không có giả thiết chung +
