@@ -38505,3 +38505,8 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Thùy:** "Thảo Nguyên có phải giáo viên đâu" — phân công GV 8S1 nhập nhầm (Thùy xoá tay); 8F1 "là lớp 1-1, dạy 1-1 không tính giáo viên". `_la_gv_kiem_ta` đọc mọi phân công vai gv ⇒ Thảo Nguyên bị coi GV kiêm TA (mất lương TA, không bị đòi chấm công).
 - **Làm:** cột `lop.la_1_1` (bật cho 8F1, 11F1 — 2 lớp đuôi F, đều bậc C, ERP chưa có dấu 1-1 nào khác); `_la_gv_kiem_ta` bỏ qua lớp 1-1. Sau áp: Thảo Nguyên = TA (lương T10 tạm tính 400k), Quỳnh Trang + Ngân cũng = TA (phân công GV phụ 7A1/4A1 không còn trên DB), Đạt vẫn GV kiêm TA (GV lớp thường).
 - **Đề xuất chưa chốt:** xác định GV kiêm TA bằng ô team Giáo viên trên sơ đồ tổ chức thay vì phân công lớp (đúng nguyên tắc "chức danh về sơ đồ").
+
+### 21/10 — [Chuyên đề] Lá "Làm tài liệu › Chuyên đề" (Thùy: builder như giáo trình, không đi với lớp nào, tồn tại độc lập; làm được Đại · HGT · Hình)
+- Thùy chốt: mỗi chuyên đề 1 nhánh (chọn lúc tạo) · Hình lấy từ Hình–Luyện (mô hình · kho bài) · HGT nối câu vào bản đồ mới (bước 6 builder).
+- Phần 1 (xong): tai_lieu loai=chuyen_de ban_do=moi, dùng lại GiaoTrinhBdmScreen (prop loai) + BuilderBanDoMoi (laChuyenDe: ẩn Gán lớp, đơn vị "Phần"); DB builder chỉ kiểm ban_do nên không cần migration. Hộp tạo có chọn nhánh — Đại mở, HGT/Hình khoá kèm lý do. Sửa luôn lỗi cũ: Kho tài liệu mở giáo trình bản đồ mới bằng builder CŨ ⇒ giờ giáo trình/chuyên đề ban_do=moi mở BuilderBanDoMoi.
+- Còn: phần 2 HGT lên bản đồ mới (đề xuất HTML trước, ghi khi Thùy nói ghi) · phần 3 builder chuyên đề Hình–Luyện.

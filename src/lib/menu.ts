@@ -38,7 +38,7 @@ const LEAF_ICON: Record<string, string> = {
   diemso: '📈', thanhtich: '🥇', quanlylevel: '🪜', chotxu: '🪙', huyhieu: '🎖', huyhieu_trao: '🏅', chuoi_nghi: '🏖', tinh_nang: '🎛', traogiai: '🏆',
   // Học thuật
   bdkt: '🗺', cau_bao_loi: '⚑', bdm: '🧭', sotay: '📓', tl: '🗂', khodethi: '📑', nhapkho: '📥',
-  lamtailieu: '✍️', 'lamtailieu:giao_trinh': '📘', 'lamtailieu:giao_trinh_bdm': '🗺️','lamtailieu:giao_trinh_hinh': '📐', 'lamtailieu:et': '📝', 'lamtailieu:et_bdm': '🗺️', 'lamtailieu:mt': '🏁', 'lamtailieu:bo_tro': '🩹',
+  lamtailieu: '✍️', 'lamtailieu:giao_trinh': '📘', 'lamtailieu:giao_trinh_bdm': '🗺️','lamtailieu:giao_trinh_hinh': '📐', 'lamtailieu:et': '📝', 'lamtailieu:et_bdm': '🗺️', 'lamtailieu:chuyen_de': '📚', 'lamtailieu:mt': '🏁', 'lamtailieu:bo_tro': '🩹',
   // Quản lý chất lượng
   ketqua: '📊', cham_mt: '✏️', duyetcham: '✔️', duyetloigiai: '🔎', db_hoctap: '🧠', db_theodoi_app: '📱', report_ph: '💌',
   // Core team

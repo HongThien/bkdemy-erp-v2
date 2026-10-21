@@ -722,6 +722,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'nhapkho' ? <NhapKhoScreen />
       : (staffLeaf === 'lamtailieu' || staffLeaf === 'lamtailieu:giao_trinh') ? <TaiLieuScreen />
       : staffLeaf === 'lamtailieu:giao_trinh_bdm' ? <GiaoTrinhBdmScreen />
+      : staffLeaf === 'lamtailieu:chuyen_de' ? <GiaoTrinhBdmScreen key="chuyen_de" loai="chuyen_de" />
       : staffLeaf === 'lamtailieu:giao_trinh_hinh' ? <GiaoTrinhHinhEntry />
       : staffLeaf === 'lamtailieu:et' ? <ETScreen />
       : staffLeaf === 'lamtailieu:et_bdm' ? <ETBdmEditor />

@@ -492,11 +492,12 @@ function groupBuoi(phans: TaiLieuPhan[], buoiId: string): BuoiGroup {
   return g
 }
 // Thêm 1 buổi mới (rỗng) vào cuối tài liệu.
-export async function addBuoi(taiLieuId: string): Promise<void> {
+// nhan: tên đơn vị hiện trên tiêu đề mặc định — "Buổi" (giáo trình) · "Phần" (chuyên đề, Thùy 21/10). Dữ liệu vẫn loai_phan='buoi'.
+export async function addBuoi(taiLieuId: string, nhan = 'Buổi'): Promise<void> {
   const phans = await listPhan(taiLieuId)
   const n = phans.filter((p) => p.loai_phan === 'buoi').length + 1
   const tt = phans.length ? Math.max(...phans.map((p) => p.thu_tu)) + 1 : 0
-  await addPhan({ tai_lieu_id: taiLieuId, thu_tu: tt, loai_phan: 'buoi', ref_ma: null, tieu_de: `Buổi ${n}`, noi_dung: null })
+  await addPhan({ tai_lieu_id: taiLieuId, thu_tu: tt, loai_phan: 'buoi', ref_ma: null, tieu_de: `${nhan} ${n}`, noi_dung: null })
 }
 // Xoá 1 buổi: mốc + toàn bộ phan thuộc buổi đó.
 export async function deleteBuoi(taiLieuId: string, buoiId: string): Promise<void> {

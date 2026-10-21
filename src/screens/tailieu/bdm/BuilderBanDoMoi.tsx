@@ -28,7 +28,9 @@ const chonCuaBuoi = (b: NdBuoi): ChonBuoi => b.nhom.map((n) => ({ nhom: n.id, da
 // Phần đang mở popup chọn câu
 type MoChonCau = { buoi: NdBuoi; nhom: NdNhom; phanId: string; caus: string[]; uuTien: string | null }
 
-export default function BuilderBanDoMoi({ id, onClose }: { id: string; onClose: () => void }) {
+// laChuyenDe (Thùy 21/10): tài liệu CHUYÊN ĐỀ — cùng builder, KHÔNG đi với lớp (ẩn Gán lớp), đơn vị gọi là "Phần" thay "Buổi".
+export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { id: string; onClose: () => void; laChuyenDe?: boolean }) {
+  const NHAN = laChuyenDe ? 'Phần' : 'Buổi', nhan = NHAN.toLowerCase()
   const [nd, setNd] = useState<NoiDung | null>(null)
   const [cauMap, setCauMap] = useState<Map<string, CauHoi>>(new Map())
   const [ten, setTen] = useState('')
@@ -129,13 +131,13 @@ export default function BuilderBanDoMoi({ id, onClose }: { id: string; onClose: 
   }
   async function themBuoi() {
     await lam(async () => {
-      await addBuoi(id)
+      await addBuoi(id, NHAN)
       const list = await listBuoiTaiLieu(id); setBuoiList(list)
       await chonBuoiLoc(list.length ? list[list.length - 1].id : 'all'); markSaved()
     })
   }
   async function boBuoi(b: NdBuoi) {
-    if (!confirm(`Xoá "${b.tieu_de ?? 'buổi'}" (gồm mọi nhóm, dạng bài, BTVN và câu đã chọn của buổi)?`)) return
+    if (!confirm(`Xoá "${b.tieu_de ?? nhan}" (gồm mọi nhóm, dạng bài, BTVN và câu đã chọn của ${nhan})?`)) return
     await lam(async () => {
       await xoaBuoi(b.id)
       const list = await listBuoiTaiLieu(id); setBuoiList(list)
@@ -166,20 +168,20 @@ export default function BuilderBanDoMoi({ id, onClose }: { id: string; onClose: 
         <div className="flex items-center gap-3 border-b border-slate-200 bg-white px-5 py-2.5">
           {/* Như builder cũ: điểm "xong 1 lượt sửa" DUY NHẤT là lúc đóng ⇒ xếp hàng làm link PDF ở đây (không mỗi lần tự lưu). */}
           <button onClick={() => { if (!chiXem) useStore.getState().enqueueLinkGen(id, 'giao_trinh'); onClose() }} className="text-[13px] font-medium text-slate-400 hover:text-indigo-600">← Thư viện</button>
-          <input value={ten} disabled={chiXem} onChange={(e) => setTen(e.target.value)} onBlur={saveTen} className={`${inp} h-9 max-w-[420px] flex-1 font-semibold`} placeholder="Tên giáo trình" />
-          <span className="rounded bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700" title="Giáo trình theo bản đồ kiến thức mới (nhóm bài · dạng bài)">🆕 Bản đồ mới</span>
+          <input value={ten} disabled={chiXem} onChange={(e) => setTen(e.target.value)} onBlur={saveTen} className={`${inp} h-9 max-w-[420px] flex-1 font-semibold`} placeholder={laChuyenDe ? 'Tên chuyên đề' : 'Tên giáo trình'} />
+          <span className="rounded bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700" title="Theo bản đồ kiến thức mới (nhóm bài · dạng bài)">🆕 {laChuyenDe ? 'Chuyên đề · ' : ''}Bản đồ mới</span>
           {chiXem && <span className="rounded bg-amber-50 px-2 py-0.5 text-[11px] font-semibold text-amber-700">Bản lưu trữ · chỉ xem</span>}
           <span className="text-[12px] text-slate-400">Khối {nd.tai_lieu.khoi}</span>
           <label className="flex items-center gap-1.5 text-[12px] text-slate-500">
-            Buổi
+            {NHAN}
             <select value={filterBuoi} onChange={(e) => lam(() => chonBuoiLoc(e.target.value))} className={sel}>
               <option value="all">Tất cả ({buoiList.length})</option>
-              {buoiList.map((b) => <option key={b.id} value={b.id}>{b.tieu_de || `Buổi ${b.thu_tu + 1}`}</option>)}
+              {buoiList.map((b) => <option key={b.id} value={b.id}>{b.tieu_de || `${NHAN} ${b.thu_tu + 1}`}</option>)}
             </select>
           </label>
           <span className={`rounded-md px-2 py-0.5 text-[11px] font-medium transition ${saved ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-400'}`}>{saved ? '✓ Đã lưu' : '↻ Tự động lưu'}</span>
-          {!chiXem && <button onClick={() => setGanLop(true)} className="ml-auto whitespace-nowrap rounded-md border border-violet-300 px-3 py-1.5 text-sm font-medium text-violet-700 hover:bg-violet-50" title="Gán giáo trình cho 1 lớp → mỗi buổi thành giáo trình buổi + BTVN bám ngày học">⬇ Gán lớp</button>}
-          <button onClick={() => setInAll(true)} className={`${chiXem ? 'ml-auto ' : ''}whitespace-nowrap rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500`}>🖨 Xem / Xuất PDF</button>
+          {!chiXem && !laChuyenDe && <button onClick={() => setGanLop(true)} className="ml-auto whitespace-nowrap rounded-md border border-violet-300 px-3 py-1.5 text-sm font-medium text-violet-700 hover:bg-violet-50" title="Gán giáo trình cho 1 lớp → mỗi buổi thành giáo trình buổi + BTVN bám ngày học">⬇ Gán lớp</button>}
+          <button onClick={() => setInAll(true)} className={`${chiXem || laChuyenDe ? 'ml-auto ' : ''}whitespace-nowrap rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500`}>🖨 Xem / Xuất PDF</button>
           {!chiXem && (
             <label className="flex items-center gap-1.5 text-[12px] text-slate-500">Màu
               <span className="flex gap-1">{MAU_PRESET.map(([c, n]) => (
@@ -197,11 +199,11 @@ export default function BuilderBanDoMoi({ id, onClose }: { id: string; onClose: 
 
         <div className="grid min-h-0 flex-1 grid-cols-[270px_1fr] overflow-hidden">
           <aside className="min-h-0 overflow-auto border-r border-slate-200 bg-white p-3">
-            <CayTrai nd={nd} ten={ten} onJump={jump} />
+            <CayTrai nd={nd} ten={ten} nhan={nhan} onJump={jump} />
           </aside>
           <div className="min-h-0 overflow-auto p-5">
             <div className="mx-auto max-w-[900px] space-y-4">
-              {nd.buoi.length === 0 && <div className="rounded-xl border border-dashed border-slate-300 bg-white p-6 text-center text-[13px] text-slate-400">Chưa có buổi nào. Bấm “+ Thêm buổi” để bắt đầu.</div>}
+              {nd.buoi.length === 0 && <div className="rounded-xl border border-dashed border-slate-300 bg-white p-6 text-center text-[13px] text-slate-400">Chưa có {nhan} nào. Bấm “+ Thêm {nhan}” để bắt đầu.</div>}
               {nd.buoi.map((b) => (
                 <div key={b.id} className="rounded-xl border border-slate-200 bg-white">
                   <div id={`p-${b.id}`} className="scroll-mt-3 flex items-center gap-2 rounded-t-xl border-b border-slate-100 bg-indigo-50/50 px-4 py-2.5">
@@ -209,9 +211,9 @@ export default function BuilderBanDoMoi({ id, onClose }: { id: string; onClose: 
                     <input defaultValue={b.tieu_de ?? ''} disabled={chiXem} onBlur={(e) => { const v = e.target.value.trim(); if (v && v !== b.tieu_de) doiTenBuoi(b, v) }}
                       className="w-[220px] rounded-md border border-transparent bg-transparent px-1.5 py-1 text-[15px] font-bold text-indigo-800 outline-none hover:border-slate-200 focus:border-indigo-400 focus:bg-white" />
                     <span className="text-[12px] text-slate-400">{b.nhom.length} nhóm · {b.nhom.reduce((s, n) => s + n.dang_bai.length, 0)} dạng bài</span>
-                    <button onClick={() => setXemBuoi(b.id)} title="Xem nhanh bản in CHỈ buổi này" className="ml-auto shrink-0 whitespace-nowrap rounded-md border border-indigo-200 bg-white px-2.5 py-1 text-[12px] font-medium text-indigo-600 hover:bg-indigo-50">👁 Xem buổi</button>
+                    <button onClick={() => setXemBuoi(b.id)} title={`Xem nhanh bản in CHỈ ${nhan} này`} className="ml-auto shrink-0 whitespace-nowrap rounded-md border border-indigo-200 bg-white px-2.5 py-1 text-[12px] font-medium text-indigo-600 hover:bg-indigo-50">👁 Xem {nhan}</button>
                     {!chiXem && <button onClick={() => setBoChon(b)} className="shrink-0 whitespace-nowrap rounded-md bg-indigo-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-indigo-500">+ Chọn nhóm / dạng bài</button>}
-                    {!chiXem && <button onClick={() => boBuoi(b)} title="Xoá buổi" className="rounded border border-slate-200 px-1.5 py-1 text-[12px] text-slate-400 hover:border-rose-300 hover:text-rose-600">✕</button>}
+                    {!chiXem && <button onClick={() => boBuoi(b)} title={`Xoá ${nhan}`} className="rounded border border-slate-200 px-1.5 py-1 text-[12px] text-slate-400 hover:border-rose-300 hover:text-rose-600">✕</button>}
                   </div>
                   <div className="space-y-4 p-4">
                     {b.nhom.length === 0 && <div className="text-[12px] italic text-slate-400">Chưa có nhóm — bấm “+ Chọn nhóm / dạng bài”.</div>}
@@ -233,7 +235,7 @@ export default function BuilderBanDoMoi({ id, onClose }: { id: string; onClose: 
                   </div>
                 </div>
               ))}
-              {!chiXem && <button onClick={themBuoi} className="w-full rounded-xl border-2 border-dashed border-indigo-200 bg-indigo-50/40 py-3 text-[14px] font-medium text-indigo-700 transition hover:bg-indigo-50">+ Thêm buổi</button>}
+              {!chiXem && <button onClick={themBuoi} className="w-full rounded-xl border-2 border-dashed border-indigo-200 bg-indigo-50/40 py-3 text-[14px] font-medium text-indigo-700 transition hover:bg-indigo-50">+ Thêm {nhan}</button>}
             </div>
           </div>
         </div>
@@ -404,12 +406,12 @@ function KhoiCau({ tieuDe, mau, caus, cauMap, cfg, chiXem, btvn, soMacDinh, onXo
 }
 
 // Cây trái: Buổi → Nhóm → Dạng bài (số câu luyện). Bấm = nhảy tới thẻ.
-function CayTrai({ nd, ten, onJump }: { nd: NoiDung; ten: string; onJump: (pid: string) => void }) {
+function CayTrai({ nd, ten, nhan, onJump }: { nd: NoiDung; ten: string; nhan: string; onJump: (pid: string) => void }) {
   const item = 'block w-full truncate rounded px-2 py-1 text-left text-[13px] hover:bg-slate-100'
   return (
     <div>
       <div className="mb-2 truncate px-1 text-[13px] font-bold text-slate-700">📄 {ten || 'Giáo trình'}</div>
-      {nd.buoi.length === 0 && <div className="px-2 py-3 text-[12px] italic text-slate-400">Chưa có buổi.</div>}
+      {nd.buoi.length === 0 && <div className="px-2 py-3 text-[12px] italic text-slate-400">Chưa có {nhan}.</div>}
       {nd.buoi.map((b) => (
         <div key={b.id} className="mb-1">
           <button onClick={() => onJump(b.id)} className={`${item} font-semibold text-indigo-700`}>🗓️ {b.tieu_de}</button>

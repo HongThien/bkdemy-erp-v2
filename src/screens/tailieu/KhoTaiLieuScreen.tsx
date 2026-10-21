@@ -26,6 +26,7 @@ import MTPrintView from './MTPrintView'
 import TaiLieuBuilder from './TaiLieuBuilder'
 import { ETEditor, type ETView } from './ETScreen'
 import ETBdmEditor from './bdm/ETBdmEditor'
+import BuilderBanDoMoi from './bdm/BuilderBanDoMoi'
 import { DeThiEditor } from './DeThiScreen'
 import { MTEditor } from './MTScreen'
 import SearchSelect from '../../components/SearchSelect'
@@ -36,7 +37,7 @@ import { saveOnTapConfig, rebuildOnTapInDoc, btvnDaDong, type OnTapConfig } from
 // Loại tài liệu có thể mở builder để sửa từ Kho. (mt_buoi = INSTANCE đã gán buổi — sửa nội dung
 // phải qua master rồi gán lại, không sửa trực tiếp instance để tránh lệch với các lớp khác đã gán.)
 // Đề thi KHÔNG sửa / nhân bản / xoá ở đây nữa (CEO 01/10): chỗ lưu + sửa đề là lá Kho đề thi (Học thuật, dưới Kho tài liệu — tách khỏi Nhập kho 09/10); Kho tài liệu chỉ để IN đề.
-const EDITABLE = new Set(['et', 'giao_trinh', 'giao_trinh_buoi', 'btvn', 'mt'])
+const EDITABLE = new Set(['et', 'giao_trinh', 'giao_trinh_buoi', 'btvn', 'mt', 'chuyen_de'])
 const CHI_IN = new Set(['de_thi'])
 
 type DaiRow = TaiLieu & { nguon: 'dai'; lop_id?: string | null; ngay?: string | null; nguon_id?: string | null; nguon_buoi?: string | null }
@@ -87,6 +88,7 @@ export default function KhoTaiLieuScreen() {
   const [dlDoc, setDlDoc] = useState<{ id: string; loai: string } | null>(null)
   const [editEt, setEditEt] = useState<ETView | null>(null) // sửa ET tại chỗ (mở ETEditor)
   const [editGt, setEditGt] = useState<string | null>(null) // sửa giáo trình/BTVN (mở TaiLieuBuilder)
+  const [editBdm, setEditBdm] = useState<{ id: string; chuyenDe: boolean } | null>(null) // giáo trình / chuyên đề BẢN ĐỒ MỚI (BuilderBanDoMoi)
   const [editDeThi, setEditDeThi] = useState<string | null>(null) // sửa đề thi (mở DeThiEditor)
   const [editMT, setEditMT] = useState<string | null>(null) // sửa MT master (mở MTEditor)
   const [editOnTap, setEditOnTap] = useState<DaiRow | null>(null) // sửa ôn tập (modal nhỏ, spec-btvn-ontap.md §8)
@@ -315,6 +317,8 @@ export default function KhoTaiLieuScreen() {
     if (r.loai === 'et') setEditEt({ ...(r as any), ten_lop: lopTen(r.lop_id) })
     else if (r.loai === 'de_thi') setEditDeThi(r.id)
     else if (r.loai === 'mt') setEditMT(r.id)
+    // giáo trình / chuyên đề bản đồ mới mở builder MỚI (trước 21/10 rơi vào TaiLieuBuilder cũ — sai builder)
+    else if (r.ban_do === 'moi' && (r.loai === 'giao_trinh' || r.loai === 'chuyen_de')) setEditBdm({ id: r.id, chuyenDe: r.loai === 'chuyen_de' })
     else setEditGt(r.id)
   }
   // Đổi TÊN FILE ngay tại kho (= tai_lieu.ten, cột hiển thị) — khỏi vào builder (builder có ô tên buổi riêng dễ nhầm).
@@ -336,6 +340,7 @@ export default function KhoTaiLieuScreen() {
     ? <ETBdmEditor et={editEt} onClose={() => { setEditEt(null); reload() }} />
     : <ETEditor et={editEt} onClose={() => { setEditEt(null); reload() }} />
   if (editEtHinh) return <ETEditor presetHinh={editEtHinh} onClose={() => { setEditEtHinh(null); reload() }} />
+  if (editBdm) return <BuilderBanDoMoi id={editBdm.id} laChuyenDe={editBdm.chuyenDe} onClose={() => { setEditBdm(null); reload() }} />
   if (editGt) return <TaiLieuBuilder id={editGt} onClose={() => { setEditGt(null); reload() }} />
   if (editDeThi) return <DeThiEditor id={editDeThi} onClose={() => { setEditDeThi(null); reload() }} />
   if (editMT) return <MTEditor id={editMT} onClose={() => { setEditMT(null); reload() }} />
