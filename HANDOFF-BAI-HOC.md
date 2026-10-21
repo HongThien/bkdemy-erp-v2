@@ -8,7 +8,8 @@
 
 - dòng 36 — ⭐⭐⭐ LUẬT DUYỆT (Thùy 14/10, "nói bao lần rồi") — MỌI KHỐI, MỌI LÔ: muốn Thùy duy�
 - Bài học 14→20/10 — Kho K7 (đề thi, đề cương, bản đồ, hình) (ngay dưới LUẬT DUYỆT)
-- Bài học 17→19/10 — Bản đồ mới · Hình–Luyện · Kho đề thi (bản in) (ngay dưới LUẬT DUYỆT)
+- Bài học 20→21/10 — builder bản đồ mới · ET · Chuyên đề (ngay dưới LUẬT DUYỆT)
+- Bài học 17→19/10 — Bản đồ mới · Hình–Luyện · Kho đề thi (bản in)
 - dòng 47 — Bài học 10→17/10 — Bổ trợ (đừng đạp lại)
 - dòng 65 — Bài học 14/10 — Hình–Luyện cây nhánh + kho bài
 - dòng 146 — Bài học 28/09–02/10 — luồng kho + đề thi (nhập, gán vào buổi, đọc PDF)
@@ -57,6 +58,17 @@
 - **Đề rỗng do người tạo trong app vẫn có 1 dòng \`linkgen_jobs\` (pending, attempt 0) + 1 phần** — khi xoá đề phải kèm job; chạy thử ROLLBACK + kiểm FK (\`pg_constraint confrelid='tai_lieu'\`) trước.
 - **Vẽ hình cho câu hỏi "khái niệm" (song song/vuông góc suy ra từ cặp góc bằng nhau):** vẽ đúng dữ kiện thì hình tự lộ đáp án; chỉ đánh dấu điều ĐỀ CHO (cung góc bằng nhau, ô vuông), không vẽ mũi tên song song. Hình đề + đáp án cùng một tệp (không đuôi) trừ khi lời giải cần thêm đường phụ (dùng đuôi \`_de\`).
 - **Xoá câu khỏi kho: \`xoa_at\` (kho rác), không xoá cứng** (câu nhập từ đề không có FK trỏ vào nhưng \`tai_lieu_cau\` trỏ bằng text). Gỡ câu khỏi đề cương = xoá \`tai_lieu_cau\` + dọn \`cau_hinh.deThi.nhanCau/nhomBai/canhBaoCau\`.
+
+### Bài học 20→21/10 — builder bản đồ mới · ET · Chuyên đề
+
+- **⭐ Chạy `tsc` SAU MỖI lần sửa, kể cả sửa 1 dòng/1 chú thích.** 21/10 chèn `// chú thích` vào GIỮA một lời gọi hàm nhiều đối số ⇒ phần còn lại của dòng thành chú thích ⇒ Vite trắng màn (ngay sau vụ backtick 19/10). `sed` chèn chú thích cũng đã làm gãy 1 script kiểm cùng ngày.
+- **Trước khi tạo bảng/hàm "mới" cho một nhánh, tra `pg_trigger` + `information_schema` xem đã có chưa:** HGT bản đồ mới đã có đủ 4 bảng từ 18/10 (phiên khác dựng) — suýt tạo trùng + thêm policy ghi rộng hơn. Chỗ thiếu thật chỉ là 1 hàm gốc (`_tl_bdm_cau_vi_tri`) — mở hàm gốc thì mọi hàm builder ăn theo.
+- **Bài Hình–Luyện: `de_bai` là bản GỐC trọn (đã gồm các ý), đề hiển thị = `gia_thiet_chung`;** không có giả thiết chung + 1 ý = "bài một ý" (đề nằm trong ý, hình = hình ý → hình bài). In cả hai ⇒ đề lặp. Làm màn mới đọc dữ liệu cũ: chép đúng cách màn đang chạy hiển thị, đừng đoán theo tên cột.
+- **Hàm `listTaiLieu(…, nhanh=null)` lọc CHỈ nhánh Đại** (null ≠ "mọi nhánh"; undefined mới là mọi nhánh) — danh sách nhiều nhánh phải truyền undefined.
+- **Hàm plpgsql có `create temp table` phải `volatile`** (stable bị Postgres từ chối).
+- **Unique "1 tài liệu / buổi" chỉ có cho `btvn`/`giao_trinh_buoi`, KHÔNG có cho `et`** (dữ liệu cũ có buổi 2 ET) ⇒ chặn trộn bản cũ/mới bằng trigger so `ban_do`, không thêm unique.
+- **Lệnh shell: không mở đầu bằng `cat > file` khi không có heredoc** — treo chờ stdin tới timeout (dính 2 lần). Viết file bằng Write rồi chạy.
+- **Browser pane ẩn (phiên không mở trong cửa sổ) ⇒ paged.js không dựng trang** (watchdog 30s); kiểm nội dung nguồn `.pv-src` thay vì đếm trang, và nhờ Thùy xem bản in thật.
 
 ### Bài học 17→19/10 — Bản đồ mới · Hình–Luyện · Kho đề thi (bản in)
 
