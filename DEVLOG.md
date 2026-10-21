@@ -38587,3 +38587,6 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Sửa công cụ:** `dc-lib.mjs` nhận `kho=hinh_hoc` (trước chỉ dai / hgt).
 - **Quyết định:** nhập cả "Ví dụ" (có lời giải mẫu in sẵn) — soạn độc lập, đáp số trùng; đường trung bình CẤM (Thùy 20/10) ⇒ chứng minh bằng đồng dạng; hình ⇒ hinh_hoc HH00095.
 - **Chờ Thùy:** 5 cờ đều chỉ là làm tròn (`kho-rules/dai/k9-de-cuong-NT-can-xem.html`). **Phát hiện:** nhiều tệp soạn bộ đề K9 (GKI 12 đề, CKI 8 đề: CKI-02/03/04/06/07/10/11/22) có nhắc "đường trung bình" — chưa rà lại theo quy định 20/10 (chỉ Hoàng Mai được dùng).
+### 21/10 — [Chuyên đề] "Chuyên đề nâng cao Đại số 6" — Thùy "tuyển tập khối 6 đại số nữa"
+- `_cd_nang_cao_dai7.mjs --khoi 6 --tat-ca --tao` rồi `--them --tat-ca` (tai_lieu e158626e-8dda-4428-8a3b-ff0585c4ffeb): 32 đề giữa kì ⇒ 67 câu (39 phần nâng cao đề cương · 26 câu Đại cuối đề · 2 câu cuối đề cương). Số tự nhiên 14 · Tính chia hết 35 · ƯCLN/BCNN 3 · Số nguyên 1 · Chưa xếp chủ đề 14 (chưa có dạng bài lẫn chủ đề trên bản đồ mới K6). 53 có dạng bài = 43 đã gán + 10 theo đề xuất.
+- **Kiểm DB (Browser pane đã đóng):** noi_dung đủ 67 câu, không BTVN; `fn_tl_nguon_cau` 67/67. Đề "mã đề 101 (bộ đề GKI 6, đề 1)" gốc không ghi trường ⇒ nguồn in "Đề thi giữa kì 1 năm 2024-2025 — mã đề 101" (đúng như tài liệu).
