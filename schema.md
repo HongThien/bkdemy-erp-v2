@@ -4113,6 +4113,7 @@ END |  |  |
 | muc_hoc_phi_id | uuid | Y |  | FK→muc_hoc_phi.id |  |
 | muc_hoc_lieu_id | uuid | Y |  | FK→muc_hoc_lieu.id |  |
 | link_online | text | Y |  |  |  |
+| la_1_1 | boolean |  | false |  |  |
 
 ## lop_bac
 

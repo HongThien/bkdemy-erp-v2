@@ -38500,3 +38500,8 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Không đụng, chờ Thùy (9 mục):** 1 câu Đ/S lệch (T110000000070), 6 TN và 2 TLN mà DB ≠ gạch nhưng đáp án DB không phải do máy rút (có thể người/AI đã sửa) — danh sách trong `noct6989/cap-nhat-ket-qua.json` (scratchpad).
 - **Chưa làm:** 43 đề K10 mới (915 câu, 86% nội dung chưa có trong kho) — nhập bằng `noctorium_insert.mjs --khoi 10`, cần vá payload ưu tiên `dap_an_gach`/`dap_an_de`; 30 câu không khớp nội dung; tách chữ gạch chân chỉ phủ câu có nhãn dạng "A."/"a)".
 - **Đính chính DEVLOG 19/10 (NH-TP K12):** 167 câu mới = trắc nghiệm 118 · tự luận 39 · trả lời ngắn 6 · Đ/S 4.
+
+### 21/10 — [Lương TA] Dạy lớp 1-1 không tính là GV (mig 202610211555 ĐÃ ÁP)
+- **Thùy:** "Thảo Nguyên có phải giáo viên đâu" — phân công GV 8S1 nhập nhầm (Thùy xoá tay); 8F1 "là lớp 1-1, dạy 1-1 không tính giáo viên". `_la_gv_kiem_ta` đọc mọi phân công vai gv ⇒ Thảo Nguyên bị coi GV kiêm TA (mất lương TA, không bị đòi chấm công).
+- **Làm:** cột `lop.la_1_1` (bật cho 8F1, 11F1 — 2 lớp đuôi F, đều bậc C, ERP chưa có dấu 1-1 nào khác); `_la_gv_kiem_ta` bỏ qua lớp 1-1. Sau áp: Thảo Nguyên = TA (lương T10 tạm tính 400k), Quỳnh Trang + Ngân cũng = TA (phân công GV phụ 7A1/4A1 không còn trên DB), Đạt vẫn GV kiêm TA (GV lớp thường).
+- **Đề xuất chưa chốt:** xác định GV kiêm TA bằng ô team Giáo viên trên sơ đồ tổ chức thay vì phân công lớp (đúng nguyên tắc "chức danh về sơ đồ").
