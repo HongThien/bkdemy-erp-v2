@@ -183,7 +183,14 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
           </label>
           <span className={`rounded-md px-2 py-0.5 text-[11px] font-medium transition ${saved ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-400'}`}>{saved ? '✓ Đã lưu' : '↻ Tự động lưu'}</span>
           {!chiXem && !laChuyenDe && <button onClick={() => setGanLop(true)} className="ml-auto whitespace-nowrap rounded-md border border-violet-300 px-3 py-1.5 text-sm font-medium text-violet-700 hover:bg-violet-50" title="Gán giáo trình cho 1 lớp → mỗi buổi thành giáo trình buổi + BTVN bám ngày học">⬇ Gán lớp</button>}
-          <button onClick={() => setInAll(true)} className={`${chiXem || laChuyenDe ? 'ml-auto ' : ''}whitespace-nowrap rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500`}>🖨 Xem / Xuất PDF</button>
+          {/* Lý thuyết TOÀN FILE (Thùy 21/10) — cùng cài `inLyThuyet` của builder cũ, PrintView đã đọc. Tắt ⇒ không in lý thuyết nào;
+              bật ⇒ theo ô "Lý thuyết" của từng nhóm / dạng bài như cũ. */}
+          <label className={`${chiXem || laChuyenDe ? 'ml-auto ' : ''}flex items-center gap-1.5 text-[12px] text-slate-500`} title="Tắt = in cả file KHÔNG kèm lý thuyết (ô Lý thuyết từng nhóm / dạng bài giữ nguyên, bật lại là theo từng ô)">Lý thuyết
+            <select value={ch.inLyThuyet === false ? 'khong' : 'co'} disabled={chiXem} onChange={(e) => saveCh({ inLyThuyet: e.target.value === 'co' })} className={sel}>
+              <option value="co">Theo từng nhóm / dạng</option><option value="khong">Không in cả file</option>
+            </select>
+          </label>
+          <button onClick={() => setInAll(true)} className={`whitespace-nowrap rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500`}>🖨 Xem / Xuất PDF</button>
           {!chiXem && (
             <label className="flex items-center gap-1.5 text-[12px] text-slate-500">Màu
               <span className="flex gap-1">{MAU_PRESET.map(([c, n]) => (
