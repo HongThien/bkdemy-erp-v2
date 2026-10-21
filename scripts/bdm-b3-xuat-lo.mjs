@@ -1,6 +1,7 @@
 // B3 Khớp — XUẤT đầu vào cho máy khớp của một khối (CHỈ ĐỌC DB). Spec: spec-ban-do-4-tang.md §13.
 //   node scripts/bdm-b3-xuat-lo.mjs <khoi> [--lo 70] [--mau 90] [--dot <tên>]
 //   --hang: đợt KHỚP LẠI — chỉ câu gốc đang ở hàng duyệt (chưa chắc / thiếu dạng), khi bản đồ vừa được sửa.
+//   --lai-dang NDB…,NDB…: thêm câu AI-gán đang ở các dạng bài đó (khớp lại theo dạng).
 //   --dot: đợt BỔ SUNG (câu mới nhập sau lượt đầu) ⇒ thư mục k<khoi>-<tên>, mẫu _mau/k<khoi>-<tên>.json;
 //          gop/lech-mau gọi với khối = "<khoi>-<tên>". Câu đang ở hàng duyệt (de_xuat / thieu_dang) luôn bị bỏ.
 // Ghi vào kho-rules/dai/lo/b3/k<khoi>/:
@@ -19,6 +20,7 @@ const so = (k, d) => { const i = args.indexOf(k); return i >= 0 ? +args[i + 1] :
 const LO = so('--lo', 70), MAU = so('--mau', 90)
 const iDot = args.indexOf('--dot'), DOT = iDot >= 0 ? args[iDot + 1] : null
 const iLai = args.indexOf('--lai-ai'), LAI = iLai >= 0 ? new RegExp(args[iLai + 1], 'i') : null // ĐỢT KHỚP LẠI NHÃN AI: thêm câu đã có dạng bài do AI gán (nguon 'ai') mà đề khớp biểu thức chính quy này — khi bản đồ vừa có dạng mới (20/10)
+const iLd = args.indexOf('--lai-dang'), LAIDANG = iLd >= 0 ? new Set(args[iLd + 1].split(',')) : null // KHỚP LẠI THEO DẠNG: thêm câu AI-gán đang nằm ở các dạng bài này (vd NDB00799,NDB00800 khi Thùy đổi luật đơn giản/phức tạp, 21/10)
 const HANG = args.includes('--hang') // ĐỢT KHỚP LẠI: lấy câu gốc ĐANG Ở hàng duyệt (de_xuat / thieu_dang) thay cho câu chưa gán — dùng khi người vừa sửa/thêm dạng bài (20/10)
 if (!khoi) { console.error('Dùng: node scripts/bdm-b3-xuat-lo.mjs <khoi> [--lo 70] [--mau 90]'); process.exit(2) }
 
@@ -52,7 +54,7 @@ const cau = (await c.query(`
 await c.query('rollback'); await c.end()
 
 const dbIds = new Set(dich.map((d) => d.id))
-const chua = cau.filter((r) => (!r.dang_bai_id && (HANG ? r.o_hang : !r.o_hang)) || (LAI && r.dang_bai_id && r.gnguon === 'ai' && !r.o_hang && LAI.test(r.noi_dung))) // mặc định: bỏ câu ở hàng duyệt (người đang xử lý); --hang: CHỈ câu ở hàng duyệt
+const chua = cau.filter((r) => (!r.dang_bai_id && (HANG ? r.o_hang : !r.o_hang)) || (LAI && r.dang_bai_id && r.gnguon === 'ai' && !r.o_hang && LAI.test(r.noi_dung)) || (LAIDANG && r.dang_bai_id && r.gnguon === 'ai' && !r.o_hang && LAIDANG.has(r.dang_bai_id))) // mặc định: bỏ câu ở hàng duyệt (người đang xử lý); --hang: CHỈ câu ở hàng duyệt
 // mẫu: câu do NGƯỜI nối (cụm cũ / dạng cũ 1 chỗ), đích nằm trong bảng đích nhánh Toán
 const mauDs = cau.filter((r) => r.dang_bai_id && (r.nguon === 'gan_cum' || r.nguon === 'doi_ung') && dbIds.has(r.dang_bai_id))
   .sort((a, b) => a.h.localeCompare(b.h)).slice(0, MAU)

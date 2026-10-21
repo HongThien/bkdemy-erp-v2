@@ -38535,3 +38535,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - Client: lib/chuyenDeHinh.ts, bdm/ChuyenDeHinhBuilder (cây trái, thẻ phần/mô hình/bài, chọn mô hình theo chủ đề → nhóm mô hình, chọn bài từ kho mô hình), bdm/ChuyenDeHinhPrintView; GiaoTrinhBdmScreen mở builder theo nhánh + danh sách chuyên đề mọi nhánh; Kho tài liệu sửa/in đúng màn.
 - Lỗi gặp lúc làm: (1) danh sách chuyên đề lọc nhanh=null ⇒ không thấy chuyên đề Hình ⇒ sửa; (2) TÔI chèn chú thích // vào giữa biểu thức ⇒ Vite trắng màn (chưa commit, sửa ngay) — chạy tsc SAU MỖI lần sửa; (3) in đề bị lặp vì in cả de_bai (bản gốc trọn) lẫn gia_thiet_chung ⇒ theo màn duyệt: đề = gia_thiet_chung, bài một ý đề nằm trong ý.
 - Dữ liệu thử để lại: tai_lieu "[THỬ] Chuyên đề Hình K8" (ad2c564f…) — chờ Thùy cho xoá hay giữ làm mẫu. Bản in qua paged.js chưa xem được (pane ẩn), đã kiểm nội dung nguồn: 18 bài, 51 ý, 55 hình.
+
+### 21/10 (tối) — [K7] Điền LT/VD dạng mới + phân dạng lại theo luật đơn giản/phức tạp (B3 `k7-kq2110`)
+- Thùy: ≤4 phép tính = đơn giản (NDB00799), >4 = phức tạp (NDB00800), Claude tự phân + tự duyệt; đổi phân số→thập phân vào NDB00789; "full mô tả lý thuyết ví dụ" cho dạng mới. Luật ghi ở `kho-rules/dai/lo/b3/k7-kq2110/luat-21-10.md`.
+- Điền 12 lý thuyết + 14 ví dụ + 1 mô tả cho NDB01036/1234/1235/1336/1337/1339–1347 (`kho-rules/dai/lo/k7/dien-lt-vd-2110.mjs`, chỉ ô trống; 14 phép kiểm số liệu đúng; Thùy tự điền mô tả 01342/01343 giữa chừng nên script bỏ qua). Mô tả 01346 của Thùy còn cụt ("bậc lũy tằ") — chưa sửa.
+- Phân lại 429 câu (hàng duyệt + câu AI ở 00799/00800/00419/00420/01206/00789 + regex so sánh/nguyên/dãy bình phương): mẫu cao 89/89 đúng, 0 lệch. Hạ 5 câu cao→vừa (tự ngờ). Ghi: gan_cau +95, đổi dạng 19 câu AI, de_xuat 91, thieu_dang 48. `bdm-b3-xuat-lo.mjs` thêm `--lai-dang`.
+- Chưa động: 8 câu Hình `T1077033330401001..008` vẫn ở thieu_dang (chờ Thùy gật gỡ).
