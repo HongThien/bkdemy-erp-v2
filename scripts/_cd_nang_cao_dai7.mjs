@@ -1,4 +1,4 @@
-// Chuyên đề "Chuyên đề nâng cao Đại số 7" (Thùy 21/10): gom CÂU NÂNG CAO CUỐI của mọi đề thi + đề cương Toán 7 trong Kho đề thi,
+// Chuyên đề "Chuyên đề nâng cao Đại số 7" (Thùy 21/10): gom CÂU NÂNG CAO CUỐI của đề thi + đề cương Toán 7 GIỮA KÌ trong Kho đề thi,
 // THAM CHIẾU TỪ KHO (câu phải ở kho chuẩn + đã xếp dạng bài bản đồ mới — đúng tập builder dùng: _tl_bdm_cau_vi_tri). Câu chưa vào kho
 // (chưa duyệt / chưa xếp dạng bài) KHÔNG đưa vào — liệt kê cho Thùy.
 //   Câu nâng cao: đề cương = mọi câu Đại trong phần tên có "nâng cao"; đề thi = câu Đại cuối đề (+ các ý cùng bài nếu là bài nhiều ý).
@@ -19,7 +19,8 @@ await q('begin')
 const [ad] = await q("select tk.id from tai_khoan tk join nhan_su ns on ns.id = tk.nhan_su_id where lower(ns.email) = 'admin@gmail.com' limit 1")
 await q("select set_config('request.jwt.claims', $1, true)", [JSON.stringify({ sub: ad.id, role: 'authenticated' })])
 
-const des = await q(`select id, ten, cau_hinh from tai_lieu where loai = 'de_thi' and mon = 'Toán' and khoi = '7' order by created_at`)
+// CHỈ đề GIỮA KÌ (đề kiểm tra giữa kì + đề cương ôn tập giữa kì) — Thùy 21/10 "chỉ tính đề giữa kì thôi"
+const des = await q(`select id, ten, cau_hinh from tai_lieu where loai = 'de_thi' and mon = 'Toán' and khoi = '7' and ten ilike '%giữa%' order by created_at`)
 const chon = []   // { ma_cau, de, ly_do }
 for (const d of des) {
   const cs = await q(`select stt, ma_cau, kho, phan_tieu_de, xoa from fn_de_thi_cau($1) order by stt`, [d.id])
@@ -65,7 +66,7 @@ console.log(`${des.length} đề · ${ds.length} câu nâng cao (sau bỏ trùng
 const dem = {}; for (const x of khongVao) dem[x.vi_sao] = (dem[x.vi_sao] ?? 0) + 1
 console.log(dem)
 fs.mkdirSync(OUT, { recursive: true })
-fs.writeFileSync(`${OUT}/ket-qua.json`, JSON.stringify({ vao, khongVao }, null, 1))
+if (!THU) fs.writeFileSync(`${OUT}/ket-qua.json`, JSON.stringify({ vao, khongVao }, null, 1))   // --thu: số liệu giả lập, không ghi đè kết quả thật
 
 // --them: chuyên đề ĐÃ CÓ (Thùy có thể đã sửa) ⇒ chỉ THÊM câu nâng cao mới vào kho từ lần trước (vd sau khi duyệt đề), không đụng phần đã có.
 if (process.argv.includes('--them')) {
