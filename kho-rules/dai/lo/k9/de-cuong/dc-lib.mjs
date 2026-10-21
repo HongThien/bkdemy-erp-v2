@@ -6,7 +6,7 @@
 //   · NHOM chia tệp theo (phần, từ bài, đến bài)
 //
 //   dung({ MA, TEN, NGUON, FILE, PHAN, CAU, NHOM, LV, HERE })
-//     CAU[i] = { phan, kho: 'dai'|'hgt', nhan, noi_dung, anh?: ['de_B6.png'], canh_bao?: ['…' | 'CHƯA CHẮC — …'] }
+//     CAU[i] = { phan, kho: 'dai'|'hgt'|'hinh_hoc', nhan, noi_dung, anh?: ['de_B6.png'], canh_bao?: ['…' | 'CHƯA CHẮC — …'] }
 //     NHOM   = [[phan, tuBai, denBai], …] — mỗi nhóm một tệp phần cho một trạm soạn
 //   Cần sẵn: <LV>/goc.pdf (tệp gốc) và <LV>/img/<hình đề>.
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs'
@@ -28,7 +28,7 @@ export function dung({ MA, TEN, NGUON, FILE, PHAN, CAU, NHOM, LV, HERE, NAM = 20
       if (/\\times/.test(m[1])) loi.push(`${khoa(q)}: khối 9 không dùng \\times`)
       if (/[À-ỹĐđ]/.test(m[1].replace(/\\text\{[^}]*\}/g, ''))) loi.push(`${khoa(q)}: chữ Việt ngoài \\text{} trong công thức`)
     }
-    if (!['dai', 'hgt'].includes(q.kho)) loi.push(`${khoa(q)}: kho phải là dai / hgt`)
+    if (!['dai', 'hgt', 'hinh_hoc'].includes(q.kho)) loi.push(`${khoa(q)}: kho phải là dai / hgt / hinh_hoc`)
     for (const a of q.anh ?? []) if (!existsSync(join(LV, 'img', a))) loi.push(`${khoa(q)}: thiếu hình đề img/${a}`)
     if (!PHAN.some((p) => p.thu_tu === q.phan)) loi.push(`${khoa(q)}: phần ${q.phan} không có`)
   }

@@ -38580,3 +38580,10 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Hình 8** (tai_lieu 1092a867-f03a-40d6-a26d-3eda0e61b082): 84/84 bài Hình–Luyện K8 (đều từ đề / đề cương giữa kì 1) — 5 phần theo nhóm mô hình (39 · 6 · 1 · 4 · 3) + "Bài tập khác" 31 bài (chưa gán mô hình: 13 tự luận, 12 trả lời ngắn, 5 Đ/S, 1 TN).
 - **Mig 202610211841:** `_nguon_ngan` đổi "Nội dung ôn tập…" ⇒ "Đề cương…" (đề cương Ngọc Thụy in thành "Nội dung giữa kì I").
 - **Kiểm app thật:** bản in Đại 8 có nguồn 49/49 câu, Hình 8 có nguồn 84/84 bài.
+
+## 21/10/2026 (tối) — Đề cương Ngọc Thụy Toán 9 (NT-GKI-2026) vào Kho đề thi: 45 câu
+- **Thùy:** "Nhập thêm đề cương lớp 9 đi. t mới đưa thêm vào" ⇒ 1 tệp mới: `Tài liệu tham khảo/K9/Đề cương/GKI/on-tap-giua-hoc-ki-1-toan-9-nam-2026-2027-truong-thcs-ngoc-thuy-ha-noi.pdf` (11 trang, sinh từ Word).
+- **Làm:** gõ lại từ ẢNH (lớp chữ của PDF mất kí hiệu công thức) ⇒ `NT-GKI-2026.build.mjs` 45 câu / 6 phần (Ví dụ mẫu + 4 dạng thực hành + Đề minh họa); cắt 5 hình đề; 9 trạm soạn Sonnet + 9 trạm soát Opus giải mù (**45/45 đáp số khớp ngay**); `ghep-chung.mjs` (DANG_HINH_K9=HH00095) → `ghi.mjs --ghi`: 44 câu mới + 1 trùng · Đại 36 + Hình 9 (HH00095) · tai_lieu f74554f7-d6e6-4f3f-b49c-1e43f76790f1, kieu de_cuong, 5 nhóm bài.
+- **Sửa công cụ:** `dc-lib.mjs` nhận `kho=hinh_hoc` (trước chỉ dai / hgt).
+- **Quyết định:** nhập cả "Ví dụ" (có lời giải mẫu in sẵn) — soạn độc lập, đáp số trùng; đường trung bình CẤM (Thùy 20/10) ⇒ chứng minh bằng đồng dạng; hình ⇒ hinh_hoc HH00095.
+- **Chờ Thùy:** 5 cờ đều chỉ là làm tròn (`kho-rules/dai/k9-de-cuong-NT-can-xem.html`). **Phát hiện:** nhiều tệp soạn bộ đề K9 (GKI 12 đề, CKI 8 đề: CKI-02/03/04/06/07/10/11/22) có nhắc "đường trung bình" — chưa rà lại theo quy định 20/10 (chỉ Hoàng Mai được dùng).
