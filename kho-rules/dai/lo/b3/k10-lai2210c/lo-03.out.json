@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T110010204071",
+  "dang_bai_id": "NDB00526",
+  "chac": "cao",
+  "ly_do": "Cho n(A), n(B), n(A∪B), hỏi số học sinh thuộc cả hai tập."
+ },
+ {
+  "ma_cau": "T110010201067",
+  "dang_bai_id": "NDB00828",
+  "chac": "cao",
+  "ly_do": "Liệt kê phần tử của tập hợp cho bằng tính chất."
+ },
+ {
+  "ma_cau": "T110020102001",
+  "dang_bai_id": "NDB00538",
+  "chac": "cao",
+  "ly_do": "Biểu diễn miền nghiệm của một bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110010103076",
+  "dang_bai_id": "NDB00826",
+  "chac": "cao",
+  "ly_do": "Phủ định mệnh đề chứa với mọi."
+ },
+ {
+  "ma_cau": "T110010202012",
+  "dang_bai_id": "NDB00520",
+  "chac": "cao",
+  "ly_do": "Tìm hợp của hai tập hợp liệt kê."
+ },
+ {
+  "ma_cau": "T110030106063",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho tan và khoảng góc, tính sin."
+ },
+ {
+  "ma_cau": "T110030101031",
+  "dang_bai_id": "NDB00550",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức lượng giác ngắn khi biết số đo góc."
+ },
+ {
+  "ma_cau": "T110010204065",
+  "dang_bai_id": "NDB00528",
+  "chac": "vua",
+  "ly_do": "Tính số học sinh chỉ chơi một môn (cả hai phần chỉ-một), không khớp hẳn dạng AB."
+ },
+ {
+  "ma_cau": "T110010101102",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Nhận diện câu nào là mệnh đề."
+ },
+ {
+  "ma_cau": "T110000000107",
+  "dang_bai_id": "NDB00537",
+  "chac": "vua",
+  "ly_do": "Hai ý khác dạng: giao hai khoảng và tham số m; xếp dạng sau, ý b đề lạ."
+ },
+ {
+  "ma_cau": "T110030106081",
+  "dang_bai_id": "NDB00890",
+  "chac": "vua",
+  "ly_do": "Cho tan, tính sin²-cos²; có thể xem là đồng bậc (NDB00562)."
+ },
+ {
+  "ma_cau": "T110030102002",
+  "dang_bai_id": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xác định dấu giá trị lượng giác của góc tù."
+ },
+ {
+  "ma_cau": "T110030106031",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin và khoảng góc, tính tan."
+ },
+ {
+  "ma_cau": "T110010203146",
+  "dang_bai_id": "NDB00520",
+  "chac": "cao",
+  "ly_do": "Kết hợp giao rồi hợp các tập số thực; dạng sau cùng là hợp."
+ },
+ {
+  "ma_cau": "T110010103095",
+  "dang_bai_id": "NDB01379",
+  "chac": "cao",
+  "ly_do": "Phủ định mệnh đề đơn giản không chứa với mọi/tồn tại."
+ },
+ {
+  "ma_cau": "T110020202064",
+  "dang_bai_id": "NDB00886",
+  "chac": "vua",
+  "ly_do": "Chọn hệ bất phương trình từ hình miền nghiệm, đáp án khác hệ số; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T110020203059",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Tìm cặp số không là nghiệm của hệ bất phương trình."
+ },
+ {
+  "ma_cau": "T110020203046",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Tìm điểm không thuộc miền nghiệm của hệ."
+ },
+ {
+  "ma_cau": "T110010202104",
+  "dang_bai_id": "NDB00520",
+  "chac": "cao",
+  "ly_do": "Tìm hợp của hai tập hợp liệt kê."
+ },
+ {
+  "ma_cau": "T110020202056",
+  "dang_bai_id": "NDB00886",
+  "chac": "vua",
+  "ly_do": "Chọn hệ bất phương trình từ hình miền nghiệm, đáp án khác hệ số; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T110010204066",
+  "dang_bai_id": "NDB00525",
+  "chac": "cao",
+  "ly_do": "Tính số học sinh thích ít nhất một trong hai môn, n(A∪B)."
+ },
+ {
+  "ma_cau": "T110030107063",
+  "dang_bai_id": "NDB00562",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính phân thức đồng bậc của sin và cos."
+ },
+ {
+  "ma_cau": "T110030107007",
+  "dang_bai_id": "NDB00560",
+  "chac": "cao",
+  "ly_do": "Biết sin+cos, tính biểu thức chứa sin³+cos³."
+ },
+ {
+  "ma_cau": "T110010202031",
+  "dang_bai_id": "NDB00520",
+  "chac": "cao",
+  "ly_do": "Tìm hợp của hai tập hợp liệt kê."
+ },
+ {
+  "ma_cau": "T110000000135",
+  "dang_bai_id": "NDB00829",
+  "chac": "cao",
+  "ly_do": "Tìm tất cả tập con của tập A (sau khi liệt kê A)."
+ },
+ {
+  "ma_cau": "T110010101112",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Nhận diện câu là mệnh đề toán học."
+ },
+ {
+  "ma_cau": "T110010204019",
+  "dang_bai_id": "NDB00525",
+  "chac": "cao",
+  "ly_do": "Tính số học sinh giỏi ít nhất một môn, n(A∪B)."
+ },
+ {
+  "ma_cau": "T110010101048",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Xét mệnh đề nào đúng."
+ },
+ {
+  "ma_cau": "T110030101001",
+  "dang_bai_id": "NDB00549",
+  "chac": "cao",
+  "ly_do": "Giá trị lượng giác theo tọa độ điểm trên nửa đường tròn đơn vị."
+ },
+ {
+  "ma_cau": "T110030106057",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cos và khoảng góc, tính biểu thức sin·cos."
+ },
+ {
+  "ma_cau": "T110000000043",
+  "dang_bai_id": "NDB00828",
+  "chac": "cao",
+  "ly_do": "Chọn ký hiệu đúng cho mệnh đề đơn giản về phần tử thuộc tập."
+ },
+ {
+  "ma_cau": "T110010201007",
+  "dang_bai_id": "NDB00828",
+  "chac": "cao",
+  "ly_do": "Liệt kê phần tử của tập cho bằng phương trình."
+ },
+ {
+  "ma_cau": "T110000000046",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: hàm số bậc hai, công thức đỉnh parabol (chương Hàm số bậc hai)."
+ },
+ {
+  "ma_cau": "T110010206030",
+  "dang_bai_id": "NDB00536",
+  "chac": "cao",
+  "ly_do": "Tìm m để A∩B rỗng với tham số trong B."
+ },
+ {
+  "ma_cau": "T110010103071",
+  "dang_bai_id": "NDB00826",
+  "chac": "cao",
+  "ly_do": "Phủ định mệnh đề chứa với mọi."
+ },
+ {
+  "ma_cau": "T110030102003",
+  "dang_bai_id": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xác định dấu giá trị lượng giác của góc nhọn."
+ },
+ {
+  "ma_cau": "T110020202084",
+  "dang_bai_id": "NDB00546",
+  "chac": "cao",
+  "ly_do": "Cho hệ bất phương trình, chọn hình miền nghiệm."
+ },
+ {
+  "ma_cau": "T110010201087",
+  "dang_bai_id": "NDB00829",
+  "chac": "cao",
+  "ly_do": "Đếm số tập con của tập hai phần tử."
+ },
+ {
+  "ma_cau": "T110030106053",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cos và khoảng góc, tính biểu thức chứa tan², sin²."
+ },
+ {
+  "ma_cau": "T110010101078",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Nhận diện câu là mệnh đề."
+ },
+ {
+  "ma_cau": "T110030104018",
+  "dang_bai_id": "NDB00556",
+  "chac": "cao",
+  "ly_do": "Biểu thức chứa sin(90°-α), cos(180°-α), áp công thức đảo pha."
+ },
+ {
+  "ma_cau": "T110010202024",
+  "dang_bai_id": "NDB00520",
+  "chac": "cao",
+  "ly_do": "Tìm hợp của hai tập hợp liệt kê."
+ },
+ {
+  "ma_cau": "T110030107038",
+  "dang_bai_id": "NDB00562",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính phân thức đồng bậc của sin và cos."
+ },
+ {
+  "ma_cau": "T110010204073",
+  "dang_bai_id": "NDB00528",
+  "chac": "cao",
+  "ly_do": "Tính số học sinh thích bóng đá nhưng không thích cầu lông, AB."
+ },
+ {
+  "ma_cau": "T110020102047",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Xác định cặp số là nghiệm của bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020203074",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Tìm cặp số không là nghiệm của hệ bất phương trình."
+ },
+ {
+  "ma_cau": "T110010101107",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Nhận diện câu là mệnh đề."
+ },
+ {
+  "ma_cau": "T110000000191",
+  "dang_bai_id": "NDB01371",
+  "chac": "cao",
+  "ly_do": "Xác định phép toán tập hợp từ sơ đồ Ven."
+ },
+ {
+  "ma_cau": "T110030106087",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin và khoảng góc, tính cos."
+ },
+ {
+  "ma_cau": "T110010204062",
+  "dang_bai_id": "NDB00528",
+  "chac": "vua",
+  "ly_do": "Số học sinh chỉ chơi một môn (cả hai phần chỉ-một), không khớp hẳn dạng AB."
+ },
+ {
+  "ma_cau": "T110030106044",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cos và khoảng góc, tính tan."
+ },
+ {
+  "ma_cau": "T110030102017",
+  "dang_bai_id": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xác định dấu giá trị lượng giác của góc nhọn."
+ },
+ {
+  "ma_cau": "T110000000363",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học/thực tế: tối ưu khoảng cách trạm nước, bản đồ thiếu dạng cực trị thực tế hình học."
+ },
+ {
+  "ma_cau": "T110030106097",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin và khoảng góc, tính tan."
+ },
+ {
+  "ma_cau": "T110010103088",
+  "dang_bai_id": "NDB00826",
+  "chac": "cao",
+  "ly_do": "Phủ định mệnh đề chứa tồn tại."
+ },
+ {
+  "ma_cau": "T110020203038",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Tìm điểm không thuộc miền nghiệm của hệ."
+ },
+ {
+  "ma_cau": "T110000000433",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm tập xác định của hàm số chứa căn."
+ },
+ {
+  "ma_cau": "T110010203077",
+  "dang_bai_id": "NDB00524",
+  "chac": "cao",
+  "ly_do": "Trục số có phần bị gạch, hỏi phần không bị gạch là tập nào."
+ },
+ {
+  "ma_cau": "T110000000118",
+  "dang_bai_id": "NDB00520",
+  "chac": "vua",
+  "ly_do": "Đáp án trộn giao và hợp của hai tập liệt kê; dạng sau là hợp."
+ },
+ {
+  "ma_cau": "T110020203009",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Tìm điểm không thuộc miền nghiệm của hệ."
+ },
+ {
+  "ma_cau": "T110010203091",
+  "dang_bai_id": "NDB00520",
+  "chac": "cao",
+  "ly_do": "Tìm hợp của hai tập số thực."
+ },
+ {
+  "ma_cau": "T110010202090",
+  "dang_bai_id": "NDB00522",
+  "chac": "cao",
+  "ly_do": "Tìm phần bù của B trong A."
+ },
+ {
+  "ma_cau": "T110030107045",
+  "dang_bai_id": "NDB00550",
+  "chac": "vua",
+  "ly_do": "Biểu thức ngắn cặp góc phụ; có thể là NDB00561 nhưng không đủ dài."
+ },
+ {
+  "ma_cau": "T110010204068",
+  "dang_bai_id": "NDB00528",
+  "chac": "vua",
+  "ly_do": "Số học sinh chỉ chơi một môn, thiếu chắc ý đề; không khớp hẳn AB."
+ },
+ {
+  "ma_cau": "T110030107042",
+  "dang_bai_id": "NDB00562",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính phân thức đồng bậc của sin và cos."
+ },
+ {
+  "ma_cau": "T110030106002",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin và khoảng góc, tính biểu thức chứa cot, tan."
+ },
+ {
+  "ma_cau": "T110000000259",
+  "dang_bai_id": "NDB00519",
+  "chac": "cao",
+  "ly_do": "Tìm giao của hai tập hợp liệt kê."
+ },
+ {
+  "ma_cau": "T110010206036",
+  "dang_bai_id": "NDB00537",
+  "chac": "cao",
+  "ly_do": "Tìm m nguyên để A∩B khác rỗng."
+ },
+ {
+  "ma_cau": "T110010203107",
+  "dang_bai_id": "NDB00828",
+  "chac": "cao",
+  "ly_do": "Xác định số phần tử của tập cho bằng phương trình."
+ },
+ {
+  "ma_cau": "T110010202112",
+  "dang_bai_id": "NDB00519",
+  "chac": "cao",
+  "ly_do": "Tìm giao của hai tập hợp liệt kê."
+ }
+]

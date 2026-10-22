@@ -1,0 +1,965 @@
+[
+ {
+  "ma_cau": "T110010204075",
+  "loai": "trac_nghiem",
+  "de": "Mỗi học sinh của nhóm A đều thích môn Toán hoặc môn Tiếng Anh. Biết rằng có $15$ bạn thích môn Toán, $10$ bạn thích môn Tiếng Anh và $7$ bạn thích cả hai môn. Hỏi nhóm A có bao nhiêu học sinh?",
+  "lua_chon": [
+   "$17$.",
+   "$32$.",
+   "$25$.",
+   "$18$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Gọi $T$ là tập hợp các học sinh thích môn Toán và $E$ là tập hợp các học sinh thích môn Tiếng Anh trong nhóm A.\nTheo giả thiết ta có:\n$|T|=15,|E|=10,|T\\cap E|=7.$\nVì mỗi học sinh của nhóm A đều thích ít nhất một trong hai môn Toán hoặc Tiếng Anh nên tổng số học sinh của nhóm A là:\n$|T\\cup E|=|T|+|E|-|T\\cap E|=15+10-7=18.$\nVậy nhóm A có $18$ học sinh.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Bài toán thực tế tập hợp (2 Yếu tố)"
+ },
+ {
+  "ma_cau": "T110010202084",
+  "loai": "trac_nghiem",
+  "de": "Cho hai tập hợp $A = \\{1; 2; 3; 4; 5; 6; 7\\}$ và $B = \\{2; 4; 6\\}$. Phần bù của $B$ trong $A$\n(ký hiệu $C_A B$) là tập hợp nào sau đây?",
+  "lua_chon": [
+   "$\\{1; 3; 5; 7\\}$",
+   "$\\{2; 4; 6\\}$",
+   "$\\{1; 3; 5\\}$",
+   "$\\{1; 2; 3; 4; 5; 6; 7\\}$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Vì $B \\subset A$ nên $C_A B = A \\setminus B = \\{1; 3; 5; 7\\}$.\n$\\Rightarrow$ Chọn A.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Các phép toán trên tập hợp"
+ },
+ {
+  "ma_cau": "T110010201070",
+  "loai": "trac_nghiem",
+  "de": "Tập hợp nào sau đây có đúng hai tập con?",
+  "lua_chon": [
+   "$\\left\\{x\\right\\}$.",
+   "$\\left\\{x;y;\\varnothing \\right\\}$.",
+   "$\\left\\{x;\\varnothing \\right\\}$.",
+   "$\\left\\{x;y\\right\\}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Số tập con của một tập hợp gồm $n$ phần tử là $2^{n}$.\nĐể tập hợp có đúng hai tập con thì $2^{n}=2\\Leftrightarrow n=1$.\nTrong các tập hợp đã cho, tập hợp $\\left\\{x\\right\\}$ có $1$ phần tử nên có đúng $2^{1}=2$ tập con (gồm $\\varnothing$ và $\\left\\{x\\right\\}$).\nCác tập hợp $\\left\\{x;\\varnothing \\right\\}$ và $\\left\\{x;y\\right\\}$ đều có $2$ phần tử nên có $2^{2}=4$ tập con.\nTập hợp $\\left\\{x;y;\\varnothing \\right\\}$ có $3$ phần tử nên có $2^{3}=8$ tập con.\nVậy tập hợp có đúng hai tập con là $\\left\\{x\\right\\}$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Tập hợp và các phần tử của tập hợp. Tập con"
+ },
+ {
+  "ma_cau": "T110010101123",
+  "loai": "trac_nghiem",
+  "de": "Trong các câu sau, câu nào không phải là một mệnh đề?",
+  "lua_chon": [
+   "Số $18$ chia hết cho $6$.",
+   "Ăn phở rất ngon!",
+   "Hà Nội là thủ đô của Việt Nam.",
+   "$2+8=6$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Mệnh đề là một câu khẳng định mà ta có thể xác định được tính đúng hoặc sai của nó.\nCâu \" Số $18$ chia hết cho $6$\"{} là một khẳng định đúng, nên là mệnh đề.\nCâu \" Hà Nội là thủ đô của Việt Nam\"{} là một khẳng định đúng, nên là mệnh đề.\nCâu \" $2+8=6$\"{} là một khẳng định sai, nên vẫn là mệnh đề.\nCâu \" Ăn phở rất ngon!\"{} là một câu cảm thán, thể hiện cảm nhận cá nhân, không xác định được tính đúng sai nên không phải là mệnh đề.\nVậy chọn đáp án B.",
+  "nhan_cu": "Mệnh đề › Nhận diện, xét tính đúng sai của mệnh đề. Mệnh đề chứa biến"
+ },
+ {
+  "ma_cau": "T110020202058",
+  "loai": "trac_nghiem",
+  "de": "Phần không tô đậm trong hình vẽ dưới đây (chứa biên), biểu diễn tập nghiệm của hệ bất phương trình nào trong các hệ bất phương trình sau?",
+  "lua_chon": [
+   "$\\begin{cases}x>-1\\\\2x-y<1\\\\x+y<4\\end{cases}$",
+   "$\\begin{cases}x\\ge -1\\\\x-y\\le 1\\\\x+2y\\le 4\\end{cases}$",
+   "$\\begin{cases}x\\le -1\\\\x+y\\ge 1\\\\2x+y\\le 4\\end{cases}$",
+   "$\\begin{cases}x\\ge -1\\\\2x+y\\le 1\\\\x-2y\\ge 4\\end{cases}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "- Phương trình 3 đường biên giới hạn miền:\n + $d_1$: Đường $x = -1$.\n + $d_2$: Qua $(1;0), (0;-1)\\Rightarrow x-y=1$.\n + $d_3$: Qua $(4;0), (0;2)\\Rightarrow x+2y=4$.\n- Vì đề bài cho miền nghiệm chứa biên nên ta sử dụng các dấu $\\ge, \\le$.\n- Chọn điểm $M(0;0)$ thuộc miền nghiệm để thử:\n + Tọa độ $x=0\\ge -1 \\Rightarrow x \\ge -1$.\n + Biểu thức $x-y=0-0=0\\le 1 \\Rightarrow x-y \\le 1$.\n + Biểu thức $x+2y=0+0=0\\le 4 \\Rightarrow x+2y \\le 4$.\n- Đối chiếu đáp án, ta chọn hệ B.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020102061",
+  "loai": "trac_nghiem",
+  "de": "Miền không in đậm trong hình vẽ bên dưới biểu diễn miền nghiệm của bất phương trình nào trong các bất phương trình sau đây?",
+  "lua_chon": [
+   "$-3x+y\\le -2$.",
+   "$3x-y\\le 2$.",
+   "$-3x+y\\ge -2$.",
+   "$3x+y\\ge 2$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Quan sát hình vẽ, ta thấy bờ của miền nghiệm là đường thẳng $d$ đi qua hai điểm $\\left(0;-2\\right)$ và $\\left(\\dfrac{2}{3};0\\right)$.\nPhương trình đường thẳng $d$ có dạng $\\dfrac{x}{\\dfrac{2}{3}}+\\dfrac{y}{-2}=1\\Leftrightarrow \\dfrac{3x}{2}-\\dfrac{y}{2}=1\\Leftrightarrow 3x-y=2$.\nGốc tọa độ $O\\left(0;0\\right)$ thuộc miền nghiệm (phần không bị gạch).\nThay tọa độ $O\\left(0;0\\right)$ vào biểu thức $3x-y$, ta được $3\\left(0\\right)-0=0\\le 2$.\nDo đó miền nghiệm của bất phương trình là $3x-y\\le 2$.",
+  "co_hinh": true,
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020203019",
+  "loai": "trac_nghiem",
+  "de": "Điểm nào sau đây thuộc miền nghiệm của hệ bất phương trình $\\begin{cases} x+5y+3 \\le 0 \\\\ -x+y-1 \\le 0 \\end{cases}$?",
+  "lua_chon": [
+   "$E(-2;0)$",
+   "$F(0;-1)$",
+   "$G(1;1)$",
+   "$H(-4;1)$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta thay lần lượt tọa độ từng điểm ở các đáp án vào hệ bất phương trình để kiểm tra:\nKiểm tra đáp án A với $E(-2;0)$: Ta được $\\begin{cases} -2+0+3 = 1 \\le 0 \\text{ (Sai)} \\\\ -(-2)+0-1 = 1 \\le 0 \\text{ (Sai)} \\end{cases}$\n$\\Rightarrow$ Điểm E không thuộc miền nghiệm.\nKiểm tra đáp án B với $F(0;-1)$: Ta được $\\begin{cases} 0+5(-1)+3 = -2 \\le 0 \\text{ (Đúng)} \\\\ 0-1-1 = -2 \\le 0 \\text{ (Đúng)} \\end{cases}$\n$\\Rightarrow$ Điểm F thuộc miền nghiệm.\nKiểm tra đáp án C với $G(1;1)$: Ta được $\\begin{cases} 1+5(1)+3 = 9 \\le 0 \\text{ (Sai)} \\\\ -1+1-1 = -1 \\le 0 \\text{ (Đúng)} \\end{cases}$\n$\\Rightarrow$ Điểm G không thuộc miền nghiệm.\nKiểm tra đáp án D với $H(-4;1)$: Ta được $\\begin{cases} -4+5(1)+3 = 4  …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020202041",
+  "loai": "trac_nghiem",
+  "de": "Phần không tô đậm trong hình vẽ dưới đây (không chứa biên), biểu diễn tập nghiệm của hệ bất phương trình nào trong các hệ bất phương trình sau?",
+  "lua_chon": [
+   "$\\begin{cases}x-3y>-3\\\\x+2y<1\\end{cases}$",
+   "$\\begin{cases}3x-y>-3\\\\x+y>1\\end{cases}$",
+   "$\\begin{cases}3x+y\\leq -3\\\\2x+y\\geq 1\\end{cases}$",
+   "$\\begin{cases}x+3y\\geq -3\\\\x-y\\leq 1\\end{cases}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Lời giải chi tiết:\n- Phương trình các đường thẳng biên:\n+ $d_1$ có phương trình $3x-y=-3$.\n+ $d_2$ có phương trình $x+y=1$.\n- Vì đề bài cho miền nghiệm không chứa biên nên ta sử dụng các dấu $>$, $<$.\n- Chọn điểm $M(0;2)$ thuộc miền nghiệm để thử:\n+ Thay $M$ vào $3x-y$: $0-2=-2>-3\\Rightarrow 3x-y>-3$.\n+ Thay $M$ vào $x+y$: $0+2=2>1\\Rightarrow x+y>1$.\n- Vậy hệ bất phương trình đúng là B.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110030106049",
+  "loai": "trac_nghiem",
+  "de": "Cho góc nhọn $\\alpha$ có $\\cos \\alpha = \\dfrac{3}{5}$. Khẳng định nào sau đây sai?",
+  "lua_chon": [
+   "$\\sin \\alpha = \\dfrac{4}{5}$",
+   "$\\cot \\alpha = \\dfrac{3}{4}$",
+   "$\\tan \\alpha = \\dfrac{3}{4}$",
+   "$\\tan \\alpha = \\dfrac{4}{3}$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $\\sin \\alpha = \\pm\\sqrt{1 - \\cos^2 \\alpha} = \\pm\\sqrt{1 - \\dfrac{9}{25}} = \\pm\\dfrac{4}{5}$.\nMặt khác $\\alpha$ là góc nhọn nên $\\sin \\alpha > 0 \\Rightarrow \\sin \\alpha = \\dfrac{4}{5}$.\nSuy ra $\\tan \\alpha = \\dfrac{\\sin \\alpha}{\\cos \\alpha} = \\dfrac{\\dfrac{4}{5}}{\\dfrac{3}{5}} = \\dfrac{4}{3}$.\n$\\cot \\alpha = \\dfrac{3}{4}$.\nChọn C.",
+  "nhan_cu": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ › Cho một giá trị lượng giác, tính các giá trị lượng giác còn lại"
+ },
+ {
+  "ma_cau": "T110010203160",
+  "loai": "trac_nghiem",
+  "de": "Cho hai tập hợp $A=(-3;3],B=\\left(-2;+\\infty \\right)$. Tập hợp $A\\cap B$ bằng",
+  "lua_chon": [
+   "$\\left\\{-1;0;1;2;3\\right\\}$.",
+   "$\\left[-2;3\\right]$.",
+   "$(-2;3]$.",
+   "$\\left(-3;+\\infty \\right)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $A=(-3;3]$ gồm các số thực $x$ thoả mãn $-3<x\\le 3$.\nTập $B=\\left(-2;+\\infty \\right)$ gồm các số thực $x$ thoả mãn $x>-2$.\nMột số $x$ thuộc $A\\cap B$ khi và chỉ khi $x$ thoả mãn đồng thời $-3<x\\le 3$ và $x>-2$, tức là $-2<x\\le 3$.\nVậy $A\\cap B=(-2;3]$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110020102031",
+  "loai": "trac_nghiem",
+  "de": "Miền nghiệm của bất phương trình nào sau đây được biểu diễn bởi phần không bị gạch (kể cả đường thẳng d) trong hình vẽ sau?",
+  "lua_chon": [
+   "$2x-y+2>0$.",
+   "$2x-y+2 \\geq 0$.",
+   "$2x-y+2 \\leq 0$.",
+   "$2x-y+2<0$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "- Đường thẳng $d$ đi qua $(-1;0)$ và $(0;2)$.\n- Phương trình $d$: $\\dfrac{x}{-1} + \\dfrac{y}{2} = 1 \\Leftrightarrow 2x-y+2=0$.\n- $O(0;0)$ không thuộc miền nghiệm (nằm trong phần bị gạch).\n- Thay $O(0;0)$ vào $2x-y+2$, ta được: $2(0)-0+2=2>0$.\n- Do $O(0;0)$ không thuộc miền nghiệm nên miền nghiệm thỏa mãn $2x-y+2 \\leq 0$.\n- Chọn đáp án C.",
+  "co_hinh": true,
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110010102084",
+  "loai": "trac_nghiem",
+  "de": "Mệnh đề nào sau đây là mệnh đề kéo theo?",
+  "lua_chon": [
+   "Nếu tứ giác $ABCD$ là hình thang cân thì tứ giác $ABCD$ có hai đường chéo bằng nhau.",
+   "Tứ giác $ABCD$ là hình thang cân khi và chỉ khi tứ giác $ABCD$ có hai đường chéo bằng nhau.",
+   "Số $13$ là số nguyên tố.",
+   "$\\sqrt{2}-3<0$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Mệnh đề kéo theo là mệnh đề có dạng \" Nếu $P$ thì $Q$\"\\ (kí hiệu là $P\\Rightarrow Q$), trong đó $P$ là giả thiết và $Q$ là kết luận.\n- Câu \" Nếu tứ giác $ABCD$ là hình thang cân thì tứ giác $ABCD$ có hai đường chéo bằng nhau\"\\ có cấu trúc \" Nếu... thì...\"\\ nên là mệnh đề kéo theo.\n- Câu ở phương án B có cấu trúc \" khi và chỉ khi\"\\ nên là mệnh đề tương đương.\n- Các câu ở phương án C và D là các mệnh đề đơn.\nVậy mệnh đề kéo theo là \" Nếu tứ giác $ABCD$ là hình thang cân thì tứ giác $ABCD$ có hai đường chéo bằng nhau\".",
+  "nhan_cu": "Mệnh đề › Mệnh đề kéo theo, mệnh đề đảo, mệnh đề tương đương"
+ },
+ {
+  "ma_cau": "T110030103016",
+  "loai": "trac_nghiem",
+  "de": "Với $0^\\circ < x < 90^\\circ$, đẳng thức nào dưới đây là chính xác?",
+  "lua_chon": [
+   "$\\sin(90^\\circ - x) = \\sin x$.",
+   "$\\cos(90^\\circ - x) = \\sin x$.",
+   "$\\tan(90^\\circ - x) = \\tan x$.",
+   "$\\cot(90^\\circ - x) = \\cot x$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $\\cos(90^\\circ - x) = \\sin x$.\nChọn B.",
+  "nhan_cu": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ › Nhận diện mối quan hệ lượng giác của 2 góc bù nhau hoặc phụ nhau"
+ },
+ {
+  "ma_cau": "T110020202102",
+  "loai": "trac_nghiem",
+  "de": "Phần không bị gạch, kể cả biên trong hình vẽ là miền nghiệm của hệ bất phương trình nào?",
+  "lua_chon": [
+   "$\\begin{cases} x-y\\ge 0 \\\\ x\\le 0 \\end{cases}$.",
+   "$\\begin{cases} x-y\\ge 0 \\\\ y\\ge 0 \\end{cases}$.",
+   "$\\begin{cases} x-y\\ge 0 \\\\ x\\ge 0 \\end{cases}$.",
+   "$\\begin{cases} x-y\\le 0 \\\\ x\\ge 0 \\end{cases}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Đường thẳng $d :x-y=0$ chia mặt phẳng toạ độ thành hai nửa mặt phẳng.\nLấy điểm $M\\left(1;0\\right)$ không thuộc $d$, thay toạ độ vào biểu thức $x-y$ ta được $1-0=1>0$.\nQuan sát hình vẽ, điểm $M\\left(1;0\\right)$ thuộc miền không bị gạch, do đó miền không bị gạch chứa nửa mặt phẳng bờ $d$ thoả mãn bất phương trình $x-y\\ge 0$.\nTrục tung $Oy$ có phương trình $x=0$. Miền không bị gạch nằm về phía bên phải trục tung (chứa điểm $M\\left(1;0\\right)$ có hoành độ dương), tương ứng với bất phương trình $x\\ge 0$.\nVậy phần không bị gạch, kể cả biên trong hình vẽ là miền nghiệm của hệ bất phương trình $\\begin{cases} x-y\\ge 0 \\\\ x\\ge 0. \\end{cases}$",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110010202063",
+  "loai": "trac_nghiem",
+  "de": "Cho tập hợp $A = \\{1; 2; 3\\}$ và $B = \\{2; 3; 4; 5\\}$. $A \\cap B$ là tập hợp nào sau đây?",
+  "lua_chon": [
+   "$\\{1; 2; 3; 4; 5\\}$",
+   "$\\{2; 3\\}$",
+   "$\\{1; 3\\}$",
+   "$\\{2; 4\\}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có: $A \\cap B = \\{2; 3\\}$. \\Rightarrow Chọn B.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Các phép toán trên tập hợp"
+ },
+ {
+  "ma_cau": "T110020203053",
+  "loai": "trac_nghiem",
+  "de": "Miền nghiệm của hệ bất phương trình $\\begin{cases} 3x+y\\ge 9 \\\\ x\\ge y-3 \\\\ 2y\\ge 8-x \\\\ y\\le 6 \\end{cases}$ chứa điểm nào sau đây?",
+  "lua_chon": [
+   "$\\left(0;0\\right)$.",
+   "$\\left(1;2\\right)$.",
+   "$\\left(2;1\\right)$.",
+   "$\\left(8;4\\right)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta thử lần lượt tọa độ các điểm vào hệ bất phương trình $\\begin{cases} 3x+y\\ge 9 \\\\ x\\ge y-3 \\\\ 2y\\ge 8-x \\\\ y\\le 6 \\end{cases}$:\n• Với điểm $\\left(0;0\\right)$: Thay vào bất phương trình thứ nhất ta được $3\\left(0\\right)+0\\ge 9\\Leftrightarrow 0\\ge 9$ (vô lý). Do đó $\\left(0;0\\right)$ không thuộc miền nghiệm.\n• Với điểm $\\left(1;2\\right)$: Thay vào bất phương trình thứ nhất ta được $3\\left(1\\right)+2\\ge 9\\Leftrightarrow 5\\ge 9$ (vô lý). Do đó $\\left(1;2\\right)$ không thuộc miền nghiệm.\n• Với điểm $\\left(2;1\\right)$: Thay vào bất phương trình thứ nhất ta được $3\\left(2\\right)+1\\ge 9\\Leftrightarrow 7\\ge 9$ (vô lý). Do đó $\\left(2;1\\right)$ không thuộc miền nghiệm.\n• Với điểm $\\left(8;4\\right)$: …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110030106072",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\alpha$ là góc nhọn và $\\cot \\alpha = \\dfrac{1}{3}$. Giá trị của $\\sin \\alpha$ bằng",
+  "lua_chon": [
+   "$-\\dfrac{3\\sqrt{10}}{10}$",
+   "$\\pm \\dfrac{3\\sqrt{10}}{10}$",
+   "$\\dfrac{9}{10}$",
+   "$\\dfrac{3\\sqrt{10}}{10}$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta có $1 + \\cot^2 \\alpha = \\dfrac{1}{\\sin^2 \\alpha} \\Leftrightarrow \\sin^2 \\alpha = \\dfrac{1}{1 + \\cot^2 \\alpha} = \\dfrac{1}{1 + \\left(\\dfrac{1}{3}\\right)^2} = \\dfrac{9}{10}$.\nSuy ra $\\sin \\alpha = \\pm \\dfrac{3\\sqrt{10}}{10}$.\nVới $\\alpha$ là góc nhọn $\\Rightarrow \\sin \\alpha > 0$.\nVậy $\\sin \\alpha = \\dfrac{3\\sqrt{10}}{10}$.\nChọn D.",
+  "nhan_cu": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ › Cho một giá trị lượng giác, tính các giá trị lượng giác còn lại"
+ },
+ {
+  "ma_cau": "T110020202081",
+  "loai": "trac_nghiem",
+  "de": "Hình vẽ nào dưới đây có phần không tô đậm biểu diễn tập nghiệm của hệ bất phương trình sau?\nHệ bất phương trình:\n$$\\begin{cases}x - 2y \\le -2 \\\\ 2x + y \\le 4\\end{cases}$$",
+  "lua_chon": [
+   "A. Hình 1",
+   "B. Hình 2",
+   "C. Hình 3",
+   "D. Hình 4"
+  ],
+  "dap_an": "C",
+  "loi_giai": "- Vẽ đường $d_1: x - 2y = -2$ qua $(-2;0)$ và $(0;1)$.\nThử $O(0;0): 0 \\le -2$ (sai) $\\Rightarrow$ lấy nửa mặt phẳng không chứa $O$.\n- Vẽ đường $d_2: 2x + y = 4$ qua $(2;0)$ và $(0;4)$.\nThử $O(0;0): 0 \\le 4$ (đúng) $\\Rightarrow$ lấy nửa mặt phẳng chứa $O$.\n- Đối chiếu với các hình vẽ, hình biểu diễn đúng miền nghiệm là Hình 3 (Đáp án C).",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110030105020",
+  "loai": "trac_nghiem",
+  "de": "Với mọi góc $\\alpha$ thỏa mãn $0^\\circ \\le \\alpha \\le 180^\\circ$, giá trị của $\\sin^2 \\alpha + \\cos^2 \\alpha$ bằng",
+  "lua_chon": [
+   "0.",
+   "1.",
+   "2.",
+   "-1."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Đây là hệ thức cơ bản đúng với mọi $\\alpha$: $\\sin^2 \\alpha + \\cos^2 \\alpha = 1$ (không cần điều kiện).\nChọn B.",
+  "nhan_cu": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ › Nhận diện các hệ thức lượng giác cơ bản"
+ },
+ {
+  "ma_cau": "T110010204013",
+  "loai": "tra_loi_ngan",
+  "de": "Trong kì thi Hội khỏe Phù Đổng cấp trường của trường THPT Nguyễn Thái Bình, lớp 10A1 có 30 học sinh tham gia, trong đó có 19 học sinh tham gia môn bóng đá, 18 học sinh tham gia môn bóng chuyền. Toàn bộ số học sinh trên tham gia ít nhất một trong hai môn nói trên. Biết lớp 10/1 có số học sinh vừa tham gia bóng đá vừa tham gia bóng chuyền là $a$. Giá trị $500a$ bằng bao nhiêu?",
+  "dap_an": "3500",
+  "loi_giai": "Gọi $A$, $B$ lần lượt là tập hợp các học sinh tham gia môn bóng đá và môn bóng chuyền.\nTheo đề bài: $n(A) = 19$, $n(B) = 18$, $n(A \\cup B) = 30$.\nSố học sinh vừa tham gia bóng đá vừa tham gia bóng chuyền là:\n$a = n(A \\cap B) = n(A) + n(B) - n(A \\cup B) = 19 + 18 - 30 = 7$\n$\\Rightarrow 500a = 500 \\cdot 7 = 3500$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Bài toán thực tế tập hợp (2 Yếu tố)"
+ },
+ {
+  "ma_cau": "T110010101059",
+  "loai": "trac_nghiem",
+  "de": "Trong các câu sau câu nào là mệnh đề?",
+  "lua_chon": [
+   "Hãy đi nhanh lên.",
+   "Buồn ngủ quá.",
+   "Nam ăn cơm chưa.",
+   "Hà nội là thủ đô của Việt Nam."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Mệnh đề là câu khẳng định mà ta xác định được tính đúng hoặc sai của nó.\nCâu \" Hãy đi nhanh lên\"{} là câu cầu khiến nên không phải mệnh đề.\nCâu \" Buồn ngủ quá\"{} là câu cảm thán nên không phải mệnh đề.\nCâu \" Nam ăn cơm chưa\"{} là câu hỏi nên không phải mệnh đề.\nCâu \" Hà Nội là thủ đô của Việt Nam\"{} là câu khẳng định đúng, nên đây là một mệnh đề.\nVậy chọn đáp án D.",
+  "nhan_cu": "Mệnh đề › Nhận diện, xét tính đúng sai của mệnh đề. Mệnh đề chứa biến"
+ },
+ {
+  "ma_cau": "T110020202080",
+  "loai": "trac_nghiem",
+  "de": "Hình vẽ nào dưới đây có phần không tô đậm biểu diễn tập nghiệm của hệ bất phương trình sau?\nHệ bất phương trình:\n$$\\begin{cases} y > 0 \\\\ x - y > 2 \\\\ x + y < 4 \\end{cases}$$",
+  "lua_chon": [
+   "A. Hình 1",
+   "B. Hình 2",
+   "C. Hình 3",
+   "D. Hình 4"
+  ],
+  "dap_an": "A",
+  "loi_giai": "- Bất phương trình $y>0$ biểu diễn nửa mặt phẳng phía trên trục $Ox$.\n- Đường thẳng nét đứt $x-y=2$ đi qua $(2;0)$ và $(0;-2)$.\nThử $O(0;0)\\Rightarrow 0>2$ (sai) $\\Rightarrow$ bỏ nửa chứa $O$.\n- Đường thẳng nét đứt $x+y=4$ đi qua $(4;0)$ và $(0;4)$.\nThử $O(0;0)\\Rightarrow 0<4$ (đúng) $\\Rightarrow$ lấy nửa chứa $O$.\n- Đối chiếu với các hình vẽ, hình biểu diễn đúng miền nghiệm là Hình 1 (Đáp án A).",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110010201068",
+  "loai": "tra_loi_ngan",
+  "de": "Cho tập hợp $X=\\{a,b,c,d,e\\}$. Có bao nhiêu tập con chứa $2$ phần tử của tập $X$?",
+  "dap_an": "10",
+  "loi_giai": "Tập hợp $X$ có $5$ phần tử.\nSố tập hợp con gồm $2$ phần tử của tập hợp $X$ là số tổ hợp chập $2$ của $5$ phần tử:\n$C_{5}^{2}=\\dfrac{5!}{2!\\left(5-2\\right)!}=10.$\nVậy có $10$ tập con chứa $2$ phần tử của tập hợp $X$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Tập hợp và các phần tử của tập hợp. Tập con"
+ },
+ {
+  "ma_cau": "T110010202028",
+  "loai": "trac_nghiem",
+  "de": "Cho tập hợp $X = \\{2; 4; 6\\}$ và $Y = \\emptyset$. $X \\cup Y$ là tập hợp nào sau đây?",
+  "lua_chon": [
+   "$\\left\\{0; 2; 4; 6\\right\\}$",
+   "$\\left\\{0; 1; 2; 4; 6\\right\\}$",
+   "$\\left\\{2; 4; 6\\right\\}$",
+   "$\\emptyset"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Vì $X \\cup \\emptyset = X$ nên $X \\cup Y = \\{2; 4; 6\\}$.\n$\\Rightarrow$ Chọn C.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Các phép toán trên tập hợp"
+ },
+ {
+  "ma_cau": "T110010201079",
+  "loai": "tra_loi_ngan",
+  "de": "Cho tập hợp $A=\\{x\\in \\mathbb{N}|x\\le 5\\}$. Tập $A$ có số phần tử là",
+  "dap_an": "6",
+  "loi_giai": "Ta liệt kê các số tự nhiên $x$ thỏa mãn $x\\le 5$.\nCác số đó là $0; 1; 2; 3; 4; 5$ (lưu ý số $0$ cũng là số tự nhiên).\nDo đó $A=\\{0;1;2;3;4;5\\}$.\nVậy tập $A$ có $6$ phần tử.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Tập hợp và các phần tử của tập hợp. Tập con"
+ },
+ {
+  "ma_cau": "T110020102024",
+  "loai": "trac_nghiem",
+  "de": "Cặp số $(x;y)$ nào sau đây là nghiệm của bất phương trình $2x-y+1<0$?",
+  "lua_chon": [
+   "$(2;-1)$",
+   "$(1;4)$",
+   "$(3;5)$",
+   "$(0;-1)$ "
+  ],
+  "dap_an": "B",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110010201019",
+  "loai": "trac_nghiem",
+  "de": "Cho tập hợp $B = \\{a; 1; b; 3\\}$. Mệnh đề nào sau đây là sai?",
+  "lua_chon": [
+   "$\\{1\\} \\subset B$.",
+   "$\\{-2\\} \\not\\subset B$.",
+   "$3 \\not\\in B$.",
+   "$b \\in B$."
+  ],
+  "dap_an": "C",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Tập hợp và các phần tử của tập hợp. Tập con"
+ },
+ {
+  "ma_cau": "T110010201069",
+  "loai": "trac_nghiem",
+  "de": "Số tập hợp $X$ thỏa mãn $\\left\\{a;b\\}\\subset X\\subset \\{a;b;c;d;e\\right\\}$ là",
+  "lua_chon": [
+   "$8$.",
+   "$7$.",
+   "$6$.",
+   "$5$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Vì $\\left\\{a;b\\}\\subset X\\subset \\{a;b;c;d;e\\right\\}$ nên tập hợp $X$ có dạng $X=\\{a;b\\}\\cup Y$, trong đó $Y$ là một tập con bất kì của tập hợp $\\left\\{c;d;e\\right\\}$.\nTập hợp $\\left\\{c;d;e\\right\\}$ có $3$ phần tử nên số tập con của nó là\n$2^{3}=8.$\nMỗi tập con $Y$ tương ứng với đúng một tập hợp $X$ thỏa mãn yêu cầu bài toán.\nVậy có $8$ tập hợp $X$ thỏa mãn.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Tập hợp và các phần tử của tập hợp. Tập con"
+ },
+ {
+  "ma_cau": "T110030105036",
+  "loai": "trac_nghiem",
+  "de": "Cho $0^{\\circ} < \\alpha < 180^{\\circ}$, $\\alpha \\neq 90^{\\circ}$. Trong các đẳng thức sau, đẳng thức nào sai?",
+  "lua_chon": [
+   "$\\cos^2 \\alpha = 1 - \\sin^2 \\alpha$.",
+   "$\\sin^2 \\alpha = \\dfrac{1}{1 + \\cot^2 \\alpha}$.",
+   "$\\cot^2 \\alpha = \\dfrac{1}{\\sin^2 \\alpha} - 1$.",
+   "$\\sin^2 \\alpha = 1 - \\dfrac{1}{\\cos^2 \\alpha}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "A suy từ $\\sin^2 \\alpha + \\cos^2 \\alpha = 1$; B suy từ $1 + \\cot^2 \\alpha = \\dfrac{1}{\\sin^2 \\alpha}$ (lấy nghịch đảo); C suy từ cùng hệ thức đó (chuyển vế). Đẳng thức đúng phải là $\\sin^2 \\alpha = 1 - \\cos^2 \\alpha$; còn $1 - \\dfrac{1}{\\cos^2 \\alpha} = -\\tan^2 \\alpha \\leq 0$, không thể bằng $\\sin^2 \\alpha > 0$. Vậy D sai. Chọn D.",
+  "nhan_cu": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ › Nhận diện các hệ thức lượng giác cơ bản"
+ },
+ {
+  "ma_cau": "T110020203039",
+  "loai": "trac_nghiem",
+  "de": "Điểm nào sau đây không thuộc miền nghiệm của hệ bất phương trình $\\begin{cases}2x+y-5<0\\\\ x-2y\\leq0\\\\ y>0\\end{cases}$?",
+  "lua_chon": [
+   "$M(1;1)$",
+   "$N(2;2)$",
+   "P(0;2)",
+   "Q(1;2)"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta thay lần lượt tọa độ từng điểm ở các đáp án vào hệ bất phương trình để kiểm tra:\nKiểm tra đáp án A với $M(1;1)$: Ta được $\\begin{cases} 2\\times 1+1-5 = -2 <0 \\quad (\\text{Đúng}) \\\\ 1-2\\times 1 = -1 \\le 0 \\quad (\\text{Đúng}) \\\\ 1>0 \\quad (\\text{Đúng}) \\end{cases}$\n$\\Rightarrow$ Điểm $M$ thuộc miền nghiệm.\nKiểm tra đáp án B với $N(2;2)$: Ta được $\\begin{cases} 2\\times 2+2-5 = 1 <0 \\quad (\\text{Sai}) \\\\ 2-2\\times 2 = -2 \\le 0 \\quad (\\text{Đúng}) \\\\ 2>0 \\quad (\\text{Đúng}) \\end{cases}$\n$\\Rightarrow$ Điểm $N$ không thuộc miền nghiệm.\nKiểm tra đáp án C với $P(0;2)$: Ta được $\\begin{cases} 2\\times 0+2-5 = -3 <0 \\quad (\\text{Đúng}) \\\\ 0-2\\times 2 = -4 \\le 0 \\quad (\\text{Đúng}) \\\\ 2>0 \\quad (\\text …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110010102051",
+  "loai": "trac_nghiem",
+  "de": "Cho các mệnh đề sau, mệnh đề nào có mệnh đề đảo đúng?",
+  "lua_chon": [
+   "Nếu tứ giác ABCD là hình thang cân thì 2 góc đối bù nhau.",
+   "Nếu $a=b$ thì $a.c=b.c$.",
+   "Nếu $a>b$ thì $a^2>b^2$.",
+   "Nếu số nguyên chia hết cho 10 thì chia hết cho 5 và 2."
+  ],
+  "dap_an": "D",
+  "nhan_cu": "Mệnh đề › Mệnh đề kéo theo, mệnh đề đảo, mệnh đề tương đương"
+ },
+ {
+  "ma_cau": "T110020202059",
+  "loai": "trac_nghiem",
+  "de": "Phần không tô đậm trong hình vẽ dưới đây (không chứa biên), biểu diễn tập nghiệm của hệ bất phương trình nào trong các hệ bất phương trình sau?",
+  "lua_chon": [
+   "$\\begin{cases}y \\ge 0 \\\\ x+2y \\le 6 \\\\ 2x-y \\ge -2 \\end{cases}$",
+   "$\\begin{cases}y > 0 \\\\ 2x+y < 6 \\\\ x-2y > -2 \\end{cases}$",
+   "$\\begin{cases}y < 0 \\\\ 2x-y > 6 \\\\ x+2y < -2 \\end{cases}$",
+   "$\\begin{cases}y > 0 \\\\ x+2y < 6 \\\\ 2x+y > -2 \\end{cases}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "- Phương trình 3 đường biên giới hạn miền:\n+ $d_1$: Trục $Ox \\Rightarrow y=0$.\n+ $d_2$: Qua $(3;0), (0;6) \\Rightarrow 2x+y=6$.\n+ $d_3$: Qua $(-2;0), (0;1) \\Rightarrow x-2y=-2$.\n- Vì đề bài cho miền nghiệm không chứa biên nên ta sử dụng các dấu $>, <$.\n- Chọn điểm $M(1;1)$ thuộc miền nghiệm để thử:\n+ Tọa độ $y=1>0 \\Rightarrow y>0$.\n+ Biểu thức $2x+y=2(1)+1=3<6 \\Rightarrow 2x+y<6$.\n+ Biểu thức $x-2y=1-2(1)=-1>-2 \\Rightarrow x-2y>-2$.\n- Đối chiếu đáp án, ta chọn hệ B.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110030106048",
+  "loai": "trac_nghiem",
+  "de": "Biết $\\cos \\alpha = -\\dfrac{\\sqrt{3}}{3}$ và $90^\\circ < \\alpha < 180^\\circ$. Giá trị của $\\tan \\alpha$ bằng",
+  "lua_chon": [
+   "$-\\sqrt{2}$",
+   "$\\sqrt{2}$",
+   "$-\\dfrac{\\sqrt{2}}{2}$",
+   "$\\dfrac{\\sqrt{2}}{2}$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có $\\sin \\alpha = \\pm\\sqrt{1 - \\cos^2 \\alpha} = \\pm\\sqrt{1 - \\dfrac{1}{3}} = \\pm\\dfrac{\\sqrt{6}}{3}$.\nMặt khác $90^\\circ < \\alpha < 180^\\circ$ nên $\\sin \\alpha > 0 \\Rightarrow \\sin \\alpha = \\dfrac{\\sqrt{6}}{3}$.\nSuy ra $\\tan \\alpha = \\dfrac{\\sin \\alpha}{\\cos \\alpha} = \\dfrac{\\dfrac{\\sqrt{6}}{3}}{-\\dfrac{\\sqrt{3}}{3}} = -\\sqrt{2}$.\nChọn A.",
+  "nhan_cu": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ › Cho một giá trị lượng giác, tính các giá trị lượng giác còn lại"
+ },
+ {
+  "ma_cau": "T110030105019",
+  "loai": "trac_nghiem",
+  "de": "Cho $0^\\circ < \\alpha < 180^\\circ$. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$\\cot \\alpha = \\dfrac{\\sin \\alpha}{\\cos \\alpha}$",
+   "$\\cot \\alpha = \\dfrac{1}{\\cos \\alpha}$",
+   "$\\cot \\alpha = \\tan \\alpha$",
+   "$\\cot \\alpha = \\dfrac{\\cos \\alpha}{\\sin \\alpha}$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Với $0^\\circ < \\alpha < 180^\\circ$ thì $\\sin \\alpha > 0$, nên $\\cot \\alpha$ xác định và $\\cot \\alpha = \\dfrac{\\cos \\alpha}{\\sin \\alpha}$.\nPhương án A là công thức của $\\tan \\alpha$ (bị đảo tử và mẫu); B và C không phải hệ thức cơ bản. Chọn D.",
+  "nhan_cu": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ › Nhận diện các hệ thức lượng giác cơ bản"
+ },
+ {
+  "ma_cau": "T110010203059",
+  "loai": "tu_luan",
+  "de": "Cho hai tập hợp con của tập số thực $\\mathbb{R}$ sau:\n$A = \\{x\\in\\mathbb{R}|0\\le x\\le 5\\}$ và $B = \\{x\\in\\mathbb{R}|x\\ge 3\\}$.\nXác định $A\\setminus B$ và biểu diễn kết quả trên trục số.",
+  "dap_an": "$[0; 3)$",
+  "loi_giai": "![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/8cb69f55-92f7-4c80-8dda-2538674b066c.png)\nTa có: $A = [0;5]$ và $B = [3; +\\infty)$.\nHiệu của $A$ và $B$ là tập gồm các phần tử thuộc $A$ nhưng không thuộc $B$.\nDo đó: $A\\setminus B = [0; 3)$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110030106047",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\cos\\alpha = \\dfrac{24}{25}$ với $0^\\circ < \\alpha < 90^\\circ$. Giá trị của $\\sin\\alpha$ và $\\cot\\alpha$ lần lượt là",
+  "lua_chon": [
+   "$\\dfrac{7}{25}$ và $\\dfrac{7}{24}$",
+   "$-\\dfrac{7}{25}$ và $-\\dfrac{24}{7}$",
+   "$\\dfrac{7}{25}$ và $-\\dfrac{24}{7}$",
+   "$\\dfrac{7}{25}$ và $\\dfrac{24}{7}$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta có $\\sin\\alpha = \\pm\\sqrt{1 - \\cos^2\\alpha} = \\pm\\sqrt{1 - \\dfrac{576}{625}} = \\pm\\dfrac{7}{25}$.\nMặt khác $0^\\circ < \\alpha < 90^\\circ$ nên $\\sin\\alpha > 0 \\Rightarrow \\sin\\alpha = \\dfrac{7}{25}$.\nSuy ra $\\cot\\alpha = \\dfrac{\\cos\\alpha}{\\sin\\alpha} = \\dfrac{\\dfrac{24}{25}}{\\dfrac{7}{25}} = \\dfrac{24}{7}$.\nChọn D.",
+  "nhan_cu": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ › Cho một giá trị lượng giác, tính các giá trị lượng giác còn lại"
+ },
+ {
+  "ma_cau": "T110020202061",
+  "loai": "trac_nghiem",
+  "de": "Phần không tô đậm trong hình vẽ dưới đây (không chứa biên), biểu diễn tập nghiệm của hệ bất phương trình nào trong các hệ bất phương trình sau? [hình]",
+  "lua_chon": [
+   "$\\begin{cases}x \\le 2 \\\\ y \\le 3 \\\\ 2x+y \\ge 1\\end{cases}$",
+   "$\\begin{cases}x < 2 \\\\ y < 3 \\\\ x+y > 1\\end{cases}$",
+   "$\\begin{cases}x > 2 \\\\ y > 3 \\\\ x-y < 1\\end{cases}$",
+   "$\\begin{cases}x \\le 2 \\\\ y < 3 \\\\ x-2y \\ge 1\\end{cases}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Phương trình 3 đường biên giới hạn miền:\n$+ \\mathrm{d}_1$: Đường $x=2$.\n$+ \\mathrm{d}_2$: Đường $y=3$.\n$+ \\mathrm{d}_3$: Qua $(1;0)$, $(0;1) \\Rightarrow x+y=1$.\n- Vì đề bài cho miền nghiệm không chứa biên nên ta sử dụng các dấu $>,<$.\n- Chọn điểm $M(1;2)$ thuộc miền nghiệm để thử:\n$+$ Tọa độ $x=1<2 \\Rightarrow x<2$.\n$+$ Tọa độ $y=2<3 \\Rightarrow y<3$.\n$+$ Biểu thức $x+y=1+2=3>1 \\Rightarrow x+y>1$.\n- Đối chiếu đáp án, ta chọn hệ B.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110010103049",
+  "loai": "trac_nghiem",
+  "de": "Mệnh đề nào sau là mệnh đề sai?",
+  "lua_chon": [
+   "$\\forall x \\in \\mathbb{R}: x^2 > 0$.",
+   "$\\exists x \\in \\mathbb{R}: x > x^2$",
+   "$\\exists n \\in \\mathbb{N}: n^2 = n$.",
+   "$\\forall n \\in \\mathbb{N}$ thì $n \\le 2n$ . "
+  ],
+  "dap_an": "A",
+  "nhan_cu": "Mệnh đề › Mệnh đề chứa ký hiệu với mọi, tồn tại. Phủ định của mệnh đề"
+ },
+ {
+  "ma_cau": "T110010202120",
+  "loai": "trac_nghiem",
+  "de": "Cho 2 tập hợp: $X=\\{1;3;5;8\\};Y=\\{3;5;7;9\\}$. Tập hợp $X\\cup Y$ bằng tập hợp nào sau đây?",
+  "lua_chon": [
+   "$\\left\\{3;5\\right\\}$.",
+   "$\\left\\{1;3;5\\right\\}$.",
+   "$\\left\\{1;3;5;7;8;9\\right\\}$.",
+   "$\\left\\{1;7;9\\right\\}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Hợp của hai tập hợp $X$ và $Y$ là tập hợp gồm tất cả các phần tử thuộc $X$ hoặc thuộc $Y$.\nTa có $X=\\{1;3;5;8\\}$ và $Y=\\{3;5;7;9\\}$.\nSuy ra\n$X\\cup Y=\\{1;3;5;7;8;9\\}.$\nVậy tập hợp $X\\cup Y$ bằng $\\left\\{1;3;5;7;8;9\\right\\}$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Các phép toán trên tập hợp"
+ },
+ {
+  "ma_cau": "T110010202097",
+  "loai": "trac_nghiem",
+  "de": "Cho hai tập hợp $A=\\{0;1;2;3;4;5\\}$ và $B=\\{2;4;6;7\\}$. Khi đó tập hợp $A\\cap B$ bằng tập hợp nào sau đây?",
+  "lua_chon": [
+   "$\\left\\{2;4\\right\\}$.",
+   "$\\left\\{2;4;6;7\\right\\}$.",
+   "$\\left\\{0;1;3;5\\right\\}$.",
+   "$\\left\\{2;4;6\\right\\}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Tập hợp $A\\cap B$ gồm các phần tử vừa thuộc $A$, vừa thuộc $B$.\nDo $A=\\{0;1;2;3;4;5\\}$ và $B=\\{2;4;6;7\\}$ nên $A\\cap B=\\{2;4\\}$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Các phép toán trên tập hợp"
+ },
+ {
+  "ma_cau": "T110010201086",
+  "loai": "trac_nghiem",
+  "de": "Phần không bị gạch trên trục số dưới đây biểu diễn tập hợp $X$ là một tập con của tập số thực\nMệnh đề nào dưới đây là đúng?",
+  "lua_chon": [
+   "$X=\\left(-3;2\\right)$.",
+   "$X=\\left[-3;2\\right]$.",
+   "$X=(-3;2]$.",
+   "$X=[-3;2)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Quan sát trục số, phần bị gạch nằm ở hai phía ngoài, do đó phần không bị gạch là phần nằm giữa hai điểm $-3$ và $2$.\nTại điểm $-3$ dấu ngoặc là dấu ngoặc tròn nên $-3$ không thuộc tập $X$.\nTại điểm $2$ dấu ngoặc là dấu ngoặc vuông nên $2$ thuộc tập $X$.\nVậy $X=(-3;2]$.",
+  "co_hinh": true,
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Tập hợp và các phần tử của tập hợp. Tập con"
+ },
+ {
+  "ma_cau": "T110010103077",
+  "loai": "trac_nghiem",
+  "de": "Phủ định của mệnh đề $P\\left(x\\right) :\"\\forall x\\in \\mathbb{R},x^{2}-x+7<0\"$là",
+  "lua_chon": [
+   "$\\forall x\\in \\mathbb{R},x^{2}-x+7>0$.",
+   "$\\exists x\\in \\mathbb{R},x^{2}-x+7>0$.",
+   "$\\exists x\\in \\mathbb{R},x^{2}-x+7\\ge 0$.",
+   "$\\forall x\\in \\mathbb{R},x^{2}-x+7\\ge 0$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Phủ định của mệnh đề chứa lượng từ $\\forall$ là mệnh đề chứa lượng từ $\\exists$, đồng thời phủ định kết luận bên trong.\nPhủ định của bất đẳng thức $x^{2}-x+7<0$ là $x^{2}-x+7\\ge 0$.\nDo đó\n$\\widehat{P\\left(x\\right)} :\\exists x\\in \\mathbb{R}, x^{2}-x+7\\ge 0.$\nVậy chọn đáp án C.",
+  "nhan_cu": "Mệnh đề › Mệnh đề chứa ký hiệu với mọi, tồn tại. Phủ định của mệnh đề"
+ },
+ {
+  "ma_cau": "T110030103003",
+  "loai": "trac_nghiem",
+  "de": "Trong các đẳng thức sau đây, đẳng thức nào sai?",
+  "lua_chon": [
+   "$\\tan(180^\\circ - \\alpha) = -\\tan \\alpha$.",
+   "$\\cot(180^\\circ - \\alpha) = \\cot \\alpha$.",
+   "$\\cos(180^\\circ - \\alpha) = -\\cos \\alpha$.",
+   "$\\sin(180^\\circ - \\alpha) = \\sin \\alpha$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $\\sin(180^\\circ - \\alpha) = \\sin \\alpha$, $\\cos(180^\\circ - \\alpha) = -\\cos \\alpha$, $\\tan(180^\\circ - \\alpha) = -\\tan \\alpha$,\n$\\cot(180^\\circ - \\alpha) = -\\cot \\alpha$ khi xác định.\nA. Đúng.\nB. Sai.\nC. Đúng.\nD. Đúng.\nChọn B.",
+  "nhan_cu": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ › Nhận diện mối quan hệ lượng giác của 2 góc bù nhau hoặc phụ nhau"
+ },
+ {
+  "ma_cau": "T110030102014",
+  "loai": "trac_nghiem",
+  "de": "Biết $\\alpha$ thỏa mãn $90^{\\circ} < \\alpha < 180^{\\circ}$. Trong bốn phát biểu sau, phát biểu nào đúng?",
+  "lua_chon": [
+   "$\\sin \\alpha > 0$.",
+   "$\\cos \\alpha > 0$.",
+   "$\\tan \\alpha > 0$.",
+   "$\\cot \\alpha > 0$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Vì $90^{\\circ} < \\alpha < 180^{\\circ}$ nên $\\alpha$ thuộc góc phần tư II, do đó $\\sin \\alpha > 0$, $\\cos \\alpha < 0$, $\\tan \\alpha < 0$, $\\cot \\alpha < 0$.\nA. $\\sin \\alpha > 0$ là đúng.\nB. $\\cos \\alpha > 0$ là sai.\nC. $\\tan \\alpha > 0$ là sai.\nD. $\\cot \\alpha > 0$ là sai.\nChọn A.",
+  "nhan_cu": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ › Xác định dấu của giá trị lượng giác"
+ },
+ {
+  "ma_cau": "T110010206033",
+  "loai": "trac_nghiem",
+  "de": "Cho hai tập hợp $A=\\left[-3;-1\\right]\\cup \\left[2;4\\right]$ và $B=\\left(m-1;m+2\\right)$. Tìm $m$ để $A\\cap B\\ne \\varnothing$.",
+  "lua_chon": [
+   "$1\\le m\\le 3$.",
+   "$m>0$.",
+   "$\\left[\\begin{array}{l} m>5 \\\\ m<-5 \\end{array}\\right.$.",
+   "$\\begin{cases} -5<m<5 \\\\ m\\ne 0 \\end{cases}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta có $A=\\left[-3;-1\\right]\\cup \\left[2;4\\right]$ và $B=\\left(m-1;m+2\\right)$.\nĐể $A\\cap B\\ne \\varnothing$, ta xét hai trường hợp:\n$∙$ Trường hợp 1: $B\\cap \\left[-3;-1\\right]\\ne \\varnothing$.\nĐiều kiện là khoảng $\\left(m-1;m+2\\right)$ và đoạn $\\left[-3;-1\\right]$ có điểm chung:\n$\\begin{cases} m-1<-1 \\\\ m+2>-3 \\end{cases}\\Leftrightarrow \\begin{cases} m<0 \\\\ m>-5 \\end{cases}\\Leftrightarrow -5<m<0.$\n$∙$ Trường hợp 2: $B\\cap \\left[2;4\\right]\\ne \\varnothing$.\nĐiều kiện là khoảng $\\left(m-1;m+2\\right)$ và đoạn $\\left[2;4\\right]$ có điểm chung:\n$\\begin{cases} m-1<4 \\\\ m+2>2 \\end{cases}\\Leftrightarrow \\begin{cases} m<5 \\\\ m>0 \\end{cases}\\Leftrightarrow 0<m<5.$\nKết hợp cả hai trường hợp, ta được:\n$\\l …",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Bài toán tập hợp chứa tham số m"
+ },
+ {
+  "ma_cau": "T110020203030",
+  "loai": "trac_nghiem",
+  "de": "Điểm nào sau đây thuộc miền nghiệm của hệ bất phương trình $\\begin{cases}-2x+y+3>0\\\\ x+4y-2<0\\\\ x\\ge-1\\end{cases}$?",
+  "lua_chon": [
+   "$E(-2;0)$",
+   "$F(0;1)$",
+   "$G(1;-1)$",
+   "$H(0;0)$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta thay lần lượt tọa độ từng điểm ở các đáp án vào hệ bất phương trình để kiểm tra:\nKiểm tra đáp án A với $E(-2;0)$: Ta được $\\begin{cases} 4+0+3 = 7 > 0 \\ -2+0-2 = -4 < 0 \\ -2 \\ge -1 \\end{cases}$ (Đúng)\n$-2 \\ge -1$ (Sai)\n$\\Rightarrow$ Điểm $E$ không thuộc miền nghiệm.\nKiểm tra đáp án B với $F(0;1)$: Ta được $\\begin{cases} 0+1+3 = 4 > 0 \\ 0+4-2 = 2 < 0 \\ 0 \\ge -1 \\end{cases}$ (Đúng)\n$0+4-2 = 2 < 0$ (Sai) .\n$\\Rightarrow$ Điểm $F$ không thuộc miền nghiệm.\nKiểm tra đáp án C với $G(1;-1)$: Ta được $\\begin{cases} -2-1+3 = 0 > 0 \\ 1-4-2 = -5 < 0 \\ 1 \\ge -1 \\end{cases}$ (Sai)\n$-2-1+3 = 0 > 0$ (Sai)\n$\\Rightarrow$ Điểm $G$ không thuộc miền nghiệm.\nKiểm tra đáp án D với $H(0;0)$: Ta được $\\begin{cases …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110010103068",
+  "loai": "trac_nghiem",
+  "de": "Cho mệnh đề $P :\"\\forall x\\in \\mathbb{R},x^{2}-x+3>0\"$. Mệnh đề phủ định của mệnh đề $P$là",
+  "lua_chon": [
+   "$\\hat{P} :\"\\exists x\\in \\mathbb{R},x^{2}-x+3<0\"$.",
+   "$\\hat{P} :\"\\exists x\\in \\mathbb{R},x^{2}-x+3\\le 0\"$.",
+   "$\\hat{P} :\"\\forall x\\in \\mathbb{R},x^{2}-x+3<0\"$.",
+   "$\\hat{P} :\"\\forall x\\in \\mathbb{R},x^{2}-x+3\\le 0\"$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Phủ định của lượng từ $\\forall$ là $\\exists$.\nPhủ định của bất đẳng thức $x^{2}-x+3>0$ là $x^{2}-x+3\\le 0$.\nDo đó, mệnh đề phủ định của mệnh đề $P$ là $\\hat{P} :\"\\exists x\\in \\mathbb{R},x^{2}-x+3\\le 0\"$.",
+  "nhan_cu": "Mệnh đề › Mệnh đề chứa ký hiệu với mọi, tồn tại. Phủ định của mệnh đề"
+ },
+ {
+  "ma_cau": "T110020202096",
+  "loai": "trac_nghiem",
+  "de": "Phần không bị gạch chéo, kể cả biên trong hình vẽ là miền nghiệm của hệ bất phương trình nào?",
+  "lua_chon": [
+   "$\\begin{cases} x-y\\ge 0 \\\\ x\\ge 0 \\end{cases}$.",
+   "$\\begin{cases} x-y\\ge 0 \\\\ y\\ge 0 \\end{cases}$.",
+   "$\\begin{cases} x-y\\le 0 \\\\ x\\ge 0 \\end{cases}$.",
+   "$\\begin{cases} x-y\\ge 0 \\\\ x\\le 0 \\end{cases}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Đường thẳng $d :x-y=0$ đi qua gốc toạ độ $O\\left(0;0\\right)$ và điểm $\\left(2;2\\right)$.\nChọn điểm $M\\left(1;0\\right)$ không thuộc đường thẳng $d$ và không thuộc trục tung $Oy$.\nThay toạ độ điểm $M\\left(1;0\\right)$ vào các biểu thức:\n• Ta có $1-0=1>0$, mà điểm $M\\left(1;0\\right)$ thuộc miền không bị gạch chéo nên miền không bị gạch chéo chứa nửa mặt phẳng có bờ là đường thẳng $d :x-y=0$ và thoả mãn bất phương trình $x-y\\ge 0$.\n• Điểm $M\\left(1;0\\right)$ có hoành độ $x=1>0$, nằm ở nửa mặt phẳng bên phải trục tung $Oy$ (đường thẳng $x=0$), nên miền không bị gạch chéo thoả mãn bất phương trình $x\\ge 0$.\nVì miền nghiệm kể cả biên nên phần không bị gạch chéo trong hình vẽ là miền nghiệm của hệ bấ …",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110010203013",
+  "loai": "trac_nghiem",
+  "de": "Cho $A = [-2; 4)$ và $B = [1; 5]$. Khi đó $A \\setminus B$ là tập hợp nào sau đây?",
+  "lua_chon": [
+   "$[-2; 1)$",
+   "$[-2; 1]$",
+   "$[4; 5]$",
+   "$(1; 4)$"
+  ],
+  "dap_an": "A",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110010102066",
+  "loai": "trac_nghiem",
+  "de": "Trong các mệnh đề sau, mệnh đề nào là mệnh đề đúng?",
+  "lua_chon": [
+   "Tổng của hai số tự nhiên là một số lẻ khi và chỉ khi cả hai số đều là số lẻ.",
+   "Tích của hai số tự nhiên là một số chẵn khi và chỉ khi cả hai số đều là số chẵn.",
+   "Tổng của hai số tự nhiên là một số chẵn khi và chỉ khi cả hai số đều là số chẵn.",
+   "Tích của hai số tự nhiên là một số lẻ khi và chỉ khi cả hai số đều là số lẻ."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta xét từng phương án:\n- Mệnh đề \" Tổng của hai số tự nhiên là một số lẻ khi và chỉ khi cả hai số đều là số lẻ\"{} là sai, vì tổng của hai số lẻ là một số chẵn (chẳng hạn $1+3=4$ là số chẵn).\n- Mệnh đề \" Tích của hai số tự nhiên là một số chẵn khi và chỉ khi cả hai số đều là số chẵn\"{} là sai, vì chỉ cần một trong hai số là số chẵn thì tích đã là số chẵn (chẳng hạn $2\\cdot 3=6$ là số chẵn dù $3$ là số lẻ).\n- Mệnh đề \" Tổng của hai số tự nhiên là một số chẵn khi và chỉ khi cả hai số đều là số chẵn\"{} là sai, vì khi cả hai số đều là số lẻ thì tổng của chúng cũng là số chẵn (chẳng hạn $1+1=2$ là số chẵn).\n- Mệnh đề \" Tích của hai số tự nhiên là một số lẻ khi và chỉ khi cả hai số đều là số lẻ\"{}  …",
+  "nhan_cu": "Mệnh đề › Mệnh đề kéo theo, mệnh đề đảo, mệnh đề tương đương"
+ },
+ {
+  "ma_cau": "T110000000139",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$xác định trên đoạn $\\left[-2;3\\right]$ và có đồ thị như hình vẽ bên. Hỏi hàm số nghịch biến trên khoảng nào sau đây?",
+  "lua_chon": [
+   "$\\left(-2;-1\\right)$.",
+   "$\\left(-1;1\\right)$.",
+   "$\\left(1;2\\right)$.",
+   "$\\left(2;3\\right)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta quan sát đồ thị của hàm số trên đoạn $\\left[-2;3\\right]$.\nTrên khoảng $\\left(-2;-1\\right)$ đồ thị đi lên nên hàm số đồng biến.\nTrên khoảng $\\left(-1;1\\right)$ đồ thị là đoạn thẳng nằm ngang nên hàm số không đổi.\nTrên khoảng $\\left(1;2\\right)$ đồ thị đi xuống nên hàm số nghịch biến.\nTrên khoảng $\\left(2;3\\right)$ đồ thị đi lên nên hàm số đồng biến.\nVậy hàm số nghịch biến trên khoảng $\\left(1;2\\right)$.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110020203033",
+  "loai": "trac_nghiem",
+  "de": "Điểm nào sau đây thuộc miền nghiệm của hệ bất phương trình $\\begin{cases}5x-y>0\\\\ x+4y-4\\leq0\\\\ x-2<0\\end{cases}$?",
+  "lua_chon": [
+   "$A(0;0).$",
+   "$B(1;0).$",
+   "$C(3;0).$",
+   "$D(1;2).$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta thay lần lượt tọa độ từng điểm ở các đáp án vào hệ bất phương trình để kiểm tra:\nKiểm tra đáp án A với $A(0;0)$: Ta được $\\begin{cases} 0-0=0 > 0 \\ (Sai) \\ 0+0-4=-4 \\leq 0 \\ (Đúng) \\ 0-2=-2 < 0 \\ (Đúng) \\end{cases}$\n$\\Rightarrow$ Điểm A không thuộc miền nghiệm.\nKiểm tra đáp án B với $B(1;0)$: Ta được $\\begin{cases} 5-0=5 > 0 \\ (Đúng) \\ 1+0-4=-3 \\leq 0 \\ (Đúng) \\ 1-2=-1 < 0 \\ (Đúng) \\end{cases}$\n$\\Rightarrow$ Điểm B thuộc miền nghiệm.\nKiểm tra đáp án C với $C(3;0)$: Ta được $\\begin{cases} 15-0=15 > 0 \\ (Đúng) \\ 3+0-4=-1 \\leq 0 \\ (Đúng) \\ 3-2=1 < 0 \\ (Sai) \\end{cases}$\n$\\Rightarrow$ Điểm C không thuộc miền nghiệm.\nKiểm tra đáp án D với $D(1;2)$: Ta được $\\begin{cases} 5-2=3 > 0 \\ (Đúng) \\ 1 …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110010203074",
+  "loai": "trac_nghiem",
+  "de": "Phần không bị gạch trong hình vẽ sau đây là biểu diễn của tập hợp nào?",
+  "lua_chon": [
+   "$(-\\infty; 0)\\cup(3; +\\infty)$",
+   "$(-\\infty; 0]\\cup(3; +\\infty)$",
+   "$(-\\infty; 0)\\cup[3; +\\infty)$",
+   "$(-\\infty; 0]\\cup[3; +\\infty)$"
+  ],
+  "dap_an": "A",
+  "co_hinh": true,
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110010203155",
+  "loai": "trac_nghiem",
+  "de": "Cho $2$ tập hợp $A=(-10;0]$ và $B=[-5;+\\infty)$. Mệnh đề nào sau đây sai?",
+  "lua_chon": [
+   "$A\\cap B=\\left[-5;0\\right]$.",
+   "$A\\setminus B=(-10;-5]$.",
+   "$B\\setminus A=\\left(0;+\\infty \\right)$.",
+   "$A\\cup B=\\left(-10;+\\infty \\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Dựa vào trục số biểu diễn hai tập hợp $A=(-10;0]$ và $B=[-5;+\\infty)$, ta có:\n• $A\\cap B=\\left[-5;0\\right]$ (mệnh đề đúng).\n• $A\\setminus B=\\left(-10;-5\\right)$ (do $-5\\in B$ nên $-5\\notin A\\setminus B$). Do đó mệnh đề $A\\setminus B=(-10;-5]$ là sai.\n• $B\\setminus A=\\left(0;+\\infty \\right)$ (mệnh đề đúng).\n• $A\\cup B=\\left(-10;+\\infty \\right)$ (mệnh đề đúng).\nVậy mệnh đề sai là $A\\setminus B=(-10;-5]$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110010203079",
+  "loai": "trac_nghiem",
+  "de": "Cho hai tập hợp $A=[-5;3)$ và $B=(-1;4]$. Xác định tập hợp $A\\cap B$.",
+  "lua_chon": [
+   "$A\\cap B=\\left[-5;4\\right]$.",
+   "$A\\cap B=[-5;-1)$.",
+   "$A\\cap B=\\left(-1;3\\right)$.",
+   "$A\\cap B=(3;4]$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta biểu diễn hai tập hợp $A$ và $B$ trên trục số:\nPhần chung của hai tập hợp $A$ và $B$ là tập hợp các số thực lớn hơn $-1$ và nhỏ hơn $3$.\nVậy $A\\cap B=\\left(-1;3\\right)$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110010103075",
+  "loai": "trac_nghiem",
+  "de": "Phủ định của mệnh đề: ``$\\forall x\\in \\mathbb{R},x^{2}+1>0$'' là:",
+  "lua_chon": [
+   "$\\forall x\\notin \\mathbb{R},x^{2}+1\\le 0$.",
+   "$\\exists x\\in \\mathbb{R},x^{2}+1>0$.",
+   "$\\forall x\\notin \\mathbb{R},x^{2}+1>0$.",
+   "$\\exists x\\in \\mathbb{R},x^{2}+1\\le 0$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Phủ định của mệnh đề chứa lượng từ \"$\\forall x\\in X,P\\left(x\\right)$\"\\ là mệnh đề \"$\\exists x\\in X,\\widehat{P\\left(x\\right)}$\".\nDo đó, phủ định của mệnh đề \"$\\forall x\\in \\mathbb{R},x^{2}+1>0$\"\\ là mệnh đề \"$\\exists x\\in \\mathbb{R},x^{2}+1\\le 0$\".",
+  "nhan_cu": "Mệnh đề › Mệnh đề chứa ký hiệu với mọi, tồn tại. Phủ định của mệnh đề"
+ },
+ {
+  "ma_cau": "T110020203052",
+  "loai": "trac_nghiem",
+  "de": "Điểm $O\\left(0;0\\right)$ không thuộc miền nghiệm của hệ bất phương trình nào sau đây?",
+  "lua_chon": [
+   "$\\begin{cases} x+3y<0 \\\\ 2x+y+4>0 \\end{cases}$.",
+   "$\\begin{cases} x+3y\\ge 0 \\\\ 2x+y-4<0 \\end{cases}$.",
+   "$\\begin{cases} x+3y-6<0 \\\\ 2x+y+4>0 \\end{cases}$.",
+   "$\\begin{cases} x+3y-6<0 \\\\ 2x+y+4\\ge 0 \\end{cases}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta thay tọa độ điểm $O\\left(0;0\\right)$ vào từng hệ bất phương trình:\n• Xét hệ $\\begin{cases} x+3y<0 \\\\ 2x+y+4>0 \\end{cases}$: Thay $x=0,y=0$ vào bất phương trình thứ nhất ta được $0+0<0$ (vô lý). Do đó điểm $O\\left(0;0\\right)$ không thuộc miền nghiệm của hệ này.\n• Xét hệ $\\begin{cases} x+3y\\ge 0 \\\\ 2x+y-4<0 \\end{cases}$: Thay $x=0,y=0$ ta được $\\begin{cases} 0\\ge 0 \\\\ -4<0 \\end{cases}$ (thỏa mãn).\n• Xét hệ $\\begin{cases} x+3y-6<0 \\\\ 2x+y+4>0 \\end{cases}$: Thay $x=0,y=0$ ta được $\\begin{cases} -6<0 \\\\ 4>0 \\end{cases}$ (thỏa mãn).\n• Xét hệ $\\begin{cases} x+3y-6<0 \\\\ 2x+y+4\\ge 0 \\end{cases}$: Thay $x=0,y=0$ ta được $\\begin{cases} -6<0 \\\\ 4\\ge 0 \\end{cases}$ (thỏa mãn).\nVậy điểm $O\\left(0;0\\rig …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020203077",
+  "loai": "trac_nghiem",
+  "de": "Trong các cặp số sau, cặp nào không là nghiệm của hệ bất phương trình $\\begin{cases} x+y-2\\le 0 \\\\ 2x-3y+2>0 \\end{cases}$ là",
+  "lua_chon": [
+   "$\\left(-1;-1\\right)$.",
+   "$\\left(0;0\\right)$.",
+   "$\\left(1;1\\right)$.",
+   "$\\left(-1;1\\right)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Xét hệ bất phương trình $\\begin{cases} x+y-2\\le 0 \\\\ 2x-3y+2>0. \\end{cases}$\nThay lần lượt toạ độ các cặp số vào hệ:\n- Với $\\left(-1;-1\\right)$: $\\begin{cases} -1+\\left(-1\\right)-2=-4\\le 0 \\\\ 2\\left(-1\\right)-3\\left(-1\\right)+2=3>0 \\end{cases}$ (thoả mãn).\n- Với $\\left(0;0\\right)$: $\\begin{cases} 0+0-2=-2\\le 0 \\\\ 2\\cdot 0-3\\cdot 0+2=2>0 \\end{cases}$ (thoả mãn).\n- Với $\\left(1;1\\right)$: $\\begin{cases} 1+1-2=0\\le 0 \\\\ 2\\cdot 1-3\\cdot 1+2=1>0 \\end{cases}$ (thoả mãn).\n- Với $\\left(-1;1\\right)$: $\\begin{cases} -1+1-2=-2\\le 0 \\\\ 2\\left(-1\\right)-3\\cdot 1+2=-3\\le 0 \\end{cases}$ (không thoả mãn bất phương trình thứ hai).\nVậy cặp số $\\left(-1;1\\right)$ không là nghiệm của hệ bất phương trình đã cho.",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110030105004",
+  "loai": "trac_nghiem",
+  "de": "Với $\\alpha \\neq 90^{\\circ}$, đẳng thức nào sau đây đúng?",
+  "lua_chon": [
+   "$1+\\tan^2 \\alpha = \\dfrac{1}{\\sin^2 \\alpha}$",
+   "$1-\\tan^2 \\alpha = \\dfrac{1}{\\cos^2 \\alpha}$",
+   "$1+\\tan \\alpha = \\dfrac{1}{\\cos^2 \\alpha}$",
+   "$1+\\tan^2 \\alpha = \\dfrac{1}{\\cos^2 \\alpha}$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta có $1+\\tan^2 \\alpha = \\dfrac{1}{\\cos^2 \\alpha} (\\alpha \\neq 90^{\\circ})$.\nChọn D.",
+  "nhan_cu": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ › Nhận diện các hệ thức lượng giác cơ bản"
+ },
+ {
+  "ma_cau": "T110010103059",
+  "loai": "trac_nghiem",
+  "de": "Tìm mệnh đề phủ định của mệnh đề: \" Tất cả người dân Việt Nam đều được tiêm Vacxin ngừa Covid.\"",
+  "lua_chon": [
+   "\" Có người dân Việt Nam được tiêm Vacxin ngừa Covid\".",
+   "\" Tất cả người dân Việt Nam đều không được tiêm Vacxin ngừa Covid\".",
+   "\" Có ít nhất một người dân Việt Nam không được tiêm Vacxin ngừa Covid\".",
+   "\" Có duy nhất một người dân Việt Nam không được tiêm Vacxin ngừa Covid\"."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Mệnh đề đã cho có dạng $\\forall x\\in X :P\\left(x\\right)$.\nPhủ định của mệnh đề này là $\\exists x\\in X :\\widehat{P\\left(x\\right)}$.\nVậy mệnh đề phủ định là: \" Có ít nhất một người dân Việt Nam không được tiêm Vacxin ngừa Covid\".",
+  "nhan_cu": "Mệnh đề › Mệnh đề chứa ký hiệu với mọi, tồn tại. Phủ định của mệnh đề"
+ },
+ {
+  "ma_cau": "T110010201062",
+  "loai": "trac_nghiem",
+  "de": "Tập hợp $A=\\{x\\in \\mathbb{N}|\\left(x-1\\right)\\left(x^{2}-4\\right)=0\\}$ có bao nhiêu phần tử.",
+  "lua_chon": [
+   "$2$.",
+   "$1$.",
+   "$3$.",
+   "$4$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Xét phương trình $\\left(x-1\\right)\\left(x^{2}-4\\right)=0$.\nPhương trình này tương đương với:\n$\\left[\\begin{array}{l} x-1=0 \\\\ x^{2}-4=0 \\end{array}\\right.$\n$\\Leftrightarrow \\left[\\begin{array}{l} x=1 \\\\ x=2 \\\\ x=-2. \\end{array}\\right.$\nVì $x$ là số tự nhiên ($x\\in \\mathbb{N}$) nên ta chỉ nhận $x=1$ và $x=2$.\nSuy ra tập hợp $A=\\{1;2\\}$.\nVậy tập hợp $A$ có $2$ phần tử.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Tập hợp và các phần tử của tập hợp. Tập con"
+ },
+ {
+  "ma_cau": "T110020203060",
+  "loai": "trac_nghiem",
+  "de": "Cho hệ bất phương trình $\\begin{cases} x+3y-2\\ge 0 \\\\ 2x+y+1\\le 0 \\end{cases}$. Tìm cặp số là nghiệm của hệ bất phương trình?",
+  "lua_chon": [
+   "$\\left(0;1\\right)$.",
+   "$\\left(-1;0\\right)$.",
+   "$\\left(1;3\\right)$.",
+   "$\\left(-1;1\\right)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Thay lần lượt các cặp số vào hệ bất phương trình $\\begin{cases} x+3y-2\\ge 0 \\\\ 2x+y+1\\le 0: \\end{cases}$\n- Với $\\left(0;1\\right)$: ta có $2\\cdot 0+1+1=2>0$ nên $\\left(0;1\\right)$ không thoả mãn bất phương trình thứ hai.\n- Với $\\left(-1;0\\right)$: ta có $-1+3\\cdot 0-2=-3<0$ nên $\\left(-1;0\\right)$ không thoả mãn bất phương trình thứ nhất.\n- Với $\\left(1;3\\right)$: ta có $2\\cdot 1+3+1=6>0$ nên $\\left(1;3\\right)$ không thoả mãn bất phương trình thứ hai.\n- Với $\\left(-1;1\\right)$: ta có $\\begin{cases} -1+3\\cdot 1-2=0\\ge 0 \\\\ 2\\cdot \\left(-1\\right)+1+1=0\\le 0 \\end{cases}$ (thoả mãn cả hai bất phương trình).\nVậy cặp số $\\left(-1;1\\right)$ là nghiệm của hệ bất phương trình đã cho.",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020202106",
+  "loai": "trac_nghiem",
+  "de": "Hình vẽ dưới đây là biểu diễn hình học tập nghiệm của hệ bất phương trình nào? (với miền nghiệm là miền không gạch sọc và chứa bờ)",
+  "lua_chon": [
+   "$\\begin{cases} 3x+4y-8\\le 0 \\\\ 5x-12y-3\\le 0 \\end{cases}$.",
+   "$\\begin{cases} 3x+4y-8\\ge 0 \\\\ 5x-12y-3\\le 0 \\end{cases}$.",
+   "$\\begin{cases} 3x+4y-8\\ge 0 \\\\ 5x-12y-3\\ge 0 \\end{cases}$.",
+   "$\\begin{cases} 3x+4y-3\\ge 0 \\\\ 5x-12y-8\\le 0 \\end{cases}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Xét đường thẳng thứ nhất $d_{1}$ đi qua hai điểm $\\left(0;2\\right)$ và $\\left(\\dfrac{8}{3};0\\right)$:\nPhương trình đoạn chắn của $d_{1}$ là:\n$\\dfrac{x}{\\dfrac{8}{3}}+\\dfrac{y}{2}=1\\Leftrightarrow 3x+4y-8=0.$\nVì gốc toạ độ $O\\left(0;0\\right)$ bị gạch (bị loại) và $3\\cdot 0+4\\cdot 0-8=-8<0$ nên nửa mặt phẳng không gạch tương ứng với bất phương trình $3x+4y-8\\ge 0$.\nXét đường thẳng thứ hai $d_{2}$ đi qua hai điểm $\\left(3;1\\right)$ và $\\left(0;-0,25\\right)$:\nPhương trình của $d_{2}$ là:\n$y-1=\\dfrac{1-\\left(-0,25\\right)}{3-0}\\left(x-3\\right)\\Leftrightarrow y-1=\\dfrac{5}{12}\\left(x-3\\right)\\Leftrightarrow 5x-12y-3=0.$\nVì điểm $O\\left(0;0\\right)$ không bị gạch (thuộc miền nghiệm) và $5\\cdot 0-12\\c …",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110030106065",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\tan \\alpha = 2$ với $0^\\circ \\leq \\alpha \\leq 180^\\circ$. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$\\cos \\alpha = -\\dfrac{\\sqrt{5}}{5}$",
+   "$\\cos \\alpha = \\dfrac{1}{5}$",
+   "$\\cos \\alpha = \\dfrac{\\sqrt{5}}{5}$",
+   "$\\cos \\alpha = \\pm \\dfrac{\\sqrt{5}}{5}$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $1 + \\tan^2 \\alpha = \\dfrac{1}{\\cos^2 \\alpha} \\Leftrightarrow \\cos^2 \\alpha = \\dfrac{1}{1 + \\tan^2 \\alpha} = \\dfrac{1}{1 + 2^2} = \\dfrac{1}{5}$.\nSuy ra $\\cos \\alpha = \\pm \\dfrac{\\sqrt{5}}{5}$.\nVới $0^\\circ \\leq \\alpha \\leq 180^\\circ \\Rightarrow \\sin \\alpha > 0$ và $\\tan \\alpha = 2 \\Rightarrow \\cos \\alpha > 0$.\nVậy $\\cos \\alpha = \\dfrac{\\sqrt{5}}{5}$.\nChọn C.",
+  "nhan_cu": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ › Cho một giá trị lượng giác, tính các giá trị lượng giác còn lại"
+ },
+ {
+  "ma_cau": "T110010202121",
+  "loai": "trac_nghiem",
+  "de": "Cho hai tập hợp $A=\\{2;4;6;9\\}$, $B=\\{1;2;3;4\\}$. Tập $A\\setminus B$ bằng tập nào sau đây?",
+  "lua_chon": [
+   "$\\left\\{2;4\\right\\}$.",
+   "$\\left\\{1;2;3;4;6;9\\right\\}$.",
+   "$\\left\\{1;3\\right\\}$.",
+   "$\\left\\{6;9\\right\\}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Hiệu của hai tập hợp $A\\setminus B$ là tập hợp gồm tất cả các phần tử thuộc $A$ nhưng không thuộc $B$.\nTa có $A=\\{2;4;6;9\\}$ và $B=\\{1;2;3;4\\}$.\nTrong các phần tử của $A$, các phần tử $2$ và $4$ thuộc $B$, còn các phần tử $6$ và $9$ không thuộc $B$.\nDo đó $A\\setminus B=\\{6;9\\}$.\nVậy $A\\setminus B=\\{6;9\\}$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Các phép toán trên tập hợp"
+ },
+ {
+  "ma_cau": "T110010101111",
+  "loai": "trac_nghiem",
+  "de": "Cho mệnh đề chứa biến $P\\left(x\\right) :\"x^{2}-4x+3\\le 0\"$. Mệnh đề nào sau đây đúng",
+  "lua_chon": [
+   "$P\\left(4\\right)$.",
+   "$P\\left(-2\\right)$.",
+   "$P\\left(-1\\right)$.",
+   "$P\\left(2\\right)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Thay lần lượt các giá trị của $x$ vào mệnh đề chứa biến $P\\left(x\\right)$:\n- Với $x=4$, ta có $4^{2}-4\\cdot 4+3=3\\le 0$ là mệnh đề sai, do đó $P\\left(4\\right)$ sai.\n- Với $x=-2$, ta có $\\left(-2\\right)^{2}-4\\cdot \\left(-2\\right)+3=15\\le 0$ là mệnh đề sai, do đó $P\\left(-2\\right)$ sai.\n- Với $x=-1$, ta có $\\left(-1\\right)^{2}-4\\cdot \\left(-1\\right)+3=8\\le 0$ là mệnh đề sai, do đó $P\\left(-1\\right)$ sai.\n- Với $x=2$, ta có $2^{2}-4\\cdot 2+3=-1\\le 0$ là mệnh đề đúng, do đó $P\\left(2\\right)$ đúng.\nVậy mệnh đề đúng là $P\\left(2\\right)$.",
+  "nhan_cu": "Mệnh đề › Nhận diện, xét tính đúng sai của mệnh đề. Mệnh đề chứa biến"
+ },
+ {
+  "ma_cau": "T110030106094",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\sin \\alpha =\\dfrac{1}{3}$ và $90^\\circ<\\alpha <180^\\circ$ thì",
+  "lua_chon": [
+   "$\\cos \\alpha =\\dfrac{2}{3}$.",
+   "$\\cos \\alpha =-\\dfrac{2}{3}$.",
+   "$\\cos \\alpha =-\\dfrac{2\\sqrt{2}}{3}$.",
+   "$\\cos \\alpha =\\dfrac{2\\sqrt{2}}{3}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Vì $90^\\circ<\\alpha <180^\\circ$ nên điểm biểu diễn $M$ của góc $\\alpha$ nằm ở góc phần tư thứ hai, do đó $\\cos \\alpha <0$.\nÁp dụng hằng đẳng thức cơ bản $\\sin ^{2}\\alpha +\\cos ^{2}\\alpha =1$, ta có\n$\\cos ^{2}\\alpha =1-\\sin ^{2}\\alpha =1-\\left(\\dfrac{1}{3}\\right)^{2}=1-\\dfrac{1}{9}=\\dfrac{8}{9}.$\nVì $\\cos \\alpha <0$ nên\n$\\cos \\alpha =-\\sqrt{\\dfrac{8}{9}}=-\\dfrac{2\\sqrt{2}}{3}.$\nVậy $\\cos \\alpha =-\\dfrac{2\\sqrt{2}}{3}$.",
+  "nhan_cu": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ › Cho một giá trị lượng giác, tính các giá trị lượng giác còn lại"
+ },
+ {
+  "ma_cau": "T110010201037",
+  "loai": "trac_nghiem",
+  "de": "Cho tập hợp $A = \\{x \\in \\mathbb{R}|-2 \\le x < 5\\}$. Tập $A$ được viết lại là",
+  "lua_chon": [
+   "$[-2;5)$.",
+   "$\\{-2;-1;0;1;2;3;4;5\\}$.",
+   "$[-2;5]$.",
+   "$\\{-2;-1;0;1;2;3;4\\}$."
+  ],
+  "dap_an": "A",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Tập hợp và các phần tử của tập hợp. Tập con"
+ },
+ {
+  "ma_cau": "T110030102021",
+  "loai": "trac_nghiem",
+  "de": "Góc $\\alpha$ thỏa mãn $0^\\circ < \\alpha < 90^\\circ$. Phát biểu nào sau đây về dấu của các giá trị lượng giác là sai?",
+  "lua_chon": [
+   "$\\tan \\alpha < 0$.",
+   "$\\sin \\alpha > 0$.",
+   "$\\cos \\alpha > 0$.",
+   "$\\cot \\alpha > 0$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Vì $0^\\circ < \\alpha < 90^\\circ$ nên $\\alpha$ thuộc góc phần tư I, do đó $\\sin \\alpha > 0$, $\\cos \\alpha > 0$, $\\tan \\alpha > 0$, $\\cot \\alpha > 0$.\nA. $\\tan \\alpha < 0$ là sai.\nB. $\\sin \\alpha > 0$ là đúng.\nC. $\\cos \\alpha > 0$ là đúng.\nD. $\\cot \\alpha > 0$ là đúng.\nChọn A.",
+  "nhan_cu": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ › Xác định dấu của giá trị lượng giác"
+ },
+ {
+  "ma_cau": "T110030107001",
+  "loai": "trac_nghiem",
+  "de": "Tổng $\\sin^2 3^\\circ + \\sin^2 5^\\circ + \\sin^2 7^\\circ + ... + \\sin^2 83^\\circ + \\sin^2 85^\\circ + \\sin^2 87^\\circ$ bằng",
+  "lua_chon": [
+   "21.",
+   "23.",
+   "21,5.",
+   "22."
+  ],
+  "dap_an": "C",
+  "loi_giai": "$S=(\\sin^2 3^\\circ + \\sin^2 87^\\circ)+(\\sin^2 5^\\circ + \\sin^2 85^\\circ)+...+(\\sin^2 45^\\circ )$\n$S=(\\sin^2 3^\\circ + \\cos^2 3^\\circ)+(\\sin^2 5^\\circ + \\cos^2 5^\\circ)+...+(\\sin^2 45^\\circ )=21,5$.",
+  "nhan_cu": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ › Rút gọn hoặc tính giá trị của biểu thức lượng giác sử dụng các hệ thức lượng giác cơ bản"
+ }
+]

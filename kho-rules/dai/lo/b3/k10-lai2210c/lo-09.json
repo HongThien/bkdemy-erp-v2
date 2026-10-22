@@ -1,0 +1,507 @@
+[
+ {
+  "ma_cau": "T110010101120",
+  "loai": "trac_nghiem",
+  "de": "Câu nào sau đây là mệnh đề toán học?",
+  "lua_chon": [
+   "Hôm nay trời nóng quá!",
+   "Bạn có thích học toán không?",
+   "Bài tập này khó quá!",
+   "Số $5$ là một số tự nhiên."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Mệnh đề toán học là một câu khẳng định về một sự kiện trong toán học, có tính đúng hoặc sai rõ ràng, không thể vừa đúng vừa sai.\nCác câu \" Hôm nay trời nóng quá!\"\\ và \" Bài tập này khó quá!\"\\ là câu cảm thán nên không phải mệnh đề.\nCâu \" Bạn có thích học toán không?\"\\ là câu hỏi nên không phải mệnh đề.\nCâu \" Số $5$ là một số tự nhiên.\"\\ là một khẳng định toán học đúng (vì $5\\in \\mathbb{N}$) nên là một mệnh đề toán học.\nVậy câu là mệnh đề toán học là \" Số $5$ là một số tự nhiên.\".",
+  "nhan_cu": "Mệnh đề › Nhận diện, xét tính đúng sai của mệnh đề. Mệnh đề chứa biến"
+ },
+ {
+  "ma_cau": "T110010204064",
+  "loai": "tu_luan",
+  "de": "Lớp 10A có $45$ học sinh, trong đó có $23$ học sinh tham gia câu lạc bộ thể thao, $17$ học sinh tham gia câu lạc bộ âm nhạc, trong đó có $5$ học sinh tham gia cả hai câu lạc bộ thể thao và âm nhạc. Hỏi có bao nhiêu học sinh của lớp không tham gia cả hai câu lạc bộ thể thao và âm nhạc?",
+  "loi_giai": "Gọi $A$ là tập hợp các học sinh tham gia câu lạc bộ thể thao, $B$ là tập hợp các học sinh tham gia câu lạc bộ âm nhạc.\nTheo đề bài, ta có $|A|=23$, $|B|=17$ và $|A\\cap B|=5$.\nSố học sinh tham gia ít nhất một trong hai câu lạc bộ là\n$|A\\cup B|=|A|+|B|-|A\\cap B|=23+17-5=35 \\left(\\text{hoc sinh}\\right).$\nSố học sinh không tham gia cả hai câu lạc bộ thể thao và âm nhạc là\n$45-|A\\cup B|=45-35=10 \\left(\\text{hoc sinh}\\right).$\nVậy có $10$ học sinh không tham gia cả hai câu lạc bộ thể thao và âm nhạc.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Bài toán thực tế tập hợp (2 Yếu tố)"
+ },
+ {
+  "ma_cau": "T110010203105",
+  "loai": "trac_nghiem",
+  "de": "Cho hai tập hợp $A=\\left[-2;2\\right]$ và $B=\\left(-1;+\\infty \\right)$. Khi đó, tập $\\left(A\\setminusB\\right)\\cap \\mathbb{Z}$ có tổng của các phần tử bằng?",
+  "lua_chon": [
+   "$-3$.",
+   "$2$.",
+   "$-2$.",
+   "$3$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có $A=\\left[-2;2\\right]$ và $B=\\left(-1;+\\infty \\right)$.\nTập $A\\setminus B$ gồm các số thuộc $A$ nhưng không thuộc $B$, tức là các số $x$ thoả mãn $-2\\le x\\le -1$. Do đó $A\\setminus B=\\left[-2;-1\\right]$.\nSuy ra $\\left(A\\setminusB\\right)\\cap \\mathbb{Z}=\\{-2;-1\\}$.\nVậy tổng các phần tử của tập này bằng $-2+\\left(-1\\right)=-3$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110010201075",
+  "loai": "trac_nghiem",
+  "de": "Hãy liệt kê các phần tử của tập hợp $X=\\{x\\in \\mathbb{N}|2x^{2}-3x+1=0\\}$.",
+  "lua_chon": [
+   "$X=\\left\\{1;\\dfrac{3}{2}\\right\\}$.",
+   "$X=\\left\\{1;\\dfrac{1}{2}\\right\\}$.",
+   "$X=\\{1\\}$.",
+   "$X=\\{0\\}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Xét phương trình $2x^{2}-3x+1=0$.\nTa có:\n$2x^{2}-3x+1=0\\Leftrightarrow \\left(x-1\\right)\\left(2x-1\\right)=0\\Leftrightarrow \\left[\\begin{array}{l} x=1 \\\\ x=\\dfrac{1}{2}. \\end{array}\\right.$\nVì $x\\in \\mathbb{N}$ nên ta chỉ nhận phần tử $x=1$ (loại $x=\\dfrac{1}{2}$).\nVậy $X=\\{1\\}$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Tập hợp và các phần tử của tập hợp. Tập con"
+ },
+ {
+  "ma_cau": "T110010203053",
+  "loai": "tu_luan",
+  "de": "Cho hai tập hợp con của tập số thực $R$ sau:\\\\ $A = \\{x \\in R \\vert -3 \\le x < 2\\}$ và $B = \\{x \\in R \\vert -1 < x < 4\\}$.\\\\ Xác định $A \\cap B$ và biểu diễn kết quả trên trục số.",
+  "dap_an": "$(-1; 2)$",
+  "loi_giai": "Ta có: $A = [-3; 2)$ và $B = (-1; 4)$.\\\\ Giao của hai tập hợp $A$ và $B$ là tập gồm các phần tử vừa thuộc $A$ vừa thuộc $B$.\\\\ Do đó: $A \\cap B = (-1; 2)$.\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/f35c04c0-c20d-4d55-a589-3f99a37cd34d.png)",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110010203055",
+  "loai": "tu_luan",
+  "de": "Cho hai tập hợp con của tập số thực $R$ sau:\n$A = \\{x \\in R | -5 \\le x \\le -1\\}$ và $B = \\{x \\in R | -2 < x \\le 3\\}$.\nXác định $A \\cup B$ và biểu diễn kết quả trên trục số.",
+  "dap_an": "$[-5; 3]$",
+  "loi_giai": "Ta có: $A = [-5; -1]$ và $B = (-2; 3]$.\nHợp của hai tập hợp $A$ và $B$ là tập gồm các phần tử thuộc $A$ hoặc thuộc $B$.\nDo đó: $A \\cup B = [-5; 3]$.\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/a4f53f72-773f-4e45-9346-bd9036ae0ef2.png)",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110010202111",
+  "loai": "tra_loi_ngan",
+  "de": "Cho các tập hợp $A=\\{-2;-1;0;1;2;3\\}$; $B=\\{0;1;4;5\\}$. Tính số phần tử của $\\left(A\\cupB\\right)\\cap \\mathbb{Z}$.",
+  "dap_an": "8",
+  "loi_giai": "Ta có $A=\\{-2;-1;0;1;2;3\\}$ và $B=\\{0;1;4;5\\}$.\nHợp của hai tập hợp $A$ và $B$ là:\n$A\\cup B=\\{-2;-1;0;1;2;3;4;5\\}.$\nVì tất cả các phần tử của $A\\cup B$ đều là các số nguyên nên:\n$\\left(A\\cupB\\right)\\cap \\mathbb{Z}=\\{-2;-1;0;1;2;3;4;5\\}.$\nĐếm số phần tử của tập hợp $\\left(A\\cupB\\right)\\cap \\mathbb{Z}$, ta có tập hợp này có $8$ phần tử.\nVậy số phần tử của $\\left(A\\cupB\\right)\\cap \\mathbb{Z}$ là $8$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Các phép toán trên tập hợp"
+ },
+ {
+  "ma_cau": "T110010103080",
+  "loai": "trac_nghiem",
+  "de": "Phủ định của mệnh đề \" $18$ chia hết cho $5$\"\\ là",
+  "lua_chon": [
+   "\" $18$ chia hết cho $2$ và $3$\".",
+   "\" $18$ chia hết cho $2$\".",
+   "\" $18$ không chia hết cho $5$\".",
+   "\" $5$ chia hết cho $18$\"."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Phủ định của mệnh đề \"$P$\"\\ là mệnh đề \" Không phải $P$\".\nDo đó, phủ định của mệnh đề \" $18$ chia hết cho $5$\"\\ là mệnh đề \" $18$ không chia hết cho $5$\".",
+  "nhan_cu": "Mệnh đề › Mệnh đề chứa ký hiệu với mọi, tồn tại. Phủ định của mệnh đề"
+ },
+ {
+  "ma_cau": "T110010203085",
+  "loai": "trac_nghiem",
+  "de": "Dùng kí hiệu khoảng, đoạn, nửa khoảng viết lại tập $A=\\{x\\in \\mathbb{R}|-7<x<1\\}$.",
+  "lua_chon": [
+   "$\\left(-7;1\\right)$.",
+   "$[-7;1)$.",
+   "$\\left\\{-7;1\\right\\}$.",
+   "$\\left[-7;1\\right]$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Tập hợp $A=\\{x\\in \\mathbb{R}|-7<x<1\\}$ gồm các số thực lớn hơn $-7$ và nhỏ hơn $1$.\nDùng kí hiệu khoảng, ta viết lại tập $A$ là $\\left(-7;1\\right)$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110020204090",
+  "loai": "tra_loi_ngan",
+  "de": "Một xưởng sản xuất hai loại sản phẩm, mỗi kg sản phẩm loại một cần $6 kg$ nguyên liệu và $10$ giờ. Mỗi sản phẩm loại hai cần $4 kg$ nguyên liệu và $5$ giờ. Xưởng có $200 kg$ nguyên liệu và $2000$ giờ làm việc. Gọi $x,y$ lần lượt là là số kg sản phẩm loại một và loại hai cần sản xuất, các bất phương trình $\\text{ax+by\\le 100}$ và $\\text{cx+dy\\le 400}$ lần lượt là bất phương trình biểu diễn ràng buộc về số nguyên liệu và số giờ cần dùng để sản xuất hai loại sản phẩm. Tính $S=a+b+c+d$.",
+  "dap_an": "8",
+  "loi_giai": "Gọi $x,y$ lần lượt là số kilôgam sản phẩm loại một và loại hai cần sản xuất ($x\\ge 0,y\\ge 0$).\nĐể sản xuất $x kg$ sản phẩm loại một và $y kg$ sản phẩm loại hai:\n- Số kilôgam nguyên liệu cần dùng là $6x+4y kg$. Vì xưởng có tối đa $200 kg$ nguyên liệu nên ta có bất phương trình:\n$6x+4y\\le 200\\Leftrightarrow 3x+2y\\le 100.$\nĐối chiếu với bất phương trình $\\text{ax+by\\le 100}$, ta xác định được $a=3$ và $b=2$.\n- Số giờ làm việc cần dùng là $10x+5y$ giờ. Vì xưởng có tối đa $2 000$ giờ làm việc nên ta có bất phương trình:\n$10x+5y\\le 2 000\\Leftrightarrow 2x+y\\le 400.$\nĐối chiếu với bất phương trình $\\text{cx+dy\\le 400}$, ta xác định được $c=2$ và $d=1$.\nDo đó\n$S=a+b+c+d=3+2+2+1=8.$\nVậy $S=8$.",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm"
+ },
+ {
+  "ma_cau": "T110010203167",
+  "loai": "trac_nghiem",
+  "de": "Cho hai tập hợp $A=[-3;10)$ và $B=\\left(5;+\\infty \\right)$. Mệnh đề nào sau đây đúng?",
+  "lua_chon": [
+   "$A\\cup B=\\left(-\\infty;+\\infty \\right)$.",
+   "$B\\setminus A=\\left(10;+\\infty \\right)$.",
+   "$A\\setminus B=\\left[-3;5\\right]$.",
+   "$A\\cap B=[-3;5)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Biểu diễn hai tập hợp $A=[-3;10)$ và $B=\\left(5;+\\infty \\right)$ trên trục số, ta xác định:\n• Giao của hai tập hợp: $A\\cap B=\\left(5;10\\right)$.\n• Hợp của hai tập hợp: $A\\cup B=[-3;+\\infty)$.\n• Hiệu của hai tập hợp: $A\\setminus B=\\left[-3;5\\right]$.\n• $B\\setminus A=[10;+\\infty)$.\nVậy mệnh đề đúng là $A\\setminus B=\\left[-3;5\\right]$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110010205034",
+  "loai": "tu_luan",
+  "de": "Lớp 10E1 có $35$ học sinh làm bài kiểm tra thường xuyên môn Toán. Đề bài gồm $3$ bài toán. Sau khi kiểm tra Cô giáo tổng hợp được kết quả như sau: có $12$ học sinh chỉ giải được bài toán thứ nhất, $14$ học sinh giải được bài toán thứ hai, $15$ học sinh giải được bài toán thứ ba, $3$ học sinh chỉ giải được bài toán thứ hai và thứ ba. Hỏi lớp 10E1 có bao nhiêu học sinh giải được cả $3$ bài toán biết rằng mỗi học sinh đều làm được ít nhất một bài?",
+  "loi_giai": "Gọi $A_{1},A_{2},A_{3}$ lần lượt là tập hợp các học sinh giải được bài toán thứ nhất, thứ hai và thứ ba.\nVì mỗi học sinh đều làm được ít nhất một bài toán nên tổng số học sinh làm được ít nhất một trong ba bài toán là:\n$|A_{1}\\cup A_{2}\\cup A_{3}|=35.$\nCó $12$ học sinh chỉ giải được bài toán thứ nhất, nên số học sinh giải được bài toán thứ hai hoặc bài toán thứ ba là:\n$|A_{2}\\cup A_{3}|=|A_{1}\\cup A_{2}\\cup A_{3}|-12=35-12=23$\n(học sinh)\n$.$\nTheo nguyên lí bao hàm - loại trừ cho hai tập hợp $A_{2}$ và $A_{3}$, ta có:\n$|A_{2}\\cup A_{3}|=|A_{2}|+|A_{3}|-|A_{2}\\cap A_{3}|.$\nThay $|A_{2}|=14$, $|A_{3}|=15$ và $|A_{2}\\cup A_{3}|=23$ vào, ta được:\n$23=14+15-|A_{2}\\cap A_{3}|\\Rightarrow |A_{2}\\cap  …",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Bài toán thực tế tập hợp (3 yếu tố)"
+ },
+ {
+  "ma_cau": "T110000000281",
+  "loai": "tu_luan",
+  "de": "a) Từ một miếng tôn có hình dạng là nửa đường tròn bán kính $2 m$, người ta cắt ra một hình chữ nhật. Hỏi có thể cắt được miếng tôn có diện tích lớn nhất là bao nhiêu $m^{2}$?\nb) Chứng minh rằng trong tam giác $ABC$ bất kì ta luôn có $8S^{2}=\\left(a+b+c\\right)\\left(a+b-c\\right)\\left(a-b+c\\right)\\left(b+c-a\\right)$, trong đó $S$ là diện tích tam giác, $a,b,c$ là ba cạnh của tam giác.",
+  "loi_giai": "a) Gọi $O$ là tâm của nửa đường tròn bán kính $R=2 m$.\nDo tính đối xứng, hình chữ nhật $ABCD$ có cạnh $AB$ nằm trên đường kính sao cho $O$ là trung điểm của đoạn thẳng $AB$, và hai đỉnh $C,D$ thuộc nửa đường tròn.\nĐặt $OB=x$ (với $0<x<2$). Khi đó chiều dài $AB=2x$.\nTrong tam giác vuông $OBC$ vuông tại $B$, ta có\n$BC=\\sqrt{OC^{2}-OB^{2}}=\\sqrt{2^{2}-x^{2}}=\\sqrt{4-x^{2}}.$\nDiện tích của hình chữ nhật $ABCD$ là\n$\\text{S=AB\\cdot BC=2x}\\sqrt{4-x^{2}}.$\nÁp dụng bất đẳng thức Cauchy cho hai số dương $x^{2}$ và $4-x^{2}$, ta có\n$S=2\\sqrt{x^{2}\\left(4-x^{2}\\right)}\\le 2\\cdot \\dfrac{x^{2}+\\left(4-x^{2}\\right)}{2}=2\\cdot \\dfrac{4}{2}=4.$\nDấu đẳng thức xảy ra khi và chỉ khi\n$x^{2}=4-x^{2}\\Leftrightarro …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110010201061",
+  "loai": "trac_nghiem",
+  "de": "Cho tập hợp $A\\ne \\varnothing$. Mệnh đề nào sau đây đúng?",
+  "lua_chon": [
+   "$A\\setminus \\varnothing =\\varnothing$.",
+   "$\\varnothing \\setminus A=A$.",
+   "$\\varnothing \\setminus \\varnothing =A$.",
+   "$A\\setminus A=\\varnothing$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Theo định nghĩa hiệu của hai tập hợp, ta có $A\\setminus A$ là tập hợp gồm các phần tử thuộc $A$ nhưng không thuộc $A$.\nRõ ràng không có phần tử nào thỏa mãn điều kiện này.\nDo đó $A\\setminus A=\\varnothing$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Tập hợp và các phần tử của tập hợp. Tập con"
+ },
+ {
+  "ma_cau": "T110010203125",
+  "loai": "trac_nghiem",
+  "de": "Cho $A=\\left(-2;1\\right)$, $B=\\left[-3;5\\right]$. Khi đó $A\\cap B$ là tập hợp nào sau đây?",
+  "lua_chon": [
+   "$\\left(-2;1\\right)$.",
+   "$\\left[-2;5\\right]$.",
+   "$\\left[-2;1\\right]$.",
+   "$(-2;5]$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Phần để trắng trên trục thứ nhất là tập hợp $A=\\left(-2;1\\right)$, trên trục thứ hai là tập hợp $B=\\left[-3;5\\right]$.\nGiao của hai tập hợp $A$ và $B$ là phần cùng để trắng trên cả hai trục.\nDo $-3\\le -2<1\\le 5$ nên $A\\subset B$, suy ra $A\\cap B=\\left(-2;1\\right)$.\nVậy $A\\cap B=\\left(-2;1\\right)$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110010103055",
+  "loai": "trac_nghiem",
+  "de": "Mệnh đề phủ định của mệnh đề \" $2024$ là số nguyên tố''\\ là",
+  "lua_chon": [
+   "$2024$ không là số nguyên tố.",
+   "$2024$ không chia hết cho $9$.",
+   "$2024$ không chia hết cho $18$.",
+   "$2024$ không phải là hợp số."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Mệnh đề phủ định của mệnh đề $P$ là mệnh đề $\\hat{P}$, được phát biểu bằng cách thêm (hoặc bớt) từ \" không\"{} vào trước vị ngữ của $P$.\nVới $P :$ \" $2024$ là số nguyên tố\"{} thì $\\hat{P} :$ \" $2024$ không là số nguyên tố\".\nCác phương án còn lại nói về tính chia hết hoặc về hợp số nên không phải là phủ định của $P$.\nVậy chọn đáp án A.",
+  "nhan_cu": "Mệnh đề › Mệnh đề chứa ký hiệu với mọi, tồn tại. Phủ định của mệnh đề"
+ },
+ {
+  "ma_cau": "T110000000429",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=x^{3}-3x+2$. Giá trị của hàm số tại điểm có hoành độ $x=2$ là?",
+  "lua_chon": [
+   "$y\\left(2\\right)=0$.",
+   "$y\\left(2\\right)=2$.",
+   "$y\\left(2\\right)=4$.",
+   "$y\\left(2\\right)=-2$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Thay $x=2$ vào công thức hàm số $y=x^{3}-3x+2$, ta được\n$y\\left(2\\right)=2^{3}-3\\cdot 2+2=8-6+2=4.$\nVậy giá trị của hàm số tại điểm có hoành độ $x=2$ là $y\\left(2\\right)=4$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110020204067",
+  "loai": "trac_nghiem",
+  "de": "Lớp 10E6 dự định mua $x$ chậu cây trầu bà và $y$ chậu thường xuân để trang trí cửa sổ lớp học. Biết mỗi cây trầu bà có giá $70 000$ đồng, mỗi cây thường xuân có giá $150 000$ đồng và lớp chỉ có tối đa $2 000 000$ đồng để mua cây. Hệ bất phương trình mô tả các điều kiện ràng buộc đối với $x$ và $y$ là? (biết rằng $x,y\\in \\mathbb{N}$).",
+  "lua_chon": [
+   "$\\begin{cases} x\\ge 0 \\\\ y\\ge 0 \\\\ 7x+15y>200 \\end{cases}$.",
+   "$\\begin{cases} x\\ge 0 \\\\ y\\ge 0 \\\\ 7x+15y\\le 200 \\end{cases}$.",
+   "$\\begin{cases} x\\ge 0 \\\\ y\\ge 0 \\\\ 15x+7y>200 \\end{cases}$.",
+   "$\\begin{cases} x\\ge 0 \\\\ y\\ge 0 \\\\ 15x+7y<200 \\end{cases}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Vì $x$, $y$ là số chậu cây nên $x\\ge 0$ và $y\\ge 0$.\nSố tiền mua $x$ chậu trầu bà và $y$ chậu thường xuân là $70 000x+150 000y$ (đồng).\nSố tiền này không vượt quá $2 000 000$ đồng nên\n$70 000x+150 000y\\le 2 000 000.$\nChia hai vế cho $10 000$ ta được $7x+15y\\le 200$.\nVậy hệ bất phương trình mô tả các ràng buộc là $\\begin{cases} x\\ge 0 \\\\ y\\ge 0 \\\\ 7x+15y\\le 200 \\end{cases}$.",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm"
+ },
+ {
+  "ma_cau": "T110010206020",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hai tập hợp $A=\\left[-4;1\\right]$, $B=(-3;m]$. Biết $B\\ne \\varnothing$, có bao nhiêu giá trị nguyên của tham số $m$để $A\\cup B=A$.",
+  "dap_an": "4",
+  "loi_giai": "Để tập $B=(-3;m]$ khác rỗng thì $m>-3$.\nYêu cầu bài toán $A\\cup B=A\\Leftrightarrow B\\subset A$.\nĐiều này xảy ra khi và chỉ khi $(-3;m]\\subset \\left[-4;1\\right]$, tức là:\n$\\begin{cases} -4\\le -3 \\\\ m\\le 1 \\end{cases}\\Leftrightarrow m\\le 1.$\nKết hợp với điều kiện $m>-3$, ta được $-3<m\\le 1$.\nVì $m\\in \\mathbb{Z}$ nên $m\\in \\{-2;-1;0;1\\}$.\nVậy có $4$ giá trị nguyên của tham số $m$ thoả mãn.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Bài toán tập hợp chứa tham số m"
+ },
+ {
+  "ma_cau": "T110010101020",
+  "loai": "trac_nghiem",
+  "de": "Trong các câu sau câu nào là mệnh đề chứa biến?",
+  "lua_chon": [
+   "10 là số chẵn.",
+   "7 là số nguyên tố.",
+   "$(x^2 - 4x) \\vdots 2$ , $x \\in \\mathbb{N}$.",
+   "Hình chữ nhật có hai đường chéo bằng nhau."
+  ],
+  "dap_an": "C",
+  "nhan_cu": "Mệnh đề › Nhận diện, xét tính đúng sai của mệnh đề. Mệnh đề chứa biến"
+ },
+ {
+  "ma_cau": "T110010203173",
+  "loai": "trac_nghiem",
+  "de": "Tập hợp $\\left(-2;3\\right)\\setminus \\left[1;5\\right]$ là tập hợp nào sau đây?",
+  "lua_chon": [
+   "$\\left(-2;1\\right)$.",
+   "$(-2;1]$.",
+   "$\\left[1;3\\right]$.",
+   "$(-2;5]$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Biểu diễn hai tập hợp $A=\\left(-2;3\\right)$ và $B=\\left[1;5\\right]$ trên trục số (phần không bị gạch trên mỗi trục lần lượt là tập hợp $A$ và $B$).\nHiệu của hai tập hợp $A\\setminus B$ là tập hợp các phần tử thuộc $A$ nhưng không thuộc $B$, tức là phần để trắng ở trục $A$ nhưng bị gạch ở trục $B$.\nDựa vào trục số, ta có\n$\\left(-2;3\\right)\\setminus \\left[1;5\\right]=\\left(-2;1\\right).$\nVậy ta chọn phương án A.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110010101082",
+  "loai": "trac_nghiem",
+  "de": "Mệnh đề nào là mệnh đề chứa biến?",
+  "lua_chon": [
+   "$\\pi ^{2}\\approx 10$.",
+   "$2<\\pi$.",
+   "$x+2y=5$.",
+   "$180^\\circ=\\pi$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Mệnh đề chứa biến là một khẳng định chứa biến, tính đúng sai của nó phụ thuộc vào giá trị của các biến.\nXét các phương án:\n• $\\pi ^{2}\\approx 10$, $2<\\pi$, $180^\\circ=\\pi$ là các mệnh đề thông thường (không chứa biến).\n• $x+2y=5$ là khẳng định chứa hai biến $x$ và $y$, tính đúng sai phụ thuộc vào giá trị của $x$ và $y$ nên là mệnh đề chứa biến.\nVậy khẳng định $x+2y=5$ là mệnh đề chứa biến.",
+  "nhan_cu": "Mệnh đề › Nhận diện, xét tính đúng sai của mệnh đề. Mệnh đề chứa biến"
+ },
+ {
+  "ma_cau": "T110010203082",
+  "loai": "trac_nghiem",
+  "de": "Cho tập hợp $C=\\{x\\in \\mathbb{R}|2<x\\le 7\\}$. Khi đó:",
+  "lua_chon": [
+   "$C=\\left[2;7\\right]$.",
+   "$C=[2;7)$.",
+   "$C=\\left(2;7\\right)$.",
+   "$C=(2;7]$."
+  ],
+  "loi_giai": "Tập hợp $C=\\{x\\in \\mathbb{R}|2<x\\le 7\\}$ được viết dưới dạng kí hiệu khoảng, đoạn, nửa khoảng là $(2;7]$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110020102118",
+  "loai": "trac_nghiem",
+  "de": "Phần mặt phẳng không bị gạch ở hình vẽ bên (kể cả biên) biểu diễn miền nghiệm của bất phương trình nào sau đây?",
+  "lua_chon": [
+   "$3x+2y-6\\le 0$.",
+   "$3x+2y-6\\ge 0$.",
+   "$2x+3y-6\\le 0$.",
+   "$2x+3y-6\\ge 0$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Đường thẳng biên $d$ đi qua hai điểm $\\left(2;0\\right)$ và $\\left(0;3\\right)$ có phương trình đoạn chắn là\n$\\dfrac{x}{2}+\\dfrac{y}{3}=1\\Leftrightarrow 3x+2y-6=0.$\nĐường thẳng $d$ là nét liền nên miền nghiệm có lấy cả bờ $d$.\nXét gốc tọa độ $O\\left(0;0\\right)$ thuộc phần mặt phẳng không bị gạch. Thay tọa độ điểm $O\\left(0;0\\right)$ vào biểu thức $3x+2y-6$, ta được\n$3\\cdot 0+2\\cdot 0-6=-6\\le 0$\n(thỏa mãn)\n$.$\nDo đó phần mặt phẳng không bị gạch (kể cả biên) biểu diễn miền nghiệm của bất phương trình $3x+2y-6\\le 0$.\nVậy bất phương trình cần tìm là $3x+2y-6\\le 0$.",
+  "co_hinh": true,
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110010203056",
+  "loai": "tu_luan",
+  "de": "Cho hai tập hợp con của tập số thực $\\mathbb{R}$ sau:\n$A = \\{ x \\in \\mathbb{R} | 1 < x \\le 5 \\}$ và $B = \\{ x \\in \\mathbb{R} | -1 \\le x \\le 3 \\}$.\nXác định $A \\cup B$ và biểu diễn kết quả trên trục số.",
+  "dap_an": "$[-1; 5]$",
+  "loi_giai": "Ta có: $A = (1; 5]$ và $B = [-1; 3]$.\nHợp của hai tập hợp $A$ và $B$ là tập gồm các phần tử thuộc $A$ hoặc thuộc $B$.\nDo đó: $A \\cup B = [-1; 5]$.\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/9ab0cdb7-c9b6-43b4-b72b-252b4bd5ece9.png)",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110010202096",
+  "loai": "trac_nghiem",
+  "de": "Cho hai tập hợp $A=\\{-1;2;3;5;7\\}$, $B=\\{1;2;3;4;5\\}$. Khi đó, tập hợp $A\\cap B$ là:",
+  "lua_chon": [
+   "$\\left\\{-1;2;3;4;5;7\\right\\}$.",
+   "$\\left\\{2;3;5\\right\\}$.",
+   "$\\left\\{7\\right\\}$.",
+   "$\\left\\{-1\\right\\}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Tập hợp $A\\cap B$ gồm các phần tử vừa thuộc $A$ vừa thuộc $B$.\nTa có $A=\\{-1;2;3;5;7\\}$ và $B=\\{1;2;3;4;5\\}$.\nSuy ra $A\\cap B=\\{2;3;5\\}$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Các phép toán trên tập hợp"
+ },
+ {
+  "ma_cau": "T110010101095",
+  "loai": "trac_nghiem",
+  "de": "Trong các câu sau câu nào là mệnh đề?",
+  "lua_chon": [
+   "Hãy đi nhanh lên!",
+   "Hà nội là thủ đô của Việt Nam.",
+   "Nam ăn cơm chưa?",
+   "Buồn ngủ quá!"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Mệnh đề là một câu khẳng định đúng hoặc một câu khẳng định sai.\nCác câu \" Hãy đi nhanh lên!\", \" Nam ăn cơm chưa?\"\\ và \" Buồn ngủ quá!\"\\ lần lượt là câu cầu khiến, câu nghi vấn và câu cảm thán nên không phải là mệnh đề.\nCâu \" Hà nội là thủ đô của Việt Nam\"\\ là một câu khẳng định đúng nên là một mệnh đề.",
+  "nhan_cu": "Mệnh đề › Nhận diện, xét tính đúng sai của mệnh đề. Mệnh đề chứa biến"
+ },
+ {
+  "ma_cau": "T110010204072",
+  "loai": "tra_loi_ngan",
+  "de": "Lớp 10A có $45$ học sinh, trong đó có $18$ học sinh tham gia cuộc thi vẽ đồ họa trên máy tính, $24$ học sinh tham gia cuộc thi tin học văn phòng cấp trường và $9$ học sinh không tham gia cả hai cuộc thi này. Hỏi có bao nhiêu học sinh của lớp 10A tham gia đồng thời cả hai cuộc thi?",
+  "dap_an": "6",
+  "loi_giai": "Gọi $A$ là tập hợp học sinh tham gia cuộc thi vẽ đồ hoạ trên máy tính, $B$ là tập hợp học sinh tham gia cuộc thi tin học văn phòng cấp trường.\nTheo đề bài, ta có $|A|=18$ và $|B|=24$.\nSố học sinh tham gia ít nhất một trong hai cuộc thi là\n$|A\\cup B|=45-9=36.$\nÁp dụng công thức bao hàm và loại trừ cho hai tập hợp:\n$|A\\cup B|=|A|+|B|-|A\\cap B|.$\nSuy ra số học sinh tham gia đồng thời cả hai cuộc thi là\n$|A\\cap B|=|A|+|B|-|A\\cup B|=18+24-36=6.$\nVậy có $6$ học sinh của lớp 10A tham gia đồng thời cả hai cuộc thi.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Bài toán thực tế tập hợp (2 Yếu tố)"
+ },
+ {
+  "ma_cau": "T110010203134",
+  "loai": "trac_nghiem",
+  "de": "Cho $A=\\left(-2;1\\right)$, $B=\\left[-3;0\\right]$. Hợp của hai tập hợp $A$ và $B$ là:",
+  "lua_chon": [
+   "$\\left[-3;1\\right]$.",
+   "$\\left(-2;1\\right)$.",
+   "$[-3;1)$.",
+   "$\\left[-2;0\\right]$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Hợp của hai tập hợp $A$ và $B$ là tập hợp gồm các phần tử thuộc $A$ hoặc thuộc $B$.\nDựa vào trục số biểu diễn hai tập hợp $A=\\left(-2;1\\right)$ và $B=\\left[-3;0\\right]$, ta lấy tất cả các điểm thuộc ít nhất một trong hai tập hợp.\nDo đó $A\\cup B=[-3;1)$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110000000279",
+  "loai": "tu_luan",
+  "de": "a) Cho hai tập hợp $A=\\{1;2;3;7\\}$, $B=\\{2;4;6;7;8\\}$. Xác định các tập hợp $A\\cup B$, $A\\setminus B$?\nb) Cho hai tập hợp $A=(-\\infty;3]$, $B=(1;5]$. Xác định tập hợp $A\\cap B$ và biểu diễn chúng trên trục số?",
+  "loi_giai": "a) Ta có:\n$A\\cup B=\\{1;2;3;4;6;7;8\\}$.\n$A\\setminus B=\\{1;3\\}$.\nb) Ta có $A\\cap B=(-\\infty;3]\\cap (1;5]=(1;3]$.\nBiểu diễn tập hợp $A\\cap B$ trên trục số:\nPhần không bị gạch trên trục số biểu diễn tập hợp $A\\cap B=(1;3]$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110010203048",
+  "loai": "tu_luan",
+  "de": "Cho hai tập hợp con của tập số thực $R$ sau: $A = \\{x \\in R|x \\le 2\\}$ và $B = \\{x \\in R|-3 \\le x < 5\\}$. Xác định $A \\cap B$ và biểu diễn kết quả trên trục số.",
+  "dap_an": "$[-3;2]$",
+  "loi_giai": "Ta có: $A = (-\\infty;2]$ và $B = [-3;5)$.\nGiao của hai tập hợp $A$ và $B$ là tập gồm các phần tử vừa thuộc $A$ vừa thuộc $B$.\nDo đó: $A \\cap B = [-3;2]$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110000000380",
+  "loai": "trac_nghiem",
+  "de": "Cho tập hợp $A=\\{1;2;3;4\\}$, $B=\\{0;2;4;6\\}$. Mệnh đề nào sau đây là đúng?",
+  "lua_chon": [
+   "$A\\setminus B=\\{0;6\\}$.",
+   "$A\\cup B=\\{0;1;2;3;4;5;6\\}$.",
+   "$A\\cap B=\\{2;4\\}$.",
+   "$A\\subset B$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Cho hai tập hợp $A=\\{1;2;3;4\\}$ và $B=\\{0;2;4;6\\}$.\nXét các phép toán trên tập hợp:\n• Giao của hai tập hợp: $A\\cap B=\\{2;4\\}$.\n• Hợp của hai tập hợp: $A\\cup B=\\{0;1;2;3;4;6\\}$.\n• Hiệu của hai tập hợp: $A\\setminus B=\\{1;3\\}$ và $B\\setminus A=\\{0;6\\}$.\n• Tập con: $A⊈B$ vì $1\\in A$ nhưng $1\\notin B$.\nVậy mệnh đề đúng là $A\\cap B=\\{2;4\\}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110010103007",
+  "loai": "trac_nghiem",
+  "de": "Mệnh đề “Có ít nhất một số thực bình phương bằng chính nó” được viết dưới dạng ký hiệu là",
+  "lua_chon": [
+   "$\\exists x \\in \\mathbb{R}, x^2 \\ne x$",
+   "$\\forall x \\in \\mathbb{R}, x^2 \\ne x$",
+   "$\\forall x \\in \\mathbb{R}, x^2 = x$",
+   "$\\exists x \\in \\mathbb{R}, x^2 = x$"
+  ],
+  "dap_an": "D",
+  "nhan_cu": "Mệnh đề › Mệnh đề chứa ký hiệu với mọi, tồn tại. Phủ định của mệnh đề"
+ },
+ {
+  "ma_cau": "T110010203094",
+  "loai": "trac_nghiem",
+  "de": "Cho tập hợp $A=\\{x\\in \\mathbb{R}|2\\le x<5\\}$. Xác định phần bù của tập hợp $A$ trong $\\mathbb{R}$.",
+  "lua_chon": [
+   "$[5;+\\infty)$.",
+   "$(-\\infty;2]\\cup \\left(5;+\\infty \\right)$.",
+   "$\\left(-\\infty;2\\right)$.",
+   "$\\left(-\\infty;2\\right)\\cup [5;+\\infty)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta có $A=[2;5)$.\nBiểu diễn tập hợp $A$ trên trục số, phần không bị gạch là tập hợp $A$, phần bị gạch biểu diễn phần bù của $A$ trong $\\mathbb{R}$.\nDo đó, phần bù của tập hợp $A$ trong $\\mathbb{R}$ là\n$C_{\\mathbb{R}}A=\\mathbb{R}\\setminus A=\\left(-\\infty;2\\right)\\cup [5;+\\infty).$",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110010102013",
+  "loai": "trac_nghiem",
+  "de": "Mệnh đề đảo của mệnh đề $P \\Rightarrow Q$ là mệnh đề nào?",
+  "lua_chon": [
+   "$P \\Rightarrow Q$.",
+   "$P \\Leftarrow Q$.",
+   "$Q \\Leftrightarrow P$.",
+   "$Q \\Rightarrow P$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Mệnh đề đảo của mệnh đề $P \\Rightarrow Q$ là mệnh đề $Q \\Rightarrow P$.",
+  "nhan_cu": "Mệnh đề › Mệnh đề kéo theo, mệnh đề đảo, mệnh đề tương đương"
+ },
+ {
+  "ma_cau": "T110010204093",
+  "loai": "trac_nghiem",
+  "de": "Khi thống kê điểm cuối năm của học sinh, lớp 10A có $25$ em giỏi môn Toán, $21$ em giỏi môn Văn, $7$ em giỏi cả môn Toán và môn Văn và có $4$ em không giỏi môn nào trong hai môn Toán, Văn. Hỏi lớp 10A có bao nhiêu học sinh?",
+  "lua_chon": [
+   "$39$.",
+   "$35$.",
+   "$43$.",
+   "$46$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Gọi $T$ là tập hợp các học sinh giỏi môn Toán và $V$ là tập hợp các học sinh giỏi môn Văn của lớp 10A.\nTheo giả thiết của bài toán, ta có:\n$|T|=25,|V|=21,|T\\cap V|=7.$\nSố học sinh giỏi ít nhất một trong hai môn Toán hoặc Văn là:\n$|T\\cup V|=|T|+|V|-|T\\cap V|=25+21-7=39.$\nVì lớp 10A còn có $4$ học sinh không giỏi môn nào trong hai môn Toán và Văn nên tổng số học sinh của lớp 10A là:\n$39+4=43 \\left(\\text{hoc sinh}\\right).$\nVậy lớp 10A có tất cả $43$ học sinh.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Bài toán thực tế tập hợp (2 Yếu tố)"
+ },
+ {
+  "ma_cau": "T110010205037",
+  "loai": "tra_loi_ngan",
+  "de": "Lớp $10A$ có $45$ học sinh trong đó có $25$ em học giỏi môn Toán, $23$ em học giỏi môn Lý, $20$ em học giỏi môn Hóa, $11$ em học giỏi cả môn Toán và môn Lý, $8$ em học giỏi cả môn Lý và môn Hóa, $9$ em học giỏi cả môn Toán và môn Hóa. Hỏi lớp $10A$ có bao nhiêu bạn học giỏi cả ba môn Toán, Lý, Hóa? (biết rằng mỗi học sinh trong lớp học giỏi ít nhất một trong ba môn Toán, Lý, Hóa).",
+  "dap_an": "5",
+  "loi_giai": "Gọi $T$, $L$, $H$ lần lượt là tập hợp các học sinh giỏi môn Toán, Lý, Hóa.\nTheo giả thiết ta có $n\\left(T\\right)=25$, $n\\left(L\\right)=23$, $n\\left(H\\right)=20$, $n\\left(T\\capL\\right)=11$, $n\\left(L\\capH\\right)=8$, $n\\left(T\\capH\\right)=9$.\nVì mỗi học sinh trong lớp đều giỏi ít nhất một trong ba môn nên $n\\left(T\\cupL\\cupH\\right)=45$.\nÁp dụng công thức bao hàm - loại trừ cho ba tập hợp:\n$n\\left(T\\cupL\\cupH\\right)=n\\left(T\\right)+n\\left(L\\right)+n\\left(H\\right)-n\\left(T\\capL\\right)-n\\left(L\\capH\\right)-n\\left(T\\capH\\right)+n\\left(T\\capL\\capH\\right).$\nThay số ta được\n$45=25+23+20-11-8-9+n\\left(T\\capL\\capH\\right)=40+n\\left(T\\capL\\capH\\right).$\nSuy ra $n\\left(T\\capL\\capH\\right)=5$.\nVậy có $5$ họ …",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Bài toán thực tế tập hợp (3 yếu tố)"
+ },
+ {
+  "ma_cau": "T110010102078",
+  "loai": "trac_nghiem",
+  "de": "Trong các mệnh đề sau, mệnh đề nào có mệnh đề đảo sai?",
+  "lua_chon": [
+   "Nếu tam giác $ABC$ cân thì tam giác đó có hai cạnh bằng nhau.",
+   "Nếu tứ giác $ABCD$ là hình bình hành thì $AB$ song song với $CD$.",
+   "Số tự nhiên $a$ chia hết cho $6$ thì $a$ chia hết cho $2$ và $3$.",
+   "Nếu tam giác $ABC$ vuông tại $A$ thì $AB^{2}+AC^{2}=BC^{2}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Xét mệnh đề đảo của từng phương án:\n• Phương án A: Mệnh đề đảo là \" Nếu tam giác $ABC$ có hai cạnh bằng nhau thì tam giác đó cân\"\\ $\\to$ Mệnh đề đúng (theo định nghĩa tam giác cân).\n• Phương án B: Mệnh đề đảo là \" Nếu tứ giác $ABCD$ có $AB$ song song với $CD$ thì tứ giác $ABCD$ là hình bình hành\"\\ $\\to$ Mệnh đề sai, vì tứ giác có $\\text{AB\\parallel CD}$ có thể là hình thang mà không phải là hình bình hành (ví dụ: hình thang có hai đáy $AB$ và $CD$ không bằng nhau).\n• Phương án C: Mệnh đề đảo là \" Số tự nhiên $a$ chia hết cho $2$ và $3$ thì $a$ chia hết cho $6$\"\\ $\\to$ Mệnh đề đúng vì ƯCLN$\\left(2,3\\right)=1$.\n• Phương án D: Mệnh đề đảo là \" Nếu tam giác $ABC$ có $AB^{2}+AC^{2}=BC^{2}$ thì ta …",
+  "nhan_cu": "Mệnh đề › Mệnh đề kéo theo, mệnh đề đảo, mệnh đề tương đương"
+ },
+ {
+  "ma_cau": "T110010203139",
+  "loai": "trac_nghiem",
+  "de": "Cho hai tập hợp $A=(-\\infty;-1]$; $B=(-4;11]$. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$A\\cap B=(-4;11]$.",
+   "$B\\setminus A=(-1;11]$.",
+   "$A\\setminus B=\\left(-\\infty;-4\\right)$.",
+   "$A\\cup B=\\left(-\\infty;11\\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "$B\\setminus A$ gồm các phần tử thuộc $B$ nhưng không thuộc $A$, tức là $x\\in (-4;11]$ và $x>-1$.\nDo đó $B\\setminus A=(-1;11]$.\nKiểm tra các phương án còn lại:\n• $A\\cap B=(-4;-1]$.\n• $A\\setminus B=(-\\infty;-4]$.\n• $A\\cup B=(-\\infty;11]$.\nVậy khẳng định đúng là $B\\setminus A=(-1;11]$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110010102070",
+  "loai": "trac_nghiem",
+  "de": "Mệnh đề đảo của mệnh đề $P\\Rightarrow Q$ là mệnh đề nào?",
+  "lua_chon": [
+   "$\\hat{Q}\\Rightarrow P$.",
+   "$\\hat{Q}\\Rightarrow \\hat{P}$.",
+   "$Q\\Rightarrow \\hat{P}$.",
+   "$Q\\Rightarrow P$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Theo định nghĩa, mệnh đề đảo của mệnh đề kéo theo $P\\Rightarrow Q$ là mệnh đề $Q\\Rightarrow P$.\nVậy mệnh đề đảo là $Q\\Rightarrow P$.",
+  "nhan_cu": "Mệnh đề › Mệnh đề kéo theo, mệnh đề đảo, mệnh đề tương đương"
+ },
+ {
+  "ma_cau": "T110010202026",
+  "loai": "trac_nghiem",
+  "de": "Cho tập hợp $X = \\{a; b; c\\}$ và $Y = \\{c; d; e; f\\}$. $X \\cup Y$ là tập hợp nào sau đây?",
+  "lua_chon": [
+   "$\\left\\{a; b; c; d; e; f; g\\right\\}$",
+   "$\\left\\{a; b; c; d; e; f\\right\\}$",
+   "$\\left\\{a; b; c; d; e; f; k\\right\\}$",
+   "$\\left\\{a; b; d; e; f\\right\\}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có: $X \\cup Y = \\{a; b; c; d; e; f\\}$.\n$\\Rightarrow$ Chọn B.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Các phép toán trên tập hợp"
+ },
+ {
+  "ma_cau": "T110010206031",
+  "loai": "trac_nghiem",
+  "de": "Cho hai tập hợp $A=\\{x\\in \\mathbb{R}|x\\left(x-2\\right)\\left(x-m\\right)=0\\}$ và $B=\\{x\\in \\mathbb{R}|\\left(x-2\\right)\\left(x-m^{2}\\right)=0\\}$. Có bao nhiêu giá trị của tham số $m$ để $B\\subset A$?",
+  "lua_chon": [
+   "$2$.",
+   "$3$.",
+   "$4$.",
+   "$5$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có:\n$x\\left(x-2\\right)\\left(x-m\\right)=0\\Leftrightarrow \\left[\\begin{array}{l} x=0 \\\\ x=2 \\\\ x=m \\end{array}\\right.\\Rightarrow A=\\{0;2;m\\}$.\n$\\left(x-2\\right)\\left(x-m^{2}\\right)=0\\Leftrightarrow \\left[\\begin{array}{l} x=2 \\\\ x=m^{2} \\end{array}\\right.\\Rightarrow B=\\{2;m^{2}\\}$.\nĐể $B\\subset A$ thì $m^{2}\\in A$, tức là $m^{2}\\in \\{0;2;m\\}$. Ta xét các trường hợp:\nTH 1: $m^{2}=0\\Leftrightarrow m=0$. Khi đó $A=\\{0;2\\}$, $B=\\{0;2\\}\\Rightarrow B\\subset A$ (thỏa mãn).\nTH 2: $m^{2}=2\\Leftrightarrow m=\\pm \\sqrt{2}$.\n+ Với $m = \\sqrt{2}$, ta có $A=\\{0;2;\\sqrt{2}\\}$ và $B=\\{2\\}\\subset A$ (thỏa mãn).\n+ Với $m=-\\sqrt{2}$, ta có $A=\\{0;2;-\\sqrt{2}\\}$ và $B=\\{2\\}\\subset A$ (thỏa mãn).\nTH 3: $m^{2}=m\\L …",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Bài toán tập hợp chứa tham số m"
+ }
+]

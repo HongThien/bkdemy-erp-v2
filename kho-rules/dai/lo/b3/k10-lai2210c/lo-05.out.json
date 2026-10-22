@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T110010203161",
+  "dang_bai_id": "NDB00519",
+  "chac": "cao",
+  "ly_do": "Giao hai tập số rồi đếm số nguyên."
+ },
+ {
+  "ma_cau": "T110000000242",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: diện tích phần hình tròn và tam giác đều (có hình)."
+ },
+ {
+  "ma_cau": "T110020102129",
+  "dang_bai_id": "NDB00884",
+  "chac": "vua",
+  "ly_do": "Miền nghiệm từ hình, phải lập đường thẳng từ điểm trên hình; đề phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T110010204080",
+  "dang_bai_id": "NDB00528",
+  "chac": "vua",
+  "ly_do": "Hỏi chỉ đúng một câu lạc bộ, nhưng dữ kiện qua số không tham gia (có thể dạng 529)."
+ },
+ {
+  "ma_cau": "T110000000063",
+  "dang_bai_id": "NDB00828",
+  "chac": "cao",
+  "ly_do": "Chọn ký hiệu đúng cho mệnh đề đơn giản, không chứa với mọi/tồn tại."
+ },
+ {
+  "ma_cau": "T110010101105",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Nhận diện câu là mệnh đề."
+ },
+ {
+  "ma_cau": "T110010103058",
+  "dang_bai_id": "NDB00826",
+  "chac": "cao",
+  "ly_do": "Phủ định mệnh đề chứa với mọi."
+ },
+ {
+  "ma_cau": "T110010202113",
+  "dang_bai_id": "NDB00520",
+  "chac": "cao",
+  "ly_do": "Hợp hai tập hữu hạn, đếm số phần tử."
+ },
+ {
+  "ma_cau": "T110010203051",
+  "dang_bai_id": "NDB00519",
+  "chac": "cao",
+  "ly_do": "Giao hai tập cho bằng tính chất đặc trưng và biểu diễn trục số."
+ },
+ {
+  "ma_cau": "T110010205033",
+  "dang_bai_id": "NDB00533",
+  "chac": "cao",
+  "ly_do": "Ba tập, biết n(hợp) và các giao đôi, tìm n(giao ba)."
+ },
+ {
+  "ma_cau": "T110000000067",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc HGT: vectơ bằng nhau."
+ },
+ {
+  "ma_cau": "T110010201055",
+  "dang_bai_id": "NDB00829",
+  "chac": "cao",
+  "ly_do": "Quan hệ tập con giữa các tập hữu hạn."
+ },
+ {
+  "ma_cau": "T110010101133",
+  "dang_bai_id": "NDB00825",
+  "chac": "cao",
+  "ly_do": "Phát biểu bằng lời mệnh đề chứa tồn tại."
+ },
+ {
+  "ma_cau": "T110010101121",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Xét tính đúng sai mệnh đề chứa biến tại giá trị cụ thể."
+ },
+ {
+  "ma_cau": "T110010206034",
+  "dang_bai_id": "NDB00535",
+  "chac": "cao",
+  "ly_do": "Tìm m để A là tập con của B."
+ },
+ {
+  "ma_cau": "T110010102064",
+  "dang_bai_id": "NDB00820",
+  "chac": "cao",
+  "ly_do": "Xét mệnh đề đảo nào đúng."
+ },
+ {
+  "ma_cau": "T110000000095",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "không có dạng: đọc bảng biến thiên hàm số (thuộc chủ đề hàm số, có hình)."
+ },
+ {
+  "ma_cau": "T110010202025",
+  "dang_bai_id": "NDB00520",
+  "chac": "cao",
+  "ly_do": "Hợp hai tập hữu hạn."
+ },
+ {
+  "ma_cau": "T110010203095",
+  "dang_bai_id": "NDB01399",
+  "chac": "cao",
+  "ly_do": "Viết lại tập số thực từ tính chất đặc trưng sang khoảng/đoạn."
+ },
+ {
+  "ma_cau": "T110010206040",
+  "dang_bai_id": "NDB00537",
+  "chac": "cao",
+  "ly_do": "Tìm m để A giao B khác rỗng."
+ },
+ {
+  "ma_cau": "T110010203111",
+  "dang_bai_id": "NDB00520",
+  "chac": "vua",
+  "ly_do": "Trộn bất phương trình trị tuyệt đối, giao, hợp; chọn dạng hợp (sau cùng)."
+ },
+ {
+  "ma_cau": "T110010101084",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Nhận diện câu là mệnh đề."
+ },
+ {
+  "ma_cau": "T110010102075",
+  "dang_bai_id": "NDB00819",
+  "chac": "cao",
+  "ly_do": "Cách phát biểu mệnh đề kéo theo."
+ },
+ {
+  "ma_cau": "T110010101080",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Nhận diện mệnh đề toán học."
+ },
+ {
+  "ma_cau": "T110010203145",
+  "dang_bai_id": "NDB01399",
+  "chac": "cao",
+  "ly_do": "Viết lại tập số thực từ tính chất đặc trưng sang nửa khoảng."
+ },
+ {
+  "ma_cau": "T110000000147",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: bài toán thực tế hàm số nhiều khoảng (giá cước taxi), thuộc chủ đề hàm số."
+ },
+ {
+  "ma_cau": "T110010201043",
+  "dang_bai_id": "NDB00829",
+  "chac": "cao",
+  "ly_do": "Chọn tập con của tập A."
+ },
+ {
+  "ma_cau": "T110000000357",
+  "dang_bai_id": "NDB00828",
+  "chac": "cao",
+  "ly_do": "Xác định tập hợp cho bằng phương trình trên Z."
+ },
+ {
+  "ma_cau": "T110000000313",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: vẽ đồ thị parabol, thuộc chủ đề hàm số bậc hai."
+ },
+ {
+  "ma_cau": "T110010201081",
+  "dang_bai_id": "NDB00828",
+  "chac": "cao",
+  "ly_do": "Đếm số phần tử của tập liệt kê."
+ },
+ {
+  "ma_cau": "T110020202063",
+  "dang_bai_id": "NDB00886",
+  "chac": "vua",
+  "ly_do": "Hệ bất phương trình từ hình, phải lập các đường biên; đề phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T110010203052",
+  "dang_bai_id": "NDB00519",
+  "chac": "cao",
+  "ly_do": "Giao hai tập cho bằng tính chất đặc trưng và biểu diễn trục số."
+ },
+ {
+  "ma_cau": "T110000000426",
+  "dang_bai_id": "NDB00828",
+  "chac": "cao",
+  "ly_do": "Liệt kê phần tử của tập hợp."
+ },
+ {
+  "ma_cau": "T110010203156",
+  "dang_bai_id": "NDB00519",
+  "chac": "cao",
+  "ly_do": "Giao hai khoảng."
+ },
+ {
+  "ma_cau": "T110010203136",
+  "dang_bai_id": "NDB00521",
+  "chac": "vua",
+  "ly_do": "Trộn giao, hợp, hiệu; chọn dạng hiệu (sau cùng trong các phép dùng)."
+ },
+ {
+  "ma_cau": "T110010103083",
+  "dang_bai_id": "NDB00826",
+  "chac": "cao",
+  "ly_do": "Phủ định mệnh đề chứa với mọi."
+ },
+ {
+  "ma_cau": "T110010202123",
+  "dang_bai_id": "NDB00519",
+  "chac": "cao",
+  "ly_do": "Giao hai tập hữu hạn."
+ },
+ {
+  "ma_cau": "T110010101114",
+  "dang_bai_id": "NDB01378",
+  "chac": "vua",
+  "ly_do": "Tìm tham số để mệnh đề chứa biến đúng tại x=1; không có ký hiệu với mọi/tồn tại."
+ },
+ {
+  "ma_cau": "T110020202057",
+  "dang_bai_id": "NDB00886",
+  "chac": "vua",
+  "ly_do": "Hệ bất phương trình từ hình, phải lập các đường biên; đề phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T110000000393",
+  "dang_bai_id": "NDB00772",
+  "chac": "vua",
+  "ly_do": "Hai ý trộn: cosin/diện tích và chứng minh tam giác cân bằng hệ thức sin."
+ },
+ {
+  "ma_cau": "T110010203135",
+  "dang_bai_id": "NDB00519",
+  "chac": "cao",
+  "ly_do": "Giao hai tập số."
+ },
+ {
+  "ma_cau": "T110010101122",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Nhận diện câu là mệnh đề."
+ },
+ {
+  "ma_cau": "T110010103025",
+  "dang_bai_id": "NDB00825",
+  "chac": "cao",
+  "ly_do": "Phát biểu bằng lời mệnh đề chứa với mọi."
+ },
+ {
+  "ma_cau": "T110010101115",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Nhận diện câu không phải mệnh đề."
+ },
+ {
+  "ma_cau": "T110010206038",
+  "dang_bai_id": "NDB00537",
+  "chac": "cao",
+  "ly_do": "Tìm m để A giao B khác rỗng."
+ },
+ {
+  "ma_cau": "T110010103066",
+  "dang_bai_id": "NDB00826",
+  "chac": "cao",
+  "ly_do": "Phủ định mệnh đề chứa tồn tại."
+ },
+ {
+  "ma_cau": "T110010203142",
+  "dang_bai_id": "NDB01399",
+  "chac": "cao",
+  "ly_do": "Viết lại tập số thực từ tính chất đặc trưng sang nửa khoảng."
+ },
+ {
+  "ma_cau": "T110010202030",
+  "dang_bai_id": "NDB00520",
+  "chac": "cao",
+  "ly_do": "Hợp hai tập hữu hạn."
+ },
+ {
+  "ma_cau": "T110010102045",
+  "dang_bai_id": "NDB00819",
+  "chac": "cao",
+  "ly_do": "Điều kiện cần/đủ của mệnh đề kéo theo."
+ },
+ {
+  "ma_cau": "T110010203124",
+  "dang_bai_id": "NDB00521",
+  "chac": "cao",
+  "ly_do": "Hợp, giao, hiệu hai tập; dạng hiệu là sau cùng."
+ },
+ {
+  "ma_cau": "T110000000068",
+  "dang_bai_id": "NDB00828",
+  "chac": "cao",
+  "ly_do": "Chọn ký hiệu đúng cho mệnh đề đơn giản, không chứa với mọi/tồn tại."
+ },
+ {
+  "ma_cau": "T110010101127",
+  "dang_bai_id": "NDB00825",
+  "chac": "vua",
+  "ly_do": "Xét đúng sai các mệnh đề chứa tồn tại (cũng gần dạng 818)."
+ },
+ {
+  "ma_cau": "T110010101125",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Đếm phát biểu là mệnh đề."
+ },
+ {
+  "ma_cau": "T110000000239",
+  "dang_bai_id": "NDB00828",
+  "chac": "cao",
+  "ly_do": "Xác định tập hợp cho bằng phương trình trên N."
+ },
+ {
+  "ma_cau": "T110020102069",
+  "dang_bai_id": "NDB00884",
+  "chac": "vua",
+  "ly_do": "Miền nghiệm từ hình, phải lập đường thẳng; đề phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T110010103086",
+  "dang_bai_id": "NDB00826",
+  "chac": "cao",
+  "ly_do": "Phủ định mệnh đề chứa tồn tại."
+ },
+ {
+  "ma_cau": "T110010206026",
+  "dang_bai_id": "NDB00535",
+  "chac": "cao",
+  "ly_do": "Tìm m để A là tập con của B."
+ },
+ {
+  "ma_cau": "T110000000306",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tìm tập xác định hàm số, thuộc chủ đề hàm số."
+ },
+ {
+  "ma_cau": "T110010201063",
+  "dang_bai_id": "NDB00828",
+  "chac": "cao",
+  "ly_do": "Liệt kê phần tử của tập cho bằng biểu thức."
+ },
+ {
+  "ma_cau": "T110010101110",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Nhận diện câu là mệnh đề."
+ },
+ {
+  "ma_cau": "T110020102056",
+  "dang_bai_id": "NDB00884",
+  "chac": "vua",
+  "ly_do": "Miền nghiệm từ hình, phải lập đường thẳng từ hình; đề phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T110010202098",
+  "dang_bai_id": "NDB00519",
+  "chac": "cao",
+  "ly_do": "Giao hai tập hữu hạn."
+ },
+ {
+  "ma_cau": "T110010202102",
+  "dang_bai_id": "NDB00519",
+  "chac": "cao",
+  "ly_do": "Giao hai tập hữu hạn có phần tử chữ."
+ },
+ {
+  "ma_cau": "T110010201088",
+  "dang_bai_id": "NDB00829",
+  "chac": "cao",
+  "ly_do": "Đếm số tập con có đúng 2 phần tử."
+ },
+ {
+  "ma_cau": "T110010203098",
+  "dang_bai_id": "NDB00520",
+  "chac": "cao",
+  "ly_do": "Hợp hai đoạn/khoảng rồi đếm số nguyên âm."
+ },
+ {
+  "ma_cau": "T110010102027",
+  "dang_bai_id": "NDB00819",
+  "chac": "cao",
+  "ly_do": "Điều kiện cần/đủ của mệnh đề kéo theo."
+ },
+ {
+  "ma_cau": "T110010103019",
+  "dang_bai_id": "NDB00826",
+  "chac": "cao",
+  "ly_do": "Phủ định mệnh đề chứa với mọi."
+ },
+ {
+  "ma_cau": "T110010101132",
+  "dang_bai_id": "NDB00825",
+  "chac": "vua",
+  "ly_do": "Xét đúng sai các mệnh đề chứa với mọi/tồn tại (cũng gần dạng 818)."
+ },
+ {
+  "ma_cau": "T110010103073",
+  "dang_bai_id": "NDB01379",
+  "chac": "cao",
+  "ly_do": "Phủ định mệnh đề đơn giản không chứa với mọi/tồn tại."
+ },
+ {
+  "ma_cau": "T110010202101",
+  "dang_bai_id": "NDB00522",
+  "chac": "cao",
+  "ly_do": "Phần bù C_B A của tập con."
+ }
+]

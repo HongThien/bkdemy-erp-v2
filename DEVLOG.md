@@ -77333,3 +77333,8 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 
 ### [22/10] Bản đồ K12 Hàm số v3.2 — bỏ HẾT hàm trùng phương (Thùy: "Bỏ hết trùng phương")
 - Bỏ dạng H2.1.2 (cực trị hàm trùng phương/bậc bốn) khỏi P1.3; quét `ra/J*.txt` + `N*.txt` thay 7 ví dụ dùng hàm trùng phương (H1.2.2, H2.2.2, H2.3.3, H3.1.1, H3.2.1, H7.3.2) bằng hàm khác + sửa lý thuyết nhóm H2.4/H2.5 và dạng H3.2.1; `kiem.mjs` lỗi 0. Cây **4 CĐ · 27 nhóm · 99 dạng**, 209 ví dụ. Brief: `kho-rules/dai/lo/k12-hs/brief-bo-trung-phuong.md`.
+
+## 22/10 (tối) — K10 Mệnh đề–Tập hợp: 3 dạng mới (NDB01378/01379/01399) — phân lại + LT/VD
+- Làm: B3 lô `k10-lai2210c` (hàng duyệt + câu AI-gán liên quan, bảng đích 71 dạng): 512 câu ⇒ cao 368 · vừa 109 · trống 35; mẫu 90: cao 86 đúng 85 (98,8%; câu sai là nhãn người NDB00563↔00890 đã biết mơ hồ). Ghi: gan_cau +26 (5 câu AI đổi dạng), de_xuat 82, thieu_dang 35.
+- Điền LT + ví dụ cho 3 dạng mới (`htl/lt-vd-dang-moi-2210c.mjs`); NDB01378 chỉ có 1 câu ⇒ ví dụ 2 soạn mới.
+- Còn mở: map thiếu dạng (tập xác định/giá trị hàm số, lập BPT từ bài toán thực tế, tìm m về số phần tử hợp/giao hai tập).
