@@ -27,21 +27,30 @@ for (const [pre, b] of Object.entries(BANG)) {
   for (const r of (await c.query(`select ma_cau, loai_cau, noi_dung, lua_chon, menh_de, dap_an, da_duyet from ${b} where ma_cau = any($1) and xoa_at is null`, [ma])).rows) nd.set(r.ma_cau, r)
 }
 
+// khớp theo NỘI DUNG trên TOÀN kho (câu đã có từ đề khác / bộ khác — cùng chữ + cùng thứ tự phương án ⇒ cùng đáp án). Chỉ dùng khi câu không nằm trong đề đang xét.
+const glob = new Map()
+for (const b of Object.values(BANG)) for (const r of (await c.query(`select ma_cau, loai_cau, noi_dung, lua_chon, menh_de, dap_an, da_duyet from ${b} where xoa_at is null`)).rows) { const k = keyDb(r); if (!glob.has(k)) glob.set(k, []); glob.get(k).push(r) }
+
 const cn = []   // [{ma_cau, bang, dap_an, lydo}]
 const doc = []  // liệt kê, không ghi
 const dem = { tn_dien: 0, tn_ghi_de: 0, tn_dung: 0, tln_dien: 0, tln_ghi_de: 0, tln_dung: 0, ds_lech: 0, khong_khop: 0, de_khong_co_db: 0 }
 const daGhi = new Set()
 for (const k of ['10', '11', '12']) {
   const dir = NZ + 'out' + k + '/de/'
+  if (!fs.existsSync(dir)) continue
   for (const f of fs.readdirSync(dir)) {
     const de = JSON.parse(fs.readFileSync(dir + f, 'utf8'))
-    const row = byTen.get(chTen(de.ten)) ?? byTen.get(chTen(de.file))
+    // tên trong bản tải 22/10 bị cắt phần tỉnh ("… - Hà", "… - Quảng") ⇒ không khớp nguyên văn thì khớp TIỀN TỐ, chỉ nhận khi duy nhất
+    const tienTo = (t) => { const p = chTen(t); const ds = [...new Set([...byTen.entries()].filter(([k]) => k.startsWith(p)).map(([, v]) => v))]; return ds.length === 1 ? ds[0] : null }
+    const row = byTen.get(chTen(de.ten)) ?? byTen.get(chTen(de.file)) ?? tienTo(de.ten)
     if (!row) { dem.de_khong_co_db++; continue }
     const kdb = new Map()
     for (const m of cauCua.get(row.id) ?? []) { const r = nd.get(m); if (r) { const key = keyDb(r); if (!kdb.has(key)) kdb.set(key, r) } }
     for (const q of de.cau) {
-      const r = kdb.get(keyNew(q))
-      if (!r) { dem.khong_khop++; continue }
+      const kq = keyNew(q)
+      const rs = kdb.has(kq) ? [kdb.get(kq)] : (glob.get(kq) ?? [])
+      if (!rs.length) { dem.khong_khop++; continue }
+      for (const r of rs) {
       if (daGhi.has(r.ma_cau)) continue
       let moi = null, loai = null
       if (q.loai_cau === 'trac_nghiem' && q.dap_an_gach) { moi = q.dap_an_gach; loai = 'tn' }
@@ -61,6 +70,7 @@ for (const k of ['10', '11', '12']) {
       const doMay = (loai === 'tn' ? cu === may : (isFinite(+cu) && isFinite(+may) ? Math.abs(+cu - +may) < 1e-9 : cu === may)) && q.dap_an_tin === 'may'
       if (doMay && !r.da_duyet) { cn.push({ ma_cau: r.ma_cau, bang, dap_an: moi, lydo: 'ghi_de', cu }); dem[loai + '_ghi_de']++; daGhi.add(r.ma_cau) }
       else doc.push({ ma_cau: r.ma_cau, loai, db: r.dap_an, moi, may: q.dap_an, tin: q.dap_an_tin, da_duyet: r.da_duyet, de: de.file.slice(0, 60) })
+      }
     }
   }
 }
