@@ -268,12 +268,12 @@ Tính đại lượng đề hỏi (đếm, hiệu, tổng, tích).
 
 @vi_du:
 ##VD
-Cho hàm số $y=f(x)$ có đồ thị như hình vẽ. Hàm số có bao nhiêu điểm cực trị? Tìm giá trị cực đại và các điểm cực tiểu của đồ thị.
-[[HINH {"loai":"dothi","x":[-4,4],"y":[-5,3],"f":[{"e":"x^4/4-2*x^2","ten":"y=f(x)"}]}]]
+Cho hàm số $y=f(x)$ có đồ thị như hình vẽ. Hàm số có bao nhiêu điểm cực trị? Tìm giá trị cực đại và điểm cực tiểu của đồ thị.
+[[HINH {"loai":"dothi","x":[-3,3],"y":[-4,4],"f":[{"e":"-x^3+3*x","ten":"y=f(x)"}]}]]
 
 Bài giải:
-Đồ thị có một đỉnh tại $O(0;0)$ và hai đáy tại các điểm có hoành độ $x=-2$ và $x=2$, cùng tung độ $y=-4$.
-Vậy hàm số có $3$ điểm cực trị, giá trị cực đại $y_{\text{CĐ}}=0$ và hai điểm cực tiểu của đồ thị là $(-2;-4)$, $(2;-4)$.
+Đồ thị có một đỉnh tại điểm có hoành độ $x=1$ (tung độ $2$) và một đáy tại điểm có hoành độ $x=-1$ (tung độ $-2$).
+Vậy hàm số có $2$ điểm cực trị, giá trị cực đại $y_{\text{CĐ}}=2$ và điểm cực tiểu của đồ thị là $(-1;-2)$.
 
 ##VD
 Cho hàm số $y=f(x)$ có đồ thị như hình vẽ. Tìm hiệu $y_{\text{CĐ}}-y_{\text{CT}}$ và tìm điểm cực tiểu của hàm số.
@@ -417,14 +417,13 @@ Vậy hàm số $g(x)$ có $1$ điểm cực trị (cực tiểu).
 Cho hàm số $y=f(x)$ có đạo hàm trên $\mathbb{R}$, đồ thị của hàm số $y=f'(x)$ như hình vẽ. Tìm số điểm cực trị của mỗi hàm số:
 a) $g(x)=f(x)+x$
 b) $h(x)=f(x)-x$
-[[HINH {"loai":"dothi","x":[-2,2],"y":[-2,3],"f":[{"e":"x^4-2*x^2","ten":"y=f'(x)"}]}]]
+[[HINH {"loai":"dothi","x":[-1,3.4],"y":[-5,5],"f":[{"e":"x^3-3*x^2","ten":"y=f'(x)"}]}]]
 
 Bài giải:
-Đồ thị $y=f'(x)$ có hai đáy tại $(-1;-1)$ và $(1;-1)$, một đỉnh tại $O(0;0)$; hai nhánh ngoài đi lên mãi.
-a) $g'(x)=f'(x)+1=0\Leftrightarrow f'(x)=-1$. Đường thẳng $y=-1$ chạm đồ thị đúng tại hai đáy $(-1;-1)$ và $(1;-1)$ (tiếp xúc), không cắt thêm nên $g'\ge0$ và không đổi dấu: $g$ không có cực trị.
-b) $h'(x)=f'(x)-1=0\Leftrightarrow f'(x)=1$. Đường thẳng $y=1$ nằm cao hơn đỉnh $O(0;0)$ nên chỉ cắt hai nhánh ngoài của đồ thị $y=f'(x)$, tại hai điểm ở hai phía của trục $Oy$; tại cả hai điểm $h'$ đổi dấu.
-Hai điểm đó có $h'>0$ ở ngoài và $h'<0$ ở giữa: cực đại ở điểm bên trái, cực tiểu ở điểm bên phải.
-Vậy hàm số $g(x)$ không có điểm cực trị nào, hàm số $h(x)$ có $2$ điểm cực trị.
+Đồ thị $y=f'(x)$ có một đỉnh tại $O(0;0)$ và một đáy tại $(2;-4)$; nhánh bên trái đi xuống mãi, nhánh bên phải đi lên mãi.
+a) $g'(x)=f'(x)+1=0\Leftrightarrow f'(x)=-1$. Đường thẳng $y=-1$ nằm giữa đáy ($y=-4$) và đỉnh ($y=0$) nên cắt đồ thị $y=f'(x)$ tại ba điểm phân biệt, và $g'$ đổi dấu tại cả ba điểm (từ trái sang phải: $-$, $+$, $-$, $+$).
+b) $h'(x)=f'(x)-1=0\Leftrightarrow f'(x)=1$. Đường thẳng $y=1$ nằm cao hơn đỉnh $O(0;0)$ nên chỉ cắt nhánh bên phải của đồ thị $y=f'(x)$ tại một điểm; tại đó $h'$ đổi dấu từ $-$ sang $+$.
+Vậy hàm số $g(x)$ có $3$ điểm cực trị (hai cực tiểu, một cực đại), hàm số $h(x)$ có $1$ điểm cực trị (cực tiểu).
 
 ## GHI CHÚ CHO CEO
 - H2.3.2: dạng ghi cột hình "bbt" nhưng đầu vào của dạng là biểu thức $f'$; bảng xét dấu là KẾT QUẢ của lời giải. Đặt bảng vào đề sẽ lộ đáp án, mà luật hình chỉ cho hình nằm trong đề, nên cả hai ví dụ để không hình, bảng xét dấu nói bằng chữ (máy kiểm cảnh báo 1 dòng, chủ ý). CEO chọn: đổi cột hình của H2.3.2 thành "khong", hoặc cho phép bảng xét dấu trong lời giải.

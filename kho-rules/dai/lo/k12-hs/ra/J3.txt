@@ -2,7 +2,6 @@
 @ly_thuyet:
 ##TC Điều kiện có cực trị theo từng loại hàm
 - Hàm bậc ba $y=ax^3+bx^2+cx+d$ ($a\ne0$): $y'=3ax^2+2bx+c$; có hai cực trị ⇔ $y'=0$ có hai nghiệm phân biệt ⇔ $\Delta'=b^2-3ac>0$; không có cực trị ⇔ $\Delta'\le0$.
-- Hàm trùng phương $y=ax^4+bx^2+c$ ($a\ne0$): $y'=2x(2ax^2+b)$; có ba cực trị ⇔ $ab<0$; chỉ có một cực trị (tại $x=0$) ⇔ $ab\ge0$.
 - Hàm phân thức $y=\dfrac{u}{v}$ (tử bậc hai, mẫu bậc nhất): $y'=\dfrac{g(x)}{v^2}$ với $g$ bậc hai; có cực đại và cực tiểu ⇔ $g(x)=0$ có hai nghiệm phân biệt và đều khác nghiệm của mẫu.
 
 ##TC Định lí Viète cho hai điểm cực trị
@@ -277,7 +276,7 @@ Giải theo $m$, đối chiếu điều kiện có hai cực trị và loại tr
 
 ##CY
 - Mọi kết luận về $AB$ chỉ có nghĩa khi hàm số có hai cực trị: phải đặt điều kiện trước.
-- Hàm trùng phương có ba cực trị không thẳng hàng nên không có "đường thẳng qua các điểm cực trị"; lấy phần dư của phép chia $y$ cho $y'$ dùng cho hàm bậc ba, còn hàm phân thức bậc hai trên bậc nhất dùng $y=\dfrac{u'}{v'}$.
+- Đường thẳng qua hai điểm cực trị: hàm bậc ba lấy phần dư của phép chia $y$ cho $y'$, còn hàm phân thức bậc hai trên bậc nhất dùng $y=\dfrac{u'}{v'}$; không dùng lẫn hai cách.
 
 === H2.5.1
 @ly_thuyet:

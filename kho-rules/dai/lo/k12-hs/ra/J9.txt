@@ -408,14 +408,14 @@ Lấy căn bậc hai để ra khoảng cách; nếu hỏi thời điểm thì n�
 
 @vi_du:
 ##VD
-Tìm khoảng cách ngắn nhất từ điểm $A(0;3)$ đến một điểm $M$ nằm trên parabol $y=x^2$.
+Tìm khoảng cách ngắn nhất từ điểm $A(3;0)$ đến một điểm $M$ nằm trên đồ thị hàm số $y=\sqrt{x}$.
 
 Bài giải:
-Điểm $M(x;x^2)$ nên $d^2=AM^2=x^2+(x^2-3)^2=x^4-5x^2+9$ với $x\in\mathbb{R}$.
-Đặt $g(x)=x^4-5x^2+9$ thì $g'(x)=4x^3-10x=2x(2x^2-5)$.
-$g'(x)=0\Leftrightarrow x=0$ hoặc $x=\pm\sqrt{\dfrac52}$.
-$g(0)=9$ và $g\left(\pm\sqrt{\dfrac52}\right)=\dfrac{25}{4}-\dfrac{25}{2}+9=\dfrac{11}{4}$; $g(x)\to+\infty$ khi $x\to\pm\infty$ nên giá trị nhỏ nhất của $g$ là $\dfrac{11}{4}$.
-Vậy $d_{\min}=\sqrt{\dfrac{11}{4}}=\dfrac{\sqrt{11}}{2}$, đạt khi $M\left(\pm\sqrt{\dfrac52};\dfrac52\right)$.
+Điểm $M(x;\sqrt{x})$ với $x\ge0$ nên $d^2=AM^2=(x-3)^2+(\sqrt{x})^2=x^2-5x+9$.
+Đặt $g(x)=x^2-5x+9$ với $x\in[0;+\infty)$ thì $g'(x)=2x-5$.
+$g'(x)=0\Leftrightarrow x=\dfrac52$; $g'<0$ trên $\left[0;\dfrac52\right)$ và $g'>0$ trên $\left(\dfrac52;+\infty\right)$ nên $g$ nhỏ nhất tại $x=\dfrac52$.
+$g\left(\dfrac52\right)=\dfrac{25}{4}-\dfrac{25}{2}+9=\dfrac{11}{4}$.
+Vậy $d_{\min}=\sqrt{\dfrac{11}{4}}=\dfrac{\sqrt{11}}{2}$, đạt khi $M\left(\dfrac52;\sqrt{\dfrac52}\right)$.
 
 ##VD
 Hai con đường thẳng vuông góc cắt nhau tại $O$. Lúc $t=0$, xe thứ nhất ở cách $O$ là $20$ km trên đường thứ nhất, chạy về phía $O$ với vận tốc $10$ km/h; xe thứ hai xuất phát từ $O$ trên đường thứ hai, chạy ra xa với vận tốc $5$ km/h. Hai xe cứ chạy mãi theo hướng đó. Sau bao lâu hai xe gần nhau nhất và khoảng cách khi đó là bao nhiêu?

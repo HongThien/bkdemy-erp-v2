@@ -195,14 +195,15 @@ Với $x<0$ đồ thị đi lên; với $0<x<2$ đồ thị đi xuống; với $
 Vậy hàm số đồng biến trên $(-\infty;0)$ và $(2;+\infty)$, nghịch biến trên $(0;2)$.
 
 ##VD
-Cho hàm số $y=f(x)$ có đồ thị như hình vẽ. Tìm các khoảng đồng biến của hàm số và cho biết hàm số có đồng biến trên $(-1;1)$ hay không.
-[[HINH {"loai":"dothi","x":[-2,2],"y":[-3,2],"f":[{"e":"2*x^2-x^4","ten":"y=f(x)"}]}]]
+Cho hàm số $y=f(x)$ có đồ thị như hình vẽ. Tìm các khoảng đồng biến, nghịch biến của hàm số và cho biết hàm số có nghịch biến trên $(0;2)$ hay không.
+[[HINH {"loai":"dothi","x":[-3,5],"y":[-6,6],"f":[{"e":"(x^2-2*x+2)/(x-1)","ten":"y=f(x)"}],"duong":[{"dung":1,"ten":"x=1"}]}]]
 
 Bài giải:
-Đồ thị có hai đỉnh tại các điểm có hoành độ $x=-1$ và $x=1$ (cùng tung độ $1$) và một đáy tại điểm có hoành độ $x=0$ (tung độ $0$).
-Đồ thị đi lên trên $(-\infty;-1)$ và $(0;1)$; đi xuống trên $(-1;0)$ và $(1;+\infty)$.
-Hàm số không đồng biến trên $(-1;1)$ vì trên $(-1;0)$ đồ thị đi xuống.
-Vậy hàm số đồng biến trên $(-\infty;-1)$ và $(0;1)$; hàm số không đồng biến trên $(-1;1)$.
+Đồ thị có tiệm cận đứng $x=1$ nên hàm số không xác định tại $x=1$ và đồ thị gồm hai nhánh ở hai bên đường đó.
+Nhánh bên trái có đỉnh tại điểm có hoành độ $x=0$ (tung độ $-2$); nhánh bên phải có đáy tại điểm có hoành độ $x=2$ (tung độ $2$).
+Đồ thị đi lên trên $(-\infty;0)$ và $(2;+\infty)$; đi xuống trên $(0;1)$ và $(1;2)$.
+Khoảng $(0;2)$ chứa điểm $x=1$ không thuộc tập xác định nên hàm số không nghịch biến trên $(0;2)$.
+Vậy hàm số đồng biến trên $(-\infty;0)$ và $(2;+\infty)$, nghịch biến trên $(0;1)$ và $(1;2)$; hàm số không nghịch biến trên $(0;2)$.
 
 === N H1.3
 @ly_thuyet:
