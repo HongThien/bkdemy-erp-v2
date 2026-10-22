@@ -5,7 +5,7 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
 import { getTaiLieuFull, kieuCols, type TaiLieuFull } from '../../lib/tailieu'
-import { deThiMeta as getMeta, coDongKeDeThi, dongMacDinhDeThi, nhomBaiCuaDe, boLoiDan, type NhomBai } from '../../lib/dethi'
+import { deThiMeta as getMeta, coDongKeDeThi, dongMacDinhDeThi, gopBaiTheoDe } from '../../lib/dethi'
 import type { CheDoHinh } from '../../lib/kho/hinhGiaoTrinh'
 import { CauFlow, cauItemParts, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename } from './PrintView'
 import { AnhMmCtx } from './anhMmCtx'
@@ -166,23 +166,8 @@ function DeThiDocInner({ full, gv, onlyPhanId }: { full: TaiLieuFull; gv: boolea
   let no = 0
   const next = () => ++no
   // Nhóm BÀI: các câu kho đã tách ý (Bài 2a–2d) IN LẠI thành MỘT bài có đủ ý — đề giữ cấu trúc gốc (CEO 13/10); kho vẫn là câu riêng.
-  const nhomOf = new Map<string, { g: NhomBai; k: number }>()
-  for (const g of nhomBaiCuaDe(full.taiLieu as any)) g.cau.forEach((x, k) => nhomOf.set(x.ma_cau, { g, k }))
-  const gopBai = (caus: any[]): { c: any; lines: number }[] => {
-    const ra: { c: any; lines: number }[] = []
-    for (const c of caus) {
-      const r = nhomOf.get(c.ma_cau)
-      const dong = (x: any) => (!gv && coDongKeDeThi(x.loai_cau) ? (lines[x.ma_cau] ?? dongMacDinhDeThi(x.loai_cau)) : 0)
-      if (!r) { ra.push({ c, lines: dong(c) }); continue }
-      if (r.k > 0) continue // các ý sau đã gộp vào ý đầu
-      const mem = r.g.cau.map((x) => caus.find((cc) => cc.ma_cau === x.ma_cau))
-      if (mem.some((m) => !m)) { ra.push({ c, lines: dong(c) }); continue } // thiếu ý trong phần ⇒ để nguyên từng câu
-      const noiDung = [r.g.dan, ...mem.map((m, i) => `${r.g.cau[i].y}) ${boLoiDan(m.noi_dung, r.g.dan)}`)].filter((x) => x !== '').join('\n')
-      const loiGiai = mem.map((m, i) => (m.loi_giai ? `**${r.g.cau[i].y})**\n${m.loi_giai}` : '')).filter(Boolean).join('\n\n')
-      ra.push({ c: { ...mem[0], noi_dung: noiDung, loi_giai: loiGiai || null, loai_cau: 'tu_luan', dap_an: null, lua_chon: null, menh_de: null }, lines: mem.reduce((t: number, m: any) => t + dong(m), 0) })
-    }
-    return ra
-  }
+  const dong = (x: any) => (!gv && coDongKeDeThi(x.loai_cau) ? (lines[x.ma_cau] ?? dongMacDinhDeThi(x.loai_cau)) : 0)
+  const gopBai = (caus: any[]) => gopBaiTheoDe(full.taiLieu as any, caus, dong)
   return (
     <div className="pv-dethi" style={{ '--pv-accent': ch.mau || '#2D9CDB' } as CSSProperties}>
       <div className="pv-bt-head">

@@ -77348,3 +77348,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - Làm: B3 lô `k10-lai2210d` (hàng duyệt + câu AI-gán ở 16 dạng của chủ đề NCD00088): 367 câu ⇒ cao 292 · vừa 41 · trống 34; mẫu 90: cao 88 đúng 87 (98,9%; câu sai T110020202041 AI 886 / người 544 — ranh giới cùng hệ số khác chiều). Ghi: gán +47 (2 câu AI đổi sang 886), đề xuất 35, thiếu dạng 34. Luật mới của Thùy đã thêm vào `b3/brief.md`.
 - NDB01400: điền LT + 3 ví dụ từ câu đã xếp (`htl/lt-vd-ndb01400.mjs`).
 - Còn mở: thiếu dạng "lập (hệ) bất phương trình từ bài thực tế", "đếm điểm nguyên thuộc miền nghiệm", "tham số để miền nghiệm có diện tích cho trước".
+
+### 22/10 — [Đề thi → BTVN] Gán đề làm BTVN giữ đúng format + thứ tự đề, bản in không hiện dạng — Thùy
+- **Thùy:** "gán đề thi làm BTVN — builder không chia dạng bài tập mà để đúng format và thứ tự của đề thi luôn; không cần hiển thị dạng ở bản in" ⇒ THAY quyết định 16/10 (mig 202610162203 tách BTVN theo dạng).
+- **Mig 202610221741** (đã áp): `fn_de_thi_gan` nhánh 'btvn' giữ CẤU TRÚC PHẦN đề như nhánh giáo trình — mỗi phần đề = 1 phần 'btvn' (ref_ma NULL, tieu_de = tên phần đề), câu đúng thứ tự đề; câu đã xoá khỏi kho vẫn bỏ. Thử ROLLBACK (đề cương Thành Công K7, 8 phần): 93/93 câu đúng thứ tự đề; nhánh giáo trình vẫn 8 phần 'dang'.
+- **In:** `gopBaiTheoDe` (lib/dethi — gộp bài nhiều ý như đề gốc) dùng chung cho DeThiPrintView + BtvnSheet. BTVN có cau_hinh.deThi (gán từ đề) ⇒ phiếu in theo KHUÔN ĐỀ: đầu phần = tên phần đề (không mã/tên dạng), số câu liên tục ("Bài" nếu đề cương), dòng kẻ theo luật đề. Kiểm app thật BTVN 8B1 (gán cũ, theo dạng): 0 mã dạng, 0 thẻ dạng, Câu 1–27 liên tục.
+- **Còn:** 18 BTVN gán từ đề trước hôm nay (từ 19/10) vẫn chia phần theo dạng ⇒ thứ tự câu theo dạng, chưa theo đề. Xếp lại = xoá + tạo lại dòng tai_lieu_phan/tai_lieu_cau (chỉ tai_lieu_cau trỏ phần) — chờ Thùy gật.

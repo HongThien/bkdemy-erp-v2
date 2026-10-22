@@ -14,6 +14,7 @@ import { uploadKhoFile } from '../../lib/kho/api'
 import type { CauHoi } from '../../lib/kho/api'
 import { AnhMmCtx } from './anhMmCtx'
 import { noiDung as noiDungBdm, nguonCau, type NoiDung } from '../../lib/tailieuBdm'
+import { coDongKeDeThi, dongMacDinhDeThi, gopBaiTheoDe } from '../../lib/dethi'
 
 // Bộ đếm render TOÀN CỤC → mỗi lần dựng trang có 1 class scope riêng (`pv-scope-N`) gắn lên container.
 // CSS chrome (::before/::after) prefix bằng class này ⇒ stylesheet paged.js chèn vào <head> chỉ khớp ĐÚNG
@@ -473,6 +474,8 @@ function DocInnerCu({ full, gv, scope, lt = true, onlyBuoiId, perHS = false, ros
   const ngayPhat = ngayRaw ? ngayRaw.split('-').reverse().join('/') : ''
   let buois = buildBuois(phans)
   if (onlyBuoiId) buois = buois.filter((b) => b.id === onlyBuoiId)
+  // BTVN gán từ đề thi (fn_de_thi_gan chép cau_hinh.deThi) ⇒ phiếu in theo khuôn đề, không chia dạng (Thùy 22/10)
+  const deBtvn = taiLieu.loai === 'btvn' && (ch as { deThi?: unknown }).deThi ? { cau_hinh: ch } : undefined
   // ⭐ 07-24 (Thùy chốt): BỎ đánh số dạng chạy 1,2,3… toàn giáo trình — số đó nhảy mỗi lần thêm/bớt/đổi
   // thứ tự dạng nên "Dạng 5" của bản in hôm nay ≠ hôm qua ≠ trong builder → đối chiếu là loạn. Tiêu đề
   // dạng giờ mang MÃ DẠNG của bản đồ kiến thức (bất biến, trỏ thẳng về đúng KP) — xem DangBlock/BtvnSheet.
@@ -497,7 +500,7 @@ function DocInnerCu({ full, gv, scope, lt = true, onlyBuoiId, perHS = false, ros
           const btvnBuois = buois.filter((b) => b.btvns.some((x) => x.caus.length) || b.ontaps.some((x) => x.caus.length))
           const sheet = (b: Buoi, hoTen: string | undefined, key: string) => (
             <BtvnSheet key={key} btvns={b.btvns} ontaps={b.ontaps} gv={gv} docTitle={taiLieu.ten} buoiTitle={b.title} linesByCau={linesByCau} colByCau={colByCau}
-              hinhCheDoByCau={hinhCheDoByCau} hoTen={hoTen} ngayPhat={ngayPhat} ngayNop={ngayNop} lopTen={lopTen} />
+              hinhCheDoByCau={hinhCheDoByCau} hoTen={hoTen} ngayPhat={ngayPhat} ngayNop={ngayNop} lopTen={lopTen} deThi={deBtvn} />
           )
           // In cả lớp: mỗi HS có mặt 1 phiếu (tên in sẵn). Bọc mỗi HS trong .pv-hs-recto → break-before:right
           // ép HS bắt đầu ở mặt TRƯỚC (trang lẻ) → in 2 mặt mỗi HS luôn CHẴN trang, thiếu thì paged.js tự
@@ -790,12 +793,35 @@ function DangBlock({ p, gv, lt = true, colByCau, hinhCheDoByCau }: { p: PhanReso
 
 // BTVN của 1 BUỔI = phiếu RIÊNG (sang trang mới), nhóm theo DẠNG (mirror trên lớp). HS viết thẳng vào dòng kẻ.
 // Đầu phiếu: tiêu đề = tên tài liệu · trái = Họ tên + Lớp · phải = ô Điểm. Bản GV = đáp án (bỏ ô điền, hiện lời giải).
-function BtvnSheet({ btvns, ontaps = [], gv, docTitle, buoiTitle, linesByCau, colByCau, hinhCheDoByCau, hoTen, ngayPhat = '', ngayNop = '', lopTen = '' }: {
+function BtvnSheet({ btvns, ontaps = [], gv, docTitle, buoiTitle, linesByCau, colByCau, hinhCheDoByCau, hoTen, ngayPhat = '', ngayNop = '', lopTen = '', deThi }: {
   btvns: PhanResolved[]; ontaps?: PhanResolved[]; gv: boolean; docTitle: string; buoiTitle: string; linesByCau: Record<string, number>; colByCau: Record<string, number>
   hinhCheDoByCau?: Record<string, CheDoHinh>
   hoTen?: string; ngayPhat?: string; ngayNop?: string; lopTen?: string
+  deThi?: { cau_hinh: CauHinh | null }   // BTVN gán từ ĐỀ THI (cau_hinh chép kèm deThi) ⇒ in theo khuôn đề
 }) {
   // LUÔN đầu phiếu BK (Thùy: bỏ HẲN header/footer cũ, không tái dùng). Tiêu đề = tên buổi (hoặc tên doc).
+  // ⭐ Thùy 22/10: BTVN gán từ đề thi giữ ĐÚNG format + thứ tự đề — đầu mỗi phần = tên phần đề (không mã/tên dạng), số câu
+  // liên tục, bài nhiều ý gộp như đề gốc ("Bài" nếu đề cương), dòng kẻ theo luật đề. BTVN cũ đã tách theo dạng (trước 22/10)
+  // cũng in theo khuôn này ⇒ không hiện dạng (phần dạng không có tên phần ⇒ không đầu mục).
+  if (deThi) {
+    const deCuong = ((deThi.cau_hinh as { deThi?: { kieu?: string } } | null)?.deThi)?.kieu === 'de_cuong'
+    const dong = (c: CauHoi) => (gv ? 0 : linesByCau[c.ma_cau] ?? (coDongKeDeThi(c.loai_cau) ? dongMacDinhDeThi(c.loai_cau) : 0))
+    let no = 0
+    return (
+      <section className="pv-sec pv-btvn">
+        <BtvnBkHead buoiTitle={buoiTitle || docTitle} ngayPhat={ngayPhat} ngayNop={ngayNop} lopTen={lopTen} hoTen={hoTen} gv={gv} />
+        {btvns.filter((b) => b.caus.length).map((b) => (
+          <section key={b.id} className="pv-sec pv-btvn-de">
+            {!b.ref_ma && b.tieu_de && b.tieu_de !== 'Chưa phân dạng' && <h2 className="pv-h-dang">{b.tieu_de}</h2>}
+            <CauFlow items={gopBaiTheoDe(deThi as Parameters<typeof gopBaiTheoDe>[0], b.caus, dong).map(({ c, lines }) => ({
+              key: c.ma_cau, cols: colByCau[c.ma_cau] ?? kieuCols(b.kieu),
+              ...cauItemParts({ no: ++no, c, gv, lines, cheDoHinh: hinhCheDoByCau?.[c.ma_cau], tienTo: deCuong ? 'Bài' : 'Câu' }),
+            }))} />
+          </section>
+        ))}
+      </section>
+    )
+  }
   return (
     <section className="pv-sec pv-btvn">
       <BtvnBkHead buoiTitle={buoiTitle || docTitle} ngayPhat={ngayPhat} ngayNop={ngayNop} lopTen={lopTen} hoTen={hoTen} gv={gv} />

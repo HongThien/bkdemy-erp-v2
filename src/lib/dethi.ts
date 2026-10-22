@@ -303,6 +303,26 @@ export function boLoiDan(noiDung: string | null | undefined, dan: string): strin
   const s = noiDung ?? ''
   return dan && s.startsWith(dan) ? s.slice(dan.length).trim() : s
 }
+/** In theo KHUÔN ĐỀ: gộp các câu kho của MỘT bài nhiều ý thành 1 bài có đủ ý (lời dẫn + a) b) c)…) — chỉ để HIỂN THỊ.
+ *  `dong(c)` = số dòng kẻ của 1 câu; bài gộp cộng dòng của các ý. Thiếu ý trong danh sách ⇒ để nguyên từng câu.
+ *  Dùng chung: bản in đề thi (DeThiPrintView) + BTVN gán từ đề (PrintView, Thùy 22/10). */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function gopBaiTheoDe(d: Pick<DeThi, 'cau_hinh'>, caus: any[], dong: (c: any) => number): { c: any; lines: number }[] {
+  const nhomOf = new Map<string, { g: NhomBai; k: number }>()
+  for (const g of nhomBaiCuaDe(d)) g.cau.forEach((x, k) => nhomOf.set(x.ma_cau, { g, k }))
+  const ra: { c: any; lines: number }[] = []
+  for (const c of caus) {
+    const r = nhomOf.get(c.ma_cau)
+    if (!r) { ra.push({ c, lines: dong(c) }); continue }
+    if (r.k > 0) continue // các ý sau đã gộp vào ý đầu
+    const mem = r.g.cau.map((x) => caus.find((cc) => cc.ma_cau === x.ma_cau))
+    if (mem.some((m) => !m)) { ra.push({ c, lines: dong(c) }); continue }
+    const noiDung = [r.g.dan, ...mem.map((m, i) => `${r.g.cau[i].y}) ${boLoiDan(m.noi_dung, r.g.dan)}`)].filter((x) => x !== '').join('\n')
+    const loiGiai = mem.map((m, i) => (m.loi_giai ? `**${r.g.cau[i].y})**\n${m.loi_giai}` : '')).filter(Boolean).join('\n\n')
+    ra.push({ c: { ...mem[0], noi_dung: noiDung, loi_giai: loiGiai || null, loai_cau: 'tu_luan', dap_an: null, lua_chon: null, menh_de: null }, lines: mem.reduce((t: number, m: any) => t + dong(m), 0) })
+  }
+  return ra
+}
 export type FormTLN = { id: string; ma_cau: string; lua_chon: { text: string; dung: boolean; rule?: string | null }[]; dap_an: string; da_duyet: boolean }
 export async function listFormTLN(mon: string, kho: Kho, maCaus: string[]): Promise<FormTLN[]> {
   if (!maCaus.length) return []
