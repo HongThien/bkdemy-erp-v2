@@ -17,6 +17,7 @@ import type { TrangThaiNX } from '../../lib/kho/nhanXet'
 const HANG: KhopHang[] = ['de_xuat', 'trong', 'thieu', 'mau']
 const TRANG = 20
 // Nhớ hàng đang mở khi chuyển tab/khối rồi quay lại (module-level, sống tới F5).
+const monCau = (c: KhopCau) => (c.nhanh === 'hgt' ? 'hgt' : 'toan') as 'hgt' | 'toan'   // nhận xét "Cần sửa" ghi vào đúng kho của câu
 const NHO: { hang: KhopHang } = { hang: 'de_xuat' }
 
 export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { khoi: string; chuDeId?: string | null; onXem?: (dangBaiId: string) => void; onChanged?: () => void }) {
@@ -33,7 +34,7 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
   const [locCD, setLocCD] = useState(true)   // chỉ câu thuộc CHỦ ĐỀ đang xem trên bản đồ (khi nhúng trong Bản đồ mới)
   const cd = chuDeId && locCD ? chuDeId : null
   const req = useRef(0)
-  const nhanXet = useNhanXet('cau', 'toan')   // "✎ Cần sửa" nội dung câu (đề/đáp án/lời giải): chờ Claude sửa thì tạm ẩn
+  const nhanXet = useNhanXet('cau')   // "✎ Cần sửa" nội dung câu (đề/đáp án/lời giải): chờ Claude sửa thì tạm ẩn
   const deSau = useDeSau('bdm_khop', 'toan')  // "⏭ Để sau" (Thùy 20/10): câu chưa muốn quyết dạng bài xuống cuối hàng
 
   const setHang = (h: KhopHang) => { NHO.hang = h; setHangRaw(h) }
@@ -129,9 +130,9 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
             </p>
           ) : (
             <ul className="space-y-3">
-              {rows.some((c) => nhanXet.dangChoSua('toan', c.ma_cau)) && <li className="list-none"><DongChoSua n={rows.filter((c) => nhanXet.dangChoSua('toan', c.ma_cau)).length} /></li>}
-              {deSau.xep(rows.filter((c) => !nhanXet.dangChoSua('toan', c.ma_cau)), (c) => ['toan', c.ma_cau]).map((c) => <CauCard key={c.ma_cau} c={c} hang={hang} dich={dich} onQuyet={quyet} onXem={onXem}
-                nx={nhanXet.cua('toan', c.ma_cau)} onCanSua={nhanXet.vaNX}
+              {rows.some((c) => nhanXet.dangChoSua(monCau(c), c.ma_cau)) && <li className="list-none"><DongChoSua n={rows.filter((c) => nhanXet.dangChoSua(monCau(c), c.ma_cau)).length} /></li>}
+              {deSau.xep(rows.filter((c) => !nhanXet.dangChoSua(monCau(c), c.ma_cau)), (c) => ['toan', c.ma_cau]).map((c) => <CauCard key={c.ma_cau} c={c} hang={hang} dich={dich} onQuyet={quyet} onXem={onXem}
+                nx={nhanXet.cua(monCau(c), c.ma_cau)} onCanSua={nhanXet.vaNX}
                 deSauAt={deSau.luc('toan', c.ma_cau)} onDeSau={() => deSauCau(c)} />)}
               {tong > rows.length && <li className="py-2 text-center text-[12px] text-slate-400">… còn {tong - rows.length} câu, xong câu trên sẽ tự nạp thêm</li>}
             </ul>
@@ -165,11 +166,12 @@ function CauCard({ c, hang, dich, onQuyet, onXem, nx, onCanSua, deSauAt, onDeSau
     <li className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
       <div className="mb-2 flex flex-wrap items-center gap-2 text-[12px] text-slate-500">
         <span className="font-mono text-slate-400">{c.ma_cau}</span>
+        {c.nhanh === 'hgt' && <span className="rounded bg-sky-50 px-2 py-0.5 text-sky-700" title="Câu của kho Hình giải tích">Giải tích</span>}
         {c.dang_cu && <span className="rounded bg-slate-100 px-2 py-0.5" title="Nhãn ở bản đồ cũ">Cũ: {c.dang_cu}{c.chuyen_de_cu ? ` · ${c.chuyen_de_cu}` : ''}</span>}
         <NhanDeSau at={deSauAt} />
         <span className="ml-auto flex items-center gap-1.5">
           <NutDeSau nho disabled={ban} onDeSau={onDeSau} />
-          <NutCanSua nho doiTuong="cau" mon="toan" ma={c.ma_cau} man="Bản đồ mới › Duyệt kho" khau="de" onXong={onCanSua} />
+          <NutCanSua nho doiTuong="cau" mon={monCau(c)} ma={c.ma_cau} man="Bản đồ mới › Duyệt kho" khau="de" onXong={onCanSua} />
         </span>
       </div>
       {nx && <div className="mb-2"><NhanXetCu t={nx} /></div>}

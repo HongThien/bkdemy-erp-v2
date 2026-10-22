@@ -77338,3 +77338,8 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - Làm: B3 lô `k10-lai2210c` (hàng duyệt + câu AI-gán liên quan, bảng đích 71 dạng): 512 câu ⇒ cao 368 · vừa 109 · trống 35; mẫu 90: cao 86 đúng 85 (98,8%; câu sai là nhãn người NDB00563↔00890 đã biết mơ hồ). Ghi: gan_cau +26 (5 câu AI đổi dạng), de_xuat 82, thieu_dang 35.
 - Điền LT + ví dụ cho 3 dạng mới (`htl/lt-vd-dang-moi-2210c.mjs`); NDB01378 chỉ có 1 câu ⇒ ví dụ 2 soạn mới.
 - Còn mở: map thiếu dạng (tập xác định/giá trị hàm số, lập BPT từ bài toán thực tế, tìm m về số phần tử hợp/giao hai tập).
+
+## 22/10 (tối) — Duyệt khớp (B4) mở cho kho Giải tích (hgt)
+- Làm: mig `202610221734_bdm_khop_them_hgt` — bảng `hgt_bdm_kiem_mau`/`hgt_bdm_tu_choi`; `_bdm_khop_nguon` thêm 4 nhánh hgt (Đ/S vẫn loại); `fn_bdm_khop_dem/hang` gộp hgt (+cột `nhanh`); `fn_bdm_khop_quyet` chuyển câu hgt sang `_bdm_khop_quyet_hgt` (dạng đích phải thuộc chủ đề hgt). UI: nhận xét "Cần sửa" ghi đúng môn (`hgt`), thẻ "Giải tích".
+- Kiểm: chạy mig trong transaction rollback với claims admin: K10 đề xuất 564 (hgt 480 ở Véc tơ), thiếu 228, mẫu 188; `gan` câu hgt → ghi gan_cau nguon=nguoi, xoá đề xuất. Áp thật bằng `--only`. Chưa mở trên app bằng phiên thật.
+- Sai: lỡ gõ `migrate.mjs --help` ⇒ nó thử áp file treo đầu (so_tay_revoke_anon) và FAIL, không áp gì (đúng bài học "migrate trần").

@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-434 bảng · 25 view · 0 enum · 218 trigger · 1215 function
+436 bảng · 25 view · 0 enum · 218 trigger · 1216 function
 
 ## _app_secrets
 
@@ -2312,6 +2312,29 @@ END |  |  |
 | ma_cau | text |  |  | PK FK→hgt_cau_hoi.ma_cau |  |
 | chu_de_id | text |  |  | FK→dai_bdm_chu_de.id |  |
 | nguon | text |  | 'ai'::text |  | `nguoi` · `ai` |
+| actor | uuid | Y | jwt_uid() |  |  |
+| at | timestamp with time zone |  | now() |  |  |
+
+## hgt_bdm_kiem_mau
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_cau | text |  |  | PK FK→hgt_cau_hoi.ma_cau |  |
+| dang_bai_ai_id | text |  |  | FK→dai_bdm_dang_bai.id |  |
+| ket_qua | text |  |  |  | `giu` · `doi` |
+| actor | uuid | Y | jwt_uid() |  |  |
+| at | timestamp with time zone |  | now() |  |  |
+
+## hgt_bdm_tu_choi
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | bigint |  |  | PK |  |
+| ma_cau | text |  |  | FK→hgt_cau_hoi.ma_cau |  |
+| dang_bai_ai_id | text | Y |  | FK→dai_bdm_dang_bai.id |  |
+| hang | text |  |  |  | `de_xuat` · `mau` · `thieu` · `trong` |
+| kho_rac | boolean |  | false |  |  |
+| ly_do | text |  |  |  |  |
 | actor | uuid | Y | jwt_uid() |  |  |
 | at | timestamp with time zone |  | now() |  |  |
 
@@ -5033,7 +5056,7 @@ END |  |  |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
 | mon | text |  |  | FK→sotay_ct_hinh.mon |  |
-| khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
+| khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
 | ten | text |  |  |  |  |
@@ -8048,6 +8071,7 @@ WITH luot AS (
 - `_bdm_duyet_duoc(p_khoi text, p_chu_de text)` → boolean
 - `_bdm_ghi_log()` → trigger
 - `_bdm_khop_nguon(p_khoi text, p_hang text)` → TABLE(ma_cau text, dang_bai_id text, chu_de_id text, ly_do text, chac text)
+- `_bdm_khop_quyet_hgt(p_ma_cau text, p_hanh_dong text, p_dang_bai text DEFAULT NULL::text, p_ly_do text DEFAULT NULL::text)` → jsonb
 - `_bdm_so_nhom(p_chu_de text, p_chuyen_de text)` → TABLE(id text, so integer, tang integer)
 - `_bdm_thu_tu()` → trigger
 - `_bdm_tien_de_cung_o()` → trigger
@@ -8805,8 +8829,8 @@ WITH luot AS (
 - `fn_hs_len_bac_da_xem(p_mon text)` → void
 - `fn_hs_len_bac_moi(p_mon text)` → jsonb
 - `fn_hs_lich_bo_tro()` → jsonb
-- `fn_hs_lich_su_lam_bai(p_so_ngay integer, p_mon text)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
 - `fn_hs_lich_su_lam_bai(p_so_ngay integer DEFAULT 30)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
+- `fn_hs_lich_su_lam_bai(p_so_ngay integer, p_mon text)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
 - `fn_hs_luu_giao_dien(p_skin text, p_che_do text, p_hinh_nen text)` → jsonb
 - `fn_hs_luu_hieu_ung_game(p_bat boolean)` → jsonb
 - `fn_hs_luyen_con_lai(p_mon text, p_ma_dang text)` → integer
@@ -9250,9 +9274,9 @@ WITH luot AS (
 - `tsa_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
@@ -9395,6 +9419,7 @@ WITH luot AS (
 | giai_thuong_slot | giai_thuong_slot_tong | `CHECK (((((xuat_sac + tien_bo) + cham_chi) >= 1) AND (((xuat_sac + tien_bo) + cham_chi) <= 6)))` |
 | giai_thuong_slot | giai_thuong_slot_xuat_sac_check | `CHECK (((xuat_sac >= 0) AND (xuat_sac <= 6)))` |
 | han_nop_ngoai_le | han_nop_ngoai_le_thu_check | `CHECK ((thu_bat_dau = ANY (ARRAY[0, 2, 3, 4, 5, 6, 7, 8])))` |
+| hgt_bdm_tu_choi | hgt_bdm_tu_choi_ly_do_check | `CHECK ((btrim(ly_do) <> ''::text))` |
 | hgt_cau_menh_de | hgt_cau_menh_de_thu_tu_check | `CHECK ((thu_tu >= 1))` |
 | hgt_cum_tien_de | hgt_cum_tien_de_check | `CHECK ((ma_cum <> tien_de_ma_cum))` |
 | hgt_dang_tien_de | hgt_dang_tien_de_check | `CHECK ((ma_dang <> tien_de_ma_dang))` |

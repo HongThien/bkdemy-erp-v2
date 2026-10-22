@@ -19,6 +19,7 @@ export type KhopCau = {
   ly_do: string | null; chac: string | null
   dang_bai_id: string | null; dang_bai: string | null; nhom: string | null; chu_de: string | null; chuyen_de: string | null
   dang_cu: string | null; chuyen_de_cu: string | null
+  nhanh?: 'dai' | 'hgt'   // câu thuộc kho Đại hay kho Hình giải tích (mig 202610221734)
 }
 export type KhopDich = { id: string; dang_bai: string; mo_ta: string | null; nhom: string; nhom_id: string; chuyen_de: string; chuyen_de_id: string; chu_de: string; chu_de_id: string }
 export type KhopPhamVi = { id: number; tai_khoan_id: string; khoi: string; chu_de_id: string | null; chu_de: string | null; nguoi: string; cua_toi: boolean }
