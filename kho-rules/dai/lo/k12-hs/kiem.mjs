@@ -19,6 +19,8 @@ const DIR = dirname(fileURLToPath(import.meta.url))
 const katex = createRequire(join(DIR, '../../../../package.json'))('katex')
 
 export const DANG = Object.fromEntries(CAY.flatMap((c) => c.nhom.flatMap((n) => n.dang.map((d) => [d[0], { ten: d[1], mo_ta: d[2], hinh: d[3], nhom: n.id }]))))
+// dạng MỚI (mã M…) của cây v3 + tên/mô tả ghi đè (cau-truc.mjs) — để kiểm khối của chúng
+for (const c of CAY2) for (const n of c.nhom) for (const d of n.dang) if (/^M/.test(d[4])) DANG[d[4]] = { ten: d[1], mo_ta: d[2], hinh: d[3], nhom: n.id }
 export const NHOM = Object.fromEntries([...CAY, ...CAY2].flatMap((c) => c.nhom.map((n) => [n.id, n])))
 
 export function docTep(txt) {

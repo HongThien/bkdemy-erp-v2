@@ -26,30 +26,6 @@ Bài tham số: đặt điều kiện $\Delta'$, dùng Viète rồi thử lại.
 
 === N P2.2
 @ly_thuyet:
-##TC Đặc trưng của hàm trùng phương $y=ax^4+bx^2+c$ ($a\ne0$)
-- Tập xác định $\mathbb{R}$; là hàm số chẵn nên đồ thị nhận **trục $Oy$ làm trục đối xứng**; không có tiệm cận; cắt $Oy$ tại $(0;c)$; hai nhánh hai phía cùng đi lên ($a>0$) hoặc cùng đi xuống ($a<0$).
-- $y'=2x(2ax^2+b)$. Nếu $ab\ge0$: **một cực trị** tại $x=0$ (cực tiểu khi $a>0$, cực đại khi $a<0$). Nếu $ab<0$: **ba cực trị** gồm $A(0;c)$ và $B,C\left(\pm\sqrt{-\dfrac{b}{2a}};\,c-\dfrac{b^2}{4a}\right)$.
-- Bốn dáng: $a>0,b\ge0$ có dạng chữ U; $a>0,b<0$ chữ W; $a<0,b\le0$ chữ $\cap$; $a<0,b>0$ chữ M.
-- Số nghiệm $f(x)=m$ khi $a>0,b<0$: $m<y_{\text{CT}}$ vô nghiệm; $m=y_{\text{CT}}$ có 2 nghiệm; $y_{\text{CT}}<m<c$ có 4 nghiệm; $m=c$ có 3 nghiệm; $m>c$ có 2 nghiệm (nghiệm đi từng cặp $\pm x$).
-
-##TC Tam giác tạo bởi ba điểm cực trị (khi $ab<0$)
-- Tam giác $ABC$ **cân tại $A$**; $BC=2\sqrt{-\dfrac{b}{2a}}$, đường cao từ $A$ bằng $\dfrac{b^2}{4|a|}$, $AB^2=AC^2=-\dfrac{b}{2a}+\dfrac{b^4}{16a^2}$.
-- Vuông (cân) tại $A$ $\Leftrightarrow$ $b^3=-8a$; đều $\Leftrightarrow$ $b^3=-24a$.
-
-##PP Giải bài về hàm trùng phương
-Đọc đồ thị: hướng hai nhánh cho dấu $a$, số cực trị cho dấu $ab$, giao $Oy$ cho $c$.
-Bài một hoặc ba cực trị: xét dấu $ab$ (nếu $a$ chứa tham số thì xét riêng $a=0$).
-Bài tam giác cực trị: viết toạ độ $A,B,C$ theo tham số, tính cạnh hoặc đường cao, dùng hệ thức vuông, đều hoặc diện tích.
-Bài $f(x)=m$: dựa vào tính đối xứng, đếm giao điểm của đường ngang $y=m$ với đồ thị.
-Đối chiếu điều kiện $ab<0$ rồi kết luận.
-
-##CY
-- Điều kiện ba cực trị là $ab<0$, không phải $b\ne0$; $b=0$ vẫn chỉ có một cực trị.
-- Hai điểm $B,C$ có tung độ $c-\dfrac{b^2}{4a}$ chứ không phải $c$; nhầm là sai độ dài đường cao.
-- $m=c$ cho 3 nghiệm vì $x=0$ là nghiệm đơn duy nhất không đi theo cặp.
-
-=== N P2.3
-@ly_thuyet:
 ##TC Đặc trưng của hàm $y=\dfrac{ax+b}{cx+d}$ ($c\ne0$, $ad-bc\ne0$)
 - Tập xác định $\mathbb{R}\setminus\left\{-\dfrac{d}{c}\right\}$; $y'=\dfrac{ad-bc}{(cx+d)^2}$ không đổi dấu nên hàm đơn điệu trên **từng khoảng xác định** và **không có cực trị**.
 - Tiệm cận đứng $x=-\dfrac{d}{c}$, tiệm cận ngang $y=\dfrac{a}{c}$; giao của hai tiệm cận là **tâm đối xứng** $I\left(-\dfrac{d}{c};\dfrac{a}{c}\right)$, không thuộc đồ thị.
@@ -72,7 +48,7 @@ Bài tham số: dùng điều kiện $ad-bc$ cùng dấu yêu cầu, loại giá
 - Hàm chỉ đơn điệu trên từng khoảng, không đơn điệu trên cả tập xác định: không so sánh giá trị ở hai khoảng khác nhau.
 - Tâm đối xứng không thuộc đồ thị; hệ số $a,b,c,d$ chỉ xác định tới tỉ lệ nên cần thêm điều kiện để chọn.
 
-=== N P2.4
+=== N P2.3
 @ly_thuyet:
 ##TC Đặc trưng của hàm $y=\dfrac{ax^2+bx+c}{dx+e}$ ($a,d\ne0$, tử không chia hết cho mẫu)
 - Chia đa thức: $y=\alpha x+\beta+\dfrac{\gamma}{x-x_0}$ với $x_0=-\dfrac{e}{d}$, $\alpha=\dfrac{a}{d}\ne0$, $\gamma\ne0$ (tức $x_0$ không là nghiệm của tử).

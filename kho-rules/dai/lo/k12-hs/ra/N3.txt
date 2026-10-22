@@ -1,4 +1,4 @@
-=== N P2.5
+=== N P2.4
 @ly_thuyet:
 ##TC Đạo hàm của hàm hợp
 - $g(x)=f(u(x))$ thì $g'(x)=u'(x)\cdot f'(u(x))$; $g'(x)=0\Leftrightarrow u'(x)=0$ hoặc $f'(u(x))=0$.
@@ -22,7 +22,7 @@ Lập bảng xét dấu $g'$ với mọi mốc của $u'=0$ và $u=t_i$; kết l
 - Với $u$ bậc hai, mỗi giá trị $t$ khác giá trị tại đỉnh (và thuộc tập giá trị của $u$) ứng với hai giá trị $x$; đừng đọc $f'$ ở phần $t$ mà $u$ không bao giờ nhận.
 - Đếm thiếu các mốc của $u'=0$ khi lập bảng xét dấu $g'$.
 
-=== N P2.6
+=== N P2.5
 @ly_thuyet:
 ##TC Cực trị chỉ phụ thuộc vào sự đổi dấu của đạo hàm
 - Điểm cực trị là nghiệm làm đạo hàm **đổi dấu** (nghiệm bội lẻ); nghiệm bội chẵn của $g'=0$, hay chỗ đồ thị $f'$ chỉ tiếp xúc $Ox$, không cho cực trị.
@@ -45,7 +45,7 @@ Bài có tham số $m$: lập bảng biến thiên của $u$ theo $m$, xét số
 - Nghiệm của $f(x)=0$ trùng cực trị của $f$ (tiếp xúc $Ox$) không được tính thêm vào $q$.
 - Nghiệm kép của $u(x)=a$ trùng $u'=0$ phải xét dấu riêng, không đếm hai lần.
 
-=== N P2.7
+=== N P2.6
 @ly_thuyet:
 ##TC Quy tắc chung về GTLN, GTNN
 - $f$ liên tục trên đoạn $[a;b]$ thì $\max$, $\min$ đạt tại đầu mút hoặc tại điểm cực trị thuộc đoạn; trên khoảng phải lập bảng biến thiên.
@@ -68,7 +68,7 @@ Chia trường hợp theo vị trí của $m$ (dấu $y'$, vị trí của $0$ s
 - Không thay $\max|f+m|$ bằng $|\max f+m|$.
 - Nhầm "nghiệm đúng với mọi $x$" (dùng $\max$ hoặc $\min$ toàn miền) với "có nghiệm".
 
-=== N P2.8
+=== N P2.7
 @ly_thuyet:
 ##TC Tiệm cận của $\dfrac{1}{f(x)+m}$
 - Mỗi nghiệm $x_0$ của $f(x)=-m$ (mẫu bằng $0$) cho một tiệm cận đứng $x=x_0$; số nghiệm đếm bằng giao điểm của $y=-m$ với đồ thị $f$.
