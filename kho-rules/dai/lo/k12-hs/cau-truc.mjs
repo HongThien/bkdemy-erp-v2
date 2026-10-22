@@ -1,4 +1,4 @@
-// cau-truc.mjs — cây 4 tầng v2 (22/10/2026) theo LOGIC CỦA THÙY: 4 phần.
+// cau-truc.mjs — cây 4 tầng v3 (22/10/2026 tối) theo LOGIC CỦA THÙY: 4 phần. v3: Phần 2 đi theo từng loại hàm; bỏ dạng khảo sát (bài giảng); mỗi dạng có độ khó + nguồn (phan-loai-dang.mjs).
 //  Phần 1  Các phương diện khảo sát hàm số (đơn điệu · cực trị · GTLN–GTNN · tiệm cận): tính được cho MỌI hàm; bài cơ bản. Gom 1 chuyên đề, không tách vụn.
 //  Phần 2  Các loại hàm quan trọng: đặc trưng riêng suy từ phần 1; các bài KHÓ của 4 phương diện rơi vào đây.
 //  Phần 3  Tương giao · tiếp tuyến · khoảng cách (ôn từ lớp 11).
@@ -6,6 +6,7 @@
 // Nội dung (lý thuyết dạng + ví dụ) giữ nguyên từ bản v1 đã soát (`cau-truc-v1.mjs`, mã H…, tệp ra/J*.txt): mỗi dạng v2 trỏ về dạng v1 bằng trường `cu`.
 // Lý thuyết NHÓM: nhóm có `cu` thì dùng lại lý thuyết nhóm v1 cùng mã; nhóm không có `cu` thì có tệp riêng ra/N*.txt (khối `=== N P…`).
 import { CAY as V1 } from './cau-truc-v1.mjs'
+import { DO_KHO, nguonCua } from './phan-loai-dang.mjs'
 export { CHU_DE } from './cau-truc-v1.mjs'
 
 const DANG1 = Object.fromEntries(V1.flatMap((c) => c.nhom.flatMap((n) => n.dang.map((d) => [d[0], { ten: d[1], mo_ta: d[2], hinh: d[3] }]))))
@@ -24,17 +25,20 @@ const PHAN = [
     ['P1.8', 'Tiệm cận xiên khi biết hàm số', true, 'Đề cho công thức có tiệm cận xiên y=ax+b; tìm phương trình hoặc tính biểu thức theo a, b.', 'H4.2', ['H4.2.1', 'H4.2.2', 'H4.2.3']],
     ['P1.9', 'Đọc tiệm cận từ bảng biến thiên, đồ thị, giới hạn', true, 'Đề cho hình hoặc giới hạn của hàm; đọc, đếm tiệm cận; chọn mệnh đề đúng.', null, ['H4.3.1', 'H4.3.2', 'H4.3.3']],
   ] },
-  { id: 'P2', ten: 'Các loại hàm số quan trọng', mo_ta: 'Đi sâu từng loại hàm: bậc ba, trùng phương, phân thức (bậc nhất/bậc nhất, bậc hai/bậc nhất), hàm hợp và hàm ẩn. Mỗi loại có đặc trưng riêng suy ra từ bốn phương diện ở phần 1; các bài khó (có tham số, hình học, hàm hợp) nằm ở đây.', nhom: [
-    ['P2.1', 'Hàm bậc ba: khảo sát và nhận dạng đồ thị', true, 'Khảo sát và vẽ, nhận dạng hàm số từ đồ thị, xác định dấu và giá trị các hệ số a, b, c, d, lập công thức từ điều kiện.', null, ['H5.1.1', 'H5.2.1', 'H5.3.1', 'H5.3.4']],
-    ['P2.2', 'Hàm bậc ba: đọc tính chất đồ thị, số nghiệm của f(x)=m, tâm đối xứng', true, 'Cho đồ thị hàm bậc ba, đọc đơn điệu, cực trị, giao trục; đếm nghiệm f(x)=m; tâm đối xứng.', null, ['H5.4.1', 'H5.4.2', 'H5.4.3']],
-    ['P2.3', 'Hàm bậc ba và hàm trùng phương: đơn điệu, cực trị có tham số', true, 'Tìm m để hàm đơn điệu trên ℝ, có cực trị thoả điều kiện về số cực trị, hệ thức Viète, vị trí hai điểm cực trị; tam giác cực trị của hàm trùng phương.', null, ['H1.5.1', 'H2.4.1', 'H2.4.2', 'H2.4.3', 'H2.4.4', 'H2.4.5']],
-    ['P2.4', 'Đường thẳng qua hai điểm cực trị và hình học các điểm cực trị', true, 'Phương trình đường thẳng đi qua hai điểm cực trị, độ dài AB, diện tích tam giác với gốc toạ độ, quan hệ của AB với đường hoặc điểm khác.', 'H2.5', ['H2.5.1', 'H2.5.2', 'H2.5.3']],
-    ['P2.5', 'Hàm phân thức: khảo sát, nhận dạng đồ thị, hệ số', true, 'Hàm bậc nhất/bậc nhất và bậc hai/bậc nhất: khảo sát và vẽ, nhận dạng từ đồ thị, xác định hệ số, giao hai tiệm cận và tâm đối xứng.', null, ['H5.1.2', 'H5.1.3', 'H5.2.2', 'H5.2.3', 'H5.3.2', 'H5.3.3', 'H4.5.1']],
-    ['P2.6', 'Hàm phân thức: đơn điệu, cực trị, tiệm cận có tham số', true, 'Tìm m để hàm phân thức đơn điệu trên từng khoảng/trên một khoảng, có cực đại và cực tiểu, có đúng k tiệm cận hoặc tiệm cận cho trước.', null, ['H1.5.2', 'H1.5.3', 'H1.5.4', 'H2.4.6', 'H4.4.1', 'H4.4.2']],
-    ['P2.7', 'Hàm hợp, hàm ẩn: tính đơn điệu', false, 'Nâng cao: đơn điệu của g=f(u(x)) khi biết f′, đổi biến t=u(x) với hàm lượng giác/logarit/căn, hàm ẩn có tham số.', null, ['H1.4.1', 'H1.4.2', 'H1.5.5', 'H1.5.6']],
-    ['P2.8', 'Hàm hợp, hàm chứa trị tuyệt đối: cực trị', false, 'Nâng cao: số cực trị của f(x)+ax, |f(x)|, f(|x|), f(u(x)) và tìm m để có số cực trị cho trước.', null, ['H2.3.3', 'H2.6.1', 'H2.6.2', 'H2.6.3']],
-    ['P2.9', 'Hàm hợp, hàm ẩn, hàm có tham số: GTLN, GTNN', false, 'Nâng cao: GTLN, GTNN có tham số m (kể cả |f(x)+m|), phương trình–bất phương trình dùng max–min, hàm hợp, biểu thức nhiều biến.', null, ['H3.1.3', 'H3.3.1', 'H3.3.2', 'H3.3.3', 'H3.4.1', 'H3.4.2']],
-    ['P2.10', 'Hàm hợp: tiệm cận và phương trình', false, 'Nâng cao: tiệm cận của 1/(f(x)+m); đếm nghiệm f(f(x))=m, f(u(x))=m, |f(x)|=m, f(|x|)=m từ đồ thị.', null, ['H4.3.4', 'H6.4.1', 'H6.4.2']],
+  { id: 'P2', ten: 'Các loại hàm số', mo_ta: 'Đi theo TỪNG LOẠI HÀM: bậc ba, trùng phương, bậc nhất trên bậc nhất, bậc hai trên bậc nhất. Mỗi nhóm là các bài toán ĐẶC TRƯNG của loại hàm đó — phải dùng đồ thị và các hệ số để giải (dấu của a, b, c, d, điểm uốn, tâm đối xứng, đường thẳng đi qua hai điểm cực trị…). Bài đơn giản trên một hàm cho sẵn (tìm cực trị, xét đơn điệu, tìm tiệm cận) thuộc Phần 1; khảo sát và vẽ đồ thị là bài giảng, không phải dạng bài.', nhom: [
+    ['P2.1', 'Hàm bậc ba', true, 'Các bài toán đặc trưng của y=ax³+bx²+cx+d: nhận dạng đồ thị, dấu các hệ số, điểm uốn là tâm đối xứng, số nghiệm của f(x)=m, đường thẳng qua hai điểm cực trị, tham số để hàm đơn điệu hoặc có cực trị thoả điều kiện.', null, ['H5.2.1', 'H5.3.1', 'H5.3.4', 'H5.4.1', 'H5.4.2', 'H5.4.3', 'H1.5.1', 'H2.4.1', 'H2.4.2', 'H2.4.3', 'H2.4.4', 'H2.5.1', 'H2.5.2', 'H2.5.3']],
+    ['P2.2', 'Hàm trùng phương', true, 'Các bài toán đặc trưng của y=ax⁴+bx²+c: đồ thị nhận Oy làm trục đối xứng, chỉ có một hoặc ba cực trị, ba điểm cực trị tạo thành tam giác cân.', null, [
+      'H2.4.5',
+      { id: 'M2.2.1', ten: 'Nhận dạng đồ thị, dấu của a, b, c (hàm trùng phương)', mo_ta: 'Đề cho đồ thị hoặc bảng biến thiên của hàm trùng phương; xác định dấu của a, b, c, chọn công thức đúng.', hinh: 'dothi' },
+      { id: 'M2.2.2', ten: 'Số điểm cực trị và điều kiện của tham số m (hàm trùng phương)', mo_ta: 'Tìm m để hàm có một cực trị hoặc ba cực trị; so sánh vị trí các điểm cực trị với trục.', hinh: 'khong' },
+      { id: 'M2.2.3', ten: 'Đọc đồ thị hàm trùng phương, số nghiệm của f(x)=m', mo_ta: 'Cho đồ thị hàm trùng phương; đọc đơn điệu, cực trị, giá trị; đếm nghiệm f(x)=m.', hinh: 'dothi' },
+    ]],
+    ['P2.3', 'Hàm bậc nhất trên bậc nhất', true, 'Các bài toán đặc trưng của y=(ax+b)/(cx+d): hai tiệm cận cắt nhau tại tâm đối xứng, dấu của ad−bc quyết định đồng biến hay nghịch biến, đọc các hệ số từ vị trí tiệm cận và giao điểm với trục.', null, ['H5.2.2', 'H5.3.2', 'H4.5.1', 'H1.5.2', 'H1.5.3', 'H4.4.1', 'H4.4.2']],
+    ['P2.4', 'Hàm bậc hai trên bậc nhất', true, 'Các bài toán đặc trưng của y=(ax²+bx+c)/(dx+e): tiệm cận xiên, cực đại và cực tiểu nằm hai bên tiệm cận đứng, nhận dạng đồ thị và hệ số.', null, ['H5.2.3', 'H5.3.3', 'H1.5.4', 'H2.4.6']],
+    ['P2.5', 'Hàm hợp, hàm ẩn: tính đơn điệu', false, 'Nâng cao: đơn điệu của g=f(u(x)) khi biết f′, đổi biến t=u(x) với hàm lượng giác/logarit/căn, hàm ẩn có tham số.', null, ['H1.4.1', 'H1.4.2', 'H1.5.5', 'H1.5.6']],
+    ['P2.6', 'Hàm hợp, hàm chứa trị tuyệt đối: cực trị', false, 'Nâng cao: số cực trị của f(x)+ax, |f(x)|, f(|x|), f(u(x)) và tìm m để có số cực trị cho trước.', null, ['H2.3.3', 'H2.6.1', 'H2.6.2', 'H2.6.3']],
+    ['P2.7', 'Hàm hợp, hàm ẩn, hàm có tham số: GTLN, GTNN', false, 'Nâng cao: GTLN, GTNN có tham số m (kể cả |f(x)+m|), phương trình–bất phương trình dùng max–min, hàm hợp, biểu thức nhiều biến.', null, ['H3.1.3', 'H3.3.1', 'H3.3.2', 'H3.3.3', 'H3.4.1', 'H3.4.2']],
+    ['P2.8', 'Hàm hợp: tiệm cận và phương trình', false, 'Nâng cao: tiệm cận của 1/(f(x)+m); đếm nghiệm f(f(x))=m, f(u(x))=m, |f(x)|=m, f(|x|)=m từ đồ thị.', null, ['H4.3.4', 'H6.4.1', 'H6.4.2']],
   ] },
   { id: 'P3', ten: 'Tương giao, tiếp tuyến, khoảng cách', mo_ta: 'Các bài toán trên đồ thị đã quen từ lớp 11, nay dùng với các hàm ở phần 2.', nhom: [
     ['P3.1', 'Tương giao của đồ thị với đường thẳng, với trục', false, 'Số giao điểm, điều kiện về hoành độ giao điểm, hình học trên các giao điểm.', 'H6.1', ['H6.1.1', 'H6.1.2', 'H6.1.3']],
@@ -59,7 +63,14 @@ export const CAY = PHAN.map((p) => ({
     const g = cu ? NHOM1[cu] : null
     return {
       id, cu, bb: g && ten == null ? g.bb : bb, ten: ten ?? g.ten, mo_ta: mo_ta ?? g.mo_ta,
-      dang: dang.map((v1, i) => { const d = DANG1[v1]; if (!d) throw new Error('thiếu dạng v1 ' + v1); return [`${id}.${i + 1}`, d.ten, d.mo_ta, d.hinh, v1] }),
+      // dạng = mã v1 (dùng lại lý thuyết + ví dụ đã soát) hoặc object dạng MỚI { id: 'M…', ten, mo_ta, hinh } (chưa có lý thuyết/ví dụ)
+      dang: dang.map((x, i) => {
+        const moi = typeof x === 'object'
+        const d = moi ? x : DANG1[x]; if (!d) throw new Error('thiếu dạng v1 ' + x)
+        const ma = moi ? x.id : x
+        if (!DO_KHO[ma]) throw new Error('thiếu độ khó cho ' + ma)
+        return [`${id}.${i + 1}`, d.ten, d.mo_ta, d.hinh, moi ? null : x, DO_KHO[ma], nguonCua(ma)]
+      }),
     }
   }),
 }))
@@ -71,5 +82,7 @@ export const THONG_KE = () => ({
 })
 // kiểm: mọi dạng v1 xuất hiện đúng 1 lần
 const dem = {}
-for (const c of CAY) for (const n of c.nhom) for (const d of n.dang) dem[d[4]] = (dem[d[4]] || 0) + 1
-for (const id of Object.keys(DANG1)) if (dem[id] !== 1) throw new Error(`dạng v1 ${id} xuất hiện ${dem[id] || 0} lần`)
+for (const c of CAY) for (const n of c.nhom) for (const d of n.dang) if (d[4]) dem[d[4]] = (dem[d[4]] || 0) + 1
+// Thùy 22/10: "Khảo sát hàm số là bài giảng, không phải dạng bài" ⇒ 3 dạng khảo sát/vẽ đồ thị BỎ khỏi bản đồ (lý thuyết + ví dụ v1 giữ lại trong ra/J*.txt cho phần thiết kế bài giảng).
+export const BO_RA = ['H5.1.1', 'H5.1.2', 'H5.1.3']
+for (const id of Object.keys(DANG1)) { const mong = BO_RA.includes(id) ? 0 : 1; if ((dem[id] || 0) !== mong) throw new Error(`dạng v1 ${id} xuất hiện ${dem[id] || 0} lần (cần ${mong})`) }

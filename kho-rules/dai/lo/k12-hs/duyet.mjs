@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url'
 import { createRequire } from 'node:module'
 import { CAY, CHU_DE, THONG_KE } from './cau-truc.mjs'
 import { docTep } from './kiem.mjs'
+import { TEN_KHO } from './phan-loai-dang.mjs'
 import { veHinh } from './ve.mjs'
 
 const DIR = dirname(fileURLToPath(import.meta.url))
@@ -17,6 +18,8 @@ const tepRa = existsSync(RA) ? readdirSync(RA).filter((f) => /^[JN]\d+\.txt$/.te
 const moi = {}
 for (const f of tepRa) for (const k of docTep(readFileSync(join(RA, f), 'utf8'))) moi[(k.la_nhom ? 'N ' : '') + k.id] = { ...k, tep: f }
 
+const theKho = (k) => `<span class="the kho k${k}" title="Độ khó đề xuất (muc_do 1–5): ${esc(TEN_KHO[k])}">độ khó ${k}/5</span>`
+const theNguon = (ng, v1) => `<span class="the ng ${ng.loai}" title="Nguồn quyết định tạo dạng này">${ng.loai === 'chi_sach' ? 'chỉ có ở sách' : ng.loai === 'chua' ? (v1 ? 'chưa đối chiếu nguồn' : 'dạng mới — chưa có nguồn') : ng.loai === 'chi_de_thi' ? 'chỉ có ở đề thi' : 'sách + đề thi'}${ng.loai === 'chua' ? '' : ' · ' + esc(ng.chu)}</span>`
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 const toan = (t) => { try { return katex.renderToString(t, { output: 'mathml', throwOnError: true, strict: 'ignore' }) } catch { return `<code>${esc(t)}</code>` } }
 const dong = (s) => esc(s)
@@ -73,12 +76,12 @@ CAY.forEach((cd, ci) => {
 <p class="mota-nhom">${dong(n.mo_ta)}</p>
 <div class="phan"><div class="phan-t">Lý thuyết nhóm ${mn?.lt ? '' : '<span class="thieu">chưa soạn</span>'}</div>${noiDung(mn?.lt ?? '')}</div>`
     for (const d of n.dang) {
-      const [id, ten, mo, hinh, v1] = d
+      const [id, ten, mo, hinh, v1, kho, ng] = d
       const m = moi[v1]
       if (m?.lt) soLtDang++
       if (m?.vd) { soVd += (m.vd.match(/^##VD/gm) || []).length; soHinh += (m.vd.match(/\[\[HINH/g) || []).length }
       if (!m?.vd) thieu++
-      html += `<article class="dang" id="${id}"><header><h4>${esc(ten)}</h4><span class="ma">${id}</span>${hinh !== 'khong' ? `<span class="the hinh-th">cần hình: ${hinh === 'bbt' ? 'bảng biến thiên' : hinh === 'dothi' ? 'đồ thị' : 'bảng + đồ thị'}</span>` : ''}</header>
+      html += `<article class="dang" id="${id}"><header><h4>${esc(ten)}</h4><span class="ma">${id}</span>${theKho(kho)}${theNguon(ng, v1)}${hinh !== 'khong' ? `<span class="the hinh-th">cần hình: ${hinh === 'bbt' ? 'bảng biến thiên' : hinh === 'dothi' ? 'đồ thị' : 'bảng + đồ thị'}</span>` : ''}</header>
 <div class="mota"><span class="nhan">Mô tả nhận biết</span> ${dong(mo)}</div>
 <div class="phan"><div class="phan-t">Lý thuyết dạng ${m?.lt ? '' : '<span class="thieu">chưa soạn</span>'}</div>${noiDung(m?.lt ?? '')}</div>
 <div class="phan"><div class="phan-t">Ví dụ ${m?.vd ? '' : '<span class="thieu">chưa soạn</span>'}</div>${noiDung(m?.vd ?? '')}</div></article>`
@@ -88,16 +91,16 @@ CAY.forEach((cd, ci) => {
   toc.push(`<li><a href="#${cd.id}"><strong>${esc(cd.ten)}</strong></a><ul>${sub.join('')}</ul></li>`)
 })
 
-const cauTruc = `<table class="ct"><thead><tr><th>Chuyên đề</th><th>Nhóm bài</th><th>Dạng bài</th></tr></thead><tbody>${CAY.map((cd) => cd.nhom.map((n, i) => `<tr>${i === 0 ? `<td rowspan="${cd.nhom.length}"><a href="#${cd.id}">${esc(cd.ten)}</a></td>` : ''}<td><a href="#${n.id}">${esc(n.ten)}</a> ${n.bb ? '' : '<span class="the nc">nâng cao</span>'}</td><td>${n.dang.map((d) => `<a href="#${d[0]}">${esc(d[1])}</a>`).join('<br>')}</td></tr>`).join('')).join('')}</tbody></table>`
+const cauTruc = `<table class="ct"><thead><tr><th>Chuyên đề</th><th>Nhóm bài</th><th>Dạng bài</th><th>Độ khó</th><th>Nguồn</th></tr></thead><tbody>${CAY.map((cd) => cd.nhom.map((n, i) => `<tr>${i === 0 ? `<td rowspan="${cd.nhom.length}"><a href="#${cd.id}">${esc(cd.ten)}</a></td>` : ''}<td><a href="#${n.id}">${esc(n.ten)}</a> ${n.bb ? '' : '<span class="the nc">nâng cao</span>'}</td><td>${n.dang.map((d) => `<a href="#${d[0]}">${esc(d[1])}</a>`).join('<br>')}</td><td class="cot-so">${n.dang.map((d) => d[5]).join('<br>')}</td><td class="cot-ng">${n.dang.map((d) => d[6].loai === 'chi_sach' ? 'sách' : d[6].loai === 'ca_hai' ? 'sách + đề thi' : d[6].loai === 'chi_de_thi' ? 'đề thi' : '?').join('<br>')}</td></tr>`).join('')).join('')}</tbody></table>`
 
 const CAU_HOI = [
-  ['Tôi hiểu logic 4 phần của chị thế này — đúng chưa?', 'Phần 1 = 4 phương diện (đơn điệu · cực trị · GTLN–GTNN · tiệm cận) gom MỘT chuyên đề, bài cơ bản, chia nhóm theo "đề cho công thức" / "đề cho hình (BBT, đồ thị, f′)" · Phần 2 = các loại hàm quan trọng, bài khó rơi vào đây · Phần 3 = tương giao, tiếp tuyến, khoảng cách · Phần 4 = thực tế.'],
-  ['Phần 1 dùng loại hàm làm dạng bài', 'Ở Phần 1 các dạng "công thức" vẫn tách theo loại hàm (bậc ba, trùng phương, phân thức…) vì cách tính khác nhau (vd cực trị, tiệm cận). Nhóm Phần 1 chia theo nguồn dữ liệu của đề (công thức / hình) như bản cũ của chị.'],
-  ['Hàm hợp, hàm ẩn, hàm có tham số — để ở Phần 2 (đề xuất)', 'Tôi coi "hàm cho gián tiếp" (g=f(u(x)), hàm ẩn, |f(x)+m|…) là một loại hàm để đặt 4 nhóm P2.7–P2.10 (đơn điệu · cực trị · GTLN–GTNN · tiệm cận/phương trình), đều nâng cao. GTLN–GTNN có tham số m (P2.9) tôi cũng để ở đây vì là bài khó.'],
-  ['Trùng phương chung nhóm với bậc ba', 'Hàm trùng phương chỉ có 2 dạng nên gộp vào P2.3 "đơn điệu, cực trị có tham số của hàm bậc ba và hàm trùng phương". Muốn một nhóm riêng thì cần thêm dạng (nhận dạng đồ thị trùng phương, đơn điệu có tham số) — cần soạn thêm.'],
-  ['Hàm phân thức gộp 1/1 và 2/1 (P2.5, P2.6)', 'Khảo sát/nhận dạng/hệ số và các bài tham số gộp cả hai loại; mỗi dạng vẫn nói rõ loại nào. Chị muốn tách "nhất biến" và "bậc hai trên bậc nhất" thành nhóm riêng không?'],
-  ['Phần 3 và các nhóm "nâng cao"', 'Phần 3 (ôn từ lớp 11) và P2.7–P2.10, tốc độ liên quan (P4.7) đang đánh dấu nâng cao (không chặn "xong chuyên đề"). Phần 3 có nên bắt buộc không?'],
-  ['Chuyển đổi so với bản đề xuất đầu', 'Cây v1 (7 chuyên đề, 36 nhóm) đã đổi thành 4 chuyên đề, 30 nhóm; MỌI dạng bài (112), lý thuyết dạng và ví dụ giữ nguyên từ bản đã soát; chỉ viết lại lý thuyết cho các nhóm đổi chỗ. Ngoài ra còn các quy ước đã nêu ở mục "Điểm cần xem khi soạn" (vd tiệm cận khi ad−bc=0, điểm uốn → tâm đối xứng, Cô-si).'],
+  ["Đã sửa theo 3 ý của chị (22/10) — chị xem đúng chưa","(1) Mỗi dạng bài có thêm **độ khó (1–5)** và **nguồn tạo dạng** (chỉ có ở sách / sách + đề thi). (2) Phần 2 đổi sang đi theo TỪNG LOẠI HÀM: P2.1 bậc ba · P2.2 trùng phương · P2.3 bậc nhất trên bậc nhất · P2.4 bậc hai trên bậc nhất; mỗi nhóm chỉ giữ bài toán đặc trưng (dấu a,b,c,d, điểm uốn, tâm đối xứng, đường thẳng qua hai cực trị…); bài đơn giản (tìm cực trị, đơn điệu, tiệm cận) ở Phần 1. (3) Bỏ 3 dạng \"khảo sát và vẽ đồ thị\" (bậc ba, 1/1, 2/1) — lý thuyết + ví dụ đã soạn giữ lại cho phần thiết kế bài giảng."],
+  ["Độ khó: tôi chấm theo thang muc_do 1–5 của spec kho — chị chỉnh giúp","1 = đọc trực tiếp (BBT, đồ thị) · 2 = một quy trình quen · 3 = quy trình + biến đổi hoặc tham số đơn giản · 4 = tham số khó, nhiều bước, hình phức tạp · 5 = hàm hợp/hàm ẩn nâng cao. Đây là ĐỀ XUẤT của tôi theo kiểu bài, chưa có số liệu đo (kho chưa gán câu vào dạng bài mới). Chị muốn thang khác (vd 4 mức Nhận biết / Thông hiểu / Vận dụng / Vận dụng cao) thì nói."],
+  ["Nguồn tạo dạng: 74/112 dạng chỉ có ở sách, 28 dạng có cả đề thi","Lấy từ bước đối chiếu 4 nguồn ở bản đề xuất đầu (T Từ Tâm · N NBV · P PNL · Đ đề thi: 117 đề giữa kì ERP + đề GK1/HK1 của NBV). **Chưa dạng nào \"chỉ có ở đề thi\"**. 13 dạng chưa có nhân chứng: 10 dạng cũ chưa đối chiếu được (phần lớn ở nhóm nâng cao: điểm di động, phương trình hợp…) và 3 dạng mới của hàm trùng phương. Lưu ý: nhãn \"đề thi\" ở bản đầu gán theo NHÓM CŨ chứ chưa đếm từng dạng — nên \"chỉ có ở sách\" là kết luận chắc hơn \"có đề thi\". Muốn đếm chắc từng dạng thì phải gán câu đề thi vào dạng mới (việc B3)."],
+  ["Hàm trùng phương: 3 dạng MỚI tôi thêm — chưa có lý thuyết/ví dụ","Bản trước hàm trùng phương chỉ có 1 dạng (tam giác cực trị) nên tôi thêm 3 dạng đặc trưng theo đúng logic của chị: nhận dạng đồ thị + dấu a,b,c · số cực trị và điều kiện m · đọc đồ thị + số nghiệm f(x)=m. Mã M2.2.1–M2.2.3. Cần chị gật có nên có 3 dạng này không, rồi mới soạn lý thuyết + ví dụ."],
+  ["Bậc ba có 14 dạng — hơi dài, có tách không?","P2.1 giữ nguyên các dạng đặc trưng cũ: 6 dạng nhận dạng/hệ số/đồ thị, 8 dạng tham số + hình học cực trị. Nếu chị thấy nhiều thì tách thành 2 nhóm (đồ thị — tham số/hình học cực trị)."],
+  ["Hàm hợp, hàm ẩn (P2.5–P2.8) vẫn để ở Phần 2 [nâng cao]","Chị liệt kê 4 loại hàm nên 4 nhóm hàm hợp tôi giữ ở cuối Phần 2, đánh dấu nâng cao, chờ chị quyết (giữ / chuyển sang Phần 1 / Phần 3). Các dạng \"khoảng cách tới hai tiệm cận, diện tích hình tạo bởi tiệm cận\" vẫn ở P3.3 như bản trước; chị muốn chuyển vào P2.3 (bậc nhất trên bậc nhất) không?"],
+  ["Phần 3 và các nhóm \"nâng cao\"","Phần 3 (ôn từ lớp 11), P2.5–P2.8, tốc độ liên quan (P4.7) đang đánh dấu nâng cao (không chặn \"xong chuyên đề\"). Phần 3 có nên bắt buộc không?"],
 ]
 
 const page = `<title>K12 Hàm số — bản đồ mới 4 tầng (đề xuất)</title>
@@ -134,6 +137,8 @@ figure.hinh{margin:8px 0;display:flex;flex-direction:column;align-items:flex-sta
 table.ct{border-collapse:collapse;width:100%;font-size:13.5px;background:var(--the)}table.ct th,table.ct td{border:1px solid var(--vien);padding:6px 9px;vertical-align:top;text-align:left}table.ct th{background:var(--nen-mota)}
 details.cauhoi{background:var(--the);border:1px solid var(--vien);border-radius:10px;padding:8px 14px;margin:8px 0}details.cauhoi summary{cursor:pointer;font-weight:600}
 math{font-size:1.06em}
+.the.kho{color:var(--mo)}.the.kho.k1,.the.kho.k2{color:#047857}.the.kho.k4,.the.kho.k5{color:#b45309}.the.ng.chi_sach{color:#7c5cbf}.the.ng.ca_hai{color:#0f9d8a}.the.ng.chua{color:var(--thieu)}
+td.cot-so{text-align:center;white-space:nowrap}td.cot-ng{white-space:nowrap;font-size:12.5px}
 </style>
 <div class="bo">
 <aside><strong>Mục lục</strong><ul><li><a href="#tong-quan">Tổng quan cây 4 tầng</a></li><li><a href="#quyet">Cần chị quyết</a></li><li><a href="#xem">Điểm cần xem khi soạn</a></li>${toc.join('')}</ul></aside>

@@ -1,0 +1,122 @@
+=== N P2.1
+@ly_thuyet:
+##TC Đặc trưng của hàm bậc ba $y=ax^3+bx^2+cx+d$ ($a\ne0$)
+- Tập xác định $\mathbb{R}$; $\lim_{x\to\pm\infty}y=\pm\infty$ (nếu $a>0$) hoặc $\mp\infty$ (nếu $a<0$), nên **không có tiệm cận**.
+- Đạo hàm $y'=3ax^2+2bx+c$ có $\Delta'=b^2-3ac$. Nếu $\Delta'>0$: $y'$ có hai nghiệm phân biệt, đổi dấu hai lần, hàm có **đúng hai cực trị**. Nếu $\Delta'\le0$: $y'$ không đổi dấu, hàm **đơn điệu trên $\mathbb{R}$** và không có cực trị.
+- Bốn dáng đồ thị theo dấu $a$ và số cực trị: $a>0$ thì nhánh bên phải đi lên, $a<0$ thì nhánh bên phải đi xuống; có hai cực trị thì đồ thị lượn lên xuống qua một đỉnh và một đáy, không có cực trị thì chỉ một đường đi lên hoặc đi xuống.
+- Đồ thị luôn có **tâm đối xứng** $I$ có hoành độ $x=-\dfrac{b}{3a}$ (và $I$ thuộc đồ thị); khi có hai cực trị, $I$ là trung điểm của đoạn nối hai điểm cực trị.
+
+##TC Ý nghĩa hình học của các hệ số
+- $d=y(0)$: tung độ giao điểm với $Oy$. $c=y'(0)$: hệ số góc tiếp tuyến tại giao điểm với $Oy$.
+- Dấu của $a$ xác định theo hướng đi của nhánh bên phải đồ thị.
+- Hai hoành độ cực trị $x_1,x_2$ thoả $x_1+x_2=-\dfrac{2b}{3a}$, $x_1x_2=\dfrac{c}{3a}$; từ vị trí các cực trị so với $Oy$ (dấu của tổng, tích) kết hợp dấu của $a$ suy ra dấu của $b$ và $c$.
+
+##PP Khảo sát và nhận dạng hàm bậc ba
+Tìm tập xác định, tính $y'$, giải $y'=0$ và xét dấu để có khoảng đơn điệu, cực trị.
+Tính giới hạn ở $\pm\infty$ (xác định theo dấu $a$), lập bảng biến thiên rồi tìm tâm đối xứng và vài điểm đặc biệt (giao $Ox$, $Oy$) để vẽ.
+Nhận dạng từ đồ thị: xét hướng nhánh bên phải để biết dấu $a$, đếm số cực trị để biết dấu $\Delta'$, đọc giao với $Oy$ cho dấu $d$.
+Dùng các điểm cực trị, điểm đi qua đã biết lập hệ phương trình về $a,b,c,d$ ($y(x_0)=y_0$, $y'(x_0)=0$) rồi giải và thử lại.
+
+##CY
+- Phải thử lại cực trị: $y'(x_0)=0$ chưa đủ, cần $y'$ đổi dấu qua $x_0$.
+- Nhầm bảng biến thiên của $a>0$ và $a<0$: kiểm tra bằng giới hạn ở $+\infty$.
+- Đồ thị không có cực trị vẫn là hàm bậc ba (trường hợp $\Delta'\le0$), đừng chỉ nhận dạng theo dáng có đỉnh và đáy.
+
+=== N P2.2
+@ly_thuyet:
+##TC Đọc tính chất từ đồ thị hàm bậc ba
+- **Đơn điệu:** đồ thị đi lên từ trái sang phải trên khoảng nào thì hàm đồng biến trên khoảng đó, đi xuống thì nghịch biến.
+- **Cực trị:** điểm cực đại, cực tiểu là "đỉnh" và "đáy" của đồ thị; hoành độ là $x_{\text{CĐ}},x_{\text{CT}}$, tung độ là giá trị cực đại, cực tiểu.
+- **Giao với trục:** đồ thị hàm bậc ba luôn cắt $Ox$, số giao điểm là $1$, $2$ hoặc $3$ (có $2$ khi đồ thị tiếp xúc $Ox$ tại một điểm cực trị, đó là nghiệm kép); giao với $Oy$ tại $(0;d)$.
+- **Tâm đối xứng** $I$ có hoành độ $x=-\dfrac{b}{3a}$ và nằm trên đồ thị; khi có hai cực trị, $I$ là trung điểm hai điểm cực trị. Đồ thị đối xứng qua $I$ nên suy được giá trị hàm tại hai điểm đối xứng nhau qua $I$.
+
+##TC Số nghiệm phương trình $f(x)=m$
+- Số nghiệm bằng số giao điểm của đồ thị $y=f(x)$ với đường thẳng ngang $y=m$.
+- Hàm có hai cực trị $y_{\text{CĐ}}>y_{\text{CT}}$: $m>y_{\text{CĐ}}$ hoặc $m<y_{\text{CT}}$ thì 1 nghiệm; $m=y_{\text{CĐ}}$ hoặc $m=y_{\text{CT}}$ thì 2 nghiệm (một nghiệm đơn, một nghiệm kép); $y_{\text{CT}}<m<y_{\text{CĐ}}$ thì 3 nghiệm. Hàm đơn điệu thì luôn 1 nghiệm.
+
+##PP Đọc đồ thị và đếm nghiệm
+Quan sát chiều đi của đồ thị để lập bảng biến thiên (khoảng đồng biến, nghịch biến, giá trị cực trị).
+Với yêu cầu đơn điệu, cực trị, giao trục: đọc trực tiếp hoành độ, tung độ các điểm đặc biệt trên đồ thị.
+Với $f(x)=m$: kẻ đường ngang $y=m$ và đếm số giao điểm trong từng khoảng của $m$ theo hai giá trị cực trị.
+Với bài tâm đối xứng: lấy trung điểm hai điểm cực trị hoặc dùng hoành độ $x=-\dfrac{b}{3a}$, tung độ bằng $y\left(-\dfrac{b}{3a}\right)$, rồi kết luận.
+
+##CY
+- Nghiệm kép (tiếp xúc) chỉ tính là một giá trị phân biệt của $x$ nhưng cho biết trường hợp biên của $m$.
+- Cực đại, cực tiểu không phải GTLN, GTNN: hàm bậc ba trên $\mathbb{R}$ không có GTLN, GTNN.
+- Đọc nhầm tung độ cực trị với hoành độ: $m$ so sánh với tung độ.
+
+=== N P2.3
+@ly_thuyet:
+##TC Hàm bậc ba $y=ax^3+bx^2+cx+d$
+- $y'=3ax^2+2bx+c$, $\Delta'=b^2-3ac$.
+- Đơn điệu trên $\mathbb{R}$ $\Leftrightarrow$ $y'$ không đổi dấu: đồng biến khi $a>0,\Delta'\le0$; nghịch biến khi $a<0,\Delta'\le0$ (với $a$ chứa tham số, xét riêng $a=0$).
+- Có **hai cực trị** $\Leftrightarrow$ $a\ne0$ và $\Delta'>0$.
+- Hai nghiệm $x_1,x_2$ của $y'=0$ thoả $x_1+x_2=-\dfrac{2b}{3a}$, $x_1x_2=\dfrac{c}{3a}$ (Viète): điều kiện về hoành độ cực trị (cùng dấu, trái dấu, $|x_1-x_2|$ cho trước...) quy về tổng, tích và $\Delta'$; điều kiện về vị trí điểm cực trị (so với trục, với đường thẳng) cần thêm tung độ $y_1,y_2$.
+
+##TC Hàm trùng phương $y=ax^4+bx^2+c$ ($a\ne0$)
+- $y'=2x(2ax^2+b)$. Nếu $ab\ge0$: **một cực trị** (tại $x=0$). Nếu $ab<0$: **ba cực trị** gồm $A(0;c)$ và $B,C$ có hoành độ $\pm\sqrt{-\dfrac{b}{2a}}$.
+- Khi $ab<0$: tam giác $ABC$ **cân tại $A$**, $B,C$ đối xứng qua $Oy$; $a>0$ thì $A$ là cực đại, $a<0$ thì $A$ là cực tiểu.
+- Với $BC=2\sqrt{-\dfrac{b}{2a}}$, chiều cao từ $A$ là $\dfrac{b^2}{4|a|}$, từ đó tính độ dài cạnh, diện tích, bán kính đường tròn của tam giác cực trị.
+
+##PP Giải bài tham số về đơn điệu và cực trị
+Tính $y'$, tìm điều kiện của hệ số dẫn đầu (xét riêng trường hợp suy biến bậc hạ).
+Chuyển yêu cầu thành điều kiện về $\Delta'$ (đơn điệu thì $\Delta'\le0$, có cực trị thì $\Delta'>0$).
+Với yêu cầu về hai cực trị: viết hệ thức bằng $x_1+x_2$ và $x_1x_2$ (cần toạ độ thì tính thêm $y_1,y_2$), thế Viète rồi giải theo $m$.
+Với hàm trùng phương: xét dấu $ab$, tìm toạ độ ba điểm cực trị rồi biểu diễn điều kiện tam giác (vuông, đều, diện tích, bán kính) theo $m$.
+Đối chiếu điều kiện tồn tại của tham số rồi kết luận.
+
+##CY
+- Quên xét trường hợp $a=0$ khi hệ số $a$ chứa tham số.
+- Với "đơn điệu trên $\mathbb{R}$" cho phép $\Delta'=0$ (dấu bằng), còn "có cực trị" thì không.
+- Hàm trùng phương: $ab<0$ mới có ba cực trị; $ab\ge0$ chỉ một cực trị, không tạo thành tam giác.
+
+=== N P2.5
+@ly_thuyet:
+##TC Hàm bậc nhất trên bậc nhất $y=\dfrac{ax+b}{cx+d}$ ($c\ne0$, $ad-bc\ne0$)
+- Tập xác định $\mathbb{R}\setminus\left\{-\dfrac{d}{c}\right\}$; $y'=\dfrac{ad-bc}{(cx+d)^2}$ **không đổi dấu**, nên hàm đơn điệu trên từng khoảng xác định và **không có cực trị**.
+- $\lim_{x\to\pm\infty}y=\dfrac{a}{c}$: tiệm cận ngang $y=\dfrac{a}{c}$; tiệm cận đứng $x=-\dfrac{d}{c}$; giao hai tiệm cận là **tâm đối xứng** $I\left(-\dfrac{d}{c};\dfrac{a}{c}\right)$ của đồ thị.
+- Hai dáng: $ad-bc>0$ thì đồng biến trên từng khoảng, $ad-bc<0$ thì nghịch biến trên từng khoảng. Đồ thị gồm hai nhánh nằm hai bên tiệm cận đứng.
+
+##TC Hàm bậc hai trên bậc nhất $y=\dfrac{ax^2+bx+c}{dx+e}$ ($a,d\ne0$, tử không chia hết cho mẫu)
+- Chia đa thức: $y=\alpha x+\beta+\dfrac{\gamma}{x-x_0}$ với $x_0=-\dfrac{e}{d}$, $\alpha\ne0$, $\gamma\ne0$; tiệm cận đứng $x=x_0$, **tiệm cận xiên** $y=\alpha x+\beta$ (không có tiệm cận ngang).
+- $y'=\alpha-\dfrac{\gamma}{(x-x_0)^2}$: $\alpha\gamma>0$ thì có **hai cực trị** (một cực đại, một cực tiểu) nằm hai bên tiệm cận đứng; $\alpha\gamma<0$ thì đơn điệu trên từng khoảng xác định, không có cực trị. Kết hợp dấu $\alpha$ được bốn dáng đồ thị.
+- Giao của tiệm cận đứng và tiệm cận xiên là tâm đối xứng $I(x_0;\alpha x_0+\beta)$.
+
+##PP Khảo sát và nhận dạng hàm phân thức
+Tìm tập xác định và tính $y'$ để xác định chiều biến thiên; hàm bậc nhất trên bậc nhất chỉ cần xét dấu $ad-bc$.
+Tìm tiệm cận bằng giới hạn (đứng tại nghiệm mẫu, ngang hoặc xiên ở vô cực), lập bảng biến thiên, vẽ qua giao trục.
+Nhận dạng từ đồ thị: tiệm cận đứng cho nghiệm của mẫu, tiệm cận ngang cho $\dfrac{a}{c}$ (hoặc tiệm cận xiên cho thương của phép chia), hướng đi và số cực trị cho dấu $ad-bc$ (hoặc $\alpha\gamma$), giao trục cho phương trình bổ sung.
+Giải hệ lấy hệ số (hệ số chỉ xác định tới một tỉ lệ chung), chọn một hệ số làm chuẩn theo điều kiện đã cho.
+
+##CY
+- Hệ số chỉ xác định tới một tỉ lệ chung, cần điều kiện đi qua điểm hoặc hệ số cho trước.
+- Hàm $y=\dfrac{ax+b}{cx+d}$ với $ad-bc=0$ suy biến thành hằng số, không còn là đồ thị hai nhánh.
+- Tâm đối xứng của hàm phân thức là giao hai tiệm cận, **không** nằm trên đồ thị (khác hàm bậc ba).
+
+=== N P2.6
+@ly_thuyet:
+##TC Đơn điệu của hàm phân thức
+- $y=\dfrac{ax+b}{cx+d}$ có $y'=\dfrac{ad-bc}{(cx+d)^2}$; điều kiện tham số cho dấu của $ad-bc$ (chú ý $c\ne0$ và $ad-bc\ne0$).
+- Đồng biến trên khoảng $(\alpha;\beta)$ $\Leftrightarrow$ $ad-bc>0$ **và** $-\dfrac{d}{c}\notin(\alpha;\beta)$; nghịch biến tương tự với $ad-bc<0$.
+- $y=\dfrac{ax^2+bx+c}{dx+e}$ có dấu $y'$ là dấu của tử số (một tam thức bậc hai): đơn điệu khi tử số không đổi dấu trên tập cần xét (bỏ nghiệm của mẫu).
+
+##TC Cực trị và tiệm cận của hàm bậc hai trên bậc nhất
+- $y=\dfrac{ax^2+bx+c}{dx+e}$ có $y'=\dfrac{g(x)}{(dx+e)^2}$ với $g(x)$ là tam thức bậc hai; có cực đại và cực tiểu $\Leftrightarrow$ $g(x)=0$ có hai nghiệm phân biệt **khác** $-\dfrac{e}{d}$.
+- Nếu tử và mẫu có nghiệm chung thì rút gọn được thành hàm bậc nhất (đồ thị là đường thẳng bị khuyết một điểm): mất tiệm cận đứng, không có cực trị.
+- Số tiệm cận: tiệm cận đứng khi nghiệm của mẫu không là nghiệm của tử; tiệm cận ngang hoặc xiên theo bậc tử so với mẫu; hàm chứa căn xét riêng hai phía $\pm\infty$.
+
+##PP Giải bài tham số về hàm phân thức
+Tìm tập xác định, tính $y'$ rồi nêu rõ điều kiện loại nghiệm mẫu.
+Đơn điệu: giải điều kiện về dấu của $ad-bc$ (bậc hai trên bậc nhất thì tử của $y'$ không đổi dấu); nếu hỏi trên khoảng cho trước thì thêm điều kiện nghiệm mẫu không thuộc khoảng.
+Cực trị: đặt tử $y'$ có hai nghiệm phân biệt ($\Delta>0$) và thế nghiệm mẫu vào tử để loại.
+Tiệm cận: xét mẫu có nghiệm (xét điều kiện rút gọn với tử), tính giới hạn ở vô cực để đếm đường, rồi biện luận theo $m$.
+Tổng hợp điều kiện và kiểm tra các giá trị biên của $m$.
+
+##CY
+- Quên điều kiện $-\dfrac{d}{c}\notin$ khoảng cho trước khi hỏi đơn điệu trên một khoảng.
+- Với $ad-bc=0$ hàm thành hằng số (đồng thời không có tiệm cận đứng), cần xét riêng.
+- Không loại nghiệm trùng với nghiệm mẫu khi đếm cực trị, tiệm cận.
+
+## GHI CHÚ CHO CEO
+- P2.1, P2.2 nêu tâm đối xứng bậc ba bằng hoành độ $x=-\dfrac{b}{3a}$, không dùng điểm uốn (theo brief). Lý thuyết dạng P2.1.1 (H5.1.1), P2.1.2 (H5.2.1) và bẫy của P2.5.7 (H4.5.1) vẫn viết "điểm uốn", $y''$ — trạm soát nhóm không sửa tệp dạng, chờ Thùy chốt.
+- P2.3 có hàm trùng phương: CT 2018 không đưa trùng phương vào phần khảo sát bắt buộc; nhóm giữ vì cây đã có dạng P2.3.6 (tam giác cực trị).
