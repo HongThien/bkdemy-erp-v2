@@ -694,7 +694,7 @@ function TabChuoi(p: ChungProps & {
     return () => el.removeEventListener('scroll', luu)
   }, [gocId, khung])
 
-  const { W, H, GX, HEX } = api.KT_GT
+  const { W, H, GX, HEX, PAD, TOP, HW, HH } = api.KT_GT
   const OX = 12, OY = 12
   const tdCur = new Set(cur ? td.get(cur) ?? [] : [])
   const sauCur = new Set(cur ? [...td].filter(([, ts]) => ts.includes(cur)).map(([id]) => id) : [])
@@ -754,17 +754,25 @@ function TabChuoi(p: ChungProps & {
                   <button className="block w-full rounded-lg px-2.5 py-1.5 text-left hover:bg-slate-100" onClick={() => { setMenu(null); p.onSuaGT(n.id) }}>✎ {laGoc ? 'Sửa mô hình' : 'Sửa / dời giả thiết'}</button>
                 </div>)}
             </div>) })}
+          {/* HÌNH của giả thiết (cộng dồn đường từ gốc) — bấm để xem to */}
+          {nhanhs.map((n) => { const k = bc.khoi.get(n.id); if (!k) return null; return (
+            <div key={'a' + n.id} className="absolute flex items-center justify-center overflow-hidden rounded-lg border border-slate-200 bg-white"
+              style={{ left: OX + k.x + PAD, top: OY + k.y + TOP, width: HW, height: HH, zIndex: 3 }}>
+              {n.anh_cau_hinh
+                ? <a href={n.anh_cau_hinh} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} title="Xem hình to"><img src={n.anh_cau_hinh} alt="" className="max-h-full max-w-full object-contain" style={{ maxHeight: HH - 4, maxWidth: HW - 4 }} /></a>
+                : <span className="text-[11px] text-slate-400">chưa có hình</span>}
+            </div>) })}
           {/* thẻ bài */}
           {[...bc.bai].map(([id, o]) => { const b = baiById.get(id); if (!b) return null; const w = sai.has(id); const khac = (td.get(id) ?? []).filter((t) => t !== bc.boi.get(id)); return (
             <div key={id} onClick={(e) => { e.stopPropagation(); p.onMo(id) }} title={tron(b.phat_bieu)}
-              className={`absolute cursor-pointer overflow-hidden rounded-lg border-[1.5px] px-2 py-[3px] text-[11.5px] leading-tight transition hover:shadow-md ${w ? 'bg-amber-50' : 'bg-white'} ${cur === id ? 'ring-2 ring-blue-500' : tdCur.has(id) ? 'ring-2 ring-blue-300' : sauCur.has(id) ? 'ring-2 ring-emerald-300' : ''}`}
+              className={`absolute cursor-pointer overflow-auto rounded-lg border-[1.5px] px-2 py-[3px] text-[11.5px] leading-tight transition hover:shadow-md ${w ? 'bg-amber-50' : 'bg-white'} ${cur === id ? 'ring-2 ring-blue-500' : tdCur.has(id) ? 'ring-2 ring-blue-300' : sauCur.has(id) ? 'ring-2 ring-emerald-300' : ''}`}
               style={{ left: OX + o.x, top: OY + o.y, width: W, height: H, borderColor: w ? '#f59e0b' : '#94a3b8', zIndex: 3 }}>
               <div className="flex items-center gap-1">
                 <b className="text-[12.5px] text-slate-900">{b.so || '…'}</b>
                 {w && <span className="rounded border border-amber-400 bg-amber-100 px-1 text-[9.5px] font-bold text-amber-800">⚠</span>}
                 {!!khac.length && <span className="ml-auto truncate text-[10px] text-blue-600" title="Tiền đề khác (khác hàng / ở giả thiết trên)">← {khac.map((t) => baiById.get(t)?.so ?? '?').join(', ')}</span>}
               </div>
-              <div className="line-clamp-2 text-slate-500">{tron(b.phat_bieu)}</div>
+              <div className="text-[11.5px] leading-snug text-slate-700"><MathText className="inline">{b.phat_bieu}</MathText></div>
             </div>) })}
         </div>
       </div>
@@ -801,6 +809,7 @@ function TabNhom(p: ChungProps & {
             {!laGoc && <button className="text-blue-600 hover:underline" onClick={() => p.onSuaGT(nid)}>✎ sửa / dời</button>}
           </span>
         </div>
+        {n.anh_cau_hinh && <a href={n.anh_cau_hinh} target="_blank" rel="noreferrer" className="float-right ml-3 mb-2"><img src={n.anh_cau_hinh} alt="" className="h-28 rounded-md border border-slate-200 bg-white object-contain" /></a>}
         <div className="mb-2 rounded-md px-2 py-1 text-[12px] text-white" style={{ background: m.dac }}>
           <b>{laGoc ? 'Giả thiết:' : '+ Giả thiết thêm:'}</b> <MathText className="inline">{(laGoc ? n.gia_thiet : n.gia_thiet_them) || '(chưa ghi)'}</MathText>
         </div>
@@ -821,6 +830,7 @@ function TabNhom(p: ChungProps & {
               </select>
             </div>) })}
         </div>
+        <div className="clear-both" />
         {conCuaNhanh(nid).map((c) => <Hop key={c.id} nid={c.id} />)}
       </div>
     )
@@ -867,11 +877,13 @@ function PopupBai({ L, bai, nhanhById, baiById, duong, doSau, saiTienDe, onDong,
         <div className="grid gap-5 px-5 py-4 md:grid-cols-[1fr_270px]">
           <div className="min-w-0 space-y-3.5">
             <Muc ten="Đề bài">
-              {gt === null ? <span className="text-slate-400">đang lấy giả thiết…</span> : <MathText>{[gt.trim().replace(/[.;]+$/, ''), bai.phat_bieu].filter(Boolean).join('. ')}</MathText>}
+              {/* giả thiết hiệu lực nối bằng "; " ⇒ hiện thành các câu liền nhau (". "), không để dính ".;" */}
+              {gt === null ? <span className="text-slate-400">đang lấy giả thiết…</span>
+                : <MathText>{[gt.split(/\s*;\s*/).map((x) => x.trim().replace(/[.;]+$/, '')).filter(Boolean).join('. '), bai.phat_bieu].filter(Boolean).join('. ')}</MathText>}
             </Muc>
-            <Muc ten="Lời giải / đáp án">
+            <Muc ten="Đáp án chi tiết">
               {cach?.loi_giai
-                ? <div className="rounded-lg border border-emerald-200 bg-emerald-50/60 p-2.5"><MathText>{cach.loi_giai}</MathText></div>
+                ? <div className="rounded-lg border border-emerald-200 bg-emerald-50/60 p-2.5"><MathText className="lg-lien">{cach.loi_giai}</MathText></div>
                 : <span className="text-slate-400">chưa có lời giải</span>}
               {cach?.anh_loi_giai && <div className="mt-2"><Fig src={cach.anh_loi_giai} cap="Hình lời giải" h="h-40" /></div>}
             </Muc>
@@ -882,7 +894,7 @@ function PopupBai({ L, bai, nhanhById, baiById, duong, doSau, saiTienDe, onDong,
               </div>)}
           </div>
           <div className="space-y-3.5">
-            <Muc ten="Hình"><Fig src={anh} h="h-44" /></Muc>
+            <Muc ten="Hình"><Fig src={anh} h="h-52" /></Muc>
             <Muc ten="Giả thiết hiệu lực (gốc → nhánh → riêng)">
               <div className="space-y-1 border-l-[3px] pl-2.5 text-[12px]" style={{ borderColor: MAU[0].dac }}>
                 {/* bài TỰ PHÁT BIỂU (gt_thay_the): giả thiết riêng THAY cả đường gốc → nhánh, không cộng dồn */}

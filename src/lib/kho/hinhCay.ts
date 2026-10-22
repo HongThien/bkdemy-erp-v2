@@ -99,7 +99,8 @@ export const gocCayCua = (L: Luoi) => L.moHinh.filter((m) => !m.neo_baitoan_id &
 // sang PHẢI. Trong khối, chuỗi bài NẰM NGANG: cột = cấp (theo tiền đề cùng khối); bài con ĐẦU TIÊN (theo số) đi tiếp
 // cùng hàng, mỗi bài con sau xuống một hàng mới (vd B1→B2 · B3→B6→B7 · B4 · B5). `boi` = bài trước đã "đặt" bài này
 // (dây vẽ); tiền đề còn lại hiện thành nhãn ở góc thẻ. Mũi tên đi trong KHE giữa các cột, không đè thẻ.
-export const KT_GT = { W: 156, H: 48, GX: 40, GY: 18, PAD: 14, HEX: 40, TOP: 66, CACH_DOC: 56, CACH_NGANG: 110 }
+// HW × HH = ô HÌNH của giả thiết, bên trái khối (Thùy 22/10: mỗi giả thiết phải có hình để hình dung); bài nằm bên phải ô hình.
+export const KT_GT = { W: 210, H: 74, GX: 40, GY: 18, PAD: 14, HEX: 40, TOP: 66, CACH_DOC: 56, CACH_NGANG: 110, HW: 240, HH: 136 }
 export type HopXY = { x: number; y: number; w: number; h: number }
 export type BoCucGT = { khoi: Map<string, HopXY>; bai: Map<string, { x: number; y: number }>; boi: Map<string, string | null>; rong: number; cao: number }
 export function xepGiaThiet(a: {
@@ -107,7 +108,8 @@ export function xepGiaThiet(a: {
   gt: { id: string; cha: string | null; chinh: boolean }[]
   bai: { id: string; gt: string; so: number; tienDe: string[] }[]
 }): BoCucGT {
-  const { W, H, GX, GY, PAD, TOP, CACH_DOC, CACH_NGANG } = KT_GT
+  const { W, H, GX, GY, PAD, TOP, CACH_DOC, CACH_NGANG, HW, HH } = KT_GT
+  const X0 = PAD + HW + 24                                               // bài bắt đầu sau ô hình
   const gtCua = new Map(a.bai.map((b) => [b.id, b.gt])), soCua = new Map(a.bai.map((b) => [b.id, b.so]))
   const boi = new Map<string, string | null>()
   const trong = new Map<string, { lv: Map<string, number>; hang: Map<string, number>; w: number; h: number }>()
@@ -135,7 +137,7 @@ export function xepGiaThiet(a: {
     ds.filter((b) => !cha.get(b.id)!.length).forEach((b) => dat(b.id, maxR + 1, null))
     ds.filter((b) => !hang.has(b.id)).forEach((b) => dat(b.id, maxR + 1, null))
     const soCot = Math.max(1, ...ds.map((b) => lv.get(b.id)!)), soHang = Math.max(1, maxR + 1)
-    trong.set(g.id, { lv, hang, w: Math.max(320, PAD * 2 + soCot * W + (soCot - 1) * GX), h: TOP + soHang * (H + GY) - GY + PAD })
+    trong.set(g.id, { lv, hang, w: X0 + soCot * W + (soCot - 1) * GX + PAD, h: Math.max(TOP + soHang * (H + GY) - GY + PAD, TOP + HH + PAD) })
   }
   const con = (id: string) => a.gt.filter((g) => g.cha === id)
   const khoi = new Map<string, HopXY>()
@@ -152,7 +154,7 @@ export function xepGiaThiet(a: {
   const bai = new Map<string, { x: number; y: number }>()
   for (const [id, k] of khoi) {
     const t = trong.get(id)!
-    for (const [b, r] of t.hang) bai.set(b, { x: k.x + PAD + (t.lv.get(b)! - 1) * (W + GX), y: k.y + TOP + r * (H + GY) })
+    for (const [b, r] of t.hang) bai.set(b, { x: k.x + X0 + (t.lv.get(b)! - 1) * (W + GX), y: k.y + TOP + r * (H + GY) })
   }
   let rong = 0, cao = 0
   for (const k of khoi.values()) { rong = Math.max(rong, k.x + k.w); cao = Math.max(cao, k.y + k.h) }

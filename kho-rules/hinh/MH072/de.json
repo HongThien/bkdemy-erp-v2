@@ -1,0 +1,217 @@
+[
+ {
+  "ma": "BT.08.072.01",
+  "so": "B1",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$.$M$ là trung điểm $BC$. Từ $M$ kẻ $MD, ME$ vuông góc với $AB,AC$. CMR: $ADME$ là hình chữ nhật.",
+  "tien_de": []
+ },
+ {
+  "ma": "BT.08.072.02",
+  "so": "B2",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$.$M$ là trung điểm $BC$. Từ $M$ kẻ $MD, ME$ vuông góc với $AB,AC$. Tìm điều kiện của tam giác $ABC$ để $ADME$ là hình vuông.",
+  "tien_de": [
+   "B1"
+  ]
+ },
+ {
+  "ma": "BT.08.072.03",
+  "so": "B3",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$.$M$ là trung điểm $BC$. Từ $M$ kẻ $MD, ME$ vuông góc với $AB,AC$. CMR: $D, E$ lần lượt là trung điểm của $AB, AC$.",
+  "tien_de": [
+   "B1"
+  ]
+ },
+ {
+  "ma": "BT.08.072.04",
+  "so": "B4",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$.$M$ là trung điểm $BC$. Từ $M$ kẻ $MD, ME$ vuông góc với $AB,AC$. CMR: $DE = \\dfrac{BC}{2}$.",
+  "tien_de": [
+   "B1"
+  ]
+ },
+ {
+  "ma": "BT.08.072.05",
+  "so": "B5",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$.$M$ là trung điểm $BC$. Từ $M$ kẻ $MD, ME$ vuông góc với $AB,AC$. CMR: $\\Delta BDM = \\Delta MEC$.",
+  "tien_de": []
+ },
+ {
+  "ma": "BT.08.072.06",
+  "so": "B6",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$.$M$ là trung điểm $BC$. Từ $M$ kẻ $MD, ME$ vuông góc với $AB,AC$. CMR: $BDEM$ và $DMCE$ là các hình bình hành.",
+  "tien_de": [
+   "B3"
+  ]
+ },
+ {
+  "ma": "BT.08.072.07",
+  "so": "B7",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$.$M$ là trung điểm $BC$. Từ $M$ kẻ $MD, ME$ vuông góc với $AB,AC$. CMR: $DE \\parallel BC$.",
+  "tien_de": [
+   "B1",
+   "B6"
+  ]
+ },
+ {
+  "ma": "BT.08.072.08",
+  "so": "B8",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$.$M$ là trung điểm $BC$. Từ $M$ kẻ $MD, ME$ vuông góc với $AB,AC$. Gọi $P, Q$ lần lượt là trung điểm của $MB, MC$. CMR: $DPQE$ là hình thang.",
+  "tien_de": [
+   "B1"
+  ]
+ },
+ {
+  "ma": "BT.08.072.09",
+  "so": "B9",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$.$M$ là trung điểm $BC$. Từ $M$ kẻ $MD, ME$ vuông góc với $AB,AC$. Gọi $P, Q$ lần lượt là trung điểm của $MB, MC$. Tìm điều kiện của tam giác $ABC$ để $DPQE$ là hình chữ nhật.",
+  "tien_de": [
+   "B8"
+  ]
+ },
+ {
+  "ma": "BT.08.072.10",
+  "so": "B10",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$.$M$ là trung điểm $BC$. Từ $M$ kẻ $MD, ME$ vuông góc với $AB,AC$. Kẻ $AH$ vuông góc với $BC$ ($H \\in BC$). CMR: $DHME$ là hình thang cân.",
+  "tien_de": [
+   "B1",
+   "B3"
+  ]
+ },
+ {
+  "ma": "BT.08.072.11",
+  "so": "B11",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$.$M$ là trung điểm $BC$. Từ $M$ kẻ $MD, ME$ vuông góc với $AB,AC$. Kẻ $AH$ vuông góc với $BC$ ($H \\in BC$). CMR: $\\widehat{DHE} = 90^\\circ$.",
+  "tien_de": [
+   "B3"
+  ]
+ },
+ {
+  "ma": "BT.08.072.12",
+  "so": "B12",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$.$M$ là trung điểm $BC$. Từ $M$ kẻ $MD, ME$ vuông góc với $AB,AC$. Kẻ $AH$ vuông góc với $BC$ ($H \\in BC$). Lấy điểm $K$ đối xứng với $M$ qua $E$. CMR: $AMCK$ là hình thoi.",
+  "tien_de": [
+   "B3"
+  ]
+ },
+ {
+  "ma": "BT.08.072.13",
+  "so": "B13",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$.$M$ là trung điểm $BC$. Từ $M$ kẻ $MD, ME$ vuông góc với $AB,AC$. Kẻ $AH$ vuông góc với $BC$ ($H \\in BC$). Lấy điểm $K$ đối xứng với $M$ qua $E$. Tìm điều kiện của tam giác $ABC$ để $AMCK$ là hình vuông.",
+  "tien_de": [
+   "B12"
+  ]
+ },
+ {
+  "ma": "BT.08.072.14",
+  "so": "B14",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$.$M$ là trung điểm $BC$. Từ $M$ kẻ $MD, ME$ vuông góc với $AB,AC$. Kẻ $AH$ vuông góc với $BC$ ($H \\in BC$). Lấy điểm $K$ đối xứng với $M$ qua $E$. CMR: $ABMK$ là hình bình hành.",
+  "tien_de": [
+   "B1"
+  ]
+ },
+ {
+  "ma": "BT.08.072.15",
+  "so": "B15",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$.$M$ là trung điểm $BC$. Từ $M$ kẻ $MD, ME$ vuông góc với $AB,AC$. Kẻ $AH$ vuông góc với $BC$ ($H \\in BC$). Lấy điểm $K$ đối xứng với $M$ qua $E$. CMR: $ADEK$ là hình bình hành.",
+  "tien_de": [
+   "B1"
+  ]
+ },
+ {
+  "ma": "BT.08.072.16",
+  "so": "B16",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$.$M$ là trung điểm $BC$. Từ $M$ kẻ $MD, ME$ vuông góc với $AB,AC$. Kẻ $AH$ vuông góc với $BC$ ($H \\in BC$). Lấy điểm $K$ đối xứng với $M$ qua $E$. CMR: $AM, DE, BK$ đồng quy.",
+  "tien_de": [
+   "B14"
+  ]
+ },
+ {
+  "ma": "BT.08.072.17",
+  "so": "B17",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$.$M$ là trung điểm $BC$. Từ $M$ kẻ $MD, ME$ vuông góc với $AB,AC$. Kẻ $AH$ vuông góc với $BC$ ($H \\in BC$). Lấy điểm $K$ đối xứng với $M$ qua $E$. Gọi $O$ là trung điểm của $AM$. CMR: $B, O, K$ thẳng hàng.",
+  "tien_de": [
+   "B14"
+  ]
+ },
+ {
+  "ma": "BT.08.072.18",
+  "so": "B18",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$.$M$ là trung điểm $BC$. Từ $M$ kẻ $MD, ME$ vuông góc với $AB,AC$. Kẻ $AH$ vuông góc với $BC$ ($H \\in BC$). Lấy điểm $K$ đối xứng với $M$ qua $E$. Lấy điểm $J$ đối xứng với $B$ qua $E$. CMR: $A, K, J$ thẳng hàng.",
+  "tien_de": [
+   "B3"
+  ]
+ },
+ {
+  "ma": "BT.08.072.19",
+  "so": "B19",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$.$M$ là trung điểm $BC$. Từ $M$ kẻ $MD, ME$ vuông góc với $AB,AC$. Kẻ $AH$ vuông góc với $BC$ ($H \\in BC$). Lấy điểm $K$ đối xứng với $M$ qua $E$. Lấy điểm $I$ đối xứng với $M$ qua $D$. CMR: $AMBI$ là hình thoi.",
+  "tien_de": [
+   "B3"
+  ]
+ },
+ {
+  "ma": "BT.08.072.20",
+  "so": "B20",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$.$M$ là trung điểm $BC$. Từ $M$ kẻ $MD, ME$ vuông góc với $AB,AC$. Kẻ $AH$ vuông góc với $BC$ ($H \\in BC$). Lấy điểm $K$ đối xứng với $M$ qua $E$. Lấy điểm $I$ đối xứng với $M$ qua $D$. CMR: $AEDI$ là hình bình hành.",
+  "tien_de": [
+   "B1"
+  ]
+ },
+ {
+  "ma": "BT.08.072.21",
+  "so": "B21",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$.$M$ là trung điểm $BC$. Từ $M$ kẻ $MD, ME$ vuông góc với $AB,AC$. Kẻ $AH$ vuông góc với $BC$ ($H \\in BC$). Lấy điểm $K$ đối xứng với $M$ qua $E$. Lấy điểm $I$ đối xứng với $M$ qua $D$. CMR: $A, I, K$ thẳng hàng.",
+  "tien_de": [
+   "B12",
+   "B19"
+  ]
+ },
+ {
+  "ma": "BT.08.072.22",
+  "so": "B22",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$.$M$ là trung điểm $BC$. Từ $M$ kẻ $MD, ME$ vuông góc với $AB,AC$. Kẻ $AH$ vuông góc với $BC$ ($H \\in BC$). Lấy điểm $K$ đối xứng với $M$ qua $E$. Lấy điểm $I$ đối xứng với $M$ qua $D$. CMR: $A$ là trung điểm của $IK$.",
+  "tien_de": [
+   "B21"
+  ]
+ },
+ {
+  "ma": "BT.08.072.23",
+  "so": "B23",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$.$M$ là trung điểm $BC$. Từ $M$ kẻ $MD, ME$ vuông góc với $AB,AC$. Kẻ $AH$ vuông góc với $BC$ ($H \\in BC$). Lấy điểm $K$ đối xứng với $M$ qua $E$. Lấy điểm $I$ đối xứng với $M$ qua $D$. CMR: $AM, DK, EI$ đồng quy.",
+  "tien_de": [
+   "B21"
+  ]
+ },
+ {
+  "ma": "BT.08.072.24",
+  "so": "B24",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$.$M$ là trung điểm $BC$. Từ $M$ kẻ $MD, ME$ vuông góc với $AB,AC$. Kẻ $AH$ vuông góc với $BC$ ($H \\in BC$). Lấy điểm $K$ đối xứng với $M$ qua $E$. Lấy điểm $I$ đối xứng với $M$ qua $D$. Kẻ $MF$ vuông góc với $AK$ ($F \\in AK$). CMR: $DF \\perp EF$.",
+  "tien_de": [
+   "B1"
+  ]
+ },
+ {
+  "ma": "BT.08.072.25",
+  "so": "B25",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$.$M$ là trung điểm $BC$. Từ $M$ kẻ $MD, ME$ vuông góc với $AB,AC$. Kẻ $AH$ vuông góc với $BC$ ($H \\in BC$). Lấy điểm $K$ đối xứng với $M$ qua $E$. Lấy điểm $I$ đối xứng với $M$ qua $D$. Kẻ $MF$ vuông góc với $AK$ ($F \\in AK$). CMR: $DAFE$ là hình thang cân.",
+  "tien_de": [
+   "B24"
+  ]
+ },
+ {
+  "ma": "BT.08.072.26",
+  "so": "B26",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$.$M$ là trung điểm $BC$. Từ $M$ kẻ $MD, ME$ vuông góc với $AB,AC$. Kẻ $AH$ vuông góc với $BC$ ($H \\in BC$). Lấy điểm $K$ đối xứng với $M$ qua $E$. Lấy điểm $I$ đối xứng với $M$ qua $D$. Kẻ $MF$ vuông góc với $AK$ ($F \\in AK$). CMR: $\\Delta DFE = \\Delta DME$.",
+  "tien_de": [
+   "B24"
+  ]
+ },
+ {
+  "ma": "BT.08.072.27",
+  "so": "B27",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$.$M$ là trung điểm $BC$. Từ $M$ kẻ $MD, ME$ vuông góc với $AB,AC$. Kẻ $AH$ vuông góc với $BC$ ($H \\in BC$). Lấy điểm $K$ đối xứng với $M$ qua $E$. Lấy điểm $I$ đối xứng với $M$ qua $D$. Kẻ $MF$ vuông góc với $AK$ ($F \\in AK$). CMR: $\\widehat{FDA} = \\widehat{FAE}$.",
+  "tien_de": [
+   "B26"
+  ]
+ }
+]
