@@ -77294,3 +77294,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - Thùy xoá NNB00914/00915, thêm NNB01656 (Tính chất chia hết của biểu thức, dưới Chia hết › Nâng cao) + dạng NDB01362/01363 (tích bằng 0 số tự nhiên) + NDB01368/01369 (chứng minh chia hết); sửa NDB00375/00393/00353/01223/01224/01301.
 - Điền (ghi-dang-moi-2210.mjs --ghi, chỉ ô rỗng, KaTeX + số liệu đạt): LT+2 VD cho 4 dạng + mô tả + LT nhóm NNB01656. Quy ước tích bằng 0 theo kho (T…708/710/1026): xét từng thừa số, loại giá trị không là số tự nhiên.
 - Phân lại: bdm-b3-xuat-lo 6 --hang --lai-ai "chia hết|vdots|chứng minh|tích|=0" --dot ct2210 → 5 lô Sonnet → mẫu 90/90 (cao 88/88, vừa 2/2) → khop-lai-hang --ghi: 219 câu · cao 120 (gán mới +29, đổi dạng AI cũ 1) · vừa 64 · trống 35. Hàng K6 sau: 65 chưa chắc + 43 thiếu dạng.
+
+## 22/10 (tiếp) — K10: Thùy thêm 4 dạng mới + sửa mô tả 4 dạng ⇒ phân dạng lại (lai2210b)
+- Dạng mới: NDB01367 (tan + cot) · NDB01371 (sơ đồ Ven) · NDB01375 (min max từ HỆ có sẵn) · NDB01377 (min max từ MIỀN NGHIỆM có sẵn). Sửa mô tả: NDB00562, NDB00828, NDB00524 (+ 00550/00552/00557 …).
+- B3: `bdm-b3-xuat-lo.mjs 10 --hang --lai-dang <toàn bộ dạng NCD00087/88 + chuyên đề giá trị lượng giác> --dot lai2210b` ⇒ 14 lô Sonnet (886 câu thật + 90 mẫu) ⇒ gộp (mẫu mức cao 82/83 — 1 "sai" là câu người gán 563 nhưng đúng là tan+cot, tức máy đúng) ⇒ `bdm-b3-khop-lai-hang.mjs --ghi`: cao 668 (gan_cau +34, đổi dạng câu AI 7) · vừa 185 · trống 33. Không đụng gán của người.
+- LT + ví dụ cho 4 dạng mới (`kho-rules/dai/lo/k10-bdm/htl/lt-vd-dang-moi-2210.mjs`): ví dụ lấy từ câu đã xếp (đề + lời giải sách); NDB01377 chưa có câu ⇒ 2 ví dụ SOẠN MỚI + 2 hình dựng bằng code (`figs.mjs` mm1/mm2).
+- Soát câu NGƯỜI đã duyệt ở NDB00563 (không sửa — luật chỉ đụng nguon='ai'): T110030107008 và T110030107065 (biết tan+cot, tính sin; 065 nằm trong mẫu kiểm) ⇒ nên chuyển NDB01367; ba câu T110000000247, T110030105033, T110030105037, T110030107061 giữ 563.

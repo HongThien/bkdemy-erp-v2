@@ -91,6 +91,13 @@ export const FIGS = {
   tt4: { loai: 'mien', mo_ta: { x: [-30, 340], y: [-20, 240], pxu: 1.45, luoi: 100, nhan_truc: { x: [100, 200, 300], y: [100, 200] },
     bpt: [{ a: 4, b: 1, c: 1200, dau: '<=' }, { a: 0, b: 1, c: 200, dau: '<=' }, { a: 1, b: 0, c: 0, dau: '>=' }, { a: 0, b: 1, c: 0, dau: '>=' }],
     diem: [{ x: 0, y: 0, ten: 'O', dx: -16, dy: 16 }, { x: 300, y: 0, ten: 'A', dx: 12, dy: 18 }, { x: 250, y: 200, ten: 'B' }, { x: 0, y: 200, ten: 'C', dx: -18 }] } },
+  // ───────── NDB01377 min max từ MIỀN NGHIỆM có sẵn (ví dụ soạn mới 22/10) ─────────
+  mm1: { loai: 'mien', mo_ta: { x: [-0.5, 6.5], y: [-0.5, 5], pxu: 40, nhan_truc: { x: [1, 2, 3, 4, 5, 6], y: [1, 2, 3, 4] },
+    bpt: [{ a: 0, b: 1, c: 1, dau: '>=' }, { a: 3, b: -2, c: 1, dau: '>=' }, { a: 3, b: 2, c: 17, dau: '<=' }],
+    diem: [{ x: 1, y: 1, ten: 'A(1;1)', dx: -50, dy: 18 }, { x: 5, y: 1, ten: 'B(5;1)', dy: 18 }, { x: 3, y: 4, ten: 'C(3;4)', dy: -10 }] } },
+  mm2: { loai: 'mien', mo_ta: { x: [-0.8, 5.5], y: [-0.8, 4.2], pxu: 44, nhan_truc: { x: [1, 2, 3, 4, 5], y: [1, 2, 3, 4] },
+    bpt: [{ a: 1, b: 0, c: 0, dau: '>=' }, { a: 0, b: 1, c: 0, dau: '>=' }, { a: 3, b: 1, c: 12, dau: '<=' }, { a: 1, b: -3, c: -6, dau: '>=' }],
+    diem: [{ x: 0, y: 0, ten: 'O', dx: -16, dy: 16 }, { x: 4, y: 0, ten: 'A(4;0)', dx: 8, dy: -10 }, { x: 3, y: 3, ten: 'B(3;3)' }, { x: 0, y: 2, ten: 'C(0;2)', dx: 8, dy: -8 }] } },
 }
 
 /** dạng → { vd: { <số thứ tự ví dụ 1..>: [key, 'de'|'giai'] }, lt: [key] (chèn cuối khối ##TC đầu tiên) } */

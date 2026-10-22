@@ -1,0 +1,880 @@
+[
+ {
+  "ma_cau": "T110000000335",
+  "loai": "trac_nghiem",
+  "de": "Hệ bất phương trình nào sau đây là hệ bất phương trình bậc nhất $2$ ẩn?",
+  "lua_chon": [
+   "$\\begin{cases} 2xy>1 \\\\ x-2y<2 \\end{cases}$.",
+   "$\\begin{cases} 2x>0 \\\\ -x+2y<2 \\end{cases}$.",
+   "$\\begin{cases} -x^{2}+2y<2 \\\\ 3x-y>-6 \\end{cases}$.",
+   "$\\begin{cases} 2x+y<1 \\\\ 3x-z>-6 \\end{cases}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Hệ bất phương trình bậc nhất hai ẩn là hệ gồm các bất phương trình bậc nhất có tối đa hai ẩn.\n+ Hệ $\\begin{cases} 2xy>1 \\\\ x-2y<2 \\end{cases}$ có chứa hạng tử bậc hai $xy$ nên không phải là hệ bất phương trình bậc nhất hai ẩn.\n+ Hệ $\\begin{cases} -x^{2}+2y<2 \\\\ 3x-y>-6 \\end{cases}$ có chứa hạng tử bậc hai $x^{2}$ nên không phải là hệ bất phương trình bậc nhất hai ẩn.\n+ Hệ $\\begin{cases} 2x+y<1 \\\\ 3x-z>-6 \\end{cases}$ có $3$ ẩn là $x,y,z$ nên không phải là hệ bất phương trình hai ẩn.\n+ Hệ $\\begin{cases} 2x>0 \\\\ -x+2y<2 \\end{cases}$ là hệ bất phương trình bậc nhất hai ẩn $x,y$.\nVậy hệ bất phương trình bậc nhất hai ẩn là $\\begin{cases} 2x>0 \\\\ -x+2y<2. \\end{cases}$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000242",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $3$ đường tròn nhỏ bằng nhau có bán kính $r=2$ nằm trong và tiếp xúc đường tròn lớn (như hình vẽ). Tam giác đều có đỉnh là $3$ tâm của đường tròn. Tính diện tích phần tô đậm (làm tròn đến $1$ chữ số sau dấu phẩy)",
+  "dap_an": "26.3",
+  "loi_giai": "Gọi $A,B,C$ lần lượt là tâm của ba đường tròn nhỏ có bán kính $r=2$, và $O$ là tâm của đường tròn lớn.\nBa đường tròn nhỏ tiếp xúc ngoài đôi một nên tam giác $ABC$ là tam giác đều có độ dài cạnh là\n$a=2r=2\\cdot 2=4.$\nKhoảng cách từ tâm $O$ (trọng tâm tam giác $ABC$) đến các đỉnh $A,B,C$ là\n$OA=OB=OC=\\dfrac{a\\sqrt{3}}{3}=\\dfrac{4\\sqrt{3}}{3}.$\nBán kính đường tròn lớn là\n$R=OA+r=\\dfrac{4\\sqrt{3}}{3}+2.$\nDiện tích của hình tròn lớn là\n$S_{\\left(O\\right)}=\\pi R^{2}=\\pi \\left(2+\\dfrac{4\\sqrt{3}}{3}\\right)^{2}=\\pi \\left(\\dfrac{28+16\\sqrt{3}}{3}\\right).$\nDiện tích tam giác đều $ABC$ là\n$S_{\\triangle ABC}=\\dfrac{a^{2}\\sqrt{3}}{4}=\\dfrac{4^{2}\\sqrt{3}}{4}=4\\sqrt{3}.$\nBa hình quạt tròn góc $60^\\circ$ c …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110020102129",
+  "loai": "trac_nghiem",
+  "de": "Phần mặt phẳng không gạch chéo (kể cả biên) trong hình dưới đây là miền nghiệm của bất phương trình nào?",
+  "lua_chon": [
+   "$2x+3y-4<0$.",
+   "$2x+3y-4\\le 0$.",
+   "$2x+3y-4\\ge 0$.",
+   "$3x+2y+4>0$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Đường thẳng bờ đi qua điểm $\\left(2;0\\right)$ và $\\left(0,5;1\\right)$ nên có phương trình là $2x+3y-4=0$.\nGốc toạ độ $O\\left(0;0\\right)$ thuộc miền không bị gạch chéo.\nThay toạ độ gốc toạ độ $O\\left(0;0\\right)$ vào biểu thức $f\\left(x;y\\right)=2x+3y-4$ ta được:\n$f\\left(0;0\\right)=2\\cdot 0+3\\cdot 0-4=-4<0.$\nDo đó miền nghiệm chứa điểm $O\\left(0;0\\right)$ và kể cả bờ tương ứng với bất phương trình $2x+3y-4\\le 0$.\nVậy phần mặt phẳng không gạch chéo là miền nghiệm của bất phương trình $2x+3y-4\\le 0$.",
+  "co_hinh": true,
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110010204080",
+  "loai": "trac_nghiem",
+  "de": "Lớp $10A$ có $40$ học sinh, trong đó có $28$ học sinh tham gia câu lạc bộ thể thao và $19$ học sinh tham gia câu lạc bộ âm nhạc. Có $10$ học sinh không tham gia câu lạc bộ nào. Hỏi có bao nhiêu học sinh chỉ tham gia đúng một câu lạc bộ?",
+  "lua_chon": [
+   "$30$.",
+   "$13$.",
+   "$9$.",
+   "$17$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Gọi $T$ là tập hợp học sinh tham gia câu lạc bộ thể thao, $A$ là tập hợp học sinh tham gia câu lạc bộ âm nhạc.\nTheo giả thiết, $|T|=28$, $|A|=19$.\nSố học sinh tham gia ít nhất một câu lạc bộ là\n$|T\\cup A|=40-10=30.$\nSố học sinh tham gia cả hai câu lạc bộ là\n$|T\\cap A|=|T|+|A|-|T\\cup A|=28+19-30=17.$\nSố học sinh chỉ tham gia đúng một câu lạc bộ là\n$|T\\cup A|-|T\\cap A|=30-17=13.$\nVậy có $13$ học sinh chỉ tham gia đúng một câu lạc bộ.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Bài toán thực tế tập hợp (2 Yếu tố)"
+ },
+ {
+  "ma_cau": "T110000000063",
+  "loai": "trac_nghiem",
+  "de": "Ký hiệu nào sau đây để chỉ $\\sqrt{5}$ không phải là một số hữu tỉ?",
+  "lua_chon": [
+   "$\\sqrt{5}\\notin \\mathbb{Q}$.",
+   "$\\sqrt{5}\\ne \\mathbb{Q}$.",
+   "$\\sqrt{5}⊈\\mathbb{Q}$.",
+   "$\\sqrt{5}\\subset \\mathbb{Q}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ký hiệu $\\notin$ dùng để chỉ một phần tử không thuộc một tập hợp.\nVì $\\sqrt{5}$ là một số vô tỉ nên $\\sqrt{5}$ không thuộc tập hợp các số hữu tỉ $\\mathbb{Q}$, ta viết $\\sqrt{5}\\notin \\mathbb{Q}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110010101105",
+  "loai": "trac_nghiem",
+  "de": "Phát biểu nào sau đây là một mệnh đề?",
+  "lua_chon": [
+   "Hôm nay, bạn làm bài tốt không?",
+   "Hà Nội là thủ đô của Việt Nam.",
+   "Đề thi môn Toán khó quá!",
+   "Hôm nay trời đẹp quá!"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Mệnh đề là một câu khẳng định có thể xác định được tính đúng hoặc sai. Một câu không thể vừa đúng vừa sai.\nXét các phát biểu:\n• \" Hôm nay, bạn làm bài tốt không?\"\\ là câu hỏi nên không phải là mệnh đề;\n• \" Hà Nội là thủ đô của Việt Nam.\"\\ là câu khẳng định đúng, do đó là một mệnh đề;\n• \" Đề thi môn Toán khó quá!\"\\ và \" Hôm nay trời đẹp quá!\"\\ là các câu cảm thán nên không phải là mệnh đề.\nVậy phát biểu là một mệnh đề là: \" Hà Nội là thủ đô của Việt Nam.\".",
+  "nhan_cu": "Mệnh đề › Nhận diện, xét tính đúng sai của mệnh đề. Mệnh đề chứa biến"
+ },
+ {
+  "ma_cau": "T110020201074",
+  "loai": "trac_nghiem",
+  "de": "Hệ bất phương trình nào sau đây là hệ bất phương trình bậc nhất hai ẩn?",
+  "lua_chon": [
+   "$\\begin{cases} x>0 \\\\ x-y^{2}<0 \\\\ y\\le 0 \\end{cases}$.",
+   "$\\begin{cases} x\\ge 0 \\\\ x+3y<1 \\\\ 2x-y\\le 0 \\end{cases}$.",
+   "$\\begin{cases} x^{2}\\ge y \\\\ x+y<0 \\\\ y<0 \\end{cases}$.",
+   "$\\begin{cases} 2x+3y\\le 0 \\\\ x^{2}+y=0 \\\\ y\\ge 0 \\end{cases}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Hệ bất phương trình bậc nhất hai ẩn là hệ mà mỗi bất phương trình trong hệ đều là bất phương trình bậc nhất đối với hai ẩn $x$, $y$.\nHệ thứ nhất chứa $x-y^{2}<0$ có chứa $y^{2}$ nên không phải bất phương trình bậc nhất.\nHệ thứ ba chứa $x^{2}\\ge y$ có chứa $x^{2}$ nên không phải bất phương trình bậc nhất.\nHệ thứ tư chứa $x^{2}+y=0$ có chứa $x^{2}$ nên không phải bất phương trình bậc nhất.\nChỉ có hệ $\\begin{cases} x\\ge 0 \\\\ x+3y<1 \\\\ 2x-y\\le 0 \\end{cases}$ gồm ba bất phương trình đều bậc nhất hai ẩn.",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Nhận diện hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110010103058",
+  "loai": "trac_nghiem",
+  "de": "Cho mệnh đề ``$\\forall x\\in \\mathbb{R},x^{2}-x+7<0$''. Hỏi mệnh đề nào là mệnh đề phủ định của mệnh đề trên?",
+  "lua_chon": [
+   "$\\forall x\\in \\mathbb{R},x^{2}-x+7<0$.",
+   "$\\forall x\\in \\mathbb{R},x^{2}-x+7>0$.",
+   "$\\exists x\\in \\mathbb{R},x^{2}-x+7<0$.",
+   "$\\exists x\\in \\mathbb{R},x^{2}-x+7\\ge 0$."
+  ],
+  "loi_giai": "Mệnh đề phủ định của mệnh đề `$\\forall x\\in \\mathbb{R},x^{2}-x+7<0$'' là `$\\exists x\\in \\mathbb{R},x^{2}-x+7\\ge 0$''.",
+  "nhan_cu": "Mệnh đề › Mệnh đề chứa ký hiệu với mọi, tồn tại. Phủ định của mệnh đề"
+ },
+ {
+  "ma_cau": "T110010202113",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hai tập hợp $A=\\{1;2;4;8;12\\}$ và $B=\\{-1;0;8;10\\}$. Tập hợp $A\\cup B$ có bao nhiêu phần tử?",
+  "dap_an": "8",
+  "loi_giai": "Hợp của hai tập hợp $A$ và $B$ là tập hợp gồm các phần tử thuộc $A$ hoặc thuộc $B$:\n$A\\cup B=\\{-1;0;1;2;4;8;10;12\\}.$\nĐếm số phần tử ta thấy tập hợp $A\\cup B$ có $8$ phần tử.\n(Hoặc áp dụng công thức: $|A\\cup B|=|A|+|B|-|A\\cap B|=5+4-1=8$).",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Các phép toán trên tập hợp"
+ },
+ {
+  "ma_cau": "T110010203051",
+  "loai": "tu_luan",
+  "de": "Cho hai tập hợp con của tập số thực $R$ sau:\n$A = \\{x \\in R|0 \\le x \\le 4\\}$ và $B = \\{x \\in R|2 < x \\le 6\\}$.\nXác định $A \\cap B$ và biểu diễn kết quả trên trục số.",
+  "dap_an": "$(2; 4]$",
+  "loi_giai": "Ta có: $A=[0;4]$ và $B=(2;6]$.\nGiao của hai tập hợp $A$ và $B$ là tập gồm các phần tử vừa thuộc $A$ vừa thuộc $B$.\nDo đó: $A \\cap B = (2; 4]$.\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/3de4f8a0-7ff2-45de-b526-58f175bdc93a.png)",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110020202038",
+  "loai": "trac_nghiem",
+  "de": "Phần không tô đậm trong hình vẽ dưới đây (chứa biên), biểu diễn tập nghiệm của hệ bất phương trình nào trong các hệ bất phương trình sau? [hình]",
+  "lua_chon": [
+   "$\\begin{cases} x - 2y \\le 0 \\\\ x + y \\ge 3 \\end{cases}$",
+   "$\\begin{cases} 2x - y \\ge 0 \\\\ x + 2y \\le 3 \\end{cases}$",
+   "$\\begin{cases} x + 2y < 0 \\\\ 2x + y > 3 \\end{cases}$",
+   "$\\begin{cases} 2x + y \\le 0 \\\\ x - 2y \\ge 3 \\end{cases}$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "- Phương trình các đường thẳng biên:\n+ $d_1$ có phương trình $x - 2y = 0$.\n+ $d_2$ có phương trình $x + y = 3$.\n- Vì đề bài cho miền nghiệm chứa biên nên ta sử dụng các dấu $\\ge$, $\\le$.\n- Chọn điểm $M(2;2)$ thuộc miền nghiệm để thử:\n+ Thay $M$ vào $x - 2y$: $2 - 4 = -2 \\le 0 \\Rightarrow x - 2y \\le 0$.\n+ Thay $M$ vào $x + y$: $2 + 2 = 4 \\ge 3 \\Rightarrow x + y \\ge 3$.\n- Vậy hệ bất phương trình đúng là A.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020201070",
+  "loai": "trac_nghiem",
+  "de": "Hệ bất phương trình nào sau đây là hệ bất phương trình bậc nhất hai ẩn?",
+  "lua_chon": [
+   "$\\begin{cases} 3x+y\\ge 9 \\\\ x-3y\\le 1 \\end{cases}$.",
+   "$\\begin{cases} x^{2}+y>4 \\\\ x+4y\\le -8 \\end{cases}$.",
+   "$\\begin{cases} 3x+2y<1 \\\\ \\text{x-y+xy\\le 4} \\end{cases}$.",
+   "$\\begin{cases} xy>2 \\\\ x-y\\le 6 \\end{cases}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Hệ bất phương trình $\\begin{cases} 3x+y\\ge 9 \\\\ x-3y\\le 1 \\end{cases}$ gồm các bất phương trình bậc nhất hai ẩn $x,y$.\nDo đó, đây là hệ bất phương trình bậc nhất hai ẩn.",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Nhận diện hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110010205033",
+  "loai": "tra_loi_ngan",
+  "de": "Trong một trang trại chăn nuôi, bác sĩ thú y đã thống kê được $63$ con bò có các tình trạng sức khỏe không tốt, cụ thể như sau: số lượng bò bị bệnh: $32$ con, số lượng bò bị chấn thương: $25$ con, số lượng bò bị suy dinh dưỡng: $28$ con, số lượng bò bị bệnh và bị chấn thương: $12$ con, số lượng bò bị bệnh và bị suy dinh dưỡng: $8$ con, số lượng bò bị chấn thương và bị suy dinh dưỡng: $9$ con. Biết rằng mỗi con bò mắc cả ba tình trạng sức khỏe không tốt sẽ được tách chuồng và theo dõi sức khỏe riêng. Hãy tính số lượng bò bị tách chuồng.",
+  "dap_an": "7",
+  "loi_giai": "Gọi $B$, $C$, $S$ lần lượt là tập hợp các con bò bị bệnh, bị chấn thương, bị suy dinh dưỡng.\nTheo giả thiết $n\\left(B\\right)=32$, $n\\left(C\\right)=25$, $n\\left(S\\right)=28$, $n\\left(B\\capC\\right)=12$, $n\\left(B\\capS\\right)=8$, $n\\left(C\\capS\\right)=9$ và $n\\left(B\\cupC\\cupS\\right)=63$.\nSố bò bị tách chuồng chính là số bò mắc cả ba tình trạng, tức là $n\\left(B\\capC\\capS\\right)$.\nÁp dụng công thức bao hàm - loại trừ cho ba tập hợp:\n$n\\left(B\\cupC\\cupS\\right)=n\\left(B\\right)+n\\left(C\\right)+n\\left(S\\right)-n\\left(B\\capC\\right)-n\\left(B\\capS\\right)-n\\left(C\\capS\\right)+n\\left(B\\capC\\capS\\right).$\nThay số ta được\n$63=32+25+28-12-8-9+n\\left(B\\capC\\capS\\right)=56+n\\left(B\\capC\\capS\\right).$\nSuy ra  …",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Bài toán thực tế tập hợp (3 yếu tố)"
+ },
+ {
+  "ma_cau": "T110000000067",
+  "loai": "trac_nghiem",
+  "de": "Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "Hai vectơ $\\overrightarrow{a}$ và $\\overrightarrow{b}$ được gọi là bằng nhau nếu chúng cùng phương và cùng độ dài.",
+   "Hai vectơ $\\overrightarrow{a}$ và $\\overrightarrow{b}$ được gọi là bằng nhau nếu chúng cùng độ dài.",
+   "Hai vectơ $\\overrightarrow{a}$ và $\\overrightarrow{b}$ được gọi là bằng nhau nếu chúng cùng hướng và cùng độ dài.",
+   "Hai vectơ $\\overrightarrow{a}$ và $\\overrightarrow{b}$ được gọi là bằng nhau nếu $\\overrightarrow{a}^{2}=\\overrightarrow{b}^{2}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Theo định nghĩa, hai vectơ $\\overrightarrow{a}$ và $\\overrightarrow{b}$ được gọi là bằng nhau, kí hiệu $\\overrightarrow{a}=\\overrightarrow{b}$, nếu chúng cùng hướng và cùng độ dài.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110020201081",
+  "loai": "trac_nghiem",
+  "de": "Trong các hệ bất phương trình sau, hệ bất phương trình nào là hệ bất phương trình bậc nhất hai ẩn?",
+  "lua_chon": [
+   "$\\begin{cases} x-y>4 \\\\ x^{3}+3y<1 \\end{cases}$.",
+   "$\\begin{cases} 2x-y>4 \\\\ x-3y\\le 1 \\end{cases}$.",
+   "$\\begin{cases} 2x-3y>4 \\\\ 2x+3y^{2}<1 \\end{cases}$.",
+   "$\\begin{cases} x-y\\le 3 \\\\ x+y>-x+xy \\end{cases}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Hệ bất phương trình bậc nhất hai ẩn là hệ gồm hai hay nhiều bất phương trình bậc nhất hai ẩn $x,y$, trong đó mỗi bất phương trình có bậc cao nhất của mỗi ẩn là bậc nhất và không chứa tích các ẩn.\nXét từng hệ bất phương trình:\n• Hệ $\\begin{cases} x-y>4 \\\\ x^{3}+3y<1 \\end{cases}$ chứa $x^{3}$ (bậc ba) nên không phải là hệ bất phương trình bậc nhất hai ẩn.\n• Hệ $\\begin{cases} 2x-y>4 \\\\ x-3y\\le 1 \\end{cases}$ gồm hai bất phương trình bậc nhất hai ẩn nên là hệ bất phương trình bậc nhất hai ẩn.\n• Hệ $\\begin{cases} 2x-3y>4 \\\\ 2x+3y^{2}<1 \\end{cases}$ chứa $y^{2}$ (bậc hai) nên không phải là hệ bất phương trình bậc nhất hai ẩn.\n• Hệ $\\begin{cases} x-y\\le 3 \\\\ x+y>-x+xy \\end{cases}$ chứa tích $xy$ (b …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Nhận diện hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110010201055",
+  "loai": "trac_nghiem",
+  "de": "Cho tập hợp $A = \\{1;2;3;4;5\\}$. Hãy chọn mệnh đề sai",
+  "lua_chon": [
+   "$\\emptyset \\subset A$",
+   "$\\left\\{ 5 \\right\\} \\subset A$",
+   "$\\left\\{ 0;1;2 \\right\\} \\subset A$",
+   "$\\left\\{ 1;2;3;5 \\right\\} \\subset A$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $A = \\{1;2;3;4;5\\}$.\nMệnh đề $A. \\emptyset \\subset A$ đúng vì tập rỗng là tập con của mọi tập hợp.\nMệnh đề $B. \\{5\\} \\subset A$ đúng vì phần tử $5 \\in A$.\nMệnh đề $C. \\{0;1;2\\} \\subset A$ sai vì phần tử $0 \\notin A$.\nMệnh đề $D. \\{1;2;3;5\\} \\subset A$ đúng vì các phần tử $1,2,3,5 \\in A$.\nVậy mệnh đề sai là $C. \\{0;1;2\\} \\subset A$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Tập hợp và các phần tử của tập hợp. Tập con"
+ },
+ {
+  "ma_cau": "T110020101065",
+  "loai": "trac_nghiem",
+  "de": "Với giá trị nào của $b$ để bất phương trình $2x+by<7$ là bất phương trình bậc nhất hai ẩn?",
+  "lua_chon": [
+   "$b\\in \\mathbb{R}$.",
+   "$b<0$.",
+   "$b\\ne 0$.",
+   "$b>0$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Bất phương trình bậc nhất hai ẩn $x,y$ có dạng $ax+by<c$ (hoặc $>,\\le,\\ge$) trong đó $a,b$ không đồng thời bằng $0$.\nỞ đây $a=2\\ne 0$ nên điều kiện $a,b$ không đồng thời bằng $0$ luôn thoả mãn.\nTuy nhiên để bất phương trình thực sự có hai ẩn thì hệ số của $y$ phải khác $0$, tức là $b\\ne 0$.\nNếu $b=0$ thì bất phương trình trở thành $2x<7$, chỉ còn một ẩn $x$.\nVậy điều kiện cần tìm là $b\\ne 0$.",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Nhận diện bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110010101133",
+  "loai": "trac_nghiem",
+  "de": "Cho mệnh đề $P :\"\\exists x\\in \\mathbb{R} :x^{2}<x\"$. Mệnh đề $P$được phát biểu là",
+  "lua_chon": [
+   "Có ít nhất một số thực mà nhỏ hơn bình phương của nó.",
+   "Mọi số thực đều có bình phương nhỏ hơn nó.",
+   "Tất cả số thực đều nhỏ hơn bình phương của nó.",
+   "Có ít nhất một số thực mà có bình phương nhỏ hơn nó."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Kí hiệu $\\exists x\\in \\mathbb{R}$ đọc là \" Tồn tại một số thực $x$\"\\ hoặc \" Có ít nhất một số thực $x$\".\nBất đẳng thức $x^{2}<x$ có nghĩa là \" bình phương của số đó nhỏ hơn chính nó\".\nDo đó, mệnh đề $P :\"\\exists x\\in \\mathbb{R} :x^{2}<x\"$ được phát biểu thành lời là: \" Có ít nhất một số thực mà có bình phương nhỏ hơn nó\".",
+  "nhan_cu": "Mệnh đề › Nhận diện, xét tính đúng sai của mệnh đề. Mệnh đề chứa biến"
+ },
+ {
+  "ma_cau": "T110010101121",
+  "loai": "trac_nghiem",
+  "de": "Cho mệnh đề chứa biến $P\\left(x\\right) :x+2>x^{2}$. Mệnh đề nào sau đây đúng?",
+  "lua_chon": [
+   "$P\\left(5\\right)$.",
+   "$P\\left(-1\\right)$.",
+   "$P\\left(1\\right)$.",
+   "$P\\left(3\\right)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Xét tính đúng sai của các mệnh đề bằng cách thay trực tiếp giá trị của $x$ vào bất đẳng thức $x+2>x^{2}$:\n• Với $x=5$: $5+2>5^{2}\\Leftrightarrow 7>25$ (sai) nên mệnh đề $P\\left(5\\right)$ sai.\n• Với $x=-1$: $-1+2>\\left(-1\\right)^{2}\\Leftrightarrow 1>1$ (sai) nên mệnh đề $P\\left(-1\\right)$ sai.\n• Với $x=1$: $1+2>1^{2}\\Leftrightarrow 3>1$ (đúng) nên mệnh đề $P\\left(1\\right)$ đúng.\n• Với $x=3$: $3+2>3^{2}\\Leftrightarrow 5>9$ (sai) nên mệnh đề $P\\left(3\\right)$ sai.\nVậy mệnh đề đúng là $P\\left(1\\right)$.",
+  "nhan_cu": "Mệnh đề › Nhận diện, xét tính đúng sai của mệnh đề. Mệnh đề chứa biến"
+ },
+ {
+  "ma_cau": "T110010206034",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hai tập hợp $A=\\left[m+1;2m-1\\right],B=\\left(0;6\\right)$. Có bao nhiêu giá trị $m$ nguyên để $A\\subset B$.",
+  "dap_an": "2",
+  "loi_giai": "Để tập hợp $A=\\left[m+1;2m-1\\right]$ là một đoạn khác rỗng thì\n$m+1\\le 2m-1\\Leftrightarrow m\\ge 2.$\nKhi đó, để $A\\subset B=\\left(0;6\\right)$ thì\n$\\begin{cases} m+1>0 \\\\ 2m-1<6 \\end{cases}$\n$\\Leftrightarrow \\begin{cases} m>-1 \\\\ m<\\dfrac{7}{2}=3,5. \\end{cases}$\nKết hợp với điều kiện $m \\ge 2$, ta được\n$2\\le m<3,5.$\nVì $m$ là số nguyên nên $m\\in \\{2;3\\}$.\nVậy có $2$ giá trị nguyên của $m$ thoả mãn yêu cầu bài toán.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Bài toán tập hợp chứa tham số m"
+ },
+ {
+  "ma_cau": "T110010102064",
+  "loai": "trac_nghiem",
+  "de": "Trong các mệnh đề sau, mệnh đề nào có mệnh đề đảo đúng?",
+  "lua_chon": [
+   "Nếu tứ giác $ABCD$ là hình chữ nhật thì tứ giác $ABCD$ có hai đường chéo bằng nhau.",
+   "Nếu số nguyên $n$ có chữ số tận cùng là $5$ thì số nguyên $n$ chia hết cho $5$.",
+   "Nếu tứ giác $ABCD$ có hai đường chéo cắt nhau tại trung điểm mỗi đường thì tứ giác $ABCD$ là hình bình hành.",
+   "Nếu tứ giác $ABCD$ là hình thoi thì tứ giác $ABCD$ có hai đường chéo vuông góc với nhau."
+  ],
+  "loi_giai": "Xét mệnh đề đảo của các phương án:\n• Phương án A: `Nếu tứ giác $ABCD$ có hai đường chéo bằng nhau thì tứ giác $ABCD$ là hình chữ nhật''. Đây là mệnh đề sai (vì hình thang cân cũng có hai đường chéo bằng nhau).\n• Phương án B: `Nếu số nguyên $n$ chia hết cho $5$ thì số nguyên $n$ có chữ số tận cùng là $5$''. Đây là mệnh đề sai (vì số nguyên $n$ chia hết cho $5$ có thể có chữ số tận cùng là $0$).\n• Phương án C: `Nếu tứ giác $ABCD$ là hình bình hành thì tứ giác $ABCD$ có hai đường chéo cắt nhau tại trung điểm mỗi đường''. Đây là mệnh đề đúng.\n• Phương án D: `Nếu tứ giác $ABCD$ có hai đường chéo vuông góc với nhau thì tứ giác $ABCD$ là hình thoi''. Đây là mệnh đề sai (vì hình cái diều cũng có hai …",
+  "nhan_cu": "Mệnh đề › Mệnh đề kéo theo, mệnh đề đảo, mệnh đề tương đương"
+ },
+ {
+  "ma_cau": "T110000000095",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $f\\left(x\\right)$ có bảng biến thiên như sau\nHàm số nghịch biến trong khoảng nào dưới đây?",
+  "lua_chon": [
+   "$\\left(1;+\\infty \\right)$.",
+   "$\\left(0;1\\right)$.",
+   "$\\left(-2;2\\right)$.",
+   "$\\left(-\\infty;0\\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Dựa vào bảng biến thiên của hàm số $f\\left(x\\right)$:\nHàm số đồng biến trên các khoảng $\\left(-\\infty;0\\right)$ và $\\left(1;+\\infty \\right)$.\nHàm số nghịch biến trên khoảng $\\left(0;1\\right)$.\nVậy hàm số nghịch biến trong khoảng $\\left(0;1\\right)$.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110010202025",
+  "loai": "trac_nghiem",
+  "de": "Cho hai tập hợp $A = \\{0; 1; 2; 3; 4\\}$ và $B = \\{1; 3; 5\\}$. Tập hợp $A \\cup B$ là tập hợp nào sau đây?",
+  "lua_chon": [
+   "$\\{1; 3\\}$",
+   "$\\{0; 1; 2; 3; 4; 5; 6; 7\\}$",
+   "$\\{0; 1; 2; 3; 4\\}$",
+   "$\\{0; 1; 2; 3; 4; 5\\}$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta có: $A \\cup B = \\{0; 1; 2; 3; 4; 5\\}$.\n$\\Rightarrow$ Chọn D.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Các phép toán trên tập hợp"
+ },
+ {
+  "ma_cau": "T110020101012",
+  "loai": "trac_nghiem",
+  "de": "Trong các bất phương trình sau, bất phương trình nào là bất phương trình bậc nhất hai ẩn?",
+  "lua_chon": [
+   "$xy+x<5$",
+   "$x+y^3\\leq 3$",
+   "$2x^2+3y>4$",
+   "$3^2x+4^3y\\geq 6$"
+  ],
+  "dap_an": "D",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Nhận diện bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110010203095",
+  "loai": "trac_nghiem",
+  "de": "Viết lại $A=\\{x\\in \\mathbb{R}|-2\\le x<1\\}$ dưới dạng tập con của $\\mathbb{R}$ là",
+  "lua_chon": [
+   "$A=\\left[-2;1\\right]$.",
+   "$A=(-2;1]$.",
+   "$A=[-2;1)$.",
+   "$A=\\left(-2;1\\right)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Theo định nghĩa nửa khoảng, tập hợp các số thực $x$ thỏa mãn $-2\\le x<1$ là nửa khoảng $[-2;1)$.\nVậy $A=[-2;1)$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110010206040",
+  "loai": "trac_nghiem",
+  "de": "Cho các tập hợp khác rỗng $A=\\left[-1;5\\right]$, $B=\\left(m+1;+\\infty \\right)$ ($m$ là tham số). Có bao nhiêu giá trị nguyên dương của tham số $m$ để $A\\cap B\\ne \\varnothing$?",
+  "lua_chon": [
+   "$4$.",
+   "$3$.",
+   "$6$.",
+   "$5$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Để $A\\cap B\\ne \\varnothing$ thì khoảng $B=\\left(m+1;+\\infty \\right)$ và đoạn $A=\\left[-1;5\\right]$ phải có ít nhất một phần tử chung.\nĐiều này xảy ra khi và chỉ khi đầu mút trái của tập $B$ nhỏ hơn đầu mút phải của tập $A$, tức là:\n$m+1<5\\Leftrightarrow m<4.$\nVì $m$ là tham số nguyên dương nên $m\\in \\{1;2;3\\}$.\nVậy có $3$ giá trị nguyên dương của tham số $m$ thoả mãn yêu cầu.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Bài toán tập hợp chứa tham số m"
+ },
+ {
+  "ma_cau": "T110010203111",
+  "loai": "tra_loi_ngan",
+  "de": "Cho các tập hợp $A=\\{x\\in \\mathbb{R}||2x-4|<10\\}$, $B=\\{x\\in \\mathbb{R}|8<|-3x+5|\\}$ và $C=\\left[-2;5\\right]$. Đặt $D=\\left(A\\capB\\right)\\cup C$. Hỏi có bao nhiêu số nguyên thuộc tập $D$?",
+  "dap_an": "9",
+  "loi_giai": "Giải các bất phương trình để xác định các tập hợp $A$ và $B$:\n• Tập hợp $A$:\n$|2x-4|<10\\Leftrightarrow -10<2x-4<10\\Leftrightarrow -6<2x<14\\Leftrightarrow -3<x<7\\Rightarrow A=\\left(-3;7\\right).$\n• Tập hợp $B$:\n$|-3x+5|>8\\Leftrightarrow \\left[\\begin{array}{l} -3x+5>8 \\\\ -3x+5<-8 \\end{array}\\right.\\Leftrightarrow \\left[\\begin{array}{l} -3x>3 \\\\ -3x<-13 \\end{array}\\right.\\Leftrightarrow \\left[\\begin{array}{l} x<-1 \\\\ x>\\dfrac{13}{3} \\end{array}\\right.\\Rightarrow B=\\left(-\\infty;-1\\right)\\cup \\left(\\dfrac{13}{3};+\\infty \\right).$\nKhi đó giao của hai tập hợp $A$ và $B$ là\n$A\\cap B=\\left(-3;-1\\right)\\cup \\left(\\dfrac{13}{3};7\\right).$\nHợp của $A\\cap B$ với $C=\\left[-2;5\\right]$ là\n$D=\\left(A\\capB\\r …",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110010101084",
+  "loai": "trac_nghiem",
+  "de": "Trong các câu dưới đây, câu nào là một mệnh đề?",
+  "lua_chon": [
+   "$\\sqrt{5}$ có phải là số vô tỷ không?",
+   "Trời hôm nay thật đẹp!.",
+   "Bạn là học sinh lớp nào?",
+   "Bồ Đào Nha là đội tuyển vô địch Euro 2016."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Mệnh đề là câu khẳng định có tính đúng hoặc sai xác định.\nCâu \" $\\sqrt{5}$ có phải là số vô tỷ không?\"{} là câu hỏi nên không phải mệnh đề.\nCâu \" Trời hôm nay thật đẹp!\"{} là câu cảm thán nên không phải mệnh đề.\nCâu \" Bạn là học sinh lớp nào?\"{} là câu hỏi nên không phải mệnh đề.\nCâu \" Bồ Đào Nha là đội tuyển vô địch Euro 2016\"{} là một khẳng định xác định được tính đúng sai (thực tế là đúng) nên là một mệnh đề.\nVậy chọn đáp án D.",
+  "nhan_cu": "Mệnh đề › Nhận diện, xét tính đúng sai của mệnh đề. Mệnh đề chứa biến"
+ },
+ {
+  "ma_cau": "T110010102075",
+  "loai": "trac_nghiem",
+  "de": "Cách phát biểu nào sau đây không dùng để phát biểu mệnh đề: $A\\Rightarrow B$",
+  "lua_chon": [
+   "Nếu $A$ thì $B$.",
+   "$A$ là điều kiện cần để có $B$.",
+   "$A$ kéo theo $B$.",
+   "$A$ là điều kiện đủ để có $B$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Mệnh đề kéo theo $A\\Rightarrow B$ có các cách phát biểu tương đương sau:\n- \" Nếu $A$ thì $B$\".\n- \" $A$ kéo theo $B$\".\n- \" $A$ là điều kiện đủ để có $B$\".\n- \" $B$ là điều kiện cần để có $A$\".\nPhát biểu \" $A$ là điều kiện cần để có $B$\"\\ tương ứng với mệnh đề $B\\Rightarrow A$.\nVậy phát biểu ở phương án B không dùng để phát biểu mệnh đề $A\\Rightarrow B$.",
+  "nhan_cu": "Mệnh đề › Mệnh đề kéo theo, mệnh đề đảo, mệnh đề tương đương"
+ },
+ {
+  "ma_cau": "T110010101080",
+  "loai": "trac_nghiem",
+  "de": "Trong các câu sau, câu nào là mệnh đề toán học?",
+  "lua_chon": [
+   "Chùa Cổ Lễ là di tích lịch sử văn hoá của tỉnh Nam Định.",
+   "Số $2$ có phải là số nguyên tố không?",
+   "Tổng các góc của một tam giác bằng $180^\\circ$.",
+   "Không được mang điện thoại vào trong phòng thi."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Mệnh đề toán học là một khẳng định về một sự kiện trong toán học, có tính đúng hoặc sai rõ ràng.\nXét các phương án:\n- \" Chùa Cổ Lễ là di tích lịch sử văn hoá của tỉnh Nam Định\"{} là mệnh đề nhưng không phải mệnh đề toán học.\n- \" Số $2$ có phải là số nguyên tố không?\"{} là câu hỏi, không phải mệnh đề.\n- \" Tổng các góc của một tam giác bằng $180^\\circ$\"{} là một khẳng định đúng về đối tượng hình học nên là mệnh đề toán học.\n- \" Không được mang điện thoại vào trong phòng thi\"{} là câu mệnh lệnh, không phải mệnh đề.\nVậy câu \" Tổng các góc của một tam giác bằng $180^\\circ$\"{} là mệnh đề toán học.",
+  "nhan_cu": "Mệnh đề › Nhận diện, xét tính đúng sai của mệnh đề. Mệnh đề chứa biến"
+ },
+ {
+  "ma_cau": "T110010203145",
+  "loai": "trac_nghiem",
+  "de": "Tập hợp $S=\\{x\\in \\mathbb{R}|1<x\\le 2\\}$ được viết lại dưới dạng đoạn, khoảng, nửa khoảng là",
+  "lua_chon": [
+   "$\\left(1;2\\right)$.",
+   "$[1;2)$.",
+   "$\\left[1;2\\right]$.",
+   "$(1;2]$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Theo định nghĩa nửa khoảng, tập hợp các số thực $x$ thoả mãn $1<x\\le 2$ là nửa khoảng $(1;2]$.\nVậy $S=(1;2]$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110020102070",
+  "loai": "trac_nghiem",
+  "de": "Hình nào sau đây biểu diễn miền nghiệm của bất phương trình $x-y<3$?",
+  "lua_chon": [
+   ".",
+   ".",
+   ".",
+   "."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Vẽ đường thẳng $d :x-y=3$ đi qua hai điểm $\\left(3;0\\right)$ và $\\left(0;-3\\right)$.\nVì bất phương trình là $x-y<3$ nên đường thẳng $d$ được vẽ bằng nét đứt (không kể bờ $d$).\nChọn điểm thử là gốc toạ độ $O\\left(0;0\\right)\\notin d$, thay vào bất phương trình ta được $0-0=0<3$ (thỏa mãn).\nDo đó, miền nghiệm của bất phương trình là nửa mặt phẳng bờ $d$ chứa gốc toạ độ $O\\left(0;0\\right)$ (không kể bờ $d$), tương ứng với phần không bị gạch ở hình thứ hai.\nVậy hình biểu diễn miền nghiệm của bất phương trình đã cho là hình ở phương án B.",
+  "co_hinh": true,
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110000000147",
+  "loai": "tra_loi_ngan",
+  "de": "Giá cước của một hãng taxi được tính theo bảng giá như sau:\n$\\begin{array}{|c|} \\hline \\text{\\multicolumn6|c|BẢNG GIÁ CƯỚC} \\\\ \\hline \\text{\\begintabular@l@QUÃNG ĐƯỜNG} \\\\ \\hline x \\text{(km)} \\\\ \\hline \\end{array}$\n& $0<x\\le 0,3$ & $0,3<x\\le 2$ & $2<x\\le 10$ & $10<x\\le 25$ & $x>25$\n\\hline GIÁ CƯỚC & $5\\,000$ đồng &\n$\\begin{array}{|c|} \\hline 20 600 \\\\ \\hline \\text{đồng/km} \\\\ \\hline \\end{array}$\n&\n$\\begin{array}{|c|} \\hline 16 000 \\\\ \\hline \\text{đồng/km} \\\\ \\hline \\end{array}$\n&\n$\\begin{array}{|c|} \\hline 17 600 \\\\ \\hline \\text{đồng/km} \\\\ \\hline \\end{array}$\n&\n$\\begin{array}{|c|} \\hline 15 100 \\\\ \\hline \\text{đồng/km} \\\\ \\hline \\end{array}$\n\\hline \\end{tabular}\nTheo bảng giá trên, nếu hành khách đi quãng đường $1 km$ thì cách tính sẽ là $5 000+\\left(1-0,3\\right)\\times 20 600=19 420$ đồng. Bạn Bình đặt xe của hãng taxi trên để đi từ trường Nguyễn Khuyến về nhà ở Bình Dương với quãng đường là $20 km$. Hỏi số tiền mà bạn Bình phải trả là bao nhiêu?",
+  "dap_an": "344020",
+  "loi_giai": "Quãng đường $20$ km của bạn Bình được chia thành các chặng theo bảng giá cước.\nChặng $0<x\\le 0,3$: tính giá cố định $5\\,000$ đồng.\nChặng $0,3<x\\le 2$ dài $2-0,3=1,7$ km, tiền cước là $1,7\\times 20 600=35 020$ đồng.\nChặng $2<x\\le 10$ dài $10-2=8$ km, tiền cước là $8\\times 16 000=128 000$ đồng.\nPhần còn lại thuộc chặng $10<x\\le 25$ dài $20-10=10$ km, tiền cước là $10\\times 17 600=176 000$ đồng.\nDo đó tổng số tiền phải trả là\n$5 000+35 020+128 000+176 000=344 020$\n(đồng)\n$.$\nVậy bạn Bình phải trả $344 020$ đồng.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110020204020",
+  "loai": "tra_loi_ngan",
+  "de": "Một cửa hàng kinh doanh online dự định phân bổ ngân sách quảng cáo trong một tháng cho hai kênh Facebook và TikTok. Biết rằng tổng ngân sách không vượt quá 80 triệu đồng, số tiền chi cho Facebook không ít hơn 20 triệu đồng và không vượt quá 50 triệu đồng, số tiền chi cho TikTok tối thiểu là 10 triệu đồng và không vượt quá số tiền chi cho Facebook. Biết rằng với mỗi 1 triệu đồng chi cho quảng cáo trên Facebook thì cửa hàng tiếp cận được khoảng 40 nghìn khách hàng, còn với mỗi 1 triệu đồng chi cho quảng cáo trên TikTok thì tiếp cận được khoảng 50 nghìn khách hàng. Số khách hàng mà cửa hàng này có thể tiếp cận được nhiều nhất trong một tháng là bao nhiêu nghìn khách hàng?",
+  "dap_an": "3600",
+  "loi_giai": "Gọi $x$ (triệu đồng), $y$ (triệu đồng) lần lượt là số tiền chi cho quảng cáo trên Facebook và TikTok.\nTheo đề bài, ta có hệ bất phương trình:\n$$\\left\\{\\begin{array}{l}x+y \\leq 80 \\\\ 20 \\leq x \\leq 50 \\\\ y \\geq 10 \\\\ y \\leq x\\end{array}\\right.$$\nSố khách hàng tiếp cận được là $F(x, y)=40x+50y$ (nghìn người).\nVẽ miền nghiệm của hệ bất phương trình, ta được một đa giác có các đỉnh là $A(20;10)$, $B(20;20)$, $C(40;40)$, $D(50;30)$, $E(50;10)$.\nTính giá trị của $F(x, y)$ tại các đỉnh, ta được giá trị lớn nhất là $F(40;40)=3600$.\nVậy số khách hàng tiếp cận được nhiều nhất là 3600 nghìn khách hàng.",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm"
+ },
+ {
+  "ma_cau": "T110020201089",
+  "loai": "trac_nghiem",
+  "de": "Hệ bất phương trình nào sau đây là hệ bất phương trình bậc nhất hai ẩn?",
+  "lua_chon": [
+   "$\\begin{cases} x+2y<0 \\\\ 3x-y\\ge 0 \\end{cases}$.",
+   "$\\begin{cases} x+y^{2}<0 \\\\ y-x>1 \\end{cases}$.",
+   "$\\begin{cases} x+y+z<0 \\\\ y<0 \\end{cases}$.",
+   "$\\begin{cases} -2x+y<3 \\\\ 4x^{2}+3y^{2}<1 \\end{cases}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Hệ bất phương trình bậc nhất hai ẩn là hệ gồm hai hay nhiều bất phương trình bậc nhất hai ẩn.\n- Hệ $\\begin{cases} x+2y<0 \\\\ 3x-y\\ge 0 \\end{cases}$ gồm hai bất phương trình bậc nhất hai ẩn $x,y$ nên là hệ bất phương trình bậc nhất hai ẩn.\n- Hệ $\\begin{cases} x+y^{2}<0 \\\\ y-x>1 \\end{cases}$ chứa $y^{2}$ nên không phải là hệ bất phương trình bậc nhất hai ẩn.\n- Hệ $\\begin{cases} x+y+z<0 \\\\ y<0 \\end{cases}$ chứa ba ẩn $x,y,z$ nên không phải là hệ bất phương trình bậc nhất hai ẩn.\n- Hệ $\\begin{cases} -2x+y<3 \\\\ 4x^{2}+3y^{2}<1 \\end{cases}$ chứa $x^{2},y^{2}$ nên không phải là hệ bất phương trình bậc nhất hai ẩn.",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Nhận diện hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110010201043",
+  "loai": "trac_nghiem",
+  "de": "Cho $A = \\{1; 3; 5\\}$. Tập hợp nào sau đây là tập con của tập $A$?",
+  "lua_chon": [
+   "$\\left\\{1;3\\right\\}$",
+   "$\\left\\{1;3;5;6\\right\\}$",
+   "$\\left\\{\\emptyset\\right\\}$",
+   "$\\left\\{0;1;5\\right\\}$"
+  ],
+  "dap_an": "A",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Tập hợp và các phần tử của tập hợp. Tập con"
+ },
+ {
+  "ma_cau": "T110020204010",
+  "loai": "tra_loi_ngan",
+  "de": "Một phân xưởng có hai máy chuyên dụng I và II để sản xuất hai loại sản phẩm A, B theo đơn đặt hàng. Nếu sản xuất một tấn sản phẩm A thì phân xưởng phải dùng máy I trong 3 giờ, máy II trong 1 giờ và thu được lãi 2 triệu đồng. Nếu sản xuất một tấn sản phẩm loại B thì phân xưởng phải dùng máy I trong 1 giờ, máy II trong 1 giờ và thu được lãi 1,6 triệu đồng. Một máy không thể dùng để sản xuất đồng thời hai loại sản phẩm. Máy I làm việc không quá 6 giờ một ngày, máy II làm việc không quá 4 giờ một ngày. Hỏi số tiền lãi lớn nhất mà phân xưởng đó có thể thu được trong một ngày là bao nhiêu triệu đồng?",
+  "dap_an": "6.8",
+  "loi_giai": "Gọi $x,y$ lần lượt là số tấn sản phẩm loại A và B được sản xuất trong một ngày ($x \\ge 0$, $y \\ge 0$).\nThời gian hoạt động của máy I là $3x+y$ (giờ).\nThời gian hoạt động của máy II là $x+y$ (giờ).\nTa có hệ bất phương trình:\n$$\\begin{cases} 3x+y \\le 6 \\\\ x+y \\le 4 \\\\ x \\ge 0 \\\\ y \\ge 0 \\end{cases}$$\nSố tiền lãi thu được là $T \\left( x,y \\right) = 2x+1,6y$ (triệu đồng).\nMiền nghiệm của hệ bất phương trình là tứ giác có các đỉnh $O(0;0)$, $M(2;0)$, $N(1;3)$, $P(0;4)$.\nTính giá trị của $T \\left( x,y \\right)$ tại các đỉnh:\n$T(0;0) = 0$.\n$T(2;0) = 2 \\cdot 2+1,6 \\cdot 0 = 4$.\n$T(1;3) = 2 \\cdot 1+1,6 \\cdot 3 = 6,8$.\n$T(0;4) = 2 \\cdot 0+1,6 \\cdot 4 = 6,4$.\nGiá trị lớn nhất của $T \\left( x,y \\right)$  …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm"
+ },
+ {
+  "ma_cau": "T110000000357",
+  "loai": "trac_nghiem",
+  "de": "Cho tập hợp $X=\\{x\\in \\mathbb{Z}|x^{2}-2=0\\}$. Mệnh đề nào sau đây là đúng?",
+  "lua_chon": [
+   "$X=\\{-\\sqrt{2}\\}$.",
+   "$X=\\{\\sqrt{2}\\}$.",
+   "$X=\\varnothing$.",
+   "$X=\\{-\\sqrt{2};\\sqrt{2}\\}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Giải phương trình $x^{2}-2=0$ ta được $x=\\sqrt{2}$ hoặc $x=-\\sqrt{2}$.\nTuy nhiên $\\sqrt{2}$ và $-\\sqrt{2}$ đều là số vô tỉ nên không phải số nguyên.\nDo đó không tồn tại $x\\in \\mathbb{Z}$ nào thỏa mãn $x^{2}-2=0$.\nVậy $X=\\varnothing$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000313",
+  "loai": "tu_luan",
+  "de": "Vẽ parabol $\\left(P\\right) :y=-x^{2}+4x-5$.",
+  "loi_giai": "Tập xác định $D=\\mathbb{R}$.\nToạ độ đỉnh $I\\left(2;-1\\right)$.\nTrục đối xứng là đường thẳng $x=2$.\nVì $a=-1<0$ nên bề lõm của parabol quay xuống dưới.\nBảng biến thiên:\nHàm số đồng biến trên khoảng $\\left(-\\infty;2\\right)$ và nghịch biến trên khoảng $\\left(2;+\\infty \\right)$.\nBảng giá trị:\n$\\begin{array}{|c|c|c|c|c|c|} \\hline x & 0 & 1 & 2 & 3 & 4 \\\\ \\hline y & -5 & -2 & -1 & -2 & -5 \\\\ \\hline \\end{array}$\nĐồ thị hàm số:",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110030104001",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $A = \\sin(180^\\circ - \\alpha)\\sin\\alpha - \\cos(180^\\circ - \\alpha)\\cos\\alpha - 500$.",
+  "dap_an": "-499",
+  "loi_giai": "Vì $\\alpha$ và $180^\\circ - \\alpha$ là hai góc bù nhau nên\n$\\sin(180^\\circ - \\alpha) = \\sin\\alpha$, $\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$.\n$A = \\sin^2 \\alpha + \\cos^2 \\alpha - 500 = 1 - 500 = -499$.",
+  "nhan_cu": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ › Rút gọn biểu thức lượng giác sử dụng mối quan hệ lượng giác của hai góc bù hoặc phụ nhau"
+ },
+ {
+  "ma_cau": "T110010201081",
+  "loai": "trac_nghiem",
+  "de": "Tập hợp $A=\\{1;2;3;4;5;6\\}$ có bao nhiêu phần tử?",
+  "lua_chon": [
+   "$64$.",
+   "$15$.",
+   "$6$.",
+   "$3$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Tập hợp $A=\\{1;2;3;4;5;6\\}$ gồm $6$ phần tử là $1,2,3,4,5,6$.\nDo đó số phần tử của tập hợp $A$ là $|A|=6$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Tập hợp và các phần tử của tập hợp. Tập con"
+ },
+ {
+  "ma_cau": "T110020202063",
+  "loai": "trac_nghiem",
+  "de": "Phần không tô đậm trong hình vẽ dưới đây (không chứa biên), biểu diễn tập nghiệm của hệ bất phương trình nào trong các hệ bất phương trình sau? [hình]",
+  "lua_chon": [
+   "$\\begin{cases}x+y\\le 0 \\\\ x-y\\ge 0 \\\\ y\\le 3\\end{cases}$",
+   "$\\begin{cases}2x-y<0 \\\\ 2x+y>0 \\\\ y<3\\end{cases}$",
+   "$\\begin{cases}x-y<0 \\\\ x+y>0 \\\\ y<3\\end{cases}$",
+   "$\\begin{cases}x-2y\\le 0 \\\\ x+2y\\ge 0 \\\\ y\\le 3\\end{cases}$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "- Phương trình 3 đường biên giới hạn miền:\n+ $d_1$: Qua $(0;0)$, $(3;3)$ $\\Rightarrow x-y=0$.\n+ $d_2$: Qua $(0;0)$, $(-3;3)$ $\\Rightarrow x+y=0$.\n+ $d_3$: Đường nằm ngang $y=3$.\n- Vì đề bài cho miền nghiệm không chứa biên nên ta sử dụng các dấu $>, <$.\n- Chọn điểm $M(0;2)$ thuộc miền nghiệm để thử:\n+ Biểu thức $x-y=0-2=-2<0 \\Rightarrow x-y<0$.\n+ Biểu thức $x+y=0+2=2>0 \\Rightarrow x+y>0$.\n+ Tọa độ $y=2<3 \\Rightarrow y<3$.\n- Đối chiếu đáp án, ta chọn hệ C.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110000000418",
+  "loai": "trac_nghiem",
+  "de": "Trong các đẳng thức sau, đẳng thức nào đúng?",
+  "lua_chon": [
+   "$\\sin \\left(180^\\circ-\\alpha \\right)=\\cos \\alpha$.",
+   "$\\sin \\left(180^\\circ-\\alpha \\right)=-\\cos \\alpha$.",
+   "$\\sin \\left(180^\\circ-\\alpha \\right)=-\\sin \\alpha$.",
+   "$\\sin \\left(180^\\circ-\\alpha \\right)=\\sin \\alpha$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Theo công thức giá trị lượng giác của hai góc bù nhau, với mọi góc $\\alpha$ thoả mãn $0^\\circ\\le \\alpha \\le 180^\\circ$, ta có\n$\\sin \\left(180^\\circ-\\alpha \\right)=\\sin \\alpha.$\nVậy đẳng thức đúng là $\\sin \\left(180^\\circ-\\alpha \\right)=\\sin \\alpha$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110010203052",
+  "loai": "tu_luan",
+  "de": "Cho hai tập hợp con của tập số thực $R$ sau:\n$A = \\{x \\in R|x > -5\\}$ và $B = \\{x \\in R|x \\le 0\\}$.\nXác định $A \\cap B$ và biểu diễn kết quả trên trục số.",
+  "dap_an": "$(-5; 0]$",
+  "loi_giai": "Ta có: $A=(-5; +\\infty)$ và $B=(- \\infty;0]$.\nGiao của hai tập hợp $A$ và $B$ là tập gồm các phần tử vừa thuộc $A$ vừa thuộc $B$.\nDo đó: $A \\cap B = (-5; 0]$.\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/4c756048-c23b-4fa7-97c4-5a11c9f1d6ec.png)",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110000000426",
+  "loai": "trac_nghiem",
+  "de": "Cho tập hợp $A=\\{x|x\\in \\mathbb{N},x\\le 4\\}$. Tập hợp $A$ là:",
+  "lua_chon": [
+   "$A=\\{1;2;3;4\\}$.",
+   "$A=\\{0;1;2;3;4\\}$.",
+   "$A=\\{0;1;2;3\\}$.",
+   "$A=\\{1;2;3\\}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Vì $x\\in \\mathbb{N}$ và $x\\le 4$ nên $x\\in \\{0;1;2;3;4\\}$.\nVậy $A=\\{0;1;2;3;4\\}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110020101076",
+  "loai": "trac_nghiem",
+  "de": "Trong các bất phương trình sau, bất phương trình nào là bất phương trình bậc nhất hai ẩn?",
+  "lua_chon": [
+   "$2x^{2}+5y>3$.",
+   "$2x+3y<5$.",
+   "$3x^{2}+2x-4>0$.",
+   "$2x-5y+3z\\le 0$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Bất phương trình bậc nhất hai ẩn có dạng $ax+by<c$ (hoặc $\\le,>,\\ge$) với $a^{2}+b^{2}\\ne 0$.\nXét các phương án:\n• Bất phương trình $2x^{2}+5y>3$ là bất phương trình bậc hai hai ẩn.\n• Bất phương trình $2x+3y<5$ là bất phương trình bậc nhất hai ẩn $x$ và $y$.\n• Bất phương trình $3x^{2}+2x-4>0$ là bất phương trình bậc hai một ẩn.\n• Bất phương trình $2x-5y+3z\\le 0$ là bất phương trình bậc nhất ba ẩn.\nVậy bất phương trình bậc nhất hai ẩn là $2x+3y<5$.",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Nhận diện bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110010203156",
+  "loai": "trac_nghiem",
+  "de": "Cho hai tập hợp $A=\\left(-1;4\\right)$ và $B=\\left(3;5\\right)$. Tập hợp $A\\cap B$ là",
+  "lua_chon": [
+   "$\\left(3;4\\right)$.",
+   "$\\varnothing$.",
+   "$\\left(4;5\\right)$.",
+   "$\\left(-1;5\\right)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Giao của hai tập hợp $A$ và $B$ là tập hợp gồm các phần tử vừa thuộc $A$ vừa thuộc $B$.\nTa có\n$A\\cap B=\\left(-1;4\\right)\\cap \\left(3;5\\right)=\\left(3;4\\right).$\nVậy $A\\cap B=\\left(3;4\\right)$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110020102067",
+  "loai": "trac_nghiem",
+  "de": "Trong các cặp số sau đây, cặp nào không là nghiệm của bất phương trình $2x+y<1$?",
+  "lua_chon": [
+   "$\\left(0;1\\right)$.",
+   "$\\left(0;0\\right)$.",
+   "$\\left(-2;1\\right)$.",
+   "$\\left(3;-7\\right)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Thay tọa độ các điểm vào vế trái của bất phương trình $2x+y<1$:\n- Với cặp số $\\left(0;1\\right)$, ta có $2\\cdot 0+1=1<1$ là khẳng định sai nên $\\left(0;1\\right)$ không là nghiệm của bất phương trình.\n- Với cặp số $\\left(0;0\\right)$, ta có $2\\cdot 0+0=0<1$ là khẳng định đúng nên $\\left(0;0\\right)$ là nghiệm của bất phương trình.\n- Với cặp số $\\left(-2;1\\right)$, ta có $2\\cdot \\left(-2\\right)+1=-3<1$ là khẳng định đúng nên $\\left(-2;1\\right)$ là nghiệm của bất phương trình.\n- Với cặp số $\\left(3;-7\\right)$, ta có $2\\cdot 3+\\left(-7\\right)=-1<1$ là khẳng định đúng nên $\\left(3;-7\\right)$ là nghiệm của bất phương trình.\nVậy cặp số không là nghiệm của bất phương trình là $\\left(0;1\\right)$.",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110010203136",
+  "loai": "trac_nghiem",
+  "de": "Cho hai tập hợp $A=[-5;4)$ và $B=\\left(0;+\\infty \\right)$. Tìm khẳng định đúng.",
+  "lua_chon": [
+   "$B\\setminus A=[-5;+\\infty)$.",
+   "$A\\cap B=\\left(0;4\\right)$.",
+   "$A\\setminus B=[-5;0)$.",
+   "$A\\cup B=\\left(4;+\\infty \\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Biểu diễn hai tập hợp trên trục số:\n- Tập $A=[-5;4)$ là phần để trắng trên trục thứ nhất.\n- Tập $B=\\left(0;+\\infty \\right)$ là phần để trắng trên trục thứ hai.\nGiao của hai tập hợp $A\\cap B$ là phần cùng để trắng trên cả hai trục, ta được $A\\cap B=\\left(0;4\\right)$.\nXét các phương án còn lại:\n- $A\\cup B=[-5;+\\infty)$.\n- $A\\setminus B=\\left[-5;0\\right]$.\n- $B\\setminus A=[4;+\\infty)$.\nVậy khẳng định đúng là $A\\cap B=\\left(0;4\\right)$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110030104028",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\cos x = 0.8$. Giá trị của biểu thức $E = \\sin(90^\\circ - x) - \\cos x + 2 \\cos(90^\\circ - x) - 2 \\sin x$ bằng",
+  "lua_chon": [
+   "1.6",
+   " -1.6",
+   "0",
+   "0.8"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Vì $x$ và $90^\\circ - x$ là hai góc phụ nhau nên\n$\\sin(90^\\circ - x) = \\cos x$, $\\cos(90^\\circ - x) = \\sin x$.\n$E = \\cos x - \\cos x + 2 \\sin x - 2 \\sin x = 0$.\nChọn C.",
+  "nhan_cu": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ › Rút gọn biểu thức lượng giác sử dụng mối quan hệ lượng giác của hai góc bù hoặc phụ nhau"
+ },
+ {
+  "ma_cau": "T110020102064",
+  "loai": "trac_nghiem",
+  "de": "Miền nghiệm của bất phương trình $3x+2y>-6$ (miền không bị gạch bỏ) là",
+  "lua_chon": [
+   "Hình A.",
+   "Hình B.",
+   "Hình C.",
+   "Hình D."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Vẽ đường thẳng $d :3x+2y=-6$ đi qua hai điểm $\\left(-2;0\\right)$ và $\\left(0;-3\\right)$.\nXét gốc toạ độ $O\\left(0;0\\right)$, thay $x=0$, $y=0$ vào vế trái của bất phương trình ta được\n$3\\cdot 0+2\\cdot 0=0>-6.$\nDo đó điểm $O\\left(0;0\\right)$ thuộc miền nghiệm của bất phương trình $3x+2y>-6$.\nVì bất phương trình có dấu $>$ (không chứa dấu bằng) nên miền nghiệm là nửa mặt phẳng bờ $d$ chứa điểm $O\\left(0;0\\right)$ (không kể bờ $d$).\nQuan sát hình vẽ, miền không bị gạch bỏ chứa điểm $O\\left(0;0\\right)$ tương ứng với Hình A.",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110010103083",
+  "loai": "trac_nghiem",
+  "de": "Mệnh đề phủ định của mệnh đề: \" $\\forall x\\in \\mathbb{R},x^{2}\\ge x$ \"\\ là mệnh đề",
+  "lua_chon": [
+   "\" $\\forall x\\in \\mathbb{R},x^{2}\\le x$ \".",
+   "\" $\\exists x\\in \\mathbb{R},x^{2}\\le x$ \".",
+   "\" $\\exists x\\in \\mathbb{R},x^{2}<x$ \".",
+   "\" $\\exists x\\in \\mathbb{R},x^{2}\\ge x$ \"."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Phủ định của lượng từ $\\forall$ là lượng từ $\\exists$, và phủ định của bất đẳng thức $\\ge$ là $<$.\nDo đó, mệnh đề phủ định của mệnh đề \" $\\forall x\\in \\mathbb{R},x^{2}\\ge x$ \"\\ là \" $\\exists x\\in \\mathbb{R},x^{2}<x$ \".",
+  "nhan_cu": "Mệnh đề › Mệnh đề chứa ký hiệu với mọi, tồn tại. Phủ định của mệnh đề"
+ },
+ {
+  "ma_cau": "T110010202123",
+  "loai": "trac_nghiem",
+  "de": "Cho $A=\\{1;7;2;4;9;12\\}$; $B=\\{1;3;7;4\\}$. Tập nào sau đây bằng tập $A\\cap B$?",
+  "lua_chon": [
+   "$\\left\\{1;2;3;4;7;9;12\\right\\}$.",
+   "$\\left\\{2;9;12\\right\\}$.",
+   "$\\left\\{1;4;7\\right\\}$.",
+   "$\\left\\{3\\right\\}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Tập hợp $A\\cap B$ gồm các phần tử vừa thuộc $A$ vừa thuộc $B$.\nTa thấy các phần tử chung của $A$ và $B$ là $1;4;7$.\nVậy $A\\cap B=\\{1;4;7\\}$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Các phép toán trên tập hợp"
+ },
+ {
+  "ma_cau": "T110020102057",
+  "loai": "trac_nghiem",
+  "de": "Cho bất phương trình $2x+4y<5$ có tập nghiệm là $S$. Khẳng định nào sau đây là đúng?",
+  "lua_chon": [
+   "$\\left(1;1\\right)\\in S$.",
+   "$\\left(1;-2\\right)\\in S$.",
+   "$\\left(2;1\\right)\\in S$.",
+   "$\\left(1;5\\right)\\in S$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta thay lần lượt tọa độ các điểm vào bất phương trình $2x+4y<5$:\n• Với $\\left(1;1\\right)$: $2\\left(1\\right)+4\\left(1\\right)=6<5$ (vô lý). Do đó $\\left(1;1\\right)\\notin S$.\n• Với $\\left(1;-2\\right)$: $2\\left(1\\right)+4\\left(-2\\right)=-6<5$ (luôn đúng). Do đó $\\left(1;-2\\right)\\in S$.\n• Với $\\left(2;1\\right)$: $2\\left(2\\right)+4\\left(1\\right)=8<5$ (vô lý). Do đó $\\left(2;1\\right)\\notin S$.\n• Với $\\left(1;5\\right)$: $2\\left(1\\right)+4\\left(5\\right)=22<5$ (vô lý). Do đó $\\left(1;5\\right)\\notin S$.\nVậy khẳng định đúng là $\\left(1;-2\\right)\\in S$.",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110010101114",
+  "loai": "tra_loi_ngan",
+  "de": "Cho mệnh đề $P\\left(x\\right) :\"x^{2}+4x-a<0\"$với $a$ là số nguyên cho trước. Tìm giá trị bé nhất của $a$ để mệnh đề đúng với $x=1$.",
+  "dap_an": "6",
+  "loi_giai": "Mệnh đề $P\\left(x\\right)$ đúng với $x=1$ khi và chỉ khi $P\\left(1\\right)$ là mệnh đề đúng.\nThay $x=1$ vào biểu thức của mệnh đề $P\\left(x\\right)$, ta được\n$1^{2}+4\\cdot 1-a<0\\Leftrightarrow 5-a<0\\Leftrightarrow a>5.$\nVì $a$ là số nguyên nên $a\\in \\{6;7;8;\\dots \\}$.\nDo đó, giá trị bé nhất của $a$ thỏa mãn yêu cầu bài toán là $a=6$.\nVậy giá trị bé nhất của $a$ là $6$.",
+  "nhan_cu": "Mệnh đề › Nhận diện, xét tính đúng sai của mệnh đề. Mệnh đề chứa biến"
+ },
+ {
+  "ma_cau": "T110020202057",
+  "loai": "trac_nghiem",
+  "de": "Phần không tô đậm trong hình vẽ dưới đây (không chứa biên), biểu diễn tập nghiệm của hệ bất phương trình nào trong các hệ bất phương trình sau?",
+  "lua_chon": [
+   "$\\begin{cases}y \\ge 0\\\\ 2x-y \\ge 2\\\\ x+2y \\le 4\\end{cases}$",
+   "$\\begin{cases}y > 0\\\\ x+y > 2\\\\ x-y < 4\\end{cases}$",
+   "$\\begin{cases}y > 0\\\\ x-y > 2\\\\ x+y < 4\\end{cases}$",
+   "$\\begin{cases}y \\le 0\\\\ x-2y \\le 2\\\\ 2x+y \\ge 4\\end{cases}$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Phương trình 3 đường biên giới hạn miền:\n+ $d_1$: Trục $Ox \\Rightarrow y=0$.\n+ $d_2$: Qua $(2;0)$, $(0;-2) \\Rightarrow x-y=2$.\n+ $d_3$: Qua $(4;0)$, $(0;4) \\Rightarrow x+y=4$.\n- Vì đề bài cho miền nghiệm không chứa biên nên ta sử dụng các dấu $>, <$.\n- Chọn điểm $M(3;0.5)$ thuộc miền nghiệm để thử:\n+ Tọa độ $y=0.5 > 0 \\Rightarrow y>0$.\n+ Biểu thức $x-y=3-0.5=2.5 > 2 \\Rightarrow x-y>2$.\n+ Biểu thức $x+y=3+0.5=3.5 < 4 \\Rightarrow x+y<4$.\n- Đối chiếu đáp án, ta chọn hệ C.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020202054",
+  "loai": "trac_nghiem",
+  "de": "Phần không tô đậm trong hình vẽ dưới đây (chứa biên), biểu diễn tập nghiệm của hệ bất phương trình nào trong các hệ bất phương trình sau?",
+  "lua_chon": [
+   "$\\begin{cases}2x+3y\\le6\\\\2x-y\\ge-2\\end{cases}$",
+   "$\\begin{cases}3x-2y>6\\\\x+2y<-2\\end{cases}$",
+   "$\\begin{cases}3x+2y\\ge6\\\\x-2y\\le-2\\end{cases}$",
+   "$\\begin{cases}2x-3y\\le6\\\\2x+y\\ge-2\\end{cases}$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "- Phương trình các đường thẳng biên:\n+ $d_1$ có phương trình $3x+2y=6$.\n+ $d_2$ có phương trình $x-2y=-2$.\n- Vì đề bài cho miền nghiệm chứa biên nên ta sử dụng các dấu $\\ge,\\le$.\n- Chọn điểm $M(2;3)$ thuộc miền nghiệm để thử:\n+ Thay $M$ vào $3x+2y$: $6+6=12\\ge6\\Rightarrow3x+2y\\ge6$.\n+ Thay $M$ vào $x-2y$: $2-6=-4\\le-2\\Rightarrow x-2y\\le-2$.\n- Vậy hệ bất phương trình đúng là C.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110000000393",
+  "loai": "tu_luan",
+  "de": "1) Cho tam giác $ABC$ với $AB=1,BC=3,\\hat{B}=60^\\circ$. Tính độ dài cạnh $AC$ và diện tích của tam giác $ABC$. 2) Cho tam giác $ABC$ có các góc thỏa mãn $\\sin A=2\\sin C\\cos B$. Chứng minh rằng tam giác $\\triangle ABC$ là một tam giác cân.",
+  "loi_giai": "1) Hình vẽ minh hoạ tam giác $ABC$:\nÁp dụng định lí côsin trong tam giác $ABC$, ta có\n$AC^{2}=AB^{2}+BC^{2}\\text{-2\\cdot AB\\cdot BC\\cdot }\\cos B.$\nThay số vào ta được:\n$AC^{2}=1^{2}+3^{2}-2\\cdot 1\\cdot 3\\cdot \\cos 60^\\circ=1+9-6\\cdot \\dfrac{1}{2}\\text{=7\\Rightarrow AC=}\\sqrt{7}.$\nDiện tích tam giác $ABC$ là\n$S=\\dfrac{1}{2}\\text{\\cdot AB\\cdot BC\\cdot }\\sin B=\\dfrac{1}{2}\\cdot 1\\cdot 3\\cdot \\sin 60^\\circ=\\dfrac{3}{2}\\cdot \\dfrac{\\sqrt{3}}{2}=\\dfrac{3\\sqrt{3}}{4}.$\nVậy $AC=\\sqrt{7}$ và $S=\\dfrac{3\\sqrt{3}}{4}$.\n2) Đặt $a=BC$, $b=AC$, $c=AB$ và gọi $R$ là bán kính đường tròn ngoại tiếp tam giác $ABC$.\nTheo định lí sin, ta có\n$\\sin A=\\dfrac{a}{2R},\\sin C=\\dfrac{c}{2R}.$\nTheo hệ quả của định lí cô …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110010203135",
+  "loai": "trac_nghiem",
+  "de": "Cho hai tập hợp $A=[-5;3)$, $B=\\left(1;+\\infty \\right)$. Giao của hai tập hợp $A$ và $B$ là:",
+  "lua_chon": [
+   "$\\left(1;3\\right)$.",
+   "$(1;3]$.",
+   "$[-5;+\\infty)$.",
+   "$\\left[-5;1\\right]$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Giao của hai tập hợp $A$ và $B$ là tập hợp gồm các phần tử vừa thuộc $A$ vừa thuộc $B$.\nDựa vào trục số biểu diễn hai tập hợp $A=[-5;3)$ và $B=\\left(1;+\\infty \\right)$, phần cùng không bị gạch ở cả hai trục là khoảng $\\left(1;3\\right)$.\nDo đó $A\\cap B=\\left(1;3\\right)$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110010101122",
+  "loai": "trac_nghiem",
+  "de": "Trong các câu sau, câu nào là mệnh đề?",
+  "lua_chon": [
+   "$2+3=7$.",
+   "Mùa thu Hà Nội đẹp quá!",
+   "Bạn có khỏe không?",
+   "$2-x<4$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Mệnh đề là một câu khẳng định có tính đúng hoặc sai (không thể vừa đúng vừa sai).\nXét các phương án:\n• \" $2+3=7$\"{} là một câu khẳng định sai nên là một mệnh đề (mệnh đề sai).\n• \" Mùa thu Hà Nội đẹp quá!\"{} là câu cảm thán nên không phải là mệnh đề.\n• \" Bạn có khỏe không?\"{} là câu hỏi nên không phải là mệnh đề.\n• \" $2-x<4$\"{} là mệnh đề chứa biến, chưa thể khẳng định tính đúng sai khi chưa biết giá trị của biến $x$.\nVậy câu là mệnh đề là $2+3=7$.",
+  "nhan_cu": "Mệnh đề › Nhận diện, xét tính đúng sai của mệnh đề. Mệnh đề chứa biến"
+ },
+ {
+  "ma_cau": "T110010103025",
+  "loai": "trac_nghiem",
+  "de": "Mệnh đề “$\\forall x \\in \\mathbb{Q}: x^2 = 2$” khẳng định rằng:",
+  "lua_chon": [
+   "Mọi số hữu tỉ đều có bình phương khác 2 .",
+   "Có một số hữu tỉ mà bình phương của nó khác 2 .",
+   "Mọi số hữu tỉ đều có bình phương bằng 2 .",
+   "Có một số hữu tỉ mà bình phương của nó bằng 2 ."
+  ],
+  "dap_an": "C",
+  "nhan_cu": "Mệnh đề › Mệnh đề chứa ký hiệu với mọi, tồn tại. Phủ định của mệnh đề"
+ },
+ {
+  "ma_cau": "T110010101115",
+  "loai": "trac_nghiem",
+  "de": "Câu nào sau đây không phải là mệnh đề?",
+  "lua_chon": [
+   "Phương trình $x^{2}+x+7=0$ có nghiệm thực.",
+   "Tam giác đều là tam giác có ba cạnh bằng nhau.",
+   "Bạn có chăm học không?",
+   "$\\pi$ là một số hữu tỉ."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Mệnh đề là một câu khẳng định có tính đúng hoặc sai rõ ràng.\nCâu \" Bạn có chăm học không?\"\\ là câu hỏi (câu nghi vấn), không thể xác định được tính đúng hay sai nên không phải là một mệnh đề.",
+  "nhan_cu": "Mệnh đề › Nhận diện, xét tính đúng sai của mệnh đề. Mệnh đề chứa biến"
+ },
+ {
+  "ma_cau": "T110010206038",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hai tập hợp $A=\\left[m-3;m+2\\right]$, $B=\\left(-3;5\\right)$ với $m\\in \\mathbb{R}$. Có bao nhiêu giá trị $m$ nguyên dương để $A\\cap B$ khác tập rỗng?",
+  "dap_an": "7",
+  "loi_giai": "Ta đi tìm điều kiện để $A\\cap B=\\varnothing$ rồi lấy phần bù.\nHai tập $A=\\left[m-3;m+2\\right]$ và $B=\\left(-3;5\\right)$ không giao nhau khi $A$ nằm hoàn toàn bên trái $B$ hoặc hoàn toàn bên phải $B$, tức là\n$m+2\\le -3$\nhoặc\n$m-3\\ge 5.$\nĐiều này tương đương $m\\le -5$ hoặc $m\\ge 8$.\nDo đó $A\\cap B\\ne \\varnothing$ khi và chỉ khi $-5<m<8$.\nCác giá trị $m$ nguyên dương thỏa mãn là $m\\in \\{1;2;3;4;5;6;7\\}$.\nVậy có $7$ giá trị của $m$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Bài toán tập hợp chứa tham số m"
+ },
+ {
+  "ma_cau": "T110000000291",
+  "loai": "trac_nghiem",
+  "de": "Trong các khẳng định sau, khẳng định nào sau đây là đúng?",
+  "lua_chon": [
+   "$\\tan 30^\\circ=\\tan 150^\\circ$.",
+   "$\\sin 120^\\circ=\\cos 60^\\circ$.",
+   "$\\sin 120^\\circ=\\sin 60^\\circ$.",
+   "$\\tan 30^\\circ=\\cot 150^\\circ$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Với hai góc bù nhau ($120^\\circ+60^\\circ=180^\\circ$), ta có tính chất:\n$\\sin 120^\\circ=\\sin \\left(180^\\circ-60^\\circ\\right)=\\sin 60^\\circ.$\nXét các khẳng định còn lại:\n• $\\tan 150^\\circ=\\tan \\left(180^\\circ-30^\\circ\\right)=-\\tan 30^\\circ\\ne \\tan 30^\\circ$.\n• $\\sin 120^\\circ=\\dfrac{\\sqrt{3}}{2}\\ne \\cos 60^\\circ=\\dfrac{1}{2}$.\n• $\\cot 150^\\circ=-\\cot 30^\\circ=-\\sqrt{3}\\ne \\tan 30^\\circ=\\dfrac{\\sqrt{3}}{3}$.\nVậy khẳng định đúng là $\\sin 120^\\circ=\\sin 60^\\circ$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110010103066",
+  "loai": "trac_nghiem",
+  "de": "Mệnh đề phủ định của mệnh đề \" $\\exists x\\in \\mathbb{R},x^{2}>x$\"\\ là",
+  "lua_chon": [
+   "\" $\\forall x\\in \\mathbb{R},x^{2}>x$ \".",
+   "\" $\\exists x\\in \\mathbb{R},x^{2}\\le x$ \".",
+   "\" $\\forall x\\in \\mathbb{R},x^{2}\\le x$ \".",
+   "\" $\\exists x\\in \\mathbb{R},x^{2}<x$ \"."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Mệnh đề đã cho có dạng $P :\"\\exists x\\in \\mathbb{R}, x^{2}>x\"$.\nPhủ định của lượng từ $\\exists$ là lượng từ $\\forall$, và phủ định của bất đẳng thức $x^{2}>x$ là $x^{2}\\le x$.\nDo đó, mệnh đề phủ định của mệnh đề đã cho là\n$\\hat{P} :\"\\forall x\\in \\mathbb{R}, x^{2}\\le x\".$\nVậy ta chọn phương án C.",
+  "nhan_cu": "Mệnh đề › Mệnh đề chứa ký hiệu với mọi, tồn tại. Phủ định của mệnh đề"
+ },
+ {
+  "ma_cau": "T110010203142",
+  "loai": "trac_nghiem",
+  "de": "Tập hợp $M=\\{x\\in \\mathbb{R}|2\\le x<5\\}$. Hãy viết tập $M$ dưới dạng khoảng, nửa khoảng, đoạn.",
+  "lua_chon": [
+   "$M=[2;5)$.",
+   "$M=\\left(2;5\\right)$.",
+   "$M=\\left[2;5\\right]$.",
+   "$M=(2;5]$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có tập hợp $M=\\{x\\in \\mathbb{R}|2\\le x<5\\}$ là tập hợp tất cả các số thực lớn hơn hoặc bằng $2$ và nhỏ hơn $5$.\nDo đó, tập hợp $M$ được viết dưới dạng nửa khoảng là $M=[2;5)$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110000000243",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $\\left(x;y\\right)$ là nghiệm của hệ bất phương trình $\\begin{cases} x+2\\ge 0 \\\\ y\\le 0 \\\\ x-y-4\\le 0 \\end{cases}$. Tìm giá trị nhỏ nhất của $P=x+3y$.",
+  "dap_an": "-20",
+  "loi_giai": "Viết lại hệ bất phương trình ở dạng\n$\\begin{cases} x\\ge -2 \\\\ y\\le 0 \\\\ x-y\\le 4. \\end{cases}$\nVẽ ba đường thẳng biên $d_{1} :x=-2$, $d_{2} :y=0$ và $d_{3} :x-y=4$.\nTọa độ các đỉnh của miền nghiệm:\n- $A=d_{1}\\cap d_{2}\\Rightarrow A\\left(-2;0\\right)$.\n- $B=d_{2}\\cap d_{3}\\Rightarrow B\\left(4;0\\right)$.\n- $C=d_{1}\\cap d_{3}\\Rightarrow C\\left(-2;-6\\right)$.\nMiền nghiệm của hệ bất phương trình là miền tam giác $ABC$ (kể cả bờ).\nVì biểu thức $P\\left(x;y\\right)=x+3y$ là biểu thức bậc nhất hai ẩn và miền nghiệm là tam giác $ABC$ (đa giác lồi bị chặn) nên $P$ đạt giá trị nhỏ nhất tại một trong ba đỉnh của tam giác $ABC$.\nTính giá trị của $P\\left(x;y\\right)$ tại các đỉnh:\n$\\begin{array}{|c|c|c|c|} \\h …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110020102096",
+  "loai": "tu_luan",
+  "de": "Biểu diễn hình học miền nghiệm của bất phương trình $2x+3y\\ge 6$.",
+  "loi_giai": "Vẽ đường thẳng $d :2x+3y=6$ đi qua hai điểm $\\left(3;0\\right)$ và $\\left(0;2\\right)$.\nLấy điểm $O\\left(0;0\\right)$ không thuộc đường thẳng $d$, thay tọa độ của điểm $O$ vào vế trái của bất phương trình ta được $2\\cdot 0+3\\cdot 0=0<6$.\nDo đó, gốc tọa độ $O\\left(0;0\\right)$ không thuộc miền nghiệm của bất phương trình đã cho.\nVậy miền nghiệm của bất phương trình $2x+3y\\ge 6$ là nửa mặt phẳng có bờ là đường thẳng $d$ không chứa gốc tọa độ $O\\left(0;0\\right)$ (kể cả bờ $d$), chính là phần không bị gạch trong hình vẽ trên.",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020102114",
+  "loai": "trac_nghiem",
+  "de": "Cặp số nào sau đây không là nghiệm của bất phương trình $x+2y-3>0$?",
+  "lua_chon": [
+   "$\\left(-2;3\\right)$.",
+   "$\\left(-1;0\\right)$.",
+   "$\\left(-1;4\\right)$.",
+   "$\\left(4;0\\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Cặp số $\\left(x_{0};y_{0}\\right)$ là nghiệm của bất phương trình khi thay vào ta được một mệnh đề đúng.\nVới $\\left(-2;3\\right)$ ta có $-2+2\\cdot 3-3=1>0$ nên đây là nghiệm.\nVới $\\left(-1;0\\right)$ ta có $-1+2\\cdot 0-3=-4$, mà $-4>0$ là sai nên đây không là nghiệm.\nVới $\\left(-1;4\\right)$ ta có $-1+2\\cdot 4-3=4>0$ nên đây là nghiệm.\nVới $\\left(4;0\\right)$ ta có $4+2\\cdot 0-3=1>0$ nên đây là nghiệm.\nVậy cặp số không là nghiệm của bất phương trình là $\\left(-1;0\\right)$.",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110010202030",
+  "loai": "trac_nghiem",
+  "de": "Cho tập hợp $X = \\{x \\in \\mathbb{N} \\mid x < 3\\}$ và $Y = \\{2; 3; 4\\}$. $X \\cup Y$ là tập hợp nào sau đây?",
+  "lua_chon": [
+   "$\\{0; 1; 2; 3; 4; 5\\}$",
+   "$\\{1; 2; 3; 4\\}$",
+   "$\\{0; 1; 2; 3; 4\\}$",
+   "$\\{0; 1; 2; 3; 4; 5; 6\\}$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Liệt kê: $X = \\{0; 1; 2\\}$.\nSuy ra $X \\cup Y = \\{0; 1; 2; 3; 4\\}$.\n\\Rightarrow Chọn C.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Các phép toán trên tập hợp"
+ }
+]

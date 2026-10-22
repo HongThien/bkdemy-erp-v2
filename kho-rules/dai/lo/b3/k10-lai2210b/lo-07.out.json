@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T110000000335",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Hỏi hệ nào là hệ bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110000000242",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: diện tích hình tròn, tam giác đều, có hình."
+ },
+ {
+  "ma_cau": "T110020102129",
+  "dang_bai_id": "NDB00884",
+  "chac": "vua",
+  "ly_do": "Chọn bất phương trình từ miền nghiệm, phải lập đường thẳng; đề phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T110010204080",
+  "dang_bai_id": "NDB00528",
+  "chac": "cao",
+  "ly_do": "Hai tập hợp, tính số phần tử chỉ thuộc đúng một tập."
+ },
+ {
+  "ma_cau": "T110000000063",
+  "dang_bai_id": "NDB00828",
+  "chac": "cao",
+  "ly_do": "Chọn ký hiệu đúng để viết quan hệ phần tử với tập hợp."
+ },
+ {
+  "ma_cau": "T110010101105",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Nhận diện câu là mệnh đề."
+ },
+ {
+  "ma_cau": "T110020201074",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110010103058",
+  "dang_bai_id": "NDB00826",
+  "chac": "cao",
+  "ly_do": "Tìm phủ định của mệnh đề có với mọi."
+ },
+ {
+  "ma_cau": "T110010202113",
+  "dang_bai_id": "NDB00520",
+  "chac": "cao",
+  "ly_do": "Hợp hai tập hợp liệt kê, đếm số phần tử."
+ },
+ {
+  "ma_cau": "T110010203051",
+  "dang_bai_id": "NDB00519",
+  "chac": "cao",
+  "ly_do": "Giao hai tập số thực, biểu diễn trục số."
+ },
+ {
+  "ma_cau": "T110020202038",
+  "dang_bai_id": "NDB00886",
+  "chac": "vua",
+  "ly_do": "Chọn hệ từ miền nghiệm, đáp án khác hệ số nên phải lập đường thẳng; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T110020201070",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110010205033",
+  "dang_bai_id": "NDB00533",
+  "chac": "cao",
+  "ly_do": "Ba tập hợp, tìm số phần tử thuộc cả ba tập."
+ },
+ {
+  "ma_cau": "T110000000067",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Véc tơ: định nghĩa hai vectơ bằng nhau."
+ },
+ {
+  "ma_cau": "T110020201081",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110010201055",
+  "dang_bai_id": "NDB00829",
+  "chac": "cao",
+  "ly_do": "Xét quan hệ tập con giữa các tập hợp."
+ },
+ {
+  "ma_cau": "T110020101065",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Điều kiện tham số để là bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110010101133",
+  "dang_bai_id": "NDB00825",
+  "chac": "cao",
+  "ly_do": "Phát biểu mệnh đề ký hiệu tồn tại bằng lời."
+ },
+ {
+  "ma_cau": "T110010101121",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Mệnh đề chứa biến, xét đúng sai khi thay giá trị."
+ },
+ {
+  "ma_cau": "T110010206034",
+  "dang_bai_id": "NDB00535",
+  "chac": "cao",
+  "ly_do": "Tìm m nguyên để A là tập con của B."
+ },
+ {
+  "ma_cau": "T110010102064",
+  "dang_bai_id": "NDB00820",
+  "chac": "cao",
+  "ly_do": "Tìm mệnh đề có mệnh đề đảo đúng."
+ },
+ {
+  "ma_cau": "T110000000095",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng: đọc khoảng nghịch biến từ bảng biến thiên hàm số (chương Hàm số)."
+ },
+ {
+  "ma_cau": "T110010202025",
+  "dang_bai_id": "NDB00520",
+  "chac": "cao",
+  "ly_do": "Xác định hợp hai tập hợp liệt kê."
+ },
+ {
+  "ma_cau": "T110020101012",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Nhận diện bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110010203095",
+  "dang_bai_id": "NDB00828",
+  "chac": "vua",
+  "ly_do": "Viết lại tập hợp dạng khoảng; cũng có thể xếp dạng trục số."
+ },
+ {
+  "ma_cau": "T110010206040",
+  "dang_bai_id": "NDB00537",
+  "chac": "cao",
+  "ly_do": "Tìm m để A giao B khác rỗng."
+ },
+ {
+  "ma_cau": "T110010203111",
+  "dang_bai_id": "NDB00520",
+  "chac": "vua",
+  "ly_do": "Phép giao rồi hợp tập số có trị tuyệt đối, đếm số nguyên."
+ },
+ {
+  "ma_cau": "T110010101084",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Nhận diện câu là mệnh đề."
+ },
+ {
+  "ma_cau": "T110010102075",
+  "dang_bai_id": "NDB00819",
+  "chac": "cao",
+  "ly_do": "Các cách phát biểu mệnh đề kéo theo."
+ },
+ {
+  "ma_cau": "T110010101080",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Nhận diện câu là mệnh đề toán học."
+ },
+ {
+  "ma_cau": "T110010203145",
+  "dang_bai_id": "NDB00828",
+  "chac": "vua",
+  "ly_do": "Viết lại tập hợp dạng nửa khoảng; cũng có thể xếp dạng trục số."
+ },
+ {
+  "ma_cau": "T110020102070",
+  "dang_bai_id": "NDB00538",
+  "chac": "cao",
+  "ly_do": "Cho bất phương trình, chọn hình biểu diễn miền nghiệm."
+ },
+ {
+  "ma_cau": "T110000000147",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng: bài toán thực tế hàm số cho bởi nhiều khoảng (bảng giá cước)."
+ },
+ {
+  "ma_cau": "T110020204020",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn, lập hệ bất phương trình, tìm max."
+ },
+ {
+  "ma_cau": "T110020201089",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110010201043",
+  "dang_bai_id": "NDB00829",
+  "chac": "cao",
+  "ly_do": "Tìm tập con của tập hợp cho trước."
+ },
+ {
+  "ma_cau": "T110020204010",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn, lập hệ bất phương trình, tìm lãi lớn nhất."
+ },
+ {
+  "ma_cau": "T110000000357",
+  "dang_bai_id": "NDB00828",
+  "chac": "cao",
+  "ly_do": "Xác định tập hợp cho bằng điều kiện, tập rỗng."
+ },
+ {
+  "ma_cau": "T110000000313",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng: vẽ đồ thị parabol (chương Hàm số bậc hai)."
+ },
+ {
+  "ma_cau": "T110030104001",
+  "dang_bai_id": "NDB00556",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức dùng công thức góc bù rồi sin^2+cos^2."
+ },
+ {
+  "ma_cau": "T110010201081",
+  "dang_bai_id": "NDB00828",
+  "chac": "vua",
+  "ly_do": "Đếm số phần tử tập liệt kê; dạng gần nhất là xác định tập hợp."
+ },
+ {
+  "ma_cau": "T110020202063",
+  "dang_bai_id": "NDB00886",
+  "chac": "vua",
+  "ly_do": "Chọn hệ từ miền nghiệm, đáp án khác hệ số nên phải lập đường thẳng; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T110000000418",
+  "dang_bai_id": "NDB00552",
+  "chac": "cao",
+  "ly_do": "Nhận diện công thức sin của hai góc bù nhau."
+ },
+ {
+  "ma_cau": "T110010203052",
+  "dang_bai_id": "NDB00519",
+  "chac": "cao",
+  "ly_do": "Giao hai tập số thực, biểu diễn trục số."
+ },
+ {
+  "ma_cau": "T110000000426",
+  "dang_bai_id": "NDB00828",
+  "chac": "cao",
+  "ly_do": "Viết tập hợp cho bằng điều kiện thành liệt kê."
+ },
+ {
+  "ma_cau": "T110020101076",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Nhận diện bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110010203156",
+  "dang_bai_id": "NDB00519",
+  "chac": "cao",
+  "ly_do": "Giao hai khoảng."
+ },
+ {
+  "ma_cau": "T110020102067",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Xác định cặp số không là nghiệm của bất phương trình."
+ },
+ {
+  "ma_cau": "T110010203136",
+  "dang_bai_id": "NDB00521",
+  "chac": "vua",
+  "ly_do": "Bốn phép toán giao, hợp, hiệu giữa hai tập; lấy dạng học sau cùng."
+ },
+ {
+  "ma_cau": "T110030104028",
+  "dang_bai_id": "NDB00556",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức dùng công thức góc phụ rồi rút gọn."
+ },
+ {
+  "ma_cau": "T110020102064",
+  "dang_bai_id": "NDB00538",
+  "chac": "cao",
+  "ly_do": "Cho bất phương trình, chọn hình biểu diễn miền nghiệm."
+ },
+ {
+  "ma_cau": "T110010103083",
+  "dang_bai_id": "NDB00826",
+  "chac": "cao",
+  "ly_do": "Tìm phủ định của mệnh đề có với mọi."
+ },
+ {
+  "ma_cau": "T110010202123",
+  "dang_bai_id": "NDB00519",
+  "chac": "cao",
+  "ly_do": "Giao hai tập hợp liệt kê."
+ },
+ {
+  "ma_cau": "T110020102057",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Xác định cặp số thuộc tập nghiệm bất phương trình."
+ },
+ {
+  "ma_cau": "T110010101114",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Mệnh đề chứa biến, thay x=1 tìm tham số."
+ },
+ {
+  "ma_cau": "T110020202057",
+  "dang_bai_id": "NDB00886",
+  "chac": "vua",
+  "ly_do": "Chọn hệ từ miền nghiệm, đáp án khác hệ số nên phải lập đường thẳng; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T110020202054",
+  "dang_bai_id": "NDB00886",
+  "chac": "vua",
+  "ly_do": "Chọn hệ từ miền nghiệm, đáp án khác hệ số nên phải lập đường thẳng; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T110000000393",
+  "dang_bai_id": "NDB00772",
+  "chac": "vua",
+  "ly_do": "Hai ý khác dạng: định lí cosin, diện tích và chứng minh tam giác cân."
+ },
+ {
+  "ma_cau": "T110010203135",
+  "dang_bai_id": "NDB00519",
+  "chac": "cao",
+  "ly_do": "Giao hai tập số thực."
+ },
+ {
+  "ma_cau": "T110010101122",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Nhận diện câu là mệnh đề."
+ },
+ {
+  "ma_cau": "T110010103025",
+  "dang_bai_id": "NDB00825",
+  "chac": "cao",
+  "ly_do": "Phát biểu bằng lời mệnh đề ký hiệu với mọi."
+ },
+ {
+  "ma_cau": "T110010101115",
+  "dang_bai_id": "NDB00818",
+  "chac": "cao",
+  "ly_do": "Nhận diện câu không phải mệnh đề."
+ },
+ {
+  "ma_cau": "T110010206038",
+  "dang_bai_id": "NDB00537",
+  "chac": "cao",
+  "ly_do": "Tìm m nguyên dương để A giao B khác rỗng."
+ },
+ {
+  "ma_cau": "T110000000291",
+  "dang_bai_id": "NDB00552",
+  "chac": "cao",
+  "ly_do": "Nhận diện quan hệ giá trị lượng giác của góc bù nhau."
+ },
+ {
+  "ma_cau": "T110010103066",
+  "dang_bai_id": "NDB00826",
+  "chac": "cao",
+  "ly_do": "Tìm phủ định của mệnh đề có tồn tại."
+ },
+ {
+  "ma_cau": "T110010203142",
+  "dang_bai_id": "NDB00828",
+  "chac": "vua",
+  "ly_do": "Viết lại tập hợp dạng nửa khoảng; cũng có thể xếp dạng trục số."
+ },
+ {
+  "ma_cau": "T110000000243",
+  "dang_bai_id": "NDB01375",
+  "chac": "cao",
+  "ly_do": "Cho hệ bất phương trình, tìm min của hàm bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020102096",
+  "dang_bai_id": "NDB00538",
+  "chac": "cao",
+  "ly_do": "Biểu diễn miền nghiệm của bất phương trình cho sẵn."
+ },
+ {
+  "ma_cau": "T110020102114",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Xác định cặp số không là nghiệm của bất phương trình."
+ },
+ {
+  "ma_cau": "T110010202030",
+  "dang_bai_id": "NDB00520",
+  "chac": "cao",
+  "ly_do": "Hợp hai tập hợp, một tập cho bằng điều kiện."
+ }
+]
