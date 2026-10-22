@@ -77,6 +77,15 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
     void napDem(); onChanged?.()
   }
 
+  // "⏭ Để sau" = xuống CUỐI CẢ HÀNG (Thùy 22/10): DB đã xếp câu để sau ra sau (mig 202610221621). Hàng còn câu chưa nạp
+  // ⇒ câu rời trang ngay, nạp bù câu kế tiếp; hàng đã nạp hết ⇒ giữ lại, deSau.xep đặt nó ở cuối.
+  async function deSauCau(c: KhopCau) {
+    await deSau.ghi('toan', c.ma_cau, 'Bản đồ mới › Duyệt kho')
+    if (tong > rows.length) {
+      setRows((prev) => { const n = prev.filter((x) => x.ma_cau !== c.ma_cau); if (n.length < 6) void buThem(); return n })
+    }
+  }
+
   const ten = (d: KhopDem | null, h: KhopHang) => (d ? d[h] : 0)
   const chinhXac = dem && dem.kiem_n > 0 ? Math.round((dem.kiem_giu / dem.kiem_n) * 1000) / 10 : null
 
@@ -123,7 +132,7 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
               {rows.some((c) => nhanXet.dangChoSua('toan', c.ma_cau)) && <li className="list-none"><DongChoSua n={rows.filter((c) => nhanXet.dangChoSua('toan', c.ma_cau)).length} /></li>}
               {deSau.xep(rows.filter((c) => !nhanXet.dangChoSua('toan', c.ma_cau)), (c) => ['toan', c.ma_cau]).map((c) => <CauCard key={c.ma_cau} c={c} hang={hang} dich={dich} onQuyet={quyet} onXem={onXem}
                 nx={nhanXet.cua('toan', c.ma_cau)} onCanSua={nhanXet.vaNX}
-                deSauAt={deSau.luc('toan', c.ma_cau)} onDeSau={() => deSau.ghi('toan', c.ma_cau, 'Bản đồ mới › Duyệt kho')} />)}
+                deSauAt={deSau.luc('toan', c.ma_cau)} onDeSau={() => deSauCau(c)} />)}
               {tong > rows.length && <li className="py-2 text-center text-[12px] text-slate-400">… còn {tong - rows.length} câu, xong câu trên sẽ tự nạp thêm</li>}
             </ul>
           )}
