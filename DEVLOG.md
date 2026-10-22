@@ -77312,3 +77312,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Hàng duyệt (ĐÃ GHI):** +65 gán thẳng (34 đề xuất cũ cùng dạng + 31 từ thiếu dạng) · 160 vừa → `dai_bdm_de_xuat` · 68 trống → `dai_bdm_cau_thieu_dang`. 10 câu có đề xuất cũ dạng X mà máy nay 'cao' dạng Y ⇒ HẠ 'vừa' để duyệt (quy tắc Thùy: đổi dạng ⇒ 100% duyệt). Lưu ý: lần này ghi `--ghi` luôn, bỏ bước chạy thử (logic y hệt lần trước; ĐỔI DẠNG câu AI cũ = 0).
 - **Câu AI-gán kiểm lại (KHÔNG ghi):** 608 cao + 17 vừa giữ nguyên dạng · **16 câu máy đề xuất đổi dạng** (11 cao + 5 vừa) → `kho-rules/dai/k8-phan-lai-doi-dang-2210.html` (THAY bản 12 câu lần trước) chờ Thùy duyệt.
 - Hàng duyệt còn trống 68 (trước 149) nhờ nhóm "Lập biểu thức Đại số" nhận các bài toán thực tế.
+
+## 22/10 (tiếp) — [Hình–Luyện K8] Chuỗi mẫu MH.072 "Hình chữ nhật trong tam giác vuông - Trung điểm M": 26 bài + 7 nhánh từ file của Thùy (ĐÃ GHI)
+- **Thùy:** gửi PDF chuỗi B1–B27 (thân "Chính 1", nhánh phụ, "tiếp nhánh chính" 2–5) ⇒ "làm chuỗi thử trong bản đồ Hình 8 mới luôn đi".
+- **Xếp cây:** thân 1.1–1.7 = B1–B7 · nhánh phụ P,Q rẽ từ 1.1 (B8–B9 = 1.1.1–1.1.2) · "nhánh chính" LỒNG nối tiếp, mỗi nhánh rẽ từ bài cuối đoạn trước: AH từ 1.7 (B10–B11) → K từ 1.7.2 (B12–B16) → I từ 1.7.2.5 (B19–B23) → MF⊥AK từ 1.7.2.5.5 (B24–B27); nhánh phụ O từ B14 (B17), J từ B12 (B18). Lồng là BẮT BUỘC theo luật §3: B21 dùng cả B19 (nhánh I) và B12 (nhánh K). Hệ quả: số hiển thị sâu tới 1.7.2.5.5.4.
+- **Tiền đề** lấy đúng "đi từ" của file; B7 "đi từ B6 hoặc B1" ⇒ chọn B6 (tiền đề là AND, không có OR); B5 không ghi ⇒ không tiền đề. Chưa có lời giải, chưa có hình riêng.
+- **Công cụ:** `scripts/kho/hl-chuoi-mh072.mjs` (dữ liệu inline, chỉ thêm qua fn_hl_them_bai / fn_hl_re_nhanh_tu_bai, 1 transaction, mặc định ROLLBACK, từ chối chạy lại nếu cây ≠ 1 bài). Chạy thử: 0 sai nhánh ⇒ `--ghi`. Mã BT.08.072.02–27, nhánh mới 7. App: "27 bài · 7 nhánh" hiện đúng ở tab Chuỗi.
