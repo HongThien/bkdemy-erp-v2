@@ -35,8 +35,8 @@ const LT = L(
 const VD = [await vd('T110020102101'), await vd('T110020102076'), await vd('T110020102078')].join('\n\n')
 
 let n = 0
-n += (await c.query(`update dai_bdm_dang_bai set ly_thuyet=$2, updated_at=now() where id='NDB01400' and coalesce(ly_thuyet,'')=''`, [LT])).rowCount
-n += (await c.query(`update dai_bdm_dang_bai set vi_du=$2, updated_at=now() where id='NDB01400' and coalesce(vi_du,'')=''`, [VD])).rowCount
+n += (await c.query(`update dai_bdm_dang_bai set ly_thuyet=$1, updated_at=now() where id='NDB01400' and coalesce(ly_thuyet,'')=''`, [LT])).rowCount
+n += (await c.query(`update dai_bdm_dang_bai set vi_du=$1, updated_at=now() where id='NDB01400' and coalesce(vi_du,'')=''`, [VD])).rowCount
 if ((VD.match(/\$/g) || []).length % 2) throw new Error('lẻ dấu $')
 console.log({ truong_ghi: n, ky_vong: 2 })
 if (GHI && n === 2) { await c.query('commit'); console.log('ĐÃ GHI') } else { await c.query('rollback'); console.log(GHI ? 'lệch ⇒ chưa ghi' : 'chạy khô (rollback)') }

@@ -77343,3 +77343,8 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - Làm: mig `202610221734_bdm_khop_them_hgt` — bảng `hgt_bdm_kiem_mau`/`hgt_bdm_tu_choi`; `_bdm_khop_nguon` thêm 4 nhánh hgt (Đ/S vẫn loại); `fn_bdm_khop_dem/hang` gộp hgt (+cột `nhanh`); `fn_bdm_khop_quyet` chuyển câu hgt sang `_bdm_khop_quyet_hgt` (dạng đích phải thuộc chủ đề hgt). UI: nhận xét "Cần sửa" ghi đúng môn (`hgt`), thẻ "Giải tích".
 - Kiểm: chạy mig trong transaction rollback với claims admin: K10 đề xuất 564 (hgt 480 ở Véc tơ), thiếu 228, mẫu 188; `gan` câu hgt → ghi gan_cau nguon=nguoi, xoá đề xuất. Áp thật bằng `--only`. Chưa mở trên app bằng phiên thật.
 - Sai: lỡ gõ `migrate.mjs --help` ⇒ nó thử áp file treo đầu (so_tay_revoke_anon) và FAIL, không áp gì (đúng bài học "migrate trần").
+
+## 22/10 (khuya) — K10 BPT/hệ BPT bậc nhất 2 ẩn: dạng mới NDB01400 + luật "hình đủ số liệu thì duyệt luôn"
+- Làm: B3 lô `k10-lai2210d` (hàng duyệt + câu AI-gán ở 16 dạng của chủ đề NCD00088): 367 câu ⇒ cao 292 · vừa 41 · trống 34; mẫu 90: cao 88 đúng 87 (98,9%; câu sai T110020202041 AI 886 / người 544 — ranh giới cùng hệ số khác chiều). Ghi: gán +47 (2 câu AI đổi sang 886), đề xuất 35, thiếu dạng 34. Luật mới của Thùy đã thêm vào `b3/brief.md`.
+- NDB01400: điền LT + 3 ví dụ từ câu đã xếp (`htl/lt-vd-ndb01400.mjs`).
+- Còn mở: thiếu dạng "lập (hệ) bất phương trình từ bài thực tế", "đếm điểm nguyên thuộc miền nghiệm", "tham số để miền nghiệm có diện tích cho trước".
