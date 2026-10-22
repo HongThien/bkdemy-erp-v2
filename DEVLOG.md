@@ -77318,3 +77318,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Xếp cây:** thân 1.1–1.7 = B1–B7 · nhánh phụ P,Q rẽ từ 1.1 (B8–B9 = 1.1.1–1.1.2) · "nhánh chính" LỒNG nối tiếp, mỗi nhánh rẽ từ bài cuối đoạn trước: AH từ 1.7 (B10–B11) → K từ 1.7.2 (B12–B16) → I từ 1.7.2.5 (B19–B23) → MF⊥AK từ 1.7.2.5.5 (B24–B27); nhánh phụ O từ B14 (B17), J từ B12 (B18). Lồng là BẮT BUỘC theo luật §3: B21 dùng cả B19 (nhánh I) và B12 (nhánh K). Hệ quả: số hiển thị sâu tới 1.7.2.5.5.4.
 - **Tiền đề** lấy đúng "đi từ" của file; B7 "đi từ B6 hoặc B1" ⇒ chọn B6 (tiền đề là AND, không có OR); B5 không ghi ⇒ không tiền đề. Chưa có lời giải, chưa có hình riêng.
 - **Công cụ:** `scripts/kho/hl-chuoi-mh072.mjs` (dữ liệu inline, chỉ thêm qua fn_hl_them_bai / fn_hl_re_nhanh_tu_bai, 1 transaction, mặc định ROLLBACK, từ chối chạy lại nếu cây ≠ 1 bài). Chạy thử: 0 sai nhánh ⇒ `--ghi`. Mã BT.08.072.02–27, nhánh mới 7. App: "27 bài · 7 nhánh" hiện đúng ở tab Chuỗi.
+
+## 22/10 (tiếp) — [ERP] Màn trắng ở Tứ giác · Hình–Luyện: chưa tái hiện được ⇒ thêm khung bắt lỗi cho vùng nội dung
+- **Thùy:** "vào phần Tứ giác Hình luyện là trắng màn hình luôn" (ngay sau khi ghi chuỗi MH.072, bản Production vừa deploy 16:55 từ main).
+- **Đã thử, KHÔNG tái hiện:** dev 5173 + 5174 (code mới nhất) · bản build bundle-minify như Production (`vite build` ra scratchpad, chạy preview 5190 tạm, đăng nhập nhanh) · mở Tứ giác › MH.072 cả 3 tab Chuỗi/Nhóm/Kho bài ⇒ đều hiện "27 bài · 7 nhánh", 0 lỗi console. Đường này không tải chunk lazy nào ⇒ không phải lỗi chunk cũ sau deploy.
+- **Làm:** `src/components/KhungLoi.tsx` (ErrorBoundary) bọc vùng nội dung `NhanSuHome` (key = màn đang mở). Trước đây ERP KHÔNG có ErrorBoundary nào ⇒ 1 màn con ném lỗi lúc vẽ là trắng cả trang, không biết lỗi gì. Giờ: hộp đỏ ghi màn + câu lỗi + 3 dòng stack, nút Thử lại / Tải lại trang; menu trái vẫn dùng được.
+- **Chờ:** Thùy F5 / mở lại sau deploy; nếu còn lỗi, chụp hộp đỏ ⇒ sửa đúng chỗ.

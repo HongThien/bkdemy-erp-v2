@@ -85,6 +85,7 @@ import GayScreen from './gay/GayScreen'
 import DuyetCongScreen from './tacong/DuyetCongScreen'
 import LuongTaScreen from './tacong/LuongTaScreen'
 import ThuChiScreen from './thuchi/ThuChiScreen'
+import KhungLoi from '../components/KhungLoi'
 
 // tk (trưởng khối) chỉ có Chấm MT · gv thêm 'mt' khi là fallback không có trưởng khối (tab tự ẩn nếu buổi không gán MT).
 const tabsCuaVai = (vai: VaiViec): TabKey[] => (vai === 'tk' ? ['mt'] : vai === 'gv' ? ['danhgia', 'ingame', 'mt'] : ['ingame', 'et', 'mt'])
@@ -709,6 +710,7 @@ export default function NhanSuHome({ user }: { user: User }) {
           bảng học phí…) tự nong ra rồi bị overflow-hidden của shell CẮT CỤT không cuộn tới được. Có track,
           root co về đúng bề rộng, phần thân overflow-auto tự cuộn ngang. */}
       <div ref={manRef} className="grid min-h-0 min-w-0 flex-1 grid-cols-[minmax(0,1fr)] grid-rows-[minmax(0,1fr)] overflow-hidden">
+      <KhungLoi key={staffLeaf} ten={staffLeaf}>
       {loading ? (
         <section className="p-8 text-sm text-slate-400">Đang tải…</section>
       ) : laHome(staffLeaf) ? (
@@ -786,6 +788,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : (
         <section className="flex min-h-0 items-center justify-center p-8 text-sm text-slate-400">Chọn một mục bên trái.</section>
       )}
+      </KhungLoi>
       </div>
       </div>
     </div>
