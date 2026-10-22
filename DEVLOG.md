@@ -77289,3 +77289,8 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Các màn duyệt khác KHÔNG dính:** Duyệt câu / Đúng/Sai / Trắc nghiệm AI / Điền ô tải ĐỦ hàng rồi mới xếp ở client; Hình luyện đã tự xử lý offset.
 - **Sửa:** mig `202610221621_bdm_khop_hang_de_sau_xuong_cuoi` (ĐÃ ÁP, `--only`) — DB xếp `(đã để sau?), lúc để sau, ma_cau`, lấy lần bấm gần nhất trong `kho_de_sau` (doi_tuong 'bdm_khop'); tập câu, số đếm, quyền giữ nguyên (ACL không có anon). `KhopBanDoMoiTab`: bấm Để sau mà hàng còn câu chưa nạp ⇒ câu rời trang ngay, nạp bù khi còn < 6 câu.
 - **Kiểm:** `scripts/_test_bdm_khop_de_sau.mjs` (đóng vai tài khoản đã bấm, ROLLBACK): sau sửa K6 câu để sau ở vị trí 79/80 và 52/53, K8/K10 ra khỏi 100 câu đầu, tổng từng hàng không đổi. Trên app (admin, K8 Chưa chắc 159): 20 câu đầu, 0 câu mang nhãn để sau. Chưa bấm thử nút trên app (bấm = ghi thật vào hàng của cả đội).
+
+### 22/10 — [Bản đồ mới · K6] Thùy sửa bản đồ ⇒ điền ô rỗng + phân lại 1 lượt (vòng lặp §14 spec-ban-do-4-tang)
+- Thùy xoá NNB00914/00915, thêm NNB01656 (Tính chất chia hết của biểu thức, dưới Chia hết › Nâng cao) + dạng NDB01362/01363 (tích bằng 0 số tự nhiên) + NDB01368/01369 (chứng minh chia hết); sửa NDB00375/00393/00353/01223/01224/01301.
+- Điền (ghi-dang-moi-2210.mjs --ghi, chỉ ô rỗng, KaTeX + số liệu đạt): LT+2 VD cho 4 dạng + mô tả + LT nhóm NNB01656. Quy ước tích bằng 0 theo kho (T…708/710/1026): xét từng thừa số, loại giá trị không là số tự nhiên.
+- Phân lại: bdm-b3-xuat-lo 6 --hang --lai-ai "chia hết|vdots|chứng minh|tích|=0" --dot ct2210 → 5 lô Sonnet → mẫu 90/90 (cao 88/88, vừa 2/2) → khop-lai-hang --ghi: 219 câu · cao 120 (gán mới +29, đổi dạng AI cũ 1) · vừa 64 · trống 35. Hàng K6 sau: 65 chưa chắc + 43 thiếu dạng.
