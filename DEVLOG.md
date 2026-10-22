@@ -77324,3 +77324,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Đã thử, KHÔNG tái hiện:** dev 5173 + 5174 (code mới nhất) · bản build bundle-minify như Production (`vite build` ra scratchpad, chạy preview 5190 tạm, đăng nhập nhanh) · mở Tứ giác › MH.072 cả 3 tab Chuỗi/Nhóm/Kho bài ⇒ đều hiện "27 bài · 7 nhánh", 0 lỗi console. Đường này không tải chunk lazy nào ⇒ không phải lỗi chunk cũ sau deploy.
 - **Làm:** `src/components/KhungLoi.tsx` (ErrorBoundary) bọc vùng nội dung `NhanSuHome` (key = màn đang mở). Trước đây ERP KHÔNG có ErrorBoundary nào ⇒ 1 màn con ném lỗi lúc vẽ là trắng cả trang, không biết lỗi gì. Giờ: hộp đỏ ghi màn + câu lỗi + 3 dòng stack, nút Thử lại / Tải lại trang; menu trái vẫn dùng được.
 - **Chờ:** Thùy F5 / mở lại sau deploy; nếu còn lỗi, chụp hộp đỏ ⇒ sửa đúng chỗ.
+
+## 22/10 (tiếp) — [Hình–Luyện] SỬA màn trắng Tứ giác: tab Nhóm vẽ trước khi nhánh nạp xong
+- **Hộp đỏ KhungLoi bắt được** (bản online): `Màn: bdm — TypeError: Cannot read properties of undefined (reading 'neo_baitoan_id')`.
+- **Gốc:** `CayNhanh` giữ nhánh + bài ở state, nạp trong effect theo `gocId`. Lần vẽ ĐẦU sau khi mở màn / đổi mô hình: gocId đã mới nhưng `nhanhs` còn rỗng (hoặc của mô hình trước) ⇒ tab ② Nhóm gọi `Hop(gocId)` ⇒ `nhanhById.get(gocId)!` = undefined ⇒ vỡ. Chỉ lộ khi tab ĐÃ NHỚ là Nhóm (localStorage `bk.cayNhanh.v1`) — tôi kiểm bằng cách vào Chuỗi rồi mới bấm Nhóm nên không thấy. Tái hiện: đặt tab='nhom' + tải lại ⇒ đúng lỗi.
+- **Sửa:** chỉ vẽ tab Chuỗi/Nhóm khi `nhanhById.has(gocId)` (chưa có ⇒ "Đang tải cây…"); thêm chốt `if (!n)` ở Hop (Nhóm) + 2 chỗ đọc nhánh ở Chuỗi. Kiểm: tab Nhóm nhớ sẵn + tải lại ⇒ 27 bài · 7 nhánh, 0 lỗi; đổi MH.073 → 079 → 072 khi đang ở Nhóm ⇒ 0 lỗi.
+- **Bài học:** state nạp trong effect theo một khoá (gocId) ⇒ lần vẽ đầu sau khi khoá đổi luôn lệch pha; kiểm phải gồm "mở lại màn với trạng thái đã nhớ", không chỉ bấm tay từ đầu.

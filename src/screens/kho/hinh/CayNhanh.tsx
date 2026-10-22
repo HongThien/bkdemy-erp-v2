@@ -392,7 +392,11 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
             </div>
             {loi && <div className="mb-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-[12.5px] text-red-700">{loi} <button className="ml-2 underline" onClick={() => setLoi(null)}>đóng</button></div>}
 
-            {tab === 'kho'
+            {/* Lần vẽ đầu sau khi mở màn / đổi mô hình: gocId đã mới nhưng nhánh + bài còn của lần trước (nạp trong effect)
+                ⇒ CHỜ tới khi danh sách nhánh có đúng gốc này, không thì tab Nhóm đọc nhánh undefined ⇒ trắng màn (Thùy 22/10). */}
+            {tab !== 'kho' && !nhanhById.has(gocId!)
+              ? <div className="rounded-xl border border-slate-200 bg-white p-6 text-[13px] text-slate-400">Đang tải cây…</div>
+              : tab === 'kho'
               ? <TabKho gocId={gocId!} L={L} khoi={khoi} coBai={(id) => baiById.has(id)} onMo={(id) => { setCur(id); setPop(id) }} />
               : tab === 'chuoi'
               ? <TabChuoi {...{ gocId: gocId!, lan, nhanhs, baiById, nhanhById, gapLai, conCu, sai, sel, cur, mo, duong, doSau, baiCaNhanh, coSai, conCuaNhanh, khung, L }}
@@ -714,7 +718,7 @@ function TabChuoi(p: ChungProps & {
   if (than.length && conCu.length) noi(hop(bc.bai.get(than[than.length - 1])!), hop(bc.conCu.get(conCu[0])!), 'tc')
   const lienKe = new Set<string>(); than.forEach((id, i) => { if (i) lienKe.add(than[i - 1] + '>' + id) })
   bc.nhanh.forEach((o, nid) => {
-    const n = nhanhById.get(nid)!; const me = bc.bai.get(n.neo_baitoan_id!); if (!me) return
+    const n = nhanhById.get(nid); const me = n && bc.bai.get(n.neo_baitoan_id!); if (!n || !me) return
     const a = hop(me), b = hop(o, true), op = quanTam && !quanTam.has(nid) ? 0.2 : 1
     const x1 = a.x + a.w / 2, y1 = a.y + a.h, x2 = b.x + b.w / 2, y2 = b.y, ym = a.y + a.h + (ROW - H) / 2
     day.push(<path key={'r' + nid} d={Math.abs(x1 - x2) < 2 ? `M${x1},${y1} V${y2}` : `M${x1},${y1} V${ym} H${x2} V${y2}`}
@@ -759,7 +763,7 @@ function TabChuoi(p: ChungProps & {
             {day}
           </svg>
           {/* thẻ GIẢ THIẾT THÊM — lục giác màu đặc */}
-          {[...bc.nhanh].map(([nid, o]) => { const n = nhanhById.get(nid)!; const m = mau(doSau(nid)); const fo = gapLai.has(nid); const neo = baiById.get(n.neo_baitoan_id!); return (
+          {[...bc.nhanh].map(([nid, o]) => { const n = nhanhById.get(nid); if (!n) return null; const m = mau(doSau(nid)); const fo = gapLai.has(nid); const neo = baiById.get(n.neo_baitoan_id!); return (
             <button key={'p' + nid} onClick={() => p.onGap(nid)} title={`${tron(n.gia_thiet_them ?? '')} — bấm để ${fo ? 'mở' : 'gập'}`}
               className={`absolute flex flex-col justify-center px-5 text-left text-white transition hover:brightness-110 ${moCls(nid)}`}
               style={{ left: px(o.c), top: py(o.r) + (H - PH) / 2, width: W, height: PH, background: m.dac, clipPath: LUC_GIAC, zIndex: 3 }}>
@@ -814,7 +818,8 @@ function TabNhom(p: ChungProps & {
   const baiXep = useMemo(() => [...bais].sort((a, b) => soSanhSo(a.so, b.so)), [bais])
 
   const Hop = ({ nid }: { nid: string }): JSX.Element => {
-    const n = nhanhById.get(nid)!; const d = doSau(nid); const m = mau(d); const cua = lan.get(nid) ?? []
+    const n = nhanhById.get(nid); if (!n) return <></>
+    const d = doSau(nid); const m = mau(d); const cua = lan.get(nid) ?? []
     const laGoc = nid === gocId; const neo = n.neo_baitoan_id ? baiById.get(n.neo_baitoan_id) : null
     return (
       <div className="my-2.5 rounded-xl border-2 p-3" style={{ borderColor: m.vien, background: m.nhat }}>
