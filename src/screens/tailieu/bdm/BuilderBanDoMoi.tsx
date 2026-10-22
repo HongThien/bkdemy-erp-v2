@@ -255,6 +255,7 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
         )}
         {chonCau && (
           <ChonCauBdm tl={tl} nhomId={chonCau.nhom.id} uuTien={chonCau.uuTien} selected={chonCau.caus}
+            macDinh={chonCau.nhom.btvn?.phan_id === chonCau.phanId ? 'luyen' : 'lop'}
             khoa={cauCuaBuoi(chonCau.buoi).filter((m) => !chonCau.caus.includes(m))}
             onClose={() => setChonCau(null)}
             onConfirm={async (ms) => { await datCau(chonCau.phanId, ms); vaCau(chonCau.phanId, ms); setChonCau(null) }} />

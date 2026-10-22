@@ -72,6 +72,13 @@ export async function goiY(nhomId: string, dangBai: string[] | null, soLuong: Re
 export const SO_LUYEN_MAC_DINH: Record<string, number> = { trac_nghiem: 1, tra_loi_ngan: 0, tu_luan: 1 }
 export const SO_BTVN_MAC_DINH: Record<string, number> = { trac_nghiem: 2, tra_loi_ngan: 1, tu_luan: 1 }
 
+// ── Kho TRÊN LỚP của 1 nhóm (Thùy 22/10 — giáo trình chọn từ cả 2 kho; mig 202610221509) ──
+export type CauLopKho = { ma_cau: string; dang_bai_id: string; vai: 'giang' | 'luyen'; loai_cau: string; so_lan_dung: number }
+export async function cauLopCuaNhom(nhomId: string): Promise<CauLopKho[]> {
+  const { data, error } = await supabase.rpc('fn_dai_lop_cua_nhom', { p_nhom: nhomId })
+  if (error) throw error
+  return (data ?? []) as CauLopKho[]
+}
 // ── Kho câu của 1 nhóm (cho "✎ Chọn câu") ──
 export type CauKho = { ma_cau: string; dang_bai_id: string | null; loai_cau: string; la_goc: boolean; cum: string; so_lan_dung: number }
 export async function cauCuaNhom(nhomId: string): Promise<CauKho[]> {

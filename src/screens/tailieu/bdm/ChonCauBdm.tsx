@@ -1,24 +1,29 @@
 // Popup "✎ Chọn câu" cho 1 phần của giáo trình bản đồ mới (dạng bài / chưa phân / BTVN nhóm).
 // Kho = câu kho chuẩn của NHÓM (fn_tl_bdm_cau), chia theo dạng bài; dạng bài đang soạn lên đầu, câu chưa phân dạng bài cuối.
 // Câu đã dùng ở phần khác cùng buổi ⇒ khoá (DB cũng chặn lần nữa khi ghi). Thứ tự = thứ tự bấm (giống KhoPicker cũ).
+// 2 NGUỒN (Thùy 22/10): 🏫 Kho trên lớp (bài giảng + luyện trên lớp, dai_cau_lop) · 📚 Kho luyện tập — chọn trộn, 1 danh sách.
 import { useEffect, useState } from 'react'
-import { cauCuaNhom, dangBaiCuaNhom, type CauKho } from '../../../lib/tailieuBdm'
+import { cauCuaNhom, cauLopCuaNhom, dangBaiCuaNhom, type CauKho, type CauLopKho } from '../../../lib/tailieuBdm'
 import { fetchCausCuaTaiLieu, type TaiLieuNhanhCtx } from '../../../lib/tailieu'
 import { LOAI_CAU, type CauHoi } from '../../../lib/kho/api'
 import { CauPreview } from '../../../components/KhoPicker'
 
 const loaiLabel = (v: string) => LOAI_CAU.find((x) => x.value === v)?.label ?? v
 
-export default function ChonCauBdm({ tl, nhomId, uuTien, selected, khoa, onClose, onConfirm }: {
+export default function ChonCauBdm({ tl, nhomId, uuTien, selected, khoa, macDinh = 'lop', coKhoLop = true, onClose, onConfirm }: {
   tl: TaiLieuNhanhCtx
   nhomId: string
   uuTien: string | null                     // dạng bài đang soạn (lên đầu); null = cả nhóm
   selected: string[]
   khoa: string[]                            // câu đã dùng ở phần khác cùng buổi
+  macDinh?: 'lop' | 'luyen'                 // tab mở đầu (BTVN ⇒ kho luyện); kho trên lớp của nhóm trống thì về kho luyện
+  coKhoLop?: boolean                        // false = chỉ kho luyện (ET: bài ĐO — kho trên lớp không đo, không vào mastery)
   onClose: () => void
   onConfirm: (maCaus: string[]) => Promise<void> | void
 }) {
   const [kho, setKho] = useState<CauKho[] | null>(null)
+  const [lop, setLop] = useState<CauLopKho[] | null>(null)
+  const [nguon, setNguon] = useState<'lop' | 'luyen'>(coKhoLop ? macDinh : 'luyen')
   const [dangBai, setDangBai] = useState<{ id: string; ten: string }[]>([])   // dạng bài của nhóm theo bản đồ (đặt tên nhóm câu)
   const [noiDung, setNoiDung] = useState<Map<string, CauHoi>>(new Map())
   const [err, setErr] = useState<string | null>(null)
@@ -31,9 +36,10 @@ export default function ChonCauBdm({ tl, nhomId, uuTien, selected, khoa, onClose
   useEffect(() => {
     (async () => {
       try {
-        const [k, ds] = await Promise.all([cauCuaNhom(nhomId), dangBaiCuaNhom(nhomId)])
-        setKho(k); setDangBai(ds)
-        const rows = await fetchCausCuaTaiLieu(tl, k.map((x) => x.ma_cau))
+        const [k, l, ds] = await Promise.all([cauCuaNhom(nhomId), coKhoLop ? cauLopCuaNhom(nhomId) : Promise.resolve([] as CauLopKho[]), dangBaiCuaNhom(nhomId)])
+        setKho(k); setLop(l); setDangBai(ds)
+        if (!l.length) setNguon('luyen')
+        const rows = await fetchCausCuaTaiLieu(tl, [...l.map((x) => x.ma_cau), ...k.map((x) => x.ma_cau)])
         setNoiDung(new Map(rows.map((c) => [c.ma_cau, c])))
       } catch (e: any) { setErr(e.message ?? String(e)) }
     })()
@@ -47,8 +53,15 @@ export default function ChonCauBdm({ tl, nhomId, uuTien, selected, khoa, onClose
   for (const c of kho ?? []) if (c.dang_bai_id && !thuTu.includes(c.dang_bai_id)) thuTu.push(c.dang_bai_id)
   thuTu.push(null)
   const loc = (kho ?? []).filter((c) => !fLoai.size || fLoai.has(c.loai_cau))
-  const nhomCau = thuTu.map((id) => ({ id, ten: id ? dangBai.find((d) => d.id === id)?.ten ?? id : 'Chưa phân dạng bài', caus: loc.filter((c) => c.dang_bai_id === id) }))
-    .filter((g) => g.caus.length > 0)
+  const tenDb = (id: string | null) => (id ? dangBai.find((d) => d.id === id)?.ten ?? id : 'Chưa phân dạng bài')
+  const nhomCau = nguon === 'luyen'
+    ? thuTu.map((id) => ({ id, ten: tenDb(id), caus: loc.filter((c) => c.dang_bai_id === id) })).filter((g) => g.caus.length > 0)
+    // kho trên lớp: theo dạng bài, trong dạng: Bài giảng rồi Luyện trên lớp (đúng chuỗi thứ tự của kho)
+    : thuTu.filter((id): id is string => !!id).flatMap((id) => (['giang', 'luyen'] as const).map((vai) => ({
+        id, vai, ten: `${tenDb(id)} · ${vai === 'giang' ? '🎓 Bài giảng' : '✏️ Luyện trên lớp'}`,
+        caus: (lop ?? []).filter((c) => c.dang_bai_id === id && c.vai === vai && (!fLoai.size || fLoai.has(c.loai_cau))).map((c) => ({ ...c, la_goc: true, cum: c.ma_cau })),
+      }))).filter((g) => g.caus.length > 0)
+  const soChon = (ds: { ma_cau: string }[] | null) => (ds ?? []).filter((x) => sel.has(x.ma_cau)).length   // đếm câu đang hiện (badge)
 
   async function xong() {
     setBusy(true); setLoiGhi(null)
@@ -61,6 +74,13 @@ export default function ChonCauBdm({ tl, nhomId, uuTien, selected, khoa, onClose
         <div className="flex items-center gap-3 border-b border-slate-200 px-6 py-3">
           <h3 className="text-base font-semibold text-slate-900">Chọn câu từ kho</h3>
           <span className="text-[13px] text-slate-400">đã chọn <b className="text-indigo-600">{sel.size}</b></span>
+          {coKhoLop && <div className="ml-3 flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
+            {([['lop', '🏫 Kho trên lớp', lop], ['luyen', '📚 Kho luyện tập', kho]] as const).map(([k, nhan, ds]) => (
+              <button key={k} onClick={() => setNguon(k)} className={`rounded-md px-3 py-1 text-[12.5px] font-medium ${nguon === k ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-500 hover:text-slate-800'}`}>
+                {nhan} <span className="text-[11px] text-slate-400">{ds ? ds.length : '…'}{soChon(ds) ? ` · chọn ${soChon(ds)}` : ''}</span>
+              </button>
+            ))}
+          </div>}
           <button onClick={onClose} className="ml-auto flex h-8 w-8 items-center justify-center rounded-md text-slate-400 hover:bg-slate-100">✕</button>
         </div>
         <div className="flex flex-wrap items-center gap-1.5 border-b border-slate-100 px-6 py-2">
@@ -72,10 +92,10 @@ export default function ChonCauBdm({ tl, nhomId, uuTien, selected, khoa, onClose
         </div>
         <div className="min-h-0 flex-1 overflow-auto p-5">
           {err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
-            : !kho ? <p className="text-sm text-slate-400">Đang tải kho…</p>
-            : nhomCau.length === 0 ? <p className="text-sm text-slate-400">Nhóm này chưa có câu kho chuẩn{fLoai.size ? ' khớp lọc' : ''}.</p>
+            : !kho || !lop ? <p className="text-sm text-slate-400">Đang tải kho…</p>
+            : nhomCau.length === 0 ? <p className="text-sm text-slate-400">{nguon === 'lop' ? `Nhóm này chưa có câu ở kho trên lớp${fLoai.size ? ' khớp lọc' : ''} — soạn ở Bản đồ mới › dạng bài › 🏫 Kho trên lớp.` : `Nhóm này chưa có câu kho chuẩn${fLoai.size ? ' khớp lọc' : ''}.`}</p>
             : nhomCau.map((g) => (
-              <div key={g.id ?? '__chua_phan__'} className="mb-5">
+              <div key={`${g.id ?? '__chua_phan__'}${'vai' in g ? g.vai : ''}`} className="mb-5">
                 <div className="mb-1.5 flex items-center gap-2">
                   <span className={`text-[12.5px] font-semibold ${g.id ? 'text-indigo-700' : 'text-slate-400'}`}>{g.id === uuTien && g.id ? '★ ' : ''}{g.ten}</span>
                   <span className="text-[11px] text-slate-400">{g.caus.length} câu</span>

@@ -495,7 +495,7 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
           }} />
       )}
       {chonCau !== null && rows[chonCau]?.db && dbs.get(rows[chonCau].db!) && (
-        <ChonCauBdm tl={tlCtx} nhomId={dbs.get(rows[chonCau].db!)!.nhom_id} uuTien={rows[chonCau].db}
+        <ChonCauBdm tl={tlCtx} coKhoLop={false} nhomId={dbs.get(rows[chonCau].db!)!.nhom_id} uuTien={rows[chonCau].db}
           selected={rows[chonCau].maCau ? [rows[chonCau].maCau!] : []} khoa={usedExcept(chonCau)}
           onClose={() => setChonCau(null)}
           onConfirm={async (ms) => {
@@ -507,7 +507,7 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
           }} />
       )}
       {chonVar && dbs.get(chonVar.db) && (
-        <ChonCauBdm tl={tlCtx} nhomId={dbs.get(chonVar.db)!.nhom_id} uuTien={chonVar.db}
+        <ChonCauBdm tl={tlCtx} coKhoLop={false} nhomId={dbs.get(chonVar.db)!.nhom_id} uuTien={chonVar.db}
           selected={ch.etMaDe?.[chonVar.base]?.[chonVar.v] ? [ch.etMaDe[chonVar.base][chonVar.v]!] : []}
           khoa={[...usedMoiDe()]} onClose={() => setChonVar(null)}
           onConfirm={async (ms) => {
