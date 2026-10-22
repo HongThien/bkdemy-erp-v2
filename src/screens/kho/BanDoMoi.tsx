@@ -10,7 +10,7 @@
 // ⭐ Vị trí trên màn KHÔNG phải dữ liệu: box xếp theo số thứ tự (DB tính từ thu_tu). CEO đổi thứ tự bằng ◀▶ / ▲▼
 //   (ghi thu_tu) — không có ô nào "ngầm" mang nghĩa.
 // Kéo thả HTML5 thuần. Sau mỗi lần ghi: tải lại cây NỀN, không xoá màn (CLAUDE §2 React).
-import { useCallback, useEffect, useMemo, useRef, useState, type DragEvent, type ReactNode } from 'react'
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type DragEvent, type ReactNode } from 'react'
 import {
   getCay, themChuDe, suaChuDe, themChuyenDeVaoChuDe, suaChuyenDe, xoaChuDeTronGoi, xoaChuyenDeKhoiChuDe, xoaNhomTronGoi,
   themNhom, suaNhom, themDangBai, suaDangBai, xoaDangBai, sapXep, chuyenNhom, chuyenDangBai, chuyenO,
@@ -30,6 +30,8 @@ import KhopBanDoMoiTab from '../duyetloigiai/KhopBanDoMoiTab'
 import HinhLuyenChuaPhanTab from '../duyetloigiai/HinhLuyenChuaPhanTab'
 import { demChuaPhanMoHinh } from '../../lib/kho/hinhCay'
 import { khopDem } from '../../lib/kho/bdmKhop'
+import KhoTrenLopModal from './KhoTrenLopModal'
+import { demLopTheoDang } from '../../lib/kho/khoTrenLop'
 
 // ⭐ CEO 08/10: dựng bản đồ mới TỪ ĐẦU, không bám bản đồ cũ ⇒ TẮT mọi phần tham chiếu bản đồ cũ trên màn soạn
 // (ngăn 📦, nhãn dạng cũ, ⚠ câu chưa gán, dòng "Khớp bản đồ cũ", bảng gán câu). Bảng/hàm DB vẫn giữ: tới bước XẾP BÀI
@@ -40,6 +42,9 @@ const HIEN_KHOP_CU = false
 // ⇒ danh sách câu thật (đề · đáp án · lời giải · cờ duyệt/kho chuẩn/kiểm máy). Cầu nối module-level: màn chỉ có 1 bản, đỡ luồn prop qua 4 tầng.
 type KhoMo = { loai: 'dang_bai' | 'nhom' | 'chua_khop' | 'de_xuat' | 'thieu_dang' | 'dung_sai'; id: string; ten: string }
 let moKho: (m: KhoMo) => void = () => {}
+// KHO TRÊN LỚP (Thùy 22/10): mở từ card / popup dạng bài; số câu giảng · luyện theo dạng bài (đếm ở DB) qua context
+let moLop: (m: { id: string; ten: string }) => void = () => {}
+const DemLopCtx = createContext<Record<string, { giang: number; luyen: number }>>({})
 
 // Nhớ chủ đề / chuyên đề đang xem + ngăn bản đồ cũ — sống tới F5 (CLAUDE §2: rời màn quay lại đúng chỗ cũ)
 const NHO: { chuDe: Record<string, string>; chuyenDe: Record<string, string>; nganCu: boolean; duyet: boolean } = { chuDe: {}, chuyenDe: {}, nganCu: false, duyet: false }
@@ -80,6 +85,10 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
   const [lt, setLt] = useState<{ loai: LoaiNoiDung; id: string; ten: string; current: LyThuyet; lan: number } | null>(null)
   const [khoMo, setKhoMo] = useState<KhoMo | null>(null)
   useEffect(() => { moKho = setKhoMo; return () => { moKho = () => {} } }, [])
+  const [lopMo, setLopMo] = useState<{ id: string; ten: string } | null>(null)
+  const [demLop, setDemLop] = useState<Record<string, { giang: number; luyen: number }>>({})
+  useEffect(() => { moLop = setLopMo; return () => { moLop = () => {} } }, [])
+  useEffect(() => { setDemLop({}); demLopTheoDang(khoi).then(setDemLop).catch(() => { /* số đếm chỉ để xem — lỗi thì thôi */ }) }, [khoi])
   const [nganCu, setNganCu] = useState(NHO.nganCu)
   // B4 Duyệt khớp (Thùy 16/10): chế độ chia đôi — bản đồ bên trái, hàng đợi duyệt bên phải; số câu cần xem tính ở DB (fn_bdm_khop_dem)
   const [duyet, setDuyetRaw] = useState(NHO.duyet)
@@ -154,6 +163,7 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
   useEffect(() => {
     const f = (e: KeyboardEvent) => {
       if (duyet && !xemBanDo) { if (e.key === 'Escape' && !dangGo(e.target)) setDuyet(false); return } // màn duyệt toàn màn đang che bản đồ
+      if (lopMo) return   // modal kho trên lớp tự xử phím
       if (e.key === 'Escape' && !lt && !ganMo && chon) { setChon(null); return }
       if (chon?.loai === 'dang_bai' && !lt && !ganMo && !dangGo(e.target) && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
         e.preventDefault(); denDangBai(viTriDb + (e.key === 'ArrowRight' ? 1 : -1)); return
@@ -258,6 +268,7 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
   const sang = (k: string) => (hover === k ? 'ring-2 ring-indigo-400 ring-offset-1' : soi === k ? 'ring-4 ring-emerald-400 ring-offset-2' : '')
 
   return (
+    <DemLopCtx.Provider value={demLop}>
     <div className="flex h-full min-h-0 flex-col">
       {/* Đầu màn: khối · CHỦ ĐỀ (dropdown, mỗi màn 1 chủ đề) · bản đồ cũ · tiến độ */}
       {/* MỘT dòng ở mọi khối (Thùy 17/10: K6 gãy dòng, K7 không): nút giữ cỡ, chỉ chữ tiến độ co lại */}
@@ -473,6 +484,7 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
       )}
 
       {khoMo && <KhoModal mo={khoMo} onDong={() => setKhoMo(null)} />}
+      {lopMo && <KhoTrenLopModal dangBaiId={lopMo.id} ten={lopMo.ten} onDong={(doi) => { setLopMo(null); if (doi) demLopTheoDang(khoi).then(setDemLop).catch(() => {}) }} />}
       {lt && (
         <LyThuyetModal key={`${lt.loai}:${lt.id}:${lt.lan}`} ma={lt.id} ten={`${lt.loai === 'db_vd' ? 'Ví dụ' : 'Lý thuyết'} — ${lt.ten}`} current={lt.current}
           api={lt.loai === 'nhom' ? lyThuyetNhomApi : lt.loai === 'db_lt' ? lyThuyetDangBaiApi : viDuDangBaiApi}
@@ -487,6 +499,7 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
           )} />
       )}
     </div>
+    </DemLopCtx.Provider>
   )
 }
 
@@ -669,8 +682,17 @@ function CardDangBai(p: {
         <button onClick={(e) => { e.stopPropagation(); moKho({ loai: 'dang_bai', id: d.id, ten: d.ten }) }} draggable={false}
           title="Mở KHO: các câu thuộc dạng bài này" className="shrink-0 rounded bg-white px-1.5 text-[10.5px] font-semibold text-violet-700 ring-1 ring-violet-200 hover:bg-violet-100">📚 {d.so_cau}</button>
       )}
+      <BadgeLop d={d} />
       <DauTienDo moTa={!!d.mo_ta.trim()} noiDung={d.co_ly_thuyet} nhanNoiDung="lý thuyết" noiDung2={d.co_vi_du} nhanNoiDung2="ví dụ" />
     </div>
+  )
+}
+function BadgeLop({ d }: { d: BdmDangBai }) {
+  const n = useContext(DemLopCtx)[d.id]
+  if (!n || !(n.giang + n.luyen)) return null
+  return (
+    <button onClick={(e) => { e.stopPropagation(); moLop({ id: d.id, ten: d.ten }) }} draggable={false}
+      title={`Kho trên lớp: ${n.giang} bài giảng · ${n.luyen} luyện trên lớp`} className="shrink-0 rounded bg-white px-1.5 text-[10.5px] font-semibold text-teal-700 ring-1 ring-teal-200 hover:bg-teal-50">🏫 {n.giang + n.luyen}</button>
   )
 }
 
@@ -935,6 +957,7 @@ function ChiTiet(p: {
       className="flex flex-col items-start rounded-md border border-emerald-200 bg-emerald-50 px-3 py-2 text-[13px] font-semibold text-emerald-700 hover:bg-emerald-100 disabled:opacity-50">
       <span>📚 Kho câu</span><span className="text-[11.5px] font-normal">{d.so_cau > 0 ? `${d.so_cau} câu (kể cả bản sao) — bấm để xem` : 'chưa có câu nào thuộc dạng bài này'}</span>
     </button>
+    <NutKhoLop d={d} />
     {HIEN_KHOP_CU && <DangCuChiTiet ds={d.dang_cu} chuaGan={0} truongHop="① mọi câu tự về dạng bài này (nếu dạng cũ chỉ gắn đúng chỗ này)"
       onGo={goCu({ dangBai: d.id })} />}
     <ChonDich nhan="⇄ Chuyển sang nhóm khác" moTa="Hoặc kéo card thả vào box nhóm khác (cùng chuyên đề)."
@@ -949,6 +972,16 @@ function ChiTiet(p: {
   </>)
 }
 
+function NutKhoLop({ d }: { d: BdmDangBai }) {
+  const n = useContext(DemLopCtx)[d.id]
+  return (
+    <button onClick={() => moLop({ id: d.id, ten: d.ten })}
+      className="flex flex-col items-start rounded-md border border-teal-200 bg-teal-50 px-3 py-2 text-[13px] font-semibold text-teal-700 hover:bg-teal-100">
+      <span>🏫 Kho trên lớp</span>
+      <span className="text-[11.5px] font-normal">{n && n.giang + n.luyen ? `${n.giang} bài giảng · ${n.luyen} luyện trên lớp — bấm để soạn` : 'chưa có — bấm để thêm bài giảng / luyện trên lớp'}</span>
+    </button>
+  )
+}
 function TruongTen({ gt, onLuu }: { gt: string; onLuu: (t: string) => void }) {
   const [v, setV] = useState(gt)
   const luu = () => { if (v.trim() && v.trim() !== gt) onLuu(v.trim()); else setV(gt) }
