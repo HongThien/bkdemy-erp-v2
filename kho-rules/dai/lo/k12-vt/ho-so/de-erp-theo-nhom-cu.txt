@@ -1,0 +1,25 @@
+# ĐỀ THI ERP — chương Vectơ K12 theo NHÓM CŨ (bản đồ cũ T11207…)
+
+Đề thi K12 trên ERP: 300 đề (tab Kho đề thi). Cột: dạng cũ | tổng câu gốc trong kho | số câu nằm trong ít nhất 1 đề thi | tổng lượt xuất hiện trong đề.
+
+T112070101 Vectơ trong không gian › Tổng hiệu giữa các vecto | kho 226 câu | trong đề thi 175 câu | 176 lượt
+T112070102 Vectơ trong không gian › Tính tích vô hướng giữa hai vecto khi biết góc | kho 52 câu | trong đề thi 39 câu | 40 lượt
+T112070103 Vectơ trong không gian › Tính góc giữa hai vecto khi biết tích vô hướng | kho 16 câu | trong đề thi 11 câu | 11 lượt
+T112070105 Vectơ trong không gian › Dùng hệ thức trung điểm, trọng tâm để tính toán hoặc chứng minh. | kho 34 câu | trong đề thi 25 câu | 25 lượt
+T112070107 Vectơ trong không gian › Tính góc giữa hai vecto trong một số hình đặc biệt | kho 27 câu | trong đề thi 19 câu | 19 lượt
+T112070108 Vectơ trong không gian › Điều kiện đồng phẳng giữa các vecto | kho 13 câu | trong đề thi 0 câu | 0 lượt
+T112070109 Vectơ trong không gian › Một số mô hình toán thực tế liên quan đến Lực | kho 47 câu | trong đề thi 30 câu | 30 lượt
+T112070201 Hệ trục toạ độ trong không gian › Tích có hướng giữa hai vecto và ứng dụng | kho 29 câu | trong đề thi 2 câu | 2 lượt
+T112070202 Hệ trục toạ độ trong không gian › Tìm tọa độ điểm hoặc vecto một điều kiện cho trước. | kho 44 câu | trong đề thi 0 câu | 0 lượt
+T112070203 Hệ trục toạ độ trong không gian › Một số mô hình toán thực tế | kho 34 câu | trong đề thi 19 câu | 19 lượt
+T112070301 Biểu thức toạ độ của các phép toán vectơ › Tìm toạ độ của điểm hoặc véc tơ từ dữ kiện cho trước | kho 184 câu | trong đề thi 184 câu | 185 lượt
+T112070302 Biểu thức toạ độ của các phép toán vectơ › Tính tổng, hiệu, tích của véc tơ với một số theo toạ độ | kho 33 câu | trong đề thi 27 câu | 27 lượt
+T112070303 Biểu thức toạ độ của các phép toán vectơ › Tính tích vô hướng và góc giữa hai véc tơ theo toạ độ | kho 10 câu | trong đề thi 9 câu | 9 lượt
+T112070304 Biểu thức toạ độ của các phép toán vectơ › Tính độ dài véc tơ hoặc khoảng cách giữa hai điểm | kho 35 câu | trong đề thi 17 câu | 17 lượt
+T112070305 Biểu thức toạ độ của các phép toán vectơ › Dùng hệ thức trung điểm, trọng tâm theo toạ độ | kho 37 câu | trong đề thi 24 câu | 24 lượt
+T112070306 Biểu thức toạ độ của các phép toán vectơ › Xét hai véc tơ cùng phương, vuông góc hoặc ba véc tơ đồng phẳng | kho 2 câu | trong đề thi 1 câu | 1 lượt
+T112070307 Biểu thức toạ độ của các phép toán vectơ › Tìm điểm thoả mãn điều kiện cho trước hoặc cực trị hình học (tâm tỉ cự) | kho 33 câu | trong đề thi 21 câu | 21 lượt
+T112070308 Biểu thức toạ độ của các phép toán vectơ › Toạ độ hoá một số bài toán hình học không gian | kho 14 câu | trong đề thi 10 câu | 10 lượt
+T112070310 Biểu thức toạ độ của các phép toán vectơ › Điều kiện cùng phương của hai vecto | kho 2 câu | trong đề thi 0 câu | 0 lượt
+T112070311 Biểu thức toạ độ của các phép toán vectơ › Toán thực tế liên quan đến vecto vận tốc | kho 33 câu | trong đề thi 18 câu | 18 lượt
+T112070312 Biểu thức toạ độ của các phép toán vectơ › Một số bài toán thực tế liên quan đến Lực | kho 17 câu | trong đề thi 11 câu | 11 lượt

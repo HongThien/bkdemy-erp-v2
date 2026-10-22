@@ -1,0 +1,358 @@
+=== N P1.3
+@ly_thuyet:
+##TC Ba vectơ đồng phẳng
+- Ba vectơ $\vec{a},\vec{b},\vec{c}$ khác $\vec{0}$ gọi là **đồng phẳng** nếu giá của chúng cùng song song với một mặt phẳng.
+- Lấy điểm $O$ bất kì, dựng $\overrightarrow{OA}=\vec{a}$, $\overrightarrow{OB}=\vec{b}$, $\overrightarrow{OC}=\vec{c}$: ba vectơ đồng phẳng khi và chỉ khi bốn điểm $O,A,B,C$ cùng thuộc một mặt phẳng.
+- Hai vectơ bất kì luôn cùng song song với một mặt phẳng; ba vectơ có hai vectơ cùng phương (hoặc có một vectơ bằng $\vec{0}$) thì đồng phẳng.
+
+##TC Điều kiện đồng phẳng
+- Cho $\vec{a},\vec{b}$ không cùng phương. Ba vectơ $\vec{a},\vec{b},\vec{c}$ đồng phẳng khi và chỉ khi có duy nhất cặp số $(m;n)$ sao cho $\vec{c}=m\vec{a}+n\vec{b}$.
+- Nếu $\vec{a},\vec{b},\vec{c}$ không đồng phẳng thì mọi vectơ $\vec{x}$ đều viết được duy nhất dưới dạng $\vec{x}=m\vec{a}+n\vec{b}+p\vec{c}$; đặc biệt $m\vec{a}+n\vec{b}+p\vec{c}=\vec{0}$ chỉ xảy ra khi $m=n=p=0$.
+- Bốn điểm $A,B,C,D$ đồng phẳng khi và chỉ khi $\overrightarrow{AB},\overrightarrow{AC},\overrightarrow{AD}$ đồng phẳng.
+
+##PP Hướng giải chung cho bài đồng phẳng
+Chọn ba vectơ không đồng phẳng làm cơ sở: ba cạnh chung đỉnh của hình hộp, lăng trụ, tứ diện, hoặc ba vectơ $\vec{a},\vec{b},\vec{c}$ đề cho.
+Viết mọi vectơ trong bài theo cơ sở đó bằng quy tắc ba điểm, hình bình hành, hình hộp, trung điểm, tỉ số.
+Lập đẳng thức cần có (vectơ thứ ba $=m\cdot$vectơ thứ nhất$+n\cdot$vectơ thứ hai) và đồng nhất hệ số theo cơ sở, được hệ ba phương trình.
+Hệ có nghiệm thì đồng phẳng (hoặc tìm được tham số), hệ vô nghiệm thì không đồng phẳng.
+
+##CY
+- Ba vectơ có chung điểm đầu không suy ra đồng phẳng; phải kiểm tra điều kiện.
+- Vectơ là vectơ tự do: giá của hai vectơ có thể chéo nhau mà ba vectơ vẫn đồng phẳng, nên không dùng "đường thẳng chéo nhau" để kết luận.
+- Hệ số tìm được phải thoả mãn cả ba phương trình đồng nhất, không chỉ hai phương trình đầu.
+
+=== P1.3.1
+@ly_thuyet:
+##TC Nhận biết ba vectơ đồng phẳng trên hình khối
+- Trong hình hộp $ABCD.A'B'C'D'$ có các vectơ bằng nhau: $\overrightarrow{AA'}=\overrightarrow{BB'}=\overrightarrow{CC'}=\overrightarrow{DD'}$, $\overrightarrow{AB}=\overrightarrow{DC}=\overrightarrow{A'B'}=\overrightarrow{D'C'}$, $\overrightarrow{AD}=\overrightarrow{BC}=\overrightarrow{A'D'}=\overrightarrow{B'C'}$ và $\overrightarrow{AC}=\overrightarrow{A'C'}$.
+- Ba vectơ có giá song song với đáy $(ABCD)$ (hay với một mặt bất kì của hình hộp) thì đồng phẳng.
+- Ba vectơ bằng ba cạnh chung đỉnh $\overrightarrow{AB},\overrightarrow{AD},\overrightarrow{AA'}$ thì không đồng phẳng; trong tứ diện $ABCD$ ba vectơ $\overrightarrow{AB},\overrightarrow{AC},\overrightarrow{AD}$ cũng không đồng phẳng.
+
+##PP Nhận biết bộ ba đồng phẳng
+Thay mỗi vectơ của bộ ba bằng vectơ bằng nó trên hình (cạnh đối của hình bình hành, cạnh song song cùng chiều) để bộ ba gọn nhất.
+Có hai vectơ cùng phương, hoặc ba vectơ cùng song song với một mặt phẳng thì kết luận đồng phẳng.
+Nếu chưa thấy, đặt ba vectơ cạnh chung đỉnh làm cơ sở, viết từng vectơ theo cơ sở rồi thử biểu diễn một vectơ qua hai vectơ kia.
+Biểu diễn được thì đồng phẳng; mâu thuẫn hệ số thì không đồng phẳng.
+
+##CY
+- Nhiều bộ ba "trông khác nhau" thật ra chỉ là bộ $\overrightarrow{AB},\overrightarrow{AD},\overrightarrow{AA'}$ (không đồng phẳng); luôn đổi về vectơ bằng nhau trước khi xét.
+- Bộ ba chứa hai vectơ bằng nhau hoặc đối nhau luôn đồng phẳng, dù vectơ thứ ba "xiên" ra ngoài.
+
+@vi_du:
+##VD
+Cho hình hộp $ABCD.A'B'C'D'$. Trong các bộ ba vectơ sau, bộ nào đồng phẳng, bộ nào không đồng phẳng?
+a) $\overrightarrow{AB},\overrightarrow{AD},\overrightarrow{A'C'}$
+b) $\overrightarrow{AB},\overrightarrow{B'C'},\overrightarrow{CC'}$
+c) $\overrightarrow{AA'},\overrightarrow{CC'},\overrightarrow{BD}$
+
+Bài giải:
+a) Vì $ACC'A'$ là hình bình hành nên $\overrightarrow{A'C'}=\overrightarrow{AC}=\overrightarrow{AB}+\overrightarrow{AD}$.
+Vectơ $\overrightarrow{A'C'}$ biểu diễn được qua $\overrightarrow{AB},\overrightarrow{AD}$ (hai vectơ không cùng phương) nên ba vectơ đồng phẳng.
+b) Vì $BCC'B'$ là hình bình hành nên $\overrightarrow{B'C'}=\overrightarrow{BC}=\overrightarrow{AD}$, và $\overrightarrow{CC'}=\overrightarrow{AA'}$.
+Bộ ba trở thành $\overrightarrow{AB},\overrightarrow{AD},\overrightarrow{AA'}$ là ba cạnh xuất phát từ đỉnh $A$ của hình hộp; bốn điểm $A,B,D,A'$ không cùng thuộc một mặt phẳng nên ba vectơ không đồng phẳng.
+c) Ta có $\overrightarrow{AA'}=\overrightarrow{CC'}$ nên hai vectơ này cùng phương; ba vectơ có hai vectơ cùng phương luôn đồng phẳng.
+Vậy bộ ở câu a) và c) đồng phẳng, bộ ở câu b) không đồng phẳng.
+
+##VD
+Cho tứ diện $ABCD$. Gọi $M,N$ lần lượt là trung điểm của $AB$ và $CD$. Xét xem các bộ ba vectơ sau có đồng phẳng hay không:
+a) $\overrightarrow{MN},\overrightarrow{AC},\overrightarrow{BD}$
+b) $\overrightarrow{MN},\overrightarrow{AD},\overrightarrow{BC}$
+c) $\overrightarrow{MN},\overrightarrow{AB},\overrightarrow{CD}$
+
+Bài giải:
+Đặt $\vec{b}=\overrightarrow{AB}$, $\vec{c}=\overrightarrow{AC}$, $\vec{d}=\overrightarrow{AD}$; vì $ABCD$ là tứ diện nên ba vectơ này không đồng phẳng.
+Ta có $\overrightarrow{MN}=\overrightarrow{AN}-\overrightarrow{AM}=\dfrac{1}{2}(\vec{c}+\vec{d})-\dfrac{1}{2}\vec{b}=-\dfrac{1}{2}\vec{b}+\dfrac{1}{2}\vec{c}+\dfrac{1}{2}\vec{d}$.
+a) Vì $\overrightarrow{BD}=\vec{d}-\vec{b}$ nên $\dfrac{1}{2}\overrightarrow{AC}+\dfrac{1}{2}\overrightarrow{BD}=\dfrac{1}{2}\vec{c}+\dfrac{1}{2}(\vec{d}-\vec{b})=\overrightarrow{MN}$, do đó ba vectơ đồng phẳng.
+b) Vì $\overrightarrow{BC}=\vec{c}-\vec{b}$ nên $\dfrac{1}{2}\overrightarrow{AD}+\dfrac{1}{2}\overrightarrow{BC}=\dfrac{1}{2}\vec{d}+\dfrac{1}{2}(\vec{c}-\vec{b})=\overrightarrow{MN}$, do đó ba vectơ đồng phẳng.
+c) Vì $\overrightarrow{CD}=\vec{d}-\vec{c}$ và $\overrightarrow{AB},\overrightarrow{CD}$ không cùng phương, giả sử $\overrightarrow{MN}=x\overrightarrow{AB}+y\overrightarrow{CD}=x\vec{b}-y\vec{c}+y\vec{d}$.
+Đồng nhất hệ số với $\overrightarrow{MN}=-\dfrac{1}{2}\vec{b}+\dfrac{1}{2}\vec{c}+\dfrac{1}{2}\vec{d}$: hệ số của $\vec{b}$ cho $x=-\dfrac{1}{2}$, hệ số của $\vec{c}$ cho $y=-\dfrac{1}{2}$, hệ số của $\vec{d}$ cho $y=\dfrac{1}{2}$, mâu thuẫn.
+Vì không tồn tại $x,y$ nên ba vectơ không đồng phẳng.
+Vậy bộ ở câu a) và b) đồng phẳng, bộ ở câu c) không đồng phẳng.
+
+=== P1.3.2
+@ly_thuyet:
+##TC Chứng minh đồng phẳng bằng hệ số
+- Cho $\vec{a},\vec{b},\vec{c}$ không đồng phẳng. Nếu $\vec{x}=x_1\vec{a}+x_2\vec{b}+x_3\vec{c}$ thì gọi $(x_1;x_2;x_3)$ là bộ hệ số của $\vec{x}$; cộng hai vectơ, nhân vectơ với một số ứng với cộng, nhân các bộ hệ số.
+- Đồng nhất hệ số: $p\vec{a}+q\vec{b}+r\vec{c}=p'\vec{a}+q'\vec{b}+r'\vec{c}$ khi và chỉ khi $p=p'$, $q=q'$, $r=r'$.
+- Hai vectơ (khác $\vec{0}$) cùng phương khi và chỉ khi hai bộ hệ số của chúng tỉ lệ.
+- Ba vectơ chứa tham số đồng phẳng khi và chỉ khi hệ ba phương trình của phép đồng nhất hệ số (ẩn là hai hệ số $\alpha,\beta$ và tham số) có nghiệm.
+
+##PP Chứng minh đồng phẳng và tìm hệ số, tìm tham số
+Chọn hai vectơ không chứa tham số làm cơ sở và kiểm tra chúng không cùng phương (hệ số không tỉ lệ).
+Viết vectơ còn lại $=\alpha\cdot$(vectơ thứ nhất)$+\beta\cdot$(vectơ thứ hai), phân tích hai vế theo ba vectơ không đồng phẳng.
+Đồng nhất hệ số được ba phương trình: giải hai phương trình lấy $\alpha,\beta$ rồi thế vào phương trình còn lại.
+Bài chứng minh: có $\alpha,\beta$ thì kết luận đồng phẳng. Bài tìm tham số: phương trình còn lại cho giá trị của tham số.
+
+##CY
+- Phải kiểm tra hai vectơ chọn làm cơ sở không cùng phương trước khi viết $\vec{c}=m\vec{a}+n\vec{b}$.
+- Cả ba phương trình phải thoả mãn; thiếu phương trình thứ ba thì chưa đủ để kết luận.
+- Với bài hình, trước hết phân tích mọi vectơ qua ba cạnh chung đỉnh (không đồng phẳng) rồi mới đồng nhất hệ số.
+
+@vi_du:
+##VD
+Cho ba vectơ $\vec{a},\vec{b},\vec{c}$ không đồng phẳng.
+a) Chứng minh ba vectơ $\vec{x}=\vec{a}+2\vec{b}$, $\vec{y}=2\vec{a}-\vec{b}+\vec{c}$, $\vec{z}=5\vec{a}+2\vec{c}$ đồng phẳng, và biểu diễn $\vec{z}$ qua $\vec{x},\vec{y}$.
+b) Tìm $m$ để ba vectơ $\vec{u}=\vec{a}+2\vec{b}-\vec{c}$, $\vec{v}=2\vec{a}-\vec{b}+4\vec{c}$, $\vec{w}=4\vec{a}+3\vec{b}+m\vec{c}$ đồng phẳng.
+
+Bài giải:
+a) Hệ số của $\vec{x}$ là $(1;2;0)$ và của $\vec{y}$ là $(2;-1;1)$ không tỉ lệ nên $\vec{x},\vec{y}$ không cùng phương.
+Viết $\vec{z}=\alpha\vec{x}+\beta\vec{y}=(\alpha+2\beta)\vec{a}+(2\alpha-\beta)\vec{b}+\beta\vec{c}$ và đồng nhất với $\vec{z}=5\vec{a}+0\vec{b}+2\vec{c}$ ta được $\alpha+2\beta=5$, $2\alpha-\beta=0$, $\beta=2$.
+Từ $\beta=2$ suy ra $\alpha=1$, và cặp $(\alpha;\beta)=(1;2)$ thoả cả ba phương trình ($1+4=5$, $2-2=0$).
+Do đó $\vec{z}=\vec{x}+2\vec{y}$ nên ba vectơ đồng phẳng.
+b) Hệ số của $\vec{u}$ là $(1;2;-1)$ và của $\vec{v}$ là $(2;-1;4)$ không tỉ lệ nên $\vec{u},\vec{v}$ không cùng phương, do đó $\vec{u},\vec{v},\vec{w}$ đồng phẳng khi và chỉ khi tồn tại $\alpha,\beta$ để $\vec{w}=\alpha\vec{u}+\beta\vec{v}$.
+Ta có $\alpha\vec{u}+\beta\vec{v}=(\alpha+2\beta)\vec{a}+(2\alpha-\beta)\vec{b}+(-\alpha+4\beta)\vec{c}$. Đồng nhất với $\vec{w}$: $\alpha+2\beta=4$, $2\alpha-\beta=3$, $-\alpha+4\beta=m$.
+Giải hai phương trình đầu: $\beta=2\alpha-3$ nên $\alpha+4\alpha-6=4$, suy ra $\alpha=2$, $\beta=1$.
+Thế vào phương trình thứ ba: $m=-2+4=2$.
+Vậy $\vec{z}=\vec{x}+2\vec{y}$ nên câu a) đồng phẳng, và câu b) $m=2$.
+
+##VD
+Cho hình hộp $ABCD.A'B'C'D'$. Gọi $M$ là trung điểm của $AD$ và $N$ là điểm thuộc đoạn $CC'$ sao cho $\overrightarrow{CN}=t\cdot\overrightarrow{CC'}$ với $0\le t\le1$. Tìm $t$ để ba vectơ $\overrightarrow{MN},\overrightarrow{AC},\overrightarrow{AB'}$ đồng phẳng.
+
+Bài giải:
+Đặt $\vec{a}=\overrightarrow{AB}$, $\vec{b}=\overrightarrow{AD}$, $\vec{c}=\overrightarrow{AA'}$; ba vectơ này không đồng phẳng.
+Ta có $\overrightarrow{AC}=\vec{a}+\vec{b}$, $\overrightarrow{AB'}=\vec{a}+\vec{c}$ và $\overrightarrow{CC'}=\vec{c}$ nên $\overrightarrow{CN}=t\vec{c}$.
+Suy ra $\overrightarrow{AN}=\overrightarrow{AC}+\overrightarrow{CN}=\vec{a}+\vec{b}+t\vec{c}$ và $\overrightarrow{AM}=\dfrac{1}{2}\vec{b}$, do đó $\overrightarrow{MN}=\overrightarrow{AN}-\overrightarrow{AM}=\vec{a}+\dfrac{1}{2}\vec{b}+t\vec{c}$.
+Hai vectơ $\overrightarrow{AC},\overrightarrow{AB'}$ không cùng phương (hệ số $(1;1;0)$ và $(1;0;1)$ không tỉ lệ), nên ba vectơ đồng phẳng khi và chỉ khi có $m,n$ để $\overrightarrow{MN}=m\overrightarrow{AC}+n\overrightarrow{AB'}=(m+n)\vec{a}+m\vec{b}+n\vec{c}$.
+Đồng nhất hệ số: $m+n=1$, $m=\dfrac{1}{2}$, $n=t$.
+Từ $m=\dfrac{1}{2}$ và $m+n=1$ suy ra $n=\dfrac{1}{2}$, do đó $t=\dfrac{1}{2}$.
+Vậy ba vectơ đồng phẳng khi $t=\dfrac{1}{2}$ (tức $N$ là trung điểm của $CC'$); khi đó $\overrightarrow{MN}=\dfrac{1}{2}\overrightarrow{AC}+\dfrac{1}{2}\overrightarrow{AB'}$.
+
+=== N P1.4
+@ly_thuyet:
+##TC Góc giữa hai vectơ
+- Cho $\vec{u},\vec{v}$ khác $\vec{0}$. Lấy điểm $A$ bất kì, dựng $\overrightarrow{AB}=\vec{u}$, $\overrightarrow{AC}=\vec{v}$. Góc $\widehat{BAC}$ là góc giữa hai vectơ, kí hiệu $(\vec{u},\vec{v})$, và $0^\circ\le(\vec{u},\vec{v})\le180^\circ$.
+- Cùng hướng thì góc bằng $0^\circ$, ngược hướng thì $180^\circ$, vuông góc thì $90^\circ$.
+
+##TC Tích vô hướng
+- $\vec{u}\cdot\vec{v}=|\vec{u}||\vec{v}|\cos(\vec{u},\vec{v})$; bằng $0$ nếu một trong hai vectơ là $\vec{0}$.
+- $\vec{u}^2=|\vec{u}|^2$; $\cos(\vec{u},\vec{v})=\dfrac{\vec{u}\cdot\vec{v}}{|\vec{u}||\vec{v}|}$; $\vec{u}\perp\vec{v}\Leftrightarrow\vec{u}\cdot\vec{v}=0$.
+- Tích vô hướng giao hoán, phân phối với phép cộng và $(k\vec{u})\cdot\vec{v}=k(\vec{u}\cdot\vec{v})$.
+- $|\vec{u}\pm\vec{v}|^2=|\vec{u}|^2\pm2\vec{u}\cdot\vec{v}+|\vec{v}|^2$ và $(\vec{u}+\vec{v})\cdot(\vec{u}-\vec{v})=|\vec{u}|^2-|\vec{v}|^2$.
+
+##PP Giải bài về tích vô hướng và góc
+Xác định dữ kiện cho trước (độ dài, góc hoặc tích vô hướng) và chọn các vectơ cơ sở đủ dữ kiện; trong hình khối thường là ba cạnh chung một đỉnh.
+Biểu diễn các vectơ trong đề qua vectơ cơ sở bằng quy tắc ba điểm, hình bình hành, hình hộp, trung điểm.
+Khai triển tích vô hướng như nhân đa thức, thay $\vec{u}^2=|\vec{u}|^2$ và $\vec{u}\cdot\vec{v}=|\vec{u}||\vec{v}|\cos(\vec{u},\vec{v})$.
+Độ dài lấy từ $|\vec{u}|=\sqrt{\vec{u}^2}$, góc lấy từ cosin, vuông góc lấy từ tích bằng $0$.
+
+##CY
+- $(\vec{u}+\vec{v})^2=\vec{u}^2+2\vec{u}\cdot\vec{v}+\vec{v}^2$, không phải $\vec{u}^2+\vec{v}^2$; và $|\vec{u}+\vec{v}|\ne|\vec{u}|+|\vec{v}|$ trừ khi cùng hướng.
+- Muốn đọc góc phải dời hai vectơ về chung gốc: $(\overrightarrow{AB},\overrightarrow{BC})=180^\circ-\widehat{ABC}$, không phải $\widehat{ABC}$.
+- Tích vô hướng là một số, không phải vectơ.
+
+=== P1.4.1
+@ly_thuyet:
+##TC Tích vô hướng và độ dài khi biết độ dài và góc
+- $\vec{a}\cdot\vec{b}=|\vec{a}||\vec{b}|\cos(\vec{a},\vec{b})$; các cosin hay dùng: $\cos60^\circ=\dfrac{1}{2}$, $\cos90^\circ=0$, $\cos120^\circ=-\dfrac{1}{2}$, $\cos45^\circ=\dfrac{\sqrt{2}}{2}$, $\cos135^\circ=-\dfrac{\sqrt{2}}{2}$.
+- $(m\vec{a}+n\vec{b})\cdot(p\vec{a}+q\vec{b})=mp\,\vec{a}^2+(mq+np)\,\vec{a}\cdot\vec{b}+nq\,\vec{b}^2$.
+- $|m\vec{a}+n\vec{b}|^2=m^2\vec{a}^2+2mn\,\vec{a}\cdot\vec{b}+n^2\vec{b}^2$.
+
+##PP Tính tích vô hướng, độ dài và tìm tham số vuông góc
+Tính ba đại lượng cơ sở: $\vec{a}^2=|\vec{a}|^2$, $\vec{b}^2=|\vec{b}|^2$ và $\vec{a}\cdot\vec{b}=|\vec{a}||\vec{b}|\cos(\vec{a},\vec{b})$.
+Khai triển biểu thức cần tính như nhân đa thức rồi thay ba đại lượng cơ sở.
+Tính độ dài: tính $|\vec{u}|^2=\vec{u}^2$ rồi khai căn.
+Tìm tham số vuông góc: cho tích vô hướng bằng $0$ và giải phương trình.
+
+##CY
+- Khi khai triển $|\vec{a}-\vec{b}|^2$ số hạng giữa mang dấu trừ: $\vec{a}^2-2\vec{a}\cdot\vec{b}+\vec{b}^2$.
+- Góc $120^\circ$ cho $\cos<0$ nên $\vec{a}\cdot\vec{b}<0$; đừng dùng $\cos120^\circ=\dfrac{1}{2}$.
+- Độ dài luôn lấy căn dương.
+
+@vi_du:
+##VD
+Cho hai vectơ $\vec{a},\vec{b}$ có $|\vec{a}|=2$, $|\vec{b}|=4$ và góc $(\vec{a},\vec{b})=120^\circ$.
+a) Tính $\vec{a}\cdot\vec{b}$ và $|\vec{a}+\vec{b}|$.
+b) Tính $(2\vec{a}-\vec{b})\cdot(\vec{a}+3\vec{b})$.
+c) Tìm $k$ để $k\vec{a}-\vec{b}$ vuông góc với $2\vec{a}+\vec{b}$.
+
+Bài giải:
+a) $\vec{a}\cdot\vec{b}=2\cdot4\cdot\cos120^\circ=8\cdot\left(-\dfrac{1}{2}\right)=-4$.
+$|\vec{a}+\vec{b}|^2=\vec{a}^2+2\vec{a}\cdot\vec{b}+\vec{b}^2=4-8+16=12$ nên $|\vec{a}+\vec{b}|=2\sqrt{3}$.
+b) $(2\vec{a}-\vec{b})\cdot(\vec{a}+3\vec{b})=2\vec{a}^2+6\vec{a}\cdot\vec{b}-\vec{a}\cdot\vec{b}-3\vec{b}^2=2\vec{a}^2+5\vec{a}\cdot\vec{b}-3\vec{b}^2=2\cdot4+5\cdot(-4)-3\cdot16=-60$.
+c) $(k\vec{a}-\vec{b})\cdot(2\vec{a}+\vec{b})=2k\vec{a}^2+k\,\vec{a}\cdot\vec{b}-2\vec{a}\cdot\vec{b}-\vec{b}^2=8k-4k+8-16=4k-8$.
+Hai vectơ vuông góc khi $4k-8=0$, tức là $k=2$.
+Vậy $\vec{a}\cdot\vec{b}=-4$, $|\vec{a}+\vec{b}|=2\sqrt{3}$, tích ở câu b) bằng $-60$ và $k=2$.
+
+##VD
+Cho ba vectơ $\vec{a},\vec{b},\vec{c}$ có $|\vec{a}|=2$, $|\vec{b}|=3$, $|\vec{c}|=4$ và $(\vec{a},\vec{b})=90^\circ$, $(\vec{b},\vec{c})=60^\circ$, $(\vec{c},\vec{a})=60^\circ$. Tính $|\vec{a}+\vec{b}+\vec{c}|$ và $(\vec{a}+\vec{b})\cdot(\vec{b}-\vec{c})$.
+
+Bài giải:
+Ta có $\vec{a}\cdot\vec{b}=0$, $\vec{b}\cdot\vec{c}=3\cdot4\cdot\dfrac{1}{2}=6$, $\vec{c}\cdot\vec{a}=4\cdot2\cdot\dfrac{1}{2}=4$.
+$|\vec{a}+\vec{b}+\vec{c}|^2=\vec{a}^2+\vec{b}^2+\vec{c}^2+2(\vec{a}\cdot\vec{b}+\vec{b}\cdot\vec{c}+\vec{c}\cdot\vec{a})=4+9+16+2(0+6+4)=49$ nên $|\vec{a}+\vec{b}+\vec{c}|=7$.
+$(\vec{a}+\vec{b})\cdot(\vec{b}-\vec{c})=\vec{a}\cdot\vec{b}-\vec{a}\cdot\vec{c}+\vec{b}^2-\vec{b}\cdot\vec{c}=0-4+9-6=-1$.
+Vậy $|\vec{a}+\vec{b}+\vec{c}|=7$ và $(\vec{a}+\vec{b})\cdot(\vec{b}-\vec{c})=-1$.
+
+=== P1.4.2
+@ly_thuyet:
+##TC Tích vô hướng của hai vectơ cạnh trên hình khối
+- Hai vectơ chung gốc: $\overrightarrow{AB}\cdot\overrightarrow{AC}=AB\cdot AC\cdot\cos\widehat{BAC}$.
+- Tứ diện đều cạnh $a$ (các mặt là tam giác đều): hai cạnh chung đỉnh có $\overrightarrow{AB}\cdot\overrightarrow{AC}=\dfrac{a^2}{2}$; hai cạnh đối có $\overrightarrow{AB}\cdot\overrightarrow{CD}=0$.
+- Lập phương, hộp chữ nhật: ba cạnh chung đỉnh đôi một vuông góc nên $\overrightarrow{AB}\cdot\overrightarrow{AD}=\overrightarrow{AD}\cdot\overrightarrow{AA'}=\overrightarrow{AB}\cdot\overrightarrow{AA'}=0$.
+- Hình hộp có độ dài và góc giữa các cạnh cho trước: lấy ba cạnh chung đỉnh làm cơ sở, tích vô hướng từng cặp tính từ độ dài và góc.
+- Trung điểm $I$ của $CD$: $\overrightarrow{AI}=\dfrac{1}{2}(\overrightarrow{AC}+\overrightarrow{AD})$.
+
+##PP Tính tích vô hướng trên hình
+Chọn ba vectơ cạnh chung gốc làm cơ sở, ghi độ dài từng vectơ và tích vô hướng từng cặp (tính từ góc).
+Biểu diễn hai vectơ cần nhân qua cơ sở bằng quy tắc ba điểm, hình bình hành, hình hộp, trung điểm.
+Khai triển tích vô hướng bằng tính chất phân phối rồi thay các giá trị đã ghi.
+Có thể kiểm tra lại bằng định nghĩa nếu hai vectơ chung gốc và góc giữa chúng dễ thấy.
+
+##CY
+- Hai vectơ nối tiếp nhau (điểm cuối của vectơ này là điểm đầu của vectơ kia) tạo góc bằng $180^\circ$ trừ góc của tam giác: trong tứ diện đều $\overrightarrow{AB}\cdot\overrightarrow{BC}=-\dfrac{a^2}{2}$, còn $\overrightarrow{BA}\cdot\overrightarrow{BC}=\dfrac{a^2}{2}$.
+- Khi khai triển đừng quên các số hạng bình phương như $\overrightarrow{AB}^2=a^2$.
+
+@vi_du:
+##VD
+Cho tứ diện đều $ABCD$ cạnh $a$. Gọi $I$ là trung điểm của $CD$. Tính $\overrightarrow{AB}\cdot\overrightarrow{AC}$, $\overrightarrow{AB}\cdot\overrightarrow{CD}$ và $\overrightarrow{AB}\cdot\overrightarrow{AI}$.
+
+Bài giải:
+Các mặt của tứ diện đều là tam giác đều nên $\widehat{BAC}=\widehat{BAD}=60^\circ$.
+$\overrightarrow{AB}\cdot\overrightarrow{AC}=a\cdot a\cdot\cos60^\circ=\dfrac{a^2}{2}$ và tương tự $\overrightarrow{AB}\cdot\overrightarrow{AD}=\dfrac{a^2}{2}$.
+$\overrightarrow{AB}\cdot\overrightarrow{CD}=\overrightarrow{AB}\cdot(\overrightarrow{AD}-\overrightarrow{AC})=\dfrac{a^2}{2}-\dfrac{a^2}{2}=0$.
+Vì $\overrightarrow{AI}=\dfrac{1}{2}(\overrightarrow{AC}+\overrightarrow{AD})$ nên $\overrightarrow{AB}\cdot\overrightarrow{AI}=\dfrac{1}{2}\left(\overrightarrow{AB}\cdot\overrightarrow{AC}+\overrightarrow{AB}\cdot\overrightarrow{AD}\right)=\dfrac{1}{2}\left(\dfrac{a^2}{2}+\dfrac{a^2}{2}\right)=\dfrac{a^2}{2}$.
+Vậy $\overrightarrow{AB}\cdot\overrightarrow{AC}=\dfrac{a^2}{2}$, $\overrightarrow{AB}\cdot\overrightarrow{CD}=0$ và $\overrightarrow{AB}\cdot\overrightarrow{AI}=\dfrac{a^2}{2}$.
+
+##VD
+Cho hình hộp $ABCD.A'B'C'D'$ có tất cả các cạnh bằng $a$ và $\widehat{BAD}=\widehat{BAA'}=\widehat{DAA'}=60^\circ$. Tính $\overrightarrow{AB}\cdot\overrightarrow{AC'}$, $\overrightarrow{AB'}\cdot\overrightarrow{AD'}$ và $\overrightarrow{AC'}\cdot\overrightarrow{BD}$.
+
+Bài giải:
+Đặt $\vec{u}=\overrightarrow{AB}$, $\vec{v}=\overrightarrow{AD}$, $\vec{w}=\overrightarrow{AA'}$. Khi đó $\vec{u}^2=\vec{v}^2=\vec{w}^2=a^2$ và $\vec{u}\cdot\vec{v}=\vec{v}\cdot\vec{w}=\vec{w}\cdot\vec{u}=a^2\cos60^\circ=\dfrac{a^2}{2}$.
+Theo quy tắc hình hộp, $\overrightarrow{AC'}=\vec{u}+\vec{v}+\vec{w}$; ngoài ra $\overrightarrow{AB'}=\vec{u}+\vec{w}$, $\overrightarrow{AD'}=\vec{v}+\vec{w}$ và $\overrightarrow{BD}=\vec{v}-\vec{u}$.
+$\overrightarrow{AB}\cdot\overrightarrow{AC'}=\vec{u}^2+\vec{u}\cdot\vec{v}+\vec{u}\cdot\vec{w}=a^2+\dfrac{a^2}{2}+\dfrac{a^2}{2}=2a^2$.
+$\overrightarrow{AB'}\cdot\overrightarrow{AD'}=(\vec{u}+\vec{w})\cdot(\vec{v}+\vec{w})=\vec{u}\cdot\vec{v}+\vec{u}\cdot\vec{w}+\vec{w}\cdot\vec{v}+\vec{w}^2=\dfrac{3a^2}{2}+a^2=\dfrac{5a^2}{2}$.
+$\overrightarrow{AC'}\cdot\overrightarrow{BD}=(\vec{u}+\vec{v}+\vec{w})\cdot(\vec{v}-\vec{u})=\vec{v}^2-\vec{u}^2+\vec{w}\cdot\vec{v}-\vec{w}\cdot\vec{u}=a^2-a^2+\dfrac{a^2}{2}-\dfrac{a^2}{2}=0$.
+Vậy $\overrightarrow{AB}\cdot\overrightarrow{AC'}=2a^2$, $\overrightarrow{AB'}\cdot\overrightarrow{AD'}=\dfrac{5a^2}{2}$ và $\overrightarrow{AC'}\cdot\overrightarrow{BD}=0$.
+
+=== P1.4.3
+@ly_thuyet:
+##TC Góc giữa hai vectơ trong lập phương, hộp chữ nhật
+- Hai vectơ chung gốc: $(\overrightarrow{AB},\overrightarrow{AC})=\widehat{BAC}$.
+- Hai vectơ bằng nhau thay thế được cho nhau (cạnh đối của hình bình hành, cạnh song song cùng chiều của hình hộp); thay bằng vectơ đối thì góc đổi thành $180^\circ$ trừ đi góc cũ.
+- Lập phương cạnh $a$: các tam giác có ba cạnh là ba đường chéo của ba mặt (như $A'BD$, $B'D'C$) là tam giác đều cạnh $a\sqrt{2}$; hai đường chéo của cùng một mặt vuông góc với nhau.
+- Khi không dời được gốc, dùng $\cos(\vec{u},\vec{v})=\dfrac{\vec{u}\cdot\vec{v}}{|\vec{u}||\vec{v}|}$ với ba cạnh chung đỉnh làm cơ sở.
+
+##PP Tính góc giữa hai vectơ trong hình đặc biệt
+Dời hai vectơ về chung một gốc bằng các vectơ bằng nhau trên hình rồi chỉ ra tam giác chứa góc cần tìm.
+Đọc số đo góc từ tam giác đặc biệt (đều, vuông, vuông cân).
+Nếu khó thấy tam giác, đặt $\vec{u}=\overrightarrow{AB}$, $\vec{v}=\overrightarrow{AD}$, $\vec{w}=\overrightarrow{AA'}$, tính tích vô hướng và độ dài rồi dùng cosin.
+Xét chiều của hai vectơ: cùng hướng là $0^\circ$, ngược hướng là $180^\circ$.
+
+##CY
+- Góc giữa hai vectơ thuộc $[0^\circ;180^\circ]$, còn góc giữa hai đường thẳng không quá $90^\circ$: hai vectơ ngược hướng cho $180^\circ$ dù giá song song.
+- Trong hình hộp chữ nhật không phải lập phương, tam giác tạo bởi các đường chéo mặt không còn đều; khi đó tính bằng cosin, đừng mặc định $60^\circ$.
+
+@vi_du:
+##VD
+Cho hình lập phương $ABCD.A'B'C'D'$. Tính góc giữa các cặp vectơ:
+a) $\overrightarrow{AB'}$ và $\overrightarrow{AD}$
+b) $\overrightarrow{BD}$ và $\overrightarrow{B'C}$
+c) $\overrightarrow{AC}$ và $\overrightarrow{C'A'}$
+
+Bài giải:
+Gọi $a$ là cạnh của hình lập phương.
+a) Hai vectơ $\overrightarrow{AB'}$ và $\overrightarrow{AD}$ chung gốc $A$. Vì $AD\perp(ABB'A')$ nên $AD\perp AB'$, do đó $(\overrightarrow{AB'},\overrightarrow{AD})=90^\circ$.
+b) Vì $BDD'B'$ là hình bình hành nên $\overrightarrow{BD}=\overrightarrow{B'D'}$. Hai vectơ $\overrightarrow{B'D'}$ và $\overrightarrow{B'C}$ chung gốc $B'$.
+Tam giác $B'D'C$ có $B'D'=D'C=CB'=a\sqrt{2}$ (đường chéo các mặt) nên là tam giác đều, suy ra $(\overrightarrow{BD},\overrightarrow{B'C})=\widehat{D'B'C}=60^\circ$.
+c) Vì $\overrightarrow{A'C'}=\overrightarrow{AC}$ nên $\overrightarrow{C'A'}=-\overrightarrow{AC}$, hai vectơ ngược hướng và $(\overrightarrow{AC},\overrightarrow{C'A'})=180^\circ$.
+Vậy ba góc lần lượt bằng $90^\circ$, $60^\circ$ và $180^\circ$.
+
+##VD
+Cho hình hộp chữ nhật $ABCD.A'B'C'D'$ có $AB=AD=a$ và $AA'=a\sqrt{2}$. Tính góc giữa các cặp vectơ:
+a) $\overrightarrow{AC'}$ và $\overrightarrow{BD}$
+b) $\overrightarrow{A'C}$ và $\overrightarrow{BD'}$
+
+Bài giải:
+Đặt $\vec{u}=\overrightarrow{AB}$, $\vec{v}=\overrightarrow{AD}$, $\vec{w}=\overrightarrow{AA'}$. Ba vectơ đôi một vuông góc nên tích vô hướng từng cặp bằng $0$, và $\vec{u}^2=\vec{v}^2=a^2$, $\vec{w}^2=2a^2$.
+a) $\overrightarrow{AC'}=\vec{u}+\vec{v}+\vec{w}$ và $\overrightarrow{BD}=\vec{v}-\vec{u}$ nên $\overrightarrow{AC'}\cdot\overrightarrow{BD}=\vec{v}^2-\vec{u}^2=0$. Do đó $(\overrightarrow{AC'},\overrightarrow{BD})=90^\circ$.
+b) $\overrightarrow{A'C}=\vec{u}+\vec{v}-\vec{w}$ và $\overrightarrow{BD'}=-\vec{u}+\vec{v}+\vec{w}$ nên $\overrightarrow{A'C}\cdot\overrightarrow{BD'}=-\vec{u}^2+\vec{v}^2-\vec{w}^2=-a^2+a^2-2a^2=-2a^2$.
+Độ dài: $|\overrightarrow{A'C}|^2=\vec{u}^2+\vec{v}^2+\vec{w}^2=4a^2$ nên $|\overrightarrow{A'C}|=2a$; tương tự $|\overrightarrow{BD'}|=2a$.
+$\cos(\overrightarrow{A'C},\overrightarrow{BD'})=\dfrac{-2a^2}{2a\cdot2a}=-\dfrac{1}{2}$ nên góc bằng $120^\circ$.
+Vậy hai góc lần lượt bằng $90^\circ$ và $120^\circ$.
+
+=== P1.4.4
+@ly_thuyet:
+##TC Tìm góc từ tích vô hướng
+- $\cos(\vec{a},\vec{b})=\dfrac{\vec{a}\cdot\vec{b}}{|\vec{a}||\vec{b}|}$ với $\vec{a},\vec{b}\ne\vec{0}$; góc $(\vec{a},\vec{b})\in[0^\circ;180^\circ]$ được xác định duy nhất bởi cosin.
+- $\vec{a}\cdot\vec{b}>0$ thì góc nhọn, $\vec{a}\cdot\vec{b}<0$ thì góc tù, $\vec{a}\cdot\vec{b}=0$ thì góc vuông; luôn có $|\vec{a}\cdot\vec{b}|\le|\vec{a}||\vec{b}|$.
+- Giá trị đặc biệt: $\cos\alpha=\dfrac{\sqrt{3}}{2}\Rightarrow30^\circ$; $\dfrac{\sqrt{2}}{2}\Rightarrow45^\circ$; $\dfrac{1}{2}\Rightarrow60^\circ$; $0\Rightarrow90^\circ$; $-\dfrac{1}{2}\Rightarrow120^\circ$; $-\dfrac{\sqrt{2}}{2}\Rightarrow135^\circ$; $-\dfrac{\sqrt{3}}{2}\Rightarrow150^\circ$.
+
+##PP Tính góc khi biết tích vô hướng
+Nếu đề chưa cho $\vec{a}\cdot\vec{b}$, lấy nó từ điều kiện đã cho: bình phương một tổng, một hiệu, hoặc từ đẳng thức $\vec{a}+\vec{b}+\vec{c}=\vec{0}$.
+Tính $|\vec{a}||\vec{b}|$ rồi lập $\cos(\vec{a},\vec{b})=\dfrac{\vec{a}\cdot\vec{b}}{|\vec{a}||\vec{b}|}$.
+Kiểm tra $-1\le\cos\le1$ rồi tra giá trị đặc biệt để suy ra số đo góc.
+
+##CY
+- Cosin âm thì góc tù: $\cos=-\dfrac{1}{2}$ cho $120^\circ$, không phải $60^\circ$.
+- Giá trị cosin ngoài đoạn $[-1;1]$ cho thấy dữ kiện mâu thuẫn.
+- Với ba vectơ có tổng bằng $\vec{0}$, chuyển một vectơ sang vế kia rồi bình phương hai vế để có tích vô hướng.
+
+@vi_du:
+##VD
+Tính góc giữa hai vectơ $\vec{a},\vec{b}$ trong mỗi trường hợp:
+a) $|\vec{a}|=3$, $|\vec{b}|=4$, $\vec{a}\cdot\vec{b}=6\sqrt{3}$.
+b) $|\vec{a}|=5$, $|\vec{b}|=2\sqrt{2}$, $\vec{a}\cdot\vec{b}=-10$.
+
+Bài giải:
+a) $\cos(\vec{a},\vec{b})=\dfrac{6\sqrt{3}}{3\cdot4}=\dfrac{\sqrt{3}}{2}$ nên $(\vec{a},\vec{b})=30^\circ$.
+b) $\cos(\vec{a},\vec{b})=\dfrac{-10}{5\cdot2\sqrt{2}}=-\dfrac{1}{\sqrt{2}}=-\dfrac{\sqrt{2}}{2}$ nên $(\vec{a},\vec{b})=135^\circ$.
+Vậy hai góc lần lượt bằng $30^\circ$ và $135^\circ$.
+
+##VD
+Cho ba vectơ $\vec{a},\vec{b},\vec{c}$ thoả mãn $\vec{a}+\vec{b}+\vec{c}=\vec{0}$ và $|\vec{a}|=3$, $|\vec{b}|=5$, $|\vec{c}|=7$. Tính góc giữa hai vectơ $\vec{a}$ và $\vec{b}$.
+
+Bài giải:
+Từ $\vec{a}+\vec{b}=-\vec{c}$, bình phương hai vế ta được $|\vec{a}+\vec{b}|^2=|\vec{c}|^2$, tức là $|\vec{a}|^2+2\vec{a}\cdot\vec{b}+|\vec{b}|^2=|\vec{c}|^2$.
+Thay số: $9+2\vec{a}\cdot\vec{b}+25=49$, suy ra $\vec{a}\cdot\vec{b}=\dfrac{15}{2}$.
+Do đó $\cos(\vec{a},\vec{b})=\dfrac{\frac{15}{2}}{3\cdot5}=\dfrac{1}{2}$.
+Vậy góc giữa $\vec{a}$ và $\vec{b}$ bằng $60^\circ$.
+
+=== P1.4.5
+@ly_thuyet:
+##TC Biến đổi và đánh giá bằng tích vô hướng
+- Mọi vectơ có $\vec{u}^2\ge0$, bằng $0$ chỉ khi $\vec{u}=\vec{0}$; hay dùng $|\vec{a}+\vec{b}+\vec{c}|^2\ge0$ để chặn tổng các tích vô hướng.
+- Với $\varphi=(\vec{a},\vec{b})$ thì $-1\le\cos\varphi\le1$ nên $-|\vec{a}||\vec{b}|\le\vec{a}\cdot\vec{b}\le|\vec{a}||\vec{b}|$; vế phải đạt khi hai vectơ cùng hướng, vế trái đạt khi ngược hướng.
+- Với $|\vec{a}|,|\vec{b}|$ cho trước: $\big||\vec{a}|-|\vec{b}|\big|\le|\vec{a}+\vec{b}|\le|\vec{a}|+|\vec{b}|$.
+- Tam thức $f(t)=At^2+Bt+C$ với $A>0$ nhỏ nhất tại $t=-\dfrac{B}{2A}$.
+
+##PP Tìm giá trị lớn nhất, nhỏ nhất của biểu thức vectơ
+Bình phương biểu thức, khai triển để đưa về hàm của $\vec{a}\cdot\vec{b}$ (hay của $\cos\varphi$), hoặc hàm của biến $t$ nếu có tham số.
+Đánh giá bằng $-1\le\cos\varphi\le1$, bằng tam thức bậc hai theo $t$, hoặc bằng bất đẳng thức $(\text{tổng các vectơ})^2\ge0$.
+Chỉ ra dấu bằng xảy ra và vectơ thoả điều kiện thực sự tồn tại.
+Kết luận giá trị lớn nhất, nhỏ nhất (nhớ khai căn khi đề hỏi độ dài).
+
+##CY
+- Phải chứng tỏ dấu bằng đạt được thì giá trị tìm được mới là giá trị lớn nhất hay nhỏ nhất.
+- Khi góc đã cho cố định, biểu thức $|\vec{a}+t\vec{b}|^2$ là tam thức theo $t$; không chọn $t=0$ hay $t=-1$ tuỳ ý.
+
+@vi_du:
+##VD
+Cho hai vectơ $\vec{a},\vec{b}$ có $|\vec{a}|=3$ và $|\vec{b}|=4$.
+a) Tìm giá trị lớn nhất và nhỏ nhất của $|\vec{a}+\vec{b}|$ khi góc giữa hai vectơ thay đổi.
+b) Cho $(\vec{a},\vec{b})=60^\circ$. Tìm giá trị nhỏ nhất của $|\vec{a}+t\vec{b}|$ khi $t$ thay đổi.
+
+Bài giải:
+a) Gọi $\varphi=(\vec{a},\vec{b})$. Ta có $|\vec{a}+\vec{b}|^2=9+2\cdot3\cdot4\cos\varphi+16=25+24\cos\varphi$.
+Vì $-1\le\cos\varphi\le1$ nên $1\le|\vec{a}+\vec{b}|^2\le49$, tức là $1\le|\vec{a}+\vec{b}|\le7$.
+Giá trị $7$ đạt khi $\cos\varphi=1$ (hai vectơ cùng hướng), giá trị $1$ đạt khi $\cos\varphi=-1$ (hai vectơ ngược hướng).
+b) Vì $\vec{a}\cdot\vec{b}=3\cdot4\cdot\cos60^\circ=6$ nên $|\vec{a}+t\vec{b}|^2=\vec{a}^2+2t\,\vec{a}\cdot\vec{b}+t^2\vec{b}^2=16t^2+12t+9$.
+Tam thức này nhỏ nhất tại $t=-\dfrac{12}{2\cdot16}=-\dfrac{3}{8}$ và giá trị nhỏ nhất là $16\cdot\dfrac{9}{64}-\dfrac{9}{2}+9=\dfrac{27}{4}$.
+Do đó giá trị nhỏ nhất của $|\vec{a}+t\vec{b}|$ là $\sqrt{\dfrac{27}{4}}=\dfrac{3\sqrt{3}}{2}$.
+Vậy câu a) giá trị lớn nhất là $7$ và nhỏ nhất là $1$; câu b) giá trị nhỏ nhất là $\dfrac{3\sqrt{3}}{2}$ khi $t=-\dfrac{3}{8}$.
+
+##VD
+Cho ba vectơ $\vec{a},\vec{b},\vec{c}$ có độ dài đều bằng $1$. Tìm giá trị lớn nhất và nhỏ nhất của $P=|\vec{a}-\vec{b}|^2+|\vec{b}-\vec{c}|^2+|\vec{c}-\vec{a}|^2$.
+
+Bài giải:
+Khai triển và dùng $|\vec{a}|=|\vec{b}|=|\vec{c}|=1$: $P=2\left(|\vec{a}|^2+|\vec{b}|^2+|\vec{c}|^2\right)-2S=6-2S$ với $S=\vec{a}\cdot\vec{b}+\vec{b}\cdot\vec{c}+\vec{c}\cdot\vec{a}$.
+Mặt khác $|\vec{a}+\vec{b}+\vec{c}|^2=3+2S\ge0$ nên $S\ge-\dfrac{3}{2}$, suy ra $P\le6+3=9$.
+Dấu bằng xảy ra khi $\vec{a}+\vec{b}+\vec{c}=\vec{0}$, chẳng hạn ba vectơ đơn vị trong một mặt phẳng đôi một tạo góc $120^\circ$; khi đó $P=9$.
+Ngoài ra $P$ là tổng ba bình phương nên $P\ge0$, dấu bằng xảy ra khi $\vec{a}=\vec{b}=\vec{c}$.
+Vậy giá trị lớn nhất của $P$ là $9$ và giá trị nhỏ nhất là $0$.
+
+## GHI CHÚ CHO CEO
+- P1.3 (lý thuyết nhóm và hai dạng): nguồn không có lý thuyết đồng phẳng, tôi tự viết theo kiến thức chuẩn (điều kiện c=ma+nb, đồng nhất hệ số, bốn điểm đồng phẳng); chưa có ví dụ kiểu "tìm tham số trong tứ diện qua AB, AC, AD" ngoài ví dụ hình hộp của P1.3.2.
+- P1.4.1: mô tả có chữ "góc giữa hai vectơ" trùng với P1.4.4; tôi dùng P1.4.1 cho tính tích vô hướng, độ dài và tìm tham số vuông góc, còn tìm góc để P1.4.4. Ví dụ 2 dùng ba vectơ (nhiều hơn "hai vectơ" trong mô tả) cho khó hơn một bậc.
+- P1.4.2: mô tả nhắc "chóp đều" nhưng ví dụ dùng tứ diện đều và hình hộp có ba góc 60 độ; chưa có ví dụ chóp đều.
+- P1.4.3: mô tả nhắc "tứ diện đều" nhưng hai ví dụ đều là lập phương và hộp chữ nhật (tứ diện đều đã dùng ở P1.4.2); nếu cần có thể thêm tứ diện đều.
+- P1.4.5: ví dụ 2 (tổng bình phương hiệu của ba vectơ đơn vị) là bài đại số vectơ cổ điển, mức 4 như đề xuất; các nguồn không có bài này nguyên văn.
+- Không phát hiện lỗi đáp án nguồn cần ghi vì các ví dụ do tôi tự đặt số liệu và đã thử lại bằng số.

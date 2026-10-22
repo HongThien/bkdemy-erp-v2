@@ -1,0 +1,169 @@
+=== P1.2.7
+@ly_thuyet:
+##TC Cùng phương và thẳng hàng
+- Trong đẳng thức $\vec{a}=k\vec{b}$: $|k|=\dfrac{|\vec{a}|}{|\vec{b}|}$ là tỉ số độ dài, dấu của $k$ cho biết cùng hướng ($k>0$) hay ngược hướng ($k<0$).
+- Khi $\overrightarrow{AB}=k\overrightarrow{AC}$ với $0<k<1$ thì $B$ nằm giữa $A$ và $C$, $AB=k\cdot AC$, $BC=(1-k)\cdot AC$ nên $\dfrac{AB}{BC}=\dfrac{k}{1-k}$.
+- Hai đường thẳng $MN$ và $PQ$ song song (không trùng nhau) khi $\overrightarrow{MN}=k\overrightarrow{PQ}$ và $M$ không thuộc đường thẳng $PQ$; số $k$ là tỉ số cần tìm khi đề viết $\overrightarrow{MN}=k\overrightarrow{PQ}$.
+
+##TC Cơ sở, đồng nhất hệ số và giao điểm với mặt phẳng
+- Cho ba vectơ $\vec{a},\vec{b},\vec{c}$ không đồng phẳng (ba cạnh chung đỉnh của hình hộp, tứ diện). Mọi vectơ viết được duy nhất dưới dạng $m\vec{a}+n\vec{b}+p\vec{c}$, nên hai vectơ bằng nhau khi và chỉ khi ba hệ số tương ứng bằng nhau.
+- Hai vectơ cùng phương khi và chỉ khi bộ hệ số $(m;n;p)$ của chúng tỉ lệ.
+- Điểm $P$ thuộc đường thẳng $SC$ khi $\overrightarrow{SP}=p\,\overrightarrow{SC}$; điểm $P$ thuộc mặt phẳng $(AMN)$ ($A,M,N$ không thẳng hàng) khi và chỉ khi ba vectơ $\overrightarrow{AP},\overrightarrow{AM},\overrightarrow{AN}$ đồng phẳng, tức là $\overrightarrow{AP}=x\overrightarrow{AM}+y\overrightarrow{AN}$.
+
+##PP Chứng minh cùng phương, thẳng hàng, tìm tỉ số
+Chọn ba vectơ cạnh chung đỉnh không đồng phẳng làm cơ sở (hộp: $\overrightarrow{AB},\overrightarrow{AD},\overrightarrow{AA'}$; chóp, tứ diện: ba cạnh qua một đỉnh).
+Biểu diễn các điểm do đề cho (tỉ số, trung điểm, trọng tâm) theo cơ sở, rồi viết hai vectơ cần so sánh theo cơ sở.
+Đặt đẳng thức $\overrightarrow{MN}=k\overrightarrow{PQ}$ (hoặc $\overrightarrow{SP}=p\overrightarrow{SC}$ cùng điều kiện đồng phẳng) và đồng nhất hệ số theo ba vectơ cơ sở, được hệ phương trình.
+Giải hệ để tìm tỉ số hoặc ẩn; kiểm tra điều kiện của đề (điểm nằm trên đoạn, hai đường thẳng không trùng nhau) rồi kết luận.
+
+##CY
+- Hai vectơ cùng phương chưa đủ để hai đường thẳng song song: phải chỉ ra một điểm của đường này không thuộc đường kia.
+- Chỉ đồng nhất hệ số được khi ba vectơ cơ sở không đồng phẳng; đừng chọn ba vectơ cùng nằm trong một mặt.
+- Tỉ số có thứ tự: $\overrightarrow{AG}=\dfrac{1}{3}\overrightarrow{AC'}$ khác $\overrightarrow{GC'}=\dfrac{1}{3}\overrightarrow{AC'}$; ghi rõ vectơ nào bằng bao nhiêu lần vectơ nào.
+
+@vi_du:
+##VD
+Cho hình hộp $ABCD.A'B'C'D'$.
+a) Gọi $G$ là trọng tâm tam giác $A'BD$. Chứng minh ba điểm $A,G,C'$ thẳng hàng và tính $\dfrac{AG}{GC'}$.
+b) Gọi $M$ thuộc đoạn $AB'$ và $N$ thuộc đoạn $BD$ sao cho $\overrightarrow{AM}=x\overrightarrow{AB'}$, $\overrightarrow{BN}=y\overrightarrow{BD}$. Tìm $x$, $y$ để $MN\parallel A'C$.
+
+Bài giải:
+Đặt $\vec{a}=\overrightarrow{AB}$, $\vec{b}=\overrightarrow{AD}$, $\vec{c}=\overrightarrow{AA'}$; ba vectơ này không đồng phẳng.
+a) $G$ là trọng tâm tam giác $A'BD$ nên $\overrightarrow{AG}=\dfrac{1}{3}\left(\overrightarrow{AA'}+\overrightarrow{AB}+\overrightarrow{AD}\right)=\dfrac{1}{3}\left(\vec{c}+\vec{a}+\vec{b}\right)$.
+Theo quy tắc hình hộp, $\overrightarrow{AC'}=\vec{a}+\vec{b}+\vec{c}$ nên $\overrightarrow{AG}=\dfrac{1}{3}\overrightarrow{AC'}$.
+Hai vectơ $\overrightarrow{AG}$ và $\overrightarrow{AC'}$ cùng phương, có chung điểm $A$ nên $A,G,C'$ thẳng hàng; $G$ nằm giữa $A$ và $C'$ với $AG=\dfrac{1}{3}AC'$, $GC'=\dfrac{2}{3}AC'$.
+Do đó $\dfrac{AG}{GC'}=\dfrac{1}{2}$.
+b) Ta có $\overrightarrow{AB'}=\vec{a}+\vec{c}$ nên $\overrightarrow{AM}=x\vec{a}+x\vec{c}$.
+Ta có $\overrightarrow{BD}=\overrightarrow{AD}-\overrightarrow{AB}=\vec{b}-\vec{a}$ nên $\overrightarrow{AN}=\overrightarrow{AB}+y\overrightarrow{BD}=(1-y)\vec{a}+y\vec{b}$.
+Suy ra $\overrightarrow{MN}=\overrightarrow{AN}-\overrightarrow{AM}=(1-x-y)\vec{a}+y\vec{b}-x\vec{c}$.
+Mặt khác $\overrightarrow{A'C}=\overrightarrow{AC}-\overrightarrow{AA'}=\vec{a}+\vec{b}-\vec{c}$.
+Để $MN\parallel A'C$ cần $\overrightarrow{MN}=k\overrightarrow{A'C}$, tức $1-x-y=k$, $y=k$, $-x=-k$.
+Từ hai phương trình sau $x=y=k$; thế vào phương trình đầu: $1-2k=k$ nên $k=\dfrac{1}{3}$, suy ra $x=y=\dfrac{1}{3}$.
+Khi đó $\overrightarrow{AM}=\dfrac{1}{3}\vec{a}+\dfrac{1}{3}\vec{c}$ có hệ số của $\vec{b}$ bằng $0$ nên $M$ không thuộc đường thẳng $A'C$ (các điểm của $A'C$ có dạng $\vec{c}+t(\vec{a}+\vec{b}-\vec{c})$, hệ số của $\vec{b}$ bằng $0$ chỉ khi $t=0$, ứng với $A'\ne M$).
+Vậy a) $A,G,C'$ thẳng hàng và $\dfrac{AG}{GC'}=\dfrac{1}{2}$; b) $x=y=\dfrac{1}{3}$ và $\overrightarrow{MN}=\dfrac{1}{3}\overrightarrow{A'C}$.
+
+##VD
+Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành. Gọi $M$ là trung điểm của $SB$, $N$ là điểm thuộc cạnh $SD$ sao cho $SN=\dfrac{1}{3}SD$. Mặt phẳng $(AMN)$ cắt đường thẳng $SC$ tại $P$. Tính tỉ số $\dfrac{SP}{SC}$.
+
+Bài giải:
+Đặt $\vec{a}=\overrightarrow{SA}$, $\vec{b}=\overrightarrow{SB}$, $\vec{d}=\overrightarrow{SD}$; ba vectơ này không đồng phẳng.
+Vì $ABCD$ là hình bình hành nên $\overrightarrow{AC}=\overrightarrow{AB}+\overrightarrow{AD}$, suy ra $\overrightarrow{SC}=\overrightarrow{SA}+\overrightarrow{AC}=\vec{a}+(\vec{b}-\vec{a})+(\vec{d}-\vec{a})=\vec{b}+\vec{d}-\vec{a}$.
+$P$ thuộc đường thẳng $SC$ nên $\overrightarrow{SP}=p\,\overrightarrow{SC}=-p\vec{a}+p\vec{b}+p\vec{d}$.
+Do đó $\overrightarrow{AP}=\overrightarrow{SP}-\overrightarrow{SA}=-(p+1)\vec{a}+p\vec{b}+p\vec{d}$.
+Ta có $\overrightarrow{AM}=\overrightarrow{SM}-\overrightarrow{SA}=-\vec{a}+\dfrac{1}{2}\vec{b}$ và $\overrightarrow{AN}=\overrightarrow{SN}-\overrightarrow{SA}=-\vec{a}+\dfrac{1}{3}\vec{d}$.
+Hai vectơ $\overrightarrow{AM}$, $\overrightarrow{AN}$ không cùng phương; $P$ thuộc mặt phẳng $(AMN)$ khi và chỉ khi ba vectơ $\overrightarrow{AP},\overrightarrow{AM},\overrightarrow{AN}$ đồng phẳng, tức là có $x,y$ để $\overrightarrow{AP}=x\overrightarrow{AM}+y\overrightarrow{AN}=-(x+y)\vec{a}+\dfrac{x}{2}\vec{b}+\dfrac{y}{3}\vec{d}$.
+Đồng nhất hệ số: $p+1=x+y$, $p=\dfrac{x}{2}$, $p=\dfrac{y}{3}$.
+Từ hai phương trình sau $x=2p$, $y=3p$; thế vào phương trình đầu: $p+1=5p$ nên $p=\dfrac{1}{4}$.
+Vì $0<p<1$ nên $P$ nằm trên cạnh $SC$ và $\overrightarrow{SP}=\dfrac{1}{4}\overrightarrow{SC}$.
+Vậy $\dfrac{SP}{SC}=\dfrac{1}{4}$.
+
+=== P1.4.6
+@ly_thuyet:
+##TC Vuông góc và góc giữa hai đường thẳng qua tích vô hướng
+- Hai đường thẳng $AB$ và $CD$ vuông góc khi và chỉ khi $\overrightarrow{AB}\cdot\overrightarrow{CD}=0$.
+- Góc $\varphi$ giữa hai đường thẳng có vectơ chỉ phương $\vec{u},\vec{v}$ thoả $0^\circ\le\varphi\le90^\circ$ và $\cos\varphi=\left|\cos(\vec{u},\vec{v})\right|=\dfrac{|\vec{u}\cdot\vec{v}|}{|\vec{u}||\vec{v}|}$.
+- Với ba vectơ cạnh chung đỉnh $A$: $\overrightarrow{CD}=\overrightarrow{AD}-\overrightarrow{AC}$, nên $\overrightarrow{AB}\cdot\overrightarrow{CD}=\overrightarrow{AB}\cdot\overrightarrow{AD}-\overrightarrow{AB}\cdot\overrightarrow{AC}=AB\cdot AD\cos\widehat{BAD}-AB\cdot AC\cos\widehat{BAC}$.
+- Khi chỉ biết độ dài ba cạnh của một tam giác: $\overrightarrow{AB}\cdot\overrightarrow{AC}=\dfrac{AB^2+AC^2-BC^2}{2}$.
+
+##PP Chứng minh vuông góc, tính góc giữa hai đường thẳng chéo nhau
+Chọn đỉnh chung của nhiều cạnh làm gốc và gọi tên ba vectơ cạnh qua đỉnh đó; ghi độ dài của chúng và tích vô hướng từng cặp, tính từ cạnh bằng nhau và góc ở đỉnh đề cho.
+Viết hai vectơ chỉ phương của hai đường thẳng theo ba vectơ cạnh (hiệu của hai vectơ cạnh chung gốc, hoặc nửa tổng nếu có trung điểm).
+Khai triển tích vô hướng của hai vectơ, thay các giá trị đã ghi.
+Tích bằng $0$ thì hai đường thẳng vuông góc; khác $0$ thì tính $\cos\varphi=\dfrac{|\vec{u}\cdot\vec{v}|}{|\vec{u}||\vec{v}|}$ và suy ra góc.
+
+##CY
+- Góc giữa hai đường thẳng không vượt quá $90^\circ$: tích vô hướng âm thì lấy giá trị tuyệt đối trước khi tính góc (góc giữa hai vectơ khi đó là góc tù).
+- Không kết luận vuông góc từ hình vẽ hay vì "trông giống" hình đặc biệt: phải tính ra tích vô hướng bằng $0$.
+- Cặp cạnh đối của tứ diện $ABCD$ là $AB$ và $CD$, $AC$ và $BD$, $AD$ và $BC$; đừng nhầm với hai cạnh chung đỉnh (hai cạnh này cắt nhau, góc là góc ở đỉnh).
+
+@vi_du:
+##VD
+Cho tứ diện $ABCD$ có $AC=AD$ và $\widehat{BAC}=\widehat{BAD}$.
+a) Chứng minh $AB\perp CD$.
+b) Gọi $M$, $N$ lần lượt là trung điểm của $AB$ và $CD$. Chứng minh $MN\perp CD$.
+
+Bài giải:
+a) Ta có $\overrightarrow{CD}=\overrightarrow{AD}-\overrightarrow{AC}$ nên $\overrightarrow{AB}\cdot\overrightarrow{CD}=\overrightarrow{AB}\cdot\overrightarrow{AD}-\overrightarrow{AB}\cdot\overrightarrow{AC}$.
+Mà $\overrightarrow{AB}\cdot\overrightarrow{AD}=AB\cdot AD\cdot\cos\widehat{BAD}$ và $\overrightarrow{AB}\cdot\overrightarrow{AC}=AB\cdot AC\cdot\cos\widehat{BAC}$ bằng nhau vì $AD=AC$ và $\widehat{BAD}=\widehat{BAC}$.
+Do đó $\overrightarrow{AB}\cdot\overrightarrow{CD}=0$, tức $AB\perp CD$.
+b) $M$ là trung điểm của $AB$ và $N$ là trung điểm của $CD$ nên $\overrightarrow{AM}=\dfrac{1}{2}\overrightarrow{AB}$ và $\overrightarrow{AN}=\dfrac{1}{2}\left(\overrightarrow{AC}+\overrightarrow{AD}\right)$.
+Suy ra $\overrightarrow{MN}=\overrightarrow{AN}-\overrightarrow{AM}=\dfrac{1}{2}\left(\overrightarrow{AC}+\overrightarrow{AD}\right)-\dfrac{1}{2}\overrightarrow{AB}$.
+Do đó $\overrightarrow{MN}\cdot\overrightarrow{CD}=\dfrac{1}{2}\left(\overrightarrow{AC}+\overrightarrow{AD}\right)\cdot\left(\overrightarrow{AD}-\overrightarrow{AC}\right)-\dfrac{1}{2}\overrightarrow{AB}\cdot\overrightarrow{CD}=\dfrac{1}{2}\left(AD^2-AC^2\right)-0=0$ vì $AD=AC$ và câu a).
+Vậy $AB\perp CD$ và $MN\perp CD$.
+
+##VD
+Cho hình chóp $S.ABC$ có $SA=SB=SC=a$ và $\widehat{ASB}=90^\circ$, $\widehat{BSC}=60^\circ$, $\widehat{CSA}=120^\circ$.
+a) Tính góc giữa hai đường thẳng $AB$ và $SC$.
+b) Tính góc giữa hai đường thẳng $BC$ và $SA$.
+c) Gọi $M$ là trung điểm của $AC$. Chứng minh $SM\perp AB$.
+
+Bài giải:
+Đặt $\vec{u}=\overrightarrow{SA}$, $\vec{v}=\overrightarrow{SB}$, $\vec{w}=\overrightarrow{SC}$. Khi đó $\vec{u}^2=\vec{v}^2=\vec{w}^2=a^2$ và $\vec{u}\cdot\vec{v}=a^2\cos90^\circ=0$, $\vec{v}\cdot\vec{w}=a^2\cos60^\circ=\dfrac{a^2}{2}$, $\vec{w}\cdot\vec{u}=a^2\cos120^\circ=-\dfrac{a^2}{2}$.
+a) $\overrightarrow{AB}=\vec{v}-\vec{u}$ nên $AB^2=\vec{v}^2-2\vec{u}\cdot\vec{v}+\vec{u}^2=2a^2$, tức $AB=a\sqrt{2}$.
+$\overrightarrow{AB}\cdot\overrightarrow{SC}=(\vec{v}-\vec{u})\cdot\vec{w}=\dfrac{a^2}{2}-\left(-\dfrac{a^2}{2}\right)=a^2$.
+$\cos\varphi=\dfrac{|a^2|}{a\sqrt{2}\cdot a}=\dfrac{\sqrt{2}}{2}$ nên góc giữa $AB$ và $SC$ bằng $45^\circ$.
+b) $\overrightarrow{BC}=\vec{w}-\vec{v}$ nên $BC^2=\vec{w}^2-2\vec{v}\cdot\vec{w}+\vec{v}^2=a^2$, tức $BC=a$.
+$\overrightarrow{BC}\cdot\overrightarrow{SA}=(\vec{w}-\vec{v})\cdot\vec{u}=-\dfrac{a^2}{2}-0=-\dfrac{a^2}{2}$.
+$\cos\varphi=\dfrac{\left|-\dfrac{a^2}{2}\right|}{a\cdot a}=\dfrac{1}{2}$ nên góc giữa $BC$ và $SA$ bằng $60^\circ$ (góc giữa hai vectơ là $120^\circ$, góc giữa hai đường thẳng lấy góc nhọn).
+c) $M$ là trung điểm của $AC$ nên $\overrightarrow{SM}=\dfrac{1}{2}(\vec{u}+\vec{w})$.
+$\overrightarrow{SM}\cdot\overrightarrow{AB}=\dfrac{1}{2}(\vec{u}+\vec{w})\cdot(\vec{v}-\vec{u})=\dfrac{1}{2}\left(\vec{u}\cdot\vec{v}-\vec{u}^2+\vec{w}\cdot\vec{v}-\vec{w}\cdot\vec{u}\right)=\dfrac{1}{2}\left(0-a^2+\dfrac{a^2}{2}+\dfrac{a^2}{2}\right)=0$ nên $SM\perp AB$.
+Vậy a) $45^\circ$; b) $60^\circ$; c) $SM\perp AB$.
+
+=== P3.2.5
+@ly_thuyet:
+##TC Điểm thoả mãn đẳng thức vectơ
+- Đẳng thức có dạng $\overrightarrow{OM}=\ldots$ mà vế phải chỉ gồm các vectơ đã biết: tính toạ độ vế phải là có ngay toạ độ $M$.
+- Với mọi $M$: $k_1\overrightarrow{MA}+k_2\overrightarrow{MB}+k_3\overrightarrow{MC}=k_1\overrightarrow{OA}+k_2\overrightarrow{OB}+k_3\overrightarrow{OC}-k\,\overrightarrow{OM}$, với $k=k_1+k_2+k_3$.
+- Nếu $k\ne0$ thì $k_1\overrightarrow{MA}+k_2\overrightarrow{MB}+k_3\overrightarrow{MC}=\vec{0}$ có đúng một điểm $M$: $x_M=\dfrac{k_1x_A+k_2x_B+k_3x_C}{k}$ (tương tự $y_M$, $z_M$).
+- Nếu $k=0$ thì vế trái không phụ thuộc $M$: đẳng thức hoặc đúng với mọi $M$, hoặc không có điểm nào thoả.
+
+##PP Tìm điểm thoả đẳng thức vectơ
+Tính tổng $k$ các hệ số của những vectơ chứa điểm cần tìm; nếu $k=0$ thì điểm đó triệt tiêu, chỉ cần tính vectơ còn lại để kết luận đúng với mọi điểm hay không có điểm nào.
+Với $k\ne0$: đổi mọi vectơ về gốc $O$ ($\overrightarrow{MA}=\overrightarrow{OA}-\overrightarrow{OM}$), hoặc gọi $M(x;y;z)$ và viết $\overrightarrow{MA}=(x_A-x;\ y_A-y;\ z_A-z)$.
+Chuyển các vectơ đã biết sang một vế (đổi dấu khi chuyển vế), đưa về $k\,\overrightarrow{OM}=\vec{v}$ và tính toạ độ $\vec{v}$.
+Chia cho $k$ (hoặc so từng toạ độ) được toạ độ $M$, rồi thay lại đẳng thức ban đầu để kiểm tra.
+
+##CY
+- Viết đúng $\overrightarrow{MA}=A-M$ (ngọn trừ gốc); khi vế kia có vectơ đã biết (như $2\overrightarrow{BC}$) mà viết nhầm thành $M-A$ thì ra điểm sai.
+- Vectơ đã biết ở vế phải (như $2\overrightarrow{BC}$) không chứa điểm cần tìm nên không tính vào tổng hệ số $k$; khi chuyển nó sang vế kia nhớ đổi dấu.
+- Tổng hệ số $k=0$ thì không giải ra điểm: phải tính vế đã biết xem đẳng thức đúng với mọi $M$ hay vô nghiệm.
+
+@vi_du:
+##VD
+Cho ba điểm $A(1;2;-1)$, $B(3;0;2)$, $C(1;-2;3)$. Tìm toạ độ điểm $M$ trong mỗi trường hợp:
+a) $\overrightarrow{OM}=2\overrightarrow{AB}-\overrightarrow{AC}$
+b) $\overrightarrow{MA}+2\overrightarrow{MB}-\overrightarrow{MC}=\vec{0}$
+
+Bài giải:
+a) $\overrightarrow{AB}=(2;-2;3)$ và $\overrightarrow{AC}=(0;-4;4)$.
+$\overrightarrow{OM}=2\overrightarrow{AB}-\overrightarrow{AC}=(4-0;\ -4+4;\ 6-4)=(4;0;2)$ nên $M(4;0;2)$.
+b) Gọi $M(x;y;z)$. Ta có $\overrightarrow{MA}=(1-x;\ 2-y;\ -1-z)$, $\overrightarrow{MB}=(3-x;\ -y;\ 2-z)$, $\overrightarrow{MC}=(1-x;\ -2-y;\ 3-z)$.
+Do đó $\overrightarrow{MA}+2\overrightarrow{MB}-\overrightarrow{MC}=(6-2x;\ 4-2y;\ -2z)$.
+Cho bằng $\vec{0}$ ta được $x=3$, $y=2$, $z=0$.
+Vậy a) $M(4;0;2)$; b) $M(3;2;0)$.
+
+##VD
+Cho ba điểm $A(-1;-4;0)$, $B(2;-1;3)$, $C(1;0;2)$.
+a) Tìm điểm $M$ thoả $\overrightarrow{MA}+2\overrightarrow{MB}+3\overrightarrow{MC}=\vec{0}$.
+b) Tìm điểm $N$ thoả $\overrightarrow{NA}-2\overrightarrow{NB}+3\overrightarrow{NC}=2\overrightarrow{BC}$.
+c) Có điểm $P$ nào thoả $\overrightarrow{PA}-2\overrightarrow{PB}+\overrightarrow{PC}=\vec{0}$ không?
+
+Bài giải:
+a) Tổng hệ số là $1+2+3=6\ne0$ và $\overrightarrow{MA}+2\overrightarrow{MB}+3\overrightarrow{MC}=\overrightarrow{OA}+2\overrightarrow{OB}+3\overrightarrow{OC}-6\overrightarrow{OM}$.
+Do đó $\overrightarrow{OM}=\dfrac{1}{6}\left(\overrightarrow{OA}+2\overrightarrow{OB}+3\overrightarrow{OC}\right)=\dfrac{1}{6}(-1+4+3;\ -4-2+0;\ 0+6+6)=\dfrac{1}{6}(6;-6;12)=(1;-1;2)$.
+Suy ra $M(1;-1;2)$.
+b) Tổng hệ số là $1-2+3=2$ nên $\overrightarrow{NA}-2\overrightarrow{NB}+3\overrightarrow{NC}=\overrightarrow{OA}-2\overrightarrow{OB}+3\overrightarrow{OC}-2\overrightarrow{ON}$.
+Ta có $\overrightarrow{OA}-2\overrightarrow{OB}+3\overrightarrow{OC}=(-1-4+3;\ -4+2+0;\ 0-6+6)=(-2;-2;0)$ và $2\overrightarrow{BC}=2(-1;1;-1)=(-2;2;-2)$.
+Đẳng thức trở thành $(-2;-2;0)-2\overrightarrow{ON}=(-2;2;-2)$, suy ra $2\overrightarrow{ON}=(0;-4;2)$ nên $\overrightarrow{ON}=(0;-2;1)$.
+Suy ra $N(0;-2;1)$.
+c) Với mọi điểm $P$: $\overrightarrow{PA}-2\overrightarrow{PB}+\overrightarrow{PC}=\left(\overrightarrow{OA}-\overrightarrow{OP}\right)-2\left(\overrightarrow{OB}-\overrightarrow{OP}\right)+\left(\overrightarrow{OC}-\overrightarrow{OP}\right)=\overrightarrow{OA}-2\overrightarrow{OB}+\overrightarrow{OC}$, vì tổng hệ số của $\overrightarrow{OP}$ là $-1+2-1=0$.
+Như vậy vế trái là một vectơ không đổi, không phụ thuộc $P$.
+Ta có $\overrightarrow{OA}-2\overrightarrow{OB}+\overrightarrow{OC}=(-1-4+1;\ -4+2+0;\ 0-6+2)=(-4;-2;-4)\ne\vec{0}$.
+Do đó không có điểm $P$ nào thoả đẳng thức.
+Vậy a) $M(1;-1;2)$; b) $N(0;-2;1)$; c) không tồn tại điểm $P$.
+
+## GHI CHÚ CHO CEO
+- Không có dạng nào mô tả mơ hồ; cả ba làm đúng kiểu đề ghi trong cau-truc.mjs (P1.2.7 có cả cùng phương/thẳng hàng, tỉ số MN=kA'C và giao điểm đường thẳng với mặt phẳng; P1.4.6 có cả chứng minh vuông góc và tính góc giữa hai đường thẳng; P3.2.5 có cả OM=2AB−AC lẫn ΣkMA=0).
+- P1.2.7 ví dụ 2 dùng điều kiện P thuộc mặt phẳng (AMN) bằng AP=xAM+yAN (ba vectơ đồng phẳng, chương này đã học ở P1.3), không dùng phương trình mặt phẳng.
+- P1.4.6 ví dụ 2: số liệu tự đặt (ba góc đỉnh 90°, 60°, 120°) để các góc đẹp; ba góc này thoả điều kiện tồn tại chóp (định thức Gram dương). Trạm soát thay ý c) "AB⊥BC" (hai cạnh cắt nhau, lệch dạng) bằng "SM⊥AB với M trung điểm AC" (hai đường chéo nhau). P3.2.5 ví dụ 2 ý c) là bẫy "tổng hệ số bằng 0" tôi tự thêm (nguồn không ra kiểu này).
+- Nguồn có lỗi: không gặp lỗi đáp án cần ghi vì ví dụ do tôi tự đặt số liệu; hình khối nói đủ bằng lời. Cả 6 ví dụ đã thử lại bằng số (tam/J6/thu.mjs): khớp hết.
