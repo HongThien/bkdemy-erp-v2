@@ -1,0 +1,871 @@
+[
+ {
+  "ma_cau": "T110030107077",
+  "loai": "trac_nghiem",
+  "de": "Cho góc $\\alpha$ thỏa mãn $0^\\circ<\\alpha <180^\\circ$ và $\\tan \\alpha =4$. Tính giá trị của biểu thức $A=\\dfrac{\\sin \\alpha +\\cos \\alpha }{\\sin \\alpha -3\\cos \\alpha }$.",
+  "lua_chon": [
+   "$A=-5$.",
+   "$A=5$.",
+   "$A=1$.",
+   "$A = -1$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Vì $\\tan \\alpha =4$ xác định nên $\\cos \\alpha \\ne 0$.\nChia cả tử và mẫu của biểu thức $A$ cho $\\cos \\alpha$, ta được\n$A=\\dfrac{\\dfrac{\\sin \\alpha }{\\cos \\alpha }+1}{\\dfrac{\\sin \\alpha }{\\cos \\alpha }-3}=\\dfrac{\\tan \\alpha +1}{\\tan \\alpha -3}.$\nThay $\\tan \\alpha =4$ vào biểu thức, ta được\n$A=\\dfrac{4+1}{4-3}=5.$\nVậy $A=5$.",
+  "nhan_cu": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ › Rút gọn hoặc tính giá trị của biểu thức lượng giác sử dụng các hệ thức lượng giác cơ bản"
+ },
+ {
+  "ma_cau": "T110030201039",
+  "loai": "trac_nghiem",
+  "de": "Nếu tam giác $ABC$ có $a^2 >b^2 +c^2$ thì:",
+  "lua_chon": [
+   "$A$ là góc tù.",
+   "$\\hat{A}$ là góc nhỏ nhất.",
+   "$A$ là góc vuông.",
+   "$A$ là góc nhọn."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Áp dụng định lí côsin cho góc $A$ của tam giác $ABC$:\n$\\cos A = \\dfrac{b^2+c^2 - a^2}{2bc}$\nTheo giả thiết $a^2 >b^2 +c^2$ nên $b^2 + c^2 - a^2 < 0$, trong khi $2bc > 0$.\nDo đó $\\cos A <0$, mà $0^\\circ < \\hat{A} <180^\\circ$ nên $\\hat{A}$ là góc tù.\nVậy chọn đáp án A.",
+  "nhan_cu": "Hệ thức lượng trong tam giác › Nhận dạng định lí cos, định lí sin và các công thức tính diện tích tam giác"
+ },
+ {
+  "ma_cau": "T110010203117",
+  "loai": "trac_nghiem",
+  "de": "Cho tập hợp $M=\\{x\\in \\mathbb{R}|-1<x\\le 3\\}$. Hãy viết tập $M$ dưới dạng khoảng, đoạn.",
+  "lua_chon": [
+   "$M=[-1;3)$.",
+   "$M=(-1;3]$.",
+   "$M=\\left[-1;3\\right]$.",
+   "$M=\\left(-1;3\\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Theo định nghĩa nửa khoảng, tập hợp các số thực $x$ thoả mãn $-1<x\\le 3$ được viết dưới dạng nửa khoảng là $(-1;3]$.\nVậy $M=(-1;3]$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110020104018",
+  "loai": "tra_loi_ngan",
+  "de": "Mẹ cho bạn An $200$ nghìn đồng để mua vở và bút bi cho năm học mới. Khi đến nhà sách loại vở mà An hay dùng có giá $7$ nghìn đồng một quyển, loại bút bi An hay dùng có giá $4,5$ nghìn đồng một cây. Gọi $x$ và $y$ ($x,y\\in \\mathbb{N}$) lần lượt là số quyển vở và số bút bi bạn An mua. Khi đó $x$ và $y$ thỏa mãn bất phương trình $\\text{ax+9y\\le b}$. Biểu thức $5a+b$ có giá trị là bao nhiêu?",
+  "dap_an": "470",
+  "loi_giai": "Số tiền An dùng để mua $x$ quyển vở là $7x$ (nghìn đồng).\nSố tiền An dùng để mua $y$ cây bút bi là $4,5y$ (nghìn đồng).\nTổng số tiền An mua vở và bút bi là $7x+4,5y$ (nghìn đồng).\nVì mẹ cho An $200$ nghìn đồng nên số tiền chi trả không vượt quá $200$ nghìn đồng, ta có bất phương trình\n$7x+4,5y\\le 200.$\nNhân cả hai vế của bất phương trình với $2$, ta được\n$14x+9y\\le 400.$\nĐồng nhất với bất phương trình $\\text{ax+9y\\le b}$, ta suy ra $a=14$ và $b=400$.\nDo đó\n$5a+b=5\\cdot 14+400=70+400=470.$\nVậy giá trị của biểu thức $5a+b$ bằng $470$.",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Bài toán thực tế về bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110000000419",
+  "loai": "trac_nghiem",
+  "de": "Cho $A=\\{1;5\\}$, $B=\\{1;3;5\\}$. Chọn kết quả đúng trong các kết quả sau:",
+  "lua_chon": [
+   "$A\\cap B=\\{1\\}$.",
+   "$A\\cap B=\\{1;5\\}$.",
+   "$A\\cup B=\\{1;3\\}$.",
+   "$A\\cup B=\\{3;5\\}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Giao của hai tập hợp $A$ và $B$ là tập hợp gồm các phần tử vừa thuộc $A$ vừa thuộc $B$.\nVì phần tử $1$ và $5$ đều thuộc cả hai tập hợp $A$ và $B$ nên\n$A\\cap B=\\{1;5\\}.$\nMặt khác, hợp của hai tập hợp là $A\\cup B=\\{1;3;5\\}$.\nDo đó, kết quả đúng là $A\\cap B=\\{1;5\\}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000216",
+  "loai": "trac_nghiem",
+  "de": "Trong các đẳng thức sau, đẳng thức nào đúng?",
+  "lua_chon": [
+   "$\\sin \\left(180^\\circ-\\alpha \\right)=-\\cos \\alpha$.",
+   "$\\sin \\left(180^\\circ-\\alpha \\right)=-\\sin \\alpha$.",
+   "$\\sin \\left(180^\\circ-\\alpha \\right)=\\sin \\alpha$.",
+   "$\\sin \\left(180^\\circ-\\alpha \\right)=\\cos \\alpha$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Theo công thức giá trị lượng giác của hai góc bù nhau, với mọi góc $\\alpha$ ta có:\n$\\sin \\left(180^\\circ-\\alpha \\right)=\\sin \\alpha.$\nVậy đẳng thức đúng là $\\sin \\left(180^\\circ-\\alpha \\right)=\\sin \\alpha$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110030107073",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $\\cot \\alpha =2$. Tính $B=\\dfrac{2\\sin \\alpha +3\\cos \\alpha }{3\\sin ^{3}\\alpha -\\cos ^{3}\\alpha }$.",
+  "dap_an": "-8",
+  "loi_giai": "Vì $\\cot \\alpha =2$ nên $\\sin \\alpha \\ne 0$ và $\\cos \\alpha =2\\sin \\alpha$.\nTừ hằng đẳng thức $1+\\cot ^{2}\\alpha =\\dfrac{1}{\\sin ^{2}\\alpha }$, ta có\n$\\dfrac{1}{\\sin ^{2}\\alpha }=1+2^{2}=5\\Rightarrow \\sin ^{2}\\alpha =\\dfrac{1}{5}.$\nThay $\\cos \\alpha =2\\sin \\alpha$ vào biểu thức $B$, ta được\n$B=\\dfrac{2\\sin \\alpha +3\\left(2\\sin \\alpha \\right)}{3\\sin ^{3}\\alpha -\\left(2\\sin \\alpha \\right)^{3}}=\\dfrac{8\\sin \\alpha }{3\\sin ^{3}\\alpha -8\\sin ^{3}\\alpha }=\\dfrac{8\\sin \\alpha }{-5\\sin ^{3}\\alpha }=\\dfrac{8}{-5\\sin ^{2}\\alpha }.$\nThay $\\sin ^{2}\\alpha =\\dfrac{1}{5}$ vào, ta có\n$B=\\dfrac{8}{-5\\cdot \\dfrac{1}{5}}=\\dfrac{8}{-1}=-8.$\nVậy $B=-8$.",
+  "nhan_cu": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ › Rút gọn hoặc tính giá trị của biểu thức lượng giác sử dụng các hệ thức lượng giác cơ bản"
+ },
+ {
+  "ma_cau": "T110010203163",
+  "loai": "trac_nghiem",
+  "de": "Tập hợp $M=\\{x\\in \\mathbb{R}|1\\le x<6\\}$ bằng tập nào dưới đây?",
+  "lua_chon": [
+   "$\\left\\{1;2;3;4;5\\right\\}$.",
+   "$[1;6)$.",
+   "$\\left\\{1;2;3;4;5;6\\right\\}$.",
+   "$\\left[1;6\\right]$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Theo định nghĩa về các tập con của tập số thực $\\mathbb{R}$, tập hợp các số thực $x$ thỏa mãn điều kiện $1\\le x<6$ là nửa khoảng $[1;6)$.\nVậy $M=[1;6)$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110000000330",
+  "loai": "tra_loi_ngan",
+  "de": "Tam giác $ABC$ có hai đường trung tuyến $BM$, $CN$ vuông góc với nhau và có $BC=6$, góc $\\widehat{BAC}=30^\\circ$. Tính diện tích tam giác $ABC$ (Kết quả làm tròn đến hàng phần chục).",
+  "dap_an": "20.8",
+  "loi_giai": "Gọi $G$ là trọng tâm của tam giác $ABC$, đặt $a=BC=6$, $b=AC$, $c=AB$.\nVì $\\text{BM\\perp CN}$ tại $G$ nên tam giác $GBC$ vuông tại $G$.\nGọi $I$ là trung điểm của $BC$, ta có\n$GI=\\dfrac{1}{2}BC=\\dfrac{1}{2}\\cdot 6=3.$\nDo $G$ là trọng tâm tam giác $ABC$ nên độ dài đường trung tuyến $AI$ là\n$m_{a}\\text{=AI=3GI=3\\cdot 3=9.}$\nÁp dụng công thức tính độ dài đường trung tuyến, ta có\n$m_{a}^{2}=\\dfrac{2\\left(b^{2}+c^{2}\\right)-a^{2}}{4}\\Rightarrow 9^{2}=\\dfrac{2\\left(b^{2}+c^{2}\\right)-6^{2}}{4}\\Rightarrow b^{2}+c^{2}=180.$\nTheo định lí côsin trong tam giác $ABC$, ta có\n$a^{2}=b^{2}+c^{2}-2bc\\cos A\\Rightarrow 6^{2}=180-2bc\\cos 30^\\circ\\Rightarrow 36=180-\\sqrt{3}\\text{bc\\Rightarrow bc=48}\\sqrt{3}.$\nDi …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110020102082",
+  "loai": "trac_nghiem",
+  "de": "Miền không bị gạch (không tính đường thẳng $d$) được cho bởi hình sau là miền nghiệm của bất phương trình nào?",
+  "lua_chon": [
+   "$x+2y-6<0$.",
+   "$2x+y-6>0$.",
+   "$2x+y-6<0$.",
+   "$x+2y-6>0$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Đường thẳng $d$ cắt trục hoành tại điểm $\\left(3;0\\right)$ và cắt trục tung tại điểm $\\left(0;6\\right)$ nên phương trình đường thẳng $d$ theo đoạn chắn là:\n$\\dfrac{x}{3}+\\dfrac{y}{6}=1\\Leftrightarrow 2x+y-6=0.$\nVì đường thẳng $d$ được vẽ bằng nét đứt (không tính đường thẳng $d$) nên bất phương trình có dấu $<$ hoặc $>$.\nThay toạ độ gốc toạ độ $O\\left(0;0\\right)$ vào biểu thức $2x+y-6$, ta được:\n$2\\cdot 0+0-6=-6<0.$\nQuan sát hình vẽ, miền không bị gạch chứa gốc toạ độ $O\\left(0;0\\right)$.\nDo đó, miền không bị gạch là miền nghiệm của bất phương trình $2x+y-6<0$.",
+  "co_hinh": true,
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110010103094",
+  "loai": "trac_nghiem",
+  "de": "Mệnh đề phủ định của mệnh đề: \" $4$ là một số chẵn\"\\ là:",
+  "lua_chon": [
+   "$4$ không là một số lẻ.",
+   "$-4$ không là một số chẵn.",
+   "$-4$ là một số chẵn.",
+   "$4$ không là một số chẵn."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Mệnh đề phủ định của mệnh đề $P :$ \" $4$ là một số chẵn\"\\ là $\\hat{P} :$ \" $4$ không là một số chẵn\".",
+  "nhan_cu": "Mệnh đề › Mệnh đề chứa ký hiệu với mọi, tồn tại. Phủ định của mệnh đề"
+ },
+ {
+  "ma_cau": "T110030201053",
+  "loai": "trac_nghiem",
+  "de": "Cho tam giác $ABC$ các cạnh $BC = a, AC = b, AB = c$ và $S$ là diện tích của tam giác $ABC$. Trong các khẳng định sau, khẳng định nào đúng?",
+  "lua_chon": [
+   "$\\sin C = \\dfrac{2S}{cb}$",
+   "$\\sin C = \\dfrac{S}{2bc}$.",
+   "$\\sin C = \\dfrac{2S}{ab}$",
+   "$\\sin C = \\dfrac{2S}{ac}$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Diện tích của tam giác $ABC$ được tính theo công thức:\n$S = \\dfrac{1}{2}ab\\sin C$.\nSuy ra $\\sin C = \\dfrac{2S}{ab}$.\nVậy khẳng định đúng là $\\sin C = \\dfrac{2S}{ab}$.",
+  "nhan_cu": "Hệ thức lượng trong tam giác › Nhận dạng định lí cos, định lí sin và các công thức tính diện tích tam giác"
+ },
+ {
+  "ma_cau": "T110000000218",
+  "loai": "trac_nghiem",
+  "de": "Trong các tập hợp sau, tập hợp nào là tập rỗng?",
+  "lua_chon": [
+   "$\\left\\{x\\in \\mathbb{R}|x^{2}+5x-6=0\\right\\}$.",
+   "$\\left\\{x\\in \\mathbb{Q}|3x^{2}-5x+2=0\\right\\}$.",
+   "$\\left\\{x\\in \\mathbb{Z}|x^{2}+x-1=0\\right\\}$.",
+   "$\\left\\{x\\in \\mathbb{R}|x^{2}+5x-1=0\\right\\}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Xét từng tập hợp:\n- Tập hợp $\\left\\{x\\in \\mathbb{R}|x^{2}+5x-6=0\\right\\}$: phương trình $x^{2}+5x-6=0$ có hai nghiệm thực $x=1,x=-6$, nên tập hợp này có $2$ phần tử $\\{1;-6\\}\\ne \\varnothing$.\n- Tập hợp $\\left\\{x\\in \\mathbb{Q}|3x^{2}-5x+2=0\\right\\}$: phương trình $3x^{2}-5x+2=0$ có hai nghiệm hữu tỉ $x=1,x=\\dfrac{2}{3}$, nên tập hợp này có $2$ phần tử $\\left\\{1;\\dfrac{2}{3}\\right\\}\\ne \\varnothing$.\n- Tập hợp $\\left\\{x\\in \\mathbb{Z}|x^{2}+x-1=0\\right\\}$: phương trình $x^{2}+x-1=0$ có $\\Delta =1^{2}-4\\cdot 1\\cdot \\left(-1\\right)=5>0$, hai nghiệm là $x=\\dfrac{-1\\pm \\sqrt{5}}{2}\\notin \\mathbb{Z}$, do đó không có số nguyên nào thỏa mãn phương trình.\nVậy tập hợp $\\{x\\in \\mathbb{Z}|x^{2}+x-1=0\\}=\\va …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110030101048",
+  "loai": "trac_nghiem",
+  "de": "Tính giá trị biểu thức $P=\\sin 30^\\circ+\\cos 60^\\circ$.",
+  "lua_chon": [
+   "$P=1$.",
+   "$P=0$.",
+   "$P=-1$.",
+   "$P=-\\dfrac{1}{20}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có $\\sin 30^\\circ=\\dfrac{1}{2}$ và $\\cos 60^\\circ=\\dfrac{1}{2}$.\nDo đó\n$P=\\sin 30^\\circ+\\cos 60^\\circ=\\dfrac{1}{2}+\\dfrac{1}{2}=1.$\nVậy $P=1$.",
+  "nhan_cu": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ › Giá trị lượng giác của một góc"
+ },
+ {
+  "ma_cau": "T110000000354",
+  "loai": "tra_loi_ngan",
+  "de": "Hai tàu đánh cá cùng xuất phát từ bến $A$ và đi thẳng đều về hai vùng biển khác nhau, theo hai hướng tạo với nhau góc $60^\\circ$. Tàu thứ nhất chạy với tốc độ $8$ hải lí một giờ và tàu thứ hai chạy với tốc độ $12$ hải lí một giờ. Hỏi sau bao nhiêu giờ thì hai tàu cách nhau $2\\sqrt{112}$ hải lí?",
+  "dap_an": "2",
+  "loi_giai": "Gọi $t$ là thời gian hai tàu chạy từ bến $A$ ($t>0$, đơn vị: giờ).\nSau $t$ giờ, vị trí của tàu thứ nhất là điểm $B$ và vị trí của tàu thứ hai là điểm $C$.\nKhi đó $AB=8t$ (hải lí), $AC=12t$ (hải lí), $\\widehat{BAC}=60^\\circ$ và $BC=2\\sqrt{112}$ (hải lí).\nÁp dụng định lí côsin trong tam giác $ABC$, ta có\n$BC^{2}=AB^{2}+AC^{2}\\text{-2AB\\cdot AC\\cdot }\\cos \\widehat{BAC}.$\nThay số vào ta được\n$\\left(2\\sqrt{112}\\right)^{2}=\\left(8t\\right)^{2}+\\left(12t\\right)^{2}-2\\cdot 8t\\cdot 12t\\cdot \\cos 60^\\circ.$\n$448=64t^{2}+144t^{2}-96t^{2}=112t^{2}.$\nSuy ra $t^{2}=\\dfrac{448}{112}=4\\Rightarrow t=2$ (do $t>0$).\nVậy sau $2$ giờ thì hai tàu cách nhau $2\\sqrt{112}$ hải lí.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110020102120",
+  "loai": "trac_nghiem",
+  "de": "Miền nghiệm của bất phương trình: $3\\left(x-1\\right)+4\\left(y-2\\right)<5x-3$ là nửa mặt phẳng chứa điểm:",
+  "lua_chon": [
+   "$\\left(0;0\\right)$.",
+   "$\\left(-2;2\\right)$.",
+   "$\\left(-5;3\\right)$.",
+   "$\\left(-4;2\\right)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Biến đổi bất phương trình đã cho:\n$3\\left(x-1\\right)+4\\left(y-2\\right)<5x-3\\Leftrightarrow 3x-3+4y-8<5x-3\\Leftrightarrow -2x+4y-8<0\\Leftrightarrow x-2y+4>0.$\nThay toạ độ các điểm vào biểu thức $f\\left(x;y\\right)=-2x+4y-8$:\n• Với điểm $\\left(0;0\\right)$: $-2\\cdot 0+4\\cdot 0-8=-8<0$ (thỏa mãn).\n• Với điểm $\\left(-2;2\\right)$: $-2\\cdot \\left(-2\\right)+4\\cdot 2-8=4>0$ (không thỏa mãn).\n• Với điểm $\\left(-5;3\\right)$: $-2\\cdot \\left(-5\\right)+4\\cdot 3-8=14>0$ (không thỏa mãn).\n• Với điểm $\\left(-4;2\\right)$: $-2\\cdot \\left(-4\\right)+4\\cdot 2-8=8>0$ (không thỏa mãn).\nVậy miền nghiệm của bất phương trình đã cho là nửa mặt phẳng chứa điểm $\\left(0;0\\right)$.",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110030201052",
+  "loai": "trac_nghiem",
+  "de": "Cho tam giác $ABC$, có độ dài ba cạnh là $BC = a, AC = b, AB = c$. Gọi $R$ là bán kính đường tròn ngoại tiếp tam giác, $p = \\dfrac{a+b+c}{2}$ là nửa chu vi và $S$ là diện tích tam giác đó. Mệnh đề nào sau đây sai?",
+  "lua_chon": [
+   "$\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C} = 2R$.",
+   "$S = \\dfrac{abc}{4R}$",
+   "$S = pr$.",
+   "$a^2 = b^2 + c^2 + 2bc \\cos A$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Trong tam giác $ABC$, theo định lí côsin ta có\n$a^2 = b^2+c^2 - 2bc \\cos A$.\nDo đó công thức $a^2 = b^2 + c^2 + 2bc \\cos A$ là sai (sai dấu của số hạng $2bc\\cos A$).\nCác công thức còn lại đều là các định lí và công thức diện tích đúng:\n$\\bullet \\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C} = 2R$ (định lí sin);\n$\\bullet S = \\dfrac{abc}{4R}$ (diện tích qua bán kính đường tròn ngoại tiếp);\n$\\bullet S = pr$ (diện tích qua bán kính đường tròn nội tiếp).\nVậy mệnh đề sai là $a^2 = b^2 + c^2 + 2bc \\cos A$.",
+  "nhan_cu": "Hệ thức lượng trong tam giác › Nhận dạng định lí cos, định lí sin và các công thức tính diện tích tam giác"
+ },
+ {
+  "ma_cau": "T110020202073",
+  "loai": "trac_nghiem",
+  "de": "Phần không tô đậm trong hình vẽ dưới đây (không chứa biên), biểu diễn tập nghiệm của hệ bất phương trình nào trong các hệ bất phương trình sau? [hình]",
+  "lua_chon": [
+   "$\\begin{cases}x>0\\\\x-3y>0\\\\x+y<4\\end{cases}$",
+   "$\\begin{cases}x>0\\\\x-3y<0\\\\x+y<4\\end{cases}$",
+   "$\\begin{cases}x<0\\\\x-3y<0\\\\x+y>4\\end{cases}$",
+   "$\\begin{cases}x>0\\\\3x-y<0\\\\x+y<4\\end{cases}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "- Phương trình 3 đường biên giới hạn miền:\n+ $d_1$: Trục $Oy \\Rightarrow x=0$.\n+ $d_2$: Qua $(0;0)$, $(3;1) \\Rightarrow x-3y=0$.\n+ $d_3$: Qua $(0;4)$, $(3;1) \\Rightarrow x+y=4$.\n- Vì đề bài cho miền nghiệm không chứa biên nên ta sử dụng các dấu $>, <$.\n- Chọn điểm $M(1;2)$ thuộc miền nghiệm để thử:\n+ Tọa độ $x=1>0 \\Rightarrow x>0$.\n+ Biểu thức $x-3y=1-6 = -5 < 0 \\Rightarrow x-3y < 0$.\n+ Biểu thức $x+y=1+2 = 3 < 4 \\Rightarrow x+y < 4$.\n- Đối chiếu đáp án, ta chọn hệ B.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110010203175",
+  "loai": "tu_luan",
+  "de": "Cho hai tập hợp $A=(-\\infty;2]$, $B=\\left(-5;7\\right)$. Xác định các tập hợp $A\\cup B$, $A\\cap B$, $A\\setminus B$, $C_{\\mathbb{R}}A$.",
+  "loi_giai": "Biểu diễn hai tập hợp $A=(-\\infty;2]$ và $B=\\left(-5;7\\right)$ trên trục số (phần không bị gạch trên mỗi trục lần lượt biểu diễn tập hợp $A$ và tập hợp $B$).\nDựa vào trục số, ta xác định được:\n• Hợp của hai tập hợp là phần để trắng ở ít nhất một trong hai trục:\n$A\\cup B=\\left(-\\infty;7\\right).$\n• Giao của hai tập hợp là phần cùng để trắng ở cả hai trục:\n$A\\cap B=(-5;2].$\n• Hiệu $A\\setminus B$ gồm các phần tử thuộc $A$ nhưng không thuộc $B$:\n$A\\setminus B=(-\\infty;-5].$\n• Phần bù của $A$ trong $\\mathbb{R}$ là phần bị gạch trên trục số thứ nhất:\n$C_{\\mathbb{R}}A=\\mathbb{R}\\setminus A=\\left(2;+\\infty \\right).$\nVậy $A\\cup B=\\left(-\\infty;7\\right)$, $A\\cap B=(-5;2]$, $A\\setminus B=(-\\infty;-5]$ v …",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110000000242",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $3$ đường tròn nhỏ bằng nhau có bán kính $r=2$ nằm trong và tiếp xúc đường tròn lớn (như hình vẽ). Tam giác đều có đỉnh là $3$ tâm của đường tròn. Tính diện tích phần tô đậm (làm tròn đến $1$ chữ số sau dấu phẩy)",
+  "dap_an": "26.3",
+  "loi_giai": "Gọi $A,B,C$ lần lượt là tâm của ba đường tròn nhỏ có bán kính $r=2$, và $O$ là tâm của đường tròn lớn.\nBa đường tròn nhỏ tiếp xúc ngoài đôi một nên tam giác $ABC$ là tam giác đều có độ dài cạnh là\n$a=2r=2\\cdot 2=4.$\nKhoảng cách từ tâm $O$ (trọng tâm tam giác $ABC$) đến các đỉnh $A,B,C$ là\n$OA=OB=OC=\\dfrac{a\\sqrt{3}}{3}=\\dfrac{4\\sqrt{3}}{3}.$\nBán kính đường tròn lớn là\n$R=OA+r=\\dfrac{4\\sqrt{3}}{3}+2.$\nDiện tích của hình tròn lớn là\n$S_{\\left(O\\right)}=\\pi R^{2}=\\pi \\left(2+\\dfrac{4\\sqrt{3}}{3}\\right)^{2}=\\pi \\left(\\dfrac{28+16\\sqrt{3}}{3}\\right).$\nDiện tích tam giác đều $ABC$ là\n$S_{\\triangle ABC}=\\dfrac{a^{2}\\sqrt{3}}{4}=\\dfrac{4^{2}\\sqrt{3}}{4}=4\\sqrt{3}.$\nBa hình quạt tròn góc $60^\\circ$ c …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110020102129",
+  "loai": "trac_nghiem",
+  "de": "Phần mặt phẳng không gạch chéo (kể cả biên) trong hình dưới đây là miền nghiệm của bất phương trình nào?",
+  "lua_chon": [
+   "$2x+3y-4<0$.",
+   "$2x+3y-4\\le 0$.",
+   "$2x+3y-4\\ge 0$.",
+   "$3x+2y+4>0$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Đường thẳng bờ đi qua điểm $\\left(2;0\\right)$ và $\\left(0,5;1\\right)$ nên có phương trình là $2x+3y-4=0$.\nGốc toạ độ $O\\left(0;0\\right)$ thuộc miền không bị gạch chéo.\nThay toạ độ gốc toạ độ $O\\left(0;0\\right)$ vào biểu thức $f\\left(x;y\\right)=2x+3y-4$ ta được:\n$f\\left(0;0\\right)=2\\cdot 0+3\\cdot 0-4=-4<0.$\nDo đó miền nghiệm chứa điểm $O\\left(0;0\\right)$ và kể cả bờ tương ứng với bất phương trình $2x+3y-4\\le 0$.\nVậy phần mặt phẳng không gạch chéo là miền nghiệm của bất phương trình $2x+3y-4\\le 0$.",
+  "co_hinh": true,
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110000000063",
+  "loai": "trac_nghiem",
+  "de": "Ký hiệu nào sau đây để chỉ $\\sqrt{5}$ không phải là một số hữu tỉ?",
+  "lua_chon": [
+   "$\\sqrt{5}\\notin \\mathbb{Q}$.",
+   "$\\sqrt{5}\\ne \\mathbb{Q}$.",
+   "$\\sqrt{5}⊈\\mathbb{Q}$.",
+   "$\\sqrt{5}\\subset \\mathbb{Q}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ký hiệu $\\notin$ dùng để chỉ một phần tử không thuộc một tập hợp.\nVì $\\sqrt{5}$ là một số vô tỉ nên $\\sqrt{5}$ không thuộc tập hợp các số hữu tỉ $\\mathbb{Q}$, ta viết $\\sqrt{5}\\notin \\mathbb{Q}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110030203083",
+  "loai": "tra_loi_ngan",
+  "de": "Để xác định chiều cao của một tòa nhà cao tầng, một người đứng tại điểm $M$, sử dụng giác kế nhìn thấy đỉnh tòa nhà với góc nâng $\\widehat{RQA}=79^\\circ$, người đó lùi ra xa một khoảng cách $LM=40\\ \\mathrm{m}$ thì nhìn thấy đỉnh tòa nhà với góc nâng $\\widehat{RPA}=53^\\circ$. Tính chiều cao của tòa nhà, biết rằng khoảng cách từ mặt đất đến ống ngắm của giác kế đó là $PL=QM=1,4\\ \\mathrm{m}$. Làm tròn kết quả đến hàng phần mười của mét.\n[hình]",
+  "dap_an": "72.9",
+  "loi_giai": "Xét tam giác $APQ$, ta có $\\widehat{APQ}=53^\\circ$, $\\widehat{AQP}=180^\\circ-\\widehat{AQR}=180^\\circ-79^\\circ=101^\\circ$.\nGóc $\\widehat{PAQ}=180^\\circ-(\\widehat{APQ}+\\widehat{AQP})=180^\\circ-(53^\\circ+101^\\circ)=26^\\circ$.\nÁp dụng định lí sin trong tam giác $APQ$, ta có\n$\\dfrac{AQ}{\\sin\\widehat{APQ}}=\\dfrac{PQ}{\\sin\\widehat{PAQ}}\\Rightarrow AQ=\\dfrac{PQ\\cdot\\sin\\widehat{APQ}}{\\sin\\widehat{PAQ}}=\\dfrac{40\\cdot\\sin 53^\\circ}{\\sin 26^\\circ}$.\nXét tam giác $ARQ$ vuông tại $R$, ta có\n$AR=AQ\\cdot\\sin\\widehat{AQR}=\\dfrac{40\\cdot\\sin 53^\\circ\\cdot\\sin 79^\\circ}{\\sin 26^\\circ}\\approx 71,53\\ (\\mathrm{m})$.\nChiều cao của tòa nhà là\n$AO=AR+RO=AR+1,4\\approx 71,53+1,4=72,93\\approx 72,9\\ (\\mathrm{m})$.\nVậy …",
+  "co_hinh": true,
+  "nhan_cu": "Hệ thức lượng trong tam giác › Giải tam giác và bài toán thực tế áp dụng định lý sin"
+ },
+ {
+  "ma_cau": "T110000000067",
+  "loai": "trac_nghiem",
+  "de": "Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "Hai vectơ $\\overrightarrow{a}$ và $\\overrightarrow{b}$ được gọi là bằng nhau nếu chúng cùng phương và cùng độ dài.",
+   "Hai vectơ $\\overrightarrow{a}$ và $\\overrightarrow{b}$ được gọi là bằng nhau nếu chúng cùng độ dài.",
+   "Hai vectơ $\\overrightarrow{a}$ và $\\overrightarrow{b}$ được gọi là bằng nhau nếu chúng cùng hướng và cùng độ dài.",
+   "Hai vectơ $\\overrightarrow{a}$ và $\\overrightarrow{b}$ được gọi là bằng nhau nếu $\\overrightarrow{a}^{2}=\\overrightarrow{b}^{2}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Theo định nghĩa, hai vectơ $\\overrightarrow{a}$ và $\\overrightarrow{b}$ được gọi là bằng nhau, kí hiệu $\\overrightarrow{a}=\\overrightarrow{b}$, nếu chúng cùng hướng và cùng độ dài.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110030203076",
+  "loai": "tra_loi_ngan",
+  "de": "Hai tàu du lịch xuất phát từ hai thành phố cảng $A$ và $B$ cách nhau $200(\\mathrm{km})$ đến đảo $C$ như hình minh họa.\n[hình]\nBiết $\\widehat{CAB} = 30^\\circ$; $\\widehat{CBA} = 45^\\circ$. Tàu 1 ở thành phố $A$ khởi hành lúc 8h và chuyển động đều với vận tốc $80(\\mathrm{km/h})$. Tàu 2 ở thành phố $B$ muốn đến đảo $C$ cùng lúc với tàu 1 thì phải khởi hành lúc $a$ giờ $b$ phút, biết tàu 2 chuyển động đều cùng vận tốc $80(\\mathrm{km/h})$. Tính $a+b$ .",
+  "dap_an": "40",
+  "loi_giai": "Xét tam giác $ABC$ , ta có\n$\\widehat{ACB}=180^\\circ - (\\widehat{CAB} + \\widehat{CBA})=180^\\circ-(30^\\circ+45^\\circ)=105^\\circ$.\nÁp dụng định lí sin trong tam giác $ABC$ , ta có\n$\\dfrac{AC}{\\sin \\widehat{CBA}} = \\dfrac{BC}{\\sin \\widehat{CAB}} = \\dfrac{AB}{\\sin \\widehat{ACB}}$\nĐộ dài quãng đường từ thành phố cảng $A$ đến đảo $C$ là\n$AC = \\dfrac{AB \\cdot \\sin 45^\\circ}{\\sin 105^\\circ} = \\dfrac{200 \\cdot \\sin 45^\\circ}{\\sin 105^\\circ} \\approx 146,41(\\mathrm{km})$.\nĐộ dài quãng đường từ thành phố cảng $B$ đến đảo $C$ là\n$BC = \\dfrac{AB \\cdot \\sin 30^\\circ}{\\sin 105^\\circ} = \\dfrac{200 \\cdot \\sin 30^\\circ}{\\sin 105^\\circ} \\approx 103,53(\\mathrm{km})$.\nThời gian tàu 1 đi từ $A$ đến $C$ với vận tốc  …",
+  "co_hinh": true,
+  "nhan_cu": "Hệ thức lượng trong tam giác › Giải tam giác và bài toán thực tế áp dụng định lý sin"
+ },
+ {
+  "ma_cau": "T110000000434",
+  "loai": "tra_loi_ngan",
+  "de": "Hai vận động viên A và B cùng xuất phát từ một vị trí. Vận động viên A chạy với vận tốc $12 km/h$ trên đường thứ nhất tạo với phương thẳng đứng (chiều hướng lên trên) một góc $25^\\circ$. Vận động viên B chạy với vận tốc $13 km/h$ trên đường thứ hai tạo với phương thẳng đứng (chiều hướng lên trên) một góc $85^\\circ$. Sau thời gian $30$ phút hai người cách nhau bao nhiêu km? (làm tròn đến sau dấu phẩy hai chữ số).",
+  "dap_an": "6.26",
+  "loi_giai": "Đổi $30$phút$=0,5 h$.\nGọi $O$ là vị trí xuất phát của hai vận động viên, $A$ và $B$ lần lượt là vị trí của vận động viên A và vận động viên B sau $30$ phút.\nQuãng đường vận động viên A chạy được là\n$OA=12\\cdot 0,5=6 \\left(km\\right).$\nQuãng đường vận động viên B chạy được là\n$OB=13\\cdot 0,5=6,5 \\left(km\\right).$\nGóc giữa hai hướng chạy là $\\widehat{AOB}=85^\\circ-25^\\circ=60^\\circ$.\nÁp dụng định lí côsin trong tam giác $OAB$, khoảng cách giữa hai người sau $30$ phút là\n$\\begin{array}{l} AB=\\sqrt{OA^{2}+OB^{2}\\text{-2OA\\cdot OB\\cdot }\\cos \\widehat{AOB}} \\\\ =\\sqrt{6^{2}+{6,5}^{2}-2\\cdot 6\\cdot 6,5\\cdot \\cos 60^\\circ} \\\\ =\\sqrt{36+42,25-39}=\\sqrt{39,25}\\approx 6,26 \\left(km\\right). \\end{array}$\nV …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110030203080",
+  "loai": "tra_loi_ngan",
+  "de": "Hai chiếc tàu thủy $P$ và $Q$ cách nhau $100\\mathrm{m}$. Từ $P$ và $Q$ thẳng hàng với chân $A$ của tháp hải đăng $AB$ ở trên bờ biển người ta nhìn chiều cao $AB$ của tháp dưới các góc $\\widehat{BPA}=15^\\circ$ và $\\widehat{BQA}=22^\\circ$. Tính chiều cao $AB$ của tháp làm tròn đến hàng phần mười?[hình]",
+  "dap_an": "79.6",
+  "loi_giai": "Xét tam giác $PBQ$, ta có $\\widehat{BQA}$ là góc ngoài tại đỉnh $Q$ nên\n$\\widehat{PBQ}=\\widehat{BQA}-\\widehat{BPA}=22^\\circ-15^\\circ=7^\\circ$.\nÁp dụng định lí sin trong tam giác $PBQ$, ta có\n$\\dfrac{BQ}{\\sin\\widehat{BPA}}=\\dfrac{PQ}{\\sin\\widehat{PBQ}}\\Rightarrow BQ=\\dfrac{PQ\\cdot\\sin15^\\circ}{\\sin7^\\circ}=\\dfrac{100\\cdot\\sin15^\\circ}{\\sin7^\\circ}(\\mathrm{m})$.\nXét tam giác vuông $ABQ$ vuông tại $A$, chiều cao $AB$ của ngọn hải đăng là\n$AB=BQ\\cdot\\sin\\widehat{BQA}=\\dfrac{100\\cdot\\sin15^\\circ}{\\sin7^\\circ}\\cdot\\sin22^\\circ\\approx79,6(\\mathrm{m})$.\nVậy chiều cao của tháp hải đăng là khoảng $79,6(\\mathrm{m})$.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ thức lượng trong tam giác › Giải tam giác và bài toán thực tế áp dụng định lý sin"
+ },
+ {
+  "ma_cau": "T110030201006",
+  "loai": "trac_nghiem",
+  "de": "Xét tam giác $ABC$ tùy ý, có độ dài cạnh $BC=a$ và $R$ là độ dài bán kính đường tròn ngoại tiếp. Mệnh đề nào dưới đây đúng?",
+  "lua_chon": [
+   "$\\dfrac{a}{\\sin A}=4R$",
+   "$\\dfrac{a}{\\sin A}=2R$",
+   "$\\dfrac{a}{\\sin A}=\\dfrac{R}{2}$",
+   "$\\dfrac{a}{\\sin A}=R$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Theo định lí sin trong tam giác $ABC$, ta có $\\dfrac{a}{\\sin A}=\\dfrac{b}{\\sin B}=\\dfrac{c}{\\sin C}=2R$.\nDo đó mệnh đề đúng là $\\dfrac{a}{\\sin A}=2R$.",
+  "nhan_cu": "Hệ thức lượng trong tam giác › Nhận dạng định lí cos, định lí sin và các công thức tính diện tích tam giác"
+ },
+ {
+  "ma_cau": "T110000000095",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $f\\left(x\\right)$ có bảng biến thiên như sau\nHàm số nghịch biến trong khoảng nào dưới đây?",
+  "lua_chon": [
+   "$\\left(1;+\\infty \\right)$.",
+   "$\\left(0;1\\right)$.",
+   "$\\left(-2;2\\right)$.",
+   "$\\left(-\\infty;0\\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Dựa vào bảng biến thiên của hàm số $f\\left(x\\right)$:\nHàm số đồng biến trên các khoảng $\\left(-\\infty;0\\right)$ và $\\left(1;+\\infty \\right)$.\nHàm số nghịch biến trên khoảng $\\left(0;1\\right)$.\nVậy hàm số nghịch biến trong khoảng $\\left(0;1\\right)$.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110030201030",
+  "loai": "trac_nghiem",
+  "de": "Cho tam giác $ABC$. Mệnh đề nào sau đây là mệnh đề đúng?",
+  "lua_chon": [
+   "$BC^2 = AB^2 + AC^2 + AB \\cdot AC \\cdot \\cos A$",
+   "$BC^2 = AB^2 + AC^2 - AB \\cdot AC \\cdot \\cos A$",
+   "$BC^2 = AB^2 + AC^2 - 2AB \\cdot AC \\cdot \\cos A$",
+   "$BC^2 = AB^2 + AC^2 + 2AB \\cdot AC \\cdot \\cos A$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Theo định lí côsin trong tam giác $ABC$, bình phương một cạnh bằng tổng bình phương hai cạnh\ncòn lại trừ đi hai lần tích của hai cạnh đó với côsin của góc xen giữa.\nĐối với cạnh $BC$, ta có công thức:\n$BC^2 = AB^2 + AC^2 - 2AB \\cdot AC \\cdot \\cos A$.\nVậy mệnh đề đúng là $BC^2 = AB^2 + AC^2 - 2AB \\cdot AC \\cdot \\cos A$ .",
+  "nhan_cu": "Hệ thức lượng trong tam giác › Nhận dạng định lí cos, định lí sin và các công thức tính diện tích tam giác"
+ },
+ {
+  "ma_cau": "T110010203095",
+  "loai": "trac_nghiem",
+  "de": "Viết lại $A=\\{x\\in \\mathbb{R}|-2\\le x<1\\}$ dưới dạng tập con của $\\mathbb{R}$ là",
+  "lua_chon": [
+   "$A=\\left[-2;1\\right]$.",
+   "$A=(-2;1]$.",
+   "$A=[-2;1)$.",
+   "$A=\\left(-2;1\\right)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Theo định nghĩa nửa khoảng, tập hợp các số thực $x$ thỏa mãn $-2\\le x<1$ là nửa khoảng $[-2;1)$.\nVậy $A=[-2;1)$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110010203111",
+  "loai": "tra_loi_ngan",
+  "de": "Cho các tập hợp $A=\\{x\\in \\mathbb{R}||2x-4|<10\\}$, $B=\\{x\\in \\mathbb{R}|8<|-3x+5|\\}$ và $C=\\left[-2;5\\right]$. Đặt $D=\\left(A\\capB\\right)\\cup C$. Hỏi có bao nhiêu số nguyên thuộc tập $D$?",
+  "dap_an": "9",
+  "loi_giai": "Giải các bất phương trình để xác định các tập hợp $A$ và $B$:\n• Tập hợp $A$:\n$|2x-4|<10\\Leftrightarrow -10<2x-4<10\\Leftrightarrow -6<2x<14\\Leftrightarrow -3<x<7\\Rightarrow A=\\left(-3;7\\right).$\n• Tập hợp $B$:\n$|-3x+5|>8\\Leftrightarrow \\left[\\begin{array}{l} -3x+5>8 \\\\ -3x+5<-8 \\end{array}\\right.\\Leftrightarrow \\left[\\begin{array}{l} -3x>3 \\\\ -3x<-13 \\end{array}\\right.\\Leftrightarrow \\left[\\begin{array}{l} x<-1 \\\\ x>\\dfrac{13}{3} \\end{array}\\right.\\Rightarrow B=\\left(-\\infty;-1\\right)\\cup \\left(\\dfrac{13}{3};+\\infty \\right).$\nKhi đó giao của hai tập hợp $A$ và $B$ là\n$A\\cap B=\\left(-3;-1\\right)\\cup \\left(\\dfrac{13}{3};7\\right).$\nHợp của $A\\cap B$ với $C=\\left[-2;5\\right]$ là\n$D=\\left(A\\capB\\r …",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110010203145",
+  "loai": "trac_nghiem",
+  "de": "Tập hợp $S=\\{x\\in \\mathbb{R}|1<x\\le 2\\}$ được viết lại dưới dạng đoạn, khoảng, nửa khoảng là",
+  "lua_chon": [
+   "$\\left(1;2\\right)$.",
+   "$[1;2)$.",
+   "$\\left[1;2\\right]$.",
+   "$(1;2]$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Theo định nghĩa nửa khoảng, tập hợp các số thực $x$ thoả mãn $1<x\\le 2$ là nửa khoảng $(1;2]$.\nVậy $S=(1;2]$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110000000147",
+  "loai": "tra_loi_ngan",
+  "de": "Giá cước của một hãng taxi được tính theo bảng giá như sau:\n$\\begin{array}{|c|} \\hline \\text{\\multicolumn6|c|BẢNG GIÁ CƯỚC} \\\\ \\hline \\text{\\begintabular@l@QUÃNG ĐƯỜNG} \\\\ \\hline x \\text{(km)} \\\\ \\hline \\end{array}$\n& $0<x\\le 0,3$ & $0,3<x\\le 2$ & $2<x\\le 10$ & $10<x\\le 25$ & $x>25$\n\\hline GIÁ CƯỚC & $5\\,000$ đồng &\n$\\begin{array}{|c|} \\hline 20 600 \\\\ \\hline \\text{đồng/km} \\\\ \\hline \\end{array}$\n&\n$\\begin{array}{|c|} \\hline 16 000 \\\\ \\hline \\text{đồng/km} \\\\ \\hline \\end{array}$\n&\n$\\begin{array}{|c|} \\hline 17 600 \\\\ \\hline \\text{đồng/km} \\\\ \\hline \\end{array}$\n&\n$\\begin{array}{|c|} \\hline 15 100 \\\\ \\hline \\text{đồng/km} \\\\ \\hline \\end{array}$\n\\hline \\end{tabular}\nTheo bảng giá trên, nếu hành khách đi quãng đường $1 km$ thì cách tính sẽ là $5 000+\\left(1-0,3\\right)\\times 20 600=19 420$ đồng. Bạn Bình đặt xe của hãng taxi trên để đi từ trường Nguyễn Khuyến về nhà ở Bình Dương với quãng đường là $20 km$. Hỏi số tiền mà bạn Bình phải trả là bao nhiêu?",
+  "dap_an": "344020",
+  "loi_giai": "Quãng đường $20$ km của bạn Bình được chia thành các chặng theo bảng giá cước.\nChặng $0<x\\le 0,3$: tính giá cố định $5\\,000$ đồng.\nChặng $0,3<x\\le 2$ dài $2-0,3=1,7$ km, tiền cước là $1,7\\times 20 600=35 020$ đồng.\nChặng $2<x\\le 10$ dài $10-2=8$ km, tiền cước là $8\\times 16 000=128 000$ đồng.\nPhần còn lại thuộc chặng $10<x\\le 25$ dài $20-10=10$ km, tiền cước là $10\\times 17 600=176 000$ đồng.\nDo đó tổng số tiền phải trả là\n$5 000+35 020+128 000+176 000=344 020$\n(đồng)\n$.$\nVậy bạn Bình phải trả $344 020$ đồng.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110030201041",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\triangle ABC$ với các cạnh $AB = c$, $AC = b$, $BC = a$. Gọi $S$, $p$ lần lượt là diện tích và nửa chu vi của tam giác $ABC$. Trong các phát biểu sau, phát biểu nào sai?",
+  "lua_chon": [
+   "$S = \\sqrt{p(p-a)(p-b)(p-c)}$.",
+   "$a^2 + b^2 - c^2 = 2ab \\cos C$.",
+   "$\\dfrac{a}{\\sin A} = \\dfrac{b}{\\cos B} = \\dfrac{c}{\\sin C}$",
+   "$S = \\dfrac{1}{2}ab \\sin C$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Công thức Heron tính diện tích tam giác: $S = \\sqrt{p(p-a)(p-b)(p-c)}$ (đúng).\n- Theo định lí côsin: $c^2 = a^2 + b^2 – 2ab\\cos C \\Leftrightarrow a^2 + b^2 – c^2 = 2ab\\cos C$ (đúng).\nCông thức tính diện tích tam giác: $S = \\dfrac{1}{2}ab\\sin C$ (đúng).\n- Theo định lí sin, ta phải có $\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C} = 2R$. Do đó khẳng định $\\dfrac{a}{\\sin A} = \\dfrac{b}{\\cos B} = \\dfrac{c}{\\sin C}$ là sai.\nVậy phát biểu sai là $\\dfrac{a}{\\sin A} = \\dfrac{b}{\\cos B} = \\dfrac{c}{\\sin C}$.",
+  "nhan_cu": "Hệ thức lượng trong tam giác › Nhận dạng định lí cos, định lí sin và các công thức tính diện tích tam giác"
+ },
+ {
+  "ma_cau": "T110000000025",
+  "loai": "trac_nghiem",
+  "de": "Cho tam giác $ABC$, khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$AB^{2}=AC^{2}+BC^{2}\\text{-2AC\\cdot BC-}\\cos C$.",
+   "$AB^{2}=AC^{2}+BC^{2}\\text{-2AC\\cdot BC\\cdot }\\cos C$.",
+   "$AB^{2}=AC^{2}+BC^{2}\\text{-2AC\\cdot AB}\\cos C$.",
+   "$AB^{2}=AC^{2}+BC^{2}\\text{+2AC\\cdot BC}\\cos C$."
+  ],
+  "loi_giai": "Theo định lí côsin trong tam giác $ABC$, ta có:\n$AB^{2}=AC^{2}+BC^{2}\\text{-2AC\\cdot BC}\\cos C.$\nVậy khẳng định đúng là $AB^{2}=AC^{2}+BC^{2}\\text{-2AC\\cdot BC}\\cos C$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000313",
+  "loai": "tu_luan",
+  "de": "Vẽ parabol $\\left(P\\right) :y=-x^{2}+4x-5$.",
+  "loi_giai": "Tập xác định $D=\\mathbb{R}$.\nToạ độ đỉnh $I\\left(2;-1\\right)$.\nTrục đối xứng là đường thẳng $x=2$.\nVì $a=-1<0$ nên bề lõm của parabol quay xuống dưới.\nBảng biến thiên:\nHàm số đồng biến trên khoảng $\\left(-\\infty;2\\right)$ và nghịch biến trên khoảng $\\left(2;+\\infty \\right)$.\nBảng giá trị:\n$\\begin{array}{|c|c|c|c|c|c|} \\hline x & 0 & 1 & 2 & 3 & 4 \\\\ \\hline y & -5 & -2 & -1 & -2 & -5 \\\\ \\hline \\end{array}$\nĐồ thị hàm số:",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110030104001",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $A = \\sin(180^\\circ - \\alpha)\\sin\\alpha - \\cos(180^\\circ - \\alpha)\\cos\\alpha - 500$.",
+  "dap_an": "-499",
+  "loi_giai": "Vì $\\alpha$ và $180^\\circ - \\alpha$ là hai góc bù nhau nên\n$\\sin(180^\\circ - \\alpha) = \\sin\\alpha$, $\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$.\n$A = \\sin^2 \\alpha + \\cos^2 \\alpha - 500 = 1 - 500 = -499$.",
+  "nhan_cu": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ › Rút gọn biểu thức lượng giác sử dụng mối quan hệ lượng giác của hai góc bù hoặc phụ nhau"
+ },
+ {
+  "ma_cau": "T110030201049",
+  "loai": "trac_nghiem",
+  "de": "Cho tam giác $ABC$. Biết $BC = a, AC = b, AB = c$; $R,S$ lần lượt là bán kính đường tròn ngoại tiếp và diện tích tam giác $ABC$. Mệnh đề nào dưới đây sai?",
+  "lua_chon": [
+   "$S = \\dfrac{abc}{2R}$",
+   "$S = \\dfrac{1}{2}ab\\sin C$.",
+   "$S = \\dfrac{1}{2}bc \\sin A$.",
+   "$S = \\dfrac{abc}{4R}$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Các công thức tính diện tích tam giác $ABC$ gồm có:\n$S = \\dfrac{1}{2}bc\\sin A = \\dfrac{1}{2}ac \\sin B = \\dfrac{1}{2}ab\\sin C = \\dfrac{abc}{4R} = pr = \\sqrt{p(p-a)(p-b)(p-c)}$.\nDo đó mệnh đề $S = \\dfrac{abc}{2R}$ là sai vì mẫu số đúng phải là $4R$.\nVậy mệnh đề sai là $S = \\dfrac{abc}{2R}$.",
+  "nhan_cu": "Hệ thức lượng trong tam giác › Nhận dạng định lí cos, định lí sin và các công thức tính diện tích tam giác"
+ },
+ {
+  "ma_cau": "T110020202063",
+  "loai": "trac_nghiem",
+  "de": "Phần không tô đậm trong hình vẽ dưới đây (không chứa biên), biểu diễn tập nghiệm của hệ bất phương trình nào trong các hệ bất phương trình sau? [hình]",
+  "lua_chon": [
+   "$\\begin{cases}x+y\\le 0 \\\\ x-y\\ge 0 \\\\ y\\le 3\\end{cases}$",
+   "$\\begin{cases}2x-y<0 \\\\ 2x+y>0 \\\\ y<3\\end{cases}$",
+   "$\\begin{cases}x-y<0 \\\\ x+y>0 \\\\ y<3\\end{cases}$",
+   "$\\begin{cases}x-2y\\le 0 \\\\ x+2y\\ge 0 \\\\ y\\le 3\\end{cases}$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "- Phương trình 3 đường biên giới hạn miền:\n+ $d_1$: Qua $(0;0)$, $(3;3)$ $\\Rightarrow x-y=0$.\n+ $d_2$: Qua $(0;0)$, $(-3;3)$ $\\Rightarrow x+y=0$.\n+ $d_3$: Đường nằm ngang $y=3$.\n- Vì đề bài cho miền nghiệm không chứa biên nên ta sử dụng các dấu $>, <$.\n- Chọn điểm $M(0;2)$ thuộc miền nghiệm để thử:\n+ Biểu thức $x-y=0-2=-2<0 \\Rightarrow x-y<0$.\n+ Biểu thức $x+y=0+2=2>0 \\Rightarrow x+y>0$.\n+ Tọa độ $y=2<3 \\Rightarrow y<3$.\n- Đối chiếu đáp án, ta chọn hệ C.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110000000418",
+  "loai": "trac_nghiem",
+  "de": "Trong các đẳng thức sau, đẳng thức nào đúng?",
+  "lua_chon": [
+   "$\\sin \\left(180^\\circ-\\alpha \\right)=\\cos \\alpha$.",
+   "$\\sin \\left(180^\\circ-\\alpha \\right)=-\\cos \\alpha$.",
+   "$\\sin \\left(180^\\circ-\\alpha \\right)=-\\sin \\alpha$.",
+   "$\\sin \\left(180^\\circ-\\alpha \\right)=\\sin \\alpha$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Theo công thức giá trị lượng giác của hai góc bù nhau, với mọi góc $\\alpha$ thoả mãn $0^\\circ\\le \\alpha \\le 180^\\circ$, ta có\n$\\sin \\left(180^\\circ-\\alpha \\right)=\\sin \\alpha.$\nVậy đẳng thức đúng là $\\sin \\left(180^\\circ-\\alpha \\right)=\\sin \\alpha$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110010203136",
+  "loai": "trac_nghiem",
+  "de": "Cho hai tập hợp $A=[-5;4)$ và $B=\\left(0;+\\infty \\right)$. Tìm khẳng định đúng.",
+  "lua_chon": [
+   "$B\\setminus A=[-5;+\\infty)$.",
+   "$A\\cap B=\\left(0;4\\right)$.",
+   "$A\\setminus B=[-5;0)$.",
+   "$A\\cup B=\\left(4;+\\infty \\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Biểu diễn hai tập hợp trên trục số:\n- Tập $A=[-5;4)$ là phần để trắng trên trục thứ nhất.\n- Tập $B=\\left(0;+\\infty \\right)$ là phần để trắng trên trục thứ hai.\nGiao của hai tập hợp $A\\cap B$ là phần cùng để trắng trên cả hai trục, ta được $A\\cap B=\\left(0;4\\right)$.\nXét các phương án còn lại:\n- $A\\cup B=[-5;+\\infty)$.\n- $A\\setminus B=\\left[-5;0\\right]$.\n- $B\\setminus A=[4;+\\infty)$.\nVậy khẳng định đúng là $A\\cap B=\\left(0;4\\right)$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110030104028",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\cos x = 0.8$. Giá trị của biểu thức $E = \\sin(90^\\circ - x) - \\cos x + 2 \\cos(90^\\circ - x) - 2 \\sin x$ bằng",
+  "lua_chon": [
+   "1.6",
+   " -1.6",
+   "0",
+   "0.8"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Vì $x$ và $90^\\circ - x$ là hai góc phụ nhau nên\n$\\sin(90^\\circ - x) = \\cos x$, $\\cos(90^\\circ - x) = \\sin x$.\n$E = \\cos x - \\cos x + 2 \\sin x - 2 \\sin x = 0$.\nChọn C.",
+  "nhan_cu": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ › Rút gọn biểu thức lượng giác sử dụng mối quan hệ lượng giác của hai góc bù hoặc phụ nhau"
+ },
+ {
+  "ma_cau": "T110010101114",
+  "loai": "tra_loi_ngan",
+  "de": "Cho mệnh đề $P\\left(x\\right) :\"x^{2}+4x-a<0\"$với $a$ là số nguyên cho trước. Tìm giá trị bé nhất của $a$ để mệnh đề đúng với $x=1$.",
+  "dap_an": "6",
+  "loi_giai": "Mệnh đề $P\\left(x\\right)$ đúng với $x=1$ khi và chỉ khi $P\\left(1\\right)$ là mệnh đề đúng.\nThay $x=1$ vào biểu thức của mệnh đề $P\\left(x\\right)$, ta được\n$1^{2}+4\\cdot 1-a<0\\Leftrightarrow 5-a<0\\Leftrightarrow a>5.$\nVì $a$ là số nguyên nên $a\\in \\{6;7;8;\\dots \\}$.\nDo đó, giá trị bé nhất của $a$ thỏa mãn yêu cầu bài toán là $a=6$.\nVậy giá trị bé nhất của $a$ là $6$.",
+  "nhan_cu": "Mệnh đề › Nhận diện, xét tính đúng sai của mệnh đề. Mệnh đề chứa biến"
+ },
+ {
+  "ma_cau": "T110020202057",
+  "loai": "trac_nghiem",
+  "de": "Phần không tô đậm trong hình vẽ dưới đây (không chứa biên), biểu diễn tập nghiệm của hệ bất phương trình nào trong các hệ bất phương trình sau?",
+  "lua_chon": [
+   "$\\begin{cases}y \\ge 0\\\\ 2x-y \\ge 2\\\\ x+2y \\le 4\\end{cases}$",
+   "$\\begin{cases}y > 0\\\\ x+y > 2\\\\ x-y < 4\\end{cases}$",
+   "$\\begin{cases}y > 0\\\\ x-y > 2\\\\ x+y < 4\\end{cases}$",
+   "$\\begin{cases}y \\le 0\\\\ x-2y \\le 2\\\\ 2x+y \\ge 4\\end{cases}$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Phương trình 3 đường biên giới hạn miền:\n+ $d_1$: Trục $Ox \\Rightarrow y=0$.\n+ $d_2$: Qua $(2;0)$, $(0;-2) \\Rightarrow x-y=2$.\n+ $d_3$: Qua $(4;0)$, $(0;4) \\Rightarrow x+y=4$.\n- Vì đề bài cho miền nghiệm không chứa biên nên ta sử dụng các dấu $>, <$.\n- Chọn điểm $M(3;0.5)$ thuộc miền nghiệm để thử:\n+ Tọa độ $y=0.5 > 0 \\Rightarrow y>0$.\n+ Biểu thức $x-y=3-0.5=2.5 > 2 \\Rightarrow x-y>2$.\n+ Biểu thức $x+y=3+0.5=3.5 < 4 \\Rightarrow x+y<4$.\n- Đối chiếu đáp án, ta chọn hệ C.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110000000393",
+  "loai": "tu_luan",
+  "de": "1) Cho tam giác $ABC$ với $AB=1,BC=3,\\hat{B}=60^\\circ$. Tính độ dài cạnh $AC$ và diện tích của tam giác $ABC$. 2) Cho tam giác $ABC$ có các góc thỏa mãn $\\sin A=2\\sin C\\cos B$. Chứng minh rằng tam giác $\\triangle ABC$ là một tam giác cân.",
+  "loi_giai": "1) Hình vẽ minh hoạ tam giác $ABC$:\nÁp dụng định lí côsin trong tam giác $ABC$, ta có\n$AC^{2}=AB^{2}+BC^{2}\\text{-2\\cdot AB\\cdot BC\\cdot }\\cos B.$\nThay số vào ta được:\n$AC^{2}=1^{2}+3^{2}-2\\cdot 1\\cdot 3\\cdot \\cos 60^\\circ=1+9-6\\cdot \\dfrac{1}{2}\\text{=7\\Rightarrow AC=}\\sqrt{7}.$\nDiện tích tam giác $ABC$ là\n$S=\\dfrac{1}{2}\\text{\\cdot AB\\cdot BC\\cdot }\\sin B=\\dfrac{1}{2}\\cdot 1\\cdot 3\\cdot \\sin 60^\\circ=\\dfrac{3}{2}\\cdot \\dfrac{\\sqrt{3}}{2}=\\dfrac{3\\sqrt{3}}{4}.$\nVậy $AC=\\sqrt{7}$ và $S=\\dfrac{3\\sqrt{3}}{4}$.\n2) Đặt $a=BC$, $b=AC$, $c=AB$ và gọi $R$ là bán kính đường tròn ngoại tiếp tam giác $ABC$.\nTheo định lí sin, ta có\n$\\sin A=\\dfrac{a}{2R},\\sin C=\\dfrac{c}{2R}.$\nTheo hệ quả của định lí cô …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000180",
+  "loai": "trac_nghiem",
+  "de": "Trong tam giác $ABC$ có $\\hat{B}=120^\\circ$ thì đẳng thức nào sau đây đúng?",
+  "lua_chon": [
+   "$b^{2}=a^{2}+c^{2}+ac$.",
+   "$b^{2}=a^{2}+c^{2}-3ac$.",
+   "$b^{2}=a^{2}+c^{2}-ac$.",
+   "$b^{2}=a^{2}+c^{2}+3ac$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Theo định lí côsin trong tam giác $ABC$, ta có\n$b^{2}=a^{2}+c^{2}-2ac\\cos B.$\nVì $\\hat{B}=120^\\circ$ nên $\\cos B=\\cos 120^\\circ=-\\dfrac{1}{2}$.\nThay vào hệ thức trên, ta được\n$b^{2}=a^{2}+c^{2}-2ac\\left(-\\dfrac{1}{2}\\right)=a^{2}+c^{2}+ac.$\nVậy đẳng thức đúng là $b^{2}=a^{2}+c^{2}+ac$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110030201046",
+  "loai": "trac_nghiem",
+  "de": "Cho tam giác $ABC$. Chọn khẳng định sai trong các khẳng định sau:",
+  "lua_chon": [
+   "$S = \\dfrac{1}{2}bc \\sin A$.",
+   "$S = \\sqrt{p(p-a)(p-b)(p-c)}$.",
+   "$\\dfrac{a}{\\sin A} = \\dfrac{1}{2R}$",
+   "$a^2 = b^2 + c^2 – 2bc \\cos A$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Theo định lí sin trong tam giác $ABC$, ta có hệ thức\n$\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C} = 2R$.\nDo đó đẳng thức $\\dfrac{a}{\\sin A} = \\dfrac{1}{2R}$ là sai.\nCác khẳng định còn lại đều đúng theo các công thức tính diện tích tam giác và định lí côsin: -\n$S = \\dfrac{1}{2}bc \\sin A$;\n- $S = \\sqrt{p(p-a)(p-b)(p-c)}$;\n- $a^2 = b^2 + c^2 – 2bc \\cos A$.\nVậy khẳng định sai là $\\dfrac{a}{\\sin A} = \\dfrac{1}{2R}$.",
+  "nhan_cu": "Hệ thức lượng trong tam giác › Nhận dạng định lí cos, định lí sin và các công thức tính diện tích tam giác"
+ },
+ {
+  "ma_cau": "T110000000291",
+  "loai": "trac_nghiem",
+  "de": "Trong các khẳng định sau, khẳng định nào sau đây là đúng?",
+  "lua_chon": [
+   "$\\tan 30^\\circ=\\tan 150^\\circ$.",
+   "$\\sin 120^\\circ=\\cos 60^\\circ$.",
+   "$\\sin 120^\\circ=\\sin 60^\\circ$.",
+   "$\\tan 30^\\circ=\\cot 150^\\circ$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Với hai góc bù nhau ($120^\\circ+60^\\circ=180^\\circ$), ta có tính chất:\n$\\sin 120^\\circ=\\sin \\left(180^\\circ-60^\\circ\\right)=\\sin 60^\\circ.$\nXét các khẳng định còn lại:\n• $\\tan 150^\\circ=\\tan \\left(180^\\circ-30^\\circ\\right)=-\\tan 30^\\circ\\ne \\tan 30^\\circ$.\n• $\\sin 120^\\circ=\\dfrac{\\sqrt{3}}{2}\\ne \\cos 60^\\circ=\\dfrac{1}{2}$.\n• $\\cot 150^\\circ=-\\cot 30^\\circ=-\\sqrt{3}\\ne \\tan 30^\\circ=\\dfrac{\\sqrt{3}}{3}$.\nVậy khẳng định đúng là $\\sin 120^\\circ=\\sin 60^\\circ$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110030203073",
+  "loai": "tra_loi_ngan",
+  "de": "Từ hai vị trí $A$ và $B$ của một tòa nhà, người ta quan sát đỉnh $C$ của ngọn núi. Biết rằng độ cao $AB = 70\\mathrm{m}$, phương nhìn $AC$ tạo với phương nằm ngang góc $30^{\\circ}$, phương nhìn $BC$ tạo với phương nằm ngang góc $15^{\\circ}30'$. Ngọn núi đó có độ cao so với mặt đất là bao nhiêu mét? (làm tròn đến hàng đơn vị)",
+  "dap_an": "135",
+  "loi_giai": "Gọi $H$ là hình chiếu vuông góc của đỉnh núi $C$ lên mặt đất chứa $A$, suy ra độ cao của ngọn núi so với mặt đất là $h = CH$.\nGọi $K$ là hình chiếu vuông góc của $C$ lên đường thẳng nằm ngang đi qua $B$.\nKhi đó tứ giác $ABKH$ là hình chữ nhật, ta có $HK = AB = 70\\mathrm{m}$, $CK = CH - HK = h - 70$ và $BK = AH$.\nTrong tam giác vuông $CAH$ tại $H$, ta có:\n$AH = \\dfrac{CH}{\\tan 30^{\\circ}} = \\dfrac{h}{\\tan 30^{\\circ}}$.\nTrong tam giác vuông $CBK$ tại $K$, ta có:\n$BK = \\dfrac{CK}{\\tan 15^{\\circ}30'} = \\dfrac{h - 70}{\\tan 15^{\\circ}30'}$.\nVì $AH = BK$ nên ta có phương trình:\n$\\dfrac{h}{\\tan 30^{\\circ}} = \\dfrac{h - 70}{\\tan 15^{\\circ}30'} \\Leftrightarrow h \\cdot \\tan 15^{\\circ}30' = (h - 70) \\cd …",
+  "co_hinh": true,
+  "nhan_cu": "Hệ thức lượng trong tam giác › Giải tam giác và bài toán thực tế áp dụng định lý sin"
+ },
+ {
+  "ma_cau": "T110010203142",
+  "loai": "trac_nghiem",
+  "de": "Tập hợp $M=\\{x\\in \\mathbb{R}|2\\le x<5\\}$. Hãy viết tập $M$ dưới dạng khoảng, nửa khoảng, đoạn.",
+  "lua_chon": [
+   "$M=[2;5)$.",
+   "$M=\\left(2;5\\right)$.",
+   "$M=\\left[2;5\\right]$.",
+   "$M=(2;5]$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có tập hợp $M=\\{x\\in \\mathbb{R}|2\\le x<5\\}$ là tập hợp tất cả các số thực lớn hơn hoặc bằng $2$ và nhỏ hơn $5$.\nDo đó, tập hợp $M$ được viết dưới dạng nửa khoảng là $M=[2;5)$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110000000243",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $\\left(x;y\\right)$ là nghiệm của hệ bất phương trình $\\begin{cases} x+2\\ge 0 \\\\ y\\le 0 \\\\ x-y-4\\le 0 \\end{cases}$. Tìm giá trị nhỏ nhất của $P=x+3y$.",
+  "dap_an": "-20",
+  "loi_giai": "Viết lại hệ bất phương trình ở dạng\n$\\begin{cases} x\\ge -2 \\\\ y\\le 0 \\\\ x-y\\le 4. \\end{cases}$\nVẽ ba đường thẳng biên $d_{1} :x=-2$, $d_{2} :y=0$ và $d_{3} :x-y=4$.\nTọa độ các đỉnh của miền nghiệm:\n- $A=d_{1}\\cap d_{2}\\Rightarrow A\\left(-2;0\\right)$.\n- $B=d_{2}\\cap d_{3}\\Rightarrow B\\left(4;0\\right)$.\n- $C=d_{1}\\cap d_{3}\\Rightarrow C\\left(-2;-6\\right)$.\nMiền nghiệm của hệ bất phương trình là miền tam giác $ABC$ (kể cả bờ).\nVì biểu thức $P\\left(x;y\\right)=x+3y$ là biểu thức bậc nhất hai ẩn và miền nghiệm là tam giác $ABC$ (đa giác lồi bị chặn) nên $P$ đạt giá trị nhỏ nhất tại một trong ba đỉnh của tam giác $ABC$.\nTính giá trị của $P\\left(x;y\\right)$ tại các đỉnh:\n$\\begin{array}{|c|c|c|c|} \\h …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110010203124",
+  "loai": "tu_luan",
+  "de": "Cho $A=[-3;+\\infty)$ và cho $B=\\left(-5;1\\right)$. Tìm $A\\cup B$, $A\\cap B$, $A\\setminus B$.",
+  "loi_giai": "Biểu diễn hai tập hợp $A=[-3;+\\infty)$ và $B=\\left(-5;1\\right)$ trên trục số:\nPhần để trắng trên trục thứ nhất là tập hợp $A$, trên trục thứ hai là tập hợp $B$.\nTừ trục số, ta có:\n• Hợp của hai tập hợp là phần để trắng ở ít nhất một trục số:\n$A\\cup B=\\left(-5;+\\infty \\right).$\n• Giao của hai tập hợp là phần cùng để trắng ở cả hai trục số:\n$A\\cap B=[-3;1).$\n• Hiệu $A\\setminus B$ gồm các phần tử thuộc $A$ nhưng không thuộc $B$, tức là $x\\ge -3$ và $x\\notin \\left(-5;1\\right)$, suy ra $x\\ge 1$:\n$A\\setminus B=[1;+\\infty).$\nVậy $A\\cup B=\\left(-5;+\\infty \\right)$, $A\\cap B=[-3;1)$ và $A\\setminus B=[1;+\\infty)$.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110000000068",
+  "loai": "trac_nghiem",
+  "de": "Ký hiệu nào sau đây để chỉ $\\sqrt{5}$ không phải là một số hữu tỉ?",
+  "lua_chon": [
+   "$\\sqrt{5}\\notin \\mathbb{Q}$.",
+   "$\\sqrt{5}\\subset \\mathbb{Q}$.",
+   "$\\sqrt{5}\\ne \\mathbb{Q}$.",
+   "$\\sqrt{5}⊈\\mathbb{Q}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Vì $\\sqrt{5}$ là một phần tử và $\\mathbb{Q}$ là tập hợp các số hữu tỉ nên quan hệ giữa phần tử và tập hợp được biểu diễn bằng ký hiệu $\\in$ hoặc $\\notin$.\nĐể chỉ $\\sqrt{5}$ không phải là một số hữu tỉ, ta viết $\\sqrt{5}\\notin \\mathbb{Q}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000033",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\sin x=\\dfrac{2}{5}$ và $90^\\circ<x<180^\\circ$, tính $\\cos x$ ta được",
+  "lua_chon": [
+   "$\\cos x=-\\dfrac{\\sqrt{21}}{5}$.",
+   "$\\cos x=\\dfrac{\\sqrt{21}}{5}$.",
+   "$\\cos x=\\dfrac{21}{25}$.",
+   "$\\cos x=-\\dfrac{21}{25}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có $\\sin ^{2}x+\\cos ^{2}x=1\\Rightarrow \\cos ^{2}x=1-\\sin ^{2}x=1-\\left(\\dfrac{2}{5}\\right)^{2}=\\dfrac{21}{25}$.\nVì $90^\\circ<x<180^\\circ$ nên $\\cos x<0$.\nDo đó $\\cos x=-\\sqrt{\\dfrac{21}{25}}=-\\dfrac{\\sqrt{21}}{5}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110030104007",
+  "loai": "trac_nghiem",
+  "de": "Giá trị của biểu thức $A = \\tan 1^{\\circ} \\tan 2^{\\circ} \\tan 3^{\\circ} \\dots \\tan 88^{\\circ} \\tan 89^{\\circ}$  là:",
+  "lua_chon": [
+   "0",
+   "2",
+   "3",
+   "1"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Các cặp góc $1^{\\circ}$ và $89^{\\circ}$, $2^{\\circ}$ và $88^{\\circ}$, ..., $44^{\\circ}$ và $46^{\\circ}$ đều là hai góc phụ nhau.\nVới hai góc phụ nhau, $\\tan(90^{\\circ} - \\alpha) = \\cot \\alpha$, nên\n$\\tan \\alpha \\cdot \\tan(90^{\\circ} - \\alpha) = \\tan \\alpha \\cdot \\cot \\alpha = 1$.\nDo đó\n$A = (\\tan 1^{\\circ} \\tan 89^{\\circ})(\\tan 2^{\\circ} \\tan 88^{\\circ}) \\dots (\\tan 44^{\\circ} \\tan 46^{\\circ}) \\tan 45^{\\circ} = 1$.\nChọn D.",
+  "nhan_cu": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ › Rút gọn biểu thức lượng giác sử dụng mối quan hệ lượng giác của hai góc bù hoặc phụ nhau"
+ },
+ {
+  "ma_cau": "T110020102069",
+  "loai": "tra_loi_ngan",
+  "de": "Phần nửa mặt phẳng không bị gạch (kể cả đường thẳng) ở hình vẽ sau là miền nghiệm của bất phương trình $\\text{2x+by\\le c}$. Giá trị của biểu thức $S=b-2c$bằng bao nhiêu?",
+  "dap_an": "-15",
+  "loi_giai": "Đường thẳng bờ $d$ đi qua hai điểm $\\left(3;0\\right)$ và $\\left(0;-2\\right)$ nên phương trình đường thẳng $d$ là:\n$\\dfrac{x}{3}+\\dfrac{y}{-2}=1\\Leftrightarrow 2x-3y=6.$\nVì miền không bị gạch chứa gốc toạ độ $O\\left(0;0\\right)$ và $2\\cdot 0-3\\cdot 0=0\\le 6$ nên miền nghiệm biểu diễn bất phương trình:\n$2x-3y\\le 6.$\nĐồng nhất với bất phương trình $\\text{2x+by\\le c}$, ta được:\n$b=-3,c=6.$\nDo đó:\n$S=b-2c=-3-2\\cdot 6=-15.$\nVậy $S=-15$.",
+  "co_hinh": true,
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110000000272",
+  "loai": "trac_nghiem",
+  "de": "Cho tam giác $ABC$ có $BC=a;CA=b;AB=c$, $R$ là bán kính đường tròn ngoại tiếp tam giác $ABC$. Khẳng định nào sau đây là đúng?",
+  "lua_chon": [
+   "$\\dfrac{\\sin A}{a}=\\dfrac{\\sin B}{b}=\\dfrac{\\sin C}{c}=2R$.",
+   "$\\dfrac{a}{\\sin A}=\\dfrac{b}{\\sin B}=\\dfrac{c}{\\sin C}=2R$.",
+   "$\\dfrac{\\sin A}{a}=\\dfrac{\\sin B}{b}=\\dfrac{\\sin C}{c}=R$.",
+   "$\\dfrac{a}{\\sin A}=\\dfrac{b}{\\sin B}=\\dfrac{c}{\\sin C}=R$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Định lí sin trong tam giác $ABC$ có bán kính đường tròn ngoại tiếp là $R$ được phát biểu như sau:\n$\\dfrac{a}{\\sin A}=\\dfrac{b}{\\sin B}=\\dfrac{c}{\\sin C}=2R.$\nCác khẳng định còn lại đều viết ngược tỉ số hoặc sai hệ số ($R$ thay vì $2R$).\nVậy chọn đáp án B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000060",
+  "loai": "trac_nghiem",
+  "de": "Đơn giản biểu thức $G=\\left(1-\\cos ^{2}x\\right)\\tan ^{2}x+1-\\tan ^{2}x$.",
+  "lua_chon": [
+   "$\\dfrac{1}{\\cos x}$.",
+   "$\\cos ^{2}x$.",
+   "$\\cos x$.",
+   "$\\sin ^{2}x$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Điều kiện xác định: $\\cos x\\ne 0$.\nTa có $1-\\cos ^{2}x=\\sin ^{2}x$.\nBiến đổi biểu thức $G$:\n$\\begin{array}{l} G=\\left(1-\\cos ^{2}x\\right)\\tan ^{2}x+1-\\tan ^{2}x \\\\ =\\sin ^{2}x\\tan ^{2}x+1-\\tan ^{2}x \\\\ =\\left(\\sin ^{2}x-1\\right)\\tan ^{2}x+1 \\\\ =-\\cos ^{2}x\\cdot \\dfrac{\\sin ^{2}x}{\\cos ^{2}x}+1 \\\\ =-\\sin ^{2}x+1 \\\\ =\\cos ^{2}x. \\end{array}$\nVậy $G=\\cos ^{2}x$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000283",
+  "loai": "trac_nghiem",
+  "de": "Cho biết $90^\\circ<\\alpha <180^\\circ$. Khẳng định nào sau đây là đúng?",
+  "lua_chon": [
+   "$\\cot \\alpha >0$.",
+   "$\\tan \\alpha >0$.",
+   "$\\sin \\alpha <0$.",
+   "$\\cos \\alpha <0$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Vì $90^\\circ<\\alpha <180^\\circ$ nên góc $\\alpha$ là góc tù (nằm ở góc phần tư thứ hai trên đường tròn lượng giác).\nKhi đó ta có $\\sin \\alpha >0$, $\\cos \\alpha <0$, $\\tan \\alpha <0$ và $\\cot \\alpha <0$.\nVậy khẳng định đúng là $\\cos \\alpha <0$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000054",
+  "loai": "trac_nghiem",
+  "de": "Cho tam giác $ABC$ thoả mãn: $b^{2}+c^{2}-a^{2}=\\sqrt{3}bc$. Khi đó",
+  "lua_chon": [
+   "$A=30^\\circ$.",
+   "$A=60^\\circ$.",
+   "$A=75^\\circ$.",
+   "$A=45^\\circ$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Theo hệ quả của định lí côsin trong tam giác $ABC$, ta có\n$\\cos A=\\dfrac{b^{2}+c^{2}-a^{2}}{2bc}.$\nThay giả thiết $b^{2}+c^{2}-a^{2}=\\sqrt{3}bc$ vào biểu thức trên, ta được\n$\\cos A=\\dfrac{\\sqrt{3}bc}{2bc}=\\dfrac{\\sqrt{3}}{2}.$\nVì $0^\\circ<A<180^\\circ$ nên $A=30^\\circ$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000345",
+  "loai": "trac_nghiem",
+  "de": "Cho góc $\\alpha$ thỏa mãn $0^\\circ\\le \\alpha \\le 180^\\circ$. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$\\cos \\left(180^\\circ-\\alpha \\right)=\\cos \\alpha$.",
+   "$\\cot \\left(180^\\circ-\\alpha \\right)=\\cot \\alpha$.",
+   "$\\sin \\left(180^\\circ-\\alpha \\right)=\\sin \\alpha$.",
+   "$\\tan \\left(180^\\circ-\\alpha \\right)=\\tan \\alpha$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Theo tính chất của giá trị lượng giác của hai góc bù nhau ($0^\\circ\\le \\alpha \\le 180^\\circ$), ta có:\n• $\\sin \\left(180^\\circ-\\alpha \\right)=\\sin \\alpha$.\n• $\\cos \\left(180^\\circ-\\alpha \\right)=-\\cos \\alpha$.\n• $\\tan \\left(180^\\circ-\\alpha \\right)=-\\tan \\alpha$ (với $\\alpha \\ne 90^\\circ$).\n• $\\cot \\left(180^\\circ-\\alpha \\right)=-\\cot \\alpha$ (với $0^\\circ<\\alpha <180^\\circ$).\nVậy khẳng định đúng là $\\sin \\left(180^\\circ-\\alpha \\right)=\\sin \\alpha$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000205",
+  "loai": "trac_nghiem",
+  "de": "Cho tam giác $ABC$ có độ dài ba cạnh là $BC=a,AC=b,AB=c$. Gọi $S$ là diện tích tam giác đó. Mệnh đề nào dưới đây đúng?",
+  "lua_chon": [
+   "$S=\\dfrac{1}{2}bc\\sin A$.",
+   "$S=\\dfrac{1}{2}ac\\sin A$.",
+   "$S=\\dfrac{1}{2}bc\\sin B$.",
+   "$S=\\dfrac{1}{2}bc\\sin A$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Theo công thức tính diện tích tam giác theo hai cạnh và sin của góc xen giữa, ta có\n$S=\\dfrac{1}{2}bc\\sin A=\\dfrac{1}{2}ac\\sin B=\\dfrac{1}{2}ab\\sin C.$\nDo đó, mệnh đề đúng là $S=\\dfrac{1}{2}bc\\sin A$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000083",
+  "loai": "trac_nghiem",
+  "de": "Cho tam giác $ABC$, mệnh đề nào sau đây đúng?",
+  "lua_chon": [
+   "$a^{2}=b^{2}+c^{2}-2bc\\cos A$.",
+   "$a^{2}=b^{2}+c^{2}-2bc\\cos C$.",
+   "$a^{2}=b^{2}+c^{2}+2bc\\cos A$.",
+   "$a^{2}=b^{2}+c^{2}-2bc\\cos B$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Theo định lí côsin trong tam giác $ABC$, ta có hệ thức\n$a^{2}=b^{2}+c^{2}-2bc\\cos A.$\nVậy mệnh đề đúng là $a^{2}=b^{2}+c^{2}-2bc\\cos A$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000306",
+  "loai": "trac_nghiem",
+  "de": "Tập xác định $D$ của hàm số $y=\\sqrt{2x-1}$ là",
+  "lua_chon": [
+   "$D=\\left(0;+\\infty \\right)$.",
+   "$D=[\\dfrac{1}{2};+\\infty)$.",
+   "$D=\\left(\\dfrac{1}{2};+\\infty \\right)$.",
+   "$D=[0;+\\infty)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Hàm số $y=\\sqrt{2x-1}$ xác định khi và chỉ khi\n$2x-1\\ge 0\\Leftrightarrow 2x\\ge 1\\Leftrightarrow x\\ge \\dfrac{1}{2}.$\nVậy tập xác định của hàm số là $D=[\\dfrac{1}{2};+\\infty)$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110020102056",
+  "loai": "trac_nghiem",
+  "de": "Miền nghiệm của bất phương trình nào sau đây được biểu diễn bởi nửa mặt phẳng không bị gạch trong hình vẽ sau?",
+  "lua_chon": [
+   "$2x-y<3$.",
+   "$x-y>3$.",
+   "$2x-y>3$.",
+   "$2x+y>3$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Đường thẳng $d$ là bờ của miền nghiệm đi qua hai điểm $\\left(\\dfrac{3}{2};0\\right)$ và $\\left(0;-3\\right)$.\nPhương trình đoạn chắn của đường thẳng $d$ là $\\dfrac{x}{\\dfrac{3}{2}}+\\dfrac{y}{-3}=1\\Leftrightarrow \\dfrac{2x}{3}-\\dfrac{y}{3}=1\\Leftrightarrow 2x-y=3$.\nQuan sát hình vẽ, ta thấy điểm $O\\left(0;0\\right)$ nằm trong miền nghiệm (phần không bị gạch).\nThay tọa độ $O\\left(0;0\\right)$ vào biểu thức $2x-y$, ta được $2\\cdot 0-0=0<3$.\nDo đó, miền nghiệm của bất phương trình (không lấy bờ $d$) được biểu diễn bởi nửa mặt phẳng chứa điểm $O$, tương ứng với bất phương trình $2x-y<3$.",
+  "co_hinh": true,
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110000000001",
+  "loai": "trac_nghiem",
+  "de": "Tam giác $ABC$ có ba cạnh thoả mãn điều kiện $\\left(a+b+c\\right)\\left(a+b-c\\right)=3ab$. Khi đó số đo của góc $\\hat{C}$ là",
+  "lua_chon": [
+   "$45^\\circ$.",
+   "$30^\\circ$.",
+   "$120^\\circ$.",
+   "$60^\\circ$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta khai triển vế trái của giả thiết theo hằng đẳng thức hiệu hai bình phương:\n$\\left(a+b+c\\right)\\left(a+b-c\\right)=\\left(a+b\\right)^{2}-c^{2}=a^{2}+2ab+b^{2}-c^{2}.$\nGiả thiết trở thành $a^{2}+2ab+b^{2}-c^{2}=3ab$, suy ra\n$a^{2}+b^{2}-c^{2}=ab.$\nÁp dụng định lí côsin cho góc $C$:\n$\\cos C=\\dfrac{a^{2}+b^{2}-c^{2}}{2ab}=\\dfrac{ab}{2ab}=\\dfrac{1}{2}.$\nDo $0^\\circ<\\hat{C}<180^\\circ$ nên $\\hat{C}=60^\\circ$.\nVậy chọn đáp án D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110030201027",
+  "loai": "trac_nghiem",
+  "de": "Cho tam giác $ABC$, có độ dài ba cạnh là $BC = a, AC = b, AB = c$. Gọi $R,r$ lần lượt là bán kính\nđường tròn ngoại tiếp, nội tiếp và $S$ là diện tích tam giác $ABC$. Mệnh đề nào sau đây sai?",
+  "lua_chon": [
+   "$\\cos A = \\dfrac{a^2-b^2 - c^2}{2bc}$",
+   "$a^2 = b^2 + c^2 - 2bc \\cos A$",
+   "$\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C} = 2R$",
+   "$a = 2R \\sin A$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Theo hệ quả của định lí côsin trong tam giác $ABC$, ta có:\n$\\cos A = \\dfrac{b^2+c^2 - a^2}{2bc}$\nDo đó công thức ở phương án A ghi $\\cos A = \\dfrac{a^2-b^2 - c^2}{2bc}$ là sai.\nCác khẳng định còn lại đều là các định lí và hệ quả đúng trong tam giác:\n- $a^2 = b^2 + c^2 - 2bc \\cos A$ (định lí côsin).\n- $\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C} = 2R$ (định lí sin).\n- $a = 2R \\sin A$ (hệ quả định lí sin).\nVậy mệnh đề sai là $\\cos A = \\dfrac{a^2-b^2 - c^2}{2bc}$",
+  "nhan_cu": "Hệ thức lượng trong tam giác › Nhận dạng định lí cos, định lí sin và các công thức tính diện tích tam giác"
+ },
+ {
+  "ma_cau": "T110020202107",
+  "loai": "trac_nghiem",
+  "de": "Miền không bị gạch trong hình vẽ (tính cả bờ) là miền nghiệm của hệ bất phương trình nào sau đây?",
+  "lua_chon": [
+   "$\\begin{cases} x\\ge 0 \\\\ x+y\\ge 2 \\\\ x+y\\le 4 \\\\ -x+y\\ge 2 \\end{cases}$.",
+   "$\\begin{cases} x\\ge 0 \\\\ x+y\\ge 2 \\\\ x+y\\le 4 \\\\ -x+y\\le 2 \\end{cases}$.",
+   "$\\begin{cases} y\\ge 0 \\\\ x+y\\ge 2 \\\\ x+y\\le 4 \\\\ -x+y\\le 2 \\end{cases}$.",
+   "$\\begin{cases} y\\ge 0 \\\\ x+y\\ge 2 \\\\ x+2y\\le 4 \\\\ -x+y\\le 2 \\end{cases}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Quan sát hình vẽ, ta xác định phương trình các đường thẳng biên.\nĐường $\\left(d_{1}\\right)$ đi qua hai điểm $\\left(2;0\\right)$ và $\\left(0;2\\right)$ nên có phương trình $x+y=2$.\nĐường $\\left(d_{2}\\right)$ đi qua hai điểm $\\left(4;0\\right)$ và $\\left(0;4\\right)$ nên có phương trình $x+y=4$.\nĐường $\\left(d_{3}\\right)$ đi qua hai điểm $\\left(-2;0\\right)$ và $\\left(0;2\\right)$ nên có phương trình $-x+y=2$.\nBiên còn lại của miền là trục hoành, ứng với ràng buộc $y\\ge 0$.\nMiền không bị gạch (tính cả bờ) là miền tứ giác có các đỉnh $\\left(2;0\\right)$, $\\left(4;0\\right)$, điểm $\\left(1;3\\right)$ được đánh dấu trên hình (giao của $\\left(d_{2}\\right)$ và $\\left(d_{3}\\right)$, có hình chiếu $1$ trên tr …",
+  "co_hinh": true,
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110030104038",
+  "loai": "trac_nghiem",
+  "de": "Giá trị của biểu thức\n$E=4\\sin 19^{\\circ}\\cos 161^{\\circ}+3\\sin 161^{\\circ}\\cos 19^{\\circ}+\\sin 19^{\\circ}\\cos 19^{\\circ}+3\\cos 44^{\\circ}+2\\cos 136^{\\circ}-\\cos 44^{\\circ}+4$\nbằng",
+  "lua_chon": [
+   "0",
+   " -4",
+   "2",
+   "4"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Vì $19^{\\circ}$ và $161^{\\circ}$ là hai góc bù nhau nên $\\sin 161^{\\circ}=\\sin 19^{\\circ}$, $\\cos 161^{\\circ}=-\\cos 19^{\\circ}$.\nVì $44^{\\circ}$ và $136^{\\circ}$ là hai góc bù nhau nên $\\cos 136^{\\circ}=-\\cos 44^{\\circ}$.\n$E=-4\\sin 19^{\\circ}\\cos 19^{\\circ}+3\\sin 19^{\\circ}\\cos 19^{\\circ}+\\sin 19^{\\circ}\\cos 19^{\\circ}+3\\cos 44^{\\circ}-2\\cos 44^{\\circ}-\\cos 44^{\\circ}+4=4$.\nChọn D.",
+  "nhan_cu": "Chuyên đề: Giá trị lượng giác của góc từ 0 đến 180 độ › Rút gọn biểu thức lượng giác sử dụng mối quan hệ lượng giác của hai góc bù hoặc phụ nhau"
+ }
+]

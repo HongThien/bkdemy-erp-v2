@@ -1,0 +1,512 @@
+[
+ {
+  "ma_cau": "T110000000330",
+  "dang_id": "NDB00772",
+  "chac": "vua",
+  "ly_do": "Tính diện tích tam giác có hai trung tuyến vuông góc; dùng công thức diện tích"
+ },
+ {
+  "ma_cau": "T110000000139",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Đồ thị hàm số"
+ },
+ {
+  "ma_cau": "T110030203085",
+  "dang_id": "KHONG_KHOP",
+  "chac": "vua",
+  "ly_do": "Thực tế tính AI^2 (R ngoại tiếp) bằng toạ độ; 01034 loại thực tế"
+ },
+ {
+  "ma_cau": "T110000000385",
+  "dang_id": "NDB00771",
+  "chac": "vua",
+  "ly_do": "Thực tế đo khoảng cách, biết 2 góc 1 cạnh, định lí sin"
+ },
+ {
+  "ma_cau": "T110000000215",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Tập xác định hàm số"
+ },
+ {
+  "ma_cau": "T110000000430",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Đồ thị hàm số đồng biến nghịch biến"
+ },
+ {
+  "ma_cau": "T110030203078",
+  "dang_id": "NDB00771",
+  "chac": "vua",
+  "ly_do": "Thực tế chiều cao toà nhà, định lí sin trong tam giác DA1B1"
+ },
+ {
+  "ma_cau": "T110000000067",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Véc tơ bằng nhau"
+ },
+ {
+  "ma_cau": "T110030201042",
+  "dang_id": "NDB00763",
+  "chac": "vua",
+  "ly_do": "Nhận diện công thức sin/R/S; có thể 00764"
+ },
+ {
+  "ma_cau": "T110000000096",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Hàm số cho bởi nhiều công thức"
+ },
+ {
+  "ma_cau": "T110000000390",
+  "dang_id": "NDB01035",
+  "chac": "cao",
+  "ly_do": "Tìm bán kính nội tiếp r từ S và chu vi"
+ },
+ {
+  "ma_cau": "T110000000211",
+  "dang_id": "NDB00771",
+  "chac": "vua",
+  "ly_do": "Thực tế độ cao diều từ góc nâng, giải tam giác; có thể chỉ lượng giác vuông"
+ },
+ {
+  "ma_cau": "T110030203073",
+  "dang_id": "NDB00771",
+  "chac": "vua",
+  "ly_do": "Thực tế độ cao núi từ góc nâng; có thể chỉ tan"
+ },
+ {
+  "ma_cau": "T110000000364",
+  "dang_id": "NDB00772",
+  "chac": "cao",
+  "ly_do": "Tính diện tích từ ba cạnh bằng Heron"
+ },
+ {
+  "ma_cau": "T110030203058",
+  "dang_id": "NDB00771",
+  "chac": "vua",
+  "ly_do": "Thực tế chiều cao cây trên sườn đồi, định lí sin"
+ },
+ {
+  "ma_cau": "T110030203002",
+  "dang_id": "NDB01034",
+  "chac": "cao",
+  "ly_do": "Tính R biết BC và góc A (đã xem ảnh)"
+ },
+ {
+  "ma_cau": "T110030201048",
+  "dang_id": "NDB00764",
+  "chac": "vua",
+  "ly_do": "Nhận diện công thức tổng hợp S, R, cos, trung tuyến; có thể 00762/00763"
+ },
+ {
+  "ma_cau": "T110030203054",
+  "dang_id": "NDB00767",
+  "chac": "vua",
+  "ly_do": "Thực tế giếng: cos tìm BC rồi R; ứng viên 00773/01034"
+ },
+ {
+  "ma_cau": "T110030203001",
+  "dang_id": "NDB01034",
+  "chac": "cao",
+  "ly_do": "Tính R biết AB và góc C"
+ },
+ {
+  "ma_cau": "T110000000209",
+  "dang_id": "NDB01035",
+  "chac": "vua",
+  "ly_do": "Tính p, S, R, r của tam giác 6-8-10; ứng viên 00772"
+ },
+ {
+  "ma_cau": "T110000000377",
+  "dang_id": "NDB00773",
+  "chac": "cao",
+  "ly_do": "Thực tế diện tích mảnh đất tứ giác chia thành tam giác"
+ },
+ {
+  "ma_cau": "T110030203047",
+  "dang_id": "NDB00767",
+  "chac": "vua",
+  "ly_do": "Thực tế đĩa vỡ: cos tìm AC rồi sin tìm R; ứng viên 01034"
+ },
+ {
+  "ma_cau": "T110030204003",
+  "dang_id": "NDB01035",
+  "chac": "cao",
+  "ly_do": "Tìm đường cao AH dùng diện tích"
+ },
+ {
+  "ma_cau": "T110030203010",
+  "dang_id": "NDB01034",
+  "chac": "cao",
+  "ly_do": "Tính chu vi đường tròn ngoại tiếp qua R (đã xem ảnh)"
+ },
+ {
+  "ma_cau": "T110030203045",
+  "dang_id": "KHONG_KHOP",
+  "chac": "vua",
+  "ly_do": "Thực tế chiều cao tháp chỉ dùng tan tam giác vuông"
+ },
+ {
+  "ma_cau": "T110000000046",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Đỉnh parabol"
+ },
+ {
+  "ma_cau": "T110000000059",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Quy hoạch tuyến tính"
+ },
+ {
+  "ma_cau": "T110000000049",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Đồ thị hàm bậc hai"
+ },
+ {
+  "ma_cau": "T110030203028",
+  "dang_id": "NDB01034",
+  "chac": "cao",
+  "ly_do": "Tính R biết a và góc A"
+ },
+ {
+  "ma_cau": "T110000000190",
+  "dang_id": "NDB00764",
+  "chac": "vua",
+  "ly_do": "Nhận diện công thức S, R, r, cos; ứng viên 00762"
+ },
+ {
+  "ma_cau": "T110030203071",
+  "dang_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế khoảng cách tàu, 2 góc 1 cạnh, định lí sin"
+ },
+ {
+  "ma_cau": "T110000000093",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Tập xác định"
+ },
+ {
+  "ma_cau": "T110000000311",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Parabol cổng chào"
+ },
+ {
+  "ma_cau": "T110000000410",
+  "dang_id": "NDB01035",
+  "chac": "cao",
+  "ly_do": "Tính đường cao từ cos A: cos rồi S rồi h"
+ },
+ {
+  "ma_cau": "T110000000051",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Hàm bậc hai"
+ },
+ {
+  "ma_cau": "T110000000346",
+  "dang_id": "NDB00765",
+  "chac": "vua",
+  "ly_do": "Mệnh đề hỗn hợp sin, cos, cạnh, R với 2 cạnh góc xen"
+ },
+ {
+  "ma_cau": "T110000000047",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Tập xác định"
+ },
+ {
+  "ma_cau": "T110000000168",
+  "dang_id": "NDB00765",
+  "chac": "vua",
+  "ly_do": "Mệnh đề hỗn hợp, 2 cạnh góc xen A, tính BC và góc"
+ },
+ {
+  "ma_cau": "T110000000212",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Giá trị hàm nhiều công thức"
+ },
+ {
+  "ma_cau": "T110030204022",
+  "dang_id": "NDB01035",
+  "chac": "vua",
+  "ly_do": "Dùng S tìm sin C rồi cos tìm AB; ứng viên 00765"
+ },
+ {
+  "ma_cau": "T110000000142",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Quy hoạch tuyến tính"
+ },
+ {
+  "ma_cau": "T110030201040",
+  "dang_id": "NDB00764",
+  "chac": "vua",
+  "ly_do": "Nhận diện công thức tam giác; ứng viên 00762"
+ },
+ {
+  "ma_cau": "T110000000266",
+  "dang_id": "NDB00771",
+  "chac": "vua",
+  "ly_do": "Thực tế khoảng cách tới gốc cây, 2 góc 1 cạnh, sin"
+ },
+ {
+  "ma_cau": "T110030204044",
+  "dang_id": "NDB00773",
+  "chac": "vua",
+  "ly_do": "Thực tế logo ngôi sao: cos tìm R rồi diện tích phần nền"
+ },
+ {
+  "ma_cau": "T110000000308",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Tập xác định"
+ },
+ {
+  "ma_cau": "T110030204015",
+  "dang_id": "NDB00772",
+  "chac": "cao",
+  "ly_do": "Diện tích từ ba cạnh bằng Heron"
+ },
+ {
+  "ma_cau": "T110000000300",
+  "dang_id": "NDB01035",
+  "chac": "vua",
+  "ly_do": "Dùng S tìm sin C rồi cos tìm AB; ứng viên 00765"
+ },
+ {
+  "ma_cau": "T110030203076",
+  "dang_id": "NDB00771",
+  "chac": "vua",
+  "ly_do": "Thực tế thời gian tàu, giải tam giác bằng sin"
+ },
+ {
+  "ma_cau": "T110010206028",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Tập hợp"
+ },
+ {
+  "ma_cau": "T110000000323",
+  "dang_id": "NDB00772",
+  "chac": "cao",
+  "ly_do": "Diện tích từ ba cạnh bằng Heron"
+ },
+ {
+  "ma_cau": "T110000000333",
+  "dang_id": "NDB01035",
+  "chac": "cao",
+  "ly_do": "Dùng diện tích tìm sin A"
+ },
+ {
+  "ma_cau": "T110030202040",
+  "dang_id": "NDB00767",
+  "chac": "vua",
+  "ly_do": "Thực tế đường hầm, 2 cạnh góc xen 140 độ, cos"
+ },
+ {
+  "ma_cau": "T110000000432",
+  "dang_id": "NDB00772",
+  "chac": "vua",
+  "ly_do": "Mệnh đề hỗn hợp S, R, sin C; ứng viên 01035"
+ },
+ {
+  "ma_cau": "T110000000222",
+  "dang_id": "KHONG_KHOP",
+  "chac": "vua",
+  "ly_do": "Thực tế chiều cao cây dùng tan/hình chữ nhật, không dùng sin/cos"
+ },
+ {
+  "ma_cau": "T110000000429",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Giá trị hàm số"
+ },
+ {
+  "ma_cau": "T110030203057",
+  "dang_id": "NDB00771",
+  "chac": "vua",
+  "ly_do": "Thực tế toà nhà, sin; ứng viên khác tan"
+ },
+ {
+  "ma_cau": "T110030203072",
+  "dang_id": "NDB00771",
+  "chac": "vua",
+  "ly_do": "Thực tế miếng bìa: sin tìm R rồi diện tích tròn; ứng viên 01034"
+ },
+ {
+  "ma_cau": "T110000000145",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Tập xác định"
+ },
+ {
+  "ma_cau": "T110030203068",
+  "dang_id": "NDB00771",
+  "chac": "vua",
+  "ly_do": "Thực tế đua thuyền, định lí sin hai tam giác"
+ },
+ {
+  "ma_cau": "T110000000363",
+  "dang_id": "KHONG_KHOP",
+  "chac": "vua",
+  "ly_do": "Thực tế tối ưu đường ống, đối xứng, không phải định lí cos/sin"
+ },
+ {
+  "ma_cau": "T110010206039",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Tập hợp"
+ },
+ {
+  "ma_cau": "T110000000140",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Giá trị hàm số"
+ },
+ {
+  "ma_cau": "T110000000281",
+  "dang_id": "KHONG_KHOP",
+  "chac": "cao",
+  "ly_do": "Cực trị hình chữ nhật và chứng minh Heron dạng khác"
+ },
+ {
+  "ma_cau": "T110030204006",
+  "dang_id": "NDB01035",
+  "chac": "cao",
+  "ly_do": "Tính r nội tiếp dùng cos, diện tích"
+ },
+ {
+  "ma_cau": "T110000000101",
+  "dang_id": "KHONG_KHOP",
+  "chac": "vua",
+  "ly_do": "Thực tế cột cờ chỉ dùng tan tam giác vuông"
+ },
+ {
+  "ma_cau": "T110030201029",
+  "dang_id": "NDB00762",
+  "chac": "vua",
+  "ly_do": "Nhận diện cos/sin; ứng viên 00763"
+ },
+ {
+  "ma_cau": "T110030204041",
+  "dang_id": "NDB00772",
+  "chac": "vua",
+  "ly_do": "Tỉ lệ sin cho cạnh rồi tính diện tích vườn; ứng viên 00773"
+ },
+ {
+  "ma_cau": "T110000000048",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Parabol cổng"
+ },
+ {
+  "ma_cau": "T110010101101",
+  "dang_id": "NDB00769",
+  "chac": "vua",
+  "ly_do": "Mệnh đề hỗn hợp, ưu tiên sin; ứng viên 00765"
+ },
+ {
+  "ma_cau": "T110030203081",
+  "dang_id": "NDB00771",
+  "chac": "vua",
+  "ly_do": "Thực tế khoảng cách hai đỉnh núi, định lí sin"
+ },
+ {
+  "ma_cau": "T110000000375",
+  "dang_id": "NDB00762",
+  "chac": "vua",
+  "ly_do": "Nhận diện công thức tổng hợp; ứng viên 00764"
+ },
+ {
+  "ma_cau": "T110030201047",
+  "dang_id": "NDB00764",
+  "chac": "vua",
+  "ly_do": "Nhận diện công thức R, S, cos"
+ },
+ {
+  "ma_cau": "T110000000236",
+  "dang_id": "NDB01035",
+  "chac": "vua",
+  "ly_do": "Tính BC bằng cos rồi đường cao; ứng viên 00765"
+ },
+ {
+  "ma_cau": "T110030203083",
+  "dang_id": "NDB00771",
+  "chac": "vua",
+  "ly_do": "Thực tế chiều cao toà nhà, định lí sin"
+ },
+ {
+  "ma_cau": "T110030204019",
+  "dang_id": "NDB01035",
+  "chac": "cao",
+  "ly_do": "Tìm r từ S và chu vi"
+ },
+ {
+  "ma_cau": "T110000000373",
+  "dang_id": "KHONG_KHOP",
+  "chac": "vua",
+  "ly_do": "Thực tế chiều cao cây chỉ dùng tan"
+ },
+ {
+  "ma_cau": "T110000000447",
+  "dang_id": "NDB00771",
+  "chac": "vua",
+  "ly_do": "Thực tế bề rộng cửa biển, định lí sin"
+ },
+ {
+  "ma_cau": "T110030201050",
+  "dang_id": "NDB00764",
+  "chac": "vua",
+  "ly_do": "Nhận diện công thức R, S, p; ứng viên 00763"
+ },
+ {
+  "ma_cau": "T110000000297",
+  "dang_id": "NDB00767",
+  "chac": "cao",
+  "ly_do": "Thực tế dây cáp, 2 cạnh góc xen 125 độ, cos"
+ },
+ {
+  "ma_cau": "T110000000329",
+  "dang_id": "NDB00765",
+  "chac": "vua",
+  "ly_do": "Mệnh đề hỗn hợp, 2 cạnh góc xen C"
+ },
+ {
+  "ma_cau": "T110030204016",
+  "dang_id": "NDB01035",
+  "chac": "cao",
+  "ly_do": "Dùng diện tích tìm sin A"
+ },
+ {
+  "ma_cau": "T110030203015",
+  "dang_id": "NDB01034",
+  "chac": "cao",
+  "ly_do": "Tính R biết BC và góc A"
+ },
+ {
+  "ma_cau": "T110030203062",
+  "dang_id": "KHONG_KHOP",
+  "chac": "vua",
+  "ly_do": "Thực tế chiều cao tháp chỉ dùng tan"
+ },
+ {
+  "ma_cau": "T110030201027",
+  "dang_id": "NDB00762",
+  "chac": "vua",
+  "ly_do": "Nhận diện hệ quả cos và sin; ứng viên 00763"
+ },
+ {
+  "ma_cau": "T110030203069",
+  "dang_id": "NDB00771",
+  "chac": "vua",
+  "ly_do": "Thực tế chiều cao cây sườn đồi, định lí sin"
+ }
+]

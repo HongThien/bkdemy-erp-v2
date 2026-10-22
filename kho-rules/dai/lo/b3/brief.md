@@ -25,3 +25,8 @@ Với mỗi `lo-NN.json`, ghi `lo-NN.out.json` cùng thư mục: mảng JSON, **
 ```
 Ghi bằng công cụ Write (JSON hợp lệ, không bình luận). Làm xong lô nào ghi lô đó rồi mới sang lô sau.
 Cuối cùng trả lời ngắn: mỗi lô bao nhiêu câu cao / vua / trống. Không làm gì khác (không sửa file khác, không ghi DB).
+
+## Luật bổ sung của CEO (Thùy 22/10 — áp mọi khối, đã nằm trong mô tả của các dạng bị ảnh hưởng)
+- **Câu thuộc nhiều dạng bài ⇒ đưa vào dạng bài CUỐI CÙNG theo thứ tự trên bản đồ** (dạng học sau cùng; bảng đích `dich.md` đã xếp đúng thứ tự). Vd câu dùng cả quan hệ phụ nhau và bù nhau ⇒ dạng bù; câu nhận diện chứa cả định lí sin và cos ⇒ dạng nhận diện định lí sin.
+- **Câu có nhiều cách giải**: chỉ cần MỘT cách giải thuộc một dạng bài thì câu được đưa vào dạng đó (không loại câu chỉ vì cách giải khác thuộc dạng khác). Nếu hai dạng cùng có cách giải hợp lệ ⇒ theo luật trên (dạng sau cùng).
+- Đọc kỹ dòng **"Lưu ý"** trong mô tả từng dạng: Thùy ghi các ranh giới ở đó (vd thực tế dùng cả sin và cos ⇒ dạng sin; nhận diện chứa sin + cos + diện tích ⇒ dạng diện tích).

@@ -1,0 +1,1497 @@
+[
+ {
+  "ma_cau": "T110000000376",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho tam giác $ABC$ có $AB=5 cm$, $AC=8 cm$ và góc $A=60^\\circ$. Gọi $M$ là điểm thuộc cạnh $BC$ sao cho $BM=\\dfrac{3}{7}BC$. a) Chứng minh $\\overrightarrow{BC}+\\overrightarrow{CA}=\\overrightarrow{MA}-\\overrightarrow{MB}$. b) Tính độ dài cạnh $BC$ và côsin góc $B$ của tam giác $ABC$. c) Tính độ dài đoạn $AM$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": null,
+  "loi_giai": "a) Ta có vế trái của đẳng thức là\n\n$VT=\\overrightarrow{BC}+\\overrightarrow{CA}=\\overrightarrow{BA}.$\n\nVế phải của đẳng thức là\n\n$VP=\\overrightarrow{MA}-\\overrightarrow{MB}=\\overrightarrow{BA}.$\n\nSuy ra $VT=VP$.\n\nVậy $\\overrightarrow{BC}+\\overrightarrow{CA}=\\overrightarrow{MA}-\\overrightarrow{MB}$.\n\nb) Áp dụng định lí côsin trong tam giác $ABC$, ta có\n\n$BC^{2}=AB^{2}+AC^{2}\\text{-2AB\\cdot AC\\cdot }\\cos A=5^{2}+8^{2}-2\\cdot 5\\cdot 8\\cdot \\cos 60^\\circ.$\n\nSuy ra\n\n$BC^{2}=25+64-80\\cdot \\dfrac{1}{2}\\text{=49\\Rightarrow BC=7} \\left(cm\\right).$\n\nÁp dụng hệ quả của định lí côsin, côsin của góc $B$ là\n\n$\\cos B=\\dfrac{AB^{2}+BC^{2}-AC^{2}}{\\text{2\\cdot AB\\cdot BC}}=\\dfrac{5^{2}+7^{2}-8^{2}}{2\\cdot 5\\cdot 7}=\\dfrac{25+49-64}{70}=\\dfrac{10}{70}=\\dfrac{1}{7}.$\n\nVậy $BC=7 cm$ và $\\cos B=\\dfrac{1}{7}$.\n\nc) Vì $M$ thuộc cạnh $BC$ và $BM=\\dfrac{3}{7}BC$ nên\n\n$BM=\\dfrac{3}{7}\\cdot 7=3 \\left(cm\\right).$\n\nÁp dụng định lí côsin trong tam giác $ABM$, ta có\n\n$AM^{2}=AB^{2}+BM^{2}\\text{-2AB\\cdot BM\\cdot }\\cos B.$\n\nThay các giá trị $AB=5 cm$, $BM=3 cm$ và $\\cos B=\\dfrac{1}{7}$ vào, ta được\n\n$AM^{2}=5^{2}+3^{2}-2\\cdot 5\\cdot 3\\cdot \\dfrac{1}{7}=25+9-\\dfrac{30}{7}=34-\\dfrac{30}{7}=\\dfrac{208}{7}.$\n\nSuy ra\n\n$AM=\\sqrt{\\dfrac{208}{7}}=\\dfrac{4\\sqrt{91}}{7} \\left(cm\\right).$\n\nVậy độ dài đoạn $AM$ bằng $\\dfrac{4\\sqrt{91}}{7} cm$.",
+  "anh_de_file": null,
+  "anh_dap_an_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000376_anh_dap_an.png"
+ },
+ {
+  "ma_cau": "T110000000255",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Một mảnh đất hình chữ nhật bị cắt xén đi một góc (xem hình bên dưới), phần còn lại có dạng hình tứ giác $ABCD$ với độ dài các cạnh là $AB=15 m$, $BC=19 m$, $CD=10 m$, $DA=20 m$. Diện tích mảnh đất $ABCD$ (phần tô đậm) bằng bao nhiêu mét vuông (làm tròn kết quả đến hàng đơn vị)?",
+  "lua_chon": [
+   "$236 m^{2}$.",
+   "$237 m^{2}$.",
+   "$234 m^{2}$.",
+   "$235 m^{2}$."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "Nối hai điểm $B$ và $D$, chia tứ giác $ABCD$ thành hai tam giác $\\triangle ABD$ và $\\triangle BCD$.\n\nVì mảnh đất ban đầu là hình chữ nhật nên $\\widehat{BAD}=90^\\circ$, suy ra tam giác $ABD$ vuông tại $A$.\n\nÁp dụng định lí Pythagore trong tam giác vuông $ABD$, ta có:\n\n$BD=\\sqrt{AB^{2}+AD^{2}}=\\sqrt{{15}^{2}+{20}^{2}}=\\sqrt{625}=25 \\left(m\\right).$\n\nDiện tích tam giác $ABD$ là:\n\n$S_{\\triangle ABD}=\\dfrac{1}{2}\\text{AB\\cdot AD=}\\dfrac{1}{2}\\cdot 15\\cdot 20=150 \\left(m^{2}\\right).$\n\nXét tam giác $BCD$ có độ dài ba cạnh là $BC=19 m$, $CD=10 m$, $BD=25 m$.\n\nNửa chu vi của tam giác $BCD$ là:\n\n$p=\\dfrac{BC+CD+BD}{2}=\\dfrac{19+10+25}{2}=27 \\left(m\\right).$\n\nÁp dụng công thức Heron, diện tích tam giác $BCD$ là:\n\n$S_{\\triangle BCD}=\\sqrt{p\\left(p-BC\\right)\\left(p-CD\\right)\\left(p-BD\\right)}=\\sqrt{27\\left(27-19\\right)\\left(27-10\\right)\\left(27-25\\right)}=\\sqrt{7 344}=12\\sqrt{51} \\left(m^{2}\\right).$\n\nDiện tích của mảnh đất hình tứ giác $ABCD$ là:\n\n$S_{ABCD}=S_{\\triangle ABD}+S_{\\triangle BCD}=150+12\\sqrt{51}\\approx 235,697\\approx 236 \\left(m^{2}\\right).$\n\nVậy diện tích mảnh đất $ABCD$ xấp xỉ $236 m^{2}$.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000255_anh_de.png",
+  "anh_dap_an_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000255_anh_dap_an.png"
+ },
+ {
+  "ma_cau": "T110000000134",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một chiếc đu quay có bán kính $75 m$, tâm của vòng quay ở độ cao $90 m$, thời gian thực hiện mỗi vòng quay của đu quay là $15$phút. Nếu một người vào cabin tại vị trí thấp nhất của vòng quay, thì sau $5$ phút quay, người đó ở độ cao bao nhiêu mét so với mặt đất? (làm tròn đến hàng đơn vị)",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": null,
+  "loi_giai": "Đu quay quay một vòng hết $15$ phút, tương ứng với một góc quay $360^\\circ$.\n\nTốc độ quay của đu quay là:\n\n$\\dfrac{360^\\circ}{15}=24^\\circ/$\n\nphút\n\n$.$\n\nSau $5$ phút quay, góc quay của đu quay là:\n\n$5\\cdot 24^\\circ=120^\\circ.$\n\nChọn hệ trục toạ độ $Oxy$ có gốc $O$ trùng với tâm $C$ của vòng quay, trục $Oy$ hướng thẳng đứng lên trên.\n\nVị trí ban đầu của người đó là vị trí thấp nhất của vòng quay, có toạ độ $\\left(0;-75\\right)$.\n\nSau khi quay một góc $120^\\circ$, vị trí của người đó có độ cao so với tâm $C$ là:\n\n$y=-75\\cos 120^\\circ=-75\\cdot \\left(-\\dfrac{1}{2}\\right)=37,5 m.$\n\nVì tâm của vòng quay ở độ cao $90 m$ so với mặt đất nên sau $5$ phút, độ cao của người đó so với mặt đất là:\n\n$h=90+37,5=127,5 m.$\n\nLàm tròn đến hàng đơn vị, ta được độ cao xấp xỉ $128 m$.\n\nVậy sau $5$ phút quay, người đó ở độ cao khoảng $128 m$ so với mặt đất.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000134_anh_de.png",
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110000000406",
+  "loai_cau": "dung_sai",
+  "noi_dung": "Cho tam giác $ABC$, có độ dài ba cạnh là $BC=a$, $AC=b$, $AB=c$. Gọi $R$ là bán kính đường tròn ngoại tiếp tam giác; $r$ là bán kính đường tròn nội tiếp tam giác, $p$ là nửa chu vi tam giác $ABC$ và $S$ là diện tích tam giác đó. Khi đó",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Diện tích tam giác tính theo bán kính đường tròn nội tiếp $r$ và nửa chu vi $p$ là $S=pr$.",
+    "noi_dung": "$S=pr$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Theo định lí sin trong tam giác $ABC$, ta có $\\dfrac{a}{\\sin A}=\\dfrac{b}{\\sin B}=\\dfrac{c}{\\sin C}=2R$.",
+    "noi_dung": "$\\dfrac{a}{\\sin A}=\\dfrac{b}{\\sin B}=\\dfrac{c}{\\sin C}=2R$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Theo định lí côsin trong tam giác $ABC$, ta có $a^{2}=b^{2}+c^{2}-2bc\\cos A$.",
+    "noi_dung": "$a^{2}=b^{2}+c^{2}-2bc\\cos A$"
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T110000000",
+    "loi_giai": "Công thức đúng tính diện tích tam giác qua độ dài ba cạnh và bán kính đường tròn ngoại tiếp $R$ là $S=\\dfrac{abc}{4R}$, không phải là $\\dfrac{abc}{4r}$.",
+    "noi_dung": "$S=\\dfrac{abc}{4r}$"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "anh_de_file": null,
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110030201057",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho tam giác $ABC$, ta ký hiệu $a,b,c$ tương ứng là độ dài các cạnh đối diện với đỉnh $A,B,C$; $p$ là nửa chu vi; $S$ là diện tích tam giác; $R,r$ tương ứng là bán kính đường tròn ngoại tiếp, đường tròn nội tiếp tam giác. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$a^2 = b^2 + c^2 – 2bc \\cos A$.",
+   "$\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C} = 2r$.",
+   "$S = \\dfrac{abc}{4r}$",
+   "$S = \\sqrt{p\\cdot(p+a)\\cdot(p+b)\\cdot(p+c)}$."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "Xét tam giác $ABC$ với các ký hiệu chuẩn:\n- Theo định lí côsin trong tam giác $ABC$, ta có $a^2 = b^2 + c^2 – 2bc \\cos A$. Do đó khẳng định ở phương án A đúng.\n- Theo định lí sin, ta có $\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C} = 2R$ (với $R$ là bán kính đường tròn ngoại tiếp), nên khẳng định $\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C} = 2r$ là sai.\n- Công thức tính diện tích tam giác theo bán kính đường tròn ngoại tiếp là $S = \\dfrac{abc}{4R}$, nên khẳng định $S = \\dfrac{abc}{4r}$ là sai.\n- Công thức Heron tính diện tích tam giác là $S = \\sqrt{p(p-a)(p-b)(p-c)}$, nên khẳng định $S=\\sqrt{p\\cdot(p+a)\\cdot(p+b)\\cdot(p+c)}$ là sai.\nVậy khẳng định đúng là $a^2 = b^2 + c^2 – 2bc \\cos A$.",
+  "anh_de_file": null,
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110000000169",
+  "loai_cau": "dung_sai",
+  "noi_dung": "Một đoạn đường đi từ điểm $A$ đến điểm $B$ nhưng bị vướng một ngọn núi. Nhà đầu tư thực hiện phương án xây dựng đường tránh từ $A$ đến $M$, từ $M$ đến $N$ và sau đó mới đến $B$. Biết rằng $AM=3,2 km$; $MN=5,5 km$; $NB=3,6 km$, $\\alpha =140^\\circ$ và $\\beta =145^\\circ$.\nCác phát biểu sau đây đúng hay sai?",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "S",
+    "ma_dang": "T110000000",
+    "loi_giai": "Xét tam giác $AMN$ có $AM=3,2$, $MN=5,5$ và góc xen giữa $\\widehat{AMN}=\\alpha =140^\\circ$.\n\nÁp dụng định lí côsin ta có\n\n$AN^{2}={3,2}^{2}+{5,5}^{2}-2\\cdot 3,2\\cdot 5,5\\cdot \\cos 140^\\circ\\approx 10,24+30,25+26,96=67,45.$\n\nSuy ra $AN\\approx 8,21 km$, khác với giá trị $3,68 km$ đã nêu.",
+    "noi_dung": "Độ dài cạnh $AN\\approx 3,68 km$ (kết quả làm tròn đến hàng phần trăm)"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Áp dụng định lí sin trong tam giác $AMN$ ta có\n\n$\\dfrac{AM}{\\sin \\widehat{ANM}}=\\dfrac{AN}{\\sin \\widehat{AMN}}\\Rightarrow \\sin \\widehat{ANM}=\\dfrac{AM\\cdot \\sin 140^\\circ}{AN}\\approx \\dfrac{3,2\\cdot 0,6428}{8,21}\\approx 0,2504.$\n\nSuy ra $\\widehat{ANM}\\approx 14,5^\\circ$ (góc này nhọn vì $\\widehat{AMN}=140^\\circ$ đã là góc tù).\n\nVì $14,5^\\circ<15^\\circ$ nên khẳng định đúng.",
+    "noi_dung": "Số đo của góc $\\widehat{ANM}$ bé hơn $15^\\circ$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Xét tam giác $MNB$ có $MN=5,5$, $NB=3,6$ và góc xen giữa $\\widehat{MNB}=\\beta =145^\\circ$.\n\nÁp dụng định lí côsin ta có\n\n$MB^{2}={5,5}^{2}+{3,6}^{2}-2\\cdot 5,5\\cdot 3,6\\cdot \\cos 145^\\circ\\approx 30,25+12,96+32,44=75,65.$\n\nSuy ra $MB\\approx 8,70 km$, đúng như khẳng định.",
+    "noi_dung": "Độ dài cạnh $MB\\approx 8,7 km$ (làm tròn đến hàng phần mười)"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Góc $\\widehat{ANB}=\\beta -\\widehat{ANM}\\approx 145^\\circ-14,5^\\circ=130,5^\\circ$.\n\nXét tam giác $ANB$ và áp dụng định lí côsin:\n\n$AB^{2}\\approx {8,21}^{2}+{3,6}^{2}-2\\cdot 8,21\\cdot 3,6\\cdot \\cos 130,5^\\circ\\approx 67,45+12,96+38,41=118,82.$\n\nSuy ra $AB\\approx 10,9 km$.\n\nThời gian đi bằng đường hầm là $\\dfrac{10,9}{80}$ giờ $\\approx 8,18$ phút.\n\nQuãng đường tránh dài $3,2+5,5+3,6=12,3 km$ nên thời gian đi là $\\dfrac{12,3}{40}$ giờ $=18,45$ phút.\n\nThời gian tiết kiệm được là $18,45-8,18\\approx 10,27\\approx 10$ phút, đúng như khẳng định.",
+    "noi_dung": "Giả sử nhà đầu tư dự định phương án đường hầm xuyên qua núi đi thẳng từ $A$ đến $B$ (chi phí cao và sẽ có thu phí). Một người đi xe với vận tốc trung bình $80 km/h$ trong đường hầm và vận tốc trung bình $40 km/h$ trên đường tránh. Thời gian đi từ $A$ đến $B$ bằng đường hầm sẽ tiết kiệm một khoảng thời gian $10$ phút (làm tròn đến hàng đơn vị phút)"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000169_anh_de.png",
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110000000318",
+  "loai_cau": "dung_sai",
+  "noi_dung": "Cho tam giác $ABC$ có $AB=2 cm,AC=3 cm,\\widehat{BAC}=60^\\circ$.",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Theo định lí côsin trong tam giác $ABC$, ta có\n\n$BC^{2}=AB^{2}+AC^{2}\\text{-2\\cdot AB\\cdot AC\\cdot }\\cos \\widehat{BAC}.$",
+    "noi_dung": "$BC^{2}=AB^{2}+AC^{2}\\text{-2\\cdot AB\\cdot AC\\cdot }\\cos \\widehat{BAC}$"
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T110000000",
+    "loi_giai": "Công thức đúng để tính diện tích tam giác $ABC$ là\n\n$S=\\dfrac{1}{2}\\text{\\cdot AB\\cdot AC\\cdot }\\sin \\widehat{BAC}.$",
+    "noi_dung": "Công thức tính diện tích tam giác $ABC$ là $\\text{S=AB\\cdot AC\\cdot }\\sin \\widehat{BAC}$"
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T110000000",
+    "loi_giai": "Áp dụng định lí côsin, ta có\n\n$BC^{2}=2^{2}+3^{2}-2\\cdot 2\\cdot 3\\cdot \\cos 60^\\circ=4+9-12\\cdot \\dfrac{1}{2}=7.$\n\nSuy ra $BC=\\sqrt{7} cm$.",
+    "noi_dung": "Độ dài cạnh $BC=7 cm$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Diện tích tam giác $ABC$ là\n\n$S=\\dfrac{1}{2}\\text{\\cdot AB\\cdot AC\\cdot }\\sin \\widehat{BAC}=\\dfrac{1}{2}\\cdot 2\\cdot 3\\cdot \\sin 60^\\circ=3\\cdot \\dfrac{\\sqrt{3}}{2}=\\dfrac{3\\sqrt{3}}{2} \\left({cm}^{2}\\right).$",
+    "noi_dung": "Diện tích tam giác $ABC$ bằng $\\dfrac{3\\sqrt{3}}{2} \\left({cm}^{2}\\right)$"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "anh_de_file": null,
+  "anh_dap_an_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000318_anh_dap_an.png"
+ },
+ {
+  "ma_cau": "T110030203008",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho tam giác $ABC$ có $\\widehat{BAC} = 60^\\circ$ và cạnh $BC = \\sqrt{3}$. Tính bán kính đường tròn ngoại tiếp tam giác $ABC$.",
+  "lua_chon": [
+   "$R=1$.",
+   "$R=3$.",
+   "$R=4$.",
+   "$R=2$."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "Áp dụng định lí sin trong tam giác $ABC$, ta có\n$\\dfrac{BC}{\\sin \\widehat{BAC}} = 2R$.\nSuy ra\n$R = \\dfrac{BC}{2\\sin \\widehat{BAC}} = \\dfrac{\\sqrt{3}}{2\\sin 60^\\circ} = \\dfrac{\\sqrt{3}}{2.\\dfrac{\\sqrt{3}}{2}} = 1$.\nVậy bán kính đường tròn ngoại tiếp tam giác $ABC$ là $R=1$.",
+  "anh_de_file": null,
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110000000242",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho $3$ đường tròn nhỏ bằng nhau có bán kính $r=2$ nằm trong và tiếp xúc đường tròn lớn (như hình vẽ). Tam giác đều có đỉnh là $3$ tâm của đường tròn. Tính diện tích phần tô đậm (làm tròn đến $1$ chữ số sau dấu phẩy)",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "26.3",
+  "loi_giai": "Gọi $A,B,C$ lần lượt là tâm của ba đường tròn nhỏ có bán kính $r=2$, và $O$ là tâm của đường tròn lớn.\n\nBa đường tròn nhỏ tiếp xúc ngoài đôi một nên tam giác $ABC$ là tam giác đều có độ dài cạnh là\n\n$a=2r=2\\cdot 2=4.$\n\nKhoảng cách từ tâm $O$ (trọng tâm tam giác $ABC$) đến các đỉnh $A,B,C$ là\n\n$OA=OB=OC=\\dfrac{a\\sqrt{3}}{3}=\\dfrac{4\\sqrt{3}}{3}.$\n\nBán kính đường tròn lớn là\n\n$R=OA+r=\\dfrac{4\\sqrt{3}}{3}+2.$\n\nDiện tích của hình tròn lớn là\n\n$S_{\\left(O\\right)}=\\pi R^{2}=\\pi \\left(2+\\dfrac{4\\sqrt{3}}{3}\\right)^{2}=\\pi \\left(\\dfrac{28+16\\sqrt{3}}{3}\\right).$\n\nDiện tích tam giác đều $ABC$ là\n\n$S_{\\triangle ABC}=\\dfrac{a^{2}\\sqrt{3}}{4}=\\dfrac{4^{2}\\sqrt{3}}{4}=4\\sqrt{3}.$\n\nBa hình quạt tròn góc $60^\\circ$ của ba đường tròn nhỏ nằm bên trong tam giác $ABC$ có tổng diện tích là\n\n$S_{\\text{quat trong}}=3\\cdot \\left(\\dfrac{60^\\circ}{360^\\circ}\\cdot\\pi r^{2}\\right)=3\\cdot \\dfrac{1}{6}\\cdot \\pi \\cdot 2^{2}=2\\pi.$\n\nPhần hình màu trắng bên trong tam giác $ABC$ có diện tích là\n\n$S_{1}=S_{\\triangle ABC}-S_{\\text{quat trong}}=4\\sqrt{3}-2\\pi.$\n\nPhần hình màu trắng bên ngoài tam giác $ABC$ gồm $3$ hình quạt tròn góc $300^\\circ$, có tổng diện tích là\n\n$S_{2}=3\\cdot \\left(\\dfrac{300^\\circ}{360^\\circ}\\cdot\\pi r^{2}\\right)=3\\cdot \\dfrac{5}{6}\\cdot \\pi \\cdot 2^{2}=10\\pi.$\n\nTổng diện tích phần không tô đậm trong hình tròn lớn là\n\n$S_{trang}=S_{1}+S_{2}=\\left(4\\sqrt{3}-2\\pi \\right)+10\\pi =4\\sqrt{3}+8\\pi.$\n\nDiện tích phần tô đậm là\n\n$S=S_{\\left(O\\right)}-S_{trang}=\\pi \\left(\\dfrac{28+16\\sqrt{3}}{3}\\right)-\\left(4\\sqrt{3}+8\\pi \\right)=\\pi \\left(\\dfrac{4+16\\sqrt{3}}{3}\\right)-4\\sqrt{3}\\approx 26,3.$\n\nVậy diện tích phần tô đậm xấp xỉ $26,3$.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000242_anh_de.png",
+  "anh_dap_an_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000242_anh_dap_an.png"
+ },
+ {
+  "ma_cau": "T110000000290",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một ngôi tháp nghiêng về phía Đông một góc $\\alpha$ so với phương ngang của mặt đất. Vào lúc $10$ giờ $00$ sáng, khi góc nâng của tia nắng mặt trời so với mặt đất có số đo là $60^\\circ$ thì bóng của tháp trải trên mặt đất dài $28,2 m$. Vào lúc $16$ giờ $00$ chiều, khi góc nâng của tia nắng mặt trời so với mặt đất có số đo là $45^\\circ$ thì bóng của tháp trải trên mặt đất dài $61,2 m$. Chiều dài thân tháp nghiêng trên bằng bao nhiêu mét? (kết quả làm tròn sau dấu phẩy một chữ số).",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "56.9",
+  "loi_giai": "Gọi $O$ là gốc tháp, $T$ là đỉnh tháp, độ dài thân tháp là $l=OT$.\n\nGọi $A$ là điểm mút bóng tháp lúc $10$ giờ ($OA=28,2 m$), $B$ là điểm mút bóng tháp lúc $16$ giờ ($OB=61,2 m$).\n\nVì $A,O,B$ thẳng hàng theo thứ tự đó nên $\\widehat{TOA}+\\widehat{TOB}=180^\\circ$.\n\nĐặt $\\alpha =\\widehat{TOB}$ là góc nghiêng của tháp so với mặt đất về phía Đông, ta có $\\widehat{TOA}=180^\\circ-\\alpha$.\n\nXét tam giác $TAO$, ta có $\\widehat{TAO}=60^\\circ$ và\n\n$\\widehat{ATO}=180^\\circ-60^\\circ-\\left(180^\\circ-\\alpha \\right)=\\alpha -60^\\circ.$\n\nÁp dụng định lí sin trong tam giác $TAO$:\n\n$\\dfrac{OT}{\\sin 60^\\circ}=\\dfrac{OA}{\\sin \\left(\\alpha -60^\\circ\\right)}\\Rightarrow l=\\dfrac{28,2\\cdot \\sin 60^\\circ}{\\sin \\left(\\alpha -60^\\circ\\right)}.$\n\nXét tam giác $TBO$, ta có $\\widehat{TBO}=45^\\circ$ và\n\n$\\widehat{BTO}=180^\\circ-45^\\circ-\\alpha =135^\\circ-\\alpha.$\n\nÁp dụng định lí sin trong tam giác $TBO$:\n\n$\\dfrac{OT}{\\sin 45^\\circ}=\\dfrac{OB}{\\sin \\left(135^\\circ-\\alpha \\right)}\\Rightarrow l=\\dfrac{61,2\\cdot \\sin 45^\\circ}{\\sin \\left(135^\\circ-\\alpha \\right)}.$\n\nTừ đó ta có phương trình\n\n$\\dfrac{28,2\\cdot \\sin 60^\\circ}{\\sin \\left(\\alpha -60^\\circ\\right)}=\\dfrac{61,2\\cdot \\sin 45^\\circ}{\\sin \\left(135^\\circ-\\alpha \\right)}\\Leftrightarrow \\dfrac{\\sin \\left(135^\\circ-\\alpha \\right)}{\\sin \\left(\\alpha -60^\\circ\\right)}=\\dfrac{61,2\\cdot \\sin 45^\\circ}{28,2\\cdot \\sin 60^\\circ}=\\dfrac{34\\sqrt{6}}{47}.$\n\nKhai triển theo công thức lượng giác:\n\n$\\dfrac{\\sin 135^\\circ\\cos \\alpha -\\cos 135^\\circ\\sin \\alpha }{\\sin \\alpha \\cos 60^\\circ-\\cos \\alpha \\sin 60^\\circ}=\\dfrac{34\\sqrt{6}}{47}\\Leftrightarrow \\dfrac{\\sqrt{2}\\left(\\sin \\alpha +\\cos \\alpha \\right)}{\\sin \\alpha -\\sqrt{3}\\cos \\alpha }=\\dfrac{34\\sqrt{6}}{47}.$\n\nChia cả tử và mẫu cho $\\cos \\alpha$ và đặt $t=\\tan \\alpha$:\n\n$\\dfrac{t+1}{t-\\sqrt{3}}=\\dfrac{34\\sqrt{3}}{47}\\Leftrightarrow 47\\left(t+1\\right)=34\\sqrt{3}\\left(t-\\sqrt{3}\\right)\\Leftrightarrow t=\\dfrac{149}{34\\sqrt{3}-47}\\approx 12,5318.$\n\nSuy ra $\\alpha \\approx 85,43^\\circ$.\n\nKhi đó $\\widehat{ATO}=\\alpha -60^\\circ\\approx 25,43^\\circ$.\n\nChiều dài thân tháp là\n\n$l=\\dfrac{28,2\\cdot \\sin 60^\\circ}{\\sin 25,43^\\circ}\\approx 56,9 m.$\n\nVậy chiều dài thân tháp xấp xỉ $56,9 m$.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000290_anh_de.png",
+  "anh_dap_an_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000290_anh_dap_an.png"
+ },
+ {
+  "ma_cau": "T110000000042",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tập xác định của hàm số $y=\\dfrac{\\sqrt{x+1}}{\\left(x^{2}-5x+6\\right)\\sqrt{4-x}}$ là:",
+  "lua_chon": [
+   "$[-1;4)$.",
+   "$[-1;4)\\setminus \\{2;3\\}$.",
+   "$(-1;4]\\setminus \\{2;3\\}$.",
+   "$\\left(-1;4\\right)\\setminus \\{2;3\\}$."
+  ],
+  "menh_de": null,
+  "dap_an": null,
+  "loi_giai": "Điều kiện xác định của hàm số là\n\n$\\begin{cases} x+1\\ge 0 \\\\ 4-x>0 \\\\ x^{2}-5x+6\\ne 0 \\end{cases}$\n\n$\\Leftrightarrow \\begin{cases} x\\ge -1 \\\\ x<4 \\\\ x\\ne 2 \\\\ x\\ne 3 \\end{cases}$\n\n$\\Leftrightarrow \\begin{cases} -1\\le x<4 \\\\ x\\ne 2 \\\\ x\\ne 3. \\end{cases}$\n\nVậy tập xác định của hàm số là $D=[-1;4)\\setminus \\{2;3\\}$.",
+  "anh_de_file": null,
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110030204030",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho tam giác $ABC$ có $AC = 4 \\mathrm{\\ cm}$, góc $\\widehat{A} = 60^\\circ$, $\\widehat{B} = 45^\\circ$. Diện tích tam giác $ABC$ bằng",
+  "lua_chon": [
+   "$3 + \\sqrt{3}$ cm$^2$.",
+   "$6 + 2\\sqrt{3}$ cm$^2$.",
+   "$12 + 4\\sqrt{3}$ cm$^2$.",
+   "$6\\sqrt{2}$ cm$^2$."
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "$\\widehat{C} = 180^\\circ - 60^\\circ - 45^\\circ = 75^\\circ$; theo định lí sin $BC = 2\\sqrt{6}$ cm.\n$S = \\dfrac{1}{2} \\cdot AC \\cdot BC \\cdot \\mathrm{sinC} = \\dfrac{1}{2} \\cdot 4 \\cdot 2\\sqrt{6} \\cdot \\dfrac{\\sqrt{6} + \\sqrt{2}}{4} = 6 + 2\\sqrt{3}$ cm$^2$.\nChọn B.",
+  "anh_de_file": null,
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110030203074",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Từ hai vị trí $A$ và $B$ của một tòa nhà, người ta quan sát đỉnh $C$ của ngọn núi. Biết rằng độ cao $AB=70 \\mathrm{m}$, phương nhìn $AC$ tạo với phương nằm ngang góc $30^{\\circ}$, phương nhìn $BC$ tạo với phương nằm ngang góc $15^{\\circ}$. Tính chiều cao $CH$ của ngọn núi (tính theo đơn vị mét và làm tròn kết quả đến hàng đơn vị).\n[hình]",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "131",
+  "loi_giai": "Gọi $H$ là hình chiếu vuông góc của đỉnh núi $C$ lên mặt phẳng nằm ngang chứa $A$.\nKẻ đường thẳng nằm ngang qua $B$ cắt $CH$ tại $K$, khi đó tứ giác $ABKH$ là hình chữ nhật nên $HK=AB=70 \\mathrm{m}$ và $BK \\perp CH$.\nTheo giả thiết, góc nhìn từ $A$ là $\\widehat{CAH}=30^{\\circ}$, góc nhìn từ $B$ là $\\widehat{CBK}=15^{\\circ}$.\nXét tam giác $ABC$, ta có\n$\\widehat{CAB}=90^{\\circ}-\\widehat{CAH}=90^{\\circ}-30^{\\circ}=60^{\\circ}$,\n$\\widehat{CBA}=90^{\\circ}+\\widehat{CBK}=90^{\\circ}+15^{\\circ}=105^{\\circ}$.\nSuy ra\n$\\widehat{ACB}=180^{\\circ}-(\\widehat{CAB}+\\widehat{CBA})=180^{\\circ}-(60^{\\circ}+105^{\\circ})=15^{\\circ}$.\nÁp dụng định lí sin trong tam giác $ABC$, ta có\n$\\dfrac{AC}{\\sin \\widehat{CBA}}=\\dfrac{AB}{\\sin \\widehat{ACB}} \\Rightarrow AC=\\dfrac{AB \\cdot \\sin 105^{\\circ}}{\\sin 15^{\\circ}}=\\dfrac{70 \\cdot \\sin 105^{\\circ}}{\\sin 15^{\\circ}} \\approx 261,2436(\\mathrm{m})$.\nTrong tam giác vuông $ACH$ vuông tại $H$, chiều cao $CH$ của ngọn núi là\n$CH=AC \\cdot \\sin \\widehat{CAH}=AC \\cdot \\sin 30^{\\circ} \\approx 261,2436 \\cdot \\dfrac{1}{2} \\approx 130,62(\\mathrm{m})$.\nLàm tròn kết quả đến hàng đơn vị, ta được $CH \\approx 131(\\mathrm{m})$.\nVậy chiều cao của ngọn núi là $131 \\mathrm{m}$.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110030203074_anh_de.png",
+  "anh_dap_an_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110030203074_anh_dap_an.png"
+ },
+ {
+  "ma_cau": "T110000000398",
+  "loai_cau": "dung_sai",
+  "noi_dung": "Cho tam giác $ABC$, biết $b=7,c=5,\\cos A=\\dfrac{3}{5}$. Khi đó:",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "S",
+    "ma_dang": "T110000000",
+    "loi_giai": "Áp dụng định lí côsin:\n\n$a^{2}=b^{2}+c^{2}-2bc\\cos A=7^{2}+5^{2}-2\\cdot 7\\cdot 5\\cdot \\dfrac{3}{5}=49+25-42=32.$\n\nSuy ra $a=\\sqrt{32}=4\\sqrt{2}$, khác với giá trị $3\\sqrt{2}$ đã nêu.",
+    "noi_dung": "$a=3\\sqrt{2}$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Vì $A$ là góc trong tam giác và $\\cos A=\\dfrac{3}{5}>0$ nên $\\sin A=\\sqrt{1-\\dfrac{9}{25}}=\\dfrac{4}{5}$.\n\nDiện tích tam giác là\n\n$S=\\dfrac{1}{2}bc\\sin A=\\dfrac{1}{2}\\cdot 7\\cdot 5\\cdot \\dfrac{4}{5}=14.$",
+    "noi_dung": "$S=14$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Ta có $\\sin ^{2}A=1-\\cos ^{2}A=1-\\dfrac{9}{25}=\\dfrac{16}{25}$, mà $\\sin A>0$ nên $\\sin A=\\dfrac{4}{5}$.",
+    "noi_dung": "$\\sin A=\\dfrac{4}{5}$"
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T110000000",
+    "loi_giai": "Nửa chu vi của tam giác là\n\n$p=\\dfrac{a+b+c}{2}=\\dfrac{4\\sqrt{2}+7+5}{2}=6+2\\sqrt{2}.$\n\nBán kính đường tròn nội tiếp là\n\n$r=\\dfrac{S}{p}=\\dfrac{14}{6+2\\sqrt{2}}=\\dfrac{7}{3+\\sqrt{2}}=\\dfrac{7\\left(3-\\sqrt{2}\\right)}{\\left(3+\\sqrt{2}\\right)\\left(3-\\sqrt{2}\\right)}=\\dfrac{7\\left(3-\\sqrt{2}\\right)}{7}=3-\\sqrt{2}.$\n\nGiá trị này khác $4-\\sqrt{2}$ nên khẳng định sai.",
+    "noi_dung": "$r=4-\\sqrt{2}$"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "anh_de_file": null,
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110030203080",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Hai chiếc tàu thủy $P$ và $Q$ cách nhau $100\\mathrm{m}$. Từ $P$ và $Q$ thẳng hàng với chân $A$ của tháp hải đăng $AB$ ở trên bờ biển người ta nhìn chiều cao $AB$ của tháp dưới các góc $\\widehat{BPA}=15^\\circ$ và $\\widehat{BQA}=22^\\circ$. Tính chiều cao $AB$ của tháp làm tròn đến hàng phần mười?[hình]",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "79.6",
+  "loi_giai": "Xét tam giác $PBQ$, ta có $\\widehat{BQA}$ là góc ngoài tại đỉnh $Q$ nên\n$\\widehat{PBQ}=\\widehat{BQA}-\\widehat{BPA}=22^\\circ-15^\\circ=7^\\circ$.\nÁp dụng định lí sin trong tam giác $PBQ$, ta có\n$\\dfrac{BQ}{\\sin\\widehat{BPA}}=\\dfrac{PQ}{\\sin\\widehat{PBQ}}\\Rightarrow BQ=\\dfrac{PQ\\cdot\\sin15^\\circ}{\\sin7^\\circ}=\\dfrac{100\\cdot\\sin15^\\circ}{\\sin7^\\circ}(\\mathrm{m})$.\nXét tam giác vuông $ABQ$ vuông tại $A$, chiều cao $AB$ của ngọn hải đăng là\n$AB=BQ\\cdot\\sin\\widehat{BQA}=\\dfrac{100\\cdot\\sin15^\\circ}{\\sin7^\\circ}\\cdot\\sin22^\\circ\\approx79,6(\\mathrm{m})$.\nVậy chiều cao của tháp hải đăng là khoảng $79,6(\\mathrm{m})$.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110030203080_anh_de.png",
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110030204046",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Ông An vừa được cấp một mảnh đất trồng lúa có dạng hình thang $ABCD$ với $AD \\parallel BC$ (xem minh họa hình bên dưới). Cạnh $AB$ dọc theo đường đi và có độ dài $70 \\mathrm{~m}$. Sử dụng giác kế, người ta đo được các góc $\\widehat{DAC}=22^{\\circ}$, $\\widehat{BAC}=54^{\\circ}$ và $\\widehat{ABD}=73^{\\circ}$.\nHãy giúp ông An tính gần đúng diện tích mảnh đất (đơn vị mét vuông, kết quả chính xác đến hàng đơn vị).\n[hình]",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "9548",
+  "loi_giai": "Ta có $\\widehat{BAD} = \\widehat{BAC} + \\widehat{DAC} = 54^{\\circ} + 22^{\\circ} = 76^{\\circ}$.\nVÌ $AD \\parallel BC$ nên hai góc trong cùng phía bù nhau:\n$\\widehat{ABC} = 180^{\\circ} - \\widehat{BAD} = 180^{\\circ} - 76^{\\circ} = 104^{\\circ}$.\nĐồng thời, so le trong cho ta $\\widehat{ACB} = \\widehat{DAC} = 22^{\\circ}$.\nXét tam giác $ABC$, áp dụng định lí sin ta có\n$\\dfrac{BC}{\\mathrm{sin}\\widehat{BAC}} = \\dfrac{AB}{\\mathrm{sin}\\widehat{ACB}} \\Rightarrow BC = \\dfrac{AB \\cdot \\mathrm{sin} 54^{\\circ}}{\\mathrm{sin} 22^{\\circ}} = \\dfrac{70 \\cdot \\mathrm{sin} 54^{\\circ}}{\\mathrm{sin} 22^{\\circ}} \\approx 151,18 (\\mathrm{m})$.\nXét tam giác $ABD$, ta có\n$\\widehat{ADB} = 180^{\\circ} - (\\widehat{BAD} + \\widehat{ABD}) = 180^{\\circ} - (76^{\\circ} + 73^{\\circ}) = 31^{\\circ}$.\nÁp dụng định lí sin trong tam giác $ABD$, ta có\n$\\dfrac{AD}{\\mathrm{sin}\\widehat{ABD}} = \\dfrac{AB}{\\mathrm{sin}\\widehat{ADB}} \\Rightarrow AD = \\dfrac{AB \\cdot \\mathrm{sin} 73^{\\circ}}{\\mathrm{sin} 31^{\\circ}} = \\dfrac{70 \\cdot \\mathrm{sin} 73^{\\circ}}{\\mathrm{sin} 31^{\\circ}} \\approx 129,97 (\\mathrm{m})$.\nChiều cao của hình thang $ABCD$ là\n$h = AB \\cdot \\mathrm{sin}\\widehat{BAD} = 70 \\cdot \\mathrm{sin} 76^{\\circ} \\approx 67,92 (\\mathrm{m})$.\nDiện tích mảnh đất hình thang $ABCD$ là\n$S_{ABCD} = \\dfrac{(AD+BC) \\cdot h}{2} = \\dfrac{\\left(\\dfrac{70 \\cdot \\mathrm{sin} 73^{\\circ}}{\\mathrm{sin} 31^{\\circ}} + \\dfrac{70 \\cdot \\mathrm{sin} 54^{\\circ}}{\\mathrm{sin} 22^{\\circ}}\\right) \\cdot 70 \\cdot \\mathrm{sin} 76^{\\circ}}{2} \\approx 9548 (\\mathrm{m}^2)$.\nVậy diện tích mảnh đất của ông An khoảng $9548 \\mathrm{~m}^2$.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110030204046_anh_de.png",
+  "anh_dap_an_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110030204046_anh_dap_an.png"
+ },
+ {
+  "ma_cau": "T110000000393",
+  "loai_cau": "tu_luan",
+  "noi_dung": "1) Cho tam giác $ABC$ với $AB=1,BC=3,\\hat{B}=60^\\circ$. Tính độ dài cạnh $AC$ và diện tích của tam giác $ABC$. 2) Cho tam giác $ABC$ có các góc thỏa mãn $\\sin A=2\\sin C\\cos B$. Chứng minh rằng tam giác $\\triangle ABC$ là một tam giác cân.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": null,
+  "loi_giai": "1) Hình vẽ minh hoạ tam giác $ABC$:\n\nÁp dụng định lí côsin trong tam giác $ABC$, ta có\n\n$AC^{2}=AB^{2}+BC^{2}\\text{-2\\cdot AB\\cdot BC\\cdot }\\cos B.$\n\nThay số vào ta được:\n\n$AC^{2}=1^{2}+3^{2}-2\\cdot 1\\cdot 3\\cdot \\cos 60^\\circ=1+9-6\\cdot \\dfrac{1}{2}\\text{=7\\Rightarrow AC=}\\sqrt{7}.$\n\nDiện tích tam giác $ABC$ là\n\n$S=\\dfrac{1}{2}\\text{\\cdot AB\\cdot BC\\cdot }\\sin B=\\dfrac{1}{2}\\cdot 1\\cdot 3\\cdot \\sin 60^\\circ=\\dfrac{3}{2}\\cdot \\dfrac{\\sqrt{3}}{2}=\\dfrac{3\\sqrt{3}}{4}.$\n\nVậy $AC=\\sqrt{7}$ và $S=\\dfrac{3\\sqrt{3}}{4}$.\n\n2) Đặt $a=BC$, $b=AC$, $c=AB$ và gọi $R$ là bán kính đường tròn ngoại tiếp tam giác $ABC$.\n\nTheo định lí sin, ta có\n\n$\\sin A=\\dfrac{a}{2R},\\sin C=\\dfrac{c}{2R}.$\n\nTheo hệ quả của định lí côsin, ta có\n\n$\\cos B=\\dfrac{a^{2}+c^{2}-b^{2}}{2ac}.$\n\nThay vào đẳng thức $\\sin A=2\\sin C\\cos B$, ta được:\n\n$\\dfrac{a}{2R}=2\\cdot \\dfrac{c}{2R}\\cdot \\dfrac{a^{2}+c^{2}-b^{2}}{2ac}\\Leftrightarrow a=\\dfrac{a^{2}+c^{2}-b^{2}}{a}\\Leftrightarrow a^{2}=a^{2}+c^{2}-b^{2}\\Leftrightarrow b^{2}=c^{2}.$\n\nVì $b>0$ và $c>0$ nên $b=c$, tức là $AC=AB$.\n\nVậy tam giác $ABC$ là tam giác cân tại $A$.",
+  "anh_de_file": null,
+  "anh_dap_an_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000393_anh_dap_an.png"
+ },
+ {
+  "ma_cau": "T110000000144",
+  "loai_cau": "dung_sai",
+  "noi_dung": "Cho tam giác $ABC$ có $AB=3,AC=6$ và góc $\\hat{A}=60^\\circ$. Xét tính đúng sai của các phát biểu sau",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "S",
+    "ma_dang": "T110000000",
+    "loi_giai": "Vì $\\hat{A}=60^\\circ$ nên $\\cos A=\\cos 60^\\circ=\\dfrac{1}{2}$, không phải $\\dfrac{\\sqrt{3}}{2}$.",
+    "noi_dung": "Giá trị lượng giác $\\cos A=\\dfrac{\\sqrt{3}}{2}$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Áp dụng định lí côsin trong tam giác $ABC$\n\n$BC^{2}=AB^{2}+AC^{2}\\text{-2\\cdot AB\\cdot AC\\cdot }\\cos A=3^{2}+6^{2}-2\\cdot 3\\cdot 6\\cdot \\dfrac{1}{2}=27.$\n\nSuy ra $BC=\\sqrt{27}=3\\sqrt{3}$.",
+    "noi_dung": "Độ dài cạnh $BC$ bằng $3\\sqrt{3}$"
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T110000000",
+    "loi_giai": "Diện tích tam giác $ABC$ là\n\n$S=\\dfrac{1}{2}\\text{\\cdot AB\\cdot AC\\cdot }\\sin A=\\dfrac{1}{2}\\cdot 3\\cdot 6\\cdot \\dfrac{\\sqrt{3}}{2}=\\dfrac{9\\sqrt{3}}{2}.$\n\nGiá trị này khác $9\\sqrt{3}$ nên phát biểu sai.",
+    "noi_dung": "Diện tích tam giác $ABC$ bằng $9\\sqrt{3}$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Từ công thức $S=\\dfrac{1}{2}\\text{\\cdot BC\\cdot AH}$ ta suy ra\n\n$AH=\\dfrac{2S}{BC}=\\dfrac{9\\sqrt{3}}{3\\sqrt{3}}=3.$\n\nVậy đường cao $AH$ bằng $3$.",
+    "noi_dung": "Độ dài đường cao $AH$ của tam giác $ABC$ bằng $3$"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "anh_de_file": null,
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110030203070",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một cột tiện ích cao $10$ mét tạo ra một cái bóng dài $17$ mét trực tiếp trên một sườn dốc. Biết góc giữa tia nắng mặt trời và mặt đất được cho là $42^\\circ$ (xem hình bên dưới). Với $\\theta$ là góc nghiêng của sườn dốc, giá trị của $\\theta$ bằng bao nhiêu? (kết quả làm tròn đến hàng đơn vị). (Theo Ron Larson, Trigonometry, 10th Edition, 2018).",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "16",
+  "loi_giai": "Kí hiệu các điểm như hình vẽ đề bài:\n- Điểm $B$ là đỉnh của bóng cột trên sườn dốc.\n- Điểm $C$ là chân cột trên sườn dốc, độ dài bóng $BC=17$ m.\n- Điểm $A$ là đỉnh cột, chiều cao cột $AC=10$ m.\n- Vì cột $AC$ thẳng đứng vuông góc với phương ngang, góc nghiêng của sườn dốc là $\\theta$ nên:\n$\\widehat{BCA}=90^\\circ+\\theta$.\n- Tia nắng $BA$ tạo với phương ngang một góc $42^\\circ$, dốc tạo với phương ngang góc $\\theta$ nên:\n$\\widehat{ABC}=42^\\circ-\\theta$.\nTrong tam giác $ABC$, ta có:\n$\\widehat{BAC}=180^\\circ-(\\widehat{ABC}+\\widehat{BCA})=180^\\circ-(42^\\circ-\\theta+90^\\circ+\\theta)=48^\\circ$.\nÁp dụng định lí sin trong tam giác $ABC$, ta có:\n$\\dfrac{BC}{\\sin\\widehat{BAC}}=\\dfrac{AC}{\\sin\\widehat{ABC}}\\Leftrightarrow \\dfrac{17}{\\sin48^\\circ}=\\dfrac{10}{\\sin(42^\\circ-\\theta)}$.\nSuy ra:\n$\\sin(42^\\circ-\\theta)=\\dfrac{10\\cdot\\sin48^\\circ}{17}\\approx0,43714$.\nDo đó:\n$42^\\circ-\\theta\\approx25,92^\\circ\\Rightarrow\\theta\\approx42^\\circ-25,92^\\circ=16,08^\\circ\\approx16^\\circ$.\nVậy giá trị của $\\theta$ làm tròn đến hàng đơn vị bằng $16$.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110030203070_anh_de.png",
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110030203013",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho tam giác $ABC$ có $AB = 5$ cm và $\\hat{C} = 30^{\\circ}$. Bán kính đường tròn ngoại tiếp tam giác $ABC$ bằng",
+  "lua_chon": [
+   "5 cm.",
+   "$\\dfrac{5\\sqrt{3}}{3}$ cm.",
+   "$\\dfrac{5}{2}$ cm.",
+   "10 cm."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "Định lí sin: $\\dfrac{AB}{\\sin C} = 2R \\Rightarrow R = \\dfrac{5}{2\\sin 30^{\\circ}} = 5$ cm.\nChọn A.",
+  "anh_de_file": null,
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110030204026",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho $\\triangle ABC$ có diện tích $S=20\\sqrt{3}$, chu vi bằng $20$. Độ dài bán kính đường tròn nội tiếp $r$ của tam giác $ABC$ là",
+  "lua_chon": [
+   "$3$",
+   "$2\\sqrt{3}$",
+   "$\\sqrt{3}$",
+   "$2$"
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "Nửa chu vi của tam giác $ABC$ là\n$p=\\dfrac{20}{2}=10$.\nÁp dụng công thức liên hệ giữa diện tích và bán kính đường tròn nội tiếp $S=pr$, ta có\n$r=\\dfrac{S}{p}=\\dfrac{20\\sqrt{3}}{10}=2\\sqrt{3}$.\nVậy bán kính đường tròn nội tiếp của tam giác $ABC$ là $2\\sqrt{3}$.",
+  "anh_de_file": null,
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110000000009",
+  "loai_cau": "dung_sai",
+  "noi_dung": "Cho tam giác $ABC$ có $AB=4$, $AC=5$ và $\\cos A=\\dfrac{3}{5}$.",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "S",
+    "ma_dang": "T110000000",
+    "loi_giai": "Áp dụng định lí côsin:\n\n$BC^{2}=AB^{2}+AC^{2}\\text{-2\\cdot AB\\cdot AC\\cdot }\\cos A=4^{2}+5^{2}-2\\cdot 4\\cdot 5\\cdot \\dfrac{3}{5}=16+25-24=17.$\n\nSuy ra $BC=\\sqrt{17}$, khác $\\sqrt{41}$.",
+    "noi_dung": "Độ dài cạnh $BC$ bằng $\\sqrt{41}$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Vì $\\cos A=\\dfrac{3}{5}>0$ nên $\\hat{A}$ là góc nhọn, do đó $\\sin A>0$ và\n\n$\\sin A=\\sqrt{1-\\cos ^{2}A}=\\sqrt{1-\\dfrac{9}{25}}=\\dfrac{4}{5}.$\n\nDiện tích tam giác $ABC$ là\n\n$S=\\dfrac{1}{2}\\text{\\cdot AB\\cdot AC\\cdot }\\sin A=\\dfrac{1}{2}\\cdot 4\\cdot 5\\cdot \\dfrac{4}{5}=8.$",
+    "noi_dung": "Diện tích tam giác $ABC$ bằng $8$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Gọi $AH$ là đường cao hạ từ $A$ xuống cạnh $BC$, ta có $S=\\dfrac{1}{2}\\text{\\cdot BC\\cdot AH}$.\n\nSuy ra\n\n$AH=\\dfrac{2S}{BC}=\\dfrac{2\\cdot 8}{\\sqrt{17}}=\\dfrac{16}{\\sqrt{17}}=\\dfrac{16\\sqrt{17}}{17}.$",
+    "noi_dung": "Đường cao $AH$ của tam giác $ABC$ là $\\dfrac{16\\sqrt{17}}{17}$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Theo tính toán ở trên, $\\sin \\widehat{BAC}=\\dfrac{4}{5}$.",
+    "noi_dung": "$\\sin \\widehat{BAC}=\\dfrac{4}{5}$"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "anh_de_file": null,
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110000000361",
+  "loai_cau": "dung_sai",
+  "noi_dung": "Cho tam giác $ABC$ có $\\hat{C}=60^\\circ$, $b=10$, $a=20$.",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Áp dụng định lí côsin cho cạnh $c$ ta có\n\n$c^{2}=a^{2}+b^{2}-2ab\\cos C={20}^{2}+{10}^{2}-2\\cdot 20\\cdot 10\\cdot \\cos 60^\\circ=400+100-200=300.$\n\nSuy ra $c=\\sqrt{300}=10\\sqrt{3}$.",
+    "noi_dung": "Độ dài cạnh còn lại của tam giác $ABC$ là $c=10\\sqrt{3}$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Áp dụng định lí sin ta có $\\dfrac{c}{\\sin C}=2R$.\n\n$R=\\dfrac{c}{2\\sin C}=\\dfrac{10\\sqrt{3}}{2\\cdot \\dfrac{\\sqrt{3}}{2}}=\\dfrac{10\\sqrt{3}}{\\sqrt{3}}=10.$\n\nVậy bán kính đường tròn ngoại tiếp là $R=10$.",
+    "noi_dung": "Bán kính đường tròn ngoại tiếp tam giác $ABC$ là $R=10$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Áp dụng công thức độ dài đường trung tuyến hạ từ đỉnh $A$:\n\n$m_{a}^{2}=\\dfrac{2\\left(b^{2}+c^{2}\\right)-a^{2}}{4}=\\dfrac{2\\left({10}^{2}+300\\right)-{20}^{2}}{4}=\\dfrac{2\\cdot 400-400}{4}=\\dfrac{400}{4}=100.$\n\nSuy ra $m_{a}=10$.",
+    "noi_dung": "Độ dài đường trung tuyến hạ từ đỉnh $A$ của tam giác $ABC$ là $m_{a}=10$."
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T110000000",
+    "loi_giai": "Diện tích tam giác là $S=\\dfrac{1}{2}ab\\sin C=\\dfrac{1}{2}\\cdot 20\\cdot 10\\cdot \\dfrac{\\sqrt{3}}{2}=50\\sqrt{3}$.\n\nMặt khác $S=\\dfrac{1}{2}a\\cdot h_{a}$ nên $h_{a}=\\dfrac{2S}{a}=\\dfrac{2\\cdot 50\\sqrt{3}}{20}=5\\sqrt{3}$.\n\nVậy $h_{a}=5\\sqrt{3}$, không phải $10\\sqrt{3}$.",
+    "noi_dung": "Độ dài đường cao hạ từ đỉnh $A$ của tam giác $ABC$ là $h_{a}=10\\sqrt{3}$."
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "anh_de_file": null,
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110000000099",
+  "loai_cau": "dung_sai",
+  "noi_dung": "Cho tam giác $ABC$ biết $a=3 cm,b=4 cm,\\hat{C}=30^\\circ$. Khi đó:",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "S",
+    "ma_dang": "T110000000",
+    "loi_giai": "Áp dụng định lí côsin ta có:\n\n$c^{2}=a^{2}+b^{2}-2ab\\cos C=3^{2}+4^{2}-2\\cdot 3\\cdot 4\\cdot \\cos 30^\\circ=25-12\\sqrt{3}\\approx 4,22.$\n\nSuy ra $c=\\sqrt{25-12\\sqrt{3}}\\approx 2,05 \\left(cm\\right)\\ne 3,05 \\left(cm\\right)$.",
+    "noi_dung": "$c\\approx 3,05 \\left(cm\\right)$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Theo định lí côsin trong tam giác $ABC$, bình phương cạnh $c$ được tính theo công thức\n\n$c^{2}=a^{2}+b^{2}-2ab\\cos C.$",
+    "noi_dung": "$c^{2}=a^{2}+b^{2}-2ab\\cos C$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Theo định lí côsin, ta có\n\n$\\cos A=\\dfrac{b^{2}+c^{2}-a^{2}}{2bc}=\\dfrac{4^{2}+\\left(25-12\\sqrt{3}\\right)-3^{2}}{2\\cdot 4\\cdot \\sqrt{25-12\\sqrt{3}}}=\\dfrac{32-12\\sqrt{3}}{8\\sqrt{25-12\\sqrt{3}}}\\approx 0,68.$",
+    "noi_dung": "$\\cos A\\approx 0,68$"
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T110000000",
+    "loi_giai": "Vì $\\cos A\\approx 0,68$ nên $\\hat{A}\\approx 47,2^\\circ\\ne 77,2^\\circ$.",
+    "noi_dung": "$\\hat{A}\\approx 77,2^\\circ$"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "anh_de_file": null,
+  "anh_dap_an_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000099_anh_dap_an.png"
+ },
+ {
+  "ma_cau": "T110000000170",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tại một ngã ba đường ($B$, $H$, $C$ thẳng hàng) có ba tòa nhà nằm ở ba vị trí $A$, $B$, $C$ như hình vẽ.\nNgười ta đặt một trạm phát tín hiệu tại điểm $I$ cách đều cả ba tòa nhà. Biết rằng $BH=2,5 km$, $AH=6,5 km$ và $CH=6,5 km$, hãy tính giá trị $100AI^{2}$ (làm tròn đến hàng đơn vị).",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": null,
+  "loi_giai": "Vì $I$ cách đều ba điểm $A$, $B$, $C$ nên $I$ là tâm đường tròn ngoại tiếp tam giác $ABC$, do đó $AI=R$ là bán kính đường tròn ngoại tiếp tam giác $ABC$.\n\nTa chọn hệ trục toạ độ với gốc tại $H$, tia $Hx$ trùng tia $HC$ và tia $Hy$ trùng tia $HA$ (hợp lí vì $\\text{AH\\perp BC}$ tại $H$).\n\nKhi đó $H\\left(0;0\\right)$, $A\\left(0;6,5\\right)$, $B\\left(-2,5;0\\right)$ và $C\\left(6,5;0\\right)$.\n\nVì $I$ cách đều $B$ và $C$ nên $I$ nằm trên đường trung trực của $BC$, tức là $I$ có hoành độ\n\n$x_{I}=\\dfrac{-2,5+6,5}{2}=2.$\n\nGọi $I\\left(2;y\\right)$. Từ điều kiện $IA=IB$ ta có\n\n$\\left(2-0\\right)^{2}+\\left(y-6,5\\right)^{2}=\\left(2+2,5\\right)^{2}+\\left(y-0\\right)^{2}.$\n\nKhai triển ta được\n\n$4+y^{2}-13y+42,25=20,25+y^{2}\\Leftrightarrow 13y=26\\Leftrightarrow y=2.$\n\nVậy $I\\left(2;2\\right)$ và\n\n$AI^{2}=\\left(2-0\\right)^{2}+\\left(2-6,5\\right)^{2}=4+20,25=24,25.$\n\nDo đó $100AI^{2}=100\\cdot 24,25=2425$.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000170_anh_de.png",
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110000000044",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Bảng biến thiên của hàm số $y=-2x^{2}+4x+1$ là bảng nào sau đây?",
+  "lua_chon": [
+   ".",
+   ".",
+   ".",
+   "."
+  ],
+  "menh_de": null,
+  "dap_an": null,
+  "loi_giai": "Hàm số $y=-2x^{2}+4x+1$ có hệ số $a=-2<0$ nên đồ thị hàm số là một parabol có bề lõm hướng xuống dưới, tức là giới hạn của hàm số khi $x\\to \\pm \\infty$ là $-\\infty$.\n\nĐỉnh của parabol có hoành độ $x_{I}=-\\dfrac{b}{2a}=-\\dfrac{4}{2\\left(-2\\right)}=1$.\n\nTung độ đỉnh $y_{I}=-2\\left(1\\right)^{2}+4\\left(1\\right)+1=3$.\n\nDo đó, bảng biến thiên của hàm số có đỉnh tại $\\left(1;3\\right)$ và đi xuống $-\\infty$ ở hai phía.\n\nĐối chiếu với các hình, ta thấy Hình 3 là bảng biến thiên đúng.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000044_anh_de.png",
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110000000264",
+  "loai_cau": "dung_sai",
+  "noi_dung": "Cho tam giác $ABC$ có số đo ba cạnh lần lượt là $7$, $9$ và $12$.",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Nửa chu vi tam giác $ABC$ là:\n\n$p=\\dfrac{a+b+c}{2}=\\dfrac{7+9+12}{2}=14.$",
+    "noi_dung": "Nửa chu vi tam giác $p=14$"
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T110000000",
+    "loi_giai": "Áp dụng công thức Heron, diện tích tam giác $ABC$ là:\n\n$S=\\sqrt{p\\left(p-a\\right)\\left(p-b\\right)\\left(p-c\\right)}=\\sqrt{14\\left(14-7\\right)\\left(14-9\\right)\\left(14-12\\right)}=\\sqrt{14\\cdot 7\\cdot 5\\cdot 2}=14\\sqrt{5}.$",
+    "noi_dung": "Diện tích tam giác $S=13\\sqrt{5}$"
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T110000000",
+    "loi_giai": "Bán kính đường tròn ngoại tiếp tam giác $ABC$ là:\n\n$R=\\dfrac{abc}{4S}=\\dfrac{7\\cdot 9\\cdot 12}{4\\cdot 14\\sqrt{5}}=\\dfrac{27\\sqrt{5}}{10}.$",
+    "noi_dung": "Bán kính đường tròn ngoại tiếp tam giác $R=\\dfrac{7\\sqrt{5}}{10}$"
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T110000000",
+    "loi_giai": "Bán kính đường tròn nội tiếp tam giác $ABC$ là:\n\n$r=\\dfrac{S}{p}=\\dfrac{14\\sqrt{5}}{14}=\\sqrt{5}.$",
+    "noi_dung": "Bán kính đường tròn nội tiếp tam giác $r=\\sqrt{3}$"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "anh_de_file": null,
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110030204049",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Bạn Thành có một tấm bìa mỏng hình tam giác $ABC$ có kích thước $AB = BC = 16$ cm và $AC = 12$ cm. Từ tấm bìa trên bạn Thành muốn cắt bỏ các phần dư thừa xung quanh để tạo ra một hình tròn. Hình tròn bạn Thành thu được có bán kính lớn nhất bằng bao nhiêu cm? (kết quả làm tròn đến hàng đơn vị)\n[hình]",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "4",
+  "loi_giai": "Hình tròn lớn nhất cắt được là hình tròn nội tiếp tam giác $ABC$, có bán kính $r = \\dfrac{S}{p}$\nNửa chu vi $p = \\dfrac{16+16+12}{2} = 22$ cm.\nTam giác cân tại $B$, đường cao $BH$ là trung tuyến: $AH = 6$, $BH = \\sqrt{16^2 - 6^2} = 2\\sqrt{55}$; $S = \\dfrac{1}{2} \\cdot 12 \\cdot 2\\sqrt{55} = 12\\sqrt{55}$.\n$r = \\dfrac{12\\sqrt{55}}{22} \\approx 4,05$ cm. Làm tròn đến hàng đơn vị: $4$ cm.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110030204049_anh_de.png",
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110030204033",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho tam giác $ABC$ với $AB = 5\\mathrm{cm}$; $AC = 7\\mathrm{cm}$, $BC = 10\\mathrm{cm}$. Tính diện tích $S$ của tam giác $ABC$.",
+  "lua_chon": [
+   "$S = 264\\mathrm{cm}^2$.",
+   "$S = 5\\sqrt{154}\\mathrm{cm}^2$.",
+   "$S = 2\\sqrt{66}\\mathrm{cm}^2$.",
+   "$S = 10\\sqrt{77}\\mathrm{cm}^2$."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "Nửa chu vi của tam giác $ABC$ là $p = \\dfrac{5+7+10}{2} = 11\\mathrm{cm}$.\nDiện tích tam giác $ABC$ là\n$S = \\sqrt{p(p-AB)(p-AC)(p-BC)} = \\sqrt{11 \\cdot (11-5) \\cdot (11-7) \\cdot (11-10)} = \\sqrt{11 \\cdot 6 \\cdot 4 \\cdot 1} = 2\\sqrt{66}\\mathrm{cm}^2$.",
+  "anh_de_file": null,
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110000000261",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tập xác định $D$ của hàm số $y=\\dfrac{x-4}{x+2}$ là:",
+  "lua_chon": [
+   "$D=\\mathbb{R}$.",
+   "$D=\\mathbb{R}\\setminus \\{-2\\}$.",
+   "$D=[-2;+\\infty)$.",
+   "$D=(-\\infty;-2]$."
+  ],
+  "menh_de": null,
+  "dap_an": null,
+  "loi_giai": "Hàm số $y=\\dfrac{x-4}{x+2}$ xác định khi và chỉ khi:\n\n$x+2\\ne 0\\Leftrightarrow x\\ne -2.$\n\nVậy tập xác định của hàm số là $D=\\mathbb{R}\\setminus \\{-2\\}$.",
+  "anh_de_file": null,
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110000000253",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Để tính độ dài $MN$ của một đường hầm đi xuyên núi, người ta dựng một đường gấp khúc $ABC$ ở chân núi, trong đó mỗi vị trí $A$ và $C$ đều cách lối vào hầm $1 km$ ($AM=CN=1 km$). Giả sử các số liệu được cho như trong hình vẽ dưới. Độ dài $MN$ của đường hầm xuyên núi đó là bằng bao nhiêu kilomet? (làm tròn kết quả đến hàng phần trăm).",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "5.33",
+  "loi_giai": "Xét tam giác $ABC$ có $AB=3,6 km$, $BC=4,2 km$ và góc $\\widehat{ABC}=140^\\circ$.\n\nÁp dụng định lí côsin trong tam giác $ABC$, ta tính được khoảng cách $AC$:\n\n$AC^{2}=AB^{2}+BC^{2}\\text{-2\\cdot AB\\cdot BC\\cdot }\\cos \\widehat{ABC}.$\n\nThay số vào ta được:\n\n$AC^{2}={3,6}^{2}+{4,2}^{2}-2\\cdot 3,6\\cdot 4,2\\cdot \\cos 140^\\circ\\approx 30,6-30,24\\cdot \\left(-0,766\\right)\\approx 53,765.$\n\nSuy ra $AC\\approx \\sqrt{53,765}\\approx 7,33 km$.\n\nVì $A,M,N,C$ thẳng hàng theo thứ tự đó nên độ dài của đường hầm $MN$ là:\n\n$MN=AC-AM-CN=AC-1-1=AC-2\\approx 7,33-2=5,33 \\left(km\\right).$\n\nVậy độ dài đường hầm $MN$ xấp xỉ $5,33 km$.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000253_anh_de.png",
+  "anh_dap_an_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000253_anh_dap_an.png"
+ },
+ {
+  "ma_cau": "T110030204034",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho tam giác $ABC$ với $AB = 12\\mathrm{cm}$; $AC = 10\\mathrm{cm}$, $\\mathrm{cos}C = -\\dfrac{1}{3}$. Độ dài đường cao $h_a$ gần nhất với giá trị nào sau đây?",
+  "lua_chon": [
+   "$h_a = 8,8\\mathrm{cm}$.",
+   "$h_a = 9,4\\mathrm{cm}$.",
+   "$h_a = 7,8\\mathrm{cm}$.",
+   "$h_a = 6,2\\mathrm{cm}$."
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "Ta có $\\mathrm{sin}^2 C + \\mathrm{cos}^2 C = 1 \\Rightarrow \\mathrm{sin}^2 C = 1 - \\left(-\\dfrac{1}{3}\\right)^2 = \\dfrac{8}{9}$.\nVì góc $C$ của tam giác luôn có $0^\\circ < \\widehat{C} < 180^\\circ$ nên $\\mathrm{sin}C > 0$, suy ra $\\mathrm{sin}C = \\dfrac{2\\sqrt{2}}{3}$.\nĐường cao hạ từ đỉnh $A$ là $h_a = AC \\cdot \\mathrm{sin}C = 10 \\cdot \\dfrac{2\\sqrt{2}}{3} = \\dfrac{20\\sqrt{2}}{3} \\approx 9,4\\mathrm{cm}$.",
+  "anh_de_file": null,
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110030203025",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho tam giác $ABC$ có $\\hat{A} = 30^\\circ, \\hat{B} = 105^\\circ$ và bán kính đường tròn ngoại tiếp $R = 2$. Tính độ dài cạnh $AB$?",
+  "lua_chon": [
+   "$AB = 2\\sqrt{2}$",
+   "$\\text{AB} = \\sqrt{2}$",
+   "$\\text{AB} = 1$",
+   "$\\text{AB} = 2"
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "Trong tam giác $ABC$ ta có\n$\\hat{C} = 180^\\circ - \\hat{A} - \\hat{B} = 180^\\circ - 30^\\circ - 105^\\circ = 45^\\circ$.\nCạnh $AB$ đối diện với góc $C$ nên theo định lí sin\n$\\dfrac{AB}{\\sin C} = 2R \\Rightarrow AB = 2R\\sin C = 2 \\cdot 2 \\cdot \\sin 45^\\circ = 4 \\cdot \\dfrac{\\sqrt{2}}{2} = 2\\sqrt{2}$.\nVậy $AB = 2\\sqrt{2}$.",
+  "anh_de_file": null,
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110000000262",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tập xác định của hàm số $y=\\sqrt{8-2x}-x$ là:",
+  "lua_chon": [
+   "$(-\\infty;4]$.",
+   "$[4;+\\infty)$.",
+   "$\\left[0;4\\right]$.",
+   "$[0;+\\infty)$."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "Hàm số $y=\\sqrt{8-2x}-x$ xác định khi và chỉ khi:\n\n$8-2x\\ge 0\\Leftrightarrow 2x\\le 8\\Leftrightarrow x\\le 4.$\n\nVậy tập xác định của hàm số là $D=(-\\infty;4]$.",
+  "anh_de_file": null,
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110000000396",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Một người quan sát đứng cách một cái tháp $10 m$, nhìn thẳng cái tháp dưới một góc $55^\\circ$và được phân tích như trong hình. Chiều cao của tháp xấp xỉ bao nhiêu?",
+  "lua_chon": [
+   "$67 m$.",
+   "$24 m$.",
+   "$16 m$.",
+   "$12 m$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "Gọi $E$ là vị trí mắt người quan sát, $EH$ là đường nằm ngang (nét đứt trên hình) cắt tháp tại điểm $H$.\n\nTheo hình vẽ, tia nhìn lên đỉnh tháp tạo với $EH$ góc $40^\\circ$, tia nhìn xuống chân tháp tạo với $EH$ góc $15^\\circ$; tổng hai góc này đúng bằng $40^\\circ+15^\\circ=55^\\circ$ như đề bài cho.\n\nKhoảng cách ngang từ mắt người quan sát đến tháp là $EH=10$ m.\n\nPhần tháp nằm phía trên đường nằm ngang có chiều cao\n\n$h_{1}=EH\\cdot \\tan 40^\\circ=10\\cdot \\tan 40^\\circ\\approx 8,39 \\left(m\\right).$\n\nPhần tháp nằm phía dưới đường nằm ngang có chiều cao\n\n$h_{2}=EH\\cdot \\tan 15^\\circ=10\\cdot \\tan 15^\\circ\\approx 2,68 \\left(m\\right).$\n\nDo đó chiều cao của tháp là\n\n$h=h_{1}+h_{2}\\approx 8,39+2,68=11,07 \\left(m\\right).$\n\nGiá trị này xấp xỉ $12$ m.\n\nVậy chọn đáp án D.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000396_anh_de.png",
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110000000095",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho hàm số $f\\left(x\\right)$ có bảng biến thiên như sau\nHàm số nghịch biến trong khoảng nào dưới đây?",
+  "lua_chon": [
+   "$\\left(1;+\\infty \\right)$.",
+   "$\\left(0;1\\right)$.",
+   "$\\left(-2;2\\right)$.",
+   "$\\left(-\\infty;0\\right)$."
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "Dựa vào bảng biến thiên của hàm số $f\\left(x\\right)$:\n\nHàm số đồng biến trên các khoảng $\\left(-\\infty;0\\right)$ và $\\left(1;+\\infty \\right)$.\n\nHàm số nghịch biến trên khoảng $\\left(0;1\\right)$.\n\nVậy hàm số nghịch biến trong khoảng $\\left(0;1\\right)$.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000095_anh_de.png",
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110000000355",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Để đo chiều cao của cột cờ $AB$ trên nóc một toà nhà (như hình vẽ dưới đây), anh Hùng đã làm như sau: Anh đứng trên một đài quan sát và có tầm quan sát tại $C$ cao $3 m$ so với mặt đất, khi quan sát anh đo được góc quan sát đến chân cột $A$ là $40^\\circ$ và góc quan sát đến đỉnh cột $B$ là $50^\\circ$, khoảng cách từ chân toà nhà đến vị trí quan sát là $16 m$ (như hình vẽ). Chiều cao của cột cờ $AB$ là bao nhiêu mét? (làm tròn kết quả đến hàng phần chục).",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "5.6",
+  "loi_giai": "Từ vị trí quan sát $C$, kẻ đoạn thẳng $CD$ vuông góc với đường thẳng $EB$ tại $D$.\n\nTứ giác $EFCD$ có $\\hat{E}=\\hat{F}=\\hat{D}=90^\\circ$ nên là hình chữ nhật.\n\nSuy ra $CD=EF=16 m$ và $ED=FC=3 m$.\n\nTheo giả thiết, góc nhìn đến chân cột cờ $A$ là $\\widehat{DCA}=40^\\circ$ và góc nhìn đến đỉnh cột cờ $B$ là $\\widehat{DCB}=50^\\circ$.\n\nXét tam giác $CDA$ vuông tại $D$, ta có\n\n$DA=CD\\cdot \\tan \\widehat{DCA}=16\\cdot \\tan 40^\\circ.$\n\nXét tam giác $CDB$ vuông tại $D$, ta có\n\n$DB=CD\\cdot \\tan \\widehat{DCB}=16\\cdot \\tan 50^\\circ.$\n\nChiều cao của cột cờ $AB$ là\n\n$AB=DB-DA=16\\cdot \\tan 50^\\circ-16\\cdot \\tan 40^\\circ=16\\left(\\tan 50^\\circ-\\tan 40^\\circ\\right)\\approx 5,64 \\left(m\\right).$\n\nLàm tròn kết quả đến hàng phần chục, ta được $AB\\approx 5,6 m$.\n\nVậy chiều cao của cột cờ $AB$ là khoảng $5,6 m$.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000355_anh_de.png",
+  "anh_dap_an_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000355_anh_dap_an.png"
+ },
+ {
+  "ma_cau": "T110000000098",
+  "loai_cau": "dung_sai",
+  "noi_dung": "Biểu đồ dưới đây cho biết số người bị nhiễm Covid-19 của một tỉnh trong một tháng của năm 2021.\nKhi đó:",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Từ biểu đồ, các giá trị của $y$ nhận được là: $10,42,35,78,60,90,32,57,58,77$.\n\nTập giá trị của hàm số gồm các giá trị phân biệt được sắp xếp là\n\n$\\{10;32;35;42;57;58;60;77;78;90\\}.$",
+    "noi_dung": "Gọi $y$ là số người bị nhiễm Covid-19 theo tháng, $x$ là tháng tương ứng ($x,y$ nguyên dương). Hàm số theo biểu đồ trên có dạng $y=f\\left(x\\right)$. Khi đó tập giá trị của hàm số là $D=\\{10;32;35;42;57;58;60;77;78;90\\}$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Với tháng thứ $9$ ($x=9$), số người bị nhiễm là $58$ ($y=58$).\n\nDo đó điểm $\\left(9;58\\right)$ thuộc đồ thị hàm số $y=f\\left(x\\right)$.",
+    "noi_dung": "Với $y=58$ thì $x=9$, ta có điểm $\\left(9;58\\right)$ thuộc đồ thị hàm số."
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T110000000",
+    "loi_giai": "Từ biểu đồ, trong tháng 1 số người bị nhiễm là $10$, tức là $f\\left(1\\right)=10\\ne 42$.\n\nGiá trị $42$ là số người bị nhiễm trong tháng 2, tức là $f\\left(2\\right)=42$.",
+    "noi_dung": "$f\\left(1\\right)=42$."
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Với mỗi giá trị của tháng $x\\in \\{1;2;\\dots;12\\}$, ta luôn xác định được duy nhất một giá trị $y$ tương ứng là số người bị nhiễm Covid-19 trong tháng đó.\n\nDo đó, số người bị nhiễm Covid-19 trong mỗi tháng tương ứng là một hàm số của tháng.",
+    "noi_dung": "Số người bị nhiễm Covid-19 trong mỗi tháng tương ứng là một hàm số."
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000098_anh_de.png",
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110000000411",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Từ hai vị trí $A$ và $B$ của một tòa nhà, người ta quan sát đỉnh $C$ của ngọn núi. Biết rằng độ cao $AB=70 m$, phương nhìn $AC$ tạo với phương nằm ngang góc $30^\\circ$, phương nhìn $BC$ tạo với phương nằm ngang góc $15^\\circ30'$. Ngọn núi đó có độ cao so với mặt đất là bao nhiêu mét? (làm tròn đến hàng đơn vị)",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "135",
+  "loi_giai": "Gọi $H$ là hình chiếu vuông góc của đỉnh núi $C$ lên mặt đất chứa $A$, suy ra độ cao của ngọn núi so với mặt đất là $h=CH$.\n\nGọi $K$ là hình chiếu vuông góc của $C$ lên đường thẳng nằm ngang đi qua $B$.\n\nKhi đó tứ giác $ABKH$ là hình chữ nhật, ta có $HK=AB=70 m$, $CK=CH-HK=h-70$ và $BK=AH$.\n\nTrong tam giác vuông $CAH$ tại $H$, ta có:\n\n$AH=\\dfrac{CH}{\\tan 30^\\circ}=\\dfrac{h}{\\tan 30^\\circ}.$\n\nTrong tam giác vuông $CBK$ tại $K$, ta có:\n\n$BK=\\dfrac{CK}{\\tan 15^\\circ30'}=\\dfrac{h-70}{\\tan 15^\\circ30'}.$\n\nVì $AH=BK$ nên ta có phương trình:\n\n$\\dfrac{h}{\\tan 30^\\circ}=\\dfrac{h-70}{\\tan 15^\\circ30'}\\Leftrightarrow h\\cdot \\tan 15^\\circ30'=\\left(h-70\\right)\\cdot \\tan 30^\\circ.$\n\n$\\Leftrightarrow h(\\tan 30^\\circ-\\tan 15^\\circ30')=70\\tan 30^\\circ\\Leftrightarrow h=\\dfrac{70\\tan 30^\\circ}{\\tan 30^\\circ-\\tan 15^\\circ30'}.$\n\nThay số với $\\tan 30^\\circ=\\dfrac{\\sqrt{3}}{3}\\approx 0,57735$ và $\\tan 15^\\circ30'=\\tan 15,5^\\circ\\approx 0,27732$, ta được:\n\n$h\\approx \\dfrac{70\\cdot 0,57735}{0,57735-0,27732}\\approx 134,7 m.$\n\nLàm tròn đến hàng đơn vị, ngọn núi có độ cao là $135 m$.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000411_anh_de.png",
+  "anh_dap_an_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000411_anh_dap_an.png"
+ },
+ {
+  "ma_cau": "T110030201059",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho tam giác $ABC$, có độ dài ba cạnh là $BC = a, AC = b, AB = c$. Gọi $R,r$ lần lượt là bán kính đường tròn ngoại tiếp, nội tiếp và $S$ là diện tích tam giác $ABC$. Mệnh đề đúng là",
+  "lua_chon": [
+   "$\\dfrac{a}{\\cos A} = 2R$.",
+   "$S = \\dfrac{abc}{4r}$",
+   "$S = \\sqrt{p(p+a)(p+b)(p+c)}$.",
+   "$a^2 = b^2 + c^2 – 2bc \\cos A$."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "Xét các mệnh đề:\n+ Theo định lí sin trong tam giác $ABC$, ta có $\\dfrac{a}{\\sin A} = 2R$ nên phương án A sai.\n+ Công thức tính diện tích tam giác theo bán kính đường tròn ngoại tiếp là $S = \\dfrac{abc}{4R}$ nên phương án B sai.\n+ Công thức Heron tính diện tích tam giác là $S = \\sqrt{p(p-a)(p-b)(p-c)}$ nên phương án C sai.\n+ Theo định lí côsin trong tam giác $ABC$, ta có $a^2 = b^2 + c^2 – 2bc \\cos A$ nên phương án D đúng.\nVậy mệnh đề đúng là $a^2 = b^2 + c^2 – 2bc \\cos A$.",
+  "anh_de_file": null,
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110000000339",
+  "loai_cau": "dung_sai",
+  "noi_dung": "Cho tam giác $ABC$, biết $AB=13 cm$, $BC=15 cm$, $\\hat{B}=60^\\circ$.",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "S",
+    "ma_dang": "T110000000",
+    "loi_giai": "Góc xen giữa hai cạnh $BA$ và $BC$ là góc $B$, do đó công thức tính diện tích tam giác $ABC$ là:\n\n$S=\\dfrac{1}{2}\\text{BA\\cdot BC\\cdot }\\sin B.$",
+    "noi_dung": "Công thức tính diện tích tam giác $ABC$ là $S=\\dfrac{1}{2}\\text{BA\\cdot BC\\cdot }\\sin A$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Áp dụng công thức diện tích tam giác, ta có:\n\n$S=\\dfrac{1}{2}\\text{BA\\cdot BC\\cdot }\\sin B=\\dfrac{1}{2}\\cdot 13\\cdot 15\\cdot \\sin 60^\\circ=\\dfrac{195\\sqrt{3}}{4} \\left({cm}^{2}\\right).$",
+    "noi_dung": "Diện tích tam giác $ABC$ là $S=\\dfrac{195\\sqrt{3}}{4} \\left({cm}^{2}\\right)$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Áp dụng định lí côsin trong tam giác $ABC$, ta có:\n\n$AC^{2}=AB^{2}+BC^{2}\\text{-2AB\\cdot BC\\cdot }\\cos B={13}^{2}+{15}^{2}-2\\cdot 13\\cdot 15\\cdot \\cos 60^\\circ=199.$\n\nSuy ra $AC=\\sqrt{199} \\left(cm\\right)$.",
+    "noi_dung": "Độ dài cạnh $AC=\\sqrt{199} \\left(cm\\right)$"
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T110000000",
+    "loi_giai": "Nửa chu vi tam giác $ABC$ là:\n\n$p=\\dfrac{AB+BC+AC}{2}=\\dfrac{13+15+\\sqrt{199}}{2}=\\dfrac{28+\\sqrt{199}}{2} \\left(cm\\right).$\n\nBán kính đường tròn nội tiếp tam giác $ABC$ là:\n\n$r=\\dfrac{S}{p}=\\dfrac{\\dfrac{195\\sqrt{3}}{4}}{\\dfrac{28+\\sqrt{199}}{2}}=\\dfrac{195\\sqrt{3}}{2\\left(28+\\sqrt{199}\\right)}\\ne 2+\\sqrt{3} \\left(cm\\right).$",
+    "noi_dung": "Độ dài bán kính đường tròn nội tiếp của tam giác $ABC$ là $r=2+\\sqrt{3} \\left(cm\\right)$"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "anh_de_file": null,
+  "anh_dap_an_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000339_anh_dap_an.png"
+ },
+ {
+  "ma_cau": "T110000000228",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hệ bất phương trình: $\\begin{cases} 3x+2y\\ge 9 \\\\ x-2y\\le 3 \\\\ x+y\\le 6 \\\\ x\\ge 1 \\end{cases}\\left(I\\right)$. Miền nghiệm của hệ $\\left(I\\right)$là miền tứ giác $ABCD$ với $A\\left(3;0\\right),B\\left(5;1\\right),C\\left(1;5\\right),D\\left(1;3\\right)$ (như hình vẽ). Khi đó giá trị của $F=3x-2y$ tại các cặp số $\\left(x;y\\right)$ là toạ độ của các đỉnh tứ giác $ABCD$ đạt giá trị nhỏ nhất bằng bao nhiêu?",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "-7",
+  "loi_giai": "Miền nghiệm của hệ bất phương trình là miền tứ giác $ABCD$ với các đỉnh $A\\left(3;0\\right)$, $B\\left(5;1\\right)$, $C\\left(1;5\\right)$, $D\\left(1;3\\right)$.\n\nBiểu thức $F\\left(x;y\\right)=3x-2y$ đạt giá trị nhỏ nhất tại một trong các đỉnh của miền tứ giác $ABCD$.\n\nTa tính giá trị của $F\\left(x;y\\right)$ tại toạ độ các đỉnh:\n\n• Tại $A\\left(3;0\\right)$: $F\\left(3;0\\right)=3\\cdot 3-2\\cdot 0=9$.\n\n• Tại $B\\left(5;1\\right)$: $F\\left(5;1\\right)=3\\cdot 5-2\\cdot 1=15-2=13$.\n\n• Tại $C\\left(1;5\\right)$: $F\\left(1;5\\right)=3\\cdot 1-2\\cdot 5=3-10=-7$.\n\n• Tại $D\\left(1;3\\right)$: $F\\left(1;3\\right)=3\\cdot 1-2\\cdot 3=3-6=-3$.\n\nSo sánh các giá trị trên, giá trị nhỏ nhất của biểu thức $F$ là $-7$ (đạt được tại đỉnh $C\\left(1;5\\right)$).\n\nVậy giá trị nhỏ nhất của $F$ bằng $-7$.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000228_anh_de.png",
+  "anh_dap_an_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000228_anh_dap_an.png"
+ },
+ {
+  "ma_cau": "T110030201058",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho $\\triangle ABC$. Khẳng định nào sau đây là đúng?",
+  "lua_chon": [
+   "$a^2 = b^2 + c^2 + 2bc \\cos A$.",
+   "$S = (a+b+c)r$.",
+   "$S = \\dfrac{abc}{4R}$",
+   "$\\dfrac{a}{\\sin a} = \\dfrac{b}{\\sin b}$"
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "Xét các khẳng định trong tam giác $ABC$ :\n- Theo định lí côsin: $a^2 = b^2 + c^2 – 2bc \\cos A$, do đó khẳng định $a^2 = b^2 + c^2 + 2bc \\cos A$ là sai.\n- Công thức tính diện tích theo bán kính đường tròn nội tiếp: $S = pr = \\dfrac{a+b+c}{2}r$, do đó khẳng định $S = (a+b+c)r$ là sai.\n- Công thức tính diện tích theo bán kính đường tròn ngoại tiếp: $S = \\dfrac{abc}{4R}$, do đó khẳng định $S = \\dfrac{abc}{4R}$ là đúng.\n- Theo định lí sin: $\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C} = 2R$, do đó khẳng định $\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin b}$ là sai.\nVậy khẳng định đúng là $S = \\dfrac{abc}{4R}$.",
+  "anh_de_file": null,
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110030204047",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Nhà bác Tám có mảnh vườn hình tứ giác $ABCD$ với diện tích $120\\mathrm{m}^2$. Nhà nước thu hồi một phần của mảnh vườn để làm đường đi. Bác đo lại mảnh vườn có các số đo $AB=8\\mathrm{m}$, $BC=10\\mathrm{m}$, $\\widehat{ABC}=110^\\circ$, $AE=2ED$, như hình vẽ sau:[hình]\nBạn hãy giúp bác Tám tính diện tích phần đất bị thu hồi miền tam giác $CDE$ (làm tròn kết quả đến hàng phần mười).",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "27.5",
+  "loi_giai": "Diện tích tam giác $ABC$ là:\n$S_{\\triangle ABC}=\\dfrac{1}{2}AB\\cdot BC\\cdot \\sin\\widehat{ABC}=\\dfrac{1}{2}\\cdot 8\\cdot 10\\cdot \\sin 110^\\circ =40\\sin 110^\\circ \\approx 37,59\\left(\\mathrm{m}^2\\right)$.\nDiện tích tam giác $ACD$ là:\n$S_{\\triangle ACD}=S_{ABCD}-S_{\\triangle ABC}=120-40\\sin 110^\\circ \\approx 82,41\\left(\\mathrm{m}^2\\right)$.\nVì $E\\in AD$ thoả mãn $AE=2ED$ nên $\\dfrac{ED}{AD}=\\dfrac{1}{3}$.\nHai tam giác $CDE$ và $CDA$ có chung đường cao kẻ từ đỉnh $C$ xuống đường thẳng $AD$, do đó tỉ số diện tích bằng tỉ số hai đáy tương ứng:\n$\\dfrac{S_{\\triangle CDE}}{S_{\\triangle ACD}}=\\dfrac{ED}{AD}=\\dfrac{1}{3}\\Rightarrow S_{\\triangle CDE}=\\dfrac{1}{3}S_{\\triangle ACD}$.\nSuy ra:\n$S_{\\triangle CDE}=\\dfrac{1}{3}\\left(120-40\\sin 110^\\circ \\right)\\approx 27,5\\left(\\mathrm{m}^2\\right)$.\nVậy diện tích phần đất bị thu hồi khoảng $27,5\\mathrm{m}^2$.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110030204047_anh_de.png",
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110000000306",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tập xác định $D$ của hàm số $y=\\sqrt{2x-1}$ là",
+  "lua_chon": [
+   "$D=\\left(0;+\\infty \\right)$.",
+   "$D=[\\dfrac{1}{2};+\\infty)$.",
+   "$D=\\left(\\dfrac{1}{2};+\\infty \\right)$.",
+   "$D=[0;+\\infty)$."
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "Hàm số $y=\\sqrt{2x-1}$ xác định khi và chỉ khi\n\n$2x-1\\ge 0\\Leftrightarrow 2x\\ge 1\\Leftrightarrow x\\ge \\dfrac{1}{2}.$\n\nVậy tập xác định của hàm số là $D=[\\dfrac{1}{2};+\\infty)$.",
+  "anh_de_file": null,
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110000000187",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Trên sườn đồi có $1$ cái cây thẳng đứng (tham khảo hình vẽ) đổ bóng dài $AB=39,5 m$ xuống đồi. Biết góc nghiêng của sườn đồi là $\\alpha =\\widehat{OAB}=26^\\circ$ so với phương ngang và góc nâng của mặt trời là $\\beta =\\widehat{OAC}=50^\\circ$. Tính chiều cao $BC$ của cái cây (đơn vị tính là mét và kết quả làm tròn đến hàng đơn vị).",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "25",
+  "loi_giai": "Xét tam giác $ABC$: Góc giữa bóng cây và phương tia sáng mặt trời là\n\n$\\widehat{BAC}=\\widehat{OAC}-\\widehat{OAB}=50^\\circ-26^\\circ=24^\\circ.$\n\nVì cây thẳng đứng nên $BC$ vuông góc với phương ngang $OA$.\n\nTrong tam giác vuông $AOC$ tại $O$, ta có\n\n$\\widehat{ACB}=90^\\circ-\\widehat{OAC}=90^\\circ-50^\\circ=40^\\circ.$\n\nÁp dụng định lí sin trong tam giác $ABC$:\n\n$\\dfrac{BC}{\\sin \\widehat{BAC}}=\\dfrac{AB}{\\sin \\widehat{ACB}}\\Rightarrow BC=\\dfrac{AB\\cdot \\sin \\widehat{BAC}}{\\sin \\widehat{ACB}}.$\n\nThay số $AB=39,5 m$, $\\widehat{BAC}=24^\\circ$ và $\\widehat{ACB}=40^\\circ$:\n\n$BC=\\dfrac{39,5\\cdot \\sin 24^\\circ}{\\sin 40^\\circ}\\approx 24,99 \\left(m\\right).$\n\nLàm tròn kết quả đến hàng đơn vị ta được $\\text{BC\\approx 25} \\left(m\\right)$.\n\nVậy chiều cao của cái cây là $25 m$.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000187_anh_de.png",
+  "anh_dap_an_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000187_anh_dap_an.png"
+ },
+ {
+  "ma_cau": "T110030201044",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho tam giác $ABC$. Đặt $AB = c$, $AC =b$, $BC = a$, $R$ là bán kính đường tròn ngoại tiếp tam giác $ABC$, $S$ là diện tích tam giác $ABC$. Chọn khẳng định đúng?",
+  "lua_chon": [
+   "$S = \\dfrac{a.b.c}{2R}$",
+   "$\\dfrac{b}{\\sin B} = 2R$.",
+   "$\\sin A = \\dfrac{b^2 - c^2 + a^2}{2bc}$",
+   "$b^2 = a^2 + c^2 – 2bc \\cos B$."
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "Theo định lí sin trong tam giác $ABC$, ta có:\n$\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C} = 2R$.\nSuy ra $\\dfrac{b}{\\sin B} = 2R$ là khẳng định đúng.\nCác khẳng định còn lại sai vì:\n+ Diện tích tam giác là $S = \\dfrac{abc}{4R}$.\n+ Theo hệ quả định lí côsin: $\\cos A = \\dfrac{b^2+c^2 - a^2}{2bc}$.\n+ Theo định lí côsin: $b^2 = a^2 + c^2 – 2ac \\cos B$.",
+  "anh_de_file": null,
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110000000320",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Muốn đo chiều cao của tháp chàm Por Klong Garai ở Ninh Thuận người ta lấy hai điểm $A$ và $B$ trên mặt đất có khoảng cách $AB=12 m$ cùng thẳng hàng với chân $C$ của tháp để đặt hai giác kế. Chân của giác kế có chiều cao $h=1,3 m$. Gọi $D$ là đỉnh tháp và hai điểm $A_{1},B_{1}$ cùng thẳng hàng với $C_{1}$ thuộc chiều cao $CD$ của tháp. Người ta đo được góc $\\widehat{DA_{1}C_{1}}=49^\\circ$ và $\\widehat{DB_{1}C_{1}}=35^\\circ$. Tính chiều cao $CD$ của tháp (làm tròn kết quả đến hàng phận chục).",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "22.8",
+  "loi_giai": "Theo giả thiết, ta có $A_{1}B_{1}=AB=12 m$ và $CC_{1}=AA_{1}=BB_{1}=1,3 m$.\n\nXét tam giác $DA_{1}B_{1}$, ta có\n\n$\\widehat{A_{1}DB_{1}}=\\widehat{DA_{1}C_{1}}-\\widehat{DB_{1}C_{1}}=49^\\circ-35^\\circ=14^\\circ.$\n\nÁp dụng định lí sin trong tam giác $DA_{1}B_{1}$, ta có\n\n$\\dfrac{DA_{1}}{\\sin \\widehat{DB_{1}A_{1}}}=\\dfrac{A_{1}B_{1}}{\\sin \\widehat{A_{1}DB_{1}}}\\Rightarrow DA_{1}=\\dfrac{A_{1}B_{1}\\cdot \\sin 35^\\circ}{\\sin 14^\\circ}=\\dfrac{12\\cdot \\sin 35^\\circ}{\\sin 14^\\circ}.$\n\nXét tam giác $DC_{1}A_{1}$ vuông tại $C_{1}$, ta có\n\n$DC_{1}=DA_{1}\\cdot \\sin \\widehat{DA_{1}C_{1}}=\\dfrac{12\\cdot \\sin 35^\\circ}{\\sin 14^\\circ}\\cdot \\sin 49^\\circ\\approx 21,47 m.$\n\nChiều cao của tháp là\n\n$CD=DC_{1}+C_{1}C\\approx 21,47+1,3=22,77\\approx 22,8 \\left(m\\right).$\n\nVậy chiều cao của tháp là $22,8 m$.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000320_anh_de.png",
+  "anh_dap_an_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000320_anh_dap_an.png"
+ },
+ {
+  "ma_cau": "T110030203059",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Trong một khu bảo tồn, người ta xây dựng một tháp canh và hai bồn chứa nước B, D để phòng hỏa hoạn. Từ tháp canh, người ta phát hiện đám cháy và số liệu đưa về như hình vẽ. Tính tổng khoảng cách từ bồn chứa B và D đến đám cháy (Kết quả làm tròn đến hàng đơn vị): [hình]",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "2715",
+  "loi_giai": "Xét tam giác $ADC$, ta có\n$\\widehat{ACD} = 180^{\\circ} - (\\widehat{DAC} + \\widehat{CDA}) = 180^{\\circ} - (35^{\\circ} + 125^{\\circ}) = 20^{\\circ}$.\nÁp dụng định lí sin trong tam giác $ADC$:\n$\\dfrac{CD}{\\sin\\widehat{DAC}} = \\dfrac{AC}{\\sin\\widehat{CDA}} = \\dfrac{AD}{\\sin\\widehat{ACD}}$\nSuy ra\n$CD = \\dfrac{AD \\cdot \\sin 35^{\\circ}}{\\sin 20^{\\circ}} = \\dfrac{900 \\cdot \\sin 35^{\\circ}}{\\sin 20^{\\circ}} \\approx 1509.32$ (m),\n$AC = \\dfrac{AD \\cdot \\sin 125^{\\circ}}{\\sin 20^{\\circ}} = \\dfrac{900 \\cdot \\sin 125^{\\circ}}{\\sin 20^{\\circ}} \\approx 2155.54$ (m).\nXét tam giác $ABC$, áp dụng định lí côsin ta có\n$BC^2 = AB^2 + AC^2 - 2AB \\cdot AC \\cdot \\cos\\widehat{CAB}$.\nThay số $AB = 1800$ m, $AC \\approx 2155.54$ m và $\\widehat{CAB} = 34^{\\circ}$:\n$BC = \\sqrt{1800^2 + 2155.54^2 - 2 \\cdot 1800 \\cdot 2155.54 \\cdot \\cos 34^{\\circ}} \\approx 1205.43$ (m).\nTổng khoảng cách từ hai bồn chứa nước B và D đến đám cháy C là\n$BC + CD \\approx 1205.43 + 1509.32 = 2714.75$ (m).\nLàm tròn kết quả đến hàng đơn vị ta được $2715$ m.\nVậy tổng khoảng cách từ bồn chứa B và D đến đám cháy khoảng $2715$ m.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110030203059_anh_de.png",
+  "anh_dap_an_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110030203059_anh_dap_an.png"
+ },
+ {
+  "ma_cau": "T110000000340",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Hai bạn Oanh, Cường lần lượt đứng tại vị trí $O,C$ của một tòa nhà. Hai bạn An, Bình lần lượt đứng trên mặt đất tại vị trí $A,B$ mà tại đó nhìn các điểm $C,O$ các góc lần lượt bằng $\\alpha _{1}=30^\\circ,\\alpha _{2}=50^\\circ$ và $\\beta _{1}=70^\\circ,\\beta _{2}=80^\\circ$ so với phương nằm ngang. Gọi $H$ là hình chiếu của $O$ trên đường thẳng $AB$, giả sử $O,C,H$ thẳng hàng và biết khoảng cách giữa hai điểm $A,B$ là $l=20 m$ (Hình vẽ dưới). Tính khoảng cách $h$ giữa vị trí đứng của Oanh và Cường (làm tròn đến hàng phần trăm).",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": null,
+  "loi_giai": "Xét tam giác $OAB$, ta có $\\widehat{OAB}=\\alpha _{2}=50^\\circ$.\n\nGóc $\\widehat{OBA}$ và góc $\\widehat{OBH}$ là hai góc kề bù nên:\n\n$\\widehat{OBA}=180^\\circ-\\beta _{2}=180^\\circ-80^\\circ=100^\\circ.$\n\nSuy ra $\\widehat{AOB}=180^\\circ-\\left(\\widehat{OAB}+\\widehat{OBA}\\right)=180^\\circ-\\left(50^\\circ+100^\\circ\\right)=30^\\circ$.\n\nÁp dụng định lí sin trong tam giác $OAB$, ta có:\n\n$\\dfrac{OB}{\\sin \\widehat{OAB}}=\\dfrac{AB}{\\sin \\widehat{AOB}}\\Rightarrow OB=\\dfrac{AB\\cdot \\sin 50^\\circ}{\\sin 30^\\circ}=\\dfrac{20\\cdot \\sin 50^\\circ}{\\sin 30^\\circ}=40\\sin 50^\\circ \\left(m\\right).$\n\nTrong tam giác $OHB$ vuông tại $H$, ta có:\n\n$OH=OB\\cdot \\sin \\beta _{2}=40\\sin 50^\\circ\\cdot \\sin 80^\\circ\\approx 30,18 \\left(m\\right).$\n\nXét tam giác $CAB$, ta có $\\widehat{CAB}=\\alpha _{1}=30^\\circ$.\n\nGóc $\\widehat{CBA}$ và góc $\\widehat{CBH}$ là hai góc kề bù nên:\n\n$\\widehat{CBA}=180^\\circ-\\beta _{1}=180^\\circ-70^\\circ=110^\\circ.$\n\nSuy ra $\\widehat{ACB}=180^\\circ-\\left(\\widehat{CAB}+\\widehat{CBA}\\right)=180^\\circ-\\left(30^\\circ+110^\\circ\\right)=40^\\circ$.\n\nÁp dụng định lí sin trong tam giác $CAB$, ta có:\n\n$\\dfrac{CB}{\\sin \\widehat{CAB}}=\\dfrac{AB}{\\sin \\widehat{ACB}}\\Rightarrow CB=\\dfrac{AB\\cdot \\sin 30^\\circ}{\\sin 40^\\circ}=\\dfrac{20\\cdot \\sin 30^\\circ}{\\sin 40^\\circ}=\\dfrac{10}{\\sin 40^\\circ} \\left(m\\right).$\n\nTrong tam giác $CHB$ vuông tại $H$, ta có:\n\n$CH=CB\\cdot \\sin \\beta _{1}=\\dfrac{10\\sin 70^\\circ}{\\sin 40^\\circ}\\approx 14,62 \\left(m\\right).$\n\nKhoảng cách giữa vị trí đứng của Oanh và Cường là:\n\n$h=OC=OH-CH=40\\sin 50^\\circ\\sin 80^\\circ-\\dfrac{10\\sin 70^\\circ}{\\sin 40^\\circ}\\approx 30,1762-14,6190=15,5572\\approx 15,56 \\left(m\\right).$\n\nVậy khoảng cách giữa vị trí đứng của Oanh và Cường là khoảng $15,56 m$.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000340_anh_de.png",
+  "anh_dap_an_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000340_anh_dap_an.png"
+ },
+ {
+  "ma_cau": "T110030204050",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Gia đình bác Sơn có mảnh đất hình tứ giác, với các kích thước như hình vẽ. Nhà nước có dự án sử dụng đất, cần thu hồi mảnh đất nói trên với giá đền bù là 1,5 triệu đồng/m². Hỏi gia đình bác Sơn nhận được khoảng bao nhiêu triệu đồng đền bù từ mảnh đất (kết quả làm tròn đến hàng đơn vị)? [hình]",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "556",
+  "loi_giai": "Nối $BD$, chia mảnh đất thành tam giác $ABD$ ($AB = 25$, $AD = 18$, $\\widehat{DAB} = 71^\\circ 20'$) và tam giác $BCD$ ($BC = 21$, $CD = 15$).\n$S_{ABD} = \\dfrac{1}{2} \\cdot 25 \\cdot 18 \\cdot \\sin{71^\\circ 20'} \\approx 213,164$ m².\nĐịnh lí côsin: $BD^2 = 25^2 + 18^2 - 2 \\cdot 25 \\cdot 18\\cos{71^\\circ 20'} \\approx 660,944$, $BD \\approx 25,709$ m.\nTam giác $BCD$: nửa chu vi $p \\approx 30,854$; công thức Heron $S_{BCD} \\approx 157,496$ m².\nTổng diện tích $ \\approx 370,660$ m²; tiền đền bù $ \\approx 370,660 \\cdot 1,5 = 556$ triệu đồng.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110030204050_anh_de.png",
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110000000250",
+  "loai_cau": "dung_sai",
+  "noi_dung": "Cho tam giác $ABC$ có các cạnh $BA=6$, $BC=4\\sqrt{2}$ và góc $\\hat{B}=45^\\circ$. Xét tính đúng sai của các khẳng định sau:",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Theo công thức tính diện tích tam giác theo hai cạnh và góc xen giữa, ta có:\n\n$S=\\dfrac{1}{2}\\text{BA\\cdot BC\\cdot }\\sin B.$",
+    "noi_dung": "Diện tích $S$ của tam giác $ABC$ được tính bởi công thức $S=\\dfrac{1}{2}\\text{BA\\cdot BC\\cdot }\\sin B$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Thay số $BA=6$, $BC=4\\sqrt{2}$ và $\\hat{B}=45^\\circ$ vào công thức diện tích:\n\n$S=\\dfrac{1}{2}\\cdot 6\\cdot 4\\sqrt{2}\\cdot \\sin 45^\\circ=12\\sqrt{2}\\cdot \\dfrac{\\sqrt{2}}{2}=12.$",
+    "noi_dung": "Diện tích của tam giác $ABC$ là $12$"
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T110000000",
+    "loi_giai": "Áp dụng định lí côsin trong tam giác $ABC$, ta có:\n\n$AC^{2}=BA^{2}+BC^{2}\\text{-2\\cdot BA\\cdot BC\\cdot }\\cos B.$\n\nThay số:\n\n$AC^{2}=6^{2}+\\left(4\\sqrt{2}\\right)^{2}-2\\cdot 6\\cdot 4\\sqrt{2}\\cdot \\cos 45^\\circ=36+32-48=20.$\n\nSuy ra $AC=\\sqrt{20}=2\\sqrt{5}$.\n\nDo đó khẳng định $AC=5\\sqrt{2}$ là sai.",
+    "noi_dung": "$AC=5\\sqrt{2}$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Áp dụng công thức tính độ dài đường trung tuyến $BM$ của tam giác $ABC$:\n\n$BM^{2}=\\dfrac{2\\left(BA^{2}+BC^{2}\\right)-AC^{2}}{4}=\\dfrac{2\\left(36+32\\right)-20}{4}=\\dfrac{116}{4}\\text{=29\\Rightarrow BM=}\\sqrt{29}.$\n\nVì $M$ là trung điểm của $AC$ nên:\n\n$S_{\\triangle BMC}=\\dfrac{1}{2}S_{\\triangle ABC}=\\dfrac{1}{2}\\cdot 12=6.$\n\nMặt khác, $CH$ là đường cao kẻ từ $C$ đến đường thẳng $BM$ của tam giác $BMC$, nên:\n\n$S_{\\triangle BMC}=\\dfrac{1}{2}\\text{BM\\cdot CH\\Rightarrow CH=}\\dfrac{2S_{\\triangle BMC}}{BM}=\\dfrac{2\\cdot 6}{\\sqrt{29}}=\\dfrac{12\\sqrt{29}}{29}.$",
+    "noi_dung": "Gọi $H$ là hình chiếu vuông góc của $C$ lên đường trung tuyến $BM$ của tam giác $ABC$. Khi đó, độ dài $CH$ bằng $\\dfrac{12\\sqrt{29}}{29}$"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000250_anh_de.png",
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110000000143",
+  "loai_cau": "dung_sai",
+  "noi_dung": "Cho hàm số $y=f\\left(x\\right)$có đồ thị như hình vẽ bên. Các phát biểu sau đúng hay sai?",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Đồ thị được vẽ liền nét ứng với $x$ chạy từ $-4$ đến $4$, trong đó hai đầu mút $\\left(-4;1\\right)$ và $\\left(4;5\\right)$ đều thuộc đồ thị.\n\nVậy hàm số xác định trên đoạn $\\left[-4;4\\right]$.",
+    "noi_dung": "Hàm số đã cho xác định trên đoạn $\\left[-4;4\\right]$"
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T110000000",
+    "loi_giai": "Trên khoảng $\\left(0;1\\right)$ đồ thị vẫn còn đi xuống, chỉ từ $x=1$ trở đi đồ thị mới đi lên.\n\nDo đó hàm số không đồng biến trên toàn bộ khoảng $\\left(0;4\\right)$.",
+    "noi_dung": "Hàm số đã cho đồng biến trên khoảng $\\left(0;4\\right)$"
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T110000000",
+    "loi_giai": "Trên đoạn $\\left[-4;4\\right]$, giá trị lớn nhất của hàm số bằng $5$ (đạt tại $x=4$) và giá trị nhỏ nhất đạt tại $x=1$, đó là một số dương.\n\nVì giá trị lớn nhất bằng $5>4$ nên tập giá trị của hàm số không thể là đoạn $\\left[-2;4\\right]$.",
+    "noi_dung": "Tập giá trị của hàm số đã cho là đoạn $\\left[-2;4\\right]$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Hai số $2$ và $3$ đều thuộc khoảng $\\left(1;4\\right)$; trên khoảng này đồ thị đi lên nên hàm số đồng biến.\n\nTừ $2<3$ suy ra $f\\left(2\\right)<f\\left(3\\right)$.",
+    "noi_dung": "$f\\left(2\\right)<f\\left(3\\right)$"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000143_anh_de.png",
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110000000147",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Giá cước của một hãng taxi được tính theo bảng giá như sau:\n$\\begin{array}{|c|} \\hline \\text{\\multicolumn6|c|BẢNG GIÁ CƯỚC} \\\\ \\hline \\text{\\begintabular@l@QUÃNG ĐƯỜNG} \\\\ \\hline x \\text{(km)} \\\\ \\hline \\end{array}$\n& $0<x\\le 0,3$ & $0,3<x\\le 2$ & $2<x\\le 10$ & $10<x\\le 25$ & $x>25$\n\\hline GIÁ CƯỚC & $5\\,000$ đồng &\n$\\begin{array}{|c|} \\hline 20 600 \\\\ \\hline \\text{đồng/km} \\\\ \\hline \\end{array}$\n&\n$\\begin{array}{|c|} \\hline 16 000 \\\\ \\hline \\text{đồng/km} \\\\ \\hline \\end{array}$\n&\n$\\begin{array}{|c|} \\hline 17 600 \\\\ \\hline \\text{đồng/km} \\\\ \\hline \\end{array}$\n&\n$\\begin{array}{|c|} \\hline 15 100 \\\\ \\hline \\text{đồng/km} \\\\ \\hline \\end{array}$\n\\hline \\end{tabular}\nTheo bảng giá trên, nếu hành khách đi quãng đường $1 km$ thì cách tính sẽ là $5 000+\\left(1-0,3\\right)\\times 20 600=19 420$ đồng. Bạn Bình đặt xe của hãng taxi trên để đi từ trường Nguyễn Khuyến về nhà ở Bình Dương với quãng đường là $20 km$. Hỏi số tiền mà bạn Bình phải trả là bao nhiêu?",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": null,
+  "loi_giai": "Quãng đường $20$ km của bạn Bình được chia thành các chặng theo bảng giá cước.\n\nChặng $0<x\\le 0,3$: tính giá cố định $5\\,000$ đồng.\n\nChặng $0,3<x\\le 2$ dài $2-0,3=1,7$ km, tiền cước là $1,7\\times 20 600=35 020$ đồng.\n\nChặng $2<x\\le 10$ dài $10-2=8$ km, tiền cước là $8\\times 16 000=128 000$ đồng.\n\nPhần còn lại thuộc chặng $10<x\\le 25$ dài $20-10=10$ km, tiền cước là $10\\times 17 600=176 000$ đồng.\n\nDo đó tổng số tiền phải trả là\n\n$5 000+35 020+128 000+176 000=344 020$\n\n(đồng)\n\n$.$\n\nVậy bạn Bình phải trả $344 020$ đồng.",
+  "anh_de_file": null,
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110030204040",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Khi chế tạo cánh diều hình tứ giác, người ta sẽ tạo khung trước. Một khung cánh diều sẽ được tạo từ hai thanh chéo làm bằng gỗ và bốn sợi dây cước viền. Lấy bốn sợi dây tạo thành viền ngoài đã được cắt đúng độ dài với kích thước là $40$, $40$, $96$, $96$ (theo đơn vị cm) như hình vẽ và lắp hai thanh gỗ làm đường chéo. Tính tổng độ dài hai thanh chéo gỗ khi diện tích cánh diều lớn nhất (đơn vị cm, kết quả làm tròn đến hàng đơn vị).",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "178",
+  "loi_giai": "Giả sử khung cánh diều là tứ giác $ABCD$ với $AB = AD = 40$ và $CB = CD = 96$. Diện tích diều là $S = 2S_{ABC} = AB \\cdot BC \\cdot \\sin \\hat{B}$. Vì $\\sin \\hat{B} \\leq 1$ nên $S$ lớn nhất khi $\\hat{B} = 90^\\circ$, tức $\\triangle ABC$ vuông tại $B$. Khi đó, đường chéo $AC = \\sqrt{AB^2 + BC^2} = \\sqrt{40^2 + 96^2} = 104$. Gọi $H$ là giao của $AC$ và $BD$. Do tính đối xứng, $AC \\perp BD$ tại $H$ và $BD = 2BH$. Hệ thức lượng trong tam giác vuông $ABC$ cho: $BH = \\dfrac{AB \\cdot BC}{AC} = \\dfrac{40 \\cdot 96}{104} = \\dfrac{480}{13}$. Suy ra đường chéo $BD = 2BH = \\dfrac{960}{13}$. Tổng độ dài hai thanh chéo: $AC + BD = 104 + \\dfrac{960}{13} \\approx 177,85$. Làm tròn đến hàng đơn vị, ta được $178$.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110030204040_anh_de.png",
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110000000314",
+  "loai_cau": "tu_luan",
+  "noi_dung": "a) Cho tam giác $ABC$ có $AB=5 cm$ và $\\hat{C}=30^\\circ$. Tính bán kính đường tròn ngoại tiếp tam giác $ABC$. b) Tính khoảng cách giữa hai điểm ở hai đầu $A$ và $B$ của một hồ nước. Biết từ một điểm cách hai đầu hồ lần lượt là $80 m$ và $90 m$ người quan sát hai điểm này dưới một góc $70^\\circ$. (Làm tròn kết quả lấy hai chữ số thập phân).",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": null,
+  "loi_giai": "a) Áp dụng định lí sin trong tam giác $ABC$, ta có\n\n$\\dfrac{AB}{\\sin C}=2R\\Rightarrow R=\\dfrac{AB}{2\\sin C}=\\dfrac{5}{2\\cdot \\sin 30^\\circ}=\\dfrac{5}{2\\cdot \\dfrac{1}{2}}=5 \\left(cm\\right).$\n\nVậy bán kính đường tròn ngoại tiếp tam giác $ABC$ là $R=5 cm$.\n\nb) Gọi vị trí của người quan sát là điểm $O$ như hình vẽ.\n\nKhi đó $OA=80 m$, $OB=90 m$ và $\\widehat{AOB}=70^\\circ$.\n\nÁp dụng định lí côsin trong tam giác $OAB$, ta có\n\n$AB^{2}=OA^{2}+OB^{2}\\text{-2\\cdot OA\\cdot OB\\cdot }\\cos \\widehat{AOB}.$\n\nThay số ta được\n\n$AB^{2}={80}^{2}+{90}^{2}-2\\cdot 80\\cdot 90\\cdot \\cos 70^\\circ=14 500-14 400\\cdot \\cos 70^\\circ\\approx 9 574,91.$\n\nSuy ra\n\n$AB=\\sqrt{14 500-14 400\\cdot \\cos 70^\\circ}\\approx 97,85 \\left(m\\right).$\n\nVậy khoảng cách giữa hai điểm $A$ và $B$ khoảng $97,85 m$.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000314_anh_de.png",
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110000000313",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Vẽ parabol $\\left(P\\right) :y=-x^{2}+4x-5$.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": null,
+  "loi_giai": "Tập xác định $D=\\mathbb{R}$.\n\nToạ độ đỉnh $I\\left(2;-1\\right)$.\n\nTrục đối xứng là đường thẳng $x=2$.\n\nVì $a=-1<0$ nên bề lõm của parabol quay xuống dưới.\n\nBảng biến thiên:\n\nHàm số đồng biến trên khoảng $\\left(-\\infty;2\\right)$ và nghịch biến trên khoảng $\\left(2;+\\infty \\right)$.\n\nBảng giá trị:\n\n$\\begin{array}{|c|c|c|c|c|c|} \\hline x & 0 & 1 & 2 & 3 & 4 \\\\ \\hline y & -5 & -2 & -1 & -2 & -5 \\\\ \\hline \\end{array}$\n\nĐồ thị hàm số:",
+  "anh_de_file": null,
+  "anh_dap_an_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000313_anh_dap_an.png"
+ },
+ {
+  "ma_cau": "T110030203049",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Hai bờ của một đoạn sông được xem là song song với nhau (như hình vẽ). Bạn Bình muốn ước lượng khoảng cách từ nhà của mình tới trường học ở phía bờ bên kia của đoạn sông đó. Trên bờ sông thứ nhất, bạn ấy đã coi vị trí nhà mình là điểm $B$, chọn thêm một cọc tiêu tại vị trí $C$ và đo được khoảng cách $BC = 35$ m. Bình coi vị trí của trường là một điểm $A$ trên bờ còn lại, rồi dùng giác kế đo được các góc $\\widehat{B} = 30^\\circ$, góc $\\widehat{C} = 105^\\circ$. Khoảng cách $AB$ (làm tròn đến hàng phần mười) là",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "47.8",
+  "loi_giai": "Xét tam giác $ABC$: $\\widehat{A} = 180^\\circ - (30^\\circ + 105^\\circ) = 45^\\circ$.\nÁp dụng định lí sin: $\\dfrac{AB}{\\sin C} = \\dfrac{BC}{\\sin A} \\Rightarrow AB = \\dfrac{35\\sin105^\\circ}{\\sin45^\\circ} = \\dfrac{35(\\sqrt{3}+1)}{2} \\approx 47,8$ m.\nVậy khoảng cách $AB \\approx 47,8$ m.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110030203049_anh_de.png",
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110030204014",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho $\\triangle ABC$ có $\\hat{A} = 120^\\circ$. Khẳng định nào sau đây là đúng?",
+  "lua_chon": [
+   "$S = \\dfrac{1}{4}bc$",
+   "$S = \\dfrac{\\sqrt{3}}{4}bc$",
+   "$S = \\dfrac{1}{2}bc$",
+   "$S = \\dfrac{\\sqrt{3}}{2}bc$"
+  ],
+  "menh_de": null,
+  "dap_an": "B",
+  "loi_giai": "Diện tích tam giác $ABC$ được tính theo công thức:\n$$S = \\dfrac{1}{2}bc\\sin A$$\nThay $\\hat{A} = 120^\\circ$ vào công thức ta được:\n$$S = \\dfrac{1}{2}bc\\sin 120^\\circ = \\dfrac{1}{2}bc \\cdot \\dfrac{\\sqrt{3}}{2} = \\dfrac{\\sqrt{3}}{4}bc$$\nVậy khẳng định đúng là $S = \\dfrac{\\sqrt{3}}{4}bc$.",
+  "anh_de_file": null,
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110030203082",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Để tính được chiều rộng của một cửa biển $\\mathrm{CD}$, người ta chọn hai vị trí $\\mathrm{A}, \\mathrm{B}$ cách nhau $1000$ m trên bờ biển (như hình minh hoạ). Từ vị trí $\\mathrm{A}$, người ta đo được $\\widehat{CAD} = 17^\\circ$, $\\widehat{BAD} = 121^\\circ$. Tại vị trí $\\mathrm{B}$, người ta đo được $\\widehat{ABC} = 24^\\circ$; $\\widehat{DBC} = 15^\\circ$. Hỏi cửa biển $\\mathrm{CD}$ rộng bao nhiêu mét? (kết quả làm tròn đến hàng đơn vị)[hình]",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "1355",
+  "loi_giai": "Tam giác $\\mathrm{ABC}$: $\\widehat{BAC} = 104^\\circ$, $\\widehat{ACB} = 52^\\circ$; định lí sin: $\\mathrm{AC} = \\dfrac{1000\\sin24^\\circ}{\\sin52^\\circ} \\approx 516,16$ m.\nTam giác $\\mathrm{ABD}$: $\\widehat{ABD} = 24^\\circ + 15^\\circ = 39^\\circ$, $\\widehat{ADB} = 180^\\circ - 121^\\circ - 39^\\circ = 20^\\circ$; định lí sin: $\\mathrm{AD} = \\dfrac{1000\\sin39^\\circ}{\\sin20^\\circ} \\approx 1840,01$ m.\nĐịnh lí côsin trong tam giác $\\mathrm{ACD}$ ($\\widehat{CAD} = 17^\\circ$): $\\mathrm{CD}^2 = \\mathrm{AC}^2 + \\mathrm{AD}^2 - 2 \\cdot \\mathrm{AC} \\cdot \\mathrm{AD}\\cos17^\\circ \\approx 1835586$, nên\n$\\mathrm{CD} \\approx 1355$ m.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110030203082_anh_de.png",
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110000000235",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Để xác định chiều cao của một tòa nhà cao tầng, một người đứng tại điểm $M$, sử dụng giác kế nhìn thấy đỉnh tòa nhà với góc nâng $\\widehat{RQA}=79^\\circ$, người đó lùi ra xa một khoảng cách $LM=40 m$thì nhìn thấy đỉnh tòa nhà với góc nâng $\\widehat{RPA}=53^\\circ$. Tính chiều cao của tòa nhà, biết rằng khoảng cách từ mặt đất đến ống ngắm của giác kế đó là $PL=QM=1,4 m$. Làm tròn kết quả đến hàng phần mười của mét.",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "72.9",
+  "loi_giai": "Xét tam giác $APQ$, ta có $\\widehat{APQ}=53^\\circ$, $\\widehat{AQP}=180^\\circ-\\widehat{AQR}=180^\\circ-79^\\circ=101^\\circ$.\n\nGóc $\\widehat{PAQ}=180^\\circ-\\left(\\widehat{APQ}+\\widehat{AQP}\\right)=180^\\circ-\\left(53^\\circ+101^\\circ\\right)=26^\\circ$.\n\nÁp dụng định lí sin trong tam giác $APQ$, ta có\n\n$\\dfrac{AQ}{\\sin \\widehat{APQ}}=\\dfrac{PQ}{\\sin \\widehat{PAQ}}\\Rightarrow AQ=\\dfrac{PQ\\cdot \\sin \\widehat{APQ}}{\\sin \\widehat{PAQ}}=\\dfrac{40\\cdot \\sin 53^\\circ}{\\sin 26^\\circ}.$\n\nXét tam giác $ARQ$ vuông tại $R$, ta có\n\n$AR=AQ\\cdot \\sin \\widehat{AQR}=\\dfrac{40\\cdot \\sin 53^\\circ\\cdot \\sin 79^\\circ}{\\sin 26^\\circ}\\approx 71,53 \\left(m\\right).$\n\nChiều cao của tòa nhà là\n\n$AO=AR+RO=AR+1,4\\approx 71,53+1,4=72,93\\approx 72,9 \\left(m\\right).$\n\nVậy chiều cao của tòa nhà là $72,9 m$.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000235_anh_de.png",
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110030204031",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho tam giác $ABC$ có $AB = 6$, $AC = 10$, $\\widehat{A} = 120^\\circ$. Độ dài đường cao kẻ từ A của tam giác $ABC$ bằng",
+  "lua_chon": [
+   "$\\dfrac{30\\sqrt{3}}{7}$",
+   "$\\dfrac{15\\sqrt{3}}{14}$",
+   "$\\dfrac{15\\sqrt{3}}{7}$",
+   "$\\dfrac{15}{7}$"
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "Định lí côsin: $BC^2 = 36 + 100 - 2 \\cdot 6 \\cdot 10 \\mathrm{cos}120^\\circ = 196 \\Rightarrow BC = 14$.\n$S = \\dfrac{1}{2} \\cdot 6 \\cdot 10 \\cdot \\mathrm{sin}120^\\circ = 15\\sqrt{3}$; $h_a = \\dfrac{2S}{BC} = \\dfrac{30\\sqrt{3}}{14} = \\dfrac{15\\sqrt{3}}{7}$.\nChọn C.",
+  "anh_de_file": null,
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110030202041",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một tháp thu phát sóng viễn thông (AB) cao 43 m được dựng thẳng đứng trên một sườn dốc $35^\\circ$ so với phương ngang. Từ đỉnh A của tháp, người ta neo một sợi dây cáp xuống một điểm C trên sườn dốc (về phía đỉnh dốc) cách chân tháp ( B ) 33 m (như hình vẽ minh hoạ). Tính chiều dài AC của sợi dây cáp đó. (làm tròn kết quả đến hàng đơn vị)\n[hình]",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "68",
+  "loi_giai": "Vì tháp AB được dựng thẳng đứng và sườn dốc nghiêng một góc $35^\\circ$ so với phương ngang nên góc tạo bởi thân tháp AB và sườn dốc hướng lên phía đỉnh dốc là:\n$\\widehat{ABC} = 90^\\circ +35^\\circ=125^\\circ$.\nXét tam giác ABC có $AB = 43$m, $BC =33$m và $\\widehat{ABC} =125^\\circ$.\nÁp dụng định lí côsin trong tam giác ABC, ta có:\n$AC^2 = AB^2 + BC^2 - 2AB \\cdot BC \\cdot \\cos \\widehat{ABC}$.\nThay số ta được:\n$AC^2 = 43^2 +33^2 -2\\cdot 43\\cdot 33\\cdot \\cos 125^\\circ \\approx 1849+1089-2838\\cdot (-0.5736) \\approx 4565.81$.\nSuy ra:\n$AC = \\sqrt{4565.81} \\approx 67.57$ (m).\nLàm tròn kết quả đến hàng đơn vị, ta được $AC \\approx 68$ (m).\nVậy chiều dài của sợi dây cáp là khoảng $68$m.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110030202041_anh_de.png",
+  "anh_dap_an_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110030202041_anh_dap_an.png"
+ },
+ {
+  "ma_cau": "T110000000347",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Để tránh núi, đường giao thông hiện tại phải đi vòng như hình vẽ. Để rút ngắn khoảng cách người ta dự định làm đường hầm xuyên núi nối thẳng từ $A$ đến $B$. Hỏi độ dài đường mới giảm bao nhiêu kilômét so với đường cũ (làm tròn kết quả đến hàng phần trăm)?",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": null,
+  "loi_giai": "Độ dài đường giao thông cũ đi từ $A$ qua $C$ đến $B$ là\n\n$AC+BC=10+8=18 \\left(km\\right).$\n\nĐộ dài đường mới nối thẳng từ $A$ đến $B$ chính là độ dài đoạn thẳng $AB$.\n\nÁp dụng định lí côsin trong tam giác $ABC$, ta có:\n\n$AB^{2}=CA^{2}+CB^{2}\\text{-2\\cdot CA\\cdot CB\\cdot }\\cos \\widehat{ACB}={10}^{2}+8^{2}-2\\cdot 10\\cdot 8\\cdot \\cos 70^\\circ=164-160\\cdot \\cos 70^\\circ.$\n\nSuy ra\n\n$AB=\\sqrt{164-160\\cdot \\cos 70^\\circ}\\approx 10,45 \\left(km\\right).$\n\nĐộ dài đường mới giảm so với đường cũ là\n\n$18-10,45=7,55 \\left(km\\right).$\n\nVậy độ dài đường mới giảm khoảng $7,55 km$ so với đường cũ.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000347_anh_de.png",
+  "anh_dap_an_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000347_anh_dap_an.png"
+ },
+ {
+  "ma_cau": "T110000000133",
+  "loai_cau": "dung_sai",
+  "noi_dung": "Cho tam giác $ABC$ có $b=7 cm$, $c=5 cm$, $\\hat{A}=120^\\circ$. Khi đó:",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "S",
+    "ma_dang": "T110000000",
+    "loi_giai": "Áp dụng định lí côsin cho tam giác $ABC$:\n\n$a^{2}=b^{2}+c^{2}-2bc\\cos A=7^{2}+5^{2}-2\\cdot 7\\cdot 5\\cdot \\cos 120^\\circ=49+25-70\\cdot \\left(-\\dfrac{1}{2}\\right)=109.$\n\nSuy ra $a=\\sqrt{109} cm\\ne \\sqrt{127} cm$.",
+    "noi_dung": "$a=\\sqrt{127} cm$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Theo định lí côsin:\n\n$\\cos C=\\dfrac{a^{2}+b^{2}-c^{2}}{2ab}=\\dfrac{109+49-25}{2\\cdot \\sqrt{109}\\cdot 7}=\\dfrac{133}{14\\sqrt{109}}=\\dfrac{19}{2\\sqrt{109}}\\approx 0,91.$",
+    "noi_dung": "$\\cos C\\approx 0,91$"
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T110000000",
+    "loi_giai": "Theo định lí côsin:\n\n$\\cos B=\\dfrac{a^{2}+c^{2}-b^{2}}{2ac}=\\dfrac{109+25-49}{2\\cdot \\sqrt{109}\\cdot 5}=\\dfrac{85}{10\\sqrt{109}}=\\dfrac{17}{2\\sqrt{109}}\\approx 0,81\\ne 0,21.$",
+    "noi_dung": "$\\cos B\\approx 0,21$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Theo định lí sin:\n\n$2R=\\dfrac{a}{\\sin A}\\Rightarrow R=\\dfrac{a}{2\\sin 120^\\circ}=\\dfrac{\\sqrt{109}}{2\\cdot \\dfrac{\\sqrt{3}}{2}}=\\dfrac{\\sqrt{109}}{\\sqrt{3}}\\approx 6,03 \\left(cm\\right).$",
+    "noi_dung": "Bán kính đường tròn ngoại tiếp tam giác $ABC$ là $R\\approx 6,03 \\left(cm\\right)$"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "anh_de_file": null,
+  "anh_dap_an_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000133_anh_dap_an.png"
+ },
+ {
+  "ma_cau": "T110030203056",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Các góc nhìn đến đỉnh núi so với mực nước biển được đo từ hai đèn tín hiệu $A$ và $B$ trên biển được thể hiện trên hình vẽ. Nếu các đèn tín hiệu cách nhau $1536 \\mathrm{m}$ thì ngọn núi cao bao nhiêu $m$? (làm tròn kết quả đến hàng đơn vị)?\n[hình]",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "2132",
+  "loi_giai": "Gọi $h = TN$ là chiều cao của ngọn núi so với mực nước biển.\nTrong tam giác $TAN$ vuông tại $N$ , ta có:\n$AN = \\dfrac{h}{\\tan \\widehat{TAN}} = \\dfrac{h}{\\tan 27,4^{\\circ}}$.\nTrong tam giác $TBN$ vuông tại $N$ , ta có:\n$BN = \\dfrac{h}{\\tan \\widehat{TBN}} = \\dfrac{h}{\\tan 39,6^{\\circ}}$.\nVì ba điểm $A,B,N$ thẳng hàng và $B$ nằm giữa $A$ và $N$ nên:\n$AB = AN - BN \\Leftrightarrow 1536 = \\dfrac{h}{\\tan 27,4^{\\circ}} - \\dfrac{h}{\\tan 39,6^{\\circ}} = h\\left(\\dfrac{1}{\\tan 27,4^{\\circ}} - \\dfrac{1}{\\tan 39,6^{\\circ}}\\right)$.\nSuy ra:\n$h = \\dfrac{1536}{\\dfrac{1}{\\tan 27,4^{\\circ}} - \\dfrac{1}{\\tan 39,6^{\\circ}}} \\approx \\dfrac{1536}{1,929186 - 1,208799} \\approx 2132,19 \\ (\\mathrm{m})$.\nLàm tròn kết quả đến hàng đơn vị, ngọn núi cao khoảng $2132 \\mathrm{m}$.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110030203056_anh_de.png",
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110030203066",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Hải đăng Hòn Dấu (Đồ Sơn, Hải Phòng) xây cuối thế kỷ XIX (1892-1898), hoạt động từ 1898, là “con mắt biển” dẫn tàu vào cảng Hải Phòng. Thời kháng chiến chống Mỹ, đèn bị đánh sập năm 1967 nhưng lực lượng trạm đèn vẫn bám trụ, dựng đèn tạm để giữ ánh sáng dẫn đường. Ngày nay, nơi đây là biểu tượng ý chí kiên cường và an toàn hàng hải Việt Nam. Đặt $CD = h$ là chiều cao của tháp trong đó $C$ là chân tháp. Từ mặt đất nhìn về chân tháp $C$, chọn hai điểm $A, B$ thẳng hàng với $C$, trong đó $B$ nằm xa tháp hơn $A$. Ta đo được $AB = 26,84$ m, $\\widehat{CAD} = 60^{\\circ}$; $\\widehat{CBD} = 45^{\\circ}$. Giả sử mặt cắt ngang với chân tháp, bỏ qua độ cao mắt người đo và khúc xạ. Tính chiều cao $h$ của tháp Hải đăng theo đơn vị mét (kết quả làm tròn đến hàng phần mười).\n[hình]",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "63.5",
+  "loi_giai": "Xét tam giác $ABD$ ($A$ nằm giữa $B$ và $C$): $\\widehat{DAB} = 180^{\\circ} - 60^{\\circ} = 120^{\\circ}$, $\\widehat{ADB} = 180^{\\circ} - 120^{\\circ} - 45^{\\circ} = 15^{\\circ}$.\nÁp dụng định lí sin: $AD = \\dfrac{AB\\sin45^{\\circ}}{\\sin15^{\\circ}} = \\dfrac{26,84\\sin45^{\\circ}}{\\sin15^{\\circ}}$.\nTrong tam giác $ACD$ vuông tại $C$: $h = CD = AD\\sin60^{\\circ} = \\dfrac{26,84\\sin45^{\\circ}\\sin60^{\\circ}}{\\sin15^{\\circ}} \\approx 63,50$ m.\nVậy chiều cao tháp khoảng $63,5$ m.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110030203066_anh_de.png",
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110030203027",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tam giác $ABC$ có $BC = 10$ và $\\widehat{A} = 45^\\circ$. Tính bán kính $R$ của đường tròn ngoại tiếp tam giác $ABC$ (kết quả làm tròn đến hai chữ số thập phân).",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "7.07",
+  "loi_giai": "Áp dụng định lí sin trong tam giác $ABC$, ta có:\n$\\dfrac{BC}{\\sin A} = 2R \\Rightarrow R = \\dfrac{BC}{2\\sin A}$.\nThay số với $BC = 10$ và $\\widehat{A} = 45^\\circ$, ta được:\n$R = \\dfrac{10}{2\\sin 45^\\circ} = \\dfrac{10}{2 . \\dfrac{\\sqrt{2}}{2}} = \\dfrac{10}{\\sqrt{2}} = 5\\sqrt{2} \\approx 7.07$.\nVậy bán kính đường tròn ngoại tiếp tam giác $ABC$ là $R \\approx 7.07$.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110030203027_anh_de.png",
+  "anh_dap_an_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110030203027_anh_dap_an.png"
+ },
+ {
+  "ma_cau": "T110000000206",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tam giác $ABC$ vuông tại $A$ có $BC=8\\sqrt{3} cm$. Tính bán kính $R$ của đường tròn ngoại tiếp tam giác $ABC$.",
+  "lua_chon": [
+   "$R=16\\sqrt{3} cm$.",
+   "$R=2\\sqrt{3} cm$.",
+   "$R=4\\sqrt{3} cm$.",
+   "$R=8\\sqrt{3} cm$."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "Tam giác $ABC$ vuông tại $A$ có cạnh huyền là $BC=8\\sqrt{3} cm$.\n\nBán kính đường tròn ngoại tiếp tam giác vuông bằng một nửa độ dài cạnh huyền, do đó\n\n$R=\\dfrac{BC}{2}=\\dfrac{8\\sqrt{3}}{2}=4\\sqrt{3} \\left(cm\\right).$\n\nVậy bán kính đường tròn ngoại tiếp tam giác $ABC$ là $R=4\\sqrt{3} cm$.",
+  "anh_de_file": null,
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110000000213",
+  "loai_cau": "dung_sai",
+  "noi_dung": "Cho hàm số $y=-2x^{2}+4x+1$ có đồ thị là parabol $\\left(P\\right)$. Xét tính đúng sai các mệnh đề sau:",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Vì $a=-2<0$ nên hàm số đồng biến trên khoảng $\\left(-\\infty;1\\right)$ và nghịch biến trên khoảng $\\left(1;+\\infty \\right)$.\n\nDo $\\left(3;+\\infty \\right)\\subset \\left(1;+\\infty \\right)$ nên $\\left(P\\right)$ nghịch biến trên khoảng $\\left(3;+\\infty \\right)$.",
+    "noi_dung": "$\\left(P\\right)$ nghịch biến trên khoảng $\\left(3;+\\infty \\right)$"
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T110000000",
+    "loi_giai": "Toạ độ đỉnh của parabol $\\left(P\\right)$ là $S\\left(1;3\\right)$, không phải $S\\left(1;-3\\right)$.",
+    "noi_dung": "$\\left(P\\right)$ có đỉnh là $S\\left(1;-3\\right)$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Trục đối xứng của parabol $\\left(P\\right)$ là đường thẳng $x=-\\dfrac{b}{2a}=1$.",
+    "noi_dung": "$\\left(P\\right)$ có trục đối xứng là đường thẳng $x=1$"
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T110000000",
+    "loi_giai": "Thay toạ độ điểm $M\\left(-1;-1\\right)$ vào phương trình của $\\left(P\\right)$, ta được\n\n$-2\\cdot \\left(-1\\right)^{2}+4\\cdot \\left(-1\\right)+1=-5\\ne -1.$\n\nVậy parabol $\\left(P\\right)$ không đi qua điểm $M\\left(-1;-1\\right)$.",
+    "noi_dung": "$\\left(P\\right)$ đi qua điểm $M\\left(-1;-1\\right)$"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "anh_de_file": null,
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110000000433",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tập xác định của hàm số $f\\left(x\\right)=\\sqrt{x+3}+\\sqrt{5-x}$ chứa bao nhiêu phần tử thuộc tập hợp số nguyên?",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "9",
+  "loi_giai": "Hàm số $f\\left(x\\right)=\\sqrt{x+3}+\\sqrt{5-x}$ xác định khi và chỉ khi\n\n$\\begin{cases} x+3\\ge 0 \\\\ 5-x\\ge 0 \\end{cases}\\Leftrightarrow \\begin{cases} x\\ge -3 \\\\ x\\le 5 \\end{cases}\\Leftrightarrow -3\\le x\\le 5.$\n\nDo đó tập xác định của hàm số là $D=\\left[-3;5\\right]$.\n\nCác giá trị nguyên thuộc tập xác định là $x\\in \\{-3;-2;-1;0;1;2;3;4;5\\}$.\n\nSố phần tử nguyên là $5-\\left(-3\\right)+1=9$.",
+  "anh_de_file": null,
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110000000188",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho tam giác $ABC$ có góc $\\hat{C}$ nhọn và $AC=3;BC=4;S_{ABC}=3\\sqrt{3}$ (tham khảo hình vẽ). Tính độ dài cạnh $AB$, (kết quả làm tròn đến hàng phần trăm).",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "3.61",
+  "loi_giai": "Diện tích tam giác $ABC$ được tính theo công thức:\n\n$S_{ABC}=\\dfrac{1}{2}\\text{AC\\cdot BC\\cdot }\\sin C.$\n\nThay $AC=3$, $BC=4$ và $S_{ABC}=3\\sqrt{3}$, ta có\n\n$3\\sqrt{3}=\\dfrac{1}{2}\\cdot 3\\cdot 4\\cdot \\sin C=6\\sin C\\Rightarrow \\sin C=\\dfrac{\\sqrt{3}}{2}.$\n\nVì góc $\\hat{C}$ nhọn nên $\\hat{C}=60^\\circ$.\n\nÁp dụng định lí côsin để tính độ dài cạnh $AB$:\n\n$AB^{2}=AC^{2}+BC^{2}\\text{-2AC\\cdot BC\\cdot }\\cos C=3^{2}+4^{2}-2\\cdot 3\\cdot 4\\cdot \\cos 60^\\circ=9+16-12=13.$\n\nSuy ra $AB=\\sqrt{13}\\approx 3,60555\\dots$\n\nLàm tròn đến hàng phần trăm, ta được $AB\\approx 3,61$.\n\nVậy độ dài cạnh $AB$ xấp xỉ $3,61$.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000188_anh_de.png",
+  "anh_dap_an_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000188_anh_dap_an.png"
+ },
+ {
+  "ma_cau": "T110030203053",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Giả sử $SH = h(m)$ là chiều cao của cây trong đó $H$ là gốc cây và $S$ là ngọn cây. Chọn hai điểm $A,B$ trên mặt đất sao cho ba điểm $A,B,H$ thẳng hàng (như hình vẽ bên dưới). Ta đo được $AB = 5m$, $\\widehat{SAH} = 55^\\circ$; $\\widehat{SBH} = 35^\\circ$. Tính chiều cao $h$ của cây (kết quả làm tròn đến hàng đơn vị).\n[hình]",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "7",
+  "loi_giai": "Trong tam giác $SHA$ vuông tại $H$, ta có\n$AH = \\dfrac{SH}{\\tan \\widehat{SAH}} = \\dfrac{h}{\\tan 55^\\circ}$.\nTrong tam giác $SHB$ vuông tại $H$, ta có\n$BH = \\dfrac{SH}{\\tan \\widehat{SBH}} = \\dfrac{h}{\\tan 35^\\circ}$.\nVì ba điểm $B, A, H$ thẳng hàng và $A$ nằm giữa $B$ và $H$ nên\n$AB = BH - AH \\Leftrightarrow 5 = \\dfrac{h}{\\tan 35^\\circ} - \\dfrac{h}{\\tan 55^\\circ} = h\\left(\\dfrac{1}{\\tan 35^\\circ} - \\dfrac{1}{\\tan 55^\\circ}\\right)$.\nSuy ra chiều cao của cây là\n$h = \\dfrac{5}{\\dfrac{1}{\\tan 35^\\circ} - \\dfrac{1}{\\tan 55^\\circ}} \\approx 6,87m$.\nLàm tròn kết quả đến hàng đơn vị, ta được $h \\approx 7m$.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110030203053_anh_de.png",
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110000000294",
+  "loai_cau": "dung_sai",
+  "noi_dung": "Cho $\\triangle ABC$ có $AB=5;BC=8;\\widehat{ABC}=60^\\circ$. Xét tính đúng sai của các khẳng định sau:",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Với mọi góc $A\\in \\left(0^\\circ;180^\\circ\\right)$, theo tính chất của hai góc bù nhau ta luôn có $\\sin \\left(180^\\circ-A\\right)=\\sin A$.",
+    "noi_dung": "$\\sin \\left(180^\\circ-A\\right)=\\sin A$"
+   },
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Áp dụng hệ quả của định lí côsin để tính $\\cos A$:\n\n$\\cos A=\\dfrac{AB^{2}+AC^{2}-BC^{2}}{\\text{2AB\\cdot AC}}=\\dfrac{5^{2}+7^{2}-8^{2}}{2\\cdot 5\\cdot 7}=\\dfrac{25+49-64}{70}=\\dfrac{10}{70}=\\dfrac{1}{7}.$\n\nVì $\\cos A=\\dfrac{1}{7}>0$ nên góc $\\widehat{BAC}$ là góc nhọn.",
+    "noi_dung": "Góc $\\widehat{BAC}$ là góc nhọn"
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T110000000",
+    "loi_giai": "Ta có:\n\n$\\dfrac{AC}{\\cos B}=\\dfrac{7}{\\cos 60^\\circ}=\\dfrac{7}{\\dfrac{1}{2}}=14,\\dfrac{BC}{\\cos A}=\\dfrac{8}{\\dfrac{1}{7}}=56.$\n\nVì $14\\ne 56$ nên $\\dfrac{AC}{\\cos B}\\ne \\dfrac{BC}{\\cos A}$.",
+    "noi_dung": "$\\dfrac{AC}{\\cos B}=\\dfrac{BC}{\\cos A}$"
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T110000000",
+    "loi_giai": "Theo định lí sin, bán kính $R$ của đường tròn ngoại tiếp tam giác $ABC$ thoả mãn:\n\n$2R=\\dfrac{AC}{\\sin B}=\\dfrac{7}{\\sin 60^\\circ}=\\dfrac{7}{\\dfrac{\\sqrt{3}}{2}}=\\dfrac{14\\sqrt{3}}{3}\\Rightarrow R=\\dfrac{7\\sqrt{3}}{3}.$\n\nDo đó bán kính đường tròn ngoại tiếp bằng $\\dfrac{7\\sqrt{3}}{3}$.",
+    "noi_dung": "Bán kính đường tròn ngoại tiếp tam giác $ABC$ bằng $7\\sqrt{3}$"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "anh_de_file": null,
+  "anh_dap_an_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000294_anh_dap_an.png"
+ },
+ {
+  "ma_cau": "T110030203019",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tam giác $ABC$ vuông tại $A$ có $BC = 8\\sqrt{3}cm$. Tính bán kính $R$ của đường tròn ngoại tiếp tam giác $ABC$.",
+  "lua_chon": [
+   "$R = 16\\sqrt{3}cm$.",
+   "$R = 2\\sqrt{3}cm$.",
+   "$R = 4\\sqrt{3}cm$.",
+   "$R = 8\\sqrt{3}cm$."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "Tam giác $ABC$ vuông tại $A$ có cạnh huyền là $BC = 8\\sqrt{3}cm$.\nBán kính đường tròn ngoại tiếp tam giác vuông bằng một nửa độ dài cạnh huyền, do đó\n$R = \\dfrac{BC}{2} = \\dfrac{8\\sqrt{3}}{2} = 4\\sqrt{3}$ (cm).\nVậy bán kính đường tròn ngoại tiếp tam giác $ABC$ là $R = 4\\sqrt{3}cm$.",
+  "anh_de_file": null,
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110030203067",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Hai tàu du lịch xuất phát từ hai thành phố cảng $A$ và $B$ cách nhau $200\\text{ km}$ đến đảo $C$ như hình minh họa. Biết hai tàu cùng chuyển động đều với vận tốc $80\\text{ km/h}$ và $\\widehat{CAB} = 30^{\\circ}$; $\\widehat{CBA} = 45^{\\circ}$. Tàu $1$ ở thành phố $A$ khởi hành lúc $8\\text{h}$, tàu $2$ ở thành phố $B$ muốn đến đảo $C$ cùng lúc với tàu $1$ thì phải khởi hành sau tàu $1$ bao nhiêu phút? (Kết quả làm tròn đến hàng đơn vị của phút).\n[hình]",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "32",
+  "loi_giai": "Xét tam giác $ABC$: $\\widehat{C} = 180^{\\circ} - (30^{\\circ} + 45^{\\circ}) = 105^{\\circ}$.\nÁp dụng định lí sin: $AC = \\dfrac{200\\sin45^{\\circ}}{\\sin105^{\\circ}} = 200(\\sqrt{3}-1)\\,\\text{km}$, $BC = \\dfrac{200\\sin30^{\\circ}}{\\sin105^{\\circ}} = 100(\\sqrt{6}-\\sqrt{2})\\,\\text{km}$.\nThời gian tàu $1$ đi: $t_1 = \\dfrac{AC}{80}\\,\\text{giờ} \\approx 109,81\\,\\text{phút}$; thời gian tàu $2$ đi: $t_2 = \\dfrac{BC}{80}\\,\\text{giờ} \\approx 77,65\\,\\text{phút}$.\nTàu $2$ phải khởi hành sau tàu $1$ một khoảng $t_1 - t_2 \\approx 32,16\\,\\text{phút}$.\nLàm tròn đến hàng đơn vị: $32\\,\\text{phút}$.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110030203067_anh_de.png",
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110030203009",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho tam giác $ABC$ có $BC = 10$ và góc $A = 60^\\circ$. Bán kính $R$ của đường tròn ngoại tiếp tam giác $ABC$ bằng",
+  "lua_chon": [
+   "5.",
+   "10.",
+   "$\\dfrac{10}{\\sqrt{3}}$.",
+   "$10\\sqrt{3}$."
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "Trong tam giác $ABC$, áp dụng định lí sin ta có\n$\\dfrac{BC}{\\sin A} = 2R \\Rightarrow R = \\dfrac{BC}{2\\sin A}$.\nThay $BC = 10$ và $\\widehat{A} = 60^\\circ$ vào ta được\n$R = \\dfrac{10}{2\\sin 60^\\circ} = \\dfrac{10}{2.\\dfrac{\\sqrt{3}}{2}} = \\dfrac{10}{\\sqrt{3}}$.\nVậy bán kính $R$ của đường tròn ngoại tiếp tam giác $ABC$ bằng $\\dfrac{10}{\\sqrt{3}}$.",
+  "anh_de_file": null,
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110030203079",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Trên sườn đồi có một cái cây thẳng đứng đổ bóng dài $AB = 39,5$ mét xuống đồi. Biết góc nghiêng của sườn đồi là $\\alpha = 26^\\circ$ so với phương ngang và góc của tia nắng mặt trời đi qua ngọn cây là $\\beta = 50^\\circ$ (tham khảo hình vẽ).\nTính chiều cao $BC$ của cây (Kết quả làm tròn đến hàng đơn vị, đơn vị đo là mét).\n[hình]",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "25",
+  "loi_giai": "Xét tam giác $ABC$, ta có:\n$\\widehat{BAC} = \\beta - \\alpha = 50^\\circ - 26^\\circ = 24^\\circ$.\nVì cây $BC$ mọc thẳng đứng nên $BC \\perp AH$ tại $H$.\nTrong tam giác vuông $AHC$, ta có $\\widehat{ACB} = \\widehat{ACH} = 90^\\circ - \\beta = 90^\\circ - 50^\\circ = 40^\\circ$.\nÁp dụng định lí sin trong tam giác $ABC$, ta có\n$\\dfrac{BC}{\\sin \\widehat{BAC}} = \\dfrac{AB}{\\sin \\widehat{ACB}} \\Rightarrow BC = \\dfrac{AB \\cdot \\sin \\widehat{BAC}}{\\sin \\widehat{ACB}}$.\nThay số $AB = 39,5\\mathrm{m}$, ta được\n$BC = \\dfrac{39,5 \\cdot \\sin 24^\\circ}{\\sin 40^\\circ} \\approx 24,99\\ (\\mathrm{m})$.\nLàm tròn đến hàng đơn vị, ta được $BC \\approx 25\\mathrm{m}$.\nVậy chiều cao của cây là $25\\mathrm{m}$.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110030203079_anh_de.png",
+  "anh_dap_an_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110030203079_anh_dap_an.png"
+ },
+ {
+  "ma_cau": "T110000000178",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Ông An vừa được cấp một mảnh đất trồng lúa có dạng hình thang $ABCD$ với $\\text{AD\\parallel BC}$ (xem minh họa hình bên dưới). Cạnh $AB$ dọc theo đường đi và có độ dài $70 m$. Sử dụng giác kế, người ta đo được các góc $\\widehat{DAC}=22^\\circ$, $\\widehat{BAC}=54^\\circ$ và $\\widehat{ABD}=73^\\circ$.\nHãy giúp ông An tính gần đúng diện tích mảnh đất (đơn vị mét vuông, kết quả chính xác đến hàng đơn vị).",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": null,
+  "loi_giai": "Ta có $\\widehat{BAD}=\\widehat{BAC}+\\widehat{DAC}=54^\\circ+22^\\circ=76^\\circ$.\n\nVì $\\text{AD\\parallel BC}$ nên hai góc trong cùng phía bù nhau:\n\n$\\widehat{ABC}=180^\\circ-\\widehat{BAD}=180^\\circ-76^\\circ=104^\\circ.$\n\nĐồng thời, so le trong cho ta $\\widehat{ACB}=\\widehat{DAC}=22^\\circ$.\n\nXét tam giác $ABC$, áp dụng định lí sin ta có\n\n$\\dfrac{BC}{\\sin \\widehat{BAC}}=\\dfrac{AB}{\\sin \\widehat{ACB}}\\Rightarrow BC=\\dfrac{AB\\cdot \\sin 54^\\circ}{\\sin 22^\\circ}=\\dfrac{70\\cdot \\sin 54^\\circ}{\\sin 22^\\circ}\\approx 151,18 \\left(m\\right).$\n\nXét tam giác $ABD$, ta có\n\n$\\widehat{ADB}=180^\\circ-\\left(\\widehat{BAD}+\\widehat{ABD}\\right)=180^\\circ-\\left(76^\\circ+73^\\circ\\right)=31^\\circ.$\n\nÁp dụng định lí sin trong tam giác $ABD$, ta có\n\n$\\dfrac{AD}{\\sin \\widehat{ABD}}=\\dfrac{AB}{\\sin \\widehat{ADB}}\\Rightarrow AD=\\dfrac{AB\\cdot \\sin 73^\\circ}{\\sin 31^\\circ}=\\dfrac{70\\cdot \\sin 73^\\circ}{\\sin 31^\\circ}\\approx 129,97 \\left(m\\right).$\n\nChiều cao của hình thang $ABCD$ là\n\n$h=AB\\cdot \\sin \\widehat{BAD}=70\\cdot \\sin 76^\\circ\\approx 67,92 \\left(m\\right).$\n\nDiện tích mảnh đất hình thang $ABCD$ là\n\n$S_{ABCD}=\\dfrac{\\left(AD+BC\\right)\\cdot h}{2}=\\dfrac{\\left(\\dfrac{70\\cdot \\sin 73^\\circ}{\\sin 31^\\circ}+\\dfrac{70\\cdot \\sin 54^\\circ}{\\sin 22^\\circ}\\right)\\cdot 70\\cdot \\sin 76^\\circ}{2}\\approx 9548 \\left(m^{2}\\right).$\n\nVậy diện tích mảnh đất của ông An khoảng $9548 m^{2}$.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000178_anh_de.png",
+  "anh_dap_an_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110000000178_anh_dap_an.png"
+ },
+ {
+  "ma_cau": "T110030204051",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Người ta cần trang trí một họa tiết như hình vẽ bằng cách sơn kín phần được tô đậm. Biết chi phí để sơn $1$ mét vuông là $250$ nghìn đồng, tam giác trong hình vẽ có các cạnh lần lượt là $3$ mét, $5$ mét, $5$ mét. Hỏi số tiền cần bỏ ra là bao nhiêu nghìn đồng để hoàn thành việc sơn trang trí họa tiết đó (làm tròn đến đơn vị).",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "837",
+  "loi_giai": "Họa tiết gồm tam giác cạnh $3; 5; 5$ (m) và hình tròn nội tiếp tam giác (không sơn).\nNửa chu vi $p = \\dfrac{13}{2}$; $S_{\\Delta} = \\sqrt{\\dfrac{13}{2} \\cdot \\dfrac{7}{2} \\cdot \\dfrac{3}{2} \\cdot \\dfrac{3}{2}} = \\dfrac{3\\sqrt{91}}{4}$.\nBán kính nội tiếp $r = \\dfrac{S_{\\Delta}}{p} = \\dfrac{3\\sqrt{91}}{26}$, diện tích hình tròn $\\pi r^2 = \\dfrac{63\\pi}{52}$.\nDiện tích phần sơn: $\\dfrac{3\\sqrt{91}}{4} - \\dfrac{63\\pi}{52} \\approx 3,348$ $\\text{m}^2$; số tiền $\\approx 3,348 \\cdot 250 \\approx 837$ nghìn đồng.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110030204051_anh_de.png",
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110030203007",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho tam giác $ABC$ có $AB = 7$ cm, số đo góc $C$ bằng $60^\\circ$ và $\\cos B = \\dfrac{1}{7}$. Độ dài cạnh $AC$ (làm tròn đến hàng đơn vị của cm) là",
+  "lua_chon": [
+   "9 cm.",
+   "7 cm.",
+   "6 cm.",
+   "8 cm."
+  ],
+  "menh_de": null,
+  "dap_an": "D",
+  "loi_giai": "$\\sin B = \\sqrt{1 - \\cos^2 B} = \\sqrt{1 - \\dfrac{4}{49}} = \\dfrac{4\\sqrt{3}}{7}$.\nĐịnh lí sin: $\\dfrac{AC}{\\sin B} = \\dfrac{AB}{\\sin C} \\Rightarrow AC = \\dfrac{7\\dfrac{4\\sqrt{3}}{7}}{\\dfrac{\\sqrt{3}}{2}} = 8$ cm.\nChọn D.",
+  "anh_de_file": null,
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110030204048",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Gia đình bác An có mảnh đất như hình bên. Nhà nước có dự án xây bệnh viện nên thu hồi mảnh đất của bác, giá đền bù là $1,2$ triệu đồng $1\\text{m}^2$. Hỏi số tiền gia đình nhà bác An nhận được khoảng bao nhiêu triệu đồng? (làm tròn kết quả đến hàng đơn vị)",
+  "lua_chon": null,
+  "menh_de": null,
+  "dap_an": "294",
+  "loi_giai": "Nối đường chéo $BD$ để chia mảnh đất thành hai tam giác $\\triangle ABD$ và $\\triangle BCD$.\nÁp dụng định lí côsin trong tam giác $ABD$, ta có:\n$BD^2 = AB^2 + AD^2 - 2 \\cdot AB \\cdot AD \\cdot \\cos BAD = 15^2 + 22^2 - 2 \\cdot 15 \\cdot 22 \\cdot \\cos 73,07^\\circ \\approx 516,81$.\nSuy ra $BD \\approx 22,73\\text{m}$.\nDiện tích tam giác $ABD$ là:\n$S_{ABD} = \\dfrac{1}{2} \\cdot AB \\cdot AD \\cdot \\sin BAD = \\dfrac{1}{2} \\cdot 15 \\cdot 22 \\cdot \\sin 73,07^\\circ \\approx 157,85\\text{m}^2$.\nTrong tam giác $BCD$, nửa chu vi là:\n$p = \\dfrac{BC + CD + BD}{2} \\approx \\dfrac{10 + 18 + 22,73}{2} = 25,365\\text{m}$.\nÁp dụng công thức Heron, diện tích tam giác $BCD$ là:\n$S_{BCD} = \\sqrt{p(p-BC)(p-CD)(p-BD)} \\approx \\sqrt{25,365(25,365-10)(25,365-18)(25,365-22,73)} \\approx 86,96\\text{m}^2$.\nDiện tích toàn bộ mảnh đất $ABCD$ là:\n$S = S_{ABD} + S_{BCD} \\approx 157,85 + 86,96 = 244,81\\text{m}^2$.\nSố tiền gia đình nhà bác An nhận được là:\n$244,81 \\cdot 1,2 = 293,772 \\approx 294$ (triệu đồng).\nVậy số tiền gia đình nhà bác An nhận được khoảng $294$ triệu đồng.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110030204048_anh_de.png",
+  "anh_dap_an_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110030204048_anh_dap_an.png"
+ },
+ {
+  "ma_cau": "T110030201060",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho tam giác $ABC$ có $BC = a, AC =b, AB = c$ và $S$ là diện tích tam giác. Khẳng định nào dưới đây sai?",
+  "lua_chon": [
+   "$a^2 = b^2 + c^2 + 2bc \\cos A$.",
+   "$c^2 = a^2 + b^2 – 2ab \\cos C$.",
+   "$\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C}$",
+   "$S = \\dfrac{1}{2}ca \\sin B$."
+  ],
+  "menh_de": null,
+  "dap_an": "A",
+  "loi_giai": "Trong tam giác $ABC$ có $BC = a, AC = b, AB = c$ :\n- Theo định lí côsin, ta có $a^2 = b^2 + c^2 – 2bc \\cos A$ và $c^2 = a^2 + b^2 – 2ab \\cos C$.\nDo đó khẳng định $a^2 = b^2 + c^2 + 2bc \\cos A$ là sai.\n- Khẳng định $\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C}$ là đúng theo định lí sin.\n- Khẳng định $S = \\dfrac{1}{2}ca \\sin B$ là đúng theo công thức tính diện tích tam giác.\nVậy khẳng định sai là $a^2 = b^2 + c^2 + 2bc \\cos A$.",
+  "anh_de_file": null,
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110000000287",
+  "loai_cau": "dung_sai",
+  "noi_dung": "Cho tam giác $ABC$ có $BC=12 cm$, góc $\\hat{B}=15^\\circ$, $\\hat{C}=30^\\circ$. Các mệnh đề sau đúng hay sai?",
+  "lua_chon": null,
+  "menh_de": [
+   {
+    "dap_an": "D",
+    "ma_dang": "T110000000",
+    "loi_giai": "Áp dụng định lí sin trong tam giác $ABC$, ta có\n\n$\\dfrac{AB}{\\sin C}=\\dfrac{BC}{\\sin A}\\Rightarrow AB=\\dfrac{BC\\cdot \\sin C}{\\sin A}=\\dfrac{12\\cdot \\sin 30^\\circ}{\\sin 135^\\circ}=\\dfrac{12\\cdot \\dfrac{1}{2}}{\\dfrac{\\sqrt{2}}{2}}=6\\sqrt{2} cm.$",
+    "noi_dung": "$AB=6\\sqrt{2}$"
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T110000000",
+    "loi_giai": "Áp dụng định lí sin, ta có\n\n$AC=\\dfrac{BC\\cdot \\sin B}{\\sin A}=\\dfrac{12\\cdot \\sin 15^\\circ}{\\sin 135^\\circ}=\\dfrac{12\\cdot \\dfrac{\\sqrt{6}-\\sqrt{2}}{4}}{\\dfrac{\\sqrt{2}}{2}}=6\\left(\\sqrt{3}-1\\right) cm.$\n\nDiện tích tam giác $ABC$ là\n\n$S=\\dfrac{1}{2}\\text{AB\\cdot AC\\cdot }\\sin A=\\dfrac{1}{2}\\cdot 6\\sqrt{2}\\cdot 6\\left(\\sqrt{3}-1\\right)\\cdot \\sin 135^\\circ=18\\left(\\sqrt{3}-1\\right){ cm}^{2}.$\n\nĐộ dài đường cao $AH$ hạ từ đỉnh $A$ là\n\n$AH=\\dfrac{2S}{BC}=\\dfrac{2\\cdot 18\\left(\\sqrt{3}-1\\right)}{12}=3\\left(\\sqrt{3}-1\\right) cm\\ne \\dfrac{23}{11} cm.$",
+    "noi_dung": "Độ dài đường cao $AH=\\dfrac{23}{11}$"
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T110000000",
+    "loi_giai": "Nửa chu vi tam giác $ABC$ là\n\n$p=\\dfrac{AB+BC+CA}{2}=\\dfrac{6\\sqrt{2}+12+6\\left(\\sqrt{3}-1\\right)}{2}=3+3\\sqrt{3}+3\\sqrt{2} cm.$\n\nBán kính đường tròn nội tiếp tam giác $ABC$ là\n\n$r=\\dfrac{S}{p}=\\dfrac{18\\left(\\sqrt{3}-1\\right)}{3\\left(1+\\sqrt{3}+\\sqrt{2}\\right)}\\approx 1,06 cm\\ne 2,6 cm.$",
+    "noi_dung": "Bán kính đường tròn nội tiếp tam giác $ABC$ là $2,6$"
+   },
+   {
+    "dap_an": "S",
+    "ma_dang": "T110000000",
+    "loi_giai": "Theo định lí sin trong tam giác $ABC$, ta có $\\dfrac{a}{\\sin A}=2R$, suy ra $R=\\dfrac{a}{2\\sin A}$, không phải $R=\\dfrac{a}{\\sin A}$.",
+    "noi_dung": "$R=\\dfrac{a}{\\sin A}$"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": null,
+  "anh_de_file": null,
+  "anh_dap_an_file": null
+ },
+ {
+  "ma_cau": "T110030203005",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho $\\triangle ABC$ có $BC = a$, $\\widehat{BAC} = 120^{\\circ}$. Bán kính đường tròn ngoại tiếp $\\triangle ABC$ là",
+  "lua_chon": [
+   "$R = a$.",
+   "$R = \\dfrac{a}{2}.$",
+   "$R = \\dfrac{a\\sqrt{3}}{3}.$",
+   "$R = \\dfrac{a\\sqrt{3}}{2}.$"
+  ],
+  "menh_de": null,
+  "dap_an": "C",
+  "loi_giai": "Áp dụng định lí sin trong tam giác $ABC$, ta có:$$\\dfrac{BC}{\\sin A} = 2R \\Rightarrow R = \\dfrac{BC}{2\\sin A}$$\nThay $BC = a$ và $\\widehat{A} = 120^{\\circ}$, ta được:$$R = \\dfrac{a}{2\\sin 120^{\\circ}} = \\dfrac{a}{2.\\dfrac{\\sqrt{3}}{2}} = \\dfrac{a}{\\sqrt{3}} = \\dfrac{a\\sqrt{3}}{3}$$\nVậy bán kính đường tròn ngoại tiếp tam giác $ABC$ là $R = \\dfrac{a\\sqrt{3}}{3}$.",
+  "anh_de_file": "C:/Users/WBPC/AppData/Local/Temp/claude/C--Users-WBPC-Desktop-BKERP-bkdemy-erp-v2/356cff98-f6c7-4114-8b48-84450569e612/scratchpad/htl-anh/T110030203005_anh_de.png",
+  "anh_dap_an_file": null
+ }
+]

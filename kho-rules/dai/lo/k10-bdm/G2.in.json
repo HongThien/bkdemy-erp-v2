@@ -1,0 +1,290 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "NNB01098",
+   "chu_de": "Phương trình và hệ bất phương trình bậc nhất 2 ẩn",
+   "chuyen_de": "Bất phương trình bậc nhất 2 ẩn",
+   "nhom": "Nhận diện và xác định nghiệm của bất phương trình bậc nhất 2 ẩn",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Bất phương trình bậc nhất hai ẩn $x, y$ có dạng tổng quát là:\n$$ax+by \\le c (1) (ax+by<c; ax+by \\ge c; ax+by>c)$$\nTrong đó $a, b, c$ là những số thực đã cho, $a$ và $b$ không đồng thời bằng 0, $x$ và $y$ là các ẩn số.\nVí dụ:\n● $x-5y+2\\le 0$ ; $3x-2y>0$ là các bất phương trình bậc nhất 2 ẩn\n● $9{{x}^{2}}+8y-7\\ge 0$   không phải là các bất phương trình bậc nhất 2 ẩn do có ${{x}^{2}}$\n● $2\\frac{1}{x}-5\\frac{1}{y}>8$ không phải là các bất phương trình bậc nhất 2 ẩn do có $\\frac{1}{x}$ và $\\frac{1}{y}$",
+   "can_dien_ly_thuyet_nhom": false,
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T110020101",
+     "ten_cu": "Nhận diện bất phương trình bậc nhất 2 ẩn",
+     "noi_dung_cu": "Bất phương trình bậc nhất hai ẩn $x, y$ có dạng tổng quát là:\n$$ax+by \\le c (1) (ax+by<c; ax+by \\ge c; ax+by>c)$$\nTrong đó $a, b, c$ là những số thực đã cho, $a$ và $b$ không đồng thời bằng 0, $x$ và $y$ là các ẩn số.\nVí dụ:\n● $x-5y+2\\le 0$ ; $3x-2y>0$ là các bất phương trình bậc nhất 2 ẩn\n● $9{{x}^{2}}+8y-7\\ge 0$   không phải là các bất phương trình bậc nhất 2 ẩn do có ${{x}^{2}}$\n● $2\\frac{1}{x}-5\\frac{1}{y}>8$ không phải là các bất phương trình bậc nhất 2 ẩn do có $\\frac{1}{x}$ và $\\frac{1}{y}$"
+    }
+   ]
+  },
+  {
+   "nhom_id": "NNB01099",
+   "chu_de": "Phương trình và hệ bất phương trình bậc nhất 2 ẩn",
+   "chuyen_de": "Bất phương trình bậc nhất 2 ẩn",
+   "nhom": "Miền nghiệm của bất phương trình bậc nhất 2 ẩn",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "**I. Phương pháp làm bài**\nCũng như bất phương trình bậc nhất một ẩn, các bất phương trình bậc nhất hai ẩn thường có vô số nghiệm và để mô tả tập nghiệm của chúng, ta sử dụng phương pháp biểu diễn hình học.\nTrong mặt phẳng tọa độ $Oxy$, tập hợp các điểm có tọa độ là nghiệm của bất phương trình (1) được gọi là miền nghiệm của nó.\nTừ đó ta có quy tắc thực hành biểu diễn hình học tập nghiệm (hay biểu diễn miền nghiệm) của bất phương trình $ax+by\\leq c$ như sau (tương tự cho bất phương trình $ax+by\\geq c$)\n* Bước 1: Trên mặt phẳng tọa độ $Oxy$, vẽ đường thẳng $\\Delta : ax+by=c$.\n* Bước 2: Lấy một điểm $M_0(x_0;y_0)$ không thuộc $\\Delta$ (ta thường lấy gốc tọa độ $O$)\n* Bước 3: Thay tọa độ điểm $M_0(x_0;y_0)$ vào bất phương trình\n* Bước 4: Kết luận\nNếu sau khi thay ta nhận được một kết quả đúng thì nửa mặt phẳng bờ $\\Delta$ chứa $M_0$ là miền nghiệm của $ax_0+by_0\\leq c$.\nNếu sau khi thay ta nhận được một kết quả sai  thì nửa mặt phẳng bờ $\\Delta$ không chứa $M_0$ là miền nghiệm của $ax_0+by_0\\leq c$.\nChú ý: Miền nghiệm của bất phương trình $ax_0+by_0\\leq c$ bỏ đi đường thẳng $ax+by=c$ là miền nghiệm của bất phương trình $ax_0+by_0<c$.\n\n**II. Ví dụ minh họa**\n Vẽ miền nghiệm của bất phương trình $x+2y\\ge -2$.\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/3fc7c154-3192-4150-b8fc-6555c1020b1c.png)\nThay tọa độ điểm O(0;0) vào bất phương trình, ta có $0+2.0\\ge-2$ (luôn đúng)\n=> điểm O thuộc miền nghiệm của hệ \nVậy miền nghiệm của hệ là nửa mặt phẳng bờ d có chứa điểm O",
+   "can_dien_ly_thuyet_nhom": false,
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T110020102",
+     "ten_cu": "Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn",
+     "noi_dung_cu": "**I. Phương pháp làm bài**\nCũng như bất phương trình bậc nhất một ẩn, các bất phương trình bậc nhất hai ẩn thường có vô số nghiệm và để mô tả tập nghiệm của chúng, ta sử dụng phương pháp biểu diễn hình học.\nTrong mặt phẳng tọa độ $Oxy$, tập hợp các điểm có tọa độ là nghiệm của bất phương trình (1) được gọi là miền nghiệm của nó.\nTừ đó ta có quy tắc thực hành biểu diễn hình học tập nghiệm (hay biểu diễn miền nghiệm) của bất phương trình $ax+by\\leq c$ như sau (tương tự cho bất phương trình $ax+by\\geq c$)\n* Bước 1: Trên mặt phẳng tọa độ $Oxy$, vẽ đường thẳng $\\Delta : ax+by=c$.\n* Bước 2: Lấy một điểm $M_0(x_0;y_0)$ không thuộc $\\Delta$ (ta thường lấy gốc tọa độ $O$)\n* Bước 3: Thay tọa độ điểm $M_0(x_0;y_0)$ vào bất phương trình\n* Bước 4: Kết luận\nNếu sau khi thay ta nhận được một kết quả đúng thì nửa mặt phẳng bờ $\\Delta$ chứa $M_0$ là miền nghiệm của $ax_0+by_0\\leq c$.\nNếu sau khi thay ta nhận được một kết quả sai  thì nửa mặt phẳng bờ $\\Delta$ không chứa $M_0$ là miền nghiệm của $ax_0+by_0\\leq c$.\nChú ý: Miền nghiệm của bất phương trình $ax_0+by_0\\leq c$ bỏ đi đường thẳng $ax+by=c$ là miền nghiệm của bất phương trình $ax_0+by_0<c$.\n\n**II. Ví dụ minh họa**\n Vẽ miền nghiệm của bất phương trình $x+2y\\ge -2$.\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/3fc7c154-3192-4150-b8fc-6555c1020b1c.png)\nThay tọa độ điểm O(0;0) vào bất phương trình, ta có $0+2.0\\ge-2$ (luôn đúng)\n=> điểm O thuộc miền nghiệm của hệ \nVậy miền nghiệm của hệ là nửa mặt phẳng bờ d có chứa điểm O"
+    }
+   ]
+  },
+  {
+   "nhom_id": "NNB01100",
+   "chu_de": "Phương trình và hệ bất phương trình bậc nhất 2 ẩn",
+   "chuyen_de": "Bất phương trình bậc nhất 2 ẩn",
+   "nhom": "Bài toán thực tế về bất phương trình bậc nhất 2 ẩn",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T110020104",
+     "ten_cu": "Bài toán thực tế về bất phương trình bậc nhất 2 ẩn",
+     "noi_dung_cu": ""
+    }
+   ]
+  },
+  {
+   "nhom_id": "NNB01101",
+   "chu_de": "Phương trình và hệ bất phương trình bậc nhất 2 ẩn",
+   "chuyen_de": "Hệ bất phương trình bậc nhất 2 ẩn",
+   "nhom": "Nhận diện và xác định nghiệm của hệ bất phương trình bậc nhất 2 ẩn",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Hệ bất phương trình bậc nhất hai ẩn gồm một số bất phương trình bậc nhất hai ẩn $x$, $y$ mà ta phải tìm các nghiệm chung của chúng. Mỗi nghiệm chung đó được gọi là một nghiệm của hệ bất phương trình đã cho.\nVí dụ: \n* $\\begin{cases}x - 5y + 2 \\le 0 \\\\ 3x - 2y > 0 \\end{cases}$ là hệ bất phương trình bậc nhất 2 ẩn.\n* $\\begin{cases}9x^2 + 8y - 7 \\ge 0 \\\\ x - y < 3 \\end{cases}$ không phải là hệ bất phương trình bậc nhất 2 ẩn do có $x^2$.\n* $\\begin{cases}2\\dfrac{1}{x} - 5\\dfrac{1}{y} > 8 \\\\ x + 4y \\le 1 \\end{cases}$ không phải là hệ bất phương trình bậc nhất 2 ẩn do có $\\dfrac{1}{x}$ và $\\dfrac{1}{y}$.",
+   "can_dien_ly_thuyet_nhom": false,
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T110020201",
+     "ten_cu": "Nhận diện hệ bất phương trình bậc nhất 2 ẩn",
+     "noi_dung_cu": "Hệ bất phương trình bậc nhất hai ẩn gồm một số bất phương trình bậc nhất hai ẩn $x$, $y$ mà ta phải tìm các nghiệm chung của chúng. Mỗi nghiệm chung đó được gọi là một nghiệm của hệ bất phương trình đã cho.\nVí dụ: \n* $\\begin{cases}x - 5y + 2 \\le 0 \\\\ 3x - 2y > 0 \\end{cases}$ là hệ bất phương trình bậc nhất 2 ẩn.\n* $\\begin{cases}9x^2 + 8y - 7 \\ge 0 \\\\ x - y < 3 \\end{cases}$ không phải là hệ bất phương trình bậc nhất 2 ẩn do có $x^2$.\n* $\\begin{cases}2\\dfrac{1}{x} - 5\\dfrac{1}{y} > 8 \\\\ x + 4y \\le 1 \\end{cases}$ không phải là hệ bất phương trình bậc nhất 2 ẩn do có $\\dfrac{1}{x}$ và $\\dfrac{1}{y}$."
+    }
+   ]
+  },
+  {
+   "nhom_id": "NNB01102",
+   "chu_de": "Phương trình và hệ bất phương trình bậc nhất 2 ẩn",
+   "chuyen_de": "Hệ bất phương trình bậc nhất 2 ẩn",
+   "nhom": "Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "**I. Lý thuyết cần nhớ **\nĐể biểu diễn miền nghiệm của hệ bất phương trình bậc nhất hai ẩn trên mặt phẳng toạ độ  , ta thực hiện như sau:\n- Trên cùng mặt phẳng toạ độ, biểu diễn miền nghiệm của mỗi bất phương trình của hệ. (Gạch bỏ phần không phải miền nghiệm)\n- Phần giao của các miền nghiệm (phần không bị gạch) là miền nghiệm của hệ bất phương trình.\n**II. Phương pháp làm bài**\nBước 1. Quan sát đồ thị để viết phương trình các đường thẳng giới hạn (đường biên) của miền nghiệm. (dựa vào tọa độ các giao điểm với trục tọa độ hoặc tọa độ các đỉnh của đa giác được đánh dấu trên hình để lập phương trình)\nBước 2. Dựa vào dữ kiện của đề bài để xác định bất phương trình có chứa dấu bằng hay không. Nếu đề bài cho miền nghiệm \"chứa biên\", ta sử dụng các dấu $\\ge$ hoặc $\\le$. Nếu đề bài cho miền nghiệm \"không chứa biên\", ta sử dụng các dấu $>$ hoặc $<$.\nBước 3. Nhìn vào phần miền biểu diễn tập nghiệm (phần không bị gạch hoặc tô màu), chọn một điểm $M(x_0; y_0)$ bất kỳ nằm hẳn bên trong miền này. Tránh chọn các điểm nằm trên đường biên để việc thử được chính xác nhất.|\nBước 4. Thay tọa độ điểm $M(x_0; y_0)$ vừa chọn vào từng vế trái của các phương trình đường biên đã lập ở trên. So sánh kết quả thu được với vế phải của phương trình để quyết định chiều của bất phương trình (lớn hơn hay nhỏ hơn).\nBước 5. Ghép các bất phương trình thành phần lại thành một hệ hoàn chỉnh và kết luận.\n**III. Ví dụ minh họa**\nPhần không tô đậm trong hình vẽ dưới đây (chứa biên), biểu diễn tập nghiệm của hệ bất phương trình nào ?\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/15ac8439-9617-4a94-b39c-29879929eb56.png)\n**Lời giải**\nPhương trình 3 đường biên giới hạn miền:\n+ $d_1$: Qua $(2;0)$, $(0;-2) \\Rightarrow x-y=2$.\n+ $d_2$: Qua $(-2;0)$, $(0;-2) \\Rightarrow x+y=-2$.\n+ $d_3$: Đường nằm ngang $y=2$.\nVì đề bài cho miền nghiệm không chứa biên nên ta sử dụng các dấu $>, <$.\nChọn điểm $M(0;0)$ thuộc miền nghiệm để thử:\n+ Biểu thức $x-y=0-0=0<2 \\Rightarrow x-y<2$.\n+ Biểu thức $x+y=0+0=0>-2 \\Rightarrow x+y>-2$.\n+ Tọa độ $y=0<2 \\Rightarrow y<2$.\nVậy hệ bất phương trình cần tìm là: $\\begin{cases} x-y<2 \\\\ x+y>-2 \\\\ y<2 \\end{cases}$",
+   "can_dien_ly_thuyet_nhom": false,
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T110020202",
+     "ten_cu": "Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn",
+     "noi_dung_cu": "**I. Lý thuyết cần nhớ **\nĐể biểu diễn miền nghiệm của hệ bất phương trình bậc nhất hai ẩn trên mặt phẳng toạ độ  , ta thực hiện như sau:\n- Trên cùng mặt phẳng toạ độ, biểu diễn miền nghiệm của mỗi bất phương trình của hệ. (Gạch bỏ phần không phải miền nghiệm)\n- Phần giao của các miền nghiệm (phần không bị gạch) là miền nghiệm của hệ bất phương trình.\n**II. Phương pháp làm bài**\nBước 1. Quan sát đồ thị để viết phương trình các đường thẳng giới hạn (đường biên) của miền nghiệm. (dựa vào tọa độ các giao điểm với trục tọa độ hoặc tọa độ các đỉnh của đa giác được đánh dấu trên hình để lập phương trình)\nBước 2. Dựa vào dữ kiện của đề bài để xác định bất phương trình có chứa dấu bằng hay không. Nếu đề bài cho miền nghiệm \"chứa biên\", ta sử dụng các dấu $\\ge$ hoặc $\\le$. Nếu đề bài cho miền nghiệm \"không chứa biên\", ta sử dụng các dấu $>$ hoặc $<$.\nBước 3. Nhìn vào phần miền biểu diễn tập nghiệm (phần không bị gạch hoặc tô màu), chọn một điểm $M(x_0; y_0)$ bất kỳ nằm hẳn bên trong miền này. Tránh chọn các điểm nằm trên đường biên để việc thử được chính xác nhất.|\nBước 4. Thay tọa độ điểm $M(x_0; y_0)$ vừa chọn vào từng vế trái của các phương trình đường biên đã lập ở trên. So sánh kết quả thu được với vế phải của phương trình để quyết định chiều của bất phương trình (lớn hơn hay nhỏ hơn).\nBước 5. Ghép các bất phương trình thành phần lại thành một hệ hoàn chỉnh và kết luận.\n**III. Ví dụ minh họa**\nPhần không tô đậm trong hình vẽ dưới đây (chứa biên), biểu diễn tập nghiệm của hệ bất phương trình nào ?\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/15ac8439-9617-4a94-b39c-29879929eb56.png)\n**Lời giải**\nPhương trình 3 đường biên giới hạn miền:\n+ $d_1$: Qua $(2;0)$, $(0;-2) \\Rightarrow x-y=2$.\n+ $d_2$: Qua $(-2;0)$, $(0;-2) \\Rightarrow x+y=-2$.\n+ $d_3$: Đường nằm ngang $y=2$.\nVì đề bài cho miền nghiệm không chứa biên nên ta sử dụng các dấu $>, <$.\nChọn điểm $M(0;0)$ thuộc miền nghiệm để thử:\n+ Biểu thức $x-y=0-0=0<2 \\Rightarrow x-y<2$.\n+ Biểu thức $x+y=0+0=0>-2 \\Rightarrow x+y>-2$.\n+ Tọa độ $y=0<2 \\Rightarrow y<2$.\nVậy hệ bất phương trình cần tìm là: $\\begin{cases} x-y<2 \\\\ x+y>-2 \\\\ y<2 \\end{cases}$"
+    }
+   ]
+  },
+  {
+   "nhom_id": "NNB01104",
+   "chu_de": "Phương trình và hệ bất phương trình bậc nhất 2 ẩn",
+   "chuyen_de": "Hệ bất phương trình bậc nhất 2 ẩn",
+   "nhom": "Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "**I. Phương pháp giải**\nBước 1. Đặt biến $x, y$ cho các đối tượng cần tìm.\nBước 2. Lập các hệ bất phương trình mô tả các điều kiện ràng buộc.\nBước 3. Xây dựng hàm mục tiêu cho giá trị mà ta muốn đạt giá trị tối ưu.\nBước 4. Biểu diễn miền nghiệm của hệ bất phương trình (1) trên hệ trục toạ độ $Oxy$ ta được một đa giác. Tìm toạ độ các đỉnh của đa giác.\nBước 5. Do người ta đã chứng minh được $F$ đạt GTLN hoặc GTNN tại một trong các đỉnh của đa giác nên ta chỉ cần tính các giá trị của hàm mục tiêu $F$ tại các đỉnh của đa giác. Tìm ra đỉnh tại đó $F$ đạt GTLN hoặc GTNN. Toạ độ của đỉnh này là phương án tối ưu cần tìm.\nBước 6. Nêu kết luận dựa trên ngôn ngữ thực tế của bài toán.\n**II. Ví dụ minh hoạ **\nMột người dùng ba loại nguyên liệu $A, B, C$ để sản xuất ra hai loại sản phẩm $P$ và $Q$. Để sản xuất $1 \\mathrm{kg}$ mỗi loại sản phẩm $P$ hoặc $Q$ phải dùng một số kilôgam nguyên liệu khác nhau. Tổng số kilôgam nguyên liệu mỗi loại mà người đó có và số kilôgam từng loại nguyên liệu cần thiết để sản xuất ra $1 \\mathrm{kg}$ sản phẩm mỗi loại được cho trong bảng sau:\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/6afc8fa9-6f3e-4301-bfc2-1192db3d80bb.png)\nBiết $1 \\mathrm{kg}$ sản phẩm $P$ lãi 3 triệu đồng và $1 \\mathrm{kg}$ sản phẩm $Q$ lãi 5 triệu đồng. Hãy lập phương án sản xuất hai loại sản phẩm trên sao cho có lãi cao nhất.\n**Lời giải**\nĐặt $x$ là số kilôgam sản phẩm $P$ và $y$ là số kilôgam sản phẩm $Q$ cần sản xuất.\nTa có hệ bất phương trình:\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/80d45966-4e49-4084-9bdf-6a6f3e79f4e0.png)\n$F = 3x+5y$ (Tiền lãi của phương án sản xuất mà ta muốn đạt lớn nhất).\nMiền nghiệm là ngũ giác $OCBAD$, trong đó $O(0;0)$; $C(0;2)$; $B(2;2)$; $A(4;1)$; $D(5;0)$.\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/e6eb86c5-b9fa-4b9b-8df3-7918cb6260e8.png)\nTính giá trị của $F$ tại các đỉnh:\nTại $O(0;0)$: $F = 3.0 + 5.0 = 0$;\nTại $C(0;2)$: $F = 3.0 + 5.2 = 10$;\nTại $B(2;2)$: $F = 3.2 + 5.2 = 16$;\nTại $A(4;1)$: $F = 3.4 + 5.1 = 17$;\nTại $D(5;0)$: $F = 3.5 + 5.0 = 15$.\nTại đỉnh $A(4;1)$, $F$ đạt giá trị lớn nhất là 17.\nVậy phương án sản xuất tối ưu là làm ra $4kg$ sản phẩm $P$ và $1kg$ sản phẩm $Q$. Khi đó sẽ có lãi cao nhất là 17 triệu đồng.",
+   "can_dien_ly_thuyet_nhom": false,
+   "bang_cu": [
+    {
+     "ma_dang_cu": "T110020204",
+     "ten_cu": "Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm",
+     "noi_dung_cu": "**I. Phương pháp giải**\nBước 1. Đặt biến $x, y$ cho các đối tượng cần tìm.\nBước 2. Lập các hệ bất phương trình mô tả các điều kiện ràng buộc.\nBước 3. Xây dựng hàm mục tiêu cho giá trị mà ta muốn đạt giá trị tối ưu.\nBước 4. Biểu diễn miền nghiệm của hệ bất phương trình (1) trên hệ trục toạ độ $Oxy$ ta được một đa giác. Tìm toạ độ các đỉnh của đa giác.\nBước 5. Do người ta đã chứng minh được $F$ đạt GTLN hoặc GTNN tại một trong các đỉnh của đa giác nên ta chỉ cần tính các giá trị của hàm mục tiêu $F$ tại các đỉnh của đa giác. Tìm ra đỉnh tại đó $F$ đạt GTLN hoặc GTNN. Toạ độ của đỉnh này là phương án tối ưu cần tìm.\nBước 6. Nêu kết luận dựa trên ngôn ngữ thực tế của bài toán.\n**II. Ví dụ minh hoạ **\nMột người dùng ba loại nguyên liệu $A, B, C$ để sản xuất ra hai loại sản phẩm $P$ và $Q$. Để sản xuất $1 \\mathrm{kg}$ mỗi loại sản phẩm $P$ hoặc $Q$ phải dùng một số kilôgam nguyên liệu khác nhau. Tổng số kilôgam nguyên liệu mỗi loại mà người đó có và số kilôgam từng loại nguyên liệu cần thiết để sản xuất ra $1 \\mathrm{kg}$ sản phẩm mỗi loại được cho trong bảng sau:\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/6afc8fa9-6f3e-4301-bfc2-1192db3d80bb.png)\nBiết $1 \\mathrm{kg}$ sản phẩm $P$ lãi 3 triệu đồng và $1 \\mathrm{kg}$ sản phẩm $Q$ lãi 5 triệu đồng. Hãy lập phương án sản xuất hai loại sản phẩm trên sao cho có lãi cao nhất.\n**Lời giải**\nĐặt $x$ là số kilôgam sản phẩm $P$ và $y$ là số kilôgam sản phẩm $Q$ cần sản xuất.\nTa có hệ bất phương trình:\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/80d45966-4e49-4084-9bdf-6a6f3e79f4e0.png)\n$F = 3x+5y$ (Tiền lãi của phương án sản xuất mà ta muốn đạt lớn nhất).\nMiền nghiệm là ngũ giác $OCBAD$, trong đó $O(0;0)$; $C(0;2)$; $B(2;2)$; $A(4;1)$; $D(5;0)$.\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/e6eb86c5-b9fa-4b9b-8df3-7918cb6260e8.png)\nTính giá trị của $F$ tại các đỉnh:\nTại $O(0;0)$: $F = 3.0 + 5.0 = 0$;\nTại $C(0;2)$: $F = 3.0 + 5.2 = 10$;\nTại $B(2;2)$: $F = 3.2 + 5.2 = 16$;\nTại $A(4;1)$: $F = 3.4 + 5.1 = 17$;\nTại $D(5;0)$: $F = 3.5 + 5.0 = 15$.\nTại đỉnh $A(4;1)$, $F$ đạt giá trị lớn nhất là 17.\nVậy phương án sản xuất tối ưu là làm ra $4kg$ sản phẩm $P$ và $1kg$ sản phẩm $Q$. Khi đó sẽ có lãi cao nhất là 17 triệu đồng."
+    }
+   ]
+  }
+ ],
+ "dang_bai": [
+  {
+   "dang_id": "NDB00882",
+   "nhom_id": "NNB01098",
+   "chu_de": "Phương trình và hệ bất phương trình bậc nhất 2 ẩn",
+   "chuyen_de": "Bất phương trình bậc nhất 2 ẩn",
+   "nhom": "Nhận diện và xác định nghiệm của bất phương trình bậc nhất 2 ẩn",
+   "dang": "Nhận diện bất phương trình bậc nhất 2 ẩn",
+   "mo_ta": "Bài toán hỏi bất phương trình nào là bất phương trình bậc nhất 2 ẩn",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00539",
+   "nhom_id": "NNB01098",
+   "chu_de": "Phương trình và hệ bất phương trình bậc nhất 2 ẩn",
+   "chuyen_de": "Bất phương trình bậc nhất 2 ẩn",
+   "nhom": "Nhận diện và xác định nghiệm của bất phương trình bậc nhất 2 ẩn",
+   "dang": "Xác định nghiệm của bất phương trình",
+   "mo_ta": "Bài toán hỏi cặp số nào là nghiệm của bất phương trình bậc nhất 2 ẩn",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00538",
+   "nhom_id": "NNB01099",
+   "chu_de": "Phương trình và hệ bất phương trình bậc nhất 2 ẩn",
+   "chuyen_de": "Bất phương trình bậc nhất 2 ẩn",
+   "nhom": "Miền nghiệm của bất phương trình bậc nhất 2 ẩn",
+   "dang": "Biểu diễn miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn",
+   "mo_ta": "Bài toán cho sẵn bất phương trình, yêu cầu vẽ miền nghiệm hoặc chọn đáp án đúng là miền nghiệm của bất phương trình",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00540",
+   "nhom_id": "NNB01099",
+   "chu_de": "Phương trình và hệ bất phương trình bậc nhất 2 ẩn",
+   "chuyen_de": "Bất phương trình bậc nhất 2 ẩn",
+   "nhom": "Miền nghiệm của bất phương trình bậc nhất 2 ẩn",
+   "dang": "Xác định bất phương trình dựa vào miền nghiệm (Trường hợp đã biết phương trình đường thẳng)",
+   "mo_ta": "Bài toán cho sẵn hình ảnh miền nghiệm của bất phương trình và hỏi xem đó là miền nghiệm của bất phương trình nào. 4 đáp án đề bài cho là các bất phương trình giống nhau về hệ số, chỉ khác về chiều của bất phương trình",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00884",
+   "nhom_id": "NNB01099",
+   "chu_de": "Phương trình và hệ bất phương trình bậc nhất 2 ẩn",
+   "chuyen_de": "Bất phương trình bậc nhất 2 ẩn",
+   "nhom": "Miền nghiệm của bất phương trình bậc nhất 2 ẩn",
+   "dang": "Xác định bất phương trình dựa vào miền nghiệm (Trường hợp cần tìm phương trình đường thẳng)",
+   "mo_ta": "Bài toán cho sẵn hình ảnh miền nghiệm của bất phương trình và hỏi xem đó là miền nghiệm của bất phương trình nào. Đề bài hoặc 4 đáp án chưa đủ để kết luận phương trình đường thẳng mà phải lập phương trình đường thẳng trước, sau đó mới xác định miền nghiệm.",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00541",
+   "nhom_id": "NNB01100",
+   "chu_de": "Phương trình và hệ bất phương trình bậc nhất 2 ẩn",
+   "chuyen_de": "Bất phương trình bậc nhất 2 ẩn",
+   "nhom": "Bài toán thực tế về bất phương trình bậc nhất 2 ẩn",
+   "dang": "bài toán mua 2 loại đồ vật.",
+   "mo_ta": "bài toán mua 2 loại đồ vật. Biết số lượng cố định của 1 loại, tìm số lượng tối đa có thể mua của loại còn lại",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00543",
+   "nhom_id": "NNB01101",
+   "chu_de": "Phương trình và hệ bất phương trình bậc nhất 2 ẩn",
+   "chuyen_de": "Hệ bất phương trình bậc nhất 2 ẩn",
+   "nhom": "Nhận diện và xác định nghiệm của hệ bất phương trình bậc nhất 2 ẩn",
+   "dang": "Nhận diện hệ bất phương trình bậc nhất 2 ẩn",
+   "mo_ta": "Bài toán hỏi hệ nào là hệ bất phương trình bậc nhất 2 ẩn",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00885",
+   "nhom_id": "NNB01101",
+   "chu_de": "Phương trình và hệ bất phương trình bậc nhất 2 ẩn",
+   "chuyen_de": "Hệ bất phương trình bậc nhất 2 ẩn",
+   "nhom": "Nhận diện và xác định nghiệm của hệ bất phương trình bậc nhất 2 ẩn",
+   "dang": "Nghiệm của hệ bất phương trình bậc nhất 2 ẩn",
+   "mo_ta": "Bài toán hỏi điểm nào thuộc/không thuộc miền nghiệm hay cặp nghiệm nào là nghiệm/không là nghiệm của hệ",
+   "ly_thuyet_hien_co": "**I. Phương pháp giải**\nBước 1. Lấy tọa độ $(x_0; y_0)$ của điểm cần kiểm tra từ các phương án đề bài cho và thay trực tiếp giá trị $x = x_0$ và $y = y_0$ vào từng bất phương trình trong hệ.\nBước 2. Tính toán và xét tính đúng/sai của từng mệnh đề bất đẳng thức vừa thu được.\nBước 3. Kết luận:\n   * Nếu tọa độ điểm làm cho tất cả các bất phương trình trong hệ đều đúng $\\Rightarrow$ Điểm đó thuộc miền nghiệm của hệ.\n   * Nếu có ít nhất một bất phương trình sai $\\Rightarrow$ Điểm đó không thuộc miền nghiệm của hệ\n   (có thể dừng thử các bất phương trình còn lại để tiết kiệm thời gian).\n**II. Ví dụ minh họa**\nĐề bài: Điểm nào sau đây thuộc miền nghiệm của hệ bất phương trình $\\begin{cases} x+y-1 > 0 \\ x-y < 0 \\ 2x+y \\leq 4 \\end{cases}$ ?\nA. $A(0;0)$.\nB. $B(2;0)$.\nC. $C(1;2)$.\nD. $D(2;2)$.\n**Lời giải**\nTa thay lần lượt tọa độ từng điểm ở các đáp án vào hệ bất phương trình để kiểm tra:\n* Kiểm tra đáp án A với $A(0;0)$:\nTa được hệ: $\\begin{cases} 0+0-1 = -1 > 0 \\text{ (Sai)} \\\\ 0-0 = 0 < 0 \\text{ (Sai)} \\\\ 2(0)+0 = 0 \\leq 4 \\text{ (Đúng)} \\end{cases}$\n$\\Rightarrow$ Điểm $A$ không thuộc miền nghiệm.\n* Kiểm tra đáp án B với $B(2;0)$:\nTa được hệ: $\\begin{cases} 2+0-1 = 1 > 0 \\text{ (Đúng)} \\\\ 2-0 = 2 < 0 \\text{ (Sai)} \\\\ 2(2)+0 = 4 \\leq 4 \\text{ (Đúng)} \\end{cases}$\n$\\Rightarrow$ Điểm $B$ không thuộc miền nghiệm.\n* Kiểm tra đáp án C với $C(1;2)$:\nTa được hệ: $\\begin{cases} 1+2-1 = 2 > 0 \\text{ (Đúng)} \\\\ 1-2 = -1 < 0 \\text{ (Đúng)} \\\\ 2(1)+2 = 4 \\leq 4 \\text{ (Đúng)} \\end{cases}$\n$\\Rightarrow$ Điểm $C$ thuộc miền nghiệm (do thỏa mãn cả 3 bất phương trình).\n- Kiểm tra đáp án D với $D(2;2)$: \nTa được hệ: $\\begin{cases} 2+2-1=3>0 \\text{ (Đúng)} \\\\ 2-2=0<0 \\text{ (Sai)} \\\\ 2(2)+2=6\\leq 4 \\text{ (Sai)} \\end{cases}$\n$\\Rightarrow$ Điểm D không thuộc miền nghiệm.\nChọn đáp án C.",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": false,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": [
+    {
+     "ma_dang_cu": "T110020203",
+     "ten_cu": "Nghiệm của hệ bất phương trình bậc nhất 2 ẩn",
+     "noi_dung_cu": "**I. Phương pháp giải**\nBước 1. Lấy tọa độ $(x_0; y_0)$ của điểm cần kiểm tra từ các phương án đề bài cho và thay trực tiếp giá trị $x = x_0$ và $y = y_0$ vào từng bất phương trình trong hệ.\nBước 2. Tính toán và xét tính đúng/sai của từng mệnh đề bất đẳng thức vừa thu được.\nBước 3. Kết luận:\n   * Nếu tọa độ điểm làm cho tất cả các bất phương trình trong hệ đều đúng $\\Rightarrow$ Điểm đó thuộc miền nghiệm của hệ.\n   * Nếu có ít nhất một bất phương trình sai $\\Rightarrow$ Điểm đó không thuộc miền nghiệm của hệ\n   (có thể dừng thử các bất phương trình còn lại để tiết kiệm thời gian).\n**II. Ví dụ minh họa**\nĐề bài: Điểm nào sau đây thuộc miền nghiệm của hệ bất phương trình $\\begin{cases} x+y-1 > 0 \\ x-y < 0 \\ 2x+y \\leq 4 \\end{cases}$ ?\nA. $A(0;0)$.\nB. $B(2;0)$.\nC. $C(1;2)$.\nD. $D(2;2)$.\n**Lời giải**\nTa thay lần lượt tọa độ từng điểm ở các đáp án vào hệ bất phương trình để kiểm tra:\n* Kiểm tra đáp án A với $A(0;0)$:\nTa được hệ: $\\begin{cases} 0+0-1 = -1 > 0 \\text{ (Sai)} \\\\ 0-0 = 0 < 0 \\text{ (Sai)} \\\\ 2(0)+0 = 0 \\leq 4 \\text{ (Đúng)} \\end{cases}$\n$\\Rightarrow$ Điểm $A$ không thuộc miền nghiệm.\n* Kiểm tra đáp án B với $B(2;0)$:\nTa được hệ: $\\begin{cases} 2+0-1 = 1 > 0 \\text{ (Đúng)} \\\\ 2-0 = 2 < 0 \\text{ (Sai)} \\\\ 2(2)+0 = 4 \\leq 4 \\text{ (Đúng)} \\end{cases}$\n$\\Rightarrow$ Điểm $B$ không thuộc miền nghiệm.\n* Kiểm tra đáp án C với $C(1;2)$:\nTa được hệ: $\\begin{cases} 1+2-1 = 2 > 0 \\text{ (Đúng)} \\\\ 1-2 = -1 < 0 \\text{ (Đúng)} \\\\ 2(1)+2 = 4 \\leq 4 \\text{ (Đúng)} \\end{cases}$\n$\\Rightarrow$ Điểm $C$ thuộc miền nghiệm (do thỏa mãn cả 3 bất phương trình).\n- Kiểm tra đáp án D với $D(2;2)$: \nTa được hệ: $\\begin{cases} 2+2-1=3>0 \\text{ (Đúng)} \\\\ 2-2=0<0 \\text{ (Sai)} \\\\ 2(2)+2=6\\leq 4 \\text{ (Sai)} \\end{cases}$\n$\\Rightarrow$ Điểm D không thuộc miền nghiệm.\nChọn đáp án C."
+    }
+   ]
+  },
+  {
+   "dang_id": "NDB00546",
+   "nhom_id": "NNB01102",
+   "chu_de": "Phương trình và hệ bất phương trình bậc nhất 2 ẩn",
+   "chuyen_de": "Hệ bất phương trình bậc nhất 2 ẩn",
+   "nhom": "Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn",
+   "dang": "Cho hệ bất phương trình, vẽ hoặc chọn miền nghiệm của hệ đó",
+   "mo_ta": "Cho sẵn hệ bất phương trình, yêu cầu vẽ hoặc chọn miền nghiệm của hệ đó",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00544",
+   "nhom_id": "NNB01102",
+   "chu_de": "Phương trình và hệ bất phương trình bậc nhất 2 ẩn",
+   "chuyen_de": "Hệ bất phương trình bậc nhất 2 ẩn",
+   "nhom": "Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn",
+   "dang": "Cho miền nghiệm, xác định hệ bất phương trình (Trường hợp đã biết trước các phương trình đường thẳng)",
+   "mo_ta": "Cho sẵn hình vẽ miền nghiệm, yêu cầu xác định hệ bất phương trình của miền nghiệm đó. Trường hợp câu hỏi trắc nghiệm mà 4 đáp án đề bài cho có hệ số của các bất phương trình giống nhau, chỉ khác nhau về chiều của bất phương trình (đã biết chắc chắn được phương trình đường thẳng, không cần đi lập phương trình đường thẳng)",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00886",
+   "nhom_id": "NNB01102",
+   "chu_de": "Phương trình và hệ bất phương trình bậc nhất 2 ẩn",
+   "chuyen_de": "Hệ bất phương trình bậc nhất 2 ẩn",
+   "nhom": "Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn",
+   "dang": "Cho miền nghiệm, xác định hệ bất phương trình (Trường hợp cần phải lập phương trình đường thẳng)",
+   "mo_ta": "Cho sẵn hình vẽ miền nghiệm, yêu cầu xác định hệ bất phương trình của miền nghiệm đó. Trường hợp không thể dựa vào đề bài (hoặc 4 đáp án ABCD) để biết chắc được các phương trình đường thẳng và cần lập phương trình đường thẳng trước khi xác định miền nghiệm",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00887",
+   "nhom_id": "NNB01104",
+   "chu_de": "Phương trình và hệ bất phương trình bậc nhất 2 ẩn",
+   "chuyen_de": "Hệ bất phương trình bậc nhất 2 ẩn",
+   "nhom": "Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm",
+   "dang": "Bài toán có 2 yếu là ẩn",
+   "mo_ta": "Bài toán mà đề bài chỉ có 2 ẩn và có thể lập được hệ bất phương trình của 2 ẩn này",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  },
+  {
+   "dang_id": "NDB00888",
+   "nhom_id": "NNB01104",
+   "chu_de": "Phương trình và hệ bất phương trình bậc nhất 2 ẩn",
+   "chuyen_de": "Hệ bất phương trình bậc nhất 2 ẩn",
+   "nhom": "Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm",
+   "dang": "Bài toán có 3 yếu tố là ẩn",
+   "mo_ta": "Bài toán có 3 yếu tố là ẩn, đề bài có cho thêm 1 dữ kiện nữa về mối quan hệ giữa 3 yếu tố đó để tính được yếu tố thứ 3 thông qua 2 yếu tố còn lại và đưa về thành bài toán 2 ẩn thông thường",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "bang_cu_dang": []
+  }
+ ]
+}

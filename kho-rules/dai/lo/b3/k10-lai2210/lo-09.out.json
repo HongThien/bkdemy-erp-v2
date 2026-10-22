@@ -1,0 +1,386 @@
+[
+ {
+  "ma_cau": "T110000000210",
+  "dang_bai_id": "NDB00887",
+  "chac": "vua",
+  "ly_do": "Cực trị trên miền nghiệm cho sẵn hệ, không phải bài thực tế; gần dạng 2 ẩn."
+ },
+ {
+  "ma_cau": "T110000000271",
+  "dang_bai_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Bài thực tế tìm bán kính ngoại tiếp bằng định lí sin; dạng thực tế sau cùng."
+ },
+ {
+  "ma_cau": "T110000000257",
+  "dang_bai_id": "NDB00767",
+  "chac": "cao",
+  "ly_do": "Thực tế biết hai cạnh và góc xen giữa, dùng định lí cos tính MN."
+ },
+ {
+  "ma_cau": "T110000000034",
+  "dang_bai_id": "NDB00552",
+  "chac": "cao",
+  "ly_do": "Nhận diện công thức góc bù nhau 180°-x."
+ },
+ {
+  "ma_cau": "T110030203082",
+  "dang_bai_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế nhiều tam giác dùng định lí sin tính CD."
+ },
+ {
+  "ma_cau": "T110030107074",
+  "dang_bai_id": "NDB00562",
+  "chac": "cao",
+  "ly_do": "Cho tan, chia tử mẫu cho cos² (thay 1=sin²+cos²)."
+ },
+ {
+  "ma_cau": "T110030201043",
+  "dang_bai_id": "NDB00764",
+  "chac": "cao",
+  "ly_do": "Nhận diện các công thức tính diện tích tam giác."
+ },
+ {
+  "ma_cau": "T110030104003",
+  "dang_bai_id": "NDB00556",
+  "chac": "cao",
+  "ly_do": "Dùng quan hệ góc bù cos(180°-β) rồi tính."
+ },
+ {
+  "ma_cau": "T110000000284",
+  "dang_bai_id": "NDB00829",
+  "chac": "vua",
+  "ly_do": "Mệnh đề ∀x∈A⇒x∈B là định nghĩa tập con; cũng gần dạng viết ký hiệu mọi."
+ },
+ {
+  "ma_cau": "T110030201057",
+  "dang_bai_id": "NDB00764",
+  "chac": "cao",
+  "ly_do": "Nhận diện công thức, chứa cả cos, sin và diện tích, vào dạng diện tích."
+ },
+ {
+  "ma_cau": "T110000000005",
+  "dang_bai_id": "NDB00549",
+  "chac": "cao",
+  "ly_do": "Cho tọa độ điểm M trên nửa đường tròn đơn vị, tìm giá trị lượng giác."
+ },
+ {
+  "ma_cau": "T110030107071",
+  "dang_bai_id": "NDB00890",
+  "chac": "vua",
+  "ly_do": "Từ tan+cot suy ra góc rồi tính biểu thức; cũng có thể là dạng biến đổi khác."
+ },
+ {
+  "ma_cau": "T110010203084",
+  "dang_bai_id": "NDB00521",
+  "chac": "cao",
+  "ly_do": "Giao và hiệu hai tập số; theo luật lấy dạng sau cùng là hiệu."
+ },
+ {
+  "ma_cau": "T110000000362",
+  "dang_bai_id": "NDB00562",
+  "chac": "cao",
+  "ly_do": "Cho tan, chia tử mẫu cho cos² (thay 1=sin²+cos²)."
+ },
+ {
+  "ma_cau": "T110000000384",
+  "dang_bai_id": "NDB00764",
+  "chac": "cao",
+  "ly_do": "Nhận diện công thức diện tích, tìm công thức sai."
+ },
+ {
+  "ma_cau": "T110000000332",
+  "dang_bai_id": "NDB00763",
+  "chac": "cao",
+  "ly_do": "Nhận diện định lí sin a/sinA=2R."
+ },
+ {
+  "ma_cau": "T110000000134",
+  "dang_bai_id": "NDB00550",
+  "chac": "vua",
+  "ly_do": "Đu quay: tìm tọa độ điểm theo góc quay 120°, gần dạng tính giá trị lượng giác của góc."
+ },
+ {
+  "ma_cau": "T110020102076",
+  "dang_bai_id": "NDB00539",
+  "chac": "vua",
+  "ly_do": "Hỏi tính chất nghiệm của bất phương trình 2x+y>6; không có dạng khớp hoàn toàn."
+ },
+ {
+  "ma_cau": "T110000000047",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: tìm tập xác định của hàm số (chương hàm số)."
+ },
+ {
+  "ma_cau": "T110000000231",
+  "dang_bai_id": "NDB00764",
+  "chac": "cao",
+  "ly_do": "Nhận diện công thức S=½bc sinA."
+ },
+ {
+  "ma_cau": "T110030204040",
+  "dang_bai_id": "NDB00773",
+  "chac": "vua",
+  "ly_do": "Thực tế tứ giác diều, cực trị diện tích bằng sin; có hình, tìm tổng hai đường chéo."
+ },
+ {
+  "ma_cau": "T110000000015",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sinα và góc tù, tính cosα."
+ },
+ {
+  "ma_cau": "T110000000196",
+  "dang_bai_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế biết hai góc và một cạnh, dùng định lí sin tính AB."
+ },
+ {
+  "ma_cau": "T110010103080",
+  "dang_bai_id": "NDB00826",
+  "chac": "vua",
+  "ly_do": "Phủ định mệnh đề đơn giản không có ∀/∃; dạng gần nhất trong nhóm phủ định."
+ },
+ {
+  "ma_cau": "T110010203085",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: viết tập số dưới dạng khoảng, đoạn, nửa khoảng."
+ },
+ {
+  "ma_cau": "T110020204090",
+  "dang_bai_id": "NDB00887",
+  "chac": "vua",
+  "ly_do": "Thực tế hai ẩn, lập hệ bất phương trình ràng buộc rồi tính tổng hệ số."
+ },
+ {
+  "ma_cau": "T110030202037",
+  "dang_bai_id": "NDB00767",
+  "chac": "cao",
+  "ly_do": "Thực tế biết hai cạnh và góc xen giữa, dùng định lí cos."
+ },
+ {
+  "ma_cau": "T110030203051",
+  "dang_bai_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế biết hai góc và cạnh AB, tìm khoảng cách bằng định lí sin."
+ },
+ {
+  "ma_cau": "T110030204030",
+  "dang_bai_id": "NDB00772",
+  "chac": "cao",
+  "ly_do": "Tính diện tích tam giác biết cạnh và hai góc, dùng định lí sin rồi công thức sin."
+ },
+ {
+  "ma_cau": "T110010203167",
+  "dang_bai_id": "NDB00521",
+  "chac": "cao",
+  "ly_do": "Các phép giao, hợp, hiệu hai khoảng; chứa hiệu nên lấy dạng hiệu."
+ },
+ {
+  "ma_cau": "T110000000281",
+  "dang_bai_id": "NDB00772",
+  "chac": "vua",
+  "ly_do": "Ý a là cực trị hình học, ý b chứng minh công thức diện tích; trộn dạng."
+ },
+ {
+  "ma_cau": "T110010201061",
+  "dang_bai_id": "NDB00521",
+  "chac": "cao",
+  "ly_do": "Tính chất hiệu của tập hợp AA, A∅."
+ },
+ {
+  "ma_cau": "T110010103055",
+  "dang_bai_id": "NDB00826",
+  "chac": "vua",
+  "ly_do": "Phủ định mệnh đề đơn giản không có ∀/∃; dạng gần nhất trong nhóm phủ định."
+ },
+ {
+  "ma_cau": "T110000000429",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: tính giá trị của hàm số tại một điểm."
+ },
+ {
+  "ma_cau": "T110020204067",
+  "dang_bai_id": "NDB00887",
+  "chac": "vua",
+  "ly_do": "Thực tế hai ẩn, chọn hệ bất phương trình ràng buộc số tiền mua cây."
+ },
+ {
+  "ma_cau": "T110030104004",
+  "dang_bai_id": "NDB00556",
+  "chac": "cao",
+  "ly_do": "Dùng quan hệ góc bù để đảo pha rồi rút gọn, tính giá trị."
+ },
+ {
+  "ma_cau": "T110010203082",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: tìm tập xác định/viết tập số dưới dạng khoảng, đoạn."
+ },
+ {
+  "ma_cau": "T110020102118",
+  "dang_bai_id": "NDB00884",
+  "chac": "vua",
+  "ly_do": "Miền nghiệm trên hình, phải lập đường thẳng từ hai điểm; đề thiếu số liệu vì phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T110000000268",
+  "dang_bai_id": "NDB00767",
+  "chac": "cao",
+  "ly_do": "Thực tế biết hai cạnh và góc xen giữa 60°, dùng định lí cos."
+ },
+ {
+  "ma_cau": "T110030204043",
+  "dang_bai_id": "NDB00773",
+  "chac": "cao",
+  "ly_do": "Thực tế tính diện tích mảnh đất tam giác biết ba cạnh (Heron)."
+ },
+ {
+  "ma_cau": "T110030107054",
+  "dang_bai_id": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Biến đổi (tan-cot)² bằng hệ thức lượng giác cơ bản, chọn đáp án."
+ },
+ {
+  "ma_cau": "T110000000401",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: bài tham số m, bất phương trình nghiệm đúng trên miền nghiệm của hệ."
+ },
+ {
+  "ma_cau": "T110030203052",
+  "dang_bai_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế biết hai góc và cạnh AB, dùng định lí sin."
+ },
+ {
+  "ma_cau": "T110000000279",
+  "dang_bai_id": "NDB00521",
+  "chac": "cao",
+  "ly_do": "Hợp, hiệu của hai tập hợp số, kèm biểu diễn trục số; lấy dạng hiệu."
+ },
+ {
+  "ma_cau": "T110000000380",
+  "dang_bai_id": "NDB00521",
+  "chac": "cao",
+  "ly_do": "Giao, hợp, hiệu và tập con; theo luật lấy dạng sau cùng là hiệu."
+ },
+ {
+  "ma_cau": "T110000000154",
+  "dang_bai_id": "NDB00767",
+  "chac": "cao",
+  "ly_do": "Thực tế biết hai cạnh và góc xen giữa 120°, dùng định lí cos."
+ },
+ {
+  "ma_cau": "T110000000014",
+  "dang_bai_id": "NDB00552",
+  "chac": "cao",
+  "ly_do": "Nhận diện sinA=sin(B+C) trong tam giác, quan hệ góc bù."
+ },
+ {
+  "ma_cau": "T110010204093",
+  "dang_bai_id": "NDB00529",
+  "chac": "vua",
+  "ly_do": "Hai tập hợp, đề cho số không giỏi môn nào, hỏi tổng số; gần dạng n(A∪B)."
+ },
+ {
+  "ma_cau": "T110030201011",
+  "dang_bai_id": "NDB00763",
+  "chac": "cao",
+  "ly_do": "Nhận diện công thức định lí sin, tìm phát biểu sai."
+ },
+ {
+  "ma_cau": "T110030202032",
+  "dang_bai_id": "NDB00767",
+  "chac": "cao",
+  "ly_do": "Thực tế biết hai cạnh và góc xen giữa 45°, dùng định lí cos."
+ },
+ {
+  "ma_cau": "T110000000348",
+  "dang_bai_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Bài hải đăng thực tế, dùng định lí sin."
+ },
+ {
+  "ma_cau": "T110030204051",
+  "dang_bai_id": "NDB00773",
+  "chac": "cao",
+  "ly_do": "Thực tế tính diện tích phần sơn, cần giải tam giác và bán kính nội tiếp."
+ },
+ {
+  "ma_cau": "T110000000436",
+  "dang_bai_id": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xác định khoảng của góc khi cosα<0, dấu giá trị lượng giác."
+ },
+ {
+  "ma_cau": "T110030104024",
+  "dang_bai_id": "NDB00556",
+  "chac": "cao",
+  "ly_do": "Dùng quan hệ góc phụ để đảo pha rồi tính giá trị biểu thức."
+ },
+ {
+  "ma_cau": "T110010203139",
+  "dang_bai_id": "NDB00521",
+  "chac": "cao",
+  "ly_do": "Giao, hợp, hiệu hai khoảng; chọn khẳng định đúng, lấy dạng hiệu."
+ },
+ {
+  "ma_cau": "T110000000066",
+  "dang_bai_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế đo chiều cao tòa nhà, dùng định lí sin."
+ },
+ {
+  "ma_cau": "T110030203054",
+  "dang_bai_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế tìm bán kính ngoại tiếp bằng định lí cos và sin; lấy dạng sin."
+ },
+ {
+  "ma_cau": "T110030203062",
+  "dang_bai_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế đo chiều cao tháp; có thể giải bằng định lí sin nên vào dạng sin."
+ },
+ {
+  "ma_cau": "T110000000170",
+  "dang_bai_id": "NDB00771",
+  "chac": "vua",
+  "ly_do": "Tâm ngoại tiếp thực tế, lời giải dùng tọa độ; còn có thể thuộc nhánh hình học tọa độ."
+ },
+ {
+  "ma_cau": "T110000000065",
+  "dang_bai_id": "NDB00767",
+  "chac": "cao",
+  "ly_do": "Thực tế biết hai cạnh và góc xen giữa 120°, dùng định lí cos."
+ },
+ {
+  "ma_cau": "T110000000123",
+  "dang_bai_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế sườn đồi giải tam giác bằng định lí sin."
+ },
+ {
+  "ma_cau": "T110010206031",
+  "dang_bai_id": "NDB00535",
+  "chac": "cao",
+  "ly_do": "Tìm số giá trị m để B là tập con của A."
+ },
+ {
+  "ma_cau": "T110030201034",
+  "dang_bai_id": "NDB00762",
+  "chac": "cao",
+  "ly_do": "Nhận diện định lí cos cho tam giác MNP."
+ },
+ {
+  "ma_cau": "T110000000116",
+  "dang_bai_id": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức sin²x+cos²x=1."
+ }
+]

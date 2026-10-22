@@ -1,0 +1,512 @@
+[
+ {
+  "ma_cau": "T110000000376",
+  "dang_id": "NDB00765",
+  "chac": "vua",
+  "ly_do": "Biết hai cạnh và góc xen giữa; tính cạnh còn lại, góc, ý phụ khác."
+ },
+ {
+  "ma_cau": "T110000000255",
+  "dang_id": "NDB00773",
+  "chac": "cao",
+  "ly_do": "Bối cảnh thực tế, chia/giải tam giác rồi tính diện tích đa giác."
+ },
+ {
+  "ma_cau": "T110000000134",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Không phải hệ thức lượng (hàm số, BPT, đu quay, taxi...)."
+ },
+ {
+  "ma_cau": "T110000000406",
+  "dang_id": "NDB00764",
+  "chac": "vua",
+  "ly_do": "Nhận diện công thức (cos, sin, diện tích); chủ yếu công thức diện tích, ứng viên 00762/00763."
+ },
+ {
+  "ma_cau": "T110030201057",
+  "dang_id": "NDB00764",
+  "chac": "vua",
+  "ly_do": "Nhận diện công thức (cos, sin, diện tích); chủ yếu công thức diện tích, ứng viên 00762/00763."
+ },
+ {
+  "ma_cau": "T110000000169",
+  "dang_id": "NDB00767",
+  "chac": "vua",
+  "ly_do": "Thực tế, cos tính cạnh rồi sin tính góc; ứng viên 00771."
+ },
+ {
+  "ma_cau": "T110000000318",
+  "dang_id": "NDB00772",
+  "chac": "vua",
+  "ly_do": "Tính diện tích tam giác từ dữ kiện; có ý phụ cos/sin hoặc ứng viên 00765."
+ },
+ {
+  "ma_cau": "T110030203008",
+  "dang_id": "NDB01034",
+  "chac": "cao",
+  "ly_do": "Đề hỏi bán kính đường tròn ngoại tiếp, dùng định lí sin, không thực tế."
+ },
+ {
+  "ma_cau": "T110000000242",
+  "dang_id": "NGOAI",
+  "chac": "vua",
+  "ly_do": "Hình tròn tiếp xúc, diện tích phần tô; không phải định lí cos/sin."
+ },
+ {
+  "ma_cau": "T110000000290",
+  "dang_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế đo đạc, giải tam giác bằng định lí sin."
+ },
+ {
+  "ma_cau": "T110000000042",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Không phải hệ thức lượng (hàm số, BPT, đu quay, taxi...)."
+ },
+ {
+  "ma_cau": "T110030204030",
+  "dang_id": "NDB00772",
+  "chac": "vua",
+  "ly_do": "Tính diện tích tam giác từ dữ kiện; có ý phụ cos/sin hoặc ứng viên 00765."
+ },
+ {
+  "ma_cau": "T110030203074",
+  "dang_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế đo đạc, giải tam giác bằng định lí sin."
+ },
+ {
+  "ma_cau": "T110000000398",
+  "dang_id": "NDB01035",
+  "chac": "vua",
+  "ly_do": "Dùng diện tích tìm yếu tố khác (r, đường cao, cạnh); ứng viên 00765/00772."
+ },
+ {
+  "ma_cau": "T110030203080",
+  "dang_id": "NDB00771",
+  "chac": "vua",
+  "ly_do": "Thực tế, định lí sin (59 có thêm cos); ứng viên 00767."
+ },
+ {
+  "ma_cau": "T110030204046",
+  "dang_id": "NDB00773",
+  "chac": "cao",
+  "ly_do": "Bối cảnh thực tế, chia/giải tam giác rồi tính diện tích đa giác."
+ },
+ {
+  "ma_cau": "T110000000393",
+  "dang_id": "NDB00772",
+  "chac": "vua",
+  "ly_do": "Tính diện tích tam giác từ dữ kiện; có ý phụ cos/sin hoặc ứng viên 00765."
+ },
+ {
+  "ma_cau": "T110000000144",
+  "dang_id": "NDB01035",
+  "chac": "vua",
+  "ly_do": "Dùng diện tích tìm yếu tố khác (r, đường cao, cạnh); ứng viên 00765/00772."
+ },
+ {
+  "ma_cau": "T110030203070",
+  "dang_id": "NDB00771",
+  "chac": "vua",
+  "ly_do": "Thực tế, định lí sin (59 có thêm cos); ứng viên 00767."
+ },
+ {
+  "ma_cau": "T110030203013",
+  "dang_id": "NDB01034",
+  "chac": "cao",
+  "ly_do": "Đề hỏi bán kính đường tròn ngoại tiếp, dùng định lí sin, không thực tế."
+ },
+ {
+  "ma_cau": "T110030204026",
+  "dang_id": "NDB01035",
+  "chac": "cao",
+  "ly_do": "Dùng diện tích để tìm r / đường cao h_a."
+ },
+ {
+  "ma_cau": "T110000000009",
+  "dang_id": "NDB01035",
+  "chac": "vua",
+  "ly_do": "Dùng diện tích tìm yếu tố khác (r, đường cao, cạnh); ứng viên 00765/00772."
+ },
+ {
+  "ma_cau": "T110000000361",
+  "dang_id": "NDB00765",
+  "chac": "vua",
+  "ly_do": "Biết hai cạnh và góc xen giữa; tính cạnh còn lại, góc, ý phụ khác."
+ },
+ {
+  "ma_cau": "T110000000099",
+  "dang_id": "NDB00765",
+  "chac": "cao",
+  "ly_do": "Biết hai cạnh a,b và góc C xen giữa; tính c, cos A, góc A."
+ },
+ {
+  "ma_cau": "T110000000170",
+  "dang_id": "KHONG_KHOP",
+  "chac": "vua",
+  "ly_do": "Tìm R bằng toạ độ trong bối cảnh thực tế; 01034 loại thực tế."
+ },
+ {
+  "ma_cau": "T110000000044",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Không phải hệ thức lượng (hàm số, BPT, đu quay, taxi...)."
+ },
+ {
+  "ma_cau": "T110000000264",
+  "dang_id": "NDB01035",
+  "chac": "vua",
+  "ly_do": "Dùng diện tích tìm yếu tố khác (r, đường cao, cạnh); ứng viên 00765/00772."
+ },
+ {
+  "ma_cau": "T110030204049",
+  "dang_id": "NDB01035",
+  "chac": "vua",
+  "ly_do": "Dùng diện tích tìm yếu tố khác (r, đường cao, cạnh); ứng viên 00765/00772."
+ },
+ {
+  "ma_cau": "T110030204033",
+  "dang_id": "NDB00772",
+  "chac": "cao",
+  "ly_do": "Biết ba cạnh, tính diện tích bằng Hê-rông."
+ },
+ {
+  "ma_cau": "T110000000261",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Không phải hệ thức lượng (hàm số, BPT, đu quay, taxi...)."
+ },
+ {
+  "ma_cau": "T110000000253",
+  "dang_id": "NDB00767",
+  "chac": "cao",
+  "ly_do": "Thực tế, định lí cos tính khoảng cách/độ dài."
+ },
+ {
+  "ma_cau": "T110030204034",
+  "dang_id": "NDB01035",
+  "chac": "vua",
+  "ly_do": "Dùng diện tích tìm yếu tố khác (r, đường cao, cạnh); ứng viên 00765/00772."
+ },
+ {
+  "ma_cau": "T110030203025",
+  "dang_id": "NDB00769",
+  "chac": "vua",
+  "ly_do": "Biết hai góc và một cạnh/R, dùng sin; 83 có ý S, r."
+ },
+ {
+  "ma_cau": "T110000000262",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Không phải hệ thức lượng (hàm số, BPT, đu quay, taxi...)."
+ },
+ {
+  "ma_cau": "T110000000396",
+  "dang_id": "KHONG_KHOP",
+  "chac": "vua",
+  "ly_do": "Đo đạc thực tế chỉ dùng tan trong tam giác vuông, không cos/sin/diện tích."
+ },
+ {
+  "ma_cau": "T110000000095",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Không phải hệ thức lượng (hàm số, BPT, đu quay, taxi...)."
+ },
+ {
+  "ma_cau": "T110000000355",
+  "dang_id": "KHONG_KHOP",
+  "chac": "vua",
+  "ly_do": "Đo đạc thực tế chỉ dùng tan trong tam giác vuông, không cos/sin/diện tích."
+ },
+ {
+  "ma_cau": "T110000000098",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Không phải hệ thức lượng (hàm số, BPT, đu quay, taxi...)."
+ },
+ {
+  "ma_cau": "T110000000411",
+  "dang_id": "KHONG_KHOP",
+  "chac": "vua",
+  "ly_do": "Đo đạc thực tế chỉ dùng tan trong tam giác vuông, không cos/sin/diện tích."
+ },
+ {
+  "ma_cau": "T110030201059",
+  "dang_id": "NDB00764",
+  "chac": "vua",
+  "ly_do": "Nhận diện công thức (cos, sin, diện tích); chủ yếu công thức diện tích, ứng viên 00762/00763."
+ },
+ {
+  "ma_cau": "T110000000339",
+  "dang_id": "NDB00772",
+  "chac": "vua",
+  "ly_do": "Tính diện tích tam giác từ dữ kiện; có ý phụ cos/sin hoặc ứng viên 00765."
+ },
+ {
+  "ma_cau": "T110000000228",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Không phải hệ thức lượng (hàm số, BPT, đu quay, taxi...)."
+ },
+ {
+  "ma_cau": "T110030201058",
+  "dang_id": "NDB00764",
+  "chac": "vua",
+  "ly_do": "Nhận diện công thức (cos, sin, diện tích); chủ yếu công thức diện tích, ứng viên 00762/00763."
+ },
+ {
+  "ma_cau": "T110030204047",
+  "dang_id": "NDB00773",
+  "chac": "cao",
+  "ly_do": "Bối cảnh thực tế, chia/giải tam giác rồi tính diện tích đa giác."
+ },
+ {
+  "ma_cau": "T110000000306",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Không phải hệ thức lượng (hàm số, BPT, đu quay, taxi...)."
+ },
+ {
+  "ma_cau": "T110000000187",
+  "dang_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế đo đạc, giải tam giác bằng định lí sin."
+ },
+ {
+  "ma_cau": "T110030201044",
+  "dang_id": "NDB00764",
+  "chac": "vua",
+  "ly_do": "Nhận diện công thức (cos, sin, diện tích); chủ yếu công thức diện tích, ứng viên 00762/00763."
+ },
+ {
+  "ma_cau": "T110000000320",
+  "dang_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế đo đạc, giải tam giác bằng định lí sin."
+ },
+ {
+  "ma_cau": "T110030203059",
+  "dang_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế đo đạc, giải tam giác bằng định lí sin."
+ },
+ {
+  "ma_cau": "T110000000340",
+  "dang_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế đo đạc, giải tam giác bằng định lí sin."
+ },
+ {
+  "ma_cau": "T110030204050",
+  "dang_id": "NDB00773",
+  "chac": "cao",
+  "ly_do": "Bối cảnh thực tế, chia/giải tam giác rồi tính diện tích đa giác."
+ },
+ {
+  "ma_cau": "T110000000250",
+  "dang_id": "NDB00772",
+  "chac": "vua",
+  "ly_do": "Tính diện tích tam giác từ dữ kiện; có ý phụ cos/sin hoặc ứng viên 00765."
+ },
+ {
+  "ma_cau": "T110000000143",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Không phải hệ thức lượng (hàm số, BPT, đu quay, taxi...)."
+ },
+ {
+  "ma_cau": "T110000000147",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Không phải hệ thức lượng (hàm số, BPT, đu quay, taxi...)."
+ },
+ {
+  "ma_cau": "T110030204040",
+  "dang_id": "KHONG_KHOP",
+  "chac": "vua",
+  "ly_do": "Diều: tối đa diện tích rồi tính tổng hai đường chéo, không dạng nào khớp."
+ },
+ {
+  "ma_cau": "T110000000314",
+  "dang_id": "NDB01034",
+  "chac": "vua",
+  "ly_do": "Hai ý: a) R (01034), b) thực tế cos (00767); chọn ý a."
+ },
+ {
+  "ma_cau": "T110000000313",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Không phải hệ thức lượng (hàm số, BPT, đu quay, taxi...)."
+ },
+ {
+  "ma_cau": "T110030203049",
+  "dang_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế đo đạc, giải tam giác bằng định lí sin."
+ },
+ {
+  "ma_cau": "T110030204014",
+  "dang_id": "NDB00772",
+  "chac": "vua",
+  "ly_do": "Tính diện tích tam giác từ dữ kiện; có ý phụ cos/sin hoặc ứng viên 00765."
+ },
+ {
+  "ma_cau": "T110030203082",
+  "dang_id": "NDB00771",
+  "chac": "vua",
+  "ly_do": "Thực tế, định lí sin (59 có thêm cos); ứng viên 00767."
+ },
+ {
+  "ma_cau": "T110000000235",
+  "dang_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế đo đạc, giải tam giác bằng định lí sin."
+ },
+ {
+  "ma_cau": "T110030204031",
+  "dang_id": "NDB01035",
+  "chac": "cao",
+  "ly_do": "Dùng diện tích để tìm r / đường cao h_a."
+ },
+ {
+  "ma_cau": "T110030202041",
+  "dang_id": "NDB00767",
+  "chac": "cao",
+  "ly_do": "Thực tế, định lí cos tính khoảng cách/độ dài."
+ },
+ {
+  "ma_cau": "T110000000347",
+  "dang_id": "NDB00767",
+  "chac": "cao",
+  "ly_do": "Thực tế, định lí cos tính khoảng cách/độ dài."
+ },
+ {
+  "ma_cau": "T110000000133",
+  "dang_id": "NDB00765",
+  "chac": "vua",
+  "ly_do": "Biết hai cạnh và góc xen giữa; tính cạnh còn lại, góc, ý phụ khác."
+ },
+ {
+  "ma_cau": "T110030203056",
+  "dang_id": "KHONG_KHOP",
+  "chac": "vua",
+  "ly_do": "Đo đạc thực tế chỉ dùng tan trong tam giác vuông, không cos/sin/diện tích."
+ },
+ {
+  "ma_cau": "T110030203066",
+  "dang_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế đo đạc, giải tam giác bằng định lí sin."
+ },
+ {
+  "ma_cau": "T110030203027",
+  "dang_id": "NDB01034",
+  "chac": "cao",
+  "ly_do": "Đề hỏi bán kính đường tròn ngoại tiếp, dùng định lí sin, không thực tế."
+ },
+ {
+  "ma_cau": "T110000000206",
+  "dang_id": "NDB01034",
+  "chac": "vua",
+  "ly_do": "Hỏi R tam giác vuông (R=BC/2), không dùng sin; dạng R gần nhất."
+ },
+ {
+  "ma_cau": "T110000000213",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Không phải hệ thức lượng (hàm số, BPT, đu quay, taxi...)."
+ },
+ {
+  "ma_cau": "T110000000433",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Không phải hệ thức lượng (hàm số, BPT, đu quay, taxi...)."
+ },
+ {
+  "ma_cau": "T110000000188",
+  "dang_id": "NDB01035",
+  "chac": "vua",
+  "ly_do": "Dùng diện tích tìm yếu tố khác (r, đường cao, cạnh); ứng viên 00765/00772."
+ },
+ {
+  "ma_cau": "T110030203053",
+  "dang_id": "KHONG_KHOP",
+  "chac": "vua",
+  "ly_do": "Đo đạc thực tế chỉ dùng tan trong tam giác vuông, không cos/sin/diện tích."
+ },
+ {
+  "ma_cau": "T110000000294",
+  "dang_id": "NDB00765",
+  "chac": "vua",
+  "ly_do": "Biết hai cạnh và góc xen giữa; tính cạnh còn lại, góc, ý phụ khác."
+ },
+ {
+  "ma_cau": "T110030203019",
+  "dang_id": "NDB01034",
+  "chac": "vua",
+  "ly_do": "Hỏi R tam giác vuông (R=BC/2), không dùng sin; dạng R gần nhất."
+ },
+ {
+  "ma_cau": "T110030203067",
+  "dang_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế đo đạc, giải tam giác bằng định lí sin."
+ },
+ {
+  "ma_cau": "T110030203009",
+  "dang_id": "NDB01034",
+  "chac": "cao",
+  "ly_do": "Đề hỏi bán kính đường tròn ngoại tiếp, dùng định lí sin, không thực tế."
+ },
+ {
+  "ma_cau": "T110030203079",
+  "dang_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế đo đạc, giải tam giác bằng định lí sin."
+ },
+ {
+  "ma_cau": "T110000000178",
+  "dang_id": "NDB00773",
+  "chac": "cao",
+  "ly_do": "Bối cảnh thực tế, chia/giải tam giác rồi tính diện tích đa giác."
+ },
+ {
+  "ma_cau": "T110030204051",
+  "dang_id": "NDB00773",
+  "chac": "vua",
+  "ly_do": "Thực tế, diện tích tam giác Hê-rông trừ hình tròn nội tiếp; ứng viên 01035."
+ },
+ {
+  "ma_cau": "T110030203007",
+  "dang_id": "NDB00769",
+  "chac": "cao",
+  "ly_do": "Biết hai góc (B qua cos, C) và một cạnh, dùng định lí sin tính cạnh."
+ },
+ {
+  "ma_cau": "T110030204048",
+  "dang_id": "NDB00773",
+  "chac": "cao",
+  "ly_do": "Bối cảnh thực tế, chia/giải tam giác rồi tính diện tích đa giác."
+ },
+ {
+  "ma_cau": "T110030201060",
+  "dang_id": "NDB00764",
+  "chac": "vua",
+  "ly_do": "Nhận diện công thức (cos, sin, diện tích); chủ yếu công thức diện tích, ứng viên 00762/00763."
+ },
+ {
+  "ma_cau": "T110000000287",
+  "dang_id": "NDB00769",
+  "chac": "vua",
+  "ly_do": "Biết hai góc và một cạnh/R, dùng sin; 83 có ý S, r."
+ },
+ {
+  "ma_cau": "T110030203005",
+  "dang_id": "NDB01034",
+  "chac": "cao",
+  "ly_do": "Đề hỏi bán kính đường tròn ngoại tiếp, dùng định lí sin, không thực tế."
+ }
+]

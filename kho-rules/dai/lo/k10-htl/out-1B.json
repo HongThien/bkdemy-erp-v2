@@ -1,0 +1,512 @@
+[
+ {
+  "ma_cau": "T110000000376",
+  "dang_id": "NDB00765",
+  "chac": "vua",
+  "ly_do": "Câu nhiều ý: BC bằng cosin, cosB, AM (vectơ); gần nhất giải tam giác 2 cạnh góc xen"
+ },
+ {
+  "ma_cau": "T110000000255",
+  "dang_id": "NDB00773",
+  "chac": "cao",
+  "ly_do": "Thực tế mảnh đất tứ giác; chia 2 tam giác, Pythagore + Hê-rông tính diện tích"
+ },
+ {
+  "ma_cau": "T110000000134",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Đu quay, độ cao theo giá trị lượng giác góc quay, không dùng cos/sin tam giác"
+ },
+ {
+  "ma_cau": "T110000000406",
+  "dang_id": "NDB00764",
+  "chac": "vua",
+  "ly_do": "Nhận diện công thức S, sin, cos (S=pr, abc/4r); trộn; có thể NDB00762/00763"
+ },
+ {
+  "ma_cau": "T110030201057",
+  "dang_id": "NDB00764",
+  "chac": "vua",
+  "ly_do": "Chọn khẳng định đúng gồm cosin, sin, S, Hê-rông; trộn, ứng viên 00762"
+ },
+ {
+  "ma_cau": "T110000000169",
+  "dang_id": "NDB00767",
+  "chac": "vua",
+  "ly_do": "Thực tế đường tránh núi; dùng cả cosin và sin; ứng viên NDB00771"
+ },
+ {
+  "ma_cau": "T110000000318",
+  "dang_id": "NDB00765",
+  "chac": "vua",
+  "ly_do": "2 cạnh góc xen: BC, S; ứng viên NDB00772"
+ },
+ {
+  "ma_cau": "T110030203008",
+  "dang_id": "NDB01034",
+  "chac": "cao",
+  "ly_do": "Tính R từ BC và góc A bằng định lí sin, không thực tế"
+ },
+ {
+  "ma_cau": "T110000000242",
+  "dang_id": "KHONG_KHOP",
+  "chac": "vua",
+  "ly_do": "Diện tích phần tô giữa các đường tròn, không cos/sin; thực tế không rõ"
+ },
+ {
+  "ma_cau": "T110000000290",
+  "dang_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế tháp nghiêng, định lí sin trong tam giác bóng"
+ },
+ {
+  "ma_cau": "T110000000042",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Tập xác định hàm số"
+ },
+ {
+  "ma_cau": "T110030204030",
+  "dang_id": "NDB00772",
+  "chac": "vua",
+  "ly_do": "Cho 2 góc + 1 cạnh, đề hỏi diện tích; ứng viên NDB00769"
+ },
+ {
+  "ma_cau": "T110030203074",
+  "dang_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế đo chiều cao núi bằng định lí sin"
+ },
+ {
+  "ma_cau": "T110000000398",
+  "dang_id": "NDB00765",
+  "chac": "vua",
+  "ly_do": "b,c,cosA: a, sinA, S, r; ứng viên NDB01035"
+ },
+ {
+  "ma_cau": "T110030203080",
+  "dang_id": "NDB00771",
+  "chac": "vua",
+  "ly_do": "Thực tế hải đăng, sin trong tam giác PBQ; ảnh SVG không mở được"
+ },
+ {
+  "ma_cau": "T110030204046",
+  "dang_id": "NDB00773",
+  "chac": "cao",
+  "ly_do": "Thực tế mảnh đất hình thang, giải tam giác rồi tính diện tích"
+ },
+ {
+  "ma_cau": "T110000000393",
+  "dang_id": "NDB00765",
+  "chac": "vua",
+  "ly_do": "Tính AC cosin và S; ý 2 chứng minh cân; ứng viên NDB00772"
+ },
+ {
+  "ma_cau": "T110000000144",
+  "dang_id": "NDB00765",
+  "chac": "vua",
+  "ly_do": "2 cạnh góc xen: cosA, BC, S, AH; ứng viên NDB01035"
+ },
+ {
+  "ma_cau": "T110030203070",
+  "dang_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế cột tiện ích trên dốc, định lí sin tìm góc nghiêng"
+ },
+ {
+  "ma_cau": "T110030203013",
+  "dang_id": "NDB01034",
+  "chac": "cao",
+  "ly_do": "Tính R từ AB và góc C"
+ },
+ {
+  "ma_cau": "T110030204026",
+  "dang_id": "NDB01035",
+  "chac": "cao",
+  "ly_do": "Cho S và chu vi, tính r bằng S=pr"
+ },
+ {
+  "ma_cau": "T110000000009",
+  "dang_id": "NDB00765",
+  "chac": "vua",
+  "ly_do": "2 cạnh + cosA: BC, S, AH, sinA; ứng viên NDB01035"
+ },
+ {
+  "ma_cau": "T110000000361",
+  "dang_id": "NDB00765",
+  "chac": "vua",
+  "ly_do": "2 cạnh góc xen: c, R, trung tuyến, h_a; ứng viên NDB01034/01035"
+ },
+ {
+  "ma_cau": "T110000000099",
+  "dang_id": "NDB00765",
+  "chac": "cao",
+  "ly_do": "2 cạnh và góc xen: c, cosA, góc A bằng cosin"
+ },
+ {
+  "ma_cau": "T110000000170",
+  "dang_id": "KHONG_KHOP",
+  "chac": "vua",
+  "ly_do": "Thực tế, tìm R tam giác ABC bằng toạ độ, không sin/cos"
+ },
+ {
+  "ma_cau": "T110000000044",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Bảng biến thiên hàm bậc hai"
+ },
+ {
+  "ma_cau": "T110000000264",
+  "dang_id": "NDB00766",
+  "chac": "vua",
+  "ly_do": "Biết 3 cạnh: p, S, R, r; ứng viên NDB01035"
+ },
+ {
+  "ma_cau": "T110030204049",
+  "dang_id": "NDB01035",
+  "chac": "vua",
+  "ly_do": "Thực tế tấm bìa, tính r nội tiếp từ S; ứng viên NDB00773"
+ },
+ {
+  "ma_cau": "T110030204033",
+  "dang_id": "NDB00772",
+  "chac": "cao",
+  "ly_do": "Biết 3 cạnh, tính S bằng Hê-rông"
+ },
+ {
+  "ma_cau": "T110000000261",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Tập xác định hàm số"
+ },
+ {
+  "ma_cau": "T110000000253",
+  "dang_id": "NDB00767",
+  "chac": "cao",
+  "ly_do": "Thực tế đường hầm, cosin tam giác ABC"
+ },
+ {
+  "ma_cau": "T110030204034",
+  "dang_id": "NDB01035",
+  "chac": "vua",
+  "ly_do": "Tính đường cao h_a, dùng sin C; ứng viên NDB00765"
+ },
+ {
+  "ma_cau": "T110030203025",
+  "dang_id": "NDB00769",
+  "chac": "vua",
+  "ly_do": "2 góc và R, tính cạnh AB bằng sin; ứng viên NDB01034"
+ },
+ {
+  "ma_cau": "T110000000262",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Tập xác định hàm số"
+ },
+ {
+  "ma_cau": "T110000000396",
+  "dang_id": "NGOAI",
+  "chac": "vua",
+  "ly_do": "Thực tế nhưng chỉ dùng tan tam giác vuông, không sin/cos"
+ },
+ {
+  "ma_cau": "T110000000095",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Bảng biến thiên"
+ },
+ {
+  "ma_cau": "T110000000355",
+  "dang_id": "NGOAI",
+  "chac": "vua",
+  "ly_do": "Cột cờ, chỉ dùng tan tam giác vuông"
+ },
+ {
+  "ma_cau": "T110000000098",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Hàm số từ biểu đồ"
+ },
+ {
+  "ma_cau": "T110000000411",
+  "dang_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế núi, định lí sin trong tam giác ABC"
+ },
+ {
+  "ma_cau": "T110030201059",
+  "dang_id": "NDB00764",
+  "chac": "vua",
+  "ly_do": "Nhận diện công thức, trộn sin, S, Hê-rông, cosin; ứng viên NDB00762"
+ },
+ {
+  "ma_cau": "T110000000339",
+  "dang_id": "NDB00765",
+  "chac": "vua",
+  "ly_do": "2 cạnh góc xen: S, AC, r; ứng viên NDB00772"
+ },
+ {
+  "ma_cau": "T110000000228",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Quy hoạch tuyến tính"
+ },
+ {
+  "ma_cau": "T110030201058",
+  "dang_id": "NDB00764",
+  "chac": "vua",
+  "ly_do": "Nhận diện công thức S, cosin, sin; ứng viên NDB00762"
+ },
+ {
+  "ma_cau": "T110030204047",
+  "dang_id": "NDB00773",
+  "chac": "vua",
+  "ly_do": "Thực tế mảnh vườn, tính S tam giác CDE; ảnh chưa kiểm"
+ },
+ {
+  "ma_cau": "T110000000306",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Tập xác định hàm số"
+ },
+ {
+  "ma_cau": "T110000000187",
+  "dang_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế cây trên sườn đồi, sin trong tam giác ABC"
+ },
+ {
+  "ma_cau": "T110030201044",
+  "dang_id": "NDB00764",
+  "chac": "vua",
+  "ly_do": "Nhận diện công thức; đáp án là sin; ứng viên NDB00763"
+ },
+ {
+  "ma_cau": "T110000000320",
+  "dang_id": "NDB00771",
+  "chac": "vua",
+  "ly_do": "Thực tế tháp chàm, sin trong tam giác DA1B1; ảnh chưa mở"
+ },
+ {
+  "ma_cau": "T110030203059",
+  "dang_id": "NDB00771",
+  "chac": "vua",
+  "ly_do": "Thực tế tháp canh, sin tam giác ADC; ảnh chưa mở"
+ },
+ {
+  "ma_cau": "T110000000340",
+  "dang_id": "NDB00771",
+  "chac": "vua",
+  "ly_do": "Thực tế toà nhà, sin tam giác OAB; ảnh chưa mở"
+ },
+ {
+  "ma_cau": "T110030204050",
+  "dang_id": "NDB00773",
+  "chac": "vua",
+  "ly_do": "Thực tế mảnh đất tứ giác, chia tam giác tính diện tích rồi tiền; ảnh chưa mở"
+ },
+ {
+  "ma_cau": "T110000000250",
+  "dang_id": "NDB00765",
+  "chac": "vua",
+  "ly_do": "2 cạnh góc xen: S, AC, CH; ứng viên NDB00772"
+ },
+ {
+  "ma_cau": "T110000000143",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Hàm số từ đồ thị"
+ },
+ {
+  "ma_cau": "T110000000147",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Giá cước taxi, hàm số"
+ },
+ {
+  "ma_cau": "T110030204040",
+  "dang_id": "NDB00773",
+  "chac": "vua",
+  "ly_do": "Thực tế cánh diều, diện tích tứ giác lớn nhất; hỏi chéo; ứng viên KHONG_KHOP"
+ },
+ {
+  "ma_cau": "T110000000314",
+  "dang_id": "NDB01034",
+  "chac": "vua",
+  "ly_do": "Ý a tính R, ý b cosin hồ nước thực tế; ứng viên NDB00767"
+ },
+ {
+  "ma_cau": "T110000000313",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Vẽ parabol"
+ },
+ {
+  "ma_cau": "T110030203049",
+  "dang_id": "NDB00771",
+  "chac": "vua",
+  "ly_do": "Thực tế sông, sin tính AB; ảnh chưa mở"
+ },
+ {
+  "ma_cau": "T110030204014",
+  "dang_id": "NDB00772",
+  "chac": "vua",
+  "ly_do": "Diện tích từ 2 cạnh và sin A; ứng viên NDB00764"
+ },
+ {
+  "ma_cau": "T110030203082",
+  "dang_id": "NDB00771",
+  "chac": "vua",
+  "ly_do": "Thực tế cửa biển, sin; ảnh chưa mở"
+ },
+ {
+  "ma_cau": "T110000000235",
+  "dang_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế tháp nhà cao tầng, sin tam giác APQ"
+ },
+ {
+  "ma_cau": "T110030204031",
+  "dang_id": "NDB01035",
+  "chac": "cao",
+  "ly_do": "Tính đường cao h_a bằng cosin rồi S, h=2S/a"
+ },
+ {
+  "ma_cau": "T110030202041",
+  "dang_id": "NDB00767",
+  "chac": "vua",
+  "ly_do": "Thực tế tháp sườn dốc, cosin; ảnh SVG không mở được"
+ },
+ {
+  "ma_cau": "T110000000347",
+  "dang_id": "NDB00767",
+  "chac": "cao",
+  "ly_do": "Thực tế đường hầm, cosin tam giác ABC"
+ },
+ {
+  "ma_cau": "T110000000133",
+  "dang_id": "NDB00765",
+  "chac": "vua",
+  "ly_do": "2 cạnh góc xen: a, cosC, cosB, R; ứng viên NDB01034"
+ },
+ {
+  "ma_cau": "T110030203056",
+  "dang_id": "NGOAI",
+  "chac": "vua",
+  "ly_do": "Núi từ 2 đèn, chỉ dùng tan tam giác vuông"
+ },
+ {
+  "ma_cau": "T110030203066",
+  "dang_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế hải đăng, sin tam giác ABD"
+ },
+ {
+  "ma_cau": "T110030203027",
+  "dang_id": "NDB01034",
+  "chac": "cao",
+  "ly_do": "Tính R từ BC và góc A"
+ },
+ {
+  "ma_cau": "T110000000206",
+  "dang_id": "NDB01034",
+  "chac": "vua",
+  "ly_do": "Tính R tam giác vuông bằng BC/2, không sin"
+ },
+ {
+  "ma_cau": "T110000000213",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Hàm bậc hai"
+ },
+ {
+  "ma_cau": "T110000000433",
+  "dang_id": "NGOAI",
+  "chac": "cao",
+  "ly_do": "Tập xác định hàm số"
+ },
+ {
+  "ma_cau": "T110000000188",
+  "dang_id": "NDB01035",
+  "chac": "cao",
+  "ly_do": "Cho S, tìm sinC rồi cosin tính AB"
+ },
+ {
+  "ma_cau": "T110030203053",
+  "dang_id": "NGOAI",
+  "chac": "vua",
+  "ly_do": "Cây, chỉ dùng tan tam giác vuông"
+ },
+ {
+  "ma_cau": "T110000000294",
+  "dang_id": "NDB00763",
+  "chac": "vua",
+  "ly_do": "Mệnh đề sin, góc, R; trộn; ứng viên NDB01034/00765"
+ },
+ {
+  "ma_cau": "T110030203019",
+  "dang_id": "NDB01034",
+  "chac": "vua",
+  "ly_do": "Tính R tam giác vuông bằng BC/2, không sin"
+ },
+ {
+  "ma_cau": "T110030203067",
+  "dang_id": "NDB00771",
+  "chac": "cao",
+  "ly_do": "Thực tế tàu, định lí sin tam giác ABC"
+ },
+ {
+  "ma_cau": "T110030203009",
+  "dang_id": "NDB01034",
+  "chac": "cao",
+  "ly_do": "Tính R từ BC và góc A"
+ },
+ {
+  "ma_cau": "T110030203079",
+  "dang_id": "NDB00771",
+  "chac": "vua",
+  "ly_do": "Thực tế cây trên sườn đồi, sin; ảnh SVG không mở được"
+ },
+ {
+  "ma_cau": "T110000000178",
+  "dang_id": "NDB00773",
+  "chac": "cao",
+  "ly_do": "Thực tế mảnh đất hình thang, tính diện tích"
+ },
+ {
+  "ma_cau": "T110030204051",
+  "dang_id": "NDB00773",
+  "chac": "vua",
+  "ly_do": "Thực tế họa tiết sơn, tìm r từ S; ứng viên NDB01035"
+ },
+ {
+  "ma_cau": "T110030203007",
+  "dang_id": "NDB00769",
+  "chac": "cao",
+  "ly_do": "Biết cosB và góc C và cạnh AB, tính AC bằng sin"
+ },
+ {
+  "ma_cau": "T110030204048",
+  "dang_id": "NDB00773",
+  "chac": "cao",
+  "ly_do": "Thực tế mảnh đất tứ giác, cosin + Hê-rông, tiền đền bù"
+ },
+ {
+  "ma_cau": "T110030201060",
+  "dang_id": "NDB00762",
+  "chac": "vua",
+  "ly_do": "Nhận diện công thức, đáp án là cosin; ứng viên NDB00764"
+ },
+ {
+  "ma_cau": "T110000000287",
+  "dang_id": "NDB00769",
+  "chac": "vua",
+  "ly_do": "2 góc + BC: AB, AH, r, R; ứng viên NDB01035"
+ },
+ {
+  "ma_cau": "T110030203005",
+  "dang_id": "NDB01034",
+  "chac": "cao",
+  "ly_do": "Tính R từ BC=a và góc A"
+ }
+]
