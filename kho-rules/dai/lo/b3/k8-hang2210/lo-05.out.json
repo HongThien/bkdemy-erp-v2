@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T108000000688",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Chứng minh tính chất số chính phương (tổng hai bình phương) bằng hằng đẳng thức."
+ },
+ {
+  "ma_cau": "T108000000609",
+  "dang_bai_id": "NDB00678",
+  "chac": "vua",
+  "ly_do": "Gồm chia đơn thức cho đơn thức và chia đa thức cho đa thức một biến; chọn dạng chia đa thức."
+ },
+ {
+  "ma_cau": "T108000000689",
+  "dang_bai_id": "NDB00973",
+  "chac": "vua",
+  "ly_do": "Ý1 chứng minh bằng khai triển bình phương; ý2 là GTNN có điều kiện, bản đồ thiếu dạng đó."
+ },
+ {
+  "ma_cau": "T108000000192",
+  "dang_bai_id": "NDB00470",
+  "chac": "vua",
+  "ly_do": "Đặt nhân tử chung x rồi nhận hằng đẳng thức; cũng hợp phương pháp hằng đẳng thức NDB00977."
+ },
+ {
+  "ma_cau": "T108000000232",
+  "dang_bai_id": "NDB00698",
+  "chac": "vua",
+  "ly_do": "Chứng minh luôn dương hai biến bằng tách bình phương; có thể là NDB00697 hoặc NDB00699."
+ },
+ {
+  "ma_cau": "T108000000638",
+  "dang_bai_id": "NDB00468",
+  "chac": "cao",
+  "ly_do": "Cho a+b+c và a²+b²+c², suy ra a=b=c rồi tính giá trị."
+ },
+ {
+  "ma_cau": "T108000000118",
+  "dang_bai_id": "NDB00698",
+  "chac": "cao",
+  "ly_do": "GTNN hai biến, tách thành (x+2y+3)²+(y+2)²+hằng số."
+ },
+ {
+  "ma_cau": "T108000000266",
+  "dang_bai_id": "NDB00971",
+  "chac": "cao",
+  "ly_do": "Tính nhanh giá trị biểu thức số bằng bình phương của một hiệu."
+ },
+ {
+  "ma_cau": "T108040201012",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Tìm x, thu gọn (có chia đa thức cho đơn thức) về phương trình bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000522",
+  "dang_bai_id": "NDB00664",
+  "chac": "vua",
+  "ly_do": "Phân loại đơn thức và đa thức trong cùng câu; hợp cả NDB00668."
+ },
+ {
+  "ma_cau": "T108000000640",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Chứng minh biểu thức chia hết cho một số với mọi n nguyên."
+ },
+ {
+  "ma_cau": "T108050101001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Chứng minh chia hết (số chính phương, xét dư)."
+ },
+ {
+  "ma_cau": "T108000000297",
+  "dang_bai_id": "NDB00688",
+  "chac": "cao",
+  "ly_do": "Viết x²+x+1/4 thành bình phương của một tổng."
+ },
+ {
+  "ma_cau": "T108000000352",
+  "dang_bai_id": "NDB00688",
+  "chac": "vua",
+  "ly_do": "Nhận biết đẳng thức đúng trong bốn phương án trộn nhiều hằng đẳng thức."
+ },
+ {
+  "ma_cau": "T108000000153",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Tìm nghiệm nguyên bằng phân tích vế trái thành tích."
+ },
+ {
+  "ma_cau": "T108000000557",
+  "dang_bai_id": "NDB00675",
+  "chac": "cao",
+  "ly_do": "Nhân ba đa thức: nhân đa thức với đa thức rồi nhân tiếp."
+ },
+ {
+  "ma_cau": "T108040501008",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Đa thức nâng cao, chứng minh không tồn tại hệ số nguyên."
+ },
+ {
+  "ma_cau": "T108000000588",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Bài toán thực tế lập biểu thức thể tích, xét đa thức và bậc."
+ },
+ {
+  "ma_cau": "T108000000489",
+  "dang_bai_id": "NDB00975",
+  "chac": "vua",
+  "ly_do": "Tìm x dạng (x-5)²=24, không cần khai triển; cũng gần NDB00687."
+ },
+ {
+  "ma_cau": "T108000000671",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Tìm x bằng phân tích hiệu hai bình phương thành tích."
+ },
+ {
+  "ma_cau": "T108000000101",
+  "dang_bai_id": "NDB00688",
+  "chac": "cao",
+  "ly_do": "Khai triển bình phương của một hiệu (A-B)²."
+ },
+ {
+  "ma_cau": "T108000000453",
+  "dang_bai_id": "NDB00973",
+  "chac": "vua",
+  "ly_do": "Ba ý khác dạng: chứng minh không phụ thuộc biến, tìm x, tìm đa thức B."
+ },
+ {
+  "ma_cau": "T108000000353",
+  "dang_bai_id": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Tính tổng hai đa thức và tìm đa thức chưa biết bằng phép cộng trừ."
+ },
+ {
+  "ma_cau": "T108000000695",
+  "dang_bai_id": "NDB00975",
+  "chac": "vua",
+  "ly_do": "Tìm x đưa về (x+1)²=0; cũng gần NDB00981."
+ },
+ {
+  "ma_cau": "T108000000229",
+  "dang_bai_id": "NDB00977",
+  "chac": "vua",
+  "ly_do": "Phân tích dùng lập phương hiệu và hiệu hai bình phương, có nhóm hạng tử."
+ },
+ {
+  "ma_cau": "T108000000227",
+  "dang_bai_id": "NDB00977",
+  "chac": "vua",
+  "ly_do": "Nhóm hạng tử gồm hiệu hai bình phương; ví dụ cả NDB00976 và NDB00977 đều có."
+ },
+ {
+  "ma_cau": "T108000000167",
+  "dang_bai_id": "NDB00971",
+  "chac": "cao",
+  "ly_do": "Tính nhanh giá trị số bằng bình phương của một tổng."
+ },
+ {
+  "ma_cau": "T108000000321",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Bài toán thực tế lập biểu thức diện tích xung quanh hộp (có hình)."
+ },
+ {
+  "ma_cau": "T108000000181",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Nhận biết đẳng thức là hằng đẳng thức."
+ },
+ {
+  "ma_cau": "T108000000617",
+  "dang_bai_id": "NDB00681",
+  "chac": "vua",
+  "ly_do": "Chứng minh đẳng thức bằng khai triển nhiều biến; bản đồ chưa có dạng chứng minh đẳng thức."
+ },
+ {
+  "ma_cau": "T108000000553",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Xét đa thức chia hết cho đơn thức và thực hiện phép chia."
+ },
+ {
+  "ma_cau": "T108000000474",
+  "dang_bai_id": "NDB00681",
+  "chac": "vua",
+  "ly_do": "Rút gọn, tính giá trị, tìm nghiệm nguyên: ba ý khác dạng."
+ },
+ {
+  "ma_cau": "T108040501004",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Tính giá trị đa thức khi biết điều kiện x+y=5."
+ },
+ {
+  "ma_cau": "T108000000308",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Bài toán thực tế diện tích khu vườn bằng đa thức (có hình)."
+ },
+ {
+  "ma_cau": "T108000000476",
+  "dang_bai_id": "NDB00681",
+  "chac": "vua",
+  "ly_do": "Rút gọn, tính giá trị, tìm nghiệm nguyên: ba ý khác dạng."
+ },
+ {
+  "ma_cau": "T108000000616",
+  "dang_bai_id": "NDB00680",
+  "chac": "vua",
+  "ly_do": "Chứng minh không phụ thuộc x, một biến; mô tả NDB00681 cũng nhắc dạng này."
+ },
+ {
+  "ma_cau": "T108000000133",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Bài toán thực tế lập biểu thức đại số."
+ },
+ {
+  "ma_cau": "T108050102001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Chứng minh biểu thức là số chính phương."
+ },
+ {
+  "ma_cau": "T108000000697",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Phương trình nghiệm nguyên bằng tổng bình phương."
+ },
+ {
+  "ma_cau": "T108000000658",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Bài toán thực tế diện tích, viết biểu thức chiều rộng."
+ },
+ {
+  "ma_cau": "T108040501002",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Tìm x, y từ tổng các số không âm bằng 0."
+ },
+ {
+  "ma_cau": "T108000000387",
+  "dang_bai_id": "NDB00676",
+  "chac": "cao",
+  "ly_do": "Xác định đơn thức cho trước chia hết cho đơn thức nào."
+ },
+ {
+  "ma_cau": "T108000000166",
+  "dang_bai_id": "NDB00688",
+  "chac": "cao",
+  "ly_do": "Viết đa thức thành bình phương của một hiệu."
+ },
+ {
+  "ma_cau": "T108000000659",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Bài toán thực tế diện tích khu vườn lập phương trình (có hình)."
+ },
+ {
+  "ma_cau": "T108000000648",
+  "dang_bai_id": "NDB00673",
+  "chac": "vua",
+  "ly_do": "Thu gọn bằng nhân đơn thức rồi tìm bậc, hệ số, phần biến."
+ },
+ {
+  "ma_cau": "T108050203001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Tìm x, y, z từ tổng các bình phương bằng 0."
+ },
+ {
+  "ma_cau": "T108000000107",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Tính a-b khi biết a²+b² và ab bằng hằng đẳng thức."
+ },
+ {
+  "ma_cau": "T108000000302",
+  "dang_bai_id": "NDB00673",
+  "chac": "vua",
+  "ly_do": "Thu gọn đơn thức rồi tìm bậc, hệ số, tính giá trị."
+ },
+ {
+  "ma_cau": "T108050202005",
+  "dang_bai_id": "NDB00975",
+  "chac": "vua",
+  "ly_do": "Phương trình bậc ba dùng hằng đẳng thức nâng cao; chưa chắc đưa về ax³=b."
+ },
+ {
+  "ma_cau": "T108040501003",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Chứng minh tích giá trị đa thức bậc hai không âm với điều kiện hệ số."
+ },
+ {
+  "ma_cau": "T108000000259",
+  "dang_bai_id": "NDB00674",
+  "chac": "vua",
+  "ly_do": "Phép nhân đơn thức với đa thức rồi thu gọn; cũng hợp NDB00681."
+ },
+ {
+  "ma_cau": "T108030201007",
+  "dang_bai_id": "NDB00691",
+  "chac": "vua",
+  "ly_do": "Phân tích x³+8 là tổng hai lập phương; cũng hợp NDB00977."
+ },
+ {
+  "ma_cau": "T108000000743",
+  "dang_bai_id": "NDB00678",
+  "chac": "vua",
+  "ly_do": "Chia đa thức cho đa thức một biến có tham số a để dư bằng 0."
+ },
+ {
+  "ma_cau": "T108000000746",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Bài toán thực tế diện tích bằng biểu thức đại số (có hình)."
+ },
+ {
+  "ma_cau": "T108050203002",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Tính giá trị biểu thức từ tổng các bình phương bằng 0."
+ },
+ {
+  "ma_cau": "T108000000777",
+  "dang_bai_id": "NDB00672",
+  "chac": "vua",
+  "ly_do": "Cộng trừ hai đa thức rồi tính giá trị."
+ },
+ {
+  "ma_cau": "T108020102001",
+  "dang_bai_id": "NDB00688",
+  "chac": "vua",
+  "ly_do": "Viết x²+2x+1 thành bình phương; cũng hợp NDB00689."
+ },
+ {
+  "ma_cau": "T108000000376",
+  "dang_bai_id": "NDB00692",
+  "chac": "vua",
+  "ly_do": "Tích (2x-5)(2x+5) là hiệu hai bình phương; bài có bối cảnh thực tế diện tích."
+ },
+ {
+  "ma_cau": "T108000000093",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Chứng minh đẳng thức có điều kiện a+b+c=2p."
+ },
+ {
+  "ma_cau": "T108000000128",
+  "dang_bai_id": "NDB00671",
+  "chac": "vua",
+  "ly_do": "Thu gọn đa thức bằng cộng trừ đơn thức đồng dạng; cũng hợp NDB00681."
+ },
+ {
+  "ma_cau": "T108000000687",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Chứng minh tính chất số chính phương (tổng hai bình phương)."
+ },
+ {
+  "ma_cau": "T108000000711",
+  "dang_bai_id": "NDB00673",
+  "chac": "vua",
+  "ly_do": "Thu gọn đơn thức có lũy thừa rồi tìm bậc, hệ số."
+ },
+ {
+  "ma_cau": "T108000000633",
+  "dang_bai_id": "NDB00971",
+  "chac": "vua",
+  "ly_do": "Tính giá trị biểu thức khi biết x+y, dùng bình phương của tổng; chưa khớp hẳn mô tả."
+ },
+ {
+  "ma_cau": "T108000000389",
+  "dang_bai_id": "NDB00672",
+  "chac": "vua",
+  "ly_do": "Bốn mệnh đề về bậc, thu gọn, cộng đa thức, giá trị."
+ },
+ {
+  "ma_cau": "T108000000636",
+  "dang_bai_id": "NDB00469",
+  "chac": "vua",
+  "ly_do": "Ý b là a³+b³+c³ khi tổng bằng 0; ý a là chứng minh đẳng thức khác."
+ },
+ {
+  "ma_cau": "T108000000542",
+  "dang_bai_id": "NDB00672",
+  "chac": "vua",
+  "ly_do": "Tìm tổng, hiệu hai đa thức và bậc của chúng."
+ },
+ {
+  "ma_cau": "T108000000079",
+  "dang_bai_id": "NDB00973",
+  "chac": "cao",
+  "ly_do": "Chứng minh không phụ thuộc biến, dùng bình phương của tổng."
+ },
+ {
+  "ma_cau": "T108000000792",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Bài toán thực tế lập đa thức số tiền và tính giá trị."
+ },
+ {
+  "ma_cau": "T108000000146",
+  "dang_bai_id": "NDB00688",
+  "chac": "cao",
+  "ly_do": "Viết 9x²+6xy+y² thành bình phương của một tổng."
+ },
+ {
+  "ma_cau": "T108000000595",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: Chứng minh biểu thức chia hết cho 5 với mọi n nguyên."
+ }
+]

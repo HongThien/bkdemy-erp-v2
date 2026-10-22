@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T108020202089",
+  "dang_bai_id": "NDB00698",
+  "chac": "vua",
+  "ly_do": "Tách hai bình phương (x+y)², (x-y-2)² suy ra x,y rồi tính M; bản đồ có thể thiếu dạng tìm x,y."
+ },
+ {
+  "ma_cau": "T108000000456",
+  "dang_bai_id": "NDB00664",
+  "chac": "cao",
+  "ly_do": "Nhận biết đơn thức trong các biểu thức."
+ },
+ {
+  "ma_cau": "T108030401019",
+  "dang_bai_id": "NDB00476",
+  "chac": "cao",
+  "ly_do": "Tam thức bậc hai hệ số x² khác 1 phân tích thành nhân tử."
+ },
+ {
+  "ma_cau": "T108030102022",
+  "dang_bai_id": "NDB00979",
+  "chac": "cao",
+  "ly_do": "Rút nhân tử chung (2x-1) rồi chia hai trường hợp tìm x."
+ },
+ {
+  "ma_cau": "T108000000152",
+  "dang_bai_id": "NDB00974",
+  "chac": "cao",
+  "ly_do": "Khai triển HĐT bình phương, x² triệt tiêu, còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108020202078",
+  "dang_bai_id": "NDB00697",
+  "chac": "cao",
+  "ly_do": "GTNN hai biến tách (x-2y)² và (y-4)²."
+ },
+ {
+  "ma_cau": "T108000000139",
+  "dang_bai_id": "NDB00974",
+  "chac": "cao",
+  "ly_do": "Khai triển HĐT bình phương và hiệu hai bình phương, x² triệt tiêu, còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000070",
+  "dang_bai_id": "NDB00974",
+  "chac": "cao",
+  "ly_do": "Dùng bình phương (x-1)² và nhân đa thức, 3x² triệt tiêu, còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000427",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đa thức, 10x² triệt tiêu, còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000411",
+  "dang_bai_id": "NDB00671",
+  "chac": "cao",
+  "ly_do": "Thu gọn đa thức bằng cộng các đơn thức đồng dạng."
+ },
+ {
+  "ma_cau": "T108000000345",
+  "dang_bai_id": "NDB00970",
+  "chac": "cao",
+  "ly_do": "Biểu thức là lập phương của tổng, tính giá trị tại x=8."
+ },
+ {
+  "ma_cau": "T108000000461",
+  "dang_bai_id": "NDB00688",
+  "chac": "cao",
+  "ly_do": "Khai triển bình phương của một hiệu."
+ },
+ {
+  "ma_cau": "T108000000036",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đa thức, 3x² triệt tiêu, còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108020601055",
+  "dang_bai_id": "NDB00973",
+  "chac": "cao",
+  "ly_do": "Rút gọn dùng hiệu hai lập phương và hiệu hai bình phương."
+ },
+ {
+  "ma_cau": "T108000000458",
+  "dang_bai_id": "NDB00665",
+  "chac": "cao",
+  "ly_do": "Xác định hệ số của đơn thức sau khi thu gọn."
+ },
+ {
+  "ma_cau": "T108000000726",
+  "dang_bai_id": "NDB00675",
+  "chac": "cao",
+  "ly_do": "Nhân đa thức ba hạng tử với đa thức hai hạng tử."
+ },
+ {
+  "ma_cau": "T108000000559",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Chia đa thức cho đơn thức hệ số phân số."
+ },
+ {
+  "ma_cau": "T108000000052",
+  "dang_bai_id": "NDB00688",
+  "chac": "cao",
+  "ly_do": "Khai triển bình phương của một tổng."
+ },
+ {
+  "ma_cau": "T108000000782",
+  "dang_bai_id": "NDB00676",
+  "chac": "cao",
+  "ly_do": "Chia đơn thức cho đơn thức nhiều biến."
+ },
+ {
+  "ma_cau": "T108000000547",
+  "dang_bai_id": "NDB00674",
+  "chac": "cao",
+  "ly_do": "Nhân đa thức với đơn thức 10xy."
+ },
+ {
+  "ma_cau": "T108000000049",
+  "dang_bai_id": "NDB00664",
+  "chac": "cao",
+  "ly_do": "Nhận biết đơn thức trong các biểu thức."
+ },
+ {
+  "ma_cau": "T108000000575",
+  "dang_bai_id": "NDB00686",
+  "chac": "vua",
+  "ly_do": "Khai triển hai vế, x² triệt tiêu, bậc nhất; cũng làm được bằng rút nhân tử chung NDB00979."
+ },
+ {
+  "ma_cau": "T108000000191",
+  "dang_bai_id": "NDB00974",
+  "chac": "cao",
+  "ly_do": "Khai triển HĐT bình phương của hiệu, x² triệt tiêu, còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000450",
+  "dang_bai_id": "NDB00674",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đa thức nhiều biến."
+ },
+ {
+  "ma_cau": "T108010104035",
+  "dang_bai_id": "NDB00667",
+  "chac": "cao",
+  "ly_do": "Chỉ ra các đơn thức đồng dạng."
+ },
+ {
+  "ma_cau": "T108000000413",
+  "dang_bai_id": "NDB00670",
+  "chac": "cao",
+  "ly_do": "Thu gọn đa thức rồi tìm bậc."
+ },
+ {
+  "ma_cau": "T108000000460",
+  "dang_bai_id": "NDB00671",
+  "chac": "cao",
+  "ly_do": "Thu gọn đa thức bằng cộng trừ các đơn thức đồng dạng."
+ },
+ {
+  "ma_cau": "T108000000423",
+  "dang_bai_id": "NDB00674",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đa thức nhiều biến."
+ },
+ {
+  "ma_cau": "T108000000769",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Nhân các đa thức, hạng tử bậc hai triệt tiêu, còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000179",
+  "dang_bai_id": "NDB00665",
+  "chac": "cao",
+  "ly_do": "Thu gọn đơn thức rồi đọc hệ số."
+ },
+ {
+  "ma_cau": "T108000000580",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đa thức, x² triệt tiêu, còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000288",
+  "dang_bai_id": "NDB00664",
+  "chac": "cao",
+  "ly_do": "Nhận biết đơn thức trong các biểu thức."
+ },
+ {
+  "ma_cau": "T108000000527",
+  "dang_bai_id": "NDB00667",
+  "chac": "cao",
+  "ly_do": "Tìm đơn thức không đồng dạng với các đơn thức còn lại."
+ },
+ {
+  "ma_cau": "T108000000433",
+  "dang_bai_id": "NDB00666",
+  "chac": "cao",
+  "ly_do": "Tìm bậc của đơn thức."
+ },
+ {
+  "ma_cau": "T108000000555",
+  "dang_bai_id": "NDB00675",
+  "chac": "cao",
+  "ly_do": "Nhân đa thức với đa thức."
+ },
+ {
+  "ma_cau": "T108000000161",
+  "dang_bai_id": "NDB00683",
+  "chac": "cao",
+  "ly_do": "Thay giá trị ba biến vào biểu thức."
+ },
+ {
+  "ma_cau": "T108030201079",
+  "dang_bai_id": "NDB00692",
+  "chac": "vua",
+  "ly_do": "Hiệu hai bình phương của hai đa thức viết thành tích; cũng hợp phân tích bằng HĐT NDB00977."
+ },
+ {
+  "ma_cau": "T108010501001",
+  "dang_bai_id": "NDB00680",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức một biến bằng nhân đa thức rồi thu gọn."
+ },
+ {
+  "ma_cau": "T108000000492",
+  "dang_bai_id": "NDB00975",
+  "chac": "cao",
+  "ly_do": "Dùng hiệu hai bình phương, đưa về x²=11 (không bậc nhất)."
+ },
+ {
+  "ma_cau": "T108040201014",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Nhân hai đa thức, x² triệt tiêu, còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000382",
+  "dang_bai_id": "NDB00974",
+  "chac": "cao",
+  "ly_do": "Dùng hiệu hai bình phương, 4x² triệt tiêu, còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000076",
+  "dang_bai_id": "NDB00692",
+  "chac": "cao",
+  "ly_do": "Tích (x-2y)(x+2y) viết thành hiệu hai bình phương."
+ },
+ {
+  "ma_cau": "T108000000009",
+  "dang_bai_id": "NDB00667",
+  "chac": "cao",
+  "ly_do": "Chọn đơn thức đồng dạng với đơn thức cho trước."
+ },
+ {
+  "ma_cau": "T108000000647",
+  "dang_bai_id": "NDB00683",
+  "chac": "cao",
+  "ly_do": "Thay giá trị hai biến vào đa thức."
+ },
+ {
+  "ma_cau": "T108000000069",
+  "dang_bai_id": "NDB00973",
+  "chac": "cao",
+  "ly_do": "Rút gọn kết hợp bình phương của tổng và nhân đa thức."
+ },
+ {
+  "ma_cau": "T108000000175",
+  "dang_bai_id": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Cộng trừ đa thức và tìm đa thức chưa biết."
+ },
+ {
+  "ma_cau": "T108000000337",
+  "dang_bai_id": "NDB00973",
+  "chac": "cao",
+  "ly_do": "Rút gọn kết hợp hiệu hai bình phương và bình phương của hiệu."
+ },
+ {
+  "ma_cau": "T108000000425",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Chia đa thức cho đơn thức."
+ },
+ {
+  "ma_cau": "T108000000662",
+  "dang_bai_id": "NDB00973",
+  "chac": "cao",
+  "ly_do": "Rút gọn kết hợp hiệu hai bình phương và bình phương của tổng."
+ },
+ {
+  "ma_cau": "T108010104023",
+  "dang_bai_id": "NDB00667",
+  "chac": "cao",
+  "ly_do": "Chỉ ra các đơn thức đồng dạng."
+ },
+ {
+  "ma_cau": "T108000000767",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Gom hạng tử chứa x, đưa về phương trình bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000690",
+  "dang_bai_id": "NDB00681",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức nhiều biến có chia đa thức cho đơn thức."
+ },
+ {
+  "ma_cau": "T108000000075",
+  "dang_bai_id": "NDB00670",
+  "chac": "cao",
+  "ly_do": "Thu gọn đa thức rồi tìm bậc."
+ },
+ {
+  "ma_cau": "T108030301019",
+  "dang_bai_id": "NDB00976",
+  "chac": "cao",
+  "ly_do": "Bốn hạng tử, nhóm hạng tử rồi đặt nhân tử chung."
+ },
+ {
+  "ma_cau": "T108000000395",
+  "dang_bai_id": "NDB00664",
+  "chac": "cao",
+  "ly_do": "Nhận biết đơn thức trong các biểu thức."
+ },
+ {
+  "ma_cau": "T108000000330",
+  "dang_bai_id": "NDB00680",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức một biến bằng nhân đơn thức với đa thức."
+ },
+ {
+  "ma_cau": "T108000000078",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Chia đa thức cho đơn thức."
+ },
+ {
+  "ma_cau": "T108030201092",
+  "dang_bai_id": "NDB00977",
+  "chac": "cao",
+  "ly_do": "Gom ba hạng tử thành bình phương rồi dùng hiệu hai bình phương."
+ },
+ {
+  "ma_cau": "T108040301004",
+  "dang_bai_id": "NDB00973",
+  "chac": "cao",
+  "ly_do": "Rút gọn kết hợp bình phương của hiệu và nhân hai đa thức."
+ },
+ {
+  "ma_cau": "T108040101007",
+  "dang_bai_id": "NDB00666",
+  "chac": "cao",
+  "ly_do": "Tìm bậc của đơn thức."
+ },
+ {
+  "ma_cau": "T108000000786",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Chia đa thức cho đơn thức sau khi khai triển luỹ thừa."
+ },
+ {
+  "ma_cau": "T108000000373",
+  "dang_bai_id": "NDB00664",
+  "chac": "cao",
+  "ly_do": "Nhận biết đơn thức trong các biểu thức."
+ },
+ {
+  "ma_cau": "T108000000765",
+  "dang_bai_id": "NDB00671",
+  "chac": "cao",
+  "ly_do": "Thu gọn bằng cộng trừ các đơn thức đồng dạng."
+ },
+ {
+  "ma_cau": "T108000000248",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Chia đa thức cho đơn thức."
+ },
+ {
+  "ma_cau": "T108040201016",
+  "dang_bai_id": "NDB00683",
+  "chac": "cao",
+  "ly_do": "Rút gọn rồi thay giá trị hai biến."
+ },
+ {
+  "ma_cau": "T108000000621",
+  "dang_bai_id": "NDB00974",
+  "chac": "cao",
+  "ly_do": "Khai triển hai bình phương, 9x² triệt tiêu, còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000137",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Bỏ ngoặc đưa về phương trình bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000485",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Nhân bỏ ngoặc, x² triệt tiêu, còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000543",
+  "dang_bai_id": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Cộng trừ hai đa thức sau khi khai triển."
+ },
+ {
+  "ma_cau": "T108000000469",
+  "dang_bai_id": "NDB00973",
+  "chac": "cao",
+  "ly_do": "Thu gọn dùng hiệu hai bình phương."
+ }
+]
