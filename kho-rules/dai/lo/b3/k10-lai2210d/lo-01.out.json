@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T110030105031",
+  "dang_bai_id": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức 1+tan²=1/cos², chỉ chuyển vế."
+ },
+ {
+  "ma_cau": "T110030104033",
+  "dang_bai_id": "NDB00556",
+  "chac": "cao",
+  "ly_do": "Dùng cả góc phụ và bù để đảo pha rồi rút gọn vài bước."
+ },
+ {
+  "ma_cau": "T110020204052",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn (diện tích đậu, cà), lập hệ và tìm max."
+ },
+ {
+  "ma_cau": "T110020203078",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm không thuộc miền nghiệm của hệ."
+ },
+ {
+  "ma_cau": "T110030106070",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cot, tính sin có xét dấu."
+ },
+ {
+  "ma_cau": "T110030101032",
+  "dang_bai_id": "NDB00550",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức ngắn biết số đo góc."
+ },
+ {
+  "ma_cau": "T110030106100",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cot, tính cos có xét dấu."
+ },
+ {
+  "ma_cau": "T110030102023",
+  "dang_bai_id": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xét dấu giá trị lượng giác của góc nhọn."
+ },
+ {
+  "ma_cau": "T110020102062",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số không là nghiệm của bất phương trình."
+ },
+ {
+  "ma_cau": "T110020202099",
+  "dang_bai_id": "NDB00544",
+  "chac": "vua",
+  "ly_do": "Đề có hình, ba đáp án cùng hệ số nhưng một đáp án khác dấu hằng số; ranh giới 00544/00886."
+ },
+ {
+  "ma_cau": "T110020204013",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn, tìm chi phí nhỏ nhất."
+ },
+ {
+  "ma_cau": "T110020102085",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: lập bất phương trình bậc nhất 2 ẩn từ bài toán thực tế."
+ },
+ {
+  "ma_cau": "T110020102089",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Hỏi bất phương trình nhận cặp số đã cho làm nghiệm."
+ },
+ {
+  "ma_cau": "T110020101062",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Nhận diện bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020102124",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số không là nghiệm của bất phương trình."
+ },
+ {
+  "ma_cau": "T110020203070",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc miền nghiệm của hệ."
+ },
+ {
+  "ma_cau": "T110020202101",
+  "dang_bai_id": "NDB00544",
+  "chac": "cao",
+  "ly_do": "Hình miền nghiệm, đáp án cùng hệ số, chỉ khác chiều bất đẳng thức."
+ },
+ {
+  "ma_cau": "T110020102088",
+  "dang_bai_id": "NDB00884",
+  "chac": "cao",
+  "ly_do": "Hình miền nghiệm, đáp án khác hệ số nên phải lập phương trình đường thẳng."
+ },
+ {
+  "ma_cau": "T110020102090",
+  "dang_bai_id": "NDB00538",
+  "chac": "cao",
+  "ly_do": "Biểu diễn miền nghiệm của bất phương trình cho sẵn."
+ },
+ {
+  "ma_cau": "T110030105013",
+  "dang_bai_id": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức cos² theo tan."
+ },
+ {
+  "ma_cau": "T110020102095",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc miền nghiệm của bất phương trình."
+ },
+ {
+  "ma_cau": "T110020203083",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc miền nghiệm của hệ."
+ },
+ {
+  "ma_cau": "T110030107051",
+  "dang_bai_id": "NDB00560",
+  "chac": "cao",
+  "ly_do": "Biết sin+cos, tính biểu thức."
+ },
+ {
+  "ma_cau": "T110020202104",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số thuộc miền nghiệm của hệ."
+ },
+ {
+  "ma_cau": "T110020102086",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số là nghiệm của bất phương trình."
+ },
+ {
+  "ma_cau": "T110030107016",
+  "dang_bai_id": "NDB00562",
+  "chac": "vua",
+  "ly_do": "Cho cot, biểu thức đưa về đồng bậc nhờ 1=sin²+cos²; có thể xem là dạng 00890/00563."
+ },
+ {
+  "ma_cau": "T110030103012",
+  "dang_bai_id": "NDB00552",
+  "chac": "cao",
+  "ly_do": "Nhận diện quan hệ lượng giác hai góc bù nhau."
+ },
+ {
+  "ma_cau": "T110020202089",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Xét điểm có thuộc miền nghiệm của hệ không."
+ },
+ {
+  "ma_cau": "T110020204086",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn (áo, quần), tìm lãi lớn nhất."
+ },
+ {
+  "ma_cau": "T110030107059",
+  "dang_bai_id": "NDB00563",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức biến đổi tự do, không thuộc dạng cố định."
+ },
+ {
+  "ma_cau": "T110020201038",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ bất phương trình bậc nhất 2 ẩn."
+ },
+ {
+  "ma_cau": "T110030105030",
+  "dang_bai_id": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức sin²+cos²=1."
+ },
+ {
+  "ma_cau": "T110030106069",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho tan, góc tù, tính cos."
+ },
+ {
+  "ma_cau": "T110030101025",
+  "dang_bai_id": "NDB00549",
+  "chac": "cao",
+  "ly_do": "Tính tan từ tọa độ điểm trên nửa đường tròn đơn vị."
+ },
+ {
+  "ma_cau": "T110020101064",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Nhận diện bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110010205025",
+  "dang_bai_id": "NDB00534",
+  "chac": "cao",
+  "ly_do": "Ba tập hợp, tìm số phần tử không thuộc tập nào."
+ },
+ {
+  "ma_cau": "T110020203025",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc miền nghiệm của hệ."
+ },
+ {
+  "ma_cau": "T110020203018",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc miền nghiệm của hệ."
+ },
+ {
+  "ma_cau": "T110030101037",
+  "dang_bai_id": "NDB00550",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức ngắn biết số đo góc."
+ },
+ {
+  "ma_cau": "T110020203029",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc miền nghiệm của hệ."
+ },
+ {
+  "ma_cau": "T110000000140",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hàm số: tính giá trị hàm số cho bởi nhiều công thức, bản đồ chưa có."
+ },
+ {
+  "ma_cau": "T110020204048",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn (xe tải A, B), tìm cước nhỏ nhất."
+ },
+ {
+  "ma_cau": "T110020101055",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Nhận diện bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110010205001",
+  "dang_bai_id": "NDB00530",
+  "chac": "cao",
+  "ly_do": "Ba tập hợp, tìm số học sinh chỉ giỏi một môn."
+ },
+ {
+  "ma_cau": "T110000000430",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hàm số: đọc tính đơn điệu từ đồ thị, bản đồ chưa có."
+ },
+ {
+  "ma_cau": "T110020203045",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm không thuộc miền nghiệm của hệ."
+ },
+ {
+  "ma_cau": "T110030106071",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính sin."
+ },
+ {
+  "ma_cau": "T110020201090",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ bất phương trình bậc nhất 2 ẩn."
+ },
+ {
+  "ma_cau": "T110000000228",
+  "dang_bai_id": "NDB01375",
+  "chac": "vua",
+  "ly_do": "Đề cho cả hệ lẫn các đỉnh miền nghiệm (có hình); ranh giới 01377/01375, lấy dạng sau."
+ },
+ {
+  "ma_cau": "T110020102123",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: đếm điểm nguyên thuộc miền nghiệm của bất phương trình."
+ },
+ {
+  "ma_cau": "T110000000059",
+  "dang_bai_id": "NDB01375",
+  "chac": "cao",
+  "ly_do": "Cho hệ bất phương trình, tìm min của F."
+ },
+ {
+  "ma_cau": "T110030106014",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cos, góc tù, tính tan."
+ },
+ {
+  "ma_cau": "T110020204031",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn (combo), tìm thu nhập lớn nhất."
+ },
+ {
+  "ma_cau": "T110030103009",
+  "dang_bai_id": "NDB00552",
+  "chac": "cao",
+  "ly_do": "Nhận diện quan hệ lượng giác hai góc bù nhau."
+ },
+ {
+  "ma_cau": "T110020202072",
+  "dang_bai_id": "NDB00544",
+  "chac": "vua",
+  "ly_do": "Có hình; ba đáp án cùng hệ số, một đáp án khác; ranh giới 00544/00886."
+ },
+ {
+  "ma_cau": "T110030102001",
+  "dang_bai_id": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xét dấu giá trị lượng giác của góc tù."
+ },
+ {
+  "ma_cau": "T110020102105",
+  "dang_bai_id": "NDB00884",
+  "chac": "vua",
+  "ly_do": "Có hình, phải tự lập bất phương trình từ đường thẳng rồi xét điểm; ranh giới 00884/00539."
+ },
+ {
+  "ma_cau": "T110020102128",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc miền nghiệm của bất phương trình nào."
+ },
+ {
+  "ma_cau": "T110020102107",
+  "dang_bai_id": "NDB00540",
+  "chac": "vua",
+  "ly_do": "Có hình, ba đáp án cùng hệ số, một đáp án khác; ranh giới 00540/00884."
+ },
+ {
+  "ma_cau": "T110030105006",
+  "dang_bai_id": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức tan·cot=1."
+ },
+ {
+  "ma_cau": "T110020101071",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: lập bất phương trình bậc nhất 2 ẩn từ bài toán thực tế."
+ },
+ {
+  "ma_cau": "T110020202068",
+  "dang_bai_id": "NDB00544",
+  "chac": "vua",
+  "ly_do": "Có hình; ba đáp án cùng hệ số, một đáp án khác; ranh giới 00544/00886."
+ },
+ {
+  "ma_cau": "T110020204074",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn (đậu, cà), tìm thu nhập lớn nhất."
+ },
+ {
+  "ma_cau": "T110020202058",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Có hình, các đáp án khác hệ số nên phải lập phương trình đường thẳng."
+ },
+ {
+  "ma_cau": "T110020102061",
+  "dang_bai_id": "NDB00540",
+  "chac": "vua",
+  "ly_do": "Có hình; ba đáp án cùng hệ số ±(3x−y), một đáp án khác; ranh giới 00540/00884."
+ },
+ {
+  "ma_cau": "T110020203019",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc miền nghiệm của hệ."
+ },
+ {
+  "ma_cau": "T110020202041",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Có hình, các đáp án khác hệ số nên phải lập phương trình đường thẳng."
+ },
+ {
+  "ma_cau": "T110020204002",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn (trà sữa, trà tắc), tìm lợi nhuận lớn nhất."
+ },
+ {
+  "ma_cau": "T110030106049",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cos góc nhọn, tìm khẳng định sai về các giá trị còn lại."
+ },
+ {
+  "ma_cau": "T110020102031",
+  "dang_bai_id": "NDB00540",
+  "chac": "cao",
+  "ly_do": "Có hình, đáp án cùng hệ số, chỉ khác chiều bất đẳng thức."
+ }
+]

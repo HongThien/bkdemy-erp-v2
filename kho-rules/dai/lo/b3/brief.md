@@ -30,3 +30,7 @@ Cuối cùng trả lời ngắn: mỗi lô bao nhiêu câu cao / vua / trống. 
 - **Câu thuộc nhiều dạng bài ⇒ đưa vào dạng bài CUỐI CÙNG theo thứ tự trên bản đồ** (dạng học sau cùng; bảng đích `dich.md` đã xếp đúng thứ tự). Vd câu dùng cả quan hệ phụ nhau và bù nhau ⇒ dạng bù; câu nhận diện chứa cả định lí sin và cos ⇒ dạng nhận diện định lí sin.
 - **Câu có nhiều cách giải**: chỉ cần MỘT cách giải thuộc một dạng bài thì câu được đưa vào dạng đó (không loại câu chỉ vì cách giải khác thuộc dạng khác). Nếu hai dạng cùng có cách giải hợp lệ ⇒ theo luật trên (dạng sau cùng).
 - Đọc kỹ dòng **"Lưu ý"** trong mô tả từng dạng: Thùy ghi các ranh giới ở đó (vd thực tế dùng cả sin và cos ⇒ dạng sin; nhận diện chứa sin + cos + diện tích ⇒ dạng diện tích).
+
+## Luật bổ sung (Thùy 22/10, chủ đề Bất phương trình và hệ bất phương trình bậc nhất 2 ẩn)
+- **Câu có hình miền nghiệm mà ĐỀ thiếu số liệu, phụ thuộc vào hình, nhưng HÌNH đã đủ số liệu để làm ⇒ xếp mức `cao` luôn** (không hạ xuống `vua` chỉ vì đề không nêu hệ số/đường thẳng; chỉ hạ khi hình thật sự thiếu/không đọc được dữ kiện, hoặc mô tả dạng chưa phân biệt được đường thẳng đã biết hay phải lập).
+- Dạng mới **NDB01400 "Các tính chất cơ bản của bất phương trình bậc nhất 2 ẩn"**: các câu hỏi đơn giản xoay quanh định nghĩa/tính chất của bất phương trình bậc nhất 2 ẩn (đọc mô tả trong `dich.md`).

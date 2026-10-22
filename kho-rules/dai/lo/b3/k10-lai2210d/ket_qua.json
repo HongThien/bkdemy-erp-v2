@@ -1,0 +1,2744 @@
+[
+ {
+  "ma_cau": "T110030105031",
+  "dang_bai_id": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức 1+tan²=1/cos², chỉ chuyển vế."
+ },
+ {
+  "ma_cau": "T110030104033",
+  "dang_bai_id": "NDB00556",
+  "chac": "cao",
+  "ly_do": "Dùng cả góc phụ và bù để đảo pha rồi rút gọn vài bước."
+ },
+ {
+  "ma_cau": "T110020204052",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn (diện tích đậu, cà), lập hệ và tìm max."
+ },
+ {
+  "ma_cau": "T110020203078",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm không thuộc miền nghiệm của hệ."
+ },
+ {
+  "ma_cau": "T110030106070",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cot, tính sin có xét dấu."
+ },
+ {
+  "ma_cau": "T110030101032",
+  "dang_bai_id": "NDB00550",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức ngắn biết số đo góc."
+ },
+ {
+  "ma_cau": "T110030106100",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cot, tính cos có xét dấu."
+ },
+ {
+  "ma_cau": "T110030102023",
+  "dang_bai_id": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xét dấu giá trị lượng giác của góc nhọn."
+ },
+ {
+  "ma_cau": "T110020102062",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số không là nghiệm của bất phương trình."
+ },
+ {
+  "ma_cau": "T110020202099",
+  "dang_bai_id": "NDB00544",
+  "chac": "vua",
+  "ly_do": "Đề có hình, ba đáp án cùng hệ số nhưng một đáp án khác dấu hằng số; ranh giới 00544/00886."
+ },
+ {
+  "ma_cau": "T110020204013",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn, tìm chi phí nhỏ nhất."
+ },
+ {
+  "ma_cau": "T110020102085",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: lập bất phương trình bậc nhất 2 ẩn từ bài toán thực tế."
+ },
+ {
+  "ma_cau": "T110020102089",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Hỏi bất phương trình nhận cặp số đã cho làm nghiệm."
+ },
+ {
+  "ma_cau": "T110020101062",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Nhận diện bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020102124",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số không là nghiệm của bất phương trình."
+ },
+ {
+  "ma_cau": "T110020203070",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc miền nghiệm của hệ."
+ },
+ {
+  "ma_cau": "T110020202101",
+  "dang_bai_id": "NDB00544",
+  "chac": "cao",
+  "ly_do": "Hình miền nghiệm, đáp án cùng hệ số, chỉ khác chiều bất đẳng thức."
+ },
+ {
+  "ma_cau": "T110020102088",
+  "dang_bai_id": "NDB00884",
+  "chac": "cao",
+  "ly_do": "Hình miền nghiệm, đáp án khác hệ số nên phải lập phương trình đường thẳng."
+ },
+ {
+  "ma_cau": "T110020102090",
+  "dang_bai_id": "NDB00538",
+  "chac": "cao",
+  "ly_do": "Biểu diễn miền nghiệm của bất phương trình cho sẵn."
+ },
+ {
+  "ma_cau": "T110030105013",
+  "dang_bai_id": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức cos² theo tan."
+ },
+ {
+  "ma_cau": "T110020102095",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc miền nghiệm của bất phương trình."
+ },
+ {
+  "ma_cau": "T110020203083",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc miền nghiệm của hệ."
+ },
+ {
+  "ma_cau": "T110030107051",
+  "dang_bai_id": "NDB00560",
+  "chac": "cao",
+  "ly_do": "Biết sin+cos, tính biểu thức."
+ },
+ {
+  "ma_cau": "T110020202104",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số thuộc miền nghiệm của hệ."
+ },
+ {
+  "ma_cau": "T110020102086",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số là nghiệm của bất phương trình."
+ },
+ {
+  "ma_cau": "T110030107016",
+  "dang_bai_id": "NDB00562",
+  "chac": "vua",
+  "ly_do": "Cho cot, biểu thức đưa về đồng bậc nhờ 1=sin²+cos²; có thể xem là dạng 00890/00563."
+ },
+ {
+  "ma_cau": "T110030103012",
+  "dang_bai_id": "NDB00552",
+  "chac": "cao",
+  "ly_do": "Nhận diện quan hệ lượng giác hai góc bù nhau."
+ },
+ {
+  "ma_cau": "T110020202089",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Xét điểm có thuộc miền nghiệm của hệ không."
+ },
+ {
+  "ma_cau": "T110020204086",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn (áo, quần), tìm lãi lớn nhất."
+ },
+ {
+  "ma_cau": "T110030107059",
+  "dang_bai_id": "NDB00563",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức biến đổi tự do, không thuộc dạng cố định."
+ },
+ {
+  "ma_cau": "T110020201038",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ bất phương trình bậc nhất 2 ẩn."
+ },
+ {
+  "ma_cau": "T110030105030",
+  "dang_bai_id": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức sin²+cos²=1."
+ },
+ {
+  "ma_cau": "T110030106069",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho tan, góc tù, tính cos."
+ },
+ {
+  "ma_cau": "T110030101025",
+  "dang_bai_id": "NDB00549",
+  "chac": "cao",
+  "ly_do": "Tính tan từ tọa độ điểm trên nửa đường tròn đơn vị."
+ },
+ {
+  "ma_cau": "T110020101064",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Nhận diện bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110010205025",
+  "dang_bai_id": "NDB00534",
+  "chac": "cao",
+  "ly_do": "Ba tập hợp, tìm số phần tử không thuộc tập nào."
+ },
+ {
+  "ma_cau": "T110020203025",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc miền nghiệm của hệ."
+ },
+ {
+  "ma_cau": "T110020203018",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc miền nghiệm của hệ."
+ },
+ {
+  "ma_cau": "T110030101037",
+  "dang_bai_id": "NDB00550",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức ngắn biết số đo góc."
+ },
+ {
+  "ma_cau": "T110020203029",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc miền nghiệm của hệ."
+ },
+ {
+  "ma_cau": "T110000000140",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hàm số: tính giá trị hàm số cho bởi nhiều công thức, bản đồ chưa có."
+ },
+ {
+  "ma_cau": "T110020204048",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn (xe tải A, B), tìm cước nhỏ nhất."
+ },
+ {
+  "ma_cau": "T110020101055",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Nhận diện bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110010205001",
+  "dang_bai_id": "NDB00530",
+  "chac": "cao",
+  "ly_do": "Ba tập hợp, tìm số học sinh chỉ giỏi một môn."
+ },
+ {
+  "ma_cau": "T110000000430",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hàm số: đọc tính đơn điệu từ đồ thị, bản đồ chưa có."
+ },
+ {
+  "ma_cau": "T110020203045",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm không thuộc miền nghiệm của hệ."
+ },
+ {
+  "ma_cau": "T110030106071",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính sin."
+ },
+ {
+  "ma_cau": "T110020201090",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ bất phương trình bậc nhất 2 ẩn."
+ },
+ {
+  "ma_cau": "T110000000228",
+  "dang_bai_id": "NDB01375",
+  "chac": "vua",
+  "ly_do": "Đề cho cả hệ lẫn các đỉnh miền nghiệm (có hình); ranh giới 01377/01375, lấy dạng sau."
+ },
+ {
+  "ma_cau": "T110020102123",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: đếm điểm nguyên thuộc miền nghiệm của bất phương trình."
+ },
+ {
+  "ma_cau": "T110000000059",
+  "dang_bai_id": "NDB01375",
+  "chac": "cao",
+  "ly_do": "Cho hệ bất phương trình, tìm min của F."
+ },
+ {
+  "ma_cau": "T110030106014",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cos, góc tù, tính tan."
+ },
+ {
+  "ma_cau": "T110020204031",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn (combo), tìm thu nhập lớn nhất."
+ },
+ {
+  "ma_cau": "T110030103009",
+  "dang_bai_id": "NDB00552",
+  "chac": "cao",
+  "ly_do": "Nhận diện quan hệ lượng giác hai góc bù nhau."
+ },
+ {
+  "ma_cau": "T110020202072",
+  "dang_bai_id": "NDB00544",
+  "chac": "vua",
+  "ly_do": "Có hình; ba đáp án cùng hệ số, một đáp án khác; ranh giới 00544/00886."
+ },
+ {
+  "ma_cau": "T110030102001",
+  "dang_bai_id": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xét dấu giá trị lượng giác của góc tù."
+ },
+ {
+  "ma_cau": "T110020102105",
+  "dang_bai_id": "NDB00884",
+  "chac": "vua",
+  "ly_do": "Có hình, phải tự lập bất phương trình từ đường thẳng rồi xét điểm; ranh giới 00884/00539."
+ },
+ {
+  "ma_cau": "T110020102128",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc miền nghiệm của bất phương trình nào."
+ },
+ {
+  "ma_cau": "T110020102107",
+  "dang_bai_id": "NDB00540",
+  "chac": "vua",
+  "ly_do": "Có hình, ba đáp án cùng hệ số, một đáp án khác; ranh giới 00540/00884."
+ },
+ {
+  "ma_cau": "T110030105006",
+  "dang_bai_id": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức tan·cot=1."
+ },
+ {
+  "ma_cau": "T110020101071",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: lập bất phương trình bậc nhất 2 ẩn từ bài toán thực tế."
+ },
+ {
+  "ma_cau": "T110020202068",
+  "dang_bai_id": "NDB00544",
+  "chac": "vua",
+  "ly_do": "Có hình; ba đáp án cùng hệ số, một đáp án khác; ranh giới 00544/00886."
+ },
+ {
+  "ma_cau": "T110020204074",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn (đậu, cà), tìm thu nhập lớn nhất."
+ },
+ {
+  "ma_cau": "T110020202058",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Có hình, các đáp án khác hệ số nên phải lập phương trình đường thẳng."
+ },
+ {
+  "ma_cau": "T110020102061",
+  "dang_bai_id": "NDB00540",
+  "chac": "vua",
+  "ly_do": "Có hình; ba đáp án cùng hệ số ±(3x−y), một đáp án khác; ranh giới 00540/00884."
+ },
+ {
+  "ma_cau": "T110020203019",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc miền nghiệm của hệ."
+ },
+ {
+  "ma_cau": "T110020202041",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Có hình, các đáp án khác hệ số nên phải lập phương trình đường thẳng."
+ },
+ {
+  "ma_cau": "T110020204002",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn (trà sữa, trà tắc), tìm lợi nhuận lớn nhất."
+ },
+ {
+  "ma_cau": "T110030106049",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cos góc nhọn, tìm khẳng định sai về các giá trị còn lại."
+ },
+ {
+  "ma_cau": "T110020102031",
+  "dang_bai_id": "NDB00540",
+  "chac": "cao",
+  "ly_do": "Có hình, đáp án cùng hệ số, chỉ khác chiều bất đẳng thức."
+ },
+ {
+  "ma_cau": "T110030103016",
+  "dang_bai_id": "NDB00553",
+  "chac": "cao",
+  "ly_do": "Nhận diện công thức hai góc phụ nhau cos(90°-x)=sin x."
+ },
+ {
+  "ma_cau": "T110020202102",
+  "dang_bai_id": "NDB00544",
+  "chac": "cao",
+  "ly_do": "Chọn hệ theo hình; bốn đáp án cùng hệ số, chỉ khác chiều bất phương trình."
+ },
+ {
+  "ma_cau": "T110020203053",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi miền nghiệm của hệ chứa điểm nào, thử từng điểm."
+ },
+ {
+  "ma_cau": "T110030106072",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cot, tính sin của góc nhọn."
+ },
+ {
+  "ma_cau": "T110020202081",
+  "dang_bai_id": "NDB00546",
+  "chac": "cao",
+  "ly_do": "Cho sẵn hệ, chọn hình biểu diễn miền nghiệm."
+ },
+ {
+  "ma_cau": "T110030105020",
+  "dang_bai_id": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức sin²+cos²=1."
+ },
+ {
+  "ma_cau": "T110010204013",
+  "dang_bai_id": "NDB00526",
+  "chac": "cao",
+  "ly_do": "Hai tập, biết n(A), n(B), n(A∪B), tính n(A∩B)."
+ },
+ {
+  "ma_cau": "T110020202080",
+  "dang_bai_id": "NDB00546",
+  "chac": "cao",
+  "ly_do": "Cho sẵn hệ, chọn hình biểu diễn miền nghiệm."
+ },
+ {
+  "ma_cau": "T110020204037",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Bài thực tế hai ẩn (hai loại bánh), lập hệ rồi tìm điểm tối đa."
+ },
+ {
+  "ma_cau": "T110020102024",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số nào là nghiệm của bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110030105036",
+  "dang_bai_id": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện đẳng thức lượng giác cơ bản sai."
+ },
+ {
+  "ma_cau": "T110020203039",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm không thuộc miền nghiệm của hệ, thử từng điểm."
+ },
+ {
+  "ma_cau": "T110000000142",
+  "dang_bai_id": "NDB01375",
+  "chac": "cao",
+  "ly_do": "Hệ cho sẵn, tìm max của biểu thức; theo luật dạng sau cùng chọn dạng từ hệ."
+ },
+ {
+  "ma_cau": "T110020202059",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Chọn hệ theo hình; đáp án khác hệ số nên phải lập phương trình đường thẳng từ hình."
+ },
+ {
+  "ma_cau": "T110020204088",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Bài thực tế hai ẩn (giỏ loại I, II), tìm lãi cao nhất."
+ },
+ {
+  "ma_cau": "T110030106048",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cos và khoảng góc, tính tan."
+ },
+ {
+  "ma_cau": "T110030105019",
+  "dang_bai_id": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức cơ bản cot=cos/sin."
+ },
+ {
+  "ma_cau": "T110020101057",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Hỏi bất phương trình nào là bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110030106047",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cos, tính sin và cot."
+ },
+ {
+  "ma_cau": "T110020202061",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Chọn hệ theo hình; đáp án khác hệ số nên phải lập phương trình đường thẳng từ hình."
+ },
+ {
+  "ma_cau": "T110020204012",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Bài thực tế hai ẩn (Facebook, YouTube), tìm max khách tiếp cận."
+ },
+ {
+  "ma_cau": "T110030103003",
+  "dang_bai_id": "NDB00552",
+  "chac": "cao",
+  "ly_do": "Nhận diện công thức hai góc bù nhau, tìm đẳng thức sai."
+ },
+ {
+  "ma_cau": "T110020101060",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Hỏi bất phương trình nào là bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020102083",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số không là nghiệm của bất phương trình."
+ },
+ {
+  "ma_cau": "T110030102014",
+  "dang_bai_id": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xác định dấu các giá trị lượng giác của góc tù."
+ },
+ {
+  "ma_cau": "T110020204062",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Bài thực tế hai ẩn (thịt bò, thịt lợn), tìm chi phí ít nhất."
+ },
+ {
+  "ma_cau": "T110020203030",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc miền nghiệm của hệ, thử từng điểm."
+ },
+ {
+  "ma_cau": "T110020204056",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Bài thực tế hai ẩn (bắp, khoai lang), tìm thu nhiều tiền nhất."
+ },
+ {
+  "ma_cau": "T110020202096",
+  "dang_bai_id": "NDB00544",
+  "chac": "cao",
+  "ly_do": "Chọn hệ theo hình; bốn đáp án cùng hệ số, chỉ khác chiều."
+ },
+ {
+  "ma_cau": "T110010203013",
+  "dang_bai_id": "NDB00521",
+  "chac": "cao",
+  "ly_do": "Tính hiệu A\\B của hai nửa khoảng."
+ },
+ {
+  "ma_cau": "T110000000139",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng đồng biến, nghịch biến từ đồ thị hàm số (chủ đề Hàm số)."
+ },
+ {
+  "ma_cau": "T110020203033",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc miền nghiệm của hệ, thử từng điểm."
+ },
+ {
+  "ma_cau": "T110010203074",
+  "dang_bai_id": "NDB00524",
+  "chac": "cao",
+  "ly_do": "Trục số có phần gạch, hỏi phần không gạch là tập nào, phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T110020203052",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi hệ nào có điểm O không thuộc miền nghiệm, thử điểm."
+ },
+ {
+  "ma_cau": "T110020102099",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Cặp số chứa tham số là nghiệm của bất phương trình, thay vào giải."
+ },
+ {
+  "ma_cau": "T110020203077",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số không là nghiệm của hệ, thử từng cặp."
+ },
+ {
+  "ma_cau": "T110030105004",
+  "dang_bai_id": "NDB00557",
+  "chac": "cao",
+  "ly_do": "Nhận diện hệ thức 1+tan²=1/cos²."
+ },
+ {
+  "ma_cau": "T110020204053",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Bài thực tế hai ẩn (hai loại sản phẩm), tìm mức lời cao nhất."
+ },
+ {
+  "ma_cau": "T110020203060",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Tìm cặp số là nghiệm của hệ, thử từng cặp."
+ },
+ {
+  "ma_cau": "T110020204049",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Bài thực tế hai ẩn (xe A, xe B), tìm chi phí thuê ít nhất."
+ },
+ {
+  "ma_cau": "T110020202106",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Chọn hệ theo hình; đáp án khác hệ số nên phải lập phương trình đường thẳng từ hình."
+ },
+ {
+  "ma_cau": "T110030106065",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính cos."
+ },
+ {
+  "ma_cau": "T110030106094",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin và khoảng góc, tính cos."
+ },
+ {
+  "ma_cau": "T110030102021",
+  "dang_bai_id": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xác định dấu giá trị lượng giác của góc nhọn."
+ },
+ {
+  "ma_cau": "T110030107001",
+  "dang_bai_id": "NDB00561",
+  "chac": "cao",
+  "ly_do": "Tổng sin² dài có dấu ..., ghép cặp góc phụ."
+ },
+ {
+  "ma_cau": "T110020102001",
+  "dang_bai_id": "NDB00538",
+  "chac": "cao",
+  "ly_do": "Biểu diễn miền nghiệm của một bất phương trình cho sẵn."
+ },
+ {
+  "ma_cau": "T110020204054",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Bài thực tế hai ẩn (xe lớn, xe nhỏ), tìm chi phí thấp nhất."
+ },
+ {
+  "ma_cau": "T110020204015",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Bài thực tế hai ẩn (xe 7 chỗ, 16 chỗ), tìm doanh thu lớn nhất."
+ },
+ {
+  "ma_cau": "T110020204006",
+  "dang_bai_id": "NDB00888",
+  "chac": "cao",
+  "ly_do": "Ba loại cây, thêm dữ kiện cao su gấp đôi hồ tiêu để đưa về hai ẩn."
+ },
+ {
+  "ma_cau": "T110030106063",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho tan và khoảng góc, tính sin."
+ },
+ {
+  "ma_cau": "T110030101031",
+  "dang_bai_id": "NDB00550",
+  "chac": "cao",
+  "ly_do": "Tính biểu thức ngắn khi biết số đo các góc đặc biệt."
+ },
+ {
+  "ma_cau": "T110000000107",
+  "dang_bai_id": "NDB00519",
+  "chac": "vua",
+  "ly_do": "Hai ý khác dạng: a) giao hai tập, b) tìm m để hai tập khác rỗng."
+ },
+ {
+  "ma_cau": "T110030106081",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính biểu thức chứa sin², cos² (không phải phân thức)."
+ },
+ {
+  "ma_cau": "T110030102002",
+  "dang_bai_id": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xác định dấu giá trị lượng giác của góc tù."
+ },
+ {
+  "ma_cau": "T110030106031",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin và khoảng góc, tính tan."
+ },
+ {
+  "ma_cau": "T110020101068",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Hỏi bất phương trình nào là bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020202064",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Chọn hệ theo hình; đáp án khác hệ số nên phải lập phương trình đường thẳng từ hình."
+ },
+ {
+  "ma_cau": "T110020204025",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Bài thực tế hai ẩn (bình hoa nhỏ, lớn), tìm số tiền lớn nhất."
+ },
+ {
+  "ma_cau": "T110020203059",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số không là nghiệm của hệ, thử từng cặp."
+ },
+ {
+  "ma_cau": "T110000000041",
+  "dang_bai_id": "NDB01375",
+  "chac": "cao",
+  "ly_do": "Cho sẵn hệ, tìm giá trị nhỏ nhất của F(x;y)."
+ },
+ {
+  "ma_cau": "T110020203046",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm không thuộc miền nghiệm của hệ, thử từng điểm."
+ },
+ {
+  "ma_cau": "T110020202056",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Chọn hệ theo hình; đáp án khác hệ số nên phải lập phương trình đường thẳng từ hình."
+ },
+ {
+  "ma_cau": "T110020201072",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Hỏi hệ nào là hệ bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110030107063",
+  "dang_bai_id": "NDB00562",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính phân thức đồng bậc của sin và cos."
+ },
+ {
+  "ma_cau": "T110030107007",
+  "dang_bai_id": "NDB00560",
+  "chac": "cao",
+  "ly_do": "Biết sin+cos, tính biểu thức sin³+cos³+sin·cos."
+ },
+ {
+  "ma_cau": "T110000000288",
+  "dang_bai_id": "NDB01375",
+  "chac": "cao",
+  "ly_do": "Cho sẵn hệ, tìm giá trị lớn nhất của f(x,y)."
+ },
+ {
+  "ma_cau": "T110020204057",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Bài thực tế hai ẩn (ngô, đậu xanh), tìm thu nhiều tiền nhất."
+ },
+ {
+  "ma_cau": "T110010204019",
+  "dang_bai_id": "NDB00525",
+  "chac": "cao",
+  "ly_do": "Hai tập, đủ dữ kiện, tính n(A∪B)."
+ },
+ {
+  "ma_cau": "T110030101001",
+  "dang_bai_id": "NDB00549",
+  "chac": "cao",
+  "ly_do": "Điểm M(x0;y0) trên nửa đường tròn đơn vị, hỏi sinα."
+ },
+ {
+  "ma_cau": "T110030106057",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cos và khoảng góc, tính biểu thức chứa sin·cos."
+ },
+ {
+  "ma_cau": "T110000000046",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Công thức đỉnh parabol hàm bậc hai, bản đồ thiếu dạng hàm số bậc hai."
+ },
+ {
+  "ma_cau": "T110020204098",
+  "dang_bai_id": "NDB00541",
+  "chac": "cao",
+  "ly_do": "Mua vở và bút, cố định 20 bút, tìm số vở tối đa."
+ },
+ {
+  "ma_cau": "T110030102003",
+  "dang_bai_id": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xác định dấu giá trị lượng giác của góc nhọn."
+ },
+ {
+  "ma_cau": "T110020204070",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn (số sản phẩm A, B), tìm thu nhập lớn nhất."
+ },
+ {
+  "ma_cau": "T110020202084",
+  "dang_bai_id": "NDB00546",
+  "chac": "cao",
+  "ly_do": "Cho hệ bất phương trình, chọn hình biểu diễn miền nghiệm."
+ },
+ {
+  "ma_cau": "T110030106053",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cos, tính giá trị biểu thức chứa tan và sin."
+ },
+ {
+  "ma_cau": "T110030104018",
+  "dang_bai_id": "NDB00556",
+  "chac": "cao",
+  "ly_do": "Biểu thức có sin(90-α), cos(180-α), dùng công thức đảo pha."
+ },
+ {
+  "ma_cau": "T110030107038",
+  "dang_bai_id": "NDB00562",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính phân thức đồng bậc của sin và cos."
+ },
+ {
+  "ma_cau": "T110020102047",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số là nghiệm của bất phương trình bậc nhất 2 ẩn."
+ },
+ {
+  "ma_cau": "T110020203074",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số không là nghiệm của hệ bất phương trình."
+ },
+ {
+  "ma_cau": "T110020204051",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn (hai loại thực đơn), tìm số tiền lớn nhất."
+ },
+ {
+  "ma_cau": "T110030106087",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin và khoảng góc, tính cos."
+ },
+ {
+  "ma_cau": "T110020201001",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Hỏi hệ nào là hệ bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110030106044",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho cos và khoảng góc, tính tan."
+ },
+ {
+  "ma_cau": "T110030102017",
+  "dang_bai_id": "NDB00889",
+  "chac": "cao",
+  "ly_do": "Xác định khẳng định sai về dấu giá trị lượng giác góc nhọn."
+ },
+ {
+  "ma_cau": "T110000000363",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học: tối ưu tổng độ dài đường ống bằng đối xứng, có hình."
+ },
+ {
+  "ma_cau": "T110030106097",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin, tính tan."
+ },
+ {
+  "ma_cau": "T110020102080",
+  "dang_bai_id": "NDB00538",
+  "chac": "cao",
+  "ly_do": "Cho bất phương trình x+y≥2, chọn hình miền nghiệm."
+ },
+ {
+  "ma_cau": "T110020203038",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Điểm không thuộc miền nghiệm của hệ bất phương trình."
+ },
+ {
+  "ma_cau": "T110000000433",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tập xác định hàm căn thức, bản đồ thiếu dạng hàm số/tập xác định."
+ },
+ {
+  "ma_cau": "T110010203077",
+  "dang_bai_id": "NDB00524",
+  "chac": "cao",
+  "ly_do": "Phần không bị gạch trên trục số, nội dung phụ thuộc hoàn toàn vào hình."
+ },
+ {
+  "ma_cau": "T110020101023",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Hỏi bất phương trình không phải bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020202042",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Xác định hệ từ hình miền nghiệm, các đáp án khác hệ số nên phải lập đường thẳng."
+ },
+ {
+  "ma_cau": "T110020203009",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Điểm không thuộc miền nghiệm của hệ bất phương trình."
+ },
+ {
+  "ma_cau": "T110030107045",
+  "dang_bai_id": "NDB00561",
+  "chac": "vua",
+  "ly_do": "Biểu thức không biến dùng góc phụ, nhưng ngắn nên cũng có thể là dạng 00550."
+ },
+ {
+  "ma_cau": "T110030107042",
+  "dang_bai_id": "NDB00562",
+  "chac": "cao",
+  "ly_do": "Cho tan, tính phân thức đồng bậc của sin và cos."
+ },
+ {
+  "ma_cau": "T110000000382",
+  "dang_bai_id": "NDB01375",
+  "chac": "cao",
+  "ly_do": "Cho sẵn hệ bất phương trình, tìm max+min của F, không thực tế."
+ },
+ {
+  "ma_cau": "T110030106002",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Cho sin và khoảng góc, tính biểu thức chứa cot và tan."
+ },
+ {
+  "ma_cau": "T110020102130",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số là nghiệm của bất phương trình."
+ },
+ {
+  "ma_cau": "T110010101108",
+  "dang_bai_id": "NDB00821",
+  "chac": "vua",
+  "ly_do": "Đếm mệnh đề đúng, trộn điều kiện cần/đủ, mệnh đề chứa biến và công thức cosin."
+ },
+ {
+  "ma_cau": "T110020204038",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn (thịt bò, thịt heo), tìm chi phí nhỏ nhất."
+ },
+ {
+  "ma_cau": "T110000000417",
+  "dang_bai_id": "NDB01375",
+  "chac": "cao",
+  "ly_do": "Cho sẵn hệ bất phương trình, tìm min của F."
+ },
+ {
+  "ma_cau": "T110010204067",
+  "dang_bai_id": "NDB00529",
+  "chac": "vua",
+  "ly_do": "Hai tập hợp có người không thích môn nào, tính tổng; cũng gần dạng n(A∪B)."
+ },
+ {
+  "ma_cau": "T110010204084",
+  "dang_bai_id": "NDB00529",
+  "chac": "vua",
+  "ly_do": "Hai tập hợp có người không chơi môn nào, tính tổng lớp; cũng gần dạng n(A∪B)."
+ },
+ {
+  "ma_cau": "T110020101066",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Hỏi bất phương trình không là bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110010203169",
+  "dang_bai_id": "NDB00890",
+  "chac": "vua",
+  "ly_do": "Hai ý khác hẳn: giao/hợp tập hợp và tính cos, cot từ sin."
+ },
+ {
+  "ma_cau": "T110020204077",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn (vòng tay, vòng cổ), tìm số giờ tối thiểu."
+ },
+ {
+  "ma_cau": "T110020204023",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn (vốn kênh A, B), tìm lợi nhuận lớn nhất."
+ },
+ {
+  "ma_cau": "T110020102119",
+  "dang_bai_id": "NDB00884",
+  "chac": "cao",
+  "ly_do": "Hình miền nghiệm, đáp án khác hệ số nên phải lập đường thẳng qua hai điểm."
+ },
+ {
+  "ma_cau": "T110020204016",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn (thực phẩm X, Y), tìm khối lượng nhỏ nhất."
+ },
+ {
+  "ma_cau": "T110010206039",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: tìm m để hợp hai đoạn là đoạn có độ dài cho trước."
+ },
+ {
+  "ma_cau": "T110020204027",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn (túi len, gấu bông), tìm lãi lớn nhất."
+ },
+ {
+  "ma_cau": "T110000000055",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Tìm điểm thuộc miền nghiệm của hệ bằng cách thay toạ độ."
+ },
+ {
+  "ma_cau": "T110020204035",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn (gỗ keo, bạch đàn), tìm chi phí nhỏ nhất."
+ },
+ {
+  "ma_cau": "T110020204063",
+  "dang_bai_id": "NDB00887",
+  "chac": "vua",
+  "ly_do": "Thực tế đề hai ẩn nhưng xe hỏng nên thực chất một ẩn, hỏi số giờ."
+ },
+ {
+  "ma_cau": "T110020204071",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn (xe Lead, Vision), tìm lợi nhuận lớn nhất."
+ },
+ {
+  "ma_cau": "T110020202095",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Hình miền nghiệm, các đáp án khác hệ số nên phải lập đường thẳng."
+ },
+ {
+  "ma_cau": "T110010204060",
+  "dang_bai_id": "NDB00529",
+  "chac": "vua",
+  "ly_do": "Hai tập hợp có người không giỏi môn nào, tính tổng lớp; cũng gần dạng n(A∪B)."
+ },
+ {
+  "ma_cau": "T110020101034",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Hỏi bất phương trình không phải bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110000000044",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bảng biến thiên hàm bậc hai, bản đồ thiếu dạng hàm số bậc hai."
+ },
+ {
+  "ma_cau": "T110020204060",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn (ngô, đậu xanh), tìm phương án thu nhiều nhất."
+ },
+ {
+  "ma_cau": "T110000000096",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Đồ thị hàm số cho bởi nhiều công thức, bản đồ thiếu dạng hàm số."
+ },
+ {
+  "ma_cau": "T110000000215",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm tập xác định của hàm số, bản đồ thiếu dạng hàm số/tập xác định."
+ },
+ {
+  "ma_cau": "T110020102059",
+  "dang_bai_id": "NDB00538",
+  "chac": "cao",
+  "ly_do": "Cho bất phương trình, chọn hình biểu diễn miền nghiệm."
+ },
+ {
+  "ma_cau": "T110000000018",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm thuộc tập nghiệm của hệ bất phương trình."
+ },
+ {
+  "ma_cau": "T110020102108",
+  "dang_bai_id": "NDB00884",
+  "chac": "cao",
+  "ly_do": "Hình miền nghiệm, đáp án khác hệ số nên phải lập đường thẳng."
+ },
+ {
+  "ma_cau": "T110020102084",
+  "dang_bai_id": "NDB00540",
+  "chac": "cao",
+  "ly_do": "Bốn đáp án cùng hệ số 5x-2y, chỉ khác chiều bất đẳng thức."
+ },
+ {
+  "ma_cau": "T110020204028",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn (bắp, cà chua), tìm thu nhập lớn nhất."
+ },
+ {
+  "ma_cau": "T110020204045",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn (sản phẩm loại I, II), tìm lãi lớn nhất."
+ },
+ {
+  "ma_cau": "T110020202070",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Hình miền nghiệm, các đáp án khác hệ số nên phải lập đường thẳng."
+ },
+ {
+  "ma_cau": "T110020201079",
+  "dang_bai_id": "NDB00543",
+  "chac": "vua",
+  "ly_do": "Nhận diện hệ bậc nhất hai ẩn nhưng kèm tìm tham số a, b."
+ },
+ {
+  "ma_cau": "T110020104013",
+  "dang_bai_id": "NDB00541",
+  "chac": "vua",
+  "ly_do": "Lập bất phương trình từ tình huống tiền, không đúng mô tả tìm số lượng tối đa."
+ },
+ {
+  "ma_cau": "T110020104018",
+  "dang_bai_id": "NDB00541",
+  "chac": "vua",
+  "ly_do": "Lập bất phương trình mua vở, bút, không đúng mô tả tìm số lượng tối đa."
+ },
+ {
+  "ma_cau": "T110000000330",
+  "dang_bai_id": "NDB00772",
+  "chac": "vua",
+  "ly_do": "Tính diện tích tam giác có trung tuyến vuông góc, dùng cosin và trung tuyến, nhiều bước."
+ },
+ {
+  "ma_cau": "T110020102082",
+  "dang_bai_id": "NDB00884",
+  "chac": "cao",
+  "ly_do": "Hình miền nghiệm, đáp án khác hệ số nên phải lập đường thẳng."
+ },
+ {
+  "ma_cau": "T110020102066",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số là nghiệm của bất phương trình."
+ },
+ {
+  "ma_cau": "T110020204034",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn (sản phẩm loại I, II), tìm lời cao nhất."
+ },
+ {
+  "ma_cau": "T110020204066",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn (bàn, ghế), tìm phương án lãi cao nhất."
+ },
+ {
+  "ma_cau": "T110020102120",
+  "dang_bai_id": "NDB00539",
+  "chac": "vua",
+  "ly_do": "Hỏi nửa mặt phẳng nghiệm chứa điểm nào, gần cả dạng biểu diễn miền nghiệm 00538."
+ },
+ {
+  "ma_cau": "T110020101056",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Hỏi bất phương trình là bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020202055",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Chọn hệ từ miền nghiệm, 4 đáp án khác hệ số nên phải lập phương trình đường thẳng từ hình."
+ },
+ {
+  "ma_cau": "T110000000192",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Hỏi hệ nào là hệ bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020202073",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Chọn hệ từ miền nghiệm, đáp án khác hệ số, phải lập đường thẳng từ hình."
+ },
+ {
+  "ma_cau": "T110020204046",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Bài thực tế hai ẩn x, y, lập hệ bất phương trình rồi tìm lợi nhuận lớn nhất."
+ },
+ {
+  "ma_cau": "T110020101073",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Hỏi bất phương trình nào là bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110000000335",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Hỏi hệ nào là hệ bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110000000242",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: diện tích phần tô đậm giữa đường tròn và tam giác đều."
+ },
+ {
+  "ma_cau": "T110020102129",
+  "dang_bai_id": "NDB00884",
+  "chac": "cao",
+  "ly_do": "Xác định bất phương trình từ miền nghiệm, đáp án không cùng hệ số nên phải lập đường thẳng từ hình."
+ },
+ {
+  "ma_cau": "T110020201074",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Hỏi hệ nào là hệ bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020202038",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Chọn hệ từ miền nghiệm, đáp án khác hệ số, phải lập đường thẳng từ hình."
+ },
+ {
+  "ma_cau": "T110020201070",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Hỏi hệ nào là hệ bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110000000067",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc HGT: định nghĩa hai vectơ bằng nhau (chủ đề Véc tơ)."
+ },
+ {
+  "ma_cau": "T110020201081",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Hỏi hệ nào là hệ bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020101065",
+  "dang_bai_id": "NDB01400",
+  "chac": "vua",
+  "ly_do": "Tìm điều kiện tham số b theo định nghĩa bpt bậc nhất hai ẩn; cũng gần dạng nhận diện NDB00882."
+ },
+ {
+  "ma_cau": "T110000000095",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng đọc bảng biến thiên, xét tính đơn điệu của hàm số (chủ đề Hàm số)."
+ },
+ {
+  "ma_cau": "T110020101012",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Hỏi bất phương trình nào là bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110010203111",
+  "dang_bai_id": "NDB00520",
+  "chac": "vua",
+  "ly_do": "Giải bất phương trình giá trị tuyệt đối, kết hợp giao và hợp tập hợp rồi đếm số nguyên; trộn nhiều dạng."
+ },
+ {
+  "ma_cau": "T110020102070",
+  "dang_bai_id": "NDB00538",
+  "chac": "cao",
+  "ly_do": "Chọn hình biểu diễn miền nghiệm của bất phương trình cho sẵn."
+ },
+ {
+  "ma_cau": "T110000000147",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng bài toán thực tế tính tiền theo bảng giá cước nhiều khúc (hàm số theo khoảng)."
+ },
+ {
+  "ma_cau": "T110020204020",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Bài thực tế hai ẩn, lập hệ bất phương trình rồi tìm giá trị lớn nhất."
+ },
+ {
+  "ma_cau": "T110020201089",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Hỏi hệ nào là hệ bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020204010",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Bài thực tế hai ẩn, lập hệ bất phương trình rồi tìm lãi lớn nhất."
+ },
+ {
+  "ma_cau": "T110000000313",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng vẽ đồ thị hàm số bậc hai (parabol)."
+ },
+ {
+  "ma_cau": "T110020202063",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Chọn hệ từ miền nghiệm, đáp án khác hệ số, phải lập đường thẳng từ hình."
+ },
+ {
+  "ma_cau": "T110020101076",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Hỏi bất phương trình nào là bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020102067",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số nào không là nghiệm của bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020102064",
+  "dang_bai_id": "NDB00538",
+  "chac": "cao",
+  "ly_do": "Chọn hình biểu diễn miền nghiệm của bất phương trình cho sẵn."
+ },
+ {
+  "ma_cau": "T110020102057",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Xét cặp số thuộc tập nghiệm của bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020202057",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Chọn hệ từ miền nghiệm, đáp án khác hệ số, phải lập đường thẳng từ hình."
+ },
+ {
+  "ma_cau": "T110020202054",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Chọn hệ từ miền nghiệm, đáp án khác hệ số, phải lập đường thẳng từ hình."
+ },
+ {
+  "ma_cau": "T110000000393",
+  "dang_bai_id": "NDB00772",
+  "chac": "vua",
+  "ly_do": "Hai ý: định lí cosin tính cạnh và diện tích; chứng minh tam giác cân bằng sin không có dạng riêng."
+ },
+ {
+  "ma_cau": "T110000000243",
+  "dang_bai_id": "NDB01375",
+  "chac": "cao",
+  "ly_do": "Cho sẵn hệ bất phương trình, tìm giá trị nhỏ nhất của P, không có yếu tố thực tế."
+ },
+ {
+  "ma_cau": "T110020102096",
+  "dang_bai_id": "NDB00538",
+  "chac": "cao",
+  "ly_do": "Biểu diễn hình học miền nghiệm của bất phương trình cho sẵn."
+ },
+ {
+  "ma_cau": "T110020102114",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số nào không là nghiệm của bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020102079",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số nào là nghiệm của bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020202108",
+  "dang_bai_id": "NDB00544",
+  "chac": "cao",
+  "ly_do": "Chọn hệ từ miền nghiệm, 4 đáp án cùng hệ số chỉ khác chiều bất phương trình."
+ },
+ {
+  "ma_cau": "T110020104014",
+  "dang_bai_id": "NDB00541",
+  "chac": "cao",
+  "ly_do": "Mua vở và bút, biết số bút cố định, tìm số vở tối đa."
+ },
+ {
+  "ma_cau": "T110020102053",
+  "dang_bai_id": "NDB00540",
+  "chac": "cao",
+  "ly_do": "Chọn bất phương trình từ miền nghiệm, 4 đáp án cùng hệ số x+y chỉ khác dấu."
+ },
+ {
+  "ma_cau": "T110020204044",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Bài thực tế hai ẩn, lập hệ bất phương trình rồi tìm lãi lớn nhất."
+ },
+ {
+  "ma_cau": "T110020102069",
+  "dang_bai_id": "NDB00884",
+  "chac": "cao",
+  "ly_do": "Lập phương trình đường thẳng từ hình để xác định bất phương trình và tìm hệ số b, c."
+ },
+ {
+  "ma_cau": "T110020204059",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Bài thực tế hai ẩn, lập hệ bất phương trình rồi tìm lợi nhuận lớn nhất."
+ },
+ {
+  "ma_cau": "T110020201075",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Hỏi hệ nào là hệ bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020204096",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Bài thực tế hai ẩn, lập hệ bất phương trình rồi tìm số tiền lớn nhất."
+ },
+ {
+  "ma_cau": "T110000000306",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng tìm tập xác định của hàm số (chủ đề Hàm số)."
+ },
+ {
+  "ma_cau": "T110020101059",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Hỏi bất phương trình nào là bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020102056",
+  "dang_bai_id": "NDB00884",
+  "chac": "cao",
+  "ly_do": "Chọn bất phương trình từ miền nghiệm, đáp án khác hệ số nên phải lập đường thẳng từ hình."
+ },
+ {
+  "ma_cau": "T110020102103",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Cho cặp số, hỏi là nghiệm của bất phương trình nào."
+ },
+ {
+  "ma_cau": "T110020102127",
+  "dang_bai_id": "NDB00538",
+  "chac": "cao",
+  "ly_do": "Chọn hình biểu diễn miền nghiệm của bất phương trình cho sẵn."
+ },
+ {
+  "ma_cau": "T110020101074",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Hỏi bất phương trình nào là bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020204022",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Bài thực tế hai ẩn, lập hệ bất phương trình rồi tìm lợi nhuận lớn nhất."
+ },
+ {
+  "ma_cau": "T110020102081",
+  "dang_bai_id": "NDB00538",
+  "chac": "cao",
+  "ly_do": "Chọn hình biểu diễn miền nghiệm của bất phương trình cho sẵn."
+ },
+ {
+  "ma_cau": "T110020101067",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Hỏi bất phương trình nào không phải bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020204018",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Bài thực tế hai ẩn, lập hệ bất phương trình rồi tìm lợi nhuận lớn nhất."
+ },
+ {
+  "ma_cau": "T110010206028",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng tìm m để hợp hai tập hợp có số phần tử cho trước kèm điều kiện về tổng bình phương."
+ },
+ {
+  "ma_cau": "T110020202052",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Chọn hệ từ miền nghiệm, đáp án khác hệ số, phải lập đường thẳng từ hình."
+ },
+ {
+  "ma_cau": "T110000000042",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng tìm tập xác định của hàm số (chủ đề Hàm số)."
+ },
+ {
+  "ma_cau": "T110020201086",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Hỏi hệ nào là hệ bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020102101",
+  "dang_bai_id": "NDB01400",
+  "chac": "cao",
+  "ly_do": "Chọn khẳng định đúng về định nghĩa nghiệm và tập nghiệm của bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020102098",
+  "dang_bai_id": "NDB00884",
+  "chac": "cao",
+  "ly_do": "Chọn bất phương trình từ miền nghiệm, đáp án khác hệ số nên phải lập đường thẳng từ hình."
+ },
+ {
+  "ma_cau": "T110020204050",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Bài thực tế hai ẩn, lập hệ bất phương trình rồi tìm chi phí nhỏ nhất."
+ },
+ {
+  "ma_cau": "T110020201078",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Hỏi hệ nào không phải hệ bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020101001",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Hỏi bất phương trình nào là bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020204001",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Bài thực tế hai ẩn, lập hệ bất phương trình rồi tìm chi phí thấp nhất."
+ },
+ {
+  "ma_cau": "T110020202046",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Chọn hệ từ miền nghiệm, đáp án khác hệ số, phải lập đường thẳng từ hình."
+ },
+ {
+  "ma_cau": "T110020102073",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số nào không là nghiệm của bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020204043",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Bài thực tế hai ẩn, lập hệ bất phương trình rồi tìm lợi nhuận lớn nhất."
+ },
+ {
+  "ma_cau": "T110010204081",
+  "dang_bai_id": "NDB00529",
+  "chac": "vua",
+  "ly_do": "Tập hợp thực tế 2 yếu tố, cho số người không thích môn nào và hỏi tổng số; cũng gần NDB00525."
+ },
+ {
+  "ma_cau": "T110020102068",
+  "dang_bai_id": "NDB00884",
+  "chac": "cao",
+  "ly_do": "Lập phương trình đường thẳng từ hình để xác định bất phương trình và tìm hệ số a, b."
+ },
+ {
+  "ma_cau": "T110020102121",
+  "dang_bai_id": "NDB00884",
+  "chac": "cao",
+  "ly_do": "Chọn bất phương trình từ miền nghiệm, đáp án khác hệ số nên phải lập đường thẳng từ hình."
+ },
+ {
+  "ma_cau": "T110020204011",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Bài thực tế hai ẩn, lập hệ bất phương trình rồi tìm số tiền lớn nhất."
+ },
+ {
+  "ma_cau": "T110020102126",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số/điểm có là nghiệm hoặc thuộc miền nghiệm của bất phương trình: thay toạ độ kiểm tra."
+ },
+ {
+  "ma_cau": "T110000000038",
+  "dang_bai_id": "NDB01377",
+  "chac": "cao",
+  "ly_do": "Miền ngũ giác có sẵn trong hình (đỉnh đọc được), tìm max F: thuần min max từ miền có sẵn."
+ },
+ {
+  "ma_cau": "T110020104019",
+  "dang_bai_id": "NDB00541",
+  "chac": "vua",
+  "ly_do": "Lập bất phương trình từ tình huống thực tế rồi đồng nhất hệ số; chỉ gần dạng mua 2 loại, có thể bản đồ thiếu dạng lập bpt thực tế."
+ },
+ {
+  "ma_cau": "T110020102117",
+  "dang_bai_id": "NDB00884",
+  "chac": "cao",
+  "ly_do": "Miền không bị gạch, 4 đáp án khác hệ số nên phải lập phương trình đường thẳng rồi xét miền."
+ },
+ {
+  "ma_cau": "T110020102054",
+  "dang_bai_id": "NDB00884",
+  "chac": "cao",
+  "ly_do": "Hình cho miền nghiệm, phải lập phương trình đường thẳng bờ rồi đồng nhất tìm tham số m, n."
+ },
+ {
+  "ma_cau": "T110020202049",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Miền nghiệm của hệ qua hình, đáp án khác hệ số nên phải lập phương trình đường biên."
+ },
+ {
+  "ma_cau": "T110000000238",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số là nghiệm của hệ bất phương trình: thay vào từng bất phương trình."
+ },
+ {
+  "ma_cau": "T110020204017",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn, lập hệ bất phương trình rồi tìm giá trị lớn nhất/nhỏ nhất trên miền nghiệm."
+ },
+ {
+  "ma_cau": "T110020202067",
+  "dang_bai_id": "NDB00544",
+  "chac": "cao",
+  "ly_do": "Miền nghiệm của hệ, 4 đáp án cùng hệ số chỉ khác chiều/dấu nên đường thẳng đã xác định."
+ },
+ {
+  "ma_cau": "T110020102112",
+  "dang_bai_id": "NDB00538",
+  "chac": "cao",
+  "ly_do": "Cho sẵn bất phương trình, chọn hình biểu diễn miền nghiệm đúng."
+ },
+ {
+  "ma_cau": "T110020204021",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn, lập hệ bất phương trình rồi tìm giá trị lớn nhất/nhỏ nhất trên miền nghiệm."
+ },
+ {
+  "ma_cau": "T110020102111",
+  "dang_bai_id": "NDB00884",
+  "chac": "cao",
+  "ly_do": "Miền không bị gạch, đáp án 2x+y và x+2y khác hệ số nên phải lập đường thẳng."
+ },
+ {
+  "ma_cau": "T110020204026",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn, lập hệ bất phương trình rồi tìm giá trị lớn nhất/nhỏ nhất trên miền nghiệm."
+ },
+ {
+  "ma_cau": "T110020204072",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn, lập hệ bất phương trình rồi tìm giá trị lớn nhất/nhỏ nhất trên miền nghiệm."
+ },
+ {
+  "ma_cau": "T110000000082",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Hỏi hệ nào là hệ bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020102074",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số/điểm có là nghiệm hoặc thuộc miền nghiệm của bất phương trình: thay toạ độ kiểm tra."
+ },
+ {
+  "ma_cau": "T110020202088",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Miền nghiệm của hệ qua hình, đáp án khác hệ số nên phải lập phương trình đường biên."
+ },
+ {
+  "ma_cau": "T110020202051",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Miền nghiệm của hệ qua hình, đáp án khác hệ số nên phải lập phương trình đường biên."
+ },
+ {
+  "ma_cau": "T110020201082",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Hỏi hệ nào là hệ bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020202048",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Miền nghiệm của hệ qua hình, đáp án khác hệ số nên phải lập phương trình đường biên."
+ },
+ {
+  "ma_cau": "T110010204092",
+  "dang_bai_id": "NDB00529",
+  "chac": "vua",
+  "ly_do": "Tập hợp thực tế 2 yếu tố, cho số không tham gia để tìm tổng; có thể thuộc dạng n(A∪B) hay không tham gia."
+ },
+ {
+  "ma_cau": "T110020102109",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số/điểm có là nghiệm hoặc thuộc miền nghiệm của bất phương trình: thay toạ độ kiểm tra."
+ },
+ {
+  "ma_cau": "T110020202086",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Miền nghiệm của hệ qua hình, hằng số đáp án khác nhau (6 và -6) nên phải lập phương trình đường thẳng."
+ },
+ {
+  "ma_cau": "T110020204024",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn, lập hệ bất phương trình rồi tìm giá trị lớn nhất/nhỏ nhất trên miền nghiệm."
+ },
+ {
+  "ma_cau": "T110020202043",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Miền nghiệm của hệ qua hình, đáp án khác hệ số nên phải lập phương trình đường biên."
+ },
+ {
+  "ma_cau": "T110020101079",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Hỏi bất phương trình nào là (hoặc không là) bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020102072",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số/điểm có là nghiệm hoặc thuộc miền nghiệm của bất phương trình: thay toạ độ kiểm tra."
+ },
+ {
+  "ma_cau": "T110020204095",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn, lập hệ bất phương trình rồi tìm giá trị lớn nhất/nhỏ nhất trên miền nghiệm."
+ },
+ {
+  "ma_cau": "T110020204042",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn, lập hệ bất phương trình rồi tìm giá trị lớn nhất/nhỏ nhất trên miền nghiệm."
+ },
+ {
+  "ma_cau": "T110020101075",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Hỏi bất phương trình nào là (hoặc không là) bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020202091",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Miền nghiệm của hệ qua hình, đáp án khác hệ số nên phải lập phương trình đường biên."
+ },
+ {
+  "ma_cau": "T110020102122",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số/điểm có là nghiệm hoặc thuộc miền nghiệm của bất phương trình: thay toạ độ kiểm tra."
+ },
+ {
+  "ma_cau": "T110020104016",
+  "dang_bai_id": "NDB00541",
+  "chac": "vua",
+  "ly_do": "Lập bất phương trình từ tình huống thực tế rồi đồng nhất hệ số; chỉ gần dạng mua 2 loại, có thể bản đồ thiếu dạng lập bpt thực tế."
+ },
+ {
+  "ma_cau": "T110020202065",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Miền nghiệm của hệ qua hình, đáp án khác hệ số nên phải lập phương trình đường biên."
+ },
+ {
+  "ma_cau": "T110020204041",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn, lập hệ bất phương trình rồi tìm giá trị lớn nhất/nhỏ nhất trên miền nghiệm."
+ },
+ {
+  "ma_cau": "T110020202062",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Miền nghiệm của hệ qua hình, đáp án khác hệ số nên phải lập phương trình đường biên."
+ },
+ {
+  "ma_cau": "T110020201080",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Hỏi hệ nào là hệ bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020201069",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Hỏi hệ nào là hệ bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110000000071",
+  "dang_bai_id": "NDB01375",
+  "chac": "cao",
+  "ly_do": "Cho sẵn hệ bất phương trình, tìm giá trị lớn nhất/nhỏ nhất của biểu thức, không có yếu tố thực tế."
+ },
+ {
+  "ma_cau": "T110000000262",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hàm số: tìm tập xác định của hàm số căn thức; bản đồ khối 10 này không có dạng."
+ },
+ {
+  "ma_cau": "T110000000442",
+  "dang_bai_id": "NDB01375",
+  "chac": "cao",
+  "ly_do": "Cho sẵn hệ bất phương trình, tìm giá trị lớn nhất/nhỏ nhất của biểu thức, không có yếu tố thực tế."
+ },
+ {
+  "ma_cau": "T110000000026",
+  "dang_bai_id": "NDB01375",
+  "chac": "cao",
+  "ly_do": "Cho sẵn hệ bất phương trình, tìm giá trị lớn nhất/nhỏ nhất của biểu thức, không có yếu tố thực tế."
+ },
+ {
+  "ma_cau": "T110010205032",
+  "dang_bai_id": "NDB00529",
+  "chac": "vua",
+  "ly_do": "Tập hợp thực tế 2 yếu tố, cho số không tham gia để tìm tổng; có thể thuộc dạng n(A∪B) hay không tham gia."
+ },
+ {
+  "ma_cau": "T110020204099",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: lập hệ bất phương trình từ bài toán thực tế (chỉ viết hệ, chưa tìm min max)."
+ },
+ {
+  "ma_cau": "T110020204033",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn, lập hệ bất phương trình rồi tìm giá trị lớn nhất/nhỏ nhất trên miền nghiệm."
+ },
+ {
+  "ma_cau": "T110000000048",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hàm số bậc hai: bài toán thực tế cổng parabol; bản đồ này không có dạng."
+ },
+ {
+  "ma_cau": "T110020102065",
+  "dang_bai_id": "NDB00538",
+  "chac": "cao",
+  "ly_do": "Cho sẵn bất phương trình, chọn hình biểu diễn miền nghiệm đúng."
+ },
+ {
+  "ma_cau": "T110020101063",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Hỏi bất phương trình nào là (hoặc không là) bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020102104",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số/điểm có là nghiệm hoặc thuộc miền nghiệm của bất phương trình: thay toạ độ kiểm tra."
+ },
+ {
+  "ma_cau": "T110000000039",
+  "dang_bai_id": "NDB00887",
+  "chac": "vua",
+  "ly_do": "Hai ý: a) biểu diễn miền nghiệm bpt (NDB00538), b) thực tế hai ẩn tìm lãi lớn nhất; lấy dạng sau."
+ },
+ {
+  "ma_cau": "T110020204005",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn, lập hệ bất phương trình rồi tìm giá trị lớn nhất/nhỏ nhất trên miền nghiệm."
+ },
+ {
+  "ma_cau": "T110020101061",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Hỏi bất phương trình nào là (hoặc không là) bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110010206032",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: tập hợp chứa tham số m, điều kiện A∩B có đúng 3 phần tử với tích cho trước."
+ },
+ {
+  "ma_cau": "T110020204019",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn, lập hệ bất phương trình rồi tìm giá trị lớn nhất/nhỏ nhất trên miền nghiệm."
+ },
+ {
+  "ma_cau": "T110020202098",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Miền nghiệm của hệ qua hình, hằng số đáp án khác nhau (6 và -6) nên phải lập phương trình đường thẳng."
+ },
+ {
+  "ma_cau": "T110020204079",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn, lập hệ bất phương trình rồi tìm giá trị lớn nhất/nhỏ nhất trên miền nghiệm."
+ },
+ {
+  "ma_cau": "T110020101070",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Hỏi bất phương trình nào là (hoặc không là) bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020202087",
+  "dang_bai_id": "NDB00546",
+  "chac": "cao",
+  "ly_do": "Cho sẵn hệ bất phương trình, chọn hình biểu diễn miền nghiệm đúng."
+ },
+ {
+  "ma_cau": "T110020204065",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn, lập hệ bất phương trình rồi tìm giá trị lớn nhất/nhỏ nhất trên miền nghiệm."
+ },
+ {
+  "ma_cau": "T110020102094",
+  "dang_bai_id": "NDB00884",
+  "chac": "cao",
+  "ly_do": "Hình cho miền nghiệm, phải lập phương trình đường thẳng bờ rồi tìm a, b."
+ },
+ {
+  "ma_cau": "T110030204044",
+  "dang_bai_id": "NDB00773",
+  "chac": "vua",
+  "ly_do": "Thực tế diện tích (ngôi sao nội tiếp đường tròn) cần định lí cosin; đề phụ thuộc hình, còn có thể thuộc NDB00767."
+ },
+ {
+  "ma_cau": "T110020204075",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn, lập hệ bất phương trình rồi tìm giá trị lớn nhất/nhỏ nhất trên miền nghiệm."
+ },
+ {
+  "ma_cau": "T110020201083",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Hỏi hệ nào là hệ bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020204030",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn, lập hệ bất phương trình rồi tìm giá trị lớn nhất/nhỏ nhất trên miền nghiệm."
+ },
+ {
+  "ma_cau": "T110020202075",
+  "dang_bai_id": "NDB00544",
+  "chac": "cao",
+  "ly_do": "Miền nghiệm của hệ, 4 đáp án cùng hệ số chỉ khác chiều/dấu nên đường thẳng đã xác định."
+ },
+ {
+  "ma_cau": "T110020204076",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn, lập hệ bất phương trình rồi tìm giá trị lớn nhất/nhỏ nhất trên miền nghiệm."
+ },
+ {
+  "ma_cau": "T110020204003",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế hai ẩn, lập hệ bất phương trình rồi tìm giá trị lớn nhất/nhỏ nhất trên miền nghiệm."
+ },
+ {
+  "ma_cau": "T110020201084",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Hỏi hệ nào là hệ bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020202060",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Miền nghiệm của hệ qua hình, đáp án khác hệ số nên phải lập phương trình đường biên."
+ },
+ {
+  "ma_cau": "T110000000163",
+  "dang_bai_id": "NDB01375",
+  "chac": "cao",
+  "ly_do": "Cho sẵn hệ bất phương trình, tìm giá trị lớn nhất/nhỏ nhất của biểu thức, không có yếu tố thực tế."
+ },
+ {
+  "ma_cau": "T110000000212",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tính giá trị hàm số cho bởi nhiều công thức: thuộc chủ đề Hàm số, bản đồ đang thiếu dạng này."
+ },
+ {
+  "ma_cau": "T110020202040",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Cho hình miền nghiệm, đáp án khác hệ số nên phải lập phương trình đường thẳng từ hình."
+ },
+ {
+  "ma_cau": "T110020102116",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Chọn cặp số là nghiệm của bất phương trình bậc nhất 2 ẩn."
+ },
+ {
+  "ma_cau": "T110020204092",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thuê xe tối thiểu chi phí, 2 ẩn x, y, lập hệ ràng buộc rồi xét đỉnh."
+ },
+ {
+  "ma_cau": "T110020202103",
+  "dang_bai_id": "NDB00544",
+  "chac": "cao",
+  "ly_do": "Hình miền nghiệm, 4 đáp án cùng hệ số chỉ khác chiều bất phương trình."
+ },
+ {
+  "ma_cau": "T110020204007",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Bài thực tế tìm lãi lớn nhất với 2 ẩn là số mỗi loại giỏ."
+ },
+ {
+  "ma_cau": "T110020202036",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Hình miền nghiệm, đáp án khác hệ số nên phải lập phương trình đường thẳng."
+ },
+ {
+  "ma_cau": "T110020202097",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Đáp án khác cả đường biên (x, y, 3x+2y=±6) nên phải lập phương trình đường thẳng từ hình."
+ },
+ {
+  "ma_cau": "T110020204039",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Pha chế hai loại nước, 2 ẩn, tìm điểm thưởng lớn nhất."
+ },
+ {
+  "ma_cau": "T110020204087",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Trồng dưa lê và dưa vàng, 2 ẩn, tìm lãi lớn nhất."
+ },
+ {
+  "ma_cau": "T110000000267",
+  "dang_bai_id": "NDB01377",
+  "chac": "cao",
+  "ly_do": "Miền tam giác ABC cho sẵn trong hình, tìm max/min F=20x+35y; hình đủ đỉnh để làm."
+ },
+ {
+  "ma_cau": "T110020101080",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Hỏi bất phương trình nào là bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020204084",
+  "dang_bai_id": "NDB00887",
+  "chac": "vua",
+  "ly_do": "Bài thực tế 2 ẩn, đề chỉ thấy lập hệ và biểu diễn miền nghiệm; có thể là dạng lập hệ/vẽ miền nghiệm."
+ },
+ {
+  "ma_cau": "T110020204029",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Xưởng in poster, 2 ẩn, tìm số tiền lớn nhất."
+ },
+ {
+  "ma_cau": "T110000000261",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm tập xác định của hàm số phân thức: thuộc chủ đề Hàm số, bản đồ thiếu dạng này."
+ },
+ {
+  "ma_cau": "T110020102100",
+  "dang_bai_id": "NDB00538",
+  "chac": "cao",
+  "ly_do": "Cho bất phương trình, chọn hình biểu diễn đúng miền nghiệm."
+ },
+ {
+  "ma_cau": "T110020102071",
+  "dang_bai_id": "NDB00538",
+  "chac": "cao",
+  "ly_do": "Biểu diễn miền nghiệm của bất phương trình cho sẵn."
+ },
+ {
+  "ma_cau": "T110000000308",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm tập xác định của hàm số phân thức: thuộc chủ đề Hàm số, bản đồ thiếu dạng này."
+ },
+ {
+  "ma_cau": "T110020202045",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Hình miền nghiệm, đáp án khác hệ số nên phải lập phương trình đường thẳng."
+ },
+ {
+  "ma_cau": "T110020102060",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Tìm cặp số không là nghiệm của bất phương trình."
+ },
+ {
+  "ma_cau": "T110020204040",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Sản xuất lụa gấm và tơ tằm, 2 ẩn, tìm lãi lớn nhất."
+ },
+ {
+  "ma_cau": "T110020202066",
+  "dang_bai_id": "NDB00544",
+  "chac": "cao",
+  "ly_do": "Hình miền nghiệm 3 đường biên, đáp án cùng hệ số chỉ khác chiều."
+ },
+ {
+  "ma_cau": "T110020102113",
+  "dang_bai_id": "NDB00538",
+  "chac": "cao",
+  "ly_do": "Biểu diễn miền nghiệm của bất phương trình cho sẵn."
+ },
+ {
+  "ma_cau": "T110020204081",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Chiết xuất hóa chất, 2 ẩn, tìm chi phí nhỏ nhất."
+ },
+ {
+  "ma_cau": "T110020104017",
+  "dang_bai_id": "NDB00541",
+  "chac": "vua",
+  "ly_do": "Thực tế lập bất phương trình bậc nhất 2 ẩn từ tiền vé; dạng 541 gần nhất nhưng không đúng yêu cầu tìm số tối đa."
+ },
+ {
+  "ma_cau": "T110020201088",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Hỏi hệ nào là hệ bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110000000280",
+  "dang_bai_id": "NDB00887",
+  "chac": "vua",
+  "ly_do": "Hai ý khác dạng: a) mua vở và bút (NDB00541), b) tối ưu lời 2 ẩn (NDB00887)."
+ },
+ {
+  "ma_cau": "T110020204097",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Chiết xuất chất A, B, 2 ẩn, tìm chi phí thấp nhất."
+ },
+ {
+  "ma_cau": "T110020204036",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Bán thực đơn trà sữa và bánh, 2 ẩn, tìm số tiền lớn nhất."
+ },
+ {
+  "ma_cau": "T110020102077",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Xác định điểm thuộc hay không thuộc miền nghiệm bằng cách thay toạ độ."
+ },
+ {
+  "ma_cau": "T110020102097",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Chọn cặp số là nghiệm của bất phương trình."
+ },
+ {
+  "ma_cau": "T110020102078",
+  "dang_bai_id": "NDB01400",
+  "chac": "cao",
+  "ly_do": "Câu hỏi đơn giản về tính chất (vô số nghiệm) của bất phương trình bậc nhất 2 ẩn."
+ },
+ {
+  "ma_cau": "T110020101077",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Hỏi bất phương trình nào là bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020202105",
+  "dang_bai_id": "NDB00544",
+  "chac": "cao",
+  "ly_do": "Hình miền nghiệm, đáp án cùng hệ số (x+2y, y) chỉ khác chiều và dấu bằng."
+ },
+ {
+  "ma_cau": "T110020102058",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Tìm điểm thuộc miền nghiệm của bất phương trình bằng cách thay toạ độ."
+ },
+ {
+  "ma_cau": "T110020204073",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thuê xe loại A, B, 2 ẩn, tìm chi phí ít nhất."
+ },
+ {
+  "ma_cau": "T110020102110",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Chọn cặp số là nghiệm của bất phương trình."
+ },
+ {
+  "ma_cau": "T110020102125",
+  "dang_bai_id": "NDB00538",
+  "chac": "cao",
+  "ly_do": "Cho bất phương trình, chọn hình biểu diễn đúng miền nghiệm."
+ },
+ {
+  "ma_cau": "T110020101058",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Hỏi bất phương trình nào là bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020202090",
+  "dang_bai_id": "NDB00544",
+  "chac": "cao",
+  "ly_do": "Hình miền nghiệm, đáp án cùng hệ số chỉ khác chiều và dấu."
+ },
+ {
+  "ma_cau": "T110020202094",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm tham số để miền nghiệm của hệ có diện tích cho trước; bản đồ thiếu dạng này."
+ },
+ {
+  "ma_cau": "T110020204061",
+  "dang_bai_id": "NDB00541",
+  "chac": "cao",
+  "ly_do": "Mua tập và bút, biết số bút, tìm số tập tối đa."
+ },
+ {
+  "ma_cau": "T110020101078",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Hỏi bất phương trình nào là bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020202044",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Hình miền nghiệm, đáp án khác hệ số nên phải lập phương trình đường thẳng."
+ },
+ {
+  "ma_cau": "T110020204078",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Sản xuất bột cà phê hai loại, 2 ẩn, tìm lãi lớn nhất."
+ },
+ {
+  "ma_cau": "T110020202039",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Hình miền nghiệm, đáp án khác hệ số nên phải lập phương trình đường thẳng."
+ },
+ {
+  "ma_cau": "T110020201073",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Hỏi hệ nào là hệ bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020202050",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Hình miền nghiệm, đáp án khác hệ số nên phải lập phương trình đường thẳng."
+ },
+ {
+  "ma_cau": "T110020204093",
+  "dang_bai_id": "NDB00887",
+  "chac": "vua",
+  "ly_do": "Hai ý khác dạng: 1) biểu diễn miền nghiệm (NDB00538), 2) tối ưu lãi 2 ẩn (NDB00887)."
+ },
+ {
+  "ma_cau": "T110000000145",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm tập xác định của hàm số chứa căn và phân thức: thuộc chủ đề Hàm số, bản đồ thiếu dạng."
+ },
+ {
+  "ma_cau": "T110020202069",
+  "dang_bai_id": "NDB00544",
+  "chac": "cao",
+  "ly_do": "Hình miền nghiệm 3 đường biên, đáp án cùng hệ số chỉ khác chiều."
+ },
+ {
+  "ma_cau": "T110020202100",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Đáp án khác cả đường biên (x, y, 3x+2y=±6) nên phải lập phương trình đường thẳng từ hình."
+ },
+ {
+  "ma_cau": "T110020202074",
+  "dang_bai_id": "NDB00544",
+  "chac": "cao",
+  "ly_do": "Hình miền nghiệm 3 đường biên, đáp án cùng hệ số chỉ khác chiều."
+ },
+ {
+  "ma_cau": "T110020204058",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Pha chế hai loại nước, 2 ẩn, tìm điểm thưởng cao nhất."
+ },
+ {
+  "ma_cau": "T110000000305",
+  "dang_bai_id": "NDB01375",
+  "chac": "cao",
+  "ly_do": "Cho hệ bất phương trình sẵn, tìm giá trị nhỏ nhất của F=3y-2x, không thực tế."
+ },
+ {
+  "ma_cau": "T110000000093",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm tập xác định của hàm số chứa căn: thuộc chủ đề Hàm số, bản đồ thiếu dạng."
+ },
+ {
+  "ma_cau": "T110020202071",
+  "dang_bai_id": "NDB00544",
+  "chac": "cao",
+  "ly_do": "Hình miền nghiệm 3 đường biên, đáp án cùng hệ số chỉ khác chiều."
+ },
+ {
+  "ma_cau": "T110020204009",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Bãi đậu xe 7 chỗ và 16 chỗ, 2 ẩn, tìm doanh thu lớn nhất."
+ },
+ {
+  "ma_cau": "T110020104015",
+  "dang_bai_id": "NDB00541",
+  "chac": "cao",
+  "ly_do": "Mua vở và bút, biết số bút, tìm số vở tối đa."
+ },
+ {
+  "ma_cau": "T110020104020",
+  "dang_bai_id": "NDB00541",
+  "chac": "vua",
+  "ly_do": "Thực tế lập bất phương trình 2 ẩn từ số tờ tiền; dạng 541 gần nhất nhưng không đúng yêu cầu."
+ },
+ {
+  "ma_cau": "T110020102102",
+  "dang_bai_id": "NDB00884",
+  "chac": "cao",
+  "ly_do": "Cho hình miền nghiệm, đáp án có đường biên khác nhau nên phải lập phương trình đường thẳng."
+ },
+ {
+  "ma_cau": "T110020204032",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Trồng dưa lưới và cà chua bi, 2 ẩn, tìm lợi nhuận lớn nhất."
+ },
+ {
+  "ma_cau": "T110010204082",
+  "dang_bai_id": "NDB00528",
+  "chac": "vua",
+  "ly_do": "Hai ý: a) chỉ thích văn (NDB00528), b) thích văn (NDB00527); lấy dạng sau."
+ },
+ {
+  "ma_cau": "T110020201087",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Hỏi hệ nào là hệ bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020204055",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Trồng cà phê và sầu riêng, 2 ẩn, tìm lợi nhuận cao nhất."
+ },
+ {
+  "ma_cau": "T110020102087",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Điểm A thuộc miền nghiệm của bất phương trình nào, thay toạ độ để thử."
+ },
+ {
+  "ma_cau": "T110020204047",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Xưởng cơ khí hai sản phẩm, 2 ẩn, tìm lãi lớn nhất."
+ },
+ {
+  "ma_cau": "T110010101079",
+  "dang_bai_id": "NDB00818",
+  "chac": "vua",
+  "ly_do": "Mệnh đề chứa biến với ∀ và đếm giá trị chẵn; gần dạng mệnh đề chứa biến nhưng không khớp hẳn."
+ },
+ {
+  "ma_cau": "T110000000210",
+  "dang_bai_id": "NDB01375",
+  "chac": "cao",
+  "ly_do": "Cho hệ bất phương trình sẵn, tìm giá trị lớn nhất của f=x+3y, không thực tế."
+ },
+ {
+  "ma_cau": "T110020201071",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Hỏi hệ nào là hệ bất phương trình bậc nhất hai ẩn."
+ },
+ {
+  "ma_cau": "T110020102092",
+  "dang_bai_id": "NDB00538",
+  "chac": "cao",
+  "ly_do": "Cho sẵn bất phương trình, chọn hình miền nghiệm đúng."
+ },
+ {
+  "ma_cau": "T110020204004",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế 2 ẩn (số nhân viên hai ca), lập hệ và tìm chi phí nhỏ nhất."
+ },
+ {
+  "ma_cau": "T110000000134",
+  "dang_bai_id": "NDB00550",
+  "chac": "vua",
+  "ly_do": "Đu quay: tính độ cao qua cos120° của góc quay; bài thực tế, có thể bản đồ thiếu dạng ứng dụng lượng giác."
+ },
+ {
+  "ma_cau": "T110020102076",
+  "dang_bai_id": "NDB01400",
+  "chac": "cao",
+  "ly_do": "Khẳng định về tính chất (vô số nghiệm) của bất phương trình bậc nhất 2 ẩn."
+ },
+ {
+  "ma_cau": "T110000000277",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm nào thuộc miền nghiệm của hệ bất phương trình."
+ },
+ {
+  "ma_cau": "T110000000047",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: tìm tập xác định của hàm số phân thức."
+ },
+ {
+  "ma_cau": "T110020201076",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Hỏi hệ nào không phải hệ bất phương trình bậc nhất 2 ẩn."
+ },
+ {
+  "ma_cau": "T110020204090",
+  "dang_bai_id": "NDB00887",
+  "chac": "vua",
+  "ly_do": "Thực tế 2 ẩn sản xuất nhưng chỉ yêu cầu lập bất phương trình ràng buộc, không tìm min max."
+ },
+ {
+  "ma_cau": "T110020204082",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế 2 ẩn (rau, hoa), lập hệ và tìm lợi nhuận lớn nhất."
+ },
+ {
+  "ma_cau": "T110020102055",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số nào không là nghiệm của bất phương trình."
+ },
+ {
+  "ma_cau": "T110000000281",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Hai ý: GTLN diện tích hình chữ nhật bằng Cauchy và chứng minh công thức diện tích; thuộc bất đẳng thức/hình học, không có dạng."
+ },
+ {
+  "ma_cau": "T110020202047",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Chọn hệ theo hình miền nghiệm, đáp án khác hệ số nên phải lập phương trình đường thẳng."
+ },
+ {
+  "ma_cau": "T110020202053",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Chọn hệ theo hình miền nghiệm, các đáp án khác hệ số nên phải lập phương trình đường thẳng."
+ },
+ {
+  "ma_cau": "T110020102106",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số không là nghiệm của bất phương trình."
+ },
+ {
+  "ma_cau": "T110000000429",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: tính giá trị hàm số tại một điểm."
+ },
+ {
+  "ma_cau": "T110020202092",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Chọn hệ theo hình miền nghiệm, đáp án khác hệ số nên phải lập phương trình đường thẳng."
+ },
+ {
+  "ma_cau": "T110020204008",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế 2 ẩn (áo khoác, quần bò), lập hệ và tìm lãi lớn nhất."
+ },
+ {
+  "ma_cau": "T110020204067",
+  "dang_bai_id": "NDB00887",
+  "chac": "vua",
+  "ly_do": "Chỉ chọn hệ ràng buộc từ bài toán mua 2 loại cây, không tìm min max; cũng gần dạng mua 2 loại đồ vật."
+ },
+ {
+  "ma_cau": "T110020204094",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế 2 ẩn (kệ sách, bàn), lập hệ và tìm lợi nhuận lớn nhất."
+ },
+ {
+  "ma_cau": "T110020101069",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Hỏi bất phương trình nào là bậc nhất 2 ẩn."
+ },
+ {
+  "ma_cau": "T110020102118",
+  "dang_bai_id": "NDB00884",
+  "chac": "cao",
+  "ly_do": "Xác định bất phương trình từ hình; đáp án khác hệ số nên phải lập phương trình đường thẳng từ hai điểm."
+ },
+ {
+  "ma_cau": "T110000000404",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Hỏi hệ nào không phải hệ bất phương trình bậc nhất 2 ẩn."
+ },
+ {
+  "ma_cau": "T110020102091",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số là nghiệm của bất phương trình nào."
+ },
+ {
+  "ma_cau": "T110020102093",
+  "dang_bai_id": "NDB00539",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm nào thuộc miền nghiệm của một bất phương trình (thay tọa độ)."
+ },
+ {
+  "ma_cau": "T110000000401",
+  "dang_bai_id": "NDB01375",
+  "chac": "vua",
+  "ly_do": "Tham số m để bất phương trình đúng trên miền hệ: quy về max của biểu thức trên miền, nhưng có tham số."
+ },
+ {
+  "ma_cau": "T110020102063",
+  "dang_bai_id": "NDB00540",
+  "chac": "cao",
+  "ly_do": "Chọn bất phương trình theo hình, các đáp án cùng hệ số chỉ khác dấu."
+ },
+ {
+  "ma_cau": "T110020202037",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Chọn hệ theo hình miền nghiệm, đáp án khác hệ số nên phải lập phương trình đường thẳng."
+ },
+ {
+  "ma_cau": "T110020204089",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế 2 ẩn (tương cà loại A, B), lập hệ và tìm lãi lớn nhất."
+ },
+ {
+  "ma_cau": "T110020201085",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Hỏi hệ nào là hệ bất phương trình bậc nhất 2 ẩn."
+ },
+ {
+  "ma_cau": "T110010204093",
+  "dang_bai_id": "NDB00529",
+  "chac": "vua",
+  "ly_do": "Bài tập hợp 2 yếu tố có nhóm không giỏi môn nào, hỏi tổng sĩ số; gần dạng n(A∪B) và dạng không tham gia."
+ },
+ {
+  "ma_cau": "T110020202093",
+  "dang_bai_id": "NDB00886",
+  "chac": "cao",
+  "ly_do": "Chọn hệ theo hình miền nghiệm, đáp án khác hệ số nên phải lập phương trình đường thẳng."
+ },
+ {
+  "ma_cau": "T110020201077",
+  "dang_bai_id": "NDB00543",
+  "chac": "cao",
+  "ly_do": "Hỏi hệ nào là hệ bất phương trình bậc nhất 2 ẩn."
+ },
+ {
+  "ma_cau": "T110020204069",
+  "dang_bai_id": "NDB00541",
+  "chac": "cao",
+  "ly_do": "Mua tập và bút, cố định số bút, tìm số tập tối đa."
+ },
+ {
+  "ma_cau": "T110020101072",
+  "dang_bai_id": "NDB00882",
+  "chac": "cao",
+  "ly_do": "Hỏi bất phương trình nào là bậc nhất 2 ẩn."
+ },
+ {
+  "ma_cau": "T110020204091",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế 2 ẩn (xe loại A, B), lập hệ và tìm chi phí nhỏ nhất."
+ },
+ {
+  "ma_cau": "T110020204014",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Thực tế 2 ẩn (bánh kem, bông lan), lập hệ và tìm tiền thu lớn nhất."
+ },
+ {
+  "ma_cau": "T110000000173",
+  "dang_bai_id": "NDB00885",
+  "chac": "cao",
+  "ly_do": "Hỏi cặp số nào là nghiệm của hệ bất phương trình."
+ }
+]
