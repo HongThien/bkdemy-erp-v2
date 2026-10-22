@@ -100,7 +100,7 @@ export default function ChuyenDeHinhBuilder({ id, onClose }: { id: string; onClo
                   <button onClick={() => xoaPhan(p)} title="Xoá phần" className="rounded border border-slate-200 px-1.5 py-1 text-[12px] text-slate-400 hover:border-rose-300 hover:text-rose-600">✕</button>
                 </div>
                 <div className="space-y-4 p-4">
-                  {p.mo_hinh.length === 0 && !p.khac && <div className="text-[12px] italic text-slate-400">Chưa có mô hình — bấm “+ Chọn mô hình”.</div>}
+                  {p.mo_hinh.length === 0 && !p.khac?.bai.length && <div className="text-[12px] italic text-slate-400">Chưa có mô hình — bấm “+ Chọn mô hình”.</div>}
                   {p.mo_hinh.map((m, i) => (
                     <div key={m.phan_id} id={`cdh-${m.phan_id}`} className="scroll-mt-3 overflow-hidden rounded-xl border border-teal-200">
                       <div className="flex items-center gap-2 bg-teal-600 px-3 py-2 text-white">
@@ -136,7 +136,8 @@ export default function ChuyenDeHinhBuilder({ id, onClose }: { id: string; onClo
                       </ol>
                     </div>
                   ))}
-                  {p.khac && (
+                  {/* khối rỗng (bài đã được gán mô hình ở kho, tự chuyển đi — mig 202610221334) thì ẩn */}
+                  {!!p.khac?.bai.length && (
                     <div className="overflow-hidden rounded-xl border border-amber-200">
                       <div className="flex items-center gap-2 bg-amber-50 px-3 py-2 text-amber-800">
                         <span className="text-[13.5px] font-semibold">⚠ Bài chưa có mô hình</span>

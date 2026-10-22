@@ -38590,3 +38590,10 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 ### 21/10 — [Chuyên đề] "Chuyên đề nâng cao Đại số 6" — Thùy "tuyển tập khối 6 đại số nữa"
 - `_cd_nang_cao_dai7.mjs --khoi 6 --tat-ca --tao` rồi `--them --tat-ca` (tai_lieu e158626e-8dda-4428-8a3b-ff0585c4ffeb): 32 đề giữa kì ⇒ 67 câu (39 phần nâng cao đề cương · 26 câu Đại cuối đề · 2 câu cuối đề cương). Số tự nhiên 14 · Tính chia hết 35 · ƯCLN/BCNN 3 · Số nguyên 1 · Chưa xếp chủ đề 14 (chưa có dạng bài lẫn chủ đề trên bản đồ mới K6). 53 có dạng bài = 43 đã gán + 10 theo đề xuất.
 - **Kiểm DB (Browser pane đã đóng):** noi_dung đủ 67 câu, không BTVN; `fn_tl_nguon_cau` 67/67. Đề "mã đề 101 (bộ đề GKI 6, đề 1)" gốc không ghi trường ⇒ nguồn in "Đề thi giữa kì 1 năm 2024-2025 — mã đề 101" (đúng như tài liệu).
+
+### 22/10 — [Chuyên đề] Chuyên đề Hình tự đi theo mô hình ở kho — Thùy "mấy bài Hình 7 t cập nhật lại mô hình thì file Chuyên đề hình giữa kì ko tự cập nhật theo"
+- **Vì sao lệch:** chuyên đề Hình lưu bài vào khối mô hình LÚC ĐẶT (tai_lieu_cau) ⇒ đổi `hinh_bai.mo_hinh_id` ở kho không chạm chuyên đề. Đo: K7 lệch 3 (HLB00251/255/257 đã gán MH.090 mà còn ở "Bài tập khác") + HLB00247 bị BỎ QUA ở kho vẫn trong chuyên đề; K8 không lệch.
+- **Mig 202610221334** (đã áp): trigger `trg_hinh_bai_dong_bo_chuyen_de` (AFTER UPDATE OF mo_hinh_id) → `_tl_hl_dong_bo_bai(tai_lieu, ma_bai)` cho mọi chuyên đề chứa bài: vào khối mô hình mới (ưu tiên cùng phần; chưa có khối ⇒ tạo cuối phần đang có mô hình CÙNG NHÓM, không có thì phần hiện tại) · bỏ mô hình ⇒ khối "chưa có mô hình" của phần hiện tại · bài vào CUỐI khối. Chạy 1 lần: chuyển 3 bài K7 vào MH.090. Bài bị bỏ qua ở kho KHÔNG tự rời chuyên đề (xoá ⇒ hỏi Thùy).
+- **Bẫy:** `hinh_mo_hinh.nhom_mh_id` là TEXT (NMH00001), không phải uuid.
+- **Builder:** khối "Bài chưa có mô hình" rỗng thì ẩn.
+- **Kiểm:** `scripts/_test_cd_hinh_dong_bo.mjs` (ROLLBACK, chuyên đề K7 thật) 7/7 — 3 bài đã vào MH.090; 241 → MH.088 tạo khối mới đúng phần "Ba đường thẳng…", đứng cuối; 224 bỏ mô hình → khác phần cũ; 224 → MH.076 khối có sẵn; tổng vẫn 40.
