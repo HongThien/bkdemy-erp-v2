@@ -36,7 +36,7 @@ export type CdhChonChuDe = { id: string; ten: string }
 export async function cdhCayChon(khoi: string): Promise<{ chuDe: CdhChonChuDe[]; nhom: CdhChonNhom[]; moHinh: CdhChonMoHinh[] }> {
   const [cd, mh] = await Promise.all([
     supabase.from('dai_bdm_chu_de').select('id, ten').eq('khoi', khoi).eq('nhanh', 'hinh_luyen').order('thu_tu').limit(100),
-    supabase.from('hinh_mo_hinh').select('id, ma, ten, chu_de_id, nhom_mh_id, thu_tu').eq('phan', 'luyen').eq('khoi', khoi).is('neo_baitoan_id', null).order('ma').limit(1000),
+    supabase.from('hinh_mo_hinh').select('id, ma, ten, chu_de_id, nhom_mh_id, thu_tu').eq('phan', 'luyen').eq('khoi', khoi).is('neo_baitoan_id', null).eq('la_mo_hinh', true).order('ma')   /* nhánh giả thiết (22/10) cũng neo NULL ⇒ lọc la_mo_hinh */.limit(1000),
   ])
   if (cd.error) throw cd.error
   if (mh.error) throw mh.error

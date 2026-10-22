@@ -6,7 +6,7 @@
 //   · XẾP CHỖ trên màn (`xepCay`) là hiển thị thuần ⇒ chạy ở client, không ghi gì.
 // MÃ GỐC BẤT BIẾN (CLAUDE.md §2): khoá ở mọi chỗ là `id`/`ma`; `so` chỉ để người đọc.
 import { supabase } from '../supabase'
-import type { BaiToan, Luoi, MoHinh } from './hinh'
+import type { Luoi, MoHinh } from './hinh'
 
 // ══════════════════ KIỂU ══════════════════
 /** Một dòng kết quả RPC: bài + số hiển thị + nhánh chứa nó. */
@@ -60,6 +60,18 @@ export async function doiNeoCay(nhanhId: string, baiMoiId: string): Promise<KetQ
   if (error) throw error
   return kq(data)
 }
+/** Thêm giả thiết (nhánh chính / phụ) vào một giả thiết cha — Thùy 22/10: nhánh rẽ từ GIẢ THIẾT, không rẽ từ bài. */
+export async function themGiaThiet(chaId: string, ten: string, giaThietThem: string, chinh: boolean): Promise<KetQuaCay> {
+  const { data, error } = await supabase.rpc('fn_hl_them_gia_thiet', { p_cha: chaId, p_ten: ten, p_gia_thiet_them: giaThietThem, p_chinh: chinh })
+  if (error) throw error
+  return kq(data)
+}
+/** Dời giả thiết sang giả thiết cha khác và/hoặc đổi chính ↔ phụ (cùng cây, cấm vòng). */
+export async function doiChaGiaThiet(nhanhId: string, chaId: string, chinh: boolean): Promise<KetQuaCay> {
+  const { data, error } = await supabase.rpc('fn_hl_doi_cha_gia_thiet', { p_nhanh: nhanhId, p_cha: chaId, p_chinh: chinh })
+  if (error) throw error
+  return kq(data)
+}
 /** Sửa tên / giả thiết thêm của một nhánh — CRUD dòng đơn. Mã nhánh không đổi. */
 export async function suaNhanh(id: string, v: { ten: string; gia_thiet_them: string | null }): Promise<void> {
   const { error } = await supabase.from('hinh_mo_hinh')
@@ -68,24 +80,84 @@ export async function suaNhanh(id: string, v: { ten: string; gia_thiet_them: str
 }
 
 // ══════════════════ CẤU TRÚC CÂY (từ snapshot lưới) ══════════════════
-/** Nhánh nào thuộc cây của `gocId`: leo `neo_baitoan_id` → mô hình chứa bài neo, tới khi gặp gốc. */
-export function nhanhCuaCay(moHinh: MoHinh[], baiToan: Pick<BaiToan, 'id' | 'mo_hinh_id'>[], gocId: string): MoHinh[] {
-  const mhCuaBai = new Map(baiToan.map((b) => [b.id, b.mo_hinh_id]))
+/** Giả thiết thuộc cây của `gocId` (Thùy 22/10): gốc + mọi giả thiết con cháu nối bằng cạnh cha (hinh_mo_hinh_cha)
+ *  mà là NHÁNH (la_mo_hinh = false). Mô hình con kiểu cũ (la_mo_hinh = true) là cây riêng. */
+export function nhanhCuaCay(moHinh: MoHinh[], canh: { mo_hinh_id: string; cha_id: string }[], gocId: string): MoHinh[] {
   const byId = new Map(moHinh.map((m) => [m.id, m]))
-  const gocCua = (id: string): string => {
-    let cur = id
-    for (let i = 0; i < 64; i++) {
-      const neo = byId.get(cur)?.neo_baitoan_id
-      const len = neo ? mhCuaBai.get(neo) : undefined
-      if (!len) return cur
-      cur = len
-    }
-    return cur
-  }
-  return moHinh.filter((m) => m.id === gocId || (m.neo_baitoan_id && gocCua(m.id) === gocId))
+  const con = new Map<string, string[]>()
+  for (const c of canh) if (byId.get(c.mo_hinh_id)?.la_mo_hinh === false) con.set(c.cha_id, [...(con.get(c.cha_id) ?? []), c.mo_hinh_id])
+  const ra: MoHinh[] = [], da = new Set<string>()
+  const di = (id: string) => { if (da.has(id) || !byId.has(id)) return; da.add(id); ra.push(byId.get(id)!); (con.get(id) ?? []).forEach(di) }
+  di(gocId)
+  return ra
 }
-/** Các mô hình là GỐC cây (không neo). Mô hình con kiểu cũ (có cha trong `canh`) cũng là gốc riêng. */
-export const gocCayCua = (L: Luoi) => L.moHinh.filter((m) => !m.neo_baitoan_id)
+/** Các mô hình là GỐC cây: không phải nhánh giả thiết. Mô hình con kiểu cũ (la_mo_hinh, có cha) cũng là gốc riêng. */
+export const gocCayCua = (L: Luoi) => L.moHinh.filter((m) => !m.neo_baitoan_id && m.la_mo_hinh !== false)
+
+// ══════════════════ XẾP CHỖ kiểu GIẢ THIẾT (Thùy 22/10, mockup docs/mockup-hinh-gia-thiet-mh072.html) ══════════════════
+// Mỗi giả thiết = một KHỐI (lục giác đầu khối + các bài). Nhánh CHÍNH đi thẳng XUỐNG dưới giả thiết cha; nhánh PHỤ rẽ
+// sang PHẢI. Trong khối, chuỗi bài NẰM NGANG: cột = cấp (theo tiền đề cùng khối); bài con ĐẦU TIÊN (theo số) đi tiếp
+// cùng hàng, mỗi bài con sau xuống một hàng mới (vd B1→B2 · B3→B6→B7 · B4 · B5). `boi` = bài trước đã "đặt" bài này
+// (dây vẽ); tiền đề còn lại hiện thành nhãn ở góc thẻ. Mũi tên đi trong KHE giữa các cột, không đè thẻ.
+export const KT_GT = { W: 156, H: 48, GX: 40, GY: 18, PAD: 14, HEX: 40, TOP: 66, CACH_DOC: 56, CACH_NGANG: 110 }
+export type HopXY = { x: number; y: number; w: number; h: number }
+export type BoCucGT = { khoi: Map<string, HopXY>; bai: Map<string, { x: number; y: number }>; boi: Map<string, string | null>; rong: number; cao: number }
+export function xepGiaThiet(a: {
+  gocId: string
+  gt: { id: string; cha: string | null; chinh: boolean }[]
+  bai: { id: string; gt: string; so: number; tienDe: string[] }[]
+}): BoCucGT {
+  const { W, H, GX, GY, PAD, TOP, CACH_DOC, CACH_NGANG } = KT_GT
+  const gtCua = new Map(a.bai.map((b) => [b.id, b.gt])), soCua = new Map(a.bai.map((b) => [b.id, b.so]))
+  const boi = new Map<string, string | null>()
+  const trong = new Map<string, { lv: Map<string, number>; hang: Map<string, number>; w: number; h: number }>()
+  for (const g of a.gt) {
+    const ds = a.bai.filter((b) => b.gt === g.id).sort((x, y) => x.so - y.so)
+    const cha = new Map(ds.map((b) => [b.id, b.tienDe.filter((t) => gtCua.get(t) === g.id)]))
+    const con = (id: string) => ds.filter((b) => cha.get(b.id)!.includes(id)).map((b) => b.id)
+    const lv = new Map<string, number>()
+    const L = (id: string, sau = 0): number => {
+      if (lv.has(id)) return lv.get(id)!
+      const v = sau > 64 ? 1 : 1 + Math.max(0, ...cha.get(id)!.map((t) => L(t, sau + 1)))
+      lv.set(id, v); return v
+    }
+    ds.forEach((b) => L(b.id))
+    const hang = new Map<string, number>(); let maxR = -1
+    const dat = (id: string, r: number, tu: string | null) => {
+      if (hang.has(id)) return
+      hang.set(id, r); boi.set(id, tu); maxR = Math.max(maxR, r)
+      let dau = true
+      for (const m of con(id).sort((x, y) => soCua.get(x)! - soCua.get(y)!)) {
+        if (hang.has(m) || lv.get(m) !== lv.get(id)! + 1) continue        // bài con ở cấp xa hơn: để bài trước gần nó đặt
+        dat(m, dau ? r : maxR + 1, id); dau = false
+      }
+    }
+    ds.filter((b) => !cha.get(b.id)!.length).forEach((b) => dat(b.id, maxR + 1, null))
+    ds.filter((b) => !hang.has(b.id)).forEach((b) => dat(b.id, maxR + 1, null))
+    const soCot = Math.max(1, ...ds.map((b) => lv.get(b.id)!)), soHang = Math.max(1, maxR + 1)
+    trong.set(g.id, { lv, hang, w: Math.max(320, PAD * 2 + soCot * W + (soCot - 1) * GX), h: TOP + soHang * (H + GY) - GY + PAD })
+  }
+  const con = (id: string) => a.gt.filter((g) => g.cha === id)
+  const khoi = new Map<string, HopXY>()
+  const datGT = (id: string, x: number, y: number, sau = 0): number => {      // trả chiều cao phần cây chiếm
+    const t = trong.get(id); if (!t || sau > 64) return 0
+    khoi.set(id, { x, y, w: t.w, h: t.h })
+    let yPhu = y
+    for (const p of con(id).filter((g) => !g.chinh)) yPhu += datGT(p.id, x + t.w + CACH_NGANG, yPhu, sau + 1) + 24
+    const cao = Math.max(t.h, yPhu - y - 24)
+    const chinh = con(id).find((g) => g.chinh)
+    return chinh ? cao + CACH_DOC + datGT(chinh.id, x, y + cao + CACH_DOC, sau + 1) : cao
+  }
+  datGT(a.gocId, 0, 0)
+  const bai = new Map<string, { x: number; y: number }>()
+  for (const [id, k] of khoi) {
+    const t = trong.get(id)!
+    for (const [b, r] of t.hang) bai.set(b, { x: k.x + PAD + (t.lv.get(b)! - 1) * (W + GX), y: k.y + TOP + r * (H + GY) })
+  }
+  let rong = 0, cao = 0
+  for (const k of khoi.values()) { rong = Math.max(rong, k.x + k.w); cao = Math.max(cao, k.y + k.h) }
+  return { khoi, bai, boi, rong, cao }
+}
 
 // ══════════════════ XẾP CHỖ (spec §4.2) ══════════════════
 // Chỉ hai hướng: XUỐNG và SANG PHẢI. Thân = hàng 0. Nhánh = một HÀNG NGANG: thẻ giả thiết thêm ở cột bài mẹ,

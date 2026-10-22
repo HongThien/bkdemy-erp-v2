@@ -8,6 +8,20 @@
 
 ---
 
+
+> ## ⭐ ĐỔI MÔ HÌNH — Thùy 22/10 (THAY §0 "rẽ nhánh từ bài mẹ", §1.1 neo_baitoan_id, §2 RPC rẽ nhánh, §4.2 xếp chỗ làn bài)
+> Mockup chốt: `docs/mockup-hinh-gia-thiet-mh072.html` · mig `202610221743_hinh_gia_thiet_noi_gia_thiet.sql`.
+> - **Giả thiết nối giả thiết, bài nối bài.** Giả thiết mô hình (gốc chuỗi) và mỗi giả thiết thêm là CÙNG một kiểu nút. Nhánh rẽ ra từ
+>   **giả thiết**, KHÔNG từ bài. **Không bao giờ bài nối vào giả thiết**; bài chỉ nối bài theo quan hệ trước → sau (tiền đề, AND, nhiều cái được).
+> - Lưu: nhánh = `hinh_mo_hinh` (`la_mo_hinh=false`, `neo_baitoan_id` NULL) + cạnh `hinh_mo_hinh_cha(mo_hinh_id → cha_id, chinh)`.
+>   `chinh=true` = **nhánh chính** (đi thẳng tiếp giả thiết cha, ≤1/cha — unique index); còn lại **nhánh phụ** (rẽ).
+> - Vẽ (tab Chuỗi): **nhánh chính đi thẳng XUỐNG**, **nhánh phụ rẽ sang PHẢI**; trong mỗi giả thiết **chuỗi bài nằm NGANG**: cột = cấp
+>   (theo tiền đề cùng giả thiết), bài con ĐẦU TIÊN (theo số) đi tiếp cùng hàng, mỗi bài con sau xuống một hàng mới
+>   (vd B1→B2 · B3→B6→B7 · B4 · B5); tiền đề còn lại ghi ở góc thẻ. **Mũi tên đi trong khe, không đè thẻ.**
+> - Số hiển thị bài = **B1, B2…** theo thứ tự tạo trong cả cây (`fn_hl_so_hien_thi`); mã bài bất biến.
+> - RPC mới: `fn_hl_them_gia_thiet(cha, ten, gt_them, chinh)` · `fn_hl_doi_cha_gia_thiet(nhanh, cha, chinh)`. `fn_hl_re_nhanh*` / `fn_hl_doi_neo` đã KHOÁ.
+>   Giả thiết hiệu lực / sai nhánh vẫn theo đường gốc → giả thiết (`_hl_duong_mo_hinh`), nay đi qua cạnh cha.
+
 ## 0. Đích & khái niệm
 
 **Một mô hình Hình = một cây.** Thân là chuỗi bài 1.1 → 1.2 → …; mỗi lần **thêm một giả thiết** thì rẽ ra một **nhánh** từ một bài mẹ; nhánh lại rẽ tiếp. Số bài cho biết bài rẽ từ đâu (1.6.1 rẽ từ 1.6; 1.6.1.1 rẽ từ 1.6.1).

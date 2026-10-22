@@ -1,3 +1,5 @@
+// ⚠ LỊCH SỬ: script dựng theo kiểu "nhánh rẽ từ bài" (đã bỏ 22/10). Dữ liệu đã chuyển sang "giả thiết nối giả thiết" bởi
+// mig 202610221743 (+ B7 thêm tiền đề B1). fn_hl_re_nhanh_tu_bai đã khoá ⇒ KHÔNG chạy lại script này.
 // Dựng CHUỖI mẫu cho mô hình MH.072 "Hình chữ nhật trong tam giác vuông - Trung điểm M" (Hình–Luyện, khối 8)
 // từ file của Thùy (22/10, "Hình chữ nhật trong tam giác vuông - trung điểm.pdf", B1–B27). Spec: spec-hinh-cay-nhanh.md.
 //   node scripts/kho/hl-chuoi-mh072.mjs          ⇒ chạy thử trong 1 transaction rồi ROLLBACK

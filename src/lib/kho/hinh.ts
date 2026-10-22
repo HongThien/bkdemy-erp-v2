@@ -23,7 +23,8 @@ export type MoHinh = {
   // NHÓM MÔ HÌNH (mig 202610181651, Thùy 18/10): mô hình gốc luyện thuộc 1 nhóm trong chủ đề; null = nhánh / mô hình cũ / chưa xếp
   nhom_mh_id?: string | null
 }
-export type CanhMoHinh = { mo_hinh_id: string; cha_id: string }
+// Cạnh giả thiết cha → con. `chinh` (mig 202610221743): nhánh CHÍNH đi thẳng tiếp giả thiết cha (≤1/cha), còn lại là nhánh PHỤ.
+export type CanhMoHinh = { mo_hinh_id: string; cha_id: string; chinh?: boolean }
 export type BaiToan = {
   id: string; mon: string; ma: string; phat_bieu: string
   mo_hinh_id: string; cap: number
