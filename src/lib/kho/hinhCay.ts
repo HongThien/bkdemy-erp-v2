@@ -174,6 +174,21 @@ export async function themBaiCay(nhanhId: string, b: BaiNhap): Promise<KetQuaCay
   if (error) throw error
   return data as KetQuaCay & { bai_moi: string }
 }
+/** Bài mới chèn NGAY SAU một bài, cùng làn (Thùy 22/10, mig 202610221501). */
+export async function themBaiSau(baiTruoc: string, b: BaiNhap): Promise<KetQuaCay & { bai_moi: string }> {
+  const { data, error } = await supabase.rpc('fn_hl_them_bai_sau', {
+    p_bai_truoc: baiTruoc, p_phat_bieu: b.phatBieu, p_gia_thiet_rieng: b.giaThietRieng, p_loi_giai: b.loiGiai, p_anh: b.anh, p_tien_de: b.tienDe })
+  if (error) throw error
+  return data as KetQuaCay & { bai_moi: string }
+}
+/** Rẽ nhánh mới TỪ CHÍNH một bài (bài mẹ) + bài đầu tiên của nhánh, 1 transaction (Thùy 22/10). */
+export async function reNhanhTuBai(baiMe: string, ten: string, giaThietThem: string, b: BaiNhap): Promise<KetQuaCay & { bai_moi: string }> {
+  const { data, error } = await supabase.rpc('fn_hl_re_nhanh_tu_bai', {
+    p_bai_me: baiMe, p_ten: ten, p_gia_thiet_them: giaThietThem, p_phat_bieu: b.phatBieu, p_gia_thiet_rieng: b.giaThietRieng,
+    p_loi_giai: b.loiGiai, p_anh: b.anh, p_tien_de: b.tienDe })
+  if (error) throw error
+  return data as KetQuaCay & { bai_moi: string }
+}
 /** Sửa bài — mã KHÔNG đổi. */
 export async function suaBaiCay(baiId: string, b: BaiNhap): Promise<KetQuaCay & { bai_moi: string }> {
   const { data, error } = await supabase.rpc('fn_hl_sua_bai', {

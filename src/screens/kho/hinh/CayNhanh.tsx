@@ -80,7 +80,8 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
   const moRa = (id: string | null) => { if (id) setMoNhom((g) => (g[id] ? g : { ...g, [id]: true })) }   // nhóm vừa nhận mô hình ⇒ mở ra để thấy kết quả
   const [keoVao, setKeoVao] = useState<string | null>(null)   // nhóm đang được kéo mô hình vào (viền sáng)
   const [moDanhMuc, setMoDanhMuc] = useState<'dang' | 'bode' | null>(null)   // Thùy 19/10: danh mục Dạng bài / Bổ đề dời sang kho mới
-  const [hopBai, setHopBai] = useState<{ id: string | null; nhanh: string } | null>(null)                               // thêm / sửa bài
+  // thêm / sửa bài · `sau` = chèn ngay sau bài đó · `reTu` = rẽ nhánh mới từ bài đó (Thùy 22/10: thao tác TỪ MỘT BÀI)
+  const [hopBai, setHopBai] = useState<{ id: string | null; nhanh: string; sau?: string; reTu?: string } | null>(null)                               // thêm / sửa bài
   const soRef = useRef(new Map<string, string>())      // số hiển thị đang có (từ RPC) — giữ qua các lần lưới nạp lại
   const khung = useRef<HTMLDivElement>(null)
 
@@ -207,15 +208,19 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
     } catch (e: any) { setLoi(e.message ?? String(e)) }
     finally { setBan(false) }
   }
-  const luuBai = async (v: api.BaiNhap, nhanhId: string) => {
+  const luuBai = async (v: api.BaiNhap, nhanhId: string, nhanhMoi?: { ten: string; gt: string }) => {
     if (!hopBai || ban) return
-    const dangSua = hopBai.id
+    const { id: dangSua, sau, reTu } = hopBai
     setBan(true); setLoi(null)
     try {
-      const kq = dangSua ? await api.suaBaiCay(dangSua, v) : await api.themBaiCay(nhanhId, v)
+      const kq = dangSua ? await api.suaBaiCay(dangSua, v)
+        : sau ? await api.themBaiSau(sau, v)
+        : reTu ? await api.reNhanhTuBai(reTu, nhanhMoi?.ten ?? '', nhanhMoi?.gt ?? '', v)
+        : await api.themBaiCay(nhanhId, v)
       await va(kq)
       setCur(kq.bai_moi); setHopBai(null)
-      bao(dangSua ? 'Đã lưu bài — mã giữ nguyên' : 'Đã thêm bài ' + (kq.bai.find((b) => b.id === kq.bai_moi)?.so ?? ''))
+      const so = kq.bai.find((b) => b.id === kq.bai_moi)?.so ?? ''
+      bao(dangSua ? 'Đã lưu bài — mã giữ nguyên' : reTu ? `Đã rẽ nhánh mới — bài đầu nhánh ${so}` : 'Đã thêm bài ' + so)
     } catch (e: any) { setLoi(e.message ?? String(e)) }
     finally { setBan(false) }
   }
@@ -371,9 +376,11 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
             <div className="mb-3 flex flex-wrap items-center gap-2">
               <Seg value={tab} onChange={setTab} options={[{ v: 'chuoi', label: '① Chuỗi' }, { v: 'nhom', label: '② Nhóm' }, { v: 'kho', label: `③ Kho bài · ${demKho.get(gocId!)?.so_chuoi ?? 0}` }]} />
               <Btn kind="pri" disabled={ban} onClick={() => setHopBai({ id: null, nhanh: (cur && baiById.get(cur)?.mo_hinh_id) || gocId! })}
-                title="Thêm bài vào cuối thân, hoặc cuối nhánh của bài đang chọn">＋ Thêm bài</Btn>
-              <Btn disabled={!sel.size || ban} onClick={() => setHopRe({ ten: '', gt: '' })}
-                title="Tạo nhánh mới neo vào bài đứng ngay trước bài đầu được chọn">⑂ Rẽ nhánh từ bài đứng trước ({sel.size})</Btn>
+                title="Thêm bài vào CUỐI một làn. Muốn chèn ngay sau 1 bài / rẽ nhánh từ 1 bài: bấm vào bài đó">＋ Thêm bài cuối làn</Btn>
+              {/* Tách nhiều bài CÓ SẴN ra nhánh (tick ở góc thẻ) — chỉ hiện khi đã tick. Rẽ nhánh từ 1 bài: bấm vào bài. */}
+              {!!sel.size && <Btn disabled={ban} onClick={() => setHopRe({ ten: '', gt: '' })}
+                title="Tạo nhánh mới neo vào bài đứng ngay trước bài đầu được tick, chuyển các bài đã tick vào nhánh đó">⑂ Tách {sel.size} bài đã tick ra nhánh mới</Btn>}
+              {!!sel.size && <button className="text-[12px] text-slate-500 hover:underline" onClick={() => setSel(new Set())}>bỏ tick</button>}
               {tab === 'chuoi' && <>
                 <Btn onClick={() => setGapLai(new Set(nhanhs.filter((n) => n.id !== gocId).map((n) => n.id)))}>▸ Gập hết</Btn>
                 <Btn onClick={() => setGapLai(new Set())}>▾ Mở hết</Btn>
@@ -392,7 +399,9 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
                   onTick={(id) => setSel((p) => { const n = new Set(p); n.has(id) ? n.delete(id) : n.add(id); return n })}
                   onMo={(id) => { setCur(id); setPop(id) }} onGap={batGap} onVaoCon={(id) => setGocId(id)} />
               : <TabNhom {...{ gocId: gocId!, lan, nhanhs, baiById, nhanhById, sai, cur, doSau, baiCaNhanh, conCuaNhanh, ban, bais }}
-                  onMo={(id) => { setCur(id); setPop(id) }} onChuyen={chuyen} onThuTu={doiThuTu} onNeo={doiNeo} onSua={suaNhanh} />}
+                  onMo={(id) => { setCur(id); setPop(id) }} onChuyen={chuyen} onThuTu={doiThuTu} onNeo={doiNeo} onSua={suaNhanh}
+                  onThemSau={(id) => setHopBai({ id: null, nhanh: baiById.get(id)!.mo_hinh_id, sau: id })}
+                  onReTu={(id) => setHopBai({ id: null, nhanh: baiById.get(id)!.mo_hinh_id, reTu: id })} />}
 
             <Note>
               <b>Số hiển thị ≠ mã.</b> Số (1.6.1) là vị trí trên cây, tự tính lại khi chuyển bài; <b>mã bài không bao giờ đổi</b>.
@@ -407,6 +416,8 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
         <PopupBai L={L} bai={baiById.get(pop)!} nhanhById={nhanhById} baiById={baiById} duong={duong} doSau={doSau}
           saiTienDe={sai.get(pop) ?? []} onDong={() => setPop(null)} onNhay={(id) => { setCur(id); setPop(id) }}
           onSua={() => { const b = baiById.get(pop)!; setPop(null); setHopBai({ id: b.id, nhanh: b.mo_hinh_id }) }}
+          onThemSau={() => { const b = baiById.get(pop)!; setPop(null); setHopBai({ id: null, nhanh: b.mo_hinh_id, sau: b.id }) }}
+          onReTu={() => { const b = baiById.get(pop)!; setPop(null); setHopBai({ id: null, nhanh: b.mo_hinh_id, reTu: b.id }) }}
           onSuaSai={(nhanhId) => chuyen(pop, nhanhId)} />
       )}
       {hopRe && (
@@ -487,6 +498,7 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
       )}
       {hopBai && (
         <FormBai L={L} sua={hopBai.id ? baiById.get(hopBai.id) ?? null : null} nhanhMacDinh={hopBai.nhanh} gocId={gocId!}
+          sau={hopBai.sau ? baiById.get(hopBai.sau) ?? null : null} reTu={hopBai.reTu ? baiById.get(hopBai.reTu) ?? null : null}
           nhanhs={nhanhs} bais={bais} doSau={doSau} ban={ban} onDong={() => setHopBai(null)} onLuu={luuBai} />
       )}
       {thongBao && <div className="fixed bottom-5 left-1/2 z-[70] -translate-x-1/2 rounded-lg bg-slate-900 px-4 py-2 text-[13px] text-white shadow-lg">{thongBao}</div>}
@@ -768,7 +780,7 @@ function TabChuoi(p: ChungProps & {
               <div className="flex items-center gap-1">
                 <b className="text-[12.5px] text-slate-900">{b.so || '…'}</b>
                 {w && <span className="rounded border border-amber-400 bg-amber-100 px-1 text-[9.5px] font-bold text-amber-800">⚠</span>}
-                <input type="checkbox" className="ml-auto h-3.5 w-3.5" checked={sel.has(id)} title="Chọn để rẽ nhánh"
+                <input type="checkbox" className="ml-auto h-3.5 w-3.5" checked={sel.has(id)} title="Tick để tách nhiều bài có sẵn ra nhánh mới"
                   onClick={(e) => e.stopPropagation()} onChange={() => p.onTick(id)} />
               </div>
               <div className="truncate text-slate-500">{tron(b.phat_bieu)}</div>
@@ -794,6 +806,7 @@ function TabNhom(p: ChungProps & {
   ban: boolean; bais: BaiX[]
   onMo: (id: string) => void; onChuyen: (bai: string, nhanh: string) => void; onThuTu: (bai: string, viTri: number) => void
   onNeo: (nhanh: string, bai: string) => void; onSua: (id: string, v: { ten: string; gia_thiet_them: string | null }) => void
+  onThemSau: (bai: string) => void; onReTu: (bai: string) => void
 }) {
   const { gocId, lan, nhanhs, baiById, nhanhById, sai, cur, doSau, baiCaNhanh, conCuaNhanh, ban, bais } = p
   const [sua, setSua] = useState<{ id: string; ten: string; gt: string } | null>(null)
@@ -838,6 +851,8 @@ function TabNhom(p: ChungProps & {
               <div className="min-w-0 flex-1 cursor-pointer truncate" onClick={() => p.onMo(id)}>{tron(b.phat_bieu)}</div>
               {sai.has(id) && <span className="rounded border border-amber-400 bg-amber-50 px-1 text-[10px] font-bold text-amber-800">⚠ sai nhánh</span>}
               <Ma>{b.ma}</Ma>
+              <button disabled={ban} onClick={() => p.onThemSau(id)} className="rounded border border-teal-300 px-1.5 text-teal-700 hover:bg-teal-50 disabled:opacity-30" title="Tạo bài tiếp theo ngay sau bài này">＋</button>
+              <button disabled={ban} onClick={() => p.onReTu(id)} className="rounded border border-blue-300 px-1.5 text-blue-700 hover:bg-blue-50 disabled:opacity-30" title="Rẽ nhánh mới từ bài này">⑂</button>
               <button disabled={ban || i === 0} onClick={() => p.onThuTu(id, i)} className="rounded border border-slate-200 px-1.5 text-slate-500 disabled:opacity-30" title="Lên">↑</button>
               <button disabled={ban || i === cua.length - 1} onClick={() => p.onThuTu(id, i + 2)} className="rounded border border-slate-200 px-1.5 text-slate-500 disabled:opacity-30" title="Xuống">↓</button>
               <select disabled={ban} className="max-w-[170px] rounded-md border border-slate-300 bg-white px-1 py-0.5 text-[11.5px]" value={nid}
@@ -854,10 +869,11 @@ function TabNhom(p: ChungProps & {
 }
 
 // ══════════════════ POPUP BÀI ══════════════════
-function PopupBai({ L, bai, nhanhById, baiById, duong, doSau, saiTienDe, onDong, onNhay, onSuaSai, onSua }: {
+function PopupBai({ L, bai, nhanhById, baiById, duong, doSau, saiTienDe, onDong, onNhay, onSuaSai, onSua, onThemSau, onReTu }: {
   L: Luoi; bai: BaiX; nhanhById: Map<string, MoHinh>; baiById: Map<string, BaiX>
   duong: (id: string) => string[]; doSau: (id: string) => number; saiTienDe: string[]
   onDong: () => void; onNhay: (id: string) => void; onSuaSai: (nhanhId: string) => void; onSua: () => void
+  onThemSau: () => void; onReTu: () => void
 }) {
   const [gt, setGt] = useState<string | null>(null)
   useEffect(() => {
@@ -884,7 +900,9 @@ function PopupBai({ L, bai, nhanhById, baiById, duong, doSau, saiTienDe, onDong,
           <Ma big>{bai.ma}</Ma>
           <span className="rounded-full px-2 py-px text-[11.5px] font-semibold text-white" style={{ background: m.dac }}>{ds.length > 1 ? tron(ds[ds.length - 1].ten) : 'Thân'}</span>
           {!!saiTienDe.length && <span className="rounded border border-amber-400 bg-amber-50 px-1.5 text-[11px] font-bold text-amber-800">⚠ sai nhánh</span>}
-          <Btn className="ml-auto" onClick={onSua}>✎ Sửa bài</Btn>
+          <Btn kind="pri" className="ml-auto" onClick={onThemSau} title="Tạo bài mới ngay sau bài này, cùng làn (tiền đề mặc định = bài này)">＋ Bài tiếp theo</Btn>
+          <Btn onClick={onReTu} title="Thêm một giả thiết ⇒ nhánh mới rẽ ra từ bài này">⑂ Rẽ nhánh từ bài này</Btn>
+          <Btn onClick={onSua}>✎ Sửa bài</Btn>
           <button className="h-8 w-8 rounded-lg bg-slate-100 text-[16px]" onClick={onDong}>✕</button>
         </div>
         <div className="grid gap-5 px-5 py-4 md:grid-cols-[1fr_270px]">
@@ -929,9 +947,9 @@ function PopupBai({ L, bai, nhanhById, baiById, duong, doSau, saiTienDe, onDong,
 }
 // ══════════════════ FORM THÊM / SỬA BÀI ══════════════════
 const NhanO = ({ children }: { children: React.ReactNode }) => <label className="text-[11px] font-semibold uppercase tracking-wide text-slate-400">{children}</label>
-function FormBai({ L, sua, nhanhMacDinh, gocId, nhanhs, bais, doSau, ban, onDong, onLuu }: {
-  L: Luoi; sua: BaiX | null; nhanhMacDinh: string; gocId: string; nhanhs: MoHinh[]; bais: BaiX[]
-  doSau: (id: string) => number; ban: boolean; onDong: () => void; onLuu: (v: api.BaiNhap, nhanhId: string) => void
+function FormBai({ L, sua, sau, reTu, nhanhMacDinh, gocId, nhanhs, bais, doSau, ban, onDong, onLuu }: {
+  L: Luoi; sua: BaiX | null; sau?: BaiX | null; reTu?: BaiX | null; nhanhMacDinh: string; gocId: string; nhanhs: MoHinh[]; bais: BaiX[]
+  doSau: (id: string) => number; ban: boolean; onDong: () => void; onLuu: (v: api.BaiNhap, nhanhId: string, nhanhMoi?: { ten: string; gt: string }) => void
 }) {
   const cach = sua ? api.cachMacDinh(L, sua.id) : null
   const [nhanh, setNhanh] = useState(nhanhMacDinh)
@@ -939,25 +957,50 @@ function FormBai({ L, sua, nhanhMacDinh, gocId, nhanhs, bais, doSau, ban, onDong
   const [gt, setGt] = useState(sua?.gia_thiet_rieng ?? '')
   const [lg, setLg] = useState(cach?.loi_giai ?? '')
   const [anh, setAnh] = useState<string | null>(sua?.anh_chuan ?? null)
-  const [td, setTd] = useState<Set<string>>(new Set(sua ? api.tienDeCua(L, sua.id) : []))
-  const xep = [...bais].filter((b) => b.id !== sua?.id).sort((a, b) => soSanhSo(a.so, b.so))
+  const [tenNhanh, setTenNhanh] = useState('')
+  const [gtNhanh, setGtNhanh] = useState('')
+  // TIỀN ĐỀ = thuộc tính của bài (Thùy 22/10, như màn Hình bản trước): danh sách có thứ tự, cái đầu = tiền đề CHÍNH.
+  // Không bắt buộc liền nhau, nhiều cái được. Mặc định: bài tiếp theo ⇒ bài đứng trước · nhánh mới ⇒ bài mẹ.
+  const [td, setTd] = useState<string[]>(() => (sua ? api.tienDeCua(L, sua.id) : sau ? [sau.id] : reTu ? [reTu.id] : []))
+  const [chonTd, setChonTd] = useState(false)
+  const [timTd, setTimTd] = useState('')
   const nhanhXep = [...nhanhs].sort((a, b) => doSau(a.id) - doSau(b.id) || a.ma.localeCompare(b.ma))
+  const tenLan = (id: string) => (id === gocId ? 'Thân' : tron(nhanhs.find((n) => n.id === id)?.ten ?? ''))
+  // bài chọn được làm tiền đề, gom theo làn (thân → nhánh), mỗi làn theo số
+  const ungVien = useMemo(() => {
+    const q = timTd.trim().toLowerCase()
+    return nhanhXep.map((n) => ({
+      n, ds: bais.filter((b) => b.mo_hinh_id === n.id && b.id !== sua?.id && !td.includes(b.id)
+        && (!q || `${b.so} ${b.ma} ${tron(b.phat_bieu)}`.toLowerCase().includes(q))).sort((a, b) => soSanhSo(a.so, b.so)),
+    })).filter((g) => g.ds.length)
+  }, [nhanhXep, bais, sua, td, timTd])
+  const laRe = !!reTu, laSau = !!sau
+  const tieuDe = sua ? 'Sửa bài ' + sua.so : laSau ? `Bài tiếp theo — ngay sau ${sau!.so}` : laRe ? `Rẽ nhánh mới từ bài ${reTu!.so}` : 'Thêm bài cuối làn'
   return (
     <div className="fixed inset-0 z-[65] flex items-center justify-center bg-slate-900/45 p-5" onClick={onDong}>
       <div className="max-h-[94vh] w-full max-w-[1100px] overflow-auto rounded-2xl bg-white p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className="mb-3 flex items-center gap-2.5">
-          <h2 className="text-[16px] font-semibold">{sua ? 'Sửa bài ' + sua.so : 'Thêm bài'}</h2>
+          <h2 className="text-[16px] font-semibold">{tieuDe}</h2>
           {sua && <Ma big>{sua.ma}</Ma>}
-          {!sua && (
+          {(laSau || laRe) && <span className="text-[12px] text-slate-400">· làn {tenLan((sau ?? reTu)!.mo_hinh_id)}</span>}
+          {!sua && !laSau && !laRe && (
             <select className={inpCls + ' ml-auto w-auto'} value={nhanh} onChange={(e) => setNhanh(e.target.value)} title="Thêm vào cuối làn nào">
               {nhanhXep.map((n) => <option key={n.id} value={n.id}>{'— '.repeat(doSau(n.id))}{n.id === gocId ? 'Thân' : tron(n.ten)}</option>)}
             </select>)}
         </div>
+        {laRe && (
+          <div className="mb-4 grid gap-3 rounded-xl border border-blue-200 bg-blue-50/60 p-3 md:grid-cols-[1fr_2fr]">
+            <div><NhanO>Tên nhánh</NhanO><input autoFocus className={inpCls} value={tenNhanh} onChange={(e) => setTenNhanh(e.target.value)} placeholder="vd: Kẻ DE ⊥ AB" /></div>
+            <div><NhanO>Giả thiết thêm của nhánh (gõ $…$ cho công thức)</NhanO>
+              <input className={inpCls} value={gtNhanh} onChange={(e) => setGtNhanh(e.target.value)} placeholder="vd: Kẻ $DE \perp AB$ tại $E$." />
+              {gtNhanh.trim() && <div className="mt-1 text-[12.5px]"><MathText>{gtNhanh}</MathText></div>}</div>
+            <p className="text-[11.5px] text-slate-500 md:col-span-2">Nhánh neo vào bài <b>{reTu!.so}</b>; bài bên dưới là bài ĐẦU TIÊN của nhánh (số {reTu!.so}.1). Thêm bài tiếp trong nhánh: bấm bài đó ⇒ ＋ Bài tiếp theo.</p>
+          </div>)}
         <div className="grid gap-5 md:grid-cols-2">
           <div className="space-y-3">
             <div>
-              <div className="mb-1 flex items-center justify-between"><NhanO>Câu hỏi của bài</NhanO><OcrButton onText={(t) => setPb((p) => (p ? p + ' ' : '') + t)} /></div>
-              <textarea autoFocus className={inpCls + ' h-24'} value={pb} onChange={(e) => setPb(e.target.value)} placeholder="vd: Chứng minh tam giác ABK bằng tam giác EBK." />
+              <div className="mb-1 flex items-center justify-between"><NhanO>{laRe ? 'Câu hỏi — bài đầu tiên của nhánh' : 'Câu hỏi của bài'}</NhanO><OcrButton onText={(t) => setPb((p) => (p ? p + ' ' : '') + t)} /></div>
+              <textarea autoFocus={!laRe} className={inpCls + ' h-24'} value={pb} onChange={(e) => setPb(e.target.value)} placeholder="vd: Chứng minh tam giác ABK bằng tam giác EBK." />
               {pb.trim() && <div className="mt-1 rounded-md bg-slate-50 px-2 py-1 text-[12.5px]"><MathText>{pb}</MathText></div>}
             </div>
             <div>
@@ -965,16 +1008,38 @@ function FormBai({ L, sua, nhanhMacDinh, gocId, nhanhs, bais, doSau, ban, onDong
               <textarea className={inpCls + ' h-16'} value={gt} onChange={(e) => setGt(e.target.value)} placeholder="vd: Cho AB = 3, AC = 4." />
             </div>
             <div className="max-w-xs"><AnhInput value={anh} onChange={setAnh} cap="Hình riêng của bài (bỏ trống = hình mô hình)" /></div>
-            <div>
-              <div className="mb-1"><NhanO>Tiền đề — bài phải giải trước ({td.size})</NhanO></div>
-              <div className="max-h-40 overflow-auto rounded-lg border border-slate-200 p-1.5">
-                {!xep.length && <div className="px-1 text-[12px] text-slate-400">Chưa có bài nào khác.</div>}
-                {xep.map((b) => (
-                  <label key={b.id} className="flex cursor-pointer items-center gap-2 rounded px-1.5 py-0.5 text-[12.5px] hover:bg-slate-50">
-                    <input type="checkbox" checked={td.has(b.id)} onChange={() => setTd((p) => { const n = new Set(p); n.has(b.id) ? n.delete(b.id) : n.add(b.id); return n })} />
-                    <b className="w-14 shrink-0">{b.so}</b><span className="truncate">{tron(b.phat_bieu)}</span>
-                  </label>))}
+            <div className="rounded-xl border border-slate-200 p-3">
+              <div className="mb-1.5 flex items-center gap-2">
+                <span className="text-[12px] font-semibold uppercase tracking-wide text-slate-600">Bài toán tiền đề</span>
+                <span className="text-[11px] text-slate-400">cần CẢ · bài phải giải trước</span>
+                <Btn className="ml-auto !h-7 !text-[12px]" onClick={() => setChonTd((v) => !v)}>{chonTd ? 'Đóng danh sách' : '＋ Thêm tiền đề'}</Btn>
               </div>
+              {!td.length
+                ? <div className="text-[12px] text-slate-400">Chưa có tiền đề — bài suy thẳng từ giả thiết.</div>
+                : <div className="space-y-1">{td.map((id, i) => { const b = bais.find((x) => x.id === id); return (
+                    <div key={id} className="flex items-center gap-2 rounded-lg bg-slate-50 px-2 py-1.5 text-[12.5px]">
+                      {i === 0 ? <span className="rounded bg-blue-100 px-1.5 py-px text-[10px] font-semibold text-blue-700">chính</span>
+                        : <button className="rounded px-1 text-[10px] text-slate-400 hover:bg-blue-50 hover:text-blue-700" title="Đặt làm tiền đề chính" onClick={() => setTd((p) => [id, ...p.filter((x) => x !== id)])}>↑ chính</button>}
+                      <b className="w-12 shrink-0">{b?.so ?? '—'}</b>
+                      <span className="min-w-0 flex-1 truncate">{b ? tron(b.phat_bieu) : 'bài ngoài cây này'}</span>
+                      {b && <span className="shrink-0 text-[10.5px] text-slate-400">{tenLan(b.mo_hinh_id)}</span>}
+                      <button onClick={() => setTd((p) => p.filter((x) => x !== id))} className="shrink-0 text-slate-400 hover:text-rose-600" title="Bỏ tiền đề">✕</button>
+                    </div>) })}</div>}
+              {chonTd && (
+                <div className="mt-2 rounded-lg border border-slate-200 p-2">
+                  <input className={inpCls} value={timTd} onChange={(e) => setTimTd(e.target.value)} placeholder="Tìm theo số, mã, nội dung…" />
+                  <div className="mt-1.5 max-h-52 space-y-1.5 overflow-auto">
+                    {!ungVien.length && <div className="px-1 text-[12px] text-slate-400">Không còn bài nào để chọn.</div>}
+                    {ungVien.map(({ n, ds }) => (
+                      <div key={n.id}>
+                        <div className="px-1 text-[10.5px] font-semibold uppercase tracking-wide" style={{ color: mau(doSau(n.id)).dac }}>{'— '.repeat(doSau(n.id))}{tenLan(n.id)}</div>
+                        {ds.map((b) => (
+                          <button key={b.id} onClick={() => setTd((p) => [...p, b.id])} className="flex w-full items-center gap-2 rounded px-1.5 py-0.5 text-left text-[12.5px] hover:bg-blue-50">
+                            <b className="w-12 shrink-0">{b.so}</b><span className="truncate">{tron(b.phat_bieu)}</span>
+                          </button>))}
+                      </div>))}
+                  </div>
+                </div>)}
             </div>
           </div>
           <div>
@@ -984,10 +1049,11 @@ function FormBai({ L, sua, nhanhMacDinh, gocId, nhanhs, bais, doSau, ban, onDong
           </div>
         </div>
         <div className="mt-4 flex items-center justify-end gap-2">
-          <span className="mr-auto text-[11.5px] text-slate-400">{sua ? 'Sửa nội dung không đổi mã bài.' : 'Bài được thêm vào CUỐI làn đã chọn; muốn đổi chỗ thì sang tab Nhóm.'}</span>
+          <span className="mr-auto text-[11.5px] text-slate-400">{sua ? 'Sửa nội dung không đổi mã bài.' : laSau ? `Bài chèn ngay sau ${sau!.so}; các bài phía sau tự lùi số, mã giữ nguyên.` : laRe ? 'Tạo nhánh + bài đầu nhánh trong một lần lưu.' : 'Bài được thêm vào CUỐI làn đã chọn. Muốn chèn sau 1 bài: bấm bài đó ⇒ ＋ Bài tiếp theo.'}</span>
           <Btn onClick={onDong}>Huỷ</Btn>
           <Btn kind="pri" disabled={ban || !pb.trim()}
-            onClick={() => onLuu({ phatBieu: pb.trim(), giaThietRieng: gt.trim() || null, loiGiai: lg.trim() || null, anh, tienDe: [...td] }, nhanh)}>{sua ? 'Lưu' : 'Thêm bài'}</Btn>
+            onClick={() => onLuu({ phatBieu: pb.trim(), giaThietRieng: gt.trim() || null, loiGiai: lg.trim() || null, anh, tienDe: td }, nhanh,
+              laRe ? { ten: tenNhanh.trim(), gt: gtNhanh.trim() } : undefined)}>{sua ? 'Lưu' : laRe ? 'Tạo nhánh + bài' : 'Thêm bài'}</Btn>
         </div>
       </div>
     </div>
