@@ -1,0 +1,573 @@
+[
+ {
+  "ma_cau": "T108020401050",
+  "loai": "tra_loi_ngan",
+  "de": "Tính $(a-b+c-d)(a+b-c-d)=$ .............",
+  "dap_an": "$(a-d)^2-(b-c)^2$",
+  "loi_giai": "$(a-b+c-d)(a+b-c-d) = [(a-d)-(b-c)][(a-d)+(b-c)] = (a-d)^2-(b-c)^2$",
+  "nhan_cu": "Hiệu hai bình phương › Viết đa thức thành tích ứng dụng hiệu hai bình phương"
+ },
+ {
+  "ma_cau": "T108040401002",
+  "loai": "tra_loi_ngan",
+  "de": "Chứng minh $\\triangle ABD=\\triangle DCA$.",
+  "loi_giai": "Từ $\\triangle ABM = \\triangle DCM$ (theo câu T108040401001):\n- $AB = DC$ (hai cạnh tương ứng).\n- $\\widehat{ABM} = \\widehat{DCM}$ (hai góc tương ứng).\nHai góc $\\widehat{ABM}$ và $\\widehat{DCM}$ là hai góc so le trong (cát tuyến $BC$ cắt hai đường thẳng $AB$ và $DC$, với $B$, $M$, $C$ thẳng hàng và $M$ nằm giữa $B$, $C$) nên $AB \\parallel DC$.\nCó $AB = DC$ và $AB \\parallel DC$ nên tứ giác $ABDC$ là hình bình hành.\nTrong hình bình hành $ABDC$, cặp cạnh đối $BD$ và $CA$ thỏa mãn $BD = CA$.\nXét $\\triangle ABD$ và $\\triangle DCA$:\n- $AB = DC$ (cạnh đối của hình bình hành $ABDC$).\n- $BD = CA$ (cạnh đối của hình bình hành $ABDC$).\n- $AD = DA$ (cạnh chung).\nVậy $\\triangle ABD = \\triangle DCA$ (c.c.c) …",
+  "nhan_cu": "Hình học › Hình học"
+ },
+ {
+  "ma_cau": "T108000000054",
+  "loai": "tra_loi_ngan",
+  "de": "Thực hiện phép tính: $(x^2-3x+9)(x+3)-(54+x^3)$",
+  "dap_an": "-27",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** nhân đa thức với đa thức bằng cách nhân **từng hạng tử** của đa thức này với mỗi hạng tử của đa thức kia; hầu hết các hạng tử sẽ triệt tiêu nhau.\n**Bước 1.** Nhân đa thức $x^2-3x+9$ với $x+3$: lấy lần lượt $x$ rồi $3$ nhân với từng hạng tử của đa thức thứ nhất.\n**Bước 2.** Bỏ ngoặc của $(54+x^3)$, nhớ đổi dấu **cả hai** hạng tử vì phía trước ngoặc là dấu trừ.\n**Bước 3.** Nhóm các hạng tử đồng dạng để triệt tiêu; kết quả không còn chứa biến.\n**Chú ý:** sau khi thu gọn không còn $x$ nên biểu thức nhận một giá trị không đổi.\n**Phần 2. Trình bày**\n$(x^2-3x+9)(x+3)-(54+x^3)$\n$=x^3+3x^2-3x^2-9x+9x+27-54-x^3$\n$=(x^3-x^3)+(3x^2-3x^2)+(-9x+9x)+(27-54)$\n$=-27$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108040501007",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hai đa thức: $A(x)=x^3+ax^2+bx-5$ và $B(x)=x^2+x+1$. Tìm $a$ và $b$ để đa\nthức $A(x)$ chia hết cho đa thức $B(x)$.",
+  "dap_an": "a=-4, b=-4",
+  "loi_giai": "Chia $A(x)=x^3+ax^2+bx-5$ cho $B(x)=x^2+x+1$:\nBước 1: $x^3:x^2=x$. Nhân $x\\cdot(x^2+x+1)=x^3+x^2+x$. Trừ: $A(x)-x\\cdot B(x)=(a-1)x^2+(b-1)x-5$.\nBước 2: $(a-1)x^2:x^2=a-1$. Nhân $(a-1)(x^2+x+1)=(a-1)x^2+(a-1)x+(a-1)$. Trừ tiếp, dư $=[(b-1)-(a-1)]x+[-5-(a-1)]=(b-a)x+(-a-4)$.\nVậy $A(x)=(x^2+x+1)(x+a-1)+(b-a)x+(-a-4)$.\n$A(x)$ chia hết cho $B(x)$ khi và chỉ khi phần dư bằng $0$ với mọi $x$:\n$b-a=0$ và $-a-4=0$.\nSuy ra $a=-4$, $b=-4$.\nThử lại: $A(x)=x^3-4x^2-4x-5=(x^2+x+1)(x-5)$ — đúng.",
+  "nhan_cu": "Nâng cao › Nâng cao"
+ },
+ {
+  "ma_cau": "T108020203060",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức $A = 2x^2 + 5y^2 - 4xy-4x+2y-3$.",
+  "dap_an": "-\\dfrac{16}{3}",
+  "loi_giai": "Ta có:\n$A=2x^2+5y^2-4xy-4x+2y-3 = 2(x-y-1)^2 +3\\left(y-\\dfrac{1}{3}\\right)^2 - \\dfrac{16}{3}$.\nVì $2(x-y-1)^2 \\geq 0$ và $3\\left(y-\\dfrac{1}{3}\\right)^2 \\geq 0$ nên $A \\geq -\\dfrac{16}{3}$.\nDấu \"=\" xảy ra khi $x-y-1=0$ và $y-\\dfrac{1}{3}=0$.\nSuy ra $x = \\dfrac{4}{3}, y = \\dfrac{1}{3}$.\nVậy GTNN của A là $-\\dfrac{16}{3}$, đạt được khi $x = \\dfrac{4}{3}, y = \\dfrac{1}{3}$.",
+  "nhan_cu": "GTLN - GTNN của biểu thức hai biến › GTLN - GTNN của biểu thức hai biến sử dụng bình phương 3 số"
+ },
+ {
+  "ma_cau": "T108000000226",
+  "loai": "tu_luan",
+  "de": "Cho hai đa thức: $P=2x^3yz^2-2x^2y-2xy+5$; $Q=x^3yz^2-2x^2y+xy+2$.\na) Tính $P+Q$ và xác định bậc của đa thức $P+Q$.\nb) Tính $P-Q$ và xác định bậc của đa thức $P-Q$.\nc) Tìm đa thức $M$ biết: $M:(-2x^2y)=Q$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** ba ý dùng chung hai đa thức $P$, $Q$: ý a, b là cộng, trừ rồi tính bậc sau khi **thu gọn**; ý c là tìm **số bị chia** nên $M=Q \\cdot (-2x^2y)$.\n**Bước 1.** Ý a: viết $P+Q$, bỏ ngoặc giữ nguyên dấu, nhóm các hạng tử đồng dạng rồi thu gọn.\n**Bước 2.** Ý b: viết $P-Q$, khi bỏ ngoặc phải đổi dấu **tất cả** các hạng tử của $Q$, rồi nhóm đồng dạng và thu gọn.\n**Bước 3.** Bậc của đa thức đã thu gọn là bậc cao nhất của các hạng tử; bậc hạng tử là tổng số mũ các biến ($x^3yz^2$ có bậc $3+1+2$).\n**Bước 4.** Ý c: từ $M:(-2x^2y)=Q$ suy ra $M=Q \\cdot (-2x^2y)$, rồi nhân đơn thức với từng hạng tử của $Q$.\n**Chú ý:** ở ý b, hạng tử $-2x^2y$ của $P$ và của $Q$ triệt tiêu  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108010301049",
+  "loai": "tra_loi_ngan",
+  "de": "Thực hiện phép tính:\n$(3a^2b^5c).(6a^3bc^2)$",
+  "dap_an": "$18a^5b^6c^3$",
+  "loi_giai": "$(3a^2b^5c).(6a^3bc^2)$\n$= (3.6).(a^2.a^3).(b^5.b).(c.c^2)$\n$= 18a^{2+3}b^{5+1}c^{1+2}$\n$= 18a^5b^6c^3$.",
+  "nhan_cu": "Phép nhân đơn thức - đa thức › Nhân đơn thức với đơn thức"
+ },
+ {
+  "ma_cau": "T108000000539",
+  "loai": "tu_luan",
+  "de": "Tìm bậc mỗi đa thức sau rồi tính giá trị của chúng tại $x=1;\\ y=-2$: $Q=x^3+x^2y+xy^2-x^2y-xy^2-x^3$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** thu gọn $Q$ trước; các hạng tử đối nhau cộng lại bằng $0$ nên có thể không còn hạng tử nào.\n**Bước 1.** Nhóm từng cặp hạng tử đồng dạng $x^3$, $x^2y$, $xy^2$ rồi cộng hệ số của mỗi cặp.\n**Bước 2.** Xem kết quả thu gọn còn hạng tử nào không; từ đó xét đa thức này có bậc hay không (đa thức không không có bậc).\n**Bước 3.** Thay $x=1$, $y=-2$ vào đa thức thu gọn để tính giá trị.\n**Chú ý:** đa thức không (thu gọn bằng $0$) là đa thức không có bậc — đừng nhầm với bậc $0$, bậc $0$ là bậc của một số khác $0$.\n**Phần 2. Trình bày**\n$Q=x^3+x^2y+xy^2-x^2y-xy^2-x^3$\n$=(x^3-x^3)+(x^2y-x^2y)+(xy^2-xy^2)$\n$=0$\nĐa thức $Q$ thu gọn là đa thức không nên $Q$ không có bậc.\nVì …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108020103064",
+  "loai": "tra_loi_ngan",
+  "de": "$\\ldots\\ldots\\ldots\\ldots\\ldots\\ldots\\ldots + 25 = (2x + \\ldots\\ldots\\ldots\\ldots)^2$",
+  "dap_an": "$4x^2 + 20x + 25 = (2x + 5)^2$",
+  "loi_giai": "$4x^2 + 20x + 25 = (2x + 5)^2$",
+  "nhan_cu": "Bình phương của tổng hiệu › Hoàn thiện biểu thức bình phương tổng hiệu"
+ },
+ {
+  "ma_cau": "T108030401013",
+  "loai": "tra_loi_ngan",
+  "de": "Phân tích đa thức $2x^2+7x+5$ thành nhân tử.",
+  "dap_an": "$(x+1)(2x+5)$",
+  "loi_giai": "$2x^2 + 7x + 5$\n$= 2x^2 + 2x + 5x + 5$\n$= 2x(x + 1) + 5(x + 1)$\n$= (x + 1)(2x + 5).",
+  "nhan_cu": "Phân tích đa thức thành nhân tử › Phân tích đa thức thành nhân tử bằng phương pháp tách hạng tử"
+ },
+ {
+  "ma_cau": "T108000000511",
+  "loai": "tu_luan",
+  "de": "Một căn phòng cần được sơn lại các bức tường xung quanh và trần nhà. Căn phòng có dạng hình hộp chữ nhật với chiều dài là $x$ mét, chiều rộng là $y$ mét, và chiều cao là $z$ mét. Giá sơn mỗi mét vuông (bao gồm cả vật liệu và công thợ) là 120 000 đồng.\na) Lập đa thức biểu diễn tổng chi phí để sơn lại căn phòng. Áp dụng tính chi phí khi biết $x=5$ mét, $y=4$ mét, $z=3$ mét.\nb) Giả sử diện tích sàn nhà là $20\\ \\text{m}^2$ và thể tích của phòng là $60\\ \\text{m}^3$. Hãy tìm các kích thước của căn phòng để chi phí sơn là thấp nhất và tính chi phí đó.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** diện tích cần sơn gồm bốn bức tường (chu vi sàn nhân chiều cao) và trần nhà (bằng diện tích sàn); ở ý b diện tích sàn và thể tích cho biết ngay chiều cao, nên chi phí chỉ còn phụ thuộc vào tổng $x+y$.\n**Bước 1.** Ý a: tính diện tích bốn bức tường bằng chu vi sàn nhân với chiều cao, cộng diện tích trần nhà, rồi nhân với giá sơn một mét vuông để được đa thức chi phí.\n**Bước 2.** Ý a: thay $x$, $y$, $z$ bằng các số đã cho vào diện tích rồi nhân với giá sơn để ra chi phí.\n**Bước 3.** Ý b: từ thể tích bằng diện tích sàn nhân chiều cao tìm chiều cao $z$, thay vào đa thức chi phí và dùng diện tích sàn để biểu thức chỉ còn phụ thuộc $x+y$.\n**Bước 4.** Ý b: vì tích …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108020202090",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm các số thực $x$, $y$ thỏa mãn $x^2 + 26y^2 - 10xy + 14x - 76y + 58 = 0$.",
+  "lua_chon": [
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  "dap_an": "x=8, y=3",
+  "loi_giai": "Ta có:\n$x^2 + 26y^2 - 10xy + 14x - 76y + 58 = (x-5y+7)^2 + (y-3)^2$.\nDo đó $(x-5y+7)^2 + (y-3)^2 = 0$.\nVì các số hạng đều không âm nên $x-5y+7=0$ và $y-3=0$.",
+  "nhan_cu": "GTLN - GTNN của biểu thức hai biến › GTLN - GTNN của biểu thức hai biến dạng tổng các bình phương"
+ },
+ {
+  "ma_cau": "T108030101005",
+  "loai": "tra_loi_ngan",
+  "de": "Phân tích ĐTTNT: $12x - 30 =................................$",
+  "dap_an": "$6(2x-5)$",
+  "loi_giai": "Ta có:\n$12x - 30 = 6 \\cdot 2x - 6 \\cdot 5 = 6(2x - 5)$",
+  "nhan_cu": "Phân tích đa thức thành nhân tử › Phân tích đa thức thành nhân tử bằng phương pháp rút nhân tử chung"
+ },
+ {
+  "ma_cau": "T108020203063",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm giá trị nhỏ nhất của biểu thức $A = 2x^2 +4y^2 + 6x-4y - 4xy + 2030$.",
+  "dap_an": "2025",
+  "loi_giai": "Ta có:\n$A = 2x^2 + 4y^2 +6x-4y-4xy + 2030$\n$=2\\left(x-y+\\dfrac{3}{2}\\right)^2 +2\\left(y+\\dfrac{1}{2}\\right)^2 +2025$.\nVì $2\\left(x-y+\\dfrac{3}{2}\\right)^2 \\geq 0$ và $2\\left(y+\\dfrac{1}{2}\\right)^2 \\geq 0$ nên $A \\geq 2025$.\nDấu \"=\" xảy ra khi $x-y+\\dfrac{3}{2}=0$ và $y+\\dfrac{1}{2}=0$.\nSuy ra $y = -\\dfrac{1}{2}$ và $x = -2$.\nVậy GTNN của A là $2025$, đạt được khi $x = -2, y = -\\dfrac{1}{2}$.",
+  "nhan_cu": "GTLN - GTNN của biểu thức hai biến › GTLN - GTNN của biểu thức hai biến sử dụng bình phương 3 số"
+ },
+ {
+  "ma_cau": "T108010303001",
+  "loai": "tra_loi_ngan",
+  "de": "Tính $(x^2 + 2y)(xy - y^2)$",
+  "dap_an": "$x^3y - x^2y^2 + 2xy^2 - 2y^3$",
+  "loi_giai": "$(x^2 + 2y)(xy - y^2)$\n$= x^2 \\cdot xy - x^2 \\cdot y^2 + 2y \\cdot xy - 2y \\cdot y^2$\n$= x^3y - x^2y^2 + 2xy^2 - 2y^3$",
+  "nhan_cu": "Phép nhân đơn thức - đa thức › Nhân đa thức với đa thức"
+ },
+ {
+  "ma_cau": "T108020501044",
+  "loai": "tra_loi_ngan",
+  "de": "VÍ DỤ :\n................................=(..................)(x^2 + 4x + ................)",
+  "dap_an": "$(x-4)(x^2+4x+16)$",
+  "loi_giai": "Giải :\nx^3 - 64 = (x-4)(x^2+4x+16)",
+  "nhan_cu": "Tổng hiệu hai lập phương › Biến đổi tổng thành tích sử dụng tổng hai lập phương"
+ },
+ {
+  "ma_cau": "T108020202089",
+  "loai": "tra_loi_ngan",
+  "de": "Cho các số $x$, $y$ thỏa mãn đẳng thức $5x^2 + 5y^2 + 8xy - 2x + 2y + 2 = 0$. Tính giá trị của biểu thức $M = (x+y)^{2023} + (x-2)^{2024} + (y+1)^{2025}$.",
+  "lua_chon": [
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  "dap_an": "1",
+  "loi_giai": "Từ giả thiết, ta có:\n$5x^2 + 5y^2 + 8xy - 2x + 2y + 2 = \\dfrac{9}{2}(x+y)^2 + \\dfrac{1}{2}(x-y-2)^2 = 0$.\nVì $\\dfrac{9}{2}(x+y)^2 \\ge 0$ và $\\dfrac{1}{2}(x-y-2)^2 \\ge 0$ nên $x+y=0$ và $x-y-2=0$.\nSuy ra $x=1$, $y=-1$.\nKhi đó $M = (1-1)^{2023} + (1-2)^{2024} + (-1+1)^{2025} = 0+1+0=1$.\nVậy $M=1$.",
+  "nhan_cu": "GTLN - GTNN của biểu thức hai biến › GTLN - GTNN của biểu thức hai biến dạng tổng các bình phương"
+ },
+ {
+  "ma_cau": "T108000000106",
+  "loai": "tu_luan",
+  "de": "Một mảnh vườn hình vuông có cạnh $8$ m được mở rộng cả hai bên thêm $y$ (m) như hình bên. Viết biểu thức (dạng đa thức thu gọn) biểu thị diện tích của mảnh vườn sau khi mở rộng.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** sau khi mở rộng, mảnh vườn vẫn là một **hình vuông**, chỉ có cạnh dài thêm; diện tích của nó là bình phương của một tổng.\n**Bước 1.** Đọc hình: mỗi cạnh của mảnh vườn mới gồm đoạn $8$ m của vườn cũ nối với đoạn $y$ (m) thêm vào, từ đó viết độ dài cạnh mới theo $y$.\n**Bước 2.** Mảnh vườn mới là hình vuông nên diện tích bằng cạnh nhân cạnh, tức là bình phương của một tổng hai số hạng.\n**Bước 3.** Khai triển bằng hằng đẳng thức $(A+B)^2=A^2+2AB+B^2$, rồi sắp xếp các hạng tử theo luỹ thừa giảm dần của $y$ để được đa thức thu gọn.\n**Chú ý:** đề hỏi diện tích của **cả mảnh vườn** sau khi mở rộng (gồm cả phần vườn cũ để trắng trong hình), không phải chỉ phần tô m …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108030401019",
+  "loai": "tra_loi_ngan",
+  "de": "Phân tích đa thức $2x^2+3x-5$ thành nhân tử.",
+  "dap_an": "$(x-1)(2x+5)$",
+  "loi_giai": "$$2x^2+3x-5$$\n$$= 2x^2+5x-2x-5$$\n$$= x(2x+5) - (2x+5)$$\n$$= (x-1)(2x+5).$$",
+  "nhan_cu": "Phân tích đa thức thành nhân tử › Phân tích đa thức thành nhân tử bằng phương pháp tách hạng tử"
+ },
+ {
+  "ma_cau": "T108030102022",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x$ biết : $3x(2x-1)+6(2x-1)=0$",
+  "dap_an": "-2; 1/2",
+  "loi_giai": "$(2x-1)(3x+6)=0$\nTrường hợp 1 :\n$2x-1=0$\n $\\Rightarrow x=\\dfrac{1}{2}$\nTrường hợp 2\n $3x+6=0\\Rightarrow x=-2$\nVậy $x=\\dfrac{1}{2}$ hoặc $x=-2$",
+  "nhan_cu": "Tìm x ứng dụng phân tích đa thức thành nhân tử › Tìm x sử dụng phương pháp rút nhân tử chung"
+ },
+ {
+  "ma_cau": "T108020202078",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm giá trị nhỏ nhất của biểu thức $G = x^2 + 5y^2 - 4xy - 8y + 24$.",
+  "dap_an": "8",
+  "loi_giai": "Ta có:\n$G = x^2 + 5y^2 - 4xy - 8y + 24$\n$=(x-2y)^2 + (y-4)^2 + 8$.\nVì $(x-2y)^2 \\ge 0$ và $(y-4)^2 \\ge 0$ nên $G \\ge 8$.\nDấu \"=\" xảy ra khi $x-2y=0$ và $y-4=0$.\nSuy ra $y = 4, x=8$.\nVậy GTNN của G là $8$, đạt được khi $x=8, y = 4$.",
+  "nhan_cu": "GTLN - GTNN của biểu thức hai biến › GTLN - GTNN của biểu thức hai biến dạng tổng các bình phương"
+ },
+ {
+  "ma_cau": "T108040501005",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức: $C=x^{14}-10x^{13}+10x^{12}-10x^{11}+\\ldots+10x^2-\n10x+10$ với $x=9$.",
+  "dap_an": "1",
+  "loi_giai": "Vì $x=9$ nên $10=x+1$. Thay $10=x+1$ vào từng hệ số của $C$ rồi nhóm liên tiếp từng hai số hạng để triệt tiêu:\n$C=x^{14}-(x+1)x^{13}+(x+1)x^{12}-(x+1)x^{11}+\\ldots+(x+1)x^2-(x+1)x+(x+1)$\n$x^{14}-(x+1)x^{13}=x^{14}-x^{14}-x^{13}=-x^{13}$\n$-x^{13}+(x+1)x^{12}=-x^{13}+x^{13}+x^{12}=x^{12}$\n$x^{12}-(x+1)x^{11}=-x^{11}$\nCứ tiếp tục nhóm như vậy, mỗi bước hạ đúng một bậc và đổi dấu, đến hai số hạng cuối:\n$x^2-(x+1)x=x^2-x^2-x=-x$\n$-x+(x+1)=1$\nVậy $C=1$.",
+  "nhan_cu": "Nâng cao › Nâng cao"
+ },
+ {
+  "ma_cau": "T108000000260",
+  "loai": "trac_nghiem",
+  "de": "Để đơn thức $-3x^3y$ chia hết cho đơn thức $-3xy^n$ thì $n$ bằng",
+  "lua_chon": [
+   "3",
+   "2",
+   "1",
+   "4"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** muốn chia hết thì số mũ của mỗi biến ở đơn thức chia không được lớn hơn số mũ của biến đó ở đơn thức bị chia.\n**Bước 1.** Ghi số mũ các biến của đơn thức bị chia $-3x^3y$: biến $x$ có số mũ 3, biến $y$ có số mũ 1.\n**Bước 2.** So sánh với đơn thức chia $-3xy^n$: biến $x$ có số mũ 1, biến $y$ có số mũ $n$.\n**Bước 3.** Viết điều kiện cho biến $y$ rồi chọn giá trị $n$ nguyên dương trong các phương án thoả mãn.\n**Phần 2. Trình bày**\nĐơn thức $-3x^3y$ chia hết cho $-3xy^n$ khi số mũ của $y$ ở đơn thức chia không lớn hơn số mũ của $y$ ở đơn thức bị chia, tức là $n \\le 1$.\nSố mũ của $x$: $1 \\le 3$ (thoả mãn).\nTrong các phương án chỉ có $n=1$ thoả mãn $n \\le 1$.\nCh …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108000000082",
+  "loai": "tu_luan",
+  "de": "Khu vườn trồng mía ban đầu có dạng một hình vuông chu vi là $20$ (m). Người ta mở rộng một chiều thêm $y$ (m), mở rộng chiều còn lại thêm $8x$ (m) nên mảnh vườn mới có dạng một hình chữ nhật (như hình vẽ). Tính lượng mía thu hoạch được sau khi mở rộng mảnh vườn theo $x$, $y$. Biết rằng trung bình $1$ $m^2$ thu hoạch được $7$ (kg) mía.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tính diện tích mảnh vườn mới theo $x$, $y$ rồi **nhân với 7** (kg trên mỗi mét vuông) để ra lượng mía.\n**Bước 1.** Từ chu vi hình vuông tính cạnh ban đầu: chu vi bằng 4 lần cạnh.\n**Bước 2.** Cộng phần mở rộng vào từng chiều để có hai kích thước của hình chữ nhật mới, dựa vào hình vẽ: $y$ thêm vào chiều ngang, $8x$ thêm vào chiều dọc.\n**Bước 3.** Tính diện tích hình chữ nhật mới bằng cách nhân hai đa thức rồi thu gọn.\n**Bước 4.** Nhân diện tích với 7 để được lượng mía thu hoạch, bằng cách nhân đơn thức với đa thức.\n**Chú ý:** phải nhân 7 với từng hạng tử của diện tích, kể cả hạng tử chứa $xy$.\n**Phần 2. Trình bày**\nCạnh của khu vườn hình vuông ban đầu là $2 …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108000000775",
+  "loai": "tu_luan",
+  "de": "Cho 2 đa thức $A=2x^3-4x^2y+xy^2+1$ và $B=-2x^3-x^2y-3$.\na) Tính $A+B$ và xác định bậc của đa thức $A+B$.\nb) Tính giá trị của $A+B$ tại $x=1;\\ y=-2$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** cộng đa thức là bỏ ngoặc rồi nhóm và cộng các hạng tử đồng dạng; bậc của đa thức là bậc lớn nhất của các hạng tử trong dạng thu gọn; giá trị ở ý b tính trên dạng thu gọn đó.\n**Bước 1.** Ý a: viết $A+B$ với hai đa thức đặt trong ngoặc; trước ngoặc thứ hai là dấu cộng nên bỏ ngoặc và giữ nguyên dấu mọi hạng tử.\n**Bước 2.** Ý a: nhóm các hạng tử có cùng phần biến (đồng dạng) vào cùng một ngoặc, cộng hệ số; hạng tử nào có tổng hệ số bằng 0 thì biến mất.\n**Bước 3.** Ý a, tìm bậc: tính bậc từng hạng tử của đa thức đã thu gọn bằng tổng số mũ các biến, rồi lấy bậc lớn nhất.\n**Bước 4.** Ý b: thay $x$, $y$ vào dạng thu gọn của $A+B$, số âm đặt trong ngoặc; tính luỹ  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108000000470",
+  "loai": "tu_luan",
+  "de": "Tìm $x$, biết: $(2x+1)^2-36=0$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** chuyển $36$ sang vế phải để có $(2x+1)^2=36$; hai số có bình phương bằng nhau thì **bằng nhau hoặc đối nhau**, nên có hai giá trị của $2x+1$.\n**Bước 1.** Chuyển vế để cô lập bình phương $(2x+1)^2$ ở một vế.\n**Bước 2.** Viết số ở vế phải dưới dạng bình phương của một số để so sánh hai bình phương.\n**Bước 3.** Xét hai trường hợp: $2x+1$ bằng số đó, hoặc $2x+1$ bằng số đối của nó.\n**Bước 4.** Với mỗi trường hợp, chuyển vế rồi chia hai vế cho hệ số của $x$ để tìm $x$.\n**Chú ý:** đừng bỏ sót trường hợp âm; bài này có hai giá trị của $x$.\n**Phần 2. Trình bày**\n$(2x+1)^2-36=0$\n$(2x+1)^2=36$\n$(2x+1)^2=6^2$\n$2x+1=6$ hoặc $2x+1=-6$\n$2x=5$ hoặc $2x=-7$\n$x=\\dfrac{5}{2 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108000000031",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $a, b, c \\neq 0$ thỏa mãn $(a+b+c)\\left(\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}\\right)=1$.\nTính giá trị của biểu thức: $P=(a^{2025}+b^{2025})(b^{2023}+c^{2023})(c^{2011}+a^{2011})$",
+  "dap_an": "0",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** điều kiện thực chất nói $(a+b)(b+c)(c+a)=0$, tức là có hai số **đối nhau**; mà cả ba số mũ $2025$, $2023$, $2011$ đều **lẻ** nên một thừa số của $P$ bằng $0$.\n**Bước 1.** Nhân hai vế của điều kiện với $abc$ (khác $0$) để mất các số $\\dfrac{1}{a}$, $\\dfrac{1}{b}$, $\\dfrac{1}{c}$ ở dưới mẫu.\n**Bước 2.** Khai triển vế trái bằng cách nhân đa thức với đa thức, rồi chuyển $abc$ sang vế trái để được một tổng bằng $0$.\n**Bước 3.** Khai triển tích $(a+b)(b+c)(c+a)$ và nhận ra nó chính là tổng vừa tìm được, nên tích này bằng $0$.\n**Bước 4.** Tích bằng $0$ thì có một thừa số bằng $0$, tức hai số nào đó đối nhau; hai số đối nhau thì luỹ thừa bậc lẻ của chúng cũng đối  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108000000140",
+  "loai": "tu_luan",
+  "de": "Chứng minh rằng nếu $x,y\\in\\mathbb{Z}$ thì $M=(xy-1)(x^{2023}+y^{2023})-(xy+1)(x^{2023}-y^{2023})$ chia hết cho 2.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** khai triển $M$ để các hạng tử chứa $x^{2024}y$ triệt tiêu; phần còn lại có cả hai hạng tử cùng hệ số 2, nên chia hết cho 2.\n**Bước 1.** Khai triển hai tích bằng quy tắc nhân đa thức với đa thức: mỗi hạng tử của ngoặc đầu nhân với từng hạng tử của ngoặc sau.\n**Bước 2.** Bỏ ngoặc với dấu trừ ở giữa (đổi dấu mọi hạng tử của tích thứ hai) rồi gom các hạng tử đồng dạng.\n**Bước 3.** Sau khi thu gọn chỉ còn hai hạng tử, mỗi hạng tử là 2 nhân với một số nguyên (vì $x$, $y$ nguyên) nên đều chia hết cho 2; dùng tính chất chia hết của một hiệu để kết luận.\n**Chú ý:** $xy \\cdot x^{2023}=x^{2024}y$ và $xy \\cdot y^{2023}=xy^{2024}$ — nhân hai luỹ thừa cùng cơ số thì cộn …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108000000789",
+  "loai": "tu_luan",
+  "de": "Một mảnh vườn có dạng hình chữ nhật với chiều rộng là $x$ (m), chiều dài là $y$ (m).\na) Viết đa thức biểu thị diện tích của mảnh vườn.\nb) Nếu tăng chiều rộng lên $2$ m và giảm chiều dài đi $3$ m thì được mảnh vườn mới. Viết đa thức biểu thị diện tích của mảnh vườn mới.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** diện tích hình chữ nhật bằng chiều dài nhân chiều rộng; khi kích thước thay đổi thì lập lại tích với **kích thước mới**, rồi nhân đa thức để thu gọn.\n**Bước 1.** Ý a: nhớ công thức diện tích hình chữ nhật rồi thay chiều rộng và chiều dài bằng hai chữ đề đã cho.\n**Bước 2.** Ý b: tính kích thước mới của mảnh vườn: \"tăng thêm\" nghĩa là cộng vào, \"giảm đi\" nghĩa là trừ đi.\n**Bước 3.** Ý b: viết diện tích mới là tích của chiều rộng mới và chiều dài mới, hai thừa số là hai đa thức đặt trong ngoặc.\n**Bước 4.** Ý b: nhân đa thức với đa thức bằng cách nhân từng hạng tử của ngoặc này với cả ngoặc kia, rồi gộp các hạng tử đồng dạng nếu có.\n**Chú ý:** chiều dài mới là …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108000000793",
+  "loai": "tu_luan",
+  "de": "Cho đơn thức $A=\\left(\\dfrac{2}{3}x^2y^2\\right)\\left(\\dfrac{-6}{5}x^4y^3\\right)$.\na) Thu gọn đơn thức $A$.\nb) Xác định bậc và hệ số của đơn thức $A$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** thu gọn tích hai đơn thức bằng cách nhân các **hệ số** với nhau và nhân các **luỹ thừa cùng biến** (cộng số mũ); bậc là tổng số mũ của các biến trong dạng thu gọn.\n**Bước 1.** Ý a: nhóm các hệ số lại với nhau, nhóm các luỹ thừa của cùng một biến lại với nhau.\n**Bước 2.** Ý a: nhân hai phân số ở phần hệ số (nhớ quy tắc dấu) rồi rút gọn; nhân các luỹ thừa cùng cơ số bằng cách giữ cơ số và cộng các số mũ.\n**Bước 3.** Ý b: từ đơn thức đã thu gọn, đọc hệ số là số đứng đầu (kể cả dấu) và phần biến là phần chữ còn lại.\n**Bước 4.** Ý b: tính bậc bằng tổng các số mũ của tất cả các biến, không tính hệ số.\n**Chú ý:** hệ số của đơn thức này mang dấu âm; bậc không phải …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108000000505",
+  "loai": "tu_luan",
+  "de": "Tìm $x$ biết: $x(x+2)+3(x-1)=0$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** sau khi thu gọn, đa thức bậc hai không phân tích được thành tích hai nhân tử có hệ số nguyên nên phải đưa về dạng **bình phương của một tổng bằng một số** rồi lấy căn bậc hai.\n**Bước 1.** Nhân $x$ với $(x+2)$ và $3$ với $(x-1)$ để bỏ ngoặc, rồi thu gọn vế trái.\n**Bước 2.** Thử tách hạng tử bậc nhất: không có cặp số nguyên nào vừa có tích bằng số hạng tự do vừa có tổng bằng hệ số của $x$, nên không phân tích thành tích được.\n**Bước 3.** Chuyển số hạng tự do sang vế phải rồi nhân hai vế với 4 để $4x^2$ trở thành $(2x)^2$.\n**Bước 4.** Cộng thêm một số vào hai vế cho vế trái là bình phương của một tổng: hạng tử giữa $20x=2 \\cdot 2x \\cdot 5$ cho biết số cần cộn …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108000000688",
+  "loai": "tu_luan",
+  "de": "Chứng minh rằng: Nếu số $2n$ là tổng của hai số chính phương thì $n$ cũng là tổng của hai số chính phương.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đây là chiều ngược của Bài 14a, nên ta làm ngược lại: lấy nửa tổng và nửa hiệu của hai số đã cho; muốn chia đôi được thì hai số đó phải cùng tính chẵn lẻ, và điều này suy ra từ việc $2n$ là số chẵn.\n**Bước 1.** Dịch giả thiết thành công thức: $2n=a^2+b^2$ với $a,\\ b$ là các số tự nhiên, và cần chỉ ra $n=p^2+q^2$ với $p,\\ q$ nguyên.\n**Bước 2.** Vì $2n$ chẵn nên $a^2+b^2$ chẵn; xét hai số $a,\\ b$ khác tính chẵn lẻ thì tổng bình phương lẻ, từ đó suy ra $a,\\ b$ cùng tính chẵn lẻ.\n**Bước 3.** Hai số cùng tính chẵn lẻ có tổng và hiệu đều chẵn, nên viết được $a+b=2p$ và $a-b=2q$ với $p,\\ q$ nguyên.\n**Bước 4.** Dùng đẳng thức $(a+b)^2+(a-b)^2=2(a^2+b^2)$ đã có ở B …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108000000609",
+  "loai": "tu_luan",
+  "de": "Thực hiện phép tính: $15x^5y^3:5x^3y^3-(x^2-4x+4):(x-2)$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tính riêng hai phép chia rồi trừ hai thương; phép chia thứ hai là chia đa thức một biến cho đa thức một biến (kiến thức lớp 7).\n**Bước 1.** Phép chia thứ nhất là chia đơn thức cho đơn thức $5x^3y^3$: chia hệ số cho hệ số, trừ số mũ của từng biến.\n**Bước 2.** Phép chia thứ hai: quan sát đa thức bị chia $x^2-4x+4$ và thử viết nó thành tích của $(x-2)$ với một đa thức khác; kiểm tra bằng cách nhân từng hạng tử.\n**Bước 3.** Có tích đó thì thương là thừa số còn lại; cũng có thể đặt phép chia đa thức theo cột để cùng ra kết quả.\n**Bước 4.** Trừ hai thương, bỏ ngoặc (đổi dấu cả hai hạng tử của thương thứ hai) rồi gom hạng tử đồng dạng.\n**Chú ý:** dấu trừ đứng trư …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108000000689",
+  "loai": "tu_luan",
+  "de": "Cho biểu thức $A=(2x+2y-z)^2+(2y+2z-x)^2+(2z+2x-y)^2$.\n1) Chứng minh $A=9(x^2+y^2+z^2)$.\n2) Nếu $x,\\ y,\\ z$ là các số thực thỏa mãn $xy+yz+zx=-1$, tìm giá trị nhỏ nhất của biểu thức $A$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** ý 1 chỉ là khai triển ba bình phương rồi cộng lại; ý 2 dùng ngay kết quả ý 1, nên chỉ còn phải đánh giá $x^2+y^2+z^2$ từ điều kiện $xy+yz+zx=-1$ qua bình phương của tổng ba số.\n**Bước 1.** Ý 1: coi mỗi ngoặc là \"tổng hai số hạng trừ một số hạng\", khai triển bằng hằng đẳng thức bình phương của một hiệu, rồi khai triển phần bình phương của tổng hai số hạng.\n**Bước 2.** Ý 1: cộng ba kết quả, nhóm các hạng tử đồng dạng và nhận ra mọi tích như $xy$, $yz$, $zx$ đều triệt tiêu, chỉ còn các bình phương.\n**Bước 3.** Ý 2: nhờ ý 1, bài toán thành tìm giá trị nhỏ nhất của $x^2+y^2+z^2$; để dùng điều kiện, nhớ rằng $(x+y+z)^2$ chứa cả $x^2+y^2+z^2$ lẫn tổng $xy+yz+zx$. …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108000000232",
+  "loai": "tu_luan",
+  "de": "Chứng minh biểu thức sau luôn có giá trị dương với mọi giá trị của $x$ và $y$: $M=2023+2x^2-6xy-6(x-2y)+2024y^2$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** viết $M$ thành **tổng các bình phương cộng với một số dương**; bình phương luôn lớn hơn hoặc bằng 0 nên cả tổng luôn dương.\n**Bước 1.** Bỏ ngoặc và thu gọn $M$ thành $2x^2-6xy-6x+12y+2024y^2+2023$.\n**Bước 2.** Ghép $x^2-6x+9=(x-3)^2$ để xử lí hạng tử $-6x$, và $x^2-6xy+9y^2=(x-3y)^2$ để xử lí hạng tử $-6xy$; hai bình phương này dùng hết $2x^2$.\n**Bước 3.** Phần còn lại của $M$ theo $y$ là $2015y^2+12y+2014$; ghép $y^2+12y+36=(y+6)^2$ để xử lí hạng tử $12y$.\n**Bước 4.** Số dư còn lại là $2014y^2+1978$; kết luận mọi bình phương không âm và $1978>0$ nên $M>0$.\n**Chú ý:** kiểm tra lại bằng cách khai triển ba bình phương, cộng với $2014y^2+1978$ phải ra đúng $M …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108000000522",
+  "loai": "tu_luan",
+  "de": "Trong các biểu thức sau, biểu thức nào là đơn thức, biểu thức nào là đa thức:\na) $-2+x^2y$;  b) $-\\dfrac{1}{3}x^3y^2$;  c) $\\dfrac{x+y^2}{2x}$;  d) $-\\dfrac{3}{4}x^5y(-7x)$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đơn thức là một số, một biến hoặc **tích** của các số và biến; đa thức là **tổng** của những đơn thức (mỗi đơn thức cũng là một đa thức); biến nằm ở **mẫu** thì cả hai đều không phải.\n**Bước 1.** Nhắc lại hai định nghĩa: đơn thức chỉ có phép nhân giữa số và biến, còn đa thức là tổng của các đơn thức.\n**Bước 2.** Ý a và ý b: xem biểu thức có phép cộng, phép trừ nối các hạng tử với nhau hay chỉ là một tích duy nhất.\n**Bước 3.** Ý c: kiểm xem có phép chia cho một biến (biến ở mẫu) hay không; nếu có thì biểu thức không thuộc loại nào ở trên.\n**Bước 4.** Ý d: biểu thức viết dưới dạng tích của số và các biến, kể cả khi chưa thu gọn, thì xếp vào loại nào theo địn …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108000000640",
+  "loai": "tu_luan",
+  "de": "Chứng minh với mọi $n\\in\\mathbb{Z}$: $Q=(3n+2)(3n+4)-(9n+2)(n+1)+1$ luôn chia hết cho 7.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** khai triển và thu gọn $Q$ thì các hạng tử $n^2$ triệt tiêu, chỉ còn một biểu thức có thừa số 7.\n**Bước 1.** Nhân đa thức $(3n+2)$ với $(3n+4)$ rồi thu gọn để được một tam thức bậc hai theo $n$.\n**Bước 2.** Nhân đa thức $(9n+2)$ với $(n+1)$ rồi thu gọn, chú ý khi bỏ ngoặc phải đổi dấu mọi hạng tử vì đứng sau dấu trừ.\n**Bước 3.** Cộng trừ các kết quả và thu gọn, rồi đặt thừa số chung để thấy $Q$ bằng 7 nhân một biểu thức nguyên.\n**Phần 2. Trình bày**\n$(3n+2)(3n+4)=9n^2+12n+6n+8=9n^2+18n+8$.\n$(9n+2)(n+1)=9n^2+9n+2n+2=9n^2+11n+2$.\nDo đó:\n$Q=(9n^2+18n+8)-(9n^2+11n+2)+1$\n$=9n^2+18n+8-9n^2-11n-2+1$\n$=7n+7$\n$=7(n+1)$.\nVì $n\\in\\mathbb{Z}$ nên $n+1\\in\\mathbb{Z}$, do …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108050101001",
+  "loai": "tra_loi_ngan",
+  "de": "Chứng minh rằng: với mọi số nguyên dương a, b thì $ab(a^2 + 2)(b^2 + 2) \\vdots 9$",
+  "loi_giai": "Nhận xét: Số chính phương chia $3$ dư $0$ hoặc $1$\n+ Nếu $a \\vdots 3, b \\vdots 3$ thì $ab(a^2 + 2)(b^2 + 2) \\vdots 3.3 = 9$ (1)\n+ Nếu $a \\vdots 3, b \\not\\vdots 3$ thì $b^2$ chia $3$ dư $1$, do đó: $b^2 + 2 \\vdots 3$\nSuy ra $ab(a^2 + 2)(b^2 + 2) \\vdots 3.3 = 9$ (2)\n+ Nếu $a \\not\\vdots 3, b \\vdots 3$ thì $a^2$ chia $3$ dư $1$, do đó: $a^2 + 2 \\vdots 3$\nSuy ra $ab(a^2 + 2)(b^2 + 2) \\vdots 3.3 = 9$ (2)\n+ Nếu $a \\not\\vdots 3, b \\not\\vdots 3$ thì $a^2, b^2$ chia $3$ dư $1$, do đó:\n$a^2 + 2 \\vdots 3$; $b^2 + 2 \\vdots 3$\nSuy ra $ab(a^2 + 2)(b^2 + 2) \\vdots 3.3 = 9$ (3)\nTừ (1), (2) và (3) suy ra: $ab(a^2 + 2)(b^2 + 2) \\vdots 9$ với mọi số nguyên dương a, b.",
+  "nhan_cu": "Tính chia hết của biểu thức › Tính chia hết của số chính phương"
+ },
+ {
+  "ma_cau": "T108000000297",
+  "loai": "trac_nghiem",
+  "de": "Biểu thức $x^2+x+\\dfrac{1}{4}$ bằng",
+  "lua_chon": [
+   "$\\left(2x+\\dfrac{1}{2}\\right)^2$",
+   "$\\left(\\dfrac{1}{2}x+1\\right)^2$",
+   "$\\left(x+\\dfrac{1}{2}\\right)^2$",
+   "$\\left(2x-\\dfrac{1}{2}\\right)^2$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** nhận ra $x^2+x+\\dfrac{1}{4}$ có dạng $A^2+2AB+B^2$ với $A=x$ và $B=\\dfrac{1}{2}$.\n**Bước 1.** Chỉ ra hai số hạng là bình phương: $x^2=x^2$ và $\\dfrac{1}{4}=\\left(\\dfrac{1}{2}\\right)^2$.\n**Bước 2.** Kiểm tra số hạng giữa $x$ có bằng $2AB$ với $A=x$, $B=\\dfrac{1}{2}$ hay không.\n**Bước 3.** Viết thành bình phương của một tổng rồi đối chiếu với các phương án.\n**Phần 2. Trình bày**\n$x^2+x+\\dfrac{1}{4}=x^2+2 \\cdot x \\cdot \\dfrac{1}{2}+\\left(\\dfrac{1}{2}\\right)^2=\\left(x+\\dfrac{1}{2}\\right)^2$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108000000352",
+  "loai": "trac_nghiem",
+  "de": "Khẳng định nào sau đây là đúng?",
+  "lua_chon": [
+   "$(x+1)(x^2+x+1)=x^3+1$",
+   "$(x+2)^2=x^2+2x+4$",
+   "$(x-3)^2=x^2+6x+9$",
+   "$(x-2y)(x+2y)=x^2-4y^2$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** kiểm tra từng phương án bằng cách **khai triển vế trái** rồi so với vế phải, hoặc đối chiếu với hằng đẳng thức tương ứng.\n**Bước 1.** Với phương án có bình phương của một tổng hoặc một hiệu, nhớ hạng tử giữa là $2AB$ và dấu của nó theo dấu trong ngoặc.\n**Bước 2.** Với phương án có tích hai nhân tử giống hiệu hai bình phương, nhận ra dạng $(A-B)(A+B)$.\n**Bước 3.** Với phương án tích của hai đa thức khác, khai triển bằng cách nhân từng hạng tử rồi thu gọn.\n**Chú ý:** $(x+1)(x^2+x+1)$ không phải hằng đẳng thức tổng hai lập phương, vì thừa số thứ hai phải là $x^2-x+1$.\n**Phần 2. Trình bày**\n$(x+1)(x^2+x+1)=x^3+x^2+x+x^2+x+1=x^3+2x^2+2x+1 \\neq x^3+1$ nên A sai. …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108000000153",
+  "loai": "tu_luan",
+  "de": "Tìm các cặp số nguyên $(x;y)$ thoả mãn đẳng thức $xy-x+2y-2=11$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** nhóm hạng tử và đặt nhân tử chung để vế trái thành một tích hai thừa số; tích đó bằng 11 nên mỗi thừa số là một ước nguyên của 11.\n**Bước 1.** Nhóm hai hạng tử đầu thành một nhóm và hai hạng tử sau thành nhóm còn lại.\n**Bước 2.** Đặt nhân tử chung ở từng nhóm để cùng xuất hiện thừa số $(y-1)$, rồi đặt thừa số này làm nhân tử chung của cả biểu thức.\n**Bước 3.** Liệt kê các cách viết 11 thành tích của hai số nguyên: các ước của 11 gồm cả số dương lẫn số âm.\n**Bước 4.** Với từng ước, tính $x$ từ thừa số $x+2$ và $y$ từ thừa số $y-1$.\n**Chú ý:** đừng bỏ sót hai cặp thừa số cùng âm; có thể thử lại bằng cách thay từng cặp vào đẳng thức đề cho.\n**Phần 2. Trình bà …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108040501008",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $f(x)=ax^3+2bx^2+2cx+d$. Chứng minh rằng không thể tồn tại các số $a,b,c,d$\nsao cho $f(3)=14;f(-1)=27$.",
+  "loi_giai": "Giả sử $a,b,c,d$ là các số nguyên (giả thiết chuẩn của dạng bài này — nếu $a,b,c,d$ là số thực bất kỳ thì hệ $2$ phương trình $4$ ẩn có vô số nghiệm, phát biểu không còn đúng).\nTa có:\n$f(3)=27a+18b+6c+d=14$\n$f(-1)=-a+2b-2c+d=27$\nTrừ hai đẳng thức: $f(3)-f(-1)=(27a+18b+6c+d)-(-a+2b-2c+d)=28a+16b+8c=14-27=-13$.\nVì $a,b,c$ nguyên nên $28a+16b+8c=4(7a+4b+2c)$ chia hết cho $4$.\nNhưng $-13$ không chia hết cho $4$, vô lý.\nVậy không thể tồn tại các số nguyên $a,b,c,d$ thoả $f(3)=14$ và $f(-1)=27$. $\\square$",
+  "nhan_cu": "Nâng cao › Nâng cao"
+ },
+ {
+  "ma_cau": "T108000000588",
+  "loai": "tu_luan",
+  "de": "Một bể nước hình lập phương có độ dài cạnh là $a$ (m). Người ta đổ đầy nước vào bể.\na) Viết biểu thức tính thể tích bể nước.\nb) Sau đó người ta thả 20 viên gạch hình hộp chữ nhật có kích thước lần lượt là $b$ (dm); $c$ (dm); $d$ (dm) vào bể nước thì thấy một lượng nước tràn ra. Viết biểu thức $A$ biểu thị lượng nước còn lại trong bể.\nc) Biểu thức $A$ có là đa thức không? Nếu có thì bậc của $A$ là bao nhiêu?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** bể đầy nước và gạch chìm hết nên lượng nước tràn ra đúng bằng thể tích 20 viên gạch; nước còn lại bằng thể tích bể trừ thể tích gạch, nhưng hai thể tích phải cùng đơn vị vì cạnh bể tính bằng mét còn gạch tính bằng đề-xi-mét.\n**Bước 1.** Ý a: thể tích hình lập phương bằng cạnh nhân cạnh nhân cạnh, viết kết quả dưới dạng luỹ thừa của $a$.\n**Bước 2.** Ý b: đổi cạnh bể từ mét sang đề-xi-mét (một mét bằng mười đề-xi-mét) rồi tính thể tích bể bằng đề-xi-mét khối bằng cách nhân ba đơn thức $10a$ với nhau.\n**Bước 3.** Ý b: tính thể tích một viên gạch bằng tích ba kích thước, rồi nhân với 20 để có thể tích của cả 20 viên gạch.\n**Bước 4.** Ý b: nước tràn ra có thể t …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108000000489",
+  "loai": "tu_luan",
+  "de": "Tìm $x$ biết: $(x-5)^2+10=34$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** chuyển số $10$ sang vế phải thì vế trái chỉ còn bình phương của $x-5$ nên không cần khai triển hằng đẳng thức.\n**Bước 1.** Chuyển số hạng $10$ sang vế phải (đổi dấu) để cô lập bình phương $(x-5)^2$ ở vế trái.\n**Bước 2.** Tính vế phải, được một số dương; số có bình phương bằng số dương đó là căn bậc hai của nó và số đối của căn, nên $x-5$ có hai giá trị đối nhau. Số này không phải bình phương của số nguyên nên hai giá trị đó giữ dạng căn.\n**Bước 3.** Viết $x-5$ dưới dạng $\\sqrt{k}$ hoặc $-\\sqrt{k}$ rồi chuyển số $5$ sang vế phải để tìm $x$.\n**Chú ý:** ở lớp này chưa đưa thừa số ra ngoài dấu căn, nên căn bậc hai của số vừa tìm được giữ nguyên.\n**Phần 2. Trìn …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108000000671",
+  "loai": "tu_luan",
+  "de": "Tìm $x$, biết: $(2x+1)^2-(x-1)^2=0$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** vế trái là hiệu của hai bình phương nên viết được thành tích $A^2-B^2=(A-B)(A+B)$; tích bằng $0$ thì có một thừa số bằng $0$.\n**Bước 1.** Nhận ra $(2x+1)^2$ và $(x-1)^2$ là hai bình phương, áp dụng hằng đẳng thức hiệu hai bình phương với $A=2x+1$ và $B=x-1$.\n**Bước 2.** Rút gọn từng ngoặc của hai thừa số, chú ý khi bỏ ngoặc phía sau dấu trừ thì phải đổi dấu mọi hạng tử.\n**Bước 3.** Vì tích hai thừa số bằng $0$ nên cho từng thừa số bằng $0$ và giải riêng từng trường hợp.\n**Chú ý:** không chia hai vế cho $x$ rồi bỏ thừa số chứa $x$ đi, vì làm vậy sẽ mất một giá trị của $x$; đề có hai giá trị.\n**Phần 2. Trình bày**\n$(2x+1)^2-(x-1)^2=0$\n$[(2x+1)-(x-1)][(2x+1)+ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108000000453",
+  "loai": "tu_luan",
+  "de": "a) Chứng minh giá trị của biểu thức không phụ thuộc vào biến $x$: $A=(2x+3)^2+(2x+5)^2-2(2x+3)(2x+5)$.\nb) Tìm $x$, biết: $2(1-x)^2-(x-1)^2=4$.\nc) Tìm đa thức $B$, biết: $2xy^2(B-x^3y)=2x^3y^2-2x^4y^3$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** ý a và ý b xoay quanh bình phương của một hiệu: ý a nhận ra dạng $a^2-2ab+b^2$, ý b đổi $(1-x)^2$ về $(x-1)^2$; còn ý c là tìm thừa số chưa biết bằng phép chia.\n**Bước 1.** Ý a: nhận ra biểu thức có dạng $a^2+b^2-2ab$ với $a=2x+3$ và $b=2x+5$, nên gộp lại thành bình phương của $a-b$.\n**Bước 2.** Ý a: tính hiệu $a-b$, các hạng tử chứa $x$ triệt tiêu nhau nên kết quả là một số, rồi bình phương số đó để thấy biểu thức không còn chứa $x$.\n**Bước 3.** Ý b: hai số đối nhau có bình phương bằng nhau, nên đổi $(1-x)^2$ thành $(x-1)^2$ rồi gộp hai hạng tử cùng loại.\n**Bước 4.** Ý b: viết vế phải thành bình phương của một số, rồi dùng: hai số có bình phương bằng nhau …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108000000695",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x$, biết: $x^2+2x=-1$.",
+  "dap_an": "-1",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** chuyển $-1$ sang vế trái thì vế trái là $x^2+2x+1$, chính là **bình phương của một tổng**; một bình phương bằng $0$ khi và chỉ khi biểu thức trong ngoặc bằng $0$.\n**Bước 1.** Chuyển số hạng $-1$ từ vế phải sang vế trái (đổi dấu) để vế phải còn lại là $0$.\n**Bước 2.** Nhận ra $x^2+2x+1$ có dạng $a^2+2ab+b^2$ với $a=x$ và $b=1$, rồi viết thành bình phương của một tổng.\n**Bước 3.** Vì bình phương của một số bằng $0$ thì chính số đó bằng $0$ nên cho biểu thức trong ngoặc bằng $0$ và tìm $x$.\n**Phần 2. Trình bày**\n$x^2+2x=-1$\n$x^2+2x+1=0$\n$x^2+2 \\cdot x \\cdot 1+1^2=0$\n$(x+1)^2=0$\n$x+1=0$\n$x=-1$\nVậy $x=-1$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108000000229",
+  "loai": "tu_luan",
+  "de": "Phân tích đa thức sau thành nhân tử: $x^3-3x^2y+3xy^2-y^3+x^2-y^2$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** bốn hạng tử đầu chính là khai triển của lập phương một hiệu, hai hạng tử cuối là hiệu hai bình phương; cả hai đều chứa nhân tử $(x-y)$.\n**Bước 1.** Nhóm bốn hạng tử bậc ba $x^3-3x^2y+3xy^2-y^3$ thành một nhóm, hai hạng tử bậc hai $x^2-y^2$ thành một nhóm.\n**Bước 2.** Nhận ra nhóm đầu là $(x-y)^3$ (hằng đẳng thức lập phương của một hiệu) và nhóm sau là $(x-y)(x+y)$.\n**Bước 3.** Đặt nhân tử chung $(x-y)$ ra ngoài rồi khai triển $(x-y)^2$ trong ngoặc cho gọn.\n**Phần 2. Trình bày**\n$x^3-3x^2y+3xy^2-y^3+x^2-y^2=(x^3-3x^2y+3xy^2-y^3)+(x^2-y^2)$\n$=(x-y)^3+(x-y)(x+y)$\n$=(x-y)[(x-y)^2+(x+y)]$\n$=(x-y)(x^2-2xy+y^2+x+y)$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108000000227",
+  "loai": "tu_luan",
+  "de": "Phân tích đa thức sau thành nhân tử: $x^2-y^2+4x+4y$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** không có nhân tử chung cho cả bốn hạng tử, nên **nhóm hạng tử** sao cho mỗi nhóm phân tích được rồi lộ ra nhân tử chung.\n**Bước 1.** Nhóm $x^2-y^2$ (hiệu hai bình phương) với nhóm $4x+4y$ (có nhân tử chung 4).\n**Bước 2.** Phân tích từng nhóm: $x^2-y^2=(x-y)(x+y)$ và $4x+4y=4(x+y)$.\n**Bước 3.** Hai nhóm đều có nhân tử chung $(x+y)$, đặt nó ra ngoài để được tích.\n**Chú ý:** sau khi đặt $(x+y)$ ra ngoài, trong ngoặc còn lại là $(x-y)+4$.\n**Phần 2. Trình bày**\n$x^2-y^2+4x+4y=(x^2-y^2)+(4x+4y)$\n$=(x-y)(x+y)+4(x+y)$\n$=(x+y)(x-y+4)$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108000000321",
+  "loai": "tu_luan",
+  "de": "Một tấm bìa cứng hình chữ nhật có chiều dài là $x+43$ (cm) và chiều rộng là $x+30$ (cm). Người ta cắt ở mỗi góc của tấm bìa một hình vuông cạnh $y^2+1$ (cm) (phần tô màu) và xếp phần còn lại thành một cái hộp không nắp.\na) Tính diện tích xung quanh của hình hộp chữ nhật trên theo $x$; $y$.\nb) Tính diện tích xung quanh của hình hộp chữ nhật trên với $x=15$ cm; $y=3$ cm.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** khi cắt bốn góc vuông rồi gập lên, chiều cao hộp bằng cạnh hình vuông bị cắt, còn mỗi kích thước của đáy bằng kích thước tấm bìa trừ đi **hai lần** cạnh hình vuông.\n**Bước 1.** Đọc hình: chiều cao của hộp chính là cạnh hình vuông bị cắt đi ở mỗi góc.\n**Bước 2.** Tìm chiều dài và chiều rộng của đáy hộp: lấy mỗi kích thước tấm bìa trừ hai lần cạnh hình vuông, vì mỗi kích thước bị cắt ở hai đầu.\n**Bước 3.** Ý a: diện tích xung quanh bằng chu vi đáy nhân chiều cao; nhân hai đa thức rồi thu gọn.\n**Bước 4.** Ý b: thay $x=15$, $y=3$ vào biểu thức đã tìm ở ý a và tính.\n**Chú ý:** khi nhân hai đa thức, mỗi hạng tử của đa thức này phải nhân với từng hạng tử của đa t …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108000000181",
+  "loai": "trac_nghiem",
+  "de": "Đẳng thức nào sau đây là hằng đẳng thức?",
+  "lua_chon": [
+   "$2a+b=a+2b$",
+   "$a+3=3a-1$",
+   "$2(a-2)=4a$",
+   "$a(a+1)=a^2+a$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hằng đẳng thức là đẳng thức **đúng với mọi giá trị** của các biến, nên chỉ cần một bộ giá trị làm đẳng thức sai là loại được phương án đó.\n**Bước 1.** Nhắc lại định nghĩa hằng đẳng thức để biết cần kiểm tra điều gì ở mỗi phương án.\n**Bước 2.** Với các phương án có vẻ chỉ đúng khi biến nhận giá trị đặc biệt, thử một bộ giá trị đơn giản (như $a=0$) để chỉ ra đẳng thức sai.\n**Bước 3.** Với phương án còn lại, khai triển một vế và so sánh với vế kia xem hai vế có giống nhau hoàn toàn không.\n**Phần 2. Trình bày**\nPhương án A: với $a=1$, $b=2$ thì vế trái bằng $2 \\cdot 1+2=4$, vế phải bằng $1+2 \\cdot 2=5$ nên không phải hằng đẳng thức.\nPhương án B: với $a=0$ thì  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108000000617",
+  "loai": "tu_luan",
+  "de": "Chứng minh: $(3x+y)(x^2+xy-y^2)-y(4x^2+xy-y^2)=3x(x^2-y^2)$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** chứng minh đẳng thức bằng cách biến đổi vế phức tạp hơn (vế trái) cho đến khi ra đúng biểu thức của vế còn lại.\n**Bước 1.** Khai triển $(3x+y)(x^2+xy-y^2)$ bằng cách nhân từng hạng tử của $3x+y$ với từng hạng tử của đa thức ba hạng tử.\n**Bước 2.** Khai triển $y(4x^2+xy-y^2)$ rồi trừ đa thức này khỏi tích trên, nhớ đổi dấu mọi hạng tử trong ngoặc.\n**Bước 3.** Nhóm các đơn thức đồng dạng và thu gọn vế trái, xem hạng tử nào triệt tiêu.\n**Bước 4.** Khai triển vế phải $3x(x^2-y^2)$ bằng tính chất phân phối rồi so sánh với kết quả của vế trái.\n**Chú ý:** ba cặp hạng tử đồng dạng ($x^2y$, $xy^2$, $y^3$) đều phải được nhóm, đừng bỏ sót một cặp.\n**Phần 2. Trình bày …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108000000474",
+  "loai": "tu_luan",
+  "de": "Cho đa thức $A=x(x-y)+2y(x+y)-y^2$.\na) Rút gọn đa thức $A$.\nb) Tính giá trị của đa thức $A$ tại $x=4;\\ y=-2$.\nc) Cho biểu thức $B=\\dfrac{3}{A+2xy+y^2}$. Tìm các số nguyên $x,\\ y$ để $B$ nhận giá trị nguyên.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** ở ý c, mẫu của $B$ thu gọn được thành **tích hai thừa số nguyên**; $B$ nguyên khi mẫu khác $0$ và là **ước nguyên của $3$**.\n**Bước 1.** Ý a: nhân $x$ và $2y$ với từng hạng tử trong ngoặc để bỏ ngoặc, rồi nhóm các hạng tử đồng dạng; chú ý dấu trừ đứng trước $y^2$.\n**Bước 2.** Ý b: thay $x=4$, $y=-2$ vào đa thức đã rút gọn ở ý a; số âm đem luỹ thừa phải đặt trong ngoặc.\n**Bước 3.** Ý c: thay $A$ vào mẫu, cộng với $2xy+y^2$ rồi thu gọn mẫu thành đa thức ba hạng tử.\n**Bước 4.** Ý c: tách hạng tử $3xy$ thành $xy+2xy$ để nhóm hạng tử và đặt nhân tử chung, đưa mẫu về tích của hai đa thức bậc nhất; đặt tên hai thừa số cho dễ xét.\n**Bước 5.** Ý c: $B=3:\\text{mẫu}$ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108040501004",
+  "loai": "tra_loi_ngan",
+  "de": "Cho đa thức $C=x^3+x^2y-5x^2-x^2y-xy^2+5xy+3x+3y-10$. Tính giá trị của $C$\nbiết $x+y=5$.",
+  "dap_an": "5",
+  "loi_giai": "Rút gọn: $x^2y-x^2y=0$ nên\n$C=x^3-5x^2-xy^2+5xy+3x+3y-10$.\nNhóm lại:\n$C=x^2(x-5)-xy(y-5)+3(x+y)-10$.\nVì $x+y=5$ nên $x-5=-y$ và $y-5=-x$, do đó\n$x^2(x-5)=x^2\\cdot(-y)=-x^2y$\n$-xy(y-5)=-xy\\cdot(-x)=x^2y$\nSuy ra $x^2(x-5)-xy(y-5)=-x^2y+x^2y=0$.\nVậy $C=0+3(x+y)-10=3\\cdot5-10=5$.",
+  "nhan_cu": "Nâng cao › Nâng cao"
+ },
+ {
+  "ma_cau": "T108000000308",
+  "loai": "tu_luan",
+  "de": "Một khu vườn sinh thái của một trường (được mô tả như hình bên), biểu thức $A=7x^2y+4xy^2+2xy+3$ ($m^2$) biểu thị diện tích của khu vườn. Biểu thức $B=3x^2y+xy^2+2xy+1$ ($m^2$) biểu thị tổng diện tích chỗ ngồi nghỉ và lối đi.\na) Tính diện tích khu vườn của nhà trường khi $x=2$; $y=1$.\nb) Tính diện tích trồng rau của nhà trường (biểu diễn dưới dạng đa thức rút gọn).",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** nhìn hình thấy khu vườn gồm ba phần: luống rau, chỗ ngồi nghỉ và lối đi; nên diện tích luống rau là $A-B$.\n**Bước 1.** Ý a: diện tích cả khu vườn chính là giá trị của $A$, nên chỉ cần thay $x=2$, $y=1$ vào $A$ rồi tính.\n**Bước 2.** Ý b: đọc hình để xác định phần cần tìm: luống rau $=$ cả khu vườn $-$ (chỗ ngồi nghỉ và lối đi), tức là $A-B$.\n**Bước 3.** Ý b: viết $A-B$, bỏ ngoặc của $B$ bằng cách đổi dấu tất cả các hạng tử của $B$.\n**Bước 4.** Ý b: nhóm các hạng tử đồng dạng rồi thu gọn thành đa thức.\n**Chú ý:** hạng tử $2xy$ ở hai biểu thức triệt tiêu nhau; nhớ trừ cả hạng tử $1$ của $B$.\n**Phần 2. Trình bày**\na) Diện tích khu vườn là $A=7x^2y+4xy^2+2xy+3$ …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108000000476",
+  "loai": "tu_luan",
+  "de": "Cho đa thức $G=x(3x-2y)-2x^2+y^2$.\na) Rút gọn đa thức $G$.\nb) Tính giá trị của đa thức $G$ tại $x=5;\\ y=2$.\nc) Cho đa thức $K=G-y^2+3y-5x$. Tìm các số nguyên $x,\\ y$ để $K=-7$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** ý b và ý c đều dùng $G$ đã rút gọn ở ý a; ở ý c ta đưa điều kiện $K=-7$ về dạng **tích của hai số nguyên bằng một số cho trước** rồi liệt kê các ước của số đó.\n**Bước 1.** Ý a: nhân đơn thức $x$ với từng hạng tử trong ngoặc, nhóm các hạng tử đồng dạng; kết quả có dạng của một hằng đẳng thức nên viết gọn thành bình phương.\n**Bước 2.** Ý b: thay $x=5$, $y=2$ vào dạng gọn đã có ở ý a để ít phép tính nhất.\n**Bước 3.** Ý c: thay $G$ đã rút gọn vào $K$ rồi thu gọn; các hạng tử $y^2$ đối nhau nên triệt tiêu, chỉ còn $x^2$, $xy$ và các hạng tử bậc nhất.\n**Bước 4.** Ý c: từ $K=-7$ chuyển mọi hạng tử về một vế, nhóm các hạng tử chứa $y$ để tách thừa số $2x-3$ (hệ số …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108000000616",
+  "loai": "tu_luan",
+  "de": "Chứng minh: $P=(3x-2)(x+4)-3x(x+2)+(11-4x)$ không phụ thuộc vào $x$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** \"không phụ thuộc vào $x$\" nghĩa là sau khi bỏ ngoặc và thu gọn, mọi hạng tử chứa $x$ phải triệt tiêu, chỉ còn lại một số.\n**Bước 1.** Nhân đa thức với đa thức để khai triển $(3x-2)(x+4)$ và nhân đơn thức với đa thức để khai triển $3x(x+2)$, mỗi hạng tử nhân với từng hạng tử.\n**Bước 2.** Bỏ ngoặc cho cả biểu thức, nhớ đổi dấu hai hạng tử vừa khai triển của $3x(x+2)$ vì có dấu trừ đứng trước.\n**Bước 3.** Nhóm các đơn thức đồng dạng theo từng bậc của $x$ rồi thu gọn, kiểm tra xem còn hạng tử nào chứa $x$ hay không.\n**Chú ý:** dấu trừ trước $3x(x+2)$ đổi dấu cả $3x^2$ lẫn $6x$; quên đổi dấu một hạng tử thì $x$ sẽ không triệt tiêu hết.\n**Phần 2. Trình bày**\n$P= …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108000000133",
+  "loai": "tu_luan",
+  "de": "Một nhóm thiện nguyện chuẩn bị $x$ phần quà giúp đỡ những gia đình bị thiệt hại do cơn bão số 11 gây ra. Mỗi phần quà gồm $y$ kg gạo và $y$ gói bánh. Viết biểu thức biểu thị giá trị bằng tiền (nghìn đồng) của toàn bộ số quà đó, biết rằng gạo có giá 12 nghìn đồng/kg và bánh có giá 28 nghìn đồng/gói.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đi từ một phần quà đến toàn bộ số quà: tiền của một phần quà rồi nhân với số phần quà.\n**Bước 1.** Tính tiền gạo trong một phần quà: số kg gạo nhân với giá một kg.\n**Bước 2.** Tính tiền bánh trong một phần quà: số gói bánh nhân với giá một gói.\n**Bước 3.** Cộng hai khoản để được giá trị của một phần quà, rồi nhân với số phần quà là $x$ và thu gọn đơn thức.\n**Chú ý:** hai khoản tiền đều chứa $y$ nên cộng được thành một hạng tử bằng cách gom hệ số.\n**Phần 2. Trình bày**\nSố tiền gạo trong một phần quà là $12y$ (nghìn đồng).\nSố tiền bánh trong một phần quà là $28y$ (nghìn đồng).\nGiá trị của một phần quà là $12y+28y=40y$ (nghìn đồng).\nGiá trị của toàn bộ $x$ ph …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108050102001",
+  "loai": "tra_loi_ngan",
+  "de": "Cho các số nguyên $a, b, c$ thỏa mãn $ab + bc + ca = 1$. Chứng minh rằng $A = (1+a^2)(1+b^2)(1+c^2)$ là số chính phương",
+  "dap_an": "A = [(a+b)(a+c)(b+c)]^2 là số chính phương",
+  "loi_giai": "Từ giả thiết $ab+bc+ca=1$, ta biến đổi từng thừa số:\n$1+a^2 = a^2+ab+bc+ca = a(a+b)+c(a+b) = (a+b)(a+c)$\n$1+b^2 = b^2+ab+bc+ca = b(a+b)+c(a+b) = (a+b)(b+c)$\n$1+c^2 = c^2+ab+bc+ca = c(a+c)+b(a+c) = (a+c)(b+c)$\nNhân ba đẳng thức trên:\n$A = (1+a^2)(1+b^2)(1+c^2) = (a+b)(a+c)\\cdot(a+b)(b+c)\\cdot(a+c)(b+c) = (a+b)^2(a+c)^2(b+c)^2 = \\left[(a+b)(a+c)(b+c)\\right]^2$\nVì $a,b,c$ là các số nguyên nên $(a+b)(a+c)(b+c)$ cũng là một số nguyên, do đó $A$ là bình phương của một số nguyên, tức $A$ là số chính phương.",
+  "nhan_cu": "Tính chia hết của biểu thức › Chứng minh biểu thức là số chính phương"
+ },
+ {
+  "ma_cau": "T108000000697",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $x,\\ y$ là hai số nguyên dương thỏa mãn $3x^2-4xy+2y^2=3$.\nTính giá trị của biểu thức $A$ biết $A=(x-2)^{2025}+(y-3)^{2026}$.",
+  "dap_an": "0",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** không thể giải hai ẩn từ một đẳng thức, nhưng vế trái viết được thành tổng của một bình phương và hai lần một bình phương, mà $x$, $y$ nguyên dương nên chỉ còn rất ít khả năng.\n**Bước 1.** Nhìn hệ số $3$, $-4$, $2$ và nghĩ tới bình phương của một hiệu $(x-y)^2$: tách $3x^2=x^2+2x^2$ rồi nhóm $2x^2-4xy+2y^2$ để ra $2(x-y)^2$.\n**Bước 2.** Sau khi viết vế trái dạng $x^2+2(x-y)^2$, để ý $2(x-y)^2$ không âm nên $x^2$ không thể vượt quá vế phải; dùng $x$ là số nguyên dương để chỉ ra $x$ chỉ nhận một giá trị.\n**Bước 3.** Thay giá trị của $x$ vừa tìm vào đẳng thức để được $(x-y)^2$ bằng một số cụ thể, lấy căn bậc hai (nhớ có hai dấu) rồi loại giá trị $y$ không ngu …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108000000658",
+  "loai": "tu_luan",
+  "de": "Một bức tường hình chữ nhật được trang trí bởi hai tấm giấy dán tường hình chữ nhật có cùng chiều cao $3x$ (m) và có diện tích lần lượt là $6x^2$ ($\\text{m}^2$) và $7xy$ ($\\text{m}^2$). Viết biểu thức tính chiều rộng của bức tường.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** chiều rộng của hình chữ nhật bằng **diện tích chia cho chiều cao**; bức tường gồm hai tấm cùng chiều cao đặt cạnh nhau nên chiều rộng tường là tổng hai chiều rộng.\n**Bước 1.** Hình dung bức tường: hai tấm giấy cùng cao $3x$ ghép sát cạnh nhau, vậy tổng các chiều rộng của chúng chính là chiều rộng bức tường.\n**Bước 2.** Từ công thức diện tích hình chữ nhật (dài nhân rộng) suy ra chiều rộng của mỗi tấm bằng diện tích của tấm đó chia cho chiều cao $3x$.\n**Bước 3.** Thực hiện hai phép chia đơn thức cho đơn thức: chia hệ số cho hệ số, chia mỗi biến cho cùng biến đó; hệ số không chia hết thì giữ dưới dạng phân số.\n**Bước 4.** Cộng hai chiều rộng vừa tìm; hai hạn …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108040501002",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x$ và $y$ biết $(x+1)^{2024}+\\left(\\sqrt{y-1}\\right)^{2023}=0$.",
+  "dap_an": "x=-1, y=1",
+  "loi_giai": "Điều kiện xác định: $y\\ge 1$ (để $\\sqrt{y-1}$ có nghĩa).\nVới $y\\ge 1$ thì $\\sqrt{y-1}\\ge 0$, suy ra $\\left(\\sqrt{y-1}\\right)^{2023}\\ge 0$ (luỹ thừa lẻ của số không âm vẫn không âm). Với mọi $x$: $(x+1)^{2024}\\ge 0$ (luỹ thừa chẵn).\nTổng hai số không âm bằng $0$ khi và chỉ khi cả hai đều bằng $0$:\n$(x+1)^{2024}=0 \\Leftrightarrow x=-1$\n$\\left(\\sqrt{y-1}\\right)^{2023}=0 \\Leftrightarrow \\sqrt{y-1}=0 \\Leftrightarrow y=1$\nVậy $x=-1, y=1$.",
+  "nhan_cu": "Nâng cao › Nâng cao"
+ },
+ {
+  "ma_cau": "T108000000659",
+  "loai": "tra_loi_ngan",
+  "de": "Khu vườn của nhà bác Xuân có dạng hình vuông (hình vẽ bên). Bác Xuân muốn dành một mảnh đất có dạng hình chữ nhật ở góc khu vườn để trồng rau (hình vẽ). Biết diện tích của mảnh đất trồng rau bằng $150\\ \\text{m}^2$. Tính độ dài cạnh $x$ (m) của khu vườn đó.",
+  "dap_an": "25",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** từ hình, hai kích thước của mảnh đất trồng rau đều là **cạnh khu vườn trừ đi một phần cho trước**; lập đẳng thức diện tích rồi nhân hai đa thức thì hai vế cùng có hằng số $150$ nên số hạng tự do triệt tiêu.\n**Bước 1.** Đọc hình: số $15$ là khoảng cách từ cạnh trái khu vườn đến mảnh trồng rau, số $10$ là khoảng cách từ mảnh trồng rau xuống cạnh đáy; mảnh đất dựa vào hai cạnh còn lại của khu vườn.\n**Bước 2.** Suy ra chiều ngang mảnh đất bằng cạnh vườn bớt đi $15$, chiều dọc bằng cạnh vườn bớt đi $10$; hai số này phải dương nên cạnh vườn phải lớn hơn $15$.\n**Bước 3.** Lập đẳng thức: diện tích hình chữ nhật (dài nhân rộng) bằng $150$, rồi nhân hai đa thức và t …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108000000648",
+  "loai": "tu_luan",
+  "de": "Thu gọn và tìm bậc, chỉ rõ phần hệ số và phần biến của đơn thức sau: $A=5x^2y^3\\cdot(-3xy^2z)$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** nhân hai đơn thức bằng cách nhóm **hệ số với hệ số, từng biến với cùng biến đó**, rồi đọc hệ số, phần biến và bậc từ đơn thức thu gọn.\n**Bước 1.** Nhóm các thừa số cùng loại lại gần nhau: tích hai hệ số, tích hai luỹ thừa của $x$, tích hai luỹ thừa của $y$; biến $z$ chỉ có ở một thừa số nên giữ nguyên.\n**Bước 2.** Nhân hai hệ số (chú ý dấu), còn với mỗi biến thì cộng các số mũ (nhớ biến viết không có số mũ thì số mũ là 1) để được đơn thức thu gọn.\n**Bước 3.** Đọc kết quả: hệ số là số đứng trước, phần biến là các luỹ thừa của biến; bậc bằng **tổng số mũ của tất cả các biến** (không tính hệ số).\n**Chú ý:** hệ số tính cả dấu của nó, và bậc của đơn thức chỉ lấ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108050203001",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x$, $y$, $z$ biết $10x^2 + y^2 + 4z^2 + 6x - 4y - 4xz = -5$.",
+  "dap_an": "$x = -\\dfrac{1}{3}$, $y = 2$, $z = -\\dfrac{1}{6}$",
+  "loi_giai": "Ta có $10x^2 + y^2 + 4z^2 + 6x - 4y - 4xz + 5 = (3x+1)^2 + (y - 2)^2 + ( 2z - x)^2$\n$10x^2 + y^2 + 4z^2 + 6x - 4y - 4xz + 5 = 0$ khi và chỉ khi đồng thời xảy ra các kết quả sau:\n$(3x+1)^2 = 0$, $(y - 2)^2 = 0$, $( 2z - x)^2 = 0$ hay $x = -\\dfrac{1}{3}$ , $y = 2$ và $z = -\\dfrac{1}{6}$.",
+  "nhan_cu": "Ứng dụng hằng đẳng thức › Ứng dụng của hằng đẳng thức bậc hai"
+ },
+ {
+  "ma_cau": "T108000000107",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hai số $a>b>0$, $a^2+b^2=13$ và $ab=6$. Hãy tính giá trị của $a-b$.",
+  "dap_an": "1",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đề cho $a^2+b^2$ và $ab$ mà hỏi $a-b$; ba đại lượng này được nối với nhau bởi hằng đẳng thức **bình phương của một hiệu**.\n**Bước 1.** Nhận ra không cần tìm riêng $a$ và $b$: khai triển của $(a-b)^2$ chỉ chứa đúng hai đại lượng mà đề đã cho là $a^2+b^2$ và $ab$.\n**Bước 2.** Viết $(a-b)^2=a^2-2ab+b^2$, nhóm $a^2+b^2$ lại rồi thay các giá trị của đề để tính $(a-b)^2$.\n**Bước 3.** Từ giá trị của $(a-b)^2$ suy ra $a-b$: hai số đối nhau có cùng bình phương nên có hai khả năng.\n**Bước 4.** Dùng điều kiện $a>b$ để biết $a-b$ là số dương, từ đó chỉ giữ lại một khả năng.\n**Chú ý:** bỏ quên điều kiện $a>b$ thì sẽ kết luận thừa một giá trị âm.\n**Phần 2. Trình bày**\nT …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108000000302",
+  "loai": "tu_luan",
+  "de": "Cho đơn thức $A=\\left(-\\dfrac{3}{4}x^4y^2\\right) \\cdot (8xy^3)$.\n1) Thu gọn rồi tìm bậc, hệ số của đơn thức $A$.\n2) Tính giá trị của đơn thức $A$, biết $x=2$; $y=-1$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** thu gọn đơn thức là nhân hệ số với hệ số, nhân các luỹ thừa cùng biến với nhau (cộng số mũ); bậc là tổng số mũ của các biến.\n**Bước 1.** Ý 1: nhóm riêng phần hệ số $-\\dfrac{3}{4}$ và $8$, nhóm riêng $x^4$ với $x$, nhóm riêng $y^2$ với $y^3$.\n**Bước 2.** Ý 1: nhân hệ số, cộng số mũ của từng biến để được đơn thức thu gọn; hệ số là số đứng trước, bậc là tổng hai số mũ của $x$ và $y$.\n**Bước 3.** Ý 2: thay $x=2$, $y=-1$ vào đơn thức đã thu gọn (không thay vào dạng chưa thu gọn cho đỡ tính).\n**Chú ý:** số âm mũ lẻ vẫn âm: $(-1)^5=-1$, nên hai dấu trừ nhân với nhau cho kết quả dương.\n**Phần 2. Trình bày**\n1) $A=\\left(-\\dfrac{3}{4}x^4y^2\\right) \\cdot (8xy^3)$\n$=\\ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T108050202005",
+  "loai": "tra_loi_ngan",
+  "de": "Giải phương trình: $(2x-5)^3+(2-x)^3=(x-3)^3+(x-3)(7x^2-2052x+2054)$",
+  "dap_an": "1; 3; 2024",
+  "loi_giai": "Ta có $(2x-5)^3+(2-x)^3=(x-3)^3+(x-3)(7x^2-2052x+2054)$\nÁp dụng hằng đẳng thức $a^3+b^3=(a+b)^3-3ab(a+b)$ vào vế trái phương trình với $a=2x-5$; $b=2-x$ ta được:\n$(2x-5)^3+(2-x)^3=(x-3)^3-3(2x-5)(2-x)(x-3)$\nKhi đó phương trình trở thành\n$-3(2x-5)(2-x)(x-3)=(x-3)(7x^2-2052x+2054)$\n$\\Leftrightarrow (x-3)\\left[7x^2-2052x+2054+3(-2x^2+9x-10)\\right]=0$\n$\\Leftrightarrow (3-x)(x^2-2025x+2024)=0$\n$\\Leftrightarrow (3-x)(x-1)(x-2024)=0$\n$\\Leftrightarrow\\begin{cases}x=3\\\\x=1\\\\x=2024\\end{cases}",
+  "nhan_cu": "Ứng dụng hằng đẳng thức › Ứng dụng hằng đẳng thức Bậc ba"
+ },
+ {
+  "ma_cau": "T108040501003",
+  "loai": "tra_loi_ngan",
+  "de": "Cho đa thức một biến $F(x)=ax^2+bx+c$. Biết $7a+b=0$. Chứng minh rằng\n$F(10)\\cdot F(-3)$ là một số không âm.",
+  "loi_giai": "Từ giả thiết $7a+b=0$ suy ra $b=-7a$.\n$F(10)=100a+10b+c=100a-70a+c=30a+c$.\n$F(-3)=9a-3b+c=9a+21a+c=30a+c$.\nVậy $F(10)=F(-3)=30a+c$, suy ra\n$F(10)\\cdot F(-3)=(30a+c)^2$.\nVì bình phương của một số thực luôn không âm nên $F(10)\\cdot F(-3)\\ge 0$, tức $F(10)\\cdot F(-3)$ là một số không âm. $\\square$",
+  "nhan_cu": "Nâng cao › Nâng cao"
+ },
+ {
+  "ma_cau": "T108000000259",
+  "loai": "trac_nghiem",
+  "de": "Kết quả của phép nhân $3x(x+y)-y(3x-3y)$ bằng",
+  "lua_chon": [
+   "$3x^2-3y^2$",
+   "$3x^2-6xy+3y^2$",
+   "$3x^2+3y^2$",
+   "$3x^2+y^2$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** nhân đơn thức với đa thức để bỏ hai dấu ngoặc, chú ý dấu trừ đứng trước $y(3x-3y)$.\n**Bước 1.** Nhân $3x$ với từng hạng tử trong ngoặc thứ nhất.\n**Bước 2.** Nhân $-y$ với từng hạng tử trong ngoặc thứ hai, nhớ dấu trừ nhân với cả hai hạng tử.\n**Bước 3.** Cộng các hạng tử đồng dạng để thu gọn rồi đối chiếu với các phương án.\n**Phần 2. Trình bày**\n$3x(x+y)-y(3x-3y)=3x^2+3xy-3xy+3y^2$\n$=3x^2+3y^2$\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

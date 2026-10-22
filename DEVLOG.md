@@ -77306,3 +77306,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - Kéo lại 406 câu AI đang ở 17 dạng liên quan: mẫu cao 89/89 đúng, 0 lệch. Cao 357 → hạ 2 (T107000000076, 288) → ghi: đổi dạng 12 câu AI (luỹ thừa trong tính thuận tiện → 00800; trắc nghiệm thu gọn luỹ thừa → 01234; đổi chỗ/đổi dấu → 00791; …). Còn lại giữ nguyên dạng.
 - Hàng duyệt K7 còn 28 dòng "mồ côi" (câu đã được Thùy gán tay hoặc vào kho rác), chưa xoá — chờ Thùy gật.
 - Điểm agent hỏi lại (chưa có quyết định): bài "tính hợp lí" chỉ cộng/trừ ≤4 phép, không luỹ thừa ⇒ giữ nhóm thuận tiện (00421/22/23) hay đếm phép (00799)? Hiện: giữ nhóm thuận tiện khi lời giải ghép cặp / có nhân tử chung. "Căn đơn lẻ" (√(a²)) chưa có dạng riêng.
+
+## 22/10 (tiếp) — [Bản đồ mới K8] Chạy lại phân dạng lần 2 sau khi Thùy cập nhật bản đồ (60 dạng; NDB01370 "Lập biểu thức Đại số" + sửa mô tả/LT nhiều dạng) — Thùy: "t mới cập nhật K8, chạy lại nhé"
+- `--hang --dot hang2210b` (293 câu ở hàng duyệt) + `--lai-ai . --dot lai2210b` (641 câu AI đã gán); 17 lô Sonnet, mỗi agent script tạm tên riêng (không ghi đè `mk.mjs` nữa). Mẫu: hàng 77/78 (98,7%) · kiểm lại 77/78 (98,7%) — câu lệch duy nhất vẫn là tam thức −x² (máy NDB00476 đúng theo mô tả).
+- **Hàng duyệt (ĐÃ GHI):** +65 gán thẳng (34 đề xuất cũ cùng dạng + 31 từ thiếu dạng) · 160 vừa → `dai_bdm_de_xuat` · 68 trống → `dai_bdm_cau_thieu_dang`. 10 câu có đề xuất cũ dạng X mà máy nay 'cao' dạng Y ⇒ HẠ 'vừa' để duyệt (quy tắc Thùy: đổi dạng ⇒ 100% duyệt). Lưu ý: lần này ghi `--ghi` luôn, bỏ bước chạy thử (logic y hệt lần trước; ĐỔI DẠNG câu AI cũ = 0).
+- **Câu AI-gán kiểm lại (KHÔNG ghi):** 608 cao + 17 vừa giữ nguyên dạng · **16 câu máy đề xuất đổi dạng** (11 cao + 5 vừa) → `kho-rules/dai/k8-phan-lai-doi-dang-2210.html` (THAY bản 12 câu lần trước) chờ Thùy duyệt.
+- Hàng duyệt còn trống 68 (trước 149) nhờ nhóm "Lập biểu thức Đại số" nhận các bài toán thực tế.

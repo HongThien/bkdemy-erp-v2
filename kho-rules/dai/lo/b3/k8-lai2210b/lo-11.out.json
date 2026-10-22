@@ -1,0 +1,188 @@
+[
+ {
+  "ma_cau": "T108010503065",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Tìm x: chia đa thức cho đơn thức, nhân, thu gọn còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000057",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Tìm x: khai triển, x^2 triệt tiêu, còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000398",
+  "dang_bai_id": "NDB00666",
+  "chac": "vua",
+  "ly_do": "Hỏi bậc của đơn thức chưa thu gọn; cách giải có nhân đơn thức (NDB00673)."
+ },
+ {
+  "ma_cau": "T108000000629",
+  "dang_bai_id": "NDB00679",
+  "chac": "cao",
+  "ly_do": "Tìm m để đa thức chia hết cho đơn thức."
+ },
+ {
+  "ma_cau": "T108000000230",
+  "dang_bai_id": "NDB00971",
+  "chac": "cao",
+  "ly_do": "Tính nhanh giá trị biểu thức nhờ bình phương của tổng."
+ },
+ {
+  "ma_cau": "T108000000355",
+  "dang_bai_id": "NDB00973",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức có hằng đẳng thức và nhân hai đa thức."
+ },
+ {
+  "ma_cau": "T108000000734",
+  "dang_bai_id": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Cộng trừ hai đa thức nhiều biến."
+ },
+ {
+  "ma_cau": "T108030101148",
+  "dang_bai_id": "NDB00472",
+  "chac": "cao",
+  "ly_do": "Rút nhân tử chung là đa thức, cần đảo dấu (4-x) thành (x-4)."
+ },
+ {
+  "ma_cau": "T108000000611",
+  "dang_bai_id": "NDB00973",
+  "chac": "cao",
+  "ly_do": "Rút gọn có hiệu hai bình phương (x+2y)(x-2y)."
+ },
+ {
+  "ma_cau": "T108000000384",
+  "dang_bai_id": "NDB00698",
+  "chac": "cao",
+  "ly_do": "GTNN hai biến, tách thành (2x-y+1)^2+(y-3)^2 + hằng số."
+ },
+ {
+  "ma_cau": "T108000000123",
+  "dang_bai_id": "NDB00673",
+  "chac": "cao",
+  "ly_do": "Nhân hai đơn thức."
+ },
+ {
+  "ma_cau": "T108000000657",
+  "dang_bai_id": "NDB00974",
+  "chac": "cao",
+  "ly_do": "Tìm x dùng hiệu hai bình phương, bậc ba triệt tiêu, còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000169",
+  "dang_bai_id": "NDB00692",
+  "chac": "cao",
+  "ly_do": "Hiệu hai bình phương viết thành tích."
+ },
+ {
+  "ma_cau": "T108020502007",
+  "dang_bai_id": "NDB00972",
+  "chac": "cao",
+  "ly_do": "Tính giá trị biểu thức dùng hằng đẳng thức hiệu hai lập phương."
+ },
+ {
+  "ma_cau": "T108000000685",
+  "dang_bai_id": "NDB00697",
+  "chac": "cao",
+  "ly_do": "GTNN hai biến, tách (x-2y)^2+(y-1)^2 + hằng số."
+ },
+ {
+  "ma_cau": "T108000000404",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Chia đa thức cho đơn thức."
+ },
+ {
+  "ma_cau": "T108000000725",
+  "dang_bai_id": "NDB00675",
+  "chac": "cao",
+  "ly_do": "Nhân đa thức với đa thức."
+ },
+ {
+  "ma_cau": "T108030301068",
+  "dang_bai_id": "NDB00976",
+  "chac": "cao",
+  "ly_do": "Phân tích thành nhân tử bằng nhóm hạng tử, 4 hạng tử."
+ },
+ {
+  "ma_cau": "T108000000216",
+  "dang_bai_id": "NDB00664",
+  "chac": "cao",
+  "ly_do": "Nhận biết biểu thức không phải đơn thức."
+ },
+ {
+  "ma_cau": "T108030101126",
+  "dang_bai_id": "NDB00472",
+  "chac": "vua",
+  "ly_do": "Rút cụm 6x+9=3(2x+3) để có nhân tử chung đa thức; có thể xếp nhóm hạng tử NDB00976."
+ },
+ {
+  "ma_cau": "T108000000267",
+  "dang_bai_id": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Tìm đa thức chưa biết bằng cộng trừ đa thức."
+ },
+ {
+  "ma_cau": "T108000000666",
+  "dang_bai_id": "NDB00681",
+  "chac": "cao",
+  "ly_do": "Rút gọn nhiều biến: chia đa thức cho đơn thức và nhân hai đa thức."
+ },
+ {
+  "ma_cau": "T108030201037",
+  "dang_bai_id": "NDB00977",
+  "chac": "cao",
+  "ly_do": "Phân tích thành nhân tử: gom ba hạng tử thành bình phương rồi hiệu hai bình phương."
+ },
+ {
+  "ma_cau": "T108000000541",
+  "dang_bai_id": "NDB00671",
+  "chac": "cao",
+  "ly_do": "Cộng trừ các đơn thức đồng dạng."
+ },
+ {
+  "ma_cau": "T108000000440",
+  "dang_bai_id": "NDB00674",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đa thức."
+ },
+ {
+  "ma_cau": "T108000000785",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Chia đa thức cho đơn thức."
+ },
+ {
+  "ma_cau": "T108000000524",
+  "dang_bai_id": "NDB00667",
+  "chac": "cao",
+  "ly_do": "Sắp xếp các đơn thức đồng dạng thành nhóm."
+ },
+ {
+  "ma_cau": "T108000000396",
+  "dang_bai_id": "NDB00667",
+  "chac": "cao",
+  "ly_do": "Tìm đơn thức đồng dạng."
+ },
+ {
+  "ma_cau": "T108000000788",
+  "dang_bai_id": "NDB00681",
+  "chac": "cao",
+  "ly_do": "Chứng minh biểu thức không phụ thuộc biến, nhân đa thức rồi triệt tiêu."
+ },
+ {
+  "ma_cau": "T108000000035",
+  "dang_bai_id": "NDB00681",
+  "chac": "cao",
+  "ly_do": "Rút gọn nhiều biến: chia đa thức cho đơn thức và nhân hai đa thức."
+ },
+ {
+  "ma_cau": "T108000000134",
+  "dang_bai_id": "NDB00681",
+  "chac": "cao",
+  "ly_do": "Rút gọn nhiều biến bằng nhân đơn thức với đa thức."
+ }
+]
