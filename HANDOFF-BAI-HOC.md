@@ -37,6 +37,11 @@
 
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
 
+### Bài học 23/10 — Đánh giá cuối cấp (đo theo lần)
+- **Hai hàm cùng xếp "gần nhất" trên một tập phải dùng CHUNG một khoá xếp, kể cả khi hoà.** Popup xếp `t tăng, luot tăng`, thẻ xếp `t giảm, luot tăng` ⇒ 2 lần cùng ngày đổi chỗ ⇒ popup lệch thẻ (TB5 88,2 vs 87,2). Kiểm bằng so dòng mới nhất của popup với thẻ trên CẢ LỚP (784/784), không chỉ 1 ô.
+- **Ngưỡng "nhẹ/rõ" lấy từ phân bố thật, theo tầng.** Tầng ít lần (nhóm bài, cửa sổ 3/5) dao động gấp ~1,5 lần ⇒ dùng chung ngưỡng với tầng rộng là gắn "rõ" cho nhiễu (331 ô). Cách: SD của chênh, ngưỡng ≈ 0,5 SD / 1,5 SD.
+- **Số đặt sát mũi tên bị đọc thành độ chênh** ("↓ 26" = 26 lần, Thùy đọc là giảm 26). Số phụ trên thẻ phải có đơn vị, hoặc để vào popup.
+
 ### ⭐⭐⭐ LUẬT DUYỆT (Thùy 14/10, "nói bao lần rồi") — MỌI KHỐI, MỌI LÔ: muốn Thùy duyệt gì thì PHẢI đưa một FILE HTML xem được
 
 - **Mỗi lô cần Thùy duyệt/quyết (đề thi, đề cương, bài học, câu chưa chắc, bản đồ…) phải kèm MỘT trang HTML tự đủ**, dựng NGAY trong lượt báo cáo lô — không chờ bị hỏi, không chỉ liệt kê bằng chữ / đường dẫn `.md` / tên ảnh PNG rời.
