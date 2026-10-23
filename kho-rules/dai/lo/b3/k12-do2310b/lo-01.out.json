@@ -1,0 +1,284 @@
+[
+ {
+  "ma_cau": "T1120000001517",
+  "dang_bai_id": "NDB00838",
+  "chac": "cao",
+  "ly_do": "Xét điểm A(1;0;-3) có thuộc mặt phẳng toạ độ (Oxz) hay không."
+ },
+ {
+  "ma_cau": "T112010305001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tiệm cận xiên của đồ thị hàm số (bản đồ chỉ có tiệm cận ngang/đứng)"
+ },
+ {
+  "ma_cau": "T112010401004",
+  "dang_bai_id": "NDB00812",
+  "chac": "vua",
+  "ly_do": "GTLN trên đoạn đọc từ đồ thị; gần nhất là đọc cực trị qua đồ thị, thiếu dạng GTLN-GTNN."
+ },
+ {
+  "ma_cau": "T112010402001",
+  "dang_bai_id": "NDB00811",
+  "chac": "vua",
+  "ly_do": "GTNN trên đoạn bằng khảo sát cực trị hàm cho trước; thiếu dạng GTLN-GTNN khi biết hàm số."
+ },
+ {
+  "ma_cau": "T112020104002",
+  "dang_bai_id": "NDB00812",
+  "chac": "vua",
+  "ly_do": "Nhận dạng hàm bậc 3 từ đồ thị (cực trị); thiếu dạng nhận dạng đồ thị hàm số."
+ },
+ {
+  "ma_cau": "T112020201010",
+  "dang_bai_id": "NDB00621",
+  "chac": "vua",
+  "ly_do": "Tìm dấu hệ số hàm (ax+b)/(x+1) từ đồ thị qua tiệm cận; thiếu dạng nhận dạng đồ thị."
+ },
+ {
+  "ma_cau": "T112020202017",
+  "dang_bai_id": "NDB00621",
+  "chac": "vua",
+  "ly_do": "Chọn biểu thức hàm từ đồ thị qua tiệm cận đứng; thiếu dạng nhận dạng đồ thị."
+ },
+ {
+  "ma_cau": "T112020302020",
+  "dang_bai_id": "NDB00621",
+  "chac": "vua",
+  "ly_do": "Chọn hàm bậc hai/bậc nhất từ đồ thị qua tiệm cận; thiếu dạng nhận dạng đồ thị."
+ },
+ {
+  "ma_cau": "T112020303001",
+  "dang_bai_id": "NDB00811",
+  "chac": "vua",
+  "ly_do": "Tìm cực trị rồi viết đường thẳng qua hai cực trị; thiếu dạng đường thẳng qua hai điểm cực trị."
+ },
+ {
+  "ma_cau": "T112020305010",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: phương trình tiếp tuyến (tiếp tuyến song song đường thẳng cho trước)"
+ },
+ {
+  "ma_cau": "T112020401146",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: bài toán tối ưu thực tế lập hàm kinh tế (lợi nhuận)"
+ },
+ {
+  "ma_cau": "T112020402025",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: ứng dụng đạo hàm vào chuyển động (vận tốc, gia tốc từ s(t))"
+ },
+ {
+  "ma_cau": "T112070102038",
+  "dang_bai_id": "NDB00644",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng hai vectơ trên hình lăng trụ đứng có các cạnh bằng nhau."
+ },
+ {
+  "ma_cau": "T112070102049",
+  "dang_bai_id": "NDB00644",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng hai vectơ trên hình tứ diện đều cạnh a."
+ },
+ {
+  "ma_cau": "T112070105010",
+  "dang_bai_id": "NDB00642",
+  "chac": "vua",
+  "ly_do": "Đẳng thức vectơ với trọng tâm trên hình chóp; gần nhất tổng hiệu vectơ hình chóp, có hình."
+ },
+ {
+  "ma_cau": "T112070105011",
+  "dang_bai_id": "NDB00640",
+  "chac": "cao",
+  "ly_do": "Đẳng thức vectơ với tâm hình hộp, thuộc tổng hiệu vectơ trên hình hộp."
+ },
+ {
+  "ma_cau": "T112070105017",
+  "dang_bai_id": "NDB00642",
+  "chac": "vua",
+  "ly_do": "Đẳng thức vectơ với trọng tâm tam giác trong tứ diện; gần nhất tổng hiệu vectơ hình chóp."
+ },
+ {
+  "ma_cau": "T112070108002",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: điều kiện đồng phẳng của ba vectơ / biểu diễn vectơ qua ba vectơ không đồng phẳng"
+ },
+ {
+  "ma_cau": "T112070109004",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: bài toán thực tế về lực (tổng hợp lực) trong không gian"
+ },
+ {
+  "ma_cau": "T112070202053",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tìm toạ độ điểm trong hệ Oxyz đặt vào hình lập phương"
+ },
+ {
+  "ma_cau": "T112070202055",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: toạ độ của vectơ khi biết biểu diễn qua i, j, k"
+ },
+ {
+  "ma_cau": "T112070202056",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: toạ độ của điểm khi biết OM biểu diễn qua i, j, k"
+ },
+ {
+  "ma_cau": "T112070202057",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: toạ độ của vectơ khi biết biểu diễn qua i, j, k"
+ },
+ {
+  "ma_cau": "T112070202058",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: toạ độ vectơ BA từ toạ độ hai điểm"
+ },
+ {
+  "ma_cau": "T112070202059",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: toạ độ của vectơ khi biết biểu diễn qua i, j, k"
+ },
+ {
+  "ma_cau": "T112070202060",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tìm toạ độ điểm C khi biết điểm A và vectơ AC"
+ },
+ {
+  "ma_cau": "T112070202061",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: toạ độ của vectơ khi biết biểu diễn qua i, j, k"
+ },
+ {
+  "ma_cau": "T112070202063",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tìm toạ độ điểm D từ vectơ OD cho trước"
+ },
+ {
+  "ma_cau": "T112070203003",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: toạ độ vectơ từ mô hình thực tế (đặt hệ trục Oxyz vào sân cầu lông)"
+ },
+ {
+  "ma_cau": "T112070203017",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: khoảng cách giữa hai điểm trong mô hình thực tế đặt hệ Oxyz"
+ },
+ {
+  "ma_cau": "T112070301185",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: toạ độ của vectơ khi biết biểu diễn qua i, j, k"
+ },
+ {
+  "ma_cau": "T112070302009",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: phép toán cộng, trừ, nhân số với vectơ theo toạ độ"
+ },
+ {
+  "ma_cau": "T112070302011",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: phép toán cộng, trừ, nhân số với vectơ theo toạ độ"
+ },
+ {
+  "ma_cau": "T112070302012",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: phép toán cộng, trừ, nhân số với vectơ theo toạ độ"
+ },
+ {
+  "ma_cau": "T112070302024",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: phép toán vectơ theo toạ độ (tìm vectơ thoả đẳng thức)"
+ },
+ {
+  "ma_cau": "T112070302056",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: toạ độ của vectơ khi biết biểu diễn qua i, j, k"
+ },
+ {
+  "ma_cau": "T112070303001",
+  "dang_bai_id": "NDB00643",
+  "chac": "vua",
+  "ly_do": "Tích vô hướng hai vectơ độc lập, nhưng tính theo toạ độ chứ không theo góc; thiếu dạng tích vô hướng theo toạ độ."
+ },
+ {
+  "ma_cau": "T112070304002",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: độ dài vectơ theo toạ độ"
+ },
+ {
+  "ma_cau": "T112070304014",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: độ dài vectơ (kết hợp phép toán vectơ) theo toạ độ"
+ },
+ {
+  "ma_cau": "T112070305001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: toạ độ trung điểm đoạn thẳng"
+ },
+ {
+  "ma_cau": "T112070306001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: hai vectơ cùng phương theo toạ độ"
+ },
+ {
+  "ma_cau": "T112070307005",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tìm điểm thoả đẳng thức vectơ (tâm tỉ cự)"
+ },
+ {
+  "ma_cau": "T112070308001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: toạ độ hoá hình chóp, tính thể tích bằng tích có hướng"
+ },
+ {
+  "ma_cau": "T112070308005",
+  "dang_bai_id": "NDB00640",
+  "chac": "vua",
+  "ly_do": "Độ dài tổng vectơ các cạnh hình lập phương (hình hộp); thiếu dạng tính độ dài tổng vectơ."
+ },
+ {
+  "ma_cau": "T112070310001",
+  "dang_bai_id": "NDB00854",
+  "chac": "vua",
+  "ly_do": "Tìm giao điểm đường thẳng AB với trục Ox, qua phương trình đường thẳng đi qua hai điểm; thiếu dạng giao của đường với trục."
+ },
+ {
+  "ma_cau": "T112070311007",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: vận tốc, chuyển động đều của vật trong hệ trục Oxyz"
+ },
+ {
+  "ma_cau": "T112070312001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: bài toán lực cân bằng bằng vectơ toạ độ Oxyz"
+ }
+]

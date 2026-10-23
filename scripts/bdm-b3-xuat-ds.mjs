@@ -1,6 +1,7 @@
 // B3 Khớp theo DANH SÁCH câu (Đại) — xuất lô cho máy khớp, CHỈ ĐỌC DB. Dùng cho đợt "câu đã có HS làm mà mastery bản đồ mới
 // chưa quy được" (PLAN-mastery-ban-do-moi.md, 23/10). Cặp với bdm-b3-gop-lo / bdm-b3-khop-lai-hang (--khong-gan).
-//   node scripts/bdm-b3-xuat-ds.mjs <ds.json> <ten-dot> [--lo 60] [--chi-chu-de 12=NCD00095,…]
+//   node scripts/bdm-b3-xuat-ds.mjs <ds.json> <ten-dot> [--lo 60] [--chi-chu-de 12=NCD00095,…] [--nhanh toan,hgt]
+//   --nhanh: nhánh của bảng đích (mặc định toan); K12 câu Đại về toạ độ Oxyz cần cả dạng bài nhánh hgt (cùng bảng dai_bdm_dang_bai)
 // ds.json = {cau:[{ma_cau, kho, luot, …}]} — chỉ lấy kho 'dai'. Mỗi câu quy về ĐỐI TƯỢNG CẦN XẾP:
 //   · câu gốc còn sống (bản sao tự theo gốc — mig 202610231604) ;
 //   · gốc đã xoá ⇒ MỘT bản sao đại diện cho cả nhóm bản sao cùng gốc (ghi vào nhom.json: đại diện → mọi bản sao trong ds).
@@ -16,6 +17,7 @@ const args = process.argv.slice(2)
 const [dsFile, dot] = args
 const so = (k, d) => { const i = args.indexOf(k); return i >= 0 ? args[i + 1] : d }
 const LO = +so('--lo', 60)
+const NHANH = so('--nhanh', 'toan').split(',')
 const chiCD = Object.fromEntries((so('--chi-chu-de', '') || '').split(',').filter(Boolean).map((x) => x.split('=')))
 if (!dsFile || !dot) { console.error('Dùng: node scripts/bdm-b3-xuat-ds.mjs <ds.json> <ten-dot> [--lo 60] [--chi-chu-de 12=NCD00095]'); process.exit(2) }
 const ds = JSON.parse(fs.readFileSync(dsFile, 'utf8')).cau.filter((x) => x.kho === 'dai')
@@ -54,13 +56,13 @@ for (const [khoi, ds2] of Object.entries(theoKhoi)) {
       join dai_bdm_chu_de cd on cd.id = n.chu_de_id
       join dai_bdm_chuyen_de cdx on cdx.id = n.chuyen_de_id
       left join dai_bdm_o o on o.chu_de_id = n.chu_de_id and o.chuyen_de_id = n.chuyen_de_id
-     where cd.khoi = $1 and cd.nhanh = 'toan' and ($2::text is null or cd.id = $2)
-     order by cd.thu_tu, o.thu_tu, n.thu_tu, d.thu_tu`, [khoi, chiCD[khoi] ?? null])
-  const ngoai = await q(`select ten, nhanh from dai_bdm_chu_de where khoi = $1 and (nhanh <> 'toan' or ($2::text is not null and id <> $2)) order by thu_tu`, [khoi, chiCD[khoi] ?? null])
+     where cd.khoi = $1 and cd.nhanh = any($3) and ($2::text is null or cd.id = $2)
+     order by cd.thu_tu, o.thu_tu, n.thu_tu, d.thu_tu`, [khoi, chiCD[khoi] ?? null, NHANH])
+  const ngoai = await q(`select ten, nhanh from dai_bdm_chu_de where khoi = $1 and (nhanh <> all($3) or ($2::text is not null and id <> $2)) order by thu_tu`, [khoi, chiCD[khoi] ?? null, NHANH])
   const goc = path.join('kho-rules', 'dai', 'lo', 'b3', `k${khoi}-${dot}`)
   fs.mkdirSync(goc, { recursive: true })
   for (const f of fs.readdirSync(goc)) if (/^lo-\d+\.json$/.test(f)) throw new Error(`${goc} đã có lô`)
-  const md = [`# Bảng đích khối ${khoi} — ${dich.length} dạng bài (nhánh Toán · Đại)${chiCD[khoi] ? ` — CHỈ chủ đề ${chiCD[khoi]} (bản đồ chuẩn)` : ''}`, '']
+  const md = [`# Bảng đích khối ${khoi} — ${dich.length} dạng bài (nhánh ${NHANH.join(' + ')})${chiCD[khoi] ? ` — CHỈ chủ đề ${chiCD[khoi]} (bản đồ chuẩn)` : ''}`, '']
   if (ngoai.length) md.push(`> Chủ đề KHÔNG nằm trong bảng đích: ${ngoai.map((x) => `${x.ten} [${x.nhanh}]`).join(' · ')}. Câu thuộc các chủ đề này ⇒ để trống, lý do "thuộc <tên chủ đề>"${chiCD[khoi] ? ' (chủ đề chưa có bản đồ chuẩn — KHÔNG ép vào bảng đích)' : ''}.`, '')
   let cdT = '', nhT = ''
   for (const d of dich) {

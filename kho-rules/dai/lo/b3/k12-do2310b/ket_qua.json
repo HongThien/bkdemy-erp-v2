@@ -1,0 +1,284 @@
+[
+ {
+  "ma_cau": "T1120000001517",
+  "dang_bai_id": "NDB00838",
+  "chac": "cao",
+  "ly_do": "Xét điểm A(1;0;-3) có thuộc mặt phẳng toạ độ (Oxz) hay không."
+ },
+ {
+  "ma_cau": "T112010305001",
+  "dang_bai_id": "NDB00620",
+  "chac": "vua",
+  "ly_do": "Tiệm cận XIÊN — bản đồ chỉ có tiệm cận ngang/đứng; gần nhất 'tiệm cận khi biết hàm số' (chấp nhận sai)."
+ },
+ {
+  "ma_cau": "T112010401004",
+  "dang_bai_id": "NDB00812",
+  "chac": "vua",
+  "ly_do": "GTLN trên đoạn đọc từ đồ thị; gần nhất là đọc cực trị qua đồ thị, thiếu dạng GTLN-GTNN."
+ },
+ {
+  "ma_cau": "T112010402001",
+  "dang_bai_id": "NDB00811",
+  "chac": "vua",
+  "ly_do": "GTNN trên đoạn bằng khảo sát cực trị hàm cho trước; thiếu dạng GTLN-GTNN khi biết hàm số."
+ },
+ {
+  "ma_cau": "T112020104002",
+  "dang_bai_id": "NDB00812",
+  "chac": "vua",
+  "ly_do": "Nhận dạng hàm bậc 3 từ đồ thị (cực trị); thiếu dạng nhận dạng đồ thị hàm số."
+ },
+ {
+  "ma_cau": "T112020201010",
+  "dang_bai_id": "NDB00621",
+  "chac": "vua",
+  "ly_do": "Tìm dấu hệ số hàm (ax+b)/(x+1) từ đồ thị qua tiệm cận; thiếu dạng nhận dạng đồ thị."
+ },
+ {
+  "ma_cau": "T112020202017",
+  "dang_bai_id": "NDB00621",
+  "chac": "vua",
+  "ly_do": "Chọn biểu thức hàm từ đồ thị qua tiệm cận đứng; thiếu dạng nhận dạng đồ thị."
+ },
+ {
+  "ma_cau": "T112020302020",
+  "dang_bai_id": "NDB00621",
+  "chac": "vua",
+  "ly_do": "Chọn hàm bậc hai/bậc nhất từ đồ thị qua tiệm cận; thiếu dạng nhận dạng đồ thị."
+ },
+ {
+  "ma_cau": "T112020303001",
+  "dang_bai_id": "NDB00811",
+  "chac": "vua",
+  "ly_do": "Tìm cực trị rồi viết đường thẳng qua hai cực trị; thiếu dạng đường thẳng qua hai điểm cực trị."
+ },
+ {
+  "ma_cau": "T112020305010",
+  "dang_bai_id": "NDB00805",
+  "chac": "vua",
+  "ly_do": "Tiếp tuyến song song đường thẳng — bản đồ chưa có dạng tiếp tuyến; gần nhất dùng đạo hàm y' (chấp nhận sai)."
+ },
+ {
+  "ma_cau": "T112020401146",
+  "dang_bai_id": "NDB00811",
+  "chac": "vua",
+  "ly_do": "Tối ưu kinh tế lập hàm rồi tìm cực trị — bản đồ chưa có dạng bài toán thực tế; gần nhất 'cực trị hàm số cho trước'."
+ },
+ {
+  "ma_cau": "T112020402025",
+  "dang_bai_id": "NDB00811",
+  "chac": "vua",
+  "ly_do": "Chuyển động s(t): vận tốc/gia tốc qua đạo hàm rồi tìm cực trị — bản đồ chưa có dạng ứng dụng chuyển động."
+ },
+ {
+  "ma_cau": "T112070102038",
+  "dang_bai_id": "NDB00644",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng hai vectơ trên hình lăng trụ đứng có các cạnh bằng nhau."
+ },
+ {
+  "ma_cau": "T112070102049",
+  "dang_bai_id": "NDB00644",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng hai vectơ trên hình tứ diện đều cạnh a."
+ },
+ {
+  "ma_cau": "T112070105010",
+  "dang_bai_id": "NDB00642",
+  "chac": "vua",
+  "ly_do": "Đẳng thức vectơ với trọng tâm trên hình chóp; gần nhất tổng hiệu vectơ hình chóp, có hình."
+ },
+ {
+  "ma_cau": "T112070105011",
+  "dang_bai_id": "NDB00640",
+  "chac": "cao",
+  "ly_do": "Đẳng thức vectơ với tâm hình hộp, thuộc tổng hiệu vectơ trên hình hộp."
+ },
+ {
+  "ma_cau": "T112070105017",
+  "dang_bai_id": "NDB00642",
+  "chac": "vua",
+  "ly_do": "Đẳng thức vectơ với trọng tâm tam giác trong tứ diện; gần nhất tổng hiệu vectơ hình chóp."
+ },
+ {
+  "ma_cau": "T112070108002",
+  "dang_bai_id": "NDB00643",
+  "chac": "vua",
+  "ly_do": "Đồng phẳng / biểu diễn qua 3 vectơ không đồng phẳng — gần nhất vectơ độc lập (chấp nhận sai)."
+ },
+ {
+  "ma_cau": "T112070109004",
+  "dang_bai_id": "NDB00642",
+  "chac": "vua",
+  "ly_do": "Lực (đèn chùm) trên hình chóp tứ giác đều: tổng vectơ trên hình chóp (chấp nhận sai)."
+ },
+ {
+  "ma_cau": "T112070202053",
+  "dang_bai_id": "NDB00640",
+  "chac": "vua",
+  "ly_do": "Toạ độ điểm trên hình lập phương đặt vào Oxyz — gần nhất 'Hình hộp' (bản đồ thiếu mục Hệ trục toạ độ)."
+ },
+ {
+  "ma_cau": "T112070202055",
+  "dang_bai_id": "NDB00643",
+  "chac": "vua",
+  "ly_do": "Toạ độ vectơ biểu diễn qua i, j, k — bản đồ thiếu mục Hệ trục toạ độ; gần nhất vectơ độc lập."
+ },
+ {
+  "ma_cau": "T112070202056",
+  "dang_bai_id": "NDB00643",
+  "chac": "vua",
+  "ly_do": "Toạ độ điểm M từ OM qua i, j, k — bản đồ thiếu mục Hệ trục toạ độ; gần nhất vectơ độc lập."
+ },
+ {
+  "ma_cau": "T112070202057",
+  "dang_bai_id": "NDB00643",
+  "chac": "vua",
+  "ly_do": "Toạ độ vectơ biểu diễn qua i, j, k — bản đồ thiếu mục Hệ trục toạ độ; gần nhất vectơ độc lập."
+ },
+ {
+  "ma_cau": "T112070202058",
+  "dang_bai_id": "NDB00643",
+  "chac": "vua",
+  "ly_do": "Toạ độ vectơ BA từ 2 điểm — bản đồ thiếu mục Hệ trục toạ độ; gần nhất vectơ độc lập."
+ },
+ {
+  "ma_cau": "T112070202059",
+  "dang_bai_id": "NDB00643",
+  "chac": "vua",
+  "ly_do": "Toạ độ vectơ biểu diễn qua i, j, k — bản đồ thiếu mục Hệ trục toạ độ; gần nhất vectơ độc lập."
+ },
+ {
+  "ma_cau": "T112070202060",
+  "dang_bai_id": "NDB00643",
+  "chac": "vua",
+  "ly_do": "Toạ độ điểm C từ A và vectơ AC — bản đồ thiếu mục Hệ trục toạ độ; gần nhất vectơ độc lập."
+ },
+ {
+  "ma_cau": "T112070202061",
+  "dang_bai_id": "NDB00643",
+  "chac": "vua",
+  "ly_do": "Toạ độ vectơ biểu diễn qua i, j, k — bản đồ thiếu mục Hệ trục toạ độ; gần nhất vectơ độc lập."
+ },
+ {
+  "ma_cau": "T112070202063",
+  "dang_bai_id": "NDB00643",
+  "chac": "vua",
+  "ly_do": "Toạ độ điểm D từ vectơ OD — bản đồ thiếu mục Hệ trục toạ độ; gần nhất vectơ độc lập."
+ },
+ {
+  "ma_cau": "T112070203003",
+  "dang_bai_id": "NDB00643",
+  "chac": "vua",
+  "ly_do": "Toạ độ vectơ trong mô hình thực tế (sân cầu lông) — bản đồ thiếu mục Hệ trục toạ độ."
+ },
+ {
+  "ma_cau": "T112070203017",
+  "dang_bai_id": "NDB00643",
+  "chac": "vua",
+  "ly_do": "Khoảng cách 2 điểm trong mô hình căn phòng đặt Oxyz — bản đồ thiếu mục Hệ trục toạ độ."
+ },
+ {
+  "ma_cau": "T112070301185",
+  "dang_bai_id": "NDB00643",
+  "chac": "vua",
+  "ly_do": "Toạ độ vectơ biểu diễn qua i, k — bản đồ thiếu mục Hệ trục toạ độ; gần nhất vectơ độc lập."
+ },
+ {
+  "ma_cau": "T112070302009",
+  "dang_bai_id": "NDB00643",
+  "chac": "vua",
+  "ly_do": "Phép toán cộng/trừ/nhân số theo toạ độ — bản đồ thiếu mục Biểu thức toạ độ; gần nhất vectơ độc lập."
+ },
+ {
+  "ma_cau": "T112070302011",
+  "dang_bai_id": "NDB00643",
+  "chac": "vua",
+  "ly_do": "Phép toán trừ vectơ theo toạ độ — bản đồ thiếu mục Biểu thức toạ độ; gần nhất vectơ độc lập."
+ },
+ {
+  "ma_cau": "T112070302012",
+  "dang_bai_id": "NDB00643",
+  "chac": "vua",
+  "ly_do": "Phép toán vectơ theo toạ độ — bản đồ thiếu mục Biểu thức toạ độ; gần nhất vectơ độc lập."
+ },
+ {
+  "ma_cau": "T112070302024",
+  "dang_bai_id": "NDB00643",
+  "chac": "vua",
+  "ly_do": "Tìm vectơ thoả đẳng thức theo toạ độ — bản đồ thiếu mục Biểu thức toạ độ; gần nhất vectơ độc lập."
+ },
+ {
+  "ma_cau": "T112070302056",
+  "dang_bai_id": "NDB00643",
+  "chac": "vua",
+  "ly_do": "Toạ độ của 2i — bản đồ thiếu mục Hệ trục toạ độ; gần nhất vectơ độc lập."
+ },
+ {
+  "ma_cau": "T112070303001",
+  "dang_bai_id": "NDB00643",
+  "chac": "vua",
+  "ly_do": "Tích vô hướng hai vectơ độc lập, nhưng tính theo toạ độ chứ không theo góc; thiếu dạng tích vô hướng theo toạ độ."
+ },
+ {
+  "ma_cau": "T112070304002",
+  "dang_bai_id": "NDB00643",
+  "chac": "vua",
+  "ly_do": "Độ dài vectơ theo toạ độ — bản đồ thiếu mục Biểu thức toạ độ; gần nhất vectơ độc lập."
+ },
+ {
+  "ma_cau": "T112070304014",
+  "dang_bai_id": "NDB00643",
+  "chac": "vua",
+  "ly_do": "Độ dài vectơ 2a−b theo toạ độ — bản đồ thiếu mục Biểu thức toạ độ; gần nhất vectơ độc lập."
+ },
+ {
+  "ma_cau": "T112070305001",
+  "dang_bai_id": "NDB00643",
+  "chac": "vua",
+  "ly_do": "Toạ độ trung điểm — bản đồ thiếu mục Biểu thức toạ độ; gần nhất vectơ độc lập."
+ },
+ {
+  "ma_cau": "T112070306001",
+  "dang_bai_id": "NDB00643",
+  "chac": "vua",
+  "ly_do": "Hai vectơ cùng phương theo toạ độ — bản đồ thiếu mục Biểu thức toạ độ; gần nhất vectơ độc lập."
+ },
+ {
+  "ma_cau": "T112070307005",
+  "dang_bai_id": "NDB00643",
+  "chac": "vua",
+  "ly_do": "Điểm thoả đẳng thức vectơ (tâm tỉ cự) theo toạ độ — gần nhất vectơ độc lập (chấp nhận sai)."
+ },
+ {
+  "ma_cau": "T112070308001",
+  "dang_bai_id": "NDB00642",
+  "chac": "vua",
+  "ly_do": "Toạ độ hoá hình chóp, thể tích bằng tích có hướng — gần nhất 'Hình chóp' (chấp nhận sai)."
+ },
+ {
+  "ma_cau": "T112070308005",
+  "dang_bai_id": "NDB00640",
+  "chac": "vua",
+  "ly_do": "Độ dài tổng vectơ các cạnh hình lập phương (hình hộp); thiếu dạng tính độ dài tổng vectơ."
+ },
+ {
+  "ma_cau": "T112070310001",
+  "dang_bai_id": "NDB00854",
+  "chac": "vua",
+  "ly_do": "Tìm giao điểm đường thẳng AB với trục Ox, qua phương trình đường thẳng đi qua hai điểm; thiếu dạng giao của đường với trục."
+ },
+ {
+  "ma_cau": "T112070311007",
+  "dang_bai_id": "NDB00643",
+  "chac": "vua",
+  "ly_do": "Vận tốc/chuyển động đều trong Oxyz bằng vectơ toạ độ — gần nhất vectơ độc lập (chấp nhận sai)."
+ },
+ {
+  "ma_cau": "T112070312001",
+  "dang_bai_id": "NDB00642",
+  "chac": "vua",
+  "ly_do": "Lực cân bằng trên giá 3 chân (hình chóp) bằng vectơ toạ độ — gần nhất 'Hình chóp' (chấp nhận sai)."
+ }
+]

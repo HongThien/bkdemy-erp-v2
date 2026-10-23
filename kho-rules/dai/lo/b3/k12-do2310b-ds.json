@@ -1,0 +1,265 @@
+{
+ "ghi_chu": "K12 câu đã đo, còn sống, _do_o_bdm NULL (23/10, sau khi bỏ luật chỉ NH-TP)",
+ "cau": [
+  {
+   "ma_cau": "T112070302009",
+   "kho": "dai",
+   "luot": 8
+  },
+  {
+   "ma_cau": "T112070105010",
+   "kho": "dai",
+   "luot": 8
+  },
+  {
+   "ma_cau": "T112070105011",
+   "kho": "dai",
+   "luot": 8
+  },
+  {
+   "ma_cau": "T112070303001",
+   "kho": "dai",
+   "luot": 8
+  },
+  {
+   "ma_cau": "T112070108002",
+   "kho": "dai",
+   "luot": 8
+  },
+  {
+   "ma_cau": "T112070202053",
+   "kho": "dai",
+   "luot": 8
+  },
+  {
+   "ma_cau": "T112070203017",
+   "kho": "dai",
+   "luot": 8
+  },
+  {
+   "ma_cau": "T112070304002",
+   "kho": "dai",
+   "luot": 8
+  },
+  {
+   "ma_cau": "T112070307005",
+   "kho": "dai",
+   "luot": 8
+  },
+  {
+   "ma_cau": "T112070312001",
+   "kho": "dai",
+   "luot": 8
+  },
+  {
+   "ma_cau": "T112070308001",
+   "kho": "dai",
+   "luot": 8
+  },
+  {
+   "ma_cau": "T112070302056",
+   "kho": "dai",
+   "luot": 6
+  },
+  {
+   "ma_cau": "T112070301185",
+   "kho": "dai",
+   "luot": 6
+  },
+  {
+   "ma_cau": "T112070304014",
+   "kho": "dai",
+   "luot": 5
+  },
+  {
+   "ma_cau": "T112070303011",
+   "kho": "dai",
+   "luot": 5
+  },
+  {
+   "ma_cau": "T112070302011",
+   "kho": "dai",
+   "luot": 5
+  },
+  {
+   "ma_cau": "T112070109004",
+   "kho": "dai",
+   "luot": 5
+  },
+  {
+   "ma_cau": "T112070105019",
+   "kho": "dai",
+   "luot": 5
+  },
+  {
+   "ma_cau": "T112020401146",
+   "kho": "dai",
+   "luot": 5
+  },
+  {
+   "ma_cau": "T112070311008",
+   "kho": "dai",
+   "luot": 5
+  },
+  {
+   "ma_cau": "T112070310001",
+   "kho": "dai",
+   "luot": 5
+  },
+  {
+   "ma_cau": "T112070305001",
+   "kho": "dai",
+   "luot": 5
+  },
+  {
+   "ma_cau": "T112070306001",
+   "kho": "dai",
+   "luot": 5
+  },
+  {
+   "ma_cau": "T112020303003",
+   "kho": "dai",
+   "luot": 5
+  },
+  {
+   "ma_cau": "T112020305010",
+   "kho": "dai",
+   "luot": 5
+  },
+  {
+   "ma_cau": "T112020402025",
+   "kho": "dai",
+   "luot": 5
+  },
+  {
+   "ma_cau": "T112010305001",
+   "kho": "dai",
+   "luot": 5
+  },
+  {
+   "ma_cau": "T112010401004",
+   "kho": "dai",
+   "luot": 5
+  },
+  {
+   "ma_cau": "T112010402005",
+   "kho": "dai",
+   "luot": 5
+  },
+  {
+   "ma_cau": "T112020104002",
+   "kho": "dai",
+   "luot": 5
+  },
+  {
+   "ma_cau": "T112020201010",
+   "kho": "dai",
+   "luot": 5
+  },
+  {
+   "ma_cau": "T112020202017",
+   "kho": "dai",
+   "luot": 5
+  },
+  {
+   "ma_cau": "T112020302020",
+   "kho": "dai",
+   "luot": 5
+  },
+  {
+   "ma_cau": "T112070102051",
+   "kho": "dai",
+   "luot": 4
+  },
+  {
+   "ma_cau": "T112070102042",
+   "kho": "dai",
+   "luot": 3
+  },
+  {
+   "ma_cau": "T112070202055",
+   "kho": "dai",
+   "luot": 3
+  },
+  {
+   "ma_cau": "T112070202060",
+   "kho": "dai",
+   "luot": 3
+  },
+  {
+   "ma_cau": "T112070202056",
+   "kho": "dai",
+   "luot": 2
+  },
+  {
+   "ma_cau": "T112070202057",
+   "kho": "dai",
+   "luot": 2
+  },
+  {
+   "ma_cau": "T112070202058",
+   "kho": "dai",
+   "luot": 2
+  },
+  {
+   "ma_cau": "T112070202059",
+   "kho": "dai",
+   "luot": 2
+  },
+  {
+   "ma_cau": "T112070202061",
+   "kho": "dai",
+   "luot": 2
+  },
+  {
+   "ma_cau": "T112070202063",
+   "kho": "dai",
+   "luot": 2
+  },
+  {
+   "ma_cau": "T112070308006",
+   "kho": "dai",
+   "luot": 1
+  },
+  {
+   "ma_cau": "T1120000001517",
+   "kho": "dai",
+   "luot": 1
+  },
+  {
+   "ma_cau": "T312010403001",
+   "kho": "hgt",
+   "luot": 1
+  },
+  {
+   "ma_cau": "T112070102049",
+   "kho": "dai",
+   "luot": 1
+  },
+  {
+   "ma_cau": "T112070203003",
+   "kho": "dai",
+   "luot": 1
+  },
+  {
+   "ma_cau": "T112070302016",
+   "kho": "dai",
+   "luot": 1
+  },
+  {
+   "ma_cau": "T112070302017",
+   "kho": "dai",
+   "luot": 1
+  },
+  {
+   "ma_cau": "T112070302024",
+   "kho": "dai",
+   "luot": 1
+  },
+  {
+   "ma_cau": "T112070303007",
+   "kho": "dai",
+   "luot": 1
+  }
+ ]
+}
