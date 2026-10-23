@@ -9,7 +9,7 @@ import { createRoot } from 'react-dom/client'
 import html2canvas from 'html2canvas'
 import type { TongQuanHS } from '../../lib/mastery'
 import { getTongQuanHS } from '../../lib/mastery'
-import { getReportBuoiHS, getBaoCaoPH, getGVChinhLop, getKhoiRankDiemMT, getLopRankDiemMT, getHeRankDiemMT, type BaoCaoPH, type KhoiRankMT, type LopRankMT, type HeRankMT } from '../../lib/report'
+import { getReportBuoiHS, getBaoCaoPH, getGVChinhLop, getKhoiRankDiemMT, getLopRankDiemMT, getHeRankDiemMT, getKSDiemThang, type BaoCaoPH, type KhoiRankMT, type LopRankMT, type HeRankMT, type KSThang } from '../../lib/report'
 import { uploadReportImage } from '../../lib/ph-login'
 
 // đồng bộ với ReportPHScreen top-of-file (thang 5 GV chọn)
@@ -17,7 +17,7 @@ const SKILL_MUC = ['Cần cố gắng', 'Trung bình', 'Khá', 'Tốt', 'Xuất 
 
 // Bucket = { pct, n } — copy đồng bộ với ReportPHScreen (số HS đúng/số HS chấm) để render card.
 type Bucket = { pct: number | null; n: number }
-function tongPct(a: Bucket, b: Bucket): number | null {
+export function tongPct(a: Bucket, b: Bucket): number | null {
   const nT = a.n + b.n; if (!nT) return null
   const s = (a.pct != null ? a.pct * a.n : 0) + (b.pct != null ? b.pct * b.n : 0)
   return Math.round(s / nT)
@@ -34,17 +34,18 @@ export const MUC_HEX: Record<string, { bg: string; fg: string; emoji: string; la
   van_de_thai_do: { bg: '#fff1f2', fg: '#be123c', emoji: '🆘', label: 'Con gặp vấn đề về thái độ học tập' },
   van_de_kien_thuc: { bg: '#fff1f2', fg: '#be123c', emoji: '🆘', label: 'Con gặp vấn đề về kiến thức và kĩ năng' },
 }
-const s10 = (pct: number | null) => pct == null ? '—' : (pct / 10).toFixed(1)
-const hexPct = (pct: number | null) => pct == null ? '#cbd5e1' : pct >= 80 ? '#059669' : pct >= 50 ? '#d97706' : '#e11d48'
+export const s10 = (pct: number | null) => pct == null ? '—' : (pct / 10).toFixed(1)
+export const hexPct = (pct: number | null) => pct == null ? '#cbd5e1' : pct >= 80 ? '#059669' : pct >= 50 ? '#d97706' : '#e11d48'
 
 // ── CARD BÁO CÁO (dùng chung: modal "Ảnh gửi PH" + chụp tự động lúc chốt) ──
 export type ReportCardProps = {
   hsName: string; hsImg: string | null; lopTen: string; mon: string; ym: string; gvName: string | null;
   tq: TongQuanHS; missCount: number; bc: BaoCaoPH;
   khoiRank: KhoiRankMT | null; lopRank: LopRankMT | null; heRank: HeRankMT | null;
+  ks?: KSThang | null // 23/10: khảo sát giữa tháng — chỉ hiện dòng khi tháng đó em có khảo sát
 }
 export const ReportCardView = forwardRef<HTMLDivElement, ReportCardProps>(function ReportCardView(
-  { hsName, hsImg, lopTen, mon, ym, gvName, tq, missCount, bc, khoiRank, lopRank, heRank }, ref,
+  { hsName, hsImg, lopTen, mon, ym, gvName, tq, missCount, bc, khoiRank, lopRank, heRank, ks }, ref,
 ) {
   const muc = bc.ket_luan_muc ? MUC_HEX[bc.ket_luan_muc] : null
   const a = tq.hoatDong, hh = tq.hoanThanh.toanBo.etMt
@@ -180,6 +181,8 @@ export const ReportCardView = forwardRef<HTMLDivElement, ReportCardProps>(functi
             (tq.diem.mt.thiLai.n || tq.diem.mt.thiLai.nCoBan || tq.diem.mt.thiLai.nNangCao)
               ? { tong: tq.diem.mt.thiLai.tb, pctCB: tq.diem.mt.thiLai.pctCoBan, pctNC: tq.diem.mt.thiLai.pctNangCao }
               : null)}
+          {ks ? assessRowDiem('Khảo sát giữa tháng', '#0f9d8f', ks.tb, ks.pctCoBan, ks.pctNangCao,
+            ks.tlN ? { tong: ks.tlTb, pctCB: null, pctNC: null } : null) : null}
           {missCount > 0 ? <div style={{ fontSize: 9.5, color: '#da7d00', marginTop: 6 }}>⚠ Chưa hoàn thành BTVN {missCount} lần trong tháng</div> : null}
         </div>
         {bc.muc_tieu ? <div style={{ display: 'grid', gridTemplateColumns: '36px 1fr', gap: 10, alignItems: 'center', background: 'linear-gradient(135deg,#fff9e9,#fff)', border: '1px solid #f3e7bf', borderRadius: 20, padding: '12px 13px', marginBottom: 10 }}>
@@ -213,7 +216,7 @@ export async function captureReportSnapshot(p: {
   hsName: string; hsImg: string | null; lopTen: string;
   gvName?: string | null; // nếu caller đã có (đỡ 1 query); không có thì tự lấy theo lopId
 }): Promise<string> {
-  const [tq, rows, bc, khoiRank, lopRank, heRank, gvName] = await Promise.all([
+  const [tq, rows, bc, khoiRank, lopRank, heRank, gvName, ks] = await Promise.all([
     getTongQuanHS(p.hsId, p.mon, { ym: p.ym }),
     getReportBuoiHS(p.hsId, p.mon, p.ym),
     getBaoCaoPH(p.hsId, p.mon, p.ym),
@@ -221,7 +224,8 @@ export async function captureReportSnapshot(p: {
     p.lopId ? getLopRankDiemMT(p.hsId, p.lopId, p.mon, p.ym) : Promise.resolve(null),
     getHeRankDiemMT(p.hsId, p.mon, p.ym),
     p.gvName !== undefined ? Promise.resolve(p.gvName) : (p.lopId ? getGVChinhLop(p.lopId) : Promise.resolve(null)),
+    getKSDiemThang(p.hsId, p.mon, p.ym).catch(() => null),
   ])
   const missCount = rows.filter((r) => r.btvnTrangThai === 'khong_lam' || r.btvnTrangThai === 'xin_phep').length
-  return renderCardToUrl({ hsName: p.hsName, hsImg: p.hsImg, lopTen: p.lopTen, mon: p.mon, ym: p.ym, gvName, tq, missCount, bc, khoiRank, lopRank, heRank }, `${p.hsId}_${p.ym}`)
+  return renderCardToUrl({ hsName: p.hsName, hsImg: p.hsImg, lopTen: p.lopTen, mon: p.mon, ym: p.ym, gvName, tq, missCount, bc, khoiRank, lopRank, heRank, ks }, `${p.hsId}_${p.ym}`)
 }

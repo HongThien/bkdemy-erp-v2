@@ -8,7 +8,7 @@ import { listHSDangHoc } from '../../lib/tuyensinh'
 import { listLop, listHSCuaLop, listLopCuaHS, type Lop, type HSTrongLop } from '../../lib/nhansu'
 import { getMasteryHS, listBuoiHoatDong, getMasteryRollup, getMasteryByDang, getMasteryByChuyenDe, getTongQuanHS, getClassMatrix, getAllClassesCompletion, bucketMucDo, SRC_LABEL, type DangMastery, type DangEval, type BuoiActivity, type HSRollup, type TongQuanHS, type ClassMatrix, type MatrixPhase, type MatrixCell, type ClassCompletion, type ActPct, type BucketPct, type HoanThanhCard as HoanThanhCardT, type MucDoFilter } from '../../lib/mastery'
 import {
-  listKyThi, createKyThi, listDiemThiByKyThi, upsertDiemThi, currentMua, getDiemThiTruong, getBXHDiemMTKhoi,
+  listKyThi, createKyThi, listDiemThiByKyThi, upsertDiemThi, currentMua, getDiemThiTruong, getBXHDiemMTKhoi, getBXHDiemKSKhoi,
   LOAI_KY_THI, HE_SO_KY_THI, DOT_LABEL, DOT_ORDER, type KyThi, type DiemThi, type Verdict, type TruongDiemRow, type BXHDiemMTRow,
 } from '../../lib/thanhtich'
 import { BuoiDetail } from '../gami/BuoiHocScreen'
@@ -980,17 +980,18 @@ function PivotRow({ it }: { it: PivotItem }) {
 // 2 sub-tab: Điểm thi trên trường (view+filter+sort, đúng cột Thùy yêu cầu) · Nhập điểm (port nguyên khối
 // UI cũ của Quản lý Level: chọn lớp → kì thi → nhập Điểm/Verdict/Vượt-band từng HS).
 function DiemThiTab() {
-  const [sub, setSub] = useState<'truong' | 'bxh_mt' | 'nhap'>('truong')
+  const [sub, setSub] = useState<'truong' | 'bxh_mt' | 'bxh_ks' | 'nhap'>('truong')
   const subBtn = (on: boolean) => `-mb-px border-b-2 px-3 py-2 text-[13px] font-medium transition ${on ? 'border-indigo-600 text-indigo-700' : 'border-transparent text-slate-500 hover:text-slate-700'}`
   return (
     <>
       <div className="mb-4 flex items-center gap-1 border-b border-slate-200">
         <button onClick={() => setSub('truong')} className={subBtn(sub === 'truong')}>Điểm thi trên trường</button>
         <button onClick={() => setSub('bxh_mt')} className={subBtn(sub === 'bxh_mt')}>Xếp hạng MT trung tâm</button>
+        <button onClick={() => setSub('bxh_ks')} className={subBtn(sub === 'bxh_ks')}>Xếp hạng khảo sát</button>
         <button onClick={() => setSub('nhap')} className={subBtn(sub === 'nhap')}>Nhập điểm (Thi trường)</button>
         {/* 08/10 (Thùy): bỏ "Nhập điểm MT (theo tháng)" — điểm MT tự cộng từ chấm từng câu; chấm ở lá riêng "Chấm MT". */}
       </div>
-      {sub === 'truong' ? <DiemThiTruongView /> : sub === 'bxh_mt' ? <BXHDiemMTView /> : <NhapDiemView />}
+      {sub === 'truong' ? <DiemThiTruongView /> : sub === 'bxh_mt' ? <BXHDiemMTView key="mt" /> : sub === 'bxh_ks' ? <BXHDiemMTView key="ks" ks /> : <NhapDiemView />}
     </>
   )
 }
@@ -999,7 +1000,8 @@ function DiemThiTab() {
 // navigator ‹ tháng M/YYYY ›; lớp = filter tuỳ chọn "chỉ hiện HS lớp đó" (không đổi thứ hạng — vẫn rank
 // trong CẢ khối). Nguồn: getBXHDiemMTKhoi → fn_bxh_diem_mt_khoi (avg cửa sổ 25→10, chưa thi = 0đ trong
 // rank, `tb` null hiển thị "—" — luật MT giữ nguyên văn, xem thanhtich.ts §BXH).
-function BXHDiemMTView() {
+// 23/10: `ks` = BXH KHẢO SÁT GIỮA THÁNG (fn_bxh_diem_ks_khoi) — cùng luật xếp, cửa sổ = cả tháng dương lịch.
+function BXHDiemMTView({ ks = false }: { ks?: boolean }) {
   const [mon, setMon] = useState('Toán')
   const [ym, setYm] = useState(curYM())
   const [khoi, setKhoi] = useState<string | null>(null)
@@ -1027,8 +1029,8 @@ function BXHDiemMTView() {
   useEffect(() => {
     if (!khoi) { setRows(null); return }
     setLoading(true)
-    getBXHDiemMTKhoi(mon, khoi, ym).then(setRows).catch(() => setRows([])).finally(() => setLoading(false))
-  }, [mon, khoi, ym])
+    ;(ks ? getBXHDiemKSKhoi : getBXHDiemMTKhoi)(mon, khoi, ym).then(setRows).catch(() => setRows([])).finally(() => setLoading(false))
+  }, [mon, khoi, ym]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const shown = useMemo(() => {
     if (!rows) return []
@@ -1086,7 +1088,7 @@ function BXHDiemMTView() {
               {shown.length}{lopId ? ` / ${rows.length}` : ''} học sinh
             </span>
             <span>· Rank trong khối {khoi} (tháng {Number(mm)}/{yy})</span>
-            <span className="ml-auto text-[11px] text-slate-400">Cửa sổ tính điểm: 25/{Number(mm)} → 10/{Number(mm) === 12 ? 1 : Number(mm) + 1}</span>
+            <span className="ml-auto text-[11px] text-slate-400">{ks ? `Khảo sát giữa tháng · cả tháng ${Number(mm)}/${yy}` : `Cửa sổ tính điểm: 25/${Number(mm)} → 10/${Number(mm) === 12 ? 1 : Number(mm) + 1}`}</span>
           </div>
           <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
             <table className="w-full min-w-[640px] text-[13px]">
@@ -1096,7 +1098,7 @@ function BXHDiemMTView() {
                   <th className="px-3 py-2">Tên HS</th>
                   <th className="px-3 py-2">Mã HS</th>
                   <th className="px-3 py-2">Lớp</th>
-                  <th className="w-24 px-3 py-2 text-center">Điểm MT TB</th>
+                  <th className="w-24 px-3 py-2 text-center">{ks ? 'Điểm KS TB' : 'Điểm MT TB'}</th>
                 </tr>
               </thead>
               <tbody>

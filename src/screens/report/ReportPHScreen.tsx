@@ -7,7 +7,7 @@ import { ReportCardView, renderCardToUrl } from './ReportCard'
 import SearchSelect, { type Opt } from '../../components/SearchSelect'
 import { listLop, listHSCuaLop } from '../../lib/nhansu'
 import { getTongQuanHS, type TongQuanHS } from '../../lib/mastery'
-import { getReportBuoiHS, getBaoCaoPH, upsertBaoCaoPH, getGVChinhLop, getKhoiRankDiemMT, getLopRankDiemMT, getHeRankDiemMT, listNxPreset, addNxPreset, updateNxPreset, deleteNxPreset, BC_EMPTY, type ReportBuoiRow, type BaoCaoPH, type KhoiRankMT, type LopRankMT, type HeRankMT, type NxTruc, type NxPreset } from '../../lib/report'
+import { getReportBuoiHS, getBaoCaoPH, upsertBaoCaoPH, getGVChinhLop, getKhoiRankDiemMT, getLopRankDiemMT, getHeRankDiemMT, getKSDiemThang, type KSThang, listNxPreset, addNxPreset, updateNxPreset, deleteNxPreset, BC_EMPTY, type ReportBuoiRow, type BaoCaoPH, type KhoiRankMT, type LopRankMT, type HeRankMT, type NxTruc, type NxPreset } from '../../lib/report'
 import { tenHienThiDs } from '../../lib/hoten'
 
 const MON_CO_KHO = ['Toán', 'KHTN']
@@ -87,15 +87,16 @@ export default function ReportPHScreen() {
         const hasContent = !!(bc.nl_band || bc.ket_luan || bc.ket_luan_muc || bc.muc_tieu || bc.thai_do || bc.kien_thuc_ky_nang || bc.muc_kien_thuc || bc.muc_thai_do
           || [bc.cs_thai_do, bc.cs_tap_trung, bc.cs_tiep_thu, bc.cs_tu_duy, bc.cs_ky_nang, bc.cs_van_dung, bc.cs_vuot_kho].some((x) => x != null))
         if (!hasContent) { skipped++; continue }
-        const [rows, tq, khoiRank, lopRank, heRank] = await Promise.all([
+        const [rows, tq, khoiRank, lopRank, heRank, ks] = await Promise.all([
           getReportBuoiHS(h.id, mon, ym),
           getTongQuanHS(h.id, mon, { ym }),
           getKhoiRankDiemMT(h.id, mon, ym),
           getLopRankDiemMT(h.id, lopId, mon, ym),
           getHeRankDiemMT(h.id, mon, ym),
+          getKSDiemThang(h.id, mon, ym).catch(() => null),
         ])
         const missCount = rows.filter((r) => r.btvnTrangThai === 'khong_lam' || r.btvnTrangThai === 'xin_phep').length
-        const url = await renderCardToUrl({ hsName: h.ho_ten, hsImg: h.anh_url, lopTen, mon, ym, gvName, tq, missCount, bc, khoiRank, lopRank, heRank }, `${h.id}_${ym}`)
+        const url = await renderCardToUrl({ hsName: h.ho_ten, hsImg: h.anh_url, lopTen, mon, ym, gvName, tq, missCount, bc, khoiRank, lopRank, heRank, ks }, `${h.id}_${ym}`)
         await upsertBaoCaoPH(h.id, mon, ym, { cong_bo_at: new Date().toISOString(), anh_bao_cao_url: url })
         published++
       } catch { failed++ }
@@ -171,9 +172,11 @@ export default function ReportPHScreen() {
 function ReportBody({ hsId, mon, ym, lopId, hsName, hsImg, lopTen }: { hsId: string; mon: string; ym: string; lopId: string | null; hsName: string; hsImg: string | null; lopTen: string }) {
   const [rows, setRows] = useState<ReportBuoiRow[] | null>(null)
   const [tq, setTq] = useState<TongQuanHS | null>(null)
+  const [ks, setKs] = useState<KSThang | null>(null)
   const [gvName, setGvName] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
   const [anh, setAnh] = useState(false)
+  useEffect(() => { setKs(null); getKSDiemThang(hsId, mon, ym).then(setKs).catch(() => {}) }, [hsId, mon, ym])
   useEffect(() => {
     setLoading(true)
     Promise.all([getReportBuoiHS(hsId, mon, ym), getTongQuanHS(hsId, mon, { ym })])
@@ -185,13 +188,14 @@ function ReportBody({ hsId, mon, ym, lopId, hsName, hsImg, lopTen }: { hsId: str
   // Chụp ảnh báo cáo (snapshot) lúc GV chốt → lưu storage → trả URL để gắn vào bao_cao_ph.
   async function captureReport(): Promise<string | null> {
     if (!tq) return null
-    const [bc, khoiRank, lopRank, heRank] = await Promise.all([
+    const [bc, khoiRank, lopRank, heRank, ksMoi] = await Promise.all([
       getBaoCaoPH(hsId, mon, ym),
       getKhoiRankDiemMT(hsId, mon, ym),
       lopId ? getLopRankDiemMT(hsId, lopId, mon, ym) : Promise.resolve(null),
       getHeRankDiemMT(hsId, mon, ym),
+      getKSDiemThang(hsId, mon, ym).catch(() => null),
     ])
-    return renderCardToUrl({ hsName, hsImg, lopTen, mon, ym, gvName, tq, missCount, bc, khoiRank, lopRank, heRank }, `${hsId}_${ym}`)
+    return renderCardToUrl({ hsName, hsImg, lopTen, mon, ym, gvName, tq, missCount, bc, khoiRank, lopRank, heRank, ks: ksMoi }, `${hsId}_${ym}`)
   }
   return (
     <>
@@ -202,7 +206,7 @@ function ReportBody({ hsId, mon, ym, lopId, hsName, hsImg, lopTen }: { hsId: str
     <div className="grid gap-5 xl:grid-cols-[1fr_400px]">
       {/* ── TRÁI: SỐ LIỆU ── */}
       <div className="space-y-5">
-        {tq && <TongQuanCards tq={tq} missCount={missCount} />}
+        {tq && <TongQuanCards tq={tq} missCount={missCount} ks={ks} />}
         <div>
           <h3 className="mb-2 text-[13px] font-semibold uppercase tracking-wider text-slate-500">Chi tiết theo buổi · tháng {Number(ym.split('-')[1])}</h3>
           {!rows || rows.length === 0 ? (
@@ -316,7 +320,7 @@ function ActCard({ icon, ten, cb, nc, warn, diem }: { icon: string; ten: string;
     </div>
   )
 }
-function TongQuanCards({ tq, missCount }: { tq: TongQuanHS; missCount: number }) {
+function TongQuanCards({ tq, missCount, ks }: { tq: TongQuanHS; missCount: number; ks?: KSThang | null }) {
   const h = tq.hoanThanh.toanBo.etMt, a = tq.hoatDong
   const tl = tq.diem.mt.thiLai
   return (
@@ -338,6 +342,14 @@ function TongQuanCards({ tq, missCount }: { tq: TongQuanHS; missCount: number })
           thiLai: tl.n || tl.nCoBan || tl.nNangCao ? { tong: tl.tb, pctCB: tl.pctCoBan, pctNC: tl.pctNangCao } : null,
           truong: tq.diem.truong.tb,
         }} />
+      {/* 23/10: khảo sát giữa tháng — chỉ hiện khi tháng này em có khảo sát (số từ fn_ks_diem_thang) */}
+      {ks && (
+        <div className="rounded-2xl border border-teal-200 bg-white p-4 shadow-sm">
+          <div className="mb-1 flex items-baseline gap-2 text-[14px] font-bold text-slate-700">🧪 Khảo sát giữa tháng
+            {ks.rankNow != null && <span className="text-[12px] font-medium text-teal-700">· hạng {ks.rankNow}/{ks.rankTotal} khối {ks.khoi}</span>}</div>
+          <DiemRow chinh={{ tong: ks.tb, pctCB: ks.pctCoBan, pctNC: ks.pctNangCao }} thiLai={ks.tlN ? { tong: ks.tlTb, pctCB: null, pctNC: null } : null} />
+        </div>
+      )}
     </div>
   )
 }
@@ -642,7 +654,9 @@ function PhAnhModal({ hsId, mon, ym, lopId, hsName, hsImg, lopTen, gvName, tq, m
   const [khoiRank, setKhoiRank] = useState<KhoiRankMT | null>(null)
   const [lopRank, setLopRank] = useState<LopRankMT | null>(null)
   const [heRank, setHeRank] = useState<HeRankMT | null>(null)
+  const [ks, setKs] = useState<KSThang | null>(null)
   const cardRef = useRef<HTMLDivElement>(null)
+  useEffect(() => { setKs(null); getKSDiemThang(hsId, mon, ym).then(setKs).catch(() => {}) }, [hsId, mon, ym])
   useEffect(() => { getBaoCaoPH(hsId, mon, ym).then(setBc).catch(() => {}) }, [hsId, mon, ym])
   useEffect(() => { setKhoiRank(null); getKhoiRankDiemMT(hsId, mon, ym).then(setKhoiRank).catch(() => {}) }, [hsId, mon, ym])
   useEffect(() => { setLopRank(null); if (lopId) getLopRankDiemMT(hsId, lopId, mon, ym).then(setLopRank).catch(() => {}) }, [hsId, lopId, mon, ym])
@@ -672,7 +686,7 @@ function PhAnhModal({ hsId, mon, ym, lopId, hsName, hsImg, lopTen, gvName, tq, m
         <button onClick={onClose} className="rounded-md border border-slate-500 px-3 py-1 text-sm hover:bg-slate-700">Đóng</button>
       </div>
       <div className="min-h-0 flex-1 overflow-auto p-4" onClick={(e) => e.stopPropagation()}>
-        <ReportCardView ref={cardRef} hsName={hsName} hsImg={hsImg} lopTen={lopTen} mon={mon} ym={ym} gvName={gvName} tq={tq} missCount={missCount} bc={bc} khoiRank={khoiRank} lopRank={lopRank} heRank={heRank} />
+        <ReportCardView ref={cardRef} hsName={hsName} hsImg={hsImg} lopTen={lopTen} mon={mon} ym={ym} gvName={gvName} tq={tq} missCount={missCount} bc={bc} khoiRank={khoiRank} lopRank={lopRank} heRank={heRank} ks={ks} />
       </div>
     </div>,
     document.body,

@@ -29,9 +29,14 @@ const LIMIT = 10000
 // ── METADATA phân loại MT (Thùy 07-09: "chuyển MT sang dạng list, thêm loại đề") — lưu trong
 // cau_hinh.mtMeta (KHÔNG cột riêng, giống mẫu deThiMeta của dethi.ts) — free-metadata, không phải
 // đo lường (§1.5 không áp), nên NULL = "chưa gắn" là hợp lệ, không phải NULL cấm.
-export type MTLoaiDe = 'khao_sat_thang' | 'test_dau_vao' | 'thi_thu' | 'luyen'
+// ⭐ 23/10 (Thùy): thêm KHẢO SÁT GIỮA THÁNG — kỳ thi riêng xen kẽ MT cuối tháng, đi chung đường MT (chấm từng câu,
+// điểm tự cộng, Elo) nhưng điểm tổng vào kỳ 'khao_sat_thang' ⇒ BXH riêng, không tính Level/xu (mig 202610231349 —
+// DB nhận diện bằng ĐÚNG giá trị 'khao_sat_giua_thang' của đề gốc). Giá trị cũ 'khao_sat_thang' giữ nguyên (15 đề
+// MT cuối tháng đang dùng), chỉ đổi NHÃN thành "Đề MT cuối tháng" cho khỏi nhầm với khảo sát giữa tháng.
+export type MTLoaiDe = 'khao_sat_thang' | 'khao_sat_giua_thang' | 'test_dau_vao' | 'thi_thu' | 'luyen'
 export const MT_LOAI_DE: { value: MTLoaiDe; label: string }[] = [
-  { value: 'khao_sat_thang', label: 'Đề khảo sát tháng' },
+  { value: 'khao_sat_thang', label: 'Đề MT cuối tháng' },
+  { value: 'khao_sat_giua_thang', label: 'Đề khảo sát giữa tháng' },
   { value: 'test_dau_vao', label: 'Đề Test đầu vào' },
   { value: 'thi_thu', label: 'Đề thi thử' },
   { value: 'luyen', label: 'Đề luyện' },

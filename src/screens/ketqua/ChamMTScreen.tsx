@@ -1,4 +1,6 @@
 // CHẤM MT — lá riêng ở Quản lý chất lượng (Thùy 08/10). Thay "Nhập điểm MT (theo tháng)" + "Chấm MT chi tiết" cũ.
+// 23/10: chấm cả KHẢO SÁT GIỮA THÁNG ở đây (đề loại 'khao_sat_giua_thang' — cùng đường MT, điểm tổng vào kỳ khảo sát, DB tự
+// phân loại theo đề gốc); đề khảo sát gắn nhãn KHẢO SÁT trong danh sách và trên đầu màn.
 //   · Chọn lớp → đề MT (mặc định: đề khảo sát cuối tháng GẦN NHẤT còn HS chưa chấm xong) → HS (có mặt).
 //   · TOÀN BỘ câu trên 1 màn, 2 cột, mỗi câu 1 dòng: [Câu N | Đ C S | điểm | 💬]. Số câu = số trên phiếu.
 //   · Điểm câu: Đ = full · S = 0 · C = người chấm chọn — luật ở DB (trigger tg_gami_grades_mt_diem), màn này
@@ -32,6 +34,7 @@ const mucDiem = (max: number | null | undefined, cur: number | null | undefined)
   if (cur != null) s.add(Number(cur))
   return [...s].sort((a, b) => a - b)
 }
+const laKS = (b: MTBuoiCham) => b.loai_de === 'khao_sat_giua_thang'
 const xong = (h: MTHSCham) => h.so_cau > 0 && h.so_cham === h.so_cau && h.so_thieu_diem === 0
 
 export default function ChamMTScreen() {
@@ -67,7 +70,8 @@ export default function ChamMTScreen() {
       setBuois(bs)
       if (bs.some((b) => b.buoi_id === NHO.buoiId)) { setBuoiId(NHO.buoiId); return }
       const cho = (b: MTBuoiCham) => !b.dong && b.so_hs_xong < b.so_hs
-      const macDinh = bs.find((b) => b.loai_de === 'khao_sat_thang' && cho(b)) ?? bs.find(cho) ?? bs[0]
+      const kyChinh = (b: MTBuoiCham) => b.loai_de === 'khao_sat_thang' || b.loai_de === 'khao_sat_giua_thang' // MT cuối tháng / khảo sát giữa tháng
+      const macDinh = bs.find((b) => kyChinh(b) && cho(b)) ?? bs.find(cho) ?? bs[0]
       setBuoiId(macDinh?.buoi_id ?? null)
     }).catch((e) => alive && setLoi('Không tải được danh sách đề: ' + (e?.message ?? e))).finally(() => alive && setLoadingBuoi(false))
     return () => { alive = false }
@@ -183,7 +187,7 @@ export default function ChamMTScreen() {
         {lopId && (
           <select value={buoiId ?? ''} onChange={(e) => setBuoiId(e.target.value || null)} className="h-8 w-full rounded border border-slate-300 px-2 text-[12.5px]">
             {loadingBuoi ? <option value="">Đang tải…</option> : buois.length === 0 ? <option value="">Lớp chưa có đề MT nào được gán</option> : null}
-            {buois.map((b) => <option key={b.buoi_id} value={b.buoi_id}>{b.ngay.split('-').reverse().slice(0, 2).join('/')} · {b.ten} · {b.so_hs_xong}/{b.so_hs}{b.dong ? ' · đã đóng' : ''}</option>)}
+            {buois.map((b) => <option key={b.buoi_id} value={b.buoi_id}>{b.ngay.split('-').reverse().slice(0, 2).join('/')} · {laKS(b) ? 'KHẢO SÁT · ' : ''}{b.ten} · {b.so_hs_xong}/{b.so_hs}{b.dong ? ' · đã đóng' : ''}</option>)}
           </select>
         )}
         {buoiId && (
@@ -220,6 +224,7 @@ export default function ChamMTScreen() {
                 <div className="flex flex-wrap items-center gap-2">
                   <button onClick={() => hsIdx > 0 && setHsId(hsList[hsIdx - 1].hoc_sinh_id)} disabled={hsIdx <= 0} className="h-7 w-7 rounded border border-slate-200 text-slate-500 hover:bg-slate-50 disabled:opacity-30" title="HS trước">‹</button>
                   <span className="text-[15px] font-semibold text-slate-800">{hs.ho_ten}</span>
+                  {buoi && laKS(buoi) && <span className="rounded bg-teal-100 px-1.5 py-0.5 text-[11px] font-bold text-teal-800" title="Đề khảo sát giữa tháng — điểm vào Xếp hạng khảo sát, không tính Level/xu">KHẢO SÁT</span>}
                   <button onClick={() => hsIdx < hsList.length - 1 && setHsId(hsList[hsIdx + 1].hoc_sinh_id)} disabled={hsIdx >= hsList.length - 1} className="h-7 w-7 rounded border border-slate-200 text-slate-500 hover:bg-slate-50 disabled:opacity-30" title="HS sau">›</button>
                   <span className="ml-2 text-[12px] text-slate-500">Chấm cả bài:</span>
                   <div className="flex overflow-hidden rounded border border-slate-300">

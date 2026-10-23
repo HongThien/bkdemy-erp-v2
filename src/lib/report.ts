@@ -202,3 +202,22 @@ export async function rankDiemMTLop(lopId: string, mon: string, ym: string): Pro
     hocSinhId: r.hoc_sinh_id, tb: r.tb == null ? null : Number(r.tb), rankNow: Number(r.rank_now), rankTotal: Number(r.rank_total),
   }]))
 }
+
+// ── KHẢO SÁT GIỮA THÁNG trên báo cáo PH (Thùy 23/10: "dòng riêng") — mọi con số tính ở DB (fn_ks_diem_thang):
+// TB điểm / Cơ bản / Nâng cao các kỳ khảo sát trong THÁNG DƯƠNG LỊCH, %CB/%NC theo khung, thi lại, hạng trong khối.
+// n = 0 ⇒ tháng đó em không có khảo sát ⇒ báo cáo KHÔNG hiện dòng này.
+export type KSThang = {
+  n: number; tb: number | null; coBan: number | null; nangCao: number | null; pctCoBan: number | null; pctNangCao: number | null
+  tlN: number; tlTb: number | null; rankNow: number | null; rankTotal: number | null; khoi: string | null
+}
+export async function getKSDiemThang(hocSinhId: string, mon: string, ym: string): Promise<KSThang | null> {
+  const { data, error } = await supabase.rpc('fn_ks_diem_thang', { p_hs: hocSinhId, p_mon: mon, p_ym: ym })
+  if (error) throw error
+  const j = (data ?? {}) as Record<string, unknown>
+  const so = (v: unknown) => (v == null ? null : Number(v))
+  const r: KSThang = {
+    n: Number(j.n ?? 0), tb: so(j.tb), coBan: so(j.co_ban), nangCao: so(j.nang_cao), pctCoBan: so(j.pct_co_ban), pctNangCao: so(j.pct_nang_cao),
+    tlN: Number(j.tl_n ?? 0), tlTb: so(j.tl_tb), rankNow: so(j.rank_now), rankTotal: so(j.rank_total), khoi: (j.khoi as string) ?? null,
+  }
+  return r.n > 0 || r.tlN > 0 ? r : null
+}
