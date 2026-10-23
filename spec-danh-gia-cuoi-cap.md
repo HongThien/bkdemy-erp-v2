@@ -1,6 +1,6 @@
 # Đánh giá cuối cấp — đo theo LẦN, xu hướng mềm
 
-> Trạng thái: Thùy duyệt 23/10/2026. **Hàm DB đã áp** (mig `202610231549_danh_gia_cuoi_cap`). **Màn chưa làm.**
+> Trạng thái: Thùy duyệt 23/10/2026. **Hàm DB đã áp** (mig `202610231549_danh_gia_cuoi_cap`). **Màn đã có** (leaf `db_cuoicap`, Quản lý chất lượng).
 > Là **một màn nhìn THÊM** — mastery hiện tại (`fn_mastery_cells`, đạt/yếu theo câu) giữ nguyên, bổ trợ vẫn chạy trên mastery cũ.
 
 ---

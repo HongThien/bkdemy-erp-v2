@@ -128,6 +128,7 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'duyetcham',   nhom: 'Quản lý chất lượng', ten: 'Duyệt chấm online',  founderOnly: false }, // review trả-lời-ngắn: chấp nhận đáp án + backfill
   { id: 'duyetloigiai', nhom: 'Quản lý chất lượng', ten: 'Duyệt kho',         founderOnly: false }, // 27/08: gộp theo khối — Đại/KHTN/HGT/Hình có loi_giai do AI viết, chưa duyệt. Đổi tên 22/09: không chỉ duyệt lời giải AI, còn duyệt câu mới nhập kho (mọi nhánh, gồm Hình học)
   { id: 'db_hoctap',   nhom: 'Quản lý chất lượng', ten: 'Dashboard học tập',  founderOnly: false }, // phát hiện → đề xuất → NGƯỜI duyệt (spec-danhgia-hoctap)
+  { id: 'db_cuoicap',  nhom: 'Quản lý chất lượng', ten: 'Đánh giá cuối cấp', founderOnly: false }, // Thùy 23/10: lớp 5T·9·12 đo theo LẦN + xu hướng (spec-danh-gia-cuoi-cap)
   { id: 'db_theodoi_app', nhom: 'Quản lý chất lượng', ten: 'Theo dõi bài tập app', founderOnly: false }, // ma trận ngày×HS: tự luyện+bổ trợ+retest (CEO 17/09)
   // 'botroyeu' (folder Bổ trợ yếu: Duyệt · Nội dung · Trạng thái ca · Đánh giá ca) — Thùy 24/09 chuyển TOÀN BỘ vào Vận hành › Bổ trợ › Yếu (toggle).
   { id: 'report_ph',   nhom: 'Quản lý chất lượng', ten: 'Report phụ huynh',   founderOnly: false }, // report tháng gửi PH: số liệu HS + nhận xét GV

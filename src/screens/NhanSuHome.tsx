@@ -80,6 +80,7 @@ import PhDangNhapScreen from './dashboard/PhDangNhapScreen'
 import XemAppScreen from './dashboard/XemAppScreen'
 import ThongBaoPhScreen from './dashboard/ThongBaoPhScreen'
 import DashboardHocTapScreen from './danhgia/DashboardHocTapScreen'
+import DanhGiaCuoiCapScreen from './danhgia/DanhGiaCuoiCapScreen'
 import BangLamBaiScreen from './theodoi/BangLamBaiScreen'
 import GayScreen from './gay/GayScreen'
 import DuyetCongScreen from './tacong/DuyetCongScreen'
@@ -743,6 +744,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'db_xemapp' ? <XemAppScreen />
       : staffLeaf === 'db_thongbao' ? <ThongBaoPhScreen />
       : staffLeaf === 'db_hoctap' ? <DashboardHocTapScreen />
+      : staffLeaf === 'db_cuoicap' ? <DanhGiaCuoiCapScreen />
       : staffLeaf === 'db_theodoi_app' ? <BangLamBaiScreen />
       // Thùy 24/09: cả folder Bổ trợ yếu chuyển vào Bổ trợ › Yếu (toggle). Link cũ 'botroyeu:*' mở đúng toggle tương ứng.
       : (staffLeaf === 'botroyeu' || staffLeaf === 'botroyeu:duyet') ? <BoTroHubScreen mo={{ tab: 'yeu', yeu: 'duyet' }} />
