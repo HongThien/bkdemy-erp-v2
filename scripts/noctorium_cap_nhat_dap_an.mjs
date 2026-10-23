@@ -43,9 +43,9 @@ for (const k of ['10', '11', '12']) {
     // tên trong bản tải 22/10 bị cắt phần tỉnh ("… - Hà", "… - Quảng") ⇒ không khớp nguyên văn thì khớp TIỀN TỐ, chỉ nhận khi duy nhất
     const tienTo = (t) => { const p = chTen(t); const ds = [...new Set([...byTen.entries()].filter(([k]) => k.startsWith(p)).map(([, v]) => v))]; return ds.length === 1 ? ds[0] : null }
     const row = byTen.get(chTen(de.ten)) ?? byTen.get(chTen(de.file)) ?? tienTo(de.ten)
-    if (!row) { dem.de_khong_co_db++; continue }
+    if (!row) dem.de_khong_co_db++   // đề không định danh được (vd tên có hậu tố "(1)(2)(3)" ⇒ tiền tố trùng) ⇒ vẫn xét theo nội dung toàn kho
     const kdb = new Map()
-    for (const m of cauCua.get(row.id) ?? []) { const r = nd.get(m); if (r) { const key = keyDb(r); if (!kdb.has(key)) kdb.set(key, r) } }
+    for (const m of (row ? cauCua.get(row.id) : null) ?? []) { const r = nd.get(m); if (r) { const key = keyDb(r); if (!kdb.has(key)) kdb.set(key, r) } }
     for (const q of de.cau) {
       const kq = keyNew(q)
       const rs = kdb.has(kq) ? [kdb.get(kq)] : (glob.get(kq) ?? [])
