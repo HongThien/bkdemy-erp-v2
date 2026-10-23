@@ -12,16 +12,25 @@ import {
 } from '../../lib/kho/bdmKhop'
 import { useNhanXet, NutCanSua, NhanXetCu, DongChoSua } from './CanSua'
 import { useDeSau, NutDeSau, NhanDeSau } from './DeSau'
+import PhanTrang from '../../components/PhanTrang'
 import type { TrangThaiNX } from '../../lib/kho/nhanXet'
 
 const HANG: KhopHang[] = ['de_xuat', 'trong', 'thieu', 'mau']
 const TRANG = 20
 // Nhớ hàng đang mở khi chuyển tab/khối rồi quay lại (module-level, sống tới F5).
 const monCau = (c: KhopCau) => (c.nhanh === 'hgt' ? 'hgt' : 'toan') as 'hgt' | 'toan'   // nhận xét "Cần sửa" ghi vào đúng kho của câu
-const NHO: { hang: KhopHang } = { hang: 'de_xuat' }
+// Nhớ cả TRANG đang mở (Thùy 23/10); trang chỉ dùng lại khi cùng khối + chủ đề.
+const NHO: { hang: KhopHang; trang: number; khoa: string } = { hang: 'de_xuat', trang: 0, khoa: '' }
 
 export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { khoi: string; chuDeId?: string | null; onXem?: (dangBaiId: string) => void; onChanged?: () => void }) {
   const [hang, setHangRaw] = useState<KhopHang>(NHO.hang)
+  // Chọn trang kiểu web (Thùy 23/10): mỗi trang TRANG câu, trang lấy thẳng từ DB (offset) — DB xếp câu "Để sau" ở cuối.
+  const khoa = `${khoi}|${chuDeId ?? ''}`
+  const [trang, setTrangRaw] = useState(NHO.khoa === khoa ? NHO.trang : 0)
+  const cuon = useRef<HTMLDivElement>(null)
+  const setTrang = (t: number) => { NHO.trang = t; NHO.khoa = khoa; setTrangRaw(t); cuon.current?.scrollTo({ top: 0 }) }
+  const khoaTruoc = useRef(khoa)
+  useEffect(() => { if (khoaTruoc.current !== khoa) { khoaTruoc.current = khoa; setTrang(0) } }, [khoa]) // eslint-disable-line react-hooks/exhaustive-deps
   const [dem, setDem] = useState<KhopDem | null>(null)
   const [rows, setRows] = useState<KhopCau[]>([])
   const [tong, setTong] = useState(0)
@@ -37,7 +46,7 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
   const nhanXet = useNhanXet('cau')   // "✎ Cần sửa" nội dung câu (đề/đáp án/lời giải): chờ Claude sửa thì tạm ẩn
   const deSau = useDeSau('bdm_khop', 'toan')  // "⏭ Để sau" (Thùy 20/10): câu chưa muốn quyết dạng bài xuống cuối hàng
 
-  const setHang = (h: KhopHang) => { NHO.hang = h; setHangRaw(h) }
+  const setHang = (h: KhopHang) => { NHO.hang = h; setHangRaw(h); setTrang(0) }
 
   const napDem = useCallback(async () => {
     try { setDem(await khopDem(khoi, cd)) } catch (e: any) { setErr(e.message ?? String(e)) }
@@ -47,11 +56,11 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
   useEffect(() => {
     const my = ++req.current
     setRows([]); setTong(0); setLoading(true); setErr(null)
-    khopHang(khoi, hang, TRANG, 0, cd)
+    khopHang(khoi, hang, TRANG, trang * TRANG, cd)
       .then((r) => { if (my === req.current) { setRows(r.rows); setTong(r.tong) } })
       .catch((e) => { if (my === req.current) setErr(e.message ?? String(e)) })
       .finally(() => { if (my === req.current) setLoading(false) })
-  }, [khoi, hang, cd])
+  }, [khoi, hang, cd, trang])
   useEffect(() => { void napDem() }, [napDem])
   useEffect(() => { khopDich(khoi).then(setDich).catch(() => setDich([])) }, [khoi])
   const napPhamVi = useCallback(async () => {
@@ -59,16 +68,16 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
   }, [])
   useEffect(() => { void napPhamVi() }, [napPhamVi])
 
-  // Bù thêm câu NỀN khi danh sách vơi (không xoá list đang hiện).
+  // Bù thêm câu NỀN khi trang vơi (không xoá list đang hiện): đọc lại đúng trang này, câu trang sau đã dồn lên.
   const buThem = useCallback(async () => {
     const my = req.current
     try {
-      const r = await khopHang(khoi, hang, TRANG, 0, cd)
+      const r = await khopHang(khoi, hang, TRANG, trang * TRANG, cd)
       if (my !== req.current) return
       setRows((prev) => { const co = new Set(prev.map((x) => x.ma_cau)); return [...prev, ...r.rows.filter((x) => !co.has(x.ma_cau))] })
       setTong(r.tong)
     } catch { /* nền — bỏ qua */ }
-  }, [khoi, hang, cd])
+  }, [khoi, hang, cd, trang])
 
   async function quyet(c: KhopCau, hd: Parameters<typeof khopQuyet>[1], dangBai?: string | null, lyDo?: string | null) {
     await khopQuyet(c.ma_cau, hd, dangBai, lyDo)
@@ -82,10 +91,14 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
   // ⇒ câu rời trang ngay, nạp bù câu kế tiếp; hàng đã nạp hết ⇒ giữ lại, deSau.xep đặt nó ở cuối.
   async function deSauCau(c: KhopCau) {
     await deSau.ghi('toan', c.ma_cau, 'Bản đồ mới › Duyệt kho')
-    if (tong > rows.length) {
+    if (tong > (trang + 1) * TRANG) {   // còn trang sau ⇒ câu rời trang này (nó đã ở cuối hàng, trang cuối)
       setRows((prev) => { const n = prev.filter((x) => x.ma_cau !== c.ma_cau); if (n.length < 6) void buThem(); return n })
     }
   }
+
+  const soTrang = Math.max(1, Math.ceil(tong / TRANG))
+  // Hàng vơi tới mức trang đang mở không còn câu ⇒ lùi về trang cuối còn câu.
+  useEffect(() => { if (!loading && !rows.length && trang > 0 && trang >= soTrang) setTrang(soTrang - 1) }, [loading, rows.length, trang, soTrang]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const ten = (d: KhopDem | null, h: KhopHang) => (d ? d[h] : 0)
   const chinhXac = dem && dem.kiem_n > 0 ? Math.round((dem.kiem_giu / dem.kiem_n) * 1000) / 10 : null
@@ -103,7 +116,7 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
         </div>
         {chuDeId && (
           <label className="flex cursor-pointer items-center gap-1.5 text-[12px] text-slate-600" title="Chỉ hiện câu thuộc chủ đề đang mở trên bản đồ. Câu chưa có chủ đề luôn hiện.">
-            <input type="checkbox" checked={locCD} onChange={(e) => setLocCD(e.target.checked)} /> Chỉ chủ đề đang xem
+            <input type="checkbox" checked={locCD} onChange={(e) => { setLocCD(e.target.checked); setTrang(0) }} /> Chỉ chủ đề đang xem
           </label>
         )}
         {chinhXac !== null && (
@@ -118,8 +131,9 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
       </div>
       {hienPhamVi && <PhamViPanel khoi={khoi} dich={dich} laAdmin={laAdmin} rows={phamVi} onDoi={napPhamVi} />}
       <p className="border-b border-slate-100 bg-slate-50 px-6 py-1.5 text-[12px] text-slate-500">{KHOP_HANG_MOTA[hang]}</p>
+      {soTrang > 1 && <div className="border-b border-slate-100 bg-white px-6 py-1.5"><PhanTrang trang={trang} soTrang={soTrang} onChon={setTrang} tong={tong} coTrang={TRANG} /></div>}
 
-      <div className="flex-1 overflow-auto px-6 py-4">
+      <div ref={cuon} className="flex-1 overflow-auto px-6 py-4">
         {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
           : err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
           : rows.length === 0 ? (
@@ -134,7 +148,7 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
               {deSau.xep(rows.filter((c) => !nhanXet.dangChoSua(monCau(c), c.ma_cau)), (c) => ['toan', c.ma_cau]).map((c) => <CauCard key={c.ma_cau} c={c} hang={hang} dich={dich} onQuyet={quyet} onXem={onXem}
                 nx={nhanXet.cua(monCau(c), c.ma_cau)} onCanSua={nhanXet.vaNX}
                 deSauAt={deSau.luc('toan', c.ma_cau)} onDeSau={() => deSauCau(c)} />)}
-              {tong > rows.length && <li className="py-2 text-center text-[12px] text-slate-400">… còn {tong - rows.length} câu, xong câu trên sẽ tự nạp thêm</li>}
+              {soTrang > 1 && <li className="flex list-none justify-center pt-3"><PhanTrang trang={trang} soTrang={soTrang} onChon={setTrang} /></li>}
             </ul>
           )}
       </div>

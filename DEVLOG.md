@@ -77432,3 +77432,11 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **DB (mig 202610231416, `--only`):** `fn_mt_ds_de_da_thi(mon)` (đề đã gán + có chấm) · `fn_mt_bang_chuyen_de(de)` → jsonb {cot, hs[o: {cd: pct}], so_co_diem} · `_mt_o_bai_cu` (ý Hình đề cũ ⇒ tính theo BÀI: Σ điểm ý / điểm cả bài, chỉ khi đủ điểm mọi ý). Chuyên đề cũ = ma_dang ô → dai/khtn/hgt/hinh_hoc_ban_do (đo: 0 mã trùng giữa 4 bảng, 999/1035 ô MT từ 25/09 có dạng); ô Hình mô hình ⇒ cột "Hình: <mô hình>". Điểm = diem_thi (MT/KS) của đề, hạng trên cả đề. Đổi sang bản đồ mới = sửa CTE `bd` trong hàm.
 - **Client:** `BangChuyenDeView.tsx` — tab Kết quả học tập › Điểm thi › "Kết quả theo chuyên đề": chọn môn/đề, lọc lớp (chỉ xem), bấm tiêu đề cột để sắp, ô tô màu ≥80 / ≥50 / <50, nhớ chỗ khi rời tab.
 - **Kiểm:** ROLLBACK đề K9 (6 lớp): 14 chuyên đề, 68 HS, 0.5 s; đối chiếu tay Quỳnh Anh T1090301 = 33%, T3090104 = 33% khớp. App: đề 4A1 + K9, lọc 9A1 14 HS, sắp theo cột Hình chạy.
+
+
+### [23/10] Duyệt câu: chọn trang kiểu web (20 câu/trang)
+- **Thùy:** "muốn có danh sách các trang để chọn như web bình thường… mỗi page 20 câu thì 1000 câu có 50 page, chọn qua các page luôn".
+- **Làm:** component chung `src/components/PhanTrang.tsx` — « ‹ 1 … 23 24 25 26 27 … 50 › » + ô "Đến trang" + "câu 481–500 / 1000". Gắn 2 màn:
+  - **Duyệt kho › Duyệt câu** (`DuyetCauTab`): hàng đã tải đủ ⇒ chia trang trên danh sách; "Duyệt tất cả batch" → "Duyệt tất cả trang này"; đổi nhánh/dạng/hàng ⇒ về trang 1; duyệt xong câu thì câu trang sau dồn lên như web.
+  - **Bản đồ mới › Duyệt kho** (`KhopBanDoMoiTab`): mỗi trang đọc thẳng DB (offset = trang × 20; DB xếp câu "Để sau" ở cuối từ mig 202610221621). Nhớ trang đang mở theo khối + chủ đề (đóng/mở lại màn về đúng trang); đổi hàng/chủ đề ⇒ trang 1; hàng vơi hết trang ⇒ lùi về trang cuối còn câu.
+- **Kiểm:** tsc sạch; dev server biên dịch 3 file OK; dựng riêng thanh chọn trang trên trang dev và bấm thử số trang / « / » / gõ số + Enter đều đúng. CHƯA mở 2 màn bằng phiên đăng nhập thật (cổng dev mới chưa đăng nhập, không được tự nhập mật khẩu) ⇒ Thùy xem sau khi deploy.
