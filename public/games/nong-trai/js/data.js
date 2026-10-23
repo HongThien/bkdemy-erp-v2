@@ -42,7 +42,7 @@ for (const k in RUONG) RUONG[k].id = k;
 // Mùa đầu 2 tháng + bonus sản lượng (CEO) — theo Lally 2010: ~66 ngày mới thành thói quen. Sau đó mỗi mùa 1 tháng, bonus chỉ ở sự kiện.
 // bonus là SỐ (cả mùa như nhau) hoặc MẢNG theo từng 30 ngày của mùa. CEO 30/09 lần 5: tháng đầu cao nhất, các tháng sau giảm dần.
 const MUA = [
-  { so: 1, ten: 'Thu Đông', ngay: 60, bonus: [0.6, 0.3] },   // CEO: mùa đầu 2 tháng — tháng 1 +60%, tháng 2 +30%, sau đó hết
+  { so: 1, ten: 'Thu Đông', ngay: 60, bonus: 0 },   // TẠM BỎ bonus (Thùy 23/10). Gốc: [0.6, 0.3] = tháng 1 +60%, tháng 2 +30%. Khôi phục phải đổi CẢ server: _nt_luat().mua0Bonus
   { so: 2, ten: 'Tết',      ngay: 30, bonus: 0 },
   { so: 3, ten: 'Xuân',     ngay: 30, bonus: 0 },
 ];

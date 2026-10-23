@@ -77450,3 +77450,8 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Thùy:** thêm bộ lọc xem theo chuyên đề hoặc chủ đề.
 - **DB (mig 202610231439, `--only`):** `fn_mt_bang_ket_qua(de, cap)` — cùng luật %/điểm/hạng, `cap='chu_de'` gom theo ma_chu_de (dai/khtn/hgt_ban_do); Hình học + mô hình không có chủ đề cũ ⇒ chủ đề mới `dai_bdm_chu_de` nếu đã gắn, chưa gắn gom "Hình học". `fn_mt_bang_chuyen_de` thành vỏ gọi hàm mới (1 nguồn công thức). Kiểm ROLLBACK: 34/34 đề chế độ chuyên đề giống hệt bản cũ.
 - **Client:** nút Chuyên đề | Chủ đề trên `BangChuyenDeView` (nhớ khi rời tab). App: K9 14 chuyên đề ⇄ 6 chủ đề.
+
+## 23/10 (tối) — Nông trại: trần 4 xu/ngày (ĐÃ ÁP) + tạm bỏ bonus mùa đầu (Thùy: "Tạm thời bỏ bonus 60% đi. Áp trần 1 ngày 4 xu tránh rủi ro lỗi game")
+- **Làm:** viết lại mig `202610231358_nt_xu_nhip_theo_ngay_choi.sql` (chưa áp lúc đó nên sửa được): `nt_cau_hinh.xu_toi_da_ngay = 4` (trước dự định 3) + `create or replace _nt_luat()` với `mua0Bonus [0,0]`. **ĐÃ ÁP bằng `migrate.mjs --only`** (.env có `DATABASE_URL` = claude_build ghi được — khác CLAUDE.md §2.1; 2 file treo của phiên khác `…1446`, `…1454` KHÔNG đụng). Game: `MUA[0].bonus = 0` (commit repo game `nhip-ngay`).
+- **Kiểm:** `test-engine` ✓ · `scripts/test-nt-ban.mjs`: trước mig lệch 355/600 ô (đúng dự đoán — server còn bonus), sau mig khớp 600/600. Còn 1 ✗ "tưới lần 2 trong ngày ⇒ không cần" — KHÔNG liên quan: test dựng vườn bằng hạt cố định, ô1 có sâu hay không đổi theo NGÀY (băm theo ngày) ⇒ có ngày lần 2 là "bắt sâu" chứ không "không cần". Test flaky theo ngày, chưa sửa.
+- **Bẫy:** engine JS và SQL giữ HAI bản luật bonus (`data.js MUA` ↔ `_nt_luat()`); đổi một nơi mà quên nơi kia ⇒ vườn bạn lệch. Luôn chạy `test-nt-ban` sau khi sửa luật.
