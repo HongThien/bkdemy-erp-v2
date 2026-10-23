@@ -15,6 +15,7 @@ import { chuanBiLuoiMT, listProblems, gradeMTChiTiet, deleteGrade, type Problem,
 import { dsBuoiChamMT, dsHSChamMT, chamCaBaiMT, luuTongMT, dungDiemTuCauMT, type MTBuoiCham, type MTHSCham } from '../../lib/chamMT'
 import { laMaHinh, MT_DIEM_OPTS } from '../../lib/tailieu'
 import type { MTPhanCaus } from '../../lib/mt'
+import BangChuyenDeView from './BangChuyenDeView'
 
 const MON_CO_KHO = ['Toán', 'KHTN']
 const NHO: { mon: string; lopId: string | null; buoiId: string | null; hsId: string | null } = { mon: 'Toán', lopId: null, buoiId: null, hsId: null }
@@ -37,7 +38,24 @@ const mucDiem = (max: number | null | undefined, cur: number | null | undefined)
 const laKS = (b: MTBuoiCham) => b.loai_de === 'khao_sat_giua_thang'
 const xong = (h: MTHSCham) => h.so_cau > 0 && h.so_cham === h.so_cau && h.so_thieu_diem === 0
 
+// 23/10 (Thùy): lá "Chấm MT - Khảo sát" = 1 lá chung (chỉ khác đề) + dashboard "Kết quả theo chuyên đề" ở ngay trong lá.
+const NHO_TAB: { tab: 'cham' | 'chuyen_de' } = { tab: 'cham' }
 export default function ChamMTScreen() {
+  const [tab, setTab] = useState(NHO_TAB.tab)
+  useEffect(() => { NHO_TAB.tab = tab }, [tab])
+  const nut = (on: boolean) => `h-8 border-b-2 px-3 text-[13px] font-semibold ${on ? 'border-indigo-600 text-indigo-700' : 'border-transparent text-slate-500 hover:text-slate-800'}`
+  return (
+    <div className="flex h-full flex-col">
+      <div className="flex shrink-0 gap-1 border-b border-slate-200 px-4 pt-2">
+        <button onClick={() => setTab('cham')} className={nut(tab === 'cham')}>Chấm điểm</button>
+        <button onClick={() => setTab('chuyen_de')} className={nut(tab === 'chuyen_de')}>Kết quả theo chuyên đề</button>
+      </div>
+      {tab === 'cham' ? <ChamMTBody /> : <div className="min-h-0 flex-1 overflow-auto p-4"><BangChuyenDeView /></div>}
+    </div>
+  )
+}
+
+function ChamMTBody() {
   const [mon, setMon] = useState(NHO.mon)
   const [lops, setLops] = useState<Lop[]>([])
   const [lopId, setLopId] = useState<string | null>(NHO.lopId)
@@ -174,7 +192,7 @@ export default function ChamMTScreen() {
   const thieuDiem = grades.filter((g) => g.diem_dat == null).length
 
   return (
-    <div className="flex h-full gap-3 p-4">
+    <div className="flex min-h-0 flex-1 gap-3 p-4">
       {/* ── CỘT TRÁI: lớp → đề → HS ── */}
       <div className="flex w-64 shrink-0 flex-col gap-2">
         <div className="flex items-center gap-1">

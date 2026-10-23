@@ -77440,3 +77440,8 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
   - **Duyệt kho › Duyệt câu** (`DuyetCauTab`): hàng đã tải đủ ⇒ chia trang trên danh sách; "Duyệt tất cả batch" → "Duyệt tất cả trang này"; đổi nhánh/dạng/hàng ⇒ về trang 1; duyệt xong câu thì câu trang sau dồn lên như web.
   - **Bản đồ mới › Duyệt kho** (`KhopBanDoMoiTab`): mỗi trang đọc thẳng DB (offset = trang × 20; DB xếp câu "Để sau" ở cuối từ mig 202610221621). Nhớ trang đang mở theo khối + chủ đề (đóng/mở lại màn về đúng trang); đổi hàng/chủ đề ⇒ trang 1; hàng vơi hết trang ⇒ lùi về trang cuối còn câu.
 - **Kiểm:** tsc sạch; dev server biên dịch 3 file OK; dựng riêng thanh chọn trang trên trang dev và bấm thử số trang / « / » / gõ số + Enter đều đúng. CHƯA mở 2 màn bằng phiên đăng nhập thật (cổng dev mới chưa đăng nhập, không được tự nhập mật khẩu) ⇒ Thùy xem sau khi deploy.
+
+## 23/10 — Lá "Chấm MT - Khảo sát" gộp dashboard
+- **Thùy:** chấm MT và chấm khảo sát là 1 lá, chỉ khác đề ⇒ đổi tên lá thành "Chấm MT - Khảo sát"; dashboard đặt ngay trong lá.
+- **Làm:** `ChamMTScreen` có 2 tab "Chấm điểm" · "Kết quả theo chuyên đề" (nhớ tab khi rời lá); gỡ tab "Kết quả theo chuyên đề" khỏi Kết quả học tập › Điểm thi (thêm sáng nay, chuyển hẳn sang lá này). Xếp hạng MT / khảo sát vẫn ở Kết quả học tập › Điểm thi.
+- **Kiểm:** app — lá tên mới, chấm 9S1 26 câu, sang tab chuyên đề (đề 4A1, 7 HS), quay lại vẫn 9S1.
