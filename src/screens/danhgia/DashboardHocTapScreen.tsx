@@ -158,9 +158,9 @@ export default function DashboardHocTapScreen() {
                         return (
                           <td key={c.ma} className="border-b border-slate-100 px-1 py-0.5 text-center">
                             {o == null ? <span className="text-slate-300">—</span> : (
-                              <button onClick={(e) => moCua(h, c.ma, c.cha ? `${c.cha} › ${c.ten}` : c.ten, e)} title={`${o.n} câu trong ${soTuan} tuần · bấm xem lịch sử`}
+                              <button onClick={(e) => moCua(h, c.ma, c.cha ? `${c.cha} › ${c.ten}` : c.ten, e)} title={`${o.n} câu trong ${soTuan} tuần${o.d == null ? '' : ` · ${o.d > 0 ? '+' : ''}${o.d} điểm % so với ${o.dk ? 'đầu kỳ' : 'sau lượt đầu (chưa đo trước kỳ)'}`} · bấm xem lịch sử`}
                                 className={`w-full rounded px-1 py-0.5 font-semibold tabular-nums hover:ring-2 hover:ring-indigo-300 ${mauPct(o.p)} ${mo ? 'ring-2 ring-indigo-500' : ''}`}>
-                                {o.p}%
+                                {o.p}%<XuHuong d={o.d} dk={o.dk} />
                               </button>
                             )}
                           </td>
@@ -173,13 +173,20 @@ export default function DashboardHocTapScreen() {
             </div>
             <p className="text-[11px] text-slate-400">
               % = trên tối đa 10 câu gần nhất trong {soTuan} tuần (mỗi câu nặng như nhau; câu có điểm lẻ tính điểm đạt / điểm tối đa). Kênh: ET · BTVN · MT / khảo sát · test bổ trợ / bù / đuổi
-              (không tính luyện bổ trợ, tự luyện, game). {cap === 'nhom' ? 'Nhóm bài' : 'Chuyên đề'} theo bản đồ mới; câu chưa gán dạng bài chưa vào ô. Kênh quan sát song song — khác công thức mastery.
+              (không tính luyện bổ trợ, tự luyện, game). {cap === 'nhom' ? 'Nhóm bài' : 'Chuyên đề'} theo bản đồ mới; câu chưa gán dạng bài chưa vào ô. ▲▼ = % hiện tại so với đầu kỳ (10 câu gần nhất trước cửa sổ); chữ nghiêng mờ = em chưa đo trước kỳ, so với sau lượt đầu. Kênh quan sát song song — khác công thức mastery.
             </p>
           </>
         )}
       {cua.map((c) => <CuaSoO key={c.id} c={c} onDong={() => dong(c.id)} onLen={() => lenTren(c.id)} onDoi={(x, y) => doi(c.id, { x, y })} tiLe={tiLe} />)}
     </div>
   )
+}
+
+// Mũi tên xu hướng trong ô: % hiện tại so với đầu kỳ (mờ + nghiêng khi mốc là lượt đầu trong cửa sổ — em chưa đo trước đó).
+function XuHuong({ d, dk }: { d: number | null; dk: boolean }) {
+  if (d == null) return null
+  const cls = d > 0 ? 'text-emerald-700' : d < 0 ? 'text-rose-700' : 'text-slate-400'
+  return <span className={`ml-1 text-[10.5px] font-bold ${cls} ${dk ? '' : 'italic opacity-60'}`}>{d > 0 ? `▲${d}` : d < 0 ? `▼${-d}` : '='}</span>
 }
 
 // ── Cửa sổ nổi: lịch sử 1 ô ──

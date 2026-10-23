@@ -4,7 +4,8 @@ import { supabase } from './supabase'
 
 export type CapDB = 'chuyen_de' | 'nhom'
 export type CotDB = { ma: string; ten: string; cha: string | null }
-export type ODB = { p: number; n: number }
+// d = % hiện tại − mốc (đầu kỳ; dk=false ⇒ mốc là % sau lượt đầu trong cửa sổ); null = chưa đủ để nói xu hướng
+export type ODB = { p: number; n: number; d: number | null; dk: boolean }
 export type HSDB = { id: string; ten: string; lop_id: string; lop: string; o: Record<string, ODB> }
 export type BangDB = { tu: string; cot: CotDB[]; hs: HSDB[] }
 
