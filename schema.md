@@ -6316,12 +6316,12 @@ SELECT db.id AS ma_dang,
 ```sql
 SELECT q.ma_cau,
     'dai'::text AS kho,
-    COALESCE(gc.dang_bai_id, gg.dang_bai_id, cu.dang_bai_id, mot.db, dx.dang_bai_id) AS dang_bai_id,
+    COALESCE(gc.dang_bai_id, gg.dang_bai_id, cu.dang_bai_id, mot.db, dx.dang_bai_id, dxg.dang_bai_id) AS dang_bai_id,
         CASE
             WHEN gc.ma_cau IS NOT NULL OR gg.ma_cau IS NOT NULL THEN 'gan_cau'::text
             WHEN cu.ma_cum_cu IS NOT NULL THEN 'gan_cum'::text
             WHEN mot.db IS NOT NULL THEN 'doi_ung'::text
-            WHEN dx.ma_cau IS NOT NULL THEN 'de_xuat'::text
+            WHEN dx.ma_cau IS NOT NULL OR dxg.ma_cau IS NOT NULL THEN 'de_xuat'::text
             ELSE NULL::text
         END AS nguon
    FROM dai_cau_hoi q
@@ -6334,19 +6334,22 @@ SELECT q.ma_cau,
           WHERE d.ma_dang_cu = q.dang_chinh
          HAVING count(*) = 1 AND count(d.dich_dang_bai) = 1) mot ON true
      LEFT JOIN dai_bdm_de_xuat dx ON dx.ma_cau = q.ma_cau
-  WHERE COALESCE(gc.dang_bai_id, gg.dang_bai_id, cu.dang_bai_id, mot.db, dx.dang_bai_id) IS NOT NULL
+     LEFT JOIN dai_bdm_de_xuat dxg ON dxg.ma_cau = q.parent_ma_cau
+  WHERE COALESCE(gc.dang_bai_id, gg.dang_bai_id, cu.dang_bai_id, mot.db, dx.dang_bai_id, dxg.dang_bai_id) IS NOT NULL
 UNION ALL
  SELECT h.ma_cau,
     'hgt'::text AS kho,
-    COALESCE(gc.dang_bai_id, dx.dang_bai_id) AS dang_bai_id,
+    COALESCE(gc.dang_bai_id, gg.dang_bai_id, dx.dang_bai_id, dxg.dang_bai_id) AS dang_bai_id,
         CASE
-            WHEN gc.ma_cau IS NOT NULL THEN 'gan_cau'::text
+            WHEN gc.ma_cau IS NOT NULL OR gg.ma_cau IS NOT NULL THEN 'gan_cau'::text
             ELSE 'de_xuat'::text
         END AS nguon
    FROM hgt_cau_hoi h
      LEFT JOIN hgt_bdm_gan_cau gc ON gc.ma_cau = h.ma_cau
+     LEFT JOIN hgt_bdm_gan_cau gg ON gg.ma_cau = h.parent_ma_cau
      LEFT JOIN hgt_bdm_de_xuat dx ON dx.ma_cau = h.ma_cau
-  WHERE COALESCE(gc.dang_bai_id, dx.dang_bai_id) IS NOT NULL;
+     LEFT JOIN hgt_bdm_de_xuat dxg ON dxg.ma_cau = h.parent_ma_cau
+  WHERE COALESCE(gc.dang_bai_id, gg.dang_bai_id, dx.dang_bai_id, dxg.dang_bai_id) IS NOT NULL;
 ```
 
 ### bdm_cau_form_tn
