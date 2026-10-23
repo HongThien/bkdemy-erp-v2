@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-438 bảng · 25 view · 0 enum · 219 trigger · 1235 function
+438 bảng · 32 view · 0 enum · 219 trigger · 1240 function
 
 ## _app_secrets
 
@@ -6250,6 +6250,387 @@ END |  |  |
 
 > BỀ MẶT trợ lý AI đọc. Đổi cột ở đây = ĐỔI HỢP ĐỒNG ⇒ phải sửa prompt kèm.
 
+### bdm_ban_do
+
+| cột | kiểu |
+|---|---|
+| ma_dang | text |
+| khoi | text |
+| ma_chu_de | text |
+| ten_chu_de | text |
+| ma_chuyen_de | text |
+| ten_chuyen_de | text |
+| ten_dang | text |
+| muc_do | smallint |
+| created_at | timestamp with time zone |
+| bac_toi_thieu | text |
+| mo_ta_ngan | text |
+| xoa_at | timestamp with time zone |
+| gop_vao | text |
+| ma_nhom | text |
+| ten_nhom | text |
+| thu_tu_chu_de | integer |
+| thu_tu_chuyen_de | integer |
+| thu_tu_nhom | integer |
+| thu_tu_dang | integer |
+| nhanh_bdm | text |
+
+```sql
+SELECT db.id AS ma_dang,
+    cd.khoi,
+    cd.id AS ma_chu_de,
+    cd.ten AS ten_chu_de,
+    ch.id AS ma_chuyen_de,
+    ch.ten AS ten_chuyen_de,
+    db.ten AS ten_dang,
+    NULL::smallint AS muc_do,
+    db.created_at,
+    NULL::text AS bac_toi_thieu,
+    db.mo_ta AS mo_ta_ngan,
+    NULL::timestamp with time zone AS xoa_at,
+    NULL::text AS gop_vao,
+    n.id AS ma_nhom,
+    n.ten AS ten_nhom,
+    cd.thu_tu AS thu_tu_chu_de,
+    o.thu_tu AS thu_tu_chuyen_de,
+    n.thu_tu AS thu_tu_nhom,
+    db.thu_tu AS thu_tu_dang,
+    cd.nhanh AS nhanh_bdm
+   FROM dai_bdm_dang_bai db
+     JOIN dai_bdm_nhom n ON n.id = db.nhom_id
+     JOIN dai_bdm_chu_de cd ON cd.id = n.chu_de_id
+     LEFT JOIN dai_bdm_chuyen_de ch ON ch.id = n.chuyen_de_id
+     LEFT JOIN dai_bdm_o o ON o.chu_de_id = n.chu_de_id AND o.chuyen_de_id = n.chuyen_de_id
+  WHERE cd.nhanh = ANY (ARRAY['toan'::text, 'hgt'::text]);
+```
+
+### bdm_cau_dang
+
+| cột | kiểu |
+|---|---|
+| ma_cau | text |
+| kho | text |
+| dang_bai_id | text |
+| nguon | text |
+
+```sql
+WITH mot AS (
+         SELECT d.ma_dang_cu,
+            min(d.dich_dang_bai) AS db
+           FROM dai_bdm_doi_ung d
+          GROUP BY d.ma_dang_cu
+         HAVING count(*) = 1 AND count(d.dich_dang_bai) = 1
+        )
+ SELECT q.ma_cau,
+    'dai'::text AS kho,
+    COALESCE(gc.dang_bai_id, gg.dang_bai_id, cu.dang_bai_id, mot.db, dx.dang_bai_id) AS dang_bai_id,
+        CASE
+            WHEN gc.ma_cau IS NOT NULL OR gg.ma_cau IS NOT NULL THEN 'gan_cau'::text
+            WHEN cu.ma_cum_cu IS NOT NULL THEN 'gan_cum'::text
+            WHEN mot.db IS NOT NULL THEN 'doi_ung'::text
+            WHEN dx.ma_cau IS NOT NULL THEN 'de_xuat'::text
+            ELSE NULL::text
+        END AS nguon
+   FROM dai_cau_hoi q
+     LEFT JOIN dai_cau_hoi g ON g.ma_cau = q.parent_ma_cau
+     LEFT JOIN dai_bdm_gan_cau gc ON gc.ma_cau = q.ma_cau
+     LEFT JOIN dai_bdm_gan_cau gg ON gg.ma_cau = q.parent_ma_cau
+     LEFT JOIN dai_bdm_doi_ung_cum cu ON cu.ma_cum_cu = COALESCE(q.ma_cum, g.ma_cum)
+     LEFT JOIN mot ON mot.ma_dang_cu = q.dang_chinh
+     LEFT JOIN dai_bdm_de_xuat dx ON dx.ma_cau = q.ma_cau
+  WHERE COALESCE(gc.dang_bai_id, gg.dang_bai_id, cu.dang_bai_id, mot.db, dx.dang_bai_id) IS NOT NULL
+UNION ALL
+ SELECT h.ma_cau,
+    'hgt'::text AS kho,
+    COALESCE(gc.dang_bai_id, dx.dang_bai_id) AS dang_bai_id,
+        CASE
+            WHEN gc.ma_cau IS NOT NULL THEN 'gan_cau'::text
+            ELSE 'de_xuat'::text
+        END AS nguon
+   FROM hgt_cau_hoi h
+     LEFT JOIN hgt_bdm_gan_cau gc ON gc.ma_cau = h.ma_cau
+     LEFT JOIN hgt_bdm_de_xuat dx ON dx.ma_cau = h.ma_cau
+  WHERE COALESCE(gc.dang_bai_id, dx.dang_bai_id) IS NOT NULL;
+```
+
+### bdm_cau_form_tn
+
+| cột | kiểu |
+|---|---|
+| id | uuid |
+| ma_cau | text |
+| lua_chon | jsonb |
+| dap_an | text |
+| key_gia_tri | text |
+| nguon | text |
+| ai_model | text |
+| sinh_at | timestamp with time zone |
+| da_duyet | boolean |
+| duyet_boi | uuid |
+| duyet_at | timestamp with time zone |
+| sua_truoc_duyet | boolean |
+| tu_choi_ly_do | text |
+| tu_choi_boi | uuid |
+| xoa_at | timestamp with time zone |
+| updated_at | timestamp with time zone |
+
+```sql
+SELECT dai_cau_form_tn.id,
+    dai_cau_form_tn.ma_cau,
+    dai_cau_form_tn.lua_chon,
+    dai_cau_form_tn.dap_an,
+    dai_cau_form_tn.key_gia_tri,
+    dai_cau_form_tn.nguon,
+    dai_cau_form_tn.ai_model,
+    dai_cau_form_tn.sinh_at,
+    dai_cau_form_tn.da_duyet,
+    dai_cau_form_tn.duyet_boi,
+    dai_cau_form_tn.duyet_at,
+    dai_cau_form_tn.sua_truoc_duyet,
+    dai_cau_form_tn.tu_choi_ly_do,
+    dai_cau_form_tn.tu_choi_boi,
+    dai_cau_form_tn.xoa_at,
+    dai_cau_form_tn.updated_at
+   FROM dai_cau_form_tn
+UNION ALL
+ SELECT hgt_cau_form_tn.id,
+    hgt_cau_form_tn.ma_cau,
+    hgt_cau_form_tn.lua_chon,
+    hgt_cau_form_tn.dap_an,
+    hgt_cau_form_tn.key_gia_tri,
+    hgt_cau_form_tn.nguon,
+    hgt_cau_form_tn.ai_model,
+    hgt_cau_form_tn.sinh_at,
+    hgt_cau_form_tn.da_duyet,
+    hgt_cau_form_tn.duyet_boi,
+    hgt_cau_form_tn.duyet_at,
+    hgt_cau_form_tn.sua_truoc_duyet,
+    hgt_cau_form_tn.tu_choi_ly_do,
+    hgt_cau_form_tn.tu_choi_boi,
+    hgt_cau_form_tn.xoa_at,
+    hgt_cau_form_tn.updated_at
+   FROM hgt_cau_form_tn;
+```
+
+### bdm_cau_hoi
+
+| cột | kiểu |
+|---|---|
+| ma_cau | text |
+| dang_chinh | text |
+| loai_cau | text |
+| noi_dung | text |
+| lua_chon | jsonb |
+| menh_de | jsonb |
+| dap_an | text |
+| loi_giai | text |
+| anh_de | text |
+| anh_dap_an | text |
+| nguon | text |
+| nguon_giai | text |
+| parent_ma_cau | text |
+| clone_method | text |
+| created_at | timestamp with time zone |
+| xoa_at | timestamp with time zone |
+| ma_cum | text |
+| da_duyet | boolean |
+| duyet_boi | uuid |
+| duyet_at | timestamp with time zone |
+| giai_method | text |
+| loi_giai_ai | text |
+| dap_an_ai | text |
+| ai_model | text |
+| ai_de_xuat_at | timestamp with time zone |
+| kiem_may | text |
+| kiem_may_at | timestamp with time zone |
+| kiem_may_boi | text |
+| kiem_may_ghi | text |
+| duyet_nguon | text |
+| dang_ai_de_xuat | text |
+| kiem_may_lo | uuid |
+| kho_chuan | boolean |
+| ten_de_goc | text |
+| kho_goc | text |
+
+```sql
+SELECT q.ma_cau,
+    d.dang_bai_id AS dang_chinh,
+    q.loai_cau,
+    q.noi_dung,
+    q.lua_chon,
+    q.menh_de,
+    q.dap_an,
+    q.loi_giai,
+    q.anh_de,
+    q.anh_dap_an,
+    q.nguon,
+    q.nguon_giai,
+    q.parent_ma_cau,
+    q.clone_method,
+    q.created_at,
+    q.xoa_at,
+    q.ma_cum,
+    q.da_duyet,
+    q.duyet_boi,
+    q.duyet_at,
+    q.giai_method,
+    q.loi_giai_ai,
+    q.dap_an_ai,
+    q.ai_model,
+    q.ai_de_xuat_at,
+    q.kiem_may,
+    q.kiem_may_at,
+    q.kiem_may_boi,
+    q.kiem_may_ghi,
+    q.duyet_nguon,
+    q.dang_ai_de_xuat,
+    q.kiem_may_lo,
+    q.kho_chuan,
+    q.ten_de_goc,
+    'dai'::text AS kho_goc
+   FROM bdm_cau_dang d
+     JOIN dai_cau_hoi q ON q.ma_cau = d.ma_cau
+  WHERE d.kho = 'dai'::text
+UNION ALL
+ SELECT q.ma_cau,
+    d.dang_bai_id AS dang_chinh,
+    q.loai_cau,
+    q.noi_dung,
+    q.lua_chon,
+    q.menh_de,
+    q.dap_an,
+    q.loi_giai,
+    q.anh_de,
+    q.anh_dap_an,
+    q.nguon,
+    q.nguon_giai,
+    q.parent_ma_cau,
+    q.clone_method,
+    q.created_at,
+    q.xoa_at,
+    q.ma_cum,
+    q.da_duyet,
+    q.duyet_boi,
+    q.duyet_at,
+    q.giai_method,
+    q.loi_giai_ai,
+    q.dap_an_ai,
+    q.ai_model,
+    q.ai_de_xuat_at,
+    q.kiem_may,
+    q.kiem_may_at,
+    q.kiem_may_boi,
+    q.kiem_may_ghi,
+    q.duyet_nguon,
+    q.dang_ai_de_xuat,
+    q.kiem_may_lo,
+    q.kho_chuan,
+    q.ten_de_goc,
+    'hgt'::text AS kho_goc
+   FROM bdm_cau_dang d
+     JOIN hgt_cau_hoi q ON q.ma_cau = d.ma_cau
+  WHERE d.kho = 'hgt'::text;
+```
+
+### bdm_cau_menh_de
+
+| cột | kiểu |
+|---|---|
+| id | uuid |
+| ma_cau_cha | text |
+| thu_tu | integer |
+| dang_chinh | text |
+| dang_ai_de_xuat | text |
+| noi_dung | text |
+| dung | boolean |
+| loi_giai | text |
+| da_duyet | boolean |
+| duyet_boi | uuid |
+| duyet_at | timestamp with time zone |
+| duyet_nguon | text |
+| kiem_may | text |
+| kiem_may_at | timestamp with time zone |
+| created_at | timestamp with time zone |
+| xoa_at | timestamp with time zone |
+
+```sql
+SELECT dai_cau_menh_de.id,
+    dai_cau_menh_de.ma_cau_cha,
+    dai_cau_menh_de.thu_tu,
+    dai_cau_menh_de.dang_chinh,
+    dai_cau_menh_de.dang_ai_de_xuat,
+    dai_cau_menh_de.noi_dung,
+    dai_cau_menh_de.dung,
+    dai_cau_menh_de.loi_giai,
+    dai_cau_menh_de.da_duyet,
+    dai_cau_menh_de.duyet_boi,
+    dai_cau_menh_de.duyet_at,
+    dai_cau_menh_de.duyet_nguon,
+    dai_cau_menh_de.kiem_may,
+    dai_cau_menh_de.kiem_may_at,
+    dai_cau_menh_de.created_at,
+    dai_cau_menh_de.xoa_at
+   FROM dai_cau_menh_de
+UNION ALL
+ SELECT hgt_cau_menh_de.id,
+    hgt_cau_menh_de.ma_cau_cha,
+    hgt_cau_menh_de.thu_tu,
+    hgt_cau_menh_de.dang_chinh,
+    hgt_cau_menh_de.dang_ai_de_xuat,
+    hgt_cau_menh_de.noi_dung,
+    hgt_cau_menh_de.dung,
+    hgt_cau_menh_de.loi_giai,
+    hgt_cau_menh_de.da_duyet,
+    hgt_cau_menh_de.duyet_boi,
+    hgt_cau_menh_de.duyet_at,
+    hgt_cau_menh_de.duyet_nguon,
+    hgt_cau_menh_de.kiem_may,
+    hgt_cau_menh_de.kiem_may_at,
+    hgt_cau_menh_de.created_at,
+    hgt_cau_menh_de.xoa_at
+   FROM hgt_cau_menh_de;
+```
+
+### bdm_cum_bai
+
+| cột | kiểu |
+|---|---|
+| ma_cum | text |
+| ma_dang | text |
+| ten | text |
+| thu_tu | smallint |
+| ghi_chu | text |
+| created_at | timestamp with time zone |
+
+```sql
+SELECT ma_cum,
+    ma_dang,
+    ten,
+    thu_tu,
+    ghi_chu,
+    created_at
+   FROM dai_cum_bai;
+```
+
+### bdm_dang_ly_thuyet
+
+| cột | kiểu |
+|---|---|
+| ma_dang | text |
+| file_url | text |
+| ten_file | text |
+| cap_nhat_at | timestamp with time zone |
+| noi_dung | text |
+
+```sql
+SELECT id AS ma_dang,
+    ly_thuyet_file_url AS file_url,
+    ly_thuyet_ten_file AS ten_file,
+    updated_at AS cap_nhat_at,
+    ly_thuyet AS noi_dung
+   FROM dai_bdm_dang_bai db;
+```
+
 ### hinh_hoc_ban_do
 
 | cột | kiểu |
@@ -8142,6 +8523,9 @@ WITH luot AS (
 - `_chuoi_cua(p_hs uuid)` → jsonb
 - `_dai_cau_lop_truoc_sua()` → trigger
 - `_dang_da_hoc_ok(p_hs uuid, p_mon text, p_ma_dang text)` → boolean
+- `_dbht_cau(p_hs uuid[], p_tu date, p_mon text)` → TABLE(hoc_sinh_id uuid, ngay date, t timestamp with time zone, kenh text, luot text, thu_tu integer, ma_cau text, gia_tri numeric, dang_bai_id text, nhom_id text, chuyen_de_id text)
+- `_dbht_kenh_tt(p_kenh text)` → integer
+- `_dbht_tu(p_so_tuan integer)` → date
 - `_de_thi_da_giao(p_de uuid)` → boolean
 - `_de_thi_dang_moi(p_kho text, p_ma_cau text)` → TABLE(he text, loai text, id text, ten text, chu_de_id text, chu_de text)
 - `_de_thi_hop_le_4o(p text)` → boolean
@@ -8677,6 +9061,8 @@ WITH luot AS (
 - `fn_dai_ma_kho_cha(p_ma text, p_tang text)` → text
 - `fn_dai_sinh_ma_chuyen_de(p_ma_chu_de text, p_stt smallint DEFAULT NULL::smallint)` → text
 - `fn_dai_sinh_ma_dang(p_ma_chuyen_de text, p_stt smallint DEFAULT NULL::smallint)` → text
+- `fn_dbht_bang(p_mon text, p_khoi text, p_so_tuan integer DEFAULT 4, p_cap text DEFAULT 'chuyen_de'::text)` → jsonb
+- `fn_dbht_o_lich_su(p_hs uuid, p_mon text, p_cap text, p_ma text, p_so_tuan integer DEFAULT 4)` → jsonb
 - `fn_de_test_dat_dang_dung(p_tai_lieu_id uuid)` → void
 - `fn_de_test_xoa(p_tai_lieu_id uuid)` → void
 - `fn_de_thi_cau(p_de uuid)` → TABLE(stt integer, phan_id uuid, phan_thu_tu integer, phan_tieu_de text, ma_cau text, kho text, loai_cau text, dang_chinh text, dap_an text, lua_chon jsonb, menh_de jsonb, da_duyet boolean, xoa boolean, co_form boolean, form_duyet boolean, diem numeric)
@@ -9247,8 +9633,8 @@ WITH luot AS (
 - `hs_sotay_tim_ct(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_khoi text DEFAULT NULL::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_sotay_tim_lt(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_vao_ca_online(p_buoi uuid)` → jsonb
-- `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
 - `hs_xep_hang_tu_luyen(p_khoi text, p_mon text)` → jsonb
+- `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
 - `htd_co_mo(p_mon text)` → boolean
 - `htd_lo_trinh(p_mon text)` → jsonb
 - `htd_ly_thuyet(p_mon text, p_ma_dang text)` → jsonb
@@ -9318,8 +9704,8 @@ WITH luot AS (
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 

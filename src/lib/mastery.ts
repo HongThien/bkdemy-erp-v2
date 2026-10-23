@@ -56,6 +56,22 @@ export async function dangInfoCuaMon(mon: string, maList: string[]): Promise<Map
       })
     }
   }
+  // BẢN ĐỒ MỚI (mastery K6–12 khi bật công tắc — PLAN-mastery-ban-do-moi.md): ô mang mã dạng bài 'NDB…' ⇒ tra view bdm_ban_do
+  // (cùng khuôn cột bản đồ cũ, mig 202610231522). Thiếu bước này thì ô NDB bị BỎ ÂM THẦM ở getMasteryHS / loadMasteryCells.
+  const bdm = maList.filter((m) => m.startsWith('NDB') && !out.has(m))
+  if (bdm.length) {
+    const { data, error } = await supabase.from('bdm_ban_do').select('ma_dang, ten_dang, ma_chuyen_de, ten_chuyen_de, nhanh_bdm').in('ma_dang', bdm).limit(LIMIT)
+    if (error) throw error
+    for (const r of (data ?? []) as { ma_dang: string; ten_dang: string; ma_chuyen_de: string | null; ten_chuyen_de: string | null; nhanh_bdm: string }[]) {
+      out.set(r.ma_dang, {
+        ten_dang: r.ten_dang, ma_chuyen_de: r.ma_chuyen_de, ten_chuyen_de: r.ten_chuyen_de ?? '',
+        muc_do: null, mucDoBC: null,   // bản đồ mới chưa có độ khó
+        nhanh: r.nhanh_bdm === 'hgt' ? 'hinh_gt' : null,
+        nhomBC: r.nhanh_bdm === 'hgt' ? 'hinh' : 'dai',
+        thangDo3: false,
+      })
+    }
+  }
   return out
 }
 
