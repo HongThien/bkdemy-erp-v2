@@ -6,6 +6,9 @@
 //     · dang: câu thường (dang_bai_id null = không xếp được, ly_do mở đầu bằng nhãn KHÔNG THUỘC CHỦ ĐỀ / THIẾU DẠNG / …)
 //     · dung_sai: câu Đ/S của khối chưa ở kho Đ/S ⇒ đề xuất vào kho Đ/S của chủ đề vùng hgt (luật 18/10: Đ/S không gán dạng)
 //   node scripts/bdm-b3-hgt-xem.mjs --hang <khoi> <ra.html>  — trang cho HÀNG CHỜ đã nằm trong DB (hgt_bdm_de_xuat + cau_thieu_dang), không ghi file đề xuất
+//   node scripts/bdm-b3-hgt-xem.mjs --hang <khoi> <ra.html> --kho dai [--luot <ds.json>] [--ghi-chu <file.html>]
+//     — cùng trang cho hàng chờ ĐẠI (dai_bdm_de_xuat + cau_thieu_dang, mọi chủ đề nhánh Toán của khối) (23/10)
+//     --luot: file {cau:[{ma_cau, luot}]} ⇒ thẻ câu có nhãn "HS đã làm N lượt" (ưu tiên duyệt)
 //   <thu-muc>/ghi-chu.html (nếu có) — đoạn ghi chú chèn đầu trang (kết quả soát mù, điểm cần CEO quyết)
 //   <ra.html> — đề + hình + đáp án + lời giải + dạng bài đề xuất, nhóm theo mức chắc › dạng bài
 import pg from 'pg'
@@ -17,6 +20,14 @@ const [thuMuc, khoi, ra] = process.argv.slice(2)
 if (!thuMuc || !khoi || !ra) { console.error('Dùng: node scripts/bdm-b3-hgt-xem.mjs <thu-muc> <khoi> <ra.html>'); process.exit(2) }
 
 const HANG = thuMuc === '--hang'
+const opt = (k) => { const i = process.argv.indexOf(k); return i >= 0 ? process.argv[i + 1] : null }
+const KHO = opt('--kho') || 'hgt'   // 'dai' chỉ dùng với --hang
+if (KHO === 'dai' && !HANG) throw new Error('--kho dai chỉ dùng với --hang')
+const T = KHO === 'dai'
+  ? { cau: 'dai_cau_hoi', bd: 'dai_ban_do', gan: 'dai_bdm_gan_cau', dx: 'dai_bdm_de_xuat', td: 'dai_bdm_cau_thieu_dang', nhanh: 'toan', ten: 'Đại số' }
+  : { cau: 'hgt_cau_hoi', bd: 'hgt_ban_do', gan: 'hgt_bdm_gan_cau', dx: 'hgt_bdm_de_xuat', td: 'hgt_bdm_cau_thieu_dang', nhanh: 'hgt', ten: 'Hình giải tích' }
+const LUOT = opt('--luot') ? Object.fromEntries(JSON.parse(fs.readFileSync(opt('--luot'), 'utf8')).cau.map((x) => [x.ma_cau, x.luot])) : {}
+const GHI_CHU = opt('--ghi-chu') ? fs.readFileSync(opt('--ghi-chu'), 'utf8') : (!HANG && fs.existsSync(path.join(thuMuc, 'ghi-chu.html')) ? fs.readFileSync(path.join(thuMuc, 'ghi-chu.html'), 'utf8') : '')
 const kq = []
 if (!HANG) for (const f of fs.readdirSync(thuMuc).filter((x) => /^lo-\d+\.json$/.test(x)).sort()) {
   const lo = JSON.parse(fs.readFileSync(path.join(thuMuc, f), 'utf8'))
@@ -32,28 +43,31 @@ const c = new pg.Client({ connectionString: process.env.DATABASE_URL_RO || proce
 await c.connect()
 await c.query('begin read only')
 const q = async (s, p) => (await c.query(s, p)).rows
-const cd = await q(`select id, ten from dai_bdm_chu_de where khoi = $1 and nhanh = 'hgt'`, [khoi])
-if (cd.length !== 1) throw new Error(`khối ${khoi} có ${cd.length} chủ đề vùng hgt`)
+// chủ đề CÓ dạng bài của nhánh (K9 hgt có thêm chủ đề rỗng 'Hình học không gian'); Đại: nhiều chủ đề
+const cd = await q(`select cd.id, cd.ten from dai_bdm_chu_de cd where cd.khoi = $1 and cd.nhanh = $2
+   and exists (select 1 from dai_bdm_nhom n join dai_bdm_dang_bai d on d.nhom_id = n.id where n.chu_de_id = cd.id) order by cd.thu_tu`, [khoi, T.nhanh])
+if (!cd.length || (KHO === 'hgt' && cd.length !== 1)) throw new Error(`khối ${khoi} có ${cd.length} chủ đề nhánh ${T.nhanh} có dạng bài`)
 const dich = await q(`
-  select d.id, d.ten, n.ten nhom, cdx.ten chuyen_de
+  select d.id, d.ten, n.ten nhom, cdx.ten chuyen_de, c2.ten chu_de
     from dai_bdm_dang_bai d
-    join dai_bdm_nhom n on n.id = d.nhom_id and n.chu_de_id = $1
+    join dai_bdm_nhom n on n.id = d.nhom_id and n.chu_de_id = any($1)
+    join dai_bdm_chu_de c2 on c2.id = n.chu_de_id
     join dai_bdm_chuyen_de cdx on cdx.id = n.chuyen_de_id
     left join dai_bdm_o o on o.chu_de_id = n.chu_de_id and o.chuyen_de_id = n.chuyen_de_id
-   order by o.thu_tu, n.thu_tu, d.thu_tu`, [cd[0].id])
+   order by c2.thu_tu, o.thu_tu, n.thu_tu, d.thu_tu`, [cd.map((x) => x.id)])
 const hopLe = new Set(dich.map((d) => d.id))
 const sai = kq.filter((r) => r.dang_bai_id && !hopLe.has(r.dang_bai_id))
 if (sai.length) throw new Error('mã dạng bài lạ: ' + sai.slice(0, 5).map((r) => r.ma_cau + '→' + r.dang_bai_id).join(', '))
 if (HANG) for (const r of await q(`
-  select x.ma_cau, x.dang_bai_id, x.chac, x.ly_do from hgt_bdm_de_xuat x join hgt_cau_hoi h on h.ma_cau = x.ma_cau and h.xoa_at is null
-    join hgt_ban_do b on b.ma_dang = h.dang_chinh where b.khoi = $1
-     and not exists (select 1 from hgt_bdm_gan_cau g where g.ma_cau = x.ma_cau)
+  select x.ma_cau, x.dang_bai_id, x.chac, x.ly_do from ${T.dx} x join ${T.cau} h on h.ma_cau = x.ma_cau and h.xoa_at is null
+    join ${T.bd} b on b.ma_dang = h.dang_chinh where b.khoi = $1
+     and not exists (select 1 from ${T.gan} g where g.ma_cau = x.ma_cau)
   union all
-  select t.ma_cau, null, null, t.ly_do from hgt_bdm_cau_thieu_dang t join hgt_cau_hoi h on h.ma_cau = t.ma_cau and h.xoa_at is null
-    join hgt_ban_do b on b.ma_dang = h.dang_chinh where b.khoi = $1
-     and not exists (select 1 from hgt_bdm_gan_cau g where g.ma_cau = t.ma_cau)
+  select t.ma_cau, null, null, t.ly_do from ${T.td} t join ${T.cau} h on h.ma_cau = t.ma_cau and h.xoa_at is null
+    join ${T.bd} b on b.ma_dang = h.dang_chinh where b.khoi = $1
+     and not exists (select 1 from ${T.gan} g where g.ma_cau = t.ma_cau)
    order by 1`, [khoi])) kq.push({ ma_cau: r.ma_cau, dang_bai_id: r.dang_bai_id, chac: r.dang_bai_id ? r.chac : null, ly_do: r.ly_do || '' })
-const ds = await q(`
+const ds = KHO === 'dai' ? [] : await q(`
   select h.ma_cau, h.noi_dung from hgt_cau_hoi h join hgt_ban_do b on b.ma_dang = h.dang_chinh
    where b.khoi = $1 and h.xoa_at is null and h.loai_cau = 'dung_sai'
      and not exists (select 1 from hgt_bdm_kho_ds k where k.ma_cau = h.ma_cau)
@@ -61,7 +75,7 @@ const ds = await q(`
 const ma = [...kq.map((r) => r.ma_cau), ...ds.map((r) => r.ma_cau)]
 const cau = new Map((await q(`
   select ma_cau, loai_cau, noi_dung, lua_chon, menh_de, dap_an, loi_giai, anh_de, anh_dap_an, kho_chuan, ten_de_goc
-    from hgt_cau_hoi where ma_cau = any($1)`, [ma])).map((r) => [r.ma_cau, r]))
+    from ${T.cau} where ma_cau = any($1)`, [ma])).map((r) => [r.ma_cau, r]))
 await c.query('rollback'); await c.end()
 
 // Đ/S: chủ đề vùng hgt của khối là đích duy nhất; câu nhắc tới phương trình đường/conic ⇒ "vua" (có thể thuộc chủ đề khác)
@@ -71,18 +85,24 @@ const dungSai = ds.map((r) => ngoai.test(r.noi_dung)
   : { ma_cau: r.ma_cau, chu_de_id: cd[0].id, chac: 'cao', ly_do: 'Đúng/Sai về ' + cd[0].ten + ' ⇒ kho Đ/S cấp chủ đề (luật 18/10)' })
 if (!HANG) fs.writeFileSync(path.join(thuMuc, 'de-xuat.json'), JSON.stringify({ khoi, chu_de: cd[0], tao_luc: new Date().toISOString(), dang: kq, dung_sai: dungSai }, null, 1))
 
-const nhan = (r) => (r.dang_bai_id ? r.chac : (r.ly_do.match(/^(KHÔNG THUỘC CHỦ ĐỀ|THIẾU DẠNG|THIẾU HÌNH|ĐỀ LỖI)/) || [, 'KHÁC'])[1])
+// nhãn câu không xếp được: brief HGT dùng nhãn cố định; brief Đại viết tự do ("Bản đồ thiếu dạng…", "thuộc HGT: …") ⇒ đọc theo nghĩa
+const nhan = (r) => {
+  if (r.dang_bai_id) return r.chac
+  const l = r.ly_do.toLowerCase()
+  return /thiếu dạng/.test(l) ? 'THIẾU DẠNG' : /^(thuộc |không thuộc)|ngoài (phạm vi|chủ đề)/.test(l) ? 'KHÔNG THUỘC CHỦ ĐỀ'
+    : /thiếu hình/.test(l) ? 'THIẾU HÌNH' : /đề lỗi|không phải câu hỏi/.test(l) ? 'ĐỀ LỖI' : 'KHÁC'
+}
 const dem = {}
 for (const r of kq) dem[nhan(r)] = (dem[nhan(r)] || 0) + 1
 const data = {
-  khoi, chu_de: cd[0], dich, dem, dsDem: { cao: dungSai.filter((x) => x.chac === 'cao').length, vua: dungSai.filter((x) => x.chac === 'vua').length },
+  khoi, chu_de: KHO === 'dai' ? { id: cd.map((x) => x.id).join(', '), ten: cd.map((x) => x.ten).join(' · ') } : cd[0], dich, dem, dsDem: { cao: dungSai.filter((x) => x.chac === 'cao').length, vua: dungSai.filter((x) => x.chac === 'vua').length },
   kq: kq.map((r) => ({ ...r, n: nhan(r) })), ds: dungSai,
-  cau: Object.fromEntries(ma.map((m) => { const x = cau.get(m); return [m, { l: x.loai_cau, d: x.noi_dung, lc: x.lua_chon, md: x.menh_de, da: x.dap_an, lg: x.loi_giai, a: x.anh_de, ad: x.anh_dap_an, kc: x.kho_chuan, tg: x.ten_de_goc }] })),
+  cau: Object.fromEntries(ma.map((m) => { const x = cau.get(m); return [m, { l: x.loai_cau, d: x.noi_dung, lc: x.lua_chon, md: x.menh_de, da: x.dap_an, lg: x.loi_giai, a: x.anh_de, ad: x.anh_dap_an, kc: x.kho_chuan, tg: x.ten_de_goc, lu: LUOT[m] }] })),
 }
 const json = JSON.stringify(data).replace(/</g, '\\u003c')
 fs.mkdirSync(path.dirname(ra), { recursive: true })
 fs.writeFileSync(ra, `<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Xếp câu HGT K${khoi}</title>
+<title>Xếp câu ${KHO === 'dai' ? 'Đại' : 'HGT'} K${khoi}</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
@@ -107,9 +127,9 @@ img.h{max-width:min(100%,420px);display:block;margin:8px 0;border:1px solid var(
 details.lg{margin-top:6px;font-size:14px}details.lg summary{cursor:pointer;color:var(--acc);font-size:13px}.lgt{white-space:pre-wrap;overflow-x:auto;padding:6px 0}
 .md li{margin:2px 0}.note{background:#fffbe8;border:1px solid #f0e2a8;border-radius:8px;padding:8px 12px;font-size:13px;margin:10px 0}
 </style></head><body>
-<header><h1>Xếp câu Hình giải tích K${khoi} vào bản đồ mới — ${HANG ? 'HÀNG CHỜ DUYỆT (đề xuất + thiếu dạng đang trong DB)' : 'ĐỀ XUẤT (chưa ghi)'}</h1>
+<header><h1>Xếp câu ${T.ten} K${khoi} vào bản đồ mới — ${HANG ? 'HÀNG CHỜ DUYỆT (đề xuất + thiếu dạng đang trong DB)' : 'ĐỀ XUẤT (chưa ghi)'}</h1>
 <div class="sub" id="sub"></div><nav id="nav"></nav><input type="search" id="tim" placeholder="Tìm mã câu / chữ trong đề…"></header>
-<main id="m">${!HANG && fs.existsSync(path.join(thuMuc, 'ghi-chu.html')) ? fs.readFileSync(path.join(thuMuc, 'ghi-chu.html'), 'utf8') : ''}<div id="m2"></div></main>
+<main id="m">${GHI_CHU}<div id="m2"></div></main>
 <script>
 const D=${json};
 const esc=s=>String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
@@ -121,7 +141,7 @@ document.getElementById('sub').innerHTML='Chủ đề <b>'+esc(D.chu_de.ten)+'</
 function nav(){document.getElementById('nav').innerHTML=TABS.map(([k,t])=>{const n=k==='ds'?D.ds.length:k==='trong'?nTrong:(D.dem[k]||0);return '<button data-k="'+k+'" class="'+(k===tab?'on':'')+'">'+t+' ('+n+')</button>'}).join('')}
 document.getElementById('nav').onclick=e=>{const k=e.target.dataset.k;if(k){tab=k;nav();ve()}};
 document.getElementById('tim').oninput=e=>{tim=e.target.value.trim().toLowerCase();ve()};
-function the(ma,badge,lydo){const x=D.cau[ma];let h='<div class="c"><div class="top"><b style="color:var(--ink)">'+ma+'</b><span>'+esc(x.l)+'</span>'+(x.kc?'<span>kho chuẩn</span>':'')+(x.tg?'<span>· '+esc(x.tg)+'</span>':'')+badge+'</div>';
+function the(ma,badge,lydo){const x=D.cau[ma];let h='<div class="c"><div class="top"><b style="color:var(--ink)">'+ma+'</b>'+(x.lu?'<span class="b vua">HS đã làm '+x.lu+' lượt</span>':'')+'<span>'+esc(x.l)+'</span>'+(x.kc?'<span>kho chuẩn</span>':'')+(x.tg?'<span>· '+esc(x.tg)+'</span>':'')+badge+'</div>';
  h+='<div class="de">'+esc(x.d)+'</div>';if(x.a)h+='<img class="h" loading="lazy" src="'+esc(x.a)+'">';
  if(Array.isArray(x.lc)&&x.lc.length)h+='<ul class="lc">'+x.lc.map((o,i)=>{const L='ABCDEFGH'[i];return '<li class="'+(String(x.da||'').trim()===L?'dung':'')+'">'+L+'. '+esc(typeof o==='object'?(o.noi_dung??JSON.stringify(o)):o)+'</li>'}).join('')+'</ul>';
  if(Array.isArray(x.md)&&x.md.length)h+='<ol type="a" class="md">'+x.md.map(m=>'<li>'+esc(m.noi_dung)+' <b>['+esc(m.dap_an)+']</b></li>').join('')+'</ol>';
@@ -134,7 +154,7 @@ function nhom(tieu,path,ds,fn){if(!ds.length)return '';return '<details class="g
 function ve(){let h='';const m=document.getElementById('m2');
  if(tab==='cao'||tab==='vua'){const rs=D.kq.filter(r=>r.n===tab&&khop(r.ma_cau));
   h+=tab==='vua'?'<div class="note">Máy chọn được một dạng hợp nhất nhưng còn dạng khác cũng có thể, hoặc đề phụ thuộc hình. Xem lý do dưới mỗi câu.</div>':'<div class="note">Khớp rõ đúng một dạng bài. Chị lướt từng dạng, thấy câu nào sai thì ghi mã câu lại.</div>';
-  for(const d of D.dich){const ds=rs.filter(r=>r.dang_bai_id===d.id);h+=nhom(d.id+' · '+esc(d.ten),esc(d.chuyen_de+' › '+d.nhom),ds,r=>[r.ma_cau,'',r.ly_do])}}
+  for(const d of D.dich){const ds=rs.filter(r=>r.dang_bai_id===d.id);h+=nhom(d.id+' · '+esc(d.ten),esc((D.dich.some(e=>e.chu_de!==D.dich[0].chu_de)?d.chu_de+' › ':'')+d.chuyen_de+' › '+d.nhom),ds,r=>[r.ma_cau,'',r.ly_do])}}
  else if(tab==='trong'){const rs=D.kq.filter(r=>!r.dang_bai_id&&khop(r.ma_cau));
   for(const k of ['KHÔNG THUỘC CHỦ ĐỀ','THIẾU DẠNG','THIẾU HÌNH','ĐỀ LỖI','KHÁC'])h+=nhom(k,'',rs.filter(r=>r.n===k),r=>[r.ma_cau,'',r.ly_do])}
  else{const rs=D.ds.filter(r=>khop(r.ma_cau));h+='<div class="note">Luật 18/10: câu Đúng/Sai không gán dạng bài; cả câu vào <b>kho Đúng/Sai của chủ đề '+esc(D.chu_de.ten)+'</b>.</div>';

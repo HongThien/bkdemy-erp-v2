@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T309000000001",
+  "dang_bai_id": "NDB01372",
+  "chac": "vua",
+  "ly_do": "Sắp xếp tỉ số các góc cụ thể, đổi bằng góc phụ nhau; chưa hẳn là tính biểu thức."
+ },
+ {
+  "ma_cau": "T309000000002",
+  "dang_bai_id": "NDB01372",
+  "chac": "vua",
+  "ly_do": "Sắp xếp tỉ số các góc cụ thể, đổi bằng góc phụ nhau; chưa hẳn là tính biểu thức."
+ },
+ {
+  "ma_cau": "T309000000003",
+  "dang_bai_id": "NDB01372",
+  "chac": "vua",
+  "ly_do": "Sắp xếp tỉ số các góc cụ thể, đổi bằng góc phụ nhau; chưa hẳn là tính biểu thức."
+ },
+ {
+  "ma_cau": "T309000000004",
+  "dang_bai_id": "NDB01372",
+  "chac": "vua",
+  "ly_do": "Sắp xếp tỉ số các góc cụ thể, đổi bằng góc phụ nhau; chưa hẳn là tính biểu thức."
+ },
+ {
+  "ma_cau": "T309000000005",
+  "dang_bai_id": "NDB01372",
+  "chac": "cao",
+  "ly_do": "Biểu thức các góc cụ thể, ghép cặp góc phụ nhau và dùng góc đặc biệt."
+ },
+ {
+  "ma_cau": "T309000000006",
+  "dang_bai_id": "NDB01372",
+  "chac": "cao",
+  "ly_do": "Biểu thức các góc cụ thể, ghép cặp góc phụ nhau và dùng góc đặc biệt."
+ },
+ {
+  "ma_cau": "T309000000007",
+  "dang_bai_id": "NDB01372",
+  "chac": "cao",
+  "ly_do": "Biểu thức các góc cụ thể, ghép cặp góc phụ nhau và dùng góc đặc biệt."
+ },
+ {
+  "ma_cau": "T309000000008",
+  "dang_bai_id": "NDB01372",
+  "chac": "cao",
+  "ly_do": "Biểu thức các góc cụ thể, ghép cặp góc phụ nhau và dùng góc đặc biệt."
+ },
+ {
+  "ma_cau": "T309000000009",
+  "dang_bai_id": "NDB01361",
+  "chac": "vua",
+  "ly_do": "Giải tam giác vuông biết hai cạnh, có phân giác và đường cao AH của tam giác vuông ABI."
+ },
+ {
+  "ma_cau": "T309000000010",
+  "dang_bai_id": "NDB01361",
+  "chac": "cao",
+  "ly_do": "Giải tam giác vuông rồi kẻ đường cao AH; vướng dạng 01358 nên chọn dạng sau."
+ },
+ {
+  "ma_cau": "T309000000011",
+  "dang_bai_id": "NDB01361",
+  "chac": "cao",
+  "ly_do": "Giải tam giác vuông biết hai cạnh rồi tính đường cao AH; chọn dạng sau."
+ },
+ {
+  "ma_cau": "T309000000012",
+  "dang_bai_id": "NDB01364",
+  "chac": "cao",
+  "ly_do": "Tình huống thực tế quy về đúng một tam giác vuông (thang/tháp/tia nắng)."
+ },
+ {
+  "ma_cau": "T309000000013",
+  "dang_bai_id": "NDB01364",
+  "chac": "cao",
+  "ly_do": "Tình huống thực tế quy về đúng một tam giác vuông (thang/tháp/tia nắng)."
+ },
+ {
+  "ma_cau": "T309000000014",
+  "dang_bai_id": "NDB01364",
+  "chac": "cao",
+  "ly_do": "Tình huống thực tế quy về đúng một tam giác vuông (thang/tháp/tia nắng)."
+ },
+ {
+  "ma_cau": "T309000000015",
+  "dang_bai_id": "NDB01361",
+  "chac": "cao",
+  "ly_do": "Biết cạnh và tan B, tính đường cao AH; vướng 01360 nên chọn dạng sau 01361."
+ },
+ {
+  "ma_cau": "T309000000016",
+  "dang_bai_id": "NDB01365",
+  "chac": "cao",
+  "ly_do": "Góc hạ, góc nâng từ nóc nhà, tách hai tam giác vuông chung cạnh nằm ngang."
+ },
+ {
+  "ma_cau": "T309000000017",
+  "dang_bai_id": "NDB01359",
+  "chac": "vua",
+  "ly_do": "Tìm hai cạnh góc vuông từ chu vi và trung tuyến rồi tính tỉ số lượng giác các góc."
+ },
+ {
+  "ma_cau": "T309000000018",
+  "dang_bai_id": "NDB01361",
+  "chac": "vua",
+  "ly_do": "Hình thang vuông có hai đường chéo vuông góc; tam giác vuông có đường cao, thiên về đồng dạng."
+ },
+ {
+  "ma_cau": "T309000000019",
+  "dang_bai_id": "NDB01364",
+  "chac": "cao",
+  "ly_do": "Thực tế: cột cờ, bóng và tia nắng tạo một tam giác vuông."
+ },
+ {
+  "ma_cau": "T309000000020",
+  "dang_bai_id": "NDB01364",
+  "chac": "cao",
+  "ly_do": "Thực tế: cột cờ, bóng và tia nắng tạo một tam giác vuông."
+ },
+ {
+  "ma_cau": "T309000000021",
+  "dang_bai_id": "NDB01376",
+  "chac": "cao",
+  "ly_do": "Cây gãy tạo tam giác vuông, còn phải cộng đoạn còn đứng để ra chiều cao ban đầu."
+ },
+ {
+  "ma_cau": "T309000000022",
+  "dang_bai_id": "NDB01364",
+  "chac": "cao",
+  "ly_do": "Hải đăng, mặt biển và tia nhìn tạo một tam giác vuông, tính khoảng cách."
+ },
+ {
+  "ma_cau": "T309000000023",
+  "dang_bai_id": "NDB01365",
+  "chac": "cao",
+  "ly_do": "Hai góc hạ từ đỉnh tháp, hai tam giác vuông chung tháp, rồi đổi sang thời gian; chọn dạng sau."
+ },
+ {
+  "ma_cau": "T309000000024",
+  "dang_bai_id": "NDB01361",
+  "chac": "vua",
+  "ly_do": "Chứng minh hệ thức sin trong tam giác vuông có đường cao AH."
+ },
+ {
+  "ma_cau": "T309000000025",
+  "dang_bai_id": "NDB01373",
+  "chac": "cao",
+  "ly_do": "Dùng sin30=cos60 và cos²42+sin²42=1; vướng 01372 nên chọn dạng sau."
+ },
+ {
+  "ma_cau": "T309000000026",
+  "dang_bai_id": "NDB01372",
+  "chac": "cao",
+  "ly_do": "Sáu góc cụ thể ghép thành các cặp góc phụ nhau, dùng góc đặc biệt 30°, 60°."
+ },
+ {
+  "ma_cau": "T309000000027",
+  "dang_bai_id": "NDB01361",
+  "chac": "vua",
+  "ly_do": "Giải tam giác biết hai cạnh, rồi chứng minh hệ thức với đường cao AH và hình chiếu."
+ },
+ {
+  "ma_cau": "T309000000028",
+  "dang_bai_id": "NDB01358",
+  "chac": "vua",
+  "ly_do": "Giải tam giác biết cạnh góc vuông và góc nhọn; các ý chứng minh đồng dạng khác dạng."
+ },
+ {
+  "ma_cau": "T309000000029",
+  "dang_bai_id": "NDB01361",
+  "chac": "vua",
+  "ly_do": "Hình chữ nhật có đường cao DH của tam giác vuông ADC; ý chứng minh phức tạp."
+ },
+ {
+  "ma_cau": "T309000000030",
+  "dang_bai_id": "NDB01361",
+  "chac": "vua",
+  "ly_do": "Giải tam giác BCA có đường cao CA, ý c chứng minh sin2α khác dạng."
+ },
+ {
+  "ma_cau": "T309000000031",
+  "dang_bai_id": "NDB01364",
+  "chac": "cao",
+  "ly_do": "Thực tế: tháp, bóng và tia nắng tạo một tam giác vuông, tính góc và chiều cao."
+ },
+ {
+  "ma_cau": "T309000000032",
+  "dang_bai_id": "NDB01361",
+  "chac": "vua",
+  "ly_do": "Giải tam giác biết hai cạnh góc vuông, có đường cao BH; ý chứng minh nặng."
+ },
+ {
+  "ma_cau": "T309010101001",
+  "dang_bai_id": "NDB01357",
+  "chac": "cao",
+  "ly_do": "Biết cạnh huyền và một góc nhọn, giải tam giác hoặc tìm cạnh còn lại."
+ },
+ {
+  "ma_cau": "T309010101002",
+  "dang_bai_id": "NDB01357",
+  "chac": "cao",
+  "ly_do": "Biết cạnh huyền và một góc nhọn, giải tam giác hoặc tìm cạnh còn lại."
+ },
+ {
+  "ma_cau": "T309010101003",
+  "dang_bai_id": "NDB01357",
+  "chac": "cao",
+  "ly_do": "Biết cạnh huyền và một góc nhọn, giải tam giác hoặc tìm cạnh còn lại."
+ },
+ {
+  "ma_cau": "T309010101004",
+  "dang_bai_id": "NDB01357",
+  "chac": "cao",
+  "ly_do": "Biết cạnh huyền và một góc nhọn, giải tam giác hoặc tìm cạnh còn lại."
+ },
+ {
+  "ma_cau": "T309010101005",
+  "dang_bai_id": "NDB01357",
+  "chac": "cao",
+  "ly_do": "Biết cạnh huyền và một góc nhọn, giải tam giác hoặc tìm cạnh còn lại."
+ },
+ {
+  "ma_cau": "T309010101006",
+  "dang_bai_id": "NDB01357",
+  "chac": "cao",
+  "ly_do": "Biết cạnh huyền và một góc nhọn, giải tam giác hoặc tìm cạnh còn lại."
+ },
+ {
+  "ma_cau": "T309010101007",
+  "dang_bai_id": "NDB01357",
+  "chac": "cao",
+  "ly_do": "Biết cạnh huyền và một góc nhọn, giải tam giác hoặc tìm cạnh còn lại."
+ },
+ {
+  "ma_cau": "T309010101008",
+  "dang_bai_id": "NDB01357",
+  "chac": "cao",
+  "ly_do": "Biết cạnh huyền và một góc nhọn, giải tam giác hoặc tìm cạnh còn lại."
+ },
+ {
+  "ma_cau": "T309010101009",
+  "dang_bai_id": "NDB01357",
+  "chac": "cao",
+  "ly_do": "Biết cạnh huyền và một góc nhọn, giải tam giác hoặc tìm cạnh còn lại."
+ },
+ {
+  "ma_cau": "T309010101010",
+  "dang_bai_id": "NDB01357",
+  "chac": "cao",
+  "ly_do": "Biết cạnh huyền và một góc nhọn, giải tam giác hoặc tìm cạnh còn lại."
+ },
+ {
+  "ma_cau": "T309010101011",
+  "dang_bai_id": "NDB01357",
+  "chac": "cao",
+  "ly_do": "Biết cạnh huyền và một góc nhọn, giải tam giác hoặc tìm cạnh còn lại."
+ },
+ {
+  "ma_cau": "T309010101012",
+  "dang_bai_id": "NDB01357",
+  "chac": "cao",
+  "ly_do": "Biết cạnh huyền và một góc nhọn, giải tam giác hoặc tìm cạnh còn lại."
+ },
+ {
+  "ma_cau": "T309010101013",
+  "dang_bai_id": "NDB01357",
+  "chac": "cao",
+  "ly_do": "Biết cạnh huyền và một góc nhọn, giải tam giác hoặc tìm cạnh còn lại."
+ },
+ {
+  "ma_cau": "T309010101014",
+  "dang_bai_id": "NDB01357",
+  "chac": "cao",
+  "ly_do": "Biết cạnh huyền và một góc nhọn, giải tam giác hoặc tìm cạnh còn lại."
+ },
+ {
+  "ma_cau": "T309010101015",
+  "dang_bai_id": "NDB01357",
+  "chac": "cao",
+  "ly_do": "Biết cạnh huyền và một góc nhọn, giải tam giác hoặc tìm cạnh còn lại."
+ },
+ {
+  "ma_cau": "T309010101016",
+  "dang_bai_id": "NDB01357",
+  "chac": "cao",
+  "ly_do": "Biết cạnh huyền và một góc nhọn, giải tam giác hoặc tìm cạnh còn lại."
+ },
+ {
+  "ma_cau": "T309010101017",
+  "dang_bai_id": "NDB01357",
+  "chac": "cao",
+  "ly_do": "Biết cạnh huyền và một góc nhọn, giải tam giác hoặc tìm cạnh còn lại."
+ },
+ {
+  "ma_cau": "T309010101018",
+  "dang_bai_id": "NDB01357",
+  "chac": "cao",
+  "ly_do": "Biết cạnh huyền và một góc nhọn, giải tam giác hoặc tìm cạnh còn lại."
+ },
+ {
+  "ma_cau": "T309010101019",
+  "dang_bai_id": "NDB01357",
+  "chac": "cao",
+  "ly_do": "Biết cạnh huyền và một góc nhọn, giải tam giác hoặc tìm cạnh còn lại."
+ },
+ {
+  "ma_cau": "T309010101020",
+  "dang_bai_id": "NDB01357",
+  "chac": "cao",
+  "ly_do": "Biết cạnh huyền và một góc nhọn, giải tam giác hoặc tìm cạnh còn lại."
+ },
+ {
+  "ma_cau": "T309010101021",
+  "dang_bai_id": "NDB01357",
+  "chac": "cao",
+  "ly_do": "Biết cạnh huyền và một góc nhọn, giải tam giác hoặc tìm cạnh còn lại."
+ },
+ {
+  "ma_cau": "T309010101022",
+  "dang_bai_id": "NDB01357",
+  "chac": "cao",
+  "ly_do": "Biết cạnh huyền và một góc nhọn, giải tam giác hoặc tìm cạnh còn lại."
+ },
+ {
+  "ma_cau": "T309010101023",
+  "dang_bai_id": "NDB01357",
+  "chac": "cao",
+  "ly_do": "Biết cạnh huyền và một góc nhọn, giải tam giác hoặc tìm cạnh còn lại."
+ },
+ {
+  "ma_cau": "T309010101024",
+  "dang_bai_id": "NDB01357",
+  "chac": "cao",
+  "ly_do": "Biết cạnh huyền và một góc nhọn, giải tam giác hoặc tìm cạnh còn lại."
+ },
+ {
+  "ma_cau": "T309010101025",
+  "dang_bai_id": "NDB01357",
+  "chac": "cao",
+  "ly_do": "Biết cạnh huyền và một góc nhọn, giải tam giác hoặc tìm cạnh còn lại."
+ },
+ {
+  "ma_cau": "T309010101026",
+  "dang_bai_id": "NDB01357",
+  "chac": "cao",
+  "ly_do": "Biết cạnh huyền và một góc nhọn, giải tam giác hoặc tìm cạnh còn lại."
+ },
+ {
+  "ma_cau": "T309010101027",
+  "dang_bai_id": "NDB01357",
+  "chac": "cao",
+  "ly_do": "Biết cạnh huyền và một góc nhọn, giải tam giác hoặc tìm cạnh còn lại."
+ },
+ {
+  "ma_cau": "T309010102001",
+  "dang_bai_id": "NDB01358",
+  "chac": "cao",
+  "ly_do": "Biết cạnh góc vuông AB và góc nhọn B, giải tam giác vuông."
+ },
+ {
+  "ma_cau": "T309010102002",
+  "dang_bai_id": "NDB01358",
+  "chac": "cao",
+  "ly_do": "Biết cạnh góc vuông AB và góc nhọn B, giải tam giác vuông."
+ },
+ {
+  "ma_cau": "T309010102003",
+  "dang_bai_id": "NDB01358",
+  "chac": "cao",
+  "ly_do": "Biết cạnh góc vuông AB và góc nhọn B, giải tam giác vuông."
+ },
+ {
+  "ma_cau": "T309010102004",
+  "dang_bai_id": "NDB01358",
+  "chac": "cao",
+  "ly_do": "Biết cạnh góc vuông AB và góc nhọn B, giải tam giác vuông."
+ },
+ {
+  "ma_cau": "T309010102005",
+  "dang_bai_id": "NDB01358",
+  "chac": "cao",
+  "ly_do": "Biết cạnh góc vuông AB và góc nhọn B, giải tam giác vuông."
+ },
+ {
+  "ma_cau": "T309010102006",
+  "dang_bai_id": "NDB01358",
+  "chac": "cao",
+  "ly_do": "Biết cạnh góc vuông AB và góc nhọn B, giải tam giác vuông."
+ },
+ {
+  "ma_cau": "T309010102007",
+  "dang_bai_id": "NDB01358",
+  "chac": "cao",
+  "ly_do": "Biết cạnh góc vuông AB và góc nhọn B, giải tam giác vuông."
+ },
+ {
+  "ma_cau": "T309010102008",
+  "dang_bai_id": "NDB01358",
+  "chac": "cao",
+  "ly_do": "Biết cạnh góc vuông AB và góc nhọn B, giải tam giác vuông."
+ },
+ {
+  "ma_cau": "T309010102009",
+  "dang_bai_id": "NDB01358",
+  "chac": "cao",
+  "ly_do": "Biết cạnh góc vuông AB và góc nhọn B, giải tam giác vuông."
+ },
+ {
+  "ma_cau": "T309010102010",
+  "dang_bai_id": "NDB01358",
+  "chac": "cao",
+  "ly_do": "Biết cạnh góc vuông AB và góc nhọn B, giải tam giác vuông."
+ },
+ {
+  "ma_cau": "T309010102011",
+  "dang_bai_id": "NDB01358",
+  "chac": "cao",
+  "ly_do": "Biết cạnh góc vuông AB và góc nhọn B, giải tam giác vuông."
+ }
+]

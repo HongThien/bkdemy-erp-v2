@@ -1,5 +1,6 @@
 // B3 KHỚP LẠI hàng duyệt — áp kết quả máy khớp lại (xuat-lo --hang) cho câu ĐANG Ở hàng duyệt (dai_bdm_de_xuat / dai_bdm_cau_thieu_dang).
-//   node scripts/bdm-b3-khop-lai-hang.mjs <thư mục lô, vd kho-rules/dai/lo/b3/k6-hang2010> [--ghi]   (mặc định chạy thử rồi ROLLBACK)
+//   node scripts/bdm-b3-khop-lai-hang.mjs <thư mục lô, vd kho-rules/dai/lo/b3/k6-hang2010> [--khong-gan] [--ghi]   (mặc định chạy thử rồi ROLLBACK)
+//   --khong-gan: mức cao cũng chỉ vào de_xuat (chac 'cao'), không ghi gan_cau — dùng khi phải chờ CEO duyệt HTML (luật 20/10)
 // Cần: ket_qua.json (bdm-b3-gop-lo) + mau_kiem_dap_an.json (câu mẫu — bỏ qua).
 // Mỗi câu thật, theo kết quả mới:
 //   cao   ⇒ ghi dai_bdm_gan_cau (nguon 'ai'), rút khỏi hàng duyệt (xoá dòng de_xuat / thieu_dang của câu)
@@ -18,8 +19,10 @@ if (!D) { console.error('Dùng: node scripts/bdm-b3-khop-lai-hang.mjs <thư mụ
 const kq = JSON.parse(readFileSync(join(D, 'ket_qua.json'), 'utf8'))
 const mau = JSON.parse(readFileSync(join(D, 'mau_kiem_dap_an.json'), 'utf8'))
 const real = kq.filter((r) => !(r.ma_cau in mau))
-const cao = real.filter((r) => r.dang_bai_id && r.chac === 'cao')
-const vua = real.filter((r) => r.dang_bai_id && r.chac !== 'cao')
+// --khong-gan (Thùy 20/10 "đề xuất trước, ghi sau"): mức cao KHÔNG ghi gan_cau — vào de_xuat giữ chac='cao', chờ CEO duyệt HTML rồi mới gán.
+const KHONG_GAN = args.includes('--khong-gan')
+const cao = KHONG_GAN ? [] : real.filter((r) => r.dang_bai_id && r.chac === 'cao')
+const vua = real.filter((r) => r.dang_bai_id && (KHONG_GAN || r.chac !== 'cao'))
 const trong = real.filter((r) => !r.dang_bai_id)
 console.log(`câu thật ${real.length}: cao ${cao.length} · vừa ${vua.length} · trống ${trong.length}`)
 
@@ -56,13 +59,13 @@ try {
   // 2) VỪA ⇒ de_xuat (upsert, chỉ dòng ai) + rút thieu_dang
   const v = await c.query(`
     insert into dai_bdm_de_xuat (ma_cau, dang_bai_id, chac, ly_do, nguon)
-    select t.ma_cau, t.db, 'vua', t.ly, 'ai' from unnest($1::text[], $2::text[], $3::text[]) t(ma_cau, db, ly)
+    select t.ma_cau, t.db, t.chac, t.ly, 'ai' from unnest($1::text[], $2::text[], $3::text[], $4::text[]) t(ma_cau, db, ly, chac)
     join dai_cau_hoi q on q.ma_cau = t.ma_cau and q.xoa_at is null
     join dai_bdm_dang_bai d on d.id = t.db
     where not exists (select 1 from dai_bdm_gan_cau x where x.ma_cau = t.ma_cau)
       and not exists (select 1 from dai_bdm_cau_thieu_dang x where x.ma_cau = t.ma_cau and x.nguon = 'nguoi')
-    on conflict (ma_cau) do update set dang_bai_id = excluded.dang_bai_id, chac = 'vua', ly_do = excluded.ly_do, at = now()
-      where dai_bdm_de_xuat.nguon = 'ai' returning ma_cau`, [ma(vua), vua.map((x) => x.dang_bai_id), vua.map((x) => x.ly_do ?? '')])
+    on conflict (ma_cau) do update set dang_bai_id = excluded.dang_bai_id, chac = excluded.chac, ly_do = excluded.ly_do, at = now()
+      where dai_bdm_de_xuat.nguon = 'ai' returning ma_cau`, [ma(vua), vua.map((x) => x.dang_bai_id), vua.map((x) => x.ly_do ?? ''), vua.map((x) => (x.chac === 'cao' ? 'cao' : 'vua'))])
   const r3 = await c.query(`delete from dai_bdm_cau_thieu_dang where ma_cau = any($1) and nguon = 'ai'`, [v.rows.map((r) => r.ma_cau)])
   console.log(`VỪA: de_xuat upsert ${v.rowCount}/${vua.length} · rút thieu_dang ${r3.rowCount}`)
 

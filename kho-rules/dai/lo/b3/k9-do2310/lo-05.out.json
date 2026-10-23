@@ -1,0 +1,23 @@
+[
+{"ma_cau":"T109030305046","dang_bai_id":"NDB00831","chac":"cao","ly_do":"P có tử và mẫu chứa căn, chia tử cho mẫu rồi đánh giá để tìm GTLN của P (xét x nguyên)."},
+{"ma_cau":"T109000000199","dang_bai_id":"NDB01208","chac":"cao","ly_do":"Biết tổng (chu vi 60 m) của hình chữ nhật, tìm diện tích lớn nhất bằng hoàn thành bình phương."},
+{"ma_cau":"T109000000248","dang_bai_id":"NDB01203","chac":"cao","ly_do":"Quy luật giá đổi thì lượng bán đổi ngược, hỏi giá vé để doanh thu lớn nhất."},
+{"ma_cau":"T109000000416","dang_bai_id":"NDB01203","chac":"vua","ly_do":"Giá thuê đổi kéo theo số tủ thuê đổi, tìm giá để doanh thu lớn nhất; có bội số 10 nghìn nên có thể là dạng biến nguyên."},
+{"ma_cau":"T109080105018","dang_bai_id":"NDB01384","chac":"cao","ly_do":"Biểu thức ax + b/x với x>0, nhẩm dấu bằng Cauchy 2 số rồi xét hiệu A−12."},
+{"ma_cau":"T109000000163","dang_bai_id":null,"chac":null,"ly_do":"Thiếu dạng GTNN của phân thức bậc nhất/bậc hai đưa tử về bình phương, không khớp dạng nào trong bảng."},
+{"ma_cau":"T109000000480","dang_bai_id":"NDB01208","chac":"cao","ly_do":"Rào ba cạnh hình chữ nhật với tổng 80 m, tìm diện tích lớn nhất; hình chỉ minh hoạ, đề đủ dữ kiện."},
+{"ma_cau":"T109000000590","dang_bai_id":null,"chac":null,"ly_do":"Thiếu dạng hình chữ nhật nội tiếp nửa hình tròn, tìm diện tích lớn nhất (có hình, dùng Pythagore)."},
+{"ma_cau":"T109030305047","dang_bai_id":"NDB00831","chac":"cao","ly_do":"P có tử và mẫu chứa căn, chia tử cho mẫu rồi đánh giá để tìm GTLN của P (xét x nguyên)."},
+{"ma_cau":"T109000000511","dang_bai_id":"NDB00501","chac":"cao","ly_do":"Ba ý (tính A, rút gọn B, tìm x để P>0); theo luật dạng sau thắng chọn ý cuối: P lớn hơn một số."},
+{"ma_cau":"T109000000016","dang_bai_id":"NDB00703","chac":"vua","ly_do":"Thay toạ độ hai điểm lập hệ hai ẩn a, b rồi giải; bản đồ thiếu dạng xác định hàm số bậc nhất."},
+{"ma_cau":"T109030305049","dang_bai_id":"NDB00831","chac":"cao","ly_do":"M có tử và mẫu chứa căn, chia tử cho mẫu rồi đánh giá để tìm GTLN của M (xét x nguyên)."},
+{"ma_cau":"T109000000118","dang_bai_id":null,"chac":null,"ly_do":"Thiếu dạng nhận biết phương trình bậc nhất hai ẩn (định nghĩa, hệ số a, b không đồng thời bằng 0)."},
+{"ma_cau":"T109000000105","dang_bai_id":"NDB01203","chac":"cao","ly_do":"Giảm giá bán làm tăng lượng bán, tìm giá bán để lợi nhuận cao nhất."},
+{"ma_cau":"T109030305058","dang_bai_id":"NDB00832","chac":"cao","ly_do":"P có tử là hằng số âm, đánh giá mẫu (xét x nguyên) để tìm GTNN của P."},
+{"ma_cau":"T109000000640","dang_bai_id":"NDB00501","chac":"cao","ly_do":"Ba ý; theo luật dạng sau thắng chọn ý cuối: tìm x để P<1/2, tức P nhỏ hơn một số."},
+{"ma_cau":"T109030305054","dang_bai_id":"NDB00831","chac":"cao","ly_do":"M có tử và mẫu chứa căn, chia tử cho mẫu rồi đánh giá để tìm GTLN của M (xét x nguyên)."},
+{"ma_cau":"T109000000575","dang_bai_id":"NDB00936","chac":"vua","ly_do":"Lập bất phương trình, chọn số tuần nguyên nhỏ nhất đạt mục tiêu; dạng 'tối đa' gần nhất nhưng đề hỏi tối thiểu."},
+{"ma_cau":"T109110401001","dang_bai_id":"NDB01380","chac":"cao","ly_do":"Tam thức bậc hai a>0, x thực không điều kiện, đưa về (x−2)²+5 để tìm GTNN."},
+{"ma_cau":"T109030201056","dang_bai_id":"NDB00740","chac":"cao","ly_do":"Có căn ở tử và căn ở mẫu, phải kết hợp hai điều kiện x≥0 và x>12; dạng sau thắng."},
+{"ma_cau":"T109000000052","dang_bai_id":null,"chac":null,"ly_do":"Thiếu dạng phương trình bậc nhất chứa tham số m, tìm m để nghiệm thoả điều kiện (dương)."}
+]

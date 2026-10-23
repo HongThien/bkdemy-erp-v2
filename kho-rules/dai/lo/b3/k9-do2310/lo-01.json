@@ -1,0 +1,472 @@
+[
+ {
+  "ma_cau": "T109000000116",
+  "loai": "tu_luan",
+  "de": "Trong kì thi thử vào lớp 10 trường \"THCS&THPT LƯƠNG THẾ VINH\", Dũng phải làm ba bài thi môn Toán, Ngữ văn và Tiếng anh. Biết rằng Dũng được $7{,}5$ điểm môn Ngữ văn và $9$ điểm môn Toán. Hỏi bài thi môn Tiếng anh, bạn cần phải đạt điểm số là bao nhiêu để điểm trung bình của cả ba bài thi ít nhất là $8{,}5$?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** điểm trung bình của ba bài là tổng ba điểm chia cho $3$, và \"ít nhất là $8{,}5$\" nghĩa là trung bình lớn hơn hoặc bằng $8{,}5$, nên ta giải một bất phương trình bậc nhất.\n**Bước 1.** Gọi $x$ là điểm môn Tiếng anh rồi viết biểu thức điểm trung bình của ba bài thi.\n**Bước 2.** Lập bất phương trình \"điểm trung bình $\\ge 8{,}5$\", rồi nhân hai vế với $3$ (số dương nên không đổi chiều) để khử mẫu.\n**Bước 3.** Chuyển vế, giải bất phương trình tìm điều kiện của $x$.\n**Bước 4.** Đối chiếu với thang điểm tối đa là $10$ để trả lời Dũng cần đạt điểm tối thiểu là bao nhiêu.\n**Chú ý:** cụm \"ít nhất\" tương ứng với dấu $\\ge$, không phải dấu $>$.\n**Phần 2. Trình bày**\nGọi  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000143",
+  "loai": "tu_luan",
+  "de": "Ngày xưa có một vị tể tướng nổi tiếng thông thái. Đến khi tể tướng muốn cáo quan về quê, nhà vua liền ban thưởng bằng cách đưa cho tể tướng một đoạn dây dài $400$ mét và nói: \"Ngươi hãy căng sợi dây này thành một hình chữ nhật, sao cho hai đầu dây chạm vào nhau. Mảnh đất bên trong hình chữ nhật đó sẽ thuộc về ngươi\". Hỏi tể tướng sẽ căng sợi dây như thế nào để mảnh đất có diện tích lớn nhất?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** sợi dây là chu vi nên tổng hai kích thước của hình chữ nhật không đổi; diện tích viết theo một kích thước là một biểu thức bậc hai, ta hoàn thành bình phương để thấy nó lớn nhất khi nào.\n**Bước 1.** Gọi một kích thước là $x$, dùng chu vi $400$ m để biểu diễn kích thước còn lại theo $x$ và nêu điều kiện của $x$.\n**Bước 2.** Lập biểu thức diện tích $S$ theo $x$ rồi khai triển thành đa thức bậc hai.\n**Bước 3.** Hoàn thành bình phương: viết $S$ dưới dạng một số trừ đi một bình phương; vì bình phương luôn không âm nên $S$ không vượt quá số đó.\n**Bước 4.** Tìm giá trị của $x$ làm dấu bằng xảy ra, tính kích thước còn lại, kiểm tra điều kiện rồi mô tả cách căng dâ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109110401003",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTLN – GTNN của biểu thức $A=x^2-4x+2$ với $0\\leq x\\leq 4$.",
+  "dap_an": "$A_{\\min} = -2$ tại $x=2$; $A_{\\max} = 2$ tại $x=0$ hoặc $x=4$",
+  "loi_giai": "Ta có $A = x^2 - 4x + 2 = (x-2)^2 - 2$.\nVới $0 \\leq x \\leq 4$: vì $(x-2)^2 \\geq 0$ nên $A \\geq -2$, dấu bằng khi $x = 2$ (thoả $0 \\leq 2 \\leq 4$).\nDo đó $A_{\\min} = -2$ khi $x = 2$.\nMặt khác, với $x \\in [0;4]$ thì $|x-2| \\leq 2$ nên $(x-2)^2 \\leq 4$, suy ra $A \\leq 2$, dấu bằng khi $x = 0$ hoặc $x = 4$.\nDo đó $A_{\\max} = 2$ khi $x = 0$ hoặc $x = 4$.",
+  "nhan_cu": "Nâng cao › Nâng cao"
+ },
+ {
+  "ma_cau": "T109000000152",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $x,y,z>0$. Tìm giá trị lớn nhất của biểu thức $M=\\dfrac{2x}{2x+y}+\\dfrac{2y}{2y+z}+\\dfrac{2z}{2z+x}$.",
+  "dap_an": "2",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** viết mỗi phân số dạng $1-\\dfrac{y}{2x+y}$ để $M$ thành $3$ trừ một tổng ba phân số, rồi chứng minh tổng đó có cận dưới nhờ so sánh từng phân số với một biểu thức có mẫu chung $x+y+z$.\n**Bước 1.** Tách $\\dfrac{2x}{2x+y}=1-\\dfrac{y}{2x+y}$ và tương tự cho hai phân số còn lại, để đưa bài toán về tìm giá trị nhỏ nhất của $N=\\dfrac{y}{2x+y}+\\dfrac{z}{2y+z}+\\dfrac{x}{2z+x}$.\n**Bước 2.** Dự đoán dấu bằng ở $x=y=z$ rồi chọn mẫu chung $S=x+y+z$ để so sánh từng phân số với biểu thức $\\dfrac{2y}{S}-\\dfrac{y(2x+y)}{S^2}$.\n**Bước 3.** Xét hiệu của hai biểu thức đó: quy đồng rồi nhận ra tử số là bình phương (chú ý $S-(2x+y)=z-x$) nên hiệu không âm.\n**Bước 4.** Viết ba b …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000403",
+  "loai": "tu_luan",
+  "de": "Một khu đất hình chữ nhật có diện tích $600$ $m^2$. Người ta muốn rào xung quanh bằng hai loại dây: Cạnh dài dùng loại dây giá $15000$ đ/m, cạnh ngắn dùng loại dây giá $10000$ đ/m. Tìm kích thước khu đất sao cho chi phí rào thấp nhất.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** chi phí rào là một biểu thức của hai cạnh liên hệ với nhau qua diện tích, nhưng cạnh dài phải không nhỏ hơn cạnh ngắn, và ràng buộc này ảnh hưởng đến chỗ đạt chi phí thấp nhất.\n**Bước 1.** Đặt hai ẩn là cạnh dài và cạnh ngắn, ghi điều kiện cạnh dài không nhỏ hơn cạnh ngắn và hệ thức từ diện tích.\n**Bước 2.** Viết chi phí rào bằng tổng tiền hai cạnh dài và hai cạnh ngắn, rồi đặt nhân tử chung để chỉ còn một biểu thức cần so sánh.\n**Bước 3.** Từ điều kiện cạnh dài không nhỏ hơn cạnh ngắn và diện tích không đổi, suy ra một cận dưới cho cạnh dài.\n**Bước 4.** Chứng minh biểu thức lớn hơn hoặc bằng một số cố định bằng cách đưa hiệu của chúng về dạng tích hai thừ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000377",
+  "loai": "tu_luan",
+  "de": "Một khách sạn có 50 phòng. Hiện tại mỗi phòng khách sạn cho thuê với giá 400 nghìn đồng một ngày và toàn bộ phòng đã được cho thuê hết. Biết cứ mỗi lần khách sạn tăng giá thuê phòng thêm 20 nghìn đồng mỗi ngày thì có thêm 2 phòng trống. Hỏi khách sạn nên tăng giá phòng thêm bao nhiêu để doanh thu của khách sạn trong một ngày là lớn nhất?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** doanh thu một ngày bằng giá một phòng nhân số phòng cho thuê, mà cả hai đều phụ thuộc số tiền tăng thêm nên doanh thu là biểu thức bậc hai của một ẩn; tìm giá trị lớn nhất bằng cách hoàn thành bình phương.\n**Bước 1.** Chọn ẩn là số tiền tăng thêm cho mỗi phòng (nghìn đồng) và dùng tỉ lệ \"tăng 20 nghìn đồng thì thêm 2 phòng trống\" để tính số phòng trống theo ẩn.\n**Bước 2.** Biểu diễn giá thuê mới của mỗi phòng và số phòng còn cho thuê qua ẩn, rồi viết doanh thu một ngày là tích của hai biểu thức đó.\n**Bước 3.** Khai triển rồi đưa doanh thu về dạng một số trừ đi tích của số dương với một bình phương, bằng cách hoàn thành bình phương.\n**Bước 4.** Vì bình phươ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030201059",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm ĐKXĐ của biểu thức $\\dfrac{\\sqrt{x}}{\\sqrt{x-15}}$.",
+  "dap_an": "$x>15$",
+  "loi_giai": "ĐKXĐ: $\\begin{cases}x\\ge0\\\\x-15>0\\end{cases}\\Rightarrow\\begin{cases}x\\ge0\\\\x>15\\end{cases}\\Rightarrow x>15$",
+  "nhan_cu": "Rút gọn Căn thức › Tìm ĐKXĐ của Căn thức"
+ },
+ {
+  "ma_cau": "T109000000120",
+  "loai": "trac_nghiem",
+  "de": "Viết bất đẳng thức biểu thị tình huống: \"Các phương tiện lưu thông trên một tuyến đường cao tốc với vận tốc là $x$ (km/h). Biết rằng tốc độ tối thiểu trên biển báo R.306 ở tuyến đường đó là 60 km/h.\"",
+  "lua_chon": [
+   "$x\\ge60$",
+   "$x\\le60$",
+   "$x<60$",
+   "$x>60$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** \"tối thiểu\" nghĩa là không được thấp hơn mức đó, và đúng bằng mức đó vẫn được phép.\n**Bước 1.** Dịch cụm \"tốc độ tối thiểu là 60 km/h\" thành ngôn ngữ bất đẳng thức: vận tốc không được nhỏ hơn 60.\n**Bước 2.** Xác định mức 60 có được phép hay không để chọn dấu có hoặc không có dấu bằng.\n**Bước 3.** Đối chiếu bất đẳng thức vừa viết với bốn phương án.\n**Chú ý:** \"tối thiểu\" ứng với dấu $\\ge$, còn \"tối đa\" ứng với dấu $\\le$.\n**Phần 2. Trình bày**\nTốc độ tối thiểu là 60 km/h nên vận tốc của các phương tiện phải lớn hơn hoặc bằng 60 km/h.\nDo đó $x\\ge60$.\nChọn A.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030201054",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm ĐKXĐ của biểu thức $\\dfrac{\\sqrt{x}}{\\sqrt{x-10}}$.",
+  "dap_an": "$x>10$",
+  "loi_giai": "ĐKXĐ: $\\begin{cases}x\\ge0\\\\x-10>0\\end{cases}\\Rightarrow\\begin{cases}x\\ge0\\\\x>10\\end{cases}\\Rightarrow x>10$",
+  "nhan_cu": "Rút gọn Căn thức › Tìm ĐKXĐ của Căn thức"
+ },
+ {
+  "ma_cau": "T109020103008",
+  "loai": "tra_loi_ngan",
+  "de": "Giải phương trình: $\\dfrac{2x-1}{x-1} - \\dfrac{x-2}{x+1} + \\dfrac{x^2+2x-1}{1-x^2} = 0$",
+  "dap_an": "Vô nghiệm",
+  "loi_giai": "ĐKXĐ: $x \\neq 1$, $x \\neq -1$.\n$\\dfrac{2x-1}{x-1} - \\dfrac{x-2}{x+1} - \\dfrac{x^2+2x-1}{x^2-1} = 0$\n$\\dfrac{(2x-1)(x+1)}{(x-1)(x+1)} - \\dfrac{(x-2)(x-1)}{(x-1)(x+1)} - \\dfrac{x^2+2x-1}{(x-1)(x+1)} = 0$\n$\\dfrac{(2x-1)(x+1)-(x-2)(x-1)-(x^2+2x-1)}{(x-1)(x+1)} = 0$\n$(2x-1)(x+1)-(x-2)(x-1)-(x^2+2x-1) = 0$\n$2x^2+x-1-(x^2-3x+2)-(x^2+2x-1) = 0$\n$2x^2+x-1-x^2+3x-2-x^2-2x+1 = 0$\n$2x-2 = 0$\n$2x = 2$\n$x = 1$ (ktm)\nVậy phương trình vô nghiệm.",
+  "nhan_cu": "Phương trình bậc nhất một ẩn › Phương trình quy về phương trình bậc nhất một ẩn - Dạng phân thức"
+ },
+ {
+  "ma_cau": "T109000000598",
+  "loai": "tu_luan",
+  "de": "Cho hai biểu thức $A=\\dfrac{\\sqrt{x}-1}{\\sqrt{x}+1}$ và $B=\\dfrac{\\sqrt{x}+3}{\\sqrt{x}+1}-\\dfrac{5}{1-\\sqrt{x}}+\\dfrac{4}{x-1}$ với $x\\ge0$, $x\\ne1$.\na) Tính giá trị của biểu thức $A$ khi $x=64$.\nb) Chứng minh: $B=\\dfrac{\\sqrt{x}+6}{\\sqrt{x}-1}$.\nc) Đặt $P=A \\cdot B$. Tìm $x$ để $P^2=4$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mẫu chung của ba phân thức trong $B$ là $x-1=(\\sqrt{x}-1)(\\sqrt{x}+1)$, và phải đổi $1-\\sqrt{x}=-(\\sqrt{x}-1)$ để mẫu cùng dạng; sang ý c thì $P$ rút gọn rất gọn rồi mới giải phương trình.\n**Bước 1.** Ý a: kiểm tra $x=64$ thoả điều kiện, tính $\\sqrt{x}=8$ rồi thay vào biểu thức $A$.\n**Bước 2.** Ý b: đổi dấu phân thức thứ hai để mẫu là $\\sqrt{x}-1$, viết $x-1$ thành tích rồi quy đồng ba phân thức về mẫu chung $(\\sqrt{x}-1)(\\sqrt{x}+1)$.\n**Bước 3.** Ý b: nhân các đa thức ở tử, cộng các hạng tử đồng dạng rồi phân tích tử thành nhân tử để rút gọn nhân tử chung với mẫu.\n**Bước 4.** Ý c: thay $B$ ở ý b vào $P=A \\cdot B$ và rút gọn nhân tử $\\sqrt{x}-1$ để có $P$  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109080101023",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của $A = 2x^2 + 5x + 2$",
+  "dap_an": "$-\\dfrac{9}{8}$",
+  "loi_giai": "Giải: Ta có $A = 2\\left( x^2 + \\dfrac{5}{2}x + \\dfrac{25}{16} \\right) + 2 - 2\\cdot\\dfrac{25}{16}\\\\\n= 2\\left( x + \\dfrac{5}{4} \\right)^2 - \\dfrac{9}{8}$\nVì $\\left( x + \\dfrac{5}{4} \\right)^2 \\geq 0 \\\\\n\\Rightarrow 2\\left( x + \\dfrac{5}{4} \\right)^2 \\geq 0\\\\\n\\Rightarrow 2\\left( x + \\dfrac{5}{4} \\right)^2 - \\dfrac{9}{8} \\geq -\\dfrac{9}{8}$\nSuy ra $A \\geq -\\dfrac{9}{8}$.\nDấu ' = ' xảy ra khi $\\left( x + \\dfrac{5}{4} \\right)^2 = 0 \\Rightarrow x = -\\dfrac{5}{4}$\nVậy GTNN của A là $-\\dfrac{9}{8}$ khi $x = -\\dfrac{5}{4}$.",
+  "nhan_cu": "Bất đẳng thức một biến › GTLN - GTNN của biểu thức một biến bậc hai"
+ },
+ {
+  "ma_cau": "T109000000469",
+  "loai": "tu_luan",
+  "de": "Một công ty bất động sản có $40$ căn hộ cho thuê. Ban đầu, công ty cho thuê mỗi căn với giá $5$ triệu đồng/$1$ tháng thì mọi căn hộ đều có người thuê. Vì muốn tăng doanh thu nên công ty đã tăng giá. Biết rằng cứ mỗi lần tăng giá cho thuê mỗi căn thêm $500$ nghìn đồng/$1$ tháng thì có $2$ căn bị bỏ trống (không có người thuê). Hỏi công ty muốn có doanh thu cao nhất thì phải cho thuê mỗi căn bao nhiêu tiền/$1$ tháng?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** doanh thu bằng giá thuê một căn nhân với số căn có người thuê; cả hai đều thay đổi theo số lần tăng giá, nên lấy số lần tăng giá làm ẩn và đưa doanh thu về dạng \"hằng số trừ một bình phương\".\n**Bước 1.** Gọi số lần tăng giá là ẩn $x$, biểu diễn giá thuê mỗi căn và số căn có người thuê theo $x$, kèm điều kiện để số căn không âm.\n**Bước 2.** Lập biểu thức doanh thu bằng tích của hai biểu thức đó rồi nhân ra thành đa thức bậc hai theo $x$.\n**Bước 3.** Đặt dấu trừ làm nhân tử chung ở các hạng tử chứa $x$ và hoàn thành bình phương để viết doanh thu thành hằng số trừ một bình phương.\n**Bước 4.** Đánh giá giá trị lớn nhất nhờ bình phương luôn không âm, tìm $x$ để …",
+  "nhan_cu": "Bài toán về Doanh thu - Lợi nhuận › Bài toán tối ưu doanh thu - Lợi nhuận"
+ },
+ {
+  "ma_cau": "T109090301013",
+  "loai": "tra_loi_ngan",
+  "de": "Một người nông dân dùng 15000000 đồng mua nguyên vật liệu làm hàng rào hình chữ E để rào khu đất bên bờ sông (như hình vẽ bên). Chi phí nguyên vật liệu được tính theo chiều dài của hàng rào: đối với hàng rào song song với bờ sông (vị trí 1) là 60000 đồng/m; đối với ba hàng rào (có cùng độ dài) vuông góc với bờ sông (vị trí 2, 3, 4) là 50000 đồng/m. Tìm diện tích lớn nhất của khu đất có thể rào được.",
+  "dap_an": "6250",
+  "loi_giai": "Gọi $x$ (m) là chiều dài của hàng rào vị trí (1) và $y$ (m) là chiều dài của hàng rào vị trí (2), (3), (4) (điều kiện $x, y > 0$).\nTổng chi phí mua nguyên vật liệu là: $60000x + 3 \\cdot 50000y = 15000000 \\Leftrightarrow 6x + 15y = 1500 \\Leftrightarrow 2x + 5y = 500$.\nDiện tích của khu đất là $S = xy$.\nTừ $2x + 5y = 500 \\Rightarrow 2x = 500 - 5y$.\nVì $x > 0$ nên $500 - 5y > 0 \\Leftrightarrow 5y < 500 \\Leftrightarrow y < 100$.\n$S = xy = \\dfrac{(500 - 5y)y}{2} = \\dfrac{500y - 5y^2}{2} = \\dfrac{-5(y^2 - 100y)}{2} = \\dfrac{-5(y^2 - 100y + 2500 - 2500)}{2} = \\dfrac{-5((y - 50)^2 - 2500)}{2} = \\dfrac{-5(y - 50)^2 + 12500}{2} = -\\dfrac{5}{2}(y - 50)^2 + 6250$.\nĐể diện tích $S$ lớn nhất thì $(y - 50) …",
+  "co_hinh": true,
+  "nhan_cu": "Bài toán thực tế hình học › Bài toán chu vi - diện tích : Cho tổng - hỏi tích"
+ },
+ {
+  "ma_cau": "T109030201053",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm ĐKXĐ của biểu thức $\\dfrac{\\sqrt{x}}{\\sqrt{x-9}}$.",
+  "dap_an": "$x>9$",
+  "loi_giai": "ĐKXĐ: $\\begin{cases}x\\ge0\\\\x-9>0\\end{cases}\\Rightarrow\\begin{cases}x\\ge0\\\\x>9\\end{cases}\\Rightarrow x>9$",
+  "nhan_cu": "Rút gọn Căn thức › Tìm ĐKXĐ của Căn thức"
+ },
+ {
+  "ma_cau": "T109000000507",
+  "loai": "tra_loi_ngan",
+  "de": "Một công ty cần thuê xe để vận chuyển $76$ tấn hàng. Đơn vị cho thuê xe chỉ có hai loại xe. Loại xe thứ nhất mỗi xe chở được $15$ tấn hàng có giá thuê là $13$ triệu đồng cho mỗi lượt vận chuyển. Loại xe thứ hai mỗi xe chở được $10$ tấn hàng có giá thuê là $9$ triệu đồng cho mỗi lượt vận chuyển. Hỏi chi phí thuê xe nhỏ nhất mà công ty phải trả để vận chuyển $76$ tấn hàng là bao nhiêu (triệu đồng)?",
+  "dap_an": "70",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** số xe mỗi loại là số tự nhiên và tổng sức chở phải không nhỏ hơn $76$ tấn (không thể đúng $76$ vì tổng sức chở luôn là bội của $5$); chỉ có hữu hạn cách thuê hợp lí nên liệt kê rồi so sánh chi phí.\n**Bước 1.** Gọi số xe loại thứ nhất và loại thứ hai là hai số tự nhiên $a$, $b$; viết điều kiện chở đủ hàng và biểu thức chi phí theo $a$, $b$.\n**Bước 2.** Với số xe loại thứ nhất đã cố định, chi phí tăng khi tăng số xe loại thứ hai, nên chỉ cần lấy số xe loại thứ hai nhỏ nhất vẫn chở đủ hàng.\n**Bước 3.** Lần lượt cho $a$ từ $0$ đến $5$, tìm số $b$ nhỏ nhất thoả mãn rồi tính chi phí tương ứng.\n**Bước 4.** Với $a$ từ $6$ trở lên chi phí đã vượt mọi giá trị trong  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109090304001",
+  "loai": "tra_loi_ngan",
+  "de": "Cho một tấm nhôm hình vuông có cạnh bằng 12 cm . Người ta cắt ở bốn góc của tấm nhôm đó bốn hình vuông bằng nhau, mỗi hình vuông có cạnh bằng x cm, rồi gấp tấm nhôm đó thành hình hộp chữ nhật không có nắp ( như hình vẽ). Tìm x để thể tích hình hộp chữ nhật đó là lớn nhất.",
+  "dap_an": "2",
+  "loi_giai": "Hình hộp chữ nhật tạo thành có chiều cao là x, chiều dài bằng chiều rộng và bằng : $12-2x$\nNhận xét : mỗi góc cắt đi x nên x phải nhỏ hơn 1 nửa cạnh hình vuông, tức là $x < 6$\nThể tích hình hộp này là : $V = (12-2x)(12-2x)x = 4x(6-x)^2$\nÁp dụng Bổ đề 4.6 ta có :\nXét $x(6-x)^2-32=x(x^2-12x+36)-32 = x^3 -12x^2 +36x-32=(x-2)^2(x-8)$\nVì $x<6$ nên $(x-2)^2 \\leq 0$; $x-8<0$ suy ra $(x-2)^2 (x-8) \\leq 0$\nSuy ra $x(6-x)^2 \\leq 32 \\Rightarrow V = 4x(6-x)^2 \\leq 128$\nDấu '$=$' xảy ra khi $(x-2)^2 = 0 \\Rightarrow x=2$",
+  "nhan_cu": "Bài toán thực tế hình học › Bài toán thể tích - diện tích : Cho diện tích - hỏi thể tích"
+ },
+ {
+  "ma_cau": "T109030305036",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}-9}{\\sqrt{x}+5}$ với $x$ là số tự nhiên dương. Tìm GTNN của $P$.",
+  "dap_an": "-\\dfrac{4}{3}",
+  "loi_giai": "$P=\\dfrac{\\sqrt{x}-9}{\\sqrt{x}+5}=\\dfrac{\\sqrt{x}+5-14}{\\sqrt{x}+5}=1-\\dfrac{14}{\\sqrt{x}+5}$.\nVì $x$ là số tự nhiên dương nên\n$x\\ge1\\Rightarrow\\sqrt{x}\\ge1\\Rightarrow\\sqrt{x}+5\\ge6$.\n$\\Rightarrow\\dfrac{14}{\\sqrt{x}+5}\\le\\dfrac{14}{6}$.\n$\\Rightarrow\\dfrac{14}{\\sqrt{x}+5}\\le\\dfrac{7}{3}$.\n$\\Rightarrow-\\dfrac{14}{\\sqrt{x}+5}\\ge-\\dfrac{7}{3}$.\n$\\Rightarrow1-\\dfrac{14}{\\sqrt{x}+5}\\ge1-\\dfrac{7}{3}$.\n$\\Rightarrow P\\ge-\\dfrac{4}{3}$.\nDấu bằng xảy ra khi $\\sqrt{x}+5=6\\Rightarrow\\sqrt{x}=1\\Rightarrow x=1$.\nVậy GTNN của $P$ là $-\\dfrac{4}{3}$ khi $x=1$.",
+  "nhan_cu": "Câu C rút gọn › Tìm GTLN-GTNN của P"
+ },
+ {
+  "ma_cau": "T109090102001",
+  "loai": "tra_loi_ngan",
+  "de": "Một công ty kinh doanh vận tải có một đội gồm 35 xe chở hàng , lợi nhuận trung bình mỗi xe là 1 triệu đồng một ngày. Công ty muốn mở rộng kinh doanh nên đã tiến hành khảo sát thị trường. Kết quả cho thấy , nếu cứ bổ sung thêm 1 xe chở hàng thì lợi nhuận trung bình của mỗi xe sẽ giảm đi 20 nghìn đồng một ngày. Hỏi công ty nên bổ sung bao nhiêu xe để lợi nhuận trung bình mỗi ngày của đội xe là lớn nhất ?",
+  "dap_an": "7 hoặc 8",
+  "loi_giai": "Gọi số xe công ty cần bổ sung thêm là $x$ ($x \\in \\mathbb{N}$).\nTổng số xe của công ty là: $35+x$ (xe)\nLợi nhuận trung bình của một xe là: $1000-20x$ (nghìn đồng)\nLợi nhuận của cả đội xe là:\n$M = (35+x)(1000-20x) = 20(35+x)(50-x) = 20(-x^2+15x+1750)$ (nghìn đồng)\nXét biểu thức $A = -x^2+15x+1750$\nTa có $A-1806 = -x^2+15x+1750-1806 = -(x^2-15x+56) = -(x-7)(x-8)$\nXét $x \\ge 8$, khi đó\n$x-7 > 0$\n$x-8 \\ge 0$\n$\\Rightarrow -(x-8)(x-7) \\le 0$\nXét $x < 8, x \\in N^*$ nên $x \\le 7$. Khi đó\n$x-7 \\le 0$\n$x-8 < 0$\n$\\Rightarrow -(x-8)(x-7) \\le 0$\nVậy $-(x-8)(x-7) \\le 0$. Suy ra $A-1806 \\le 0 \\Rightarrow A \\le 1806$\nDấu '$=$' xảy ra khi $x = 7$ hoặc $x = 8$.\nVậy công ty nên bổ sung 7 hoặc 8 xe thì lợi nhuậ …",
+  "nhan_cu": "Bài toán về Doanh thu - Lợi nhuận › Bài toán tối ưu Doanh thu - Lợi nhuận sử dụng điều kiện biến nguyên"
+ },
+ {
+  "ma_cau": "T109030305057",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=-\\dfrac{4}{\\sqrt{x}-1}$ $(x\\ge0;x\ne1)$. Tìm các giá trị nguyên dương của $x$ để $P$ đạt giá trị nhỏ nhất.",
+  "dap_an": "2",
+  "loi_giai": "Vì $x$ là số nguyên dương và $x\\ne1\\Rightarrow x\\ge2$.\n$\\Rightarrow\\sqrt{x}-1\\ge\\sqrt{2}-1>0$.\n$\\Rightarrow\\dfrac{4}{\\sqrt{x}-1}\\le\\dfrac{4}{\\sqrt{2}-1}$.\n$\\Rightarrow-\\dfrac{4}{\\sqrt{x}-1}\\ge-\\dfrac{4}{\\sqrt{2}-1}$.\n$\\Rightarrow P\\ge-\\dfrac{4}{\\sqrt{2}-1}$.\nDấu bằng xảy ra khi $x=2$ (thỏa mãn).\nVậy $x=2$ thì $P$ đạt giá trị nhỏ nhất.",
+  "nhan_cu": "Câu C rút gọn › Tìm GTLN-GTNN của P"
+ },
+ {
+  "ma_cau": "T109000000619",
+  "loai": "tu_luan",
+  "de": "Một trang chữ của một tạp chí cần diện tích là $384$ $cm^2$. Biết rằng trang giấy được căn lề trên là $3$ cm, lề dưới là $3$ cm; lề phải là $2$ cm, lề trái là $2$ cm. Hỏi chiều ngang và chiều dọc tối ưu của trang giấy lần lượt là bao nhiêu để diện tích trang giấy là nhỏ nhất?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** diện tích trang giấy phụ thuộc hai ẩn nhưng tích hai kích thước của phần chữ cố định bằng $384$, nên đưa về một ẩn rồi so sánh diện tích với giá trị nhỏ nhất dự đoán bằng hằng đẳng thức bình phương.\n**Bước 1.** Gọi chiều ngang và chiều dọc của phần chữ là hai ẩn có tích bằng $384$, rồi biểu diễn kích thước trang giấy bằng cách cộng thêm các lề.\n**Bước 2.** Viết diện tích trang giấy rồi khai triển, dùng điều kiện tích bằng $384$ để đưa về biểu thức chỉ còn một ẩn.\n**Bước 3.** Tìm giá trị nhỏ nhất bằng cách xét hiệu giữa diện tích và một hằng số, biến đổi hiệu đó thành phân thức có tử là bình phương.\n**Bước 4.** Tìm giá trị của ẩn làm bình phương bằng $0$, s …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000326",
+  "loai": "tu_luan",
+  "de": "Thực hiện phép tính: $\\dfrac{4}{\\sqrt{5}+1}-2\\sqrt{5}+\\sqrt{(6-\\sqrt{5})^2}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** có hai chỗ phải xử lí riêng: trục căn thức ở mẫu của phân số và dùng $\\sqrt{A^2}=|A|$ rồi xét dấu của $6-\\sqrt{5}$.\n**Bước 1.** Nhân cả tử và mẫu của phân số với biểu thức liên hợp của mẫu để mẫu không còn căn.\n**Bước 2.** Với căn cuối, viết $\\sqrt{A^2}=|A|$ rồi so sánh $6$ với $\\sqrt{5}$ để bỏ dấu giá trị tuyệt đối đúng cách.\n**Bước 3.** Gộp ba số hạng đã xử lí, cộng trừ riêng phần chứa $\\sqrt{5}$ và phần số nguyên.\n**Chú ý:** dấu trừ đứng trước $2\\sqrt{5}$ và dấu trừ trước $\\sqrt{5}$ khi bỏ ngoặc của $6-\\sqrt{5}$ rất dễ nhầm.\n**Phần 2. Trình bày**\nVì $6^2=36>5$ nên $6>\\sqrt{5}$, suy ra $|6-\\sqrt{5}|=6-\\sqrt{5}$.\nTa có:\n$\\dfrac{4}{\\sqrt{5}+1}-2\\sqrt{5}+\\s …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109080102013",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTLN – GTNN của biểu thức $A = x^2 - 2x + 6$ với $0 \\le x \\le 4$",
+  "dap_an": "14; 5",
+  "loi_giai": "Nhận xét : 3 giá trị đặc biệt của x là : 0, 4, và 2\nVới $x=0 \\Rightarrow A=6$\nVới $x=4 \\Rightarrow A=14$\nVới $x=1 \\Rightarrow A=5$\nVậy ta nhẩm được : GTLN bằng 14 còn GTNN là 5\nTrình bày thực tế :\nXét $A-5 = x^2 - 2x + 6 - 5 = x^2 - 2x + 1 = (x-1)^2$\nVì $(x-1)^2 \\ge 0 \\Rightarrow A-5 \\ge 0 \\Rightarrow A \\ge 5$\nDấu ‘$=’$ xảy ra khi $(x-1)^2 = 0 \\Rightarrow x=1$\nVậy GTNN của A là 5 khi $x=1$\nXét $A-14 = x^2 - 2x + 6 - 14 = x^2 - 2x - 8 = (x+2)(x-4)$\nVì $0 \\le x \\le 4 \\Rightarrow x-4 \\le 0 ; x+2 > 0 \\Rightarrow (x+2)(x-4) \\le 0 \\Rightarrow A-14 \\le 0 \\Rightarrow A \\le 14$\nDấu ‘$=’$ xảy ra khi $x=4$\nVậy GTLN của A là 14 khi $x=4$",
+  "nhan_cu": "Bất đẳng thức một biến › GTLN - GTNN của biểu thức một biến có điều kiện"
+ },
+ {
+  "ma_cau": "T109030201051",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm ĐKXĐ của biểu thức $\\dfrac{\\sqrt{x}}{\\sqrt{x-7}}$.",
+  "dap_an": "$x>7$",
+  "loi_giai": "ĐKXĐ: $\\begin{cases}x\\ge0\\\\x-7>0\\end{cases}\\Rightarrow\\begin{cases}x\\ge0\\\\x>7\\end{cases}\\Rightarrow x>7$",
+  "nhan_cu": "Rút gọn Căn thức › Tìm ĐKXĐ của Căn thức"
+ },
+ {
+  "ma_cau": "T109000000581",
+  "loai": "tu_luan",
+  "de": "Cho hai biểu thức: $A=\\dfrac{\\sqrt{x}+2}{\\sqrt{x}-1}$ và $B=\\dfrac{x-3\\sqrt{x}-4}{x-1}+\\dfrac{4}{\\sqrt{x}-1}$ với $x\\ge0$, $x\\ne1$.\na) Tính giá trị biểu thức $A$ khi $x=25$.\nb) Chứng minh rằng: $B=\\dfrac{\\sqrt{x}}{\\sqrt{x}-1}$.\nc) Tìm giá trị của $x$ để $Q=\\dfrac{2B}{A}$ là số nguyên tố.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai mẫu của $B$ đều chia hết cho $\\sqrt{x}-1$ (vì $x-1=(\\sqrt{x}-1)(\\sqrt{x}+1)$), nên rút gọn $B$ trước; ý c dùng kết quả ý b để đưa $Q$ về một biểu thức theo $\\sqrt{x}$ rồi đánh giá.\n**Bước 1.** Ý a: kiểm tra $x=25$ thoả mãn điều kiện, tính $\\sqrt{25}$ rồi thay vào biểu thức $A$.\n**Bước 2.** Ý b: phân tích tử $x-3\\sqrt{x}-4$ và mẫu $x-1$ thành nhân tử để rút gọn phân số thứ nhất, sau đó cộng hai phân thức cùng mẫu $\\sqrt{x}-1$.\n**Bước 3.** Ý c: thay kết quả của $B$ vào $Q=\\dfrac{2B}{A}$, chia hai phân thức bằng cách nhân với phân thức nghịch đảo để rút gọn $Q$.\n**Bước 4.** Viết $Q$ dưới dạng \"số nguyên trừ một phân số dương\" rồi so sánh $Q$ với $2$, vì s …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000597",
+  "loai": "tu_luan",
+  "de": "Bạn An lấy ngẫu nhiên đồng thời hai chiếc bút từ trong một hộp đựng ba chiếc bút màu xanh và một chiếc bút màu đỏ cùng loại (các chiếc bút giống nhau về hình dáng và kích thước). Tính xác suất của biến cố $A$ \"Bạn An lấy được hai chiếc bút khác màu\".",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** các chiếc bút giống nhau về hình dáng nên mỗi cách lấy hai chiếc đều đồng khả năng; phải đặt tên từng chiếc bút để liệt kê đủ các cách lấy, không đếm sót.\n**Bước 1.** Đặt tên ba bút xanh và một bút đỏ, rồi liệt kê mọi cách lấy ra hai chiếc bút (không phân biệt thứ tự vì lấy đồng thời) để được không gian mẫu.\n**Bước 2.** Chọn trong các kết quả đó những kết quả thuận lợi cho biến cố $A$, tức là hai bút khác màu: một xanh, một đỏ.\n**Bước 3.** Lập tỉ số giữa số kết quả thuận lợi và số kết quả của không gian mẫu để ra xác suất.\n**Chú ý:** lấy đồng thời nên cặp $x_1x_2$ và $x_2x_1$ là cùng một kết quả, không đếm hai lần.\n**Phần 2. Trình bày**\nKí hiệu ba chiếc bú …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000389",
+  "loai": "tu_luan",
+  "de": "Cho $a<b$, hãy so sánh: $-4a+3$ và $-4b+3$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** nhân hai vế của bất đẳng thức với số âm thì phải đổi chiều; cộng cùng một số vào hai vế thì giữ nguyên chiều.\n**Bước 1.** Xuất phát từ bất đẳng thức đã cho $a<b$, là điều kiện duy nhất có sẵn.\n**Bước 2.** Nhân hai vế với $-4$ để tạo ra hai hạng tử $-4a$ và $-4b$, chú ý $-4$ là số âm nên chiều bất đẳng thức bị đổi.\n**Bước 3.** Cộng $3$ vào hai vế để được hai biểu thức cần so sánh, rồi kết luận.\n**Chú ý:** ghi rõ tính chất đã dùng ở mỗi bước, vì đây là bài so sánh bằng tính chất của bất đẳng thức.\n**Phần 2. Trình bày**\nTa có $a<b$.\nNhân hai vế với $-4<0$, ta được $-4a>-4b$ (nhân hai vế với số âm thì đổi chiều).\nCộng $3$ vào hai vế, ta được $-4a+3>-4b+3$.\nVậy …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109020301017",
+  "loai": "tra_loi_ngan",
+  "de": "Một công nhân may dự định may 100 chiếc áo trong thời gian nhất định. Nhưng thực tế người đó phải may 126 chiếc áo. Vì vậy mặc dù người đó đã may mỗi giờ thêm 5 chiếc áo, song thời gian hoàn thành công việc vẫn chậm hơn so với dự định là 12 phút. Hỏi theo dự định, mỗi giờ người công nhân đó may bao nhiêu chiếc áo? Biết rằng khả năng của người đó may được không quá 40 chiếc áo mỗi giờ.",
+  "dap_an": "25",
+  "loi_giai": "Đổi 12 phút là $\\dfrac{1}{5}$ giờ.\nGọi số chiếc áo người công nhân may mỗi giờ theo dự định là $x$ (chiếc áo, $0 < x \\le 40$).\nDo mỗi giờ người đó may thêm 5 chiếc áo nên số chiếc áo người công nhân may mỗi giờ thực tế là:\n$x + 5$ (chiếc áo).\nThời gian may 100 chiếc áo theo dự định là: $\\dfrac{100}{x}$ (giờ).\nThời gian may 126 chiếc áo thực tế là: $\\dfrac{126}{x+5}$ (giờ).\nVì thời gian thực tế chậm hơn so với dự định 12 phút nên ta có PT:\n$\\dfrac{126}{x+5} - \\dfrac{100}{x} = \\dfrac{1}{5}$\n$\\dfrac{126x - 100(x+5)}{x(x+5)} = \\dfrac{1}{5}$\n$\\dfrac{126x - 100x - 500}{x(x+5)} = \\dfrac{1}{5}$\n$\\dfrac{26x - 500}{x(x+5)} = \\dfrac{1}{5}$\n$5(26x - 500) = x(x+5)$\n$130x - 2500 = x^2 + 5x$\n$x^2 - 125x +  …",
+  "nhan_cu": "Giải toán bằng cách lập phương trình › Bài toán Năng suất"
+ },
+ {
+  "ma_cau": "T109110301006",
+  "loai": "tra_loi_ngan",
+  "de": "Cho tam giác ABC nhọn $(AB<AC)$. Kẻ 3 đường cao $AD$, $BE$, $CF$ cắt nhau tại H. Chứng minh rằng: $\\triangle AEF\\sim\\triangle ABC$.",
+  "loi_giai": "Ta có $AE \\cdot AC = AF \\cdot AB$ (cmt)\nsuy ra $\\dfrac{AE}{AB}=\\dfrac{AF}{AC}$.\nXét $\\triangle AEF$ và $\\triangle ABC$ có:\n$\\widehat{A}$ chung\n$\\dfrac{AE}{AB}=\\dfrac{AF}{AC}$ (theo trên)\n$\\Rightarrow \\triangle AEF \\sim \\triangle ABC$ (c-g-c)",
+  "nhan_cu": "Hình học › Hình học"
+ },
+ {
+  "ma_cau": "T109000000583",
+  "loai": "tu_luan",
+  "de": "Một gia đình cần ít nhất $900$ đơn vị protein và $400$ đơn vị lipit trong thức ăn mỗi ngày. Mỗi kilôgam thịt bò chứa $800$ đơn vị protein và $200$ đơn vị lipit. Mỗi kilôgam thịt lợn chứa $600$ đơn vị protein và $400$ đơn vị lipit. Biết rằng gia đình này chỉ mua nhiều nhất là $1{,}6$ kg thịt bò và $1{,}1$ kg thịt lợn; giá tiền $1$ kg thịt bò là $250$ nghìn đồng; $1$ kg thịt lợn là $160$ nghìn đồng. Tìm khối lượng thịt mỗi loại mà gia đình cần mua để đảm bảo yêu cầu về lượng protein và lipit nhưng chi phí là ít nhất.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** viết chi phí $T$ thành \"một bội của vế trái bất phương trình protein\" trừ một bội của $y$; khi đó hai điều kiện $8x+6y\\ge9$ và $y\\le1{,}1$ chặn được $T$ từ dưới, và dấu bằng xảy ra khi cả hai điều kiện đạt dấu bằng.\n**Bước 1.** Gọi $x$, $y$ là khối lượng thịt bò, thịt lợn (kg), viết các điều kiện về lượng protein, lượng lipit và giới hạn mua; viết chi phí $T$ theo $x$, $y$.\n**Bước 2.** Tìm số $k$ sao cho $T=k(8x+6y)+(\\ldots)y$ với hệ số của $x$ khớp: $250=8k$, suy ra $k=31{,}25$, từ đó viết được $T=31{,}25(8x+6y)-27{,}5y$.\n**Bước 3.** Dùng $8x+6y\\ge9$ và $y\\le1{,}1$ để đánh giá từng phần của $T$ rồi cộng lại, được giá trị nhỏ nhất của $T$.\n**Bước 4.** Chỉ  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109020204018",
+  "loai": "tra_loi_ngan",
+  "de": "Sau cơn bão số 11, để góp phần hỗ trợ bà con và các bạn học sinh bị ảnh hưởng bởi lũ lụt, trường THCS Phan Chu Trinh tổ chức chuyến 6,5 tấn hàng cứu trợ gồm sách, vở, đồ dùng học tập cùng 0,2 tấn dụng cụ hỗ trợ lên xã An Khánh tỉnh Thái Nguyên. Mỗi xe tải có tải trọng 1,2 tấn, nhưng chỉ được phép chở 90% tải trọng để đảm bảo an toàn. Hỏi cần thuê ít nhất bao nhiêu xe tải để chở hết toàn bộ số hàng trong một chuyến?",
+  "dap_an": "7",
+  "loi_giai": "Gọi số xe tải cần để chở hết toàn bộ số hàng trong một chuyến là $x$ chuyến ($x \\in \\mathbb{N}*$)\nTổng số hàng cần phải chở là: $6,5 + 0,2 = 6,7$ (tấn).\nTải trọng mà mỗi xe có thể chở là: $1,2 \\cdot 90\\% = 1,08$ (tấn)\nTổng tải trọng hàng hoá mà $x$ xe chở được là: $1,08x$ (tấn)\nDo các xe phải chở hết lượng hàng đó nên ta có bất phương trình:\n$1,08x \\geq 6,7$\n$x \\geq \\dfrac{6,7}{1,08}$\n$x \\geq \\dfrac{335}{54}$\n$x \\geq 6,2$\nMà $x \\in \\mathbb{N}*$ nên giá trị nhỏ nhất của $x$ thoả mãn là $7$.\nVậy cần ít nhất $7$ xe tải để có thể chở hết lượng hàng hoá đó.",
+  "nhan_cu": "Bất phương trình bậc nhất một ẩn › Giải toán bằng cách lập bất phương trình"
+ },
+ {
+  "ma_cau": "T109000000429",
+  "loai": "tu_luan",
+  "de": "Một bài toán Ấn Độ mà V.I. Lebedev đã viết lại như sau: \"Một bầy khỉ hét hò, xếp hình thành bảng vuông, mỗi cột và mỗi hàng, một phần tám số khỉ, dư ra mười hai con, trèo lên cây nhảy nhót\". Đố các bạn tính được tổng cộng có bao nhiêu con?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** gọi số khỉ ở mỗi hàng là ẩn, thì tổng số khỉ bằng $8$ lần ẩn đó còn bảng vuông có (ẩn)$^2$ con; phần dư $12$ con cộng với bảng vuông phải đủ cả bầy.\n**Bước 1.** Chọn ẩn là số khỉ ở mỗi hàng (cũng là mỗi cột) và biểu diễn tổng số khỉ của cả bầy theo ẩn đó.\n**Bước 2.** Biểu diễn số khỉ trong bảng vuông, rồi lập phương trình: tổng số khỉ bằng số khỉ trong bảng cộng $12$ con trèo cây.\n**Bước 3.** Đưa phương trình về một vế bằng $0$ và phân tích thành tích hai nhân tử (không dùng công thức nghiệm).\n**Bước 4.** Giải từng nhân tử, đối chiếu điều kiện của ẩn, thử lại và tính tổng số khỉ ứng với mỗi giá trị.\n**Chú ý:** kiểm tra lại từng kết quả với dữ kiện của đề đ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000634",
+  "loai": "tu_luan",
+  "de": "Giải phương trình $\\dfrac{2x-2}{x-3}-\\dfrac{x-5}{x+3}=\\dfrac{-21}{x^2-9}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** phương trình có ẩn ở mẫu, nên phải nêu điều kiện xác định trước, quy đồng khử mẫu rồi đối chiếu nghiệm với điều kiện.\n**Bước 1.** Tìm điều kiện để các mẫu khác $0$ và phân tích $x^2-9$ thành tích để thấy mẫu chung.\n**Bước 2.** Quy đồng hai phân thức ở vế trái về mẫu chung $(x-3)(x+3)$ rồi khử mẫu, ta được phương trình không còn ẩn ở mẫu.\n**Bước 3.** Khai triển, thu gọn để đưa về phương trình tích (bằng cách đặt nhân tử chung) và giải từng phương trình bậc nhất.\n**Bước 4.** Đối chiếu từng nghiệm với điều kiện xác định rồi kết luận.\n**Phần 2. Trình bày**\nĐiều kiện xác định: $x\\ne3$ và $x\\ne-3$.\nTa có $x^2-9=(x-3)(x+3)$.\nQuy đồng mẫu hai vế, ta được $\\dfrac{( …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000486",
+  "loai": "tu_luan",
+  "de": "Giải hệ phương trình: $\\begin{cases} 4x^3=y^2+3 \\\\ 4y^3=x^2+3 \\end{cases}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hệ đối xứng — trừ từng vế hai phương trình rồi phân tích thành nhân tử để tách thành hai trường hợp, trong đó trường hợp thứ hai vô lí vì $x$, $y$ đều dương.\n**Bước 1.** Nhận xét vế phải mỗi phương trình luôn dương nên suy ra dấu của $x$ và $y$; điều này giúp loại các thừa số luôn dương về sau.\n**Bước 2.** Trừ từng vế hai phương trình, chuyển vế rồi dùng hằng đẳng thức hiệu hai lập phương và hiệu hai bình phương để đặt nhân tử chung $x-y$.\n**Bước 3.** Chứng tỏ thừa số còn lại luôn dương nên chỉ có thể $x=y$, rồi thế vào một phương trình để được phương trình một ẩn bậc ba.\n**Bước 4.** Phân tích phương trình bậc ba thành tích bằng cách tách hạng tử, giải ra  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000111",
+  "loai": "tra_loi_ngan",
+  "de": "Người ta cần lập hàng rào quanh khu vực bảo vệ có dạng hình chữ nhật cho một toà nhà như hình vẽ bên. Hỏi nếu có $80\\ \\text{m}$ hàng rào bao quanh 3 mặt. Biết hàng rào là các cạnh $AB$, $BC$, $CD$ như hình vẽ thì diện tích tối đa của khu vực bảo vệ là bao nhiêu?",
+  "dap_an": "800",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** diện tích là một biểu thức bậc hai của một cạnh; đưa về dạng \"hằng số trừ một số không âm\" bằng hoàn thành bình phương thì thấy ngay giá trị lớn nhất.\n**Bước 1.** Xác định từ hình: ba cạnh $AB$, $BC$, $CD$ có hàng rào, cạnh $AD$ sát toà nhà nên không cần rào; đặt ẩn là độ dài cạnh $AB$ (bằng $CD$) kèm điều kiện.\n**Bước 2.** Dùng tổng chiều dài $80\\ \\text{m}$ hàng rào để biểu diễn $BC$ theo ẩn, rồi viết diện tích hình chữ nhật theo ẩn đó.\n**Bước 3.** Biến đổi biểu thức diện tích về dạng hằng số trừ đi một biểu thức luôn không âm, từ đó nêu giá trị lớn nhất và khi nào đạt.\n**Bước 4.** Kiểm tra giá trị của ẩn lúc đạt lớn nhất có thoả điều kiện không, rồi kết  …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000357",
+  "loai": "tu_luan",
+  "de": "Cho $a,b,c\\ne0$ và $a+b+c\\ne0$ thoả mãn $\\dfrac{1}{a}+\\dfrac{1}{b}+\\dfrac{1}{c}=\\dfrac{1}{a+b+c}$.\nChứng minh rằng: $\\dfrac{1}{a^{2025}}+\\dfrac{1}{b^{2025}}+\\dfrac{1}{c^{2025}}=\\dfrac{1}{a^{2025}+b^{2025}+c^{2025}}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** biến đổi giả thiết thành $(a+b)(b+c)(c+a)=0$, tức là có hai số đối nhau; vì $2025$ là số lẻ nên luỹ thừa $2025$ của hai số đối nhau cũng đối nhau và hai phân số tương ứng triệt tiêu.\n**Bước 1.** Quy đồng vế trái của giả thiết rồi nhân chéo để bỏ mẫu, được một đẳng thức không còn phân số.\n**Bước 2.** Chuyển vế và phân tích đa thức thành nhân tử bằng cách tách $a+b+c=(a+b)+c$, rút nhân tử chung $a+b$, để được tích $(a+b)(b+c)(c+a)=0$.\n**Bước 3.** Từ tích bằng $0$ suy ra một trong ba tổng bằng $0$; giả thiết và kết luận đều đối xứng theo $a$, $b$, $c$ nên chỉ cần xét $a+b=0$.\n**Bước 4.** Khi $b=-a$, dùng số mũ lẻ để viết $b^{2025}=-a^{2025}$, rồi thay vào hai …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000467",
+  "loai": "tu_luan",
+  "de": "Một mảnh đất hình chữ nhật có chiều dài hơn chiều rộng $5$ m. Nếu giảm chiều rộng $4$ m và giảm chiều dài $5$ m thì diện tích mảnh đất giảm đi $180$ $m^2$. Tính chiều dài và chiều rộng của mảnh đất.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** chỉ cần một ẩn là chiều rộng, vì chiều dài và hai diện tích đều biểu diễn được qua nó; khi lập hiệu hai diện tích, các hạng tử bậc hai triệt tiêu.\n**Bước 1.** Chọn ẩn là chiều rộng, nêu điều kiện (phải lớn hơn mức giảm thì mới giảm được) và biểu diễn chiều dài qua ẩn đó.\n**Bước 2.** Viết kích thước mới sau khi giảm rồi tính diện tích mới theo ẩn.\n**Bước 3.** Lập phương trình \"diện tích cũ trừ diện tích mới bằng mức giảm\", rút gọn, giải; đối chiếu điều kiện rồi tính chiều dài.\n**Chú ý:** diện tích giảm đi nghĩa là lấy diện tích cũ **trừ** diện tích mới, không đảo ngược hiệu.\n**Phần 2. Trình bày**\nGọi chiều rộng mảnh đất là $x$ (m), điều kiện $x>4$.\nChiều dà …",
+  "nhan_cu": "Giải toán bằng cách lập phương trình › Bài toán Diện tích"
+ },
+ {
+  "ma_cau": "T109030305023",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{5\\sqrt{x}-4}{\\sqrt{x}+2}$ với $x$ là số nguyên dương. Tìm giá trị của $x$ để $P$ đạt giá trị nhỏ nhất.",
+  "dap_an": "1",
+  "loi_giai": "$P=\\dfrac{5\\sqrt{x}-4}{\\sqrt{x}+2}=\\dfrac{5(\\sqrt{x}+2)-14}{\\sqrt{x}+2}=5-\\dfrac{14}{\\sqrt{x}+2}$.\nVì $x$ là số nguyên dương nên\n$x\\ge1\\Rightarrow\\sqrt{x}\\ge1\\Rightarrow\\sqrt{x}+2\\ge3$.\n$\\Rightarrow\\dfrac{14}{\\sqrt{x}+2}\\le\\dfrac{14}{3}$.\n$\\Rightarrow-\\dfrac{14}{\\sqrt{x}+2}\\ge-\\dfrac{14}{3}$.\n$\\Rightarrow5-\\dfrac{14}{\\sqrt{x}+2}\\ge5-\\dfrac{14}{3}$.\n$\\Rightarrow P\\ge\\dfrac{1}{3}$.\nDấu bằng xảy ra khi $\\sqrt{x}+2=3\\Rightarrow\\sqrt{x}=1\\Rightarrow x=1$.\nVậy $P$ đạt giá trị nhỏ nhất là $\\dfrac{1}{3}$ khi $x=1$.",
+  "nhan_cu": "Câu C rút gọn › Tìm GTLN-GTNN của P"
+ },
+ {
+  "ma_cau": "T109030305024",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{3\\sqrt{x}-5}{\\sqrt{x}+4}$ với $x$ là số nguyên dương. Tìm giá trị của $x$ để $P$ đạt giá trị nhỏ nhất.",
+  "dap_an": "1",
+  "loi_giai": "$P=\\dfrac{3\\sqrt{x}-5}{\\sqrt{x}+4}=\\dfrac{3(\\sqrt{x}+4)-17}{\\sqrt{x}+4}=3-\\dfrac{17}{\\sqrt{x}+4}$.\nVì $x$ là số nguyên dương nên\n$x\\ge1\\Rightarrow\\sqrt{x}\\ge1\\Rightarrow\\sqrt{x}+4\\ge5$.\n$\\Rightarrow\\dfrac{17}{\\sqrt{x}+4}\\le\\dfrac{17}{5}$.\n$\\Rightarrow-\\dfrac{17}{\\sqrt{x}+4}\\ge-\\dfrac{17}{5}$.\n$\\Rightarrow3-\\dfrac{17}{\\sqrt{x}+4}\\ge3-\\dfrac{17}{5}$.\n$\\Rightarrow P\\ge-\\dfrac{2}{5}$.\nDấu bằng xảy ra khi $\\sqrt{x}+4=5\\Rightarrow\\sqrt{x}=1\\Rightarrow x=1$.\nVậy $P$ đạt giá trị nhỏ nhất là $-\\dfrac{2}{5}$ khi $x=1$.",
+  "nhan_cu": "Câu C rút gọn › Tìm GTLN-GTNN của P"
+ },
+ {
+  "ma_cau": "T109110201005",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn biểu thức: $\\dfrac{4x-1}{x-1}-\\dfrac{x-2}{x+1}+\\dfrac{3x^2+2x-5}{1-x^2}$.",
+  "dap_an": "$\\dfrac{4x+2}{x^2-1}$",
+  "loi_giai": "Điều kiện: $x\\neq 1$, $x\\neq -1$.\nTa có $1-x^2=-(x-1)(x+1)$ nên:\n$\\dfrac{4x-1}{x-1}-\\dfrac{x-2}{x+1}+\\dfrac{3x^2+2x-5}{1-x^2}=\\dfrac{(4x-1)(x+1)}{(x-1)(x+1)}-\\dfrac{(x-2)(x-1)}{(x-1)(x+1)}-\\dfrac{3x^2+2x-5}{(x-1)(x+1)}$\n$=\\dfrac{(4x-1)(x+1)-(x-2)(x-1)-(3x^2+2x-5)}{(x-1)(x+1)}$\nTính tử: $(4x-1)(x+1)=4x^2+3x-1$; $(x-2)(x-1)=x^2-3x+2$\nTử $=4x^2+3x-1-(x^2-3x+2)-(3x^2+2x-5)=4x+2$\nVậy biểu thức bằng $\\dfrac{4x+2}{x^2-1}$ (với $x\\neq \\pm 1$).",
+  "nhan_cu": "Phương trình và Bất phương trình bậc nhất › Phương trình và Bất phương trình bậc nhất"
+ },
+ {
+  "ma_cau": "T109000000396",
+  "loai": "tu_luan",
+  "de": "Cho $a>b$, hãy so sánh: $-5a-4$ và $-5b-4$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** nhân hai vế của bất đẳng thức với số **âm** thì phải **đổi chiều**; cộng cùng một số vào hai vế thì giữ nguyên chiều.\n**Bước 1.** Xuất phát từ bất đẳng thức đã cho $a>b$.\n**Bước 2.** Nhân hai vế với $-5$, là số âm, nên đổi chiều bất đẳng thức.\n**Bước 3.** Cộng cùng một số vào hai vế để tạo ra đúng hai biểu thức cần so sánh, rồi kết luận.\n**Phần 2. Trình bày**\nVì $a>b$ nên $-5a<-5b$ (nhân hai vế với $-5<0$ nên đổi chiều).\nSuy ra $-5a-4<-5b-4$ (cộng hai vế với $-4$).\nVậy $-5a-4<-5b-4$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000288",
+  "loai": "tu_luan",
+  "de": "Người ta cần xây một hồ chứa nước dạng khối hộp chữ nhật không nắp có thể tích bằng $288$ $m^3$. Đáy hồ là hình chữ nhật có chiều dài gấp đôi chiều rộng. Giá thuê nhân công để xây hồ là $100\\,000$ đồng/$m^2$. Hãy xác định kích thước của hồ nước sao cho chi phí thuê nhân công thấp nhất. Chi phí đó là bao nhiêu?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** chi phí tỉ lệ thuận với diện tích phải xây (đáy và bốn mặt bên, không nắp), nên bài toán là tìm giá trị nhỏ nhất của diện tích đó theo chiều rộng đáy.\n**Bước 1.** Đặt chiều rộng đáy là $x$ (khi đó chiều dài là $2x$) và chiều cao là $h$, rồi dùng thể tích đã cho để biểu thị $h$ theo $x$ nhằm chỉ còn một ẩn.\n**Bước 2.** Viết diện tích đáy cộng diện tích bốn mặt bên, thay $h$ vào để được biểu thức diện tích theo $x$, gồm một hạng tử chứa $x^2$ và một hạng tử có $x$ ở mẫu.\n**Bước 3.** Lập bảng vài giá trị nguyên của $x$ để thấy diện tích giảm rồi lại tăng, từ đó dự đoán giá trị nhỏ nhất của diện tích.\n**Bước 4.** Muốn chứng minh dự đoán, xét hiệu giữa diện tíc …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000551",
+  "loai": "tu_luan",
+  "de": "Cho hai biểu thức: $A=\\dfrac{3+\\sqrt{x}}{\\sqrt{x}}$ và $B=\\left(\\dfrac{x+3}{x-9}+\\dfrac{1}{\\sqrt{x}+3}\\right):\\dfrac{\\sqrt{x}}{\\sqrt{x}-3}$ với $x>0$; $x\\ne 9$.\n1) Tính giá trị của biểu thức $A$ khi $x=36$.\n2) Chứng minh $B=\\dfrac{\\sqrt{x}+1}{\\sqrt{x}+3}$.\n3) Tìm các giá trị nguyên của $x$ để $A \\cdot B>\\dfrac{3}{2}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** ý 3 dùng lại hai kết quả trước: $A$ cho sẵn và $B$ đã rút gọn ở ý 2; tích $A \\cdot B$ rút gọn rất nhiều vì $3+\\sqrt{x}$ và $\\sqrt{x}+3$ giống nhau.\n**Bước 1.** Ý 1: $x=36$ thoả điều kiện $x>0$, $x\\ne 9$ nên thay $\\sqrt{x}=6$ vào $A$.\n**Bước 2.** Ý 2: phân tích $x-9$ thành $(\\sqrt{x}-3)(\\sqrt{x}+3)$, quy đồng hai phân số trong ngoặc, cộng tử rồi đặt nhân tử chung ở tử.\n**Bước 3.** Ý 2: chia cho phân thức $\\dfrac{\\sqrt{x}}{\\sqrt{x}-3}$ tức nhân với phân thức nghịch đảo, rồi rút gọn các thừa số chung.\n**Bước 4.** Ý 3: nhân $A$ với $B$, rút gọn, rồi chuyển $\\dfrac{3}{2}$ sang vế trái và quy đồng để xét dấu một phân thức có mẫu dương.\n**Bước 5.** Ý 3: từ điều k …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109090301001",
+  "loai": "tra_loi_ngan",
+  "de": "Trên một cánh đồng tiếp giáp với bờ sông, người nông dân muốn rào một chuồng cừu hình chữ nhật và không cần rào phía giáp bờ sông. Hỏi với 200m rào thì người nông dân có thể rào được chuồng cừu có diện tích lớn nhất bằng bao nhiêu ?",
+  "dap_an": "5000",
+  "loi_giai": "Gọi chiều rộng của chuồng cừu là $x$ (m).\nGọi chiều dài của chuồng cừu là $y$ (m).\nTổng độ dài hàng rào đã cho là chu vi 3 mặt của hình chữ nhật: $2x + y = 200$ (m).\nDiện tích chuồng cừu là $S = x \\times y$.\nTa có $y = 200 - 2x$.\nThay $y$ vào biểu thức diện tích ta được $S = x(200 - 2x)$.\nĐể $S$ lớn nhất, ta xét biểu thức $S = \\dfrac{1}{2} (2x)(200 - 2x)$.\nÁp dụng bất đẳng thức Cô-si cho hai số dương $2x$ và $200 - 2x$ có tổng không đổi: $2x + (200 - 2x) = 200$.\nTích $(2x)(200 - 2x)$ lớn nhất khi $2x = 200 - 2x$.\n$4x = 200$.\n$x = 50$.\nKhi đó $y = 200 - 2 \\times 50 = 100$.\nDiện tích lớn nhất là $S = 50 \\times 100 = 5000$ (m$^2$).",
+  "nhan_cu": "Bài toán thực tế hình học › Bài toán chu vi - diện tích : Cho tổng - hỏi tích"
+ },
+ {
+  "ma_cau": "T109090201001",
+  "loai": "tra_loi_ngan",
+  "de": "Một công ty sản xuất dụng cụ thể thao nhận được một đơn đặt hàng sản xuất 8000 quả bóng tennis. Công ty này sở hữu một tổ máy móc, mỗi máy có thể sản xuất 30 quả bóng trong một giờ. Chi phí thiết lập các máy này là 200 nghìn đồng cho mỗi máy. Khi được thiết lập, hoạt động sản xuất sẽ diễn ra hoàn toàn tự động dưới sự giám sát của một nhân công. Số tiền phải trả cho người giám sát là 192 nghìn đồng mỗi giờ (người này sẽ giám sát tất cả các máy hoạt động). Hỏi công ty nên sử dụng bao nhiêu máy để chi phí sản xuất là thấp nhất?",
+  "dap_an": "16",
+  "loi_giai": "Giả sử công ty sử dụng $x$ máy ($x \\in N^*$)\nThời gian sản xuất xong đơn hàng là : $\\dfrac{8000}{30x} = \\dfrac{800}{3x}$ (giờ)\nChi phí thiết lập máy là : $200x$ (nghìn)\nChi phí trả cho người giám sát : $\\dfrac{800}{3x}.192 = \\dfrac{51200}{x}$ (nghìn)\nTổng chi phí phát sinh : $A = 200x + \\dfrac{51200}{x}$\nXét $A = 200x + \\dfrac{51200}{x} \\Rightarrow A - 6400 = 200x + \\dfrac{51200}{x} - 6400 = 200 \\left(x + \\dfrac{256}{x} - 32\\right) = \\dfrac{200(x - 16)^2}{x}$\nVì $x \\in N^* \\Rightarrow x > 0$; $(x - 16)^2 \\ge 0 \\Rightarrow \\dfrac{200(x - 16)^2}{x} \\ge 0 \\Rightarrow A \\ge 6400$\nDấu '$=$' xảy ra khi $x - 16 = 0 \\Leftrightarrow x = 16$ (thỏa mãn)\nVậy công ty nên sử dụng 16 máy thì chi phí sản xu …",
+  "nhan_cu": "Bài toán tối ưu chi phí › Bài toán tối ưu chi phí sản xuất - Dạng 1 biến"
+ },
+ {
+  "ma_cau": "T109090305001",
+  "loai": "tra_loi_ngan",
+  "de": "Hộp kĩ thuật của một ngôi nhà được đặt trong góc tường và chiếm phần diện tích của một hình chữ nhật với kích thước $60\\ cm\\times 90\\ cm$. Để tận dụng không gian, chủ nhà dự định lắp đặt một tấm vách sát với hộp kĩ thuật và các đầu vách chạm vào tường để tạo ra hai khu vực lưu trữ đồ. Tính chiều dài của tấm vách để hai khu vực lưu trữ đồ chiếm tổng diện tích nhỏ nhất. [hình]",
+  "lua_chon": [
+   "",
+   "",
+   "",
+   ""
+  ],
+  "dap_an": "60\\sqrt{13}",
+  "loi_giai": "Đặt hệ trục tọa độ với góc tường là gốc, hai tường nằm trên hai trục tọa độ.\nHộp kỹ thuật là hình chữ nhật có hai cạnh sát hai tường, với kích thước $90\\ cm\\times 60\\ cm$.\nGóc hộp xa nhất so với góc tường có tọa độ $H(90;60)$.\nGọi $M(m;0)$ và $N(0;n)$ lần lượt là hai đầu của tấm vách trên hai tường, với $m>90$ và $n>60$.\nĐường thẳng MN đi sát hộp kỹ thuật nên đi qua điểm $H(90;60)$:\n$\\dfrac{90}{m}+\\dfrac{60}{n}=1$\nDiện tích tam giác tạo bởi vách và hai tường là $\\dfrac{1}{2}mn$.\nTổng diện tích hai khu vực lưu trữ đồ (phần tô đậm) bằng diện tích tam giác trừ diện tích hộp kỹ thuật:\n$S=\\dfrac{mn}{2}-90\\cdot 60=\\dfrac{mn}{2}-5400$\nÁp dụng BĐT Cauchy cho hai số dương $\\dfrac{90}{m}$ và $\\dfrac{6 …",
+  "co_hinh": true,
+  "nhan_cu": "Bài toán thực tế hình học › Hình chữ nhật nội tiếp hình tam giác"
+ },
+ {
+  "ma_cau": "T109080102001",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTLN – GTNN của biểu thức $A = x^2 - 4x + 2$ với $0 \\leq x \\leq 4$",
+  "dap_an": "2; -2",
+  "loi_giai": "Giải :\nNhận xét : 3 giá trị đặc biệt của x là : 0, 4, và 2\nVới $x = 0 \\Rightarrow A=2$\nVới $x=4 \\Rightarrow A=2$\nVới $x = 2 \\Rightarrow A=-2$\nVậy ta nhẩm được : GTLN bằng 2 còn GTNN là -2.\nTrình bày thực tế :\nXét $A+2=x^2-4x+2+2=x^2-4x+4=(x-2)^2$\nVì $(x-2)^2 \\geq 0 \\Rightarrow A+2 \\geq 0 \\Rightarrow A \\geq -2$\nDấu ' = ' xảy ra khi $(x-2)^2 = 0 \\Rightarrow x = 2$\nVậy GTNN của A là -2 khi $x = 2$\nXét $A-2 = x^2 - 4x+2-2 = x^2 - 4x = x(x-4)$\nVì $0 \\leq x \\leq 4  \\Rightarrow x \\geq 0 ; x-4 \\leq 0 \\Rightarrow x(x-4) \\leq 0 \\Rightarrow A-2 \\leq 0 \\Rightarrow A \\leq 2$\nDấu ' = ' xảy ra khi $x = 0$ hoặc $x = 4$\nVậy GTLN của A là 2 khi $x = 0$ hoặc $x = 4$",
+  "nhan_cu": "Bất đẳng thức một biến › GTLN - GTNN của biểu thức một biến có điều kiện"
+ },
+ {
+  "ma_cau": "T109020301040",
+  "loai": "tra_loi_ngan",
+  "de": "Theo kế hoạch, một xưởng may phải may xong 2500 chiếc áo chống nắng trong một thời gian quy định. Thực tế do thời điểm bắt đầu vào hè và nhu cầu sử dụng áo chống nắng nhiều, xưởng đã quyết định tăng năng suất nên mỗi ngày xưởng đã may nhiều hơn 10 chiếc áo so với số áo phải may trong một ngày theo kế hoạch. Vì vậy trước thời gian quy định 4 ngày, xưởng đã may được 2160 chiếc áo. Hỏi theo kế hoạch mỗi ngày xưởng phải may xong bao nhiêu chiếc áo chống nắng?",
+  "dap_an": "125",
+  "loi_giai": "Gọi số áo mỗi ngày xưởng phải may theo kế hoạch là $x$ (chiếc, $x \\in \\mathbb{N}^*$).\nThời gian may 2500 chiếc áo theo kế hoạch là: $\\dfrac{2500}{x}$ (ngày).\nVì mỗi ngày xưởng may nhiều hơn 10 cái áo nên số áo mỗi ngày xưởng may thực tế là: $x+10$ (chiếc).\nThời gian may 2160 chiếc áo thực tế là: $\\dfrac{2160}{x+10}$ (ngày).\nVì xưởng may được 2160 chiếc áo trước thời gian quy định 4 ngày nên ta có PT:\n$\\dfrac{2500}{x} - \\dfrac{2160}{x+10} = 4$\n$\\dfrac{2500(x+10)-2160x}{x(x+10)} = 4$\n$\\dfrac{2500x+25000-2160x}{x(x+10)} = 4$\n$\\dfrac{340x+25000}{x^2+10x} = 4$\n$4x^2+40x = 340x+25000$\n$4x^2-300x-25000 = 0$\n$x^2-75x-6250 = 0$\n$(x-125)(x+50) = 0$\nTH1: $x-125 = 0$\n$x=125$ (TM)\nTH2: $x+50 = 0$\n$x=-50$ …",
+  "nhan_cu": "Giải toán bằng cách lập phương trình › Bài toán Năng suất"
+ },
+ {
+  "ma_cau": "T109000000538",
+  "loai": "tu_luan",
+  "de": "Cho $C=\\dfrac{\\sqrt{x}+2}{\\sqrt{x}-3}$ và $D=\\dfrac{3-2\\sqrt{x}}{\\sqrt{x}-2}+\\dfrac{2x-4}{x-4}$ với $x\\ge0$; $x\\ne9$ và $x\\ne4$.\na) Tính giá trị của biểu thức $C$ khi $x=1$.\nb) Chứng tỏ rằng $D=\\dfrac{-1}{\\sqrt{x}+2}$.\nc) Đặt $I=\\dfrac{D}{C}$. Tìm số nguyên $x$ nhỏ nhất để $I\\le0$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** ý b rút gọn $D$ bằng cách phân tích mẫu $x-4=(\\sqrt{x}-2)(\\sqrt{x}+2)$ để quy đồng; ý c dùng kết quả ý b, khi đó dấu của $I$ chỉ phụ thuộc dấu của một nhân tử vì mẫu là bình phương.\n**Bước 1.** Ý a: kiểm tra $x=1$ thoả điều kiện, rồi thay $\\sqrt{x}=1$ vào $C$ và tính.\n**Bước 2.** Ý b: phân tích mẫu chung $x-4$ thành tích hai nhân tử, nhân tử và mẫu của phân thức thứ nhất với nhân tử còn thiếu để quy đồng.\n**Bước 3.** Ý b: cộng hai tử, thu gọn các hạng tử đồng dạng, rồi rút gọn nhân tử $\\sqrt{x}-2$ ở tử và mẫu để về đúng dạng cần chứng tỏ.\n**Bước 4.** Ý c: lập $I=D:C$ bằng ý b, đổi phép chia thành phép nhân nghịch đảo và viết $I$ dưới dạng một phân thức có  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000207",
+  "loai": "tu_luan",
+  "de": "Trong các phương trình sau, phương trình nào là phương trình bậc nhất hai ẩn $x$, $y$?\na) $3x^2-1=0$.\nb) $y-1=6(z-2)$.\nc) $5x+\\dfrac{y}{3}=1$.\nd) $3(x-1)+y=0$.\ne) $x+0y=5$.\nf) $7x+0y=-1$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** phương trình bậc nhất hai ẩn $x$, $y$ có dạng $ax+by=c$ với $a$, $b$ không đồng thời bằng $0$, nên phải đưa từng phương trình về dạng đó rồi mới kết luận.\n**Bước 1.** Nhắc lại định nghĩa phương trình bậc nhất hai ẩn $x$, $y$, chú ý hai điều kiện: chỉ có đúng hai ẩn là $x$, $y$ và mỗi ẩn có số mũ là 1.\n**Bước 2.** Với phương trình còn dấu ngoặc hoặc phân số, thu gọn về dạng $ax+by=c$ rồi xác định các hệ số $a$, $b$, $c$.\n**Bước 3.** Loại phương trình có ẩn bậc hai hoặc có ẩn khác $x$, $y$; với phương trình có hệ số $0$ ở một ẩn thì kiểm tra xem $a$, $b$ có đồng thời bằng $0$ hay không.\n**Chú ý:** hệ số của một ẩn bằng $0$ vẫn được chấp nhận, miễn là hệ số c …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030305022",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{2\\sqrt{x}-3}{\\sqrt{x}+4}$ với $x$ là số nguyên dương. Tìm giá trị của $x$ để $P$ đạt giá trị nhỏ nhất.",
+  "dap_an": "1",
+  "loi_giai": "$P=\\dfrac{2\\sqrt{x}-3}{\\sqrt{x}+4}=\\dfrac{2(\\sqrt{x}+4)-11}{\\sqrt{x}+4}=2-\\dfrac{11}{\\sqrt{x}+4}$.\nVì $x$ là số nguyên dương nên\n$x\\ge1\\Rightarrow\\sqrt{x}\\ge1\\Rightarrow\\sqrt{x}+4\\ge5$.\n$\\Rightarrow\\dfrac{11}{\\sqrt{x}+4}\\le\\dfrac{11}{5}$.\n$\\Rightarrow-\\dfrac{11}{\\sqrt{x}+4}\\ge-\\dfrac{11}{5}$.\n$\\Rightarrow2-\\dfrac{11}{\\sqrt{x}+4}\\ge2-\\dfrac{11}{5}$.\n$\\Rightarrow P\\ge-\\dfrac{1}{5}$.\nDấu bằng xảy ra khi $\\sqrt{x}+4=5\\Rightarrow\\sqrt{x}=1\\Rightarrow x=1$.\nVậy $P$ đạt giá trị nhỏ nhất là $-\\dfrac{1}{5}$ khi $x=1$.",
+  "nhan_cu": "Câu C rút gọn › Tìm GTLN-GTNN của P"
+ },
+ {
+  "ma_cau": "T109080101001",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm GTNN của biểu thức : $A = 2x^2 + 4x + 5$",
+  "dap_an": "3",
+  "loi_giai": "Ta có $A = 2x^2 + 4x + 5 = 2(x^2 + 2x + 1) + 5 - 2 = 2(x + 1)^2 + 3$\nVì $(x + 1)^2 \\ge 0$ nên $2(x + 1)^2 + 3 \\ge 3 \\Rightarrow A \\ge 3$\nDấu '=' xảy ra khi $(x + 1)^2 = 0 \\Rightarrow x = -1$\nVậy GTNN của A là 3 khi $x = -1$",
+  "nhan_cu": "Bất đẳng thức một biến › GTLN - GTNN của biểu thức một biến bậc hai"
+ },
+ {
+  "ma_cau": "T109000000607",
+  "loai": "tu_luan",
+  "de": "Giải phương trình sau: $\\sqrt{x^2-3x}=2$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** căn bậc hai số học của một biểu thức bằng $2$ khi biểu thức dưới căn bằng $2^2=4$, nên bình phương hai vế để bỏ dấu căn.\n**Bước 1.** Hai vế của phương trình đều không âm nên bình phương hai vế để bỏ dấu căn, đưa về phương trình bậc hai ẩn $x$.\n**Bước 2.** Chuyển hết về một vế rồi phân tích đa thức thành nhân tử để đưa về phương trình tích (chưa dùng công thức nghiệm).\n**Bước 3.** Giải từng phương trình bậc nhất của tích, sau đó thay nghiệm vào đề để chắc biểu thức dưới căn không âm.\n**Phần 2. Trình bày**\nBình phương hai vế (hai vế không âm), ta được:\n$x^2-3x=4$\n$x^2-3x-4=0$\n$x^2+x-4x-4=0$\n$x(x+1)-4(x+1)=0$\n$(x+1)(x-4)=0$\nSuy ra $x+1=0$ hoặc $x-4=0$, tức là …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109110401004",
+  "loai": "tra_loi_ngan",
+  "de": "Cho biểu thức $S=2x+\\dfrac{3200}{x}$ với $x>0$. Chứng minh rằng $S\\geq 160$.",
+  "dap_an": "$S \\geq 160$, dấu bằng khi $x=40$",
+  "loi_giai": "Với $x>0$, áp dụng bất đẳng thức Cauchy (AM-GM) cho hai số dương $2x$ và $\\dfrac{3200}{x}$:\n$S = 2x + \\dfrac{3200}{x} \\geq 2\\sqrt{2x \\cdot \\dfrac{3200}{x}} = 2\\sqrt{6400} = 2 \\cdot 80 = 160$.\nDấu bằng xảy ra khi $2x = \\dfrac{3200}{x}$, tức $x^2 = 1600$, suy ra $x = 40$ (do $x>0$).\nVậy $S \\geq 160$ với mọi $x>0$, dấu bằng khi $x=40$.",
+  "nhan_cu": "Nâng cao › Nâng cao"
+ },
+ {
+  "ma_cau": "T109000000419",
+  "loai": "tu_luan",
+  "de": "Giải phương trình sau: $\\dfrac{1}{7-x}=\\dfrac{x-8}{x-7}-8$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai mẫu $7-x$ và $x-7$ là hai biểu thức đối nhau nên đưa về cùng mẫu $x-7$; phương trình chứa ẩn ở mẫu thì phải đối chiếu điều kiện xác định ở cuối.\n**Bước 1.** Tìm điều kiện xác định: các mẫu thức phải khác $0$.\n**Bước 2.** Viết $\\dfrac{1}{7-x}=\\dfrac{-1}{x-7}$ để các phân thức có cùng mẫu, rồi nhân hai vế với $x-7$ để khử mẫu.\n**Bước 3.** Giải phương trình bậc nhất nhận được (chú ý nhân $-8$ với cả hai hạng tử trong ngoặc $x-7$).\n**Bước 4.** Đối chiếu giá trị tìm được với điều kiện xác định để quyết định nhận hay loại.\n**Chú ý:** nhân $x-7$ với $-8$ phải ra $-8x+56$, dễ sai dấu ở hạng tử $+56$.\n**Phần 2. Trình bày**\nĐiều kiện xác định: $x\\ne7$.\nVì $7-x=- …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000252",
+  "loai": "tu_luan",
+  "de": "Bác Minh muốn đặt đóng một chiếc hộp đựng quà lưu niệm có dạng hình hộp chữ nhật với mặt đáy $ABCD$ là hình vuông như hình dưới đây. Để món quà trở nên đặc biệt, bác Minh muốn mạ bốn mặt xung quanh và mặt đáy dưới (đáy $MNPQ$) của chiếc hộp bằng kim loại quý (không mạ nắp hộp). Em hãy tìm độ dài cạnh $MN$ của mặt đáy và chiều cao $AM$ của hộp quà sao cho tổng diện tích các mặt được mạ kim loại quý của chiếc hộp là nhỏ nhất biết rằng thể tích của chiếc hộp là $4\\ dm^3$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** thể tích cho trước cho phép biểu diễn chiều cao theo cạnh đáy, đưa diện tích cần mạ về một biểu thức của một biến; rồi so sánh với một hằng số bằng cách phân tích nhân tử.\n**Bước 1.** Đặt cạnh đáy $MN=x$ (dm) và chiều cao $AM=h$ (dm); dùng công thức thể tích hình hộp chữ nhật để rút $h$ theo $x$.\n**Bước 2.** Diện tích phần được mạ gồm một mặt đáy dưới và bốn mặt bên bằng nhau; viết tổng đó theo $h$ rồi thay $h$ theo $x$.\n**Bước 3.** Thử vài giá trị của $x$ để dự đoán giá trị nhỏ nhất, rồi xét hiệu giữa diện tích và giá trị dự đoán, quy đồng thành một phân thức.\n**Bước 4.** Phân tích tử thức thành nhân tử, tách các hạng tử để xuất hiện một bình phương; từ đ …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000128",
+  "loai": "tra_loi_ngan",
+  "de": "Cho số thực $x$ thoả mãn $0<x<3$. Tìm giá trị nhỏ nhất của biểu thức: $A=\\dfrac{4}{3-x}+\\dfrac{100}{x}+2024$.",
+  "dap_an": "2072",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** không dùng bất đẳng thức Cô-si thẳng, mà so sánh từng phân thức với một biểu thức bậc nhất bằng cách xét **hiệu**, đưa tử về **bình phương** để chứng minh hiệu không âm.\n**Bước 1.** Nhận xét hai mẫu $3-x$ và $x$ đều dương nên các phân thức dương; muốn có cận dưới cố định thì tổng hai biểu thức bậc nhất dùng để so sánh phải là một hằng số.\n**Bước 2.** So sánh $\\dfrac{4}{3-x}$ với $16-16(3-x)$ và $\\dfrac{100}{x}$ với $80-16x$; hệ số 16 được chọn để hiệu của hai cặp cùng triệt tiêu tại một giá trị $x$ chung.\n**Bước 3.** Xét hiệu của từng cặp, quy đồng mẫu và đưa tử về bình phương $(2x-5)^2$ nên mỗi hiệu không âm.\n**Bước 4.** Cộng hai bất đẳng thức để được cận …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109030305031",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $P=\\dfrac{\\sqrt{x}-7}{\\sqrt{x}+3}$ với $x$ là số tự nhiên dương. Tìm GTNN của $P$.",
+  "dap_an": "-\\dfrac{3}{2}",
+  "loi_giai": "$P=\\dfrac{\\sqrt{x}-7}{\\sqrt{x}+3}=\\dfrac{\\sqrt{x}+3-10}{\\sqrt{x}+3}=1-\\dfrac{10}{\\sqrt{x}+3}$.\nVì $x$ là số tự nhiên dương nên\n$x\\ge1\\Rightarrow\\sqrt{x}\\ge1\\Rightarrow\\sqrt{x}+3\\ge4$.\n$\\Rightarrow\\dfrac{10}{\\sqrt{x}+3}\\le\\dfrac{10}{4}$.\n$\\Rightarrow\\dfrac{10}{\\sqrt{x}+3}\\le\\dfrac{5}{2}$.\n$\\Rightarrow-\\dfrac{10}{\\sqrt{x}+3}\\ge-\\dfrac{5}{2}$.\n$\\Rightarrow1-\\dfrac{10}{\\sqrt{x}+3}\\ge1-\\dfrac{5}{2}$.\n$\\Rightarrow P\\ge-\\dfrac{3}{2}$.\nDấu bằng xảy ra khi $\\sqrt{x}+3=4\\Rightarrow\\sqrt{x}=1\\Rightarrow x=1$.\nVậy GTNN của $P$ là $-\\dfrac{3}{2}$ khi $x=1$.",
+  "nhan_cu": "Câu C rút gọn › Tìm GTLN-GTNN của P"
+ },
+ {
+  "ma_cau": "T109000000068",
+  "loai": "tu_luan",
+  "de": "Cho $a,\\ b,\\ c$ là các số thực. Chứng minh bất đẳng thức: $a^2+b^2+c^2\\ge ab+bc+ca$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** nhân hiệu với $2$ rồi ghép các hạng tử thành ba bình phương dạng $(x-y)^2$ để thấy hiệu là một tổng không âm.\n**Bước 1.** Lập hiệu $a^2+b^2+c^2-ab-bc-ca$ rồi viết nó dưới dạng một nửa của biểu thức đã nhân đôi để tạo ra các hệ số $2ab$, $2bc$, $2ca$.\n**Bước 2.** Chia sáu số hạng bậc hai thành ba nhóm, mỗi nhóm gồm hai bình phương và một tích chéo, mỗi nhóm là một hằng đẳng thức.\n**Bước 3.** Kết luận hiệu bằng một nửa tổng ba bình phương nên không âm, và tìm điều kiện để cả ba bình phương cùng triệt tiêu.\n**Phần 2. Trình bày**\nXét hiệu $H=a^2+b^2+c^2-ab-bc-ca$.\n$H=\\dfrac{1}{2}(2a^2+2b^2+2c^2-2ab-2bc-2ca)$\n$=\\dfrac{1}{2}[(a^2-2ab+b^2)+(b^2-2bc+c^2)+(c^2-2ca+ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T109000000313",
+  "loai": "tu_luan",
+  "de": "Biểu đồ sau đây biểu diễn dữ liệu về các hoạt động yêu thích của $35$ học sinh lớp 9A trong ngày nghỉ cuối tuần.\na) Có bao nhiêu học sinh lớp 9A thích hoạt động đá cầu trong ngày nghỉ?\nb) Hãy cho biết hoạt động nào có nhiều học sinh yêu thích nhất và chiếm bao nhiêu phần trăm học sinh cả lớp?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mỗi cột của biểu đồ cho biết số học sinh thích một hoạt động, còn tỉ lệ phần trăm là số học sinh của hoạt động đó chia cho tổng số học sinh của lớp.\n**Bước 1.** Ý a: tìm cột ứng với hoạt động đá cầu và đọc chiều cao của cột (số ghi trên đầu cột).\n**Bước 2.** Ý b: so sánh chiều cao các cột để tìm hoạt động có nhiều học sinh thích nhất và đọc số học sinh của hoạt động đó.\n**Bước 3.** Ý b: tổng số học sinh cả lớp đề đã cho, lập tỉ số giữa số học sinh của hoạt động đó với cả lớp rồi đổi ra phần trăm.\n**Phần 2. Trình bày**\na) Quan sát biểu đồ, cột \"Đá cầu\" có chiều cao bằng $8$.\nVậy có $8$ học sinh lớp 9A thích hoạt động đá cầu.\nb) Số học sinh thích các hoạt độ …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

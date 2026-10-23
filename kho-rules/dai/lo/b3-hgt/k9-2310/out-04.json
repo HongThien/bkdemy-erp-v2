@@ -1,0 +1,212 @@
+[
+ {
+  "ma_cau": "T309010302016",
+  "dang_bai_id": "NDB01361",
+  "chac": "vua",
+  "ly_do": "Ý a giải tam giác biết 2 cạnh, ý b có đường cao AH; còn chứng minh."
+ },
+ {
+  "ma_cau": "T309010302017",
+  "dang_bai_id": "NDB01361",
+  "chac": "vua",
+  "ly_do": "Ý a giải tam giác biết 2 cạnh, ý b kẻ đường cao AI; còn chứng minh."
+ },
+ {
+  "ma_cau": "T309010302018",
+  "dang_bai_id": "NDB01361",
+  "chac": "vua",
+  "ly_do": "Ý a biết tan và cạnh, tính BC, AH, góc; ý b, c chứng minh."
+ },
+ {
+  "ma_cau": "T309010302019",
+  "dang_bai_id": "NDB01361",
+  "chac": "vua",
+  "ly_do": "Ý a tính NP, MH, góc N có đường cao MH; ý b, c chứng minh."
+ },
+ {
+  "ma_cau": "T309010302020",
+  "dang_bai_id": "NDB01361",
+  "chac": "vua",
+  "ly_do": "Ý a tính BC, AH, góc B có đường cao AH; ý b, c chứng minh."
+ },
+ {
+  "ma_cau": "T309010302021",
+  "dang_bai_id": "NDB01361",
+  "chac": "vua",
+  "ly_do": "Ý a giải tam giác biết cạnh và góc, ý b có đường cao AH; còn chứng minh."
+ },
+ {
+  "ma_cau": "T309010302022",
+  "dang_bai_id": "NDB01361",
+  "chac": "vua",
+  "ly_do": "Ý a giải tam giác biết cạnh và góc, có đường cao AH ở ý sau; còn chứng minh."
+ },
+ {
+  "ma_cau": "T309010401001",
+  "dang_bai_id": "NDB01364",
+  "chac": "cao",
+  "ly_do": "Một tam giác vuông, biết hai cạnh, tính góc nhọn."
+ },
+ {
+  "ma_cau": "T309010401002",
+  "dang_bai_id": "NDB01364",
+  "chac": "cao",
+  "ly_do": "Một tam giác vuông, biết hai cạnh, tính góc nhọn."
+ },
+ {
+  "ma_cau": "T309010401003",
+  "dang_bai_id": "NDB01364",
+  "chac": "cao",
+  "ly_do": "Một tam giác vuông, biết hai cạnh, tính góc nhọn."
+ },
+ {
+  "ma_cau": "T309010401004",
+  "dang_bai_id": "NDB01364",
+  "chac": "vua",
+  "ly_do": "Tính góc từ hai cạnh trong tam giác vuông rồi so sánh khoảng an toàn."
+ },
+ {
+  "ma_cau": "T309010401005",
+  "dang_bai_id": "NDB01364",
+  "chac": "cao",
+  "ly_do": "Một tam giác vuông, biết góc nhọn và một cạnh, tính chiều cao."
+ },
+ {
+  "ma_cau": "T309010401006",
+  "dang_bai_id": "NDB01376",
+  "chac": "cao",
+  "ly_do": "Tính đoạn bằng tỉ số lượng giác rồi cộng thêm đoạn còn lại để ra chiều cao cây."
+ },
+ {
+  "ma_cau": "T309010401007",
+  "dang_bai_id": "NDB01364",
+  "chac": "cao",
+  "ly_do": "Một tam giác vuông, biết góc nhọn và một cạnh, tính chiều cao."
+ },
+ {
+  "ma_cau": "T309010401008",
+  "dang_bai_id": "NDB01364",
+  "chac": "cao",
+  "ly_do": "Một tam giác vuông, biết góc nhọn và một cạnh, tính chiều cao."
+ },
+ {
+  "ma_cau": "T309010401009",
+  "dang_bai_id": "NDB01376",
+  "chac": "cao",
+  "ly_do": "Giải tam giác vuông tìm AB rồi tính thêm quãng đường, thời gian."
+ },
+ {
+  "ma_cau": "T309010401010",
+  "dang_bai_id": "NDB01376",
+  "chac": "cao",
+  "ly_do": "Tính độ cao rồi đổi sang thời gian bay theo vận tốc."
+ },
+ {
+  "ma_cau": "T309010401011",
+  "dang_bai_id": "NDB01364",
+  "chac": "cao",
+  "ly_do": "Một tam giác vuông, biết góc nhọn và một cạnh, tính chiều cao cây."
+ },
+ {
+  "ma_cau": "T309010401012",
+  "dang_bai_id": "NDB01364",
+  "chac": "cao",
+  "ly_do": "Một tam giác vuông, biết góc nhọn và một cạnh, tính chiều cao cây."
+ },
+ {
+  "ma_cau": "T309010401013",
+  "dang_bai_id": "NDB01376",
+  "chac": "cao",
+  "ly_do": "Tính phần tháp bằng tan rồi cộng thêm chiều cao mắt người."
+ },
+ {
+  "ma_cau": "T309010401014",
+  "dang_bai_id": "NDB01376",
+  "chac": "cao",
+  "ly_do": "Tính góc rồi dùng lại góc cho tòa nhà và đổi ra số tầng."
+ },
+ {
+  "ma_cau": "T309010402001",
+  "dang_bai_id": "NDB01365",
+  "chac": "cao",
+  "ly_do": "Hai góc nhìn, tách thành hai tam giác vuông chung cạnh để tính chiều cao."
+ },
+ {
+  "ma_cau": "T309010402002",
+  "dang_bai_id": "NDB01365",
+  "chac": "cao",
+  "ly_do": "Hai góc nhìn, tách thành hai tam giác vuông chung cạnh để tính chiều cao."
+ },
+ {
+  "ma_cau": "T309010402003",
+  "dang_bai_id": "NDB01376",
+  "chac": "cao",
+  "ly_do": "Tính góc nắng từ cột cờ rồi dùng lại góc cho tòa nhà."
+ },
+ {
+  "ma_cau": "T309010402004",
+  "dang_bai_id": "NDB01365",
+  "chac": "cao",
+  "ly_do": "Tam giác không vuông, tách thành hai tam giác vuông để tính chiều cao hoặc khoảng cách."
+ },
+ {
+  "ma_cau": "T309010402005",
+  "dang_bai_id": "NDB01365",
+  "chac": "cao",
+  "ly_do": "Tam giác không vuông, tách thành hai tam giác vuông để tính chiều cao hoặc khoảng cách."
+ },
+ {
+  "ma_cau": "T309010402006",
+  "dang_bai_id": "NDB01365",
+  "chac": "cao",
+  "ly_do": "Tam giác không vuông, tách thành hai tam giác vuông để tính chiều cao hoặc khoảng cách."
+ },
+ {
+  "ma_cau": "T309010402007",
+  "dang_bai_id": "NDB01365",
+  "chac": "vua",
+  "ly_do": "Hai tam giác vuông ghép từ góc chiếu sáng; cách đặt hình phụ thuộc hình vẽ."
+ },
+ {
+  "ma_cau": "T309010402008",
+  "dang_bai_id": "NDB01365",
+  "chac": "cao",
+  "ly_do": "Tam giác không vuông, tách thành hai tam giác vuông chung cạnh hoặc góc để tính."
+ },
+ {
+  "ma_cau": "T309010402009",
+  "dang_bai_id": "NDB01365",
+  "chac": "cao",
+  "ly_do": "Tam giác không vuông, tách thành hai tam giác vuông chung cạnh hoặc góc để tính."
+ },
+ {
+  "ma_cau": "T309010402010",
+  "dang_bai_id": "NDB01365",
+  "chac": "cao",
+  "ly_do": "Tam giác không vuông, tách thành hai tam giác vuông chung cạnh hoặc góc để tính."
+ },
+ {
+  "ma_cau": "T309010402011",
+  "dang_bai_id": "NDB01365",
+  "chac": "cao",
+  "ly_do": "Tam giác không vuông, tách thành hai tam giác vuông chung cạnh hoặc góc để tính."
+ },
+ {
+  "ma_cau": "T309010402012",
+  "dang_bai_id": "NDB01365",
+  "chac": "cao",
+  "ly_do": "Tam giác không vuông, tách thành hai tam giác vuông chung cạnh hoặc góc để tính."
+ },
+ {
+  "ma_cau": "T309010402013",
+  "dang_bai_id": "NDB01365",
+  "chac": "cao",
+  "ly_do": "Tam giác không vuông, tách thành hai tam giác vuông chung cạnh hoặc góc để tính."
+ },
+ {
+  "ma_cau": "T309010402014",
+  "dang_bai_id": "NDB01365",
+  "chac": "cao",
+  "ly_do": "Tam giác không vuông, tách thành hai tam giác vuông chung cạnh hoặc góc để tính."
+ }
+]
