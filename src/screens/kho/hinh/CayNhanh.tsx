@@ -42,7 +42,6 @@ const MAU = [
   { dac: '#be123c', nhat: '#fff1f2', vien: '#fda4af' },   // sâu 4+ — hồng
 ]
 const mau = (d: number) => MAU[Math.min(d, MAU.length - 1)]
-const LUC_GIAC = 'polygon(9% 0,91% 0,100% 50%,91% 100%,9% 100%,0 50%)'
 const soSanhSo = (a: string, b: string) => a.localeCompare(b, undefined, { numeric: true })
 
 // `chuDeId` (tuỳ chọn) — mở từ Bản đồ mới, vùng Hình–Luyện: chỉ hiện mô hình của chủ đề đó + ngăn "chưa xếp chủ đề".
@@ -364,7 +363,7 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
               <Btn kind="pri" disabled={ban} onClick={() => setHopBai({ id: null, nhanh: (cur && baiById.get(cur)?.mo_hinh_id) || gocId! })}
                 title="Thêm bài vào một giả thiết. Bài tiếp theo của 1 bài: bấm vào bài đó ⇒ ＋ Bài tiếp theo">＋ Thêm bài</Btn>
               <Btn disabled={ban} onClick={() => { const g = (cur && baiById.get(cur)?.mo_hinh_id) || gocId!; setHopGT({ id: null, cha: g, ten: '', gt: '', chinh: !conCuaNhanh(g).some((n) => laChinh(n.id)) }) }}
-                title="Thêm một giả thiết rẽ ra từ giả thiết (bấm vào lục giác của giả thiết để chọn đúng chỗ)">⑂ Thêm giả thiết</Btn>
+                title="Thêm một giả thiết rẽ ra từ giả thiết (bấm vào thẻ màu của giả thiết để chọn đúng chỗ)">⑂ Thêm giả thiết</Btn>
               {ban && <span className="text-[12px] text-slate-400">đang lưu…</span>}
             </div>
             {loi && <div className="mb-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-[12.5px] text-red-700">{loi} <button className="ml-2 underline" onClick={() => setLoi(null)}>đóng</button></div>}
@@ -736,15 +735,15 @@ function TabChuoi(p: ChungProps & {
             </defs>
             {day}
           </svg>
-          {/* lục giác giả thiết — bấm để thêm bài / nhánh, sửa */}
+          {/* thẻ giả thiết (bo tròn — Thùy 23/10 bỏ lục giác: cạnh nhọn cắt chữ) — bấm để thêm bài / nhánh, sửa */}
           {nhanhs.map((n) => { const k = bc.khoi.get(n.id); if (!k) return null; const laGoc = n.id === gocId; const chinh = laChinh(n.id); const m = mauGT(laGoc, chinh)
             const gt = laGoc ? n.gia_thiet : n.gia_thiet_them; const coChinh = conCuaNhanh(n.id).some((c) => laChinh(c.id)); return (
             <div key={'h' + n.id}>
               <button onClick={(e) => { e.stopPropagation(); setMenu(menu === n.id ? null : n.id) }} title={tron(gt ?? '') + ' — bấm để thêm bài / giả thiết'}
-                className="absolute flex flex-col justify-center px-6 text-left text-white hover:brightness-110"
-                style={{ left: OX + k.x, top: OY + k.y + 8, width: k.w, height: HEX, background: m.dac, clipPath: LUC_GIAC, zIndex: 3 }}>
-                <b className="truncate text-[12px] leading-tight">{tenGT(laGoc, chinh)}{laGoc ? '' : ': ' + tron(n.ten)} <span className="font-normal opacity-80">· {p.baiCaNhanh(n.id) - conCuaNhanh(n.id).reduce((s, c) => s + p.baiCaNhanh(c.id), 0)} bài ▾</span></b>
-                <span className="truncate text-[10.5px] opacity-90">{tron(gt ?? '')}</span>
+                className="absolute flex flex-col justify-center gap-0.5 overflow-hidden rounded-xl px-4 text-left text-white shadow-sm hover:brightness-110"
+                style={{ left: OX + k.x, top: OY + k.y + 8, width: k.w, height: HEX, background: m.dac, zIndex: 3 }}>
+                <b className="truncate text-[15.5px] leading-tight">{tenGT(laGoc, chinh)}{laGoc ? '' : ': ' + tron(n.ten)} <span className="font-normal opacity-80">· {p.baiCaNhanh(n.id) - conCuaNhanh(n.id).reduce((s, c) => s + p.baiCaNhanh(c.id), 0)} bài ▾</span></b>
+                <span className="line-clamp-2 text-[13.5px] leading-snug opacity-95"><MathText className="inline">{gt ?? ''}</MathText></span>
               </button>
               {menu === n.id && (
                 <div className="absolute z-20 w-56 rounded-xl border border-slate-200 bg-white p-1.5 text-[12.5px] shadow-xl" style={{ left: OX + k.x + Math.min(k.w - 230, 40), top: OY + k.y + 8 + HEX + 4 }} onClick={(e) => e.stopPropagation()}>
@@ -777,7 +776,7 @@ function TabChuoi(p: ChungProps & {
         </div>
       </div>
       <div className="mt-2 text-[11.5px] text-slate-500">
-        Lục giác = giả thiết (bấm để thêm bài / nhánh) · <span style={{ color: MAU[1].dac }}>mũi tên xanh</span> = nhánh chính · <span style={{ color: MAU[2].dac }}>mũi tên tím</span> = nhánh phụ ·
+        Thẻ màu = giả thiết (bấm để thêm bài / nhánh) · <span style={{ color: MAU[1].dac }}>mũi tên xanh</span> = nhánh chính · <span style={{ color: MAU[2].dac }}>mũi tên tím</span> = nhánh phụ ·
         thẻ trắng = bài, mũi tên xám = bài trước → bài sau · chữ xanh góc thẻ = tiền đề khác · bấm bài: viền xanh nhạt = tiền đề của nó, xanh lá = bài đi tiếp từ nó.
       </div>
     </>

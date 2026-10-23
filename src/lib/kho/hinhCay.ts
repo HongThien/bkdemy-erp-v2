@@ -100,7 +100,7 @@ export const gocCayCua = (L: Luoi) => L.moHinh.filter((m) => !m.neo_baitoan_id &
 // cùng hàng, mỗi bài con sau xuống một hàng mới (vd B1→B2 · B3→B6→B7 · B4 · B5). `boi` = bài trước đã "đặt" bài này
 // (dây vẽ); tiền đề còn lại hiện thành nhãn ở góc thẻ. Mũi tên đi trong KHE giữa các cột, không đè thẻ.
 // HW × HH = ô HÌNH của giả thiết, bên trái khối (Thùy 22/10: mỗi giả thiết phải có hình để hình dung); bài nằm bên phải ô hình.
-export const KT_GT = { W: 210, H: 74, GX: 40, GY: 18, PAD: 14, HEX: 40, TOP: 66, CACH_DOC: 56, CACH_NGANG: 110, HW: 240, HH: 136 }
+export const KT_GT = { W: 210, H: 74, GX: 40, GY: 18, PAD: 14, HEX: 66, TOP: 92, CACH_DOC: 56, CACH_NGANG: 110, HW: 240, HH: 136 }
 export type HopXY = { x: number; y: number; w: number; h: number }
 export type BoCucGT = { khoi: Map<string, HopXY>; bai: Map<string, { x: number; y: number }>; boi: Map<string, string | null>; rong: number; cao: number }
 export function xepGiaThiet(a: {
