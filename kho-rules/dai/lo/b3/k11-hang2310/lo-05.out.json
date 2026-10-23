@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T111060304078",
+  "dang_bai_id": "NDB00618",
+  "chac": "cao",
+  "ly_do": "Năm mảng màu có diện tích lập cấp số nhân, cần tổng 5 số hạng đầu."
+ },
+ {
+  "ma_cau": "T111000000163",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Bảng ghép nhóm: đọc mẫu số liệu và tính trung bình; chủ đề Mẫu số liệu chỉ có một dạng, chưa mô tả."
+ },
+ {
+  "ma_cau": "T111030502025",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Đọc giá trị lớn nhất từ đồ thị; gần dạng tìm tập giá trị/max min nhưng dựa hình."
+ },
+ {
+  "ma_cau": "T111010101068",
+  "dang_bai_id": "NDB00943",
+  "chac": "vua",
+  "ly_do": "Từ độ dài cung và bán kính tìm số đo rad; dùng l=Rα, gần dạng độ dài cung."
+ },
+ {
+  "ma_cau": "T111030503048",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Hỏi khoảng đồng biến/nghịch biến dựa vào đồ thị hàm lượng giác."
+ },
+ {
+  "ma_cau": "T111060202138",
+  "dang_bai_id": "NDB00607",
+  "chac": "vua",
+  "ly_do": "Cấp số cộng cho u1 và hệ thức truy hồi, tìm công sai; chưa có dạng truy hồi riêng cho cấp số cộng."
+ },
+ {
+  "ma_cau": "T111030503033",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Hỏi khoảng đồng biến dựa vào đồ thị."
+ },
+ {
+  "ma_cau": "T111030503030",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Hỏi khoảng nghịch biến dựa vào đồ thị."
+ },
+ {
+  "ma_cau": "T111040201021",
+  "dang_bai_id": "NDB01014",
+  "chac": "vua",
+  "ly_do": "sin5x+sinx=0: chuyển vế đưa về sin cơ bản; cũng gần dạng sin(ax+b)=sin(bx+c)."
+ },
+ {
+  "ma_cau": "T111010602036",
+  "dang_bai_id": "NDB00959",
+  "chac": "vua",
+  "ly_do": "Cho tan a, biến đổi bằng cộng rồi hạ bậc/nhân đôi; dạng sau cùng là nhân đôi hạ bậc."
+ },
+ {
+  "ma_cau": "T111060302050",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng cấp số nhân cho tổng S_n (công thức S_n=5^n-1) tìm số hạng."
+ },
+ {
+  "ma_cau": "T111030502046",
+  "dang_bai_id": "NDB01005",
+  "chac": "cao",
+  "ly_do": "Hỏi đồ thị đi qua điểm nào, đọc từ hình."
+ },
+ {
+  "ma_cau": "T111000000231",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Giá trị đại diện của nhóm trong bảng ghép nhóm; dạng mẫu số liệu duy nhất, chưa mô tả."
+ },
+ {
+  "ma_cau": "T111060302061",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng lý thuyết/nhận biết công thức tổng n số hạng đầu của cấp số nhân."
+ },
+ {
+  "ma_cau": "T111030502112",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Tập giá trị đọc từ đồ thị; gần dạng tập giá trị nhưng dựa hình."
+ },
+ {
+  "ma_cau": "T111000000005",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng cấp số nhân cho hệ về S_n (S2, S3) tìm S5."
+ },
+ {
+  "ma_cau": "T111030502113",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Giá trị lớn nhất đọc từ đồ thị; gần dạng min max nhưng dựa hình."
+ },
+ {
+  "ma_cau": "T111030502026",
+  "dang_bai_id": "NDB01005",
+  "chac": "cao",
+  "ly_do": "Hỏi đồ thị đi qua điểm nào, đọc từ hình."
+ },
+ {
+  "ma_cau": "T111060305007",
+  "dang_bai_id": "NDB01032",
+  "chac": "vua",
+  "ly_do": "Dãy cho bởi truy hồi u_{n+1}=2u_n+5, quy về cấp số nhân; cũng gần dạng truy hồi chung."
+ },
+ {
+  "ma_cau": "T111060202217",
+  "dang_bai_id": "NDB00612",
+  "chac": "vua",
+  "ly_do": "Cấp số cộng cho u10+u27, tính S36; gần dạng quan hệ số hạng nhưng chỉ một phương trình."
+ },
+ {
+  "ma_cau": "T111000000463",
+  "dang_bai_id": "NDB00565",
+  "chac": "cao",
+  "ly_do": "Xác định số đo góc lượng giác (Ou,Ov) từ hình vẽ."
+ },
+ {
+  "ma_cau": "T111030102048",
+  "dang_bai_id": "NDB00988",
+  "chac": "cao",
+  "ly_do": "Tập xác định hàm tan2x/cosx có mẫu; dạng phân thức đứng sau dạng cơ bản."
+ },
+ {
+  "ma_cau": "T111000000240",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Tính số trung bình mẫu ghép nhóm; dạng mẫu số liệu duy nhất, chưa mô tả."
+ },
+ {
+  "ma_cau": "T111000000074",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Giá trị đại diện nhóm trong bảng ghép nhóm; dạng mẫu số liệu duy nhất, chưa mô tả."
+ },
+ {
+  "ma_cau": "T111060101156",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng khái niệm dãy số (dãy hữu hạn/vô hạn)."
+ },
+ {
+  "ma_cau": "T111000000268",
+  "dang_bai_id": "NDB00565",
+  "chac": "cao",
+  "ly_do": "Cho góc hình học uOv, xác định số đo góc lượng giác (Ou,Ov)."
+ },
+ {
+  "ma_cau": "T111000000228",
+  "dang_bai_id": "NDB00565",
+  "chac": "cao",
+  "ly_do": "Số đo góc lượng giác (OA,OA-phẩy) trên đường tròn lượng giác."
+ },
+ {
+  "ma_cau": "T111060304083",
+  "dang_bai_id": "NDB00617",
+  "chac": "cao",
+  "ly_do": "Hình vuông lặp, diện tích hình vuông thứ 15 là số hạng của cấp số nhân."
+ },
+ {
+  "ma_cau": "T111030503008",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Hỏi khoảng nghịch biến dựa vào đồ thị."
+ },
+ {
+  "ma_cau": "T111030502061",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Giá trị lớn nhất đọc từ đồ thị; gần dạng min max nhưng dựa hình."
+ },
+ {
+  "ma_cau": "T111000000133",
+  "dang_bai_id": "NDB01153",
+  "chac": "vua",
+  "ly_do": "Giới hạn dãy có tham số a để L nguyên; còn chứa căn và qⁿ."
+ },
+ {
+  "ma_cau": "T111000000155",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng tính giá trị hàm lượng giác tại một điểm."
+ },
+ {
+  "ma_cau": "T111050302002",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: phương trình đường trung trực trong toạ độ mặt phẳng."
+ },
+ {
+  "ma_cau": "T111010401070",
+  "dang_bai_id": "NDB00948",
+  "chac": "vua",
+  "ly_do": "Kiểm tra cặp sin, cos thoả sin²+cos²=1; gần dạng nhận diện hệ thức cơ bản."
+ },
+ {
+  "ma_cau": "T111040202038",
+  "dang_bai_id": "NDB01015",
+  "chac": "cao",
+  "ly_do": "cos²x−sin²x=cos2x rồi giải phương trình cos=cos; dạng đưa về cơ bản bằng công thức."
+ },
+ {
+  "ma_cau": "T111060204046",
+  "dang_bai_id": "NDB00606",
+  "chac": "cao",
+  "ly_do": "Bốn số liệt kê lập cấp số cộng, tìm x, y."
+ },
+ {
+  "ma_cau": "T111000000460",
+  "dang_bai_id": "NDB01007",
+  "chac": "vua",
+  "ly_do": "Hai ý: cos(x+π/3)=hằng và tan(..)=tan(..); lấy dạng đứng sau."
+ },
+ {
+  "ma_cau": "T111060302005",
+  "dang_bai_id": "NDB01026",
+  "chac": "vua",
+  "ly_do": "Dãy liệt kê nhận diện cấp số nhân, nhưng đáp án còn hỏi số hạng tổng quát và tăng giảm."
+ },
+ {
+  "ma_cau": "T111000000232",
+  "dang_bai_id": "NDB00568",
+  "chac": "vua",
+  "ly_do": "Đu quay 20 ô, tính quãng đường vật chuyển giữa hai ô; cũng gần dạng số đo góc quay."
+ },
+ {
+  "ma_cau": "T111000000410",
+  "dang_bai_id": "NDB00994",
+  "chac": "vua",
+  "ly_do": "Câu lý thuyết trộn tính chẵn lẻ và chu kỳ hàm lượng giác cơ bản."
+ },
+ {
+  "ma_cau": "T111000000217",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Tứ phân vị thứ ba mẫu ghép nhóm; dạng mẫu số liệu duy nhất, chưa mô tả."
+ },
+ {
+  "ma_cau": "T111000000335",
+  "dang_bai_id": "NDB00965",
+  "chac": "vua",
+  "ly_do": "Tam giác có tích sin nửa góc, dùng tích thành tổng tính cos2C."
+ },
+ {
+  "ma_cau": "T111000000010",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng cấp số nhân kết hợp bất đẳng thức Cô-si tìm công bội."
+ },
+ {
+  "ma_cau": "T111010501025",
+  "dang_bai_id": "NDB00952",
+  "chac": "cao",
+  "ly_do": "Tổng cos các góc hơn kém π, ghép cặp đảo pha để rút gọn."
+ },
+ {
+  "ma_cau": "T111000000027",
+  "dang_bai_id": "NDB01032",
+  "chac": "vua",
+  "ly_do": "Dãy truy hồi quy về cấp số nhân của U_n/n rồi tính tổng."
+ },
+ {
+  "ma_cau": "T111060302079",
+  "dang_bai_id": "NDB01025",
+  "chac": "vua",
+  "ly_do": "Ba số lập cấp số cộng, thêm số thành cấp số nhân; gần dạng tìm x để ba số lập cấp số nhân."
+ },
+ {
+  "ma_cau": "T111060104069",
+  "dang_bai_id": "NDB00600",
+  "chac": "cao",
+  "ly_do": "Tìm m nguyên để dãy cho bởi công thức là dãy tăng."
+ },
+ {
+  "ma_cau": "T111000000186",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Nhóm chứa tứ phân vị thứ nhất mẫu ghép nhóm; chưa mô tả."
+ },
+ {
+  "ma_cau": "T111040301037",
+  "dang_bai_id": "NDB01011",
+  "chac": "cao",
+  "ly_do": "Tìm thời điểm mực nước bằng 11 m; hình đủ để xác định a, b."
+ },
+ {
+  "ma_cau": "T111040202035",
+  "dang_bai_id": "NDB01015",
+  "chac": "cao",
+  "ly_do": "Dùng công thức nhân đôi/hạ bậc đưa về cos=cos rồi giải."
+ },
+ {
+  "ma_cau": "T111060304072",
+  "dang_bai_id": "NDB00617",
+  "chac": "cao",
+  "ly_do": "Số lá sen tăng gấp 3 mỗi ngày, cấp số nhân thực tế tìm ngày."
+ },
+ {
+  "ma_cau": "T111000000139",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Đếm số học sinh theo nhóm của bảng ghép nhóm; chưa mô tả."
+ },
+ {
+  "ma_cau": "T111040301033",
+  "dang_bai_id": "NDB01011",
+  "chac": "cao",
+  "ly_do": "Tìm thời điểm độ sâu mực nước bằng 10 m."
+ },
+ {
+  "ma_cau": "T111010502023",
+  "dang_bai_id": "NDB00956",
+  "chac": "cao",
+  "ly_do": "Chứng minh đẳng thức lượng giác bằng biến đổi tự do."
+ },
+ {
+  "ma_cau": "T111060202182",
+  "dang_bai_id": "NDB00612",
+  "chac": "vua",
+  "ly_do": "Cấp số cộng cho u3+u13, tính S15; gần dạng quan hệ số hạng nhưng chỉ một phương trình."
+ },
+ {
+  "ma_cau": "T111000000023",
+  "dang_bai_id": "NDB01163",
+  "chac": "cao",
+  "ly_do": "Tổng cấp số nhân lùi vô hạn với u1=-1/2, q=-1/2."
+ },
+ {
+  "ma_cau": "T111040202009",
+  "dang_bai_id": "NDB01015",
+  "chac": "cao",
+  "ly_do": "Dùng công thức nhân đôi/hạ bậc đưa về cos=cos rồi giải."
+ },
+ {
+  "ma_cau": "T111030502040",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Tập giá trị đọc từ đồ thị; gần dạng tập giá trị nhưng dựa hình."
+ },
+ {
+  "ma_cau": "T111030502093",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Giá trị lớn nhất đọc từ đồ thị; gần dạng min max nhưng dựa hình."
+ },
+ {
+  "ma_cau": "T111040102067",
+  "dang_bai_id": "NDB00577",
+  "chac": "vua",
+  "ly_do": "cos(sin x)=1 quy về sin x=0 trên đoạn; phương trình lồng nhau."
+ },
+ {
+  "ma_cau": "T111000000025",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng tính tổng dãy có quy luật (4+44+444+...)."
+ },
+ {
+  "ma_cau": "T111000000389",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: quan hệ giữa các đường thẳng trong không gian."
+ },
+ {
+  "ma_cau": "T111060205018",
+  "dang_bai_id": "NDB00615",
+  "chac": "vua",
+  "ly_do": "Cấp số cộng thực tế tìm bậc khi biết độ cao; bậc hai có khác đều."
+ },
+ {
+  "ma_cau": "T111000000191",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Tính mốt mẫu ghép nhóm; dạng mẫu số liệu duy nhất, chưa mô tả."
+ },
+ {
+  "ma_cau": "T111000000478",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: tính chất xác định mặt phẳng trong không gian."
+ },
+ {
+  "ma_cau": "T111040202008",
+  "dang_bai_id": "NDB01015",
+  "chac": "cao",
+  "ly_do": "Dùng công thức nhân đôi/hạ bậc đưa về cos=cos rồi giải."
+ },
+ {
+  "ma_cau": "T111020101062",
+  "dang_bai_id": "NDB00984",
+  "chac": "cao",
+  "ly_do": "Thu gọn biểu thức bằng công thức cộng."
+ },
+ {
+  "ma_cau": "T111020102010",
+  "dang_bai_id": "NDB00968",
+  "chac": "vua",
+  "ly_do": "Tính tan105° bằng công thức cộng, không cho trước giá trị lượng giác."
+ },
+ {
+  "ma_cau": "T111000000413",
+  "dang_bai_id": "NDB00569",
+  "chac": "vua",
+  "ly_do": "Từ góc 120° tìm hoành độ điểm biểu diễn trên đường tròn lượng giác."
+ },
+ {
+  "ma_cau": "T111000000082",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Đếm học sinh đỗ theo nhóm của bảng ghép nhóm; chưa mô tả."
+ }
+]

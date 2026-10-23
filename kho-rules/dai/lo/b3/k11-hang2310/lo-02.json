@@ -1,0 +1,856 @@
+[
+ {
+  "ma_cau": "T111030105002",
+  "loai": "tra_loi_ngan",
+  "de": "Mực nước cao nhất tại một cảng biển là $12 m$ khi thủy triều lên cao và sau $12$ giờ khi thủy triều xuống thấp thì mực nước thấp nhất là $8 m$. Đồ thị dưới đây mô tả sự thay đổi chiều cao của mực nước tại cảng trong vòng $24$ giờ tính từ lúc nửa đêm. Biết chiều cao của mực nước $h \\left(m\\right)$ theo thời gian $t \\left(h\\right)\\left(0\\let\\le24\\right)$ được cho bởi công thức $h=m+a\\cos \\left(\\dfrac{\\pi }{12}t\\right)$ với $m;a$ là các số thực dương cho trước. Giá trị của $T=\\dfrac{m}{a}$ là bao nhiêu?",
+  "dap_an": "5",
+  "loi_giai": "Chiều cao mực nước tại thời điểm $t$ là $h\\left(t\\right)=m+a\\cos \\left(\\dfrac{\\pi }{12}t\\right)$ với $m,a>0$.\nVì $-1\\le \\cos \\left(\\dfrac{\\pi }{12}t\\right)\\le 1$ nên giá trị lớn nhất của $h$ là $m+a$ và giá trị nhỏ nhất của $h$ là $m-a$.\nTheo giả thiết, mực nước cao nhất là $12 m$ và mực nước thấp nhất là $8 m$, ta có hệ phương trình\n$\\begin{cases} m+a=12 \\\\ m-a=8 \\end{cases}$\n$\\Leftrightarrow \\begin{cases} 2m=20 \\\\ 2a=4 \\end{cases}$\n$\\Leftrightarrow \\begin{cases} m=10 \\\\ a=2. \\end{cases}$\nDo đó\n$T=\\dfrac{m}{a}=\\dfrac{10}{2}=5.$\nVậy $T=5$.",
+  "co_hinh": true,
+  "nhan_cu": "Hàm số lượng giác › Xác định giá trị của 1 đại lượng tại 1 thời điểm"
+ },
+ {
+  "ma_cau": "T111000000337",
+  "loai": "trac_nghiem",
+  "de": "Số đo của các góc lượng giác $\\left(Ou,Ov\\right)$trong hình sau là bao nhiêu?",
+  "lua_chon": [
+   "$\\left(Ou,Ov\\right)=-60^\\circ+k360^\\circ \\left(k\\in\\mathbb{Z}\\right)$.",
+   "$\\left(Ou,Ov\\right)=60^\\circ+k360^\\circ \\left(k\\in\\mathbb{Z}\\right)$.",
+   "$\\left(Ou,Ov\\right)=60^\\circ+k180^\\circ \\left(k\\in\\mathbb{Z}\\right)$.",
+   "$\\left(Ou,Ov\\right)=-60^\\circ$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Quan sát hình vẽ, tia đầu là $Ou$, tia cuối là $Ov$, góc quay theo chiều dương (ngược chiều kim đồng hồ) và có số đo hình học là $60^\\circ$.\nVậy số đo của các góc lượng giác $\\left(Ou,Ov\\right)$ là $\\left(Ou,Ov\\right)=60^\\circ+k360^\\circ \\left(k\\in\\mathbb{Z}\\right)$.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111030501021",
+  "loai": "trac_nghiem",
+  "de": "Đường cong trong hình trên là đồ thị của hàm số nào dưới đây?",
+  "lua_chon": [
+   "$y = \\cos\\left(\\dfrac{x}{2}\\right)$",
+   "$y = \\cos 2x$",
+   "$y = \\sin x$",
+   "$y = \\sin x - 1$"
+  ],
+  "dap_an": "D",
+  "co_hinh": true,
+  "nhan_cu": "Đồ thị hàm số lượng giác › Nhận diện đồ thị hàm số lượng giác"
+ },
+ {
+  "ma_cau": "T111060101040",
+  "loai": "trac_nghiem",
+  "de": "Cho dãy số $(u_n)$ có $u_1 = 2; u_n = u_{n-1}^2 - 2u_{n-1}$ với $n \\ge 2$. Tính $u_3$.",
+  "lua_chon": [
+   "2",
+   "0",
+   "-1",
+   "1"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $u_1 = 2$.\n$u_2 = 2^2 - 2(2) = 0$.\n$u_3 = 0^2 - 2(0) = 0$.\nChọn B.",
+  "nhan_cu": "Dãy số › Xác định số hạng của dãy số"
+ },
+ {
+  "ma_cau": "T111030501025",
+  "loai": "trac_nghiem",
+  "de": "Đường cong trong hình trên là đồ thị của hàm số nào dưới đây?",
+  "lua_chon": [
+   "$y = \\dfrac{1}{2}\\cos x$",
+   "$y = \\cos x + 1$",
+   "$y = \\sin 2x + 1$",
+   "$y = \\cos x - 1"
+  ],
+  "dap_an": "C",
+  "co_hinh": true,
+  "nhan_cu": "Đồ thị hàm số lượng giác › Nhận diện đồ thị hàm số lượng giác"
+ },
+ {
+  "ma_cau": "T111060305001",
+  "loai": "trac_nghiem",
+  "de": "Trong các phát biểu sau, phát biểu nào là sai?",
+  "lua_chon": [
+   "A. Dãy số có tất cả các số hạng bằng nhau là một cấp số nhân.",
+   "B. Dãy số có tất cả các số hạng bằng nhau là một cấp số cộng.",
+   "C. Một cấp số cộng có công sai dương là một dãy số tăng.",
+   "D. Một cấp số cộng có công sai dương là một dãy số dương."
+  ],
+  "dap_an": "D",
+  "loi_giai": "A. Đúng vì dãy số đã cho là cấp số nhân với công bội $q=1$.\nB. Đúng vì dãy số đã cho là cấp số cộng với công sai $d=0$.\nC. Đúng vì dãy số đã cho là cấp số cộng có công sai dương nên: $u_{n+1}-u_n=d>0\\Rightarrow u_{n+1}>u_n$.\nD. Sai. Ví dụ dãy $-5;-2;1;3;\\ldots$ là dãy số có $d=3>0$ nhưng không phải là dãy số dương.",
+  "nhan_cu": "Cấp số nhân › Nhận diện cấp số nhân"
+ },
+ {
+  "ma_cau": "T111060303054",
+  "loai": "trac_nghiem",
+  "de": "Một cấp số nhân $(u_n)$ có $u_3 = 20$ và $q = 2$. Biết $u_n = 320$. Khi đó $n$ bằng",
+  "lua_chon": [
+   "$n = 5$",
+   "$n = 6$",
+   "$n = 7$",
+   "$n = 8$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Lời giải:\nTa có $u_n = u_3 q^{n-3}$.\n$20 \\cdot 2^{n-3} = 320 \\Rightarrow n = 7$.\nChọn C.",
+  "nhan_cu": "Cấp số nhân › Xác định thứ tự của số hạng trong dãy cấp số nhân"
+ },
+ {
+  "ma_cau": "T111010103042",
+  "loai": "tra_loi_ngan",
+  "de": "Một chiếc quạt trần năm cánh quay với tốc độ 175 vòng trong một phút. Chọn chiều quay của quạt là chiều dương. Sau thời gian bao lâu cánh quạt quay được một góc có số đo $42\\pi$?",
+  "dap_an": "7.2",
+  "loi_giai": "Sau 1 giây, cánh quạt quay được $\\dfrac{175}{60} = \\dfrac{35}{12}$ (vòng) theo chiều dương.\nSuy ra sau 1 giây, cánh quạt quay được một góc có số đo là $\\dfrac{35}{12} \\cdot 2\\pi = \\dfrac{35\\pi}{6}$.\nThời gian để cánh quạt quay được một góc có số đo $42\\pi$ là $42\\pi : \\dfrac{35\\pi}{6} = 7.2$ giây.",
+  "nhan_cu": "Góc lượng giác - Đường tròn lượng giác › Tính độ dài cung tròn"
+ },
+ {
+  "ma_cau": "T111010602054",
+  "loai": "tu_luan",
+  "de": "Một vận động viên bắn súng nằm trên mặt đất ở vị trí $A$ để ngắm các mục tiêu khác nhau trên một bức tường thẳng đứng. Vận động viên bắn trúng mục tiêu $B$ cách mặt đất $40 m$ tại góc ngắm $\\alpha$ (góc hợp bởi phương bắn với phương ngang). Nếu tăng góc ngắm đó lên $2$ lần thì vận động viên bắn trúng mục tiêu $C$ cách mặt đất $90 m$ (hình vẽ). Khi đó khoảng cách từ vận động viên đến bức tường bằng bao nhiêu mét?",
+  "loi_giai": "Gọi $H$ là chân bức tường trên mặt đất và $x=AH$ là khoảng cách từ vận động viên đến bức tường ($x>0$, đơn vị mét).\nVì bức tường thẳng đứng với mặt đất nên tam giác $AHB$ và tam giác $AHC$ vuông tại $H$.\nTrong tam giác vuông $AHB$, ta có\n$\\tan \\alpha =\\dfrac{HB}{AH}=\\dfrac{40}{x}.$\nTrong tam giác vuông $AHC$, ta có\n$\\tan 2\\alpha =\\dfrac{HC}{AH}=\\dfrac{90}{x}.$\nÁp dụng công thức nhân đôi $\\tan 2\\alpha =\\dfrac{2\\tan \\alpha }{1-\\tan ^{2}\\alpha }$, ta được\n$\\dfrac{90}{x}=\\dfrac{2\\cdot \\dfrac{40}{x}}{1-\\left(\\dfrac{40}{x}\\right)^{2}}\\Leftrightarrow \\dfrac{90}{x}=\\dfrac{\\dfrac{80}{x}}{\\dfrac{x^{2}-1 600}{x^{2}}}=\\dfrac{80x}{x^{2}-1 600}.$\n$\\Leftrightarrow 90\\left(x^{2}-1 600\\right)=80x^{2}\\Leftrig …",
+  "co_hinh": true,
+  "nhan_cu": "Công thức lượng giác › Tính giá trị của biểu thức lượng giác sử dụng công thức cộng"
+ },
+ {
+  "ma_cau": "T111060101007",
+  "loai": "trac_nghiem",
+  "de": "Dãy số $(u_n)$ cho bởi hệ thức $u_1 = 2$; $u_n = \\dfrac{2u_{n-1}+1}{3}$ với $n \\ge 2$. Khi đó $u_3$ có giá trị bằng:",
+  "lua_chon": [
+   "$\\dfrac{5}{3}$",
+   "$\\dfrac{13}{9}$",
+   "$\\dfrac{11}{9}$",
+   "$\\dfrac{14}{9}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có: $u_2 = \\dfrac{2(2)+1}{3} = \\dfrac{5}{3}$.\n$u_3 = \\dfrac{2\\left(\\dfrac{5}{3}\\right)+1}{3} = \\dfrac{13}{9}$.\nChọn B.",
+  "nhan_cu": "Dãy số › Xác định số hạng của dãy số"
+ },
+ {
+  "ma_cau": "T111020102017",
+  "loai": "trac_nghiem",
+  "de": "Biết $\\sin \\alpha =\\dfrac{\\sqrt{3}}{2}$ và $\\dfrac{\\pi}{2}<\\alpha<\\pi$. Giá trị của $P=\\cos \\left(2 \\alpha-\\dfrac{\\pi}{3}\\right)$ là",
+  "lua_chon": [
+   "$P=0$.",
+   "$P=-1$.",
+   "$P=\\dfrac{1}{2}$.",
+   "$P=-\\dfrac{\\sqrt{3}}{2}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $\\sin \\alpha=\\dfrac{\\sqrt{3}}{2} \\Rightarrow \\cos ^{2} \\alpha=1-\\sin ^{2} \\alpha=1-\\dfrac{3}{4}=\\dfrac{1}{4} \\Leftrightarrow \\cos \\alpha=\\pm \\dfrac{1}{2}$.\nTừ $\\dfrac{\\pi}{2}<\\alpha<\\pi \\Rightarrow \\cos \\alpha<0$ nên $\\cos \\alpha=-\\dfrac{1}{2}$.\nDo đó $P=\\cos \\left(2 \\alpha-\\dfrac{\\pi}{3}\\right)=\\cos 2 \\alpha \\cos \\dfrac{\\pi}{3}+\\sin 2 \\alpha \\sin \\dfrac{\\pi}{3}$\n$=\\left(2 \\cos ^{2} \\alpha-1\\right) \\cdot \\dfrac{1}{2}+2 \\sin \\alpha \\cos \\alpha \\cdot \\dfrac{\\sqrt{3}}{2}=\\cos ^{2} \\alpha-\\dfrac{1}{2}+\\sqrt{3} \\sin \\alpha \\cos \\alpha=-1$.",
+  "nhan_cu": "Công thức lượng giác › Tính giá trị của biểu thức lượng giác sử dụng công thức cộng"
+ },
+ {
+  "ma_cau": "T111020201007",
+  "loai": "trac_nghiem",
+  "de": "Chọn đáp án đúng.",
+  "lua_chon": [
+   "$\\sin 2x = 2\\sin x \\cos x$.",
+   "$\\sin 2x = \\sin x \\cos x$.",
+   "$\\sin 2x = 2\\cos x$.",
+   "$\\sin 2x = 2\\sin x$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Chọn A",
+  "nhan_cu": "Công thức lượng giác › Nhận dạng công thức nhân đôi, hạ bậc"
+ },
+ {
+  "ma_cau": "T111060204011",
+  "loai": "tra_loi_ngan",
+  "de": "Tính $u_8$ của cấp số cộng $(u_n)$ biết $\\begin{cases}u_1+u_7=16\\\\ \\ u_2+u_5=14\\end{cases}$.",
+  "dap_an": "16",
+  "loi_giai": "Ta có hệ phương trình:\n$\\begin{cases}2u_1+6d=16\\\\ 2u_1+5d=14\\end{cases} d = 2 . u_1=2 . u_8 = u_1 + 7d = 2 + 7(2) = 16$.",
+  "nhan_cu": "Cấp số cộng › Xác định các yếu tố của cấp số cộng khi biết 2 phương trình về mối quan hệ giữa các số hạng hoặc tổng các số hạng"
+ },
+ {
+  "ma_cau": "T111000000432",
+  "loai": "trac_nghiem",
+  "de": "Cho hình vẽ bên dưới, số đo của góc lượng giác $\\left(OA,OM\\right)$là:",
+  "lua_chon": [
+   "$-30^\\circ+k360^\\circ,k\\in \\mathbb{Z}$.",
+   "$150^\\circ+k360^\\circ,k\\in \\mathbb{Z}$.",
+   "$30^\\circ+k360^\\circ,k\\in \\mathbb{Z}$.",
+   "$-150^\\circ+k360^\\circ,k\\in \\mathbb{Z}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Quan sát hình vẽ, góc lượng giác có tia đầu là $OA$, tia cuối là $OM$ và quay theo chiều dương một góc có số đo $150^\\circ$.\nDo đó, số đo tổng quát của góc lượng giác $\\left(OA,OM\\right)$ là:\n$\\left(OA,OM\\right)=150^\\circ+k360^\\circ\\left(k\\in\\mathbb{Z}\\right).$\nVậy đáp án đúng là $150^\\circ+k360^\\circ,k\\in \\mathbb{Z}$.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111040201052",
+  "loai": "trac_nghiem",
+  "de": "Nghiệm của phương trình $\\cos 4x + \\cos 2x = 0$ là:",
+  "lua_chon": [
+   "$x = \\dfrac{\\pi}{6} + \\dfrac{k\\pi}{2}$ và $x = -\\dfrac{\\pi}{2} + k\\pi$ ($k \\in \\mathbb{Z}$)",
+   "$x = \\dfrac{\\pi}{3} + \\dfrac{k\\pi}{3}$ và $x = -\\dfrac{\\pi}{2} + k2\\pi$ ($k \\in \\mathbb{Z}$)",
+   "$x = \\dfrac{\\pi}{6} + \\dfrac{k\\pi}{3}$ và $x = -\\dfrac{\\pi}{2} + k\\pi$ ($k \\in \\mathbb{Z}$)",
+   "$x = \\dfrac{\\pi}{4} + \\dfrac{k\\pi}{2}$ và $x = \\pi + k\\pi$ ($k \\in \\mathbb{Z}$)"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Phương trình đã cho tương đương với:\n$$\\cos 4x = - \\cos 2x$$\n$$\\Leftrightarrow \\cos 4x = \\cos (\\pi - 2x)$$\n$$\\Leftrightarrow \\begin{cases} 4x = \\pi - 2x + k2\\pi \\\\ 4x = -(\\pi - 2x) + k2\\pi \\end{cases} (k \\in \\mathbb{Z})$$\n$$\\Leftrightarrow \\begin{cases} 6x = \\pi + k2\\pi \\\\ 2x = -\\pi + k2\\pi \\end{cases}$$\n$$\\Leftrightarrow \\begin{cases} x = \\dfrac{\\pi}{6} + \\dfrac{k\\pi}{3} \\\\ x = -\\dfrac{\\pi}{2} + k\\pi \\end{cases}$$",
+  "nhan_cu": "Phương trình lượng giác mở rộng › Giải phương trình lượng giác dạng sin + cos = 0"
+ },
+ {
+  "ma_cau": "T111060304045",
+  "loai": "tu_luan",
+  "de": "Gia đình ông Nam thuê một đội khoan giếng về khoan một cái giếng để lấy nước. Biết giá của mét khoan đầu tiên là $90 000$ đồng, kể từ mét khoan thứ hai trở đi giá của mỗi mét khoan tăng thêm $4\\%$ so với giá của mét khoan trước đó. Thực tế khoan sâu xuống $60 m$ mới có nước. Hỏi gia đình ông Nam phải trả bao nhiêu tiền để khoan cái giếng đó?",
+  "loi_giai": "Gọi $u_{n}$ là giá tiền của mét khoan thứ $n$ (đơn vị: đồng), với $1\\le n\\le 60$.\nTheo đề bài, giá của mét khoan đầu tiên là $u_{1}=90 000$ đồng.\nKể từ mét khoan thứ hai trở đi, giá của mỗi mét khoan tăng thêm $4\\%$ so với giá của mét khoan trước đó nên\n$u_{n+1}=u_{n}+4\\%\\cdot u_{n}=u_{n}\\left(1+0,04\\right)=1,04u_{n}.$\nDo đó, dãy số $\\left(u_{n}\\right)$ lập thành một cấp số nhân có số hạng đầu $u_{1}=90 000$ và công bội $q=1,04$.\nTổng số tiền gia đình ông Nam phải trả để khoan cái giếng sâu $60 m$ là tổng của $60$ số hạng đầu của cấp số nhân:\n$S_{60}=\\dfrac{u_{1}\\left(1-q^{60}\\right)}{1-q}=\\dfrac{90 000\\cdot \\left(1-{1,04}^{60}\\right)}{1-1,04}=\\dfrac{90 000\\cdot \\left({1,04}^{60}-1\\right)}{0 …",
+  "nhan_cu": "Cấp số nhân › Bài toán thực tế về cấp số nhân"
+ },
+ {
+  "ma_cau": "T111060304094",
+  "loai": "tra_loi_ngan",
+  "de": "Ta biết rằng trong một hồ sen, số lá sen ngày hôm sau bằng ba lần số lá sen ngày hôm trước. Biết rằng ngày đầu có $1$ lá sen thì tới ngày thứ $10$ hồ sẽ đầy lá sen. Hỏi nếu ngày đầu có $9$ lá sen thì tới ngày thứ mấy hồ sẽ đầy lá sen?",
+  "dap_an": "8",
+  "loi_giai": "Gọi số lá sen trên mặt hồ vào ngày thứ $n$ là $u_{n}$.\nVì số lá sen ngày hôm sau bằng ba lần số lá sen ngày hôm trước nên $\\left(u_{n}\\right)$ là một cấp số nhân có công bội $q=3$.\n- Khi ngày đầu có $1$ lá sen ($u_{1}=1$), số lá sen ở ngày thứ $10$ khi hồ đầy sen là:\n$u_{10}=u_{1}\\cdot q^{9}=1\\cdot 3^{9}=3^{9} \\left(\\text{la sen}\\right).$\nDo đó, số lượng lá sen để hồ đầy là $3^{9}$ lá.\n- Khi ngày đầu có $9$ lá sen ($v_{1}=9=3^{2}$), số lá sen ở ngày thứ $k$ là:\n$v_{k}=v_{1}\\cdot q^{k-1}=3^{2}\\cdot 3^{k-1}=3^{k+1} \\left(\\text{la sen}\\right).$\nĐể hồ đầy sen thì $v_{k}=3^{9}$, tức là:\n$3^{k+1}=3^{9}\\Leftrightarrow k+1=9\\Leftrightarrow k=8.$\nVậy nếu ngày đầu có $9$ lá sen thì tới ngày thứ $8$ hồ …",
+  "nhan_cu": "Cấp số nhân › Bài toán thực tế về cấp số nhân"
+ },
+ {
+  "ma_cau": "T111030503026",
+  "loai": "trac_nghiem",
+  "de": "Hàm số có đồ thị như hình trên nghịch biến trên khoảng nào dưới đây? [hình vẽ đồ thị hàm số sin/cos]",
+  "lua_chon": [
+   "$(\\dfrac{3\\pi}{8};\\dfrac{5\\pi}{8})$",
+   "$(\\dfrac{\\pi}{8};\\dfrac{3\\pi}{8})$",
+   "$(0;\\pi)$",
+   "$(-\\pi;-\\dfrac{\\pi}{2})$"
+  ],
+  "dap_an": "D",
+  "co_hinh": true,
+  "nhan_cu": "Đồ thị hàm số lượng giác › Xác định tính đơn điệu của hàm số lượng giác dựa vào đồ thị"
+ },
+ {
+  "ma_cau": "T111040101189",
+  "loai": "trac_nghiem",
+  "de": "Hai phương trình được gọi là tương đương với nhau khi chúng có",
+  "lua_chon": [
+   "cùng tập xác định.",
+   "cùng điều kiện xác định.",
+   "cùng có nghiệm dương.",
+   "cùng tập nghiệm."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Theo định nghĩa, hai phương trình được gọi là tương đương với nhau khi chúng có cùng tập nghiệm.\nVậy phương án đúng là \" cùng tập nghiệm\".",
+  "nhan_cu": "Phương trình lượng giác cơ bản › Giải phương trình lượng giác cơ bản"
+ },
+ {
+  "ma_cau": "T111040101175",
+  "loai": "tu_luan",
+  "de": "a. Giải phương trình $\\cot \\left(x+\\dfrac{\\pi }{3}\\right)=\\sqrt{3}$.\nb. Cho $\\sin \\alpha =\\dfrac{2}{3}$, tính giá trị của biểu thức $P=\\left(1-3\\cos \\alpha \\right)\\left(1+3\\cos \\alpha \\right)$.",
+  "loi_giai": "a) Điều kiện xác định: $\\sin \\left(x+\\dfrac{\\pi }{3}\\right)\\ne 0\\Leftrightarrow x+\\dfrac{\\pi }{3}\\ne k\\pi \\Leftrightarrow x\\ne -\\dfrac{\\pi }{3}+k\\pi \\left(k\\in\\mathbb{Z}\\right)$.\nPhương trình đã cho tương đương với:\n$\\cot \\left(x+\\dfrac{\\pi }{3}\\right)=\\cot \\dfrac{\\pi }{6}$\n$\\Leftrightarrow x+\\dfrac{\\pi }{3}=\\dfrac{\\pi }{6}+k\\pi \\Leftrightarrow x=-\\dfrac{\\pi }{6}+k\\pi \\left(k\\in\\mathbb{Z}\\right).$\nĐối chiếu với điều kiện xác định, ta thấy các nghiệm đều thoả mãn.\nVậy phương trình có nghiệm là $x=-\\dfrac{\\pi }{6}+k\\pi$ với $k\\in \\mathbb{Z}$.\nb) Ta có:\n$P=\\left(1-3\\cos \\alpha \\right)\\left(1+3\\cos \\alpha \\right)=1-9\\cos ^{2}\\alpha.$\nMặt khác, từ hằng đẳng thức $\\sin ^{2}\\alpha +\\cos ^{2}\\alpha  …",
+  "nhan_cu": "Phương trình lượng giác cơ bản › Giải phương trình lượng giác cơ bản"
+ },
+ {
+  "ma_cau": "T111010110012",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $\\cos x=-\\dfrac{\\sqrt{3}}{3}$ và $-\\pi <x<-\\dfrac{\\pi }{2}$. Giá trị của biểu thức $T=9\\sin \\left(x+2025\\pi \\right)+\\sqrt{3}\\tan \\left(2025\\pi -x\\right)$ bằng bao nhiêu? (kết quả làm tròn đến hàng phần trăm).",
+  "dap_an": "4.90",
+  "loi_giai": "Sử dụng công thức cung liên kết, ta có\n$\\sin \\left(x+2025\\pi \\right)=\\sin \\left(x+\\pi +1012\\cdot 2\\pi \\right)=\\sin \\left(x+\\pi \\right)=-\\sin x,$\n$\\tan \\left(2025\\pi -x\\right)=\\tan \\left(\\pi -x+2024\\pi \\right)=\\tan \\left(\\pi -x\\right)=-\\tan x.$\nBiểu thức $T$ trở thành\n$T=-9\\sin x-\\sqrt{3}\\tan x.$\nVì $-\\pi <x<-\\dfrac{\\pi }{2}$ nên $\\sin x < 0$.\nTa có\n$\\sin ^{2}x=1-\\cos ^{2}x=1-\\left(-\\dfrac{\\sqrt{3}}{3}\\right)^{2}=1-\\dfrac{1}{3}=\\dfrac{2}{3}\\Rightarrow \\sin x=-\\sqrt{\\dfrac{2}{3}}=-\\dfrac{\\sqrt{6}}{3}.$\nSuy ra\n$\\tan x=\\dfrac{\\sin x}{\\cos x}=\\dfrac{-\\dfrac{\\sqrt{6}}{3}}{-\\dfrac{\\sqrt{3}}{3}}=\\sqrt{2}.$\nThay vào biểu thức $T$, ta được\n$T=-9\\cdot \\left(-\\dfrac{\\sqrt{6}}{3}\\right)-\\sqrt{3}\\cdot \\sq …",
+  "nhan_cu": "Góc lượng giác - Đường tròn lượng giác › Cho một giá trị lượng giác, tính giá trị của biểu thức lượng giác"
+ },
+ {
+  "ma_cau": "T111060304092",
+  "loai": "tra_loi_ngan",
+  "de": "Aladin nhặt được cây đèn thần, chàng miết tay vào cây đèn và gọi Thần đèn ra. Thần đèn cho chàng 3 điều ước. Aladin ước 2 điều đầu tiên tùy thích, nhưng điều ước thứ 3 của chàng là: 'Ước gì ngày mai tôi lại nhặt được cây đèn và Thần cho tôi số điều ước gấp đôi số điều ước ngày hôm nay'. Thần đèn chấp thuận và nói ngày Aladin ước thỏa hiệp theo quy tắc như trên: ước hết các điều đầu tiên và luôn chừa lại điều ước cuối cùng để kéo dài thỏa thuận với thần đèn cho ngày hôm sau. Sau 30 ngày gặp Thần đèn, Aladin đã ước được số điều ước dưới dạng một số $-a(b-c^d)$. Hỏi $a + b + c + d =?$",
+  "dap_an": "46",
+  "loi_giai": "Mỗi ngày $k$, Thần đèn cho Aladin $3 \\cdot 2^{k-1}$ điều ước.\nAladin sử dụng $3 \\cdot 2^{k-1} - 1$ điều ước đầu tiên và để dành 1 điều ước cuối cùng để gia hạn cho ngày tiếp theo.\nTổng số điều ước Aladin đã ước sau 30 ngày là\n$S = \\sum_{k=1}^{30} (3 \\cdot 2^{k-1} - 1)$\n$= 3(1 + 2 + 2^2 + ... + 2^{29}) - 30$\n$= 3 \\cdot \\dfrac{2^{30} - 1}{2 - 1} - 30$\n$= 3 \\cdot 2^{30} - 33$\n$= -3(11 - 2^{30})$.\nTheo giả thiết, số điều ước được viết dưới dạng $-a(b-c^d)$, suy ra $a = 3, b = 11, c = 2$ và $d = 30$.\nVậy $a + b + c + d = 3 + 11 + 2 + 30 = 46$.",
+  "nhan_cu": "Cấp số nhân › Bài toán thực tế về cấp số nhân"
+ },
+ {
+  "ma_cau": "T111060101070",
+  "loai": "trac_nghiem",
+  "de": "Dãy số nào dưới đây là dãy số hữu hạn?",
+  "lua_chon": [
+   "Dãy các số nguyên tố lớn hơn $10$.",
+   "Dãy các số tự nhiên chẵn nhỏ hơn $50$.",
+   "Dãy các số tự nhiên chia hết cho $5$.",
+   "Dãy các số chính phương."
+  ],
+  "dap_an": "B",
+  "loi_giai": "- Dãy các số tự nhiên chẵn nhỏ hơn $50$ gồm các số $\\left\\{0;2;4;\\dots;48\\right\\}$. Dãy này có số lượng phần tử xác định ($25$ phần tử) nên là một dãy số hữu hạn.\n- Các dãy số còn lại (các số nguyên tố lớn hơn $10$, các số tự nhiên chia hết cho $5$, các số chính phương) đều có vô số phần tử nên là các dãy số vô hạn.\nVậy dãy số hữu hạn là dãy các số tự nhiên chẵn nhỏ hơn $50$.",
+  "nhan_cu": "Dãy số › Xác định số hạng của dãy số"
+ },
+ {
+  "ma_cau": "T111060303051",
+  "loai": "trac_nghiem",
+  "de": "Cho cấp số nhân $(u_n)$ với $u_1=64$, $q=\\dfrac{1}{2}$. Nếu $u_n=2$ thì $n$ bằng",
+  "lua_chon": [
+   "$n=6$",
+   "$n=5$",
+   "$n=7$",
+   "$n=8"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Lời giải:\n$64\\cdot\\left(\\dfrac{1}{2}\\right)^{n-1}=2 \\Rightarrow n=6$.\nChọn A.",
+  "nhan_cu": "Cấp số nhân › Xác định thứ tự của số hạng trong dãy cấp số nhân"
+ },
+ {
+  "ma_cau": "T111060202049",
+  "loai": "trac_nghiem",
+  "de": "Cho cấp số cộng $(u_n)$, biết: $u_n = 0, u_{n+1} = -5$. Tính công sai $d$ của cấp số cộng đó.",
+  "lua_chon": [
+   "$d = -5$.",
+   "$d = 5$.",
+   "$d = -10$.",
+   "$d = 0$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "$d = u_{n+1} - u_n = -5 - 0 = -5$.",
+  "nhan_cu": "Cấp số cộng › Xác định các yếu tố của cấp số cộng khi biết 2 yếu tố bất kỳ"
+ },
+ {
+  "ma_cau": "T111030501023",
+  "loai": "trac_nghiem",
+  "de": "Đường cong trong hình trên là đồ thị của hàm số nào dưới đây?",
+  "lua_chon": [
+   "$y = -2\\sin x$",
+   "$y = 2\\sin 2x$",
+   "$y = \\cos\\left(\\dfrac{x}{2}\\right)$",
+   "$y = \\sin x - 1$"
+  ],
+  "dap_an": "B",
+  "co_hinh": true,
+  "nhan_cu": "Đồ thị hàm số lượng giác › Nhận diện đồ thị hàm số lượng giác"
+ },
+ {
+  "ma_cau": "T111000000113",
+  "loai": "trac_nghiem",
+  "de": "Trong hoạt động Ngày chủ nhật xanh, đoàn thanh niên lớp 11A1 tiến hành trồng cây. Kết quả sau hoạt động được ghi lại ở bảng sau:\n$\\begin{array}{|c|c|c|c|c|c|} \\hline \\text{Số cây} & [1;8) & [8;15) & [15;22) & [22;29) & [29;36) \\\\ \\hline \\text{Số học sinh} & 7 & 15 & 6 & 10 & 3 \\\\ \\hline \\end{array}$\nHỏi trung bình mỗi học sinh trồng được bao nhiêu cây?",
+  "lua_chon": [
+   "$16,3$.",
+   "$15,5$.",
+   "$16,2$.",
+   "$26$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Cỡ mẫu là $n=7+15+6+10+3=41$.\nGiá trị đại diện $c_{i}$ của các nhóm lần lượt là: - Nhóm $[1;8)$ có $c_{1}=\\dfrac{1+8}{2}=4,5$; - Nhóm $[8;15)$ có $c_{2}=\\dfrac{8+15}{2}=11,5$; - Nhóm $[15;22)$ có $c_{3}=\\dfrac{15+22}{2}=18,5$; - Nhóm $[22;29)$ có $c_{4}=\\dfrac{22+29}{2}=25,5$; - Nhóm $[29;36)$ có $c_{5}=\\dfrac{29+36}{2}=32,5$.\nSố cây trung bình mỗi học sinh trồng được là\n$\\hat{x}=\\dfrac{7\\cdot 4,5+15\\cdot 11,5+6\\cdot 18,5+10\\cdot 25,5+3\\cdot 32,5}{41}=\\dfrac{667,5}{41}\\approx 16,3.$\nVậy trung bình mỗi học sinh trồng được khoảng $16,3$ cây.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000169",
+  "loai": "tu_luan",
+  "de": "Khảo sát tổng thời gian sử dụng điện thoại thông minh trong ngày (đơn vị: phút) của một số học sinh, thu được mẫu số liệu ghép nhóm sau:\n$\\begin{array}{|c|c|c|c|c|c|c|} \\hline \\text{Thời gian} & [0;30) & [30;60) & [60;90) & [90;120) & [120;150) & [150;180) \\\\ \\hline \\text{Số học sinh} & \\text{11} & \\text{24} & \\text{28} & \\text{20} & \\text{12} & \\text{5} \\\\ \\hline \\end{array}$\nTìm số trung vị của mẫu số liệu trên.",
+  "loi_giai": "Cỡ mẫu là $n=11+24+28+20+12+5=100$.\nBảng tần số tích luỹ của mẫu số liệu ghép nhóm như sau:\n$\\begin{array}{|c|c|c|} \\hline \\text{Nhóm thời gian} & \\text{Tần số} n_{i} & \\text{Tần số tích luỹ} cf_{i} \\\\ \\hline [0;30) & 11 & 11 \\\\ \\hline [30;60) & 24 & 35 \\\\ \\hline [60;90) & 28 & 63 \\\\ \\hline [90;120) & 20 & 83 \\\\ \\hline [120;150) & 12 & 95 \\\\ \\hline [150;180) & 5 & 100 \\\\ \\hline \\end{array}$\nTa có $\\dfrac{n}{2}=\\dfrac{100}{2}=50$.\nNhóm đầu tiên có tần số tích luỹ không nhỏ hơn $50$ là nhóm $[60;90)$ (có tần số tích luỹ bằng $63$).\nDo đó, nhóm chứa trung vị là $[60;90)$, với $u_{m}=60$, $u_{m+1}-u_{m}=30$, tần số $n_{m}=28$ và tần số tích luỹ của nhóm trước đó là $C=35$.\nÁp dụng công thức tính …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111060303040",
+  "loai": "trac_nghiem",
+  "de": "Cho cấp số nhân $(u_n)$, biết $u_1=3$, $u_4=81$, tổng $S_n=u_1+u_2+...+u_n=120$. Tìm $n$.",
+  "lua_chon": [
+   "$n=3$",
+   "R $n=5$",
+   "R $n=6$",
+   "R $n=4$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta có $u_4=u_1q^3$.\n$3q^3=81 \\Rightarrow q=3$.\n$S_n = 3\\dfrac{1-3^n}{1-3} = 120 \\Rightarrow n=4$.\nChọn D.",
+  "nhan_cu": "Cấp số nhân › Xác định thứ tự của số hạng trong dãy cấp số nhân"
+ },
+ {
+  "ma_cau": "T111060205010",
+  "loai": "tra_loi_ngan",
+  "de": "Một sinh viên muốn mua một chiếc xe máy cũ giá 4 500 000 đồng để đi làm thêm. Tháng đầu tiên, bạn sinh viên quỹ tiết kiệm được 1 200 000 đồng. Kể từ tháng thứ hai, mỗi tháng bạn để dành thêm được 300 000 đồng và cất chung vào quỹ tiết kiệm mua xe của mình. Hỏi ít nhất vào tháng thứ bao nhiêu thì bạn sinh viên mới có đủ tiền mua chiếc xe máy đó?",
+  "dap_an": "12",
+  "loi_giai": "Gọi $n$ là số tháng ít nhất cần tiết kiệm ($n \\in \\mathbb{N}^*$).\nTổng số tiền tích lũy được ở tháng thứ $n$ tạo thành một cấp số cộng với $u_1 = 1200000$ và công sai $d = 300000$.\nSố tiền có được ở tháng thứ $n$ là: $u_n = 1200000 + (n-1)300000$.\nTa có bất phương trình: $1200000 + (n-1)300000 \\ge 4500000$\n$\\Leftrightarrow n \\ge 12$\nVậy ít nhất vào tháng thứ 12 bạn sinh viên mới có đủ tiền.",
+  "nhan_cu": "Cấp số cộng › Toán thực tế cấp số cộng"
+ },
+ {
+  "ma_cau": "T111040101209",
+  "loai": "tu_luan",
+  "de": "Giải phương trình: $\\cos 2x=\\sin x$.",
+  "loi_giai": "Phương trình đã cho xác định với mọi $x\\in \\mathbb{R}$.\nTa có $\\sin x=\\cos \\left(\\dfrac{\\pi }{2}-x\\right)$. Khi đó phương trình trở thành\n$\\cos 2x=\\cos \\left(\\dfrac{\\pi }{2}-x\\right).$\nÁp dụng công thức nghiệm của phương trình lượng giác cơ bản đối với hàm số côsin, ta được\n$\\left[\\begin{array}{l} 2x=\\dfrac{\\pi }{2}-x+k2\\pi \\\\ 2x=-\\left(\\dfrac{\\pi }{2}-x\\right)+k2\\pi \\end{array}\\right.$\n$\\Leftrightarrow \\left[\\begin{array}{l} 3x=\\dfrac{\\pi }{2}+k2\\pi \\\\ x=-\\dfrac{\\pi }{2}+k2\\pi \\end{array}\\right.$\n$\\Leftrightarrow \\left[\\begin{array}{l} x=\\dfrac{\\pi }{6}+\\dfrac{k2\\pi }{3} \\\\ x=-\\dfrac{\\pi }{2}+k2\\pi \\end{array}\\right.\\left(k\\in\\mathbb{Z}\\right).$\nVậy tập nghiệm của phương trình là $S=\\left\\{ …",
+  "nhan_cu": "Phương trình lượng giác cơ bản › Giải phương trình lượng giác cơ bản"
+ },
+ {
+  "ma_cau": "T111060104004",
+  "loai": "trac_nghiem",
+  "de": "Cho dãy số $(u_n)$ có các số hạng đều dương. Dãy số $(u_n)$ là dãy số tăng nếu xét thương số $T = \\dfrac{u_{n+1}}{u_n}$ với mọi $n \\in \\mathrm{N}^*$, ta luôn có:",
+  "lua_chon": [
+   "$T > 1$",
+   "$T < 1$",
+   "$T = 1$",
+   "$T < 0$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Do dãy số có các số hạng đều dương ($u_n > 0$), dãy số là dãy tăng khi $u_{n+1} > u_n \\Leftrightarrow \\dfrac{u_{n+1}}{u_n} > 1 \\Leftrightarrow T > 1$.",
+  "nhan_cu": "Dãy số › Xác định tính tăng giảm của dãy số"
+ },
+ {
+  "ma_cau": "T111030502039",
+  "loai": "trac_nghiem",
+  "de": "Chu kì của hàm số có đồ thị như hình trên là:",
+  "lua_chon": [
+   "$\\frac{\\pi}{2}$",
+   "$\\pi$",
+   "$4\\pi$",
+   "$2\\pi$"
+  ],
+  "dap_an": "D",
+  "co_hinh": true,
+  "nhan_cu": "Đồ thị hàm số lượng giác › Xác định các yếu tố  cơ bản của hàm số lượng giác"
+ },
+ {
+  "ma_cau": "T111030501046",
+  "loai": "trac_nghiem",
+  "de": "Đường cong trong hình trên là đồ thị của hàm số nào dưới đây?",
+  "lua_chon": [
+   "$y = \\cos 2x$",
+   "$y = - \\sin x$",
+   "$y = \\cot x + 1$",
+   "$y = \\sin 2x$"
+  ],
+  "dap_an": "C",
+  "co_hinh": true,
+  "nhan_cu": "Đồ thị hàm số lượng giác › Nhận diện đồ thị hàm số lượng giác"
+ },
+ {
+  "ma_cau": "T111040201057",
+  "loai": "trac_nghiem",
+  "de": "Nghiệm của phương trình $\\cos 3x - \\cos \\left(x + \\dfrac{\\pi}{4}\\right) = 0$ là:",
+  "lua_chon": [
+   "$x = \\dfrac{\\pi}{8} + k\\pi$ và $x = \\dfrac{\\pi}{16} + \\dfrac{k\\pi}{2}$ $(k \\in \\mathbb{Z})$",
+   "$x = \\dfrac{\\pi}{8} + k\\pi$ và $x = -\\dfrac{\\pi}{16} + \\dfrac{k\\pi}{2}$ $(k \\in \\mathbb{Z})$",
+   "$x = \\dfrac{\\pi}{8} + k2\\pi$ và $x = -\\dfrac{\\pi}{8} + k\\pi$ $(k \\in \\mathbb{Z})$",
+   "$x = \\dfrac{\\pi}{8} + k2\\pi$ và $x = -\\dfrac{\\pi}{8} + \\dfrac{k\\pi}{2}$ $(k \\in \\mathbb{Z})$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Phương trình đã cho tương đương với:\n$$\\cos 3x = \\cos \\left(x + \\dfrac{\\pi}{4}\\right)$$\n$$\\Leftrightarrow \\left[\\begin{array}{l}3x = x + \\dfrac{\\pi}{4} + k2\\pi\\\\3x = -\\left(x + \\dfrac{\\pi}{4}\\right) + k2\\pi\\end{array}\\right. (k \\in \\mathbb{Z})$$\n$$\\Leftrightarrow \\left[\\begin{array}{l}2x = \\dfrac{\\pi}{4} + k2\\pi\\\\4x = -\\dfrac{\\pi}{4} + k2\\pi\\end{array}\\right.$$\n$$\\Leftrightarrow \\left[\\begin{array}{l}x = \\dfrac{\\pi}{8} + k\\pi\\\\x = -\\dfrac{\\pi}{16} + \\dfrac{k\\pi}{2}\\end{array}\\right.$$\nChọn B.",
+  "nhan_cu": "Phương trình lượng giác mở rộng › Giải phương trình lượng giác dạng sin + cos = 0"
+ },
+ {
+  "ma_cau": "T111040102061",
+  "loai": "trac_nghiem",
+  "de": "Phương trình $\\dfrac{\\cos 2x}{1-\\sin 2x}=0$ có bao nhiêu nghiệm thuộc đoạn $\\left[-\\pi;2\\pi \\right]$?",
+  "lua_chon": [
+   "$4$.",
+   "$3$.",
+   "$6$.",
+   "$5$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Điều kiện xác định: $1-\\sin 2x\\ne 0\\Leftrightarrow \\sin 2x\\ne 1\\Leftrightarrow 2x\\ne \\dfrac{\\pi }{2}+k2\\pi \\Leftrightarrow x\\ne \\dfrac{\\pi }{4}+k\\pi \\left(k\\in\\mathbb{Z}\\right)$.\nPhương trình đã cho tương đương với\n$\\cos 2x=0\\Leftrightarrow 2x=\\dfrac{\\pi }{2}+k\\pi \\Leftrightarrow x=\\dfrac{\\pi }{4}+k\\dfrac{\\pi }{2} \\left(k\\in\\mathbb{Z}\\right).$\nTa biểu diễn họ nghiệm trên qua hai trường hợp của $k$:\n• Với $k=2m \\left(m\\in\\mathbb{Z}\\right)$: $x = \\dfrac{\\pi}{4} + m\\pi$ (loại do không thỏa mãn điều kiện xác định).\n• Với $k=2m+1 \\left(m\\in\\mathbb{Z}\\right)$: $x=\\dfrac{\\pi }{4}+\\left(2m+1\\right)\\dfrac{\\pi }{2}=\\dfrac{3\\pi }{4}+m\\pi =-\\dfrac{\\pi }{4}+\\left(m+1\\right)\\pi$ (thỏa mãn điều kiện).\nDo đ …",
+  "nhan_cu": "Phương trình lượng giác cơ bản › Tìm nghiệm của phương trình lượng giác trên khoảng/đoạn"
+ },
+ {
+  "ma_cau": "T111060101130",
+  "loai": "trac_nghiem",
+  "de": "Cho dãy số $\\left(u_{n}\\right)$ có số hạng tổng quát là $u_{n}=\\dfrac{2n+5}{n+1};n\\ge 1$. Dãy số trên có bao nhiêu số hạng nguyên.",
+  "lua_chon": [
+   "$2$.",
+   "$4$.",
+   "$1$.",
+   "$3$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có số hạng tổng quát\n$u_{n}=\\dfrac{2n+5}{n+1}=\\dfrac{2\\left(n+1\\right)+3}{n+1}=2+\\dfrac{3}{n+1}\\left(n\\ge 1,n\\in \\mathbb{N}^{∗}\\right).$\nĐể $u_{n}\\in \\mathbb{Z}$ thì $\\dfrac{3}{n+1}\\in \\mathbb{Z}$, tức là $\\left(n+1\\right)$ là ước của $3$.\nDo $n\\ge 1$ nên $n+1\\ge 2$, suy ra $n+1=3\\Leftrightarrow n=2$ (thỏa mãn).\nKhi đó $u_{2}=\\dfrac{2\\cdot 2+5}{2+1}=3\\in \\mathbb{Z}$.\nVậy dãy số đã cho có đúng $1$ số hạng nguyên.",
+  "nhan_cu": "Dãy số › Xác định số hạng của dãy số"
+ },
+ {
+  "ma_cau": "T111030501016",
+  "loai": "trac_nghiem",
+  "de": "Đường cong trong hình trên là đồ thị của hàm số nào dưới đây?",
+  "lua_chon": [
+   "$y = \\cos\\left(\\dfrac{x}{2}\\right)$",
+   "$y = - \\sin x$",
+   "$y = \\sin 2x + 1$",
+   "$y = \\cos 2x"
+  ],
+  "dap_an": "D",
+  "co_hinh": true,
+  "nhan_cu": "Đồ thị hàm số lượng giác › Nhận diện đồ thị hàm số lượng giác"
+ },
+ {
+  "ma_cau": "T111060102021",
+  "loai": "trac_nghiem",
+  "de": "Cho dãy số $(u_n)$ với $u_n = \\dfrac{2n+1}{n^2-n+2}$. Số $\\dfrac{13}{32}$ là số hạng thứ bao nhiêu của dãy?",
+  "lua_chon": [
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Xét phương trình $u_n = \\dfrac{13}{32}$.\n$\\dfrac{2n+1}{n^2-n+2} = \\dfrac{13}{32}$\n$\\Leftrightarrow 64n + 32 = 13n^2 - 13n + 26$\n$\\Leftrightarrow 13n^2 - 77n - 6 = 0$\n$\\Leftrightarrow \\begin{cases} n = 6 \\text{ (thỏa mãn)} \\\\ n = -\\dfrac{1}{13} \\text{ (loại)} \\end{cases}$\nChọn A.",
+  "nhan_cu": "Dãy số › Xác định thứ tự của số hạng trong dãy"
+ },
+ {
+  "ma_cau": "T111060304055",
+  "loai": "tra_loi_ngan",
+  "de": "Một loại vi khuẩn được nuôi cấy trong ống nghiệm, cứ 20 phút lại phân đôi một lần. Nếu ban đầu có 200 vi khuẩn, tính số lượng vi khuẩn có trong ống nghiệm sau 2 giờ (làm tròn kết quả đến hàng phần chục, đơn vị nghìn con).",
+  "dap_an": "12,8",
+  "loi_giai": "Đổi 2giờ= 120phút.\nSố lần phân đôi của vi khuẩn trong 2 giờ là\n$\\dfrac{120}{20} = 6$ (lần).\nSố lượng vi khuẩn sau mỗi lần phân đôi tạo thành một cấp số nhân có số hạng đầu là $N_0 = 200$ và công bội $q = 2$.\nSau 6 lần phân đôi, số lượng vi khuẩn trong ống nghiệm là\n$N_6 = 200 \\cdot 2^6 = 200 \\cdot 64 = 12 \\ 800$ (con).\nĐổi ra đơn vị nghìn con:\n$\\dfrac{12 \\ 800}{1 \\ 000} = 12,8$ (nghìn con).\nVậy sau 2 giờ, số lượng vi khuẩn có trong ống nghiệm là 12,8 nghìn con.",
+  "nhan_cu": "Cấp số nhân › Bài toán thực tế về cấp số nhân"
+ },
+ {
+  "ma_cau": "T111060204038",
+  "loai": "trac_nghiem",
+  "de": "Cho cấp số cộng $(u_n)$ thỏa mãn $\\begin{cases}u_1+S_3=10\\ \\\\ S_6-u_5=27\\end{cases}$. Tìm số hạng đầu $u_1$ và công sai $d$.",
+  "lua_chon": [
+   "$u_1 = -1, d = -2$",
+   "$u_1 = 1, d = -2$",
+   "$u_1 = -1, d = 2$",
+   "$u_1 = 1, d = 2$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Sử dụng công thức của cấp số cộng, ta có hệ:\n$\\begin{cases} u_1 + \\dfrac{3}{2}(2u_1 + 2d) = 10 \\\\ \\dfrac{6}{2}(2u_1 + 5d) - (u_1 + 4d) = 27 \\end{cases} \\Leftrightarrow \\begin{cases} 4u_1 + 3d = 10 \\\\ 5u_1 + 11d = 27 \\end{cases} \\Leftrightarrow \\begin{cases} u_1 = 1 \\\\ d = 2 \\end{cases}$\nChọn D.",
+  "nhan_cu": "Cấp số cộng › Xác định các yếu tố của cấp số cộng khi biết 2 phương trình về mối quan hệ giữa các số hạng hoặc tổng các số hạng"
+ },
+ {
+  "ma_cau": "T111020302034",
+  "loai": "tu_luan",
+  "de": "Cho $\\sin 2x = \\dfrac{\\sqrt{15}}{4}$ và $0 < x < \\dfrac{\\pi}{4}$. Tính: $A = \\cos\\left(x + \\dfrac{\\pi}{6}\\right)\\cos\\left(x - \\dfrac{\\pi}{6}\\right)$",
+  "dap_an": "\\dfrac{3}{8}",
+  "loi_giai": "Ta có: $\\cos 2x = \\pm\\sqrt{1 - \\sin^2 2x} = \\pm\\dfrac{1}{4}$\nMà $0 < x < \\dfrac{\\pi}{4} \\Rightarrow 0 < 2x < \\dfrac{\\pi}{2} \\Rightarrow \\cos 2x > 0 \\Rightarrow \\cos 2x = \\dfrac{1}{4}$\n$A = \\cos\\left(x + \\dfrac{\\pi}{6}\\right)\\cos\\left(x - \\dfrac{\\pi}{6}\\right) = \\dfrac{1}{2}\\left[\\cos\\left(\\left(x + \\dfrac{\\pi}{6}\\right) + \\left(x - \\dfrac{\\pi}{6}\\right)\\right) + \\cos\\left(\\left(x + \\dfrac{\\pi}{6}\\right) - \\left(x - \\dfrac{\\pi}{6}\\right)\\right)\\right]$\n$= \\dfrac{1}{2}\\left(\\cos 2x + \\cos \\dfrac{\\pi}{3}\\right) = \\dfrac{1}{2}\\left(\\dfrac{1}{4} + \\dfrac{1}{2}\\right) = \\dfrac{3}{8}$",
+  "nhan_cu": "Công thức lượng giác › Tính giá trị của biểu thức sử dụng công thức tích thành tổng"
+ },
+ {
+  "ma_cau": "T111040102091",
+  "loai": "tra_loi_ngan",
+  "de": "Biết rằng tổng các nghiệm của phương trình $\\sin 2x+\\cos 2x-\\sin x+3\\cos x-1=0$ trên đoạn $\\left[0;6\\pi \\right]$ là $\\dfrac{a\\pi }{b}$, với $a\\in \\mathbb{Z},b\\in \\mathbb{N}^{∗}$, $\\dfrac{a}{b}$ là phân số tối giản. Hãy tính $a+b$?",
+  "dap_an": "19",
+  "loi_giai": "Phương trình đã cho tương đương với:\n$\\left(\\sin 2x-\\sin x\\right)+\\left(\\cos 2x+3\\cos x-1\\right)=0.$\nÁp dụng công thức nhân đôi $\\sin 2x=2\\sin x\\cos x$ và $\\cos 2x=2\\cos ^{2}x-1$, ta có\n$\\sin x\\left(2\\cos x-1\\right)+\\left(2\\cos ^{2}x+3\\cos x-2\\right)=0$\n$\\Leftrightarrow \\sin x\\left(2\\cos x-1\\right)+\\left(2\\cos x-1\\right)\\left(\\cos x+2\\right)=0$\n$\\Leftrightarrow \\left(2\\cos x-1\\right)\\left(\\sin x+\\cos x+2\\right)=0.$\nVì $\\sin x+\\cos x=\\sqrt{2}\\sin \\left(x+\\dfrac{\\pi }{4}\\right)\\ge -\\sqrt{2}>-2$ nên $\\sin x+\\cos x+2>0$ với mọi $x\\in \\mathbb{R}$.\nDo đó phương trình tương đương với\n$2\\cos x-1=0\\Leftrightarrow \\cos x=\\dfrac{1}{2}\\Leftrightarrow x=\\pm \\dfrac{\\pi }{3}+k2\\pi \\left(k\\in\\mathbb{Z}\\righ …",
+  "nhan_cu": "Phương trình lượng giác cơ bản › Tìm nghiệm của phương trình lượng giác trên khoảng/đoạn"
+ },
+ {
+  "ma_cau": "T111030502024",
+  "loai": "trac_nghiem",
+  "de": "Tập giá trị của hàm số có đồ thị như hình trên là:",
+  "lua_chon": [
+   "$[-2; 2]$",
+   "$[-2; 0]$",
+   "$[-1; 1]$",
+   "$[0; 2]$"
+  ],
+  "dap_an": "C",
+  "co_hinh": true,
+  "nhan_cu": "Đồ thị hàm số lượng giác › Xác định các yếu tố  cơ bản của hàm số lượng giác"
+ },
+ {
+  "ma_cau": "T111030502100",
+  "loai": "trac_nghiem",
+  "de": "Tập giá trị của hàm số có đồ thị như hình trên là:",
+  "lua_chon": [
+   "$[-0.5;0.5]$",
+   "$[-1;1]$",
+   "$[0;2]$",
+   "$[-2;0]$"
+  ],
+  "dap_an": "B",
+  "co_hinh": true,
+  "nhan_cu": "Đồ thị hàm số lượng giác › Xác định các yếu tố  cơ bản của hàm số lượng giác"
+ },
+ {
+  "ma_cau": "T111060102041",
+  "loai": "trac_nghiem",
+  "de": "Cho dãy số $(u_n)$ với $u_n = 9n + 5$. Số 95 là số hạng thứ bao nhiêu của dãy?",
+  "lua_chon": [
+   "9",
+   "10",
+   "11",
+   "12"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Xét phương trình $u_n = 95$:\n$9n + 5 = 95$\n$\\Leftrightarrow 9n = 90$\n$\\Leftrightarrow n = 10$ (thỏa mãn)",
+  "nhan_cu": "Dãy số › Xác định thứ tự của số hạng trong dãy"
+ },
+ {
+  "ma_cau": "T111060202038",
+  "loai": "trac_nghiem",
+  "de": "Cho cấp số cộng có $u_2 = 6$; $u_3 = 2$. Công sai $d$ của cấp số cộng bằng",
+  "lua_chon": [
+   "-4.",
+   "4.",
+   "8.",
+   "12."
+  ],
+  "dap_an": "A",
+  "loi_giai": "$d = u_3 - u_2 = 2 - 6 = -4$.\nChọn A.",
+  "nhan_cu": "Cấp số cộng › Xác định các yếu tố của cấp số cộng khi biết 2 yếu tố bất kỳ"
+ },
+ {
+  "ma_cau": "T111060302060",
+  "loai": "tra_loi_ngan",
+  "de": "Ba số $a,b,c$ khác $0$ theo thứ tự đó lập thành một cấp số cộng có công sai dương. Nếu cộng thêm vào số hạng thứ ba $9$ đơn vị thì ta thu được dãy số mới theo thứ tự đó lập thành một cấp số nhân. Nếu ta tiếp tục nhân số hạng thứ $2$ và thứ $3$ của cấp số nhân này với $\\dfrac{-1}{8}$ ta lại thu được dãy số mới theo thứ tự đó lập thành cấp số cộng. Tính giá trị biểu thức $P=a+2b+3c$.",
+  "dap_an": "30",
+  "loi_giai": "Gọi $d$ là công sai của cấp số cộng $a,b,c$ với $d>0$.\nTa có $b=a+d$ và $c=a+2d$.\nTheo đề bài, dãy số $a,b,c+9$ lập thành một cấp số nhân nên\n$b^{2}=a\\left(c+9\\right)\\Leftrightarrow \\left(a+d\\right)^{2}=a\\left(a+2d+9\\right)\\Leftrightarrow a^{2}+2ad+d^{2}=a^{2}+2ad+9a\\Leftrightarrow d^{2}=9a.$\nVì $d>0$ nên $a>0$ và $d=3\\sqrt{a}$.\nTiếp theo, nhân số hạng thứ hai và thứ ba của cấp số nhân với $-\\dfrac{1}{8}$, ta được dãy số mới là $a,-\\dfrac{1}{8}b,-\\dfrac{1}{8}\\left(c+9\\right)$.\nDãy số này lập thành một cấp số cộng nên\n$a+\\left[-\\dfrac{1}{8}\\left(c+9\\right)\\right]=2\\cdot \\left(-\\dfrac{1}{8}b\\right)\\Leftrightarrow 8a-\\left(c+9\\right)=-2b\\Leftrightarrow 8a+2b-c=9.$\nThay $b=a+d$ và $c=a+2d$ vào p …",
+  "nhan_cu": "Cấp số nhân › Xác định các yếu tố còn lại của cấp số nhân khi biết 2 yếu tố bất kỳ"
+ },
+ {
+  "ma_cau": "T111000000207",
+  "loai": "trac_nghiem",
+  "de": "Hàm số nào sau đây là không liên tục tại điểm $x=2$?",
+  "lua_chon": [
+   "$f\\left(x\\right)=x^{2}+3x-2$.",
+   "$f\\left(x\\right)=\\dfrac{x+3}{x-2}$.",
+   "$f\\left(x\\right)=\\dfrac{x+3}{x+2}$.",
+   "$f\\left(x\\right)=\\sin x$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Xét hàm số $f\\left(x\\right)=\\dfrac{x+3}{x-2}$, tập xác định của hàm số là $D=\\mathbb{R}\\setminus \\{2\\}$.\nVì hàm số không xác định tại điểm $x=2$ nên hàm số không liên tục tại điểm $x=2$.\nCác hàm số $f\\left(x\\right)=x^{2}+3x-2$, $f\\left(x\\right)=\\dfrac{x+3}{x+2}$ và $f\\left(x\\right)=\\sin x$ đều xác định tại $x=2$ và liên tục trên tập xác định của chúng nên đều liên tục tại điểm $x=2$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111060101108",
+  "loai": "trac_nghiem",
+  "de": "Cho dãy số có các số hạng đầu là: $\\dfrac{1}{3};\\dfrac{1}{3^{2}};\\dfrac{1}{3^{3}};\\dfrac{1}{3^{4}};\\dfrac{1}{3^{5}};\\dots$ Số hạng tổng quát của dãy số này là",
+  "lua_chon": [
+   "$u_{n}=\\dfrac{1}{3}\\cdot \\dfrac{1}{3^{n+1}}$.",
+   "$u_{n}=\\dfrac{1}{3^{n+1}}$.",
+   "$u_{n}=\\dfrac{1}{3^{n}}$.",
+   "$u_{n}=\\dfrac{1}{3^{n-1}}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta nhận thấy các số hạng đầu của dãy số có dạng:\n$u_{1}=\\dfrac{1}{3^{1}}, u_{2}=\\dfrac{1}{3^{2}}, u_{3}=\\dfrac{1}{3^{3}}, u_{4}=\\dfrac{1}{3^{4}}, u_{5}=\\dfrac{1}{3^{5}}, \\dots$\nDo đó, số hạng tổng quát của dãy số đã cho là $u_{n}=\\dfrac{1}{3^{n}}$ với mọi $n\\in \\mathbb{N}^{∗}$.",
+  "nhan_cu": "Dãy số › Xác định số hạng của dãy số"
+ },
+ {
+  "ma_cau": "T111030501024",
+  "loai": "trac_nghiem",
+  "de": "Đường cong trong hình trên là đồ thị của hàm số nào dưới đây?",
+  "lua_chon": [
+   "$y = \\sin 2x$",
+   "$y = -2\\cos 2x$",
+   "$y = 2\\cos x$",
+   "$y = \\sin x + 1"
+  ],
+  "dap_an": "B",
+  "co_hinh": true,
+  "nhan_cu": "Đồ thị hàm số lượng giác › Nhận diện đồ thị hàm số lượng giác"
+ },
+ {
+  "ma_cau": "T111030502069",
+  "loai": "trac_nghiem",
+  "de": "Giá trị lớn nhất của hàm số trên đồ thị là:",
+  "lua_chon": [
+   "2",
+   "1",
+   "0.5",
+   "0"
+  ],
+  "dap_an": "A",
+  "co_hinh": true,
+  "nhan_cu": "Đồ thị hàm số lượng giác › Xác định các yếu tố  cơ bản của hàm số lượng giác"
+ },
+ {
+  "ma_cau": "T111000000053",
+  "loai": "trac_nghiem",
+  "de": "Thống kê chiều cao của $40$ học sinh lớp 11 của một trường THPT, ta có bảng số liệu sau:\n$\\begin{array}{|c|c|c|c|c|c|} \\hline \\text{Chiều cao (cm)} & [150;155) & [155;160) & [160;165) & [165;170) & [170;175) \\\\ \\hline \\text{Số học sinh} & 4 & 10 & 16 & 8 & 2 \\\\ \\hline \\end{array}$\nSố học sinh có chiều cao đạt chuẩn (từ $165$ cm đến dưới $175$ cm) là",
+  "lua_chon": [
+   "2.",
+   "10.",
+   "40.",
+   "8."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Chiều cao đạt chuẩn (từ $165 cm$ đến dưới $175 cm$) thuộc hai nhóm $[165;170)$ và $[170;175)$.\nSố học sinh có chiều cao đạt chuẩn là\n$8+2=10 \\left(\\text{hoc sinh}\\right).$\nVậy có $10$ học sinh đạt chuẩn.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111060301010",
+  "loai": "trac_nghiem",
+  "de": "Dãy số nào sau đây là cấp số nhân?",
+  "lua_chon": [
+   "$A. \\begin{cases}u_1=1\\\\u_{n+1}=u_n+1,\\ n\\ge1.\\end{cases}$",
+   "$B. \\begin{cases}u_1=-1\\\\u_{n+1}=-3u_n,\\ n\\ge1.\\end{cases}$",
+   "$C. \\begin{cases}u_1=-2\\\\u_{n+1}=2u_n+3,\\ n\\ge1.\\end{cases}$",
+   "$D. \\begin{cases}u_1=\\dfrac{\\pi}{2}\\\\u_n=\\sin\\left(\\dfrac{\\pi}{n-1}\\right),\\ n\\ge1.\\end{cases}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "$(u_n)$ là cấp số nhân $\\Leftrightarrow u_{n+1}=qu_n$",
+  "nhan_cu": "Cấp số nhân › Nhận diện cấp số nhân"
+ },
+ {
+  "ma_cau": "T111060101015",
+  "loai": "trac_nghiem",
+  "de": "Cho dãy số $(u_n)$ có số hạng tổng quát $u_n = -\\dfrac{1}{n}$. Ba số hạng đầu của dãy số là",
+  "lua_chon": [
+   "$1,2,3.$",
+   "$-1, \\dfrac{1}{2}, -\\dfrac{1}{3}$.",
+   "$-1, -\\dfrac{1}{2}, -\\dfrac{1}{3}$.",
+   "$1, \\dfrac{1}{2}, \\dfrac{1}{3}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $u_1 = -\\dfrac{1}{1} = -1$; $u_2 = -\\dfrac{1}{2}$; $u_3 = -\\dfrac{1}{3}$.\nVậy ba số hạng đầu là $-1, -\\dfrac{1}{2}, -\\dfrac{1}{3}$.\nChọn C.",
+  "nhan_cu": "Dãy số › Xác định số hạng của dãy số"
+ },
+ {
+  "ma_cau": "T111060201009",
+  "loai": "trac_nghiem",
+  "de": "Trong các dãy số sau, dãy số nào là một cấp số cộng?",
+  "lua_chon": [
+   "$-5; -1; 3; 7; 11$.",
+   "$1; 5; 10; 16; 23$.",
+   "$4; 2; 1; \\dfrac{1}{2}; \\dfrac{1}{4}$.",
+   "$0; 1; 3; 6; 10$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Xét A: $-1 - (-5) = 3 - (-1) = 7 - 3 = 11 - 7 = 4 \\Rightarrow$ Thỏa mãn.\nXét B: $5 - 1 = 4 \\neq 10 - 5 = 5 \\Rightarrow$ Loại.\nXét C: $2 - 4 = -2 \\neq 1 - 2 = -1 \\Rightarrow$ Loại.\nXét D: $1 - 0 = 1 \\neq 3 - 1 = 2 \\Rightarrow$ Loại.\nChọn A.",
+  "nhan_cu": "Cấp số cộng › Nhận diện cấp số cộng"
+ },
+ {
+  "ma_cau": "T111060101058",
+  "loai": "trac_nghiem",
+  "de": "Cho dãy số $(u_n)$, biết $u_n = (-1)^{n+1} \\cdot n^2$. Số hạng thứ ba là",
+  "lua_chon": [
+   "$-9$",
+   "9",
+   "$-4$",
+   "4"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Thay $n = 3$ vào công thức: $u_3 = (-1)^4 \\cdot 3^2 = 9$.\nChọn B.",
+  "nhan_cu": "Dãy số › Xác định số hạng của dãy số"
+ },
+ {
+  "ma_cau": "T111000000409",
+  "loai": "trac_nghiem",
+  "de": "Điểm cuối của góc lượng giác $\\alpha$ ở góc phần tư thứ mấy nếu $\\sqrt{\\sin ^{2}\\alpha }=\\sin \\alpha$.",
+  "lua_chon": [
+   "Thứ III.",
+   "Thứ I hoặc III.",
+   "Thứ I hoặc II.",
+   "Thứ III hoặc IV."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $\\sqrt{\\sin ^{2}\\alpha }=|\\sin \\alpha |$.\nDo đó $\\sqrt{\\sin ^{2}\\alpha }=\\sin \\alpha \\Leftrightarrow |\\sin \\alpha |=\\sin \\alpha \\Leftrightarrow \\sin \\alpha \\ge 0$.\nTrên đường tròn lượng giác, giá trị $\\sin \\alpha$ là tung độ của điểm biểu diễn góc $\\alpha$.\nVì vậy $\\sin \\alpha \\ge 0$ khi và chỉ khi điểm cuối của góc lượng giác $\\alpha$ nằm ở nửa trên của mặt phẳng tọa độ, tức là ở góc phần tư thứ I hoặc thứ II (kể cả các điểm trên trục $Ox$).",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111010201024",
+  "loai": "trac_nghiem",
+  "de": "Điểm $P$ trên đường tròn lượng giác (tham khảo hình vẽ) biểu diễn góc lượng giác có số đo là",
+  "lua_chon": [
+   "$-\\dfrac{\\pi}{3} + k2\\pi, k \\in \\mathbb{Z}$.",
+   "$-\\dfrac{\\pi}{3} + k360^{\\circ}, k \\in \\mathbb{Z}$.",
+   "$\\dfrac{\\pi}{3} + k360^{\\circ}, k \\in \\mathbb{Z}$.",
+   "$\\dfrac{\\pi}{3} + k2\\pi, k \\in \\mathbb{Z}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Các góc lượng giác có tia đầu $OA$, tia cuối $OP$ có số đo là: $\\dfrac{\\pi}{3} + k2\\pi, k \\in \\mathbb{Z}$.",
+  "co_hinh": true,
+  "nhan_cu": "Góc lượng giác - Đường tròn lượng giác › Đổi đơn vị đo góc"
+ },
+ {
+  "ma_cau": "T111000000249",
+  "loai": "tra_loi_ngan",
+  "de": "Kết quả thu thập được về thời gian (phút) truy bài trước mỗi buổi học của một số học sinh trong một tuần được ghi lại ở bảng sau:\n$\\begin{array}{|c|c|c|c|c|c|} \\hline \\text{Thời gian} & [9,5;12,5) & [12,5;15,5) & [15,5;18,5) & [18,5;21,5) & [21,5;24,5) \\\\ \\hline \\text{Số học sinh} & 3 & 12 & 15 & 24 & 2 \\\\ \\hline \\end{array}$\nTìm trung vị của mẫu số liệu ghép nhóm trên?",
+  "dap_an": "18.1",
+  "loi_giai": "Tổng số học sinh trong mẫu số liệu (cỡ mẫu) là\n$n=3+12+15+24+2=56.$\nTần số tích lũy của các nhóm lần lượt là:\n• Nhóm $[9,5;12,5)$: tần số tích lũy là $3$.\n• Nhóm $[12,5;15,5)$: tần số tích lũy là $3+12=15$.\n• Nhóm $[15,5;18,5)$: tần số tích lũy là $15+15=30$.\n• Nhóm $[18,5;21,5)$: tần số tích lũy là $30+24=54$.\n• Nhóm $[21,5;24,5)$: tần số tích lũy là $54+2=56$.\nVì $\\dfrac{n}{2}=\\dfrac{56}{2}=28$ và nhóm đầu tiên có tần số tích lũy không nhỏ hơn $28$ là nhóm $[15,5;18,5)$ (có tần số tích lũy bằng $30$) nên trung vị $M_{e}$ thuộc nhóm $[15,5;18,5)$.\nÁp dụng công thức tính trung vị của mẫu số liệu ghép nhóm:\n$M_{e}=u_{m}+\\dfrac{\\dfrac{n}{2}-C}{n_{m}}\\cdot \\left(u_{m+1}-u_{m}\\right),$\nvới $u_{m …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111020101028",
+  "loai": "tu_luan",
+  "de": "Khai triển biểu thức lượng giác sau:\n$\\sin(2a-b)=$",
+  "dap_an": "$\\sin(2a)\\cos b - \\cos(2a)\\sin b$",
+  "loi_giai": "$\\sin(2a-b) = \\sin(2a)\\cos b - \\cos(2a)\\sin b$",
+  "nhan_cu": "Công thức lượng giác › Nhận dạng công thức cộng"
+ },
+ {
+  "ma_cau": "T111060302103",
+  "loai": "tra_loi_ngan",
+  "de": "Cho cấp số nhân $\\left(u_{n}\\right)$ có tổng $n$ số hạng đầu tiên là $S_{n}=5^{n}-1$. Tính tổng số hạng đầu $u_{1}$ và công bội $q$ của cấp số nhân đó.",
+  "dap_an": "9",
+  "loi_giai": "Ta có số hạng đầu của cấp số nhân là\n$u_{1}=S_{1}=5^{1}-1=4.$\nTổng của hai số hạng đầu tiên là\n$S_{2}=u_{1}+u_{2}=5^{2}-1=24\\Rightarrow u_{2}=S_{2}-u_{1}=24-4=20.$\nCông bội của cấp số nhân là\n$q=\\dfrac{u_{2}}{u_{1}}=\\dfrac{20}{4}=5.$\nTổng số hạng đầu $u_{1}$ và công bội $q$ là\n$u_{1}+q=4+5=9.$\nVậy tổng của $u_{1}$ và $q$ bằng $9$.",
+  "nhan_cu": "Cấp số nhân › Xác định các yếu tố còn lại của cấp số nhân khi biết 2 yếu tố bất kỳ"
+ },
+ {
+  "ma_cau": "T111030502092",
+  "loai": "trac_nghiem",
+  "de": "Tập giá trị của hàm số có đồ thị như hình trên là:",
+  "lua_chon": [
+   "$[-2; 2]$",
+   "$[-2; 0]$",
+   "$[0; 2]$",
+   "$[-1; 1]$"
+  ],
+  "dap_an": "C",
+  "co_hinh": true,
+  "nhan_cu": "Đồ thị hàm số lượng giác › Xác định các yếu tố  cơ bản của hàm số lượng giác"
+ },
+ {
+  "ma_cau": "T111060305010",
+  "loai": "tra_loi_ngan",
+  "de": "Cho cấp số nhân $(u_n)$ có công bội $q$ và thỏa $\\begin{cases}u_1+u_2+u_3+u_4+u_5=49\\left(\\dfrac{1}{u_1}+\\dfrac{1}{u_2}+\\dfrac{1}{u_3}+\\dfrac{1}{u_4}+\\dfrac{1}{u_5}\\right)\\\\u_1+u_3=35\\end{cases}$. Tính $P=u_1+4q^2$.",
+  "dap_an": "29",
+  "loi_giai": "Nhận xét: Nếu $u_1,u_2,u_3,u_4,u_5$ là một cấp số nhân với công bội $q$ thì $\\dfrac{1}{u_1},\\dfrac{1}{u_2},\\dfrac{1}{u_3},\\dfrac{1}{u_4},\\dfrac{1}{u_5}$ cũng tạo thành cấp số nhân với công bội $\\dfrac{1}{q}$.\nDo đó từ giả thiết ta có $\\begin{cases}u_1.\\dfrac{q^5-1}{q-1}=49\\left(\\dfrac{1}{u_1}.\\dfrac{\\frac{1}{q^5}-1}{\\frac{1}{q}-1}\\right)\\ (1)\\\\u_1+u_1q^2=35\\ (2)\\end{cases}$\nPhương trình $(1)\\Leftrightarrow u_1.\\dfrac{q^5-1}{q-1}=\\dfrac{49}{u_1}\\left(\\dfrac{q^5-1}{q^4(q-1)}\\right)\\Leftrightarrow u_1^2q^4=49\\Leftrightarrow u_1q^2=\\pm7.$\nVới $u_1q^2=-7$. Thay vào $(2)$, ta được $u_1-7=35\\Leftrightarrow u_1=42$. Suy ra $q^2=-\\dfrac{7}{42}$: vô lý.\nVới $u_1q^2=7$. Thay vào $(2)$, ta được $u_1+7=3 …",
+  "nhan_cu": "Cấp số nhân › Một số bài toán khác về cấp số nhân (tham khảo)"
+ },
+ {
+  "ma_cau": "T111060304013",
+  "loai": "tra_loi_ngan",
+  "de": "Một loại vi khuẩn được nuôi cấy trong ống nghiệm, cứ $20$ phút lại phân đôi một lần. Nếu ban đầu có $200$ vi khuẩn, tính số lượng vi khuẩn có trong ống nghiệm sau $2$ giờ (làm tròn kết quả đến hàng phần chục, đơn vị nghìn con).",
+  "dap_an": "12.8",
+  "loi_giai": "Đổi $2$giờ$=120$phút.\nSố lần phân đôi của vi khuẩn trong $2$ giờ là\n$\\dfrac{120}{20}=6 \\left(lan\\right).$\nSố lượng vi khuẩn sau mỗi lần phân đôi tạo thành một cấp số nhân có số hạng đầu là $N_{0}=200$ và công bội $q=2$.\nSau $6$ lần phân đôi, số lượng vi khuẩn trong ống nghiệm là\n$N_{6}=200\\cdot 2^{6}=200\\cdot 64=12 800 \\left(con\\right).$\nĐổi ra đơn vị nghìn con:\n$\\dfrac{12 800}{1 000}=12,8 \\left(\\text{nghin con}\\right).$\nVậy sau $2$ giờ, số lượng vi khuẩn có trong ống nghiệm là $12,8$ nghìn con.",
+  "nhan_cu": "Cấp số nhân › Bài toán thực tế về cấp số nhân"
+ },
+ {
+  "ma_cau": "T111060303013",
+  "loai": "trac_nghiem",
+  "de": "Cho cấp số nhân có $u_1 = -3$, $q = \\dfrac{2}{3}$. Số $\\dfrac{-96}{243}$ là số hạng thứ mấy của cấp số này?",
+  "lua_chon": [
+   "Thứ 5.",
+   "Thứ 6.",
+   "Thứ 7.",
+   "Không phải là số hạng của cấp số."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Giả sử số $\\dfrac{-96}{243}$ là số hạng thứ $n$ của cấp số này.\nTa có: $u_1.q^{n-1} = \\dfrac{-96}{243} \\Leftrightarrow (-3) \\left(\\dfrac{2}{3}\\right)^{n-1} = \\dfrac{-96}{243} \\Leftrightarrow n = 6$.\nVậy số $\\dfrac{-96}{243}$ là số hạng thứ 6 của cấp số.",
+  "nhan_cu": "Cấp số nhân › Xác định thứ tự của số hạng trong dãy cấp số nhân"
+ },
+ {
+  "ma_cau": "T111060201033",
+  "loai": "trac_nghiem",
+  "de": "Dãy số nào dưới đây là một cấp số cộng?",
+  "lua_chon": [
+   "$u_n = \\dfrac{n+2}{n-2}$",
+   " $u_n = 11n - 4$",
+   " $u_n = 5 \\cdot 2^n$",
+   " $u_n = (-2)^n$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Xét A: Ẩn $n$ dưới mẫu $\\Rightarrow$ Loại.\nXét C, D: Hàm số mũ $\\Rightarrow$ Loại.\nXét B: Hàm bậc 1 $\\Rightarrow$ Thỏa mãn.\nChọn B.",
+  "nhan_cu": "Cấp số cộng › Nhận diện cấp số cộng"
+ },
+ {
+  "ma_cau": "T111060201012",
+  "loai": "trac_nghiem",
+  "de": "Trong các dãy số sau, dãy số nào không phải cấp số cộng?",
+  "lua_chon": [
+   "$100; 95; 90; 85; 80.$",
+   "$0; -4; -8; -12; -16.$",
+   "$3; 6; 12; 24; 48.$",
+   "$7; 7; 7; 7; 7.$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Xét A: $95 - 100 = 90 - 95 = \\dots = -5 \\Rightarrow$ Là CSC.\nXét B: $-4 - 0 = -8 - (-4) = \\dots = -4 \\Rightarrow$ Là CSC.\nXét C: $6 - 3 = 3 \\neq 12 - 6 = 6 \\Rightarrow$ Không là CSC (Thỏa mãn).\nXét D: $7 - 7 = 7 - 7 = \\dots = 0 \\Rightarrow$ Là CSC.\nChọn C.",
+  "nhan_cu": "Cấp số cộng › Nhận diện cấp số cộng"
+ },
+ {
+  "ma_cau": "T111060201035",
+  "loai": "trac_nghiem",
+  "de": "Dãy số nào sau đây không phải cấp số cộng?",
+  "lua_chon": [
+   "$u_n = -n - 1$",
+   " $u_n = 20n$",
+   " $u_n = \\dfrac{3-n}{2}$",
+   " $u_n = n^3 - 3n^2 + 3n - 1$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Xét A, B, C: Đều là hàm bậc 1 $\\Rightarrow$ Là CSC.\nXét D: Hàm đa thức bậc 3 $\\Rightarrow$ Không là CSC (Thỏa mãn yêu cầu đề).\nChọn D.",
+  "nhan_cu": "Cấp số cộng › Nhận diện cấp số cộng"
+ },
+ {
+  "ma_cau": "T111030103025",
+  "loai": "trac_nghiem",
+  "de": "Trong các hàm số sau, hàm số nào là hàm số chẵn?",
+  "lua_chon": [
+   "$y=\\cos x-\\sin x$.",
+   "$y=\\cos x\\sin x$.",
+   "$y=\\cos x+\\sin ^{2}x$.",
+   "$y=-\\sin x$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Xét hàm số $y=f\\left(x\\right)=\\cos x+\\sin ^{2}x$.\nTập xác định của hàm số là $D=\\mathbb{R}$.\nVới mọi $x\\in D$, ta có $-x\\in D$ và\n$f\\left(-x\\right)=\\cos \\left(-x\\right)+\\sin ^{2}\\left(-x\\right)=\\cos x+\\left(-\\sin x\\right)^{2}=\\cos x+\\sin ^{2}x=f\\left(x\\right).$\nVậy hàm số $y=\\cos x+\\sin ^{2}x$ là hàm số chẵn.",
+  "nhan_cu": "Hàm số lượng giác › Xét tính chẵn lẻ của hàm số lượng giác"
+ }
+]

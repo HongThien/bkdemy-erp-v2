@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T111030502073",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Đọc GTLN/tập giá trị từ đồ thị; chưa có dạng riêng, gần nhất min max hàm cơ bản."
+ },
+ {
+  "ma_cau": "T111000000274",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Mẫu số liệu ghép nhóm, dạng duy nhất của chủ đề."
+ },
+ {
+  "ma_cau": "T111010110021",
+  "dang_bai_id": "NDB00952",
+  "chac": "cao",
+  "ly_do": "Cho cot, tính biểu thức dùng cos(-α), cot(π/2-α); chọn dạng đảo pha (sau cùng)."
+ },
+ {
+  "ma_cau": "T111060302006",
+  "dang_bai_id": "NDB01019",
+  "chac": "vua",
+  "ly_do": "Tìm số hạng tổng quát từ các số hạng liệt kê, gần dạng mô tả bằng lời."
+ },
+ {
+  "ma_cau": "T111030103003",
+  "dang_bai_id": "NDB00991",
+  "chac": "vua",
+  "ly_do": "Xét chẵn lẻ hàm sin/cos cộng hằng số; có thể coi là cơ bản hoặc mở rộng."
+ },
+ {
+  "ma_cau": "T111000000011",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng CSN cho bởi hệ phương trình quan hệ giữa các số hạng, tính tổng n số hạng"
+ },
+ {
+  "ma_cau": "T111040101285",
+  "dang_bai_id": "NDB01015",
+  "chac": "cao",
+  "ly_do": "Dùng công thức nhân đôi/hạ bậc đưa về phương trình cơ bản; chọn dạng hạ bậc."
+ },
+ {
+  "ma_cau": "T111060305015",
+  "dang_bai_id": "NDB01353",
+  "chac": "cao",
+  "ly_do": "Bốn góc tứ giác lập thành cấp số nhân."
+ },
+ {
+  "ma_cau": "T111030301041",
+  "dang_bai_id": "NDB00991",
+  "chac": "vua",
+  "ly_do": "Xét chẵn lẻ hàm 2sinx+3, có hằng số cộng nên coi là mở rộng."
+ },
+ {
+  "ma_cau": "T111000000348",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Mẫu số liệu ghép nhóm, dạng duy nhất của chủ đề."
+ },
+ {
+  "ma_cau": "T111000000206",
+  "dang_bai_id": "NDB01151",
+  "chac": "cao",
+  "ly_do": "Giới hạn phân thức tử mẫu cùng bậc."
+ },
+ {
+  "ma_cau": "T111000000095",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Mẫu số liệu ghép nhóm, dạng duy nhất của chủ đề."
+ },
+ {
+  "ma_cau": "T111040202015",
+  "dang_bai_id": "NDB01015",
+  "chac": "cao",
+  "ly_do": "Dùng công thức nhân đôi/hạ bậc đưa về phương trình cơ bản; chọn dạng hạ bậc."
+ },
+ {
+  "ma_cau": "T111060302094",
+  "dang_bai_id": "NDB00618",
+  "chac": "vua",
+  "ly_do": "Tổng S1..S100 diện tích lập CSN hữu hạn; có thể coi là hình học lặp."
+ },
+ {
+  "ma_cau": "T111040102070",
+  "dang_bai_id": "NDB01008",
+  "chac": "vua",
+  "ly_do": "Tham số m để phương trình tích có đúng hai nghiệm trên khoảng; chưa có dạng đếm nghiệm theo tham số."
+ },
+ {
+  "ma_cau": "T111000000374",
+  "dang_bai_id": "NDB00943",
+  "chac": "vua",
+  "ly_do": "Quãng đường cung tròn của cabin đu quay; đề phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T111060304068",
+  "dang_bai_id": "NDB00618",
+  "chac": "vua",
+  "ly_do": "Cấp số nhân thực tế, tổng n số hạng đầu; còn dạng khác có thể."
+ },
+ {
+  "ma_cau": "T111040101244",
+  "dang_bai_id": "NDB00576",
+  "chac": "cao",
+  "ly_do": "Đưa về sin(ax+b)=sin α với cos15° đổi sang sin."
+ },
+ {
+  "ma_cau": "T111000000408",
+  "dang_bai_id": "NDB00565",
+  "chac": "vua",
+  "ly_do": "Tìm số đo cung AN từ điểm đối xứng trên đường tròn lượng giác; gần dạng số đo góc lượng giác."
+ },
+ {
+  "ma_cau": "T111000000220",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Mẫu số liệu ghép nhóm, dạng duy nhất của chủ đề."
+ },
+ {
+  "ma_cau": "T111030502072",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Đọc GTLN/tập giá trị từ đồ thị; chưa có dạng riêng, gần nhất min max hàm cơ bản."
+ },
+ {
+  "ma_cau": "T111040202023",
+  "dang_bai_id": "NDB01015",
+  "chac": "cao",
+  "ly_do": "Dùng công thức nhân đôi/hạ bậc đưa về phương trình cơ bản; chọn dạng hạ bậc."
+ },
+ {
+  "ma_cau": "T111030105022",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Tìm giá trị lớn nhất của mô hình thực tế y=Asin+C; gần min max hàm cơ bản."
+ },
+ {
+  "ma_cau": "T111000000423",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc HGT/Hình học: chứng minh tam giác đều bằng lượng giác"
+ },
+ {
+  "ma_cau": "T111030502109",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Đọc GTLN/tập giá trị từ đồ thị; chưa có dạng riêng, gần nhất min max hàm cơ bản."
+ },
+ {
+  "ma_cau": "T111000000129",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Mẫu số liệu ghép nhóm, dạng duy nhất của chủ đề."
+ },
+ {
+  "ma_cau": "T111040202025",
+  "dang_bai_id": "NDB01015",
+  "chac": "cao",
+  "ly_do": "Dùng công thức nhân đôi/hạ bậc đưa về phương trình cơ bản; chọn dạng hạ bậc."
+ },
+ {
+  "ma_cau": "T111000000078",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc HGT/Hình học: tam giác, bóng đèn, hệ thức lượng"
+ },
+ {
+  "ma_cau": "T111060304099",
+  "dang_bai_id": "NDB00618",
+  "chac": "vua",
+  "ly_do": "Cấp số nhân thực tế, tổng n số hạng đầu; còn dạng khác có thể."
+ },
+ {
+  "ma_cau": "T111000000168",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Mẫu số liệu ghép nhóm, dạng duy nhất của chủ đề."
+ },
+ {
+  "ma_cau": "T111000000006",
+  "dang_bai_id": "NDB01030",
+  "chac": "cao",
+  "ly_do": "Tổng 1+3+...+3^2018 cho dãy các số hạng của CSN."
+ },
+ {
+  "ma_cau": "T111010110019",
+  "dang_bai_id": "NDB00949",
+  "chac": "cao",
+  "ly_do": "Cho sinx, tính biểu thức sin²x+5cos²x bằng hệ thức cơ bản."
+ },
+ {
+  "ma_cau": "T111040202004",
+  "dang_bai_id": "NDB01015",
+  "chac": "cao",
+  "ly_do": "Dùng công thức nhân đôi/hạ bậc đưa về phương trình cơ bản; chọn dạng hạ bậc."
+ },
+ {
+  "ma_cau": "T111030502056",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Đọc GTLN/tập giá trị từ đồ thị; chưa có dạng riêng, gần nhất min max hàm cơ bản."
+ },
+ {
+  "ma_cau": "T111010602052",
+  "dang_bai_id": "NDB00967",
+  "chac": "cao",
+  "ly_do": "Nhận dạng sin x cos y - cos x sin y = sin(x-y), công thức cộng."
+ },
+ {
+  "ma_cau": "T111030105011",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Tìm khoảng cách lớn nhất của mô hình thực tế cos; gần min max hàm cơ bản."
+ },
+ {
+  "ma_cau": "T111060202109",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng viết hệ thức truy hồi của cấp số cộng"
+ },
+ {
+  "ma_cau": "T111060101117",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng nhận biết dãy số hữu hạn/vô hạn"
+ },
+ {
+  "ma_cau": "T111010602069",
+  "dang_bai_id": "NDB00963",
+  "chac": "cao",
+  "ly_do": "Khẳng định sai gồm công thức cộng, nhân đôi, tổng thành tích; chọn dạng sau cùng."
+ },
+ {
+  "ma_cau": "T111000000073",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Mẫu số liệu ghép nhóm, dạng duy nhất của chủ đề."
+ },
+ {
+  "ma_cau": "T111000000003",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng tổng n số hạng của dãy là CSN cộng hằng số"
+ },
+ {
+  "ma_cau": "T111030105047",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "đề thiếu câu hỏi, phụ thuộc hình (tìm m, a của mô hình thủy triều)"
+ },
+ {
+  "ma_cau": "T111000000403",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc HGT/Hình học: quan hệ đường thẳng trong không gian"
+ },
+ {
+  "ma_cau": "T111060205046",
+  "dang_bai_id": "NDB01024",
+  "chac": "vua",
+  "ly_do": "Xếp diêm theo tầng, cấp số cộng thực tế; đề phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T111040202020",
+  "dang_bai_id": "NDB01015",
+  "chac": "cao",
+  "ly_do": "Dùng công thức nhân đôi/hạ bậc đưa về phương trình cơ bản; chọn dạng hạ bậc."
+ },
+ {
+  "ma_cau": "T111000000397",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc HGT/Hình học: quan hệ đường thẳng trong không gian"
+ },
+ {
+  "ma_cau": "T111010602105",
+  "dang_bai_id": "NDB00967",
+  "chac": "cao",
+  "ly_do": "Nhận dạng công thức sin(α-β) từ công thức cộng."
+ },
+ {
+  "ma_cau": "T111000000036",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng CSN cho tổng nghịch đảo các số hạng và tích"
+ },
+ {
+  "ma_cau": "T111030101073",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng nhận biết tính chất hàm số y=tanx (lý thuyết)"
+ },
+ {
+  "ma_cau": "T111000000057",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Mẫu số liệu ghép nhóm, dạng duy nhất của chủ đề."
+ },
+ {
+  "ma_cau": "T111060304040",
+  "dang_bai_id": "NDB00618",
+  "chac": "vua",
+  "ly_do": "Cấp số nhân thực tế, tổng n số hạng đầu; còn dạng khác có thể."
+ },
+ {
+  "ma_cau": "T111060302139",
+  "dang_bai_id": "NDB00618",
+  "chac": "vua",
+  "ly_do": "Cấp số nhân thực tế, tổng n số hạng đầu; còn dạng khác có thể."
+ },
+ {
+  "ma_cau": "T111000000313",
+  "dang_bai_id": "NDB00952",
+  "chac": "vua",
+  "ly_do": "Tính sin(π/4+kπ) bằng công thức đảo pha, k nguyên."
+ },
+ {
+  "ma_cau": "T111000000323",
+  "dang_bai_id": "NDB00994",
+  "chac": "vua",
+  "ly_do": "Mệnh đề về chu kì các hàm lượng giác cơ bản."
+ },
+ {
+  "ma_cau": "T111000000343",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Mẫu số liệu ghép nhóm, dạng duy nhất của chủ đề."
+ },
+ {
+  "ma_cau": "T111000000440",
+  "dang_bai_id": "NDB00952",
+  "chac": "vua",
+  "ly_do": "Tính cot150° bằng công thức góc bù."
+ },
+ {
+  "ma_cau": "T111000000442",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc HGT/Hình học: tam giác vuông, tính độ dài, đề có hình"
+ },
+ {
+  "ma_cau": "T111030502097",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Đọc GTLN/tập giá trị từ đồ thị; chưa có dạng riêng, gần nhất min max hàm cơ bản."
+ },
+ {
+  "ma_cau": "T111030301018",
+  "dang_bai_id": "NDB00991",
+  "chac": "vua",
+  "ly_do": "Xét chẵn lẻ y=sin^4 x, hàm mở rộng."
+ },
+ {
+  "ma_cau": "T111030201108",
+  "dang_bai_id": "NDB00999",
+  "chac": "cao",
+  "ly_do": "Đưa cos2x về cosx, đặt t=cosx tìm min max hàm bậc 2."
+ },
+ {
+  "ma_cau": "T111040101318",
+  "dang_bai_id": "NDB01014",
+  "chac": "cao",
+  "ly_do": "Phương trình sin u - cos v =0 dùng đảo pha."
+ },
+ {
+  "ma_cau": "T111000000418",
+  "dang_bai_id": "NDB00966",
+  "chac": "cao",
+  "ly_do": "Biến đổi tổng thành tích, rút gọn tỉ số."
+ },
+ {
+  "ma_cau": "T111060302039",
+  "dang_bai_id": "NDB01030",
+  "chac": "vua",
+  "ly_do": "CSN cho u1, q và số hạng chính giữa, tìm số số hạng."
+ },
+ {
+  "ma_cau": "T111000000147",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Mẫu số liệu ghép nhóm, dạng duy nhất của chủ đề."
+ },
+ {
+  "ma_cau": "T111040101347",
+  "dang_bai_id": "NDB00575",
+  "chac": "cao",
+  "ly_do": "Công thức nghiệm sinx=sinα."
+ },
+ {
+  "ma_cau": "T111040203041",
+  "dang_bai_id": "NDB01016",
+  "chac": "cao",
+  "ly_do": "Phương trình Asin+Bcos=C."
+ },
+ {
+  "ma_cau": "T111060304035",
+  "dang_bai_id": "NDB00618",
+  "chac": "vua",
+  "ly_do": "Cấp số nhân thực tế, tổng n số hạng đầu; còn dạng khác có thể."
+ },
+ {
+  "ma_cau": "T111060304047",
+  "dang_bai_id": "NDB00618",
+  "chac": "vua",
+  "ly_do": "Cấp số nhân thực tế, tổng n số hạng đầu; còn dạng khác có thể."
+ },
+ {
+  "ma_cau": "T111060304066",
+  "dang_bai_id": "NDB00618",
+  "chac": "vua",
+  "ly_do": "Cấp số nhân thực tế, tổng n số hạng đầu; còn dạng khác có thể."
+ },
+ {
+  "ma_cau": "T111050201001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc HGT/Hình học: hệ thức lượng trong tam giác, bài toán tàu"
+ }
+]

@@ -1,0 +1,272 @@
+[
+ {
+  "ma_cau": "T111030502095",
+  "dang_bai_id": "NDB01004",
+  "chac": "cao",
+  "ly_do": "Hỏi chu kì của hàm số từ đồ thị."
+ },
+ {
+  "ma_cau": "T111060101097",
+  "dang_bai_id": "NDB00606",
+  "chac": "vua",
+  "ly_do": "Dãy liệt kê 1;3;5;7 là cấp số cộng, tìm số hạng tổng quát; cũng hợp NDB01019."
+ },
+ {
+  "ma_cau": "T111030503047",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Xác định khoảng đồng biến của hàm số từ đồ thị."
+ },
+ {
+  "ma_cau": "T111030503073",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Xác định khoảng nghịch biến của hàm số từ đồ thị."
+ },
+ {
+  "ma_cau": "T111000000426",
+  "dang_bai_id": "NDB00952",
+  "chac": "vua",
+  "ly_do": "Tính cos(3π/4) bằng công thức góc bù; dạng gần nhất nhưng không phải biểu thức."
+ },
+ {
+  "ma_cau": "T111000000444",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Lý thuyết đường tròn lượng giác (đường kính), bản đồ thiếu dạng lý thuyết/khái niệm."
+ },
+ {
+  "ma_cau": "T111040201036",
+  "dang_bai_id": "NDB01007",
+  "chac": "vua",
+  "ly_do": "cos u = cos v hai vế theo x; có thể xếp NDB01014."
+ },
+ {
+  "ma_cau": "T111010602042",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhận biết công thức nghiệm phương trình lượng giác đặc biệt, bản đồ thiếu dạng này."
+ },
+ {
+  "ma_cau": "T111060202139",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Lý thuyết công thức số hạng tổng quát cấp số cộng, thiếu dạng nhận diện công thức."
+ },
+ {
+  "ma_cau": "T111060202110",
+  "dang_bai_id": "NDB00606",
+  "chac": "vua",
+  "ly_do": "Cho u1, u3 của cấp số cộng tìm công sai rồi hệ thức truy hồi."
+ },
+ {
+  "ma_cau": "T111010102063",
+  "dang_bai_id": "NDB00943",
+  "chac": "vua",
+  "ly_do": "Tính độ dài cung nhỏ trên mặt đồng hồ; đề có hình, cũng liên quan NDB00567."
+ },
+ {
+  "ma_cau": "T111060304064",
+  "dang_bai_id": "NDB00617",
+  "chac": "vua",
+  "ly_do": "Chi phí tăng 10% mỗi năm là cấp số nhân, nhưng hỏi tìm n chứ không tìm un."
+ },
+ {
+  "ma_cau": "T111030502049",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Đọc giá trị lớn nhất từ đồ thị, bản đồ thiếu dạng đọc yếu tố đồ thị."
+ },
+ {
+  "ma_cau": "T111030503029",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Xác định khoảng đồng biến từ đồ thị."
+ },
+ {
+  "ma_cau": "T111030503059",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Xác định khoảng đồng biến từ đồ thị."
+ },
+ {
+  "ma_cau": "T111000000014",
+  "dang_bai_id": "NDB01164",
+  "chac": "cao",
+  "ly_do": "Đổi số thập phân vô hạn tuần hoàn ra phân số."
+ },
+ {
+  "ma_cau": "T111000000508",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học không gian: cách xác định mặt phẳng."
+ },
+ {
+  "ma_cau": "T111030502120",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Đọc tập giá trị từ đồ thị, bản đồ thiếu dạng đọc yếu tố đồ thị."
+ },
+ {
+  "ma_cau": "T111060304098",
+  "dang_bai_id": "NDB00618",
+  "chac": "vua",
+  "ly_do": "Giá điện bậc thang là cấp số nhân tính tổng; cũng gần NDB00619."
+ },
+ {
+  "ma_cau": "T111000000257",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Tứ phân vị mẫu số liệu ghép nhóm; dạng Mẫu số liệu chưa có mô tả."
+ },
+ {
+  "ma_cau": "T111000000132",
+  "dang_bai_id": "NDB01162",
+  "chac": "vua",
+  "ly_do": "Lý thuyết giới hạn vô cực và 1/u_n; cũng gần NDB01160."
+ },
+ {
+  "ma_cau": "T111060202006",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Lý thuyết công thức số hạng thứ 20 cấp số cộng, thiếu dạng này."
+ },
+ {
+  "ma_cau": "T111040201035",
+  "dang_bai_id": "NDB01014",
+  "chac": "vua",
+  "ly_do": "cos u + cos v = 0, đảo pha về cos bằng nhau; cũng có thể tổng thành tích."
+ },
+ {
+  "ma_cau": "T111050501002",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc bất phương trình bậc hai, chủ đề không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T111030502074",
+  "dang_bai_id": "NDB01005",
+  "chac": "cao",
+  "ly_do": "Xác định điểm thuộc đồ thị."
+ },
+ {
+  "ma_cau": "T111000000118",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Nhóm chứa mốt của mẫu số liệu ghép nhóm; dạng Mẫu số liệu chưa có mô tả."
+ },
+ {
+  "ma_cau": "T111060202021",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Lý thuyết công thức số hạng thứ 30 cấp số cộng, thiếu dạng này."
+ },
+ {
+  "ma_cau": "T111000000019",
+  "dang_bai_id": "NDB01163",
+  "chac": "cao",
+  "ly_do": "Tổng cấp số nhân lùi vô hạn."
+ },
+ {
+  "ma_cau": "T111000000065",
+  "dang_bai_id": "NDB00565",
+  "chac": "cao",
+  "ly_do": "Cho điểm biểu diễn trên hình, hỏi số đo góc lượng giác."
+ },
+ {
+  "ma_cau": "T111030502081",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Đọc giá trị lớn nhất từ đồ thị, bản đồ thiếu dạng đọc yếu tố đồ thị."
+ },
+ {
+  "ma_cau": "T111010603004",
+  "dang_bai_id": "NDB00960",
+  "chac": "vua",
+  "ly_do": "Rút gọn rồi dùng sin2x; cũng hợp NDB00956."
+ },
+ {
+  "ma_cau": "T111050102001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc hệ bất phương trình bậc nhất hai ẩn, không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T111040101217",
+  "dang_bai_id": "NDB00576",
+  "chac": "vua",
+  "ly_do": "Hai ý khác dạng (biểu thức nhân đôi; giải cos(x-π/5)=1/2)."
+ },
+ {
+  "ma_cau": "T111030503012",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Xác định khoảng nghịch biến từ đồ thị."
+ },
+ {
+  "ma_cau": "T111030502126",
+  "dang_bai_id": "NDB01005",
+  "chac": "cao",
+  "ly_do": "Xác định điểm thuộc đồ thị."
+ },
+ {
+  "ma_cau": "T111000000009",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Cấp số nhân có biểu thức đạt min, bản đồ thiếu dạng cực trị theo công bội."
+ },
+ {
+  "ma_cau": "T111050401001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc tổ hợp xác suất: chỉnh hợp, không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T111000000131",
+  "dang_bai_id": "NDB01148",
+  "chac": "cao",
+  "ly_do": "Giới hạn cơ bản 1/n^k bằng 0."
+ },
+ {
+  "ma_cau": "T111020102003",
+  "dang_bai_id": "NDB00962",
+  "chac": "vua",
+  "ly_do": "Tích sin·sin; đề có thể lỗi theo lời giải."
+ },
+ {
+  "ma_cau": "T111030105046",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Tìm giá trị lớn nhất của hàm lượng giác trong bài thực tế."
+ },
+ {
+  "ma_cau": "T111010602099",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học không gian: xác định mặt phẳng."
+ },
+ {
+  "ma_cau": "T111030502063",
+  "dang_bai_id": "NDB01004",
+  "chac": "cao",
+  "ly_do": "Hỏi chu kì của hàm số từ đồ thị."
+ },
+ {
+  "ma_cau": "T111060101169",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Dãy số từ hình học ngôi sao, bản đồ thiếu dạng này; đề có hình."
+ },
+ {
+  "ma_cau": "T111030503068",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Xác định khoảng nghịch biến từ đồ thị."
+ },
+ {
+  "ma_cau": "T111030503072",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Xác định khoảng nghịch biến từ đồ thị."
+ }
+]

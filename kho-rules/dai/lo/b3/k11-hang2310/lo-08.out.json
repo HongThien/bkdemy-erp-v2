@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T111000000450",
+  "dang_bai_id": "NDB00966",
+  "chac": "cao",
+  "ly_do": "Hiệu hai sin rút gọn bằng công thức tổng thành tích."
+ },
+ {
+  "ma_cau": "T111060105058",
+  "dang_bai_id": "NDB01020",
+  "chac": "vua",
+  "ly_do": "Chứng minh dãy tăng và bị chặn: hai dạng, chọn dạng đứng sau."
+ },
+ {
+  "ma_cau": "T111040202012",
+  "dang_bai_id": "NDB01015",
+  "chac": "cao",
+  "ly_do": "Hạ bậc 1-2sin²=cos2 đưa về phương trình cos cơ bản."
+ },
+ {
+  "ma_cau": "T111030105050",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Khoảng dao động nhiệt độ là tập giá trị của hàm sin thực tế."
+ },
+ {
+  "ma_cau": "T111040101357",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu: phương trình tích sinx(√3+2cosx)=0 (đặt nhân tử chung)."
+ },
+ {
+  "ma_cau": "T111000000339",
+  "dang_bai_id": "NDB00576",
+  "chac": "vua",
+  "ly_do": "Ý a giải sin2x cơ bản, ý b tính cos(α+π/6): hai dạng khác nhau."
+ },
+ {
+  "ma_cau": "T111040201029",
+  "dang_bai_id": "NDB01007",
+  "chac": "cao",
+  "ly_do": "Đưa về cos(u)=cos(v) hoặc sin(u)=sin(v) với hai biểu thức."
+ },
+ {
+  "ma_cau": "T111010602015",
+  "dang_bai_id": "NDB00967",
+  "chac": "vua",
+  "ly_do": "Nhận dạng công thức biến đổi nào sai, trộn nhiều nhóm công thức."
+ },
+ {
+  "ma_cau": "T111030502108",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Đọc tập giá trị từ đồ thị, chưa rõ dạng đồ thị nào."
+ },
+ {
+  "ma_cau": "T111000000366",
+  "dang_bai_id": "NDB00952",
+  "chac": "vua",
+  "ly_do": "cot2024° đưa về góc 44° bằng chu kì; gần tính giá trị đảo pha."
+ },
+ {
+  "ma_cau": "T111000000511",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: quan hệ giữa điểm, đường thẳng, mặt phẳng trong không gian."
+ },
+ {
+  "ma_cau": "T111060305009",
+  "dang_bai_id": "NDB00592",
+  "chac": "vua",
+  "ly_do": "Dãy truy hồi phức tạp tính u50, cần biến đổi thêm."
+ },
+ {
+  "ma_cau": "T111000000044",
+  "dang_bai_id": "NDB00617",
+  "chac": "vua",
+  "ly_do": "Cấp số nhân thực tế, cho hai số hạng tìm công bội."
+ },
+ {
+  "ma_cau": "T111030105053",
+  "dang_bai_id": "NDB00995",
+  "chac": "vua",
+  "ly_do": "Hàm tan theo thời gian, tính khoảng cách tại thời điểm; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T111030503003",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Cho đồ thị hàm số lượng giác, hỏi khoảng đồng biến/nghịch biến."
+ },
+ {
+  "ma_cau": "T111010602058",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu: ứng dụng góc lượng giác tính độ cao điểm trên cánh quạt (có hình)."
+ },
+ {
+  "ma_cau": "T111030301030",
+  "dang_bai_id": "NDB00991",
+  "chac": "cao",
+  "ly_do": "Xét chẵn lẻ y=sinx·cosx, tích hai hàm lượng giác."
+ },
+ {
+  "ma_cau": "T111030502066",
+  "dang_bai_id": "NDB01005",
+  "chac": "cao",
+  "ly_do": "Hỏi đồ thị đi qua điểm nào, dựa vào đồ thị."
+ },
+ {
+  "ma_cau": "T111000000294",
+  "dang_bai_id": "NDB00962",
+  "chac": "cao",
+  "ly_do": "Tích cos·cos rút gọn bằng công thức tích thành tổng."
+ },
+ {
+  "ma_cau": "T111030502032",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Đọc tập giá trị từ đồ thị, chưa rõ dạng đồ thị nào."
+ },
+ {
+  "ma_cau": "T111000000071",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Câu về mẫu số liệu ghép nhóm cơ bản."
+ },
+ {
+  "ma_cau": "T111040101373",
+  "dang_bai_id": "NDB01014",
+  "chac": "vua",
+  "ly_do": "Ý a tan3x cơ bản, ý b sin(2x-π/5)-cos x=0: hai dạng khác nhau."
+ },
+ {
+  "ma_cau": "T111030201069",
+  "dang_bai_id": "NDB00999",
+  "chac": "cao",
+  "ly_do": "Min max hàm bậc 2 của cos, không điều kiện biến."
+ },
+ {
+  "ma_cau": "T111030502127",
+  "dang_bai_id": "NDB01004",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì của hàm số từ đồ thị."
+ },
+ {
+  "ma_cau": "T111010602077",
+  "dang_bai_id": "NDB00984",
+  "chac": "vua",
+  "ly_do": "Gộp cos·cos+sin·sin thành cos(a-b), tính giá trị không biến."
+ },
+ {
+  "ma_cau": "T111000000405",
+  "dang_bai_id": "NDB00615",
+  "chac": "vua",
+  "ly_do": "Ý a hệ phương trình cấp số cộng, ý b thực tế tìm n."
+ },
+ {
+  "ma_cau": "T111030503065",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Cho đồ thị hàm số lượng giác, hỏi khoảng đồng biến/nghịch biến."
+ },
+ {
+  "ma_cau": "T111060101135",
+  "dang_bai_id": "NDB00592",
+  "chac": "vua",
+  "ly_do": "Dãy truy hồi có tham số a, tính u4."
+ },
+ {
+  "ma_cau": "T111000000520",
+  "dang_bai_id": "NDB00952",
+  "chac": "cao",
+  "ly_do": "Dùng công thức hai góc bù sin(π-a)=sin a."
+ },
+ {
+  "ma_cau": "T111040201046",
+  "dang_bai_id": "NDB01007",
+  "chac": "cao",
+  "ly_do": "Đưa về cos(u)=cos(v) hoặc sin(u)=sin(v) với hai biểu thức."
+ },
+ {
+  "ma_cau": "T111010202022",
+  "dang_bai_id": "NDB00565",
+  "chac": "vua",
+  "ly_do": "Tìm số đo góc lượng giác trong [0;2π] cùng tia đầu cuối."
+ },
+ {
+  "ma_cau": "T111030503044",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Cho đồ thị hàm số lượng giác, hỏi khoảng đồng biến/nghịch biến."
+ },
+ {
+  "ma_cau": "T111000000347",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Câu về mẫu số liệu ghép nhóm cơ bản."
+ },
+ {
+  "ma_cau": "T111000000219",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Câu về mẫu số liệu ghép nhóm cơ bản."
+ },
+ {
+  "ma_cau": "T111030503079",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Cho đồ thị hàm số lượng giác, hỏi khoảng đồng biến/nghịch biến."
+ },
+ {
+  "ma_cau": "T111040202005",
+  "dang_bai_id": "NDB01015",
+  "chac": "cao",
+  "ly_do": "Hạ bậc 1-2sin²=cos2 đưa về phương trình cos cơ bản."
+ },
+ {
+  "ma_cau": "T111060202170",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu: lí thuyết công thức tổng n số hạng cấp số cộng."
+ },
+ {
+  "ma_cau": "T111000000090",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Câu về mẫu số liệu ghép nhóm cơ bản."
+ },
+ {
+  "ma_cau": "T111040202040",
+  "dang_bai_id": "NDB01015",
+  "chac": "cao",
+  "ly_do": "Hạ bậc 1-2sin²=cos2 đưa về phương trình cos cơ bản."
+ },
+ {
+  "ma_cau": "T111000000482",
+  "dang_bai_id": "NDB00565",
+  "chac": "cao",
+  "ly_do": "Cho hình vẽ đường tròn lượng giác, hỏi số đo góc lượng giác."
+ },
+ {
+  "ma_cau": "T111060101099",
+  "dang_bai_id": "NDB01019",
+  "chac": "vua",
+  "ly_do": "Chọn công thức số hạng tổng quát từ dãy liệt kê."
+ },
+ {
+  "ma_cau": "T111000000309",
+  "dang_bai_id": "NDB00568",
+  "chac": "cao",
+  "ly_do": "Tính quãng đường đầu mút kim đồng hồ đi được theo thời gian."
+ },
+ {
+  "ma_cau": "T111000000088",
+  "dang_bai_id": "NDB00565",
+  "chac": "cao",
+  "ly_do": "Cho hình vẽ đường tròn lượng giác, hỏi số đo góc lượng giác."
+ },
+ {
+  "ma_cau": "T111030502080",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Đọc tập giá trị từ đồ thị, chưa rõ dạng đồ thị nào."
+ },
+ {
+  "ma_cau": "T111000000437",
+  "dang_bai_id": "NDB00991",
+  "chac": "cao",
+  "ly_do": "Xét chẵn lẻ f(x)=sin²x."
+ },
+ {
+  "ma_cau": "T111030503019",
+  "dang_bai_id": "NDB01003",
+  "chac": "vua",
+  "ly_do": "Đồ thị tính đơn điệu nhưng phương án đề lỗi lẫn công thức lạ."
+ },
+ {
+  "ma_cau": "T111030502075",
+  "dang_bai_id": "NDB01004",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì của hàm số từ đồ thị."
+ },
+ {
+  "ma_cau": "T111030201042",
+  "dang_bai_id": "NDB00999",
+  "chac": "cao",
+  "ly_do": "Min max hàm bậc 2 theo cos, không điều kiện biến."
+ },
+ {
+  "ma_cau": "T111030503060",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Cho đồ thị hàm số lượng giác, hỏi khoảng đồng biến/nghịch biến."
+ },
+ {
+  "ma_cau": "T111040101177",
+  "dang_bai_id": "NDB00575",
+  "chac": "vua",
+  "ly_do": "Công thức nghiệm lí thuyết của phương trình lượng giác cơ bản."
+ },
+ {
+  "ma_cau": "T111030503066",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Cho đồ thị hàm số lượng giác, hỏi khoảng đồng biến/nghịch biến."
+ },
+ {
+  "ma_cau": "T111060304025",
+  "dang_bai_id": "NDB00617",
+  "chac": "vua",
+  "ly_do": "Dân số tăng kiểu lãi kép, tìm số năm n."
+ },
+ {
+  "ma_cau": "T111030503016",
+  "dang_bai_id": "NDB01003",
+  "chac": "vua",
+  "ly_do": "Cần đồ thị tính đơn điệu nhưng đề không có hình."
+ },
+ {
+  "ma_cau": "T111030502136",
+  "dang_bai_id": "NDB00998",
+  "chac": "vua",
+  "ly_do": "Đọc tập giá trị từ đồ thị, chưa rõ dạng đồ thị nào."
+ },
+ {
+  "ma_cau": "T111000000270",
+  "dang_bai_id": "NDB00991",
+  "chac": "cao",
+  "ly_do": "Đồ thị đối xứng qua trục tung là hàm chẵn, xét chẵn lẻ."
+ },
+ {
+  "ma_cau": "T111000000451",
+  "dang_bai_id": "NDB00569",
+  "chac": "cao",
+  "ly_do": "Tìm góc có cùng tia cuối (cùng điểm biểu diễn) với 510°."
+ },
+ {
+  "ma_cau": "T111030503031",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Cho đồ thị hàm số lượng giác, hỏi khoảng đồng biến/nghịch biến."
+ },
+ {
+  "ma_cau": "T111020101037",
+  "dang_bai_id": "NDB00967",
+  "chac": "vua",
+  "ly_do": "Khai triển sin(3a-2b) bằng công thức cộng."
+ },
+ {
+  "ma_cau": "T111030502027",
+  "dang_bai_id": "NDB01004",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì của hàm số từ đồ thị."
+ },
+ {
+  "ma_cau": "T111040102072",
+  "dang_bai_id": "NDB01009",
+  "chac": "cao",
+  "ly_do": "Đếm nghiệm cos(u)=cos(v) trên khoảng, hai họ nghiệm."
+ },
+ {
+  "ma_cau": "T111060202156",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu: lí thuyết công thức số hạng tổng quát cấp số cộng."
+ },
+ {
+  "ma_cau": "T111040101271",
+  "dang_bai_id": "NDB00575",
+  "chac": "vua",
+  "ly_do": "Công thức nghiệm lí thuyết của phương trình lượng giác cơ bản."
+ },
+ {
+  "ma_cau": "T111000000032",
+  "dang_bai_id": "NDB00617",
+  "chac": "vua",
+  "ly_do": "Vi khuẩn gấp đôi mỗi phút: cấp số nhân thực tế tìm n."
+ },
+ {
+  "ma_cau": "T111030502067",
+  "dang_bai_id": "NDB01004",
+  "chac": "cao",
+  "ly_do": "Xác định chu kì của hàm số từ đồ thị."
+ },
+ {
+  "ma_cau": "T111040102090",
+  "dang_bai_id": "NDB00584",
+  "chac": "cao",
+  "ly_do": "Dùng đồ thị cos x đếm số giao điểm với y=√3/2."
+ },
+ {
+  "ma_cau": "T111030503034",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Cho đồ thị hàm số lượng giác, hỏi khoảng đồng biến/nghịch biến."
+ },
+ {
+  "ma_cau": "T111000000141",
+  "dang_bai_id": "NDB01354",
+  "chac": "cao",
+  "ly_do": "Câu về mẫu số liệu ghép nhóm cơ bản."
+ },
+ {
+  "ma_cau": "T111030503002",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Cho đồ thị hàm số lượng giác, hỏi khoảng đồng biến/nghịch biến."
+ },
+ {
+  "ma_cau": "T111040102085",
+  "dang_bai_id": "NDB01015",
+  "chac": "vua",
+  "ly_do": "Đưa -cos2x+sin(x-3π/4)=0 về cos/sin hai biểu thức, tính tổng nghiệm."
+ },
+ {
+  "ma_cau": "T111030503062",
+  "dang_bai_id": "NDB01003",
+  "chac": "cao",
+  "ly_do": "Cho đồ thị hàm số lượng giác, hỏi khoảng đồng biến/nghịch biến."
+ }
+]
