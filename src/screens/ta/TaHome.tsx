@@ -21,6 +21,7 @@ import ChamBuoi from './ChamBuoi'
 import DashTa from './DashTa'
 import GopY from './GopY'
 import CaBoTroTA, { demNoBoTro } from './CaBoTroTA'
+import CaOnThiTA from './CaOnThiTA' // 23/10: bổ trợ ôn thi — TA điểm danh + báo động, không mở ca/app HS
 import CaHinhTA from './CaHinhTA' // 17/10: thay hộp 'Hình yếu theo mô hình' (HinhYeuTA.tsx giữ nguyên, chỉ không render)
 import { viecBoTroCuaToi, caBuCuaToi, caDuoiCuaToi, btvnBuCuaToi, type ViecCaBoTro, type ViecRetest, type CaBu, type BtvnBu } from '../../lib/botro_yeu_ca'
 import { BuoiBuDetail } from '../botro/BoTroScreen'
@@ -154,7 +155,7 @@ export default function TaHome({ profile, quyen, onAvatarChanged }: { profile: M
         {loiTai && <p className="mx-2 mt-2 rounded-xl bg-rose-50 px-3 py-2 text-[12px] font-semibold text-rose-700 ring-1 ring-rose-200">⚠ Lỗi tải: {loiTai} — chụp màn hình gửi quản lý</p>}
         {tab === 'home' && <TrangChu profile={profile} homNay={homNay} loading={loading} coQuyen={coQuyen} tasks={tasks} canLam={canLam} noCua={noCua} now={now} onGo={setTab} onOpenBuoi={setView} dashTom={dashTom} boTro={boTro} caBu={caBu} caDuoi={caDuoi} btvnBu={btvnBu} onAvatarChanged={onAvatarChanged} congHn={congHn} />}
         {tab === 'dash' && <DashTa profile={profile} />}
-        {tab === 'botro' && <><CaBoTroTA viec={boTro} onDoi={taiBoTro} /><CaHinhTA /></>}
+        {tab === 'botro' && <><CaBoTroTA viec={boTro} onDoi={taiBoTro} /><CaHinhTA /><CaOnThiTA /></>}
         {tab === 'cong' && <CongTA nsId={profile.nhanSu.id} onBack={() => setTab('home')} onDoi={taiCong} />}
         {tab !== 'home' && tab !== 'dash' && tab !== 'botro' && tab !== 'cong' && <ViecTab key={tab} nv={nvOf(tab)} tasks={tasks.filter((t) => belongsToNv(t, tab))} nopCount={nopCount} now={now} homNay={homNay} onOpen={setView}
           dauDs={tab === 'btvn' ? <DsBtvnBu ds={btvnBu} homNay={homNay} onMo={setMoBtvnBu} /> : null} soThem={tab === 'btvn' ? noBtvnBu : 0} />}

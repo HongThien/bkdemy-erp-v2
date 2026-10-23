@@ -77,7 +77,10 @@ export default function BangChuyenDeView() {
         cot: bang.cot, hs: sapXep, capTen: cap === 'chu_de' ? 'chủ đề' : 'chuyên đề',
         tenFile: `KetQua_${(de?.ten ?? 'de').replace(/[^\p{L}\p{N}]+/gu, '_')}_${tenLop || 'CaDe'}_${cap === 'chu_de' ? 'ChuDe' : 'ChuyenDe'}`,
       })
-    } catch (e) { setLoi('Xuất không được: ' + ((e as { message?: string })?.message ?? String(e))) } finally { setDangXuat(null) }
+    } catch (e) {
+      const m = (e as { message?: string })?.message ?? String(e)
+      setLoi(/dynamically imported module|Importing a module script failed/i.test(m) ? 'Hệ thống vừa có bản mới — bấm F5 tải lại trang rồi xuất lại.' : 'Xuất không được: ' + m)
+    } finally { setDangXuat(null) }
   }
   const th = 'sticky top-0 z-10 cursor-pointer select-none border-b border-slate-200 bg-slate-50 px-2 py-2 align-top text-[11px] font-semibold text-slate-600 hover:bg-slate-100'
 
