@@ -1,0 +1,90 @@
+[
+ {
+  "ma_cau": "T108030103034",
+  "loai": "tra_loi_ngan",
+  "de": "Phân tích ĐTTNT: $x^2-6x+8$",
+  "dap_an": "$(x-2)(x-4)$",
+  "loi_giai": "$x^2-6x+8 = (x^2-6x+9)-1$\n$= (x-3)^2-1^2$\n$= (x-3+1)(x-3-1)$\n$= (x-2)(x-4)$",
+  "nhan_cu": "Phân tích đa thức thành nhân tử › Phương pháp hằng đẳng thức"
+ },
+ {
+  "ma_cau": "T108030103037",
+  "loai": "tra_loi_ngan",
+  "de": "Phân tích ĐTTNT: $x^2-14x+24$",
+  "dap_an": "$(x-2)(x-12)$",
+  "loi_giai": "$x^2-14x+24 = (x^2-14x+49)-25$\n$= (x-7)^2-5^2$\n$= (x-7+5)(x-7-5)$\n$= (x-2)(x-12)$",
+  "nhan_cu": "Phân tích đa thức thành nhân tử › Phương pháp hằng đẳng thức"
+ },
+ {
+  "ma_cau": "T108030301013",
+  "loai": "tra_loi_ngan",
+  "de": "Phân tích đa thức $3x+3y-x^2-2xy-y^2$ thành nhân tử.",
+  "dap_an": "$(x+y)(3-x-y)$",
+  "loi_giai": "$3x+3y-x^2-2xy-y^2 = 3(x+y)-(x^2+2xy+y^2)$\n$= 3(x+y)-(x+y)^2$\n$= (x+y)(3-x-y)$.",
+  "nhan_cu": "Phân tích đa thức thành nhân tử › Phân tích đa thức thành nhân tử bằng phương pháp nhóm hạng tử"
+ },
+ {
+  "ma_cau": "T108030301015",
+  "loai": "tra_loi_ngan",
+  "de": "Phân tích đa thức $4x+4y-x^2-2xy-y^2$ thành nhân tử.",
+  "dap_an": "$(x+y)(4-x-y)$",
+  "loi_giai": "$4x+4y-x^2-2xy-y^2 = 4(x+y)-(x^2+2xy+y^2)$\n$= 4(x+y)-(x+y)^2$\n$= (x+y)(4-x-y)$.",
+  "nhan_cu": "Phân tích đa thức thành nhân tử › Phân tích đa thức thành nhân tử bằng phương pháp nhóm hạng tử"
+ },
+ {
+  "ma_cau": "T108030601004",
+  "loai": "tra_loi_ngan",
+  "de": "$x^3 - 9x + 8 = 0$",
+  "dap_an": "$x = -3; x = 1$",
+  "loi_giai": "Nhẩm thấy:\n$1^3 - 9 \\cdot 1 + 8 = 0$\nVậy đa thức có nhân tử $(x-1)$.\nTa có:\n$x^3 - 9x + 8 = x^3 - x^2 + x^2 - x - 8x + 8$\n$= x^2(x-1) + x(x-1) - 8(x-1)$\n$= (x-1)(x^2 + x - 8)$\n$= (x-1)(x-2)(x+4)$\nDo đó:\nTrường hợp 1:\n$x - 1 = 0$\n$x = 1$\nTrường hợp 2:\n$x - 2 = 0$\n$x = 2$\nTrường hợp 3:\n$x + 4 = 0$\n$x = -4$\nVậy:\n$x = -4; x = 1; x = 2$",
+  "nhan_cu": "Tìm x ứng dụng phân tích đa thức thành nhân tử › Tìm x áp dụng phân tích đa thức thành nhân tử"
+ },
+ {
+  "ma_cau": "T108030601005",
+  "loai": "tra_loi_ngan",
+  "de": "$x^3 - x^2 - 4x + 4 = 0$",
+  "dap_an": "$x = -2; x = 1; x = 2$",
+  "loi_giai": "Nhẩm thấy:\n$1^3 - 1^2 - 4 \\cdot 1 + 4 = 0$\nVậy đa thức có nhân tử $(x-1)$.\nTa có:\n$x^3 - x^2 - 4x + 4 = x^3 - x^2 - 4x + 4$\n$= x^2(x-1) - 4(x-1)$\n$= (x-1)(x^2 - 4)$\n$= (x-1)(x-2)(x+2)$\nDo đó:\nTrường hợp 1:\n$x - 1 = 0$\n$x = 1$\nTrường hợp 2:\n$x - 2 = 0$\n$x = 2$\nTrường hợp 3:\n$x + 2 = 0$\n$x = -2$\nVậy:\n$x = -2; x = 1; x = 2$",
+  "nhan_cu": "Tìm x ứng dụng phân tích đa thức thành nhân tử › Tìm x áp dụng phân tích đa thức thành nhân tử"
+ },
+ {
+  "ma_cau": "T108030601008",
+  "loai": "tra_loi_ngan",
+  "de": "$x^3 + 4x^2 + 5x + 2 = 0$",
+  "dap_an": "-1",
+  "loi_giai": "Nhẩm thấy:\n$(-1)^3 + 4(-1)^2 + 5(-1) + 2 = 0$\nVậy đa thức có nhân tử $(x+1)$.\nTa có:\n$x^3 + 4x^2 + 5x + 2 = x^3 + x^2 + 3x^2 + 3x + 2x + 2$\n$= x^2(x + 1) + 3x(x + 1) + 2(x + 1)$\n$= (x + 1)(x^2 + 3x + 2)$\n$= (x + 1)(x + 1)(x + 2)$\n$= (x + 1)^2(x + 2)$\nDo đó:\n$(x + 1)^2(x + 2) = 0$\nTrường hợp 1:\n$x + 1 = 0$\n$x = -1$\nTrường hợp 2:\n$x + 2 = 0$\n$x = -2$\nVậy:\n$x = -1$ hoặc $x = -2$",
+  "nhan_cu": "Tìm x ứng dụng phân tích đa thức thành nhân tử › Tìm x áp dụng phân tích đa thức thành nhân tử"
+ },
+ {
+  "ma_cau": "T108040501004",
+  "loai": "tra_loi_ngan",
+  "de": "Cho đa thức $C=x^3+x^2y-5x^2-x^2y-xy^2+5xy+3x+3y-10$. Tính giá trị của $C$\nbiết $x+y=5$.",
+  "dap_an": "5",
+  "loi_giai": "Rút gọn: $x^2y-x^2y=0$ nên\n$C=x^3-5x^2-xy^2+5xy+3x+3y-10$.\nNhóm lại:\n$C=x^2(x-5)-xy(y-5)+3(x+y)-10$.\nVì $x+y=5$ nên $x-5=-y$ và $y-5=-x$, do đó\n$x^2(x-5)=x^2\\cdot(-y)=-x^2y$\n$-xy(y-5)=-xy\\cdot(-x)=x^2y$\nSuy ra $x^2(x-5)-xy(y-5)=-x^2y+x^2y=0$.\nVậy $C=0+3(x+y)-10=3\\cdot5-10=5$.",
+  "nhan_cu": "Nâng cao › Nâng cao"
+ },
+ {
+  "ma_cau": "T108040501005",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức: $C=x^{14}-10x^{13}+10x^{12}-10x^{11}+\\ldots+10x^2-\n10x+10$ với $x=9$.",
+  "dap_an": "1",
+  "loi_giai": "Vì $x=9$ nên $10=x+1$. Thay $10=x+1$ vào từng hệ số của $C$ rồi nhóm liên tiếp từng hai số hạng để triệt tiêu:\n$C=x^{14}-(x+1)x^{13}+(x+1)x^{12}-(x+1)x^{11}+\\ldots+(x+1)x^2-(x+1)x+(x+1)$\n$x^{14}-(x+1)x^{13}=x^{14}-x^{14}-x^{13}=-x^{13}$\n$-x^{13}+(x+1)x^{12}=-x^{13}+x^{13}+x^{12}=x^{12}$\n$x^{12}-(x+1)x^{11}=-x^{11}$\nCứ tiếp tục nhóm như vậy, mỗi bước hạ đúng một bậc và đổi dấu, đến hai số hạng cuối:\n$x^2-(x+1)x=x^2-x^2-x=-x$\n$-x+(x+1)=1$\nVậy $C=1$.",
+  "nhan_cu": "Nâng cao › Nâng cao"
+ },
+ {
+  "ma_cau": "T108050203001",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x$, $y$, $z$ biết $10x^2 + y^2 + 4z^2 + 6x - 4y - 4xz = -5$.",
+  "dap_an": "$x = -\\dfrac{1}{3}$, $y = 2$, $z = -\\dfrac{1}{6}$",
+  "loi_giai": "Ta có $10x^2 + y^2 + 4z^2 + 6x - 4y - 4xz + 5 = (3x+1)^2 + (y - 2)^2 + ( 2z - x)^2$\n$10x^2 + y^2 + 4z^2 + 6x - 4y - 4xz + 5 = 0$ khi và chỉ khi đồng thời xảy ra các kết quả sau:\n$(3x+1)^2 = 0$, $(y - 2)^2 = 0$, $( 2z - x)^2 = 0$ hay $x = -\\dfrac{1}{3}$ , $y = 2$ và $z = -\\dfrac{1}{6}$.",
+  "nhan_cu": "Ứng dụng hằng đẳng thức › Ứng dụng của hằng đẳng thức bậc hai"
+ },
+ {
+  "ma_cau": "T108050203002",
+  "loai": "tra_loi_ngan",
+  "de": "Cho ba số $a, b, c$ thỏa mãn điều kiện:\n$4a^2 + 2b^2 + 2c^2 - 4ab - 4ac + 2bc - 6b - 10c + 34 = 0$.\nTính giá trị của biểu thức: $B = (a-4)^{2024} + (b-4)^{2024} + (c-4)^{2024}$.",
+  "dap_an": "2",
+  "loi_giai": "Ta có: $4a^2 + 2b^2 + 2c^2 - 4ab - 4ac + 2bc - 6b - 10c + 34 = 0$\n$\\Leftrightarrow 4a^2 + b^2 + c^2 - 4ab - 4ac + 2bc + b^2 - 6b + 9 + c^2 - 10c + 25 = 0$\n$\\Leftrightarrow (2a-b-c)^2 + (b-3)^2 + (c-5)^2 = 0 (*)$.\nVì $(2a-b-c)^2 \\ge 0$, $(b-3)^2 \\ge 0$, $(c-5)^2 \\ge 0$ với mọi $a, b, c$.\nDo đó $(*)$ $\\Leftrightarrow \\begin{cases} (2a-b-c)^2 = 0 \\\\ (b-3)^2 = 0 \\\\ (c-5)^2 = 0 \\end{cases}$\n$\\Leftrightarrow \\begin{cases} 2a-b-c = 0 \\\\ b-3 = 0 \\\\ c-5 = 0 \\end{cases}$\n$\\Leftrightarrow \\begin{cases} a = 4 \\\\ b = 3 \\\\ c = 5 \\end{cases}$\nVậy $B=(4-4)^{2024} + (3-4)^{2024} + (5-4)^{2024} = 0^{2024} + (-1)^{2024} + 1^{2024} = 2$.",
+  "nhan_cu": "Ứng dụng hằng đẳng thức › Ứng dụng của hằng đẳng thức bậc hai"
+ }
+]

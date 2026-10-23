@@ -1,0 +1,74 @@
+[
+ {
+  "ma_cau": "T106000000456",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng bài toán trò chơi/đại lượng bất biến (xoá hai số, viết số mới, tìm số cuối cùng)."
+ },
+ {
+  "ma_cau": "T106020303025",
+  "dang_bai_id": "NDB00364",
+  "chac": "cao",
+  "ly_do": "Tìm x có ngoặc 3(x+1)=42, không lũy thừa; theo luật dạng sau thắng xếp vào dạng có ngoặc."
+ },
+ {
+  "ma_cau": "T106020303026",
+  "dang_bai_id": "NDB00364",
+  "chac": "cao",
+  "ly_do": "Tìm x có ngoặc 4(x+2)=36, không lũy thừa; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T106020303052",
+  "dang_bai_id": "NDB00364",
+  "chac": "cao",
+  "ly_do": "Tìm x có ngoặc (x-3):7=11, không lũy thừa; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T106020303056",
+  "dang_bai_id": "NDB00364",
+  "chac": "cao",
+  "ly_do": "Tìm x có ngoặc (x-10):5=15, không lũy thừa; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T106020303058",
+  "dang_bai_id": "NDB00364",
+  "chac": "cao",
+  "ly_do": "Tìm x có ngoặc 5(x-2)+27=92, không lũy thừa; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T106020303060",
+  "dang_bai_id": "NDB00364",
+  "chac": "cao",
+  "ly_do": "Tìm x có ngoặc 6(x-5)+10=70, không lũy thừa; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T106020701001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc dãy phân số dạng hiệu tích 1/(n(n+1)); bản đồ khối 6 thiếu dạng dãy phân số hiệu-tích."
+ },
+ {
+  "ma_cau": "T106020701002",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm x trong dãy phân số hiệu tích 1/(1.3)+...; bản đồ khối 6 thiếu dạng dãy phân số hiệu-tích."
+ },
+ {
+  "ma_cau": "T106020701003",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Dãy phân số hiệu tích có tử 2, mẫu cách 3; bản đồ khối 6 thiếu dạng dãy phân số hiệu-tích."
+ },
+ {
+  "ma_cau": "T106020701004",
+  "dang_bai_id": "NDB00352",
+  "chac": "vua",
+  "ly_do": "Toán lời văn hiệu-tỉ có phân số, mô tả chung toán thực tế số tự nhiên nhưng thiếu dạng hiệu-tỉ riêng."
+ },
+ {
+  "ma_cau": "T106020803001",
+  "dang_bai_id": "NDB01412",
+  "chac": "cao",
+  "ly_do": "Trùng ví dụ 2 của dạng: tích 2^x(2^x+1)(2^x+2) cộng 4^y bằng 721, tìm x, y."
+ }
+]

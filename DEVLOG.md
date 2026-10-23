@@ -77546,3 +77546,12 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Lấp chỗ thiếu khối khác:** 255 câu đã đo K6–8, K10–12 chưa có dạng bài mới (2.639 lượt) ⇒ `kho-rules/dai/lo/b3/k6-12-cau-da-do-chua-dang-bai.json`, giao phiên B3 (chỉ hàng đề xuất; K12 chỉ chủ đề NH-TP chuẩn).
 
 - **[Dashboard học tập] Cửa sổ lịch sử ô dạng BẢNG (Thùy 23/10: "câu văn kiểu này khó đọc"):** cột Ngày · Hoạt động · Đúng · % lượt · Tăng/giảm · 10 câu gần nhất · Hiện tại; dòng đầu = Đầu kỳ; bấm dòng xổ từng câu; cộng dồn chưa cắt nằm ở tooltip cột 10 câu. Cửa sổ rộng 540px. Chỉ đổi UI.
+
+
+### [23/10] K6–8 · K10–12: 255 câu đã có HS làm chưa có dạng bài mới — xếp vào hàng ĐỀ XUẤT (lô 2 mastery)
+- **Việc (phiên chính, Thùy "tiếp"):** `kho-rules/dai/lo/b3/k6-12-cau-da-do-chua-dang-bai.json` (2.639 lượt). Làm y K9: chỉ hàng đề xuất, không gán chắc.
+- **Đo trước:** 97 bản sao có câu gốc đã xoá (17 gốc) · ~100 gốc chưa ở hàng nào (K12 60, K7 19) · ~27 gốc ở thiếu dạng · HGT K12 7 câu (Oxyz). K12: chỉ NH-TP (NCD00095) là bản đồ chuẩn.
+- **Công cụ mới:** `scripts/bdm-b3-xuat-ds.mjs` (xuất lô theo DANH SÁCH: quy về câu gốc còn sống, gốc đã xoá ⇒ 1 bản sao đại diện + `nhom.json`; `--chi-chu-de 12=NCD00095`) · `scripts/bdm-b3-trai-nhom.mjs` (trải kết quả đại diện ra các bản sao cùng gốc đã xoá) · `bdm-b3-hgt-xem.mjs` nhận nhiều khối "6,7,8" + `--chi`.
+- **Kết quả:** 145 đối tượng → 3 trạm Sonnet (K6+7 · K8+10+11 · K12). Ghi `--khong-gan`: de_xuat K6 2 · K7 18 · K8 5 · K10 6 · K11 34; thiếu dạng K6 4 · K11 2 · K12 47 (cả 67 câu K12 Đại thuộc Đạo hàm / Vectơ không gian — không NH-TP). HGT K12: Claude xếp tay T312010103001 → NDB00851, T312010202025 → NDB00873 (chưa chắc), T312010403001 giữ thiếu dạng (`b3-hgt/k12-do2310-chuyen-de-xuat.mjs`).
+- **Đọc lại bằng kết nối riêng:** 88/255 câu, 1.221/2.639 lượt được tính. **Kẹt:** 108 câu (1.369 lượt) là CÂU ĐÃ XOÁ (xoa_at) — script ghi bỏ câu xoá, màn duyệt không hiện ⇒ hỏi phiên chính chọn (a) ghi đề xuất khuất cho câu xoá hay (b) sửa `_do_o_bdm`. 3 câu K7 nhiều lượt nhất (T1077033330401001/003/004) là bài Hình (đường thẳng song song) nằm trong kho Đại.
+- **Trang duyệt:** `reports/bdm-k6-12-dai-da-do-2026-10-23.html` (118 câu: 49 cao · 16 chưa chắc · 53 không xếp) · `reports/bdm-k12-hgt-da-do-2026-10-23.html` (3).

@@ -1,0 +1,707 @@
+[
+ {
+  "ma_cau": "T1120000001517",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho điểm $A\\left( 1;\\,0;\\,-3 \\right)$. Chọn khẳng định đúng có tọa độ là",
+  "lua_chon": [
+   "$\\text{A}\\in\\left( Oxy \\right)$.",
+   "$\\text{A}\\in\\left( Oyz \\right)$.",
+   "$\\text{A}\\in\\left( Oxz \\right)$.",
+   "$\\text{A}\\in Oy$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Chọn C",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112010305001",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y = \\dfrac{2x^2 - 3x - 1}{x - 2}$.\nTiệm cận xiên của đồ thị hàm số là đường thẳng:",
+  "lua_chon": [
+   "$y = 2x - 1$.",
+   "$y = 2x + 1$.",
+   "$y = 2x - 3$.",
+   "$y = 2x + 3$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Chia tử thức cho mẫu thức ta được\n$\\begin{cases} y = 2x + 1 - \\dfrac{1}{x - 2} \\\\ \\lim_{x\\to\\pm\\infty} \\dfrac{-1}{x - 2} = 0 \\end{cases}$\n$\\Rightarrow$ Tiệm cận xiên của đồ thị hàm số là đường thẳng có phương trình $y = 2x + 1$.",
+  "nhan_cu": "Đường tiệm cận của đồ thị hàm số › Tìm tiệm cận xiên của hàm số"
+ },
+ {
+  "ma_cau": "T112010401004",
+  "loai": "trac_nghiem",
+  "de": "(THPT Tiên Du - Bắc Ninh 2025) Cho hàm số $y = f(x)$ xác định trên $[-2;4]$ có đồ thị như hình vẽ bên. Giá trị lớn nhất hàm số $y = f(x)$ trên đoạn $[0;4]$ là",
+  "lua_chon": [
+   "3.",
+   "2.",
+   "-2.",
+   "7."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Chọn B\nXét hàm số $y = f(x)$ trên đoạn $[0;4]$ ta suy ra $\\max\\limits_{[0;4]} f(x) = f(3) = 2$",
+  "co_hinh": true,
+  "nhan_cu": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số › Tìm GTLN - GTNN của hàm số trên khoảng cho trước khi biết đồ thị hoặc bảng biến thiên"
+ },
+ {
+  "ma_cau": "T112010402001",
+  "loai": "trac_nghiem",
+  "de": "Giá trị nhỏ nhất của hàm số $f(x)=x^3-3x+2$ trên đoạn $[-3;3]$ bằng",
+  "lua_chon": [
+   "0.",
+   "-16.",
+   "4.",
+   "20 अनुसंधान।",
+   "20. "
+  ],
+  "nhan_cu": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số › Tìm GTLN - GTNN trên khoảng cho trước khi biết hàm số"
+ },
+ {
+  "ma_cau": "T112020104002",
+  "loai": "trac_nghiem",
+  "de": "(THPT Nguyễn Viết Xuân - Vĩnh Phúc 2025) Đường cong ở hình sau là đồ thị của một trong bốn hàm số dưới đây. Hàm số đó là hàm số nào? [hình]",
+  "lua_chon": [
+   "$y = x^3 - 3x + 2$.",
+   "$y = x^3 - 3x^2 + 2$.",
+   "$y = x^3 - 6x + 2$.",
+   "$y = -x^3 + 3x^2 + 2$. "
+  ],
+  "co_hinh": true,
+  "nhan_cu": "Khảo sát và vẽ đồ thị hàm số › Bài toán liên quan đến đồ thị hàm số bậc 3"
+ },
+ {
+  "ma_cau": "T112020201010",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y = \\dfrac{ax+b}{x+1}$ có đồ thị như hình vẽ dưới đây. Tìm khẳng định đúng trong các khẳng định sau. [hình]",
+  "lua_chon": [
+   "$0 < a < b$.",
+   " $b < 0 < a$.",
+   " $0 < b < a$.",
+   " $a < b < 0$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có: $y' = \\dfrac{a-b}{(x+1)^2}$, $\\forall x \\neq -1$. Dựa vào đồ thị ta thấy:\nTa có: $\\lim_{x \\to +\\infty} y = a \\Rightarrow y = a$ là tiệm cận ngang của đồ thị hàm số. Dựa vào đồ thị ta có: $a > 0$.\nĐồ thị hàm số nghịch biến trên khoảng $(-\\infty;-1)$ và $(-1;+\\infty) \\Rightarrow y' < 0, \\forall x \\neq -1$\n$\\Leftrightarrow a-b < 0 \\Leftrightarrow a < b \\Rightarrow 0 < a < b$.",
+  "co_hinh": true,
+  "nhan_cu": "Khảo sát và vẽ đồ thị hàm số › Bài toán liên quan đến các hệ số của hàm bậc nhất trên bậc nhất"
+ },
+ {
+  "ma_cau": "T112020202017",
+  "loai": "trac_nghiem",
+  "de": "(THPT Ngô Sĩ Liên - Bắc Giang 2025) Cho hàm số $y=f(x)$ có đồ thị như hình dưới đây. [hình] Biểu thức $f(x)$ là biểu thức nào sau đây?",
+  "lua_chon": [
+   "$x+\\dfrac{1}{x}$",
+   "$-x^3+3x-1$",
+   "$x^3-1$",
+   "$\\dfrac{x-1}{x+1}$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Chọn D\nĐồ thị hàm số $y=f(x)$ có tiệm cận đứng là $x=-1$ nên biểu thức $f(x)$ là $\\dfrac{x-1}{x+1}$.",
+  "co_hinh": true,
+  "nhan_cu": "Khảo sát và vẽ đồ thị hàm số › Bài toán liên quan đến đồ thị hàm số bậc nhất trên bậc nhất"
+ },
+ {
+  "ma_cau": "T112020302020",
+  "loai": "trac_nghiem",
+  "de": "Đồ thị dưới đây là của một trong bốn hàm số sau. Hỏi hàm số đó là hàm số nào? [hình] Đồ thị hàm số.",
+  "lua_chon": [
+   "$y = \\dfrac{x^2 - x + 4}{x + 1}$",
+   "$y = \\dfrac{x^2 - 2x + 3}{x + 1}$",
+   "$y = \\dfrac{-x^2 - x + 2}{x + 1}$",
+   "$y = \\dfrac{x^2 + x - 1}{x + 1}$"
+  ],
+  "dap_an": "C",
+  "co_hinh": true,
+  "nhan_cu": "Khảo sát và vẽ đồ thị hàm số › Bài toán liên quan đến đồ thị hàm bậc hai trên bậc nhất"
+ },
+ {
+  "ma_cau": "T112020303001",
+  "loai": "trac_nghiem",
+  "de": "Đường thẳng qua 2 điểm cực trị của đồ thị hàm số $y=\\dfrac{x^2-x+2}{x+2}$ có phương trình là",
+  "lua_chon": [
+   "y = 2x - 1",
+   "y = 2x + 1",
+   "y = x - 2",
+   "y = -2x - 1"
+  ],
+  "dap_an": "A",
+  "loi_giai": "1. Thực hiện phép chia đa thức: $y = \\dfrac{x^2-x+2}{x+2} = x-3 + \\dfrac{8}{x+2}$.\n2. Tính đạo hàm $y'$: $y' = (x-3 + \\dfrac{8}{x+2})' = 1 - \\dfrac{8}{(x+2)^2}$.\n3. Tìm các điểm cực trị: $y'=0 \\Leftrightarrow 1 - \\dfrac{8}{(x+2)^2} = 0 \\Leftrightarrow (x+2)^2 = 8$.\n$x+2 = \\pm \\sqrt{8} = \\pm 2\\sqrt{2}$.\n$x_1 = -2+2\\sqrt{2}$, $x_2 = -2-2\\sqrt{2}$.\n4. Tính giá trị $y$ tương ứng:\nVới $x_1 = -2+2\\sqrt{2}$: $y_1 = (-2+2\\sqrt{2})-3 + \\dfrac{8}{(-2+2\\sqrt{2})+2} = -5+2\\sqrt{2} + \\dfrac{8}{2\\sqrt{2}} = -5+2\\sqrt{2} + 2\\sqrt{2} = -5+4\\sqrt{2}$.\nVới $x_2 = -2-2\\sqrt{2}$: $y_2 = (-2-2\\sqrt{2})-3 + \\dfrac{8}{(-2-2\\sqrt{2})+2} = -5-2\\sqrt{2} + \\dfrac{8}{-2\\sqrt{2}} = -5-2\\sqrt{2} - 2\\sqrt{2} = -5-4\\sqrt{2 …",
+  "nhan_cu": "Khảo sát và vẽ đồ thị hàm số › Phương trình đường thẳng đi qua hai điểm cực trị"
+ },
+ {
+  "ma_cau": "T112020305010",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y = \\dfrac{x-1}{x+1}$ có đồ thị $(C)$.\nCó bao nhiêu điểm thuộc đồ thị $(C)$ sao cho tiếp tuyến của đồ thị $(C)$ tại các điểm đó song song với đường thẳng $y = 2x+7$?",
+  "lua_chon": [
+   "2.",
+   "1.",
+   "0.",
+   "3ゥ."
+  ],
+  "nhan_cu": "Khảo sát và vẽ đồ thị hàm số › Một số bài toán cơ bản liên quan đến phương trình tiếp tuyến"
+ },
+ {
+  "ma_cau": "T112020401146",
+  "loai": "tra_loi_ngan",
+  "de": "Một nhà sản xuất trung bình bán được $1000$ ti vi mỗi tuần với giá $14$ triệu đồng một chiếc. Một cuộc khảo sát thị trường chỉ ra rằng nếu cứ giảm giá bán $500$ nghìn đồng, số lượng ti vi bán ra sẽ tăng $100$ ti vi mỗi tuần. Nếu hàm chi phí hàng tuần là $C\\left(x\\right)=12000-3x$ (triệu đồng), trong đó $x$ là số ti vi bán ra ở mỗi tuần. Nhà sản xuất nên đặt giá bán (triệu đồng) như thế nào để lợi nuận lớn nhất?",
+  "dap_an": "8",
+  "loi_giai": "Gọi $p$ (triệu đồng) là giá bán của mỗi chiếc ti vi ($p>0$).\nTheo khảo sát, giá bán ban đầu là $14$ triệu đồng với lượng bán $1000$ chiếc/tuần.\nCứ giảm giá $0,5$ triệu đồng ($500$ nghìn đồng) thì lượng bán tăng thêm $100$ chiếc/tuần.\nSố lần giảm giá $0,5$ triệu đồng là $\\dfrac{14-p}{0,5}=28-2p$.\nSố ti vi bán ra trong một tuần theo giá $p$ là\n$x=1000+100\\left(28-2p\\right)=3800-200p\\Rightarrow p=19-\\dfrac{x}{200} \\left(\\text{trieu dong}\\right).$\nDoanh thu hàng tuần khi bán $x$ chiếc ti vi là\n$R\\left(x\\right)=x\\cdot p=x\\left(19-\\dfrac{x}{200}\\right)=19x-\\dfrac{x^{2}}{200} \\left(\\text{trieu dong}\\right).$\nHàm chi phí hàng tuần là $C\\left(x\\right)=12000-3x \\left(\\text{trieu dong}\\right)$.\nLợi nhu …",
+  "nhan_cu": "Ứng dụng đạo hàm để giải quyết một số vấn đề thực tiễn › Tối ưu phải lập hàm từ kinh tế"
+ },
+ {
+  "ma_cau": "T112020402025",
+  "loai": "tra_loi_ngan",
+  "de": "Một vật chuyển động phương ngang theo quy luật $s=-t^{3}+9t^{2}+21t+1$ với $t$ (giây) là khoảng thời gian tính từ lúc bắt đầu chuyển động và $s$ (mét) là quãng đường vật đi được trong khoảng thời gian đó. Tính gia tốc của chất điểm tại thời điểm vật dừng lại (đơn vị $m/s^{2}$).",
+  "dap_an": "-24",
+  "loi_giai": "Vận tốc tức thời của vật tại thời điểm $t$ là\n$v\\left(t\\right)=s'\\left(t\\right)=-3t^{2}+18t+21.$\nVật dừng lại khi vận tốc bằng $0$, tức là\n$v\\left(t\\right)=0\\Leftrightarrow -3t^{2}+18t+21=0\\Leftrightarrow \\left[\\begin{array}{l} \\left.t=7\\text{ (thoa man }t\\ge 0\\right) \\\\ t=-1 (loai). \\end{array}\\right.$\nGia tốc tức thời của vật tại thời điểm $t$ là\n$a\\left(t\\right)=v'\\left(t\\right)=-6t+18.$\nTại thời điểm vật dừng lại ($t=7 s$), gia tốc của chất điểm là\n$a\\left(7\\right)=-6\\cdot 7+18=-24 \\left({m/s}^{2}\\right).$\nVậy gia tốc của chất điểm tại thời điểm vật dừng lại bằng $-24 \\left({m/s}^{2}\\right)$.",
+  "nhan_cu": "Ứng dụng đạo hàm để giải quyết một số vấn đề thực tiễn › Các bài toán thực tế có sẵn biểu thức (đang phân lại — lô đầu)"
+ },
+ {
+  "ma_cau": "T112030101001",
+  "loai": "tra_loi_ngan",
+  "de": "Giả sử tỷ lệ sinh của tỉnh $A$ tuân theo quy luật logistic được mô hình hóa bằng hàm số sau đây\n$f(t) = \\dfrac{200}{1 + 4e^{-t}}; t \\ge 0, t \\in N$, trong đó thời gian $t$ được tính bằng tháng. Khi đó đạo hàm $f'(t)$ sẽ biểu thị tốc độ tăng dân số của tỉnh $A$. Hỏi sau bao nhiêu tháng tốc độ tăng trưởng của dân số tỉnh $A$ là lớn nhất?",
+  "dap_an": "\\ln 4",
+  "loi_giai": "Ta có $f(t) = \\dfrac{200}{1 + 4e^{-t}} = \\dfrac{200e^t}{e^t + 4}$ và có $f'(t) = \\dfrac{800e^t}{(e^t + 4)^2} \\Rightarrow f''(t) = \\dfrac{800e^t(4 - e^t)}{(e^t + 4)^3} = 0 \\Leftrightarrow t = \\ln 4$.\nDựa vào bảng biến thiên:\nVậy tốc độ tăng trưởng của dân số tỉnh $A$ lớn nhất là $f'(\\ln 4) = \\dfrac{800e^{\\ln 4}}{(e^{\\ln 4} + 4)^2} = \\dfrac{800.4}{16^2} = \\dfrac{25}{2}$ tại thời điểm $t = \\ln 4 \\approx 1.39$",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112030101004",
+  "loai": "tra_loi_ngan",
+  "de": "Sau khi phát hiện ra dịch bệnh vi rút Đậu mùa Khỉ, các chuyên gia y tế ước tính số người nhiễm bệnh kể từ khi xuất hiện bệnh nhân đầu tiên đến ngày thứ $x$ là $f(x) = -x^3 + 18x^2$. Ta xem $f'(x)$ là tốc độ truyền bệnh tại thời điểm $x$. Tốc độ truyền bệnh sẽ lớn nhất vào ngày thứ bao nhiêu?",
+  "dap_an": "6",
+  "loi_giai": "Ta có. $f'(x) = -3x^2 + 36x \\Rightarrow f''(x) = -6x + 36$. Xét $f''(x) = 0 \\Leftrightarrow x = 6$\\nBảng biến thiên:",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112030101025",
+  "loai": "tra_loi_ngan",
+  "de": "Một bể chứa ban đầu có $250$ lít nước. Sau đó, cứ mỗi phút người ta bơm thêm $25$ lít nước, đồng thời cho vào bể $8$ gam chất khử khuẩn (ClO$_2$) được hòa tan. Giả sử $C(t)$ là nồng độ chất khử khuẩn trong bể sau $t$ phút (với $C(t) = \\dfrac{m(t)}{V(t)}$, đơn vị gam/lít, trong đó $m(t)$ là khối lượng chất khử khuẩn trong bể và $V(t)$ là thể tích nước trong bể). Gọi $c$ là số dương nhỏ nhất mà nồng độ chất khử khuẩn là $C(t)$ tăng theo thời gian $t$ nhưng không vượt quá ngưỡng $c$ gam/lít. Tìm $c$",
+  "loi_giai": "Nồng độ chất khử khuẩn trong bể sau $t$ phút là $C(t) = \\dfrac{8t}{25t+250}$, $t > 0$\nTa cần tìm giá trị lớn nhất của $C(t)$ trên khoảng xác định",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112030101027",
+  "loai": "tra_loi_ngan",
+  "de": "Trong Vật lý, một dao động điều hòa là dao động có phương trình chuyển động được cho bởi công thức $x(t)=A\\cos(\\omega t+\\varphi)$, trong đó $A$ là biên độ của dao động, $\\omega (rad/s)$ là tần số góc và $\\varphi (rad)$ là pha ban đầu. Trong Vật lý, động năng (Tiếng Anh: kinetic energy) của một vật là năng lượng mà nó có được từ chuyển động của nó. Được xác định bởi công thức $W=\\dfrac{1}{2}m.v^2(t)$ trong đó $m$ (kg) là khối lượng của vật và $v(t)(m/s)$ là vận tốc của vật tại thời điểm $t(s)$.\nGiả sử một vật có khối lượng $m=100(gam)$ dao động điều hòa với phương trình chuyển động: $x=40\\cos\\left(200\\pi t-\\dfrac{\\pi}{3}\\right)(cm)$. Khi đó động năng vật đó đạt giá trị lớn nhất bằng bao nhiêu (J)?\n(Làm tròn đến hàng phần chục)",
+  "dap_an": "31.6",
+  "loi_giai": "Từ công thức $W=\\dfrac{1}{2}m.v^2(t)$, để động năng vật đó đạt giá trị lớn nhất thì $v(t)(m/s)$ đạt giá trị lớn nhất.\nKhi đó ta có $v(t)=(x(t))'=\\left(40\\cos\\left(200\\pi t-\\dfrac{\\pi}{3}\\right)\\right)'=-8000\\pi\\sin\\left(200\\pi t-\\dfrac{\\pi}{3}\\right)(cm/s)$.\nTa có $-8000\\pi \\leq v(t)=-8000\\pi\\sin\\left(200\\pi t-\\dfrac{\\pi}{3}\\right) \\leq 8000\\pi$\nVây $v(t)(m/s)$ đạt giá trị lớn nhất bằng $8\\pi (m/s)$.\nKhi đó động năng lớn nhất của vật là: $W=\\dfrac{1}{2}m.v^2=\\dfrac{1}{2}.0,1.(8\\pi)^2\\approx 31,6(J)$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112030101030",
+  "loai": "tra_loi_ngan",
+  "de": "Một bể ban đầu chứa 150 lít nước. Sau đó, cứ mỗi phút người ta bơm thêm 50 lít nước, đồng thời cho vào bể 20 gam chất khử trùng (hòa tan). Gọi $f(t)$ (gam/lít) là nồng độ chất khử trùng trong bể sau $t$ phút ($t \\ge 0$), biết rằng sau khi khảo sát sự biến thiên của hàm số $f(t)$, ta thấy giá trị $f(t)$ tăng theo thời gian $t$ nhưng không vượt ngưỡng $p$ gam/lít. Tìm số $p$ (kết quả viết dưới dạng số thập phân).",
+  "dap_an": "0.4",
+  "loi_giai": "Thể tích nước trong bể sau $t$ phút là $150+50t$ (lít).\nKhối lượng chất khử trùng trong bể sau $t$ phút là $20t$ (gam).\nNồng độ chất khử trùng trong bể sau $t$ phút là $f(t)=\\dfrac{20t}{50t+150}$ (gam/lít).\nTa có $f'(t)=\\dfrac{3000}{(50t+150)^2} > 0, \\forall t \\ge 0$ và $\\lim_{t \\to +\\infty} \\dfrac{20t}{50t+150} = \\dfrac{2}{5} = 0.4$.\nVậy giá trị hàm $f(t)$ luôn tăng nhưng không vượt ngưỡng $0.4$ gam/lít.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112030102001",
+  "loai": "tra_loi_ngan",
+  "de": "Giả sử số lượng của một quần thể nấm men tại môi trường nuôi cấy trong phòng thí nghiệm được mô hình hoá bằng hàm số $P(t)=\\dfrac{a}{b+e^{-0.75t}}$, trong đó thời gian $t$ được tính bằng giờ. Tại thời điểm ban đầu $t=0$, quần thể có 20 tế bào và tăng với tốc độ 12 tế bào/giờ. Tìm các giá trị $a$ và $b$. Theo mô hình này, điều gì xảy ra với quần thể nấm men về lâu dài?",
+  "dap_an": "a=25; b=\\dfrac{1}{4}",
+  "loi_giai": "Ta có: $P'(t)=\\dfrac{0,75ae^{-0.75t}}{(b+e^{-0.75t})^2}\\ge 0$.\nTheo đề bài, ta có: $P(0)=20$ và $P'(0)=12$.\nDo đó, ta có hệ phương trình: $\\left\\{\\begin{array}{l}\\dfrac{a}{b+1}=20\\\\\\dfrac{0,75a}{(b+1)^2}=12\\end{array}\\right. \\Leftrightarrow \\left\\{\\begin{array}{l}a=20(b+1)\\\\\\\\dfrac{15}{b+1}=12\\end{array}\\right. $\nGiải hệ phương trình này, ta được $a=25$ và $b=\\dfrac{1}{4}$.\nKhi đó, $P'(t)=\\dfrac{18,75e^{-0.75t}}{\\left(\\dfrac{1}{4}+e^{-0.75t}\\right)^2}>0, \\forall t\\ge 0$, tức là số lượng quần thể nấm men luôn tăng.\nTuy nhiên, do $\\lim_{t\\to\\infty}P(t)=\\lim_{t\\to\\infty}\\dfrac{25}{\\dfrac{1}{4}+e^{-0.75t}}=100$ nên số lượng quần thể nấm men tăng nhưng không vượt quá 100 tế bào.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112030102012",
+  "loai": "tra_loi_ngan",
+  "de": "Hằng ngày mực nước của con kênh lên xuống theo thủy triều. độ sâu $h(m)$ của mực nước trong\nkênh tính theo thời gian $t(h)$ trong ngày cho bởi công thức $h=3\\cos\\left(\\dfrac{\\pi t}{6}+\\dfrac{\\pi}{3}\\right)+12$. Khi nào\nmực nước của kênh là cao nhất với thời gian ngắn nhất?",
+  "lua_chon": [
+   "$t=10(h)$",
+   "$t=14(h)$",
+   "$t=15(h)$",
+   "$t=22(h)$"
+  ],
+  "dap_an": "10",
+  "loi_giai": "Ta có: $h'=-3\\left(\\dfrac{\\pi}{6}\\right)\\sin\\left(\\dfrac{\\pi t}{6}+\\dfrac{\\pi}{3}\\right)=-\\dfrac{\\pi}{2}\\sin\\left(\\dfrac{\\pi t}{6}+\\dfrac{\\pi}{3}\\right)$\n$h'=0 \\Leftrightarrow -\\dfrac{\\pi}{2}\\sin\\left(\\dfrac{\\pi t}{6}+\\dfrac{\\pi}{3}\\right)=0 \\Leftrightarrow t=-2+6k, (k \\in Z_{(+)})$\nỞ đây ta chỉ cần xét một số giá trị\nTa suy ra được $h$ đạt giá trị lớn nhất khi $t=10 \\ (h)$\nLưu ý: Ngoài cách trên ta có thể làm như sau\nVì $-1 \\leq \\cos\\left(\\dfrac{\\pi t}{6}+\\dfrac{\\pi}{3}\\right)\\leq 1 \\Rightarrow 9 \\leq 3\\cos\\left(\\dfrac{\\pi t}{6}+\\dfrac{\\pi}{3}\\right)+12 \\leq 15$.\nVậy để $h$ lớn nhất thì $\\cos\\left(\\dfrac{\\pi t}{6}+\\dfrac{\\pi}{3}\\right)=1 \\Leftrightarrow t=-2+12k, (k \\in Z_{(+)})$\nVậy $h$ đạ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112030102052",
+  "loai": "tra_loi_ngan",
+  "de": "Người quản lí của một khu chung cư có $100$ căn hộ cho thuê nhận thấy rằng tất cả các căn hộ sẽ có người thuê nếu giá thuê một căn hộ là $8$ triệu đồng một tháng. Một cuộc khảo sát thị trường cho thấy rằng, trung bình cứ mỗi lần tăng giá thuê căn hộ thêm $100$ nghìn đồng thì sẽ có thêm một căn hộ bị bỏ trống. Người quản lí nên đặt giá thuê mỗi căn hộ là bao nhiêu để doanh thu là lớn nhất?",
+  "lua_chon": [
+   "",
+   "",
+   "",
+   ""
+  ],
+  "dap_an": "9000000",
+  "loi_giai": "Gọi $x$ là số lần tăng giá $100$ nghìn đồng ($x>0$). Khi đó, số căn được cho thuê là: $100-x$ (căn)\nTổng số tiền thu được trong một tháng là:\n$(100-x)(8000000+100000x)=100000(100-x)(80+x)=100000(-x^{2}+20x+8000)$\n$=100000\\left[-(x-10)^{2}+8100\\right]\\leq 810000000, \\forall x > 0$\nDấu \"=\" xảy ra khi $x=10$ (thỏa mãn)\nVậy để thu được doanh thu là lớn nhất thì người quản lí nên đặt giá thuê mỗi căn hộ là:\n$8000000+100000.10=9000000$ (đồng).",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112030102056",
+  "loai": "tra_loi_ngan",
+  "de": "Một công ty kinh doanh bất động sản có 20 căn hộ cho thuê. Biết rằng nếu cho thuê mỗi căn hộ với giá 2 triệu đồng/1 tháng thì tất cả các căn hộ đều có người thuê. Nhưng cứ mỗi lần tăng giá cho thuê mỗi căn hộ thêm 200 nghìn đồng/1 tháng thì có thêm một căn hộ bị bỏ trống. Hỏi công ty nên cho thuê mỗi căn hộ bao nhiêu tiền một tháng để tổng số tiền thu được là lớn nhất?",
+  "dap_an": "3",
+  "loi_giai": "Giả sử giá thuê mỗi căn hộ là $x$ triệu đồng/1 tháng và số căn hộ cho thuê là $y$.\nKhi đó tổng số tiền thu được sẽ là $x.y$.\nTheo đề bài, ta có: $y=20-5(x-2)$ (vì cứ mỗi lần tăng giá thuê mỗi căn hộ thêm 200 nghìn đồng/1 tháng thì có thêm một căn hộ bị bỏ trống).\nDo đó ta cần tìm giá trị của $x$ sao cho hàm số $f(x)=x[20-5(x-2)]$ đạt giá trị lớn nhất.\nTa có: $f'(x)=30-10x=0 \\Rightarrow 30-10x=0 \\Rightarrow x=3$\nCuối cùng ta kiểm tra xem điểm cực này có phải là điểm cực đại hay không:\nXác định khoảng: $[-\\infty;3], [3;+\\infty]$\nChọn $x_1=2 \\Rightarrow f'(x)=10$, chọn $x_2=4 \\Rightarrow f'(x)=-10$\nVì đạo hàm dương với mọi $x<3$ là âm với mọi $x>3 \\Rightarrow$ hàm số cực đại tại $x=3$\nVì vậy, c …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112030102060",
+  "loai": "tra_loi_ngan",
+  "de": "Một công ty đánh giá rằng sẽ bán được $N$ lô hàng nếu chi hết số tiền là $x$ (triệu đồng) vào việc quảng cáo. Biết rằng $N$ và $x$ liên hệ với nhau bằng biểu thức $N(x)=-x^2+30x+6, 0 \\le x \\le 30$.\nHãy tìm số lô hàng lớn nhất mà công ti có thể bán sau đợt quảng cáo?",
+  "dap_an": "231",
+  "loi_giai": "Ta có $N(x)=-x^2+30x+6 \\Rightarrow N'(x)=-2x+30 \\Rightarrow N'(x)=0 \\Leftrightarrow x=15$.\nLập bảng biến thiên ta được số lô hàng lớn nhất là $N(15)=-(15)^2+30(15)+6=231$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112030103004",
+  "loai": "tra_loi_ngan",
+  "de": "Anh An thành lập một công ty sản xuất in ấn Sách Giáo Khoa chương trình 'Chân trời sáng tạo'. Nhằm tạo điều kiện cho các nhà sách tiêu thụ giá hợp lí, đơn giá mỗi bộ sách ban đầu được biểu diễn theo hàm $p(x) = 200 - 3x$ (nghìn đồng) với $x$ là số lượng từng bộ sách bán ra và tổng chi phí sản xuất được biểu diễn theo hàm $C(x) = 75 + (80 + T)x - x^2$ (nghìn đồng) với mọi $x$ thỏa $0 \\leq x \\leq 40$, trong đó $T$ (nghìn đồng) là mức thuế giá trị gia tăng VAT phải đóng trên từng số lượng bộ sách sản xuất ra mà công ty anh An phải chi trả. Xem như công ty Anh An sản xuất đều đặn trong điều kiện lí tưởng, khi lợi nhuận của công ty đạt giá trị cao nhất thì tổng mức thuế phải chi trả cũng đồng thời cao nhất. Khi đó mức thuế của mỗi bộ sách mà công ty phải trả là bao nhiêu (Đơn vị: nghìn đồng)?",
+  "dap_an": "60",
+  "loi_giai": "Trước hết ta có hàm chi phí sản xuất là: $C(x) = 75 + (80 + T)x - x^2$\nDoanh thu của công ty anh An biểu diễn theo hàm $R(x) = x.p(x) = x(200 - 3x)$\nLợi nhuận mà công ty anh An có được là: $P(x) = R(x) - C(x) = -2x^2 + (120 - T)x - 75$\nDo cần xác định số lượng bộ sách bán ra để lợi nhuận là cao nhất nên ta có:\n$P'(x) = 0 \\Leftrightarrow -4x^2 + (120 - T) = 0 \\Leftrightarrow x = 30 - \\dfrac{T}{4}$\nKhi đó với thuế mỗi bộ sách là $T$ thì tổng mức thuế công ty phải trả là $G(T) = T(30 - \\dfrac{T}{4})$\nKhi lợi nhuận của công ty đạt giá trị cao nhất thì tổng mức thuế phải chi trả cũng đồng thời cao nhất nên ta suy ra $G'(T) = 0 \\Leftrightarrow -\\dfrac{T}{2} - 30 = 0 \\Leftrightarrow T = 60$ (nghìn  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112030103005",
+  "loai": "tra_loi_ngan",
+  "de": "Trước sự phát triển của ngành vật liệu bán dẫn, anh Khoa mở nhà máy sản xuất vi mạch với thiết kế của vi mạch có dạng hình chữ nhật có kích thước $a(pm)\\times b(pm)$ với $1pm = 10^{-12}$ m. Biết rằng chi phí để sản xuất vi mạch bao gồm 50 (triệu đồng) chi phí cho nguyên vật liệu ban đầu, 15 (triệu đồng)/$1pm$ chi phí gia công lắp màng Silic xung quanh thành vi mạch (xem như độ dày khi gia công là không đáng kể) và 32 (triệu đồng)/$1pm^2$ tiền gia công phủ chất làm mát bao quanh cả 2 bề mặt vi mạch (xem như cả bề mặt là hình chữ nhật có kích thước như trên). Biết rằng đơn giá bán ra mỗi chiếc vi mạch là 428 (triệu đồng)/$pm^2$) và nếu cả 2 kích thước thành phần của vi mạch giảm đi 15 pm thì lợi nhuận thu được mỗi chiếc bằng chi phí sản xuất của mỗi chiếc vi mạch đó. Khi lợi nhuận đạt giá trị nhỏ nhất thì chu vi của vi mạch là bao nhiêu pm. (Kết quả làm tròn đến số thập phân thứ nhất)",
+  "dap_an": "30",
+  "loi_giai": "Từ giả thiết ta có hàm chi phí sản xuất vi mạch là: $C(a,b) = 50 + 15.2(a + b) + 32.(2ab)$\nSau khi giảm đi 15 pm của mỗi kích thước của vi mạch thì chi phí sản xuất được biểu diễn lại theo hàm mới là: $C'(a-15, b-15) = 50 + 15.2(a + b - 30) + 64(a - 15)(b - 15)$ (triệu đồng)\nĐơn giá bán ra mỗi chiếc vi mạch là: $R(a-15, b-15) = 428(a - 15)(b - 15)$ (triệu đồng)",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112030103007",
+  "loai": "tra_loi_ngan",
+  "de": "Một công ty kinh doanh và nghiên cứu thị trường trước khi tung sản phẩm mới thì nhận thấy rằng\nvới hai món hàng hóa loại $A, B$ lần lượt có giá sản suất là $2USD$ và $5USD$ thì hàm lợi ích (là\nhàm hai biến chỉ sự phụ thuộc của đại lượng lợi ích kinh doanh so với số lượng hàng hóa) của\nchúng là $y(x_1,x_2)=(x_1)^{\\dfrac{1}{3}}(x_2)^{\\dfrac{1}{2}}$ với $x_1,x_2$ lần lượt là số lượng hàng hóa loại $A, B$. Nếu vốn để\nsản suất hàng ban đầu là $1000USD$. Hỏi cần sản xuất số lượng hàng loại $B$ là bao nhiêu để đạt\ndoanh thu tối đa?",
+  "dap_an": "120",
+  "loi_giai": "Từ đề ta có quan hệ giữa hai sản phẩm: $2x_1+5x_2=1000$ ($0 \\le x_1,x_2 \\le 1000$)\nThay vào hàm lợi ích ta được hàm:\n$f(x_1)=(x_1)^{\\dfrac{1}{3}}(\\dfrac{1000-2x_1}{5})^{\\dfrac{1}{2}} \\Leftrightarrow g(x_1)=(f(x_1))^6=(x_1)^2(\\dfrac{1000-2x_1}{5})^3$\nTa có: $g'(x_1)=(x_1)^2 \\dfrac{3(1000-2x_1)^2(-2)}{5^3}+2x_1(\\dfrac{1000-2x_1}{5})^3=2x_1(\\dfrac{1000-2x_1}{5})^2[-\\dfrac{6}{25}x_1+\\dfrac{1000-2x_1}{5}]=0$\n$\\Leftrightarrow \\left[\\begin{array}{l} x_1=0 \\\\ x_1=200 \\\\ x_1=500 \\end{array}\\right.$\nThay vào hàm $g(x_1)$ thì ta thấy $g(200)$ đạt giá trị lớn nhất.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112030103010",
+  "loai": "tra_loi_ngan",
+  "de": "Một doanh nghiệp kinh doanh sản xuất đồng hồ có đồ thị hàm tổng chi phí theo số sản phẩm là một phần đồ thị của hàm số bậc hai trên bậc nhất $f(x)=\\dfrac{ax^2+bx+c}{x+e}$ như hình [hình] vẽ (mỗi đơn vị trên trục hoành tương ứng 100 sản phẩm và mỗi đơn vị trên trục tung tương ứng 1000USD). Biết rằng tâm đối xứng của đồ thị hàm số $f(x)$ là $A\\left(-1;\\dfrac{2}{3}\\right)$ và đường tiệm cận xiên của đồ thị hàm số đi qua điểm $B(3;2)$.\nTheo khảo sát, tổng doanh thu của doanh nghiệp này được mô tả bởi hàm số $R(x)=x^2+2x$ và lợi nhuận thu về khi bán 200 sản phẩm bằng 5250 USD. Khi chi phí theo số sản phẩm đạt giá trị nhỏ nhất thì số sản phẩm sản xuất được là bao nhiêu? (Kết quả làm tròn đến hàng đơn vị)",
+  "dap_an": "3",
+  "loi_giai": "Dễ dàng suy ra được $e=1$ và đồ thị có đường tiệm cận đứng là $x=-1$\nGọi đường tiệm cận xiên của đồ thị hàm số $f(x)$ là $y=ax+b$\nTheo giả thiết ta có: $\\left\\{\\begin{array}{l}-a+b=\\dfrac{2}{3}\\\\3a+b=2\\end{array}\\right. \\Leftrightarrow \\left\\{\\begin{array}{l}a=\\dfrac{1}{3}\\\\b=1\\end{array}\\right.$ nên đường tiệm cận xiên là $y=\\dfrac{1}{3}x+1$\nHàm số $f(x)=\\dfrac{ax^2+bx+c}{x+e}$ được viết lại dưới dạng $f(x)=\\dfrac{1}{3}x+1+\\dfrac{d}{x+1}$\nLợi nhuận = Doanh thu $-$ Chi phí $\\Leftrightarrow P(x)=R(x)-f(x)\\Leftrightarrow x^2+2x-\\dfrac{1}{3}x-1-\\dfrac{d}{x+1}$\nTheo giả thiết lợi nhuận thu về khi bán 200 sản phẩm bằng 5250 USD.\nKhi đó $P(2)=5,25 \\Leftrightarrow \\dfrac{19}{3}-\\dfrac{d}{3}=5,25 \\L …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112030103021",
+  "loai": "tra_loi_ngan",
+  "de": "Một công ty chuyên sản xuất dụng cụ thể thao nhận được đơn đặt hàng sản xuất 9000 quả bóng rổ. Công ty có một số máy móc, mỗi máy có khả năng sản xuất 36 quả bóng rổ trong một giờ. Chi phí thiết lập mỗi máy là 250 nghìn đồng. Sau khi thiết lập, quá trình sản xuất sẽ diễn ra hoàn toàn tự động và chỉ cần có người giám sát. Chi phí trả cho người giám sát là 225 nghìn đồng mỗi giờ. Số máy móc công ty cần sử dụng để chi phí hoạt động đạt mức thấp nhất là bao nhiêu?",
+  "dap_an": "15",
+  "loi_giai": "Gọi số máy móc công ty cần sử dụng để sản xuất 9000 quả bóng rổ là: $x$ ($x \\ge 1, x \\in \\mathbb{Z}$).\nChi phí thiết lập mỗi máy là 250 nghìn đồng nên chi phí thiết lập $x$ máy là $250x$ nghìn đồng.\nDo mỗi máy sản xuất trong 1h được 36 quả bóng rổ nên $x$ máy trong 1h sẽ sản xuất được $36x$ quả.\nĐể sản xuất 9000 quả bóng thì cần $\\dfrac{9000}{36x} = \\dfrac{250}{x}$ (h).\nChi phí trả cho người giám sát là 225 nghìn đồng 1h nên chi phí cần trả cho người giám sát là: $225 \\cdot \\dfrac{250}{x}$ nghìn đồng.\nTổng chi phí phải trả để sản xuất 9000 quả bóng là: $f(x) = 250x + \\dfrac{225 \\cdot 250}{x}$.\nTa có: $f'(x) = 250 - \\dfrac{225 \\cdot 250}{x^2} = \\dfrac{250x^2 - 225 \\cdot 250}{x^2} = 0 \\iff \\be …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112030104001",
+  "loai": "tra_loi_ngan",
+  "de": "Một máy bay đang bay ở độ cao 10km so với mặt đất, thu phát tín hiệu qua một ăng-ten ra đa như hình vẽ. [hình]\nKhi máy bay cách ra đa 16 km thì ra đa phát hiện khoảng cách giữa máy bay ra đa thay đổi với tốc độ $546$ (km/h). Tìm vận tốc của máy bay (Đơn vị: km/h và kết quả làm tròn đến hàng đơn vị)",
+  "dap_an": "699",
+  "loi_giai": "Xét gốc thời gian $(t = 0)$ tại điểm $A(0;10)$.\nKhi đó tại một thời điểm $t$, máy bay đang ở vị trí $B$ với $BA = x(t)$, ra đa đặt tại gốc tọa độ $O$ với $OB = s(t)$.\nTa có phương trình liên hệ: $s(t) = \\sqrt{10^2 + x^2 (t)}$\nLấy đạo hàm hai vế theo biến $t$, ta được $s'(t) = \\dfrac{x(t).x'(t)}{\\sqrt{10^2 + x^2 (t)}}$\nTa có $s'(t)$ là tốc độ thay đổi khoảng cách giữa máy bay và ra đa tại thời điểm $t$ , $x'(t)$ là vận tốc của máy bay tại thời điểm $t$.\nXét tại thời điểm $t = t_0$ là thời điểm máy bay cách ra đa $16$ (km)\nTa có $s'(t_0) = 546$; $x(t_0) = \\sqrt{16^2 - 10^2} = 2\\sqrt{39} \\implies x'(t_0) = \\dfrac{s'(t_0)\\sqrt{10^2 + x^2 (t_0)}}{x(t_0)} = \\dfrac{546.16}{2\\sqrt{39}} \\approx 699$. …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112030104005",
+  "loai": "tra_loi_ngan",
+  "de": "Trong hình vẽ, một trạm quan sát $A$ (đặt tại mặt đất) có radar để theo dõi các máy bay. Ở một thời điểm, một máy bay đang ở $B$ có độ cao $h=9$ (km), chuyển động với tốc độ không đổi trên một hướng bay cắt đường thẳng đứng vuông góc với mặt đất tại $A$ như hình vẽ. Ở thời điểm $t_1$ đo được khoảng cách từ máy bay tới trạm quan sát là 36 km và khoảng cách này đang giảm với tốc độ bằng 360 (km/h). Ở thời điểm $t_2$ được khoảng cách từ máy bay tới trạm quan sát là 24 km thì khoảng cách này đang giảm với tốc độ bằng bao nhiêu km/h? (Kết quả làm tròn đến hàng đơn vị) [hình] mô tả hình vẽ: Trạm quan sát A nằm dưới đất, máy bay B bay trên đường thẳng song song với mặt đất. Có 2 vị trí B1 và B2 tương ứng với thời điểm t1 và t2.",
+  "dap_an": "573",
+  "loi_giai": "Đặt khoảng cách từ máy bay đến $H$ tức $\\left\\{\\begin{array}{l}B H=x\\\\A B=y\\end{array}\\right. \\Rightarrow x^{2}+9^{2}=y^{2} \\quad(1)$\nĐạo hàm hai vế của (1) theo biến $t$ ta được\n$2 . x(t) . x^{\\prime}(t)+0=2 . y(t) . y^{\\prime}(t) \\Leftrightarrow x(t) . v_{B}=y(y) . y^{\\prime}(t) \\quad(2)$\nTại thời điểm $t=t_{1}$ thì $y(t_{1})=36$ và $y^{\\prime}(t_{1}) = 360 \\Rightarrow x(t_{1})=\\sqrt{y^{2}(t_{1})-9^{2}}=9\\sqrt{15}$ thay vào (2)\n$9\\sqrt{15} . v_{B} = 36 . (-360) \\Rightarrow v_{B} = -\\dfrac{36 . 360}{9\\sqrt{15}} = -\\dfrac{1440}{\\sqrt{15}}$\nTại thời điểm $t=t_{2}$ thì $y(t_{2})=24$ và $y^{\\prime}(t_{2})=?$ thay vào (2)\n$x(t_{2})=\\sqrt{y^{2}(t_{2})-9^{2}}=\\sqrt{24^{2}-9^{2}}=\\sqrt{(24-9)(24+9) …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112030104010",
+  "loai": "tra_loi_ngan",
+  "de": "Một mảnh đất hình chữ nhật có kích thước 40 mx 50 m đang được người chủ trồng cỏ tự nhiên. Vào buổi sáng, khi mặt trời vừa lên, mảnh đất này bị một mái nhà xưởng gần đó chắn ánh sáng. Khi mặt trời lên cao hơn, ánh sáng đã chiếu từ từ lên mảnh đất. Ta xem ranh giới giữa phần được chiếu sáng và phần tối là các đường thẳng song song thay đổi.\nCó thời điểm đường ranh giới này đi qua hai điểm $A, M$ như hình vẽ ($M$ là trung điểm một cạnh hình chữ nhật). Khi diện tích phần tối của mảnh đất bằng $75 m^2$, người ta đo được tốc độ giảm cạnh theo phương $AD$ bằng $2 cm/s$. Hỏi tốc độ giảm diện tích phần tối của mảnh đất là bao nhiêu $cm^2/s$? Kết quả được làm tròn đến hàng phần chục.",
+  "dap_an": "3873",
+  "loi_giai": "Xét tam giác $ABM$ vuông tại $B$ có $\\tan BAM = \\dfrac{BM}{AB} = \\dfrac{2}{5}$.\nĐặt $x = DF \\in [0; 40]$, $y = DE \\in [0; 50]$ ($x, y$ thay đổi (giảm) vì ánh sáng ngày càng lan rộng).\nVì $EF // AM$ nên $\\tan FED = \\tan BAM \\Leftrightarrow \\dfrac{x}{y} = \\dfrac{2}{5} \\Leftrightarrow y = \\dfrac{5x}{2}$.\nDiện tích phần tối tức thời là $S = \\dfrac{1}{2} xy = \\dfrac{1}{2} x \\cdot \\dfrac{5x}{2}$ hay $S = \\dfrac{5}{4} x^2$ (1)\nKhi diện tích phần tối bằng $75 m^2$ thì $\\dfrac{5}{4} x^2 = 75 \\Rightarrow x^2 = 60 \\Rightarrow x = 2\\sqrt{15}$ m.\nĐạo hàm hai vế của (1) theo biến $t$ ta được: $\\dfrac{dS}{dt} = \\dfrac{5}{2} x \\cdot \\dfrac{dx}{dt}$ (2).\nThay $x = 2\\sqrt{15}$ m $= 200\\sqrt{15}$ (cm) và $\\dfr …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112030104013",
+  "loai": "tra_loi_ngan",
+  "de": "Một bể chứa nước có mặt đáy và miệng bể đều là hình chữ nhật nằm trên 2 mặt phẳng song song với nhau, miệng bể có chiều ngang $15$m và chiều dài $24$m, đáy bể có kích thước $15\\text{m} \\times 12\\text{m}$. Độ sâu của bể nước (tính từ miệng đến đáy) là $6$m, mặt cắt vuông góc với chiều ngang của bể có hình dạng là hình thang cân (như hình vẽ). Lúc đầu bể không có nước, người ta sử dụng một máy bơm để bơm nước vào bể với tốc độ $50\\text{m}^3$ trong một phút. Vào lúc mực nước đúng $5$m thì tốc độ dâng lên của mực nước trong bể là bao nhiêu m/phút? (Kết quả làm tròn đến hàng phần trăm)\n[hình] Hình vẽ mô tả bể chứa nước hình thang cân.",
+  "dap_an": "0.19",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112030104015",
+  "loai": "tra_loi_ngan",
+  "de": "Một bể bơi có dạng lăng trụ đứng có đáy là hình thang cân với các cạnh đáy lần lượt là $10m$ và $16m$; chiều cao hình thang là $2,5m$. Chiều dài của bể (vuông góc với đáy của hình thang) là $25m$. Độ sâu của bể đều bằng $1,5m$ (tức là đáy bể bằng phẳng và chỉ chứa mực nước tối đa $1,5m$). Nước được bơm vào bể với tốc độ $3,096 (m^3/phút)$, đồng thời có một lỗ rò rỉ ở đáy làm nước chảy ra với tốc độ $0,005V(t) (m^3/phút)$, trong đó $V(t)$ là thể tích nước trong bể tại thời điểm $t$.\nBan đầu bể không có nước. Khi mực nước đạt độ cao $0,8m$ thì tốc độ dâng của mực nước là $\\dfrac{1}{a}$ (m/phút). Giá trị của $a$ bằng bao nhiêu?\n[hình] Hình vẽ một tà mặt cắt của bể bơi:",
+  "dap_an": "5",
+  "loi_giai": "Từ hình vẽ một tả mặt cắt của bể bơi (hình vẽ bên dưới). Theo định lí Talet ta có $\\dfrac{x}{h} = \\dfrac{3}{2,5} \\Rightarrow x = \\dfrac{6}{5}h$.\nDiện tích mặt nước tại thời điểm $h$ là $S(h) = (10+2x)25 = (10+\\dfrac{12}{5}h)25 = (250+60h) (m^2)$.\nThể tích nước trong bể tại thời điểm $h$ là $V(h) = \\int_0^h (250+60x)dx = (250h+30h^2) (m^3)$.\nTa có $\\dfrac{dV}{dt} = 3,096 - 0,005V(t) = 3,096 - 0,005(250h+30h^2)$.\nMặt khác $\\dfrac{dV}{dt} = \\dfrac{dV}{dh}.\\dfrac{dh}{dt} = (250+60h)\\dfrac{dh}{dt}$.\nTừ đó $(250+60h)\\dfrac{dh}{dt} = 3,096 - 0,005(250h+30h^2)$.\nKhi $h = 0,8m$ thì $(250+60.0,8)\\dfrac{dh}{dt} = 3,096 - 0,005(250.0,8+30.0,8^2)$.\n$298\\dfrac{dh}{dt} = 3,096 - 0,005(200+19,2) = 3,096 - 1 …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T112070102038",
+  "loai": "trac_nghiem",
+  "de": "Cho hình lăng trụ đứng $ABC.A'B'C'$ có tất cả các cạnh bằng nhau và\n$A'C = 4$ (tham khảo hình bên). Giá trị của $\\vec{AA'} \\cdot \\vec{BC'}$ bằng.",
+  "lua_chon": [
+   "4.",
+   "2.",
+   "0.",
+   "-2."
+  ],
+  "nhan_cu": "Vectơ trong không gian › Tính tích vô hướng giữa hai vecto khi biết góc"
+ },
+ {
+  "ma_cau": "T112070102049",
+  "loai": "trac_nghiem",
+  "de": "Cho tứ diện đều $ABCD$ có độ dài cạnh bằng $a$, gọi $M$ là trung điểm của đoạn thẳng $CD$.\nTích vô hướng $\\vec{AM} \\cdot \\vec{AB}$ bằng",
+  "lua_chon": [
+   "$a^2$",
+   "$\\dfrac{a^2}{2}$",
+   "$\\dfrac{a^2}{3}$",
+   "$\\dfrac{a^2}{4}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Lời giải chi tiết:\nCách 1: Phân tích vecto\nVì $M$ là trung điểm của $CD$, ta có:\n$\\vec{AM} = \\dfrac{1}{2}(\\vec{AC} + \\vec{AD})$\nNhân vô hướng cả hai vế với $\\vec{AB}$:\n$\\vec{AM} \\cdot \\vec{AB} = \\dfrac{1}{2}(\\vec{AC} + \\vec{AD}) \\cdot \\vec{AB} = \\dfrac{1}{2}(\\vec{AC} \\cdot \\vec{AB} + \\vec{AD} \\cdot \\vec{AB})$\nDo $ABCD$ là tứ diện đều cạnh $a$ nên $\\triangle ABC$ và $\\triangle ABD$ là các tam giác đều cạnh $a$, suy ra $\\widehat{BAC} = \\widehat{BAD} = 60^\\circ$:\n$\\vec{AC} \\cdot \\vec{AB} = AC \\cdot AB \\cdot \\cos 60^\\circ = a \\cdot a \\cdot \\dfrac{1}{2} = \\dfrac{a^2}{2}$\n$\\vec{AD} \\cdot \\vec{AB} = AD \\cdot AB \\cdot \\cos 60^\\circ = a \\cdot a \\cdot \\dfrac{1}{2} = \\dfrac{a^2}{2}$\nThay vào biểu thức: …",
+  "nhan_cu": "Vectơ trong không gian › Tính tích vô hướng giữa hai vecto khi biết góc"
+ },
+ {
+  "ma_cau": "T112070105010",
+  "loai": "trac_nghiem",
+  "de": "Cho hình chóp $S.ABC$ (xem hình bên).\nGọi $G$ là trọng tâm $\\triangle ABC$. Phát biểu nào sau đây là đúng?",
+  "lua_chon": [
+   "$\\overrightarrow{SA} + \\overrightarrow{SB} + \\overrightarrow{SC} = \\overrightarrow{0}$.",
+   "$\\overrightarrow{SA} + \\overrightarrow{SB} + \\overrightarrow{SC} = \\overrightarrow{SG}$.",
+   "$\\overrightarrow{SA} + \\overrightarrow{SB} + \\overrightarrow{SC} = 3\\overrightarrow{SG}$.",
+   "$\\overrightarrow{SA} + \\overrightarrow{SB} + \\overrightarrow{SC} = 2\\overrightarrow{SG}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Vì $G$ là trọng tâm của tam giác $ABC$ nên với mọi điểm $S$ ta luôn có\n$\\overrightarrow{SA} + \\overrightarrow{SB} + \\overrightarrow{SC} = 3\\overrightarrow{SG}$.\nThật vậy, ta có:\n$\\overrightarrow{SA} + \\overrightarrow{SB} + \\overrightarrow{SC} = (\\overrightarrow{SG} + \\overrightarrow{GA}) + (\\overrightarrow{SG} + \\overrightarrow{GB}) + (\\overrightarrow{SG} + \\overrightarrow{GC})$\n$= 3\\overrightarrow{SG} + (\\overrightarrow{GA} + \\overrightarrow{GB} + \\overrightarrow{GC})$.\nVì $G$ là trọng tâm $\\triangle ABC$ nên $\\overrightarrow{GA} + \\overrightarrow{GB} + \\overrightarrow{GC} = \\overrightarrow{0}$.\nDo đó $\\overrightarrow{SA} + \\overrightarrow{SB} + \\overrightarrow{SC} = 3\\overrightarrow{SG}$.",
+  "co_hinh": true,
+  "nhan_cu": "Vectơ trong không gian › Dùng hệ thức trung điểm, trọng tâm để tính toán hoặc chứng minh."
+ },
+ {
+  "ma_cau": "T112070105011",
+  "loai": "trac_nghiem",
+  "de": "Cho hình hộp $ABCD.A'B'C'D'$. Gọi $O$ là tâm của hình hộp, khẳng định nào dưới đây đúng?",
+  "lua_chon": [
+   "$\\overrightarrow{OA} + \\overrightarrow{OA'} = \\overrightarrow{0}$.",
+   "$\\overrightarrow{OA} + \\overrightarrow{OC'} = \\overrightarrow{0}$.",
+   "$\\overrightarrow{OA} + \\overrightarrow{OB} = \\overrightarrow{0}$.",
+   "$\\overrightarrow{OA} + \\overrightarrow{OD} = \\overrightarrow{0}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Trong hình hộp $ABCD.A'B'C'D'$, tâm $O$ là trung điểm của các đường chéo $AC',BD',CA',DB'$.\nDo $O$ là trung điểm của đoạn thẳng $AC'$ nên $\\overrightarrow{OA} + \\overrightarrow{OC'} = \\overrightarrow{0}$.",
+  "nhan_cu": "Vectơ trong không gian › Dùng hệ thức trung điểm, trọng tâm để tính toán hoặc chứng minh."
+ },
+ {
+  "ma_cau": "T112070105017",
+  "loai": "trac_nghiem",
+  "de": "Cho tứ diện $ABCD$ có $G$ là trọng tâm của tam giác $BCD$. Đẳng thức nào sau đây đúng?",
+  "lua_chon": [
+   "$\\overrightarrow{AG} = \\dfrac{1}{2}(\\overrightarrow{AB} + \\overrightarrow{AC} + \\overrightarrow{AD})$.",
+   "$\\overrightarrow{AG} = \\dfrac{1}{3}(\\overrightarrow{AB} + \\overrightarrow{AC} + \\overrightarrow{AD})$.",
+   "$\\overrightarrow{AG} = \\dfrac{1}{4}(\\overrightarrow{AB} + \\overrightarrow{AC} + \\overrightarrow{AD})$.",
+   "$\\overrightarrow{AG} = \\overrightarrow{AB} + \\overrightarrow{AC} + \\overrightarrow{AD}$."
+  ],
+  "nhan_cu": "Vectơ trong không gian › Dùng hệ thức trung điểm, trọng tâm để tính toán hoặc chứng minh."
+ },
+ {
+  "ma_cau": "T112070108002",
+  "loai": "trac_nghiem",
+  "de": "Cho ba vecto $\\vec{a},\\vec{b},\\vec{c}$ không đồng phẳng. Xét các vecto $\\vec{x} = 2\\vec{a}+\\vec{b}$ và $\\vec{y} = \\vec{a}-\\vec{b}-\\vec{c}$ và $\\vec{z} = -3\\vec{b}-2\\vec{c}$. Khẳng định nào dưới đây là đúng?",
+  "lua_chon": [
+   "$\\vec{x},\\vec{y},\\vec{z}$ đồng phẳng.",
+   "$\\vec{x},\\vec{a}$ cùng phương.",
+   "$\\vec{x},\\vec{b}$ cùng phương.",
+   "$\\vec{x},\\vec{y},\\vec{z}$ đôi một cùng phương."
+  ],
+  "dap_an": "D",
+  "nhan_cu": "Vectơ trong không gian › Điều kiện đồng phẳng giữa các vecto"
+ },
+ {
+  "ma_cau": "T112070109004",
+  "loai": "tra_loi_ngan",
+  "de": "Một chiếc đèn chùm treo có khối lượng $m = 5$ kg được thiết kế với đĩa đèn được giữ bởi bốn đoạn xích $SA, SB, SC, SD$ sao cho $S.ABCD$ là hình chóp tứ giác đều có $\\widehat{ASC} = 60^\\circ$. Gọi $g$ là vectơ gia tốc rơi tự do có độ lớn $10$ m/s$^2$. Tìm độ lớn của lực căng cho mỗi sợi xích.",
+  "dap_an": "$\\dfrac{25\\sqrt{3}}{3}$",
+  "loi_giai": "Phân tích lực: Trọng lượng của đèn chùm là $P = m \\cdot g = 5 \\cdot 10 = 50$ (N). Đèn được giữ cân bằng bởi $4$ sợi xích $SA, SB, SC, SD$. Do $S.ABCD$ là hình chóp tứ giác đều nên tâm $O$ của đáy hình vuông $ABCD$ là hình chiếu vuông góc của đỉnh $S$ xuống mặt đáy. Trọng lực hướng thẳng đứng dọc theo $SO$ xuống dưới. Tổng hình chiếu lực căng của $4$ sợi xích lên phương thẳng đứng $SO$ sẽ cân bằng với trọng lượng $P$. Gọi lực căng trên mỗi sợi xích là $T$.\nTính toán: Xét tam giác $\\triangle SAC$ cân tại $S$ (do $SA = SC$), có góc ở đỉnh $\\widehat{ASC} = 60^\\circ$ nên $\\triangle SAC$ là tam giác đều. Góc tạo bởi mỗi sợi xích (ví dụ $SA$) và phương thẳng đứng $SO$ là $\\alpha = \\widehat{ASO} = \\ …",
+  "co_hinh": true,
+  "nhan_cu": "Vectơ trong không gian › Một số mô hình toán thực tế liên quan đến Lực"
+ },
+ {
+  "ma_cau": "T112070202053",
+  "loai": "trac_nghiem",
+  "de": "Dựa vào hình lập phương $ABCD.A'B'C'D'$ [hình] có $A$ là gốc tọa độ, $A(0;0;0)$, ta có tọa độ điểm $C'$ là",
+  "lua_chon": [
+   "$(1;0;1)$.",
+   "$(0;1;1)$.",
+   "$(1;1;0)$.",
+   "$(1;1;1)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Dựa vào hệ trục tọa độ, ta có điểm $A(0;0;0)$.\nVì hình lập phương có cạnh bằng $1$ nên tọa độ các điểm trên trục là $B(1;0;0)$,\n$D(0;1;0)$ và $A'(0;0;1)$.\nĐỉnh $C'$ thỏa mãn quy tắc hình hộp $\\overrightarrow{AC'} = \\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AA'} = (1;1;1)$.\nSuy ra $C'(1;1;1)$.\nVector $\\overrightarrow{A'C'} = (1-0;1-0;1-1) = (1;1;0)$.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ trục toạ độ trong không gian › Tìm tọa độ điểm hoặc vecto một điều kiện cho trước."
+ },
+ {
+  "ma_cau": "T112070202055",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho $\\overrightarrow{a} = -\\overrightarrow{i} + 3\\overrightarrow{j} - 2\\overrightarrow{k}$. Tọa độ của $\\overrightarrow{a}$ là",
+  "lua_chon": [
+   "$(-3;2;-1)$.",
+   "$(-2;-1;-3)$.",
+   "$(2;-3;-1)$.",
+   "$(-1;3;-2)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta có $\\overrightarrow{a} = x\\overrightarrow{i} + y\\overrightarrow{j} + z\\overrightarrow{k} \\Rightarrow \\overrightarrow{a} = (x;y;z)$.\nDo đó $\\overrightarrow{a} = -\\overrightarrow{i} + 3\\overrightarrow{j} - 2\\overrightarrow{k} \\Rightarrow \\overrightarrow{a} = (-1;3;-2)$.",
+  "nhan_cu": "Hệ trục toạ độ trong không gian › Tìm tọa độ điểm hoặc vecto một điều kiện cho trước."
+ },
+ {
+  "ma_cau": "T112070202056",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ tọa độ $Oxyz$, cho điểm $M$ thỏa mãn $\\overrightarrow{OM} = -2\\overrightarrow{i} + \\overrightarrow{j} + 3\\overrightarrow{k}$. Tọa độ của điểm $M$ là",
+  "lua_chon": [
+   "$(-2;1;3)$.",
+   "$(2;1;3)$.",
+   "$(1;-2;3)$.",
+   "$(1;2;3)$."
+  ],
+  "dap_an": "A",
+  "nhan_cu": "Hệ trục toạ độ trong không gian › Tìm tọa độ điểm hoặc vecto một điều kiện cho trước."
+ },
+ {
+  "ma_cau": "T112070202057",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ trục tọa độ $Oxyz$, cho vecto $\\vec{u}=-3\\vec{i}+5\\vec{j}+2\\vec{k}$. Tọa độ của vecto $\\vec{u}$ là",
+  "lua_chon": [
+   "$(-3;5;2)$",
+   "$(3;5;2)$",
+   "$(5;-3;2)$",
+   "$(-3;5;-2)$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Vecto $\\vec{u}=x\\vec{i}+y\\vec{j}+z\\vec{k}$ có tọa độ là $(x;y;z)$.\nDo đó $\\vec{u}=-3\\vec{i}+5\\vec{j}+2\\vec{k}$ có tọa độ là $(-3;5;2)$.",
+  "nhan_cu": "Hệ trục toạ độ trong không gian › Tìm tọa độ điểm hoặc vecto một điều kiện cho trước."
+ },
+ {
+  "ma_cau": "T112070202058",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho hai điểm $A(1;1;-2)$ và $B(3;-1;2)$. Tọa độ của vecto $\\vec{BA}$ là:",
+  "lua_chon": [
+   "$(2;-2;4)$",
+   "$(2;0;0)$",
+   "$(-2;2;-4)$",
+   "$(1;-1;2)$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $\\vec{BA}=(x_A-x_B;y_A-y_B;z_A-z_B)=(1-3;1-(-1);-2-2)=(-2;2;-4)$.",
+  "nhan_cu": "Hệ trục toạ độ trong không gian › Tìm tọa độ điểm hoặc vecto một điều kiện cho trước."
+ },
+ {
+  "ma_cau": "T112070202059",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ trục tọa độ $Oxyz$, cho vecto $\\vec{u}=2\\vec{i}+3\\vec{j}-4\\vec{k}$. Tọa độ của vecto $\\vec{u}$ là",
+  "lua_chon": [
+   "$(-2;-3;4)$",
+   "$(2;-3;4)$",
+   "$(2;3;-4)$",
+   "$(2;3;4)$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $\\vec{u}=2\\vec{i}+3\\vec{j}-4\\vec{k}\\Leftrightarrow \\vec{u}=(2;3;-4)$.",
+  "nhan_cu": "Hệ trục toạ độ trong không gian › Tìm tọa độ điểm hoặc vecto một điều kiện cho trước."
+ },
+ {
+  "ma_cau": "T112070202060",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ tọa độ $Oxyz$, cho $A(1;0;1)$ và vecto $\\vec{AC}=(0;6;1)$. Điểm $C$ nào sau đây thỏa mãn điều kiện?",
+  "lua_chon": [
+   "$C(1;6;0)$",
+   "$C(1;6;2)$",
+   "$C(-1;6;-1)$",
+   "$C(-1;-6;-2)$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Gọi $C(x;y;z)$.\nTa có $\\vec{AC}=(x-1;y;z-1)$.\nTheo giả thiết $\\vec{AC}=(0;6;1)$, suy ra $\\begin{cases} x-1=0 \\ y=6 \\ z-1=1 \\\\ \\end{cases}\\Leftrightarrow \\begin{cases} x=1 \\ y=6 \\ z=2 \\\\ \\end{cases}$.\nVậy điểm cần tìm là $C(1;6;2)$.",
+  "nhan_cu": "Hệ trục toạ độ trong không gian › Tìm tọa độ điểm hoặc vecto một điều kiện cho trước."
+ },
+ {
+  "ma_cau": "T112070202061",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ trục tọa độ $Oxyz$, cho $\\vec{a}=-\\vec{i}+3\\vec{j}-5\\vec{k}$. Tọa độ của vecto $\\vec{a}$ là",
+  "lua_chon": [
+   "$(1;-3;5)$",
+   "$(-5;3;-1)$",
+   "$(5;-3;1)$",
+   "$(-1;3;-5)$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "Vecto $\\vec{a}=-\\vec{i}+3\\vec{j}-5\\vec{k}$ có tọa độ là $(-1;3;-5)$.",
+  "nhan_cu": "Hệ trục toạ độ trong không gian › Tìm tọa độ điểm hoặc vecto một điều kiện cho trước."
+ },
+ {
+  "ma_cau": "T112070202063",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho vectơ $\\vec{w} = (-9;-7;7)$. Tìm tọa độ điểm $D$ sao cho $\\vec{OD} = \\vec{w}$.",
+  "lua_chon": [
+   "$(0;-9;7)$.",
+   "$(9;7;7)$.",
+   "$(-9;7;-7)$.",
+   "$(-9;-7;7)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Theo định nghĩa tọa độ của điểm trong không gian, tọa độ của vectơ $\\vec{OD}$ chính là tọa độ của điểm $D$.\nVì $\\vec{OD} = \\vec{w} = (-9;-7;7)$ nên điểm $D$ có tọa độ là $(-9;-7;7)$.",
+  "nhan_cu": "Hệ trục toạ độ trong không gian › Tìm tọa độ điểm hoặc vecto một điều kiện cho trước."
+ },
+ {
+  "ma_cau": "T112070203003",
+  "loai": "tra_loi_ngan",
+  "de": "Hình dưới đây mô tả một sân cầu lông với kích thước theo tiêu chuẩn quốc tế. Ta chọn hệ trục $Oxyz$ cho sân đó (đơn vị trên mỗi trục là mét) và hai điểm $A,B$ như hình. Xác định tọa độ của $\\vec{AB}$.",
+  "dap_an": "(0; 6,1; 1,55)",
+  "loi_giai": "Ta có $A(6,7;0;0), B(6,7;6,1;1,55)$. Vậy tọa độ $\\vec{AB}$ là:\n$\\vec{AB}=(6,7-6,7;6,1-0;1,55-0)=(0;6,1;1,55)$.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ trục toạ độ trong không gian › Một số mô hình toán thực tế"
+ },
+ {
+  "ma_cau": "T112070203017",
+  "loai": "tra_loi_ngan",
+  "de": "(TH) Một căn phòng dạng hình hộp chữ nhật với chiều dài $8m$, rộng $6m$ và cao $4m$ có hai chiếc quạt treo tường. Chiếc quạt $A$ treo chính giữa bức tường $8m$ và cách trần $1m$, chiếc quạt $B$ treo chính giữa bức tường $6m$ và cách trần $1,5m$. Hỏi khoảng cách giữa hai chiếc quạt $AB$ cách nhau bao nhiêu $m$ (làm tròn đến hàng phần nghìn)",
+  "dap_an": "5.025",
+  "loi_giai": "Chọn hệ trục tọa độ như hình vẽ, khi đó ta có điểm $A(4;0;3)$ và điểm $B(0;3;\\dfrac{5}{2})\\Rightarrow \\vec{AB} = (-4;3;-\\dfrac{1}{2})$. Do đó độ dài đoạn thẳng $AB = 5,025$.",
+  "co_hinh": true,
+  "nhan_cu": "Hệ trục toạ độ trong không gian › Một số mô hình toán thực tế"
+ },
+ {
+  "ma_cau": "T112070301185",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ trục tọa độ $Oxyz$, cho $\\vec{a}=2\\overrightarrow{i}-3\\overrightarrow{k}$. Tìm tọa độ của vectơ $\\vec{a}$.",
+  "lua_chon": [
+   "$\\left( 0;-2;3 \\right)$.",
+   "$\\left( 2;0;-3 \\right)$.",
+   "$\\left( 2;-3;0 \\right)$.",
+   "$\\left( -2;-3;0 \\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Chọn C\nA",
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Tìm toạ độ của điểm hoặc véc tơ từ dữ kiện cho trước"
+ },
+ {
+  "ma_cau": "T112070302009",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ toạ độ $Oxyz$, cho $\\vec{a}=(1;2;3)$, $\\vec{b}=(2;2;-1)$. Toạ độ $\\vec{a}-2\\vec{b}$ là:",
+  "lua_chon": [
+   "$(-3;-2;1)$.",
+   "$(3;2;5)$.",
+   "$(-3;-2;5)$.",
+   "$(-1;0;4)$.",
+   "D."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta có $2\\vec{b}=(4;4;-2)$.\nSuy ra $\\vec{a}-2\\vec{b}=(1-4;2-4;3-(-2))=(-3;-2;5)$.",
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Tính tổng, hiệu, tích của véc tơ với một số theo toạ độ"
+ },
+ {
+  "ma_cau": "T112070302011",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho $\\vec{a}(1;2;3)$ và $\\vec{b}(0;-1;2)$. Vectơ $\\vec{c}=\\vec{a}-\\vec{b}$ có tọa độ là",
+  "lua_chon": [
+   "$(-1;-3;-1)$.",
+   "$(1;1;5)$.",
+   "$(0;-2;6)$.",
+   "$(1;3;1)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta có $\\vec{c}=\\vec{a}-\\vec{b}=(1-0;2-(-1);3-2)=(1;3;1)$.\nVậy vectơ $\\vec{c}$ có tọa độ là $(1;3;1)$.",
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Tính tổng, hiệu, tích của véc tơ với một số theo toạ độ"
+ },
+ {
+  "ma_cau": "T112070302012",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho hai vectơ $\\vec{a}=(1;2;3)$, $\\vec{b}=(2;2;-1)$. Tọa độ của vectơ $\\vec{a}-2\\vec{b}$ là",
+  "lua_chon": [
+   "$(-3;-2;5)$.",
+   "$(-1;0;4)$.",
+   "$(3;2;5)$.",
+   "$(-3;-2;1)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Ta có $2\\vec{b}=(4;4;-2)$.\nSuy ra $\\vec{a}-2\\vec{b}=(1-4;2-4;3-(-2))=(-3;-2;5)$.",
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Tính tổng, hiệu, tích của véc tơ với một số theo toạ độ"
+ },
+ {
+  "ma_cau": "T112070302024",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, cho hai véctơ $\\vec{a}=(3;0;1)$, $\\vec{c}=(1;1;0)$. Tìm tọa độ của véctơ $\\vec{b}$\nthỏa mãn đẳng thức $\\vec{b}-\\vec{a}+2\\vec{c}=\\vec{0}$?",
+  "lua_chon": [
+   "$\\vec{b}=(-1;2;-1)$.",
+   "$\\vec{b}=(-2;1;-1)$.",
+   "$\\vec{b}=(1;-2;1)$.",
+   "$\\vec{b}=(1;2;1)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Chọn C\nDo $\\vec{b}-\\vec{a}+2\\vec{c}=\\vec{0}\\Leftrightarrow\\vec{b}=\\vec{a}-2\\vec{c}=(1;-2;1)$.",
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Tính tổng, hiệu, tích của véc tơ với một số theo toạ độ"
+ },
+ {
+  "ma_cau": "T112070302056",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian $Oxyz$, tìm tọa độ của $2\\overrightarrow{i}$.",
+  "lua_chon": [
+   "$\\left( 2;0;0 \\right)$.",
+   "$\\left( 1;0;0 \\right)$.",
+   "$\\left( 0;2;0 \\right)$.",
+   "$\\left( 2;1;1 \\right)$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "$\\overrightarrow{i}=\\left( 1;0;0 \\right)\\Rightarrow 2\\overrightarrow{i}=\\left( 2;0;0 \\right)$",
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Tính tổng, hiệu, tích của véc tơ với một số theo toạ độ"
+ },
+ {
+  "ma_cau": "T112070303001",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ trục tọa độ $Oxyz$, cho hai vecto $\\vec{u} = (2; -1; -2)$ và $\\vec{v} = (1; 1; 3)$. Giá trị của $\\vec{u} \\cdot \\vec{v}$ bằng",
+  "lua_chon": [
+   "9.",
+   "7.",
+   "$3\\sqrt{11}$.",
+   "-5."
+  ],
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Tính tích vô hướng và góc giữa hai véc tơ theo toạ độ"
+ },
+ {
+  "ma_cau": "T112070304002",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ tọa độ $Oxyz$, cho $\\vec{a} = -3\\vec{i} + 5\\vec{j} + \\vec{k}$. Độ dài của $\\vec{a}$ là",
+  "lua_chon": [
+   "$\\sqrt{17}$.",
+   "35.",
+   "17.",
+   "$\\sqrt{35}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Ta có $\\vec{a} = -3\\vec{i} + 5\\vec{j} + \\vec{k} \\Rightarrow \\vec{a} = (-3;5;1)$.\nĐộ dài của vector $\\vec{a}$ là $|\\vec{a}| = \\sqrt{(-3)^2 + 5^2 + 1^2} = \\sqrt{9+25+1} = \\sqrt{35}$.",
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Tính độ dài véc tơ hoặc khoảng cách giữa hai điểm"
+ },
+ {
+  "ma_cau": "T112070304014",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ tọa độ $Oxyz$, cho hai vecto $\\vec{a}(1;2;3)$, $\\vec{b}(0;-1;1)$. Độ dài của vecto $2\\vec{a} - \\vec{b}$ bằng",
+  "lua_chon": [
+   "54.",
+   "$\\sqrt{54}$",
+   "62.",
+   "$\\sqrt{62}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Ta có $2\\vec{a} = (2;4;6).$\nSuy ra $2\\vec{a} - \\vec{b} = (2-0;4-(-1);6-1) = (2;5;5).$\nĐộ dài của vecto $2\\vec{a} - \\vec{b}$ là $|2\\vec{a} - \\vec{b}| = \\sqrt{2^2 + 5^2 + 5^2} = \\sqrt{54}.$",
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Tính độ dài véc tơ hoặc khoảng cách giữa hai điểm"
+ },
+ {
+  "ma_cau": "T112070305001",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ tọa độ $Oxyz$, cho hai điểm $A(2; 1; -2)$ và $B(-4; 3; 4)$. Tọa độ trung điểm $M$ của đoạn $AB$ là:",
+  "lua_chon": [
+   "$(-2; 4; 2).$",
+   "$(-8; 2; -8).$",
+   "$(-1; 2; 1)$",
+   "$(-6; 2; 6).$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Tọa độ trung điểm $M$ của đoạn $AB$ là $M\\left(\\dfrac{2-4}{2}; \\dfrac{1+3}{2}; \\dfrac{-2+4}{2}\\right) \\Rightarrow M(-1; 2; 1).$",
+  "nhan_cu": "Biểu thức toạ độ của các phép toán vectơ › Dùng hệ thức trung điểm, trọng tâm theo toạ độ"
+ }
+]
