@@ -13,7 +13,8 @@ export type BangDB = { tu: string; cot: CotDB[]; hs: HSDB[] }
 export type CauDB = { ma_cau: string | null; dang: string; nhom: string; g: number }
 export type LuotDB = {
   ngay: string; kenh: string; dung: number; tong: number; tl_dung: number; tl_tong: number
-  dung10: number; tong10: number; p: number; delta: number | null; cau: CauDB[]
+  // p = % tích luỹ (≤10 câu) sau lượt · p_luot = % riêng lượt · delta = p_luot − p_truoc (% tích luỹ ngay trước lượt; lượt đầu = đầu kỳ)
+  dung10: number; tong10: number; p: number; p_luot: number; p_truoc: number | null; delta: number | null; cau: CauDB[]
 }
 export type LichSuO = { tu: string; dau_ky: { p: number; n: number } | null; luot: LuotDB[] }
 

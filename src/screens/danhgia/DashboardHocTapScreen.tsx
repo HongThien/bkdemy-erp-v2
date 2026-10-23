@@ -227,7 +227,7 @@ function CuaSoO({ c, onDong, onLen, onDoi, tiLe }: { c: Cua; onDong: () => void;
             <>
               <div className="mb-2 rounded-md bg-slate-50 px-2 py-1.5 text-slate-600">
                 Đầu kỳ (trước {ngayVN(d.tu)}): {d.dau_ky ? <b className="text-slate-800">{d.dau_ky.p}%</b> : <span className="text-slate-400">chưa đo</span>}
-                {d.dau_ky && <span className="text-slate-400"> · trên {d.dau_ky.n} câu gần nhất</span>}
+                {d.dau_ky && <span className="text-slate-400"> · trên {d.dau_ky.n} câu gần nhất</span>}<div className="text-[11px] text-slate-400">▲▼ = % của lượt so với % tích luỹ ngay trước lượt (lượt đầu: so với đầu kỳ) · → = tích luỹ trên ≤10 câu gần nhất</div>
               </div>
               {d.luot.length === 0 ? <p className="text-slate-500">Không có lượt nào trong cửa sổ.</p> : (
                 <ol className="space-y-1">
@@ -237,15 +237,19 @@ function CuaSoO({ c, onDong, onLen, onDoi, tiLe }: { c: Cua; onDong: () => void;
                         <span className="w-10 shrink-0 font-mono text-slate-500">{ngayVN(l.ngay)}</span>
                         <span className="min-w-0 flex-1">
                           <span className="font-semibold text-slate-700">{TEN_KENH[l.kenh] ?? l.kenh}</span> đúng {so(l.dung)}/{l.tong}
+                          <span className="text-slate-500"> ({l.p_luot}%)</span>
+                          {l.delta != null && (
+                            <span title={`Lượt này ${l.p_luot}% so với ${l.p_truoc}% ${i === 0 ? 'đầu kỳ' : 'tích luỹ trước đó'}`}
+                              className={`ml-1 font-semibold tabular-nums ${l.delta === 0 ? 'text-slate-400' : l.delta > 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
+                              {l.delta > 0 ? `▲${l.delta}` : l.delta < 0 ? `▼${-l.delta}` : '='}
+                            </span>
+                          )}
                           {' → '}
                           {l.tl_tong > 10
                             ? <>tổng {so(l.tl_dung)}/{l.tl_tong}, 10 câu gần nhất <b>{so(l.dung10)}/10</b></>
                             : <b>{so(l.dung10)}/{l.tong10}</b>}
                         </span>
                         <span className={`shrink-0 rounded px-1.5 font-semibold tabular-nums ${mauPct(l.p)}`}>{l.p}%</span>
-                        <span className={`w-11 shrink-0 text-right font-semibold tabular-nums ${l.delta == null || l.delta === 0 ? 'text-slate-400' : l.delta > 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
-                          {l.delta == null ? '' : l.delta > 0 ? `▲${l.delta}` : l.delta < 0 ? `▼${-l.delta}` : '='}
-                        </span>
                       </button>
                       {moLuot === i && (
                         <ul className="border-t border-slate-100 bg-slate-50/60 px-2 py-1 text-[11.5px]">
