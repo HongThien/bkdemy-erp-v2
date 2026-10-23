@@ -77594,3 +77594,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - Quét cùng kiểu: không còn cạnh nhánh chính nào có cha là nhánh phụ (0 dòng). Chưa mở màn bằng phiên đăng nhập thật.
 
 - **[Bảng kết quả theo chuyên đề — lượt 2, Thùy 23/10]** (1) Cột Hình: tên mô hình bỏ chữ "Test" (MH.055 "Hình học Test" ⇒ "Hình học"), tên đã bắt đầu "Hình" thì không thêm tiền tố "Hình: ". (3) Tag Cơ bản/Nâng cao mỗi cột — luật CEO: chủ đề "thực tế" là Nâng cao, còn lại Cơ bản; xem theo chuyên đề thì chuyên đề thuộc chủ đề thực tế hoặc tên chuyên đề chứa "thực tế" cũng NC. Không dùng cờ nang_cao của PHẦN đề (đề KS K9 chỉ 1 phần Tự luận, cờ phần không khớp). Cột xếp CB trước NC sau. Mig `202610231752_mt_bang_tag_nang_cao_ten_hinh` ĐÃ ÁP (`--only`, dry-run 3 đề trong ROLLBACK trước). (2) Bản xuất: bề rộng cột tính theo cỡ chữ (F=18px), chữ trên A4 to ~1,5 lần trước. (4) Khổ xuất Ngang | Dọc 📱: bản dọc đánh số cột + chú giải tên chuyên đề ở trên, lớp ghi dưới tên em, A4 dọc. Verify dev: ảnh dọc xem ở bề ngang 400px đọc được; PDF dọc 5 trang A4 dọc, PDF ngang 4 trang A4 ngang, 52 HS.
+
+
+### [23/10] Thùy "ghi đi": tab «Mức cao» các trang mastery K9 · K6–12 · K12 ⇒ GÁN CHẮC
+- Script mới `scripts/bdm-b3-duyet-cao.mjs --kho dai|hgt --khoi … [--chi ds] [--tru …] [--ghi]`: đúng tập tab «Mức cao» (de_xuat chac 'cao' nguon 'ai', câu sống, chưa gán) ⇒ `*_bdm_gan_cau` nguon 'ai' + rút dòng đề xuất, 1 transaction, chạy thử trước.
+- Ghi: Đại K9 165 · HGT K9 202 · Đại K6–12 (--chi đợt) 53 (gồm 4 câu K12 dạng gần nhất) = **420 câu**. Đọc lại: lượt được tính không đổi (K9 10.988/11.008 · K6–12 1.412/2.639) — chỉ đổi nguồn đề xuất → gán.
+- KHÔNG gộp đề xuất HGT K10 (21/10, 796 cao + 186 Đ/S) — lượt riêng, chờ Thùy nói rõ.
