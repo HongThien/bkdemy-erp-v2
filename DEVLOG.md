@@ -77507,3 +77507,7 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Bẫy:** Browser pane không mở được `localhost:<port>` bằng `navigate` (denied) cho vite tự chạy — dùng `preview_start{url}`; `pkill` không có trên máy này (dùng `taskkill //PID`), http.server python của lượt trước vẫn sống trên 5391.
 - **Việc kế (cần Thùy):** deploy → kiểm production → mở công tắc.
 - **Bản sao theo gốc (mig 202610231604, đã áp — đề nghị của phiên B3):** 371/471 câu K9 là bản sao; view chỉ theo gốc khi gốc đã GÁN. Thêm Đại "đề xuất của gốc" + HGT "gán/đề xuất của gốc" ⇒ +112 câu quy được (0 đổi, 0 mất); K9 ngay +29. 83 bản sao HGT tự vào khi B3 xếp xong 70 gốc HGT. Không cần chép ~340 dòng đề xuất cho bản sao.
+
+### 23/10 — [Bot Telegram TA] Bản tin liệt kê rõ từng ca/buổi chưa ghi công (mig 202610231604 ĐÃ ÁP; _tg_lib cần deploy app TA)
+- **Thùy (ảnh tin Tùng "4 ca trực + 5 buổi bổ trợ"):** "cần nhắn rõ là ca trực nào". `_tg_ban_tin_du_lieu.cong.chi_tiet` = ngày · giờ · tên lấy từ `_ta_buoi_thieu_cong` (nối ref_key). `api/_tg_lib.mjs`: nhóm Ca trực / Buổi bổ trợ / Buổi lớp / Quên checkout, mỗi mục 1 dòng, tối đa 10/nhóm, cùng ngày+giờ+tên gộp "(N buổi)".
+- **Phát hiện:** TA kèm song song nhiều buổi bổ trợ cùng khung giờ (vd Tùng 2 buổi đuổi 6A3 02/10 18:00, mỗi buổi 1 em) — 34 khung như vậy trong T10 ⇒ luật lương "2 việc bổ trợ trùng giờ tính 1 hay 2 giờ" (hỏi từ 14/10) ảnh hưởng thật, vẫn chờ Thùy.
