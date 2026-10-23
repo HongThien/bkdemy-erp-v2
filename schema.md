@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-438 bảng · 32 view · 0 enum · 219 trigger · 1242 function
+438 bảng · 32 view · 0 enum · 219 trigger · 1243 function
 
 ## _app_secrets
 
@@ -9248,8 +9248,8 @@ WITH luot AS (
 - `fn_hs_len_bac_da_xem(p_mon text)` → void
 - `fn_hs_len_bac_moi(p_mon text)` → jsonb
 - `fn_hs_lich_bo_tro()` → jsonb
-- `fn_hs_lich_su_lam_bai(p_so_ngay integer, p_mon text)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
 - `fn_hs_lich_su_lam_bai(p_so_ngay integer DEFAULT 30)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
+- `fn_hs_lich_su_lam_bai(p_so_ngay integer, p_mon text)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
 - `fn_hs_luu_giao_dien(p_skin text, p_che_do text, p_hinh_nen text)` → jsonb
 - `fn_hs_luu_hieu_ung_game(p_bat boolean)` → jsonb
 - `fn_hs_luyen_con_lai(p_mon text, p_ma_dang text)` → integer
@@ -9328,6 +9328,7 @@ WITH luot AS (
 - `fn_lop_hs_thang(p_ym text)` → TABLE(hoc_sinh_id uuid, mon text, khoi text, ten_lop text)
 - `fn_luot_hoc_that_ket_qua(p_bai_lam_id uuid)` → jsonb
 - `fn_luyen_gioi_han_dat(p_bat boolean DEFAULT NULL::boolean, p_muc_do_de_toi_da smallint DEFAULT NULL::smallint, p_tran_cau_ngay integer DEFAULT NULL::integer)` → jsonb
+- `fn_mastery_bdm_so_sanh(p_lop uuid)` → jsonb
 - `fn_mastery_cells(p_hs uuid[], p_include_btvn boolean DEFAULT false, p_since timestamp with time zone DEFAULT NULL::timestamp with time zone, p_window integer DEFAULT 5, p_tin_cao integer DEFAULT 5, p_tin_tb integer DEFAULT 3, p_den timestamp with time zone DEFAULT NULL::timestamp with time zone)` → TABLE(hoc_sinh_id uuid, ma_dang text, score numeric, n bigint, muc text, tin text)
 - `fn_mastery_cells_bdm(p_hs uuid[], p_include_btvn boolean DEFAULT false, p_since timestamp with time zone DEFAULT NULL::timestamp with time zone, p_window integer DEFAULT 5, p_tin_cao integer DEFAULT 5, p_tin_tb integer DEFAULT 3, p_den timestamp with time zone DEFAULT NULL::timestamp with time zone)` → TABLE(hoc_sinh_id uuid, ma_dang text, score numeric, n bigint, muc text, tin text)
 - `fn_mastery_cells_hinh(p_hs uuid[], p_include_btvn boolean DEFAULT false, p_since timestamp with time zone DEFAULT NULL::timestamp with time zone)` → TABLE(hoc_sinh_id uuid, hinh_baitoan_id uuid, score numeric, n bigint, muc text, tin text)
@@ -9701,9 +9702,9 @@ WITH luot AS (
 - `tsa_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 

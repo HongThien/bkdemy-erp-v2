@@ -31,6 +31,8 @@ import HinhLuyenChuaPhanTab from '../duyetloigiai/HinhLuyenChuaPhanTab'
 import { demChuaPhanMoHinh } from '../../lib/kho/hinhCay'
 import { khopDem } from '../../lib/kho/bdmKhop'
 import KhoTrenLopModal from './KhoTrenLopModal'
+import MasteryBdmCongTac from './MasteryBdmCongTac'
+import { useStore } from '../../store/useStore'
 import { demLopTheoDang } from '../../lib/kho/khoTrenLop'
 
 // ⭐ CEO 08/10: dựng bản đồ mới TỪ ĐẦU, không bám bản đồ cũ ⇒ TẮT mọi phần tham chiếu bản đồ cũ trên màn soạn
@@ -1268,6 +1270,8 @@ function HinhLuyenTrongBanDo({ khoi, chuDeId }: { khoi: string; chuDeId: string 
 
 export default function BanDoMoiScreen() {
   const [khoi, setKhoi] = useState<string>(docKhoi)
+  const laAdmin = useStore((s) => !!s.quyen?.laAdmin)
+  const [congTac, setCongTac] = useState(false)   // 🔀 công tắc mastery bản đồ mới (admin — PLAN-mastery-ban-do-moi.md)
   useEffect(() => { try { localStorage.setItem('bdm.khoi', khoi) } catch { /* trình duyệt chặn lưu — bỏ qua */ } }, [khoi])
   const chonKhoi = (
     <span className="flex items-center gap-0.5">
@@ -1278,9 +1282,11 @@ export default function BanDoMoiScreen() {
             ? (k.endsWith('T') ? 'bg-violet-600 text-white' : 'bg-indigo-600 text-white')
             : (k.endsWith('T') ? 'text-violet-600 hover:bg-violet-50' : 'text-slate-500 hover:bg-slate-100')}`}>{k}</button>
       ))}
+      {laAdmin && <button onClick={() => setCongTac(true)} title="Mastery K6–12 đo theo bản đồ mới — bật / tắt + so sánh từng lớp"
+        className="ml-2 h-7 whitespace-nowrap rounded-md border border-emerald-300 px-2 text-xs font-semibold text-emerald-700 hover:bg-emerald-50">🔀 Mastery</button>}
     </span>
   )
-  return <div className="h-full min-h-0 bg-[#fafafb]"><BanDoMoi key={khoi} khoi={khoi} dauMan={chonKhoi} /></div>
+  return <div className="h-full min-h-0 bg-[#fafafb]"><BanDoMoi key={khoi} khoi={khoi} dauMan={chonKhoi} />{congTac && <MasteryBdmCongTac onDong={() => setCongTac(false)} />}</div>
 }
 
 function ThuTuChuDe({ cay, cd, lam }: { cay: BdmCay; cd: BdmChuDe; lam: (viec: () => Promise<unknown>, xong?: string) => Promise<void> }) {

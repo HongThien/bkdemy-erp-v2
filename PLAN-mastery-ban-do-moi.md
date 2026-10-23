@@ -14,7 +14,13 @@
 - Công tắc: bảng `he_thong_cong_tac` dòng `mastery_ban_do_moi` + log trigger; bật/tắt qua `fn_he_thong_cong_tac_dat(ma, bat)` (admin).
 - Kiểm: `scripts/_test_mastery_bdm.mjs` (ROLLBACK) — tắt ⇒ trùng khít bản cũ; bật ⇒ K6–12 ra NDB, cấp 1 giữ.
 
-## Việc còn lại trước khi bấm (thứ tự)
+## Trạng thái 23/10 tối — SẴN SÀNG BẤM
+- ✅ Lõi + công tắc (mig 202610231446) · ✅ tra tên NDB (…1522, client `dangInfoCuaMon`) · ✅ kho câu nhánh 'bdm' (…1525) · ✅ 10 hàm dùng mastery theo công tắc (…1532) · ✅ tốc độ (…1538: 11A1 3,8 s) · ✅ màn công tắc + so sánh từng lớp (…1543, nút **🔀 Mastery** ở Bản đồ mới (soạn 4 tầng), chỉ admin).
+- Kiểm (đều ROLLBACK): `_test_mastery_bdm.mjs` 5/5 · `_test_mastery_bdm_b2.mjs` 10/10 · `_test_mastery_bdm_b3.mjs` 4/4.
+- Ca bổ trợ đang mở: phương án (i) — chạy hết theo dạng cũ; ca mới theo dạng bài mới.
+- Chấp nhận: phiêu lưu sắp chủ đề theo mã; dấu "đã dạy" màn mới chưa có; snapshot qua view không ghi form_tn_id; HGT cũ không mã câu giữ mã cũ.
+
+## Việc còn lại trước khi bấm (thứ tự — bản gốc)
 1. **Tra tên ô theo mã — 1 chỗ dispatch:** DB `_kho_ten_dang` / `_kho_dang_da_xoa_mem` / `_troly_ten_dang` hiểu mã `NDB…` (dai_bdm_dang_bai + nhóm + chủ đề); client `dangInfoCuaMon` (`lib/mastery.ts:33`) hiểu NDB — hiện nó **bỏ âm thầm** ô không tìm thấy.
 2. **Danh sách dạng** ở `_tu_luyen_chon_dang`, `fn_thanh_tuu_thang`, `tu_luyen_chu_de_ds_dang`, `_hs_dang_da_hoc`, `hs_dang_evals`, `hs_dang_hoc_tap`: K6–12 lấy từ bản đồ mới khi công tắc bật.
 3. **Bổ trợ yếu** (`bo_tro_yeu_dang` 949 dòng mã cũ, `fn_btyeu_*`, `fn_hs_bu_dang`, `_btyeu_dong_bo_dang_ban_do`): ca mới mở theo NDB; ca đang mở — CHỜ Thùy chốt cách xử lý.
