@@ -12,6 +12,7 @@ import {
   LOAI_KY_THI, HE_SO_KY_THI, DOT_LABEL, DOT_ORDER, type KyThi, type DiemThi, type Verdict, type TruongDiemRow, type BXHDiemMTRow,
 } from '../../lib/thanhtich'
 import { BuoiDetail } from '../gami/BuoiHocScreen'
+import BangChuyenDeView from './BangChuyenDeView'
 import type { TabKey } from '../../lib/gami'
 import { tenHienThiDs } from '../../lib/hoten'
 
@@ -980,7 +981,7 @@ function PivotRow({ it }: { it: PivotItem }) {
 // 2 sub-tab: Điểm thi trên trường (view+filter+sort, đúng cột Thùy yêu cầu) · Nhập điểm (port nguyên khối
 // UI cũ của Quản lý Level: chọn lớp → kì thi → nhập Điểm/Verdict/Vượt-band từng HS).
 function DiemThiTab() {
-  const [sub, setSub] = useState<'truong' | 'bxh_mt' | 'bxh_ks' | 'nhap'>('truong')
+  const [sub, setSub] = useState<'truong' | 'bxh_mt' | 'bxh_ks' | 'chuyen_de' | 'nhap'>('truong')
   const subBtn = (on: boolean) => `-mb-px border-b-2 px-3 py-2 text-[13px] font-medium transition ${on ? 'border-indigo-600 text-indigo-700' : 'border-transparent text-slate-500 hover:text-slate-700'}`
   return (
     <>
@@ -988,10 +989,11 @@ function DiemThiTab() {
         <button onClick={() => setSub('truong')} className={subBtn(sub === 'truong')}>Điểm thi trên trường</button>
         <button onClick={() => setSub('bxh_mt')} className={subBtn(sub === 'bxh_mt')}>Xếp hạng MT trung tâm</button>
         <button onClick={() => setSub('bxh_ks')} className={subBtn(sub === 'bxh_ks')}>Xếp hạng khảo sát</button>
+        <button onClick={() => setSub('chuyen_de')} className={subBtn(sub === 'chuyen_de')}>Kết quả theo chuyên đề</button>
         <button onClick={() => setSub('nhap')} className={subBtn(sub === 'nhap')}>Nhập điểm (Thi trường)</button>
         {/* 08/10 (Thùy): bỏ "Nhập điểm MT (theo tháng)" — điểm MT tự cộng từ chấm từng câu; chấm ở lá riêng "Chấm MT". */}
       </div>
-      {sub === 'truong' ? <DiemThiTruongView /> : sub === 'bxh_mt' ? <BXHDiemMTView key="mt" /> : sub === 'bxh_ks' ? <BXHDiemMTView key="ks" ks /> : <NhapDiemView />}
+      {sub === 'truong' ? <DiemThiTruongView /> : sub === 'bxh_mt' ? <BXHDiemMTView key="mt" /> : sub === 'bxh_ks' ? <BXHDiemMTView key="ks" ks /> : sub === 'chuyen_de' ? <BangChuyenDeView /> : <NhapDiemView />}
     </>
   )
 }

@@ -43,3 +43,24 @@ export async function dungDiemTuCauMT(buoiId: string, hsId: string): Promise<voi
   const { error } = await supabase.rpc('fn_mt_dung_diem_cau', { p_buoi: buoiId, p_hs: hsId })
   if (error) throw error
 }
+
+// ── DASHBOARD KẾT QUẢ THEO CHUYÊN ĐỀ của 1 đề MT/khảo sát (Thùy 23/10) — mig 202610231416, số tính ở DB. ──
+export type DeDaThi = { de_id: string; ten: string; khoi: string | null; loai_de: string | null; ngay_moi: string; so_lop: number }
+export type BangCDCot = { ma: string; ten: string }
+export type BangCDHS = { id: string; ten: string; lop_id: string; lop: string; diem: number | null; hang: number | null; o: Record<string, number> }
+export type BangCD = { cot: BangCDCot[]; hs: BangCDHS[]; so_co_diem: number }
+export async function dsDeDaThi(mon: string): Promise<DeDaThi[]> {
+  const { data, error } = await supabase.rpc('fn_mt_ds_de_da_thi', { p_mon: mon })
+  if (error) throw error
+  return (data ?? []) as DeDaThi[]
+}
+export async function bangChuyenDe(deId: string): Promise<BangCD> {
+  const { data, error } = await supabase.rpc('fn_mt_bang_chuyen_de', { p_de: deId })
+  if (error) throw error
+  const j = (data ?? {}) as { cot?: BangCDCot[]; hs?: any[]; so_co_diem?: number }
+  return {
+    cot: j.cot ?? [],
+    hs: (j.hs ?? []).map((h) => ({ ...h, diem: h.diem == null ? null : Number(h.diem), hang: h.hang == null ? null : Number(h.hang) })),
+    so_co_diem: Number(j.so_co_diem ?? 0),
+  }
+}
