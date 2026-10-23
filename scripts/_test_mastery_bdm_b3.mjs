@@ -1,5 +1,6 @@
-// Kiểm luồng BỔ TRỢ YẾU khi BẬT công tắc mastery bản đồ mới — TRONG ROLLBACK: node scripts/_test_mastery_bdm_b3.mjs
-// 1 ca đang xử (HS K6–12): điền dạng yếu ⇒ có dạng bài NDB · chi tiết ca có tên · sinh bài luyện cho dạng NDB ra câu.
+// Kiểm hạ tầng chọn / chụp câu theo DẠNG BÀI MỚI (nhánh registry 'bdm') — TRONG ROLLBACK: node scripts/_test_mastery_bdm_b3.mjs
+// ⚠ 202610231553: bổ trợ GIỮ mastery cũ ⇒ điền dạng yếu KHÔNG còn ra NDB (xem _test_mastery_bdm_tach.mjs). File này giữ phần
+// chi tiết ca + chọn/chụp câu cho mã NDB (dùng cho tự luyện mới); dạng NDB lấy thẳng từ bdm_cau_hoi nếu ca không có.
 import pg from 'pg'
 import fs from 'node:fs'
 const url = fs.readFileSync('.env', 'utf8').match(/^\s*DATABASE_URL\s*=\s*(.+?)\s*$/m)[1].replace(/^["']|["']$/g, '')
@@ -21,12 +22,11 @@ try {
     ndb = (await q(`select ma_dang from bo_tro_yeu_dang where bo_tro_yeu_id = $1 and ma_dang like 'NDB%' and dong_at is null`, [x.id])).map((r) => r.ma_dang)
     if (ndb.length && x.buoi) { ca = { ...x, truoc }; break }
   }
-  kt(!!ca, ca ? `điền dạng yếu ⇒ ca ${ca.id.slice(0, 8)} (K${ca.khoi}) có ${ndb.length} dạng bài NDB: ${ndb.slice(0, 4).join(', ')}` : 'không ca nào ra dạng NDB')
-  if (ca) {
-    const [{ ct }] = await q(`select fn_btyeu_chi_tiet_case($1) ct`, [ca.id])
-    const s = JSON.stringify(ct)
-    kt(ndb.every((m) => s.includes(m)), 'chi tiết ca liệt kê dạng NDB')
-    console.log('     ', s.slice(s.indexOf(ndb[0]) - 20, s.indexOf(ndb[0]) + 140))
+  if (!ca) ndb = (await q(`select dang_chinh from bdm_cau_hoi where kho_chuan and loai_cau = 'trac_nghiem' group by 1 order by count(*) desc limit 1`)).map((r) => r.dang_chinh)
+  kt(ndb.length > 0, `dạng bài NDB để thử: ${ndb[0]}`)
+  if (ndb.length) {
+    const ten = (await q(`select _kho_ten_dang('Toán', $1) t`, [ndb[0]]))[0].t
+    kt(!!ten, `tra tên dạng NDB: ${ten}`)
     // Sinh bài luyện thật đòi phiên HS + ca mở hôm nay + điểm danh ⇒ thử đúng 2 bước bị bản đồ mới ảnh hưởng:
     // chọn câu (registry nhánh 'bdm' → bdm_cau_hoi) + chụp câu vào bài test (_kho_snapshot_cau qua bộ view bdm_*).
     try {

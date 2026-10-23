@@ -32,9 +32,9 @@ try {
   const cu1 = sau.filter((k) => hs1.includes(k.split('|')[0])).sort(), moi1k = moi1.map(khoa).sort()
   kt(cu1.length === moi1k.length && cu1.every((x, i) => x === moi1k[i]), `cấp 1 giữ nguyên bản đồ cũ (${cu1.length} ô)`)
   await q(`select fn_he_thong_cong_tac_dat('mastery_ban_do_moi', true)`)
-  const bat = (await q(`select * from fn_mastery_cells($1, true)`, [tat])).map(khoa).sort()
+  const bat = (await q(`select * from fn_mastery_cells_moi($1, true)`, [tat])).map(khoa).sort()   // 202610231553: fn_mastery_cells luôn CŨ (bổ trợ); bản theo công tắc = fn_mastery_cells_moi
   const moiK = moi.map(khoa).sort()
-  kt(bat.length === moiK.length && bat.every((x, i) => x === moiK[i]), 'bật công tắc ⇒ fn_mastery_cells = bản đồ mới')
+  kt(bat.length === moiK.length && bat.every((x, i) => x === moiK[i]), 'bật công tắc ⇒ fn_mastery_cells_moi = bản đồ mới')
   const [lg] = await q(`select count(*)::int n from he_thong_cong_tac_log where ma = 'mastery_ban_do_moi' and moi = true and cu = false`)
   kt(lg.n === 1, 'có 1 dòng lịch sử bật công tắc')
 } catch (e) { sai++; console.log('  ✘ LỖI', e.message) } finally { await q('rollback'); console.log(`${ok} ✔ · ${sai} ✘ (ROLLBACK)`); await c.end() }
