@@ -421,23 +421,39 @@ export async function doiNhomMoHinh(moHinhId: string, nhomId: string): Promise<v
 // ── NHÃN DẠNG BÀI / BỔ ĐỀ cho từng Ý (mig 202610191644, Thùy 19/10) — để lọc + làm tài liệu, không đo.
 // Luật khối ở DB: nhãn.khoi ≤ khối của bài. Claude gợi ý (hinh_y_nhan_de_xuat) → người nhận/bác.
 export type LoaiNhanY = 'dang' | 'bo_de'
-export type NhanY = { y_id: string; loai: LoaiNhanY; nhan_id: string; nguon: 'nguoi' | 'ai' }
+// Nhãn HIỆU LỰC (mig 202610231746): ý đã gán bài mô hình ⇒ nhãn của bài (nguon 'bai', tu_bai), kèm độ khó (loai 'do_kho', gia_tri).
+export type NhanY = { y_id: string; loai: LoaiNhanY | 'do_kho'; nhan_id: string | null; gia_tri?: number | null; nguon: 'nguoi' | 'ai' | 'bai'; tu_bai?: string | null }
 export type DeXuatNhanY = { id: number; y_id: string; loai: LoaiNhanY; nhan_id: string; ly_do: string }
 export async function nhanCuaCacY(yIds: string[]): Promise<{ nhan: NhanY[]; deXuat: DeXuatNhanY[] }> {
   const nhan: NhanY[] = [], deXuat: DeXuatNhanY[] = []
   for (let i = 0; i < yIds.length; i += 100) {
     const lo = yIds.slice(i, i + 100)
-    const [a, b, d] = await Promise.all([
-      supabase.from('hinh_y_dang').select('y_id, dang_id, nguon').in('y_id', lo).limit(5000),
-      supabase.from('hinh_y_bo_de').select('y_id, bo_de_id, nguon').in('y_id', lo).limit(5000),
+    const [a, d] = await Promise.all([
+      supabase.rpc('fn_hl_y_nhan_hieu_luc', { p_y: lo }).limit(5000),
       supabase.from('hinh_y_nhan_de_xuat').select('id, y_id, loai, nhan_id, ly_do').in('y_id', lo).limit(5000),
     ])
-    if (a.error) throw a.error; if (b.error) throw b.error; if (d.error) throw d.error
-    for (const r of a.data ?? []) nhan.push({ y_id: r.y_id, loai: 'dang', nhan_id: r.dang_id, nguon: r.nguon })
-    for (const r of b.data ?? []) nhan.push({ y_id: r.y_id, loai: 'bo_de', nhan_id: r.bo_de_id, nguon: r.nguon })
+    if (a.error) throw a.error; if (d.error) throw d.error
+    nhan.push(...((a.data ?? []) as NhanY[]))
     deXuat.push(...((d.data ?? []) as DeXuatNhanY[]))
   }
   return { nhan, deXuat }
+}
+
+// ── NHÃN của BÀI trong mô hình: Độ khó (1–5) · Dạng bài · Bổ đề (mig 202610231746, Thùy 23/10). Ý gán bài kế thừa.
+export type NhanBai = { baitoan_id: string; loai: LoaiNhanY | 'do_kho'; nhan_id: string | null; gia_tri: number | null; nguon: 'nguoi' | 'ai' }
+export async function nhanBaiCay(gocId: string): Promise<NhanBai[]> {
+  const { data, error } = await supabase.rpc('fn_hl_bai_nhan_cay', { p_goc: gocId }).limit(5000)
+  if (error) throw error
+  return (data ?? []) as NhanBai[]
+}
+export async function datNhanBai(baiId: string, loai: LoaiNhanY, nhanId: string, bat: boolean): Promise<void> {
+  const { error } = await supabase.rpc('fn_hl_bai_nhan_dat', { p_bai: baiId, p_loai: loai, p_nhan: nhanId, p_bat: bat })
+  if (error) throw error
+}
+/** mucDo null ⇒ gỡ độ khó (về "chưa đánh") */
+export async function datDoKhoBai(baiId: string, mucDo: number | null): Promise<void> {
+  const { error } = await supabase.rpc('fn_hl_bai_do_kho_dat', { p_bai: baiId, p_do_kho: mucDo })
+  if (error) throw error
 }
 export async function datNhanY(yId: string, loai: LoaiNhanY, nhanId: string, bat: boolean): Promise<void> {
   const { error } = await supabase.rpc('fn_hl_y_nhan_dat', { p_y: yId, p_loai: loai, p_nhan: nhanId, p_bat: bat })

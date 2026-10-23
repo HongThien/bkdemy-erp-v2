@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-440 bảng · 32 view · 0 enum · 219 trigger · 1276 function
+443 bảng · 32 view · 0 enum · 224 trigger · 1282 function
 
 ## _app_secrets
 
@@ -2658,6 +2658,38 @@ END |  |  |
 | ai_model | text | Y |  |  |  |
 | ai_de_xuat_at | timestamp with time zone | Y |  |  |  |
 
+## hinh_baitoan_bo_de
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | bigint |  |  | PK |  |
+| baitoan_id | uuid |  |  | FK→hinh_baitoan.id |  |
+| bo_de_id | uuid |  |  | FK→hinh_bo_de.id |  |
+| nguon | text |  | 'nguoi'::text |  | `nguoi` · `ai` |
+| actor | uuid | Y | jwt_uid() |  |  |
+| at | timestamp with time zone |  | now() |  |  |
+
+## hinh_baitoan_dang
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | bigint |  |  | PK |  |
+| baitoan_id | uuid |  |  | FK→hinh_baitoan.id |  |
+| dang_id | uuid |  |  | FK→hinh_dang.id |  |
+| nguon | text |  | 'nguoi'::text |  | `nguoi` · `ai` |
+| actor | uuid | Y | jwt_uid() |  |  |
+| at | timestamp with time zone |  | now() |  |  |
+
+## hinh_baitoan_do_kho
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | bigint |  |  | PK |  |
+| baitoan_id | uuid |  |  | FK→hinh_baitoan.id |  |
+| do_kho | smallint |  |  |  |  |
+| actor | uuid | Y | jwt_uid() |  |  |
+| at | timestamp with time zone |  | now() |  |  |
+
 ## hinh_baitoan_yeu_cau_giai
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -5112,7 +5144,7 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
-| mon | text |  |  | FK→sotay_ct_hinh.mon |  |
+| mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
 | khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
@@ -8401,6 +8433,11 @@ WITH luot AS (
 | hinh_bai | trg_hinh_bai_trang_thai_log | AFTER | UPDATE | _hl_bai_ghi_log |
 | hinh_baitoan | hinh_baitoan_gen_ma_trg | BEFORE | INSERT/UPDATE | hinh_baitoan_gen_ma |
 | hinh_baitoan_bien_the | hinh_bien_the_thu_hoi_dien | AFTER | UPDATE | hinh_form_dien_thu_hoi |
+| hinh_baitoan_bo_de | trg_hl_bai_bo_de_khoi | BEFORE | INSERT/UPDATE | _hl_trg_nhan_khoi_bai |
+| hinh_baitoan_bo_de | trg_hl_bai_bo_de_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
+| hinh_baitoan_dang | trg_hl_bai_dang_khoi | BEFORE | INSERT/UPDATE | _hl_trg_nhan_khoi_bai |
+| hinh_baitoan_dang | trg_hl_bai_dang_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
+| hinh_baitoan_do_kho | trg_hl_bai_do_kho_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | hinh_baitoan_yeu_cau_giai | hinh_baitoan_yeu_cau_giai_claude_dong | BEFORE | UPDATE | fn_giaibai_tg_claude_dong |
 | hinh_bien_the_yeu_cau_giai | hinh_bien_the_yeu_cau_giai_claude_dong | BEFORE | UPDATE | fn_giaibai_tg_claude_dong |
 | hinh_cach_giai | hinh_cach_giai_thu_hoi_dien | AFTER | UPDATE | hinh_form_dien_thu_hoi |
@@ -8615,9 +8652,11 @@ WITH luot AS (
 - `_hl_ket_qua(p_goc uuid, p_nhanh_moi uuid DEFAULT NULL::uuid)` → jsonb
 - `_hl_mo_hinh_khop_nhom()` → trigger
 - `_hl_nhan_hop_khoi(p_y uuid, p_loai text, p_nhan uuid)` → void
+- `_hl_nhan_hop_khoi_bai(p_bai uuid, p_loai text, p_nhan uuid)` → void
 - `_hl_nhom_mh_thu_tu()` → trigger
 - `_hl_so_khoi(k text)` → integer
 - `_hl_trg_nhan_khoi()` → trigger
+- `_hl_trg_nhan_khoi_bai()` → trigger
 - `_hl_y_bump_bai()` → trigger
 - `_hom_thu_gui(p_nhan uuid, p_loai text, p_tieu_de text, p_noi_dung text, p_lien_ket text, p_tu uuid)` → void
 - `_hom_thu_tg_gay()` → trigger
@@ -9231,8 +9270,11 @@ WITH luot AS (
 - `fn_hinh_yeu_danh_dau_day(p_hoc_sinh uuid, p_baitoan uuid, p_da_day boolean DEFAULT true)` → jsonb
 - `fn_hinh_yeu_dua_vao_case(p_hoc_sinh uuid, p_baitoan uuid)` → jsonb
 - `fn_hinh_yeu_theo_mo_hinh(p_chi_cua_toi boolean DEFAULT false)` → jsonb
+- `fn_hl_bai_do_kho_dat(p_bai uuid, p_do_kho smallint)` → void
 - `fn_hl_bai_full(p_bai uuid)` → jsonb
 - `fn_hl_bai_mo_hinh_luyen(p_khoi text)` → TABLE(baitoan_id uuid, ma text, so text, phat_bieu text, goc_id uuid, goc_ma text, goc_ten text, nhanh_id uuid, nhanh_ten text)
+- `fn_hl_bai_nhan_cay(p_goc uuid)` → TABLE(baitoan_id uuid, loai text, nhan_id uuid, gia_tri smallint, nguon text)
+- `fn_hl_bai_nhan_dat(p_bai uuid, p_loai text, p_nhan uuid, p_bat boolean)` → void
 - `fn_hl_bo_qua_bai(p_bai uuid, p_ly_do text)` → void
 - `fn_hl_chon_y(p_bai uuid, p_y uuid[])` → jsonb
 - `fn_hl_chuyen_bai(p_bai uuid, p_nhanh uuid)` → jsonb
@@ -9270,6 +9312,7 @@ WITH luot AS (
 - `fn_hl_tien_do(p_khoi text)` → TABLE(mo_hinh_id uuid, ma text, ten text, phan text, so_bai_kho bigint, so_bai_chua_hinh bigint, so_y bigint, so_y_chua_duyet bigint, so_y_chua_gan bigint, so_bai_mo_hinh bigint)
 - `fn_hl_xoa_mo_hinh(p_id uuid)` → jsonb
 - `fn_hl_y_nhan_dat(p_y uuid, p_loai text, p_nhan uuid, p_bat boolean)` → void
+- `fn_hl_y_nhan_hieu_luc(p_y uuid[])` → TABLE(y_id uuid, loai text, nhan_id uuid, gia_tri smallint, nguon text, tu_bai uuid)
 - `fn_hl_y_nhan_quyet(p_de_xuat bigint, p_nhan boolean, p_ly_do text DEFAULT ''::text)` → void
 - `fn_hoa_don_cap_nhat_trang_thai()` → trigger
 - `fn_hoc_online_dong_ca(p_buoi uuid)` → jsonb
@@ -9299,8 +9342,8 @@ WITH luot AS (
 - `fn_hs_len_bac_da_xem(p_mon text)` → void
 - `fn_hs_len_bac_moi(p_mon text)` → jsonb
 - `fn_hs_lich_bo_tro()` → jsonb
-- `fn_hs_lich_su_lam_bai(p_so_ngay integer DEFAULT 30)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
 - `fn_hs_lich_su_lam_bai(p_so_ngay integer, p_mon text)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
+- `fn_hs_lich_su_lam_bai(p_so_ngay integer DEFAULT 30)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
 - `fn_hs_luu_giao_dien(p_skin text, p_che_do text, p_hinh_nen text)` → jsonb
 - `fn_hs_luu_hieu_ung_game(p_bat boolean)` → jsonb
 - `fn_hs_luyen_con_lai(p_mon text, p_ma_dang text)` → integer
@@ -9702,8 +9745,8 @@ WITH luot AS (
 - `hs_sotay_tim_ct(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_khoi text DEFAULT NULL::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_sotay_tim_lt(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_vao_ca_online(p_buoi uuid)` → jsonb
-- `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
 - `hs_xep_hang_tu_luyen(p_khoi text, p_mon text)` → jsonb
+- `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
 - `htd_co_mo(p_mon text)` → boolean
 - `htd_lo_trinh(p_mon text)` → jsonb
 - `htd_ly_thuyet(p_mon text, p_ma_dang text)` → jsonb
@@ -9773,8 +9816,8 @@ WITH luot AS (
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
@@ -9929,6 +9972,7 @@ WITH luot AS (
 | hgt_cum_tien_de | hgt_cum_tien_de_check | `CHECK ((ma_cum <> tien_de_ma_cum))` |
 | hgt_dang_tien_de | hgt_dang_tien_de_check | `CHECK ((ma_dang <> tien_de_ma_dang))` |
 | hinh_bai | hinh_bai_bo_qua_co_ly_do | `CHECK (((bo_qua_at IS NULL) OR (length(btrim(COALESCE(bo_qua_ly_do, ''::text))) > 0)))` |
+| hinh_baitoan_do_kho | hinh_baitoan_do_kho_do_kho_check | `CHECK (((do_kho >= 1) AND (do_kho <= 5)))` |
 | hinh_form_dien | hinh_form_dien_check | `CHECK (((cach_giai_id IS NULL) <> (bien_the_id IS NULL)))` |
 | hinh_hoc_cum_tien_de | hinh_hoc_cum_tien_de_check | `CHECK ((ma_cum <> tien_de_ma_cum))` |
 | hinh_mo_hinh | hinh_mo_hinh_cap_mo_hinh_check | `CHECK (((cap_mo_hinh >= 1) AND (cap_mo_hinh <= 4)))` |

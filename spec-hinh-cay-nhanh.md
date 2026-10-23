@@ -22,6 +22,12 @@
 > - RPC mới: `fn_hl_them_gia_thiet(cha, ten, gt_them, chinh)` · `fn_hl_doi_cha_gia_thiet(nhanh, cha, chinh)`. `fn_hl_re_nhanh*` / `fn_hl_doi_neo` đã KHOÁ.
 >   Giả thiết hiệu lực / sai nhánh vẫn theo đường gốc → giả thiết (`_hl_duong_mo_hinh`), nay đi qua cạnh cha.
 
+> ## ⭐ NHÃN BÀI + IN CHUỖI — Thùy 23/10 (mig `202610231746_hinh_baitoan_nhan_do_kho_dang_bo_de.sql`)
+> - Mỗi **bài trong mô hình** có nhãn **Độ khó** (1–5, `hinh_baitoan_do_kho`, chưa đánh = không dòng) · **Dạng bài** (`hinh_baitoan_dang`) · **Bổ đề** (`hinh_baitoan_bo_de`) —
+>   danh mục `hinh_dang` / `hinh_bo_de`, luật khối nhãn ≤ khối mô hình. Sửa ở popup bài (khối "Nhãn"); RPC `fn_hl_bai_nhan_dat`, `fn_hl_bai_do_kho_dat`, đọc `fn_hl_bai_nhan_cay`.
+> - **Ý trong kho gán bài ⇒ KẾ THỪA nhãn của bài**, suy lúc đọc (`fn_hl_y_nhan_hieu_luc`), không chép; ý đã gán không dán nhãn riêng được (DB chặn). Ý chưa gán giữ nhãn riêng (19/10).
+> - **In chuỗi** (nút 🖨 trên màn mô hình, `ChuoiHinhPrintView.tsx`): mỗi giả thiết có bài = 1 khối (nhãn nhánh + giả thiết + hình), xếp theo số B nhỏ nhất của cả nhánh; "Bài N." = số B; sao độ khó cạnh bài; bản GV thêm lời giải.
+
 ## 0. Đích & khái niệm
 
 **Một mô hình Hình = một cây.** Thân là chuỗi bài 1.1 → 1.2 → …; mỗi lần **thêm một giả thiết** thì rẽ ra một **nhánh** từ một bài mẹ; nhánh lại rẽ tiếp. Số bài cho biết bài rẽ từ đâu (1.6.1 rẽ từ 1.6; 1.6.1.1 rẽ từ 1.6.1).

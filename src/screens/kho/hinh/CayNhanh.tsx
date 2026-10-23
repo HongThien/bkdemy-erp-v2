@@ -12,6 +12,7 @@ import type { BaiCay, ChuoiKho, DemKho, KetQuaCay } from '../../../lib/kho/hinhC
 import { MathText } from '../ui'
 import { AnhInput, Btn, Empty, Fig, Ma, Note, OcrButton, Seg, inpCls, tron } from './hinhUi'
 import Catalog from './Catalog'
+import ChuoiHinhPrintView, { type KhoiIn } from './ChuoiHinhPrintView'
 
 type BaiX = BaiToan & { so: string }
 // ⭐ Thùy 19/10: danh sách mô hình MẶC ĐỊNH THU GỌN (chỉ hiện tên nhóm), người dùng tự mở; hệ thống NHỚ trạng thái các lần truy cập
@@ -43,6 +44,11 @@ const MAU = [
 ]
 const mau = (d: number) => MAU[Math.min(d, MAU.length - 1)]
 const soSanhSo = (a: string, b: string) => a.localeCompare(b, undefined, { numeric: true })
+// Độ khó 1–5 (Thùy 23/10) hiện bằng sao — dùng chung thẻ bài, popup, kho, bản in
+export const SAO = (n: number) => '★'.repeat(n) + '☆'.repeat(Math.max(0, 5 - n))
+// Nhãn gom theo bài (vá tại chỗ sau mỗi thao tác)
+type NhanGon = { doKho: number | null; dang: string[]; boDe: string[] }
+const KHONG_NHAN: NhanGon = { doKho: null, dang: [], boDe: [] }
 
 // `chuDeId` (tuỳ chọn) — mở từ Bản đồ mới, vùng Hình–Luyện: chỉ hiện mô hình của chủ đề đó + ngăn "chưa xếp chủ đề".
 export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: string; reload: () => Promise<void>; chuDeId?: string }) {
@@ -61,6 +67,8 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
   const [demKho, setDemKho] = useState<Map<string, DemKho>>(new Map())   // số chuỗi kho theo mô hình (badge)
   const [bais, setBais] = useState<BaiX[]>([])
   const [sai, setSai] = useState<Map<string, string[]>>(new Map())      // bài → các tiền đề sai nhánh
+  const [nhanBai, setNhanBai] = useState<api.NhanBai[]>([])             // Độ khó · Dạng bài · Bổ đề của bài (Thùy 23/10)
+  const [inChuoi, setInChuoi] = useState(false)
   const [cur, setCur] = useState<string | null>(null)                    // bài đang chọn (tập trung)
   const [pop, setPop] = useState<string | null>(null)                    // bài đang mở popup
   const [dangTai, setDangTai] = useState(false)
@@ -93,15 +101,16 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
 
   // ── ĐỔI gốc (đổi ngữ cảnh ⇒ reset là đúng): lấy số hiển thị + cờ sai nhánh từ DB ──
   useEffect(() => {
-    setCur(null); setPop(null); setLoi(null); soRef.current = new Map()
+    setCur(null); setPop(null); setLoi(null); setNhanBai([]); soRef.current = new Map()
     if (!gocId) { setSai(new Map()); return }
     let huy = false
     setDangTai(true)
-    Promise.all([api.soHienThiCay(gocId), api.saiNhanhCay(gocId)]).then(([so, s]) => {
+    Promise.all([api.soHienThiCay(gocId), api.saiNhanhCay(gocId), api.nhanBaiCay(gocId)]).then(([so, s, nb]) => {
       if (huy) return
       soRef.current = new Map(so.map((r) => [r.id, r.so]))
       setBais((prev) => prev.map((b) => ({ ...b, so: soRef.current.get(b.id) ?? '' })))
       setSai(gomSai(s))
+      setNhanBai(nb)
     }).catch((e) => { if (!huy) setLoi(e.message ?? String(e)) }).finally(() => { if (!huy) setDangTai(false) })
     return () => { huy = true }
   }, [gocId])
@@ -141,6 +150,30 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
     for (const c of conCuaNhanh(nid)) n += baiCaNhanh(c.id)
     return n
   }, [lan, conCuaNhanh])
+  const nhanCua = useMemo(() => {
+    const m = new Map<string, NhanGon>()
+    for (const r of nhanBai) {
+      const g = m.get(r.baitoan_id) ?? { doKho: null, dang: [], boDe: [] }
+      if (r.loai === 'do_kho') g.doKho = r.gia_tri
+      else if (r.loai === 'dang') g.dang.push(r.nhan_id!)
+      else g.boDe.push(r.nhan_id!)
+      m.set(r.baitoan_id, g)
+    }
+    return m
+  }, [nhanBai])
+  // lỗi ném lại cho popup tự hiện (popup che thanh lỗi của màn)
+  const doiNhanBai = async (baiId: string, loai: api.LoaiNhanY, nhanId: string, bat: boolean) => {
+    await api.datNhanBai(baiId, loai, nhanId, bat)
+    setNhanBai((p) => {
+      const con = p.filter((x) => !(x.baitoan_id === baiId && x.loai === loai && x.nhan_id === nhanId))
+      return bat ? [...con, { baitoan_id: baiId, loai, nhan_id: nhanId, gia_tri: null, nguon: 'nguoi' }] : con
+    })
+  }
+  const doiDoKho = async (baiId: string, muc: number | null) => {
+    await api.datDoKhoBai(baiId, muc)
+    setNhanBai((p) => [...p.filter((x) => !(x.baitoan_id === baiId && x.loai === 'do_kho')),
+      ...(muc ? [{ baitoan_id: baiId, loai: 'do_kho' as const, nhan_id: null, gia_tri: muc, nguon: 'nguoi' as const }] : [])])
+  }
   const coSai = useCallback((nid: string): boolean =>
     (lan.get(nid) ?? []).some((b) => sai.has(b)) || conCuaNhanh(nid).some((c) => coSai(c.id)), [lan, sai, conCuaNhanh])
 
@@ -364,6 +397,7 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
                 title="Thêm bài vào một giả thiết. Bài tiếp theo của 1 bài: bấm vào bài đó ⇒ ＋ Bài tiếp theo">＋ Thêm bài</Btn>
               <Btn disabled={ban} onClick={() => { const g = (cur && baiById.get(cur)?.mo_hinh_id) || gocId!; setHopGT({ id: null, cha: g, ten: '', gt: '', chinh: !conCuaNhanh(g).some((n) => laChinh(n.id)) }) }}
                 title="Thêm một giả thiết rẽ ra từ giả thiết (bấm vào thẻ màu của giả thiết để chọn đúng chỗ)">⑂ Thêm giả thiết</Btn>
+              <Btn disabled={!bais.length} onClick={() => setInChuoi(true)} title="In chuỗi bài cho HS làm (bản GV kèm lời giải)">🖨 In chuỗi</Btn>
               {ban && <span className="text-[12px] text-slate-400">đang lưu…</span>}
             </div>
             {loi && <div className="mb-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-[12.5px] text-red-700">{loi} <button className="ml-2 underline" onClick={() => setLoi(null)}>đóng</button></div>}
@@ -375,13 +409,13 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
               : tab === 'kho'
               ? <TabKho gocId={gocId!} L={L} khoi={khoi} coBai={(id) => baiById.has(id)} onMo={(id) => { setCur(id); setPop(id) }} />
               : tab === 'chuoi'
-              ? <TabChuoi {...{ gocId: gocId!, lan, nhanhs, baiById, nhanhById, sai, cur, doSau, baiCaNhanh, conCuaNhanh, chaCua, laChinh, khung, L }}
+              ? <TabChuoi {...{ gocId: gocId!, lan, nhanhs, baiById, nhanhById, sai, cur, doSau, baiCaNhanh, conCuaNhanh, chaCua, laChinh, nhanCua, khung, L }}
                   onMo={(id) => { setCur(id); setPop(id) }}
                   onThemBai={(g) => setHopBai({ id: null, nhanh: g })}
                   onThemGT={(g, chinh) => setHopGT({ id: null, cha: g, ten: '', gt: '', chinh })}
                   onSuaGT={(g) => g === gocId ? setHopMH({ id: gocMH.id, ten: gocMH.ten, gt: gocMH.gia_thiet ?? '', anh: gocMH.anh_cau_hinh ?? null, nhom: gocMH.nhom_mh_id ?? null })
                     : setHopGT({ id: g, cha: chaCua(g) ?? gocId!, ten: nhanhById.get(g)?.ten ?? '', gt: nhanhById.get(g)?.gia_thiet_them ?? '', chinh: laChinh(g) })} />
-              : <TabNhom {...{ gocId: gocId!, lan, nhanhs, baiById, nhanhById, sai, cur, doSau, baiCaNhanh, conCuaNhanh, chaCua, laChinh, ban, L }}
+              : <TabNhom {...{ gocId: gocId!, lan, nhanhs, baiById, nhanhById, sai, cur, doSau, baiCaNhanh, conCuaNhanh, chaCua, laChinh, nhanCua, ban, L }}
                   onMo={(id) => { setCur(id); setPop(id) }} onChuyen={chuyen}
                   onSuaGT={(g) => setHopGT({ id: g, cha: chaCua(g) ?? gocId!, ten: nhanhById.get(g)?.ten ?? '', gt: nhanhById.get(g)?.gia_thiet_them ?? '', chinh: laChinh(g) })}
                   onThemGT={(g, chinh) => setHopGT({ id: null, cha: g, ten: '', gt: '', chinh })}
@@ -396,8 +430,26 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
         )}
       </div>
 
+      {inChuoi && gocMH && (() => {
+        // Khối in = giả thiết có bài (trong nó hoặc nhánh con), xếp theo số B nhỏ nhất của cả nhánh ⇒ đúng thứ tự file chuỗi
+        const minSo = (nid: string): number => Math.min(1e6, ...(lan.get(nid) ?? []).map((b) => soB(baiById.get(b)?.so)), ...conCuaNhanh(nid).map((c) => minSo(c.id)))
+        const khois: KhoiIn[] = nhanhs.filter((n) => minSo(n.id) < 1e6).sort((a, b) => minSo(a.id) - minSo(b.id)).map((n) => {
+          const laGoc = n.id === gocId, cha = chaCua(n.id)
+          return {
+            id: n.id, anh: n.anh_cau_hinh ?? null,
+            nhan: laGoc ? 'Giả thiết' : `${laChinh(n.id) ? 'Nhánh chính' : 'Nhánh phụ'}: ${tron(n.ten)}${cha && cha !== gocId ? ` — đi tiếp từ «${tron(nhanhById.get(cha)?.ten ?? '')}»` : ''}`,
+            giaThiet: (laGoc ? n.gia_thiet : n.gia_thiet_them) ?? '',
+            bai: (lan.get(n.id) ?? []).map((id) => {
+              const b = baiById.get(id)!, cach = api.cachMacDinh(L, id)
+              return { ma: b.ma, so: b.so, rieng: b.gia_thiet_rieng ?? null, phatBieu: b.phat_bieu, loiGiai: cach?.loi_giai ?? null, anhLoiGiai: cach?.anh_loi_giai ?? null, doKho: nhanCua.get(id)?.doKho ?? null }
+            }),
+          }
+        })
+        return <ChuoiHinhPrintView ten={tron(gocMH.ten)} ma={gocMH.ma} khoi={khoi} khois={khois} onClose={() => setInChuoi(false)} />
+      })()}
       {pop && baiById.get(pop) && (
         <PopupBai L={L} bai={baiById.get(pop)!} nhanhById={nhanhById} baiById={baiById} duong={duong} doSau={doSau}
+          khoi={khoi} nhan={nhanCua.get(pop) ?? KHONG_NHAN} onNhan={(lo, id, bat) => doiNhanBai(pop, lo, id, bat)} onDoKho={(m) => doiDoKho(pop, m)}
           saiTienDe={sai.get(pop) ?? []} onDong={() => setPop(null)} onNhay={(id) => { setCur(id); setPop(id) }}
           onSua={() => { const b = baiById.get(pop)!; setPop(null); setHopBai({ id: b.id, nhanh: b.mo_hinh_id }) }}
           onThemSau={() => { const b = baiById.get(pop)!; setPop(null); setHopBai({ id: null, nhanh: b.mo_hinh_id, sau: b.id }) }}
@@ -614,14 +666,21 @@ function TabKho({ gocId, L, khoi, coBai, onMo }: { gocId: string; L: Luoi; khoi:
                       <div className="min-w-0 flex-1"><MathText>{y.noi_dung}</MathText></div>
                       {y.so && <span className="shrink-0 self-start font-mono text-[12px] text-teal-700">→ {y.so}</span>}
                     </div>
-                    {/* Nhãn Dạng bài / Bổ đề của ý — chip đặc = đã dán · chip ✨ nét đứt = Claude gợi ý chờ duyệt */}
+                    {/* Nhãn Dạng bài / Bổ đề của ý — chip đặc = đã dán · chip ✨ nét đứt = Claude gợi ý chờ duyệt.
+                        Ý ĐÃ GÁN bài mô hình ⇒ nhãn KẾ THỪA từ bài (Thùy 23/10): chỉ xem, sửa ở bài trong mô hình. */}
                     <div className="mt-1.5 flex flex-wrap items-center gap-1 text-[12px]">
-                      {nhan.filter((x) => x.y_id === y.id).map((x) => (
+                      {nhan.filter((x) => x.y_id === y.id).map((x) => x.loai === 'do_kho'
+                        ? <span key="do_kho" className="rounded-full bg-orange-100 px-2 py-0.5 text-orange-800" title={`Độ khó ${x.gia_tri}/5 — kế thừa từ bài ${y.so ?? ''}`}>{SAO(x.gia_tri ?? 0)}</span>
+                        : (
                         <span key={x.loai + x.nhan_id} className={`flex items-center gap-1 rounded-full px-2 py-0.5 ${x.loai === 'dang' ? 'bg-violet-100 text-violet-800' : 'bg-amber-100 text-amber-800'}`}
-                          title={(x.loai === 'dang' ? 'Dạng bài' : 'Bổ đề') + (x.nguon === 'ai' ? ' · Claude gợi ý, đã duyệt' : '')}>
-                          {x.loai === 'dang' ? '⌥' : '◦'} {tron(tenNhan(x.loai, x.nhan_id))}
-                          <button onClick={() => void datNhan(y.id, x.loai, x.nhan_id, false)} className="opacity-50 hover:opacity-100" title="Gỡ nhãn">✕</button>
+                          title={(x.loai === 'dang' ? 'Dạng bài' : 'Bổ đề') + (x.nguon === 'bai' ? ` · kế thừa từ bài ${y.so ?? ''}` : x.nguon === 'ai' ? ' · Claude gợi ý, đã duyệt' : '')}>
+                          {x.loai === 'dang' ? '⌥' : '◦'} {tron(tenNhan(x.loai, x.nhan_id!))}
+                          {x.nguon !== 'bai' && <button onClick={() => void datNhan(y.id, x.loai as api.LoaiNhanY, x.nhan_id!, false)} className="opacity-50 hover:opacity-100" title="Gỡ nhãn">✕</button>}
                         </span>))}
+                      {y.baitoan_id ? (
+                        <span className="text-[11.5px] text-slate-400" title="Ý đã gán bài mô hình ⇒ mang nhãn của bài; sửa nhãn ở bài đó (bấm chip bài phía trên)">
+                          {nhan.some((x) => x.y_id === y.id) ? `↳ nhãn của bài ${y.so ?? ''}` : `bài ${y.so ?? ''} chưa có nhãn`}</span>
+                      ) : <>
                       {deXuat.filter((d) => d.y_id === y.id).map((d) => (
                         <span key={d.id} className="flex items-center gap-1 rounded-full border border-dashed border-sky-400 bg-sky-50 px-2 py-0.5 text-sky-800" title={`Claude gợi ý: ${d.ly_do}`}>
                           ✨ {d.loai === 'dang' ? 'Dạng' : 'Bổ đề'}: {tron(tenNhan(d.loai, d.nhan_id))}
@@ -639,6 +698,7 @@ function TabKho({ gocId, L, khoi, coBai, onMo }: { gocId: string; L: Luoi; khoi:
                       ) : (
                         <button onClick={() => setThem(y.id)} className="rounded-full border border-slate-300 px-2 py-0.5 text-slate-500 hover:border-violet-400 hover:text-violet-700">＋ nhãn</button>
                       )}
+                      </>}
                     </div>
                     {dangMo && y.loi_giai && (
                       <div className="mt-2 border-t border-slate-200 pt-2 text-[14px] leading-relaxed text-slate-700"><MathText>{y.loi_giai}</MathText></div>)}
@@ -667,6 +727,7 @@ type ChungProps = {
   baiById: Map<string, BaiX>; nhanhById: Map<string, MoHinh>; sai: Map<string, string[]>; cur: string | null
   doSau: (id: string) => number; baiCaNhanh: (id: string) => number; conCuaNhanh: (id: string) => MoHinh[]
   chaCua: (id: string) => string | null; laChinh: (id: string) => boolean
+  nhanCua: Map<string, NhanGon>
 }
 const soB = (so: string | undefined) => parseInt((so ?? '').replace(/\D/g, ''), 10) || 1e6
 const mauGT = (laGoc: boolean, chinh: boolean) => (laGoc ? MAU[0] : chinh ? MAU[1] : MAU[2])
@@ -769,6 +830,11 @@ function TabChuoi(p: ChungProps & {
               <div className="flex items-center gap-1">
                 <b className="text-[12.5px] text-slate-900">{b.so || '…'}</b>
                 {w && <span className="rounded border border-amber-400 bg-amber-100 px-1 text-[9.5px] font-bold text-amber-800">⚠</span>}
+                {(() => { const nh = p.nhanCua.get(id) ?? KHONG_NHAN; return <>
+                  {nh.doKho != null && <span className="text-[10.5px] leading-none text-orange-500" title={`Độ khó ${nh.doKho}/5`}>{SAO(nh.doKho)}</span>}
+                  {!!nh.dang.length && <span className="rounded bg-violet-100 px-1 text-[9.5px] text-violet-800" title={'Dạng bài: ' + nh.dang.map((x) => tron(L.dang.find((d) => d.id === x)?.ten ?? '?')).join(' · ')}>⌥{nh.dang.length}</span>}
+                  {!!nh.boDe.length && <span className="rounded bg-amber-100 px-1 text-[9.5px] text-amber-800" title={'Bổ đề: ' + nh.boDe.map((x) => tron(L.boDe.find((d) => d.id === x)?.ten ?? '?')).join(' · ')}>◦{nh.boDe.length}</span>}
+                </> })()}
                 {!!khac.length && <span className="ml-auto truncate text-[10px] text-blue-600" title="Tiền đề khác (khác hàng / ở giả thiết trên)">← {khac.map((t) => baiById.get(t)?.so ?? '?').join(', ')}</span>}
               </div>
               <div className="text-[11.5px] leading-snug text-slate-700"><MathText className="inline">{b.phat_bieu}</MathText></div>
@@ -819,6 +885,11 @@ function TabNhom(p: ChungProps & {
             <div key={id} className={`flex items-center gap-2 rounded-md px-1.5 py-1 text-[12.5px] ${cur === id ? 'bg-blue-50' : 'hover:bg-slate-50'}`}>
               <b className="w-10 shrink-0 cursor-pointer" onClick={() => p.onMo(id)}>{b.so || '…'}</b>
               <div className="min-w-0 flex-1 cursor-pointer truncate" onClick={() => p.onMo(id)}>{tron(b.phat_bieu)}</div>
+              {(() => { const nh = p.nhanCua.get(id) ?? KHONG_NHAN; return <>
+                {nh.doKho != null && <span className="shrink-0 text-[11px] text-orange-500" title={`Độ khó ${nh.doKho}/5`}>{SAO(nh.doKho)}</span>}
+                {nh.dang.map((x) => <span key={x} className="max-w-[140px] shrink-0 truncate rounded-full bg-violet-100 px-1.5 text-[10.5px] text-violet-800" title="Dạng bài">⌥ {tron(p.L.dang.find((d) => d.id === x)?.ten ?? '?')}</span>)}
+                {nh.boDe.map((x) => <span key={x} className="max-w-[140px] shrink-0 truncate rounded-full bg-amber-100 px-1.5 text-[10.5px] text-amber-800" title="Bổ đề">◦ {tron(p.L.boDe.find((d) => d.id === x)?.ten ?? '?')}</span>)}
+              </> })()}
               {!!tds.length && <span className="shrink-0 text-[10.5px] text-blue-600" title="Tiền đề">← {tds.map((t) => baiById.get(t)?.so ?? '?').join(', ')}</span>}
               {sai.has(id) && <span className="rounded border border-amber-400 bg-amber-50 px-1 text-[10px] font-bold text-amber-800">⚠ sai nhánh</span>}
               <Ma>{b.ma}</Ma>
@@ -838,11 +909,13 @@ function TabNhom(p: ChungProps & {
 }
 
 // ══════════════════ POPUP BÀI ══════════════════
-function PopupBai({ L, bai, nhanhById, baiById, duong, doSau, saiTienDe, onDong, onNhay, onSuaSai, onSua, onThemSau }: {
+function PopupBai({ L, bai, nhanhById, baiById, duong, doSau, saiTienDe, onDong, onNhay, onSuaSai, onSua, onThemSau, khoi, nhan, onNhan, onDoKho }: {
   L: Luoi; bai: BaiX; nhanhById: Map<string, MoHinh>; baiById: Map<string, BaiX>
   duong: (id: string) => string[]; doSau: (id: string) => number; saiTienDe: string[]
   onDong: () => void; onNhay: (id: string) => void; onSuaSai: (nhanhId: string) => void; onSua: () => void
   onThemSau: () => void
+  khoi: string; nhan: NhanGon
+  onNhan: (loai: api.LoaiNhanY, nhanId: string, bat: boolean) => Promise<void>; onDoKho: (muc: number | null) => Promise<void>
 }) {
   const [gt, setGt] = useState<string | null>(null)
   useEffect(() => {
@@ -893,6 +966,7 @@ function PopupBai({ L, bai, nhanhById, baiById, duong, doSau, saiTienDe, onDong,
               </div>)}
           </div>
           <div className="space-y-3.5">
+            <Muc ten="Nhãn (ý trong kho gán vào bài này kế thừa)"><NhanBaiO L={L} khoi={khoi} nhan={nhan} onNhan={onNhan} onDoKho={onDoKho} /></Muc>
             <Muc ten="Hình"><Fig src={anh} h="h-52" /></Muc>
             <Muc ten="Giả thiết hiệu lực (gốc → nhánh → riêng)">
               <div className="space-y-1 border-l-[3px] pl-2.5 text-[12px]" style={{ borderColor: MAU[0].dac }}>
@@ -912,6 +986,54 @@ function PopupBai({ L, bai, nhanhById, baiById, duong, doSau, saiTienDe, onDong,
           </div>
         </div>
       </div>
+    </div>
+  )
+}
+/** Nhãn của 1 bài mô hình: Độ khó 1–5 (bấm lại mức đang chọn = gỡ) · Dạng bài · Bổ đề (nhãn lớp ≤ khối mô hình). */
+function NhanBaiO({ L, khoi, nhan, onNhan, onDoKho }: {
+  L: Luoi; khoi: string; nhan: NhanGon
+  onNhan: (loai: api.LoaiNhanY, nhanId: string, bat: boolean) => Promise<void>; onDoKho: (muc: number | null) => Promise<void>
+}) {
+  const [loi, setLoi] = useState<string | null>(null)
+  const [dang, setDang] = useState(false)
+  const soK = (k: string | null | undefined) => (k ? parseInt(k, 10) || 0 : 0)
+  const dungDuoc = (k: string | null | undefined) => !k || soK(k) <= soK(khoi)
+  const chay = async (f: () => Promise<void>) => {
+    if (dang) return
+    setDang(true); setLoi(null)
+    try { await f() } catch (e: any) { setLoi(e.message ?? String(e)) } finally { setDang(false) }
+  }
+  const Dong = ({ loai, ten, ds, tat }: { loai: api.LoaiNhanY; ten: string; ds: { id: string; ten: string; khoi?: string | null }[]; tat: string[] }) => (
+    <div>
+      <div className="mb-1 text-[11px] font-semibold text-slate-500">{ten}</div>
+      <div className="flex flex-wrap items-center gap-1 text-[12px]">
+        {tat.map((id) => (
+          <span key={id} className={`flex items-center gap-1 rounded-full px-2 py-0.5 ${loai === 'dang' ? 'bg-violet-100 text-violet-800' : 'bg-amber-100 text-amber-800'}`}>
+            {loai === 'dang' ? '⌥' : '◦'} {tron(ds.find((d) => d.id === id)?.ten ?? '?')}
+            <button disabled={dang} onClick={() => void chay(() => onNhan(loai, id, false))} className="opacity-50 hover:opacity-100" title="Gỡ nhãn">✕</button>
+          </span>))}
+        <select disabled={dang} className="max-w-[200px] rounded border border-slate-300 bg-white px-1.5 py-0.5 text-[12px] text-slate-600" value=""
+          onChange={(e) => { const id = e.target.value; if (id) void chay(() => onNhan(loai, id, true)) }}>
+          <option value="">＋ {ds.length ? 'thêm' : 'chưa có trong danh mục'}</option>
+          {ds.filter((d) => dungDuoc(d.khoi) && !tat.includes(d.id)).map((d) => <option key={d.id} value={d.id}>{tron(d.ten)}</option>)}
+        </select>
+      </div>
+    </div>)
+  return (
+    <div className="space-y-2.5">
+      <div>
+        <div className="mb-1 text-[11px] font-semibold text-slate-500">Độ khó</div>
+        <div className="flex items-center gap-1">
+          {[1, 2, 3, 4, 5].map((m) => (
+            <button key={m} disabled={dang} onClick={() => void chay(() => onDoKho(nhan.doKho === m ? null : m))}
+              title={nhan.doKho === m ? 'Bấm lại để gỡ độ khó' : `Độ khó ${m}/5`}
+              className={`h-7 w-7 rounded-lg border text-[13px] font-semibold ${nhan.doKho === m ? 'border-orange-500 bg-orange-500 text-white' : nhan.doKho != null && m < nhan.doKho ? 'border-orange-200 bg-orange-50 text-orange-600' : 'border-slate-200 text-slate-500 hover:border-orange-300'}`}>{m}</button>))}
+          <span className="ml-1 text-[13px] text-orange-500">{nhan.doKho != null ? SAO(nhan.doKho) : <span className="text-[11.5px] text-slate-400">chưa đánh</span>}</span>
+        </div>
+      </div>
+      <Dong loai="dang" ten="Dạng bài" ds={L.dang} tat={nhan.dang} />
+      <Dong loai="bo_de" ten="Bổ đề" ds={L.boDe} tat={nhan.boDe} />
+      {loi && <div className="rounded border border-red-200 bg-red-50 px-2 py-1 text-[11.5px] text-red-700">{loi}</div>}
     </div>
   )
 }
