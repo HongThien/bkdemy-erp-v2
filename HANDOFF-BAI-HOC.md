@@ -7,7 +7,9 @@
 ## Mục lục (số dòng trong file này)
 
 - dòng 36 — ⭐⭐⭐ LUẬT DUYỆT (Thùy 14/10, "nói bao lần rồi") — MỌI KHỐI, MỌI LÔ: muốn Thùy duy�
+- Bài học 23/10 — Dashboard học tập · mastery · push (ngay dưới mục lục ②)
 - Bài học 12→23/10 — Nông trại + app HS (cuối file)
+- Bài học 07→23/10 — Chấm MT · Khảo sát · bảng kết quả theo chuyên đề (cuối file)
 - Bài học 14→20/10 — Kho K7 (đề thi, đề cương, bản đồ, hình) (ngay dưới LUẬT DUYỆT)
 - Bài học 20→21/10 — builder bản đồ mới · ET · Chuyên đề (ngay dưới LUẬT DUYỆT)
 - Bài học 17→19/10 — Bản đồ mới · Hình–Luyện · Kho đề thi (bản in)
@@ -36,6 +38,14 @@
 ---
 
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
+
+## Bài học 23/10 — Dashboard học tập · mastery · push
+
+- **Câu làm trên app có BẢN SAO trong `gami_grades` (`bai_lam_cau_id`)** — do `fn_et_online_dong_bo` / `fn_btvn_online_dong_bo` đẩy vào lưới chấm buổi. Hàm nào đọc CẢ `gami_grades` LẪN `bai_lam_cau` phải loại một bên (`not exists gami_grades.bai_lam_cau_id = blc.id`), nếu không mỗi câu tính 2 lần. Giữ bản gami: TA sửa tay ở đó, `ma_cau` là mã gốc. Dò: `pg_proc.prosrc ilike '%gami_grades%' and ilike '%bai_lam_cau%'`.
+- **App bọc khung `zoom: 1.15`** ⇒ phần tử `position: fixed` bên trong bị nhân toạ độ. Cửa sổ nổi / kéo thả phải chia toạ độ chuột cho tỉ lệ `el.getBoundingClientRect().width / el.offsetWidth`.
+- **Đổi kiểu trả về của hàm SQL** (thêm cột RETURNS TABLE) ⇒ `create or replace` không làm được, phải DROP + CREATE (hàm `language sql` gọi nó không giữ phụ thuộc nên không chặn) — ghi rõ ở mục "MẤT GÌ".
+- **Push khi main lệch + có phiên khác:** đừng nối lệnh gỡ xung đột bằng `;` — bước gỡ hỏng thì bước `git add/commit/push` vẫn chạy và đẩy dấu `<<<<<<<` lên origin (đã dính 23/10). Dùng `&&` và kiểm `grep -a -c '^<<<<<<<'` = 0 TRƯỚC khi add. **Không dùng `sed -i` trên file CRLF** (DEVLOG/HANDOFF): Git Bash ghi lại LF cả file ⇒ diff 77k dòng. Sửa bằng python đọc/ghi bytes.
+- **`npm run schema` có thể không đổi `schema.md`** khi phiên khác đã commit bản mới hơn — không phải lỗi.
 
 ### Bài học 23/10 — Đánh giá cuối cấp (đo theo lần)
 - **Hai hàm cùng xếp "gần nhất" trên một tập phải dùng CHUNG một khoá xếp, kể cả khi hoà.** Popup xếp `t tăng, luot tăng`, thẻ xếp `t giảm, luot tăng` ⇒ 2 lần cùng ngày đổi chỗ ⇒ popup lệch thẻ (TB5 88,2 vs 87,2). Kiểm bằng so dòng mới nhất của popup với thẻ trên CẢ LỚP (784/784), không chỉ 1 ô.
@@ -1099,3 +1109,13 @@
 - **Chạy generator migration thất bại vẫn có thể áp file rỗng** (`202610141758` là no-op; việc thật ở `…1759`). Kiểm nội dung file trước `npm run migrate`.
 - **Bảng của owner khác không `ALTER` được** (`thong_bao_hs` "must be owner") ⇒ tạo bảng riêng (`hs_tin_moi`) rồi GỘP khi hiển thị, đừng cố mở rộng bảng cũ.
 - **Đẩy từ worktree tạm cắt từ `origin/main`** khi checkout chính còn commit chưa push/tệp bẩn của phiên khác: copy đúng file của mình + append DEVLOG ở đó; tránh cherry-pick (DEVLOG xung đột).
+
+## Bài học 07→23/10 — Chấm MT · Khảo sát · bảng kết quả theo chuyên đề (đừng đạp lại)
+
+- **"Lưu được chưa" phải kiểm bằng DB, không bằng UI.** Ô nhận xét/điểm trông đã lưu nhưng upsert `gami_grades` dính NOT NULL `result` ⇒ lỗi im lặng. Không gửi `result` thì `update().match()`, có thì `upsert().select().single()`; callback trả dòng vừa ghi để vá tại chỗ. Ô nhập theo HS phải có `key` gồm hsId + giá trị đã lưu, không thì nhận xét em trước dính sang em sau.
+- **Công thức điểm câu ở TRIGGER DB, không ở client** (Đ = full, S = 0, C = để trống chờ người chấm): đổi Đ/C/S thì điểm tự tính lại; tổng MT cũng trigger. Hai đường nhập (buổi học / lá chấm) dùng chung nên không bao giờ lệch.
+- **Nguồn điểm câu = ĐỀ GỐC, không phải bản gán lớp.** Sửa đề gốc mà bản 'mt_buoi' giữ `diemByCau` cũ ⇒ màn chấm vẫn "tối đa 2 điểm". Đọc gốc qua `nguon_id`.
+- **Thi CHUNG (không lớp) = buổi có `lop_id` NULL + `de_id`**, không đẻ N buổi cho N lớp. `hinh_gt_buoi` thuộc owner `postgres` (không thêm cột được) ⇒ nối bằng `cau_hinh->>buoiHocId`. Mọi hàm đọc khung đề phải rẽ nhánh `de_id is not null` ⇒ đọc thẳng đề gốc.
+- **Phân loại nghiệp vụ (Cơ bản/Nâng cao) theo ĐÚNG lời CEO, đừng tự nới.** T suy rộng "tên chuyên đề có 'thực tế' cũng NC" ⇒ gắn nhầm bài cái thang (chuyên đề cũ HGT "Toán thực tế" thuộc "Tỉ số lượng giác"), Thùy hỏi "sao lại có Toán thực tế". Luật hiện hành: chỉ chủ đề "Các mô hình … nâng cao". Cờ `nang_cao` của PHẦN đề KHÔNG dùng được cho việc này (đề KS K9 chỉ 1 phần Tự luận).
+- **Bản xuất ảnh/PDF: bề rộng cột tính theo CỠ CHỮ (đơn vị F), không px cố định** — px cố định ⇒ thêm cột là trang co lại, chữ bé (Thùy: "PH không đọc được"); nhưng khuôn quá hẹp thì chữ to quá (bản dọc 30F ≈ 14pt bị chê, 48F ≈ 11pt vừa). Bản dọc cho điện thoại: cột đánh số + chú giải tên trên đầu, lớp ghi dưới tên.
+- **Chunk động (jspdf, html2canvas) 404 sau mỗi lần deploy** với tab mở sẵn — không phải lỗi chức năng; đã có tự reload qua `vite:preloadError`. Test xuất file trong Browser pane: hook `HTMLAnchorElement.prototype.click` (ảnh) + `URL.createObjectURL` (PDF của jsPDF) rồi đếm `/Type /Page`.
