@@ -12,7 +12,7 @@ import { supabase } from './supabase'
 import { listPhan, addPhan, setCauOfPhan, getTaiLieuFull, updateTaiLieu, deleteTaiLieu, khoCuaMon, nhanhCuaCau, type TaiLieu, type TaiLieuPhan, type TaiLieuFull } from './tailieu'
 import { moBuoi } from './gami'
 import { listLopBac, type CauHoi } from './kho/api'
-import { ganHinhMTVaoBuoi, xoaPhanHinhTai, deleteBuoi as deleteHinhBuoi, type CheDoHinh } from './kho/hinhGiaoTrinh'
+import { ganHinhMTVaoBuoi, ganHinhKhaoSat, xoaPhanHinhTai, deleteBuoi as deleteHinhBuoi, type CheDoHinh } from './kho/hinhGiaoTrinh'
 import { laMaHinh, laTenPhanNangCao, type HinhRowInfo } from './tailieu'
 import type { PickItem } from '../store/useStore'
 
@@ -265,6 +265,24 @@ export async function ganMTVaoBuoi(masterId: string, opts: { lopId: string; ngay
   const soBaiHinh = await ganHinhMTVaoBuoi(opts.lopId, opts.ngay, { picks: maHinhGiu.map((ma) => pickCuaHinhRow(ma, hinhByMa[ma])), cheDo, soDong }, master.taiLieu.cau_hinh?.hinhMaDe ?? {})
 
   return { buoiId: buoiId!, taiLieuId: docCon.id, buoiMoi, soCauLoai, soBaiHinh, lopChuaCoBac }
+}
+
+// ── 23/10 (Thùy): KỲ KHẢO SÁT CHUNG — "MT gán theo lớp nhưng khảo sát thi chung". 1 kỳ = đề gốc + ngày thi, không thuộc
+// lớp (buoi_hoc loai='khao_sat', de_id) — DB tạo (fn_ks_tao_ky, gọi lại cùng đề+ngày trả đúng kỳ cũ). Danh sách chấm = mọi
+// HS đang học môn đó ở khối của đề (DB). Bài Hình mô hình của đề (cau_hinh.hinhByMa) ghi sang buổi Hình của kỳ như gán MT.
+export async function taoKyKhaoSat(deId: string, ngay: string): Promise<string> {
+  const { data, error } = await supabase.rpc('fn_ks_tao_ky', { p_de: deId, p_ngay: ngay })
+  if (error) throw error
+  const buoiId = data as string
+  const master = await getTaiLieuFull(deId)
+  const hinhByMa = master.taiLieu.cau_hinh?.hinhByMa ?? {}
+  const maHinh = master.phans.filter((p) => p.loai_phan === 'custom').flatMap((p) => p.maCaus.filter((ma) => laMaHinh(ma) && hinhByMa[ma]))
+  if (maHinh.length) {
+    const cheDo: Record<string, CheDoHinh> = {}; const soDong: Record<string, number> = {}
+    for (const ma of maHinh) { const h = hinhByMa[ma]; cheDo[ma] = h.cheDo ?? 'hien'; if (h.soDong != null) soDong[ma] = h.soDong }
+    await ganHinhKhaoSat(buoiId, ngay, { picks: maHinh.map((ma) => pickCuaHinhRow(ma, hinhByMa[ma])), cheDo, soDong }, master.taiLieu.cau_hinh?.hinhMaDe ?? {})
+  }
+  return buoiId
 }
 
 // Các lượt đã gán của 1 MT master (hiện trong editor: "Đã gán cho: 9A1 · 12/07…"). buoiId = buổi

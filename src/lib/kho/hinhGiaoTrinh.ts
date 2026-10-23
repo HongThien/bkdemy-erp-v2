@@ -250,6 +250,29 @@ export async function ganHinhMTVaoBuoi(lopId: string, ngay: string, nhap: NhapBu
   await patchHinhCauHinh(buoiId, 'mt', { maDe: maDe ?? {} })
   return picks.length
 }
+/** 23/10 — KỲ KHẢO SÁT CHUNG (buoi_hoc loai='khao_sat', không thuộc lớp): buổi Hình của kỳ = hinh_gt_buoi lop_id NULL,
+ *  nhận diện bằng `cau_hinh.buoiHocId` (bảng do postgres sở hữu, không thêm cột được). Tìm hoặc tạo. */
+export async function hinhGtBuoiCuaKhaoSat(buoiHocId: string, ngay: string, tao: boolean): Promise<string | null> {
+  const { data, error } = await supabase.from('hinh_gt_buoi').select('id').is('lop_id', null).eq('cau_hinh->>buoiHocId', buoiHocId)
+    .order('created_at', { ascending: true }).limit(1)
+  if (error) throw error
+  const found = ((data as { id: string }[])?.[0])?.id ?? null
+  if (found || !tao) return found
+  const { data: u } = await supabase.auth.getUser()
+  const { data: moi, error: e2 } = await supabase.from('hinh_gt_buoi')
+    .insert({ lop_id: null, ngay, thu_tu: 0, created_by: u.user?.id ?? null, cau_hinh: { buoiHocId } }).select('id').single()
+  if (e2) throw e2
+  return (moi as { id: string }).id
+}
+/** Ghi bài Hình của đề vào kỳ khảo sát chung (phan='mt') — y hệt ganHinhMTVaoBuoi nhưng không theo lớp. */
+export async function ganHinhKhaoSat(buoiHocId: string, ngay: string, nhap: NhapBuoi, maDe: HinhCauHinhPhan['maDe']): Promise<number> {
+  const picks = nhap.picks.filter((p) => p.phan === 'mt')
+  if (!picks.length) return 0
+  const id = (await hinhGtBuoiCuaKhaoSat(buoiHocId, ngay, true))!
+  await saveBuoiSelectionPhan(id, 'mt', { ...nhap, picks })
+  await patchHinhCauHinh(id, 'mt', { maDe: maDe ?? {} })
+  return picks.length
+}
 /** Xoá bài 1 phan tại buổi Hình (lớp,ngày) nếu có — dùng khi re-gán MT sang NGÀY KHÁC (bản gán cũ hết hiệu lực). */
 export async function xoaPhanHinhTai(lopId: string, ngay: string, phan: 'mt'): Promise<void> {
   const id = await findHinhGtBuoi(lopId, ngay)
@@ -651,11 +674,19 @@ export async function flattenGtBaiToDapAn(L: Luoi, bais: GtBai[]): Promise<HinhD
  *  Khớp qua `hinh_gt_buoi.lop_id/ngay` (KHÔNG FK buoi_hoc — cùng nguyên lý ET/BTVN Đại, buổi có thể ẢO
  *  lúc gán). order+limit(1) thay vì .single(): lỡ trùng thì lấy bản mới nhất, đừng throw cả tab chấm. */
 export async function loadHinhForBuoi(buoiId: string, phan: 'lop' | 'nha' | 'et' | 'mt'): Promise<{ gtBuoiId: string | null; dapAn: HinhDapAn[] }> {
-  const { data: b, error } = await supabase.from('buoi_hoc').select('lop_id, ngay, lop:lop_id(khoi)').eq('id', buoiId).single()
+  const { data: b, error } = await supabase.from('buoi_hoc').select('lop_id, ngay, loai, lop:lop_id(khoi), de:de_id(khoi)').eq('id', buoiId).single()
   if (error) throw error
   const lopId = (b as any).lop_id as string | null
   const ngay = (b as any).ngay as string
-  const khoi = (b as any).lop?.khoi as string | null
+  const khoi = ((b as any).lop?.khoi ?? (b as any).de?.khoi) as string | null
+  // 23/10: kỳ khảo sát chung — buổi Hình nhận diện theo cau_hinh.buoiHocId (không có lớp).
+  if (!lopId && (b as any).loai === 'khao_sat') {
+    const gtId = await hinhGtBuoiCuaKhaoSat(buoiId, ngay, false)
+    if (!gtId) return { gtBuoiId: null, dapAn: [] }
+    const bais = (await listGtBai(gtId)).filter((x) => x.phan === phan)
+    if (!bais.length) return { gtBuoiId: gtId, dapAn: [] }
+    return { gtBuoiId: gtId, dapAn: await flattenGtBaiToDapAn(await loadLuoi(khoi ?? undefined), bais) }
+  }
   if (!lopId) return { gtBuoiId: null, dapAn: [] }
   const { data: gtbs, error: e2 } = await supabase.from('hinh_gt_buoi').select('id').eq('lop_id', lopId).eq('ngay', ngay).order('created_at', { ascending: false }).limit(1)
   if (e2) throw e2

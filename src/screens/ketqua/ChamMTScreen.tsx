@@ -12,13 +12,18 @@ import { useEffect, useState } from 'react'
 import { listLop, type Lop } from '../../lib/nhansu'
 import { supabase } from '../../lib/supabase'
 import { chuanBiLuoiMT, listProblems, gradeMTChiTiet, deleteGrade, type Problem, type Grade, type ETResult } from '../../lib/gami'
-import { dsBuoiChamMT, dsHSChamMT, chamCaBaiMT, luuTongMT, dungDiemTuCauMT, type MTBuoiCham, type MTHSCham } from '../../lib/chamMT'
+import { dsBuoiChamMT, dsKyKhaoSat, dsHSChamMT, chamCaBaiMT, luuTongMT, dungDiemTuCauMT, type MTBuoiCham, type MTHSCham } from '../../lib/chamMT'
+import { listMT, mtMeta, mtLoaiDeLabel, ganMTVaoBuoi, taoKyKhaoSat } from '../../lib/mt'
+import type { TaiLieu } from '../../lib/tailieu'
 import { laMaHinh, MT_DIEM_OPTS } from '../../lib/tailieu'
 import type { MTPhanCaus } from '../../lib/mt'
 import BangChuyenDeView from './BangChuyenDeView'
 
 const MON_CO_KHO = ['Toán', 'KHTN']
-const NHO: { mon: string; lopId: string | null; buoiId: string | null; hsId: string | null } = { mon: 'Toán', lopId: null, buoiId: null, hsId: null }
+// che: 'mt' = MT theo lớp (đề gán vào buổi của lớp) · 'ks' = KHẢO SÁT CHUNG (Thùy 23/10: thi chung cả khối, không theo lớp).
+type Che = 'mt' | 'ks'
+const NHO: { che: Che; mon: string; lopId: string | null; buoiId: string | null; hsId: string | null; lopLoc: string | null } = { che: 'mt', mon: 'Toán', lopId: null, buoiId: null, hsId: null, lopLoc: null }
+const homNayVN = () => { const v = new Date(Date.now() + 7 * 3600 * 1000); return `${v.getUTCFullYear()}-${String(v.getUTCMonth() + 1).padStart(2, '0')}-${String(v.getUTCDate()).padStart(2, '0')}` }
 
 type Dong = { p: Problem; nhom: string; hinh: string | null }
 const KQ: { v: ETResult; lbl: string; on: string; off: string }[] = [
@@ -56,6 +61,10 @@ export default function ChamMTScreen() {
 }
 
 function ChamMTBody() {
+  const [che, setChe] = useState<Che>(NHO.che)
+  const [lopLoc, setLopLoc] = useState<string | null>(NHO.lopLoc) // khảo sát chung: lọc HS theo lớp (chỉ xem)
+  const [them, setThem] = useState(false)
+  const [lanDs, setLanDs] = useState(0) // tăng ⇒ tải lại danh sách đề/kỳ (sau khi thêm)
   const [mon, setMon] = useState(NHO.mon)
   const [lops, setLops] = useState<Lop[]>([])
   const [lopId, setLopId] = useState<string | null>(NHO.lopId)
@@ -72,18 +81,18 @@ function ChamMTBody() {
   const [moNX, setMoNX] = useState<string | null>(null)   // problem_id đang mở ô nhận xét
   const [moTL, setMoTL] = useState(false)                  // khối thi lại
   const [lanLoi, setLanLoi] = useState(0)
-  useEffect(() => { Object.assign(NHO, { mon, lopId, buoiId, hsId }) }, [mon, lopId, buoiId, hsId])
+  useEffect(() => { Object.assign(NHO, { che, mon, lopId, buoiId, hsId, lopLoc }) }, [che, mon, lopId, buoiId, hsId, lopLoc])
 
   useEffect(() => {
     listLop().then((l) => setLops((l as Lop[]).filter((x) => x.trang_thai === 'dang_hoc' && x.mon === mon))).catch(() => setLops([]))
   }, [mon])
 
-  // Lớp → danh sách đề MT + chọn mặc định (đề cuối tháng gần nhất còn HS chưa chấm xong).
+  // MT: lớp → đề đã gán · Khảo sát chung: môn → các kỳ. Mặc định: đề cuối tháng / khảo sát gần nhất còn HS chưa chấm xong.
   useEffect(() => {
-    if (!lopId) { setBuois([]); setBuoiId(null); return }
+    if (che === 'mt' && !lopId) { setBuois([]); setBuoiId(null); return }
     let alive = true
     setLoadingBuoi(true)
-    dsBuoiChamMT(lopId).then((bs) => {
+    ;(che === 'ks' ? dsKyKhaoSat(mon) : dsBuoiChamMT(lopId!)).then((bs) => {
       if (!alive) return
       setBuois(bs)
       if (bs.some((b) => b.buoi_id === NHO.buoiId)) { setBuoiId(NHO.buoiId); return }
@@ -93,7 +102,7 @@ function ChamMTBody() {
       setBuoiId(macDinh?.buoi_id ?? null)
     }).catch((e) => alive && setLoi('Không tải được danh sách đề: ' + (e?.message ?? e))).finally(() => alive && setLoadingBuoi(false))
     return () => { alive = false }
-  }, [lopId])
+  }, [che, lopId, mon, lanDs]) // eslint-disable-line
 
   const buoi = buois.find((b) => b.buoi_id === buoiId) ?? null
   const dong = !!buoi?.dong
@@ -185,9 +194,12 @@ function ChamMTBody() {
   const nhoms: { ten: string; dongs: Dong[] }[] = []
   for (const d of dongs) { const last = nhoms[nhoms.length - 1]; if (last && last.ten === d.nhom) last.dongs.push(d); else nhoms.push({ ten: d.nhom, dongs: [d] }) }
 
+  // Khảo sát chung: lọc theo lớp chỉ để xem/chấm lần lượt (không đổi dữ liệu).
+  const hsHien = che === 'ks' && lopLoc ? hsList.filter((h) => h.ten_lop === lopLoc) : hsList
+  const lopKs = [...new Set(hsList.map((h) => h.ten_lop).filter(Boolean) as string[])].sort((a, b) => a.localeCompare(b, 'vi', { numeric: true }))
   const hs = hsList.find((h) => h.hoc_sinh_id === hsId) ?? null
-  const hsIdx = hs ? hsList.indexOf(hs) : -1
-  const soXong = hsList.filter(xong).length
+  const hsIdx = hs ? hsHien.indexOf(hs) : -1
+  const soXong = hsHien.filter(xong).length
   const sortedLops = [...lops].sort((a, b) => (a.khoi ?? '').localeCompare(b.khoi ?? '', 'vi', { numeric: true }) || a.ten_lop.localeCompare(b.ten_lop, 'vi', { numeric: true }))
   const thieuDiem = grades.filter((g) => g.diem_dat == null).length
 
@@ -195,23 +207,41 @@ function ChamMTBody() {
     <div className="flex min-h-0 flex-1 gap-3 p-4">
       {/* ── CỘT TRÁI: lớp → đề → HS ── */}
       <div className="flex w-64 shrink-0 flex-col gap-2">
+        <div className="flex overflow-hidden rounded-md ring-1 ring-slate-200">
+          {([['mt', 'MT · theo lớp'], ['ks', 'Khảo sát · thi chung']] as [Che, string][]).map(([v, l]) => (
+            <button key={v} onClick={() => { if (v !== che) { setChe(v); setBuoiId(null); setHsId(null) } }}
+              className={`h-8 flex-1 text-[12.5px] font-semibold ${che === v ? 'bg-slate-800 text-white' : 'bg-white text-slate-500 hover:text-slate-800'}`}>{l}</button>
+          ))}
+        </div>
         <div className="flex items-center gap-1">
           {MON_CO_KHO.map((m) => <button key={m} onClick={() => { setMon(m); setLopId(null) }} className={`h-7 rounded-md px-3 text-[13px] font-semibold ${mon === m ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`}>{m}</button>)}
         </div>
-        <select value={lopId ?? ''} onChange={(e) => setLopId(e.target.value || null)} className="h-8 w-full rounded border border-slate-300 px-2 text-[13px]">
-          <option value="">— chọn lớp —</option>
-          {sortedLops.map((l) => <option key={l.id} value={l.id}>{l.ten_lop}{l.khoi ? ` · K${l.khoi}` : ''}</option>)}
-        </select>
-        {lopId && (
-          <select value={buoiId ?? ''} onChange={(e) => setBuoiId(e.target.value || null)} className="h-8 w-full rounded border border-slate-300 px-2 text-[12.5px]">
-            {loadingBuoi ? <option value="">Đang tải…</option> : buois.length === 0 ? <option value="">Lớp chưa có đề MT nào được gán</option> : null}
-            {buois.map((b) => <option key={b.buoi_id} value={b.buoi_id}>{b.ngay.split('-').reverse().slice(0, 2).join('/')} · {laKS(b) ? 'KHẢO SÁT · ' : ''}{b.ten} · {b.so_hs_xong}/{b.so_hs}{b.dong ? ' · đã đóng' : ''}</option>)}
+        {che === 'mt' && (
+          <select value={lopId ?? ''} onChange={(e) => setLopId(e.target.value || null)} className="h-8 w-full rounded border border-slate-300 px-2 text-[13px]">
+            <option value="">— chọn lớp —</option>
+            {sortedLops.map((l) => <option key={l.id} value={l.id}>{l.ten_lop}{l.khoi ? ` · K${l.khoi}` : ''}</option>)}
+          </select>
+        )}
+        {(che === 'ks' || lopId) && (
+          <div className="flex gap-1">
+            <select value={buoiId ?? ''} onChange={(e) => setBuoiId(e.target.value || null)} className="h-8 min-w-0 flex-1 rounded border border-slate-300 px-2 text-[12.5px]">
+              {loadingBuoi ? <option value="">Đang tải…</option> : buois.length === 0 ? <option value="">{che === 'ks' ? 'Chưa có kỳ khảo sát nào' : 'Lớp chưa có đề MT nào được gán'}</option> : null}
+              {buois.map((b) => <option key={b.buoi_id} value={b.buoi_id}>{b.ngay.split('-').reverse().slice(0, 2).join('/')} · {che === 'mt' && laKS(b) ? 'KHẢO SÁT · ' : ''}{che === 'ks' && b.khoi ? `K${b.khoi} · ` : ''}{b.ten} · {b.so_hs_xong}/{b.so_hs}{b.dong ? ' · đã đóng' : ''}</option>)}
+            </select>
+            <button onClick={() => setThem(true)} title={che === 'ks' ? 'Thêm kỳ khảo sát chung (đề + ngày thi)' : 'Gán đề MT cho lớp này (đề + ngày thi)'}
+              className="h-8 shrink-0 rounded border border-indigo-300 bg-indigo-50 px-2 text-[12.5px] font-semibold text-indigo-700 hover:bg-indigo-100">+ Đề</button>
+          </div>
+        )}
+        {che === 'ks' && buoiId && lopKs.length > 1 && (
+          <select value={lopLoc ?? ''} onChange={(e) => setLopLoc(e.target.value || null)} className="h-8 w-full rounded border border-slate-300 px-2 text-[12.5px]">
+            <option value="">Mọi lớp</option>
+            {lopKs.map((l) => <option key={l} value={l}>{l}</option>)}
           </select>
         )}
         {buoiId && (
           <div className="min-h-0 flex-1 overflow-y-auto rounded-lg border border-slate-200 bg-white p-1">
-            <div className="px-2 py-1 text-[11px] font-semibold uppercase text-slate-400">Học sinh có mặt · xong {soXong}/{hsList.length}</div>
-            {hsList.map((h) => {
+            <div className="px-2 py-1 text-[11px] font-semibold uppercase text-slate-400">{che === 'ks' ? 'Học sinh của khối' : 'Học sinh có mặt'} · xong {soXong}/{hsHien.length}</div>
+            {hsHien.map((h) => {
               const on = h.hoc_sinh_id === hsId
               const tt = h.nguon === 'tay' ? { t: `tay ${fmt(h.diem)}`, c: 'bg-amber-100 text-amber-800' }
                 : xong(h) ? { t: fmt(h.diem), c: 'bg-emerald-100 text-emerald-700' }
@@ -220,7 +250,7 @@ function ChamMTBody() {
               return (
                 <button key={h.hoc_sinh_id} onClick={() => setHsId(h.hoc_sinh_id)}
                   className={`flex w-full items-center justify-between gap-2 rounded px-2 py-1.5 text-left text-[13px] ${on ? 'bg-indigo-600 font-semibold text-white' : 'text-slate-700 hover:bg-slate-100'}`}>
-                  <span className="truncate">{h.ho_ten}</span>
+                  <span className="truncate">{h.ho_ten}{che === 'ks' && !lopLoc && h.ten_lop ? <span className={`ml-1 text-[10.5px] font-normal ${on ? 'text-indigo-100' : 'text-slate-400'}`}>{h.ten_lop}</span> : null}</span>
                   <span className={`shrink-0 rounded px-1.5 text-[10.5px] font-semibold ${on ? 'bg-white/20 text-white' : tt.c}`}>{tt.t}</span>
                 </button>
               )
@@ -232,18 +262,21 @@ function ChamMTBody() {
       {/* ── BÊN PHẢI: toàn bộ câu của 1 HS ── */}
       <div className="flex min-w-0 flex-1 flex-col">
         {loi && <div className="mb-2 rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-700">{loi}</div>}
-        {!lopId ? <Trong>Chọn lớp bên trái.</Trong>
-          : !buoiId ? <Trong>{loadingBuoi ? 'Đang tải…' : 'Lớp này chưa có đề MT nào được gán.'}</Trong>
+        {them && <ThemDe che={che} mon={mon} lop={lops.find((l) => l.id === lopId) ?? null} onDong={() => setThem(false)}
+          onXong={(id) => { setThem(false); NHO.buoiId = id; setBuoiId(id); setLanDs((n) => n + 1) }} />}
+        {che === 'mt' && !lopId ? <Trong>Chọn lớp bên trái.</Trong>
+          : !buoiId ? <Trong>{loadingBuoi ? 'Đang tải…' : che === 'ks' ? 'Chưa có kỳ khảo sát nào — bấm "+ Đề" để thêm (chọn đề + ngày thi).' : 'Lớp này chưa có đề MT nào được gán — bấm "+ Đề" để gán.'}</Trong>
           : loadingDe ? <p className="text-sm text-slate-500">Đang tải đề…</p>
-          : !hs ? <Trong>{hsList.length ? 'Chọn 1 học sinh.' : 'Buổi này chưa có HS điểm danh "có mặt".'}</Trong>
+          : !hs ? <Trong>{hsList.length ? 'Chọn 1 học sinh.' : che === 'ks' ? 'Khối của đề chưa có HS đang học môn này.' : 'Buổi này chưa có HS điểm danh "có mặt".'}</Trong>
           : (
             <>
               <div className="mb-2 rounded-xl border border-slate-200 bg-white px-3 py-2">
                 <div className="flex flex-wrap items-center gap-2">
-                  <button onClick={() => hsIdx > 0 && setHsId(hsList[hsIdx - 1].hoc_sinh_id)} disabled={hsIdx <= 0} className="h-7 w-7 rounded border border-slate-200 text-slate-500 hover:bg-slate-50 disabled:opacity-30" title="HS trước">‹</button>
+                  <button onClick={() => hsIdx > 0 && setHsId(hsHien[hsIdx - 1].hoc_sinh_id)} disabled={hsIdx <= 0} className="h-7 w-7 rounded border border-slate-200 text-slate-500 hover:bg-slate-50 disabled:opacity-30" title="HS trước">‹</button>
                   <span className="text-[15px] font-semibold text-slate-800">{hs.ho_ten}</span>
-                  {buoi && laKS(buoi) && <span className="rounded bg-teal-100 px-1.5 py-0.5 text-[11px] font-bold text-teal-800" title="Đề khảo sát giữa tháng — điểm vào Xếp hạng khảo sát, không tính Level/xu">KHẢO SÁT</span>}
-                  <button onClick={() => hsIdx < hsList.length - 1 && setHsId(hsList[hsIdx + 1].hoc_sinh_id)} disabled={hsIdx >= hsList.length - 1} className="h-7 w-7 rounded border border-slate-200 text-slate-500 hover:bg-slate-50 disabled:opacity-30" title="HS sau">›</button>
+                  {che === 'ks' && hs.ten_lop && <span className="text-[12px] text-slate-500">{hs.ten_lop}</span>}
+                  {buoi && (che === 'ks' || laKS(buoi)) && <span className="rounded bg-teal-100 px-1.5 py-0.5 text-[11px] font-bold text-teal-800" title="Đề khảo sát giữa tháng — điểm vào Xếp hạng khảo sát, không tính Level/xu">KHẢO SÁT</span>}
+                  <button onClick={() => hsIdx < hsHien.length - 1 && setHsId(hsHien[hsIdx + 1].hoc_sinh_id)} disabled={hsIdx >= hsHien.length - 1} className="h-7 w-7 rounded border border-slate-200 text-slate-500 hover:bg-slate-50 disabled:opacity-30" title="HS sau">›</button>
                   <span className="ml-2 text-[12px] text-slate-500">Chấm cả bài:</span>
                   <div className="flex overflow-hidden rounded border border-slate-300">
                     {KQ.map((k) => <button key={k.v} onClick={() => caBai(k.v)} disabled={dong || !probs.length} className={`h-7 w-9 border-r border-slate-200 text-[12.5px] font-bold last:border-r-0 disabled:opacity-40 ${k.off}`} title={`Tất cả câu = ${k.lbl}, sau đó sửa riêng câu lệch`}>{k.lbl}</button>)}
@@ -371,6 +404,62 @@ function DongCau({ d, g, dong, moNX, lanLoi, onKQ, onDiem, onMoNX, onNX }: {
           className="mb-0.5 mt-0.5 h-7 w-full rounded border border-violet-300 px-2 text-[12.5px]" />
       )}
       {!moNX && g?.nhan_xet && <div className="truncate pl-[58px] text-[11.5px] italic text-violet-600">{g.nhan_xet}</div>}
+    </div>
+  )
+}
+
+// ── THÊM ĐỀ (Thùy 23/10: "cho người dùng tự add đề thi vào") ─────────────────────────────────
+// MT: gán đề vào buổi của LỚP đang chọn (cùng hàm "Gán vào buổi" ở màn soạn MT) · Khảo sát: tạo kỳ THI CHUNG (đề + ngày),
+// danh sách chấm = mọi HS của khối đề. Đề nào cũng chọn được; danh sách ưu tiên đúng loại đề theo chế độ.
+function ThemDe({ che, mon, lop, onDong, onXong }: { che: Che; mon: string; lop: Lop | null; onDong: () => void; onXong: (buoiId: string) => void }) {
+  const [tim, setTim] = useState('')
+  const [ds, setDs] = useState<TaiLieu[]>([])
+  const [deId, setDeId] = useState<string | null>(null)
+  const [ngay, setNgay] = useState(homNayVN())
+  const [dang, setDang] = useState(false)
+  const [loi, setLoi] = useState<string | null>(null)
+  useEffect(() => {
+    let alive = true
+    const t = setTimeout(() => { listMT(mon, tim.trim() ? { search: tim } : undefined).then((r) => { if (alive) setDs(r) }).catch(() => {}) }, 250)
+    return () => { alive = false; clearTimeout(t) }
+  }, [mon, tim])
+  const dungLoai = (d: TaiLieu) => (mtMeta(d).loaiDe === 'khao_sat_giua_thang') === (che === 'ks')
+  const hien = [...ds].filter((d) => che === 'ks' || !lop?.khoi || !d.khoi || d.khoi === lop.khoi).sort((a, b) => Number(dungLoai(b)) - Number(dungLoai(a)))
+  async function luu() {
+    if (!deId) return
+    setDang(true); setLoi(null)
+    try {
+      const id = che === 'ks' ? await taoKyKhaoSat(deId, ngay) : (await ganMTVaoBuoi(deId, { lopId: lop!.id, ngay })).buoiId
+      onXong(id)
+    } catch (e) { setLoi((e as { message?: string })?.message ?? String(e)) } finally { setDang(false) }
+  }
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/30 p-4" onClick={onDong}>
+      <div className="flex max-h-[85vh] w-[560px] max-w-full flex-col rounded-2xl bg-white p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div className="mb-1 text-[15px] font-semibold text-slate-900">{che === 'ks' ? 'Thêm kỳ khảo sát chung' : `Gán đề MT cho lớp ${lop?.ten_lop ?? ''}`}</div>
+        <div className="mb-3 text-[12px] text-slate-500">{che === 'ks'
+          ? 'Thi chung cả khối: danh sách chấm = mọi HS đang học môn này ở khối của đề. Cùng đề + cùng ngày thì mở lại đúng kỳ đã có.'
+          : 'Gán đề vào buổi của lớp vào ngày thi (như "Gán vào buổi" ở màn soạn MT). Gán lại cùng đề cho lớp này thì thay ngày cũ.'}</div>
+        <input value={tim} onChange={(e) => setTim(e.target.value)} placeholder="Tìm đề theo tên…" className="mb-2 h-9 w-full rounded-lg border border-slate-300 px-3 text-[13px]" autoFocus />
+        <div className="min-h-[160px] flex-1 overflow-y-auto rounded-lg border border-slate-200">
+          {hien.length === 0 ? <p className="p-4 text-center text-[12px] text-slate-400">Không có đề nào{tim ? ' khớp' : ''}.</p>
+            : hien.map((d) => (
+              <button key={d.id} onClick={() => setDeId(d.id)} className={`flex w-full items-center gap-2 border-b border-slate-100 px-3 py-2 text-left text-[13px] last:border-0 ${deId === d.id ? 'bg-indigo-50 font-semibold text-indigo-800' : 'hover:bg-slate-50'}`}>
+                <span className="min-w-0 flex-1 truncate">{d.ten}</span>
+                {d.khoi && <span className="shrink-0 text-[11px] text-slate-400">K{d.khoi}</span>}
+                <span className={`shrink-0 rounded px-1.5 text-[10.5px] font-semibold ${mtMeta(d).loaiDe === 'khao_sat_giua_thang' ? 'bg-teal-100 text-teal-800' : 'bg-slate-100 text-slate-500'}`}>{mtLoaiDeLabel(mtMeta(d).loaiDe) || 'Chưa gắn loại'}</span>
+              </button>
+            ))}
+        </div>
+        <div className="mt-3 flex items-center gap-2">
+          <label className="flex items-center gap-2 text-[13px] text-slate-600">Ngày thi
+            <input type="date" value={ngay} onChange={(e) => setNgay(e.target.value)} className="h-9 rounded-lg border border-slate-300 px-2 text-[13px]" />
+          </label>
+          {loi && <span className="text-[12px] text-rose-700">{loi}</span>}
+          <button onClick={onDong} className="ml-auto rounded-lg px-3 py-1.5 text-[13px] text-slate-500 hover:bg-slate-100">Huỷ</button>
+          <button onClick={luu} disabled={!deId || !ngay || dang || (che === 'mt' && !lop)} className="rounded-lg bg-indigo-600 px-4 py-1.5 text-[13px] font-semibold text-white hover:bg-indigo-500 disabled:opacity-40">{dang ? 'Đang thêm…' : 'Thêm'}</button>
+        </div>
+      </div>
     </div>
   )
 }

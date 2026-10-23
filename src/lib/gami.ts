@@ -500,8 +500,11 @@ export function xepLuoiTheoDe(probs: Problem[], caus: CauHoi[]): Problem[] {
 // Trả cả `phans` (GIỮ cấu trúc Phần I/II… đúng như file MT được gán — Thùy 07-08) lẫn `caus` phẳng
 // (nối tiếp toàn bài, dùng seed problem_no cho ensureMTProblems).
 export async function loadMTForBuoi(buoiId: string): Promise<{ mtId: string | null; phans: MTPhanCaus[]; caus: CauHoi[] }> {
-  const { data: b, error } = await supabase.from('buoi_hoc').select('lop_id, ngay').eq('id', buoiId).single()
+  const { data: b, error } = await supabase.from('buoi_hoc').select('lop_id, ngay, de_id').eq('id', buoiId).single()
   if (error) throw error
+  // 23/10: kỳ KHẢO SÁT CHUNG (không thuộc lớp) gắn thẳng đề gốc (buoi_hoc.de_id) — chấm theo đúng đề gốc.
+  const deId = (b as any).de_id as string | null
+  if (deId) { const phans = await getMTPhanCaus(deId); return { mtId: deId, phans, caus: phans.flatMap((p) => p.caus) } }
   const lopId = (b as any).lop_id as string | null
   if (!lopId) return { mtId: null, phans: [], caus: [] }
   const mt = await getMTInstanceByBuoi(lopId, (b as any).ngay)
