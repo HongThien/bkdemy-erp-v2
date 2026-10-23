@@ -77531,11 +77531,8 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 
 - **[Dashboard học tập] Tầng Chủ đề + cột Hình (Thùy 23/10, mig 202610231612 đã áp):** công tắc Chủ đề | Chuyên đề | Nhóm bài. Câu Hình (trước bị loại hẳn, 4 tuần ≈ 3,9k câu: bài toán phần Luyện + câu phần Học) giờ có cột riêng theo cây Hình — Chủ đề = chủ đề Hình · Chuyên đề = nhóm mô hình · Nhóm bài = mô hình; tầng nào câu chưa có thì dồn cột "Hình" (mã `H:…` / `HINH`, tiền tố để chủ đề Hình không gộp nhầm cột chủ đề Đại). Hiện mô hình đang được đo hầu hết CHƯA có nhóm mô hình (41/66 mô hình phan NULL) ⇒ ở Chủ đề/Chuyên đề gần như toàn bộ Hình nằm cột "Hình"; ở Nhóm bài K8 có 5 cột mô hình. `_dbht_cau` DROP + tạo lại (thêm cột chu_de_id, ten_dang).
 
-<<<<<<< HEAD
 ## 23/10/2026 — K9 bản đồ mới: chuyển dạng Hình học của "lập phương trình" sang "lập hệ phương trình"
 - **Thùy:** "Chuyển các bài toán dạng Hình học của giải toán bằng cách lập phương trình sang phần lập hệ phương trình và Xóa dạng Lập phương trình đi nhé."
 - **Làm (ĐÃ GHI):** `fn_bdm_chuyen_dang_bai('NDB00736','NNB01401',null)` — dạng "Cho chu vi, thay đổi kích thước dẫn đến thay đổi diện tích" (11 câu gán + 5 đề xuất, giữ nguyên mô tả/LT/VD) từ nhóm "Bài toán Diện tích" (chuyên đề Giải toán bằng cách lập phương trình, NCH00308) sang nhóm "Bài toán liên quan đến quan hệ Tích hai đối tượng" (NNB01401, chuyên đề lập Hệ phương trình) — cạnh dạng "Bài toán có nội dung Hình học" (NDB00720). Script `kho-rules/dai/lo/k9/chuyen-dang-hinh-hoc.mjs`.
 - **CHƯA xoá (luật xoá):** nhóm "Bài toán Diện tích" nay rỗng; phần còn lại của chuyên đề "lập phương trình" (4 nhóm · 8 dạng · 25 câu gán + 18 câu đề xuất) — app chặn xoá nhóm còn câu gán (`_bdm_xoa_cac_nhom`); chờ Thùy chọn xoá cái gì và 25 câu đi đâu.
-=======
 - **[Dashboard học tập] Đổi nghĩa ▲▼ trong cửa sổ lịch sử (Thùy 23/10, mig 202610231632 đã áp):** delta = % RIÊNG lượt − % tích luỹ (≤10 câu) ngay trước lượt (lượt đầu − đầu kỳ), tính trên tỉ lệ chưa làm tròn (vd 4/6 rồi làm 3/4 ⇒ +8). Trước: delta = chênh % tích luỹ trước/sau lượt. Lượt thêm p_luot, p_truoc; popup hiện "đúng 3/4 (75%) ▲8 → 7/10" + chú giải. Mũi tên ở BẢNG giữ nghĩa % hiện tại − đầu kỳ (không còn = tổng các ▲▼ trong popup).
->>>>>>> 4acb0569 ([Dashboard học tập] Tăng/giảm trong popup = % riêng lượt − % tích luỹ trước lượt — Thùy 23/10)
