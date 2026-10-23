@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react'
 import { dsDeDaThi, bangChuyenDe, type DeDaThi, type BangCD, type BangCDHS } from '../../lib/chamMT'
 
 const MON = ['Toán', 'KHTN']
+// Bề rộng cột (px): chuyên đề tối thiểu COT_MIN rồi giãn đều theo màn; các cột còn lại cố định.
+const COT_TEN = 190, COT_LOP = 60, COT_DIEM = 64, COT_HANG = 64, COT_MIN = 92
 // Rời tab quay lại = đúng chỗ cũ (CLAUDE §React).
 type Cap = 'chuyen_de' | 'chu_de'
 const NHO: { mon: string; deId: string | null; lopId: string | null; cap: Cap; sap: { cot: string; tang: boolean } } = { mon: 'Toán', deId: null, lopId: null, cap: 'chuyen_de', sap: { cot: 'hang', tang: true } }
@@ -96,13 +98,20 @@ export default function BangChuyenDeView() {
         : (
           <>
             <div className="max-h-[calc(100vh-280px)] overflow-auto rounded-xl border border-slate-200 bg-white">
-              <table className="border-separate border-spacing-0 text-[12.5px]">
+              {/* 23/10 (Thùy): bảng GIÃN theo màn — cột chuyên đề chia đều phần rộng còn lại, tối thiểu COT_MIN; Tên/Lớp/Điểm/Hạng
+                  cố định. Màn hẹp hơn tổng tối thiểu ⇒ bảng giữ tối thiểu và cuộn ngang (table-fixed + minWidth). */}
+              <table className="w-full table-fixed border-separate border-spacing-0 text-[12.5px]" style={{ minWidth: COT_TEN + COT_LOP + COT_DIEM + COT_HANG + bang.cot.length * COT_MIN }}>
+                <colgroup>
+                  <col style={{ width: COT_TEN }} /><col style={{ width: COT_LOP }} />
+                  {bang.cot.map((c) => <col key={c.ma} />)}
+                  <col style={{ width: COT_DIEM }} /><col style={{ width: COT_HANG }} />
+                </colgroup>
                 <thead>
                   <tr>
-                    <th onClick={() => bamCot('ten')} className={`${th} sticky left-0 z-20 min-w-[170px] text-left`}>Tên{muiTen('ten')}</th>
+                    <th onClick={() => bamCot('ten')} className={`${th} sticky left-0 z-20 text-left`}>Tên{muiTen('ten')}</th>
                     <th onClick={() => bamCot('lop')} className={`${th} text-left`}>Lớp{muiTen('lop')}</th>
                     {bang.cot.map((c) => (
-                      <th key={c.ma} onClick={() => bamCot(c.ma)} title={`${c.ten} (${c.ma})`} className={`${th} w-[92px] min-w-[92px] align-bottom`}>
+                      <th key={c.ma} onClick={() => bamCot(c.ma)} title={`${c.ten} (${c.ma})`} className={`${th} align-bottom`}>
                         <div className="line-clamp-3 text-center leading-tight">{c.ten}{muiTen(c.ma)}</div>
                       </th>
                     ))}
@@ -113,8 +122,8 @@ export default function BangChuyenDeView() {
                 <tbody>
                   {sapXep.map((h) => (
                     <tr key={h.id} className="hover:bg-indigo-50/30">
-                      <td className="sticky left-0 z-[5] border-b border-slate-100 bg-white px-2 py-1 font-medium text-slate-800">{h.ten}</td>
-                      <td className="border-b border-slate-100 px-2 py-1 text-slate-600">{h.lop}</td>
+                      <td title={h.ten} className="sticky left-0 z-[5] truncate border-b border-slate-100 bg-white px-2 py-1 font-medium text-slate-800">{h.ten}</td>
+                      <td className="truncate border-b border-slate-100 px-2 py-1 text-slate-600">{h.lop}</td>
                       {bang.cot.map((c) => (
                         <td key={c.ma} className="border-b border-slate-100 px-1 py-0.5 text-center">
                           <span className={`inline-block w-full rounded px-1 py-0.5 font-semibold tabular-nums ${mauPct(h.o[c.ma])}`}>{h.o[c.ma] == null ? '—' : `${h.o[c.ma]}%`}</span>
