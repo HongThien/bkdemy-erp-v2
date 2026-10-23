@@ -3,7 +3,7 @@
 // 1 cột, % trên ≤10 câu gần nhất trong 2–4 tuần. Bấm ô ⇒ CỬA SỔ NỔI lịch sử ô đó (kéo thả, mở nhiều cái cùng lúc).
 // Kênh song song với mastery (công thức khác có chủ ý — xem mig 202610231524). Mọi con số từ DB (§2.0); client chỉ lọc lớp,
 // sắp cột đang bấm, định dạng.
-import { useEffect, useRef, useState, type MouseEvent, type PointerEvent } from 'react'
+import { Fragment, useEffect, useRef, useState, type MouseEvent, type PointerEvent } from 'react'
 import { supabase } from '../../lib/supabase'
 import { bangDashboardHocTap, lichSuO, TEN_KENH, type BangDB, type CapDB, type HSDB, type LichSuO } from '../../lib/dashboardHocTap'
 
@@ -19,6 +19,8 @@ const TEN_CAP: Record<CapDB, string> = { chu_de: 'chủ đề', chuyen_de: 'chuy
 const mauPct = (p: number | undefined) => p == null ? 'text-slate-300'
   : p >= 80 ? 'bg-emerald-100 text-emerald-800' : p >= 50 ? 'bg-amber-100 text-amber-800' : 'bg-rose-100 text-rose-700'
 const so = (v: number) => Number(v).toLocaleString('vi-VN', { maximumFractionDigits: 2 })
+const thO = 'border-b border-slate-200 px-1.5 py-1 text-center font-semibold'
+const tdO = 'border-b border-slate-100 px-1.5 py-1'
 const ngayVN = (d: string) => d ? d.split('-').reverse().slice(0, 2).join('/') : ''
 
 export default function DashboardHocTapScreen() {
@@ -92,7 +94,7 @@ export default function DashboardHocTapScreen() {
   const moCua = (h: HSDB, ma: string, tenCot: string, ev: MouseEvent) => {
     const id = [h.id, cap, ma, soTuan].join('|')
     if (cua.some((c) => c.id === id)) { lenTren(id); return }
-    const z = tiLe(), W = 460
+    const z = tiLe(), W = 540
     const x = Math.max(8, Math.min(ev.clientX / z + 12, window.innerWidth / z - W - 8))
     const y = Math.max(8, Math.min(ev.clientY / z - 40, window.innerHeight / z - 420))
     setCua((cs) => [...cs, { id, hs: h, cap, ma, tenCot, x, y, z: ++NHO.zMax }])
@@ -211,7 +213,7 @@ function CuaSoO({ c, onDong, onLen, onDoi, tiLe }: { c: Cua; onDong: () => void;
   const d = c.data
   return (
     <div onPointerDown={onLen} style={{ left: c.x, top: c.y, zIndex: c.z }}
-      className="fixed flex max-h-[70vh] w-[460px] flex-col overflow-hidden rounded-xl border border-slate-300 bg-white shadow-2xl">
+      className="fixed flex max-h-[70vh] w-[540px] flex-col overflow-hidden rounded-xl border border-slate-300 bg-white shadow-2xl">
       <div onPointerDown={batDauKeo} onPointerMove={dangKeo} onPointerUp={() => { keo.current = null }}
         className="flex cursor-move select-none items-start gap-2 bg-slate-800 px-3 py-2 text-white">
         <div className="min-w-0 flex-1">
@@ -225,47 +227,60 @@ function CuaSoO({ c, onDong, onLen, onDoi, tiLe }: { c: Cua; onDong: () => void;
           : !d ? <p className="text-slate-500">Đang tải…</p>
           : (
             <>
-              <div className="mb-2 rounded-md bg-slate-50 px-2 py-1.5 text-slate-600">
-                Đầu kỳ (trước {ngayVN(d.tu)}): {d.dau_ky ? <b className="text-slate-800">{d.dau_ky.p}%</b> : <span className="text-slate-400">chưa đo</span>}
-                {d.dau_ky && <span className="text-slate-400"> · trên {d.dau_ky.n} câu gần nhất</span>}<div className="text-[11px] text-slate-400">▲▼ = % của lượt so với % tích luỹ ngay trước lượt (lượt đầu: so với đầu kỳ) · → = tích luỹ trên ≤10 câu gần nhất</div>
-              </div>
-              {d.luot.length === 0 ? <p className="text-slate-500">Không có lượt nào trong cửa sổ.</p> : (
-                <ol className="space-y-1">
-                  {d.luot.map((l, i) => (
-                    <li key={i} className="rounded-md border border-slate-100">
-                      <button onClick={() => setMoLuot(moLuot === i ? null : i)} className="flex w-full items-start gap-2 px-2 py-1.5 text-left hover:bg-slate-50">
-                        <span className="w-10 shrink-0 font-mono text-slate-500">{ngayVN(l.ngay)}</span>
-                        <span className="min-w-0 flex-1">
-                          <span className="font-semibold text-slate-700">{TEN_KENH[l.kenh] ?? l.kenh}</span> đúng {so(l.dung)}/{l.tong}
-                          <span className="text-slate-500"> ({l.p_luot}%)</span>
-                          {l.delta != null && (
-                            <span title={`Lượt này ${l.p_luot}% so với ${l.p_truoc}% ${i === 0 ? 'đầu kỳ' : 'tích luỹ trước đó'}`}
-                              className={`ml-1 font-semibold tabular-nums ${l.delta === 0 ? 'text-slate-400' : l.delta > 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
-                              {l.delta > 0 ? `▲${l.delta}` : l.delta < 0 ? `▼${-l.delta}` : '='}
-                            </span>
-                          )}
-                          {' → '}
-                          {l.tl_tong > 10
-                            ? <>tổng {so(l.tl_dung)}/{l.tl_tong}, 10 câu gần nhất <b>{so(l.dung10)}/10</b></>
-                            : <b>{so(l.dung10)}/{l.tong10}</b>}
-                        </span>
-                        <span className={`shrink-0 rounded px-1.5 font-semibold tabular-nums ${mauPct(l.p)}`}>{l.p}%</span>
-                      </button>
-                      {moLuot === i && (
-                        <ul className="border-t border-slate-100 bg-slate-50/60 px-2 py-1 text-[11.5px]">
-                          {l.cau.map((q, k) => (
-                            <li key={k} className="flex items-start gap-2 py-0.5">
-                              <span className={`w-6 shrink-0 text-center font-bold ${q.g >= 1 ? 'text-emerald-600' : q.g <= 0 ? 'text-rose-600' : 'text-amber-600'}`}>{q.g >= 1 ? 'Đ' : q.g <= 0 ? 'S' : so(q.g)}</span>
-                              <span className="min-w-0 flex-1 text-slate-600">{q.dang}</span>
-                              <span className="shrink-0 font-mono text-[10.5px] text-slate-400">{q.ma_cau ?? ''}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </li>
-                  ))}
-                </ol>
+              {d.luot.length === 0 && !d.dau_ky ? <p className="text-slate-500">Không có lượt nào trong cửa sổ.</p> : (
+                <table className="w-full border-separate border-spacing-0 text-[12px]">
+                  <thead>
+                    <tr className="text-[10.5px] uppercase tracking-wide text-slate-500">
+                      <th className={thO + ' text-left'}>Ngày</th>
+                      <th className={thO + ' text-left'}>Hoạt động</th>
+                      <th className={thO}>Đúng</th>
+                      <th className={thO}>% lượt</th>
+                      <th className={thO} title="% của lượt so với % tích luỹ ngay trước lượt (lượt đầu: so với đầu kỳ)">Tăng / giảm</th>
+                      <th className={thO} title="Tích luỹ trên tối đa 10 câu gần nhất">10 câu gần nhất</th>
+                      <th className={thO}>Hiện tại</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="bg-slate-50 text-slate-500">
+                      <td className={tdO + ' font-mono'}>&lt; {ngayVN(d.tu)}</td>
+                      <td className={tdO + ' font-semibold'}>Đầu kỳ</td>
+                      <td className={tdO} /><td className={tdO} /><td className={tdO} />
+                      <td className={tdO + ' text-center'}>{d.dau_ky ? `${d.dau_ky.n} câu` : ''}</td>
+                      <td className={tdO + ' text-center'}>{d.dau_ky ? <span className={`rounded px-1.5 font-semibold ${mauPct(d.dau_ky.p)}`}>{d.dau_ky.p}%</span> : <span className="text-slate-400">chưa đo</span>}</td>
+                    </tr>
+                    {d.luot.map((l, i) => (
+                      <Fragment key={i}>
+                        <tr onClick={() => setMoLuot(moLuot === i ? null : i)} className="cursor-pointer hover:bg-indigo-50/40">
+                          <td className={tdO + ' font-mono text-slate-500'}>{ngayVN(l.ngay)}</td>
+                          <td className={tdO + ' font-semibold text-slate-700'}>{moLuot === i ? '▾ ' : '▸ '}{TEN_KENH[l.kenh] ?? l.kenh}</td>
+                          <td className={tdO + ' text-center tabular-nums'}>{so(l.dung)}/{l.tong}</td>
+                          <td className={tdO + ' text-center tabular-nums text-slate-600'}>{l.p_luot}%</td>
+                          <td className={`${tdO} text-center font-semibold tabular-nums ${l.delta == null || l.delta === 0 ? 'text-slate-400' : l.delta > 0 ? 'text-emerald-600' : 'text-rose-600'}`}
+                            title={l.delta == null ? '' : `Lượt này ${l.p_luot}% so với ${l.p_truoc}% ${i === 0 ? 'đầu kỳ' : 'tích luỹ trước đó'}`}>
+                            {l.delta == null ? '' : l.delta > 0 ? `▲${l.delta}` : l.delta < 0 ? `▼${-l.delta}` : '='}
+                          </td>
+                          <td className={tdO + ' text-center tabular-nums'} title={l.tl_tong > 10 ? `Cộng dồn trong kỳ: ${so(l.tl_dung)}/${l.tl_tong}` : ''}>{so(l.dung10)}/{l.tong10}</td>
+                          <td className={tdO + ' text-center'}><span className={`rounded px-1.5 font-semibold tabular-nums ${mauPct(l.p)}`}>{l.p}%</span></td>
+                        </tr>
+                        {moLuot === i && (
+                          <tr><td colSpan={7} className="border-b border-slate-100 bg-slate-50/70 px-2 py-1">
+                            <ul className="text-[11.5px]">
+                              {l.cau.map((q, k) => (
+                                <li key={k} className="flex items-start gap-2 py-0.5">
+                                  <span className={`w-6 shrink-0 text-center font-bold ${q.g >= 1 ? 'text-emerald-600' : q.g <= 0 ? 'text-rose-600' : 'text-amber-600'}`}>{q.g >= 1 ? 'Đ' : q.g <= 0 ? 'S' : so(q.g)}</span>
+                                  <span className="min-w-0 flex-1 text-slate-600">{q.dang}</span>
+                                  <span className="shrink-0 font-mono text-[10.5px] text-slate-400">{q.ma_cau ?? ''}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </td></tr>
+                        )}
+                      </Fragment>
+                    ))}
+                  </tbody>
+                </table>
               )}
+              <p className="mt-2 text-[11px] text-slate-400">Tăng / giảm = % lượt so với % tích luỹ ngay trước lượt (lượt đầu: so với đầu kỳ). Hiện tại = trên tối đa 10 câu gần nhất. Bấm dòng để xem từng câu.</p>
             </>
           )}
       </div>
