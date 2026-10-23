@@ -1,0 +1,20 @@
+[
+ {
+  "ma_cau": "T108020702001",
+  "dang_bai_id": "NDB00469",
+  "chac": "cao",
+  "ly_do": "Chứng minh a³+b³+6ab=8 khi a+b=2 bằng lập phương của tổng; dạng duy nhất của nhóm lập phương của tổng."
+ },
+ {
+  "ma_cau": "T108000000514",
+  "dang_bai_id": "NDB01420",
+  "chac": "cao",
+  "ly_do": "Tìm k nguyên để đa thức bậc bốn là số chính phương."
+ },
+ {
+  "ma_cau": "T108020701001",
+  "dang_bai_id": "NDB01424",
+  "chac": "cao",
+  "ly_do": "Cho a+b và ab, tính a²+b² qua bình phương một tổng."
+ }
+]

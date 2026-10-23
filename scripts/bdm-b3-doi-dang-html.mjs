@@ -38,13 +38,15 @@ body{margin:0;background:var(--bg);color:var(--t);font:16px/1.55 system-ui,sans-
 .bar{position:fixed;left:0;right:0;bottom:0;background:var(--c);border-top:2px solid var(--a);padding:8px 16px;display:flex;gap:10px;align-items:center}.bar button{background:var(--a);color:#fff;border:0;border-radius:8px;padding:8px 14px;font-size:15px;cursor:pointer}</style></head><body><main>
 <h1>Toán ${KHOI} — duyệt ${doi.length} câu bị máy đề xuất ĐỔI DẠNG</h1>
 <p style="color:var(--m)">Các câu này đang được AI gán vào một dạng; sau khi bản đồ được cập nhật, máy xếp lại thì ra dạng KHÁC. Theo quy tắc của Thùy, mọi câu đổi dạng đều phải duyệt — <b>chưa có gì được ghi vào DB</b>. Chọn từng câu (lưu tự động trong trình duyệt), xong bấm <b>Sao chép câu trả lời</b> rồi dán cho Claude.</p>
-${cards}</main><div class="bar"><button id="cp">Sao chép câu trả lời</button><span id="dem" style="color:var(--m)"></span></div>
+${cards}</main><div class="bar"><button id="doi">Đổi hết sang dạng máy</button><button id="giu">Giữ hết dạng đang gán</button><button id="cp">Sao chép câu trả lời</button><span id="dem" style="color:var(--m)"></span></div>
 <script>
 const LS='${LS}';let st={};try{st=JSON.parse(localStorage.getItem(LS)||'{}')}catch(e){}
 const luu=()=>{try{localStorage.setItem(LS,JSON.stringify(st))}catch(e){}}
 const cards=[...document.querySelectorAll('.c[data-k]')]
 const cap=()=>{let n=0;cards.forEach(c=>{const x=st[c.dataset.k];c.classList.toggle('xong',!!(x&&x.v));if(x&&x.v)n++});document.getElementById('dem').textContent='Đã chọn '+n+'/'+cards.length}
 cards.forEach(c=>{const k=c.dataset.k;const x=st[k]||{};c.querySelectorAll('input[type=radio]').forEach(r=>{if(x.v&&r.value===x.v)r.checked=true;r.onchange=()=>{st[k]=Object.assign(st[k]||{},{v:r.value});luu();cap()}});const g=c.querySelector('.gc');g.value=x.g||'';g.oninput=()=>{st[k]=Object.assign(st[k]||{},{g:g.value});luu()}});cap()
+const hang=(p)=>{cards.forEach(c=>{const r=[...c.querySelectorAll('input[type=radio]')].find(x=>x.value.startsWith(p));if(r){r.checked=true;st[c.dataset.k]=Object.assign(st[c.dataset.k]||{},{v:r.value})}});luu();cap()}
+document.getElementById('doi').onclick=()=>hang('đổi sang');document.getElementById('giu').onclick=()=>hang('giữ ');
 document.getElementById('cp').onclick=()=>{const t=cards.map(c=>{const x=st[c.dataset.k]||{};return c.dataset.nhan+': '+(x.v||'(chưa quyết)')+(x.g?' — '+x.g:'')}).join('\\n');navigator.clipboard.writeText(t).then(()=>alert('Đã sao chép '+cards.length+' dòng'),()=>{prompt('Sao chép:',t)})}
 </script></body></html>`
 fs.writeFileSync(OUT, html)

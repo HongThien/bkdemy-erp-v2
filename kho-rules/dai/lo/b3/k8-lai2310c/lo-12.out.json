@@ -1,0 +1,308 @@
+[
+ {
+  "ma_cau": "T108030103066",
+  "dang_bai_id": "NDB00977",
+  "chac": "cao",
+  "ly_do": "Nhận ra bình phương của tổng (x+y+4)^2 bằng HĐT."
+ },
+ {
+  "ma_cau": "T108000000299",
+  "dang_bai_id": "NDB00974",
+  "chac": "cao",
+  "ly_do": "Tìm x có (5+2x)^2, 4x^2 triệt tiêu, đưa về bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000576",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Nhân vào ngoặc, bậc hai triệt tiêu, còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000683",
+  "dang_bai_id": "NDB00696",
+  "chac": "cao",
+  "ly_do": "GTNN hai biến độc lập, hoàn thành bình phương riêng x và y."
+ },
+ {
+  "ma_cau": "T108000000678",
+  "dang_bai_id": "NDB01370",
+  "chac": "cao",
+  "ly_do": "Lập biểu thức diện tích đáy và thể tích thùng theo x."
+ },
+ {
+  "ma_cau": "T108030201019",
+  "dang_bai_id": "NDB00977",
+  "chac": "cao",
+  "ly_do": "Gom ba hạng tử thành (x+3y)^2 rồi dùng hiệu hai bình phương."
+ },
+ {
+  "ma_cau": "T108000000333",
+  "dang_bai_id": "NDB00668",
+  "chac": "cao",
+  "ly_do": "Nhận biết biểu thức không phải đa thức."
+ },
+ {
+  "ma_cau": "T108040101008",
+  "dang_bai_id": "NDB00664",
+  "chac": "cao",
+  "ly_do": "Đếm số đơn thức trong các biểu thức cho trước."
+ },
+ {
+  "ma_cau": "T108000000077",
+  "dang_bai_id": "NDB00676",
+  "chac": "cao",
+  "ly_do": "Đơn thức chia hết cho đơn thức nào."
+ },
+ {
+  "ma_cau": "T108000000238",
+  "dang_bai_id": "NDB00676",
+  "chac": "cao",
+  "ly_do": "Chia đơn thức cho đơn thức có số mũ chứa n."
+ },
+ {
+  "ma_cau": "T108030201091",
+  "dang_bai_id": "NDB00977",
+  "chac": "cao",
+  "ly_do": "Nhận ra (x^2-9)^2 rồi phân tích tiếp bằng hiệu hai bình phương."
+ },
+ {
+  "ma_cau": "T108000000646",
+  "dang_bai_id": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Cộng hai đa thức P và Q."
+ },
+ {
+  "ma_cau": "T108000000050",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Đa thức chia hết cho đơn thức nào."
+ },
+ {
+  "ma_cau": "T108000000318",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Chia đa thức cho đơn thức."
+ },
+ {
+  "ma_cau": "T108000000572",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Nhân vào ngoặc, bậc hai triệt tiêu, còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108010503065",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Chia đa thức cho đơn thức rồi bỏ ngoặc, đưa về bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000057",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức và đa thức, bậc hai triệt tiêu, còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000398",
+  "dang_bai_id": "NDB00666",
+  "chac": "vua",
+  "ly_do": "Hỏi bậc của đơn thức chưa thu gọn (có phép nhân 00673 làm bước đệm); chưa chắc khớp 00673."
+ },
+ {
+  "ma_cau": "T108000000629",
+  "dang_bai_id": "NDB00679",
+  "chac": "cao",
+  "ly_do": "Tìm m để đa thức chia hết cho đơn thức."
+ },
+ {
+  "ma_cau": "T108000000230",
+  "dang_bai_id": "NDB00971",
+  "chac": "cao",
+  "ly_do": "Tính nhanh bằng bình phương của một tổng (x+6)^2."
+ },
+ {
+  "ma_cau": "T108020702007",
+  "dang_bai_id": "NDB00469",
+  "chac": "vua",
+  "ly_do": "Đặt ẩn 1/a, dùng x^3+y^3+z^3=3xyz khi x+y+z=0 (00469); đề dạng phân thức 1/a nên cũng 00466."
+ },
+ {
+  "ma_cau": "T108000000502",
+  "dang_bai_id": "NDB00981",
+  "chac": "cao",
+  "ly_do": "Thu gọn về 8x^2+13x-6=0 rồi tách hạng tử, hệ số x^2 khác 1."
+ },
+ {
+  "ma_cau": "T108000000355",
+  "dang_bai_id": "NDB00973",
+  "chac": "cao",
+  "ly_do": "Rút gọn có bình phương tổng, hiệu ứng dụng HĐT."
+ },
+ {
+  "ma_cau": "T108000000734",
+  "dang_bai_id": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Tính tổng hiệu hai đa thức E, F."
+ },
+ {
+  "ma_cau": "T108030101148",
+  "dang_bai_id": "NDB00472",
+  "chac": "cao",
+  "ly_do": "Đảo dấu 4-x thành -(x-4) rồi rút nhân tử chung đa thức."
+ },
+ {
+  "ma_cau": "T108000000611",
+  "dang_bai_id": "NDB00973",
+  "chac": "cao",
+  "ly_do": "Rút gọn có (x+2y)(x-2y) là hiệu hai bình phương."
+ },
+ {
+  "ma_cau": "T108020702008",
+  "dang_bai_id": "NDB00469",
+  "chac": "vua",
+  "ly_do": "Suy ra 1/a+1/b+1/c=0 rồi dùng a^3+b^3+c^3=3abc (00469); đề dạng phân thức nên cũng 00466."
+ },
+ {
+  "ma_cau": "T108000000384",
+  "dang_bai_id": "NDB00698",
+  "chac": "cao",
+  "ly_do": "GTNN tách (2x-y+1)^2+(y-3)^2; bình phương 3 số, dạng sau tổng ba bình phương."
+ },
+ {
+  "ma_cau": "T108000000123",
+  "dang_bai_id": "NDB00673",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đơn thức."
+ },
+ {
+  "ma_cau": "T108000000657",
+  "dang_bai_id": "NDB00974",
+  "chac": "cao",
+  "ly_do": "Tìm x có (x-2)(x+2) HĐT, bậc ba triệt tiêu, còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000169",
+  "dang_bai_id": "NDB00692",
+  "chac": "cao",
+  "ly_do": "Viết hiệu hai bình phương 4x^2-9y^2 thành tích."
+ },
+ {
+  "ma_cau": "T108020502007",
+  "dang_bai_id": "NDB00972",
+  "chac": "cao",
+  "ly_do": "Tính giá trị bằng HĐT hiệu hai lập phương x^3-(2y)^3."
+ },
+ {
+  "ma_cau": "T108000000685",
+  "dang_bai_id": "NDB00697",
+  "chac": "cao",
+  "ly_do": "GTNN hai biến tách (x-2y)^2+(y-1)^2 + hằng số."
+ },
+ {
+  "ma_cau": "T108000000404",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Chia đa thức cho đơn thức."
+ },
+ {
+  "ma_cau": "T108000000725",
+  "dang_bai_id": "NDB00675",
+  "chac": "cao",
+  "ly_do": "Nhân đa thức với đa thức."
+ },
+ {
+  "ma_cau": "T108030301068",
+  "dang_bai_id": "NDB00976",
+  "chac": "cao",
+  "ly_do": "Phân tích bằng nhóm hạng tử, không dùng HĐT."
+ },
+ {
+  "ma_cau": "T108000000216",
+  "dang_bai_id": "NDB00664",
+  "chac": "cao",
+  "ly_do": "Trắc nghiệm nhận biết biểu thức không phải đơn thức."
+ },
+ {
+  "ma_cau": "T108030101126",
+  "dang_bai_id": "NDB00472",
+  "chac": "cao",
+  "ly_do": "Tách 6x+9=3(2x+3) rồi rút nhân tử chung đa thức (2x+3)."
+ },
+ {
+  "ma_cau": "T108000000267",
+  "dang_bai_id": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Tìm đa thức M bằng cộng trừ đa thức."
+ },
+ {
+  "ma_cau": "T108000000666",
+  "dang_bai_id": "NDB00681",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức hai biến, có chia đa thức cho đơn thức và nhân đa thức."
+ },
+ {
+  "ma_cau": "T108030201037",
+  "dang_bai_id": "NDB00977",
+  "chac": "cao",
+  "ly_do": "Gom ba hạng tử thành bình phương rồi dùng hiệu hai bình phương."
+ },
+ {
+  "ma_cau": "T108000000541",
+  "dang_bai_id": "NDB00671",
+  "chac": "cao",
+  "ly_do": "Cộng trừ các đơn thức đồng dạng."
+ },
+ {
+  "ma_cau": "T108000000440",
+  "dang_bai_id": "NDB00674",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đa thức."
+ },
+ {
+  "ma_cau": "T108000000785",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Chia đa thức cho đơn thức."
+ },
+ {
+  "ma_cau": "T108000000524",
+  "dang_bai_id": "NDB00667",
+  "chac": "cao",
+  "ly_do": "Nhóm các đơn thức đồng dạng."
+ },
+ {
+  "ma_cau": "T108000000294",
+  "dang_bai_id": "NDB01424",
+  "chac": "vua",
+  "ly_do": "Cho x+y và x-y tính x^2-y^2 bằng (x+y)(x-y); gần 01424 và 00971."
+ },
+ {
+  "ma_cau": "T108000000562",
+  "dang_bai_id": "NDB00682",
+  "chac": "cao",
+  "ly_do": "Thu gọn lũy thừa cùng cơ số thành 1-2x rồi thay x=501."
+ },
+ {
+  "ma_cau": "T108000000396",
+  "dang_bai_id": "NDB00667",
+  "chac": "cao",
+  "ly_do": "Tìm đơn thức đồng dạng."
+ },
+ {
+  "ma_cau": "T108000000788",
+  "dang_bai_id": "NDB00681",
+  "chac": "cao",
+  "ly_do": "Chứng minh không phụ thuộc biến bằng nhân đa thức, không có HĐT."
+ },
+ {
+  "ma_cau": "T108000000035",
+  "dang_bai_id": "NDB00681",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức hai biến, chia đa thức cho đơn thức và nhân đa thức."
+ },
+ {
+  "ma_cau": "T108000000134",
+  "dang_bai_id": "NDB00681",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức hai biến bằng nhân đơn thức với đa thức."
+ }
+]
