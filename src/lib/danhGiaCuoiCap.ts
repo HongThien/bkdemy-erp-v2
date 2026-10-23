@@ -32,6 +32,13 @@ export async function khoiCuoiCap(): Promise<string[]> {
   return ((data ?? []) as { khoi: string[] }[])[0]?.khoi ?? []
 }
 
+// Ngưỡng xu hướng theo tầng (_dgcc_nguong) — chỉ để ghi chú dưới bảng, nhãn đã tính ở DB.
+export async function nguongTang(): Promise<Record<string, { nhe: number; ro: number }>> {
+  const { data, error } = await supabase.rpc('_dgcc_nguong')
+  if (error) throw error
+  return Object.fromEntries(((data ?? []) as { tang: string; nhe: number; ro: number }[]).map((r) => [r.tang, { nhe: Number(r.nhe), ro: Number(r.ro) }]))
+}
+
 export async function bangLop(lopId: string, tang: TangCC): Promise<OCC[]> {
   const { data, error } = await supabase.rpc('fn_dgcc_lop', { p_lop: lopId, p_tang: tang }).limit(20000)
   if (error) throw error
