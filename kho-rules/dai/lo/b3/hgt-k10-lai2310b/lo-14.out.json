@@ -1,0 +1,602 @@
+[
+ {
+  "ma_cau": "T310000000955",
+  "dang_bai_id": "NDB00921",
+  "chac": "cao",
+  "ly_do": "Tọa độ có cộng/trừ/nhân số; ý c phân tích theo 2 véc tơ chưa có dạng riêng"
+ },
+ {
+  "ma_cau": "T310000000956",
+  "dang_bai_id": "NDB00926",
+  "chac": "cao",
+  "ly_do": "Nhiều ý tọa độ điểm; dạng sau cùng: điểm thoả đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000957",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Chứng minh thẳng hàng, tỉ số chia bằng véc tơ cùng phương"
+ },
+ {
+  "ma_cau": "T310000000958",
+  "dang_bai_id": "NDB00926",
+  "chac": "cao",
+  "ly_do": "Ý c,d tìm điểm thoả đẳng thức véc tơ (dạng sau thắng)"
+ },
+ {
+  "ma_cau": "T310000000959",
+  "dang_bai_id": "NDB00925",
+  "chac": "cao",
+  "ly_do": "Có đỉnh thứ tư hình bình hành (dạng sau thắng) cùng đối xứng, trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000960",
+  "dang_bai_id": "NDB00925",
+  "chac": "cao",
+  "ly_do": "Hình bình hành là dạng sau cùng; các ý khác tọa độ cơ bản"
+ },
+ {
+  "ma_cau": "T310000000961",
+  "dang_bai_id": "NDB00941",
+  "chac": "cao",
+  "ly_do": "Trực tâm dùng vuông góc tích vô hướng (dạng sau cùng)"
+ },
+ {
+  "ma_cau": "T310000000962",
+  "dang_bai_id": "NDB00941",
+  "chac": "cao",
+  "ly_do": "Trực tâm dùng vuông góc tích vô hướng (dạng sau cùng)"
+ },
+ {
+  "ma_cau": "T310000000963",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Véc tơ bằng OA trong hình bình hành"
+ },
+ {
+  "ma_cau": "T310000000964",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Đếm véc tơ khác 0 từ 3 điểm"
+ },
+ {
+  "ma_cau": "T310000000965",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài một véc tơ AM, không tổng/hiệu"
+ },
+ {
+  "ma_cau": "T310000000966",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Tổng 2 véc tơ quy tắc 3 điểm"
+ },
+ {
+  "ma_cau": "T310000000967",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Hiệu 2 véc tơ"
+ },
+ {
+  "ma_cau": "T310000000968",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ hiệu, không tích với số"
+ },
+ {
+  "ma_cau": "T310000000969",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Quỹ tích/tập hợp điểm: bản đồ thiếu dạng quỹ tích"
+ },
+ {
+  "ma_cau": "T310000000970",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng trong hình vuông"
+ },
+ {
+  "ma_cau": "T310000000971",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng trong tam giác đều"
+ },
+ {
+  "ma_cau": "T310000000972",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng trong hình vuông"
+ },
+ {
+  "ma_cau": "T310000000977",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng trong hình chữ nhật"
+ },
+ {
+  "ma_cau": "T310000000978",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "Hợp lực của 2 lực"
+ },
+ {
+  "ma_cau": "T310000000979",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "Hai véc tơ cùng phương BI=m.BK (ba điểm thẳng hàng)"
+ },
+ {
+  "ma_cau": "T310000000980",
+  "dang_bai_id": "NDB00914",
+  "chac": "cao",
+  "ly_do": "Bài thực tế kéo co dùng tích véc tơ với số"
+ },
+ {
+  "ma_cau": "T310000000981",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng trong hình bình hành"
+ },
+ {
+  "ma_cau": "T310000000982",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Chứng minh đẳng thức tích vô hướng/độ dài trong tam giác nội tiếp: bản đồ thiếu dạng"
+ },
+ {
+  "ma_cau": "T310000000983",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Phát biểu về phương, hướng véc tơ"
+ },
+ {
+  "ma_cau": "T310000000984",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Đếm véc tơ khác 0 từ 3 đỉnh"
+ },
+ {
+  "ma_cau": "T310000000985",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Cặp véc tơ cùng hướng"
+ },
+ {
+  "ma_cau": "T310000000986",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Hiệu 2 véc tơ"
+ },
+ {
+  "ma_cau": "T310000000987",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Rút gọn tổng hiệu véc tơ"
+ },
+ {
+  "ma_cau": "T310000000988",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "Tìm vị trí điểm M thoả đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000989",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài, lời giải có 2AC (tích với số)"
+ },
+ {
+  "ma_cau": "T310000000990",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Chọn đẳng thức véc tơ sai trong tam giác"
+ },
+ {
+  "ma_cau": "T310000000995",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài một véc tơ MN, không tổng/hiệu"
+ },
+ {
+  "ma_cau": "T310000000996",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài tổng, lời giải có 2AM"
+ },
+ {
+  "ma_cau": "T310000000997",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn véc tơ theo BA, BC trong hình thoi"
+ },
+ {
+  "ma_cau": "T310000000998",
+  "dang_bai_id": "NDB00917",
+  "chac": "cao",
+  "ly_do": "Cộng vận tốc ca nô, dòng nước"
+ },
+ {
+  "ma_cau": "T310000000999",
+  "dang_bai_id": "NDB00917",
+  "chac": "cao",
+  "ly_do": "Cộng vận tốc máy bay, gió"
+ },
+ {
+  "ma_cau": "T310010201001",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Đẳng thức/tính chất tích véc tơ với số, trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310010201002",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Đẳng thức/tính chất tích véc tơ với số, trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310010201003",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Đẳng thức/tính chất tích véc tơ với số, trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310010201004",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Đẳng thức/tính chất tích véc tơ với số, trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310010201005",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Đẳng thức/tính chất tích véc tơ với số, trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310010201007",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Đẳng thức/tính chất tích véc tơ với số, trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310010201008",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Đẳng thức/tính chất tích véc tơ với số, trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310010201009",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Đẳng thức/tính chất tích véc tơ với số, trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310010201010",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "Xác định vị trí điểm P từ MN=-3MP"
+ },
+ {
+  "ma_cau": "T310010201011",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Đẳng thức/tính chất tích véc tơ với số, trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310010201012",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Đẳng thức/tính chất tích véc tơ với số, trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310010201014",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Đẳng thức/tính chất tích véc tơ với số, trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310010201015",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Đẳng thức/tính chất tích véc tơ với số, trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310010201017",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Đẳng thức/tính chất tích véc tơ với số, trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310010201018",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Đẳng thức/tính chất tích véc tơ với số, trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310010201019",
+  "dang_bai_id": "NDB01421",
+  "chac": "vua",
+  "ly_do": "Đếm điểm A thoả OA=5a: vị trí điểm hoặc định nghĩa tích với số"
+ },
+ {
+  "ma_cau": "T310010201020",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "Đáp án/lời giải nghi lỗi: IA=BI mới đúng, đáp án ghi C"
+ },
+ {
+  "ma_cau": "T310010201021",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Đẳng thức/tính chất tích véc tơ với số, trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310010201022",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Đẳng thức/tính chất tích véc tơ với số, trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310010201023",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Đẳng thức/tính chất tích véc tơ với số, trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310010201024",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Đẳng thức/tính chất tích véc tơ với số, trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310010201025",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Đáp án đúng BI=IC: hai véc tơ bằng nhau"
+ },
+ {
+  "ma_cau": "T310010201026",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Đẳng thức/tính chất tích véc tơ với số, trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310010201027",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Đẳng thức/tính chất tích véc tơ với số, trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310010201028",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Đẳng thức/tính chất tích véc tơ với số, trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310010201029",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Đẳng thức/tính chất tích véc tơ với số, trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310010201030",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "Điểm thoả đẳng thức véc tơ, tìm vị trí/biểu diễn (dạng sau thắng)"
+ },
+ {
+  "ma_cau": "T310010201031",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "Điểm thoả đẳng thức véc tơ, tìm vị trí/biểu diễn (dạng sau thắng)"
+ },
+ {
+  "ma_cau": "T310010201032",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ có tích với số"
+ },
+ {
+  "ma_cau": "T310010201033",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ có tích với số"
+ },
+ {
+  "ma_cau": "T310010201034",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ có tích với số"
+ },
+ {
+  "ma_cau": "T310010201035",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ có tích với số"
+ },
+ {
+  "ma_cau": "T310010201036",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "Điểm thoả đẳng thức véc tơ, tìm vị trí/biểu diễn (dạng sau thắng)"
+ },
+ {
+  "ma_cau": "T310010201037",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "Điểm thoả đẳng thức véc tơ, tìm vị trí/biểu diễn (dạng sau thắng)"
+ },
+ {
+  "ma_cau": "T310010201038",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "Điểm thoả đẳng thức véc tơ, tìm vị trí/biểu diễn (dạng sau thắng)"
+ },
+ {
+  "ma_cau": "T310010201039",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "Điểm thoả đẳng thức véc tơ, tìm vị trí/biểu diễn (dạng sau thắng)"
+ },
+ {
+  "ma_cau": "T310010201040",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn/chọn đẳng thức véc tơ trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310010201041",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn/chọn đẳng thức véc tơ trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310010201042",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Đẳng thức/tính chất tích véc tơ với số, trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310010201043",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn/chọn đẳng thức véc tơ trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310010201044",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Đẳng thức/tính chất tích véc tơ với số, trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310010201045",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "Rút gọn tổng ra k.véc tơ; đáp án ghi D nghi lỗi (đúng 2BD)"
+ },
+ {
+  "ma_cau": "T310010201046",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn/chọn đẳng thức véc tơ trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310010201047",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn/chọn đẳng thức véc tơ trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310010201048",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ có tích với số"
+ },
+ {
+  "ma_cau": "T310010201049",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ có tích với số"
+ },
+ {
+  "ma_cau": "T310010201050",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Đẳng thức/tính chất tích véc tơ với số, trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310010201051",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Đẳng thức/tính chất tích véc tơ với số, trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310010201052",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn/chọn đẳng thức véc tơ trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310010201053",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "Điểm thoả đẳng thức véc tơ, tìm vị trí/biểu diễn (dạng sau thắng)"
+ },
+ {
+  "ma_cau": "T310010201054",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "Điểm thoả đẳng thức véc tơ, tìm vị trí/biểu diễn (dạng sau thắng)"
+ },
+ {
+  "ma_cau": "T310010201055",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn/chọn đẳng thức véc tơ trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310010201056",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ có tích với số"
+ },
+ {
+  "ma_cau": "T310010201057",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn/chọn đẳng thức véc tơ trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310010201058",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ có tích với số"
+ },
+ {
+  "ma_cau": "T310010201059",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn/chọn đẳng thức véc tơ trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310010201060",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn/chọn đẳng thức véc tơ trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310010201061",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Đẳng thức/tính chất tích véc tơ với số, trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310010201062",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn/chọn đẳng thức véc tơ trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310010201063",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Đẳng thức/tính chất tích véc tơ với số, trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310010201064",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "Điểm thoả đẳng thức véc tơ, tìm vị trí/biểu diễn (dạng sau thắng)"
+ },
+ {
+  "ma_cau": "T310010201065",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Đẳng thức/tính chất tích véc tơ với số, trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310010201066",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Biểu diễn/chọn đẳng thức véc tơ trong tam giác, tứ giác"
+ }
+]

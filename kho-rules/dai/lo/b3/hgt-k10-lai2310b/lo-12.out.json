@@ -1,0 +1,602 @@
+[
+ {
+  "ma_cau": "T310000000719",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quỹ tích/tập hợp điểm: bản đồ thiếu dạng quỹ tích"
+ },
+ {
+  "ma_cau": "T310000000720",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quỹ tích/tập hợp điểm: bản đồ thiếu dạng quỹ tích"
+ },
+ {
+  "ma_cau": "T310000000721",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quỹ tích/tập hợp điểm: bản đồ thiếu dạng quỹ tích"
+ },
+ {
+  "ma_cau": "T310000000722",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quỹ tích/tập hợp điểm: bản đồ thiếu dạng quỹ tích"
+ },
+ {
+  "ma_cau": "T310000000723",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quỹ tích/tập hợp điểm: bản đồ thiếu dạng quỹ tích"
+ },
+ {
+  "ma_cau": "T310000000724",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quỹ tích/tập hợp điểm: bản đồ thiếu dạng quỹ tích"
+ },
+ {
+  "ma_cau": "T310000000725",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quỹ tích/tập hợp điểm: bản đồ thiếu dạng quỹ tích"
+ },
+ {
+  "ma_cau": "T310000000726",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quỹ tích/tập hợp điểm: bản đồ thiếu dạng quỹ tích"
+ },
+ {
+  "ma_cau": "T310000000727",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quỹ tích/tập hợp điểm: bản đồ thiếu dạng quỹ tích"
+ },
+ {
+  "ma_cau": "T310000000728",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quỹ tích/tập hợp điểm: bản đồ thiếu dạng quỹ tích"
+ },
+ {
+  "ma_cau": "T310000000729",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quỹ tích/tập hợp điểm: bản đồ thiếu dạng quỹ tích"
+ },
+ {
+  "ma_cau": "T310000000730",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quỹ tích/tập hợp điểm: bản đồ thiếu dạng quỹ tích"
+ },
+ {
+  "ma_cau": "T310000000731",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quỹ tích/tập hợp điểm: bản đồ thiếu dạng quỹ tích"
+ },
+ {
+  "ma_cau": "T310000000732",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quỹ tích/tập hợp điểm: bản đồ thiếu dạng quỹ tích"
+ },
+ {
+  "ma_cau": "T310000000733",
+  "dang_bai_id": "NDB01421",
+  "chac": "vua",
+  "ly_do": "ý a vị trí điểm, b thẳng hàng, c tập hợp điểm (thiếu dạng quỹ tích)"
+ },
+ {
+  "ma_cau": "T310000000734",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "chứng minh không đổi + quỹ tích: bản đồ thiếu dạng quỹ tích"
+ },
+ {
+  "ma_cau": "T310000000735",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quỹ tích/tập hợp điểm: bản đồ thiếu dạng quỹ tích"
+ },
+ {
+  "ma_cau": "T310000000736",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quỹ tích/tập hợp điểm: bản đồ thiếu dạng quỹ tích"
+ },
+ {
+  "ma_cau": "T310000000737",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc quỹ tích/tập hợp điểm: bản đồ thiếu dạng quỹ tích"
+ },
+ {
+  "ma_cau": "T310000000738",
+  "dang_bai_id": "NDB00918",
+  "chac": "cao",
+  "ly_do": "tọa độ véc tơ theo i, j"
+ },
+ {
+  "ma_cau": "T310000000742",
+  "dang_bai_id": "NDB00921",
+  "chac": "cao",
+  "ly_do": "tọa độ véc tơ chứa cộng, trừ, nhân với số"
+ },
+ {
+  "ma_cau": "T310000000743",
+  "dang_bai_id": "NDB00921",
+  "chac": "cao",
+  "ly_do": "tọa độ véc tơ chứa cộng, trừ, nhân với số"
+ },
+ {
+  "ma_cau": "T310000000744",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "có ý cùng phương (dạng sau thắng 924 so với 921)"
+ },
+ {
+  "ma_cau": "T310000000745",
+  "dang_bai_id": "NDB00940",
+  "chac": "cao",
+  "ly_do": "có tích vô hướng tọa độ (sau 921)"
+ },
+ {
+  "ma_cau": "T310000000746",
+  "dang_bai_id": "NDB00940",
+  "chac": "cao",
+  "ly_do": "có tích vô hướng tọa độ (sau 921)"
+ },
+ {
+  "ma_cau": "T310000000747",
+  "dang_bai_id": "NDB00921",
+  "chac": "cao",
+  "ly_do": "tọa độ véc tơ chứa cộng, trừ, nhân với số"
+ },
+ {
+  "ma_cau": "T310000000748",
+  "dang_bai_id": "NDB00921",
+  "chac": "cao",
+  "ly_do": "tọa độ véc tơ chứa cộng, trừ, nhân với số"
+ },
+ {
+  "ma_cau": "T310000000749",
+  "dang_bai_id": "NDB00921",
+  "chac": "cao",
+  "ly_do": "tọa độ véc tơ chứa cộng, trừ, nhân với số"
+ },
+ {
+  "ma_cau": "T310000000750",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "chứng minh 3 điểm thẳng hàng bằng tọa độ"
+ },
+ {
+  "ma_cau": "T310000000751",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "chứng minh cùng hướng/ngược hướng/đối nhau qua tỉ lệ tọa độ (cùng phương)"
+ },
+ {
+  "ma_cau": "T310000000752",
+  "dang_bai_id": "NDB01422",
+  "chac": "cao",
+  "ly_do": "tìm a, b để 2 véc tơ bằng nhau"
+ },
+ {
+  "ma_cau": "T310000000753",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "tìm m để 3 điểm thẳng hàng"
+ },
+ {
+  "ma_cau": "T310000000754",
+  "dang_bai_id": "NDB01422",
+  "chac": "cao",
+  "ly_do": "tìm a, b để 2 véc tơ bằng nhau"
+ },
+ {
+  "ma_cau": "T310000000755",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "điểm thuộc trục/phân giác góc phần tư: bản đồ thiếu dạng tọa độ trên trục/hình chiếu/đối xứng"
+ },
+ {
+  "ma_cau": "T310000000756",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000757",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000758",
+  "dang_bai_id": "NDB00941",
+  "chac": "cao",
+  "ly_do": "độ dài cạnh, góc B=90 độ bằng tích vô hướng, tâm ngoại tiếp (dạng sau 941)"
+ },
+ {
+  "ma_cau": "T310000000759",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "điểm thuộc trục/phân giác góc phần tư: bản đồ thiếu dạng tọa độ trên trục/hình chiếu/đối xứng"
+ },
+ {
+  "ma_cau": "T310000000760",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "hình chiếu, đối xứng qua trục/gốc: bản đồ thiếu dạng tọa độ trên trục/hình chiếu/đối xứng"
+ },
+ {
+  "ma_cau": "T310000000761",
+  "dang_bai_id": "NDB00925",
+  "chac": "cao",
+  "ly_do": "tìm D hình bình hành (+ giao điểm đường chéo; dạng sau 925)"
+ },
+ {
+  "ma_cau": "T310000000762",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000763",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "tìm M, trung điểm N, chứng minh bằng nhau (dạng sau 923)"
+ },
+ {
+  "ma_cau": "T310000000764",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "tìm đỉnh từ trung điểm các cạnh"
+ },
+ {
+  "ma_cau": "T310000000765",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "có ý chứng minh không thẳng hàng (924 sau 923)"
+ },
+ {
+  "ma_cau": "T310000000766",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "có ý chứng minh không thẳng hàng (924 sau 923)"
+ },
+ {
+  "ma_cau": "T310000000767",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000768",
+  "dang_bai_id": "NDB00926",
+  "chac": "cao",
+  "ly_do": "trung điểm + tìm N thỏa NA=2NB (dạng sau 926)"
+ },
+ {
+  "ma_cau": "T310000000769",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "chứng minh 3 điểm không thẳng hàng + trọng tâm (924 sau 923)"
+ },
+ {
+  "ma_cau": "T310000000770",
+  "dang_bai_id": "NDB00925",
+  "chac": "cao",
+  "ly_do": "có ý ABCO hình bình hành (925 sau 924)"
+ },
+ {
+  "ma_cau": "T310000000771",
+  "dang_bai_id": "NDB00927",
+  "chac": "cao",
+  "ly_do": "điểm trên trục để độ dài tổng véc tơ nhỏ nhất"
+ },
+ {
+  "ma_cau": "T310000000772",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "tìm đỉnh từ trung điểm các cạnh"
+ },
+ {
+  "ma_cau": "T310000000773",
+  "dang_bai_id": "NDB00925",
+  "chac": "vua",
+  "ly_do": "độ dài cạnh + tìm D để ABDC hình vuông; không có dạng riêng cho hình vuông"
+ },
+ {
+  "ma_cau": "T310000000774",
+  "dang_bai_id": "NDB00924",
+  "chac": "vua",
+  "ly_do": "ý a thẳng hàng P trên Oy; ý b,c đối xứng thuộc dạng thiếu"
+ },
+ {
+  "ma_cau": "T310000000775",
+  "dang_bai_id": "NDB00927",
+  "chac": "cao",
+  "ly_do": "ý a,b cực trị trên trục; ý c tập hợp điểm đi kèm"
+ },
+ {
+  "ma_cau": "T310000000776",
+  "dang_bai_id": "NDB00941",
+  "chac": "vua",
+  "ly_do": "chứng minh tam giác, trọng tâm, tâm ngoại tiếp, trực tâm bằng vuông góc"
+ },
+ {
+  "ma_cau": "T310000000777",
+  "dang_bai_id": "NDB00941",
+  "chac": "cao",
+  "ly_do": "tam giác vuông tại A dùng tích vô hướng bằng 0"
+ },
+ {
+  "ma_cau": "T310000000778",
+  "dang_bai_id": "NDB00941",
+  "chac": "vua",
+  "ly_do": "hình vuông biết 2 đỉnh đối: trung điểm + vuông góc; không dạng riêng"
+ },
+ {
+  "ma_cau": "T310000000779",
+  "dang_bai_id": "NDB00941",
+  "chac": "cao",
+  "ly_do": "chân đường cao (vuông góc) + cạnh, góc (dạng sau 941)"
+ },
+ {
+  "ma_cau": "T310000000780",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "tìm đỉnh từ trung điểm, trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000781",
+  "dang_bai_id": "NDB00925",
+  "chac": "cao",
+  "ly_do": "tìm D để ABCD hình bình hành"
+ },
+ {
+  "ma_cau": "T310000000782",
+  "dang_bai_id": "NDB00925",
+  "chac": "vua",
+  "ly_do": "tìm Q để MNPQ hình thang với PQ=2MN, gần dạng hình bình hành"
+ },
+ {
+  "ma_cau": "T310000000783",
+  "dang_bai_id": "NDB00925",
+  "chac": "vua",
+  "ly_do": "ý c hình thang CD=3/2 AB (925 sau 924, 923)"
+ },
+ {
+  "ma_cau": "T310000000784",
+  "dang_bai_id": "NDB00927",
+  "chac": "cao",
+  "ly_do": "điểm trên Ox để độ dài tổng véc tơ nhỏ nhất"
+ },
+ {
+  "ma_cau": "T310000000785",
+  "dang_bai_id": "NDB00942",
+  "chac": "cao",
+  "ly_do": "góc giữa 2 véc tơ theo tọa độ"
+ },
+ {
+  "ma_cau": "T310000000786",
+  "dang_bai_id": "NDB00940",
+  "chac": "cao",
+  "ly_do": "có tích vô hướng tọa độ (sau 921)"
+ },
+ {
+  "ma_cau": "T310000000787",
+  "dang_bai_id": "NDB00940",
+  "chac": "cao",
+  "ly_do": "tích vô hướng tọa độ"
+ },
+ {
+  "ma_cau": "T310000000788",
+  "dang_bai_id": "NDB00942",
+  "chac": "cao",
+  "ly_do": "góc giữa 2 véc tơ theo tọa độ"
+ },
+ {
+  "ma_cau": "T310000000789",
+  "dang_bai_id": "NDB00941",
+  "chac": "cao",
+  "ly_do": "chứng minh hình vuông bằng véc tơ bằng nhau và vuông góc"
+ },
+ {
+  "ma_cau": "T310000000790",
+  "dang_bai_id": "NDB00942",
+  "chac": "cao",
+  "ly_do": "giải tam giác: cạnh và góc bằng tọa độ"
+ },
+ {
+  "ma_cau": "T310000000791",
+  "dang_bai_id": "NDB00922",
+  "chac": "cao",
+  "ly_do": "tính độ dài và chứng minh vuông cân bằng độ dài, Pythagore"
+ },
+ {
+  "ma_cau": "T310000000792",
+  "dang_bai_id": "NDB00942",
+  "chac": "cao",
+  "ly_do": "góc giữa 2 véc tơ theo tọa độ"
+ },
+ {
+  "ma_cau": "T310000000793",
+  "dang_bai_id": "NDB00941",
+  "chac": "cao",
+  "ly_do": "tam giác vuông tại C: tích vô hướng bằng 0"
+ },
+ {
+  "ma_cau": "T310000000794",
+  "dang_bai_id": "NDB00942",
+  "chac": "cao",
+  "ly_do": "giải tam giác (942 sau 924, 923)"
+ },
+ {
+  "ma_cau": "T310000000795",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "tổng hợp 3 lực, hình đủ dữ kiện"
+ },
+ {
+  "ma_cau": "T310000000797",
+  "dang_bai_id": "NDB00920",
+  "chac": "cao",
+  "ly_do": "vị trí chuyển động thẳng đều qua véc tơ vận tốc"
+ },
+ {
+  "ma_cau": "T310000000798",
+  "dang_bai_id": "NDB00926",
+  "chac": "vua",
+  "ly_do": "tìm tọa độ M trên trục thỏa đẳng thức véc tơ; trục chưa có dạng riêng"
+ },
+ {
+  "ma_cau": "T310000000799",
+  "dang_bai_id": "NDB00926",
+  "chac": "vua",
+  "ly_do": "tìm tọa độ M trên trục thỏa đẳng thức véc tơ; trục chưa có dạng riêng"
+ },
+ {
+  "ma_cau": "T310000000800",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "chọn mệnh đề đúng/sai về trục tọa độ: bản đồ thiếu dạng tọa độ trên trục/hình chiếu/đối xứng"
+ },
+ {
+  "ma_cau": "T310000000801",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "đối xứng trên trục: bản đồ thiếu dạng tọa độ trên trục/hình chiếu/đối xứng"
+ },
+ {
+  "ma_cau": "T310000000802",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "mệnh đề trung điểm trên trục: bản đồ thiếu dạng tọa độ trên trục/hình chiếu/đối xứng"
+ },
+ {
+  "ma_cau": "T310000000803",
+  "dang_bai_id": "NDB00926",
+  "chac": "vua",
+  "ly_do": "tìm tọa độ M trên trục thỏa đẳng thức véc tơ; trục chưa có dạng riêng"
+ },
+ {
+  "ma_cau": "T310000000804",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "độ dài đoạn trên trục, cực trị theo m: bản đồ thiếu dạng tọa độ trên trục/hình chiếu/đối xứng"
+ },
+ {
+  "ma_cau": "T310000000805",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "mệnh đề trung điểm trên trục: bản đồ thiếu dạng tọa độ trên trục/hình chiếu/đối xứng"
+ },
+ {
+  "ma_cau": "T310000000806",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "phương trình độ dài trên trục: bản đồ thiếu dạng tọa độ trên trục/hình chiếu/đối xứng"
+ },
+ {
+  "ma_cau": "T310000000807",
+  "dang_bai_id": "NDB00918",
+  "chac": "cao",
+  "ly_do": "tọa độ véc tơ theo i, j"
+ },
+ {
+  "ma_cau": "T310000000808",
+  "dang_bai_id": "NDB00918",
+  "chac": "cao",
+  "ly_do": "tọa độ véc tơ theo i, j"
+ },
+ {
+  "ma_cau": "T310000000809",
+  "dang_bai_id": "NDB00918",
+  "chac": "cao",
+  "ly_do": "tọa độ véc tơ theo i, j"
+ },
+ {
+  "ma_cau": "T310000000810",
+  "dang_bai_id": "NDB00922",
+  "chac": "cao",
+  "ly_do": "độ dài véc tơ từ tọa độ"
+ },
+ {
+  "ma_cau": "T310000000811",
+  "dang_bai_id": "NDB00919",
+  "chac": "cao",
+  "ly_do": "tọa độ véc tơ AB từ 2 điểm"
+ },
+ {
+  "ma_cau": "T310000000812",
+  "dang_bai_id": "NDB00918",
+  "chac": "cao",
+  "ly_do": "tọa độ véc tơ theo i, j"
+ },
+ {
+  "ma_cau": "T310000000813",
+  "dang_bai_id": "NDB00922",
+  "chac": "cao",
+  "ly_do": "độ dài véc tơ từ tọa độ"
+ },
+ {
+  "ma_cau": "T310000000814",
+  "dang_bai_id": "NDB00919",
+  "chac": "cao",
+  "ly_do": "tọa độ véc tơ AB từ 2 điểm"
+ },
+ {
+  "ma_cau": "T310000000815",
+  "dang_bai_id": "NDB00921",
+  "chac": "cao",
+  "ly_do": "tọa độ véc tơ chứa cộng, trừ, nhân với số"
+ },
+ {
+  "ma_cau": "T310000000816",
+  "dang_bai_id": "NDB00921",
+  "chac": "cao",
+  "ly_do": "tọa độ véc tơ chứa cộng, trừ, nhân với số"
+ },
+ {
+  "ma_cau": "T310000000817",
+  "dang_bai_id": "NDB00918",
+  "chac": "cao",
+  "ly_do": "tọa độ véc tơ theo i, j"
+ },
+ {
+  "ma_cau": "T310000000818",
+  "dang_bai_id": "NDB00921",
+  "chac": "cao",
+  "ly_do": "tọa độ véc tơ chứa cộng, trừ, nhân với số"
+ },
+ {
+  "ma_cau": "T310000000819",
+  "dang_bai_id": "NDB00921",
+  "chac": "cao",
+  "ly_do": "tọa độ véc tơ chứa cộng, trừ, nhân với số"
+ },
+ {
+  "ma_cau": "T310000000820",
+  "dang_bai_id": "NDB00918",
+  "chac": "vua",
+  "ly_do": "chọn véc tơ trong hình biểu diễn 3i-2j; nội dung dựa vào hình"
+ },
+ {
+  "ma_cau": "T310000000821",
+  "dang_bai_id": "NDB00924",
+  "chac": "vua",
+  "ly_do": "tìm x để AB=x.AC (cùng phương); đề ký hiệu lỗi"
+ },
+ {
+  "ma_cau": "T310000000822",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "chọn cặp véc tơ không cùng phương"
+ }
+]
