@@ -1,0 +1,602 @@
+[
+ {
+  "ma_cau": "T310000000035",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Cùng hướng + tìm vectơ bằng; dạng sau là 903"
+ },
+ {
+  "ma_cau": "T310000000036",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Quan hệ phương hướng độ dài, đếm cặp vectơ bằng nhau"
+ },
+ {
+  "ma_cau": "T310000000037",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Tính độ dài vectơ BC trong tam giác vuông"
+ },
+ {
+  "ma_cau": "T310000000038",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài trung tuyến AM tam giác đều"
+ },
+ {
+  "ma_cau": "T310000000039",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài AB, AC hình vuông"
+ },
+ {
+  "ma_cau": "T310000000040",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Chứng minh AH=DC (hai vectơ bằng nhau) nên độ dài không đổi"
+ },
+ {
+  "ma_cau": "T310000000041",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Tìm hai vectơ bằng nhau và hai vectơ đối nhau"
+ },
+ {
+  "ma_cau": "T310000000042",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "Vẽ điểm M, N thỏa đẳng thức vectơ, không tọa độ"
+ },
+ {
+  "ma_cau": "T310000000043",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Chứng minh MN=QP, đúng ví dụ mẫu 903"
+ },
+ {
+  "ma_cau": "T310000000044",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Chứng minh hai vectơ bằng nhau bằng đường trung bình"
+ },
+ {
+  "ma_cau": "T310000000045",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Vectơ cùng phương OA và vectơ bằng AB; dạng sau là 903"
+ },
+ {
+  "ma_cau": "T310000000046",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Chứng minh BH=A'C bằng hình bình hành, quan hệ AH và OM"
+ },
+ {
+  "ma_cau": "T310000000047",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Phân biệt đại lượng có hướng (vectơ) và vô hướng"
+ },
+ {
+  "ma_cau": "T310000000048",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Nhận biết đại lượng biểu diễn bằng vectơ"
+ },
+ {
+  "ma_cau": "T310000000049",
+  "dang_bai_id": "NDB00914",
+  "chac": "cao",
+  "ly_do": "Bài thực tế trọng lực, lực căng; phương chiều của lực"
+ },
+ {
+  "ma_cau": "T310000000050",
+  "dang_bai_id": "NDB00914",
+  "chac": "vua",
+  "ly_do": "Ròng rọc thực tế, vectơ chỉ có trong hình"
+ },
+ {
+  "ma_cau": "T310000000051",
+  "dang_bai_id": "NDB00914",
+  "chac": "vua",
+  "ly_do": "Hệ vật ròng rọc thực tế, vectơ chỉ có trong hình"
+ },
+ {
+  "ma_cau": "T310000000052",
+  "dang_bai_id": "NDB00914",
+  "chac": "cao",
+  "ly_do": "Tàu chuyển động đều, quãng đường và hướng: bài thực tế vận tốc"
+ },
+ {
+  "ma_cau": "T310000000053",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Định nghĩa vectơ"
+ },
+ {
+  "ma_cau": "T310000000054",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Đáp án sai nói về ba điểm thẳng hàng và cùng phương"
+ },
+ {
+  "ma_cau": "T310000000055",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Vectơ-không cùng hướng mọi vectơ; cùng phương/hướng"
+ },
+ {
+  "ma_cau": "T310000000056",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Điều kiện thẳng hàng qua cùng phương/cùng hướng"
+ },
+ {
+  "ma_cau": "T310000000057",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Định nghĩa hai vectơ bằng nhau"
+ },
+ {
+  "ma_cau": "T310000000058",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Vectơ cùng phương với hai vectơ không cùng phương"
+ },
+ {
+  "ma_cau": "T310000000059",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Tính chất hai vectơ đối nhau"
+ },
+ {
+  "ma_cau": "T310000000060",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Tính chất hai vectơ bằng nhau"
+ },
+ {
+  "ma_cau": "T310000000061",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Đếm vectơ từ ba đỉnh tam giác, đúng ví dụ 901"
+ },
+ {
+  "ma_cau": "T310000000062",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Tìm vectơ cùng hướng với MN"
+ },
+ {
+  "ma_cau": "T310000000063",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Ba điểm thẳng hàng B ở giữa, cặp vectơ cùng hướng"
+ },
+ {
+  "ma_cau": "T310000000064",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Hình bình hành, chọn đẳng thức vectơ bằng nhau sai"
+ },
+ {
+  "ma_cau": "T310000000065",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Tính độ dài AN trong tam giác đều"
+ },
+ {
+  "ma_cau": "T310000000066",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Đếm vectơ có điểm đầu A"
+ },
+ {
+  "ma_cau": "T310000000067",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Đếm vectơ cùng phương với BC"
+ },
+ {
+  "ma_cau": "T310000000068",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Ký hiệu vectơ theo điểm đầu, điểm cuối"
+ },
+ {
+  "ma_cau": "T310000000069",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Đếm vectơ từ ba đỉnh tam giác"
+ },
+ {
+  "ma_cau": "T310000000070",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Cùng phương, cùng hướng trong hình bình hành"
+ },
+ {
+  "ma_cau": "T310000000071",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Hướng của các cặp vectơ trong hình chữ nhật"
+ },
+ {
+  "ma_cau": "T310000000073",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Chọn đẳng thức vectơ bằng nhau sai trong hình bình hành"
+ },
+ {
+  "ma_cau": "T310000000074",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Đếm vectơ bằng OC trong lục giác đều"
+ },
+ {
+  "ma_cau": "T310000000075",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Mệnh đề sai về độ dài vectơ |AB|>0"
+ },
+ {
+  "ma_cau": "T310000000076",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Độ dài AO trong hình thoi, đáp án là độ dài"
+ },
+ {
+  "ma_cau": "T310000000077",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Hình thang, CI=DA, chọn các vectơ bằng nhau"
+ },
+ {
+  "ma_cau": "T310000000078",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "AB=AC suy ra B trùng C, hai vectơ bằng nhau"
+ },
+ {
+  "ma_cau": "T310000000079",
+  "dang_bai_id": "NDB00901",
+  "chac": "vua",
+  "ly_do": "Số điểm D có |CD|=|AB|: tập hợp điểm, thiếu dạng quỹ tích"
+ },
+ {
+  "ma_cau": "T310000000080",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Tìm vectơ bằng AB trong hình bình hành"
+ },
+ {
+  "ma_cau": "T310000000081",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Chọn đẳng thức sai: IA=IB (bằng/đối nhau)"
+ },
+ {
+  "ma_cau": "T310000000082",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Đáp án đúng CN=NA, hai vectơ bằng nhau"
+ },
+ {
+  "ma_cau": "T310000000083",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Đếm vectơ đối của OA"
+ },
+ {
+  "ma_cau": "T310000000084",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Đếm vectơ có điểm đầu D"
+ },
+ {
+  "ma_cau": "T310000000085",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Đếm vectơ từ 5 điểm"
+ },
+ {
+  "ma_cau": "T310000000086",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Hình thoi, chọn đẳng thức vectơ bằng nhau sai"
+ },
+ {
+  "ma_cau": "T310000000087",
+  "dang_bai_id": "NDB00901",
+  "chac": "vua",
+  "ly_do": "Số điểm D có |CD|=|AB|: tập hợp điểm, thiếu dạng quỹ tích"
+ },
+ {
+  "ma_cau": "T310000000088",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Đáp án đúng |AC|=|BD| độ dài vectơ trong hình vuông"
+ },
+ {
+  "ma_cau": "T310000000089",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "AB=AC suy ra B trùng C"
+ },
+ {
+  "ma_cau": "T310000000090",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Đáp án đúng là |AB|=|BC| độ dài, không phải bằng nhau"
+ },
+ {
+  "ma_cau": "T310000000091",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Hình bình hành, AD=BC vectơ bằng nhau"
+ },
+ {
+  "ma_cau": "T310000000093",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Tính độ dài AB trong tam giác vuông cân"
+ },
+ {
+  "ma_cau": "T310000000094",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "AB và AC cùng hướng khi C trung điểm AB"
+ },
+ {
+  "ma_cau": "T310000000095",
+  "dang_bai_id": "NDB00901",
+  "chac": "vua",
+  "ly_do": "Số điểm D có |CD|=|AB|: tập hợp điểm, thiếu dạng quỹ tích"
+ },
+ {
+  "ma_cau": "T310000000096",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Đếm vectơ từ bốn đỉnh tứ giác"
+ },
+ {
+  "ma_cau": "T310000000097",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Đáp án đúng MN và BC cùng phương"
+ },
+ {
+  "ma_cau": "T310000000099",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "Tìm vị trí N để AN=MC (thỏa đẳng thức vectơ); dạng sau thắng"
+ },
+ {
+  "ma_cau": "T310000000100",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Chọn OA=OB sai (bằng nhau); dạng sau thắng so với cùng phương"
+ },
+ {
+  "ma_cau": "T3100000001000",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "Ba lực cân bằng tại M, tính cường độ F3"
+ },
+ {
+  "ma_cau": "T3100000001001",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Đếm vectơ từ 7 điểm"
+ },
+ {
+  "ma_cau": "T3100000001003",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Hiệu hai vectơ AO-DO"
+ },
+ {
+  "ma_cau": "T3100000001004",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Khẳng định sai về k trong MB=k.AB"
+ },
+ {
+  "ma_cau": "T3100000001005",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trung điểm với tích số: MN=2NI"
+ },
+ {
+  "ma_cau": "T3100000001006",
+  "dang_bai_id": "NDB00918",
+  "chac": "cao",
+  "ly_do": "Tọa độ vectơ theo i, j"
+ },
+ {
+  "ma_cau": "T3100000001007",
+  "dang_bai_id": "NDB00921",
+  "chac": "cao",
+  "ly_do": "Tọa độ 2a-b"
+ },
+ {
+  "ma_cau": "T3100000001008",
+  "dang_bai_id": "NDB00928",
+  "chac": "cao",
+  "ly_do": "Cosin góc giữa hai vectơ trong tam giác đều"
+ },
+ {
+  "ma_cau": "T3100000001009",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng BC.CG trong tam giác đều"
+ },
+ {
+  "ma_cau": "T310000000101",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Hình bình hành, OA=CO vectơ bằng nhau"
+ },
+ {
+  "ma_cau": "T3100000001010",
+  "dang_bai_id": "NDB00940",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng theo tọa độ"
+ },
+ {
+  "ma_cau": "T3100000001015",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Đếm vectơ cùng phương với MN"
+ },
+ {
+  "ma_cau": "T3100000001016",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "Chứng minh A,I,G thẳng hàng, tìm tham số bằng tích với số"
+ },
+ {
+  "ma_cau": "T3100000001017",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "Nhiều lực cân bằng, tìm độ lớn F2"
+ },
+ {
+  "ma_cau": "T3100000001018",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng BN.CM trong tam giác"
+ },
+ {
+  "ma_cau": "T310000000102",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Đếm vectơ từ ba đỉnh tam giác"
+ },
+ {
+  "ma_cau": "T3100000001020",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Định nghĩa hai vectơ bằng nhau"
+ },
+ {
+  "ma_cau": "T3100000001021",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Quy tắc ba điểm, chọn đẳng thức tổng sai"
+ },
+ {
+  "ma_cau": "T3100000001022",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài tổng/hiệu, không có tích với số"
+ },
+ {
+  "ma_cau": "T3100000001023",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Định nghĩa tích của số với vectơ, hướng theo k"
+ },
+ {
+  "ma_cau": "T3100000001024",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "AM=1/4 AB, biểu diễn bằng tích với số"
+ },
+ {
+  "ma_cau": "T3100000001025",
+  "dang_bai_id": "NDB00919",
+  "chac": "cao",
+  "ly_do": "Tọa độ AB khi biết hai điểm"
+ },
+ {
+  "ma_cau": "T3100000001026",
+  "dang_bai_id": "NDB00928",
+  "chac": "cao",
+  "ly_do": "Tổng hai góc giữa các vectơ trong tam giác"
+ },
+ {
+  "ma_cau": "T3100000001027",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng BC.CG trong tam giác đều"
+ },
+ {
+  "ma_cau": "T3100000001028",
+  "dang_bai_id": "NDB00940",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng AB.AC theo tọa độ"
+ },
+ {
+  "ma_cau": "T310000000103",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Cặp vectơ cùng hướng khi N giữa M, P"
+ },
+ {
+  "ma_cau": "T3100000001033",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Đếm vectơ bằng BA trong lục giác đều"
+ },
+ {
+  "ma_cau": "T3100000001034",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "Tìm k để M,N,P thẳng hàng bằng tích với số"
+ },
+ {
+  "ma_cau": "T3100000001035",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "Ba lực cân bằng, tính cường độ F3"
+ },
+ {
+  "ma_cau": "T3100000001036",
+  "dang_bai_id": "NDB00927",
+  "chac": "vua",
+  "ly_do": "Tọa độ điểm S thẳng hàng, tối ưu ánh sáng (cực trị khoảng cách); đề thực tế"
+ },
+ {
+  "ma_cau": "T3100000001037",
+  "dang_bai_id": "NDB00941",
+  "chac": "cao",
+  "ly_do": "Trực tâm bằng AH vuông góc BC bằng tích vô hướng"
+ },
+ {
+  "ma_cau": "T3100000001038",
+  "dang_bai_id": "NDB00914",
+  "chac": "cao",
+  "ly_do": "Bài thực tế hợp lực và công của lực"
+ },
+ {
+  "ma_cau": "T3100000001039",
+  "dang_bai_id": "NDB01421",
+  "chac": "vua",
+  "ly_do": "Tìm điểm D thỏa AB=CD; đáp án/lời giải đáng ngờ"
+ },
+ {
+  "ma_cau": "T310000000104",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "AB và AC cùng hướng khi C trung điểm"
+ },
+ {
+  "ma_cau": "T3100000001040",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Chứng minh MN=QP"
+ },
+ {
+  "ma_cau": "T3100000001041",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Chứng minh EF=CD"
+ },
+ {
+  "ma_cau": "T3100000001042",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Chứng minh AE=BD bằng hình bình hành"
+ }
+]

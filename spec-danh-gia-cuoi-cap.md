@@ -42,6 +42,7 @@ lấn át. Đơn vị đo = **một LẦN làm bài**, không phải một câu.
   | −10 … −3 | ↓ giảm nhẹ |
   | < −10 | ↓↓ giảm rõ |
 
+- **Ngưỡng theo tầng (Thùy chốt 23/10 từ dữ liệu, `_dgcc_nguong`):** chủ đề 3/10 · chuyên đề 3/10 · **nhóm bài 5/15** (bảng trên là của chủ đề/chuyên đề). Căn cứ: SD của chênh trên 2.342 ô = 6,5 / 7,1 / 9,6; ngưỡng ≈ 0,5 SD / 1,5 SD.
 - **Chưa đủ lần:**
   - số lần **≤ cửa sổ ngắn** ⇒ **không hiện xu hướng**, ghi "chưa đủ lần" (TB ngắn trùng TB dài ⇒ "đi ngang" giả).
   - cửa sổ ngắn < số lần < cửa sổ dài ⇒ TB dài lấy **hết số lần đang có** (vd 7 lần, cửa sổ 5/10 ⇒ so TB5 với TB7).

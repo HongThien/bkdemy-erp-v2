@@ -1,0 +1,1536 @@
+{
+ "tao": "2026-10-23",
+ "ly_do": "Mastery bản đồ mới: câu K6–8, K10–12 đã có HS làm nhưng _do_o_bdm chưa quy được — làm như K9 (chỉ hàng đề xuất; bản sao tự theo gốc)",
+ "cau": [
+  {
+   "ma_cau": "T1077033330401004",
+   "khoi_hs": "7",
+   "luot": 72,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T1077033330401001",
+   "khoi_hs": "7",
+   "luot": 72,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T1077033330401003",
+   "khoi_hs": "7",
+   "luot": 70,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T107010404050",
+   "khoi_hs": "7",
+   "luot": 41,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T106020303058",
+   "khoi_hs": "6",
+   "luot": 41,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "077020101054",
+   "khoi_hs": "7",
+   "luot": 32,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111010502079",
+   "khoi_hs": "11",
+   "luot": 31,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "077020101020",
+   "khoi_hs": "7",
+   "luot": 31,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T106020701004",
+   "khoi_hs": "6",
+   "luot": 31,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T106020701002",
+   "khoi_hs": "6",
+   "luot": 31,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111040101123",
+   "khoi_hs": "11",
+   "luot": 29,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T106020701003",
+   "khoi_hs": "6",
+   "luot": 29,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T106020701001",
+   "khoi_hs": "6",
+   "luot": 28,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T107010203044",
+   "khoi_hs": "7",
+   "luot": 28,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "077020101015",
+   "khoi_hs": "7",
+   "luot": 27,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "07702202202076",
+   "khoi_hs": "7",
+   "luot": 27,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "077020101050",
+   "khoi_hs": "7",
+   "luot": 26,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030301015",
+   "khoi_hs": "8",
+   "luot": 26,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T107010203046",
+   "khoi_hs": "7",
+   "luot": 25,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T107010203047",
+   "khoi_hs": "7",
+   "luot": 25,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "07702202202034",
+   "khoi_hs": "7",
+   "luot": 25,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T107010203048",
+   "khoi_hs": "7",
+   "luot": 24,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "077020101023",
+   "khoi_hs": "7",
+   "luot": 24,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "07702220320302018",
+   "khoi_hs": "7",
+   "luot": 23,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "07702220320302017",
+   "khoi_hs": "7",
+   "luot": 23,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T110020201008",
+   "khoi_hs": "10",
+   "luot": 22,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T106020303026",
+   "khoi_hs": "6",
+   "luot": 22,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111040101119",
+   "khoi_hs": "11",
+   "luot": 22,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T106020303056",
+   "khoi_hs": "6",
+   "luot": 22,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T106020303025",
+   "khoi_hs": "6",
+   "luot": 21,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T106020303060",
+   "khoi_hs": "6",
+   "luot": 21,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T107010207052",
+   "khoi_hs": "7",
+   "luot": 21,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "077020101040",
+   "khoi_hs": "7",
+   "luot": 20,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "077020101052",
+   "khoi_hs": "7",
+   "luot": 20,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111010502082",
+   "khoi_hs": "11",
+   "luot": 20,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111010502081",
+   "khoi_hs": "11",
+   "luot": 19,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T312010103001",
+   "khoi_hs": "12",
+   "luot": 19,
+   "kho": "hgt"
+  },
+  {
+   "ma_cau": "T107010206061",
+   "khoi_hs": "7",
+   "luot": 19,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T107010206065",
+   "khoi_hs": "7",
+   "luot": 19,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T107010206070",
+   "khoi_hs": "7",
+   "luot": 19,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111060202006",
+   "khoi_hs": "11",
+   "luot": 18,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111060305004",
+   "khoi_hs": "11",
+   "luot": 18,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111040101122",
+   "khoi_hs": "11",
+   "luot": 18,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030103037",
+   "khoi_hs": "8",
+   "luot": 18,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T107010207050",
+   "khoi_hs": "7",
+   "luot": 18,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111060202020",
+   "khoi_hs": "11",
+   "luot": 18,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111030201074",
+   "khoi_hs": "11",
+   "luot": 18,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T312010103003",
+   "khoi_hs": "12",
+   "luot": 17,
+   "kho": "hgt"
+  },
+  {
+   "ma_cau": "T108030103034",
+   "khoi_hs": "8",
+   "luot": 17,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030103042",
+   "khoi_hs": "8",
+   "luot": 17,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030103040",
+   "khoi_hs": "8",
+   "luot": 17,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T106020303062",
+   "khoi_hs": "6",
+   "luot": 16,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030103041",
+   "khoi_hs": "8",
+   "luot": 16,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030103035",
+   "khoi_hs": "8",
+   "luot": 16,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030103036",
+   "khoi_hs": "8",
+   "luot": 16,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111060202021",
+   "khoi_hs": "11",
+   "luot": 16,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111040101121",
+   "khoi_hs": "11",
+   "luot": 16,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "077020101016",
+   "khoi_hs": "7",
+   "luot": 15,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T107010207049",
+   "khoi_hs": "7",
+   "luot": 15,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "077020101057",
+   "khoi_hs": "7",
+   "luot": 15,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "077020101043",
+   "khoi_hs": "7",
+   "luot": 15,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "077020101042",
+   "khoi_hs": "7",
+   "luot": 15,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030103039",
+   "khoi_hs": "8",
+   "luot": 15,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "077020101039",
+   "khoi_hs": "7",
+   "luot": 15,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "077020101022",
+   "khoi_hs": "7",
+   "luot": 14,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T106020303027",
+   "khoi_hs": "6",
+   "luot": 14,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030301018",
+   "khoi_hs": "8",
+   "luot": 14,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T106020303028",
+   "khoi_hs": "6",
+   "luot": 14,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111030502020",
+   "khoi_hs": "11",
+   "luot": 14,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "077020101017",
+   "khoi_hs": "7",
+   "luot": 14,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030301016",
+   "khoi_hs": "8",
+   "luot": 14,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030301017",
+   "khoi_hs": "8",
+   "luot": 14,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030301013",
+   "khoi_hs": "8",
+   "luot": 14,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T106020303030",
+   "khoi_hs": "6",
+   "luot": 13,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "077020101021",
+   "khoi_hs": "7",
+   "luot": 13,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T106020303057",
+   "khoi_hs": "6",
+   "luot": 13,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T107010207053",
+   "khoi_hs": "7",
+   "luot": 13,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "077020101019",
+   "khoi_hs": "7",
+   "luot": 12,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T107010404048",
+   "khoi_hs": "7",
+   "luot": 12,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T106020303029",
+   "khoi_hs": "6",
+   "luot": 12,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T110020201055",
+   "khoi_hs": "10",
+   "luot": 12,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T106020303054",
+   "khoi_hs": "6",
+   "luot": 12,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T107010404049",
+   "khoi_hs": "7",
+   "luot": 11,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "077020101018",
+   "khoi_hs": "7",
+   "luot": 11,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T312010103004",
+   "khoi_hs": "12",
+   "luot": 11,
+   "kho": "hgt"
+  },
+  {
+   "ma_cau": "T106020303063",
+   "khoi_hs": "6",
+   "luot": 11,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T107010207051",
+   "khoi_hs": "7",
+   "luot": 11,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111060304091",
+   "khoi_hs": "11",
+   "luot": 11,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T106020303055",
+   "khoi_hs": "6",
+   "luot": 11,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "077020101014",
+   "khoi_hs": "7",
+   "luot": 10,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112030104015",
+   "khoi_hs": "12",
+   "luot": 10,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112030104013",
+   "khoi_hs": "12",
+   "luot": 10,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112030104005",
+   "khoi_hs": "12",
+   "luot": 10,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112030104001",
+   "khoi_hs": "12",
+   "luot": 10,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111060305001",
+   "khoi_hs": "11",
+   "luot": 10,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T106020303061",
+   "khoi_hs": "6",
+   "luot": 10,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T106020303053",
+   "khoi_hs": "6",
+   "luot": 10,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111040101120",
+   "khoi_hs": "11",
+   "luot": 10,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "077020101046",
+   "khoi_hs": "7",
+   "luot": 10,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111030201072",
+   "khoi_hs": "11",
+   "luot": 10,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T110020201063",
+   "khoi_hs": "10",
+   "luot": 10,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T110030203019",
+   "khoi_hs": "10",
+   "luot": 9,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111030201071",
+   "khoi_hs": "11",
+   "luot": 9,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111030502029",
+   "khoi_hs": "11",
+   "luot": 9,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070302009",
+   "khoi_hs": "12",
+   "luot": 8,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070105010",
+   "khoi_hs": "12",
+   "luot": 8,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070105011",
+   "khoi_hs": "12",
+   "luot": 8,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070303001",
+   "khoi_hs": "12",
+   "luot": 8,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070108002",
+   "khoi_hs": "12",
+   "luot": 8,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070202053",
+   "khoi_hs": "12",
+   "luot": 8,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T110020201054",
+   "khoi_hs": "10",
+   "luot": 8,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070203017",
+   "khoi_hs": "12",
+   "luot": 8,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070304002",
+   "khoi_hs": "12",
+   "luot": 8,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "077020101058",
+   "khoi_hs": "7",
+   "luot": 8,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111030203038",
+   "khoi_hs": "11",
+   "luot": 8,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T110020201048",
+   "khoi_hs": "10",
+   "luot": 8,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112030101001",
+   "khoi_hs": "12",
+   "luot": 8,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112030101004",
+   "khoi_hs": "12",
+   "luot": 8,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112030101025",
+   "khoi_hs": "12",
+   "luot": 8,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112030101027",
+   "khoi_hs": "12",
+   "luot": 8,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070307005",
+   "khoi_hs": "12",
+   "luot": 8,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070312001",
+   "khoi_hs": "12",
+   "luot": 8,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070308001",
+   "khoi_hs": "12",
+   "luot": 8,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030301014",
+   "khoi_hs": "8",
+   "luot": 8,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112030101030",
+   "khoi_hs": "12",
+   "luot": 8,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111030502060",
+   "khoi_hs": "11",
+   "luot": 7,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T106020803001",
+   "khoi_hs": "6",
+   "luot": 7,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T106020803003",
+   "khoi_hs": "6",
+   "luot": 7,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T110020101045",
+   "khoi_hs": "10",
+   "luot": 7,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T110020201061",
+   "khoi_hs": "10",
+   "luot": 7,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111030502057",
+   "khoi_hs": "11",
+   "luot": 7,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111030502064",
+   "khoi_hs": "11",
+   "luot": 7,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111030502068",
+   "khoi_hs": "11",
+   "luot": 7,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111030502069",
+   "khoi_hs": "11",
+   "luot": 7,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112030102001",
+   "khoi_hs": "12",
+   "luot": 7,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112030102012",
+   "khoi_hs": "12",
+   "luot": 7,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112030102052",
+   "khoi_hs": "12",
+   "luot": 7,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112030102056",
+   "khoi_hs": "12",
+   "luot": 7,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112030102060",
+   "khoi_hs": "12",
+   "luot": 7,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112030103004",
+   "khoi_hs": "12",
+   "luot": 7,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112030103005",
+   "khoi_hs": "12",
+   "luot": 7,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112030103007",
+   "khoi_hs": "12",
+   "luot": 7,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112030103010",
+   "khoi_hs": "12",
+   "luot": 7,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112030103021",
+   "khoi_hs": "12",
+   "luot": 7,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112030104010",
+   "khoi_hs": "12",
+   "luot": 7,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T110020201007",
+   "khoi_hs": "10",
+   "luot": 6,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T312010103002",
+   "khoi_hs": "12",
+   "luot": 6,
+   "kho": "hgt"
+  },
+  {
+   "ma_cau": "T112070302056",
+   "khoi_hs": "12",
+   "luot": 6,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111030502044",
+   "khoi_hs": "11",
+   "luot": 6,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070301185",
+   "khoi_hs": "12",
+   "luot": 6,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111040101143",
+   "khoi_hs": "11",
+   "luot": 6,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111040101144",
+   "khoi_hs": "11",
+   "luot": 6,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111030502045",
+   "khoi_hs": "11",
+   "luot": 6,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111030502049",
+   "khoi_hs": "11",
+   "luot": 6,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111030502052",
+   "khoi_hs": "11",
+   "luot": 6,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T107010203045",
+   "khoi_hs": "7",
+   "luot": 5,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070304014",
+   "khoi_hs": "12",
+   "luot": 5,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070303011",
+   "khoi_hs": "12",
+   "luot": 5,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070302011",
+   "khoi_hs": "12",
+   "luot": 5,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070109004",
+   "khoi_hs": "12",
+   "luot": 5,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070105019",
+   "khoi_hs": "12",
+   "luot": 5,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108050203001",
+   "khoi_hs": "8",
+   "luot": 5,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112020401146",
+   "khoi_hs": "12",
+   "luot": 5,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070311008",
+   "khoi_hs": "12",
+   "luot": 5,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070310001",
+   "khoi_hs": "12",
+   "luot": 5,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111030203036",
+   "khoi_hs": "11",
+   "luot": 5,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T110020101046",
+   "khoi_hs": "10",
+   "luot": 5,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111010502080",
+   "khoi_hs": "11",
+   "luot": 5,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111010502078",
+   "khoi_hs": "11",
+   "luot": 5,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070305001",
+   "khoi_hs": "12",
+   "luot": 5,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T110020101054",
+   "khoi_hs": "10",
+   "luot": 5,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070306001",
+   "khoi_hs": "12",
+   "luot": 5,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112020303003",
+   "khoi_hs": "12",
+   "luot": 5,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112020305010",
+   "khoi_hs": "12",
+   "luot": 5,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112020402025",
+   "khoi_hs": "12",
+   "luot": 5,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108050203002",
+   "khoi_hs": "8",
+   "luot": 5,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T312010101036",
+   "khoi_hs": "12",
+   "luot": 5,
+   "kho": "hgt"
+  },
+  {
+   "ma_cau": "T107000000148",
+   "khoi_hs": "7",
+   "luot": 5,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112010305001",
+   "khoi_hs": "12",
+   "luot": 5,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112010401004",
+   "khoi_hs": "12",
+   "luot": 5,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112010402005",
+   "khoi_hs": "12",
+   "luot": 5,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112020104002",
+   "khoi_hs": "12",
+   "luot": 5,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112020201010",
+   "khoi_hs": "12",
+   "luot": 5,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112020202017",
+   "khoi_hs": "12",
+   "luot": 5,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112020302020",
+   "khoi_hs": "12",
+   "luot": 5,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070102051",
+   "khoi_hs": "12",
+   "luot": 4,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T106000000456",
+   "khoi_hs": "6",
+   "luot": 4,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111030203037",
+   "khoi_hs": "11",
+   "luot": 4,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108040501004",
+   "khoi_hs": "8",
+   "luot": 3,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030103064",
+   "khoi_hs": "8",
+   "luot": 3,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030103062",
+   "khoi_hs": "8",
+   "luot": 3,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070102042",
+   "khoi_hs": "12",
+   "luot": 3,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070202055",
+   "khoi_hs": "12",
+   "luot": 3,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070202060",
+   "khoi_hs": "12",
+   "luot": 3,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030103044",
+   "khoi_hs": "8",
+   "luot": 3,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T106020303059",
+   "khoi_hs": "6",
+   "luot": 2,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030103048",
+   "khoi_hs": "8",
+   "luot": 2,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030103065",
+   "khoi_hs": "8",
+   "luot": 2,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030103054",
+   "khoi_hs": "8",
+   "luot": 2,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030103053",
+   "khoi_hs": "8",
+   "luot": 2,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030103061",
+   "khoi_hs": "8",
+   "luot": 2,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030103052",
+   "khoi_hs": "8",
+   "luot": 2,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030103038",
+   "khoi_hs": "8",
+   "luot": 2,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070202056",
+   "khoi_hs": "12",
+   "luot": 2,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070202057",
+   "khoi_hs": "12",
+   "luot": 2,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070202058",
+   "khoi_hs": "12",
+   "luot": 2,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070202059",
+   "khoi_hs": "12",
+   "luot": 2,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T107010203043",
+   "khoi_hs": "7",
+   "luot": 2,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T110020201062",
+   "khoi_hs": "10",
+   "luot": 2,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108040501005",
+   "khoi_hs": "8",
+   "luot": 2,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070202061",
+   "khoi_hs": "12",
+   "luot": 2,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030601053",
+   "khoi_hs": "8",
+   "luot": 2,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070202063",
+   "khoi_hs": "12",
+   "luot": 2,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030103051",
+   "khoi_hs": "8",
+   "luot": 2,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030103045",
+   "khoi_hs": "8",
+   "luot": 2,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030103057",
+   "khoi_hs": "8",
+   "luot": 2,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T106020303052",
+   "khoi_hs": "6",
+   "luot": 2,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030103059",
+   "khoi_hs": "8",
+   "luot": 2,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030103063",
+   "khoi_hs": "8",
+   "luot": 2,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T110020201049",
+   "khoi_hs": "10",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030601049",
+   "khoi_hs": "8",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T110020201057",
+   "khoi_hs": "10",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T110020201059",
+   "khoi_hs": "10",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030601050",
+   "khoi_hs": "8",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T110020101050",
+   "khoi_hs": "10",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T110020101048",
+   "khoi_hs": "10",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030601055",
+   "khoi_hs": "8",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030601056",
+   "khoi_hs": "8",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030103056",
+   "khoi_hs": "8",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030103055",
+   "khoi_hs": "8",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030103058",
+   "khoi_hs": "8",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070308006",
+   "khoi_hs": "12",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T1120000001517",
+   "khoi_hs": "12",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030103060",
+   "khoi_hs": "8",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111060304011",
+   "khoi_hs": "11",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T312010202025",
+   "khoi_hs": "12",
+   "luot": 1,
+   "kho": "hgt"
+  },
+  {
+   "ma_cau": "T312010403001",
+   "khoi_hs": "12",
+   "luot": 1,
+   "kho": "hgt"
+  },
+  {
+   "ma_cau": "T111030203034",
+   "khoi_hs": "11",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070102049",
+   "khoi_hs": "12",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030103050",
+   "khoi_hs": "8",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030103047",
+   "khoi_hs": "8",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111040101327",
+   "khoi_hs": "11",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030103046",
+   "khoi_hs": "8",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111030201075",
+   "khoi_hs": "11",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070203003",
+   "khoi_hs": "12",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030601043",
+   "khoi_hs": "8",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T111030201073",
+   "khoi_hs": "11",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030601044",
+   "khoi_hs": "8",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070302016",
+   "khoi_hs": "12",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070302017",
+   "khoi_hs": "12",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070302024",
+   "khoi_hs": "12",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030601047",
+   "khoi_hs": "8",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030103043",
+   "khoi_hs": "8",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T112070303007",
+   "khoi_hs": "12",
+   "luot": 1,
+   "kho": "dai"
+  },
+  {
+   "ma_cau": "T108030601048",
+   "khoi_hs": "8",
+   "luot": 1,
+   "kho": "dai"
+  }
+ ]
+}

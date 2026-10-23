@@ -1,0 +1,602 @@
+[
+ {
+  "ma_cau": "T310000000376",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chứng minh đẳng thức véc tơ trong tam giác (D trung điểm trung tuyến)"
+ },
+ {
+  "ma_cau": "T310000000377",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chứng minh đẳng thức véc tơ trung điểm/trọng tâm với điểm M tuỳ ý"
+ },
+ {
+  "ma_cau": "T310000000378",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chứng minh các đẳng thức véc tơ trong tứ giác"
+ },
+ {
+  "ma_cau": "T310000000379",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chứng minh đẳng thức véc tơ với phân giác trong tam giác"
+ },
+ {
+  "ma_cau": "T310000000380",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chứng minh trọng tâm trùng bằng đẳng thức véc tơ trong tam giác"
+ },
+ {
+  "ma_cau": "T310000000381",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chứng minh cùng trọng tâm bằng đẳng thức véc tơ trong lục giác"
+ },
+ {
+  "ma_cau": "T310000000382",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chứng minh đẳng thức véc tơ trong tam giác (907 và 909 → lấy sau)"
+ },
+ {
+  "ma_cau": "T310000000383",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "có ý chứng minh G,H,O thẳng hàng; 909 và 913 → lấy 913"
+ },
+ {
+  "ma_cau": "T310000000384",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chứng minh cùng trọng tâm bằng đẳng thức véc tơ trong lục giác"
+ },
+ {
+  "ma_cau": "T310000000385",
+  "dang_bai_id": "NDB00914",
+  "chac": "cao",
+  "ly_do": "biểu diễn vận tốc máy bay theo tích với số, bài thực tế"
+ },
+ {
+  "ma_cau": "T310000000386",
+  "dang_bai_id": "NDB00914",
+  "chac": "cao",
+  "ly_do": "biểu diễn vận tốc máy bay theo tích với số, bài thực tế"
+ },
+ {
+  "ma_cau": "T310000000387",
+  "dang_bai_id": "NDB00914",
+  "chac": "cao",
+  "ly_do": "bài thực tế trọng lực, lực đẩy Archimedes"
+ },
+ {
+  "ma_cau": "T310000000388",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "biểu diễn MN qua tích của véc tơ với số"
+ },
+ {
+  "ma_cau": "T310000000389",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "tìm x để hai véc tơ cùng phương"
+ },
+ {
+  "ma_cau": "T310000000390",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "đáp án AM=1/2 AB: tính chất trung điểm với tích số"
+ },
+ {
+  "ma_cau": "T310000000392",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "đáp án IM+2IN=0 từ MI=2/3MN, biểu diễn bằng tích với số"
+ },
+ {
+  "ma_cau": "T310000000393",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "tính chất tích véc tơ với số (hướng, độ dài |k|)"
+ },
+ {
+  "ma_cau": "T310000000394",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "định nghĩa tích véc tơ với số: OA=5a xác định điểm duy nhất"
+ },
+ {
+  "ma_cau": "T310000000395",
+  "dang_bai_id": "NDB00909",
+  "chac": "vua",
+  "ly_do": "đề lỗi OCR (hình bình hành, tâm), đáp án C không khớp lời giải"
+ },
+ {
+  "ma_cau": "T310000000396",
+  "dang_bai_id": "NDB00904",
+  "chac": "vua",
+  "ly_do": "tổng 3 véc tơ trong hình bình hành, kết quả 2AC; 904 hay 909"
+ },
+ {
+  "ma_cau": "T310000000397",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "đáp án đúng EQ+EP=0 là tính chất trung điểm"
+ },
+ {
+  "ma_cau": "T310000000398",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "đáp án đúng BI=IC: hai véc tơ bằng nhau"
+ },
+ {
+  "ma_cau": "T310000000399",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "đáp án GA+2GM=0 là tính chất trọng tâm/trung tuyến"
+ },
+ {
+  "ma_cau": "T310000000400",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "đáp án DC=1/2 CB từ trung điểm, tích với số"
+ },
+ {
+  "ma_cau": "T310000000401",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "tính chất trọng tâm, trung điểm; đáp án sai ở IA+IB+IC=3GI"
+ },
+ {
+  "ma_cau": "T310000000402",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chọn đẳng thức véc tơ đúng trong tam giác, cần quy tắc 3 điểm"
+ },
+ {
+  "ma_cau": "T310000000403",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chọn đẳng thức véc tơ sai trong hình bình hành"
+ },
+ {
+  "ma_cau": "T310000000404",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "phân tích AM theo AB, AC trong tam giác"
+ },
+ {
+  "ma_cau": "T310000000405",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "tìm m để A,G,I thẳng hàng"
+ },
+ {
+  "ma_cau": "T310000000406",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "đáp án đúng: ba điểm B,I,K thẳng hàng"
+ },
+ {
+  "ma_cau": "T310000000407",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "tìm vị trí điểm M thoả đẳng thức véc tơ, không tọa độ"
+ },
+ {
+  "ma_cau": "T310000000408",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm (đường tròn tâm G)"
+ },
+ {
+  "ma_cau": "T310000000409",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "tìm k trong AG=kMG từ tính chất trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000410",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng/hiệu véc tơ trong hình chữ nhật, không tích với số"
+ },
+ {
+  "ma_cau": "T310000000411",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "phân tích AG theo hai véc tơ a,b trong hình bình hành"
+ },
+ {
+  "ma_cau": "T310000000412",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "đáp án đúng: đường MN qua G, ba điểm thẳng hàng"
+ },
+ {
+  "ma_cau": "T310000000413",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài AB+AC trong tam giác đều, không tích với số"
+ },
+ {
+  "ma_cau": "T310000000414",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài AB-DA trong hình vuông, không tích với số"
+ },
+ {
+  "ma_cau": "T310000000415",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "biểu thị AM theo AB, AD trong hình bình hành"
+ },
+ {
+  "ma_cau": "T310000000416",
+  "dang_bai_id": "NDB01421",
+  "chac": "vua",
+  "ly_do": "tìm vị trí điểm N thoả đẳng thức; phương án đề bị lỗi OCR"
+ },
+ {
+  "ma_cau": "T310000000441",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "tìm k trong MB=kMA từ tỉ lệ đoạn"
+ },
+ {
+  "ma_cau": "T310000000442",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "tìm k trong BC=kAC từ AB=-3AC"
+ },
+ {
+  "ma_cau": "T310000000443",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "tam giác, trung điểm, P=BN∩AC, tìm x trong AC=xCP"
+ },
+ {
+  "ma_cau": "T310000000444",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm (đường tròn tâm O)"
+ },
+ {
+  "ma_cau": "T310000000445",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm (đường tròn)"
+ },
+ {
+  "ma_cau": "T310000000446",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "phân tích CM theo AB, AC trong tam giác"
+ },
+ {
+  "ma_cau": "T310000000447",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "độ dài véc tơ có tích với số"
+ },
+ {
+  "ma_cau": "T310000000448",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "ba lực tác dụng, vật đứng yên, tìm cường độ F3"
+ },
+ {
+  "ma_cau": "T310000000449",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "ba lực tác dụng, vật đứng yên, tìm độ lớn F1"
+ },
+ {
+  "ma_cau": "T310000000450",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "biểu diễn MN theo AB, AC trong tam giác"
+ },
+ {
+  "ma_cau": "T310000000451",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "tìm x để M,N,G thẳng hàng"
+ },
+ {
+  "ma_cau": "T310000000452",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "phân tích AM theo AB, AC trong tam giác"
+ },
+ {
+  "ma_cau": "T310000000453",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "ba lực tác dụng, vật đứng yên, tìm F3"
+ },
+ {
+  "ma_cau": "T310000000454",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "phân tích AG theo AI, AJ trong tam giác"
+ },
+ {
+  "ma_cau": "T310000000455",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "nhiều lực cân bằng, vật dừng lại, tìm độ lớn F1"
+ },
+ {
+  "ma_cau": "T310000000456",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "tứ giác, tổng véc tơ MA..MD = k MI"
+ },
+ {
+  "ma_cau": "T310000000457",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "độ dài véc tơ có tích với số"
+ },
+ {
+  "ma_cau": "T310000000458",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "biểu diễn MN theo AB, AD trong hình chữ nhật"
+ },
+ {
+  "ma_cau": "T310000000459",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "nhiều lực cân bằng, vật dừng lại, tìm độ lớn F2"
+ },
+ {
+  "ma_cau": "T310000000460",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "phân tích AK theo AB, AC trong tam giác"
+ },
+ {
+  "ma_cau": "T310000000461",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "tìm x để A,M,N thẳng hàng"
+ },
+ {
+  "ma_cau": "T310000000462",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "phân tích AG theo AB, AC trong tam giác"
+ },
+ {
+  "ma_cau": "T310000000463",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "tìm a để I,N,E thẳng hàng"
+ },
+ {
+  "ma_cau": "T310000000464",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "tứ giác, AC+BD=k IJ"
+ },
+ {
+  "ma_cau": "T310000000465",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "độ dài véc tơ AB+2AD có tích với số"
+ },
+ {
+  "ma_cau": "T310000000466",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "phân tích AI theo AE, AF trong tam giác"
+ },
+ {
+  "ma_cau": "T310000000467",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "BI=kBJ: hai véc tơ cùng phương (B,I,J thẳng hàng)"
+ },
+ {
+  "ma_cau": "T310000000468",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm (đường tròn tâm G)"
+ },
+ {
+  "ma_cau": "T310000000469",
+  "dang_bai_id": "NDB01401",
+  "chac": "cao",
+  "ly_do": "tìm giá trị nhỏ nhất của độ dài biểu thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000470",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "dựng và tính độ dài véc tơ có tích với số"
+ },
+ {
+  "ma_cau": "T310000000471",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "dựng và tính độ dài véc tơ có tích với số"
+ },
+ {
+  "ma_cau": "T310000000472",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "dựng và tính độ dài véc tơ có tích với số"
+ },
+ {
+  "ma_cau": "T310000000473",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "phân tích véc tơ theo hai véc tơ trong tam giác"
+ },
+ {
+  "ma_cau": "T310000000474",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "biểu diễn véc tơ theo AB, AC trong tam giác"
+ },
+ {
+  "ma_cau": "T310000000475",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "phân tích CM, AN, MN theo a, b trong tam giác"
+ },
+ {
+  "ma_cau": "T310000000476",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "tính IJ rồi chứng minh IJ qua G (thẳng hàng); 909/913 → lấy 913"
+ },
+ {
+  "ma_cau": "T310000000477",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "biểu diễn AM theo AB, AC trong tam giác"
+ },
+ {
+  "ma_cau": "T310000000478",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "biểu diễn AE theo AD, AB trong hình bình hành"
+ },
+ {
+  "ma_cau": "T310000000479",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "biểu diễn véc tơ theo GA, GB trong tam giác"
+ },
+ {
+  "ma_cau": "T310000000480",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "phân tích AM theo AB, AC trong tam giác"
+ },
+ {
+  "ma_cau": "T310000000481",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "tìm hệ số biểu diễn véc tơ theo OA, OB trong tam giác"
+ },
+ {
+  "ma_cau": "T310000000482",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "phân tích AK theo AB, AC trong tam giác"
+ },
+ {
+  "ma_cau": "T310000000483",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "biểu diễn DM theo DB trong hình bình hành"
+ },
+ {
+  "ma_cau": "T310000000484",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chứng minh OM=(OA-kOB)/(1-k), đẳng thức véc tơ; 907/909 → lấy 909"
+ },
+ {
+  "ma_cau": "T310000000485",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "chứng minh OI=1/2(OA+OB) tính chất trung điểm"
+ },
+ {
+  "ma_cau": "T310000000486",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "a) AI=kAB b) chứng minh đẳng thức véc tơ; lấy dạng sau"
+ },
+ {
+  "ma_cau": "T310000000487",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chứng minh đẳng thức véc tơ với H,G,O trong tam giác"
+ },
+ {
+  "ma_cau": "T310000000488",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chứng minh biểu diễn véc tơ trong tam giác"
+ },
+ {
+  "ma_cau": "T310000000489",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chứng minh đẳng thức véc tơ về trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000490",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chứng minh tổng ba trung tuyến bằng 0"
+ },
+ {
+  "ma_cau": "T310000000491",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "xác định điểm D,E,F thoả đẳng thức véc tơ + chứng minh; lấy dạng sau"
+ },
+ {
+  "ma_cau": "T310000000492",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "biểu thị CM theo CA,CB và chứng minh đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000493",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chứng minh đẳng thức véc tơ trong tam giác đều"
+ },
+ {
+  "ma_cau": "T310000000494",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chứng minh đẳng thức véc tơ trong tứ giác"
+ },
+ {
+  "ma_cau": "T310000000495",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "xác định vị trí G thoả đẳng thức véc tơ rồi chứng minh; lấy dạng sau"
+ },
+ {
+  "ma_cau": "T310000000496",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chứng minh đẳng thức véc tơ trong hình bình hành"
+ },
+ {
+  "ma_cau": "T310000000497",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chứng minh đẳng thức véc tơ trong tứ giác"
+ },
+ {
+  "ma_cau": "T310000000498",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "tìm điểm I thoả đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000499",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "xác định các điểm thoả đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000500",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "tìm điểm K, M thoả đẳng thức véc tơ"
+ }
+]

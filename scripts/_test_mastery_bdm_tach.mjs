@@ -44,7 +44,8 @@ try {
   kt(ndbBt === 0, `BẬT ⇒ bổ trợ điền dạng yếu chỉ mã CŨ (${cases.length} ca, thêm ${them} dạng, 0 NDB)`)
   await dangNhap(hs.tk)
   const chon = (await q(`select _tu_luyen_chon_dang($1, 'Toán', 10) x`, [hs.id]))[0].x
-  kt((chon ?? []).length > 0 && chon.every((m) => /^NDB/.test(m)), `BẬT ⇒ tự luyện chọn dạng NDB (${J(chon).slice(0, 80)})`)
+  // chọn có phần NGẪU NHIÊN và có thể trúng dạng Hình (HH…/BT… — Hình đi bản đồ riêng): chỉ cấm mã dạng Đại/HGT CŨ (T1…/T3…)
+  kt((chon ?? []).length > 0 && !chon.some((m) => /^T[13]\d/.test(m)) && chon.some((m) => /^NDB/.test(m)), `BẬT ⇒ tự luyện chọn dạng bản đồ mới, không mã Đại/HGT cũ (${J(chon).slice(0, 80)})`)
   const pl = J((await q(`select fn_ban_do_phieu_luu('Toán') x`))[0].x)
   kt(/"trang_thai":"(dat|yeu)"/.test(pl) && /NDB/.test(pl), 'BẬT ⇒ bản đồ phiêu lưu có màn NDB, có trạng thái đo (mastery mới)')
 } catch (e) { sai++; console.log('  ✘ LỖI', e.message) } finally { await q('rollback'); console.log(`${ok} ✔ · ${sai} ✘ (ROLLBACK)`); await c.end() }

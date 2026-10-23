@@ -1,0 +1,602 @@
+[
+ {
+  "ma_cau": "T3100000001043",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "chứng minh DE=EF=FB bằng hình bình hành/đường trung bình"
+ },
+ {
+  "ma_cau": "T3100000001044",
+  "dang_bai_id": "NDB00902",
+  "chac": "vua",
+  "ly_do": "ý a,b cùng/ngược hướng, ý c độ dài bằng nhau rải sang dạng khác"
+ },
+ {
+  "ma_cau": "T3100000001045",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "chứng minh hai véc tơ bằng nhau bằng đường trung bình, hình bình hành"
+ },
+ {
+  "ma_cau": "T3100000001046",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "đáp án đúng là độ dài |OA|=a√3/2"
+ },
+ {
+  "ma_cau": "T310000000105",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "đáp án đúng là |AB|=a, độ dài véc tơ"
+ },
+ {
+  "ma_cau": "T3100000001053",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "chứng minh BI=IC, BJ=IG: các véc tơ bằng nhau"
+ },
+ {
+  "ma_cau": "T3100000001054",
+  "dang_bai_id": "NDB00906",
+  "chac": "vua",
+  "ly_do": "tìm G theo độ dài |AG|; giải bằng tính độ dài và trọng tâm"
+ },
+ {
+  "ma_cau": "T3100000001055",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "chứng minh hbh từ các véc tơ bằng nhau"
+ },
+ {
+  "ma_cau": "T3100000001056",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "dùng OM,ON cùng phương tính tỉ số CN/ND"
+ },
+ {
+  "ma_cau": "T3100000001057",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "tỉ số giao điểm qua A,I,N thẳng hàng, tích với số"
+ },
+ {
+  "ma_cau": "T3100000001058",
+  "dang_bai_id": "NDB01401",
+  "chac": "cao",
+  "ly_do": "tìm M trên d để độ dài véc tơ nhỏ nhất"
+ },
+ {
+  "ma_cau": "T3100000001059",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "đáp án đúng là AC=QN, AM=PC: bằng nhau qua hbh"
+ },
+ {
+  "ma_cau": "T310000000106",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "đáp án xét OA=OC sai vì ngược hướng: bằng nhau"
+ },
+ {
+  "ma_cau": "T3100000001060",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "đáp án AH=DC qua hình bình hành ADCH"
+ },
+ {
+  "ma_cau": "T3100000001061",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "tìm x để AC=x·CP, biểu diễn véc tơ trong tam giác"
+ },
+ {
+  "ma_cau": "T3100000001062",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "điều kiện cần đủ ba điểm thẳng hàng AB=k·AC"
+ },
+ {
+  "ma_cau": "T3100000001063",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "điều kiện để B,I,K thẳng hàng"
+ },
+ {
+  "ma_cau": "T3100000001064",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "P xác định bởi MN=-3MP, tích với số"
+ },
+ {
+  "ma_cau": "T3100000001065",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "AB=-3AC suy ra BC=4AC, tích với số"
+ },
+ {
+  "ma_cau": "T3100000001067",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "không dạng nào: thiếu dạng nhận dạng tam giác từ đẳng thức véc tơ (vuông tại C)"
+ },
+ {
+  "ma_cau": "T3100000001068",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "chọn khẳng định sai MB=-4/5 AB, tích với số"
+ },
+ {
+  "ma_cau": "T3100000001069",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "xác định vị trí điểm N thỏa đẳng thức véc tơ, không tọa độ"
+ },
+ {
+  "ma_cau": "T310000000107",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "tính độ dài |CA| trong hình chữ nhật"
+ },
+ {
+  "ma_cau": "T3100000001070",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "tìm k để AI=k·AB"
+ },
+ {
+  "ma_cau": "T3100000001073",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "tổng hai véc tơ trong hình bình hành"
+ },
+ {
+  "ma_cau": "T3100000001074",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài véc tơ tổng/hiệu, lời giải không có tích với số"
+ },
+ {
+  "ma_cau": "T3100000001076",
+  "dang_bai_id": "NDB00909",
+  "chac": "vua",
+  "ly_do": "chứng minh đẳng thức véc tơ với 4 điểm bất kỳ"
+ },
+ {
+  "ma_cau": "T3100000001077",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chứng minh đẳng thức véc tơ trong tam giác"
+ },
+ {
+  "ma_cau": "T3100000001078",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "tổng chuỗi véc tơ theo quy tắc 3 điểm"
+ },
+ {
+  "ma_cau": "T3100000001079",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "hợp lực hai lực 30 N hợp góc 60 độ"
+ },
+ {
+  "ma_cau": "T310000000108",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "tính độ dài |AM| tam giác đều"
+ },
+ {
+  "ma_cau": "T3100000001080",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "đáp án đúng MP+NM=NP: quy tắc 3 điểm"
+ },
+ {
+  "ma_cau": "T3100000001081",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "tính tổng véc tơ bằng quy tắc 3 điểm"
+ },
+ {
+  "ma_cau": "T3100000001082",
+  "dang_bai_id": "NDB00909",
+  "chac": "vua",
+  "ly_do": "chọn đẳng thức đúng với 4 điểm bất kỳ"
+ },
+ {
+  "ma_cau": "T3100000001083",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng bằng quy tắc 3 điểm, không tích với số"
+ },
+ {
+  "ma_cau": "T3100000001084",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chọn đẳng thức đúng trong hình vuông"
+ },
+ {
+  "ma_cau": "T3100000001085",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "tổng NC+MC trong hình bình hành"
+ },
+ {
+  "ma_cau": "T3100000001086",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chọn đẳng thức đúng trong hình bình hành"
+ },
+ {
+  "ma_cau": "T3100000001088",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài |AB+AC| bằng dựng hình chữ nhật, không tích với số"
+ },
+ {
+  "ma_cau": "T3100000001089",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài OB+OC quy về AB+DC cùng hướng, không tích với số"
+ },
+ {
+  "ma_cau": "T3100000001090",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "độ dài véc tơ có hệ số 2,3"
+ },
+ {
+  "ma_cau": "T3100000001091",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "hợp lực hai lực 60 N hợp góc 60 độ"
+ },
+ {
+  "ma_cau": "T3100000001092",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "ba lực cân bằng, vật đứng yên"
+ },
+ {
+  "ma_cau": "T3100000001093",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng bằng dựng hbh, không tích với số"
+ },
+ {
+  "ma_cau": "T3100000001094",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài |AB+AC| bằng hbh, không tích với số"
+ },
+ {
+  "ma_cau": "T3100000001095",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài NM, chỉ tổng véc tơ"
+ },
+ {
+  "ma_cau": "T3100000001096",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "GB+GC=2GM có tích với số"
+ },
+ {
+  "ma_cau": "T3100000001097",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T3100000001098",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "xác định vị trí điểm K từ đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T3100000001099",
+  "dang_bai_id": "NDB00904",
+  "chac": "vua",
+  "ly_do": "tổng chuỗi A_iB_i, tính bằng chen điểm O"
+ },
+ {
+  "ma_cau": "T3100000001105",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "tìm véc tơ bằng 2AO, 1/2 BA: tích với số"
+ },
+ {
+  "ma_cau": "T3100000001106",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "phép toán tích véc tơ với số"
+ },
+ {
+  "ma_cau": "T3100000001107",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "độ dài có tích 2OC"
+ },
+ {
+  "ma_cau": "T3100000001108",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "độ dài có tích 2BI"
+ },
+ {
+  "ma_cau": "T3100000001109",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "độ dài có tích 2AC"
+ },
+ {
+  "ma_cau": "T3100000001110",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "xác định điểm M thỏa đẳng thức và chứng minh với mọi O"
+ },
+ {
+  "ma_cau": "T3100000001111",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "xác định điểm K thỏa KA+2KB=0"
+ },
+ {
+  "ma_cau": "T3100000001112",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chứng minh OH=3OG"
+ },
+ {
+  "ma_cau": "T3100000001113",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "chứng minh đẳng thức véc tơ AC+BD=3GG'"
+ },
+ {
+  "ma_cau": "T3100000001114",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "chọn AB=-3AI theo hình, tích với số"
+ },
+ {
+  "ma_cau": "T3100000001115",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "đáp án |a|=|k||b|, tính chất tích với số"
+ },
+ {
+  "ma_cau": "T3100000001116",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "khẳng định về a=-3b, hướng và độ dài"
+ },
+ {
+  "ma_cau": "T3100000001117",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "tìm x để hai véc tơ cùng phương"
+ },
+ {
+  "ma_cau": "T3100000001119",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "A,I,P thẳng hàng tìm BP theo BC"
+ },
+ {
+  "ma_cau": "T3100000001120",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "đáp án k<0 thì ngược hướng, tích với số"
+ },
+ {
+  "ma_cau": "T3100000001121",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "đáp án BC=2MN, tích với số"
+ },
+ {
+  "ma_cau": "T3100000001122",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "xác định vị trí M thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T3100000001123",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T3100000001130",
+  "dang_bai_id": "NDB00918",
+  "chac": "cao",
+  "ly_do": "biểu diễn véc tơ qua i, j"
+ },
+ {
+  "ma_cau": "T3100000001131",
+  "dang_bai_id": "NDB00925",
+  "chac": "cao",
+  "ly_do": "nhiều ý; ý cuối tìm D để ABCD hình bình hành, dạng sau thắng"
+ },
+ {
+  "ma_cau": "T3100000001132",
+  "dang_bai_id": "NDB00918",
+  "chac": "cao",
+  "ly_do": "tọa độ của a=-2j"
+ },
+ {
+  "ma_cau": "T3100000001133",
+  "dang_bai_id": "NDB01422",
+  "chac": "cao",
+  "ly_do": "tìm x,y để hai véc tơ bằng nhau"
+ },
+ {
+  "ma_cau": "T3100000001134",
+  "dang_bai_id": "NDB00918",
+  "chac": "cao",
+  "ly_do": "OM=i-2j suy ra tọa độ M"
+ },
+ {
+  "ma_cau": "T3100000001135",
+  "dang_bai_id": "NDB00925",
+  "chac": "cao",
+  "ly_do": "tìm D để ABCD hình bình hành"
+ },
+ {
+  "ma_cau": "T3100000001136",
+  "dang_bai_id": "NDB00918",
+  "chac": "vua",
+  "ly_do": "tọa độ điểm M đọc từ hình vẽ"
+ },
+ {
+  "ma_cau": "T3100000001140",
+  "dang_bai_id": "NDB00918",
+  "chac": "cao",
+  "ly_do": "tọa độ u từ u=-2i+6j"
+ },
+ {
+  "ma_cau": "T3100000001141",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "tìm véc tơ cùng phương với u"
+ },
+ {
+  "ma_cau": "T3100000001142",
+  "dang_bai_id": "NDB00922",
+  "chac": "cao",
+  "ly_do": "tính độ dài u biết qua i, j"
+ },
+ {
+  "ma_cau": "T3100000001143",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "tìm ba điểm thẳng hàng"
+ },
+ {
+  "ma_cau": "T3100000001150",
+  "dang_bai_id": "NDB00921",
+  "chac": "cao",
+  "ly_do": "tìm u từ đẳng thức tọa độ"
+ },
+ {
+  "ma_cau": "T3100000001151",
+  "dang_bai_id": "NDB00921",
+  "chac": "vua",
+  "ly_do": "ý a cộng trừ nhân tọa độ; ý b phân tích theo hai véc tơ thiếu dạng"
+ },
+ {
+  "ma_cau": "T3100000001152",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "ý b ba điểm không thẳng hàng; dạng sau thắng"
+ },
+ {
+  "ma_cau": "T3100000001153",
+  "dang_bai_id": "NDB00925",
+  "chac": "cao",
+  "ly_do": "ý b tìm D hình bình hành; dạng sau thắng"
+ },
+ {
+  "ma_cau": "T3100000001154",
+  "dang_bai_id": "NDB00926",
+  "chac": "cao",
+  "ly_do": "tìm M thỏa 3AM+AB=0"
+ },
+ {
+  "ma_cau": "T3100000001155",
+  "dang_bai_id": "NDB00925",
+  "chac": "cao",
+  "ly_do": "tìm đỉnh còn lại của hình bình hành"
+ },
+ {
+  "ma_cau": "T3100000001156",
+  "dang_bai_id": "NDB00919",
+  "chac": "cao",
+  "ly_do": "tìm tọa độ AC sau khi xác định A,C"
+ },
+ {
+  "ma_cau": "T3100000001157",
+  "dang_bai_id": "NDB00926",
+  "chac": "cao",
+  "ly_do": "tìm D thỏa DB=-5DC"
+ },
+ {
+  "ma_cau": "T3100000001159",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "tọa độ trung điểm tổng quát"
+ },
+ {
+  "ma_cau": "T3100000001160",
+  "dang_bai_id": "NDB00921",
+  "chac": "cao",
+  "ly_do": "tọa độ a+b"
+ },
+ {
+  "ma_cau": "T3100000001161",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "tọa độ trung điểm"
+ },
+ {
+  "ma_cau": "T3100000001162",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "tìm x để hai véc tơ cùng phương"
+ },
+ {
+  "ma_cau": "T3100000001163",
+  "dang_bai_id": "NDB00940",
+  "chac": "cao",
+  "ly_do": "tích vô hướng theo tọa độ"
+ },
+ {
+  "ma_cau": "T3100000001164",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "tọa độ trọng tâm"
+ },
+ {
+  "ma_cau": "T3100000001165",
+  "dang_bai_id": "NDB00921",
+  "chac": "cao",
+  "ly_do": "tọa độ -2a+3b"
+ },
+ {
+  "ma_cau": "T3100000001166",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "tìm C từ trọng tâm G"
+ },
+ {
+  "ma_cau": "T3100000001167",
+  "dang_bai_id": "NDB00926",
+  "chac": "cao",
+  "ly_do": "tìm M thỏa đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T3100000001168",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "tìm I khi B là trung điểm AI"
+ },
+ {
+  "ma_cau": "T3100000001169",
+  "dang_bai_id": "NDB00942",
+  "chac": "cao",
+  "ly_do": "đáp án sai là cos góc giữa AC và CB theo tọa độ"
+ },
+ {
+  "ma_cau": "T3100000001170",
+  "dang_bai_id": "NDB00941",
+  "chac": "cao",
+  "ly_do": "tìm C để tam giác vuông tại A bằng tích vô hướng"
+ },
+ {
+  "ma_cau": "T3100000001171",
+  "dang_bai_id": "NDB00941",
+  "chac": "cao",
+  "ly_do": "tìm M để tam giác vuông tại M bằng tích vô hướng"
+ }
+]

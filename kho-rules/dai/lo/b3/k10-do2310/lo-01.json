@@ -1,0 +1,86 @@
+[
+ {
+  "ma_cau": "T110020101031",
+  "loai": "trac_nghiem",
+  "de": "Bất phương trình nào dưới đây không phải là bất phương trình bậc nhất hai ẩn?",
+  "lua_chon": [
+   "$3x - y \\le 5$.",
+   "$2x + xy \\le 1$.",
+   "$x + 3y \\ge 4$.",
+   "$x - y \\le 3$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Bất phương trình bậc nhất hai ẩn có dạng $ax + by \\le c$ (hoặc $\\ge$, $<$, $>$), trong đó $a$, $b$ không đồng thời bằng 0. Phương án B có chứa tích $xy$ nên không phải là bất phương trình bậc nhất hai ẩn. Vậy đáp án là B.",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Nhận diện bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020101041",
+  "loai": "trac_nghiem",
+  "de": "Bất phương trình nào sau đây không phải bất phương trình bậc nhất hai ẩn?",
+  "lua_chon": [
+   "$\\dfrac{1}{x} + y \\geq 1$",
+   "$x - y \\geq 2$",
+   "$3x + 4y \\leq 5$",
+   "$x + 2y > 3$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Bất phương trình bậc nhất hai ẩn có dạng $ax + by + c > 0$ (hoặc $\\geq$, $<$, $\\leq$) với $a$, $b$ không đồng thời bằng 0.\nPhương án A có chứa $\\dfrac{1}{x}$ nên không phải bất phương trình bậc nhất hai ẩn.\nVậy chọn A.",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Nhận diện bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020201006",
+  "loai": "trac_nghiem",
+  "de": "Hệ nào sau đây là hệ bất phương trình bậc nhất hai ẩn?",
+  "lua_chon": [
+   "$\\begin{cases} -3x+4y < 5 \\\\ 2x+3y > -1 \\end{cases}$",
+   "$\\begin{cases} x-y=2 \\\\ 2x+y=4 \\end{cases}$",
+   "$\\begin{cases} \\sqrt{x} + y > 1 \\\\ x-y<0 \\end{cases}$",
+   "$\\begin{cases} x^2-y \\le 3 \\\\ x+y>2 \\end{cases}$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Để là hệ bất phương trình bậc nhất hai ẩn thì cả hai bất phương trình trong hệ đều phải là bất phương trình bậc nhất hai ẩn (tức là mỗi bất phương trình có dạng $ax+by+c < 0$ hoặc $ax+by+c > 0$ hoặc $ax+by+c \\le 0$ hoặc $ax+by+c \\ge 0$, với $a,b,c$ là các hằng số, $a$ và $b$ không đồng thời bằng $0$).\nXét các đáp án:\nA. $\\begin{cases} -3x+4y < 5 \\\\ 2x+3y > -1 \\end{cases}$\n$-3x+4y < 5 \\Leftrightarrow -3x+4y-5 < 0$ là bất phương trình bậc nhất hai ẩn.\n$2x+3y > -1 \\Leftrightarrow 2x+3y+1 > 0$ là bất phương trình bậc nhất hai ẩn.\nVậy hệ này là hệ bất phương trình bậc nhất hai ẩn.\nB. $\\begin{cases} x-y=2 \\\\ 2x+y=4 \\end{cases}$ là hệ phương trình bậc nhất hai ẩn, không phải hệ bất phương trình.\nC. …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Nhận diện hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020201008",
+  "loai": "trac_nghiem",
+  "de": "Hệ nào sau đây là hệ bất phương trình bậc nhất hai ẩn?",
+  "lua_chon": [
+   "$\\begin{cases} 2x-3y \\ge 5 \\\\ x+4y < -2 \\end{cases}$",
+   "$\\begin{cases} x-2y = 3 \\\\ 2x+y = -1 \\end{cases}$",
+   "$\\begin{cases} \\sqrt{y} + x \\ge 0 \\\\ y-x < 1 \\end{cases}$",
+   "$\\begin{cases} y^2 - x \\le 2 \\\\ x+y > -1 \\end{cases}$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Để là hệ bất phương trình bậc nhất hai ẩn thì cả hai bất phương trình trong hệ đều phải là bất phương trình bậc nhất hai ẩn (tức là mỗi bất phương trình có dạng $ax+by+c < 0$ hoặc $ax+by+c > 0$ hoặc $ax+by+c \\le 0$ hoặc $ax+by+c \\ge 0$, với $a,b,c$ là các hằng số, $a$ và $b$ không đồng thời bằng $0$).\nXét các đáp án:\nA. $\\begin{cases} 2x-3y \\ge 5 \\\\ x+4y < -2 \\end{cases}$\n$2x-3y \\ge 5 \\Leftrightarrow 2x-3y-5 \\ge 0$ là bất phương trình bậc nhất hai ẩn.\n$x+4y < -2 \\Leftrightarrow x+4y+2 < 0$ là bất phương trình bậc nhất hai ẩn.\nVậy hệ này là hệ bất phương trình bậc nhất hai ẩn.\nB. $\\begin{cases} x-2y = 3 \\\\ 2x+y = -1 \\end{cases}$ là hệ phương trình bậc nhất hai ẩn, không phải hệ bất phương trì …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Nhận diện hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020201043",
+  "loai": "trac_nghiem",
+  "de": "Hệ bất phương trình nào là hệ bất phương trình bậc nhất hai ẩn?",
+  "lua_chon": [
+   "$\\begin{cases} 4x-2y \\ge 1 \\\\ 3x+5y \\le 6 \\end{cases}$",
+   "$\\begin{cases} -5x+3y \\le 2 \\\\ 2xy+7y > 3 \\end{cases}$",
+   "$\\begin{cases} 6x^3-2y > 5 \\\\ 4x+3y \\le 1 \\end{cases}$",
+   "$\\begin{cases} 5x-4y^2 \\le 7 \\\\ 2x+6y \\ge 1 \\end{cases}$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Hệ bất phương trình bậc nhất hai ẩn là hệ gồm các bất phương trình bậc nhất hai ẩn.\nPhương án A: $\\begin{cases} 4x-2y \\ge 1 \\\\ 3x+5y \\le 6 \\end{cases}$ gồm hai bất phương trình bậc nhất hai ẩn.\nPhương án B có $2xy+7y > 3$ chứa tích $xy$ nên không là bất phương trình bậc nhất hai ẩn.\nPhương án C có $6x^3-2y > 5$ chứa $x^3$ nên không là bất phương trình bậc nhất hai ẩn.\nPhương án D có $5x-4y^2 \\le 7$ chứa $y^2$ nên không là bất phương trình bậc nhất hai ẩn.\nVậy chọn A.",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Nhận diện hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110030203019",
+  "loai": "trac_nghiem",
+  "de": "Tam giác $ABC$ vuông tại $A$ có $BC = 8\\sqrt{3}cm$. Tính bán kính $R$ của đường tròn ngoại tiếp tam giác $ABC$.",
+  "lua_chon": [
+   "$R = 16\\sqrt{3}cm$.",
+   "$R = 2\\sqrt{3}cm$.",
+   "$R = 4\\sqrt{3}cm$.",
+   "$R = 8\\sqrt{3}cm$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Tam giác $ABC$ vuông tại $A$ có cạnh huyền là $BC = 8\\sqrt{3}cm$.\nBán kính đường tròn ngoại tiếp tam giác vuông bằng một nửa độ dài cạnh huyền, do đó\n$R = \\dfrac{BC}{2} = \\dfrac{8\\sqrt{3}}{2} = 4\\sqrt{3}$ (cm).\nVậy bán kính đường tròn ngoại tiếp tam giác $ABC$ là $R = 4\\sqrt{3}cm$.",
+  "nhan_cu": "Hệ thức lượng trong tam giác › Giải tam giác và bài toán thực tế áp dụng định lý sin"
+ }
+]

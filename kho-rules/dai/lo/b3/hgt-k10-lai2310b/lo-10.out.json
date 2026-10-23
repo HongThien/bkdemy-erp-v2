@@ -1,0 +1,602 @@
+[
+ {
+  "ma_cau": "T310000000501",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "Xác định điểm thoả đẳng thức véc tơ, không tọa độ"
+ },
+ {
+  "ma_cau": "T310000000502",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Chứng minh biểu thức véc tơ không đổi bằng biến đổi véc tơ"
+ },
+ {
+  "ma_cau": "T310000000503",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Chứng minh biểu thức véc tơ không đổi bằng biến đổi véc tơ"
+ },
+ {
+  "ma_cau": "T310000000504",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Chứng minh biểu thức véc tơ không đổi bằng biến đổi véc tơ"
+ },
+ {
+  "ma_cau": "T310000000505",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Chứng minh biểu thức véc tơ không đổi bằng biến đổi véc tơ"
+ },
+ {
+  "ma_cau": "T310000000506",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Chứng minh đẳng thức véc tơ AB=CD qua trung điểm"
+ },
+ {
+  "ma_cau": "T310000000507",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Chứng minh cùng trọng tâm bằng đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000508",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Chứng minh cùng trọng tâm bằng đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000509",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Chứng minh cùng trọng tâm bằng đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000510",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Chứng minh cùng trọng tâm bằng đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000511",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Chứng minh cùng trọng tâm bằng đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000512",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Chứng minh cùng trọng tâm bằng đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000513",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "Chứng minh thẳng hàng bằng véc tơ"
+ },
+ {
+  "ma_cau": "T310000000514",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "Chứng minh thẳng hàng bằng véc tơ"
+ },
+ {
+  "ma_cau": "T310000000515",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "Chứng minh thẳng hàng bằng véc tơ"
+ },
+ {
+  "ma_cau": "T310000000516",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "Chứng minh thẳng hàng bằng véc tơ"
+ },
+ {
+  "ma_cau": "T310000000517",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "Chứng minh thẳng hàng bằng véc tơ"
+ },
+ {
+  "ma_cau": "T310000000518",
+  "dang_bai_id": "NDB00909",
+  "chac": "vua",
+  "ly_do": "Chứng minh đồng quy bằng véc tơ; không có dạng riêng"
+ },
+ {
+  "ma_cau": "T310000000519",
+  "dang_bai_id": "NDB00909",
+  "chac": "vua",
+  "ly_do": "Chứng minh đồng quy bằng véc tơ; không có dạng riêng"
+ },
+ {
+  "ma_cau": "T310000000520",
+  "dang_bai_id": "NDB00913",
+  "chac": "vua",
+  "ly_do": "Menelaus/Ceva: thẳng hàng/đồng quy bằng véc tơ"
+ },
+ {
+  "ma_cau": "T310000000521",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "Chứng minh song song bằng véc tơ cùng phương"
+ },
+ {
+  "ma_cau": "T310000000522",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "Chứng minh song song bằng véc tơ cùng phương"
+ },
+ {
+  "ma_cau": "T310000000523",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: chứng minh điểm nằm trên đường tròn/quỹ tích"
+ },
+ {
+  "ma_cau": "T310000000524",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000525",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000526",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000527",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000528",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000529",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000530",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000531",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000532",
+  "dang_bai_id": "NDB00929",
+  "chac": "cao",
+  "ly_do": "Tính tích vô hướng theo định nghĩa"
+ },
+ {
+  "ma_cau": "T310000000533",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/độ dài giải bằng tích vô hướng trong đa giác"
+ },
+ {
+  "ma_cau": "T310000000534",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/độ dài giải bằng tích vô hướng trong đa giác"
+ },
+ {
+  "ma_cau": "T310000000535",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/độ dài giải bằng tích vô hướng trong đa giác"
+ },
+ {
+  "ma_cau": "T310000000536",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/độ dài giải bằng tích vô hướng trong đa giác"
+ },
+ {
+  "ma_cau": "T310000000537",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/độ dài giải bằng tích vô hướng trong đa giác"
+ },
+ {
+  "ma_cau": "T310000000538",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/độ dài giải bằng tích vô hướng trong đa giác"
+ },
+ {
+  "ma_cau": "T310000000539",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/độ dài giải bằng tích vô hướng trong đa giác"
+ },
+ {
+  "ma_cau": "T310000000540",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/độ dài giải bằng tích vô hướng trong đa giác"
+ },
+ {
+  "ma_cau": "T310000000541",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/độ dài giải bằng tích vô hướng trong đa giác"
+ },
+ {
+  "ma_cau": "T310000000542",
+  "dang_bai_id": "NDB00930",
+  "chac": "cao",
+  "ly_do": "Tính góc khi biết tích vô hướng"
+ },
+ {
+  "ma_cau": "T310000000543",
+  "dang_bai_id": "NDB00928",
+  "chac": "cao",
+  "ly_do": "Góc giữa 2 véc tơ trong hình vuông"
+ },
+ {
+  "ma_cau": "T310000000544",
+  "dang_bai_id": "NDB00930",
+  "chac": "cao",
+  "ly_do": "Tính góc từ tích vô hướng"
+ },
+ {
+  "ma_cau": "T310000000545",
+  "dang_bai_id": "NDB00930",
+  "chac": "cao",
+  "ly_do": "Tính góc từ tích vô hướng"
+ },
+ {
+  "ma_cau": "T310000000546",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Góc và tích vô hướng trong tam giác đều"
+ },
+ {
+  "ma_cau": "T310000000547",
+  "dang_bai_id": "NDB00930",
+  "chac": "cao",
+  "ly_do": "Tính góc từ tích vô hướng"
+ },
+ {
+  "ma_cau": "T310000000548",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: chứng minh đẳng thức tích vô hướng/độ dài"
+ },
+ {
+  "ma_cau": "T310000000549",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: chứng minh đẳng thức tích vô hướng/độ dài"
+ },
+ {
+  "ma_cau": "T310000000550",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: chứng minh đẳng thức tích vô hướng/độ dài"
+ },
+ {
+  "ma_cau": "T310000000551",
+  "dang_bai_id": "NDB00931",
+  "chac": "vua",
+  "ly_do": "Chứng minh+tính tích vô hướng trong nửa đường tròn, hình"
+ },
+ {
+  "ma_cau": "T310000000552",
+  "dang_bai_id": "NDB00941",
+  "chac": "cao",
+  "ly_do": "Dùng tích vô hướng chứng minh/tìm điều kiện vuông góc"
+ },
+ {
+  "ma_cau": "T310000000553",
+  "dang_bai_id": "NDB00941",
+  "chac": "cao",
+  "ly_do": "Dùng tích vô hướng chứng minh/tìm điều kiện vuông góc"
+ },
+ {
+  "ma_cau": "T310000000554",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: chứng minh đẳng thức tích vô hướng/độ dài"
+ },
+ {
+  "ma_cau": "T310000000555",
+  "dang_bai_id": "NDB00941",
+  "chac": "cao",
+  "ly_do": "Dùng tích vô hướng chứng minh/tìm điều kiện vuông góc"
+ },
+ {
+  "ma_cau": "T310000000556",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: chứng minh đẳng thức tích vô hướng/độ dài"
+ },
+ {
+  "ma_cau": "T310000000557",
+  "dang_bai_id": "NDB00917",
+  "chac": "cao",
+  "ly_do": "Cộng vận tốc máy bay và gió"
+ },
+ {
+  "ma_cau": "T310000000558",
+  "dang_bai_id": "NDB00914",
+  "chac": "cao",
+  "ly_do": "Công của lực, bài thực tế"
+ },
+ {
+  "ma_cau": "T310000000559",
+  "dang_bai_id": "NDB00914",
+  "chac": "cao",
+  "ly_do": "Công của lực, bài thực tế"
+ },
+ {
+  "ma_cau": "T310000000560",
+  "dang_bai_id": "NDB00914",
+  "chac": "cao",
+  "ly_do": "Công của lực, bài thực tế"
+ },
+ {
+  "ma_cau": "T310000000561",
+  "dang_bai_id": "NDB00928",
+  "chac": "cao",
+  "ly_do": "Góc/cos giữa 2 véc tơ trong đa giác"
+ },
+ {
+  "ma_cau": "T310000000562",
+  "dang_bai_id": "NDB00928",
+  "chac": "cao",
+  "ly_do": "Góc/cos giữa 2 véc tơ trong đa giác"
+ },
+ {
+  "ma_cau": "T310000000563",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/góc trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000564",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/góc trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000565",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/góc trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000566",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/góc trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000568",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/góc trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000569",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000570",
+  "dang_bai_id": "NDB00928",
+  "chac": "cao",
+  "ly_do": "Góc/cos giữa 2 véc tơ trong đa giác"
+ },
+ {
+  "ma_cau": "T310000000571",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/góc trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000572",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/góc trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000573",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/góc trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000574",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/góc trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000575",
+  "dang_bai_id": "NDB00931",
+  "chac": "vua",
+  "ly_do": "Độ dài AM cần tích vô hướng và tích với số"
+ },
+ {
+  "ma_cau": "T310000000576",
+  "dang_bai_id": "NDB00941",
+  "chac": "cao",
+  "ly_do": "Đáp án đúng: AM vuông góc DE, kiểm bằng tích vô hướng"
+ },
+ {
+  "ma_cau": "T310000000577",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/góc trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000578",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/góc trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000579",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000580",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000581",
+  "dang_bai_id": "NDB00928",
+  "chac": "cao",
+  "ly_do": "Góc/cos giữa 2 véc tơ trong đa giác"
+ },
+ {
+  "ma_cau": "T310000000582",
+  "dang_bai_id": "NDB00928",
+  "chac": "cao",
+  "ly_do": "Góc/cos giữa 2 véc tơ trong đa giác"
+ },
+ {
+  "ma_cau": "T310000000583",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/góc trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000584",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/góc trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000585",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/góc trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000586",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/góc trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000587",
+  "dang_bai_id": "NDB00929",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/độ dài theo định nghĩa"
+ },
+ {
+  "ma_cau": "T310000000588",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/góc trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000589",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/góc trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000590",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000591",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T310000000592",
+  "dang_bai_id": "NDB00928",
+  "chac": "cao",
+  "ly_do": "Góc/cos giữa 2 véc tơ trong đa giác"
+ },
+ {
+  "ma_cau": "T310000000593",
+  "dang_bai_id": "NDB00928",
+  "chac": "cao",
+  "ly_do": "Góc/cos giữa 2 véc tơ trong đa giác"
+ },
+ {
+  "ma_cau": "T310000000594",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/góc trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000595",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/góc trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000597",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/góc trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000598",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/góc trong tam giác, tứ giác"
+ },
+ {
+  "ma_cau": "T310000000599",
+  "dang_bai_id": "NDB00930",
+  "chac": "vua",
+  "ly_do": "Tính chất cùng hướng theo tích vô hướng, góc 0"
+ },
+ {
+  "ma_cau": "T310000000600",
+  "dang_bai_id": "NDB00929",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/độ dài theo định nghĩa"
+ },
+ {
+  "ma_cau": "T310000000601",
+  "dang_bai_id": "NDB00914",
+  "chac": "cao",
+  "ly_do": "Công của lực, bài thực tế"
+ },
+ {
+  "ma_cau": "T310000000602",
+  "dang_bai_id": "NDB00929",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng/độ dài theo định nghĩa"
+ }
+]

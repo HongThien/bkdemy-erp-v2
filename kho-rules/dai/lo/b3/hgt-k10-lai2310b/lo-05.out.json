@@ -1,0 +1,602 @@
+[
+ {
+  "ma_cau": "T3100000001172",
+  "dang_bai_id": "NDB00941",
+  "chac": "vua",
+  "ly_do": "Tìm trực tâm bằng tích vô hướng =0; bản đồ chỉ có dạng kiểm tra vuông góc"
+ },
+ {
+  "ma_cau": "T3100000001173",
+  "dang_bai_id": "NDB00926",
+  "chac": "cao",
+  "ly_do": "Tìm toạ độ điểm thoả đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T3100000001174",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Điểm M trên Oy để A,B,M thẳng hàng"
+ },
+ {
+  "ma_cau": "T3100000001175",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "Đối xứng qua điểm = trung điểm"
+ },
+ {
+  "ma_cau": "T3100000001176",
+  "dang_bai_id": "NDB00926",
+  "chac": "cao",
+  "ly_do": "Tìm M thoả đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T3100000001177",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Điều kiện 2 véc tơ cùng phương"
+ },
+ {
+  "ma_cau": "T3100000001178",
+  "dang_bai_id": "NDB01422",
+  "chac": "cao",
+  "ly_do": "Điều kiện 2 véc tơ bằng nhau, tìm m,n"
+ },
+ {
+  "ma_cau": "T3100000001179",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: toạ độ điểm đối xứng qua trục"
+ },
+ {
+  "ma_cau": "T3100000001180",
+  "dang_bai_id": "NDB00925",
+  "chac": "cao",
+  "ly_do": "Tìm D để ABDC là hình bình hành"
+ },
+ {
+  "ma_cau": "T3100000001181",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "A là trung điểm KB, A,B trên trục; dạng sau thắng 923"
+ },
+ {
+  "ma_cau": "T3100000001182",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "Cho trung điểm 3 cạnh, tìm đỉnh"
+ },
+ {
+  "ma_cau": "T3100000001183",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Tìm 3 điểm thẳng hàng"
+ },
+ {
+  "ma_cau": "T3100000001184",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "Trọng tâm và trung điểm, tìm đỉnh"
+ },
+ {
+  "ma_cau": "T3100000001185",
+  "dang_bai_id": "NDB00920",
+  "chac": "cao",
+  "ly_do": "Vị trí tàu sau t giờ: AB = t.v"
+ },
+ {
+  "ma_cau": "T3100000001195",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng trong tam giác vuông, G trọng tâm"
+ },
+ {
+  "ma_cau": "T3100000001196",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng trong hình vuông"
+ },
+ {
+  "ma_cau": "T3100000001197",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng AB.AC trong tam giác tổng quát"
+ },
+ {
+  "ma_cau": "T3100000001198",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Yêu cầu tính độ dài MN, véc tơ có tích với số"
+ },
+ {
+  "ma_cau": "T3100000001199",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: chứng minh đẳng thức tích vô hướng/độ dài"
+ },
+ {
+  "ma_cau": "T3100000001200",
+  "dang_bai_id": "NDB00929",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng 2 véc tơ cùng hướng theo định nghĩa"
+ },
+ {
+  "ma_cau": "T3100000001201",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng trong tam giác đều"
+ },
+ {
+  "ma_cau": "T3100000001202",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng trong tam giác đều"
+ },
+ {
+  "ma_cau": "T3100000001203",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Chọn mệnh đề về tích vô hướng trong tam giác đều"
+ },
+ {
+  "ma_cau": "T3100000001204",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Mệnh đề về tích vô hướng trong tam giác đều"
+ },
+ {
+  "ma_cau": "T3100000001205",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng trong tam giác vuông cân"
+ },
+ {
+  "ma_cau": "T3100000001206",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng trong tam giác vuông"
+ },
+ {
+  "ma_cau": "T3100000001207",
+  "dang_bai_id": "NDB00929",
+  "chac": "cao",
+  "ly_do": "Ba điểm thẳng hàng, tính CA.CB theo định nghĩa"
+ },
+ {
+  "ma_cau": "T3100000001208",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng biểu thức trong tam giác"
+ },
+ {
+  "ma_cau": "T3100000001209",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng trong hình vuông"
+ },
+ {
+  "ma_cau": "T3100000001210",
+  "dang_bai_id": "NDB00940",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng theo toạ độ"
+ },
+ {
+  "ma_cau": "T3100000001211",
+  "dang_bai_id": "NDB00940",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng theo toạ độ (i,j)"
+ },
+ {
+  "ma_cau": "T3100000001212",
+  "dang_bai_id": "NDB00940",
+  "chac": "vua",
+  "ly_do": "Tìm véc tơ c biết 2 tích vô hướng; chưa có dạng đúng, gần 940"
+ },
+ {
+  "ma_cau": "T3100000001213",
+  "dang_bai_id": "NDB00940",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng biểu thức theo toạ độ"
+ },
+ {
+  "ma_cau": "T3100000001214",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng trong tam giác vuông"
+ },
+ {
+  "ma_cau": "T3100000001215",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng trong tam giác vuông"
+ },
+ {
+  "ma_cau": "T3100000001216",
+  "dang_bai_id": "NDB00931",
+  "chac": "cao",
+  "ly_do": "Tích vô hướng trong hình bình hành"
+ },
+ {
+  "ma_cau": "T3100000001225",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Cùng phương/cùng hướng của véc tơ"
+ },
+ {
+  "ma_cau": "T3100000001226",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Véc tơ bằng nhau/đối nhau"
+ },
+ {
+  "ma_cau": "T3100000001227",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Đếm/định nghĩa véc tơ"
+ },
+ {
+  "ma_cau": "T3100000001228",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Cùng phương/cùng hướng của véc tơ"
+ },
+ {
+  "ma_cau": "T3100000001229",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Véc tơ bằng nhau/đối nhau"
+ },
+ {
+  "ma_cau": "T3100000001230",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ, không có tích với số"
+ },
+ {
+  "ma_cau": "T3100000001231",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ, không có tích với số"
+ },
+ {
+  "ma_cau": "T3100000001232",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Đếm/định nghĩa véc tơ"
+ },
+ {
+  "ma_cau": "T3100000001233",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Đếm/định nghĩa véc tơ"
+ },
+ {
+  "ma_cau": "T3100000001234",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Véc tơ bằng nhau/đối nhau"
+ },
+ {
+  "ma_cau": "T3100000001235",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Véc tơ bằng nhau/đối nhau"
+ },
+ {
+  "ma_cau": "T3100000001236",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Véc tơ bằng nhau/đối nhau"
+ },
+ {
+  "ma_cau": "T3100000001237",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Véc tơ bằng nhau/đối nhau"
+ },
+ {
+  "ma_cau": "T3100000001238",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Véc tơ bằng nhau/đối nhau"
+ },
+ {
+  "ma_cau": "T3100000001239",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ, không có tích với số"
+ },
+ {
+  "ma_cau": "T3100000001240",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Véc tơ bằng nhau/đối nhau"
+ },
+ {
+  "ma_cau": "T3100000001241",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Cùng phương/cùng hướng của véc tơ"
+ },
+ {
+  "ma_cau": "T3100000001242",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Véc tơ bằng nhau/đối nhau"
+ },
+ {
+  "ma_cau": "T3100000001243",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Véc tơ bằng nhau/đối nhau"
+ },
+ {
+  "ma_cau": "T3100000001244",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Véc tơ bằng nhau/đối nhau"
+ },
+ {
+  "ma_cau": "T3100000001245",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Véc tơ bằng nhau/đối nhau"
+ },
+ {
+  "ma_cau": "T3100000001246",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Véc tơ bằng nhau/đối nhau"
+ },
+ {
+  "ma_cau": "T3100000001247",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Véc tơ bằng nhau/đối nhau"
+ },
+ {
+  "ma_cau": "T3100000001248",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Véc tơ bằng nhau/đối nhau"
+ },
+ {
+  "ma_cau": "T3100000001249",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ, không có tích với số"
+ },
+ {
+  "ma_cau": "T3100000001250",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ, không có tích với số"
+ },
+ {
+  "ma_cau": "T3100000001251",
+  "dang_bai_id": "NDB00901",
+  "chac": "cao",
+  "ly_do": "Đếm/định nghĩa véc tơ"
+ },
+ {
+  "ma_cau": "T3100000001252",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ, không có tích với số"
+ },
+ {
+  "ma_cau": "T3100000001254",
+  "dang_bai_id": "NDB00902",
+  "chac": "cao",
+  "ly_do": "Cùng phương/cùng hướng của véc tơ"
+ },
+ {
+  "ma_cau": "T3100000001255",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "Véc tơ bằng nhau/đối nhau"
+ },
+ {
+  "ma_cau": "T3100000001256",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ, không có tích với số"
+ },
+ {
+  "ma_cau": "T3100000001257",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Tổng nhiều véc tơ theo quy tắc 3 điểm"
+ },
+ {
+  "ma_cau": "T3100000001258",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Chọn đẳng thức véc tơ đúng trong tam giác/tứ giác"
+ },
+ {
+  "ma_cau": "T3100000001259",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "Đáp án đúng dùng quy tắc 3 điểm"
+ },
+ {
+  "ma_cau": "T3100000001260",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "Tính chất trung điểm của véc tơ"
+ },
+ {
+  "ma_cau": "T3100000001261",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Chọn đẳng thức véc tơ đúng trong tam giác/tứ giác"
+ },
+ {
+  "ma_cau": "T3100000001262",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Đáp án sai dùng quy tắc hiệu"
+ },
+ {
+  "ma_cau": "T3100000001263",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Chọn đẳng thức véc tơ đúng trong tam giác/tứ giác"
+ },
+ {
+  "ma_cau": "T3100000001264",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Chọn đẳng thức véc tơ đúng trong tam giác/tứ giác"
+ },
+ {
+  "ma_cau": "T3100000001265",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Chọn đẳng thức véc tơ đúng trong tam giác/tứ giác"
+ },
+ {
+  "ma_cau": "T3100000001266",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Chọn đẳng thức véc tơ đúng trong tam giác/tứ giác"
+ },
+ {
+  "ma_cau": "T3100000001267",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Chọn đẳng thức véc tơ đúng trong tam giác/tứ giác"
+ },
+ {
+  "ma_cau": "T3100000001268",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "Rút gọn tổng hiệu véc tơ 5 điểm"
+ },
+ {
+  "ma_cau": "T3100000001269",
+  "dang_bai_id": "NDB00909",
+  "chac": "cao",
+  "ly_do": "Chọn đẳng thức véc tơ đúng trong tam giác/tứ giác"
+ },
+ {
+  "ma_cau": "T310000000127",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ, không có tích với số"
+ },
+ {
+  "ma_cau": "T3100000001270",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ, không có tích với số"
+ },
+ {
+  "ma_cau": "T3100000001271",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ, không có tích với số"
+ },
+ {
+  "ma_cau": "T3100000001272",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ, không có tích với số"
+ },
+ {
+  "ma_cau": "T3100000001273",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ, không có tích với số"
+ },
+ {
+  "ma_cau": "T3100000001274",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Lời giải có tích -2·CI, tính độ dài"
+ },
+ {
+  "ma_cau": "T3100000001275",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "Tìm vị trí điểm thoả đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T3100000001276",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "Tìm vị trí điểm thoả đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T3100000001277",
+  "dang_bai_id": "NDB01421",
+  "chac": "cao",
+  "ly_do": "Tìm vị trí điểm thoả đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T3100000001278",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: quỹ tích/tập hợp điểm"
+ },
+ {
+  "ma_cau": "T3100000001279",
+  "dang_bai_id": "NDB00916",
+  "chac": "vua",
+  "ly_do": "Ba lực cân bằng; dap_an B lệch lời giải (A: 100√2)"
+ },
+ {
+  "ma_cau": "T310000000128",
+  "dang_bai_id": "NDB00914",
+  "chac": "cao",
+  "ly_do": "Quãng đường = vận tốc × thời gian, thực tế"
+ },
+ {
+  "ma_cau": "T3100000001280",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ, không có tích với số"
+ },
+ {
+  "ma_cau": "T3100000001281",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ, không có tích với số"
+ },
+ {
+  "ma_cau": "T3100000001282",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ, không có tích với số"
+ },
+ {
+  "ma_cau": "T3100000001283",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "Lời giải có 2·AC, độ dài"
+ },
+ {
+  "ma_cau": "T3100000001284",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "Độ dài véc tơ, không có tích với số"
+ },
+ {
+  "ma_cau": "T3100000001285",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "Hợp lực của 2 lực"
+ },
+ {
+  "ma_cau": "T3100000001286",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "Ba lực cùng tác dụng vật đứng yên"
+ },
+ {
+  "ma_cau": "T3100000001287",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "Ba lực cùng tác dụng vật đứng yên"
+ }
+]

@@ -3,7 +3,7 @@
 // Bấm ô ⇒ danh sách các lần của nút đó. Mọi con số từ DB (fn_dgcc_*, §2.0); client chỉ gom cột để vẽ, sắp, định dạng.
 import { useEffect, useRef, useState } from 'react'
 import { supabase } from '../../lib/supabase'
-import { bangLop, cacLan, khoiCuoiCap, TEN_KENH, XU_HUONG, type LanCC, type OCC, type TangCC } from '../../lib/danhGiaCuoiCap'
+import { bangLop, cacLan, khoiCuoiCap, nguongTang, TEN_KENH, XU_HUONG, type LanCC, type OCC, type TangCC } from '../../lib/danhGiaCuoiCap'
 
 type Lop = { id: string; ten_lop: string; khoi: string; mon: string }
 type Mo = { o: OCC; lan?: LanCC[]; loi?: string }
@@ -26,6 +26,8 @@ export default function DanhGiaCuoiCapScreen() {
   const [loi, setLoi] = useState<string | null>(null)
   const [mo, setMo] = useState<Mo | null>(NHO.mo)
   const [lamMoi, setLamMoi] = useState(0)
+  const [nguong, setNguong] = useState<Record<string, { nhe: number; ro: number }>>({})
+  useEffect(() => { nguongTang().then(setNguong).catch(() => {}) }, [])
   const khung = useRef<HTMLDivElement>(null)
   useEffect(() => { Object.assign(NHO, { lopId, tang, mo }) }, [lopId, tang, mo])
   useEffect(() => { if (khung.current) khung.current.scrollTop = NHO.cuon }, [rows])
@@ -104,7 +106,7 @@ export default function DanhGiaCuoiCapScreen() {
                 <tr>
                   <th className={`${th} sticky left-0 z-20 min-w-[170px] text-left`}>Học sinh</th>
                   {cot.map((c) => (
-                    <th key={khoaO(c)} title={c.ten ?? c.nut} className={`${th} w-[104px] min-w-[104px] align-bottom`}>
+                    <th key={khoaO(c)} title={c.ten ?? c.nut} className={`${th} w-[124px] min-w-[124px] align-bottom`}>
                       <div className="line-clamp-3 text-center leading-tight">{c.ten ?? c.nut}</div>
                     </th>
                   ))}
@@ -126,7 +128,7 @@ export default function DanhGiaCuoiCapScreen() {
                             className={`flex w-full items-center justify-center gap-1 rounded px-1 py-0.5 font-semibold tabular-nums hover:ring-2 hover:ring-indigo-300 ${mauPct(x.tb_dai)} ${dangMo ? 'ring-2 ring-indigo-500' : ''}`}>
                             <span>{Math.round(x.tb_dai)}%</span>
                             <span className={`text-[13px] ${xh.mau}`}>{xh.ky}</span>
-                            <span className="text-[10px] font-normal opacity-60">{x.so_lan}</span>
+                            <span className="text-[10px] font-normal opacity-60">· {x.so_lan} lần</span>
                           </button>
                         </td>
                       )
@@ -139,8 +141,7 @@ export default function DanhGiaCuoiCapScreen() {
         )}
       {rows && rows.length > 0 && (
         <p className="text-[11px] text-slate-400">
-          Ô = TB {rows[0].cua_so_dai} lần gần nhất · mũi tên = TB {rows[0].cua_so_ngan} lần so với TB {rows[0].cua_so_dai} lần (↑↑/↓↓ chênh &gt;10 điểm, ↑/↓ 3–10, → dưới 3,
-          · chưa đủ lần) · số nhỏ = số lần. Một lần = một bài làm (ET · MT · khảo sát · BTVN · test bổ trợ), mọi lần nặng như nhau. Từ 15/06/2026.
+          Ô = TB {rows[0].cua_so_dai} lần gần nhất · mũi tên = TB {rows[0].cua_so_ngan} lần so với TB {rows[0].cua_so_dai} lần {nguong[tang] && <> (↑↑/↓↓ chênh &gt;{nguong[tang].ro} điểm, ↑/↓ {nguong[tang].nhe}–{nguong[tang].ro}, → dưới {nguong[tang].nhe}, · chưa đủ lần)</>}. Một lần = một bài làm (ET · MT · khảo sát · BTVN · test bổ trợ), mọi lần nặng như nhau. Từ 15/06/2026.
         </p>
       )}
 

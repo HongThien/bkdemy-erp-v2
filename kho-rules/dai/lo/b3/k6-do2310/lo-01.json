@@ -1,0 +1,97 @@
+[
+ {
+  "ma_cau": "T106000000456",
+  "loai": "tu_luan",
+  "de": "Bạn An viết các số tự nhiên liên tiếp từ 1 đến 30 lên bảng sau đó thực hiện trò chơi như sau: Mỗi lần xoá hai số $a$, $b$ bất kì trên bảng và viết một số mới bằng $a+b+2$ lên bảng. Việc làm này của An được thực hiện lặp lại liên tục, hỏi sau 29 bước số cuối cùng còn lại trên bảng là bao nhiêu? Tại sao?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** không theo dõi từng số cụ thể mà theo dõi **tổng các số trên bảng** sau mỗi lần thay đổi.\n**Bước 1.** Tính tổng các số trên bảng lúc đầu bằng cách tính tổng dãy số liên tiếp từ 1 đến 30.\n**Bước 2.** Xét một lần xoá $a$, $b$ rồi viết $a+b+2$: so sánh tổng trước và sau để biết tổng tăng thêm bao nhiêu.\n**Bước 3.** Tính tổng tăng thêm sau 29 bước và đếm xem sau 29 bước trên bảng còn lại mấy số.\n**Bước 4.** Số còn lại duy nhất chính là tổng các số trên bảng lúc đó, cộng lại để ra kết quả.\n**Phần 2. Trình bày**\nTổng các số trên bảng lúc đầu là:\n$1+2+3+\\dots+30=(30+1).30:2=465$\nMỗi lần thực hiện, hai số $a$ và $b$ (tổng bằng $a+b$) bị xoá và thay bằng số $a+b+2$ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106020303025",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm x biết: $3  \\times (x+1) = 42$.",
+  "dap_an": "13",
+  "loi_giai": "$3 \\cdot (x+1)=42$\\n$x+1=42:3$\\n$x+1=14$\\n$x=14-1$\\n$x=13$\\n Vậy $x=13$.",
+  "nhan_cu": "Các phép tính với Số tự nhiên › Tìm x liên quan đến nhân chia Số tự nhiên"
+ },
+ {
+  "ma_cau": "T106020303026",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm x biết: $4  \\times (x+2) = 36$.",
+  "dap_an": "7",
+  "loi_giai": "$4 \\cdot (x+2)=36$\\n$x+2=36:4$\\n$x+2=9$\\n$x=9-2$\\n$x=7$\\n Vậy $x=7$.",
+  "nhan_cu": "Các phép tính với Số tự nhiên › Tìm x liên quan đến nhân chia Số tự nhiên"
+ },
+ {
+  "ma_cau": "T106020303052",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm x biết: $(x-3):7=11.$",
+  "dap_an": "80",
+  "loi_giai": "$(x-3):7=11$\n$x-3=11\\cdot7$\n$x-3=77$\n$x=77+3$\n$x=80$\nVậy $x=80.$",
+  "nhan_cu": "Các phép tính với Số tự nhiên › Tìm x liên quan đến nhân chia Số tự nhiên"
+ },
+ {
+  "ma_cau": "T106020303056",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm x biết: $(x-10):5=15.$",
+  "dap_an": "85",
+  "loi_giai": "$(x-10):5=15$\n$x-10=15\\cdot5$\n$x-10=75$\n$x=75+10$\n$x=85$\nVậy $x=85.$",
+  "nhan_cu": "Các phép tính với Số tự nhiên › Tìm x liên quan đến nhân chia Số tự nhiên"
+ },
+ {
+  "ma_cau": "T106020303058",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm x biết: $5(x-2)+27=92$.",
+  "dap_an": "15",
+  "loi_giai": "$5(x-2)+27=92$\n$5(x-2)=92-27$\n$5(x-2)=65$\n$x-2=65:5$\n$x-2=13$\n$x=13+2$\n$x=15$\nVậy $x=15$.",
+  "nhan_cu": "Các phép tính với Số tự nhiên › Tìm x liên quan đến nhân chia Số tự nhiên"
+ },
+ {
+  "ma_cau": "T106020303060",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm x biết: $6(x-5)+10=70$.",
+  "dap_an": "15",
+  "loi_giai": "$6(x-5)+10=70$\n$6(x-5)=70-10$\n$6(x-5)=60$\n$x-5=60:6$\n$x-5=10$\n$x=10+5$\n$x=15$\nVậy $x=15$.",
+  "nhan_cu": "Các phép tính với Số tự nhiên › Tìm x liên quan đến nhân chia Số tự nhiên"
+ },
+ {
+  "ma_cau": "T106020701001",
+  "loai": "tra_loi_ngan",
+  "de": "Tính: $A = \\dfrac{1}{1 \\times 2} + \\dfrac{1}{2 \\times 3} + \\dfrac{1}{3 \\times 4} + ..... + \\dfrac{1}{99 \\times 100}$.",
+  "dap_an": "\\dfrac{99}{100}",
+  "loi_giai": "Ta có: $A = \\dfrac{1}{1 \\times 2} + \\dfrac{1}{2 \\times 3} + \\dfrac{1}{3 \\times 4} + ..... + \\dfrac{1}{99 \\times 100}$\n$A = 1 - \\dfrac{1}{2} + \\dfrac{1}{2} - \\dfrac{1}{3} + \\dfrac{1}{3} - \\dfrac{1}{4} + ..... + \\dfrac{1}{99} - \\dfrac{1}{100}$\n$A = 1 - \\dfrac{1}{100}$\n$A = \\dfrac{100}{100} - \\dfrac{1}{100}$\n$A = \\dfrac{99}{100}$",
+  "nhan_cu": "Nâng cao › Nâng cao"
+ },
+ {
+  "ma_cau": "T106020701002",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x$ biết: $\\dfrac{1}{1 \\times 3} + \\dfrac{1}{3 \\times 5} + ..... + \\dfrac{1}{x \\times (x + 2)} = \\dfrac{25}{51}$.",
+  "dap_an": "49",
+  "loi_giai": "Ta có: $\\dfrac{1}{1 \\times 3} + \\dfrac{1}{3 \\times 5} + ..... + \\dfrac{1}{x \\times (x + 2)} = \\dfrac{25}{51}$\n$\\dfrac{1}{2} \\times \\left( \\dfrac{2}{1 \\times 3} + \\dfrac{2}{3 \\times 5} + ..... + \\dfrac{2}{x \\times (x + 2)} \\right) = \\dfrac{25}{51}$\n$\\dfrac{1}{2} \\times \\left( 1 - \\dfrac{1}{3} + \\dfrac{1}{3} - \\dfrac{1}{5} + ..... + \\dfrac{1}{x} - \\dfrac{1}{x + 2} \\right) = \\dfrac{25}{51}$\n$\\dfrac{1}{2} \\times \\left( 1 - \\dfrac{1}{x + 2} \\right) = \\dfrac{25}{51}$\n$1 - \\dfrac{1}{x + 2} = \\dfrac{25}{51} : \\dfrac{1}{2}$\n$1 - \\dfrac{1}{x + 2} = \\dfrac{25}{51} \\times 2$\n$1 - \\dfrac{1}{x + 2} = \\dfrac{50}{51}$\n$\\dfrac{1}{x + 2} = 1 - \\dfrac{50}{51}$\n$\\dfrac{1}{x + 2} = \\dfrac{51}{51} - \\dfrac{50}{51 …",
+  "nhan_cu": "Nâng cao › Nâng cao"
+ },
+ {
+  "ma_cau": "T106020701003",
+  "loai": "tra_loi_ngan",
+  "de": "Tính: $A = \\dfrac{2}{1 \\times 4} + \\dfrac{2}{4 \\times 7} + ..... + \\dfrac{2}{97 \\times 100}$.",
+  "dap_an": "\\dfrac{66}{100}",
+  "loi_giai": "Ta có: $A = \\dfrac{2}{1 \\times 4} + \\dfrac{2}{4 \\times 7} + ..... + \\dfrac{2}{97 \\times 100}$\n$\\dfrac{3}{2} \\times A = \\dfrac{3}{1 \\times 4} + \\dfrac{3}{4 \\times 7} + ..... + \\dfrac{3}{97 \\times 100}$\n$\\dfrac{3}{2} \\times A = 1 - \\dfrac{1}{4} + \\dfrac{1}{4} - \\dfrac{1}{7} + ..... + \\dfrac{1}{97} - \\dfrac{1}{100}$\n$\\dfrac{3}{2} \\times A = 1 - \\dfrac{1}{100}$\n$\\dfrac{3}{2} \\times A = \\dfrac{99}{100}$\n$A = \\dfrac{99}{100} : \\dfrac{3}{2}$\n$A = \\dfrac{99}{100} \\times \\dfrac{2}{3}$\n$A = \\dfrac{33}{50}$",
+  "nhan_cu": "Nâng cao › Nâng cao"
+ },
+ {
+  "ma_cau": "T106020701004",
+  "loai": "tra_loi_ngan",
+  "de": "CLB Stem có số bạn nam nhiều hơn số bạn nữ là 15 bạn. Sau khi 3 bạn nam chuyển sang CLB khác thì lúc này số bạn nữ bằng $\\dfrac{3}{5}$ số bạn nam. Hỏi lúc đầu có bao nhiêu bạn nam?",
+  "dap_an": "33",
+  "loi_giai": "Sau khi 3 bạn nam chuyển đi, số bạn nam nhiều hơn số bạn nữ là: $15 - 3 = 12$ (bạn).\nLúc này số bạn nữ bằng $\\dfrac{3}{5}$ số bạn nam, nên $12$ bạn ứng với $1 - \\dfrac{3}{5} = \\dfrac{2}{5}$ số bạn nam.\nSố bạn nam lúc này là: $12 : \\dfrac{2}{5} = 30$ (bạn).\nSố bạn nam lúc đầu là: $30 + 3 = 33$ (bạn).\nVậy lúc đầu có $33$ bạn nam.",
+  "nhan_cu": "Nâng cao › Nâng cao"
+ },
+ {
+  "ma_cau": "T106020803001",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x$ biết $2^x . (2^x + 1)(2^x + 2) + 4^y = 721$",
+  "dap_an": "3",
+  "loi_giai": "Ta có $2^x$; $2^x + 1$; $2^x + 2$ là 3 số tự nhiên liên tiếp nên tích của chúng là số chẵn\nMà $721$ là số lẻ\nSuy ra $4^y$ là số lẻ. Suy ra $y = 0$\nKhi đó $2^x . (2^x + 1)(2^x + 2) + 1 = 721$\nSuy ra $2^x . (2^x + 1)(2^x + 2) = 720 = 8.9.10$\nNếu $x = 3 \\Rightarrow 2^x = 2^3 = 8 \\Rightarrow 2^x . (2^x + 1)(2^x + 2) = 8.9.10$\nNếu $x > 3 \\Rightarrow 2^x > 2^3 = 8 \\Rightarrow 2^x . (2^x + 1)(2^x + 2) > 8.9.10$ (loại)\nNếu $x < 3 \\Rightarrow 2^x < 2^3 = 8 \\Rightarrow 2^x . (2^x + 1)(2^x + 2) < 8.9.10$ (loại)\nVậy $x = 3$",
+  "nhan_cu": "Các bài toán nâng cao về lũy thừa › Tìm x ứng dụng lũy thừa"
+ }
+]

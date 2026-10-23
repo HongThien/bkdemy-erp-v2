@@ -1,0 +1,602 @@
+[
+ {
+  "ma_cau": "T310000000823",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Tìm x để AB cùng phương BC bằng tọa độ"
+ },
+ {
+  "ma_cau": "T310000000824",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Tìm x để 2 véc tơ cùng phương"
+ },
+ {
+  "ma_cau": "T310000000825",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Chọn cặp véc tơ không cùng phương theo tọa độ"
+ },
+ {
+  "ma_cau": "T310000000826",
+  "dang_bai_id": "NDB01422",
+  "chac": "cao",
+  "ly_do": "Tìm m để u=v (tọa độ)"
+ },
+ {
+  "ma_cau": "T310000000827",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Tìm m để 2 véc tơ cùng phương"
+ },
+ {
+  "ma_cau": "T310000000828",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Tìm m để A,B,C thẳng hàng"
+ },
+ {
+  "ma_cau": "T310000000829",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Đáp án đúng: AB,CD ngược hướng, kiểm bằng AB=-1/2CD (cùng phương)"
+ },
+ {
+  "ma_cau": "T310000000830",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Tìm m để 2 véc tơ cùng phương"
+ },
+ {
+  "ma_cau": "T310000000831",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Chọn 3 điểm thẳng hàng theo tọa độ"
+ },
+ {
+  "ma_cau": "T310000000832",
+  "dang_bai_id": "NDB00913",
+  "chac": "cao",
+  "ly_do": "Chọn cặp véc tơ cùng phương (u=-6v) qua tích với số"
+ },
+ {
+  "ma_cau": "T310000000833",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Tìm m để A,B,C thẳng hàng"
+ },
+ {
+  "ma_cau": "T310000000834",
+  "dang_bai_id": "NDB00918",
+  "chac": "cao",
+  "ly_do": "Biểu diễn a theo i, j"
+ },
+ {
+  "ma_cau": "T310000000835",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: phân tích véc tơ theo 2 véc tơ bằng tọa độ"
+ },
+ {
+  "ma_cau": "T310000000836",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: phân tích véc tơ theo 2 véc tơ bằng tọa độ"
+ },
+ {
+  "ma_cau": "T310000000837",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: phân tích véc tơ theo 2 véc tơ bằng tọa độ"
+ },
+ {
+  "ma_cau": "T310000000838",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: phân tích véc tơ theo 2 véc tơ bằng tọa độ"
+ },
+ {
+  "ma_cau": "T310000000839",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: phân tích véc tơ theo 2 véc tơ bằng tọa độ"
+ },
+ {
+  "ma_cau": "T310000000840",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: phân tích véc tơ theo 2 véc tơ bằng tọa độ"
+ },
+ {
+  "ma_cau": "T310000000841",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: phân tích véc tơ theo 2 véc tơ bằng tọa độ"
+ },
+ {
+  "ma_cau": "T310000000842",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: phân tích véc tơ theo 2 véc tơ bằng tọa độ"
+ },
+ {
+  "ma_cau": "T310000000843",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tọa độ điểm đối xứng (qua trục)"
+ },
+ {
+  "ma_cau": "T310000000844",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "Tọa độ trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000845",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "Tọa độ trung điểm"
+ },
+ {
+  "ma_cau": "T310000000846",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "Tìm x,y để G là trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000847",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "Tọa độ trung điểm"
+ },
+ {
+  "ma_cau": "T310000000848",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "Tọa độ trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000849",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "Tọa độ trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000850",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "Tìm D để C là trọng tâm tam giác ABD"
+ },
+ {
+  "ma_cau": "T310000000851",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "Tọa độ trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000852",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "Xác định tam giác nhận G làm trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000853",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "Cho 3 trung điểm các cạnh, tìm tổng tung độ đỉnh"
+ },
+ {
+  "ma_cau": "T310000000854",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "Cho 3 trung điểm các cạnh, tìm đỉnh A (kiểu bài trung điểm)"
+ },
+ {
+  "ma_cau": "T310000000855",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "Cho 3 trung điểm các cạnh, tìm đỉnh A qua trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000856",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "Trọng tâm G trên Ox, P trên Oy: dùng công thức trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000857",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: hình chiếu của điểm lên trục"
+ },
+ {
+  "ma_cau": "T310000000858",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "Cho 3 trung điểm các cạnh, tìm đỉnh B (kiểu bài trung điểm)"
+ },
+ {
+  "ma_cau": "T310000000859",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "Trọng tâm G trên Ox, P trên Oy"
+ },
+ {
+  "ma_cau": "T310000000860",
+  "dang_bai_id": "NDB00925",
+  "chac": "cao",
+  "ly_do": "Tìm D để ABCD là hình bình hành"
+ },
+ {
+  "ma_cau": "T310000000861",
+  "dang_bai_id": "NDB00925",
+  "chac": "cao",
+  "ly_do": "Tìm D để ABCD là hình bình hành"
+ },
+ {
+  "ma_cau": "T310000000862",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Giao đường thẳng AB với Ox: A,B,M thẳng hàng"
+ },
+ {
+  "ma_cau": "T310000000863",
+  "dang_bai_id": "NDB00925",
+  "chac": "cao",
+  "ly_do": "Tìm M để OBMA là hình bình hành"
+ },
+ {
+  "ma_cau": "T310000000864",
+  "dang_bai_id": "NDB00925",
+  "chac": "cao",
+  "ly_do": "Tìm D để ABCD là hình bình hành"
+ },
+ {
+  "ma_cau": "T310000000865",
+  "dang_bai_id": "NDB00925",
+  "chac": "cao",
+  "ly_do": "Tìm E để ABCE là hình bình hành"
+ },
+ {
+  "ma_cau": "T310000000866",
+  "dang_bai_id": "NDB00926",
+  "chac": "cao",
+  "ly_do": "Tìm E thỏa AE=3AB-2AC"
+ },
+ {
+  "ma_cau": "T310000000867",
+  "dang_bai_id": "NDB00925",
+  "chac": "cao",
+  "ly_do": "Tìm D để ABCD là hình bình hành"
+ },
+ {
+  "ma_cau": "T310000000868",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "Biết trọng tâm G và trung điểm M của BC, tìm A"
+ },
+ {
+  "ma_cau": "T310000000869",
+  "dang_bai_id": "NDB00926",
+  "chac": "cao",
+  "ly_do": "Tìm M thỏa AM=-1/2 CI (I trung điểm AB); đẳng thức véc tơ đứng sau"
+ },
+ {
+  "ma_cau": "T310000000870",
+  "dang_bai_id": "NDB00926",
+  "chac": "cao",
+  "ly_do": "Tìm M thỏa đẳng thức véc tơ cho trước"
+ },
+ {
+  "ma_cau": "T310000000871",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Tìm M trên Ox để A,B,M thẳng hàng"
+ },
+ {
+  "ma_cau": "T310000000872",
+  "dang_bai_id": "NDB00925",
+  "chac": "cao",
+  "ly_do": "Giao 2 đường chéo của hình bình hành OABC"
+ },
+ {
+  "ma_cau": "T310000000873",
+  "dang_bai_id": "NDB00926",
+  "chac": "vua",
+  "ly_do": "Đề thiếu điểm C trong đẳng thức MA+MB-3MC=0"
+ },
+ {
+  "ma_cau": "T310000000874",
+  "dang_bai_id": "NDB00926",
+  "chac": "cao",
+  "ly_do": "Tìm E thỏa AE=3AB-2AC"
+ },
+ {
+  "ma_cau": "T310000000875",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Tìm M trên Ox để A,B,M thẳng hàng"
+ },
+ {
+  "ma_cau": "T310000000876",
+  "dang_bai_id": "NDB00926",
+  "chac": "cao",
+  "ly_do": "M trên BC với S_ABC=3S_ABM: BC=±3BM đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000877",
+  "dang_bai_id": "NDB00926",
+  "chac": "vua",
+  "ly_do": "Giao hai đường xác định bằng đẳng thức véc tơ BD, trọng tâm; nhiều bước"
+ },
+ {
+  "ma_cau": "T310000000878",
+  "dang_bai_id": "NDB00941",
+  "chac": "vua",
+  "ly_do": "Tâm ngoại tiếp qua tích vô hướng bằng 0; bản đồ thiếu dạng tâm ngoại tiếp"
+ },
+ {
+  "ma_cau": "T310000000879",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: trực tâm, tâm/bán kính đường tròn ngoại tiếp"
+ },
+ {
+  "ma_cau": "T310000000910",
+  "dang_bai_id": "NDB00927",
+  "chac": "cao",
+  "ly_do": "M trên Ox để |2MA-3MB+2MC| nhỏ nhất"
+ },
+ {
+  "ma_cau": "T310000000911",
+  "dang_bai_id": "NDB00927",
+  "chac": "cao",
+  "ly_do": "I trên Ox để |IM+IN| nhỏ nhất"
+ },
+ {
+  "ma_cau": "T310000000912",
+  "dang_bai_id": "NDB00926",
+  "chac": "cao",
+  "ly_do": "D trên AC với S_BDC=1/4 S_ABC: AC=±4DC"
+ },
+ {
+  "ma_cau": "T310000000913",
+  "dang_bai_id": "NDB00925",
+  "chac": "cao",
+  "ly_do": "Hình bình hành ABCD với trung điểm M, giao điểm N để tìm D"
+ },
+ {
+  "ma_cau": "T310000000914",
+  "dang_bai_id": "NDB00927",
+  "chac": "vua",
+  "ly_do": "Cực trị chu vi (đối xứng) không dùng véc tơ; gần dạng cực trị nhất"
+ },
+ {
+  "ma_cau": "T310000000915",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Hình thang ACMB đáy AC: AC // BM (cùng phương)"
+ },
+ {
+  "ma_cau": "T310000000916",
+  "dang_bai_id": "NDB00926",
+  "chac": "cao",
+  "ly_do": "M thuộc tia AB, AM=√80: AM=k·AB đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000917",
+  "dang_bai_id": "NDB00920",
+  "chac": "cao",
+  "ly_do": "Thuyền chuyển động thẳng đều: AB=2v, tìm tọa độ v"
+ },
+ {
+  "ma_cau": "T310000000919",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tọa độ điểm đối xứng (qua gốc)"
+ },
+ {
+  "ma_cau": "T310000000920",
+  "dang_bai_id": "NDB00927",
+  "chac": "vua",
+  "ly_do": "Cực trị tổng khoảng cách (đối xứng qua Ox), không phải véc tơ; gần dạng cực trị"
+ },
+ {
+  "ma_cau": "T310000000921",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "C trên Oy để A,B,C thẳng hàng"
+ },
+ {
+  "ma_cau": "T310000000922",
+  "dang_bai_id": "NDB00927",
+  "chac": "vua",
+  "ly_do": "Cực trị khoảng cách tới điểm trên đường tròn; gần dạng cực trị nhất"
+ },
+ {
+  "ma_cau": "T310000000923",
+  "dang_bai_id": "NDB00926",
+  "chac": "cao",
+  "ly_do": "Cột điện cách đều thẳng hàng: tỉ lệ véc tơ trên hệ tọa độ"
+ },
+ {
+  "ma_cau": "T310000000924",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "A là trung điểm BM"
+ },
+ {
+  "ma_cau": "T310000000925",
+  "dang_bai_id": "NDB00926",
+  "chac": "cao",
+  "ly_do": "Hình thang MN//PQ, PQ=2MN: đẳng thức véc tơ tìm Q"
+ },
+ {
+  "ma_cau": "T310000000926",
+  "dang_bai_id": "NDB00919",
+  "chac": "vua",
+  "ly_do": "Tọa độ véc tơ M1M2 sau khi lấy hình chiếu (bản đồ thiếu dạng hình chiếu)"
+ },
+ {
+  "ma_cau": "T310000000927",
+  "dang_bai_id": "NDB00927",
+  "chac": "cao",
+  "ly_do": "M trên Ox để biểu thức chứa MC² và |véc tơ| nhỏ nhất"
+ },
+ {
+  "ma_cau": "T310000000928",
+  "dang_bai_id": "NDB00923",
+  "chac": "vua",
+  "ly_do": "u=AG nhờ tính chất trọng tâm; gần 00921/00919"
+ },
+ {
+  "ma_cau": "T310000000929",
+  "dang_bai_id": "NDB00920",
+  "chac": "vua",
+  "ly_do": "Di chuyển theo bước, cộng véc tơ tìm tọa độ vị trí; bài thực tế"
+ },
+ {
+  "ma_cau": "T310000000931",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "Cho 3 trung điểm, tìm trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000932",
+  "dang_bai_id": "NDB00941",
+  "chac": "vua",
+  "ly_do": "Trực tâm qua tích vô hướng bằng 0; bản đồ thiếu dạng trực tâm"
+ },
+ {
+  "ma_cau": "T310000000933",
+  "dang_bai_id": "NDB00926",
+  "chac": "cao",
+  "ly_do": "Cột điện cách đều thẳng hàng: tỉ lệ véc tơ trên hệ tọa độ"
+ },
+ {
+  "ma_cau": "T310000000934",
+  "dang_bai_id": "NDB00920",
+  "chac": "vua",
+  "ly_do": "Robot chuyển động thẳng đều, tìm vị trí rồi khoảng cách tới O"
+ },
+ {
+  "ma_cau": "T310000000935",
+  "dang_bai_id": "NDB00922",
+  "chac": "cao",
+  "ly_do": "M trên Ox cách đều A,B: MA=MB"
+ },
+ {
+  "ma_cau": "T310000000936",
+  "dang_bai_id": "NDB00923",
+  "chac": "cao",
+  "ly_do": "Biết trọng tâm G, tìm C"
+ },
+ {
+  "ma_cau": "T310000000937",
+  "dang_bai_id": "NDB00927",
+  "chac": "cao",
+  "ly_do": "M trên Ox để biểu thức chứa MA·MB, MB²,... nhỏ nhất"
+ },
+ {
+  "ma_cau": "T310000000938",
+  "dang_bai_id": "NDB00927",
+  "chac": "cao",
+  "ly_do": "M trên Oy để biểu thức chứa MA²,MB²,|véc tơ| nhỏ nhất"
+ },
+ {
+  "ma_cau": "T310000000939",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "Vật cân bằng dưới các lực vuông góc, tìm số quả cân"
+ },
+ {
+  "ma_cau": "T310000000940",
+  "dang_bai_id": "NDB00941",
+  "chac": "vua",
+  "ly_do": "Điểm gần gốc nhất qua OM vuông AB; bản đồ thiếu dạng khoảng cách tới đường thẳng"
+ },
+ {
+  "ma_cau": "T310000000941",
+  "dang_bai_id": "NDB00922",
+  "chac": "cao",
+  "ly_do": "Khoảng cách từ gốc O đến điểm (30;25)"
+ },
+ {
+  "ma_cau": "T310000000942",
+  "dang_bai_id": "NDB00920",
+  "chac": "cao",
+  "ly_do": "Thuyền chuyển động thẳng đều: BD=AB, tìm tọa độ D"
+ },
+ {
+  "ma_cau": "T310000000943",
+  "dang_bai_id": "NDB00927",
+  "chac": "cao",
+  "ly_do": "M trên Ox để |MA+2MB| nhỏ nhất"
+ },
+ {
+  "ma_cau": "T310000000944",
+  "dang_bai_id": "NDB00926",
+  "chac": "cao",
+  "ly_do": "D trên đoạn BC với S_ABC=5/2 S_ACD: BC=5/2 CD đẳng thức véc tơ"
+ },
+ {
+  "ma_cau": "T310000000945",
+  "dang_bai_id": "NDB00920",
+  "chac": "cao",
+  "ly_do": "Máy bay chuyển động thẳng đều: vị trí sau 3 giờ"
+ },
+ {
+  "ma_cau": "T310000000946",
+  "dang_bai_id": "NDB00924",
+  "chac": "cao",
+  "ly_do": "Tìm x để u cùng phương v"
+ },
+ {
+  "ma_cau": "T310000000947",
+  "dang_bai_id": "NDB00920",
+  "chac": "cao",
+  "ly_do": "Tàu chuyển động thẳng đều với v: tìm vị trí B sau 2 giờ"
+ },
+ {
+  "ma_cau": "T310000000948",
+  "dang_bai_id": "NDB00922",
+  "chac": "vua",
+  "ly_do": "Điều kiện khoảng cách (giao 2 đường tròn); gần dạng khoảng cách"
+ },
+ {
+  "ma_cau": "T310000000949",
+  "dang_bai_id": "NDB00926",
+  "chac": "vua",
+  "ly_do": "Chân phân giác qua tỉ lệ cạnh rồi đẳng thức véc tơ; có thể thiếu dạng phân giác"
+ },
+ {
+  "ma_cau": "T310000000950",
+  "dang_bai_id": "NDB00927",
+  "chac": "cao",
+  "ly_do": "M trên Ox để |MA+2MB| nhỏ nhất, tìm giá trị nhỏ nhất"
+ },
+ {
+  "ma_cau": "T310000000951",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "Tính độ lớn hợp lực của 2 lực"
+ },
+ {
+  "ma_cau": "T310000000952",
+  "dang_bai_id": "NDB00922",
+  "chac": "vua",
+  "ly_do": "Tâm ngoại tiếp qua IA=IB=IC; hỏi khoảng cách; thiếu dạng tâm ngoại tiếp"
+ },
+ {
+  "ma_cau": "T310000000953",
+  "dang_bai_id": "NDB00942",
+  "chac": "cao",
+  "ly_do": "Tính góc A của tam giác bằng tọa độ"
+ },
+ {
+  "ma_cau": "T310000000954",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tọa độ điểm trên trục (nhiều ý)"
+ }
+]

@@ -1,0 +1,248 @@
+[
+ {
+  "ma_cau": "077020101020",
+  "dang_bai_id": "NDB00443",
+  "chac": "cao",
+  "ly_do": "Cho STP vô hạn tuần hoàn -0,3636..., yêu cầu xác định chu kì và viết gọn."
+ },
+ {
+  "ma_cau": "077020101039",
+  "dang_bai_id": "NDB00443",
+  "chac": "vua",
+  "ly_do": "Đổi phân số ra STP rồi viết gọn chu kì; không có dạng đổi phân số, gần nhận biết STP hoặc viết gọn."
+ },
+ {
+  "ma_cau": "077020101040",
+  "dang_bai_id": "NDB00443",
+  "chac": "vua",
+  "ly_do": "Đổi phân số ra STP rồi viết gọn chu kì; không có dạng đổi phân số, gần nhận biết STP hoặc viết gọn."
+ },
+ {
+  "ma_cau": "077020101042",
+  "dang_bai_id": "NDB00443",
+  "chac": "vua",
+  "ly_do": "Đổi phân số ra STP rồi viết gọn chu kì; không có dạng đổi phân số, gần nhận biết STP hoặc viết gọn."
+ },
+ {
+  "ma_cau": "077020101043",
+  "dang_bai_id": "NDB00443",
+  "chac": "vua",
+  "ly_do": "Đổi phân số ra STP rồi viết gọn chu kì; không có dạng đổi phân số, gần nhận biết STP hoặc viết gọn."
+ },
+ {
+  "ma_cau": "077020101046",
+  "dang_bai_id": "NDB00443",
+  "chac": "vua",
+  "ly_do": "Đổi phân số ra STP rồi viết gọn chu kì; không có dạng đổi phân số, gần nhận biết STP hoặc viết gọn."
+ },
+ {
+  "ma_cau": "077020101050",
+  "dang_bai_id": "NDB00443",
+  "chac": "vua",
+  "ly_do": "Đổi phân số ra STP rồi viết gọn chu kì; không có dạng đổi phân số, gần nhận biết STP hoặc viết gọn."
+ },
+ {
+  "ma_cau": "077020101052",
+  "dang_bai_id": "NDB00443",
+  "chac": "vua",
+  "ly_do": "Đổi phân số ra STP rồi viết gọn chu kì; không có dạng đổi phân số, gần nhận biết STP hoặc viết gọn."
+ },
+ {
+  "ma_cau": "077020101054",
+  "dang_bai_id": "NDB00443",
+  "chac": "vua",
+  "ly_do": "Đổi phân số ra STP rồi viết gọn chu kì; không có dạng đổi phân số, gần nhận biết STP hoặc viết gọn."
+ },
+ {
+  "ma_cau": "077020101057",
+  "dang_bai_id": "NDB00443",
+  "chac": "vua",
+  "ly_do": "Đổi phân số ra STP rồi viết gọn chu kì; không có dạng đổi phân số, gần nhận biết STP hoặc viết gọn."
+ },
+ {
+  "ma_cau": "077020101058",
+  "dang_bai_id": "NDB00443",
+  "chac": "vua",
+  "ly_do": "Đổi phân số ra STP rồi viết gọn chu kì; không có dạng đổi phân số, gần nhận biết STP hoặc viết gọn."
+ },
+ {
+  "ma_cau": "07702202202034",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Biểu thức tổng hợp nhiều căn bậc hai, không GTTĐ; trùng ví dụ 3 của dạng."
+ },
+ {
+  "ma_cau": "07702202202076",
+  "dang_bai_id": "NDB00933",
+  "chac": "cao",
+  "ly_do": "Biểu thức có căn bậc hai, lũy thừa, chia, cộng trừ, không có GTTĐ."
+ },
+ {
+  "ma_cau": "07702220320302017",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Có GTTĐ cùng căn bậc hai; theo mô tả có GTTĐ thì xếp dạng tổng hợp có GTTĐ (dạng sau)."
+ },
+ {
+  "ma_cau": "07702220320302018",
+  "dang_bai_id": "NDB00934",
+  "chac": "cao",
+  "ly_do": "Có GTTĐ cùng căn bậc hai; theo mô tả có GTTĐ thì xếp dạng tổng hợp có GTTĐ (dạng sau)."
+ },
+ {
+  "ma_cau": "T107000000148",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ khối 7 thiếu dạng quy tắc dấu ngoặc (chọn biểu thức sau khi bỏ ngoặc, biến chữ)."
+ },
+ {
+  "ma_cau": "T107010203043",
+  "dang_bai_id": "NDB01336",
+  "chac": "cao",
+  "ly_do": "Tìm x với x ngoài lũy thừa, vế phải chứa lũy thừa SHT; dạng sau thắng dạng chuyển vế."
+ },
+ {
+  "ma_cau": "T107010203044",
+  "dang_bai_id": "NDB01336",
+  "chac": "cao",
+  "ly_do": "Tìm x với x ngoài lũy thừa, vế phải chứa lũy thừa SHT; dạng sau thắng dạng chuyển vế."
+ },
+ {
+  "ma_cau": "T107010206061",
+  "dang_bai_id": "NDB00791",
+  "chac": "cao",
+  "ly_do": "Phải tách 6/5.40/7 và 6/7.5/5 về thừa số 6/35 mới rút được nhân tử chung."
+ },
+ {
+  "ma_cau": "T107010206065",
+  "dang_bai_id": "NDB00423",
+  "chac": "vua",
+  "ly_do": "Chia cho 4/5 chung sẵn nên rút luôn; nhưng cũng có thể xếp biến đổi nhân tử chung hoặc tổng hợp."
+ },
+ {
+  "ma_cau": "T107010206070",
+  "dang_bai_id": "NDB00791",
+  "chac": "vua",
+  "ly_do": "Đổi chia thành nhân đảo rồi rút 3/8, hoặc tính thẳng nhiều bước (00800); hai hướng đều hợp lý."
+ },
+ {
+  "ma_cau": "T107010207052",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Có sẵn nhân tử chung -3/4 ở hai tích, rút luôn ra ngoài."
+ },
+ {
+  "ma_cau": "T107010404050",
+  "dang_bai_id": "NDB00795",
+  "chac": "cao",
+  "ly_do": "x nằm trong cơ số (x+2/3)^3, mũ 3; có chuyển vế nhưng dạng sau thắng."
+ },
+ {
+  "ma_cau": "T1077033330401001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học: góc đối đỉnh, có hình vẽ (chủ đề Đường thẳng song song [hinh_luyen])."
+ },
+ {
+  "ma_cau": "T1077033330401003",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học: tính góc theo hình, hai tia đối nhau (chủ đề Đường thẳng song song [hinh_luyen])."
+ },
+ {
+  "ma_cau": "T1077033330401004",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học: tia phân giác của góc (chủ đề Đường thẳng song song [hinh_luyen])."
+ },
+ {
+  "ma_cau": "077020101015",
+  "dang_bai_id": "NDB00443",
+  "chac": "cao",
+  "ly_do": "Cho STP vô hạn tuần hoàn -0,3636..., yêu cầu xác định chu kì và viết gọn. (cùng gốc đã xoá với 077020101020)"
+ },
+ {
+  "ma_cau": "077020101023",
+  "dang_bai_id": "NDB00443",
+  "chac": "cao",
+  "ly_do": "Cho STP vô hạn tuần hoàn -0,3636..., yêu cầu xác định chu kì và viết gọn. (cùng gốc đã xoá với 077020101020)"
+ },
+ {
+  "ma_cau": "077020101016",
+  "dang_bai_id": "NDB00443",
+  "chac": "cao",
+  "ly_do": "Cho STP vô hạn tuần hoàn -0,3636..., yêu cầu xác định chu kì và viết gọn. (cùng gốc đã xoá với 077020101020)"
+ },
+ {
+  "ma_cau": "077020101022",
+  "dang_bai_id": "NDB00443",
+  "chac": "cao",
+  "ly_do": "Cho STP vô hạn tuần hoàn -0,3636..., yêu cầu xác định chu kì và viết gọn. (cùng gốc đã xoá với 077020101020)"
+ },
+ {
+  "ma_cau": "077020101017",
+  "dang_bai_id": "NDB00443",
+  "chac": "cao",
+  "ly_do": "Cho STP vô hạn tuần hoàn -0,3636..., yêu cầu xác định chu kì và viết gọn. (cùng gốc đã xoá với 077020101020)"
+ },
+ {
+  "ma_cau": "077020101021",
+  "dang_bai_id": "NDB00443",
+  "chac": "cao",
+  "ly_do": "Cho STP vô hạn tuần hoàn -0,3636..., yêu cầu xác định chu kì và viết gọn. (cùng gốc đã xoá với 077020101020)"
+ },
+ {
+  "ma_cau": "077020101019",
+  "dang_bai_id": "NDB00443",
+  "chac": "cao",
+  "ly_do": "Cho STP vô hạn tuần hoàn -0,3636..., yêu cầu xác định chu kì và viết gọn. (cùng gốc đã xoá với 077020101020)"
+ },
+ {
+  "ma_cau": "077020101018",
+  "dang_bai_id": "NDB00443",
+  "chac": "cao",
+  "ly_do": "Cho STP vô hạn tuần hoàn -0,3636..., yêu cầu xác định chu kì và viết gọn. (cùng gốc đã xoá với 077020101020)"
+ },
+ {
+  "ma_cau": "077020101014",
+  "dang_bai_id": "NDB00443",
+  "chac": "cao",
+  "ly_do": "Cho STP vô hạn tuần hoàn -0,3636..., yêu cầu xác định chu kì và viết gọn. (cùng gốc đã xoá với 077020101020)"
+ },
+ {
+  "ma_cau": "T107010207050",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Có sẵn nhân tử chung -3/4 ở hai tích, rút luôn ra ngoài. (cùng gốc đã xoá với T107010207052)"
+ },
+ {
+  "ma_cau": "T107010207049",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Có sẵn nhân tử chung -3/4 ở hai tích, rút luôn ra ngoài. (cùng gốc đã xoá với T107010207052)"
+ },
+ {
+  "ma_cau": "T107010207053",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Có sẵn nhân tử chung -3/4 ở hai tích, rút luôn ra ngoài. (cùng gốc đã xoá với T107010207052)"
+ },
+ {
+  "ma_cau": "T107010207051",
+  "dang_bai_id": "NDB00423",
+  "chac": "cao",
+  "ly_do": "Có sẵn nhân tử chung -3/4 ở hai tích, rút luôn ra ngoài. (cùng gốc đã xoá với T107010207052)"
+ },
+ {
+  "ma_cau": "T107010404048",
+  "dang_bai_id": "NDB00795",
+  "chac": "cao",
+  "ly_do": "x nằm trong cơ số (x+2/3)^3, mũ 3; có chuyển vế nhưng dạng sau thắng. (cùng gốc đã xoá với T107010404050)"
+ },
+ {
+  "ma_cau": "T107010404049",
+  "dang_bai_id": "NDB00795",
+  "chac": "cao",
+  "ly_do": "x nằm trong cơ số (x+2/3)^3, mũ 3; có chuyển vế nhưng dạng sau thắng. (cùng gốc đã xoá với T107010404050)"
+ }
+]
