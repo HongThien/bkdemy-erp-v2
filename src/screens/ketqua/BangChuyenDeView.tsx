@@ -196,7 +196,7 @@ type XuatInput = { tieuDe: string; phu: string; cot: BangCDCot[]; hs: BangCDHS[]
 const F = 18 // px — cỡ chữ ô; mọi bề rộng là bội của F
 const KHUON = {
   ngang: { ten: 11, lop: 3.5, cd: 5.5, diem: 3.8, hang: 3.8, toiThieu: 44 },
-  doc: { ten: 9, lop: 0, cd: 3.4, diem: 3.6, hang: 3.4, toiThieu: 30 },
+  doc: { ten: 12, lop: 0, cd: 4.2, diem: 3.6, hang: 3.4, toiThieu: 48 }, // Thùy 23/10: bản dọc 30F chữ to quá ⇒ ~48F (≈11pt trên A4)
 }
 function TagCap({ nc, nho, ngan }: { nc?: boolean; nho?: boolean; ngan?: boolean }) {
   return <span className={`inline-block rounded px-1 font-semibold leading-snug ${nho ? 'text-[9.5px]' : ''} ${nc ? 'bg-violet-100 text-violet-700' : 'bg-sky-100 text-sky-700'}`}>{ngan ? (nc ? 'NC' : 'CB') : nc ? 'Nâng cao' : 'Cơ bản'}</span>
