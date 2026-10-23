@@ -1,0 +1,124 @@
+[
+ {
+  "ma": "BT.08.073.01",
+  "so": "B1",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$ có đường cao $AH$. Từ $H$ kẻ $HD, HE$ lần lượt vuông góc với $AB, AC$. CMR: $ADHE$ là hình chữ nhật.",
+  "tien_de": []
+ },
+ {
+  "ma": "BT.08.073.02",
+  "so": "B2",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$ có đường cao $AH$. Từ $H$ kẻ $HD, HE$ lần lượt vuông góc với $AB, AC$.; Gọi $M$ là trung điểm của $BC$. CMR: $AM \\perp DE$.",
+  "tien_de": [
+   "B1"
+  ]
+ },
+ {
+  "ma": "BT.08.073.03",
+  "so": "B3",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$ có đường cao $AH$. Từ $H$ kẻ $HD, HE$ lần lượt vuông góc với $AB, AC$.; Gọi $M$ là trung điểm của $BC$.; Gọi $O$ là giao điểm của $AH$ và $DE$. Qua $A$ kẻ đường thẳng $xy$ vuông góc với $OM$.; Giả sử $AB \\ne AC$. CMR: $xy, BC, DE$ đồng quy.",
+  "tien_de": [
+   "B1",
+   "B2"
+  ]
+ },
+ {
+  "ma": "BT.08.073.04",
+  "so": "B4",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$ có đường cao $AH$. Từ $H$ kẻ $HD, HE$ lần lượt vuông góc với $AB, AC$.; Lấy điểm $K$ sao cho $E$ là trung điểm của $AK$. Gọi $O$ là giao điểm của $AH$ và $DE$, $J$ là giao điểm của $DK$ và $HE$. CMR: $DHKE$ là hình bình hành.",
+  "tien_de": [
+   "B1"
+  ]
+ },
+ {
+  "ma": "BT.08.073.05",
+  "so": "B5",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$ có đường cao $AH$. Từ $H$ kẻ $HD, HE$ lần lượt vuông góc với $AB, AC$.; Lấy điểm $K$ sao cho $E$ là trung điểm của $AK$. Gọi $O$ là giao điểm của $AH$ và $DE$, $J$ là giao điểm của $DK$ và $HE$. CMR: $OJ = \\dfrac{AE}{2}$.",
+  "tien_de": [
+   "B1",
+   "B4"
+  ]
+ },
+ {
+  "ma": "BT.08.073.06",
+  "so": "B6",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$ có đường cao $AH$. Từ $H$ kẻ $HD, HE$ lần lượt vuông góc với $AB, AC$.; Lấy điểm $G$ sao cho $D$ là trung điểm của $AG$. Gọi $O$ là giao điểm của $AH$ và $DE$. $EG$ cắt $HD$ tại $L$. CMR: $DGHE$ là hình bình hành.",
+  "tien_de": [
+   "B1"
+  ]
+ },
+ {
+  "ma": "BT.08.073.07",
+  "so": "B7",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$ có đường cao $AH$. Từ $H$ kẻ $HD, HE$ lần lượt vuông góc với $AB, AC$.; Lấy điểm $G$ sao cho $D$ là trung điểm của $AG$. Gọi $O$ là giao điểm của $AH$ và $DE$. $EG$ cắt $HD$ tại $L$. CMR: $OL \\parallel AB$.",
+  "tien_de": [
+   "B1",
+   "B6"
+  ]
+ },
+ {
+  "ma": "BT.08.073.08",
+  "so": "B8",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$ có đường cao $AH$. Từ $H$ kẻ $HD, HE$ lần lượt vuông góc với $AB, AC$.; Qua $C$ kẻ đường thẳng song song với $AH$, cắt các đường thẳng $DH, DE$ lần lượt tại $P, Q$. Tìm điều kiện của tam giác $ABC$ để $\\Delta DPQ$ là tam giác vuông cân.",
+  "tien_de": [
+   "B1"
+  ]
+ },
+ {
+  "ma": "BT.08.073.09",
+  "so": "B9",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$ có đường cao $AH$. Từ $H$ kẻ $HD, HE$ lần lượt vuông góc với $AB, AC$.; Gọi $I$ là trung điểm của $HC$. Lấy điểm $K$ đối xứng với $A$ qua $I$. CMR: $AHKC$ là hình bình hành.",
+  "tien_de": []
+ },
+ {
+  "ma": "BT.08.073.10",
+  "so": "B10",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$ có đường cao $AH$. Từ $H$ kẻ $HD, HE$ lần lượt vuông góc với $AB, AC$.; Gọi $I$ là trung điểm của $HC$. Lấy điểm $K$ đối xứng với $A$ qua $I$. CMR: $D, H, K$ thẳng hàng.",
+  "tien_de": [
+   "B1",
+   "B9"
+  ]
+ },
+ {
+  "ma": "BT.08.073.11",
+  "so": "B11",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$ có đường cao $AH$. Từ $H$ kẻ $HD, HE$ lần lượt vuông góc với $AB, AC$.; Gọi $I$ là trung điểm của $HC$. Lấy điểm $K$ đối xứng với $A$ qua $I$. CMR: $DECK$ là hình thang cân.",
+  "tien_de": [
+   "B1",
+   "B9",
+   "B10"
+  ]
+ },
+ {
+  "ma": "BT.08.073.12",
+  "so": "B12",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$ có đường cao $AH$. Từ $H$ kẻ $HD, HE$ lần lượt vuông góc với $AB, AC$.; Gọi $I$ là trung điểm của $HC$. Lấy điểm $K$ đối xứng với $A$ qua $I$.; Gọi $O$ là giao điểm của $AH$ và $DE$. $AK$ cắt $CO$ tại $F$. CMR: $AK = 3AF$.",
+  "tien_de": [
+   "B1"
+  ]
+ },
+ {
+  "ma": "BT.08.073.13",
+  "so": "B13",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$ có đường cao $AH$. Từ $H$ kẻ $HD, HE$ lần lượt vuông góc với $AB, AC$.; Gọi $I$ là trung điểm của $HC$. Lấy điểm $K$ đối xứng với $A$ qua $I$.; Gọi $R, S$ lần lượt là trung điểm của $AH$ và $CK$. CMR: $RHSC$ là hình bình hành.",
+  "tien_de": [
+   "B9"
+  ]
+ },
+ {
+  "ma": "BT.08.073.14",
+  "so": "B14",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$ có đường cao $AH$. Từ $H$ kẻ $HD, HE$ lần lượt vuông góc với $AB, AC$.; Gọi $I$ là trung điểm của $HC$. Lấy điểm $K$ đối xứng với $A$ qua $I$.; Gọi $R, S$ lần lượt là trung điểm của $AH$ và $CK$. CMR: $I$ là trung điểm của $RS$.",
+  "tien_de": [
+   "B13"
+  ]
+ },
+ {
+  "ma": "BT.08.073.15",
+  "so": "B15",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$ có đường cao $AH$. Từ $H$ kẻ $HD, HE$ lần lượt vuông góc với $AB, AC$.; Gọi $I$ là trung điểm của $HC$. Lấy điểm $K$ đối xứng với $A$ qua $I$.; Gọi $R, S$ lần lượt là trung điểm của $AH$ và $CK$. CMR: $R, I, S$ thẳng hàng.",
+  "tien_de": [
+   "B14"
+  ]
+ }
+]

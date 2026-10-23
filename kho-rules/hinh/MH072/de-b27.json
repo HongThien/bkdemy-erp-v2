@@ -1,0 +1,10 @@
+[
+ {
+  "ma": "BT.08.072.27",
+  "so": "B27",
+  "de_day_du": "Cho tam giác $ABC$ vuông ở $A$ ($AB < AC$). $M$ là trung điểm của $BC$. Từ $M$ kẻ $MD, ME$ lần lượt vuông góc với $AB, AC$.; Kẻ $AH$ vuông góc với $BC$ ($H \\in BC$).; Lấy điểm $K$ đối xứng với $M$ qua $E$.; Lấy điểm $I$ đối xứng với $M$ qua $D$.; Kẻ $MF$ vuông góc với $AK$ ($F \\in AK$). CMR: $\\widehat{FAE} = \\widehat{FDE}$.",
+  "tien_de": [
+   "B26"
+  ]
+ }
+]

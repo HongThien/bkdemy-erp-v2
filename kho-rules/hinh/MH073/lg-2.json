@@ -1,0 +1,44 @@
+[
+ {
+  "ma": "BT.08.073.09",
+  "so": "B9",
+  "loi_giai": "Vì $I$ là trung điểm của $HC$ nên $IH = IC$.\nVì $K$ đối xứng với $A$ qua $I$ nên $I$ là trung điểm của $AK$, suy ra $IA = IK$.\nTứ giác $AHKC$ có hai đường chéo $AK$ và $HC$ cắt nhau tại $I$, đồng thời $I$ là trung điểm của mỗi đường chéo.\nVậy $AHKC$ là hình bình hành.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.073.10",
+  "so": "B10",
+  "loi_giai": "Vì $ADHE$ là hình chữ nhật (theo B1) nên $DH \\parallel AE$, mà $E$ thuộc $AC$ nên $DH \\parallel AC$.\nVì $AHKC$ là hình bình hành (theo B9) nên $HK \\parallel AC$.\nQua điểm $H$ có hai đường thẳng $HD$ và $HK$ cùng song song với $AC$, nên theo tiên đề Ơ-clít hai đường thẳng này trùng nhau.\nVậy ba điểm $D, H, K$ thẳng hàng.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.073.11",
+  "so": "B11",
+  "loi_giai": "Theo B10, ba điểm $D, H, K$ thẳng hàng nên đường thẳng $DK$ chính là đường thẳng $DH$.\nVì $ADHE$ là hình chữ nhật (theo B1) nên $DH \\parallel AE$, mà $E, C$ cùng thuộc $AC$ nên $DK \\parallel EC$.\nVậy $DECK$ là hình thang có hai đáy là $DK$ và $EC$.\nXét $\\Delta DAC$ và $\\Delta EHK$ có:\n$AD = HE$ (hai cạnh đối của hình chữ nhật $ADHE$);\n$\\widehat{DAC} = 90^\\circ$ (vì $D$ thuộc $AB$ và $\\widehat{BAC} = 90^\\circ$);\n$\\widehat{EHK} = 90^\\circ$ (vì $HE \\perp AC$ (gt) và $HK \\parallel AC$ (theo B10) nên $HE \\perp HK$);\n$AC = HK$ (hai cạnh đối của hình bình hành $AHKC$, theo B9).\nSuy ra $\\Delta DAC = \\Delta EHK$ (c.g.c), do đó $DC = EK$.\nHình thang $DECK$ có hai đường chéo $DC$ và $EK$ bằng nhau nên $DECK$ là hình thang cân.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.073.12",
+  "so": "B12",
+  "loi_giai": "Vì $ADHE$ là hình chữ nhật (theo B1) nên hai đường chéo $AH$ và $DE$ cắt nhau tại trung điểm của mỗi đường, mà $O$ là giao điểm của $AH$ và $DE$ nên $O$ là trung điểm của $AH$.\nXét $\\Delta AHC$ có $CO$ là đường trung tuyến (vì $O$ là trung điểm của $AH$).\nLại có $I$ là trung điểm của $HC$ và $I$ nằm trên $AK$ (vì $I$ là trung điểm của $AK$) nên $AI$, tức đường thẳng $AK$, là đường trung tuyến của $\\Delta AHC$.\nHai đường trung tuyến $AK$ và $CO$ cắt nhau tại $F$ nên $F$ là trọng tâm của $\\Delta AHC$.\nSuy ra $AF = \\dfrac{2}{3}AI$.\nVì $I$ là trung điểm của $AK$ nên $AI = \\dfrac{AK}{2}$.\nDo đó $AF = \\dfrac{2}{3} \\cdot \\dfrac{AK}{2} = \\dfrac{AK}{3}$.\nVậy $AK = 3AF$.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.073.13",
+  "so": "B13",
+  "loi_giai": "Vì $AHKC$ là hình bình hành (theo B9) nên $AH \\parallel CK$ và $AH = CK$.\nVì $R, S$ lần lượt là trung điểm của $AH$ và $CK$ nên $HR = \\dfrac{AH}{2}$ và $CS = \\dfrac{CK}{2}$, suy ra $HR = CS$.\nVì $I$ là trung điểm của $AK$ và $I$ thuộc $HC$ nên $A$ và $K$ nằm khác phía đối với đường thẳng $HC$; do đó $R$ (cùng phía với $A$) và $S$ (cùng phía với $K$) cũng nằm khác phía đối với $HC$.\nVì $AH \\parallel CK$ nên $\\widehat{RHC} = \\widehat{SCH}$ (hai góc so le trong).\nXét $\\Delta RHC$ và $\\Delta SCH$ có: $HR = CS$ (cmt), $\\widehat{RHC} = \\widehat{SCH}$ (cmt), $HC$ chung.\nNên $\\Delta RHC = \\Delta SCH$ (c.g.c), suy ra $\\widehat{RCH} = \\widehat{SHC}$, mà hai góc này ở vị trí so le trong nên $RC \\parallel HS$.\nLại có $RH \\parallel SC$ (vì $R$ thuộc $AH$, $S$ thuộc $CK$ và $AH \\parallel CK$).\nTứ giác $RHSC$ có $RH \\parallel SC$ và $RC \\parallel HS$ nên $RHSC$ là hình bình hành.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.073.14",
+  "so": "B14",
+  "loi_giai": "Vì $RHSC$ là hình bình hành (theo B13) nên hai đường chéo $RS$ và $HC$ cắt nhau tại trung điểm của mỗi đường.\nMà $I$ là trung điểm của $HC$ nên $I$ chính là giao điểm của hai đường chéo $RS$ và $HC$.\nVậy $I$ là trung điểm của $RS$.",
+  "ghi_chu": ""
+ },
+ {
+  "ma": "BT.08.073.15",
+  "so": "B15",
+  "loi_giai": "Theo B14, $I$ là trung điểm của $RS$ nên $I$ nằm trên đoạn thẳng $RS$.\nVậy ba điểm $R, I, S$ thẳng hàng.",
+  "ghi_chu": ""
+ }
+]
