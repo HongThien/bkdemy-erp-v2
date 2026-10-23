@@ -2,7 +2,8 @@
 // Chuyên đề / Nhóm bài bản đồ mới. Mọi con số tính ở Postgres (mig 202610231524: fn_dbht_bang, fn_dbht_o_lich_su) — §2.0.
 import { supabase } from './supabase'
 
-export type CapDB = 'chuyen_de' | 'nhom'
+// Hình: cột riêng theo cây Hình (mã 'H:…'); tầng nào câu Hình chưa có thì dồn vào cột 'HINH'
+export type CapDB = 'chu_de' | 'chuyen_de' | 'nhom'
 export type CotDB = { ma: string; ten: string; cha: string | null }
 // d = % hiện tại − mốc (đầu kỳ; dk=false ⇒ mốc là % sau lượt đầu trong cửa sổ); null = chưa đủ để nói xu hướng
 export type ODB = { p: number; n: number; d: number | null; dk: boolean }

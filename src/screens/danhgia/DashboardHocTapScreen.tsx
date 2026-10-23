@@ -15,6 +15,7 @@ const NHO: {
   bang: BangDB | null; khoaBang: string; cua: Cua[]; zMax: number
 } = { mon: 'Toán', khoi: null, soTuan: 4, cap: 'chuyen_de', lopId: null, sap: { cot: 'lop', tang: true }, bang: null, khoaBang: '', cua: [], zMax: 60 }
 
+const TEN_CAP: Record<CapDB, string> = { chu_de: 'chủ đề', chuyen_de: 'chuyên đề', nhom: 'nhóm bài' }
 const mauPct = (p: number | undefined) => p == null ? 'text-slate-300'
   : p >= 80 ? 'bg-emerald-100 text-emerald-800' : p >= 50 ? 'bg-amber-100 text-amber-800' : 'bg-rose-100 text-rose-700'
 const so = (v: number) => Number(v).toLocaleString('vi-VN', { maximumFractionDigits: 2 })
@@ -110,7 +111,7 @@ export default function DashboardHocTapScreen() {
           {khois.map((k) => <option key={k} value={k}>Khối {k}</option>)}
         </select>
         <div className="flex overflow-hidden rounded-md ring-1 ring-slate-200">
-          {([['chuyen_de', 'Chuyên đề'], ['nhom', 'Nhóm bài']] as [CapDB, string][]).map(([v, l]) => (
+          {([['chu_de', 'Chủ đề'], ['chuyen_de', 'Chuyên đề'], ['nhom', 'Nhóm bài']] as [CapDB, string][]).map(([v, l]) => (
             <button key={v} onClick={() => { setCap(v); if (sap.cot !== 'ten' && sap.cot !== 'lop') setSap({ cot: 'lop', tang: true }) }} className={nut(cap === v)}>{l}</button>
           ))}
         </div>
@@ -118,7 +119,7 @@ export default function DashboardHocTapScreen() {
           {[2, 3, 4].map((n) => <button key={n} onClick={() => setSoTuan(n)} className={nut(soTuan === n)}>{n} tuần</button>)}
         </div>
         <button onClick={() => setLamMoi((x) => x + 1)} title="Quét lại" className="h-8 rounded-md px-2 text-[14px] text-slate-500 ring-1 ring-slate-200 hover:bg-slate-50">↻</button>
-        {bang && <span className="text-[12px] text-slate-500">Từ {ngayVN(bang.tu)} · {bang.hs.length} HS · {bang.cot.length} {cap === 'nhom' ? 'nhóm bài' : 'chuyên đề'} có dữ liệu</span>}
+        {bang && <span className="text-[12px] text-slate-500">Từ {ngayVN(bang.tu)} · {bang.hs.length} HS · {bang.cot.length} {TEN_CAP[cap]} có dữ liệu</span>}
         {cua.length > 0 && <button onClick={() => setCua([])} className="ml-auto h-7 rounded-md px-3 text-[12px] font-semibold text-slate-500 ring-1 ring-slate-200 hover:bg-slate-50">Đóng {cua.length} cửa sổ</button>}
       </div>
       {lops.length > 1 && (
@@ -173,7 +174,7 @@ export default function DashboardHocTapScreen() {
             </div>
             <p className="text-[11px] text-slate-400">
               % = trên tối đa 10 câu gần nhất trong {soTuan} tuần (mỗi câu nặng như nhau; câu có điểm lẻ tính điểm đạt / điểm tối đa). Kênh: ET · BTVN · MT / khảo sát · test bổ trợ / bù / đuổi
-              (không tính luyện bổ trợ, tự luyện, game). {cap === 'nhom' ? 'Nhóm bài' : 'Chuyên đề'} theo bản đồ mới; câu chưa gán dạng bài chưa vào ô. ▲▼ = % hiện tại so với đầu kỳ (10 câu gần nhất trước cửa sổ); chữ nghiêng mờ = em chưa đo trước kỳ, so với sau lượt đầu. Kênh quan sát song song — khác công thức mastery.
+              (không tính luyện bổ trợ, tự luyện, game). {TEN_CAP[cap]} theo bản đồ mới; câu chưa gán dạng bài chưa vào ô. Hình có cột riêng (chủ đề Hình · nhóm mô hình · mô hình); câu Hình chưa có tầng đang xem thì dồn vào cột “Hình”. ▲▼ = % hiện tại so với đầu kỳ (10 câu gần nhất trước cửa sổ); chữ nghiêng mờ = em chưa đo trước kỳ, so với sau lượt đầu. Kênh quan sát song song — khác công thức mastery.
             </p>
           </>
         )}
