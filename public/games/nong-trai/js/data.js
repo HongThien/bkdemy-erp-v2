@@ -91,6 +91,18 @@ const THU = {
   cho:  { ten: 'Chó', cap: 1, viec: 'Xoa đầu', diem: 15, capMua: 1, icon: '🐶', mota: 'Canh vườn, đuổi kẻ đến hái trộm' },
   meo:  { ten: 'Mèo', cap: 5, viec: 'Vuốt ve', diem: 30, capMua: 5, icon: '🐱', mota: 'Thỉnh thoảng tha quà về nhà' },
   chim: { ten: 'Chim', cap: 7, viec: 'Cho ăn', an: 'lua_mi', diem: 45, capMua: 7, icon: '🐦', mota: 'Bắt sâu giúp em mỗi sáng' },   // cho chim ăn tốn 1 lúa mì
+  // BẠN ĐỒNG HÀNH (Thùy 23/10: "dùng các loại pet đã làm") — loài của BK World (BatThu), xem 3D ở màn Thú cưng qua assets/thu-cung/thu-cung.js (khoá = id loài trong thư viện).
+  // ngoai: true = KHÔNG có mô hình trong vườn (không chạm được ngoài vườn, không có việc hằng ngày); chỉ chơi 1 lần/ngày để tăng thiện cảm. Bảng giá: design/BANG-GIA-THU-CUNG-NONG-TRAI.md (ERP).
+  meo_bong:  { ten: 'Mèo Bông',      cap: 6,  viec: 'Vuốt ve',   diem: 40,  capMua: 6,  icon: '😺', he: 'Thường', mota: 'Mềm như cục bông, thích được ôm', ngoai: true },
+  nhim_dien: { ten: 'Nhím Điện',     cap: 8,  viec: 'Chơi cùng', diem: 60,  capMua: 8,  icon: '🦔', he: 'Điện',   mota: 'Lông xù tí tách tia điện nhỏ', ngoai: true },
+  chim_nuoc: { ten: 'Cánh Cụt Nước', cap: 8,  viec: 'Chơi cùng', diem: 60,  capMua: 8,  icon: '🐧', he: 'Nước',   mota: 'Lạch bạch theo em khắp vườn', ngoai: true },
+  ga_lua:    { ten: 'Gà Lửa',        cap: 9,  viec: 'Chơi cùng', diem: 70,  capMua: 9,  icon: '🐔', he: 'Lửa',    mota: 'Mào đỏ rực, gáy sớm hơn cả mặt trời', ngoai: true },
+  cuu_may:   { ten: 'Cừu Mây',       cap: 10, viec: 'Chơi cùng', diem: 90,  capMua: 10, icon: '🐑', he: 'Nước',   mota: 'Bộ lông xốp như đám mây', ngoai: true },
+  cao_lua:   { ten: 'Cáo Lửa',       cap: 11, viec: 'Chơi cùng', diem: 100, capMua: 11, icon: '🦊', he: 'Lửa',    mota: 'Đuôi cháy ấm, tinh nghịch', ngoai: true },
+  khi_la:    { ten: 'Khỉ Lá',        cap: 12, viec: 'Chơi cùng', diem: 120, capMua: 12, icon: '🐵', he: 'Cỏ',     mota: 'Đội lá làm mũ, thích leo trèo', ngoai: true },
+  bo_tuyet:  { ten: 'Bò Tuyết',      cap: 13, viec: 'Chơi cùng', diem: 140, capMua: 13, icon: '🐮', he: 'Băng',   mota: 'Hiền lành, hơi thở lành lạnh', ngoai: true },
+  su_tu_lua: { ten: 'Sư Tử Lửa',     cap: 15, viec: 'Chơi cùng', diem: 220, capMua: 15, icon: '🦁', he: 'Lửa',    mota: 'Bờm lửa oai vệ nhưng rất quấn em', ngoai: true },
+  voi_rung:  { ten: 'Voi Rừng',      cap: 17, viec: 'Chơi cùng', diem: 280, capMua: 17, icon: '🐘', he: 'Cỏ',     mota: 'Khổng lồ hiền, nhớ em từng ngày', ngoai: true },
 };
 
 // ---------- CẤP NÔNG TRẠI (điểm nhà nông — KHÔNG gọi EXP để khỏi lẫn với EXP ra xu) ----------

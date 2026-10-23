@@ -1,0 +1,12 @@
+-- ============================================================================
+-- nt_xu_nhip_theo_ngay_choi — NHỊP XU NÔNG TRẠI ĐO Ở SERVER (Thùy 23/10: "Chốt ở SV")
+-- ----------------------------------------------------------------------------
+-- VẤN ĐỀ: xu "ra" (s.thang.ra) do game báo lên ⇒ trần ngày = 0 (không giới hạn) nghĩa là chỉ cần ≥ 1 ngày chơi ≥ 5 phút là có thể nhận đủ 20 xu
+--   của cả tháng trong NGÀY ĐẦU (client tự khai số).
+-- CÁCH SỬA (KHÔNG đổi hàm): fn_nt_xu_dong_bo đã có sẵn nhánh trần ngày — trần luỹ kế = least(xu_toi_da_thang, SỐ NGÀY CHƠI × xu_toi_da_ngay),
+--   trong đó SỐ NGÀY CHƠI đếm từ nt_gio_choi (giây chơi do fn_nt_nhip ghi — server đo, client không khai được), ngày hợp lệ = ≥ xu_phut_toi_thieu phút.
+--   Đặt xu_toi_da_ngay = 3 ⇒ đủ 20 xu sau 7 ngày chơi (3·7 = 21 ≥ 20); chơi nhiều hơn trong 1 ngày không nhận thêm.
+-- Giới hạn giờ chơi 30 phút/ngày (gio_toi_da_phut) Thùy xác nhận 23/10 — giữ nguyên.
+-- MẤT GÌ: không xoá gì. Xu đã nhận (nt_xu.da_nhan) giữ nguyên — hàm chỉ cộng phần chênh dương, không thu hồi. Hoàn tác: update … set xu_toi_da_ngay = 0.
+-- ============================================================================
+update public.nt_cau_hinh set xu_toi_da_ngay = 3, updated_at = now() where id = 1;

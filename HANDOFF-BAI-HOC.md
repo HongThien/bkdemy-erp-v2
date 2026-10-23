@@ -7,6 +7,7 @@
 ## Mục lục (số dòng trong file này)
 
 - dòng 36 — ⭐⭐⭐ LUẬT DUYỆT (Thùy 14/10, "nói bao lần rồi") — MỌI KHỐI, MỌI LÔ: muốn Thùy duy�
+- Bài học 12→23/10 — Nông trại + app HS (cuối file)
 - Bài học 14→20/10 — Kho K7 (đề thi, đề cương, bản đồ, hình) (ngay dưới LUẬT DUYỆT)
 - Bài học 20→21/10 — builder bản đồ mới · ET · Chuyên đề (ngay dưới LUẬT DUYỆT)
 - Bài học 17→19/10 — Bản đồ mới · Hình–Luyện · Kho đề thi (bản in)
@@ -1082,3 +1083,14 @@
 - **Script ghép data 1 lần: 1 transaction + gộp theo khoá tự nhiên (tên Bài) + xoá script sau khi chạy.** Không idempotent thì đừng để lại trong repo — người sau chạy lại là nhân đôi 150 câu.
 - **Bộ lọc "chỉ hiện khi có dữ liệu" (`coMucDo`) cho component dùng chung.** Thêm filter độ khó vào `DangPicker` mà không làm rối nhánh chưa có `muc_do`: điều kiện hiện = tồn tại ≥1 leaf có giá trị, không `if (nhanh === 'hinh_hoc')` (§1.6 symmetry).
 - **git sau stash-pop/rebase: `git status` NGAY trước `git commit`, add theo tên.** 16/09 một `git commit` trần dính 6 file phiên khác đã staged sẵn (CEO cho push chung, nhưng lẽ ra không được xảy ra).
+
+## Bài học 12→23/10 — Nông trại + app HS (đừng đạp lại)
+
+- **Service worker (Workbox navigateFallback) trả app HS vào iframe game** ⇒ "vào được trò chơi" nhưng hiện app HS thay vì game. Hỏng IM LẶNG, chỉ ở máy từng cài PWA. Luật: mọi đường tĩnh nhúng iframe (`/games/`) phải nằm trong `navigateFallbackDenylist`; sau deploy kiểm `sw.js` production có dòng đó. (Browser pane không đăng ký được SW nên không tái hiện được — sửa từ hành vi Workbox.)
+- **Số tiền/xu cộng theo con số client báo = tin client.** `s.thang.ra` do game gửi lên; server chỉ giới hạn trần. Muốn chống gian thật phải đo ở server (số ngày/phút chơi do `fn_nt_nhip` ghi). Đừng mô tả "tối đa 20 xu/tháng" như thể đã chống gian.
+- **Đồng bộ bằng số LUỸ KẾ (`diemTieu`, `thang.ra`), không bằng sự kiện** — server cộng phần chênh so với lần đã nhận ⇒ gửi lặp/mất gói không nhân đôi/mất tiền. Mẫu để tái dùng cho mọi khoản "game → ví".
+- **"0 dòng" khi đọc bằng role CLI KHÔNG phải bằng chứng bảng rỗng** (RLS/owner): `giai_thuong` đọc qua app hoặc service role. Đã dính khi dò giải thưởng T9.
+- **Đổi luật pha ở game ⇒ sửa `tools/test-engine.mjs` cùng lúc** (đã dính: khẳng định "mèo/chim tắt ở pha 1" làm test đỏ sau khi mở thú cưng). Chạy test TRƯỚC khi sync sang ERP.
+- **Chạy generator migration thất bại vẫn có thể áp file rỗng** (`202610141758` là no-op; việc thật ở `…1759`). Kiểm nội dung file trước `npm run migrate`.
+- **Bảng của owner khác không `ALTER` được** (`thong_bao_hs` "must be owner") ⇒ tạo bảng riêng (`hs_tin_moi`) rồi GỘP khi hiển thị, đừng cố mở rộng bảng cũ.
+- **Đẩy từ worktree tạm cắt từ `origin/main`** khi checkout chính còn commit chưa push/tệp bẩn của phiên khác: copy đúng file của mình + append DEVLOG ở đó; tránh cherry-pick (DEVLOG xung đột).

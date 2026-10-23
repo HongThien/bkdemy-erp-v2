@@ -546,7 +546,7 @@ function viecHom(s) {
   viec('tuoi', 'Tưới', '💧', lon.filter(t => t.tuoiHom).length, lon.length);
   viec('sau', 'Bắt sâu', '🐛', 0, lon.reduce((a, t) => a + t.sau, 0));   // sâu trên ô chín: thu hoạch tự bắt luôn
   for (const k in VAT) { const con = s.vat[k].con; if (s.cap >= VAT[k].cap) viec('an_' + k, 'Cho ' + VAT[k].ten.toLowerCase() + ' ăn', IC_VIEC[k], con.filter(c => c.an === Dn).length, con.length); }
-  for (const k in THU) { const x = thuTT(s, k); if (x.mo) viec('tc_' + k, TEN_THU[k] || THU[k].viec, IC_VIEC[k] || '💗', x.roi ? 1 : 0, 1); }
+  for (const k in THU) { if (THU[k].ngoai) continue; const x = thuTT(s, k); if (x.mo) viec('tc_' + k, TEN_THU[k] || THU[k].viec, IC_VIEC[k] || '💗', x.roi ? 1 : 0, 1); }
   // vườn bạn: cần = đã làm + còn làm được, chặn ở trần lượt/ngày
   const tong = banTong(s), giup = tong.giup, hai = tong.hai;
   viec('giup', 'Giúp bạn', '🤝', s.hom.giup, Math.min(LUAT.giup, s.hom.giup + giup));
