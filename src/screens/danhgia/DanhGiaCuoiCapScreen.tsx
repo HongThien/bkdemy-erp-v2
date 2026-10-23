@@ -15,7 +15,8 @@ const NHO: { lopId: string | null; tang: TangCC; bang: Record<string, OCC[]>; mo
 const TANG: [TangCC, string][] = [['chu_de', 'Chủ đề'], ['chuyen_de', 'Chuyên đề'], ['nhom', 'Nhóm bài']]
 const mauPct = (p: number) => p >= 80 ? 'bg-emerald-100 text-emerald-800' : p >= 50 ? 'bg-amber-100 text-amber-800' : 'bg-rose-100 text-rose-700'
 const ngayVN = (d: string) => d ? d.slice(0, 10).split('-').reverse().join('/') : ''
-const khoaO = (o: { nut: string; cha: string | null }) => `${o.nut}|${o.cha ?? ''}`
+const chenhChu = (v: number | null) => v == null ? '' : `${v > 0 ? '+' : v < 0 ? '−' : '±'}${Math.abs(v).toLocaleString('vi-VN')}%`
+const khoaO =(o: { nut: string; cha: string | null }) => `${o.nut}|${o.cha ?? ''}`
 
 export default function DanhGiaCuoiCapScreen() {
   const [lops, setLops] = useState<Lop[]>([])
@@ -124,11 +125,13 @@ export default function DanhGiaCuoiCapScreen() {
                       return (
                         <td key={khoaO(c)} className="border-b border-slate-100 px-1 py-0.5 text-center">
                           <button onClick={() => moO(x)}
-                            title={`${x.so_lan} lần · TB${Math.min(x.so_lan, x.cua_so_ngan)} ${x.tb_ngan}% · TB${Math.min(x.so_lan, x.cua_so_dai)} ${x.tb_dai}% · ${xh.ten}${x.chenh != null ? ` (${x.chenh > 0 ? '+' : ''}${x.chenh})` : ''}`}
-                            className={`flex w-full items-center justify-center gap-1 rounded px-1 py-0.5 font-semibold tabular-nums hover:ring-2 hover:ring-indigo-300 ${mauPct(x.tb_dai)} ${dangMo ? 'ring-2 ring-indigo-500' : ''}`}>
-                            <span>{Math.round(x.tb_dai)}%</span>
-                            <span className={`text-[13px] ${xh.mau}`}>{xh.ky}</span>
-                            <span className="text-[10px] font-normal opacity-60">· {x.so_lan} lần</span>
+                            title="Bấm xem các lần"
+                            className={`w-full rounded px-1 py-0.5 tabular-nums hover:ring-2 hover:ring-indigo-300 ${mauPct(x.tb_dai)} ${dangMo ? 'ring-2 ring-indigo-500' : ''}`}>
+                            <div className="flex items-baseline justify-center gap-1.5">
+                              <span className="font-semibold">{Math.round(x.tb_dai)}%</span>
+                              <span className={`text-[11px] font-semibold ${xh.mau}`}>{chenhChu(x.chenh)}</span>
+                            </div>
+                            <div className={`text-[10.5px] leading-tight ${xh.mau}`}>{xh.ky} {xh.ten}</div>
                           </button>
                         </td>
                       )
@@ -141,7 +144,7 @@ export default function DanhGiaCuoiCapScreen() {
         )}
       {rows && rows.length > 0 && (
         <p className="text-[11px] text-slate-400">
-          Ô = TB {rows[0].cua_so_dai} lần gần nhất · mũi tên = TB {rows[0].cua_so_ngan} lần so với TB {rows[0].cua_so_dai} lần {nguong[tang] && <> (↑↑/↓↓ chênh &gt;{nguong[tang].ro} điểm, ↑/↓ {nguong[tang].nhe}–{nguong[tang].ro}, → dưới {nguong[tang].nhe}, · chưa đủ lần)</>}. Một lần = một bài làm (ET · MT · khảo sát · BTVN · test bổ trợ), mọi lần nặng như nhau. Từ 15/06/2026.
+          Ô = % hiện tại (TB {rows[0].cua_so_dai} lần gần nhất) · ±% = trend: TB {rows[0].cua_so_ngan} lần trừ TB {rows[0].cua_so_dai} lần · mức độ{nguong[tang] && <>: rõ khi chênh &gt;{nguong[tang].ro}, nhẹ {nguong[tang].nhe}–{nguong[tang].ro}, đi ngang dưới {nguong[tang].nhe}</>}; chưa đủ lần khi số lần ≤ {rows[0].cua_so_ngan}. Một lần = một bài làm (ET · MT · khảo sát · BTVN · test bổ trợ), mọi lần nặng như nhau. Từ 15/06/2026.
         </p>
       )}
 
@@ -150,12 +153,19 @@ export default function DanhGiaCuoiCapScreen() {
   )
 }
 
+function TangGiam({ v }: { v: number | null }) {
+  if (v == null) return <span className="text-slate-300">mở đầu</span>
+  return <span className={`font-semibold tabular-nums ${v > 0 ? 'text-emerald-600' : v < 0 ? 'text-rose-600' : 'text-slate-400'}`}>
+    {v > 0 ? `▲${v}` : v < 0 ? `▼${-v}` : '='}
+  </span>
+}
+
 // ── Panel bên phải: các lần của một ô ──
 function BangLan({ mo, onDong }: { mo: Mo; onDong: () => void }) {
   const { o } = mo
   const xh = XU_HUONG[o.xu_huong]
   return (
-    <div className="fixed right-4 top-20 z-40 flex max-h-[75vh] w-[420px] flex-col overflow-hidden rounded-xl border border-slate-300 bg-white shadow-2xl">
+    <div className="fixed right-4 top-20 z-40 flex max-h-[75vh] w-[480px] flex-col overflow-hidden rounded-xl border border-slate-300 bg-white shadow-2xl">
       <div className="flex items-start gap-2 bg-slate-800 px-3 py-2 text-white">
         <div className="min-w-0 flex-1">
           <div className="truncate text-[13px] font-semibold">{o.ho_ten}</div>
@@ -163,11 +173,18 @@ function BangLan({ mo, onDong }: { mo: Mo; onDong: () => void }) {
         </div>
         <button onClick={onDong} className="h-6 w-6 shrink-0 rounded text-[16px] leading-none text-slate-300 hover:bg-white/10 hover:text-white">×</button>
       </div>
-      <div className="grid grid-cols-3 gap-2 border-b border-slate-100 px-3 py-2 text-center text-[12px]">
-        <div><div className="text-slate-400">TB {Math.min(o.so_lan, o.cua_so_ngan)} lần</div><b className="text-slate-800">{o.tb_ngan}%</b></div>
-        <div><div className="text-slate-400">TB {Math.min(o.so_lan, o.cua_so_dai)} lần</div><b className="text-slate-800">{o.tb_dai}%</b></div>
-        <div><div className="text-slate-400">Xu hướng</div><b className={xh.mau}>{xh.ky} {xh.ten}{o.chenh != null && <span className="font-normal"> ({o.chenh > 0 ? '+' : ''}{o.chenh})</span>}</b></div>
+      <div className="grid grid-cols-4 gap-2 border-b border-slate-100 px-3 py-2 text-center text-[12px]">
+        <div><div className="text-slate-400">Số lần</div><b className="text-slate-800">{o.so_lan}</b></div>
+        <div><div className="text-slate-400">Hiện tại (TB{Math.min(o.so_lan, o.cua_so_dai)})</div><b className="text-slate-800">{o.tb_dai}%</b></div>
+        <div><div className="text-slate-400">TB{Math.min(o.so_lan, o.cua_so_ngan)}</div><b className="text-slate-800">{o.tb_ngan}%</b></div>
+        <div><div className="text-slate-400">Trend</div><b className={xh.mau}>{chenhChu(o.chenh) || '—'}</b><div className={`text-[11px] ${xh.mau}`}>{xh.ky} {xh.ten}</div></div>
       </div>
+      {mo.lan?.[0]?.tang_giam != null && (
+        <div className="border-b border-slate-100 px-3 py-1.5 text-[12px] text-slate-600">
+          Lần gần nhất ({ngayVN(mo.lan[0].ngay).slice(0, 5)} · {TEN_KENH[mo.lan[0].kenh] ?? mo.lan[0].kenh}) làm % hiện tại{' '}
+          <TangGiam v={mo.lan[0].tang_giam} />
+        </div>
+      )}
       <div className="flex-1 overflow-auto px-3 py-2 text-[12.5px]">
         {mo.loi ? <p className="text-rose-600">Không tải được: {mo.loi}</p>
           : !mo.lan ? <p className="text-slate-500">Đang tải…</p>
@@ -177,14 +194,22 @@ function BangLan({ mo, onDong }: { mo: Mo; onDong: () => void }) {
                 <li key={l.stt} className={`flex items-center gap-2 rounded-md border px-2 py-1.5 ${l.trong_ngan ? 'border-indigo-200 bg-indigo-50/50' : l.trong_dai ? 'border-slate-200' : 'border-slate-100 opacity-50'}`}>
                   <span className="w-6 shrink-0 text-right font-mono text-[11px] text-slate-400">{l.stt}</span>
                   <span className="w-11 shrink-0 font-mono text-slate-500">{ngayVN(l.ngay).slice(0, 5)}</span>
-                  <span className="min-w-0 flex-1"><span className="font-semibold text-slate-700">{TEN_KENH[l.kenh] ?? l.kenh}</span> · {l.diem.toLocaleString('vi-VN')}/{l.so_cau} câu</span>
-                  <span className={`shrink-0 rounded px-1.5 font-semibold tabular-nums ${mauPct(l.ti_le)}`}>{l.ti_le}%</span>
+                  <span className="min-w-0 flex-1">
+                    <span className="font-semibold text-slate-700">{TEN_KENH[l.kenh] ?? l.kenh}</span>{' '}
+                    <span className={`rounded px-1 font-semibold tabular-nums ${mauPct(l.ti_le)}`}>{l.ti_le}%</span>
+                    <span className="text-[11px] text-slate-400"> ({l.diem.toLocaleString('vi-VN')}/{l.so_cau} câu)</span>
+                  </span>
+                  <span className="w-12 shrink-0 text-right font-semibold tabular-nums text-slate-700">{l.hien_tai}%</span>
+                  <span className="w-12 shrink-0 text-right"><TangGiam v={l.tang_giam} /></span>
                 </li>
               ))}
             </ol>
           )}
         {mo.lan && mo.lan.length > 0 && (
-          <p className="mt-2 text-[11px] text-slate-400">Nền xanh = trong cửa sổ ngắn · viền = trong cửa sổ dài · mờ = ngoài cửa sổ (không tính).</p>
+          <p className="mt-2 text-[11px] text-slate-400">
+            Mỗi dòng: % của lần đó · % hiện tại ngay sau lần đó · lần đó làm % hiện tại tăng/giảm bao nhiêu.
+            Nền xanh = trong cửa sổ ngắn · viền = trong cửa sổ dài · mờ = ngoài cửa sổ.
+          </p>
         )}
       </div>
     </div>

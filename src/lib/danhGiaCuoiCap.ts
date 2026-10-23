@@ -10,7 +10,11 @@ export type OCC = {
   so_lan: number; cua_so_ngan: number; cua_so_dai: number; tb_ngan: number; tb_dai: number; chenh: number | null
   xu_huong: XuHuong; lan_cuoi: string
 }
-export type LanCC = { stt: number; ngay: string; kenh: string; so_cau: number; diem: number; ti_le: number; trong_ngan: boolean; trong_dai: boolean }
+// Một lần trong popup: % của lần đó + "% hiện tại" ngay sau lần đó (TB cửa sổ dài) + lần đó làm % hiện tại tăng/giảm bao nhiêu.
+export type LanCC = {
+  stt: number; ngay: string; kenh: string; so_cau: number; diem: number; ti_le: number
+  hien_tai: number; tang_giam: number | null; tb_ngan: number; chenh: number | null; trong_ngan: boolean; trong_dai: boolean
+}
 
 export const TEN_KENH: Record<string, string> = { ...KENH_DBHT, mt: 'MT', khao_sat: 'Khảo sát' }
 
@@ -49,7 +53,10 @@ export async function bangLop(lopId: string, tang: TangCC): Promise<OCC[]> {
 }
 
 export async function cacLan(hsId: string, tang: TangCC, nut: string, cha: string | null, mon: string): Promise<LanCC[]> {
-  const { data, error } = await supabase.rpc('fn_dgcc_lan_nut', { p_hs: hsId, p_tang: tang, p_nut: nut, p_cha: cha, p_mon: mon }).limit(1000)
+  const { data, error } = await supabase.rpc('fn_dgcc_lich_su_nut', { p_hs: hsId, p_tang: tang, p_nut: nut, p_cha: cha, p_mon: mon }).limit(1000)
   if (error) throw error
-  return ((data ?? []) as any[]).map((r) => ({ ...r, so_cau: Number(r.so_cau), diem: Number(r.diem), ti_le: Number(r.ti_le) }))
+  return ((data ?? []) as any[]).map((r) => ({
+    ...r, so_cau: Number(r.so_cau), diem: Number(r.diem), ti_le: Number(r.ti_le), hien_tai: Number(r.hien_tai),
+    tang_giam: num(r.tang_giam), tb_ngan: Number(r.tb_ngan), chenh: num(r.chenh),
+  }))
 }
