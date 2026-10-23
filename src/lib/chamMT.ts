@@ -53,7 +53,7 @@ export async function dungDiemTuCauMT(buoiId: string, hsId: string): Promise<voi
 
 // ── DASHBOARD KẾT QUẢ THEO CHUYÊN ĐỀ của 1 đề MT/khảo sát (Thùy 23/10) — mig 202610231416, số tính ở DB. ──
 export type DeDaThi = { de_id: string; ten: string; khoi: string | null; loai_de: string | null; ngay_moi: string; so_lop: number }
-export type BangCDCot = { ma: string; ten: string }
+export type BangCDCot = { ma: string; ten: string; nang_cao?: boolean } // nang_cao: luật CEO 23/10 — chủ đề "thực tế" là Nâng cao
 export type BangCDHS = { id: string; ten: string; lop_id: string; lop: string; diem: number | null; hang: number | null; o: Record<string, number> }
 export type BangCD = { cot: BangCDCot[]; hs: BangCDHS[]; so_co_diem: number }
 export async function dsDeDaThi(mon: string): Promise<DeDaThi[]> {
