@@ -6314,14 +6314,7 @@ SELECT db.id AS ma_dang,
 | nguon | text |
 
 ```sql
-WITH mot AS (
-         SELECT d.ma_dang_cu,
-            min(d.dich_dang_bai) AS db
-           FROM dai_bdm_doi_ung d
-          GROUP BY d.ma_dang_cu
-         HAVING count(*) = 1 AND count(d.dich_dang_bai) = 1
-        )
- SELECT q.ma_cau,
+SELECT q.ma_cau,
     'dai'::text AS kho,
     COALESCE(gc.dang_bai_id, gg.dang_bai_id, cu.dang_bai_id, mot.db, dx.dang_bai_id) AS dang_bai_id,
         CASE
@@ -6336,7 +6329,10 @@ WITH mot AS (
      LEFT JOIN dai_bdm_gan_cau gc ON gc.ma_cau = q.ma_cau
      LEFT JOIN dai_bdm_gan_cau gg ON gg.ma_cau = q.parent_ma_cau
      LEFT JOIN dai_bdm_doi_ung_cum cu ON cu.ma_cum_cu = COALESCE(q.ma_cum, g.ma_cum)
-     LEFT JOIN mot ON mot.ma_dang_cu = q.dang_chinh
+     LEFT JOIN LATERAL ( SELECT min(d.dich_dang_bai) AS db
+           FROM dai_bdm_doi_ung d
+          WHERE d.ma_dang_cu = q.dang_chinh
+         HAVING count(*) = 1 AND count(d.dich_dang_bai) = 1) mot ON true
      LEFT JOIN dai_bdm_de_xuat dx ON dx.ma_cau = q.ma_cau
   WHERE COALESCE(gc.dang_bai_id, gg.dang_bai_id, cu.dang_bai_id, mot.db, dx.dang_bai_id) IS NOT NULL
 UNION ALL
