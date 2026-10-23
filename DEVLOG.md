@@ -77511,3 +77511,8 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 ### 23/10 — [Bot Telegram TA] Bản tin liệt kê rõ từng ca/buổi chưa ghi công (mig 202610231604 ĐÃ ÁP; _tg_lib cần deploy app TA)
 - **Thùy (ảnh tin Tùng "4 ca trực + 5 buổi bổ trợ"):** "cần nhắn rõ là ca trực nào". `_tg_ban_tin_du_lieu.cong.chi_tiet` = ngày · giờ · tên lấy từ `_ta_buoi_thieu_cong` (nối ref_key). `api/_tg_lib.mjs`: nhóm Ca trực / Buổi bổ trợ / Buổi lớp / Quên checkout, mỗi mục 1 dòng, tối đa 10/nhóm, cùng ngày+giờ+tên gộp "(N buổi)".
 - **Phát hiện:** TA kèm song song nhiều buổi bổ trợ cùng khung giờ (vd Tùng 2 buổi đuổi 6A3 02/10 18:00, mỗi buổi 1 em) — 34 khung như vậy trong T10 ⇒ luật lương "2 việc bổ trợ trùng giờ tính 1 hay 2 giờ" (hỏi từ 14/10) ảnh hưởng thật, vẫn chờ Thùy.
+
+## 23/10 — Bảng kết quả: tiêu đề căn trên + xuất Ảnh/PDF
+- **Thùy:** tên dạng trồi sụt xấu ⇒ căn theo dòng trên của ô; cần xuất ảnh/PDF để gửi; ô 50% thiết kế xấu ⇒ xin mockup khác.
+- **Làm:** tiêu đề cột `align-top` · ô % tách thành `OPct` (màn + bản xuất dùng chung, đổi kiểu ô sửa 1 chỗ) · nút "⬇ Ảnh" / "⬇ PDF": dựng bản in đủ mọi dòng theo đúng lọc lớp + thứ tự đang xem, render thật ở top:0 + phủ trắng (mẫu PhieuThongBao), `html2canvas-pro`; PDF A4 ngang cắt theo ranh giới DÒNG, trang sau lặp lại tiêu đề + đầu bảng. Tên file `KetQua_<đề>_<lớp|CaDe>_<ChuyenDe|ChuDe>`.
+- **Kiểm:** app (chặn tải file, chỉ đo): PNG 1.8 MB, PDF 1.1 MB, không lỗi; xem ảnh xuất — đủ tiêu đề, cột căn trên. Lần bấm đầu ở máy dev Vite tự tải lại trang để nạp thư viện (chỉ dev). Mockup ô % (4 kiểu A–D) đã gửi, chờ Thùy chọn.

@@ -66,7 +66,20 @@ export default function BangChuyenDeView() {
   const bamCot = (cot: string) => setSap((s) => s.cot === cot ? { cot, tang: !s.tang } : { cot, tang: ['ten', 'lop', 'hang'].includes(cot) })
   const muiTen = (cot: string) => sap.cot === cot ? (sap.tang ? ' ▲' : ' ▼') : ''
   const de = des.find((d) => d.de_id === deId) ?? null
-  const th = 'sticky top-0 z-10 cursor-pointer select-none border-b border-slate-200 bg-slate-50 px-2 py-2 text-[11px] font-semibold text-slate-600 hover:bg-slate-100'
+  const [dangXuat, setDangXuat] = useState<'anh' | 'pdf' | null>(null)
+  async function xuat(kieu: 'anh' | 'pdf') {
+    if (!bang) return
+    setDangXuat(kieu); setLoi(null)
+    try {
+      const tenLop = lopId ? lops.find(([id]) => id === lopId)?.[1] ?? '' : ''
+      await xuatBang(kieu, {
+        tieuDe: de?.ten ?? 'Kết quả', phu: [de ? nhanLoai(de.loai_de) : null, de?.khoi ? `Khối ${de.khoi}` : null, tenLop ? `Lớp ${tenLop}` : 'Cả đề', cap === 'chu_de' ? 'Theo chủ đề' : 'Theo chuyên đề'].filter(Boolean).join(' · '),
+        cot: bang.cot, hs: sapXep, capTen: cap === 'chu_de' ? 'chủ đề' : 'chuyên đề',
+        tenFile: `KetQua_${(de?.ten ?? 'de').replace(/[^\p{L}\p{N}]+/gu, '_')}_${tenLop || 'CaDe'}_${cap === 'chu_de' ? 'ChuDe' : 'ChuyenDe'}`,
+      })
+    } catch (e) { setLoi('Xuất không được: ' + ((e as { message?: string })?.message ?? String(e))) } finally { setDangXuat(null) }
+  }
+  const th = 'sticky top-0 z-10 cursor-pointer select-none border-b border-slate-200 bg-slate-50 px-2 py-2 align-top text-[11px] font-semibold text-slate-600 hover:bg-slate-100'
 
   return (
     <div className="space-y-3">
@@ -82,6 +95,16 @@ export default function BangChuyenDeView() {
               className={`h-8 px-3 text-[12.5px] font-semibold ${cap === v ? 'bg-slate-800 text-white' : 'bg-white text-slate-500 hover:text-slate-800'}`}>{l}</button>
           ))}
         </div>
+        {bang && bang.hs.length > 0 && (
+          <div className="ml-auto flex gap-1">
+            {(['anh', 'pdf'] as const).map((k) => (
+              <button key={k} disabled={!!dangXuat} onClick={() => xuat(k)}
+                className="h-8 rounded-md border border-slate-300 bg-white px-3 text-[12.5px] font-semibold text-slate-600 hover:bg-slate-50 disabled:opacity-50">
+                {dangXuat === k ? 'Đang xuất…' : k === 'anh' ? '⬇ Ảnh' : '⬇ PDF'}
+              </button>
+            ))}
+          </div>
+        )}
         {bang && <span className="text-[12px] text-slate-500">{bang.hs.length} HS đã chấm · {bang.so_co_diem} có điểm tổng · {bang.cot.length} {cap === 'chu_de' ? 'chủ đề' : 'chuyên đề'}</span>}
       </div>
       {lops.length > 1 && (
@@ -111,7 +134,7 @@ export default function BangChuyenDeView() {
                     <th onClick={() => bamCot('ten')} className={`${th} sticky left-0 z-20 text-left`}>Tên{muiTen('ten')}</th>
                     <th onClick={() => bamCot('lop')} className={`${th} text-left`}>Lớp{muiTen('lop')}</th>
                     {bang.cot.map((c) => (
-                      <th key={c.ma} onClick={() => bamCot(c.ma)} title={`${c.ten} (${c.ma})`} className={`${th} align-bottom`}>
+                      <th key={c.ma} onClick={() => bamCot(c.ma)} title={`${c.ten} (${c.ma})`} className={th}>
                         <div className="line-clamp-3 text-center leading-tight">{c.ten}{muiTen(c.ma)}</div>
                       </th>
                     ))}
@@ -126,7 +149,7 @@ export default function BangChuyenDeView() {
                       <td className="truncate border-b border-slate-100 px-2 py-1 text-slate-600">{h.lop}</td>
                       {bang.cot.map((c) => (
                         <td key={c.ma} className="border-b border-slate-100 px-1 py-0.5 text-center">
-                          <span className={`inline-block w-full rounded px-1 py-0.5 font-semibold tabular-nums ${mauPct(h.o[c.ma])}`}>{h.o[c.ma] == null ? '—' : `${h.o[c.ma]}%`}</span>
+                          <OPct p={h.o[c.ma]} />
                         </td>
                       ))}
                       <td className="border-b border-slate-100 px-2 py-1 text-center font-mono font-semibold text-slate-800">{h.diem == null ? <span className="text-slate-300">—</span> : h.diem}</td>
@@ -144,4 +167,106 @@ export default function BangChuyenDeView() {
         )}
     </div>
   )
+}
+
+// Ô % đạt — dùng chung cho màn và bản xuất (đổi kiểu ô chỉ sửa 1 chỗ).
+function OPct({ p }: { p: number | undefined }) {
+  return <span className={`inline-block w-full rounded px-1 py-0.5 font-semibold tabular-nums ${mauPct(p)}`}>{p == null ? '—' : `${p}%`}</span>
+}
+
+// ── XUẤT ẢNH / PDF (Thùy 23/10: "có tính năng xuất ảnh/pdf để gửi") ──────────────────────────────
+// Dựng bản in (đủ mọi dòng, không cuộn/không dính) theo đúng lọc lớp + thứ tự đang xem, render thật ở top:0 rồi PHỦ trắng che
+// (cùng cách PhieuThongBao: toạ độ âm làm html2canvas đo sai), chụp bằng html2canvas-pro. PDF = A4 ngang, cắt theo DÒNG,
+// trang sau lặp lại tiêu đề + đầu bảng.
+type XuatInput = { tieuDe: string; phu: string; cot: { ma: string; ten: string }[]; hs: BangCDHS[]; capTen: string; tenFile: string }
+function BangIn({ x }: { x: XuatInput }) {
+  const rong = Math.max(1100, COT_TEN + COT_LOP + COT_DIEM + COT_HANG + x.cot.length * 112)
+  const v = new Date(Date.now() + 7 * 3600 * 1000) // giờ VN, đọc phần UTC (không toISOString — CLAUDE §2)
+  const ngay = `${String(v.getUTCDate()).padStart(2, '0')}/${String(v.getUTCMonth() + 1).padStart(2, '0')}/${v.getUTCFullYear()}`
+  const cel = 'border-b border-slate-200 px-2 py-1.5'
+  return (
+    <div style={{ width: rong, padding: 24, background: '#fff', fontFamily: 'inherit' }}>
+      <div data-dau="1">
+        <div className="text-[20px] font-bold text-slate-900">{x.tieuDe}</div>
+        <div className="mb-3 text-[13px] text-slate-500">{x.phu} · {x.hs.length} học sinh · xuất {ngay}</div>
+      </div>
+      <table className="w-full table-fixed border-separate border-spacing-0 text-[13px]">
+        <colgroup>
+          <col style={{ width: COT_TEN }} /><col style={{ width: COT_LOP }} />
+          {x.cot.map((c) => <col key={c.ma} />)}
+          <col style={{ width: COT_DIEM }} /><col style={{ width: COT_HANG }} />
+        </colgroup>
+        <thead data-dau="1">
+          <tr className="bg-slate-50 text-[11.5px] font-semibold text-slate-600">
+            <th className={`${cel} border-t text-left align-top`}>Tên</th>
+            <th className={`${cel} border-t text-left align-top`}>Lớp</th>
+            {x.cot.map((c) => <th key={c.ma} className={`${cel} border-t text-center align-top leading-tight`}>{c.ten}</th>)}
+            <th className={`${cel} border-t text-center align-top`}>Điểm</th>
+            <th className={`${cel} border-t text-center align-top`}>Hạng</th>
+          </tr>
+        </thead>
+        <tbody>
+          {x.hs.map((h) => (
+            <tr key={h.id} data-dong="1">
+              <td className={`${cel} font-medium text-slate-800`}>{h.ten}</td>
+              <td className={`${cel} text-slate-600`}>{h.lop}</td>
+              {x.cot.map((c) => <td key={c.ma} className={`${cel} px-1 text-center`}><OPct p={h.o[c.ma]} /></td>)}
+              <td className={`${cel} text-center font-semibold text-slate-800`}>{h.diem ?? '—'}</td>
+              <td className={`${cel} text-center font-semibold text-indigo-700`}>{h.hang == null ? '—' : `#${h.hang}`}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div className="mt-2 text-[11px] text-slate-400">% đạt = điểm đạt / điểm tối đa các câu thuộc {x.capTen}; câu chưa chấm chưa tính. Xếp hạng trên cả đề.</div>
+    </div>
+  )
+}
+async function xuatBang(kieu: 'anh' | 'pdf', x: XuatInput): Promise<void> {
+  const host = document.createElement('div')
+  host.style.cssText = 'position:fixed;top:0;left:0;z-index:9998;pointer-events:none'
+  document.body.appendChild(host)
+  const phu = document.createElement('div')
+  phu.style.cssText = 'position:fixed;inset:0;z-index:9999;background:#ffffff'
+  document.body.appendChild(phu)
+  const { createRoot } = await import('react-dom/client')
+  const root = createRoot(host)
+  root.render(<BangIn x={x} />)
+  await new Promise((r) => setTimeout(r, 250))
+  try {
+    const node = host.firstChild as HTMLElement
+    const TL = 2
+    const h2c = (await import('html2canvas-pro')).default
+    const canvas = await h2c(node, { scale: TL, backgroundColor: '#ffffff', useCORS: true, logging: false, width: node.scrollWidth, height: node.scrollHeight, windowWidth: node.scrollWidth, windowHeight: node.scrollHeight })
+    if (kieu === 'anh') {
+      const a = document.createElement('a'); a.href = canvas.toDataURL('image/png'); a.download = x.tenFile + '.png'; a.click()
+      return
+    }
+    // PDF A4 ngang: cắt theo ranh giới DÒNG, trang sau lặp lại phần đầu (tiêu đề + đầu bảng).
+    const goc = node.getBoundingClientRect().top
+    const dauCuoi = Math.max(...[...node.querySelectorAll('[data-dau]')].map((e) => e.getBoundingClientRect().bottom - goc)) * TL
+    const dong = [...node.querySelectorAll('[data-dong]')].map((e) => (e.getBoundingClientRect().bottom - goc) * TL)
+    const { jsPDF } = await import('jspdf')
+    const pdf = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'landscape' })
+    const LE = 8, W = 297 - 2 * LE, H = 210 - 2 * LE
+    const mmPx = W / canvas.width, trangPx = H / mmPx
+    const cat = (y0: number, y1: number) => { const c = document.createElement('canvas'); c.width = canvas.width; c.height = Math.max(1, y1 - y0); c.getContext('2d')!.drawImage(canvas, 0, y0, canvas.width, y1 - y0, 0, 0, canvas.width, y1 - y0); return c }
+    const dau = cat(0, dauCuoi)
+    let tu = dauCuoi, trang = 0
+    const het = canvas.height
+    while (tu < het - 1) {
+      const conCho = trangPx - dauCuoi
+      let den = tu
+      for (const d of dong) if (d > tu && d - tu <= conCho) den = d
+      if (den === tu) den = Math.min(het, tu + conCho)
+      if (den >= dong[dong.length - 1] - 1) den = het // dòng cuối ⇒ lấy luôn ghi chú dưới bảng
+      if (trang > 0) pdf.addPage()
+      pdf.addImage(dau.toDataURL('image/jpeg', 0.92), 'JPEG', LE, LE, W, dauCuoi * mmPx)
+      const than = cat(tu, den)
+      pdf.addImage(than.toDataURL('image/jpeg', 0.92), 'JPEG', LE, LE + dauCuoi * mmPx, W, (den - tu) * mmPx)
+      tu = den; trang++
+    }
+    pdf.save(x.tenFile + '.pdf')
+  } finally {
+    phu.remove(); root.unmount(); host.remove()
+  }
 }
