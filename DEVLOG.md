@@ -77445,3 +77445,8 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Thùy:** chấm MT và chấm khảo sát là 1 lá, chỉ khác đề ⇒ đổi tên lá thành "Chấm MT - Khảo sát"; dashboard đặt ngay trong lá.
 - **Làm:** `ChamMTScreen` có 2 tab "Chấm điểm" · "Kết quả theo chuyên đề" (nhớ tab khi rời lá); gỡ tab "Kết quả theo chuyên đề" khỏi Kết quả học tập › Điểm thi (thêm sáng nay, chuyển hẳn sang lá này). Xếp hạng MT / khảo sát vẫn ở Kết quả học tập › Điểm thi.
 - **Kiểm:** app — lá tên mới, chấm 9S1 26 câu, sang tab chuyên đề (đề 4A1, 7 HS), quay lại vẫn 9S1.
+
+## 23/10 — Dashboard kết quả: lọc Chuyên đề | Chủ đề
+- **Thùy:** thêm bộ lọc xem theo chuyên đề hoặc chủ đề.
+- **DB (mig 202610231439, `--only`):** `fn_mt_bang_ket_qua(de, cap)` — cùng luật %/điểm/hạng, `cap='chu_de'` gom theo ma_chu_de (dai/khtn/hgt_ban_do); Hình học + mô hình không có chủ đề cũ ⇒ chủ đề mới `dai_bdm_chu_de` nếu đã gắn, chưa gắn gom "Hình học". `fn_mt_bang_chuyen_de` thành vỏ gọi hàm mới (1 nguồn công thức). Kiểm ROLLBACK: 34/34 đề chế độ chuyên đề giống hệt bản cũ.
+- **Client:** nút Chuyên đề | Chủ đề trên `BangChuyenDeView` (nhớ khi rời tab). App: K9 14 chuyên đề ⇄ 6 chủ đề.

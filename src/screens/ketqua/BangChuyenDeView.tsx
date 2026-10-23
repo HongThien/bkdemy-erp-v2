@@ -7,7 +7,8 @@ import { dsDeDaThi, bangChuyenDe, type DeDaThi, type BangCD, type BangCDHS } fro
 
 const MON = ['Toán', 'KHTN']
 // Rời tab quay lại = đúng chỗ cũ (CLAUDE §React).
-const NHO: { mon: string; deId: string | null; lopId: string | null; sap: { cot: string; tang: boolean } } = { mon: 'Toán', deId: null, lopId: null, sap: { cot: 'hang', tang: true } }
+type Cap = 'chuyen_de' | 'chu_de'
+const NHO: { mon: string; deId: string | null; lopId: string | null; cap: Cap; sap: { cot: string; tang: boolean } } = { mon: 'Toán', deId: null, lopId: null, cap: 'chuyen_de', sap: { cot: 'hang', tang: true } }
 
 const mauPct = (p: number | undefined) => p == null ? 'bg-slate-50 text-slate-300'
   : p >= 80 ? 'bg-emerald-100 text-emerald-800' : p >= 50 ? 'bg-amber-100 text-amber-800' : 'bg-rose-100 text-rose-700'
@@ -20,9 +21,10 @@ export default function BangChuyenDeView() {
   const [bang, setBang] = useState<BangCD | null>(null)
   const [lopId, setLopId] = useState<string | null>(NHO.lopId)
   const [sap, setSap] = useState(NHO.sap)
+  const [cap, setCap] = useState<Cap>(NHO.cap)
   const [dangTai, setDangTai] = useState(false)
   const [loi, setLoi] = useState<string | null>(null)
-  useEffect(() => { Object.assign(NHO, { mon, deId, lopId, sap }) }, [mon, deId, lopId, sap])
+  useEffect(() => { Object.assign(NHO, { mon, deId, lopId, sap, cap }) }, [mon, deId, lopId, sap, cap])
 
   useEffect(() => {
     let alive = true
@@ -40,11 +42,11 @@ export default function BangChuyenDeView() {
     if (!deId) return
     let alive = true
     setDangTai(true)
-    bangChuyenDe(deId).then((b) => { if (alive) setBang(b) })
+    bangChuyenDe(deId, cap).then((b) => { if (alive) setBang(b) })
       .catch((e) => alive && setLoi('Không tải được bảng: ' + (e?.message ?? e)))
       .finally(() => alive && setDangTai(false))
     return () => { alive = false }
-  }, [deId])
+  }, [deId, cap])
 
   const lops = bang ? [...new Map(bang.hs.map((h) => [h.lop_id, h.lop])).entries()].sort((a, b) => a[1].localeCompare(b[1], 'vi', { numeric: true })) : []
   const hien = (bang?.hs ?? []).filter((h) => !lopId || h.lop_id === lopId)
@@ -72,7 +74,13 @@ export default function BangChuyenDeView() {
           {des.length === 0 && <option value="">Chưa có đề nào đã chấm</option>}
           {des.map((d) => <option key={d.de_id} value={d.de_id}>{d.ten} · {nhanLoai(d.loai_de)}{d.khoi ? ` · K${d.khoi}` : ''} · {d.so_lop} lớp · {d.ngay_moi.split('-').reverse().slice(0, 2).join('/')}</option>)}
         </select>
-        {bang && <span className="text-[12px] text-slate-500">{bang.hs.length} HS đã chấm · {bang.so_co_diem} có điểm tổng · {bang.cot.length} chuyên đề</span>}
+        <div className="flex overflow-hidden rounded-md ring-1 ring-slate-200">
+          {([['chuyen_de', 'Chuyên đề'], ['chu_de', 'Chủ đề']] as [Cap, string][]).map(([v, l]) => (
+            <button key={v} onClick={() => { setCap(v); if (sap.cot !== 'ten' && sap.cot !== 'lop' && sap.cot !== 'diem' && sap.cot !== 'hang') setSap({ cot: 'hang', tang: true }) }}
+              className={`h-8 px-3 text-[12.5px] font-semibold ${cap === v ? 'bg-slate-800 text-white' : 'bg-white text-slate-500 hover:text-slate-800'}`}>{l}</button>
+          ))}
+        </div>
+        {bang && <span className="text-[12px] text-slate-500">{bang.hs.length} HS đã chấm · {bang.so_co_diem} có điểm tổng · {bang.cot.length} {cap === 'chu_de' ? 'chủ đề' : 'chuyên đề'}</span>}
       </div>
       {lops.length > 1 && (
         <div className="flex flex-wrap items-center gap-1">
@@ -120,8 +128,8 @@ export default function BangChuyenDeView() {
               </table>
             </div>
             <p className="text-[11px] text-slate-400">
-              {de ? `${de.ten} · ` : ''}% đạt = điểm đạt / điểm tối đa các câu thuộc chuyên đề (câu chưa chấm hoặc câu C chưa chọn điểm chưa tính; ý Hình của đề chỉ đặt điểm cả bài tính theo cả bài).
-              Xếp hạng trên cả đề (mọi lớp), lọc lớp chỉ để xem. Chuyên đề theo bản đồ cũ — bài Hình mô hình gom theo mô hình.
+              {de ? `${de.ten} · ` : ''}% đạt = điểm đạt / điểm tối đa các câu thuộc {cap === 'chu_de' ? 'chủ đề' : 'chuyên đề'} (câu chưa chấm hoặc câu C chưa chọn điểm chưa tính; ý Hình của đề chỉ đặt điểm cả bài tính theo cả bài).
+              Xếp hạng trên cả đề (mọi lớp), lọc lớp chỉ để xem. {cap === 'chu_de' ? 'Chủ đề theo bản đồ cũ — Hình học chưa có chủ đề cũ: lấy chủ đề mới nếu đã gắn, chưa gắn gom "Hình học".' : 'Chuyên đề theo bản đồ cũ — bài Hình mô hình gom theo mô hình.'}
             </p>
           </>
         )}

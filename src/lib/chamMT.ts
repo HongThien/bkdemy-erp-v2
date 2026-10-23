@@ -54,8 +54,9 @@ export async function dsDeDaThi(mon: string): Promise<DeDaThi[]> {
   if (error) throw error
   return (data ?? []) as DeDaThi[]
 }
-export async function bangChuyenDe(deId: string): Promise<BangCD> {
-  const { data, error } = await supabase.rpc('fn_mt_bang_chuyen_de', { p_de: deId })
+// cap: gom cột theo CHUYÊN ĐỀ hay CHỦ ĐỀ (Thùy 23/10) — fn_mt_bang_ket_qua, cùng luật % / điểm / hạng.
+export async function bangChuyenDe(deId: string, cap: 'chuyen_de' | 'chu_de' = 'chuyen_de'): Promise<BangCD> {
+  const { data, error } = await supabase.rpc('fn_mt_bang_ket_qua', { p_de: deId, p_cap: cap })
   if (error) throw error
   const j = (data ?? {}) as { cot?: BangCDCot[]; hs?: any[]; so_co_diem?: number }
   return {
