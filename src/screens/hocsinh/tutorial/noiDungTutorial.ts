@@ -10,7 +10,7 @@
 // ============================================================================
 
 export type BuocTutorial = { noi: string; soi?: string; loc?: string } // loc = động tác của Lộc ép cho câu này (mặc định: chỉ tay ở câu đầu chặng, giải thích ở các câu sau)
-export type IdChuong = 'giao_dien' | 'hoc_tap' | 'chu_de' | 'tu_luyen' | 'luot_that' | 'chuoi' | 'tro_choi' | 'thu_thach' | 'dau_chinh_phuc' | 'nhiem_vu_ngay' | 'bxh' | 'rank' | 'huy_hieu' | 'xu_may_man' | 'the_gioi'
+export type IdChuong = 'giao_dien' | 'hoc_tap' | 'chu_de' | 'tu_luyen' | 'luot_that' | 'chuoi' | 'tro_choi' | 'nong_trai' | 'thu_thach' | 'dau_chinh_phuc' | 'nhiem_vu_ngay' | 'bxh' | 'rank' | 'huy_hieu' | 'xu_may_man' | 'the_gioi'
 export type ChuongTutorial = {
   id: IdChuong
   ten: string
@@ -193,7 +193,19 @@ const CHUONG_TAT_CA: ChuongTutorial[] = [
     buoc: [
       { noi: 'Chặng cuối: Trò chơi. Ở khối Giải trí trên màn chính, chạm ô Trò chơi để giải lao sau giờ học.', soi: 'o_tro_choi' },
       { noi: 'Hiện có Nông trại BK để chơi. Các game khác đang chuẩn bị, em sẽ thấy chúng mờ và ghi Sắp ra mắt.', soi: 'ds_game' },
-      { noi: 'Nông trại BK đang là bản thử: tiến độ lưu ngay trên thiết bị em đang dùng, chưa nối với xu hay việc học. Đổi thiết bị thì vườn bắt đầu lại.', soi: 'nong_trai' },
+      { noi: 'Nông trại BK lưu vườn của em theo tài khoản, đổi thiết bị vẫn còn nguyên. Chơi đều mỗi ngày còn nhận được xu thật nữa đó.', soi: 'nong_trai' },
+    ],
+  },
+  {
+    id: 'nong_trai', ten: 'Nông trại BK', phu: 'Vườn riêng của em · chơi đều có xu', icon: { o: 'tro_choi' },
+    kyNang: 'Nông trại BK — gieo trồng, nuôi thú cưng, thăm vườn bạn, chơi đều nhận xu',
+    buoc: [
+      { noi: 'Nông trại BK đã mở rồi! Ở màn chính, em chạm ô Trò chơi rồi chọn Nông trại BK để vào vườn của mình.', soi: 'o_vao', loc: 'greeting' },
+      { noi: 'Em có 4 ô đất để gieo hạt, tưới nước rồi thu hoạch. Hạt giống mua bằng điểm học tập, em làm bài càng nhiều thì càng có nhiều điểm để mua.', soi: 'vuon', loc: 'explaining' },
+      { noi: 'Mỗi ngày em chơi được tối đa 30 phút. Vườn lớn lên theo số ngày em chăm, nên chơi đều mỗi ngày nhé.', soi: 'gio', loc: 'open_book' },
+      { noi: 'Chơi đều là có xu thật. Ngày nào chơi từ 5 phút trở lên thì được tính, mỗi ngày tối đa 4 xu, cả tháng tối đa 20 xu, vào thẳng Ví xu của em.', soi: 'xu', loc: 'explaining' },
+      { noi: 'Em có thể sang thăm vườn bạn cùng lớp, giúp bạn tưới nước và bắt sâu. Bạn cũng có thể ghé hái trộm vài quả của em, nên nhớ nuôi chó canh vườn.', soi: 'ban_be', loc: 'winking' },
+      { noi: 'Nhà em có sẵn một chú chó. Muốn nuôi thêm mèo, chim hay các bạn thú khác thì mua bằng điểm học tập ở nút Thú cưng. Vào chơi thử thôi nào!', soi: 'thu_cung', loc: 'greeting' },
     ],
   },
   {
@@ -212,16 +224,16 @@ const CHUONG_TAT_CA: ChuongTutorial[] = [
 /** Chương nào thuộc tính năng nào (mã `tinh_nang` ở DB). Không có mã ⇒ luôn có. Tính năng ĐÓNG ⇒ chương ẩn (Thùy 07/10: mở dần, HS đỡ ngợp). */
 export const TINH_NANG_CHUONG: Partial<Record<IdChuong, string>> = {
   hoc_tap: 'hoc_tap', chu_de: 'hoc_tap', tu_luyen: 'hoc_tap', luot_that: 'hoc_tap', dau_chinh_phuc: 'hoc_tap', thu_thach: 'rank', chuoi: 'chuoi',
-  nhiem_vu_ngay: 'nhiem_vu', bxh: 'xep_hang', rank: 'rank', huy_hieu: 'thanh_tuu', xu_may_man: 'vi_xu', tro_choi: 'tro_choi', the_gioi: 'the_gioi',
+  nhiem_vu_ngay: 'nhiem_vu', bxh: 'xep_hang', rank: 'rank', huy_hieu: 'thanh_tuu', xu_may_man: 'vi_xu', tro_choi: 'tro_choi', nong_trai: 'nong_trai', the_gioi: 'the_gioi',
 }
 /** Nút "Thử ngay" cuối chặng (học bằng làm): chặng → màn thật. App ánh xạ id này sang màn. */
-export type DichThu = 'hoc_tap' | 'luyen_yeu' | 'nhiem_vu' | 'xep_hang' | 'thanh_tuu' | 'vi_xu' | 'tro_choi' | 'rank' | 'the_gioi'
+export type DichThu = 'hoc_tap' | 'luyen_yeu' | 'nhiem_vu' | 'xep_hang' | 'thanh_tuu' | 'vi_xu' | 'tro_choi' | 'nong_trai' | 'rank' | 'the_gioi'
 export const THU_NGAY: Partial<Record<IdChuong, { dich: DichThu; nut: string }>> = {
   hoc_tap: { dich: 'hoc_tap', nut: 'Thử ngay: vào khu Học tập' }, chu_de: { dich: 'hoc_tap', nut: 'Thử ngay: vào khu Học tập' },
   tu_luyen: { dich: 'luyen_yeu', nut: 'Thử ngay: Luyện dạng yếu' }, chuoi: { dich: 'luyen_yeu', nut: 'Thử ngay: luyện 1 lượt giữ chuỗi' },
   nhiem_vu_ngay: { dich: 'luyen_yeu', nut: 'Làm lượt đầu tiên ngay' }, bxh: { dich: 'xep_hang', nut: 'Thử ngay: xem Bảng xếp hạng' },
   huy_hieu: { dich: 'thanh_tuu', nut: 'Thử ngay: xem Thành tựu' }, xu_may_man: { dich: 'vi_xu', nut: 'Thử ngay: mở Ví xu' },
-  tro_choi: { dich: 'tro_choi', nut: 'Thử ngay: vào Trò chơi' }, dau_chinh_phuc: { dich: 'hoc_tap', nut: 'Thử ngay: vào khu Học tập' },
+  tro_choi: { dich: 'tro_choi', nut: 'Thử ngay: vào Trò chơi' }, nong_trai: { dich: 'nong_trai', nut: 'Vào Nông trại ngay' }, dau_chinh_phuc: { dich: 'hoc_tap', nut: 'Thử ngay: vào khu Học tập' },
 }
 
 /** 5 CHẶNG LÕI cho LẦN ĐẦU (Thùy 08/10: 12 chặng một lúc hơi dài): Học tập · Luyện dạng yếu · Chuỗi · Nhiệm vụ · Thành tựu. Các chặng còn lại Lộc "kể dần" qua lời mời ở góc màn chính. */

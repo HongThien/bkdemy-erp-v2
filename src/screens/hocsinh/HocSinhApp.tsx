@@ -85,6 +85,7 @@ import { rankBat } from './phieuluu/coBat'
 import GioiThieuYeu from './luyen/GioiThieuYeu'
 import TutorialHS from './tutorial/TutorialHS'
 import { LocMoi } from './tutorial/LocMoi'
+import { LocMoGame } from './tutorial/LocMoGame'
 import { NutBaoLoiCau } from './gopy/BaoLoiCau'
 import { datMan, EVT_MO_GOP_Y } from './gopy/manHienTai'
 import { chuongMo, CHUONG_LOI, NGUOI_DAN_LOC, type DichThu } from './tutorial/noiDungTutorial'
@@ -812,7 +813,11 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   // Thông tin học tập · Đề thi thử (sắp có) · Bài tập được giao · Thành tựu · May mắn.
   // Lời mời quay tự hiện (06/10): có lượt (cũ: cap1/cap2 qua mayManHSCuaToi; mới: nvHome.vong_quay) và chưa quay hôm nay — ô May mắn đã ẩn khỏi màn chính
   const coQuay = moTN('nhiem_vu') && (maymanCoLuot || (!!nvHome && nvHome.mo && nvHome.vong_quay.du && !nvHome.vong_quay.da_quay))
+  // Lộc báo "Nông trại BK đã mở" (Thùy 23/10): tính năng mở + em đã qua hành trình đầu (tutXong ≠ rỗng) + chưa có dòng 'nong_trai'. Ghi dòng ⇒ không hiện lại.
+  const locMoGame = moTN('nong_trai') && !!tutXong && tutXong.size > 0 && !tutXong.has('nong_trai')
   const moiQuay = <><TinMoiKhung lamMoi={direct} /><MoiQuayMayMan coLuot={coQuay} onQuay={() => setDirect('may_man')} />
+    <LocMoGame hien={locMoGame} onVao={() => { void tutorialGhi(['nong_trai'], 'bo_qua').catch(() => {}); setTutXong((s) => new Set([...(s ?? []), 'nong_trai'])); setDirect('nong_trai') }}
+      onNghe={() => { tutLanDau.current = false; setTutDs(['nong_trai']); setDirect('tutorial') }} />
     {tutXong && tutXong.size > 0 && <LocMoi n={chuongMoi.length} ten={NGUOI_DAN_LOC} onMo={() => { tutLanDau.current = false; setTutDs(chuongMoi.map((c) => c.id)); setDirect('tutorial') }} />}</>
   // Cấp 1 DÙNG CHUNG màn chính với cấp 2 (Thùy 11/10): HomeCap1 chỉ còn là đường lùi khi không xác định được khối để chọn style.
   if (!khu && cap1 && !nhom912) return <>{moiQuay}<HomeCap1 hoTen={hoTen} maHS={maHS} maymanCoLuot={maymanCoLuot} thanhTuuCho={ttCho} chiHien={oMo}
