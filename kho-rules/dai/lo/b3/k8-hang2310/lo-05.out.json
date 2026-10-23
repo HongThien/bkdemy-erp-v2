@@ -1,0 +1,200 @@
+[
+ {
+  "ma_cau": "T108000000360",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: chứng minh đẳng thức với điều kiện a+b+c=0."
+ },
+ {
+  "ma_cau": "T108000000510",
+  "dang_bai_id": "NDB01370",
+  "chac": "vua",
+  "ly_do": "Ý a lập đa thức tổng tiền; ý b tối ưu có giảm giá, vượt lập biểu thức."
+ },
+ {
+  "ma_cau": "T108000000643",
+  "dang_bai_id": "NDB00698",
+  "chac": "cao",
+  "ly_do": "Tách (x-2y-2)^2+(y-1)^2=0 rồi tính M."
+ },
+ {
+  "ma_cau": "T108000000509",
+  "dang_bai_id": "NDB01370",
+  "chac": "vua",
+  "ly_do": "Ý a lập đa thức tổng chi phí; ý b tối ưu có khuyến mãi, vượt lập biểu thức."
+ },
+ {
+  "ma_cau": "T108000000626",
+  "dang_bai_id": "NDB00975",
+  "chac": "cao",
+  "ly_do": "Chia đa thức cho đơn thức, khai triển, đưa về bình phương một hiệu bằng số rồi tìm x."
+ },
+ {
+  "ma_cau": "T108000000512",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: bài toán số chính phương / số học."
+ },
+ {
+  "ma_cau": "T108000000774",
+  "dang_bai_id": "NDB00671",
+  "chac": "vua",
+  "ly_do": "Ý a xét đơn thức đồng dạng (00667); ý b tính hiệu hai đơn thức đồng dạng (00671)."
+ },
+ {
+  "ma_cau": "T108000000119",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: bài toán số chính phương / số học."
+ },
+ {
+  "ma_cau": "T108040401004",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: chứng minh tam giác/tứ giác, không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T108000000794",
+  "dang_bai_id": "NDB00683",
+  "chac": "vua",
+  "ly_do": "Cộng, trừ đa thức rồi tính giá trị: hai dạng."
+ },
+ {
+  "ma_cau": "T108000000596",
+  "dang_bai_id": "NDB00681",
+  "chac": "vua",
+  "ly_do": "Rút gọn rồi chứng minh chia hết cho 12; biểu thức một biến nên còn lưỡng lự với 00680."
+ },
+ {
+  "ma_cau": "T108000000679",
+  "dang_bai_id": "NDB00466",
+  "chac": "vua",
+  "ly_do": "Tính x^2+4/x^2 từ x+2/x bằng bình phương; có phân thức nhưng không đúng form của 00466."
+ },
+ {
+  "ma_cau": "T108010103034",
+  "dang_bai_id": "NDB00665",
+  "chac": "cao",
+  "ly_do": "Thu gọn đơn thức rồi đọc phần biến (hệ số, phần biến, bậc của đơn thức)."
+ },
+ {
+  "ma_cau": "T108000000641",
+  "dang_bai_id": "NDB00681",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức hai biến rồi chứng minh chia hết cho 2."
+ },
+ {
+  "ma_cau": "T108000000513",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: bài toán số chính phương / số học."
+ },
+ {
+  "ma_cau": "T108050401001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: định lí phần dư (đa thức chia cho x-a dư bao nhiêu)."
+ },
+ {
+  "ma_cau": "T108000000414",
+  "dang_bai_id": "NDB00683",
+  "chac": "vua",
+  "ly_do": "Thu gọn đa thức rồi tính giá trị: hai dạng."
+ },
+ {
+  "ma_cau": "T108000000244",
+  "dang_bai_id": "NDB01370",
+  "chac": "vua",
+  "ly_do": "Ý a lập biểu thức kích thước, diện tích; ý b giải tìm x; đề phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T108000000182",
+  "dang_bai_id": "NDB01370",
+  "chac": "vua",
+  "ly_do": "Cạnh còn thiếu = chu vi trừ hai cạnh; đề phụ thuộc hình, gần 00672."
+ },
+ {
+  "ma_cau": "T108000000170",
+  "dang_bai_id": "NDB00975",
+  "chac": "vua",
+  "ly_do": "Tìm x từ x^2-9=0; có thể là 00687 hoặc 00975."
+ },
+ {
+  "ma_cau": "T108050205001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: chứng minh đẳng thức phân thức với điều kiện (a+b+c)^2=a^2+b^2+c^2."
+ },
+ {
+  "ma_cau": "T108000000549",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: tính giá trị biểu thức số có luỹ thừa (không phải đa thức)."
+ },
+ {
+  "ma_cau": "T108030201043",
+  "dang_bai_id": "NDB00977",
+  "chac": "cao",
+  "ly_do": "Rút nhân tử chung rồi dùng hằng đẳng thức y(y-1)^2; dạng hằng đẳng thức đứng cuối."
+ },
+ {
+  "ma_cau": "T108040401003",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: chứng minh tam giác/tứ giác, không có trong bảng đích."
+ },
+ {
+  "ma_cau": "T108000000130",
+  "dang_bai_id": "NDB01370",
+  "chac": "cao",
+  "ly_do": "Lập biểu thức diện tích mảnh vườn sau khi mở rộng."
+ },
+ {
+  "ma_cau": "T108000000707",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: chia luỹ thừa của đa thức (x-y)^3:(y-x)^2."
+ },
+ {
+  "ma_cau": "T108000000639",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: chứng minh chia hết bằng phân tích thành tích số liên tiếp."
+ },
+ {
+  "ma_cau": "T108000000538",
+  "dang_bai_id": "NDB00683",
+  "chac": "vua",
+  "ly_do": "Tìm bậc rồi tính giá trị sau thu gọn: hai dạng."
+ },
+ {
+  "ma_cau": "T108000000185",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: tính x^2+y^2 từ x-y và xy (bình phương đặc biệt cơ bản)."
+ },
+ {
+  "ma_cau": "T108000000598",
+  "dang_bai_id": "NDB00673",
+  "chac": "vua",
+  "ly_do": "Tìm bậc/hệ số/phần biến, tính giá trị, nhân hai đơn thức: nhiều dạng."
+ },
+ {
+  "ma_cau": "T108020702001",
+  "dang_bai_id": "NDB00469",
+  "chac": "vua",
+  "ly_do": "Dùng lập phương của tổng với a+b=2; chuyên đề lập phương của tổng nhưng dạng gọi tên a^3+b^3+c^3."
+ },
+ {
+  "ma_cau": "T108000000514",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: bài toán số chính phương / số học."
+ },
+ {
+  "ma_cau": "T108020701001",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng: tính a^2+b^2 từ a+b và ab (bình phương đặc biệt cơ bản)."
+ }
+]

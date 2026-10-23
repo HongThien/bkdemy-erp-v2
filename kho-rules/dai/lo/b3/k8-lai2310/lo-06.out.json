@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T108000000020",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Chia đa thức cho đơn thức."
+ },
+ {
+  "ma_cau": "T108000000202",
+  "dang_bai_id": "NDB00971",
+  "chac": "cao",
+  "ly_do": "Tính nhanh hiệu hai bình phương 103²−97²."
+ },
+ {
+  "ma_cau": "T108030603007",
+  "dang_bai_id": "NDB00980",
+  "chac": "cao",
+  "ly_do": "Nhóm hạng tử rồi rút nhân tử chung để tìm x."
+ },
+ {
+  "ma_cau": "T108000000282",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Đưa về phương trình bậc nhất một ẩn."
+ },
+ {
+  "ma_cau": "T108000000652",
+  "dang_bai_id": "NDB00680",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức một biến có nhân đa thức với đa thức."
+ },
+ {
+  "ma_cau": "T108000000751",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Chia đa thức cho đơn thức."
+ },
+ {
+  "ma_cau": "T108000000271",
+  "dang_bai_id": "NDB00665",
+  "chac": "cao",
+  "ly_do": "Tìm hệ số của đơn thức."
+ },
+ {
+  "ma_cau": "T108000000357",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức, x² triệt tiêu, còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108020202091",
+  "dang_bai_id": "NDB00698",
+  "chac": "cao",
+  "ly_do": "Tách (x−y−1)²+2(y−1/2)²: hai bình phương, một có ba số."
+ },
+ {
+  "ma_cau": "T108000000762",
+  "dang_bai_id": "NDB00666",
+  "chac": "cao",
+  "ly_do": "Tìm bậc của đơn thức."
+ },
+ {
+  "ma_cau": "T108020501022",
+  "dang_bai_id": "NDB00691",
+  "chac": "cao",
+  "ly_do": "Điền hạng tử khuyết trong hằng đẳng thức tổng hai lập phương."
+ },
+ {
+  "ma_cau": "T108000000043",
+  "dang_bai_id": "NDB00672",
+  "chac": "vua",
+  "ly_do": "Tìm đa thức chưa biết bằng cộng trừ, có nhân đơn thức với đa thức (NDB00674)."
+ },
+ {
+  "ma_cau": "T108000000498",
+  "dang_bai_id": "NDB00981",
+  "chac": "cao",
+  "ly_do": "Khai triển rồi tách hạng tử x²−4x+3 để tìm x."
+ },
+ {
+  "ma_cau": "T108020105007",
+  "dang_bai_id": "NDB00695",
+  "chac": "cao",
+  "ly_do": "Tìm GTNN tam thức bậc hai một biến, hệ số x² khác 1."
+ },
+ {
+  "ma_cau": "T108020103043",
+  "dang_bai_id": "NDB00689",
+  "chac": "cao",
+  "ly_do": "Điền hạng tử khuyết trong bình phương của tổng."
+ },
+ {
+  "ma_cau": "T108010302053",
+  "dang_bai_id": "NDB00674",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đa thức."
+ },
+ {
+  "ma_cau": "T108000000067",
+  "dang_bai_id": "NDB00683",
+  "chac": "cao",
+  "ly_do": "Tính giá trị đa thức nhiều biến."
+ },
+ {
+  "ma_cau": "T108000000663",
+  "dang_bai_id": "NDB00973",
+  "chac": "cao",
+  "ly_do": "Rút gọn dùng hiệu hai bình phương và chia đa thức cho đơn thức."
+ },
+ {
+  "ma_cau": "T108000000283",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Nhân đa thức, x² triệt tiêu, còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000481",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Bỏ ngoặc, x² hai vế triệt tiêu, còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000605",
+  "dang_bai_id": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Cộng trừ ba đa thức."
+ },
+ {
+  "ma_cau": "T108000000592",
+  "dang_bai_id": "NDB00681",
+  "chac": "cao",
+  "ly_do": "Chứng minh biểu thức không phụ thuộc biến bằng rút gọn nhiều biến."
+ },
+ {
+  "ma_cau": "T108020202080",
+  "dang_bai_id": "NDB00699",
+  "chac": "vua",
+  "ly_do": "Chứng minh luôn dương hai biến bằng tổng nhiều bình phương; có thể thuộc dạng hai hoặc ba bình phương."
+ },
+ {
+  "ma_cau": "T108030301007",
+  "dang_bai_id": "NDB00976",
+  "chac": "cao",
+  "ly_do": "Nhóm hạng tử rồi rút nhân tử chung (x+y)."
+ },
+ {
+  "ma_cau": "T108020401050",
+  "dang_bai_id": "NDB00692",
+  "chac": "cao",
+  "ly_do": "Tích dạng (A−B)(A+B) gom thành hiệu hai bình phương."
+ },
+ {
+  "ma_cau": "T108000000444",
+  "dang_bai_id": "NDB00973",
+  "chac": "cao",
+  "ly_do": "Rút gọn có (x−2)(x+2) và bình phương của hiệu."
+ },
+ {
+  "ma_cau": "T108020601007",
+  "dang_bai_id": "NDB00973",
+  "chac": "cao",
+  "ly_do": "Rút gọn dùng hằng đẳng thức lập phương của hiệu và bình phương."
+ },
+ {
+  "ma_cau": "T108040201002",
+  "dang_bai_id": "NDB00683",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức nhiều biến rồi tính giá trị."
+ },
+ {
+  "ma_cau": "T108000000058",
+  "dang_bai_id": "NDB00974",
+  "chac": "cao",
+  "ly_do": "Tìm x dùng bình phương hiệu, x² triệt tiêu, còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108050202004",
+  "dang_bai_id": "NDB00469",
+  "chac": "cao",
+  "ly_do": "Đặt ẩn, dùng hằng đẳng thức x³+y³+z³−3xyz với z=−1."
+ },
+ {
+  "ma_cau": "T108000000256",
+  "dang_bai_id": "NDB00666",
+  "chac": "cao",
+  "ly_do": "Tìm bậc của đơn thức có hệ số là luỹ thừa."
+ },
+ {
+  "ma_cau": "T108020602029",
+  "dang_bai_id": "NDB00974",
+  "chac": "cao",
+  "ly_do": "Tìm x khai triển lập phương của tổng, x³ triệt tiêu, còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000486",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức, x² triệt tiêu, còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000750",
+  "dang_bai_id": "NDB00673",
+  "chac": "cao",
+  "ly_do": "Nhân các đơn thức rồi thu gọn."
+ },
+ {
+  "ma_cau": "T108000000305",
+  "dang_bai_id": "NDB00681",
+  "chac": "cao",
+  "ly_do": "Rút gọn nhiều biến có chia đa thức cho đơn thức và nhân đơn thức."
+ },
+ {
+  "ma_cau": "T108000000763",
+  "dang_bai_id": "NDB00673",
+  "chac": "cao",
+  "ly_do": "Nhân hai đơn thức."
+ },
+ {
+  "ma_cau": "T108000000622",
+  "dang_bai_id": "NDB00974",
+  "chac": "cao",
+  "ly_do": "Tìm x dùng bình phương tổng, hiệu và hiệu hai bình phương, đưa về bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000347",
+  "dang_bai_id": "NDB00974",
+  "chac": "cao",
+  "ly_do": "Tìm x dùng bình phương hiệu và hiệu hai bình phương, đưa về bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000393",
+  "dang_bai_id": "NDB00973",
+  "chac": "cao",
+  "ly_do": "Chứng minh biểu thức không phụ thuộc biến bằng hằng đẳng thức."
+ },
+ {
+  "ma_cau": "T108000000180",
+  "dang_bai_id": "NDB00692",
+  "chac": "cao",
+  "ly_do": "Tích (x+3)(x−3) là hiệu hai bình phương."
+ },
+ {
+  "ma_cau": "T108000000499",
+  "dang_bai_id": "NDB00981",
+  "chac": "cao",
+  "ly_do": "Khai triển rồi tách hạng tử x²−6x+8 để tìm x."
+ },
+ {
+  "ma_cau": "T108000000467",
+  "dang_bai_id": "NDB00675",
+  "chac": "cao",
+  "ly_do": "Nhân đa thức với đa thức."
+ },
+ {
+  "ma_cau": "T108020203060",
+  "dang_bai_id": "NDB00698",
+  "chac": "cao",
+  "ly_do": "Tách 2(x−y−1)²+3(y−1/3)²: hai bình phương, một có ba số."
+ },
+ {
+  "ma_cau": "T108000000273",
+  "dang_bai_id": "NDB00670",
+  "chac": "cao",
+  "ly_do": "Thu gọn rồi tìm bậc đa thức."
+ },
+ {
+  "ma_cau": "T108030301092",
+  "dang_bai_id": "NDB00977",
+  "chac": "cao",
+  "ly_do": "Gom hiệu hai bình phương rồi rút nhân tử chung."
+ },
+ {
+  "ma_cau": "T108020401061",
+  "dang_bai_id": "NDB00468",
+  "chac": "cao",
+  "ly_do": "Chứng minh a=b=c từ a²+b²+c²=ab+bc+ca."
+ },
+ {
+  "ma_cau": "T108000000757",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Bỏ ngoặc, đưa về phương trình bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000029",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Nhân đa thức, x² triệt tiêu, còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108010301049",
+  "dang_bai_id": "NDB00673",
+  "chac": "cao",
+  "ly_do": "Nhân hai đơn thức nhiều biến."
+ },
+ {
+  "ma_cau": "T108000000578",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức, x² triệt tiêu, còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000463",
+  "dang_bai_id": "NDB00692",
+  "chac": "cao",
+  "ly_do": "Điền thừa số trong hiệu hai bình phương."
+ },
+ {
+  "ma_cau": "T108000000053",
+  "dang_bai_id": "NDB00970",
+  "chac": "cao",
+  "ly_do": "Nhận ra lập phương của hiệu rồi thay x."
+ },
+ {
+  "ma_cau": "T108020103064",
+  "dang_bai_id": "NDB00689",
+  "chac": "cao",
+  "ly_do": "Điền hạng tử khuyết trong bình phương của tổng."
+ },
+ {
+  "ma_cau": "T108030401013",
+  "dang_bai_id": "NDB00476",
+  "chac": "cao",
+  "ly_do": "Tách hạng tử tam thức hệ số x² khác 1."
+ },
+ {
+  "ma_cau": "T108000000087",
+  "dang_bai_id": "NDB00670",
+  "chac": "cao",
+  "ly_do": "Thu gọn rồi tìm bậc đa thức."
+ },
+ {
+  "ma_cau": "T108000000027",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Tìm x: chia đơn thức, x² triệt tiêu, còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108010503087",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đa thức, x² triệt tiêu, còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000125",
+  "dang_bai_id": "NDB00688",
+  "chac": "cao",
+  "ly_do": "Khai triển bình phương của một tổng."
+ },
+ {
+  "ma_cau": "T108000000095",
+  "dang_bai_id": "NDB00665",
+  "chac": "cao",
+  "ly_do": "Tìm hệ số của đơn thức."
+ },
+ {
+  "ma_cau": "T108020202090",
+  "dang_bai_id": "NDB00698",
+  "chac": "vua",
+  "ly_do": "Điều kiện tổng bình phương bằng 0 để tìm x, y; bản đồ có thể thiếu dạng này."
+ },
+ {
+  "ma_cau": "T108000000554",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Xét đa thức chia hết cho đơn thức rồi chia."
+ },
+ {
+  "ma_cau": "T108020601031",
+  "dang_bai_id": "NDB00973",
+  "chac": "cao",
+  "ly_do": "Rút gọn hiệu hai bình phương của hai nhị thức."
+ },
+ {
+  "ma_cau": "T108030101005",
+  "dang_bai_id": "NDB00470",
+  "chac": "cao",
+  "ly_do": "Rút nhân tử chung là số 6."
+ },
+ {
+  "ma_cau": "T108020203063",
+  "dang_bai_id": "NDB00698",
+  "chac": "cao",
+  "ly_do": "Tách 2(x−y+3/2)²+2(y+1/2)²: hai bình phương, một có ba số."
+ },
+ {
+  "ma_cau": "T108010303001",
+  "dang_bai_id": "NDB00675",
+  "chac": "cao",
+  "ly_do": "Nhân đa thức với đa thức."
+ },
+ {
+  "ma_cau": "T108020501044",
+  "dang_bai_id": "NDB00691",
+  "chac": "cao",
+  "ly_do": "Điền hiệu hai lập phương x³−64 thành tích."
+ },
+ {
+  "ma_cau": "T108020202089",
+  "dang_bai_id": "NDB00698",
+  "chac": "vua",
+  "ly_do": "Điều kiện tổng bình phương bằng 0 để tìm x, y; bản đồ có thể thiếu dạng này."
+ },
+ {
+  "ma_cau": "T108000000456",
+  "dang_bai_id": "NDB00664",
+  "chac": "cao",
+  "ly_do": "Nhận biết đơn thức."
+ },
+ {
+  "ma_cau": "T108030401019",
+  "dang_bai_id": "NDB00476",
+  "chac": "cao",
+  "ly_do": "Tách hạng tử tam thức hệ số x² khác 1."
+ },
+ {
+  "ma_cau": "T108030102022",
+  "dang_bai_id": "NDB00979",
+  "chac": "cao",
+  "ly_do": "Rút nhân tử chung (2x−1) rồi xét hai trường hợp."
+ }
+]

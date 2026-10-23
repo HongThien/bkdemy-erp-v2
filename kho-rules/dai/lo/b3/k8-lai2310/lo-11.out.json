@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T108000000464",
+  "dang_bai_id": "NDB00692",
+  "chac": "cao",
+  "ly_do": "Viết x²-9/49 thành tích (x-A)(x+A): hiệu hai bình phương."
+ },
+ {
+  "ma_cau": "T108000000715",
+  "dang_bai_id": "NDB00676",
+  "chac": "cao",
+  "ly_do": "Chia đơn thức cho đơn thức."
+ },
+ {
+  "ma_cau": "T108010501039",
+  "dang_bai_id": "NDB00680",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức một biến bằng nhân đơn thức với đa thức."
+ },
+ {
+  "ma_cau": "T108010103045",
+  "dang_bai_id": "NDB00669",
+  "chac": "cao",
+  "ly_do": "Xác định hệ số cao nhất của đa thức."
+ },
+ {
+  "ma_cau": "T108000000468",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Chia đa thức cho đơn thức."
+ },
+ {
+  "ma_cau": "T108000000292",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Xác định đa thức chia hết cho đơn thức nào."
+ },
+ {
+  "ma_cau": "T108030301051",
+  "dang_bai_id": "NDB00976",
+  "chac": "cao",
+  "ly_do": "Nhóm hạng tử rồi đặt nhân tử chung (x+2y), không dùng hằng đẳng thức."
+ },
+ {
+  "ma_cau": "T108030301098",
+  "dang_bai_id": "NDB00977",
+  "chac": "cao",
+  "ly_do": "Nhóm hạng tử rồi x²-4 phải dùng hiệu hai bình phương; xếp dạng hằng đẳng thức."
+ },
+ {
+  "ma_cau": "T108000000721",
+  "dang_bai_id": "NDB00674",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đa thức."
+ },
+ {
+  "ma_cau": "T108000000401",
+  "dang_bai_id": "NDB00683",
+  "chac": "cao",
+  "ly_do": "Thu gọn đa thức rồi thay giá trị hai biến."
+ },
+ {
+  "ma_cau": "T108000000693",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Tìm x, bỏ ngoặc thu gọn về bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000758",
+  "dang_bai_id": "NDB00687",
+  "chac": "cao",
+  "ly_do": "Thu gọn về 2x²=0, không phải bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000291",
+  "dang_bai_id": "NDB00668",
+  "chac": "cao",
+  "ly_do": "Đếm các biểu thức là đa thức."
+ },
+ {
+  "ma_cau": "T108020601024",
+  "dang_bai_id": "NDB00973",
+  "chac": "cao",
+  "ly_do": "Rút gọn có bình phương của hiệu và nhân đa thức."
+ },
+ {
+  "ma_cau": "T108000000339",
+  "dang_bai_id": "NDB01370",
+  "chac": "cao",
+  "ly_do": "Viết đa thức biểu thị số tiền điện theo x kWh."
+ },
+ {
+  "ma_cau": "T108000000704",
+  "dang_bai_id": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Trừ hai đa thức M-N."
+ },
+ {
+  "ma_cau": "T108000000388",
+  "dang_bai_id": "NDB00688",
+  "chac": "cao",
+  "ly_do": "Khai triển bình phương của một hiệu."
+ },
+ {
+  "ma_cau": "T108000000613",
+  "dang_bai_id": "NDB00973",
+  "chac": "cao",
+  "ly_do": "Rút gọn dùng bình phương tổng, hiệu và hiệu hai bình phương."
+ },
+ {
+  "ma_cau": "T108000000277",
+  "dang_bai_id": "NDB01370",
+  "chac": "cao",
+  "ly_do": "Viết biểu thức diện tích sân trước và sau khi mở rộng theo a."
+ },
+ {
+  "ma_cau": "T108000000590",
+  "dang_bai_id": "NDB00681",
+  "chac": "cao",
+  "ly_do": "Chứng minh không phụ thuộc biến bằng nhân đơn thức với đa thức."
+ },
+ {
+  "ma_cau": "T108000000586",
+  "dang_bai_id": "NDB01370",
+  "chac": "cao",
+  "ly_do": "Viết biểu thức tổng diện tích đất theo x, y (có hình)."
+ },
+ {
+  "ma_cau": "T108000000737",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Tìm x, x² triệt tiêu còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000397",
+  "dang_bai_id": "NDB00676",
+  "chac": "cao",
+  "ly_do": "Chia đơn thức cho đơn thức."
+ },
+ {
+  "ma_cau": "T108000000221",
+  "dang_bai_id": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Cộng hai đa thức."
+ },
+ {
+  "ma_cau": "T108000000682",
+  "dang_bai_id": "NDB00695",
+  "chac": "cao",
+  "ly_do": "Tìm GTNN tam thức bậc hai một biến."
+ },
+ {
+  "ma_cau": "T108000000108",
+  "dang_bai_id": "NDB00664",
+  "chac": "cao",
+  "ly_do": "Nhận biết đơn thức."
+ },
+ {
+  "ma_cau": "T108040201003",
+  "dang_bai_id": "NDB00674",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đa thức."
+ },
+ {
+  "ma_cau": "T108000000490",
+  "dang_bai_id": "NDB00975",
+  "chac": "cao",
+  "ly_do": "Khai triển bình phương, thu gọn ra x²=số (không bậc nhất)."
+ },
+ {
+  "ma_cau": "T108000000097",
+  "dang_bai_id": "NDB00676",
+  "chac": "cao",
+  "ly_do": "Đơn thức chia hết cho đơn thức nào."
+ },
+ {
+  "ma_cau": "T108000000491",
+  "dang_bai_id": "NDB00975",
+  "chac": "cao",
+  "ly_do": "Khai triển bình phương, thu gọn ra x²=16 (không bậc nhất)."
+ },
+ {
+  "ma_cau": "T108000000644",
+  "dang_bai_id": "NDB00664",
+  "chac": "cao",
+  "ly_do": "Nhận biết đơn thức."
+ },
+ {
+  "ma_cau": "T108000000013",
+  "dang_bai_id": "NDB01370",
+  "chac": "cao",
+  "ly_do": "Biểu thức diện tích khu vườn sau khi tăng giảm kích thước."
+ },
+ {
+  "ma_cau": "T108000000002",
+  "dang_bai_id": "NDB00667",
+  "chac": "cao",
+  "ly_do": "Tìm đơn thức đồng dạng."
+ },
+ {
+  "ma_cau": "T108000000378",
+  "dang_bai_id": "NDB00971",
+  "chac": "cao",
+  "ly_do": "Tính nhanh bằng hằng đẳng thức bình phương của tổng (form 2)."
+ },
+ {
+  "ma_cau": "T108000000171",
+  "dang_bai_id": "NDB00674",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đa thức."
+ },
+ {
+  "ma_cau": "T108000000672",
+  "dang_bai_id": "NDB00974",
+  "chac": "cao",
+  "ly_do": "Tìm x dùng hằng đẳng thức, x² triệt tiêu về bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000080",
+  "dang_bai_id": "NDB00971",
+  "chac": "cao",
+  "ly_do": "Tính nhanh bằng bình phương của một hiệu (form 2)."
+ },
+ {
+  "ma_cau": "T108020402001",
+  "dang_bai_id": "NDB00971",
+  "chac": "cao",
+  "ly_do": "Tính nhanh 79.81 bằng hiệu hai bình phương (form 2)."
+ },
+ {
+  "ma_cau": "T108000000495",
+  "dang_bai_id": "NDB00981",
+  "chac": "cao",
+  "ly_do": "Tìm x, thu gọn ra tam thức x²-9x+8=0 rồi tách hạng tử."
+ },
+ {
+  "ma_cau": "T108000000365",
+  "dang_bai_id": "NDB00674",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đa thức."
+ },
+ {
+  "ma_cau": "T108000000253",
+  "dang_bai_id": "NDB00664",
+  "chac": "cao",
+  "ly_do": "Nhận biết đơn thức."
+ },
+ {
+  "ma_cau": "T108000000430",
+  "dang_bai_id": "NDB01356",
+  "chac": "cao",
+  "ly_do": "Bài toán thực tế sản lượng lớn nhất, đưa về bậc hai biện luận."
+ },
+ {
+  "ma_cau": "T108000000193",
+  "dang_bai_id": "NDB00664",
+  "chac": "cao",
+  "ly_do": "Nhận biết đơn thức."
+ },
+ {
+  "ma_cau": "T108000000784",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Chia đa thức cho đơn thức."
+ },
+ {
+  "ma_cau": "T108000000447",
+  "dang_bai_id": "NDB00667",
+  "chac": "cao",
+  "ly_do": "Tìm đơn thức đồng dạng."
+ },
+ {
+  "ma_cau": "T108030103066",
+  "dang_bai_id": "NDB00977",
+  "chac": "cao",
+  "ly_do": "Phân tích (x+y)²+8(x+y)+16 bằng hằng đẳng thức."
+ },
+ {
+  "ma_cau": "T108000000299",
+  "dang_bai_id": "NDB00974",
+  "chac": "cao",
+  "ly_do": "Tìm x dùng hằng đẳng thức, x² triệt tiêu về bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000576",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Tìm x, x² triệt tiêu còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000683",
+  "dang_bai_id": "NDB00696",
+  "chac": "cao",
+  "ly_do": "GTNN biểu thức hai biến độc lập x, y."
+ },
+ {
+  "ma_cau": "T108000000678",
+  "dang_bai_id": "NDB01370",
+  "chac": "cao",
+  "ly_do": "Viết biểu thức diện tích đáy và thể tích thùng theo x (toán thực tế)."
+ },
+ {
+  "ma_cau": "T108030201019",
+  "dang_bai_id": "NDB00977",
+  "chac": "cao",
+  "ly_do": "Gom 3 hạng tử thành bình phương rồi hiệu hai bình phương."
+ },
+ {
+  "ma_cau": "T108000000333",
+  "dang_bai_id": "NDB00668",
+  "chac": "cao",
+  "ly_do": "Nhận biết biểu thức không phải đa thức."
+ },
+ {
+  "ma_cau": "T108040101008",
+  "dang_bai_id": "NDB00664",
+  "chac": "cao",
+  "ly_do": "Đếm các biểu thức là đơn thức."
+ },
+ {
+  "ma_cau": "T108000000077",
+  "dang_bai_id": "NDB00676",
+  "chac": "cao",
+  "ly_do": "Đơn thức chia hết cho đơn thức nào."
+ },
+ {
+  "ma_cau": "T108000000238",
+  "dang_bai_id": "NDB00676",
+  "chac": "cao",
+  "ly_do": "Chia đơn thức cho đơn thức có số mũ chứa n."
+ },
+ {
+  "ma_cau": "T108030201091",
+  "dang_bai_id": "NDB00977",
+  "chac": "cao",
+  "ly_do": "Đưa về (x²-9)² rồi hiệu hai bình phương."
+ },
+ {
+  "ma_cau": "T108000000646",
+  "dang_bai_id": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Cộng hai đa thức."
+ },
+ {
+  "ma_cau": "T108000000050",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Đa thức chia hết cho đơn thức nào."
+ },
+ {
+  "ma_cau": "T108000000318",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Chia đa thức cho đơn thức."
+ },
+ {
+  "ma_cau": "T108000000572",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Tìm x, x² triệt tiêu còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108010503065",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Tìm x sau khi chia đa thức cho đơn thức, thu gọn về bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000057",
+  "dang_bai_id": "NDB00686",
+  "chac": "cao",
+  "ly_do": "Tìm x, x² triệt tiêu còn bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000398",
+  "dang_bai_id": "NDB00666",
+  "chac": "cao",
+  "ly_do": "Nhân hai đơn thức rồi tìm bậc."
+ },
+ {
+  "ma_cau": "T108000000629",
+  "dang_bai_id": "NDB00679",
+  "chac": "cao",
+  "ly_do": "Tìm m để đa thức chia hết cho đơn thức."
+ },
+ {
+  "ma_cau": "T108000000230",
+  "dang_bai_id": "NDB00971",
+  "chac": "cao",
+  "ly_do": "Tính giá trị x²+12x+36 bằng bình phương của tổng."
+ },
+ {
+  "ma_cau": "T108020702007",
+  "dang_bai_id": "NDB00469",
+  "chac": "vua",
+  "ly_do": "Đặt x=1/a… dùng x³+y³+z³=3xyz; có thể là dạng phân thức NDB00466."
+ },
+ {
+  "ma_cau": "T108000000502",
+  "dang_bai_id": "NDB00981",
+  "chac": "cao",
+  "ly_do": "Tìm x, thu gọn ra tam thức bậc hai hệ số x² khác 1, tách hạng tử."
+ },
+ {
+  "ma_cau": "T108000000355",
+  "dang_bai_id": "NDB00973",
+  "chac": "cao",
+  "ly_do": "Rút gọn có bình phương tổng, hiệu và nhân hai đa thức."
+ },
+ {
+  "ma_cau": "T108000000734",
+  "dang_bai_id": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Tính E+F, E-F, F-E: cộng trừ đa thức."
+ },
+ {
+  "ma_cau": "T108030101148",
+  "dang_bai_id": "NDB00472",
+  "chac": "cao",
+  "ly_do": "Đảo dấu 4-x để rút nhân tử chung là đa thức (x-4)."
+ }
+]

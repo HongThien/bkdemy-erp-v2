@@ -1,0 +1,158 @@
+[
+ {
+  "ma_cau": "T108000000611",
+  "dang_bai_id": "NDB00973",
+  "chac": "cao",
+  "ly_do": "Rút gọn có tích (x+2y)(x-2y) là hiệu hai bình phương."
+ },
+ {
+  "ma_cau": "T108020702008",
+  "dang_bai_id": "NDB00469",
+  "chac": "vua",
+  "ly_do": "Biến đổi về 1/a+1/b+1/c=0 rồi dùng a³+b³+c³=3abc; có thể là dạng phân thức NDB00466."
+ },
+ {
+  "ma_cau": "T108000000384",
+  "dang_bai_id": "NDB00698",
+  "chac": "cao",
+  "ly_do": "GTNN hai biến, tách (2x-y+1)²+(y-3)²: bình phương 3 số + 1 bình phương."
+ },
+ {
+  "ma_cau": "T108000000123",
+  "dang_bai_id": "NDB00673",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đơn thức."
+ },
+ {
+  "ma_cau": "T108000000657",
+  "dang_bai_id": "NDB00974",
+  "chac": "cao",
+  "ly_do": "Tìm x dùng hiệu hai bình phương, x³ và x² triệt tiêu về bậc nhất."
+ },
+ {
+  "ma_cau": "T108000000169",
+  "dang_bai_id": "NDB00692",
+  "chac": "cao",
+  "ly_do": "Viết 4x²-9y² thành tích theo hiệu hai bình phương."
+ },
+ {
+  "ma_cau": "T108020502007",
+  "dang_bai_id": "NDB00972",
+  "chac": "cao",
+  "ly_do": "Rút gọn bằng hiệu hai lập phương rồi thay số."
+ },
+ {
+  "ma_cau": "T108000000685",
+  "dang_bai_id": "NDB00697",
+  "chac": "vua",
+  "ly_do": "GTNN hai biến dạng (x-2y)²+(y-1)²; hệ số khác 1, có thể là NDB00698."
+ },
+ {
+  "ma_cau": "T108000000404",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Chia đa thức cho đơn thức."
+ },
+ {
+  "ma_cau": "T108000000725",
+  "dang_bai_id": "NDB00675",
+  "chac": "cao",
+  "ly_do": "Nhân đa thức với đa thức."
+ },
+ {
+  "ma_cau": "T108030301068",
+  "dang_bai_id": "NDB00976",
+  "chac": "cao",
+  "ly_do": "Nhóm hạng tử rồi đặt nhân tử chung (x-y), không dùng hằng đẳng thức."
+ },
+ {
+  "ma_cau": "T108000000216",
+  "dang_bai_id": "NDB00664",
+  "chac": "cao",
+  "ly_do": "Nhận biết biểu thức không phải đơn thức."
+ },
+ {
+  "ma_cau": "T108030101126",
+  "dang_bai_id": "NDB00472",
+  "chac": "cao",
+  "ly_do": "Đặt 6x+9=3(2x+3) rồi rút nhân tử chung là đa thức."
+ },
+ {
+  "ma_cau": "T108000000267",
+  "dang_bai_id": "NDB00672",
+  "chac": "cao",
+  "ly_do": "Tìm đa thức M chưa biết bằng cộng trừ đa thức."
+ },
+ {
+  "ma_cau": "T108000000666",
+  "dang_bai_id": "NDB00681",
+  "chac": "cao",
+  "ly_do": "Rút gọn nhiều biến có chia đa thức cho đơn thức và nhân đa thức."
+ },
+ {
+  "ma_cau": "T108030201037",
+  "dang_bai_id": "NDB00977",
+  "chac": "cao",
+  "ly_do": "Gom 3 hạng tử thành bình phương rồi hiệu hai bình phương."
+ },
+ {
+  "ma_cau": "T108000000541",
+  "dang_bai_id": "NDB00671",
+  "chac": "cao",
+  "ly_do": "Cộng trừ các đơn thức đồng dạng."
+ },
+ {
+  "ma_cau": "T108000000440",
+  "dang_bai_id": "NDB00674",
+  "chac": "cao",
+  "ly_do": "Nhân đơn thức với đa thức."
+ },
+ {
+  "ma_cau": "T108000000785",
+  "dang_bai_id": "NDB00677",
+  "chac": "cao",
+  "ly_do": "Chia đa thức cho đơn thức."
+ },
+ {
+  "ma_cau": "T108000000524",
+  "dang_bai_id": "NDB00667",
+  "chac": "cao",
+  "ly_do": "Nhóm các đơn thức đồng dạng."
+ },
+ {
+  "ma_cau": "T108000000294",
+  "dang_bai_id": "NDB00971",
+  "chac": "vua",
+  "ly_do": "Tính x²-y² từ x+y và x-y; có thể là NDB00692 (hiệu hai bình phương viết thành tích)."
+ },
+ {
+  "ma_cau": "T108000000562",
+  "dang_bai_id": "NDB00682",
+  "chac": "cao",
+  "ly_do": "Thu gọn B=1-2x rồi thay x=501 (biểu thức một biến)."
+ },
+ {
+  "ma_cau": "T108000000396",
+  "dang_bai_id": "NDB00667",
+  "chac": "cao",
+  "ly_do": "Tìm đơn thức đồng dạng."
+ },
+ {
+  "ma_cau": "T108000000788",
+  "dang_bai_id": "NDB00681",
+  "chac": "cao",
+  "ly_do": "Chứng minh không phụ thuộc biến bằng nhân đa thức rồi thu gọn."
+ },
+ {
+  "ma_cau": "T108000000035",
+  "dang_bai_id": "NDB00681",
+  "chac": "cao",
+  "ly_do": "Rút gọn nhiều biến có chia đa thức cho đơn thức và nhân đa thức."
+ },
+ {
+  "ma_cau": "T108000000134",
+  "dang_bai_id": "NDB00681",
+  "chac": "cao",
+  "ly_do": "Rút gọn nhiều biến bằng nhân đơn thức với đa thức."
+ }
+]
