@@ -77609,3 +77609,8 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **[App HS · mở dạng cho Đào Minh Quân 4T1] (23/10)** Thùy: mở chủ đề Bài toán tổng hiệu (T14T08). Làm: thêm bảng `hs_mo_dang` + `_hs_dang_da_hoc` cộng dạng mở riêng (mig 202610231852 ĐÃ ÁP), mở T14T080101–04. **Sai hướng:** đo lại thì 4 dạng này VỐN ĐÃ MỞ (lớp có số đo) — khoá thật là KHO: 148 câu đều `tra_loi_ngan`, 0 câu qua `_kho_dk_online_hs_sql` (106 câu có form TN nhưng form CHƯA duyệt, 22 câu chưa có form, 20 câu chưa vào kho chuẩn) ⇒ app HS không có câu nào. Chờ Thùy: duyệt form TN / bỏ bảng hs_mo_dang.
 
 - **[Bản xuất DỌC chữ nhỏ lại — Thùy 23/10]** "Dọc thì chữ đang to quá": khuôn dọc 30F/cột tên 9F ⇒ ~14pt trên A4. Đổi thành tối thiểu 48F, tên 12F, cột chuyên đề 4,2F (≈11pt), tên em gọn 1 dòng. Đề KS K9 52 HS: PDF dọc 5 ⇒ 3 trang. Bản ngang giữ nguyên.
+
+## 23/10 (đêm) — Nông trại: MỞ CHO MỌI LỚP (Thùy: "release game đi")
+- **Trước khi mở:** kiểm production (`hs.bkacademy.edu.vn`): `games/nong-trai/assets/thu-cung/thu-cung.js` 200 (1000622 B) · `games/nong-trai/js/data.js` có "TẠM BỎ bonus" (client = server bonus [0,0]) · bundle `assets/hs-*.js` có chữ "Nông trại BK đã mở" (LocMoGame đã deploy).
+- **Mở:** `update tinh_nang set mo_tu = (now() at time zone 'Asia/Ho_Chi_Minh')::date where ma in ('tro_choi','nong_trai')` bằng `claude_build` (trigger ghi `tinh_nang_log`). Kiểm lại: `nt_cau_hinh` bat=true, 30 phút/ngày, ≤4 xu/ngày, ≤20 xu/tháng. `fn_hs_tinh_nang_mo`: mở nếu `mo_tu ≤ hôm nay (giờ VN)` trừ lớp có override.
+- **Chưa làm / theo dõi:** mở ngay nên chưa có số liệu học sinh thật; xem HANDOFF ① mục "ĐÃ MỞ" cho danh sách bảng cần nhìn ngày đầu. Hoàn tác = đặt mo_tu null.
