@@ -1,0 +1,602 @@
+[
+ {
+  "ma_cau": "T310000000220",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "2 véc tơ bằng nhau, đếm điểm M"
+ },
+ {
+  "ma_cau": "T310000000221",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "đáp án đúng dùng hiệu và tổng; hiệu đứng sau"
+ },
+ {
+  "ma_cau": "T310000000222",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "dùng M trung điểm (BM=MC) để cộng; tổng/trung điểm"
+ },
+ {
+  "ma_cau": "T310000000223",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng |AB+AC| tam giác đều"
+ },
+ {
+  "ma_cau": "T310000000224",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng AD+AB hình vuông"
+ },
+ {
+  "ma_cau": "T310000000225",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "quy tắc trừ AB−AC"
+ },
+ {
+  "ma_cau": "T310000000226",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "tổng nhiều véc tơ qua quy tắc 3 điểm"
+ },
+ {
+  "ma_cau": "T310000000227",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "tổng và hiệu CB+AB−DB; hiệu đứng sau"
+ },
+ {
+  "ma_cau": "T310000000228",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "tổng nhiều véc tơ về điểm O bất kì"
+ },
+ {
+  "ma_cau": "T310000000229",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "đáp án sai có hiệu AB+CB−AC"
+ },
+ {
+  "ma_cau": "T310000000230",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "đáp án sai kiểm bằng hiệu OA−OD..."
+ },
+ {
+  "ma_cau": "T310000000231",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "quy tắc hình bình hành BA+BC=BD"
+ },
+ {
+  "ma_cau": "T310000000232",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "hiệu PQ−PH"
+ },
+ {
+  "ma_cau": "T310000000233",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "điều kiện trung điểm IA+IB=0"
+ },
+ {
+  "ma_cau": "T310000000234",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "4 mệnh đề dùng trung điểm; đáp án sai rút bằng trung điểm"
+ },
+ {
+  "ma_cau": "T310000000235",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng tính chất phép cộng véc tơ (giao hoán, kết hợp, véc tơ đối)"
+ },
+ {
+  "ma_cau": "T310000000236",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "điều kiện trung điểm MB+MC=0"
+ },
+ {
+  "ma_cau": "T310000000237",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "điều kiện trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000238",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "đáp án đúng DC+BG=AB+BG=AG (bằng nhau + tổng)"
+ },
+ {
+  "ma_cau": "T310000000239",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "M thỏa CM−CB=AB+AD; hiệu/tổng"
+ },
+ {
+  "ma_cau": "T310000000240",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "hiệu OB−DC"
+ },
+ {
+  "ma_cau": "T310000000241",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "độ dài GA+GC = 2GI, có tích với số"
+ },
+ {
+  "ma_cau": "T310000000242",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "ba lực cân bằng, đề đủ dữ kiện"
+ },
+ {
+  "ma_cau": "T310000000243",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "tổng và hiệu MN+PQ+NP−MP"
+ },
+ {
+  "ma_cau": "T310000000244",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "đáp án đúng |DC+CA|=a"
+ },
+ {
+  "ma_cau": "T310000000245",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "đẳng thức tổng 4 điểm, quy tắc 3 điểm"
+ },
+ {
+  "ma_cau": "T310000000246",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "MB+MC=AB suy ra M trung điểm AC"
+ },
+ {
+  "ma_cau": "T310000000247",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "M,N,P trung điểm, MP+NP=AP dùng trung điểm"
+ },
+ {
+  "ma_cau": "T310000000248",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "hiệu OB−OC"
+ },
+ {
+  "ma_cau": "T310000000249",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "đẳng thức hiệu 4 điểm"
+ },
+ {
+  "ma_cau": "T310000000250",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "tổng DC+AB+BD xác định điểm M"
+ },
+ {
+  "ma_cau": "T310000000251",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng AB+AD hình vuông"
+ },
+ {
+  "ma_cau": "T310000000281",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "hợp lực hai lực góc 60°"
+ },
+ {
+  "ma_cau": "T310000000282",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "ba lực cân bằng; dạng sau thắng 914"
+ },
+ {
+  "ma_cau": "T310000000283",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài |CA−HC| tam giác đều"
+ },
+ {
+  "ma_cau": "T310000000284",
+  "dang_bai_id": "NDB00916",
+  "chac": "vua",
+  "ly_do": "ba lực cân bằng nhưng góc chỉ có trong hình"
+ },
+ {
+  "ma_cau": "T310000000285",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng ba véc tơ trong hình thang vuông"
+ },
+ {
+  "ma_cau": "T310000000286",
+  "dang_bai_id": "NDB00914",
+  "chac": "cao",
+  "ly_do": "bài thực tế trọng lực, kéo pháo lên dốc"
+ },
+ {
+  "ma_cau": "T310000000287",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài AB+AD hình chữ nhật"
+ },
+ {
+  "ma_cau": "T310000000288",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "hợp lực hai lực vuông góc"
+ },
+ {
+  "ma_cau": "T310000000289",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng hiệu véc tơ tam giác đều"
+ },
+ {
+  "ma_cau": "T310000000290",
+  "dang_bai_id": "NDB00917",
+  "chac": "cao",
+  "ly_do": "cộng vận tốc ca nô và dòng nước"
+ },
+ {
+  "ma_cau": "T310000000291",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài BC−BA dùng định lý cosin"
+ },
+ {
+  "ma_cau": "T310000000292",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "ba lực cân bằng"
+ },
+ {
+  "ma_cau": "T310000000293",
+  "dang_bai_id": "NDB00912",
+  "chac": "vua",
+  "ly_do": "độ dài GB+GC với trọng tâm; đáp án 0,33 có vẻ sai (3,33)"
+ },
+ {
+  "ma_cau": "T310000000294",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài BC−BA tam giác vuông"
+ },
+ {
+  "ma_cau": "T310000000295",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "hợp lực hai người kéo vuông góc"
+ },
+ {
+  "ma_cau": "T310000000296",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "hợp lực hai lực góc 60°"
+ },
+ {
+  "ma_cau": "T310000000297",
+  "dang_bai_id": "NDB00917",
+  "chac": "cao",
+  "ly_do": "vận tốc ca nô so với bờ"
+ },
+ {
+  "ma_cau": "T310000000298",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "hợp lực hai lực góc 60°"
+ },
+ {
+  "ma_cau": "T310000000299",
+  "dang_bai_id": "NDB00917",
+  "chac": "cao",
+  "ly_do": "vận tốc thuyền so với bờ"
+ },
+ {
+  "ma_cau": "T310000000300",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng AB+AO hình thoi"
+ },
+ {
+  "ma_cau": "T310000000301",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài véc tơ tổng hiệu hình vuông"
+ },
+ {
+  "ma_cau": "T310000000302",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng hiệu hình thang"
+ },
+ {
+  "ma_cau": "T310000000303",
+  "dang_bai_id": "NDB00915",
+  "chac": "vua",
+  "ly_do": "hợp lực hai lực nhưng góc chỉ có trong hình"
+ },
+ {
+  "ma_cau": "T310000000304",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng hiệu OC+CH−MH"
+ },
+ {
+  "ma_cau": "T310000000305",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng hiệu AB−IM+BM"
+ },
+ {
+  "ma_cau": "T310000000306",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "hợp lực hai lực góc 60°"
+ },
+ {
+  "ma_cau": "T310000000307",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "độ dài GB+GC+AG với trọng tâm; dạng sau thắng"
+ },
+ {
+  "ma_cau": "T310000000308",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "hợp lực hai lực góc 60°"
+ },
+ {
+  "ma_cau": "T310000000309",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài AB+DB hình vuông"
+ },
+ {
+  "ma_cau": "T310000000310",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "đèn treo cân bằng: trọng lực và hai lực căng"
+ },
+ {
+  "ma_cau": "T310000000311",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "ba lực cân bằng"
+ },
+ {
+  "ma_cau": "T310000000312",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài AB+AD hình vuông"
+ },
+ {
+  "ma_cau": "T310000000313",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "hợp lực hai lực góc 60°"
+ },
+ {
+  "ma_cau": "T310000000314",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng hiệu tam giác đều"
+ },
+ {
+  "ma_cau": "T310000000315",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "độ dài GA+GC với trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000316",
+  "dang_bai_id": "NDB01401",
+  "chac": "cao",
+  "ly_do": "max |MA+MB−MC| với M trên đường tròn"
+ },
+ {
+  "ma_cau": "T310000000317",
+  "dang_bai_id": "NDB00915",
+  "chac": "vua",
+  "ly_do": "hợp lực hai ròng rọc dọc bờ, cần phân tích thành phần"
+ },
+ {
+  "ma_cau": "T310000000318",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài AB+CB tam giác đều"
+ },
+ {
+  "ma_cau": "T310000000319",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "ba lực cân bằng góc 135°"
+ },
+ {
+  "ma_cau": "T310000000320",
+  "dang_bai_id": "NDB00915",
+  "chac": "cao",
+  "ly_do": "hợp lực hai lực góc 60°"
+ },
+ {
+  "ma_cau": "T310000000321",
+  "dang_bai_id": "NDB00915",
+  "chac": "vua",
+  "ly_do": "F=F1+F2 máy bay; hướng lực chỉ có trong hình"
+ },
+ {
+  "ma_cau": "T310000000322",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài tổng hiệu hình thang"
+ },
+ {
+  "ma_cau": "T310000000323",
+  "dang_bai_id": "NDB00906",
+  "chac": "cao",
+  "ly_do": "độ dài AB−AC tam giác vuông"
+ },
+ {
+  "ma_cau": "T310000000324",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "ba lực cân bằng"
+ },
+ {
+  "ma_cau": "T310000000325",
+  "dang_bai_id": "NDB00912",
+  "chac": "cao",
+  "ly_do": "độ dài GB+GC+AG với trọng tâm"
+ },
+ {
+  "ma_cau": "T310000000326",
+  "dang_bai_id": "NDB01401",
+  "chac": "vua",
+  "ly_do": "max MH với điều kiện véc tơ; gần cực trị, quỹ tích"
+ },
+ {
+  "ma_cau": "T310000000327",
+  "dang_bai_id": "NDB00915",
+  "chac": "vua",
+  "ly_do": "hai người kéo khối gỗ; góc chỉ có trong hình"
+ },
+ {
+  "ma_cau": "T310000000328",
+  "dang_bai_id": "NDB00917",
+  "chac": "cao",
+  "ly_do": "vận tốc tàu so với bờ"
+ },
+ {
+  "ma_cau": "T310000000329",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "hệ cân bằng: xe quái vật cân hợp lực hai xe"
+ },
+ {
+  "ma_cau": "T310000000330",
+  "dang_bai_id": "NDB00916",
+  "chac": "vua",
+  "ly_do": "ba lực cân bằng; góc chỉ có trong hình"
+ },
+ {
+  "ma_cau": "T310000000331",
+  "dang_bai_id": "NDB00916",
+  "chac": "vua",
+  "ly_do": "ba lực không đứng yên, hợp lực F1+F2+F3; giữa 915 và 916"
+ },
+ {
+  "ma_cau": "T310000000332",
+  "dang_bai_id": "NDB00916",
+  "chac": "vua",
+  "ly_do": "ba lực cân bằng; góc chỉ có trong hình"
+ },
+ {
+  "ma_cau": "T310000000333",
+  "dang_bai_id": "NDB00916",
+  "chac": "cao",
+  "ly_do": "vật treo cân bằng bởi hai cáp"
+ },
+ {
+  "ma_cau": "T310000000334",
+  "dang_bai_id": "NDB00903",
+  "chac": "cao",
+  "ly_do": "a+b=0 là hai véc tơ đối nhau"
+ },
+ {
+  "ma_cau": "T310000000335",
+  "dang_bai_id": "NDB00904",
+  "chac": "cao",
+  "ly_do": "tổng hai véc tơ trong hình bình hành"
+ },
+ {
+  "ma_cau": "T310000000336",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "hiệu hai véc tơ với trung điểm"
+ },
+ {
+  "ma_cau": "T310000000337",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "I trung điểm ⇔ IA=−IB; đề viết IA=IB (có lỗi)"
+ },
+ {
+  "ma_cau": "T310000000338",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "chứng minh đẳng thức với trung điểm, giữa 904 và 907"
+ },
+ {
+  "ma_cau": "T310000000339",
+  "dang_bai_id": "NDB00907",
+  "chac": "cao",
+  "ly_do": "O là trọng tâm: OA+OB+OC=0"
+ },
+ {
+  "ma_cau": "T310000000340",
+  "dang_bai_id": "NDB00907",
+  "chac": "vua",
+  "ly_do": "chứng minh với ba trung điểm; giữa 904/905/907"
+ },
+ {
+  "ma_cau": "T310000000341",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "chứng minh đẳng thức tổng hiệu hình bình hành"
+ },
+ {
+  "ma_cau": "T310000000342",
+  "dang_bai_id": "NDB00905",
+  "chac": "vua",
+  "ly_do": "chứng minh đẳng thức hbh, ý b khó phân loại"
+ },
+ {
+  "ma_cau": "T310000000343",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "chứng minh đẳng thức tổng hiệu 5 điểm"
+ },
+ {
+  "ma_cau": "T310000000344",
+  "dang_bai_id": "NDB00904",
+  "chac": "vua",
+  "ly_do": "tổng 5 véc tơ ngũ giác đều bằng 0 dùng đối xứng"
+ },
+ {
+  "ma_cau": "T310000000345",
+  "dang_bai_id": "NDB00905",
+  "chac": "cao",
+  "ly_do": "chứng minh đẳng thức hiệu 6 điểm"
+ },
+ {
+  "ma_cau": "T310000000346",
+  "dang_bai_id": "NDB00905",
+  "chac": "vua",
+  "ly_do": "lục giác đều: ý a tổng, ý b dùng hiệu"
+ },
+ {
+  "ma_cau": "T310000000347",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: xác định điểm M thỏa đẳng thức véc tơ (không tọa độ)"
+ },
+ {
+  "ma_cau": "T310000000348",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: xác định điểm M thỏa đẳng thức véc tơ (không tọa độ)"
+ }
+]
