@@ -157,6 +157,8 @@ export type BossAnh = {
   /** có ⇒ MÔ HÌNH dựng bằng khối cơ bản theo thông số này (bossChibi3D.ts); không có cả hai ⇒ tấm ảnh 2D (quaiAnh.ts) */
   mo3d?: MoHinhChibi
   ten: string
+  /** boss CUỐI cốt truyện (vd Thùy Form 2/3): có đủ hoạt ảnh để xem thử/gắn pha, nhưng KHÔNG vào bể boss NGẪU NHIÊN của trận thường (dsBossNgauNhien bỏ qua). */
+  cuoi?: boolean
   /** chiều cao nhân vật trong cảnh 3D (đơn vị thế giới; quái thường ~1.3–1.6) */
   cao: number
   dung: string; noi: string; chieu: string; trung: string; gian: string; ha: string
