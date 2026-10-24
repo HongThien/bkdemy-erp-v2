@@ -77726,3 +77726,7 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - Bỏ dòng thông số (loại · khối · lớp · số HS · ngày xuất) và mọi chú thích (dòng "Đầu cột: CB…", ghi chú cách tính phần trăm) — Thùy: "ẩn đi chứ hiện làm gì cho mệt".
 - Tag đầu cột ghi đủ "Cơ bản"/"Nâng cao" cả bản dọc. Bản dọc: đầu cột "Chủ đề 1 / Chuyên đề 1…" (Thùy: không ghi mỗi số), chú giải "Chủ đề 1: tên…".
 - Verify dev: ảnh dọc + ngang đề KS K9, chế độ Chủ đề.
+
+## 24/10 tối — App HS "Rèn lại điểm yếu" timeout (Thùy báo) — mig 202610242150
+- fn_tu_luyen_sinh_tu_dong 17–92 s/lượt sau khi bật bản đồ mới. Gốc: fn_mastery_cells_moi/_bdm là hàm SQL 1 câu ⇒ Postgres INLINE; điều kiện của người gọi (`_luyen_con_cho_dang(...) > 0` trong `_tu_luyen_chon_dang`) bị đẩy xuống chạy theo từng lượt đo (66 s; tính xong rồi lọc 2 s). Sửa: `alter function … set search_path = public` cho 2 hàm ⇒ không inline được nữa. Sau sửa 1,7–3,5 s mọi khối; phiêu lưu/DS dạng/dạng học tập 1–3 s; đề xuất bổ trợ không đổi (~4,6 s).
+- **Bài học:** hàm SQL trả bảng mà ĐẮT thì chặn inline (SET … hoặc plpgsql) — người gọi thêm 1 điều kiện gọi hàm là planner có thể nhân chi phí lên hàng chục lần. Bật công tắc xong phải đo từng nút HS bấm được, không chỉ màn chính (lần trước đo phiêu lưu/tự luyện mà sót 'Rèn lại điểm yếu').
