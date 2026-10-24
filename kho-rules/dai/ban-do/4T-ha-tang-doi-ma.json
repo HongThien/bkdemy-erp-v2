@@ -1,0 +1,802 @@
+{
+ "ngay": "2026-10-24",
+ "ghi": true,
+ "truoc": {
+  "chu_de": 23,
+  "chuyen_de": 31,
+  "nhom": 77,
+  "dang": 11
+ },
+ "sau": {
+  "chu_de": 6,
+  "chuyen_de": 23,
+  "nhom": 31,
+  "dang": 88
+ },
+ "xoa": {
+  "nhom": 77,
+  "o": 31,
+  "chuyen_de": 31,
+  "chu_de": 23
+ },
+ "doi_ma": {
+  "chu_de_moi": [
+   {
+    "id": "NCD00202",
+    "ten": "Số tự nhiên"
+   },
+   {
+    "id": "NCD00203",
+    "ten": "Hình học"
+   },
+   {
+    "id": "NCD00204",
+    "ten": "Các bài toán Logic"
+   },
+   {
+    "id": "NCD00205",
+    "ten": "Cấu tạo số"
+   },
+   {
+    "id": "NCD00206",
+    "ten": "Các bài toán lời văn"
+   },
+   {
+    "id": "NCD00207",
+    "ten": "Phân số"
+   }
+  ],
+  "chuyen_de": [
+   {
+    "cu": "NCD00112",
+    "moi": "NCH00501",
+    "ten": "Viết số theo điều kiện cho trước",
+    "chu_de_moi": "NCD00202"
+   },
+   {
+    "cu": "NCD00113",
+    "moi": "NCH00502",
+    "ten": "Đếm số và chữ số",
+    "chu_de_moi": "NCD00202"
+   },
+   {
+    "cu": "NCD00114",
+    "moi": "NCH00503",
+    "ten": "Đo lường",
+    "chu_de_moi": "NCD00202"
+   },
+   {
+    "cu": "NCD00115",
+    "moi": "NCH00504",
+    "ten": "Tính toán",
+    "chu_de_moi": "NCD00202"
+   },
+   {
+    "cu": "NCD00120",
+    "moi": "NCH00505",
+    "ten": "Quan hệ đại lượng trong phép toán",
+    "chu_de_moi": "NCD00202"
+   },
+   {
+    "cu": "NCD00116",
+    "moi": "NCH00506",
+    "ten": "Chu vi và diện tích các hình",
+    "chu_de_moi": "NCD00203"
+   },
+   {
+    "cu": "NCD00117",
+    "moi": "NCH00507",
+    "ten": "Dãy số cách đều",
+    "chu_de_moi": "NCD00204"
+   },
+   {
+    "cu": "NCD00118",
+    "moi": "NCH00508",
+    "ten": "Bài toán trồng cây",
+    "chu_de_moi": "NCD00204"
+   },
+   {
+    "cu": "NCD00125",
+    "moi": "NCH00509",
+    "ten": "Rút về đơn vị",
+    "chu_de_moi": "NCD00204"
+   },
+   {
+    "cu": "NCD00126",
+    "moi": "NCH00510",
+    "ten": "Thống kê - Xác suất",
+    "chu_de_moi": "NCD00204"
+   },
+   {
+    "cu": "NCD00134",
+    "moi": "NCH00511",
+    "ten": "TÍnh ngược từ cuối",
+    "chu_de_moi": "NCD00204"
+   },
+   {
+    "cu": "NCD00121",
+    "moi": "NCH00512",
+    "ten": "Dấu hiệu chia hết",
+    "chu_de_moi": "NCD00205"
+   },
+   {
+    "cu": "NCD00122",
+    "moi": "NCH00513",
+    "ten": "Phép chia có dư",
+    "chu_de_moi": "NCD00205"
+   },
+   {
+    "cu": "NCD00123",
+    "moi": "NCH00514",
+    "ten": "Cấu tạo số",
+    "chu_de_moi": "NCD00205"
+   },
+   {
+    "cu": "NCD00119",
+    "moi": "NCH00515",
+    "ten": "Bài toán tổng hiệu",
+    "chu_de_moi": "NCD00206"
+   },
+   {
+    "cu": "NCD00124",
+    "moi": "NCH00516",
+    "ten": "Trung bình cộng",
+    "chu_de_moi": "NCD00206"
+   },
+   {
+    "cu": "NCD00133",
+    "moi": "NCH00517",
+    "ten": "Bài toán tổng tỉ - hiệu tỉ",
+    "chu_de_moi": "NCD00206"
+   },
+   {
+    "cu": "NCD00127",
+    "moi": "NCH00518",
+    "ten": "Phân số",
+    "chu_de_moi": "NCD00207"
+   },
+   {
+    "cu": "NCD00128",
+    "moi": "NCH00519",
+    "ten": "So sánh phân số",
+    "chu_de_moi": "NCD00207"
+   },
+   {
+    "cu": "NCD00129",
+    "moi": "NCH00520",
+    "ten": "Các phép tính cơ bản với phân số",
+    "chu_de_moi": "NCD00207"
+   },
+   {
+    "cu": "NCD00130",
+    "moi": "NCH00521",
+    "ten": "Bài toán về dãy phân số",
+    "chu_de_moi": "NCD00207"
+   },
+   {
+    "cu": "NCD00131",
+    "moi": "NCH00522",
+    "ten": "Giá trị phân số của một số",
+    "chu_de_moi": "NCD00207"
+   },
+   {
+    "cu": "NCD00132",
+    "moi": "NCH00523",
+    "ten": "Tìm một số khi biết giá trị phân số",
+    "chu_de_moi": "NCD00207"
+   }
+  ],
+  "nhom": [
+   {
+    "cu": "NCH00358",
+    "moi": "NNB01708",
+    "ten": "Viết số khi biết số chữ số"
+   },
+   {
+    "cu": "NCH00359",
+    "moi": "NNB01709",
+    "ten": "Đếm số các số tạo ra từ các chữ số khác 0"
+   },
+   {
+    "cu": "NCH00360",
+    "moi": "NNB01710",
+    "ten": "Đổi đơn vị"
+   },
+   {
+    "cu": "NCH00361",
+    "moi": "NNB01711",
+    "ten": "Nhân số có nhiều chữ số"
+   },
+   {
+    "cu": "NCH00362",
+    "moi": "NNB01712",
+    "ten": "Chia số có nhiều chữ số"
+   },
+   {
+    "cu": "NCH00367",
+    "moi": "NNB01713",
+    "ten": "Quan hệ các đại lượng trong phép cộng"
+   },
+   {
+    "cu": "NCH00363",
+    "moi": "NNB01714",
+    "ten": "Chu vi các hình"
+   },
+   {
+    "cu": "NCH00364",
+    "moi": "NNB01715",
+    "ten": "Dãy số cách đều"
+   },
+   {
+    "cu": "NCH00365",
+    "moi": "NNB01716",
+    "ten": "Bài toán trồng cây trên đường thẳng"
+   },
+   {
+    "cu": "NCH00372",
+    "moi": "NNB01717",
+    "ten": "Rút về đơn vị một đại lượng"
+   },
+   {
+    "cu": "NCH00373",
+    "moi": "NNB01718",
+    "ten": "Thống kê"
+   },
+   {
+    "cu": "NCH00388",
+    "moi": "NNB01719",
+    "ten": "Tìm số  ban đầu trong chuỗi phép tính"
+   },
+   {
+    "cu": "NCH00368",
+    "moi": "NNB01720",
+    "ten": "Ứng dụng tính chất chia hết"
+   },
+   {
+    "cu": "NCH00369",
+    "moi": "NNB01721",
+    "ten": "Ứng dụng dấu hiệu chia hết - chia có dư"
+   },
+   {
+    "cu": "NCH00370",
+    "moi": "NNB01722",
+    "ten": "Viết thêm chữ số"
+   },
+   {
+    "cu": "NCH00366",
+    "moi": "NNB01723",
+    "ten": "Bài toán tổng hiệu có ẩn đại lượng"
+   },
+   {
+    "cu": "NCH00371",
+    "moi": "NNB01724",
+    "ten": "Trung bình cộng của một nhóm"
+   },
+   {
+    "cu": "NCH00385",
+    "moi": "NNB01725",
+    "ten": "Bài toán tổng tỉ - hiệu tỉ có đại lượng cố định"
+   },
+   {
+    "cu": "NCH00386",
+    "moi": "NNB01726",
+    "ten": "Bài toán tỉ số có nhiều đại lượng"
+   },
+   {
+    "cu": "NCH00387",
+    "moi": "NNB01727",
+    "ten": "Bài toán tỉ số có sự thay đổi đại lượng"
+   },
+   {
+    "cu": "NCH00374",
+    "moi": "NNB01728",
+    "ten": "Quy đồng phân số"
+   },
+   {
+    "cu": "NCH00375",
+    "moi": "NNB01729",
+    "ten": "Rút gọn phân số"
+   },
+   {
+    "cu": "NCH00376",
+    "moi": "NNB01730",
+    "ten": "So sánh phân số trực tiếp"
+   },
+   {
+    "cu": "NCH00377",
+    "moi": "NNB01731",
+    "ten": "So sánh phân số gián tiếp"
+   },
+   {
+    "cu": "NCH00378",
+    "moi": "NNB01732",
+    "ten": "Cộng trừ phân số"
+   },
+   {
+    "cu": "NCH00379",
+    "moi": "NNB01733",
+    "ten": "Phép nhân phân số"
+   },
+   {
+    "cu": "NCH00380",
+    "moi": "NNB01734",
+    "ten": "Phép chia phân số"
+   },
+   {
+    "cu": "NCH00381",
+    "moi": "NNB01735",
+    "ten": "Dãy phân số dạng tích"
+   },
+   {
+    "cu": "NCH00382",
+    "moi": "NNB01736",
+    "ten": "Dãy phân số dạng Hiệu - tích"
+   },
+   {
+    "cu": "NCH00383",
+    "moi": "NNB01737",
+    "ten": "Giá trị phân số của một số"
+   },
+   {
+    "cu": "NCH00384",
+    "moi": "NNB01738",
+    "ten": "Tìm đại lượng khi biết giá trị của phân số của đại lượng đó"
+   }
+  ],
+  "dang": [
+   {
+    "cu_nhom": "NNB01284",
+    "moi": "NDB01506",
+    "ten": "Viết số tự nhiên lớn nhất khi biết tổng chữ số và số chữ số"
+   },
+   {
+    "cu_nhom": "NNB01285",
+    "moi": "NDB01507",
+    "ten": "Viết số tự nhiên lớn nhất khi biết tích các chữ số và số chữ số"
+   },
+   {
+    "cu_nhom": "NNB01286",
+    "moi": "NDB01508",
+    "ten": "Viết số tự nhiên lớn nhất  khi biết tổng chữ số"
+   },
+   {
+    "cu_nhom": "NNB01287",
+    "moi": "NDB01509",
+    "ten": "Viết số tự nhiên lớn nhất - nhỏ nhất khi biết số chữ số"
+   },
+   {
+    "cu_nhom": "NNB01288",
+    "moi": "NDB01510",
+    "ten": "Viết số tự nhiên nhỏ nhất khi biết tổng chữ số và số chữ số"
+   },
+   {
+    "cu_nhom": "NNB01289",
+    "moi": "NDB01511",
+    "ten": "Viết số tự nhiên nhỏ nhất khi biết tổng các chữ số"
+   },
+   {
+    "cu_nhom": "NNB01290",
+    "moi": "NDB01512",
+    "ten": "Viết số lớn nhất - nhỏ nhất từ các chữ số cho trước"
+   },
+   {
+    "cu_nhom": "NNB01291",
+    "moi": "NDB01513",
+    "ten": "Đếm số các số tạo ra từ các chữ số khác 0 không có điều kiện"
+   },
+   {
+    "cu_nhom": "NNB01292",
+    "moi": "NDB01514",
+    "ten": "Đếm các số tạo ra từ các chữ số có chữ số 0"
+   },
+   {
+    "cu_nhom": "NNB01293",
+    "moi": "NDB01515",
+    "ten": "Đếm các số lập từ các chữ số có điều kiện"
+   },
+   {
+    "cu_nhom": "NNB01294",
+    "moi": "NDB01516",
+    "ten": "Đổi đơn vị đo khối lượng"
+   },
+   {
+    "cu_nhom": "NNB01295",
+    "moi": "NDB01517",
+    "ten": "Nhân các số có nhiều chữ số sử dụng tính chất phép nhân"
+   },
+   {
+    "cu_nhom": "NNB01296",
+    "moi": "NDB01518",
+    "ten": "Nhân số có nhiều chữ số sử dụng đặt tính"
+   },
+   {
+    "cu_nhom": "NNB01297",
+    "moi": "NDB01519",
+    "ten": "Tính thuận tiện sử dụng tính chất phân phối của phép nhân với phép cộng trừ"
+   },
+   {
+    "cu_nhom": "NNB01298",
+    "moi": "NDB01520",
+    "ten": "Chia số có 2 chữ số"
+   },
+   {
+    "cu_nhom": "NNB01307",
+    "moi": "NDB01521",
+    "ten": "Thay đổi đại lượng trong phép cộng"
+   },
+   {
+    "cu_nhom": "NNB01299",
+    "moi": "NDB01522",
+    "ten": "Tính chu vi các hình - dạng cơ bản"
+   },
+   {
+    "cu_nhom": "NNB01300",
+    "moi": "NDB01523",
+    "ten": "Tìm số hạng thứ n"
+   },
+   {
+    "cu_nhom": "NNB01301",
+    "moi": "NDB01524",
+    "ten": "Tính số số hạng của dãy số"
+   },
+   {
+    "cu_nhom": "NNB01302",
+    "moi": "NDB01525",
+    "ten": "Tổng của dãy số cách đều"
+   },
+   {
+    "cu_nhom": "NNB01303",
+    "moi": "NDB01526",
+    "ten": "Tìm vị trí của một số trong dãy số ?"
+   },
+   {
+    "cu_nhom": "NNB01304",
+    "moi": "NDB01527",
+    "ten": "Bài toán trồng cây trên đường thẳng"
+   },
+   {
+    "cu_nhom": "NNB01305",
+    "moi": "NDB01528",
+    "ten": "Bài toán trồng cây khép kín"
+   },
+   {
+    "cu_nhom": "NNB01318",
+    "moi": "NDB01529",
+    "ten": "Rút về đơn vị một đại lượng"
+   },
+   {
+    "cu_nhom": "NNB01319",
+    "moi": "NDB01530",
+    "ten": "Xác định các đại lượng cơ bản của thống kê"
+   },
+   {
+    "cu_nhom": "NNB01360",
+    "moi": "NDB01531",
+    "ten": "Tìm số  ban đầu trong chuỗi phép tính"
+   },
+   {
+    "cu_nhom": "NNB01308",
+    "moi": "NDB01532",
+    "ten": "Nhận biết số có tính chất chia hết"
+   },
+   {
+    "cu_nhom": "NNB01309",
+    "moi": "NDB01533",
+    "ten": "Tìm chữ số để số đó chia hết cho 2,3,5,9"
+   },
+   {
+    "cu_nhom": "NNB01310",
+    "moi": "NDB01534",
+    "ten": "Lập số từ các chữ số để chia hết cho 2,3,5,9"
+   },
+   {
+    "cu_nhom": "NNB01311",
+    "moi": "NDB01535",
+    "ten": "Nhận biết số chia có dư theo điều kiện"
+   },
+   {
+    "cu_nhom": "NNB01312",
+    "moi": "NDB01536",
+    "ten": "Tìm số thỏa mãn điều kiện chia có dư"
+   },
+   {
+    "cu_nhom": "NNB01313",
+    "moi": "NDB01537",
+    "ten": "Tìm số lượng các số chia hết - chia có dư trong dãy số tự nhiên"
+   },
+   {
+    "cu_nhom": "NNB01314",
+    "moi": "NDB01538",
+    "ten": "Bài toán về dãy đối tượng lặp lại"
+   },
+   {
+    "cu_nhom": "NNB01315",
+    "moi": "NDB01539",
+    "ten": "Tìm số tự nhiên khi biết điều kiện chia cho nhiều số khác nhau"
+   },
+   {
+    "cu_nhom": "NNB01316",
+    "moi": "NDB01540",
+    "ten": "Viết thêm chữ số vào bên trái số cho trước"
+   },
+   {
+    "cu_nhom": "NNB01306",
+    "moi": "NDB01541",
+    "ten": "Bài toán tổng hiệu cơ bản"
+   },
+   {
+    "cu_nhom": "NNB01317",
+    "moi": "NDB01542",
+    "ten": "Tính trung bình cộng của một nhóm"
+   },
+   {
+    "cu_nhom": "NNB01351",
+    "moi": "NDB01543",
+    "ten": "Bài toán tổng tỉ - hiệu tỉ cơ bản"
+   },
+   {
+    "cu_nhom": "NNB01352",
+    "moi": "NDB01544",
+    "ten": "Bài toán tổng tỉ - hiệu tỉ ẩn tổng"
+   },
+   {
+    "cu_nhom": "NNB01353",
+    "moi": "NDB01545",
+    "ten": "Bài toán tổng tỉ - hiệu tỉ ẩn hiệu"
+   },
+   {
+    "cu_nhom": "NNB01354",
+    "moi": "NDB01546",
+    "ten": "Bài toán tổng tỉ - hiệu tỉ ẩn tỉ số"
+   },
+   {
+    "cu_nhom": "NNB01355",
+    "moi": "NDB01547",
+    "ten": "Bài toán tỉ số nhiều đại lượng - Quy về đại lượng nhỏ nhất"
+   },
+   {
+    "cu_nhom": "NNB01356",
+    "moi": "NDB01548",
+    "ten": "Bài toán tỉ số nhiều đại lượng - Có tỉ số đôi một của các đại lượng"
+   },
+   {
+    "cu_nhom": "NNB01357",
+    "moi": "NDB01549",
+    "ten": "Bài toán tỉ số nhiều đại lượng - Cho phân số của các đại lượng bằng nhau"
+   },
+   {
+    "cu_nhom": "NNB01358",
+    "moi": "NDB01550",
+    "ten": "Bài toán tỉ số có sự thay đổi đại lượng - Chuyển giữa các đại lượng"
+   },
+   {
+    "cu_nhom": "NNB01359",
+    "moi": "NDB01551",
+    "ten": "Bài toán tỉ số có sự thay đổi đại lượng - Tăng giảm các đại lượng"
+   },
+   {
+    "cu_nhom": "NNB01320",
+    "moi": "NDB01552",
+    "ten": "Quy đồng mẫu số 2 phân số"
+   },
+   {
+    "cu_nhom": "NNB01321",
+    "moi": "NDB01553",
+    "ten": "Quy đồng tử số 2 phân số"
+   },
+   {
+    "cu_nhom": "NNB01322",
+    "moi": "NDB01554",
+    "ten": "Quy đồng mẫu số nhiều phân số"
+   },
+   {
+    "cu_nhom": "NNB01323",
+    "moi": "NDB01555",
+    "ten": "Rút gọn phân số dạng chuẩn"
+   },
+   {
+    "cu_nhom": "NNB01324",
+    "moi": "NDB01556",
+    "ten": "Rút gọn phân số dạng đặc biệt"
+   },
+   {
+    "cu_nhom": "NNB01325",
+    "moi": "NDB01557",
+    "ten": "So sánh phân số bằng quy đồng mẫu số"
+   },
+   {
+    "cu_nhom": "NNB01326",
+    "moi": "NDB01558",
+    "ten": "So sánh phân số bằng quy đồng tử số"
+   },
+   {
+    "cu_nhom": "NNB01327",
+    "moi": "NDB01559",
+    "ten": "So sánh phân số bằng cách so sánh với 1"
+   },
+   {
+    "cu_nhom": "NNB01328",
+    "moi": "NDB01560",
+    "ten": "So sánh phân số bằng phân số trung gian"
+   },
+   {
+    "cu_nhom": "NNB01329",
+    "moi": "NDB01561",
+    "ten": "So sánh phân số bằng phương pháp phần bù"
+   },
+   {
+    "cu_nhom": "NNB01330",
+    "moi": "NDB01562",
+    "ten": "So sánh phân số bằng phương pháp phần bù"
+   },
+   {
+    "cu_nhom": "NNB01331",
+    "moi": "NDB01563",
+    "ten": "Sắp xếp dãy phân số"
+   },
+   {
+    "cu_nhom": "NNB01332",
+    "moi": "NDB01564",
+    "ten": "Phép cộng trừ hai phân số"
+   },
+   {
+    "cu_nhom": "NNB01333",
+    "moi": "NDB01565",
+    "ten": "Phép cộng trừ nhiều phân số"
+   },
+   {
+    "cu_nhom": "NNB01334",
+    "moi": "NDB01566",
+    "ten": "Tính thuận tiện biểu thức phân số dạng tổng hiệu"
+   },
+   {
+    "cu_nhom": "NNB01335",
+    "moi": "NDB01567",
+    "ten": "Chuỗi tích các phân số"
+   },
+   {
+    "cu_nhom": "NNB01336",
+    "moi": "NDB01568",
+    "ten": "Tính thuận tiện phân số kết hợp phép nhân"
+   },
+   {
+    "cu_nhom": "NNB01337",
+    "moi": "NDB01569",
+    "ten": "Tính giá trị biểu thức chứa phép nhân"
+   },
+   {
+    "cu_nhom": "NNB01338",
+    "moi": "NDB01570",
+    "ten": "Tính biểu thức phân số chứa phép chia"
+   },
+   {
+    "cu_nhom": "NNB01339",
+    "moi": "NDB01571",
+    "ten": "Tính thuận tiện phân số kết hợp phép chia"
+   },
+   {
+    "cu_nhom": "NNB01340",
+    "moi": "NDB01572",
+    "ten": "Dãy phân số dạng tích - Dãy đơn"
+   },
+   {
+    "cu_nhom": "NNB01341",
+    "moi": "NDB01573",
+    "ten": "Dãy phân số dạng tích -  Dãy kép"
+   },
+   {
+    "cu_nhom": "NNB01342",
+    "moi": "NDB01574",
+    "ten": "Dãy phân số dạng hiệu tích chuẩn"
+   },
+   {
+    "cu_nhom": "NNB01343",
+    "moi": "NDB01575",
+    "ten": "Dãy phân số dạng Hiệu - tích có tử số chưa chuẩn"
+   },
+   {
+    "cu_nhom": "NNB01344",
+    "moi": "NDB01576",
+    "ten": "Dãy phân số dạng Hiệu - tích có mẫu số chưa chuẩn"
+   },
+   {
+    "cu_nhom": "NNB01345",
+    "moi": "NDB01577",
+    "ten": "Bài toán tìm x áp dụng tính chất dãy phân số hiệu tích"
+   },
+   {
+    "cu_nhom": "NNB01346",
+    "moi": "NDB01578",
+    "ten": "Ứng dụng tính giá trị phân số của một số"
+   },
+   {
+    "cu_nhom": "NNB01347",
+    "moi": "NDB01579",
+    "ten": "Ứng dụng giá trị của phân số nhiều bước"
+   },
+   {
+    "cu_nhom": "NNB01348",
+    "moi": "NDB01580",
+    "ten": "Tìm đại lượng khi biết giá trị của phân số của đại lượng đó - Hai đại lượng"
+   },
+   {
+    "cu_nhom": "NNB01349",
+    "moi": "NDB01581",
+    "ten": "Tìm đại lượng khi biết giá trị của phân số của đại lượng đó - Ba đại lượng"
+   },
+   {
+    "cu_nhom": "NNB01350",
+    "moi": "NDB01582",
+    "ten": "Tìm đại lượng khi biết giá trị của phân số của đại lượng đó - Biết giá trị tổng hiệu các thành phần"
+   }
+  ],
+  "dang_con_chuyen": [
+   {
+    "id": "NDB00646",
+    "ten": "Tính tổng dãy số",
+    "tu_nhom_cu": "NNB01302",
+    "sang_nhom_moi": "NNB01715"
+   },
+   {
+    "id": "NDB00647",
+    "ten": "Tìm x dùng tổng dãy số",
+    "tu_nhom_cu": "NNB01302",
+    "sang_nhom_moi": "NNB01715"
+   },
+   {
+    "id": "NDB00648",
+    "ten": "2 đầu",
+    "tu_nhom_cu": "NNB01304",
+    "sang_nhom_moi": "NNB01716"
+   },
+   {
+    "id": "NDB00649",
+    "ten": "1 đầu",
+    "tu_nhom_cu": "NNB01304",
+    "sang_nhom_moi": "NNB01716"
+   },
+   {
+    "id": "NDB00650",
+    "ten": "0 đầu",
+    "tu_nhom_cu": "NNB01304",
+    "sang_nhom_moi": "NNB01716"
+   },
+   {
+    "id": "NDB00651",
+    "ten": "2 cây",
+    "tu_nhom_cu": "NNB01304",
+    "sang_nhom_moi": "NNB01716"
+   },
+   {
+    "id": "NDB00652",
+    "ten": "Cụm 1",
+    "tu_nhom_cu": "NNB01308",
+    "sang_nhom_moi": "NNB01720"
+   },
+   {
+    "id": "NDB00653",
+    "ten": "Cụm 1",
+    "tu_nhom_cu": "NNB01309",
+    "sang_nhom_moi": "NNB01720"
+   },
+   {
+    "id": "NDB00654",
+    "ten": "Cụm 2 : 2 chữ số",
+    "tu_nhom_cu": "NNB01309",
+    "sang_nhom_moi": "NNB01720"
+   },
+   {
+    "id": "NDB00655",
+    "ten": "CỤm 3",
+    "tu_nhom_cu": "NNB01309",
+    "sang_nhom_moi": "NNB01720"
+   },
+   {
+    "id": "NDB00656",
+    "ten": "Cụm 1",
+    "tu_nhom_cu": "NNB01310",
+    "sang_nhom_moi": "NNB01720"
+   }
+  ]
+ }
+}
