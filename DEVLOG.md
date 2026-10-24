@@ -77713,3 +77713,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 ## 24/10 — Kiểm app HS/TA sau khi bật bản đồ mới; mastery mới nhanh gấp 3–5 (mig 202610241225)
 - Bundle đang chạy ở hs./ta.bkacademy.edu.vn build 05:34 sáng 24/10 — CHƯA có code chiều 24/10 (soi bundle: hs_sotay_dang vẫn gửi p_nhanh cũ). Phía DB đã đúng: hàm app TA (ca TA, in phiếu, lấy phiếu, lịch sử, retest theo dõi, xếp lịch) chạy với dạng NDB, có tên.
 - Đề xuất dạng mới cho ca bổ trợ 14–17 s. Gốc: CTE `cap` trong `_mastery_lan_do` bị Postgres INLINE (tham chiếu 1 lần) ⇒ quy dạng chạy cho từng lượt đo (38k) thay vì từng cặp câu–mã (12k). `materialized` ⇒ mastery mới 56 HS 11 s → 2,3 s, đề xuất 14 → 4,8 s, kết quả y hệt. **Bài học: CTE gọi hàm đắt mà chỉ tham chiếu 1 lần thì ghi `materialized`, đừng tin tên 'cap/1 lần cho mỗi cặp' trong chú thích.** fn_mastery_cells (bản cũ) cùng bệnh (56 HS 6,8 s) — giữ nguyên bản gốc.
+
+## 24/10 — Mô hình 3D giao tuyến – giao điểm (Toán 11, đề cương GKI Việt Đức)
+- Thùy giao: từ đề cương GKI Toán 11 THPT Việt Đức 2026–2027, dựng HTML hình không gian cho các câu HHKG thuộc phần Đ/S + trả lời ngắn, mỗi bài 1 page; xoay, highlight, mở rộng mặt phẳng, kéo dài đường thẳng trong 2 mặt cho tới khi cắt nhau.
+- Lọc được 4 câu: Đề 2 Đ/S C3 (S.ABCD, IK/SI/SB/SK) · Đề 2 TLN C4 (IS/IO = 1) · Đề 3 Đ/S C2 (a S, b Đ, c Đ, d S — SH/SA = 2/5 chứ không 3/7) · Đề 3 TLN C3 (IM/IN = 1). Đáp số kiểm bằng toạ độ trong chính file dữ liệu.
+- Làm: `toan-site/khong-gian/giao-tuyen.html` (động cơ: một trang nhiều bài, ?bai=<id>&buoc=n) + `giao-tuyen-bai.js` (dữ liệu; điểm dựng thêm TÍNH từ điểm gốc bằng hàm cat/trungDiem). Mỗi bước = trạng thái đủ (mặt tô / mở rộng, đường nối / kéo dài, giao tuyến nhấn cam, nhìn thẳng mặt); mục Công cụ cho sửa tay. Nét khuất tự đứt theo góc nhìn (khối ghi độ sâu, như khung the-tich). Mượn CSS `../the-tich/khung.css`. Thêm thẻ vào `toan-site/index.html`.
+- Chưa: deploy site toan (vercel CLI tay), Thùy chưa xem.
