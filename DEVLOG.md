@@ -77657,3 +77657,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 ### 24/10 (sau) — Duyệt 27 câu gốc + 572 clone 4T «Trung bình cộng» (Thùy: "auto duyệt 27 câu gốc đi và duyệt luôn clone đi. bài dễ nên m clone là ok rồi")
 - **Làm:** `scripts/kho/duyet-4t-tbc.mjs --ghi` — 599 câu `da_duyet=true` (27 gốc + 572 clone), duyet_boi = admin, **duyet_nguon='may'** (duyệt tự động theo lệnh CEO, không phải người đọc từng câu). Đường duyệt như `_duyet_nhom_tron_xoay.mjs`: cờ phiên `kho.duyet_noi_dung`=on để duyệt NỘI DUNG khi câu còn ở dạng chờ T14T000000; dạng do bản đồ mới gán riêng. Bỏ qua câu thiếu đáp án / lời giải / kiem_may≠khop: 0 câu.
 - **Lưu ý:** 3 câu gốc còn ở mục đề xuất (297·298·292) đã duyệt NỘI DUNG nhưng CHƯA có dạng gán ⇒ vẫn chờ Thùy xác nhận dạng. Câu trắc nghiệm hiện trên app HS sau khi có form TN (spec-mcq-form.md §9: clone được duyệt trước → mới sinh form).
+
+
+### [24/10] Thùy "ghi K10" — đề xuất HGT K10 21/10 ĐÃ GHI từ 22/10, không ghi lại
+- Đính chính mục 23/10 ("KHÔNG gộp đề xuất HGT K10 … chờ Thùy"): SAI — tôi không kiểm DB trước khi báo. Thực tế 11caca3d (22/10) đã ghi đúng đề xuất 21/10 (gán 796 · đề xuất 482 · thiếu dạng 193 · kho Đ/S 186), rồi 33e974cb + a97eedc5 + 9b9c57a8 (23/10) khớp lại 2 lần (dạng sau thắng, dạng mới 01421/01422/01425, chốt 906/912).
+- DB 24/10 (K10 hgt): gán 1.268 (AI 1.253 · người 15) · đề xuất 89 · thiếu dạng 114 · kho Đ/S 186 = đủ 1.471 + 186. `bdm-b3-hgt-ghi.mjs` chạy thử chèn 0 (mọi câu đã có dòng) ⇒ không ghi gì. File `k10-2110/de-xuat.json` là bản CŨ, đừng dùng để ghi.
+- **Bài học:** trước khi báo "chưa ghi / chờ ghi" một lượt cũ ⇒ đếm dòng trong DB, không dựa vào trí nhớ phiên.
