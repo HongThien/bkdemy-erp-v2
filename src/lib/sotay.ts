@@ -77,7 +77,8 @@ export async function soTayTim(tuKhoa: string, mon: string): Promise<SoTayTimRow
 
 // Nội dung 1 dạng. null = dạng không có lý thuyết đọc được (màn hình phải báo tử tế, đừng vẽ rỗng).
 export async function soTayDang(maDang: string, mon: string, nhanh: SoTayNhanh): Promise<SoTayNoiDung | null> {
-  const { data, error } = await supabase.rpc('hs_sotay_dang', { p_ma_dang: maDang, p_mon: mon, p_nhanh: nhanh })
+  // Dạng bài bản đồ mới (mã NDB…) ⇒ nhánh registry 'bdm' (DB: _kho_ban_do_tbl/_kho_lt_tbl hiểu 'bdm'; hs_sotay_dang thuộc owner postgres nên không sửa thân hàm)
+  const { data, error } = await supabase.rpc('hs_sotay_dang', { p_ma_dang: maDang, p_mon: mon, p_nhanh: maDang.startsWith('NDB') ? 'bdm' : nhanh })
   if (error) throw error
   return (data as SoTayNoiDung | null) ?? null
 }

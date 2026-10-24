@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-444 bảng · 32 view · 0 enum · 225 trigger · 1289 function
+444 bảng · 34 view · 0 enum · 225 trigger · 1290 function
 
 ## _app_secrets
 
@@ -6385,6 +6385,106 @@ SELECT db.id AS ma_dang,
   WHERE cd.nhanh = ANY (ARRAY['toan'::text, 'hgt'::text]);
 ```
 
+### bdm_ban_do_hgt
+
+| cột | kiểu |
+|---|---|
+| ma_dang | text |
+| khoi | text |
+| ma_chu_de | text |
+| ten_chu_de | text |
+| ma_chuyen_de | text |
+| ten_chuyen_de | text |
+| ten_dang | text |
+| muc_do | smallint |
+| created_at | timestamp with time zone |
+| bac_toi_thieu | text |
+| mo_ta_ngan | text |
+| xoa_at | timestamp with time zone |
+| gop_vao | text |
+| ma_nhom | text |
+| ten_nhom | text |
+| thu_tu_chu_de | integer |
+| thu_tu_chuyen_de | integer |
+| thu_tu_nhom | integer |
+| thu_tu_dang | integer |
+| nhanh_bdm | text |
+
+```sql
+SELECT ma_dang,
+    khoi,
+    ma_chu_de,
+    ten_chu_de,
+    ma_chuyen_de,
+    ten_chuyen_de,
+    ten_dang,
+    muc_do,
+    created_at,
+    bac_toi_thieu,
+    mo_ta_ngan,
+    xoa_at,
+    gop_vao,
+    ma_nhom,
+    ten_nhom,
+    thu_tu_chu_de,
+    thu_tu_chuyen_de,
+    thu_tu_nhom,
+    thu_tu_dang,
+    nhanh_bdm
+   FROM bdm_ban_do
+  WHERE nhanh_bdm = 'hgt'::text;
+```
+
+### bdm_ban_do_toan
+
+| cột | kiểu |
+|---|---|
+| ma_dang | text |
+| khoi | text |
+| ma_chu_de | text |
+| ten_chu_de | text |
+| ma_chuyen_de | text |
+| ten_chuyen_de | text |
+| ten_dang | text |
+| muc_do | smallint |
+| created_at | timestamp with time zone |
+| bac_toi_thieu | text |
+| mo_ta_ngan | text |
+| xoa_at | timestamp with time zone |
+| gop_vao | text |
+| ma_nhom | text |
+| ten_nhom | text |
+| thu_tu_chu_de | integer |
+| thu_tu_chuyen_de | integer |
+| thu_tu_nhom | integer |
+| thu_tu_dang | integer |
+| nhanh_bdm | text |
+
+```sql
+SELECT ma_dang,
+    khoi,
+    ma_chu_de,
+    ten_chu_de,
+    ma_chuyen_de,
+    ten_chuyen_de,
+    ten_dang,
+    muc_do,
+    created_at,
+    bac_toi_thieu,
+    mo_ta_ngan,
+    xoa_at,
+    gop_vao,
+    ma_nhom,
+    ten_nhom,
+    thu_tu_chu_de,
+    thu_tu_chuyen_de,
+    thu_tu_nhom,
+    thu_tu_dang,
+    nhanh_bdm
+   FROM bdm_ban_do
+  WHERE nhanh_bdm = 'toan'::text;
+```
+
 ### bdm_cau_dang
 
 | cột | kiểu |
@@ -8786,6 +8886,7 @@ WITH luot AS (
 - `_sk_so_du(p_nguoi uuid)` → integer
 - `_sk_vai(p_su_kien uuid)` → text[]
 - `_sk_xu_luot(p_luot uuid)` → jsonb
+- `_sotay_bang(p_mon text, p_nhanh text, p_khoi_hs text, OUT bd text, OUT lt text)` → record
 - `_sotay_ct_ghi_lich_su()` → trigger
 - `_sotay_ct_hinh_truoc_sua()` → trigger
 - `_sotay_ct_truoc_ghi()` → trigger
@@ -9363,8 +9464,8 @@ WITH luot AS (
 - `fn_hs_len_bac_da_xem(p_mon text)` → void
 - `fn_hs_len_bac_moi(p_mon text)` → jsonb
 - `fn_hs_lich_bo_tro()` → jsonb
-- `fn_hs_lich_su_lam_bai(p_so_ngay integer, p_mon text)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
 - `fn_hs_lich_su_lam_bai(p_so_ngay integer DEFAULT 30)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
+- `fn_hs_lich_su_lam_bai(p_so_ngay integer, p_mon text)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
 - `fn_hs_luu_giao_dien(p_skin text, p_che_do text, p_hinh_nen text)` → jsonb
 - `fn_hs_luu_hieu_ung_game(p_bat boolean)` → jsonb
 - `fn_hs_luyen_con_lai(p_mon text, p_ma_dang text)` → integer
@@ -9838,9 +9939,9 @@ WITH luot AS (
 - `tsa_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
