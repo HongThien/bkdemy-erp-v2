@@ -77663,3 +77663,15 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - Đính chính mục 23/10 ("KHÔNG gộp đề xuất HGT K10 … chờ Thùy"): SAI — tôi không kiểm DB trước khi báo. Thực tế 11caca3d (22/10) đã ghi đúng đề xuất 21/10 (gán 796 · đề xuất 482 · thiếu dạng 193 · kho Đ/S 186), rồi 33e974cb + a97eedc5 + 9b9c57a8 (23/10) khớp lại 2 lần (dạng sau thắng, dạng mới 01421/01422/01425, chốt 906/912).
 - DB 24/10 (K10 hgt): gán 1.268 (AI 1.253 · người 15) · đề xuất 89 · thiếu dạng 114 · kho Đ/S 186 = đủ 1.471 + 186. `bdm-b3-hgt-ghi.mjs` chạy thử chèn 0 (mọi câu đã có dòng) ⇒ không ghi gì. File `k10-2110/de-xuat.json` là bản CŨ, đừng dùng để ghi.
 - **Bài học:** trước khi báo "chưa ghi / chờ ghi" một lượt cũ ⇒ đếm dòng trong DB, không dựa vào trí nhớ phiên.
+
+
+### [24/10] Độ khó + hệ cho dạng bài bản đồ mới (`dai_bdm_dang_bai.muc_do` / `bac_toi_thieu`) — mig 202610241150
+- **Vì sao:** Report PH + Tổng quan KQHT tách %Cơ bản/%Nâng cao theo độ khó dạng ⇒ phải giữ bản đồ cũ; lọc CB/NC ở KQHT rỗng với NDB (PLAN-mastery-ban-do-moi.md).
+- **Làm:** thêm 2 cột (CHECK 1..5 / S,A,B,C,D; NULL = chưa gán), view `bdm_ban_do` lộ 2 cột thật (cùng cột/thứ tự/kiểu). Lịch sử tự có qua `trg_bdm_dang_bai_log`. Không đổi cây.
+  Client `dangInfoCuaMon` (nhánh NDB) đọc `muc_do` ⇒ `mucDoBC`.
+- **Suy** (`kho-rules/dai/lo/bdm-do-kho/suy-do-kho.mjs`, tính ở SQL): câu sống của dạng bài (`bdm_cau_dang`) → `dang_chinh` → muc_do/bac của dạng cũ; bỏ câu ở dạng chờ `…000000`
+  (1/C ở đó là mặc định); đếm theo CÂU GỐC (clone không thành phiếu riêng). Mọi câu cùng giá trị ⇒ CHẮC ⇒ GHI; lệch ⇒ đề xuất đa số (hòa ⇒ không); không câu ⇒ `dai_bdm_doi_ung` (chưa chắc).
+- **Đã ghi:** 498 độ khó + 560 hệ (576 dạng bài). Chờ Thùy: `duyet-20261024.html` (412 dạng bài có ≥1 ô chưa chắc/trống). Ghi tiếp: `--ghi --theo-de-xuat` hoặc `--ghi --chot chot.json` (nút "Xuất chốt").
+- Kiểm HS K9 (`fn_mastery_cells_bdm` × `bdm_ban_do`): 74 ô NDB → 56 cơ bản (TB 0,82) · 10 nâng cao (TB 0,41) · 8 chưa gán.
+- **Ảnh hưởng phụ:** `fn_ban_do_phieu_luu` chọn màn boss = `muc_do desc nulls last` ⇒ với bản đồ mới boss giờ là dạng khó nhất khu (trước toàn NULL ⇒ theo mã).
+- **Sai rồi sửa:** vá file bằng `String.replace(a, b)` mà `b` chứa `'000000$'` ⇒ `$'` là mẫu thay thế của JS (chèn phần đuôi chuỗi) ⇒ file phình 4 lần. Thay chuỗi có `$` thì dùng `split(a).join(b)` hoặc hàm thay thế.

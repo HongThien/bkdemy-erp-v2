@@ -60,12 +60,12 @@ export async function dangInfoCuaMon(mon: string, maList: string[]): Promise<Map
   // (cùng khuôn cột bản đồ cũ, mig 202610231522). Thiếu bước này thì ô NDB bị BỎ ÂM THẦM ở getMasteryHS / loadMasteryCells.
   const bdm = maList.filter((m) => m.startsWith('NDB') && !out.has(m))
   if (bdm.length) {
-    const { data, error } = await supabase.from('bdm_ban_do').select('ma_dang, ten_dang, ma_chuyen_de, ten_chuyen_de, nhanh_bdm').in('ma_dang', bdm).limit(LIMIT)
+    const { data, error } = await supabase.from('bdm_ban_do').select('ma_dang, ten_dang, ma_chuyen_de, ten_chuyen_de, nhanh_bdm, muc_do').in('ma_dang', bdm).limit(LIMIT)
     if (error) throw error
-    for (const r of (data ?? []) as { ma_dang: string; ten_dang: string; ma_chuyen_de: string | null; ten_chuyen_de: string | null; nhanh_bdm: string }[]) {
+    for (const r of (data ?? []) as { ma_dang: string; ten_dang: string; ma_chuyen_de: string | null; ten_chuyen_de: string | null; nhanh_bdm: string; muc_do: number | null }[]) {
       out.set(r.ma_dang, {
         ten_dang: r.ten_dang, ma_chuyen_de: r.ma_chuyen_de, ten_chuyen_de: r.ten_chuyen_de ?? '',
-        muc_do: null, mucDoBC: null,   // bản đồ mới chưa có độ khó
+        muc_do: r.muc_do ?? null, mucDoBC: r.muc_do ?? null,   // độ khó dạng bài (mig 202610241150; null = chưa gán ⇒ không vào CB/NC)
         nhanh: r.nhanh_bdm === 'hgt' ? 'hinh_gt' : null,
         nhomBC: r.nhanh_bdm === 'hgt' ? 'hinh' : 'dai',
         thangDo3: false,

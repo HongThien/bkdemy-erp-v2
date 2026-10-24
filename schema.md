@@ -248,6 +248,7 @@
 | form_tn_hgt_id | uuid | Y |  | FK→hgt_cau_form_tn.id |  |
 | kieu_nhap | text | Y |  |  |  |
 | ngu_lieu | jsonb | Y |  |  |  |
+| ma_dang_cu | text | Y |  |  |  |
 
 ## bai_test_cau_phat_hanh
 
@@ -605,6 +606,7 @@
 | retest_nguon | text | Y |  |  | `et` · `mt` · `rieng` |
 | dat | boolean | Y |  |  |  |
 | nguon | text |  | 'duyet'::text |  | `duyet` · `tay` · `may` · `bao_dong` |
+| ma_dang_cu | text | Y |  |  |  |
 
 ## bt_grades
 
@@ -1226,6 +1228,8 @@
 | ly_thuyet | text |  | ''::text |  |  |
 | ly_thuyet_file_url | text | Y |  |  |  |
 | ly_thuyet_ten_file | text | Y |  |  |  |
+| muc_do | smallint | Y |  |  |  |
+| bac_toi_thieu | text | Y |  |  | `S` · `A` · `B` · `C` · `D` |
 
 ## dai_bdm_de_xuat
 
@@ -6360,9 +6364,9 @@ SELECT db.id AS ma_dang,
     ch.id AS ma_chuyen_de,
     ch.ten AS ten_chuyen_de,
     db.ten AS ten_dang,
-    NULL::smallint AS muc_do,
+    db.muc_do,
     db.created_at,
-    NULL::text AS bac_toi_thieu,
+    db.bac_toi_thieu,
     db.mo_ta AS mo_ta_ngan,
     NULL::timestamp with time zone AS xoa_at,
     NULL::text AS gop_vao,
@@ -9913,6 +9917,7 @@ WITH luot AS (
 | dai_ban_do | dai_ban_do_xoa_mem_check | `CHECK ((((gop_vao IS NULL) OR (xoa_at IS NOT NULL)) AND (gop_vao IS DISTINCT FROM ma_dang)))` |
 | dai_bdm_chu_de | dai_bdm_chu_de_ten_check | `CHECK ((btrim(ten) <> ''::text))` |
 | dai_bdm_chuyen_de | dai_bdm_chuyen_de_ten_check | `CHECK ((btrim(ten) <> ''::text))` |
+| dai_bdm_dang_bai | dai_bdm_dang_bai_muc_do_check | `CHECK (((muc_do >= 1) AND (muc_do <= 5)))` |
 | dai_bdm_dang_bai | dai_bdm_dang_bai_ten_check | `CHECK ((btrim(ten) <> ''::text))` |
 | dai_bdm_doi_ung | dai_bdm_doi_ung_check | `CHECK ((num_nonnulls(dich_dang_bai, dich_nhom, dich_chu_de) = 1))` |
 | dai_bdm_doi_ung | dai_bdm_doi_ung_check1 | `CHECK (((dich_chu_de IS NULL) = (dich_chuyen_de IS NULL)))` |
