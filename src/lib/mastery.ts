@@ -171,8 +171,10 @@ async function fetchBTEvals(hs: string | string[], sinceIso?: string | null): Pr
 export async function getMasteryHS(
   hocSinhId: string,
   mon: string,
-  opts?: { includeBTVN?: boolean; days?: number },
+  opts?: { includeBTVN?: boolean; days?: number; theoCongTac?: boolean },
 ): Promise<DangMastery[]> {
+  // Hoạt động MỚI (không phải bổ trợ) ⇒ theo công tắc bản đồ: số + lần đo ĐÃ QUY DẠNG đều từ DB (fn_mastery_*_moi)
+  if (opts?.theoCongTac) return getMasteryHSTheoCongTac(hocSinhId, mon, opts)
   const { data: hsRow } = await supabase.from('hoc_sinh').select('khoi').eq('id', hocSinhId).single()
   const phases: EvalSrc[] = opts?.includeBTVN ? ['et', 'mt', 'bt', 'btvn', 'tu_luyen']
     : laCap1(hsRow?.khoi) ? ['et', 'mt', 'tu_luyen'] : ['et', 'mt']
@@ -237,6 +239,39 @@ export async function getMasteryHS(
     })
   }
   // Sort: YẾU trước, rồi MỚI đánh giá lên đầu (như V1: dạng cần chú ý nhất trên cùng).
+  const rank = { yeu: 0, can_luyen: 1, dat: 2 } as const
+  out.sort((a, b) => {
+    const ra = a.mastery ? rank[a.mastery.muc] : 3
+    const rb = b.mastery ? rank[b.mastery.muc] : 3
+    if (ra !== rb) return ra - rb
+    return Date.parse(b.evals[0]?.t ?? '0') - Date.parse(a.evals[0]?.t ?? '0')
+  })
+  return out
+}
+
+// Bản theo công tắc (PLAN-mastery-ban-do-moi.md): ô = fn_mastery_cells_moi, timeline = fn_mastery_lan_do_moi (lần đo đã
+// lọc nguồn + quy dạng ở DB — cùng một nguồn với ô, nên ô NDB có lịch sử). Client chỉ gom theo dạng để hiển thị + sắp.
+async function getMasteryHSTheoCongTac(hocSinhId: string, mon: string, opts: { includeBTVN?: boolean; days?: number }): Promise<DangMastery[]> {
+  const sinceIso = opts.days ? new Date(Date.now() - opts.days * 86400_000).toISOString() : null // boundary INSTANT (được phép, §windowing)
+  const [{ data: cellRows, error: eCells }, { data: lanDo, error: eLan }] = await Promise.all([
+    supabase.rpc('fn_mastery_cells_moi', { p_hs: [hocSinhId], p_include_btvn: !!opts.includeBTVN, p_since: sinceIso }),
+    supabase.rpc('fn_mastery_lan_do_moi', { p_hs: hocSinhId, p_include_btvn: !!opts.includeBTVN, p_since: sinceIso }).limit(LIMIT),
+  ])
+  if (eCells) throw eCells
+  if (eLan) throw eLan
+  const byDang: Record<string, DangEval[]> = {}
+  for (const r of (lanDo ?? []) as any[]) (byDang[r.ma_dang] ??= []).push({ value: Number(r.value), t: r.t, src: r.src as EvalSrc }) // DB đã sắp mới → cũ
+  const maList = Object.keys(byDang)
+  if (!maList.length) return []
+  const dangMap = await dangInfoCuaMon(mon, maList)
+  const cellMap = new Map(((cellRows ?? []) as any[]).map((c) => [c.ma_dang, { score: Number(c.score), n: Number(c.n), muc: c.muc, tin: c.tin } as Mastery]))
+  const out: DangMastery[] = []
+  for (const ma of maList) {
+    const info = dangMap.get(ma)
+    if (!info) continue // dạng không thuộc môn đang xem → bỏ
+    out.push({ ma_dang: ma, ten_dang: info.ten_dang, ten_chuyen_de: info.ten_chuyen_de, muc_do: info.muc_do, mucDoBC: info.mucDoBC,
+      nhanh: info.nhanh, nhomBC: info.nhomBC, mastery: cellMap.get(ma) ?? null, evals: byDang[ma] })
+  }
   const rank = { yeu: 0, can_luyen: 1, dat: 2 } as const
   out.sort((a, b) => {
     const ra = a.mastery ? rank[a.mastery.muc] : 3

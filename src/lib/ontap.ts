@@ -2,7 +2,7 @@
 // Xem spec-btvn-ontap.md + PLAN.md. Tầng LỚP (không per-HS) — chống quên cho cả lớp, GV pick hệ gợi ý.
 import { supabase } from './supabase'
 import { listPhan, addPhan, usedCausOfBuoi, suggestCauForDang, khoCuaMon, type CauHinh } from './tailieu'
-import { getMasteryByDang } from './mastery'
+import { dangInfoCuaMon } from './mastery'
 import { type CauHoi } from './kho/api'
 
 const LIMIT = 10000
@@ -85,16 +85,21 @@ export async function goiYOnTap(nguonId: string, buoiId: string, lopId: string, 
   const candidates = await ungVienDangTruocBuoi(nguonId, buoiId)
   if (!candidates.length) return []
 
-  // Bước 2: chấm điểm nhu cầu theo LỚP — tái dùng getMasteryByDang y hệt pivot view ④ (KHÔNG set includeBTVN,
-  // tránh vòng lặp phản hồi ôn-tập-tự-đo-bằng-BTVN-rồi-lại-chọn-ôn-tập-theo-BTVN).
-  const [rollup, siSo] = await Promise.all([getMasteryByDang({ mon, lopId }), siSoLop(lopId)])
+  // Bước 2: chấm điểm nhu cầu theo LỚP — ở DB (fn_ontap_diem_dang, §2.0; KHÔNG gộp BTVN, tránh vòng lặp phản hồi
+  // ôn-tập-tự-đo-bằng-BTVN-rồi-lại-chọn-ôn-tập-theo-BTVN). Theo công tắc bản đồ: bật ⇒ dạng cũ của giáo trình chấm
+  // theo các dạng bài mới mà câu của nó quy về; câu vẫn chọn theo mã dạng giáo trình (kho cũ).
+  const [{ data: diem, error: eDiem }, siSo, info] = await Promise.all([
+    supabase.rpc('fn_ontap_diem_dang', { p_lop: lopId, p_mon: mon, p_ma_dangs: candidates }),
+    siSoLop(lopId), dangInfoCuaMon(mon, candidates),
+  ])
+  if (eDiem) throw eDiem
   const tin = nguongTin(siSo)
-  const byMa = new Map(rollup.map((r) => [r.ma_dang, r]))
+  const byMa = new Map(((diem ?? []) as any[]).map((r) => [r.ma_dang as string, r]))
   const scored: { ma_dang: string; ten_dang: string; nhanh: string | null; score: number }[] = []
   for (const ma of candidates) {
-    const r = byMa.get(ma)
-    if (!r || r.total < tin) continue // chưa đủ đã_đo → không gợi ý (GV vẫn pick tay được qua "+ Dạng")
-    scored.push({ ma_dang: ma, ten_dang: r.ten_dang, nhanh: r.nhanh, score: (r.yeu * 1 + r.can_luyen * 0.5) / r.total })
+    const r = byMa.get(ma), d = info.get(ma)
+    if (!r || !d || r.total < tin) continue // chưa đủ đã_đo → không gợi ý (GV vẫn pick tay được qua "+ Dạng")
+    scored.push({ ma_dang: ma, ten_dang: d.ten_dang, nhanh: d.nhanh, score: Number(r.score) })
   }
   if (!scored.length) return []
 

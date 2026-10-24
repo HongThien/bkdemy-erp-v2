@@ -34,8 +34,12 @@
 ## Rà 24/10 — còn gì đọc bản đồ cũ
 - ✅ Chuyển theo công tắc (client `RollupScope.theoCongTac` ⇒ `fn_mastery_cells_moi`): **Trước buổi** (dạng yếu tháng, `truocbuoi.ts`) · **app GV tab Lớp** thanh đạt/cần/yếu (`LopView.tsx`).
 - GIỮ CŨ có chủ đích: bổ trợ ca 'cu' · **BT tài liệu bổ trợ** (`BTScreen` → `getMasteryHS`) · học từ đầu / đuổi (`htd_co_mo`, `_duoi_lo_trinh`) · cấp 1.
-- CHƯA chuyển, cần quyết: **Ôn tập trong BTVN** (`ontap.ts` → ứng viên = dạng của buổi trước theo tài liệu cũ; đổi mastery mà không đổi ứng viên ⇒ gợi ý rỗng — đi cùng việc chuyển tài liệu) ·
-  **KQHT ERP** + **HS view app GV** (`getMasteryHS` — timeline lần đo nhóm theo mã chép, phải có hàm DB trả lần đo đã quy dạng mới) · **Bảng kết quả MT theo chuyên đề** (`fn_mt_bang_ket_qua`, gom theo chuyên đề cũ) · report PH.
+- ✅ Thùy 24/10 "chuyển luôn" (mig 202610241130, kiểm `_test_mastery_moi_kqht_mt_ontap.mjs` 9/9 + chạy thật bằng phiên admin):
+  **KQHT ERP** (dạng bài 1 HS · rollup · pivot) + **màn HS app GV** — `getMasteryHS({theoCongTac})`: ô `fn_mastery_cells_moi` + lần đo đã quy dạng
+  `fn_mastery_lan_do_moi` (nguồn đo tách thành `_mastery_lan_do`, lõi đọc lại từ đó — parity 4 lớp) · **Bảng kết quả MT** theo chuyên đề/chủ đề mới khi bật ·
+  **Ôn tập BTVN** chấm ở DB `fn_ontap_diem_dang` (bật ⇒ dạng giáo trình cũ chấm theo các dạng bài mà câu của nó quy về; câu vẫn chọn theo mã giáo trình).
+- GIỮ CŨ vì bản đồ mới CHƯA CÓ ĐỘ KHÓ (`dai_bdm_dang_bai` không có cột mức độ): **Report PH** + phần Tổng quan KQHT (`getTongQuanHS` — tách %Cơ bản/%Nâng cao theo
+  độ khó dạng). Bật công tắc thì lọc Cơ bản/Nâng cao ở pivot KQHT không còn dạng Đại/HGT (chỉ còn "Tất cả" có nghĩa) — chờ bản đồ mới có độ khó.
 - Không phải chỗ dùng mastery: công cụ soạn/khớp bản đồ (`fn_dai_*`, `fn_bdm_*`, `kho/api.ts`) · `fn_mastery_rollup`, `hs_dang_evals` (không còn ai gọi).
 
 ## Việc còn lại trước khi bấm (thứ tự — bản gốc)
@@ -45,3 +49,9 @@
 4. **Bản đồ phiêu lưu** `fn_ban_do_phieu_luu`: K6–12 dựng từ cây mới (chủ đề → lục địa, nhóm → khu, dạng bài → màn).
 5. **Màn bật công tắc** (admin) + bảng so sánh cũ ↔ mới theo lớp.
 6. Bảng trạng thái mã cũ khác: `tu_luyen_dang_lan` (72k), `bo_tro_duoi_dang`, `canh_bao_yeu`, `buoi_danh_gia_dang`, `hoc_tu_dau_dang`, `bai_test_dang_phat_hanh` — đọc lịch sử giữ mã cũ; chỉ dòng MỚI theo NDB.
+
+## 24/10 — Chuyển nốt KQHT · màn HS app GV · bảng MT theo chuyên đề · ôn tập BTVN (mig 202610241130)
+- Thùy "chuyển luôn". Tách nguồn đo của lõi mastery mới ra `_mastery_lan_do` (một nguồn luật cho cả ô lẫn timeline) — parity 4 lớp y hệt; `fn_mastery_lan_do_moi` cho timeline; `fn_mt_bang_ket_qua` theo công tắc; `fn_ontap_diem_dang` (chấm nhu cầu ôn chuyển từ client xuống DB).
+- **Sai rồi sửa:** chèn chú thích `-- …` vào giữa dòng `… limit 1) bd1 on s.hinh_baitoan_id is null` ⇒ chú thích nuốt mất `on …` ⇒ syntax error. Sửa thân hàm bằng thay chuỗi: chú thích đặt CUỐI dòng gốc, không chèn giữa.
+- **Test ôn tập lần đầu 0/30:** lấy ứng viên từ khoá ô mastery (đã quy nhóm) thay vì mã dạng THẬT trong giáo trình (`tai_lieu_phan.ref_ma`) ⇒ đổi nguồn ứng viên, 49/56 dạng giáo trình 9A1 có điểm.
+- Không chuyển được: Report PH + Tổng quan KQHT (tách CB/NC theo độ khó — bản đồ mới chưa có độ khó).

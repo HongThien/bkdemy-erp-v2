@@ -287,7 +287,7 @@ function DangBaiTab({ hsId, mon }: { hsId: string; mon: string }) {
   const laToan = mon === 'Toán'
   useEffect(() => {
     setLoading(true)
-    getMasteryHS(hsId, mon, { includeBTVN: btvn, days: days ?? undefined })
+    getMasteryHS(hsId, mon, { includeBTVN: btvn, days: days ?? undefined, theoCongTac: true })
       .then(setRows).catch(() => setRows([])).finally(() => setLoading(false))
   }, [hsId, mon, days, btvn])
   const loc = (nhom: 'dai' | 'hinh', muc: 'co_ban' | 'nang_cao') => (rows ?? []).filter((r) => r.nhomBC === nhom && bucketMucDo(r.mucDoBC) === muc)
@@ -761,7 +761,7 @@ function LopKhoiRollup() {
   useEffect(() => {
     if (!lopId && !khoi && !he) { setRows(null); return }
     setLoading(true)
-    getMasteryRollup({ mon, lopId, khoi: lopId ? null : khoi, he: (lopId || khoi) ? null : he }).then(setRows).catch(() => setRows([])).finally(() => setLoading(false))
+    getMasteryRollup({ mon, lopId, khoi: lopId ? null : khoi, he: (lopId || khoi) ? null : he, theoCongTac: true }).then(setRows).catch(() => setRows([])).finally(() => setLoading(false))
   }, [mon, lopId, khoi, he])
 
   const shown = useMemo(() => {
@@ -885,7 +885,7 @@ function TheoDang() {
   useEffect(() => {
     if (!lopId && !khoi) { setRows(null); return }
     setLoading(true)
-    const scope = { mon, lopId, khoi: lopId ? null : khoi }
+    const scope = { mon, lopId, khoi: lopId ? null : khoi, theoCongTac: true }
     const p = groupBy === 'dang'
       ? getMasteryByDang(scope, mucDo).then((rs) => rs.map((d): PivotItem => ({ key: d.ma_dang, title: d.ten_dang, sub: [d.ma_dang, d.ten_chuyen_de].filter(Boolean).join(' · '), dat: d.dat, can_luyen: d.can_luyen, yeu: d.yeu, total: d.total })))
       : getMasteryByChuyenDe(scope, mucDo).then((rs) => rs.map((c): PivotItem => ({ key: c.ten_chuyen_de, title: c.ten_chuyen_de, dat: c.dat, can_luyen: c.can_luyen, yeu: c.yeu, total: c.total })))
