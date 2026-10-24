@@ -1,0 +1,218 @@
+[
+ {
+  "ma_cau": "T14T000000288",
+  "loai": "tra_loi_ngan",
+  "de": "Số đo chiều cao của 5 học sinh lần lượt là: 147 cm, 14 dm, 139 cm, 146 cm, 143 cm. Hỏi trung bình số đo chiều cao của 5 học sinh đó là bao nhiêu xăng-ti-mét?",
+  "dap_an": "$143$ cm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: các số đo viết bằng **hai đơn vị khác nhau** (cm và dm) nên chưa cộng được. Đổi hết về xăng-ti-mét ($1$ dm $=10$ cm) rồi tìm trung bình cộng.\n\nChú ý: $14$ dm $=140$ cm, không phải $14$ cm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $14$ dm $=140$ cm\n\nTrung bình số đo chiều cao của $5$ học sinh là: $\\left(147+140+139+146+143\\right):5=143$ (cm)\n\nĐáp số: $143$ cm",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "T14T000000296",
+  "loai": "tu_luan",
+  "de": "Biết trung bình cộng của ba số tự nhiên liên tiếp bằng 126. Tìm ba số đó.",
+  "dap_an": "$125$; $126$; $127$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: ba số tự nhiên liên tiếp là dãy cách đều (hơn kém nhau $1$), nên trung bình cộng của chúng chính là **số ở giữa**. Biết số ở giữa thì số bé kém nó $1$, số lớn hơn nó $1$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nBa số tự nhiên liên tiếp là dãy số cách đều nên số ở giữa bằng trung bình cộng, tức là $126$.\n\nSố bé nhất là: $126-1=125$\n\nSố lớn nhất là: $126+1=127$\n\nVậy ba số cần tìm là $125$; $126$; $127$.\n\nĐáp số: $125$; $126$; $127$",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "T14T000000297",
+  "loai": "tu_luan",
+  "de": "Biết tổng của ba số chẵn liên tiếp bằng 444. Tìm ba số đó.",
+  "dap_an": "$146$; $148$; $150$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: ba số chẵn liên tiếp là dãy cách đều (hơn kém nhau $2$), nên trung bình cộng của chúng chính là **số ở giữa**. Trung bình cộng $=$ tổng $:3$. Số bé kém số giữa $2$, số lớn hơn số giữa $2$.\n\nChú ý: hai số chẵn liên tiếp hơn kém $2$, không phải $1$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTrung bình cộng của ba số là: $444:3=148$\n\nBa số chẵn liên tiếp là dãy số cách đều nên số ở giữa bằng trung bình cộng, tức là $148$.\n\nSố bé nhất là: $148-2=146$\n\nSố lớn nhất là: $148+2=150$\n\nVậy ba số cần tìm là $146$; $148$; $150$.\n\nĐáp số: $146$; $148$; $150$",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "T14T000000298",
+  "loai": "tu_luan",
+  "de": "Biết tổng của năm số lẻ liên tiếp bằng 975. Tìm năm số đó.",
+  "dap_an": "$191$; $193$; $195$; $197$; $199$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: năm số lẻ liên tiếp là dãy cách đều (hơn kém nhau $2$), nên trung bình cộng của chúng chính là **số ở giữa** (số thứ ba). Trung bình cộng $=$ tổng $:5$. Từ số ở giữa lùi $2$ lần, tiến $2$ lần, mỗi lần $2$ đơn vị.\n\nChú ý: hai số lẻ liên tiếp hơn kém $2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTrung bình cộng của năm số là: $975:5=195$\n\nNăm số lẻ liên tiếp là dãy số cách đều nên số ở giữa bằng trung bình cộng, tức là $195$.\n\nSố bé nhất là: $195-2\\times 2=191$\n\nSố lớn nhất là: $195+2\\times 2=199$\n\nVậy năm số cần tìm là $191$; $193$; $195$; $197$; $199$.\n\nĐáp số: $191$; $193$; $195$; $197$; $199$",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "T14T000000299",
+  "loai": "tra_loi_ngan",
+  "de": "Tết Thiếu nhi, mẹ mua cho ba anh em: một cuốn sách, một bộ Lego và một bộ quần áo. Biết rằng, cuốn sách có giá là 340 000 đồng, bộ Lego là 560 000 đồng và giá tiền bộ quần áo bằng trung bình cộng số tiền cả ba món. Hỏi mẹ đã mua hết bao nhiêu tiền?",
+  "dap_an": "$1350000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: giá bộ quần áo **bằng** trung bình cộng giá ba món (giống VD 13.4). Vẽ sơ đồ: trung bình cộng là $1$ đoạn, bộ quần áo cũng là $1$ đoạn như vậy. Ba món có $3$ đoạn, trừ bộ quần áo còn $2$ đoạn là giá cuốn sách và bộ Lego.\n\nVậy **hai lần trung bình cộng** $=340000+560000$. Tìm giá bộ quần áo rồi cộng ba món (hoặc nhân trung bình cộng với $3$).\n\nChú ý: câu hỏi là mẹ mua hết bao nhiêu tiền nên phải cộng cả ba món, không chỉ tìm giá bộ quần áo.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Trung bình cộng giá ba món: 1 đoạn; bộ quần áo: 1 đoạn bằng đoạn trung bình cộng; cuốn sách và bộ Lego: 2 đoạn bằng đoạn trung bình cộng, cộng lại 900000 đồng)\n\nHai lần trung",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "T14T000000300",
+  "loai": "tra_loi_ngan",
+  "de": "Hưởng ứng phong trào bảo vệ môi trường, lớp 4A thu gom chai nhựa đã qua sử dụng. Tổ một thu được 142 chai và nhiều hơn tổ hai 26 chai, tổ ba thu được bằng trung bình cộng số chai của cả ba tổ. Hỏi lớp 4 A thu được tất cả bao nhiêu chai nhựa?",
+  "dap_an": "$387$ chai",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tổ ba thu được **bằng** trung bình cộng của ba tổ (giống VD 13.4). Tìm số chai của tổ hai trước ($142-26$, vì tổ một nhiều hơn tổ hai). Sau đó vẽ sơ đồ: tổ một và tổ hai chiếm $2$ đoạn trung bình cộng.\n\nVậy **hai lần trung bình cộng** $=142+116$. Tìm trung bình cộng (cũng là số chai của tổ ba) rồi nhân với $3$ tổ ra số chai của cả lớp.\n\nChú ý: tổ một **nhiều hơn** tổ hai nên tổ hai là $142-26$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổ hai thu được số chai là: $142-26=116$ (chai)\n\nTa có sơ đồ:\n\n(Trung bình cộng: 1 đoạn; tổ ba: 1 đoạn bằng đoạn trung bình cộng; tổ một và tổ hai: 2 đoạn bằng đoạn trung bình cộng)\n\nHai lần trung bình cộng số chai của ba tổ là: $142+1",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "T14T000000301",
+  "loai": "tra_loi_ngan",
+  "de": "Ba bạn Thuỷ, Hiền, Hoà cùng nhau đi hiệu sách để chuẩn bị đồ dùng cho năm học mới. Thuỷ mua 30 nhãn vở, Hiền mua 20 nhãn vở, số nhãn vở Hoà mua ít hơn trung bình cộng số nhãn vở của cả ba bạn là 6 cái. Hỏi Hoà mua bao nhiêu nhãn vở?",
+  "dap_an": "$16$ nhãn vở",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: Hoà mua **ít hơn** trung bình cộng $6$ cái nên số nhãn vở của Hoà là $1$ đoạn trung bình cộng **bớt $6$**. Thuỷ và Hiền (cộng lại $30+20$) phải bù lại, nên bằng $2$ đoạn trung bình cộng **thêm $6$**.\n\nVậy **hai lần trung bình cộng** $=30+20-6$. Tìm trung bình cộng rồi trừ $6$ ra số nhãn vở của Hoà.\n\nChú ý: \"ít hơn\" thì **trừ** $6$ (ngược với bài \"nhiều hơn\").\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Trung bình cộng: 1 đoạn; Hoà: 1 đoạn còn thiếu 6 cái; Thuỷ và Hiền: 2 đoạn và thêm 6 cái)\n\nHai lần trung bình cộng số nhãn vở của ba bạn là: $30+20-6=44$ (cái)\n\nTrung bình cộng số nhãn vở của ba bạn là: $44:2=22$ (cái)\n\nSố nhãn vở Hoà mua là: $22-6=16$ (cá",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "T14T000000302",
+  "loai": "tra_loi_ngan",
+  "de": "Lan gấp được 14 ngôi sao, Mai gấp được 12 ngôi sao, Chi gấp được ít hơn trung bình cộng số ngôi sao cả ba bạn là 2 ngôi sao. Hỏi Chi gấp được bao nhiêu ngôi sao?",
+  "dap_an": "$10$ ngôi sao",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: Chi gấp **ít hơn** trung bình cộng $2$ ngôi sao nên số ngôi sao của Chi là $1$ đoạn trung bình cộng **bớt $2$**. Lan và Mai (cộng lại $14+12$) phải bù lại, nên bằng $2$ đoạn trung bình cộng **thêm $2$**.\n\nVậy **hai lần trung bình cộng** $=14+12-2$. Tìm trung bình cộng rồi trừ $2$ ra số ngôi sao của Chi.\n\nChú ý: \"ít hơn\" thì **trừ** $2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Trung bình cộng: 1 đoạn; Chi: 1 đoạn còn thiếu 2 ngôi sao; Lan và Mai: 2 đoạn và thêm 2 ngôi sao)\n\nHai lần trung bình cộng số ngôi sao của ba bạn là: $14+12-2=24$ (ngôi sao)\n\nTrung bình cộng số ngôi sao của ba bạn là: $24:2=12$ (ngôi sao)\n\nSố ngôi sao Chi gấp được là: $12-2=10$ ",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "T14T000000061",
+  "loai": "tra_loi_ngan",
+  "de": "Bốn bạn An, Bình, Chi, Dũng góp tiền chung để mua sách. An góp 120 000 đồng, Bình góp 150 000 đồng, Chi góp nhiều hơn An 50 000 đồng, Dũng góp kém mức trung bình cộng của cả bốn bạn là 20 000 đồng. Tính tổng số tiền mà bốn bạn góp được.",
+  "dap_an": "$560000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tổng $4$ bạn $=4$ lần TBC. Dũng **kém** TBC $20000$ đồng nên ba bạn còn lại phải **bù**: An + Bình + Chi $=3$ lần TBC **thêm** $20000$ đồng. Vậy **ba lần TBC = tổng ba bạn − 20000**. (Bốn bạn ⇒ \"ba lần\", không phải \"hai lần\" như bài ba bạn.) Tìm số tiền của Chi trước.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChi góp số tiền là: $120000+50000=170000$ (đồng)\n\nTa có sơ đồ:\n\n(Trung bình cộng 1 đoạn; Dũng 1 đoạn còn thiếu 20000 đồng; An, Bình và Chi 3 đoạn và 20000 đồng)\n\nBa lần trung bình cộng số tiền của bốn bạn là: $120000+150000+170000-20000=420000$ (đồng)\n\nTrung bình cộng số tiền của bốn bạn là: $420000:3=140000$ (đồng)\n\nTổng số tiền bốn bạn góp được là: $140000\\tim",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "T14T000000303",
+  "loai": "tra_loi_ngan",
+  "de": "Ba bạn An, Nam, Nghĩa cùng thi giải câu đố. Trong cùng một thời gian, An giải được 12 câu, Nam giải được 15 câu, Nghĩa giải được nhiều hơn mức trung bình của cả ba bạn là 3 câu. Hỏi bạn Nghĩa giải được bao nhiêu câu đố?",
+  "dap_an": "$18$ câu đố",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: Nghĩa giải **nhiều hơn** trung bình cộng $3$ câu nên số câu của Nghĩa là $1$ đoạn trung bình cộng **thêm $3$**. An và Nam (cộng lại $12+15$) phải bù lại, nên chỉ bằng $2$ đoạn trung bình cộng **bớt $3$**.\n\nVậy **hai lần trung bình cộng** $=12+15+3$. Tìm trung bình cộng rồi cộng $3$ ra số câu của Nghĩa.\n\nChú ý: \"nhiều hơn\" thì **cộng** $3$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Trung bình cộng: 1 đoạn; Nghĩa: 1 đoạn và thêm 3 câu; An và Nam: 2 đoạn còn thiếu 3 câu)\n\nHai lần trung bình cộng số câu giải được của ba bạn là: $12+15+3=30$ (câu)\n\nTrung bình cộng số câu giải được của ba bạn là: $30:2=15$ (câu)\n\nSố câu đố Nghĩa giải được là: $15+3=18$ (câu)",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "T14T000000040",
+  "loai": "tra_loi_ngan",
+  "de": "Vườn nhà bác Phi trồng ba loại cây: cam, bưởi, chanh. Trong đó có 25 cây cam và 21 cây bưởi, số cây chanh nhiều hơn trung bình cộng của cả ba loại cây là 4 cây. Hỏi trong vườn có bao nhiêu cây chanh?",
+  "dap_an": "$29$ cây chanh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tổng ba loại $=3$ lần TBC. Cây chanh $=1$ lần TBC **thêm** $4$ cây, nên cam và bưởi phải bù lại: cam + bưởi $=2$ lần TBC **bớt** $4$ cây. Vậy **hai lần TBC $=25+21+4$**. (Nếu là \"ít hơn TBC\" thì trừ $4$.)\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Trung bình cộng 1 đoạn; Cây chanh 1 đoạn và 4 cây; Cam và bưởi 2 đoạn còn thiếu 4 cây)\n\nHai lần trung bình cộng số cây của ba loại là: $25+21+4=50$ (cây)\n\nTrung bình cộng số cây của ba loại là: $50:2=25$ (cây)\n\nSố cây chanh trong vườn là: $25+4=29$ (cây)\n\nĐáp số: $29$ cây chanh",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "T14T000000038",
+  "loai": "tra_loi_ngan",
+  "de": "Một nhà máy ngày thứ nhất sản xuất được 270 sản phẩm, nhiều hơn ngày thứ hai 18 sản phẩm và ít hơn ngày thứ ba 36 sản phẩm. Hỏi trung bình mỗi ngày nhà máy đó sản xuất được bao nhiêu sản phẩm?",
+  "dap_an": "$276$ sản phẩm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tìm đủ số sản phẩm từng ngày rồi lấy tổng chia $3$. Đọc kĩ chiều so sánh: ngày thứ nhất **nhiều hơn** ngày thứ hai ⇒ ngày thứ hai **ít** hơn ($270-18$); ngày thứ nhất **ít hơn** ngày thứ ba ⇒ ngày thứ ba **nhiều** hơn ($270+36$).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNgày thứ hai nhà máy sản xuất được số sản phẩm là: $270-18=252$ (sản phẩm)\n\nNgày thứ ba nhà máy sản xuất được số sản phẩm là: $270+36=306$ (sản phẩm)\n\nTrung bình mỗi ngày nhà máy sản xuất được số sản phẩm là: $\\left(270+252+306\\right):3=276$ (sản phẩm)\n\nĐáp số: $276$ sản phẩm",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "T14T000000304",
+  "loai": "tra_loi_ngan",
+  "de": "Một đội có ba xe chở hàng, xe thứ nhất chở được 45 tạ và chở ít hơn xe thứ hai 10 tạ. Trung bình cộng số hàng cả ba xe chở được ít hơn số hàng của xe thứ ba là 6 tạ. Hỏi cả ba xe chở được bao nhiêu tạ hàng?",
+  "dap_an": "$159$ tạ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: trung bình cộng ít hơn xe thứ ba $6$ tạ, tức là xe thứ ba **nhiều hơn** trung bình cộng $6$ tạ: xe thứ ba là $1$ đoạn trung bình cộng **thêm $6$**. Xe thứ nhất và xe thứ hai phải bù lại, nên bằng $2$ đoạn trung bình cộng **bớt $6$**. Cần tìm xe thứ hai trước: xe thứ nhất chở **ít hơn** xe thứ hai $10$ tạ nên xe thứ hai là $45+10$.\n\nVậy **hai lần trung bình cộng** $=45+55+6$. Tìm trung bình cộng, tìm xe thứ ba, rồi nhân trung bình cộng với $3$ xe ra số hàng của cả ba xe.\n\nChú ý: xe thứ nhất **ít hơn** xe thứ hai nên xe thứ hai phải **cộng** thêm $10$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nXe thứ hai chở được số tạ hàng là: $45+10=55$ (tạ)\n\nTa có sơ đồ:\n\n(Trung bìn",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "T14T000000289",
+  "loai": "tra_loi_ngan",
+  "de": "Có 5 xe ô tô chở thóc, trong đó có 3 xe, mỡi xe chở được 5 000 kg thóc và 2 xe, mỗi xe chở được 4500 kg. Hỏi trung bình mỗi xe chở được bao nhiêu tạ thóc?",
+  "dap_an": "$48$ tạ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: đề cho thóc bằng ki-lô-gam nhưng hỏi bằng **tạ**, nên đổi sang tạ trước ($1$ tạ $=100$ kg). Có $3$ xe chở số thóc như nhau và $2$ xe chở số thóc như nhau nên tìm tổng bằng phép nhân, rồi chia cho $5$ xe.\n\nChú ý: chia cho $5$ xe (tất cả các xe), không chia cho $2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $5000$ kg $=50$ tạ; $4500$ kg $=45$ tạ\n\nTổng số tạ thóc $5$ xe ô tô chở được là: $50\\times 3+45\\times 2=240$ (tạ)\n\nTrung bình mỗi xe chở được số tạ thóc là: $240:5=48$ (tạ)\n\nĐáp số: $48$ tạ",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "T14T000000290",
+  "loai": "tra_loi_ngan",
+  "de": "Biết trung bình cộng của bốn số là 3 200. Hỏi nếu thêm số thứ năm là 3 000 thì trung bình cộng của năm số là bao nhiêu?",
+  "dap_an": "$3160$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: biết trung bình cộng của bốn số thì biết **tổng bốn số**: $3200\\times 4$. Thêm số thứ năm thì tổng năm số bằng tổng bốn số cộng $3000$, rồi chia cho $5$.\n\nChú ý: không lấy $\\left(3200+3000\\right):2$ — số thứ năm chỉ là một trong năm số.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng của bốn số là: $3200\\times 4=12800$\n\nTổng của năm số là: $12800+3000=15800$\n\nTrung bình cộng của năm số là: $15800:5=3160$\n\nĐáp số: $3160$",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "T14T000000039",
+  "loai": "tra_loi_ngan",
+  "de": "Biết tuổi trung bình của 32 học sinh trong lớp là 9 tuổi. Nếu tính cả cô giáo thì tuổi trung bình của cô và 32 học sinh là 10 tuổi. Hỏi cô giáo bao nhiêu tuổi?",
+  "dap_an": "$42$ tuổi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: biết trung bình cộng và số người thì biết **tổng** (TBC × số người). Tổng tuổi $33$ người (có cô) trừ tổng tuổi $32$ học sinh là tuổi cô.\n\nChú ý: tính cả cô là $33$ người, không phải $32$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng số tuổi của $32$ học sinh là: $9\\times 32=288$ (tuổi)\n\nTổng số tuổi của cô giáo và $32$ học sinh là: $10\\times 33=330$ (tuổi)\n\nTuổi của cô giáo là: $330-288=42$ (tuổi)\n\nĐáp số: $42$ tuổi",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "T14T000000291",
+  "loai": "tra_loi_ngan",
+  "de": "Hiện nay, trung bình số tuổi của bố, mẹ và Hoa là 30 tuổi. Nếu không tính tuổi bố thì trung bình cộng số tuổi của mẹ và Hoa là 23 tuổi. Tính tuổi bố hiện nay.",
+  "dap_an": "$44$ tuổi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: từ trung bình cộng suy ra **tổng**. Tổng tuổi cả ba người $=30\\times 3$. Tổng tuổi mẹ và Hoa $=23\\times 2$. Tổng cả ba trừ tổng mẹ và Hoa là tuổi bố.\n\nChú ý: nhân với đúng số người ($3$ người, rồi $2$ người).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng số tuổi của bố, mẹ và Hoa là: $30\\times 3=90$ (tuổi)\n\nTổng số tuổi của mẹ và Hoa là: $23\\times 2=46$ (tuổi)\n\nTuổi bố hiện nay là: $90-46=44$ (tuổi)\n\nĐáp số: $44$ tuổi",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "T14T000000292",
+  "loai": "tu_luan",
+  "de": "Gia đình Hải có 4 người nhưng chỉ có bố và mẹ đi làm. Lương tháng của mẹ là 15000000 đồng, lương của bố gấp đôi lương của mẹ. Mỗi tháng gia đình Hải đều để dành được 20 000 000 đổng. Hỏi:\na) Mỗi tháng trung bình mỗi người đã tiêu bao nhiêu tiền?\nb) Nếu Hải có thêm một người em nữa và mẹ vẫn để dành như trước thì số tiền tiêu trung bình hàng tháng của mỗi người sẽ giảm đi bao nhiêu tiền?",
+  "dap_an": "a) $6250000$ đồng; b) $1250000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: tiền tiêu của cả gia đình $=$ tiền kiếm được $-$ tiền để dành. Lương bố gấp đôi lương mẹ nên tìm lương bố trước. Số tiền tiêu trung bình của mỗi người $=$ tiền tiêu cả nhà $:$ số người **trong gia đình** (cả người không đi làm).\n\nÝ b dùng kết quả ý a: khi có thêm em thì gia đình có $5$ người, cả nhà vẫn kiếm và để dành như cũ nên tiền tiêu cả nhà không đổi, chỉ chia cho $5$ người. Số tiền \"giảm đi\" là hiệu của số tiền trung bình mỗi người lúc trước (ý a) và lúc sau.\n\nChú ý: số người là $4$ (rồi $5$), không phải $2$ người đi làm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Lương mỗi tháng của bố là: $15000000\\times 2=30000000$ (đồng)\n\nMỗi tháng cả gia đình kiếm được ",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "T14T000000293",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm trung bình cộng của các dãy số sau:\n3; 4; 5; 6;…; 98; 99",
+  "dap_an": "$51$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: dãy $3$; $4$; $5$; …; $99$ là dãy **cách đều** (hai số liền nhau hơn kém $1$). Trong dãy cách đều, các cặp số cách đều hai đầu như $3+99$; $4+98$; $5+97$; … đều có tổng bằng $102$, nên trung bình cộng của cả dãy bằng trung bình cộng của số đầu và số cuối.\n\nKhông cần cộng cả dãy: trung bình cộng bằng (số đầu cộng số cuối) chia $2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDãy số trên là dãy số cách đều nên trung bình cộng các số hạng của dãy là: $\\left(3+99\\right):2=51$\n\nĐáp số: $51$",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "T14T000000294",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm trung bình cộng của các dãy số sau:\n12; 15; 18;…; 2019; 2022",
+  "dap_an": "$1017$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: dãy $12$; $15$; $18$; …; $2022$ là dãy **cách đều** (hai số liền nhau hơn kém $3$). Dãy cách đều thì trung bình cộng của cả dãy bằng trung bình cộng của số đầu và số cuối.\n\nKhông cần biết dãy có bao nhiêu số hạng, chỉ cần số đầu và số cuối.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDãy số trên là dãy số cách đều nên trung bình cộng các số hạng của dãy là: $\\left(12+2022\\right):2=1017$\n\nĐáp số: $1017$",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "T14T000000295",
+  "loai": "tra_loi_ngan",
+  "de": "Tính trung bình cộng của các số lẻ nhỏ hơn 1000.",
+  "dap_an": "$500$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: các số lẻ nhỏ hơn $1000$ là $1$; $3$; $5$; …; $999$, hai số liền nhau hơn kém $2$ nên là dãy **cách đều**. Trung bình cộng của dãy cách đều bằng trung bình cộng của số đầu và số cuối.\n\nChú ý: số lẻ lớn nhất nhỏ hơn $1000$ là $999$ (không phải $1000$).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCác số lẻ nhỏ hơn $1000$ là: $1$; $3$; $5$; …; $999$ là dãy số cách đều.\n\nTrung bình cộng của các số lẻ nhỏ hơn $1000$ là: $\\left(1+999\\right):2=500$\n\nĐáp số: $500$",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "T14T000000282",
+  "loai": "tra_loi_ngan",
+  "de": "Bảng sau ghi cân nặng của bốn bạn học sinh:\nBạn\nMia\nJenny\nJohn\nTom\nCân nặng\n36kg\n39kg\n42kg\n43kg\nHỏi trung bình mỗi bạn cân nặng bao nhiêu ki-lô-gam?",
+  "dap_an": "$40$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: trung bình cộng của nhiều số bằng **tổng các số chia cho số các số**. Ở đây cộng cân nặng của $4$ bạn rồi chia cho $4$.\n\nChú ý: chia cho số bạn ($4$), không phải chia cho số khác.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTrung bình mỗi bạn nặng số ki-lô-gam là: $\\left(36+39+42+43\\right):4=40$ (kg)\n\nĐáp số: $40$ kg",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "T14T000000283",
+  "loai": "tra_loi_ngan",
+  "de": "Trung bình cộng của ba số là 9, nếu thêm số thứ tư thì trung bình cộng của bốn số là 11. Tìm số thứ tư.",
+  "dap_an": "$17$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: biết trung bình cộng và số các số thì tìm được **tổng**: tổng $=$ trung bình cộng $\\times$ số các số. Tổng bốn số hơn tổng ba số chính là số thứ tư.\n\nChú ý: tổng ba số là $9\\times 3$, tổng bốn số là $11\\times 4$ (nhân với số các số tương ứng, không nhân cùng một số).\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng ba số là: $9\\times 3=27$\n\nTổng của bốn số là: $11\\times 4=44$\n\nSố thứ tư là: $44-27=17$\n\nĐáp số: $17$",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "T14T000000284",
+  "loai": "tra_loi_ngan",
+  "de": "Cho dãy số 2; 4; 6; 8;…; 20. Tìm trung bình cộng của các số trong dãy số đó.",
+  "dap_an": "$11$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: dãy $2$; $4$; $6$; $8$; …; $20$ là dãy **cách đều** (hai số liền nhau hơn kém $2$). Trong dãy cách đều, các cặp số cách đều hai đầu như $2+20$; $4+18$; $6+16$; … đều có tổng bằng $22$, nên trung bình cộng của cả dãy bằng trung bình cộng của số đầu và số cuối.\n\nVậy trung bình cộng của dãy bằng (số đầu cộng số cuối) chia $2$, không cần cộng cả dãy.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì dãy số trên là dãy số cách đều nên trung bình cộng các số hạng của dãy là: $\\left(2+20\\right):2=11$\n\nĐáp số: $11$",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "T14T000000285",
+  "loai": "tra_loi_ngan",
+  "de": "Tổ bạn An được thưởng 24 ngôi sao, tổ bạn Bình được thưởng 28 ngôi sao. Tổ bạn Minh được thưởng số ngôi sao bằng trung bình cộng số ngôi sao của ba tổ. Hỏi tổ bạn Minh được thưởng bao nhiêu ngôi sao?",
+  "dap_an": "$26$ ngôi sao",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: số ngôi sao của tổ Minh **bằng** trung bình cộng của ba tổ. Vẽ sơ đồ: trung bình cộng là $1$ đoạn, tổ Minh cũng là $1$ đoạn như vậy. Ba tổ có $3$ đoạn, trừ đoạn của tổ Minh còn $2$ đoạn là số ngôi sao của tổ An và tổ Bình.\n\nVậy **hai lần trung bình cộng** $=24+28$, từ đó tìm được trung bình cộng, cũng là số ngôi sao của tổ Minh.\n\nChú ý: lỗi hay gặp là lấy $\\left(24+28\\right):3$ — sai vì tổ Minh cũng là một trong ba tổ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Trung bình cộng: 1 đoạn; tổ Minh: 1 đoạn bằng đoạn trung bình cộng; tổ An và tổ Bình: 2 đoạn bằng đoạn trung bình cộng, cộng lại 52 ngôi sao)\n\nHai lần trung bình cộng số ngôi sao của ba tổ là: $2",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "T14T000000286",
+  "loai": "tra_loi_ngan",
+  "de": "An đọc xong một quyển truyện trong ba ngày. Ngày thứ nhất An đọc 39 trang, ngày thứ hai đọc 41 trang, ngày thứ ba đọc nhiều hơn trung bình cộng của cả ba ngày là 8 trang. Hỏi quyển truyện đó dày bao nhiêu trang?",
+  "dap_an": "$132$ trang",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: ngày thứ ba đọc nhiều hơn trung bình cộng $8$ trang, nên ngày thứ ba là $1$ đoạn trung bình cộng **thêm $8$ trang**. Ngày thứ nhất và ngày thứ hai (cộng lại $39+41$) phải bù lại, nên chỉ bằng $2$ đoạn trung bình cộng **bớt $8$ trang**.\n\nVậy **hai lần trung bình cộng** $=39+41+8$. Tìm trung bình cộng rồi nhân với $3$ ngày ra số trang cả quyển.\n\nChú ý: \"nhiều hơn\" thì **cộng** $8$; nếu là \"ít hơn\" thì trừ $8$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Trung bình cộng: 1 đoạn; ngày thứ ba: 1 đoạn và thêm 8 trang; ngày thứ nhất và ngày thứ hai: 2 đoạn còn thiếu 8 trang)\n\nHai lần trung bình cộng số trang An đọc trong cả ba ngày là: $39+41+8=88$ (trang)\n\nTru",
+  "co_hinh": false
+ },
+ {
+  "ma_cau": "T14T000000287",
+  "loai": "tra_loi_ngan",
+  "de": "Đầu năm học nhà trường kiểm tra sức khỏe của học sinh. Bạn Hà nặng 36 kg, bạn Nam nặng 34 kg. Bạn Cường có số cân nặng kém trung bình cộng số cân nặng của ba bạn là 4 kg. Hỏi bạn Cường cân nặng bao nhiêu ki-lô-gam?",
+  "dap_an": "$29$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\nMấu chốt: Cường **kém** trung bình cộng $4$ kg nên cân nặng của Cường là $1$ đoạn trung bình cộng **bớt $4$ kg**. Hà và Nam phải bù lại, nên cân nặng của hai bạn (cộng lại $36+34$) bằng $2$ đoạn trung bình cộng **thêm $4$ kg**.\n\nVậy **hai lần trung bình cộng** $=36+34-4$. Tìm trung bình cộng rồi trừ $4$ kg ra cân nặng của Cường.\n\nChú ý: \"kém\" thì **trừ** $4$ (ngược với bài \"hơn\").\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\n(Trung bình cộng: 1 đoạn; bạn Cường: 1 đoạn còn thiếu 4 kg; Hà và Nam: 2 đoạn và thêm 4 kg)\n\nHai lần trung bình cộng cân nặng của ba bạn là: $36+34-4=66$ (kg)\n\nTrung bình cộng số cân nặng của ba bạn là: $66:2=33$ (kg)\n\nCân nặng của Cường là: $33",
+  "co_hinh": false
+ }
+]

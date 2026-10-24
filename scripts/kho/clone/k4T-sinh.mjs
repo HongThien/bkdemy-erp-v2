@@ -27,7 +27,7 @@ const HANG = { 2: ['chục', 'đơn vị'], 3: ['trăm', 'chục', 'đơn vị']
 const noi = (a) => a.map((x) => `$${x}$`).join('; ')
 
 /** lời giải 2 phần — buoc: mảng 3–6 chuỗi; p2: mảng dòng */
-function lg({ mau_chot, buoc, chu_y, p2 }) {
+export function lg({ mau_chot, buoc, chu_y, p2 }) {
   if (buoc.length < 3 || buoc.length > 6) throw new Error(`số bước ${buoc.length} (cần 3–6)`)
   return ['**Phần 1. Hướng dẫn**', `**Mấu chốt:** ${mau_chot}`, ...buoc.map((b, i) => `**Bước ${i + 1}.** ${b}`), ...(chu_y ? [`**Chú ý:** ${chu_y}`] : []), '**Phần 2. Trình bày**', ...p2].join('\n\n')
 }
