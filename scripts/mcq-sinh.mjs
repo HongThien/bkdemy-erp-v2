@@ -21,6 +21,7 @@ import { dirname, join } from 'node:path'
 import { parseHuuTi, hinhThuc, ratEq } from './lib/huuti.mjs'
 import { kiemKeyVoiDapAn } from './lib/so-vn.mjs'
 import { chuanHoaFactorText, evalFactorText, chuanHoaTapText, evalTapText, chuanHoaThuTu, evalThuTu, chuanHoaPhanBien, evalPhanBien, chuanHoaDonThucKetQua, evalDonThucKetQua, chuanHoaDaThuc, evalDaThucKetQua, chuanHoaChiaDaThuc, evalChiaDaThucKetQua, chuanHoaDkChiaHet, evalDkChiaHetKetQua, chuanHoaHoanThienBP, evalHoanThienBPKetQua, chuanHoaTachBinhPhuong, evalTachBinhPhuongKetQua, chuanHoaTongHieuLapPhuong, evalTongHieuLapPhuongKetQua, chuanHoaRutNhanTuChung, evalRutNhanTuChungKetQua, chuanHoaDanhSachNghiem, evalDanhSachNghiemKetQua, chuanHoaBatDangThuc, evalBatDangThucKetQua, chuanHoaCapNghiem, evalCapNghiemKetQua, chuanHoaCanThucKetQua, evalCanThucKetQuaVal, chuanHoaDkxdCanThuc, evalDkxdCanThucKetQua, chuanHoaDapSoThucTe, evalDapSoThucTeKetQua, chuanHoaPtPhanThucKetQua, evalPtPhanThucKetQua, chuanHoaRutGonCanKetQua, evalRutGonCanKetQuaVal, chuanHoaHePtTongTich, evalHePtTongTichKetQua } from './lib/mini-dang.mjs'
+import { chuanHoaLuyThuaText, chuanHoaChiaHet25 } from './lib/mini-dang.mjs' // DẠNG 57–58 (24/10) — T106020601 tổng luỹ thừa đan dấu · T106030201 chia hết cho 2, 5
 // (T108010501/T108020101 dùng lại chuanHoaDaThuc/evalDaThucKetQua — đáp số là 1 đa thức, giống T108010202/302/303)
 // (T108010301 dùng lại chuanHoaDonThucKetQua/evalDonThucKetQua — đáp số vẫn là 1 đơn thức)
 // (T108010302 dùng lại chuanHoaDaThuc/evalDaThucKetQua — đáp số là 1 đa thức, giống T108010202)
@@ -32,6 +33,9 @@ const args = process.argv.slice(2)
 const opt = (k, d) => { const i = args.indexOf(k); return i >= 0 && args[i + 1] && !args[i + 1].startsWith('--') ? args[i + 1] : d }
 const has = (k) => args.includes(k)
 const THAY = opt('--thay') // lý do thay form cũ chưa duyệt — xem mục 5) ở đầu file
+// --theo-dap-so (24/10, MCQ cho dạng bài NDB): kiểm MỌI câu theo khuôn 'đáp số thực tế' (chuanHoaDapSoThucTe) — cặp với
+// mcq-auto.mjs --theo-dap-so; không ghi danh mã dạng cũ 'chờ' (T1xx000000) vào TEXT_DANG. Phải gõ cờ ở CẢ --verify lẫn --ghi.
+const THEO_DAP_SO = has('--theo-dap-so')
 
 // Pool 1 (spec §2) — 9 dạng lớp 7 "Số hữu tỉ" nhóm tính toán.
 const POOL1 = ['T107010201', 'T107010202', 'T107010203', 'T107010206', 'T107010207', 'T107010401', 'T107010403', 'T107010404', 'T107010301']
@@ -387,6 +391,8 @@ const TEXT_FN = {
 // (đáp số có chữ cái, vd "x^3y^2z^6") — nhận diện bằng đáp số kho CÓ CHỨA chữ cái hay không. KHÔNG dùng blanket
 // TEXT_DANG.has() cho các dạng này.
 function laHinhThucText(dang, dapAn) {
+  if (dang === 'T106020601') return /frac/.test(String(dapAn ?? '')) && /\^/.test(String(dapAn ?? '')) // 24/10: chỉ sub-shape đáp số (q^{n+k}+1)/(q^k+1)
+  if (THEO_DAP_SO && !TEXT_FN[dang]) return true
   if (dang === 'T107010103') return /</.test(String(dapAn ?? ''))
   if (dang === 'T108010103') return /[a-zA-Z]/.test(String(dapAn ?? ''))
   return TEXT_DANG.has(dang)
@@ -394,6 +400,9 @@ function laHinhThucText(dang, dapAn) {
 // Kho: --kho dai (mặc định) | hgt — chọn bộ bảng theo nhánh (CLAUDE.md §1.6, bảng RIÊNG không gộp).
 // Chỉ table NAME khác nhau — parser/rule sinh nhiễu (mini-dang.mjs) dùng CHUNG, dispatch theo mã dạng
 // (T1xx.. Đại vs T3xx.. HGT không đụng nhau nên TEXT_DANG/TEXT_FN gộp chung 1 dict vẫn an toàn).
+TEXT_FN.T106020601 = { canon: chuanHoaLuyThuaText, val: chuanHoaLuyThuaText } // 24/10, cặp với mcq-auto.mjs
+TEXT_DANG.add('T106030201'); TEXT_FN.T106030201 = { canon: chuanHoaChiaHet25, val: chuanHoaChiaHet25 } // 24/10, DẠNG 58
+const fnText = (dang) => TEXT_FN[dang] ?? (THEO_DAP_SO ? { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua } : undefined)
 const KHO = {
   dai: { cauTbl: 'dai_cau_hoi', banDoTbl: 'dai_ban_do', formTbl: 'dai_cau_form_tn', ruleTbl: 'dai_mcq_rule' },
   hgt: { cauTbl: 'hgt_cau_hoi', banDoTbl: 'hgt_ban_do', formTbl: 'hgt_cau_form_tn', ruleTbl: 'hgt_mcq_rule' },
@@ -427,7 +436,7 @@ async function list() {
   const cau = [], bo = []
   for (const r of rows) {
     if (laHinhThucText(r.dang_chinh, r.dap_an)) { // đáp số là BIỂU THỨC/TẬP — kiểm bằng fn.val riêng theo dạng, không qua parseHuuTi
-      const fn = TEXT_FN[r.dang_chinh]
+      const fn = fnText(r.dang_chinh)
       const n2 = fn.val(r.dap_an, r.dang_chinh) // dang: chuanHoaDapSoThucTe cần khối để đọc phẩy thập phân (18/10); hàm khác bỏ qua
       if (n2 == null) { bo.push({ ma_cau: r.ma_cau, dap_an: r.dap_an, ly_do: 'không tính được giá trị' }); continue }
       if (cau.length < n) cau.push({ ...r, key_gia_tri: fn.canon(r.dap_an, r.dang_chinh), hinh_thuc: r.dang_chinh === 'T106030301' ? 'tap' : 'bieu_thuc' })
@@ -452,7 +461,7 @@ async function list() {
 // Dạng ĐÁP SỐ LÀ BIỂU THỨC/TẬP — so TEXT chuẩn hoá + giá trị (nhân chứng thứ hai), KHÔNG dùng parseHuuTi/hinhThuc.
 function kiemCauText(item, dbRow, ruleMap) {
   const err = []
-  const fn = TEXT_FN[dbRow.dang_chinh]
+  const fn = fnText(dbRow.dang_chinh)
   const key = fn.canon(dbRow.dap_an, dbRow.dang_chinh), nKey = fn.val(dbRow.dap_an, dbRow.dang_chinh)
   if (nKey == null) return [`đáp số kho không parse được: ${dbRow.dap_an}`]
   const lc = item.lua_chon
@@ -549,7 +558,7 @@ async function ghi(file) {
   let n = 0, skip = 0
   for (const it of pass) {
     const { rows } = await c.query(`select dap_an, dang_chinh from ${CAU_TBL} where ma_cau = $1`, [it.ma_cau])
-    const keyCanon = laHinhThucText(rows[0]?.dang_chinh, rows[0]?.dap_an) ? TEXT_FN[rows[0]?.dang_chinh].canon(rows[0]?.dap_an ?? '', rows[0]?.dang_chinh) : parseHuuTi(rows[0]?.dap_an ?? '').canon
+    const keyCanon = laHinhThucText(rows[0]?.dang_chinh, rows[0]?.dap_an) ? fnText(rows[0]?.dang_chinh).canon(rows[0]?.dap_an ?? '', rows[0]?.dang_chinh) : parseHuuTi(rows[0]?.dap_an ?? '').canon
     await c.query('begin')
     try {
       if (THAY) await c.query(`update ${TBL} set xoa_at = now(), tu_choi_ly_do = $2 where ma_cau = $1 and xoa_at is null and not da_duyet`, [it.ma_cau, THAY])

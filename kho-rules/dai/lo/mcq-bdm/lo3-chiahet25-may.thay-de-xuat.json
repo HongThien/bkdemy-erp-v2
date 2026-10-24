@@ -1,0 +1,282 @@
+[
+ {
+  "ma_cau": "T106030201001",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "text": "Chia hết cho 2: $48;\\ 72;\\ 110;\\ 164$. Chia hết cho 5: $135;\\ 110;\\ 25$.",
+    "dung": true
+   },
+   {
+    "text": "Chia hết cho 2: $48;\\ 72;\\ 110;\\ 164$. Chia hết cho 5: $135;\\ 25$.",
+    "dung": false,
+    "rule": "R371",
+    "duong_sai": "chia hết cho 5 chỉ lấy số tận cùng 5, bỏ sót số tận cùng 0"
+   },
+   {
+    "text": "Chia hết cho 2: $48;\\ 72;\\ 164$. Chia hết cho 5: $135;\\ 110;\\ 25$.",
+    "dung": false,
+    "rule": "R372",
+    "duong_sai": "số tận cùng 0 chỉ xếp vào nhóm chia hết cho 5, bỏ khỏi nhóm chia hết cho 2"
+   },
+   {
+    "text": "Chia hết cho 2: $48;\\ 25$. Chia hết cho 5: $135;\\ 110;\\ 25$.",
+    "dung": false,
+    "rule": "R373",
+    "duong_sai": "xét chữ số ĐẦU chẵn thay vì chữ số tận cùng chẵn"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T106030201002",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "text": "Chia hết cho 2: $350;\\ 86;\\ 128;\\ 90$. Chia hết cho 5: $45$.",
+    "dung": false,
+    "rule": "R371",
+    "duong_sai": "chia hết cho 5 chỉ lấy số tận cùng 5, bỏ sót số tận cùng 0"
+   },
+   {
+    "text": "Chia hết cho 2: $350;\\ 86;\\ 128;\\ 90$. Chia hết cho 5: $350;\\ 45;\\ 90$.",
+    "dung": true
+   },
+   {
+    "text": "Chia hết cho 2: $86;\\ 128$. Chia hết cho 5: $350;\\ 45;\\ 90$.",
+    "dung": false,
+    "rule": "R372",
+    "duong_sai": "số tận cùng 0 chỉ xếp vào nhóm chia hết cho 5, bỏ khỏi nhóm chia hết cho 2"
+   },
+   {
+    "text": "Chia hết cho 2: $350;\\ 45;\\ 90$. Chia hết cho 5: $350;\\ 86;\\ 128;\\ 90$.",
+    "dung": false,
+    "rule": "R374",
+    "duong_sai": "đảo hai dấu hiệu: xếp nhóm chia hết cho 2 và nhóm chia hết cho 5 ngược nhau"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T106030201003",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "text": "Chia hết cho 2: $54;\\ 460;\\ 92;\\ 608$. Chia hết cho 5: $125;\\ 215$.",
+    "dung": false,
+    "rule": "R371",
+    "duong_sai": "chia hết cho 5 chỉ lấy số tận cùng 5, bỏ sót số tận cùng 0"
+   },
+   {
+    "text": "Chia hết cho 2: $460;\\ 215;\\ 608$. Chia hết cho 5: $125;\\ 460;\\ 215$.",
+    "dung": false,
+    "rule": "R373",
+    "duong_sai": "xét chữ số ĐẦU chẵn thay vì chữ số tận cùng chẵn"
+   },
+   {
+    "text": "Chia hết cho 2: $54;\\ 460;\\ 92;\\ 608$. Chia hết cho 5: $125;\\ 460;\\ 215$.",
+    "dung": true
+   },
+   {
+    "text": "Chia hết cho 2: $125;\\ 460;\\ 215$. Chia hết cho 5: $54;\\ 460;\\ 92;\\ 608$.",
+    "dung": false,
+    "rule": "R374",
+    "duong_sai": "đảo hai dấu hiệu: xếp nhóm chia hết cho 2 và nhóm chia hết cho 5 ngược nhau"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T106030201004",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "text": "Chia hết cho 2: $242;\\ 88;\\ 56$. Chia hết cho 5: $100;\\ 675;\\ 120;\\ 705$.",
+    "dung": false,
+    "rule": "R372",
+    "duong_sai": "số tận cùng 0 chỉ xếp vào nhóm chia hết cho 5, bỏ khỏi nhóm chia hết cho 2"
+   },
+   {
+    "text": "Chia hết cho 2: $242;\\ 675;\\ 88$. Chia hết cho 5: $100;\\ 675;\\ 120;\\ 705$.",
+    "dung": false,
+    "rule": "R373",
+    "duong_sai": "xét chữ số ĐẦU chẵn thay vì chữ số tận cùng chẵn"
+   },
+   {
+    "text": "Chia hết cho 2: $100;\\ 675;\\ 120;\\ 705$. Chia hết cho 5: $100;\\ 242;\\ 88;\\ 120;\\ 56$.",
+    "dung": false,
+    "rule": "R374",
+    "duong_sai": "đảo hai dấu hiệu: xếp nhóm chia hết cho 2 và nhóm chia hết cho 5 ngược nhau"
+   },
+   {
+    "text": "Chia hết cho 2: $100;\\ 242;\\ 88;\\ 120;\\ 56$. Chia hết cho 5: $100;\\ 675;\\ 120;\\ 705$.",
+    "dung": true
+   }
+  ]
+ },
+ {
+  "ma_cau": "T106030201005",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "text": "Chia hết cho 2: $316;\\ 270;\\ 94;\\ 708;\\ 40$. Chia hết cho 5: $425;\\ 270;\\ 155;\\ 40$.",
+    "dung": true
+   },
+   {
+    "text": "Chia hết cho 2: $316;\\ 270;\\ 94;\\ 708;\\ 40$. Chia hết cho 5: $425;\\ 155$.",
+    "dung": false,
+    "rule": "R371",
+    "duong_sai": "chia hết cho 5 chỉ lấy số tận cùng 5, bỏ sót số tận cùng 0"
+   },
+   {
+    "text": "Chia hết cho 2: $316;\\ 94;\\ 708$. Chia hết cho 5: $425;\\ 270;\\ 155;\\ 40$.",
+    "dung": false,
+    "rule": "R372",
+    "duong_sai": "số tận cùng 0 chỉ xếp vào nhóm chia hết cho 5, bỏ khỏi nhóm chia hết cho 2"
+   },
+   {
+    "text": "Chia hết cho 2: $425;\\ 63;\\ 270;\\ 81;\\ 40$. Chia hết cho 5: $425;\\ 270;\\ 155;\\ 40$.",
+    "dung": false,
+    "rule": "R373",
+    "duong_sai": "xét chữ số ĐẦU chẵn thay vì chữ số tận cùng chẵn"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T106030201006",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "text": "Chia hết cho 2: $502;\\ 64;\\ 180;\\ 250;\\ 46$. Chia hết cho 5: $735;\\ 805$.",
+    "dung": false,
+    "rule": "R371",
+    "duong_sai": "chia hết cho 5 chỉ lấy số tận cùng 5, bỏ sót số tận cùng 0"
+   },
+   {
+    "text": "Chia hết cho 2: $502;\\ 64;\\ 180;\\ 250;\\ 46$. Chia hết cho 5: $735;\\ 180;\\ 250;\\ 805$.",
+    "dung": true
+   },
+   {
+    "text": "Chia hết cho 2: $502;\\ 64;\\ 46$. Chia hết cho 5: $735;\\ 180;\\ 250;\\ 805$.",
+    "dung": false,
+    "rule": "R372",
+    "duong_sai": "số tận cùng 0 chỉ xếp vào nhóm chia hết cho 5, bỏ khỏi nhóm chia hết cho 2"
+   },
+   {
+    "text": "Chia hết cho 2: $735;\\ 180;\\ 250;\\ 805$. Chia hết cho 5: $502;\\ 64;\\ 180;\\ 250;\\ 46$.",
+    "dung": false,
+    "rule": "R374",
+    "duong_sai": "đảo hai dấu hiệu: xếp nhóm chia hết cho 2 và nhóm chia hết cho 5 ngược nhau"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T106030201007",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "text": "Chia hết cho 2: $144;\\ 38;\\ 570;\\ 826;\\ 400$. Chia hết cho 5: $205;\\ 75$.",
+    "dung": false,
+    "rule": "R371",
+    "duong_sai": "chia hết cho 5 chỉ lấy số tận cùng 5, bỏ sót số tận cùng 0"
+   },
+   {
+    "text": "Chia hết cho 2: $205;\\ 611;\\ 826;\\ 400$. Chia hết cho 5: $205;\\ 570;\\ 75;\\ 400$.",
+    "dung": false,
+    "rule": "R373",
+    "duong_sai": "xét chữ số ĐẦU chẵn thay vì chữ số tận cùng chẵn"
+   },
+   {
+    "text": "Chia hết cho 2: $144;\\ 38;\\ 570;\\ 826;\\ 400$. Chia hết cho 5: $205;\\ 570;\\ 75;\\ 400$.",
+    "dung": true
+   },
+   {
+    "text": "Chia hết cho 2: $205;\\ 570;\\ 75;\\ 400$. Chia hết cho 5: $144;\\ 38;\\ 570;\\ 826;\\ 400$.",
+    "dung": false,
+    "rule": "R374",
+    "duong_sai": "đảo hai dấu hiệu: xếp nhóm chia hết cho 2 và nhóm chia hết cho 5 ngược nhau"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T106030201008",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "text": "Chia hết cho 2: $52;\\ 284;\\ 108$. Chia hết cho 5: $660;\\ 915;\\ 140;\\ 695;\\ 225$.",
+    "dung": false,
+    "rule": "R372",
+    "duong_sai": "số tận cùng 0 chỉ xếp vào nhóm chia hết cho 5, bỏ khỏi nhóm chia hết cho 2"
+   },
+   {
+    "text": "Chia hết cho 2: $660;\\ 284;\\ 695;\\ 225$. Chia hết cho 5: $660;\\ 915;\\ 140;\\ 695;\\ 225$.",
+    "dung": false,
+    "rule": "R373",
+    "duong_sai": "xét chữ số ĐẦU chẵn thay vì chữ số tận cùng chẵn"
+   },
+   {
+    "text": "Chia hết cho 2: $660;\\ 915;\\ 140;\\ 695;\\ 225$. Chia hết cho 5: $660;\\ 52;\\ 284;\\ 140;\\ 108$.",
+    "dung": false,
+    "rule": "R374",
+    "duong_sai": "đảo hai dấu hiệu: xếp nhóm chia hết cho 2 và nhóm chia hết cho 5 ngược nhau"
+   },
+   {
+    "text": "Chia hết cho 2: $660;\\ 52;\\ 284;\\ 140;\\ 108$. Chia hết cho 5: $660;\\ 915;\\ 140;\\ 695;\\ 225$.",
+    "dung": true
+   }
+  ]
+ },
+ {
+  "ma_cau": "T106030201009",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "text": "Chia hết cho 2: $418;\\ 530;\\ 702;\\ 340;\\ 956;\\ 44$. Chia hết cho 5: $530;\\ 65;\\ 340;\\ 275$.",
+    "dung": true
+   },
+   {
+    "text": "Chia hết cho 2: $418;\\ 530;\\ 702;\\ 340;\\ 956;\\ 44$. Chia hết cho 5: $65;\\ 275$.",
+    "dung": false,
+    "rule": "R371",
+    "duong_sai": "chia hết cho 5 chỉ lấy số tận cùng 5, bỏ sót số tận cùng 0"
+   },
+   {
+    "text": "Chia hết cho 2: $418;\\ 702;\\ 956;\\ 44$. Chia hết cho 5: $530;\\ 65;\\ 340;\\ 275$.",
+    "dung": false,
+    "rule": "R372",
+    "duong_sai": "số tận cùng 0 chỉ xếp vào nhóm chia hết cho 5, bỏ khỏi nhóm chia hết cho 2"
+   },
+   {
+    "text": "Chia hết cho 2: $418;\\ 65;\\ 87;\\ 275;\\ 44$. Chia hết cho 5: $530;\\ 65;\\ 340;\\ 275$.",
+    "dung": false,
+    "rule": "R373",
+    "duong_sai": "xét chữ số ĐẦU chẵn thay vì chữ số tận cùng chẵn"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T106030201010",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "text": "Chia hết cho 2: $624;\\ 370;\\ 452;\\ 96;\\ 230;\\ 808$. Chia hết cho 5: $1005;\\ 715;\\ 55$.",
+    "dung": false,
+    "rule": "R371",
+    "duong_sai": "chia hết cho 5 chỉ lấy số tận cùng 5, bỏ sót số tận cùng 0"
+   },
+   {
+    "text": "Chia hết cho 2: $624;\\ 370;\\ 452;\\ 96;\\ 230;\\ 808$. Chia hết cho 5: $1005;\\ 370;\\ 715;\\ 230;\\ 55$.",
+    "dung": true
+   },
+   {
+    "text": "Chia hết cho 2: $624;\\ 452;\\ 96;\\ 808$. Chia hết cho 5: $1005;\\ 370;\\ 715;\\ 230;\\ 55$.",
+    "dung": false,
+    "rule": "R372",
+    "duong_sai": "số tận cùng 0 chỉ xếp vào nhóm chia hết cho 5, bỏ khỏi nhóm chia hết cho 2"
+   },
+   {
+    "text": "Chia hết cho 2: $1005;\\ 370;\\ 715;\\ 230;\\ 55$. Chia hết cho 5: $624;\\ 370;\\ 452;\\ 96;\\ 230;\\ 808$.",
+    "dung": false,
+    "rule": "R374",
+    "duong_sai": "đảo hai dấu hiệu: xếp nhóm chia hết cho 2 và nhóm chia hết cho 5 ngược nhau"
+   }
+  ]
+ }
+]
