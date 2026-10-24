@@ -74,8 +74,8 @@ export default function BangChuyenDeView() {
     try {
       const tenLop = lopId ? lops.find(([id]) => id === lopId)?.[1] ?? '' : ''
       await xuatBang(kieu, {
-        tieuDe: de?.ten ?? 'Kết quả', phu: [de ? nhanLoai(de.loai_de) : null, de?.khoi ? `Khối ${de.khoi}` : null, tenLop ? `Lớp ${tenLop}` : 'Cả đề', cap === 'chu_de' ? 'Theo chủ đề' : 'Theo chuyên đề'].filter(Boolean).join(' · '),
-        cot: bang.cot, hs: sapXep, capTen: cap === 'chu_de' ? 'chủ đề' : 'chuyên đề',
+        tieuDe: de?.ten ?? 'Kết quả', nhan: cap === 'chu_de' ? 'Kết quả theo chủ đề' : 'Kết quả theo chuyên đề', capNhan: cap === 'chu_de' ? 'Chủ đề' : 'Chuyên đề',
+        cot: bang.cot, hs: sapXep,
         tenFile: `KetQua_${(de?.ten ?? 'de').replace(/[^\p{L}\p{N}]+/gu, '_')}_${tenLop || 'CaDe'}_${cap === 'chu_de' ? 'ChuDe' : 'ChuyenDe'}${huong === 'doc' ? '_Doc' : ''}`, huong,
       })
     } catch (e) {
@@ -192,36 +192,39 @@ function OPct({ p }: { p: number | undefined }) {
 // F), không theo px cố định ⇒ trang co về A4 thì chữ vẫn to. Bản DỌC: cột chuyên đề chỉ ghi số thứ tự (1, 2, …) + chú giải tên ở
 // trên bảng, lớp ghi dưới tên em — bỏ được 1 cột, đủ chỗ cho khổ dọc.
 type Huong = 'ngang' | 'doc'
-type XuatInput = { tieuDe: string; phu: string; cot: BangCDCot[]; hs: BangCDHS[]; capTen: string; tenFile: string; huong: Huong }
+type XuatInput = { tieuDe: string; nhan: string; capNhan: string; cot: BangCDCot[]; hs: BangCDHS[]; tenFile: string; huong: Huong }
 const F = 18 // px — cỡ chữ ô; mọi bề rộng là bội của F
 const KHUON = {
   ngang: { ten: 11, lop: 3.5, cd: 5.5, diem: 3.8, hang: 3.8, toiThieu: 44 },
   doc: { ten: 12, lop: 0, cd: 4.2, diem: 3.6, hang: 3.4, toiThieu: 48 }, // Thùy 23/10: bản dọc 30F chữ to quá ⇒ ~48F (≈11pt trên A4)
 }
-function TagCap({ nc, nho, ngan }: { nc?: boolean; nho?: boolean; ngan?: boolean }) {
-  return <span className={`inline-block rounded px-1 font-semibold leading-snug ${nho ? 'text-[9.5px]' : ''} ${nc ? 'bg-violet-100 text-violet-700' : 'bg-sky-100 text-sky-700'}`}>{ngan ? (nc ? 'NC' : 'CB') : nc ? 'Nâng cao' : 'Cơ bản'}</span>
+function TagCap({ nc, nho }: { nc?: boolean; nho?: boolean }) {
+  return <span className={`inline-block rounded px-1 font-semibold leading-snug ${nho ? 'text-[9.5px]' : ''} ${nc ? 'bg-violet-100 text-violet-700' : 'bg-sky-100 text-sky-700'}`}>{nc ? 'Nâng cao' : 'Cơ bản'}</span>
 }
 function BangIn({ x }: { x: XuatInput }) {
   const k = KHUON[x.huong], doc = x.huong === 'doc'
   const rong = Math.max(k.toiThieu, k.ten + k.lop + k.diem + k.hang + x.cot.length * k.cd) * F
-  const v = new Date(Date.now() + 7 * 3600 * 1000) // giờ VN, đọc phần UTC (không toISOString — CLAUDE §2)
-  const ngay = `${String(v.getUTCDate()).padStart(2, '0')}/${String(v.getUTCMonth() + 1).padStart(2, '0')}/${v.getUTCFullYear()}`
   const cel: CSSProperties = { borderBottom: '1px solid #e2e8f0', padding: `${F * 0.35}px ${F * 0.3}px` }
-  const dau: CSSProperties = { ...cel, borderTop: '1px solid #e2e8f0', background: '#f8fafc', color: '#475569', fontWeight: 600, fontSize: F * 0.72, verticalAlign: 'top', lineHeight: 1.2 }
+  const dau: CSSProperties = { ...cel, borderTop: '1px solid #cfe0f3', borderBottom: '1px solid #cfe0f3', background: '#eef5fc', color: '#1e3a5f', fontWeight: 600, fontSize: F * 0.72, verticalAlign: 'top', lineHeight: 1.2 }
+  // Thùy 24/10: đầu file = logo BK + dải 4 màu logo (hồng · cam · xanh dương · xanh lá); KHÔNG in dòng thông số (loại · khối ·
+  // lớp · số HS · ngày xuất) và chú thích cách tính — PH chỉ cần tên đề + bảng.
   return (
     <div style={{ width: rong + 2 * F, padding: F, background: '#fff', fontFamily: 'inherit', fontSize: F, color: '#1e293b' }}>
       <div data-dau="1">
-        <div style={{ fontSize: F * 1.45, fontWeight: 700, color: '#0f172a', lineHeight: 1.25 }}>{x.tieuDe}</div>
-        <div style={{ fontSize: F * 0.8, color: '#64748b', marginBottom: F * 0.6 }}>{x.phu} · {x.hs.length} học sinh · xuất {ngay}</div>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: F }}>
+          <img src={location.origin + '/Logo.png'} alt="BK ACADEMY" style={{ height: F * 1.9, display: 'block' }} />
+          <div style={{ fontSize: F * 0.72, fontWeight: 700, letterSpacing: F * 0.08, color: '#E8358F', textTransform: 'uppercase', textAlign: 'right' }}>{x.nhan}</div>
+        </div>
+        <div style={{ height: F * 0.22, borderRadius: F, margin: `${F * 0.55}px 0 ${F * 0.7}px`, background: 'linear-gradient(90deg, #E8358F 0%, #F39A2B 35%, #3E8FD0 68%, #7CC242 100%)' }} />
+        <div style={{ fontSize: F * 1.35, fontWeight: 700, color: '#0f172a', lineHeight: 1.25, marginBottom: F * 0.7 }}>{x.tieuDe}</div>
         {doc && (
-          <div style={{ display: 'grid', gridTemplateColumns: x.cot.length > 4 ? '1fr 1fr' : '1fr', gap: `${F * 0.2}px ${F * 0.8}px`, fontSize: F * 0.78, marginBottom: F * 0.6 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: x.cot.length > 4 ? '1fr 1fr' : '1fr', gap: `${F * 0.2}px ${F * 0.8}px`, fontSize: F * 0.78, marginBottom: F * 0.7 }}>
             {x.cot.map((c, i) => (
               <div key={c.ma} style={{ display: 'flex', gap: F * 0.35, alignItems: 'baseline' }}>
-                <b style={{ minWidth: F * 1.1, color: '#4338ca' }}>{i + 1}.</b>
-                <span>{c.ten} <TagCap nc={c.nang_cao} /></span>
+                <b style={{ whiteSpace: 'nowrap', color: '#3E8FD0' }}>{x.capNhan} {i + 1}:</b>
+                <span>{c.ten}</span>
               </div>
             ))}
-            <div style={{ gridColumn: '1 / -1', color: '#94a3b8', fontSize: F * 0.7 }}>Đầu cột: CB = Cơ bản · NC = Nâng cao</div>
           </div>
         )}
       </div>
@@ -237,8 +240,8 @@ function BangIn({ x }: { x: XuatInput }) {
             {!doc && <th style={{ ...dau, textAlign: 'left' }}>Lớp</th>}
             {x.cot.map((c, i) => (
               <th key={c.ma} style={{ ...dau, textAlign: 'center' }}>
-                <div style={{ marginBottom: F * 0.15 }}><TagCap nc={c.nang_cao} ngan={doc} /></div>
-                {doc ? <span style={{ fontSize: F * 0.95, color: '#4338ca' }}>{i + 1}</span> : c.ten}
+                <div style={{ marginBottom: F * 0.15 }}><TagCap nc={c.nang_cao} /></div>
+                {doc ? <span style={{ fontSize: F * 0.8, fontWeight: 700, color: '#3E8FD0' }}>{x.capNhan} {i + 1}</span> : c.ten}
               </th>
             ))}
             <th style={{ ...dau, textAlign: 'center' }}>Điểm</th>
@@ -260,7 +263,6 @@ function BangIn({ x }: { x: XuatInput }) {
           ))}
         </tbody>
       </table>
-      <div style={{ marginTop: F * 0.5, fontSize: F * 0.65, color: '#94a3b8' }}>% đạt = điểm đạt / điểm tối đa các câu thuộc {x.capTen}; câu chưa chấm chưa tính. Xếp hạng trên cả đề.</div>
     </div>
   )
 }

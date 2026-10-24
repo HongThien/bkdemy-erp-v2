@@ -77719,3 +77719,10 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - Lọc được 4 câu: Đề 2 Đ/S C3 (S.ABCD, IK/SI/SB/SK) · Đề 2 TLN C4 (IS/IO = 1) · Đề 3 Đ/S C2 (a S, b Đ, c Đ, d S — SH/SA = 2/5 chứ không 3/7) · Đề 3 TLN C3 (IM/IN = 1). Đáp số kiểm bằng toạ độ trong chính file dữ liệu.
 - Làm: `toan-site/khong-gian/giao-tuyen.html` (động cơ: một trang nhiều bài, ?bai=<id>&buoc=n) + `giao-tuyen-bai.js` (dữ liệu; điểm dựng thêm TÍNH từ điểm gốc bằng hàm cat/trungDiem). Mỗi bước = trạng thái đủ (mặt tô / mở rộng, đường nối / kéo dài, giao tuyến nhấn cam, nhìn thẳng mặt); mục Công cụ cho sửa tay. Nét khuất tự đứt theo góc nhìn (khối ghi độ sâu, như khung the-tich). Mượn CSS `../the-tich/khung.css`. Thêm thẻ vào `toan-site/index.html`.
 - Chưa: deploy site toan (vercel CLI tay), Thùy chưa xem.
+
+## 24/10 — Bản xuất bảng kết quả theo chuyên đề: đầu file BK (Thùy)
+
+- Đầu file = logo BK (`/Logo.png`) + nhãn "Kết quả theo chủ đề/chuyên đề" màu hồng logo + dải 4 màu logo (hồng · cam · xanh dương · xanh lá); đầu bảng nền xanh nhạt.
+- Bỏ dòng thông số (loại · khối · lớp · số HS · ngày xuất) và mọi chú thích (dòng "Đầu cột: CB…", ghi chú cách tính phần trăm) — Thùy: "ẩn đi chứ hiện làm gì cho mệt".
+- Tag đầu cột ghi đủ "Cơ bản"/"Nâng cao" cả bản dọc. Bản dọc: đầu cột "Chủ đề 1 / Chuyên đề 1…" (Thùy: không ghi mỗi số), chú giải "Chủ đề 1: tên…".
+- Verify dev: ảnh dọc + ngang đề KS K9, chế độ Chủ đề.
