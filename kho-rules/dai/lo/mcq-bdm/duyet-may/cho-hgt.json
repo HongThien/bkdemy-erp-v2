@@ -1,0 +1,5602 @@
+[
+ {
+  "ma_cau": "T310010104007",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\dfrac{304}{5}$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\dfrac{147}{5}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$\\dfrac{152}{5}$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\dfrac{142}{5}$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T310010104012",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$23$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$\\dfrac{23}{2}$"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\dfrac{25}{2}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\dfrac{19}{2}$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T310010104017",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\dfrac{283}{5}$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\dfrac{273}{10}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$\\dfrac{283}{10}$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\dfrac{263}{10}$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T312010107037",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$1;59$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": true,
+    "text": "$0;59$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$-1;59$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$0;60$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T312010601018",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$1;59$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": true,
+    "text": "$0;59$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$-1;59$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$0;60$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T312010601019",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$4$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$3$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": true,
+    "text": "$2$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$1$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T312010601020",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$4-\\sqrt{2}$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$3-\\sqrt{2}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$1-\\sqrt{2}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$2-\\sqrt{2}$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T312010704006",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$-10$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$-5$"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$-4$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$-6$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T312010803016",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$1$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$2$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$0$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-1$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T312010704007",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$2$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$0$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$1$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-1$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T312010803014",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$-44$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$-23$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$-22$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-24$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T312010705009",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$140;51$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$69;51$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$70;51$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$70;52$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T312010803013",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$20$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$10$"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$11$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$8$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T312010705012",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$10$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$5$"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$6$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$3$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010101001",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$5\\sqrt{3}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": true,
+    "text": "$4\\sqrt{3}$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$3\\sqrt{3}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$6\\sqrt{3}$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010101002",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$8$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$5$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": true,
+    "text": "$4$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$3$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010101003",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$8\\sqrt{2}$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$5\\sqrt{2}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$6\\sqrt{2}$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   },
+   {
+    "dung": true,
+    "text": "$4\\sqrt{2}$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010101004",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$6\\sqrt{3}$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$12\\sqrt{3}$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$5\\sqrt{3}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$8\\sqrt{3}$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010101005",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$6$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": true,
+    "text": "$5$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$4$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$3$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010101006",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$10\\sqrt{2}$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$6\\sqrt{2}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": true,
+    "text": "$5\\sqrt{2}$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$4\\sqrt{2}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010101007",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\widehat{C} = 30^0, AC = 10, AB = 10\\sqrt{3}$",
+    "duong_sai": "hoán đổi nhầm 2 giá trị"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\widehat{C} = 60^0, AC = 10\\sqrt{3}, AB = 10$",
+    "duong_sai": "nhầm góc phụ (lấy 90° trừ góc đúng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\widehat{C} = 30^0, AC = 10\\sqrt{3}, AB = 11$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị cuối"
+   },
+   {
+    "dung": true,
+    "text": "$\\widehat{C} = 30^0, AC = 10\\sqrt{3}, AB = 10$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010101008",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$\\widehat{C} = 60^0, AC = 6, AB = 6\\sqrt{3}$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\widehat{C} = 60^0, AC = 6\\sqrt{3}, AB = 6$",
+    "duong_sai": "hoán đổi nhầm 2 giá trị"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\widehat{C} = 75^0, AC = 6, AB = 6\\sqrt{3}$",
+    "duong_sai": "lệch góc thêm 15° (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\widehat{C} = 60^0, AC = 6, AB = 7\\sqrt{3}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị cuối"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010101009",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\widehat{C} = 45^0, AC = 20, AB = 10$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$\\widehat{C} = 45^0, AC = 10, AB = 10$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\widehat{C} = 60^0, AC = 10, AB = 10$",
+    "duong_sai": "lệch góc thêm 15° (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\widehat{C} = 45^0, AC = 10, AB = 11$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị cuối"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010101010",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\widehat{C} = 60^0, AC = 5\\sqrt{3}, AB = 5$",
+    "duong_sai": "nhầm góc phụ (lấy 90° trừ góc đúng)"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\widehat{C} = 45^0, AC = 5\\sqrt{3}, AB = 5$",
+    "duong_sai": "lệch góc thêm 15° (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$\\widehat{C} = 30^0, AC = 5\\sqrt{3}, AB = 5$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\widehat{C} = 30^0, AC = 5\\sqrt{3}, AB = 6$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị cuối"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010101011",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\widehat{B} = 60^0, AC = 7, AB = 7\\sqrt{3}$",
+    "duong_sai": "hoán đổi nhầm 2 giá trị"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\widehat{B} = 30^0, AC = 7\\sqrt{3}, AB = 7$",
+    "duong_sai": "nhầm góc phụ (lấy 90° trừ góc đúng)"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\widehat{B} = 75^0, AC = 7\\sqrt{3}, AB = 7$",
+    "duong_sai": "lệch góc thêm 15° (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$\\widehat{B} = 60^0, AC = 7\\sqrt{3}, AB = 7$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010101012",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$\\widehat{B} = 30^0, AC = 9, AB = 9\\sqrt{3}$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\widehat{B} = 30^0, AC = 9\\sqrt{3}, AB = 9$",
+    "duong_sai": "hoán đổi nhầm 2 giá trị"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\widehat{B} = 60^0, AC = 9, AB = 9\\sqrt{3}$",
+    "duong_sai": "nhầm góc phụ (lấy 90° trừ góc đúng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\widehat{B} = 30^0, AC = 9, AB = 10\\sqrt{3}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị cuối"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010101013",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\widehat{B} = 45^0, AC = 40, AB = 20$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$\\widehat{B} = 45^0, AC = 20, AB = 20$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\widehat{B} = 60^0, AC = 20, AB = 20$",
+    "duong_sai": "lệch góc thêm 15° (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\widehat{B} = 45^0, AC = 20, AB = 21$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị cuối"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010101014",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\widehat{C} = 30^0, AC = 8, AB = 8\\sqrt{3}$",
+    "duong_sai": "nhầm góc phụ (lấy 90° trừ góc đúng)"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\widehat{C} = 75^0, AC = 8, AB = 8\\sqrt{3}$",
+    "duong_sai": "lệch góc thêm 15° (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$\\widehat{C} = 60^0, AC = 8, AB = 8\\sqrt{3}$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\widehat{C} = 60^0, AC = 8, AB = 9\\sqrt{3}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị cuối"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010101015",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\widehat{C} = 30^0, AC = 6, AB = 6\\sqrt{3}$",
+    "duong_sai": "hoán đổi nhầm 2 giá trị"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\widehat{C} = 60^0, AC = 6\\sqrt{3}, AB = 6$",
+    "duong_sai": "nhầm góc phụ (lấy 90° trừ góc đúng)"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\widehat{C} = 45^0, AC = 6\\sqrt{3}, AB = 6$",
+    "duong_sai": "lệch góc thêm 15° (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$\\widehat{C} = 30^0, AC = 6\\sqrt{3}, AB = 6$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010101016",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$\\widehat{B} = 60^0, AC = 11\\sqrt{3}, AB = 11$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\widehat{B} = 60^0, AC = 11, AB = 11\\sqrt{3}$",
+    "duong_sai": "hoán đổi nhầm 2 giá trị"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\widehat{B} = 30^0, AC = 11\\sqrt{3}, AB = 11$",
+    "duong_sai": "nhầm góc phụ (lấy 90° trừ góc đúng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\widehat{B} = 60^0, AC = 11\\sqrt{3}, AB = 12$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị cuối"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010101017",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\widehat{C} = 45^0, AC = 16, AB = 8$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$\\widehat{C} = 45^0, AC = 8, AB = 8$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\widehat{C} = 60^0, AC = 8, AB = 8$",
+    "duong_sai": "lệch góc thêm 15° (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\widehat{C} = 45^0, AC = 8, AB = 9$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị cuối"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010101018",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\widehat{B} = 60^0, AC = 12, AB = 12\\sqrt{3}$",
+    "duong_sai": "nhầm góc phụ (lấy 90° trừ góc đúng)"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\widehat{B} = 45^0, AC = 12, AB = 12\\sqrt{3}$",
+    "duong_sai": "lệch góc thêm 15° (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$\\widehat{B} = 30^0, AC = 12, AB = 12\\sqrt{3}$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\widehat{B} = 30^0, AC = 12, AB = 13\\sqrt{3}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị cuối"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010101019",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\widehat{C} = 30^0, AC = 9, AB = 9\\sqrt{3}$",
+    "duong_sai": "hoán đổi nhầm 2 giá trị"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\widehat{C} = 60^0, AC = 9\\sqrt{3}, AB = 9$",
+    "duong_sai": "nhầm góc phụ (lấy 90° trừ góc đúng)"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\widehat{C} = 45^0, AC = 9\\sqrt{3}, AB = 9$",
+    "duong_sai": "lệch góc thêm 15° (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$\\widehat{C} = 30^0, AC = 9\\sqrt{3}, AB = 9$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010101020",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$\\widehat{C} = 60^0, AC = 12, AB = 12\\sqrt{3}$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\widehat{C} = 60^0, AC = 12\\sqrt{3}, AB = 12$",
+    "duong_sai": "hoán đổi nhầm 2 giá trị"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\widehat{C} = 30^0, AC = 12, AB = 12\\sqrt{3}$",
+    "duong_sai": "nhầm góc phụ (lấy 90° trừ góc đúng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\widehat{C} = 60^0, AC = 12, AB = 13\\sqrt{3}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị cuối"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010101021",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\widehat{B} = 45^0, AC = 24, AB = 12$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$\\widehat{B} = 45^0, AC = 12, AB = 12$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\widehat{B} = 60^0, AC = 12, AB = 12$",
+    "duong_sai": "lệch góc thêm 15° (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\widehat{B} = 45^0, AC = 12, AB = 13$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị cuối"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010101022",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\widehat{C} = 60^0, AC = 7\\sqrt{3}, AB = 7$",
+    "duong_sai": "nhầm góc phụ (lấy 90° trừ góc đúng)"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\widehat{C} = 45^0, AC = 7\\sqrt{3}, AB = 7$",
+    "duong_sai": "lệch góc thêm 15° (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$\\widehat{C} = 30^0, AC = 7\\sqrt{3}, AB = 7$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\widehat{C} = 30^0, AC = 7\\sqrt{3}, AB = 8$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị cuối"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010101023",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\widehat{B} = 60^0, AC = 10, AB = 10\\sqrt{3}$",
+    "duong_sai": "hoán đổi nhầm 2 giá trị"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\widehat{B} = 30^0, AC = 10\\sqrt{3}, AB = 10$",
+    "duong_sai": "nhầm góc phụ (lấy 90° trừ góc đúng)"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\widehat{B} = 75^0, AC = 10\\sqrt{3}, AB = 10$",
+    "duong_sai": "lệch góc thêm 15° (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$\\widehat{B} = 60^0, AC = 10\\sqrt{3}, AB = 10$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010101024",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$\\widehat{C} = 60^0, AC = 14, AB = 14\\sqrt{3}$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\widehat{C} = 60^0, AC = 14\\sqrt{3}, AB = 14$",
+    "duong_sai": "hoán đổi nhầm 2 giá trị"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\widehat{C} = 30^0, AC = 14, AB = 14\\sqrt{3}$",
+    "duong_sai": "nhầm góc phụ (lấy 90° trừ góc đúng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\widehat{C} = 60^0, AC = 14, AB = 15\\sqrt{3}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị cuối"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010101025",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\widehat{B} = 60^0, AC = 8, AB = 8\\sqrt{3}$",
+    "duong_sai": "nhầm góc phụ (lấy 90° trừ góc đúng)"
+   },
+   {
+    "dung": true,
+    "text": "$\\widehat{B} = 30^0, AC = 8, AB = 8\\sqrt{3}$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\widehat{B} = 45^0, AC = 8, AB = 8\\sqrt{3}$",
+    "duong_sai": "lệch góc thêm 15° (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\widehat{B} = 30^0, AC = 8, AB = 9\\sqrt{3}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị cuối"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010101026",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\widehat{C} = 30^0, AC = 13, AB = 13\\sqrt{3}$",
+    "duong_sai": "hoán đổi nhầm 2 giá trị"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\widehat{C} = 60^0, AC = 13\\sqrt{3}, AB = 13$",
+    "duong_sai": "nhầm góc phụ (lấy 90° trừ góc đúng)"
+   },
+   {
+    "dung": true,
+    "text": "$\\widehat{C} = 30^0, AC = 13\\sqrt{3}, AB = 13$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\widehat{C} = 45^0, AC = 13\\sqrt{3}, AB = 13$",
+    "duong_sai": "lệch góc thêm 15° (dự phòng)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010101027",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\widehat{B} = 60^0, AC = 15, AB = 15\\sqrt{3}$",
+    "duong_sai": "hoán đổi nhầm 2 giá trị"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\widehat{B} = 30^0, AC = 15\\sqrt{3}, AB = 15$",
+    "duong_sai": "nhầm góc phụ (lấy 90° trừ góc đúng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\widehat{B} = 60^0, AC = 15\\sqrt{3}, AB = 16$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị cuối"
+   },
+   {
+    "dung": true,
+    "text": "$\\widehat{B} = 60^0, AC = 15\\sqrt{3}, AB = 15$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010102001",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$20; 10\\sqrt{3}; 30$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$40; 10\\sqrt{3}; 30$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$19; 10\\sqrt{3}; 30$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$20; 10\\sqrt{3}; 31$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị cuối"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010102002",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$11; 5\\sqrt{3}; 30$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": true,
+    "text": "$10; 5\\sqrt{3}; 30$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$9; 5\\sqrt{3}; 30$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$10; 5\\sqrt{3}; 31$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị cuối"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010102003",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$48; 12\\sqrt{3}; 30$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$25; 12\\sqrt{3}; 30$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": true,
+    "text": "$24; 12\\sqrt{3}; 30$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$23; 12\\sqrt{3}; 30$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010102004",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$32; 8\\sqrt{3}; 30$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$17; 8\\sqrt{3}; 30$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$16; 8\\sqrt{3}; 31$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị cuối"
+   },
+   {
+    "dung": true,
+    "text": "$16; 8\\sqrt{3}; 30$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010102005",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$30; 15\\sqrt{3}; 30$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$60; 15\\sqrt{3}; 30$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$29; 15\\sqrt{3}; 30$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$30; 15\\sqrt{3}; 31$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị cuối"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010102006",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$13; 6\\sqrt{3}; 30$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": true,
+    "text": "$12; 6\\sqrt{3}; 30$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$11; 6\\sqrt{3}; 30$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$12; 6\\sqrt{3}; 31$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị cuối"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010102007",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$10\\sqrt{2}; 5; 45$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$6\\sqrt{2}; 5; 45$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": true,
+    "text": "$5\\sqrt{2}; 5; 45$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$4\\sqrt{2}; 5; 45$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010102008",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$20\\sqrt{2}; 10; 45$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$11\\sqrt{2}; 10; 45$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$10\\sqrt{2}; 10; 46$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị cuối"
+   },
+   {
+    "dung": true,
+    "text": "$10\\sqrt{2}; 10; 45$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010102009",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$7\\sqrt{2}; 7; 45$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$14\\sqrt{2}; 7; 45$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$6\\sqrt{2}; 7; 45$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$7\\sqrt{2}; 7; 46$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị cuối"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010102010",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$13\\sqrt{2}; 12; 45$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": true,
+    "text": "$12\\sqrt{2}; 12; 45$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$11\\sqrt{2}; 12; 45$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$12\\sqrt{2}; 12; 46$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị cuối"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010102011",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$18\\sqrt{2}; 9; 45$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$10\\sqrt{2}; 9; 45$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": true,
+    "text": "$9\\sqrt{2}; 9; 45$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$8\\sqrt{2}; 9; 45$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010102012",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$20;5;60$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$11;5;60$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$9;5;60$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$10;5;60$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010102013",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$20;10;60$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$40;10;60$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$21;10;60$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$20;10;61$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010102014",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$20\\sqrt{3}; 5\\sqrt{3}; 60$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$11\\sqrt{3}; 5\\sqrt{3}; 60$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$10\\sqrt{3}; 5\\sqrt{3}; 61$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị cuối"
+   },
+   {
+    "dung": true,
+    "text": "$10\\sqrt{3}; 5\\sqrt{3}; 60$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010102015",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$24;6;60$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$12;6;60$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$11;6;60$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$12;6;61$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010102016",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$19;9;60$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$17;9;60$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$18;9;60$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$18;9;61$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010102017",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$40; 20\\sqrt{3}; 30$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$80; 20\\sqrt{3}; 30$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$39; 20\\sqrt{3}; 30$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$40; 20\\sqrt{3}; 31$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị cuối"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010102018",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$15\\sqrt{2}; 14; 45$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": true,
+    "text": "$14\\sqrt{2}; 14; 45$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$13\\sqrt{2}; 14; 45$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$14\\sqrt{2}; 14; 46$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị cuối"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010102019",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$28;7;60$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$15;7;60$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$13;7;60$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$14;7;60$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010102020",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$72; 18\\sqrt{3}; 30$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$37; 18\\sqrt{3}; 30$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": true,
+    "text": "$36; 18\\sqrt{3}; 30$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$35; 18\\sqrt{3}; 30$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010102021",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$32\\sqrt{2}; 16; 45$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$17\\sqrt{2}; 16; 45$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$16\\sqrt{2}; 16; 46$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị cuối"
+   },
+   {
+    "dung": true,
+    "text": "$16\\sqrt{2}; 16; 45$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010105001",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$10;53;37$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$20;53;37$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$11;53;37$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$10;53;38$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010105002",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$10;53;37$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$5;53;37$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$4;53;37$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$5;53;38$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010105003",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$14;67;23$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$12;67;23$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$13;67;23$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$13;67;24$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010105004",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$26;23;67$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$14;23;67$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$12;23;67$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$13;23;67$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010105005",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$10;37;53$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$20;37;53$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$11;37;53$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$10;37;54$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010105006",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$50;74;16$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$25;74;16$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$24;74;16$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$25;74;17$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010105007",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$26;16;74$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$24;16;74$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$25;16;74$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$25;16;75$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010105008",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$34;62;28$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$18;62;28$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$16;62;28$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$17;62;28$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010105009",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$17;28;62$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$34;28;62$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$18;28;62$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$17;28;63$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010105010",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$58;46;44$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$29;46;44$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$28;46;44$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$29;46;45$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010105011",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$30;44;46$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$28;44;46$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$29;44;46$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$29;44;47$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010105012",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$30;53;37$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$16;53;37$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$14;53;37$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$15;53;37$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010105013",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$20;53;37$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$40;53;37$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$21;53;37$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$20;53;38$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010105014",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$52;67;23$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$26;67;23$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$25;67;23$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$26;67;24$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010105015",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$27;23;67$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$25;23;67$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$26;23;67$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$26;23;68$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010105016",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$50;53;37$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$26;53;37$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$24;53;37$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$25;53;37$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010105017",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$30;53;37$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$60;53;37$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$31;53;37$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$30;53;38$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010105018",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$100;74;16$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$50;74;16$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$49;74;16$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$50;74;17$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010105019",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$51;16;74$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$49;16;74$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$50;16;74$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$50;16;75$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010105020",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$68;62;28$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$35;62;28$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$33;62;28$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$34;62;28$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010105021",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$34;28;62$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$68;28;62$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$35;28;62$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$34;28;63$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010103001",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$10;8;53;37$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$20;8;53;37$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$11;8;53;37$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$10;8;53;38$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010103002",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$30;12;53;37$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$15;12;53;37$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$14;12;53;37$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$15;12;53;38$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010103003",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$11;6;37;53$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$9;6;37;53$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$10;6;37;53$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$10;6;37;54$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010103004",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$52;24;67;23$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$27;24;67;23$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$25;24;67;23$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$26;24;67;23$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010103005",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$13;5;23;67$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$26;5;23;67$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$14;5;23;67$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$13;5;23;68$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010103006",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$100;48;74;16$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$50;48;74;16$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$49;48;74;16$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$50;48;74;17$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010103007",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$51;14;16;74$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$49;14;16;74$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$50;14;16;74$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$50;14;16;75$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010103008",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$68;30;62;28$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$35;30;62;28$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$33;30;62;28$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$34;30;62;28$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010103009",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$34;16;28;62$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$68;16;28;62$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$35;16;28;62$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$34;16;28;63$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010103010",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$82;40;77;13$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$41;40;77;13$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$40;40;77;13$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$41;40;77;14$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010103011",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$30;21;46;44$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$28;21;46;44$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$29;21;46;44$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$29;21;46;45$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010103012",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\dfrac{36}{5};\\dfrac{24}{5};53;37$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\dfrac{23}{5};\\dfrac{24}{5};53;37$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\dfrac{13}{5};\\dfrac{24}{5};53;37$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$\\dfrac{18}{5};\\dfrac{24}{5};53;37$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010103013",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$8;6;37;53$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$16;6;37;53$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$9;6;37;53$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$8;6;37;54$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010103014",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$48;10;23;67$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$24;10;23;67$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$23;10;23;67$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$24;10;23;68$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010103015",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$11;24;67;23$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$9;24;67;23$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$10;24;67;23$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$10;24;67;24$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010103016",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$60;16;28;62$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$31;16;28;62$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$29;16;28;62$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$30;16;28;62$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010103017",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$16;30;62;28$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$32;30;62;28$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$17;30;62;28$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$16;30;62;29$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010103018",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$96;14;16;74$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$48;14;16;74$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$47;14;16;74$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$48;14;16;75$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010103019",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$15;48;74;16$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$13;48;74;16$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$14;48;74;16$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$14;48;74;17$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010103020",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$6;4;53;37$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$4;4;53;37$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$2;4;53;37$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$3;4;53;37$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010103021",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$9;12;53;37$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$18;12;53;37$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$10;12;53;37$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$9;12;53;38$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010103022",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$24;16;53;37$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$12;16;53;37$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$11;16;53;37$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$12;16;53;38$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010103023",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$5;3;37;53$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$3;3;37;53$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$4;3;37;53$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$4;3;37;54$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010103024",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$24;9;37;53$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$13;9;37;53$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$11;9;37;53$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$12;9;37;53$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010103025",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$12;5;23;67$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$24;5;23;67$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$13;5;23;67$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$12;5;23;68$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010103026",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$72;15;23;67$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$36;15;23;67$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$35;15;23;67$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$36;15;23;68$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010103027",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$6;12;67;23$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$4;12;67;23$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$5;12;67;23$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$5;12;67;24$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010103028",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$30;8;28;62$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$16;8;28;62$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$14;8;28;62$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$15;8;28;62$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010103029",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$8;15;62;28$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$16;15;62;28$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$9;15;62;28$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$8;15;62;29$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010103030",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$48;7;16;74$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$24;7;16;74$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$23;7;16;74$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$24;7;16;75$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010103031",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$8;24;74;16$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$6;24;74;16$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$7;24;74;16$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$7;24;74;17$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010103032",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$30;20;53;37$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$16;20;53;37$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$14;20;53;37$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$15;20;53;37$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010401001",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$54^{\\circ} 56'$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$36^{\\circ} 28'$",
+    "duong_sai": "nhầm góc phụ (lấy 90° trừ góc đúng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$54^{\\circ} 29'$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị cuối"
+   },
+   {
+    "dung": true,
+    "text": "$54^{\\circ} 28'$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010401002",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$30^\\circ$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$60^\\circ$",
+    "duong_sai": "nhầm gấp đôi góc"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$45^\\circ$",
+    "duong_sai": "lệch góc thêm 15° (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$15^\\circ$",
+    "duong_sai": "lệch góc bớt 15°"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010401003",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$31^\\circ2'$",
+    "duong_sai": "nhầm góc phụ (lấy 90° trừ góc đúng)"
+   },
+   {
+    "dung": true,
+    "text": "$59^\\circ2'$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$74^\\circ2'$",
+    "duong_sai": "lệch góc thêm 15° (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$44^\\circ2'$",
+    "duong_sai": "lệch góc bớt 15°"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010401005",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$7$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$5$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$6$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$4$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010401007",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$16$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$32$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$17$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$14$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010401008",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\dfrac{3237}{5}$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$\\dfrac{3237}{10}$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\dfrac{3227}{10}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\dfrac{3217}{10}$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010401011",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\dfrac{407}{10}$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\dfrac{427}{20}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\dfrac{387}{20}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$\\dfrac{407}{20}$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010401012",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$4$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$8$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$5$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$2$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010402001",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$17$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$15$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$16$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$14$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010402002",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$368$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$185$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$183$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$184$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010402004",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$908$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$454$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$453$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$452$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010402005",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\dfrac{199}{10}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\dfrac{179}{10}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$\\dfrac{189}{10}$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\dfrac{169}{10}$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010402006",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\dfrac{291}{50}$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\dfrac{391}{100}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\dfrac{191}{100}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$\\dfrac{291}{100}$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010402007",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$\\dfrac{21}{10}$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\dfrac{21}{5}$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\dfrac{31}{10}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\dfrac{1}{10}$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010402009",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\dfrac{2341}{10};\\dfrac{189}{100}$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$\\dfrac{2341}{20};\\dfrac{189}{100}$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\dfrac{2321}{20};\\dfrac{189}{100}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\dfrac{2341}{20};\\dfrac{289}{100}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010402010",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$61$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$59$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$60$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$58$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010402011",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$4936$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$2469$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$2467$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$2468$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010402012",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$\\dfrac{2586}{25}$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\dfrac{5172}{25}$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\dfrac{2611}{25}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\dfrac{2536}{25}$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010402013",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\dfrac{18679}{50}$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$\\dfrac{18679}{100}$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\dfrac{18579}{100}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\dfrac{18479}{100}$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010402014",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$12,7 m$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$7,7 m$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$8,7 m$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   },
+   {
+    "dung": true,
+    "text": "$6,7 m$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301001",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$2$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$1$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$0$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-1$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301002",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$2$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$0$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$1$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-1$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301003",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$\\dfrac{3\\sqrt{3}-3}{8}$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\dfrac{3\\sqrt{3}-6}{8}$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\dfrac{3\\sqrt{3}-2}{8}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\dfrac{3\\sqrt{3}-5}{8}$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301004",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$-2 - \\dfrac{\\sqrt{3}}{2}$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$-1 - \\dfrac{\\sqrt{3}}{2}$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$-0 - \\dfrac{\\sqrt{3}}{2}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-3 - \\dfrac{\\sqrt{3}}{2}$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301005",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$4 - \\sqrt{3}$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$3 - \\sqrt{3}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": true,
+    "text": "$2 - \\sqrt{3}$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$1 - \\sqrt{3}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301006",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\cos 63^\\circ$",
+    "duong_sai": "nhầm góc phụ (lấy 90° trừ góc đúng)"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\cos 42^\\circ$",
+    "duong_sai": "lệch góc thêm 15° (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\cos 12^\\circ$",
+    "duong_sai": "lệch góc bớt 15°"
+   },
+   {
+    "dung": true,
+    "text": "$\\cos 27^\\circ$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301007",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$\\sin 18^\\circ$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\cos 18^\\circ$",
+    "duong_sai": "nhầm hàm lượng giác (sin↔cos, tan↔cot)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\sin 72^\\circ$",
+    "duong_sai": "nhầm góc phụ (lấy 90° trừ góc đúng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\sin 3^\\circ$",
+    "duong_sai": "lệch góc bớt 15°"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301008",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\cot 56^\\circ$",
+    "duong_sai": "nhầm góc phụ (lấy 90° trừ góc đúng)"
+   },
+   {
+    "dung": true,
+    "text": "$\\cot 34^\\circ$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\cot 49^\\circ$",
+    "duong_sai": "lệch góc thêm 15° (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\cot 19^\\circ$",
+    "duong_sai": "lệch góc bớt 15°"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301009",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\cot 9^\\circ$",
+    "duong_sai": "nhầm hàm lượng giác (sin↔cos, tan↔cot)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\tan 81^\\circ$",
+    "duong_sai": "nhầm góc phụ (lấy 90° trừ góc đúng)"
+   },
+   {
+    "dung": true,
+    "text": "$\\tan 9^\\circ$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\tan 24^\\circ$",
+    "duong_sai": "lệch góc thêm 15° (dự phòng)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301010",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$1$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$-1$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-2$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   },
+   {
+    "dung": true,
+    "text": "$0$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301011",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$0$"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$1$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$-1$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-2$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301012",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$2$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$1$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$0$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-1$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301013",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$2$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$0$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$1$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-1$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301014",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\dfrac{1}{1013}$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\dfrac{2027}{2026}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$-\\dfrac{2025}{2026}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$\\dfrac{1}{2026}$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301015",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$2025$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$4050$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$2026$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$2023$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301016",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$2$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$1$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$0$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-1$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301017",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$1$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\dfrac{3}{2}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": true,
+    "text": "$\\dfrac{1}{2}$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$-\\dfrac{1}{2}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301018",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\dfrac{\\sqrt{6}}{3}$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\dfrac{\\sqrt{4}}{3}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\dfrac{\\sqrt{3}}{4}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị cuối"
+   },
+   {
+    "dung": true,
+    "text": "$\\dfrac{\\sqrt{3}}{3}$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301019",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$2$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$0$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-1$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   },
+   {
+    "dung": true,
+    "text": "$1$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301020",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$0$"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$1$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$-1$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-2$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301021",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$1$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": true,
+    "text": "$0$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$-1$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-2$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301022",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$4$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$3$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": true,
+    "text": "$2$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$0$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301023",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$2 \\tan^2 39^\\circ$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$2 \\cot^2 39^\\circ$",
+    "duong_sai": "nhầm hàm lượng giác (sin↔cos, tan↔cot)"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$1 \\tan^2 39^\\circ$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$2 \\tan^2 24^\\circ$",
+    "duong_sai": "lệch góc bớt 15°"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301024",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$2$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$0$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-1$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   },
+   {
+    "dung": true,
+    "text": "$1$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301025",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$1$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$2$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$0$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-1$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301026",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$-2$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$-1$"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$0$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-3$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301027",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$1$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$-1$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$0$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-2$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301028",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$-3\\sqrt{3} - 2\\sqrt{6}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": true,
+    "text": "$-2\\sqrt{3} - 2\\sqrt{6}$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$-1\\sqrt{3} - 2\\sqrt{6}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-2\\sqrt{3} - 3\\sqrt{6}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị cuối"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301029",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\sqrt{12} - \\dfrac{5}{2}$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\sqrt{7} - \\dfrac{5}{2}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": true,
+    "text": "$\\sqrt{6} - \\dfrac{5}{2}$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\sqrt{5} - \\dfrac{5}{2}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301030",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$2$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$0$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-1$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   },
+   {
+    "dung": true,
+    "text": "$1$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301031",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$\\dfrac{3}{2}$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$3$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\dfrac{5}{2}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\dfrac{1}{2}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301032",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\sin 68^\\circ$",
+    "duong_sai": "nhầm hàm lượng giác (sin↔cos, tan↔cot)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\cos 22^\\circ$",
+    "duong_sai": "nhầm góc phụ (lấy 90° trừ góc đúng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\cos 53^\\circ$",
+    "duong_sai": "lệch góc bớt 15°"
+   },
+   {
+    "dung": true,
+    "text": "$\\cos 68^\\circ$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301033",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$\\sin 77^\\circ$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\cos 77^\\circ$",
+    "duong_sai": "nhầm hàm lượng giác (sin↔cos, tan↔cot)"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\sin 92^\\circ$",
+    "duong_sai": "lệch góc thêm 15° (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\sin 62^\\circ$",
+    "duong_sai": "lệch góc bớt 15°"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301034",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\cot 37^\\circ$",
+    "duong_sai": "nhầm góc phụ (lấy 90° trừ góc đúng)"
+   },
+   {
+    "dung": true,
+    "text": "$\\cot 53^\\circ$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\cot 68^\\circ$",
+    "duong_sai": "lệch góc thêm 15° (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\cot 38^\\circ$",
+    "duong_sai": "lệch góc bớt 15°"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301035",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\cot 46^\\circ$",
+    "duong_sai": "nhầm hàm lượng giác (sin↔cos, tan↔cot)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\tan 44^\\circ$",
+    "duong_sai": "nhầm góc phụ (lấy 90° trừ góc đúng)"
+   },
+   {
+    "dung": true,
+    "text": "$\\tan 46^\\circ$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\tan 61^\\circ$",
+    "duong_sai": "lệch góc thêm 15° (dự phòng)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301036",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$1$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": true,
+    "text": "$0$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$-1$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-2$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301037",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$1$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$-1$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$0$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-2$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301038",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\dfrac{2}{3}$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\dfrac{4}{3}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$-\\dfrac{2}{3}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$\\dfrac{1}{3}$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301043",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$2$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$4$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$3$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$0$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301044",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$1$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": true,
+    "text": "$0$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$-1$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-2$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301045",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$7$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\dfrac{9}{2}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": true,
+    "text": "$\\dfrac{7}{2}$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\dfrac{5}{2}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301046",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$8$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$5$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$2$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   },
+   {
+    "dung": true,
+    "text": "$4$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301047",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$1$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$2$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$0$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-1$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301048",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$2$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$1$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$0$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-1$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301049",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$6$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$4$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": true,
+    "text": "$3$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$2$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301050",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\dfrac{5}{7}$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\dfrac{19}{14}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-\\dfrac{23}{14}$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   },
+   {
+    "dung": true,
+    "text": "$\\dfrac{5}{14}$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301051",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$\\dfrac{1}{6}$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\dfrac{1}{3}$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\dfrac{7}{6}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$-\\dfrac{5}{6}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301052",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$4$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$2$"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$3$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$0$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301053",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\dfrac{10}{3}$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\dfrac{8}{3}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": true,
+    "text": "$\\dfrac{5}{3}$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\dfrac{2}{3}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301054",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$-6$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$-2$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-5$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   },
+   {
+    "dung": true,
+    "text": "$-3$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301055",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$-2$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$-4$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$-1$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$-3$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301056",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$4$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": true,
+    "text": "$3$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$2$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$1$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301057",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\dfrac{2}{25}$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\dfrac{26}{25}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": true,
+    "text": "$\\dfrac{1}{25}$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-\\dfrac{49}{25}$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301058",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\dfrac{63}{62}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$-\\dfrac{61}{62}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-\\dfrac{123}{62}$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   },
+   {
+    "dung": true,
+    "text": "$\\dfrac{1}{62}$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301059",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$\\dfrac{1}{24}$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\dfrac{1}{12}$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\dfrac{25}{24}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$-\\dfrac{23}{24}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301060",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\dfrac{1}{61}$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$\\dfrac{1}{122}$"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\dfrac{123}{122}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-\\dfrac{243}{122}$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301061",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\dfrac{5}{4}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$-\\dfrac{3}{4}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$\\dfrac{1}{4}$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-\\dfrac{7}{4}$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301062",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\dfrac{50}{21}$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\dfrac{46}{21}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\dfrac{4}{21}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$\\dfrac{25}{21}$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301063",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$-\\dfrac{10}{11}$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$-\\dfrac{20}{11}$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$\\dfrac{1}{11}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-\\dfrac{32}{11}$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010301064",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\dfrac{12}{35}$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$\\dfrac{6}{35}$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$-\\dfrac{29}{35}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$-\\dfrac{64}{35}$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010401006",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$24$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$13$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$11$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$12$"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010401009",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$97;9$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$95;9$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": true,
+    "text": "$96;9$"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$96;10$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010401013",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$\\dfrac{2397}{50}$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": true,
+    "text": "$\\dfrac{2397}{100}$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$\\dfrac{2297}{100}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất, chiều ngược lại (dự phòng)"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$\\dfrac{2197}{100}$",
+    "duong_sai": "tính lệch giá trị (cứu ca trùng công thức)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010401014",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$26°66'; 40$",
+    "duong_sai": "tính gấp đôi giá trị đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$64°33'; 40$",
+    "duong_sai": "nhầm góc phụ (lấy 90° trừ góc đúng)"
+   },
+   {
+    "dung": true,
+    "text": "$26°33'; 40$"
+   },
+   {
+    "dung": false,
+    "rule": "R345",
+    "text": "$41°33'; 40$",
+    "duong_sai": "lệch góc thêm 15° (dự phòng)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T309010402003",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "dung": true,
+    "text": "$80;\\dfrac{1075}{4}$"
+   },
+   {
+    "dung": false,
+    "rule": "R343",
+    "text": "$160;\\dfrac{1075}{4}$",
+    "duong_sai": "tính gấp đôi giá trị thứ nhất (quên chia đôi ở 1 bước)"
+   },
+   {
+    "dung": false,
+    "rule": "R344",
+    "text": "$81;\\dfrac{1075}{4}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ nhất"
+   },
+   {
+    "dung": false,
+    "rule": "R346",
+    "text": "$80;\\dfrac{1079}{4}$",
+    "duong_sai": "tính lệch 1 đơn vị ở giá trị thứ hai"
+   }
+  ]
+ }
+]
