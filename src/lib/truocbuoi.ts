@@ -144,7 +144,7 @@ export async function getBaoCaoTruocBuoi(a: TruocBuoiArgs): Promise<BaoCaoTruocB
 
   // 7) Dạng yếu THÁNG — mastery mức yếu, n đủ mẫu. Tái dùng NGUYÊN VẸN engine dùng chung (khớp "Kết quả
   //    học tập → Dạng bài" — mastery suy động trên TOÀN BỘ lịch sử đo, không tự khoanh lại theo tháng).
-  const cells = await loadMasteryCells({ mon: a.mon, lopId: a.lopId })
+  const cells = await loadMasteryCells({ mon: a.mon, lopId: a.lopId, theoCongTac: true })
   const dangYeuThangByHs = new Map<string, DangNgan[]>()
   for (const hsId of hsIds) {
     const cm = cells.byHS.get(hsId); if (!cm) continue

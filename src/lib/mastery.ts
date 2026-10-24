@@ -647,7 +647,8 @@ export type CellBundle = {
   byHS: Map<string, Map<string, Mastery>> // mastery ĐÃ tính (non-null), CHỈ dạng thuộc môn
   dangInfo: Map<string, DangInfo>          // dạng MỌI nhánh của môn (dangInfoCuaMon)
 }
-export type RollupScope = { mon: string; lopId?: string | null; khoi?: string | null; he?: string | null; includeBTVN?: boolean }
+// theoCongTac: hoạt động MỚI (không phải bổ trợ) ⇒ fn_mastery_cells_moi — tắt công tắc y hệt fn_mastery_cells, bật = bản đồ mới (PLAN-mastery-ban-do-moi.md)
+export type RollupScope = { mon: string; lopId?: string | null; khoi?: string | null; he?: string | null; includeBTVN?: boolean; theoCongTac?: boolean }
 // export: dùng trực tiếp khi cần cell (HS × dạng) thô — vd Trước buổi cần "dạng yếu mức S, n>=3" theo HS,
 // khác getMasteryRollup/getMasteryByDang vốn chỉ trả về số đã GỘP (đếm), không giữ lại từng ô.
 export async function loadMasteryCells(opts: RollupScope): Promise<CellBundle> {
@@ -675,7 +676,7 @@ export async function loadMasteryCells(opts: RollupScope): Promise<CellBundle> {
   // 2+4) §2.0 (30/08): mastery cell (HS × dạng) tính ở DB — fn_mastery_cells (parity 391/391
   // với engine JS trên lớp 8S1). Gate nguồn (et/mt · toggle btvn/bt/tu_luyen · cấp-1) nằm
   // TRONG fn — cap1Set/phases client chỉ còn ý nghĩa chú thích lịch sử.
-  const { data: cells, error: eCells } = await supabase.rpc('fn_mastery_cells', { p_hs: hsIds, p_include_btvn: !!opts.includeBTVN })
+  const { data: cells, error: eCells } = await supabase.rpc(opts.theoCongTac ? 'fn_mastery_cells_moi' : 'fn_mastery_cells', { p_hs: hsIds, p_include_btvn: !!opts.includeBTVN })
   if (eCells) throw eCells
   const allMa = new Set<string>(((cells ?? []) as any[]).map((c) => c.ma_dang as string))
 

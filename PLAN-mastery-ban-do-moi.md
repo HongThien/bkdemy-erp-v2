@@ -31,6 +31,13 @@
   Kiểm `scripts/_test_bo_tro_ban_do_ca.mjs` 8/8 (ROLLBACK) + bù 40 buổi: TẮT y hệt, BẬT ra NDB có MCQ. Chấp nhận: "tìm toàn bản đồ" (DangPicker) vẫn là bản đồ cũ.
 - Chấp nhận: phiêu lưu sắp chủ đề theo mã; dấu "đã dạy" màn mới chưa có; snapshot qua view không ghi form_tn_id; HGT cũ không mã câu giữ mã cũ.
 
+## Rà 24/10 — còn gì đọc bản đồ cũ
+- ✅ Chuyển theo công tắc (client `RollupScope.theoCongTac` ⇒ `fn_mastery_cells_moi`): **Trước buổi** (dạng yếu tháng, `truocbuoi.ts`) · **app GV tab Lớp** thanh đạt/cần/yếu (`LopView.tsx`).
+- GIỮ CŨ có chủ đích: bổ trợ ca 'cu' · **BT tài liệu bổ trợ** (`BTScreen` → `getMasteryHS`) · học từ đầu / đuổi (`htd_co_mo`, `_duoi_lo_trinh`) · cấp 1.
+- CHƯA chuyển, cần quyết: **Ôn tập trong BTVN** (`ontap.ts` → ứng viên = dạng của buổi trước theo tài liệu cũ; đổi mastery mà không đổi ứng viên ⇒ gợi ý rỗng — đi cùng việc chuyển tài liệu) ·
+  **KQHT ERP** + **HS view app GV** (`getMasteryHS` — timeline lần đo nhóm theo mã chép, phải có hàm DB trả lần đo đã quy dạng mới) · **Bảng kết quả MT theo chuyên đề** (`fn_mt_bang_ket_qua`, gom theo chuyên đề cũ) · report PH.
+- Không phải chỗ dùng mastery: công cụ soạn/khớp bản đồ (`fn_dai_*`, `fn_bdm_*`, `kho/api.ts`) · `fn_mastery_rollup`, `hs_dang_evals` (không còn ai gọi).
+
 ## Việc còn lại trước khi bấm (thứ tự — bản gốc)
 1. **Tra tên ô theo mã — 1 chỗ dispatch:** DB `_kho_ten_dang` / `_kho_dang_da_xoa_mem` / `_troly_ten_dang` hiểu mã `NDB…` (dai_bdm_dang_bai + nhóm + chủ đề); client `dangInfoCuaMon` (`lib/mastery.ts:33`) hiểu NDB — hiện nó **bỏ âm thầm** ô không tìm thấy.
 2. **Danh sách dạng** ở `_tu_luyen_chon_dang`, `fn_thanh_tuu_thang`, `tu_luyen_chu_de_ds_dang`, `_hs_dang_da_hoc`, `hs_dang_evals`, `hs_dang_hoc_tap`: K6–12 lấy từ bản đồ mới khi công tắc bật.

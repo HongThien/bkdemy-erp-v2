@@ -77636,3 +77636,7 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - Tiêu đề phần sửa: Tiết 21 thuộc phiếu tuần 7; phiếu tuần 8+9 bắt đầu từ Tiết 22.
 - 7 CÂU CHƯA CHẮC (NTL-NC-2026.chua-chac.md): T19 Bài 1 (bảng Đ/S: "chỉ có 2 ước"/"≥3 ước" không ghi lớn hơn 1 ⇒ KH 3 Sai vì số 0) · T19 VN Bài 3 (p+7 nguyên tố không bao giờ xảy ra) · T20 Câu 3 (thiếu số cần phân tích, giải theo 18) · T21 Câu 4 (phương án B in "32 cm", đúng là 32 m) · T21 VN Bài 3 (đáy 156, bên 26, cao 78 ⇒ hình không tồn tại; giải theo số in 12168) · T22 Bài 2 (in MAND, hình là MANB) · ÔT Câu 18 (B và D cùng đúng).
 - HTML duyệt: kho-rules/dai/lo/k6/de-cuong/de-cuong-k6-nam-tu-liem-duyet.html.
+
+## 24/10 — Rà chỗ còn đọc bản đồ cũ; chuyển Trước buổi + tab Lớp app GV theo công tắc
+- Quét `pg_proc.prosrc` (fn_mastery_cells( / _do_nhom_cua_o / dai_ban_do / hgt_ban_do) + grep client. Kết quả & phân loại ở PLAN-mastery-ban-do-moi.md "Rà 24/10".
+- Sửa: `loadMasteryCells` nhận `theoCongTac` ⇒ `fn_mastery_cells_moi`; Trước buổi + LopView dùng. 8A1: TẮT y hệt (415 ô), BẬT 458 ô (379 NDB, 0 thiếu tên), 1,2 s.
