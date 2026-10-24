@@ -77701,3 +77701,11 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 ## 24/10 — Duyệt máy form MCQ chờ của dạng bài NDB 0 MCQ + thử quét kho chuẩn
 - Thùy: "duyệt 628 form MCQ chờ (soát máy trước)" + "quét kho chuẩn bằng máy". `scripts/_duyet_form_bdm.mjs` xuất form chờ (Đại + HGT) của câu thuộc dạng bài NDB K6–12 còn 0 MCQ, chạy CHÍNH hàm kiểm của `mcq-sinh.mjs --verify --thay` (FAIL thử lại `--theo-dap-so`). 828 form chờ (628 Đại + 200 HGT): 724 OK ⇒ da_duyet, duyet_boi = Admin hệ thống (phân biệt duyệt tay của Thùy); 104 FAIL giữ chờ, lý do ở `kho-rules/dai/lo/mcq-bdm/duyet-may/fail.json` (đáp số kho dạng tập/biểu thức máy chưa đọc, phương án đúng viết khác đáp số kho).
 - Quét kho chuẩn mức máy (`kho-quet-dapso.mjs`, chỉ đọc): whitelist 48 dạng tính toán ⇒ toàn kho chỉ ký mới 4 câu. 1.312 câu chưa kho chuẩn của các dạng bài này là câu nhập SAU mốc kho chuẩn (đề thi/đề cương/lẻ, có lời giải, chưa duyệt) — máy không tính lại được ⇒ KHÔNG chạy --ghi; cần người duyệt (hoặc Thùy chốt luật như K12 'đề có lời giải chi tiết thì duyệt').
+
+### 24/10 — [K7] Giải 3 đề thi + 1 đề cương mới (Downloads/decuong), chỉ phần Đại số
+- Thùy: "Giải các đề khối 7" + "chỉ giải toán nhé. Cái nào trùng rồi thì thôi". Hiểu: chỉ câu Đại, bỏ Hình, bỏ đề/câu đã có.
+- Tệp "THCS PHÚC HÒA_GIỮA KỲ I LỚP 7.pdf" = bộ 10 đề GKI 2025–26 (20 trang): đã có 4 (Phúc Hòa, Trưng Vương, Nguyễn Trường Tộ, Bát Tràng Đề 1); loại 3 (Ngọc Thụy, Ái Mộ 701/702: hình hộp, sách CTST); GHI MỚI: Đỗ Ngọc Du (GKI-38, 13 câu), Tam Hiệp (GKI-39, 14 câu, 1 câu trỏ về câu cũ), Bát Tràng Đề 2 (GKI-40, 13 câu).
+- "ĐỀ CƯƠNG GIỮA KÌ I LỚP 7 TRƯỜNG THCS NAM TỪ LIÊM.pdf" = Phiếu BSNC Toán 7 tuần 7+8 ⇒ DC-09, 103 câu Đại (25 TN · 18 TLN · 60 tự luận), 4 phần soạn song song rồi ghép (`ghep-dc09.mjs`).
+- "ĐỀ CƯƠNG GK1 THCS TRUNG HÒA K7.pdf" thực ra là Toán 8 (tên tệp sai) ⇒ không làm. Các tệp K8/K9 trong thư mục không thuộc khối 7.
+- Sonnet soạn + Opus soát mù, 7/7 ĐẠT, không câu Chưa chắc/đề sai. Chỗ ảnh mờ đã đối chiếu: GKI-38 Bài 2b dấu "+" (đề dùng ":" cho chia); DC-09 ĐTL2 TN Bài 1 Câu 2 số cuối dương ⇒ Sai.
+- Ghi Kho đề thi (chưa duyệt): GKI-38 8042b6cf-8dec-45af-a0fe-cc9169adfe43 · GKI-39 dd2b9b89-474c-464b-8e7a-bd6baf607d93 · GKI-40 700b2c5b-5cbb-44ac-9cc4-a7f1bfecb209 · DC-09 fe7b8f74-15dd-400b-8497-4e21160d7188. HTML duyệt: `kho-rules/dai/lo/k7/K7-24-10-duyet.html`.
