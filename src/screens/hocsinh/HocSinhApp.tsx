@@ -407,6 +407,7 @@ export function HomeCap1({ hoTen, maHS, onOpen, extra, chuaDoc, onHopThu, mayman
 
 export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: string; hoTen: string; maHS: string }) {
   const [tests, setTests] = useState<BaiTestCuaHS[] | null>(null)
+  const [loiTaiBai, setLoiTaiBai] = useState(false) // tải danh sách bài LỖI ≠ "không có bài" — phải nói rõ + cho thử lại
   const [active, setActive] = useState<BaiTestCuaHS | null>(null)
   const [tab, setTab] = useState<'chua' | 'xong'>('chua')
   const [doiMK, setDoiMK] = useState(false)
@@ -469,7 +470,15 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [monRieng, setMonRieng] = useState<MonRiengHS[]>([])
   useEffect(() => { monRiengCuaHS().then(setMonRieng).catch(() => {}) }, [])
 
-  useEffect(() => { listBaiTestCuaHS().then(setTests).catch(() => setTests([])) }, [])
+  // Lỗi mạng/timeout thoáng qua thì thử lại vài lần; hết lượt vẫn lỗi ⇒ báo "không tải được" (trước đây gán [] ⇒ hiện "không có bài").
+  const taiBai = async () => {
+    setLoiTaiBai(false)
+    for (let lan = 0; lan < 3; lan++) {
+      try { setTests(await listBaiTestCuaHS()); return } catch { await new Promise((r) => setTimeout(r, 700 * (lan + 1))) }
+    }
+    setTests((cu) => cu ?? []); setLoiTaiBai(true)
+  }
+  useEffect(() => { void taiBai() }, []) // eslint-disable-line
   useEffect(() => { laCap1HS().then(setCap1).catch(() => setCap1(false)) }, [])
   useEffect(() => { laCap2HS().then(setCap2).catch(() => setCap2(false)) }, [])
   useEffect(() => { hoSoCuaToi().then((h) => { setGioiTinh(h?.gioi_tinh ?? null); setAnhUrl(h?.anh_url ?? null) }).catch(() => setGioiTinh(null)) }, [])
@@ -752,7 +761,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   if (direct === 'the_gioi') return <TheGioiHS onBack={() => setDirect(null)} />
 
   if (active) {
-    const back = () => { setActive(null); listBaiTestCuaHS().then(setTests) }
+    const back = () => { setActive(null); void taiBai() }
     return THI_LOAI.has(active.loai)
       ? <LamET test={active} hocSinhId={hocSinhId} onXong={back} />
       : <LamBai baiTestId={active.id} hocSinhId={hocSinhId} onXong={back} choLamLaiSai={active.loai === 'giao_trinh' && !cap1 && !cap2} />
@@ -952,13 +961,20 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   return (
     <DanhSachHS tieuDe={tenKhu} ill={KIT_O[khu].ill} gioiTinh={gt} tab={tab} nChua={nChua} nXong={nXong}
       rows={rows} dangTai={tests === null} onBack={() => setKhu(null)} onTab={setTab}
-      empty={
+      empty={loiTaiBai ? (
+        <TheHS className="p-8 text-center">
+          <p className="text-[33px]">⚠️</p>
+          <p className="mt-2 text-[16.5px] font-bold" style={{ ...HEAD, color: MAU.ink }}>Chưa tải được danh sách bài</p>
+          <p className="mt-1 text-[14.5px]" style={{ color: MAU.muted }}>Có thể do mạng chậm. Bài của em vẫn còn đó — bấm thử lại nhé.</p>
+          <button onClick={() => void taiBai()} className="mt-4 px-6 py-3 text-[18px] font-bold" style={NUT_CHINH}>↻ Tải lại</button>
+        </TheHS>
+      ) : (
         <TheHS className="p-8 text-center">
           <p className="text-[33px]">{tab === 'xong' ? '📭' : '🎉'}</p>
           <p className="mt-2 text-[16.5px] font-bold" style={{ ...HEAD, color: MAU.ink }}>{tab === 'xong' ? 'Chưa hoàn thành bài nào' : 'Không có bài nào cần làm'}</p>
           <p className="mt-1 text-[14.5px]" style={{ color: MAU.muted }}>{tab === 'xong' ? 'Làm xong bài sẽ chuyển sang đây.' : `Khi thầy cô giao ${tenKhu.toLowerCase()}, bài sẽ hiện ở đây.`}</p>
         </TheHS>
-      } />
+      )} />
   )
 }
 

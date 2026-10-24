@@ -289,16 +289,30 @@ export async function getMyHocSinhId(): Promise<string | null> {
 export type BaiTestCuaHS = BaiTest & { lop_ten: string; bai_lam: BaiLam | null; so_cau: number }
 
 // List test của các lớp HS đang ghi danh (RLS bai_test_hs_read tự lọc) + trạng thái bài làm.
+// Loại bài có DANH SÁCH riêng ở app HS (ô Bài tập trên lớp · ET · BTVN · Đề thi thử). Các loại còn lại (tu_luyen, bo_tro, htd_*, bu_*,
+// on_thi_*…) mỗi lượt là 1 bai_test riêng — một em cày tự luyện có hàng nghìn dòng, đẩy ET/BTVN ra ngoài LIMIT.
+const LOAI_CO_DANH_SACH = ['giao_trinh', 'et', 'btvn', 'de_thi']
+
 export async function listBaiTestCuaHS(): Promise<BaiTestCuaHS[]> {
+  // 24/10 (Đạt báo: bấm ET/BTVN/Bài tập trên lớp hiện "không có bài", reload nhiều lần mới ra): trước đây kéo MỌI bai_test mở
+  // (gồm cả nghìn lượt tự luyện) rồi mới lọc ở máy, cắt LIMIT=1000 theo `ngay` — cùng ngày thì thứ tự không xác định ⇒ ET/BTVN lúc
+  // rớt lúc không. Giờ lọc loại ở DB + thứ tự ổn định.
   const { data, error } = await supabase.from('bai_test')
     .select('*, lop:lop_id(ten_lop)')
-    .eq('trang_thai', 'mo').order('ngay', { ascending: false }).limit(LIMIT)
+    .eq('trang_thai', 'mo').in('loai', LOAI_CO_DANH_SACH)
+    .order('ngay', { ascending: false }).order('created_at', { ascending: false }).limit(LIMIT)
   if (error) throw error
   const tests = (data ?? []) as (BaiTest & { lop: { ten_lop: string } | null })[]
   if (!tests.length) return []
   const ids = tests.map((t) => t.id)
-  const { data: lams } = await supabase.from('bai_lam').select('*').in('bai_test_id', ids).limit(LIMIT)
-  const lamMap = new Map((lams ?? []).map((l: any) => [l.bai_test_id, l as BaiLam]))
+  // .in() với nghìn uuid làm URL quá dài ⇒ lỗi — chia lô; và KHÔNG nuốt lỗi (trước đây lỗi ⇒ mọi bài hiện như chưa làm).
+  const lams: BaiLam[] = []
+  for (let i = 0; i < ids.length; i += 100) {
+    const { data: l, error: e2 } = await supabase.from('bai_lam').select('*').in('bai_test_id', ids.slice(i, i + 100)).limit(LIMIT)
+    if (e2) throw e2
+    lams.push(...((l ?? []) as BaiLam[]))
+  }
+  const lamMap = new Map(lams.map((l) => [l.bai_test_id, l]))
   // so_cau denormalize trên bai_test (HS ko đếm được bai_test_cau của ET do RLS).
   return tests.map((t) => ({ ...t, lop_ten: t.lop?.ten_lop ?? '?', bai_lam: lamMap.get(t.id) ?? null }))
 }
