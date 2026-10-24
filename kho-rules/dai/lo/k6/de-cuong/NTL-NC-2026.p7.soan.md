@@ -101,7 +101,7 @@ Vậy $S_1=S_2=4\ \text{cm}^2$, $S_3=9\ \text{cm}^2$, $S_4=16\ \text{cm}^2$, $S_
 
 ### T21 VN Bài 3 | kho=hgt | loai=tu_luan | dap_an=—
 **Đề:** Một hình bình hành có chu vi là $364\ \text{cm}$, độ dài cạnh đáy gấp 6 lần cạnh bên và gấp 2 lần chiều cao. Hãy tính diện tích hình bình hành đó.
-**Chưa chắc:** Đề in lỗi dữ kiện: tính ra cạnh bên $26\ \text{cm}$ nhưng chiều cao $78\ \text{cm}$ — chiều cao là đoạn vuông góc nối hai cạnh đáy nên không thể dài hơn cạnh bên (đoạn xiên nối hai cạnh đáy), hình bình hành này không tồn tại; vẫn giải theo số liệu đề cho, ra $12168\ \text{cm}^2$. CEO chọn: giữ nguyên (bài luyện tính theo "phần") hay sửa số, vd "gấp 12 lần chiều cao" thì chiều cao $13\ \text{cm}$, diện tích $2028\ \text{cm}^2$.
+**Ghi chú:** ĐỀ SAI dữ kiện (CEO chốt 24/10: giải theo số liệu của đề nhưng ghi rõ đề sai để học sinh biết): tính ra cạnh bên $26\ \text{cm}$ nhưng chiều cao $78\ \text{cm}$ — chiều cao không thể dài hơn cạnh bên nên hình bình hành này không tồn tại.
 
 **Phần 1. Hướng dẫn**
 
@@ -140,6 +140,8 @@ $156:2=78$ (cm)
 Diện tích hình bình hành là:
 
 $156.78=12168\ (\text{cm}^2)$
+
+**Lưu ý: đề bài này cho số liệu sai.** Cạnh bên chỉ dài $26$ cm mà chiều cao tính ra lại là $78$ cm; chiều cao (đoạn vuông góc giữa hai cạnh đáy) không thể dài hơn cạnh bên, nên hình bình hành như vậy không tồn tại. Theo số liệu của đề thì diện tích tính được là $12168\ \text{cm}^2$.
 
 ## PHẦN 4 | Phiếu bổ sung nâng cao tuần 8 + 9 — Tiết 22: Chu vi, diện tích các hình (tiết 2) | tu_luan
 

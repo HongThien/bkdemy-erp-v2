@@ -258,7 +258,7 @@ Vậy $D$ là hợp số.
 
 ### T19 VN Bài 3 | kho=dai | loai=tu_luan | dap_an=—
 **Đề:** Cho $p$ là số nguyên tố lớn hơn $3$ và $p+7$ là số nguyên tố. Chứng minh rằng $p+5$ là hợp số.
-**Chưa chắc:** Đề in lỗi: $p>3$ nguyên tố thì $p$ lẻ nên $p+7$ chẵn và $p+7\ge 12$, không bao giờ là số nguyên tố ⇒ giả thiết "$p+7$ nguyên tố" không bao giờ xảy ra (máy: 0 số $p$ với $5\le p<10^6$). Kết luận "$p+5$ là hợp số" vẫn đúng với MỌI số nguyên tố $p>3$ (vì $p+5$ chẵn, lớn hơn 2), nên lời giải vẫn đúng; giữ cách chia cho 3 như Bài 5* cùng tiết, Chú ý nêu cách chẵn lẻ. Không đoán được đề gốc định viết gì ⇒ CEO sửa giả thiết cho đúng (hoặc bỏ câu) rồi mới nhập.
+**Ghi chú:** ĐỀ SAI (CEO chốt 24/10: giải bình thường, ghi rõ đề sai): nếu $p>3$ là số nguyên tố thì $p$ lẻ nên $p+7$ chẵn, lớn hơn 2, không thể là số nguyên tố ⇒ giả thiết "$p+7$ là số nguyên tố" không bao giờ xảy ra. Kết luận "$p+5$ là hợp số" vẫn đúng với mọi số nguyên tố $p>3$.
 
 **Phần 1. Hướng dẫn**
 
@@ -275,6 +275,8 @@ Vậy $D$ là hợp số.
 **Chú ý:** cũng có thể làm ngắn hơn: $p$ là số nguyên tố lớn hơn 3 nên $p$ lẻ, do đó $p+5$ là số chẵn lớn hơn 2, nên $p+5$ là hợp số mà không cần dùng giả thiết $p+7$.
 
 **Phần 2. Trình bày**
+
+**Lưu ý: đề bài này in sai.** Nếu $p>3$ là số nguyên tố thì $p$ lẻ, nên $p+7$ là số chẵn lớn hơn 2 và không thể là số nguyên tố; vậy không có số $p$ nào thoả mãn giả thiết "$p+7$ là số nguyên tố". Ta vẫn chứng minh $p+5$ là hợp số như sau.
 
 Vì $p$ là số nguyên tố và $p>3$ nên $p\not\vdots 3$, do đó $p$ chia cho 3 dư 1 hoặc dư 2.
 

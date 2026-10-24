@@ -16,7 +16,7 @@ kieu: de_cuong
 7) Có ba số lẻ liên tiếp đều là số nguyên tố.
 8) Mọi số nguyên tố đều có chữ số tận cùng là một trong các chữ số $1,3,7,9$.
 **Ghi chú:** Bảng Đúng/Sai 8 khẳng định — đáp án phải tự giải.
-**Chưa chắc:** Khẳng định 3 và 4 không ghi "lớn hơn 1". Số 0 chia hết cho mọi số tự nhiên khác 0 nên có nhiều hơn 2 ước, nhưng 0 không là hợp số ⇒ theo đúng định nghĩa SGK thì 3) Sai. Khẳng định 4 hiểu là điều kiện CẦN (mọi hợp số đều có ít nhất 3 ước) thì Đúng; hiểu là "chỉ cần" thì cũng vướng số 0. Lời giải chọn 3) Sai, 4) Đúng (trạm soạn chọn 3) Đúng — hai trạm lệch đúng ở chỗ này). CEO chốt, hoặc sửa đề thêm "lớn hơn 1" vào khẳng định 3.
+**Ghi chú:** CEO chốt 24/10: khẳng định 3) và 4) đều SAI (đề không ghi điều kiện "lớn hơn 1" nên số 0 là phản ví dụ).
 
 **Phần 1. Hướng dẫn**
 
@@ -40,7 +40,7 @@ kieu: de_cuong
 
 3) Sai. Số $0$ chia hết cho $1;2;3$ nên có nhiều hơn 2 ước nhưng $0$ không là hợp số (hợp số phải là số tự nhiên lớn hơn 1).
 
-4) Đúng. Hợp số có nhiều hơn 2 ước tức là có ít nhất 3 ước; một số tự nhiên lớn hơn 1 có ít nhất 3 ước thì là hợp số.
+4) Sai. Số $0$ cũng có ít nhất 3 ước ($1;2;3$) nhưng $0$ không là hợp số: muốn kết luận một số là hợp số thì ngoài việc có ít nhất 3 ước, số đó còn phải lớn hơn 1.
 
 5) Sai. Số 2 là số nguyên tố nhưng là số chẵn.
 
@@ -563,7 +563,7 @@ Vậy $D$ là hợp số.
 
 ### T19 VN Bài 3 | kho=dai | loai=tu_luan | dap_an=—
 **Đề:** Cho $p$ là số nguyên tố lớn hơn $3$ và $p+7$ là số nguyên tố. Chứng minh rằng $p+5$ là hợp số.
-**Chưa chắc:** Đề in lỗi: $p>3$ nguyên tố thì $p$ lẻ nên $p+7$ chẵn và $p+7\ge 12$, không bao giờ là số nguyên tố ⇒ giả thiết "$p+7$ nguyên tố" không bao giờ xảy ra (máy: 0 số $p$ với $5\le p<10^6$). Kết luận "$p+5$ là hợp số" vẫn đúng với MỌI số nguyên tố $p>3$ (vì $p+5$ chẵn, lớn hơn 2), nên lời giải vẫn đúng; giữ cách chia cho 3 như Bài 5* cùng tiết, Chú ý nêu cách chẵn lẻ. Không đoán được đề gốc định viết gì ⇒ CEO sửa giả thiết cho đúng (hoặc bỏ câu) rồi mới nhập.
+**Ghi chú:** ĐỀ SAI (CEO chốt 24/10: giải bình thường, ghi rõ đề sai): nếu $p>3$ là số nguyên tố thì $p$ lẻ nên $p+7$ chẵn, lớn hơn 2, không thể là số nguyên tố ⇒ giả thiết "$p+7$ là số nguyên tố" không bao giờ xảy ra. Kết luận "$p+5$ là hợp số" vẫn đúng với mọi số nguyên tố $p>3$.
 
 **Phần 1. Hướng dẫn**
 
@@ -580,6 +580,8 @@ Vậy $D$ là hợp số.
 **Chú ý:** cũng có thể làm ngắn hơn: $p$ là số nguyên tố lớn hơn 3 nên $p$ lẻ, do đó $p+5$ là số chẵn lớn hơn 2, nên $p+5$ là hợp số mà không cần dùng giả thiết $p+7$.
 
 **Phần 2. Trình bày**
+
+**Lưu ý: đề bài này in sai.** Nếu $p>3$ là số nguyên tố thì $p$ lẻ, nên $p+7$ là số chẵn lớn hơn 2 và không thể là số nguyên tố; vậy không có số $p$ nào thoả mãn giả thiết "$p+7$ là số nguyên tố". Ta vẫn chứng minh $p+5$ là hợp số như sau.
 
 Vì $p$ là số nguyên tố và $p>3$ nên $p\not\vdots 3$, do đó $p$ chia cho 3 dư 1 hoặc dư 2.
 
@@ -661,7 +663,7 @@ A. $18=18.1$
 B. $18=10+8$
 C. $18=2.3^2$
 D. $18=6+6+6$
-**Chưa chắc:** đề in "Phân tích số  ra thừa số nguyên tố" thiếu mất số cần phân tích (chỗ trống giữa "số" và "ra"); bốn phương án đều là các cách viết của $18$, có thể đề gốc là số $18$. Đã gõ ĐÚNG như in (không điền). Giải theo cách hiểu số cần phân tích là $18$ (bốn phương án đều về $18$); như vậy chỉ phương án C là tích các thừa số nguyên tố.
+**Ghi chú:** CEO chốt 24/10: số cần phân tích là 18; nhưng không cần biết số — chỉ cần dùng quy tắc viết thừa số nguyên tố (kết quả phải là một tích mà mọi thừa số đều là số nguyên tố) cũng chọn được C.
 
 **Phần 1. Hướng dẫn**
 
@@ -673,11 +675,11 @@ D. $18=6+6+6$
 
 **Bước 3.** Với phương án còn lại, kiểm từng thừa số có là số nguyên tố không và nhân lại xem có ra đúng 18 không.
 
-**Chú ý:** đề thiếu số cần phân tích nhưng cả bốn phương án cùng viết về số 18 nên hiểu số cần phân tích là 18.
+**Chú ý:** câu này làm được ngay bằng quy tắc, không cần biết số cần phân tích: chỉ một phương án viết kết quả thành tích mà mọi thừa số đều là số nguyên tố.
 
 **Phần 2. Trình bày**
 
-B và D viết $18$ thành tổng nên không phải phân tích ra thừa số; A có thừa số $18$ là hợp số.
+Theo quy tắc, kết quả phân tích ra thừa số nguyên tố là một tích mà mọi thừa số đều là số nguyên tố. B và D viết thành tổng nên không phải; A có thừa số $18$ là hợp số.
 
 Phân tích 18 ra thừa số nguyên tố:
 
@@ -1470,10 +1472,10 @@ Chọn D.
 ### T21 Câu 4 | kho=hgt | loai=trac_nghiem | dap_an=B
 **Đề:** Một hình vuông có diện tích $64\ \text{m}^2$. Chu vi của hình vuông đó là:
 A. $16\ \text{m}$
-B. $32\ \text{cm}$
+B. $32\ \text{m}$
 C. $8\ \text{m}$
 D. $8\ \text{cm}$
-**Chưa chắc:** phương án B in "32 cm" (phóng 600 dpi: chữ "c" in đen, có chấm bút xanh của người dùng đè lên). Như in thì KHÔNG phương án nào đúng (chu vi đúng tính theo m); có thể đề định in "32 m". Đã gõ ĐÚNG như in.
+**Ghi chú:** đề in phương án B là "32 cm" (in sai đơn vị); CEO chốt 24/10: đúng là $32\ \text{m}$ — đã sửa phương án B thành $32\ \text{m}$.
 
 **Phần 1. Hướng dẫn**
 
@@ -1485,7 +1487,7 @@ D. $8\ \text{cm}$
 
 **Bước 3.** Đối chiếu đơn vị: diện tích tính theo mét vuông nên cạnh và chu vi tính theo mét.
 
-**Chú ý:** các phương án $8\ \text{m}$ và $8\ \text{cm}$ chỉ là độ dài cạnh chứ không phải chu vi. Nếu không phương án nào khớp cả số lẫn đơn vị thì chọn phương án có số đúng và ghi rõ đơn vị đúng phải là gì.
+**Chú ý:** các phương án $8\ \text{m}$ và $8\ \text{cm}$ chỉ là độ dài cạnh chứ không phải chu vi. Soát cả số lẫn đơn vị của từng phương án.
 
 **Phần 2. Trình bày**
 
@@ -1495,7 +1497,7 @@ Chu vi hình vuông là:
 
 $8.4=32$ (m)
 
-Chu vi hình vuông là $32$ m. Chỉ phương án B có số $32$ (đề in đơn vị cm, đúng ra là m).
+Chu vi hình vuông là $32$ m, khớp phương án B.
 
 Chọn B.
 
@@ -1784,7 +1786,7 @@ Vậy $S_1=S_2=4\ \text{cm}^2$, $S_3=9\ \text{cm}^2$, $S_4=16\ \text{cm}^2$, $S_
 
 ### T21 VN Bài 3 | kho=hgt | loai=tu_luan | dap_an=—
 **Đề:** Một hình bình hành có chu vi là $364\ \text{cm}$, độ dài cạnh đáy gấp 6 lần cạnh bên và gấp 2 lần chiều cao. Hãy tính diện tích hình bình hành đó.
-**Chưa chắc:** Đề in lỗi dữ kiện: tính ra cạnh bên $26\ \text{cm}$ nhưng chiều cao $78\ \text{cm}$ — chiều cao là đoạn vuông góc nối hai cạnh đáy nên không thể dài hơn cạnh bên (đoạn xiên nối hai cạnh đáy), hình bình hành này không tồn tại; vẫn giải theo số liệu đề cho, ra $12168\ \text{cm}^2$. CEO chọn: giữ nguyên (bài luyện tính theo "phần") hay sửa số, vd "gấp 12 lần chiều cao" thì chiều cao $13\ \text{cm}$, diện tích $2028\ \text{cm}^2$.
+**Ghi chú:** ĐỀ SAI dữ kiện (CEO chốt 24/10: giải theo số liệu của đề nhưng ghi rõ đề sai để học sinh biết): tính ra cạnh bên $26\ \text{cm}$ nhưng chiều cao $78\ \text{cm}$ — chiều cao không thể dài hơn cạnh bên nên hình bình hành này không tồn tại.
 
 **Phần 1. Hướng dẫn**
 
@@ -1823,6 +1825,8 @@ $156:2=78$ (cm)
 Diện tích hình bình hành là:
 
 $156.78=12168\ (\text{cm}^2)$
+
+**Lưu ý: đề bài này cho số liệu sai.** Cạnh bên chỉ dài $26$ cm mà chiều cao tính ra lại là $78$ cm; chiều cao (đoạn vuông góc giữa hai cạnh đáy) không thể dài hơn cạnh bên, nên hình bình hành như vậy không tồn tại. Theo số liệu của đề thì diện tích tính được là $12168\ \text{cm}^2$.
 
 ## PHẦN 4 | Phiếu bổ sung nâng cao tuần 8 + 9 — Tiết 22: Chu vi, diện tích các hình (tiết 2) | tu_luan
 
@@ -1998,7 +2002,7 @@ $725.45000000=32625000000$ (đồng)
 **Đề:** Cho hình thoi $MAND$ có diện tích $150\ \text{cm}^2$, đường chéo $MN$ dài $20\ \text{cm}$. Hãy so sánh diện tích hình vuông $ABCD$ với diện tích hình thoi $MAND$, hình nào có diện tích lớn hơn và lớn hơn bao nhiêu $\text{cm}^2$?
 **Hình:** de_t22-bai2.png
 **Ghi chú:** Đọc hình: hình thoi có hai đường chéo $MN$ (ngang) và $AB$ (dọc) cắt nhau tại tâm; hình vuông $ABCD$ nằm bên phải, có cạnh $AB$ là đường chéo dọc của hình thoi ($A,D$ ở trên; $B,C$ ở dưới).
-**Chưa chắc:** đề in lỗi tên hình thoi: chữ ghi $MAND$ (hai lần) nhưng hình cho thấy rõ hình thoi là $MANB$ (đường chéo $MN$ ngang, $AB$ dọc; $D$ là đỉnh hình vuông, không thuộc hình thoi). Đã gõ ĐÚNG như in; khi soạn hiểu hình thoi là $MANB$ (dữ kiện vẫn đủ để giải).
+**Ghi chú:** ĐỀ SAI tên hình (CEO chốt 24/10): đề in hình thoi $MAND$ nhưng hình cho thấy hình thoi là $MANB$ (đường chéo $MN$ ngang, $AB$ dọc; $D$ là đỉnh của hình vuông, không thuộc hình thoi). Giải theo hình thoi $MANB$.
 
 **Phần 1. Hướng dẫn**
 
@@ -2015,6 +2019,8 @@ $725.45000000=32625000000$ (đồng)
 **Chú ý:** nếu quên chia 2 trong công thức hình thoi thì sẽ tìm sai độ dài $AB$.
 
 **Phần 2. Trình bày**
+
+**Lưu ý: đề bài in sai tên hình thoi.** Đề ghi $MAND$ nhưng theo hình vẽ, hình thoi là $MANB$ ($D$ là đỉnh của hình vuông $ABCD$). Ta giải theo hình thoi $MANB$.
 
 Hình thoi $MANB$ có hai đường chéo là $MN$ và $AB$.
 
@@ -2803,7 +2809,7 @@ A. $a$ là số tự nhiên lẻ
 B. $a$ là số tự nhiên chẵn
 C. $a$ là số tự nhiên bất kì
 D. $a\in\{0;2;4;6;8\}$
-**Chưa chắc:** Đề in lỗi — HAI phương án đúng: $a$ là chữ số (ở hàng đơn vị của $\overline{43a}$) nên "$a$ là số tự nhiên chẵn" (B) cũng chính là $a\in\{0;2;4;6;8\}$ (D). Theo luật đề in lỗi đã chọn phương án gần nhất là D (nêu đúng và đủ các chữ số, khớp "đáp án đúng nhất"). Đề xuất CEO (theo tiền lệ k6.md §9 10/10 "sửa phương án nhiễu thành SAI hẳn"): sửa B thành "$a\in\{2;4;6;8\}$" (thiếu chữ số 0) để chỉ còn D đúng.
+**Ghi chú:** CEO chốt 24/10: B sai ("$a$ là số tự nhiên chẵn" có thể là $10;12;\dots$ trong khi $a$ chỉ là một chữ số — chỉ "$a$ là chữ số chẵn" mới đúng); đáp án D.
 
 **Phần 1. Hướng dẫn**
 
@@ -2815,15 +2821,15 @@ D. $a\in\{0;2;4;6;8\}$
 
 **Bước 3.** Nhớ rằng $a$ là một chữ số nên chỉ nhận các giá trị từ 0 đến 9, rồi liệt kê các chữ số chẵn.
 
-**Bước 4.** Loại phương án A ($a$ lẻ thì số tận cùng lẻ, không chia hết cho 2) và C ($a$ bất kì thì có thể lẻ); so hai phương án còn lại, chọn phương án liệt kê đúng và đủ các chữ số.
+**Bước 4.** Loại A ($a$ lẻ thì số tận cùng lẻ), C ($a$ bất kì thì có thể lẻ) và B ("số tự nhiên chẵn" có thể có hai chữ số như $10;12$ nên không còn là một chữ số); chọn phương án liệt kê đúng và đủ các chữ số.
 
-**Chú ý:** chữ "số tự nhiên chẵn" ở phương án B chưa nói rõ $a$ chỉ là chữ số từ 0 đến 9, còn phương án D thì nêu đủ.
+**Chú ý:** $a$ là một chữ số (từ 0 đến 9). "$a$ là chữ số chẵn" thì đúng, còn "$a$ là số tự nhiên chẵn" thì sai vì số tự nhiên chẵn có thể có nhiều chữ số.
 
 **Phần 2. Trình bày**
 
 Số $\overline{43a}$ chia hết cho 2 khi chữ số tận cùng $a$ là số chẵn.
 
-Vì $a$ là chữ số nên $a\in\{0;2;4;6;8\}$.
+Vì $a$ là chữ số nên $a\in\{0;2;4;6;8\}$. Phương án B sai vì số tự nhiên chẵn như $10$ không phải là chữ số.
 
 Chọn D.
 

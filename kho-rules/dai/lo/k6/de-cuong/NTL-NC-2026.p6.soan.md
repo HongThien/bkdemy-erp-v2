@@ -107,10 +107,10 @@ Chọn D.
 ### T21 Câu 4 | kho=hgt | loai=trac_nghiem | dap_an=B
 **Đề:** Một hình vuông có diện tích $64\ \text{m}^2$. Chu vi của hình vuông đó là:
 A. $16\ \text{m}$
-B. $32\ \text{cm}$
+B. $32\ \text{m}$
 C. $8\ \text{m}$
 D. $8\ \text{cm}$
-**Chưa chắc:** phương án B in "32 cm" (phóng 600 dpi: chữ "c" in đen, có chấm bút xanh của người dùng đè lên). Như in thì KHÔNG phương án nào đúng (chu vi đúng tính theo m); có thể đề định in "32 m". Đã gõ ĐÚNG như in.
+**Ghi chú:** đề in phương án B là "32 cm" (in sai đơn vị); CEO chốt 24/10: đúng là $32\ \text{m}$ — đã sửa phương án B thành $32\ \text{m}$.
 
 **Phần 1. Hướng dẫn**
 
@@ -122,7 +122,7 @@ D. $8\ \text{cm}$
 
 **Bước 3.** Đối chiếu đơn vị: diện tích tính theo mét vuông nên cạnh và chu vi tính theo mét.
 
-**Chú ý:** các phương án $8\ \text{m}$ và $8\ \text{cm}$ chỉ là độ dài cạnh chứ không phải chu vi. Nếu không phương án nào khớp cả số lẫn đơn vị thì chọn phương án có số đúng và ghi rõ đơn vị đúng phải là gì.
+**Chú ý:** các phương án $8\ \text{m}$ và $8\ \text{cm}$ chỉ là độ dài cạnh chứ không phải chu vi. Soát cả số lẫn đơn vị của từng phương án.
 
 **Phần 2. Trình bày**
 
@@ -132,7 +132,7 @@ Chu vi hình vuông là:
 
 $8.4=32$ (m)
 
-Chu vi hình vuông là $32$ m. Chỉ phương án B có số $32$ (đề in đơn vị cm, đúng ra là m).
+Chu vi hình vuông là $32$ m, khớp phương án B.
 
 Chọn B.
 

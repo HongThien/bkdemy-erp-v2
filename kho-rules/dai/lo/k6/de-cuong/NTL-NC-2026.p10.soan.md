@@ -251,7 +251,7 @@ A. $a$ là số tự nhiên lẻ
 B. $a$ là số tự nhiên chẵn
 C. $a$ là số tự nhiên bất kì
 D. $a\in\{0;2;4;6;8\}$
-**Chưa chắc:** Đề in lỗi — HAI phương án đúng: $a$ là chữ số (ở hàng đơn vị của $\overline{43a}$) nên "$a$ là số tự nhiên chẵn" (B) cũng chính là $a\in\{0;2;4;6;8\}$ (D). Theo luật đề in lỗi đã chọn phương án gần nhất là D (nêu đúng và đủ các chữ số, khớp "đáp án đúng nhất"). Đề xuất CEO (theo tiền lệ k6.md §9 10/10 "sửa phương án nhiễu thành SAI hẳn"): sửa B thành "$a\in\{2;4;6;8\}$" (thiếu chữ số 0) để chỉ còn D đúng.
+**Ghi chú:** CEO chốt 24/10: B sai ("$a$ là số tự nhiên chẵn" có thể là $10;12;\dots$ trong khi $a$ chỉ là một chữ số — chỉ "$a$ là chữ số chẵn" mới đúng); đáp án D.
 
 **Phần 1. Hướng dẫn**
 
@@ -263,15 +263,15 @@ D. $a\in\{0;2;4;6;8\}$
 
 **Bước 3.** Nhớ rằng $a$ là một chữ số nên chỉ nhận các giá trị từ 0 đến 9, rồi liệt kê các chữ số chẵn.
 
-**Bước 4.** Loại phương án A ($a$ lẻ thì số tận cùng lẻ, không chia hết cho 2) và C ($a$ bất kì thì có thể lẻ); so hai phương án còn lại, chọn phương án liệt kê đúng và đủ các chữ số.
+**Bước 4.** Loại A ($a$ lẻ thì số tận cùng lẻ), C ($a$ bất kì thì có thể lẻ) và B ("số tự nhiên chẵn" có thể có hai chữ số như $10;12$ nên không còn là một chữ số); chọn phương án liệt kê đúng và đủ các chữ số.
 
-**Chú ý:** chữ "số tự nhiên chẵn" ở phương án B chưa nói rõ $a$ chỉ là chữ số từ 0 đến 9, còn phương án D thì nêu đủ.
+**Chú ý:** $a$ là một chữ số (từ 0 đến 9). "$a$ là chữ số chẵn" thì đúng, còn "$a$ là số tự nhiên chẵn" thì sai vì số tự nhiên chẵn có thể có nhiều chữ số.
 
 **Phần 2. Trình bày**
 
 Số $\overline{43a}$ chia hết cho 2 khi chữ số tận cùng $a$ là số chẵn.
 
-Vì $a$ là chữ số nên $a\in\{0;2;4;6;8\}$.
+Vì $a$ là chữ số nên $a\in\{0;2;4;6;8\}$. Phương án B sai vì số tự nhiên chẵn như $10$ không phải là chữ số.
 
 Chọn D.
 

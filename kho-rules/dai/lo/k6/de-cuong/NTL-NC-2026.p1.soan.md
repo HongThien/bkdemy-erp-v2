@@ -16,7 +16,7 @@ kieu: de_cuong
 7) Có ba số lẻ liên tiếp đều là số nguyên tố.
 8) Mọi số nguyên tố đều có chữ số tận cùng là một trong các chữ số $1,3,7,9$.
 **Ghi chú:** Bảng Đúng/Sai 8 khẳng định — đáp án phải tự giải.
-**Chưa chắc:** Khẳng định 3 và 4 không ghi "lớn hơn 1". Số 0 chia hết cho mọi số tự nhiên khác 0 nên có nhiều hơn 2 ước, nhưng 0 không là hợp số ⇒ theo đúng định nghĩa SGK thì 3) Sai. Khẳng định 4 hiểu là điều kiện CẦN (mọi hợp số đều có ít nhất 3 ước) thì Đúng; hiểu là "chỉ cần" thì cũng vướng số 0. Lời giải chọn 3) Sai, 4) Đúng (trạm soạn chọn 3) Đúng — hai trạm lệch đúng ở chỗ này). CEO chốt, hoặc sửa đề thêm "lớn hơn 1" vào khẳng định 3.
+**Ghi chú:** CEO chốt 24/10: khẳng định 3) và 4) đều SAI (đề không ghi điều kiện "lớn hơn 1" nên số 0 là phản ví dụ).
 
 **Phần 1. Hướng dẫn**
 
@@ -40,7 +40,7 @@ kieu: de_cuong
 
 3) Sai. Số $0$ chia hết cho $1;2;3$ nên có nhiều hơn 2 ước nhưng $0$ không là hợp số (hợp số phải là số tự nhiên lớn hơn 1).
 
-4) Đúng. Hợp số có nhiều hơn 2 ước tức là có ít nhất 3 ước; một số tự nhiên lớn hơn 1 có ít nhất 3 ước thì là hợp số.
+4) Sai. Số $0$ cũng có ít nhất 3 ước ($1;2;3$) nhưng $0$ không là hợp số: muốn kết luận một số là hợp số thì ngoài việc có ít nhất 3 ước, số đó còn phải lớn hơn 1.
 
 5) Sai. Số 2 là số nguyên tố nhưng là số chẵn.
 

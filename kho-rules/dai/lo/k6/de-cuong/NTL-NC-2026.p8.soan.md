@@ -52,7 +52,7 @@ $725.45000000=32625000000$ (đồng)
 **Đề:** Cho hình thoi $MAND$ có diện tích $150\ \text{cm}^2$, đường chéo $MN$ dài $20\ \text{cm}$. Hãy so sánh diện tích hình vuông $ABCD$ với diện tích hình thoi $MAND$, hình nào có diện tích lớn hơn và lớn hơn bao nhiêu $\text{cm}^2$?
 **Hình:** de_t22-bai2.png
 **Ghi chú:** Đọc hình: hình thoi có hai đường chéo $MN$ (ngang) và $AB$ (dọc) cắt nhau tại tâm; hình vuông $ABCD$ nằm bên phải, có cạnh $AB$ là đường chéo dọc của hình thoi ($A,D$ ở trên; $B,C$ ở dưới).
-**Chưa chắc:** đề in lỗi tên hình thoi: chữ ghi $MAND$ (hai lần) nhưng hình cho thấy rõ hình thoi là $MANB$ (đường chéo $MN$ ngang, $AB$ dọc; $D$ là đỉnh hình vuông, không thuộc hình thoi). Đã gõ ĐÚNG như in; khi soạn hiểu hình thoi là $MANB$ (dữ kiện vẫn đủ để giải).
+**Ghi chú:** ĐỀ SAI tên hình (CEO chốt 24/10): đề in hình thoi $MAND$ nhưng hình cho thấy hình thoi là $MANB$ (đường chéo $MN$ ngang, $AB$ dọc; $D$ là đỉnh của hình vuông, không thuộc hình thoi). Giải theo hình thoi $MANB$.
 
 **Phần 1. Hướng dẫn**
 
@@ -69,6 +69,8 @@ $725.45000000=32625000000$ (đồng)
 **Chú ý:** nếu quên chia 2 trong công thức hình thoi thì sẽ tìm sai độ dài $AB$.
 
 **Phần 2. Trình bày**
+
+**Lưu ý: đề bài in sai tên hình thoi.** Đề ghi $MAND$ nhưng theo hình vẽ, hình thoi là $MANB$ ($D$ là đỉnh của hình vuông $ABCD$). Ta giải theo hình thoi $MANB$.
 
 Hình thoi $MANB$ có hai đường chéo là $MN$ và $AB$.
 

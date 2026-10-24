@@ -73,7 +73,7 @@ A. $18=18.1$
 B. $18=10+8$
 C. $18=2.3^2$
 D. $18=6+6+6$
-**Chưa chắc:** đề in "Phân tích số  ra thừa số nguyên tố" thiếu mất số cần phân tích (chỗ trống giữa "số" và "ra"); bốn phương án đều là các cách viết của $18$, có thể đề gốc là số $18$. Đã gõ ĐÚNG như in (không điền). Giải theo cách hiểu số cần phân tích là $18$ (bốn phương án đều về $18$); như vậy chỉ phương án C là tích các thừa số nguyên tố.
+**Ghi chú:** CEO chốt 24/10: số cần phân tích là 18; nhưng không cần biết số — chỉ cần dùng quy tắc viết thừa số nguyên tố (kết quả phải là một tích mà mọi thừa số đều là số nguyên tố) cũng chọn được C.
 
 **Phần 1. Hướng dẫn**
 
@@ -85,11 +85,11 @@ D. $18=6+6+6$
 
 **Bước 3.** Với phương án còn lại, kiểm từng thừa số có là số nguyên tố không và nhân lại xem có ra đúng 18 không.
 
-**Chú ý:** đề thiếu số cần phân tích nhưng cả bốn phương án cùng viết về số 18 nên hiểu số cần phân tích là 18.
+**Chú ý:** câu này làm được ngay bằng quy tắc, không cần biết số cần phân tích: chỉ một phương án viết kết quả thành tích mà mọi thừa số đều là số nguyên tố.
 
 **Phần 2. Trình bày**
 
-B và D viết $18$ thành tổng nên không phải phân tích ra thừa số; A có thừa số $18$ là hợp số.
+Theo quy tắc, kết quả phân tích ra thừa số nguyên tố là một tích mà mọi thừa số đều là số nguyên tố. B và D viết thành tổng nên không phải; A có thừa số $18$ là hợp số.
 
 Phân tích 18 ra thừa số nguyên tố:
 
