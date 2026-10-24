@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-444 bảng · 32 view · 0 enum · 224 trigger · 1283 function
+444 bảng · 32 view · 0 enum · 225 trigger · 1286 function
 
 ## _app_secrets
 
@@ -585,6 +585,7 @@
 | ghi_chu_dong | text | Y |  |  |  |
 | case_truoc_id | uuid | Y |  | FK→bo_tro_yeu.id |  |
 | uu_tien | smallint |  | 2 |  |  |
+| ban_do | text |  | 'cu'::text |  | `cu` · `moi` |
 
 ## bo_tro_yeu_dang
 
@@ -8343,6 +8344,7 @@ WITH luot AS (
 | bao_loi | trg_log_bao_loi | BEFORE | UPDATE | log_bao_loi |
 | bo_tro_hinh | trg_bthinh_log | AFTER | INSERT/UPDATE | _trg_bthinh_log |
 | bo_tro_hinh | trg_bthinh_suc_chua | BEFORE | INSERT/UPDATE | _trg_bthinh_suc_chua |
+| bo_tro_yeu | trg_btyeu_ban_do_luc_mo | BEFORE | INSERT | _btyeu_ban_do_luc_mo |
 | bo_tro_yeu | trg_btyeu_suc_chua | BEFORE | INSERT/UPDATE | _trg_btyeu_suc_chua |
 | btvn_nop_anh | tg_btvn_nop_anh_touch | AFTER | INSERT/DELETE/UPDATE | fn_btvn_nop_touch |
 | buoi_hoc | trg_buoi_bo_tro_gan_ca | BEFORE | UPDATE | _trg_buoi_bo_tro_gan_ca |
@@ -8571,6 +8573,7 @@ WITH luot AS (
 - `_bthinh_tai_lieu_json(p_buoi uuid)` → jsonb
 - `_btvn_cau_bo_trong(p_hs uuid)` → TABLE(buoi_hoc_id uuid, ngay date, problem_id uuid, ma_dang text)
 - `_btvn_hs_xem_anh(p_name text)` → boolean
+- `_btyeu_ban_do_luc_mo()` → trigger
 - `_btyeu_bu_retest(p_buoi uuid, p_dangs text[])` → uuid
 - `_btyeu_buoi(p_buoi uuid)` → TABLE(buoi_id uuid, hoc_sinh_id uuid, bo_tro_yeu_id uuid, mon text, ngay date, trang_thai text, diem_danh text, nguoi_day_tg uuid, danh_gia_xong_at timestamp with time zone, buoi_hoc_hs_id uuid)
 - `_btyeu_chon_cau(p_cautbl text, p_ma_dang text, p_ma_cum text, p_tru text[], p_n integer)` → text[]
@@ -9053,7 +9056,9 @@ WITH luot AS (
 - `fn_btyeu_ca_theo_doi(p_ngay date DEFAULT NULL::date)` → jsonb
 - `fn_btyeu_case_xep_lich(p_mon text DEFAULT NULL::text)` → jsonb
 - `fn_btyeu_chi_tiet_case(p_case uuid)` → jsonb
+- `fn_btyeu_dang_goi_y_moi(p_hs uuid, p_mon text)` → TABLE(ma_dang text, ten_dang text, ten_chuyen_de text, score numeric, n integer, muc text, tin text)
 - `fn_btyeu_dang_yeu_2_cua_so(p_hs uuid, p_mon text)` → TABLE(ma_dang text, ten_dang text, score numeric, n integer)
+- `fn_btyeu_dang_yeu_2_cua_so_moi(p_hs uuid, p_mon text)` → TABLE(ma_dang text, ten_dang text, score numeric, n integer)
 - `fn_btyeu_de_xuat_dang_moi(p_mon text DEFAULT NULL::text, p_case uuid DEFAULT NULL::uuid, p_thuc_hien boolean DEFAULT false)` → jsonb
 - `fn_btyeu_dem(p_ns uuid)` → integer
 - `fn_btyeu_doi_level(p_case uuid, p_level integer, p_ly_do text DEFAULT NULL::text)` → jsonb
@@ -9827,8 +9832,8 @@ WITH luot AS (
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 

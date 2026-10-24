@@ -77624,3 +77624,8 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Quyết định Thùy:** Logic giữ 5 chuyên đề riêng (không gộp "dãy số + trồng cây"); «Quan hệ đại lượng trong phép toán» (chủ đề cũ Thùy chưa nhắc) đặt vào Số tự nhiên sau Tính toán. Tên chuyên đề giữ nguyên tên chủ đề cũ (Thùy viết "Viết số" ≙ "Viết số theo điều kiện cho trước"; đổi tên sau trên màn bản đồ).
 - **Mã đổi (vì khác bảng):** bảng cũ → mới ở `kho-rules/dai/ban-do/4T-ha-tang-doi-ma.json`; sao lưu cây cũ ở `4T-ha-tang-truoc.json`. Chuỗi mã NCD/NCH/NNB/NDB có khoảng trống do lượt XEM đã tiêu số dãy (rollback không trả lại dãy) — vô hại.
 - **Còn lại:** tên 11 dạng bài cũ vẫn là tên tạm ("Cụm 1", "2 đầu", "1 đầu"…) nằm cạnh dạng cùng nhóm; 2 nhóm cũ trùng tên "Bài toán trồng cây trên đường thẳng"/"…phần bù" chưa gộp. Chưa gán câu nào (B3 chờ Thùy xong bản đồ).
+
+## 24/10 — Bổ trợ sang mastery bản đồ mới theo từng CA (mig 202610241000)
+- **Làm:** Thùy "đổi nốt bổ trợ nữa là xong". Giữ nguyên tắc song song: mỗi ca nhớ bản đồ lúc MỞ (`bo_tro_yeu.ban_do`, trigger theo công tắc) ⇒ ca đang chạy không đổi khoá giữa chừng; ca mở sau khi bật công tắc chạy hết theo bản đồ mới (điền dạng yếu · đề xuất · báo động · gợi ý thêm dạng). Bù theo công tắc. Client: `listCaseDangMo` lấy `ban_do`, `getDangYeuGoiY` gọi `fn_btyeu_dang_goi_y_moi` cho ca 'moi'.
+- **Kiểm:** `_test_bo_tro_ban_do_ca.mjs` 8/8 ROLLBACK; `fn_hs_bu_dang` 40 buổi bù TẮT y hệt.
+- **Sai rồi sửa trong test:** lần đầu báo 2 ✘ — (1) `chi_tiet` đề xuất khác THỨ TỰ (cùng tập 129 dòng; union all đổi thứ tự, jsonb_agg không order) ⇒ so tập; (2) HS test không có dạng yếu trong 2 cửa sổ gần ⇒ chọn HS có. Không phải lỗi hàm.

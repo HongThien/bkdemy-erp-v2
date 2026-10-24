@@ -25,7 +25,10 @@
 ## Trạng thái 23/10 tối — SẴN SÀNG BẤM
 - ✅ Lõi + công tắc (mig 202610231446) · ✅ tra tên NDB (…1522, client `dangInfoCuaMon`) · ✅ kho câu nhánh 'bdm' (…1525) · ✅ 10 hàm dùng mastery theo công tắc (…1532) · ✅ tốc độ (…1538: 11A1 3,8 s) · ✅ màn công tắc + so sánh từng lớp (…1543, nút **🔀 Mastery** ở Bản đồ mới (soạn 4 tầng), chỉ admin).
 - Kiểm (đều ROLLBACK): `_test_mastery_bdm.mjs` 5/5 · `_test_mastery_bdm_b2.mjs` 10/10 · `_test_mastery_bdm_b3.mjs` 4/4.
-- Bổ trợ: GIỮ mastery cũ toàn bộ (ca mới cũng theo dạng cũ) — Thùy 23/10.
+- ✅ **Bổ trợ theo bản đồ của CA (Thùy 24/10 "đổi nốt bổ trợ", mig 202610241000):** cột `bo_tro_yeu.ban_do` ('cu'|'moi') do trigger điền theo công tắc LÚC MỞ ca, không đổi suốt đời ca.
+  Ca 'cu' (mọi ca hiện có) chạy hết theo mastery cũ y như trước. Ca 'moi': điền dạng yếu (`fn_btyeu_dang_yeu_2_cua_so_moi`), đề xuất dạng mới, báo động vào ca (quy mã cũ → dạng bài khi ứng đúng 1),
+  gợi ý "+ Thêm dạng" (`fn_btyeu_dang_goi_y_moi`) đều theo bản đồ mới. Bù (`fn_hs_bu_dang`) theo công tắc. Đuổi (`_duoi_lo_trinh`) không dùng mastery ⇒ không đổi.
+  Kiểm `scripts/_test_bo_tro_ban_do_ca.mjs` 8/8 (ROLLBACK) + bù 40 buổi: TẮT y hệt, BẬT ra NDB có MCQ. Chấp nhận: "tìm toàn bản đồ" (DangPicker) vẫn là bản đồ cũ.
 - Chấp nhận: phiêu lưu sắp chủ đề theo mã; dấu "đã dạy" màn mới chưa có; snapshot qua view không ghi form_tn_id; HGT cũ không mã câu giữ mã cũ.
 
 ## Việc còn lại trước khi bấm (thứ tự — bản gốc)
