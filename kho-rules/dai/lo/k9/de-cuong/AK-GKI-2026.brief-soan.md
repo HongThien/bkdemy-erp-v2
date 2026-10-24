@@ -1,0 +1,120 @@
+# ⚠️ BẢN ÁP DỤNG CHO ĐỀ CƯƠNG AN KHÁNH (AK-GKI-2026) — ĐỌC TRƯỚC, ĐÈ LÊN CÁC DÒNG NS BÊN DƯỚI
+
+Brief gốc viết cho đề cương Nguyễn Siêu; bản này đã đổi mã đề / thư mục. Các điểm KHÁC phải theo đây:
+- Mã đề `AK-GKI-2026` (THCS An Khánh, Hà Nội — "ĐỀ CƯƠNG GK1 AN KHÁNH KHỐI 9", năm học 2026–2027, Thùy đưa 24/10). `<LV>` = `C:\Users\WBPC\bk-kho-lam-viec\de-cuong\K9\AK-GKI-2026`; số phần `<P>` = 1–5 (tệp `AK-GKI-2026.p<P>.soan.md`, mỗi tệp = MỘT đề). Thay mọi `NS-GKI-2026` trong lệnh bằng `AK-GKI-2026`.
+- **Ảnh đề cương:** `<LV>\trang\p-1.png … p-4.png` (4 trang, 130 dpi, ảnh chụp/scan, không có lớp chữ) — NGUỒN CHÍNH, đọc từ ảnh; chỗ không chắc phóng to bằng `pdftoppm` như mục 2 (toạ độ 260 dpi = 2 × toạ độ trên `p-N.png`).
+- **Bản đồ tệp → trang ảnh:** p1 = ĐỀ 1 (p-1) · p2 = ĐỀ 2 (p-1 nửa dưới, p-2 nửa trên) · p3 = ĐỀ 3 (p-2 nửa dưới, p-3 nửa trên) · p4 = ĐỀ 4 (p-3 nửa dưới, p-4 đầu) · p5 = ĐỀ 5 (p-4).
+- **Nhãn:** PHẦN n = ĐỀ n. Đề 1 in "Bài 1–6", Đề 2–5 in "Câu …" — trong tệp đều ghi nhãn "Bài k" (k = số thứ tự trong đề). Đề 2 in sai số câu ("Câu 11" nằm giữa Câu 1 và Câu 2; hai "Câu 4"): khung đã đánh lại 1–6 theo thứ tự, giữ Ghi chú có sẵn.
+- **Phạm vi kiến thức:** Chương I (phương trình quy về bậc nhất, hệ hai phương trình bậc nhất hai ẩn, giải toán bằng cách lập phương trình / hệ) · **Chương II (bất đẳng thức, bất phương trình bậc nhất một ẩn — ĐƯỢC DÙNG)** · Chương IV (tỉ số lượng giác, hệ thức cạnh – góc). Phần cấm giữ nguyên mục 3.4 (không Δ / Viète, không Cô-si dùng thẳng, không hệ thức đường cao dùng thẳng, không `⇔`, không "tập nghiệm S").
+  Bất phương trình: kết luận "Vậy nghiệm của bất phương trình là $x>…$" (hoặc $x\le…$), nhân / chia số âm phải đổi chiều và nói rõ.
+- **Bài có căn (ĐỀ 3 Bài 6: $E=\dfrac{x}{\sqrt{2}}+\dfrac{2}{\sqrt{x}}-\sqrt{x}-\sqrt{2}$):** đề tự dùng căn nên được dùng căn bậc hai số học + điều kiện $x>0$; đặt $t=\sqrt{x}$ ($t>0$) rồi hoàn thành bình phương / chứng minh $E\ge\dots$ bằng phép biến đổi tương đương (gợi ý: $E=\dfrac{(t-\sqrt{2})^2(t+\sqrt{2})}{\sqrt{2}\,t}$), không đạo hàm, không Cô-si dùng thẳng.
+  **ĐỀ 4 Bài 6** ($P=\sum\dfrac{a^3}{a^2+b^2}$, $a+b+c=3$): tách $\dfrac{a^3}{a^2+b^2}=a-\dfrac{ab^2}{a^2+b^2}$ rồi dùng $a^2+b^2\ge2ab$ (chứng minh từ $(a-b)^2\ge0$). **ĐỀ 2 Bài 6** (hai bất đẳng thức liên tiếp): chứng minh từng vế từ $(a-b)^2\ge0$.
+- **Câu `kho=hinh_hoc`** (Đề 1 Bài 5, 6 · Đề 2 Bài 4, 5 · Đề 3 Bài 4.1, 4.2, 5 · Đề 4 Bài 4, 5 · Đề 5 Bài 5, 6): thay chữ "`kho=hgt`" ở brief NS bằng `kho=hinh_hoc`; luật được dùng / cấm, thứ tự bài, làm tròn mặc định vẫn là `Repo\kho-rules\hgt\k9.md` (đọc thêm file đó).
+  Bài có tam giác / hình chữ nhật dùng chung dữ kiện KHÔNG tách ý; Phần 2 ghi a) b). Tên hình giải: `giai_P<phần>B<bài>.png` (vd `giai_P1B5.png`, `giai_P2B4.png`); câu đã có `**Hình:**` thì chỉ vẽ thêm hình giải khi hình đề thiếu điểm của lời giải
+  (hình đề của Đề 1 Bài 6, Đề 2 Bài 5, Đề 3/4 Bài 5, Đề 5 Bài 5 là hình thật / minh họa, lời giải cần hình tam giác vuông đủ điểm ⇒ vẽ `giai_…`). Hình dựng đúng dữ kiện bằng toạ độ, đủ điểm, ghi số đo đề cho, không ghi kết quả phải tìm. Quy ước hình: tam giác vuông tại $A$ ⇒ $AB$ đứng, $AC$ ngang.
+- **ĐƯỜNG TRUNG BÌNH của tam giác: CẤM** (Thùy 20/10: chỉ trường Ngôi Sao Hoàng Mai được dùng) — kể cả dùng ngầm. **Hệ thức đường cao dùng thẳng vẫn CẤM** (suy ra từ tam giác đồng dạng).
+- **Làm tròn:** theo ĐỀ khi đề nêu; đề không nêu (Đề 1 Bài 5 cạnh $AC$ · Đề 2 Bài 4a góc đã nêu đến độ · Đề 5 Bài 6a) ⇒ mặc định của `hgt\k9.md` (độ; độ dài 1 chữ số thập phân). **KHÔNG ghi `Chưa chắc` chỉ vì đề không nêu cách làm tròn** — dùng mặc định và, nếu cần, một dòng `**Ghi chú:**`.
+- **Đề SAI / thiếu dữ kiện nhưng giải được (Thùy 24/10):** GIẢI BÌNH THƯỜNG theo số liệu / hình, ghi rõ "đề sai" ở dòng `**Ghi chú:**` và một dòng "Lưu ý: …" ở đầu Phần 2 để học sinh biết; chỉ sửa chữ đề khi lỗi in hiển nhiên có đáp án rõ. `**Chưa chắc:**` chỉ dùng khi THỰC SỰ không giải được / hai cách hiểu cho hai đáp số khác nhau.
+  Cần kiểm kĩ: **Đề 2 Bài 4b** (đề nhắc $M$, $N$ nhưng câu chứng minh $\widehat{BHK}=\widehat{BID}$ không dùng chúng — kiểm bằng toạ độ số xem đẳng thức đúng không; sai thì giải bình thường + ghi rõ "đề sai" + nêu đẳng thức đúng) · **Đề 3 Bài 4.1** ("giải thích tại sao" biểu thức bằng $-2$: dùng $\sin\alpha=\cos(90^\circ-\alpha)$, $\tan\alpha=\cot(90^\circ-\alpha)$ — kiểm bằng máy) · **Đề 3 Bài 4.2** ($AB=BC\cdot\cos B\approx16{,}18$) · **Đề 3 Bài 2** (các bất đẳng thức mô tả tình huống: $x\ge18$, $m\le700$, …; loại `tu_luan`, `dap_an=—`).
+- Đề 3 Bài 5 và Đề 4 Bài 5 trùng nguyên văn — bình thường, máy gom khi ghi.
+
+---
+
+# Brief giao trạm SOẠN — ĐỀ CƯƠNG Toán 9 Nguyễn Siêu (AK-GKI-2026) (13/10)
+
+> Lưu nguyên văn brief (README §4 việc #5). `<P>` = số phần (1–9). `<LV>` = `C:\Users\WBPC\bk-kho-lam-viec\de-cuong\K9\AK-GKI-2026`.
+> Repo = `C:\Users\WBPC\Desktop\BKERP\bkdemy-erp-v2`. Trạm soạn chạy Sonnet; trạm soát (`brief-soat.md`) chạy Opus.
+> Cùng dây chuyền đề cương khối 8 (`kho-rules/dai/k8.md` §12, `lo/k8/de-cuong/brief-soan.md`) — khác ở LUẬT KIẾN THỨC (khối 9) và kho hình (hệ thức lượng ⇒ `hgt`).
+
+---
+
+Bạn là trạm SOẠN cho MỘT PHẦN của đề cương ôn tập giữa học kì I Toán 9. Việc: **giải chi tiết mọi câu của phần được giao** theo luật khối 9, viết thẳng vào tệp khung.
+Tệp của bạn: `Repo\kho-rules\dai\lo\k9\de-cuong\AK-GKI-2026.p<P>.soan.md` (đã có sẵn tiêu đề + đề từng câu). KHÔNG ghi DB, KHÔNG sửa tệp nào khác trong repo,
+KHÔNG commit. (Được ghi thêm ảnh vào `<LV>\img\` và script tạm vào `<LV>\tam\`.)
+
+## 1. Đọc trước (bắt buộc, đọc HẾT)
+
+1. Luật khối 9: câu `kho=dai` ⇒ `Repo\kho-rules\dai\k9.md` (§1 luật kiến thức theo thứ tự bài, §1.5 hai phần, §2 khuôn Phần 2 theo dạng, §3 định dạng);
+   câu `kho=hgt` ⇒ thêm `Repo\kho-rules\hgt\k9.md` (được dùng / cấm, thứ tự bài, làm tròn mặc định, hình).
+2. `Repo\kho-rules\dai\lo\k8\GKI-01.soan.md` — **khuôn TỆP** đã CEO xem (cách đặt dòng `### …`, `**Đề:**`, `**Phần 1. Hướng dẫn**`, `**Mấu chốt:**`, `**Bước k.**`, `**Phần 2. Trình bày**`).
+   Chỉ lấy KHUÔN TỆP ở đó — kiến thức và cách trình bày theo luật khối 9.
+
+## 2. Nguồn
+
+- `<LV>\trang\p-1.png … p-4.png` — 4 trang ảnh đề cương (130 dpi, BẢN SCAN, không có lớp chữ) — NGUỒN CHÍNH. Mở HẾT bằng công cụ Read, đối chiếu từng câu của phần bạn: chữ, số, số mũ, dấu, dấu ngoặc.
+  Chỗ không chắc ⇒ phóng to: `pdftoppm -r 260 -png -singlefile -f <trang> -l <trang> -x <X> -y <Y> -W <rộng> -H <cao> "<LV>/goc.pdf" "<LV>/z/<tên>"` (toạ độ ở 260 dpi = 2 × toạ độ trên ảnh `p-N.png`) rồi Read.
+- Tệp khung do người gõ — **lệch ảnh thì ảnh đúng** ⇒ sửa dòng `**Đề:**` cho đúng ảnh (sửa tối thiểu, thêm `**Ghi chú:**` nói đã sửa gì).
+  NGOẠI LỆ: các chỗ đề cương in thiếu / in sai mà người gõ đã xử lí và ghi rõ ở dòng `**Ghi chú:**` / `**Chưa chắc:**` có sẵn (thêm "$=0$", sửa bất đẳng thức in sai…) — giữ nguyên như khung, đừng trả về bản in.
+- Đề cương đánh số bài lại từ 1 ở mỗi phần (A. Đại số · B. Hình học · C. Nâng cao) — tệp của bạn chỉ thuộc MỘT phần (xem dòng `## PHẦN`), tìm đúng mục đó trên ảnh.
+- Hình có sẵn trong đề đã cắt vào `<LV>\img\de_*.png` và khai bằng dòng `**Hình:**` (giữ nguyên; mở xem đúng hình của câu).
+- Đề cương KHÔNG có đáp án. Đáp số lấy từ lượt giải của bạn rồi trạm soát (Opus) giải mù đối chiếu.
+
+## 3. Việc phải làm
+
+1. Mỗi câu: điền `loai=` và `dap_an=` ở dòng `### …`, viết lời giải 2 phần (mục 4) ngay sau các dòng `**Đề:**` / `**Hình:**` / `**Ghi chú:**` / `**Chưa chắc:**` có sẵn.
+   - `loai=tra_loi_ngan` CHỈ khi đáp số là MỘT số nguyên / thập phân viết được trong 4 ô (chữ số, dấu `-` đầu, dấu `,`; ≤ 4 kí tự: `13`, `-1`, `2,5`) theo ĐÚNG dạng đề hỏi
+     (vd "Tìm số nguyên lớn nhất…" ra $1$ ⇒ `tra_loi_ngan`, `dap_an=1`; phương trình có MỘT nghiệm $x=-4$ ⇒ `dap_an=-4`). Hai nghiệm, cặp $(x;y)$, phân số, khoảng nghiệm của bất phương trình,
+     vô nghiệm, chứng minh, bài nhiều ý, bài hỏi hai đại lượng ⇒ `loai=tu_luan`, `dap_an=—`. `dap_an` của TLN chỉ ghi số.
+   - `kho=` (`dai` / `hgt`) đã điền sẵn — giữ.
+2. **Giữ nguyên** nhãn, không tách thêm / gộp câu. Các dòng `**Ghi chú:**` / `**Chưa chắc:**` có sẵn giữ; chỉ **thêm** khi cần.
+3. **Mọi đáp số phải thử lại bằng máy** — viết script node trong `<LV>\tam\` (tạo bằng công cụ Write, KHÔNG heredoc, KHÔNG `node -e` chứa `\` hay dấu huyền): hệ / phương trình ⇒ thay nghiệm vào ĐỀ
+   (dùng phân số chính xác hoặc sai số $10^{-9}$) và quét lưới xem có sót nghiệm; bất phương trình ⇒ thử hai phía của biên + chính biên; tham số $m$ ⇒ quét lưới $m$; lời văn ⇒ thay đáp số vào từng dữ kiện;
+   lượng giác ⇒ `Math.sin(x*Math.PI/180)`; hình ⇒ dựng toạ độ số, kiểm từng khẳng định; bất đẳng thức ⇒ thử ≥ 2000 bộ số ngẫu nhiên (cả biên, cả số âm nếu đề cho số thực). Đừng nhẩm.
+4. **Kiến thức — luật quan trọng nhất.** Phạm vi của đề cương (đề tự ghi "Chương I; chương II; chương IV"):
+   **Chương I** (phương trình quy về bậc nhất: phương trình tích, phương trình chứa ẩn ở mẫu; phương trình và hệ hai phương trình bậc nhất hai ẩn — phương pháp thế, cộng đại số; giải toán bằng cách lập phương trình / hệ phương trình),
+   **Chương II** (bất đẳng thức và tính chất; bất phương trình bậc nhất một ẩn), **Chương IV** (tỉ số lượng giác của góc nhọn; hệ thức giữa cạnh và góc trong tam giác vuông). Lớp 6–8 là nền
+   (hằng đẳng thức, phân tích đa thức thành nhân tử, phân thức, hàm số bậc nhất và đồ thị, tam giác đồng dạng, định lí Pythagore, tính chất đường phân giác của tam giác, căn bậc hai số học của lớp 7…).
+   **CẤM (dù lời giải ngắn hơn):** công thức nghiệm / $\Delta$ / định lí Viète (chương sau) · các phép biến đổi căn thức của Chương III (đưa thừa số ra ngoài dấu căn, trục căn thức…) ·
+   kiến thức đường tròn · bất đẳng thức Cô-si dùng thẳng (phải tự chứng minh từ $(a-b)^2\ge0$) · hệ thức đường cao $h^2=b'c'$, $b^2=ab'$, $\dfrac{1}{h^2}=\dfrac{1}{b^2}+\dfrac{1}{c^2}$ dùng thẳng,
+   định lí sin / côsin (xem `hgt\k9.md`) · dấu `⇔` · "tập nghiệm $S=\{…\}$" (kết luận bằng LỜI: "Vậy phương trình có nghiệm $x=…$", "Vậy hệ phương trình có nghiệm duy nhất $(x;y)=(…;…)$").
+   Phương trình bậc hai, bậc cao: đưa về PHƯƠNG TRÌNH TÍCH bằng phân tích nhân tử (tách hạng tử, nhóm, hằng đẳng thức). Nhân tử bậc hai vô nghiệm ⇒ chứng minh nó luôn dương bằng hoàn thành bình phương.
+   Nghiệm vô tỉ (chỉ ở bài không phân tích được trên số hữu tỉ) ⇒ hoàn thành bình phương rồi dùng căn bậc hai số học lớp 7 ($X^2=k$ với $k>0$ thì $X=\sqrt{k}$ hoặc $X=-\sqrt{k}$), và thêm `**Chưa chắc:**` nếu khung chưa có.
+   Hệ có ẩn ở mẫu ⇒ điều kiện xác định, đặt ẩn phụ, giải, trả lại ẩn, đối chiếu điều kiện. Hệ vô nghiệm / vô số nghiệm ⇒ nêu rõ và viết nghiệm tổng quát.
+5. **Câu `kho=hgt`** (phần B và Bài 3–4 phần C): theo `hgt\k9.md`. Bài có tam giác **không tách ý**; Phần 2 ghi `a)` `b)` `c)`. Nêu rõ tam giác vuông nào, vuông tại đâu trước khi viết tỉ số lượng giác.
+   **Làm tròn:** theo đúng yêu cầu của đề; đề không nêu ⇒ theo mặc định của `hgt\k9.md` và thêm `**Chưa chắc:** đề không nêu cách làm tròn — …`. Tính tiếp bằng giá trị ĐÚNG (không tính tiếp từ số đã làm tròn), chỉ làm tròn ở kết quả cuối của từng đại lượng.
+   Bài KHÔNG có dòng `**Hình:**` mà có tam giác / hình thang (B Bài 3, 4, 5, 9, 10 · C Bài 3, 4) ⇒ **vẽ hình cho lời giải bằng code** rồi thêm dòng `**Hình giải:** giai_<B|C><số bài>.png`
+   (vd `giai_B3.png`; một tệp / bài, đủ mọi điểm của mọi ý). Cách vẽ: viết `<LV>\tam\ve_p<P>.mjs`, import
+   `import { P, seg, tick, angleMark, rightAngle, ray, dot, label, T, svgDoc, luu } from 'file:///C:/Users/WBPC/Desktop/BKERP/bkdemy-erp-v2/scripts/anh/ve_hinh_lib.mjs'`,
+   chạy `node "<LV>/tam/ve_p<P>.mjs"` với thư mục hiện hành là Repo; mỗi hình `await luu('<LV>/img', 'giai_B3', w, h, svgDoc(w, h, T(dx, dy, body)))`. Mẫu dùng thư viện: `Repo\scripts\anh\ve_hinh_hh101_102.mjs`.
+   Hình **dựng đúng dữ kiện bằng toạ độ** (đúng tỉ lệ cạnh, góc vuông, chân đường cao, chân phân giác tính bằng phép tính), đủ mọi điểm, ghi số đo ĐỀ CHO, đánh dấu góc vuông cho trước, **không ghi kết quả phải tìm**;
+   canvas cao ≤ 450 px, chừa ≥ 35 px dưới nhãn đáy, nhãn không đè đường. **Vẽ xong mở ảnh bằng Read để kiểm, sai thì sửa.**
+6. **Bài lời văn (A Bài 12–22):** mỗi bài MỘT câu. Khuôn: gọi ẩn + đơn vị + điều kiện → biểu diễn các đại lượng theo ẩn → lập phương trình / hệ → giải (trình bày đủ) → đối chiếu điều kiện → trả lời bằng lời đủ MỌI đại lượng đề hỏi.
+7. **Bất đẳng thức (C Bài 1, 2):** chứng minh bằng biến đổi tương đương về tổng các bình phương / xét hiệu, mỗi bước một dòng có lí do; nêu khi nào dấu "=" xảy ra (nếu có). Bất đẳng thức kép ⇒ chứng minh từng vế.
+8. **Không chắc 100% thì NÓI RA** — dòng `**Chưa chắc:** <điều chưa chắc>` ngay trong câu đó (sau đề, trước `**Phần 1. Hướng dẫn**`). CEO xem kĩ đúng những câu này, nên đừng giấu và đừng ghi tràn lan. Ghi khi:
+   ảnh mờ không đọc chắc · đề hai cách hiểu · đề in lỗi (chứng minh bằng máy, nêu "nếu sửa thành … thì …") · cần kiến thức ngoài phạm vi mục 4 · làm tròn tự chọn · kết quả "xấu" bất thường so với các ý anh em.
+   KHÔNG tự sửa dữ kiện đề để ra số đẹp.
+9. Cuối tệp thêm mục `## GHI CHÚ CHO NGƯỜI DUYỆT` (câu nào cần CEO xem + nhận xét chung). Không có gì thì ghi "Không".
+
+## 4. Khuôn lời giải (máy kiểm — sai là bị từ chối)
+
+- Mỗi câu: `**Phần 1. Hướng dẫn**` → `**Mấu chốt:** …` (một câu) → **3 đến 6** đoạn `**Bước k.** …` (k liên tục từ 1) → tuỳ chọn `**Chú ý:** …`
+  → `**Phần 2. Trình bày**` → lời giải. Các đoạn cách nhau MỘT dòng trống; trong một bước không có dòng trống.
+- Mỗi bước Phần 1 là **bước nghĩ trọn vẹn** (làm gì + dựa vào đâu), ≥ 5 chữ ngoài công thức, **không ghi đáp số cuối** (kể cả ở Chú ý), không chép lại từng dòng tính của Phần 2, không bịa bước "Đọc kĩ đề".
+  Bài nhiều ý: các bước ghi rõ "Ý a: …", "Ý b: …"; tổng vẫn 3–6 bước ⇒ gộp ý ngắn lại.
+- Phần 2 = đúng cái học sinh viết vào bài kiểm tra, theo khuôn của dạng (`dai\k9.md` §2 / `hgt\k9.md` §2). Mỗi dòng biến đổi / mỗi câu một đoạn riêng (cách nhau một dòng trống). Kết bằng một câu "Vậy …".
+- **Định dạng:** mỗi công thức một cặp `$…$` (không `$$`, không `\(`) · dấu nhân tường minh là **`\cdot`** — **CẤM `\times` và CẤM dấu chấm làm dấu nhân**; số với chữ, chữ với chữ, ngoặc với ngoặc viết liền ·
+  chia `:` · phân số `\dfrac` · hệ `$\begin{cases} … \\ … \end{cases}$` (cả hệ trên MỘT dòng) · số thập phân dấu phẩy `2{,}5` · độ `^\circ`, phút `'` (`$67^\circ23'$`) · `\widehat{ABC}`, `\triangle ABC`, `\perp`, `\parallel`,
+  `\approx`, `\ge`, `\le` · chữ tiếng Việt trong công thức phải bọc `\text{…}` · đơn vị `$10\ \text{cm}$`, `\text{m}^2`, `\text{km/h}` · số lớn ngoài công thức viết "12 600 000 đồng".
+  App không hiển thị chữ nghiêng `*…*` — chỉ dùng `**đậm**` cho các nhãn quy định. Không dùng bảng Markdown.
+
+## 5. Tự kiểm trước khi nộp (bắt buộc)
+
+Chạy từ thư mục Repo, sửa tới khi in "✔ đạt cổng":
+
+```
+node scripts/kho/de-thi/dung-de-tu-soan.mjs kho-rules/dai/lo/k9/de-cuong/AK-GKI-2026.p<P>.soan.md --lam-viec "C:/Users/WBPC/bk-kho-lam-viec/de-cuong/K9/AK-GKI-2026" --khoi 9 --chi-kiem
+```
+
+## 6. Trả lời cuối
+
+Vài dòng (≤ 120 từ): số câu theo loại (TLN / tự luận) · các câu có `Chưa chắc` (nhãn + một câu lí do) · hình giải đã vẽ · cổng đã đạt chưa. KHÔNG báo "đã thử lại" nếu chưa chạy script.
+
+## 7. Bẫy đã cắn thật (rút từ đề cương khối 8 và kho khối 9)
+
+- Bẫy đọc ảnh scan: số mũ nhỏ, dấu trừ, dấu ngoặc, phân số — không chắc ⇒ phóng to, đừng đoán.
+- Phần 1 lộ đáp số ở dòng Chú ý ("phương trình vô nghiệm", "loại $x=2$") — bị trạm soát bắt lại nhiều lần.
+- Dồn 3–4 phép biến đổi vào một dòng nối "suy ra" — mỗi phép một dòng.
+- Phương trình chứa ẩn ở mẫu: quên điều kiện xác định / quên đối chiếu ⇒ nhận nghiệm ngoại lai.
+- Bất phương trình: nhân / chia hai vế với số ÂM phải đổi chiều và nói rõ.
+- Lượng giác: tính tiếp từ số đã làm tròn; viện dẫn `\tan\cdot\cot=1`, `\sin^2+\cos^2=1` mà không ghi căn cứ như `hgt\k9.md` yêu cầu; bài hai kết quả ghi `tra_loi_ngan`.
+- Bài tham số ("hệ có nghiệm thoả mãn…"): phải xét điều kiện để hệ có nghiệm duy nhất TRƯỚC, rồi đối chiếu $m$ tìm được với điều kiện (và với mẫu số của điều kiện đề cho).
