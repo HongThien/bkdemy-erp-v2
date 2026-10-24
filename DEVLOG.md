@@ -77709,3 +77709,7 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - "ĐỀ CƯƠNG GK1 THCS TRUNG HÒA K7.pdf" thực ra là Toán 8 (tên tệp sai) ⇒ không làm. Các tệp K8/K9 trong thư mục không thuộc khối 7.
 - Sonnet soạn + Opus soát mù, 7/7 ĐẠT, không câu Chưa chắc/đề sai. Chỗ ảnh mờ đã đối chiếu: GKI-38 Bài 2b dấu "+" (đề dùng ":" cho chia); DC-09 ĐTL2 TN Bài 1 Câu 2 số cuối dương ⇒ Sai.
 - Ghi Kho đề thi (chưa duyệt): GKI-38 8042b6cf-8dec-45af-a0fe-cc9169adfe43 · GKI-39 dd2b9b89-474c-464b-8e7a-bd6baf607d93 · GKI-40 700b2c5b-5cbb-44ac-9cc4-a7f1bfecb209 · DC-09 fe7b8f74-15dd-400b-8497-4e21160d7188. HTML duyệt: `kho-rules/dai/lo/k7/K7-24-10-duyet.html`.
+
+## 24/10 — Kiểm app HS/TA sau khi bật bản đồ mới; mastery mới nhanh gấp 3–5 (mig 202610241225)
+- Bundle đang chạy ở hs./ta.bkacademy.edu.vn build 05:34 sáng 24/10 — CHƯA có code chiều 24/10 (soi bundle: hs_sotay_dang vẫn gửi p_nhanh cũ). Phía DB đã đúng: hàm app TA (ca TA, in phiếu, lấy phiếu, lịch sử, retest theo dõi, xếp lịch) chạy với dạng NDB, có tên.
+- Đề xuất dạng mới cho ca bổ trợ 14–17 s. Gốc: CTE `cap` trong `_mastery_lan_do` bị Postgres INLINE (tham chiếu 1 lần) ⇒ quy dạng chạy cho từng lượt đo (38k) thay vì từng cặp câu–mã (12k). `materialized` ⇒ mastery mới 56 HS 11 s → 2,3 s, đề xuất 14 → 4,8 s, kết quả y hệt. **Bài học: CTE gọi hàm đắt mà chỉ tham chiếu 1 lần thì ghi `materialized`, đừng tin tên 'cap/1 lần cho mỗi cặp' trong chú thích.** fn_mastery_cells (bản cũ) cùng bệnh (56 HS 6,8 s) — giữ nguyên bản gốc.
