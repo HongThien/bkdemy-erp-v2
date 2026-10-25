@@ -4787,3 +4787,95 @@ export function gtlnAmGm3SoTich(noiDung, rule) {
   if (rule === 'R362') { const v = sub(gtln, R(1n)); if (v.p < 0n) return null; return { value: v, ds: 'tính lệch 1 đơn vị, chiều ngược lại' } }
   return null
 }
+
+// ── DẠNG 57 (24/10): TỔNG LUỸ THỪA ĐAN DẤU 1 − q^k + q^{2k} − … + q^n (T106020601, dạng bài NDB00367) ─────────
+// Đáp số kho là BIỂU THỨC đóng (q^{n+k}+1)/(q^k+1) (số mũ cỡ 100 ⇒ không viết được dạng số) — so bằng GIÁ TRỊ
+// đúng tuyệt đối (BigInt) qua evalLuyThuaText. Lời giải kho: nhân S với q^k rồi CỘNG S (dãy đan dấu thì cộng).
+// Đề tự mâu thuẫn (số hạng cuối viết "+" mà theo quy luật đan dấu phải mang dấu "−", tức n/k lẻ) ⇒ trả null,
+// KHÔNG đoán (§1.5). Rule = D26–D29 (soạn sẵn cho T106020601 từ đợt Điền Ô): D26 trừ thay vì cộng (sai dấu tử),
+// D27 quên cộng bước nhảy vào số mũ, D28 cộng thừa bước nhảy, D29 dùng mẫu q^k − 1 (nhầm sang dãy cùng dấu).
+const bigPow = (b, e) => { let r = 1n, x = BigInt(b), n = BigInt(e); if (n < 0n) return null; while (n > 0n) { if (n & 1n) r *= x; x *= x; n >>= 1n } return r }
+// Đánh giá CHÍNH XÁC biểu thức số gồm số nguyên, ^, +, −, (…), {…}, \dfrac/\frac{…}{…}, \cdot — trả Rat hoặc null.
+export function evalLuyThuaText(raw) {
+  const s = String(raw ?? '').replace(/\$/g, '').replace(/\\text\{([^{}]*)\}/g, '$1').replace(/\\left|\\right/g, '')
+    .replace(/\\cdot|\\times/g, '*').replace(/\\[dt]?frac/g, '#').replace(/\\[,;!: ]/g, '').replace(/\s+/g, '').replace(/−/g, '-')
+  let i = 0
+  const peek = () => s[i]
+  const group = (o, c) => { if (s[i] !== o) return null; i++; const v = expr(); if (s[i] !== c) return null; i++; return v }
+  const atom = () => {
+    if (peek() === '#') { i++; const a = group('{', '}'), b = group('{', '}'); return div(a, b) }
+    if (peek() === '(') return group('(', ')')
+    if (peek() === '{') return group('{', '}')
+    const m = s.slice(i).match(/^\d+/); if (!m) return null; i += m[0].length; return R(BigInt(m[0]))
+  }
+  const power = () => {
+    const b = atom(); if (!b) return null
+    if (peek() !== '^') return b
+    i++
+    let e = null
+    if (peek() === '{') e = group('{', '}')
+    else { const m = s.slice(i).match(/^\d/); if (m) { i += 1; e = R(BigInt(m[0])) } }
+    if (!e || e.q !== 1n || e.p < 0n || e.p > 2000n) return null
+    return R(bigPow(b.p, e.p), bigPow(b.q, e.p))
+  }
+  const unary = () => { if (peek() === '-') { i++; const v = unary(); return v && R(-v.p, v.q) } if (peek() === '+') { i++; return unary() } return power() }
+  const term = () => { let v = unary(); while (v && peek() === '*') { i++; v = mul(v, unary()) } return v }
+  function expr() { let v = term(); while (v && (peek() === '+' || peek() === '-')) { const op = s[i++]; const t = term(); v = op === '+' ? add(v, t) : sub(v, t) } return v }
+  try { const v = expr(); return v && i === s.length ? v : null } catch { return null }
+}
+// canon = giá trị tối giản "p/q" (2 cách viết cùng giá trị ⇒ cùng canon ⇒ cổng kiểm bắt phương án trùng đáp án)
+export const chuanHoaLuyThuaText = (s) => { const v = evalLuyThuaText(s); return v ? `${v.p}/${v.q}` : null }
+export function tongLuyThuaXenDau(noiDung, rule) {
+  const s = String(noiDung ?? '').replace(/\\text\{([^{}]*)\}/g, '$1').replace(/\s+/g, '')
+  const m = s.match(/=1-(\d+)(?:\^\{?(\d+)\}?)?\+\1\^\{?(\d+)\}?.*?\+\1\^\{?(\d+)\}?\$/)
+  if (!m) return null
+  const q = BigInt(m[1]), k = BigInt(m[2] ?? '1'), e2 = BigInt(m[3]), n = BigInt(m[4])
+  if (q < 2n || e2 !== 2n * k || n % k !== 0n || (n / k) % 2n !== 0n) return null // số hạng cuối phải mang dấu + theo quy luật
+  const Q = `${q}`, K = k === 1n ? '' : `^{${k}}`, mau = (d) => `${q ** k + d}`
+  const bt = (e, dau, d) => mau(d) === '1' ? `${Q}^{${e}}${dau}1` : `\\dfrac{${Q}^{${e}}${dau}1}{${mau(d)}}`
+  if (!rule) return { text: bt(n + k, '+', 1n) }
+  if (rule === 'D26') return { text: bt(n + k, '-', 1n), ds: `nhân S với ${Q}${K} rồi TRỪ (như dãy cùng dấu) thay vì CỘNG ⇒ sai dấu ở tử` }
+  if (rule === 'D27') return { text: bt(n, '+', 1n), ds: `quên cộng bước nhảy ${k} vào số mũ, giữ số mũ cuối ${n} của đề` }
+  if (rule === 'D28') return { text: bt(n + 2n * k, '+', 1n), ds: `cộng thừa bước nhảy vào số mũ (${n} + ${2n * k})` }
+  if (rule === 'D29') return { text: bt(n + k, '+', -1n), ds: `chia cho ${Q}${K} − 1 (nhầm công thức dãy cùng dấu) thay vì ${Q}${K} + 1` }
+  return null
+}
+
+// ── DẠNG 58 (24/10): NHẬN BIẾT SỐ CHIA HẾT CHO 2, CHO 5 trong một dãy số (T106030201, dạng bài NDB00372) ──────
+// Đề: "Trong các số sau, số nào chia hết cho 2, số nào chia hết cho 5: $135; 48; 72; …$". Đáp số kho: 2 danh sách
+// "Chia hết cho 2: 48, 72, 110, 164. Chia hết cho 5: 135, 110, 25." Máy tự tính lại từ dãy số của đề (nhân chứng
+// thứ hai cho đáp số kho), nhiễu = áp sai dấu hiệu lên CHÍNH dãy đó (không bịa số mới): R371 chia hết cho 5 chỉ lấy
+// tận cùng 5 · R372 số tận cùng 0 chỉ xếp vào nhóm 5 · R373 xét chữ số đầu cho dấu hiệu chia hết cho 2 · R374 đảo 2 nhóm.
+// Phương án = chữ thường + dãy số trong $…$ (xuống dòng được trên màn hẹp); mcq-auto wrapMath để nguyên text đã có $.
+const docDayChiaHet25 = (noiDung) => {
+  const m = String(noiDung ?? '').match(/chia hết cho 2[^$]*chia hết cho 5[^$]*\$([^$]+)\$/i)
+  if (!m) return null
+  const ds = m[1].split(/[;,]/).map((x) => x.replace(/\\[ ,;!]|\s/g, '')).filter(Boolean)
+  return ds.length >= 3 && ds.every((x) => /^\d+$/.test(x)) ? ds : null
+}
+const vietHaiNhom = (a, b) => {
+  const ds = (xs) => xs.length ? '$' + xs.join(';\\ ') + '$' : 'không có số nào'
+  return `Chia hết cho 2: ${ds(a)}. Chia hết cho 5: ${ds(b)}.`
+}
+// canon: "2:{…}|5:{…}" (sắp theo giá trị) — đọc được cả đáp số kho (văn xuôi) lẫn phương án ($\text{…}$)
+export function chuanHoaChiaHet25(raw) {
+  const s = String(raw ?? '').replace(/\$/g, '').replace(/\\text\{([^{}]*)\}/g, '$1').replace(/\\quad|\\[ ,;!]/g, ' ')
+  const m = s.match(/chia hết cho 2\s*:\s*(.*?)\s*\.?\s*chia hết cho 5\s*:\s*(.*?)\s*\.?\s*$/is)
+  if (!m) return null
+  const nhom = (t) => /không có/i.test(t) ? [] : t.split(/[;,]/).map((x) => x.replace(/\s/g, '')).filter(Boolean)
+  const a = nhom(m[1]), b = nhom(m[2])
+  if (![...a, ...b].every((x) => /^\d+$/.test(x))) return null
+  const sx = (xs) => [...new Set(xs.map(BigInt))].sort((x, y) => (x < y ? -1 : x > y ? 1 : 0)).join(',')
+  return `2:{${sx(a)}}|5:{${sx(b)}}`
+}
+export function nhanBietChiaHet25(noiDung, rule) {
+  const day = docDayChiaHet25(noiDung); if (!day) return null
+  const tc = (x) => x[x.length - 1]
+  const c2 = day.filter((x) => '02468'.includes(tc(x))), c5 = day.filter((x) => '05'.includes(tc(x)))
+  if (!rule) return { text: vietHaiNhom(c2, c5) }
+  if (rule === 'R371') { const b = c5.filter((x) => tc(x) === '5'); if (b.length === c5.length) return null; return { text: vietHaiNhom(c2, b), ds: 'chia hết cho 5 chỉ lấy số tận cùng 5, bỏ sót số tận cùng 0' } }
+  if (rule === 'R372') { const a = c2.filter((x) => tc(x) !== '0'); if (a.length === c2.length) return null; return { text: vietHaiNhom(a, c5), ds: 'số tận cùng 0 chỉ xếp vào nhóm chia hết cho 5, bỏ khỏi nhóm chia hết cho 2' } }
+  if (rule === 'R373') { const a = day.filter((x) => '2468'.includes(x[0])); if (a.join() === c2.join()) return null; return { text: vietHaiNhom(a, c5), ds: 'xét chữ số ĐẦU chẵn thay vì chữ số tận cùng chẵn' } }
+  if (rule === 'R374') { if (c2.join() === c5.join()) return null; return { text: vietHaiNhom(c5, c2), ds: 'đảo hai dấu hiệu: xếp nhóm chia hết cho 2 và nhóm chia hết cho 5 ngược nhau' } }
+  return null
+}

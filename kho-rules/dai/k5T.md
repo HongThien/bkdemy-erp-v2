@@ -322,6 +322,28 @@ không đổi mã câu / đề / lời giải; trigger DB tự ghi vết đổi 
 - **Loại khỏi chuyên đề:** LT 7.12 (thừa–thiếu, nhắc "hoàn thành công việc" nhưng không phải bài công việc chung). Các bài LT 5.x, ON 68 nhắc "một công việc" nằm ở `T15T0301` (tỉ lệ), giữ nguyên.
 - Dữ liệu lượt gán: `lo/k5T-gan-cv.json` (23 câu). Dạng chờ 5T còn 796 câu.
 
+### 8.3 BẢN ĐỒ MỚI (`dai_bdm_*`) — nhóm `NNB01747` "Bài toán tính toán với tỉ số phần trăm" (chuyên đề Tỉ số phần trăm, chủ đề "Các bài toán về tỉ số"; CEO tạo 25/10) ↔ CĐ14–17 của sách + ON 3, 79–89
+
+Khác §8.1–8.2 (bản đồ CŨ `dai_ban_do`, đổi `dang_chinh`): ở bản đồ mới câu **giữ nguyên `dang_chinh` = dạng chờ** `T15T000000`, gán nằm ở `dai_bdm_gan_cau` (luồng B3, spec-ban-do-4-tang §13).
+Lệnh: `lo/k5T-gan-bdm-pt.json` → `node scripts/kho/sach/gan-bdm-nhom.mjs <tệp> [--ghi]` (cao ⇒ gán chắc + **tự duyệt** `da_duyet`, `duyet_nguon='ai'` · vừa ⇒ `dai_bdm_de_xuat` · không có dạng ⇒ `dai_bdm_cau_thieu_dang`;
+không đè quyết định của người; câu cổng gắn cờ `nghi` / Đ-S / thiếu đáp án không tự duyệt). Trang xem cho CEO: `node scripts/kho/sach/html-cau-cho-quyet.mjs …` ⇒ `reports/5T-ti-so-phan-tram-cau-cho-quyet.html`.
+
+| Dạng (thứ tự học) | Dấu hiệu (theo phương pháp lời giải) | Đã gán chắc + tự duyệt 25/10 |
+|---|---|---|
+| `NDB01611` 1 Các phép toán với tỉ số % | đổi số ↔ %, cộng trừ nhân chia % với %, biểu thức, tìm $x$ | 28: LT 14.1–14.7 · ON 3 |
+| `NDB01612` 2 Tính tỉ số % hai đại lượng | cho hai số, hỏi số này bằng bao nhiêu % số kia | 6: LT 15.1–15.5 · ON 79 |
+| `NDB01613` 3 Tìm % của một số | nhân số với a% (kể cả nhiều bước, "phần còn lại", lãi 20% giá nhập) | 14: LT 15.6–15.13 · ON 80 |
+| `NDB01614` 4 Tìm một số khi biết % của nó | chia cho a% (kể cả "chiếm a% tổng số", gốc lẫn lãi) | 14: LT 15.14–15.20 · ON 81–82 |
+| `NDB01615` 5 Tổng–tỉ, hiệu–tỉ ứng dụng % | đổi % ra tỉ / phân số của hai đại lượng, đại lượng còn lại không đổi, rồi tổng–tỉ / hiệu–tỉ | 11: LT 14.8–14.17 · ON 86 |
+
+- **Dạng sau thắng (Thùy 23/10)** áp khi câu hợp hai dạng: LT 14.11, 14.15–14.17 ⇒ dạng 5; ON 81–82 ⇒ dạng 4 (đã kiểm nhất quán với câu cùng loại đã cao).
+- **5 câu máy đề xuất, chờ CEO gật** (`dai_bdm_de_xuat`): LT 17.1, LT 17.3 (tăng / giảm giá liên tiếp ⇒ đề xuất dạng 3) · LT 17.4 (giảm giá liên tiếp, làm ngược từ giá cuối ⇒ dạng 4) ·
+  LT 17.2, ON 85 (lãi suất nhập vốn 2 tháng ⇒ dạng 3; hai trạm gán xếp khác nhau cho hai câu CÙNG LOẠI nên không ghi thẳng).
+- **39 câu CHƯA CÓ DẠNG trong nhóm** (`dai_bdm_cau_thieu_dang`, chờ CEO tạo dạng/nhóm — không ép): ① **dung dịch · hỗn hợp · hạt tươi–khô · quặng** — VD 16.1–16.3, LT 16.1–16.15, ON 87–89 (21 câu; LT 16.4 và 16.11 cổng gắn cờ `nghi` vì đề đã viết lại có chủ ý);
+  ② **tăng / giảm hai đại lượng (tích, thương), nhân các tỉ số %, giá bán – giảm giá – lãi lỗ**: LT 17.5–17.9, 17.11–17.21, ON 83–84 (18 câu).
+- Không đưa vào (phương pháp thắng chủ đề, % chỉ là một bước của bài hình / chuyển động): LT 18.10, 20.8, 20.15, 22.26, 28.4 · các câu "viết số thập phân gồm … phần trăm" (hàng phần trăm của số thập phân) · LT 7.12 (thừa–thiếu).
+- Lý thuyết / ví dụ của nhóm và 5 dạng đang TRỐNG (CEO chưa điền); mô tả mỗi dạng chỉ 1 dòng.
+
 ## 9. NHẬT KÝ SỬA (append-only — CEO sửa gì ghi đó, rồi nâng thành luật ở trên)
 
 | Ngày | Câu | CEO sửa gì | Luật rút ra |
@@ -341,3 +363,4 @@ không đổi mã câu / đề / lời giải; trigger DB tự ghi vết đổi 
 | 09/10 | Lô 3 + lô 4 — 4 câu hỏi | *"1. OK · 2. Câu đấy nên viết đầy đủ là Tam giác AMC và ABC có chung đường cao hạ từ … suy ra … · 3. Vẽ được sơ đồ minh hoạ là chuẩn. Bài chuyển động rất cần · 4. Bài thêm bớt chữ số bên trái bên phải là bài toán tỉ số, giải kiểu sơ đồ được. Còn bài đề cho cấu tạo số thì giải như cấu tạo số."* | §1: hình hỏng vẽ lại bằng code; tỉ số diện tích viết đầy đủ câu (sửa lô 3, 7 dòng); chuyển động bắt buộc sơ đồ minh hoạ — máy vẽ mới `so-do-chuyen-dong.mjs`, chèn 11 câu lô 4; cấu tạo số tách 2 loại. |
 | 09/10 | Cả 4 lô sách (101 câu) | *"OK rồi. Lên V1 thôi."* | **v1.** Sang bước 2: giải toàn bộ sách theo dây chuyền README §2b, ghi dạng chờ. |
 | 11/10 | Gán dạng chuyên đề Tỉ lệ thuận – nghịch: 6 câu thêm / bớt người từ đầu (LT 5.2–5.5, 5.8, 5.9) | *"Thay đổi số người: có 2 loại, đổi từ đầu và đổi giữa chừng. Cùng tư duy nên dạy cùng nhau."* | §8.1: `030104` gồm cả hai loại; ở dạng này dấu hiệu đề (có người đến / đi) thắng phương pháp. 6 câu đã gán `030104`. |
+| 25/10 | Đưa tài liệu 5T vào bản đồ mới, nhóm "Bài toán tính toán với tỉ số phần trăm" | *"Đưa bài vào kho, nhóm … Tự động duyệt"* | §8.3: gán qua `dai_bdm_gan_cau`, câu gán chắc tự duyệt (`duyet_nguon='ai'`); câu máy chưa quyết ⇒ đề xuất / thiếu dạng + trang HTML cho CEO. |

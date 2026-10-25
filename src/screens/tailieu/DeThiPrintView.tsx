@@ -5,9 +5,9 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
 import { getTaiLieuFull, kieuCols, type TaiLieuFull } from '../../lib/tailieu'
-import { deThiMeta as getMeta, coDongKeDeThi, dongMacDinhDeThi, gopBaiTheoDe } from '../../lib/dethi'
+import { deThiMeta as getMeta, coDongKeDeThi, dongMacDinhDeThi, baiTheoDe } from '../../lib/dethi'
 import type { CheDoHinh } from '../../lib/kho/hinhGiaoTrinh'
-import { CauFlow, cauItemParts, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename } from './PrintView'
+import { CauFlow, itemsTheoDe, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename } from './PrintView'
 import { AnhMmCtx } from './anhMmCtx'
 
 const CAP_LABEL: Record<string, string> = { vao_10: 'Tuyển sinh vào 10', thpt_qg: 'THPT Quốc gia', hsg: 'Học sinh giỏi' }
@@ -167,7 +167,6 @@ function DeThiDocInner({ full, gv, onlyPhanId }: { full: TaiLieuFull; gv: boolea
   const next = () => ++no
   // Nhóm BÀI: các câu kho đã tách ý (Bài 2a–2d) IN LẠI thành MỘT bài có đủ ý — đề giữ cấu trúc gốc (CEO 13/10); kho vẫn là câu riêng.
   const dong = (x: any) => (!gv && coDongKeDeThi(x.loai_cau) ? (lines[x.ma_cau] ?? dongMacDinhDeThi(x.loai_cau)) : 0)
-  const gopBai = (caus: any[]) => gopBaiTheoDe(full.taiLieu as any, caus, dong)
   return (
     <div className="pv-dethi" style={{ '--pv-accent': ch.mau || '#2D9CDB' } as CSSProperties}>
       <div className="pv-bt-head">
@@ -192,10 +191,11 @@ function DeThiDocInner({ full, gv, onlyPhanId }: { full: TaiLieuFull; gv: boolea
 
       {phans.map((p) => {
         // Đánh số cho MỌI phần (kể cả phần không hiện khi "Xem phần") để số câu khớp bản in cả đề.
-        const items = gopBai(p.caus).map(({ c, lines: nDong }) => ({
-          key: c.ma_cau, cols: colByCau[c.ma_cau] ?? kieuCols(p.kieu),
-          ...cauItemParts({ no: next(), c, gv, lines: nDong, cheDoHinh: cheDoByCau[c.ma_cau], tienTo: deCuong ? 'Bài' : 'Câu' }),
-        }))
+        // Bài nhiều ý: đầu bài + từng ý, mỗi ý dòng kẻ/cột riêng (Thùy 25/10) — itemsTheoDe dùng chung với BTVN gán từ đề.
+        const items = itemsTheoDe(baiTheoDe(full.taiLieu as any, p.caus), {
+          gv, dong, next, tienTo: deCuong ? 'Bài' : 'Câu',
+          col: (c, laY) => colByCau[c.ma_cau] ?? (laY ? 1 : kieuCols(p.kieu)), cheDo: (c) => cheDoByCau[c.ma_cau],
+        })
         if (onlyPhanId && p.id !== onlyPhanId) return null
         return (
           <section key={p.id} className="pv-sec">

@@ -30,8 +30,8 @@ export const TEN_LOAI: Record<string, string> = {
  *  Elite khác loài boss và khác nhau từng đôi một. Tất định theo mã dạng. */
 /** Boss dự phòng khi style KHÔNG khai boss nào (Skin.boss rỗng): giữ hành vi cũ — mã này rơi về ảnh quái tạm theo loài. */
 export const LOAI_BOSS_TAM = 'boss_thuy'
-/** Boss có hoạt ảnh của style ĐANG ÁP = các khoá của Skin.boss (RPG: Thùy · Minh Quân · Trang · Cường). Đối xứng — không if theo id style. Boss cuối cốt truyện (final-boss-form-*) và boss chưa có hoạt ảnh KHÔNG khai ở Skin.boss nên tự nằm ngoài. */
-export const dsBossNgauNhien = (): string[] => Object.keys(laySkin(null).boss ?? {})
+/** Boss có hoạt ảnh của style ĐANG ÁP = các khoá của Skin.boss (RPG: Thùy · Minh Quân · Trang · Cường). Đối xứng — không if theo id style. Boss CUỐI cốt truyện (Thùy Form 2/3 — cờ `cuoi: true`) bị loại khỏi bể; boss chưa có hoạt ảnh thì không khai ở Skin.boss. */
+export const dsBossNgauNhien = (): string[] => Object.entries(laySkin(null).boss ?? {}).filter(([, b]) => !b.cuoi).map(([ma]) => ma)
 /** Chọn NGẪU NHIÊN 1 boss trong danh sách trên (Thùy 07/10: "tất cả boss là random giữa các boss đã tạo"). Gọi LÚC TẠO trận/đội hình rồi giữ kết quả (state/useMemo/dữ liệu bản đồ) — không gọi trong render. `rieng` = boss DB chỉ định (nếu style có) thì tôn trọng. */
 export function chonBossNgauNhien(rieng?: string | null): string {
   const ds = dsBossNgauNhien()

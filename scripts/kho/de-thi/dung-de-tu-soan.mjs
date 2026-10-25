@@ -38,8 +38,8 @@ const md = iGhiChu >= 0 ? mdDu.slice(0, iGhiChu) : mdDu
 const loi = [], nhac = []
 // Theo khối: khối 6 dấu nhân là dấu chấm như SGK, hình vào HGT (k6.md) · khối 8 dấu nhân \cdot, hình phẳng vào kho Hình học (k8.md §10)
 // · khối 9 dấu nhân \cdot (k9.md §3), hệ thức lượng vào HGT (hgt/k9.md).
-const NHAN_CHAM = !['8', '9'].includes(String(KHOI))
-const KHO_DUOC = ['7', '8'].includes(String(KHOI)) ? ['dai', 'hinh_hoc'] : String(KHOI) === '9' ? ['dai', 'hgt', 'hinh_hoc'] : ['dai', 'hgt'] // khối 7: hình phẳng THCS ⇒ kho Hình học, dạng chờ HH07000000 (mig 202610121650)
+const NHAN_CHAM = !['8', '9', '10', '11'].includes(String(KHOI))
+const KHO_DUOC = ['7', '8', '11'].includes(String(KHOI)) ? ['dai', 'hinh_hoc'] : String(KHOI) === '9' ? ['dai', 'hgt', 'hinh_hoc'] : ['dai', 'hgt'] // khối 7: hình phẳng THCS ⇒ kho Hình học, dạng chờ HH07000000 (mig 202610121650)
 // khối 9 BỘ ĐỀ GKI (Thùy 18/10: "đẩy tất cả bài Hình vào bài Ôn thi giữa kì I của phần Hình – học lớp 9"): mọi câu kho=hinh_hoc ghi thẳng vào dạng HH00140 "Ôn thi giữa kì I"
 const DANG_HINH_K9 = process.env.DANG_HINH_K9 || 'HH00140' // bộ đề cuối kì 1 K9 (18/10) đặt DANG_HINH_K9=<mã bài> khi chạy k9-cki-ghi-*.sh
 const mTen = md.match(/^# ĐỀ \| (.+)$/m)
@@ -68,7 +68,7 @@ const phan = [], cau = []
 const khoiPhan = md.split(/^(?=## PHẦN )/m).slice(1)
 if (!khoiPhan.length) loi.push('không có "## PHẦN …"')
 for (const kp of khoiPhan) {
-  const mh = kp.match(/^## PHẦN (\d+) \| (.+?) \| (trac_nghiem|tu_luan|tra_loi_ngan)\s*$/m)
+  const mh = kp.match(/^## PHẦN (\d+) \| (.+?) \| (trac_nghiem|dung_sai|tu_luan|tra_loi_ngan)\s*$/m)
   if (!mh) { loi.push('tiêu đề phần sai khuôn: ' + kp.split('\n')[0]); continue }
   const thuTu = +mh[1]
   phan.push({ thu_tu: thuTu, ten: mh[2].trim(), dang_thuc: mh[3], diem_moi_cau: mh[3] === 'trac_nghiem' ? 0.25 : 0.5 })
@@ -83,12 +83,14 @@ for (const kp of khoiPhan) {
     const i1 = than.indexOf('**Phần 1. Hướng dẫn**'), i2 = than.indexOf('**Phần 2. Trình bày**')
     if (i1 < 0 || i2 < i1) { loi.push(`${nhan}: thiếu Phần 1 / Phần 2`); continue }
     // phần trước lời giải: đề · phương án · hình · ghi chú
-    const noiDung = [], luaChon = {}, anh = [], anhGiai = [], canhBao = []
+    const noiDung = [], luaChon = {}, menh = [], anh = [], anhGiai = [], canhBao = []
     let dang = null
     for (const d of than.slice(0, i1).split('\n')) {
       let m
       if ((m = d.match(/^\*\*Đề:\*\*\s*(.*)$/))) { dang = 'de'; if (m[1]) noiDung.push(m[1]) }
       else if ((m = d.match(/^([A-D])\.\s+(.+)$/)) && kv.loai === 'trac_nghiem') { dang = 'lc'; luaChon[m[1]] = m[2].trim() }
+      else if ((m = d.match(/^([a-d])\)\s+(.*)$/)) && kv.loai === 'dung_sai') { dang = 'md'; menh.push(m[2]) } // Đúng/Sai (K11): 4 ý a) b) c) d), mỗi ý 1 mệnh đề
+      else if (dang === 'md' && d.trim() && !/^\*\*/.test(d)) menh[menh.length - 1] += '\n' + d
       else if ((m = d.match(/^\*\*Hình:\*\*\s*(.+)$/))) { dang = null; anh.push(...m[1].split(',').map((x) => x.trim()).filter(Boolean)) }
       // hình CHỈ của lời giải (bài hình đề không cho hình, HS tự vẽ — K8 10/10): không hiện ở đề, ghi.mjs đưa vào anh_dap_an
       else if ((m = d.match(/^\*\*Hình giải:\*\*\s*(.+)$/))) { dang = null; anhGiai.push(...m[1].split(',').map((x) => x.trim()).filter(Boolean)) }
@@ -102,7 +104,7 @@ for (const kp of khoiPhan) {
     const p1 = gon(than.slice(i1, i2))
     if (!nd) loi.push(`${nhan}: thiếu "**Đề:**"`)
     if (!KHO_DUOC.includes(kv.kho)) loi.push(`${nhan}: kho phải là ${KHO_DUOC.join(' / ')}`)
-    if (!['trac_nghiem', 'tra_loi_ngan', 'tu_luan'].includes(kv.loai)) loi.push(`${nhan}: loai sai «${kv.loai}»`)
+    if (!['trac_nghiem', 'dung_sai', 'tra_loi_ngan', 'tu_luan'].includes(kv.loai)) loi.push(`${nhan}: loai sai «${kv.loai}»`)
     for (const l of kiemP1(p1)) loi.push(`${nhan} Phần 1: ${l}`)
     kiemCongThuc(nhan, 'đề', nd); kiemCongThuc(nhan, 'lời giải', loiGiai)
     let dapAn = null, lc = null
@@ -114,6 +116,11 @@ for (const kp of khoiPhan) {
       if (!/^[ABCD]$/.test(dapAn ?? '')) loi.push(`${nhan}: dap_an TN phải là A/B/C/D`)
       const cuoi = loiGiai.split('\n').filter((x) => x.trim()).pop()
       if (cuoi !== `Chọn ${dapAn}.`) loi.push(`${nhan}: dòng cuối lời giải phải là "Chọn ${dapAn}." — gặp «${cuoi.slice(0, 40)}»`)
+    } else if (kv.loai === 'dung_sai') {
+      dapAn = kv.dap_an
+      if (menh.length !== 4) loi.push(`${nhan}: Đúng/Sai phải đủ 4 ý a) b) c) d) — có ${menh.length}`)
+      if (!/^[DS]{4}$/.test(dapAn ?? '')) loi.push(`${nhan}: dap_an Đúng/Sai phải là 4 chữ D/S (vd DSSD) — gặp «${dapAn}»`)
+      menh.forEach((x, i) => kiemCongThuc(nhan, 'ý ' + 'abcd'[i], x))
     } else if (kv.loai === 'tra_loi_ngan') {
       dapAn = kv.dap_an
       // phiếu trả lời 4 ô: chữ số, dấu "-" chỉ ở ô 1, dấu "," ở ô 2 hoặc 3
@@ -122,13 +129,13 @@ for (const kp of khoiPhan) {
     for (const f of [...anh, ...anhGiai]) if (!existsSync(join(LV, 'img', f))) loi.push(`${nhan}: không có hình img/${f}`)
     if (anhGiai.length > 1) nhac.push(`${nhan}: ${anhGiai.length} hình giải — ERP chỉ giữ hình đầu`)
     if (anh.length > 1) nhac.push(`${nhan}: ${anh.length} hình — ERP chỉ giữ hình đầu`)
-    cau.push({ phan: thuTu, so: ++so, nhan: chuanNhan(mc[1].trim()), kho: kv.kho, loai_cau: kv.loai, noi_dung: nd, lua_chon: lc, dap_an: dapAn, dap_an_nguon: 'claude_giai',
-      menh_de: null, loi_giai: loiGiai, anh, anh_giai: anhGiai, dang: String(KHOI) === '9' && kv.kho === 'hinh_hoc' ? DANG_HINH_K9 : null, canh_bao: canhBao })
+    cau.push({ phan: thuTu, so: ++so, nhan: chuanNhan(mc[1].trim()), kho: kv.kho, loai_cau: kv.loai, noi_dung: nd, lua_chon: lc, dap_an: kv.loai === 'dung_sai' ? null : dapAn, dap_an_nguon: 'claude_giai',
+      menh_de: kv.loai === 'dung_sai' ? menh.map((t, i) => ({ noi_dung: t, dap_an: dapAn?.[i], dang: null, loi_giai: null })) : null, loi_giai: loiGiai, anh, anh_giai: anhGiai, dang: String(KHOI) === '9' && kv.kho === 'hinh_hoc' ? DANG_HINH_K9 : null, canh_bao: canhBao })
   }
   if (!so) loi.push(`Phần ${thuTu}: không có câu nào`)
 }
 
-console.log(`${basename(tep)} — ${phan.length} phần · ${cau.length} câu (${cau.filter((q) => q.loai_cau === 'trac_nghiem').length} TN · ${cau.filter((q) => q.loai_cau === 'tra_loi_ngan').length} TLN · ${cau.filter((q) => q.loai_cau === 'tu_luan').length} tự luận) · HGT ${cau.filter((q) => q.kho === 'hgt').length} · hình ${cau.filter((q) => q.anh.length).length} · chưa chắc ${cau.filter((q) => q.canh_bao.some((x) => x.startsWith('CHƯA CHẮC'))).length}`)
+console.log(`${basename(tep)} — ${phan.length} phần · ${cau.length} câu (${cau.filter((q) => q.loai_cau === 'trac_nghiem').length} TN · ${cau.filter((q) => q.loai_cau === 'dung_sai').length} Đ/S · ${cau.filter((q) => q.loai_cau === 'tra_loi_ngan').length} TLN · ${cau.filter((q) => q.loai_cau === 'tu_luan').length} tự luận) · HGT ${cau.filter((q) => q.kho === 'hgt').length} · hình ${cau.filter((q) => q.anh.length).length} · chưa chắc ${cau.filter((q) => q.canh_bao.some((x) => x.startsWith('CHƯA CHẮC'))).length}`)
 for (const n of nhac) console.log('  ⚠ ' + n)
 if (loi.length) { console.error(`❌ ${loi.length} lỗi:\n  ` + loi.join('\n  ')); process.exit(1) }
 if (CHI_KIEM) { console.log('✔ đạt cổng (chỉ kiểm, không ghi de.json)'); process.exit(0) }

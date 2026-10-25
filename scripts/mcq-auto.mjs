@@ -14,6 +14,7 @@ import { readFileSync, writeFileSync } from 'node:fs'
 import { parseHuuTi } from './lib/huuti.mjs'
 import { kiemKeyVoiDapAn } from './lib/so-vn.mjs'
 import { tinhTuanHoan, layTron, soSanhTimXY, phanTichNguyenTo, chuanHoaFactorText, evalFactorText, nhanBietNguyenToHopSo, chuanHoaTapText, evalTapText, uclnBcnnDinhNghia, tapUcBc, uocBoiCoBan, ucBcCoBan, tongTapHopNhoHon, sapXepSoHuuTi, chuanHoaThuTu, evalThuTu, bacDonThuc, heSoDonThuc, demDonThucTrongDanhSach, demDongDang, phanBienDonThuc, chuanHoaPhanBien, evalPhanBien, congTruDonThucDongDang, chuanHoaDonThucKetQua, evalDonThucKetQua, congTruDaThuc, chuanHoaDaThuc, evalDaThucKetQua, nhanDonThuc, nhanDonDaThuc, nhanDaThuc, chiaDonThuc, chiaDaChoDon, chiaDaThucMotBien, chuanHoaChiaDaThuc, evalChiaDaThucKetQua, dieuKienChiaHetDonThuc, chuanHoaDkChiaHet, evalDkChiaHetKetQua, rutGonBieuThuc, timXQuaRutGon, tinhGiaTriRutGon, khaiTrienBinhPhuong, vietThanhBinhPhuong, hoanThienBinhPhuong, chuanHoaHoanThienBP, evalHoanThienBPKetQua, tachBinhPhuong, chuanHoaTachBinhPhuong, evalTachBinhPhuongKetQua, gtlnGtnnBacHai, gtlnGtnnHaiBien, khaiTrienLapPhuong, tinhGiaTriLapPhuong, vietThanhTichHieuBinhPhuong, tinhGiaTriHieuBinhPhuong, tongHieuLapPhuong, chuanHoaTongHieuLapPhuong, evalTongHieuLapPhuongKetQua, tinhGiaTriApDungLapPhuong, tongBinhLapPhuongHaiBien, tongLapPhuongCongThemHangSo, rutNhanTuChung, chuanHoaRutNhanTuChung, evalRutNhanTuChungKetQua, nhomHangTu, phanTichTamThucBac2, tachHangTuKetHop, phanTichNhamNghiem, timXPhuongTrinhTich2Hang, chuanHoaDanhSachNghiem, evalDanhSachNghiemKetQua, giaiPtBacBaQuaNhom, giaiBptBacNhat, chuanHoaBatDangThuc, evalBatDangThucKetQua, timXTichHaiNhiThuc, giaiPtQuyVeTich, gtlnGtnnBacHaiCoDieuKien, chuanHoaCapNghiem, evalCapNghiemKetQua, giaiHePtBacNhatHaiAn, tinhGiaTriCanThuc, tinhGiaTriCanThucTheoX, chuanHoaCanThucKetQua, evalCanThucKetQuaVal, timDkxdCanThuc, chuanHoaDkxdCanThuc, evalDkxdCanThucKetQua, timXPtCanThucTuyenTinh, timXPhanThucCanBac2, chuanHoaDapSoThucTe, sinhNhieuDapSoThucTe, giaiPtPhanThucBacNhat, chuanHoaPtPhanThucKetQua, evalPtPhanThucKetQua, rutGonPhanThucCan, chuanHoaRutGonCanKetQua, evalRutGonCanKetQuaVal, giaiHePtTongTich, chuanHoaHePtTongTich, evalHePtTongTichKetQua, gtnnAmGm2So, gtnnAmGm2SoNguyen, gtnnAmGm3So, gtlnAmGm3SoTich } from './lib/mini-dang.mjs'
+import { tongLuyThuaXenDau, chuanHoaLuyThuaText, nhanBietChiaHet25, chuanHoaChiaHet25 } from './lib/mini-dang.mjs' // DẠNG 57–58 (24/10)
 
 // ── Rat (BigInt) ──────────────────────────────────────────────────────────────────────────────────────────────
 const gcd = (a, b) => { a = a < 0n ? -a : a; b = b < 0n ? -b : b; while (b) { [a, b] = [b, a % b] } return a }
@@ -556,7 +557,7 @@ const texOf = (v) => `$${Array.isArray(v) ? sorted(v).map(texR).join('; ') : tex
 // Mọi hàm dạng TEXT_DANG/SPECIAL_DANG-tự-trả-text (hienThiDaThuc, ghepText, …) trả text TRẦN không có "$" —
 // khác texOf() (luôn tự bọc). UI (MathText, xem src/screens/kho/ui.tsx) CHỈ nhận diện "$...$"/"$$...$$"
 // làm vùng KaTeX; text trần có "^"/"_" hiện ra caret/underscore thô ngoài đời — PHẢI bọc trước khi ghi DB.
-const wrapMath = (t) => (t == null ? t : /^\$.*\$$/s.test(t) ? t : `$${t}$`)
+const wrapMath = (t) => (t == null ? t : /\$/.test(t) ? t : `$${t}$`) // 24/10: text đã có $ (bọc trọn, hoặc chữ xen công thức như DẠNG 58) thì để nguyên
 const kindOf = (v) => Array.isArray(v) && v.length > 1 ? 'tap' : isInt(Array.isArray(v) ? v[0] : v) ? 'nguyen' : 'phan_so'
 
 // ── Rule → đường sai mặc định + thứ tự ưu tiên theo dạng ──────────────────────────────────────────────────────
@@ -921,6 +922,15 @@ const TEXT_FN = {
   T109030301: { canon: chuanHoaDanhSachNghiem, val: evalDanhSachNghiemKetQua },
 }
 // Dạng khối 6 số tự nhiên: dấu CHẤM giữa 2 số là phép NHÂN (không phải thập phân) — khớp whitelist kho-quet-dapso.mjs.
+// T106020601 (24/10, dạng bài NDB00367 'Dãy lũy thừa xen dấu'): CHỈ sub-shape tổng đan dấu 1 − q^k + … + q^n (đáp số (q^{n+k}+1)/(q^k+1));
+// sub-shape khác của dạng (tổng cùng dấu, tìm m) tongLuyThuaXenDau trả null ⇒ rơi xuống nhánh dưới như cũ (spec-mcq-quy-trinh-sinh §4).
+TEXT_DANG.T106020601 = tongLuyThuaXenDau
+TEXT_FN.T106020601 = { canon: chuanHoaLuyThuaText, val: chuanHoaLuyThuaText }
+UU_TIEN.T106020601 = ['D26', 'D27', 'D28', 'D29']
+// T106030201 (24/10, NDB00372 'Nhận biết số chia hết cho 2, cho 5'): đáp số 2 danh sách số — DẠNG 58, rule R371–R374 (mig 202610241205)
+TEXT_DANG.T106030201 = nhanBietChiaHet25
+TEXT_FN.T106030201 = { canon: chuanHoaChiaHet25, val: chuanHoaChiaHet25 }
+UU_TIEN.T106030201 = ['R371', 'R372', 'R373', 'R374']
 const CHAM_LA_NHAN = new Set(['T106020201', 'T106020202', 'T106020203', 'T106020301', 'T106020302', 'T106020303', 'T106020401', 'T106020402', 'T106020403', 'T106020501', 'T106020503'])
 const DU_PHONG = new Set(['R24', 'R05']) // chỉ dùng khi thiếu, tối đa 1 R24 (DB đánh du_phong) + 1 R05
 
@@ -979,6 +989,10 @@ const args = process.argv.slice(2)
 const opt = (k, d) => { const i = args.indexOf(k); return i >= 0 && args[i + 1] && !args[i + 1].startsWith('--') ? args[i + 1] : d }
 const pool = JSON.parse(readFileSync(args[0], 'utf8'))
 const onlyDang = opt('--dang'), debug = opt('--debug')
+// --theo-dap-so (24/10, MCQ cho dạng bài bản đồ mới NDB): ép MỌI câu trong pool đi nhánh ANSWER_DANG (sinh nhiễu từ đáp số)
+// mà không ghi danh mã dạng cũ — câu của dạng NDB nằm rải ở mã cũ "chờ" (T1xx000000) dùng chung cho đủ loại câu.
+// Chỉ đưa vào pool câu đáp số là SỐ THUẦN đã kiểm tay; câu khác vẫn tự bị bỏ ở bước nhận dạng đáp số.
+const THEO_DAP_SO = args.includes('--theo-dap-so')
 const counts = { ...pool.phan_bo_dap_an_hien_co }
 const ruleUsed = {} // đếm số lần mỗi rule ĐÃ được chọn trong CẢ LÔ này — nền cho xoay vòng (Thùy 09/09).
 const out = [], bo = [], lech = []
@@ -988,7 +1002,7 @@ for (const q of pool.cau) {
   // ── Dạng "BÀI TOÁN THỰC TẾ" — sinh NHIỄU TỪ ĐÁP SỐ, KHÔNG đọc-hiểu đề (CEO 14/09) — hàm nhận `q.dap_an`
   // chứ KHÔNG PHẢI `q.noi_dung` (khác MỌI nhánh khác bên dưới). Vẫn tự đối chiếu lại `chuanHoaDapSoThucTe`
   // như 1 lưới an toàn (bắt lỗi format/parse), dù về bản chất luôn khớp vì res.text bắt nguồn từ chính dap_an.
-  const answerFn = ANSWER_DANG[q.dang_chinh]
+  const answerFn = ANSWER_DANG[q.dang_chinh] ?? (THEO_DAP_SO ? sinhNhieuDapSoThucTe : null)
   if (answerFn) {
     // ctx (18/10): khối của dạng quyết "24,51" là 2 số (khối ≤4) hay số thập phân; noi_dung để nhận ra câu SẮP XẾP.
     const ctx = { dang: q.dang_chinh, noiDung: q.noi_dung }

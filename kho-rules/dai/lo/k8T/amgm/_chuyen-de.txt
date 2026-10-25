@@ -1,0 +1,6 @@
+#CHUYEN_DE NCH00525
+@MOTA
+Bất đẳng thức Cô-si (AM–GM) cho hai, ba (và một số bài bốn) số không âm, và các kĩ thuật dùng nó để chứng minh bất đẳng thức, tìm giá trị lớn nhất, nhỏ nhất: dự đoán điểm rơi, tách – ghép – thêm bớt.
+Nguồn: Mai Thành Luân, "Chuyên đề bồi dưỡng học sinh giỏi — Bất đẳng thức, điểm rơi và kỹ thuật chứng minh", Chương 2 và 3 (trang 24–62), phần kiến thức nền lấy ở Chương 1.
+@GHICHU
+Theo lời chị: chỉ dùng ba chương đầu, trọng tâm Chương 2–3, ghép vào chuyên đề Cauchy sẵn có. Nhóm "Kĩ thuật xử lý BDT AM - GM Ngược dấu" (tương ứng Chương 4 của sách) tôi không soạn, để nguyên như chị dựng.

@@ -1,0 +1,310 @@
+[
+ {
+  "ma_cau": "T106000000956",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "text": "$3$",
+    "dung": true
+   },
+   {
+    "text": "$1$",
+    "dung": false,
+    "rule": "D13",
+    "duong_sai": "tách sai số dư: n² + 1 = (n+2)(n−2) − 3 ⇒ n + 2 ∈ Ư(3) ⇒ n = 1"
+   },
+   {
+    "text": "$5$",
+    "dung": false,
+    "rule": "D38",
+    "duong_sai": "quên biểu thức n+2, lấy luôn n bằng ước 5"
+   },
+   {
+    "text": "$-1;\\ 3$",
+    "dung": false,
+    "rule": "D22",
+    "duong_sai": "lấy cả n+2 = 1 ⇒ n = −1, quên n là số tự nhiên"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T106000000924",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "text": "$\\dfrac{1}{2};\\ 3$",
+    "dung": false,
+    "rule": "D22",
+    "duong_sai": "giữ cả x = 1/2, quên điều kiện x là số tự nhiên"
+   },
+   {
+    "text": "$3$",
+    "dung": true
+   },
+   {
+    "text": "$-3$",
+    "dung": false,
+    "rule": "R311",
+    "duong_sai": "x − 3 = 0 mà ghi x = −3 (quên đổi dấu)"
+   },
+   {
+    "text": "$1;\\ 3$",
+    "dung": false,
+    "rule": "D05",
+    "duong_sai": "2x − 1 = 0 ⇒ 2x = 1 rồi quên chia cho 2, ghi x = 1"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T106020803001",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "text": "$0$",
+    "dung": false,
+    "rule": "R323",
+    "duong_sai": "ghi nhầm giá trị của y (y = 0) làm đáp số x"
+   },
+   {
+    "text": "$8$",
+    "dung": false,
+    "rule": "R36",
+    "duong_sai": "tìm được 2^x = 8 nhưng ghi luôn x = 8"
+   },
+   {
+    "text": "$3$",
+    "dung": true
+   },
+   {
+    "text": "$4$",
+    "dung": false,
+    "rule": "R02",
+    "duong_sai": "coi 2^x là 2·x: 2x = 8 ⇒ x = 4"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107000000183",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "text": "1,75",
+    "dung": false,
+    "rule": "R19",
+    "duong_sai": "x + 0,75 = 1 ⇒ chuyển vế không đổi dấu: x = 1 + 0,75"
+   },
+   {
+    "text": "-0,39",
+    "dung": false,
+    "rule": "R20",
+    "duong_sai": "0,6·(x + 0,75) = 0,6 mà lấy x + 0,75 = 0,6·0,6 = 0,36 (nhân thay vì chia)"
+   },
+   {
+    "text": "2,5",
+    "dung": false,
+    "rule": "R363",
+    "duong_sai": "đặt dấu phẩy lệch 1 hàng sang phải"
+   },
+   {
+    "text": "0,25",
+    "dung": true
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107000000572",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "text": "$2000$",
+    "dung": true
+   },
+   {
+    "text": "$-2000$",
+    "dung": false,
+    "rule": "R19",
+    "duong_sai": "2000 − x = 0 mà chuyển vế không đổi dấu: x = −2000"
+   },
+   {
+    "text": "$2001$",
+    "dung": false,
+    "rule": "R344",
+    "duong_sai": "tính lệch 1 đơn vị"
+   },
+   {
+    "text": "$1999$",
+    "dung": false,
+    "rule": "R345",
+    "duong_sai": "tính lệch 1 đơn vị (chiều ngược lại)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107000000719",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "text": "$-2000$",
+    "dung": false,
+    "rule": "R19",
+    "duong_sai": "2000 − x = 0 mà chuyển vế không đổi dấu: x = −2000"
+   },
+   {
+    "text": "$2000$",
+    "dung": true
+   },
+   {
+    "text": "$2001$",
+    "dung": false,
+    "rule": "R344",
+    "duong_sai": "tính lệch 1 đơn vị"
+   },
+   {
+    "text": "$1999$",
+    "dung": false,
+    "rule": "R345",
+    "duong_sai": "tính lệch 1 đơn vị (chiều ngược lại)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107000000573",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "text": "$66$",
+    "dung": false,
+    "rule": "R19",
+    "duong_sai": "x + 66 = 0 mà chuyển vế không đổi dấu: x = 66"
+   },
+   {
+    "text": "$-65$",
+    "dung": false,
+    "rule": "R344",
+    "duong_sai": "tính lệch 1 đơn vị"
+   },
+   {
+    "text": "$-66$",
+    "dung": true
+   },
+   {
+    "text": "$-67$",
+    "dung": false,
+    "rule": "R345",
+    "duong_sai": "tính lệch 1 đơn vị (chiều ngược lại)"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T107000000574",
+  "dap_an": "D",
+  "lua_chon": [
+   {
+    "text": "$60$",
+    "dung": false,
+    "rule": "R19",
+    "duong_sai": "x + 60 = 0 mà chuyển vế không đổi dấu: x = 60"
+   },
+   {
+    "text": "$-59$",
+    "dung": false,
+    "rule": "R344",
+    "duong_sai": "tính lệch 1 đơn vị"
+   },
+   {
+    "text": "$-61$",
+    "dung": false,
+    "rule": "R345",
+    "duong_sai": "tính lệch 1 đơn vị (chiều ngược lại)"
+   },
+   {
+    "text": "$-60$",
+    "dung": true
+   }
+  ]
+ },
+ {
+  "ma_cau": "T108000000309",
+  "dap_an": "A",
+  "lua_chon": [
+   {
+    "text": "$4050$",
+    "dung": true
+   },
+   {
+    "text": "$8100$",
+    "dung": false,
+    "rule": "R343",
+    "duong_sai": "tính gấp đôi diện tích đúng (quên chia đôi ở 1 bước)"
+   },
+   {
+    "text": "$2025$",
+    "dung": false,
+    "rule": "R69",
+    "duong_sai": "quên mặt thứ tư là bờ tường: rào đủ 4 mặt, hình vuông cạnh 45 m"
+   },
+   {
+    "text": "$3600$",
+    "dung": false,
+    "rule": "R346",
+    "duong_sai": "chia đều 180 m cho 3 mặt (60 m mỗi mặt), không tìm cực trị"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T109000000456",
+  "dap_an": "B",
+  "lua_chon": [
+   {
+    "text": "$36$",
+    "dung": false,
+    "rule": "R360",
+    "duong_sai": "quên chia đôi khi dùng (A+B)² ≤ 2(A²+B²), ra gấp đôi kết quả"
+   },
+   {
+    "text": "$18$",
+    "dung": true
+   },
+   {
+    "text": "$8$",
+    "dung": false,
+    "rule": "R362",
+    "duong_sai": "dùng 1/a + 1/b ≥ 2 thay vì ≥ 4/(a+b) = 4"
+   },
+   {
+    "text": "$9$",
+    "dung": false,
+    "rule": "R24",
+    "duong_sai": "chỉ tính một hạng tử (1 + 1/a)² tại a = 1/2"
+   }
+  ]
+ },
+ {
+  "ma_cau": "T110000000401",
+  "dap_an": "C",
+  "lua_chon": [
+   {
+    "text": "$11$",
+    "dung": false,
+    "rule": "R69",
+    "duong_sai": "chỉ thử 1 đỉnh của miền nghiệm, ra m ≥ −3 nên đếm cả 11 giá trị"
+   },
+   {
+    "text": "$9$",
+    "dung": false,
+    "rule": "R346",
+    "duong_sai": "lấy m > 11 (bỏ dấu bằng), đếm thiếu m = 11"
+   },
+   {
+    "text": "$10$",
+    "dung": true
+   },
+   {
+    "text": "$20$",
+    "dung": false,
+    "rule": "R343",
+    "duong_sai": "tính gấp đôi số giá trị đúng"
+   }
+  ]
+ }
+]
