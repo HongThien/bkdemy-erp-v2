@@ -715,6 +715,7 @@ a) Độ dài cạnh $AC=7$
 b) Diện tích $\triangle ABC$ bằng $10$
 c) Bán kính đường tròn ngoại tiếp $\triangle ABC$ bằng $\dfrac{7\sqrt3}{3}$
 d) $AH$ là đường cao kẻ từ đỉnh $A$ của tam giác thì $AH=\dfrac{5\sqrt3}{2}$
+**Ghi chú:** đề sai ở ý a: đề cương in "Độ dài cạnh AC=7" trong khi đề đã cho $AC=5$ (cạnh tính được bằng $7$ là $AB$). Giải theo đúng chữ in nên ý a Sai; nếu người ra đề định viết $AB=7$ thì ý a Đúng.
 
 **Phần 1. Hướng dẫn**
 
@@ -729,6 +730,8 @@ d) $AH$ là đường cao kẻ từ đỉnh $A$ của tam giác thì $AH=\dfrac{
 **Bước 4.** Ý d: tính $AH$ từ diện tích và cạnh $BC$ hoặc từ tam giác vuông $AHC$.
 
 **Phần 2. Trình bày**
+
+Lưu ý: đề sai ở ý a (in $AC=7$ trong khi đề cho $AC=5$); ý a được xét theo đúng chữ in.
 
 Theo định lí côsin: $AB^2=BC^2+AC^2-2\cdot BC\cdot AC\cdot\cos C=64+25-2\cdot8\cdot5\cdot\dfrac12=49$, nên $AB=7$.
 
@@ -827,7 +830,11 @@ Vậy $P=0{,}5$.
 
 Gọi $x$, $y$ lần lượt là số ha lúa và khoai $(x,y\ge0)$.
 
-Diện tích: $x+y\le6$. Phân bón: $20x+10y\le100\Leftrightarrow 2x+y\le10$. Ngày công: $10x+30y\le120\Leftrightarrow x+3y\le12$.
+Diện tích: $x+y\le6$.
+
+Phân bón: $20x+10y\le100\Leftrightarrow 2x+y\le10$.
+
+Ngày công: $10x+30y\le120\Leftrightarrow x+3y\le12$.
 
 Lợi nhuận (triệu đồng): $F=30x+60y$.
 
@@ -908,5 +915,6 @@ Vậy khoảng cách từ $A$ đến $B$ khoảng $80\,\text{m}$.
 - Bài 9: đề in "Bình không thể làm việc 220 giờ" (thiếu chữ "quá"), hiểu là không quá 220 giờ. Kết quả $32$ triệu đồng (tại $40$ sản phẩm $I$ và $30$ sản phẩm $II$).
 - Bài 10: kết quả tối ưu là $0$ bàn, $20$ ghế (đỉnh $(0;20)$); hiểu "ít nhất 2 lần" là $y\ge2x$.
 - Đề minh họa Câu 8: đề sai, có hai phương án B và D cùng không là nghiệm; chọn B, có `Chưa chắc`.
+- Đề minh họa Câu 14 ý a: đề sai, in "AC=7" trong khi đề cho $AC=5$; giải theo chữ in ⇒ Sai (dap_an SSDD); nếu ý là $AB=7$ thì thành DSDD.
 - Câu 15: hiểu $\subset$ là tập con (cho phép bằng nhau), đáp số $2$. Câu 18: đáp số "$3$ ha lúa và $3$ ha khoai", điền $3$.
 - Hình đề cắt: Câu 6 (miền nghiệm). Hình giải vẽ: Bài 4, 5, 6, 7, 8, 9, 10; Câu 18, 19, 20.
