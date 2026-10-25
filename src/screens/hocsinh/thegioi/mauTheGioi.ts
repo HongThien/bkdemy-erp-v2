@@ -13,6 +13,8 @@ const ICON: Record<string, [string, string]> = {
   cup: ['🏆', 'Vô địch'], tram_diem: ['💯', '100 điểm'], ten_lua: ['🚀', 'Bay cao'], set: ['⚡', 'Tốc độ'], co_bap: ['💪', 'Chăm'], nao: ['🧠', 'Não to'],
   ngau: ['😎', 'Ngầu'], chao: ['🫡', 'Bái phục'], bai_su: ['🙇', 'Bái sư'], kim_cuong: ['💎', 'Hàng hiếm'], ngoi_sao: ['🌟', 'Ngôi sao'],
   an_mung: ['🥳', 'Ăn mừng'], hong_tam: ['🎯', 'Chuẩn'], co_4_la: ['🍀', 'Xin vía'], tim_tay: ['🫶', 'Thương'], bat_tay: ['🤝', 'Tôn trọng'],
+  // Đợt mở rộng (mig 202610252357) — có hình webp
+  choang: ['🤩', 'Choáng'], cam_dong: ['🥹', 'Xúc động'], chuc_mung: ['🎉', 'Chúc mừng'], gio_tay: ['🙌', 'Hoan hô'], me: ['😍', 'Mê'], lap_lanh: ['✨', 'Lấp lánh'], om: ['🫂', 'Ôm cái'], ruc_ro: ['🌈', 'Rực rỡ'], cuoi_tuoi: ['😊', 'Vui'], cam_on_ban: ['🙏', 'Cảm ơn'], on_ap: ['👌', 'Chuẩn'], tim_sang: ['💖', 'Tim sáng'], huong_duong: ['🌻', 'Tươi sáng'], toa_nang: ['☀️', 'Toả nắng'], bong_bay: ['🎈', 'Vui lây'], cau_may: ['🤞', 'Cầu may'], chien_thang: ['✌️', 'Chiến thắng'], hang_nhat: ['🥇', 'Hạng nhất'], cham_hoc: ['📚', 'Chăm học'], hoc_ba: ['🎓', 'Học bá'],
 }
 let soBl = 0
 const bl = (nguoi: NguoiTG, loai: 'cau' | 'sticker', noi_dung: string, phut = 20, la_em = false): BinhLuanTG =>
@@ -177,7 +179,9 @@ export const DANH_MUC: DanhMucTG[] = [
     ["k29","Cả nhà vỗ tay cho tớ nha 👏",["khoe"]],
     ["k30","Thêm 1 chiến tích nữa 🏅",["khoe"]]] as [string, string, string[]][])
     .map(([ma, noi_dung, nhom], i) => ({ ma, loai: 'cau' as const, noi_dung, nhom, thu_tu: [1,2,3,4,5,7,8,9,10,11,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,31,32,33,34,35,36,37,38,39,40,41,42,60,61,62,63,64,201,202,203,204,205,206,207,208,209,210,211,212,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,65,66,67,68,69,70,71,72,73,74,75,76,77,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230][i] })),
-  ...['🔥', '🐐', '🏆', '🚀', '🤯', '🫡', '🙇', '🥳', '💯', '🍀', '🧋', '💪'].map((noi_dung, i) => ({ ma: `s_${i}`, loai: 'sticker' as const, noi_dung, nhom: ['chung'], thu_tu: i + 1 })),
+  // Mã THẬT như bảng the_gioi_danh_muc: 12 sticker Đơn 6 (chưa có hình ⇒ emoji) + 53 sticker đợt mở rộng (đã có hình webp)
+  ...([['s_lua', '🔥'], ['s_goat', '🐐'], ['s_cup', '🏆'], ['s_ten_lua', '🚀'], ['s_no_nao', '🤯'], ['s_chao', '🫡'], ['s_bai_su', '🙇'], ['s_an_mung', '🥳'], ['s_100', '💯'], ['s_co_4_la', '🍀'], ['s_tra_sua', '🧋'], ['s_co_bap', '💪'],
+    ['s_choang', '🤩'], ['s_me', '😍'], ['s_cam_dong', '🥹'], ['s_gio_tay', '🙌'], ['s_phao_giay', '🎉'], ['s_phao_hoa', '🎊'], ['s_om', '🫂'], ['s_thuong', '🥰'], ['s_lap_lanh', '✨'], ['s_cau_vong', '🌈'], ['s_sao_bang', '💫'], ['s_ngoi_sao', '🌟'], ['s_sach', '📚'], ['s_viet_bai', '✍️'], ['s_thuoc_ke', '📐'], ['s_ong_nghiem', '🧪'], ['s_kinh_hien_vi', '🔬'], ['s_cu_nhan', '🎓'], ['s_y_tuong', '💡'], ['s_cu_meo', '🦉'], ['s_chia_khoa', '🗝️'], ['s_bieu_do_len', '📈'], ['s_huy_chuong_vang', '🥇'], ['s_rua', '🐢'], ['s_kien', '🐜'], ['s_nui', '⛰️'], ['s_leo_nui', '🧗'], ['s_khien', '🛡️'], ['s_kiem', '⚔️'], ['s_lua_manh', '❤️‍🔥'], ['s_dong_ho', '⏳'], ['s_game', '🎮'], ['s_cu_dam', '🥊'], ['s_pao', '🏰'], ['s_rong', '🐲'], ['s_kho_bau', '🪙'], ['s_ruong', '🎁'], ['s_ma_thuat', '🪄'], ['s_hoa_tien', '☄️'], ['s_li_xi', '🧧'], ['s_cho_may', '🐱'], ['s_ngua', '🐴'], ['s_sao_may_man', '🌠'], ['s_meo', '🐱'], ['s_cun', '🐶'], ['s_ech', '🐸'], ['s_gau_truc', '🐼'], ['s_cao', '🦊'], ['s_ky_lan', '🦄'], ['s_su_tu', '🦁'], ['s_chim_cut', '🐧'], ['s_tho', '🐰'], ['s_ga_con', '🐥']] as [string, string][]).map(([ma, noi_dung], i) => ({ ma, loai: 'sticker' as const, noi_dung, nhom: ['chung'], thu_tu: i + 1 })),
 ]
 export const TIN_MO = S_RANK
 export const CHI_TIET: ChiTietTG = {

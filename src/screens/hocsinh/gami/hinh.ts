@@ -14,6 +14,7 @@
 //   rank/<bac 1..10>/bieu_tuong.png (384) · bieu_tuong_64.png (128) · khung_avatar.png · khung_avatar_96.png
 //   rank/sao.png · rank/hao_quang_than.png · rank/len_bac.png
 //   fx/sao_moi_sang.png (vầng sáng lớp phủ sao mới — Đơn 1)
+//   the-gioi/tuong-tac/<ma>.webp · the-gioi/sticker/<ma>.webp   (Đơn 7 — bật theo mã, xem TUONG_TAC_CO_ANH)
 //   the-gioi/<tab_the_gioi|tab_ban_be|tab_lop|ket_ban|loi_moi|tang_s|tang_a|tang_b|ruy_bang_s|thay_co_khen|dang_hoc|avatar_an_danh>.png
 //   the-gioi/tin/<kieu>.png · the-gioi/tuong-tac/<ma icon ở the_gioi_danh_muc>.png · fx/phao_giay.png   (Đơn 5 Thế giới BK)
 //   the-gioi/sticker/<ma sticker ở the_gioi_danh_muc, vd s_goat>.png   (bộ sticker Thùy mua — cờ KIT.sticker_tg)
@@ -31,7 +32,7 @@ export const KIT = {
   rank_chung: false,      // Đơn 3 phần D: sao, hao_quang_than, len_bac — CHƯA về
   nhiem_vu: true,         // Đơn 1: icon nhiệm vụ + rương (nhiem-vu/<ma>.png) + fx/sao_moi_sang.png — kit về 29/09 (design/bk-ui-src/Mission, #09–24 + #28)
   the_gioi: false,        // Đơn 5: Thế giới BK — the-gioi/*.png · the-gioi/tin/<kieu>.png · the-gioi/tuong-tac/<ma>.png
-  sticker_tg: false,      // bộ sticker bình luận Thế giới BK (Thùy mua — spec-the-gioi-bk §8) ⇒ the-gioi/sticker/<ma>.png; tắt = emoji to
+  sticker_tg: false,      // (THÔI DÙNG từ 26/10 — icon/sticker Thế giới BK bật THEO MÃ ở TUONG_TAC_CO_ANH / STICKER_CO_ANH bên dưới)
 }
 
 // ── Huy hiệu ─────────────────────────────────────────────────────────────────
@@ -139,6 +140,20 @@ export const ICON_TIN: Record<string, string> = {
 export const ICON_TG = { tab_the_gioi: '🌏', tab_ban_be: '🤝', tab_lop: '🏰', ket_ban: '➕', loi_moi: '💌', thay_co_khen: '👑', dang_hoc: '🟢', avatar_an_danh: '🧙' }
 export const anhTG = (ten: keyof typeof ICON_TG | 'ruy_bang_s' | 'tang_s' | 'tang_a' | 'tang_b'): string | null => (KIT.the_gioi ? `${GOC}/the-gioi/${ten}.png` : null)
 export const anhTin = (kieu: string): string | null => (KIT.the_gioi && ICON_TIN[kieu] ? `${GOC}/the-gioi/tin/${kieu}.png` : null)
-export const anhTuongTac = (ma: string): string | null => (KIT.the_gioi ? `${GOC}/the-gioi/tuong-tac/${ma}.png` : null)
-export const anhSticker = (ma: string): string | null => (KIT.sticker_tg ? `${GOC}/the-gioi/sticker/${ma}.png` : null)
+// Icon thả cảm xúc + sticker bình luận: CÓ HÌNH THEO TỪNG MÃ (không theo cờ cả bộ) — Đơn 7 (design/DON-HANG-THE-GIOI-EMOJI-2.md) chỉ về 20 icon + 53 sticker,
+// các mã Đơn 6 cũ (22 icon đầu + 12 sticker s_lua…) chưa có hình ⇒ vẫn emoji. Mã nào có file thì thêm vào đây sau khi chạy scripts/the-gioi-hinh.mjs
+// (nén → the-gioi/{tuong-tac,sticker}/<mã>.webp). Mã chưa liệt kê ⇒ trả null ⇒ component tự vẽ emoji, không bị 404.
+const TUONG_TAC_CO_ANH = new Set([
+  'bong_bay', 'cam_dong', 'cam_on_ban', 'cau_may', 'cham_hoc', 'chien_thang', 'choang', 'chuc_mung', 'cuoi_tuoi', 'gio_tay', 'hang_nhat', 'hoc_ba',
+  'huong_duong', 'lap_lanh', 'me', 'om', 'on_ap', 'ruc_ro', 'tim_sang', 'toa_nang',
+])
+const STICKER_CO_ANH = new Set([
+  's_bieu_do_len', 's_cam_dong', 's_cao', 's_cau_vong', 's_chia_khoa', 's_chim_cut', 's_cho_may', 's_choang', 's_cu_dam', 's_cu_meo', 's_cu_nhan',
+  's_cun', 's_dong_ho', 's_ech', 's_ga_con', 's_game', 's_gau_truc', 's_gio_tay', 's_hoa_tien', 's_huy_chuong_vang', 's_khien', 's_kho_bau',
+  's_kiem', 's_kien', 's_kinh_hien_vi', 's_ky_lan', 's_lap_lanh', 's_leo_nui', 's_li_xi', 's_lua_manh', 's_ma_thuat', 's_me', 's_meo', 's_ngoi_sao',
+  's_ngua', 's_nui', 's_om', 's_ong_nghiem', 's_pao', 's_phao_giay', 's_phao_hoa', 's_rong', 's_rua', 's_ruong', 's_sach', 's_sao_bang',
+  's_sao_may_man', 's_su_tu', 's_tho', 's_thuoc_ke', 's_thuong', 's_viet_bai', 's_y_tuong',
+])
+export const anhTuongTac = (ma: string): string | null => (TUONG_TAC_CO_ANH.has(ma) ? `${GOC}/the-gioi/tuong-tac/${ma}.webp` : null)
+export const anhSticker = (ma: string): string | null => (STICKER_CO_ANH.has(ma) ? `${GOC}/the-gioi/sticker/${ma}.webp` : null)
 export const anhPhaoGiay = (): string | null => (KIT.the_gioi ? `${GOC}/fx/phao_giay.png` : null)
