@@ -77730,3 +77730,14 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 ## 24/10 tối — App HS "Rèn lại điểm yếu" timeout (Thùy báo) — mig 202610242150
 - fn_tu_luyen_sinh_tu_dong 17–92 s/lượt sau khi bật bản đồ mới. Gốc: fn_mastery_cells_moi/_bdm là hàm SQL 1 câu ⇒ Postgres INLINE; điều kiện của người gọi (`_luyen_con_cho_dang(...) > 0` trong `_tu_luyen_chon_dang`) bị đẩy xuống chạy theo từng lượt đo (66 s; tính xong rồi lọc 2 s). Sửa: `alter function … set search_path = public` cho 2 hàm ⇒ không inline được nữa. Sau sửa 1,7–3,5 s mọi khối; phiêu lưu/DS dạng/dạng học tập 1–3 s; đề xuất bổ trợ không đổi (~4,6 s).
 - **Bài học:** hàm SQL trả bảng mà ĐẮT thì chặn inline (SET … hoặc plpgsql) — người gọi thêm 1 điều kiện gọi hàm là planner có thể nhân chi phí lên hàng chục lần. Bật công tắc xong phải đo từng nút HS bấm được, không chỉ màn chính (lần trước đo phiêu lưu/tự luyện mà sót 'Rèn lại điểm yếu').
+
+## 25/10 — 5T vào BẢN ĐỒ MỚI: nhóm "Bài toán tính toán với tỉ số phần trăm" (NNB01747) — gán + tự duyệt
+
+- **Quyết định CEO:** "đưa tài liệu 5T vào bản đồ mới, chuyên đề tỉ số phần trăm" rồi "đưa bài vào kho, nhóm … Tự động duyệt". Nhóm có 5 dạng (NDB01611–15), LT/VD trống.
+- **Làm:** 117 câu (CĐ14–17 sách 105 + ON 3, ON 79–89 = 12). 2 lượt Sonnet gán mù (59 + 58 câu, brief nêu "dạng sau thắng" của CEO 23/10) → Opus đọc soát toàn bộ 117 câu: chỉnh 6 câu
+  theo dạng sau thắng + nhất quán cùng loại, đưa 2 câu lãi suất (hai lượt xếp khác nhau) vào đề xuất. `scripts/kho/sach/gan-bdm-nhom.mjs` (mới) ghi 1 transaction: **gán chắc 73 + tự duyệt 73**
+  (`da_duyet`, `duyet_nguon='ai'`, `kho_chuan` = true — đọc lại DB), đề xuất 5, thiếu dạng 39, từ chối 0. `dang_chinh` các câu vẫn dạng chờ (gán nằm ở bdm). Trang xem: `reports/5T-ti-so-phan-tram-cau-cho-quyet.html` (44 câu, KaTeX 0 lỗi).
+- **Kiểm lời giải (CEO hỏi 11/10):** cả 117 câu đều có lời giải đủ 2 phần.
+- **Sai / sửa:** hai lượt gán mù xếp KHÁC nhau cho hai câu cùng loại (LT 17.2 thiếu dạng, ON 85 dạng 3) và lượt 1 xếp LT 14.11 dạng 4 trong khi LT 14.12–14.14 cùng loại ở dạng 5 ⇒ khi chia 2 agent cho một nhóm phải soát chéo theo loại câu, không tin từng lượt riêng. Bộ lọc nguồn viết dạng `(VD|LT) 3\.` phải neo `^…$` (đã dính 18/10).
+- **Treo, chờ CEO:** (1) 5 câu đề xuất (LT 17.1–17.4, ON 85) · (2) 39 câu chưa có dạng: dung dịch–hỗn hợp–hạt tươi (21), tăng giảm hai đại lượng–giá bán–lãi lỗ (18) — tạo dạng/nhóm hay để nguyên · (3) LT/VD 5 dạng trống ·
+  (4) 3 câu LT 5.1, LT 5.7, ON 67 (thêm xe / máy / người) có sang `T15T030104` (bản đồ cũ) không — còn treo từ 11/10.
