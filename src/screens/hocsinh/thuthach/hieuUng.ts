@@ -12,6 +12,7 @@
 // ============================================================================
 
 import { anhFx, type FxDau } from '../skin/heroDau'
+import { laySkin } from '../skin/registry'
 
 export type Don = 'set' | 'thien_thach' | 'cau_lua_lon' | 'cau_bang_lon' | 'cau_lua_nho' | 'cau_bang_nho' | 'dien_nho' | 'boss_ma_thuat'
 /** Trạng thái boss do hiệu ứng điều khiển (lớp React áp bộ lọc ảnh theo `LOC_BOSS`). */
@@ -49,17 +50,21 @@ type Diem = { x: number; y: number }
 export interface Neo { W: number; H: number; tay: Diem; phong?: Diem; hero: Hop; boss: Hop; bossAnh?: HTMLImageElement | null }
 
 // ───────────────────────── ảnh FX ─────────────────────────
-const fxKho = new Map<FxDau, HTMLImageElement>()
+// Khoá = ĐƯỜNG DẪN ảnh (không phải tên đòn): style có bộ đánh riêng (`Skin.dau.fx` — Halloween: kẹo ngô, cầu ma, bí ngô rơi…) thay ảnh, đổi style giữa chừng
+// thì nạp bộ mới thay vì dùng lại bộ cũ trong kho.
+const fxKho = new Map<string, HTMLImageElement>()
+const nguonFx = (f: FxDau) => laySkin(null).dau?.fx?.[f] ?? anhFx(f)
 /** Nạp trước 5 ảnh FX (gọi lúc vào Đấu trường) — lỗi thì bỏ qua, hiệu ứng tự lùi về quầng sáng. */
 export function napFx(): Promise<void> {
   const ds: FxDau[] = ['fx_cau_lua', 'fx_cau_bang', 'fx_dan_ma', 'fx_thien_thach', 'fx_bang_boc']
   return Promise.all(ds.map((f) => {
-    if (fxKho.has(f)) return Promise.resolve()
-    const im = new Image(); im.src = anhFx(f); fxKho.set(f, im)
+    const src = nguonFx(f)
+    if (fxKho.has(src)) return Promise.resolve()
+    const im = new Image(); im.src = src; fxKho.set(src, im)
     return im.decode().catch(() => undefined)
   })).then(() => undefined)
 }
-const fx = (f: FxDau) => { const im = fxKho.get(f); return im && im.complete && im.naturalWidth ? im : null }
+const fx = (f: FxDau) => { const im = fxKho.get(nguonFx(f)); return im && im.complete && im.naturalWidth ? im : null }
 /** Đầu đạn trong ảnh (tỉ lệ) — DESIGN.md: cầu/đạn ma (82%,50%) hướng phải · thiên thạch (78%,78%) hướng dưới-phải. */
 const DAU: Record<FxDau, [number, number]> = { fx_cau_lua: [0.82, 0.5], fx_cau_bang: [0.82, 0.5], fx_dan_ma: [0.82, 0.5], fx_thien_thach: [0.78, 0.78], fx_bang_boc: [0.5, 0.5] }
 /** Vẽ ảnh đạn: đầu đạn đặt tại (x,y), xoay theo hướng bay (vx,vy); bay sang trái thì lật ngang (đuôi luôn phía sau). */

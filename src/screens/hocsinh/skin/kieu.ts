@@ -8,7 +8,7 @@ import type { LoiHS } from './loi'
 
 
 // Thêm style mới: thêm id ở đây + file skin/styles/<id>.ts + đăng ký trong registry.ts + migration nới CHECK hs_giao_dien.skin.
-export type SkinId = 'rpg' | 'toi_gian' | 'khoi' | 'lofi' | 'dang_yeu'
+export type SkinId = 'rpg' | 'toi_gian' | 'khoi' | 'lofi' | 'dang_yeu' | 'halloween'
 export type CheDo = 'sang' | 'toi' | 'he_thong'
 // hieu_ung_game: công tắc của em (mig 202610020037, mặc định bật) — tắt ⇒ không bản đồ phiêu lưu / màn đấu. Không có trường (bản cũ) = bật.
 export type GiaoDien = { skin: SkinId; che_do: CheDo; hinh_nen: string; hieu_ung_game?: boolean }
@@ -84,6 +84,15 @@ export type HomeSong = {
   nv?: { nam: NvSong; nu: NvSong }
   /** linh vật đổi tư thế (khác `nv` = ghép mảnh lên một hình người) — style khai MỘT trong hai */
   linhVat?: { nam: LinhVatSong; nu: LinhVatSong }
+}
+/** BỘ ĐÁNH RIÊNG của style (Halloween 25/10 — lần đầu dựng; khuôn kế hoạch design/DON-HANG-NHO-XINH-DANH.md): linh vật của style ra trận THAY 6 nhân vật anime.
+ *  g = thư mục ảnh: `${g}/<nam|nu>/<tư thế>.webp`, mọi tư thế cùng khung w×h · nv[giới].thanDung = cao thân tư thế đứng / cao khung ·
+ *  tu[tư thế]: ax, ay = điểm đặt chân (tỉ lệ khung) · tay = điểm phát đòn (tỉ lệ khung) · fx = 5 ảnh vật bay thay bộ chung (cùng khổ + hướng như bộ RPG).
+ *  Chọn giới theo hồ sơ HS (skin/nhanVat.ts `datGioiDau`). Style không khai ⇒ nhân vật em chọn như cũ. */
+export type BoDau = {
+  g: string; w: number; h: number
+  nv: Record<'nam' | 'nu', { thanDung: number; tu: Record<string, { ax: number; ay: number; tay: number[][] }> }>
+  fx?: Record<'fx_cau_lua' | 'fx_cau_bang' | 'fx_dan_ma' | 'fx_thien_thach' | 'fx_bang_boc', string>
 }
 /** Thẻ "Việc tiếp theo" (nền · chữ · viền) */
 export type TheTiep = { bg: string; ink: string; border: string }
@@ -223,6 +232,8 @@ export type Skin = {
   nhanVatBoCuc?: { cot: string; cao: string; lech: string; bong?: number; dinh?: boolean }
   // Màn chính "sống" (mây trôi sau cửa sổ + nhân vật cử động) — xem `HomeSong`. Không khai ⇒ Home tĩnh.
   homeSong?: HomeSong
+  // Bộ đánh riêng (linh vật của style ra trận) — xem `BoDau`. Không khai ⇒ màn đấu dùng nhân vật em chọn (6 nhân vật anime).
+  dau?: BoDau
   // Bảng màu 3D của bản đồ phiêu lưu (thế giới · lục địa · chặng đường · màn đấu) — 1 bảng duy nhất cho cả cảnh (skin/the3d/kieuMau.ts).
   the3d?: BangMau3D
   // Sổ hình bản đồ phiêu lưu 2D (xem `BanDo2D`). Không khai ⇒ mọi tầng vẽ hình tạm theo màu `the3d`.

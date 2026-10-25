@@ -215,3 +215,9 @@ và việc còn lại: **`design/DON-HANG-STYLE-LOFI.md`** (1 nguồn — không
 Thùy 11/10: *"làm giao diện phong cách chiikawa"*; tên trong app **"Đáng yêu"** (id `dang_yeu`), làm **song song** với Thị trấn (§9), không thay. Quyết định thiết kế, đơn hình,
 bảng kiểm hàng, tình trạng dựng và việc còn lại: **`design/DON-HANG-STYLE-NHO-XINH.md`** (1 nguồn — không chép lại ở đây). Màn chính "sống" kiểu linh vật: `design/STYLE-HS.md` §2.7.
 Migration `202610131141_hs_giao_dien_skin_dang_yeu.sql` đã áp 13/10. Bổ sung sau: bộ tư thế đánh cho 2 linh vật (đơn `design/DON-HANG-NHO-XINH-DANH.md`).
+
+## 13. Style 6 — Halloween · ĐÃ DỰNG 25/10
+
+Thùy 24/10: chủ đề Halloween theo ảnh không khí phố đêm + nét vẽ kiểu Chiikawa/Usagi (chỉ mượn CÁCH VẼ — 2 bé ma tự thiết kế); chốt tên **"Halloween"** (id `halloween`), cho em thích
+không khí tối / ma / lễ hội, **chỉ chế độ tối**, thêm song song. Quy trình đặt hình: `design/MAU-DAT-STYLE-HS.md`. Quyết định, đơn H1–H5, bảng kiểm hàng, tình trạng dựng và việc còn lại:
+**`design/DON-HANG-STYLE-HALLOWEEN.md`** (1 nguồn). Lần đầu có hợp đồng **bộ đánh riêng `Skin.dau`** (bé ma ra trận). Migration `202610251545_hs_giao_dien_skin_halloween.sql` đã áp 25/10.

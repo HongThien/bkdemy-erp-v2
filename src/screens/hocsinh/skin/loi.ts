@@ -148,6 +148,18 @@ export const LOI_DANG_YEU: Partial<LoiHS> = {
   hetDoiHinh: 'Cả đám chịu thua rồi!',
   yeu: { ...LOI_GAME.yeu!, hoi: 'Hơi run một chút… nhưng mình làm được, sẵn sàng chưa?', nut: 'Xông lên!' },
 }
+// Halloween (25/10, design/DON-HANG-STYLE-HALLOWEEN.md mục 5): giữ "đánh quái" nhưng đổi giọng "đi hù ma lấy kẹo" — đúng ⇒ hù 1 phát, quái thua thì NHẢ KẸO.
+export const LOI_HALLOWEEN: Partial<LoiHS> = {
+  ...LOI_GAME,
+  chieu: ['Hụt mất rồi — quái hù lại, hồi 1 máu', 'Hù nhẹ', 'Hù mạnh', 'SIÊU HÙ!'],
+  nhanCombo: 'Hù',
+  goiYCau: 'chọn đúng để hù một phát',
+  moMan: (ten) => `${ten} chui ra kìa!`,
+  huongDan: (n) => `Mỗi ${n} câu hù 1 phát — đúng cả ${n} là SIÊU HÙ`,
+  daXong: 'Đã nhả kẹo',
+  hetDoiHinh: 'Cả đám nhả kẹo hết rồi!',
+  yeu: { ...LOI_GAME.yeu!, hoi: 'Hơi rợn một chút… nhưng mình làm được, sẵn sàng chưa?', nut: 'Đi hù ma!' },
+}
 
 // ── style đang áp (cùng chỗ gắn biến --sk-* ở KhungHS.ganBien) ─────────────────────────────────────────────────────
 // Màn cần LỜI mà không cần biết style là gì ⇒ chỉ đọc qua useLoi(), không so sánh id style.

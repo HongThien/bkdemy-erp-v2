@@ -2,8 +2,8 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `17` BẢNG
-> Role `claude_build` **không sở hữu** và **không có `bypassrls`** với: `giai_thuong` · `giai_thuong_lop_thang` · `hinh_giao_trinh` · `hinh_gt_bai` · `hinh_gt_buoi` · `sk_checkin` · `sk_dang_ky` · `sk_dang_ky_log` · `sk_luot` · `sk_nguoi_choi` · `sk_phan_cong` · `sk_phan_cong_log` · `sk_phong` · `sk_su_kien` · `sk_xu` · `thong_bao_hs` · `thong_bao_ph`
+> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `1` BẢNG
+> Role `claude_ro` **không sở hữu** và **không có `bypassrls`** với: `thong_bao_ph`
 > Các bảng này bật RLS với policy `to authenticated`, nên `SELECT` từ script/CLI trả **0 dòng,
 > im lặng, không lỗi**. ⚠ **"0 dòng" ở đây KHÔNG phải bằng chứng bảng rỗng** — muốn biết số thật
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
@@ -3562,7 +3562,7 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | hoc_sinh_id | uuid |  |  | PK FK→hoc_sinh.id |  |
-| skin | text |  |  |  | `toi_gian` · `dau_truong` · `y2k` · `soft` · `rpg` · `khoi` · `lofi` · `dang_yeu` |
+| skin | text |  |  |  | `toi_gian` · `dau_truong` · `y2k` · `soft` · `rpg` · `khoi` · `lofi` · `dang_yeu` · `halloween` |
 | che_do | text |  | 'he_thong'::text |  | `sang` · `toi` · `he_thong` |
 | hinh_nen | text |  | 'mac_dinh'::text |  |  |
 | huong_dan_xong_at | timestamp with time zone |  | now() |  |  |
@@ -3770,7 +3770,7 @@ END |  |  |
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| mon | text |  |  | PK FK→thanh_tuu.mon |  |
+| mon | text |  |  | PK FK→huy_hieu.mon |  |
 | huy_hieu_key | text |  |  | PK FK→huy_hieu.key |  |
 | thanh_tuu_key | text |  |  | PK FK→thanh_tuu.key |  |
 | vai | text |  |  |  | `chuan` · `them` |
@@ -9939,9 +9939,9 @@ WITH luot AS (
 - `tsa_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 

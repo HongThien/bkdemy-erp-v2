@@ -28,7 +28,7 @@ import { ChonDangChuDe, ChonLoaiTuLuyen } from './TuLuyenChuDe'
 import { GameNhungHS, GiaiVoDichHS, HocTapHS } from './hoctap/HocTapHS'
 import { ChinhPhucHS } from './hoctap/ChinhPhucHS'
 import { ChonNhanVatHS } from './hoctap/ChonNhanVatHS'
-import { laNvChon, type NvId } from './skin/nhanVat'
+import { datGioiDau, laNvChon, type NvId } from './skin/nhanVat'
 import { chonNhanVat, nhanVatCuaToi } from '../../lib/giaodien_hs'
 import { NhungHet, type NhungDau } from './phieuluu/nhungDau'
 import { BaoLuotHS } from './BaoLuot'
@@ -482,6 +482,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   useEffect(() => { laCap1HS().then(setCap1).catch(() => setCap1(false)) }, [])
   useEffect(() => { laCap2HS().then(setCap2).catch(() => setCap2(false)) }, [])
   useEffect(() => { hoSoCuaToi().then((h) => { setGioiTinh(h?.gioi_tinh ?? null); setAnhUrl(h?.anh_url ?? null) }).catch(() => setGioiTinh(null)) }, [])
+  useEffect(() => { datGioiDau(gioiTinh) }, [gioiTinh]) // giới của linh vật ra trận ở style có bộ đánh riêng (Halloween — skin/nhanVat.ts)
   useEffect(() => { taiChuaDoc() }, [])
   // Khối 6–12 dùng HomeHS912 + skin tự chọn (spec-giao-dien-hs.md; Thùy 28/09: mọi skin mở cho mọi em, cấp 1 còn HomeCap1).
   // giaoDien: undefined = đang tải · null = chưa có dòng hs_giao_dien ⇒ HomeHS912 mở hướng dẫn lần đầu.
