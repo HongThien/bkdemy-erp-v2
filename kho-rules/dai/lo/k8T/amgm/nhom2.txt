@@ -1,0 +1,196 @@
+#NHOM NNB01743 | Kĩ thuật điểm rơi của BDT Cauchy
+@MOTA
+Các bài mà ghép cặp trực tiếp làm dấu "=" rơi ra ngoài miền cho phép (biến bị chặn một phía, giả thiết là bất phương trình, các biến có vai trò khác nhau); phải dự đoán điểm rơi rồi tách theo hệ số.
+@LT
+##ĐN Điểm rơi
+Điểm rơi của một bất đẳng thức là bộ giá trị của các biến, thỏa mãn mọi giả thiết, tại đó dấu "=" xảy ra. Một bài có thể có nhiều điểm rơi, hoặc không có điểm rơi nào.
+
+##CY Nguyên tắc bảo toàn điểm rơi
+Mỗi lần dùng Cô-si, dấu "=" của chính bước đó phải xảy ra đúng tại điểm rơi của bài. Nếu một đánh giá trung gian có dấu "=" ở chỗ khác thì chuỗi đánh giá vẫn đúng nhưng chỉ cho một cận yếu hơn, không dùng để kết luận được.
+
+##PP Quy trình bốn bước
+Dự đoán điểm rơi: biểu thức đối xứng thì các biến bằng nhau; các biến có vai trò khác nhau thì so sánh vai trò để đoán tỉ lệ; ràng buộc là bất phương trình thì điểm rơi thường nằm trên biên
+Lập sơ đồ điểm rơi: chọn trước bộ số đem vào Cô-si, để lại một hệ số $k$ chưa biết, cho các số đó bằng nhau tại điểm rơi rồi giải ra $k$
+Tách và ghép theo hệ số vừa tìm; phần dư giữ lại để dùng giả thiết
+Áp dụng Cô-si cho từng nhóm, dùng giả thiết cho phần dư, cộng lại và kiểm tra tất cả các dấu "=" cùng xảy ra tại điểm rơi
+
+##CY Sai lầm thường gặp
+Với $a\ge3$, viết $A=a+\dfrac1a\ge2\sqrt{a\cdot\dfrac1a}=2$ rồi kết luận $\min A=2$ là sai: dấu "=" đòi hỏi $a=\dfrac1a$, tức $a=1$, trái với $a\ge3$. Chặn dưới $2$ đúng nhưng không đạt được nên chưa phải giá trị nhỏ nhất.
+
+##CY
+Khi chặn dưới cần tìm là một hằng số thì phải tách sao cho tích của bộ số đem vào Cô-si không còn chứa biến; với biểu thức chứa $\dfrac1{a^n}$ thường tách $a$ thành $n$ phần bằng nhau.
+
+#DANG NDB01603 | Điểm rơi của biểu thức dạng 1 biến | muc=4 | bac=A
+@MOTA
+tìm giá trị nhỏ nhất của biểu thức một biến trên một nửa khoảng (ví dụ $a\ge3$), dạng $a+\dfrac k{a^n}$ hoặc $a^2+\dfrac ka$; không ghép cặp trực tiếp được vì dấu "=" của cặp đó rơi ngoài miền, phải tách $a$ theo hệ số.
+@LT
+##PP Điểm rơi của biểu thức một biến
+Biểu thức tăng theo biến trên miền đã cho nên dự đoán điểm rơi tại biên của miền
+Lập sơ đồ điểm rơi với hệ số $k$ cho cặp (hoặc bộ ba) số đem vào Cô-si, giải $k$
+Với $\dfrac1{a^n}$ thì tách $a$ thành $n$ phần bằng nhau để tích không còn biến
+Phần dư đánh giá bằng điều kiện của biến, cộng lại và kiểm tra dấu "=" cùng xảy ra
+@VD
+##VD
+Cho số thực $a\ge3$. Tìm giá trị nhỏ nhất của biểu thức $A=a+\dfrac1a$.
+
+Bài giải:
+Điểm rơi dự đoán: $a=3$. Ghép cặp $\left(\dfrac a9;\dfrac1a\right)$ vì tại $a=3$ hai số này bằng nhau ($\dfrac39=\dfrac13$).
+Ta viết $A=\dfrac a9+\dfrac1a+\dfrac{8a}9$.
+Cô-si cho hai số dương $\dfrac a9$ và $\dfrac1a$: $\dfrac a9+\dfrac1a\ge2\sqrt{\dfrac a9\cdot\dfrac1a}=\dfrac23$.
+Vì $a\ge3$ nên $\dfrac{8a}9\ge\dfrac{8\cdot3}9=\dfrac83$.
+Cộng hai bất đẳng thức: $A\ge\dfrac23+\dfrac83=\dfrac{10}3$.
+Dấu "=" xảy ra khi $\dfrac a9=\dfrac1a$ (tức $a=3$) và $a=3$; hai điều kiện cùng đúng tại $a=3$.
+Vậy $\min A=\dfrac{10}3$, đạt khi $a=3$.
+
+##VD
+Cho số thực $a\ge3$. Tìm giá trị nhỏ nhất của biểu thức $A=a+\dfrac1{a^2}$.
+
+Bài giải:
+Điểm rơi dự đoán: $a=3$, khi đó $A=3+\dfrac19=\dfrac{28}9$.
+Vì có $\dfrac1{a^2}$ nên tách $a$ thành hai phần bằng nhau để tích không còn biến: ghép bộ ba $\left(\dfrac a{27};\dfrac a{27};\dfrac1{a^2}\right)$ (tại $a=3$ cả ba số bằng $\dfrac19$).
+Ta viết $A=\dfrac a{27}+\dfrac a{27}+\dfrac1{a^2}+\dfrac{25a}{27}$.
+Cô-si cho ba số dương: $\dfrac a{27}+\dfrac a{27}+\dfrac1{a^2}\ge3\sqrt[3]{\dfrac a{27}\cdot\dfrac a{27}\cdot\dfrac1{a^2}}=3\sqrt[3]{\dfrac1{729}}=\dfrac13$.
+Vì $a\ge3$ nên $\dfrac{25a}{27}\ge\dfrac{25}9$.
+Cộng lại: $A\ge\dfrac13+\dfrac{25}9=\dfrac{28}9$.
+Dấu "=" xảy ra khi $\dfrac a{27}=\dfrac1{a^2}$ (tức $a=3$) và $a=3$.
+Vậy $\min A=\dfrac{28}9$, đạt khi $a=3$.
+
+#DANG moi | Điểm rơi khi biểu thức chỉ phụ thuộc vào tích hoặc tổng của các biến | muc=4 | bac=A
+@MOTA
+(dạng tôi đề xuất thêm) biểu thức nhiều biến nhưng thực chất chỉ phụ thuộc vào một đại lượng (ví dụ $t=ab$), giả thiết cho bất phương trình như $a+b\le4$; trước hết chặn đại lượng đó bằng $(a+b)^2\ge4ab$, rồi lập sơ đồ điểm rơi theo $t$.
+@LT
+##PP Biểu thức phụ thuộc vào tích $ab$ với giả thiết $a+b\le s$
+Chặn $t=ab$ bằng $ab\le\dfrac{(a+b)^2}4\le\dfrac{s^2}4$
+Dự đoán điểm rơi $a=b=\dfrac s2$, tức $t=\dfrac{s^2}4$ (biên của miền của $t$)
+Lập sơ đồ điểm rơi theo $t$ để tìm hệ số $k$, tách biểu thức rồi dùng Cô-si cho cặp số
+Phần dư đánh giá bằng chặn trên của $t$ ở bước đầu; kiểm tra dấu "=" cùng xảy ra
+
+##CY
+Nếu ghép trực tiếp $t$ với $\dfrac m t$ thì dấu "=" đòi hỏi $t$ vượt quá chặn trên của $t$; đây chính là sai lầm "chặn dưới đúng nhưng không đạt được".
+@VD
+##VD
+Cho hai số thực dương $a,b$ thỏa mãn $a+b\le4$. Tìm giá trị nhỏ nhất của biểu thức $A=ab+\dfrac{64}{ab}$.
+
+Bài giải:
+Từ $(a+b)^2\ge4ab$ và $a+b\le4$ suy ra $ab\le\dfrac{(a+b)^2}4\le4$. Điểm rơi dự đoán: $a=b=2$, khi đó $ab=4$.
+Ghép cặp $\left(k\,ab;\dfrac{64}{ab}\right)$; tại $ab=4$ hai số bằng nhau: $4k=\dfrac{64}4=16$, nên $k=4$.
+Ta viết $A=4ab+\dfrac{64}{ab}-3ab$.
+Cô-si cho hai số dương: $4ab+\dfrac{64}{ab}\ge2\sqrt{256}=32$.
+Vì $ab\le4$ nên $-3ab\ge-12$.
+Cộng lại: $A\ge32-12=20$.
+Dấu "=" xảy ra khi $4ab=\dfrac{64}{ab}$ (tức $ab=4$) và $ab=4$, tức $a=b$ và $a+b=4$, nên $a=b=2$.
+Vậy $\min A=20$, đạt khi $a=b=2$.
+
+##VD
+Cho hai số thực dương $a,b$ thỏa mãn $a+b\le2$. Chứng minh rằng $\dfrac4{a^2+b^2}+\dfrac4{ab}+ab\ge7$.
+
+Bài giải:
+Điểm rơi dự đoán: $a=b=1$. Từ $a+b\le2$ ta có $(a+b)^2\le4$ và $ab\le\dfrac{(a+b)^2}4\le1$.
+Tách $\dfrac4{ab}=\dfrac2{ab}+\dfrac1{ab}+\dfrac1{ab}$ và nhóm vế trái thành $\left(\dfrac4{a^2+b^2}+\dfrac2{ab}\right)+\left(ab+\dfrac1{ab}\right)+\dfrac1{ab}$.
+Nhóm thứ nhất: theo $\dfrac1x+\dfrac1y\ge\dfrac4{x+y}$ với $x=a^2+b^2$, $y=2ab$: $\dfrac4{a^2+b^2}+\dfrac2{ab}=4\left(\dfrac1{a^2+b^2}+\dfrac1{2ab}\right)\ge\dfrac{16}{(a+b)^2}\ge\dfrac{16}4=4$.
+Nhóm thứ hai: Cô-si cho hai số dương, $ab+\dfrac1{ab}\ge2$.
+Nhóm thứ ba: vì $0<ab\le1$ nên $\dfrac1{ab}\ge1$.
+Cộng lại: vế trái $\ge4+2+1=7$.
+Dấu "=" xảy ra khi $a^2+b^2=2ab$, $a+b=2$ và $ab=1$, tức $a=b=1$.
+
+#DANG moi | Giả thiết là bất phương trình, các biến có vai trò khác nhau | muc=4 | bac=A
+@MOTA
+(dạng tôi đề xuất thêm) bài nhiều biến mà các biến không bình đẳng, giả thiết là bất phương trình dạng $a+2b+3c\ge16$; dấu "=" rơi vào biên của giả thiết. Mỗi biến ghép với phân thức nghịch đảo của nó, phần còn lại của các biến gộp thành bội của vế trái giả thiết.
+@LT
+##PP Giả thiết là bất phương trình
+Dự đoán điểm rơi nằm trên biên (giả thiết trở thành đẳng thức); với mỗi biến, thử bộ giá trị làm các cặp (biến, phân thức nghịch đảo) cùng đạt "=" và thỏa biên
+Lập ba sơ đồ điểm rơi riêng, mỗi biến một hệ số
+Tách mỗi biến thành phần đem ghép cặp và phần còn lại; các phần còn lại gộp thành bội của vế trái giả thiết
+Dùng giả thiết cho phần dư; kiểm tra bộ điểm rơi thỏa mọi dấu "="
+@VD
+##VD
+Cho ba số thực dương $a,b,c$ thỏa mãn $a+2b+3c\ge16$. Tìm giá trị nhỏ nhất của biểu thức $A=a+b+c+\dfrac3a+\dfrac8b+\dfrac1c$.
+
+Bài giải:
+Các biến có vai trò khác nhau và giả thiết là bất phương trình nên điểm rơi nằm trên biên $a+2b+3c=16$. Mỗi biến ghép với phân thức nghịch đảo của nó, phần còn lại của cả ba biến gộp thành bội của $a+2b+3c$; điều đó dẫn tới $a=2$, $b=4$, $c=2$, và $2+8+6=16$ nên bộ này nằm đúng trên biên.
+Sơ đồ điểm rơi: $\dfrac ak=\dfrac3a$ tại $a=2$ cho $k=\dfrac43$; $\dfrac bm=\dfrac8b$ tại $b=4$ cho $m=2$; $\dfrac cn=\dfrac1c$ tại $c=2$ cho $n=4$.
+Tách $A=\left(\dfrac{3a}4+\dfrac3a\right)+\left(\dfrac b2+\dfrac8b\right)+\left(\dfrac c4+\dfrac1c\right)+\left(\dfrac a4+\dfrac b2+\dfrac{3c}4\right)$.
+Cô-si cho từng ngoặc đầu: $\dfrac{3a}4+\dfrac3a\ge2\sqrt{\dfrac94}=3$; $\dfrac b2+\dfrac8b\ge2\sqrt4=4$; $\dfrac c4+\dfrac1c\ge2\sqrt{\dfrac14}=1$.
+Ngoặc cuối bằng $\dfrac14(a+2b+3c)\ge\dfrac{16}4=4$.
+Cộng bốn bất đẳng thức: $A\ge3+4+1+4=12$.
+Dấu "=" xảy ra khi $a=2$, $b=4$, $c=2$ (đồng thời $a+2b+3c=16$).
+Vậy $\min A=12$, đạt khi $(a;b;c)=(2;4;2)$.
+
+##VD
+Cho ba số thực dương $a,b,c$ thỏa mãn $2a+b+c\ge8$. Tìm giá trị nhỏ nhất của biểu thức $A=a+b+c+\dfrac2a+\dfrac3b+\dfrac3c$.
+
+Bài giải:
+Điểm rơi nằm trên biên $2a+b+c=8$ và dự đoán $a=b=c=2$ (khi đó $2\cdot2+2+2=8$ và $A=10$).
+Sơ đồ điểm rơi: $\dfrac ak=\dfrac2a$ tại $a=2$ cho $k=2$; $\dfrac bm=\dfrac3b$ tại $b=2$ cho $m=\dfrac43$; $\dfrac cn=\dfrac3c$ tại $c=2$ cho $n=\dfrac43$.
+Tách $A=\left(\dfrac a2+\dfrac2a\right)+\left(\dfrac{3b}4+\dfrac3b\right)+\left(\dfrac{3c}4+\dfrac3c\right)+\left(\dfrac a2+\dfrac b4+\dfrac c4\right)$.
+Cô-si: $\dfrac a2+\dfrac2a\ge2$; $\dfrac{3b}4+\dfrac3b\ge2\sqrt{\dfrac94}=3$; $\dfrac{3c}4+\dfrac3c\ge3$.
+Ngoặc cuối bằng $\dfrac14(2a+b+c)\ge\dfrac84=2$.
+Cộng lại: $A\ge2+3+3+2=10$.
+Dấu "=" xảy ra khi $a^2=4$, $b^2=4$, $c^2=4$ và $2a+b+c=8$, tức $a=b=c=2$.
+Vậy $\min A=10$, đạt khi $a=b=c=2$.
+
+#DANG moi | Biểu thức đối xứng nhiều biến, điểm rơi khi các biến bằng nhau | muc=4 | bac=A
+@MOTA
+(dạng tôi đề xuất thêm) biểu thức đối xứng hoặc hoán vị vòng quanh nhiều biến nên điểm rơi là $a=b=c$; tại đó tính giá trị từng số hạng, ghép mỗi số hạng với một phần của số hạng nghịch đảo theo hệ số tìm được, phần còn lại đánh giá riêng bằng Cô-si hoặc hệ quả.
+@LT
+##PP Biểu thức đối xứng nhiều biến
+Điểm rơi $a=b=c$: tính giá trị từng số hạng tại điểm rơi
+Ghép số hạng với một phần $m$ của số hạng nghịch đảo, cho hai số bằng nhau tại điểm rơi để tìm $m$
+Phần còn lại của số hạng nghịch đảo nhóm thành cặp nghịch đảo ($\dfrac ab+\dfrac ba\ge2$) hoặc dùng hệ quả $a^2+b^2+c^2\ge ab+bc+ca$
+Cộng lại, kiểm tra dấu "=" của mọi đánh giá đều cho $a=b=c$
+@VD
+##VD
+Cho ba số thực dương $a,b,c$. Tìm giá trị nhỏ nhất của biểu thức $A=\dfrac a{b+c}+\dfrac b{c+a}+\dfrac c{a+b}+2\left(\dfrac{b+c}a+\dfrac{c+a}b+\dfrac{a+b}c\right)$.
+
+Bài giải:
+Biểu thức đối xứng nên điểm rơi dự đoán $a=b=c$. Khi đó $\dfrac a{b+c}=\dfrac12$ và $\dfrac{b+c}a=2$.
+Ghép $\left(\dfrac a{b+c};m\cdot\dfrac{b+c}a\right)$, tại điểm rơi bằng nhau nên $\dfrac12=2m$, $m=\dfrac14$.
+Tách $A=\left(\dfrac a{b+c}+\dfrac{b+c}{4a}\right)+\left(\dfrac b{c+a}+\dfrac{c+a}{4b}\right)+\left(\dfrac c{a+b}+\dfrac{a+b}{4c}\right)+\dfrac74\left(\dfrac{b+c}a+\dfrac{c+a}b+\dfrac{a+b}c\right)$.
+Cô-si cho từng ngoặc đầu: $\dfrac a{b+c}+\dfrac{b+c}{4a}\ge2\sqrt{\dfrac14}=1$; hai ngoặc còn lại tương tự. Tổng ba ngoặc $\ge3$.
+Phần dư: $\dfrac{b+c}a+\dfrac{c+a}b+\dfrac{a+b}c=\left(\dfrac ab+\dfrac ba\right)+\left(\dfrac bc+\dfrac cb\right)+\left(\dfrac ca+\dfrac ac\right)\ge2+2+2=6$.
+Cộng lại: $A\ge3+\dfrac74\cdot6=\dfrac{27}2$.
+Dấu "=" xảy ra khi $b+c=2a$, $c+a=2b$, $a+b=2c$, tức $a=b=c$.
+Vậy $\min A=\dfrac{27}2$, đạt khi $a=b=c$.
+
+##VD
+Cho ba số thực dương $a,b,c$. Chứng minh rằng $a\left(\dfrac a2+\dfrac8{bc}\right)+b\left(\dfrac b2+\dfrac8{ca}\right)+c\left(\dfrac c2+\dfrac8{ab}\right)\ge18$.
+
+Bài giải:
+Nhân vào từng ngoặc rồi quy đồng: vế trái $=\dfrac{a^2+b^2+c^2}2+\dfrac{8(a^2+b^2+c^2)}{abc}$.
+Vì $a^2+b^2+c^2\ge ab+bc+ca$ và $abc>0$ nên $\dfrac{8(a^2+b^2+c^2)}{abc}\ge\dfrac{8(ab+bc+ca)}{abc}=\dfrac8c+\dfrac8a+\dfrac8b$.
+Do đó vế trái $\ge\left(\dfrac{a^2}2+\dfrac8a\right)+\left(\dfrac{b^2}2+\dfrac8b\right)+\left(\dfrac{c^2}2+\dfrac8c\right)$.
+Điểm rơi dự đoán $a=b=c=2$ (tại đó $\dfrac{a^2}2=2=\dfrac4a$). Tách $\dfrac8a=\dfrac4a+\dfrac4a$ và áp dụng Cô-si cho ba số dương: $\dfrac{a^2}2+\dfrac4a+\dfrac4a\ge3\sqrt[3]{\dfrac{a^2}2\cdot\dfrac4a\cdot\dfrac4a}=3\sqrt[3]8=6$.
+Tương tự với $b$ và $c$. Cộng ba bất đẳng thức: vế trái $\ge18$.
+Dấu "=" xảy ra khi $a=b=c$ và $\dfrac{a^2}2=\dfrac4a$, tức $a=b=c=2$.
+
+#DANG moi | Biểu thức không đối xứng, dò điểm rơi bằng cách so vai trò các biến | muc=5 | bac=A
+@MOTA
+(dạng tôi đề xuất thêm) bất đẳng thức không đối xứng với cả ba (hoặc bốn) biến nên đoán $a=b=c$ không đúng; so sánh vai trò từng nhóm biến để dự đoán điểm rơi (ví dụ $a=b$ và $c=a+b$), rồi chọn các đánh giá $(x+y)^2\ge4xy$ có dấu "=" đúng tại điểm đó.
+@LT
+##PP Biểu thức không đối xứng
+Thử $a=b=c$: nếu hai vế không bằng nhau thì loại dự đoán đó
+Xét các biến có vai trò như nhau (đổi chỗ thì hai vế không đổi) để dự đoán chúng bằng nhau
+Viết vế phải thành tích của nhóm đại lượng, so vai trò để dự đoán tiếp (ví dụ $c=a+b$ vì $(a+b+c)^2\ge4c(a+b)$)
+Chọn các hệ quả $(x+y)^2\ge4xy$ có dấu "=" tại điểm rơi đã dự đoán, nhân theo vế (các vế không âm) rồi rút gọn
+@VD
+##VD
+Cho ba số thực dương $a,b,c$. Chứng minh rằng $(a+b)(a+b+c)^2\ge16abc$.
+
+Bài giải:
+Thử $a=b=c=1$ thì vế trái bằng $18$, vế phải bằng $16$, hai vế không bằng nhau nên $a=b=c$ không phải điểm rơi. Hai biến $a,b$ có vai trò như nhau nên dự đoán $a=b$; viết $16abc=4c\cdot4ab$ và dự đoán tiếp $c=a+b$ (vì $(a+b+c)^2\ge4c(a+b)$ có "=" khi $c=a+b$). Điểm rơi: $c=2a=2b$ (chẳng hạn $(1;1;2)$, hai vế cùng bằng $32$).
+Áp dụng $(x+y)^2\ge4xy$ hai lần: $(a+b)^2\ge4ab\ge0$ và $(a+b+c)^2\ge4c(a+b)\ge0$.
+Nhân theo vế (các vế không âm): $(a+b)^2(a+b+c)^2\ge16abc(a+b)$.
+Chia hai vế cho $a+b>0$: $(a+b)(a+b+c)^2\ge16abc$.
+Dấu "=" xảy ra khi $a=b$ và $c=a+b$, tức $c=2a=2b$.
+
+##VD
+Cho bốn số thực dương $a,b,c,d$. Chứng minh rằng $(a+b+c)^2(a+b+c+d)^2\ge108abcd$.
+
+Bài giải:
+Ba biến $a,b,c$ có vai trò như nhau nên dự đoán $a=b=c$; theo cách làm của bài trước, $d=a+b+c$, tức $d=3a$. Điểm rơi: chẳng hạn $(1;1;1;3)$, hai vế cùng bằng $324$.
+Tách $108abcd=27abc\cdot4d$.
+Cô-si cho ba số dương $a,b,c$: $a+b+c\ge3\sqrt[3]{abc}$, nên $(a+b+c)^3\ge27abc\ge0$.
+Áp dụng $(x+y)^2\ge4xy$ với $x=a+b+c$, $y=d$: $(a+b+c+d)^2\ge4d(a+b+c)\ge0$.
+Nhân theo vế (các vế không âm): $(a+b+c)^3(a+b+c+d)^2\ge27abc\cdot4d(a+b+c)=108abcd(a+b+c)$.
+Chia hai vế cho $a+b+c>0$: $(a+b+c)^2(a+b+c+d)^2\ge108abcd$.
+Dấu "=" xảy ra khi $a=b=c$ và $d=a+b+c$, tức $a=b=c=\dfrac d3$.
