@@ -303,23 +303,29 @@ export function boLoiDan(noiDung: string | null | undefined, dan: string): strin
   const s = noiDung ?? ''
   return dan && s.startsWith(dan) ? s.slice(dan.length).trim() : s
 }
-/** In theo KHUÔN ĐỀ: gộp các câu kho của MỘT bài nhiều ý thành 1 bài có đủ ý (lời dẫn + a) b) c)…) — chỉ để HIỂN THỊ.
- *  `dong(c)` = số dòng kẻ của 1 câu; bài gộp cộng dòng của các ý. Thiếu ý trong danh sách ⇒ để nguyên từng câu.
+/** In theo KHUÔN ĐỀ: các câu kho của MỘT bài nhiều ý in lại thành 1 bài — ĐẦU BÀI (số bài + lời dẫn + hình) rồi TỪNG Ý a) b)…
+ *  (chỉ để HIỂN THỊ; kho vẫn là câu riêng). Mỗi ý giữ DÒNG KẺ + CỘT riêng của nó — Thùy 25/10: "gán dòng phải theo từng ý trong
+ *  bài chứ không theo cả bài"; trước đây gộp thành 1 khối ⇒ dòng cộng dồn xuống cuối bài, cột lấy theo ý a rồi bị ghép cạnh bài khác.
+ *  Hình chung của bài in 1 lần ở đầu bài (ý trùng hình thì không in lại). Thiếu ý trong danh sách ⇒ để nguyên từng câu.
  *  Dùng chung: bản in đề thi (DeThiPrintView) + BTVN gán từ đề (PrintView, Thùy 22/10). */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function gopBaiTheoDe(d: Pick<DeThi, 'cau_hinh'>, caus: any[], dong: (c: any) => number): { c: any; lines: number }[] {
+export type MucDe = { loai: 'cau'; c: any } | { loai: 'bai'; key: string; dan: string; dau: any; y: { c: any; nhan: string }[] }
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function baiTheoDe(d: Pick<DeThi, 'cau_hinh'>, caus: any[]): MucDe[] {
   const nhomOf = new Map<string, { g: NhomBai; k: number }>()
   for (const g of nhomBaiCuaDe(d)) g.cau.forEach((x, k) => nhomOf.set(x.ma_cau, { g, k }))
-  const ra: { c: any; lines: number }[] = []
+  const ra: MucDe[] = []
   for (const c of caus) {
     const r = nhomOf.get(c.ma_cau)
-    if (!r) { ra.push({ c, lines: dong(c) }); continue }
-    if (r.k > 0) continue // các ý sau đã gộp vào ý đầu
+    if (!r) { ra.push({ loai: 'cau', c }); continue }
+    if (r.k > 0) continue // các ý sau đã vào bài của ý đầu
     const mem = r.g.cau.map((x) => caus.find((cc) => cc.ma_cau === x.ma_cau))
-    if (mem.some((m) => !m)) { ra.push({ c, lines: dong(c) }); continue }
-    const noiDung = [r.g.dan, ...mem.map((m, i) => `${r.g.cau[i].y}) ${boLoiDan(m.noi_dung, r.g.dan)}`)].filter((x) => x !== '').join('\n')
-    const loiGiai = mem.map((m, i) => (m.loi_giai ? `**${r.g.cau[i].y})**\n${m.loi_giai}` : '')).filter(Boolean).join('\n\n')
-    ra.push({ c: { ...mem[0], noi_dung: noiDung, loi_giai: loiGiai || null, loai_cau: 'tu_luan', dap_an: null, lua_chon: null, menh_de: null }, lines: mem.reduce((t: number, m: any) => t + dong(m), 0) })
+    if (mem.some((m) => !m)) { ra.push({ loai: 'cau', c }); continue }
+    const anhChung = mem[0].anh_de ?? null
+    ra.push({
+      loai: 'bai', key: mem[0].ma_cau, dan: r.g.dan, dau: mem[0],
+      y: mem.map((m, i) => ({ nhan: r.g.cau[i].y, c: { ...m, noi_dung: boLoiDan(m.noi_dung, r.g.dan), anh_de: m.anh_de && m.anh_de !== anhChung ? m.anh_de : null } })),
+    })
   }
   return ra
 }

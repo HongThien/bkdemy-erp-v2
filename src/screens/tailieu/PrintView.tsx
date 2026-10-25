@@ -14,7 +14,7 @@ import { uploadKhoFile } from '../../lib/kho/api'
 import type { CauHoi } from '../../lib/kho/api'
 import { AnhMmCtx } from './anhMmCtx'
 import { noiDung as noiDungBdm, nguonCau, type NoiDung } from '../../lib/tailieuBdm'
-import { coDongKeDeThi, dongMacDinhDeThi, gopBaiTheoDe } from '../../lib/dethi'
+import { coDongKeDeThi, dongMacDinhDeThi, baiTheoDe, type MucDe } from '../../lib/dethi'
 
 // Bộ đếm render TOÀN CỤC → mỗi lần dựng trang có 1 class scope riêng (`pv-scope-N`) gắn lên container.
 // CSS chrome (::before/::after) prefix bằng class này ⇒ stylesheet paged.js chèn vào <head> chỉ khớp ĐÚNG
@@ -811,13 +811,15 @@ function BtvnSheet({ btvns, ontaps = [], gv, docTitle, buoiTitle, linesByCau, co
       <section className="pv-sec pv-btvn">
         <BtvnBkHead buoiTitle={buoiTitle || docTitle} ngayPhat={ngayPhat} ngayNop={ngayNop} lopTen={lopTen} hoTen={hoTen} gv={gv} />
         {btvns.filter((b) => b.caus.length).map((b) => (
-          <section key={b.id} className="pv-sec pv-btvn-de">
+          // ⭐ Fragment, KHÔNG <section> (Thùy 25/10 "trang đầu còn bị trống"): lớp box bọc cả phần = đúng lớp bug paged.js ở
+          // .pv-buoi / groups.map (xem chú thích ở đó) — vẽ xong đầu phiếu rồi bỏ trắng trang 1, Phần 1 nhảy sang trang 2.
+          <Fragment key={b.id}>
             {!b.ref_ma && b.tieu_de && b.tieu_de !== 'Chưa phân dạng' && <h2 className="pv-h-dang">{b.tieu_de}</h2>}
-            <CauFlow items={gopBaiTheoDe(deThi as Parameters<typeof gopBaiTheoDe>[0], b.caus, dong).map(({ c, lines }) => ({
-              key: c.ma_cau, cols: colByCau[c.ma_cau] ?? kieuCols(b.kieu),
-              ...cauItemParts({ no: ++no, c, gv, lines, cheDoHinh: hinhCheDoByCau?.[c.ma_cau], tienTo: deCuong ? 'Bài' : 'Câu' }),
-            }))} />
-          </section>
+            <CauFlow items={itemsTheoDe(baiTheoDe(deThi as Parameters<typeof baiTheoDe>[0], b.caus), {
+              gv, dong, next: () => ++no, tienTo: deCuong ? 'Bài' : 'Câu',
+              col: (c, laY) => colByCau[c.ma_cau] ?? (laY ? 1 : kieuCols(b.kieu)), cheDo: (c) => hinhCheDoByCau?.[c.ma_cau],
+            })} />
+          </Fragment>
         ))}
       </section>
     )
@@ -973,7 +975,8 @@ function AnhDe({ ma, src }: { ma: string; src: string }) {
 // (ngắt được giữa các dòng → lấp đáy trang), còn content thì giữ nguyên khối.
 export type CauPart = { key: string; content: React.ReactNode; lines: number; hasImg: boolean }
 // nguon (chuyên đề, Thùy 21/10): dòng "Câu N. (Đề thi … — THCS …)" riêng, nội dung câu xuống dòng dưới.
-export function cauItemParts({ no, c, gv, lines = 0, cheDoHinh, tienTo = 'Câu', nguon }: { no: number; c: CauHoi; gv: boolean; lines?: number; cheDoHinh?: CheDoHinh; tienTo?: string; nguon?: string }): { content: React.ReactNode; lines: number; hasImg: boolean } {
+// nhan (ý của bài nhiều ý in theo khuôn đề, 25/10): in "a)" thay cho "Câu N." — xem itemsTheoDe.
+export function cauItemParts({ no, c, gv, lines = 0, cheDoHinh, tienTo = 'Câu', nguon, nhan }: { no: number; c: CauHoi; gv: boolean; lines?: number; cheDoHinh?: CheDoHinh; tienTo?: string; nguon?: string; nhan?: string }): { content: React.ReactNode; lines: number; hasImg: boolean } {
   const md = c.menh_de && c.menh_de.length ? c.menh_de : null // câu Đúng/Sai: 4 mệnh đề, mỗi cái Đ/S riêng
   const hasOpts = !!(c.lua_chon && c.lua_chon.length)
   const letter = (i: number) => String.fromCharCode(65 + i)
@@ -991,7 +994,7 @@ export function cauItemParts({ no, c, gv, lines = 0, cheDoHinh, tienTo = 'Câu',
     content: (<>
       {/* THỨ TỰ: đề → HÌNH → ý con → phương án/Đ-S → lời giải GV (Thùy chốt) */}
       {nguon && <div className="pv-nguon" style={{ breakAfter: 'avoid' }}><span className="pv-cau-no">{tienTo} {no}.</span> <i style={{ color: '#5b6470' }}>({nguon})</i></div>}
-      <div className="pv-math"><MathText prefix={nguon ? '' : `<span class="pv-cau-no">${tienTo} ${no}.</span> `}>{md ? c.noi_dung : stem}</MathText></div>
+      <div className="pv-math"><MathText prefix={nguon ? '' : nhan ? `<span class="pv-cau-no">${nhan}</span> ` : `<span class="pv-cau-no">${tienTo} ${no}.</span> `}>{md ? c.noi_dung : stem}</MathText></div>
       {anhBlock}
       {!md && grid && <OptGrid grid={grid} emb={emb} />}
       {md && (
@@ -1106,19 +1109,45 @@ export function CauColumns({ cols, parts, hop, dau }: { cols: number; parts: Cau
 // break-inside:avoid nguyên hàng (giữ 2 cột lên dòng kẻ ngang nhau — không đổi được, xem PrintView.tsx:848),
 // ảnh cao tới 60mm (.pv-img) làm băng dễ cao hơn khoảng trống còn lại cuối trang → cả băng nhảy sang trang
 // sau, bỏ trống trang trước (Thùy báo). Câu có ảnh in full-width, không xé nhóm 2 cột xung quanh nó.
-export type CauFlowItem = CauPart & { cols: number }
+// nhom (25/10): khoá BÀI của ý trong bài nhiều ý — chỉ các ý CÙNG bài mới được xếp chung hàng cột, không ghép sang câu/bài khác.
+export type CauFlowItem = CauPart & { cols: number; nhom?: string }
 export function CauFlow({ items, hop }: { items: CauFlowItem[]; hop?: boolean }) {
-  const groups: { cols: number; parts: CauPart[] }[] = []
+  const groups: { cols: number; nhom?: string; parts: CauPart[] }[] = []
   for (const it of items) {
     const cols = it.cols > 1 && !it.hasImg ? it.cols : 1
     const last = groups[groups.length - 1]
-    if (last && last.cols === cols) last.parts.push(it)
-    else groups.push({ cols, parts: [it] })
+    if (last && last.cols === cols && last.nhom === it.nhom) last.parts.push(it)
+    else groups.push({ cols, nhom: it.nhom, parts: [it] })
   }
   // `hop` = 1 khung liền cả cụm câu, tag "Bài tập tự luyện" nổi trên viền (vai trò như tag "Ví dụ", CEO 26/09).
   // Không bọc div quanh cả cụm (thận trọng, xem CauColumns). Đỉnh khung + tag dính NGUYÊN TỬ vào câu đầu
   // (`dau`, xem CauColumns); thân = viền trái/phải vẽ lên từng .pv-caulist; nhóm cuối đóng viền đáy.
   return <>{groups.map((g, i) => <CauColumns key={i} cols={g.cols} parts={g.parts} dau={hop && i === 0} hop={hop ? (i === groups.length - 1 ? 'cuoi' : 'giua') : undefined} />)}</>
+}
+
+// Khuôn ĐỀ (đề thi + BTVN gán từ đề): câu lẻ = 1 dòng như cũ; bài nhiều ý = đầu bài (số bài + lời dẫn + hình chung) rồi
+// từng ý "a) …" với DÒNG KẺ + CỘT của chính ý đó (Thùy 25/10). Ý mặc định 1 cột (không lấy cột của phần); `next` chỉ tăng ở câu/bài.
+export function itemsTheoDe(muc: MucDe[], o: {
+  gv: boolean; dong: (c: CauHoi) => number; next: () => number; tienTo: string
+  col: (c: CauHoi, laY: boolean) => number; cheDo: (c: CauHoi) => CheDoHinh | undefined
+}): CauFlowItem[] {
+  const out: CauFlowItem[] = []
+  for (const m of muc) {
+    if (m.loai === 'cau') {
+      out.push({ key: m.c.ma_cau, cols: o.col(m.c, false), ...cauItemParts({ no: o.next(), c: m.c, gv: o.gv, lines: o.dong(m.c), cheDoHinh: o.cheDo(m.c), tienTo: o.tienTo }) })
+      continue
+    }
+    const cd = o.cheDo(m.dau) ?? 'hien'
+    const anh = cd === 'khong' ? null
+      : cd === 'o_trong' ? (o.gv && m.dau.anh_de ? <AnhDe ma={m.dau.ma_cau} src={m.dau.anh_de} /> : <div className="pv-vebox" />)
+        : (m.dau.anh_de ? <AnhDe ma={m.dau.ma_cau} src={m.dau.anh_de} /> : null)
+    out.push({
+      key: `bai-${m.key}`, cols: 1, nhom: m.key, lines: 0, hasImg: !!anh,
+      content: <><div className="pv-math" style={{ breakAfter: 'avoid' }}><MathText prefix={`<span class="pv-cau-no">${o.tienTo} ${o.next()}.</span> `}>{m.dan}</MathText></div>{anh}</>,
+    })
+    for (const y of m.y) out.push({ key: y.c.ma_cau, cols: o.col(y.c, true), nhom: m.key, ...cauItemParts({ no: 0, c: y.c, gv: o.gv, lines: o.dong(y.c), cheDoHinh: o.cheDo(y.c), nhan: `${y.nhan})` }) })
+  }
+  return out
 }
 
 // CSS toàn cục (màn hình + cô lập khi in) — KHÔNG đưa vào paged.js.
