@@ -38,7 +38,7 @@ const md = iGhiChu >= 0 ? mdDu.slice(0, iGhiChu) : mdDu
 const loi = [], nhac = []
 // Theo khối: khối 6 dấu nhân là dấu chấm như SGK, hình vào HGT (k6.md) · khối 8 dấu nhân \cdot, hình phẳng vào kho Hình học (k8.md §10)
 // · khối 9 dấu nhân \cdot (k9.md §3), hệ thức lượng vào HGT (hgt/k9.md).
-const NHAN_CHAM = !['8', '9', '11'].includes(String(KHOI))
+const NHAN_CHAM = !['8', '9', '10', '11'].includes(String(KHOI))
 const KHO_DUOC = ['7', '8', '11'].includes(String(KHOI)) ? ['dai', 'hinh_hoc'] : String(KHOI) === '9' ? ['dai', 'hgt', 'hinh_hoc'] : ['dai', 'hgt'] // khối 7: hình phẳng THCS ⇒ kho Hình học, dạng chờ HH07000000 (mig 202610121650)
 // khối 9 BỘ ĐỀ GKI (Thùy 18/10: "đẩy tất cả bài Hình vào bài Ôn thi giữa kì I của phần Hình – học lớp 9"): mọi câu kho=hinh_hoc ghi thẳng vào dạng HH00140 "Ôn thi giữa kì I"
 const DANG_HINH_K9 = process.env.DANG_HINH_K9 || 'HH00140' // bộ đề cuối kì 1 K9 (18/10) đặt DANG_HINH_K9=<mã bài> khi chạy k9-cki-ghi-*.sh
