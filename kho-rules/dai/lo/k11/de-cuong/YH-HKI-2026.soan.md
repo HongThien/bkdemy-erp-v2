@@ -1433,13 +1433,13 @@ Vậy có $3$ hàm số tuần hoàn với chu kì $T=\pi$ là $y=\sin2x$, $y=\t
 
 Chọn C.
 
-### Câu 49 | kho=dai | loai=trac_nghiem | dap_an=A
+### Câu 49 | kho=dai | loai=trac_nghiem | dap_an=C
 **Đề:** Trong các hàm số $y=\tan x$; $y=\sin2x$; $y=\sin x$; $y=\cot x$, có bao nhiêu hàm số thỏa mãn tính chất $f(x+k\pi)=f(x)$, $\forall x\in\mathbb{R}$, $k\in\mathbb{Z}$.
 A. $3$.
 B. $2$.
 C. $1$.
 D. $4$.
-**Ghi chú:** đề sai (in lỏng): đề in "$\forall x\in\mathbb{R}$" nhưng $\tan x$, $\cot x$ không xác định trên toàn $\mathbb{R}$; hiểu là với mọi $x$ thuộc tập xác định (cách hiểu thông dụng). Nếu đọc chặt "$\forall x\in\mathbb{R}$" thì chỉ $\sin2x$ thỏa, đáp số $1$ (C).
+**Ghi chú:** đề in "$\forall x\in\mathbb{R}$" nên hàm số phải xác định trên toàn $\mathbb{R}$; $\tan x$, $\cot x$ không xác định trên $\mathbb{R}$ nên không thỏa. Giải đúng chữ in (Thùy chốt 25/10): chỉ $\sin2x$ thỏa, đáp số $1$ (C).
 
 **Phần 1. Hướng dẫn**
 
@@ -1447,25 +1447,25 @@ D. $4$.
 
 **Bước 1.** Hiểu đẳng thức $f(x+k\pi)=f(x)$ với mọi $k\in\mathbb{Z}$ tương đương với $f(x+\pi)=f(x)$.
 
-**Bước 2.** Nhớ chu kì của từng hàm số rồi kiểm tra $\pi$ có là bội nguyên của chu kì đó hay không.
+**Bước 2.** Đề yêu cầu đẳng thức đúng với mọi $x\in\mathbb{R}$, nên trước hết kiểm tra từng hàm số có xác định trên toàn $\mathbb{R}$ hay không.
 
-**Bước 3.** Với hàm không thỏa mãn, nêu một giá trị cụ thể để chỉ ra $f(x+\pi)\neq f(x)$ rồi đếm số hàm thỏa mãn.
+**Bước 3.** Với hàm xác định trên $\mathbb{R}$, kiểm tra $\pi$ có là bội nguyên của chu kì của nó hay không (nêu một giá trị cụ thể cho hàm không thỏa), rồi đếm số hàm thỏa mãn.
 
 **Phần 2. Trình bày**
 
-Lưu ý: $\tan x$, $\cot x$ không xác định trên toàn $\mathbb{R}$, nên đẳng thức được hiểu là với mọi $x$ thuộc tập xác định của hàm số.
+Đẳng thức $f(x+k\pi)=f(x)$ phải đúng với mọi $x\in\mathbb{R}$, nên hàm số phải xác định trên toàn $\mathbb{R}$.
 
-Hàm $y=\tan x$ có chu kì $\pi$ nên $\tan(x+k\pi)=\tan x$ với mọi $k\in\mathbb{Z}$.
+Hàm $y=\tan x$ không xác định tại $x=\dfrac{\pi}{2}$ nên không thỏa mãn.
 
-Hàm $y=\sin2x$ có $\sin(2x+2k\pi)=\sin2x$ nên $\sin2(x+k\pi)=\sin2x$ với mọi $k\in\mathbb{Z}$.
+Hàm $y=\cot x$ không xác định tại $x=0$ nên không thỏa mãn.
 
 Hàm $y=\sin x$ có $\sin(x+\pi)=-\sin x\neq\sin x$ (chẳng hạn $x=\dfrac{\pi}{2}$) nên không thỏa mãn.
 
-Hàm $y=\cot x$ có chu kì $\pi$ nên $\cot(x+k\pi)=\cot x$ với mọi $k\in\mathbb{Z}$.
+Hàm $y=\sin2x$ xác định trên $\mathbb{R}$ và $\sin2(x+k\pi)=\sin(2x+2k\pi)=\sin2x$ với mọi $x\in\mathbb{R}$, $k\in\mathbb{Z}$ nên thỏa mãn.
 
-Vậy có $3$ hàm số thỏa mãn.
+Vậy chỉ có $1$ hàm số thỏa mãn.
 
-Chọn A.
+Chọn C.
 
 ### Câu 50 | kho=dai | loai=trac_nghiem | dap_an=A
 **Đề:** Trong bốn hàm số: (1) $y=\cos2x$, (2) $y=\sin x$; (3) $y=\tan2x$; (4) $y=\cot4x$ có mấy hàm số tuần hoàn với chu kỳ $\pi$?
@@ -13880,13 +13880,13 @@ Mà $AB\parallel CD$ và $BC\parallel AD$ nên $MN\parallel EF$ và $NE\parallel
 
 Vậy các ý a), b), c), d) lần lượt là Đúng, Sai, Đúng, Đúng.
 
-### Câu 64 | kho=hinh_hoc | loai=dung_sai | dap_an=DSDD
+### Câu 64 | kho=hinh_hoc | loai=dung_sai | dap_an=DSSD
 **Đề:** Cho hình chóp $S{.}ABCD$ có đáy là hình bình hành, $G$ là trọng tâm tam giác $BCD$, $H$ là trọng tâm tam giác $SCD$. $M$, $N$ lần lượt là trung điểm của $SA$; $SB$. $I$ là giao điểm của đường thẳng $AN$ và mặt phẳng $(SCD)$. Các khẳng định dưới đây là đúng hay sai?
 a) $MN\parallel CD$
 b) Tứ giác $CDSI$ là hình thang có đáy $SI<CD$
-c) $ME\parallel(SBC)$
+c) $MI\parallel(SBC)$
 d) $HG\parallel(SBD)$
-**Ghi chú:** đề sai ở ý c): đề không định nghĩa điểm $E$ (ảnh trang 48 xác nhận). Hiểu hợp lí nhất là $E$ là trung điểm của $SD$ (cùng $M$ là trung điểm của $SA$ thì $ME$ là đường trung bình, kiểu ý như $MN$ ở ý a); giải theo cách hiểu này. Kiểm toạ độ: $E$ là trung điểm $SD$ (hoặc $CD$) thì ý c) Đúng; $E$ là trung điểm $SC$, $AD$, $BC$ thì Sai.
+**Ghi chú:** đề in ý c) là "$ME\parallel(SBC)$" nhưng điểm $E$ không được định nghĩa ở đâu trong đề; theo Thùy (25/10) đề đúng là "$MI\parallel(SBC)$" ($I$ là giao điểm của $AN$ và $(SCD)$ đã nêu trong đề) ⇒ nhập ý c) là $MI\parallel(SBC)$. Kiểm toạ độ số: $MI$ không song song $(SBC)$ nên ý c) Sai.
 
 **Phần 1. Hướng dẫn**
 
@@ -13896,13 +13896,13 @@ d) $HG\parallel(SBD)$
 
 **Bước 2.** Ý b: tìm giao tuyến của $(SAB)$ và $(SCD)$ để xác định vị trí của $I$, rồi so độ dài $SI$ với $CD$ bằng hai tam giác bằng nhau có $N$ là trung điểm của $SB$.
 
-**Bước 3.** Ý c: hiểu $E$ là trung điểm của $SD$ vì đề không nêu, dùng đường trung bình của tam giác $SAD$ để so $ME$ với đường thẳng nằm trong $(SBC)$.
+**Bước 3.** Ý c: $MI$ nằm trong $(SAB)$, nên chỉ có thể song song với $(SBC)$ khi song song với giao tuyến $SB$ của hai mặt phẳng; dùng phản chứng với hai đường thẳng song song $SI$ và $MN$ đã có ở các ý trước.
 
 **Bước 4.** Ý d: gọi $Q$ là trung điểm của $CD$, đưa $G$ và $H$ về hai trung tuyến $BQ$ và $SQ$ rồi so tỉ lệ đoạn thẳng để suy ra $HG$ song song với một đường nằm trong $(SBD)$.
 
 **Phần 2. Trình bày**
 
-Lưu ý: đề sai ở ý c) vì không nêu điểm $E$; ta hiểu $E$ là trung điểm của $SD$.
+Lưu ý: ý c) đề in là $ME\parallel(SBC)$ nhưng không có điểm $E$; ta hiểu đề đúng là $MI\parallel(SBC)$.
 
 Ý a) $MN$ là đường trung bình của tam giác $SAB$ nên $MN\parallel AB$. Mà $AB\parallel CD$ nên $MN\parallel CD$. Đúng.
 
@@ -13912,13 +13912,17 @@ Hai tam giác $NSI$ và $NBA$ có $NS=NB$, $\widehat{SNI}=\widehat{BNA}$ (đối
 
 Vậy $SI=CD$, không có $SI<CD$. Sai.
 
-Ý c) $M$, $E$ lần lượt là trung điểm của $SA$, $SD$ nên $ME$ là đường trung bình của tam giác $SAD$, suy ra $ME\parallel AD$. Mà $AD\parallel BC$ nên $ME\parallel BC$. Vì $BC\subset(SBC)$ và $ME\not\subset(SBC)$ nên $ME\parallel(SBC)$. Đúng.
+Ý c) Vì $I\in AN\subset(SAB)$ và $M\in SA\subset(SAB)$ nên $MI\subset(SAB)$. Hai mặt phẳng $(SAB)$ và $(SBC)$ có giao tuyến là $SB$, mà $MI\not\subset(SBC)$ (vì $M\notin(SBC)$), nên $MI\parallel(SBC)$ chỉ xảy ra khi $MI\parallel SB$.
+
+Giả sử $MI\parallel SB$, tức $MI\parallel SN$. Theo ý b) ta có $SI\parallel AB$, và theo ý a) có $MN\parallel AB$, nên $SI\parallel MN$. Khi đó tứ giác $SIMN$ có $SI\parallel MN$ và $IM\parallel NS$, nên là hình bình hành, suy ra $SI=MN$.
+
+Nhưng $MN$ là đường trung bình của tam giác $SAB$ nên $MN=\dfrac{1}{2}AB$, còn $SI=AB$ (chứng minh ở ý b). Vậy $SI=MN$ vô lí. Do đó $MI$ không song song với $SB$, nên $MI\not\parallel(SBC)$. Sai.
 
 Ý d) Gọi $Q$ là trung điểm của $CD$. Vì $G$ là trọng tâm tam giác $BCD$ nên $G\in BQ$ và $\dfrac{QG}{QB}=\dfrac{1}{3}$. Vì $H$ là trọng tâm tam giác $SCD$ nên $H\in SQ$ và $\dfrac{QH}{QS}=\dfrac{1}{3}$.
 
 Trong tam giác $QSB$ có $\dfrac{QG}{QB}=\dfrac{QH}{QS}$ nên $GH\parallel SB$ (định lí Thales đảo). Vì $SB\subset(SBD)$ và $G\notin(SBD)$ (do $G\in BQ$, $G\ne B$ và $Q\notin(SBD)$) nên $HG\not\subset(SBD)$. Do đó $HG\parallel(SBD)$. Đúng.
 
-Vậy các ý a), b), c), d) lần lượt là Đúng, Sai, Đúng, Đúng.
+Vậy các ý a), b), c), d) lần lượt là Đúng, Sai, Sai, Đúng.
 
 ### Câu 65 | kho=hinh_hoc | loai=dung_sai | dap_an=DDSD
 **Đề:** Cho lăng trụ tam giác $ABC{.}A'B'C'$ có $I,K,G$ lần lượt là trọng tâm các tam giác $ABC$, $A'B'C'$, $ACC'$. Các mệnh đề sau đúng hay sai?

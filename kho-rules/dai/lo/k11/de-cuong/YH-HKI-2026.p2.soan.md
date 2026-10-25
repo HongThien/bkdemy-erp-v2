@@ -538,13 +538,13 @@ Vậy có $3$ hàm số tuần hoàn với chu kì $T=\pi$ là $y=\sin2x$, $y=\t
 
 Chọn C.
 
-### Câu 49 | kho=dai | loai=trac_nghiem | dap_an=A
+### Câu 49 | kho=dai | loai=trac_nghiem | dap_an=C
 **Đề:** Trong các hàm số $y=\tan x$; $y=\sin2x$; $y=\sin x$; $y=\cot x$, có bao nhiêu hàm số thỏa mãn tính chất $f(x+k\pi)=f(x)$, $\forall x\in\mathbb{R}$, $k\in\mathbb{Z}$.
 A. $3$.
 B. $2$.
 C. $1$.
 D. $4$.
-**Ghi chú:** đề sai (in lỏng): đề in "$\forall x\in\mathbb{R}$" nhưng $\tan x$, $\cot x$ không xác định trên toàn $\mathbb{R}$; hiểu là với mọi $x$ thuộc tập xác định (cách hiểu thông dụng). Nếu đọc chặt "$\forall x\in\mathbb{R}$" thì chỉ $\sin2x$ thỏa, đáp số $1$ (C).
+**Ghi chú:** đề in "$\forall x\in\mathbb{R}$" nên hàm số phải xác định trên toàn $\mathbb{R}$; $\tan x$, $\cot x$ không xác định trên $\mathbb{R}$ nên không thỏa. Giải đúng chữ in (Thùy chốt 25/10): chỉ $\sin2x$ thỏa, đáp số $1$ (C).
 
 **Phần 1. Hướng dẫn**
 
@@ -552,25 +552,25 @@ D. $4$.
 
 **Bước 1.** Hiểu đẳng thức $f(x+k\pi)=f(x)$ với mọi $k\in\mathbb{Z}$ tương đương với $f(x+\pi)=f(x)$.
 
-**Bước 2.** Nhớ chu kì của từng hàm số rồi kiểm tra $\pi$ có là bội nguyên của chu kì đó hay không.
+**Bước 2.** Đề yêu cầu đẳng thức đúng với mọi $x\in\mathbb{R}$, nên trước hết kiểm tra từng hàm số có xác định trên toàn $\mathbb{R}$ hay không.
 
-**Bước 3.** Với hàm không thỏa mãn, nêu một giá trị cụ thể để chỉ ra $f(x+\pi)\neq f(x)$ rồi đếm số hàm thỏa mãn.
+**Bước 3.** Với hàm xác định trên $\mathbb{R}$, kiểm tra $\pi$ có là bội nguyên của chu kì của nó hay không (nêu một giá trị cụ thể cho hàm không thỏa), rồi đếm số hàm thỏa mãn.
 
 **Phần 2. Trình bày**
 
-Lưu ý: $\tan x$, $\cot x$ không xác định trên toàn $\mathbb{R}$, nên đẳng thức được hiểu là với mọi $x$ thuộc tập xác định của hàm số.
+Đẳng thức $f(x+k\pi)=f(x)$ phải đúng với mọi $x\in\mathbb{R}$, nên hàm số phải xác định trên toàn $\mathbb{R}$.
 
-Hàm $y=\tan x$ có chu kì $\pi$ nên $\tan(x+k\pi)=\tan x$ với mọi $k\in\mathbb{Z}$.
+Hàm $y=\tan x$ không xác định tại $x=\dfrac{\pi}{2}$ nên không thỏa mãn.
 
-Hàm $y=\sin2x$ có $\sin(2x+2k\pi)=\sin2x$ nên $\sin2(x+k\pi)=\sin2x$ với mọi $k\in\mathbb{Z}$.
+Hàm $y=\cot x$ không xác định tại $x=0$ nên không thỏa mãn.
 
 Hàm $y=\sin x$ có $\sin(x+\pi)=-\sin x\neq\sin x$ (chẳng hạn $x=\dfrac{\pi}{2}$) nên không thỏa mãn.
 
-Hàm $y=\cot x$ có chu kì $\pi$ nên $\cot(x+k\pi)=\cot x$ với mọi $k\in\mathbb{Z}$.
+Hàm $y=\sin2x$ xác định trên $\mathbb{R}$ và $\sin2(x+k\pi)=\sin(2x+2k\pi)=\sin2x$ với mọi $x\in\mathbb{R}$, $k\in\mathbb{Z}$ nên thỏa mãn.
 
-Vậy có $3$ hàm số thỏa mãn.
+Vậy chỉ có $1$ hàm số thỏa mãn.
 
-Chọn A.
+Chọn C.
 
 ### Câu 50 | kho=dai | loai=trac_nghiem | dap_an=A
 **Đề:** Trong bốn hàm số: (1) $y=\cos2x$, (2) $y=\sin x$; (3) $y=\tan2x$; (4) $y=\cot4x$ có mấy hàm số tuần hoàn với chu kỳ $\pi$?
@@ -877,6 +877,6 @@ Chọn A.
 
 - Câu 38: đề cương in sẵn "Lời giải. Chọn D." (D là $\sin58^\circ$) nhưng tính ra $\cos58^\circ$ (phương án B), đã thử số; giữ B.
 - Câu 50: hiểu "chu kì $\pi$" là chu kì nhỏ nhất bằng $\pi$ nên chọn A ($1$ hàm); nếu hiểu "$\pi$ là một chu kì" thì đáp số là $3$ (D). Xin CEO xem.
-- Câu 49 (đề sai, in lỏng): đề in $\forall x\in\mathbb{R}$ nhưng $\tan x$, $\cot x$ không xác định trên $\mathbb{R}$; hiểu là mọi $x$ thuộc tập xác định ⇒ A ($3$ hàm); đọc chặt thì C ($1$ hàm).
+- Câu 49: đề in $\forall x\in\mathbb{R}$ ⇒ giải đúng chữ in, chỉ $\sin2x$ thỏa ⇒ C ($1$ hàm) (Thùy chốt 25/10).
 - Câu 58: phương án D in trên hình có dãy giá trị lạ ($2;2;2;-2;2$), đã gõ đúng như in; không ảnh hưởng kết quả.
 - Khúc này (trang 6–8) có 28 câu trắc nghiệm, không có hình giải; có 2 hình đề (Câu 58, Câu 59, ảnh đồ thị nằm ở đầu trang 9).

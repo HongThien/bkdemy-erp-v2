@@ -595,13 +595,13 @@ Mà $AB\parallel CD$ và $BC\parallel AD$ nên $MN\parallel EF$ và $NE\parallel
 
 Vậy các ý a), b), c), d) lần lượt là Đúng, Sai, Đúng, Đúng.
 
-### Câu 64 | kho=hinh_hoc | loai=dung_sai | dap_an=DSDD
+### Câu 64 | kho=hinh_hoc | loai=dung_sai | dap_an=DSSD
 **Đề:** Cho hình chóp $S{.}ABCD$ có đáy là hình bình hành, $G$ là trọng tâm tam giác $BCD$, $H$ là trọng tâm tam giác $SCD$. $M$, $N$ lần lượt là trung điểm của $SA$; $SB$. $I$ là giao điểm của đường thẳng $AN$ và mặt phẳng $(SCD)$. Các khẳng định dưới đây là đúng hay sai?
 a) $MN\parallel CD$
 b) Tứ giác $CDSI$ là hình thang có đáy $SI<CD$
-c) $ME\parallel(SBC)$
+c) $MI\parallel(SBC)$
 d) $HG\parallel(SBD)$
-**Ghi chú:** đề sai ở ý c): đề không định nghĩa điểm $E$ (ảnh trang 48 xác nhận). Hiểu hợp lí nhất là $E$ là trung điểm của $SD$ (cùng $M$ là trung điểm của $SA$ thì $ME$ là đường trung bình, kiểu ý như $MN$ ở ý a); giải theo cách hiểu này. Kiểm toạ độ: $E$ là trung điểm $SD$ (hoặc $CD$) thì ý c) Đúng; $E$ là trung điểm $SC$, $AD$, $BC$ thì Sai.
+**Ghi chú:** đề in ý c) là "$ME\parallel(SBC)$" nhưng điểm $E$ không được định nghĩa ở đâu trong đề; theo Thùy (25/10) đề đúng là "$MI\parallel(SBC)$" ($I$ là giao điểm của $AN$ và $(SCD)$ đã nêu trong đề) ⇒ nhập ý c) là $MI\parallel(SBC)$. Kiểm toạ độ số: $MI$ không song song $(SBC)$ nên ý c) Sai.
 
 **Phần 1. Hướng dẫn**
 
@@ -611,13 +611,13 @@ d) $HG\parallel(SBD)$
 
 **Bước 2.** Ý b: tìm giao tuyến của $(SAB)$ và $(SCD)$ để xác định vị trí của $I$, rồi so độ dài $SI$ với $CD$ bằng hai tam giác bằng nhau có $N$ là trung điểm của $SB$.
 
-**Bước 3.** Ý c: hiểu $E$ là trung điểm của $SD$ vì đề không nêu, dùng đường trung bình của tam giác $SAD$ để so $ME$ với đường thẳng nằm trong $(SBC)$.
+**Bước 3.** Ý c: $MI$ nằm trong $(SAB)$, nên chỉ có thể song song với $(SBC)$ khi song song với giao tuyến $SB$ của hai mặt phẳng; dùng phản chứng với hai đường thẳng song song $SI$ và $MN$ đã có ở các ý trước.
 
 **Bước 4.** Ý d: gọi $Q$ là trung điểm của $CD$, đưa $G$ và $H$ về hai trung tuyến $BQ$ và $SQ$ rồi so tỉ lệ đoạn thẳng để suy ra $HG$ song song với một đường nằm trong $(SBD)$.
 
 **Phần 2. Trình bày**
 
-Lưu ý: đề sai ở ý c) vì không nêu điểm $E$; ta hiểu $E$ là trung điểm của $SD$.
+Lưu ý: ý c) đề in là $ME\parallel(SBC)$ nhưng không có điểm $E$; ta hiểu đề đúng là $MI\parallel(SBC)$.
 
 Ý a) $MN$ là đường trung bình của tam giác $SAB$ nên $MN\parallel AB$. Mà $AB\parallel CD$ nên $MN\parallel CD$. Đúng.
 
@@ -627,18 +627,22 @@ Hai tam giác $NSI$ và $NBA$ có $NS=NB$, $\widehat{SNI}=\widehat{BNA}$ (đối
 
 Vậy $SI=CD$, không có $SI<CD$. Sai.
 
-Ý c) $M$, $E$ lần lượt là trung điểm của $SA$, $SD$ nên $ME$ là đường trung bình của tam giác $SAD$, suy ra $ME\parallel AD$. Mà $AD\parallel BC$ nên $ME\parallel BC$. Vì $BC\subset(SBC)$ và $ME\not\subset(SBC)$ nên $ME\parallel(SBC)$. Đúng.
+Ý c) Vì $I\in AN\subset(SAB)$ và $M\in SA\subset(SAB)$ nên $MI\subset(SAB)$. Hai mặt phẳng $(SAB)$ và $(SBC)$ có giao tuyến là $SB$, mà $MI\not\subset(SBC)$ (vì $M\notin(SBC)$), nên $MI\parallel(SBC)$ chỉ xảy ra khi $MI\parallel SB$.
+
+Giả sử $MI\parallel SB$, tức $MI\parallel SN$. Theo ý b) ta có $SI\parallel AB$, và theo ý a) có $MN\parallel AB$, nên $SI\parallel MN$. Khi đó tứ giác $SIMN$ có $SI\parallel MN$ và $IM\parallel NS$, nên là hình bình hành, suy ra $SI=MN$.
+
+Nhưng $MN$ là đường trung bình của tam giác $SAB$ nên $MN=\dfrac{1}{2}AB$, còn $SI=AB$ (chứng minh ở ý b). Vậy $SI=MN$ vô lí. Do đó $MI$ không song song với $SB$, nên $MI\not\parallel(SBC)$. Sai.
 
 Ý d) Gọi $Q$ là trung điểm của $CD$. Vì $G$ là trọng tâm tam giác $BCD$ nên $G\in BQ$ và $\dfrac{QG}{QB}=\dfrac{1}{3}$. Vì $H$ là trọng tâm tam giác $SCD$ nên $H\in SQ$ và $\dfrac{QH}{QS}=\dfrac{1}{3}$.
 
 Trong tam giác $QSB$ có $\dfrac{QG}{QB}=\dfrac{QH}{QS}$ nên $GH\parallel SB$ (định lí Thales đảo). Vì $SB\subset(SBD)$ và $G\notin(SBD)$ (do $G\in BQ$, $G\ne B$ và $Q\notin(SBD)$) nên $HG\not\subset(SBD)$. Do đó $HG\parallel(SBD)$. Đúng.
 
-Vậy các ý a), b), c), d) lần lượt là Đúng, Sai, Đúng, Đúng.
+Vậy các ý a), b), c), d) lần lượt là Đúng, Sai, Sai, Đúng.
 
 ## GHI CHÚ CHO NGƯỜI DUYỆT
 
 - Khúc 15 gồm Câu 45 đến Câu 58 (14 câu trắc nghiệm) và Câu 60 đến Câu 64 (5 câu Đúng/Sai, nằm trong mục "2. Câu hỏi TNKQ Đúng-Sai" của Chương 4). Đề cương không có Câu 59 (in nhảy từ 58 sang 60), giữ nguyên nhãn in.
-- Câu 64 ý c) đề sai: dùng điểm $E$ nhưng không định nghĩa. Giải theo $E$ là trung điểm của $SD$ (đáp Đúng); nếu $E$ là trung điểm $SC$, $AD$ hay $BC$ thì ý c) Sai. Nếu người duyệt thấy cách hiểu này không chắc thì nên bỏ câu hoặc sửa đề.
+- Câu 64 ý c): đề in "$ME\parallel(SBC)$" nhưng không có điểm $E$; theo Thùy (25/10) đề đúng là "$MI\parallel(SBC)$" ⇒ ý c) Sai (đáp án DSSD).
 - Câu 60 ý d) thiếu chữ "phân biệt": chọn Sai theo nghĩa chặt, nhất quán với Câu 53 (B sai chỉ vì thiếu "phân biệt").
 - Câu 56 phương án D đề in "$\Delta$ cắt $(P)$ thì $\Delta$ cũng cắt $(P)$", đã sửa $(Q)$ (đáp án không đổi).
 - Câu 53 phương án B không có chữ "phân biệt" nên không đúng; phương án C (hai mặt phẳng phân biệt cùng chứa hai đường thẳng song song) là cấu hình không tồn tại, không chọn. Đáp án D.
