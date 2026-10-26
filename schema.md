@@ -1280,7 +1280,7 @@
 |---|---|---|---|---|---|
 | ma_cau | text |  |  | PK FK→dai_cau_hoi.ma_cau |  |
 | dang_bai_id | text |  |  | FK→dai_bdm_dang_bai.id |  |
-| nguon | text |  |  |  | `nguoi` · `ai` |
+| nguon | text |  |  |  | `nguoi` · `ai` · `cum` · `doi_ung` |
 | actor | uuid | Y | jwt_uid() |  |  |
 | at | timestamp with time zone |  | now() |  |  |
 
@@ -3772,7 +3772,7 @@ END |  |  |
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| mon | text |  |  | PK FK→huy_hieu.mon |  |
+| mon | text |  |  | PK FK→thanh_tuu.mon |  |
 | huy_hieu_key | text |  |  | PK FK→huy_hieu.key |  |
 | thanh_tuu_key | text |  |  | PK FK→thanh_tuu.key |  |
 | vai | text |  |  |  | `chuan` · `them` |
@@ -6499,26 +6499,18 @@ SELECT ma_dang,
 ```sql
 SELECT q.ma_cau,
     'dai'::text AS kho,
-    COALESCE(gc.dang_bai_id, gg.dang_bai_id, cu.dang_bai_id, mot.db, dx.dang_bai_id, dxg.dang_bai_id) AS dang_bai_id,
+    COALESCE(gc.dang_bai_id, gg.dang_bai_id, dx.dang_bai_id, dxg.dang_bai_id) AS dang_bai_id,
         CASE
             WHEN gc.ma_cau IS NOT NULL OR gg.ma_cau IS NOT NULL THEN 'gan_cau'::text
-            WHEN cu.ma_cum_cu IS NOT NULL THEN 'gan_cum'::text
-            WHEN mot.db IS NOT NULL THEN 'doi_ung'::text
             WHEN dx.ma_cau IS NOT NULL OR dxg.ma_cau IS NOT NULL THEN 'de_xuat'::text
             ELSE NULL::text
         END AS nguon
    FROM dai_cau_hoi q
-     LEFT JOIN dai_cau_hoi g ON g.ma_cau = q.parent_ma_cau
      LEFT JOIN dai_bdm_gan_cau gc ON gc.ma_cau = q.ma_cau
      LEFT JOIN dai_bdm_gan_cau gg ON gg.ma_cau = q.parent_ma_cau
-     LEFT JOIN dai_bdm_doi_ung_cum cu ON cu.ma_cum_cu = COALESCE(q.ma_cum, g.ma_cum)
-     LEFT JOIN LATERAL ( SELECT min(d.dich_dang_bai) AS db
-           FROM dai_bdm_doi_ung d
-          WHERE d.ma_dang_cu = q.dang_chinh
-         HAVING count(*) = 1 AND count(d.dich_dang_bai) = 1) mot ON true
      LEFT JOIN dai_bdm_de_xuat dx ON dx.ma_cau = q.ma_cau
      LEFT JOIN dai_bdm_de_xuat dxg ON dxg.ma_cau = q.parent_ma_cau
-  WHERE COALESCE(gc.dang_bai_id, gg.dang_bai_id, cu.dang_bai_id, mot.db, dx.dang_bai_id, dxg.dang_bai_id) IS NOT NULL
+  WHERE COALESCE(gc.dang_bai_id, gg.dang_bai_id, dx.dang_bai_id, dxg.dang_bai_id) IS NOT NULL
 UNION ALL
  SELECT h.ma_cau,
     'hgt'::text AS kho,
