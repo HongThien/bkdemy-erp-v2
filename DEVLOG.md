@@ -77878,3 +77878,10 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - Kiểm: `mcq-sinh --list --khoi 9` (không cờ) ⇒ 15 câu khuôn dap_so → mcq-auto không cờ ≡ có cờ (cmp file) → verify 15 OK/0 FAIL (không ghi). Verify lại 572 form cũ (`--ca-form-da-co`, có/không cờ) sau khi bảng khuôn đã áp: y hệt baseline HEAD từng dòng.
 
 - (13) Phiên B3 bị bộ kiểm quyền chặn lệnh ghi vì lời 'ghi' đến qua phiên chính ⇒ phiên chính (nơi Thùy gõ '13. ghi') chạy `node scripts/bdm-de-xuat-duyet.mjs ghi kho-rules/dai/lo/b3/duyet-de-xuat-2610.json --ghi`: Đại duyệt 296 + rút 466 đề xuất Đ/S · HGT duyệt 308 + rút 180 đề xuất Đ/S (chạy thử khớp trang trước khi ghi).
+
+## 26/10 — Đuổi: tách mã cũ còn lại sang MỌI dạng bài — mig 202610261929
+- Thùy "Có. Đổi đi" cho 51 dòng mục tiêu đuổi còn mã cũ (mã cũ ứng ≥2 dạng bài): tách thành toàn bộ dạng bài mà câu còn sống + câu em đã làm quy về; trạng thái tiến trình chép sang từng dạng bài (cũ xong ⇒ các dạng bài đều xong, như tách dòng ca yếu); câu bài htd_luyen/htd_test về dạng bài của chính câu; mọi dòng mang `ma_dang_cu`.
+- Khoá: không thêm dòng trùng — dạng bài đợt đã có (từ mig 202610261821) hoặc mã cũ đứng trước của cùng đợt đã nhận thì bỏ qua; mã cũ không còn dạng bài nào để nhận ⇒ giữ mã cũ (không xoá dòng). Tiến trình đụng tiến trình khác ⇒ giữ cũ (thực tế 0 ca).
+- Kết quả: bo_tro_duoi_dang 519 → 621 dòng (43 dòng gốc đổi + 102 dòng tách) · hoc_tu_dau_dang 237 → 269 (47 đổi/thêm) · 325 câu bài làm đổi thêm. Còn 8 dòng mã cũ (đều K11 1dfbaa31): mọi dạng bài của chúng đã có trong đợt ⇒ trùng phạm vi, muốn dọn phải xoá dòng (chờ Thùy).
+- Kiểm `scripts/_test_duoi_tach_ma_cu.mjs --mig` (ROLLBACK) 23/23 trước khi áp, 20/20 sau: tiến trình từng đợt khớp đếm thẳng từ bảng (K10 3/1 → 13/5 · K11 44/2 → 90/2 · K6 11/10 → 27/24, 11/6 → 27/12, 5/5 → 13/13, 3/0 → 9/0), cấp 1 + KHTN y hệt, mọi câu đổi có dạng bài trong đợt, không dòng trùng.
+- Thời gian sau áp: fn_duoi_tien_trinh ≤0,8 s (một lần 2,7 s lúc DB bận) · htd_lo_trinh ≤0,85 s.
