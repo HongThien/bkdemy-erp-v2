@@ -13,8 +13,16 @@
 //   5) --thay "<lý do>" (18/10, sinh lại form hỏng): --verify/--ghi nhận cả câu ĐANG có form CHƯA DUYỆT; --ghi đưa form cũ vào
 //        kho rác (xoa_at, tu_choi_ly_do = lý do) rồi insert form mới trong CÙNG transaction. Form ĐÃ DUYỆT không bao giờ bị thay
 //        (phải thu hồi duyệt trước — quyết định của người, không phải của script).
+//   6) BẢN ĐỒ MỚI (26/10, Thùy "chuyển hẳn sang bản đồ + kho mới") — ĐƠN VỊ = dạng bài NDB, chọn câu qua view bdm_cau_hoi:
+//        --list --dang NDB00721[,NDB…]   |   --list --khoi 9 [--chu-de <ma_chu_de>]      (K6–12; không cần --kho)
+//        → câu của cả 2 nhánh (dai / hgt) — mỗi câu mang `kho` (bảng gốc), `ma_dang_bai`, `khuon`, `khoa_may`; báo cáo
+//          nhóm khối → chủ đề → dạng bài. --verify / --ghi tự tra bảng gốc từng câu (không cần --kho), ghi form vào ĐÚNG
+//          <kho>_cau_form_tn và kiểm rule theo <kho>_mcq_rule. Bộ đọc đáp số / sinh nhiễu chọn theo KHUÔN của câu
+//          (scripts/lib/khuon-dap-so.mjs), không theo bản đồ. Mã dạng cũ (`--dang T1…`, --kho) vẫn chạy cho cấp 1.
+//   7) --ca-form-da-co (26/10, chỉ với --verify): kiểm lại cả câu ĐÃ có form (đã duyệt hay chưa) — đọc thuần, cấm với --ghi.
 // Kết nối: DATABASE_URL trong .env (cùng cách các script khác).
 import pg from 'pg'
+import { coBangKhuon, khuonSql, khoaMay } from './lib/khuon-dap-so.mjs'
 import { readFileSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
@@ -403,16 +411,25 @@ function laHinhThucText(dang, dapAn) {
 TEXT_FN.T106020601 = { canon: chuanHoaLuyThuaText, val: chuanHoaLuyThuaText } // 24/10, cặp với mcq-auto.mjs
 TEXT_DANG.add('T106030201'); TEXT_FN.T106030201 = { canon: chuanHoaChiaHet25, val: chuanHoaChiaHet25 } // 24/10, DẠNG 58
 const fnText = (dang) => TEXT_FN[dang] ?? (THEO_DAP_SO ? { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua } : undefined)
-const KHO = {
+// Bộ bảng theo nhánh — dispatch nhánh → bảng ở MỘT chỗ (CLAUDE.md §1.6). Bản đồ mới: nhánh lấy theo câu (bdm_cau_hoi.kho_goc).
+const BANG = {
   dai: { cauTbl: 'dai_cau_hoi', banDoTbl: 'dai_ban_do', formTbl: 'dai_cau_form_tn', ruleTbl: 'dai_mcq_rule' },
   hgt: { cauTbl: 'hgt_cau_hoi', banDoTbl: 'hgt_ban_do', formTbl: 'hgt_cau_form_tn', ruleTbl: 'hgt_mcq_rule' },
-}[opt('--kho', 'dai')]
+}
+const KHO_CHON = opt('--kho') // gõ --kho ⇒ chỉ nhánh đó (luồng mã dạng cũ mặc định dai, như trước)
+const KHO = BANG[KHO_CHON ?? 'dai']
 if (!KHO) throw new Error('--kho phải là dai hoặc hgt')
-const { cauTbl: CAU_TBL, banDoTbl: BANDO_TBL, formTbl: TBL, ruleTbl: RULE_TBL } = KHO
+const { cauTbl: CAU_TBL, banDoTbl: BANDO_TBL, formTbl: TBL } = KHO
 const LETTERS = ['A', 'B', 'C', 'D']
+const ruleCache = new Map() // kho → rule (đặt TRƯỚC khối chạy chính: const không hoist)
+const DANG_OPT = opt('--dang'), KHOI_OPT = opt('--khoi'), CHU_DE_OPT = opt('--chu-de')
+const BDM = !!KHOI_OPT || /^NDB/i.test(DANG_OPT ?? '') // đơn vị = dạng bài bản đồ mới
+const CA_FORM = has('--ca-form-da-co')
+if (CA_FORM && has('--ghi')) throw new Error('--ca-form-da-co chỉ dùng với --verify (đọc thuần)')
 
 const c = new pg.Client({ connectionString: env.DATABASE_URL, connectionTimeoutMillis: 20000 })
 await c.connect()
+const CO_BANG_KHUON = await coBangKhuon(c)
 try {
   if (has('--list')) await list()
   else if (has('--verify')) { const r = await verify(opt('--verify')); process.exitCode = r.fail ? 1 : 0 }
@@ -420,49 +437,101 @@ try {
   else console.log('Dùng: --list [--dang X] [--n 40] [--out f.json] | --verify kq.json | --ghi kq.json [--model m]')
 } finally { await c.end() }
 
-async function rules() { return (await c.query(`select ma, ten, mo_ta, vi_du, nhom, ap_dung, du_phong from ${RULE_TBL} where active order by ma`)).rows }
+async function rules(kho = KHO_CHON ?? 'dai') {
+  if (!ruleCache.has(kho)) ruleCache.set(kho, (await c.query(`select ma, ten, mo_ta, vi_du, nhom, ap_dung, du_phong from ${BANG[kho].ruleTbl} where active order by ma`)).rows)
+  return ruleCache.get(kho)
+}
+
+// Câu theo DẠNG BÀI bản đồ mới (bdm_cau_hoi) — cả 2 nhánh, mỗi câu kèm bảng gốc + khuôn (lib/khuon-dap-so.mjs).
+// Điều kiện pool y như luồng mã dạng cũ: đã qua Cửa 1 (da_duyet), có đáp số, chưa phải trắc nghiệm gốc, chưa có form.
+async function cauBdm({ dangs, khoi, chuDe }) {
+  const dk = [], p = []
+  if (dangs) { p.push(dangs); dk.push(`c.dang_chinh = any($${p.length})`) }
+  if (khoi) { p.push(String(khoi)); dk.push(`b.khoi = $${p.length}`) }
+  if (chuDe) { p.push(chuDe); dk.push(`b.ma_chu_de = $${p.length}`) }
+  if (KHO_CHON) { p.push(KHO_CHON); dk.push(`c.kho_goc = $${p.length}`) }
+  return (await c.query(`
+    select c.ma_cau, c.kho_goc as kho, c.dang_chinh as ma_dang_bai, b.ten_dang, b.khoi, b.ma_chu_de, b.ten_chu_de,
+           coalesce(qd.dang_chinh, qh.dang_chinh) as dang_luu_tru,
+           case c.kho_goc when 'dai' then ${khuonSql('dai', 'qd', CO_BANG_KHUON)} else ${khuonSql('hgt', 'qh', CO_BANG_KHUON)} end as khuon,
+           c.noi_dung, c.dap_an, c.loi_giai
+    from bdm_cau_hoi c
+    join bdm_ban_do b on b.ma_dang = c.dang_chinh
+    left join dai_cau_hoi qd on c.kho_goc = 'dai' and qd.ma_cau = c.ma_cau
+    left join hgt_cau_hoi qh on c.kho_goc = 'hgt' and qh.ma_cau = c.ma_cau
+    where c.xoa_at is null and ${dk.join(' and ')}
+      and c.da_duyet                                   -- CỬA 2 chỉ nhận câu đã qua CỬA 1 (spec-kho-chuan.md §4)
+      and c.dap_an is not null and c.dap_an <> '' and c.lua_chon is null and c.menh_de is null
+      and not exists (select 1 from bdm_cau_form_tn f where f.ma_cau = c.ma_cau and f.xoa_at is null)
+    order by b.khoi::int, b.thu_tu_chu_de nulls last, b.thu_tu_chuyen_de nulls last, b.thu_tu_nhom nulls last, b.thu_tu_dang nulls last, c.dang_chinh, c.ma_cau
+    limit 50000`, p)).rows.map((r) => ({ ...r, khoa_may: khoaMay(r.khuon, r.khoi) }))
+}
 
 async function list() {
-  const dang = opt('--dang'), n = Number(opt('--n', 40))
-  const dangs = dang === '2a' ? POOL2A : dang === '3' ? POOL3 : dang ? dang.split(',') : POOL1
-  const { rows } = await c.query(`
-    select q.ma_cau, q.dang_chinh, b.ten_dang, q.noi_dung, q.dap_an, q.loi_giai
-    from ${CAU_TBL} q join ${BANDO_TBL} b on b.ma_dang = q.dang_chinh
-    where q.xoa_at is null and q.dang_chinh = any($1)
-      and q.da_duyet                                   -- CỬA 2 chỉ nhận câu đã qua CỬA 1 (spec-kho-chuan.md §4, từ 08/09)
-      and q.dap_an is not null and q.dap_an <> '' and q.lua_chon is null and q.menh_de is null
-      and not exists (select 1 from ${TBL} f where f.ma_cau = q.ma_cau and f.xoa_at is null)
-    order by q.dang_chinh, q.ma_cau`, [dangs])
+  const n = Number(opt('--n', 40))
+  let rows, dangs
+  if (BDM) {
+    if (KHOI_OPT && !/^(6|7|8|9|10|11|12)$/.test(KHOI_OPT)) throw new Error('--khoi: bản đồ mới chỉ K6–12 (cấp 1 vẫn dùng --dang <mã dạng cũ>)')
+    rows = await cauBdm({ dangs: DANG_OPT ? DANG_OPT.split(',').map((s) => s.trim().toUpperCase()) : null, khoi: KHOI_OPT, chuDe: CHU_DE_OPT })
+    dangs = DANG_OPT ? DANG_OPT.split(',').map((s) => s.trim().toUpperCase()) : [...new Set(rows.map((r) => r.ma_dang_bai))]
+  } else {
+    dangs = DANG_OPT === '2a' ? POOL2A : DANG_OPT === '3' ? POOL3 : DANG_OPT ? DANG_OPT.split(',') : POOL1
+    rows = (await c.query(`
+      select q.ma_cau, q.dang_chinh, b.ten_dang, q.noi_dung, q.dap_an, q.loi_giai, ${khuonSql(KHO_CHON ?? 'dai', 'q', CO_BANG_KHUON)} as khuon
+      from ${CAU_TBL} q join ${BANDO_TBL} b on b.ma_dang = q.dang_chinh
+      where q.xoa_at is null and q.dang_chinh = any($1)
+        and q.da_duyet                                   -- CỬA 2 chỉ nhận câu đã qua CỬA 1 (spec-kho-chuan.md §4, từ 08/09)
+        and q.dap_an is not null and q.dap_an <> '' and q.lua_chon is null and q.menh_de is null
+        and not exists (select 1 from ${TBL} f where f.ma_cau = q.ma_cau and f.xoa_at is null)
+      order by q.dang_chinh, q.ma_cau`, [dangs])).rows.map((r) => ({ ...r, kho: KHO_CHON ?? 'dai', khoa_may: khoaMay(r.khuon, null, r.dang_chinh) }))
+  }
   const cau = [], bo = []
+  const nhom = new Map() // báo cáo: khối → chủ đề → dạng bài (bản đồ mới) | mã dạng (luồng cũ)
+  const dem = (r, k) => { const key = BDM ? `${r.khoi}\t${r.ten_chu_de}\t${r.ma_dang_bai}\t${r.ten_dang}` : `\t\t${r.dang_chinh}\t${r.ten_dang}`; const x = nhom.get(key) ?? { lay: 0, bo: 0, con: 0 }; x[k]++; nhom.set(key, x) }
   for (const r of rows) {
-    if (laHinhThucText(r.dang_chinh, r.dap_an)) { // đáp số là BIỂU THỨC/TẬP — kiểm bằng fn.val riêng theo dạng, không qua parseHuuTi
-      const fn = fnText(r.dang_chinh)
-      const n2 = fn.val(r.dap_an, r.dang_chinh) // dang: chuanHoaDapSoThucTe cần khối để đọc phẩy thập phân (18/10); hàm khác bỏ qua
-      if (n2 == null) { bo.push({ ma_cau: r.ma_cau, dap_an: r.dap_an, ly_do: 'không tính được giá trị' }); continue }
-      if (cau.length < n) cau.push({ ...r, key_gia_tri: fn.canon(r.dap_an, r.dang_chinh), hinh_thuc: r.dang_chinh === 'T106030301' ? 'tap' : 'bieu_thuc' })
+    const k = r.khoa_may
+    if (laHinhThucText(k, r.dap_an)) { // đáp số là BIỂU THỨC/TẬP — kiểm bằng fn.val riêng theo khuôn, không qua parseHuuTi
+      const fn = fnText(k)
+      const n2 = fn.val(r.dap_an, k) // khoá: chuanHoaDapSoThucTe cần khối để đọc phẩy thập phân (18/10); hàm khác bỏ qua
+      if (n2 == null) { bo.push({ ma_cau: r.ma_cau, dap_an: r.dap_an, ly_do: 'không tính được giá trị' }); dem(r, 'bo'); continue }
+      if (cau.length < n) { cau.push({ ...r, key_gia_tri: fn.canon(r.dap_an, k), hinh_thuc: k === 'T106030301' ? 'tap' : 'bieu_thuc' }); dem(r, 'lay') } else dem(r, 'con')
       continue
     }
     const p = parseHuuTi(r.dap_an)
-    if (!p.ok) { bo.push({ ma_cau: r.ma_cau, dap_an: r.dap_an, ly_do: p.ly_do }); continue }
-    if (cau.length < n) cau.push({ ...r, key_gia_tri: p.canon, hinh_thuc: hinhThuc(r.dap_an) })
+    if (!p.ok) { bo.push({ ma_cau: r.ma_cau, dap_an: r.dap_an, ly_do: p.ly_do }); dem(r, 'bo'); continue }
+    if (cau.length < n) { cau.push({ ...r, key_gia_tri: p.canon, hinh_thuc: hinhThuc(r.dap_an) }); dem(r, 'lay') } else dem(r, 'con')
   }
+  const khoCo = BDM ? [...new Set(rows.map((r) => r.kho))].sort() : [KHO_CHON ?? 'dai']
+  if (!khoCo.length) khoCo.push(KHO_CHON ?? 'dai')
   const phanBo = Object.fromEntries(LETTERS.map((l) => [l, 0]))
-  for (const r of (await c.query(`select dap_an, count(*)::int n from ${TBL} where xoa_at is null group by 1`)).rows) phanBo[r.dap_an] = r.n
-  const mau = (await c.query(`
-    select f.ma_cau, q.noi_dung, f.lua_chon, f.dap_an from ${TBL} f join ${CAU_TBL} q on q.ma_cau = f.ma_cau
-    where f.xoa_at is null and f.da_duyet and q.dang_chinh = any($1) order by f.duyet_at desc limit 2`, [dangs])).rows
-  const out = { sinh_luc: new Date().toISOString(), dangs, rule: await rules(), phan_bo_dap_an_hien_co: phanBo, mau, cau }
+  for (const kho of khoCo) for (const r of (await c.query(`select dap_an, count(*)::int n from ${BANG[kho].formTbl} where xoa_at is null group by 1`)).rows) phanBo[r.dap_an] += r.n
+  const mau = BDM
+    ? (await c.query(`
+      select f.ma_cau, q.noi_dung, f.lua_chon, f.dap_an from bdm_cau_form_tn f join bdm_cau_hoi q on q.ma_cau = f.ma_cau
+      where f.xoa_at is null and f.da_duyet and q.dang_chinh = any($1) order by f.duyet_at desc limit 2`, [dangs])).rows
+    : (await c.query(`
+      select f.ma_cau, q.noi_dung, f.lua_chon, f.dap_an from ${TBL} f join ${CAU_TBL} q on q.ma_cau = f.ma_cau
+      where f.xoa_at is null and f.da_duyet and q.dang_chinh = any($1) order by f.duyet_at desc limit 2`, [dangs])).rows
+  const rule = khoCo.length === 1 ? await rules(khoCo[0]) : (await Promise.all(khoCo.map(async (k) => (await rules(k)).map((r) => ({ ...r, kho: k }))))).flat()
+  const out = { sinh_luc: new Date().toISOString(), don_vi: BDM ? 'dang_bai_bdm' : 'ma_dang_cu', dangs, rule, phan_bo_dap_an_hien_co: phanBo, mau, cau }
   const f = opt('--out')
   if (f) { writeFileSync(f, JSON.stringify(out, null, 1), 'utf8'); console.log(`→ ${f}`) } else console.log(JSON.stringify(out, null, 1))
   console.error(`\nLô: ${cau.length} câu (còn ${Math.max(0, rows.length - bo.length - cau.length)} chưa lấy) · phân bố đúng hiện có: ${JSON.stringify(phanBo)}`)
+  let khoiTr = null, cdTr = null
+  for (const [key, x] of [...nhom]) {
+    const [khoi, cd, ma, ten] = key.split('\t')
+    if (BDM && khoi !== khoiTr) { console.error(`Khối ${khoi}`); khoiTr = khoi; cdTr = null }
+    if (BDM && cd !== cdTr) { console.error(`  ${cd}`); cdTr = cd }
+    console.error(`${BDM ? '    ' : '  '}${ma} ${String(ten ?? '').slice(0, 60)} — lấy ${x.lay}${x.con ? ` · còn ${x.con}` : ''}${x.bo ? ` · BỎ ${x.bo}` : ''}`)
+  }
   if (bo.length) { console.error(`BỎ ${bo.length} câu KHÔNG parse được đáp số (sửa đáp số kho qua UI rồi chạy lại):`); for (const b of bo) console.error(`  ${b.ma_cau}  "${String(b.dap_an).replace(/\s+/g, ' ').slice(0, 60)}"  → ${b.ly_do}`) }
 }
 
 // Dạng ĐÁP SỐ LÀ BIỂU THỨC/TẬP — so TEXT chuẩn hoá + giá trị (nhân chứng thứ hai), KHÔNG dùng parseHuuTi/hinhThuc.
 function kiemCauText(item, dbRow, ruleMap) {
   const err = []
-  const fn = fnText(dbRow.dang_chinh)
-  const key = fn.canon(dbRow.dap_an, dbRow.dang_chinh), nKey = fn.val(dbRow.dap_an, dbRow.dang_chinh)
+  const fn = fnText(dbRow.khoa_may)
+  const key = fn.canon(dbRow.dap_an, dbRow.khoa_may), nKey = fn.val(dbRow.dap_an, dbRow.khoa_may)
   if (nKey == null) return [`đáp số kho không parse được: ${dbRow.dap_an}`]
   const lc = item.lua_chon
   if (!Array.isArray(lc) || lc.length !== 4) return ['phải đúng 4 phương án']
@@ -470,13 +539,13 @@ function kiemCauText(item, dbRow, ruleMap) {
   if (dungIdx.length !== 1) err.push('phải đúng 1 phương án dung=true')
   if (!LETTERS.includes(item.dap_an)) err.push('dap_an phải A..D')
   else if (dungIdx.length === 1 && LETTERS[dungIdx[0]] !== item.dap_an) err.push(`dap_an=${item.dap_an} không khớp vị trí dung (${LETTERS[dungIdx[0]]})`)
-  const texts = lc.map((x) => fn.canon(x.text, dbRow.dang_chinh)), vals = lc.map((x) => fn.val(x.text, dbRow.dang_chinh))
+  const texts = lc.map((x) => fn.canon(x.text, dbRow.khoa_may)), vals = lc.map((x) => fn.val(x.text, dbRow.khoa_may))
   vals.forEach((v, i) => { if (v == null) err.push(`phương án ${LETTERS[i]} không parse được`) })
   if (err.length) return err
   if (texts[dungIdx[0]] !== key) err.push(`phương án đúng (${texts[dungIdx[0]]}) ≠ đáp số kho (${key})`)
   // Nhân chứng ĐỘC LẬP với fn.canon (18/10): key và phương án đúng phải cùng CHỮ SỐ + cùng giá trị với đáp số kho đọc
   // theo quy ước VN (so-vn.mjs). Trước đó key so với chính parser sinh ra nó ⇒ 448 form "12,61"→"12;61" lọt cổng.
-  err.push(...kiemKeyVoiDapAn({ dapAn: dbRow.dap_an, key, textDung: lc[dungIdx[0]].text, texts: lc.map((x) => x.text), dang: dbRow.dang_chinh }))
+  err.push(...kiemKeyVoiDapAn({ dapAn: dbRow.dap_an, key, textDung: lc[dungIdx[0]].text, texts: lc.map((x) => x.text), dang: dbRow.khoa_may }))
   if (vals[dungIdx[0]] !== nKey) err.push(`phương án đúng tính ra ${vals[dungIdx[0]]} ≠ giá trị thật ${nKey}`)
   for (let i = 0; i < 4; i++) for (let j = i + 1; j < 4; j++) if (texts[i] === texts[j]) err.push(`${LETTERS[i]} và ${LETTERS[j]} cùng biểu thức ${texts[i]}`)
   const rs = lc.filter((x) => !x.dung).map((x) => x.rule)
@@ -490,7 +559,7 @@ function kiemCauText(item, dbRow, ruleMap) {
 function kiemCau(item, dbRow, ruleMap) {
   const err = []
   if (!dbRow) return ['không có trong kho / đã có form / không thuộc pool']
-  if (laHinhThucText(dbRow.dang_chinh, dbRow.dap_an)) return kiemCauText(item, dbRow, ruleMap)
+  if (laHinhThucText(dbRow.khoa_may, dbRow.dap_an)) return kiemCauText(item, dbRow, ruleMap)
   const key = parseHuuTi(dbRow.dap_an)
   if (!key.ok) return [`đáp số kho không parse được: ${key.ly_do}`]
   const lc = item.lua_chon
@@ -505,7 +574,7 @@ function kiemCau(item, dbRow, ruleMap) {
   // Đúng phải = key kho
   const pd = parsed[dungIdx[0]]
   // Nhân chứng ĐỘC LẬP (18/10): đáp số kho là số thập phân thì phương án đúng phải viết ĐÚNG số đó, cả 4 phương án là số thuần
-  err.push(...kiemKeyVoiDapAn({ dapAn: dbRow.dap_an, key: null, textDung: lc[dungIdx[0]].text, texts: lc.map((x) => x.text), dang: dbRow.dang_chinh }))
+  err.push(...kiemKeyVoiDapAn({ dapAn: dbRow.dap_an, key: null, textDung: lc[dungIdx[0]].text, texts: lc.map((x) => x.text), dang: dbRow.khoa_may }))
   if (pd.canon !== key.canon) err.push(`phương án đúng (${pd.canon}) ≠ đáp số kho (${key.canon})`)
   // Khác nhau đôi một theo GIÁ TRỊ
   for (let i = 0; i < 4; i++) for (let j = i + 1; j < 4; j++) if (parsed[i].canon === parsed[j].canon) err.push(`${LETTERS[i]} và ${LETTERS[j]} cùng giá trị ${parsed[i].canon}`)
@@ -528,48 +597,63 @@ function kiemCau(item, dbRow, ruleMap) {
   return err
 }
 
+// Câu trong kho theo mã câu — tự tra bảng gốc (dai / hgt; --kho thì chỉ nhánh đó), kèm khuôn + khối dạng bài bản đồ mới.
+// Đáp số, khuôn LẤY TỪ DB (nhân chứng thứ hai), không tin file.
+async function cauTheoMa(mas) {
+  const out = new Map()
+  for (const kho of KHO_CHON ? [KHO_CHON] : ['dai', 'hgt']) {
+    const { rows } = await c.query(`
+      select q.ma_cau, q.dap_an, q.dang_chinh, ${khuonSql(kho, 'q', CO_BANG_KHUON)} as khuon, b.khoi
+      from ${BANG[kho].cauTbl} q
+      left join lateral (select d.dang_bai_id from bdm_cau_dang d where d.ma_cau = q.ma_cau and d.kho = '${kho}' limit 1) d on true
+      left join bdm_ban_do b on b.ma_dang = d.dang_bai_id
+      where q.ma_cau = any($1) and q.xoa_at is null and q.lua_chon is null and q.menh_de is null
+        and (${CA_FORM ? 'true' : 'false'} or not exists (select 1 from ${BANG[kho].formTbl} f where f.ma_cau = q.ma_cau and f.xoa_at is null and ($2::boolean is not true or f.da_duyet)))`, [mas, !!THAY])
+    for (const r of rows) out.set(r.ma_cau, { ...r, kho, khoa_may: khoaMay(r.khuon, r.khoi, r.dang_chinh) })
+  }
+  return out
+}
+
 async function verify(file, quiet = false) {
   const items = JSON.parse(readFileSync(file, 'utf8'))
-  const ruleMap = new Map((await rules()).map((r) => [r.ma, r]))
-  const mas = items.map((x) => x.ma_cau)
-  const { rows } = await c.query(`
-    select q.ma_cau, q.dap_an, q.dang_chinh from ${CAU_TBL} q
-    where q.ma_cau = any($1) and q.xoa_at is null and q.lua_chon is null and q.menh_de is null
-      and not exists (select 1 from ${TBL} f where f.ma_cau = q.ma_cau and f.xoa_at is null and ($2::boolean is not true or f.da_duyet))`, [mas, !!THAY])
-  const db = new Map(rows.map((r) => [r.ma_cau, r]))
+  const ruleMaps = {}
+  for (const kho of Object.keys(BANG)) ruleMaps[kho] = new Map((await rules(kho)).map((r) => [r.ma, r]))
+  const db = await cauTheoMa(items.map((x) => x.ma_cau))
   let ok = 0, fail = 0, boN = 0
   const pass = [], phanBo = Object.fromEntries(LETTERS.map((l) => [l, 0]))
   for (const it of items) {
     if (it.bo) { boN++; if (!quiet) console.log(`BỎ   ${it.ma_cau}  ${it.bo}`); continue }
-    const err = kiemCau(it, db.get(it.ma_cau), ruleMap)
+    const row = db.get(it.ma_cau)
+    const err = kiemCau(it, row, row ? ruleMaps[row.kho] : null)
     if (err.length) { fail++; console.log(`FAIL ${it.ma_cau}\n  - ${err.join('\n  - ')}`) }
     else { ok++; pass.push(it); phanBo[it.dap_an]++; if (!quiet) console.log(`OK   ${it.ma_cau}  đúng=${it.dap_an}  rule=${it.lua_chon.filter((x) => !x.dung).map((x) => x.rule).join(',')}`) }
   }
   const max = Math.max(...Object.values(phanBo)), tong = Object.values(phanBo).reduce((a, b) => a + b, 0)
   const lech = tong >= 8 && max / tong > 0.4
   console.log(`\n${ok} OK · ${fail} FAIL · ${boN} bỏ · phân bố đúng ${JSON.stringify(phanBo)}${lech ? '  ⚠ LỆCH >40% — cân lại vị trí đúng' : ''}`)
-  return { pass, fail: fail + (lech ? 1 : 0) }
+  return { pass, fail: fail + (lech ? 1 : 0), db }
 }
 
 async function ghi(file) {
   const model = opt('--model', 'claude-fable-5-1')
-  const { pass, fail } = await verify(file, true)
+  const { pass, fail, db } = await verify(file, true)
   if (fail) { console.error('\n✖ Có câu FAIL hoặc phân bố lệch — sửa file rồi chạy lại. KHÔNG ghi.'); process.exitCode = 1; return }
   let n = 0, skip = 0
+  const theoKho = {}
   for (const it of pass) {
-    const { rows } = await c.query(`select dap_an, dang_chinh from ${CAU_TBL} where ma_cau = $1`, [it.ma_cau])
-    const keyCanon = laHinhThucText(rows[0]?.dang_chinh, rows[0]?.dap_an) ? fnText(rows[0]?.dang_chinh).canon(rows[0]?.dap_an ?? '', rows[0]?.dang_chinh) : parseHuuTi(rows[0]?.dap_an ?? '').canon
+    const row = db.get(it.ma_cau), k = row.khoa_may, TBLK = BANG[row.kho].formTbl // ghi vào ĐÚNG bảng form của nhánh câu
+    const keyCanon = laHinhThucText(k, row.dap_an) ? fnText(k).canon(row.dap_an ?? '', k) : parseHuuTi(row.dap_an ?? '').canon
     await c.query('begin')
     try {
-      if (THAY) await c.query(`update ${TBL} set xoa_at = now(), tu_choi_ly_do = $2 where ma_cau = $1 and xoa_at is null and not da_duyet`, [it.ma_cau, THAY])
+      if (THAY) await c.query(`update ${TBLK} set xoa_at = now(), tu_choi_ly_do = $2 where ma_cau = $1 and xoa_at is null and not da_duyet`, [it.ma_cau, THAY])
       const r = await c.query(`
-        insert into ${TBL} (ma_cau, lua_chon, dap_an, key_gia_tri, nguon, ai_model)
+        insert into ${TBLK} (ma_cau, lua_chon, dap_an, key_gia_tri, nguon, ai_model)
         select $1, $2::jsonb, $3, $4, 'ai', $5
-        where not exists (select 1 from ${TBL} f where f.ma_cau = $1 and f.xoa_at is null)
+        where not exists (select 1 from ${TBLK} f where f.ma_cau = $1 and f.xoa_at is null)
         returning id`, [it.ma_cau, JSON.stringify(it.lua_chon), it.dap_an, keyCanon, model])
       await c.query('commit')
-      if (r.rowCount) n++; else skip++
+      if (r.rowCount) { n++; theoKho[row.kho] = (theoKho[row.kho] ?? 0) + 1 } else skip++
     } catch (e) { await c.query('rollback'); console.error(`✖ ${it.ma_cau}: ${e.message}`); process.exitCode = 1 }
   }
-  console.log(`\nĐã ghi ${n} form (da_duyet=false) · bỏ qua ${skip} câu đã có form.`)
+  console.log(`\nĐã ghi ${n} form (da_duyet=false) ${JSON.stringify(theoKho)} · bỏ qua ${skip} câu đã có form.`)
 }

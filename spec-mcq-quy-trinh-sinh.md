@@ -120,14 +120,34 @@ Ca thật đã gặp: `T107010103` (vừa "tìm x,y nguyên" vừa "sắp xếp 
 
 ---
 
-## 6. Chạy pipeline (không đổi từ Pool 1)
+## 6. Chạy pipeline — ĐƠN VỊ = DẠNG BÀI BẢN ĐỒ MỚI (26/10)
+
+Thùy 26/10 "chuyển hẳn sang bản đồ và kho mới": K6–12 chọn câu theo **dạng bài NDB** (view `bdm_cau_hoi`), không
+gõ mã dạng cũ nữa. Câu của cả hai nhánh (dai / hgt) đi chung một lô — mỗi câu tự mang bảng gốc (`kho`), form ghi vào
+đúng `<kho>_cau_form_tn`, rule kiểm theo `<kho>_mcq_rule`. Không cần `--kho`.
 
 ```
-node scripts/mcq-sinh.mjs --list --dang <ma_dang> --n 100 --out pool.json
-node scripts/mcq-auto.mjs pool.json --out kq.json           # thêm --debug <ma_cau> để soi 1 câu mẫu trước
+node scripts/mcq-sinh.mjs --list --dang NDB00721[,NDB…] --n 100 --out pool.json   # hoặc --khoi 9 [--chu-de NCD…]
+node scripts/mcq-auto.mjs pool.json --out kq.json           # thêm --debug <ma_cau> để soi 1 câu; --dang lọc theo NDB hoặc khuôn
 node scripts/mcq-sinh.mjs --verify kq.json                   # phải 0 FAIL mới sang bước ghi
 node scripts/mcq-sinh.mjs --ghi kq.json
 ```
+
+- `--list` in báo cáo **khối → chủ đề → dạng bài** (lấy / còn / bỏ). Trang duyệt `kho-rules/dai/lo/mcq-bdm/build-duyet.mjs`
+  nhóm cùng thứ tự đó.
+- Câu đáp số là số thuần nhưng chưa có khuôn riêng (mã chờ …000000): thêm `--theo-dap-so` ở CẢ `mcq-auto`, `--verify`, `--ghi`.
+- `--verify kq.json --ca-form-da-co`: kiểm lại cả form ĐÃ có (đọc thuần, cấm với `--ghi`) — dùng để soát lô cũ.
+- Cấp 1 (K3–5T, còn bản đồ cũ): vẫn `--list --dang <mã dạng cũ> [--kho dai|hgt]` như trước.
+
+**KHUÔN ĐÁP SỐ (thay cho "mã dạng" trong các bảng dispatch).** `SPECIAL_DANG` / `TEXT_DANG` / `TEXT_FN` / `ANSWER_DANG` /
+`UU_TIEN` / `CHAM_LA_NHAN` (mcq-auto, mcq-sinh) và whitelist ký máy `KHUON_MAY_KY` (kho-quet-dapso) tra theo **khuôn của
+CÂU**, không theo bản đồ. Mã khuôn hiện có = chép nguyên mã dạng cũ (đóng băng — đổi tên khuôn là đổi hành vi máy). Đọc
+khuôn ở MỘT chỗ: `scripts/lib/khuon-dap-so.mjs` (`khuonSql`, `khoaMay`) — bảng `<kho>_cau_khuon` nếu đã áp migration nháp
+`supabase/migrations-nhap/202610261852_kho_cau_khuon_dap_so.sql` (chờ Thùy duyệt), không thì cột lưu trữ `dang_chinh` (bỏ mã
+chờ). Câu không có khuôn ⇒ khoá máy rỗng mang khối (`T1kk000000`) ⇒ nhánh chung. **Thêm khuôn mới:** đặt tên khuôn (không
+lấy mã NDB — dạng bài là đơn vị bản đồ, khuôn là cách máy đọc đáp số; một dạng bài có thể trộn nhiều khuôn, §4), đăng ký vào
+các bảng dispatch, gán khuôn cho câu (sau khi có bảng: INSERT `<kho>_cau_khuon` qua migration/script có sổ). Luật nhiễu
+`ap_dung` = danh sách khuôn gợi ý (không ràng buộc cứng; máy chọn rule theo `UU_TIEN[khuôn]`).
 
 Migration (rule mới) phải **áp TRƯỚC** khi chạy `mcq-auto.mjs`/`--verify` — rule phải tồn tại trong DB thì
 verify mới nhận (`ruleMap.has(r)`). Sau khi ghi xong: dọn file `pool.json`/`kq.json` tạm, `npm run schema`,
