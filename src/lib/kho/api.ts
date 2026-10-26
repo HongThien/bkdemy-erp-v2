@@ -2628,9 +2628,10 @@ export type CauHangDuyet = {
   ma_cum: string | null; ten_cum: string | null; da_duyet: boolean; kho_chuan: boolean
   kiem_may: 'khop' | 'nghi' | 'khong_kiem_duoc' | null; kiem_may_boi: string | null; kiem_may_ghi: string | null; kiem_may_at: string | null
   dang_ai_de_xuat: string | null
-  // Gợi ý BẢN ĐỒ MỚI (chỉ Toán Đại; mig 202610110939): 'gan' = đã có dạng bài (dai_bdm_gan_cau) · 'chua_khop' = rổ chưa khớp · null = chưa ai xét
+  // BẢN ĐỒ MỚI (Toán Đại + HGT; mig 202610110939, 202610261856): 'gan' = đã có dạng bài (*_bdm_gan_cau, của câu hoặc câu gốc) ·
+  // 'de_xuat' = chỉ có đề xuất chờ duyệt (*_bdm_de_xuat) · 'chua_khop' = rổ chưa khớp · null = chưa ai xét
   bdm_chu_de?: string | null; bdm_chuyen_de?: string | null; bdm_nhom?: string | null; bdm_dang_bai?: string | null; bdm_dang_bai_id?: string | null
-  bdm_trang_thai?: 'gan' | 'chua_khop' | null; bdm_ly_do?: string | null
+  bdm_trang_thai?: 'gan' | 'de_xuat' | 'chua_khop' | null; bdm_ly_do?: string | null
 }
 // Supabase API cắt mọi truy vấn ở 1000 dòng (max_rows) — `p_limit` lớn hơn bị bỏ qua âm thầm ⇒ PHÂN TRANG theo p_offset (11/10: khối 12
 // có >6.000 câu chờ duyệt, màn Duyệt từng chỉ thấy 1000 câu đầu).
@@ -2655,12 +2656,57 @@ export async function demHangDuyet(nhanh: KhoNhanh[]): Promise<DemHangDuyet[]> {
 }
 // Duyệt = áp sửa (key vắng = giữ nguyên; '' = xoá) + da_duyet + duyet_nguon='nguoi' trong 1 transaction.
 // Sửa đáp số ⇒ DB thu hồi mọi form TN của câu (trả thu_hoi_form để báo người).
-export type SuaCauDuyet = { noi_dung?: string; dap_an?: string | null; loi_giai?: string | null; dang_chinh?: string; ma_cum?: string | null; lua_chon?: string[] }
+// dang_bai = DẠNG BÀI bản đồ mới (NDB…) người chọn — khối chạy bản đồ mới: DB ghi gán nguon 'nguoi' cùng transaction, KHÔNG đổi dang_chinh.
+export type SuaCauDuyet = { noi_dung?: string; dap_an?: string | null; loi_giai?: string | null; dang_chinh?: string; ma_cum?: string | null; lua_chon?: string[]; dang_bai?: string }
 export async function duyetCauHangDuyet(mon: KhoMon, maCau: string, nguoi: string, sua: SuaCauDuyet = {}): Promise<{ thu_hoi_form: number; doi_dap_an: boolean; doi_dang: boolean }> {
   const { data, error } = await supabase.rpc('fn_kho_duyet_cau', { p_mon: mon, p_ma_cau: maCau, p_nguoi: nguoi, p_sua: sua })
   if (error) throw error
   return data as { thu_hoi_form: number; doi_dap_an: boolean; doi_dang: boolean }
 }
+// ── KHO MỚI (mig 202610261856): người gán DẠNG BÀI cho câu ở khối chạy bản đồ mới — một chỗ ghi ở DB (_bdm_nguoi_gan_cau:
+// kiểm khối, nhánh Đại ↔ HGT, cấm câu Đúng/Sai). Duyệt kho gọi qua fn_kho_duyet_cau (sua.dang_bai); gán lẻ không duyệt = RPC fn_bdm_nguoi_gan_cau.
+// Nhập 1 câu vào kho ở khối chạy bản đồ mới: DB cấp mã (dạng chờ + STT), gán dạng bài (nếu có) / kho Đ/S của chủ đề — 1 transaction.
+export async function nhapCauBdm(mon: KhoMon, khoi: string, cau: { loai_cau: string; noi_dung: string; dap_an?: string | null; loi_giai?: string | null; lua_chon?: string[] | null; menh_de?: { noi_dung: string; dap_an: 'D' | 'S'; loi_giai: string | null }[] | null; anh_de?: string | null; anh_dap_an?: string | null; nguon_giai?: string },
+  dangBai: string | null, chuDe: string | null): Promise<string> {
+  const { data, error } = await supabase.rpc('fn_bdm_nhap_cau', { p_mon: mon, p_khoi: khoi, p_cau: cau, p_dang_bai: dangBai, p_chu_de: chuDe })
+  if (error) throw error
+  return data as string
+}
+// Chủ đề / dạng bài / lý thuyết dạng bài của bản đồ mới cho màn Nhập kho (đọc view bdm_ban_do, bdm_dang_ly_thuyet; nhánh theo kho).
+const nhanhBdm = (mon: KhoMon) => (mon === 'hgt' ? 'hgt' : 'toan')
+export async function listBdmChuDeOptions(mon: KhoMon, khoi: string): Promise<ChuDeOption[]> {
+  const { data, error } = await supabase.from('bdm_ban_do').select('ma_chu_de, ten_chu_de, thu_tu_chu_de')
+    .eq('khoi', khoi).eq('nhanh_bdm', nhanhBdm(mon)).order('thu_tu_chu_de').limit(LIMIT)
+  if (error) throw error
+  const m = new Map<string, ChuDeOption>()
+  for (const r of (data ?? []) as any[]) {
+    const c = m.get(r.ma_chu_de) ?? { ma_chu_de: r.ma_chu_de, ten_chu_de: r.ten_chu_de, soDang: 0 }
+    c.soDang++; m.set(r.ma_chu_de, c)
+  }
+  return [...m.values()]
+}
+export async function listBdmDangByChuDe(mon: KhoMon, khoi: string, maChuDe: string): Promise<DangCandidate[]> {
+  const { data, error } = await supabase.from('bdm_ban_do')
+    .select('ma_dang, ten_dang, ma_chuyen_de, ten_chuyen_de, ten_nhom, mo_ta_ngan')
+    .eq('khoi', khoi).eq('nhanh_bdm', nhanhBdm(mon)).eq('ma_chu_de', maChuDe)
+    .order('thu_tu_chuyen_de').order('thu_tu_nhom').order('thu_tu_dang').limit(LIMIT)
+  if (error) throw error
+  return (data ?? []).map((r: any) => ({ ma_dang: r.ma_dang, ten_dang: r.ten_dang, ma_chuyen_de: r.ma_chuyen_de ?? '',
+    ten_chuyen_de: [r.ten_chuyen_de, r.ten_nhom].filter(Boolean).join(' · '), mo_ta_ngan: r.mo_ta_ngan ?? null }))
+}
+// Tên + vị trí 1 dạng bài (bộ chọn dạng chỉ trả mã) — để thẻ hiện tên ngay khi người vừa chọn.
+export async function getDangBaiTen(maDang: string): Promise<{ ten: string; cd: string } | null> {
+  const { data, error } = await supabase.from('bdm_ban_do').select('ten_dang, ten_chu_de, ten_nhom').eq('ma_dang', maDang).limit(1)
+  if (error) throw error
+  const r = data?.[0] as any
+  return r ? { ten: r.ten_dang, cd: [r.ten_chu_de, r.ten_nhom].filter(Boolean).join(' › ') } : null
+}
+export async function getBdmDangLyThuyet(maDang: string): Promise<string> {
+  const { data, error } = await supabase.from('bdm_dang_ly_thuyet').select('noi_dung').eq('ma_dang', maDang).limit(1)
+  if (error) throw error
+  return String((data?.[0] as any)?.noi_dung ?? '').trim()
+}
+
 // Từ chối = kho rác (xoa_at) + lý do bắt buộc — không xoá cứng (CLAUDE.md §2 kho rác).
 export async function tuChoiCauHangDuyet(mon: KhoMon, maCau: string, nguoi: string, lyDo: string): Promise<void> {
   const { error } = await supabase.rpc('fn_kho_tu_choi_cau', { p_mon: mon, p_ma_cau: maCau, p_nguoi: nguoi, p_ly_do: lyDo })
