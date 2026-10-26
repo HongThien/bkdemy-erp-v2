@@ -77820,3 +77820,10 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - BẬT: dạng bài chưa chốt độ khó không vào CB/NC (vẫn vào Toàn bộ) — 11A1 47/90 dạng bài chưa có độ khó, 10B1 20/70, 8A2 14/44, 12B1 7/23 ⇒ ô Cơ bản/Nâng cao K10–11 còn mỏng tới khi Thùy chốt HTML độ khó.
 - Tốc độ (owner, không RLS): 1 HS 0,08–1,0 s; 11A1 13 em tuần tự 4,5 s, chậm nhất 0,8 s/em; qua PostgREST song song cả lớp như Report PH: 11A1 3,0 s · 9A2 2,3 s · 5A1 1,1 s.
 - Không mở được màn trên dev: `node_modules` checkout chính đang rỗng (vite mượn của worktree bando, thiếu mathlive) — chưa kiểm bằng phiên đăng nhập thật (RLS).
+
+
+### [26/10] Trang duyệt hàng ĐỀ XUẤT dạng bài K6–12 (Đại + HGT) — Thùy "duyệt rồi mới được dùng" (CHƯA GHI)
+- **Bối cảnh (phiên mastery, mig 202610261834):** dạng bài của câu giờ chỉ từ gán + đề xuất. Thùy 26/10: kho cũ duyệt rồi mà kho mới chưa duyệt ⇒ đề xuất duyệt.
+- **Script mới** `scripts/bdm-de-xuat-duyet.mjs`: `dung <html> <ds.json>` (chỉ đọc) · `ghi <ds.json> [--tru …] [--ghi]`. Đơn vị = dòng đề xuất của câu sống, khối dạng cũ 6–12, câu chưa có gán (bản sao theo gốc ⇒ "+N bản sao").
+- **Số:** 1.800 dòng: ① đề xuất DUYỆT 604 (Đại 296 · HGT 308; +172 bản sao theo) · ② chưa duyệt kho cũ 550 (để nguyên) · ③ Đ/S đề xuất LOẠI **646** (Đại 466 · HGT 180) — KHÔNG phải 43: vào đề xuất 17–18/10 trước luật Đ/S, cả 646 đã ở kho Đ/S chủ đề ⇒ chỉ rút dòng dư. Ngoài trang: 276 dòng đề xuất của câu ĐÃ gán (gán thắng, vô hại) · 1 câu xoá · 8 câu 4T/5T.
+- Chạy thử `ghi`: Đại duyệt 296/296 · loại 466/466; HGT duyệt 308/308 · loại 180/180 ⇒ ROLLBACK. Trang `reports/bdm-duyet-de-xuat-k6-12-2026-10-26.html`, danh sách `kho-rules/dai/lo/b3/duyet-de-xuat-2610.json`.
