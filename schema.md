@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-444 bảng · 34 view · 0 enum · 225 trigger · 1312 function
+447 bảng · 34 view · 0 enum · 227 trigger · 1313 function
 
 ## _app_secrets
 
@@ -1519,6 +1519,16 @@
 | che_do | text |  | 'giai'::text |  | `giai` · `hoan_thien` |
 | y_nhap | jsonb | Y |  |  |  |
 
+## dai_cau_khuon
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_cau | text |  |  | PK FK→dai_cau_hoi.ma_cau |  |
+| khuon | text |  |  |  |  |
+| nguon | text |  |  |  | `chep_ma_cu` · `may` · `nguoi` |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
 ## dai_cau_lop
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -2494,6 +2504,16 @@ END |  |  |
 | ai_model | text | Y |  |  |  |
 | che_do | text |  | 'giai'::text |  | `giai` · `hoan_thien` |
 | y_nhap | jsonb | Y |  |  |  |
+
+## hgt_cau_khuon
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_cau | text |  |  | PK FK→hgt_cau_hoi.ma_cau |  |
+| khuon | text |  |  |  |  |
+| nguon | text |  |  |  | `chep_ma_cu` · `may` · `nguoi` |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
 
 ## hgt_cau_menh_de
 
@@ -3821,6 +3841,19 @@ END |  |  |
 | ngoai_bk | boolean |  | false |  |  |
 | khop_luc | timestamp with time zone | Y |  |  |  |
 | khop_boi | uuid | Y |  | FK→nhan_su.id |  |
+
+## kho_cau_khuon_log
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | bigint |  |  | PK |  |
+| kho | text |  |  |  | `dai` · `hgt` |
+| ma_cau | text |  |  |  |  |
+| khuon_cu | text | Y |  |  |  |
+| khuon_moi | text | Y |  |  |  |
+| nguon | text | Y |  |  |  |
+| actor | text |  | CURRENT_USER |  |  |
+| at | timestamp with time zone |  | now() |  |  |
 
 ## kho_cau_log
 
@@ -5166,7 +5199,7 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
-| mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
+| mon | text |  |  | FK→sotay_ct_hinh.mon |  |
 | khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
@@ -8510,6 +8543,7 @@ WITH luot AS (
 | dai_cau_hoi | trg_log_kho_sua | AFTER | UPDATE | _trg_log_kho_sua |
 | dai_cau_hoi | trg_sync_menh_de | AFTER | INSERT/UPDATE | _trg_sync_dai_menh_de |
 | dai_cau_hoi_yeu_cau_giai | dai_cau_hoi_yeu_cau_giai_claude_dong | BEFORE | UPDATE | fn_giaibai_tg_claude_dong |
+| dai_cau_khuon | trg_dai_cau_khuon_log | BEFORE | INSERT/DELETE/UPDATE | _trg_kho_cau_khuon_log |
 | dai_cau_lop | trg_dai_cau_lop_truoc_sua | BEFORE | UPDATE | _dai_cau_lop_truoc_sua |
 | dai_cau_menh_de | trg_chan_duyet_dang_cho | BEFORE | INSERT/UPDATE | _trg_chan_duyet_dang_cho |
 | dai_cau_menh_de | trg_log_doi_dang | AFTER | UPDATE | _trg_log_doi_dang |
@@ -8543,6 +8577,7 @@ WITH luot AS (
 | hgt_cau_hoi | trg_log_kho_sua | AFTER | UPDATE | _trg_log_kho_sua |
 | hgt_cau_hoi | trg_sync_menh_de | AFTER | INSERT/UPDATE | _trg_sync_hgt_menh_de |
 | hgt_cau_hoi_yeu_cau_giai | hgt_cau_hoi_yeu_cau_giai_claude_dong | BEFORE | UPDATE | fn_giaibai_tg_claude_dong |
+| hgt_cau_khuon | trg_hgt_cau_khuon_log | BEFORE | INSERT/DELETE/UPDATE | _trg_kho_cau_khuon_log |
 | hgt_cau_menh_de | trg_chan_duyet_dang_cho | BEFORE | INSERT/UPDATE | _trg_chan_duyet_dang_cho |
 | hgt_cau_menh_de | trg_log_doi_dang | AFTER | UPDATE | _trg_log_doi_dang |
 | hinh_bai | trg_hinh_bai_dong_bo_chuyen_de | AFTER | UPDATE | _hinh_bai_dong_bo_chuyen_de |
@@ -8980,6 +9015,7 @@ WITH luot AS (
 - `_trg_dai_cau_nguon_loai()` → trigger
 - `_trg_de_thi_dien_dang()` → trigger
 - `_trg_gami_exp_ledger_buoi_huy()` → trigger
+- `_trg_kho_cau_khuon_log()` → trigger
 - `_trg_log_doi_dang()` → trigger
 - `_trg_log_kho_sua()` → trigger
 - `_trg_rank_len_bac()` → trigger
@@ -10047,6 +10083,7 @@ WITH luot AS (
 | dai_bdm_nhom | dai_bdm_nhom_ten_check | `CHECK ((btrim(ten) <> ''::text))` |
 | dai_bdm_nhom_tien_de | dai_bdm_nhom_tien_de_check | `CHECK ((nhom_id <> tien_de_nhom_id))` |
 | dai_bdm_tu_choi | dai_bdm_tu_choi_ly_do_check | `CHECK ((btrim(ly_do) <> ''::text))` |
+| dai_cau_khuon | dai_cau_khuon_khuon_check | `CHECK ((khuon ~ '^[A-Za-z0-9_]{2,40}$'::text))` |
 | dai_cau_lop | dai_cau_lop_noi_dung_check | `CHECK ((btrim(noi_dung) <> ''::text))` |
 | dai_cau_menh_de | dai_cau_menh_de_thu_tu_check | `CHECK ((thu_tu >= 1))` |
 | dai_cum_tien_de | dai_cum_tien_de_check | `CHECK ((ma_cum <> tien_de_ma_cum))` |
@@ -10115,6 +10152,7 @@ WITH luot AS (
 | giai_thuong_slot | giai_thuong_slot_xuat_sac_check | `CHECK (((xuat_sac >= 0) AND (xuat_sac <= 6)))` |
 | han_nop_ngoai_le | han_nop_ngoai_le_thu_check | `CHECK ((thu_bat_dau = ANY (ARRAY[0, 2, 3, 4, 5, 6, 7, 8])))` |
 | hgt_bdm_tu_choi | hgt_bdm_tu_choi_ly_do_check | `CHECK ((btrim(ly_do) <> ''::text))` |
+| hgt_cau_khuon | hgt_cau_khuon_khuon_check | `CHECK ((khuon ~ '^[A-Za-z0-9_]{2,40}$'::text))` |
 | hgt_cau_menh_de | hgt_cau_menh_de_thu_tu_check | `CHECK ((thu_tu >= 1))` |
 | hgt_cum_tien_de | hgt_cum_tien_de_check | `CHECK ((ma_cum <> tien_de_ma_cum))` |
 | hgt_dang_tien_de | hgt_dang_tien_de_check | `CHECK ((ma_dang <> tien_de_ma_dang))` |
