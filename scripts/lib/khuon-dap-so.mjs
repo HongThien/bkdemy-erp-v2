@@ -12,6 +12,10 @@
 //   • Câu KHÔNG có khuôn ⇒ "khuôn chung": AST nếu đáp số là 1 giá trị hữu tỉ, `--theo-dap-so` ép nhánh sinh nhiễu từ
 //     đáp số. Khối (đọc phẩy thập phân, khối ≤4 "24,51" là 2 số) lấy từ dạng bài NDB của câu.
 
+// Khuôn MÁY GÁN theo đáp số (Thùy 26/10 "2.OK"): đáp số là SỐ THUẦN (1 hoặc nhiều số nguyên / thập phân, so-vn.mjs đọc được)
+// ⇒ sinh nhiễu thẳng từ đáp số (sinhNhieuDapSoThucTe), y như cờ --theo-dap-so nhưng không phải gõ cờ. Chỉ gán cho câu K6–12
+// (khối ≥5 ⇒ phẩy là thập phân — khuôn không cần mang khối). Gán: scripts/kho-khuon-gan-may.mjs.
+export const KHUON_DAP_SO = 'dap_so'
 export const laMaCho = (ma) => /0{6}$/.test(String(ma ?? '')) // mã dạng chờ T1xx000000 / T3xx000000 — không phải khuôn
 
 // Bảng khuôn đã tồn tại chưa (migration nháp). → { dai: bool, hgt: bool }

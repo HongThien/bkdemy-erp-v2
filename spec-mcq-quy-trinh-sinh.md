@@ -135,7 +135,9 @@ node scripts/mcq-sinh.mjs --ghi kq.json
 
 - `--list` in báo cáo **khối → chủ đề → dạng bài** (lấy / còn / bỏ). Trang duyệt `kho-rules/dai/lo/mcq-bdm/build-duyet.mjs`
   nhóm cùng thứ tự đó.
-- Câu đáp số là số thuần nhưng chưa có khuôn riêng (mã chờ …000000): thêm `--theo-dap-so` ở CẢ `mcq-auto`, `--verify`, `--ghi`.
+- Câu đáp số là SỐ THUẦN mà chưa có khuôn riêng (mã chờ …000000): máy gán khuôn `dap_so` (Thùy 26/10) bằng
+  `node scripts/kho-khuon-gan-may.mjs` (chạy thử ROLLBACK) → `--ghi`; idempotent, chạy lại sau mỗi lần nhập câu mới. Có khuôn
+  `dap_so` thì KHÔNG cần `--theo-dap-so` nữa (cờ chỉ còn để ép câu chưa khuôn).
 - `--verify kq.json --ca-form-da-co`: kiểm lại cả form ĐÃ có (đọc thuần, cấm với `--ghi`) — dùng để soát lô cũ.
 - Cấp 1 (K3–5T, còn bản đồ cũ): vẫn `--list --dang <mã dạng cũ> [--kho dai|hgt]` như trước.
 

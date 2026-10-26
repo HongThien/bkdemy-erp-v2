@@ -409,6 +409,7 @@ function laHinhThucText(dang, dapAn) {
 // Chỉ table NAME khác nhau — parser/rule sinh nhiễu (mini-dang.mjs) dùng CHUNG, dispatch theo mã dạng
 // (T1xx.. Đại vs T3xx.. HGT không đụng nhau nên TEXT_DANG/TEXT_FN gộp chung 1 dict vẫn an toàn).
 TEXT_FN.T106020601 = { canon: chuanHoaLuyThuaText, val: chuanHoaLuyThuaText } // 24/10, cặp với mcq-auto.mjs
+TEXT_DANG.add('dap_so'); TEXT_FN.dap_so = { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua } // khuôn MÁY GÁN 'dap_so' (26/10), cặp với mcq-auto
 TEXT_DANG.add('T106030201'); TEXT_FN.T106030201 = { canon: chuanHoaChiaHet25, val: chuanHoaChiaHet25 } // 24/10, DẠNG 58
 const fnText = (dang) => TEXT_FN[dang] ?? (THEO_DAP_SO ? { canon: chuanHoaDapSoThucTe, val: evalDapSoThucTeKetQua } : undefined)
 // Bộ bảng theo nhánh — dispatch nhánh → bảng ở MỘT chỗ (CLAUDE.md §1.6). Bản đồ mới: nhánh lấy theo câu (bdm_cau_hoi.kho_goc).
