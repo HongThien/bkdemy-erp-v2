@@ -5,7 +5,7 @@ import { useStore } from '../../store/useStore'
 import { useMonScope } from '../../hooks/useMonScope'
 import { usePagedList } from '../../hooks/usePagedList'
 import { Shell, Field, inp } from '../kho/ui'
-import TaiLieuBuilder from './TaiLieuBuilder'
+import TaiLieuBuilder, { CanhBaoGiaoTrinhMoi } from './TaiLieuBuilder'
 
 const PAGE = 20 // "20 tài liệu gần nhất" (Thùy 09-10) — xem usePagedList
 
@@ -85,6 +85,7 @@ export default function TaiLieuScreen() {
         </div>
       </div>
 
+      {khoi !== ALL && <CanhBaoGiaoTrinhMoi khoi={khoi} mon={mon} />}
       <div className="min-h-0 flex-1 overflow-auto p-6">
         {profileLoading ? <p className="text-sm text-slate-400">Đang tải hồ sơ…</p>
           : allowedMons.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Bạn chưa được phân môn (có kho) — liên hệ quản trị để soạn tài liệu.</div>
@@ -138,6 +139,7 @@ function CreateModal({ khoi, mon, nhanh, onClose, onCreated }: { khoi: string; m
 
   return (
     <Shell title={`Tạo giáo trình · ${mon}${nhanh === 'hinh_gt' ? ' · Hình giải tích' : ''} · Khối ${khoi}`} onClose={onClose}>
+      <div className="-mx-1 mb-3 overflow-hidden rounded-lg"><CanhBaoGiaoTrinhMoi khoi={khoi} mon={mon} /></div>
       <Field label="Tên giáo trình"><input value={ten} onChange={(e) => setTen(e.target.value)} className={inp} placeholder="vd: Ôn tập Phân số" autoFocus /></Field>
       <div className="mb-3 text-[11px] text-slate-400">Tạo xong vào Builder → bấm <b>+ Thêm chuyên đề</b> (thêm nhiều chuyên đề để gộp thành 1 tài liệu lớn).</div>
       {error && <p className="mb-2 text-xs text-rose-600">{error}</p>}

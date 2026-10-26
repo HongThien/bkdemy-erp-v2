@@ -6,13 +6,13 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   createET, updateET, getTaiLieuFull, setETCaus, suggestCauForDang, suggestNForDang, khoCuaMon, getETByBuoi,
-  maET, ET_FORMS, etFormOf, sortETCaus, nhanhChonCuaKhoi, tenNhanh, coKhoHinh,
+  maET, ET_FORMS, etFormOf, sortETCaus, nhanhChonCuaKhoi, tenNhanh, coKhoHinh, fetchCausCuaTaiLieu, NHANH_BDM,
   type ETDoc, type CauHinh, type ETForm as ETFormKind, type TaiLieuFull, type NhanhMon,
 } from '../../lib/tailieu'
 import { buildMaDe as buildMaDeLib, oTrongMaDe, usedMoiDe as usedMoiDeLib, setVarInCh } from '../../lib/made'
 import { listLop, type Lop } from '../../lib/nhansu'
 import { hsCoMatCuaBuoi } from '../../lib/gami'
-import { listCauByDang, LOAI_CAU, type CauHoi } from '../../lib/kho/api'
+import { listCauByDang, khoiChayBanDoMoi, LOAI_CAU, type CauHoi } from '../../lib/kho/api'
 import { fetchCausByMa } from '../../lib/ontap'
 import { MathText } from '../kho/ui'
 import { KhoPicker, DangPicker } from './TaiLieuBuilder'
@@ -197,17 +197,26 @@ export function ETEditor({ et, onClose, presetHinh }: { et?: ETView; onClose?: (
   // caller tự quyết (sửa vs auto-load khác nhau).
   async function fillFromET(docId: string) {
     const full = await getTaiLieuFull(docId)
-    const caus = full.phans.find((p) => p.loai_phan === 'custom')?.caus ?? []
+    const tlDoc = full.taiLieu
+    const ch0 = tlDoc.cau_hinh ?? {}
+    // ET soạn ở màn "ET (bản đồ mới)" đã gỡ (ban_do='moi', nhanh null — câu chọn theo dạng bài) ⇒ mở như nhánh "Bản đồ mới" khi
+    // khối đã chạy bản đồ mới: nạp lại câu qua kho bdm (dang_chinh = NDB); Lưu ghi nhanh='bdm'. Cấp 1 giữ nhánh Đại.
+    const nhDoc = tlDoc.nhanh ?? (tlDoc.ban_do === 'moi' && await khoiChayBanDoMoi(tlDoc.khoi, tlDoc.mon) ? NHANH_BDM.ma : null)
+    const phan = full.phans.find((p) => p.loai_phan === 'custom')
+    let caus = phan?.caus ?? []
+    if (nhDoc !== (tlDoc.nhanh ?? null)) {
+      const rs = new Map((await fetchCausCuaTaiLieu({ mon: tlDoc.mon, nhanh: nhDoc, cau_hinh: ch0 }, phan?.maCaus ?? [])).map((c) => [c.ma_cau, c]))
+      caus = (phan?.maCaus ?? []).map((m) => rs.get(m)).filter((c): c is CauHoi => !!c)
+    }
     const cMap: Record<string, CauHoi> = Object.fromEntries(caus.map((c) => [c.ma_cau, c]))
-    const ch0 = full.taiLieu.cau_hinh ?? {}
     // Nạp thêm nội dung câu MÃ ĐỀ 2/3 (etMaDe) — trên chỉ nạp câu GỐC (phan.caus) nên nếu không nạp bù,
     // cột Mã đề 2/3 chỉ thấy MÃ câu, không thấy đề (chỉ "…") dù dữ liệu vẫn còn nguyên trong cau_hinh.
     const need = new Set<string>()
     for (const arr of Object.values(ch0.etMaDe ?? {})) for (const m of arr) if (m && !cMap[m]) need.add(m)
-    if (need.size) { const vs = await fetchCausByMa([...need], khoCuaMon(full.taiLieu.mon, full.taiLieu.nhanh).cauTbl); for (const v of vs) cMap[v.ma_cau] = v }
+    if (need.size) { const vs = await fetchCausByMa([...need], khoCuaMon(tlDoc.mon, nhDoc).cauTbl); for (const v of vs) cMap[v.ma_cau] = v }
     setCau(cMap)
     setCh(ch0)
-    setNhanh(full.taiLieu.nhanh ?? null)
+    setNhanh(nhDoc)
     const r: Row[] = caus.map((c) => ({ maDang: c.dang_chinh, maCau: c.ma_cau }))
     while (r.length < DEFAULT_ROWS) r.push({ maDang: null, maCau: null })
     setRows(r)
@@ -239,8 +248,7 @@ export function ETEditor({ et, onClose, presetHinh }: { et?: ETView; onClose?: (
     ;(async () => {
       const doc = await getETByBuoi(lopId, ngay)
       if (!alive || !doc || doc.id === savedId) return
-      // ET soạn ở mục "ET (bản đồ mới)" (ban_do='moi') — không nạp vào màn cũ (Thùy 20/10: 2 bản tách hẳn); DB cũng chặn trộn.
-      if (doc.ban_do === 'moi') { setErr('Buổi này đã có ET soạn theo bản đồ MỚI — sửa ở mục "ET (bản đồ mới)".'); return }
+      // ET soạn ở màn "ET (bản đồ mới)" (đã gỡ 26/10, ban_do='moi') cũng nạp ở đây — fillFromET mở nó theo nhánh Bản đồ mới.
       await fillFromET(doc.id)
       if (!alive) return
       setSavedId(doc.id)
