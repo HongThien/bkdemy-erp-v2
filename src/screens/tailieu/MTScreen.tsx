@@ -12,7 +12,7 @@ import {
 } from '../../lib/mt'
 import { homNayVN } from '../../lib/tuan'
 import {
-  getTaiLieuFull, deletePhan, updatePhan, setCauOfPhan, suggestCauForDang, khoCuaMon, updateTaiLieu, nhanhCuaMon, tenNhanh, nhanhCuaCau, fetchCausCuaTaiLieu, coKhoHinh, laMaHinh, HINH_PREFIX,
+  getTaiLieuFull, deletePhan, updatePhan, setCauOfPhan, suggestCauForDang, khoCuaMon, updateTaiLieu, nhanhCuaMon, nhanhChonCuaKhoi, tenNhanh, nhanhCuaCau, fetchCausCuaTaiLieu, coKhoHinh, laMaHinh, HINH_PREFIX,
   ET_FORMS, etFormOf, coFormTn, MT_DIEM_OPTS, DEFAULT_DIEM_MT, maYHinh, diemBaiHinh, type PhanResolved, type CauHinh, type ETForm as ETFormKind, type HinhRowInfo,
 } from '../../lib/tailieu'
 import { supabase } from '../../lib/supabase'
@@ -317,10 +317,13 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
   useEffect(() => {
     if (!d?.khoi) { setDangOpts([]); return }
     // Nạp MỌI bản đồ của môn (registry nhanhCuaMon; môn 1 nhánh → chỉ nhánh mặc định) — MT trộn nhánh.
+    // + 'bdm' khi khối đã chạy bản đồ mới (nhanhChonCuaKhoi — DangPickerOne banDoMoi trả hàng nhánh 'bdm', câu ghi
+    // cau_hinh.nhanhByCau='bdm'); nhánh cũ vẫn nạp để MT cũ mở ra còn tên dạng / bậc.
     const nhs = nhanhCuaMon(d.mon).map((n) => n.ma)
-    const list = nhs.length ? nhs : [d.nhanh ?? null]
-    Promise.all(list.map((nh) => khoCuaMon(d.mon, nh).listMap(d.khoi).then((ds) => ds.map((x) => ({ ma_dang: x.leafMa, ten_dang: x.leafTen, ten_chuyen_de: x.t2Ten, bac: x.bac, nhanh: nh })))))
-      .then((a) => setDangOpts(a.flat())).catch(() => { /* */ })
+    nhanhChonCuaKhoi(d.mon, d.khoi).then((chon) => {
+      const list = [...new Set([...(nhs.length ? nhs : [d.nhanh ?? null]), ...chon.map((n) => n.ma)])]
+      return Promise.all(list.map((nh) => khoCuaMon(d.mon, nh).listMap(d.khoi).then((ds) => ds.map((x) => ({ ma_dang: x.leafMa, ten_dang: x.leafTen, ten_chuyen_de: x.t2Ten, bac: x.bac, nhanh: nh })))))
+    }).then((a) => setDangOpts(a.flat())).catch(() => { /* */ })
   }, [d?.khoi, d?.mon, d?.nhanh])
 
   const findDang = (md: string | null, nhanh: string | null) => dangOpts.find((x) => x.ma_dang === md && x.nhanh === nhanh)
@@ -786,7 +789,7 @@ export function MTEditor({ id, onClose }: { id: string; onClose: () => void }) {
       </div>
 
       {dangModal && d && (
-        <DangPickerOne khoi={d.khoi} mon={d.mon} nhanh={dangModal.nhanh} chonNhanh onClose={() => setDangModal(null)}
+        <DangPickerOne khoi={d.khoi} mon={d.mon} nhanh={dangModal.nhanh} chonNhanh banDoMoi onClose={() => setDangModal(null)}
           pillsThem={laToanCoHinh ? [{ ten: 'Hình · Luyện', onClick: () => { const { phanId, idx } = dangModal; setDangModal(null); setHinhPicker({ phanId, idx }) } }] : undefined}
           onPick={(ma, nh) => { const { phanId, idx } = dangModal; setDangModal(null); pickDang(phanId, idx, ma, nh) }} />
       )}

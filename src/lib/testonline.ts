@@ -4,7 +4,7 @@
 // 3 tầng: KHO → bai_test (snapshot đề+key) → bai_lam (HS-facing) → đo lường.
 // ============================================================================
 import { supabase } from './supabase'
-import { getBTVNCaus, getETCaus, getGiaoTrinhBuoiCaus, khoCuaMon, coFormTn, onlineFormOf, type CauHinh } from './tailieu'
+import { getBTVNCaus, getETCaus, getGiaoTrinhBuoiCaus, khoCuaMon, coFormTn, onlineFormOf, laMaDangBdm, NHANH_BDM, type CauHinh } from './tailieu'
 import { getDeThiCaus } from './dethi'
 import { fetchCausByMa } from './ontap'
 import { maDeReady, type BaseItem } from './made'
@@ -31,7 +31,7 @@ export type BaiTestCau = {
   phan?: string | null // tên PHẦN của đề (Phần I / II / III) — chỉ bài phát hành từ đề thi; null = không áp dụng
   // Phiên bản TRẮC NGHIỆM AI (spec-mcq-form.md §8.2): snapshot từ <kho>_cau_form_tn khi GV chọn form trắc nghiệm cho câu
   // không có phương án sẵn. lua_chon_rule song song lua_chon (null = đúng, 'R19' = sai theo rule) — cùng INSERT.
-  form_tn_id?: string | null; lua_chon_rule?: (string | null)[] | null
+  form_tn_id?: string | null; form_tn_hgt_id?: string | null; lua_chon_rule?: (string | null)[] | null
   // Ô nhập của câu trả lời ngắn: 'phieu_4o' = phiếu 4 ô của Bộ (bài phát hành từ đề thi, mig 202610011759). Thiếu/null = ô tự do.
   kieu_nhap?: string | null
   // Ngữ liệu chụp kèm câu lúc sinh bài (đoạn văn / thông báo / biển báo — mig 202610021403). null = câu không có ngữ liệu.
@@ -123,9 +123,13 @@ export async function phatHanhTest(taiLieuId: string, override?: { lopId: string
   const dangs = [...new Set(caus.map((c) => c.dang_chinh).filter(Boolean))]
   const ltMap = new Map<string, string>()
   if (dangs.length) {
-    const ltTbl = khoCuaMon(doc.mon).ltDangTbl
-    const { data: lt } = await supabase.from(ltTbl).select('ma_dang, noi_dung').in('ma_dang', dangs).limit(LIMIT)
-    for (const r of (lt ?? []) as { ma_dang: string; noi_dung: string | null }[]) if (r.noi_dung) ltMap.set(r.ma_dang, r.noi_dung)
+    // Dạng bài NDB (tài liệu bản đồ mới / ôn tập chọn theo cây mới) ⇒ LT dạng bài bdm_dang_ly_thuyet; mã cũ giữ bảng như trước.
+    const ltTblCu = khoCuaMon(doc.mon).ltDangTbl, ltTblMoi = khoCuaMon(doc.mon, NHANH_BDM.ma).ltDangTbl
+    for (const [ltTbl, mas] of [[ltTblCu, dangs.filter((m) => !laMaDangBdm(m))], [ltTblMoi, dangs.filter((m) => laMaDangBdm(m))]] as const) {
+      if (!mas.length) continue
+      const { data: lt } = await supabase.from(ltTbl).select('ma_dang, noi_dung').in('ma_dang', mas).limit(LIMIT)
+      for (const r of (lt ?? []) as { ma_dang: string; noi_dung: string | null }[]) if (r.noi_dung) ltMap.set(r.ma_dang, r.noi_dung)
+    }
   }
   // Form TRẮC NGHIỆM AI đã duyệt của các câu trong doc (spec-mcq-form.md §8.2) — dùng khi GV CHỌN form trắc
   // nghiệm cho câu không có phương án sẵn (etFormByCau), HOẶC (CEO chốt 20/09) tài liệu cấp 3 (khối 10-12)
@@ -134,6 +138,9 @@ export async function phatHanhTest(taiLieuId: string, override?: { lopId: string
   // có chủ đích.
   const chDoc = (doc.cau_hinh ?? {}) as CauHinh
   const formTbl = khoCuaMon(doc.mon, doc.nhanh).formTnTbl
+  // Form HGT phải ghi form_tn_hgt_id (FK riêng → hgt_cau_form_tn; form_tn_id FK → dai_cau_form_tn). Kho bản đồ mới gộp cả 2 ⇒ theo kho gốc của câu.
+  const laFormHgt = (c: CauHoi) => formTbl === khoCuaMon(doc.mon, 'hinh_gt').formTnTbl
+    || (formTbl === khoCuaMon(doc.mon, NHANH_BDM.ma).formTnTbl && (c as { kho_goc?: string | null }).kho_goc === 'hgt')
   const formMap = new Map<string, { id: string; lua_chon: { text: string; dung: boolean; rule?: string }[]; dap_an: string }>()
   if (coFormTn(formTbl) && caus.length) {
     const { data: fr } = await supabase.from(formTbl).select('id, ma_cau, lua_chon, dap_an')
@@ -162,7 +169,7 @@ export async function phatHanhTest(taiLieuId: string, override?: { lopId: string
           noi_dung: c.noi_dung ?? null, lua_chon: ft.lua_chon.map((o) => o.text), menh_de: null, dap_an_key: ft.dap_an,
           loi_giai: c.loi_giai ?? null, anh_de: c.anh_de ?? null, anh_dap_an: c.anh_dap_an ?? null,
           ma_dang: c.dang_chinh ?? null, ly_thuyet: ltMap.get(c.dang_chinh) ?? null, diem: 1,
-          form_tn_id: ft.id, lua_chon_rule: ft.lua_chon.map((o) => (o.dung ? null : o.rule ?? null)),
+          ...(laFormHgt(c) ? { form_tn_hgt_id: ft.id } : { form_tn_id: ft.id }), lua_chon_rule: ft.lua_chon.map((o) => (o.dung ? null : o.rule ?? null)),
           ngu_lieu: nlMap.get(c.ma_cau) ?? null,
         },
       }

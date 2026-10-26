@@ -1,6 +1,6 @@
 // Data-layer "Làm tài liệu" (giáo trình…). Tài liệu = THAM CHIẾU vào kho; resolver kéo nội dung sống khi render.
 import { supabase } from './supabase'
-import { cumKey, listCauByDang, listDaiMap, listKhtnMap, listHgtMap, listAnhMap, listTsaMap, listBdmMap, type CauHoi, type MapRow } from './kho/api'
+import { cumKey, listCauByDang, listDaiMap, listKhtnMap, listHgtMap, listAnhMap, listTsaMap, listBdmMap, khoiChayBanDoMoi, type CauHoi, type MapRow } from './kho/api'
 import { listHinhHocMap } from './kho/hinhhoc'
 import { laMaLop } from './kho/khoTrenLop'
 
@@ -58,9 +58,27 @@ const NHANH_CUA_MON: Record<string, NhanhMon[]> = {
   ],
 }
 export function nhanhCuaMon(mon?: string | null): NhanhMon[] { return NHANH_CUA_MON[mon ?? ''] ?? [] }
+// Nhánh 'bdm' (bản đồ mới K6–12) KHÔNG nằm trong NHANH_CUA_MON: nó chỉ có ở khối đã chạy bản đồ mới (DB quyết —
+// _kho_ds_nhanh_khoi), thay cho Đại số + Hình giải tích; thêm vào registry tĩnh thì cấp 1 cũng hiện pill "Bản đồ mới".
+export const NHANH_BDM: NhanhMon & { ma: 'bdm' } = { ma: 'bdm', ten: 'Bản đồ mới' }
 export function tenNhanh(mon: string | null | undefined, nhanh: string | null | undefined): string | null {
+  if (nhanh === NHANH_BDM.ma) return NHANH_BDM.ten
   return nhanhCuaMon(mon).find((n) => n.ma === (nhanh ?? null))?.ten ?? null
 }
+// Nhánh để CHỌN dạng/câu cho (môn, khối) — cùng luật DB `_kho_ds_nhanh_khoi`: khối đã chạy bản đồ mới ⇒ [Bản đồ mới,
+// …nhánh ngoài bản đồ mới (Hình · Học)]; khối khác (cấp 1, môn khác) ⇒ registry tĩnh như cũ. Builder dùng hàm này thay
+// cho nhanhCuaMon khi soạn MỚI; tài liệu cũ vẫn mở theo nhánh đã lưu.
+export async function nhanhChonCuaKhoi(mon: string | null | undefined, khoi: string | null | undefined): Promise<NhanhMon[]> {
+  const tinh = nhanhCuaMon(mon)
+  if (!khoi || !(await khoiChayBanDoMoi(khoi, mon ?? 'Toán'))) return tinh
+  return [NHANH_BDM, ...tinh.filter((n) => n.ma === 'hinh_hoc')]
+}
+// Mã dạng thuộc bản đồ mới (dạng bài 'NDB…') — cùng luật DB `_kho_nhanh_cua_dang` (NDB ⇒ nhánh 'bdm'). MỘT chỗ cho
+// client: tài liệu cũ (nhánh Đại) có thể mang ref_ma NDB (đổi mã lịch sử đợt 2, ôn tập/BT chọn theo bản đồ mới).
+export const laMaDangBdm = (ma: string | null | undefined): boolean => !!ma && ma.startsWith('NDB')
+// Nhánh kho của 1 dạng: NDB ⇒ 'bdm', còn lại giữ nhánh người gọi biết (nhánh tài liệu / nhánh mastery trả về).
+export const nhanhKhoCuaDang = (ma: string | null | undefined, nhanh: string | null | undefined): string | null =>
+  laMaDangBdm(ma) ? NHANH_BDM.ma : (nhanh ?? null)
 // Môn có KHO HÌNH (mô hình/lưới `hinh_*` — đơn vị là BÀI/node, KHÔNG phải dạng) để ET/MT nhặt bài. Registry
 // thay cho `if (mon === 'Toán')` rải ở màn hình (§1.6 symmetry test).
 const KHO_HINH_MO_HINH = new Set(['Toán'])
@@ -102,6 +120,20 @@ export async function fetchCausCuaTaiLieu(tl: TaiLieuNhanhCtx, maCaus: string[])
     const { data, error } = await supabase.from(tbl).select('*').in('ma_cau', mas).limit(LIMIT)
     if (error) throw error
     out.push(...((data ?? []) as CauHoi[]))
+    // Kho bản đồ mới là VIEW chỉ chứa câu ĐÃ có dạng bài: câu bị gỡ gán sau khi vào tài liệu sẽ RỤNG IM LẶNG khỏi đề
+    // (CLAUDE.md §2 "tham chiếu text"). Câu vẫn sống ở kho gốc ⇒ nạp từ đó, dạng để TRỐNG (chưa có dạng bài — §1.5).
+    if (tbl === khoCuaMon(tl.mon, NHANH_BDM.ma).cauTbl && tbl !== khoCuaMon(tl.mon, null).cauTbl) {
+      const co = new Set(((data ?? []) as CauHoi[]).map((c) => c.ma_cau))
+      let thieu = mas.filter((m) => !co.has(m))
+      for (const [goc, nh] of [['dai', null], ['hgt', 'hinh_gt']] as const) {
+        if (!thieu.length) break
+        const { data: d2, error: e2 } = await supabase.from(khoCuaMon(tl.mon, nh).cauTbl).select('*').in('ma_cau', thieu).limit(LIMIT)
+        if (e2) throw e2
+        const rs = ((d2 ?? []) as CauHoi[]).map((c) => ({ ...c, dang_chinh: null, kho_goc: goc }) as unknown as CauHoi)
+        out.push(...rs)
+        const da = new Set(rs.map((c) => c.ma_cau)); thieu = thieu.filter((m) => !da.has(m))
+      }
+    }
   }
   return out
 }
@@ -200,7 +232,9 @@ export function canBeETForm(c: { lua_chon?: string[] | null; menh_de?: unknown[]
 }
 // Kho nào ĐÃ CÓ bảng form trắc nghiệm AI (<kho>_cau_form_tn). khoCuaMon().formTnTbl là TÊN theo quy ước cho mọi kho;
 // bảng chưa tạo thì PostgREST 404 → chỗ gọi kiểm qua đây trước. Tạo bảng cho kho mới = thêm tên vào đây (registry, §1.6).
-const KHO_CO_FORM_TN = new Set(['dai_cau_form_tn', 'hgt_cau_form_tn']) // hgt: bảng có từ mig 202609080230
+// bdm_cau_form_tn = VIEW gộp dai_ + hgt_cau_form_tn (bản đồ mới) — id của dòng hgt KHÔNG nằm trong dai_cau_form_tn ⇒ ghi
+// bai_test_cau theo kho gốc của câu (form_tn_id / form_tn_hgt_id, xem testonline.ts).
+const KHO_CO_FORM_TN = new Set(['dai_cau_form_tn', 'hgt_cau_form_tn', 'bdm_cau_form_tn']) // hgt: bảng có từ mig 202609080230
 export const coFormTn = (formTnTbl: string): boolean => KHO_CO_FORM_TN.has(formTnTbl)
 // ⭐ THỨ TỰ CHUẨN CỦA ET (Thùy chốt 07-20) — gom theo NHÓM IN: trắc nghiệm → trả lời ngắn → tự luận,
 // GIỮ NGUYÊN thứ tự chọn bên trong mỗi nhóm. Gom TẠI LÚC LƯU (ETScreen.luu) → ghi thẳng vào `thu_tu`.
@@ -609,13 +643,25 @@ export async function getTaiLieuFull(id: string, opts?: { onlyBuoiId?: string })
   const cauMap = new Map(caus.map((c) => [c.ma_cau, c]))
   // Dạng dùng cho CẢ 'dang' (trên lớp) lẫn 'btvn' (về nhà) — đều ref_ma = ma_dang.
   const dangMas = [...new Set(phans.filter((p) => (p.loai_phan === 'dang' || p.loai_phan === 'btvn' || p.loai_phan === 'ontap') && p.ref_ma).map((p) => p.ref_ma as string))]
-  const dangs = dangMas.length ? (((await supabase.from(K.banDoTbl).select('ma_dang,ten_dang,muc_do,bac_toi_thieu,ma_chuyen_de,ten_chuyen_de').in('ma_dang', dangMas).limit(LIMIT)).data ?? []) as DangRow[]) : []
+  // Tra tên + LT dạng theo KHO CỦA TỪNG MÃ (không chỉ kho của tài liệu): tài liệu nhánh Đại cũ có thể mang ref_ma dạng bài NDB
+  // (đổi mã lịch sử đợt 2 · ôn tập / BT chọn theo bản đồ mới) ⇒ NDB tra bdm_ban_do, mã cũ tra kho của tài liệu như trước.
+  const K_CUA = (ma: string) => (laMaDangBdm(ma) ? khoCuaMon((tl as any).mon, nhanhKhoCuaDang(ma, (tl as any).nhanh)) : K)
+  const theoKho = new Map<string, { k: ReturnType<typeof khoCuaMon>; mas: string[] }>() // khoá = bảng bản đồ
+  for (const ma of dangMas) { const k = K_CUA(ma); const g = theoKho.get(k.banDoTbl) ?? { k, mas: [] }; g.mas.push(ma); theoKho.set(k.banDoTbl, g) }
+  const dangs: DangRow[] = []
+  const ltDangRows: (LtRow & { ma_dang: string })[] = []
+  for (const { k, mas } of theoKho.values()) {
+    dangs.push(...(((await supabase.from(k.banDoTbl).select('ma_dang,ten_dang,muc_do,bac_toi_thieu,ma_chuyen_de,ten_chuyen_de').in('ma_dang', mas).limit(LIMIT)).data ?? []) as DangRow[]))
+    ltDangRows.push(...(((await supabase.from(k.ltDangTbl).select('*').in('ma_dang', mas).limit(LIMIT)).data ?? []) as (LtRow & { ma_dang: string })[]))
+  }
   const dangMap = new Map(dangs.map((d) => [d.ma_dang, d]))
-  const ltDangRows = dangMas.length ? (((await supabase.from(K.ltDangTbl).select('*').in('ma_dang', dangMas).limit(LIMIT)).data ?? []) as (LtRow & { ma_dang: string })[]) : []
   const ltDangMap = new Map(ltDangRows.map((l) => [l.ma_dang, l]))
   // Lý thuyết chuyên đề DERIVE từ chuyên đề của các dạng TRÊN LỚP (mỗi buổi sẽ tự hiện LT của chuyên đề nó chứa).
+  // Bản đồ mới KHÔNG có LT chuyên đề (ltCdTbl trỏ tạm LT dạng bài, không có cột ma_chuyen_de) ⇒ không tra.
   const cdMas = [...new Set(phans.filter((p) => p.loai_phan === 'dang' && p.ref_ma).map((p) => dangMap.get(p.ref_ma as string)?.ma_chuyen_de).filter(Boolean) as string[])]
-  const ltCdRows = cdMas.length ? (((await supabase.from(K.ltCdTbl).select('*').in('ma_chuyen_de', cdMas).limit(LIMIT)).data ?? []) as (LtRow & { ma_chuyen_de: string })[]) : []
+  const cdMasTra = [...new Set(phans.filter((p) => p.loai_phan === 'dang' && p.ref_ma && K_CUA(p.ref_ma).ltCdTbl !== K_CUA(p.ref_ma).ltDangTbl)
+    .map((p) => dangMap.get(p.ref_ma as string)?.ma_chuyen_de).filter(Boolean) as string[])]
+  const ltCdRows = cdMasTra.length ? (((await supabase.from(K.ltCdTbl).select('*').in('ma_chuyen_de', cdMasTra).limit(LIMIT)).data ?? []) as (LtRow & { ma_chuyen_de: string })[]) : []
   const ltCdMap = new Map(ltCdRows.map((l) => [l.ma_chuyen_de, l]))
   const ltChuyenDe: Record<string, LtRow | null> = {}
   const tenChuyenDe: Record<string, string> = {}
@@ -673,7 +719,8 @@ export async function createET(input: { lopId: string; ngay: string; ten: string
 // Cập nhật ET (tên / gán lại lớp+ngày / cấu hình). lop_id+ngay = đường nối buổi.
 // Trả TRUE nếu update trúng dòng (doc còn tồn tại), FALSE nếu id không có trong tai_lieu (doc đã xoá) —
 // caller dựa vào đây để KHÔNG setETCaus(id ma) rồi dính FK tai_lieu_phan_tai_lieu_id_fkey (tạo mới thay vì).
-export async function updateET(id: string, patch: { ten?: string; lop_id?: string | null; ngay?: string | null; cau_hinh?: CauHinh }): Promise<boolean> {
+// `nhanh`: ET tạo mới (chưa từng mở từ Kho) đổi nhánh rồi lưu đè doc đã nạp của buổi ⇒ nhánh đi theo câu (câu đã reset theo nhánh mới).
+export async function updateET(id: string, patch: { ten?: string; lop_id?: string | null; ngay?: string | null; cau_hinh?: CauHinh; nhanh?: string | null }): Promise<boolean> {
   const { data, error } = await supabase.from('tai_lieu').update({ ...patch, updated_at: new Date().toISOString() }).eq('id', id).select('id')
   if (error) throw error
   return ((data as unknown[])?.length ?? 0) > 0
