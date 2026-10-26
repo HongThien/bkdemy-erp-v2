@@ -77833,3 +77833,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - Thử trên dev (phiên admin): K9/K11 ra cây mới, chọn trả NDB + 'bdm'; K5 (cấp 1) + caller chưa bật cờ = cây cũ.
 - `dangInfoCuaMon` chỉ tra bdm_ban_do khi môn có nhánh 'bdm' trong registry (agent report báo: môn khác bị lọt dạng Toán).
 - **Sự cố:** node_modules của checkout chính bị dọn TRỐNG (chiều 26/10, không rõ phiên nào) ⇒ dev server + tsc gãy với mọi phiên. `npm install` lại (package-lock không đổi, 620 gói). Phiên nào cần node_modules cho worktree thì COPY/cài riêng, đừng chuyển đi từ checkout chính.
+
+## 26/10 — Đổi mã dạng LỊCH SỬ sang dạng bài NDB, đợt 1: bảng đo / vận hành (mig 202610261847)
+- Thùy chọn 'Đổi mã hàng loạt'. Có mã câu ⇒ dạng bài của câu (_do_o_bdm); không mã câu ⇒ đúng đường mastery (_do_o_bdm(null, mã)), không ra dạng bài thì đích duy nhất theo câu sống + đối ứng. Khoá theo mã dạng: đụng thì giữ cũ. Không đụng bài làm của bổ trợ/bù/đuổi/học từ đầu (đã đổi cùng dòng ca ở mig riêng). Mã cũ lưu `ma_dang_cu` (thêm cột cho 6 bảng).
+- Đổi: gami_session_problems 16.129 · bai_test_cau 46.923 · tu_luyen_dang_lan 38.710 · ca_test_cau 1.014 · bai_test_dang_phat_hanh 60 · buoi_danh_gia_dang 1.200 · canh_bao_yeu 23. Còn cũ (không chắc): 1.003 · 4.421 · 3.673 · 145 · 93 · 1.029 · 84.
+- Mastery (4 lớp) gần y hệt: khác ở 127 lượt chấm buổi KHÔNG mã câu trước bị bỏ rơi nay được tính + 4 lượt ô mã cũ HGT gộp vào dạng bài. Dạng phát hành khớp câu bài làm 100%. Bonus: DS tự luyện đếm được 'đã luyện' theo NDB.
+- Đợt 2 (CHƯA làm): tai_lieu_phan.ref_ma (8.712 mã cũ) + btvn_ontap_config — chờ builder đọc được NDB (getTaiLieuFull tra tên/LT theo bảng bản đồ của nhánh tài liệu), làm sau rồi in thử tài liệu cũ.

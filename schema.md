@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-444 bảng · 34 view · 0 enum · 225 trigger · 1304 function
+444 bảng · 34 view · 0 enum · 225 trigger · 1305 function
 
 ## _app_secrets
 
@@ -295,6 +295,7 @@
 | ma_dang | text |  |  | PK |  |
 | phat_hanh_at | timestamp with time zone |  | now() |  |  |
 | phat_hanh_by | uuid | Y |  | FK→nhan_su.id |  |
+| ma_dang_cu | text | Y |  |  |  |
 
 ## bai_test_report
 
@@ -742,6 +743,7 @@
 | diem | numeric |  |  |  |  |
 | graded_by | uuid | Y |  |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
+| ma_dang_cu | text | Y |  |  |  |
 
 ## buoi_game_luot
 
@@ -975,6 +977,7 @@
 | nhanh | text | Y |  |  | `dai` · `hinh` |
 | muc_do | smallint | Y |  |  |  |
 | ten_chuyen_de | text | Y |  |  |  |
+| ma_dang_cu | text | Y |  |  |  |
 
 ## ca_test_cau_kq
 
@@ -1013,6 +1016,7 @@
 | created_at | timestamp with time zone |  | now() |  |  |
 | hinh_y_id | uuid | Y |  | FK→hinh_y.id |  |
 | ngu_canh_luot | text | Y |  |  | `mo_hinh` · `dang` · `luyen_de` |
+| ma_dang_cu | text | Y |  |  |  |
 
 ## chi_cau_hinh
 
@@ -2106,6 +2110,7 @@ END |  |  |
 | diem_toi_da | numeric | Y |  |  |  |
 | nang_cao | boolean |  | false |  |  |
 | ngoai_de | boolean |  | false |  |  |
+| ma_dang_cu | text | Y |  |  |  |
 
 ## gay_chot_thang
 
@@ -3772,7 +3777,7 @@ END |  |  |
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| mon | text |  |  | PK FK→thanh_tuu.mon |  |
+| mon | text |  |  | PK FK→huy_hieu.mon |  |
 | huy_hieu_key | text |  |  | PK FK→huy_hieu.key |  |
 | thanh_tuu_key | text |  |  | PK FK→thanh_tuu.key |  |
 | vai | text |  |  |  | `chuan` · `them` |
@@ -5162,7 +5167,7 @@ END |  |  |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
 | mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
-| khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
+| khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
 | ten | text |  |  |  |  |
@@ -6201,6 +6206,7 @@ END |  |  |
 | ma_cau | text |  |  |  |  |
 | bai_test_id | uuid |  |  | FK→bai_test.id |  |
 | tao_at | timestamp with time zone |  | now() |  |  |
+| ma_dang_cu | text | Y |  |  |  |
 
 ## tuyen_sinh_nhan_bao
 
@@ -9094,6 +9100,7 @@ WITH luot AS (
 - `fn_bdm_chuyen_dang_bai(p_id text, p_nhom_id text, p_thu_tu_dich text[])` → void
 - `fn_bdm_chuyen_nhom(p_id text, p_chu_de_id text, p_chuyen_de_id text, p_thu_tu_dich text[])` → void
 - `fn_bdm_chuyen_o(p_chu_de_cu text, p_chuyen_de_id text, p_chu_de_moi text)` → void
+- `fn_bdm_dang_chon(p_mon text, p_khoi text)` → jsonb
 - `fn_bdm_dang_cu(p_khoi text)` → jsonb
 - `fn_bdm_gan_cau(p_ma_caus text[], p_dang_bai text, p_nguon text DEFAULT 'nguoi'::text)` → integer
 - `fn_bdm_gan_cum(p_ma_cum text, p_dang_bai text)` → void
@@ -9471,8 +9478,8 @@ WITH luot AS (
 - `fn_hs_len_bac_da_xem(p_mon text)` → void
 - `fn_hs_len_bac_moi(p_mon text)` → jsonb
 - `fn_hs_lich_bo_tro()` → jsonb
-- `fn_hs_lich_su_lam_bai(p_so_ngay integer DEFAULT 30)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
 - `fn_hs_lich_su_lam_bai(p_so_ngay integer, p_mon text)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
+- `fn_hs_lich_su_lam_bai(p_so_ngay integer DEFAULT 30)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
 - `fn_hs_luu_giao_dien(p_skin text, p_che_do text, p_hinh_nen text)` → jsonb
 - `fn_hs_luu_hieu_ung_game(p_bat boolean)` → jsonb
 - `fn_hs_luyen_con_lai(p_mon text, p_ma_dang text)` → integer
@@ -9877,8 +9884,8 @@ WITH luot AS (
 - `hs_sotay_tim_ct(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_khoi text DEFAULT NULL::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_sotay_tim_lt(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_vao_ca_online(p_buoi uuid)` → jsonb
-- `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
 - `hs_xep_hang_tu_luyen(p_khoi text, p_mon text)` → jsonb
+- `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
 - `htd_co_mo(p_mon text)` → boolean
 - `htd_lo_trinh(p_mon text)` → jsonb
 - `htd_ly_thuyet(p_mon text, p_ma_dang text)` → jsonb
