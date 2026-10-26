@@ -77908,3 +77908,10 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - Còn chờ Thùy: 3 câu đề phi thực tế (102004 con −1 tuổi, 102006 con −2 tuổi, 102012 con 0 tuổi ở mốc quá khứ) — form chưa duyệt, không lên app.
 - Kiểm: HS 4T1 — DS dạng Tổng hiệu 26/59/38/22 câu, sinh lượt 'ẩn tổng' 10/10 câu trắc nghiệm 4 PA.
 - 4T1 sang bản đồ mới (Thùy 26/10 'riêng 4T1 áp bản đồ mới'): 4T1 = lớp Toán DUY NHẤT khối 4T ⇒ bật theo khối 4T. CHƯA bật — chuyên đề 'Bài toán tổng hiệu' của bản đồ mới 4T chỉ có 1 dạng bài (NDB01541 cơ bản); 3 dạng cũ ẩn tổng/ẩn hiệu/thay đổi đại lượng (122 câu) không có dạng bài ⇒ bật là mất khỏi app. Chờ Thùy.
+
+## 26/10 — 4T1 (khối 4T) sang bản đồ mới (mig 202610262053) — Thùy "riêng 4T1 áp bản đồ mới"
+- Thùy thêm 5 dạng bài Tổng hiệu (NDB01623–27: ẩn tổng–chu vi diện tích · ẩn hiệu–số chẵn lẻ · liên quan đến tuổi · cho nhận · tăng giảm đại lượng). `scripts/_th4t_xep.mjs --ghi`: 122 câu (dạng cũ ẩn tổng/ẩn hiệu/thay đổi) xếp theo NGỮ CẢNH đề — tuổi 41 · chu vi diện tích 21 · chẵn lẻ 38 · cho nhận 11 · tăng giảm 11, 0 câu lưng chừng — gán nguon 'ai'.
+- **Bẫy:** `` trong regex JS không nhận chữ tiếng Việt ('cho' không khớp) ⇒ dùng `(^|\s)`; `'\s+'` trong template literal JS thành 's+' (mất backslash) ⇒ hiển thị đề mất chữ 's' — chỉ là bản in thử, dữ liệu không đổi.
+- 4T1 = lớp Toán duy nhất khối 4T ⇒ bật theo khối. Luật 'khối giữ bản đồ cũ' gom về MỘT hàm `_bdm_khoi_giu_cu` (3/4/5/5T) — trước rải ở `_kho_ds_nhanh_khoi`, `_do_o_bdm`, `_do_o_bdm_core` (dashboard). Danh sách CẤP 1 của luật đo (tự luyện) giữ nguyên: 4T vẫn là cấp 1 về đo.
+- Kiểm `scripts/_test_4t_bdm.mjs` (ROLLBACK): 4T1 mastery 412 ô (0 NDB) → 539 ô (506 NDB); 9A1 y hệt; khối 4/5T đổi 4 ô (HS làm câu 4T T14T0101… ⇒ khoá NDB — quy dạng theo khối CÂU, chấp nhận). HS 4T1: phiêu lưu 0,6 s (lần đầu cache lạnh 6,6 s), DS tự luyện 1,6 s có đủ 6 dạng bài Tổng hiệu, sổ tay, dạng học tập đều NDB.
+- Còn: 4T có ~1.223 câu chưa có dạng bài mới ⇒ chưa lên app 4T1 tới khi được xếp.

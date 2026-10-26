@@ -1,0 +1,856 @@
+[
+ {
+  "ma_cau": "T14T080102001",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "3 năm trước mẹ hơn con 26 tuổi. 5 năm nữa, tổng số tuổi của mẹ và con là 44 tuổi. Hỏi hiện tại con bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102002",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "4 năm trước bố hơn con 30 tuổi. 6 năm nữa, tổng số tuổi của bố và con là 52 tuổi. Hỏi hiện tại con bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102003",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "2 năm trước mẹ hơn con 24 tuổi. 3 năm nữa, tổng số tuổi của mẹ và con là 38 tuổi. Hỏi hiện tại con bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102004",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "5 năm trước bố hơn con 28 tuổi. 2 năm nữa, tổng số tuổi của bố và con là 40 tuổi. Hỏi hiện tại con bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102005",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "3 năm trước mẹ hơn con 22 tuổi. 4 năm nữa, tổng số tuổi của mẹ và con là 42 tuổi. Hỏi hiện tại con bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102006",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "6 năm trước bố hơn con 32 tuổi. 3 năm nữa, tổng số tuổi của bố và con là 46 tuổi. Hỏi hiện tại con bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102007",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "1 năm trước mẹ hơn con 20 tuổi. 5 năm nữa, tổng số tuổi của mẹ và con là 44 tuổi. Hỏi hiện tại con bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102008",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "4 năm trước bố hơn con 26 tuổi. 7 năm nữa, tổng số tuổi của bố và con là 52 tuổi. Hỏi hiện tại con bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102009",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "3 năm trước mẹ hơn con 18 tuổi. 2 năm nữa, tổng số tuổi của mẹ và con là 36 tuổi. Hỏi hiện tại con bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102010",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "5 năm trước bố hơn con 30 tuổi. 2 năm nữa, tổng số tuổi của bố và con là 48 tuổi. Hỏi hiện tại con bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102011",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "2 năm trước mẹ hơn con 28 tuổi. 3 năm nữa, tổng số tuổi của mẹ và con là 40 tuổi. Hỏi hiện tại con bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102012",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "6 năm trước bố hơn con 24 tuổi. 4 năm nữa, tổng số tuổi của bố và con là 44 tuổi. Hỏi hiện tại con bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102013",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "1 năm trước mẹ hơn con 22 tuổi. 5 năm nữa, tổng số tuổi của mẹ và con là 46 tuổi. Hỏi hiện tại con bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102014",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "4 năm trước bố hơn con 34 tuổi. 6 năm nữa, tổng số tuổi của bố và con là 56 tuổi. Hỏi hiện tại con bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102015",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "3 năm trước mẹ hơn con 26 tuổi. 4 năm nữa, tổng số tuổi của mẹ và con là 42 tuổi. Hỏi hiện tại con bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102016",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "5 năm trước bố hơn con 28 tuổi. 3 năm nữa, tổng số tuổi của bố và con là 48 tuổi. Hỏi hiện tại con bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102017",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "2 năm trước mẹ hơn con 20 tuổi. 4 năm nữa, tổng số tuổi của mẹ và con là 40 tuổi. Hỏi hiện tại con bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102018",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "3 năm trước bố hơn con 26 tuổi. 2 năm nữa, tổng số tuổi của bố và con là 40 tuổi. Hỏi hiện tại con bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102019",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "6 năm trước mẹ hơn con 30 tuổi. 5 năm nữa, tổng số tuổi của mẹ và con là 54 tuổi. Hỏi hiện tại con bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102020",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "4 năm trước bố hơn con 32 tuổi. 3 năm nữa, tổng số tuổi của bố và con là 50 tuổi. Hỏi hiện tại con bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102021",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01623",
+  "ten": "ẩn tổng – chu vi diện tích",
+  "de": "Một mảnh đất hình chữ nhật có chu vi 128m. Biết chiều dài hơn chiều rộng 12m. Tính diện tích mảnh đất ?"
+ },
+ {
+  "ma_cau": "T14T080102022",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01623",
+  "ten": "ẩn tổng – chu vi diện tích",
+  "de": "Một mảnh đất hình chữ nhật có chu vi 100m. Biết chiều dài hơn chiều rộng 10m. Tính diện tích mảnh đất ?"
+ },
+ {
+  "ma_cau": "T14T080102023",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01623",
+  "ten": "ẩn tổng – chu vi diện tích",
+  "de": "Một mảnh đất hình chữ nhật có chu vi 90m. Biết chiều dài hơn chiều rộng 5m. Tính diện tích mảnh đất ?"
+ },
+ {
+  "ma_cau": "T14T080102024",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01623",
+  "ten": "ẩn tổng – chu vi diện tích",
+  "de": "Một mảnh đất hình chữ nhật có chu vi 150m. Biết chiều dài hơn chiều rộng 15m. Tính diện tích mảnh đất ?"
+ },
+ {
+  "ma_cau": "T14T080102025",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01623",
+  "ten": "ẩn tổng – chu vi diện tích",
+  "de": "Một mảnh đất hình chữ nhật có chu vi 84m. Biết chiều dài hơn chiều rộng 8m. Tính diện tích mảnh đất ?"
+ },
+ {
+  "ma_cau": "T14T080102026",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01623",
+  "ten": "ẩn tổng – chu vi diện tích",
+  "de": "Một mảnh đất hình chữ nhật có chu vi 160m. Biết chiều dài hơn chiều rộng 18m. Tính diện tích mảnh đất ?"
+ },
+ {
+  "ma_cau": "T14T080102027",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01623",
+  "ten": "ẩn tổng – chu vi diện tích",
+  "de": "Một mảnh đất hình chữ nhật có chu vi 72m. Biết chiều dài hơn chiều rộng 4m. Tính diện tích mảnh đất ?"
+ },
+ {
+  "ma_cau": "T14T080102028",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01623",
+  "ten": "ẩn tổng – chu vi diện tích",
+  "de": "Một mảnh đất hình chữ nhật có chu vi 118m. Biết chiều dài hơn chiều rộng 13m. Tính diện tích mảnh đất ?"
+ },
+ {
+  "ma_cau": "T14T080102029",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01623",
+  "ten": "ẩn tổng – chu vi diện tích",
+  "de": "Một mảnh đất hình chữ nhật có chu vi 96m. Biết chiều dài hơn chiều rộng 10m. Tính diện tích mảnh đất ?"
+ },
+ {
+  "ma_cau": "T14T080102030",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01623",
+  "ten": "ẩn tổng – chu vi diện tích",
+  "de": "Một mảnh đất hình chữ nhật có chu vi 140m. Biết chiều dài hơn chiều rộng 16m. Tính diện tích mảnh đất ?"
+ },
+ {
+  "ma_cau": "T14T080102031",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01623",
+  "ten": "ẩn tổng – chu vi diện tích",
+  "de": "Một mảnh đất hình chữ nhật có chu vi 66m. Biết chiều dài hơn chiều rộng 7m. Tính diện tích mảnh đất ?"
+ },
+ {
+  "ma_cau": "T14T080102032",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01623",
+  "ten": "ẩn tổng – chu vi diện tích",
+  "de": "Một mảnh đất hình chữ nhật có chu vi 110m. Biết chiều dài hơn chiều rộng 21m. Tính diện tích mảnh đất ?"
+ },
+ {
+  "ma_cau": "T14T080102033",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01623",
+  "ten": "ẩn tổng – chu vi diện tích",
+  "de": "Một mảnh đất hình chữ nhật có chu vi 180m. Biết chiều dài hơn chiều rộng 30m. Tính diện tích mảnh đất ?"
+ },
+ {
+  "ma_cau": "T14T080102034",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01623",
+  "ten": "ẩn tổng – chu vi diện tích",
+  "de": "Một mảnh đất hình chữ nhật có chu vi 86m. Biết chiều dài hơn chiều rộng 5m. Tính diện tích mảnh đất ?"
+ },
+ {
+  "ma_cau": "T14T080102035",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01623",
+  "ten": "ẩn tổng – chu vi diện tích",
+  "de": "Một mảnh đất hình chữ nhật có chu vi 124m. Biết chiều dài hơn chiều rộng 12m. Tính diện tích mảnh đất ?"
+ },
+ {
+  "ma_cau": "T14T080102036",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01623",
+  "ten": "ẩn tổng – chu vi diện tích",
+  "de": "Một mảnh đất hình chữ nhật có chu vi 76m. Biết chiều dài hơn chiều rộng 10m. Tính diện tích mảnh đất ?"
+ },
+ {
+  "ma_cau": "T14T080102037",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01623",
+  "ten": "ẩn tổng – chu vi diện tích",
+  "de": "Một mảnh đất hình chữ nhật có chu vi 200m. Biết chiều dài hơn chiều rộng 24m. Tính diện tích mảnh đất ?"
+ },
+ {
+  "ma_cau": "T14T080102038",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01623",
+  "ten": "ẩn tổng – chu vi diện tích",
+  "de": "Một mảnh đất hình chữ nhật có chu vi 94m. Biết chiều dài hơn chiều rộng 9m. Tính diện tích mảnh đất ?"
+ },
+ {
+  "ma_cau": "T14T080102039",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01623",
+  "ten": "ẩn tổng – chu vi diện tích",
+  "de": "Một mảnh đất hình chữ nhật có chu vi 102m. Biết chiều dài hơn chiều rộng 13m. Tính diện tích mảnh đất ?"
+ },
+ {
+  "ma_cau": "T14T080102040",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01623",
+  "ten": "ẩn tổng – chu vi diện tích",
+  "de": "Một mảnh đất hình chữ nhật có chu vi 156m. Biết chiều dài hơn chiều rộng 22m. Tính diện tích mảnh đất ?"
+ },
+ {
+  "ma_cau": "T14T080102041",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01623",
+  "ten": "ẩn tổng – chu vi diện tích",
+  "de": "Một mảnh đất hình chữ nhật có chu vi 112m. Biết chiều dài hơn chiều rộng 18m. Tính diện tích mảnh đất ?"
+ },
+ {
+  "ma_cau": "T14T080102042",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "3 năm trước mẹ hơn con 26 tuổi. 5 năm nữa, tổng số tuổi của mẹ và con là 44 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi ?"
+ },
+ {
+  "ma_cau": "T14T080102043",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "2 năm trước mẹ hơn con 30 tuổi. 4 năm nữa, tổng số tuổi của mẹ và con là 50 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102044",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "4 năm trước mẹ hơn con 24 tuổi. 6 năm nữa, tổng số tuổi của mẹ và con là 60 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102045",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "5 năm trước mẹ hơn con 28 tuổi. 3 năm nữa, tổng số tuổi của mẹ và con là 52 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102046",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "2 năm trước mẹ hơn con 32 tuổi. 7 năm nữa, tổng số tuổi của mẹ và con là 58 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102047",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "6 năm trước mẹ hơn con 20 tuổi. 4 năm nữa, tổng số tuổi của mẹ và con là 46 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102048",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "3 năm trước mẹ hơn con 34 tuổi. 6 năm nữa, tổng số tuổi của mẹ và con là 62 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102049",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "4 năm trước mẹ hơn con 22 tuổi. 8 năm nữa, tổng số tuổi của mẹ và con là 56 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102050",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "1 năm trước mẹ hơn con 36 tuổi. 5 năm nữa, tổng số tuổi của mẹ và con là 66 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102051",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "5 năm trước mẹ hơn con 18 tuổi. 9 năm nữa, tổng số tuổi của mẹ và con là 60 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102052",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "2 năm trước mẹ hơn con 40 tuổi. 6 năm nữa, tổng số tuổi của mẹ và con là 70 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102053",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "3 năm trước mẹ hơn con 25 tuổi. 4 năm nữa, tổng số tuổi của mẹ và con là 57 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102054",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "7 năm trước mẹ hơn con 30 tuổi. 3 năm nữa, tổng số tuổi của mẹ và con là 54 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102055",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "4 năm trước mẹ hơn con 16 tuổi. 10 năm nữa, tổng số tuổi của mẹ và con là 48 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102056",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "6 năm trước mẹ hơn con 38 tuổi. 5 năm nữa, tổng số tuổi của mẹ và con là 68 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102057",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "2 năm trước mẹ hơn con 44 tuổi. 2 năm nữa, tổng số tuổi của mẹ và con là 60 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102058",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "3 năm trước mẹ hơn con 21 tuổi. 7 năm nữa, tổng số tuổi của mẹ và con là 59 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102059",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "8 năm trước mẹ hơn con 27 tuổi. 6 năm nữa, tổng số tuổi của mẹ và con là 63 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102060",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "5 năm trước mẹ hơn con 33 tuổi. 4 năm nữa, tổng số tuổi của mẹ và con là 61 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102061",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "1 năm trước mẹ hơn con 12 tuổi. 12 năm nữa, tổng số tuổi của mẹ và con là 66 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080102062",
+  "dang_chinh": "T14T080102",
+  "dich": "NDB01625",
+  "ten": "liên quan đến tuổi",
+  "de": "4 năm trước mẹ hơn con 50 tuổi. 3 năm nữa, tổng số tuổi của mẹ và con là 80 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi?"
+ },
+ {
+  "ma_cau": "T14T080103001",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số tự nhiên liên tiếp có tổng là 105 ?"
+ },
+ {
+  "ma_cau": "T14T080103002",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số tự nhiên liên tiếp có tổng là 77 ?"
+ },
+ {
+  "ma_cau": "T14T080103003",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số tự nhiên liên tiếp có tổng là 85 ?"
+ },
+ {
+  "ma_cau": "T14T080103004",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số tự nhiên liên tiếp có tổng là 95 ?"
+ },
+ {
+  "ma_cau": "T14T080103005",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số tự nhiên liên tiếp có tổng là 127 ?"
+ },
+ {
+  "ma_cau": "T14T080103006",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số tự nhiên liên tiếp có tổng là 201 ?"
+ },
+ {
+  "ma_cau": "T14T080103007",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số chẵn liên tiếp có tổng là 90"
+ },
+ {
+  "ma_cau": "T14T080103008",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số chẵn liên tiếp có tổng là 58"
+ },
+ {
+  "ma_cau": "T14T080103009",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số chẵn liên tiếp có tổng là 102"
+ },
+ {
+  "ma_cau": "T14T080103010",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số chẵn liên tiếp có tổng là 134"
+ },
+ {
+  "ma_cau": "T14T080103011",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số chẵn liên tiếp có tổng là 178"
+ },
+ {
+  "ma_cau": "T14T080103012",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số chẵn liên tiếp có tổng là 62"
+ },
+ {
+  "ma_cau": "T14T080103013",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số chẵn liên tiếp có tổng là 98"
+ },
+ {
+  "ma_cau": "T14T080103014",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số chẵn liên tiếp có tổng là 146"
+ },
+ {
+  "ma_cau": "T14T080103015",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số chẵn liên tiếp có tổng là 222"
+ },
+ {
+  "ma_cau": "T14T080103016",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số chẵn liên tiếp có tổng là 250"
+ },
+ {
+  "ma_cau": "T14T080103017",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số chẵn liên tiếp có tổng là 86"
+ },
+ {
+  "ma_cau": "T14T080103018",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số tự nhiên chẵn có tổng là 110 biết rằng giữa chúng có 4 số tự nhiên chẵn khác ?"
+ },
+ {
+  "ma_cau": "T14T080103019",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số tự nhiên chẵn có tổng là 84 biết rằng giữa chúng có 3 số tự nhiên chẵn khác ?"
+ },
+ {
+  "ma_cau": "T14T080103020",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số tự nhiên chẵn có tổng là 120 biết rằng giữa chúng có 5 số tự nhiên chẵn khác ?"
+ },
+ {
+  "ma_cau": "T14T080103021",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số tự nhiên chẵn có tổng là 94 biết rằng giữa chúng có 2 số tự nhiên chẵn khác ?"
+ },
+ {
+  "ma_cau": "T14T080103022",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số tự nhiên chẵn có tổng là 102 biết rằng giữa chúng có 6 số tự nhiên chẵn khác ?"
+ },
+ {
+  "ma_cau": "T14T080103023",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số tự nhiên chẵn có tổng là 130 biết rằng giữa chúng có 4 số tự nhiên chẵn khác ?"
+ },
+ {
+  "ma_cau": "T14T080103024",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số tự nhiên chẵn có tổng là 140 biết rằng giữa chúng có 7 số tự nhiên chẵn khác ?"
+ },
+ {
+  "ma_cau": "T14T080103025",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số tự nhiên chẵn có tổng là 76 biết rằng giữa chúng có 1 số tự nhiên chẵn khác ?"
+ },
+ {
+  "ma_cau": "T14T080103026",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số tự nhiên chẵn có tổng là 122 biết rằng giữa chúng có 8 số tự nhiên chẵn khác ?"
+ },
+ {
+  "ma_cau": "T14T080103027",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số tự nhiên chẵn có tổng là 160 biết rằng giữa chúng có 9 số tự nhiên chẵn khác ?"
+ },
+ {
+  "ma_cau": "T14T080103028",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số tự nhiên chẵn có tổng là 126 biết rằng giữa chúng có 10 số tự nhiên chẵn khác ?"
+ },
+ {
+  "ma_cau": "T14T080103029",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số tự nhiên chẵn có tổng là 92 biết rằng giữa chúng có 3 số tự nhiên chẵn khác ?"
+ },
+ {
+  "ma_cau": "T14T080103030",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số tự nhiên chẵn có tổng là 108 biết rằng giữa chúng có 5 số tự nhiên chẵn khác ?"
+ },
+ {
+  "ma_cau": "T14T080103031",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số tự nhiên chẵn có tổng là 118 biết rằng giữa chúng có 2 số tự nhiên chẵn khác ?"
+ },
+ {
+  "ma_cau": "T14T080103032",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số tự nhiên chẵn có tổng là 130 biết rằng giữa chúng có 6 số tự nhiên chẵn khác ?"
+ },
+ {
+  "ma_cau": "T14T080103033",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số tự nhiên chẵn có tổng là 150 biết rằng giữa chúng có 4 số tự nhiên chẵn khác ?"
+ },
+ {
+  "ma_cau": "T14T080103034",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số tự nhiên chẵn có tổng là 156 biết rằng giữa chúng có 7 số tự nhiên chẵn khác ?"
+ },
+ {
+  "ma_cau": "T14T080103035",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số tự nhiên chẵn có tổng là 100 biết rằng giữa chúng có 1 số tự nhiên chẵn khác ?"
+ },
+ {
+  "ma_cau": "T14T080103036",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số tự nhiên chẵn có tổng là 174 biết rằng giữa chúng có 8 số tự nhiên chẵn khác ?"
+ },
+ {
+  "ma_cau": "T14T080103037",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số tự nhiên chẵn có tổng là 200 biết rằng giữa chúng có 9 số tự nhiên chẵn khác ?"
+ },
+ {
+  "ma_cau": "T14T080103038",
+  "dang_chinh": "T14T080103",
+  "dich": "NDB01624",
+  "ten": "ẩn hiệu – số chẵn lẻ",
+  "de": "Tìm hai số tự nhiên chẵn có tổng là 178 biết rằng giữa chúng có 10 số tự nhiên chẵn khác ?"
+ },
+ {
+  "ma_cau": "T14T080104001",
+  "dang_chinh": "T14T080104",
+  "dich": "NDB01626",
+  "ten": "cho nhận",
+  "de": "An và Bình có 80 viên bi. Nếu An cho Bình 6 viên bi thì Bình hơn An 2 viên bi. Hỏi mỗi bạn có bao nhiêu viên bi?"
+ },
+ {
+  "ma_cau": "T14T080104002",
+  "dang_chinh": "T14T080104",
+  "dich": "NDB01626",
+  "ten": "cho nhận",
+  "de": "Hùng và Lan có 90 cái kẹo. Nếu Hùng cho Lan 5 cái kẹo thì Lan hơn Hùng 4 cái kẹo. Hỏi mỗi bạn có bao nhiêu cái kẹo?"
+ },
+ {
+  "ma_cau": "T14T080104003",
+  "dang_chinh": "T14T080104",
+  "dich": "NDB01626",
+  "ten": "cho nhận",
+  "de": "Mai và Hoa có 100 quyển sách. Nếu Mai cho Hoa 8 quyển sách thì Hoa hơn Mai 6 quyển sách. Hỏi mỗi bạn có bao nhiêu quyển sách?"
+ },
+ {
+  "ma_cau": "T14T080104004",
+  "dang_chinh": "T14T080104",
+  "dich": "NDB01626",
+  "ten": "cho nhận",
+  "de": "Nam và Hà có 70 viên bi. Nếu Nam cho Hà 4 viên bi thì Hà hơn Nam 2 viên bi. Hỏi mỗi bạn có bao nhiêu viên bi?"
+ },
+ {
+  "ma_cau": "T14T080104005",
+  "dang_chinh": "T14T080104",
+  "dich": "NDB01626",
+  "ten": "cho nhận",
+  "de": "Tuấn và Hương có 120 cái kẹo. Nếu Tuấn cho Hương 10 cái kẹo thì Hương hơn Tuấn 8 cái kẹo. Hỏi mỗi bạn có bao nhiêu cái kẹo?"
+ },
+ {
+  "ma_cau": "T14T080104006",
+  "dang_chinh": "T14T080104",
+  "dich": "NDB01626",
+  "ten": "cho nhận",
+  "de": "Phong và Linh có 60 quả cam. Nếu Phong cho Linh 3 quả cam thì Linh hơn Phong 4 quả cam. Hỏi mỗi bạn có bao nhiêu quả cam?"
+ },
+ {
+  "ma_cau": "T14T080104007",
+  "dang_chinh": "T14T080104",
+  "dich": "NDB01626",
+  "ten": "cho nhận",
+  "de": "Dũng và Trang có 50 viên phấn. Nếu Dũng cho Trang 4 viên phấn thì Trang hơn Dũng 2 viên phấn. Hỏi mỗi bạn có bao nhiêu viên phấn?"
+ },
+ {
+  "ma_cau": "T14T080104008",
+  "dang_chinh": "T14T080104",
+  "dich": "NDB01626",
+  "ten": "cho nhận",
+  "de": "Sơn và Hạnh có 150 cây bút. Nếu Sơn cho Hạnh 12 cây bút thì Hạnh hơn Sơn 10 cây bút. Hỏi mỗi bạn có bao nhiêu cây bút?"
+ },
+ {
+  "ma_cau": "T14T080104009",
+  "dang_chinh": "T14T080104",
+  "dich": "NDB01626",
+  "ten": "cho nhận",
+  "de": "Khoa và Vy có 40 tờ giấy. Nếu Khoa cho Vy 3 tờ giấy thì Vy hơn Khoa 4 tờ giấy. Hỏi mỗi bạn có bao nhiêu tờ giấy?"
+ },
+ {
+  "ma_cau": "T14T080104010",
+  "dang_chinh": "T14T080104",
+  "dich": "NDB01626",
+  "ten": "cho nhận",
+  "de": "Long và Thảo có 200 viên bi. Nếu Long cho Thảo 15 viên bi thì Thảo hơn Long 10 viên bi. Hỏi mỗi bạn có bao nhiêu viên bi?"
+ },
+ {
+  "ma_cau": "T14T080104011",
+  "dang_chinh": "T14T080104",
+  "dich": "NDB01626",
+  "ten": "cho nhận",
+  "de": "Minh và Ngọc có 84 quả táo. Nếu Minh cho Ngọc 7 quả táo thì Ngọc hơn Minh 6 quả táo. Hỏi mỗi bạn có bao nhiêu quả táo?"
+ },
+ {
+  "ma_cau": "T14T080104012",
+  "dang_chinh": "T14T080104",
+  "dich": "NDB01627",
+  "ten": "tăng giảm đại lượng",
+  "de": "Trong vườn có 80 cây cam và quýt. Người ta trồng thêm 8 cây cam và 4 cây quýt thì số cây quýt hơn số cây cam là 2 cây. Tính số cây mỗi loại ban đầu ?"
+ },
+ {
+  "ma_cau": "T14T080104013",
+  "dang_chinh": "T14T080104",
+  "dich": "NDB01627",
+  "ten": "tăng giảm đại lượng",
+  "de": "Trong vườn có 90 cây cam và quýt. Người ta trồng thêm 10 cây cam và 6 cây quýt thì số cây quýt hơn số cây cam là 4 cây. Tính số cây mỗi loại ban đầu ?"
+ },
+ {
+  "ma_cau": "T14T080104014",
+  "dang_chinh": "T14T080104",
+  "dich": "NDB01627",
+  "ten": "tăng giảm đại lượng",
+  "de": "Trong trang trại có 100 con gà và vịt. Người ta nuôi thêm 12 con gà và 8 con vịt thì số con vịt hơn số con gà là 6 con. Tính số con mỗi loại ban đầu ?"
+ },
+ {
+  "ma_cau": "T14T080104015",
+  "dang_chinh": "T14T080104",
+  "dich": "NDB01627",
+  "ten": "tăng giảm đại lượng",
+  "de": "Trong vườn có 70 cây táo và lê. Người ta trồng thêm 6 cây táo và 4 cây lê thì số cây lê hơn số cây táo là 2 cây. Tính số cây mỗi loại ban đầu ?"
+ },
+ {
+  "ma_cau": "T14T080104016",
+  "dang_chinh": "T14T080104",
+  "dich": "NDB01627",
+  "ten": "tăng giảm đại lượng",
+  "de": "Trong vườn trường có 60 cây xoài và mít. Học sinh trồng thêm 10 cây xoài và 6 cây mít thì số cây mít hơn số cây xoài là 4 cây. Tính số cây mỗi loại ban đầu ?"
+ },
+ {
+  "ma_cau": "T14T080104017",
+  "dang_chinh": "T14T080104",
+  "dich": "NDB01627",
+  "ten": "tăng giảm đại lượng",
+  "de": "Trong trường có 120 cây bàng và phượng. Người ta trồng thêm 14 cây bàng và 10 cây phượng thì số cây phượng hơn số cây bàng là 2 cây. Tính số cây mỗi loại ban đầu ?"
+ },
+ {
+  "ma_cau": "T14T080104018",
+  "dang_chinh": "T14T080104",
+  "dich": "NDB01627",
+  "ten": "tăng giảm đại lượng",
+  "de": "Trong vườn có 50 cây nhãn và vải. Người ta trồng thêm 6 cây nhãn và 8 cây vải thì số cây vải hơn số cây nhãn là 4 cây. Tính số cây mỗi loại ban đầu ?"
+ },
+ {
+  "ma_cau": "T14T080104019",
+  "dang_chinh": "T14T080104",
+  "dich": "NDB01627",
+  "ten": "tăng giảm đại lượng",
+  "de": "Trong trại chăn nuôi có 150 con heo và bò. Người ta nuôi thêm 10 con heo và 20 con bò thì số con bò hơn số con heo là 6 con. Tính số con mỗi loại ban đầu ?"
+ },
+ {
+  "ma_cau": "T14T080104020",
+  "dang_chinh": "T14T080104",
+  "dich": "NDB01627",
+  "ten": "tăng giảm đại lượng",
+  "de": "Trong vườn có 40 cây hoa hồng và hoa cúc. Người ta trồng thêm 4 cây hoa hồng và 2 cây hoa cúc thì số cây hoa cúc hơn số cây hoa hồng là 2 cây. Tính số cây mỗi loại ban đầu ?"
+ },
+ {
+  "ma_cau": "T14T080104021",
+  "dang_chinh": "T14T080104",
+  "dich": "NDB01627",
+  "ten": "tăng giảm đại lượng",
+  "de": "Trong thư viện có 200 cuốn sách Toán và sách Văn. Người ta nhập thêm 20 cuốn sách Toán và 10 cuốn sách Văn thì số sách Văn hơn số sách Toán là 8 cuốn. Tính số sách mỗi loại ban đầu ?"
+ },
+ {
+  "ma_cau": "T14T080104022",
+  "dang_chinh": "T14T080104",
+  "dich": "NDB01627",
+  "ten": "tăng giảm đại lượng",
+  "de": "Trong vườn có 90 cây ổi và chanh. Người ta trồng thêm 12 cây ổi và 6 cây chanh thì số cây chanh hơn số cây ổi là 2 cây. Tính số cây mỗi loại ban đầu ?"
+ }
+]
