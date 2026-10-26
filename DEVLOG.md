@@ -77785,3 +77785,16 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - Ghi kho (tất cả `da_duyet=false`, dạng chờ): Trần Phú 21 câu `9790cdc1-…` · Việt Đức 63 `c63cde73-…` · Hoàng Văn Thụ 63 `9a48e2ab-…` · Yên Hòa 274 `b1113e0a-…` (268 mới + 6 trùng trỏ câu cũ). Mã câu Đại `T110000000448…`, HGT `T310000001…`.
 - Còn cờ Chưa chắc (4, đều là ĐỀ in mơ hồ): YH Câu 43 chương I (P in "3" vs "3³" ⇒ SSDD hay DSDD) · YH chương IV Câu 43 (điểm O không định nghĩa ⇒ SSDS hay DSDS; O là trung điểm BC khớp số 3a√3/2 in trong đề) · YH chương V Câu 22 (số đại diện: trung vị A hay trung bình C) · YH chương V Câu 40 (cận π ⇒ 5 hay 4,8) · HVT Đề minh họa Câu 8 (cả B và D đều không là nghiệm; chọn B).
 - Câu "đề sai" ghi trong Ghi chú: YH ch.III Câu 28, ch.IV Câu 45c / 8, HVT Câu 14a (AC=7 vs 5) …; xem `<MA>.chua-chac.md` + `<MA>.p<k>.soat.md`.
+
+## 26/10 — Tháp (Chinh phục BK) + Đấu trường sang BẢN ĐỒ MỚI K6–12 — mig 202610261822
+- Thùy: "Tháp với đấu trường cũng chuyển đi". Trước: `fn_dtv_kho_khoi/_chu_de/_bo_cau` + `_dtv_kho_cau_mot` chỉ đọc `dai_cau_hoi` × `dai_ban_do` (chủ đề T1…, chỉ Đại).
+- Làm: khối mà registry `_kho_ds_nhanh_khoi` có nhánh 'bdm' (`_dtv_ban_do_moi`) ⇒ dạng qua `_kho_ban_do_dong` (cùng nguồn phiêu lưu: chủ đề NCD… Đại → HGT theo `thu_tu_chu_de`, rồi "Hình học" HINH_HOC),
+  câu MCQ `_kho_dk_mcq_sql(cautbl)` quét 1 lượt/bảng câu (`_dtv_kho_cau_moi`; view `bdm_cau_hoi` + `hinh_hoc_cau_hoi`), giữ lọc `_hs_dang_da_hoc` (NDB), ngưỡng cũ (khối ≥30 · chủ đề ≥8 · tháp ≥5 · trận ≥3).
+  Phát/chấm (`fn_dtv_cham`, `_cham_tran`, `_de_lay`) dò câu theo nhánh của KHỐI đề (`_dtv_kho_cau_tim`) rồi lùi về nhánh cũ ⇒ đề sinh trước khi chuyển vẫn chấm được. Client KHÔNG đổi (mã chủ đề chỉ là chuỗi truyền lại).
+  Cấp 1 / KHTN / Toán khi công tắc tắt: nhánh else = thân cũ nguyên văn.
+- BXH: tháp chủ đề khoá `nhom = khoi|chu_de` ⇒ NCD thành bảng MỚI; tháp tổng (`nhom = khoi`) giữ khoá. Lịch sử cũ không đụng — thực tế chỉ có 1 lượt `7|T10701` và MỌI lượt tháp Toán (20) đều `nguon_cham='client'`
+  ⇒ vốn đã không lên BXH (BXH chỉ tính lượt chấm máy chủ) ⇒ không cần map chủ đề cũ → mới.
+- Kiểm `scripts/_test_dtv_ban_do_moi.mjs --mig` (ROLLBACK) 80/80: cấp 1 (3/4/4T/5/5T, khách + HS) + KHTN y hệt trước · công tắc TẮT ⇒ K9 y hệt bản cũ · HS K6/K9/K12: chủ đề NCD có tên, tháp tổng 200 câu không trùng,
+  mọi câu thuộc dạng lớp đã học, tháp chủ đề đúng chủ đề, sinh đề → phát → chấm → kết thúc, trận bot · đề cũ vẫn chấm. Sau khi áp: 55/55.
+- Thời gian (HS thật): kho_chu_de 0,4–1,5 s · kho_bo_cau/de_moi 0,4–1,6 s (K9 nặng nhất, ~0,7–1,3 s là `_hs_dang_da_hoc`) · de_tran_moi 0,4–1,5 s · de_lay 20 câu 0,2 s · cham 0,06 s · khách kho_khoi 0,43 s.
+- Chấp nhận: 279/651 dạng bài Đại mới chưa có `muc_do` ⇒ coi mức 3 khi xếp "khó dần" của tháp. Hình học (hinh_hoc_bai) gom 1 chủ đề HINH_HOC như phiêu lưu (`chu_de_id` mới điền 5/71 bài).
