@@ -58,3 +58,6 @@
 
 ## 26/10 — Bổ trợ ĐUỔI + Học từ đầu sang bản đồ mới (mig 202610261821)
 - Thay dòng "GIỮ CŨ … học từ đầu / đuổi" ở Rà 24/10: lộ trình (`_duoi_lo_trinh`), cổng `htd_co_mo`, chọn mục tiêu đợt (`fn_duoi_dang_chon` + `DangPickerBdm`) theo registry nhánh; K6–12 ra dạng bài NDB xếp theo thu_tu. Đợt đang đuổi: 26/77 dòng quy NDB (đích duy nhất), 51 dòng giữ mã cũ (mã cũ ứng ≥2 dạng bài) — chờ Thùy quyết có tách không. Kiểm `scripts/_test_duoi_ban_do_moi.mjs`.
+
+## 26/10 — Report PH + Tổng quan KQHT sang bản đồ mới (mig 202610261821_fn_tong_quan_hs_ban_do_moi)
+- Thay dòng "GIỮ CŨ vì bản đồ mới CHƯA CÓ ĐỘ KHÓ: Report PH + Tổng quan" ở Rà 24/10: `getTongQuanHS` → RPC `fn_tong_quan_hs` (lần đo qua `_mastery_lan_do` theo công tắc, độ khó dạng bài từ `bdm_ban_do`, chưa chốt độ khó ⇒ không vào CB/NC). Kiểm `scripts/_test_tong_quan_hs.mjs`; so JS cũ xem DEVLOG 26/10.
