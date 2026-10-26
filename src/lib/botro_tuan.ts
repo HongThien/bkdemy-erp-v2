@@ -20,7 +20,7 @@ export type UngVienDiemThap = {
 }
 export type DangTheoDoi = {
   id: string; hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; khoi: string | null; lop: string | null
-  vao_at: string; nguon: 'bao_dong' | 'diem_thap'; ghi_chu: string | null; vao_ten: string | null
+  vao_at: string; nguon: 'bao_dong' | 'diem_thap' | 'sau_bo_tro'; ghi_chu: string | null; vao_ten: string | null
   so_lieu_vao: Partial<DuLieuTuan>; du_lieu: DuLieuTuan; co_anh_chup: boolean
 }
 export type BaoDong = {
@@ -53,7 +53,7 @@ export async function theoDoiKetThuc(id: string, tt: 'go' | 'len_chinh_thuc', ly
 
 // Vòng 2: duyệt CHÍNH THỨC — đi đúng đường cũ (kiểm trần → hs_level + log → mở case → đổ dạng yếu theo luật DB), rồi đánh dấu đã lên chính thức.
 // Máy KHÔNG đề xuất level (levelMayDeXuat = null). Dạng của case đổ bằng luật DB cũ (fn_btyeu_fill_dang_yeu) — người chỉnh ở bước Nội dung.
-export async function duyetChinhThuc(input: { theoDoiId: string; hocSinhId: string; mon: string; level: 1 | 2 | 3; uuTien: UuTienCase; lyDo: string | null; nguon: 'bao_dong' | 'diem_thap' }): Promise<void> {
+export async function duyetChinhThuc(input: { theoDoiId: string; hocSinhId: string; mon: string; level: 1 | 2 | 3; uuTien: UuTienCase; lyDo: string | null; nguon: 'bao_dong' | 'diem_thap' | 'sau_bo_tro' }): Promise<void> {
   const chan = await kiemSucChua(input.hocSinhId, input.mon, input.uuTien)
   if (chan) throw new Error(chan)
   await duyetLevel({ hocSinhId: input.hocSinhId, mon: input.mon, loai: 'kien_thuc', levelChot: input.level, levelMayDeXuat: null,

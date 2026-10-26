@@ -7,7 +7,8 @@ import { supabase } from '../../lib/supabase'
 import { laySucChua, type SucChua, type UuTienCase } from '../../lib/botro_yeu'
 import { chotTuan, danhSachTuan, baoDongLive, theoDoiVao, theoDoiKetThuc, duyetChinhThuc,
   type BaoDong, type BuoiET, type BuoiBTVN, type ChotTuan, type DangTheoDoi, type DuLieuTuan, type ChuyenDeAnh, type EtBtvn, type MauET, type UngVienDiemThap } from '../../lib/botro_tuan'
-import { ddmmVN } from '../../lib/tuan'
+import { ddmmVN, homNayVN, congNgay } from '../../lib/tuan'
+import { xuLyCaHetHan } from '../../lib/botro_yeu_ca'
 
 type Tab = 'td' | 'bd' | 'dt'
 const TAB_TEN: Record<Tab, string> = { td: '👁 Đang theo dõi', bd: '🚨 Báo động', dt: '📉 Điểm thấp' }
@@ -150,6 +151,8 @@ export default function DuyetBoTroYeuScreen() {
     } catch (e: any) { setLoi(e?.message ?? String(e)) }
   }
   useEffect(() => { NHO.mon = mon; if (mon && NHO.duMon !== mon) { setDu(null); tai(mon) } }, [mon]) // eslint-disable-line
+  // 26/10: ca quá 14 ngày đóng + vào theo dõi (lười, 1 lần/10 phút) — xong thì tải lại để thấy em mới vào Đang theo dõi
+  useEffect(() => { if (mon) xuLyCaHetHan().then((n) => { if (n > 0) tai(mon) }).catch(() => {}) }, [mon]) // eslint-disable-line
   useEffect(() => { NHO.khoi = khoi }, [khoi])
 
   // vá tại chỗ: em đã quyết ⇒ rời MỌI tab (theo em, không theo lý do)
@@ -161,6 +164,9 @@ export default function DuyetBoTroYeuScreen() {
   const e = list[i]
   const di = (d: number) => { if (list.length) setCur(tab, (i + d + list.length) % list.length) }
   const chotTuanBtn = du?.chotDT ?? du?.chotTD ?? null
+  // 26/10 nhịp độ: chốt tuần = ảnh chụp sáng THỨ 2 hằng tuần. Chưa có ảnh của tuần này ⇒ nhắc (đậm hơn nếu đã là thứ 2).
+  const homNay = homNayVN(); const thuHai = congNgay(homNay, -((new Date(homNay + 'T00:00:00Z').getUTCDay() + 6) % 7))
+  const chuaChotTuanNay = !!chotTuanBtn && chotTuanBtn.tuan < thuHai
 
   async function lamChot() {
     if (!mon) return
@@ -222,7 +228,8 @@ export default function DuyetBoTroYeuScreen() {
             ? <><span className="rounded-full bg-green-100 px-2 py-0.5 text-[11.5px] font-bold text-green-800">● LIVE</span><span><b>Báo động</b> hiện ngay khi GV/TA bấm chuông — không chờ chốt tuần.</span></>
             : <><span className="rounded-full bg-indigo-100 px-2 py-0.5 text-[11.5px] font-bold text-indigo-800">❄ ẢNH CHỤP TUẦN</span>
               {chotTuanBtn ? <span>Chốt <b>{ngayVN(chotTuanBtn.chot_at)}</b> · {new Date(chotTuanBtn.chot_at).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' })}{chotTuanBtn.chot_ten ? ` · bởi ${chotTuanBtn.chot_ten}` : ''} — cả tuần mọi người xem cùng một bộ số liệu.</span>
-                : <b className="text-amber-700">Chưa chốt tuần nào cho môn {mon} — bấm “Chốt tuần” để quét (chỉ làm thứ 2).</b>}</>}
+                : <b className="text-amber-700">Chưa chốt tuần nào cho môn {mon} — bấm “Chốt tuần” để quét (làm sáng thứ 2 hằng tuần).</b>}</>}
+          {tab !== 'bd' && chuaChotTuanNay && <b className={`w-full rounded-lg px-2.5 py-1 text-[12px] ${homNay === thuHai ? 'bg-rose-600 text-white' : 'bg-amber-100 text-amber-900'}`}>{homNay === thuHai ? '⏰ Hôm nay thứ 2 — ' : ''}Tuần này (thứ 2 {ddmmVN(thuHai)}) CHƯA chốt: đang xem ảnh chụp tuần {ddmmVN(chotTuanBtn!.tuan)}. Bấm “Chốt tuần” — phần chưa xử lý của tuần trước sẽ được cộng dồn sang.</b>}
           <span className="ml-auto flex items-center gap-2">
             {chot && <span className="text-[12px] text-slate-500">Đang quét lớp {chot.xong}/{chot.tong}…</span>}
             <button disabled={busy} onClick={lamChot} className="rounded-lg border border-slate-300 bg-white px-3 py-1 text-[12.5px] font-bold text-slate-700 hover:bg-slate-50 disabled:opacity-50">↻ {chotTuanBtn ? 'Chốt lại tuần này' : 'Chốt tuần'}</button>
@@ -260,6 +267,8 @@ export default function DuyetBoTroYeuScreen() {
                       {tab === 'dt' && (e as UngVienDiemThap).kenh.map((k) => TAG_KENH[k] && <span key={k} className={`rounded-full px-2.5 py-0.5 ${TAG_KENH[k][1]}`}>{TAG_KENH[k][0]}</span>)}
                       {tab === 'dt' && (e as UngVienDiemThap).cung_bao_dong && <span className="rounded-full border border-dashed border-rose-300 bg-rose-50 px-2.5 py-0.5 text-rose-700">cũng ở tab 🚨 Báo động</span>}
                       {tab === 'bd' && (e as BaoDong).cung_diem_thap && <span className="rounded-full border border-dashed border-orange-300 bg-orange-50 px-2.5 py-0.5 text-orange-700">cũng ở tab 📉 Điểm thấp</span>}
+                      {tab === 'td' && (e as DangTheoDoi).nguon === 'sau_bo_tro' && <span className="rounded-full bg-violet-100 px-2.5 py-0.5 text-violet-800">↩ sau bổ trợ yếu</span>}
+                      {tab === 'dt' && ((e as UngVienDiemThap).ly_do[0] ?? '').startsWith('Tồn từ tuần') && <span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-amber-900">📌 tồn tuần trước</span>}
                       {tab === 'td' && <span className="rounded-full bg-indigo-100 px-2.5 py-0.5 text-indigo-800">👁 theo dõi từ {ngayVN((e as DangTheoDoi).vao_at)}{(e as DangTheoDoi).vao_ten ? ` · ${(e as DangTheoDoi).vao_ten}` : ''}{(e as DangTheoDoi).ghi_chu ? ` — “${(e as DangTheoDoi).ghi_chu}”` : ''}</span>}
                     </div>
                   </DauEm>

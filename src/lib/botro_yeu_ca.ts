@@ -12,7 +12,7 @@ export const RETEST_BAT = false
 
 // Kết quả đóng case bổ trợ yếu (CHECK bo_tro_yeu_ket_qua_ck). day_xong = hết dạng yếu, TA đóng ca cuối (Thùy 29/09) — KHÔNG phải "đạt":
 // không đo thêm gì; đánh giá sau bổ trợ là việc học thuật (luồng khác). bo = hạ L0, dừng bổ trợ.
-export const KET_QUA_CASE_TEN: Record<string, string> = { day_xong: 'Hết dạng yếu', dat: 'Đạt', mot_phan: 'Một phần', chua_dat: 'Chưa đạt', bo: 'Bỏ' }
+export const KET_QUA_CASE_TEN: Record<string, string> = { day_xong: 'Xong bổ trợ', het_han: 'Hết hạn 14 ngày', dat: 'Đạt', mot_phan: 'Một phần', chua_dat: 'Chưa đạt', bo: 'Bỏ' }
 
 // ── App HỌC SINH ─────────────────────────────────────────────────────────────
 export type CumCaHS = {
@@ -308,4 +308,16 @@ export async function buDangCuaToi(buoiId: string): Promise<BuDangHS> {
   const { data, error } = await supabase.rpc('fn_hs_bu_dang', { p_buoi: buoiId })
   if (error) throw error
   return data as BuDangHS
+}
+
+// Mỗi case bổ trợ yếu sống TỐI ĐA 14 ngày (Thùy 26/10): hết hạn ⇒ đóng case, còn dạng yếu (trong dạng đã học) ⇒ vào Đang theo dõi.
+// Chạy LƯỜI khi nhân sự mở màn (hàm đo dạng yếu đòi người đăng nhập nên cron không gọi được) — idempotent, rẻ khi không có gì hết hạn.
+// Giới hạn 1 lần/10 phút/trình duyệt. Trả số case vừa đóng (>0 ⇒ màn nên tải lại).
+let hetHanLanCuoi = 0
+export async function xuLyCaHetHan(): Promise<number> {
+  if (Date.now() - hetHanLanCuoi < 10 * 60 * 1000) return 0
+  hetHanLanCuoi = Date.now()
+  const { data, error } = await supabase.rpc('fn_btyeu_het_han_xu_ly')
+  if (error) throw error
+  return Number((data as { dong?: number } | null)?.dong ?? 0)
 }

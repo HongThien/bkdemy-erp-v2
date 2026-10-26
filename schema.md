@@ -2,14 +2,14 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `1` BẢNG
-> Role `claude_ro` **không sở hữu** và **không có `bypassrls`** với: `thong_bao_ph`
+> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `17` BẢNG
+> Role `claude_build` **không sở hữu** và **không có `bypassrls`** với: `giai_thuong` · `giai_thuong_lop_thang` · `hinh_giao_trinh` · `hinh_gt_bai` · `hinh_gt_buoi` · `sk_checkin` · `sk_dang_ky` · `sk_dang_ky_log` · `sk_luot` · `sk_nguoi_choi` · `sk_phan_cong` · `sk_phan_cong_log` · `sk_phong` · `sk_su_kien` · `sk_xu` · `thong_bao_hs` · `thong_bao_ph`
 > Các bảng này bật RLS với policy `to authenticated`, nên `SELECT` từ script/CLI trả **0 dòng,
 > im lặng, không lỗi**. ⚠ **"0 dòng" ở đây KHÔNG phải bằng chứng bảng rỗng** — muốn biết số thật
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-444 bảng · 34 view · 0 enum · 225 trigger · 1290 function
+444 bảng · 34 view · 0 enum · 225 trigger · 1294 function
 
 ## _app_secrets
 
@@ -556,7 +556,7 @@
 | mon | text |  |  |  |  |
 | vao_at | timestamp with time zone |  | now() |  |  |
 | vao_boi | uuid | Y |  |  |  |
-| nguon | text |  |  |  | `bao_dong` · `diem_thap` |
+| nguon | text |  |  |  | `bao_dong` · `diem_thap` · `sau_bo_tro` |
 | ghi_chu | text | Y |  |  |  |
 | so_lieu_vao | jsonb |  | '{}'::jsonb |  |  |
 | trang_thai | text |  | 'theo_doi'::text |  | `theo_doi` · `bo_qua` · `len_chinh_thuc` · `go` |
@@ -581,7 +581,7 @@
 | muc | smallint | Y |  |  |  |
 | muc_may_de_xuat | smallint | Y |  |  |  |
 | de_xuat_may | jsonb |  | '{}'::jsonb |  |  |
-| ket_qua | text | Y |  |  | `dat` · `mot_phan` · `chua_dat` · `bo` · `day_xong` |
+| ket_qua | text | Y |  |  | `dat` · `mot_phan` · `chua_dat` · `bo` · `day_xong` · `het_han` |
 | dong_boi | uuid | Y |  | FK→nhan_su.id |  |
 | ghi_chu_dong | text | Y |  |  |  |
 | case_truoc_id | uuid | Y |  | FK→bo_tro_yeu.id |  |
@@ -8682,8 +8682,10 @@ WITH luot AS (
 - `_btyeu_buoi(p_buoi uuid)` → TABLE(buoi_id uuid, hoc_sinh_id uuid, bo_tro_yeu_id uuid, mon text, ngay date, trang_thai text, diem_danh text, nguoi_day_tg uuid, danh_gia_xong_at timestamp with time zone, buoi_hoc_hs_id uuid)
 - `_btyeu_chon_cau(p_cautbl text, p_ma_dang text, p_ma_cum text, p_tru text[], p_n integer)` → text[]
 - `_btyeu_chon_cau_khac(p_cautbl text, p_ma_dang text, p_ma_cum text, p_tru text[], p_n integer, p_giu_lai integer DEFAULT 0)` → text[]
+- `_btyeu_dang_con_yeu(p_case uuid)` → TABLE(ma_dang text, ten_dang text, score numeric, n integer)
 - `_btyeu_dk_dang_sql(p_cautbl text, p_ma_dang text)` → text
 - `_btyeu_dong_bo_dang_ban_do()` → jsonb
+- `_btyeu_dong_case_het_han(p_case uuid, p_tinh_yeu boolean DEFAULT true, p_bat_buoc boolean DEFAULT false)` → boolean
 - `_btyeu_ket_thuc_case(p_case uuid, p_ns uuid, p_ghi_chu text, p_at timestamp with time zone)` → void
 - `_btyeu_la_hinh_mh(p_ma_dang text)` → boolean
 - `_btyeu_moc_2_cua_so()` → date
@@ -8694,6 +8696,7 @@ WITH luot AS (
 - `_btyeu_today()` → date
 - `_btyeu_tran_cao()` → integer
 - `_btyeu_tran_dang()` → integer
+- `_btyeu_vao_theo_doi_sau_case(p_case uuid, p_ly_do text, p_bat_buoc boolean DEFAULT false, p_tinh_yeu boolean DEFAULT true)` → boolean
 - `_bu_btvn_han(p_lop uuid, p_ngay_bu date)` → date
 - `_bu_btvn_tu_ngay()` → date
 - `_buoi_giai_log()` → trigger
@@ -9173,6 +9176,7 @@ WITH luot AS (
 - `fn_btyeu_fill_dang_yeu(p_case uuid)` → integer
 - `fn_btyeu_giay_nhap(p_bai_test_cau uuid, p_chon integer)` → jsonb
 - `fn_btyeu_giay_nop(p_bai_test uuid)` → jsonb
+- `fn_btyeu_het_han_xu_ly()` → jsonb
 - `fn_btyeu_hoan_tat(p_buoi uuid, p_nhan_xet text, p_muc_ma text DEFAULT NULL::text, p_khong_test_ly_do text DEFAULT NULL::text, p_dang_day text[] DEFAULT NULL::text[])` → void
 - `fn_btyeu_in_lay(p_bai_test uuid)` → jsonb
 - `fn_btyeu_in_sinh(p_buoi uuid, p_so_cau integer DEFAULT 5)` → jsonb
@@ -9869,8 +9873,8 @@ WITH luot AS (
 - `hs_sotay_tim_ct(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_khoi text DEFAULT NULL::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_sotay_tim_lt(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_vao_ca_online(p_buoi uuid)` → jsonb
-- `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
 - `hs_xep_hang_tu_luyen(p_khoi text, p_mon text)` → jsonb
+- `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
 - `htd_co_mo(p_mon text)` → boolean
 - `htd_lo_trinh(p_mon text)` → jsonb
 - `htd_ly_thuyet(p_mon text, p_ma_dang text)` → jsonb
@@ -9939,9 +9943,9 @@ WITH luot AS (
 - `tsa_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 

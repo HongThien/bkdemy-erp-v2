@@ -6,7 +6,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { tuKiemBoTro, type LoiHienThi } from '../../lib/ca_bo_tro'
 import { caCuaNgay, tomTatNgay, ungVienCa, xepVaoCa, goKhoiCa, huyCa, taoCaTay, LOAI_TEN, type CaBoTro, type HsTrongCa, type NgayTomTat, type UngVien, type UngVienCa, type LoaiBoTro } from '../../lib/ca_bo_tro'
-import { caTheoDoi, type CaTheoDoi } from '../../lib/botro_yeu_ca'
+import { caTheoDoi, xuLyCaHetHan, type CaTheoDoi } from '../../lib/botro_yeu_ca'
 import { homNayVN, congNgay, ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
 import { listPhong, type Phong } from '../../lib/phong'
@@ -48,6 +48,7 @@ export default function LichPhongScreen() {
   useEffect(() => { listNhanSu().then((l) => setNss(l.filter((n) => n.trang_thai === 'dang_lam'))).catch(() => {}); listPhong(true).then(setPhongs).catch(() => {}) }, [])
   useEffect(() => { NHO.ngay = ngay; taiNgay(ngay); taiTomTat(ngay); taiLive(ngay) }, [ngay])
   useEffect(() => { NHO.mon = monF }, [monF])
+  useEffect(() => { xuLyCaHetHan().then((n) => { if (n > 0) { taiNgay(NHO.ngay ?? homNay); taiLive(NHO.ngay ?? homNay) } }).catch(() => {}) }, []) // eslint-disable-line -- 26/10 ca quá 14 ngày tự đóng
   useEffect(() => { const id = setInterval(() => { if (document.visibilityState === 'visible') taiLive(NHO.ngay ?? homNay) }, POLL_MS); return () => clearInterval(id) }, [])
 
   const mons = useMemo(() => [...new Set(cas.map((c) => c.mon))].sort(), [cas])

@@ -412,8 +412,8 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
               <p className="text-emerald-700">✓ Đã hoàn tất ca.</p>
               {/* Thùy 29/09: hết dạng yếu + TA đóng ca ⇒ DB đóng case (day_xong). App chỉ báo kết quả DB trả. */}
               {!RETEST_BAT && (ca.case_trang_thai === 'hoan_thanh'
-                ? <p className="mt-1.5 rounded-xl bg-emerald-50 px-3 py-2 font-semibold text-emerald-800">🎉 {ca.case_ket_qua === 'day_xong' ? `Em đã hết dạng yếu — bổ trợ yếu ${ca.mon} KẾT THÚC.` : `Bổ trợ yếu ${ca.mon} đã đóng.`}</p>
-                : ca.so_dang_con_day > 0 && <p className="mt-1.5 rounded-xl bg-indigo-50 px-3 py-2 text-indigo-800">Còn {ca.so_dang_con_day} dạng phải dạy — OPS xếp buổi sau.</p>)}
+                ? <p className="mt-1.5 rounded-xl bg-emerald-50 px-3 py-2 font-semibold text-emerald-800">🎉 {ca.case_ket_qua === 'het_han' ? `Case bổ trợ yếu ${ca.mon} đã HẾT HẠN 14 ngày và được đóng.` : `Bổ trợ yếu ${ca.mon} đã đóng (1 tuần bổ trợ 1 lần). Nếu em còn dạng yếu trong các dạng đã học, hệ tự đưa em vào Đang theo dõi — Trang duyệt tuần sau.`}</p>
+                : ca.so_dang_con_day > 0 && <p className="mt-1.5 rounded-xl bg-indigo-50 px-3 py-2 text-indigo-800">Còn {ca.so_dang_con_day} dạng chưa dạy — không xếp thêm buổi; còn dạng yếu thì em vào Đang theo dõi.</p>)}
               {ca.danh_gia?.muc_ma && <p className="mt-1">Mức: <b>{MUC_CATALOG.find((m) => m.ma === ca.danh_gia!.muc_ma)?.nhan ?? ca.danh_gia.muc_ma}</b></p>}
               {ca.danh_gia?.nhan_xet && <p className="mt-1 whitespace-pre-wrap text-slate-600">{ca.danh_gia.nhan_xet}</p>}
             </div>
@@ -447,8 +447,8 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
                   ))}
                   {!dangMo.some((d) => d.day_buoi_id === ca.buoi_id) && <p className="py-0.5 text-slate-500">Em chưa làm dạng nào trên app buổi này.</p>}
                   {!RETEST_BAT && (ca.so_dang_con_day === 0
-                    ? <p className="mt-1 font-semibold text-amber-700">⚠ Em đã học hết dạng yếu ⇒ bấm Hoàn tất là bổ trợ yếu {ca.mon} KẾT THÚC.</p>
-                    : <p className="mt-1 text-slate-500">Còn {ca.so_dang_con_day} dạng chưa học ⇒ OPS xếp buổi sau.</p>)}
+                    ? <p className="mt-1 font-semibold text-amber-700">⚠ Em đã học hết dạng yếu ⇒ bấm Hoàn tất là bổ trợ yếu {ca.mon} kết thúc.</p>
+                    : <p className="mt-1 text-slate-500">Còn {ca.so_dang_con_day} dạng chưa học ⇒ hoàn tất là KẾT THÚC case (1 tuần 1 lần), không xếp thêm buổi; em còn dạng yếu sẽ vào Đang theo dõi.</p>)}
                   {!daDong && <p className="mt-1 text-[11.5px] text-slate-400">Em học trên giấy? Chọn “📄 In giấy” ở trên để tick dạng tay.</p>}
                 </div>
               )}
