@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from 'react'
-import { KHOI_OPTIONS, DEFAULT_KHOI, listDeXuat, coDeXuatKho, LO_GAN_MAU, type KhoDeXuat } from '../../lib/kho/api'
+import { KHOI_OPTIONS, DEFAULT_KHOI, listDeXuat, coDeXuatKho, LO_GAN_MAU, khoiChayBanDoMoi, type KhoDeXuat } from '../../lib/kho/api'
 import { useStore } from '../../store/useStore'
 import { useMonScope } from '../../hooks/useMonScope'
 import BanDo from './BanDo'
@@ -53,10 +53,18 @@ export default function KhoScreen() {
   const [deXuat, setDeXuat] = useState(false)
   const [soDeXuat, setSoDeXuat] = useState<number | null>(null)
   const [banDoVer, setBanDoVer] = useState(0) // nhận đề xuất ⇒ bản đồ có dạng mới ⇒ dựng lại cây khi đóng panel
-  const coDeXuat = coDeXuatKho(config.key) // registry DE_XUAT_KHO (Đại, KHTN — 03/10)
+  // Thùy 26/10 ("4. Bỏ"): khối chạy BẢN ĐỒ MỚI (Toán K6–12) bỏ 💡 Đề xuất (đề xuất tạo dạng/cụm mới trên bản đồ CŨ) và 🎯 Gán mẫu
+  // (gán dạng cũ cho câu + dạng từng ý Đ/S — bản đồ mới không gắn dạng ý). Cấp 1 + KHTN giữ nguyên. DB quyết khối nào chạy bản đồ mới.
+  const [khoiMoi, setKhoiMoi] = useState(false)
+  useEffect(() => {
+    let song = true; setKhoiMoi(false)
+    if (config.key === 'dai' || config.key === 'hinhgt') void khoiChayBanDoMoi(khoi, 'Toán').then((m) => { if (song) setKhoiMoi(m) })
+    return () => { song = false }
+  }, [config.key, khoi])
+  const coDeXuat = coDeXuatKho(config.key) && !khoiMoi // registry DE_XUAT_KHO (Đại, KHTN — 03/10)
   // Gán mẫu: lô đang mở của khối này (registry LO_GAN_MAU) — học thuật gán tay mẫu để có bộ đề chấm cho skill gán dạng.
   const [ganMau, setGanMau] = useState(false)
-  const loGanMau = config.key === 'dai' ? LO_GAN_MAU.find((l) => l.khoi === khoi) ?? null : null // lô gán mẫu hiện chỉ có ở Đại
+  const loGanMau = config.key === 'dai' && !khoiMoi ? LO_GAN_MAU.find((l) => l.khoi === khoi) ?? null : null // lô gán mẫu hiện chỉ có ở Đại
   useEffect(() => {
     if (!coDeXuat) { setSoDeXuat(null); return }
     let song = true

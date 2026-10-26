@@ -22,6 +22,9 @@ import { pathToFileURL } from 'node:url'
 
 // Các trường làm nên NỘI DUNG của câu. Đổi 1 trong số này sau khi kiểm ⇒ biên bản hết hiệu lực.
 export const TRUONG_NOI_DUNG = ['loai_cau', 'noi_dung', 'lua_chon', 'menh_de', 'dap_an', 'loi_giai', 'dang_chinh', 'ma_cum', 'anh_de', 'anh_dap_an']
+// 26/10 BẢN ĐỒ MỚI (K6–12): dạng của câu = DẠNG BÀI (`dang_bai`, NDB…), câu Đ/S = CHỦ ĐỀ kho Đ/S (`chu_de`) — cũng là nội dung được kiểm.
+// Chỉ đưa vào băm KHI CÓ (vắng ⇒ băm y hệt trước 26/10, biên bản cũ không mất hiệu lực).
+export const TRUONG_BDM = ['dang_bai', 'chu_de']
 
 // Cách kiểm được công nhận là độc lập, xếp từ mạnh tới yếu (spec §5.1 nguyên tắc 4).
 export const CACH_KIEM = ['code', 'model_khac', 'cung_model_ngu_canh_sach']
@@ -44,6 +47,7 @@ function chuanHoa(v) {
 export function bamNoiDung(cau) {
   const o = {}
   for (const k of TRUONG_NOI_DUNG) o[k] = chuanHoa(cau?.[k])
+  for (const k of TRUONG_BDM) if (chuanHoa(cau?.[k]) != null) o[k] = chuanHoa(cau[k])
   return createHash('sha256').update(JSON.stringify(o)).digest('hex')
 }
 
@@ -54,7 +58,7 @@ export function laDangCho(maDang) {
 /** Câu này bắt buộc phải qua những trạm kiểm nào. */
 export function tramBatBuoc(cau) {
   const ds = ['kiem-doc']                                                   // mọi câu: đọc có đúng với trang gốc không
-  if (cau?.dang_chinh && !laDangCho(cau.dang_chinh)) ds.push('kiem-dang')   // đã gán dạng thật
+  if ((cau?.dang_chinh && !laDangCho(cau.dang_chinh)) || cau?.dang_bai || cau?.chu_de) ds.push('kiem-dang')   // đã gán dạng thật / dạng bài / chủ đề Đ/S
   const coDapSo = (cau?.dap_an ?? '') !== '' || (cau?.loi_giai ?? '') !== '' || (Array.isArray(cau?.menh_de) && cau.menh_de.length > 0)
   if (cau?.nguon_giai === 'ai' && coDapSo) ds.push('kiem-dap-so')           // đáp số/lời giải do AI viết
   if (cau?.hinh_do_may_ve) ds.push('kiem-hinh-a', 'kiem-hinh-b')            // §5.6: A = code, B = model khác

@@ -2701,6 +2701,12 @@ export async function getDangBaiTen(maDang: string): Promise<{ ten: string; cd: 
   const r = data?.[0] as any
   return r ? { ten: r.ten_dang, cd: [r.ten_chu_de, r.ten_nhom].filter(Boolean).join(' › ') } : null
 }
+// Chủ đề bản đồ mới của (kho, khối) — chọn kho Đ/S của chủ đề (câu Đúng/Sai), kể cả chủ đề chưa có dạng bài.
+export async function listBdmChuDeKhoi(mon: KhoMon, khoi: string): Promise<{ id: string; ten: string }[]> {
+  const { data, error } = await supabase.from('dai_bdm_chu_de').select('id, ten, thu_tu').eq('khoi', khoi).eq('nhanh', nhanhBdm(mon)).order('thu_tu').limit(LIMIT)
+  if (error) throw error
+  return ((data ?? []) as any[]).map((r) => ({ id: r.id, ten: r.ten }))
+}
 export async function getBdmDangLyThuyet(maDang: string): Promise<string> {
   const { data, error } = await supabase.from('bdm_dang_ly_thuyet').select('noi_dung').eq('ma_dang', maDang).limit(1)
   if (error) throw error
@@ -2727,9 +2733,10 @@ export type CauDungSaiDuyet = {
   noi_dung: string; loi_giai: string | null; anh_de: string | null; anh_dap_an: string | null; nguon: string; nguon_giai: string; created_at: string
   ma_cum: string | null; ten_cum: string | null; da_duyet: boolean; kho_chuan: boolean; dang_ai_de_xuat: string | null; ten_de_goc: string | null
   so_menh_de: number; so_da_duyet: number; so_thieu_dang: number; menh_de_hop: MenhDeHop[]
-  // Gợi ý bản đồ mới (chỉ Toán Đại; mig 202610110943) — cùng ý nghĩa như CauHangDuyet
+  // Bản đồ mới (Đại + HGT; mig 202610261929): câu Đ/S thuộc KHO Đ/S CỦA CHỦ ĐỀ — bdm_trang_thai 'kho_ds' ⇒ bdm_dang_bai_id = MÃ CHỦ ĐỀ,
+  // bdm_chu_de = tên chủ đề (Đ/S không có dạng bài). null = chưa có chủ đề.
   bdm_chu_de?: string | null; bdm_chuyen_de?: string | null; bdm_nhom?: string | null; bdm_dang_bai?: string | null; bdm_dang_bai_id?: string | null
-  bdm_trang_thai?: 'gan' | 'chua_khop' | null; bdm_ly_do?: string | null
+  bdm_trang_thai?: 'gan' | 'chua_khop' | 'kho_ds' | null; bdm_ly_do?: string | null
 }
 export async function listHangDuyetDs(mon: KhoMon, khoi?: string | null): Promise<CauDungSaiDuyet[]> {
   const out: CauDungSaiDuyet[] = []
@@ -2751,7 +2758,8 @@ export async function duyetMenhDe(mon: KhoMon, maCau: string, thuTu: number, ngu
 }
 // Duyệt câu cha ĐS — DB từ chối nếu còn mệnh đề chưa duyệt/chưa gán dạng. duyetHet=true: ký hết mệnh đề theo hiện trạng trước
 // (nút "Duyệt tất cả batch"); câu có mệnh đề thiếu dạng sẽ RAISE ⇒ batch bỏ qua câu đó.
-export async function duyetCauDs(mon: KhoMon, maCau: string, nguoi: string, sua: SuaCauDuyet = {}, duyetHet = false): Promise<{ so_menh_de: number; doi_dang: boolean }> {
+// Khối chạy bản đồ mới: sua.chu_de = chủ đề kho Đ/S người chọn (DB ghi nguon 'nguoi'); thiếu chủ đề ⇒ DB chặn duyệt.
+export async function duyetCauDs(mon: KhoMon, maCau: string, nguoi: string, sua: SuaCauDuyet & { chu_de?: string } = {}, duyetHet = false): Promise<{ so_menh_de: number; doi_dang: boolean }> {
   const { data, error } = await supabase.rpc('fn_kho_duyet_cau_ds', { p_mon: mon, p_ma_cau: maCau, p_nguoi: nguoi, p_sua: sua, p_duyet_het: duyetHet })
   if (error) throw error
   return data as { so_menh_de: number; doi_dang: boolean }

@@ -12,6 +12,14 @@ argument-hint: <10|11|12>
 Kết quả của lệnh: câu nằm trong kho (`dai_cau_hoi` / `hgt_cau_hoi`, `da_duyet=false`, `nguon='de_thi'`) **và** đề nằm ở
 `tai_lieu(loai='de_thi')` + `tai_lieu_phan` + `tai_lieu_cau` ⇒ hiện ngay ở Học thuật › Kho đề thi › tab Chờ duyệt (mở đề = sửa + duyệt một màn).
 
+## ⭐ BẢN ĐỒ MỚI — khối chạy bản đồ mới (DB quyết: `select public._bdm_ds_khoi_chay()`, hiện K6–12; Thùy 26/10) — ĐÈ các mục về `dang`
+
+- **KHÔNG điền `dang`** (mã cũ) cho câu lẫn mệnh đề — câu luôn vào dạng chờ của khối (lỡ điền ⇒ `ghi.mjs` đổi sang dạng chờ + cảnh báo).
+- Câu thường: điền **`dang_bai`** (mã `NDB…` từ `bdm_ban_do`, `nhanh_bdm` = 'toan' cho kho dai / 'hgt' cho kho hgt) + `dang_bai_chac` ('cao'|'vua') + `dang_bai_ly_do`
+  ⇒ **ĐỀ XUẤT** chờ người duyệt (luật "đề xuất trước, ghi sau"). Người đã chốt trong chat ⇒ `"dang_bai_chot": true` (gán thẳng). Không chắc ⇒ để trống.
+- Câu Đúng/Sai: điền **`chu_de`** (mã `NCD…` của `dai_bdm_chu_de`, cùng khối + nhánh) ⇒ kho Đ/S của chủ đề; **mệnh đề không có dạng**.
+- Tóm tắt chạy thử in thêm dòng "bản đồ mới: đề xuất dạng bài · gán · kho Đ/S chủ đề". Luật đầy đủ: đầu `scripts/_kho_insert.mjs`.
+
 ## Nguyên tắc bất di
 
 1. **1 file = 1 đề.** Bản đầu chỉ đề **khuôn Bộ 3 phần** (TN + Đúng/Sai + Trả lời ngắn). Đề khác ⇒ dừng, báo.
@@ -80,7 +88,8 @@ Viết bằng **Write tool** một script nhỏ sửa `de.json` (mẫu: `bk-kho-
 | TLN chưa có đáp số | Rút từ dòng kết luận của lời giải (`dap_an_nguon='ket_luan_loi_giai'`, ghi trích dẫn vào `canh_bao`). Không có lời giải ⇒ để trống |
 | Đáp án 2 nguồn lệch | Giữ cảnh báo; soi được thì ghi lý do chọn |
 | `kho` từng câu | `hgt` = mặt phẳng / đường thẳng / mặt cầu / góc / khoảng cách trong Oxyz · `dai` = còn lại (kể cả vectơ + hệ trục toạ độ lớp 12) |
-| `dang` từng câu + từng mệnh đề Đ/S | Theo bản đồ khối đó (`<kho>_ban_do`); mệnh đề phải cùng kho với câu cha. Không khớp rõ ⇒ `null` |
+| `dang` từng câu + từng mệnh đề Đ/S | **Chỉ cấp 1** (khối chưa chạy bản đồ mới): theo bản đồ khối đó (`<kho>_ban_do`); mệnh đề phải cùng kho với câu cha. Không khớp rõ ⇒ `null` |
+| `dang_bai` (câu thường) · `chu_de` (câu Đ/S) | **K6–12 (bản đồ mới)**: xem mục ⭐ đầu file — đề xuất dạng bài / kho Đ/S của chủ đề |
 
 Đọc bản đồ: query `select ma_dang, ten_chuyen_de, ten_dang from <kho>_ban_do where khoi='$ARGUMENTS' order by 1` (chỉ đọc).
 
@@ -113,7 +122,9 @@ số câu / mệnh đề còn dạng chờ · các cảnh báo cần người du
   phan: [{ thu_tu:1, ten, dang_thuc:"trac_nghiem"|"dung_sai"|"tra_loi_ngan", diem_moi_cau }],
   cau:  [{ phan, so, loai_cau, noi_dung, lua_chon:[4 chuỗi]|null, dap_an, dap_an_nguon,
            menh_de:[{chu, noi_dung, dap_an:"D"|"S", loi_giai, dang}]|null, loi_giai,
-           anh:[tên file trong img/], anh_giai:[…], kho:"dai"|"hgt", dang:"T3…"|null, canh_bao:[…] }] }
+           anh:[tên file trong img/], anh_giai:[…], kho:"dai"|"hgt", dang:"T3…"|null, canh_bao:[…],
+           // K6–12 (bản đồ mới) thay dang bằng: dang_bai:"NDB…"|null, dang_bai_chac, dang_bai_ly_do, dang_bai_chot? · Đ/S: chu_de:"NCD…"|null
+         }] }
 ```
 
 ## Chưa có (spec §10.4)

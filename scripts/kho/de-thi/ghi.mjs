@@ -10,6 +10,9 @@
 //   · nhap_kho_log (sha256 ⇒ chạy lại không nhân đôi).
 // Ảnh câu → bucket kho-anh · PDF gốc → bucket kho-tailieu (ngoài transaction; chỉ khi --ghi).
 // Dạng: câu không có `dang` ⇒ dạng chờ của kho + khối (đề VẪN vào — CEO 01/10: đề luôn dùng được, chỉ cảnh báo).
+// ⭐ 26/10 BẢN ĐỒ MỚI (Đại/HGT khối K6–12 — luật ở đầu _kho_insert.mjs): KHÔNG điền `dang` (mã cũ) nữa — câu luôn vào dạng chờ;
+//   câu thường điền `dang_bai` (NDB…) ⇒ ĐỀ XUẤT chờ duyệt (`dang_bai_chac` 'cao'|'vua', `dang_bai_ly_do`); câu Đ/S điền `chu_de`
+//   (NCD…) ⇒ kho Đ/S của chủ đề, mệnh đề KHÔNG điền `dang`. Người đã chốt trong chat ⇒ `dang_bai_chot`/`chu_de_chot: true`.
 // Cảnh báo từng câu (đáp án 2 nguồn lệch, hình thiếu…) lưu vào cau_hinh.deThi.canhBaoCau[ma_cau] cho người duyệt đọc.
 // ============================================================================
 import { readFileSync, existsSync } from 'node:fs'
@@ -100,20 +103,24 @@ try {
 
   await c.query('begin')
   const maCua = new Map() // q → { ma_cau, kho, trung }
-  const tk = { moi: 0, trung: 0, dang_cho: 0, menh_de_cho: 0 }
+  const tk = { moi: 0, trung: 0, dang_cho: 0, menh_de_cho: 0, de_xuat: 0, gan: 0, kho_ds: 0, doi_dang_cu: 0 }
   for (const kho of ['dai', 'hgt', 'hinh_hoc']) { // hinh_hoc = hình phẳng THCS (K8 10/10), mã câu do DB cấp
     const grp = de.cau.filter((q) => q.kho === kho)
     if (!grp.length) continue
     const cauList = grp.map((q) => {
       const [anhDe, anhGiai] = anhCua.get(q)
       const base = { dang_chinh: q.dang || 'CHUA', khoi: String(de.khoi), loai_cau: q.loai_cau, noi_dung: q.noi_dung,
-        nguon: 'de_thi', nguon_giai: 'nguoi', ten_de_goc: de.ten, anh_de: anhDe, anh_dap_an: anhGiai }
+        nguon: 'de_thi', nguon_giai: 'nguoi', ten_de_goc: de.ten, anh_de: anhDe, anh_dap_an: anhGiai,
+        dang_bai: q.dang_bai ?? null, dang_bai_chac: q.dang_bai_chac, dang_bai_ly_do: q.dang_bai_ly_do, dang_bai_chot: q.dang_bai_chot,
+        chu_de: q.chu_de ?? null, chu_de_chot: q.chu_de_chot }
       if (q.loai_cau === 'trac_nghiem') return { ...base, lua_chon: q.lua_chon, dap_an: q.dap_an ?? null, loi_giai: q.loi_giai ?? null }
       if (q.loai_cau === 'dung_sai') return { ...base, dap_an: null, loi_giai: q.loi_giai ?? null,
         menh_de: q.menh_de.map((m) => ({ noi_dung: m.noi_dung, dap_an: m.dap_an, ma_dang: m.dang || 'CHUA', loi_giai: m.loi_giai ?? null })) }
       return { ...base, dap_an: q.dap_an ?? null, loi_giai: q.loi_giai ?? null }
     })
     const r = await insertCauBatch({ client: c, subject: kho, cauList })
+    if (r.bdm) for (const k of ['de_xuat', 'gan', 'kho_ds']) tk[k] += r.bdm[k]
+    if (r.bdm) tk.doi_dang_cu += r.bdm.doi_dang_cu.length
     const trung = new Map(r.trung.map((t) => [t.idx, t]))
     grp.forEach((q, i) => {
       maCua.set(q, { ma_cau: r.maCauList[i], kho, trung: trung.has(i) })
@@ -170,6 +177,7 @@ try {
 
   console.log(`\n${GHI ? 'GHI THẬT' : 'CHẠY THỬ (sẽ ROLLBACK)'} — "${de.ten}" · khối ${de.khoi} · ${de.cau.length} câu`)
   console.log(`  câu mới ${tk.moi} · trùng câu đã có (trỏ về câu cũ) ${tk.trung} · câu ở dạng chờ ${tk.dang_cho} · mệnh đề ở dạng chờ ${tk.menh_de_cho}`)
+  if (tk.de_xuat + tk.gan + tk.kho_ds + tk.doi_dang_cu) console.log(`  bản đồ mới: đề xuất dạng bài ${tk.de_xuat} · gán (người chốt) ${tk.gan} · kho Đ/S chủ đề ${tk.kho_ds}${tk.doi_dang_cu ? ` · ⚠ ${tk.doi_dang_cu} câu truyền mã dạng CŨ ⇒ vào dạng chờ` : ''}`)
   console.log(`  ảnh: ${[...anhCua.values()].flat().filter(Boolean).length} · PDF gốc: ${pdfGocUrl ? 'có' : 'không'} · tai_lieu ${tl.id}`)
   console.log('  STT | phần | kho | loại          | mã câu          | dạng         | đáp án | điểm | ghi chú')
   for (const r of doc) {
