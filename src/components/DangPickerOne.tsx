@@ -3,25 +3,38 @@
 // Hình giải tích). Dùng cho tài liệu TRỘN nhánh (MT — Thùy 21/08: "toggle chọn bản đồ lúc chọn câu"). Không
 // bật → hành vi cũ (1 nhánh cố định theo prop `nhanh`). onPick trả kèm nhánh đã chọn để caller lưu theo câu.
 import { useEffect, useState } from 'react'
-import { groupMap, type Tier1Node } from '../lib/kho/api'
+import { groupMap, khoiChayBanDoMoi, type Tier1Node } from '../lib/kho/api'
 import { khoCuaMon, nhanhCuaMon } from '../lib/tailieu'
 
 // `pillsThem` = pill NGOÀI hệ dạng (vd "Hình" mô hình của MT — kho bài/lưới, không có dạng để liệt kê ở đây):
 // bấm → caller tự xử lý (đóng popup, cuộn tới khối Hình). Giữ đủ "3 tab Đại / Hình giải tích / Hình" Thùy chốt 21/08.
-export default function DangPickerOne({ khoi, mon, nhanh, chonNhanh, pillsThem, onClose, onPick }: { khoi: string; mon?: string; nhanh?: string | null; chonNhanh?: boolean; pillsThem?: { ten: string; onClick: () => void }[]; onClose: () => void; onPick: (maDang: string, nhanh: string | null) => void }) {
+// `banDoMoi` (Thùy 26/10 — chuyển công tắc vận hành sang bản đồ mới): khối đã chạy bản đồ mới (DB quyết, fn_bdm_dang_chon) ⇒
+// chọn DẠNG BÀI NDB (onPick nhánh 'bdm'; toggle còn "Bản đồ mới" + nhánh không thuộc bản đồ mới như Hình · Học). Caller nào
+// GHI mã dạng vào CÂU kho (duyệt câu, kho đề thi…) chưa bật — câu nhận dạng bài qua gán, không qua dang_chinh.
+export default function DangPickerOne({ khoi, mon, nhanh, chonNhanh, pillsThem, banDoMoi, onClose, onPick }: { khoi: string; mon?: string; nhanh?: string | null; chonNhanh?: boolean; pillsThem?: { ten: string; onClick: () => void }[]; banDoMoi?: boolean; onClose: () => void; onPick: (maDang: string, nhanh: string | null) => void }) {
   const [tree, setTree] = useState<Tier1Node[]>([])
   const [loading, setLoading] = useState(true)
   const [q, setQ] = useState('')
   const [nh, setNh] = useState<string | null>(nhanh ?? null)
-  const nhanhOpts = chonNhanh ? nhanhCuaMon(mon) : []
+  const [moi, setMoi] = useState<boolean | null>(banDoMoi ? null : false)   // null = đang hỏi DB
+  useEffect(() => {
+    if (!banDoMoi) return
+    let alive = true
+    void khoiChayBanDoMoi(khoi, mon ?? 'Toán').then((m) => { if (!alive) return; setMoi(m); if (m) setNh('bdm') })
+    return () => { alive = false }
+  }, [banDoMoi, khoi, mon])
+  const nhanhOpts = !chonNhanh ? [] : moi
+    ? [{ ma: 'bdm', ten: 'Bản đồ mới' }, ...nhanhCuaMon(mon).filter((o) => o.ma === 'hinh_hoc')]
+    : nhanhCuaMon(mon)
   const themOpts = chonNhanh ? (pillsThem ?? []) : []
   const listMap = khoCuaMon(mon, nh).listMap
   useEffect(() => {
+    if (moi === null) return
     let alive = true
     setLoading(true)
     listMap(khoi).then((r) => { if (alive) { setTree(groupMap(r)); setLoading(false) } }).catch(() => { if (alive) setLoading(false) })
     return () => { alive = false }
-  }, [khoi, mon, nh]) // eslint-disable-line
+  }, [khoi, mon, nh, moi]) // eslint-disable-line
   const kw = q.trim().toLowerCase()
   return (
     <div className="fixed inset-0 z-[70] bg-slate-900/50 backdrop-blur-sm" onClick={onClose}>

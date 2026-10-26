@@ -57,7 +57,8 @@ export async function dangInfoCuaMon(mon: string, maList: string[]): Promise<Map
   }
   // BẢN ĐỒ MỚI (mastery K6–12 khi bật công tắc — PLAN-mastery-ban-do-moi.md): ô mang mã dạng bài 'NDB…' ⇒ tra view bdm_ban_do
   // (cùng khuôn cột bản đồ cũ, mig 202610231522). Thiếu bước này thì ô NDB bị BỎ ÂM THẦM ở getMasteryHS / loadMasteryCells.
-  const bdm = maList.filter((m) => m.startsWith('NDB') && !out.has(m))
+  // Chỉ môn có nhánh 'bdm' trong registry (khoCuaMon) — môn khác không tra bản đồ mới Toán (§1.6, không if môn)
+  const bdm = khoCuaMon(mon, 'bdm').banDoTbl === 'bdm_ban_do' ? maList.filter((m) => m.startsWith('NDB') && !out.has(m)) : []
   if (bdm.length) {
     const { data, error } = await supabase.from('bdm_ban_do').select('ma_dang, ten_dang, ma_chuyen_de, ten_chuyen_de, nhanh_bdm, muc_do').in('ma_dang', bdm).limit(LIMIT)
     if (error) throw error

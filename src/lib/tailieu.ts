@@ -1,6 +1,6 @@
 // Data-layer "Làm tài liệu" (giáo trình…). Tài liệu = THAM CHIẾU vào kho; resolver kéo nội dung sống khi render.
 import { supabase } from './supabase'
-import { cumKey, listCauByDang, listDaiMap, listKhtnMap, listHgtMap, listAnhMap, listTsaMap, type CauHoi, type MapRow } from './kho/api'
+import { cumKey, listCauByDang, listDaiMap, listKhtnMap, listHgtMap, listAnhMap, listTsaMap, listBdmMap, type CauHoi, type MapRow } from './kho/api'
 import { listHinhHocMap } from './kho/hinhhoc'
 import { laMaLop } from './kho/khoTrenLop'
 
@@ -22,6 +22,10 @@ export function khoCuaMon(mon?: string | null, nhanh?: string | null): { cauTbl:
     ? { cauTbl: 'tsa_cau_hoi', banDoTbl: 'tsa_ban_do', ltDangTbl: 'tsa_dang_ly_thuyet', ltCdTbl: 'tsa_chuyen_de_ly_thuyet', formTnTbl: 'tsa_cau_form_tn', nguLieuTbl: null, listMap: listTsaMap }
     : mon === 'Tiếng Anh'
     ? { cauTbl: 'anh_cau_hoi', banDoTbl: 'anh_ban_do', ltDangTbl: 'anh_dang_ly_thuyet', ltCdTbl: 'anh_chuyen_de_ly_thuyet', formTnTbl: 'anh_cau_form_tn', nguLieuTbl: 'anh_ngu_lieu', listMap: listAnhMap }
+    // Bản đồ mới (dạng bài NDB, K6–12): toàn VIEW chỉ đọc (bdm_cau_hoi = câu theo dạng bài, bdm_ban_do = bản đồ phẳng) —
+    // ghi vào view thì PostgREST báo lỗi to. Lý thuyết chuyên đề chưa có ở bản đồ mới ⇒ ltCdTbl tạm trỏ LT dạng bài.
+    : nhanh === 'bdm'
+    ? { cauTbl: 'bdm_cau_hoi', banDoTbl: 'bdm_ban_do', ltDangTbl: 'bdm_dang_ly_thuyet', ltCdTbl: 'bdm_dang_ly_thuyet', formTnTbl: 'bdm_cau_form_tn', nguLieuTbl: null, listMap: (k: string) => listBdmMap(k, mon ?? 'Toán') }
     : nhanh === 'hinh_gt'
     ? { cauTbl: 'hgt_cau_hoi', banDoTbl: 'hgt_ban_do', ltDangTbl: 'hgt_dang_ly_thuyet', ltCdTbl: 'hgt_chuyen_de_ly_thuyet', formTnTbl: 'hgt_cau_form_tn', nguLieuTbl: null, listMap: listHgtMap }
     : nhanh === 'hinh_hoc'

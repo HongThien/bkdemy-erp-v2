@@ -736,7 +736,7 @@ function ChamTab({ buoiId, phase, roster, buoi, dangOpts, onChange }: { buoiId: 
       <ChamMobile probs={probs} coMat={coMat} gradeOf={gradeOf} tenDang={tenDang}
         onSetMuc={setMuc} onAddBai={async () => { await addProblem(buoiId, phase); reloadP() }}
         onPickDang={setDangPick} onDong={dong} onMoLai={moLai} locked={!!dongCol} closing={closing} />
-      {dangPick && <DangPickerOne khoi={khoi} onClose={() => setDangPick(null)} onPick={async (md) => { const pid = dangPick; setDangPick(null); await setProblemDang(pid, md); reloadP() }} />}
+      {dangPick && <DangPickerOne khoi={khoi} banDoMoi onClose={() => setDangPick(null)} onPick={async (md) => { const pid = dangPick; setDangPick(null); await setProblemDang(pid, md); reloadP() }} />}
     </>
   )
 
@@ -792,7 +792,7 @@ function ChamTab({ buoiId, phase, roster, buoi, dangOpts, onChange }: { buoiId: 
           </tbody>
         </table>
       </div>
-      {dangPick && <DangPickerOne khoi={khoi} onClose={() => setDangPick(null)} onPick={async (md) => { const pid = dangPick; setDangPick(null); await setProblemDang(pid, md); reloadP() }} />}
+      {dangPick && <DangPickerOne khoi={khoi} banDoMoi onClose={() => setDangPick(null)} onPick={async (md) => { const pid = dangPick; setDangPick(null); await setProblemDang(pid, md); reloadP() }} />}
     </div>
   )
 }

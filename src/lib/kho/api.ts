@@ -1860,6 +1860,26 @@ export function suggestLeafMa(t2Code: string, t2: Tier2Node | null): string {
   return t2Code + pad2(maxOrdCon((t2?.leaves ?? []).map((d) => d.leafMa), t2Code) + 1)
 }
 
+// ── BẢN ĐỒ MỚI 4 tầng (dạng bài NDB — PLAN-mastery-ban-do-moi.md): chỉ ĐỌC qua fn_bdm_dang_chon (thứ tự theo DB).
+// Tầng 2 của picker = "chuyên đề · nhóm" (Thùy 24/10: tầng 3 và 4 tạm hiển thị như nhau). Khối chưa chạy bản đồ mới ⇒ [].
+export async function listBdmMap(khoi: string, mon = 'Toán'): Promise<MapRow[]> {
+  const { data, error } = await supabase.rpc('fn_bdm_dang_chon', { p_mon: mon, p_khoi: khoi })
+  if (error) throw error
+  if ((data as { ban_do?: string } | null)?.ban_do !== 'moi') return []
+  return ((data as { dangs: any[] }).dangs ?? []).map((d) => ({
+    leafMa: d.ma_dang, khoi,
+    t1Ma: d.ma_chu_de, t1Ten: d.ten_chu_de,
+    t2Ma: `${d.ma_chuyen_de ?? ''}|${d.ma_nhom ?? ''}`, t2Ten: [d.ten_chuyen_de, d.ten_nhom].filter(Boolean).join(' · '),
+    leafTen: d.ten_dang, bac: d.bac_toi_thieu ?? '', mucDo: d.muc_do ?? null,
+  }))
+}
+// (môn, khối) đã chạy bản đồ mới chưa — cùng luật DB (_kho_ds_nhanh_khoi có nhánh 'bdm').
+export async function khoiChayBanDoMoi(khoi: string, mon = 'Toán'): Promise<boolean> {
+  const { data, error } = await supabase.rpc('fn_bdm_dang_chon', { p_mon: mon, p_khoi: khoi })
+  if (error) return false
+  return (data as { ban_do?: string } | null)?.ban_do === 'moi'
+}
+
 // ── ĐẠI: map qua MapRow ──────────────────────────────────────────
 export async function listDaiMap(khoi: string): Promise<MapRow[]> {
   const rows = await listDaiDang(khoi)

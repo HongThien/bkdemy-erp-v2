@@ -199,7 +199,7 @@ function IngamePanel({ buoi, roster, tenDang, napTenDang, onChange }: {
           )
         })}
       </div>
-      {dangPick && <DangPickerOne khoi={buoi.lop?.khoi ?? ''} mon={buoi.lop?.mon} onClose={() => setDangPick(null)}
+      {dangPick && <DangPickerOne khoi={buoi.lop?.khoi ?? ''} mon={buoi.lop?.mon} banDoMoi onClose={() => setDangPick(null)}
         onPick={async (md) => { const pid = dangPick; setDangPick(null); await setProblemDang(pid, md); reloadP() }} />}
     </div>
   )
