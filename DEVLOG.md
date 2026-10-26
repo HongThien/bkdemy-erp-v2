@@ -77915,3 +77915,5 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - 4T1 = lớp Toán duy nhất khối 4T ⇒ bật theo khối. Luật 'khối giữ bản đồ cũ' gom về MỘT hàm `_bdm_khoi_giu_cu` (3/4/5/5T) — trước rải ở `_kho_ds_nhanh_khoi`, `_do_o_bdm`, `_do_o_bdm_core` (dashboard). Danh sách CẤP 1 của luật đo (tự luyện) giữ nguyên: 4T vẫn là cấp 1 về đo.
 - Kiểm `scripts/_test_4t_bdm.mjs` (ROLLBACK): 4T1 mastery 412 ô (0 NDB) → 539 ô (506 NDB); 9A1 y hệt; khối 4/5T đổi 4 ô (HS làm câu 4T T14T0101… ⇒ khoá NDB — quy dạng theo khối CÂU, chấp nhận). HS 4T1: phiêu lưu 0,6 s (lần đầu cache lạnh 6,6 s), DS tự luyện 1,6 s có đủ 6 dạng bài Tổng hiệu, sổ tay, dạng học tập đều NDB.
 - Còn: 4T có ~1.223 câu chưa có dạng bài mới ⇒ chưa lên app 4T1 tới khi được xếp.
+
+- (26/10) Thùy 'bỏ' 3 câu Tổng hiệu đề phi thực tế T14T080102004/006/012 ⇒ KHO RÁC (xoa_at câu + form chưa duyệt, tu_choi_ly_do ghi lý do), không xoá cứng; 0 bản sao con, 0 bài làm.
