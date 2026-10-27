@@ -261,13 +261,13 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
 
   // Tiến độ soạn của khối — đếm thứ đang hiển thị (badge)
   const tienDo = useMemo(() => {
-    let nhom = 0, nhomMoTa = 0, nhomLt = 0, db = 0, dbMoTa = 0, dbLt = 0, dbVd = 0
+    let nhom = 0, nhomMoTa = 0, nhomLt = 0, db = 0, dbMoTa = 0, dbLt = 0, dbVd = 0, dbLop = 0
     for (const cd of cay?.chu_de ?? []) for (const x of cd.o) for (const n of x.nhom) {
       nhom++; if (n.mo_ta.trim()) nhomMoTa++; if (n.co_ly_thuyet) nhomLt++
-      for (const d of n.dang_bai) { db++; if (d.mo_ta.trim()) dbMoTa++; if (d.co_ly_thuyet) dbLt++; if (d.co_vi_du) dbVd++ }
+      for (const d of n.dang_bai) { db++; if (d.mo_ta.trim()) dbMoTa++; if (d.co_ly_thuyet) dbLt++; if (d.co_vi_du) dbVd++; const l = demLop[d.id]; if (l && l.giang + l.luyen) dbLop++ }
     }
-    return { nhom, nhomMoTa, nhomLt, db, dbMoTa, dbLt, dbVd }
-  }, [cay])
+    return { nhom, nhomMoTa, nhomLt, db, dbMoTa, dbLt, dbVd, dbLop }
+  }, [cay, demLop])
 
   if (loiTai) return <div className="p-8 text-sm text-rose-600">Không tải được bản đồ mới: {loiTai}</div>
   if (!cay) return <div className="flex h-full items-center justify-center text-sm text-slate-400">Đang tải bản đồ mới…</div>
@@ -348,7 +348,7 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
         )}
         <span className={`ml-auto flex min-w-0 !shrink-[1000] flex-col items-end overflow-hidden text-[11px] leading-tight text-slate-500 ${khuon === 'bon_tang' ? '' : 'invisible'}`}>
           <span className="max-w-full truncate">Nhóm <b>{tienDo.nhom}</b> · mô tả {tienDo.nhomMoTa} · lý thuyết {tienDo.nhomLt}</span>
-          <span className="max-w-full truncate">Dạng bài <b>{tienDo.db}</b> · mô tả {tienDo.dbMoTa} · lý thuyết {tienDo.dbLt} · ví dụ {tienDo.dbVd}</span>
+          <span className="max-w-full truncate">Dạng bài <b>{tienDo.db}</b> · mô tả {tienDo.dbMoTa} · lý thuyết {tienDo.dbLt} · ví dụ {tienDo.dbVd} · trên lớp {tienDo.dbLop}</span>
         </span>
       </div>
       {/* Khớp bản đồ cũ — luật: mọi câu phải thuộc 1 dạng bài. Khối xong khi cả 2 số về 0. */}
@@ -666,6 +666,8 @@ function CardDangBai(p: {
   ganVao: (dich: BdmDich, nhan: string) => (k: Keo) => Promise<void> | undefined
 }) {
   const { n, d, sang, vung, lam } = p
+  const l = useContext(DemLopCtx)[d.id]
+  const soLop = l ? l.giang + l.luyen : 0
   return (
     <div draggable onDragStart={(e) => p.batDauKeo(e, { loai: 'dang_bai', id: d.id, nhomId: n.id })} onDragEnd={p.ketThucKeo}
       {...vung(`d:${d.id}`, (k) => (k.loai === 'dang_bai' && k.id !== d.id) || k.loai === 'dang_cu', (k) => {
@@ -687,7 +689,7 @@ function CardDangBai(p: {
           title="Mở KHO: các câu thuộc dạng bài này" className="shrink-0 rounded bg-white px-1.5 text-[10.5px] font-semibold text-violet-700 ring-1 ring-violet-200 hover:bg-violet-100">📚 {d.so_cau}</button>
       )}
       <BadgeLop d={d} />
-      <DauTienDo moTa={!!d.mo_ta.trim()} noiDung={d.co_ly_thuyet} nhanNoiDung="lý thuyết" noiDung2={d.co_vi_du} nhanNoiDung2="ví dụ" />
+      <DauTienDo moTa={!!d.mo_ta.trim()} noiDung={d.co_ly_thuyet} nhanNoiDung="lý thuyết" noiDung2={d.co_vi_du} nhanNoiDung2="ví dụ" lop={soLop} />
     </div>
   )
 }
@@ -710,6 +712,8 @@ function ThanhDuyetDangBai({ chuoi, buoc, roiDuoc, onDi, onLuuMoTa }: {
 }) {
   const c = chuoi[Math.floor(buoc / 2)]
   const laVd = buoc % 2 === 1
+  const l = useContext(DemLopCtx)[c.d.id]
+  const soLop = l ? l.giang + l.luyen : 0
   const tong = chuoi.length * 2
   const di = (b: number) => { if (b >= 0 && b < tong && b !== buoc && roiDuoc()) onDi(b) }
   const [moTa, setMoTa] = useState(c.d.mo_ta)
@@ -750,7 +754,7 @@ function ThanhDuyetDangBai({ chuoi, buoc, roiDuoc, onDi, onLuuMoTa }: {
         <input value={moTa} onChange={(e) => setMoTa(e.target.value)} onBlur={() => { if (moTa.trim() !== c.d.mo_ta.trim()) onLuuMoTa(c.d.id, moTa.trim()) }}
           placeholder="— chưa có mô tả nhận biết (gõ để thêm, rời ô là lưu)"
           className={`${inp} h-8 min-w-0 flex-1 text-[13px] ${c.d.mo_ta.trim() ? '' : 'border-amber-300 bg-amber-50'}`} />
-        <div className="flex shrink-0 gap-3">{cham(!!c.d.mo_ta.trim(), 'mô tả')}{cham(c.d.co_ly_thuyet, 'lý thuyết')}{cham(c.d.co_vi_du, 'ví dụ')}</div>
+        <div className="flex shrink-0 gap-3">{cham(!!c.d.mo_ta.trim(), 'mô tả')}{cham(c.d.co_ly_thuyet, 'lý thuyết')}{cham(c.d.co_vi_du, 'ví dụ')}{cham(!!soLop, 'kho trên lớp')}</div>
       </div>
     </div>
   )
@@ -769,12 +773,14 @@ function NutChuyenDang({ huong, onBam }: { huong: 'truoc' | 'sau'; onBam: (() =>
   )
 }
 
-function DauTienDo({ moTa, noiDung, nhanNoiDung, noiDung2, nhanNoiDung2 }: { moTa: boolean; noiDung: boolean; nhanNoiDung: string; noiDung2?: boolean; nhanNoiDung2?: string }) {
+// Dạng bài có chấm thứ 4 = KHO TRÊN LỚP (Thùy 27/10 "mỗi dạng bài sẽ có 4 dấu chấm tròn thay vì 3").
+function DauTienDo({ moTa, noiDung, nhanNoiDung, noiDung2, nhanNoiDung2, lop }: { moTa: boolean; noiDung: boolean; nhanNoiDung: string; noiDung2?: boolean; nhanNoiDung2?: string; lop?: number }) {
   return (
     <span className="flex shrink-0 gap-0.5 pt-1">
       <span title={moTa ? 'Đã có mô tả' : 'Chưa có mô tả'} className={`h-2 w-2 rounded-full ${moTa ? 'bg-emerald-400' : 'bg-slate-300'}`} />
       <span title={noiDung ? `Đã có ${nhanNoiDung}` : `Chưa có ${nhanNoiDung}`} className={`h-2 w-2 rounded-full ${noiDung ? 'bg-sky-400' : 'bg-slate-300'}`} />
       {nhanNoiDung2 && <span title={noiDung2 ? `Đã có ${nhanNoiDung2}` : `Chưa có ${nhanNoiDung2}`} className={`h-2 w-2 rounded-full ${noiDung2 ? 'bg-violet-400' : 'bg-slate-300'}`} />}
+      {lop !== undefined && <span title={lop ? `Kho trên lớp: ${lop} câu` : 'Chưa có câu kho trên lớp'} className={`h-2 w-2 rounded-full ${lop ? 'bg-teal-500' : 'bg-slate-300'}`} />}
     </span>
   )
 }

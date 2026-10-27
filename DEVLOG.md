@@ -77950,3 +77950,10 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - C5 (Huy hiệu) + C7 (BXH game, Shop) CHƯA LÀM: đan vào app HS / khu Của tôi TA–OPS, xoá = đổi sản phẩm ⇒ chờ Thùy xem phạm vi cụ thể.
 - D: xoá 17 trang xem-thử (_xem_*.tsx + xem-thu-*.html, 4 trang đã commit) · 163 script `scripts/_*` cũ hơn 10/09 không nơi nào nhắc (GIỮ 55 cái DEVLOG/docs còn nhắc tên) · rác gốc (8 ảnh tên nhân đôi, .show33.tmp, x/, node) · out/, dist*, apk/.
 - Kiểm: tsc sạch (chỉ còn lỗi có sẵn src/lib/pdfRender.ts — không đụng) · esbuild bundle 9 entry OK · vite build ERP OK. Chưa mở app thật để nhìn menu.
+
+## 27/10 — Kho trên lớp: đổ từ ví dụ của dạng bài + chấm thứ 4 — Thùy
+- Thùy: 'Dùng tài liệu tham khảo đã có, fill lại kho trên lớp của các dạng bài đi. Và mỗi dạng bài sẽ có 4 dấu chấm tròn thay vì 3'.
+- Trước: dai_cau_lop 0 câu. Câu sách trong kho luyện (TVA/NĐT 8T, NBV/PNL 12) CHƯA gán dạng bài bản đồ mới ⇒ không có đích để chép. Nguồn có sẵn theo dạng bài = ô ví dụ (dai_bdm_dang_bai.vi_du, rút từ sách).
+- scripts/kho/lop-tu-vi-du.mjs --ghi: 675 dạng bài → 1.423 câu dai_cau_lop vai giang, nguon 'Ví dụ của dạng bài (bản đồ mới)' (1.402 có lời giải, 21 ví dụ minh hoạ chỉ đề). Tách theo khối ##VD; đề/lời giải cắt ở dòng 'Bài giải/Lời giải/Hướng dẫn giải'; bỏ nhãn 'Ví dụ n:'; ô ví dụ của dạng GIỮ NGUYÊN; chạy lại = 0 (không trùng). K6 326 · K7 144 · K8 130 · K9 150 · K10 274 · K11 311 · K12 76 · 4T 12.
+- BanDoMoi: chấm thứ 4 (xanh ngọc) = kho trên lớp trên thẻ dạng bài + thanh duyệt dạng bài; dòng tiến độ thêm 'trên lớp n'. Kiểm dev K8 Đơn thức.
+- Chưa có ví dụ ⇒ chưa có kho trên lớp: 8T (11 dạng), 5T, Hình giải tích K9/K12, phần dạng bài K12 chưa có ví dụ. Hình (hinh_*) chưa có kho trên lớp (bảng chỉ cho Đại/HGT).
