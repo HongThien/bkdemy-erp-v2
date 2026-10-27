@@ -77991,3 +77991,8 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - Nguyên nhân: 9205a0d4 (26/10) gỡ lá 'ET (bản đồ mới)', trỏ lamtailieu:et_bdm về ETScreen cũ; 2d8e978d (27/10, Dọn ERP) thấy ETBdmEditor không ai import ⇒ xoá như code chết.
 - Khôi phục: ETBdmEditor.tsx lấy lại nguyên bản từ 2d8e978d^ · đảo phần ET của 9205a0d4 (lá menu, route NhanSuHome, Kho tài liệu mở ET ban_do='moi' bằng ETBdmEditor, ETEditor lại báo 'sửa ở mục ET (bản đồ mới)' khi buổi đã có ET mới) · GIỮ phần cảnh báo giáo trình cũ của 9205a0d4. tsc sạch; dev: lá hiện, màn ET mới mở (chọn lớp → dạng bài bản đồ mới).
 - ET hiện có: moi/∅ 20 (mở ETBdmEditor) · cu/bdm 1 (soạn ở mục ET cũ 27/10, vẫn mở ETEditor).
+
+### 27/10 (tối) — [Kho Số nguyên K6] Thùy: "Duyệt toàn bộ bài số nguyên đi" — đã duyệt
+- duyet-so-nguyen.mjs --ghi (1 transaction): chấp nhận dạng cho 528 câu Đại thuộc chủ đề NCD00189 (388 đề xuất AI của lô sách + 121 gán AI từ đề thi + 19 gán người) → gán nguon=nguoi qua _bdm_nguoi_gan_cau; rút 388 dòng dai_bdm_de_xuat vừa chấp nhận; da_duyet=true cho 527 câu (1 đã duyệt từ trước), duyet_nguon=ai (AI thực thi lệnh CEO, không giả là người duyệt từng câu), kho_chuan 528/528; duyệt 196/196 câu kho trên lớp (dai_cau_lop).
+- Còn chưa duyệt: 4 câu lô sách chưa có dạng (dạng chờ, không duyệt được) + 11 câu GIỮ LẠI chưa nhập (xem so-nguyen-sach-duyet.html) + câu Đ/S T106000000564 (kho Đ/S).
+- Phân bố sau duyệt: 21 nhóm có câu; ít nhất: Giá trị nhỏ nhất/lớn nhất 2 câu, Tổng dãy xen dấu 5, Tìm số nguyên thoả điều kiện chia hết 8.
