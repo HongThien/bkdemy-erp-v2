@@ -1,0 +1,2706 @@
+[
+  {
+    "id": "ÔT-1A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01302",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "tổng nhiều số âm có ngoặc vuông; có thể xếp 01300 hoặc 01302",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $[(-25)+(-30)]+(-9)$.",
+    "dap_an": "-64",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tính trong ngoặc trước; cộng hai số cùng dấu là cộng phần số rồi giữ dấu chung.\n\n**Bước 1.** Tính trong ngoặc vuông trước: đó là tổng của hai số nguyên âm.\n\n**Bước 2.** Cộng hai số nguyên âm: bỏ dấu \"−\", cộng hai số tự nhiên, rồi đặt dấu \"−\" trước kết quả.\n\n**Bước 3.** Cộng tiếp với số còn lại bằng cùng quy tắc.\n\n**Chú ý:** tổng của hai số nguyên âm luôn là số nguyên âm.\n\n**Phần 2. Trình bày**\n\n$[(-25)+(-30)]+(-9)$\n\n$=(-55)+(-9)$\n\n$=-64$",
+    "kiem": [
+      "((-25)+(-30))+(-9)===-64"
+    ],
+    "sach_dap_so": "-64",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-1A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "dãy cộng trừ nhiều số nguyên",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $-(-228)+(-218)-402-8$.",
+    "dap_an": "-400",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** trừ một số nguyên là cộng với số đối của nó; sau đó cộng trừ lần lượt từ trái sang phải.\n\n**Bước 1.** Nhìn các dấu trừ đứng trước số (có −(−228)): áp dụng quy tắc trừ, tức là trừ đi một số bằng cộng với số đối của nó, nên hai dấu trừ liền nhau thành dấu cộng.\n\n**Bước 2.** Viết lại biểu thức không còn ngoặc, giữ nguyên thứ tự các số hạng.\n\n**Bước 3.** Cộng trừ lần lượt từ trái sang phải; hai số khác dấu thì bỏ dấu \"−\" của số âm, lấy số lớn trừ số nhỏ rồi đặt dấu của số lớn hơn trước kết quả.\n\n**Bước 4.** Soát lại dấu ở mỗi bước trung gian trước khi viết kết quả cuối.\n\n**Chú ý:** trừ cho một số âm thì được cộng với số đối của nó: $-(-a)=a$.\n\n**Phần 2. Trình bày**\n\n$-(-228)+(-218)-402-8$\n\n$=228-218-402-8$\n\n$=10-402-8$\n\n$=-392-8$\n\n$=-400$",
+    "kiem": [
+      "-(-228)+(-218)-402-8===-400"
+    ],
+    "sach_dap_so": "-400",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-1A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "dãy cộng trừ nhiều số nguyên",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $49-(-54)-23$.",
+    "dap_an": "80",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** trừ một số nguyên là cộng với số đối của nó; sau đó cộng trừ lần lượt từ trái sang phải.\n\n**Bước 1.** Nhìn các dấu trừ đứng trước số (có −(−54)): áp dụng quy tắc trừ, tức là trừ đi một số bằng cộng với số đối của nó, nên hai dấu trừ liền nhau thành dấu cộng.\n\n**Bước 2.** Viết lại biểu thức không còn ngoặc, giữ nguyên thứ tự các số hạng.\n\n**Bước 3.** Cộng trừ lần lượt từ trái sang phải; hai số khác dấu thì bỏ dấu \"−\" của số âm, lấy số lớn trừ số nhỏ rồi đặt dấu của số lớn hơn trước kết quả.\n\n**Bước 4.** Soát lại dấu ở mỗi bước trung gian trước khi viết kết quả cuối.\n\n**Chú ý:** trừ cho một số âm thì được cộng với số đối của nó: $-(-a)=a$.\n\n**Phần 2. Trình bày**\n\n$49-(-54)-23$\n\n$=49+54-23$\n\n$=103-23$\n\n$=80$",
+    "kiem": [
+      "49-(-54)-23===80"
+    ],
+    "sach_dap_so": "80",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-1A-d",
+    "vai": "giang",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "dãy cộng trừ nhiều số nguyên",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $888-(-222)-(-100)+15$.",
+    "dap_an": "1225",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** trừ một số nguyên là cộng với số đối của nó; sau đó cộng trừ lần lượt từ trái sang phải.\n\n**Bước 1.** Nhìn các dấu trừ đứng trước số (có −(−222) và −(−100)): áp dụng quy tắc trừ, tức là trừ đi một số bằng cộng với số đối của nó, nên hai dấu trừ liền nhau thành dấu cộng.\n\n**Bước 2.** Viết lại biểu thức không còn ngoặc, giữ nguyên thứ tự các số hạng.\n\n**Bước 3.** Cộng trừ lần lượt từ trái sang phải; hai số khác dấu thì bỏ dấu \"−\" của số âm, lấy số lớn trừ số nhỏ rồi đặt dấu của số lớn hơn trước kết quả.\n\n**Bước 4.** Soát lại dấu ở mỗi bước trung gian trước khi viết kết quả cuối.\n\n**Chú ý:** trừ cho một số âm thì được cộng với số đối của nó: $-(-a)=a$.\n\n**Phần 2. Trình bày**\n\n$888-(-222)-(-100)+15$\n\n$=888+222+100+15$\n\n$=1110+100+15$\n\n$=1210+15$\n\n$=1225$",
+    "kiem": [
+      "888-(-222)-(-100)+15===1225"
+    ],
+    "sach_dap_so": "1225",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-1B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01302",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "tổng nhiều số âm có ngoặc vuông; có thể xếp 01300 hoặc 01302",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $[(-12)+(-28)]+(-7)$.",
+    "dap_an": "-47",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tính trong ngoặc trước; cộng hai số cùng dấu là cộng phần số rồi giữ dấu chung.\n\n**Bước 1.** Tính trong ngoặc vuông trước: đó là tổng của hai số nguyên âm.\n\n**Bước 2.** Cộng hai số nguyên âm: bỏ dấu \"−\", cộng hai số tự nhiên, rồi đặt dấu \"−\" trước kết quả.\n\n**Bước 3.** Cộng tiếp với số còn lại bằng cùng quy tắc.\n\n**Chú ý:** tổng của hai số nguyên âm luôn là số nguyên âm.\n\n**Phần 2. Trình bày**\n\n$[(-12)+(-28)]+(-7)$\n\n$=(-40)+(-7)$\n\n$=-47$",
+    "kiem": [
+      "((-12)+(-28))+(-7)===-47"
+    ],
+    "sach_dap_so": "-47",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-1B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "dãy cộng trừ nhiều số nguyên",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $-(-348)+(-218)+402-8$.",
+    "dap_an": "524",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** trừ một số nguyên là cộng với số đối của nó; sau đó cộng trừ lần lượt từ trái sang phải.\n\n**Bước 1.** Nhìn các dấu trừ đứng trước số (có −(−348)): áp dụng quy tắc trừ, tức là trừ đi một số bằng cộng với số đối của nó, nên hai dấu trừ liền nhau thành dấu cộng.\n\n**Bước 2.** Viết lại biểu thức không còn ngoặc, giữ nguyên thứ tự các số hạng.\n\n**Bước 3.** Cộng trừ lần lượt từ trái sang phải; hai số khác dấu thì bỏ dấu \"−\" của số âm, lấy số lớn trừ số nhỏ rồi đặt dấu của số lớn hơn trước kết quả.\n\n**Bước 4.** Soát lại dấu ở mỗi bước trung gian trước khi viết kết quả cuối.\n\n**Chú ý:** trừ cho một số âm thì được cộng với số đối của nó: $-(-a)=a$.\n\n**Phần 2. Trình bày**\n\n$-(-348)+(-218)+402-8$\n\n$=348-218+402-8$\n\n$=130+402-8$\n\n$=532-8$\n\n$=524$",
+    "kiem": [
+      "-(-348)+(-218)+402-8===524"
+    ],
+    "sach_dap_so": "524",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-1B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "dãy cộng trừ nhiều số nguyên",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $500-(-200)-(-150)-50$.",
+    "dap_an": "800",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** trừ một số nguyên là cộng với số đối của nó; sau đó cộng trừ lần lượt từ trái sang phải.\n\n**Bước 1.** Nhìn các dấu trừ đứng trước số (có −(−200) và −(−150)): áp dụng quy tắc trừ, tức là trừ đi một số bằng cộng với số đối của nó, nên hai dấu trừ liền nhau thành dấu cộng.\n\n**Bước 2.** Viết lại biểu thức không còn ngoặc, giữ nguyên thứ tự các số hạng.\n\n**Bước 3.** Cộng trừ lần lượt từ trái sang phải; hai số khác dấu thì bỏ dấu \"−\" của số âm, lấy số lớn trừ số nhỏ rồi đặt dấu của số lớn hơn trước kết quả.\n\n**Bước 4.** Soát lại dấu ở mỗi bước trung gian trước khi viết kết quả cuối.\n\n**Chú ý:** trừ cho một số âm thì được cộng với số đối của nó: $-(-a)=a$.\n\n**Phần 2. Trình bày**\n\n$500-(-200)-(-150)-50$\n\n$=500+200+150-50$\n\n$=700+150-50$\n\n$=850-50$\n\n$=800$",
+    "kiem": [
+      "500-(-200)-(-150)-50===800"
+    ],
+    "sach_dap_so": "800",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-1B-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "dãy cộng trừ nhiều số nguyên",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $333-(-111)-(-444)+15$.",
+    "dap_an": "903",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** trừ một số nguyên là cộng với số đối của nó; sau đó cộng trừ lần lượt từ trái sang phải.\n\n**Bước 1.** Nhìn các dấu trừ đứng trước số (có −(−111) và −(−444)): áp dụng quy tắc trừ, tức là trừ đi một số bằng cộng với số đối của nó, nên hai dấu trừ liền nhau thành dấu cộng.\n\n**Bước 2.** Viết lại biểu thức không còn ngoặc, giữ nguyên thứ tự các số hạng.\n\n**Bước 3.** Cộng trừ lần lượt từ trái sang phải; hai số khác dấu thì bỏ dấu \"−\" của số âm, lấy số lớn trừ số nhỏ rồi đặt dấu của số lớn hơn trước kết quả.\n\n**Bước 4.** Soát lại dấu ở mỗi bước trung gian trước khi viết kết quả cuối.\n\n**Chú ý:** trừ cho một số âm thì được cộng với số đối của nó: $-(-a)=a$.\n\n**Phần 2. Trình bày**\n\n$333-(-111)-(-444)+15$\n\n$=333+111+444+15$\n\n$=444+444+15$\n\n$=888+15$\n\n$=903$",
+    "kiem": [
+      "333-(-111)-(-444)+15===903"
+    ],
+    "sach_dap_so": "903",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-2A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01303",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tích nhiều số nguyên",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính: $(-5).(-6).(-4)$.",
+    "dap_an": "-120",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đếm số thừa số âm để biết dấu của tích, rồi nhân các phần số với nhau.\n\n**Bước 1.** Xác định dấu của tích (ba thừa số, cả ba đều âm): có số lẻ thừa số âm thì tích âm, số chẵn thừa số âm thì tích dương, có thừa số 0 thì tích bằng 0.\n\n**Bước 2.** Nhân lần lượt từ trái sang phải; mỗi lần nhân hai số: cùng dấu cho tích dương, khác dấu cho tích âm.\n\n**Bước 3.** Đối chiếu dấu của kết quả với dấu đã xác định ở bước 1.\n\n**Chú ý:** chỉ cần một thừa số bằng 0 thì cả tích bằng 0.\n\n**Phần 2. Trình bày**\n\n$(-5).(-6).(-4)$\n\n$=30.(-4)$\n\n$=-120$",
+    "kiem": [
+      "(-5)*(-6)*(-4)===-120"
+    ],
+    "sach_dap_so": "-120",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-2A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01309",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "biểu thức cơ bản có một cấp ngoặc",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính: $(-7+9).(-12)$.",
+    "dap_an": "-24",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm trong ngoặc trước, ngoài ngoặc sau; nhân chia trước, cộng trừ sau.\n\n**Bước 1.** Xác định phép tính nằm trong ngoặc (tổng −7 + 9) và tính trước.\n\n**Bước 2.** Thay kết quả vừa tính vào, viết lại biểu thức đã gọn hơn.\n\n**Bước 3.** Thực hiện phép nhân hoặc chia số nguyên: cùng dấu cho kết quả dương, khác dấu cho kết quả âm.\n\n**Bước 4.** Nếu còn cộng trừ thì làm từ trái sang phải.\n\n**Chú ý:** chia hai số nguyên cũng theo quy tắc dấu như phép nhân.\n\n**Phần 2. Trình bày**\n\n$(-7+9).(-12)$\n\n$=2.(-12)$\n\n$=-24$",
+    "kiem": [
+      "(-7+9)*(-12)===-24"
+    ],
+    "sach_dap_so": "-24",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-2A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01309",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "biểu thức cơ bản có một cấp ngoặc",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính: $(-4-5).(-5+4)$.",
+    "dap_an": "9",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm trong ngoặc trước, ngoài ngoặc sau; nhân chia trước, cộng trừ sau.\n\n**Bước 1.** Xác định phép tính nằm trong ngoặc (hai ngoặc chứa hiệu và tổng) và tính trước.\n\n**Bước 2.** Thay kết quả vừa tính vào, viết lại biểu thức đã gọn hơn.\n\n**Bước 3.** Thực hiện phép nhân hoặc chia số nguyên: cùng dấu cho kết quả dương, khác dấu cho kết quả âm.\n\n**Bước 4.** Nếu còn cộng trừ thì làm từ trái sang phải.\n\n**Chú ý:** chia hai số nguyên cũng theo quy tắc dấu như phép nhân.\n\n**Phần 2. Trình bày**\n\n$(-4-5).(-5+4)$\n\n$=(-9).(-1)$\n\n$=9$",
+    "kiem": [
+      "(-4-5)*(-5+4)===9"
+    ],
+    "sach_dap_so": "9",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-2A-d",
+    "vai": "giang",
+    "dang_bai": "NDB01309",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "biểu thức cơ bản có một cấp ngoặc",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính: $(-25-15):(-2)$.",
+    "dap_an": "20",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm trong ngoặc trước, ngoài ngoặc sau; nhân chia trước, cộng trừ sau.\n\n**Bước 1.** Xác định phép tính nằm trong ngoặc (hiệu −25 − 15) và tính trước.\n\n**Bước 2.** Thay kết quả vừa tính vào, viết lại biểu thức đã gọn hơn.\n\n**Bước 3.** Thực hiện phép nhân hoặc chia số nguyên: cùng dấu cho kết quả dương, khác dấu cho kết quả âm.\n\n**Bước 4.** Nếu còn cộng trừ thì làm từ trái sang phải.\n\n**Chú ý:** chia hai số nguyên cũng theo quy tắc dấu như phép nhân.\n\n**Phần 2. Trình bày**\n\n$(-25-15):(-2)$\n\n$=(-40):(-2)$\n\n$=20$",
+    "kiem": [
+      "(-25-15)/(-2)===20"
+    ],
+    "sach_dap_so": "20",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-2B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01303",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tích nhiều số nguyên",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính: $(-7).(-5).(-2)$.",
+    "dap_an": "-70",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đếm số thừa số âm để biết dấu của tích, rồi nhân các phần số với nhau.\n\n**Bước 1.** Xác định dấu của tích (ba thừa số, cả ba đều âm): có số lẻ thừa số âm thì tích âm, số chẵn thừa số âm thì tích dương, có thừa số 0 thì tích bằng 0.\n\n**Bước 2.** Nhân lần lượt từ trái sang phải; mỗi lần nhân hai số: cùng dấu cho tích dương, khác dấu cho tích âm.\n\n**Bước 3.** Đối chiếu dấu của kết quả với dấu đã xác định ở bước 1.\n\n**Chú ý:** chỉ cần một thừa số bằng 0 thì cả tích bằng 0.\n\n**Phần 2. Trình bày**\n\n$(-7).(-5).(-2)$\n\n$=35.(-2)$\n\n$=-70$",
+    "kiem": [
+      "(-7)*(-5)*(-2)===-70"
+    ],
+    "sach_dap_so": "-70",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-2B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01309",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "biểu thức cơ bản có một cấp ngoặc",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính: $(-2+10).(-5)$.",
+    "dap_an": "-40",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm trong ngoặc trước, ngoài ngoặc sau; nhân chia trước, cộng trừ sau.\n\n**Bước 1.** Xác định phép tính nằm trong ngoặc (tổng −2 + 10) và tính trước.\n\n**Bước 2.** Thay kết quả vừa tính vào, viết lại biểu thức đã gọn hơn.\n\n**Bước 3.** Thực hiện phép nhân hoặc chia số nguyên: cùng dấu cho kết quả dương, khác dấu cho kết quả âm.\n\n**Bước 4.** Nếu còn cộng trừ thì làm từ trái sang phải.\n\n**Chú ý:** chia hai số nguyên cũng theo quy tắc dấu như phép nhân.\n\n**Phần 2. Trình bày**\n\n$(-2+10).(-5)$\n\n$=8.(-5)$\n\n$=-40$",
+    "kiem": [
+      "(-2+10)*(-5)===-40"
+    ],
+    "sach_dap_so": "40",
+    "ghi_chu": "LỆCH SÁCH — sách in 40; (−2+10).(−5) = 8.(−5) = −40 (tích hai số khác dấu là số âm)."
+  },
+  {
+    "id": "ÔT-2B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01309",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "biểu thức cơ bản có một cấp ngoặc",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính: $(-9-11).(-11+9)$.",
+    "dap_an": "40",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm trong ngoặc trước, ngoài ngoặc sau; nhân chia trước, cộng trừ sau.\n\n**Bước 1.** Xác định phép tính nằm trong ngoặc (hai ngoặc chứa hiệu và tổng) và tính trước.\n\n**Bước 2.** Thay kết quả vừa tính vào, viết lại biểu thức đã gọn hơn.\n\n**Bước 3.** Thực hiện phép nhân hoặc chia số nguyên: cùng dấu cho kết quả dương, khác dấu cho kết quả âm.\n\n**Bước 4.** Nếu còn cộng trừ thì làm từ trái sang phải.\n\n**Chú ý:** chia hai số nguyên cũng theo quy tắc dấu như phép nhân.\n\n**Phần 2. Trình bày**\n\n$(-9-11).(-11+9)$\n\n$=(-20).(-2)$\n\n$=40$",
+    "kiem": [
+      "(-9-11)*(-11+9)===40"
+    ],
+    "sach_dap_so": "40",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-2B-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01309",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "biểu thức cơ bản có một cấp ngoặc",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính: $(-18-12):(-5)$.",
+    "dap_an": "6",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm trong ngoặc trước, ngoài ngoặc sau; nhân chia trước, cộng trừ sau.\n\n**Bước 1.** Xác định phép tính nằm trong ngoặc (hiệu −18 − 12) và tính trước.\n\n**Bước 2.** Thay kết quả vừa tính vào, viết lại biểu thức đã gọn hơn.\n\n**Bước 3.** Thực hiện phép nhân hoặc chia số nguyên: cùng dấu cho kết quả dương, khác dấu cho kết quả âm.\n\n**Bước 4.** Nếu còn cộng trừ thì làm từ trái sang phải.\n\n**Chú ý:** chia hai số nguyên cũng theo quy tắc dấu như phép nhân.\n\n**Phần 2. Trình bày**\n\n$(-18-12):(-5)$\n\n$=(-30):(-5)$\n\n$=6$",
+    "kiem": [
+      "(-18-12)/(-5)===6"
+    ],
+    "sach_dap_so": "6",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-3A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01310",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "biểu thức có luỹ thừa, nhiều cấp ngoặc",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính: $(-8)^2.2^3$.",
+    "dap_an": "512",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tính luỹ thừa trước, rồi nhân chia, sau cùng cộng trừ; chú ý dấu của cơ số.\n\n**Bước 1.** Tính phần trong ngoặc (nếu có) để biết cơ số của từng luỹ thừa (cơ số −8 và cơ số 2).\n\n**Bước 2.** Viết luỹ thừa thành tích các thừa số bằng nhau rồi tính: cơ số âm với số mũ chẵn cho kết quả dương, với số mũ lẻ cho kết quả âm.\n\n**Bước 3.** Nhân hai kết quả theo quy tắc dấu.\n\n**Chú ý:** $(-a)^2$ khác $-a^2$: chỉ có dấu ngoặc mới cho biết cơ số là số âm.\n\n**Phần 2. Trình bày**\n\n$(-8)^2.2^3$\n\n$=64.8$\n\n$=512$",
+    "kiem": [
+      "(-8)**2*2**3===512"
+    ],
+    "sach_dap_so": "512",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-3A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01310",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "biểu thức có luỹ thừa, nhiều cấp ngoặc",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính: $(-4)^3.5^2$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tính luỹ thừa trước, rồi nhân chia, sau cùng cộng trừ; chú ý dấu của cơ số.\n\n**Bước 1.** Tính phần trong ngoặc (nếu có) để biết cơ số của từng luỹ thừa (cơ số −4 mũ 3 và cơ số 5).\n\n**Bước 2.** Viết luỹ thừa thành tích các thừa số bằng nhau rồi tính: cơ số âm với số mũ chẵn cho kết quả dương, với số mũ lẻ cho kết quả âm.\n\n**Bước 3.** Nhân hai kết quả theo quy tắc dấu.\n\n**Chú ý:** $(-a)^2$ khác $-a^2$: chỉ có dấu ngoặc mới cho biết cơ số là số âm.\n\n**Phần 2. Trình bày**\n\n$(-4)^3.5^2$\n\n$=(-64).25$\n\n$=-1600$",
+    "kiem": [
+      "(-4)**3*5**2===-1600"
+    ],
+    "sach_dap_so": "-1600",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-3B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01310",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "biểu thức có luỹ thừa, nhiều cấp ngoặc",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính: $(-3-2)^2.3^3$.",
+    "dap_an": "675",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tính luỹ thừa trước, rồi nhân chia, sau cùng cộng trừ; chú ý dấu của cơ số.\n\n**Bước 1.** Tính phần trong ngoặc (nếu có) để biết cơ số của từng luỹ thừa (cơ số là hiệu −3 − 2).\n\n**Bước 2.** Viết luỹ thừa thành tích các thừa số bằng nhau rồi tính: cơ số âm với số mũ chẵn cho kết quả dương, với số mũ lẻ cho kết quả âm.\n\n**Bước 3.** Nhân hai kết quả theo quy tắc dấu.\n\n**Chú ý:** $(-a)^2$ khác $-a^2$: chỉ có dấu ngoặc mới cho biết cơ số là số âm.\n\n**Phần 2. Trình bày**\n\n$(-3-2)^2.3^3$\n\n$=(-5)^2.27$\n\n$=25.27$\n\n$=675$",
+    "kiem": [
+      "(-3-2)**2*3**3===675"
+    ],
+    "sach_dap_so": "675",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-3B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01310",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "biểu thức có luỹ thừa, nhiều cấp ngoặc",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính: $(11-1)^3.2^2$.",
+    "dap_an": "4000",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tính luỹ thừa trước, rồi nhân chia, sau cùng cộng trừ; chú ý dấu của cơ số.\n\n**Bước 1.** Tính phần trong ngoặc (nếu có) để biết cơ số của từng luỹ thừa (cơ số là hiệu 11 − 1).\n\n**Bước 2.** Viết luỹ thừa thành tích các thừa số bằng nhau rồi tính: cơ số âm với số mũ chẵn cho kết quả dương, với số mũ lẻ cho kết quả âm.\n\n**Bước 3.** Nhân hai kết quả theo quy tắc dấu.\n\n**Chú ý:** $(-a)^2$ khác $-a^2$: chỉ có dấu ngoặc mới cho biết cơ số là số âm.\n\n**Phần 2. Trình bày**\n\n$(11-1)^3.2^2$\n\n$=10^3.2^2$\n\n$=1000.4$\n\n$=4000$",
+    "kiem": [
+      "(11-1)**3*2**2===4000"
+    ],
+    "sach_dap_so": "4000",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-4A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "so sánh tích bằng dấu của tích",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh: $15.(-3)$ với $15$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** không cần so từng số hạng: tính tích (hoặc chỉ xét dấu của tích) rồi so sánh hai số nguyên.\n\n**Bước 1.** Xác định dấu của mỗi tích (15.(−3) là tích hai số khác dấu): cùng dấu thì dương, khác dấu thì âm.\n\n**Bước 2.** Tính giá trị của mỗi tích (nếu cần để so với số khác).\n\n**Bước 3.** So sánh hai số nguyên: số âm nhỏ hơn 0, số 0 nhỏ hơn số dương; hai số âm thì số có phần số lớn hơn là số nhỏ hơn.\n\n**Chú ý:** tích hai số khác dấu luôn âm nên luôn nhỏ hơn 0.\n\n**Phần 2. Trình bày**\n\n$15.(-3)=-45$\n\nVì $-45<15$ nên $15.(-3)<15$.",
+    "kiem": [
+      "15*(-3)<15"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-4A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "so sánh tích bằng dấu của tích",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh: $(-7).2$ với $(-7)$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** không cần so từng số hạng: tính tích (hoặc chỉ xét dấu của tích) rồi so sánh hai số nguyên.\n\n**Bước 1.** Xác định dấu của mỗi tích ((−7).2 là tích hai số khác dấu): cùng dấu thì dương, khác dấu thì âm.\n\n**Bước 2.** Tính giá trị của mỗi tích (nếu cần để so với số khác).\n\n**Bước 3.** So sánh hai số nguyên: số âm nhỏ hơn 0, số 0 nhỏ hơn số dương; hai số âm thì số có phần số lớn hơn là số nhỏ hơn.\n\n**Chú ý:** tích hai số khác dấu luôn âm nên luôn nhỏ hơn 0.\n\n**Phần 2. Trình bày**\n\n$(-7).2=-14$\n\nHai số âm $-14$ và $-7$: số $-14$ có phần số lớn hơn nên $-14<-7$.\n\nVậy $(-7).2<-7$.",
+    "kiem": [
+      "(-7)*2<-7"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-4A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "so sánh tích bằng dấu của tích",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh: $(-68).8$ với $0$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** không cần so từng số hạng: tính tích (hoặc chỉ xét dấu của tích) rồi so sánh hai số nguyên.\n\n**Bước 1.** Xác định dấu của mỗi tích ((−68).8 là tích hai số khác dấu): cùng dấu thì dương, khác dấu thì âm.\n\n**Bước 2.** Tính giá trị của mỗi tích (nếu cần để so với số khác).\n\n**Bước 3.** So sánh hai số nguyên: số âm nhỏ hơn 0, số 0 nhỏ hơn số dương; hai số âm thì số có phần số lớn hơn là số nhỏ hơn.\n\n**Chú ý:** tích hai số khác dấu luôn âm nên luôn nhỏ hơn 0.\n\n**Phần 2. Trình bày**\n\n$(-68).8$ là tích của hai số khác dấu nên là một số nguyên âm.\n\nVậy $(-68).8<0$.",
+    "kiem": [
+      "(-68)*8<0"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-4B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "so sánh tích bằng dấu của tích",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh: $(-7).(-5)$ với $0$.",
+    "dap_an": ">",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** không cần so từng số hạng: tính tích (hoặc chỉ xét dấu của tích) rồi so sánh hai số nguyên.\n\n**Bước 1.** Xác định dấu của mỗi tích ((−7).(−5) là tích hai số cùng dấu): cùng dấu thì dương, khác dấu thì âm.\n\n**Bước 2.** Tính giá trị của mỗi tích (nếu cần để so với số khác).\n\n**Bước 3.** So sánh hai số nguyên: số âm nhỏ hơn 0, số 0 nhỏ hơn số dương; hai số âm thì số có phần số lớn hơn là số nhỏ hơn.\n\n**Chú ý:** tích hai số khác dấu luôn âm nên luôn nhỏ hơn 0.\n\n**Phần 2. Trình bày**\n\n$(-7).(-5)$ là tích của hai số cùng dấu (cùng âm) nên là một số nguyên dương.\n\nVậy $(-7).(-5)>0$.",
+    "kiem": [
+      "(-7)*(-5)>0"
+    ],
+    "sach_dap_so": ">",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-4B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "so sánh tích bằng dấu của tích",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh: $(-17).5$ với $(-5).(-2)$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** không cần so từng số hạng: tính tích (hoặc chỉ xét dấu của tích) rồi so sánh hai số nguyên.\n\n**Bước 1.** Xác định dấu của mỗi tích ((−17).5 âm, (−5).(−2) dương): cùng dấu thì dương, khác dấu thì âm.\n\n**Bước 2.** Tính giá trị của mỗi tích (nếu cần để so với số khác).\n\n**Bước 3.** So sánh hai số nguyên: số âm nhỏ hơn 0, số 0 nhỏ hơn số dương; hai số âm thì số có phần số lớn hơn là số nhỏ hơn.\n\n**Chú ý:** tích hai số khác dấu luôn âm nên luôn nhỏ hơn 0.\n\n**Phần 2. Trình bày**\n\n$(-17).5=-85$ và $(-5).(-2)=10$.\n\nVì $-85<10$ nên $(-17).5<(-5).(-2)$.",
+    "kiem": [
+      "(-17)*5<(-5)*(-2)"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-4B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "so sánh tích bằng dấu của tích",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh: $19.6$ với $(-17).(-10)$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** không cần so từng số hạng: tính tích (hoặc chỉ xét dấu của tích) rồi so sánh hai số nguyên.\n\n**Bước 1.** Xác định dấu của mỗi tích (cả hai tích đều dương): cùng dấu thì dương, khác dấu thì âm.\n\n**Bước 2.** Tính giá trị của mỗi tích (nếu cần để so với số khác).\n\n**Bước 3.** So sánh hai số nguyên: số âm nhỏ hơn 0, số 0 nhỏ hơn số dương; hai số âm thì số có phần số lớn hơn là số nhỏ hơn.\n\n**Chú ý:** tích hai số khác dấu luôn âm nên luôn nhỏ hơn 0.\n\n**Phần 2. Trình bày**\n\n$19.6=114$ và $(-17).(-10)=170$.\n\nVì $114<170$ nên $19.6<(-17).(-10)$.",
+    "kiem": [
+      "19*6<(-17)*(-10)"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-5A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01310",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "nhiều cấp ngoặc nhưng không có luỹ thừa",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $35-\\{12-[-14+(-2)]\\}$.",
+    "dap_an": "7",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm từ trong ra ngoài theo thứ tự ngoặc tròn, ngoặc vuông, ngoặc nhọn; trong mỗi ngoặc: luỹ thừa, rồi nhân chia, rồi cộng trừ.\n\n**Bước 1.** Nhận ra các tầng ngoặc (ba tầng ngoặc: [ ] trong { }, rồi tới ngoài cùng) và bắt đầu từ tầng trong cùng.\n\n**Bước 2.** Trong mỗi ngoặc làm theo thứ tự: luỹ thừa trước, nhân chia sau, cộng trừ cuối.\n\n**Bước 3.** Sau mỗi bước viết lại biểu thức, ngắn đi một tầng ngoặc.\n\n**Bước 4.** Làm phép tính ngoài cùng cuối cùng, chú ý dấu khi trừ cho số âm.\n\n**Chú ý:** không bỏ ngoặc tuỳ tiện khi trước ngoặc có dấu trừ hay phép nhân, chia; tính trong ngoặc trước là an toàn nhất.\n\n**Phần 2. Trình bày**\n\n$35-\\{12-[-14+(-2)]\\}$\n\n$=35-\\{12-(-16)\\}$\n\n$=35-28$\n\n$=7$",
+    "kiem": [
+      "35-(12-(-14+(-2)))===7"
+    ],
+    "sach_dap_so": "7",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-5A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01310",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "biểu thức có luỹ thừa, nhiều cấp ngoặc",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $47-[(45.2^4-5^2.12):14]$.",
+    "dap_an": "17",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm từ trong ra ngoài theo thứ tự ngoặc tròn, ngoặc vuông, ngoặc nhọn; trong mỗi ngoặc: luỹ thừa, rồi nhân chia, rồi cộng trừ.\n\n**Bước 1.** Nhận ra các tầng ngoặc ((…) trong [ ]) và bắt đầu từ tầng trong cùng.\n\n**Bước 2.** Trong mỗi ngoặc làm theo thứ tự: luỹ thừa trước, nhân chia sau, cộng trừ cuối.\n\n**Bước 3.** Sau mỗi bước viết lại biểu thức, ngắn đi một tầng ngoặc.\n\n**Bước 4.** Làm phép tính ngoài cùng cuối cùng, chú ý dấu khi trừ cho số âm.\n\n**Chú ý:** không bỏ ngoặc tuỳ tiện khi trước ngoặc có dấu trừ hay phép nhân, chia; tính trong ngoặc trước là an toàn nhất.\n\n**Phần 2. Trình bày**\n\n$47-[(45.2^4-5^2.12):14]$\n\n$=47-[(45.16-25.12):14]$\n\n$=47-[(720-300):14]$\n\n$=47-[420:14]$\n\n$=47-30$\n\n$=17$",
+    "kiem": [
+      "47-((45*2**4-5**2*12)/14)===17"
+    ],
+    "sach_dap_so": "17",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-5A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01310",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "biểu thức có luỹ thừa, nhiều cấp ngoặc",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $695-[200+(11-1)^2]$.",
+    "dap_an": "395",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm từ trong ra ngoài theo thứ tự ngoặc tròn, ngoặc vuông, ngoặc nhọn; trong mỗi ngoặc: luỹ thừa, rồi nhân chia, rồi cộng trừ.\n\n**Bước 1.** Nhận ra các tầng ngoặc ((…)^2 trong [ ]) và bắt đầu từ tầng trong cùng.\n\n**Bước 2.** Trong mỗi ngoặc làm theo thứ tự: luỹ thừa trước, nhân chia sau, cộng trừ cuối.\n\n**Bước 3.** Sau mỗi bước viết lại biểu thức, ngắn đi một tầng ngoặc.\n\n**Bước 4.** Làm phép tính ngoài cùng cuối cùng, chú ý dấu khi trừ cho số âm.\n\n**Chú ý:** không bỏ ngoặc tuỳ tiện khi trước ngoặc có dấu trừ hay phép nhân, chia; tính trong ngoặc trước là an toàn nhất.\n\n**Phần 2. Trình bày**\n\n$695-[200+(11-1)^2]$\n\n$=695-[200+10^2]$\n\n$=695-[200+100]$\n\n$=695-300$\n\n$=395$",
+    "kiem": [
+      "695-(200+(11-1)**2)===395"
+    ],
+    "sach_dap_so": "395",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-5A-d",
+    "vai": "giang",
+    "dang_bai": "NDB01310",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "biểu thức có luỹ thừa, nhiều cấp ngoặc",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $2345-1000:[19-2.(21-18)^2]$.",
+    "dap_an": "1345",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm từ trong ra ngoài theo thứ tự ngoặc tròn, ngoặc vuông, ngoặc nhọn; trong mỗi ngoặc: luỹ thừa, rồi nhân chia, rồi cộng trừ.\n\n**Bước 1.** Nhận ra các tầng ngoặc ((…)^2 trong [ ], rồi phép chia) và bắt đầu từ tầng trong cùng.\n\n**Bước 2.** Trong mỗi ngoặc làm theo thứ tự: luỹ thừa trước, nhân chia sau, cộng trừ cuối.\n\n**Bước 3.** Sau mỗi bước viết lại biểu thức, ngắn đi một tầng ngoặc.\n\n**Bước 4.** Làm phép tính ngoài cùng cuối cùng, chú ý dấu khi trừ cho số âm.\n\n**Chú ý:** không bỏ ngoặc tuỳ tiện khi trước ngoặc có dấu trừ hay phép nhân, chia; tính trong ngoặc trước là an toàn nhất.\n\n**Phần 2. Trình bày**\n\n$2345-1000:[19-2.(21-18)^2]$\n\n$=2345-1000:[19-2.3^2]$\n\n$=2345-1000:[19-2.9]$\n\n$=2345-1000:[19-18]$\n\n$=2345-1000:1$\n\n$=2345-1000$\n\n$=1345$",
+    "kiem": [
+      "2345-1000/(19-2*(21-18)**2)===1345"
+    ],
+    "sach_dap_so": "1345",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-5B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "dãy cộng trừ nhiều số nguyên",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $13-18-(-42)-15$.",
+    "dap_an": "22",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** trừ một số nguyên là cộng với số đối của nó; sau đó cộng trừ lần lượt từ trái sang phải.\n\n**Bước 1.** Nhìn các dấu trừ đứng trước số (có −(−42)): áp dụng quy tắc trừ, tức là trừ đi một số bằng cộng với số đối của nó, nên hai dấu trừ liền nhau thành dấu cộng.\n\n**Bước 2.** Viết lại biểu thức không còn ngoặc, giữ nguyên thứ tự các số hạng.\n\n**Bước 3.** Cộng trừ lần lượt từ trái sang phải; hai số khác dấu thì bỏ dấu \"−\" của số âm, lấy số lớn trừ số nhỏ rồi đặt dấu của số lớn hơn trước kết quả.\n\n**Bước 4.** Soát lại dấu ở mỗi bước trung gian trước khi viết kết quả cuối.\n\n**Chú ý:** trừ cho một số âm thì được cộng với số đối của nó: $-(-a)=a$.\n\n**Phần 2. Trình bày**\n\n$13-18-(-42)-15$\n\n$=13-18+42-15$\n\n$=-5+42-15$\n\n$=37-15$\n\n$=22$",
+    "kiem": [
+      "13-18-(-42)-15===22"
+    ],
+    "sach_dap_so": "22",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-5B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01310",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "biểu thức có luỹ thừa, nhiều cấp ngoặc",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $50-[(20-2^3):2+34]$.",
+    "dap_an": "10",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm từ trong ra ngoài theo thứ tự ngoặc tròn, ngoặc vuông, ngoặc nhọn; trong mỗi ngoặc: luỹ thừa, rồi nhân chia, rồi cộng trừ.\n\n**Bước 1.** Nhận ra các tầng ngoặc ((…) trong [ ], có 2^3) và bắt đầu từ tầng trong cùng.\n\n**Bước 2.** Trong mỗi ngoặc làm theo thứ tự: luỹ thừa trước, nhân chia sau, cộng trừ cuối.\n\n**Bước 3.** Sau mỗi bước viết lại biểu thức, ngắn đi một tầng ngoặc.\n\n**Bước 4.** Làm phép tính ngoài cùng cuối cùng, chú ý dấu khi trừ cho số âm.\n\n**Chú ý:** không bỏ ngoặc tuỳ tiện khi trước ngoặc có dấu trừ hay phép nhân, chia; tính trong ngoặc trước là an toàn nhất.\n\n**Phần 2. Trình bày**\n\n$50-[(20-2^3):2+34]$\n\n$=50-[(20-8):2+34]$\n\n$=50-[12:2+34]$\n\n$=50-[6+34]$\n\n$=50-40$\n\n$=10$",
+    "kiem": [
+      "50-((20-2**3)/2+34)===10"
+    ],
+    "sach_dap_so": "10",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-5B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01310",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "biểu thức có luỹ thừa, nhiều cấp ngoặc",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $20-[30-(5-1)^2:2]$.",
+    "dap_an": "-2",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm từ trong ra ngoài theo thứ tự ngoặc tròn, ngoặc vuông, ngoặc nhọn; trong mỗi ngoặc: luỹ thừa, rồi nhân chia, rồi cộng trừ.\n\n**Bước 1.** Nhận ra các tầng ngoặc ((…)^2 trong [ ]) và bắt đầu từ tầng trong cùng.\n\n**Bước 2.** Trong mỗi ngoặc làm theo thứ tự: luỹ thừa trước, nhân chia sau, cộng trừ cuối.\n\n**Bước 3.** Sau mỗi bước viết lại biểu thức, ngắn đi một tầng ngoặc.\n\n**Bước 4.** Làm phép tính ngoài cùng cuối cùng, chú ý dấu khi trừ cho số âm.\n\n**Chú ý:** không bỏ ngoặc tuỳ tiện khi trước ngoặc có dấu trừ hay phép nhân, chia; tính trong ngoặc trước là an toàn nhất.\n\n**Phần 2. Trình bày**\n\n$20-[30-(5-1)^2:2]$\n\n$=20-[30-4^2:2]$\n\n$=20-[30-16:2]$\n\n$=20-[30-8]$\n\n$=20-22$\n\n$=-2$",
+    "kiem": [
+      "20-(30-(5-1)**2/2)===-2"
+    ],
+    "sach_dap_so": "-2",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-5B-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01310",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "biểu thức có luỹ thừa, nhiều cấp ngoặc",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $205-[1200-(4^2-2.3)^3]:40$.",
+    "dap_an": "200",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm từ trong ra ngoài theo thứ tự ngoặc tròn, ngoặc vuông, ngoặc nhọn; trong mỗi ngoặc: luỹ thừa, rồi nhân chia, rồi cộng trừ.\n\n**Bước 1.** Nhận ra các tầng ngoặc ((…)^3 trong [ ], rồi phép chia) và bắt đầu từ tầng trong cùng.\n\n**Bước 2.** Trong mỗi ngoặc làm theo thứ tự: luỹ thừa trước, nhân chia sau, cộng trừ cuối.\n\n**Bước 3.** Sau mỗi bước viết lại biểu thức, ngắn đi một tầng ngoặc.\n\n**Bước 4.** Làm phép tính ngoài cùng cuối cùng, chú ý dấu khi trừ cho số âm.\n\n**Chú ý:** không bỏ ngoặc tuỳ tiện khi trước ngoặc có dấu trừ hay phép nhân, chia; tính trong ngoặc trước là an toàn nhất.\n\n**Phần 2. Trình bày**\n\n$205-[1200-(4^2-2.3)^3]:40$\n\n$=205-[1200-(16-6)^3]:40$\n\n$=205-[1200-10^3]:40$\n\n$=205-[1200-1000]:40$\n\n$=205-200:40$\n\n$=205-5$\n\n$=200$",
+    "kiem": [
+      "205-(1200-(4**2-2*3)**3)/40===200"
+    ],
+    "sach_dap_so": "200",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-6A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "thay giá trị biến rồi tính",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị biểu thức $A=a-b+c$ biết $a=-5$; $b=7$; $c=-8$.",
+    "dap_an": "-20",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** thay giá trị của các chữ vào biểu thức (số âm đặt trong ngoặc), rồi tính theo thứ tự thực hiện phép tính.\n\n**Bước 1.** Chép biểu thức rồi thay mỗi chữ bằng giá trị đã cho; số âm phải đặt trong ngoặc để không lẫn với dấu phép tính.\n\n**Bước 2.** Thực hiện luỹ thừa, nhân, chia trước.\n\n**Bước 3.** Cộng trừ lần lượt từ trái sang phải, chú ý quy tắc trừ cho số âm.\n\n**Chú ý:** viết rõ \"với ... thì ...\" trước khi thay số.\n\n**Phần 2. Trình bày**\n\nVới $a=-5$; $b=7$; $c=-8$ ta có:\n\n$A=a-b+c=(-5)-7+(-8)$\n\n$=-12+(-8)$\n\n$=-20$",
+    "kiem": [
+      "(()=>{const a=-5,b=7,c=-8;return a-b+c})()===-20"
+    ],
+    "sach_dap_so": "-20",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-6A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "thay giá trị biến rồi tính",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị biểu thức $B=-x-y-z$ biết $x=2$; $y=-5$; $z=-8$.",
+    "dap_an": "11",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** thay giá trị của các chữ vào biểu thức (số âm đặt trong ngoặc), rồi tính theo thứ tự thực hiện phép tính.\n\n**Bước 1.** Chép biểu thức rồi thay mỗi chữ bằng giá trị đã cho; số âm phải đặt trong ngoặc để không lẫn với dấu phép tính.\n\n**Bước 2.** Thực hiện luỹ thừa, nhân, chia trước.\n\n**Bước 3.** Cộng trừ lần lượt từ trái sang phải, chú ý quy tắc trừ cho số âm.\n\n**Chú ý:** viết rõ \"với ... thì ...\" trước khi thay số.\n\n**Phần 2. Trình bày**\n\nVới $x=2$; $y=-5$; $z=-8$ ta có:\n\n$B=-x-y-z=-2-(-5)-(-8)$\n\n$=-2+5+8$\n\n$=3+8$\n\n$=11$",
+    "kiem": [
+      "(()=>{const x=2,y=-5,z=-8;return -x-y-z})()===11"
+    ],
+    "sach_dap_so": "11",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-6A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "thay giá trị biến rồi tính",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị biểu thức $C=5x-7+8:x$ biết $x=4$.",
+    "dap_an": "15",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** thay giá trị của các chữ vào biểu thức (số âm đặt trong ngoặc), rồi tính theo thứ tự thực hiện phép tính.\n\n**Bước 1.** Chép biểu thức rồi thay mỗi chữ bằng giá trị đã cho; số âm phải đặt trong ngoặc để không lẫn với dấu phép tính.\n\n**Bước 2.** Thực hiện luỹ thừa, nhân, chia trước.\n\n**Bước 3.** Cộng trừ lần lượt từ trái sang phải, chú ý quy tắc trừ cho số âm.\n\n**Chú ý:** viết rõ \"với ... thì ...\" trước khi thay số.\n\n**Phần 2. Trình bày**\n\nVới $x=4$ ta có:\n\n$C=5x-7+8:x=5.4-7+8:4$\n\n$=20-7+2$\n\n$=13+2$\n\n$=15$",
+    "kiem": [
+      "(()=>{const x=4;return 5*x-7+8/x})()===15"
+    ],
+    "sach_dap_so": "15",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-6A-d",
+    "vai": "giang",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "thay giá trị biến rồi tính",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị biểu thức $D=-7x+x:(-5)-20$ biết $x=-10$.",
+    "dap_an": "52",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** thay giá trị của các chữ vào biểu thức (số âm đặt trong ngoặc), rồi tính theo thứ tự thực hiện phép tính.\n\n**Bước 1.** Chép biểu thức rồi thay mỗi chữ bằng giá trị đã cho; số âm phải đặt trong ngoặc để không lẫn với dấu phép tính.\n\n**Bước 2.** Thực hiện luỹ thừa, nhân, chia trước.\n\n**Bước 3.** Cộng trừ lần lượt từ trái sang phải, chú ý quy tắc trừ cho số âm.\n\n**Chú ý:** viết rõ \"với ... thì ...\" trước khi thay số.\n\n**Phần 2. Trình bày**\n\nVới $x=-10$ ta có:\n\n$D=-7x+x:(-5)-20=(-7).(-10)+(-10):(-5)-20$\n\n$=70+2-20$\n\n$=72-20$\n\n$=52$",
+    "kiem": [
+      "(()=>{const x=-10;return -7*x+x/(-5)-20})()===52"
+    ],
+    "sach_dap_so": "72",
+    "ghi_chu": "LỆCH SÁCH — sách in 72 vì bỏ sót số hạng −20; đúng là 70 + 2 − 20 = 52."
+  },
+  {
+    "id": "ÔT-6B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "thay giá trị biến rồi tính",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị biểu thức $A=a-b-c$ biết $a=-5$; $b=9$; $c=-12$.",
+    "dap_an": "-2",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** thay giá trị của các chữ vào biểu thức (số âm đặt trong ngoặc), rồi tính theo thứ tự thực hiện phép tính.\n\n**Bước 1.** Chép biểu thức rồi thay mỗi chữ bằng giá trị đã cho; số âm phải đặt trong ngoặc để không lẫn với dấu phép tính.\n\n**Bước 2.** Thực hiện luỹ thừa, nhân, chia trước.\n\n**Bước 3.** Cộng trừ lần lượt từ trái sang phải, chú ý quy tắc trừ cho số âm.\n\n**Chú ý:** viết rõ \"với ... thì ...\" trước khi thay số.\n\n**Phần 2. Trình bày**\n\nVới $a=-5$; $b=9$; $c=-12$ ta có:\n\n$A=a-b-c=(-5)-9-(-12)$\n\n$=-14+12$\n\n$=-2$",
+    "kiem": [
+      "(()=>{const a=-5,b=9,c=-12;return a-b-c})()===-2"
+    ],
+    "sach_dap_so": "-2",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-6B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "thay giá trị biến rồi tính",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị biểu thức $B=-x+y-z$ biết $x=-7$; $y=-10$; $z=4$.",
+    "dap_an": "-7",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** thay giá trị của các chữ vào biểu thức (số âm đặt trong ngoặc), rồi tính theo thứ tự thực hiện phép tính.\n\n**Bước 1.** Chép biểu thức rồi thay mỗi chữ bằng giá trị đã cho; số âm phải đặt trong ngoặc để không lẫn với dấu phép tính.\n\n**Bước 2.** Thực hiện luỹ thừa, nhân, chia trước.\n\n**Bước 3.** Cộng trừ lần lượt từ trái sang phải, chú ý quy tắc trừ cho số âm.\n\n**Chú ý:** viết rõ \"với ... thì ...\" trước khi thay số.\n\n**Phần 2. Trình bày**\n\nVới $x=-7$; $y=-10$; $z=4$ ta có:\n\n$B=-x+y-z=-(-7)+(-10)-4$\n\n$=7-10-4$\n\n$=-3-4$\n\n$=-7$",
+    "kiem": [
+      "(()=>{const x=-7,y=-10,z=4;return -x+y-z})()===-7"
+    ],
+    "sach_dap_so": "-7",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-6B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "thay giá trị biến rồi tính",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị biểu thức $C=a^2-5+2ab-b^2$ biết $a=-2$; $b=4$.",
+    "dap_an": "-33",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** thay giá trị của các chữ vào biểu thức (số âm đặt trong ngoặc), rồi tính theo thứ tự thực hiện phép tính.\n\n**Bước 1.** Chép biểu thức rồi thay mỗi chữ bằng giá trị đã cho; số âm phải đặt trong ngoặc để không lẫn với dấu phép tính.\n\n**Bước 2.** Thực hiện luỹ thừa, nhân, chia trước.\n\n**Bước 3.** Cộng trừ lần lượt từ trái sang phải, chú ý quy tắc trừ cho số âm.\n\n**Chú ý:** viết rõ \"với ... thì ...\" trước khi thay số.\n\n**Phần 2. Trình bày**\n\nVới $a=-2$; $b=4$ ta có:\n\n$C=a^2-5+2ab-b^2=(-2)^2-5+2.(-2).4-4^2$\n\n$=4-5-16-16$\n\n$=-1-16-16$\n\n$=-17-16$\n\n$=-33$",
+    "kiem": [
+      "(()=>{const a=-2,b=4;return a*a-5+2*a*b-b*b})()===-33"
+    ],
+    "sach_dap_so": "-33",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-6B-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "thay giá trị biến rồi tính",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị biểu thức $D=-7x+3x:6-(x+y)$ biết $x=2$; $y=3$.",
+    "dap_an": "-18",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** thay giá trị của các chữ vào biểu thức (số âm đặt trong ngoặc), rồi tính theo thứ tự thực hiện phép tính.\n\n**Bước 1.** Chép biểu thức rồi thay mỗi chữ bằng giá trị đã cho; số âm phải đặt trong ngoặc để không lẫn với dấu phép tính.\n\n**Bước 2.** Thực hiện luỹ thừa, nhân, chia trước.\n\n**Bước 3.** Cộng trừ lần lượt từ trái sang phải, chú ý quy tắc trừ cho số âm.\n\n**Chú ý:** viết rõ \"với ... thì ...\" trước khi thay số.\n\n**Phần 2. Trình bày**\n\nVới $x=2$; $y=3$ ta có:\n\n$D=-7x+3x:6-(x+y)=-7.2+3.2:6-(2+3)$\n\n$=-14+6:6-5$\n\n$=-14+1-5$\n\n$=-13-5$\n\n$=-18$",
+    "kiem": [
+      "(()=>{const x=2,y=3;return -7*x+3*x/6-(x+y)})()===-18"
+    ],
+    "sach_dap_so": "-18",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-7A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tính hợp lí tổng hiệu bằng số đối, số tròn",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí: $(83+234)-(34-17)$.",
+    "dap_an": "300",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** bỏ ngoặc đúng quy tắc, rồi dùng giao hoán, kết hợp để nhóm các số đối nhau hoặc các số cho tổng tròn.\n\n**Bước 1.** Bỏ dấu ngoặc: ngoặc có dấu \"+\" đứng trước thì giữ nguyên dấu các số hạng; có dấu \"−\" đứng trước thì đổi dấu tất cả số hạng trong ngoặc.\n\n**Bước 2.** Quan sát các số hạng: tìm cặp số đối nhau (tổng bằng 0) hoặc cặp cho tổng tròn chục, tròn trăm.\n\n**Bước 3.** Nhóm các cặp đó lại bằng tính chất giao hoán và kết hợp.\n\n**Bước 4.** Tính từng nhóm rồi cộng các kết quả.\n\n**Chú ý:** đổi dấu mọi số hạng trong ngoặc khi trước ngoặc là dấu trừ.\n\n**Phần 2. Trình bày**\n\n$(83+234)-(34-17)$\n\n$=83+234-34+17$\n\n$=(83+17)+(234-34)$\n\n$=100+200$\n\n$=300$",
+    "kiem": [
+      "(83+234)-(34-17)===300"
+    ],
+    "sach_dap_so": "300",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-7A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tính hợp lí tổng hiệu bằng số đối, số tròn",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí: $645+[64+(-645+36)]$.",
+    "dap_an": "100",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** bỏ ngoặc đúng quy tắc, rồi dùng giao hoán, kết hợp để nhóm các số đối nhau hoặc các số cho tổng tròn.\n\n**Bước 1.** Bỏ dấu ngoặc: ngoặc có dấu \"+\" đứng trước thì giữ nguyên dấu các số hạng; có dấu \"−\" đứng trước thì đổi dấu tất cả số hạng trong ngoặc.\n\n**Bước 2.** Quan sát các số hạng: tìm cặp số đối nhau (tổng bằng 0) hoặc cặp cho tổng tròn chục, tròn trăm.\n\n**Bước 3.** Nhóm các cặp đó lại bằng tính chất giao hoán và kết hợp.\n\n**Bước 4.** Tính từng nhóm rồi cộng các kết quả.\n\n**Chú ý:** đổi dấu mọi số hạng trong ngoặc khi trước ngoặc là dấu trừ.\n\n**Phần 2. Trình bày**\n\n$645+[64+(-645+36)]$\n\n$=645+64-645+36$\n\n$=(645-645)+(64+36)$\n\n$=0+100$\n\n$=100$",
+    "kiem": [
+      "645+(64+(-645+36))===100"
+    ],
+    "sach_dap_so": "100",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-7A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01308",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "phân phối rồi triệt tiêu 54 = 6.9; có thể xếp 01307 hoặc 01309",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí: $54-6.(17+9)$.",
+    "dap_an": "-102",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** biến đổi để lộ thừa số chung (đổi dấu, viết lại số, hoặc đưa vào ngoặc) rồi đặt ra ngoài.\n\n**Bước 1.** Quan sát các tích: thừa số chung có thể bị che (54 chính là 6.9).\n\n**Bước 2.** Viết lại biểu thức để thừa số chung hiện rõ ở mọi số hạng.\n\n**Bước 3.** Đặt thừa số chung ra ngoài ngoặc.\n\n**Bước 4.** Tính phần trong ngoặc rồi nhân.\n\n**Chú ý:** giao hoán phép nhân giúp thấy thừa số chung: $a.b=b.a$.\n\n**Phần 2. Trình bày**\n\n$54-6.(17+9)$\n\n$=54-6.17-6.9$\n\n$=54-102-54$\n\n$=(54-54)-102$\n\n$=-102$",
+    "kiem": [
+      "54-6*(17+9)===-102"
+    ],
+    "sach_dap_so": "-102",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-7A-d",
+    "vai": "giang",
+    "dang_bai": "NDB01307",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "rút thừa số chung rõ ràng",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí: $17.85+15.17-120$.",
+    "dap_an": "1580",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tìm thừa số chung rồi đặt ra ngoài ngoặc để chỉ còn một phép nhân.\n\n**Bước 1.** Tìm số xuất hiện ở cả hai tích: đó là thừa số chung.\n\n**Bước 2.** Đặt thừa số chung ra ngoài ngoặc: $a.b+a.c=a.(b+c)$ và $a.b-a.c=a.(b-c)$.\n\n**Bước 3.** Tính tổng hoặc hiệu trong ngoặc, thường ra số tròn.\n\n**Bước 4.** Nhân thừa số chung với kết quả đó.\n\n**Chú ý:** để ý dấu của từng tích khi đặt thừa số chung ra ngoài.\n\n**Phần 2. Trình bày**\n\n$17.85+15.17-120$\n\n$=17.85+17.15-120$\n\n$=17.(85+15)-120$\n\n$=17.100-120$\n\n$=1700-120$\n\n$=1580$",
+    "kiem": [
+      "17*85+15*17-120===1580"
+    ],
+    "sach_dap_so": "1580",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-7A-e",
+    "vai": "giang",
+    "dang_bai": "NDB01307",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "rút thừa số chung rõ ràng",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính hợp lí: $(-79).79+79.(-21)$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tìm thừa số chung rồi đặt ra ngoài ngoặc để chỉ còn một phép nhân.\n\n**Bước 1.** Tìm số xuất hiện ở cả hai tích: đó là thừa số chung.\n\n**Bước 2.** Đặt thừa số chung ra ngoài ngoặc: $a.b+a.c=a.(b+c)$ và $a.b-a.c=a.(b-c)$.\n\n**Bước 3.** Tính tổng hoặc hiệu trong ngoặc, thường ra số tròn.\n\n**Bước 4.** Nhân thừa số chung với kết quả đó.\n\n**Chú ý:** để ý dấu của từng tích khi đặt thừa số chung ra ngoài.\n\n**Phần 2. Trình bày**\n\n$(-79).79+79.(-21)$\n\n$=79.(-79)+79.(-21)$\n\n$=79.[(-79)+(-21)]$\n\n$=79.(-100)$\n\n$=-7900$",
+    "kiem": [
+      "(-79)*79+79*(-21)===-7900"
+    ],
+    "sach_dap_so": "-7900",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-7A-f",
+    "vai": "giang",
+    "dang_bai": "NDB01308",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "phải biến đổi mới thấy thừa số chung",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí: $(-98).(1-246)-246.98$.",
+    "dap_an": "-98",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** biến đổi để lộ thừa số chung (đổi dấu, viết lại số, hoặc đưa vào ngoặc) rồi đặt ra ngoài.\n\n**Bước 1.** Quan sát các tích: thừa số chung có thể bị che (−246.98 = (−98).246).\n\n**Bước 2.** Viết lại biểu thức để thừa số chung hiện rõ ở mọi số hạng.\n\n**Bước 3.** Đặt thừa số chung ra ngoài ngoặc.\n\n**Bước 4.** Tính phần trong ngoặc rồi nhân.\n\n**Chú ý:** giao hoán phép nhân giúp thấy thừa số chung: $a.b=b.a$.\n\n**Phần 2. Trình bày**\n\n$(-98).(1-246)-246.98$\n\n$=(-98).(1-246)+(-98).246$\n\n$=(-98).(1-246+246)$\n\n$=(-98).1$\n\n$=-98$",
+    "kiem": [
+      "(-98)*(1-246)-246*98===-98"
+    ],
+    "sach_dap_so": "-98",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-7B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tính hợp lí tổng hiệu bằng số đối, số tròn",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí: $(-2002)-(57-2002)$.",
+    "dap_an": "-57",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** bỏ ngoặc đúng quy tắc, rồi dùng giao hoán, kết hợp để nhóm các số đối nhau hoặc các số cho tổng tròn.\n\n**Bước 1.** Bỏ dấu ngoặc: ngoặc có dấu \"+\" đứng trước thì giữ nguyên dấu các số hạng; có dấu \"−\" đứng trước thì đổi dấu tất cả số hạng trong ngoặc.\n\n**Bước 2.** Quan sát các số hạng: tìm cặp số đối nhau (tổng bằng 0) hoặc cặp cho tổng tròn chục, tròn trăm.\n\n**Bước 3.** Nhóm các cặp đó lại bằng tính chất giao hoán và kết hợp.\n\n**Bước 4.** Tính từng nhóm rồi cộng các kết quả.\n\n**Chú ý:** đổi dấu mọi số hạng trong ngoặc khi trước ngoặc là dấu trừ.\n\n**Phần 2. Trình bày**\n\n$(-2002)-(57-2002)$\n\n$=-2002-57+2002$\n\n$=(-2002+2002)-57$\n\n$=0-57$\n\n$=-57$",
+    "kiem": [
+      "(-2002)-(57-2002)===-57"
+    ],
+    "sach_dap_so": "-57",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-7B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01307",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "rút thừa số chung rõ ràng",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí: $2^3.17-2^3.14$.",
+    "dap_an": "24",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tìm thừa số chung rồi đặt ra ngoài ngoặc để chỉ còn một phép nhân.\n\n**Bước 1.** Tìm số xuất hiện ở cả hai tích: đó là thừa số chung.\n\n**Bước 2.** Đặt thừa số chung ra ngoài ngoặc: $a.b+a.c=a.(b+c)$ và $a.b-a.c=a.(b-c)$.\n\n**Bước 3.** Tính tổng hoặc hiệu trong ngoặc, thường ra số tròn.\n\n**Bước 4.** Nhân thừa số chung với kết quả đó.\n\n**Chú ý:** để ý dấu của từng tích khi đặt thừa số chung ra ngoài.\n\n**Phần 2. Trình bày**\n\n$2^3.17-2^3.14$\n\n$=2^3.(17-14)$\n\n$=8.3$\n\n$=24$",
+    "kiem": [
+      "2**3*17-2**3*14===24"
+    ],
+    "sach_dap_so": "24",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-7B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01308",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "phân phối rồi triệt tiêu 48 = 6.8; có thể xếp 01307 hoặc 01309",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí: $48-6.(12+8)$.",
+    "dap_an": "-72",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** biến đổi để lộ thừa số chung (đổi dấu, viết lại số, hoặc đưa vào ngoặc) rồi đặt ra ngoài.\n\n**Bước 1.** Quan sát các tích: thừa số chung có thể bị che (48 chính là 6.8).\n\n**Bước 2.** Viết lại biểu thức để thừa số chung hiện rõ ở mọi số hạng.\n\n**Bước 3.** Đặt thừa số chung ra ngoài ngoặc.\n\n**Bước 4.** Tính phần trong ngoặc rồi nhân.\n\n**Chú ý:** giao hoán phép nhân giúp thấy thừa số chung: $a.b=b.a$.\n\n**Phần 2. Trình bày**\n\n$48-6.(12+8)$\n\n$=48-6.12-6.8$\n\n$=48-72-48$\n\n$=(48-48)-72$\n\n$=-72$",
+    "kiem": [
+      "48-6*(12+8)===-72"
+    ],
+    "sach_dap_so": "-72",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-7B-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tính hợp lí tổng hiệu bằng số đối, số tròn",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí: $[24+(-67)]-[-67-(-24)]$.",
+    "dap_an": "0",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** bỏ ngoặc đúng quy tắc, rồi dùng giao hoán, kết hợp để nhóm các số đối nhau hoặc các số cho tổng tròn.\n\n**Bước 1.** Bỏ dấu ngoặc: ngoặc có dấu \"+\" đứng trước thì giữ nguyên dấu các số hạng; có dấu \"−\" đứng trước thì đổi dấu tất cả số hạng trong ngoặc.\n\n**Bước 2.** Quan sát các số hạng: tìm cặp số đối nhau (tổng bằng 0) hoặc cặp cho tổng tròn chục, tròn trăm.\n\n**Bước 3.** Nhóm các cặp đó lại bằng tính chất giao hoán và kết hợp.\n\n**Bước 4.** Tính từng nhóm rồi cộng các kết quả.\n\n**Chú ý:** đổi dấu mọi số hạng trong ngoặc khi trước ngoặc là dấu trừ.\n\n**Phần 2. Trình bày**\n\n$[24+(-67)]-[-67-(-24)]$\n\n$=24-67-(-67+24)$\n\n$=24-67+67-24$\n\n$=(24-24)+(-67+67)$\n\n$=0$",
+    "kiem": [
+      "(24+(-67))-(-67-(-24))===0"
+    ],
+    "sach_dap_so": "0",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-7B-e",
+    "vai": "luyen",
+    "dang_bai": "NDB01307",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "rút thừa số chung rõ ràng",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí: $26.(-125)-125.(-36)$.",
+    "dap_an": "1250",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tìm thừa số chung rồi đặt ra ngoài ngoặc để chỉ còn một phép nhân.\n\n**Bước 1.** Tìm số xuất hiện ở cả hai tích: đó là thừa số chung.\n\n**Bước 2.** Đặt thừa số chung ra ngoài ngoặc: $a.b+a.c=a.(b+c)$ và $a.b-a.c=a.(b-c)$.\n\n**Bước 3.** Tính tổng hoặc hiệu trong ngoặc, thường ra số tròn.\n\n**Bước 4.** Nhân thừa số chung với kết quả đó.\n\n**Chú ý:** để ý dấu của từng tích khi đặt thừa số chung ra ngoài.\n\n**Phần 2. Trình bày**\n\n$26.(-125)-125.(-36)$\n\n$=-125.26+125.36$\n\n$=125.(-26+36)$\n\n$=125.10$\n\n$=1250$",
+    "kiem": [
+      "26*(-125)-125*(-36)===1250"
+    ],
+    "sach_dap_so": "1250",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-7B-f",
+    "vai": "luyen",
+    "dang_bai": "NDB01308",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "phải biến đổi mới thấy thừa số chung",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí: $(-67).(1-301)-301.67$.",
+    "dap_an": "-67",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** biến đổi để lộ thừa số chung (đổi dấu, viết lại số, hoặc đưa vào ngoặc) rồi đặt ra ngoài.\n\n**Bước 1.** Quan sát các tích: thừa số chung có thể bị che (−301.67 = (−67).301).\n\n**Bước 2.** Viết lại biểu thức để thừa số chung hiện rõ ở mọi số hạng.\n\n**Bước 3.** Đặt thừa số chung ra ngoài ngoặc.\n\n**Bước 4.** Tính phần trong ngoặc rồi nhân.\n\n**Chú ý:** giao hoán phép nhân giúp thấy thừa số chung: $a.b=b.a$.\n\n**Phần 2. Trình bày**\n\n$(-67).(1-301)-301.67$\n\n$=(-67).(1-301)+(-67).301$\n\n$=(-67).(1-301+301)$\n\n$=(-67).1$\n\n$=-67$",
+    "kiem": [
+      "(-67)*(1-301)-301*67===-67"
+    ],
+    "sach_dap_so": "-67",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-8A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01321",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tích hai thừa số bậc nhất bằng 0",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$, biết: $x(x-5)=0$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** một tích bằng 0 thì ít nhất một thừa số bằng 0.\n\n**Bước 1.** Nhận ra vế trái là một tích (hai thừa số x và x − 5) còn vế phải bằng 0.\n\n**Bước 2.** Cho từng thừa số bằng 0 để được các trường hợp.\n\n**Bước 3.** Giải từng trường hợp bằng cách tìm thành phần chưa biết; với dạng $x^2=a$ thì tìm số nhân với chính nó bằng $a$, nhớ xét cả số âm.\n\n**Bước 4.** Gộp các giá trị tìm được.\n\n**Chú ý:** $x^2=a$ (với $a>0$) có hai số nguyên $x$ đối nhau (nếu $a$ là bình phương của một số nguyên).\n\n**Phần 2. Trình bày**\n\nVì $x(x-5)=0$ nên $x=0$ hoặc $x-5=0$.\n\nVới $x-5=0$ thì $x=0+5=5$.\n\nVậy $x\\in\\{0;5\\}$.",
+    "kiem": [
+      "[...Array(201)].map((_,i)=>i+(-100)).filter(x=>x*(x-5)===0).join()===\"0,5\""
+    ],
+    "sach_dap_so": "x=0 hoặc x=5",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-8A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01321",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tích hai thừa số bậc nhất bằng 0",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$, biết: $x(x+7)=0$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** một tích bằng 0 thì ít nhất một thừa số bằng 0.\n\n**Bước 1.** Nhận ra vế trái là một tích (hai thừa số x và x + 7) còn vế phải bằng 0.\n\n**Bước 2.** Cho từng thừa số bằng 0 để được các trường hợp.\n\n**Bước 3.** Giải từng trường hợp bằng cách tìm thành phần chưa biết; với dạng $x^2=a$ thì tìm số nhân với chính nó bằng $a$, nhớ xét cả số âm.\n\n**Bước 4.** Gộp các giá trị tìm được.\n\n**Chú ý:** $x^2=a$ (với $a>0$) có hai số nguyên $x$ đối nhau (nếu $a$ là bình phương của một số nguyên).\n\n**Phần 2. Trình bày**\n\nVì $x(x+7)=0$ nên $x=0$ hoặc $x+7=0$.\n\nVới $x+7=0$ thì $x=0-7=-7$.\n\nVậy $x\\in\\{0;-7\\}$.",
+    "kiem": [
+      "[...Array(201)].map((_,i)=>i+(-100)).filter(x=>x*(x+7)===0).join()===\"-7,0\""
+    ],
+    "sach_dap_so": "x=0 hoặc x=-7",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-8A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01321",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tích hai thừa số bậc nhất bằng 0",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$, biết: $(x+1)(x-2)=0$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** một tích bằng 0 thì ít nhất một thừa số bằng 0.\n\n**Bước 1.** Nhận ra vế trái là một tích (hai thừa số x + 1 và x − 2) còn vế phải bằng 0.\n\n**Bước 2.** Cho từng thừa số bằng 0 để được các trường hợp.\n\n**Bước 3.** Giải từng trường hợp bằng cách tìm thành phần chưa biết; với dạng $x^2=a$ thì tìm số nhân với chính nó bằng $a$, nhớ xét cả số âm.\n\n**Bước 4.** Gộp các giá trị tìm được.\n\n**Chú ý:** $x^2=a$ (với $a>0$) có hai số nguyên $x$ đối nhau (nếu $a$ là bình phương của một số nguyên).\n\n**Phần 2. Trình bày**\n\nVì $(x+1)(x-2)=0$ nên $x+1=0$ hoặc $x-2=0$.\n\nVới $x+1=0$ thì $x=0-1=-1$.\n\nVới $x-2=0$ thì $x=0+2=2$.\n\nVậy $x\\in\\{-1;2\\}$.",
+    "kiem": [
+      "[...Array(201)].map((_,i)=>i+(-100)).filter(x=>(x+1)*(x-2)===0).join()===\"-1,2\""
+    ],
+    "sach_dap_so": "x=-1 hoặc x=2",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-8A-d",
+    "vai": "giang",
+    "dang_bai": "NDB01322",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tích có thừa số bậc hai bằng 0",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$, biết: $(x-6)(x^2-1)=0$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** một tích bằng 0 thì ít nhất một thừa số bằng 0.\n\n**Bước 1.** Nhận ra vế trái là một tích (hai thừa số x − 6 và x² − 1) còn vế phải bằng 0.\n\n**Bước 2.** Cho từng thừa số bằng 0 để được các trường hợp.\n\n**Bước 3.** Giải từng trường hợp bằng cách tìm thành phần chưa biết; với dạng $x^2=a$ thì tìm số nhân với chính nó bằng $a$, nhớ xét cả số âm.\n\n**Bước 4.** Gộp các giá trị tìm được.\n\n**Chú ý:** $x^2=a$ (với $a>0$) có hai số nguyên $x$ đối nhau (nếu $a$ là bình phương của một số nguyên).\n\n**Phần 2. Trình bày**\n\nVì $(x-6)(x^2-1)=0$ nên $x-6=0$ hoặc $x^2-1=0$.\n\nVới $x-6=0$ thì $x=0+6=6$.\n\nVới $x^2-1=0$ thì $x^2=0+1=1$. Vì $1.1=1$ và $(-1).(-1)=1$ nên $x=1$ hoặc $x=-1$.\n\nVậy $x\\in\\{6;1;-1\\}$.",
+    "kiem": [
+      "[...Array(201)].map((_,i)=>i+(-100)).filter(x=>(x-6)*(x*x-1)===0).join()===\"-1,1,6\""
+    ],
+    "sach_dap_so": "x=6; x=±1",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-8B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01321",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tích hai thừa số bậc nhất bằng 0",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$, biết: $x(x-10)=0$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** một tích bằng 0 thì ít nhất một thừa số bằng 0.\n\n**Bước 1.** Nhận ra vế trái là một tích (hai thừa số x và x − 10) còn vế phải bằng 0.\n\n**Bước 2.** Cho từng thừa số bằng 0 để được các trường hợp.\n\n**Bước 3.** Giải từng trường hợp bằng cách tìm thành phần chưa biết; với dạng $x^2=a$ thì tìm số nhân với chính nó bằng $a$, nhớ xét cả số âm.\n\n**Bước 4.** Gộp các giá trị tìm được.\n\n**Chú ý:** $x^2=a$ (với $a>0$) có hai số nguyên $x$ đối nhau (nếu $a$ là bình phương của một số nguyên).\n\n**Phần 2. Trình bày**\n\nVì $x(x-10)=0$ nên $x=0$ hoặc $x-10=0$.\n\nVới $x-10=0$ thì $x=0+10=10$.\n\nVậy $x\\in\\{0;10\\}$.",
+    "kiem": [
+      "[...Array(201)].map((_,i)=>i+(-100)).filter(x=>x*(x-10)===0).join()===\"0,10\""
+    ],
+    "sach_dap_so": "x=0 hoặc x=10",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-8B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01321",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tích hai thừa số bậc nhất bằng 0",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$, biết: $x(x+8)=0$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** một tích bằng 0 thì ít nhất một thừa số bằng 0.\n\n**Bước 1.** Nhận ra vế trái là một tích (hai thừa số x và x + 8) còn vế phải bằng 0.\n\n**Bước 2.** Cho từng thừa số bằng 0 để được các trường hợp.\n\n**Bước 3.** Giải từng trường hợp bằng cách tìm thành phần chưa biết; với dạng $x^2=a$ thì tìm số nhân với chính nó bằng $a$, nhớ xét cả số âm.\n\n**Bước 4.** Gộp các giá trị tìm được.\n\n**Chú ý:** $x^2=a$ (với $a>0$) có hai số nguyên $x$ đối nhau (nếu $a$ là bình phương của một số nguyên).\n\n**Phần 2. Trình bày**\n\nVì $x(x+8)=0$ nên $x=0$ hoặc $x+8=0$.\n\nVới $x+8=0$ thì $x=0-8=-8$.\n\nVậy $x\\in\\{0;-8\\}$.",
+    "kiem": [
+      "[...Array(201)].map((_,i)=>i+(-100)).filter(x=>x*(x+8)===0).join()===\"-8,0\""
+    ],
+    "sach_dap_so": "x=0 hoặc x=-8",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-8B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01321",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tích hai thừa số bậc nhất bằng 0",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$, biết: $(x+12)(x-10)=0$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** một tích bằng 0 thì ít nhất một thừa số bằng 0.\n\n**Bước 1.** Nhận ra vế trái là một tích (hai thừa số x + 12 và x − 10) còn vế phải bằng 0.\n\n**Bước 2.** Cho từng thừa số bằng 0 để được các trường hợp.\n\n**Bước 3.** Giải từng trường hợp bằng cách tìm thành phần chưa biết; với dạng $x^2=a$ thì tìm số nhân với chính nó bằng $a$, nhớ xét cả số âm.\n\n**Bước 4.** Gộp các giá trị tìm được.\n\n**Chú ý:** $x^2=a$ (với $a>0$) có hai số nguyên $x$ đối nhau (nếu $a$ là bình phương của một số nguyên).\n\n**Phần 2. Trình bày**\n\nVì $(x+12)(x-10)=0$ nên $x+12=0$ hoặc $x-10=0$.\n\nVới $x+12=0$ thì $x=0-12=-12$.\n\nVới $x-10=0$ thì $x=0+10=10$.\n\nVậy $x\\in\\{-12;10\\}$.",
+    "kiem": [
+      "[...Array(201)].map((_,i)=>i+(-100)).filter(x=>(x+12)*(x-10)===0).join()===\"-12,10\""
+    ],
+    "sach_dap_so": "x=-12 hoặc x=10",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-8B-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01322",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tích có thừa số bậc hai bằng 0",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$, biết: $(x-7)(x^2-4)=0$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** một tích bằng 0 thì ít nhất một thừa số bằng 0.\n\n**Bước 1.** Nhận ra vế trái là một tích (hai thừa số x − 7 và x² − 4) còn vế phải bằng 0.\n\n**Bước 2.** Cho từng thừa số bằng 0 để được các trường hợp.\n\n**Bước 3.** Giải từng trường hợp bằng cách tìm thành phần chưa biết; với dạng $x^2=a$ thì tìm số nhân với chính nó bằng $a$, nhớ xét cả số âm.\n\n**Bước 4.** Gộp các giá trị tìm được.\n\n**Chú ý:** $x^2=a$ (với $a>0$) có hai số nguyên $x$ đối nhau (nếu $a$ là bình phương của một số nguyên).\n\n**Phần 2. Trình bày**\n\nVì $(x-7)(x^2-4)=0$ nên $x-7=0$ hoặc $x^2-4=0$.\n\nVới $x-7=0$ thì $x=0+7=7$.\n\nVới $x^2-4=0$ thì $x^2=0+4=4$. Vì $2.2=4$ và $(-2).(-2)=4$ nên $x=2$ hoặc $x=-2$.\n\nVậy $x\\in\\{7;2;-2\\}$.",
+    "kiem": [
+      "[...Array(201)].map((_,i)=>i+(-100)).filter(x=>(x-7)*(x*x-4)===0).join()===\"-2,2,7\""
+    ],
+    "sach_dap_so": "x=7; x=2; x=-2",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-9A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01315",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "tìm số hạng chưa biết, số hạng chứa chữ số *",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thay mỗi dấu $*$ bằng một chữ số thích hợp để có: $(-\\overline{*6})+(-24)=-100$.",
+    "dap_an": "7",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** coi số có chữ số * là thành phần chưa biết của phép tính, tìm số đó trước rồi mới đọc chữ số *.\n\n**Bước 1.** Xác định số có dấu * đang là thành phần nào của phép tính (số hạng chưa biết).\n\n**Bước 2.** Áp dụng quy tắc tìm thành phần chưa biết để tìm cả số đó (kể cả dấu).\n\n**Bước 3.** Đối chiếu với dạng của số cần tìm (hai chữ số, có/không dấu \"−\") để đọc chữ số thay cho *.\n\n**Chú ý:** dấu \"−\" đứng trước số có dấu * là một phần của số, không phải chữ số.\n\n**Phần 2. Trình bày**\n\n$(-\\overline{*6})+(-24)=-100$\n\n$-\\overline{*6}=-100-(-24)$\n\n$-\\overline{*6}=-100+24$\n\n$-\\overline{*6}=-76$\n\nVậy $*=7$.",
+    "kiem": [
+      "[...Array(10)].map((_,i)=>i+(0)).filter(x=>-(10*x+6)+(-24)===-100).join()===\"7\""
+    ],
+    "sach_dap_so": "*=7",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-9A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01315",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "tìm số hạng chưa biết, số hạng chứa chữ số *",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thay mỗi dấu $*$ bằng một chữ số thích hợp để có: $39+(-\\overline{1*})=24$.",
+    "dap_an": "5",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** coi số có chữ số * là thành phần chưa biết của phép tính, tìm số đó trước rồi mới đọc chữ số *.\n\n**Bước 1.** Xác định số có dấu * đang là thành phần nào của phép tính (số hạng chưa biết).\n\n**Bước 2.** Áp dụng quy tắc tìm thành phần chưa biết để tìm cả số đó (kể cả dấu).\n\n**Bước 3.** Đối chiếu với dạng của số cần tìm (hai chữ số, có/không dấu \"−\") để đọc chữ số thay cho *.\n\n**Chú ý:** dấu \"−\" đứng trước số có dấu * là một phần của số, không phải chữ số.\n\n**Phần 2. Trình bày**\n\n$39+(-\\overline{1*})=24$\n\n$-\\overline{1*}=24-39$\n\n$-\\overline{1*}=-15$\n\nVậy $*=5$.",
+    "kiem": [
+      "[...Array(10)].map((_,i)=>i+(0)).filter(x=>39+(-(10+x))===24).join()===\"5\""
+    ],
+    "sach_dap_so": "*=5",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-9B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01315",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "tìm số bị trừ chưa biết, chứa chữ số *",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thay mỗi dấu $*$ bằng một chữ số thích hợp để có: $(-\\overline{*7})-(-12)=-15$.",
+    "dap_an": "2",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** coi số có chữ số * là thành phần chưa biết của phép tính, tìm số đó trước rồi mới đọc chữ số *.\n\n**Bước 1.** Xác định số có dấu * đang là thành phần nào của phép tính (số bị trừ chưa biết).\n\n**Bước 2.** Áp dụng quy tắc tìm thành phần chưa biết để tìm cả số đó (kể cả dấu).\n\n**Bước 3.** Đối chiếu với dạng của số cần tìm (hai chữ số, có/không dấu \"−\") để đọc chữ số thay cho *.\n\n**Chú ý:** dấu \"−\" đứng trước số có dấu * là một phần của số, không phải chữ số.\n\n**Phần 2. Trình bày**\n\n$(-\\overline{*7})-(-12)=-15$\n\n$-\\overline{*7}=-15+(-12)$\n\n$-\\overline{*7}=-27$\n\nVậy $*=2$.",
+    "kiem": [
+      "[...Array(10)].map((_,i)=>i+(0)).filter(x=>-(10*x+7)-(-12)===-15).join()===\"2\""
+    ],
+    "sach_dap_so": "*=-2",
+    "ghi_chu": "LỆCH SÁCH — sách in \"* = −2\"; chữ số không âm, số cần tìm là −27 nên * = 2."
+  },
+  {
+    "id": "ÔT-9B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01316",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "tìm số trừ chưa biết, chứa chữ số *",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thay mỗi dấu $*$ bằng một chữ số thích hợp để có: $296-\\overline{5*2}=-206$.",
+    "dap_an": "0",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** coi số có chữ số * là thành phần chưa biết của phép tính, tìm số đó trước rồi mới đọc chữ số *.\n\n**Bước 1.** Xác định số có dấu * đang là thành phần nào của phép tính (số trừ chưa biết).\n\n**Bước 2.** Áp dụng quy tắc tìm thành phần chưa biết để tìm cả số đó (kể cả dấu).\n\n**Bước 3.** Đối chiếu với dạng của số cần tìm (hai chữ số, có/không dấu \"−\") để đọc chữ số thay cho *.\n\n**Chú ý:** dấu \"−\" đứng trước số có dấu * là một phần của số, không phải chữ số.\n\n**Phần 2. Trình bày**\n\n$296-\\overline{5*2}=-206$\n\n$\\overline{5*2}=296-(-206)$\n\n$\\overline{5*2}=296+206$\n\n$\\overline{5*2}=502$\n\nVậy $*=0$.",
+    "kiem": [
+      "[...Array(10)].map((_,i)=>i+(0)).filter(x=>296-(500+10*x+2)===-206).join()===\"0\""
+    ],
+    "sach_dap_so": "*=0",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-10A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01312",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "bỏ ngoặc, thu gọn biểu thức chứa chữ",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Rút gọn biểu thức: $2a+(-30)-(11-30)$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** bỏ ngoặc đúng quy tắc dấu ngoặc rồi gộp các số hạng cùng loại (cùng chữ hoặc đều là số).\n\n**Bước 1.** Bỏ ngoặc: ngoặc có dấu \"+\" (hoặc không có dấu) đứng trước thì giữ nguyên dấu các số hạng; có dấu \"−\" đứng trước thì đổi dấu mọi số hạng trong ngoặc (ngoặc phía sau dấu −).\n\n**Bước 2.** Viết lại biểu thức không còn ngoặc.\n\n**Bước 3.** Dùng giao hoán, kết hợp để nhóm các số hạng cùng chữ với nhau, các số với nhau.\n\n**Bước 4.** Cộng trừ trong từng nhóm; hai số đối nhau thì triệt tiêu.\n\n**Chú ý:** đổi dấu mọi số hạng trong ngoặc khi trước ngoặc là dấu trừ — quên một số hạng là sai cả bài.\n\n**Phần 2. Trình bày**\n\n$2a+(-30)-(11-30)$\n\n$=2a-30-11+30$\n\n$=2a+(-30+30)-11$\n\n$=2a-11$",
+    "kiem": [
+      "[[1,2,3,4],[-4,5,7,-2],[9,-2,-6,3],[0,8,-5,-7]].every(([a,b,c,d])=>(2*a+(-30)-(11-30))===(2*a-11))"
+    ],
+    "sach_dap_so": "2a-11",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-10A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01312",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "bỏ ngoặc, thu gọn biểu thức chứa chữ",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Rút gọn biểu thức: $-(-10-a-6)-10$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** bỏ ngoặc đúng quy tắc dấu ngoặc rồi gộp các số hạng cùng loại (cùng chữ hoặc đều là số).\n\n**Bước 1.** Bỏ ngoặc: ngoặc có dấu \"+\" (hoặc không có dấu) đứng trước thì giữ nguyên dấu các số hạng; có dấu \"−\" đứng trước thì đổi dấu mọi số hạng trong ngoặc (ngoặc phía sau dấu −).\n\n**Bước 2.** Viết lại biểu thức không còn ngoặc.\n\n**Bước 3.** Dùng giao hoán, kết hợp để nhóm các số hạng cùng chữ với nhau, các số với nhau.\n\n**Bước 4.** Cộng trừ trong từng nhóm; hai số đối nhau thì triệt tiêu.\n\n**Chú ý:** đổi dấu mọi số hạng trong ngoặc khi trước ngoặc là dấu trừ — quên một số hạng là sai cả bài.\n\n**Phần 2. Trình bày**\n\n$-(-10-a-6)-10$\n\n$=10+a+6-10$\n\n$=a+(10-10)+6$\n\n$=a+6$",
+    "kiem": [
+      "[[1,2,3,4],[-4,5,7,-2],[9,-2,-6,3],[0,8,-5,-7]].every(([a,b,c,d])=>(-(-10-a-6)-10)===(a+6))"
+    ],
+    "sach_dap_so": "a+6",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-10A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01312",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "bỏ ngoặc, thu gọn biểu thức chứa chữ",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Rút gọn biểu thức: $(-b)-(b-a+c)$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** bỏ ngoặc đúng quy tắc dấu ngoặc rồi gộp các số hạng cùng loại (cùng chữ hoặc đều là số).\n\n**Bước 1.** Bỏ ngoặc: ngoặc có dấu \"+\" (hoặc không có dấu) đứng trước thì giữ nguyên dấu các số hạng; có dấu \"−\" đứng trước thì đổi dấu mọi số hạng trong ngoặc (ngoặc phía sau dấu −).\n\n**Bước 2.** Viết lại biểu thức không còn ngoặc.\n\n**Bước 3.** Dùng giao hoán, kết hợp để nhóm các số hạng cùng chữ với nhau, các số với nhau.\n\n**Bước 4.** Cộng trừ trong từng nhóm; hai số đối nhau thì triệt tiêu.\n\n**Chú ý:** đổi dấu mọi số hạng trong ngoặc khi trước ngoặc là dấu trừ — quên một số hạng là sai cả bài.\n\n**Phần 2. Trình bày**\n\n$(-b)-(b-a+c)$\n\n$=-b-b+a-c$\n\n$=a-2b-c$",
+    "kiem": [
+      "[[1,2,3,4],[-4,5,7,-2],[9,-2,-6,3],[0,8,-5,-7]].every(([a,b,c,d])=>((-b)-(b-a+c))===(a-2*b-c))"
+    ],
+    "sach_dap_so": "a-c",
+    "ghi_chu": "LỆCH SÁCH — sách in \"a − c\"; bỏ ngoặc ta được −b − b + a − c = a − 2b − c (sách bỏ sót −b thứ hai)."
+  },
+  {
+    "id": "ÔT-10A-d",
+    "vai": "giang",
+    "dang_bai": "NDB01312",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "bỏ ngoặc, thu gọn biểu thức chứa chữ",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Rút gọn biểu thức: $-(a-b-c)-(c-a)$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** bỏ ngoặc đúng quy tắc dấu ngoặc rồi gộp các số hạng cùng loại (cùng chữ hoặc đều là số).\n\n**Bước 1.** Bỏ ngoặc: ngoặc có dấu \"+\" (hoặc không có dấu) đứng trước thì giữ nguyên dấu các số hạng; có dấu \"−\" đứng trước thì đổi dấu mọi số hạng trong ngoặc (ngoặc phía sau dấu −).\n\n**Bước 2.** Viết lại biểu thức không còn ngoặc.\n\n**Bước 3.** Dùng giao hoán, kết hợp để nhóm các số hạng cùng chữ với nhau, các số với nhau.\n\n**Bước 4.** Cộng trừ trong từng nhóm; hai số đối nhau thì triệt tiêu.\n\n**Chú ý:** đổi dấu mọi số hạng trong ngoặc khi trước ngoặc là dấu trừ — quên một số hạng là sai cả bài.\n\n**Phần 2. Trình bày**\n\n$-(a-b-c)-(c-a)$\n\n$=-a+b+c-c+a$\n\n$=(-a+a)+b+(c-c)$\n\n$=b$",
+    "kiem": [
+      "[[1,2,3,4],[-4,5,7,-2],[9,-2,-6,3],[0,8,-5,-7]].every(([a,b,c,d])=>(-(a-b-c)-(c-a))===(b))"
+    ],
+    "sach_dap_so": "b",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-10B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01312",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "bỏ ngoặc, thu gọn biểu thức chứa chữ",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Rút gọn biểu thức: $5a+(-71)-(21-71)$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** bỏ ngoặc đúng quy tắc dấu ngoặc rồi gộp các số hạng cùng loại (cùng chữ hoặc đều là số).\n\n**Bước 1.** Bỏ ngoặc: ngoặc có dấu \"+\" (hoặc không có dấu) đứng trước thì giữ nguyên dấu các số hạng; có dấu \"−\" đứng trước thì đổi dấu mọi số hạng trong ngoặc (ngoặc phía sau dấu −).\n\n**Bước 2.** Viết lại biểu thức không còn ngoặc.\n\n**Bước 3.** Dùng giao hoán, kết hợp để nhóm các số hạng cùng chữ với nhau, các số với nhau.\n\n**Bước 4.** Cộng trừ trong từng nhóm; hai số đối nhau thì triệt tiêu.\n\n**Chú ý:** đổi dấu mọi số hạng trong ngoặc khi trước ngoặc là dấu trừ — quên một số hạng là sai cả bài.\n\n**Phần 2. Trình bày**\n\n$5a+(-71)-(21-71)$\n\n$=5a-71-21+71$\n\n$=5a+(-71+71)-21$\n\n$=5a-21$",
+    "kiem": [
+      "[[1,2,3,4],[-4,5,7,-2],[9,-2,-6,3],[0,8,-5,-7]].every(([a,b,c,d])=>(5*a+(-71)-(21-71))===(5*a-21))"
+    ],
+    "sach_dap_so": "5a-21",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-10B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01312",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "bỏ ngoặc, thu gọn biểu thức chứa chữ",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Rút gọn biểu thức: $(-11-a-22)+11$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** bỏ ngoặc đúng quy tắc dấu ngoặc rồi gộp các số hạng cùng loại (cùng chữ hoặc đều là số).\n\n**Bước 1.** Bỏ ngoặc: ngoặc có dấu \"+\" (hoặc không có dấu) đứng trước thì giữ nguyên dấu các số hạng; có dấu \"−\" đứng trước thì đổi dấu mọi số hạng trong ngoặc (ngoặc có dấu + phía trước).\n\n**Bước 2.** Viết lại biểu thức không còn ngoặc.\n\n**Bước 3.** Dùng giao hoán, kết hợp để nhóm các số hạng cùng chữ với nhau, các số với nhau.\n\n**Bước 4.** Cộng trừ trong từng nhóm; hai số đối nhau thì triệt tiêu.\n\n**Chú ý:** đổi dấu mọi số hạng trong ngoặc khi trước ngoặc là dấu trừ — quên một số hạng là sai cả bài.\n\n**Phần 2. Trình bày**\n\n$(-11-a-22)+11$\n\n$=-11-a-22+11$\n\n$=(-11+11)-a-22$\n\n$=-a-22$",
+    "kiem": [
+      "[[1,2,3,4],[-4,5,7,-2],[9,-2,-6,3],[0,8,-5,-7]].every(([a,b,c,d])=>((-11-a-22)+11)===(-a-22))"
+    ],
+    "sach_dap_so": "-a-22",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-10B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01312",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "bỏ ngoặc, thu gọn biểu thức chứa chữ",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Rút gọn biểu thức: $(c-b)-(-a+c-b)$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** bỏ ngoặc đúng quy tắc dấu ngoặc rồi gộp các số hạng cùng loại (cùng chữ hoặc đều là số).\n\n**Bước 1.** Bỏ ngoặc: ngoặc có dấu \"+\" (hoặc không có dấu) đứng trước thì giữ nguyên dấu các số hạng; có dấu \"−\" đứng trước thì đổi dấu mọi số hạng trong ngoặc (ngoặc phía sau dấu −).\n\n**Bước 2.** Viết lại biểu thức không còn ngoặc.\n\n**Bước 3.** Dùng giao hoán, kết hợp để nhóm các số hạng cùng chữ với nhau, các số với nhau.\n\n**Bước 4.** Cộng trừ trong từng nhóm; hai số đối nhau thì triệt tiêu.\n\n**Chú ý:** đổi dấu mọi số hạng trong ngoặc khi trước ngoặc là dấu trừ — quên một số hạng là sai cả bài.\n\n**Phần 2. Trình bày**\n\n$(c-b)-(-a+c-b)$\n\n$=c-b+a-c+b$\n\n$=a+(c-c)+(-b+b)$\n\n$=a$",
+    "kiem": [
+      "[[1,2,3,4],[-4,5,7,-2],[9,-2,-6,3],[0,8,-5,-7]].every(([a,b,c,d])=>((c-b)-(-a+c-b))===(a))"
+    ],
+    "sach_dap_so": "a",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-10B-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01312",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "bỏ ngoặc, thu gọn biểu thức chứa chữ",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Rút gọn biểu thức: $(b-c+6)-(7-a-b)$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** bỏ ngoặc đúng quy tắc dấu ngoặc rồi gộp các số hạng cùng loại (cùng chữ hoặc đều là số).\n\n**Bước 1.** Bỏ ngoặc: ngoặc có dấu \"+\" (hoặc không có dấu) đứng trước thì giữ nguyên dấu các số hạng; có dấu \"−\" đứng trước thì đổi dấu mọi số hạng trong ngoặc (ngoặc phía sau dấu −).\n\n**Bước 2.** Viết lại biểu thức không còn ngoặc.\n\n**Bước 3.** Dùng giao hoán, kết hợp để nhóm các số hạng cùng chữ với nhau, các số với nhau.\n\n**Bước 4.** Cộng trừ trong từng nhóm; hai số đối nhau thì triệt tiêu.\n\n**Chú ý:** đổi dấu mọi số hạng trong ngoặc khi trước ngoặc là dấu trừ — quên một số hạng là sai cả bài.\n\n**Phần 2. Trình bày**\n\n$(b-c+6)-(7-a-b)$\n\n$=b-c+6-7+a+b$\n\n$=a+(b+b)-c+(6-7)$\n\n$=a+2b-c-1$",
+    "kiem": [
+      "[[1,2,3,4],[-4,5,7,-2],[9,-2,-6,3],[0,8,-5,-7]].every(([a,b,c,d])=>((b-c+6)-(7-a-b))===(a+2*b-c-1))"
+    ],
+    "sach_dap_so": "a+2b-c-1",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-11A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01326",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "a chia hết cho (x+b) với a là số cho trước",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $n$, sao cho: $3$ chia hết cho $n-1$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** a chia hết cho một cụm chứa n thì cụm đó là ước của a.\n\n**Bước 1.** Nhận ra số cho trước là bội và cụm chứa $n$ (n − 1) là ước của nó.\n\n**Bước 2.** Liệt kê mọi ước của số đó, nhớ cả các ước âm.\n\n**Bước 3.** Cho cụm chứa $n$ bằng từng ước, rồi tìm $n$ theo quy tắc tìm thành phần chưa biết.\n\n**Bước 4.** Viết kết luận bằng tập hợp các giá trị $n$.\n\n**Chú ý:** ước của một số nguyên gồm cả ước dương và ước âm.\n\n**Phần 2. Trình bày**\n\nVì $3\\vdots(n-1)$ nên $n-1\\in\\text{Ư}(3)=\\{1;-1;3;-3\\}$.\n\nNếu $n-1=1$ thì $n=2$; nếu $n-1=-1$ thì $n=0$; nếu $n-1=3$ thì $n=4$; nếu $n-1=-3$ thì $n=-2$.\n\nVậy $n\\in\\{2;0;4;-2\\}$.",
+    "kiem": [
+      "[...Array(121)].map((_,i)=>i+(-60)).filter(x=>x!==1&&3%(x-1)===0).join()===\"-2,0,2,4\""
+    ],
+    "sach_dap_so": "n∈{2;0;4;-2}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-11A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01327",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tử và mẫu cùng hệ số x, tách ra số dư",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $n$, sao cho: $n+3$ chia hết cho $n-1$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tách biểu thức ở trên thành (bội của cụm ở dưới) + một số, rồi dùng tính chất chia hết của một tổng.\n\n**Bước 1.** Tách biểu thức bị chia (n + 3 = (n − 1) + 4) thành tổng của một bội của số chia và một số cố định.\n\n**Bước 2.** Phần bội của số chia đã chia hết rồi, nên cả tổng chia hết khi số còn lại cũng chia hết cho số chia.\n\n**Bước 3.** Liệt kê các ước (cả âm) của số cố định đó.\n\n**Bước 4.** Cho số chia bằng từng ước rồi tìm $n$; viết kết luận bằng tập hợp.\n\n**Chú ý:** khi hệ số của $n$ ở trên chưa bằng hệ số ở dưới, nhân số chia lên cho khớp trước khi tách.\n\n**Phần 2. Trình bày**\n\nTa có $n+3=(n-1)+4$.\n\nVì $(n-1)\\vdots(n-1)$ nên để $(n-1)+4\\vdots(n-1)$ thì $4\\vdots(n-1)$.\n\nSuy ra $n-1\\in\\text{Ư}(4)=\\{1;-1;2;-2;4;-4\\}$.\n\nNếu $n-1=1$ thì $n=2$; nếu $n-1=-1$ thì $n=0$; nếu $n-1=2$ thì $n=3$; nếu $n-1=-2$ thì $n=-1$; nếu $n-1=4$ thì $n=5$; nếu $n-1=-4$ thì $n=-3$.\n\nVậy $n\\in\\{2;0;3;-1;5;-3\\}$.",
+    "kiem": [
+      "[...Array(121)].map((_,i)=>i+(-60)).filter(x=>x!==1&&(x+3)%(x-1)===0).join()===\"-3,-1,0,2,3,5\""
+    ],
+    "sach_dap_so": "n∈{2;0;3;-1;5;-3}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-11B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01326",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "a chia hết cho (x+b) với a là số cho trước",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $n$, sao cho: $4$ chia hết cho $n-5$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** a chia hết cho một cụm chứa n thì cụm đó là ước của a.\n\n**Bước 1.** Nhận ra số cho trước là bội và cụm chứa $n$ (n − 5) là ước của nó.\n\n**Bước 2.** Liệt kê mọi ước của số đó, nhớ cả các ước âm.\n\n**Bước 3.** Cho cụm chứa $n$ bằng từng ước, rồi tìm $n$ theo quy tắc tìm thành phần chưa biết.\n\n**Bước 4.** Viết kết luận bằng tập hợp các giá trị $n$.\n\n**Chú ý:** ước của một số nguyên gồm cả ước dương và ước âm.\n\n**Phần 2. Trình bày**\n\nVì $4\\vdots(n-5)$ nên $n-5\\in\\text{Ư}(4)=\\{1;-1;2;-2;4;-4\\}$.\n\nNếu $n-5=1$ thì $n=6$; nếu $n-5=-1$ thì $n=4$; nếu $n-5=2$ thì $n=7$; nếu $n-5=-2$ thì $n=3$; nếu $n-5=4$ thì $n=9$; nếu $n-5=-4$ thì $n=1$.\n\nVậy $n\\in\\{6;4;7;3;9;1\\}$.",
+    "kiem": [
+      "[...Array(121)].map((_,i)=>i+(-60)).filter(x=>x!==5&&4%(x-5)===0).join()===\"1,3,4,6,7,9\""
+    ],
+    "sach_dap_so": "n∈{1;3;4;6;7;9}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-11B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01327",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tử và mẫu cùng hệ số x, tách ra số dư",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $n$, sao cho: $4n+3$ chia hết cho $2n+1$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tách biểu thức ở trên thành (bội của cụm ở dưới) + một số, rồi dùng tính chất chia hết của một tổng.\n\n**Bước 1.** Tách biểu thức bị chia (4n + 3 = 2.(2n + 1) + 1) thành tổng của một bội của số chia và một số cố định.\n\n**Bước 2.** Phần bội của số chia đã chia hết rồi, nên cả tổng chia hết khi số còn lại cũng chia hết cho số chia.\n\n**Bước 3.** Liệt kê các ước (cả âm) của số cố định đó.\n\n**Bước 4.** Cho số chia bằng từng ước rồi tìm $n$; viết kết luận bằng tập hợp.\n\n**Chú ý:** khi hệ số của $n$ ở trên chưa bằng hệ số ở dưới, nhân số chia lên cho khớp trước khi tách.\n\n**Phần 2. Trình bày**\n\nTa có $4n+3=2.(2n+1)+1$.\n\nVì $2.(2n+1)\\vdots(2n+1)$ nên để $4n+3\\vdots(2n+1)$ thì $1\\vdots(2n+1)$.\n\nSuy ra $2n+1\\in\\text{Ư}(1)=\\{1;-1\\}$.\n\nNếu $2n+1=1$ thì $2n=0$ nên $n=0$; nếu $2n+1=-1$ thì $2n=-2$ nên $n=-1$.\n\nVậy $n\\in\\{0;-1\\}$.",
+    "kiem": [
+      "[...Array(121)].map((_,i)=>i+(-60)).filter(x=>(4*x+3)%(2*x+1)===0).join()===\"-1,0\""
+    ],
+    "sach_dap_so": "n∈{-1;0}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-12A",
+    "vai": "giang",
+    "dang_bai": "NDB01332",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "đẳng thức tích, tìm cặp số nguyên",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm các số nguyên $x,y$ sao cho: $(x+4)(y-5)=2$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tích hai số nguyên bằng một số cho trước thì mỗi thừa số là ước của số đó: liệt kê ước rồi lập các trường hợp.\n\n**Bước 1.** Nhận ra vế trái là tích của hai biểu thức nguyên (x + 4 và y − 5) và vế phải là số cho trước.\n\n**Bước 2.** Liệt kê mọi ước của số đó, cả ước âm; chúng là các giá trị có thể của một thừa số.\n\n**Bước 3.** Với mỗi ước chọn cho thừa số thứ nhất, thừa số thứ hai bằng số cho trước chia cho ước đó.\n\n**Bước 4.** Từ mỗi cặp thừa số tìm $x$ và $y$ (tìm thành phần chưa biết) rồi viết kết luận bằng các cặp.\n\n**Chú ý:** bài hỏi cặp $(x;y)$ nên viết đáp số đúng theo cặp, đừng tách rời $x$ và $y$.\n\n**Phần 2. Trình bày**\n\nVì $x,y$ là số nguyên nên $x+4$ và $y-5$ là hai số nguyên có tích bằng 2, do đó $x+4\\in\\text{Ư}(2)=\\{1;-1;2;-2\\}$.\n\nNếu $x+4=1$ thì $y-5=2$, suy ra $x=-3$ và $y=7$.\n\nNếu $x+4=-1$ thì $y-5=-2$, suy ra $x=-5$ và $y=3$.\n\nNếu $x+4=2$ thì $y-5=1$, suy ra $x=-2$ và $y=6$.\n\nNếu $x+4=-2$ thì $y-5=-1$, suy ra $x=-6$ và $y=4$.\n\nVậy $(x;y)\\in\\{(-3;7);(-5;3);(-2;6);(-6;4)\\}$.",
+    "kiem": [
+      "(()=>{const o=[];for(let x=-60;x<=60;x++)for(let y=-60;y<=60;y++)if((x+4)*(y-5)===2)o.push(x+','+y);return o.join(';')})()===\"-6,4;-5,3;-3,7;-2,6\""
+    ],
+    "sach_dap_so": "(-3;7),(-2;6),(-5;3),(-6;4)",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-12B",
+    "vai": "luyen",
+    "dang_bai": "NDB01332",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "đẳng thức tích, tìm cặp số nguyên",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm các số nguyên $x,y$ sao cho: $(x-4)(y+3)=-3$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tích hai số nguyên bằng một số cho trước thì mỗi thừa số là ước của số đó: liệt kê ước rồi lập các trường hợp.\n\n**Bước 1.** Nhận ra vế trái là tích của hai biểu thức nguyên (x − 4 và y + 3) và vế phải là số cho trước.\n\n**Bước 2.** Liệt kê mọi ước của số đó, cả ước âm; chúng là các giá trị có thể của một thừa số.\n\n**Bước 3.** Với mỗi ước chọn cho thừa số thứ nhất, thừa số thứ hai bằng số cho trước chia cho ước đó.\n\n**Bước 4.** Từ mỗi cặp thừa số tìm $x$ và $y$ (tìm thành phần chưa biết) rồi viết kết luận bằng các cặp.\n\n**Chú ý:** bài hỏi cặp $(x;y)$ nên viết đáp số đúng theo cặp, đừng tách rời $x$ và $y$.\n\n**Phần 2. Trình bày**\n\nVì $x,y$ là số nguyên nên $x-4$ và $y+3$ là hai số nguyên có tích bằng $-3$, do đó $x-4\\in\\text{Ư}(3)=\\{1;-1;3;-3\\}$.\n\nNếu $x-4=1$ thì $y+3=-3$, suy ra $x=5$ và $y=-6$.\n\nNếu $x-4=-1$ thì $y+3=3$, suy ra $x=3$ và $y=0$.\n\nNếu $x-4=3$ thì $y+3=-1$, suy ra $x=7$ và $y=-4$.\n\nNếu $x-4=-3$ thì $y+3=1$, suy ra $x=1$ và $y=-2$.\n\nVậy $(x;y)\\in\\{(5;-6);(3;0);(7;-4);(1;-2)\\}$.",
+    "kiem": [
+      "(()=>{const o=[];for(let x=-60;x<=60;x++)for(let y=-60;y<=60;y++)if((x-4)*(y+3)===-3)o.push(x+','+y);return o.join(';')})()===\"1,-2;3,0;5,-6;7,-4\""
+    ],
+    "sach_dap_so": "(3;0),(7;-4),(5;-6),(1;2)",
+    "ghi_chu": "LỆCH SÁCH — cặp cuối sách in (1; 2) nhưng bảng của chính sách ghi y = −2; đúng là (1; −2) vì y + 3 = 1."
+  },
+  {
+    "id": "ÔT-13A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01330",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "ghép hai số hạng liên tiếp",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính tổng sau: $A=0-2+4-6+\\dots+2008-2010$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đếm số số hạng, ghép hai số hạng liên tiếp thành từng cặp có cùng giá trị rồi nhân số cặp với giá trị mỗi cặp.\n\n**Bước 1.** Nhận ra quy luật của dãy (các số chẵn 0; 2; 4; … lần lượt mang dấu + và −) và viết ra vài số hạng đầu, cuối.\n\n**Bước 2.** Đếm số số hạng của dãy số cách đều: (số cuối − số đầu) : khoảng cách + 1; từ đó suy ra số cặp khi ghép hai số hạng một.\n\n**Bước 3.** Ghép từng cặp hai số hạng liên tiếp, tính giá trị một cặp, kiểm tra mọi cặp đều bằng nhau.\n\n**Bước 4.** Nhân số cặp với giá trị mỗi cặp.\n\n**Chú ý:** dãy có số số hạng lẻ thì ghép xong còn thừa một số hạng — luôn đếm trước khi ghép.\n\n**Phần 2. Trình bày**\n\nCác số hạng (không kể dấu) là $0;2;4;\\dots;2010$ nên có $(2010-0):2+1=1006$ số hạng, ghép hai số một cặp được $1006:2=503$ cặp.\n\n$A=(0-2)+(4-6)+\\dots+(2008-2010)$\n\n$=(-2)+(-2)+\\dots+(-2)\\ (503 \\text{ số hạng})$\n\n$=503.(-2)$\n\n$=-1006$",
+    "kiem": [
+      "(()=>{let s=0,k=0;for(let v=0;v<=2010;v+=2,k++)s+=(k%2===0?v:-v);return s})()===-1006"
+    ],
+    "sach_dap_so": "-1006",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-13A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01330",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "ghép hai số hạng liên tiếp",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng sau: $B=1-3+5-7+\\dots+49-51$.",
+    "dap_an": "-26",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đếm số số hạng, ghép hai số hạng liên tiếp thành từng cặp có cùng giá trị rồi nhân số cặp với giá trị mỗi cặp.\n\n**Bước 1.** Nhận ra quy luật của dãy (các số lẻ 1; 3; 5; … lần lượt mang dấu + và −) và viết ra vài số hạng đầu, cuối.\n\n**Bước 2.** Đếm số số hạng của dãy số cách đều: (số cuối − số đầu) : khoảng cách + 1; từ đó suy ra số cặp khi ghép hai số hạng một.\n\n**Bước 3.** Ghép từng cặp hai số hạng liên tiếp, tính giá trị một cặp, kiểm tra mọi cặp đều bằng nhau.\n\n**Bước 4.** Nhân số cặp với giá trị mỗi cặp.\n\n**Chú ý:** dãy có số số hạng lẻ thì ghép xong còn thừa một số hạng — luôn đếm trước khi ghép.\n\n**Phần 2. Trình bày**\n\nCác số hạng (không kể dấu) là $1;3;5;\\dots;51$ nên có $(51-1):2+1=26$ số hạng, ghép hai số một cặp được $26:2=13$ cặp.\n\n$B=(1-3)+(5-7)+\\dots+(49-51)$\n\n$=(-2)+(-2)+\\dots+(-2)$ (13 số hạng)\n\n$=13.(-2)$\n\n$=-26$",
+    "kiem": [
+      "(()=>{let s=0,k=0;for(let v=1;v<=51;v+=2,k++)s+=(k%2===0?v:-v);return s})()===-26"
+    ],
+    "sach_dap_so": "-26",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-13B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01330",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "ghép hai số hạng liên tiếp",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng sau: $A=1-2+3-4+\\dots+25-26$.",
+    "dap_an": "-13",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đếm số số hạng, ghép hai số hạng liên tiếp thành từng cặp có cùng giá trị rồi nhân số cặp với giá trị mỗi cặp.\n\n**Bước 1.** Nhận ra quy luật của dãy (các số tự nhiên liên tiếp mang dấu + và − xen kẽ) và viết ra vài số hạng đầu, cuối.\n\n**Bước 2.** Đếm số số hạng của dãy số cách đều: (số cuối − số đầu) : khoảng cách + 1; từ đó suy ra số cặp khi ghép hai số hạng một.\n\n**Bước 3.** Ghép từng cặp hai số hạng liên tiếp, tính giá trị một cặp, kiểm tra mọi cặp đều bằng nhau.\n\n**Bước 4.** Nhân số cặp với giá trị mỗi cặp.\n\n**Chú ý:** dãy có số số hạng lẻ thì ghép xong còn thừa một số hạng — luôn đếm trước khi ghép.\n\n**Phần 2. Trình bày**\n\nCác số hạng (không kể dấu) là $1;2;3;\\dots;26$ nên có $26-1+1=26$ số hạng, ghép hai số một cặp được $26:2=13$ cặp.\n\n$A=(1-2)+(3-4)+\\dots+(25-26)$\n\n$=(-1)+(-1)+\\dots+(-1)$ (13 số hạng)\n\n$=13.(-1)$\n\n$=-13$",
+    "kiem": [
+      "(()=>{let s=0;for(let v=1;v<=26;v++)s+=(v%2===1?v:-v);return s})()===-13"
+    ],
+    "sach_dap_so": "-13",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-13B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01330",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "ghép hai số hạng liên tiếp; đề sách in lỗi nên đề đã được sửa",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng sau: $B=-1+3-5+7-\\dots-53+55$.",
+    "dap_an": "28",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đếm số số hạng, ghép hai số hạng liên tiếp thành từng cặp có cùng giá trị rồi nhân số cặp với giá trị mỗi cặp.\n\n**Bước 1.** Nhận ra quy luật của dãy (các số lẻ 1; 3; 5; … lần lượt mang dấu − và +) và viết ra vài số hạng đầu, cuối.\n\n**Bước 2.** Đếm số số hạng của dãy số cách đều: (số cuối − số đầu) : khoảng cách + 1; từ đó suy ra số cặp khi ghép hai số hạng một.\n\n**Bước 3.** Ghép từng cặp hai số hạng liên tiếp, tính giá trị một cặp, kiểm tra mọi cặp đều bằng nhau.\n\n**Bước 4.** Nhân số cặp với giá trị mỗi cặp.\n\n**Chú ý:** dãy có số số hạng lẻ thì ghép xong còn thừa một số hạng — luôn đếm trước khi ghép.\n\n**Phần 2. Trình bày**\n\nCác số hạng (không kể dấu) là $1;3;5;\\dots;55$ nên có $(55-1):2+1=28$ số hạng, ghép hai số một cặp được $28:2=14$ cặp.\n\n$B=(-1+3)+(-5+7)+\\dots+(-53+55)$\n\n$=2+2+\\dots+2$ (14 số hạng)\n\n$=14.2$\n\n$=28$",
+    "kiem": [
+      "(()=>{let s=0,k=0;for(let v=1;v<=55;v+=2,k++)s+=(k%2===0?-v:v);return s})()===28"
+    ],
+    "sach_dap_so": "28",
+    "ghi_chu": "ĐỀ SÁCH IN LỖI — sách in \"B=−1+3−5+7−…+25−26\" (lặp lại dãy của câu 13B a, không theo quy luật số lẻ). Sửa thành \"−1+3−5+7−…−53+55\" cho khớp đáp số sách (28); cần Thùy xác nhận."
+  },
+  {
+    "id": "ÔT-14A",
+    "vai": "giang",
+    "dang_bai": null,
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "chia hết của dãy luỹ thừa cùng cơ số; dich.md chủ đề Số nguyên không có dạng này",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Số $A=2^1+2^2+2^3+2^4+\\dots+2^{2010}$ có chia hết cho 3 hay không? Giải thích kết luận của em.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** nhóm các số hạng liên tiếp sao cho mỗi nhóm đặt được thừa số bằng số cần chia ra ngoài.\n\n**Bước 1.** Đếm số số hạng của tổng và chọn cách nhóm (nhóm hai số hạng một nhóm) sao cho nhóm vừa đủ, không thừa số hạng nào.\n\n**Bước 2.** Trong mỗi nhóm, đặt luỹ thừa nhỏ nhất ra ngoài ngoặc (tính chất phân phối); phần trong ngoặc là tổng quen thuộc.\n\n**Bước 3.** Tính phần trong ngoặc: nếu bằng đúng số cần chia thì mỗi nhóm đều chia hết cho số đó.\n\n**Bước 4.** Kết luận bằng tính chất: tổng các số cùng chia hết cho một số thì chia hết cho số đó.\n\n**Chú ý:** luôn kiểm tra số số hạng chia hết cho số lượng mỗi nhóm.\n\n**Phần 2. Trình bày**\n\nTổng $A$ có 2010 số hạng ($2^1$ đến $2^{2010}$) nên nhóm hai số hạng một nhóm được $2010:2=1005$ nhóm.\n\n$A=(2^1+2^2)+(2^3+2^4)+\\dots+(2^{2009}+2^{2010})$\n\n$=2^1.(1+2)+2^3.(1+2)+\\dots+2^{2009}.(1+2)$\n\n$=3.(2^1+2^3+\\dots+2^{2009})$\n\nVậy $A$ chia hết cho 3.",
+    "kiem": [
+      "(()=>{let s=0n;for(let k=1n;k<=2010n;k++)s+=2n**k;return s%3n===0n})()"
+    ],
+    "sach_dap_so": "có (A = 3.(…))",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-14B",
+    "vai": "luyen",
+    "dang_bai": null,
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "chia hết của dãy luỹ thừa cùng cơ số; dich.md chủ đề Số nguyên không có dạng này",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Số $A=2^1+2^2+2^3+2^4+\\dots+2^{2010}$ có chia hết cho 7 hay không? Giải thích kết luận của em.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** nhóm các số hạng liên tiếp sao cho mỗi nhóm đặt được thừa số bằng số cần chia ra ngoài.\n\n**Bước 1.** Đếm số số hạng của tổng và chọn cách nhóm (nhóm ba số hạng một nhóm) sao cho nhóm vừa đủ, không thừa số hạng nào.\n\n**Bước 2.** Trong mỗi nhóm, đặt luỹ thừa nhỏ nhất ra ngoài ngoặc (tính chất phân phối); phần trong ngoặc là tổng quen thuộc.\n\n**Bước 3.** Tính phần trong ngoặc: nếu bằng đúng số cần chia thì mỗi nhóm đều chia hết cho số đó.\n\n**Bước 4.** Kết luận bằng tính chất: tổng các số cùng chia hết cho một số thì chia hết cho số đó.\n\n**Chú ý:** luôn kiểm tra số số hạng chia hết cho số lượng mỗi nhóm.\n\n**Phần 2. Trình bày**\n\nTổng $A$ có 2010 số hạng nên nhóm ba số hạng một nhóm được $2010:3=670$ nhóm.\n\n$A=(2^1+2^2+2^3)+(2^4+2^5+2^6)+\\dots+(2^{2008}+2^{2009}+2^{2010})$\n\n$=2^1.(1+2+2^2)+2^4.(1+2+2^2)+\\dots+2^{2008}.(1+2+2^2)$\n\n$=7.(2^1+2^4+\\dots+2^{2008})$\n\nVậy $A$ chia hết cho 7.",
+    "kiem": [
+      "(()=>{let s=0n;for(let k=1n;k<=2010n;k++)s+=2n**k;return s%7n===0n})()"
+    ],
+    "sach_dap_so": "có",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-15-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01292",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "sắp xếp dãy số nguyên theo thứ tự",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Sắp xếp các số nguyên sau theo thứ tự tăng dần: $27;-1;-5;14;-12;0;2$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chia dãy thành số âm, số 0, số dương; mọi số âm nhỏ hơn 0 và 0 nhỏ hơn mọi số dương.\n\n**Bước 1.** Chia dãy thành ba nhóm: các số nguyên âm, số 0 (nếu có) và các số nguyên dương.\n\n**Bước 2.** Sắp xếp từng nhóm: số dương so như số tự nhiên; hai số âm thì số có phần số (bỏ dấu \"−\") lớn hơn là số nhỏ hơn, vì nó nằm xa gốc O hơn về bên trái trục số.\n\n**Bước 3.** Ghép ba nhóm theo thứ tự từ nhỏ đến lớn: nhóm số âm, rồi số 0, rồi nhóm số dương.\n\n**Bước 4.** Đếm lại số phần tử: không thiếu, không thừa.\n\n**Chú ý:** với số âm, \"phần số lớn hơn\" lại là số nhỏ hơn: $-12<-5$.\n\n**Phần 2. Trình bày**\n\nCác số âm $-1;-5;-12$ sắp xếp tăng dần là $-12;-5;-1$; các số dương $27;14;2$ sắp xếp tăng dần là $2;14;27$.\n\nVì mọi số âm nhỏ hơn 0 và 0 nhỏ hơn mọi số dương nên ta được:\n\n$-12;-5;-1;0;2;14;27$.",
+    "kiem": [
+      "[27,-1,-5,14,-12,0,2].sort((a,b)=>a-b).join(';')===\"-12;-5;-1;0;2;14;27\""
+    ],
+    "sach_dap_so": "-12;-5;-1;0;2;14;27",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-15-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01292",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "sắp xếp dãy số nguyên theo thứ tự",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Sắp xếp các số nguyên sau theo thứ tự tăng dần: $2021;-2022;0;-100;-7;1$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chia dãy thành số âm, số 0, số dương; mọi số âm nhỏ hơn 0 và 0 nhỏ hơn mọi số dương.\n\n**Bước 1.** Chia dãy thành ba nhóm: các số nguyên âm, số 0 (nếu có) và các số nguyên dương.\n\n**Bước 2.** Sắp xếp từng nhóm: số dương so như số tự nhiên; hai số âm thì số có phần số (bỏ dấu \"−\") lớn hơn là số nhỏ hơn, vì nó nằm xa gốc O hơn về bên trái trục số.\n\n**Bước 3.** Ghép ba nhóm theo thứ tự từ nhỏ đến lớn: nhóm số âm, rồi số 0, rồi nhóm số dương.\n\n**Bước 4.** Đếm lại số phần tử: không thiếu, không thừa.\n\n**Chú ý:** với số âm, \"phần số lớn hơn\" lại là số nhỏ hơn: $-12<-5$.\n\n**Phần 2. Trình bày**\n\nCác số âm $-2022;-100;-7$ sắp xếp tăng dần là $-2022;-100;-7$; các số dương $2021;1$ sắp xếp tăng dần là $1;2021$.\n\nVì mọi số âm nhỏ hơn 0 và 0 nhỏ hơn mọi số dương nên ta được:\n\n$-2022;-100;-7;0;1;2021$.",
+    "kiem": [
+      "[2021,-2022,0,-100,-7,1].sort((a,b)=>a-b).join(';')===\"-2022;-100;-7;0;1;2021\""
+    ],
+    "sach_dap_so": "-2022;-100;-7;0;1;2021",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-16-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01292",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "sắp xếp dãy số nguyên theo thứ tự",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Sắp xếp các số nguyên sau theo thứ tự giảm dần: $-3;-1;0;-2;5;-13;17;-99;100$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chia dãy thành số âm, số 0, số dương; mọi số âm nhỏ hơn 0 và 0 nhỏ hơn mọi số dương.\n\n**Bước 1.** Chia dãy thành ba nhóm: các số nguyên âm, số 0 (nếu có) và các số nguyên dương.\n\n**Bước 2.** Sắp xếp từng nhóm: số dương so như số tự nhiên; hai số âm thì số có phần số (bỏ dấu \"−\") lớn hơn là số nhỏ hơn, vì nó nằm xa gốc O hơn về bên trái trục số.\n\n**Bước 3.** Ghép ba nhóm theo thứ tự từ lớn đến nhỏ: nhóm số dương, rồi số 0, rồi nhóm số âm.\n\n**Bước 4.** Đếm lại số phần tử: không thiếu, không thừa.\n\n**Chú ý:** với số âm, \"phần số lớn hơn\" lại là số nhỏ hơn: $-12<-5$.\n\n**Phần 2. Trình bày**\n\nCác số dương $5;17;100$ sắp xếp giảm dần là $100;17;5$; các số âm $-3;-1;-2;-13;-99$ sắp xếp giảm dần là $-1;-2;-3;-13;-99$.\n\nVì mọi số dương lớn hơn 0 và 0 lớn hơn mọi số âm nên ta được:\n\n$100;17;5;0;-1;-2;-3;-13;-99$.",
+    "kiem": [
+      "[-3,-1,0,-2,5,-13,17,-99,100].sort((a,b)=>b-a).join(';')===\"100;17;5;0;-1;-2;-3;-13;-99\""
+    ],
+    "sach_dap_so": "100;17;5;0;-1;-2;-3;-17;-99",
+    "ghi_chu": "LỆCH SÁCH — sách in \"-17\" nhưng dãy đề có -13 (không có -17); đúng là 100;17;5;0;-1;-2;-3;-13;-99."
+  },
+  {
+    "id": "ÔT-16-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01292",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "sắp xếp dãy số nguyên theo thứ tự",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Sắp xếp các số nguyên sau theo thứ tự giảm dần: $-139;25;-98;0;27;-3$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chia dãy thành số âm, số 0, số dương; mọi số âm nhỏ hơn 0 và 0 nhỏ hơn mọi số dương.\n\n**Bước 1.** Chia dãy thành ba nhóm: các số nguyên âm, số 0 (nếu có) và các số nguyên dương.\n\n**Bước 2.** Sắp xếp từng nhóm: số dương so như số tự nhiên; hai số âm thì số có phần số (bỏ dấu \"−\") lớn hơn là số nhỏ hơn, vì nó nằm xa gốc O hơn về bên trái trục số.\n\n**Bước 3.** Ghép ba nhóm theo thứ tự từ lớn đến nhỏ: nhóm số dương, rồi số 0, rồi nhóm số âm.\n\n**Bước 4.** Đếm lại số phần tử: không thiếu, không thừa.\n\n**Chú ý:** với số âm, \"phần số lớn hơn\" lại là số nhỏ hơn: $-12<-5$.\n\n**Phần 2. Trình bày**\n\nCác số dương $25;27$ sắp xếp giảm dần là $27;25$; các số âm $-139;-98;-3$ sắp xếp giảm dần là $-3;-98;-139$.\n\nVì mọi số dương lớn hơn 0 và 0 lớn hơn mọi số âm nên ta được:\n\n$27;25;0;-3;-98;-139$.",
+    "kiem": [
+      "[-139,25,-98,0,27,-3].sort((a,b)=>b-a).join(';')===\"27;25;0;-3;-98;-139\""
+    ],
+    "sach_dap_so": "27;25;0;-3;-98;-139",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-17-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "dãy cộng trừ nhiều số nguyên",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $(-5)+(-7)+(-8)+(-3)$.",
+    "dap_an": "-23",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tính trong ngoặc trước; cộng hai số cùng dấu là cộng phần số rồi giữ dấu chung.\n\n**Bước 1.** Tính trong ngoặc vuông trước: đó là tổng của hai số nguyên âm.\n\n**Bước 2.** Cộng hai số nguyên âm: bỏ dấu \"−\", cộng hai số tự nhiên, rồi đặt dấu \"−\" trước kết quả.\n\n**Bước 3.** Cộng tiếp với số còn lại bằng cùng quy tắc.\n\n**Chú ý:** tổng của hai số nguyên âm luôn là số nguyên âm.\n\n**Phần 2. Trình bày**\n\n$(-5)+(-7)+(-8)+(-3)$\n\n$=(-12)+(-8)+(-3)$\n\n$=(-20)+(-3)$\n\n$=-23$",
+    "kiem": [
+      "(-5)+(-7)+(-8)+(-3)===-23"
+    ],
+    "sach_dap_so": "-23",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-17-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "dãy cộng trừ nhiều số nguyên",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $-14-7-12-21$.",
+    "dap_an": "-54",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** trừ một số nguyên là cộng với số đối của nó; sau đó cộng trừ lần lượt từ trái sang phải.\n\n**Bước 1.** Nhìn các dấu trừ đứng trước số (toàn dấu trừ, không có ngoặc): áp dụng quy tắc trừ, tức là trừ đi một số bằng cộng với số đối của nó, nên hai dấu trừ liền nhau thành dấu cộng.\n\n**Bước 2.** Viết lại biểu thức không còn ngoặc, giữ nguyên thứ tự các số hạng.\n\n**Bước 3.** Cộng trừ lần lượt từ trái sang phải; hai số khác dấu thì bỏ dấu \"−\" của số âm, lấy số lớn trừ số nhỏ rồi đặt dấu của số lớn hơn trước kết quả.\n\n**Bước 4.** Soát lại dấu ở mỗi bước trung gian trước khi viết kết quả cuối.\n\n**Chú ý:** trừ cho một số âm thì được cộng với số đối của nó: $-(-a)=a$.\n\n**Phần 2. Trình bày**\n\n$-14-7-12-21$\n\n$=-21-12-21$\n\n$=-33-21$\n\n$=-54$",
+    "kiem": [
+      "-14-7-12-21===-54"
+    ],
+    "sach_dap_so": "-54",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-17-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01302",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "bỏ ngoặc rồi tính tổng, hiệu",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $-(-15)-(-3+7-8)-5$.",
+    "dap_an": "14",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** trừ một số nguyên là cộng với số đối của nó; sau đó cộng trừ lần lượt từ trái sang phải.\n\n**Bước 1.** Nhìn các dấu trừ đứng trước số (−(−15) và dấu trừ trước ngoặc chứa −3 + 7 − 8): áp dụng quy tắc trừ, tức là trừ đi một số bằng cộng với số đối của nó, nên hai dấu trừ liền nhau thành dấu cộng.\n\n**Bước 2.** Viết lại biểu thức không còn ngoặc, giữ nguyên thứ tự các số hạng.\n\n**Bước 3.** Cộng trừ lần lượt từ trái sang phải; hai số khác dấu thì bỏ dấu \"−\" của số âm, lấy số lớn trừ số nhỏ rồi đặt dấu của số lớn hơn trước kết quả.\n\n**Bước 4.** Soát lại dấu ở mỗi bước trung gian trước khi viết kết quả cuối.\n\n**Chú ý:** trừ cho một số âm thì được cộng với số đối của nó: $-(-a)=a$.\n\n**Phần 2. Trình bày**\n\n$-(-15)-(-3+7-8)-5$\n\n$=15-(-3+7-8)-5$\n\n$=15-(-4)-5$\n\n$=15+4-5$\n\n$=19-5$\n\n$=14$",
+    "kiem": [
+      "-(-15)-(-3+7-8)-5===14"
+    ],
+    "sach_dap_so": "14",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-17-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "dãy cộng trừ nhiều số nguyên",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $126+(-20)+124-(-320)-150$.",
+    "dap_an": "400",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** trừ một số nguyên là cộng với số đối của nó; sau đó cộng trừ lần lượt từ trái sang phải.\n\n**Bước 1.** Nhìn các dấu trừ đứng trước số (có −(−320)): áp dụng quy tắc trừ, tức là trừ đi một số bằng cộng với số đối của nó, nên hai dấu trừ liền nhau thành dấu cộng.\n\n**Bước 2.** Viết lại biểu thức không còn ngoặc, giữ nguyên thứ tự các số hạng.\n\n**Bước 3.** Cộng trừ lần lượt từ trái sang phải; hai số khác dấu thì bỏ dấu \"−\" của số âm, lấy số lớn trừ số nhỏ rồi đặt dấu của số lớn hơn trước kết quả.\n\n**Bước 4.** Soát lại dấu ở mỗi bước trung gian trước khi viết kết quả cuối.\n\n**Chú ý:** trừ cho một số âm thì được cộng với số đối của nó: $-(-a)=a$.\n\n**Phần 2. Trình bày**\n\n$126+(-20)+124-(-320)-150$\n\n$=126-20+124+320-150$\n\n$=(126+124)+(-20+320)-150$\n\n$=250+300-150$\n\n$=550-150$\n\n$=400$",
+    "kiem": [
+      "126+(-20)+124-(-320)-150===400"
+    ],
+    "sach_dap_so": "400",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-18-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01303",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tích nhiều số nguyên",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính: $(-41).(-15).6.7$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đếm số thừa số âm để biết dấu của tích, rồi nhân các phần số với nhau.\n\n**Bước 1.** Xác định dấu của tích (hai thừa số âm): có số lẻ thừa số âm thì tích âm, số chẵn thừa số âm thì tích dương, có thừa số 0 thì tích bằng 0.\n\n**Bước 2.** Nhân lần lượt từ trái sang phải; mỗi lần nhân hai số: cùng dấu cho tích dương, khác dấu cho tích âm.\n\n**Bước 3.** Đối chiếu dấu của kết quả với dấu đã xác định ở bước 1.\n\n**Chú ý:** chỉ cần một thừa số bằng 0 thì cả tích bằng 0.\n\n**Phần 2. Trình bày**\n\n$(-41).(-15).6.7$\n\n$=615.6.7$\n\n$=3690.7$\n\n$=25830$",
+    "kiem": [
+      "(-41)*(-15)*6*7===25830"
+    ],
+    "sach_dap_so": "25830",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-18-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01303",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tích nhiều số nguyên",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính: $0.12.(-9).(-14)$.",
+    "dap_an": "0",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đếm số thừa số âm để biết dấu của tích, rồi nhân các phần số với nhau.\n\n**Bước 1.** Xác định dấu của tích (có thừa số 0): có số lẻ thừa số âm thì tích âm, số chẵn thừa số âm thì tích dương, có thừa số 0 thì tích bằng 0.\n\n**Bước 2.** Nhân lần lượt từ trái sang phải; mỗi lần nhân hai số: cùng dấu cho tích dương, khác dấu cho tích âm.\n\n**Bước 3.** Đối chiếu dấu của kết quả với dấu đã xác định ở bước 1.\n\n**Chú ý:** chỉ cần một thừa số bằng 0 thì cả tích bằng 0.\n\n**Phần 2. Trình bày**\n\nVì có một thừa số bằng 0 nên $0.12.(-9).(-14)=0$.",
+    "kiem": [
+      "0*12*(-9)*(-14)===0"
+    ],
+    "sach_dap_so": "0",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-18-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01303",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tích nhiều số nguyên",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính: $7.(-5).8.(-3)$.",
+    "dap_an": "840",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đếm số thừa số âm để biết dấu của tích, rồi nhân các phần số với nhau.\n\n**Bước 1.** Xác định dấu của tích (hai thừa số âm): có số lẻ thừa số âm thì tích âm, số chẵn thừa số âm thì tích dương, có thừa số 0 thì tích bằng 0.\n\n**Bước 2.** Nhân lần lượt từ trái sang phải; mỗi lần nhân hai số: cùng dấu cho tích dương, khác dấu cho tích âm.\n\n**Bước 3.** Đối chiếu dấu của kết quả với dấu đã xác định ở bước 1.\n\n**Chú ý:** chỉ cần một thừa số bằng 0 thì cả tích bằng 0.\n\n**Phần 2. Trình bày**\n\n$7.(-5).8.(-3)$\n\n$=(-35).8.(-3)$\n\n$=(-280).(-3)$\n\n$=840$",
+    "kiem": [
+      "7*(-5)*8*(-3)===840"
+    ],
+    "sach_dap_so": "840",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-18-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01309",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "biểu thức cơ bản có một cấp ngoặc",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính: $(55-11):(-4)$.",
+    "dap_an": "-11",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm trong ngoặc trước, ngoài ngoặc sau; nhân chia trước, cộng trừ sau.\n\n**Bước 1.** Xác định phép tính nằm trong ngoặc (hiệu 55 − 11) và tính trước.\n\n**Bước 2.** Thay kết quả vừa tính vào, viết lại biểu thức đã gọn hơn.\n\n**Bước 3.** Thực hiện phép nhân hoặc chia số nguyên: cùng dấu cho kết quả dương, khác dấu cho kết quả âm.\n\n**Bước 4.** Nếu còn cộng trừ thì làm từ trái sang phải.\n\n**Chú ý:** chia hai số nguyên cũng theo quy tắc dấu như phép nhân.\n\n**Phần 2. Trình bày**\n\n$(55-11):(-4)$\n\n$=44:(-4)$\n\n$=-11$",
+    "kiem": [
+      "(55-11)/(-4)===-11"
+    ],
+    "sach_dap_so": "-11",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-19-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "so sánh tích bằng dấu của tích",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh: $50.(-3)$ với $50$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** không cần so từng số hạng: tính tích (hoặc chỉ xét dấu của tích) rồi so sánh hai số nguyên.\n\n**Bước 1.** Xác định dấu của mỗi tích (50.(−3) là tích hai số khác dấu): cùng dấu thì dương, khác dấu thì âm.\n\n**Bước 2.** Tính giá trị của mỗi tích (nếu cần để so với số khác).\n\n**Bước 3.** So sánh hai số nguyên: số âm nhỏ hơn 0, số 0 nhỏ hơn số dương; hai số âm thì số có phần số lớn hơn là số nhỏ hơn.\n\n**Chú ý:** tích hai số khác dấu luôn âm nên luôn nhỏ hơn 0.\n\n**Phần 2. Trình bày**\n\n$50.(-3)=-150$.\n\nVì $-150<50$ nên $50.(-3)<50$.",
+    "kiem": [
+      "50*(-3)<50"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-19-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "so sánh tích bằng dấu của tích",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh: $(-12).5$ với $(-15).2$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** không cần so từng số hạng: tính tích (hoặc chỉ xét dấu của tích) rồi so sánh hai số nguyên.\n\n**Bước 1.** Xác định dấu của mỗi tích (cả hai tích đều âm): cùng dấu thì dương, khác dấu thì âm.\n\n**Bước 2.** Tính giá trị của mỗi tích (nếu cần để so với số khác).\n\n**Bước 3.** So sánh hai số nguyên: số âm nhỏ hơn 0, số 0 nhỏ hơn số dương; hai số âm thì số có phần số lớn hơn là số nhỏ hơn.\n\n**Chú ý:** tích hai số khác dấu luôn âm nên luôn nhỏ hơn 0.\n\n**Phần 2. Trình bày**\n\n$(-12).5=-60$ và $(-15).2=-30$.\n\nHai số âm $-60$ và $-30$: $-60$ có phần số lớn hơn nên $-60<-30$.\n\nVậy $(-12).5<(-15).2$.",
+    "kiem": [
+      "(-12)*5<(-15)*2"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-19-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "so sánh tích bằng dấu của tích",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh: $(-15).4$ với $(-15)$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** không cần so từng số hạng: tính tích (hoặc chỉ xét dấu của tích) rồi so sánh hai số nguyên.\n\n**Bước 1.** Xác định dấu của mỗi tích ((−15).4 là tích hai số khác dấu): cùng dấu thì dương, khác dấu thì âm.\n\n**Bước 2.** Tính giá trị của mỗi tích (nếu cần để so với số khác).\n\n**Bước 3.** So sánh hai số nguyên: số âm nhỏ hơn 0, số 0 nhỏ hơn số dương; hai số âm thì số có phần số lớn hơn là số nhỏ hơn.\n\n**Chú ý:** tích hai số khác dấu luôn âm nên luôn nhỏ hơn 0.\n\n**Phần 2. Trình bày**\n\n$(-15).4=-60$.\n\nHai số âm $-60$ và $-15$: $-60$ có phần số lớn hơn nên $-60<-15$.\n\nVậy $(-15).4<-15$.",
+    "kiem": [
+      "(-15)*4<-15"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-19-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "so sánh tích bằng dấu của tích",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh: $(-18).5$ với $(-25).3$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** không cần so từng số hạng: tính tích (hoặc chỉ xét dấu của tích) rồi so sánh hai số nguyên.\n\n**Bước 1.** Xác định dấu của mỗi tích (cả hai tích đều âm): cùng dấu thì dương, khác dấu thì âm.\n\n**Bước 2.** Tính giá trị của mỗi tích (nếu cần để so với số khác).\n\n**Bước 3.** So sánh hai số nguyên: số âm nhỏ hơn 0, số 0 nhỏ hơn số dương; hai số âm thì số có phần số lớn hơn là số nhỏ hơn.\n\n**Chú ý:** tích hai số khác dấu luôn âm nên luôn nhỏ hơn 0.\n\n**Phần 2. Trình bày**\n\n$(-18).5=-90$ và $(-25).3=-75$.\n\nHai số âm $-90$ và $-75$: $-90$ có phần số lớn hơn nên $-90<-75$.\n\nVậy $(-18).5<(-25).3$.",
+    "kiem": [
+      "(-18)*5<(-25)*3"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-20-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01310",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "biểu thức có luỹ thừa, nhiều cấp ngoặc",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $80-(4.5^2-3.2^3)$.",
+    "dap_an": "4",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm từ trong ra ngoài theo thứ tự ngoặc tròn, ngoặc vuông, ngoặc nhọn; trong mỗi ngoặc: luỹ thừa, rồi nhân chia, rồi cộng trừ.\n\n**Bước 1.** Nhận ra các tầng ngoặc ((…) chứa hai luỹ thừa) và bắt đầu từ tầng trong cùng.\n\n**Bước 2.** Trong mỗi ngoặc làm theo thứ tự: luỹ thừa trước, nhân chia sau, cộng trừ cuối.\n\n**Bước 3.** Sau mỗi bước viết lại biểu thức, ngắn đi một tầng ngoặc.\n\n**Bước 4.** Làm phép tính ngoài cùng cuối cùng, chú ý dấu khi trừ cho số âm.\n\n**Chú ý:** không bỏ ngoặc tuỳ tiện khi trước ngoặc có dấu trừ hay phép nhân, chia; tính trong ngoặc trước là an toàn nhất.\n\n**Phần 2. Trình bày**\n\n$80-(4.5^2-3.2^3)$\n\n$=80-(4.25-3.8)$\n\n$=80-(100-24)$\n\n$=80-76$\n\n$=4$",
+    "kiem": [
+      "80-(4*5**2-3*2**3)===4"
+    ],
+    "sach_dap_so": "4",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-20-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01310",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "biểu thức có luỹ thừa, nhiều cấp ngoặc",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $128-[68+8.(37-35)^2]:4$.",
+    "dap_an": "103",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm từ trong ra ngoài theo thứ tự ngoặc tròn, ngoặc vuông, ngoặc nhọn; trong mỗi ngoặc: luỹ thừa, rồi nhân chia, rồi cộng trừ.\n\n**Bước 1.** Nhận ra các tầng ngoặc ((…)^2 trong [ ], rồi phép chia) và bắt đầu từ tầng trong cùng.\n\n**Bước 2.** Trong mỗi ngoặc làm theo thứ tự: luỹ thừa trước, nhân chia sau, cộng trừ cuối.\n\n**Bước 3.** Sau mỗi bước viết lại biểu thức, ngắn đi một tầng ngoặc.\n\n**Bước 4.** Làm phép tính ngoài cùng cuối cùng, chú ý dấu khi trừ cho số âm.\n\n**Chú ý:** không bỏ ngoặc tuỳ tiện khi trước ngoặc có dấu trừ hay phép nhân, chia; tính trong ngoặc trước là an toàn nhất.\n\n**Phần 2. Trình bày**\n\n$128-[68+8.(37-35)^2]:4$\n\n$=128-[68+8.2^2]:4$\n\n$=128-[68+8.4]:4$\n\n$=128-[68+32]:4$\n\n$=128-100:4$\n\n$=128-25$\n\n$=103$",
+    "kiem": [
+      "128-(68+8*(37-35)**2)/4===103"
+    ],
+    "sach_dap_so": "103",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-20-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01310",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "biểu thức có luỹ thừa, nhiều cấp ngoặc",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $10^2-[60:(5^6:5^4-3.5)]$.",
+    "dap_an": "94",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm từ trong ra ngoài theo thứ tự ngoặc tròn, ngoặc vuông, ngoặc nhọn; trong mỗi ngoặc: luỹ thừa, rồi nhân chia, rồi cộng trừ.\n\n**Bước 1.** Nhận ra các tầng ngoặc ((…) trong [ ], có chia hai luỹ thừa cùng cơ số) và bắt đầu từ tầng trong cùng.\n\n**Bước 2.** Trong mỗi ngoặc làm theo thứ tự: luỹ thừa trước, nhân chia sau, cộng trừ cuối.\n\n**Bước 3.** Sau mỗi bước viết lại biểu thức, ngắn đi một tầng ngoặc.\n\n**Bước 4.** Làm phép tính ngoài cùng cuối cùng, chú ý dấu khi trừ cho số âm.\n\n**Chú ý:** không bỏ ngoặc tuỳ tiện khi trước ngoặc có dấu trừ hay phép nhân, chia; tính trong ngoặc trước là an toàn nhất.\n\n**Phần 2. Trình bày**\n\n$10^2-[60:(5^6:5^4-3.5)]$\n\n$=100-[60:(5^2-3.5)]$\n\n$=100-[60:(25-15)]$\n\n$=100-[60:10]$\n\n$=100-6$\n\n$=94$",
+    "kiem": [
+      "10**2-60/(5**6/5**4-3*5)===94"
+    ],
+    "sach_dap_so": "94",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-20-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01310",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "biểu thức có luỹ thừa, nhiều cấp ngoặc",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $-4^2+\\{-54:[(-2)^3+7.2]\\}$.",
+    "dap_an": "-25",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm từ trong ra ngoài theo thứ tự ngoặc tròn, ngoặc vuông, ngoặc nhọn; trong mỗi ngoặc: luỹ thừa, rồi nhân chia, rồi cộng trừ.\n\n**Bước 1.** Nhận ra các tầng ngoặc ([ ] trong { }, có −4²) và bắt đầu từ tầng trong cùng.\n\n**Bước 2.** Trong mỗi ngoặc làm theo thứ tự: luỹ thừa trước, nhân chia sau, cộng trừ cuối.\n\n**Bước 3.** Sau mỗi bước viết lại biểu thức, ngắn đi một tầng ngoặc.\n\n**Bước 4.** Làm phép tính ngoài cùng cuối cùng, chú ý dấu khi trừ cho số âm.\n\n**Chú ý:** không bỏ ngoặc tuỳ tiện khi trước ngoặc có dấu trừ hay phép nhân, chia; tính trong ngoặc trước là an toàn nhất.\n\n**Phần 2. Trình bày**\n\nVì $4^2=16$ nên $-4^2=-16$.\n\n$-4^2+\\{-54:[(-2)^3+7.2]\\}$\n\n$=-16+\\{-54:[-8+14]\\}$\n\n$=-16+\\{-54:6\\}$\n\n$=-16+(-9)$\n\n$=-25$",
+    "kiem": [
+      "-(4**2)+(-54)/((-2)**3+7*2)===-25"
+    ],
+    "sach_dap_so": "-25",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-21-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "thay giá trị biến rồi tính",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị biểu thức $A=x-(y-z)$ biết $x=5$; $y=-7$; $z=4$.",
+    "dap_an": "16",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** thay giá trị của các chữ vào biểu thức (số âm đặt trong ngoặc), rồi tính theo thứ tự thực hiện phép tính.\n\n**Bước 1.** Chép biểu thức rồi thay mỗi chữ bằng giá trị đã cho; số âm phải đặt trong ngoặc để không lẫn với dấu phép tính.\n\n**Bước 2.** Thực hiện luỹ thừa, nhân, chia trước.\n\n**Bước 3.** Cộng trừ lần lượt từ trái sang phải, chú ý quy tắc trừ cho số âm.\n\n**Chú ý:** viết rõ \"với ... thì ...\" trước khi thay số.\n\n**Phần 2. Trình bày**\n\nVới $x=5$; $y=-7$; $z=4$ ta có:\n\n$A=x-(y-z)=5-(-7-4)$\n\n$=5-(-11)$\n\n$=5+11$\n\n$=16$",
+    "kiem": [
+      "(()=>{const x=5,y=-7,z=4;return x-(y-z)})()===16"
+    ],
+    "sach_dap_so": "16",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-21-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "thay giá trị biến rồi tính",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị biểu thức $B=x-(-y+z)$ biết $x=-7$; $y=-3$; $z=5$.",
+    "dap_an": "-15",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** thay giá trị của các chữ vào biểu thức (số âm đặt trong ngoặc), rồi tính theo thứ tự thực hiện phép tính.\n\n**Bước 1.** Chép biểu thức rồi thay mỗi chữ bằng giá trị đã cho; số âm phải đặt trong ngoặc để không lẫn với dấu phép tính.\n\n**Bước 2.** Thực hiện luỹ thừa, nhân, chia trước.\n\n**Bước 3.** Cộng trừ lần lượt từ trái sang phải, chú ý quy tắc trừ cho số âm.\n\n**Chú ý:** viết rõ \"với ... thì ...\" trước khi thay số.\n\n**Phần 2. Trình bày**\n\nVới $x=-7$; $y=-3$; $z=5$ ta có:\n\n$B=x-(-y+z)=-7-[-(-3)+5]$\n\n$=-7-(3+5)$\n\n$=-7-8$\n\n$=-15$",
+    "kiem": [
+      "(()=>{const x=-7,y=-3,z=5;return x-(-y+z)})()===-15"
+    ],
+    "sach_dap_so": "-15",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-21-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "thay giá trị biến rồi tính",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị biểu thức $C=(a+b)-(-c)$ biết $a=-4$; $b=-5$; $c=-(-4)$.",
+    "dap_an": "-5",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** thay giá trị của các chữ vào biểu thức (số âm đặt trong ngoặc), rồi tính theo thứ tự thực hiện phép tính.\n\n**Bước 1.** Chép biểu thức rồi thay mỗi chữ bằng giá trị đã cho; số âm phải đặt trong ngoặc để không lẫn với dấu phép tính.\n\n**Bước 2.** Thực hiện luỹ thừa, nhân, chia trước.\n\n**Bước 3.** Cộng trừ lần lượt từ trái sang phải, chú ý quy tắc trừ cho số âm.\n\n**Chú ý:** viết rõ \"với ... thì ...\" trước khi thay số.\n\n**Phần 2. Trình bày**\n\nVới $a=-4$; $b=-5$ và $c=-(-4)=4$ ta có:\n\n$C=(a+b)-(-c)=[(-4)+(-5)]-(-4)$\n\n$=(-9)-(-4)$\n\n$=-9+4$\n\n$=-5$",
+    "kiem": [
+      "(()=>{const a=-4,b=-5,c=-(-4);return (a+b)-(-c)})()===-5"
+    ],
+    "sach_dap_so": "-5",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-22-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tính hợp lí tổng hiệu bằng số đối, số tròn",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí: $-15+(89+15-72)-(89-72)$.",
+    "dap_an": "0",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** bỏ ngoặc đúng quy tắc, rồi dùng giao hoán, kết hợp để nhóm các số đối nhau hoặc các số cho tổng tròn.\n\n**Bước 1.** Bỏ dấu ngoặc: ngoặc có dấu \"+\" đứng trước thì giữ nguyên dấu các số hạng; có dấu \"−\" đứng trước thì đổi dấu tất cả số hạng trong ngoặc.\n\n**Bước 2.** Quan sát các số hạng: tìm cặp số đối nhau (tổng bằng 0) hoặc cặp cho tổng tròn chục, tròn trăm.\n\n**Bước 3.** Nhóm các cặp đó lại bằng tính chất giao hoán và kết hợp.\n\n**Bước 4.** Tính từng nhóm rồi cộng các kết quả.\n\n**Chú ý:** đổi dấu mọi số hạng trong ngoặc khi trước ngoặc là dấu trừ.\n\n**Phần 2. Trình bày**\n\n$-15+(89+15-72)-(89-72)$\n\n$=-15+89+15-72-89+72$\n\n$=(-15+15)+(89-89)+(-72+72)$\n\n$=0$",
+    "kiem": [
+      "-15+(89+15-72)-(89-72)===0"
+    ],
+    "sach_dap_so": "0",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-22-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01307",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "rút thừa số chung rõ ràng",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí: $-37.86+37.76$.",
+    "dap_an": "-370",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tìm thừa số chung rồi đặt ra ngoài ngoặc để chỉ còn một phép nhân.\n\n**Bước 1.** Tìm số xuất hiện ở cả hai tích: đó là thừa số chung.\n\n**Bước 2.** Đặt thừa số chung ra ngoài ngoặc: $a.b+a.c=a.(b+c)$ và $a.b-a.c=a.(b-c)$.\n\n**Bước 3.** Tính tổng hoặc hiệu trong ngoặc, thường ra số tròn.\n\n**Bước 4.** Nhân thừa số chung với kết quả đó.\n\n**Chú ý:** để ý dấu của từng tích khi đặt thừa số chung ra ngoài.\n\n**Phần 2. Trình bày**\n\n$-37.86+37.76$\n\n$=37.(-86)+37.76$\n\n$=37.(-86+76)$\n\n$=37.(-10)$\n\n$=-370$",
+    "kiem": [
+      "-37*86+37*76===-370"
+    ],
+    "sach_dap_so": "-370",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-22-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01307",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "rút thừa số chung rõ ràng",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính hợp lí: $-79.81+79.31-79.50$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tìm thừa số chung rồi đặt ra ngoài ngoặc để chỉ còn một phép nhân.\n\n**Bước 1.** Tìm số xuất hiện ở cả hai tích: đó là thừa số chung.\n\n**Bước 2.** Đặt thừa số chung ra ngoài ngoặc: $a.b+a.c=a.(b+c)$ và $a.b-a.c=a.(b-c)$.\n\n**Bước 3.** Tính tổng hoặc hiệu trong ngoặc, thường ra số tròn.\n\n**Bước 4.** Nhân thừa số chung với kết quả đó.\n\n**Chú ý:** để ý dấu của từng tích khi đặt thừa số chung ra ngoài.\n\n**Phần 2. Trình bày**\n\n$-79.81+79.31-79.50$\n\n$=79.(-81)+79.31+79.(-50)$\n\n$=79.(-81+31-50)$\n\n$=79.(-100)$\n\n$=-7900$",
+    "kiem": [
+      "-79*81+79*31-79*50===-7900"
+    ],
+    "sach_dap_so": "-7900",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-22-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01308",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "phải biến đổi mới thấy thừa số chung",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính hợp lí: $15.(-176)+15.75-(-15)$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** biến đổi để lộ thừa số chung (đổi dấu, viết lại số, hoặc đưa vào ngoặc) rồi đặt ra ngoài.\n\n**Bước 1.** Quan sát các tích: thừa số chung có thể bị che (−(−15) chính là +15.1).\n\n**Bước 2.** Viết lại biểu thức để thừa số chung hiện rõ ở mọi số hạng.\n\n**Bước 3.** Đặt thừa số chung ra ngoài ngoặc.\n\n**Bước 4.** Tính phần trong ngoặc rồi nhân.\n\n**Chú ý:** giao hoán phép nhân giúp thấy thừa số chung: $a.b=b.a$.\n\n**Phần 2. Trình bày**\n\n$15.(-176)+15.75-(-15)$\n\n$=15.(-176)+15.75+15.1$\n\n$=15.(-176+75+1)$\n\n$=15.(-100)$\n\n$=-1500$",
+    "kiem": [
+      "15*(-176)+15*75-(-15)===-1500"
+    ],
+    "sach_dap_so": "-1500",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-22-e",
+    "vai": "luyen",
+    "dang_bai": "NDB01307",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "rút thừa số chung rõ ràng",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí: $15.(4-7)-15.(5-3)$.",
+    "dap_an": "-75",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tìm thừa số chung rồi đặt ra ngoài ngoặc để chỉ còn một phép nhân.\n\n**Bước 1.** Tìm số xuất hiện ở cả hai tích: đó là thừa số chung.\n\n**Bước 2.** Đặt thừa số chung ra ngoài ngoặc: $a.b+a.c=a.(b+c)$ và $a.b-a.c=a.(b-c)$.\n\n**Bước 3.** Tính tổng hoặc hiệu trong ngoặc, thường ra số tròn.\n\n**Bước 4.** Nhân thừa số chung với kết quả đó.\n\n**Chú ý:** để ý dấu của từng tích khi đặt thừa số chung ra ngoài.\n\n**Phần 2. Trình bày**\n\n$15.(4-7)-15.(5-3)$\n\n$=15.[(4-7)-(5-3)]$\n\n$=15.(-3-2)$\n\n$=15.(-5)$\n\n$=-75$",
+    "kiem": [
+      "15*(4-7)-15*(5-3)===-75"
+    ],
+    "sach_dap_so": "-75",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-22-f",
+    "vai": "luyen",
+    "dang_bai": "NDB01308",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "phải biến đổi mới thấy thừa số chung",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí: $73.(8-59)-59.(8-73)$.",
+    "dap_an": "112",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** biến đổi để lộ thừa số chung (đổi dấu, viết lại số, hoặc đưa vào ngoặc) rồi đặt ra ngoài.\n\n**Bước 1.** Quan sát các tích: thừa số chung có thể bị che (phải phá ngoặc để thấy 8.73 và 8.59).\n\n**Bước 2.** Viết lại biểu thức để thừa số chung hiện rõ ở mọi số hạng.\n\n**Bước 3.** Đặt thừa số chung ra ngoài ngoặc.\n\n**Bước 4.** Tính phần trong ngoặc rồi nhân.\n\n**Chú ý:** giao hoán phép nhân giúp thấy thừa số chung: $a.b=b.a$.\n\n**Phần 2. Trình bày**\n\n$73.(8-59)-59.(8-73)$\n\n$=73.8-73.59-59.8+59.73$\n\n$=(73.8-59.8)+(59.73-73.59)$\n\n$=(73-59).8+0$\n\n$=14.8$\n\n$=112$",
+    "kiem": [
+      "73*(8-59)-59*(8-73)===112"
+    ],
+    "sach_dap_so": "112",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-23-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01321",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tích hai thừa số bậc nhất bằng 0",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$, biết: $(x+5).(x-4)=0$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** một tích bằng 0 thì ít nhất một thừa số bằng 0.\n\n**Bước 1.** Nhận ra vế trái là một tích (hai thừa số x + 5 và x − 4) còn vế phải bằng 0.\n\n**Bước 2.** Cho từng thừa số bằng 0 để được các trường hợp.\n\n**Bước 3.** Giải từng trường hợp bằng cách tìm thành phần chưa biết; với dạng $x^2=a$ thì tìm số nhân với chính nó bằng $a$, nhớ xét cả số âm.\n\n**Bước 4.** Gộp các giá trị tìm được.\n\n**Chú ý:** $x^2=a$ (với $a>0$) có hai số nguyên $x$ đối nhau (nếu $a$ là bình phương của một số nguyên).\n\n**Phần 2. Trình bày**\n\nVì $(x+5).(x-4)=0$ nên $x+5=0$ hoặc $x-4=0$.\n\nVới $x+5=0$ thì $x=0-5=-5$.\n\nVới $x-4=0$ thì $x=0+4=4$.\n\nVậy $x\\in\\{-5;4\\}$.",
+    "kiem": [
+      "[...Array(201)].map((_,i)=>i+(-100)).filter(x=>(x+5)*(x-4)===0).join()===\"-5,4\""
+    ],
+    "sach_dap_so": "x=-5 hoặc x=4",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-23-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01322",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tích có thừa số bậc hai bằng 0",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tìm số nguyên $x$, biết: $(x^2+1).(x-1)=0$.",
+    "dap_an": "1",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** một tích bằng 0 thì ít nhất một thừa số bằng 0.\n\n**Bước 1.** Nhận ra vế trái là một tích (hai thừa số x² + 1 và x − 1) còn vế phải bằng 0.\n\n**Bước 2.** Cho từng thừa số bằng 0 để được các trường hợp.\n\n**Bước 3.** Giải từng trường hợp bằng cách tìm thành phần chưa biết; với dạng $x^2=a$ thì tìm số nhân với chính nó bằng $a$, nhớ xét cả số âm.\n\n**Bước 4.** Gộp các giá trị tìm được.\n\n**Chú ý:** $x^2=a$ (với $a>0$) có hai số nguyên $x$ đối nhau (nếu $a$ là bình phương của một số nguyên).\n\n**Phần 2. Trình bày**\n\nVì $(x^2+1).(x-1)=0$ nên $x^2+1=0$ hoặc $x-1=0$.\n\nVì $x^2=x.x\\ge0$ nên $x^2+1\\ge1$, do đó $x^2+1$ không thể bằng 0.\n\nVậy $x-1=0$, suy ra $x=0+1=1$.",
+    "kiem": [
+      "[...Array(201)].map((_,i)=>i+(-100)).filter(x=>(x*x+1)*(x-1)===0).join()===\"1\""
+    ],
+    "sach_dap_so": "x=1",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-23-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01320",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tìm x có luỹ thừa chứa x",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$, biết: $25-(3+x)^2=3.(-2)^3$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** cô lập phần chứa x: tính vế đã biết, rồi tìm dần từ ngoài vào trong cho tới khi cụm chứa x là một luỹ thừa bằng số cụ thể.\n\n**Bước 1.** Tính các luỹ thừa số đã biết ở hai vế cho gọn.\n\n**Bước 2.** Coi cụm luỹ thừa chứa $x$ là thành phần chưa biết của phép cộng hoặc trừ ngoài cùng và tìm cụm đó bằng quy tắc thành phần.\n\n**Bước 3.** Viết số vừa tìm được thành luỹ thừa có cùng số mũ (hoặc tìm số nhân với chính nó); nếu số mũ chẵn thì xét cả số âm.\n\n**Bước 4.** Suy ra cơ số rồi giải tiếp để tìm $x$.\n\n**Chú ý:** số mũ chẵn thì cơ số có hai khả năng đối nhau, số mũ lẻ chỉ có một.\n\n**Phần 2. Trình bày**\n\n$25-(3+x)^2=3.(-2)^3$\n\n$25-(3+x)^2=3.(-8)$\n\n$25-(3+x)^2=-24$\n\n$(3+x)^2=25-(-24)$\n\n$(3+x)^2=49$\n\nVì $7^2=49$ và $(-7)^2=49$ nên $3+x=7$ hoặc $3+x=-7$.\n\nVới $3+x=7$ thì $x=7-3=4$.\n\nVới $3+x=-7$ thì $x=-7-3=-10$.\n\nVậy $x\\in\\{4;-10\\}$.",
+    "kiem": [
+      "[...Array(201)].map((_,i)=>i+(-100)).filter(x=>25-(3+x)**2===3*(-2)**3).join()===\"-10,4\""
+    ],
+    "sach_dap_so": "x=-10 hoặc x=4",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-23-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01320",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tìm x có luỹ thừa chứa x",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tìm số nguyên $x$, biết: $(x+1)^3+9=-116$.",
+    "dap_an": "-6",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** cô lập phần chứa x: tính vế đã biết, rồi tìm dần từ ngoài vào trong cho tới khi cụm chứa x là một luỹ thừa bằng số cụ thể.\n\n**Bước 1.** Tính các luỹ thừa số đã biết ở hai vế cho gọn.\n\n**Bước 2.** Coi cụm luỹ thừa chứa $x$ là thành phần chưa biết của phép cộng hoặc trừ ngoài cùng và tìm cụm đó bằng quy tắc thành phần.\n\n**Bước 3.** Viết số vừa tìm được thành luỹ thừa có cùng số mũ (hoặc tìm số nhân với chính nó); nếu số mũ chẵn thì xét cả số âm.\n\n**Bước 4.** Suy ra cơ số rồi giải tiếp để tìm $x$.\n\n**Chú ý:** số mũ chẵn thì cơ số có hai khả năng đối nhau, số mũ lẻ chỉ có một.\n\n**Phần 2. Trình bày**\n\n$(x+1)^3+9=-116$\n\n$(x+1)^3=-116-9$\n\n$(x+1)^3=-125$\n\n$(x+1)^3=(-5)^3$\n\n$x+1=-5$\n\n$x=-5-1$\n\n$x=-6$",
+    "kiem": [
+      "[...Array(201)].map((_,i)=>i+(-100)).filter(x=>(x+1)**3+9===-116).join()===\"-6\""
+    ],
+    "sach_dap_so": "x=-6",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-24-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01312",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "rút gọn/chứng tỏ đẳng thức chứa chữ bằng quy tắc dấu ngoặc",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Rút gọn biểu thức sau: $(a+b)-(-a+b-c)+(c-a-b)=a-b+2c$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** biến đổi vế trái bằng quy tắc dấu ngoặc (hoặc tính chất phân phối) cho tới khi được đúng vế phải.\n\n**Bước 1.** Đọc đề: đây là đẳng thức cho sẵn kết quả, ta chỉ biến đổi vế trái và so với vế phải.\n\n**Bước 2.** Bỏ ngoặc (hoặc nhân phân phối): dấu \"−\" đứng trước ngoặc thì đổi dấu mọi số hạng trong ngoặc.\n\n**Bước 3.** Nhóm các số hạng cùng loại và triệt tiêu các cặp số đối nhau.\n\n**Bước 4.** So sánh kết quả với vế phải để kết luận.\n\n**Chú ý:** đổi dấu đủ mọi số hạng trong ngoặc; sai một dấu là kết quả khác ngay.\n\n**Phần 2. Trình bày**\n\nBiến đổi vế trái ta có:\n\n$(a+b)-(-a+b-c)+(c-a-b)$\n\n$=a+b+a-b+c+c-a-b$\n\n$=(a+a-a)+(b-b-b)+(c+c)$\n\n$=a-b+2c$\n\nKết quả bằng vế phải nên đẳng thức đúng.",
+    "kiem": [
+      "[[1,2,3,4],[-4,5,7,-2],[9,-2,-6,3]].every(([a,b,c,d])=>(a+b)-(-a+b-c)+(c-a-b)===a-b+2*c)"
+    ],
+    "sach_dap_so": "đẳng thức đúng",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-24-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01312",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "chứng tỏ đẳng thức chứa chữ bằng tính chất phân phối",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Rút gọn biểu thức sau: $a.(b-c)-a.(b+d)=-a.(c+d)$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** biến đổi vế trái bằng quy tắc dấu ngoặc (hoặc tính chất phân phối) cho tới khi được đúng vế phải.\n\n**Bước 1.** Đọc đề: đây là đẳng thức cho sẵn kết quả, ta chỉ biến đổi vế trái và so với vế phải.\n\n**Bước 2.** Bỏ ngoặc (hoặc nhân phân phối): dấu \"−\" đứng trước ngoặc thì đổi dấu mọi số hạng trong ngoặc.\n\n**Bước 3.** Nhóm các số hạng cùng loại và triệt tiêu các cặp số đối nhau.\n\n**Bước 4.** So sánh kết quả với vế phải để kết luận.\n\n**Chú ý:** đổi dấu đủ mọi số hạng trong ngoặc; sai một dấu là kết quả khác ngay.\n\n**Phần 2. Trình bày**\n\nBiến đổi vế trái ta có:\n\n$a.(b-c)-a.(b+d)$\n\n$=a.b-a.c-a.b-a.d$\n\n$=(a.b-a.b)-a.c-a.d$\n\n$=-a.c-a.d$\n\n$=-a.(c+d)$\n\nKết quả bằng vế phải nên đẳng thức đúng.",
+    "kiem": [
+      "[[1,2,3,4],[-4,5,7,-2],[9,-2,-6,3]].every(([a,b,c,d])=>a*(b-c)-a*(b+d)===-a*(c+d))"
+    ],
+    "sach_dap_so": "đẳng thức đúng",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-25-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01326",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "a chia hết cho (x+b) với a là số cho trước",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$: $-13$ chia hết cho $(x+1)$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** a chia hết cho một cụm chứa x thì cụm đó là ước của a.\n\n**Bước 1.** Nhận ra số cho trước là bội và cụm chứa $x$ (x + 1) là ước của nó.\n\n**Bước 2.** Liệt kê mọi ước của số đó, nhớ cả các ước âm.\n\n**Bước 3.** Cho cụm chứa $x$ bằng từng ước rồi tìm $x$ theo quy tắc tìm thành phần chưa biết.\n\n**Bước 4.** Viết kết luận bằng tập hợp các giá trị $x$.\n\n**Chú ý:** ước của một số nguyên gồm cả ước dương và ước âm.\n\n**Phần 2. Trình bày**\n\nVì $-13\\vdots(x+1)$ nên $x+1\\in\\text{Ư}(-13)=\\{1;-1;13;-13\\}$.\n\nNếu $x+1=1$ thì $x=0$; nếu $x+1=-1$ thì $x=-2$; nếu $x+1=13$ thì $x=12$; nếu $x+1=-13$ thì $x=-14$.\n\nVậy $x\\in\\{0;-2;12;-14\\}$.",
+    "kiem": [
+      "[...Array(121)].map((_,i)=>i+(-60)).filter(x=>x!==-1&&(-13)%(x+1)===0).join()===\"-14,-2,0,12\""
+    ],
+    "sach_dap_so": "x∈{-14;-2;0;12}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-25-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01327",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tử và mẫu cùng hệ số x, tách ra số dư",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$: $x+5$ chia hết cho $x-2$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tách biểu thức ở trên thành (bội của cụm ở dưới) + phần còn lại, rồi dùng tính chất chia hết của tổng, hiệu.\n\n**Bước 1.** Tách biểu thức bị chia (x + 5 = (x − 2) + 7) thành tổng (hoặc hiệu) của một bội của số chia và một số cố định.\n\n**Bước 2.** Phần bội của số chia đã chia hết, nên cả biểu thức chia hết khi số cố định còn lại cũng chia hết cho số chia.\n\n**Bước 3.** Liệt kê các ước (cả âm) của số cố định đó.\n\n**Bước 4.** Cho số chia bằng từng ước rồi tìm $x$; viết kết luận bằng tập hợp.\n\n**Chú ý:** khi hệ số của $x$ ở trên chưa khớp với số chia, nhân số chia lên cho khớp rồi mới tách.\n\n**Phần 2. Trình bày**\n\nTa có $x+5=(x-2)+7$.\n\nVì $(x-2)\\vdots(x-2)$ nên để $(x-2)+7\\vdots(x-2)$ thì $7\\vdots(x-2)$.\n\nSuy ra $x-2\\in\\text{Ư}(7)=\\{1;-1;7;-7\\}$.\n\nNếu $x-2=1$ thì $x=3$; nếu $x-2=-1$ thì $x=1$; nếu $x-2=7$ thì $x=9$; nếu $x-2=-7$ thì $x=-5$.\n\nVậy $x\\in\\{3;1;9;-5\\}$.",
+    "kiem": [
+      "[...Array(121)].map((_,i)=>i+(-60)).filter(x=>x!==2&&(x+5)%(x-2)===0).join()===\"-5,1,3,9\""
+    ],
+    "sach_dap_so": "x∈{-5;1;3;9}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-25-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01327",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tử và mẫu cùng hệ số x, tách ra số dư",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$: $3x-8$ chia hết cho $x-4$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tách biểu thức ở trên thành (bội của cụm ở dưới) + phần còn lại, rồi dùng tính chất chia hết của tổng, hiệu.\n\n**Bước 1.** Tách biểu thức bị chia (3x − 8 = 3.(x − 4) + 4) thành tổng (hoặc hiệu) của một bội của số chia và một số cố định.\n\n**Bước 2.** Phần bội của số chia đã chia hết, nên cả biểu thức chia hết khi số cố định còn lại cũng chia hết cho số chia.\n\n**Bước 3.** Liệt kê các ước (cả âm) của số cố định đó.\n\n**Bước 4.** Cho số chia bằng từng ước rồi tìm $x$; viết kết luận bằng tập hợp.\n\n**Chú ý:** khi hệ số của $x$ ở trên chưa khớp với số chia, nhân số chia lên cho khớp rồi mới tách.\n\n**Phần 2. Trình bày**\n\nTa có $3x-8=3.(x-4)+4$.\n\nVì $3.(x-4)\\vdots(x-4)$ nên để $3.(x-4)+4\\vdots(x-4)$ thì $4\\vdots(x-4)$.\n\nSuy ra $x-4\\in\\text{Ư}(4)=\\{1;-1;2;-2;4;-4\\}$.\n\nNếu $x-4=1$ thì $x=5$; nếu $x-4=-1$ thì $x=3$; nếu $x-4=2$ thì $x=6$; nếu $x-4=-2$ thì $x=2$; nếu $x-4=4$ thì $x=8$; nếu $x-4=-4$ thì $x=0$.\n\nVậy $x\\in\\{5;3;6;2;8;0\\}$.",
+    "kiem": [
+      "[...Array(121)].map((_,i)=>i+(-60)).filter(x=>x!==4&&(3*x-8)%(x-4)===0).join()===\"0,2,3,5,6,8\""
+    ],
+    "sach_dap_so": "x∈{0;2;3;5;6;8}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-25-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01329",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "bậc hai chia hết cho bậc nhất",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$: $x^2-x-1$ chia hết cho $x-1$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tách biểu thức ở trên thành (bội của cụm ở dưới) + phần còn lại, rồi dùng tính chất chia hết của tổng, hiệu.\n\n**Bước 1.** Tách biểu thức bị chia (x² − x − 1 = x.(x − 1) − 1) thành tổng (hoặc hiệu) của một bội của số chia và một số cố định.\n\n**Bước 2.** Phần bội của số chia đã chia hết, nên cả biểu thức chia hết khi số cố định còn lại cũng chia hết cho số chia.\n\n**Bước 3.** Liệt kê các ước (cả âm) của số cố định đó.\n\n**Bước 4.** Cho số chia bằng từng ước rồi tìm $x$; viết kết luận bằng tập hợp.\n\n**Chú ý:** khi hệ số của $x$ ở trên chưa khớp với số chia, nhân số chia lên cho khớp rồi mới tách.\n\n**Phần 2. Trình bày**\n\nTa có $x^2-x-1=x.(x-1)-1$.\n\nVì $x.(x-1)\\vdots(x-1)$ nên để $x.(x-1)-1\\vdots(x-1)$ thì $1\\vdots(x-1)$.\n\nSuy ra $x-1\\in\\text{Ư}(1)=\\{1;-1\\}$.\n\nNếu $x-1=1$ thì $x=2$; nếu $x-1=-1$ thì $x=0$.\n\nVậy $x\\in\\{2;0\\}$.",
+    "kiem": [
+      "[...Array(121)].map((_,i)=>i+(-60)).filter(x=>x!==1&&(x*x-x-1)%(x-1)===0).join()===\"0,2\""
+    ],
+    "sach_dap_so": "x∈{0;2}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-26-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01332",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "đẳng thức tích, tìm cặp số nguyên",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm các số nguyên $x,y$ sao cho: $(x-3)(y+4)=6$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tích hai số nguyên bằng một số cho trước thì mỗi thừa số là ước của số đó: liệt kê ước rồi lập các trường hợp.\n\n**Bước 1.** Nhận ra vế trái là tích của hai biểu thức nguyên (x − 3 và y + 4) và vế phải là số cho trước.\n\n**Bước 2.** Liệt kê mọi ước của số đó, cả ước âm; chúng là các giá trị có thể của một thừa số.\n\n**Bước 3.** Với mỗi ước chọn cho thừa số thứ nhất, thừa số thứ hai bằng số cho trước chia cho ước đó; loại những trường hợp không cho số nguyên.\n\n**Bước 4.** Từ mỗi cặp thừa số tìm $x$ và $y$ rồi viết kết luận bằng các cặp.\n\n**Chú ý:** bài hỏi cặp $(x;y)$ nên viết đáp số theo cặp, đừng tách rời $x$ và $y$.\n\n**Phần 2. Trình bày**\n\nVì $x,y$ là số nguyên nên $x-3$ và $y+4$ là hai số nguyên có tích bằng 6, do đó $x-3\\in\\text{Ư}(6)=\\{1;-1;2;-2;3;-3;6;-6\\}$.\n\nNếu $x-3=1$ thì $y+4=6$, suy ra $x=4$ và $y=2$; nếu $x-3=-1$ thì $y+4=-6$, suy ra $x=2$ và $y=-10$.\n\nNếu $x-3=2$ thì $y+4=3$, suy ra $x=5$ và $y=-1$; nếu $x-3=-2$ thì $y+4=-3$, suy ra $x=1$ và $y=-7$.\n\nNếu $x-3=3$ thì $y+4=2$, suy ra $x=6$ và $y=-2$; nếu $x-3=-3$ thì $y+4=-2$, suy ra $x=0$ và $y=-6$.\n\nNếu $x-3=6$ thì $y+4=1$, suy ra $x=9$ và $y=-3$; nếu $x-3=-6$ thì $y+4=-1$, suy ra $x=-3$ và $y=-5$.\n\nVậy $(x;y)\\in\\{(4;2);(2;-10);(5;-1);(1;-7);(6;-2);(0;-6);(9;-3);(-3;-5)\\}$.",
+    "kiem": [
+      "(()=>{const o=[];for(let x=-60;x<=60;x++)for(let y=-60;y<=60;y++)if((x-3)*(y+4)===6)o.push(x+','+y);return o.join(';')})()===\"-3,-5;0,-6;1,-7;2,-10;4,2;5,-1;6,-2;9,-3\""
+    ],
+    "sach_dap_so": "(4,2);(2,-10);(5,1);(1,-7);(6,-2);(0,-6);(9,-3);(-3,-5)",
+    "ghi_chu": "LỆCH SÁCH — sách in cặp (5; 1); với x − 3 = 2 thì y + 4 = 3 nên y = −1, đúng là (5; −1)."
+  },
+  {
+    "id": "ÔT-26-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01332",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "đẳng thức tích, tìm cặp số nguyên",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm các số nguyên $x,y$ sao cho: $(x-2)(5y+1)=12$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tích hai số nguyên bằng một số cho trước thì mỗi thừa số là ước của số đó: liệt kê ước rồi lập các trường hợp.\n\n**Bước 1.** Nhận ra vế trái là tích của hai biểu thức nguyên (x − 2 và 5y + 1) và vế phải là số cho trước.\n\n**Bước 2.** Liệt kê mọi ước của số đó, cả ước âm; chúng là các giá trị có thể của một thừa số.\n\n**Bước 3.** Với mỗi ước chọn cho thừa số thứ nhất, thừa số thứ hai bằng số cho trước chia cho ước đó; loại những trường hợp không cho số nguyên.\n\n**Bước 4.** Từ mỗi cặp thừa số tìm $x$ và $y$ rồi viết kết luận bằng các cặp.\n\n**Chú ý:** bài hỏi cặp $(x;y)$ nên viết đáp số theo cặp, đừng tách rời $x$ và $y$.\n\n**Phần 2. Trình bày**\n\nVì $x,y$ là số nguyên nên $x-2$ và $5y+1$ là hai số nguyên có tích bằng 12, do đó $5y+1\\in\\text{Ư}(12)=\\{1;-1;2;-2;3;-3;4;-4;6;-6;12;-12\\}$.\n\nĐặt $d=5y+1$ thì $5y=d-1$ phải chia hết cho 5. Với 12 ước $d$ ở trên (theo thứ tự đã liệt kê), $d-1$ lần lượt là $0;-2;1;-3;2;-4;3;-5;5;-7;11;-13$. Chỉ có $0$, $-5$, $5$ chia hết cho 5, ứng với $d=1$, $d=-4$, $d=6$; các ước còn lại bị loại.\n\nNếu $5y+1=1$ thì $5y=0$ nên $y=0$, khi đó $x-2=12$ nên $x=14$.\n\nNếu $5y+1=6$ thì $5y=5$ nên $y=1$, khi đó $x-2=2$ nên $x=4$.\n\nNếu $5y+1=-4$ thì $5y=-5$ nên $y=-1$, khi đó $x-2=-3$ nên $x=-1$.\n\nVậy $(x;y)\\in\\{(14;0);(4;1);(-1;-1)\\}$.",
+    "kiem": [
+      "(()=>{const o=[];for(let x=-60;x<=60;x++)for(let y=-60;y<=60;y++)if((x-2)*(5*y+1)===12)o.push(x+','+y);return o.join(';')})()===\"-1,-1;4,1;14,0\""
+    ],
+    "sach_dap_so": "(14;0),(4;1),(-1;-1)",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-27",
+    "vai": "luyen",
+    "dang_bai": null,
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "chia hết của dãy luỹ thừa cùng cơ số; dich.md chủ đề Số nguyên không có dạng này",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Số $B=3^1+3^2+3^3+3^4+\\dots+3^{2010}$ có chia hết cho 4 và 13 hay không? Giải thích kết luận của em.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** nhóm các số hạng liên tiếp sao cho mỗi nhóm đặt được thừa số bằng số cần chia ra ngoài; làm riêng cho từng số chia.\n\n**Bước 1.** Đếm số số hạng của $B$ (2010 số hạng) rồi chọn cách nhóm cho từng số chia: chia hết cho 4 thì thử nhóm hai số hạng, chia hết cho 13 thì thử nhóm ba số hạng.\n\n**Bước 2.** Trong mỗi nhóm đặt luỹ thừa nhỏ nhất ra ngoài ngoặc; tính tổng trong ngoặc xem có bằng đúng số cần chia không.\n\n**Bước 3.** Làm lần lượt hai phần: chia hết cho 4, rồi chia hết cho 13.\n\n**Bước 4.** Kết luận cả hai điều cùng lúc.\n\n**Chú ý:** phải kiểm tra riêng hai số chia; nhóm hợp với số này chưa chắc hợp với số kia.\n\n**Phần 2. Trình bày**\n\nChia hết cho 4: nhóm hai số hạng một nhóm được $2010:2=1005$ nhóm.\n\n$B=(3^1+3^2)+(3^3+3^4)+\\dots+(3^{2009}+3^{2010})$\n\n$=3^1.(1+3)+3^3.(1+3)+\\dots+3^{2009}.(1+3)$\n\n$=4.(3^1+3^3+\\dots+3^{2009})$\n\nSuy ra $B$ chia hết cho 4.\n\nChia hết cho 13: nhóm ba số hạng một nhóm được $2010:3=670$ nhóm.\n\n$B=(3^1+3^2+3^3)+(3^4+3^5+3^6)+\\dots+(3^{2008}+3^{2009}+3^{2010})$\n\n$=3^1.(1+3+3^2)+3^4.(1+3+3^2)+\\dots+3^{2008}.(1+3+3^2)$\n\n$=13.(3^1+3^4+\\dots+3^{2008})$\n\nSuy ra $B$ chia hết cho 13.\n\nVậy $B$ chia hết cho cả 4 và 13.",
+    "kiem": [
+      "(()=>{let s=0n;for(let k=1n;k<=2010n;k++)s+=3n**k;return s%4n===0n&&s%13n===0n})()"
+    ],
+    "sach_dap_so": "có",
+    "ghi_chu": "ĐỀ SÁCH IN LỖI — sách in số hạng cuối \"2^2010\" và \"(1+4)\" nhưng dãy là luỹ thừa của 3; sửa thành 3^2010 và (1+3)."
+  },
+  {
+    "id": "ÔT-28",
+    "vai": "luyen",
+    "dang_bai": "NDB01332",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "đẳng thức tích, tìm cặp số nguyên",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm các số nguyên $x,y$ biết rằng: $x.y=5$ và $x>y$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tích hai số nguyên bằng một số cho trước thì mỗi thừa số là ước của số đó: liệt kê ước rồi lập các trường hợp.\n\n**Bước 1.** Nhận ra vế trái là tích của hai biểu thức nguyên (x và y) và vế phải là số cho trước.\n\n**Bước 2.** Liệt kê mọi ước của số đó, cả ước âm; chúng là các giá trị có thể của một thừa số.\n\n**Bước 3.** Với mỗi ước chọn cho thừa số thứ nhất, thừa số thứ hai bằng số cho trước chia cho ước đó; loại những trường hợp không cho số nguyên.\n\n**Bước 4.** Từ mỗi cặp thừa số tìm $x$ và $y$ rồi viết kết luận bằng các cặp.\n\n**Chú ý:** bài hỏi cặp $(x;y)$ nên viết đáp số theo cặp, đừng tách rời $x$ và $y$.\n\n**Phần 2. Trình bày**\n\nVì $x.y=5$ nên $x\\in\\text{Ư}(5)=\\{1;-1;5;-5\\}$.\n\nNếu $x=1$ thì $y=5$: loại vì $x<y$.\n\nNếu $x=5$ thì $y=1$: thoả mãn $x>y$.\n\nNếu $x=-1$ thì $y=-5$: thoả mãn $x>y$.\n\nNếu $x=-5$ thì $y=-1$: loại vì $x<y$.\n\nVậy $(x;y)\\in\\{(5;1);(-1;-5)\\}$.",
+    "kiem": [
+      "(()=>{const o=[];for(let x=-60;x<=60;x++)for(let y=-60;y<=60;y++)if(x*y===5&&x>y)o.push(x+','+y);return o.join(';')})()===\"-1,-5;5,1\""
+    ],
+    "sach_dap_so": "(5;1),(-1;-5)",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-29-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01335",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "giá trị nhỏ nhất chứa bình phương",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tìm giá trị nhỏ nhất của biểu thức: $A=-7+(x+1)^2$.",
+    "dap_an": "-7",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** bình phương của một số nguyên luôn lớn hơn hoặc bằng 0, nên biểu thức bị chặn dưới; giá trị nhỏ nhất đạt khi bình phương bằng 0.\n\n**Bước 1.** Nhận ra biểu thức có dạng một số cố định cộng (hoặc trừ) một bình phương (−7 + (x + 1)²).\n\n**Bước 2.** Dùng $(\\dots)^2\\ge0$ với mọi số nguyên $x$ để đánh giá biểu thức từ dưới.\n\n**Bước 3.** Tìm $x$ để bình phương bằng 0 — lúc đó dấu \"=\" xảy ra, giá trị nhỏ nhất đạt được.\n\n**Bước 4.** Kết luận giá trị nhỏ nhất và giá trị $x$ tương ứng.\n\n**Chú ý:** phải chỉ ra có $x$ để dấu \"=\" xảy ra, nếu không mới chặn được chứ chưa phải giá trị nhỏ nhất.\n\n**Phần 2. Trình bày**\n\nVì $(x+1)^2\\ge0$ với mọi số nguyên $x$ nên $A=-7+(x+1)^2\\ge-7+0=-7$.\n\nDấu \"=\" xảy ra khi $(x+1)^2=0$, tức là $x+1=0$, suy ra $x=-1$.\n\nVậy giá trị nhỏ nhất của $A$ là $-7$, đạt được khi $x=-1$.",
+    "kiem": [
+      "Math.min(...[...Array(201)].map((_,i)=>i-100).map(x=>-7+(x+1)**2))===-7"
+    ],
+    "sach_dap_so": "-7 (x = 1)",
+    "ghi_chu": "LỆCH SÁCH — sách ghi \"x = 1\"; (x + 1)² = 0 thì x = −1 (đáp số giá trị nhỏ nhất −7 vẫn khớp)."
+  },
+  {
+    "id": "ÔT-29-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01335",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "giá trị nhỏ nhất chứa bình phương",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tìm giá trị nhỏ nhất của biểu thức: $B=(x-2)^2-17$.",
+    "dap_an": "-17",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** bình phương của một số nguyên luôn lớn hơn hoặc bằng 0, nên biểu thức bị chặn dưới; giá trị nhỏ nhất đạt khi bình phương bằng 0.\n\n**Bước 1.** Nhận ra biểu thức có dạng một số cố định cộng (hoặc trừ) một bình phương ((x − 2)² − 17).\n\n**Bước 2.** Dùng $(\\dots)^2\\ge0$ với mọi số nguyên $x$ để đánh giá biểu thức từ dưới.\n\n**Bước 3.** Tìm $x$ để bình phương bằng 0 — lúc đó dấu \"=\" xảy ra, giá trị nhỏ nhất đạt được.\n\n**Bước 4.** Kết luận giá trị nhỏ nhất và giá trị $x$ tương ứng.\n\n**Chú ý:** phải chỉ ra có $x$ để dấu \"=\" xảy ra, nếu không mới chặn được chứ chưa phải giá trị nhỏ nhất.\n\n**Phần 2. Trình bày**\n\nVì $(x-2)^2\\ge0$ với mọi số nguyên $x$ nên $B=(x-2)^2-17\\ge0-17=-17$.\n\nDấu \"=\" xảy ra khi $(x-2)^2=0$, tức là $x-2=0$, suy ra $x=2$.\n\nVậy giá trị nhỏ nhất của $B$ là $-17$, đạt được khi $x=2$.",
+    "kiem": [
+      "Math.min(...[...Array(201)].map((_,i)=>i-100).map(x=>(x-2)**2-17))===-17"
+    ],
+    "sach_dap_so": "-17 (x = 2)",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-Đ1-C1",
+    "vai": "luyen",
+    "dang_bai": "NDB01309",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "biểu thức cơ bản có một cấp ngoặc",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Giá trị của biểu thức $(-3).(-5)+(-16)$ bằng:",
+    "lua_chon": [
+      "A. -1",
+      "B. 1",
+      "C. -31",
+      "D. 31"
+    ],
+    "dap_an": "A",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm trong ngoặc trước, ngoài ngoặc sau; nhân chia trước, cộng trừ sau.\n\n**Bước 1.** Xác định phép tính nằm trong ngoặc (tích (−3).(−5) đứng trước phép cộng) và tính trước.\n\n**Bước 2.** Thay kết quả vừa tính vào, viết lại biểu thức đã gọn hơn.\n\n**Bước 3.** Thực hiện phép nhân hoặc chia số nguyên: cùng dấu cho kết quả dương, khác dấu cho kết quả âm.\n\n**Bước 4.** Nếu còn cộng trừ thì làm từ trái sang phải.\n\n**Chú ý:** chia hai số nguyên cũng theo quy tắc dấu như phép nhân.\n\n**Phần 2. Trình bày**\n\n$(-3).(-5)+(-16)$\n\n$=15+(-16)$\n\n$=-1$\n\nChọn A.",
+    "kiem": [
+      "(-3)*(-5)+(-16)===-1"
+    ],
+    "sach_dap_so": "A",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-Đ1-C2",
+    "vai": "luyen",
+    "dang_bai": "NDB01321",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tích hai thừa số bậc nhất bằng 0",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Nếu $(x+1)(x-8)=0$ thì $x$ bằng:",
+    "lua_chon": [
+      "A. -1",
+      "B. 8",
+      "C. -8",
+      "D. -1 hoặc 8"
+    ],
+    "dap_an": "D",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** một tích bằng 0 thì ít nhất một thừa số bằng 0.\n\n**Bước 1.** Nhận ra vế trái là một tích (hai thừa số x + 1 và x − 8) còn vế phải bằng 0.\n\n**Bước 2.** Cho từng thừa số bằng 0 để được các trường hợp.\n\n**Bước 3.** Giải từng trường hợp bằng cách tìm thành phần chưa biết; với dạng $x^2=a$ thì tìm số nhân với chính nó bằng $a$, nhớ xét cả số âm.\n\n**Bước 4.** Gộp các giá trị tìm được.\n\n**Chú ý:** $x^2=a$ (với $a>0$) có hai số nguyên $x$ đối nhau (nếu $a$ là bình phương của một số nguyên).\n\n**Phần 2. Trình bày**\n\nVì $(x+1)(x-8)=0$ nên $x+1=0$ hoặc $x-8=0$.\n\nVới $x+1=0$ thì $x=0-1=-1$; với $x-8=0$ thì $x=0+8=8$.\n\nVậy $x=-1$ hoặc $x=8$, ứng với phương án D.\n\nChọn D.",
+    "kiem": [
+      "[...Array(201)].map((_,i)=>i+(-100)).filter(x=>(x+1)*(x-8)===0).join()===\"-1,8\""
+    ],
+    "sach_dap_so": "D",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-Đ1-C3",
+    "vai": "luyen",
+    "dang_bai": "NDB01296",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tính tổng số nguyên trong khoảng bằng ghép số đối",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Tổng các số nguyên $x$ thỏa mãn $-5<x<6$ là:",
+    "lua_chon": [
+      "A. -5",
+      "B. 5",
+      "C. 0",
+      "D. 6"
+    ],
+    "dap_an": "B",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** liệt kê các số nguyên trong khoảng, ghép các cặp số đối nhau (tổng bằng 0), chỉ còn lại các số không có số đối.\n\n**Bước 1.** Liệt kê mọi số nguyên $x$ thoả điều kiện; chú ý dấu \"<\" thì không lấy đầu mút.\n\n**Bước 2.** Tìm các cặp số đối nhau trong danh sách; mỗi cặp có tổng bằng 0.\n\n**Bước 3.** Cộng các số còn lại không có số đối.\n\n**Bước 4.** Đối chiếu kết quả với bốn phương án.\n\n**Chú ý:** số 0 không có số đối khác nó nhưng cộng vào không đổi tổng.\n\n**Phần 2. Trình bày**\n\nCác số nguyên $x$ thoả mãn $-5<x<6$ là $-4;-3;-2;-1;0;1;2;3;4;5$.\n\n$(-4+4)+(-3+3)+(-2+2)+(-1+1)+0+5$\n\n$=0+0+0+0+0+5$\n\n$=5$\n\nChọn B.",
+    "kiem": [
+      "[...Array(11)].map((_,i)=>i-5).filter(x=>-5<x&&x<6).reduce((a,b)=>a+b,0)===5"
+    ],
+    "sach_dap_so": "B",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-Đ1-C4",
+    "vai": "luyen",
+    "dang_bai": "NDB01295",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "đếm số phần tử số nguyên trong khoảng",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Tập hợp $A=\\{x\\in\\mathbb{Z}\\mid -10\\le x\\le 10\\}$ có:",
+    "lua_chon": [
+      "A. 21 phần tử",
+      "B. 20 phần tử",
+      "C. 19 phần tử",
+      "D. 18 phần tử"
+    ],
+    "dap_an": "A",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đếm riêng ba nhóm: số nguyên âm, số 0, số nguyên dương trong khoảng rồi cộng lại.\n\n**Bước 1.** Đọc điều kiện: $x$ nguyên và nằm giữa hai đầu mút; dấu \"$\\le$\" thì lấy cả đầu mút.\n\n**Bước 2.** Đếm các số nguyên âm trong khoảng, số 0, và các số nguyên dương trong khoảng.\n\n**Bước 3.** Cộng ba kết quả để được số phần tử.\n\n**Bước 4.** Đối chiếu với bốn phương án.\n\n**Chú ý:** quên số 0 là lỗi hay gặp khi đếm số nguyên.\n\n**Phần 2. Trình bày**\n\nCác số nguyên âm từ $-10$ đến $-1$ có 10 số; số 0 có 1 số; các số nguyên dương từ 1 đến 10 có 10 số.\n\n$10+1+10=21$\n\nVậy tập hợp $A$ có 21 phần tử.\n\nChọn A.",
+    "kiem": [
+      "[...Array(41)].map((_,i)=>i-20).filter(x=>-10<=x&&x<=10).length===21"
+    ],
+    "sach_dap_so": "A",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-Đ1-C5",
+    "vai": "luyen",
+    "dang_bai": "NDB01323",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tìm tất cả các ước của số nguyên",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Số $-36$ có:",
+    "lua_chon": [
+      "A. 4 ước",
+      "B. 8 ước",
+      "C. 9 ước",
+      "D. 18 ước"
+    ],
+    "dap_an": "D",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** liệt kê các ước dương rồi thêm số đối của từng ước dương, vì số đối của một ước cũng là ước.\n\n**Bước 1.** Tìm các ước dương: chia lần lượt cho 1, 2, 3, … và ghép cặp hai ước có tích bằng số đó.\n\n**Bước 2.** Mỗi ước dương có số đối cũng là ước của số nguyên âm đã cho.\n\n**Bước 3.** Viết (hoặc đếm) tất cả các ước rồi đối chiếu với bốn phương án.\n\n**Chú ý:** ước của một số nguyên gồm cả ước dương và ước âm.\n\n**Phần 2. Trình bày**\n\nCác ước dương của 36 là $1;2;3;4;6;9;12;18;36$ (9 số).\n\nMỗi ước dương có số đối cũng là ước của $-36$ nên $-36$ có $9+9=18$ ước.\n\nChọn D.",
+    "kiem": [
+      "[...Array(36)].map((_,i)=>i+1).filter(d=>36%d===0).length*2===18"
+    ],
+    "sach_dap_so": "D",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-Đ1-C6",
+    "vai": "luyen",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "thay giá trị biến rồi tính",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Giá trị của tích $a^2.b$ với $a=-2$; $b=3$ là:",
+    "lua_chon": [
+      "A. 12",
+      "B. -12",
+      "C. 18",
+      "D. -18"
+    ],
+    "dap_an": "A",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** thay giá trị của các chữ vào biểu thức (số âm đặt trong ngoặc), rồi tính theo thứ tự thực hiện phép tính.\n\n**Bước 1.** Chép biểu thức rồi thay mỗi chữ bằng giá trị đã cho; số âm phải đặt trong ngoặc để không lẫn với dấu phép tính.\n\n**Bước 2.** Thực hiện luỹ thừa, nhân, chia trước.\n\n**Bước 3.** Cộng trừ lần lượt từ trái sang phải, chú ý quy tắc trừ cho số âm.\n\n**Chú ý:** viết rõ \"với ... thì ...\" trước khi thay số.\n\n**Phần 2. Trình bày**\n\nVới $a=-2$; $b=3$ ta có:\n\n$a^2.b=(-2)^2.3$\n\n$=4.3$\n\n$=12$\n\nChọn A.",
+    "kiem": [
+      "(-2)**2*3===12"
+    ],
+    "sach_dap_so": "A",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-Đ1-C7",
+    "vai": "luyen",
+    "dang_bai": "NDB01322",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tích có thừa số bậc hai bằng 0",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Biết $x(x^2-1)=0$. Giá trị của $x$ là:",
+    "lua_chon": [
+      "A. 0 hoặc 1",
+      "B. 1 hoặc -1",
+      "C. 0 hoặc -1",
+      "D. 0 hoặc 1 hoặc -1"
+    ],
+    "dap_an": "D",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** một tích bằng 0 thì ít nhất một thừa số bằng 0.\n\n**Bước 1.** Nhận ra vế trái là một tích (hai thừa số x và x² − 1) còn vế phải bằng 0.\n\n**Bước 2.** Cho từng thừa số bằng 0 để được các trường hợp.\n\n**Bước 3.** Giải từng trường hợp bằng cách tìm thành phần chưa biết; với dạng $x^2=a$ thì tìm số nhân với chính nó bằng $a$, nhớ xét cả số âm.\n\n**Bước 4.** Gộp các giá trị tìm được.\n\n**Chú ý:** $x^2=a$ (với $a>0$) có hai số nguyên $x$ đối nhau (nếu $a$ là bình phương của một số nguyên).\n\n**Phần 2. Trình bày**\n\nVì $x(x^2-1)=0$ nên $x=0$ hoặc $x^2-1=0$.\n\nVới $x^2-1=0$ thì $x^2=0+1=1$; vì $1.1=1$ và $(-1).(-1)=1$ nên $x=1$ hoặc $x=-1$.\n\nVậy $x\\in\\{0;1;-1\\}$, ứng với phương án D.\n\nChọn D.",
+    "kiem": [
+      "[...Array(201)].map((_,i)=>i+(-100)).filter(x=>x*(x*x-1)===0).join()===\"-1,0,1\""
+    ],
+    "sach_dap_so": "D",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-Đ1-C8",
+    "vai": "luyen",
+    "dang_bai": "NDB01323",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tìm tất cả các ước của số nguyên",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Tập hợp các ước của $-20$ là:",
+    "lua_chon": [
+      "A. $\\{\\pm2;\\pm4;\\pm5;\\pm10;\\pm20\\}$",
+      "B. $\\{\\pm1;\\pm2;\\pm4;\\pm5;\\pm10;\\pm20\\}$",
+      "C. $\\{1;2;4;5;10;20\\}$",
+      "D. $\\{\\pm1;\\pm2;\\pm5;\\pm10;\\pm20\\}$"
+    ],
+    "dap_an": "B",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** liệt kê các ước dương rồi thêm số đối của từng ước dương, vì số đối của một ước cũng là ước.\n\n**Bước 1.** Tìm các ước dương: chia lần lượt cho 1, 2, 3, … và ghép cặp hai ước có tích bằng số đó.\n\n**Bước 2.** Mỗi ước dương có số đối cũng là ước của số nguyên âm đã cho.\n\n**Bước 3.** Viết (hoặc đếm) tất cả các ước rồi đối chiếu với bốn phương án.\n\n**Chú ý:** ước của một số nguyên gồm cả ước dương và ước âm.\n\n**Phần 2. Trình bày**\n\nCác ước dương của 20 là $1;2;4;5;10;20$.\n\nThêm số đối của từng ước dương: $\\text{Ư}(-20)=\\{1;-1;2;-2;4;-4;5;-5;10;-10;20;-20\\}$, viết gọn là $\\{\\pm1;\\pm2;\\pm4;\\pm5;\\pm10;\\pm20\\}$.\n\nPhương án A thiếu $\\pm1$, C thiếu các ước âm, D thiếu $\\pm4$.\n\nChọn B.",
+    "kiem": [
+      "[...Array(20)].map((_,i)=>i+1).filter(d=>20%d===0).join()===\"1,2,4,5,10,20\""
+    ],
+    "sach_dap_so": "B",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-Đ1-B1a",
+    "vai": "luyen",
+    "dang_bai": "NDB01292",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "sắp xếp dãy số nguyên theo thứ tự",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Sắp xếp các số nguyên sau theo thứ tự tăng dần: $-83;35;101;-706;-51;0;-101$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chia dãy thành số âm, số 0, số dương; mọi số âm nhỏ hơn 0 và 0 nhỏ hơn mọi số dương.\n\n**Bước 1.** Chia dãy thành ba nhóm: các số nguyên âm, số 0 (nếu có) và các số nguyên dương.\n\n**Bước 2.** Sắp xếp từng nhóm: số dương so như số tự nhiên; hai số âm thì số có phần số (bỏ dấu \"−\") lớn hơn là số nhỏ hơn, vì nó nằm xa gốc O hơn về bên trái trục số.\n\n**Bước 3.** Ghép ba nhóm theo thứ tự từ nhỏ đến lớn: nhóm số âm, rồi số 0, rồi nhóm số dương.\n\n**Bước 4.** Đếm lại số phần tử: không thiếu, không thừa.\n\n**Chú ý:** với số âm, \"phần số lớn hơn\" lại là số nhỏ hơn: $-12<-5$.\n\n**Phần 2. Trình bày**\n\nCác số âm $-83;-706;-51;-101$ sắp xếp tăng dần là $-706;-101;-83;-51$; các số dương $35;101$ giữ thứ tự $35;101$.\n\nVì mọi số âm nhỏ hơn 0 và 0 nhỏ hơn mọi số dương nên ta được:\n\n$-706;-101;-83;-51;0;35;101$.",
+    "kiem": [
+      "[-83,35,101,-706,-51,0,-101].sort((a,b)=>a-b).join(';')===\"-706;-101;-83;-51;0;35;101\""
+    ],
+    "sach_dap_so": "-706;-101;-83;-51;0;35;101",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-Đ1-B1b",
+    "vai": "luyen",
+    "dang_bai": "NDB01292",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "sắp xếp dãy số nguyên theo thứ tự",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Sắp xếp các số nguyên sau theo thứ tự giảm dần: $74;-45;-70;69;-7;0;7;17$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chia dãy thành số âm, số 0, số dương; mọi số âm nhỏ hơn 0 và 0 nhỏ hơn mọi số dương.\n\n**Bước 1.** Chia dãy thành ba nhóm: các số nguyên âm, số 0 (nếu có) và các số nguyên dương.\n\n**Bước 2.** Sắp xếp từng nhóm: số dương so như số tự nhiên; hai số âm thì số có phần số (bỏ dấu \"−\") lớn hơn là số nhỏ hơn, vì nó nằm xa gốc O hơn về bên trái trục số.\n\n**Bước 3.** Ghép ba nhóm theo thứ tự từ lớn đến nhỏ: nhóm số dương, rồi số 0, rồi nhóm số âm.\n\n**Bước 4.** Đếm lại số phần tử: không thiếu, không thừa.\n\n**Chú ý:** với số âm, \"phần số lớn hơn\" lại là số nhỏ hơn: $-12<-5$.\n\n**Phần 2. Trình bày**\n\nCác số dương $74;69;7;17$ sắp xếp giảm dần là $74;69;17;7$; các số âm $-45;-70;-7$ sắp xếp giảm dần là $-7;-45;-70$.\n\nVì mọi số dương lớn hơn 0 và 0 lớn hơn mọi số âm nên ta được:\n\n$74;69;17;7;0;-7;-45;-70$.",
+    "kiem": [
+      "[74,-45,-70,69,-7,0,7,17].sort((a,b)=>b-a).join(';')===\"74;69;17;7;0;-7;-45;-70\""
+    ],
+    "sach_dap_so": "74;69;17;7;0;-7;-45;-70",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-Đ1-B2a",
+    "vai": "luyen",
+    "dang_bai": "NDB01310",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "biểu thức nhiều cấp ngoặc, luỹ thừa; dùng |−2|",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí có thể: $-4^2+\\{-54:[(-2)^3+7.|-2|]\\}$.",
+    "dap_an": "-25",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm từ trong ra ngoài theo thứ tự ngoặc tròn, ngoặc vuông, ngoặc nhọn; trong mỗi ngoặc: luỹ thừa, rồi nhân chia, rồi cộng trừ.\n\n**Bước 1.** Nhận ra các tầng ngoặc ([ ] trong { }, có −4² và |−2|) và bắt đầu từ tầng trong cùng.\n\n**Bước 2.** Trong mỗi ngoặc làm theo thứ tự: luỹ thừa trước, nhân chia sau, cộng trừ cuối.\n\n**Bước 3.** Sau mỗi bước viết lại biểu thức, ngắn đi một tầng ngoặc.\n\n**Bước 4.** Làm phép tính ngoài cùng cuối cùng, chú ý dấu khi trừ cho số âm.\n\n**Chú ý:** không bỏ ngoặc tuỳ tiện khi trước ngoặc có dấu trừ hay phép nhân, chia; tính trong ngoặc trước là an toàn nhất.\n\n**Phần 2. Trình bày**\n\nVì $|-2|=2$ (khoảng cách từ điểm $-2$ đến gốc $O$ trên trục số là 2) và $-4^2=-16$ nên:\n\n$-4^2+\\{-54:[(-2)^3+7.|-2|]\\}$\n\n$=-16+\\{-54:[-8+7.2]\\}$\n\n$=-16+\\{-54:[-8+14]\\}$\n\n$=-16+\\{-54:6\\}$\n\n$=-16+(-9)$\n\n$=-25$",
+    "kiem": [
+      "-(4**2)+(-54)/((-2)**3+7*Math.abs(-2))===-25"
+    ],
+    "sach_dap_so": "-25",
+    "ghi_chu": "NGOÀI PHẠM VI — đề dùng kí hiệu giá trị tuyệt đối |−2| (khối 6 chưa học); lời giải hiểu |−2| là khoảng cách từ −2 đến gốc O. Cần Thùy quyết giữ hay đổi đề."
+  },
+  {
+    "id": "ÔT-Đ1-B2b",
+    "vai": "luyen",
+    "dang_bai": "NDB01307",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "rút thừa số chung rõ ràng",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính hợp lí có thể: $-79.51+79.(-19)-30.79$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tìm thừa số chung rồi đặt ra ngoài ngoặc để chỉ còn một phép nhân.\n\n**Bước 1.** Tìm số xuất hiện ở cả hai tích: đó là thừa số chung.\n\n**Bước 2.** Đặt thừa số chung ra ngoài ngoặc: $a.b+a.c=a.(b+c)$ và $a.b-a.c=a.(b-c)$.\n\n**Bước 3.** Tính tổng hoặc hiệu trong ngoặc, thường ra số tròn.\n\n**Bước 4.** Nhân thừa số chung với kết quả đó.\n\n**Chú ý:** để ý dấu của từng tích khi đặt thừa số chung ra ngoài.\n\n**Phần 2. Trình bày**\n\n$-79.51+79.(-19)-30.79$\n\n$=79.(-51)+79.(-19)+79.(-30)$\n\n$=79.(-51-19-30)$\n\n$=79.(-100)$\n\n$=-7900$",
+    "kiem": [
+      "-79*51+79*(-19)-30*79===-7900"
+    ],
+    "sach_dap_so": "-7900",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-Đ1-B2c",
+    "vai": "luyen",
+    "dang_bai": "NDB01308",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "phải biến đổi mới thấy thừa số chung",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính hợp lí có thể: $-51.(15-63)-15.(63-51)$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** biến đổi để lộ thừa số chung (đổi dấu, viết lại số, hoặc đưa vào ngoặc) rồi đặt ra ngoài.\n\n**Bước 1.** Quan sát các tích: thừa số chung có thể bị che (phải phá ngoặc để thấy 51.15 và 63).\n\n**Bước 2.** Viết lại biểu thức để thừa số chung hiện rõ ở mọi số hạng.\n\n**Bước 3.** Đặt thừa số chung ra ngoài ngoặc.\n\n**Bước 4.** Tính phần trong ngoặc rồi nhân.\n\n**Chú ý:** giao hoán phép nhân giúp thấy thừa số chung: $a.b=b.a$.\n\n**Phần 2. Trình bày**\n\n$-51.(15-63)-15.(63-51)$\n\n$=-51.15+51.63-15.63+15.51$\n\n$=(-51.15+15.51)+(51.63-15.63)$\n\n$=0+(51-15).63$\n\n$=36.63$\n\n$=2268$",
+    "kiem": [
+      "-51*(15-63)-15*(63-51)===2268"
+    ],
+    "sach_dap_so": "2268",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-Đ1-B3a",
+    "vai": "luyen",
+    "dang_bai": "NDB01322",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tích có thừa số bậc hai bằng 0",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x\\in\\mathbb{Z}$, biết: $x(x^2-25)(x^3-8)=0$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** một tích bằng 0 thì ít nhất một thừa số bằng 0.\n\n**Bước 1.** Nhận ra vế trái là một tích (ba thừa số x, x² − 25 và x³ − 8) còn vế phải bằng 0.\n\n**Bước 2.** Cho từng thừa số bằng 0 để được các trường hợp.\n\n**Bước 3.** Giải từng trường hợp bằng cách tìm thành phần chưa biết; với dạng $x^2=a$ thì tìm số nhân với chính nó bằng $a$, nhớ xét cả số âm.\n\n**Bước 4.** Gộp các giá trị tìm được.\n\n**Chú ý:** $x^2=a$ (với $a>0$) có hai số nguyên $x$ đối nhau (nếu $a$ là bình phương của một số nguyên).\n\n**Phần 2. Trình bày**\n\nVì $x(x^2-25)(x^3-8)=0$ nên $x=0$ hoặc $x^2-25=0$ hoặc $x^3-8=0$.\n\nVới $x^2-25=0$ thì $x^2=25$; vì $5.5=25$ và $(-5).(-5)=25$ nên $x=5$ hoặc $x=-5$.\n\nVới $x^3-8=0$ thì $x^3=8=2^3$ nên $x=2$.\n\nVậy $x\\in\\{0;5;-5;2\\}$.",
+    "kiem": [
+      "[...Array(201)].map((_,i)=>i+(-100)).filter(x=>x*(x*x-25)*(x**3-8)===0).join()===\"-5,0,2,5\""
+    ],
+    "sach_dap_so": "x∈{0;-5;5;2}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-Đ1-B3b",
+    "vai": "luyen",
+    "dang_bai": "NDB01326",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "a chia hết cho (x+b) với a là số cho trước",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x\\in\\mathbb{Z}$, biết: $-8\\vdots(x-1)$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** a chia hết cho một cụm chứa x thì cụm đó là ước của a.\n\n**Bước 1.** Nhận ra số cho trước là bội và cụm chứa $x$ (x − 1) là ước của nó.\n\n**Bước 2.** Liệt kê mọi ước của số đó, nhớ cả các ước âm.\n\n**Bước 3.** Cho cụm chứa $x$ bằng từng ước rồi tìm $x$ theo quy tắc tìm thành phần chưa biết.\n\n**Bước 4.** Viết kết luận bằng tập hợp các giá trị $x$.\n\n**Chú ý:** ước của một số nguyên gồm cả ước dương và ước âm.\n\n**Phần 2. Trình bày**\n\nVì $-8\\vdots(x-1)$ nên $x-1\\in\\text{Ư}(-8)=\\{1;-1;2;-2;4;-4;8;-8\\}$.\n\nNếu $x-1=1$ thì $x=2$; nếu $x-1=-1$ thì $x=0$; nếu $x-1=2$ thì $x=3$; nếu $x-1=-2$ thì $x=-1$; nếu $x-1=4$ thì $x=5$; nếu $x-1=-4$ thì $x=-3$; nếu $x-1=8$ thì $x=9$; nếu $x-1=-8$ thì $x=-7$.\n\nVậy $x\\in\\{2;0;3;-1;5;-3;9;-7\\}$.",
+    "kiem": [
+      "[...Array(121)].map((_,i)=>i+(-60)).filter(x=>x!==1&&(-8)%(x-1)===0).join()===\"-7,-3,-1,0,2,3,5,9\""
+    ],
+    "sach_dap_so": "x∈{2;3;5;9;0;-1;-3;-7}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-Đ1-B4",
+    "vai": "luyen",
+    "dang_bai": "NDB01329",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "bậc hai chia hết cho bậc nhất",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm các số nguyên $n$ biết: $2n^2+3n-22\\vdots(2n-1)$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tách biểu thức ở trên thành (bội của số chia) + một số cố định, rồi dùng tính chất chia hết của tổng, hiệu.\n\n**Bước 1.** Tách biểu thức bị chia (2n² + 3n − 22 = (2n − 1)(n + 2) − 20) thành tổng (hoặc hiệu) của một bội của số chia và một số cố định.\n\n**Bước 2.** Phần bội của số chia đã chia hết, nên cả biểu thức chia hết khi số cố định còn lại cũng chia hết cho số chia.\n\n**Bước 3.** Liệt kê các ước (cả âm) của số cố định đó; nếu số chia luôn là số lẻ thì loại các ước chẵn.\n\n**Bước 4.** Cho số chia bằng từng ước còn lại rồi tìm $n$; viết kết luận bằng tập hợp.\n\n**Chú ý:** số chia $2n\\pm1$ luôn là số lẻ — dùng nhận xét này để bớt trường hợp.\n\n**Phần 2. Trình bày**\n\nTa có $2n^2+3n-22=(2n-1).(n+2)-20$.\n\nVì $(2n-1).(n+2)\\vdots(2n-1)$ nên để $(2n-1).(n+2)-20\\vdots(2n-1)$ thì $20\\vdots(2n-1)$.\n\nSuy ra $2n-1\\in\\text{Ư}(20)=\\{1;-1;2;-2;4;-4;5;-5;10;-10;20;-20\\}$. Vì $2n-1$ là số lẻ nên $2n-1\\in\\{1;-1;5;-5\\}$.\n\nNếu $2n-1=1$ thì $2n=2$ nên $n=1$; nếu $2n-1=-1$ thì $2n=0$ nên $n=0$; nếu $2n-1=5$ thì $2n=6$ nên $n=3$; nếu $2n-1=-5$ thì $2n=-4$ nên $n=-2$.\n\nVậy $n\\in\\{1;0;3;-2\\}$.",
+    "kiem": [
+      "[...Array(121)].map((_,i)=>i+(-60)).filter(x=>(2*x*x+3*x-22)%(2*x-1)===0).join()===\"-2,0,1,3\""
+    ],
+    "sach_dap_so": "n∈{0;1;-2;3}",
+    "ghi_chu": "Đề sách in \"2n²+3n−22n ⋮ 2n−1\" (thừa chữ n); sửa thành 2n²+3n−22 theo lời giải sách (2n²+3n−22 = (2n−1)(n+2) − 20)."
+  },
+  {
+    "id": "ÔT-Đ2-C1",
+    "vai": "luyen",
+    "dang_bai": "NDB01309",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "biểu thức cơ bản có một cấp ngoặc",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Giá trị của biểu thức $4.(-5)-(-16)$ bằng:",
+    "lua_chon": [
+      "A. -36",
+      "B. 36",
+      "C. -4",
+      "D. 4"
+    ],
+    "dap_an": "C",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm trong ngoặc trước, ngoài ngoặc sau; nhân chia trước, cộng trừ sau.\n\n**Bước 1.** Xác định phép tính nằm trong ngoặc (tích 4.(−5) đứng trước phép trừ) và tính trước.\n\n**Bước 2.** Thay kết quả vừa tính vào, viết lại biểu thức đã gọn hơn.\n\n**Bước 3.** Thực hiện phép nhân hoặc chia số nguyên: cùng dấu cho kết quả dương, khác dấu cho kết quả âm.\n\n**Bước 4.** Nếu còn cộng trừ thì làm từ trái sang phải.\n\n**Chú ý:** chia hai số nguyên cũng theo quy tắc dấu như phép nhân.\n\n**Phần 2. Trình bày**\n\n$4.(-5)-(-16)$\n\n$=-20-(-16)$\n\n$=-20+16$\n\n$=-4$\n\nChọn C.",
+    "kiem": [
+      "4*(-5)-(-16)===-4"
+    ],
+    "sach_dap_so": "C",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-Đ2-C2",
+    "vai": "luyen",
+    "dang_bai": "NDB01321",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tích hai thừa số bậc nhất bằng 0",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Nếu $(x-1)(x+8)=0$ thì $x$ bằng:",
+    "lua_chon": [
+      "A. 1 hoặc -8",
+      "B. 1",
+      "C. -8",
+      "D. 8"
+    ],
+    "dap_an": "A",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** một tích bằng 0 thì ít nhất một thừa số bằng 0.\n\n**Bước 1.** Nhận ra vế trái là một tích (hai thừa số x − 1 và x + 8) còn vế phải bằng 0.\n\n**Bước 2.** Cho từng thừa số bằng 0 để được các trường hợp.\n\n**Bước 3.** Giải từng trường hợp bằng cách tìm thành phần chưa biết; với dạng $x^2=a$ thì tìm số nhân với chính nó bằng $a$, nhớ xét cả số âm.\n\n**Bước 4.** Gộp các giá trị tìm được.\n\n**Chú ý:** $x^2=a$ (với $a>0$) có hai số nguyên $x$ đối nhau (nếu $a$ là bình phương của một số nguyên).\n\n**Phần 2. Trình bày**\n\nVì $(x-1)(x+8)=0$ nên $x-1=0$ hoặc $x+8=0$.\n\nVới $x-1=0$ thì $x=0+1=1$; với $x+8=0$ thì $x=0-8=-8$.\n\nVậy $x=1$ hoặc $x=-8$, ứng với phương án A.\n\nChọn A.",
+    "kiem": [
+      "[...Array(201)].map((_,i)=>i+(-100)).filter(x=>(x-1)*(x+8)===0).join()===\"-8,1\""
+    ],
+    "sach_dap_so": "A",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-Đ2-C3",
+    "vai": "luyen",
+    "dang_bai": "NDB01296",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tính tổng số nguyên trong khoảng bằng ghép số đối",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Tổng các số nguyên $x$ thỏa mãn $-5<x<4$ là:",
+    "lua_chon": [
+      "A. -5",
+      "B. 5",
+      "C. 0",
+      "D. -4"
+    ],
+    "dap_an": "D",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** liệt kê các số nguyên trong khoảng, ghép các cặp số đối nhau (tổng bằng 0), chỉ còn lại các số không có số đối.\n\n**Bước 1.** Liệt kê mọi số nguyên $x$ thoả điều kiện; chú ý dấu \"<\" thì không lấy đầu mút.\n\n**Bước 2.** Tìm các cặp số đối nhau trong danh sách; mỗi cặp có tổng bằng 0.\n\n**Bước 3.** Cộng các số còn lại không có số đối.\n\n**Bước 4.** Đối chiếu kết quả với bốn phương án.\n\n**Chú ý:** số 0 không có số đối khác nó nhưng cộng vào không đổi tổng.\n\n**Phần 2. Trình bày**\n\nCác số nguyên $x$ thoả mãn $-5<x<4$ là $-4;-3;-2;-1;0;1;2;3$.\n\n$(-3+3)+(-2+2)+(-1+1)+0+(-4)$\n\n$=0+0+0+0+(-4)$\n\n$=-4$\n\nChọn D.",
+    "kiem": [
+      "[...Array(11)].map((_,i)=>i-5).filter(x=>-5<x&&x<4).reduce((a,b)=>a+b,0)===-4"
+    ],
+    "sach_dap_so": "D",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-Đ2-C4",
+    "vai": "luyen",
+    "dang_bai": "NDB01295",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "đếm số phần tử số nguyên trong khoảng",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Tập hợp $B=\\{x\\in\\mathbb{Z}\\mid -10\\le x\\le 11\\}$ có:",
+    "lua_chon": [
+      "A. 21 phần tử",
+      "B. 22 phần tử",
+      "C. 19 phần tử",
+      "D. 20 phần tử"
+    ],
+    "dap_an": "B",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đếm riêng ba nhóm: số nguyên âm, số 0, số nguyên dương trong khoảng rồi cộng lại.\n\n**Bước 1.** Đọc điều kiện: $x$ nguyên và nằm giữa hai đầu mút; dấu \"$\\le$\" thì lấy cả đầu mút.\n\n**Bước 2.** Đếm các số nguyên âm trong khoảng, số 0, và các số nguyên dương trong khoảng.\n\n**Bước 3.** Cộng ba kết quả để được số phần tử.\n\n**Bước 4.** Đối chiếu với bốn phương án.\n\n**Chú ý:** quên số 0 là lỗi hay gặp khi đếm số nguyên.\n\n**Phần 2. Trình bày**\n\nCác số nguyên âm từ $-10$ đến $-1$ có 10 số; số 0 có 1 số; các số nguyên dương từ 1 đến 11 có 11 số.\n\n$10+1+11=22$\n\nVậy tập hợp $B$ có 22 phần tử.\n\nChọn B.",
+    "kiem": [
+      "[...Array(41)].map((_,i)=>i-20).filter(x=>-10<=x&&x<=11).length===22"
+    ],
+    "sach_dap_so": "B",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-Đ2-C5",
+    "vai": "luyen",
+    "dang_bai": "NDB01323",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tìm tất cả các ước của số nguyên",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Số $-72$ có:",
+    "lua_chon": [
+      "A. 6 ước",
+      "B. 12 ước",
+      "C. 18 ước",
+      "D. 24 ước"
+    ],
+    "dap_an": "D",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** liệt kê các ước dương rồi thêm số đối của từng ước dương, vì số đối của một ước cũng là ước.\n\n**Bước 1.** Tìm các ước dương: chia lần lượt cho 1, 2, 3, … và ghép cặp hai ước có tích bằng số đó.\n\n**Bước 2.** Mỗi ước dương có số đối cũng là ước của số nguyên âm đã cho.\n\n**Bước 3.** Viết (hoặc đếm) tất cả các ước rồi đối chiếu với bốn phương án.\n\n**Chú ý:** ước của một số nguyên gồm cả ước dương và ước âm.\n\n**Phần 2. Trình bày**\n\nCác ước dương của 72 là $1;2;3;4;6;8;9;12;18;24;36;72$ (12 số).\n\nMỗi ước dương có số đối cũng là ước của $-72$ nên $-72$ có $12+12=24$ ước.\n\nChọn D.",
+    "kiem": [
+      "[...Array(72)].map((_,i)=>i+1).filter(d=>72%d===0).length*2===24"
+    ],
+    "sach_dap_so": "D",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-Đ2-C6",
+    "vai": "luyen",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "thay giá trị biến rồi tính",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Giá trị của tích $a.b^2$ với $a=-3$; $b=-2$ là:",
+    "lua_chon": [
+      "A. 12",
+      "B. -12",
+      "C. 18",
+      "D. -18"
+    ],
+    "dap_an": "B",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** thay giá trị của các chữ vào biểu thức (số âm đặt trong ngoặc), rồi tính theo thứ tự thực hiện phép tính.\n\n**Bước 1.** Chép biểu thức rồi thay mỗi chữ bằng giá trị đã cho; số âm phải đặt trong ngoặc để không lẫn với dấu phép tính.\n\n**Bước 2.** Thực hiện luỹ thừa, nhân, chia trước.\n\n**Bước 3.** Cộng trừ lần lượt từ trái sang phải, chú ý quy tắc trừ cho số âm.\n\n**Chú ý:** viết rõ \"với ... thì ...\" trước khi thay số.\n\n**Phần 2. Trình bày**\n\nVới $a=-3$; $b=-2$ ta có:\n\n$a.b^2=(-3).(-2)^2$\n\n$=(-3).4$\n\n$=-12$\n\nChọn B.",
+    "kiem": [
+      "(-3)*(-2)**2===-12"
+    ],
+    "sach_dap_so": "B",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-Đ2-C7",
+    "vai": "luyen",
+    "dang_bai": "NDB01322",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tích có thừa số bậc hai bằng 0",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Biết $x(x^2-9)=0$. Giá trị của $x$ là:",
+    "lua_chon": [
+      "A. 0 hoặc 3",
+      "B. 0 hoặc 3 hoặc -3",
+      "C. 0 hoặc -3",
+      "D. 3 hoặc -3"
+    ],
+    "dap_an": "B",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** một tích bằng 0 thì ít nhất một thừa số bằng 0.\n\n**Bước 1.** Nhận ra vế trái là một tích (hai thừa số x và x² − 9) còn vế phải bằng 0.\n\n**Bước 2.** Cho từng thừa số bằng 0 để được các trường hợp.\n\n**Bước 3.** Giải từng trường hợp bằng cách tìm thành phần chưa biết; với dạng $x^2=a$ thì tìm số nhân với chính nó bằng $a$, nhớ xét cả số âm.\n\n**Bước 4.** Gộp các giá trị tìm được.\n\n**Chú ý:** $x^2=a$ (với $a>0$) có hai số nguyên $x$ đối nhau (nếu $a$ là bình phương của một số nguyên).\n\n**Phần 2. Trình bày**\n\nVì $x(x^2-9)=0$ nên $x=0$ hoặc $x^2-9=0$.\n\nVới $x^2-9=0$ thì $x^2=0+9=9$; vì $3.3=9$ và $(-3).(-3)=9$ nên $x=3$ hoặc $x=-3$.\n\nVậy $x\\in\\{0;3;-3\\}$, ứng với phương án B.\n\nChọn B.",
+    "kiem": [
+      "[...Array(201)].map((_,i)=>i+(-100)).filter(x=>x*(x*x-9)===0).join()===\"-3,0,3\""
+    ],
+    "sach_dap_so": "B",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-Đ2-C8",
+    "vai": "luyen",
+    "dang_bai": "NDB01323",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tìm tất cả các ước của số nguyên",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Tập hợp các ước của $-12$ là:",
+    "lua_chon": [
+      "A. $\\{\\pm2;\\pm3;\\pm4;\\pm6;\\pm12\\}$",
+      "B. $\\{1;2;3;4;6;12\\}$",
+      "C. $\\{\\pm1;\\pm2;\\pm3;\\pm4;\\pm6;\\pm12\\}$",
+      "D. $\\{\\pm1;\\pm3;\\pm4;\\pm6;\\pm12\\}$"
+    ],
+    "dap_an": "C",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** liệt kê các ước dương rồi thêm số đối của từng ước dương, vì số đối của một ước cũng là ước.\n\n**Bước 1.** Tìm các ước dương: chia lần lượt cho 1, 2, 3, … và ghép cặp hai ước có tích bằng số đó.\n\n**Bước 2.** Mỗi ước dương có số đối cũng là ước của số nguyên âm đã cho.\n\n**Bước 3.** Viết (hoặc đếm) tất cả các ước rồi đối chiếu với bốn phương án.\n\n**Chú ý:** ước của một số nguyên gồm cả ước dương và ước âm.\n\n**Phần 2. Trình bày**\n\nCác ước dương của 12 là $1;2;3;4;6;12$.\n\nThêm số đối của từng ước dương: $\\text{Ư}(-12)=\\{1;-1;2;-2;3;-3;4;-4;6;-6;12;-12\\}$, viết gọn là $\\{\\pm1;\\pm2;\\pm3;\\pm4;\\pm6;\\pm12\\}$.\n\nPhương án A thiếu $\\pm1$, B thiếu các ước âm, D thiếu $\\pm2$.\n\nChọn C.",
+    "kiem": [
+      "[...Array(12)].map((_,i)=>i+1).filter(d=>12%d===0).join()===\"1,2,3,4,6,12\""
+    ],
+    "sach_dap_so": "C",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-Đ2-B1a",
+    "vai": "luyen",
+    "dang_bai": "NDB01292",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "sắp xếp dãy số nguyên theo thứ tự",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Sắp xếp các số nguyên sau theo thứ tự giảm dần: $74;-45;-70;69;-7;0;7;17$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chia dãy thành số âm, số 0, số dương; mọi số âm nhỏ hơn 0 và 0 nhỏ hơn mọi số dương.\n\n**Bước 1.** Chia dãy thành ba nhóm: các số nguyên âm, số 0 (nếu có) và các số nguyên dương.\n\n**Bước 2.** Sắp xếp từng nhóm: số dương so như số tự nhiên; hai số âm thì số có phần số (bỏ dấu \"−\") lớn hơn là số nhỏ hơn, vì nó nằm xa gốc O hơn về bên trái trục số.\n\n**Bước 3.** Ghép ba nhóm theo thứ tự từ lớn đến nhỏ: nhóm số dương, rồi số 0, rồi nhóm số âm.\n\n**Bước 4.** Đếm lại số phần tử: không thiếu, không thừa.\n\n**Chú ý:** với số âm, \"phần số lớn hơn\" lại là số nhỏ hơn: $-12<-5$.\n\n**Phần 2. Trình bày**\n\nCác số dương $74;69;7;17$ sắp xếp giảm dần là $74;69;17;7$; các số âm $-45;-70;-7$ sắp xếp giảm dần là $-7;-45;-70$.\n\nVì mọi số dương lớn hơn 0 và 0 lớn hơn mọi số âm nên ta được:\n\n$74;69;17;7;0;-7;-45;-70$.",
+    "kiem": [
+      "[74,-45,-70,69,-7,0,7,17].sort((a,b)=>b-a).join(';')===\"74;69;17;7;0;-7;-45;-70\""
+    ],
+    "sach_dap_so": "101;35;0;-51;-83;-101;-706",
+    "ghi_chu": "LỆCH SÁCH — đáp án sách ý a) là dãy giảm dần của danh sách KHÁC (−83; 35; 101; …), ý b) là dãy tăng dần của dãy 74; −45; …: sách hoán nhãn a/b. Đúng theo đề: a) 74;69;17;7;0;−7;−45;−70."
+  },
+  {
+    "id": "ÔT-Đ2-B1b",
+    "vai": "luyen",
+    "dang_bai": "NDB01292",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "sắp xếp dãy số nguyên theo thứ tự",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Sắp xếp các số nguyên sau theo thứ tự tăng dần: $-83;35;101;-706;-51;0;-101$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chia dãy thành số âm, số 0, số dương; mọi số âm nhỏ hơn 0 và 0 nhỏ hơn mọi số dương.\n\n**Bước 1.** Chia dãy thành ba nhóm: các số nguyên âm, số 0 (nếu có) và các số nguyên dương.\n\n**Bước 2.** Sắp xếp từng nhóm: số dương so như số tự nhiên; hai số âm thì số có phần số (bỏ dấu \"−\") lớn hơn là số nhỏ hơn, vì nó nằm xa gốc O hơn về bên trái trục số.\n\n**Bước 3.** Ghép ba nhóm theo thứ tự từ nhỏ đến lớn: nhóm số âm, rồi số 0, rồi nhóm số dương.\n\n**Bước 4.** Đếm lại số phần tử: không thiếu, không thừa.\n\n**Chú ý:** với số âm, \"phần số lớn hơn\" lại là số nhỏ hơn: $-12<-5$.\n\n**Phần 2. Trình bày**\n\nCác số âm $-83;-706;-51;-101$ sắp xếp tăng dần là $-706;-101;-83;-51$; các số dương $35;101$ giữ thứ tự $35;101$.\n\nVì mọi số âm nhỏ hơn 0 và 0 nhỏ hơn mọi số dương nên ta được:\n\n$-706;-101;-83;-51;0;35;101$.",
+    "kiem": [
+      "[-83,35,101,-706,-51,0,-101].sort((a,b)=>a-b).join(';')===\"-706;-101;-83;-51;0;35;101\""
+    ],
+    "sach_dap_so": "-70;-45;-7;0;7;17;69;74",
+    "ghi_chu": "LỆCH SÁCH — sách hoán nhãn a/b (xem ÔT-Đ2-B1a); đúng theo đề: b) -706;-101;-83;-51;0;35;101."
+  },
+  {
+    "id": "ÔT-Đ2-B2a",
+    "vai": "luyen",
+    "dang_bai": "NDB01310",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "biểu thức nhiều cấp ngoặc, luỹ thừa; dùng |−10|",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí có thể: $[316-(5^2.4+16)]:(-2)^3-|-10|$.",
+    "dap_an": "-35",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm từ trong ra ngoài theo thứ tự ngoặc tròn, ngoặc vuông, ngoặc nhọn; trong mỗi ngoặc: luỹ thừa, rồi nhân chia, rồi cộng trừ.\n\n**Bước 1.** Nhận ra các tầng ngoặc ((…) trong [ ], có |−10|) và bắt đầu từ tầng trong cùng.\n\n**Bước 2.** Trong mỗi ngoặc làm theo thứ tự: luỹ thừa trước, nhân chia sau, cộng trừ cuối.\n\n**Bước 3.** Sau mỗi bước viết lại biểu thức, ngắn đi một tầng ngoặc.\n\n**Bước 4.** Làm phép tính ngoài cùng cuối cùng, chú ý dấu khi trừ cho số âm.\n\n**Chú ý:** không bỏ ngoặc tuỳ tiện khi trước ngoặc có dấu trừ hay phép nhân, chia; tính trong ngoặc trước là an toàn nhất.\n\n**Phần 2. Trình bày**\n\nVì $|-10|=10$ (khoảng cách từ điểm $-10$ đến gốc $O$ trên trục số là 10) nên:\n\n$[316-(5^2.4+16)]:(-2)^3-|-10|$\n\n$=[316-(25.4+16)]:(-8)-10$\n\n$=[316-(100+16)]:(-8)-10$\n\n$=[316-116]:(-8)-10$\n\n$=200:(-8)-10$\n\n$=-25-10$\n\n$=-35$",
+    "kiem": [
+      "(316-(5**2*4+16))/((-2)**3)-Math.abs(-10)===-35"
+    ],
+    "sach_dap_so": "-35",
+    "ghi_chu": "NGOÀI PHẠM VI — đề dùng kí hiệu giá trị tuyệt đối |−10| (khối 6 chưa học); lời giải hiểu |−10| là khoảng cách từ −10 đến gốc O. Cần Thùy quyết giữ hay đổi đề."
+  },
+  {
+    "id": "ÔT-Đ2-B2b",
+    "vai": "luyen",
+    "dang_bai": "NDB01307",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "rút thừa số chung rõ ràng",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính hợp lí có thể: $-73.21+73.(-62)-17.73$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tìm thừa số chung rồi đặt ra ngoài ngoặc để chỉ còn một phép nhân.\n\n**Bước 1.** Tìm số xuất hiện ở cả hai tích: đó là thừa số chung.\n\n**Bước 2.** Đặt thừa số chung ra ngoài ngoặc: $a.b+a.c=a.(b+c)$ và $a.b-a.c=a.(b-c)$.\n\n**Bước 3.** Tính tổng hoặc hiệu trong ngoặc, thường ra số tròn.\n\n**Bước 4.** Nhân thừa số chung với kết quả đó.\n\n**Chú ý:** để ý dấu của từng tích khi đặt thừa số chung ra ngoài.\n\n**Phần 2. Trình bày**\n\n$-73.21+73.(-62)-17.73$\n\n$=73.(-21)+73.(-62)+73.(-17)$\n\n$=73.(-21-62-17)$\n\n$=73.(-100)$\n\n$=-7300$",
+    "kiem": [
+      "-73*21+73*(-62)-17*73===-7300"
+    ],
+    "sach_dap_so": "-7300",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-Đ2-B2c",
+    "vai": "luyen",
+    "dang_bai": "NDB01308",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "phải biến đổi mới thấy thừa số chung",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí có thể: $-57.(75-36)-75.(36-57)$.",
+    "dap_an": "-648",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** biến đổi để lộ thừa số chung (đổi dấu, viết lại số, hoặc đưa vào ngoặc) rồi đặt ra ngoài.\n\n**Bước 1.** Quan sát các tích: thừa số chung có thể bị che (phải phá ngoặc để thấy 57.75 và 36).\n\n**Bước 2.** Viết lại biểu thức để thừa số chung hiện rõ ở mọi số hạng.\n\n**Bước 3.** Đặt thừa số chung ra ngoài ngoặc.\n\n**Bước 4.** Tính phần trong ngoặc rồi nhân.\n\n**Chú ý:** giao hoán phép nhân giúp thấy thừa số chung: $a.b=b.a$.\n\n**Phần 2. Trình bày**\n\n$-57.(75-36)-75.(36-57)$\n\n$=-57.75+57.36-75.36+75.57$\n\n$=(-57.75+75.57)+(57.36-75.36)$\n\n$=0+(57-75).36$\n\n$=(-18).36$\n\n$=-648$",
+    "kiem": [
+      "-57*(75-36)-75*(36-57)===-648"
+    ],
+    "sach_dap_so": "-648",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-Đ2-B3a",
+    "vai": "luyen",
+    "dang_bai": "NDB01322",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "tích có thừa số bậc hai bằng 0",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x\\in\\mathbb{Z}$, biết: $x(x^2-1)(x^3-27)=0$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** một tích bằng 0 thì ít nhất một thừa số bằng 0.\n\n**Bước 1.** Nhận ra vế trái là một tích (ba thừa số x, x² − 1 và x³ − 27) còn vế phải bằng 0.\n\n**Bước 2.** Cho từng thừa số bằng 0 để được các trường hợp.\n\n**Bước 3.** Giải từng trường hợp bằng cách tìm thành phần chưa biết; với dạng $x^2=a$ thì tìm số nhân với chính nó bằng $a$, nhớ xét cả số âm.\n\n**Bước 4.** Gộp các giá trị tìm được.\n\n**Chú ý:** $x^2=a$ (với $a>0$) có hai số nguyên $x$ đối nhau (nếu $a$ là bình phương của một số nguyên).\n\n**Phần 2. Trình bày**\n\nVì $x(x^2-1)(x^3-27)=0$ nên $x=0$ hoặc $x^2-1=0$ hoặc $x^3-27=0$.\n\nVới $x^2-1=0$ thì $x^2=1$; vì $1.1=1$ và $(-1).(-1)=1$ nên $x=1$ hoặc $x=-1$.\n\nVới $x^3-27=0$ thì $x^3=27=3^3$ nên $x=3$.\n\nVậy $x\\in\\{0;1;-1;3\\}$.",
+    "kiem": [
+      "[...Array(201)].map((_,i)=>i+(-100)).filter(x=>x*(x*x-1)*(x**3-27)===0).join()===\"-1,0,1,3\""
+    ],
+    "sach_dap_so": "x∈{0;-1;1;3}",
+    "ghi_chu": ""
+  },
+  {
+    "id": "ÔT-Đ2-B3b",
+    "vai": "luyen",
+    "dang_bai": "NDB01326",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "a chia hết cho (x+b) với a là số cho trước",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x\\in\\mathbb{Z}$, biết: $-27\\vdots(x+1)$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** a chia hết cho một cụm chứa x thì cụm đó là ước của a.\n\n**Bước 1.** Nhận ra số cho trước là bội và cụm chứa $x$ (x + 1) là ước của nó.\n\n**Bước 2.** Liệt kê mọi ước của số đó, nhớ cả các ước âm.\n\n**Bước 3.** Cho cụm chứa $x$ bằng từng ước rồi tìm $x$ theo quy tắc tìm thành phần chưa biết.\n\n**Bước 4.** Viết kết luận bằng tập hợp các giá trị $x$.\n\n**Chú ý:** ước của một số nguyên gồm cả ước dương và ước âm.\n\n**Phần 2. Trình bày**\n\nVì $-27\\vdots(x+1)$ nên $x+1\\in\\text{Ư}(-27)=\\{1;-1;3;-3;9;-9;27;-27\\}$.\n\nNếu $x+1=1$ thì $x=0$; nếu $x+1=-1$ thì $x=-2$; nếu $x+1=3$ thì $x=2$; nếu $x+1=-3$ thì $x=-4$; nếu $x+1=9$ thì $x=8$; nếu $x+1=-9$ thì $x=-10$; nếu $x+1=27$ thì $x=26$; nếu $x+1=-27$ thì $x=-28$.\n\nVậy $x\\in\\{0;-2;2;-4;8;-10;26;-28\\}$.",
+    "kiem": [
+      "[...Array(121)].map((_,i)=>i+(-60)).filter(x=>x!==-1&&(-27)%(x+1)===0).join()===\"-28,-10,-4,-2,0,2,8,26\""
+    ],
+    "sach_dap_so": "x∈{0;2;8;26;-2;-4;-10;-28}",
+    "ghi_chu": "Đề sách in \"-27:x+1\" (lỗi chữ); sửa thành \"−27 ⋮ (x+1)\" theo lời giải sách (x+1 ∈ Ư(27))."
+  },
+  {
+    "id": "ÔT-Đ2-B4",
+    "vai": "luyen",
+    "dang_bai": "NDB01329",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "bậc hai chia hết cho bậc nhất; đề in và lời giải sách lệch nhau",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm các số nguyên $n$ biết: $2n^2-5n+19\\vdots(2n+1)$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tách biểu thức ở trên thành (bội của số chia) + một số cố định, rồi dùng tính chất chia hết của tổng, hiệu.\n\n**Bước 1.** Tách biểu thức bị chia (2n² − 5n + 19 = (2n + 1)(n − 3) + 22) thành tổng (hoặc hiệu) của một bội của số chia và một số cố định.\n\n**Bước 2.** Phần bội của số chia đã chia hết, nên cả biểu thức chia hết khi số cố định còn lại cũng chia hết cho số chia.\n\n**Bước 3.** Liệt kê các ước (cả âm) của số cố định đó; nếu số chia luôn là số lẻ thì loại các ước chẵn.\n\n**Bước 4.** Cho số chia bằng từng ước còn lại rồi tìm $n$; viết kết luận bằng tập hợp.\n\n**Chú ý:** số chia $2n\\pm1$ luôn là số lẻ — dùng nhận xét này để bớt trường hợp.\n\n**Phần 2. Trình bày**\n\nTa có $2n^2-5n+19=(2n+1).(n-3)+22$.\n\nVì $(2n+1).(n-3)\\vdots(2n+1)$ nên để $(2n+1).(n-3)+22\\vdots(2n+1)$ thì $22\\vdots(2n+1)$.\n\nSuy ra $2n+1\\in\\text{Ư}(22)=\\{1;-1;2;-2;11;-11;22;-22\\}$. Vì $2n+1$ là số lẻ nên $2n+1\\in\\{1;-1;11;-11\\}$.\n\nNếu $2n+1=1$ thì $2n=0$ nên $n=0$; nếu $2n+1=-1$ thì $2n=-2$ nên $n=-1$; nếu $2n+1=11$ thì $2n=10$ nên $n=5$; nếu $2n+1=-11$ thì $2n=-12$ nên $n=-6$.\n\nVậy $n\\in\\{0;-1;5;-6\\}$.",
+    "kiem": [
+      "[...Array(121)].map((_,i)=>i+(-60)).filter(x=>(2*x*x-5*x+19)%(2*x+1)===0).join()===\"-6,-1,0,5\""
+    ],
+    "sach_dap_so": "n∈{0;±1;-2;4;-5}",
+    "ghi_chu": "LỆCH SÁCH — đề in \"2n²−5n+19\" nhưng lời giải sách phân tích 2n²−5n+15 = (2n+1)(n−3)+18 và ra n∈{0;±1;−2;4;−5}. Giữ đề như in: 2n²−5n+19 = (2n+1)(n−3)+22 ⇒ n∈{0;−1;5;−6}. Nếu đề đúng là +15 thì đáp số sách đúng. Cần Thùy xác nhận."
+  }
+]

@@ -1,0 +1,1355 @@
+[
+  {
+    "id": "B4-1A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01303",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính tích hai số nguyên khác dấu / cùng dấu.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $(-16).5$.",
+    "dap_an": "-80",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân hai số nguyên = nhân phần số (bỏ dấu) rồi đặt dấu: cùng dấu thì tích dương, khác dấu thì tích âm.\n\n**Bước 1.** Xét dấu hai thừa số: thừa số thứ nhất là số âm, thừa số thứ hai là số dương, tức là hai thừa số khác dấu.\n\n**Bước 2.** Bỏ dấu “−” của số âm rồi nhân hai số tự nhiên 16 và 5.\n\n**Bước 3.** Hai thừa số khác dấu nên tích là số âm: đặt dấu “−” trước kết quả vừa nhân.\n\n**Chú ý:** Hai số khác dấu cho tích âm; hai số cùng âm cho tích dương; thừa số 0 cho tích 0.\n\n**Phần 2. Trình bày**\n\n$(-16).5=-(16.5)=-80$\n\nVậy $(-16).5=-80$.",
+    "kiem": [
+      "(-16)*5===-80"
+    ],
+    "sach_dap_so": "-90",
+    "ghi_chu": "LỆCH SÁCH — sách in −90, nhưng 16.5 = 80 nên (−16).5 = −80 (sách gõ sai)."
+  },
+  {
+    "id": "B4-1A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01303",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính tích hai số nguyên khác dấu / cùng dấu.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $4.(-25)$.",
+    "dap_an": "-100",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân hai số nguyên = nhân phần số (bỏ dấu) rồi đặt dấu: cùng dấu thì tích dương, khác dấu thì tích âm.\n\n**Bước 1.** Xét dấu hai thừa số: thừa số thứ nhất là số dương, thừa số thứ hai là số âm, tức là hai thừa số khác dấu.\n\n**Bước 2.** Bỏ dấu “−” của số âm rồi nhân hai số tự nhiên 4 và 25.\n\n**Bước 3.** Hai thừa số khác dấu nên tích là số âm: đặt dấu “−” trước kết quả vừa nhân.\n\n**Chú ý:** Hai số khác dấu cho tích âm; hai số cùng âm cho tích dương; thừa số 0 cho tích 0.\n\n**Phần 2. Trình bày**\n\n$4.(-25)=-(4.25)=-100$\n\nVậy $4.(-25)=-100$.",
+    "kiem": [
+      "4*(-25)===-100"
+    ],
+    "sach_dap_so": "-100",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-1A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01303",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính tích hai số nguyên khác dấu / cùng dấu.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $(-8).12$.",
+    "dap_an": "-96",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân hai số nguyên = nhân phần số (bỏ dấu) rồi đặt dấu: cùng dấu thì tích dương, khác dấu thì tích âm.\n\n**Bước 1.** Xét dấu hai thừa số: thừa số thứ nhất là số âm, thừa số thứ hai là số dương, tức là hai thừa số khác dấu.\n\n**Bước 2.** Bỏ dấu “−” của số âm rồi nhân hai số tự nhiên 8 và 12.\n\n**Bước 3.** Hai thừa số khác dấu nên tích là số âm: đặt dấu “−” trước kết quả vừa nhân.\n\n**Chú ý:** Hai số khác dấu cho tích âm; hai số cùng âm cho tích dương; thừa số 0 cho tích 0.\n\n**Phần 2. Trình bày**\n\n$(-8).12=-(8.12)=-96$\n\nVậy $(-8).12=-96$.",
+    "kiem": [
+      "(-8)*12===-96"
+    ],
+    "sach_dap_so": "-96",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-1A-d",
+    "vai": "giang",
+    "dang_bai": "NDB01303",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính tích hai số nguyên khác dấu / cùng dấu.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $22.(-5)$.",
+    "dap_an": "-110",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân hai số nguyên = nhân phần số (bỏ dấu) rồi đặt dấu: cùng dấu thì tích dương, khác dấu thì tích âm.\n\n**Bước 1.** Xét dấu hai thừa số: thừa số thứ nhất là số dương, thừa số thứ hai là số âm, tức là hai thừa số khác dấu.\n\n**Bước 2.** Bỏ dấu “−” của số âm rồi nhân hai số tự nhiên 22 và 5.\n\n**Bước 3.** Hai thừa số khác dấu nên tích là số âm: đặt dấu “−” trước kết quả vừa nhân.\n\n**Chú ý:** Hai số khác dấu cho tích âm; hai số cùng âm cho tích dương; thừa số 0 cho tích 0.\n\n**Phần 2. Trình bày**\n\n$22.(-5)=-(22.5)=-110$\n\nVậy $22.(-5)=-110$.",
+    "kiem": [
+      "22*(-5)===-110"
+    ],
+    "sach_dap_so": "-110",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-1B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01303",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính tích hai số nguyên khác dấu / cùng dấu.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $(-20).8$.",
+    "dap_an": "-160",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân hai số nguyên = nhân phần số (bỏ dấu) rồi đặt dấu: cùng dấu thì tích dương, khác dấu thì tích âm.\n\n**Bước 1.** Xét dấu hai thừa số: thừa số thứ nhất là số âm, thừa số thứ hai là số dương, tức là hai thừa số khác dấu.\n\n**Bước 2.** Bỏ dấu “−” của số âm rồi nhân hai số tự nhiên 20 và 8.\n\n**Bước 3.** Hai thừa số khác dấu nên tích là số âm: đặt dấu “−” trước kết quả vừa nhân.\n\n**Chú ý:** Hai số khác dấu cho tích âm; hai số cùng âm cho tích dương; thừa số 0 cho tích 0.\n\n**Phần 2. Trình bày**\n\n$(-20).8=-(20.8)=-160$\n\nVậy $(-20).8=-160$.",
+    "kiem": [
+      "(-20)*8===-160"
+    ],
+    "sach_dap_so": "-160",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-1B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01303",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính tích hai số nguyên khác dấu / cùng dấu.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $18.(-5)$.",
+    "dap_an": "-90",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân hai số nguyên = nhân phần số (bỏ dấu) rồi đặt dấu: cùng dấu thì tích dương, khác dấu thì tích âm.\n\n**Bước 1.** Xét dấu hai thừa số: thừa số thứ nhất là số dương, thừa số thứ hai là số âm, tức là hai thừa số khác dấu.\n\n**Bước 2.** Bỏ dấu “−” của số âm rồi nhân hai số tự nhiên 18 và 5.\n\n**Bước 3.** Hai thừa số khác dấu nên tích là số âm: đặt dấu “−” trước kết quả vừa nhân.\n\n**Chú ý:** Hai số khác dấu cho tích âm; hai số cùng âm cho tích dương; thừa số 0 cho tích 0.\n\n**Phần 2. Trình bày**\n\n$18.(-5)=-(18.5)=-90$\n\nVậy $18.(-5)=-90$.",
+    "kiem": [
+      "18*(-5)===-90"
+    ],
+    "sach_dap_so": "-90",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-1B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01303",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính tích hai số nguyên khác dấu / cùng dấu.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $(-11).(-7)$.",
+    "dap_an": "77",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân hai số nguyên = nhân phần số (bỏ dấu) rồi đặt dấu: cùng dấu thì tích dương, khác dấu thì tích âm.\n\n**Bước 1.** Xét dấu hai thừa số: cả hai đều là số âm, tức là hai thừa số cùng dấu.\n\n**Bước 2.** Bỏ dấu “−” của số âm rồi nhân hai số tự nhiên 11 và 7.\n\n**Bước 3.** Hai thừa số cùng dấu nên tích là số dương: giữ nguyên kết quả vừa nhân.\n\n**Chú ý:** Hai số khác dấu cho tích âm; hai số cùng âm cho tích dương; thừa số 0 cho tích 0.\n\n**Phần 2. Trình bày**\n\n$(-11).(-7)=11.7=77$\n\nVậy $(-11).(-7)=77$.",
+    "kiem": [
+      "(-11)*(-7)===77"
+    ],
+    "sach_dap_so": "77",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-1B-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01303",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính tích hai số nguyên khác dấu / cùng dấu.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $(-101).(-9)$.",
+    "dap_an": "909",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân hai số nguyên = nhân phần số (bỏ dấu) rồi đặt dấu: cùng dấu thì tích dương, khác dấu thì tích âm.\n\n**Bước 1.** Xét dấu hai thừa số: cả hai đều là số âm, tức là hai thừa số cùng dấu.\n\n**Bước 2.** Bỏ dấu “−” của số âm rồi nhân hai số tự nhiên 101 và 9.\n\n**Bước 3.** Hai thừa số cùng dấu nên tích là số dương: giữ nguyên kết quả vừa nhân.\n\n**Chú ý:** Hai số khác dấu cho tích âm; hai số cùng âm cho tích dương; thừa số 0 cho tích 0.\n\n**Phần 2. Trình bày**\n\n$(-101).(-9)=101.9=909$\n\nVậy $(-101).(-9)=909$.",
+    "kiem": [
+      "(-101)*(-9)===909"
+    ],
+    "sach_dap_so": "909",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-2A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01307",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Hai tích có chung thừa số 4, đặt ra ngoài.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính một cách hợp lí: $4.(-135)+4.(-65)$.",
+    "dap_an": "-800",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích có chung thừa số 4 nên dùng tính chất phân phối ngược: đặt 4 ra ngoài rồi tính tổng trong ngoặc.\n\n**Bước 1.** Nhận ra thừa số chung: cả hai tích đều có thừa số 4.\n\n**Bước 2.** Đặt 4 ra ngoài, hai thừa số còn lại làm thành một tổng trong ngoặc vuông.\n\n**Bước 3.** Cộng hai số trong ngoặc: hai số cùng âm nên cộng phần số và giữ dấu “−”.\n\n**Bước 4.** Nhân 4 với tổng vừa tìm được (khác dấu nên tích là số âm).\n\n**Chú ý:** Tính chất phân phối dùng được theo cả hai chiều: $a.b+a.c=a.(b+c)$.\n\n**Phần 2. Trình bày**\n\n$4.(-135)+4.(-65)$\n\n$=4.[(-135)+(-65)]$\n\n$=4.(-200)$\n\n$=-800$\n\nVậy $4.(-135)+4.(-65)=-800$.",
+    "kiem": [
+      "4*(-135)+4*(-65)===-800"
+    ],
+    "sach_dap_so": "-800",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-2A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01307",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Chung thừa số 2, có cặp số đối 2020 và −2020.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính một cách hợp lí: $2.(2020+123)+(-2020).2$.",
+    "dap_an": "246",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích cùng có thừa số 2; trong ngoặc lại có 2020 và −2020 là hai số đối nhau, cộng lại ra 0.\n\n**Bước 1.** Đổi chỗ thừa số để thấy thừa số chung: $(-2020).2=2.(-2020)$.\n\n**Bước 2.** Đặt thừa số chung 2 ra ngoài, trong ngoặc vuông là tổng của hai biểu thức.\n\n**Bước 3.** Trong ngoặc, nhóm hai số đối nhau 2020 và −2020 lại với nhau (giao hoán, kết hợp).\n\n**Bước 4.** Tính phần còn lại rồi nhân với 2.\n\n**Chú ý:** Hai số đối nhau có tổng bằng 0.\n\n**Phần 2. Trình bày**\n\n$2.(2020+123)+(-2020).2$\n\n$=2.(2020+123)+2.(-2020)$\n\n$=2.[(2020+123)+(-2020)]$\n\n$=2.[(2020+(-2020))+123]$\n\n$=2.(0+123)$\n\n$=2.123$\n\n$=246$\n\nVậy $2.(2020+123)+(-2020).2=246$.",
+    "kiem": [
+      "2*(2020+123)+(-2020)*2===246"
+    ],
+    "sach_dap_so": "246",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-2A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01307",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Hai tích có chung thừa số −5, đặt ra ngoài.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính một cách hợp lí: $-5.(20+18)-5.(-8)$.",
+    "dap_an": "-150",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích cùng có thừa số 5 (với dấu −): đưa về dạng $a.b+a.c$ rồi đặt thừa số chung −5 ra ngoài.\n\n**Bước 1.** Đổi phép trừ thành phép cộng: trừ đi tích $5.(-8)$ bằng cộng với tích $(-5).(-8)$ (hai tích này là hai số đối nhau).\n\n**Bước 2.** Lúc này hai tích có thừa số chung là −5: đặt −5 ra ngoài, trong ngoặc vuông là tổng $(20+18)+(-8)$.\n\n**Bước 3.** Tính tổng trong ngoặc: cộng 20 và 18 trước, sau đó cộng với −8.\n\n**Bước 4.** Nhân −5 với kết quả trong ngoặc (khác dấu nên tích là số âm).\n\n**Chú ý:** Chỉ đặt thừa số chung ra ngoài sau khi đã đổi trừ thành cộng, để không sai dấu.\n\n**Phần 2. Trình bày**\n\n$-5.(20+18)-5.(-8)$\n\n$=(-5).(20+18)+(-5).(-8)$\n\n$=(-5).[(20+18)+(-8)]$\n\n$=(-5).30$\n\n$=-150$\n\nVậy $-5.(20+18)-5.(-8)=-150$.",
+    "kiem": [
+      "-5*(20+18)-5*(-8)===-150"
+    ],
+    "sach_dap_so": "-150",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-2B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01309",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Biểu thức nhân–cộng có ngoặc; không có thừa số chung rõ ràng.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính một cách hợp lí: $(-37-17).(-9)+35.(-9-11)$.",
+    "dap_an": "-214",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tính các tổng trong ngoặc trước, rồi nhân, cuối cùng cộng hai tích (thứ tự thực hiện phép tính).\n\n**Bước 1.** Tính hai tổng trong ngoặc: $-37-17$ (hai số cùng âm) và $-9-11$ (hai số cùng âm).\n\n**Bước 2.** Nhân từng cặp: một tích có hai thừa số cùng âm (tích dương), một tích có hai thừa số khác dấu (tích âm).\n\n**Bước 3.** Cộng hai tích vừa tìm được: hai số khác dấu nên lấy số có phần số lớn hơn trừ số kia và giữ dấu của số có phần số lớn hơn.\n\n**Chú ý:** Hai tích ở đây không có thừa số chung nào dùng được; tính từng phần là cách ngắn nhất.\n\n**Phần 2. Trình bày**\n\n$(-37-17).(-9)+35.(-9-11)$\n\n$=(-54).(-9)+35.(-20)$\n\n$=486+(-700)$\n\n$=-214$\n\nVậy $(-37-17).(-9)+35.(-9-11)=-214$.",
+    "kiem": [
+      "(-37-17)*(-9)+35*(-9-11)===-214"
+    ],
+    "sach_dap_so": "-214",
+    "ghi_chu": "Đề yêu cầu \"hợp lí\" nhưng biểu thức không có thừa số chung rõ ràng; tính trực tiếp."
+  },
+  {
+    "id": "B4-2B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01309",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Biểu thức nhân–trừ có ngoặc; tính ngoặc rồi nhân.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Thực hiện phép tính một cách hợp lí: $(-25).(75-45)-75.(45-25)$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tính hai hiệu trong ngoặc trước, rồi nhân, cuối cùng trừ hai tích.\n\n**Bước 1.** Tính hai hiệu trong ngoặc: $75-45$ và $45-25$.\n\n**Bước 2.** Nhân từng cặp: $(-25)$ với hiệu thứ nhất (khác dấu, tích âm) và $75$ với hiệu thứ hai (tích dương).\n\n**Bước 3.** Trừ hai kết quả: đổi phép trừ thành cộng với số đối rồi cộng hai số âm.\n\n**Chú ý:** Hai thừa số trong hai ngoặc không trùng nhau nên không đặt được thừa số chung.\n\n**Phần 2. Trình bày**\n\n$(-25).(75-45)-75.(45-25)$\n\n$=(-25).30-75.20$\n\n$=-750-1500$\n\n$=-2250$\n\nVậy $(-25).(75-45)-75.(45-25)=-2250$.",
+    "kiem": [
+      "(-25)*(75-45)-75*(45-25)===-2250"
+    ],
+    "sach_dap_so": "-2250",
+    "ghi_chu": "Đề yêu cầu \"hợp lí\"; tính trực tiếp ngoặc cho gọn (khai triển rồi rút gọn cũng ra −2250). Đáp số -2250 dài hơn 4 ký tự nên nhập tự luận."
+  },
+  {
+    "id": "B4-2B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Tích nhiều thừa số, nhóm theo giao hoán–kết hợp; bản đồ chỉ mô tả tổng/hiệu.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Thực hiện phép tính một cách hợp lí: $(-8).25.(-2).4.(-5).125$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dùng giao hoán, kết hợp để ghép các thừa số thành những tích tròn chục, tròn trăm, tròn nghìn.\n\n**Bước 1.** Tìm các cặp nhân ra số tròn: $8$ với $125$ cho nghìn, $25$ với $4$ cho trăm, $2$ với $5$ cho chục.\n\n**Bước 2.** Nhóm các thừa số thành ba cặp đó (giao hoán, kết hợp), giữ nguyên dấu của từng thừa số.\n\n**Bước 3.** Tính từng nhóm, chú ý dấu: nhóm có hai số âm cho tích dương, nhóm có một số âm cho tích âm.\n\n**Bước 4.** Nhân ba kết quả với nhau, đặt dấu cuối cùng theo số thừa số âm (tổng cộng ba thừa số âm).\n\n**Chú ý:** Có ba thừa số âm nên tích cuối cùng là số âm.\n\n**Phần 2. Trình bày**\n\n$(-8).25.(-2).4.(-5).125$\n\n$=[(-8).125].(25.4).[(-2).(-5)]$\n\n$=(-1000).100.10$\n\n$=-1000000$\n\nVậy $(-8).25.(-2).4.(-5).125=-1000000$.",
+    "kiem": [
+      "(-8)*25*(-2)*4*(-5)*125===-1000000"
+    ],
+    "sach_dap_so": "-1000000",
+    "ghi_chu": "Đáp số -1000000 dài hơn 4 ký tự nên nhập tự luận."
+  },
+  {
+    "id": "B4-3A",
+    "vai": "giang",
+    "dang_bai": "NDB01304",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Bảng nhân; hai cột cuối phải chia tích cho thừa số đã biết.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Điền vào ô trống:\n\n$\\begin{array}{ccccc}\\hline x & -5 & 6 & \\ldots & -4 \\\\ \\hline y & 14 & -25 & 12 & \\ldots \\\\ \\hline xy & \\ldots & \\ldots & -48 & 100 \\\\ \\hline\\end{array}$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cột nào đủ hai thừa số thì nhân để tìm tích; cột nào thiếu một thừa số thì lấy tích chia cho thừa số đã biết.\n\n**Bước 1.** Cột 1 và cột 2 có đủ $x$, $y$: nhân hai số nguyên (xét dấu rồi nhân phần số).\n\n**Bước 2.** Cột 3 thiếu $x$: $x$ là thừa số chưa biết nên $x=xy:y$.\n\n**Bước 3.** Cột 4 thiếu $y$: $y$ là thừa số chưa biết nên $y=xy:x$.\n\n**Bước 4.** Khi chia hai số nguyên: cùng dấu thì thương dương, khác dấu thì thương âm.\n\n**Chú ý:** Kiểm tra lại bằng cách nhân $x$ với $y$ ở mỗi cột, phải ra đúng giá trị $xy$ đã cho.\n\n**Phần 2. Trình bày**\n\nCột 1: $xy=(-5).14=-70$\n\nCột 2: $xy=6.(-25)=-150$\n\nCột 3: $x=(-48):12=-4$\n\nCột 4: $y=100:(-4)=-25$\n\nVậy ta điền được bảng sau:\n\n$\\begin{array}{ccccc}\\hline x & -5 & 6 & -4 & -4 \\\\ \\hline y & 14 & -25 & 12 & -25 \\\\ \\hline xy & -70 & -150 & -48 & 100 \\\\ \\hline\\end{array}$",
+    "kiem": [
+      "(-5)*14===-70",
+      "6*(-25)===-150",
+      "-48/12===-4",
+      "100/(-4)===-25"
+    ],
+    "sach_dap_so": "xy: -70; -150; (cột 3: x=-4); (cột 4: x=4, y=25)",
+    "ghi_chu": "LỆCH SÁCH — đề (file gõ) cho x = −4 ở cột 4 và xy = 100 nên y = −25; sách in cột 4 là x = 4, y = 25 (có vẻ đề in/ gõ sai dấu của x). Cần Thùy đối chiếu bản gốc."
+  },
+  {
+    "id": "B4-3B",
+    "vai": "luyen",
+    "dang_bai": "NDB01304",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Bảng nhân; hai cột cuối phải chia tích cho thừa số đã biết.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Điền vào ô trống:\n\n$\\begin{array}{ccccc}\\hline x & -15 & 9 & \\ldots & -20 \\\\ \\hline y & 6 & -22 & 19 & \\ldots \\\\ \\hline xy & \\ldots & \\ldots & -76 & 80 \\\\ \\hline\\end{array}$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cột nào đủ hai thừa số thì nhân để tìm tích; cột nào thiếu một thừa số thì lấy tích chia cho thừa số đã biết.\n\n**Bước 1.** Cột 1 và cột 2 có đủ $x$, $y$: nhân hai số nguyên (xét dấu rồi nhân phần số).\n\n**Bước 2.** Cột 3 thiếu $x$: $x$ là thừa số chưa biết nên $x=xy:y$.\n\n**Bước 3.** Cột 4 thiếu $y$: $y$ là thừa số chưa biết nên $y=xy:x$.\n\n**Bước 4.** Khi chia hai số nguyên: cùng dấu thì thương dương, khác dấu thì thương âm.\n\n**Chú ý:** Kiểm tra lại bằng cách nhân $x$ với $y$ ở mỗi cột, phải ra đúng giá trị $xy$ đã cho.\n\n**Phần 2. Trình bày**\n\nCột 1: $xy=(-15).6=-90$\n\nCột 2: $xy=9.(-22)=-198$\n\nCột 3: $x=(-76):19=-4$\n\nCột 4: $y=80:(-20)=-4$\n\nVậy ta điền được bảng sau:\n\n$\\begin{array}{ccccc}\\hline x & -15 & 9 & -4 & -20 \\\\ \\hline y & 6 & -22 & 19 & -4 \\\\ \\hline xy & -90 & -198 & -76 & 80 \\\\ \\hline\\end{array}$",
+    "kiem": [
+      "(-15)*6===-90",
+      "9*(-22)===-198",
+      "-76/19===-4",
+      "80/(-20)===-4"
+    ],
+    "sach_dap_so": "xy: -90; -198; x = -4; y = -4",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-4A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "So sánh hai biểu thức tích bằng cách tính từng vế.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh $(-17).3$ với $-42$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tính giá trị của từng vế (mỗi tích: xét dấu rồi nhân phần số), sau đó so sánh hai số nguyên nhận được.\n\n**Bước 1.** Tính vế trái $(-17).3$: xét dấu hai thừa số rồi nhân phần số.\n\n**Bước 2.** Vế phải $-42$ đã là một số nguyên, giữ nguyên.\n\n**Bước 3.** So sánh hai số nguyên vừa có: số âm nhỏ hơn số dương; hai số âm thì số có phần số lớn hơn lại nhỏ hơn.\n\n**Chú ý:** Chỉ so sánh sau khi đã tính xong cả hai vế.\n\n**Phần 2. Trình bày**\n\n$(-17).3=-51$\n\nTa có $-51<-42$. Vậy $(-17).3<-42$.",
+    "kiem": [
+      "(-17)*3<-42"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-4A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "So sánh hai biểu thức tích bằng cách tính từng vế.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh $(-33).5$ với $55.(-3)$.",
+    "dap_an": "=",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tính giá trị của từng vế (mỗi tích: xét dấu rồi nhân phần số), sau đó so sánh hai số nguyên nhận được.\n\n**Bước 1.** Tính vế trái $(-33).5$: xét dấu hai thừa số rồi nhân phần số.\n\n**Bước 2.** Tính vế phải $55.(-3)$ theo cách tương tự.\n\n**Bước 3.** So sánh hai số nguyên vừa có: số âm nhỏ hơn số dương; hai số âm thì số có phần số lớn hơn lại nhỏ hơn.\n\n**Chú ý:** Chỉ so sánh sau khi đã tính xong cả hai vế.\n\n**Phần 2. Trình bày**\n\n$(-33).5=-165$\n\n$55.(-3)=-165$\n\nTa có $-165=-165$. Vậy $(-33).5=55.(-3)$.",
+    "kiem": [
+      "(-33)*5===55*(-3)"
+    ],
+    "sach_dap_so": "=",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-4A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "So sánh hai biểu thức tích bằng cách tính từng vế.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh $22.(-5)$ với $-100$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tính giá trị của từng vế (mỗi tích: xét dấu rồi nhân phần số), sau đó so sánh hai số nguyên nhận được.\n\n**Bước 1.** Tính vế trái $22.(-5)$: xét dấu hai thừa số rồi nhân phần số.\n\n**Bước 2.** Vế phải $-100$ đã là một số nguyên, giữ nguyên.\n\n**Bước 3.** So sánh hai số nguyên vừa có: số âm nhỏ hơn số dương; hai số âm thì số có phần số lớn hơn lại nhỏ hơn.\n\n**Chú ý:** Chỉ so sánh sau khi đã tính xong cả hai vế.\n\n**Phần 2. Trình bày**\n\n$22.(-5)=-110$\n\nTa có $-110<-100$. Vậy $22.(-5)<-100$.",
+    "kiem": [
+      "22*(-5)<-100"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-4A-d",
+    "vai": "giang",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "So sánh hai biểu thức tích bằng cách tính từng vế.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh $45.(-10)$ với $15.10$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tính giá trị của từng vế (mỗi tích: xét dấu rồi nhân phần số), sau đó so sánh hai số nguyên nhận được.\n\n**Bước 1.** Tính vế trái $45.(-10)$: xét dấu hai thừa số rồi nhân phần số.\n\n**Bước 2.** Tính vế phải $15.10$ theo cách tương tự.\n\n**Bước 3.** So sánh hai số nguyên vừa có: số âm nhỏ hơn số dương; hai số âm thì số có phần số lớn hơn lại nhỏ hơn.\n\n**Chú ý:** Chỉ so sánh sau khi đã tính xong cả hai vế.\n\n**Phần 2. Trình bày**\n\n$45.(-10)=-450$\n\n$15.10=150$\n\nTa có $-450<150$. Vậy $45.(-10)<15.10$.",
+    "kiem": [
+      "45*(-10)<15*10"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-4B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "So sánh hai biểu thức tích bằng cách tính từng vế.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh $31.(-2)$ với $(-30).(-2)$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tính giá trị của từng vế (mỗi tích: xét dấu rồi nhân phần số), sau đó so sánh hai số nguyên nhận được.\n\n**Bước 1.** Tính vế trái $31.(-2)$: xét dấu hai thừa số rồi nhân phần số.\n\n**Bước 2.** Tính vế phải $(-30).(-2)$ theo cách tương tự.\n\n**Bước 3.** So sánh hai số nguyên vừa có: số âm nhỏ hơn số dương; hai số âm thì số có phần số lớn hơn lại nhỏ hơn.\n\n**Chú ý:** Chỉ so sánh sau khi đã tính xong cả hai vế.\n\n**Phần 2. Trình bày**\n\n$31.(-2)=-62$\n\n$(-30).(-2)=60$\n\nTa có $-62<60$. Vậy $31.(-2)<(-30).(-2)$.",
+    "kiem": [
+      "31*(-2)<(-30)*(-2)"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-4B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "So sánh hai biểu thức tích bằng cách tính từng vế.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh $(-9).10$ với $0$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tính giá trị của từng vế (mỗi tích: xét dấu rồi nhân phần số), sau đó so sánh hai số nguyên nhận được.\n\n**Bước 1.** Tính vế trái $(-9).10$: xét dấu hai thừa số rồi nhân phần số.\n\n**Bước 2.** Vế phải $0$ đã là một số nguyên, giữ nguyên.\n\n**Bước 3.** So sánh hai số nguyên vừa có: số âm nhỏ hơn số dương; hai số âm thì số có phần số lớn hơn lại nhỏ hơn.\n\n**Chú ý:** Chỉ so sánh sau khi đã tính xong cả hai vế.\n\n**Phần 2. Trình bày**\n\n$(-9).10=-90$\n\nTa có $-90<0$. Vậy $(-9).10<0$.",
+    "kiem": [
+      "(-9)*10<0"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-4B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "So sánh hai biểu thức tích bằng cách tính từng vế.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh $101.(-2)$ với $101.(-3)$.",
+    "dap_an": ">",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tính giá trị của từng vế (mỗi tích: xét dấu rồi nhân phần số), sau đó so sánh hai số nguyên nhận được.\n\n**Bước 1.** Tính vế trái $101.(-2)$: xét dấu hai thừa số rồi nhân phần số.\n\n**Bước 2.** Tính vế phải $101.(-3)$ theo cách tương tự.\n\n**Bước 3.** So sánh hai số nguyên vừa có: số âm nhỏ hơn số dương; hai số âm thì số có phần số lớn hơn lại nhỏ hơn.\n\n**Chú ý:** Chỉ so sánh sau khi đã tính xong cả hai vế.\n\n**Phần 2. Trình bày**\n\n$101.(-2)=-202$\n\n$101.(-3)=-303$\n\nTa có $-202>-303$. Vậy $101.(-2)>101.(-3)$.",
+    "kiem": [
+      "101*(-2)>101*(-3)"
+    ],
+    "sach_dap_so": ">",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-4B-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "So sánh hai biểu thức tích bằng cách tính từng vế.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh $75.(-2)$ với $(-2).(-5)$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tính giá trị của từng vế (mỗi tích: xét dấu rồi nhân phần số), sau đó so sánh hai số nguyên nhận được.\n\n**Bước 1.** Tính vế trái $75.(-2)$: xét dấu hai thừa số rồi nhân phần số.\n\n**Bước 2.** Tính vế phải $(-2).(-5)$ theo cách tương tự.\n\n**Bước 3.** So sánh hai số nguyên vừa có: số âm nhỏ hơn số dương; hai số âm thì số có phần số lớn hơn lại nhỏ hơn.\n\n**Chú ý:** Chỉ so sánh sau khi đã tính xong cả hai vế.\n\n**Phần 2. Trình bày**\n\n$75.(-2)=-150$\n\n$(-2).(-5)=10$\n\nTa có $-150<10$. Vậy $75.(-2)<(-2).(-5)$.",
+    "kiem": [
+      "75*(-2)<(-2)*(-5)"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-5A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "So sánh tích với 0 hoặc với một số bằng cách xét dấu.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Không tính kết quả, hãy so sánh: $123.(-3)$ với $12$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Không cần tính: chỉ xét dấu của mỗi vế (đếm số thừa số âm) rồi so sánh hai dấu.\n\n**Bước 1.** Vế trái có 1 thừa số âm, là số lẻ nên tích là số âm.\n\n**Bước 2.** Vế phải là số dương.\n\n**Bước 3.** Kết luận bằng cách so sánh dấu của hai vế: số âm < 0 < số dương.\n\n**Chú ý:** Tích có số lẻ thừa số âm thì âm, có số chẵn thừa số âm thì dương, có thừa số 0 thì bằng 0.\n\n**Phần 2. Trình bày**\n\nVế trái: có 1 thừa số âm nên tích là số âm.\n\nVế phải là số dương.\n\nVậy $123.(-3)<12$.",
+    "kiem": [
+      "123*(-3)<12"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-5A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "So sánh tích với 0 hoặc với một số bằng cách xét dấu.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Không tính kết quả, hãy so sánh: $(-18).(-2)$ với $157.(-3)$.",
+    "dap_an": ">",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Không cần tính: chỉ xét dấu của mỗi vế (đếm số thừa số âm) rồi so sánh hai dấu.\n\n**Bước 1.** Vế trái có 2 thừa số âm, là số chẵn nên tích là số dương.\n\n**Bước 2.** Vế phải có 1 thừa số âm, là số lẻ nên tích là số âm.\n\n**Bước 3.** Kết luận bằng cách so sánh dấu của hai vế: số âm < 0 < số dương.\n\n**Chú ý:** Tích có số lẻ thừa số âm thì âm, có số chẵn thừa số âm thì dương, có thừa số 0 thì bằng 0.\n\n**Phần 2. Trình bày**\n\nVế trái: có 2 thừa số âm nên tích là số dương.\n\nVế phải: có 1 thừa số âm nên tích là số âm.\n\nVậy $(-18).(-2)>157.(-3)$.",
+    "kiem": [
+      "(-18)*(-2)>157*(-3)"
+    ],
+    "sach_dap_so": ">",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-5A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "So sánh tích với 0 hoặc với một số bằng cách xét dấu.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Không tính kết quả, hãy so sánh: $25.(-8)$ với $28.5$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Không cần tính: chỉ xét dấu của mỗi vế (đếm số thừa số âm) rồi so sánh hai dấu.\n\n**Bước 1.** Vế trái có 1 thừa số âm, là số lẻ nên tích là số âm.\n\n**Bước 2.** Vế phải có 0 thừa số âm, là số chẵn nên tích là số dương.\n\n**Bước 3.** Kết luận bằng cách so sánh dấu của hai vế: số âm < 0 < số dương.\n\n**Chú ý:** Tích có số lẻ thừa số âm thì âm, có số chẵn thừa số âm thì dương, có thừa số 0 thì bằng 0.\n\n**Phần 2. Trình bày**\n\nVế trái: có 1 thừa số âm nên tích là số âm.\n\nVế phải: có 0 thừa số âm nên tích là số dương.\n\nVậy $25.(-8)<28.5$.",
+    "kiem": [
+      "25*(-8)<28*5"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-5A-d",
+    "vai": "giang",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "So sánh tích với 0 hoặc với một số bằng cách xét dấu.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Không tính kết quả, hãy so sánh: $270.(-101)$ với $(-270).(-105)$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Không cần tính: chỉ xét dấu của mỗi vế (đếm số thừa số âm) rồi so sánh hai dấu.\n\n**Bước 1.** Vế trái có 1 thừa số âm, là số lẻ nên tích là số âm.\n\n**Bước 2.** Vế phải có 2 thừa số âm, là số chẵn nên tích là số dương.\n\n**Bước 3.** Kết luận bằng cách so sánh dấu của hai vế: số âm < 0 < số dương.\n\n**Chú ý:** Tích có số lẻ thừa số âm thì âm, có số chẵn thừa số âm thì dương, có thừa số 0 thì bằng 0.\n\n**Phần 2. Trình bày**\n\nVế trái: có 1 thừa số âm nên tích là số âm.\n\nVế phải: có 2 thừa số âm nên tích là số dương.\n\nVậy $270.(-101)<(-270).(-105)$.",
+    "kiem": [
+      "270*(-101)<(-270)*(-105)"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-5B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "So sánh tích với 0 hoặc với một số bằng cách xét dấu.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Không tính kết quả, hãy so sánh: $345.(-3)$ với $102$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Không cần tính: chỉ xét dấu của mỗi vế (đếm số thừa số âm) rồi so sánh hai dấu.\n\n**Bước 1.** Vế trái có 1 thừa số âm, là số lẻ nên tích là số âm.\n\n**Bước 2.** Vế phải là số dương.\n\n**Bước 3.** Kết luận bằng cách so sánh dấu của hai vế: số âm < 0 < số dương.\n\n**Chú ý:** Tích có số lẻ thừa số âm thì âm, có số chẵn thừa số âm thì dương, có thừa số 0 thì bằng 0.\n\n**Phần 2. Trình bày**\n\nVế trái: có 1 thừa số âm nên tích là số âm.\n\nVế phải là số dương.\n\nVậy $345.(-3)<102$.",
+    "kiem": [
+      "345*(-3)<102"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-5B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "So sánh tích với 0 hoặc với một số bằng cách xét dấu.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Không tính kết quả, hãy so sánh: $(-108).(-5)$ với $257.(-3)$.",
+    "dap_an": ">",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Không cần tính: chỉ xét dấu của mỗi vế (đếm số thừa số âm) rồi so sánh hai dấu.\n\n**Bước 1.** Vế trái có 2 thừa số âm, là số chẵn nên tích là số dương.\n\n**Bước 2.** Vế phải có 1 thừa số âm, là số lẻ nên tích là số âm.\n\n**Bước 3.** Kết luận bằng cách so sánh dấu của hai vế: số âm < 0 < số dương.\n\n**Chú ý:** Tích có số lẻ thừa số âm thì âm, có số chẵn thừa số âm thì dương, có thừa số 0 thì bằng 0.\n\n**Phần 2. Trình bày**\n\nVế trái: có 2 thừa số âm nên tích là số dương.\n\nVế phải: có 1 thừa số âm nên tích là số âm.\n\nVậy $(-108).(-5)>257.(-3)$.",
+    "kiem": [
+      "(-108)*(-5)>257*(-3)"
+    ],
+    "sach_dap_so": ">",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-5B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "So sánh tích với 0 hoặc với một số bằng cách xét dấu.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Không tính kết quả, hãy so sánh: $45.(-9)$ với $18.25$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Không cần tính: chỉ xét dấu của mỗi vế (đếm số thừa số âm) rồi so sánh hai dấu.\n\n**Bước 1.** Vế trái có 1 thừa số âm, là số lẻ nên tích là số âm.\n\n**Bước 2.** Vế phải có 0 thừa số âm, là số chẵn nên tích là số dương.\n\n**Bước 3.** Kết luận bằng cách so sánh dấu của hai vế: số âm < 0 < số dương.\n\n**Chú ý:** Tích có số lẻ thừa số âm thì âm, có số chẵn thừa số âm thì dương, có thừa số 0 thì bằng 0.\n\n**Phần 2. Trình bày**\n\nVế trái: có 1 thừa số âm nên tích là số âm.\n\nVế phải: có 0 thừa số âm nên tích là số dương.\n\nVậy $45.(-9)<18.25$.",
+    "kiem": [
+      "45*(-9)<18*25"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-5B-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "So sánh tích với 0 hoặc với một số bằng cách xét dấu.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Không tính kết quả, hãy so sánh: $2370.(-5)$ với $(-170).(-15)$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Không cần tính: chỉ xét dấu của mỗi vế (đếm số thừa số âm) rồi so sánh hai dấu.\n\n**Bước 1.** Vế trái có 1 thừa số âm, là số lẻ nên tích là số âm.\n\n**Bước 2.** Vế phải có 2 thừa số âm, là số chẵn nên tích là số dương.\n\n**Bước 3.** Kết luận bằng cách so sánh dấu của hai vế: số âm < 0 < số dương.\n\n**Chú ý:** Tích có số lẻ thừa số âm thì âm, có số chẵn thừa số âm thì dương, có thừa số 0 thì bằng 0.\n\n**Phần 2. Trình bày**\n\nVế trái: có 1 thừa số âm nên tích là số âm.\n\nVế phải: có 2 thừa số âm nên tích là số dương.\n\nVậy $2370.(-5)<(-170).(-15)$.",
+    "kiem": [
+      "2370*(-5)<(-170)*(-15)"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-6A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01317",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Một thừa số hằng, tích bằng 0; gần nhất với tìm x nhân chia cơ bản.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tìm số nguyên $x$, biết: $2.x=0$.",
+    "dap_an": "0",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích bằng 0 khi có ít nhất một thừa số bằng 0; thừa số đã biết khác 0 thì thừa số chứa $x$ phải bằng 0.\n\n**Bước 1.** Xác định các thừa số của tích: $2$ và $x$.\n\n**Bước 2.** Thừa số đã biết khác 0, nên thừa số còn lại (chứa $x$) phải làm cho tích bằng 0.\n\n**Bước 3.** Từ đó lập điều kiện cho thừa số chứa $x$ rồi tìm $x$ bằng cách tìm thành phần chưa biết của phép tính.\n\n**Chú ý:** Chỉ khi tích bằng 0 mới suy được thừa số chứa $x$ bằng 0; nhớ viết rõ vì sao thừa số đã biết khác 0.\n\n**Phần 2. Trình bày**\n\n$2.x=0$\n\nVì $2\\neq 0$ nên $x=0$.\n\nVậy $x=0$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-1000;x<=1000;x++)if(x*2===0)r.push(x);return JSON.stringify(r)===JSON.stringify([0])})()"
+    ],
+    "sach_dap_so": "x=0",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-6A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01318",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Tích có ngoặc chứa x bằng 0; bản đồ chưa có dạng riêng cho một thừa số hằng.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tìm số nguyên $x$, biết: $20.(x+2)=0$.",
+    "dap_an": "-2",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích bằng 0 khi có ít nhất một thừa số bằng 0; thừa số đã biết khác 0 thì thừa số chứa $x$ phải bằng 0.\n\n**Bước 1.** Xác định các thừa số của tích: $20$ và $(x+2)$.\n\n**Bước 2.** Thừa số đã biết khác 0, nên thừa số còn lại (chứa $x$) phải làm cho tích bằng 0.\n\n**Bước 3.** Từ đó lập điều kiện cho thừa số chứa $x$ rồi tìm $x$ bằng cách tìm thành phần chưa biết của phép tính.\n\n**Chú ý:** Chỉ khi tích bằng 0 mới suy được thừa số chứa $x$ bằng 0; nhớ viết rõ vì sao thừa số đã biết khác 0.\n\n**Phần 2. Trình bày**\n\n$20.(x+2)=0$\n\nVì $20\\neq 0$ nên $x+2=0$.\n\n$x=0-2$\n\n$x=-2$\n\nVậy $x=-2$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-1000;x<=1000;x++)if(20*(x+2)===0)r.push(x);return JSON.stringify(r)===JSON.stringify([-2])})()"
+    ],
+    "sach_dap_so": "x=-2",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-6A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01317",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Một thừa số hằng, tích bằng 0; gần nhất với tìm x nhân chia cơ bản.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tìm số nguyên $x$, biết: $x.(-101)=0$.",
+    "dap_an": "0",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích bằng 0 khi có ít nhất một thừa số bằng 0; thừa số đã biết khác 0 thì thừa số chứa $x$ phải bằng 0.\n\n**Bước 1.** Xác định các thừa số của tích: $x$ và $-101$.\n\n**Bước 2.** Thừa số đã biết khác 0, nên thừa số còn lại (chứa $x$) phải làm cho tích bằng 0.\n\n**Bước 3.** Từ đó lập điều kiện cho thừa số chứa $x$ rồi tìm $x$ bằng cách tìm thành phần chưa biết của phép tính.\n\n**Chú ý:** Chỉ khi tích bằng 0 mới suy được thừa số chứa $x$ bằng 0; nhớ viết rõ vì sao thừa số đã biết khác 0.\n\n**Phần 2. Trình bày**\n\n$x.(-101)=0$\n\nVì $-101\\neq 0$ nên $x=0$.\n\nVậy $x=0$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-1000;x<=1000;x++)if(x*(-101)===0)r.push(x);return JSON.stringify(r)===JSON.stringify([0])})()"
+    ],
+    "sach_dap_so": "x=0",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-6B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01317",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Một thừa số hằng, tích bằng 0; gần nhất với tìm x nhân chia cơ bản.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tìm số nguyên $x$, biết: $-5.x=0$.",
+    "dap_an": "0",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích bằng 0 khi có ít nhất một thừa số bằng 0; thừa số đã biết khác 0 thì thừa số chứa $x$ phải bằng 0.\n\n**Bước 1.** Xác định các thừa số của tích: $-5$ và $x$.\n\n**Bước 2.** Thừa số đã biết khác 0, nên thừa số còn lại (chứa $x$) phải làm cho tích bằng 0.\n\n**Bước 3.** Từ đó lập điều kiện cho thừa số chứa $x$ rồi tìm $x$ bằng cách tìm thành phần chưa biết của phép tính.\n\n**Chú ý:** Chỉ khi tích bằng 0 mới suy được thừa số chứa $x$ bằng 0; nhớ viết rõ vì sao thừa số đã biết khác 0.\n\n**Phần 2. Trình bày**\n\n$-5.x=0$\n\nVì $-5\\neq 0$ nên $x=0$.\n\nVậy $x=0$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-1000;x<=1000;x++)if(-5*x===0)r.push(x);return JSON.stringify(r)===JSON.stringify([0])})()"
+    ],
+    "sach_dap_so": "x=0",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-6B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01318",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Tích có ngoặc chứa x bằng 0; bản đồ chưa có dạng riêng cho một thừa số hằng.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tìm số nguyên $x$, biết: $120.(x-12)=0$.",
+    "dap_an": "12",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích bằng 0 khi có ít nhất một thừa số bằng 0; thừa số đã biết khác 0 thì thừa số chứa $x$ phải bằng 0.\n\n**Bước 1.** Xác định các thừa số của tích: $120$ và $(x-12)$.\n\n**Bước 2.** Thừa số đã biết khác 0, nên thừa số còn lại (chứa $x$) phải làm cho tích bằng 0.\n\n**Bước 3.** Từ đó lập điều kiện cho thừa số chứa $x$ rồi tìm $x$ bằng cách tìm thành phần chưa biết của phép tính.\n\n**Chú ý:** Chỉ khi tích bằng 0 mới suy được thừa số chứa $x$ bằng 0; nhớ viết rõ vì sao thừa số đã biết khác 0.\n\n**Phần 2. Trình bày**\n\n$120.(x-12)=0$\n\nVì $120\\neq 0$ nên $x-12=0$.\n\n$x=0+12$\n\n$x=12$\n\nVậy $x=12$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-1000;x<=1000;x++)if(120*(x-12)===0)r.push(x);return JSON.stringify(r)===JSON.stringify([12])})()"
+    ],
+    "sach_dap_so": "x=12",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-6B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01317",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Một thừa số hằng, tích bằng 0; gần nhất với tìm x nhân chia cơ bản.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tìm số nguyên $x$, biết: $x.(-11)=0$.",
+    "dap_an": "0",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích bằng 0 khi có ít nhất một thừa số bằng 0; thừa số đã biết khác 0 thì thừa số chứa $x$ phải bằng 0.\n\n**Bước 1.** Xác định các thừa số của tích: $x$ và $-11$.\n\n**Bước 2.** Thừa số đã biết khác 0, nên thừa số còn lại (chứa $x$) phải làm cho tích bằng 0.\n\n**Bước 3.** Từ đó lập điều kiện cho thừa số chứa $x$ rồi tìm $x$ bằng cách tìm thành phần chưa biết của phép tính.\n\n**Chú ý:** Chỉ khi tích bằng 0 mới suy được thừa số chứa $x$ bằng 0; nhớ viết rõ vì sao thừa số đã biết khác 0.\n\n**Phần 2. Trình bày**\n\n$x.(-11)=0$\n\nVì $-11\\neq 0$ nên $x=0$.\n\nVậy $x=0$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-1000;x<=1000;x++)if(x*(-11)===0)r.push(x);return JSON.stringify(r)===JSON.stringify([0])})()"
+    ],
+    "sach_dap_so": "x=0",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-7A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01318",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Tích có ngoặc chứa x bằng 0; bản đồ chưa có dạng riêng cho một thừa số hằng.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tìm số nguyên $x$, biết: $(-31).(x+9)=0$.",
+    "dap_an": "-9",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích bằng 0 khi có ít nhất một thừa số bằng 0; thừa số đã biết khác 0 thì thừa số chứa $x$ phải bằng 0.\n\n**Bước 1.** Xác định các thừa số của tích: $-31$ và $(x+9)$.\n\n**Bước 2.** Thừa số đã biết khác 0, nên thừa số còn lại (chứa $x$) phải làm cho tích bằng 0.\n\n**Bước 3.** Từ đó lập điều kiện cho thừa số chứa $x$ rồi tìm $x$ bằng cách tìm thành phần chưa biết của phép tính.\n\n**Chú ý:** Chỉ khi tích bằng 0 mới suy được thừa số chứa $x$ bằng 0; nhớ viết rõ vì sao thừa số đã biết khác 0.\n\n**Phần 2. Trình bày**\n\n$(-31).(x+9)=0$\n\nVì $-31\\neq 0$ nên $x+9=0$.\n\n$x=0-9$\n\n$x=-9$\n\nVậy $x=-9$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-1000;x<=1000;x++)if((-31)*(x+9)===0)r.push(x);return JSON.stringify(r)===JSON.stringify([-9])})()"
+    ],
+    "sach_dap_so": "x=-9",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-7A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01321",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tích hai thừa số chứa x bằng 0.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$, biết: $(x-15)(x+17)=0$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích bằng 0 khi có ít nhất một thừa số bằng 0: xét từng thừa số chứa $x$ bằng 0 rồi gộp các giá trị tìm được.\n\n**Bước 1.** Xác định hai thừa số của tích: $(x-15)$ và $(x+17)$.\n\n**Bước 2.** Một tích bằng 0 khi ít nhất một thừa số bằng 0, nên xét từng thừa số bằng 0.\n\n**Bước 3.** Giải từng trường hợp (tìm thành phần chưa biết) rồi viết đủ các giá trị của $x$.\n\n**Chú ý:** Phải xét đủ MỌI thừa số chứa $x$ và liệt kê đủ các giá trị của $x$, không bỏ sót trường hợp nào.\n\n**Phần 2. Trình bày**\n\n$(x-15)(x+17)=0$\n\nSuy ra $x-15=0$ hoặc $x+17=0$.\n\n$x-15=0$ thì $x=0+15=15$.\n\n$x+17=0$ thì $x=0-17=-17$.\n\nVậy $x=15$ hoặc $x=-17$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-1000;x<=1000;x++)if((x-15)*(x+17)===0)r.push(x);return JSON.stringify(r)===JSON.stringify([-17,15])})()"
+    ],
+    "sach_dap_so": "x=15 hoặc x=-17",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-7A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01321",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tích hai thừa số chứa x bằng 0.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$, biết: $x(x+15)=0$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích bằng 0 khi có ít nhất một thừa số bằng 0: xét từng thừa số chứa $x$ bằng 0 rồi gộp các giá trị tìm được.\n\n**Bước 1.** Xác định hai thừa số của tích: $x$ và $(x+15)$.\n\n**Bước 2.** Một tích bằng 0 khi ít nhất một thừa số bằng 0, nên xét từng thừa số bằng 0.\n\n**Bước 3.** Giải từng trường hợp (tìm thành phần chưa biết) rồi viết đủ các giá trị của $x$.\n\n**Chú ý:** Phải xét đủ MỌI thừa số chứa $x$ và liệt kê đủ các giá trị của $x$, không bỏ sót trường hợp nào.\n\n**Phần 2. Trình bày**\n\n$x(x+15)=0$\n\nSuy ra $x=0$ hoặc $x+15=0$.\n\n$x+15=0$ thì $x=0-15=-15$.\n\nVậy $x=0$ hoặc $x=-15$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-1000;x<=1000;x++)if(x*(x+15)===0)r.push(x);return JSON.stringify(r)===JSON.stringify([-15,0])})()"
+    ],
+    "sach_dap_so": "x=0 hoặc x=-15",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-7A-d",
+    "vai": "giang",
+    "dang_bai": "NDB01321",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tích hai thừa số chứa x bằng 0.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$, biết: $(x-23).(x-101)=0$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích bằng 0 khi có ít nhất một thừa số bằng 0: xét từng thừa số chứa $x$ bằng 0 rồi gộp các giá trị tìm được.\n\n**Bước 1.** Xác định hai thừa số của tích: $(x-23)$ và $(x-101)$.\n\n**Bước 2.** Một tích bằng 0 khi ít nhất một thừa số bằng 0, nên xét từng thừa số bằng 0.\n\n**Bước 3.** Giải từng trường hợp (tìm thành phần chưa biết) rồi viết đủ các giá trị của $x$.\n\n**Chú ý:** Phải xét đủ MỌI thừa số chứa $x$ và liệt kê đủ các giá trị của $x$, không bỏ sót trường hợp nào.\n\n**Phần 2. Trình bày**\n\n$(x-23).(x-101)=0$\n\nSuy ra $x-23=0$ hoặc $x-101=0$.\n\n$x-23=0$ thì $x=0+23=23$.\n\n$x-101=0$ thì $x=0+101=101$.\n\nVậy $x=23$ hoặc $x=101$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-1000;x<=1000;x++)if((x-23)*(x-101)===0)r.push(x);return JSON.stringify(r)===JSON.stringify([23,101])})()"
+    ],
+    "sach_dap_so": "x=23 hoặc x=101",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-7B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01318",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Tích có ngoặc chứa x bằng 0; bản đồ chưa có dạng riêng cho một thừa số hằng.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tìm số nguyên $x$, biết: $105.(x-9)=0$.",
+    "dap_an": "9",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích bằng 0 khi có ít nhất một thừa số bằng 0; thừa số đã biết khác 0 thì thừa số chứa $x$ phải bằng 0.\n\n**Bước 1.** Xác định các thừa số của tích: $105$ và $(x-9)$.\n\n**Bước 2.** Thừa số đã biết khác 0, nên thừa số còn lại (chứa $x$) phải làm cho tích bằng 0.\n\n**Bước 3.** Từ đó lập điều kiện cho thừa số chứa $x$ rồi tìm $x$ bằng cách tìm thành phần chưa biết của phép tính.\n\n**Chú ý:** Chỉ khi tích bằng 0 mới suy được thừa số chứa $x$ bằng 0; nhớ viết rõ vì sao thừa số đã biết khác 0.\n\n**Phần 2. Trình bày**\n\n$105.(x-9)=0$\n\nVì $105\\neq 0$ nên $x-9=0$.\n\n$x=0+9$\n\n$x=9$\n\nVậy $x=9$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-1000;x<=1000;x++)if(105*(x-9)===0)r.push(x);return JSON.stringify(r)===JSON.stringify([9])})()"
+    ],
+    "sach_dap_so": "x=9",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-7B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01321",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tích hai thừa số chứa x bằng 0.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$, biết: $(x-135)(x+7)=0$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích bằng 0 khi có ít nhất một thừa số bằng 0: xét từng thừa số chứa $x$ bằng 0 rồi gộp các giá trị tìm được.\n\n**Bước 1.** Xác định hai thừa số của tích: $(x-135)$ và $(x+7)$.\n\n**Bước 2.** Một tích bằng 0 khi ít nhất một thừa số bằng 0, nên xét từng thừa số bằng 0.\n\n**Bước 3.** Giải từng trường hợp (tìm thành phần chưa biết) rồi viết đủ các giá trị của $x$.\n\n**Chú ý:** Phải xét đủ MỌI thừa số chứa $x$ và liệt kê đủ các giá trị của $x$, không bỏ sót trường hợp nào.\n\n**Phần 2. Trình bày**\n\n$(x-135)(x+7)=0$\n\nSuy ra $x-135=0$ hoặc $x+7=0$.\n\n$x-135=0$ thì $x=0+135=135$.\n\n$x+7=0$ thì $x=0-7=-7$.\n\nVậy $x=135$ hoặc $x=-7$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-1000;x<=1000;x++)if((x-135)*(x+7)===0)r.push(x);return JSON.stringify(r)===JSON.stringify([-7,135])})()"
+    ],
+    "sach_dap_so": "x=135 hoặc x=-7",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-7B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01321",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tích hai thừa số chứa x bằng 0.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$, biết: $x(x+45)=0$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích bằng 0 khi có ít nhất một thừa số bằng 0: xét từng thừa số chứa $x$ bằng 0 rồi gộp các giá trị tìm được.\n\n**Bước 1.** Xác định hai thừa số của tích: $x$ và $(x+45)$.\n\n**Bước 2.** Một tích bằng 0 khi ít nhất một thừa số bằng 0, nên xét từng thừa số bằng 0.\n\n**Bước 3.** Giải từng trường hợp (tìm thành phần chưa biết) rồi viết đủ các giá trị của $x$.\n\n**Chú ý:** Phải xét đủ MỌI thừa số chứa $x$ và liệt kê đủ các giá trị của $x$, không bỏ sót trường hợp nào.\n\n**Phần 2. Trình bày**\n\n$x(x+45)=0$\n\nSuy ra $x=0$ hoặc $x+45=0$.\n\n$x+45=0$ thì $x=0-45=-45$.\n\nVậy $x=0$ hoặc $x=-45$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-1000;x<=1000;x++)if(x*(x+45)===0)r.push(x);return JSON.stringify(r)===JSON.stringify([-45,0])})()"
+    ],
+    "sach_dap_so": "x=0 hoặc x=-45",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-7B-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01321",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tích hai thừa số chứa x bằng 0.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$, biết: $(x-89).(x-16)=0$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích bằng 0 khi có ít nhất một thừa số bằng 0: xét từng thừa số chứa $x$ bằng 0 rồi gộp các giá trị tìm được.\n\n**Bước 1.** Xác định hai thừa số của tích: $(x-89)$ và $(x-16)$.\n\n**Bước 2.** Một tích bằng 0 khi ít nhất một thừa số bằng 0, nên xét từng thừa số bằng 0.\n\n**Bước 3.** Giải từng trường hợp (tìm thành phần chưa biết) rồi viết đủ các giá trị của $x$.\n\n**Chú ý:** Phải xét đủ MỌI thừa số chứa $x$ và liệt kê đủ các giá trị của $x$, không bỏ sót trường hợp nào.\n\n**Phần 2. Trình bày**\n\n$(x-89).(x-16)=0$\n\nSuy ra $x-89=0$ hoặc $x-16=0$.\n\n$x-89=0$ thì $x=0+89=89$.\n\n$x-16=0$ thì $x=0+16=16$.\n\nVậy $x=89$ hoặc $x=16$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-1000;x<=1000;x++)if((x-89)*(x-16)===0)r.push(x);return JSON.stringify(r)===JSON.stringify([16,89])})()"
+    ],
+    "sach_dap_so": "x=89 hoặc x=16",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-8A",
+    "vai": "giang",
+    "dang_bai": "NDB01314",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Đại lượng thay đổi mỗi bộ, nhân với số lượng; có trường hợp số âm.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Một phân xưởng may chuyển đổi may mẫu váy mới, mỗi ngày may 500 chiếc. Biết rằng số vải để may mỗi bộ tăng thêm $x$ (dm) so với mẫu cũ. Hỏi số vải để may 500 chiếc váy sẽ tăng bao nhiêu trong các trường hợp sau:\n\na) $x=3$;\n\nb) $x=-2$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số vải tăng thêm của cả ngày = số chiếc váy nhân với số dm tăng thêm của mỗi bộ; số dm âm nghĩa là giảm đi.\n\n**Bước 1.** Xác định đại lượng cần tính: số vải tăng thêm khi may cả ngày.\n\n**Bước 2.** Mỗi bộ tăng thêm $x$ dm, may 500 bộ nên lấy 500 nhân với $x$.\n\n**Bước 3.** Thay lần lượt giá trị ở câu a) và câu b) vào rồi nhân hai số nguyên (xét dấu trước).\n\n**Bước 4.** Câu nào cho kết quả âm thì hiểu là số vải giảm đi.\n\n**Chú ý:** Nếu $x$ là số âm thì mỗi bộ dùng ít vải hơn mẫu cũ, nên tổng số vải tăng thêm là số âm.\n\n**Phần 2. Trình bày**\n\nSố vải tăng thêm khi may 500 chiếc váy là $500.x$ (dm).\n\na) Với $x=3$: $500.3=1500$ (dm).\n\nb) Với $x=-2$: $500.(-2)=-1000$ (dm), tức là số vải giảm đi 1000 dm.\n\nVậy với $x=3$ số vải tăng 1500 dm; với $x=-2$ số vải giảm 1000 dm.",
+    "kiem": [
+      "500*3===1500",
+      "500*(-2)===-1000"
+    ],
+    "sach_dap_so": "a) 1500 dm; b) -1000 dm",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-8B",
+    "vai": "luyen",
+    "dang_bai": "NDB01314",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Đại lượng thay đổi mỗi bộ, nhân với số lượng; có trường hợp số âm.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Một phân xưởng may chuyển đổi may mẫu váy mới, mỗi ngày may 250 chiếc. Biết rằng số vải để may mỗi bộ tăng thêm $y$ (dm) so với mẫu cũ. Hỏi số vải để may 250 chiếc váy sẽ tăng bao nhiêu trong các trường hợp sau:\n\na) $y=20$;\n\nb) $y=-18$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số vải tăng thêm của cả ngày = số chiếc váy nhân với số dm tăng thêm của mỗi bộ; số dm âm nghĩa là giảm đi.\n\n**Bước 1.** Xác định đại lượng cần tính: số vải tăng thêm khi may cả ngày.\n\n**Bước 2.** Mỗi bộ tăng thêm $y$ dm, may 250 bộ nên lấy 250 nhân với $y$.\n\n**Bước 3.** Thay lần lượt giá trị ở câu a) và câu b) vào rồi nhân hai số nguyên (xét dấu trước).\n\n**Bước 4.** Câu nào cho kết quả âm thì hiểu là số vải giảm đi.\n\n**Chú ý:** Nếu $y$ là số âm thì mỗi bộ dùng ít vải hơn mẫu cũ, nên tổng số vải tăng thêm là số âm.\n\n**Phần 2. Trình bày**\n\nSố vải tăng thêm khi may 250 chiếc váy là $250.y$ (dm).\n\na) Với $y=20$: $250.20=5000$ (dm).\n\nb) Với $y=-18$: $250.(-18)=-4500$ (dm), tức là số vải giảm đi 4500 dm.\n\nVậy với $y=20$ số vải tăng 5000 dm; với $y=-18$ số vải giảm 4500 dm.",
+    "kiem": [
+      "250*20===5000",
+      "250*(-18)===-4500"
+    ],
+    "sach_dap_so": "a) 5000 dm; b) -4500 dm",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-9A",
+    "vai": "giang",
+    "dang_bai": null,
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Bản đồ thiếu: lời văn lập đẳng thức có x ở cả hai vế (không chuyển vế).",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tìm một số nguyên, biết rằng nếu đem số đó nhân 3 rồi trừ đi 5 thì bằng kết quả của phép tính lấy $-7$ cộng với chính số đó.",
+    "dap_an": "-1",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Gọi số cần tìm là $x$, lập đẳng thức hai vế đều chứa $x$; tách $3.x=x+2.x$ để hai vế cùng có số hạng $x$ rồi bỏ số hạng chung.\n\n**Bước 1.** Gọi số nguyên cần tìm là $x$ và lập đẳng thức theo đề: “nhân 3 rồi trừ 5” bằng “$-7$ cộng với $x$”.\n\n**Bước 2.** Viết $3.x$ thành $x+2.x$ để vế trái cũng có số hạng $x$ như vế phải.\n\n**Bước 3.** Hai tổng bằng nhau và cùng có số hạng $x$ thì hai số hạng còn lại bằng nhau; được một đẳng thức chỉ còn $2.x$.\n\n**Bước 4.** Tìm $2.x$ (số bị trừ), rồi tìm $x$ (thừa số chưa biết).\n\n**Bước 5.** Thử lại giá trị tìm được vào đề bài.\n\n**Chú ý:** Không dùng quy tắc chuyển vế: chỉ dựa vào “hai tổng bằng nhau, có chung một số hạng thì số hạng còn lại bằng nhau”.\n\n**Phần 2. Trình bày**\n\nGọi số nguyên cần tìm là $x$ ($x\\in\\mathbb{Z}$).\n\nTheo đề bài ta có: $3.x-5=-7+x$\n\n$x+(2.x-5)=x+(-7)$\n\nSuy ra $2.x-5=-7$\n\n$2.x=-7+5$\n\n$2.x=-2$\n\n$x=(-2):2$\n\n$x=-1$ (thoả mãn).\n\nVậy số cần tìm là $-1$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-1000;x<=1000;x++)if(3*x-5===-7+x)r.push(x);return JSON.stringify(r)===JSON.stringify([-1])})()"
+    ],
+    "sach_dap_so": "-1",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-9B",
+    "vai": "luyen",
+    "dang_bai": null,
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Bản đồ thiếu: lời văn lập đẳng thức có x ở cả hai vế (không chuyển vế).",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tìm một số tự nhiên, biết rằng nếu đem số đó nhân với $-2$ rồi cộng với 5 thì bằng kết quả của phép tính lấy $-12$ trừ đi chính số đó.",
+    "dap_an": "17",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Gọi số cần tìm là $x$, lập đẳng thức hai vế đều chứa $x$; viết $(-2).x=(-x)+(-x)$ để hai vế cùng có số hạng $-x$ rồi bỏ số hạng chung.\n\n**Bước 1.** Gọi số tự nhiên cần tìm là $x$ và lập đẳng thức theo đề: “nhân $-2$ rồi cộng 5” bằng “$-12$ trừ $x$”.\n\n**Bước 2.** Viết $(-2).x=(-x)+(-x)$ và $-12-x=(-x)+(-12)$ để hai vế cùng có số hạng $-x$.\n\n**Bước 3.** Hai tổng bằng nhau và cùng có số hạng $-x$ thì hai số hạng còn lại bằng nhau; được một đẳng thức chỉ còn một số hạng $-x$.\n\n**Bước 4.** Tìm $-x$ (số hạng chưa biết), rồi suy ra $x$ (hai số đối nhau).\n\n**Bước 5.** Thử lại và đối chiếu điều kiện $x$ là số tự nhiên.\n\n**Chú ý:** Không dùng quy tắc chuyển vế; nhớ kiểm tra điều kiện “số tự nhiên” của đề.\n\n**Phần 2. Trình bày**\n\nGọi số tự nhiên cần tìm là $x$ ($x\\in\\mathbb{N}$).\n\nTheo đề bài ta có: $(-2).x+5=-12-x$\n\n$[(-x)+(-x)]+5=(-x)+(-12)$\n\n$(-x)+[(-x)+5]=(-x)+(-12)$\n\nSuy ra $(-x)+5=-12$\n\n$-x=-12-5$\n\n$-x=-17$\n\n$x=17$ (thoả mãn $x\\in\\mathbb{N}$).\n\nThử lại: $(-2).17+5=-29$ và $-12-17=-29$.\n\nVậy số cần tìm là $17$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=0;x<=1000;x++)if((-2)*x+5===-12-x)r.push(x);return JSON.stringify(r)===JSON.stringify([17])})()"
+    ],
+    "sach_dap_so": "-17",
+    "ghi_chu": "LỆCH SÁCH — sách in đáp số −17, nhưng đề hỏi số tự nhiên và thử lại: (−2).17 + 5 = −29 = −12 − 17 nên số đúng là 17 (với x = −17: vế trái 39, vế phải 5 — không bằng)."
+  },
+  {
+    "id": "B4-17",
+    "vai": "luyen",
+    "dang_bai": "NDB01317",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Lời văn đưa về tìm x nhân–cộng một cấp.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tìm một số tự nhiên, biết rằng kết quả nếu đem số đó nhân 3 rồi cộng thêm $-3$ cũng bằng kết quả của tổng $-12$ và 9.",
+    "dap_an": "0",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Gọi số cần tìm là $x$, lập đẳng thức từ đề, tính vế phải rồi tìm $x$ bằng thành phần chưa biết.\n\n**Bước 1.** Gọi số tự nhiên cần tìm là $x$ và viết đẳng thức: “$x$ nhân 3 cộng $-3$” bằng “tổng của $-12$ và 9”.\n\n**Bước 2.** Tính vế phải (cộng hai số nguyên khác dấu).\n\n**Bước 3.** Vế trái là một hiệu: tìm số bị trừ $x.3$ rồi tìm thừa số chưa biết $x$.\n\n**Bước 4.** Đối chiếu điều kiện $x$ là số tự nhiên.\n\n**Chú ý:** Không dùng quy tắc chuyển vế: tìm số bị trừ, rồi tìm thừa số chưa biết.\n\n**Phần 2. Trình bày**\n\nGọi số tự nhiên cần tìm là $x$.\n\nTheo đề bài ta có: $x.3+(-3)=(-12)+9$\n\n$x.3-3=-3$\n\n$x.3=-3+3$\n\n$x.3=0$\n\n$x=0:3$\n\n$x=0$ (thoả mãn $x\\in\\mathbb{N}$).\n\nVậy số cần tìm là $0$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=0;x<=1000;x++)if(3*x+(-3)===-12+9)r.push(x);return JSON.stringify(r)===JSON.stringify([0])})()"
+    ],
+    "sach_dap_so": "0",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-10A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01332",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Đẳng thức tích của hai số nguyên bằng số cho trước.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm các số nguyên $x;y$ sau: $x.y=-2$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích hai số nguyên bằng số đã cho nên mỗi số là một ước của số đó: liệt kê mọi cách viết số đã cho thành tích hai số nguyên rồi suy ra $x$, $y$.\n\n**Bước 1.** Tích bằng số âm nên $x$ và $y$ khác dấu.\n\n**Bước 2.** Liệt kê các cách viết $-2$ thành tích của hai số nguyên khác dấu.\n\n**Bước 3.** Vì $x$ và $y$ có thể đổi chỗ cho nhau, mỗi cách viết cho hai cặp $(x;y)$.\n\n**Bước 4.** Viết đủ các cặp.\n\n**Chú ý:** Liệt kê đủ mọi cách viết số đã cho thành tích hai số nguyên; đừng bỏ cặp nào (chú ý cả hoán đổi vai trò khi đề không có điều kiện thứ tự).\n\n**Phần 2. Trình bày**\n\nTa có $-2=(-1).2=1.(-2)$.\n\nVì $x,y$ có vai trò như nhau nên ta có các cặp $(x;y)$ là $(-1;2)$, $(2;-1)$, $(1;-2)$, $(-2;1)$.\n\nVậy $(x;y)\\in\\{(-1;2);(2;-1);(1;-2);(-2;1)\\}$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-60;x<=60;x++)for(let y=-60;y<=60;y++)if(x*y===-2)r.push(x+','+y);return JSON.stringify(r.sort())===JSON.stringify([\"-1,2\",\"-2,1\",\"1,-2\",\"2,-1\"])})()"
+    ],
+    "sach_dap_so": "(-1;2), (2;-1), (-2;1), (1;-2)",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-10A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01332",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Đẳng thức tích của hai số nguyên bằng số cho trước.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm các số nguyên $x;y$ sau: $x.y=-3$ và $x<y$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích hai số nguyên bằng số đã cho nên mỗi số là một ước của số đó: liệt kê mọi cách viết số đã cho thành tích hai số nguyên rồi suy ra $x$, $y$.\n\n**Bước 1.** Tích bằng số âm nên $x$ và $y$ khác dấu; do $x<y$ nên $x$ là số âm, $y$ là số dương.\n\n**Bước 2.** Liệt kê các cách viết $-3$ thành tích của một số âm và một số dương.\n\n**Bước 3.** Đối chiếu với điều kiện $x<y$ để loại cặp không hợp lệ.\n\n**Bước 4.** Viết các cặp còn lại.\n\n**Chú ý:** Liệt kê đủ mọi cách viết số đã cho thành tích hai số nguyên; đừng bỏ cặp nào (chú ý cả hoán đổi vai trò khi đề không có điều kiện thứ tự).\n\n**Phần 2. Trình bày**\n\nTa có $-3=(-1).3=1.(-3)$.\n\nCác cặp có tích bằng −3: $(-1;3)$, $(3;-1)$, $(1;-3)$, $(-3;1)$.\n\nVì $x<y$ nên loại $(3;-1)$ và $(1;-3)$.\n\nVậy $(x;y)\\in\\{(-1;3);(-3;1)\\}$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-60;x<=60;x++)for(let y=-60;y<=60;y++)if(x*y===-3&&x<y)r.push(x+','+y);return JSON.stringify(r.sort())===JSON.stringify([\"-1,3\",\"-3,1\"])})()"
+    ],
+    "sach_dap_so": "(-1;3), (-3;1)",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-10A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01332",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Đẳng thức tích của hai số nguyên bằng số cho trước.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm các số nguyên $x;y$ sau: $(x+1)(y-3)=-5$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đặt hai thừa số chứa $x$ và $y$ bằng các ước của số đã cho, rồi suy ngược ra $x$, $y$.\n\n**Bước 1.** Coi $x+1$ và $y-3$ là hai số nguyên có tích bằng −5 (hai số này khác dấu).\n\n**Bước 2.** Liệt kê mọi cách viết −5 thành tích của hai số nguyên (có xét thứ tự).\n\n**Bước 3.** Với mỗi cách viết, cho $x+1$ và $y-3$ bằng từng thừa số rồi tìm $x$, $y$ (tìm thành phần chưa biết).\n\n**Bước 4.** Viết đủ các cặp $(x;y)$.\n\n**Chú ý:** Liệt kê đủ mọi cách viết số đã cho thành tích hai số nguyên; đừng bỏ cặp nào (chú ý cả hoán đổi vai trò khi đề không có điều kiện thứ tự).\n\n**Phần 2. Trình bày**\n\nVì $(x+1)(y-3)=-5$ nên $x+1$ và $y-3$ là hai số nguyên có tích bằng −5.\n\nTa có $-5=1.(-5)=(-1).5=5.(-1)=(-5).1$.\n\nXét bốn trường hợp:\n\n$x+1=1$ và $y-3=-5$: $x=1-1=0$, $y=-5+3=-2$;\n\n$x+1=-1$ và $y-3=5$: $x=-1-1=-2$, $y=5+3=8$;\n\n$x+1=5$ và $y-3=-1$: $x=5-1=4$, $y=-1+3=2$;\n\n$x+1=-5$ và $y-3=1$: $x=-5-1=-6$, $y=1+3=4$.\n\nVậy $(x;y)\\in\\{(0;-2);(-2;8);(4;2);(-6;4)\\}$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-60;x<=60;x++)for(let y=-60;y<=60;y++)if((x+1)*(y-3)===-5)r.push(x+','+y);return JSON.stringify(r.sort())===JSON.stringify([\"-2,8\",\"-6,4\",\"0,-2\",\"4,2\"])})()"
+    ],
+    "sach_dap_so": "(-2;8), (0;-2), (4;2), (-6;3)",
+    "ghi_chu": "LỆCH SÁCH — sách in cặp (−6; 3), nhưng x + 1 = −5 thì x = −6 và y − 3 = 1 thì y = 4 nên cặp đúng là (−6; 4) (với y = 3: (−5).0 = 0 ≠ −5)."
+  },
+  {
+    "id": "B4-10B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01332",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Đẳng thức tích của hai số nguyên bằng số cho trước.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm các số nguyên $x;y$ sau: $x.y=-11$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích hai số nguyên bằng số đã cho nên mỗi số là một ước của số đó: liệt kê mọi cách viết số đã cho thành tích hai số nguyên rồi suy ra $x$, $y$.\n\n**Bước 1.** Tích bằng số âm nên $x$ và $y$ khác dấu.\n\n**Bước 2.** Liệt kê các cách viết $-11$ thành tích của hai số nguyên khác dấu.\n\n**Bước 3.** Vì $x$ và $y$ có thể đổi chỗ cho nhau, mỗi cách viết cho hai cặp $(x;y)$.\n\n**Bước 4.** Viết đủ các cặp.\n\n**Chú ý:** Liệt kê đủ mọi cách viết số đã cho thành tích hai số nguyên; đừng bỏ cặp nào (chú ý cả hoán đổi vai trò khi đề không có điều kiện thứ tự).\n\n**Phần 2. Trình bày**\n\nTa có $-11=(-1).11=1.(-11)$.\n\nVì $x,y$ có vai trò như nhau nên các cặp $(x;y)$ là $(-1;11)$, $(11;-1)$, $(1;-11)$, $(-11;1)$.\n\nVậy $(x;y)\\in\\{(-1;11);(11;-1);(1;-11);(-11;1)\\}$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-60;x<=60;x++)for(let y=-60;y<=60;y++)if(x*y===-11)r.push(x+','+y);return JSON.stringify(r.sort())===JSON.stringify([\"-1,11\",\"-11,1\",\"1,-11\",\"11,-1\"])})()"
+    ],
+    "sach_dap_so": "(-1;11), (11;-1), (1;-11), (-11;1)",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-10B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01332",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Đẳng thức tích của hai số nguyên bằng số cho trước.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm các số nguyên $x;y$ sau: $x.y=-4$ và $x<y$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích hai số nguyên bằng số đã cho nên mỗi số là một ước của số đó: liệt kê mọi cách viết số đã cho thành tích hai số nguyên rồi suy ra $x$, $y$.\n\n**Bước 1.** Tích bằng số âm nên $x$ và $y$ khác dấu; do $x<y$ nên $x$ là số âm, $y$ là số dương.\n\n**Bước 2.** Liệt kê mọi cách viết $-4$ thành tích của một số âm và một số dương.\n\n**Bước 3.** Đối chiếu điều kiện $x<y$ (cặp $(-2;2)$ thoả mãn, cặp $(2;-2)$ thì không).\n\n**Bước 4.** Viết các cặp còn lại.\n\n**Chú ý:** Liệt kê đủ mọi cách viết số đã cho thành tích hai số nguyên; đừng bỏ cặp nào (chú ý cả hoán đổi vai trò khi đề không có điều kiện thứ tự).\n\n**Phần 2. Trình bày**\n\nTa có $-4=(-1).4=(-2).2=(-4).1$ (và các cách đổi chỗ hai thừa số).\n\nCác cặp có tích bằng −4: $(-1;4)$, $(4;-1)$, $(-2;2)$, $(2;-2)$, $(-4;1)$, $(1;-4)$.\n\nVì $x<y$ nên chỉ giữ các cặp có $x$ âm: $(-1;4)$, $(-2;2)$, $(-4;1)$.\n\nVậy $(x;y)\\in\\{(-1;4);(-2;2);(-4;1)\\}$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-60;x<=60;x++)for(let y=-60;y<=60;y++)if(x*y===-4&&x<y)r.push(x+','+y);return JSON.stringify(r.sort())===JSON.stringify([\"-1,4\",\"-2,2\",\"-4,1\"])})()"
+    ],
+    "sach_dap_so": "(-1;4), (-2;2), (-4;1)",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-10B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01332",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Đẳng thức tích của hai số nguyên bằng số cho trước.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm các số nguyên $x;y$ sau: $(x-2)(y+5)=-3$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đặt hai thừa số chứa $x$ và $y$ bằng các ước của số đã cho, rồi suy ngược ra $x$, $y$.\n\n**Bước 1.** Coi $x-2$ và $y+5$ là hai số nguyên có tích bằng −3 (hai số này khác dấu).\n\n**Bước 2.** Liệt kê mọi cách viết −3 thành tích của hai số nguyên (có xét thứ tự).\n\n**Bước 3.** Với mỗi cách viết, cho $x-2$ và $y+5$ bằng từng thừa số rồi tìm $x$, $y$ (tìm thành phần chưa biết).\n\n**Bước 4.** Viết đủ các cặp $(x;y)$.\n\n**Chú ý:** Liệt kê đủ mọi cách viết số đã cho thành tích hai số nguyên; đừng bỏ cặp nào (chú ý cả hoán đổi vai trò khi đề không có điều kiện thứ tự).\n\n**Phần 2. Trình bày**\n\nVì $(x-2)(y+5)=-3$ nên $x-2$ và $y+5$ là hai số nguyên có tích bằng −3.\n\nTa có $-3=1.(-3)=(-1).3=3.(-1)=(-3).1$.\n\nXét bốn trường hợp:\n\n$x-2=1$ và $y+5=-3$: $x=1+2=3$, $y=-3-5=-8$;\n\n$x-2=-1$ và $y+5=3$: $x=-1+2=1$, $y=3-5=-2$;\n\n$x-2=3$ và $y+5=-1$: $x=3+2=5$, $y=-1-5=-6$;\n\n$x-2=-3$ và $y+5=1$: $x=-3+2=-1$, $y=1-5=-4$.\n\nVậy $(x;y)\\in\\{(3;-8);(1;-2);(5;-6);(-1;-4)\\}$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-60;x<=60;x++)for(let y=-60;y<=60;y++)if((x-2)*(y+5)===-3)r.push(x+','+y);return JSON.stringify(r.sort())===JSON.stringify([\"-1,-4\",\"1,-2\",\"3,-8\",\"5,-6\"])})()"
+    ],
+    "sach_dap_so": "(1;-2), (3;-8), (5;-6), (-1;-4)",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-11-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01303",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính tích hai số nguyên khác dấu / cùng dấu.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $(-18).5$.",
+    "dap_an": "-90",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân hai số nguyên = nhân phần số (bỏ dấu) rồi đặt dấu: cùng dấu thì tích dương, khác dấu thì tích âm.\n\n**Bước 1.** Xét dấu hai thừa số: thừa số thứ nhất là số âm, thừa số thứ hai là số dương, tức là hai thừa số khác dấu.\n\n**Bước 2.** Bỏ dấu “−” của số âm rồi nhân hai số tự nhiên 18 và 5.\n\n**Bước 3.** Hai thừa số khác dấu nên tích là số âm: đặt dấu “−” trước kết quả vừa nhân.\n\n**Chú ý:** Hai số khác dấu cho tích âm; hai số cùng âm cho tích dương; thừa số 0 cho tích 0.\n\n**Phần 2. Trình bày**\n\n$(-18).5=-(18.5)=-90$\n\nVậy $(-18).5=-90$.",
+    "kiem": [
+      "(-18)*5===-90"
+    ],
+    "sach_dap_so": "-90",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-11-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01303",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính tích hai số nguyên khác dấu / cùng dấu.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $12.(-9)$.",
+    "dap_an": "-108",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân hai số nguyên = nhân phần số (bỏ dấu) rồi đặt dấu: cùng dấu thì tích dương, khác dấu thì tích âm.\n\n**Bước 1.** Xét dấu hai thừa số: thừa số thứ nhất là số dương, thừa số thứ hai là số âm, tức là hai thừa số khác dấu.\n\n**Bước 2.** Bỏ dấu “−” của số âm rồi nhân hai số tự nhiên 12 và 9.\n\n**Bước 3.** Hai thừa số khác dấu nên tích là số âm: đặt dấu “−” trước kết quả vừa nhân.\n\n**Chú ý:** Hai số khác dấu cho tích âm; hai số cùng âm cho tích dương; thừa số 0 cho tích 0.\n\n**Phần 2. Trình bày**\n\n$12.(-9)=-(12.9)=-108$\n\nVậy $12.(-9)=-108$.",
+    "kiem": [
+      "12*(-9)===-108"
+    ],
+    "sach_dap_so": "-108",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-11-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01303",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tích ba thừa số, có một thừa số âm.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $32.(-2).15$.",
+    "dap_an": "-960",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích nhiều thừa số: đếm số thừa số âm để biết dấu, rồi nhân phần số (có thể nhóm cho dễ tính).\n\n**Bước 1.** Đếm thừa số âm: chỉ có một thừa số âm nên tích là số âm.\n\n**Bước 2.** Nhóm hai thừa số cho dễ tính: nhân $(-2)$ với $15$.\n\n**Bước 3.** Nhân kết quả với $32$.\n\n**Chú ý:** Tích có số lẻ thừa số âm thì là số âm.\n\n**Phần 2. Trình bày**\n\n$32.(-2).15$\n\n$=32.[(-2).15]$\n\n$=32.(-30)$\n\n$=-960$\n\nVậy $32.(-2).15=-960$.",
+    "kiem": [
+      "32*(-2)*15===-960"
+    ],
+    "sach_dap_so": "-960",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-11-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01303",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tích ba thừa số, có một thừa số âm.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Thực hiện phép tính: $8.(-25).16$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích nhiều thừa số: đếm số thừa số âm để biết dấu, rồi nhân phần số (có thể nhóm cho dễ tính).\n\n**Bước 1.** Đếm thừa số âm: chỉ có một thừa số âm nên tích là số âm.\n\n**Bước 2.** Nhóm hai thừa số cho dễ tính: nhân $8$ với $(-25)$.\n\n**Bước 3.** Nhân kết quả với $16$.\n\n**Chú ý:** Tích có số lẻ thừa số âm thì là số âm.\n\n**Phần 2. Trình bày**\n\n$8.(-25).16$\n\n$=[8.(-25)].16$\n\n$=(-200).16$\n\n$=-3200$\n\nVậy $8.(-25).16=-3200$.",
+    "kiem": [
+      "8*(-25)*16===-3200"
+    ],
+    "sach_dap_so": "-3200",
+    "ghi_chu": "Đáp số -3200 dài hơn 4 ký tự nên nhập tự luận."
+  },
+  {
+    "id": "B4-12-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01308",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Thừa số chung ẩn: 5.7 = 35 trùng 35.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $35.18-5.7.28$.",
+    "dap_an": "-350",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân 5 với 7 để thấy thừa số chung 35 ở cả hai tích, rồi đặt 35 ra ngoài.\n\n**Bước 1.** Nhận ra tích thứ hai có $5.7$, nhân hai số này để biến đổi thành $35$.\n\n**Bước 2.** Lúc này hai tích có chung thừa số $35$: đặt $35$ ra ngoài.\n\n**Bước 3.** Tính hiệu trong ngoặc (hai số: một lớn, một bé).\n\n**Bước 4.** Nhân $35$ với kết quả (khác dấu nên tích âm).\n\n**Chú ý:** Có thể tính trực tiếp $630-980$, nhưng đặt thừa số chung nhanh hơn.\n\n**Phần 2. Trình bày**\n\n$35.18-5.7.28$\n\n$=35.18-35.28$\n\n$=35.(18-28)$\n\n$=35.(-10)$\n\n$=-350$\n\nVậy $35.18-5.7.28=-350$.",
+    "kiem": [
+      "35*18-5*7*28===-350"
+    ],
+    "sach_dap_so": "-350",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-12-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Tích nhiều thừa số, nhóm giao hoán–kết hợp; bản đồ chỉ mô tả tổng/hiệu.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Thực hiện phép tính: $35.(-2).16.(-25)$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đếm thừa số âm để biết dấu, rồi ghép các thừa số cho dễ nhân (giao hoán, kết hợp).\n\n**Bước 1.** Đếm thừa số âm: có hai thừa số âm nên tích là số dương.\n\n**Bước 2.** Ghép $(-2)$ với $(-25)$ thành một nhóm, $35$ với $16$ thành nhóm còn lại.\n\n**Bước 3.** Tính từng nhóm rồi nhân hai kết quả.\n\n**Chú ý:** Hai thừa số âm cho tích dương.\n\n**Phần 2. Trình bày**\n\n$35.(-2).16.(-25)$\n\n$=(35.16).[(-2).(-25)]$\n\n$=560.50$\n\n$=28000$\n\nVậy $35.(-2).16.(-25)=28000$.",
+    "kiem": [
+      "35*(-2)*16*(-25)===28000"
+    ],
+    "sach_dap_so": "28000",
+    "ghi_chu": "Đáp số 28000 dài hơn 4 ký tự nên nhập tự luận."
+  },
+  {
+    "id": "B4-12-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01309",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Biểu thức có ngoặc, nhân rồi trừ.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $45-5.(12+9)$.",
+    "dap_an": "-60",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thứ tự thực hiện phép tính: trong ngoặc trước, rồi nhân, cuối cùng trừ.\n\n**Bước 1.** Tính tổng trong ngoặc.\n\n**Bước 2.** Nhân $5$ với tổng vừa tìm.\n\n**Bước 3.** Trừ: lấy $45$ trừ đi tích (đổi thành cộng với số đối, kết quả là số âm vì tích lớn hơn $45$).\n\n**Chú ý:** Không trừ $45-5$ trước: nhân phải làm trước trừ.\n\n**Phần 2. Trình bày**\n\n$45-5.(12+9)$\n\n$=45-5.21$\n\n$=45-105$\n\n$=-60$\n\nVậy $45-5.(12+9)=-60$.",
+    "kiem": [
+      "45-5*(12+9)===-60"
+    ],
+    "sach_dap_so": "-60",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-12-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01308",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Hai hiệu trong ngoặc cùng bằng 11: thừa số chung ẩn.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $24.(16-5)-16.(25-14)$.",
+    "dap_an": "88",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tính hai hiệu trong ngoặc: cả hai cùng ra một số, đó là thừa số chung nên đặt ra ngoài.\n\n**Bước 1.** Tính $16-5$ và $25-14$, nhận thấy hai kết quả bằng nhau.\n\n**Bước 2.** Hai tích có chung thừa số đó: đặt thừa số chung ra ngoài.\n\n**Bước 3.** Tính hiệu của hai thừa số còn lại rồi nhân.\n\n**Chú ý:** Cũng có thể tính hai tích riêng rồi trừ, nhưng đặt thừa số chung nhanh hơn.\n\n**Phần 2. Trình bày**\n\n$24.(16-5)-16.(25-14)$\n\n$=24.11-16.11$\n\n$=11.(24-16)$\n\n$=11.8$\n\n$=88$\n\nVậy $24.(16-5)-16.(25-14)=88$.",
+    "kiem": [
+      "24*(16-5)-16*(25-14)===88"
+    ],
+    "sach_dap_so": "88",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-13-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "So sánh tích với 0 hoặc với một số bằng cách xét dấu.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh: $75.(-90).65$ với $0$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Không cần tính: chỉ xét dấu của mỗi vế (đếm số thừa số âm) rồi so sánh hai dấu.\n\n**Bước 1.** Vế trái có 1 thừa số âm, là số lẻ nên tích là số âm.\n\n**Bước 2.** Vế phải là số 0.\n\n**Bước 3.** Kết luận bằng cách so sánh dấu của hai vế: số âm < 0 < số dương.\n\n**Chú ý:** Tích có số lẻ thừa số âm thì âm, có số chẵn thừa số âm thì dương, có thừa số 0 thì bằng 0.\n\n**Phần 2. Trình bày**\n\nVế trái: có 1 thừa số âm nên tích là số âm.\n\nVế phải là số 0.\n\nVậy $75.(-90).65<0$.",
+    "kiem": [
+      "75*(-90)*65<0"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-13-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "So sánh tích với 0 hoặc với một số bằng cách xét dấu.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh: $69.(-40).17$ với $1$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Không cần tính: chỉ xét dấu của mỗi vế (đếm số thừa số âm) rồi so sánh hai dấu.\n\n**Bước 1.** Vế trái có 1 thừa số âm, là số lẻ nên tích là số âm.\n\n**Bước 2.** Vế phải là số dương (bằng 1).\n\n**Bước 3.** Kết luận bằng cách so sánh dấu của hai vế: số âm < 0 < số dương.\n\n**Chú ý:** Tích có số lẻ thừa số âm thì âm, có số chẵn thừa số âm thì dương, có thừa số 0 thì bằng 0.\n\n**Phần 2. Trình bày**\n\nVế trái: có 1 thừa số âm nên tích là số âm.\n\nVế phải là số dương (bằng 1).\n\nVậy $69.(-40).17<1$.",
+    "kiem": [
+      "69*(-40)*17<1"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-13-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "So sánh tích với 0 hoặc với một số bằng cách xét dấu.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh: $(-12).34.(-99)$ với $15.(-20)$.",
+    "dap_an": ">",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Không cần tính: chỉ xét dấu của mỗi vế (đếm số thừa số âm) rồi so sánh hai dấu.\n\n**Bước 1.** Vế trái có 2 thừa số âm, là số chẵn nên tích là số dương.\n\n**Bước 2.** Vế phải có 1 thừa số âm, là số lẻ nên tích là số âm.\n\n**Bước 3.** Kết luận bằng cách so sánh dấu của hai vế: số âm < 0 < số dương.\n\n**Chú ý:** Tích có số lẻ thừa số âm thì âm, có số chẵn thừa số âm thì dương, có thừa số 0 thì bằng 0.\n\n**Phần 2. Trình bày**\n\nVế trái: có 2 thừa số âm nên tích là số dương.\n\nVế phải: có 1 thừa số âm nên tích là số âm.\n\nVậy $(-12).34.(-99)>15.(-20)$.",
+    "kiem": [
+      "(-12)*34*(-99)>15*(-20)"
+    ],
+    "sach_dap_so": ">",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-13-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "So sánh hai biểu thức tích bằng cách tính từng vế.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh $13.(-4)$ với $24.(-2)$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tính giá trị của từng vế (mỗi tích: xét dấu rồi nhân phần số), sau đó so sánh hai số nguyên nhận được.\n\n**Bước 1.** Tính vế trái $13.(-4)$: xét dấu hai thừa số rồi nhân phần số.\n\n**Bước 2.** Tính vế phải $24.(-2)$ theo cách tương tự.\n\n**Bước 3.** So sánh hai số nguyên vừa có: số âm nhỏ hơn số dương; hai số âm thì số có phần số lớn hơn lại nhỏ hơn.\n\n**Chú ý:** Chỉ so sánh sau khi đã tính xong cả hai vế.\n\n**Phần 2. Trình bày**\n\n$13.(-4)=-52$\n\n$24.(-2)=-48$\n\nTa có $-52<-48$. Vậy $13.(-4)<24.(-2)$.",
+    "kiem": [
+      "13*(-4)<24*(-2)"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-14-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "So sánh tích với 0 hoặc với một số bằng cách xét dấu.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Không tính, hãy so sánh: $1367.(-287).(-678).0$ với $0$.",
+    "dap_an": "=",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Không cần tính: chỉ xét dấu của mỗi vế (đếm số thừa số âm) rồi so sánh hai dấu.\n\n**Bước 1.** Vế trái có thừa số 0 nên bằng 0.\n\n**Bước 2.** Vế phải là số 0.\n\n**Bước 3.** Hai vế cùng bằng một số nên bằng nhau.\n\n**Chú ý:** Tích có số lẻ thừa số âm thì âm, có số chẵn thừa số âm thì dương, có thừa số 0 thì bằng 0.\n\n**Phần 2. Trình bày**\n\nVế trái bằng 0.\n\nVế phải là số 0.\n\nVậy $1367.(-287).(-678).0=0$.",
+    "kiem": [
+      "1367*(-287)*(-678)*0===0"
+    ],
+    "sach_dap_so": "=",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-14-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "So sánh tích với 0 hoặc với một số bằng cách xét dấu.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Không tính, hãy so sánh: $(-5).(-2).(-4).(-6)$ với $(-1).(-5).(-9).3$.",
+    "dap_an": ">",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Không cần tính: chỉ xét dấu của mỗi vế (đếm số thừa số âm) rồi so sánh hai dấu.\n\n**Bước 1.** Vế trái có 4 thừa số âm, là số chẵn nên tích là số dương.\n\n**Bước 2.** Vế phải có 3 thừa số âm, là số lẻ nên tích là số âm.\n\n**Bước 3.** Kết luận bằng cách so sánh dấu của hai vế: số âm < 0 < số dương.\n\n**Chú ý:** Tích có số lẻ thừa số âm thì âm, có số chẵn thừa số âm thì dương, có thừa số 0 thì bằng 0.\n\n**Phần 2. Trình bày**\n\nVế trái: có 4 thừa số âm nên tích là số dương.\n\nVế phải: có 3 thừa số âm nên tích là số âm.\n\nVậy $(-5).(-2).(-4).(-6)>(-1).(-5).(-9).3$.",
+    "kiem": [
+      "(-5)*(-2)*(-4)*(-6)>(-1)*(-5)*(-9)*3"
+    ],
+    "sach_dap_so": ">",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-14-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "So sánh tích với 0 hoặc với một số bằng cách xét dấu.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Không tính, hãy so sánh: $2020.(-1980).(-2009).(-100)$ với $(-100).2020.(-2021).6$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Không cần tính: chỉ xét dấu của mỗi vế (đếm số thừa số âm) rồi so sánh hai dấu.\n\n**Bước 1.** Vế trái có 3 thừa số âm, là số lẻ nên tích là số âm.\n\n**Bước 2.** Vế phải có 2 thừa số âm, là số chẵn nên tích là số dương.\n\n**Bước 3.** Kết luận bằng cách so sánh dấu của hai vế: số âm < 0 < số dương.\n\n**Chú ý:** Tích có số lẻ thừa số âm thì âm, có số chẵn thừa số âm thì dương, có thừa số 0 thì bằng 0.\n\n**Phần 2. Trình bày**\n\nVế trái: có 3 thừa số âm nên tích là số âm.\n\nVế phải: có 2 thừa số âm nên tích là số dương.\n\nVậy $2020.(-1980).(-2009).(-100)<(-100).2020.(-2021).6$.",
+    "kiem": [
+      "2020*(-1980)*(-2009)*(-100)<(-100)*2020*(-2021)*6"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-14-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01305",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "So sánh tích với 0 hoặc với một số bằng cách xét dấu.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Không tính, hãy so sánh: $(-28).(-75).(-200)$ với $1$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Không cần tính: chỉ xét dấu của mỗi vế (đếm số thừa số âm) rồi so sánh hai dấu.\n\n**Bước 1.** Vế trái có 3 thừa số âm, là số lẻ nên tích là số âm.\n\n**Bước 2.** Vế phải là số dương (bằng 1).\n\n**Bước 3.** Kết luận bằng cách so sánh dấu của hai vế: số âm < 0 < số dương.\n\n**Chú ý:** Tích có số lẻ thừa số âm thì âm, có số chẵn thừa số âm thì dương, có thừa số 0 thì bằng 0.\n\n**Phần 2. Trình bày**\n\nVế trái: có 3 thừa số âm nên tích là số âm.\n\nVế phải là số dương (bằng 1).\n\nVậy $(-28).(-75).(-200)<1$.",
+    "kiem": [
+      "(-28)*(-75)*(-200)<1"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-15-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01321",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tích hai thừa số chứa x bằng 0.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$, biết: $x.(x+7)=0$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích bằng 0 khi có ít nhất một thừa số bằng 0: xét từng thừa số chứa $x$ bằng 0 rồi gộp các giá trị tìm được.\n\n**Bước 1.** Xác định hai thừa số của tích: $x$ và $(x+7)$.\n\n**Bước 2.** Một tích bằng 0 khi ít nhất một thừa số bằng 0, nên xét từng thừa số bằng 0.\n\n**Bước 3.** Giải từng trường hợp (tìm thành phần chưa biết) rồi viết đủ các giá trị của $x$.\n\n**Chú ý:** Phải xét đủ MỌI thừa số chứa $x$ và liệt kê đủ các giá trị của $x$, không bỏ sót trường hợp nào.\n\n**Phần 2. Trình bày**\n\n$x.(x+7)=0$\n\nSuy ra $x=0$ hoặc $x+7=0$.\n\n$x+7=0$ thì $x=0-7=-7$.\n\nVậy $x=0$ hoặc $x=-7$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-1000;x<=1000;x++)if(x*(x+7)===0)r.push(x);return JSON.stringify(r)===JSON.stringify([-7,0])})()"
+    ],
+    "sach_dap_so": "x=0 hoặc x=-7",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-15-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01321",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tích hai thừa số chứa x bằng 0.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$, biết: $(x+12)(x-3)=0$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích bằng 0 khi có ít nhất một thừa số bằng 0: xét từng thừa số chứa $x$ bằng 0 rồi gộp các giá trị tìm được.\n\n**Bước 1.** Xác định hai thừa số của tích: $(x+12)$ và $(x-3)$.\n\n**Bước 2.** Một tích bằng 0 khi ít nhất một thừa số bằng 0, nên xét từng thừa số bằng 0.\n\n**Bước 3.** Giải từng trường hợp (tìm thành phần chưa biết) rồi viết đủ các giá trị của $x$.\n\n**Chú ý:** Phải xét đủ MỌI thừa số chứa $x$ và liệt kê đủ các giá trị của $x$, không bỏ sót trường hợp nào.\n\n**Phần 2. Trình bày**\n\n$(x+12)(x-3)=0$\n\nSuy ra $x+12=0$ hoặc $x-3=0$.\n\n$x+12=0$ thì $x=0-12=-12$.\n\n$x-3=0$ thì $x=0+3=3$.\n\nVậy $x=-12$ hoặc $x=3$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-1000;x<=1000;x++)if((x+12)*(x-3)===0)r.push(x);return JSON.stringify(r)===JSON.stringify([-12,3])})()"
+    ],
+    "sach_dap_so": "x=-12 hoặc x=3",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-15-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01322",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tích nhiều thừa số chứa x bằng 0.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$, biết: $x(x+2)(7-x)=0$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích bằng 0 khi có ít nhất một thừa số bằng 0: xét từng thừa số chứa $x$ bằng 0 rồi gộp các giá trị tìm được.\n\n**Bước 1.** Xác định ba thừa số của tích: $x$, $(x+2)$ và $(7-x)$.\n\n**Bước 2.** Một tích bằng 0 khi ít nhất một thừa số bằng 0, nên xét từng thừa số bằng 0.\n\n**Bước 3.** Giải ba trường hợp (tìm thành phần chưa biết) rồi viết đủ các giá trị của $x$.\n\n**Chú ý:** Phải xét đủ MỌI thừa số chứa $x$ và liệt kê đủ các giá trị của $x$, không bỏ sót trường hợp nào.\n\n**Phần 2. Trình bày**\n\n$x(x+2)(7-x)=0$\n\nSuy ra $x=0$ hoặc $x+2=0$ hoặc $7-x=0$.\n\n$x+2=0$ thì $x=0-2=-2$.\n\n$7-x=0$ thì $x=7-0=7$.\n\nVậy $x=0$; $x=-2$ hoặc $x=7$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-1000;x<=1000;x++)if(x*(x+2)*(7-x)===0)r.push(x);return JSON.stringify(r)===JSON.stringify([-2,0,7])})()"
+    ],
+    "sach_dap_so": "x=0; x=2 hoặc x=7",
+    "ghi_chu": "LỆCH SÁCH — sách in x = 2, nhưng x + 2 = 0 cho x = −2 (với x = 2: 2.4.5 = 40 ≠ 0). Đáp đúng: x ∈ {0; −2; 7}."
+  },
+  {
+    "id": "B4-15-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01322",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tích nhiều thừa số chứa x bằng 0.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số nguyên $x$, biết: $(x-1)(2-x)(x+3)=0$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích bằng 0 khi có ít nhất một thừa số bằng 0: xét từng thừa số chứa $x$ bằng 0 rồi gộp các giá trị tìm được.\n\n**Bước 1.** Xác định ba thừa số của tích: $(x-1)$, $(2-x)$ và $(x+3)$.\n\n**Bước 2.** Một tích bằng 0 khi ít nhất một thừa số bằng 0, nên xét từng thừa số bằng 0.\n\n**Bước 3.** Giải ba trường hợp (tìm thành phần chưa biết) rồi viết đủ các giá trị của $x$.\n\n**Chú ý:** Phải xét đủ MỌI thừa số chứa $x$ và liệt kê đủ các giá trị của $x$, không bỏ sót trường hợp nào.\n\n**Phần 2. Trình bày**\n\n$(x-1)(2-x)(x+3)=0$\n\nSuy ra $x-1=0$ hoặc $2-x=0$ hoặc $x+3=0$.\n\n$x-1=0$ thì $x=0+1=1$.\n\n$2-x=0$ thì $x=2-0=2$.\n\n$x+3=0$ thì $x=0-3=-3$.\n\nVậy $x=1$; $x=2$ hoặc $x=-3$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-1000;x<=1000;x++)if((x-1)*(2-x)*(x+3)===0)r.push(x);return JSON.stringify(r)===JSON.stringify([-3,1,2])})()"
+    ],
+    "sach_dap_so": "x=1; x=2 hoặc x=-3",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-16",
+    "vai": "luyen",
+    "dang_bai": "NDB01314",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Đại lượng thay đổi mỗi ngày nhân số ngày; có trường hợp số âm.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Lớp 6C có phong trào thi đua giành điểm 10. Trong tháng 3 mỗi bạn có rất nhiều điểm tốt nên cô giáo đã khen thưởng, vì vậy sang tháng 4 rất nhiều bạn cố gắng giành điểm 10 nhiều hơn. Mỗi ngày, cả lớp có thêm $x$ điểm tốt so với tháng trước. Hỏi cả tháng 4 lớp 6C sẽ có thêm bao nhiêu điểm tốt, biết số ngày đi học của tháng là 26 ngày, nếu:\n\na) $x=12$;\n\nb) $x=-3$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số điểm tốt tăng thêm cả tháng = số ngày đi học nhân với số điểm tốt tăng thêm mỗi ngày; số âm nghĩa là giảm đi.\n\n**Bước 1.** Xác định đại lượng cần tính: số điểm tốt tăng thêm trong cả tháng 4.\n\n**Bước 2.** Mỗi ngày tăng thêm $x$ điểm, có 26 ngày nên lấy $26$ nhân với $x$.\n\n**Bước 3.** Thay lần lượt giá trị ở a) và b) rồi nhân hai số nguyên (xét dấu trước).\n\n**Bước 4.** Câu nào ra số âm thì hiểu là số điểm tốt giảm đi.\n\n**Chú ý:** Số âm nghĩa là so với tháng trước, lớp có ít điểm tốt hơn.\n\n**Phần 2. Trình bày**\n\nSố điểm tốt tháng 4 tăng thêm là $26.x$ (điểm tốt).\n\na) Với $x=12$: $12.26=312$ (điểm tốt).\n\nb) Với $x=-3$: $(-3).26=-78$ (điểm tốt), tức là số điểm tốt giảm đi 78 so với tháng trước.\n\nVậy tháng 4 lớp 6C có thêm 312 điểm tốt ở câu a); ở câu b) số điểm tốt giảm đi 78.",
+    "kiem": [
+      "12*26===312",
+      "(-3)*26===-78"
+    ],
+    "sach_dap_so": "a) 312; b) -78 (sách viết thêm \"giảm 72\")",
+    "ghi_chu": "LỆCH SÁCH — sách ghi “giảm đi 72 điểm tốt”, nhưng 3.26 = 78 nên giảm 78 (sách gõ sai 72)."
+  },
+  {
+    "id": "B4-18-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01332",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Đẳng thức tích của hai số nguyên bằng số cho trước.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm các số nguyên $x,y$, biết: $x.y=-9$ và $x<y$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích hai số nguyên bằng số đã cho nên mỗi số là một ước của số đó: liệt kê mọi cách viết số đã cho thành tích hai số nguyên rồi suy ra $x$, $y$.\n\n**Bước 1.** Tích bằng số âm nên $x$ và $y$ khác dấu; do $x<y$ nên $x$ là số âm, $y$ là số dương.\n\n**Bước 2.** Liệt kê mọi cách viết $-9$ thành tích của một số âm và một số dương.\n\n**Bước 3.** Đối chiếu điều kiện $x<y$ để loại cặp không hợp lệ.\n\n**Bước 4.** Viết các cặp còn lại.\n\n**Chú ý:** Liệt kê đủ mọi cách viết số đã cho thành tích hai số nguyên; đừng bỏ cặp nào (chú ý cả hoán đổi vai trò khi đề không có điều kiện thứ tự).\n\n**Phần 2. Trình bày**\n\nTa có $-9=(-1).9=(-3).3=(-9).1$ (và các cách đổi chỗ hai thừa số).\n\nCác cặp có tích bằng −9: $(-1;9)$, $(9;-1)$, $(-3;3)$, $(3;-3)$, $(-9;1)$, $(1;-9)$.\n\nVì $x<y$ nên chỉ giữ các cặp có $x$ âm.\n\nVậy $(x;y)\\in\\{(-1;9);(-3;3);(-9;1)\\}$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-60;x<=60;x++)for(let y=-60;y<=60;y++)if(x*y===-9&&x<y)r.push(x+','+y);return JSON.stringify(r.sort())===JSON.stringify([\"-1,9\",\"-3,3\",\"-9,1\"])})()"
+    ],
+    "sach_dap_so": "(-1;9), (-3;3), (-9;1)",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-18-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01332",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Đẳng thức tích của hai số nguyên bằng số cho trước.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm các số nguyên $x,y$, biết: $x.y=7$ và $x<y$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích hai số nguyên bằng số đã cho nên mỗi số là một ước của số đó: liệt kê mọi cách viết số đã cho thành tích hai số nguyên rồi suy ra $x$, $y$.\n\n**Bước 1.** Tích bằng số dương nên $x$ và $y$ cùng dấu (cùng dương hoặc cùng âm).\n\n**Bước 2.** Liệt kê mọi cách viết $7$ thành tích của hai số nguyên cùng dấu.\n\n**Bước 3.** Đối chiếu điều kiện $x<y$ để loại cặp không hợp lệ.\n\n**Bước 4.** Viết các cặp còn lại.\n\n**Chú ý:** Liệt kê đủ mọi cách viết số đã cho thành tích hai số nguyên; đừng bỏ cặp nào (chú ý cả hoán đổi vai trò khi đề không có điều kiện thứ tự).\n\n**Phần 2. Trình bày**\n\nTa có $7=1.7=(-1).(-7)$ (và các cách đổi chỗ hai thừa số).\n\nCác cặp có tích bằng 7: $(1;7)$, $(7;1)$, $(-1;-7)$, $(-7;-1)$.\n\nVì $x<y$ nên loại $(7;1)$ và $(-1;-7)$.\n\nVậy $(x;y)\\in\\{(1;7);(-7;-1)\\}$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-60;x<=60;x++)for(let y=-60;y<=60;y++)if(x*y===7&&x<y)r.push(x+','+y);return JSON.stringify(r.sort())===JSON.stringify([\"-7,-1\",\"1,7\"])})()"
+    ],
+    "sach_dap_so": "(-1;-7), (7;1)",
+    "ghi_chu": "LỆCH SÁCH — đề ghi x < y nhưng sách đáp (−1; −7), (7; 1) là các cặp có x > y; theo đề x < y thì đáp đúng là (1; 7), (−7; −1). Cần Thùy đối chiếu xem đề gốc là x < y hay x > y."
+  },
+  {
+    "id": "B4-18-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01332",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Đẳng thức tích của hai số nguyên bằng số cho trước.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm các số nguyên $x,y$, biết: $x.y=-11$ và $x>y$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích hai số nguyên bằng số đã cho nên mỗi số là một ước của số đó: liệt kê mọi cách viết số đã cho thành tích hai số nguyên rồi suy ra $x$, $y$.\n\n**Bước 1.** Tích bằng số âm nên $x$ và $y$ khác dấu; do $x>y$ nên $x$ là số dương, $y$ là số âm.\n\n**Bước 2.** Liệt kê mọi cách viết $-11$ thành tích của một số dương và một số âm.\n\n**Bước 3.** Đối chiếu điều kiện $x>y$ để loại cặp không hợp lệ.\n\n**Bước 4.** Viết các cặp còn lại.\n\n**Chú ý:** Liệt kê đủ mọi cách viết số đã cho thành tích hai số nguyên; đừng bỏ cặp nào (chú ý cả hoán đổi vai trò khi đề không có điều kiện thứ tự).\n\n**Phần 2. Trình bày**\n\nTa có $-11=(-1).11=1.(-11)$ (và các cách đổi chỗ hai thừa số).\n\nCác cặp có tích bằng −11: $(-1;11)$, $(11;-1)$, $(1;-11)$, $(-11;1)$.\n\nVì $x>y$ nên loại $(-1;11)$ và $(-11;1)$.\n\nVậy $(x;y)\\in\\{(11;-1);(1;-11)\\}$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-60;x<=60;x++)for(let y=-60;y<=60;y++)if(x*y===-11&&x>y)r.push(x+','+y);return JSON.stringify(r.sort())===JSON.stringify([\"1,-11\",\"11,-1\"])})()"
+    ],
+    "sach_dap_so": "(11;-1), (1;-11)",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-19-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01332",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Đẳng thức tích của hai số nguyên bằng số cho trước.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm các số nguyên $x,y$, biết: $(x+1)(y-2)=-3$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đặt hai thừa số chứa $x$ và $y$ bằng các ước của số đã cho, rồi suy ngược ra $x$, $y$.\n\n**Bước 1.** Coi $x+1$ và $y-2$ là hai số nguyên có tích bằng -3.\n\n**Bước 2.** Liệt kê mọi cách viết -3 thành tích của hai số nguyên (có xét thứ tự).\n\n**Bước 3.** Với mỗi cách viết, cho $x+1$ và $y-2$ bằng từng thừa số rồi tìm $x$, $y$ (tìm thành phần chưa biết).\n\n**Bước 4.** Viết đủ các cặp $(x;y)$.\n\n**Chú ý:** Liệt kê đủ mọi cách viết số đã cho thành tích hai số nguyên; đừng bỏ cặp nào (chú ý cả hoán đổi vai trò khi đề không có điều kiện thứ tự).\n\n**Phần 2. Trình bày**\n\nVì $(x+1)(y-2)=-3$ nên $x+1$ và $y-2$ là hai số nguyên có tích bằng $-3$.\n\nTa có $-3=1.(-3)=(-1).3=3.(-1)=(-3).1$.\n\nXét bốn trường hợp:\n\n$x+1=1$ và $y-2=-3$: $x=1-1=0$, $y=-3+2=-1$;\n\n$x+1=-1$ và $y-2=3$: $x=-1-1=-2$, $y=3+2=5$;\n\n$x+1=3$ và $y-2=-1$: $x=3-1=2$, $y=-1+2=1$;\n\n$x+1=-3$ và $y-2=1$: $x=-3-1=-4$, $y=1+2=3$;\n\nVậy $(x;y)\\in\\{(0;-1);(-2;5);(2;1);(-4;3)\\}$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-60;x<=60;x++)for(let y=-60;y<=60;y++)if((x+1)*(y+-2)===-3)r.push(x+','+y);return JSON.stringify(r.sort())===JSON.stringify([\"-2,5\",\"-4,3\",\"0,-1\",\"2,1\"])})()"
+    ],
+    "sach_dap_so": "(-4;3), (-2;5), (0;-1), (2;1)",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-19-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01332",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Đẳng thức tích của hai số nguyên bằng số cho trước.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm các số nguyên $x,y$, biết: $(x-3)(y+1)=7$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đặt hai thừa số chứa $x$ và $y$ bằng các ước của số đã cho, rồi suy ngược ra $x$, $y$.\n\n**Bước 1.** Coi $x-3$ và $y+1$ là hai số nguyên có tích bằng 7.\n\n**Bước 2.** Liệt kê mọi cách viết 7 thành tích của hai số nguyên (có xét thứ tự).\n\n**Bước 3.** Với mỗi cách viết, cho $x-3$ và $y+1$ bằng từng thừa số rồi tìm $x$, $y$ (tìm thành phần chưa biết).\n\n**Bước 4.** Viết đủ các cặp $(x;y)$.\n\n**Chú ý:** Liệt kê đủ mọi cách viết số đã cho thành tích hai số nguyên; đừng bỏ cặp nào (chú ý cả hoán đổi vai trò khi đề không có điều kiện thứ tự).\n\n**Phần 2. Trình bày**\n\nVì $(x-3)(y+1)=7$ nên $x-3$ và $y+1$ là hai số nguyên có tích bằng $7$.\n\nTa có $7=1.7=7.1=(-1).(-7)=(-7).(-1)$.\n\nXét bốn trường hợp:\n\n$x-3=1$ và $y+1=7$: $x=1+3=4$, $y=7-1=6$;\n\n$x-3=7$ và $y+1=1$: $x=7+3=10$, $y=1-1=0$;\n\n$x-3=-1$ và $y+1=-7$: $x=-1+3=2$, $y=-7-1=-8$;\n\n$x-3=-7$ và $y+1=-1$: $x=-7+3=-4$, $y=-1-1=-2$;\n\nVậy $(x;y)\\in\\{(4;6);(10;0);(2;-8);(-4;-2)\\}$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-60;x<=60;x++)for(let y=-60;y<=60;y++)if((x+-3)*(y+1)===7)r.push(x+','+y);return JSON.stringify(r.sort())===JSON.stringify([\"-4,-2\",\"10,0\",\"2,-8\",\"4,6\"])})()"
+    ],
+    "sach_dap_so": "(4;6), (10;0), (2;-8), (-4;-2)",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B4-19-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01332",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Đẳng thức tích của hai số nguyên bằng số cho trước.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm các số nguyên $x,y$, biết: $(x+5)(y+7)=-5$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đặt hai thừa số chứa $x$ và $y$ bằng các ước của số đã cho, rồi suy ngược ra $x$, $y$.\n\n**Bước 1.** Coi $x+5$ và $y+7$ là hai số nguyên có tích bằng -5.\n\n**Bước 2.** Liệt kê mọi cách viết -5 thành tích của hai số nguyên (có xét thứ tự).\n\n**Bước 3.** Với mỗi cách viết, cho $x+5$ và $y+7$ bằng từng thừa số rồi tìm $x$, $y$ (tìm thành phần chưa biết).\n\n**Bước 4.** Viết đủ các cặp $(x;y)$.\n\n**Chú ý:** Liệt kê đủ mọi cách viết số đã cho thành tích hai số nguyên; đừng bỏ cặp nào (chú ý cả hoán đổi vai trò khi đề không có điều kiện thứ tự).\n\n**Phần 2. Trình bày**\n\nVì $(x+5)(y+7)=-5$ nên $x+5$ và $y+7$ là hai số nguyên có tích bằng $-5$.\n\nTa có $-5=1.(-5)=(-1).5=5.(-1)=(-5).1$.\n\nXét bốn trường hợp:\n\n$x+5=1$ và $y+7=-5$: $x=1-5=-4$, $y=-5-7=-12$;\n\n$x+5=-1$ và $y+7=5$: $x=-1-5=-6$, $y=5-7=-2$;\n\n$x+5=5$ và $y+7=-1$: $x=5-5=0$, $y=-1-7=-8$;\n\n$x+5=-5$ và $y+7=1$: $x=-5-5=-10$, $y=1-7=-6$;\n\nVậy $(x;y)\\in\\{(-4;-12);(-6;-2);(0;-8);(-10;-6)\\}$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-60;x<=60;x++)for(let y=-60;y<=60;y++)if((x+5)*(y+7)===-5)r.push(x+','+y);return JSON.stringify(r.sort())===JSON.stringify([\"-10,-6\",\"-4,-12\",\"-6,-2\",\"0,-8\"])})()"
+    ],
+    "sach_dap_so": "(-6;-2), (0;-8), (-4;-12), (-10;-6)",
+    "ghi_chu": ""
+  }
+]

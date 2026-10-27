@@ -1,0 +1,2300 @@
+[
+  {
+    "id": "B2-1A",
+    "vai": "giang",
+    "dang_bai": null,
+    "dang_bai_chac": null,
+    "dang_bai_ly_do": "Bản đồ thiếu dạng: xác định phần dấu và phần số tự nhiên của số nguyên.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Xác định phần dấu và phần số tự nhiên của các số nguyên sau: $-21;+107;-752;2078$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** mỗi số nguyên gồm hai phần: **phần dấu** (dấu $+$ hoặc dấu $-$) và **phần số tự nhiên** (số còn lại khi bỏ phần dấu).\n\n**Bước 1.** Nhìn dấu đứng trước từng số: dấu $-$ là số âm, dấu $+$ là số dương.\n\n**Bước 2.** Số không ghi dấu là số dương, nên phần dấu của nó là dấu $+$.\n\n**Bước 3.** Bỏ phần dấu đi, phần còn lại của số chính là phần số tự nhiên.\n\n**Phần 2. Trình bày**\n\nSố $-21$ có phần dấu là dấu $-$ và phần số tự nhiên là $21$.\n\nSố $+107$ có phần dấu là dấu $+$ và phần số tự nhiên là $107$.\n\nSố $-752$ có phần dấu là dấu $-$ và phần số tự nhiên là $752$.\n\nSố $2078$ có phần dấu là dấu $+$ và phần số tự nhiên là $2078$.",
+    "kiem": [
+      "[-21,107,-752,2078].map(Math.abs).join()==='21,107,752,2078'"
+    ],
+    "sach_dap_so": "Phần dấu: -, +, -, +; phần số tự nhiên: 21, 107, 752, 2078",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-1B",
+    "vai": "luyen",
+    "dang_bai": null,
+    "dang_bai_chac": null,
+    "dang_bai_ly_do": "Bản đồ thiếu dạng: xác định phần dấu và phần số tự nhiên của số nguyên.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Xác định phần dấu và phần số tự nhiên của các số nguyên sau: $-100;+5040;-7890;9018$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** mỗi số nguyên gồm hai phần: **phần dấu** (dấu $+$ hoặc dấu $-$) và **phần số tự nhiên** (số còn lại khi bỏ phần dấu).\n\n**Bước 1.** Nhìn dấu đứng trước từng số: dấu $-$ là số âm, dấu $+$ là số dương.\n\n**Bước 2.** Số không ghi dấu là số dương, nên phần dấu của nó là dấu $+$.\n\n**Bước 3.** Bỏ phần dấu đi, phần còn lại của số chính là phần số tự nhiên.\n\n**Phần 2. Trình bày**\n\nSố $-100$ có phần dấu là dấu $-$ và phần số tự nhiên là $100$.\n\nSố $+5040$ có phần dấu là dấu $+$ và phần số tự nhiên là $5040$.\n\nSố $-7890$ có phần dấu là dấu $-$ và phần số tự nhiên là $7890$.\n\nSố $9018$ có phần dấu là dấu $+$ và phần số tự nhiên là $9018$.",
+    "kiem": [
+      "[-100,5040,-7890,9018].map(Math.abs).join()==='100,5040,7890,9018'"
+    ],
+    "sach_dap_so": "Phần dấu: -, +, -, +; phần số tự nhiên: 100, 5040, 7890, 9018",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-2A",
+    "vai": "giang",
+    "dang_bai": "NDB01288",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm số đối của một số nguyên (có cả dạng -(-267)).",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số đối của các số nguyên sau: $+25;-38;90;-(-267)$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số đối của $a$ là $-a$: hai số đối nhau chỉ khác nhau về dấu.\n\n**Bước 1.** Viết rõ dấu của từng số (số không ghi dấu là số dương).\n\n**Bước 2.** Đổi dấu từng số để được số đối của nó.\n\n**Bước 3.** Với $-(-267)$: trước hết xem đây là số đối của $-267$, tức là số nào, rồi mới lấy số đối của số đó.\n\n**Phần 2. Trình bày**\n\nSố đối của $+25$ là $-25$.\n\nSố đối của $-38$ là $38$.\n\nSố đối của $90$ là $-90$.\n\nTa có $-(-267)=267$ nên số đối của $-(-267)$ là $-267$.",
+    "kiem": [
+      "[25,-38,90,267].map(n=>-n).join()==='-25,38,-90,-267'"
+    ],
+    "sach_dap_so": "-25; 38; -90; -267",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-2B",
+    "vai": "luyen",
+    "dang_bai": "NDB01288",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm số đối của một số nguyên (có cả dạng -(-267)).",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số đối của các số nguyên sau: $+54;-356;100;-(-368)$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số đối của $a$ là $-a$: hai số đối nhau chỉ khác nhau về dấu.\n\n**Bước 1.** Viết rõ dấu của từng số (số không ghi dấu là số dương).\n\n**Bước 2.** Đổi dấu từng số để được số đối của nó.\n\n**Bước 3.** Với $-(-368)$: trước hết xem đây là số đối của $-368$, tức là số nào, rồi mới lấy số đối của số đó.\n\n**Phần 2. Trình bày**\n\nSố đối của $+54$ là $-54$.\n\nSố đối của $-356$ là $356$.\n\nSố đối của $100$ là $-100$.\n\nTa có $-(-368)=368$ nên số đối của $-(-368)$ là $-368$.",
+    "kiem": [
+      "[54,-356,100,368].map(n=>-n).join()==='-54,356,-100,-368'"
+    ],
+    "sach_dap_so": "-54; 356; -100; -368",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-3A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01298",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép cộng hai số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng các số nguyên cùng dấu: $237+63$",
+    "dap_an": "300",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** cộng hai số nguyên **cùng dấu**: cộng phần số tự nhiên của chúng rồi đặt **dấu chung** trước kết quả.\n\n**Bước 1.** Xét dấu: $237$ và $63$ đều là số dương, nên đây là phép cộng hai số cùng dấu.\n\n**Bước 2.** Lấy phần số tự nhiên của hai số là $237$ và $63$ rồi cộng chúng lại.\n\n**Bước 3.** Hai số đều dương nên kết quả là số dương, không cần ghi dấu.\n\n**Phần 2. Trình bày**\n\n$237+63$\n\n$=300$",
+    "kiem": [
+      "(237+63)===300"
+    ],
+    "sach_dap_so": "300",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-3A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Dãy cộng, trừ nhiều số nguyên, làm từ trái sang phải.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng các số nguyên cùng dấu: $12+25+5$",
+    "dap_an": "42",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dãy cộng, trừ nhiều số: tính **lần lượt từ trái sang phải**, mỗi lần chỉ làm một phép tính với hai số; phép trừ đổi thành cộng với số đối.\n\n**Bước 1.** Nhận ra biểu thức có 3 số hạng nối nhau bởi phép cộng, phép trừ, không có phép tính nào khác.\n\n**Bước 2.** Tính hai số hạng đầu tiên $12+25$ trước bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 3.** Lấy kết quả vừa có cộng (hoặc trừ) với số hạng kế tiếp; cứ thế tới số hạng cuối cùng.\n\n**Chú ý:** chú ý dấu của từng số hạng, nhất là khi trừ đi một số âm.\n\n**Phần 2. Trình bày**\n\n$12+25+5$\n\n$=37+5$\n\n$=42$",
+    "kiem": [
+      "(12+25+5)===42"
+    ],
+    "sach_dap_so": "42",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-3A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01298",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép cộng hai số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng các số nguyên cùng dấu: $(-10)+(-12)$",
+    "dap_an": "-22",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** cộng hai số nguyên **cùng dấu**: cộng phần số tự nhiên của chúng rồi đặt **dấu chung** trước kết quả.\n\n**Bước 1.** Xét dấu: $(-10)$ và $(-12)$ đều là số âm, nên đây là phép cộng hai số cùng dấu.\n\n**Bước 2.** Lấy phần số tự nhiên của hai số là $10$ và $12$ rồi cộng chúng lại.\n\n**Bước 3.** Đặt dấu trừ (dấu chung của hai số) trước kết quả vừa tính.\n\n**Phần 2. Trình bày**\n\n$(-10)+(-12)$\n\n$=-(10+12)$\n\n$=-22$",
+    "kiem": [
+      "((-10)+(-12))===-22"
+    ],
+    "sach_dap_so": "-22",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-3A-d",
+    "vai": "giang",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Dãy cộng, trừ nhiều số nguyên, làm từ trái sang phải.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng các số nguyên cùng dấu: $(-20)+(-4)+(-7)$",
+    "dap_an": "-31",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dãy cộng, trừ nhiều số: tính **lần lượt từ trái sang phải**, mỗi lần chỉ làm một phép tính với hai số; phép trừ đổi thành cộng với số đối.\n\n**Bước 1.** Nhận ra biểu thức có 3 số hạng nối nhau bởi phép cộng, phép trừ, không có phép tính nào khác.\n\n**Bước 2.** Tính hai số hạng đầu tiên $(-20)+(-4)$ trước bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 3.** Lấy kết quả vừa có cộng (hoặc trừ) với số hạng kế tiếp; cứ thế tới số hạng cuối cùng.\n\n**Chú ý:** chú ý dấu của từng số hạng, nhất là khi trừ đi một số âm.\n\n**Phần 2. Trình bày**\n\n$(-20)+(-4)+(-7)$\n\n$=(-24)+(-7)$\n\n$=-31$",
+    "kiem": [
+      "((-20)+(-4)+(-7))===-31"
+    ],
+    "sach_dap_so": "-31",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-3B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01298",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép cộng hai số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng các số nguyên cùng dấu: $524+16$",
+    "dap_an": "540",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** cộng hai số nguyên **cùng dấu**: cộng phần số tự nhiên của chúng rồi đặt **dấu chung** trước kết quả.\n\n**Bước 1.** Xét dấu: $524$ và $16$ đều là số dương, nên đây là phép cộng hai số cùng dấu.\n\n**Bước 2.** Lấy phần số tự nhiên của hai số là $524$ và $16$ rồi cộng chúng lại.\n\n**Bước 3.** Hai số đều dương nên kết quả là số dương, không cần ghi dấu.\n\n**Phần 2. Trình bày**\n\n$524+16$\n\n$=540$",
+    "kiem": [
+      "(524+16)===540"
+    ],
+    "sach_dap_so": "540",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-3B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Dãy cộng, trừ nhiều số nguyên, làm từ trái sang phải.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng các số nguyên cùng dấu: $1996+190+4$",
+    "dap_an": "2190",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dãy cộng, trừ nhiều số: tính **lần lượt từ trái sang phải**, mỗi lần chỉ làm một phép tính với hai số; phép trừ đổi thành cộng với số đối.\n\n**Bước 1.** Nhận ra biểu thức có 3 số hạng nối nhau bởi phép cộng, phép trừ, không có phép tính nào khác.\n\n**Bước 2.** Tính hai số hạng đầu tiên $1996+190$ trước bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 3.** Lấy kết quả vừa có cộng (hoặc trừ) với số hạng kế tiếp; cứ thế tới số hạng cuối cùng.\n\n**Chú ý:** chú ý dấu của từng số hạng, nhất là khi trừ đi một số âm.\n\n**Phần 2. Trình bày**\n\n$1996+190+4$\n\n$=2186+4$\n\n$=2190$",
+    "kiem": [
+      "(1996+190+4)===2190"
+    ],
+    "sach_dap_so": "2190",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-3B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01298",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép cộng hai số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng các số nguyên cùng dấu: $(-235)+(-65)$",
+    "dap_an": "-300",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** cộng hai số nguyên **cùng dấu**: cộng phần số tự nhiên của chúng rồi đặt **dấu chung** trước kết quả.\n\n**Bước 1.** Xét dấu: $(-235)$ và $(-65)$ đều là số âm, nên đây là phép cộng hai số cùng dấu.\n\n**Bước 2.** Lấy phần số tự nhiên của hai số là $235$ và $65$ rồi cộng chúng lại.\n\n**Bước 3.** Đặt dấu trừ (dấu chung của hai số) trước kết quả vừa tính.\n\n**Phần 2. Trình bày**\n\n$(-235)+(-65)$\n\n$=-(235+65)$\n\n$=-300$",
+    "kiem": [
+      "((-235)+(-65))===-300"
+    ],
+    "sach_dap_so": "-300",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-3B-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Dãy cộng, trừ nhiều số nguyên, làm từ trái sang phải.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng các số nguyên cùng dấu: $(-70)+(-100)+(-40)$",
+    "dap_an": "-210",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dãy cộng, trừ nhiều số: tính **lần lượt từ trái sang phải**, mỗi lần chỉ làm một phép tính với hai số; phép trừ đổi thành cộng với số đối.\n\n**Bước 1.** Nhận ra biểu thức có 3 số hạng nối nhau bởi phép cộng, phép trừ, không có phép tính nào khác.\n\n**Bước 2.** Tính hai số hạng đầu tiên $(-70)+(-100)$ trước bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 3.** Lấy kết quả vừa có cộng (hoặc trừ) với số hạng kế tiếp; cứ thế tới số hạng cuối cùng.\n\n**Chú ý:** chú ý dấu của từng số hạng, nhất là khi trừ đi một số âm.\n\n**Phần 2. Trình bày**\n\n$(-70)+(-100)+(-40)$\n\n$=(-170)+(-40)$\n\n$=-210$",
+    "kiem": [
+      "((-70)+(-100)+(-40))===-210"
+    ],
+    "sach_dap_so": "-210",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-4A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01298",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép cộng hai số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng hai số nguyên khác dấu: $46+(-6)$",
+    "dap_an": "40",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** cộng hai số nguyên **khác dấu** (không đối nhau): lấy phần số tự nhiên lớn trừ phần số tự nhiên bé, rồi đặt dấu của số có phần số tự nhiên lớn hơn.\n\n**Bước 1.** Xét dấu: $46$ là số dương, $(-6)$ là số âm, nên hai số khác dấu.\n\n**Bước 2.** So sánh phần số tự nhiên $46$ và $6$, rồi lấy số lớn trừ số bé.\n\n**Bước 3.** Đặt trước hiệu vừa tính dấu của số có phần số tự nhiên lớn hơn.\n\n**Phần 2. Trình bày**\n\n$46+(-6)$\n\n$=46-6$\n\n$=40$",
+    "kiem": [
+      "(46+(-6))===40"
+    ],
+    "sach_dap_so": "40",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-4A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01298",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép cộng hai số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng hai số nguyên khác dấu: $-80+50$",
+    "dap_an": "-30",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** cộng hai số nguyên **khác dấu** (không đối nhau): lấy phần số tự nhiên lớn trừ phần số tự nhiên bé, rồi đặt dấu của số có phần số tự nhiên lớn hơn.\n\n**Bước 1.** Xét dấu: $(-80)$ là số âm, $50$ là số dương, nên hai số khác dấu.\n\n**Bước 2.** So sánh phần số tự nhiên $80$ và $50$, rồi lấy số lớn trừ số bé.\n\n**Bước 3.** Đặt trước hiệu vừa tính dấu của số có phần số tự nhiên lớn hơn.\n\n**Phần 2. Trình bày**\n\n$-80+50$\n\n$=-(80-50)$\n\n$=-30$",
+    "kiem": [
+      "(-80+50)===-30"
+    ],
+    "sach_dap_so": "-30",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-4A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01298",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép cộng hai số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng hai số nguyên khác dấu: $102+(-120)$",
+    "dap_an": "-18",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** cộng hai số nguyên **khác dấu** (không đối nhau): lấy phần số tự nhiên lớn trừ phần số tự nhiên bé, rồi đặt dấu của số có phần số tự nhiên lớn hơn.\n\n**Bước 1.** Xét dấu: $102$ là số dương, $(-120)$ là số âm, nên hai số khác dấu.\n\n**Bước 2.** So sánh phần số tự nhiên $102$ và $120$, rồi lấy số lớn trừ số bé.\n\n**Bước 3.** Đặt trước hiệu vừa tính dấu của số có phần số tự nhiên lớn hơn.\n\n**Phần 2. Trình bày**\n\n$102+(-120)$\n\n$=-(120-102)$\n\n$=-18$",
+    "kiem": [
+      "(102+(-120))===-18"
+    ],
+    "sach_dap_so": "-18",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-4A-d",
+    "vai": "giang",
+    "dang_bai": "NDB01298",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép cộng hai số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng hai số nguyên khác dấu: $250+(-250)$",
+    "dap_an": "0",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai số **đối nhau** (cùng phần số tự nhiên, khác dấu) có tổng là một kết quả đặc biệt, không cần tính phần số tự nhiên.\n\n**Bước 1.** So sánh $250$ và $(-250)$: hai số có cùng phần số tự nhiên nhưng khác dấu.\n\n**Bước 2.** Kết luận hai số này là hai số đối nhau.\n\n**Bước 3.** Dùng tính chất về tổng của hai số đối nhau để ghi kết quả.\n\n**Phần 2. Trình bày**\n\n$250+(-250)$\n\n$=0$",
+    "kiem": [
+      "(250+(-250))===0"
+    ],
+    "sach_dap_so": "0",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-4A-e",
+    "vai": "giang",
+    "dang_bai": "NDB01298",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép cộng hai số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng hai số nguyên khác dấu: $(-320)+90$",
+    "dap_an": "-230",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** cộng hai số nguyên **khác dấu** (không đối nhau): lấy phần số tự nhiên lớn trừ phần số tự nhiên bé, rồi đặt dấu của số có phần số tự nhiên lớn hơn.\n\n**Bước 1.** Xét dấu: $(-320)$ là số âm, $90$ là số dương, nên hai số khác dấu.\n\n**Bước 2.** So sánh phần số tự nhiên $320$ và $90$, rồi lấy số lớn trừ số bé.\n\n**Bước 3.** Đặt trước hiệu vừa tính dấu của số có phần số tự nhiên lớn hơn.\n\n**Phần 2. Trình bày**\n\n$(-320)+90$\n\n$=-(320-90)$\n\n$=-230$",
+    "kiem": [
+      "((-320)+90)===-230"
+    ],
+    "sach_dap_so": "-230",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-4A-f",
+    "vai": "giang",
+    "dang_bai": "NDB01298",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép cộng hai số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng hai số nguyên khác dấu: $(-475)+0$",
+    "dap_an": "-475",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** cộng một số nguyên với $0$ thì kết quả vẫn là chính số đó.\n\n**Bước 1.** Nhận ra trong phép cộng $(-475)+0$ có một số hạng bằng $0$.\n\n**Bước 2.** Dùng tính chất: cộng một số với $0$ thì không làm số đó thay đổi.\n\n**Bước 3.** Viết kết quả, giữ nguyên số còn lại cùng dấu của nó.\n\n**Phần 2. Trình bày**\n\n$(-475)+0$\n\n$=-475$",
+    "kiem": [
+      "((-475)+0)===-475"
+    ],
+    "sach_dap_so": "-475",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-4B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01298",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép cộng hai số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng hai số nguyên khác dấu: $108+(-124)$",
+    "dap_an": "-16",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** cộng hai số nguyên **khác dấu** (không đối nhau): lấy phần số tự nhiên lớn trừ phần số tự nhiên bé, rồi đặt dấu của số có phần số tự nhiên lớn hơn.\n\n**Bước 1.** Xét dấu: $108$ là số dương, $(-124)$ là số âm, nên hai số khác dấu.\n\n**Bước 2.** So sánh phần số tự nhiên $108$ và $124$, rồi lấy số lớn trừ số bé.\n\n**Bước 3.** Đặt trước hiệu vừa tính dấu của số có phần số tự nhiên lớn hơn.\n\n**Phần 2. Trình bày**\n\n$108+(-124)$\n\n$=-(124-108)$\n\n$=-16$",
+    "kiem": [
+      "(108+(-124))===-16"
+    ],
+    "sach_dap_so": "-16",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-4B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01298",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép cộng hai số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng hai số nguyên khác dấu: $(-157)+57$",
+    "dap_an": "-100",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** cộng hai số nguyên **khác dấu** (không đối nhau): lấy phần số tự nhiên lớn trừ phần số tự nhiên bé, rồi đặt dấu của số có phần số tự nhiên lớn hơn.\n\n**Bước 1.** Xét dấu: $(-157)$ là số âm, $57$ là số dương, nên hai số khác dấu.\n\n**Bước 2.** So sánh phần số tự nhiên $157$ và $57$, rồi lấy số lớn trừ số bé.\n\n**Bước 3.** Đặt trước hiệu vừa tính dấu của số có phần số tự nhiên lớn hơn.\n\n**Phần 2. Trình bày**\n\n$(-157)+57$\n\n$=-(157-57)$\n\n$=-100$",
+    "kiem": [
+      "((-157)+57)===-100"
+    ],
+    "sach_dap_so": "-100",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-4B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01298",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép cộng hai số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng hai số nguyên khác dấu: $305+(-556)$",
+    "dap_an": "-251",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** cộng hai số nguyên **khác dấu** (không đối nhau): lấy phần số tự nhiên lớn trừ phần số tự nhiên bé, rồi đặt dấu của số có phần số tự nhiên lớn hơn.\n\n**Bước 1.** Xét dấu: $305$ là số dương, $(-556)$ là số âm, nên hai số khác dấu.\n\n**Bước 2.** So sánh phần số tự nhiên $305$ và $556$, rồi lấy số lớn trừ số bé.\n\n**Bước 3.** Đặt trước hiệu vừa tính dấu của số có phần số tự nhiên lớn hơn.\n\n**Phần 2. Trình bày**\n\n$305+(-556)$\n\n$=-(556-305)$\n\n$=-251$",
+    "kiem": [
+      "(305+(-556))===-251"
+    ],
+    "sach_dap_so": "-251",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-4B-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01298",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép cộng hai số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng hai số nguyên khác dấu: $(-127)+127$",
+    "dap_an": "0",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai số **đối nhau** (cùng phần số tự nhiên, khác dấu) có tổng là một kết quả đặc biệt, không cần tính phần số tự nhiên.\n\n**Bước 1.** So sánh $(-127)$ và $127$: hai số có cùng phần số tự nhiên nhưng khác dấu.\n\n**Bước 2.** Kết luận hai số này là hai số đối nhau.\n\n**Bước 3.** Dùng tính chất về tổng của hai số đối nhau để ghi kết quả.\n\n**Phần 2. Trình bày**\n\n$(-127)+127$\n\n$=0$",
+    "kiem": [
+      "((-127)+127)===0"
+    ],
+    "sach_dap_so": "0",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-4B-e",
+    "vai": "luyen",
+    "dang_bai": "NDB01298",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép cộng hai số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng hai số nguyên khác dấu: $(-527)+1000$",
+    "dap_an": "473",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** cộng hai số nguyên **khác dấu** (không đối nhau): lấy phần số tự nhiên lớn trừ phần số tự nhiên bé, rồi đặt dấu của số có phần số tự nhiên lớn hơn.\n\n**Bước 1.** Xét dấu: $(-527)$ là số âm, $1000$ là số dương, nên hai số khác dấu.\n\n**Bước 2.** So sánh phần số tự nhiên $527$ và $1000$, rồi lấy số lớn trừ số bé.\n\n**Bước 3.** Đặt trước hiệu vừa tính dấu của số có phần số tự nhiên lớn hơn.\n\n**Phần 2. Trình bày**\n\n$(-527)+1000$\n\n$=1000-527$\n\n$=473$",
+    "kiem": [
+      "((-527)+1000)===473"
+    ],
+    "sach_dap_so": "473",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-4B-f",
+    "vai": "luyen",
+    "dang_bai": "NDB01298",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép cộng hai số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng hai số nguyên khác dấu: $(-656)+0$",
+    "dap_an": "-656",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** cộng một số nguyên với $0$ thì kết quả vẫn là chính số đó.\n\n**Bước 1.** Nhận ra trong phép cộng $(-656)+0$ có một số hạng bằng $0$.\n\n**Bước 2.** Dùng tính chất: cộng một số với $0$ thì không làm số đó thay đổi.\n\n**Bước 3.** Viết kết quả, giữ nguyên số còn lại cùng dấu của nó.\n\n**Phần 2. Trình bày**\n\n$(-656)+0$\n\n$=-656$",
+    "kiem": [
+      "((-656)+0)===-656"
+    ],
+    "sach_dap_so": "-656",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-5A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01299",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép trừ hai số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $3-7$",
+    "dap_an": "-4",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đổi phép trừ thành phép cộng với **số đối** của số trừ: $a-b=a+(-b)$.\n\n**Bước 1.** Xác định số trừ là $7$; số đối của nó là $(-7)$.\n\n**Bước 2.** Viết lại phép trừ thành phép cộng: $3+(-7)$.\n\n**Bước 3.** Thực hiện phép cộng hai số nguyên khác dấu vừa có theo quy tắc cộng.\n\n**Phần 2. Trình bày**\n\n$3-7$\n\n$=3+(-7)$\n\n$=-(7-3)$\n\n$=-4$",
+    "kiem": [
+      "(3-7)===-4"
+    ],
+    "sach_dap_so": "-4",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-5A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01299",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép trừ hai số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $10-(-12)$",
+    "dap_an": "22",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đổi phép trừ thành phép cộng với **số đối** của số trừ: $a-b=a+(-b)$.\n\n**Bước 1.** Xác định số trừ là $(-12)$; số đối của nó là $12$.\n\n**Bước 2.** Viết lại phép trừ thành phép cộng: $10+12$.\n\n**Bước 3.** Thực hiện phép cộng hai số nguyên cùng dấu vừa có theo quy tắc cộng.\n\n**Chú ý:** trừ đi một số âm thì bằng cộng với số dương đối của nó.\n\n**Phần 2. Trình bày**\n\n$10-(-12)$\n\n$=10+12$\n\n$=22$",
+    "kiem": [
+      "(10-(-12))===22"
+    ],
+    "sach_dap_so": "22",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-5A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01299",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép trừ hai số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $(-6)-7$",
+    "dap_an": "-13",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đổi phép trừ thành phép cộng với **số đối** của số trừ: $a-b=a+(-b)$.\n\n**Bước 1.** Xác định số trừ là $7$; số đối của nó là $(-7)$.\n\n**Bước 2.** Viết lại phép trừ thành phép cộng: $(-6)+(-7)$.\n\n**Bước 3.** Thực hiện phép cộng hai số nguyên cùng dấu vừa có theo quy tắc cộng.\n\n**Phần 2. Trình bày**\n\n$(-6)-7$\n\n$=(-6)+(-7)$\n\n$=-(6+7)$\n\n$=-13$",
+    "kiem": [
+      "((-6)-7)===-13"
+    ],
+    "sach_dap_so": "-13",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-5A-d",
+    "vai": "giang",
+    "dang_bai": "NDB01299",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép trừ hai số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $(-6)-(-7)$",
+    "dap_an": "1",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đổi phép trừ thành phép cộng với **số đối** của số trừ: $a-b=a+(-b)$.\n\n**Bước 1.** Xác định số trừ là $(-7)$; số đối của nó là $7$.\n\n**Bước 2.** Viết lại phép trừ thành phép cộng: $(-6)+7$.\n\n**Bước 3.** Thực hiện phép cộng hai số nguyên khác dấu vừa có theo quy tắc cộng.\n\n**Chú ý:** trừ đi một số âm thì bằng cộng với số dương đối của nó.\n\n**Phần 2. Trình bày**\n\n$(-6)-(-7)$\n\n$=(-6)+7$\n\n$=7-6$\n\n$=1$",
+    "kiem": [
+      "((-6)-(-7))===1"
+    ],
+    "sach_dap_so": "1",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-5A-e",
+    "vai": "giang",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Cộng, trừ số nguyên có một cặp ngoặc đơn giản; có thể thuộc NDB01309.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $(-3)-(4-6)$",
+    "dap_an": "-1",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm phép tính **trong ngoặc trước**, sau đó đổi phép trừ thành phép cộng với số đối.\n\n**Bước 1.** Làm phép tính trong ngoặc trước: $4-6$ (đổi phép trừ thành cộng với số đối).\n\n**Bước 2.** Thay kết quả vừa có vào chỗ dấu ngoặc, được một phép trừ hai số nguyên.\n\n**Bước 3.** Đổi phép trừ thành phép cộng với số đối của số trừ rồi áp dụng quy tắc cộng.\n\n**Phần 2. Trình bày**\n\n$(-3)-(4-6)$\n\n$=(-3)-(-2)$\n\n$=(-3)+2$\n\n$=-(3-2)$\n\n$=-1$",
+    "kiem": [
+      "((-3)-(4-6))===-1"
+    ],
+    "sach_dap_so": "-1",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-5A-f",
+    "vai": "giang",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Dãy cộng, trừ nhiều số nguyên, làm từ trái sang phải.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $(-4)+5-7$",
+    "dap_an": "-6",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dãy cộng, trừ nhiều số: tính **lần lượt từ trái sang phải**, mỗi lần chỉ làm một phép tính với hai số; phép trừ đổi thành cộng với số đối.\n\n**Bước 1.** Nhận ra biểu thức có 3 số hạng nối nhau bởi phép cộng, phép trừ, không có phép tính nào khác.\n\n**Bước 2.** Tính hai số hạng đầu tiên $(-4)+5$ trước bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 3.** Lấy kết quả vừa có cộng (hoặc trừ) với số hạng kế tiếp; cứ thế tới số hạng cuối cùng.\n\n**Chú ý:** chú ý dấu của từng số hạng, nhất là khi trừ đi một số âm.\n\n**Phần 2. Trình bày**\n\n$(-4)+5-7$\n\n$=1-7$\n\n$=-6$",
+    "kiem": [
+      "((-4)+5-7)===-6"
+    ],
+    "sach_dap_so": "-6",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-5B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01299",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép trừ hai số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $5-8$",
+    "dap_an": "-3",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đổi phép trừ thành phép cộng với **số đối** của số trừ: $a-b=a+(-b)$.\n\n**Bước 1.** Xác định số trừ là $8$; số đối của nó là $(-8)$.\n\n**Bước 2.** Viết lại phép trừ thành phép cộng: $5+(-8)$.\n\n**Bước 3.** Thực hiện phép cộng hai số nguyên khác dấu vừa có theo quy tắc cộng.\n\n**Phần 2. Trình bày**\n\n$5-8$\n\n$=5+(-8)$\n\n$=-(8-5)$\n\n$=-3$",
+    "kiem": [
+      "(5-8)===-3"
+    ],
+    "sach_dap_so": "-4",
+    "ghi_chu": "LỆCH SÁCH — sách ghi -4 nhưng 5-8 = 5+(-8) = -(8-5) = -3 (đã kiểm bằng máy); sách in sai đáp số."
+  },
+  {
+    "id": "B2-5B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01299",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép trừ hai số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $-15-18$",
+    "dap_an": "-33",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đổi phép trừ thành phép cộng với **số đối** của số trừ: $a-b=a+(-b)$.\n\n**Bước 1.** Xác định số trừ là $18$; số đối của nó là $(-18)$.\n\n**Bước 2.** Viết lại phép trừ thành phép cộng: $(-15)+(-18)$.\n\n**Bước 3.** Thực hiện phép cộng hai số nguyên cùng dấu vừa có theo quy tắc cộng.\n\n**Phần 2. Trình bày**\n\n$-15-18$\n\n$=(-15)+(-18)$\n\n$=-(15+18)$\n\n$=-33$",
+    "kiem": [
+      "(-15-18)===-33"
+    ],
+    "sach_dap_so": "-33",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-5B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01299",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép trừ hai số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $22-(-24)$",
+    "dap_an": "46",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đổi phép trừ thành phép cộng với **số đối** của số trừ: $a-b=a+(-b)$.\n\n**Bước 1.** Xác định số trừ là $(-24)$; số đối của nó là $24$.\n\n**Bước 2.** Viết lại phép trừ thành phép cộng: $22+24$.\n\n**Bước 3.** Thực hiện phép cộng hai số nguyên cùng dấu vừa có theo quy tắc cộng.\n\n**Chú ý:** trừ đi một số âm thì bằng cộng với số dương đối của nó.\n\n**Phần 2. Trình bày**\n\n$22-(-24)$\n\n$=22+24$\n\n$=46$",
+    "kiem": [
+      "(22-(-24))===46"
+    ],
+    "sach_dap_so": "46",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-5B-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01299",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một phép trừ hai số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $-15-(-18)$",
+    "dap_an": "3",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đổi phép trừ thành phép cộng với **số đối** của số trừ: $a-b=a+(-b)$.\n\n**Bước 1.** Xác định số trừ là $(-18)$; số đối của nó là $18$.\n\n**Bước 2.** Viết lại phép trừ thành phép cộng: $(-15)+18$.\n\n**Bước 3.** Thực hiện phép cộng hai số nguyên khác dấu vừa có theo quy tắc cộng.\n\n**Chú ý:** trừ đi một số âm thì bằng cộng với số dương đối của nó.\n\n**Phần 2. Trình bày**\n\n$-15-(-18)$\n\n$=(-15)+18$\n\n$=18-15$\n\n$=3$",
+    "kiem": [
+      "(-15-(-18))===3"
+    ],
+    "sach_dap_so": "3",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-5B-e",
+    "vai": "luyen",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Cộng, trừ số nguyên có một cặp ngoặc đơn giản; có thể thuộc NDB01309.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $5-(7-9)$",
+    "dap_an": "7",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm phép tính **trong ngoặc trước**, sau đó đổi phép trừ thành phép cộng với số đối.\n\n**Bước 1.** Làm phép tính trong ngoặc trước: $7-9$ (đổi phép trừ thành cộng với số đối).\n\n**Bước 2.** Thay kết quả vừa có vào chỗ dấu ngoặc, được một phép trừ hai số nguyên.\n\n**Bước 3.** Đổi phép trừ thành phép cộng với số đối của số trừ rồi áp dụng quy tắc cộng.\n\n**Phần 2. Trình bày**\n\n$5-(7-9)$\n\n$=5-(-2)$\n\n$=5+2$\n\n$=7$",
+    "kiem": [
+      "(5-(7-9))===7"
+    ],
+    "sach_dap_so": "7",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-5B-f",
+    "vai": "luyen",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Dãy cộng, trừ nhiều số nguyên, làm từ trái sang phải.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $14-(-15)-21$",
+    "dap_an": "8",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dãy cộng, trừ nhiều số: tính **lần lượt từ trái sang phải**, mỗi lần chỉ làm một phép tính với hai số; phép trừ đổi thành cộng với số đối.\n\n**Bước 1.** Nhận ra biểu thức có 3 số hạng nối nhau bởi phép cộng, phép trừ, không có phép tính nào khác.\n\n**Bước 2.** Tính hai số hạng đầu tiên $14-(-15)$ trước bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 3.** Lấy kết quả vừa có cộng (hoặc trừ) với số hạng kế tiếp; cứ thế tới số hạng cuối cùng.\n\n**Chú ý:** chú ý dấu của từng số hạng, nhất là khi trừ đi một số âm.\n\n**Phần 2. Trình bày**\n\n$14-(-15)-21$\n\n$=29-21$\n\n$=8$",
+    "kiem": [
+      "(14-(-15)-21)===8"
+    ],
+    "sach_dap_so": "8",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-6A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01298",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "So sánh hai vế nhưng phải tính cộng/trừ trước (dạng sau thắng: NDB01291 là dạng trước).",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Điền dấu $>$, $<$ hoặc $=$ thích hợp vào chỗ trống: $(-2)+(-3)\\ \\boxed{\\ \\ \\ \\ \\ }\\ (-4)$",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tính giá trị của từng vế (cộng, trừ số nguyên) rồi **so sánh hai số nguyên** vừa tìm được.\n\n**Bước 1.** Tính giá trị của vế trái bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 2.** Tính giá trị của vế phải (vế nào chỉ là một số thì giữ nguyên).\n\n**Bước 3.** So sánh hai số nguyên: số âm luôn nhỏ hơn số dương; hai số âm thì số nào có phần số tự nhiên lớn hơn sẽ nhỏ hơn.\n\n**Phần 2. Trình bày**\n\n$(-2)+(-3)=-5$\n\nVì $-5<-4$ nên $(-2)+(-3)<(-4)$.",
+    "kiem": [
+      "(()=>{const l=(-2)+(-3),r=(-4);return (l<r?'<':l>r?'>':'=')==='<'})()"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-6A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01298",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "So sánh hai vế nhưng phải tính cộng/trừ trước (dạng sau thắng: NDB01291 là dạng trước).",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Điền dấu $>$, $<$ hoặc $=$ thích hợp vào chỗ trống: $(-10)\\ \\boxed{\\ \\ \\ \\ \\ }\\ (-3)+8$",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tính giá trị của từng vế (cộng, trừ số nguyên) rồi **so sánh hai số nguyên** vừa tìm được.\n\n**Bước 1.** Tính giá trị của vế trái bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 2.** Tính giá trị của vế phải (vế nào chỉ là một số thì giữ nguyên).\n\n**Bước 3.** So sánh hai số nguyên: số âm luôn nhỏ hơn số dương; hai số âm thì số nào có phần số tự nhiên lớn hơn sẽ nhỏ hơn.\n\n**Phần 2. Trình bày**\n\n$(-3)+8=5$\n\nVì $-10<5$ nên $(-10)<(-3)+8$.",
+    "kiem": [
+      "(()=>{const l=(-10),r=(-3)+8;return (l<r?'<':l>r?'>':'=')==='<'})()"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-6A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01299",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "So sánh hai vế nhưng phải tính cộng/trừ trước (dạng sau thắng: NDB01291 là dạng trước).",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Điền dấu $>$, $<$ hoặc $=$ thích hợp vào chỗ trống: $18-(-13)\\ \\boxed{\\ \\ \\ \\ \\ }\\ 5$",
+    "dap_an": ">",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tính giá trị của từng vế (cộng, trừ số nguyên) rồi **so sánh hai số nguyên** vừa tìm được.\n\n**Bước 1.** Tính giá trị của vế trái bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 2.** Tính giá trị của vế phải (vế nào chỉ là một số thì giữ nguyên).\n\n**Bước 3.** So sánh hai số nguyên: số âm luôn nhỏ hơn số dương; hai số âm thì số nào có phần số tự nhiên lớn hơn sẽ nhỏ hơn.\n\n**Phần 2. Trình bày**\n\n$18-(-13)=31$\n\nVì $31>5$ nên $18-(-13)>5$.",
+    "kiem": [
+      "(()=>{const l=18-(-13),r=5;return (l<r?'<':l>r?'>':'=')==='>'})()"
+    ],
+    "sach_dap_so": ">",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-6A-d",
+    "vai": "giang",
+    "dang_bai": "NDB01299",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "So sánh hai vế nhưng phải tính cộng/trừ trước (dạng sau thắng: NDB01291 là dạng trước).",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Điền dấu $>$, $<$ hoặc $=$ thích hợp vào chỗ trống: $(-13)-3\\ \\boxed{\\ \\ \\ \\ \\ }\\ (-16)$",
+    "dap_an": "=",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tính giá trị của từng vế (cộng, trừ số nguyên) rồi **so sánh hai số nguyên** vừa tìm được.\n\n**Bước 1.** Tính giá trị của vế trái bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 2.** Tính giá trị của vế phải (vế nào chỉ là một số thì giữ nguyên).\n\n**Bước 3.** So sánh hai số nguyên: số âm luôn nhỏ hơn số dương; hai số âm thì số nào có phần số tự nhiên lớn hơn sẽ nhỏ hơn.\n\n**Phần 2. Trình bày**\n\n$(-13)-3=-16$\n\nVì $-16=-16$ nên $(-13)-3=(-16)$.",
+    "kiem": [
+      "(()=>{const l=(-13)-3,r=(-16);return (l<r?'<':l>r?'>':'=')==='='})()"
+    ],
+    "sach_dap_so": "=",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-6A-e",
+    "vai": "giang",
+    "dang_bai": "NDB01299",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "So sánh hai vế nhưng phải tính cộng/trừ trước (dạng sau thắng: NDB01291 là dạng trước).",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Điền dấu $>$, $<$ hoặc $=$ thích hợp vào chỗ trống: $(-8)-(-11)\\ \\boxed{\\ \\ \\ \\ \\ }\\ (-8)+(-11)$",
+    "dap_an": ">",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tính giá trị của từng vế (cộng, trừ số nguyên) rồi **so sánh hai số nguyên** vừa tìm được.\n\n**Bước 1.** Tính giá trị của vế trái bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 2.** Tính giá trị của vế phải (vế nào chỉ là một số thì giữ nguyên).\n\n**Bước 3.** So sánh hai số nguyên: số âm luôn nhỏ hơn số dương; hai số âm thì số nào có phần số tự nhiên lớn hơn sẽ nhỏ hơn.\n\n**Phần 2. Trình bày**\n\n$(-8)-(-11)=3$\n\n$(-8)+(-11)=-19$\n\nVì $3>-19$ nên $(-8)-(-11)>(-8)+(-11)$.",
+    "kiem": [
+      "(()=>{const l=(-8)-(-11),r=(-8)+(-11);return (l<r?'<':l>r?'>':'=')==='>'})()"
+    ],
+    "sach_dap_so": ">",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-6A-f",
+    "vai": "giang",
+    "dang_bai": "NDB01299",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "So sánh hai vế nhưng phải tính cộng/trừ trước (dạng sau thắng: NDB01291 là dạng trước).",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Điền dấu $>$, $<$ hoặc $=$ thích hợp vào chỗ trống: $43-75\\ \\boxed{\\ \\ \\ \\ \\ }\\ (-33)$",
+    "dap_an": ">",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tính giá trị của từng vế (cộng, trừ số nguyên) rồi **so sánh hai số nguyên** vừa tìm được.\n\n**Bước 1.** Tính giá trị của vế trái bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 2.** Tính giá trị của vế phải (vế nào chỉ là một số thì giữ nguyên).\n\n**Bước 3.** So sánh hai số nguyên: số âm luôn nhỏ hơn số dương; hai số âm thì số nào có phần số tự nhiên lớn hơn sẽ nhỏ hơn.\n\n**Phần 2. Trình bày**\n\n$43-75=-32$\n\nVì $-32>-33$ nên $43-75>(-33)$.",
+    "kiem": [
+      "(()=>{const l=43-75,r=(-33);return (l<r?'<':l>r?'>':'=')==='>'})()"
+    ],
+    "sach_dap_so": ">",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-6B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01298",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "So sánh hai vế nhưng phải tính cộng/trừ trước (dạng sau thắng: NDB01291 là dạng trước).",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Điền dấu $>$, $<$ hoặc $=$ thích hợp vào chỗ trống: $(-5)+(-6)\\ \\boxed{\\ \\ \\ \\ \\ }\\ (-12)$",
+    "dap_an": ">",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tính giá trị của từng vế (cộng, trừ số nguyên) rồi **so sánh hai số nguyên** vừa tìm được.\n\n**Bước 1.** Tính giá trị của vế trái bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 2.** Tính giá trị của vế phải (vế nào chỉ là một số thì giữ nguyên).\n\n**Bước 3.** So sánh hai số nguyên: số âm luôn nhỏ hơn số dương; hai số âm thì số nào có phần số tự nhiên lớn hơn sẽ nhỏ hơn.\n\n**Phần 2. Trình bày**\n\n$(-5)+(-6)=-11$\n\nVì $-11>-12$ nên $(-5)+(-6)>(-12)$.",
+    "kiem": [
+      "(()=>{const l=(-5)+(-6),r=(-12);return (l<r?'<':l>r?'>':'=')==='>'})()"
+    ],
+    "sach_dap_so": ">",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-6B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01298",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "So sánh hai vế nhưng phải tính cộng/trừ trước (dạng sau thắng: NDB01291 là dạng trước).",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Điền dấu $>$, $<$ hoặc $=$ thích hợp vào chỗ trống: $(-15)\\ \\boxed{\\ \\ \\ \\ \\ }\\ (-3)+16$",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tính giá trị của từng vế (cộng, trừ số nguyên) rồi **so sánh hai số nguyên** vừa tìm được.\n\n**Bước 1.** Tính giá trị của vế trái bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 2.** Tính giá trị của vế phải (vế nào chỉ là một số thì giữ nguyên).\n\n**Bước 3.** So sánh hai số nguyên: số âm luôn nhỏ hơn số dương; hai số âm thì số nào có phần số tự nhiên lớn hơn sẽ nhỏ hơn.\n\n**Phần 2. Trình bày**\n\n$(-3)+16=13$\n\nVì $-15<13$ nên $(-15)<(-3)+16$.",
+    "kiem": [
+      "(()=>{const l=(-15),r=(-3)+16;return (l<r?'<':l>r?'>':'=')==='<'})()"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-6B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01299",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "So sánh hai vế nhưng phải tính cộng/trừ trước (dạng sau thắng: NDB01291 là dạng trước).",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Điền dấu $>$, $<$ hoặc $=$ thích hợp vào chỗ trống: $23-(-13)\\ \\boxed{\\ \\ \\ \\ \\ }\\ 10$",
+    "dap_an": ">",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tính giá trị của từng vế (cộng, trừ số nguyên) rồi **so sánh hai số nguyên** vừa tìm được.\n\n**Bước 1.** Tính giá trị của vế trái bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 2.** Tính giá trị của vế phải (vế nào chỉ là một số thì giữ nguyên).\n\n**Bước 3.** So sánh hai số nguyên: số âm luôn nhỏ hơn số dương; hai số âm thì số nào có phần số tự nhiên lớn hơn sẽ nhỏ hơn.\n\n**Phần 2. Trình bày**\n\n$23-(-13)=36$\n\nVì $36>10$ nên $23-(-13)>10$.",
+    "kiem": [
+      "(()=>{const l=23-(-13),r=10;return (l<r?'<':l>r?'>':'=')==='>'})()"
+    ],
+    "sach_dap_so": ">",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-6B-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01299",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "So sánh hai vế nhưng phải tính cộng/trừ trước (dạng sau thắng: NDB01291 là dạng trước).",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Điền dấu $>$, $<$ hoặc $=$ thích hợp vào chỗ trống: $(-19)-3\\ \\boxed{\\ \\ \\ \\ \\ }\\ (-21)$",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tính giá trị của từng vế (cộng, trừ số nguyên) rồi **so sánh hai số nguyên** vừa tìm được.\n\n**Bước 1.** Tính giá trị của vế trái bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 2.** Tính giá trị của vế phải (vế nào chỉ là một số thì giữ nguyên).\n\n**Bước 3.** So sánh hai số nguyên: số âm luôn nhỏ hơn số dương; hai số âm thì số nào có phần số tự nhiên lớn hơn sẽ nhỏ hơn.\n\n**Phần 2. Trình bày**\n\n$(-19)-3=-22$\n\nVì $-22<-21$ nên $(-19)-3<(-21)$.",
+    "kiem": [
+      "(()=>{const l=(-19)-3,r=(-21);return (l<r?'<':l>r?'>':'=')==='<'})()"
+    ],
+    "sach_dap_so": ">",
+    "ghi_chu": "LỆCH SÁCH — sách ghi \">\" nhưng (-19)-3 = -22 và -22 < -21 nên dấu đúng là \"<\" (đã kiểm bằng máy)."
+  },
+  {
+    "id": "B2-6B-e",
+    "vai": "luyen",
+    "dang_bai": "NDB01299",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "So sánh hai vế nhưng phải tính cộng/trừ trước (dạng sau thắng: NDB01291 là dạng trước).",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Điền dấu $>$, $<$ hoặc $=$ thích hợp vào chỗ trống: $(-12)-(-9)\\ \\boxed{\\ \\ \\ \\ \\ }\\ (-12)+(-9)$",
+    "dap_an": ">",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tính giá trị của từng vế (cộng, trừ số nguyên) rồi **so sánh hai số nguyên** vừa tìm được.\n\n**Bước 1.** Tính giá trị của vế trái bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 2.** Tính giá trị của vế phải (vế nào chỉ là một số thì giữ nguyên).\n\n**Bước 3.** So sánh hai số nguyên: số âm luôn nhỏ hơn số dương; hai số âm thì số nào có phần số tự nhiên lớn hơn sẽ nhỏ hơn.\n\n**Phần 2. Trình bày**\n\n$(-12)-(-9)=-3$\n\n$(-12)+(-9)=-21$\n\nVì $-3>-21$ nên $(-12)-(-9)>(-12)+(-9)$.",
+    "kiem": [
+      "(()=>{const l=(-12)-(-9),r=(-12)+(-9);return (l<r?'<':l>r?'>':'=')==='>'})()"
+    ],
+    "sach_dap_so": ">",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-6B-f",
+    "vai": "luyen",
+    "dang_bai": "NDB01299",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "So sánh hai vế nhưng phải tính cộng/trừ trước (dạng sau thắng: NDB01291 là dạng trước).",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Điền dấu $>$, $<$ hoặc $=$ thích hợp vào chỗ trống: $56-78\\ \\boxed{\\ \\ \\ \\ \\ }\\ (-23)$",
+    "dap_an": ">",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tính giá trị của từng vế (cộng, trừ số nguyên) rồi **so sánh hai số nguyên** vừa tìm được.\n\n**Bước 1.** Tính giá trị của vế trái bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 2.** Tính giá trị của vế phải (vế nào chỉ là một số thì giữ nguyên).\n\n**Bước 3.** So sánh hai số nguyên: số âm luôn nhỏ hơn số dương; hai số âm thì số nào có phần số tự nhiên lớn hơn sẽ nhỏ hơn.\n\n**Phần 2. Trình bày**\n\n$56-78=-22$\n\nVì $-22>-23$ nên $56-78>(-23)$.",
+    "kiem": [
+      "(()=>{const l=56-78,r=(-23);return (l<r?'<':l>r?'>':'=')==='>'})()"
+    ],
+    "sach_dap_so": ">",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-7A-a",
+    "vai": "giang",
+    "dang_bai": null,
+    "dang_bai_chac": null,
+    "dang_bai_ly_do": "Bản đồ thiếu dạng: tìm quy luật, viết tiếp dãy số nguyên.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Viết ba số tiếp theo của dãy số sau: $-4;-1;2;\\dots$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tìm **quy luật**: hiệu của hai số liền nhau trong dãy luôn bằng một số không đổi.\n\n**Bước 1.** Lấy số thứ hai trừ số thứ nhất, rồi lấy số thứ ba trừ số thứ hai.\n\n**Bước 2.** Nếu hai hiệu bằng nhau thì mỗi số bằng số đứng ngay trước nó cộng thêm số không đổi đó.\n\n**Bước 3.** Áp dụng quy luật ba lần liên tiếp, bắt đầu từ số cuối cùng đã cho.\n\n**Phần 2. Trình bày**\n\nTa có $(-1)-(-4)=3$ và $2-(-1)=3$.\n\nMỗi số bằng số đứng ngay trước nó cộng thêm $3$.\n\n$2+3=5;\\ 5+3=8;\\ 8+3=11$\n\nVậy ba số tiếp theo là $5;8;11$.",
+    "kiem": [
+      "(()=>{const s=[-4,-1,2];const d=s[1]-s[0];if(s[2]-s[1]!==d)return false;const r=[];let c=s[2];for(let i=0;i<3;i++){c+=d;r.push(c)}return r.join(',')==='5,8,11'})()"
+    ],
+    "sach_dap_so": "5; 8; 11",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-7A-b",
+    "vai": "giang",
+    "dang_bai": null,
+    "dang_bai_chac": null,
+    "dang_bai_ly_do": "Bản đồ thiếu dạng: tìm quy luật, viết tiếp dãy số nguyên.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Viết ba số tiếp theo của dãy số sau: $5;1;-3;\\dots$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tìm **quy luật**: hiệu của hai số liền nhau trong dãy luôn bằng một số không đổi.\n\n**Bước 1.** Lấy số thứ hai trừ số thứ nhất, rồi lấy số thứ ba trừ số thứ hai.\n\n**Bước 2.** Nếu hai hiệu bằng nhau thì mỗi số bằng số đứng ngay trước nó cộng thêm số không đổi đó.\n\n**Bước 3.** Áp dụng quy luật ba lần liên tiếp, bắt đầu từ số cuối cùng đã cho.\n\n**Phần 2. Trình bày**\n\nTa có $1-5=-4$ và $(-3)-1=-4$.\n\nMỗi số bằng số đứng ngay trước nó cộng thêm $(-4)$.\n\n$(-3)+(-4)=-7;\\ (-7)+(-4)=-11;\\ (-11)+(-4)=-15$\n\nVậy ba số tiếp theo là $-7;-11;-15$.",
+    "kiem": [
+      "(()=>{const s=[5,1,-3];const d=s[1]-s[0];if(s[2]-s[1]!==d)return false;const r=[];let c=s[2];for(let i=0;i<3;i++){c+=d;r.push(c)}return r.join(',')==='-7,-11,-15'})()"
+    ],
+    "sach_dap_so": "-7; -11; -15",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-7B-a",
+    "vai": "luyen",
+    "dang_bai": null,
+    "dang_bai_chac": null,
+    "dang_bai_ly_do": "Bản đồ thiếu dạng: tìm quy luật, viết tiếp dãy số nguyên.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Viết ba số tiếp theo của dãy số sau: $-6;-1;4;\\dots$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tìm **quy luật**: hiệu của hai số liền nhau trong dãy luôn bằng một số không đổi.\n\n**Bước 1.** Lấy số thứ hai trừ số thứ nhất, rồi lấy số thứ ba trừ số thứ hai.\n\n**Bước 2.** Nếu hai hiệu bằng nhau thì mỗi số bằng số đứng ngay trước nó cộng thêm số không đổi đó.\n\n**Bước 3.** Áp dụng quy luật ba lần liên tiếp, bắt đầu từ số cuối cùng đã cho.\n\n**Phần 2. Trình bày**\n\nTa có $(-1)-(-6)=5$ và $4-(-1)=5$.\n\nMỗi số bằng số đứng ngay trước nó cộng thêm $5$.\n\n$4+5=9;\\ 9+5=14;\\ 14+5=19$\n\nVậy ba số tiếp theo là $9;14;19$.",
+    "kiem": [
+      "(()=>{const s=[-6,-1,4];const d=s[1]-s[0];if(s[2]-s[1]!==d)return false;const r=[];let c=s[2];for(let i=0;i<3;i++){c+=d;r.push(c)}return r.join(',')==='9,14,19'})()"
+    ],
+    "sach_dap_so": "9; 14; ...",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-7B-b",
+    "vai": "luyen",
+    "dang_bai": null,
+    "dang_bai_chac": null,
+    "dang_bai_ly_do": "Bản đồ thiếu dạng: tìm quy luật, viết tiếp dãy số nguyên.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Viết ba số tiếp theo của dãy số sau: $-7;-4;-1;\\dots$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tìm **quy luật**: hiệu của hai số liền nhau trong dãy luôn bằng một số không đổi.\n\n**Bước 1.** Lấy số thứ hai trừ số thứ nhất, rồi lấy số thứ ba trừ số thứ hai.\n\n**Bước 2.** Nếu hai hiệu bằng nhau thì mỗi số bằng số đứng ngay trước nó cộng thêm số không đổi đó.\n\n**Bước 3.** Áp dụng quy luật ba lần liên tiếp, bắt đầu từ số cuối cùng đã cho.\n\n**Phần 2. Trình bày**\n\nTa có $(-4)-(-7)=3$ và $(-1)-(-4)=3$.\n\nMỗi số bằng số đứng ngay trước nó cộng thêm $3$.\n\n$(-1)+3=2;\\ 2+3=5;\\ 5+3=8$\n\nVậy ba số tiếp theo là $2;5;8$.",
+    "kiem": [
+      "(()=>{const s=[-7,-4,-1];const d=s[1]-s[0];if(s[2]-s[1]!==d)return false;const r=[];let c=s[2];for(let i=0;i<3;i++){c+=d;r.push(c)}return r.join(',')==='2,5,8'})()"
+    ],
+    "sach_dap_so": "2; 5; 8",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-8A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Dãy cộng, trừ nhiều số nguyên, làm từ trái sang phải.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị của biểu thức: $(-34)+(-14)+(-2)$",
+    "dap_an": "-50",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dãy cộng, trừ nhiều số: tính **lần lượt từ trái sang phải**, mỗi lần chỉ làm một phép tính với hai số; phép trừ đổi thành cộng với số đối.\n\n**Bước 1.** Nhận ra biểu thức có 3 số hạng nối nhau bởi phép cộng, phép trừ, không có phép tính nào khác.\n\n**Bước 2.** Tính hai số hạng đầu tiên $(-34)+(-14)$ trước bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 3.** Lấy kết quả vừa có cộng (hoặc trừ) với số hạng kế tiếp; cứ thế tới số hạng cuối cùng.\n\n**Chú ý:** chú ý dấu của từng số hạng, nhất là khi trừ đi một số âm.\n\n**Phần 2. Trình bày**\n\n$(-34)+(-14)+(-2)$\n\n$=(-48)+(-2)$\n\n$=-50$",
+    "kiem": [
+      "((-34)+(-14)+(-2))===-50"
+    ],
+    "sach_dap_so": "-50",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-8A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Dãy cộng, trừ nhiều số nguyên, làm từ trái sang phải.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị của biểu thức: $(-123)+23+8$",
+    "dap_an": "-92",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dãy cộng, trừ nhiều số: tính **lần lượt từ trái sang phải**, mỗi lần chỉ làm một phép tính với hai số; phép trừ đổi thành cộng với số đối.\n\n**Bước 1.** Nhận ra biểu thức có 3 số hạng nối nhau bởi phép cộng, phép trừ, không có phép tính nào khác.\n\n**Bước 2.** Tính hai số hạng đầu tiên $(-123)+23$ trước bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 3.** Lấy kết quả vừa có cộng (hoặc trừ) với số hạng kế tiếp; cứ thế tới số hạng cuối cùng.\n\n**Chú ý:** chú ý dấu của từng số hạng, nhất là khi trừ đi một số âm.\n\n**Phần 2. Trình bày**\n\n$(-123)+23+8$\n\n$=(-100)+8$\n\n$=-92$",
+    "kiem": [
+      "((-123)+23+8)===-92"
+    ],
+    "sach_dap_so": "-92",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-8A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Dãy cộng, trừ nhiều số nguyên, làm từ trái sang phải.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị của biểu thức: $(-23)+13+(-17)+57$",
+    "dap_an": "30",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dãy cộng, trừ nhiều số: tính **lần lượt từ trái sang phải**, mỗi lần chỉ làm một phép tính với hai số; phép trừ đổi thành cộng với số đối.\n\n**Bước 1.** Nhận ra biểu thức có 4 số hạng nối nhau bởi phép cộng, phép trừ, không có phép tính nào khác.\n\n**Bước 2.** Tính hai số hạng đầu tiên $(-23)+13$ trước bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 3.** Lấy kết quả vừa có cộng (hoặc trừ) với số hạng kế tiếp; cứ thế tới số hạng cuối cùng.\n\n**Chú ý:** chú ý dấu của từng số hạng, nhất là khi trừ đi một số âm.\n\n**Phần 2. Trình bày**\n\n$(-23)+13+(-17)+57$\n\n$=(-10)+(-17)+57$\n\n$=(-27)+57$\n\n$=30$",
+    "kiem": [
+      "((-23)+13+(-17)+57)===30"
+    ],
+    "sach_dap_so": "30",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-8A-d",
+    "vai": "giang",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Dãy cộng, trừ nhiều số nguyên, làm từ trái sang phải.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị của biểu thức: $(-45)-(-5)-10$",
+    "dap_an": "-50",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dãy cộng, trừ nhiều số: tính **lần lượt từ trái sang phải**, mỗi lần chỉ làm một phép tính với hai số; phép trừ đổi thành cộng với số đối.\n\n**Bước 1.** Nhận ra biểu thức có 3 số hạng nối nhau bởi phép cộng, phép trừ, không có phép tính nào khác.\n\n**Bước 2.** Tính hai số hạng đầu tiên $(-45)-(-5)$ trước bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 3.** Lấy kết quả vừa có cộng (hoặc trừ) với số hạng kế tiếp; cứ thế tới số hạng cuối cùng.\n\n**Chú ý:** chú ý dấu của từng số hạng, nhất là khi trừ đi một số âm.\n\n**Phần 2. Trình bày**\n\n$(-45)-(-5)-10$\n\n$=(-40)-10$\n\n$=-50$",
+    "kiem": [
+      "((-45)-(-5)-10)===-50"
+    ],
+    "sach_dap_so": "-50",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-8A-e",
+    "vai": "giang",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Dãy cộng, trừ nhiều số nguyên, làm từ trái sang phải.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị của biểu thức: $12-20+(-9)$",
+    "dap_an": "-17",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dãy cộng, trừ nhiều số: tính **lần lượt từ trái sang phải**, mỗi lần chỉ làm một phép tính với hai số; phép trừ đổi thành cộng với số đối.\n\n**Bước 1.** Nhận ra biểu thức có 3 số hạng nối nhau bởi phép cộng, phép trừ, không có phép tính nào khác.\n\n**Bước 2.** Tính hai số hạng đầu tiên $12-20$ trước bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 3.** Lấy kết quả vừa có cộng (hoặc trừ) với số hạng kế tiếp; cứ thế tới số hạng cuối cùng.\n\n**Chú ý:** chú ý dấu của từng số hạng, nhất là khi trừ đi một số âm.\n\n**Phần 2. Trình bày**\n\n$12-20+(-9)$\n\n$=(-8)+(-9)$\n\n$=-17$",
+    "kiem": [
+      "(12-20+(-9))===-17"
+    ],
+    "sach_dap_so": "-17",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-8A-f",
+    "vai": "giang",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Dãy cộng, trừ nhiều số nguyên, làm từ trái sang phải.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị của biểu thức: $(-159)-11-2+8$",
+    "dap_an": "-164",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dãy cộng, trừ nhiều số: tính **lần lượt từ trái sang phải**, mỗi lần chỉ làm một phép tính với hai số; phép trừ đổi thành cộng với số đối.\n\n**Bước 1.** Nhận ra biểu thức có 4 số hạng nối nhau bởi phép cộng, phép trừ, không có phép tính nào khác.\n\n**Bước 2.** Tính hai số hạng đầu tiên $(-159)-11$ trước bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 3.** Lấy kết quả vừa có cộng (hoặc trừ) với số hạng kế tiếp; cứ thế tới số hạng cuối cùng.\n\n**Chú ý:** chú ý dấu của từng số hạng, nhất là khi trừ đi một số âm.\n\n**Phần 2. Trình bày**\n\n$(-159)-11-2+8$\n\n$=(-170)-2+8$\n\n$=(-172)+8$\n\n$=-164$",
+    "kiem": [
+      "((-159)-11-2+8)===-164"
+    ],
+    "sach_dap_so": "-164",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-8B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Dãy cộng, trừ nhiều số nguyên, làm từ trái sang phải.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị của biểu thức: $(-62)+(-12)+(-5)$",
+    "dap_an": "-79",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dãy cộng, trừ nhiều số: tính **lần lượt từ trái sang phải**, mỗi lần chỉ làm một phép tính với hai số; phép trừ đổi thành cộng với số đối.\n\n**Bước 1.** Nhận ra biểu thức có 3 số hạng nối nhau bởi phép cộng, phép trừ, không có phép tính nào khác.\n\n**Bước 2.** Tính hai số hạng đầu tiên $(-62)+(-12)$ trước bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 3.** Lấy kết quả vừa có cộng (hoặc trừ) với số hạng kế tiếp; cứ thế tới số hạng cuối cùng.\n\n**Chú ý:** chú ý dấu của từng số hạng, nhất là khi trừ đi một số âm.\n\n**Phần 2. Trình bày**\n\n$(-62)+(-12)+(-5)$\n\n$=(-74)+(-5)$\n\n$=-79$",
+    "kiem": [
+      "((-62)+(-12)+(-5))===-79"
+    ],
+    "sach_dap_so": "-79",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-8B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Dãy cộng, trừ nhiều số nguyên, làm từ trái sang phải.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị của biểu thức: $(-254)+54+3$",
+    "dap_an": "-197",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dãy cộng, trừ nhiều số: tính **lần lượt từ trái sang phải**, mỗi lần chỉ làm một phép tính với hai số; phép trừ đổi thành cộng với số đối.\n\n**Bước 1.** Nhận ra biểu thức có 3 số hạng nối nhau bởi phép cộng, phép trừ, không có phép tính nào khác.\n\n**Bước 2.** Tính hai số hạng đầu tiên $(-254)+54$ trước bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 3.** Lấy kết quả vừa có cộng (hoặc trừ) với số hạng kế tiếp; cứ thế tới số hạng cuối cùng.\n\n**Chú ý:** chú ý dấu của từng số hạng, nhất là khi trừ đi một số âm.\n\n**Phần 2. Trình bày**\n\n$(-254)+54+3$\n\n$=(-200)+3$\n\n$=-197$",
+    "kiem": [
+      "((-254)+54+3)===-197"
+    ],
+    "sach_dap_so": "-197",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-8B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Dãy cộng, trừ nhiều số nguyên, làm từ trái sang phải.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị của biểu thức: $(-54)+24+(-8)+21$",
+    "dap_an": "-17",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dãy cộng, trừ nhiều số: tính **lần lượt từ trái sang phải**, mỗi lần chỉ làm một phép tính với hai số; phép trừ đổi thành cộng với số đối.\n\n**Bước 1.** Nhận ra biểu thức có 4 số hạng nối nhau bởi phép cộng, phép trừ, không có phép tính nào khác.\n\n**Bước 2.** Tính hai số hạng đầu tiên $(-54)+24$ trước bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 3.** Lấy kết quả vừa có cộng (hoặc trừ) với số hạng kế tiếp; cứ thế tới số hạng cuối cùng.\n\n**Chú ý:** chú ý dấu của từng số hạng, nhất là khi trừ đi một số âm.\n\n**Phần 2. Trình bày**\n\n$(-54)+24+(-8)+21$\n\n$=(-30)+(-8)+21$\n\n$=(-38)+21$\n\n$=-17$",
+    "kiem": [
+      "((-54)+24+(-8)+21)===-17"
+    ],
+    "sach_dap_so": "-17",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-8B-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Dãy cộng, trừ nhiều số nguyên, làm từ trái sang phải.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị của biểu thức: $(-165)-(-65)-100$",
+    "dap_an": "-200",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dãy cộng, trừ nhiều số: tính **lần lượt từ trái sang phải**, mỗi lần chỉ làm một phép tính với hai số; phép trừ đổi thành cộng với số đối.\n\n**Bước 1.** Nhận ra biểu thức có 3 số hạng nối nhau bởi phép cộng, phép trừ, không có phép tính nào khác.\n\n**Bước 2.** Tính hai số hạng đầu tiên $(-165)-(-65)$ trước bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 3.** Lấy kết quả vừa có cộng (hoặc trừ) với số hạng kế tiếp; cứ thế tới số hạng cuối cùng.\n\n**Chú ý:** chú ý dấu của từng số hạng, nhất là khi trừ đi một số âm.\n\n**Phần 2. Trình bày**\n\n$(-165)-(-65)-100$\n\n$=(-100)-100$\n\n$=-200$",
+    "kiem": [
+      "((-165)-(-65)-100)===-200"
+    ],
+    "sach_dap_so": "-200",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-8B-e",
+    "vai": "luyen",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Dãy cộng, trừ nhiều số nguyên, làm từ trái sang phải.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị của biểu thức: $150-200+(-29)$",
+    "dap_an": "-79",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dãy cộng, trừ nhiều số: tính **lần lượt từ trái sang phải**, mỗi lần chỉ làm một phép tính với hai số; phép trừ đổi thành cộng với số đối.\n\n**Bước 1.** Nhận ra biểu thức có 3 số hạng nối nhau bởi phép cộng, phép trừ, không có phép tính nào khác.\n\n**Bước 2.** Tính hai số hạng đầu tiên $150-200$ trước bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 3.** Lấy kết quả vừa có cộng (hoặc trừ) với số hạng kế tiếp; cứ thế tới số hạng cuối cùng.\n\n**Chú ý:** chú ý dấu của từng số hạng, nhất là khi trừ đi một số âm.\n\n**Phần 2. Trình bày**\n\n$150-200+(-29)$\n\n$=(-50)+(-29)$\n\n$=-79$",
+    "kiem": [
+      "(150-200+(-29))===-79"
+    ],
+    "sach_dap_so": "-79",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-8B-f",
+    "vai": "luyen",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Dãy cộng, trừ nhiều số nguyên, làm từ trái sang phải.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị của biểu thức: $(-182)-18-9+11$",
+    "dap_an": "-198",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dãy cộng, trừ nhiều số: tính **lần lượt từ trái sang phải**, mỗi lần chỉ làm một phép tính với hai số; phép trừ đổi thành cộng với số đối.\n\n**Bước 1.** Nhận ra biểu thức có 4 số hạng nối nhau bởi phép cộng, phép trừ, không có phép tính nào khác.\n\n**Bước 2.** Tính hai số hạng đầu tiên $(-182)-18$ trước bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 3.** Lấy kết quả vừa có cộng (hoặc trừ) với số hạng kế tiếp; cứ thế tới số hạng cuối cùng.\n\n**Chú ý:** chú ý dấu của từng số hạng, nhất là khi trừ đi một số âm.\n\n**Phần 2. Trình bày**\n\n$(-182)-18-9+11$\n\n$=(-200)-9+11$\n\n$=(-209)+11$\n\n$=-198$",
+    "kiem": [
+      "((-182)-18-9+11)===-198"
+    ],
+    "sach_dap_so": "-198",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-9A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01296",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính tổng các số nguyên thoả bất đẳng thức, ghép cặp số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng tất cả các số nguyên $x$, biết: $-4<x<3$",
+    "dap_an": "-3",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** liệt kê các số nguyên thoả điều kiện, rồi **ghép các cặp số đối nhau** (mỗi cặp có tổng bằng $0$) để chỉ còn lại ít số phải cộng.\n\n**Bước 1.** Đọc điều kiện $-4<x<3$ để biết số nhỏ nhất và số lớn nhất của $x$ (dấu $<$ không lấy đầu mút, dấu $\\le$ lấy đầu mút).\n\n**Bước 2.** Liệt kê tất cả các số nguyên $x$ từ số nhỏ nhất đến số lớn nhất.\n\n**Bước 3.** Tìm các cặp số đối nhau trong danh sách (như $(-1)$ và $1$), mỗi cặp có tổng bằng $0$.\n\n**Bước 4.** Cộng các số không có số đối còn lại để ra tổng.\n\n**Chú ý:** đừng bỏ sót hoặc thêm thừa đầu mút khi đề dùng dấu $<$ hay $\\le$.\n\n**Phần 2. Trình bày**\n\nCác số nguyên $x$ thoả mãn $-4<x<3$ là $-3;-2;-1;0;1;2$.\n\nHai số đối nhau có tổng bằng $0$, nên các cặp $(-1)+1$, $(-2)+2$ đều bằng $0$ (số $0$ cộng vào cũng không làm tổng thay đổi). Chỉ còn lại các số $-3$.\n\n$S=0+(-3)=-3$\n\nVậy tổng các số nguyên $x$ thoả mãn $-4<x<3$ là $-3$.",
+    "kiem": [
+      "(()=>{let s=0;for(let x=-300;x<=300;x++){if(-4<x&&x<3)s+=x}return s===-3})()"
+    ],
+    "sach_dap_so": "-3",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-9A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01296",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính tổng các số nguyên thoả bất đẳng thức, ghép cặp số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng tất cả các số nguyên $x$, biết: $-6<x<6$",
+    "dap_an": "0",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** liệt kê các số nguyên thoả điều kiện, rồi **ghép các cặp số đối nhau** (mỗi cặp có tổng bằng $0$) để chỉ còn lại ít số phải cộng.\n\n**Bước 1.** Đọc điều kiện $-6<x<6$ để biết số nhỏ nhất và số lớn nhất của $x$ (dấu $<$ không lấy đầu mút, dấu $\\le$ lấy đầu mút).\n\n**Bước 2.** Liệt kê tất cả các số nguyên $x$ từ số nhỏ nhất đến số lớn nhất.\n\n**Bước 3.** Tìm các cặp số đối nhau trong danh sách (như $(-1)$ và $1$), mỗi cặp có tổng bằng $0$.\n\n**Bước 4.** Cộng các số không có số đối còn lại để ra tổng.\n\n**Chú ý:** đừng bỏ sót hoặc thêm thừa đầu mút khi đề dùng dấu $<$ hay $\\le$.\n\n**Phần 2. Trình bày**\n\nCác số nguyên $x$ thoả mãn $-6<x<6$ là $-5;-4;-3;-2;-1;0;1;2;3;4;5$.\n\nHai số đối nhau có tổng bằng $0$, nên các cặp $(-1)+1$, $(-2)+2$, $\\dots$, $(-5)+5$ đều bằng $0$ (số $0$ cộng vào cũng không làm tổng thay đổi). Không còn số nào khác.\n\nVậy tổng các số nguyên $x$ thoả mãn $-6<x<6$ là $0$.",
+    "kiem": [
+      "(()=>{let s=0;for(let x=-300;x<=300;x++){if(-6<x&&x<6)s+=x}return s===0})()"
+    ],
+    "sach_dap_so": "0",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-9A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01296",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính tổng các số nguyên thoả bất đẳng thức, ghép cặp số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng tất cả các số nguyên $x$, biết: $-5\\le x<5$",
+    "dap_an": "-5",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** liệt kê các số nguyên thoả điều kiện, rồi **ghép các cặp số đối nhau** (mỗi cặp có tổng bằng $0$) để chỉ còn lại ít số phải cộng.\n\n**Bước 1.** Đọc điều kiện $-5\\le x<5$ để biết số nhỏ nhất và số lớn nhất của $x$ (dấu $<$ không lấy đầu mút, dấu $\\le$ lấy đầu mút).\n\n**Bước 2.** Liệt kê tất cả các số nguyên $x$ từ số nhỏ nhất đến số lớn nhất.\n\n**Bước 3.** Tìm các cặp số đối nhau trong danh sách (như $(-1)$ và $1$), mỗi cặp có tổng bằng $0$.\n\n**Bước 4.** Cộng các số không có số đối còn lại để ra tổng.\n\n**Chú ý:** đừng bỏ sót hoặc thêm thừa đầu mút khi đề dùng dấu $<$ hay $\\le$.\n\n**Phần 2. Trình bày**\n\nCác số nguyên $x$ thoả mãn $-5\\le x<5$ là $-5;-4;-3;-2;-1;0;1;2;3;4$.\n\nHai số đối nhau có tổng bằng $0$, nên các cặp $(-1)+1$, $(-2)+2$, $\\dots$, $(-4)+4$ đều bằng $0$ (số $0$ cộng vào cũng không làm tổng thay đổi). Chỉ còn lại các số $-5$.\n\n$S=0+(-5)=-5$\n\nVậy tổng các số nguyên $x$ thoả mãn $-5\\le x<5$ là $-5$.",
+    "kiem": [
+      "(()=>{let s=0;for(let x=-300;x<=300;x++){if(-5<=x&&x<5)s+=x}return s===-5})()"
+    ],
+    "sach_dap_so": "-5",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-9A-d",
+    "vai": "giang",
+    "dang_bai": "NDB01296",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính tổng các số nguyên thoả bất đẳng thức, ghép cặp số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng tất cả các số nguyên $x$, biết: $-5<x\\le 5$",
+    "dap_an": "5",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** liệt kê các số nguyên thoả điều kiện, rồi **ghép các cặp số đối nhau** (mỗi cặp có tổng bằng $0$) để chỉ còn lại ít số phải cộng.\n\n**Bước 1.** Đọc điều kiện $-5<x\\le 5$ để biết số nhỏ nhất và số lớn nhất của $x$ (dấu $<$ không lấy đầu mút, dấu $\\le$ lấy đầu mút).\n\n**Bước 2.** Liệt kê tất cả các số nguyên $x$ từ số nhỏ nhất đến số lớn nhất.\n\n**Bước 3.** Tìm các cặp số đối nhau trong danh sách (như $(-1)$ và $1$), mỗi cặp có tổng bằng $0$.\n\n**Bước 4.** Cộng các số không có số đối còn lại để ra tổng.\n\n**Chú ý:** đừng bỏ sót hoặc thêm thừa đầu mút khi đề dùng dấu $<$ hay $\\le$.\n\n**Phần 2. Trình bày**\n\nCác số nguyên $x$ thoả mãn $-5<x\\le 5$ là $-4;-3;-2;-1;0;1;2;3;4;5$.\n\nHai số đối nhau có tổng bằng $0$, nên các cặp $(-1)+1$, $(-2)+2$, $\\dots$, $(-4)+4$ đều bằng $0$ (số $0$ cộng vào cũng không làm tổng thay đổi). Chỉ còn lại các số $5$.\n\n$S=0+5=5$\n\nVậy tổng các số nguyên $x$ thoả mãn $-5<x\\le 5$ là $5$.",
+    "kiem": [
+      "(()=>{let s=0;for(let x=-300;x<=300;x++){if(-5<x&&x<=5)s+=x}return s===5})()"
+    ],
+    "sach_dap_so": "5",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-9A-e",
+    "vai": "giang",
+    "dang_bai": "NDB01296",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính tổng các số nguyên thoả bất đẳng thức, ghép cặp số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng tất cả các số nguyên $x$, biết: $-8<x<12$",
+    "dap_an": "38",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** liệt kê các số nguyên thoả điều kiện, rồi **ghép các cặp số đối nhau** (mỗi cặp có tổng bằng $0$) để chỉ còn lại ít số phải cộng.\n\n**Bước 1.** Đọc điều kiện $-8<x<12$ để biết số nhỏ nhất và số lớn nhất của $x$ (dấu $<$ không lấy đầu mút, dấu $\\le$ lấy đầu mút).\n\n**Bước 2.** Liệt kê tất cả các số nguyên $x$ từ số nhỏ nhất đến số lớn nhất.\n\n**Bước 3.** Tìm các cặp số đối nhau trong danh sách (như $(-1)$ và $1$), mỗi cặp có tổng bằng $0$.\n\n**Bước 4.** Cộng các số không có số đối còn lại để ra tổng.\n\n**Chú ý:** đừng bỏ sót hoặc thêm thừa đầu mút khi đề dùng dấu $<$ hay $\\le$.\n\n**Phần 2. Trình bày**\n\nCác số nguyên $x$ thoả mãn $-8<x<12$ là $-7;-6;-5;\\dots;10;11$.\n\nHai số đối nhau có tổng bằng $0$, nên các cặp $(-1)+1$, $(-2)+2$, $\\dots$, $(-7)+7$ đều bằng $0$ (số $0$ cộng vào cũng không làm tổng thay đổi). Chỉ còn lại các số $8;9;10;11$.\n\n$S=8+9+10+11$\n\n$=38$\n\nVậy tổng các số nguyên $x$ thoả mãn $-8<x<12$ là $38$.",
+    "kiem": [
+      "(()=>{let s=0;for(let x=-300;x<=300;x++){if(-8<x&&x<12)s+=x}return s===38})()"
+    ],
+    "sach_dap_so": "38",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-9A-f",
+    "vai": "giang",
+    "dang_bai": "NDB01296",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính tổng các số nguyên thoả bất đẳng thức, ghép cặp số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng tất cả các số nguyên $x$, biết: $-13\\le x\\le 3$",
+    "dap_an": "-85",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** liệt kê các số nguyên thoả điều kiện, rồi **ghép các cặp số đối nhau** (mỗi cặp có tổng bằng $0$) để chỉ còn lại ít số phải cộng.\n\n**Bước 1.** Đọc điều kiện $-13\\le x\\le 3$ để biết số nhỏ nhất và số lớn nhất của $x$ (dấu $<$ không lấy đầu mút, dấu $\\le$ lấy đầu mút).\n\n**Bước 2.** Liệt kê tất cả các số nguyên $x$ từ số nhỏ nhất đến số lớn nhất.\n\n**Bước 3.** Tìm các cặp số đối nhau trong danh sách (như $(-1)$ và $1$), mỗi cặp có tổng bằng $0$.\n\n**Bước 4.** Cộng các số không có số đối còn lại để ra tổng.\n\n**Chú ý:** đừng bỏ sót hoặc thêm thừa đầu mút khi đề dùng dấu $<$ hay $\\le$.\n\n**Phần 2. Trình bày**\n\nCác số nguyên $x$ thoả mãn $-13\\le x\\le 3$ là $-13;-12;-11;\\dots;2;3$.\n\nHai số đối nhau có tổng bằng $0$, nên các cặp $(-1)+1$, $(-2)+2$, $(-3)+3$ đều bằng $0$ (số $0$ cộng vào cũng không làm tổng thay đổi). Chỉ còn lại các số $-13;-12;\\dots;-5;-4$.\n\nGhép số đầu với số cuối của dãy $-13;-12;\\dots;-5;-4$: $(-13)+(-4)=-17$, $(-12)+(-5)=-17$, $\\dots$; mỗi cặp có tổng $-17$ và có $5$ cặp như vậy.\n\n$-(17.5)=-85$\n\n$S=-85$\n\nVậy tổng các số nguyên $x$ thoả mãn $-13\\le x\\le 3$ là $-85$.",
+    "kiem": [
+      "(()=>{let s=0;for(let x=-300;x<=300;x++){if(-13<=x&&x<=3)s+=x}return s===-85})()"
+    ],
+    "sach_dap_so": "-85",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-9B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01296",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính tổng các số nguyên thoả bất đẳng thức, ghép cặp số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng tất cả các số nguyên $x$, biết: $-6<x<5$",
+    "dap_an": "-5",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** liệt kê các số nguyên thoả điều kiện, rồi **ghép các cặp số đối nhau** (mỗi cặp có tổng bằng $0$) để chỉ còn lại ít số phải cộng.\n\n**Bước 1.** Đọc điều kiện $-6<x<5$ để biết số nhỏ nhất và số lớn nhất của $x$ (dấu $<$ không lấy đầu mút, dấu $\\le$ lấy đầu mút).\n\n**Bước 2.** Liệt kê tất cả các số nguyên $x$ từ số nhỏ nhất đến số lớn nhất.\n\n**Bước 3.** Tìm các cặp số đối nhau trong danh sách (như $(-1)$ và $1$), mỗi cặp có tổng bằng $0$.\n\n**Bước 4.** Cộng các số không có số đối còn lại để ra tổng.\n\n**Chú ý:** đừng bỏ sót hoặc thêm thừa đầu mút khi đề dùng dấu $<$ hay $\\le$.\n\n**Phần 2. Trình bày**\n\nCác số nguyên $x$ thoả mãn $-6<x<5$ là $-5;-4;-3;-2;-1;0;1;2;3;4$.\n\nHai số đối nhau có tổng bằng $0$, nên các cặp $(-1)+1$, $(-2)+2$, $\\dots$, $(-4)+4$ đều bằng $0$ (số $0$ cộng vào cũng không làm tổng thay đổi). Chỉ còn lại các số $-5$.\n\n$S=0+(-5)=-5$\n\nVậy tổng các số nguyên $x$ thoả mãn $-6<x<5$ là $-5$.",
+    "kiem": [
+      "(()=>{let s=0;for(let x=-300;x<=300;x++){if(-6<x&&x<5)s+=x}return s===-5})()"
+    ],
+    "sach_dap_so": "-5",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-9B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01296",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính tổng các số nguyên thoả bất đẳng thức, ghép cặp số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng tất cả các số nguyên $x$, biết: $-8<x<8$",
+    "dap_an": "0",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** liệt kê các số nguyên thoả điều kiện, rồi **ghép các cặp số đối nhau** (mỗi cặp có tổng bằng $0$) để chỉ còn lại ít số phải cộng.\n\n**Bước 1.** Đọc điều kiện $-8<x<8$ để biết số nhỏ nhất và số lớn nhất của $x$ (dấu $<$ không lấy đầu mút, dấu $\\le$ lấy đầu mút).\n\n**Bước 2.** Liệt kê tất cả các số nguyên $x$ từ số nhỏ nhất đến số lớn nhất.\n\n**Bước 3.** Tìm các cặp số đối nhau trong danh sách (như $(-1)$ và $1$), mỗi cặp có tổng bằng $0$.\n\n**Bước 4.** Cộng các số không có số đối còn lại để ra tổng.\n\n**Chú ý:** đừng bỏ sót hoặc thêm thừa đầu mút khi đề dùng dấu $<$ hay $\\le$.\n\n**Phần 2. Trình bày**\n\nCác số nguyên $x$ thoả mãn $-8<x<8$ là $-7;-6;-5;\\dots;6;7$.\n\nHai số đối nhau có tổng bằng $0$, nên các cặp $(-1)+1$, $(-2)+2$, $\\dots$, $(-7)+7$ đều bằng $0$ (số $0$ cộng vào cũng không làm tổng thay đổi). Không còn số nào khác.\n\nVậy tổng các số nguyên $x$ thoả mãn $-8<x<8$ là $0$.",
+    "kiem": [
+      "(()=>{let s=0;for(let x=-300;x<=300;x++){if(-8<x&&x<8)s+=x}return s===0})()"
+    ],
+    "sach_dap_so": "0",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-9B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01296",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính tổng các số nguyên thoả bất đẳng thức, ghép cặp số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng tất cả các số nguyên $x$, biết: $-9\\le x<9$",
+    "dap_an": "-9",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** liệt kê các số nguyên thoả điều kiện, rồi **ghép các cặp số đối nhau** (mỗi cặp có tổng bằng $0$) để chỉ còn lại ít số phải cộng.\n\n**Bước 1.** Đọc điều kiện $-9\\le x<9$ để biết số nhỏ nhất và số lớn nhất của $x$ (dấu $<$ không lấy đầu mút, dấu $\\le$ lấy đầu mút).\n\n**Bước 2.** Liệt kê tất cả các số nguyên $x$ từ số nhỏ nhất đến số lớn nhất.\n\n**Bước 3.** Tìm các cặp số đối nhau trong danh sách (như $(-1)$ và $1$), mỗi cặp có tổng bằng $0$.\n\n**Bước 4.** Cộng các số không có số đối còn lại để ra tổng.\n\n**Chú ý:** đừng bỏ sót hoặc thêm thừa đầu mút khi đề dùng dấu $<$ hay $\\le$.\n\n**Phần 2. Trình bày**\n\nCác số nguyên $x$ thoả mãn $-9\\le x<9$ là $-9;-8;-7;\\dots;7;8$.\n\nHai số đối nhau có tổng bằng $0$, nên các cặp $(-1)+1$, $(-2)+2$, $\\dots$, $(-8)+8$ đều bằng $0$ (số $0$ cộng vào cũng không làm tổng thay đổi). Chỉ còn lại các số $-9$.\n\n$S=0+(-9)=-9$\n\nVậy tổng các số nguyên $x$ thoả mãn $-9\\le x<9$ là $-9$.",
+    "kiem": [
+      "(()=>{let s=0;for(let x=-300;x<=300;x++){if(-9<=x&&x<9)s+=x}return s===-9})()"
+    ],
+    "sach_dap_so": "-9",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-9B-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01296",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính tổng các số nguyên thoả bất đẳng thức, ghép cặp số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng tất cả các số nguyên $x$, biết: $-9<x\\le 9$",
+    "dap_an": "9",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** liệt kê các số nguyên thoả điều kiện, rồi **ghép các cặp số đối nhau** (mỗi cặp có tổng bằng $0$) để chỉ còn lại ít số phải cộng.\n\n**Bước 1.** Đọc điều kiện $-9<x\\le 9$ để biết số nhỏ nhất và số lớn nhất của $x$ (dấu $<$ không lấy đầu mút, dấu $\\le$ lấy đầu mút).\n\n**Bước 2.** Liệt kê tất cả các số nguyên $x$ từ số nhỏ nhất đến số lớn nhất.\n\n**Bước 3.** Tìm các cặp số đối nhau trong danh sách (như $(-1)$ và $1$), mỗi cặp có tổng bằng $0$.\n\n**Bước 4.** Cộng các số không có số đối còn lại để ra tổng.\n\n**Chú ý:** đừng bỏ sót hoặc thêm thừa đầu mút khi đề dùng dấu $<$ hay $\\le$.\n\n**Phần 2. Trình bày**\n\nCác số nguyên $x$ thoả mãn $-9<x\\le 9$ là $-8;-7;-6;\\dots;8;9$.\n\nHai số đối nhau có tổng bằng $0$, nên các cặp $(-1)+1$, $(-2)+2$, $\\dots$, $(-8)+8$ đều bằng $0$ (số $0$ cộng vào cũng không làm tổng thay đổi). Chỉ còn lại các số $9$.\n\n$S=0+9=9$\n\nVậy tổng các số nguyên $x$ thoả mãn $-9<x\\le 9$ là $9$.",
+    "kiem": [
+      "(()=>{let s=0;for(let x=-300;x<=300;x++){if(-9<x&&x<=9)s+=x}return s===9})()"
+    ],
+    "sach_dap_so": "9",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-9B-e",
+    "vai": "luyen",
+    "dang_bai": "NDB01296",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính tổng các số nguyên thoả bất đẳng thức, ghép cặp số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng tất cả các số nguyên $x$, biết: $-8<x<12$",
+    "dap_an": "38",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** liệt kê các số nguyên thoả điều kiện, rồi **ghép các cặp số đối nhau** (mỗi cặp có tổng bằng $0$) để chỉ còn lại ít số phải cộng.\n\n**Bước 1.** Đọc điều kiện $-8<x<12$ để biết số nhỏ nhất và số lớn nhất của $x$ (dấu $<$ không lấy đầu mút, dấu $\\le$ lấy đầu mút).\n\n**Bước 2.** Liệt kê tất cả các số nguyên $x$ từ số nhỏ nhất đến số lớn nhất.\n\n**Bước 3.** Tìm các cặp số đối nhau trong danh sách (như $(-1)$ và $1$), mỗi cặp có tổng bằng $0$.\n\n**Bước 4.** Cộng các số không có số đối còn lại để ra tổng.\n\n**Chú ý:** đừng bỏ sót hoặc thêm thừa đầu mút khi đề dùng dấu $<$ hay $\\le$.\n\n**Phần 2. Trình bày**\n\nCác số nguyên $x$ thoả mãn $-8<x<12$ là $-7;-6;-5;\\dots;10;11$.\n\nHai số đối nhau có tổng bằng $0$, nên các cặp $(-1)+1$, $(-2)+2$, $\\dots$, $(-7)+7$ đều bằng $0$ (số $0$ cộng vào cũng không làm tổng thay đổi). Chỉ còn lại các số $8;9;10;11$.\n\n$S=8+9+10+11$\n\n$=38$\n\nVậy tổng các số nguyên $x$ thoả mãn $-8<x<12$ là $38$.",
+    "kiem": [
+      "(()=>{let s=0;for(let x=-300;x<=300;x++){if(-8<x&&x<12)s+=x}return s===38})()"
+    ],
+    "sach_dap_so": "38",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-9B-f",
+    "vai": "luyen",
+    "dang_bai": "NDB01296",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính tổng các số nguyên thoả bất đẳng thức, ghép cặp số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng tất cả các số nguyên $x$, biết: $-15\\le x\\le 6$",
+    "dap_an": "-99",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** liệt kê các số nguyên thoả điều kiện, rồi **ghép các cặp số đối nhau** (mỗi cặp có tổng bằng $0$) để chỉ còn lại ít số phải cộng.\n\n**Bước 1.** Đọc điều kiện $-15\\le x\\le 6$ để biết số nhỏ nhất và số lớn nhất của $x$ (dấu $<$ không lấy đầu mút, dấu $\\le$ lấy đầu mút).\n\n**Bước 2.** Liệt kê tất cả các số nguyên $x$ từ số nhỏ nhất đến số lớn nhất.\n\n**Bước 3.** Tìm các cặp số đối nhau trong danh sách (như $(-1)$ và $1$), mỗi cặp có tổng bằng $0$.\n\n**Bước 4.** Cộng các số không có số đối còn lại để ra tổng.\n\n**Chú ý:** đừng bỏ sót hoặc thêm thừa đầu mút khi đề dùng dấu $<$ hay $\\le$.\n\n**Phần 2. Trình bày**\n\nCác số nguyên $x$ thoả mãn $-15\\le x\\le 6$ là $-15;-14;-13;\\dots;5;6$.\n\nHai số đối nhau có tổng bằng $0$, nên các cặp $(-1)+1$, $(-2)+2$, $\\dots$, $(-6)+6$ đều bằng $0$ (số $0$ cộng vào cũng không làm tổng thay đổi). Chỉ còn lại các số $-15;-14;\\dots;-8;-7$.\n\nGhép số đầu với số cuối của dãy $-15;-14;\\dots;-8;-7$: $(-15)+(-7)=-22$, $(-14)+(-8)=-22$, $\\dots$; mỗi cặp có tổng $-22$ và có $4$ cặp như vậy.\n\n$-(22.4)=-88$\n\nCòn số ở giữa là $-11$.\n\n$S=(-88)+(-11)=-99$\n\nVậy tổng các số nguyên $x$ thoả mãn $-15\\le x\\le 6$ là $-99$.",
+    "kiem": [
+      "(()=>{let s=0;for(let x=-300;x<=300;x++){if(-15<=x&&x<=6)s+=x}return s===-99})()"
+    ],
+    "sach_dap_so": "-99",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-10A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Thay giá trị cho trước của biến rồi tính cộng, trừ số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị của biểu thức $24+(-15)+x$ với $x=-10$.",
+    "dap_an": "-1",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** thay giá trị của biến vào biểu thức (số âm đặt trong ngoặc) rồi tính theo quy tắc cộng, trừ số nguyên.\n\n**Bước 1.** Thay $x$ bằng $-10$ vào biểu thức, nhớ đặt số âm trong dấu ngoặc.\n\n**Bước 2.** Tính lần lượt từ trái sang phải, mỗi lần một phép tính.\n\n**Bước 3.** Mỗi phép tính áp dụng quy tắc cộng hoặc trừ hai số nguyên; ghi kết quả cuối cùng.\n\n**Phần 2. Trình bày**\n\nVới $x=-10$, ta có:\n\n$24+(-15)+(-10)$\n\n$=9+(-10)$\n\n$=-1$",
+    "kiem": [
+      "(x=>24+(-15)+x)(-10)===-1",
+      "(24+(-15)+(-10))===-1"
+    ],
+    "sach_dap_so": "-1",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-10A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Thay giá trị cho trước của biến rồi tính cộng, trừ số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị của biểu thức $x+(-15)-30$ với $x=-15$.",
+    "dap_an": "-60",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** thay giá trị của biến vào biểu thức (số âm đặt trong ngoặc) rồi tính theo quy tắc cộng, trừ số nguyên.\n\n**Bước 1.** Thay $x$ bằng $-15$ vào biểu thức, nhớ đặt số âm trong dấu ngoặc.\n\n**Bước 2.** Tính lần lượt từ trái sang phải, mỗi lần một phép tính.\n\n**Bước 3.** Mỗi phép tính áp dụng quy tắc cộng hoặc trừ hai số nguyên; ghi kết quả cuối cùng.\n\n**Phần 2. Trình bày**\n\nVới $x=-15$, ta có:\n\n$(-15)+(-15)-30$\n\n$=(-30)-30$\n\n$=-60$",
+    "kiem": [
+      "(x=>x+(-15)-30)(-15)===-60",
+      "((-15)+(-15)-30)===-60"
+    ],
+    "sach_dap_so": "-60",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-10A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Thay giá trị cho trước của biến rồi tính cộng, trừ số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị của biểu thức $(-70)+(-24)+x$ với $x=24$.",
+    "dap_an": "-70",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** thay giá trị của biến vào biểu thức (số âm đặt trong ngoặc) rồi tính theo quy tắc cộng, trừ số nguyên.\n\n**Bước 1.** Thay $x$ bằng $24$ vào biểu thức, nhớ đặt số âm trong dấu ngoặc.\n\n**Bước 2.** Tính lần lượt từ trái sang phải, mỗi lần một phép tính.\n\n**Bước 3.** Mỗi phép tính áp dụng quy tắc cộng hoặc trừ hai số nguyên; ghi kết quả cuối cùng.\n\n**Phần 2. Trình bày**\n\nVới $x=24$, ta có:\n\n$(-70)+(-24)+24$\n\n$=(-94)+24$\n\n$=-70$",
+    "kiem": [
+      "(x=>(-70)+(-24)+x)(24)===-70",
+      "((-70)+(-24)+24)===-70"
+    ],
+    "sach_dap_so": "-70",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-10A-d",
+    "vai": "giang",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Thay giá trị cho trước của biến rồi tính cộng, trừ số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị của biểu thức $x-x+(-23)$ với $x=-12$.",
+    "dap_an": "-23",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** thay giá trị của biến vào biểu thức (số âm đặt trong ngoặc) rồi tính theo quy tắc cộng, trừ số nguyên.\n\n**Bước 1.** Thay $x$ bằng $-12$ vào biểu thức, nhớ đặt số âm trong dấu ngoặc.\n\n**Bước 2.** Tính lần lượt từ trái sang phải, mỗi lần một phép tính.\n\n**Bước 3.** Mỗi phép tính áp dụng quy tắc cộng hoặc trừ hai số nguyên; ghi kết quả cuối cùng.\n\n**Phần 2. Trình bày**\n\nVới $x=-12$, ta có:\n\n$(-12)-(-12)+(-23)$\n\n$=0+(-23)$\n\n$=-23$",
+    "kiem": [
+      "(x=>x-x+(-23))(-12)===-23",
+      "((-12)-(-12)+(-23))===-23"
+    ],
+    "sach_dap_so": "-23",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-10B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Thay giá trị cho trước của biến rồi tính cộng, trừ số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị của biểu thức $36+(-12)+x$ với $x=-20$.",
+    "dap_an": "4",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** thay giá trị của biến vào biểu thức (số âm đặt trong ngoặc) rồi tính theo quy tắc cộng, trừ số nguyên.\n\n**Bước 1.** Thay $x$ bằng $-20$ vào biểu thức, nhớ đặt số âm trong dấu ngoặc.\n\n**Bước 2.** Tính lần lượt từ trái sang phải, mỗi lần một phép tính.\n\n**Bước 3.** Mỗi phép tính áp dụng quy tắc cộng hoặc trừ hai số nguyên; ghi kết quả cuối cùng.\n\n**Phần 2. Trình bày**\n\nVới $x=-20$, ta có:\n\n$36+(-12)+(-20)$\n\n$=24+(-20)$\n\n$=4$",
+    "kiem": [
+      "(x=>36+(-12)+x)(-20)===4",
+      "(36+(-12)+(-20))===4"
+    ],
+    "sach_dap_so": "4",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-10B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Thay giá trị cho trước của biến rồi tính cộng, trừ số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị của biểu thức $x+(-14)-28$ với $x=-16$.",
+    "dap_an": "-58",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** thay giá trị của biến vào biểu thức (số âm đặt trong ngoặc) rồi tính theo quy tắc cộng, trừ số nguyên.\n\n**Bước 1.** Thay $x$ bằng $-16$ vào biểu thức, nhớ đặt số âm trong dấu ngoặc.\n\n**Bước 2.** Tính lần lượt từ trái sang phải, mỗi lần một phép tính.\n\n**Bước 3.** Mỗi phép tính áp dụng quy tắc cộng hoặc trừ hai số nguyên; ghi kết quả cuối cùng.\n\n**Phần 2. Trình bày**\n\nVới $x=-16$, ta có:\n\n$(-16)+(-14)-28$\n\n$=(-30)-28$\n\n$=-58$",
+    "kiem": [
+      "(x=>x+(-14)-28)(-16)===-58",
+      "((-16)+(-14)-28)===-58"
+    ],
+    "sach_dap_so": "-58",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-10B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Thay giá trị cho trước của biến rồi tính cộng, trừ số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị của biểu thức $(-100)+(-50)+x$ với $x=50$.",
+    "dap_an": "-100",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** thay giá trị của biến vào biểu thức (số âm đặt trong ngoặc) rồi tính theo quy tắc cộng, trừ số nguyên.\n\n**Bước 1.** Thay $x$ bằng $50$ vào biểu thức, nhớ đặt số âm trong dấu ngoặc.\n\n**Bước 2.** Tính lần lượt từ trái sang phải, mỗi lần một phép tính.\n\n**Bước 3.** Mỗi phép tính áp dụng quy tắc cộng hoặc trừ hai số nguyên; ghi kết quả cuối cùng.\n\n**Phần 2. Trình bày**\n\nVới $x=50$, ta có:\n\n$(-100)+(-50)+50$\n\n$=(-150)+50$\n\n$=-100$",
+    "kiem": [
+      "(x=>(-100)+(-50)+x)(50)===-100",
+      "((-100)+(-50)+50)===-100"
+    ],
+    "sach_dap_so": "-100",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-10B-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Thay giá trị cho trước của biến rồi tính cộng, trừ số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị của biểu thức $x-x+(-32)$ với $x=-23$.",
+    "dap_an": "-32",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** thay giá trị của biến vào biểu thức (số âm đặt trong ngoặc) rồi tính theo quy tắc cộng, trừ số nguyên.\n\n**Bước 1.** Thay $x$ bằng $-23$ vào biểu thức, nhớ đặt số âm trong dấu ngoặc.\n\n**Bước 2.** Tính lần lượt từ trái sang phải, mỗi lần một phép tính.\n\n**Bước 3.** Mỗi phép tính áp dụng quy tắc cộng hoặc trừ hai số nguyên; ghi kết quả cuối cùng.\n\n**Phần 2. Trình bày**\n\nVới $x=-23$, ta có:\n\n$(-23)-(-23)+(-32)$\n\n$=0+(-32)$\n\n$=-32$",
+    "kiem": [
+      "(x=>x-x+(-32))(-23)===-32",
+      "((-23)-(-23)+(-32))===-32"
+    ],
+    "sach_dap_so": "-32",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-11A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính hợp lí tổng, hiệu bằng giao hoán, kết hợp, ghép số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí: $(-17)+5+8+17$",
+    "dap_an": "13",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dùng tính chất **giao hoán** và **kết hợp** của phép cộng để nhóm các số thuận tiện: ghép $-17$ với $17$ là hai số đối nhau.\n\n**Bước 1.** Đổi các phép trừ thành phép cộng với số đối (nếu có) rồi quan sát kĩ các số hạng.\n\n**Bước 2.** Tìm các số hạng ghép được với nhau cho kết quả đẹp (hai số đối nhau, hoặc tổng tròn chục, tròn trăm).\n\n**Bước 3.** Dùng giao hoán, kết hợp để nhóm chúng lại, tính từng nhóm rồi cộng các kết quả.\n\n**Chú ý:** khi đổi phép trừ thành cộng, nhớ đổi dấu số đứng sau phép trừ.\n\n**Phần 2. Trình bày**\n\n$(-17)+5+8+17$\n\n$=[(-17)+17]+(5+8)$\n\n$=0+13$\n\n$=13$",
+    "kiem": [
+      "((-17)+5+8+17)===13"
+    ],
+    "sach_dap_so": "13",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-11A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính hợp lí tổng, hiệu bằng giao hoán, kết hợp, ghép số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí: $2736-75-2736$",
+    "dap_an": "-75",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dùng tính chất **giao hoán** và **kết hợp** của phép cộng để nhóm các số thuận tiện: ghép $2736$ với $-2736$ (trừ $2736$ chính là cộng với $-2736$).\n\n**Bước 1.** Đổi các phép trừ thành phép cộng với số đối (nếu có) rồi quan sát kĩ các số hạng.\n\n**Bước 2.** Tìm các số hạng ghép được với nhau cho kết quả đẹp (hai số đối nhau, hoặc tổng tròn chục, tròn trăm).\n\n**Bước 3.** Dùng giao hoán, kết hợp để nhóm chúng lại, tính từng nhóm rồi cộng các kết quả.\n\n**Chú ý:** khi đổi phép trừ thành cộng, nhớ đổi dấu số đứng sau phép trừ.\n\n**Phần 2. Trình bày**\n\n$2736-75-2736$\n\n$=2736+(-75)+(-2736)$\n\n$=[2736+(-2736)]+(-75)$\n\n$=0+(-75)$\n\n$=-75$",
+    "kiem": [
+      "(2736-75-2736)===-75"
+    ],
+    "sach_dap_so": "-75",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-11A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính hợp lí tổng, hiệu bằng giao hoán, kết hợp, ghép số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí: $30+12+(-20)+(-12)$",
+    "dap_an": "10",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dùng tính chất **giao hoán** và **kết hợp** của phép cộng để nhóm các số thuận tiện: ghép $12$ với $-12$, rồi ghép $30$ với $-20$.\n\n**Bước 1.** Đổi các phép trừ thành phép cộng với số đối (nếu có) rồi quan sát kĩ các số hạng.\n\n**Bước 2.** Tìm các số hạng ghép được với nhau cho kết quả đẹp (hai số đối nhau, hoặc tổng tròn chục, tròn trăm).\n\n**Bước 3.** Dùng giao hoán, kết hợp để nhóm chúng lại, tính từng nhóm rồi cộng các kết quả.\n\n**Chú ý:** khi đổi phép trừ thành cộng, nhớ đổi dấu số đứng sau phép trừ.\n\n**Phần 2. Trình bày**\n\n$30+12+(-20)+(-12)$\n\n$=[12+(-12)]+[30+(-20)]$\n\n$=0+10$\n\n$=10$",
+    "kiem": [
+      "(30+12+(-20)+(-12))===10"
+    ],
+    "sach_dap_so": "10",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-11A-d",
+    "vai": "giang",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính hợp lí tổng, hiệu bằng giao hoán, kết hợp, ghép số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí: $27+65-346-27-65$",
+    "dap_an": "-346",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dùng tính chất **giao hoán** và **kết hợp** của phép cộng để nhóm các số thuận tiện: ghép từng cặp số đối nhau $27$ và $-27$, $65$ và $-65$.\n\n**Bước 1.** Đổi các phép trừ thành phép cộng với số đối (nếu có) rồi quan sát kĩ các số hạng.\n\n**Bước 2.** Tìm các số hạng ghép được với nhau cho kết quả đẹp (hai số đối nhau, hoặc tổng tròn chục, tròn trăm).\n\n**Bước 3.** Dùng giao hoán, kết hợp để nhóm chúng lại, tính từng nhóm rồi cộng các kết quả.\n\n**Chú ý:** khi đổi phép trừ thành cộng, nhớ đổi dấu số đứng sau phép trừ.\n\n**Phần 2. Trình bày**\n\n$27+65-346-27-65$\n\n$=27+65+(-346)+(-27)+(-65)$\n\n$=[27+(-27)]+[65+(-65)]+(-346)$\n\n$=0+0+(-346)$\n\n$=-346$",
+    "kiem": [
+      "(27+65-346-27-65)===-346"
+    ],
+    "sach_dap_so": "-346",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-11A-e",
+    "vai": "giang",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính hợp lí tổng, hiệu bằng giao hoán, kết hợp, ghép số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí: $(-45)-25-5+45$",
+    "dap_an": "-30",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dùng tính chất **giao hoán** và **kết hợp** của phép cộng để nhóm các số thuận tiện: ghép $-45$ với $45$, gom hai số âm còn lại thành một nhóm.\n\n**Bước 1.** Đổi các phép trừ thành phép cộng với số đối (nếu có) rồi quan sát kĩ các số hạng.\n\n**Bước 2.** Tìm các số hạng ghép được với nhau cho kết quả đẹp (hai số đối nhau, hoặc tổng tròn chục, tròn trăm).\n\n**Bước 3.** Dùng giao hoán, kết hợp để nhóm chúng lại, tính từng nhóm rồi cộng các kết quả.\n\n**Chú ý:** khi đổi phép trừ thành cộng, nhớ đổi dấu số đứng sau phép trừ.\n\n**Phần 2. Trình bày**\n\n$(-45)-25-5+45$\n\n$=(-45)+(-25)+(-5)+45$\n\n$=[(-45)+45]+[(-25)+(-5)]$\n\n$=0+(-30)$\n\n$=-30$",
+    "kiem": [
+      "((-45)-25-5+45)===-30"
+    ],
+    "sach_dap_so": "-30",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-11A-f",
+    "vai": "giang",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính hợp lí tổng, hiệu bằng giao hoán, kết hợp, ghép số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí: $1+(-3)+5+(-7)+9+(-11)$",
+    "dap_an": "-6",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dùng tính chất **giao hoán** và **kết hợp** của phép cộng để nhóm các số thuận tiện: ghép hai số hạng liền nhau thành từng cặp.\n\n**Bước 1.** Đổi các phép trừ thành phép cộng với số đối (nếu có) rồi quan sát kĩ các số hạng.\n\n**Bước 2.** Tìm các số hạng ghép được với nhau cho kết quả đẹp (hai số đối nhau, hoặc tổng tròn chục, tròn trăm).\n\n**Bước 3.** Dùng giao hoán, kết hợp để nhóm chúng lại, tính từng nhóm rồi cộng các kết quả.\n\n**Chú ý:** khi đổi phép trừ thành cộng, nhớ đổi dấu số đứng sau phép trừ.\n\n**Phần 2. Trình bày**\n\n$1+(-3)+5+(-7)+9+(-11)$\n\n$=[1+(-3)]+[5+(-7)]+[9+(-11)]$\n\n$=(-2)+(-2)+(-2)$\n\n$=-6$",
+    "kiem": [
+      "(1+(-3)+5+(-7)+9+(-11))===-6"
+    ],
+    "sach_dap_so": "6",
+    "ghi_chu": "LỆCH SÁCH — sách ghi 6 nhưng lời giải trong sách ghép sai (dùng số 5 hai lần, bỏ số -7); đúng là -6 (đã kiểm bằng máy, cũng là đáp số sách ghi cho bài 23f cùng biểu thức)."
+  },
+  {
+    "id": "B2-11B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính hợp lí tổng, hiệu bằng giao hoán, kết hợp, ghép số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí: $126+(-20)+2004+(-106)$",
+    "dap_an": "2004",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dùng tính chất **giao hoán** và **kết hợp** của phép cộng để nhóm các số thuận tiện: ghép $126$ với $-106$, kết quả lại triệt tiêu với $-20$.\n\n**Bước 1.** Đổi các phép trừ thành phép cộng với số đối (nếu có) rồi quan sát kĩ các số hạng.\n\n**Bước 2.** Tìm các số hạng ghép được với nhau cho kết quả đẹp (hai số đối nhau, hoặc tổng tròn chục, tròn trăm).\n\n**Bước 3.** Dùng giao hoán, kết hợp để nhóm chúng lại, tính từng nhóm rồi cộng các kết quả.\n\n**Chú ý:** khi đổi phép trừ thành cộng, nhớ đổi dấu số đứng sau phép trừ.\n\n**Phần 2. Trình bày**\n\n$126+(-20)+2004+(-106)$\n\n$=[126+(-106)]+(-20)+2004$\n\n$=20+(-20)+2004$\n\n$=0+2004$\n\n$=2004$",
+    "kiem": [
+      "(126+(-20)+2004+(-106))===2004"
+    ],
+    "sach_dap_so": "2004",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-11B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính hợp lí tổng, hiệu bằng giao hoán, kết hợp, ghép số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí: $-199-200+(-201)$",
+    "dap_an": "-600",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dùng tính chất **giao hoán** và **kết hợp** của phép cộng để nhóm các số thuận tiện: ghép $-199$ với $-201$ để ra số tròn trăm.\n\n**Bước 1.** Đổi các phép trừ thành phép cộng với số đối (nếu có) rồi quan sát kĩ các số hạng.\n\n**Bước 2.** Tìm các số hạng ghép được với nhau cho kết quả đẹp (hai số đối nhau, hoặc tổng tròn chục, tròn trăm).\n\n**Bước 3.** Dùng giao hoán, kết hợp để nhóm chúng lại, tính từng nhóm rồi cộng các kết quả.\n\n**Chú ý:** khi đổi phép trừ thành cộng, nhớ đổi dấu số đứng sau phép trừ.\n\n**Phần 2. Trình bày**\n\n$-199-200+(-201)$\n\n$=(-199)+(-200)+(-201)$\n\n$=[(-199)+(-201)]+(-200)$\n\n$=(-400)+(-200)$\n\n$=-600$",
+    "kiem": [
+      "(-199-200+(-201))===-600"
+    ],
+    "sach_dap_so": "-600",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-11B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính hợp lí tổng, hiệu bằng giao hoán, kết hợp, ghép số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí: $483+(-56)-263+(-64)$",
+    "dap_an": "100",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dùng tính chất **giao hoán** và **kết hợp** của phép cộng để nhóm các số thuận tiện: ghép $483$ với $-263$ và ghép $-56$ với $-64$.\n\n**Bước 1.** Đổi các phép trừ thành phép cộng với số đối (nếu có) rồi quan sát kĩ các số hạng.\n\n**Bước 2.** Tìm các số hạng ghép được với nhau cho kết quả đẹp (hai số đối nhau, hoặc tổng tròn chục, tròn trăm).\n\n**Bước 3.** Dùng giao hoán, kết hợp để nhóm chúng lại, tính từng nhóm rồi cộng các kết quả.\n\n**Chú ý:** khi đổi phép trừ thành cộng, nhớ đổi dấu số đứng sau phép trừ.\n\n**Phần 2. Trình bày**\n\n$483+(-56)-263+(-64)$\n\n$=483+(-56)+(-263)+(-64)$\n\n$=[483+(-263)]+[(-56)+(-64)]$\n\n$=220+(-120)$\n\n$=100$",
+    "kiem": [
+      "(483+(-56)-263+(-64))===100"
+    ],
+    "sach_dap_so": "100",
+    "ghi_chu": "Đề in \"-(263)\", viết gọn thành -263."
+  },
+  {
+    "id": "B2-11B-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính hợp lí tổng, hiệu bằng giao hoán, kết hợp, ghép số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí: $(-87)+(-12)-(-487)+512$",
+    "dap_an": "900",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dùng tính chất **giao hoán** và **kết hợp** của phép cộng để nhóm các số thuận tiện: đổi $-(-487)$ thành $+487$, ghép hai số âm với nhau và hai số dương với nhau.\n\n**Bước 1.** Đổi các phép trừ thành phép cộng với số đối (nếu có) rồi quan sát kĩ các số hạng.\n\n**Bước 2.** Tìm các số hạng ghép được với nhau cho kết quả đẹp (hai số đối nhau, hoặc tổng tròn chục, tròn trăm).\n\n**Bước 3.** Dùng giao hoán, kết hợp để nhóm chúng lại, tính từng nhóm rồi cộng các kết quả.\n\n**Chú ý:** khi đổi phép trừ thành cộng, nhớ đổi dấu số đứng sau phép trừ.\n\n**Phần 2. Trình bày**\n\n$(-87)+(-12)-(-487)+512$\n\n$=(-87)+(-12)+487+512$\n\n$=[(-87)+(-12)]+(487+512)$\n\n$=(-99)+999$\n\n$=900$",
+    "kiem": [
+      "((-87)+(-12)-(-487)+512)===900"
+    ],
+    "sach_dap_so": "900",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-11B-e",
+    "vai": "luyen",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính hợp lí tổng, hiệu bằng giao hoán, kết hợp, ghép số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí: $(-135)+[128+(-28)+(-47)]$",
+    "dap_an": "-82",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dùng tính chất **giao hoán** và **kết hợp** của phép cộng để nhóm các số thuận tiện: làm trong ngoặc vuông trước, trong đó ghép $128$ với $-28$ để ra số tròn trăm.\n\n**Bước 1.** Đổi các phép trừ thành phép cộng với số đối (nếu có) rồi quan sát kĩ các số hạng.\n\n**Bước 2.** Tìm các số hạng ghép được với nhau cho kết quả đẹp (hai số đối nhau, hoặc tổng tròn chục, tròn trăm).\n\n**Bước 3.** Dùng giao hoán, kết hợp để nhóm chúng lại, tính từng nhóm rồi cộng các kết quả.\n\n**Chú ý:** khi đổi phép trừ thành cộng, nhớ đổi dấu số đứng sau phép trừ.\n\n**Phần 2. Trình bày**\n\n$(-135)+[128+(-28)+(-47)]$\n\n$=(-135)+[100+(-47)]$\n\n$=(-135)+53$\n\n$=-82$",
+    "kiem": [
+      "((-135)+(128+(-28)+(-47)))===-82"
+    ],
+    "sach_dap_so": "-82",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-11B-f",
+    "vai": "luyen",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính hợp lí tổng, hiệu bằng giao hoán, kết hợp, ghép số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí: $(-2)+4+(-6)+8+(-10)+12$",
+    "dap_an": "6",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dùng tính chất **giao hoán** và **kết hợp** của phép cộng để nhóm các số thuận tiện: ghép hai số hạng liền nhau thành từng cặp.\n\n**Bước 1.** Đổi các phép trừ thành phép cộng với số đối (nếu có) rồi quan sát kĩ các số hạng.\n\n**Bước 2.** Tìm các số hạng ghép được với nhau cho kết quả đẹp (hai số đối nhau, hoặc tổng tròn chục, tròn trăm).\n\n**Bước 3.** Dùng giao hoán, kết hợp để nhóm chúng lại, tính từng nhóm rồi cộng các kết quả.\n\n**Chú ý:** khi đổi phép trừ thành cộng, nhớ đổi dấu số đứng sau phép trừ.\n\n**Phần 2. Trình bày**\n\n$(-2)+4+(-6)+8+(-10)+12$\n\n$=[(-2)+4]+[(-6)+8]+[(-10)+12]$\n\n$=2+2+2$\n\n$=6$",
+    "kiem": [
+      "((-2)+4+(-6)+8+(-10)+12)===6"
+    ],
+    "sach_dap_so": "6",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-12A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01330",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Ghép hai số hạng liên tiếp thành cặp có giá trị bằng nhau.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng: $A=(-1)+2+(-3)+\\dots+(-99)+100$",
+    "dap_an": "50",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** ghép các số hạng liên tiếp thành từng cặp: mỗi cặp cho cùng một kết quả, nên chỉ cần đếm số cặp.\n\n**Bước 1.** Đếm số số hạng: phần số tự nhiên của các số hạng chạy từ $1$ đến $100$, mỗi số một lần.\n\n**Bước 2.** Số số hạng là số chẵn, nên ghép hai số hạng liên tiếp thành một cặp; số cặp bằng số số hạng chia $2$.\n\n**Bước 3.** Tính giá trị của một cặp rồi cộng các cặp bằng nhau.\n\n**Phần 2. Trình bày**\n\nDãy có $100$ số hạng, ghép hai số liên tiếp thành $100:2=50$ cặp:\n\n$A=[(-1)+2]+[(-3)+4]+\\dots+[(-99)+100]$\n\n$=1+1+\\dots+1$ (có $50$ số hạng)\n\n$=50$",
+    "kiem": [
+      "(()=>{let s=0;for(let i=1;i<=100;i++)s+=(i%2?-i:i);return s===50})()"
+    ],
+    "sach_dap_so": "50",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-12A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01330",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Ghép hai số hạng liên tiếp thành cặp có giá trị bằng nhau.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng: $B=1+(-2)+3+\\dots+(-100)+101$",
+    "dap_an": "51",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** ghép các số hạng liên tiếp thành từng cặp: mỗi cặp cho cùng một kết quả, nên chỉ cần đếm số cặp.\n\n**Bước 1.** Đếm số số hạng: phần số tự nhiên chạy từ $1$ đến $101$ nên có $101$ số hạng, là số lẻ.\n\n**Bước 2.** Giữ riêng số hạng cuối $101$, ghép $100$ số hạng còn lại thành từng cặp hai số liên tiếp.\n\n**Bước 3.** Tính giá trị một cặp, cộng các cặp rồi cộng thêm số hạng $101$.\n\n**Phần 2. Trình bày**\n\nBỏ riêng số hạng $101$, còn $100$ số hạng, ghép thành $100:2=50$ cặp:\n\n$B=[1+(-2)]+[3+(-4)]+\\dots+[99+(-100)]+101$\n\n$=(-1)+(-1)+\\dots+(-1)+101$ (có $50$ số $-1$)\n\n$=(-50)+101$\n\n$=51$",
+    "kiem": [
+      "(()=>{let s=0;for(let i=1;i<=101;i++)s+=(i%2?i:-i);return s===51})()"
+    ],
+    "sach_dap_so": "51",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-12B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01331",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Dãy số hạng cách đều 4 đơn vị, ghép hai số liên tiếp (mẫu y hệt NDB01331).",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng: $A=(-1)+5+(-9)+13+\\dots+(-81)+85$",
+    "dap_an": "44",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** ghép các số hạng liên tiếp thành từng cặp: mỗi cặp cho cùng một kết quả, nên chỉ cần đếm số cặp.\n\n**Bước 1.** Phần số tự nhiên của các số hạng là $1;5;9;\\dots;85$, hai số liền nhau hơn kém nhau $4$ đơn vị; đếm số số hạng bằng $(85-1):4+1$.\n\n**Bước 2.** Số số hạng là số chẵn nên ghép hai số hạng liên tiếp thành một cặp.\n\n**Bước 3.** Tính giá trị một cặp rồi cộng các cặp bằng nhau.\n\n**Phần 2. Trình bày**\n\nSố số hạng của dãy là $(85-1):4+1=22$. Ghép hai số liên tiếp thành $22:2=11$ cặp:\n\n$A=[(-1)+5]+[(-9)+13]+\\dots+[(-81)+85]$\n\n$=4+4+\\dots+4$ (có $11$ số hạng)\n\n$=4.11$\n\n$=44$",
+    "kiem": [
+      "(()=>{let s=0;for(let k=0;k<22;k++)s+=(k%2?1:-1)*(4*k+1);return s===44})()"
+    ],
+    "sach_dap_so": "44",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-12B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01330",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Ghép hai số hạng liên tiếp thành cặp có giá trị bằng nhau.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng: $B=(-1)+2+(-3)+4+(-5)+\\dots+(-2013)+2014$",
+    "dap_an": "1007",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** ghép các số hạng liên tiếp thành từng cặp: mỗi cặp cho cùng một kết quả, nên chỉ cần đếm số cặp.\n\n**Bước 1.** Đếm số số hạng: phần số tự nhiên chạy từ $1$ đến $2014$, mỗi số một lần.\n\n**Bước 2.** Số số hạng là số chẵn, ghép hai số hạng liên tiếp thành một cặp; số cặp bằng số số hạng chia $2$.\n\n**Bước 3.** Tính giá trị một cặp rồi cộng các cặp bằng nhau.\n\n**Phần 2. Trình bày**\n\nDãy có $2014$ số hạng, ghép hai số liên tiếp thành $2014:2=1007$ cặp:\n\n$B=[(-1)+2]+[(-3)+4]+\\dots+[(-2013)+2014]$\n\n$=1+1+\\dots+1$ (có $1007$ số hạng)\n\n$=1007$",
+    "kiem": [
+      "(()=>{let s=0;for(let i=1;i<=2014;i++)s+=(i%2?-i:i);return s===1007})()"
+    ],
+    "sach_dap_so": "1007",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-13A",
+    "vai": "giang",
+    "dang_bai": null,
+    "dang_bai_chac": null,
+    "dang_bai_ly_do": "Bản đồ thiếu dạng: bảng điền x, y, x+y, x-y (gần NDB01299 và NDB01315).",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Điền số thích hợp thay thế các dấu \"?\" trong bảng sau: $\\begin{array}{ccccccc}\\hline x & -24 & 6 & 0 & -156 & 7 & ? \\\\ \\hline y & 8 & -21 & -67 & 0 & ? & 54 \\\\ \\hline x+y & ? & ? & ? & ? & -25 & ? \\\\ \\hline x-y & ? & ? & ? & ? & ? & -40 \\\\ \\hline \\end{array}$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** mỗi ô trống tính từ các ô đã biết cùng cột: cộng, trừ hai số nguyên, hoặc **tìm thành phần chưa biết** của phép cộng, phép trừ.\n\n**Bước 1.** Xét từng cột: cột nào đã biết cả $x$ và $y$ thì tính ngay $x+y$ và $x-y$.\n\n**Bước 2.** Cột thiếu $y$ mà cho $x+y$: $y$ là số hạng chưa biết, bằng tổng trừ số hạng đã biết.\n\n**Bước 3.** Cột thiếu $x$ mà cho $x-y$: $x$ là số bị trừ, bằng hiệu cộng số trừ.\n\n**Bước 4.** Khi đã đủ $x$ và $y$, tính nốt ô còn trống của cột đó.\n\n**Phần 2. Trình bày**\n\nCột 1: $x+y=(-24)+8=-16$; $x-y=(-24)-8=-32$.\n\nCột 2: $x+y=6+(-21)=-15$; $x-y=6-(-21)=27$.\n\nCột 3: $x+y=0+(-67)=-67$; $x-y=0-(-67)=67$.\n\nCột 4: $x+y=(-156)+0=-156$; $x-y=(-156)-0=-156$.\n\nCột 5: $x+y=-25$ nên $y=(-25)-7=-32$. Khi đó $x-y=7-(-32)=39$.\n\nCột 6: $x-y=-40$ nên $x=(-40)+54=14$. Khi đó $x+y=14+54=68$.\n\nVậy bảng sau khi điền đủ là:\n\n$\\begin{array}{ccccccc}\\hline x & -24 & 6 & 0 & -156 & 7 & 14 \\\\ \\hline y & 8 & -21 & -67 & 0 & -32 & 54 \\\\ \\hline x+y & -16 & -15 & -67 & -156 & -25 & 68 \\\\ \\hline x-y & -32 & 27 & 67 & -156 & 39 & -40 \\\\ \\hline \\end{array}$",
+    "kiem": [
+      "(()=>{const x=[-24,6,0,-156,7,14],y=[8,-21,-67,0,-32,54];const s=x.map((v,i)=>v+y[i]),d=x.map((v,i)=>v-y[i]);return s[4]===-25&&d[5]===-40&&x[0]===-24&&x[1]===6&&x[2]===0&&x[3]===-156&&x[4]===7&&y[0]===8&&y[1]===-21&&y[2]===-67&&y[3]===0&&y[5]===54&&s.join()==='-16,-15,-67,-156,-25,68'&&d.join()==='-32,27,67,-156,39,-40'})()"
+    ],
+    "sach_dap_so": "x: -24, 6, 0, -156, 7, 14; y: 8, -21, -67, 0, -32, 54; x+y: -16, -15, -67, -156, -25, 68; x-y: -32, 27, 67, -156, 39, -40",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-13B",
+    "vai": "luyen",
+    "dang_bai": null,
+    "dang_bai_chac": null,
+    "dang_bai_ly_do": "Bản đồ thiếu dạng: bảng điền x, y, x+y, x-y (gần NDB01299 và NDB01315).",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Điền số thích hợp thay thế các dấu \"?\" trong bảng sau: $\\begin{array}{ccccccc}\\hline x & -15 & 8 & 0 & -200 & 9 & ? \\\\ \\hline y & 7 & -25 & -44 & 0 & ? & 54 \\\\ \\hline x+y & ? & ? & ? & ? & -42 & ? \\\\ \\hline x-y & ? & ? & ? & ? & ? & -21 \\\\ \\hline \\end{array}$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** mỗi ô trống tính từ các ô đã biết cùng cột: cộng, trừ hai số nguyên, hoặc **tìm thành phần chưa biết** của phép cộng, phép trừ.\n\n**Bước 1.** Xét từng cột: cột nào đã biết cả $x$ và $y$ thì tính ngay $x+y$ và $x-y$.\n\n**Bước 2.** Cột thiếu $y$ mà cho $x+y$: $y$ là số hạng chưa biết, bằng tổng trừ số hạng đã biết.\n\n**Bước 3.** Cột thiếu $x$ mà cho $x-y$: $x$ là số bị trừ, bằng hiệu cộng số trừ.\n\n**Bước 4.** Khi đã đủ $x$ và $y$, tính nốt ô còn trống của cột đó.\n\n**Phần 2. Trình bày**\n\nCột 1: $x+y=(-15)+7=-8$; $x-y=(-15)-7=-22$.\n\nCột 2: $x+y=8+(-25)=-17$; $x-y=8-(-25)=33$.\n\nCột 3: $x+y=0+(-44)=-44$; $x-y=0-(-44)=44$.\n\nCột 4: $x+y=(-200)+0=-200$; $x-y=(-200)-0=-200$.\n\nCột 5: $x+y=-42$ nên $y=(-42)-9=-51$. Khi đó $x-y=9-(-51)=60$.\n\nCột 6: $x-y=-21$ nên $x=(-21)+54=33$. Khi đó $x+y=33+54=87$.\n\nVậy bảng sau khi điền đủ là:\n\n$\\begin{array}{ccccccc}\\hline x & -15 & 8 & 0 & -200 & 9 & 33 \\\\ \\hline y & 7 & -25 & -44 & 0 & -51 & 54 \\\\ \\hline x+y & -8 & -17 & -44 & -200 & -42 & 87 \\\\ \\hline x-y & -22 & 33 & 44 & -200 & 60 & -21 \\\\ \\hline \\end{array}$",
+    "kiem": [
+      "(()=>{const x=[-15,8,0,-200,9,33],y=[7,-25,-44,0,-51,54];const s=x.map((v,i)=>v+y[i]),d=x.map((v,i)=>v-y[i]);return s[4]===-42&&d[5]===-21&&x[0]===-15&&x[1]===8&&x[2]===0&&x[3]===-200&&x[4]===9&&y[0]===7&&y[1]===-25&&y[2]===-44&&y[3]===0&&y[5]===54&&s.join()==='-8,-17,-44,-200,-42,87'&&d.join()==='-22,33,44,-200,60,-21'})()"
+    ],
+    "sach_dap_so": "x: -15, 8, 0, -200, 9, 33; y: 7, -25, -44, 0, -51, 54; x+y: -8, -17, -44, -200, -42, 87; x-y: -22, 33, 44, -200, 60, -21",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-14A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01315",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Phải xác định số nguyên âm lớn nhất / dương nhỏ nhất rồi tìm số hạng, số bị trừ (NDB01293 đứng trước).",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tìm số nguyên $x$ sao cho $x+25$ là số nguyên âm lớn nhất.",
+    "dap_an": "-26",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** trước hết xác định rõ số nguyên âm lớn nhất là số nào, rồi **tìm thành phần chưa biết** của phép cộng hoặc phép trừ.\n\n**Bước 1.** Xác định giá trị cần có của $x+25$: số nguyên âm lớn nhất.\n\n**Bước 2.** Viết đẳng thức $x+25=-1$.\n\n**Bước 3.** Xem $x$ (hoặc $y$) đang là thành phần nào của phép tính, rồi dùng quy tắc tìm thành phần chưa biết.\n\n**Bước 4.** Tính bằng quy tắc cộng, trừ số nguyên và ghi kết quả.\n\n**Phần 2. Trình bày**\n\nSố nguyên âm lớn nhất là $-1$.\n\nDo đó $x+25=-1$\n\n$x=(-1)-25$\n\n$x=(-1)+(-25)$\n\n$x=-26$\n\nVậy $x=-26$.",
+    "kiem": [
+      "(()=>{let b=-Infinity;for(let v=-99;v<0;v++)b=Math.max(b,v);for(let x=-300;x<=300;x++)if(x+25===b)return x===-26;return false})()"
+    ],
+    "sach_dap_so": "-26",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-14A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01315",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Phải xác định số nguyên âm lớn nhất / dương nhỏ nhất rồi tìm số hạng, số bị trừ (NDB01293 đứng trước).",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tìm số nguyên $y$ sao cho $y-(-30)$ là số nguyên dương nhỏ nhất.",
+    "dap_an": "-29",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** trước hết xác định rõ số nguyên dương nhỏ nhất là số nào, rồi **tìm thành phần chưa biết** của phép cộng hoặc phép trừ.\n\n**Bước 1.** Xác định giá trị cần có của $y-(-30)$: số nguyên dương nhỏ nhất.\n\n**Bước 2.** Viết đẳng thức $y-(-30)=1$.\n\n**Bước 3.** Xem $x$ (hoặc $y$) đang là thành phần nào của phép tính, rồi dùng quy tắc tìm thành phần chưa biết.\n\n**Bước 4.** Tính bằng quy tắc cộng, trừ số nguyên và ghi kết quả.\n\n**Phần 2. Trình bày**\n\nSố nguyên dương nhỏ nhất là $1$.\n\nDo đó $y-(-30)=1$\n\n$y=1+(-30)$\n\n$y=-29$\n\nVậy $y=-29$.",
+    "kiem": [
+      "(()=>{let b=Infinity;for(let v=1;v<100;v++)b=Math.min(b,v);for(let y=-300;y<=300;y++)if(y-(-30)===b)return y===-29;return false})()"
+    ],
+    "sach_dap_so": "-29",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-14B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01315",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Phải xác định số nguyên âm lớn nhất / dương nhỏ nhất rồi tìm số hạng, số bị trừ (NDB01293 đứng trước).",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tìm số nguyên $x$ sao cho $x+100$ là số nguyên âm lớn nhất có hai chữ số.",
+    "dap_an": "-110",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** trước hết xác định rõ số nguyên âm lớn nhất có hai chữ số là số nào, rồi **tìm thành phần chưa biết** của phép cộng hoặc phép trừ.\n\n**Bước 1.** Xác định giá trị cần có của $x+100$: số nguyên âm lớn nhất có hai chữ số.\n\n**Bước 2.** Viết đẳng thức $x+100=-10$.\n\n**Bước 3.** Xem $x$ (hoặc $y$) đang là thành phần nào của phép tính, rồi dùng quy tắc tìm thành phần chưa biết.\n\n**Bước 4.** Tính bằng quy tắc cộng, trừ số nguyên và ghi kết quả.\n\n**Phần 2. Trình bày**\n\nSố nguyên âm lớn nhất có hai chữ số là $-10$.\n\nDo đó $x+100=-10$\n\n$x=(-10)-100$\n\n$x=(-10)+(-100)$\n\n$x=-110$\n\nVậy $x=-110$.",
+    "kiem": [
+      "(()=>{let b=-Infinity;for(let v=-99;v<=-10;v++)b=Math.max(b,v);for(let x=-300;x<=300;x++)if(x+100===b)return x===-110;return false})()"
+    ],
+    "sach_dap_so": "-110",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-14B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01315",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Phải xác định số nguyên âm lớn nhất / dương nhỏ nhất rồi tìm số hạng, số bị trừ (NDB01293 đứng trước).",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tìm số nguyên $y$ sao cho $y-(-15)$ là số nguyên dương nhỏ nhất.",
+    "dap_an": "-14",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** trước hết xác định rõ số nguyên dương nhỏ nhất là số nào, rồi **tìm thành phần chưa biết** của phép cộng hoặc phép trừ.\n\n**Bước 1.** Xác định giá trị cần có của $y-(-15)$: số nguyên dương nhỏ nhất.\n\n**Bước 2.** Viết đẳng thức $y-(-15)=1$.\n\n**Bước 3.** Xem $x$ (hoặc $y$) đang là thành phần nào của phép tính, rồi dùng quy tắc tìm thành phần chưa biết.\n\n**Bước 4.** Tính bằng quy tắc cộng, trừ số nguyên và ghi kết quả.\n\n**Phần 2. Trình bày**\n\nSố nguyên dương nhỏ nhất là $1$.\n\nDo đó $y-(-15)=1$\n\n$y=1+(-15)$\n\n$y=-14$\n\nVậy $y=-14$.",
+    "kiem": [
+      "(()=>{let b=Infinity;for(let v=1;v<100;v++)b=Math.min(b,v);for(let y=-300;y<=300;y++)if(y-(-15)===b)return y===-14;return false})()"
+    ],
+    "sach_dap_so": "-14",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-15A",
+    "vai": "giang",
+    "dang_bai": "NDB01313",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Độ cao tăng giảm: lập phép cộng, trừ số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Một con chim đang bay ở vị trí $25$ m so với mặt đất, nó bay cao lên $19$ m nữa. Tính độ cao của con chim so với mặt đất sau khi bay lên (đơn vị: mét).",
+    "dap_an": "44",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"bay cao lên\" nghĩa là độ cao **tăng**, nên lập phép **cộng** độ cao ban đầu với quãng bay thêm.\n\n**Bước 1.** Xác định độ cao ban đầu của con chim so với mặt đất.\n\n**Bước 2.** Bay cao lên $19$ m nên độ cao tăng thêm $19$ m: viết thành phép cộng.\n\n**Bước 3.** Thực hiện phép cộng và ghi đơn vị mét.\n\n**Phần 2. Trình bày**\n\nĐộ cao của con chim so với mặt đất sau khi bay lên là:\n\n$25+19=44$ (m)\n\nVậy con chim ở độ cao $44$ m so với mặt đất.",
+    "kiem": [
+      "25+19===44"
+    ],
+    "sach_dap_so": "44",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-15B",
+    "vai": "luyen",
+    "dang_bai": "NDB01313",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Độ cao tăng giảm: lập phép cộng, trừ số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Một con cá chuồn đang ở vị trí $-3$ m so với mực nước biển, nó bay cao lên $5$ m nữa. Tính độ cao của con cá chuồn so với mực nước biển sau khi bay lên (đơn vị: mét).",
+    "dap_an": "2",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"bay cao lên\" nghĩa là độ cao **tăng**, nên lập phép **cộng**; vị trí dưới mực nước biển là số âm.\n\n**Bước 1.** Xác định độ cao ban đầu: dưới mực nước biển nên là số âm.\n\n**Bước 2.** Bay cao lên $5$ m nên độ cao tăng thêm $5$ m: viết thành phép cộng.\n\n**Bước 3.** Thực hiện phép cộng hai số nguyên khác dấu và ghi đơn vị mét.\n\n**Phần 2. Trình bày**\n\nĐộ cao của con cá chuồn sau khi bay lên là:\n\n$(-3)+5=5-3=2$ (m)\n\nVậy con cá chuồn ở độ cao $2$ m so với mực nước biển.",
+    "kiem": [
+      "(-3)+5===2"
+    ],
+    "sach_dap_so": "2 m so với mực nước biển",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-16A",
+    "vai": "giang",
+    "dang_bai": null,
+    "dang_bai_chac": null,
+    "dang_bai_ly_do": "Bản đồ thiếu dạng: tính khoảng cách giữa hai mốc thời gian (năm trước Công nguyên viết bằng số âm).",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tuổi thọ của bác học Ác-si-mét, biết rằng ông sinh năm $-287$ và mất năm $-212$ (đơn vị: tuổi).",
+    "dap_an": "75",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tuổi thọ bằng **năm mất trừ năm sinh**; năm trước Công nguyên được viết bằng số âm.\n\n**Bước 1.** Xác định năm sinh là $-287$ và năm mất là $-212$ (hai số nguyên âm).\n\n**Bước 2.** Lập hiệu: năm mất trừ năm sinh.\n\n**Bước 3.** Đổi phép trừ thành phép cộng với số đối của số trừ rồi tính.\n\n**Phần 2. Trình bày**\n\nTuổi thọ của Ác-si-mét là:\n\n$-212-(-287)=-212+287=287-212=75$ (tuổi)\n\nVậy Ác-si-mét thọ $75$ tuổi.",
+    "kiem": [
+      "-212-(-287)===75"
+    ],
+    "sach_dap_so": "75",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-16B",
+    "vai": "luyen",
+    "dang_bai": "NDB01313",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Độ cao tăng giảm: lập phép cộng, trừ số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Chiếc diều của bạn Minh bay cao $18$ m (so với mặt đất). Sau một lúc, độ cao của chiếc diều tăng $2$ m, rồi sau đó lại giảm $3$ m. Hỏi chiếc diều ở độ cao bao nhiêu mét (so với mặt đất) sau hai lần thay đổi?",
+    "dap_an": "17",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"tăng\" ứng với phép **cộng**, \"giảm\" ứng với phép **trừ**; làm theo đúng thứ tự thay đổi.\n\n**Bước 1.** Xác định độ cao ban đầu là $18$ m.\n\n**Bước 2.** Tăng $2$ m thì cộng $2$; giảm $3$ m thì trừ $3$; viết thành biểu thức theo đúng thứ tự.\n\n**Bước 3.** Tính từ trái sang phải và ghi đơn vị mét.\n\n**Phần 2. Trình bày**\n\nĐộ cao của chiếc diều sau hai lần thay đổi là:\n\n$18+2-3=20-3=17$ (m)\n\nVậy chiếc diều ở độ cao $17$ m so với mặt đất.",
+    "kiem": [
+      "18+2-3===17"
+    ],
+    "sach_dap_so": "17",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-17-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01288",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm số đối của một số nguyên / biểu thức chữ.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tìm số đối của $-15$.",
+    "dap_an": "15",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số đối của $a$ là $-a$: hai số đối nhau chỉ khác nhau về dấu.\n\n**Bước 1.** Xác định dấu và phần số tự nhiên của số đã cho.\n\n**Bước 2.** Đổi dấu để được số đối.\n\n**Bước 3.** Kiểm tra lại: tổng của hai số đối nhau phải bằng $0$.\n\n**Phần 2. Trình bày**\n\nSố đối của $-15$ là $15$.",
+    "kiem": [
+      "-(-15)===15"
+    ],
+    "sach_dap_so": "15",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-17-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01288",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm số đối của một số nguyên / biểu thức chữ.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tìm số đối của $-(-3)$.",
+    "dap_an": "-3",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đọc từ trong ra: $-(-3)$ là số đối của $-3$, sau đó mới lấy số đối của số vừa tìm.\n\n**Bước 1.** Xem $-(-3)$ là số đối của $-3$ và cho biết đó là số nào.\n\n**Bước 2.** Lấy số đối của số vừa tìm được.\n\n**Bước 3.** Kiểm tra lại bằng cách cộng hai số xem tổng có bằng $0$.\n\n**Phần 2. Trình bày**\n\n$-(-3)=3$\n\nSố đối của $3$ là $-3$.\n\nVậy số đối của $-(-3)$ là $-3$.",
+    "kiem": [
+      "-(-(-3))===-3"
+    ],
+    "sach_dap_so": "-3",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-17-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01288",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm số đối của một số nguyên / biểu thức chữ.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số đối của $5-a\\ (a\\in\\mathbb{Z})$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai số có tổng bằng $0$ thì đối nhau, nên chỉ cần tìm số cộng với $5-a$ được kết quả $0$.\n\n**Bước 1.** Viết $5-a$ thành $5+(-a)$ để thấy hai phần cần triệt tiêu.\n\n**Bước 2.** Chọn số cần tìm sao cho nó triệt tiêu cả $5$ lẫn $-a$.\n\n**Bước 3.** Kiểm tra bằng tính chất giao hoán, kết hợp: tổng của hai số có bằng $0$ không.\n\n**Phần 2. Trình bày**\n\n$(5-a)+(a-5)=5+(-a)+a+(-5)$\n\n$=[5+(-5)]+[(-a)+a]$\n\n$=0+0=0$\n\nHai số có tổng bằng $0$ là hai số đối nhau.\n\nVậy số đối của $5-a$ là $a-5$.",
+    "kiem": [
+      "(()=>{for(let a=-20;a<=20;a++){if((5-a)+(a-5)!==0)return false}return true})()"
+    ],
+    "sach_dap_so": "a - 5",
+    "ghi_chu": "Đáp số là biểu thức chữ (a-5) nên để tự luận."
+  },
+  {
+    "id": "B2-17-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01288",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm số đối của một số nguyên / biểu thức chữ.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm số đối của $10-x\\ (x\\in\\mathbb{Z})$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai số có tổng bằng $0$ thì đối nhau, nên chỉ cần tìm số cộng với $10-x$ được kết quả $0$.\n\n**Bước 1.** Viết $10-x$ thành $10+(-x)$ để thấy hai phần cần triệt tiêu.\n\n**Bước 2.** Chọn số cần tìm sao cho nó triệt tiêu cả $10$ lẫn $-x$.\n\n**Bước 3.** Kiểm tra bằng tính chất giao hoán, kết hợp: tổng của hai số có bằng $0$ không.\n\n**Phần 2. Trình bày**\n\n$(10-x)+(x-10)=10+(-x)+x+(-10)$\n\n$=[10+(-10)]+[(-x)+x]$\n\n$=0+0=0$\n\nHai số có tổng bằng $0$ là hai số đối nhau.\n\nVậy số đối của $10-x$ là $x-10$.",
+    "kiem": [
+      "(()=>{for(let x=-20;x<=20;x++){if((10-x)+(x-10)!==0)return false}return true})()"
+    ],
+    "sach_dap_so": "x - 10",
+    "ghi_chu": "Đáp số là biểu thức chữ (x-10) nên để tự luận."
+  },
+  {
+    "id": "B2-18-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01298",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Phải cộng hai số nguyên trước rồi lấy số đối (NDB01288 đứng trước).",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tìm số đối của tổng sau: $24+16$",
+    "dap_an": "-40",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tính **tổng** trước, rồi mới lấy **số đối** của kết quả vừa tìm được.\n\n**Bước 1.** Tính tổng đã cho bằng quy tắc cộng hai số nguyên (cùng dấu hoặc khác dấu).\n\n**Bước 2.** Lấy số đối của tổng vừa tìm được bằng cách đổi dấu.\n\n**Bước 3.** Kiểm tra lại: tổng với số đối của nó phải bằng $0$.\n\n**Phần 2. Trình bày**\n\n$24+16$\n\n$=40$\n\nSố đối của $40$ là $-40$.\n\nVậy số đối của tổng $24+16$ là $-40$.",
+    "kiem": [
+      "-(24+16)===-40"
+    ],
+    "sach_dap_so": "-40",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-18-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01298",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Phải cộng hai số nguyên trước rồi lấy số đối (NDB01288 đứng trước).",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tìm số đối của tổng sau: $(-13)+17$",
+    "dap_an": "-4",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tính **tổng** trước, rồi mới lấy **số đối** của kết quả vừa tìm được.\n\n**Bước 1.** Tính tổng đã cho bằng quy tắc cộng hai số nguyên (cùng dấu hoặc khác dấu).\n\n**Bước 2.** Lấy số đối của tổng vừa tìm được bằng cách đổi dấu.\n\n**Bước 3.** Kiểm tra lại: tổng với số đối của nó phải bằng $0$.\n\n**Phần 2. Trình bày**\n\n$(-13)+17$\n\n$=17-13$\n\n$=4$\n\nSố đối của $4$ là $-4$.\n\nVậy số đối của tổng $(-13)+17$ là $-4$.",
+    "kiem": [
+      "-((-13)+17)===-4"
+    ],
+    "sach_dap_so": "-4",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-18-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01298",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Phải cộng hai số nguyên trước rồi lấy số đối (NDB01288 đứng trước).",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tìm số đối của tổng sau: $(-15)+(-24)$",
+    "dap_an": "39",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tính **tổng** trước, rồi mới lấy **số đối** của kết quả vừa tìm được.\n\n**Bước 1.** Tính tổng đã cho bằng quy tắc cộng hai số nguyên (cùng dấu hoặc khác dấu).\n\n**Bước 2.** Lấy số đối của tổng vừa tìm được bằng cách đổi dấu.\n\n**Bước 3.** Kiểm tra lại: tổng với số đối của nó phải bằng $0$.\n\n**Phần 2. Trình bày**\n\n$(-15)+(-24)$\n\n$=-(15+24)$\n\n$=-39$\n\nSố đối của $-39$ là $39$.\n\nVậy số đối của tổng $(-15)+(-24)$ là $39$.",
+    "kiem": [
+      "-((-15)+(-24))===39"
+    ],
+    "sach_dap_so": "39",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-18-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01298",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Phải cộng hai số nguyên trước rồi lấy số đối (NDB01288 đứng trước).",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tìm số đối của tổng sau: $(-21)+11$",
+    "dap_an": "10",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tính **tổng** trước, rồi mới lấy **số đối** của kết quả vừa tìm được.\n\n**Bước 1.** Tính tổng đã cho bằng quy tắc cộng hai số nguyên (cùng dấu hoặc khác dấu).\n\n**Bước 2.** Lấy số đối của tổng vừa tìm được bằng cách đổi dấu.\n\n**Bước 3.** Kiểm tra lại: tổng với số đối của nó phải bằng $0$.\n\n**Phần 2. Trình bày**\n\n$(-21)+11$\n\n$=-(21-11)$\n\n$=-10$\n\nSố đối của $-10$ là $10$.\n\nVậy số đối của tổng $(-21)+11$ là $10$.",
+    "kiem": [
+      "-((-21)+11)===10"
+    ],
+    "sach_dap_so": "10",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-19-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Dãy cộng, trừ nhiều số nguyên, làm từ trái sang phải.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $17+100+(-7)$",
+    "dap_an": "110",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dãy cộng, trừ nhiều số: tính **lần lượt từ trái sang phải**, mỗi lần chỉ làm một phép tính với hai số; phép trừ đổi thành cộng với số đối.\n\n**Bước 1.** Nhận ra biểu thức có 3 số hạng nối nhau bởi phép cộng, phép trừ, không có phép tính nào khác.\n\n**Bước 2.** Tính hai số hạng đầu tiên $17+100$ trước bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 3.** Lấy kết quả vừa có cộng (hoặc trừ) với số hạng kế tiếp; cứ thế tới số hạng cuối cùng.\n\n**Chú ý:** chú ý dấu của từng số hạng, nhất là khi trừ đi một số âm.\n\n**Phần 2. Trình bày**\n\n$17+100+(-7)$\n\n$=117+(-7)$\n\n$=110$",
+    "kiem": [
+      "(17+100+(-7))===110"
+    ],
+    "sach_dap_so": "110",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-19-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Dãy cộng, trừ nhiều số nguyên, làm từ trái sang phải.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $(-74)+124+131$",
+    "dap_an": "181",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dãy cộng, trừ nhiều số: tính **lần lượt từ trái sang phải**, mỗi lần chỉ làm một phép tính với hai số; phép trừ đổi thành cộng với số đối.\n\n**Bước 1.** Nhận ra biểu thức có 3 số hạng nối nhau bởi phép cộng, phép trừ, không có phép tính nào khác.\n\n**Bước 2.** Tính hai số hạng đầu tiên $(-74)+124$ trước bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 3.** Lấy kết quả vừa có cộng (hoặc trừ) với số hạng kế tiếp; cứ thế tới số hạng cuối cùng.\n\n**Chú ý:** chú ý dấu của từng số hạng, nhất là khi trừ đi một số âm.\n\n**Phần 2. Trình bày**\n\n$(-74)+124+131$\n\n$=50+131$\n\n$=181$",
+    "kiem": [
+      "((-74)+124+131)===181"
+    ],
+    "sach_dap_so": "181",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-19-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Dãy cộng, trừ nhiều số nguyên, làm từ trái sang phải.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $(-99)+144+(-1)$",
+    "dap_an": "44",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dãy cộng, trừ nhiều số: tính **lần lượt từ trái sang phải**, mỗi lần chỉ làm một phép tính với hai số; phép trừ đổi thành cộng với số đối.\n\n**Bước 1.** Nhận ra biểu thức có 3 số hạng nối nhau bởi phép cộng, phép trừ, không có phép tính nào khác.\n\n**Bước 2.** Tính hai số hạng đầu tiên $(-99)+144$ trước bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 3.** Lấy kết quả vừa có cộng (hoặc trừ) với số hạng kế tiếp; cứ thế tới số hạng cuối cùng.\n\n**Chú ý:** chú ý dấu của từng số hạng, nhất là khi trừ đi một số âm.\n\n**Phần 2. Trình bày**\n\n$(-99)+144+(-1)$\n\n$=45+(-1)$\n\n$=44$",
+    "kiem": [
+      "((-99)+144+(-1))===44"
+    ],
+    "sach_dap_so": "44",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-19-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Dãy cộng, trừ nhiều số nguyên, làm từ trái sang phải.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $(-247)+30-217$",
+    "dap_an": "-434",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dãy cộng, trừ nhiều số: tính **lần lượt từ trái sang phải**, mỗi lần chỉ làm một phép tính với hai số; phép trừ đổi thành cộng với số đối.\n\n**Bước 1.** Nhận ra biểu thức có 3 số hạng nối nhau bởi phép cộng, phép trừ, không có phép tính nào khác.\n\n**Bước 2.** Tính hai số hạng đầu tiên $(-247)+30$ trước bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 3.** Lấy kết quả vừa có cộng (hoặc trừ) với số hạng kế tiếp; cứ thế tới số hạng cuối cùng.\n\n**Chú ý:** chú ý dấu của từng số hạng, nhất là khi trừ đi một số âm.\n\n**Phần 2. Trình bày**\n\n$(-247)+30-217$\n\n$=(-217)-217$\n\n$=-434$",
+    "kiem": [
+      "((-247)+30-217)===-434"
+    ],
+    "sach_dap_so": "-434",
+    "ghi_chu": "Đề in \"(30)\", viết gọn thành 30."
+  },
+  {
+    "id": "B2-19-e",
+    "vai": "luyen",
+    "dang_bai": "NDB01300",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Dãy cộng, trừ nhiều số nguyên, làm từ trái sang phải.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $(-5)+4-35+26$",
+    "dap_an": "-10",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dãy cộng, trừ nhiều số: tính **lần lượt từ trái sang phải**, mỗi lần chỉ làm một phép tính với hai số; phép trừ đổi thành cộng với số đối.\n\n**Bước 1.** Nhận ra biểu thức có 4 số hạng nối nhau bởi phép cộng, phép trừ, không có phép tính nào khác.\n\n**Bước 2.** Tính hai số hạng đầu tiên $(-5)+4$ trước bằng quy tắc cộng, trừ hai số nguyên.\n\n**Bước 3.** Lấy kết quả vừa có cộng (hoặc trừ) với số hạng kế tiếp; cứ thế tới số hạng cuối cùng.\n\n**Chú ý:** chú ý dấu của từng số hạng, nhất là khi trừ đi một số âm.\n\n**Phần 2. Trình bày**\n\n$(-5)+4-35+26$\n\n$=(-1)-35+26$\n\n$=(-36)+26$\n\n$=-10$",
+    "kiem": [
+      "((-5)+4-35+26)===-10"
+    ],
+    "sach_dap_so": "-10",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-19-f",
+    "vai": "luyen",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính hợp lí tổng, hiệu bằng giao hoán, kết hợp, ghép số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thực hiện phép tính: $(-5)+(-4)+(-3)+(-2)+(-1)+0+1+2+3+4$",
+    "dap_an": "-5",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dùng tính chất **giao hoán** và **kết hợp** của phép cộng để nhóm các số thuận tiện: ghép các cặp số đối nhau $-4$ và $4$, $-3$ và $3$, $\\dots$\n\n**Bước 1.** Đổi các phép trừ thành phép cộng với số đối (nếu có) rồi quan sát kĩ các số hạng.\n\n**Bước 2.** Tìm các số hạng ghép được với nhau cho kết quả đẹp (hai số đối nhau, hoặc tổng tròn chục, tròn trăm).\n\n**Bước 3.** Dùng giao hoán, kết hợp để nhóm chúng lại, tính từng nhóm rồi cộng các kết quả.\n\n**Chú ý:** khi đổi phép trừ thành cộng, nhớ đổi dấu số đứng sau phép trừ.\n\n**Phần 2. Trình bày**\n\n$(-5)+(-4)+(-3)+(-2)+(-1)+0+1+2+3+4$\n\n$=(-5)+[(-4)+4]+[(-3)+3]+[(-2)+2]+[(-1)+1]+0$\n\n$=(-5)+0+0+0+0+0$\n\n$=-5$",
+    "kiem": [
+      "((-5)+(-4)+(-3)+(-2)+(-1)+0+1+2+3+4)===-5"
+    ],
+    "sach_dap_so": "-5",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-20-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01296",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính tổng các số nguyên thoả bất đẳng thức, ghép cặp số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng tất cả các số nguyên $x$ thoả mãn: $-8<x<0$",
+    "dap_an": "-28",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** liệt kê các số nguyên thoả điều kiện, rồi **ghép các cặp số đối nhau** (mỗi cặp có tổng bằng $0$) để chỉ còn lại ít số phải cộng.\n\n**Bước 1.** Đọc điều kiện $-8<x<0$ để biết số nhỏ nhất và số lớn nhất của $x$ (dấu $<$ không lấy đầu mút, dấu $\\le$ lấy đầu mút).\n\n**Bước 2.** Liệt kê tất cả các số nguyên $x$ từ số nhỏ nhất đến số lớn nhất.\n\n**Bước 3.** Tìm các cặp số đối nhau trong danh sách (như $(-1)$ và $1$), mỗi cặp có tổng bằng $0$.\n\n**Bước 4.** Cộng các số không có số đối còn lại để ra tổng.\n\n**Chú ý:** đừng bỏ sót hoặc thêm thừa đầu mút khi đề dùng dấu $<$ hay $\\le$.\n\n**Phần 2. Trình bày**\n\nCác số nguyên $x$ thoả mãn $-8<x<0$ là $-7;-6;-5;-4;-3;-2;-1$.\n\nGhép số đầu với số cuối của dãy $-7;-6;\\dots;-2;-1$: $(-7)+(-1)=-8$, $(-6)+(-2)=-8$, $\\dots$; mỗi cặp có tổng $-8$ và có $3$ cặp như vậy.\n\n$-(8.3)=-24$\n\nCòn số ở giữa là $-4$.\n\n$S=(-24)+(-4)=-28$\n\nVậy tổng các số nguyên $x$ thoả mãn $-8<x<0$ là $-28$.",
+    "kiem": [
+      "(()=>{let s=0;for(let x=-300;x<=300;x++){if(-8<x&&x<0)s+=x}return s===-28})()"
+    ],
+    "sach_dap_so": "-28",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-20-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01296",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính tổng các số nguyên thoả bất đẳng thức, ghép cặp số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng tất cả các số nguyên $x$ thoả mãn: $-100<x<99$",
+    "dap_an": "-99",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** liệt kê các số nguyên thoả điều kiện, rồi **ghép các cặp số đối nhau** (mỗi cặp có tổng bằng $0$) để chỉ còn lại ít số phải cộng.\n\n**Bước 1.** Đọc điều kiện $-100<x<99$ để biết số nhỏ nhất và số lớn nhất của $x$ (dấu $<$ không lấy đầu mút, dấu $\\le$ lấy đầu mút).\n\n**Bước 2.** Liệt kê tất cả các số nguyên $x$ từ số nhỏ nhất đến số lớn nhất.\n\n**Bước 3.** Tìm các cặp số đối nhau trong danh sách (như $(-1)$ và $1$), mỗi cặp có tổng bằng $0$.\n\n**Bước 4.** Cộng các số không có số đối còn lại để ra tổng.\n\n**Chú ý:** đừng bỏ sót hoặc thêm thừa đầu mút khi đề dùng dấu $<$ hay $\\le$.\n\n**Phần 2. Trình bày**\n\nCác số nguyên $x$ thoả mãn $-100<x<99$ là $-99;-98;-97;\\dots;97;98$.\n\nHai số đối nhau có tổng bằng $0$, nên các cặp $(-1)+1$, $(-2)+2$, $\\dots$, $(-98)+98$ đều bằng $0$ (số $0$ cộng vào cũng không làm tổng thay đổi). Chỉ còn lại các số $-99$.\n\n$S=0+(-99)=-99$\n\nVậy tổng các số nguyên $x$ thoả mãn $-100<x<99$ là $-99$.",
+    "kiem": [
+      "(()=>{let s=0;for(let x=-300;x<=300;x++){if(-100<x&&x<99)s+=x}return s===-99})()"
+    ],
+    "sach_dap_so": "-100",
+    "ghi_chu": "LỆCH SÁCH — sách ghi -100 nhưng các số nguyên thoả -100<x<99 là -99..98, các cặp -98..98 triệt tiêu, còn lại -99 (đã kiểm bằng vét cạn)."
+  },
+  {
+    "id": "B2-20-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01296",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính tổng các số nguyên thoả bất đẳng thức, ghép cặp số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng tất cả các số nguyên $x$ thoả mãn: $-5<x\\le 4$",
+    "dap_an": "0",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** liệt kê các số nguyên thoả điều kiện, rồi **ghép các cặp số đối nhau** (mỗi cặp có tổng bằng $0$) để chỉ còn lại ít số phải cộng.\n\n**Bước 1.** Đọc điều kiện $-5<x\\le 4$ để biết số nhỏ nhất và số lớn nhất của $x$ (dấu $<$ không lấy đầu mút, dấu $\\le$ lấy đầu mút).\n\n**Bước 2.** Liệt kê tất cả các số nguyên $x$ từ số nhỏ nhất đến số lớn nhất.\n\n**Bước 3.** Tìm các cặp số đối nhau trong danh sách (như $(-1)$ và $1$), mỗi cặp có tổng bằng $0$.\n\n**Bước 4.** Cộng các số không có số đối còn lại để ra tổng.\n\n**Chú ý:** đừng bỏ sót hoặc thêm thừa đầu mút khi đề dùng dấu $<$ hay $\\le$.\n\n**Phần 2. Trình bày**\n\nCác số nguyên $x$ thoả mãn $-5<x\\le 4$ là $-4;-3;-2;-1;0;1;2;3;4$.\n\nHai số đối nhau có tổng bằng $0$, nên các cặp $(-1)+1$, $(-2)+2$, $\\dots$, $(-4)+4$ đều bằng $0$ (số $0$ cộng vào cũng không làm tổng thay đổi). Không còn số nào khác.\n\nVậy tổng các số nguyên $x$ thoả mãn $-5<x\\le 4$ là $0$.",
+    "kiem": [
+      "(()=>{let s=0;for(let x=-300;x<=300;x++){if(-5<x&&x<=4)s+=x}return s===0})()"
+    ],
+    "sach_dap_so": "-5",
+    "ghi_chu": "LỆCH SÁCH — sách ghi -5 nhưng các số nguyên thoả -5<x<=4 là -4..4, đối nhau từng cặp nên tổng 0 (đã kiểm bằng vét cạn); -5 là đáp số của -5<=x<5."
+  },
+  {
+    "id": "B2-20-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01296",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính tổng các số nguyên thoả bất đẳng thức, ghép cặp số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng tất cả các số nguyên $x$ thoả mãn: $-2\\le x<5$",
+    "dap_an": "7",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** liệt kê các số nguyên thoả điều kiện, rồi **ghép các cặp số đối nhau** (mỗi cặp có tổng bằng $0$) để chỉ còn lại ít số phải cộng.\n\n**Bước 1.** Đọc điều kiện $-2\\le x<5$ để biết số nhỏ nhất và số lớn nhất của $x$ (dấu $<$ không lấy đầu mút, dấu $\\le$ lấy đầu mút).\n\n**Bước 2.** Liệt kê tất cả các số nguyên $x$ từ số nhỏ nhất đến số lớn nhất.\n\n**Bước 3.** Tìm các cặp số đối nhau trong danh sách (như $(-1)$ và $1$), mỗi cặp có tổng bằng $0$.\n\n**Bước 4.** Cộng các số không có số đối còn lại để ra tổng.\n\n**Chú ý:** đừng bỏ sót hoặc thêm thừa đầu mút khi đề dùng dấu $<$ hay $\\le$.\n\n**Phần 2. Trình bày**\n\nCác số nguyên $x$ thoả mãn $-2\\le x<5$ là $-2;-1;0;1;2;3;4$.\n\nHai số đối nhau có tổng bằng $0$, nên các cặp $(-1)+1$, $(-2)+2$ đều bằng $0$ (số $0$ cộng vào cũng không làm tổng thay đổi). Chỉ còn lại các số $3;4$.\n\n$S=3+4$\n\n$=7$\n\nVậy tổng các số nguyên $x$ thoả mãn $-2\\le x<5$ là $7$.",
+    "kiem": [
+      "(()=>{let s=0;for(let x=-300;x<=300;x++){if(-2<=x&&x<5)s+=x}return s===7})()"
+    ],
+    "sach_dap_so": "7",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-20-e",
+    "vai": "luyen",
+    "dang_bai": "NDB01296",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính tổng các số nguyên thoả bất đẳng thức, ghép cặp số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng tất cả các số nguyên $x$ thoả mãn: $-10<x<5$",
+    "dap_an": "-35",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** liệt kê các số nguyên thoả điều kiện, rồi **ghép các cặp số đối nhau** (mỗi cặp có tổng bằng $0$) để chỉ còn lại ít số phải cộng.\n\n**Bước 1.** Đọc điều kiện $-10<x<5$ để biết số nhỏ nhất và số lớn nhất của $x$ (dấu $<$ không lấy đầu mút, dấu $\\le$ lấy đầu mút).\n\n**Bước 2.** Liệt kê tất cả các số nguyên $x$ từ số nhỏ nhất đến số lớn nhất.\n\n**Bước 3.** Tìm các cặp số đối nhau trong danh sách (như $(-1)$ và $1$), mỗi cặp có tổng bằng $0$.\n\n**Bước 4.** Cộng các số không có số đối còn lại để ra tổng.\n\n**Chú ý:** đừng bỏ sót hoặc thêm thừa đầu mút khi đề dùng dấu $<$ hay $\\le$.\n\n**Phần 2. Trình bày**\n\nCác số nguyên $x$ thoả mãn $-10<x<5$ là $-9;-8;-7;\\dots;3;4$.\n\nHai số đối nhau có tổng bằng $0$, nên các cặp $(-1)+1$, $(-2)+2$, $\\dots$, $(-4)+4$ đều bằng $0$ (số $0$ cộng vào cũng không làm tổng thay đổi). Chỉ còn lại các số $-9;-8;-7;-6;-5$.\n\n$S=(-9)+(-8)+(-7)+(-6)+(-5)$\n\n$=-(9+8+7+6+5)$\n\n$=-35$\n\nVậy tổng các số nguyên $x$ thoả mãn $-10<x<5$ là $-35$.",
+    "kiem": [
+      "(()=>{let s=0;for(let x=-300;x<=300;x++){if(-10<x&&x<5)s+=x}return s===-35})()"
+    ],
+    "sach_dap_so": "-35",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-20-f",
+    "vai": "luyen",
+    "dang_bai": "NDB01296",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính tổng các số nguyên thoả bất đẳng thức, ghép cặp số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng tất cả các số nguyên $x$ thoả mãn: $-10\\le x\\le 10$",
+    "dap_an": "0",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** liệt kê các số nguyên thoả điều kiện, rồi **ghép các cặp số đối nhau** (mỗi cặp có tổng bằng $0$) để chỉ còn lại ít số phải cộng.\n\n**Bước 1.** Đọc điều kiện $-10\\le x\\le 10$ để biết số nhỏ nhất và số lớn nhất của $x$ (dấu $<$ không lấy đầu mút, dấu $\\le$ lấy đầu mút).\n\n**Bước 2.** Liệt kê tất cả các số nguyên $x$ từ số nhỏ nhất đến số lớn nhất.\n\n**Bước 3.** Tìm các cặp số đối nhau trong danh sách (như $(-1)$ và $1$), mỗi cặp có tổng bằng $0$.\n\n**Bước 4.** Cộng các số không có số đối còn lại để ra tổng.\n\n**Chú ý:** đừng bỏ sót hoặc thêm thừa đầu mút khi đề dùng dấu $<$ hay $\\le$.\n\n**Phần 2. Trình bày**\n\nCác số nguyên $x$ thoả mãn $-10\\le x\\le 10$ là $-10;-9;-8;\\dots;9;10$.\n\nHai số đối nhau có tổng bằng $0$, nên các cặp $(-1)+1$, $(-2)+2$, $\\dots$, $(-10)+10$ đều bằng $0$ (số $0$ cộng vào cũng không làm tổng thay đổi). Không còn số nào khác.\n\nVậy tổng các số nguyên $x$ thoả mãn $-10\\le x\\le 10$ là $0$.",
+    "kiem": [
+      "(()=>{let s=0;for(let x=-300;x<=300;x++){if(-10<=x&&x<=10)s+=x}return s===0})()"
+    ],
+    "sach_dap_so": "0",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-21-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Thay giá trị cho trước của biến rồi tính cộng, trừ số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị của biểu thức $x+x+75$ với $x=-15$.",
+    "dap_an": "45",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** thay giá trị của biến vào biểu thức (số âm đặt trong ngoặc) rồi tính theo quy tắc cộng, trừ số nguyên.\n\n**Bước 1.** Thay $x$ bằng $-15$ vào biểu thức, nhớ đặt số âm trong dấu ngoặc.\n\n**Bước 2.** Tính lần lượt từ trái sang phải, mỗi lần một phép tính.\n\n**Bước 3.** Mỗi phép tính áp dụng quy tắc cộng hoặc trừ hai số nguyên; ghi kết quả cuối cùng.\n\n**Phần 2. Trình bày**\n\nVới $x=-15$, ta có:\n\n$(-15)+(-15)+75$\n\n$=(-30)+75$\n\n$=45$",
+    "kiem": [
+      "(x=>x+x+75)(-15)===45",
+      "((-15)+(-15)+75)===45"
+    ],
+    "sach_dap_so": "40",
+    "ghi_chu": "LỆCH SÁCH — sách ghi (-15)+(-15)+75 = 40, nhưng (-15)+(-15) = -30 và -30+75 = 45 (đã kiểm bằng máy)."
+  },
+  {
+    "id": "B2-21-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01311",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Thay giá trị cho trước của biến rồi tính cộng, trừ số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giá trị của biểu thức $y+y+y+(-15)$ với $y=15$.",
+    "dap_an": "30",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** thay giá trị của biến vào biểu thức (số âm đặt trong ngoặc) rồi tính theo quy tắc cộng, trừ số nguyên.\n\n**Bước 1.** Thay $y$ bằng $15$ vào biểu thức, nhớ đặt số âm trong dấu ngoặc.\n\n**Bước 2.** Tính lần lượt từ trái sang phải, mỗi lần một phép tính.\n\n**Bước 3.** Mỗi phép tính áp dụng quy tắc cộng hoặc trừ hai số nguyên; ghi kết quả cuối cùng.\n\n**Phần 2. Trình bày**\n\nVới $y=15$, ta có:\n\n$15+15+15+(-15)$\n\n$=30+15+(-15)$\n\n$=45+(-15)$\n\n$=30$",
+    "kiem": [
+      "(y=>y+y+y+(-15))(15)===30",
+      "(15+15+15+(-15))===30"
+    ],
+    "sach_dap_so": "30",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-22",
+    "vai": "luyen",
+    "dang_bai": null,
+    "dang_bai_chac": null,
+    "dang_bai_ly_do": "Bản đồ thiếu dạng: bảng điền x, y, x+y, x-y (gần NDB01299 và NDB01315).",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Điền số thích hợp thay thế các dấu \"?\" trong bảng sau: $\\begin{array}{ccccccc}\\hline x & -12 & 21 & 0 & -521 & 12 & ? \\\\ \\hline y & 5 & -54 & -100 & 0 & ? & 100 \\\\ \\hline x+y & ? & ? & ? & ? & -49 & ? \\\\ \\hline x-y & ? & ? & ? & ? & ? & -56 \\\\ \\hline \\end{array}$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** mỗi ô trống tính từ các ô đã biết cùng cột: cộng, trừ hai số nguyên, hoặc **tìm thành phần chưa biết** của phép cộng, phép trừ.\n\n**Bước 1.** Xét từng cột: cột nào đã biết cả $x$ và $y$ thì tính ngay $x+y$ và $x-y$.\n\n**Bước 2.** Cột thiếu $y$ mà cho $x+y$: $y$ là số hạng chưa biết, bằng tổng trừ số hạng đã biết.\n\n**Bước 3.** Cột thiếu $x$ mà cho $x-y$: $x$ là số bị trừ, bằng hiệu cộng số trừ.\n\n**Bước 4.** Khi đã đủ $x$ và $y$, tính nốt ô còn trống của cột đó.\n\n**Phần 2. Trình bày**\n\nCột 1: $x+y=(-12)+5=-7$; $x-y=(-12)-5=-17$.\n\nCột 2: $x+y=21+(-54)=-33$; $x-y=21-(-54)=75$.\n\nCột 3: $x+y=0+(-100)=-100$; $x-y=0-(-100)=100$.\n\nCột 4: $x+y=(-521)+0=-521$; $x-y=(-521)-0=-521$.\n\nCột 5: $x+y=-49$ nên $y=(-49)-12=-61$. Khi đó $x-y=12-(-61)=73$.\n\nCột 6: $x-y=-56$ nên $x=(-56)+100=44$. Khi đó $x+y=44+100=144$.\n\nVậy bảng sau khi điền đủ là:\n\n$\\begin{array}{ccccccc}\\hline x & -12 & 21 & 0 & -521 & 12 & 44 \\\\ \\hline y & 5 & -54 & -100 & 0 & -61 & 100 \\\\ \\hline x+y & -7 & -33 & -100 & -521 & -49 & 144 \\\\ \\hline x-y & -17 & 75 & 100 & -521 & 73 & -56 \\\\ \\hline \\end{array}$",
+    "kiem": [
+      "(()=>{const x=[-12,21,0,-521,12,44],y=[5,-54,-100,0,-61,100];const s=x.map((v,i)=>v+y[i]),d=x.map((v,i)=>v-y[i]);return s[4]===-49&&d[5]===-56&&x[0]===-12&&x[1]===21&&x[2]===0&&x[3]===-521&&x[4]===12&&y[0]===5&&y[1]===-54&&y[2]===-100&&y[3]===0&&y[5]===100&&s.join()==='-7,-33,-100,-521,-49,144'&&d.join()==='-17,75,100,-521,73,-56'})()"
+    ],
+    "sach_dap_so": "x: -12, 21, 0, -521, 12, 44; y: 5, -54, -100, 0, -61, 100; x+y: -7, -33, -100, -521, -49, 144; x-y: -17, 75, 100, -521, 73, -56",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-23-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính hợp lí tổng, hiệu bằng giao hoán, kết hợp, ghép số đối.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính hợp lí: $(-101)+(-500)+(-399)$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dùng tính chất **giao hoán** và **kết hợp** của phép cộng để nhóm các số thuận tiện: ghép $-101$ với $-399$ để ra số tròn trăm.\n\n**Bước 1.** Đổi các phép trừ thành phép cộng với số đối (nếu có) rồi quan sát kĩ các số hạng.\n\n**Bước 2.** Tìm các số hạng ghép được với nhau cho kết quả đẹp (hai số đối nhau, hoặc tổng tròn chục, tròn trăm).\n\n**Bước 3.** Dùng giao hoán, kết hợp để nhóm chúng lại, tính từng nhóm rồi cộng các kết quả.\n\n**Chú ý:** khi đổi phép trừ thành cộng, nhớ đổi dấu số đứng sau phép trừ.\n\n**Phần 2. Trình bày**\n\n$(-101)+(-500)+(-399)$\n\n$=[(-101)+(-399)]+(-500)$\n\n$=(-500)+(-500)$\n\n$=-1000$",
+    "kiem": [
+      "((-101)+(-500)+(-399))===-1000"
+    ],
+    "sach_dap_so": "-1000",
+    "ghi_chu": "Đáp số -1000 dài hơn 4 ký tự nên để tự luận."
+  },
+  {
+    "id": "B2-23-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính hợp lí tổng, hiệu bằng giao hoán, kết hợp, ghép số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí: $(-540)+2020+(-460)+1000$",
+    "dap_an": "2020",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dùng tính chất **giao hoán** và **kết hợp** của phép cộng để nhóm các số thuận tiện: ghép $-540$ với $-460$ và ghép $2020$ với $1000$.\n\n**Bước 1.** Đổi các phép trừ thành phép cộng với số đối (nếu có) rồi quan sát kĩ các số hạng.\n\n**Bước 2.** Tìm các số hạng ghép được với nhau cho kết quả đẹp (hai số đối nhau, hoặc tổng tròn chục, tròn trăm).\n\n**Bước 3.** Dùng giao hoán, kết hợp để nhóm chúng lại, tính từng nhóm rồi cộng các kết quả.\n\n**Chú ý:** khi đổi phép trừ thành cộng, nhớ đổi dấu số đứng sau phép trừ.\n\n**Phần 2. Trình bày**\n\n$(-540)+2020+(-460)+1000$\n\n$=[(-540)+(-460)]+(2020+1000)$\n\n$=(-1000)+3020$\n\n$=2020$",
+    "kiem": [
+      "((-540)+2020+(-460)+1000)===2020"
+    ],
+    "sach_dap_so": "2020",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-23-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính hợp lí tổng, hiệu bằng giao hoán, kết hợp, ghép số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí: $(-75)+232+75+(-32)$",
+    "dap_an": "200",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dùng tính chất **giao hoán** và **kết hợp** của phép cộng để nhóm các số thuận tiện: ghép $-75$ với $75$ và ghép $232$ với $-32$.\n\n**Bước 1.** Đổi các phép trừ thành phép cộng với số đối (nếu có) rồi quan sát kĩ các số hạng.\n\n**Bước 2.** Tìm các số hạng ghép được với nhau cho kết quả đẹp (hai số đối nhau, hoặc tổng tròn chục, tròn trăm).\n\n**Bước 3.** Dùng giao hoán, kết hợp để nhóm chúng lại, tính từng nhóm rồi cộng các kết quả.\n\n**Chú ý:** khi đổi phép trừ thành cộng, nhớ đổi dấu số đứng sau phép trừ.\n\n**Phần 2. Trình bày**\n\n$(-75)+232+75+(-32)$\n\n$=[(-75)+75]+[232+(-32)]$\n\n$=0+200$\n\n$=200$",
+    "kiem": [
+      "((-75)+232+75+(-32))===200"
+    ],
+    "sach_dap_so": "200",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-23-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính hợp lí tổng, hiệu bằng giao hoán, kết hợp, ghép số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí: $526-88+(-526)-12$",
+    "dap_an": "-100",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dùng tính chất **giao hoán** và **kết hợp** của phép cộng để nhóm các số thuận tiện: ghép $526$ với $-526$ và ghép $-88$ với $-12$.\n\n**Bước 1.** Đổi các phép trừ thành phép cộng với số đối (nếu có) rồi quan sát kĩ các số hạng.\n\n**Bước 2.** Tìm các số hạng ghép được với nhau cho kết quả đẹp (hai số đối nhau, hoặc tổng tròn chục, tròn trăm).\n\n**Bước 3.** Dùng giao hoán, kết hợp để nhóm chúng lại, tính từng nhóm rồi cộng các kết quả.\n\n**Chú ý:** khi đổi phép trừ thành cộng, nhớ đổi dấu số đứng sau phép trừ.\n\n**Phần 2. Trình bày**\n\n$526-88+(-526)-12$\n\n$=526+(-88)+(-526)+(-12)$\n\n$=[526+(-526)]+[(-88)+(-12)]$\n\n$=0+(-100)$\n\n$=-100$",
+    "kiem": [
+      "(526-88+(-526)-12)===-100"
+    ],
+    "sach_dap_so": "-100",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-23-e",
+    "vai": "luyen",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính hợp lí tổng, hiệu bằng giao hoán, kết hợp, ghép số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí: $217+43+(-217)+(-23)$",
+    "dap_an": "20",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dùng tính chất **giao hoán** và **kết hợp** của phép cộng để nhóm các số thuận tiện: ghép $217$ với $-217$ và ghép $43$ với $-23$.\n\n**Bước 1.** Đổi các phép trừ thành phép cộng với số đối (nếu có) rồi quan sát kĩ các số hạng.\n\n**Bước 2.** Tìm các số hạng ghép được với nhau cho kết quả đẹp (hai số đối nhau, hoặc tổng tròn chục, tròn trăm).\n\n**Bước 3.** Dùng giao hoán, kết hợp để nhóm chúng lại, tính từng nhóm rồi cộng các kết quả.\n\n**Chú ý:** khi đổi phép trừ thành cộng, nhớ đổi dấu số đứng sau phép trừ.\n\n**Phần 2. Trình bày**\n\n$217+43+(-217)+(-23)$\n\n$=[217+(-217)]+[43+(-23)]$\n\n$=0+20$\n\n$=20$",
+    "kiem": [
+      "(217+43+(-217)+(-23))===20"
+    ],
+    "sach_dap_so": "20",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-23-f",
+    "vai": "luyen",
+    "dang_bai": "NDB01306",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tính hợp lí tổng, hiệu bằng giao hoán, kết hợp, ghép số đối.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính hợp lí: $1+(-3)+5+(-7)+9+(-11)$",
+    "dap_an": "-6",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dùng tính chất **giao hoán** và **kết hợp** của phép cộng để nhóm các số thuận tiện: ghép hai số hạng liền nhau thành từng cặp.\n\n**Bước 1.** Đổi các phép trừ thành phép cộng với số đối (nếu có) rồi quan sát kĩ các số hạng.\n\n**Bước 2.** Tìm các số hạng ghép được với nhau cho kết quả đẹp (hai số đối nhau, hoặc tổng tròn chục, tròn trăm).\n\n**Bước 3.** Dùng giao hoán, kết hợp để nhóm chúng lại, tính từng nhóm rồi cộng các kết quả.\n\n**Chú ý:** khi đổi phép trừ thành cộng, nhớ đổi dấu số đứng sau phép trừ.\n\n**Phần 2. Trình bày**\n\n$1+(-3)+5+(-7)+9+(-11)$\n\n$=[1+(-3)]+[5+(-7)]+[9+(-11)]$\n\n$=(-2)+(-2)+(-2)$\n\n$=-6$",
+    "kiem": [
+      "(1+(-3)+5+(-7)+9+(-11))===-6"
+    ],
+    "sach_dap_so": "-6",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-24-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01330",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Ghép hai số hạng liên tiếp thành cặp có giá trị bằng nhau.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng: $A=1-2+3-4+5-6+\\dots+59-60$",
+    "dap_an": "-30",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** ghép các số hạng liên tiếp thành từng cặp: mỗi cặp cho cùng một kết quả, nên chỉ cần đếm số cặp.\n\n**Bước 1.** Đếm số số hạng: phần số tự nhiên của các số hạng chạy từ $1$ đến $60$, mỗi số một lần.\n\n**Bước 2.** Số số hạng là số chẵn, ghép hai số hạng liên tiếp thành một cặp; số cặp bằng số số hạng chia $2$.\n\n**Bước 3.** Tính giá trị của một cặp rồi cộng các cặp bằng nhau.\n\n**Phần 2. Trình bày**\n\nDãy có $60$ số hạng, ghép hai số liên tiếp thành $60:2=30$ cặp:\n\n$A=[1+(-2)]+[3+(-4)]+\\dots+[59+(-60)]$\n\n$=(-1)+(-1)+\\dots+(-1)$ (có $30$ số hạng)\n\n$=-30$",
+    "kiem": [
+      "(()=>{let s=0;for(let i=1;i<=60;i++)s+=(i%2?i:-i);return s===-30})()"
+    ],
+    "sach_dap_so": "-30",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-24-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01330",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Ghép hai số hạng liên tiếp thành cặp có giá trị bằng nhau.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng: $B=-2+4-6+8-\\dots-98+100$",
+    "dap_an": "50",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** ghép các số hạng liên tiếp thành từng cặp: mỗi cặp cho cùng một kết quả, nên chỉ cần đếm số cặp.\n\n**Bước 1.** Phần số tự nhiên của các số hạng là $2;4;6;\\dots;100$, hai số liền nhau hơn kém nhau $2$; đếm số số hạng bằng $(100-2):2+1$.\n\n**Bước 2.** Số số hạng là số chẵn nên ghép hai số hạng liên tiếp thành một cặp.\n\n**Bước 3.** Tính giá trị một cặp rồi cộng các cặp bằng nhau.\n\n**Phần 2. Trình bày**\n\nSố số hạng của dãy là $(100-2):2+1=50$. Ghép hai số liên tiếp thành $50:2=25$ cặp:\n\n$B=[(-2)+4]+[(-6)+8]+\\dots+[(-98)+100]$\n\n$=2+2+\\dots+2$ (có $25$ số hạng)\n\n$=2.25$\n\n$=50$",
+    "kiem": [
+      "(()=>{let s=0;for(let i=1;i<=50;i++)s+=(i%2?-2*i:2*i);return s===50})()"
+    ],
+    "sach_dap_so": "100",
+    "ghi_chu": "LỆCH SÁCH — sách ghi 100 (50 cặp) nhưng dãy chỉ có 50 số hạng nên 25 cặp, mỗi cặp bằng 2, tổng 50 (đã kiểm bằng vét cạn). Sách cũng gọi nhầm biểu thức là A."
+  },
+  {
+    "id": "B2-25",
+    "vai": "luyen",
+    "dang_bai": "NDB01313",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Nhiệt độ tăng, lập phép cộng số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Mùa đông, nhiệt độ buổi sáng ở Sa Pa là $-2\\ ^{\\circ}\\text{C}$, buổi trưa nhiệt độ tăng $15\\ ^{\\circ}\\text{C}$ so với buổi sáng. Hỏi nhiệt độ buổi trưa ở Sa Pa là bao nhiêu độ C?",
+    "dap_an": "13",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"tăng\" nghĩa là **cộng thêm**; nhiệt độ dưới $0\\ ^{\\circ}\\text{C}$ là số âm.\n\n**Bước 1.** Xác định nhiệt độ buổi sáng là số âm.\n\n**Bước 2.** Nhiệt độ tăng $15$ độ nên cộng thêm $15$ vào nhiệt độ buổi sáng.\n\n**Bước 3.** Thực hiện phép cộng hai số nguyên khác dấu.\n\n**Phần 2. Trình bày**\n\nNhiệt độ buổi trưa ở Sa Pa là:\n\n$(-2)+15=15-2=13$ (độ C)\n\nVậy nhiệt độ buổi trưa ở Sa Pa là $13\\ ^{\\circ}\\text{C}$.",
+    "kiem": [
+      "(-2)+15===13"
+    ],
+    "sach_dap_so": "13°C",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B2-26",
+    "vai": "luyen",
+    "dang_bai": "NDB01313",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Độ cao tăng giảm: lập phép cộng, trừ số nguyên.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Một chiếc tàu ngầm đang ở vị trí $-200$ m so với mực nước biển, tàu tiếp tục bơi lên phía trên $45$ m nữa. Hỏi lúc này tàu ngầm ở vị trí nào so với mực nước biển (đơn vị: mét)?",
+    "dap_an": "-155",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"bơi lên phía trên\" nghĩa là độ cao **tăng**, nên lập phép **cộng**; vị trí dưới mực nước biển là số âm.\n\n**Bước 1.** Xác định vị trí ban đầu của tàu ngầm: dưới mực nước biển nên là số âm.\n\n**Bước 2.** Bơi lên $45$ m nên vị trí tăng thêm $45$ m: viết thành phép cộng.\n\n**Bước 3.** Thực hiện phép cộng hai số nguyên khác dấu và ghi đơn vị mét.\n\n**Phần 2. Trình bày**\n\nVị trí mới của tàu ngầm là:\n\n$(-200)+45=-(200-45)=-155$ (m)\n\nVậy tàu ngầm ở vị trí $-155$ m so với mực nước biển.",
+    "kiem": [
+      "(-200)+45===-155"
+    ],
+    "sach_dap_so": "-155 m",
+    "ghi_chu": ""
+  }
+]

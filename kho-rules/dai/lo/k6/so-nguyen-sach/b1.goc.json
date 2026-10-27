@@ -1,0 +1,1333 @@
+[
+  {
+    "id": "B1-1A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01287",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Diễn đạt đại lượng thực tế bằng số nguyên âm / bằng lời",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Điền vào chỗ trống (....) trong câu sau: Kính của bạn Mai có số $+2$ dioptre là kính viễn thị, thì như vậy kính của Nam có số $-2$ dioptre là kính....",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số dương và số âm của cùng một đại lượng chỉ hai loại (hai chiều) ngược nhau.\n\n**Bước 1.** Đọc quy ước đề đã cho: số $+2$ dioptre ứng với kính viễn thị.\n\n**Bước 2.** Nhận ra hai số $+2$ và $-2$ chỉ khác nhau về dấu, nên hai chiếc kính thuộc hai loại đối lập nhau.\n\n**Bước 3.** Nhớ lại: kính hay gặp chỉ có hai loại là viễn thị và cận thị; loại đã có ở ví dụ thì loại kia dành cho số mang dấu ngược lại.\n\n**Phần 2. Trình bày**\n\nKính có số $+2$ dioptre là kính viễn thị.\n\nSố $-2$ dioptre mang dấu ngược lại nên là loại kính còn lại.\n\nVậy chỗ trống là: cận thị.",
+    "kiem": [
+      "(1>0)&&(-1<0)"
+    ],
+    "sach_dap_so": "cận thị",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-1A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01287",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Diễn đạt đại lượng thực tế bằng số nguyên âm / bằng lời",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Điền vào chỗ trống (....) trong câu sau: Tài khoản của mẹ nhận tin nhắn số tiền giao dịch là $+4000000$ đồng tức là mẹ có thêm 4000000 đồng, vậy nếu tin nhắn số tiền giao dịch là $-200000$ đồng thì có nghĩa là mẹ....",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dấu $+$ chỉ số tiền được thêm vào, dấu $-$ chỉ chiều ngược lại là số tiền bị lấy đi.\n\n**Bước 1.** Đọc ví dụ đề cho: giao dịch $+4000000$ đồng nghĩa là có thêm 4000000 đồng trong tài khoản.\n\n**Bước 2.** Giao dịch $-200000$ mang dấu ngược lại với dấu $+$, nên chỉ chiều ngược lại của việc \"có thêm\".\n\n**Bước 3.** Diễn đạt chiều ngược lại đó bằng lời, giữ nguyên số tiền 200000 đồng.\n\n**Phần 2. Trình bày**\n\nGiao dịch $+4000000$ đồng: mẹ có thêm 4000000 đồng.\n\nGiao dịch $-200000$ đồng: ngược lại với \"có thêm\", tức là mẹ bị trừ đi 200000 đồng.\n\nVậy chỗ trống là: bị trừ đi 200000 đồng.",
+    "kiem": [
+      "(4000000+(-200000))<4000000"
+    ],
+    "sach_dap_so": "mẹ bị trừ đi 200000 đồng",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-1B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01287",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Diễn đạt đại lượng thực tế bằng số nguyên âm / bằng lời",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Điền vào chỗ trống (....) trong câu sau: Kính của bạn Hoa có số $+1$ dioptre là kính viễn thị, thì như vậy kính của bạn Na có số $-1$ dioptre là kính....",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số dương và số âm của cùng một đại lượng chỉ hai loại (hai chiều) ngược nhau.\n\n**Bước 1.** Đọc quy ước đề đã cho: số $+1$ dioptre ứng với kính viễn thị.\n\n**Bước 2.** Nhận ra hai số $+1$ và $-1$ chỉ khác nhau về dấu, nên hai chiếc kính thuộc hai loại đối lập nhau.\n\n**Bước 3.** Nhớ lại: kính hay gặp chỉ có hai loại là viễn thị và cận thị; loại đã có ở ví dụ thì loại kia dành cho số mang dấu ngược lại.\n\n**Phần 2. Trình bày**\n\nKính có số $+1$ dioptre là kính viễn thị.\n\nSố $-1$ dioptre mang dấu ngược lại nên là loại kính còn lại.\n\nVậy chỗ trống là: cận thị.",
+    "kiem": [
+      "(1>0)&&(-1<0)"
+    ],
+    "sach_dap_so": "cận thị",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-1B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01287",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Diễn đạt đại lượng thực tế bằng số nguyên âm / bằng lời",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Điền vào chỗ trống (....) trong câu sau: Tài khoản của bố nhận tin nhắn số tiền giao dịch là $+2000000$ đồng tức là bố có thêm 2000000 đồng, vậy nếu tin nhắn số tiền giao dịch là $-300000$ đồng thì có nghĩa là bố....",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dấu $+$ chỉ số tiền được thêm vào, dấu $-$ chỉ chiều ngược lại là số tiền bị lấy đi.\n\n**Bước 1.** Đọc ví dụ đề cho: giao dịch $+2000000$ đồng nghĩa là có thêm 2000000 đồng trong tài khoản.\n\n**Bước 2.** Giao dịch $-300000$ mang dấu ngược lại với dấu $+$, nên chỉ chiều ngược lại của việc \"có thêm\".\n\n**Bước 3.** Diễn đạt chiều ngược lại đó bằng lời, giữ nguyên số tiền 300000 đồng.\n\n**Phần 2. Trình bày**\n\nGiao dịch $+2000000$ đồng: bố có thêm 2000000 đồng.\n\nGiao dịch $-300000$ đồng: ngược lại với \"có thêm\", tức là bố bị trừ đi 300000 đồng.\n\nVậy chỗ trống là: bị trừ đi 300000 đồng.",
+    "kiem": [
+      "(2000000+(-300000))<2000000"
+    ],
+    "sach_dap_so": "bố bị trừ đi 300000 đồng",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-2A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01287",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Diễn đạt đại lượng thực tế bằng số nguyên âm / bằng lời",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Nếu $+20^{\\circ}\\text{C}$ là biểu diễn 20 độ trên $0^{\\circ}\\text{C}$ thì $-20^{\\circ}\\text{C}$ biểu diễn cho số liệu nào?",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số âm biểu thị chiều ngược với số dương: trên $0^{\\circ}\\text{C}$ là dương, dưới $0^{\\circ}\\text{C}$ là âm.\n\n**Bước 1.** Đọc quy ước: dấu $+$ ứng với nhiệt độ trên $0^{\\circ}\\text{C}$.\n\n**Bước 2.** Nhận ra $-20^{\\circ}\\text{C}$ có dấu ngược lại, nên chỉ chiều ngược lại với \"trên\".\n\n**Bước 3.** Giữ nguyên số 20 rồi nói lại bằng lời với chiều ngược lại.\n\n**Phần 2. Trình bày**\n\n$+20^{\\circ}\\text{C}$ là $20^{\\circ}\\text{C}$ trên $0^{\\circ}\\text{C}$.\n\nDo đó $-20^{\\circ}\\text{C}$ là $20^{\\circ}\\text{C}$ dưới $0^{\\circ}\\text{C}$.\n\nVậy $-20^{\\circ}\\text{C}$ biểu diễn 20 độ dưới $0^{\\circ}\\text{C}$.",
+    "kiem": [
+      "(-20<0)&&(20>0)"
+    ],
+    "sach_dap_so": "20°C dưới 0°C",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-2A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01287",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Diễn đạt đại lượng thực tế bằng số nguyên âm / bằng lời",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Chiều cao trung bình của cao nguyên đá Đồng Văn khoảng 1400 m, nghĩa là cao nguyên đá Đồng Văn cao hơn mực nước biển 1400 m. Thềm lục địa Việt Nam cao trung bình $65\\text{ m}$ dưới mực nước biển, nghĩa là độ cao của thềm lục địa Việt Nam là bao nhiêu (viết bằng số nguyên)?",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** lấy mực nước biển làm mốc $0$: cao hơn mốc là số dương, thấp hơn mốc là số âm.\n\n**Bước 1.** Nhận ra mực nước biển là mốc $0$; ví dụ cao nguyên Đồng Văn cao hơn mốc nên độ cao là số dương.\n\n**Bước 2.** Thềm lục địa \"dưới mực nước biển\" tức là thấp hơn mốc, nên độ cao phải là số âm.\n\n**Bước 3.** Giữ nguyên số 65 và thêm dấu cho phù hợp.\n\n**Phần 2. Trình bày**\n\nCao nguyên đá Đồng Văn cao hơn mực nước biển 1400 m, ứng với độ cao $+1400\\text{ m}$.\n\nThềm lục địa Việt Nam thấp hơn mực nước biển 65 m, ứng với độ cao $-65\\text{ m}$.\n\nVậy thềm lục địa Việt Nam cao $-65\\text{ m}$ (so với mực nước biển).",
+    "kiem": [
+      "(0-65)===-65"
+    ],
+    "sach_dap_so": "thềm lục địa Việt Nam cao -65 m",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-2B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01287",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Diễn đạt đại lượng thực tế bằng số nguyên âm / bằng lời",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Nhiệt độ thấp nhất đo được ở Beclin (Đức) là $-30^{\\circ}\\text{C}$. Điều đó nghĩa là như thế nào?",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số âm biểu thị nhiệt độ dưới $0^{\\circ}\\text{C}$.\n\n**Bước 1.** Nhớ quy ước: nhiệt độ trên $0^{\\circ}\\text{C}$ ghi bằng số dương, nhiệt độ dưới $0^{\\circ}\\text{C}$ ghi bằng số âm.\n\n**Bước 2.** Nhận ra $-30^{\\circ}\\text{C}$ mang dấu âm nên là nhiệt độ ở phía dưới mốc $0^{\\circ}\\text{C}$.\n\n**Bước 3.** Giữ nguyên số 30 rồi nói lại bằng lời.\n\n**Phần 2. Trình bày**\n\nDấu $-$ cho biết nhiệt độ thấp hơn $0^{\\circ}\\text{C}$.\n\nDo đó $-30^{\\circ}\\text{C}$ là $30^{\\circ}\\text{C}$ dưới $0^{\\circ}\\text{C}$.\n\nVậy nhiệt độ thấp nhất ở Beclin là $30^{\\circ}\\text{C}$ dưới $0^{\\circ}\\text{C}$.",
+    "kiem": [
+      "(-30<0)"
+    ],
+    "sach_dap_so": "30°C dưới 0°C",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-2B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01287",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Diễn đạt đại lượng thực tế bằng số nguyên âm / bằng lời",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Một người thợ lặn có thể lặn ở độ sâu 120 m dưới mực nước biển. Hãy dùng một số nguyên để diễn đạt lại thông tin này (độ cao so với mực nước biển, đơn vị mét).",
+    "dap_an": "-120",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** lấy mực nước biển làm mốc $0$: dưới mực nước biển thì độ cao là số âm.\n\n**Bước 1.** Nhận ra mốc $0$ là mực nước biển.\n\n**Bước 2.** Người thợ lặn ở phía dưới mốc, nên độ cao là số âm.\n\n**Bước 3.** Giữ nguyên số 120 và thêm dấu $-$.\n\n**Phần 2. Trình bày**\n\nĐộ sâu 120 m dưới mực nước biển ứng với độ cao $-120\\text{ m}$.\n\nVậy thông tin trên viết bằng số nguyên là $-120$ (m).",
+    "kiem": [
+      "(0-120)===-120"
+    ],
+    "sach_dap_so": "-120 m",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-3A",
+    "vai": "giang",
+    "dang_bai": "NDB01294",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Ý a trục số (01290), ý b liệt kê số nguyên (01294); dạng sau thắng",
+    "loai_cau": "tu_luan",
+    "noi_dung": "a) Biểu diễn các số $-3;-2;2;3$ trên trục số.\nb) Ghi các số nguyên âm nằm giữa số $-4$ và $-1$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số nguyên âm nằm bên trái gốc $O$, số nguyên dương nằm bên phải gốc $O$, hai số đối nhau cách đều $O$.\n\n**Bước 1.** Vẽ một đường thẳng, chọn điểm $O$ làm gốc (số $0$), chọn độ dài một đơn vị rồi đánh dấu các vạch cách đều.\n\n**Bước 2.** Ý a: đặt số dương về bên phải $O$, số âm về bên trái $O$; mỗi số cách $O$ đúng số đơn vị bằng phần số của nó (bỏ dấu).\n\n**Bước 3.** Ý b: các số cần tìm phải lớn hơn $-4$ và nhỏ hơn $-1$, lại phải là số nguyên âm; đọc các vạch nằm giữa hai điểm này trên trục số.\n\n**Chú ý:** đề nói \"nằm giữa\" nên không lấy hai đầu mút $-4$ và $-1$.\n\n**Phần 2. Trình bày**\n\na) Trên trục số, các điểm $-3$, $-2$ nằm bên trái $O$ (cách $O$ lần lượt 3, 2 đơn vị); các điểm $2$, $3$ nằm bên phải $O$ (cách $O$ lần lượt 2, 3 đơn vị).\n\nb) Các số nguyên âm nằm giữa $-4$ và $-1$ là $-3;-2$.\n\nVậy các số nguyên âm cần tìm là $-3;-2$.",
+    "kiem": [
+      "[...Array(41).keys()].map(i=>i-20).filter(x=>x<0&&x>-4&&x<-1).join(';')==='-3;-2'",
+      "[-3,-2,2,3].every(x=>x!==0)"
+    ],
+    "sach_dap_so": "a) HS tự vẽ trục số; b) -3;-2",
+    "ghi_chu": "Ý a cần hình trục số (sách: image95.jpeg) — chưa có hình giải."
+  },
+  {
+    "id": "B1-3B",
+    "vai": "luyen",
+    "dang_bai": "NDB01294",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Ý a trục số (01290), ý b liệt kê số nguyên (01294); dạng sau thắng",
+    "loai_cau": "tu_luan",
+    "noi_dung": "a) Biểu diễn các số $-5;5;-1;1;4;3$ trên trục số.\nb) Ghi các số nguyên âm nằm giữa số $-5$ và $0$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số nguyên âm nằm bên trái gốc $O$, số nguyên dương nằm bên phải gốc $O$, hai số đối nhau cách đều $O$.\n\n**Bước 1.** Vẽ một đường thẳng, chọn điểm $O$ làm gốc (số $0$), chọn độ dài một đơn vị rồi đánh dấu các vạch cách đều.\n\n**Bước 2.** Ý a: đặt số dương về bên phải $O$, số âm về bên trái $O$; mỗi số cách $O$ đúng số đơn vị bằng phần số của nó (bỏ dấu).\n\n**Bước 3.** Ý b: các số cần tìm phải lớn hơn $-5$ và nhỏ hơn $0$, lại phải là số nguyên âm; đọc các vạch nằm giữa hai điểm này trên trục số.\n\n**Chú ý:** đề nói \"nằm giữa\" nên không lấy hai đầu mút $-5$ và $0$.\n\n**Phần 2. Trình bày**\n\na) Trên trục số, các điểm $-5$, $-1$ nằm bên trái $O$ (cách $O$ lần lượt 5, 1 đơn vị); các điểm $5$, $1$, $4$, $3$ nằm bên phải $O$ (cách $O$ lần lượt 5, 1, 4, 3 đơn vị).\n\nb) Các số nguyên âm nằm giữa $-5$ và $0$ là $-4;-3;-2;-1$.\n\nVậy các số nguyên âm cần tìm là $-4;-3;-2;-1$.",
+    "kiem": [
+      "[...Array(41).keys()].map(i=>i-20).filter(x=>x<0&&x>-5&&x<0).join(';')==='-4;-3;-2;-1'",
+      "[-5,5,-1,1,4,3].every(x=>x!==0)"
+    ],
+    "sach_dap_so": "a) HS tự vẽ trục số; b) -4;-3;-2;-1",
+    "ghi_chu": "Ý a cần hình trục số (sách: HS tự vẽ) — chưa có hình giải."
+  },
+  {
+    "id": "B1-4A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01290",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Đọc khoảng cách từ điểm tới gốc O trên trục số",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Trên trục số điểm $+3$ và điểm $-3$ đều cách điểm $O$ một khoảng 3 đơn vị. Điền vào chỗ chấm: Điểm $+5$ và điểm $-5$ đều cách $O$ một khoảng .... đơn vị.",
+    "dap_an": "5",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai điểm biểu diễn hai số đối nhau ($m$ và $-m$) nằm hai bên gốc $O$ và cách $O$ cùng một khoảng bằng $m$.\n\n**Bước 1.** Quan sát ví dụ đề cho: cặp $+3$ và $-3$ cách $O$ đúng 3 đơn vị, tức là bằng phần số của hai số.\n\n**Bước 2.** Nhận ra $+5$ và $-5$ cũng là một cặp số có cùng phần số, chỉ khác dấu.\n\n**Bước 3.** Áp dụng đúng nhận xét ở ví dụ cho cặp số này.\n\n**Phần 2. Trình bày**\n\nHai điểm $+5$ và $-5$ nằm hai bên $O$ và có cùng phần số là 5.\n\nVậy điểm $+5$ và điểm $-5$ đều cách $O$ một khoảng 5 đơn vị.",
+    "kiem": [
+      "Math.abs(5)===Math.abs(-5)&&Math.abs(5)===5"
+    ],
+    "sach_dap_so": "5 đơn vị",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-4A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01290",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Đọc khoảng cách từ điểm tới gốc O trên trục số",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Trên trục số điểm $+3$ và điểm $-3$ đều cách điểm $O$ một khoảng 3 đơn vị. Điền vào chỗ chấm: Điểm $+2$ và điểm ..... đều cách $O$ một khoảng 2 đơn vị.",
+    "dap_an": "-2",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai điểm biểu diễn hai số đối nhau ($m$ và $-m$) nằm hai bên gốc $O$ và cách $O$ cùng một khoảng bằng $m$.\n\n**Bước 1.** Quan sát ví dụ đề cho: hai điểm cách $O$ cùng một khoảng thì là hai số đối nhau.\n\n**Bước 2.** Điểm $+2$ cách $O$ đúng 2 đơn vị về bên phải; tìm điểm thứ hai cũng cách $O$ 2 đơn vị nhưng ở phía ngược lại.\n\n**Bước 3.** Viết số biểu diễn điểm ở phía ngược lại đó.\n\n**Phần 2. Trình bày**\n\nĐiểm $+2$ nằm bên phải $O$, cách $O$ 2 đơn vị.\n\nĐiểm cũng cách $O$ 2 đơn vị nhưng nằm bên trái $O$ là điểm $-2$.\n\nVậy điểm cần điền là $-2$.",
+    "kiem": [
+      "-2===-(2)&&Math.abs(-2)===2"
+    ],
+    "sach_dap_so": "-2",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-4B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01290",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Đọc khoảng cách từ điểm tới gốc O trên trục số",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Điền vào chỗ chấm: Điểm $+6$ và điểm $-6$ đều cách $O$ một khoảng .... đơn vị.",
+    "dap_an": "6",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai điểm biểu diễn hai số đối nhau ($m$ và $-m$) nằm hai bên gốc $O$ và cách $O$ cùng một khoảng bằng $m$.\n\n**Bước 1.** Nhận ra $+6$ và $-6$ là hai số đối nhau, chỉ khác dấu.\n\n**Bước 2.** Khoảng cách từ mỗi điểm tới $O$ bằng phần số của số đó.\n\n**Bước 3.** Đọc phần số chung của hai số.\n\n**Phần 2. Trình bày**\n\nHai điểm $+6$ và $-6$ nằm hai bên $O$ và có cùng phần số là 6.\n\nVậy điểm $+6$ và điểm $-6$ đều cách $O$ một khoảng 6 đơn vị.",
+    "kiem": [
+      "Math.abs(6)===Math.abs(-6)&&Math.abs(6)===6"
+    ],
+    "sach_dap_so": "6 đơn vị",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-4B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01290",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Đọc khoảng cách từ điểm tới gốc O trên trục số",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Điền vào chỗ chấm: Điểm $+2$ và điểm ...... đều cách $O$ một khoảng .... đơn vị.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai điểm biểu diễn hai số đối nhau ($m$ và $-m$) nằm hai bên gốc $O$ và cách $O$ cùng một khoảng bằng $m$.\n\n**Bước 1.** Điểm $+2$ nằm bên phải $O$ và cách $O$ một khoảng bằng phần số của nó.\n\n**Bước 2.** Điểm thứ hai cách $O$ cùng khoảng đó nhưng nằm phía ngược lại, nên là số đối của $+2$.\n\n**Bước 3.** Điền số biểu diễn điểm thứ hai vào chỗ chấm đầu, rồi điền khoảng cách vào chỗ chấm sau.\n\n**Phần 2. Trình bày**\n\nĐiểm $+2$ cách $O$ 2 đơn vị về bên phải.\n\nĐiểm ở bên trái $O$ và cũng cách $O$ 2 đơn vị là điểm $-2$.\n\nVậy chỗ chấm thứ nhất là $-2$, chỗ chấm thứ hai là 2 (đơn vị).",
+    "kiem": [
+      "Math.abs(-2)===Math.abs(2)&&Math.abs(2)===2"
+    ],
+    "sach_dap_so": "-2; 2 đơn vị",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-5A",
+    "vai": "giang",
+    "dang_bai": "NDB01290",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Vẽ trục số và biểu diễn điểm theo khoảng cách tới gốc O",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Vẽ trục số, ghi điểm $M$ cách $O$ một khoảng 3 đơn vị về phía bên trái và điểm $N$ cách $O$ một khoảng 5 đơn vị về phía bên phải.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** bên trái gốc $O$ là số âm, bên phải gốc $O$ là số dương; khoảng cách tới $O$ cho biết phần số.\n\n**Bước 1.** Vẽ đường thẳng nằm ngang, chọn điểm $O$ làm gốc (số $0$) và chọn một độ dài làm đơn vị, đánh dấu các vạch cách đều.\n\n**Bước 2.** Điểm ở bên trái $O$ biểu diễn số âm, điểm ở bên phải $O$ biểu diễn số dương.\n\n**Bước 3.** Từ khoảng cách đề cho, viết số biểu diễn mỗi điểm rồi đánh dấu và ghi tên điểm trên trục số.\n\n**Phần 2. Trình bày**\n\nĐiểm $M$ nằm bên trái $O$, cách $O$ 3 đơn vị nên $M$ biểu diễn số $-3$.\n\nĐiểm $N$ nằm bên phải $O$, cách $O$ 5 đơn vị nên $N$ biểu diễn số $5$.\n\nVậy trên trục số, điểm $M$ ứng với số $-3$ và điểm $N$ ứng với số $5$ (HS tự vẽ trục số).",
+    "kiem": [
+      "Math.abs(-3)===3&&-3<0&&5>0&&Math.abs(5)===5"
+    ],
+    "sach_dap_so": "M=-3; N=5 (trục số: image99.jpeg)",
+    "ghi_chu": "Cần hình trục số — chưa có hình giải (sách có hình mẫu)."
+  },
+  {
+    "id": "B1-5B",
+    "vai": "luyen",
+    "dang_bai": "NDB01290",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Vẽ trục số và biểu diễn điểm theo khoảng cách tới gốc O",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Vẽ trục số, ghi điểm $A$ cách $O$ một khoảng 2 đơn vị về phía bên trái và điểm $B$ cách $O$ một khoảng 4 đơn vị về phía bên phải.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** bên trái gốc $O$ là số âm, bên phải gốc $O$ là số dương; khoảng cách tới $O$ cho biết phần số.\n\n**Bước 1.** Vẽ đường thẳng nằm ngang, chọn điểm $O$ làm gốc (số $0$) và chọn một độ dài làm đơn vị, đánh dấu các vạch cách đều.\n\n**Bước 2.** Điểm ở bên trái $O$ biểu diễn số âm, điểm ở bên phải $O$ biểu diễn số dương.\n\n**Bước 3.** Từ khoảng cách đề cho, viết số biểu diễn mỗi điểm rồi đánh dấu và ghi tên điểm trên trục số.\n\n**Phần 2. Trình bày**\n\nĐiểm $A$ nằm bên trái $O$, cách $O$ 2 đơn vị nên $A$ biểu diễn số $-2$.\n\nĐiểm $B$ nằm bên phải $O$, cách $O$ 4 đơn vị nên $B$ biểu diễn số $4$.\n\nVậy trên trục số, điểm $A$ ứng với số $-2$ và điểm $B$ ứng với số $4$ (HS tự vẽ trục số).",
+    "kiem": [
+      "Math.abs(-2)===2&&-2<0&&4>0&&Math.abs(4)===4"
+    ],
+    "sach_dap_so": "A=-2; B=4 (trục số: image100.jpeg)",
+    "ghi_chu": "Cần hình trục số — chưa có hình giải (sách có hình mẫu)."
+  },
+  {
+    "id": "B1-6A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01291",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "So sánh hai số nguyên, điền dấu",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh các số nguyên sau (điền dấu $<$, $>$ hoặc $=$): $30$ và $300$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai số nguyên dương thì so sánh như hai số tự nhiên.\n\n**Bước 1.** Nhận ra cả hai số đều là số nguyên dương.\n\n**Bước 2.** So sánh hai số như hai số tự nhiên.\n\n**Bước 3.** Viết kết quả bằng dấu thích hợp.\n\n**Phần 2. Trình bày**\n\nHai số đều là số nguyên dương nên so sánh như số tự nhiên.\n\nVậy $30<300$.",
+    "kiem": [
+      "(30<300?'<':30>300?'>':'=')==='<'"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-6A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01291",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "So sánh hai số nguyên, điền dấu",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh các số nguyên sau (điền dấu $<$, $>$ hoặc $=$): $-2$ và $5$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** mọi số nguyên âm đều nhỏ hơn mọi số nguyên dương.\n\n**Bước 1.** Nhận ra một số là số nguyên âm, số kia là số nguyên dương.\n\n**Bước 2.** Nhớ lại: điểm biểu diễn số âm nằm bên trái gốc $O$, điểm biểu diễn số dương nằm bên phải gốc $O$.\n\n**Bước 3.** Viết kết quả bằng dấu thích hợp.\n\n**Phần 2. Trình bày**\n\nVì số nguyên âm nhỏ hơn số nguyên dương.\n\nVậy $-2<5$.",
+    "kiem": [
+      "(-2<5?'<':-2>5?'>':'=')==='<'"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-6A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01291",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "So sánh hai số nguyên, điền dấu",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh các số nguyên sau (điền dấu $<$, $>$ hoặc $=$): $-5$ và $5000$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** mọi số nguyên âm đều nhỏ hơn mọi số nguyên dương.\n\n**Bước 1.** Nhận ra một số là số nguyên âm, số kia là số nguyên dương.\n\n**Bước 2.** Nhớ lại: điểm biểu diễn số âm nằm bên trái gốc $O$, điểm biểu diễn số dương nằm bên phải gốc $O$.\n\n**Bước 3.** Viết kết quả bằng dấu thích hợp.\n\n**Phần 2. Trình bày**\n\nVì số nguyên âm nhỏ hơn số nguyên dương.\n\nVậy $-5<5000$.",
+    "kiem": [
+      "(-5<5000?'<':-5>5000?'>':'=')==='<'"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-6A-d",
+    "vai": "giang",
+    "dang_bai": "NDB01291",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "So sánh hai số nguyên, điền dấu",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh các số nguyên sau (điền dấu $<$, $>$ hoặc $=$): $-40000$ và $4$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** mọi số nguyên âm đều nhỏ hơn mọi số nguyên dương.\n\n**Bước 1.** Nhận ra một số là số nguyên âm, số kia là số nguyên dương.\n\n**Bước 2.** Nhớ lại: điểm biểu diễn số âm nằm bên trái gốc $O$, điểm biểu diễn số dương nằm bên phải gốc $O$.\n\n**Bước 3.** Viết kết quả bằng dấu thích hợp.\n\n**Phần 2. Trình bày**\n\nVì số nguyên âm nhỏ hơn số nguyên dương.\n\nVậy $-40000<4$.",
+    "kiem": [
+      "(-40000<4?'<':-40000>4?'>':'=')==='<'"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-6A-e",
+    "vai": "giang",
+    "dang_bai": "NDB01291",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "So sánh hai số nguyên, điền dấu",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh các số nguyên sau (điền dấu $<$, $>$ hoặc $=$): $-2$ và $-10$.",
+    "dap_an": ">",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** với hai số nguyên âm, so sánh hai số đối của chúng (là hai số nguyên dương) rồi đảo chiều dấu bất đẳng thức.\n\n**Bước 1.** Nhận ra cả hai số đều là số nguyên âm nên không dùng được nhận xét \"số âm nhỏ hơn số dương\".\n\n**Bước 2.** Viết mỗi số thành số đối của một số nguyên dương: $-2$ là số đối của $2$, $-10$ là số đối của $10$.\n\n**Bước 3.** So sánh hai số nguyên dương đó như số tự nhiên rồi đảo chiều dấu bất đẳng thức cho hai số âm.\n\n**Chú ý:** với hai số âm, số có phần số lớn hơn thì nhỏ hơn.\n\n**Phần 2. Trình bày**\n\nVì $2<10$ nên $-2>-10$.\n\nVậy $-2>-10$.",
+    "kiem": [
+      "(-2<-10?'<':-2>-10?'>':'=')==='>'"
+    ],
+    "sach_dap_so": ">",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-6A-f",
+    "vai": "giang",
+    "dang_bai": "NDB01291",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "So sánh hai số nguyên, điền dấu",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh các số nguyên sau (điền dấu $<$, $>$ hoặc $=$): $-100$ và $-30000$.",
+    "dap_an": ">",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** với hai số nguyên âm, so sánh hai số đối của chúng (là hai số nguyên dương) rồi đảo chiều dấu bất đẳng thức.\n\n**Bước 1.** Nhận ra cả hai số đều là số nguyên âm nên không dùng được nhận xét \"số âm nhỏ hơn số dương\".\n\n**Bước 2.** Viết mỗi số thành số đối của một số nguyên dương: $-100$ là số đối của $100$, $-30000$ là số đối của $30000$.\n\n**Bước 3.** So sánh hai số nguyên dương đó như số tự nhiên rồi đảo chiều dấu bất đẳng thức cho hai số âm.\n\n**Chú ý:** với hai số âm, số có phần số lớn hơn thì nhỏ hơn.\n\n**Phần 2. Trình bày**\n\nVì $100<30000$ nên $-100>-30000$.\n\nVậy $-100>-30000$.",
+    "kiem": [
+      "(-100<-30000?'<':-100>-30000?'>':'=')==='>'"
+    ],
+    "sach_dap_so": ">",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-6B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01291",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "So sánh hai số nguyên, điền dấu",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh các số nguyên sau (điền dấu $<$, $>$ hoặc $=$): $3$ và $200$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai số nguyên dương thì so sánh như hai số tự nhiên.\n\n**Bước 1.** Nhận ra cả hai số đều là số nguyên dương.\n\n**Bước 2.** So sánh hai số như hai số tự nhiên.\n\n**Bước 3.** Viết kết quả bằng dấu thích hợp.\n\n**Phần 2. Trình bày**\n\nHai số đều là số nguyên dương nên so sánh như số tự nhiên.\n\nVậy $3<200$.",
+    "kiem": [
+      "(3<200?'<':3>200?'>':'=')==='<'"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-6B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01291",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "So sánh hai số nguyên, điền dấu",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh các số nguyên sau (điền dấu $<$, $>$ hoặc $=$): $-5$ và $7$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** mọi số nguyên âm đều nhỏ hơn mọi số nguyên dương.\n\n**Bước 1.** Nhận ra một số là số nguyên âm, số kia là số nguyên dương.\n\n**Bước 2.** Nhớ lại: điểm biểu diễn số âm nằm bên trái gốc $O$, điểm biểu diễn số dương nằm bên phải gốc $O$.\n\n**Bước 3.** Viết kết quả bằng dấu thích hợp.\n\n**Phần 2. Trình bày**\n\nVì số nguyên âm nhỏ hơn số nguyên dương.\n\nVậy $-5<7$.",
+    "kiem": [
+      "(-5<7?'<':-5>7?'>':'=')==='<'"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-6B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01291",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "So sánh hai số nguyên, điền dấu",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh các số nguyên sau (điền dấu $<$, $>$ hoặc $=$): $-10$ và $10$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** mọi số nguyên âm đều nhỏ hơn mọi số nguyên dương.\n\n**Bước 1.** Nhận ra một số là số nguyên âm, số kia là số nguyên dương.\n\n**Bước 2.** Nhớ lại: điểm biểu diễn số âm nằm bên trái gốc $O$, điểm biểu diễn số dương nằm bên phải gốc $O$.\n\n**Bước 3.** Viết kết quả bằng dấu thích hợp.\n\n**Phần 2. Trình bày**\n\nVì số nguyên âm nhỏ hơn số nguyên dương.\n\nVậy $-10<10$.",
+    "kiem": [
+      "(-10<10?'<':-10>10?'>':'=')==='<'"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-6B-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01291",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "So sánh hai số nguyên, điền dấu",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh các số nguyên sau (điền dấu $<$, $>$ hoặc $=$): $-10000$ và $0$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số nguyên âm luôn nhỏ hơn 0.\n\n**Bước 1.** Nhận ra một số là số nguyên âm, số kia là 0.\n\n**Bước 2.** Nhớ lại: mọi số nguyên âm đều nhỏ hơn 0 vì điểm biểu diễn nằm bên trái gốc $O$.\n\n**Bước 3.** Viết kết quả bằng dấu thích hợp.\n\n**Phần 2. Trình bày**\n\nVì số nguyên âm nhỏ hơn 0.\n\nVậy $-10000<0$.",
+    "kiem": [
+      "(-10000<0?'<':-10000>0?'>':'=')==='<'"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-6B-e",
+    "vai": "luyen",
+    "dang_bai": "NDB01291",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "So sánh hai số nguyên, điền dấu",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh các số nguyên sau (điền dấu $<$, $>$ hoặc $=$): $-8$ và $-20$.",
+    "dap_an": ">",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** với hai số nguyên âm, so sánh hai số đối của chúng (là hai số nguyên dương) rồi đảo chiều dấu bất đẳng thức.\n\n**Bước 1.** Nhận ra cả hai số đều là số nguyên âm nên không dùng được nhận xét \"số âm nhỏ hơn số dương\".\n\n**Bước 2.** Viết mỗi số thành số đối của một số nguyên dương: $-8$ là số đối của $8$, $-20$ là số đối của $20$.\n\n**Bước 3.** So sánh hai số nguyên dương đó như số tự nhiên rồi đảo chiều dấu bất đẳng thức cho hai số âm.\n\n**Chú ý:** với hai số âm, số có phần số lớn hơn thì nhỏ hơn.\n\n**Phần 2. Trình bày**\n\nVì $8<20$ nên $-8>-20$.\n\nVậy $-8>-20$.",
+    "kiem": [
+      "(-8<-20?'<':-8>-20?'>':'=')==='>'"
+    ],
+    "sach_dap_so": ">",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-6B-f",
+    "vai": "luyen",
+    "dang_bai": "NDB01291",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "So sánh hai số nguyên, điền dấu",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh các số nguyên sau (điền dấu $<$, $>$ hoặc $=$): $-100$ và $-80$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** với hai số nguyên âm, so sánh hai số đối của chúng (là hai số nguyên dương) rồi đảo chiều dấu bất đẳng thức.\n\n**Bước 1.** Nhận ra cả hai số đều là số nguyên âm nên không dùng được nhận xét \"số âm nhỏ hơn số dương\".\n\n**Bước 2.** Viết mỗi số thành số đối của một số nguyên dương: $-100$ là số đối của $100$, $-80$ là số đối của $80$.\n\n**Bước 3.** So sánh hai số nguyên dương đó như số tự nhiên rồi đảo chiều dấu bất đẳng thức cho hai số âm.\n\n**Chú ý:** với hai số âm, số có phần số lớn hơn thì nhỏ hơn.\n\n**Phần 2. Trình bày**\n\nVì $100>80$ nên $-100<-80$.\n\nVậy $-100<-80$.",
+    "kiem": [
+      "(-100<-80?'<':-100>-80?'>':'=')==='<'"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-7A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01292",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Sắp xếp dãy số nguyên tăng/giảm dần",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Sắp xếp các số nguyên sau theo thứ tự tăng dần: $-6;1;9;-100;-9;+20$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chia các số thành số âm, số 0, số dương rồi sắp từng nhóm; số dương lớn hơn 0, 0 lớn hơn số âm.\n\n**Bước 1.** Phân loại các số đã cho thành ba nhóm: số nguyên âm, số 0 (nếu có) và số nguyên dương.\n\n**Bước 2.** Sắp xếp riêng từng nhóm: số nguyên dương so sánh như số tự nhiên; với số nguyên âm, số có phần số (bỏ dấu $-$) lớn hơn thì nhỏ hơn.\n\n**Bước 3.** Ghép các nhóm theo thứ tự trên trục số từ trái sang phải: số âm, rồi số 0 (nếu có), rồi số dương.\n\n**Phần 2. Trình bày**\n\nChia các số thành nhóm: số nguyên âm: $-100;-9;-6$; số nguyên dương: $1;9;+20$.\n\nSắp xếp các số nguyên âm tăng dần: $-100<-9<-6$.\n\nSắp xếp các số nguyên dương tăng dần: $1<9<+20$.\n\nGhép các nhóm (âm, rồi 0 nếu có, rồi dương): $-100<-9<-6<1<9<+20$.\n\nVậy các số theo thứ tự tăng dần là: $-100;-9;-6;1;9;+20$.",
+    "kiem": [
+      "[-6,1,9,-100,-9,20].sort((x,y)=>x-y).join(';')==='-100;-9;-6;1;9;20'"
+    ],
+    "sach_dap_so": "-100;-9;-6;1;9;+20",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-7A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01292",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Sắp xếp dãy số nguyên tăng/giảm dần",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Sắp xếp các số nguyên sau theo thứ tự giảm dần: $-20;0;+8;-16;2020;-3;-55$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chia các số thành số âm, số 0, số dương rồi sắp từng nhóm; số dương lớn hơn 0, 0 lớn hơn số âm.\n\n**Bước 1.** Phân loại các số đã cho thành ba nhóm: số nguyên âm, số 0 (nếu có) và số nguyên dương.\n\n**Bước 2.** Sắp xếp riêng từng nhóm: số nguyên dương so sánh như số tự nhiên; với số nguyên âm, số có phần số (bỏ dấu $-$) lớn hơn thì nhỏ hơn.\n\n**Bước 3.** Ghép các nhóm theo thứ tự trên trục số từ phải sang trái: số dương, rồi số 0 (nếu có), rồi số âm.\n\n**Phần 2. Trình bày**\n\nChia các số thành nhóm: số nguyên âm: $-55;-20;-16;-3$; số 0; số nguyên dương: $+8;2020$.\n\nSắp xếp các số nguyên âm giảm dần: $-3>-16>-20>-55$.\n\nSắp xếp các số nguyên dương giảm dần: $2020>+8$.\n\nGhép các nhóm (dương, rồi 0 nếu có, rồi âm): $2020>+8>0>-3>-16>-20>-55$.\n\nVậy các số theo thứ tự giảm dần là: $2020;+8;0;-3;-16;-20;-55$.",
+    "kiem": [
+      "[-20,0,8,-16,2020,-3,-55].sort((x,y)=>y-x).join(';')==='2020;8;0;-3;-16;-20;-55'"
+    ],
+    "sach_dap_so": "2020;+8;0;-3;-16;-20;-55",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-7B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01292",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Sắp xếp dãy số nguyên tăng/giảm dần",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Sắp xếp các số nguyên sau theo thứ tự tăng dần: $-9;10;30;-15;25;2021$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chia các số thành số âm, số 0, số dương rồi sắp từng nhóm; số dương lớn hơn 0, 0 lớn hơn số âm.\n\n**Bước 1.** Phân loại các số đã cho thành ba nhóm: số nguyên âm, số 0 (nếu có) và số nguyên dương.\n\n**Bước 2.** Sắp xếp riêng từng nhóm: số nguyên dương so sánh như số tự nhiên; với số nguyên âm, số có phần số (bỏ dấu $-$) lớn hơn thì nhỏ hơn.\n\n**Bước 3.** Ghép các nhóm theo thứ tự trên trục số từ trái sang phải: số âm, rồi số 0 (nếu có), rồi số dương.\n\n**Phần 2. Trình bày**\n\nChia các số thành nhóm: số nguyên âm: $-15;-9$; số nguyên dương: $10;25;30;2021$.\n\nSắp xếp các số nguyên âm tăng dần: $-15<-9$.\n\nSắp xếp các số nguyên dương tăng dần: $10<25<30<2021$.\n\nGhép các nhóm (âm, rồi 0 nếu có, rồi dương): $-15<-9<10<25<30<2021$.\n\nVậy các số theo thứ tự tăng dần là: $-15;-9;10;25;30;2021$.",
+    "kiem": [
+      "[-9,10,30,-15,25,2021].sort((x,y)=>x-y).join(';')==='-15;-9;10;25;30;2021'"
+    ],
+    "sach_dap_so": "-15;-9;10;25;30;2021",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-7B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01292",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Sắp xếp dãy số nguyên tăng/giảm dần",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Sắp xếp các số nguyên sau theo thứ tự giảm dần: $-8;6;+90;-85;-2;-15$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chia các số thành số âm, số 0, số dương rồi sắp từng nhóm; số dương lớn hơn 0, 0 lớn hơn số âm.\n\n**Bước 1.** Phân loại các số đã cho thành ba nhóm: số nguyên âm, số 0 (nếu có) và số nguyên dương.\n\n**Bước 2.** Sắp xếp riêng từng nhóm: số nguyên dương so sánh như số tự nhiên; với số nguyên âm, số có phần số (bỏ dấu $-$) lớn hơn thì nhỏ hơn.\n\n**Bước 3.** Ghép các nhóm theo thứ tự trên trục số từ phải sang trái: số dương, rồi số 0 (nếu có), rồi số âm.\n\n**Phần 2. Trình bày**\n\nChia các số thành nhóm: số nguyên âm: $-85;-15;-8;-2$; số nguyên dương: $6;+90$.\n\nSắp xếp các số nguyên âm giảm dần: $-2>-8>-15>-85$.\n\nSắp xếp các số nguyên dương giảm dần: $+90>6$.\n\nGhép các nhóm (dương, rồi 0 nếu có, rồi âm): $+90>6>-2>-8>-15>-85$.\n\nVậy các số theo thứ tự giảm dần là: $+90;6;-2;-8;-15;-85$.",
+    "kiem": [
+      "[-8,6,90,-85,-2,-15].sort((x,y)=>y-x).join(';')==='90;6;-2;-8;-15;-85'"
+    ],
+    "sach_dap_so": "+90;6;-2;-8;-15;-85",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-8A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01293",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Tìm dấu của số để bất đẳng thức đúng; gần dạng so sánh 01291",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Điền dấu \"+\" hoặc dấu \"$-$\" vào chỗ chấm để được kết quả đúng: $3<\\ldots 4$",
+    "dap_an": "+",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số nguyên dương lớn hơn 0 và lớn hơn mọi số âm; số nguyên âm nhỏ hơn 0; nên chỉ cần thử từng dấu và kiểm tra bất đẳng thức có đúng không.\n\n**Bước 1.** Xác định vế chứa chỗ chấm và vế đã biết rõ số.\n\n**Bước 2.** Thử lần lượt từng dấu: viết lại số có dấu rồi so sánh với vế còn lại bằng các nhận xét về số dương, số 0, số âm.\n\n**Bước 3.** Chọn dấu làm cho bất đẳng thức đúng.\n\n**Phần 2. Trình bày**\n\nĐiền dấu $+$: $3<+4$ đúng vì so sánh như hai số tự nhiên.\n\nĐiền dấu $-$: $3<-4$ sai vì số nguyên dương lớn hơn số nguyên âm.\n\nVậy điền dấu $+$: $3<+4$.",
+    "kiem": [
+      "['+','-'].filter(s=>eval(\"3<_4\".replace('_',s))).join(',')==='+'"
+    ],
+    "sach_dap_so": "+",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-8A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01293",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Tìm dấu của số để bất đẳng thức đúng; gần dạng so sánh 01291",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Điền dấu \"+\" hoặc dấu \"$-$\" vào chỗ chấm để được kết quả đúng: $\\ldots 5>2$",
+    "dap_an": "+",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số nguyên dương lớn hơn 0 và lớn hơn mọi số âm; số nguyên âm nhỏ hơn 0; nên chỉ cần thử từng dấu và kiểm tra bất đẳng thức có đúng không.\n\n**Bước 1.** Xác định vế chứa chỗ chấm và vế đã biết rõ số.\n\n**Bước 2.** Thử lần lượt từng dấu: viết lại số có dấu rồi so sánh với vế còn lại bằng các nhận xét về số dương, số 0, số âm.\n\n**Bước 3.** Chọn dấu làm cho bất đẳng thức đúng.\n\n**Phần 2. Trình bày**\n\nĐiền dấu $+$: $+5>2$ đúng vì so sánh như hai số tự nhiên.\n\nĐiền dấu $-$: $-5>2$ sai vì số nguyên âm nhỏ hơn số nguyên dương.\n\nVậy điền dấu $+$: $+5>2$.",
+    "kiem": [
+      "['+','-'].filter(s=>eval(\"_5>2\".replace('_',s))).join(',')==='+'"
+    ],
+    "sach_dap_so": "+",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-8A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01293",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Tìm dấu của số để bất đẳng thức đúng; gần dạng so sánh 01291",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Điền dấu \"+\" hoặc dấu \"$-$\" vào chỗ chấm để được kết quả đúng: $0>\\ldots 10$",
+    "dap_an": "-",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số nguyên dương lớn hơn 0 và lớn hơn mọi số âm; số nguyên âm nhỏ hơn 0; nên chỉ cần thử từng dấu và kiểm tra bất đẳng thức có đúng không.\n\n**Bước 1.** Xác định vế chứa chỗ chấm và vế đã biết rõ số.\n\n**Bước 2.** Thử lần lượt từng dấu: viết lại số có dấu rồi so sánh với vế còn lại bằng các nhận xét về số dương, số 0, số âm.\n\n**Bước 3.** Chọn dấu làm cho bất đẳng thức đúng.\n\n**Phần 2. Trình bày**\n\nĐiền dấu $+$: $0>+10$ sai vì 0 nhỏ hơn số nguyên dương.\n\nĐiền dấu $-$: $0>-10$ đúng vì 0 lớn hơn số nguyên âm.\n\nVậy điền dấu $-$: $0>-10$.",
+    "kiem": [
+      "['+','-'].filter(s=>eval(\"0>_10\".replace('_',s))).join(',')==='-'"
+    ],
+    "sach_dap_so": "-",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-8A-d",
+    "vai": "giang",
+    "dang_bai": "NDB01293",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Tìm dấu của số để bất đẳng thức đúng; gần dạng so sánh 01291",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Điền dấu \"+\" hoặc dấu \"$-$\" vào chỗ chấm để được kết quả đúng: $1>\\ldots 5$",
+    "dap_an": "-",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số nguyên dương lớn hơn 0 và lớn hơn mọi số âm; số nguyên âm nhỏ hơn 0; nên chỉ cần thử từng dấu và kiểm tra bất đẳng thức có đúng không.\n\n**Bước 1.** Xác định vế chứa chỗ chấm và vế đã biết rõ số.\n\n**Bước 2.** Thử lần lượt từng dấu: viết lại số có dấu rồi so sánh với vế còn lại bằng các nhận xét về số dương, số 0, số âm.\n\n**Bước 3.** Chọn dấu làm cho bất đẳng thức đúng.\n\n**Phần 2. Trình bày**\n\nĐiền dấu $+$: $1>+5$ sai vì so sánh như hai số tự nhiên.\n\nĐiền dấu $-$: $1>-5$ đúng vì số nguyên dương lớn hơn số nguyên âm.\n\nVậy điền dấu $-$: $1>-5$.",
+    "kiem": [
+      "['+','-'].filter(s=>eval(\"1>_5\".replace('_',s))).join(',')==='-'"
+    ],
+    "sach_dap_so": "-",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-8A-e",
+    "vai": "giang",
+    "dang_bai": "NDB01293",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Tìm dấu của số để bất đẳng thức đúng; gần dạng so sánh 01291",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Điền dấu \"+\" hoặc dấu \"$-$\" vào chỗ chấm để được kết quả đúng: $\\ldots 3<-2$",
+    "dap_an": "-",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số nguyên dương lớn hơn 0 và lớn hơn mọi số âm; số nguyên âm nhỏ hơn 0; nên chỉ cần thử từng dấu và kiểm tra bất đẳng thức có đúng không.\n\n**Bước 1.** Xác định vế chứa chỗ chấm và vế đã biết rõ số.\n\n**Bước 2.** Thử lần lượt từng dấu: viết lại số có dấu rồi so sánh với vế còn lại bằng các nhận xét về số dương, số 0, số âm.\n\n**Bước 3.** Chọn dấu làm cho bất đẳng thức đúng.\n\n**Phần 2. Trình bày**\n\nĐiền dấu $+$: $+3<-2$ sai vì số nguyên dương lớn hơn số nguyên âm.\n\nĐiền dấu $-$: $-3<-2$ đúng vì với hai số âm, số có phần số lớn hơn thì nhỏ hơn (3>2).\n\nVậy điền dấu $-$: $-3<-2$.",
+    "kiem": [
+      "['+','-'].filter(s=>eval(\"_3<-2\".replace('_',s))).join(',')==='-'"
+    ],
+    "sach_dap_so": "-",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-8A-f",
+    "vai": "giang",
+    "dang_bai": "NDB01293",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Tìm dấu của số để bất đẳng thức đúng; gần dạng so sánh 01291",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Điền dấu \"+\" hoặc dấu \"$-$\" vào chỗ chấm để được kết quả đúng: $9>\\ldots 20$",
+    "dap_an": "-",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số nguyên dương lớn hơn 0 và lớn hơn mọi số âm; số nguyên âm nhỏ hơn 0; nên chỉ cần thử từng dấu và kiểm tra bất đẳng thức có đúng không.\n\n**Bước 1.** Xác định vế chứa chỗ chấm và vế đã biết rõ số.\n\n**Bước 2.** Thử lần lượt từng dấu: viết lại số có dấu rồi so sánh với vế còn lại bằng các nhận xét về số dương, số 0, số âm.\n\n**Bước 3.** Chọn dấu làm cho bất đẳng thức đúng.\n\n**Phần 2. Trình bày**\n\nĐiền dấu $+$: $9>+20$ sai vì so sánh như hai số tự nhiên.\n\nĐiền dấu $-$: $9>-20$ đúng vì số nguyên dương lớn hơn số nguyên âm.\n\nVậy điền dấu $-$: $9>-20$.",
+    "kiem": [
+      "['+','-'].filter(s=>eval(\"9>_20\".replace('_',s))).join(',')==='-'"
+    ],
+    "sach_dap_so": "-",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-8B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01293",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Tìm dấu của số để bất đẳng thức đúng; gần dạng so sánh 01291",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Điền dấu \"+\" hoặc dấu \"$-$\" vào chỗ chấm để được kết quả đúng: $\\ldots 3<-2$",
+    "dap_an": "-",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số nguyên dương lớn hơn 0 và lớn hơn mọi số âm; số nguyên âm nhỏ hơn 0; nên chỉ cần thử từng dấu và kiểm tra bất đẳng thức có đúng không.\n\n**Bước 1.** Xác định vế chứa chỗ chấm và vế đã biết rõ số.\n\n**Bước 2.** Thử lần lượt từng dấu: viết lại số có dấu rồi so sánh với vế còn lại bằng các nhận xét về số dương, số 0, số âm.\n\n**Bước 3.** Chọn dấu làm cho bất đẳng thức đúng.\n\n**Phần 2. Trình bày**\n\nĐiền dấu $+$: $+3<-2$ sai vì số nguyên dương lớn hơn số nguyên âm.\n\nĐiền dấu $-$: $-3<-2$ đúng vì với hai số âm, số có phần số lớn hơn thì nhỏ hơn (3>2).\n\nVậy điền dấu $-$: $-3<-2$.",
+    "kiem": [
+      "['+','-'].filter(s=>eval(\"_3<-2\".replace('_',s))).join(',')==='-'"
+    ],
+    "sach_dap_so": "-",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-8B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01293",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Tìm dấu của số để bất đẳng thức đúng; gần dạng so sánh 01291",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Điền dấu \"+\" hoặc dấu \"$-$\" vào chỗ chấm để được kết quả đúng: $-5>\\ldots 8$",
+    "dap_an": "-",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số nguyên dương lớn hơn 0 và lớn hơn mọi số âm; số nguyên âm nhỏ hơn 0; nên chỉ cần thử từng dấu và kiểm tra bất đẳng thức có đúng không.\n\n**Bước 1.** Xác định vế chứa chỗ chấm và vế đã biết rõ số.\n\n**Bước 2.** Thử lần lượt từng dấu: viết lại số có dấu rồi so sánh với vế còn lại bằng các nhận xét về số dương, số 0, số âm.\n\n**Bước 3.** Chọn dấu làm cho bất đẳng thức đúng.\n\n**Phần 2. Trình bày**\n\nĐiền dấu $+$: $-5>+8$ sai vì số nguyên âm nhỏ hơn số nguyên dương.\n\nĐiền dấu $-$: $-5>-8$ đúng vì với hai số âm, số có phần số lớn hơn thì nhỏ hơn (5<8).\n\nVậy điền dấu $-$: $-5>-8$.",
+    "kiem": [
+      "['+','-'].filter(s=>eval(\"-5>_8\".replace('_',s))).join(',')==='-'"
+    ],
+    "sach_dap_so": "-",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-8B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01293",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Tìm dấu của số để bất đẳng thức đúng; gần dạng so sánh 01291",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Điền dấu \"+\" hoặc dấu \"$-$\" vào chỗ chấm để được kết quả đúng: $\\ldots 100<0$",
+    "dap_an": "-",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số nguyên dương lớn hơn 0 và lớn hơn mọi số âm; số nguyên âm nhỏ hơn 0; nên chỉ cần thử từng dấu và kiểm tra bất đẳng thức có đúng không.\n\n**Bước 1.** Xác định vế chứa chỗ chấm và vế đã biết rõ số.\n\n**Bước 2.** Thử lần lượt từng dấu: viết lại số có dấu rồi so sánh với vế còn lại bằng các nhận xét về số dương, số 0, số âm.\n\n**Bước 3.** Chọn dấu làm cho bất đẳng thức đúng.\n\n**Phần 2. Trình bày**\n\nĐiền dấu $+$: $+100<0$ sai vì số nguyên dương lớn hơn 0.\n\nĐiền dấu $-$: $-100<0$ đúng vì số nguyên âm nhỏ hơn 0.\n\nVậy điền dấu $-$: $-100<0$.",
+    "kiem": [
+      "['+','-'].filter(s=>eval(\"_100<0\".replace('_',s))).join(',')==='-'"
+    ],
+    "sach_dap_so": "-",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-8B-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01293",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Tìm dấu của số để bất đẳng thức đúng; gần dạng so sánh 01291",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Điền dấu \"+\" hoặc dấu \"$-$\" vào chỗ chấm để được kết quả đúng: $100>\\ldots 200$",
+    "dap_an": "-",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số nguyên dương lớn hơn 0 và lớn hơn mọi số âm; số nguyên âm nhỏ hơn 0; nên chỉ cần thử từng dấu và kiểm tra bất đẳng thức có đúng không.\n\n**Bước 1.** Xác định vế chứa chỗ chấm và vế đã biết rõ số.\n\n**Bước 2.** Thử lần lượt từng dấu: viết lại số có dấu rồi so sánh với vế còn lại bằng các nhận xét về số dương, số 0, số âm.\n\n**Bước 3.** Chọn dấu làm cho bất đẳng thức đúng.\n\n**Phần 2. Trình bày**\n\nĐiền dấu $+$: $100>+200$ sai vì so sánh như hai số tự nhiên.\n\nĐiền dấu $-$: $100>-200$ đúng vì số nguyên dương lớn hơn số nguyên âm.\n\nVậy điền dấu $-$: $100>-200$.",
+    "kiem": [
+      "['+','-'].filter(s=>eval(\"100>_200\".replace('_',s))).join(',')==='-'"
+    ],
+    "sach_dap_so": "-",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-8B-e",
+    "vai": "luyen",
+    "dang_bai": "NDB01293",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Tìm dấu của số để bất đẳng thức đúng; gần dạng so sánh 01291",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Điền dấu \"+\" hoặc dấu \"$-$\" vào chỗ chấm để được kết quả đúng: $\\ldots 2>-4$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số nguyên dương lớn hơn 0 và lớn hơn mọi số âm; số nguyên âm nhỏ hơn 0; nên chỉ cần thử từng dấu và kiểm tra bất đẳng thức có đúng không.\n\n**Bước 1.** Xác định vế chứa chỗ chấm và vế đã biết rõ số.\n\n**Bước 2.** Thử lần lượt từng dấu: viết lại số có dấu rồi so sánh với vế còn lại bằng các nhận xét về số dương, số 0, số âm.\n\n**Bước 3.** Chọn dấu làm cho bất đẳng thức đúng.\n\n**Phần 2. Trình bày**\n\nĐiền dấu $+$: $+2>-4$ đúng vì số nguyên dương lớn hơn số nguyên âm.\n\nĐiền dấu $-$: $-2>-4$ đúng vì với hai số âm, số có phần số lớn hơn thì nhỏ hơn (2<4).\n\nVậy cả hai dấu đều làm bất đẳng thức đúng: $+2>-4$ và $-2>-4$.",
+    "kiem": [
+      "['+','-'].filter(s=>eval(\"_2>-4\".replace('_',s))).join(',')==='+,-'"
+    ],
+    "sach_dap_so": "-",
+    "ghi_chu": "Cả hai dấu đều làm bất đẳng thức đúng; sách chọn dấu $-$ — nên để tự luận."
+  },
+  {
+    "id": "B1-8B-f",
+    "vai": "luyen",
+    "dang_bai": "NDB01293",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Tìm dấu của số để bất đẳng thức đúng; gần dạng so sánh 01291",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Điền dấu \"+\" hoặc dấu \"$-$\" vào chỗ chấm để được kết quả đúng: $-9>\\ldots 10$",
+    "dap_an": "-",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số nguyên dương lớn hơn 0 và lớn hơn mọi số âm; số nguyên âm nhỏ hơn 0; nên chỉ cần thử từng dấu và kiểm tra bất đẳng thức có đúng không.\n\n**Bước 1.** Xác định vế chứa chỗ chấm và vế đã biết rõ số.\n\n**Bước 2.** Thử lần lượt từng dấu: viết lại số có dấu rồi so sánh với vế còn lại bằng các nhận xét về số dương, số 0, số âm.\n\n**Bước 3.** Chọn dấu làm cho bất đẳng thức đúng.\n\n**Phần 2. Trình bày**\n\nĐiền dấu $+$: $-9>+10$ sai vì số nguyên âm nhỏ hơn số nguyên dương.\n\nĐiền dấu $-$: $-9>-10$ đúng vì với hai số âm, số có phần số lớn hơn thì nhỏ hơn (9<10).\n\nVậy điền dấu $-$: $-9>-10$.",
+    "kiem": [
+      "['+','-'].filter(s=>eval(\"-9>_10\".replace('_',s))).join(',')==='-'"
+    ],
+    "sach_dap_so": "-",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-9A-a1",
+    "vai": "giang",
+    "dang_bai": "NDB01294",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Liệt kê các số nguyên thoả bất đẳng thức kép",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Liệt kê các phần tử của tập hợp sau: $A=\\{x\\in\\mathbb{Z}\\mid -3\\le x<5\\}$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đọc kĩ hai đầu mút và dấu bất đẳng thức: có dấu $\\le$ (hoặc $\\ge$) thì lấy đầu mút đó, chỉ có dấu $<$ (hoặc $>$) thì không lấy.\n\n**Bước 1.** Chỉ ra hai đầu mút của khoảng: $-3$ (bên trái) và $5$ (bên phải).\n\n**Bước 2.** Xét dấu bất đẳng thức ở từng đầu mút để biết có lấy đầu mút đó hay không.\n\n**Bước 3.** Liệt kê lần lượt các số nguyên từ trái sang phải trên trục số theo đúng hai điều kiện, không bỏ sót số nào kể cả số 0.\n\n**Phần 2. Trình bày**\n\nVì $-3\\le x<5$ nên $A=\\{ -3;-2;-1;0;1;2;3;4 \\}$.\n\nVậy $A=\\{ -3;-2;-1;0;1;2;3;4 \\}$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-30;x<=30;x++){if(x>=-3&&x<5)r.push(x)}return r.join(';')})()==='-3;-2;-1;0;1;2;3;4'"
+    ],
+    "sach_dap_so": "-3;-2;-1;0;1;2;3;4",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-9A-a2",
+    "vai": "giang",
+    "dang_bai": "NDB01294",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Liệt kê các số nguyên thoả bất đẳng thức kép",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Liệt kê các phần tử của tập hợp sau: $B=\\{x\\in\\mathbb{Z}\\mid -3<x\\le 5\\}$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đọc kĩ hai đầu mút và dấu bất đẳng thức: có dấu $\\le$ (hoặc $\\ge$) thì lấy đầu mút đó, chỉ có dấu $<$ (hoặc $>$) thì không lấy.\n\n**Bước 1.** Chỉ ra hai đầu mút của khoảng: $-3$ (bên trái) và $5$ (bên phải).\n\n**Bước 2.** Xét dấu bất đẳng thức ở từng đầu mút để biết có lấy đầu mút đó hay không.\n\n**Bước 3.** Liệt kê lần lượt các số nguyên từ trái sang phải trên trục số theo đúng hai điều kiện, không bỏ sót số nào kể cả số 0.\n\n**Phần 2. Trình bày**\n\nVì $-3<x\\le 5$ nên $B=\\{ -2;-1;0;1;2;3;4;5 \\}$.\n\nVậy $B=\\{ -2;-1;0;1;2;3;4;5 \\}$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-30;x<=30;x++){if(x>-3&&x<=5)r.push(x)}return r.join(';')})()==='-2;-1;0;1;2;3;4;5'"
+    ],
+    "sach_dap_so": "-2;-1;0;1;2;3;4;5",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-9A-b1",
+    "vai": "giang",
+    "dang_bai": "NDB01294",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Liệt kê các số nguyên thoả bất đẳng thức kép",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x\\in\\mathbb{Z}$ sao cho: $3<x<9$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đọc kĩ hai đầu mút và dấu bất đẳng thức: có dấu $\\le$ (hoặc $\\ge$) thì lấy đầu mút đó, chỉ có dấu $<$ (hoặc $>$) thì không lấy.\n\n**Bước 1.** Chỉ ra hai đầu mút của khoảng: $3$ (bên trái) và $9$ (bên phải).\n\n**Bước 2.** Xét dấu bất đẳng thức ở từng đầu mút để biết có lấy đầu mút đó hay không.\n\n**Bước 3.** Liệt kê lần lượt các số nguyên từ trái sang phải trên trục số theo đúng hai điều kiện, không bỏ sót số nào kể cả số 0.\n\n**Phần 2. Trình bày**\n\nVì $3<x<9$ nên $x\\in\\{ 4;5;6;7;8 \\}$.\n\nVậy $x\\in\\{ 4;5;6;7;8 \\}$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-30;x<=30;x++){if(x>3&&x<9)r.push(x)}return r.join(';')})()==='4;5;6;7;8'"
+    ],
+    "sach_dap_so": "4;5;6;7;8",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-9A-b2",
+    "vai": "giang",
+    "dang_bai": "NDB01294",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Liệt kê các số nguyên thoả bất đẳng thức kép",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x\\in\\mathbb{Z}$ sao cho: $-4\\le x<4$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đọc kĩ hai đầu mút và dấu bất đẳng thức: có dấu $\\le$ (hoặc $\\ge$) thì lấy đầu mút đó, chỉ có dấu $<$ (hoặc $>$) thì không lấy.\n\n**Bước 1.** Chỉ ra hai đầu mút của khoảng: $-4$ (bên trái) và $4$ (bên phải).\n\n**Bước 2.** Xét dấu bất đẳng thức ở từng đầu mút để biết có lấy đầu mút đó hay không.\n\n**Bước 3.** Liệt kê lần lượt các số nguyên từ trái sang phải trên trục số theo đúng hai điều kiện, không bỏ sót số nào kể cả số 0.\n\n**Phần 2. Trình bày**\n\nVì $-4\\le x<4$ nên $x\\in\\{ -4;-3;-2;-1;0;1;2;3 \\}$.\n\nVậy $x\\in\\{ -4;-3;-2;-1;0;1;2;3 \\}$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-30;x<=30;x++){if(x>=-4&&x<4)r.push(x)}return r.join(';')})()==='-4;-3;-2;-1;0;1;2;3'"
+    ],
+    "sach_dap_so": "-4;-3;-2;-1;0;1;2;3",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-9A-b3",
+    "vai": "giang",
+    "dang_bai": "NDB01294",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Liệt kê các số nguyên thoả bất đẳng thức kép",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x\\in\\mathbb{Z}$ sao cho: $-1\\le x\\le 5$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đọc kĩ hai đầu mút và dấu bất đẳng thức: có dấu $\\le$ (hoặc $\\ge$) thì lấy đầu mút đó, chỉ có dấu $<$ (hoặc $>$) thì không lấy.\n\n**Bước 1.** Chỉ ra hai đầu mút của khoảng: $-1$ (bên trái) và $5$ (bên phải).\n\n**Bước 2.** Xét dấu bất đẳng thức ở từng đầu mút để biết có lấy đầu mút đó hay không.\n\n**Bước 3.** Liệt kê lần lượt các số nguyên từ trái sang phải trên trục số theo đúng hai điều kiện, không bỏ sót số nào kể cả số 0.\n\n**Phần 2. Trình bày**\n\nVì $-1\\le x\\le 5$ nên $x\\in\\{ -1;0;1;2;3;4;5 \\}$.\n\nVậy $x\\in\\{ -1;0;1;2;3;4;5 \\}$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-30;x<=30;x++){if(x>=-1&&x<=5)r.push(x)}return r.join(';')})()==='-1;0;1;2;3;4;5'"
+    ],
+    "sach_dap_so": "-1;0;1;2;3;4;5",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-9A-b4",
+    "vai": "giang",
+    "dang_bai": "NDB01294",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Liệt kê các số nguyên thoả bất đẳng thức kép",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x\\in\\mathbb{Z}$ sao cho: $-5<x\\le 2$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đọc kĩ hai đầu mút và dấu bất đẳng thức: có dấu $\\le$ (hoặc $\\ge$) thì lấy đầu mút đó, chỉ có dấu $<$ (hoặc $>$) thì không lấy.\n\n**Bước 1.** Chỉ ra hai đầu mút của khoảng: $-5$ (bên trái) và $2$ (bên phải).\n\n**Bước 2.** Xét dấu bất đẳng thức ở từng đầu mút để biết có lấy đầu mút đó hay không.\n\n**Bước 3.** Liệt kê lần lượt các số nguyên từ trái sang phải trên trục số theo đúng hai điều kiện, không bỏ sót số nào kể cả số 0.\n\n**Phần 2. Trình bày**\n\nVì $-5<x\\le 2$ nên $x\\in\\{ -4;-3;-2;-1;0;1;2 \\}$.\n\nVậy $x\\in\\{ -4;-3;-2;-1;0;1;2 \\}$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-30;x<=30;x++){if(x>-5&&x<=2)r.push(x)}return r.join(';')})()==='-4;-3;-2;-1;0;1;2'"
+    ],
+    "sach_dap_so": "-4;-3;-2;-1;0;1;2",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-9B-a1",
+    "vai": "luyen",
+    "dang_bai": "NDB01294",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Liệt kê các số nguyên thoả bất đẳng thức kép",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Liệt kê các phần tử của tập hợp sau: $A=\\{x\\in\\mathbb{Z}\\mid -5\\le x<4\\}$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đọc kĩ hai đầu mút và dấu bất đẳng thức: có dấu $\\le$ (hoặc $\\ge$) thì lấy đầu mút đó, chỉ có dấu $<$ (hoặc $>$) thì không lấy.\n\n**Bước 1.** Chỉ ra hai đầu mút của khoảng: $-5$ (bên trái) và $4$ (bên phải).\n\n**Bước 2.** Xét dấu bất đẳng thức ở từng đầu mút để biết có lấy đầu mút đó hay không.\n\n**Bước 3.** Liệt kê lần lượt các số nguyên từ trái sang phải trên trục số theo đúng hai điều kiện, không bỏ sót số nào kể cả số 0.\n\n**Phần 2. Trình bày**\n\nVì $-5\\le x<4$ nên $A=\\{ -5;-4;-3;-2;-1;0;1;2;3 \\}$.\n\nVậy $A=\\{ -5;-4;-3;-2;-1;0;1;2;3 \\}$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-30;x<=30;x++){if(x>=-5&&x<4)r.push(x)}return r.join(';')})()==='-5;-4;-3;-2;-1;0;1;2;3'"
+    ],
+    "sach_dap_so": "-5;-4;-3;-2;-1;0;1;2;3",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-9B-a2",
+    "vai": "luyen",
+    "dang_bai": "NDB01294",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Liệt kê các số nguyên thoả bất đẳng thức kép",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Liệt kê các phần tử của tập hợp sau: $B=\\{x\\in\\mathbb{Z}\\mid -2<x\\le 6\\}$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đọc kĩ hai đầu mút và dấu bất đẳng thức: có dấu $\\le$ (hoặc $\\ge$) thì lấy đầu mút đó, chỉ có dấu $<$ (hoặc $>$) thì không lấy.\n\n**Bước 1.** Chỉ ra hai đầu mút của khoảng: $-2$ (bên trái) và $6$ (bên phải).\n\n**Bước 2.** Xét dấu bất đẳng thức ở từng đầu mút để biết có lấy đầu mút đó hay không.\n\n**Bước 3.** Liệt kê lần lượt các số nguyên từ trái sang phải trên trục số theo đúng hai điều kiện, không bỏ sót số nào kể cả số 0.\n\n**Phần 2. Trình bày**\n\nVì $-2<x\\le 6$ nên $B=\\{ -1;0;1;2;3;4;5;6 \\}$.\n\nVậy $B=\\{ -1;0;1;2;3;4;5;6 \\}$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-30;x<=30;x++){if(x>-2&&x<=6)r.push(x)}return r.join(';')})()==='-1;0;1;2;3;4;5;6'"
+    ],
+    "sach_dap_so": "-1;0;1;2;3;4;5;6",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-9B-b1",
+    "vai": "luyen",
+    "dang_bai": "NDB01294",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Liệt kê các số nguyên thoả bất đẳng thức kép",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x\\in\\mathbb{Z}$ sao cho: $2<x<7$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đọc kĩ hai đầu mút và dấu bất đẳng thức: có dấu $\\le$ (hoặc $\\ge$) thì lấy đầu mút đó, chỉ có dấu $<$ (hoặc $>$) thì không lấy.\n\n**Bước 1.** Chỉ ra hai đầu mút của khoảng: $2$ (bên trái) và $7$ (bên phải).\n\n**Bước 2.** Xét dấu bất đẳng thức ở từng đầu mút để biết có lấy đầu mút đó hay không.\n\n**Bước 3.** Liệt kê lần lượt các số nguyên từ trái sang phải trên trục số theo đúng hai điều kiện, không bỏ sót số nào kể cả số 0.\n\n**Phần 2. Trình bày**\n\nVì $2<x<7$ nên $x\\in\\{ 3;4;5;6 \\}$.\n\nVậy $x\\in\\{ 3;4;5;6 \\}$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-30;x<=30;x++){if(x>2&&x<7)r.push(x)}return r.join(';')})()==='3;4;5;6'"
+    ],
+    "sach_dap_so": "3;4;5;6",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-9B-b2",
+    "vai": "luyen",
+    "dang_bai": "NDB01294",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Liệt kê các số nguyên thoả bất đẳng thức kép",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x\\in\\mathbb{Z}$ sao cho: $-5\\le x<3$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đọc kĩ hai đầu mút và dấu bất đẳng thức: có dấu $\\le$ (hoặc $\\ge$) thì lấy đầu mút đó, chỉ có dấu $<$ (hoặc $>$) thì không lấy.\n\n**Bước 1.** Chỉ ra hai đầu mút của khoảng: $-5$ (bên trái) và $3$ (bên phải).\n\n**Bước 2.** Xét dấu bất đẳng thức ở từng đầu mút để biết có lấy đầu mút đó hay không.\n\n**Bước 3.** Liệt kê lần lượt các số nguyên từ trái sang phải trên trục số theo đúng hai điều kiện, không bỏ sót số nào kể cả số 0.\n\n**Phần 2. Trình bày**\n\nVì $-5\\le x<3$ nên $x\\in\\{ -5;-4;-3;-2;-1;0;1;2 \\}$.\n\nVậy $x\\in\\{ -5;-4;-3;-2;-1;0;1;2 \\}$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-30;x<=30;x++){if(x>=-5&&x<3)r.push(x)}return r.join(';')})()==='-5;-4;-3;-2;-1;0;1;2'"
+    ],
+    "sach_dap_so": "-5;-4;-3;-2;-1;0;1;2",
+    "ghi_chu": "ĐỀ SÁCH IN SAI — đề in \"5 ≤ x < 3\" (vô nghiệm); đáp số sách {-5;…;2} ứng với −5 ≤ x < 3 nên đã sửa đề thành −5 ≤ x < 3."
+  },
+  {
+    "id": "B1-9B-b3",
+    "vai": "luyen",
+    "dang_bai": "NDB01294",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Liệt kê các số nguyên thoả bất đẳng thức kép",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x\\in\\mathbb{Z}$ sao cho: $-4\\le x\\le 3$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đọc kĩ hai đầu mút và dấu bất đẳng thức: có dấu $\\le$ (hoặc $\\ge$) thì lấy đầu mút đó, chỉ có dấu $<$ (hoặc $>$) thì không lấy.\n\n**Bước 1.** Chỉ ra hai đầu mút của khoảng: $-4$ (bên trái) và $3$ (bên phải).\n\n**Bước 2.** Xét dấu bất đẳng thức ở từng đầu mút để biết có lấy đầu mút đó hay không.\n\n**Bước 3.** Liệt kê lần lượt các số nguyên từ trái sang phải trên trục số theo đúng hai điều kiện, không bỏ sót số nào kể cả số 0.\n\n**Phần 2. Trình bày**\n\nVì $-4\\le x\\le 3$ nên $x\\in\\{ -4;-3;-2;-1;0;1;2;3 \\}$.\n\nVậy $x\\in\\{ -4;-3;-2;-1;0;1;2;3 \\}$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-30;x<=30;x++){if(x>=-4&&x<=3)r.push(x)}return r.join(';')})()==='-4;-3;-2;-1;0;1;2;3'"
+    ],
+    "sach_dap_so": "-4;-3;-2;-1;0;1;2;3",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-9B-b4",
+    "vai": "luyen",
+    "dang_bai": "NDB01294",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Liệt kê các số nguyên thoả bất đẳng thức kép",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $x\\in\\mathbb{Z}$ sao cho: $-2<x\\le 2$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đọc kĩ hai đầu mút và dấu bất đẳng thức: có dấu $\\le$ (hoặc $\\ge$) thì lấy đầu mút đó, chỉ có dấu $<$ (hoặc $>$) thì không lấy.\n\n**Bước 1.** Chỉ ra hai đầu mút của khoảng: $-2$ (bên trái) và $2$ (bên phải).\n\n**Bước 2.** Xét dấu bất đẳng thức ở từng đầu mút để biết có lấy đầu mút đó hay không.\n\n**Bước 3.** Liệt kê lần lượt các số nguyên từ trái sang phải trên trục số theo đúng hai điều kiện, không bỏ sót số nào kể cả số 0.\n\n**Phần 2. Trình bày**\n\nVì $-2<x\\le 2$ nên $x\\in\\{ -1;0;1;2 \\}$.\n\nVậy $x\\in\\{ -1;0;1;2 \\}$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-30;x<=30;x++){if(x>-2&&x<=2)r.push(x)}return r.join(';')})()==='-1;0;1;2'"
+    ],
+    "sach_dap_so": "-1;0;1;2",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-10A-a",
+    "vai": "giang",
+    "dang_bai": "NDB01293",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm chữ số/số thay dấu * để bất đẳng thức đúng",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thay dấu $\\ast$ bằng chữ số thích hợp: $-241<-24\\ast$",
+    "dap_an": "0",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai vế đều là số âm nên đổi sang so sánh hai số đối của chúng (hai số nguyên dương) và đảo chiều bất đẳng thức.\n\n**Bước 1.** Nhận ra hai vế đều là số nguyên âm; đổi sang so sánh hai số đối của chúng và đảo chiều dấu bất đẳng thức.\n\n**Bước 2.** So sánh hai số nguyên dương từ chữ số hàng cao nhất: những chữ số giống nhau thì bỏ qua, chỉ cần xét chữ số có chứa $\\ast$.\n\n**Bước 3.** Tìm các chữ số $\\ast$ (từ 0 đến 9) làm cho bất đẳng thức mới đúng.\n\n**Phần 2. Trình bày**\n\nVì hai vế đều là số âm nên $-241<-24\\ast$ khi $241>24\\ast$.\n\nHai số có cùng hai chữ số đầu là 24 nên chỉ cần chữ số hàng đơn vị thoả $1>\\ast$.\n\nChữ số nhỏ hơn 1 chỉ có 0. Thử lại: $-241<-240$ (đúng).\n\nVậy $\\ast=0$.",
+    "kiem": [
+      "[0,1,2,3,4,5,6,7,8,9].filter(d=>-241<-(240+d)).join()==='0'"
+    ],
+    "sach_dap_so": "*=0",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-10A-b",
+    "vai": "giang",
+    "dang_bai": "NDB01293",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm chữ số/số thay dấu * để bất đẳng thức đúng",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thay dấu $\\ast$ bằng chữ số thích hợp: $-1\\ast9>-119$",
+    "dap_an": "0",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai vế đều là số âm nên đổi sang so sánh hai số đối của chúng (hai số nguyên dương) và đảo chiều bất đẳng thức.\n\n**Bước 1.** Nhận ra hai vế đều là số nguyên âm; đổi sang so sánh hai số đối của chúng và đảo chiều dấu bất đẳng thức.\n\n**Bước 2.** So sánh hai số nguyên dương từ chữ số hàng cao nhất: những chữ số giống nhau thì bỏ qua, chỉ cần xét chữ số có chứa $\\ast$.\n\n**Bước 3.** Tìm các chữ số $\\ast$ (từ 0 đến 9) làm cho bất đẳng thức mới đúng.\n\n**Phần 2. Trình bày**\n\nVì hai vế đều là số âm nên $-1\\ast9>-119$ khi $1\\ast9<119$.\n\nHai số cùng chữ số hàng trăm là 1, nên xét chữ số hàng chục: cần $\\ast<1$ (nếu $\\ast=1$ thì hai số bằng nhau, không thoả).\n\nChữ số nhỏ hơn 1 chỉ có 0. Thử lại: $-109>-119$ (đúng).\n\nVậy $\\ast=0$.",
+    "kiem": [
+      "[0,1,2,3,4,5,6,7,8,9].filter(d=>-(109+10*d)>-119).join()==='0'"
+    ],
+    "sach_dap_so": "*=0",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-10A-c",
+    "vai": "giang",
+    "dang_bai": "NDB01293",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm chữ số/số thay dấu * để bất đẳng thức đúng",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thay dấu $\\ast$ bằng chữ số thích hợp: $-\\ast6>-26$",
+    "dap_an": "1",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai vế đều là số âm nên đổi sang so sánh hai số đối của chúng (hai số nguyên dương) và đảo chiều bất đẳng thức.\n\n**Bước 1.** Nhận ra hai vế đều là số nguyên âm; đổi sang so sánh hai số đối của chúng và đảo chiều dấu bất đẳng thức.\n\n**Bước 2.** So sánh hai số nguyên dương từ chữ số hàng cao nhất: những chữ số giống nhau thì bỏ qua, chỉ cần xét chữ số có chứa $\\ast$.\n\n**Bước 3.** Tìm các chữ số $\\ast$ (từ 0 đến 9) làm cho bất đẳng thức mới đúng.\n\n**Chú ý:** chữ số đứng đầu của một số có hai chữ số phải khác 0.\n\n**Phần 2. Trình bày**\n\nVì hai vế đều là số âm nên $-\\ast6>-26$ khi $\\ast6<26$ (số $\\ast6$ có hai chữ số).\n\nXét chữ số hàng chục: cần $\\ast\\le2$; nếu $\\ast=2$ thì hai số bằng nhau, không thoả, nên $\\ast<2$.\n\nChữ số hàng chục của số có hai chữ số khác 0 nên $\\ast=1$. Thử lại: $-16>-26$ (đúng).\n\nVậy $\\ast=1$.",
+    "kiem": [
+      "[1,2,3,4,5,6,7,8,9].filter(d=>-(10*d+6)>-26).join()==='1'"
+    ],
+    "sach_dap_so": "*=1",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-10A-d",
+    "vai": "giang",
+    "dang_bai": "NDB01293",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm chữ số/số thay dấu * để bất đẳng thức đúng",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thay dấu $\\ast$ bằng chữ số thích hợp: $-98\\ast<-988$",
+    "dap_an": "9",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai vế đều là số âm nên đổi sang so sánh hai số đối của chúng (hai số nguyên dương) và đảo chiều bất đẳng thức.\n\n**Bước 1.** Nhận ra hai vế đều là số nguyên âm; đổi sang so sánh hai số đối của chúng và đảo chiều dấu bất đẳng thức.\n\n**Bước 2.** So sánh hai số nguyên dương từ chữ số hàng cao nhất: những chữ số giống nhau thì bỏ qua, chỉ cần xét chữ số có chứa $\\ast$.\n\n**Bước 3.** Tìm các chữ số $\\ast$ (từ 0 đến 9) làm cho bất đẳng thức mới đúng.\n\n**Phần 2. Trình bày**\n\nVì hai vế đều là số âm nên $-98\\ast<-988$ khi $98\\ast>988$.\n\nHai số cùng bắt đầu bằng 98 nên chỉ cần $\\ast>8$.\n\nChữ số lớn hơn 8 chỉ có 9. Thử lại: $-989<-988$ (đúng).\n\nVậy $\\ast=9$.",
+    "kiem": [
+      "[0,1,2,3,4,5,6,7,8,9].filter(d=>-(980+d)<-988).join()==='9'"
+    ],
+    "sach_dap_so": "*=9",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-10B-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01293",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm chữ số/số thay dấu * để bất đẳng thức đúng",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thay dấu $\\ast$ bằng chữ số thích hợp: $-151<-15\\ast$",
+    "dap_an": "0",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai vế đều là số âm nên đổi sang so sánh hai số đối của chúng (hai số nguyên dương) và đảo chiều bất đẳng thức.\n\n**Bước 1.** Nhận ra hai vế đều là số nguyên âm; đổi sang so sánh hai số đối của chúng và đảo chiều dấu bất đẳng thức.\n\n**Bước 2.** So sánh hai số nguyên dương từ chữ số hàng cao nhất: những chữ số giống nhau thì bỏ qua, chỉ cần xét chữ số có chứa $\\ast$.\n\n**Bước 3.** Tìm các chữ số $\\ast$ (từ 0 đến 9) làm cho bất đẳng thức mới đúng.\n\n**Phần 2. Trình bày**\n\nVì hai vế đều là số âm nên $-151<-15\\ast$ khi $151>15\\ast$.\n\nHai số cùng bắt đầu bằng 15 nên chỉ cần $1>\\ast$.\n\nChữ số nhỏ hơn 1 chỉ có 0. Thử lại: $-151<-150$ (đúng).\n\nVậy $\\ast=0$.",
+    "kiem": [
+      "[0,1,2,3,4,5,6,7,8,9].filter(d=>-151<-(150+d)).join()==='0'"
+    ],
+    "sach_dap_so": "*=0",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-10B-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01293",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm chữ số/số thay dấu * để bất đẳng thức đúng",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thay dấu $\\ast$ bằng chữ số thích hợp: $-2\\ast6>-216$",
+    "dap_an": "0",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai vế đều là số âm nên đổi sang so sánh hai số đối của chúng (hai số nguyên dương) và đảo chiều bất đẳng thức.\n\n**Bước 1.** Nhận ra hai vế đều là số nguyên âm; đổi sang so sánh hai số đối của chúng và đảo chiều dấu bất đẳng thức.\n\n**Bước 2.** So sánh hai số nguyên dương từ chữ số hàng cao nhất: những chữ số giống nhau thì bỏ qua, chỉ cần xét chữ số có chứa $\\ast$.\n\n**Bước 3.** Tìm các chữ số $\\ast$ (từ 0 đến 9) làm cho bất đẳng thức mới đúng.\n\n**Phần 2. Trình bày**\n\nVì hai vế đều là số âm nên $-2\\ast6>-216$ khi $2\\ast6<216$.\n\nHai số cùng chữ số hàng trăm là 2, nên xét chữ số hàng chục: cần $\\ast<1$ (nếu $\\ast=1$ thì hai số bằng nhau, không thoả).\n\nChữ số nhỏ hơn 1 chỉ có 0. Thử lại: $-206>-216$ (đúng).\n\nVậy $\\ast=0$.",
+    "kiem": [
+      "[0,1,2,3,4,5,6,7,8,9].filter(d=>-(206+10*d)>-216).join()==='0'"
+    ],
+    "sach_dap_so": "*=0",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-10B-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01293",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm chữ số/số thay dấu * để bất đẳng thức đúng",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thay dấu $\\ast$ bằng chữ số thích hợp: $-\\ast9>-29$",
+    "dap_an": "1",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai vế đều là số âm nên đổi sang so sánh hai số đối của chúng (hai số nguyên dương) và đảo chiều bất đẳng thức.\n\n**Bước 1.** Nhận ra hai vế đều là số nguyên âm; đổi sang so sánh hai số đối của chúng và đảo chiều dấu bất đẳng thức.\n\n**Bước 2.** So sánh hai số nguyên dương từ chữ số hàng cao nhất: những chữ số giống nhau thì bỏ qua, chỉ cần xét chữ số có chứa $\\ast$.\n\n**Bước 3.** Tìm các chữ số $\\ast$ (từ 0 đến 9) làm cho bất đẳng thức mới đúng.\n\n**Chú ý:** chữ số đứng đầu của một số có hai chữ số phải khác 0.\n\n**Phần 2. Trình bày**\n\nVì hai vế đều là số âm nên $-\\ast9>-29$ khi $\\ast9<29$ (số $\\ast9$ có hai chữ số).\n\nXét chữ số hàng chục: cần $\\ast\\le2$; nếu $\\ast=2$ thì hai số bằng nhau, không thoả, nên $\\ast<2$.\n\nChữ số hàng chục của số có hai chữ số khác 0 nên $\\ast=1$. Thử lại: $-19>-29$ (đúng).\n\nVậy $\\ast=1$.",
+    "kiem": [
+      "[1,2,3,4,5,6,7,8,9].filter(d=>-(10*d+9)>-29).join()==='1'"
+    ],
+    "sach_dap_so": "*=1",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-10B-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01293",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm chữ số/số thay dấu * để bất đẳng thức đúng",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Thay dấu $\\ast$ bằng chữ số thích hợp: $-18\\ast<-188$",
+    "dap_an": "9",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai vế đều là số âm nên đổi sang so sánh hai số đối của chúng (hai số nguyên dương) và đảo chiều bất đẳng thức.\n\n**Bước 1.** Nhận ra hai vế đều là số nguyên âm; đổi sang so sánh hai số đối của chúng và đảo chiều dấu bất đẳng thức.\n\n**Bước 2.** So sánh hai số nguyên dương từ chữ số hàng cao nhất: những chữ số giống nhau thì bỏ qua, chỉ cần xét chữ số có chứa $\\ast$.\n\n**Bước 3.** Tìm các chữ số $\\ast$ (từ 0 đến 9) làm cho bất đẳng thức mới đúng.\n\n**Phần 2. Trình bày**\n\nVì hai vế đều là số âm nên $-18\\ast<-188$ khi $18\\ast>188$.\n\nHai số cùng bắt đầu bằng 18 nên chỉ cần $\\ast>8$.\n\nChữ số lớn hơn 8 chỉ có 9. Thử lại: $-189<-188$ (đúng).\n\nVậy $\\ast=9$.",
+    "kiem": [
+      "[0,1,2,3,4,5,6,7,8,9].filter(d=>-(180+d)<-188).join()==='9'"
+    ],
+    "sach_dap_so": "*=9",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-11-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01287",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Diễn đạt đại lượng thực tế bằng số nguyên âm / bằng lời",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Điền vào chỗ trống (....) trong câu sau: Nếu $+150000$ đồng biểu diễn số tiền ta có thì $-150000$ đồng biểu diễn số tiền ....",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dấu $+$ chỉ số tiền có thêm, dấu $-$ chỉ chiều ngược lại.\n\n**Bước 1.** Đọc quy ước: $+150000$ đồng là số tiền ta có.\n\n**Bước 2.** Nhận ra $-150000$ đồng mang dấu ngược lại nên chỉ chiều ngược lại với \"có\".\n\n**Bước 3.** Diễn đạt chiều ngược lại với \"có\" bằng lời, giữ nguyên số tiền.\n\n**Phần 2. Trình bày**\n\n$+150000$ đồng là số tiền ta có.\n\n$-150000$ đồng là số tiền ngược lại với \"có\", tức là số tiền bị mất (phải trả đi).\n\nVậy chỗ trống là: bị mất.",
+    "kiem": [
+      "(-150000<0)"
+    ],
+    "sach_dap_so": "bị mất",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-11-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01287",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Diễn đạt đại lượng thực tế bằng số nguyên âm / bằng lời",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Điền vào chỗ trống (....) trong câu sau: Nếu $+2020$ biểu diễn năm 2020 sau Công nguyên thì $-2020$ biểu diễn ....",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số âm chỉ chiều ngược lại của số dương: sau Công nguyên thì ngược lại là trước Công nguyên.\n\n**Bước 1.** Đọc quy ước: số dương ứng với năm sau Công nguyên, mốc là năm $0$.\n\n**Bước 2.** Nhận ra $-2020$ có dấu ngược lại nên nằm ở phía còn lại của mốc.\n\n**Bước 3.** Giữ nguyên số 2020 rồi nói lại bằng lời.\n\n**Phần 2. Trình bày**\n\n$+2020$ là năm 2020 sau Công nguyên.\n\nDo đó $-2020$ là năm 2020 trước Công nguyên.\n\nVậy chỗ trống là: năm 2020 trước Công nguyên.",
+    "kiem": [
+      "(-2020<0)"
+    ],
+    "sach_dap_so": "năm 2020 trước Công nguyên",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-11-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01287",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Diễn đạt đại lượng thực tế bằng số nguyên âm / bằng lời",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Điền vào chỗ trống (....) trong câu sau: Người thợ lặn, lặn được $-100\\text{ m}$ có nghĩa là ....",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** mực nước biển là mốc $0$; số âm chỉ vị trí thấp hơn mốc.\n\n**Bước 1.** Nhận ra mốc $0$ là mực nước biển.\n\n**Bước 2.** Số $-100$ là số âm nên chỉ vị trí thấp hơn mốc.\n\n**Bước 3.** Giữ nguyên số 100 rồi nói lại bằng lời.\n\n**Phần 2. Trình bày**\n\nĐộ cao $-100\\text{ m}$ nghĩa là thấp hơn mực nước biển 100 m.\n\nVậy người thợ lặn đã lặn sâu dưới mực nước biển 100 m.",
+    "kiem": [
+      "(-100<0)"
+    ],
+    "sach_dap_so": "người thợ đã lặn sâu dưới mực nước biển 100 m",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-12",
+    "vai": "luyen",
+    "dang_bai": "NDB01294",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Gồm trục số (01290) và liệt kê số nguyên giữa hai số (01294); dạng sau thắng",
+    "loai_cau": "tu_luan",
+    "noi_dung": "a) Biểu diễn các số $-3;-2;0;2;4$ trên trục số;\nb) Ghi các số nguyên nằm giữa các số $-2$ và $4$;\nc) Trên trục số có những điểm nào cùng cách vạch số 0 một khoảng 4 đơn vị?",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số âm nằm bên trái gốc $O$, số dương nằm bên phải $O$; hai điểm cùng cách $O$ một khoảng thì biểu diễn hai số đối nhau.\n\n**Bước 1.** Vẽ trục số: chọn gốc $O$, đơn vị, đánh dấu các vạch cách đều rồi đặt các số đã cho đúng vị trí (số 0 chính là gốc $O$).\n\n**Bước 2.** Ý b: chọn các số nguyên lớn hơn $-2$ và nhỏ hơn $4$; đọc các vạch nằm giữa hai điểm này, nhớ kể cả số 0.\n\n**Bước 3.** Ý c: tìm các điểm cách $O$ đúng 4 đơn vị — một điểm ở bên phải và một điểm ở bên trái $O$.\n\n**Chú ý:** đề nói \"nằm giữa\" nên không lấy hai đầu mút $-2$ và $4$.\n\n**Phần 2. Trình bày**\n\na) Trên trục số, các điểm $-3$, $-2$ nằm bên trái $O$ (cách $O$ lần lượt 3 và 2 đơn vị); điểm $0$ là gốc $O$; các điểm $2$, $4$ nằm bên phải $O$ (cách $O$ lần lượt 2 và 4 đơn vị). (HS tự vẽ trục số.)\n\nb) Các số nguyên nằm giữa $-2$ và $4$ là $-1;0;1;2;3$.\n\nc) Các điểm cách vạch số 0 một khoảng 4 đơn vị nằm hai bên $O$: điểm $+4$ và điểm $-4$.\n\nVậy: b) $-1;0;1;2;3$; c) hai điểm $+4$ và $-4$.",
+    "kiem": [
+      "[...Array(21).keys()].map(i=>i-10).filter(x=>x>-2&&x<4).join(';')==='-1;0;1;2;3'",
+      "[...Array(21).keys()].map(i=>i-10).filter(x=>Math.abs(x)===4).join(';')==='-4;4'"
+    ],
+    "sach_dap_so": "b) -1;0;1;2;3; c) +4 và -4",
+    "ghi_chu": "Ý a cần hình trục số (sách: image149.jpeg) — chưa có hình giải."
+  },
+  {
+    "id": "B1-13-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01292",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Sắp xếp dãy số nguyên tăng/giảm dần",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Sắp xếp các số nguyên sau theo chiều tăng dần: $0;-2;-3;1;4;-5;+6$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chia các số thành số âm, số 0, số dương rồi sắp từng nhóm; số dương lớn hơn 0, 0 lớn hơn số âm.\n\n**Bước 1.** Phân loại các số đã cho thành ba nhóm: số nguyên âm, số 0 (nếu có) và số nguyên dương.\n\n**Bước 2.** Sắp xếp riêng từng nhóm: số nguyên dương so sánh như số tự nhiên; với số nguyên âm, số có phần số (bỏ dấu $-$) lớn hơn thì nhỏ hơn.\n\n**Bước 3.** Ghép các nhóm theo thứ tự trên trục số từ trái sang phải: số âm, rồi số 0 (nếu có), rồi số dương.\n\n**Phần 2. Trình bày**\n\nChia các số thành nhóm: số nguyên âm: $-5;-3;-2$; số 0; số nguyên dương: $1;4;+6$.\n\nSắp xếp các số nguyên âm tăng dần: $-5<-3<-2$.\n\nSắp xếp các số nguyên dương tăng dần: $1<4<+6$.\n\nGhép các nhóm (âm, rồi 0 nếu có, rồi dương): $-5<-3<-2<0<1<4<+6$.\n\nVậy các số theo thứ tự tăng dần là: $-5;-3;-2;0;1;4;+6$.",
+    "kiem": [
+      "[0,-2,-3,1,4,-5,6].sort((x,y)=>x-y).join(';')==='-5;-3;-2;0;1;4;6'"
+    ],
+    "sach_dap_so": "-5;-3;-2;0;1;4;+6",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-13-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01292",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Sắp xếp dãy số nguyên tăng/giảm dần",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Sắp xếp các số nguyên sau theo chiều giảm dần: $-6;+3;-8;9;-1;4;-2$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chia các số thành số âm, số 0, số dương rồi sắp từng nhóm; số dương lớn hơn 0, 0 lớn hơn số âm.\n\n**Bước 1.** Phân loại các số đã cho thành ba nhóm: số nguyên âm, số 0 (nếu có) và số nguyên dương.\n\n**Bước 2.** Sắp xếp riêng từng nhóm: số nguyên dương so sánh như số tự nhiên; với số nguyên âm, số có phần số (bỏ dấu $-$) lớn hơn thì nhỏ hơn.\n\n**Bước 3.** Ghép các nhóm theo thứ tự trên trục số từ phải sang trái: số dương, rồi số 0 (nếu có), rồi số âm.\n\n**Phần 2. Trình bày**\n\nChia các số thành nhóm: số nguyên âm: $-8;-6;-2;-1$; số nguyên dương: $+3;4;9$.\n\nSắp xếp các số nguyên âm giảm dần: $-1>-2>-6>-8$.\n\nSắp xếp các số nguyên dương giảm dần: $9>4>+3$.\n\nGhép các nhóm (dương, rồi 0 nếu có, rồi âm): $9>4>+3>-1>-2>-6>-8$.\n\nVậy các số theo thứ tự giảm dần là: $9;4;+3;-1;-2;-6;-8$.",
+    "kiem": [
+      "[-6,3,-8,9,-1,4,-2].sort((x,y)=>y-x).join(';')==='9;4;3;-1;-2;-6;-8'"
+    ],
+    "sach_dap_so": "9;4;+3;-1;-2;-6;-8",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-14-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01291",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "So sánh hai số nguyên, điền dấu",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh các số nguyên sau (điền dấu $<$, $>$ hoặc $=$): $-9$ và $9$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** mọi số nguyên âm đều nhỏ hơn mọi số nguyên dương.\n\n**Bước 1.** Nhận ra một số là số nguyên âm, số kia là số nguyên dương.\n\n**Bước 2.** Nhớ lại: điểm biểu diễn số âm nằm bên trái gốc $O$, điểm biểu diễn số dương nằm bên phải gốc $O$.\n\n**Bước 3.** Viết kết quả bằng dấu thích hợp.\n\n**Phần 2. Trình bày**\n\nVì số nguyên âm nhỏ hơn số nguyên dương.\n\nVậy $-9<9$.",
+    "kiem": [
+      "(-9<9?'<':-9>9?'>':'=')==='<'"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-14-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01291",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "So sánh hai số nguyên, điền dấu",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh các số nguyên sau (điền dấu $<$, $>$ hoặc $=$): $15$ và $-150$.",
+    "dap_an": ">",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** mọi số nguyên âm đều nhỏ hơn mọi số nguyên dương.\n\n**Bước 1.** Nhận ra một số là số nguyên âm, số kia là số nguyên dương.\n\n**Bước 2.** Nhớ lại: điểm biểu diễn số âm nằm bên trái gốc $O$, điểm biểu diễn số dương nằm bên phải gốc $O$.\n\n**Bước 3.** Viết kết quả bằng dấu thích hợp.\n\n**Phần 2. Trình bày**\n\nVì số nguyên âm nhỏ hơn số nguyên dương.\n\nVậy $15>-150$.",
+    "kiem": [
+      "(15<-150?'<':15>-150?'>':'=')==='>'"
+    ],
+    "sach_dap_so": ">",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-14-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01291",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "So sánh hai số nguyên, điền dấu",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh các số nguyên sau (điền dấu $<$, $>$ hoặc $=$): $-20$ và $-10$.",
+    "dap_an": "<",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** với hai số nguyên âm, so sánh hai số đối của chúng (là hai số nguyên dương) rồi đảo chiều dấu bất đẳng thức.\n\n**Bước 1.** Nhận ra cả hai số đều là số nguyên âm nên không dùng được nhận xét \"số âm nhỏ hơn số dương\".\n\n**Bước 2.** Viết mỗi số thành số đối của một số nguyên dương: $-20$ là số đối của $20$, $-10$ là số đối của $10$.\n\n**Bước 3.** So sánh hai số nguyên dương đó như số tự nhiên rồi đảo chiều dấu bất đẳng thức cho hai số âm.\n\n**Chú ý:** với hai số âm, số có phần số lớn hơn thì nhỏ hơn.\n\n**Phần 2. Trình bày**\n\nVì $20>10$ nên $-20<-10$.\n\nVậy $-20<-10$.",
+    "kiem": [
+      "(-20<-10?'<':-20>-10?'>':'=')==='<'"
+    ],
+    "sach_dap_so": "<",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-14-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01291",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "So sánh hai số nguyên, điền dấu",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "So sánh các số nguyên sau (điền dấu $<$, $>$ hoặc $=$): $-30999$ và $-31888$.",
+    "dap_an": ">",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** với hai số nguyên âm, so sánh hai số đối của chúng (là hai số nguyên dương) rồi đảo chiều dấu bất đẳng thức.\n\n**Bước 1.** Nhận ra cả hai số đều là số nguyên âm nên không dùng được nhận xét \"số âm nhỏ hơn số dương\".\n\n**Bước 2.** Viết mỗi số thành số đối của một số nguyên dương: $-30999$ là số đối của $30999$, $-31888$ là số đối của $31888$.\n\n**Bước 3.** So sánh hai số nguyên dương đó như số tự nhiên rồi đảo chiều dấu bất đẳng thức cho hai số âm.\n\n**Chú ý:** với hai số âm, số có phần số lớn hơn thì nhỏ hơn.\n\n**Phần 2. Trình bày**\n\nVì $30999<31888$ nên $-30999>-31888$.\n\nVậy $-30999>-31888$.",
+    "kiem": [
+      "(-30999<-31888?'<':-30999>-31888?'>':'=')==='>'"
+    ],
+    "sach_dap_so": ">",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-15-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01294",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Liệt kê các số nguyên thoả bất đẳng thức kép",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Liệt kê các phần tử của tập hợp sau: $A=\\{x\\in\\mathbb{Z}\\mid 3>x\\ge -5\\}$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đọc kĩ hai đầu mút và dấu bất đẳng thức: có dấu $\\le$ (hoặc $\\ge$) thì lấy đầu mút đó, chỉ có dấu $<$ (hoặc $>$) thì không lấy.\n\n**Bước 1.** Chỉ ra hai đầu mút của khoảng: $-5$ (bên trái) và $3$ (bên phải).\n\n**Bước 2.** Xét dấu bất đẳng thức ở từng đầu mút để biết có lấy đầu mút đó hay không.\n\n**Bước 3.** Liệt kê lần lượt các số nguyên từ trái sang phải trên trục số theo đúng hai điều kiện, không bỏ sót số nào kể cả số 0.\n\n**Phần 2. Trình bày**\n\nVì $3>x\\ge -5$ nên $A=\\{ -5;-4;-3;-2;-1;0;1;2 \\}$.\n\nVậy $A=\\{ -5;-4;-3;-2;-1;0;1;2 \\}$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-30;x<=30;x++){if(x>=-5&&x<3)r.push(x)}return r.join(';')})()==='-5;-4;-3;-2;-1;0;1;2'"
+    ],
+    "sach_dap_so": "-5;-4;-3;-2;-1;0;1;2",
+    "ghi_chu": "Đáp số sách viết giảm dần {2;1;0;…;-5}; ở đây liệt kê tăng dần — cùng một tập hợp."
+  },
+  {
+    "id": "B1-15-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01294",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Liệt kê số nguyên thoả hai điều kiện (tận cùng 2 và nằm trong khoảng)",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Liệt kê các phần tử của tập hợp sau: $B=\\{x\\in\\mathbb{Z}\\mid x\\text{ là số có chữ số tận cùng là 2 và }-25<x<20\\}$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** gộp hai điều kiện: $x$ là số nguyên nằm giữa $-25$ và $20$, đồng thời chữ số tận cùng (bỏ dấu) là 2.\n\n**Bước 1.** Xác định khoảng: $-25<x<20$, tức $x$ chạy từ $-24$ đến $19$.\n\n**Bước 2.** Liệt kê các số có chữ số tận cùng là 2, tách thành hai nhóm: nhóm số dương và nhóm số âm (số $2$ và số $-2$ đều tận cùng là 2).\n\n**Bước 3.** Với mỗi nhóm, loại các số nằm ngoài khoảng đã xác định rồi viết tập hợp.\n\n**Chú ý:** đừng bỏ sót số $-2$ vì nó cũng có chữ số tận cùng là 2.\n\n**Phần 2. Trình bày**\n\nCác số nguyên dương nằm trong khoảng và có chữ số tận cùng là 2: $2;12$ (số $22$ lớn hơn $20$ nên bị loại).\n\nCác số nguyên âm nằm trong khoảng và có chữ số tận cùng là 2: $-22;-12;-2$ (số $-32$ nhỏ hơn $-25$ nên bị loại).\n\nVậy $B=\\{-22;-12;-2;2;12\\}$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-24;x<=19;x++)if(Math.abs(x)%10===2)r.push(x);return r.join(';')})()==='-22;-12;-2;2;12'"
+    ],
+    "sach_dap_so": "B={-22;-12;2;12}",
+    "ghi_chu": "LỆCH SÁCH — sách bỏ sót số -2 (có chữ số tận cùng là 2 và -25 < -2 < 20); tập đúng có 5 phần tử, tôi giữ kết quả đúng."
+  },
+  {
+    "id": "B1-15-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01294",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Liệt kê các số nguyên thoả bất đẳng thức kép",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Liệt kê các phần tử của tập hợp sau: $C=\\{x\\in\\mathbb{Z}\\mid -5\\le x\\le 6\\}$",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đọc kĩ hai đầu mút và dấu bất đẳng thức: có dấu $\\le$ (hoặc $\\ge$) thì lấy đầu mút đó, chỉ có dấu $<$ (hoặc $>$) thì không lấy.\n\n**Bước 1.** Chỉ ra hai đầu mút của khoảng: $-5$ (bên trái) và $6$ (bên phải).\n\n**Bước 2.** Xét dấu bất đẳng thức ở từng đầu mút để biết có lấy đầu mút đó hay không.\n\n**Bước 3.** Liệt kê lần lượt các số nguyên từ trái sang phải trên trục số theo đúng hai điều kiện, không bỏ sót số nào kể cả số 0.\n\n**Phần 2. Trình bày**\n\nVì $-5\\le x\\le 6$ nên $C=\\{ -5;-4;-3;-2;-1;0;1;2;3;4;5;6 \\}$.\n\nVậy $C=\\{ -5;-4;-3;-2;-1;0;1;2;3;4;5;6 \\}$.",
+    "kiem": [
+      "(()=>{const r=[];for(let x=-30;x<=30;x++){if(x>=-5&&x<=6)r.push(x)}return r.join(';')})()==='-5;-4;-3;-2;-1;0;1;2;3;4;5;6'"
+    ],
+    "sach_dap_so": "-5;-4;-3;-2;-1;0;1;2;3;4;5;6",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-16-a",
+    "vai": "luyen",
+    "dang_bai": "NDB01293",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm chữ số/số thay dấu * để bất đẳng thức đúng",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Điền chữ số thích hợp vào dấu $\\ast$ để được kết luận đúng: $16\\ast<161$",
+    "dap_an": "0",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** so sánh hai số từ chữ số hàng cao nhất; những chữ số giống nhau thì bỏ qua, chỉ cần xét chữ số có chứa dấu $\\ast$.\n\n**Bước 1.** Nhận ra các chữ số đứng trước dấu $\\ast$ ở hai vế giống nhau (hoặc cần xét lần lượt từ hàng cao).\n\n**Bước 2.** Đưa bất đẳng thức về điều kiện đơn giản cho chữ số $\\ast$.\n\n**Bước 3.** Tìm các chữ số $\\ast$ (từ 0 đến 9) thoả điều kiện, kiểm tra lại bằng cách thay vào.\n\n**Phần 2. Trình bày**\n\nHai số cùng bắt đầu bằng 16 nên chỉ cần $\\ast<1$.\n\nChữ số nhỏ hơn 1 chỉ có 0. Thử lại: $160<161$ (đúng).\n\nVậy $\\ast=0$.",
+    "kiem": [
+      "[0,1,2,3,4,5,6,7,8,9].filter(d=>160+d<161).join()==='0'"
+    ],
+    "sach_dap_so": "*=0",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-16-b",
+    "vai": "luyen",
+    "dang_bai": "NDB01293",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm chữ số/số thay dấu * để bất đẳng thức đúng",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Điền chữ số thích hợp vào dấu $\\ast$ để được kết luận đúng: $-11\\ast>-111$",
+    "dap_an": "0",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai vế đều là số âm nên đổi sang so sánh hai số đối của chúng (hai số nguyên dương) và đảo chiều bất đẳng thức.\n\n**Bước 1.** Nhận ra hai vế đều là số nguyên âm; đổi sang so sánh hai số đối của chúng và đảo chiều dấu bất đẳng thức.\n\n**Bước 2.** So sánh hai số nguyên dương từ chữ số hàng cao nhất: những chữ số giống nhau thì bỏ qua, chỉ cần xét chữ số có chứa $\\ast$.\n\n**Bước 3.** Tìm các chữ số $\\ast$ (từ 0 đến 9) làm cho bất đẳng thức mới đúng.\n\n**Phần 2. Trình bày**\n\nVì hai vế đều là số âm nên $-11\\ast>-111$ khi $11\\ast<111$.\n\nHai số cùng bắt đầu bằng 11 nên chỉ cần $\\ast<1$.\n\nChữ số nhỏ hơn 1 chỉ có 0. Thử lại: $-110>-111$ (đúng).\n\nVậy $\\ast=0$.",
+    "kiem": [
+      "[0,1,2,3,4,5,6,7,8,9].filter(d=>-(110+d)>-111).join()==='0'"
+    ],
+    "sach_dap_so": "*=0",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-16-c",
+    "vai": "luyen",
+    "dang_bai": "NDB01293",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm chữ số/số thay dấu * để bất đẳng thức đúng",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Điền chữ số thích hợp vào dấu $\\ast$ để được kết luận đúng: $-202<-\\ast02$",
+    "dap_an": "1",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai vế đều là số âm nên đổi sang so sánh hai số đối của chúng (hai số nguyên dương) và đảo chiều bất đẳng thức.\n\n**Bước 1.** Nhận ra hai vế đều là số nguyên âm; đổi sang so sánh hai số đối của chúng và đảo chiều dấu bất đẳng thức.\n\n**Bước 2.** So sánh hai số nguyên dương từ chữ số hàng cao nhất: những chữ số giống nhau thì bỏ qua, chỉ cần xét chữ số có chứa $\\ast$.\n\n**Bước 3.** Tìm các chữ số $\\ast$ (từ 0 đến 9) làm cho bất đẳng thức mới đúng.\n\n**Chú ý:** chữ số đứng đầu một số có ba chữ số phải khác 0.\n\n**Phần 2. Trình bày**\n\nVì hai vế đều là số âm nên $-202<-\\ast02$ khi $202>\\ast02$.\n\nSo sánh chữ số hàng trăm: cần $\\ast\\le2$; nếu $\\ast=2$ thì hai số bằng nhau, không thoả, nên $\\ast<2$.\n\nChữ số hàng trăm của số có ba chữ số khác 0 nên $\\ast=1$. Thử lại: $-202<-102$ (đúng).\n\nVậy $\\ast=1$.",
+    "kiem": [
+      "[1,2,3,4,5,6,7,8,9].filter(d=>-202<-(100*d+2)).join()==='1'"
+    ],
+    "sach_dap_so": "*=1",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-16-d",
+    "vai": "luyen",
+    "dang_bai": "NDB01293",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm chữ số/số thay dấu * để bất đẳng thức đúng",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Điền hai chữ số thích hợp vào dấu $\\ast\\ast$ để được kết luận đúng: $22<\\ast\\ast<24$",
+    "dap_an": "23",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số cần tìm là số tự nhiên nằm giữa hai số đã cho.\n\n**Bước 1.** Viết bất đẳng thức dưới dạng \"số nằm giữa hai số\".\n\n**Bước 2.** Liệt kê các số tự nhiên nằm giữa 22 và 24.\n\n**Bước 3.** Kiểm tra số tìm được thoả cả hai vế.\n\n**Phần 2. Trình bày**\n\nSố cần tìm có hai chữ số, lớn hơn 22 và nhỏ hơn 24.\n\nChỉ có một số nguyên nằm giữa 22 và 24. Thử lại: $22<23<24$ (đúng).\n\nVậy $\\ast\\ast=23$.",
+    "kiem": [
+      "[...Array.from({length:90},(_,i)=>i+10)].filter(d=>22<d&&d<24).join()==='23'"
+    ],
+    "sach_dap_so": "**=23",
+    "ghi_chu": ""
+  },
+  {
+    "id": "B1-16-e",
+    "vai": "luyen",
+    "dang_bai": "NDB01293",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Tìm chữ số/số thay dấu * để bất đẳng thức đúng",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Điền số nguyên thích hợp vào dấu $\\ast$ để được kết luận đúng: $-3<\\ast<-1$",
+    "dap_an": "-2",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số cần tìm là số nguyên nằm giữa hai số đã cho trên trục số.\n\n**Bước 1.** Hình dung hai điểm $-3$ và $-1$ trên trục số.\n\n**Bước 2.** Tìm các vạch số nguyên nằm giữa hai điểm này (không lấy hai đầu mút).\n\n**Bước 3.** Kiểm tra số tìm được thoả cả hai vế.\n\n**Phần 2. Trình bày**\n\nSố cần tìm là số nguyên lớn hơn $-3$ và nhỏ hơn $-1$.\n\nTrên trục số, giữa $-3$ và $-1$ chỉ có một vạch số nguyên. Thử lại: $-3<-2<-1$ (đúng).\n\nVậy $\\ast=-2$.",
+    "kiem": [
+      "[-5,-4,-3,-2,-1,0,1].filter(d=>-3<d&&d<-1).join()==='-2'"
+    ],
+    "sach_dap_so": "*=-2",
+    "ghi_chu": "ĐỀ SÁCH IN KHÔNG RÕ — đề in \"−3 < * < −1\" trong khi lời dẫn nói \"chữ số\"; đáp số sách là *=−2 nên hiểu * là số nguyên (đã sửa lời dẫn thành \"số nguyên\")."
+  },
+  {
+    "id": "B1-16-f",
+    "vai": "luyen",
+    "dang_bai": "NDB01293",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm chữ số/số thay dấu * để bất đẳng thức đúng",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Điền chữ số thích hợp vào dấu $\\ast$ để được kết luận đúng: $1>\\ast>-1$",
+    "dap_an": "0",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chữ số là số tự nhiên từ 0 đến 9, nên luôn lớn hơn $-1$.\n\n**Bước 1.** Nhận ra $\\ast$ là chữ số nên không âm.\n\n**Bước 2.** Từ điều kiện $\\ast<1$ tìm chữ số thoả.\n\n**Bước 3.** Thử lại với cả hai vế.\n\n**Phần 2. Trình bày**\n\nSố cần tìm là chữ số nhỏ hơn 1 và lớn hơn $-1$.\n\nChữ số không âm nên chỉ cần $\\ast<1$; chữ số nhỏ hơn 1 là 0. Thử lại: $1>0>-1$ (đúng).\n\nVậy $\\ast=0$.",
+    "kiem": [
+      "[0,1,2,3,4,5,6,7,8,9].filter(d=>1>d&&d>-1).join()==='0'"
+    ],
+    "sach_dap_so": "*=0",
+    "ghi_chu": ""
+  }
+]
