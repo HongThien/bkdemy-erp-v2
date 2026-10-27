@@ -290,6 +290,18 @@ export type KhoCauRow = {
   anh_de: string | null; anh_dap_an: string | null; da_duyet: boolean; kho_chuan: boolean; kiem_may: string | null
   nguon: string; la_goc: boolean; nguon_gan: string; dang_bai_id: string | null; dang_bai: string | null; ly_do: string | null
 }
+// Thùy 27/10 — ngăn 📚 Kho câu: chuyển 1 câu sang dạng bài khác (gán của người; mặc định kèm bản sao của câu gốc) · đưa câu vào
+// KHO RÁC (xoa_at, khôi phục ở màn Kho rác). Kho gốc (Đại/HGT) và mọi luật chặn nằm ở DB (fn_bdm_cau_chuyen_dang / fn_bdm_cau_xoa).
+export async function chuyenCauSangDang(maCau: string, dangBai: string, caBanSao = true): Promise<{ id: string; ten: string; nhom: string; chu_de: string; so_cau: number }> {
+  const { data, error } = await supabase.rpc('fn_bdm_cau_chuyen_dang', { p_ma_cau: maCau, p_dang_bai: dangBai, p_ca_ban_sao: caBanSao })
+  if (error) loi(error)
+  return data as { id: string; ten: string; nhom: string; chu_de: string; so_cau: number }
+}
+export async function xoaCauKho(maCau: string, caBanSao: boolean): Promise<number> {
+  const { data, error } = await supabase.rpc('fn_bdm_cau_xoa', { p_ma_cau: maCau, p_ca_ban_sao: caBanSao })
+  if (error) loi(error)
+  return Number(data ?? 0)
+}
 export async function getKhoCau(loai: 'dang_bai' | 'nhom' | 'chua_khop' | 'de_xuat' | 'thieu_dang' | 'dung_sai', id: string, loc: KhoCauLoc = 'tat_ca', limit = 40, offset = 0): Promise<KhoCauRow[]> {
   const { data, error } = await supabase.rpc('fn_bdm_kho_cau', { p_loai: loai, p_id: id, p_loc: loc, p_limit: limit, p_offset: offset })
   if (error) loi(error)
