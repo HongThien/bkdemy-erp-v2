@@ -7,6 +7,10 @@ argument-hint: <co_giai|khong_giai>
 
 `$ARGUMENTS` = `co_giai` (luồng A, có lời giải sẵn) hoặc `khong_giai` (luồng B, chỉ có đề).
 
+## ⭐ SÁCH THAM KHẢO — VÍ DỤ vào KHO TRÊN LỚP, BÀI TẬP vào KHO VỀ NHÀ (Thùy 27/10, mọi khối)
+
+Tài liệu là sách tham khảo (có phần ví dụ mẫu + phần bài tập): **ví dụ hướng dẫn** ⇒ kho TRÊN LỚP (`dai_cau_lop`, gắn dạng bài mới, vai `giang`, qua `fn_dai_lop_them`), **bài tập** ⇒ kho VỀ NHÀ (kho câu luyện như các mục dưới). Không nhập ví dụ vào kho câu luyện. Khối/nhánh chưa có kho trên lớp ⇒ để riêng ví dụ, báo Thùy. Chi tiết: `kho-rules/README.md` §3.
+
 ## ⭐ BẢN ĐỒ MỚI — Toán Đại/HGT khối K6–12 (Thùy 26/10 "chuyển hẳn sang bản đồ + kho mới") — ĐÈ các mục về dạng bên dưới
 
 Khối nào chạy bản đồ mới: DB quyết — `select public._bdm_ds_khoi_chay()` (hiện 6–12). **Cấp 1 (3/4/4T/5/5T), KHTN, Hình: giữ y như các mục bên dưới.**

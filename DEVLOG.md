@@ -77922,3 +77922,6 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - mig 202610271540: `fn_bdm_cau_chuyen_dang(ma_cau, dang_bai, ca_ban_sao=true)` — ghi đè gán người qua `_bdm_nguoi_gan_cau` (chặn câu đã xoá · Đúng/Sai · khác nhánh · khối chưa chạy bản đồ mới), mặc định kèm mọi bản sao còn sống (bản sao đã có gán riêng từ đợt ghi từng câu 26/10 ⇒ không tự đi theo gốc nếu không làm vậy); `fn_bdm_cau_xoa(ma_cau, ca_ban_sao)` — KHO RÁC (xoa_at; trigger log_kho_cau ghi vết + actor), khôi phục ở màn Kho rác. Cả 2 tự tra câu ở kho Đại/HGT (`_bdm_kho_cua_cau`).
 - Client `BanDoMoi.tsx` (KhoModal/CauKho + `ThaoTacCau`): ↪ Chuyển dạng (DangPickerOne banDoMoi theo khối) · 🗑 Xoá (hỏi trên thẻ; câu gốc: 'Chỉ câu này' / 'Kèm bản sao'); xong ⇒ vá danh sách tại chỗ + tải ngầm + bản đồ đếm lại số câu. Câu Đ/S không có nút chuyển.
 - Kiểm `scripts/_test_kho_xoa_chuyen.mjs` 6/6 (ROLLBACK) + dev phiên admin (4T: 40 câu có nút, hộp xác nhận, bộ chọn 105 dạng bài mới) — không ghi lên câu thật.
+
+## 27/10 — Luật nhập sách tham khảo (Thùy, mọi khối)
+- Ví dụ hướng dẫn ⇒ kho TRÊN LỚP (`dai_cau_lop`, vai `giang`, gắn dạng bài mới); bài tập ⇒ kho VỀ NHÀ (kho câu luyện). Ghi vào `kho-rules/README.md` §3 + `.claude/commands/nhap-kho.md` + memory.
