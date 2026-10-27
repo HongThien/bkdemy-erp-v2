@@ -28,6 +28,7 @@ import TaiLieuScreen from './tailieu/TaiLieuScreen'
 import GiaoTrinhHinhEntry from './tailieu/GiaoTrinhHinhEntry'
 import GiaoTrinhBdmScreen from './tailieu/bdm/GiaoTrinhBdmScreen'
 import ETScreen from './tailieu/ETScreen'
+import ETBdmEditor from './tailieu/bdm/ETBdmEditor'
 import MTScreen from './tailieu/MTScreen'
 import BTScreen from './tailieu/BTScreen'
 import KhoTaiLieuScreen from './tailieu/KhoTaiLieuScreen'
@@ -726,8 +727,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'lamtailieu:chuyen_de' ? <GiaoTrinhBdmScreen key="chuyen_de" loai="chuyen_de" />
       : staffLeaf === 'lamtailieu:giao_trinh_hinh' ? <GiaoTrinhHinhEntry />
       : staffLeaf === 'lamtailieu:et' ? <ETScreen />
-      // Thùy 26/10: gỡ lá "ET (bản đồ mới)" (trùng — mục "ET" đã soạn theo bản đồ mới K6–12). Link/yêu thích cũ trỏ lá này ⇒ về mục ET.
-      : staffLeaf === 'lamtailieu:et_bdm' ? <ETScreen />
+      : staffLeaf === 'lamtailieu:et_bdm' ? <ETBdmEditor />
       : staffLeaf === 'lamtailieu:mt' ? <MTScreen />
       : staffLeaf === 'tl' ? <KhoTaiLieuScreen />
       : staffLeaf === 'khodethi' ? <KhoDeThiScreen />

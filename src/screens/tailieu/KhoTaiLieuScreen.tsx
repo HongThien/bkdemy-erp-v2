@@ -25,6 +25,7 @@ import DeThiPrintView from './DeThiPrintView'
 import MTPrintView from './MTPrintView'
 import TaiLieuBuilder from './TaiLieuBuilder'
 import { ETEditor, type ETView } from './ETScreen'
+import ETBdmEditor from './bdm/ETBdmEditor'
 import BuilderBanDoMoi from './bdm/BuilderBanDoMoi'
 import ChuyenDeHinhBuilder from './bdm/ChuyenDeHinhBuilder'
 import ChuyenDeHinhPrintView from './bdm/ChuyenDeHinhPrintView'
@@ -338,9 +339,10 @@ export default function KhoTaiLieuScreen() {
   // Sửa tại chỗ: mở builder full-screen. Link PDF tự làm mới NGAY TRONG chính editor lúc đóng (nút
   // "← ..."/"← Kho tài liệu" của mỗi editor tự enqueueLinkGen trước khi gọi onClose) — không cần lặp
   // lại ở đây nữa (07-12, dọn theo pivot gen-tại-lúc-sửa).
-  // Mọi ET mở ở ETEditor (Thùy 26/10 gỡ màn riêng ETBdmEditor): ET soạn ở màn cũ đó (ban_do='moi', nhanh null) được ETEditor
-  // tự coi là nhánh "Bản đồ mới" khi khối đã chạy bản đồ mới (xem fillFromET).
-  if (editEt) return <ETEditor et={editEt} onClose={() => { setEditEt(null); reload() }} />
+  // ET bản đồ mới (ban_do='moi') mở bằng màn RIÊNG (bdm/ETBdmEditor) — ET cũ mở ETEditor như trước (Thùy 20/10: tách hẳn 2 bản).
+  if (editEt) return editEt.ban_do === 'moi'
+    ? <ETBdmEditor et={editEt} onClose={() => { setEditEt(null); reload() }} />
+    : <ETEditor et={editEt} onClose={() => { setEditEt(null); reload() }} />
   if (editEtHinh) return <ETEditor presetHinh={editEtHinh} onClose={() => { setEditEtHinh(null); reload() }} />
   if (editBdm && editBdm.hinh) return <ChuyenDeHinhBuilder id={editBdm.id} onClose={() => { setEditBdm(null); reload() }} />
   if (editBdm) return <BuilderBanDoMoi id={editBdm.id} laChuyenDe={editBdm.chuyenDe} onClose={() => { setEditBdm(null); reload() }} />

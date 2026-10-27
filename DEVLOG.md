@@ -77986,3 +77986,8 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - Ngày nhập học hiệu lực = `hoc_sinh.ngay_nhap_hoc`, thiếu thì ngày vào lớp sớm nhất (222/353 HS đang học thiếu ngay_nhap_hoc). > 28 ngày ⇒ full suy lúc đọc, không ghi tick giả. Thêm nút "Tất cả" (ngoài 1–4 tuần) để thấy được HS > 4 tuần.
 - Client: lá 'hs_moi' (Vận hành › Quy trình HS mới) · `QuyTrinhHsMoiScreen.tsx` (Theo dõi / Checklist, nhớ filter+bảng+cuộn ở module-level) · `lib/hsmoi.ts`.
 - Kiểm: RPC trong ROLLBACK bằng jwt admin (tick → full → rơi khỏi danh sách; khối 9 Tất cả 77 dòng; log có actor). Màn dev: giả lập 3 bước bằng chặn fetch trong trình duyệt (không ghi bước thử vào DB thật) — lọc tuần/khối/chưa full, tick vá tại chỗ, ô nhạt + "Đủ (> 4 tuần)". Checklist hiện rỗng: chờ Thùy/Ops nhập các bước thật; chưa cấp quyền 'hs_moi' cho vai trò Ops ở Phân quyền.
+
+## 27/10 — Khôi phục ET (bản đồ mới) — Thùy: 'mất tính năng làm ET mới rồi. ET hiện tại là luồng cũ. Xóa nhầm rồi khôi phục lại đi'
+- Nguyên nhân: 9205a0d4 (26/10) gỡ lá 'ET (bản đồ mới)', trỏ lamtailieu:et_bdm về ETScreen cũ; 2d8e978d (27/10, Dọn ERP) thấy ETBdmEditor không ai import ⇒ xoá như code chết.
+- Khôi phục: ETBdmEditor.tsx lấy lại nguyên bản từ 2d8e978d^ · đảo phần ET của 9205a0d4 (lá menu, route NhanSuHome, Kho tài liệu mở ET ban_do='moi' bằng ETBdmEditor, ETEditor lại báo 'sửa ở mục ET (bản đồ mới)' khi buổi đã có ET mới) · GIỮ phần cảnh báo giáo trình cũ của 9205a0d4. tsc sạch; dev: lá hiện, màn ET mới mở (chọn lớp → dạng bài bản đồ mới).
+- ET hiện có: moi/∅ 20 (mở ETBdmEditor) · cu/bdm 1 (soạn ở mục ET cũ 27/10, vẫn mở ETEditor).

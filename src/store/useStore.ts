@@ -365,6 +365,7 @@ export const LAMTAILIEU_CHILDREN: NavLeaf[] = [
   { id: 'lamtailieu:giao_trinh_bdm', ten: 'Giáo trình (bản đồ mới)' }, // Thùy 18/10: lá RIÊNG song song lá cũ, hoàn thiện rồi mới bỏ lá cũ (spec-builder-ban-do-moi.md)
   { id: 'lamtailieu:giao_trinh_hinh', ten: 'Giáo trình (Hình)' },   // ⭐ 08-08 "chuyển nhà": ngang hàng Đại, không còn chôn trong rail Kho
   { id: 'lamtailieu:et', ten: 'ET' },
+  { id: 'lamtailieu:et_bdm', ten: 'ET (bản đồ mới)' },
   { id: 'lamtailieu:chuyen_de', ten: 'Chuyên đề' },   // Thùy 21/10: builder y giáo trình bản đồ mới, KHÔNG gắn lớp (loai='chuyen_de')   // Thùy 20/10: bản MỚI song song ET cũ (bdm/ETBdmEditor) — ET cũ giữ nguyên
   { id: 'lamtailieu:mt', ten: 'MT' },
   { id: 'lamtailieu:bo_tro', ten: 'Tài liệu bổ trợ' },
