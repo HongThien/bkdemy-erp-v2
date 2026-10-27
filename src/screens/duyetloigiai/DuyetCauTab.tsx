@@ -22,6 +22,7 @@ import { myNhanSuId } from '../../lib/nhansu'
 import { useNhanXet, NutCanSua, NhanXetCu, DongChoSua } from './CanSua'
 import { useDeSau, NutDeSau, NhanDeSau } from './DeSau'
 import PhanTrang from '../../components/PhanTrang'
+import { useLocNguon, ChonNguon } from './LocNguon'
 import type { MonNX, TrangThaiNX } from '../../lib/kho/nhanXet'
 
 type Row = CauHangDuyet & { mon: KhoMon }
@@ -95,7 +96,7 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
     } catch (e: any) { if (my === reqId.current) setErr(e.message ?? String(e)) }
     finally { if (my === reqId.current) setLoading(false) }
   }
-  useEffect(() => { setNhanh('all'); locDang.reset(); setTrangRaw(0); reload() }, [mon, khoi, loc]) // eslint-disable-line
+  useEffect(() => { setNhanh('all'); locDang.reset(); locNguon.reset(); setTrangRaw(0); reload() }, [mon, khoi, loc]) // eslint-disable-line
 
   function bao(msg: string) { setThongBao(msg); setTimeout(() => setThongBao(null), 2500) }
   function xong(r: Row, msg: string) { setRows((a) => a.filter((x) => !(x.mon === r.mon && x.ma_cau === r.ma_cau))); bao(msg); onChanged?.() }
@@ -104,7 +105,9 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
   const rowsNhanh = deSau.xep((nhanh === 'all' ? rows : rows.filter((r) => r.mon === nhanh)).filter((r) => !nhanXet.dangChoSua(r.mon, r.ma_cau)), (r) => [r.mon, r.ma_cau])
   const soChoSua = rows.filter((r) => nhanXet.dangChoSua(r.mon, r.ma_cau)).length
   // Lọc theo DẠNG (Thùy 06/10) — lựa chọn = các dạng đang có câu trong hàng duyệt (LocDang.tsx, dùng chung mọi tab duyệt).
-  const locDang = useLocDang(rowsNhanh, (r) => layDangLoc(r, loc, laBdm(r)))
+  // Lọc NGUỒN tài liệu (Thùy 27/10): Đề thi · Đề cương · Sách <tác giả> · Kho cũ — tính ở DB, chỉ Toán Đại/HGT có nguồn tài liệu
+  const locNguon = useLocNguon(rowsNhanh, (r) => r.ma_cau, (r) => r.mon === 'toan' || r.mon === 'hgt')
+  const locDang = useLocDang(locNguon.loc, (r) => layDangLoc(r, loc, laBdm(r)))
   const rowsShown = locDang.loc
   // Trang đang mở: duyệt/từ chối xong thì câu rời hàng, câu trang sau tự dồn lên (như web). Trang vượt số trang (hàng vơi) ⇒ về trang cuối.
   const soTrang = Math.max(1, Math.ceil(rowsShown.length / BATCH_SIZE))
@@ -156,6 +159,8 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
             {kho.map((n) => chip(n, NHANH_LABEL[n], demNhanh(n)))}
           </div>
         )}
+        <ChonNguon opts={locNguon.opts} value={locNguon.nguonChon} tong={locNguon.tong} dangNap={locNguon.dangNap}
+          onChange={(v) => { locNguon.setChon(v); locDang.reset(); setTrangRaw(0) }} />
         <ChonDang opts={locDang.opts} value={locDang.dangChon} onChange={(v) => { locDang.setChon(v); setTrangRaw(0) }} tong={locDang.tong}
           nhan={loc === 'chua_dang' || khoiMoi ? 'Dạng bài (bản đồ mới)' : undefined} />
         {loc === 'nghi' && <span className="text-[12px] text-amber-700">Máy/AI tính ra khác đáp số kho. Xem đề, tự tính; kho sai thì sửa đáp số rồi Duyệt — form trắc nghiệm của câu sẽ tự thu hồi để sinh lại.</span>}

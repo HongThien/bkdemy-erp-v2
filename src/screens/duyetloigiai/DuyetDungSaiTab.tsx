@@ -8,6 +8,7 @@
 // CỦA CHỦ ĐỀ: thẻ chọn CHỦ ĐỀ (thay "dạng đại diện"), ý KHÔNG chọn dạng (duyệt ý không đòi dạng), duyệt câu chỉ cần chủ đề.
 import { useEffect, useRef, useState } from 'react'
 import { useLocDang, ChonDang } from './LocDang'
+import { useLocNguon, ChonNguon } from './LocNguon'
 import { nhanhCuaMon, NHANH_LABEL, listHangDuyetDs, duyetMenhDe, duyetCauDs, tuChoiCauHangDuyet, laDangCho, khoiChayBanDoMoi, listBdmChuDeKhoi,
   type CauDungSaiDuyet, type MenhDeHop, type MenhDeCon, type KhoMon, type SuaMenhDe, type SuaCauDuyet } from '../../lib/kho/api'
 import { MathText, inp } from '../kho/ui'
@@ -70,7 +71,7 @@ export default function DuyetDungSaiTab({ mon, khoi, onChanged }: { mon: string;
     } catch (e: any) { if (my === reqId.current) setErr(e.message ?? String(e)) }
     finally { if (my === reqId.current) setLoading(false) }
   }
-  useEffect(() => { setNhanh('all'); locDang.reset(); reload() }, [mon, khoi]) // eslint-disable-line
+  useEffect(() => { setNhanh('all'); locDang.reset(); locNguon.reset(); reload() }, [mon, khoi]) // eslint-disable-line
 
   function bao(msg: string) { setThongBao(msg); setTimeout(() => setThongBao(null), 2500) }
   function rutThe(r: Row, msg: string) { setRows((a) => a.filter((x) => !(x.mon === r.mon && x.ma_cau === r.ma_cau))); bao(msg); onChanged?.() }
@@ -89,7 +90,9 @@ export default function DuyetDungSaiTab({ mon, khoi, onChanged }: { mon: string;
   const soChoSua = rows.filter((r) => nhanXet.dangChoSua(r.mon, r.ma_cau)).length
   // Lọc theo DẠNG của câu (Thùy 06/10, LocDang.tsx dùng chung mọi tab duyệt)
   // Câu còn ở dạng chờ ⇒ lọc theo GỢI Ý BẢN ĐỒ MỚI (chủ đề › nhóm › dạng bài; rổ chưa khớp = ⚠) — Thùy 11/10 "ko check được riêng chủ đề tích phân"
-  const locDang = useLocDang(rowsNhanh, (r) => {
+  // Lọc NGUỒN tài liệu (Thùy 27/10): Đề thi · Đề cương · Sách <tác giả> · Kho cũ — tính ở DB, chỉ Toán Đại/HGT có nguồn tài liệu
+  const locNguon = useLocNguon(rowsNhanh, (r) => r.ma_cau, (r) => r.mon === 'toan' || r.mon === 'hgt')
+  const locDang = useLocDang(locNguon.loc, (r) => {
     if (laBdm(r)) return r.bdm_trang_thai === 'kho_ds' && r.bdm_dang_bai_id
       ? { ma: `cd:${r.bdm_dang_bai_id}`, ten: r.bdm_chu_de ?? r.bdm_dang_bai_id, cd: 'Kho Đúng/Sai' }
       : { ma: '_chua_chu_de', ten: '⚠ Chưa có chủ đề', cd: 'Kho Đúng/Sai' }
@@ -143,6 +146,8 @@ export default function DuyetDungSaiTab({ mon, khoi, onChanged }: { mon: string;
             {kho.map((n) => chip(n, NHANH_LABEL[n], demNhanh(n)))}
           </div>
         )}
+        <ChonNguon opts={locNguon.opts} value={locNguon.nguonChon} tong={locNguon.tong} dangNap={locNguon.dangNap}
+          onChange={(v) => { locNguon.setChon(v); locDang.reset() }} />
         <ChonDang opts={locDang.opts} value={locDang.dangChon} onChange={locDang.setChon} tong={locDang.tong} nhan={khoiMoi ? 'Chủ đề (kho Đúng/Sai)' : 'Dạng / dạng bài (bản đồ mới)'} />
         <span className="text-[12px] text-slate-500">{khoiMoi
           ? 'Câu Đúng/Sai vào kho Đúng/Sai của CHỦ ĐỀ — chọn chủ đề, duyệt từng mệnh đề (không chọn dạng), đủ hết mới duyệt được câu.'

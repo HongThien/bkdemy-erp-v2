@@ -7,12 +7,13 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import SearchSelect, { type Opt } from '../../components/SearchSelect'
 import { MathText } from '../kho/ui'
 import {
-  KHOP_HANG_LABEL, KHOP_HANG_MOTA, khopDem, khopDich, khopGiao, khopGo, khopHang, khopPhamVi, khopQuyet, khopUngVien,
+  KHOP_HANG_LABEL, KHOP_HANG_MOTA, khopDem, khopDich, khopGiao, khopGo, khopHang, khopNguonDs, khopPhamVi, khopQuyet, khopUngVien,
   type KhopCau, type KhopDem, type KhopDich, type KhopHang, type KhopPhamVi,
 } from '../../lib/kho/bdmKhop'
 import { useNhanXet, NutCanSua, NhanXetCu, DongChoSua } from './CanSua'
 import { useDeSau, NutDeSau, NhanDeSau } from './DeSau'
 import PhanTrang from '../../components/PhanTrang'
+import { ChonNguon, nhanNguon, xepNguon, type NguonOpt } from './LocNguon'
 import type { TrangThaiNX } from '../../lib/kho/nhanXet'
 
 const HANG: KhopHang[] = ['de_xuat', 'trong', 'thieu', 'mau']
@@ -20,17 +21,21 @@ const TRANG = 20
 // Nhớ hàng đang mở khi chuyển tab/khối rồi quay lại (module-level, sống tới F5).
 const monCau = (c: KhopCau) => (c.nhanh === 'hgt' ? 'hgt' : 'toan') as 'hgt' | 'toan'   // nhận xét "Cần sửa" ghi vào đúng kho của câu
 // Nhớ cả TRANG đang mở (Thùy 23/10); trang chỉ dùng lại khi cùng khối + chủ đề.
-const NHO: { hang: KhopHang; trang: number; khoa: string } = { hang: 'de_xuat', trang: 0, khoa: '' }
+const NHO: { hang: KhopHang; trang: number; khoa: string; nguon: string } = { hang: 'de_xuat', trang: 0, khoa: '', nguon: 'all' }
 
 export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { khoi: string; chuDeId?: string | null; onXem?: (dangBaiId: string) => void; onChanged?: () => void }) {
   const [hang, setHangRaw] = useState<KhopHang>(NHO.hang)
   // Chọn trang kiểu web (Thùy 23/10): mỗi trang TRANG câu, trang lấy thẳng từ DB (offset) — DB xếp câu "Để sau" ở cuối.
   const khoa = `${khoi}|${chuDeId ?? ''}`
   const [trang, setTrangRaw] = useState(NHO.khoa === khoa ? NHO.trang : 0)
+  // Lọc NGUỒN tài liệu (Thùy 27/10): Đề thi · Đề cương · Sách <tác giả> · Kho cũ — lọc + đếm ở DB (mig 202610271607)
+  const [nguon, setNguonRaw] = useState<string>(NHO.khoa === khoa ? NHO.nguon : 'all')
+  const [nguonDs, setNguonDs] = useState<NguonOpt[]>([])
+  const ng = nguon === 'all' ? null : nguon
   const cuon = useRef<HTMLDivElement>(null)
   const setTrang = (t: number) => { NHO.trang = t; NHO.khoa = khoa; setTrangRaw(t); cuon.current?.scrollTo({ top: 0 }) }
   const khoaTruoc = useRef(khoa)
-  useEffect(() => { if (khoaTruoc.current !== khoa) { khoaTruoc.current = khoa; setTrang(0) } }, [khoa]) // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { if (khoaTruoc.current !== khoa) { khoaTruoc.current = khoa; NHO.nguon = 'all'; setNguonRaw('all'); setTrang(0) } }, [khoa]) // eslint-disable-line react-hooks/exhaustive-deps
   const [dem, setDem] = useState<KhopDem | null>(null)
   const [rows, setRows] = useState<KhopCau[]>([])
   const [tong, setTong] = useState(0)
@@ -47,20 +52,25 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
   const deSau = useDeSau('bdm_khop', 'toan')  // "⏭ Để sau" (Thùy 20/10): câu chưa muốn quyết dạng bài xuống cuối hàng
 
   const setHang = (h: KhopHang) => { NHO.hang = h; setHangRaw(h); setTrang(0) }
+  const setNguon = (v: string) => { NHO.nguon = v; NHO.khoa = khoa; setNguonRaw(v); setTrang(0) }
 
   const napDem = useCallback(async () => {
-    try { setDem(await khopDem(khoi, cd)) } catch (e: any) { setErr(e.message ?? String(e)) }
-  }, [khoi, cd])
+    try { setDem(await khopDem(khoi, cd, ng)) } catch (e: any) { setErr(e.message ?? String(e)) }
+  }, [khoi, cd, ng])
+  const napNguon = useCallback(async () => {
+    try { setNguonDs(xepNguon((await khopNguonDs(khoi, hang, cd)).map((x) => ({ nguon: x.nguon, n: Number(x.so_cau) })))) } catch { setNguonDs([]) }
+  }, [khoi, hang, cd])
+  useEffect(() => { void napNguon() }, [napNguon])
 
   // Đổi NGỮ CẢNH (khối/hàng) ⇒ reset + nạp lại. Mutation trong cùng ngữ cảnh ⇒ vá tại chỗ (xem quyet()).
   useEffect(() => {
     const my = ++req.current
     setRows([]); setTong(0); setLoading(true); setErr(null)
-    khopHang(khoi, hang, TRANG, trang * TRANG, cd)
+    khopHang(khoi, hang, TRANG, trang * TRANG, cd, ng)
       .then((r) => { if (my === req.current) { setRows(r.rows); setTong(r.tong) } })
       .catch((e) => { if (my === req.current) setErr(e.message ?? String(e)) })
       .finally(() => { if (my === req.current) setLoading(false) })
-  }, [khoi, hang, cd, trang])
+  }, [khoi, hang, cd, trang, ng])
   useEffect(() => { void napDem() }, [napDem])
   useEffect(() => { khopDich(khoi).then(setDich).catch(() => setDich([])) }, [khoi])
   const napPhamVi = useCallback(async () => {
@@ -72,19 +82,19 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
   const buThem = useCallback(async () => {
     const my = req.current
     try {
-      const r = await khopHang(khoi, hang, TRANG, trang * TRANG, cd)
+      const r = await khopHang(khoi, hang, TRANG, trang * TRANG, cd, ng)
       if (my !== req.current) return
       setRows((prev) => { const co = new Set(prev.map((x) => x.ma_cau)); return [...prev, ...r.rows.filter((x) => !co.has(x.ma_cau))] })
       setTong(r.tong)
     } catch { /* nền — bỏ qua */ }
-  }, [khoi, hang, cd, trang])
+  }, [khoi, hang, cd, trang, ng])
 
   async function quyet(c: KhopCau, hd: Parameters<typeof khopQuyet>[1], dangBai?: string | null, lyDo?: string | null) {
     await khopQuyet(c.ma_cau, hd, dangBai, lyDo)
     // vá tại chỗ: câu xong thì rời hàng đợi (riêng 'thieu' ở hàng 'trong' cũng rời vì chuyển sang hàng "Thiếu dạng")
     setRows((prev) => { const n = prev.filter((x) => x.ma_cau !== c.ma_cau); if (n.length < 6 && tong - 1 > n.length) void buThem(); return n })
     setTong((t) => Math.max(0, t - 1))
-    void napDem(); onChanged?.()
+    void napDem(); void napNguon(); onChanged?.()
   }
 
   // "⏭ Để sau" = xuống CUỐI CẢ HÀNG (Thùy 22/10): DB đã xếp câu để sau ra sau (mig 202610221621). Hàng còn câu chưa nạp
@@ -119,6 +129,7 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
             <input type="checkbox" checked={locCD} onChange={(e) => { setLocCD(e.target.checked); setTrang(0) }} /> Chỉ chủ đề đang xem
           </label>
         )}
+        <ChonNguon opts={nguonDs} value={nguon} onChange={setNguon} />
         {chinhXac !== null && (
           <span className={`rounded-full px-2.5 py-0.5 text-[12px] font-medium ${chinhXac >= 98 ? 'bg-emerald-50 text-emerald-700' : 'bg-amber-50 text-amber-800'}`}
             title="Trong các câu AI gán mức chắc đã kiểm mẫu: tỉ lệ giữ nguyên. Dưới ngưỡng thì cả khối cần xem lại.">
@@ -181,6 +192,7 @@ function CauCard({ c, hang, dich, onQuyet, onXem, nx, onCanSua, deSauAt, onDeSau
       <div className="mb-2 flex flex-wrap items-center gap-2 text-[12px] text-slate-500">
         <span className="font-mono text-slate-400">{c.ma_cau}</span>
         {c.nhanh === 'hgt' && <span className="rounded bg-sky-50 px-2 py-0.5 text-sky-700" title="Câu của kho Hình giải tích">Giải tích</span>}
+        {c.nguon_tl?.length ? <span className="rounded bg-sky-50 px-2 py-0.5 text-sky-800" title="Nguồn tài liệu của câu">{c.nguon_tl.map(nhanNguon).join(' · ')}</span> : null}
         {c.dang_cu && <span className="rounded bg-slate-100 px-2 py-0.5" title="Nhãn ở bản đồ cũ">Cũ: {c.dang_cu}{c.chuyen_de_cu ? ` · ${c.chuyen_de_cu}` : ''}</span>}
         <NhanDeSau at={deSauAt} />
         <span className="ml-auto flex items-center gap-1.5">
