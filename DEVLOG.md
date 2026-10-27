@@ -77972,3 +77972,10 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - Đã ghi: luyện 392 câu (T106…1225…; +2 trùng kho cũ; 388 có đề xuất dạng) · giảng 196 câu gắn 38 dạng. GIỮ LẠI 11 câu chờ Thùy (B4-18-b, B4-3A, ÔT-13B-b, ÔT-27, ÔT-Đ1-B2a/Đ2-B2a [giá trị tuyệt đối], ÔT-Đ2-B4, B2-7A-a/b, B4-9A, ÔT-14A [giảng chưa có dạng]).
 - Sách in SAI đáp số/đề ~40 câu (B2 7 · B4 7 · B5 6 · ÔT 10 · B1 3 …): giữ kết quả đúng, ghi chú ở ghi_chu. Bản đồ thiếu dạng: dãy số có quy luật · phần dấu/phần số tự nhiên · bảng x,y,x+y,x−y · x ở hai vế lời văn · chia hết tổng luỹ thừa.
 - HTML duyệt: kho-rules/dai/lo/k6/so-nguyen-sach/so-nguyen-sach-duyet.html.
+
+## 27/10 — Giáo trình bản đồ mới đủ 3 nhánh: Đại · Hình giải tích · Hình — Thùy
+- Thùy: 'Luồng làm giáo trình đang mới chỉ có Đại. Còn cần Giải tích và Hình nữa. 3 loại cơ mà'; hỏi Học/Luyện chung hay tách ⇒ Thùy chọn 1 giáo trình Hình chung.
+- HGT: không cần hàm mới — fn_tl_bdm_* đã đọc kho HGT. Mở nhánh ở màn tạo + danh sách. _test_gt_hgt_bdm.mjs 6/6 (K10, K12: đặt buổi, câu đều là hgt_cau_hoi, gán lớp GT + BTVN, ôn tập).
+- Hình: mig 202610271757 (_tl_hl_xep xếp Học→Luyện→khác→BTVN · fn_tl_hh_cay_chon/cau/dat_bai/dat_cau/goi_y · fn_tl_hl_noi_dung thêm 'hoc' · fn_tl_hinh_trich_buoi) + 202610271811 (ẩn bài chờ …000000 khỏi bộ chọn). Phần Học lưu khuôn 'dang'/'btvn' của giáo trình Hình·Học cũ ⇒ bên đọc tài liệu lớp không phải sửa; khoCuaMon('hinh') = kho hinh_hoc. _test_gt_hinh_bdm.mjs 20/20 (K7/K8/K9); test chuyên đề Hình cũ 12/12.
+- Client: ChuyenDeHinhBuilder laGiaoTrinh (+ Bài học, thẻ Học: LT/bài luyện/BTVN ↻ Gợi ý ✎ Chọn câu, Gán lớp), GanLopBdm hinh (BTVN tạo thẳng), PrintView nhánh hinh (khuôn cũ + card Luyện), tách BaiHinhIn/CDH_CSS ra HinhLuyenIn.tsx dùng chung với ChuyenDeHinhPrintView.
+- Kiểm dev: tạo '[THỬ] GT Hình K7' (2 bài học + 1 mô hình), Xem buổi 10 trang đúng thứ tự. In CẢ giáo trình chưa kiểm được: pane trình duyệt bị ẩn ⇒ paged.js đứng (đối chứng giáo trình Đại 8B2 cũng đứng y hệt). Gán lớp chỉ kiểm bằng test ROLLBACK (không gán lớp thật).

@@ -131,7 +131,8 @@ export async function trichBuoiBdm(masterId: string, buoiId: string, o: {
     ban_do: 'moi', lop_id: o.lopId, ngay: o.ngay, nguon_id: masterId, nguon_buoi: buoiId, stt_lop: stt, created_by: user?.id ?? null,
   }).select('id, loai').single()
   if (e3) throw e3
-  const { error: e4 } = await supabase.rpc('fn_tl_bdm_trich_buoi', {
+  // Giáo trình Hình (Học + Luyện, mig 202610271757) có hàm chép riêng — cùng tham số.
+  const { error: e4 } = await supabase.rpc(m.nhanh === 'hinh' ? 'fn_tl_hinh_trich_buoi' : 'fn_tl_bdm_trich_buoi', {
     p_master: masterId, p_buoi: buoiId, p_den: (doc as { id: string }).id, p_loai: o.loai === 'btvn' ? 'btvn' : 'gt', p_tieu_de: tieuDe, p_on_tap: o.onTap ?? [],
   })
   if (e4) {

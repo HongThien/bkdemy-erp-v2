@@ -1,6 +1,7 @@
 // Lá "Giáo trình (bản đồ mới)" — chức năng RIÊNG, song song lá "Giáo trình" cũ (Thùy 18/10: "2 lá khác nhau trên tree,
 // giống bản đồ cũ / mới; hoàn thiện cái mới rồi mới bỏ cái cũ"). Chỉ thấy + tạo giáo trình ban_do='moi'.
-// Hiện chỉ Toán · Đại (khuôn 4 tầng); Hình giải tích mở ở đợt 2 (spec-builder-ban-do-moi.md B6 bước 6).
+// Toán · 3 nhánh như giáo trình cũ (Thùy 27/10 "Luồng làm giáo trình đang mới chỉ có Đại. Còn cần Giải tích và Hình nữa"):
+// Đại + Hình giải tích = BuilderBanDoMoi (nhóm bài · dạng bài) · Hình = HinhGiaoTrinhBuilder (bài học Học + mô hình Luyện).
 // ⭐ Thùy 21/10: CÙNG màn này phục vụ lá "Chuyên đề" (loai='chuyen_de') — builder y giáo trình nhưng KHÔNG đi với lớp nào
 // (không Gán lớp), mỗi chuyên đề 1 nhánh chọn lúc tạo: Đại (bản đồ mới) · Hình giải tích · Hình (Hình–Luyện) — 2 nhánh sau đang làm.
 import { useEffect, useState } from 'react'
@@ -29,7 +30,7 @@ export default function GiaoTrinhBdmScreen({ loai = 'giao_trinh' }: { loai?: Loa
   const [khoi, setKhoi] = useState<string>(DEFAULT_KHOI)
   const [creating, setCreating] = useState(false)
   const [openId, setOpenIdRaw] = useState<string | null>(null)
-  const [openHinh, setOpenHinh] = useState(false)   // chuyên đề nhánh Hình ⇒ builder Hình–Luyện riêng
+  const [openHinh, setOpenHinh] = useState(false)   // nhánh Hình ⇒ builder Hình riêng (chuyên đề: Luyện · giáo trình: Học + Luyện)
   const setOpenId = (id: string | null, nhanh?: string | null) => { setOpenIdRaw(id); setOpenHinh(nhanh === 'hinh') }
   const [qLive, setQLive] = useState('')
   const [q, setQ] = useState('')
@@ -40,20 +41,20 @@ export default function GiaoTrinhBdmScreen({ loai = 'giao_trinh' }: { loai?: Loa
   const profileLoading = !isAll && me === null
 
   const { rows: list, loading, loadingMore, hasMore, err, reload, loadMore } = usePagedList<TaiLieu>(
-    // chuyên đề: mọi nhánh (Đại · HGT · Hình) — giáo trình: chỉ Đại (nhanh null) như trước
-    async ({ before, search }) => coQuyen ? listTaiLieu(khoi === ALL ? undefined : khoi, loai, MON, loai === 'chuyen_de' ? undefined : null, { before, search, limit: PAGE, banDo: 'moi' }) : [],
+    // mọi nhánh (Đại · HGT · Hình) — cả giáo trình lẫn chuyên đề
+    async ({ before, search }) => coQuyen ? listTaiLieu(khoi === ALL ? undefined : khoi, loai, MON, undefined, { before, search, limit: PAGE, banDo: 'moi' }) : [],
     (t) => t.created_at,
     PAGE, q, [khoi, coQuyen, loai],
   )
 
-  if (openId && openHinh) return <ChuyenDeHinhBuilder id={openId} onClose={() => { setOpenId(null); reload() }} />
+  if (openId && openHinh) return <ChuyenDeHinhBuilder id={openId} laGiaoTrinh={loai === 'giao_trinh'} onClose={() => { setOpenId(null); reload() }} />
   if (openId) return <BuilderBanDoMoi id={openId} laChuyenDe={loai === 'chuyen_de'} onClose={() => { setOpenId(null); reload() }} />
 
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">
       <div className="flex items-center gap-4 border-b border-slate-200 bg-white px-6 py-2.5">
         <span className="rounded bg-emerald-50 px-2 py-0.5 text-[12px] font-semibold text-emerald-700">🆕 {T.nhieu} · bản đồ mới</span>
-        <span className="text-[12px] text-slate-400">{loai === 'chuyen_de' ? 'Tài liệu độc lập, không gắn lớp — nhóm bài · dạng bài' : 'Toán · Đại — nhóm bài · dạng bài'}</span>
+        <span className="text-[12px] text-slate-400">{loai === 'chuyen_de' ? 'Tài liệu độc lập, không gắn lớp — Đại · Hình giải tích · Hình' : 'Toán — Đại · Hình giải tích · Hình'}</span>
         <div className="ml-auto flex items-center gap-1">
           <input value={qLive} onChange={(e) => setQLive(e.target.value)} placeholder="Tìm theo tên…" className="mr-2 h-7 w-44 rounded-md border border-slate-200 px-2.5 text-[13px] outline-none focus:border-indigo-400" />
           <span className="mr-1 text-[12px] font-semibold uppercase tracking-wider text-slate-600">Khối</span>
@@ -84,7 +85,7 @@ export default function GiaoTrinhBdmScreen({ loai = 'giao_trinh' }: { loai?: Loa
                       <div className="min-w-0 flex-1 text-[16px] font-semibold text-slate-900">{t.ten}</div>
                       {t.luu_tru_tu && <span className="shrink-0 rounded bg-amber-50 px-1.5 py-0.5 text-[10.5px] font-semibold text-amber-700">Lưu trữ</span>}
                     </div>
-                    <div className="mt-1 text-[12px] text-slate-400">Khối {t.khoi}{loai === 'chuyen_de' ? ` · ${t.nhanh === 'hinh' ? 'Hình' : t.nhanh === 'hinh_gt' ? 'Hình giải tích' : 'Đại số'}` : ''}</div>
+                    <div className="mt-1 text-[12px] text-slate-400">Khối {t.khoi} · {t.nhanh === 'hinh' ? 'Hình' : t.nhanh === 'hinh_gt' ? 'Hình giải tích' : 'Đại số'}</div>
                     <div className="mt-1 text-[11px] text-slate-400">Tạo {fmtNgay(t.created_at)}{t.updated_at && t.updated_at !== t.created_at ? ` · sửa ${fmtNgay(t.updated_at)}` : ''}</div>
                     <div className="mt-3 flex gap-2">
                       <button onClick={() => setOpenId(t.id, t.nhanh)} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500">Mở / Xuất</button>
@@ -110,7 +111,7 @@ export default function GiaoTrinhBdmScreen({ loai = 'giao_trinh' }: { loai?: Loa
 // Nhánh của chuyên đề (chọn 1 lần lúc tạo). Đại + HGT: builder bản đồ mới (HGT mig 202610211629); Hình: ChuyenDeHinhBuilder (mig 202610211633).
 const NHANH_CD: { id: string | null; ten: string; mo: boolean; ghi: string }[] = [
   { id: null, ten: 'Đại số', mo: true, ghi: 'nhóm bài · dạng bài (bản đồ mới)' },
-  { id: 'hinh_gt', ten: 'Hình giải tích', mo: true, ghi: 'nhóm bài · dạng bài (bản đồ mới) — hiện có câu K6, K12; K10 đang xếp câu' },
+  { id: 'hinh_gt', ten: 'Hình giải tích', mo: true, ghi: 'nhóm bài · dạng bài (bản đồ mới)' },
   { id: 'hinh', ten: 'Hình', mo: true, ghi: 'Hình–Luyện: mô hình → bài trong kho (trọn ý)' },
 ]
 
@@ -128,10 +129,10 @@ function TaoMoi({ loai, khoi, onClose, onCreated }: { loai: LoaiTL; khoi: string
   }
   return (
     <Shell title={`Tạo ${T.mot} bản đồ mới · Toán · Khối ${khoi}`} onClose={onClose}>
-      {loai === 'chuyen_de' && (
+      {(
         <Field label="Nhánh">
           <div className="flex flex-col gap-1.5">
-            {NHANH_CD.map((n) => (
+            {NHANH_CD.map((n) => ({ ...n, ghi: loai === 'giao_trinh' && n.id === 'hinh' ? 'Học: bài học (lý thuyết + câu) · Luyện: mô hình → bài' : n.ghi })).map((n) => (
               <label key={n.ten} className={`flex items-center gap-2 rounded-md border px-2.5 py-1.5 text-[13px] ${!n.mo ? 'cursor-not-allowed border-slate-100 text-slate-300' : nhanh === n.id ? 'border-indigo-400 bg-indigo-50 text-indigo-800' : 'border-slate-200 text-slate-700'}`}>
                 <input type="radio" disabled={!n.mo} checked={nhanh === n.id} onChange={() => setNhanh(n.id)} />
                 <b className="font-semibold">{n.ten}</b><span className="text-[11px] text-slate-400">· {n.ghi}</span>

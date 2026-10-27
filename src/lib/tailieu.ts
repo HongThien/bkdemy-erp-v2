@@ -28,7 +28,9 @@ export function khoCuaMon(mon?: string | null, nhanh?: string | null): { cauTbl:
     ? { cauTbl: 'bdm_cau_hoi', banDoTbl: 'bdm_ban_do', ltDangTbl: 'bdm_dang_ly_thuyet', ltCdTbl: 'bdm_dang_ly_thuyet', formTnTbl: 'bdm_cau_form_tn', nguLieuTbl: null, listMap: (k: string) => listBdmMap(k, mon ?? 'Toán') }
     : nhanh === 'hinh_gt'
     ? { cauTbl: 'hgt_cau_hoi', banDoTbl: 'hgt_ban_do', ltDangTbl: 'hgt_dang_ly_thuyet', ltCdTbl: 'hgt_chuyen_de_ly_thuyet', formTnTbl: 'hgt_cau_form_tn', nguLieuTbl: null, listMap: listHgtMap }
-    : nhanh === 'hinh_hoc'
+    // 'hinh' = giáo trình Hình bản đồ mới (mig 202610271757): phần HỌC giữ khuôn 'dang'/'btvn' của Hình·Học ⇒ đọc cùng kho;
+    // phần LUYỆN (mô hình → bài) không qua đây — bản in đọc fn_tl_hl_noi_dung.
+    : nhanh === 'hinh_hoc' || nhanh === 'hinh'
     // Hình học · phase HỌC (CEO 16/09): Bài phẳng, KHÔNG có cây chuyên đề/chuyên đề-lý-thuyết/formTN.
     // ltCdTbl/formTnTbl dùng lại tên bảng của Bài — botro_yeu/danhgia/detest chỉ được gọi khi tài liệu
     // Đại/KHTN/HGT (spec-mcq-form.md), chưa dùng cho phase Học ⇒ chưa cần bảng thật, tránh nợ schema.
