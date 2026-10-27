@@ -1,0 +1,788 @@
+[
+ {
+  "ma_cau": "T111000000577",
+  "loai": "trac_nghiem",
+  "de": "Tập xác định của hàm số $y=\\tan2x$ là",
+  "lua_chon": [
+   "$\\mathbb{R}$.",
+   "$\\mathbb{R}\\setminus\\left\\{\\dfrac{\\pi}{2}+k\\pi\\mid k\\in\\mathbb{Z}\\right\\}$.",
+   "$\\mathbb{R}\\setminus\\left\\{\\dfrac{\\pi}{4}+k\\pi\\mid k\\in\\mathbb{Z}\\right\\}$.",
+   "$\\mathbb{R}\\setminus\\left\\{\\dfrac{\\pi}{4}+\\dfrac{k\\pi}{2}\\mid k\\in\\mathbb{Z}\\right\\}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $\\tan u$ xác định khi $\\cos u\\ne0$, ở đây $u=2x$ nên điều kiện áp dụng cho cả biểu thức $2x$.\n**Bước 1.** Nêu điều kiện xác định của hàm tang: biểu thức dưới dấu tang không nhận giá trị làm $\\cos$ bằng $0$.\n**Bước 2.** Áp dụng cho $u=2x$ rồi giải điều kiện theo $x$, nhớ chia cả hai vế cho hệ số $2$, kể cả phần $k\\pi$.\n**Bước 3.** Viết tập xác định dưới dạng $\\mathbb{R}$ trừ đi tập các giá trị bị loại và so với các phương án.\n**Phần 2. Trình bày**\nHàm số $y=\\tan2x$ xác định khi $\\cos2x\\ne0$.\n$\\cos2x\\ne0\\Leftrightarrow2x\\ne\\dfrac{\\pi}{2}+k\\pi,\\ k\\in\\mathbb{Z}$.\n$\\Leftrightarrow x\\ne\\dfrac{\\pi}{4}+\\dfrac{k\\pi}{2},\\ k\\in\\mathbb{Z}$.\nVậy tập xác định là $\\mathb …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000855",
+  "loai": "trac_nghiem",
+  "de": "Trong các dãy số $(u_n)$ cho bởi số hạng tổng quát $u_n$ sau, dãy số nào là một cấp số nhân?",
+  "lua_chon": [
+   "$u_n=\\dfrac{1}{3^{n-2}}$.",
+   "$u_n=\\dfrac{1}{3^n}-1$.",
+   "$u_n=n+\\dfrac{1}{3}$.",
+   "$u_n=n^2-\\dfrac{1}{3}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** dãy là cấp số nhân khi thương $\\dfrac{u_{n+1}}{u_n}$ là hằng số không phụ thuộc $n$.\n**Bước 1.** Với phương án có luỹ thừa, tính tổng quát thương $\\dfrac{u_{n+1}}{u_n}$ rồi rút gọn xem có còn chứa $n$ không.\n**Bước 2.** Với các phương án còn lại, tính ba số hạng đầu và so sánh hai thương liên tiếp để loại.\n**Bước 3.** Chọn phương án có thương không đổi và kết luận.\n**Phần 2. Trình bày**\nPhương án A: $\\dfrac{u_{n+1}}{u_n}=\\dfrac{3^{n-2}}{3^{n-1}}=\\dfrac{1}{3}$ (không đổi) nên là cấp số nhân.\nPhương án B: $u_1=-\\dfrac{2}{3}$, $u_2=-\\dfrac{8}{9}$, $u_3=-\\dfrac{26}{27}$ có $\\dfrac{u_2}{u_1}=\\dfrac{4}{3}$, $\\dfrac{u_3}{u_2}=\\dfrac{13}{12}$ nên không phải.\nPhươn …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000909",
+  "loai": "trac_nghiem",
+  "de": "Khảo sát thời gian tập thể dục của một số học sinh khối $11$ thu được mẫu số liệu ghép nhóm sau: các nhóm (thời gian, phút) $[0;20)$, $[20;40)$, $[40;60)$, $[60;80)$, $[80;100)$ có số học sinh lần lượt là $5$, $9$, $12$, $10$, $6$. Nhóm chứa mốt của mẫu số liệu trên là",
+  "lua_chon": [
+   "$[40;60)$.",
+   "$[20;40)$.",
+   "$[60;80)$.",
+   "$[80;100)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** nhóm chứa mốt là nhóm có tần số lớn nhất trong bảng.\n**Bước 1.** Nhớ định nghĩa nhóm chứa mốt của mẫu số liệu ghép nhóm.\n**Bước 2.** So sánh tần số của năm nhóm để tìm tần số lớn nhất.\n**Bước 3.** Chọn nhóm tương ứng và đối chiếu với các phương án.\n**Phần 2. Trình bày**\nCác tần số là $5$, $9$, $12$, $10$, $6$, trong đó tần số lớn nhất là $12$ ứng với nhóm $[40;60)$.\nVậy nhóm chứa mốt là $[40;60)$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000556",
+  "loai": "trac_nghiem",
+  "de": "Cho góc $\\alpha$ thỏa mãn $\\pi<\\alpha<\\dfrac{3\\pi}{2}$. Khẳng định nào sau đây sai?",
+  "lua_chon": [
+   "$\\cos(-\\alpha)<0$.",
+   "$\\cos\\left(\\dfrac{\\pi}{2}-\\alpha\\right)<0$.",
+   "$\\tan(\\alpha+\\pi)>0$.",
+   "$\\sin\\left(\\alpha-\\dfrac{\\pi}{2}\\right)<0$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** góc $\\alpha$ nằm ở góc phần tư thứ ba nên xác định được dấu của $\\sin\\alpha$, $\\cos\\alpha$, $\\tan\\alpha$, rồi đưa từng biểu thức về giá trị lượng giác của $\\alpha$.\n**Bước 1.** Từ $\\pi<\\alpha<\\dfrac{3\\pi}{2}$ xác định dấu của $\\sin\\alpha$, $\\cos\\alpha$, $\\tan\\alpha$ theo góc phần tư.\n**Bước 2.** Dùng công thức góc đối, góc phụ, góc hơn kém $\\pi$ để biến đổi từng biểu thức ở bốn phương án về $\\sin\\alpha$, $\\cos\\alpha$ hoặc $\\tan\\alpha$.\n**Bước 3.** Suy ra dấu của từng biểu thức và tìm phương án không đúng, chú ý đề hỏi phương án sai.\n**Phần 2. Trình bày**\nVì $\\pi<\\alpha<\\dfrac{3\\pi}{2}$ nên $\\alpha$ thuộc góc phần tư thứ ba, do đó $\\sin\\alpha<0$, $\\cos\\alph …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000001044",
+  "loai": "tu_luan",
+  "de": "Chứng minh rằng phương trình $(1-m^2)x^5-3x-1=0$ luôn có nghiệm.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** dùng hệ quả của hàm liên tục: nếu $g$ liên tục trên $[a;b]$ và $g(a)\\cdot g(b)<0$ thì phương trình $g(x)=0$ có nghiệm trong $(a;b)$.\n**Bước 1.** Đặt $g(x)$ bằng vế trái; nhận xét $g$ là đa thức nên liên tục trên $\\mathbb{R}$ với mọi giá trị của $m$.\n**Bước 2.** Tính $g$ tại một số giá trị đơn giản của $x$ (như $0$, $-1$) để tìm hai điểm mà $g$ có dấu ngược nhau với mọi $m$.\n**Bước 3.** Dùng $m^2\\ge0$ để chứng tỏ dấu của các giá trị này không phụ thuộc $m$, rồi áp dụng định lí giá trị trung gian.\n**Phần 2. Trình bày**\nĐặt $g(x)=(1-m^2)x^5-3x-1$. Hàm $g$ là đa thức nên liên tục trên $\\mathbb{R}$.\n$g(0)=-1<0$\n$g(-1)=-(1-m^2)+3-1=m^2+1>0$ với mọi $m$ (vì $m^2\\ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000544",
+  "loai": "trac_nghiem",
+  "de": "Phương trình $\\sin\\left(2x-\\dfrac{\\pi}{4}\\right)=\\sin\\left(\\dfrac{\\pi}{4}-x\\right)$ có tập nghiệm là",
+  "lua_chon": [
+   "$x=\\dfrac{\\pi}{6}+\\dfrac{k2\\pi}{3}$ hoặc $x=\\pi+k2\\pi$, $k\\in\\mathbb{Z}$.",
+   "$x=-\\dfrac{\\pi}{6}+\\dfrac{k2\\pi}{3}$ hoặc $x=\\pi+k2\\pi$, $k\\in\\mathbb{Z}$.",
+   "$x=-\\dfrac{\\pi}{6}+\\dfrac{k2\\pi}{3}$ hoặc $x=-\\pi+k2\\pi$, $k\\in\\mathbb{Z}$.",
+   "$x=\\dfrac{\\pi}{3}+\\dfrac{k2\\pi}{3}$ hoặc $x=k2\\pi$, $k\\in\\mathbb{Z}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** phương trình dạng $\\sin u=\\sin v$ tách thành hai trường hợp $u=v+k2\\pi$ và $u=\\pi-v+k2\\pi$.\n**Bước 1.** Nhận dạng phương trình $\\sin u=\\sin v$ và viết hai trường hợp nghiệm tương ứng.\n**Bước 2.** Giải từng trường hợp thành phương trình bậc nhất theo $x$, chú ý chia cả hai vế khi có hệ số trước $x$.\n**Bước 3.** Viết gọn hai họ nghiệm rồi đối chiếu với các phương án.\n**Phần 2. Trình bày**\n$\\sin\\left(2x-\\dfrac{\\pi}{4}\\right)=\\sin\\left(\\dfrac{\\pi}{4}-x\\right)$\n$\\Leftrightarrow2x-\\dfrac{\\pi}{4}=\\dfrac{\\pi}{4}-x+k2\\pi$ hoặc $2x-\\dfrac{\\pi}{4}=\\pi-\\left(\\dfrac{\\pi}{4}-x\\right)+k2\\pi$.\nTrường hợp 1: $3x=\\dfrac{\\pi}{2}+k2\\pi\\Leftrightarrow x=\\dfrac{\\pi}{6}+\\dfrac{k …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000716",
+  "loai": "trac_nghiem",
+  "de": "Giá trị lớn nhất của hàm số $y=2\\sin x+1$ là",
+  "lua_chon": [
+   "$-1$.",
+   "$1$.",
+   "$-\\dfrac{1}{2}$.",
+   "$3$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hàm số tăng theo $\\sin x$ nên đạt giá trị lớn nhất khi $\\sin x$ lớn nhất.\n**Bước 1.** Nhắc lại miền giá trị của $\\sin x$ với mọi số thực $x$ là một đoạn cố định.\n**Bước 2.** Nhân và cộng thêm hằng số vào bất đẳng thức đó, chú ý hệ số nhân dương nên chiều bất đẳng thức giữ nguyên.\n**Bước 3.** Kiểm tra dấu bằng có xảy ra không rồi kết luận giá trị lớn nhất.\n**Phần 2. Trình bày**\nTa có $-1\\le\\sin x\\le1$ với mọi $x$.\n$-2\\le2\\sin x\\le2$.\n$-1\\le2\\sin x+1\\le3$.\nDấu bằng ở vế phải xảy ra khi $\\sin x=1$, tức $x=\\dfrac{\\pi}{2}+k2\\pi$, $k\\in\\mathbb{Z}$.\nVậy giá trị lớn nhất của hàm số bằng $3$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000751",
+  "loai": "tu_luan",
+  "de": "Cho biết một giá trị lượng giác, tính các giá trị lượng giác còn lại, với $\\sin a=\\dfrac{5}{13}$, $\\dfrac{\\pi}{2}<a<\\pi$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** góc ở góc phần tư thứ hai có $\\cos a<0$, nên khi tính $\\cos a$ từ $\\sin a$ phải lấy căn âm.\n**Bước 1.** Dựa vào khoảng chứa $a$ để xác định dấu của $\\cos a$, $\\tan a$, $\\cot a$.\n**Bước 2.** Tính $\\cos^2a$ từ $\\sin^2a+\\cos^2a=1$ rồi lấy căn với dấu thích hợp.\n**Bước 3.** Tính $\\tan a$ theo $\\sin a$ và $\\cos a$, sau đó $\\cot a$ là số nghịch đảo.\n**Phần 2. Trình bày**\nVì $\\dfrac{\\pi}{2}<a<\\pi$ nên $\\cos a<0$.\n$\\cos^2a=1-\\sin^2a=1-\\dfrac{25}{169}=\\dfrac{144}{169}$\nSuy ra $\\cos a=-\\dfrac{12}{13}$.\n$\\tan a=\\dfrac{\\sin a}{\\cos a}=\\dfrac{5}{13}:\\left(-\\dfrac{12}{13}\\right)=-\\dfrac{5}{12}$\n$\\cot a=\\dfrac{1}{\\tan a}=-\\dfrac{12}{5}$\nVậy $\\cos a=-\\dfrac{12}{13}$, $\\ta …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000792",
+  "loai": "tu_luan",
+  "de": "Chứng minh đẳng thức $4\\cos^4x-2\\cos2x-\\dfrac{1}{2}\\cos4x=\\dfrac{3}{2}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hạ bậc $\\cos^4x$ hai lần: $\\cos^2x$ theo $\\cos2x$ rồi $\\cos^22x$ theo $\\cos4x$, các số hạng chứa $\\cos2x$, $\\cos4x$ triệt tiêu.\n**Bước 1.** Viết $\\cos^4x$ thành bình phương của $\\cos^2x$ rồi hạ bậc $\\cos^2x=\\dfrac{1+\\cos2x}{2}$.\n**Bước 2.** Khai triển bình phương và hạ bậc tiếp $\\cos^22x=\\dfrac{1+\\cos4x}{2}$.\n**Bước 3.** Thay vào vế trái, rút gọn các số hạng chứa $\\cos2x$ và $\\cos4x$.\n**Phần 2. Trình bày**\n$4\\cos^4x=(2\\cos^2x)^2=(1+\\cos2x)^2=1+2\\cos2x+\\cos^22x$\n$\\cos^22x=\\dfrac{1+\\cos4x}{2}$\nVế trái $=1+2\\cos2x+\\dfrac{1+\\cos4x}{2}-2\\cos2x-\\dfrac{1}{2}\\cos4x$\n$=1+\\dfrac{1}{2}+\\dfrac{1}{2}\\cos4x-\\dfrac{1}{2}\\cos4x$\n$=\\dfrac{3}{2}$\nVậy đẳng thức được chứng mi …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000001027",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim_{x\\to2}\\dfrac{\\sqrt[3]{3x+2}-\\sqrt{5x-6}}{x-2}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** cả hai căn cùng nhận giá trị $2$ tại $x=2$, nên chen số $2$ vào tử để tách thành hai hiệu, mỗi hiệu khử căn riêng.\n**Bước 1.** Tính giá trị của $\\sqrt[3]{3x+2}$ và $\\sqrt{5x-6}$ tại $x=2$ để thấy cả hai đều bằng một số chung.\n**Bước 2.** Viết tử thành $\\left(\\sqrt[3]{3x+2}-2\\right)-\\left(\\sqrt{5x-6}-2\\right)$ rồi chia cho $x-2$ để được hiệu hai giới hạn dạng $\\dfrac00$.\n**Bước 3.** Khử căn bậc ba bằng hằng đẳng thức $a^3-b^3$, khử căn bậc hai bằng nhân liên hợp, rồi lấy hiệu hai giới hạn.\n**Phần 2. Trình bày**\nVới $x\\neq2$ ta có:\n$\\dfrac{\\sqrt[3]{3x+2}-\\sqrt{5x-6}}{x-2}=\\dfrac{\\sqrt[3]{3x+2}-2}{x-2}-\\dfrac{\\sqrt{5x-6}-2}{x-2}$\n$\\dfrac{\\sqrt[3]{3x+2}-2}{x-2 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000804",
+  "loai": "tu_luan",
+  "de": "Xét tính tuần hoàn và tìm chu kì (nếu có) của hàm số $y=1-\\sin5x$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hàm số có dạng $a\\sin(\\omega x)+b$ nên tuần hoàn với chu kì $\\dfrac{2\\pi}{|\\omega|}$.\n**Bước 1.** Nhận dạng hàm số là hàm sin với hệ số góc $5$ cộng một hằng số.\n**Bước 2.** Kiểm tra số $T=\\dfrac{2\\pi}{5}$ thoả mãn $f(x+T)=f(x)$ với mọi $x$.\n**Bước 3.** Giải thích $T$ là số dương nhỏ nhất và kết luận.\n**Phần 2. Trình bày**\nTập xác định $D=\\mathbb{R}$. Với $T=\\dfrac{2\\pi}{5}$ ta có $x+T\\in D$ và\n$f\\left(x+\\dfrac{2\\pi}{5}\\right)=1-\\sin\\left(5x+2\\pi\\right)=1-\\sin5x=f(x)$\nNên hàm số tuần hoàn. Hàm số $\\sin5x$ có chu kì nhỏ nhất là $\\dfrac{2\\pi}{5}$ (vì $\\sin u$ có chu kì nhỏ nhất $2\\pi$ và $u=5x$), nên $1-\\sin5x$ cũng vậy.\nVậy hàm số $y=1-\\sin5x$ tuần hoàn với …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000701",
+  "loai": "trac_nghiem",
+  "de": "Với $x\\in\\left(0;\\dfrac{\\pi}{4}\\right)$, mệnh đề nào sau đây là đúng?",
+  "lua_chon": [
+   "Cả hai hàm số $y=-\\sin2x$ và $y=-1+\\cos2x$ đều nghịch biến.",
+   "Cả hai hàm số $y=-\\sin2x$ và $y=-1+\\cos2x$ đều đồng biến.",
+   "Hàm số $y=-\\sin2x$ nghịch biến, hàm số $y=-1+\\cos2x$ đồng biến.",
+   "Hàm số $y=-\\sin2x$ đồng biến, hàm số $y=-1+\\cos2x$ nghịch biến."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đặt $t=2x$ để đưa về khoảng quen thuộc của $\\sin t$, $\\cos t$, rồi chú ý dấu trừ đổi chiều biến thiên.\n**Bước 1.** Đặt $t=2x$ và xác định khoảng chạy của $t$ khi $x\\in\\left(0;\\dfrac{\\pi}{4}\\right)$.\n**Bước 2.** Xét chiều biến thiên của $\\sin t$ và $\\cos t$ trên khoảng đó, nhớ $x$ tăng thì $t$ tăng.\n**Bước 3.** Xét ảnh hưởng của dấu trừ và hằng số $-1$ lên chiều biến thiên của từng hàm rồi so với các phương án.\n**Phần 2. Trình bày**\nĐặt $t=2x$. Khi $x\\in\\left(0;\\dfrac{\\pi}{4}\\right)$ thì $t\\in\\left(0;\\dfrac{\\pi}{2}\\right)$ và $t$ tăng khi $x$ tăng.\nTrên $\\left(0;\\dfrac{\\pi}{2}\\right)$, $\\sin t$ đồng biến nên $y=-\\sin2x=-\\sin t$ nghịch biến.\nTrên $\\left(0;\\d …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000668",
+  "loai": "trac_nghiem",
+  "de": "Chọn đẳng thức sai trong các đẳng thức sau",
+  "lua_chon": [
+   "$\\sin\\left(\\dfrac{\\pi}{2}-x\\right)=\\cos x$.",
+   "$\\sin\\left(\\dfrac{\\pi}{2}+x\\right)=\\cos x$.",
+   "$\\tan\\left(\\dfrac{\\pi}{2}-x\\right)=\\cot x$.",
+   "$\\tan\\left(\\dfrac{\\pi}{2}+x\\right)=\\cot x$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** dùng công thức cung liên kết (phụ nhau và hơn kém $\\dfrac{\\pi}{2}$) rồi so từng phương án.\n**Bước 1.** Nhớ các công thức của hai góc phụ nhau cho $\\sin$, $\\cos$, $\\tan$, $\\cot$.\n**Bước 2.** Nhớ công thức của hai góc hơn kém $\\dfrac{\\pi}{2}$, chú ý dấu của $\\tan$ và $\\cot$.\n**Bước 3.** Đối chiếu từng đẳng thức, dừng ở đẳng thức lệch về dấu để kết luận là sai.\n**Phần 2. Trình bày**\nPhương án A: $\\sin\\left(\\dfrac{\\pi}{2}-x\\right)=\\cos x$ là đúng (hai góc phụ nhau).\nPhương án B: $\\sin\\left(\\dfrac{\\pi}{2}+x\\right)=\\cos x$ là đúng (hai góc hơn kém $\\dfrac{\\pi}{2}$).\nPhương án C: $\\tan\\left(\\dfrac{\\pi}{2}-x\\right)=\\cot x$ là đúng (hai góc phụ nhau).\nPhương án D:  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000625",
+  "loai": "tu_luan",
+  "de": "Chứng minh rằng: $\\dfrac{\\tan\\alpha-\\tan\\beta}{\\cot\\beta-\\cot\\alpha}=\\tan\\alpha\\tan\\beta$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** viết $\\cot$ theo $\\tan$ rồi quy đồng mẫu số để mẫu có chung nhân tử $\\tan\\alpha-\\tan\\beta$ với tử số.\n**Bước 1.** Thay $\\cot\\beta$ và $\\cot\\alpha$ bằng nghịch đảo của $\\tan\\beta$ và $\\tan\\alpha$.\n**Bước 2.** Quy đồng hiệu hai phân số ở mẫu số để mẫu có dạng phân thức theo $\\tan\\alpha$, $\\tan\\beta$.\n**Bước 3.** Chia tử cho mẫu và rút gọn nhân tử chung $\\tan\\alpha-\\tan\\beta$ để được vế phải.\n**Phần 2. Trình bày**\nĐiều kiện: các giá trị $\\tan\\alpha$, $\\tan\\beta$, $\\cot\\alpha$, $\\cot\\beta$ xác định và $\\tan\\alpha\\ne\\tan\\beta$.\n$\\cot\\beta-\\cot\\alpha=\\dfrac{1}{\\tan\\beta}-\\dfrac{1}{\\tan\\alpha}=\\dfrac{\\tan\\alpha-\\tan\\beta}{\\tan\\alpha\\tan\\beta}$.\nVế trái $=\\dfrac{\\ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000604",
+  "loai": "trac_nghiem",
+  "de": "Tìm số hạng thứ $5$ của dãy số $(u_n)$ cho bởi công thức số hạng tổng quát: $u_n=\\dfrac{2n}{n+1}$.",
+  "lua_chon": [
+   "$u_5=\\dfrac{5}{3}$.",
+   "$u_5=\\dfrac{3}{5}$.",
+   "$u_5=\\dfrac{5}{6}$.",
+   "$u_5=\\dfrac{6}{5}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** số hạng thứ $5$ của dãy được tính bằng cách thay $n=5$ vào công thức số hạng tổng quát.\n**Bước 1.** Xác định chỉ số của số hạng cần tính là $n=5$.\n**Bước 2.** Thay $n=5$ vào tử và mẫu của công thức.\n**Bước 3.** Rút gọn phân số rồi đối chiếu phương án.\n**Phần 2. Trình bày**\nThay $n=5$ vào công thức: $u_5=\\dfrac{2\\cdot5}{5+1}=\\dfrac{10}{6}=\\dfrac{5}{3}$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000743",
+  "loai": "tra_loi_ngan",
+  "de": "Hàm số $y=\\sin3x$ có chu kỳ tuần hoàn là $T=\\dfrac{a}{b}\\pi$ với $a,b\\in\\mathbb{Z}$ và $\\dfrac{a}{b}$ là phân số tối giản. Giá trị của biểu thức $a^2-b^2$ bằng $\\ldots$",
+  "dap_an": "-5",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hàm $y=\\sin(\\omega x)$ tuần hoàn với chu kì nhỏ nhất $\\dfrac{2\\pi}{|\\omega|}$, từ đó đọc $a$, $b$ dưới dạng phân số tối giản.\n**Bước 1.** Xác định hệ số $\\omega$ trước $x$ trong $\\sin3x$ rồi tính chu kì nhỏ nhất bằng công thức $\\dfrac{2\\pi}{|\\omega|}$.\n**Bước 2.** Viết chu kì dưới dạng $\\dfrac{a}{b}\\pi$ với phân số tối giản để đọc $a$ và $b$.\n**Bước 3.** Thay hai số $a$, $b$ vừa đọc được vào biểu thức $a^2-b^2$ rồi tính giá trị.\n**Phần 2. Trình bày**\nHàm số $y=\\sin3x$ tuần hoàn với chu kì $T=\\dfrac{2\\pi}{3}=\\dfrac{2}{3}\\pi$.\nPhân số $\\dfrac{2}{3}$ tối giản nên $a=2$, $b=3$.\n$a^2-b^2=2^2-3^2=4-9=-5$.\nVậy $a^2-b^2=-5$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000771",
+  "loai": "tu_luan",
+  "de": "Chứng minh biểu thức $A=\\cos^2x+\\cos^2\\left(\\dfrac{\\pi}{3}+x\\right)+\\cos^2\\left(\\dfrac{\\pi}{3}-x\\right)$ không phụ thuộc $x$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** khai triển $\\cos\\left(\\dfrac{\\pi}{3}\\pm x\\right)$ bằng công thức cộng rồi bình phương, hai số hạng chéo triệt tiêu nhau.\n**Bước 1.** Dùng công thức cộng để viết $\\cos\\left(\\dfrac{\\pi}{3}+x\\right)$ và $\\cos\\left(\\dfrac{\\pi}{3}-x\\right)$ theo $\\cos x$ và $\\sin x$.\n**Bước 2.** Bình phương hai biểu thức đó rồi cộng lại, để ý tích chéo $\\sin x\\cos x$ triệt tiêu.\n**Bước 3.** Cộng thêm $\\cos^2x$, gom theo $\\cos^2x$ và $\\sin^2x$ rồi dùng $\\sin^2x+\\cos^2x=1$ để ra hằng số.\n**Phần 2. Trình bày**\n$\\cos\\left(\\dfrac{\\pi}{3}+x\\right)=\\dfrac{1}{2}\\cos x-\\dfrac{\\sqrt{3}}{2}\\sin x$\n$\\cos\\left(\\dfrac{\\pi}{3}-x\\right)=\\dfrac{1}{2}\\cos x+\\dfrac{\\sqrt{3}}{2}\\sin x$\n$\\cos^2\\lef …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000969",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f(x)$ liên tục trên $(a;b)$. Điều kiện cần và đủ để hàm số liên tục trên $[a;b]$ là",
+  "lua_chon": [
+   "$\\lim\\limits_{x\\to a^+}f(x)=f(a)$ và $\\lim\\limits_{x\\to b^+}f(x)=f(b)$.",
+   "$\\lim\\limits_{x\\to a^-}f(x)=f(a)$ và $\\lim\\limits_{x\\to b^-}f(x)=f(b)$.",
+   "$\\lim\\limits_{x\\to a^+}f(x)=f(a)$ và $\\lim\\limits_{x\\to b^-}f(x)=f(b)$.",
+   "$\\lim\\limits_{x\\to a^-}f(x)=f(a)$ và $\\lim\\limits_{x\\to b^+}f(x)=f(b)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hàm số liên tục trên đoạn $[a;b]$ khi liên tục trên khoảng $(a;b)$ và liên tục một phía tại hai đầu mút, phía nằm trong đoạn.\n**Bước 1.** Nhớ định nghĩa: hàm liên tục trên $[a;b]$ nếu liên tục trên $(a;b)$ và có điều kiện riêng ở hai đầu mút $a$, $b$.\n**Bước 2.** Tại đầu mút $a$, xác định các giá trị $x$ thuộc đoạn $[a;b]$ nằm về phía nào của $a$ để biết cần dùng giới hạn bên phải hay bên trái.\n**Bước 3.** Làm tương tự tại đầu mút $b$ rồi chọn phương án có cặp giới hạn một phía đúng ở cả hai đầu.\n**Phần 2. Trình bày**\nHàm số $y=f(x)$ liên tục trên đoạn $[a;b]$ khi nó liên tục trên khoảng $(a;b)$ và liên tục phải tại $a$, liên tục trái tại $b$.\nTại $a$ các  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000822",
+  "loai": "trac_nghiem",
+  "de": "Cho dãy số $(u_n)$, biết $u_n=\\dfrac{2n+1}{n+2}$. Viết năm số hạng đầu của dãy số.",
+  "lua_chon": [
+   "$u_1=1,u_2=\\dfrac{3}{4},u_3=\\dfrac{7}{5},u_4=\\dfrac{3}{2},u_5=\\dfrac{11}{7}$.",
+   "$u_1=1,u_2=\\dfrac{5}{4},u_3=\\dfrac{7}{5},u_4=\\dfrac{3}{2},u_5=\\dfrac{11}{7}$.",
+   "$u_1=1,u_2=\\dfrac{5}{4},u_3=\\dfrac{8}{5},u_4=\\dfrac{3}{2},u_5=\\dfrac{11}{7}$.",
+   "$u_1=1,u_2=\\dfrac{5}{4},u_3=\\dfrac{7}{5},u_4=\\dfrac{7}{2},u_5=\\dfrac{11}{3}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** muốn viết các số hạng đầu thì thay lần lượt $n=1,2,3,4,5$ vào công thức số hạng tổng quát rồi rút gọn phân số.\n**Bước 1.** Xác định công thức cần dùng: số hạng tổng quát cho sẵn, nên chỉ cần thay từng giá trị của $n$ vào tử và mẫu.\n**Bước 2.** Tính lần lượt năm số hạng, chú ý rút gọn phân số khi tử và mẫu có ước chung.\n**Bước 3.** So sánh dãy số vừa tính với từng phương án, chú ý các vị trí $u_2$, $u_3$, $u_4$ dễ bị đổi.\n**Phần 2. Trình bày**\n$u_1=\\dfrac{2\\cdot1+1}{1+2}=1$\n$u_2=\\dfrac{2\\cdot2+1}{2+2}=\\dfrac{5}{4}$\n$u_3=\\dfrac{2\\cdot3+1}{3+2}=\\dfrac{7}{5}$\n$u_4=\\dfrac{2\\cdot4+1}{4+2}=\\dfrac{9}{6}=\\dfrac{3}{2}$\n$u_5=\\dfrac{2\\cdot5+1}{5+2}=\\dfrac{11}{7}$\nChọn …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000906",
+  "loai": "trac_nghiem",
+  "de": "Cho mẫu số liệu về chiều cao (cm) của các học sinh nữ trong khối $11$ của một trường như sau: các nhóm $[145;150)$, $[150;155)$, $[155;160)$, $[160;165)$, $[165;170)$, $[170;175)$ có số học sinh lần lượt là $20$, $45$, $34$, $27$, $15$, $4$. Mẫu số liệu trên có bao nhiêu số liệu, bao nhiêu nhóm?",
+  "lua_chon": [
+   "$145$ số liệu; $6$ nhóm.",
+   "$30$ số liệu; $5$ nhóm.",
+   "$6$ số liệu; $145$ nhóm.",
+   "$5$ số liệu; $30$ nhóm."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** số nhóm là số khoảng chia chiều cao, còn số số liệu là tổng các tần số của mọi nhóm.\n**Bước 1.** Đếm số khoảng (số cột) trong bảng để biết mẫu có bao nhiêu nhóm.\n**Bước 2.** Cộng tất cả các tần số (số học sinh) trong bảng để biết mẫu có bao nhiêu số liệu.\n**Bước 3.** Đối chiếu hai kết quả với các phương án, chú ý không nhầm số nhóm với số số liệu.\n**Phần 2. Trình bày**\nBảng có sáu nhóm: $[145;150)$, $[150;155)$, $[155;160)$, $[160;165)$, $[165;170)$, $[170;175)$.\nTổng số số liệu là $20+45+34+27+15+4=145$.\nVậy mẫu số liệu có $145$ số liệu và $6$ nhóm.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000901",
+  "loai": "tu_luan",
+  "de": "Cho cấp số nhân $(u_n)$ có các số hạng thoả $\\begin{cases} u_1+u_5=51 \\\\ u_2+u_6=102 \\end{cases}$ a) Tìm số hạng đầu và công bội của cấp số nhân. b) Hỏi tổng bao nhiêu số hạng đầu tiên bằng $3069$? c) Số $12288$ là số hạng thứ mấy?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** vế trái phương trình thứ hai bằng công bội nhân với vế trái phương trình thứ nhất, nên chia hai phương trình để tìm công bội.\n**Bước 1.** Ý a: nhận ra $u_2+u_6=q\\left(u_1+u_5\\right)$ để tìm $q$, rồi thay vào phương trình đầu để tìm $u_1$.\n**Bước 2.** Ý b: viết công thức tổng $n$ số hạng đầu của cấp số nhân và lập phương trình theo $n$.\n**Bước 3.** Ý c: viết số hạng tổng quát $u_n=u_1q^{n-1}$ và giải phương trình luỹ thừa của $2$ để tìm $n$.\n**Phần 2. Trình bày**\na) Ta có $u_2+u_6=q\\left(u_1+u_5\\right)$ nên $102=51q$, suy ra $q=2$.\nTừ $u_1+u_5=u_1\\left(1+q^4\\right)=17u_1=51$ suy ra $u_1=3$.\nVậy cấp số nhân có số hạng đầu $u_1=3$ và công bội $q=2$.\nb) Tổng $ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000662",
+  "loai": "trac_nghiem",
+  "de": "Trong mặt phẳng định hướng cho ba tia $Ou,Ov,Ox$. Xét các hệ thức sau:\n(I). $\\text{sđ}(Ou,Ov)=\\text{sđ}(Ou,Ox)+\\text{sđ}(Ox,Ov)+k2\\pi$, $k\\in\\mathbb{Z}$.\n(II). $\\text{sđ}(Ou,Ov)=\\text{sđ}(Ox,Ov)+\\text{sđ}(Ox,Ou)+k2\\pi$, $k\\in\\mathbb{Z}$.\n(III). $\\text{sđ}(Ou,Ov)=\\text{sđ}(Ov,Ox)+\\text{sđ}(Ox,Ou)+k2\\pi$, $k\\in\\mathbb{Z}$.\nHệ thức nào là hệ thức Chasles về số đo các góc?",
+  "lua_chon": [
+   "Chỉ (I).",
+   "Chỉ (II).",
+   "Chỉ (III).",
+   "Chỉ (I) và (III)."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hệ thức Chasles nối tia đầu với tia cuối qua một tia trung gian, tia cuối của góc trước phải là tia đầu của góc sau.\n**Bước 1.** Nhớ dạng hệ thức Chasles là $\\text{sđ}(Ou,Ov)=\\text{sđ}(Ou,Ox)+\\text{sđ}(Ox,Ov)+k2\\pi$ với tia trung gian $Ox$.\n**Bước 2.** Kiểm tra từng hệ thức xem hai góc ở vế phải có nối tiếp nhau và đi từ $Ou$ tới $Ov$ không.\n**Bước 3.** Với hệ thức không nối tiếp, thử đổi chiều các góc để thấy nó không bằng $\\text{sđ}(Ou,Ov)$.\n**Phần 2. Trình bày**\nHệ thức (I): góc $(Ou,Ox)$ có tia cuối $Ox$ trùng tia đầu của góc $(Ox,Ov)$, tổng đi từ $Ou$ tới $Ov$ nên (I) là hệ thức Chasles.\nHệ thức (II): hai góc $(Ox,Ov)$ và $(Ox,Ou)$ cùng có tia đầu $Ox …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000835",
+  "loai": "trac_nghiem",
+  "de": "Trong các dãy số sau dãy số nào bị chặn?",
+  "lua_chon": [
+   "Dãy $(a_n)$, với $a_n=\\sqrt{n^3+n}$, $\\forall n\\in\\mathbb{N}^*$.",
+   "Dãy $(b_n)$, với $b_n=n^2+\\dfrac{1}{2n}$, $\\forall n\\in\\mathbb{N}^*$.",
+   "Dãy $(c_n)$, với $c_n=(-2)^n+3$, $\\forall n\\in\\mathbb{N}^*$.",
+   "Dãy $(d_n)$, với $d_n=\\dfrac{3n}{n^3+2}$, $\\forall n\\in\\mathbb{N}^*$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** dãy bị chặn phải có cả chặn trên lẫn chặn dưới; dãy nào có số hạng lớn hơn $n$ thì không có chặn trên.\n**Bước 1.** Với dãy A và B, so sánh số hạng với $n$ để xem có chặn trên hay không.\n**Bước 2.** Với dãy C, xét riêng các số hạng có $n$ chẵn vì thừa số $(-2)^n$ khi đó dương.\n**Bước 3.** Với dãy D, xét dấu rồi so sánh tử $3n$ với mẫu $n^3+2$ bằng cách phân tích hiệu thành nhân tử.\n**Phần 2. Trình bày**\nDãy A: $a_n=\\sqrt{n^3+n}\\ge\\sqrt{n^3}\\ge n$ nên không bị chặn trên.\nDãy B: $b_n\\ge n^2\\ge n$ nên không bị chặn trên.\nDãy C: với $n$ chẵn, $c_n=2^n+3\\ge n+3$ nên không bị chặn trên.\nDãy D: với mọi $n\\in\\mathbb{N}^*$ ta có $d_n>0$.\nMặt khác $n^3+2-3n=(n-1)^2(n …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000614",
+  "loai": "tra_loi_ngan",
+  "de": "Khi xe đạp di chuyển, chọn chiều dương là chiều quay của bánh xe. Van $V$ của bánh xe quay được một góc có số đo $450\\pi$ mỗi phút. Biết bán kính của bánh xe là $30$ cm. Độ dài quãng đường mà xe đạp đã đi được trong $1$ phút bằng bao nhiêu mét? (kết quả làm tròn đến hàng đơn vị)",
+  "dap_an": "424",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** quãng đường xe đi bằng độ dài cung mà van xe vạch ra trên vành bánh, tính bằng bán kính nhân với góc quay tính theo radian.\n**Bước 1.** Đổi bán kính bánh xe từ xăng-ti-mét sang mét để kết quả cuối cùng tính bằng mét.\n**Bước 2.** Áp dụng công thức độ dài cung $l=R\\alpha$ với góc quay đề cho là số đo radian trong một phút.\n**Bước 3.** Tính giá trị gần đúng rồi làm tròn đến hàng đơn vị theo yêu cầu.\n**Phần 2. Trình bày**\nBán kính bánh xe là $R=30$ cm $=0{,}3$ m.\nTrong $1$ phút, van quay được góc $\\alpha=450\\pi$ (rad) nên quãng đường xe đi được là độ dài cung:\n$l=R\\alpha=0{,}3\\cdot450\\pi=135\\pi\\approx424{,}1$ (m).\nVậy xe đạp đi được khoảng $424$ mét trong $1$  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000884",
+  "loai": "tu_luan",
+  "de": "Xét tính bị chặn của dãy số $(u_n)$ với $u_n=\\dfrac{n^2+2n}{n^2+n+1}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** so sánh $u_n$ với hai số cụ thể bằng cách xét hiệu $u_n-m$ và $M-u_n$, trong đó mẫu số $n^2+n+1$ luôn dương.\n**Bước 1.** Nhận xét mẫu số dương với mọi $n$, nên dấu của $u_n-m$ chỉ phụ thuộc dấu của tử số sau khi quy đồng.\n**Bước 2.** Thử chặn dưới bằng $1$: lập hiệu $u_n-1$ và rút gọn tử số.\n**Bước 3.** Thử chặn trên bằng $2$: lập hiệu $2-u_n$ và rút gọn tử số, rồi kết luận.\n**Phần 2. Trình bày**\nVới mọi $n\\in\\mathbb{N}^*$ ta có $n^2+n+1>0$.\n$u_n-1=\\dfrac{n^2+2n-\\left(n^2+n+1\\right)}{n^2+n+1}=\\dfrac{n-1}{n^2+n+1}\\ge0$\nSuy ra $u_n\\ge1$.\n$2-u_n=\\dfrac{2\\left(n^2+n+1\\right)-\\left(n^2+2n\\right)}{n^2+n+1}=\\dfrac{n^2+2}{n^2+n+1}>0$\nSuy ra $u_n<2$.\nNhư vậy $1\\le  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000693",
+  "loai": "trac_nghiem",
+  "de": "Xét tính chẵn lẻ của hàm số $y=\\dfrac{\\sin2x}{2\\cos x-3}$ thì $y=f(x)$ là",
+  "lua_chon": [
+   "Hàm số chẵn.",
+   "Hàm số lẻ.",
+   "Không chẵn không lẻ.",
+   "Vừa chẵn vừa lẻ."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** kiểm tra tập xác định đối xứng, sau đó tính $f(-x)$ và so với $f(x)$.\n**Bước 1.** Tìm tập xác định bằng cách xét xem mẫu số $2\\cos x-3$ có thể bằng $0$ hay không, dùng $|\\cos x|\\le1$.\n**Bước 2.** Tính $f(-x)$ bằng cách dùng tính chất của góc đối: $\\sin(-2x)=-\\sin2x$ và $\\cos(-x)=\\cos x$.\n**Bước 3.** So sánh $f(-x)$ với $f(x)$ và $-f(x)$ để kết luận tính chẵn lẻ.\n**Phần 2. Trình bày**\nVì $\\cos x\\le1$ nên $2\\cos x-3\\le-1<0$, mẫu số không bao giờ bằng $0$. Tập xác định là $D=\\mathbb{R}$, đối xứng qua $0$.\nVới mọi $x\\in\\mathbb{R}$ ta có\n$f(-x)=\\dfrac{\\sin(-2x)}{2\\cos(-x)-3}$\n$f(-x)=\\dfrac{-\\sin2x}{2\\cos x-3}=-f(x)$.\nHàm số không đồng nhất bằng $0$ (chẳng hạn $ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000882",
+  "loai": "tu_luan",
+  "de": "Xét tính bị chặn của dãy số $(u_n)$ với $u_n=3\\cos\\dfrac{nx}{3}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hàm côsin luôn nằm trong đoạn $[-1;1]$ với mọi giá trị của biến, nên nhân với $3$ ta có ngay hai số chặn.\n**Bước 1.** Nhớ lại tập giá trị của hàm côsin: với mọi góc, $\\cos$ chỉ nhận giá trị từ $-1$ đến $1$.\n**Bước 2.** Nhân cả ba vế của bất đẳng thức kép với $3$ để được hai số chặn dưới và chặn trên của $u_n$.\n**Bước 3.** Kết luận tính bị chặn của dãy số.\n**Phần 2. Trình bày**\nVới mọi $n\\in\\mathbb{N}^*$ ta có $-1\\le\\cos\\dfrac{nx}{3}\\le1$.\nNhân các vế với $3$, ta được $-3\\le3\\cos\\dfrac{nx}{3}\\le3$.\nSuy ra $-3\\le u_n\\le3$ với mọi $n\\in\\mathbb{N}^*$.\nVậy dãy số $(u_n)$ bị chặn.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000800",
+  "loai": "tu_luan",
+  "de": "Xét tính chẵn lẻ của hàm số $y=2x\\sin x$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** khi thay $x$ bởi $-x$ thì cả hai thừa số $2x$ và $\\sin x$ cùng đổi dấu; tính $f(-x)$ rồi so với $f(x)$.\n**Bước 1.** Tập xác định là $\\mathbb{R}$ nên đối xứng qua $0$.\n**Bước 2.** Tính $f(-x)$ bằng cách thay $x$ bởi $-x$ và dùng tính lẻ của $\\sin$.\n**Bước 3.** So sánh với $f(x)$ để kết luận.\n**Phần 2. Trình bày**\nTập xác định $D=\\mathbb{R}$, đối xứng qua $0$.\n$f(-x)=2(-x)\\sin(-x)=2(-x)(-\\sin x)=2x\\sin x=f(x)$\nVậy hàm số $y=2x\\sin x$ là hàm số chẵn.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000823",
+  "loai": "trac_nghiem",
+  "de": "Cho dãy số $(u_n)$, biết $u_n=\\dfrac{n}{3^n-1}$. Ba số hạng đầu tiên của dãy số đó là",
+  "lua_chon": [
+   "$\\dfrac{1}{2};\\dfrac{1}{4};\\dfrac{1}{8}$.",
+   "$\\dfrac{1}{2};\\dfrac{1}{4};\\dfrac{3}{26}$.",
+   "$\\dfrac{1}{2};\\dfrac{1}{4};\\dfrac{1}{16}$.",
+   "$\\dfrac{1}{2};\\dfrac{2}{3};\\dfrac{3}{4}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** thay $n=1,2,3$ vào công thức, chú ý mẫu số là $3^n-1$ chứ không phải $3^{n-1}$.\n**Bước 1.** Nhận ra mẫu số chứa lũy thừa $3^n$ rồi trừ $1$, cần tính lũy thừa trước khi trừ.\n**Bước 2.** Thay lần lượt $n=1,2,3$ để được ba số hạng đầu, rút gọn phân số nếu có thể.\n**Bước 3.** Đối chiếu từng số hạng với các phương án, phương án sai thường ở số hạng thứ ba.\n**Phần 2. Trình bày**\n$u_1=\\dfrac{1}{3^1-1}=\\dfrac{1}{2}$\n$u_2=\\dfrac{2}{3^2-1}=\\dfrac{2}{8}=\\dfrac{1}{4}$\n$u_3=\\dfrac{3}{3^3-1}=\\dfrac{3}{26}$\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000850",
+  "loai": "trac_nghiem",
+  "de": "Người ta trồng 3003 cây theo dạng một hình tam giác như sau: hàng thứ nhất trồng 1 cây, hàng thứ hai trồng 2 cây, hàng thứ ba trồng 3 cây, ..., cứ tiếp tục trồng như thế cho đến khi hết số cây. Số hàng cây được trồng là",
+  "lua_chon": [
+   "77.",
+   "79.",
+   "76.",
+   "78."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tổng số cây của $n$ hàng đầu là tổng của cấp số cộng $1+2+\\dots+n$ và phải bằng số cây đã cho.\n**Bước 1.** Nhận ra số cây ở các hàng lập thành cấp số cộng có số hạng đầu 1 và công sai 1.\n**Bước 2.** Viết tổng số cây của $n$ hàng theo công thức tổng cấp số cộng rồi cho bằng 3003 để lập phương trình ẩn $n$.\n**Bước 3.** Giải phương trình bậc hai bằng cách phân tích thành nhân tử và chọn nghiệm nguyên dương.\n**Phần 2. Trình bày**\nSố cây ở các hàng lập thành cấp số cộng có $u_1=1$, $d=1$.\nTổng số cây của $n$ hàng đầu là $S_n=\\dfrac{n(n+1)}{2}$.\nCho $S_n=3003$, ta có $n(n+1)=6006$.\n$n^2+n-6006=0$\n$(n-77)(n+78)=0$\nVì $n$ là số nguyên dương nên $n=77$.\nVậy số hàng …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000641",
+  "loai": "trac_nghiem",
+  "de": "Mệnh đề nào dưới đây sai?",
+  "lua_chon": [
+   "Hàm số $y=\\cot x$ tuần hoàn với chu kì $2\\pi$.",
+   "Hàm số $y=\\sin 2x$ tuần hoàn với chu kì $\\pi$.",
+   "Hàm số $y=\\tan x$ tuần hoàn với chu kì $\\pi$.",
+   "Hàm số $y=\\cos x$ tuần hoàn với chu kì $2\\pi$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** nhớ chu kì của bốn hàm số lượng giác cơ bản và chu kì của hàm $\\sin ax$ là chu kì cơ bản chia cho $|a|$.\n**Bước 1.** Nhắc lại chu kì tuần hoàn nhỏ nhất của $\\sin x$, $\\cos x$, $\\tan x$, $\\cot x$.\n**Bước 2.** Với $y=\\sin 2x$, dùng quy tắc chia chu kì cơ bản cho hệ số của $x$.\n**Bước 3.** Đối chiếu từng phương án với chu kì tìm được và chọn phương án khẳng định sai.\n**Phần 2. Trình bày**\nHàm số $y=\\cos x$ tuần hoàn với chu kì $2\\pi$ nên phương án D đúng.\nHàm số $y=\\tan x$ tuần hoàn với chu kì $\\pi$ nên phương án C đúng.\nHàm số $y=\\sin 2x$ có chu kì $\\dfrac{2\\pi}{2}=\\pi$ nên phương án B đúng.\nHàm số $y=\\cot x$ tuần hoàn với chu kì $\\pi$ (không phải $2\\pi$).\nD …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000001000",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim\\dfrac{n+1}{n^2-2}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tử có bậc thấp hơn mẫu nên chia cả tử và mẫu cho luỹ thừa cao nhất của $n$ ở mẫu.\n**Bước 1.** So sánh bậc cao nhất của $n$ ở tử và ở mẫu để chọn luỹ thừa dùng làm số chia.\n**Bước 2.** Chia cả tử và mẫu cho luỹ thừa đó để mọi số hạng có dạng $\\dfrac{1}{n^k}$ hoặc hằng số.\n**Bước 3.** Dùng $\\lim\\dfrac{1}{n^k}=0$ và quy tắc giới hạn của thương rồi kết luận.\n**Phần 2. Trình bày**\nChia cả tử và mẫu cho $n^2$, ta được:\n$\\dfrac{n+1}{n^2-2}=\\dfrac{\\dfrac{1}{n}+\\dfrac{1}{n^2}}{1-\\dfrac{2}{n^2}}$\nVì $\\lim\\dfrac{1}{n}=\\lim\\dfrac{1}{n^2}=0$ nên tử có giới hạn $0$, mẫu có giới hạn $1$.\nVậy $\\lim\\dfrac{n+1}{n^2-2}=0$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000569",
+  "loai": "tra_loi_ngan",
+  "de": "Có bao nhiêu giá trị nguyên của tham số $m$ làm cho phương trình $\\cos x=\\dfrac{m}{3}$ có nghiệm?",
+  "dap_an": "7",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** phương trình $\\cos x=c$ có nghiệm khi và chỉ khi $c$ thuộc đoạn giá trị của hàm cosin.\n**Bước 1.** Viết điều kiện có nghiệm của $\\cos x=c$ theo tập giá trị của $\\cos x$, thay $c=\\dfrac{m}{3}$.\n**Bước 2.** Giải bất phương trình kép theo $m$ để được đoạn chứa $m$.\n**Bước 3.** Liệt kê và đếm các số nguyên $m$ trong đoạn đó, nhớ tính cả hai đầu mút.\n**Phần 2. Trình bày**\nPhương trình $\\cos x=\\dfrac{m}{3}$ có nghiệm khi và chỉ khi $-1\\le\\dfrac{m}{3}\\le1$.\n$-3\\le m\\le3$\nVì $m\\in\\mathbb{Z}$ nên $m\\in\\{-3;-2;-1;0;1;2;3\\}$.\nVậy có $7$ giá trị nguyên của $m$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000683",
+  "loai": "trac_nghiem",
+  "de": "Trong các công thức sau, công thức nào sai?",
+  "lua_chon": [
+   "$\\cos a+\\cos b=2\\cos\\dfrac{a+b}{2}\\cdot\\cos\\dfrac{a-b}{2}$.",
+   "$\\cos a-\\cos b=2\\sin\\dfrac{a+b}{2}\\cdot\\sin\\dfrac{a-b}{2}$.",
+   "$\\sin a+\\sin b=2\\sin\\dfrac{a+b}{2}\\cdot\\cos\\dfrac{a-b}{2}$.",
+   "$\\sin a-\\sin b=2\\cos\\dfrac{a+b}{2}\\cdot\\sin\\dfrac{a-b}{2}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** công thức biến đổi tổng thành tích suy ra từ công thức tích thành tổng bằng cách đặt $u=\\dfrac{a+b}{2}$, $v=\\dfrac{a-b}{2}$.\n**Bước 1.** Đặt $u=\\dfrac{a+b}{2}$ và $v=\\dfrac{a-b}{2}$, khi đó $a=u+v$ và $b=u-v$.\n**Bước 2.** Dùng công thức cộng khai triển $\\cos(u+v)$, $\\cos(u-v)$, $\\sin(u+v)$, $\\sin(u-v)$ rồi cộng hoặc trừ để lập bốn công thức tổng thành tích.\n**Bước 3.** So từng phương án với bốn công thức vừa lập, chú ý cả hàm số lẫn dấu ở vế phải, xét đủ bốn phương án rồi chọn công thức sai.\n**Phần 2. Trình bày**\nĐặt $u=\\dfrac{a+b}{2}$, $v=\\dfrac{a-b}{2}$ thì $a=u+v$, $b=u-v$.\n$\\cos(u+v)+\\cos(u-v)=2\\cos u\\cos v$ nên $\\cos a+\\cos b=2\\cos\\dfrac{a+b}{2}\\cos\\d …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000956",
+  "loai": "trac_nghiem",
+  "de": "Giới hạn nào sau đây có kết quả bằng $+\\infty$?",
+  "lua_chon": [
+   "$\\lim\\limits_{x\\to1}\\dfrac{x-3}{(x-1)^2}$",
+   "$\\lim\\limits_{x\\to1}\\dfrac{x-2}{(x-1)^2}$",
+   "$\\lim\\limits_{x\\to1}\\dfrac{-x-1}{(x-1)^2}$",
+   "$\\lim\\limits_{x\\to1}\\dfrac{x+1}{(x-1)^2}$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** cả bốn giới hạn đều có mẫu tiến về $0$ với dấu dương, nên dấu của kết quả chỉ phụ thuộc dấu của giới hạn của tử.\n**Bước 1.** Xét dấu của mẫu $(x-1)^2$ khi $x$ tiến tới điểm đang xét, kể cả hai phía.\n**Bước 2.** Tính giới hạn của tử ở từng phương án bằng cách thay giá trị của $x$.\n**Bước 3.** Áp dụng quy tắc dấu của thương khi mẫu tiến về $0$ để xác định giới hạn là $+\\infty$ hay $-\\infty$ cho từng phương án.\n**Phần 2. Trình bày**\nKhi $x\\to1$ thì $(x-1)^2\\to0$ và $(x-1)^2>0$ với $x\\ne1$.\nPhương án A: $\\lim\\limits_{x\\to1}(x-3)=-2<0$ nên giới hạn bằng $-\\infty$.\nPhương án B: $\\lim\\limits_{x\\to1}(x-2)=-1<0$ nên giới hạn bằng $-\\infty$.\nPhương án C: $\\lim\\limit …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000001026",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim_{x\\to1}\\dfrac{\\sqrt{2x+2}+\\sqrt{5x+4}-5}{x-1}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tách số $5$ thành $2+3$ để chia tử thành hai nhóm, mỗi nhóm là một căn trừ đi giá trị của nó tại $x=1$.\n**Bước 1.** Tính giá trị mỗi căn tại $x=1$ để biết cần trừ đi số nào (căn thứ nhất và căn thứ hai nhận giá trị nguyên).\n**Bước 2.** Viết tử thành tổng hai nhóm $\\left(\\sqrt{2x+2}-2\\right)+\\left(\\sqrt{5x+4}-3\\right)$, mỗi nhóm đều triệt tiêu tại $x=1$.\n**Bước 3.** Nhân liên hợp riêng cho từng nhóm để rút nhân tử $x-1$, tính hai giới hạn rồi cộng lại theo quy tắc giới hạn của tổng.\n**Phần 2. Trình bày**\nVới $x\\neq1$ ta có:\n$\\dfrac{\\sqrt{2x+2}+\\sqrt{5x+4}-5}{x-1}=\\dfrac{\\sqrt{2x+2}-2}{x-1}+\\dfrac{\\sqrt{5x+4}-3}{x-1}$\n$\\dfrac{\\sqrt{2x+2}-2}{x-1}=\\dfrac{(2x+2 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000907",
+  "loai": "trac_nghiem",
+  "de": "Tìm hiểu thời gian xem tivi trong tuần trước (đơn vị: giờ) của một số học sinh thu được kết quả sau: các nhóm $[0;5)$, $[5;10)$, $[10;15)$, $[15;20)$, $[20;25)$ có số học sinh lần lượt là $8$, $16$, $4$, $2$, $2$. Giá trị đại diện của nhóm $[20;25)$ là",
+  "lua_chon": [
+   "$22{,}5$.",
+   "$23$.",
+   "$20$.",
+   "$5$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** giá trị đại diện của một nhóm $[a;b)$ là trung điểm của khoảng đó, tức trung bình cộng hai đầu mút.\n**Bước 1.** Nhớ định nghĩa giá trị đại diện của nhóm trong mẫu số liệu ghép nhóm.\n**Bước 2.** Xác định hai đầu mút của nhóm được hỏi rồi tính trung bình cộng của chúng.\n**Bước 3.** Đối chiếu kết quả với các phương án, tránh nhầm với đầu mút hay độ dài của nhóm.\n**Phần 2. Trình bày**\nGiá trị đại diện của nhóm $[20;25)$ là trung điểm của khoảng đó:\n$\\dfrac{20+25}{2}=22{,}5$\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000622",
+  "loai": "tu_luan",
+  "de": "Cho $\\sin\\alpha+\\cos\\alpha=\\dfrac{1}{2}$. Tính $\\sin2\\alpha$; $\\sin4\\alpha$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** bình phương giả thiết để tìm $\\sin2\\alpha$, rồi tính $\\sin4\\alpha=2\\sin2\\alpha\\cos2\\alpha$ với $\\cos2\\alpha$ phân tích thành tích để suy ra từ giả thiết.\n**Bước 1.** Bình phương hai vế giả thiết và dùng hệ thức $\\sin^2+\\cos^2=1$ cùng công thức nhân đôi để tìm $\\sin2\\alpha$.\n**Bước 2.** Viết $\\sin4\\alpha$ qua công thức nhân đôi của góc $2\\alpha$, cần thêm giá trị $\\cos2\\alpha$.\n**Bước 3.** Phân tích $\\cos2\\alpha$ thành tích $(\\cos\\alpha-\\sin\\alpha)(\\cos\\alpha+\\sin\\alpha)$ và tính $(\\cos\\alpha-\\sin\\alpha)^2$ từ kết quả bước 1.\n**Bước 4.** Xét hai dấu của $\\cos\\alpha-\\sin\\alpha$ để được các giá trị có thể có của $\\sin4\\alpha$.\n**Phần 2. Trình bày**\n$(\\sin\\alp …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000806",
+  "loai": "tu_luan",
+  "de": "Khảo sát sự biến thiên của hàm số $y=\\sin x$ trên khoảng $\\left(-\\dfrac{\\pi}{4};\\dfrac{\\pi}{3}\\right)$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** so sánh khoảng đã cho với các khoảng đơn điệu quen thuộc của $\\sin x$ như $\\left(-\\dfrac{\\pi}{2};\\dfrac{\\pi}{2}\\right)$.\n**Bước 1.** Nhớ khoảng đơn điệu của hàm $\\sin$ chứa $0$.\n**Bước 2.** Kiểm tra khoảng đề cho nằm trọn trong khoảng đơn điệu đó.\n**Bước 3.** Kết luận chiều biến thiên.\n**Phần 2. Trình bày**\nHàm số $y=\\sin x$ đồng biến trên $\\left(-\\dfrac{\\pi}{2};\\dfrac{\\pi}{2}\\right)$.\nVì $\\left(-\\dfrac{\\pi}{4};\\dfrac{\\pi}{3}\\right)\\subset\\left(-\\dfrac{\\pi}{2};\\dfrac{\\pi}{2}\\right)$ nên hàm số đồng biến trên $\\left(-\\dfrac{\\pi}{4};\\dfrac{\\pi}{3}\\right)$.\nVậy hàm số $y=\\sin x$ đồng biến trên $\\left(-\\dfrac{\\pi}{4};\\dfrac{\\pi}{3}\\right)$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000827",
+  "loai": "trac_nghiem",
+  "de": "Cho dãy số $(u_n)$ với $u_n=\\dfrac{n^2+3n+7}{n+1}$. Hỏi dãy số trên có bao nhiêu số hạng nhận giá trị nguyên.",
+  "lua_chon": [
+   "$2$.",
+   "$4$.",
+   "$1$.",
+   "Không có."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tách phân thức thành phần nguyên cộng một phân số có tử là hằng số, khi đó $u_n$ nguyên khi $n+1$ là ước của hằng số đó.\n**Bước 1.** Chia đa thức tử cho $n+1$ để viết $u_n$ thành một biểu thức nguyên cộng một phân số.\n**Bước 2.** Lập điều kiện để phân số còn lại nguyên: $n+1$ phải là ước của tử số.\n**Bước 3.** Liệt kê các ước dương phù hợp, loại giá trị làm $n$ không phải số nguyên dương rồi đếm số hạng.\n**Phần 2. Trình bày**\nTa có $n^2+3n+7=(n+1)(n+2)+5$.\nSuy ra $u_n=n+2+\\dfrac{5}{n+1}$.\nVì $n+2$ nguyên nên $u_n$ nguyên khi và chỉ khi $\\dfrac{5}{n+1}$ nguyên.\nKhi đó $n+1$ là ước dương của $5$, tức $n+1\\in\\{1;5\\}$.\nVới $n+1=1$ thì $n=0$, loại vì $n\\in\\math …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000795",
+  "loai": "tu_luan",
+  "de": "Chứng minh đẳng thức $\\dfrac{1+\\sin x}{\\cos x}=\\cot\\left(\\dfrac{\\pi}{4}-\\dfrac{x}{2}\\right)$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đặt $u=\\dfrac{x}{2}$ và khai triển $\\cot\\left(\\dfrac{\\pi}{4}-u\\right)$ thành tỉ số $\\dfrac{\\cos u+\\sin u}{\\cos u-\\sin u}$, rồi nhân cả tử và mẫu với $\\cos u+\\sin u$.\n**Bước 1.** Đặt $u=\\dfrac{x}{2}$ và viết $\\cot\\left(\\dfrac{\\pi}{4}-u\\right)$ bằng $\\cos$ chia $\\sin$ của góc $\\dfrac{\\pi}{4}-u$.\n**Bước 2.** Dùng công thức cộng để biến cả tử và mẫu thành biểu thức theo $\\cos u$ và $\\sin u$ rồi rút gọn $\\dfrac{\\sqrt{2}}{2}$.\n**Bước 3.** Nhân tử và mẫu với $\\cos u+\\sin u$ để mẫu trở thành $\\cos2u$ và tử trở thành $1+\\sin2u$.\n**Phần 2. Trình bày**\nĐiều kiện: $\\cos x\\ne0$. Đặt $u=\\dfrac{x}{2}$.\n$\\cot\\left(\\dfrac{\\pi}{4}-u\\right)=\\dfrac{\\cos\\left(\\frac{\\pi}{4}-u\\r …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000617",
+  "loai": "tra_loi_ngan",
+  "de": "Số nghiệm của phương trình $\\sin\\left(2x-40^\\circ\\right)=\\dfrac{\\sqrt{3}}{2}$ với $-180^\\circ\\le x\\le180^\\circ$ là bao nhiêu?",
+  "dap_an": "4",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** giải phương trình tìm hai họ nghiệm theo $k$ rồi giải bất đẳng thức theo $k$ cho từng họ để đếm nghiệm trên đoạn.\n**Bước 1.** Nhận ra góc đặc biệt có sin bằng $\\dfrac{\\sqrt{3}}{2}$ rồi viết hai họ nghiệm của $2x-40^\\circ$.\n**Bước 2.** Chia cho hệ số $2$ để được hai họ nghiệm của $x$, nhớ chia cả phần $k360^\\circ$.\n**Bước 3.** Với mỗi họ, giải bất đẳng thức $-180^\\circ\\le x\\le180^\\circ$ theo $k$, đếm các số nguyên $k$ và cộng lại.\n**Phần 2. Trình bày**\n$\\sin(2x-40^\\circ)=\\dfrac{\\sqrt{3}}{2}=\\sin60^\\circ$\n$\\Leftrightarrow\\left[\\begin{array}{l}2x-40^\\circ=60^\\circ+k360^\\circ\\\\2x-40^\\circ=120^\\circ+k360^\\circ\\end{array}\\right.$\n$\\Leftrightarrow\\left[\\begin{arr …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000997",
+  "loai": "tra_loi_ngan",
+  "de": "Biết giới hạn $\\lim_{x\\to2}\\dfrac{\\sqrt{3x+3}+a}{x-2}=\\dfrac{b}{c}$, $a$ là số thực, $b$, $c$ là các số nguyên dương và $\\dfrac{b}{c}$ tối giản. Tính tổng $a+b+c$.",
+  "dap_an": "0",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mẫu số tiến tới $0$ mà giới hạn hữu hạn nên tử số cũng phải tiến tới $0$, từ đó tìm được $a$ trước rồi mới tính giới hạn.\n**Bước 1.** Lập luận điều kiện cần: khi $x\\to2$ mẫu tiến tới $0$ và giới hạn là số hữu hạn nên tử số phải tiến tới $0$.\n**Bước 2.** Cho giá trị của tử số tại $x=2$ bằng $0$ để tìm số thực $a$.\n**Bước 3.** Nhân lượng liên hợp của tử số với giá trị $a$ vừa tìm, rút gọn nhân tử $x-2$ rồi tính giới hạn để xác định $b$, $c$.\n**Phần 2. Trình bày**\nKhi $x\\to2$ thì mẫu $x-2\\to0$, mà giới hạn hữu hạn nên tử phải có giới hạn bằng $0$, tức là $\\sqrt{3\\cdot2+3}+a=0$.\n$3+a=0$\n$a=-3$.\nVới $a=-3$, ta có:\n$\\dfrac{\\sqrt{3x+3}-3}{x-2}=\\dfrac{(3x+3)-9}{(x …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000563",
+  "loai": "trac_nghiem",
+  "de": "Từ đồ thị của hàm số $y=\\cos x$ trên đoạn $\\left[-\\dfrac{3\\pi}{2};\\dfrac{\\pi}{2}\\right]$ trong hình vẽ suy ra hàm số $y=\\cos x$ nhận giá trị âm khi",
+  "lua_chon": [
+   "$x\\in\\left(-\\dfrac{3\\pi}{2};\\dfrac{\\pi}{2}\\right)$.",
+   "$x\\in\\left(-\\dfrac{\\pi}{2};\\dfrac{\\pi}{2}\\right)$.",
+   "$x\\in(-\\pi;0)$.",
+   "$x\\in\\left(-\\dfrac{3\\pi}{2};-\\dfrac{\\pi}{2}\\right)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hàm số nhận giá trị âm ở những khoảng mà đồ thị nằm phía dưới trục hoành.\n**Bước 1.** Quan sát đồ thị, tìm các giao điểm của đồ thị với trục $Ox$ trên đoạn đã cho.\n**Bước 2.** Xác định các khoảng giữa hai giao điểm mà đồ thị nằm dưới trục hoành.\n**Bước 3.** Đối chiếu khoảng đó với các phương án, chú ý khoảng phải mở ở hai đầu vì tại giao điểm hàm bằng $0$.\n**Phần 2. Trình bày**\nTrên đoạn $\\left[-\\dfrac{3\\pi}{2};\\dfrac{\\pi}{2}\\right]$, đồ thị cắt trục $Ox$ tại $x=-\\dfrac{3\\pi}{2}$, $x=-\\dfrac{\\pi}{2}$ và $x=\\dfrac{\\pi}{2}$.\nĐồ thị nằm phía dưới trục $Ox$ khi $-\\dfrac{3\\pi}{2}<x<-\\dfrac{\\pi}{2}$ (giá trị nhỏ nhất $-1$ tại $x=-\\pi$), và nằm phía trên trục $Ox …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000535",
+  "loai": "trac_nghiem",
+  "de": "Cho hai góc lượng giác $(Ox,Oy)$ và $(Ox,Ot)$ có số đo lần lượt là $-270^\\circ$ và $150^\\circ$. Số đo của góc lượng giác $(Oy,Ot)$ là",
+  "lua_chon": [
+   "$60^\\circ+k360^\\circ\\ (k\\in\\mathbb{Z})$.",
+   "$-120^\\circ+k360^\\circ\\ (k\\in\\mathbb{Z})$.",
+   "$-60^\\circ+k360^\\circ\\ (k\\in\\mathbb{Z})$.",
+   "$120^\\circ+k360^\\circ\\ (k\\in\\mathbb{Z})$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** dùng hệ thức Chasles để biểu diễn góc $(Oy,Ot)$ qua hai góc đã cho cùng có tia gốc $Ox$.\n**Bước 1.** Viết hệ thức Chasles cho ba tia $Ox$, $Oy$, $Ot$ để nối $(Oy,Ot)$ với $(Ox,Oy)$ và $(Ox,Ot)$.\n**Bước 2.** Rút $(Oy,Ot)$ từ hệ thức, nhớ cộng thêm bội của $360^\\circ$ vì số đo góc lượng giác xác định sai khác $k360^\\circ$.\n**Bước 3.** Thay số, thu gọn rồi đưa kết quả về dạng có số đo nằm trong $(-180^\\circ;180^\\circ]$ để so với các phương án.\n**Phần 2. Trình bày**\nTheo hệ thức Chasles: $(Ox,Oy)+(Oy,Ot)=(Ox,Ot)+k360^\\circ\\ (k\\in\\mathbb{Z})$.\nSuy ra $(Oy,Ot)=(Ox,Ot)-(Ox,Oy)+k360^\\circ$.\n$(Oy,Ot)=150^\\circ-(-270^\\circ)+k360^\\circ=420^\\circ+k360^\\circ$.\n$420^\\ci …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000832",
+  "loai": "trac_nghiem",
+  "de": "Cho dãy số $(u_n)$ biết $u_n=\\dfrac{-1}{2n+3}$. Mệnh đề nào sau đây đúng?",
+  "lua_chon": [
+   "Dãy số bị chặn.",
+   "Dãy số bị chặn trên.",
+   "Dãy số bị chặn dưới.",
+   "Không bị chặn."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** dãy bị chặn khi tồn tại cả một số chặn dưới lẫn một số chặn trên; ta đánh giá $u_n$ từ hai phía bằng cách xét mẫu số.\n**Bước 1.** Xét dấu của $u_n$ để xem có tìm được một số làm chặn trên hay không.\n**Bước 2.** Dùng $n\\ge1$ để đánh giá mẫu số $2n+3$ từ dưới, từ đó xem có tìm được một số làm chặn dưới hay không.\n**Bước 3.** Gộp hai đánh giá để kết luận về tính bị chặn rồi chọn phương án phát biểu đầy đủ nhất.\n**Phần 2. Trình bày**\nVới mọi $n\\in\\mathbb{N}^*$ ta có $2n+3>0$ nên $u_n<0$.\nMặt khác $2n+3\\ge5$ nên $0<\\dfrac{1}{2n+3}\\le\\dfrac{1}{5}$.\nSuy ra $-\\dfrac{1}{5}\\le u_n<0$ với mọi $n\\in\\mathbb{N}^*$.\nVậy dãy số bị chặn.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000637",
+  "loai": "trac_nghiem",
+  "de": "Đường cong trong hình dưới đây là đồ thị của hàm số nào?",
+  "lua_chon": [
+   "$y=-\\cos x$.",
+   "$y=|\\cos x|$.",
+   "$y=\\cos|x|$.",
+   "$y=\\cos x$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đọc trên đồ thị giá trị tại $x=0$ và vị trí các điểm cực đại, rồi loại dần các phương án không khớp.\n**Bước 1.** Quan sát đồ thị: giá trị của hàm số tại $x=0$ và tại $x=\\pi$ là bao nhiêu, đồ thị có nhận giá trị âm hay không.\n**Bước 2.** Loại các phương án có đồ thị luôn không âm hoặc có giá trị khác tại $x=0$.\n**Bước 3.** Nhận xét $\\cos|x|=\\cos x$ để loại phương án trùng nhau, rồi kiểm tra phương án còn lại bằng vài điểm đặc biệt.\n**Phần 2. Trình bày**\nTừ đồ thị: tại $x=0$ hàm số nhận giá trị $-1$, tại $x=\\pm\\pi$ hàm số nhận giá trị $1$, và đồ thị cắt trục hoành tại $x=\\pm\\dfrac{\\pi}{2}$.\nPhương án B: $y=|\\cos x|\\ge0$ với mọi $x$, trong khi đồ thị có phần  …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000575",
+  "loai": "trac_nghiem",
+  "de": "Cho $a,b$ là các số thực tùy ý. Trong các mệnh đề sau, mệnh đề nào đúng?",
+  "lua_chon": [
+   "$\\sin(a-b)=\\sin a\\cos b+\\cos a\\sin b$.",
+   "$\\cos(a-b)=\\cos a\\cos b+\\sin a\\sin b$.",
+   "$\\sin(a+b)=\\sin a\\cos b-\\cos a\\sin b$.",
+   "$\\cos(a+b)=\\cos a\\cos b+\\sin a\\sin b$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** so từng phương án với bốn công thức cộng, chú ý dấu ở vế phải của mỗi công thức.\n**Bước 1.** Nhớ lại công thức cộng của sin: dấu ở giữa cùng dấu với dấu trong ngoặc ở vế trái.\n**Bước 2.** Nhớ lại công thức cộng của cos: dấu ở giữa ngược với dấu trong ngoặc ở vế trái.\n**Bước 3.** Kiểm tra cả bốn phương án theo hai quy tắc dấu trên rồi mới kết luận, không dừng ở phương án đầu thấy đúng.\n**Phần 2. Trình bày**\nCác công thức cộng: $\\sin(a\\pm b)=\\sin a\\cos b\\pm\\cos a\\sin b$ và $\\cos(a\\pm b)=\\cos a\\cos b\\mp\\sin a\\sin b$.\nPhương án A: đúng phải là $\\sin(a-b)=\\sin a\\cos b-\\cos a\\sin b$, nên A sai.\nPhương án B: $\\cos(a-b)=\\cos a\\cos b+\\sin a\\sin b$, đúng.\nPhương án  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000765",
+  "loai": "tu_luan",
+  "de": "Cho $\\tan a-\\cot a=3$. Tính giá trị các biểu thức sau:\na) $A=\\tan^2a+\\cot^2a$\nb) $B=\\tan a+\\cot a$\nc) $C=\\tan^4a-\\cot^4a$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** luôn có $\\tan a\\cdot\\cot a=1$, nên bình phương hiệu $\\tan a-\\cot a$ cho tổng bình phương, và cộng thêm $4$ cho bình phương tổng.\n**Bước 1.** Ý a: bình phương giả thiết và dùng $\\tan a\\cdot\\cot a=1$ để tách ra $\\tan^2a+\\cot^2a$.\n**Bước 2.** Ý b: tính $(\\tan a+\\cot a)^2$ qua kết quả ý a rồi lấy căn, xét cả hai dấu.\n**Bước 3.** Ý c: phân tích $\\tan^4a-\\cot^4a$ thành tích của hiệu, tổng và tổng bình phương rồi thay các kết quả đã có.\n**Phần 2. Trình bày**\nĐiều kiện: $\\sin a\\ne0$, $\\cos a\\ne0$, khi đó $\\tan a\\cdot\\cot a=1$.\na) $(\\tan a-\\cot a)^2=\\tan^2a+\\cot^2a-2$\nSuy ra $A=\\tan^2a+\\cot^2a=9+2=11$.\nb) $(\\tan a+\\cot a)^2=\\tan^2a+\\cot^2a+2=13$\nSuy ra $B=\\sqrt{13} …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000001039",
+  "loai": "tu_luan",
+  "de": "Cho hàm số $y=f(x)=\\begin{cases} \\dfrac{2-\\sqrt{x+3}}{x^2-1} & \\text{khi } x\\neq1 \\\\ \\dfrac18 & \\text{khi } x=1 \\end{cases}$. a) Tìm $\\lim_{x\\to1}f(x)$. So sánh $\\lim_{x\\to1}f(x)$ và $f(1)$. b) Tìm $\\lim_{x\\to(-3)^+}f(x)$. So sánh $\\lim_{x\\to(-3)^+}f(x)$ và $f(-3)$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** ở ý a, khi $x\\to1$ chỉ dùng công thức $x\\neq1$ (giá trị $f(1)$ không ảnh hưởng giới hạn) và nhân liên hợp tử; ở ý b, điểm $-3$ không làm mẫu bằng $0$ nên chỉ cần thay trực tiếp.\n**Bước 1.** Ý a: nhận ra dạng vô định $\\dfrac00$ khi $x\\to1$ (tử $2-\\sqrt{x+3}$ và mẫu $x^2-1$ cùng triệt tiêu), nên nhân liên hợp tử.\n**Bước 2.** Ý a: rút gọn nhân tử $x-1$ (chú ý đổi dấu ở tử), tính giới hạn rồi so sánh với giá trị $f(1)=\\dfrac18$ cho sẵn.\n**Bước 3.** Ý b: với $x$ gần $-3$ và $x\\neq1$, dùng công thức $\\dfrac{2-\\sqrt{x+3}}{x^2-1}$; mẫu tại $x=-3$ khác $0$ nên thay thẳng $x\\to(-3)^+$.\n**Bước 4.** Ý b: tính $f(-3)$ bằng cùng công thức (vì $-3\\neq1$) rồi so sánh với  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000560",
+  "loai": "trac_nghiem",
+  "de": "Nghiệm của phương trình $\\tan2x+1=0$ là",
+  "lua_chon": [
+   "$x=-\\dfrac{\\pi}{4}+\\dfrac{k\\pi}{2}$ $(k\\in\\mathbb{Z})$.",
+   "$x=-\\dfrac{\\pi}{8}+k\\pi$ $(k\\in\\mathbb{Z})$.",
+   "$x=-\\dfrac{\\pi}{8}+\\dfrac{k\\pi}{2}$ $(k\\in\\mathbb{Z})$.",
+   "$x=-\\dfrac{\\pi}{4}+k\\pi$ $(k\\in\\mathbb{Z})$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đưa về phương trình cơ bản $\\tan u=\\tan\\varphi$ với $u=2x$, nghiệm là $u=\\varphi+k\\pi$.\n**Bước 1.** Chuyển vế để được $\\tan2x=$ một hằng số và nhận ra giá trị góc đặc biệt tương ứng.\n**Bước 2.** Viết nghiệm của phương trình $\\tan u=\\tan\\varphi$ rồi thay $u=2x$.\n**Bước 3.** Chia hai vế cho hệ số của $x$ để tìm $x$, chú ý chia cả phần $k\\pi$, rồi so với các phương án.\n**Phần 2. Trình bày**\n$\\tan2x+1=0\\Leftrightarrow\\tan2x=-1$\n$\\Leftrightarrow\\tan2x=\\tan\\left(-\\dfrac{\\pi}{4}\\right)$\n$\\Leftrightarrow2x=-\\dfrac{\\pi}{4}+k\\pi$\n$\\Leftrightarrow x=-\\dfrac{\\pi}{8}+\\dfrac{k\\pi}{2}$ với $k\\in\\mathbb{Z}$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000759",
+  "loai": "tu_luan",
+  "de": "Cho biết một giá trị lượng giác, tính giá trị của biểu thức $C=\\dfrac{\\sin^2a+2\\sin a\\cdot\\cos a-2\\cos^2a}{2\\sin^2a-3\\sin a\\cdot\\cos a+4\\cos^2a}$ khi $\\cot a=-3$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tử và mẫu đều là biểu thức đẳng cấp bậc hai theo $\\sin a$, $\\cos a$ nên chia cả hai cho $\\sin^2a$ để chuyển về $\\cot a$.\n**Bước 1.** Nhận ra tử và mẫu đồng bậc hai theo $\\sin a$ và $\\cos a$, và $\\sin a\\ne0$ vì $\\cot a$ xác định.\n**Bước 2.** Chia cả tử và mẫu cho $\\sin^2a$ để biểu thức chỉ còn $\\cot a$.\n**Bước 3.** Thay giá trị đã cho của $\\cot a$ vào biểu thức mới rồi tính ra phân số.\n**Phần 2. Trình bày**\nVì $\\cot a=-3$ xác định nên $\\sin a\\ne0$. Chia cả tử và mẫu của $C$ cho $\\sin^2a$, ta được:\n$C=\\dfrac{1+2\\cot a-2\\cot^2a}{2-3\\cot a+4\\cot^2a}$\nThay $\\cot a=-3$:\n$C=\\dfrac{1+2\\cdot(-3)-2\\cdot9}{2-3\\cdot(-3)+4\\cdot9}=\\dfrac{-23}{47}$\nVậy $C=-\\dfrac{23}{47} …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000831",
+  "loai": "trac_nghiem",
+  "de": "Cho dãy số $(u_n)$ biết $u_n=\\dfrac{1}{3n+2}$. Mệnh đề nào sau đây đúng?",
+  "lua_chon": [
+   "Dãy số tăng.",
+   "Dãy số giảm.",
+   "Dãy số không tăng, không giảm.",
+   "Cả A, B, C đều đúng."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** các số hạng đều dương nên so sánh hai phân số có tử bằng nhau bằng cách so sánh hai mẫu số.\n**Bước 1.** Viết $u_{n+1}$ và nhận xét các số hạng đều dương, tử số cùng bằng $1$.\n**Bước 2.** So sánh hai mẫu số $3n+5$ và $3n+2$ để suy ra quan hệ giữa $u_{n+1}$ và $u_n$.\n**Bước 3.** Kết luận chiều biến thiên rồi loại các phương án mâu thuẫn nhau như D.\n**Phần 2. Trình bày**\nTa có $u_{n+1}=\\dfrac{1}{3n+5}$.\nVới mọi $n\\in\\mathbb{N}^*$ ta có $3n+5>3n+2>0$.\nSuy ra $\\dfrac{1}{3n+5}<\\dfrac{1}{3n+2}$, tức $u_{n+1}<u_n$.\nVậy dãy số giảm; các phương án A, C, D sai.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000809",
+  "loai": "tu_luan",
+  "de": "Khảo sát sự biến thiên của hàm số $y=\\tan\\left(x+\\dfrac{\\pi}{3}\\right)$ trên khoảng $\\left(-\\dfrac{\\pi}{4};\\dfrac{\\pi}{2}\\right)$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đặt $t=x+\\dfrac{\\pi}{3}$; khoảng của $t$ chứa điểm $\\dfrac{\\pi}{2}$ là nơi $\\tan t$ không xác định nên phải tách thành hai khoảng con.\n**Bước 1.** Đổi biến $t=x+\\dfrac{\\pi}{3}$ và tìm khoảng chạy của $t$.\n**Bước 2.** Kiểm tra trong khoảng đó có điểm làm $\\tan t$ không xác định hay không và tìm giá trị tương ứng của $x$.\n**Bước 3.** Xét chiều biến thiên trên từng khoảng con và kết luận.\n**Phần 2. Trình bày**\nĐặt $t=x+\\dfrac{\\pi}{3}$. Khi $-\\dfrac{\\pi}{4}<x<\\dfrac{\\pi}{2}$ thì $\\dfrac{\\pi}{12}<t<\\dfrac{5\\pi}{6}$.\nKhoảng này chứa $t=\\dfrac{\\pi}{2}$ (ứng với $x=\\dfrac{\\pi}{6}$), tại đó hàm số không xác định, nên hàm số không xác định trên cả khoảng.\nHàm số $y= …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000951",
+  "loai": "trac_nghiem",
+  "de": "Cho các giới hạn: $\\lim\\limits_{x\\to x_0}f(x)=2$; $\\lim\\limits_{x\\to x_0}g(x)=3$, hỏi $\\lim\\limits_{x\\to x_0}\\left[3f(x)-4g(x)\\right]$ bằng",
+  "lua_chon": [
+   "$5$.",
+   "$2$.",
+   "$-6$.",
+   "$3$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** dùng quy tắc giới hạn của tổng, hiệu và tích của một hằng số với hàm số có giới hạn hữu hạn.\n**Bước 1.** Tách giới hạn của hiệu thành hiệu hai giới hạn, mỗi số hạng là một hằng số nhân với hàm số.\n**Bước 2.** Đưa các hằng số $3$ và $4$ ra ngoài dấu giới hạn.\n**Bước 3.** Thay các giới hạn đã cho của $f(x)$ và $g(x)$ rồi tính.\n**Phần 2. Trình bày**\nTheo quy tắc giới hạn của hiệu và của tích với hằng số:\n$\\lim\\limits_{x\\to x_0}\\left[3f(x)-4g(x)\\right]=3\\lim\\limits_{x\\to x_0}f(x)-4\\lim\\limits_{x\\to x_0}g(x)$\n$=3\\cdot2-4\\cdot3$\n$=6-12=-6$\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000947",
+  "loai": "trac_nghiem",
+  "de": "Tính giới hạn $L=\\lim\\dfrac{n^3-2n}{3n^2+n-2}$.",
+  "lua_chon": [
+   "$L=+\\infty$.",
+   "$L=0$.",
+   "$L=\\dfrac{1}{3}$.",
+   "$L=-\\infty$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tử có bậc lớn hơn bậc mẫu nên chia cả tử và mẫu cho luỹ thừa cao nhất của mẫu, tử sẽ tiến ra vô cực còn mẫu có giới hạn hữu hạn dương.\n**Bước 1.** So sánh bậc của tử và bậc của mẫu để chọn luỹ thừa của $n$ cần chia.\n**Bước 2.** Chia tử và mẫu cho luỹ thừa đó, đưa tử về dạng $n$ nhân với biểu thức có giới hạn khác $0$.\n**Bước 3.** Tính giới hạn của mẫu và xét dấu của giới hạn đó.\n**Bước 4.** Dùng quy tắc thương của dãy tiến ra vô cực với dãy có giới hạn dương để kết luận.\n**Phần 2. Trình bày**\nChia tử và mẫu cho $n^2$, ta có:\n$L=\\lim\\dfrac{n-\\dfrac{2}{n}}{3+\\dfrac{1}{n}-\\dfrac{2}{n^2}}$\nTa có $\\lim\\left(n-\\dfrac{2}{n}\\right)=\\lim n\\left(1-\\dfrac{2}{n^2}\\rig …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1110000001011",
+  "loai": "tu_luan",
+  "de": "Tìm giới hạn $\\lim\\left(\\sqrt[3]{1+2n-n^3}-n\\right)$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đưa $n$ ra ngoài căn bậc ba để biểu thức có dạng $n$ nhân với một dãy có giới hạn hữu hạn khác $0$.\n**Bước 1.** Nhận ra số hạng bậc cao nhất trong căn bậc ba rồi đặt $n^3$ làm nhân tử chung bên trong căn.\n**Bước 2.** Đưa $n$ ra ngoài căn và đặt $n$ làm nhân tử chung của cả biểu thức.\n**Bước 3.** Tìm giới hạn của thừa số còn lại bằng cách cho $n\\to+\\infty$ trong căn bậc ba, rồi dùng quy tắc giới hạn vô cực của tích.\n**Phần 2. Trình bày**\n$\\sqrt[3]{1+2n-n^3}=\\sqrt[3]{n^3\\left(\\dfrac{1}{n^3}+\\dfrac{2}{n^2}-1\\right)}=n\\sqrt[3]{\\dfrac{1}{n^3}+\\dfrac{2}{n^2}-1}$\nDo đó $\\sqrt[3]{1+2n-n^3}-n=n\\left(\\sqrt[3]{\\dfrac{1}{n^3}+\\dfrac{2}{n^2}-1}-1\\right)$.\nTa có $\\lim n …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000623",
+  "loai": "tu_luan",
+  "de": "Chứng minh rằng: $\\dfrac{1+\\sin2x+\\cos2x}{1+\\sin2x-\\cos2x}=\\cot x$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** viết lại $1+\\cos2x$ và $1-\\cos2x$ bằng công thức nhân đôi để tử và mẫu cùng có nhân tử chung.\n**Bước 1.** Biến đổi tử số: dùng công thức nhân đôi của cos để viết $1+\\cos2x$ theo $\\cos^2x$ và công thức nhân đôi của sin cho $\\sin2x$.\n**Bước 2.** Biến đổi mẫu số tương tự, dùng công thức nhân đôi để viết $1-\\cos2x$ theo $\\sin^2x$.\n**Bước 3.** Đặt nhân tử chung ở tử và mẫu rồi rút gọn để được vế phải.\n**Phần 2. Trình bày**\nTử số: $1+\\sin2x+\\cos2x=2\\cos^2x+2\\sin x\\cos x=2\\cos x(\\cos x+\\sin x)$.\nMẫu số: $1+\\sin2x-\\cos2x=2\\sin^2x+2\\sin x\\cos x=2\\sin x(\\sin x+\\cos x)$.\nVới $\\sin x\\ne0$ và $\\sin x+\\cos x\\ne0$, ta có $\\dfrac{1+\\sin2x+\\cos2x}{1+\\sin2x-\\cos2x}=\\dfrac{2 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000958",
+  "loai": "trac_nghiem",
+  "de": "Cho $I=\\lim\\limits_{x\\to0}\\dfrac{2\\left(\\sqrt{3x+1}-1\\right)}{x}$ và $J=\\lim\\limits_{x\\to-1}\\dfrac{x^2-x-2}{x+1}$. Tính $I-J$.",
+  "lua_chon": [
+   "$6$.",
+   "$3$.",
+   "$-6$.",
+   "$0$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** cả hai giới hạn đều có dạng $\\dfrac{0}{0}$ nên phải biến đổi đại số: nhân liên hợp cho $I$, phân tích tử thành nhân tử cho $J$.\n**Bước 1.** Ý $I$: nhân cả tử và mẫu với biểu thức liên hợp của $\\sqrt{3x+1}-1$ để khử căn ở tử.\n**Bước 2.** Ý $I$: rút gọn nhân tử $x$ chung rồi thay giá trị của $x$ vào biểu thức còn lại.\n**Bước 3.** Ý $J$: phân tích tử thành tích hai nhân tử, trong đó có nhân tử giống mẫu, rồi rút gọn.\n**Bước 4.** Ý $J$: thay giá trị của $x$ vào biểu thức đã rút gọn, sau đó lấy hiệu $I-J$.\n**Phần 2. Trình bày**\nTính $I$: với $x\\ne0$, nhân tử và mẫu với $\\sqrt{3x+1}+1$, ta có:\n$\\dfrac{2\\left(\\sqrt{3x+1}-1\\right)}{x}=\\dfrac{2(3x+1-1)}{x\\left(\\sqr …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000876",
+  "loai": "tra_loi_ngan",
+  "de": "Một cầu thang đường lên cổng trời của một điểm giải trí ở công viên tỉnh Lâm Đồng được hàn bằng sắt có hình dáng các bậc thang đều là hình chữ nhật với cùng chiều rộng là $35\\text{ cm}$ và chiều dài của nó theo thứ tự mỗi bậc đều giảm dần đi $7\\text{ cm}$. Biết rằng bậc đầu tiên của cầu thang là hình chữ nhật có chiều dài $196\\text{ cm}$ và bậc cuối cùng cầu thang là hình chữ nhật có chiều dài $56\\text{ cm}$. Hỏi giá thành làm cầu thang là bao nhiêu? Biết rằng giá thành làm một mét vuông cầu thang đó là $1250000$ đồng trên một mét vuông. (Kết quả làm tròn đến hàng triệu đồng).",
+  "dap_an": "12",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** chiều dài các bậc thang lập thành một cấp số cộng, nên tổng diện tích các bậc bằng chiều rộng nhân với tổng chiều dài các bậc.\n**Bước 1.** Dùng công thức số hạng tổng quát của cấp số cộng với số hạng cuối đã biết để tìm số bậc thang.\n**Bước 2.** Tính tổng chiều dài các bậc bằng công thức tổng của cấp số cộng, rồi nhân với chiều rộng để được diện tích sắt cần dùng.\n**Bước 3.** Đổi diện tích sang mét vuông, nhân với giá một mét vuông và làm tròn đến hàng triệu đồng theo yêu cầu.\n**Phần 2. Trình bày**\nChiều dài các bậc thang lập thành cấp số cộng có $u_1=196$, công sai $d=-7$ (đơn vị: cm).\nGọi $n$ là số bậc thang. Bậc cuối có chiều dài $56$ nên:\n$196+(n-1)\\cd …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000985",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f(x)=\\begin{cases} \\dfrac{x^3-1}{x-1} & \\text{khi } x\\ne1 \\\\ 2m+1 & \\text{khi } x=1 \\end{cases}$. Giá trị của tham số $m$ để hàm số liên tục tại điểm $x_0=1$ là:",
+  "lua_chon": [
+   "$m=-\\dfrac{1}{2}$.",
+   "$m=2$.",
+   "$m=1$.",
+   "$m=0$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tìm giới hạn của $f(x)$ khi $x\\to1$ ở nhánh $x\\ne1$ rồi cho bằng giá trị $f(1)$ ở nhánh còn lại.\n**Bước 1.** Viết điều kiện liên tục tại $x_0=1$ bằng đẳng thức giữa giới hạn của hàm khi $x\\to1$ và $f(1)$.\n**Bước 2.** Phân tích tử số bằng hằng đẳng thức hiệu hai lập phương để rút gọn nhân tử $x-1$, rồi tính giới hạn.\n**Bước 3.** Lập phương trình bậc nhất ẩn $m$ từ đẳng thức ở bước 1, giải ra $m$ rồi chọn phương án phù hợp.\n**Phần 2. Trình bày**\nTa có $f(1)=2m+1$.\nVới $x\\ne1$ thì $\\dfrac{x^3-1}{x-1}=\\dfrac{(x-1)(x^2+x+1)}{x-1}=x^2+x+1$.\n$\\lim_{x\\to1}f(x)=\\lim_{x\\to1}(x^2+x+1)=3$.\nHàm số liên tục tại $x_0=1$ khi và chỉ khi $\\lim_{x\\to1}f(x)=f(1)$.\n$2m+1=3$\n$m …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000826",
+  "loai": "trac_nghiem",
+  "de": "Cho dãy số $(u_n)$ với $u_n=\\dfrac{n+1}{n}$. Tính $u_5$.",
+  "lua_chon": [
+   "$5$.",
+   "$\\dfrac{6}{5}$.",
+   "$\\dfrac{5}{6}$.",
+   "$1$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $u_5$ là giá trị của công thức số hạng tổng quát tại $n=5$.\n**Bước 1.** Nhận ra $u_5$ là số hạng thứ năm nên thay $n=5$ vào công thức.\n**Bước 2.** Thực hiện phép tính ở tử và mẫu rồi viết kết quả ở dạng phân số tối giản.\n**Bước 3.** Đối chiếu kết quả với các phương án, tránh nhầm tử với mẫu.\n**Phần 2. Trình bày**\n$u_5=\\dfrac{5+1}{5}=\\dfrac{6}{5}$\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000688",
+  "loai": "trac_nghiem",
+  "de": "Cho $A$, $B$, $C$ là ba góc của một tam giác. Hãy chỉ ra hệ thức SAI.",
+  "lua_chon": [
+   "$\\cos\\dfrac{A+B}{2}=\\sin\\dfrac{C}{2}$.",
+   "$\\cos(A+B+2C)=-\\cos C$.",
+   "$\\sin(A+C)=-\\sin B$.",
+   "$\\cos(A+B)=-\\cos C$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** thay tổng hai góc bất kì của tam giác bằng $\\pi$ trừ góc còn lại rồi dùng công thức góc bù, góc phụ.\n**Bước 1.** Dùng $A+B+C=\\pi$ để biểu diễn $A+B$ và $A+C$ qua góc còn lại của tam giác.\n**Bước 2.** Thay vào từng phương án và rút gọn bằng các công thức hai góc bù nhau, hai góc phụ nhau.\n**Bước 3.** So kết quả với vế phải từng phương án, xét đủ bốn phương án rồi chọn hệ thức sai.\n**Phần 2. Trình bày**\nVì $A+B+C=\\pi$ nên $A+B=\\pi-C$ và $A+C=\\pi-B$.\nPhương án A: $\\cos\\dfrac{A+B}{2}=\\cos\\left(\\dfrac{\\pi}{2}-\\dfrac{C}{2}\\right)=\\sin\\dfrac{C}{2}$. Phương án A đúng.\nPhương án B: $\\cos(A+B+2C)=\\cos(\\pi+C)=-\\cos C$. Phương án B đúng.\nPhương án C: $\\sin(A+C)=\\sin(\\ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000539",
+  "loai": "trac_nghiem",
+  "de": "Cho đồ thị hàm số $y=\\sin x$ có đồ thị là đường cong trong hình bên. Tính tổng giá trị lớn nhất và giá trị nhỏ nhất của hàm số trên đoạn $\\left[\\dfrac{\\pi}{2};\\dfrac{3\\pi}{2}\\right]$.",
+  "lua_chon": [
+   "$1$.",
+   "$0$.",
+   "$2$.",
+   "$-2$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đọc trên đồ thị xem hàm sin biến thiên thế nào trên đoạn đã cho để biết hai đầu mút là max và min.\n**Bước 1.** Quan sát đồ thị trên đoạn từ $\\dfrac{\\pi}{2}$ đến $\\dfrac{3\\pi}{2}$ để xem hàm số đồng biến hay nghịch biến.\n**Bước 2.** Từ chiều biến thiên suy ra giá trị lớn nhất và nhỏ nhất đạt ở đầu mút nào, rồi tính giá trị tại hai mút.\n**Bước 3.** Cộng hai giá trị vừa tìm để đối chiếu với các phương án.\n**Phần 2. Trình bày**\nTheo đồ thị, hàm số $y=\\sin x$ nghịch biến trên đoạn $\\left[\\dfrac{\\pi}{2};\\dfrac{3\\pi}{2}\\right]$.\nGiá trị lớn nhất là $\\sin\\dfrac{\\pi}{2}=1$.\nGiá trị nhỏ nhất là $\\sin\\dfrac{3\\pi}{2}=-1$.\nTổng cần tìm là $1+(-1)=0$.\nChọn B.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000628",
+  "loai": "tu_luan",
+  "de": "Tìm giá trị lớn nhất, giá trị nhỏ nhất của hàm số $y=3\\sin x-13$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hàm số $y=3\\sin x-13$ bị chặn nhờ bất đẳng thức $-1\\le\\sin x\\le1$ và dấu bằng đạt được.\n**Bước 1.** Viết bất đẳng thức bị chặn của $\\sin x$ rồi nhân với hệ số dương $3$ và cộng $-13$.\n**Bước 2.** Suy ra hai cận của $y$ và chỉ ra giá trị $x$ để $y$ đạt từng cận.\n**Bước 3.** Kết luận giá trị lớn nhất và nhỏ nhất.\n**Phần 2. Trình bày**\nVì $-1\\le\\sin x\\le1$ nên $-3\\le3\\sin x\\le3$, suy ra $-16\\le y\\le-10$.\n$y=-10$ khi $\\sin x=1$, tức $x=\\dfrac{\\pi}{2}+k2\\pi$.\n$y=-16$ khi $\\sin x=-1$, tức $x=-\\dfrac{\\pi}{2}+k2\\pi$.\nVậy giá trị lớn nhất của hàm số là $-10$, giá trị nhỏ nhất là $-16$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000677",
+  "loai": "trac_nghiem",
+  "de": "Đơn giản biểu thức $A=\\cos\\left(\\alpha-\\dfrac{\\pi}{2}\\right)+\\sin(\\alpha-\\pi)$, ta có",
+  "lua_chon": [
+   "$A=\\cos a+\\sin a$.",
+   "$A=2\\sin a$.",
+   "$A=\\sin a-\\cos a$.",
+   "$A=0$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đưa từng số hạng về $\\sin\\alpha$ hoặc $\\cos\\alpha$ nhờ công thức cung liên kết, chú ý dấu của mỗi công thức.\n**Bước 1.** Dùng tính chất $\\cos$ là hàm chẵn để đổi $\\cos\\left(\\alpha-\\dfrac{\\pi}{2}\\right)$ về dạng góc phụ.\n**Bước 2.** Biến đổi $\\sin(\\alpha-\\pi)$ bằng công thức hơn kém $\\pi$, chú ý dấu.\n**Bước 3.** Cộng hai kết quả lại để rút gọn $A$.\n**Phần 2. Trình bày**\nTa có $\\cos\\left(\\alpha-\\dfrac{\\pi}{2}\\right)=\\cos\\left(\\dfrac{\\pi}{2}-\\alpha\\right)=\\sin\\alpha$.\nTa có $\\sin(\\alpha-\\pi)=-\\sin(\\pi-\\alpha)=-\\sin\\alpha$.\nDo đó $A=\\sin\\alpha-\\sin\\alpha=0$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000841",
+  "loai": "trac_nghiem",
+  "de": "Cho cấp số cộng $(u_n)$ với $u_1=7$ công sai $d=2$. Giá trị $u_2$ bằng",
+  "lua_chon": [
+   "$14$.",
+   "$9$.",
+   "$\\dfrac{7}{2}$.",
+   "$5$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** trong cấp số cộng, mỗi số hạng bằng số hạng đứng ngay trước nó cộng công sai.\n**Bước 1.** Nhớ công thức truy hồi $u_{n+1}=u_n+d$ của cấp số cộng.\n**Bước 2.** Áp dụng với $n=1$ để tính số hạng thứ hai từ $u_1$ và $d$.\n**Bước 3.** Đối chiếu với phương án, tránh nhầm với phép nhân hay phép chia.\n**Phần 2. Trình bày**\n$u_2=u_1+d=7+2=9$\nVậy $u_2=9$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000695",
+  "loai": "trac_nghiem",
+  "de": "Trong các hàm số $y=\\tan x$; $y=\\sin2x$; $y=\\sin x$; $y=\\cot x$, có bao nhiêu hàm số thỏa mãn tính chất $f(x+k\\pi)=f(x)$, $\\forall x\\in\\mathbb{R}$, $k\\in\\mathbb{Z}$.",
+  "lua_chon": [
+   "$3$.",
+   "$2$.",
+   "$1$.",
+   "$4$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tính chất $f(x+k\\pi)=f(x)$ với mọi số nguyên $k$ nghĩa là $\\pi$ là một chu kì của hàm số.\n**Bước 1.** Hiểu đẳng thức $f(x+k\\pi)=f(x)$ với mọi $k\\in\\mathbb{Z}$ tương đương với $f(x+\\pi)=f(x)$.\n**Bước 2.** Đề yêu cầu đẳng thức đúng với mọi $x\\in\\mathbb{R}$, nên trước hết kiểm tra từng hàm số có xác định trên toàn $\\mathbb{R}$ hay không.\n**Bước 3.** Với hàm xác định trên $\\mathbb{R}$, kiểm tra $\\pi$ có là bội nguyên của chu kì của nó hay không (nêu một giá trị cụ thể cho hàm không thỏa), rồi đếm số hàm thỏa mãn.\n**Phần 2. Trình bày**\nĐẳng thức $f(x+k\\pi)=f(x)$ phải đúng với mọi $x\\in\\mathbb{R}$, nên hàm số phải xác định trên toàn $\\mathbb{R}$.\nHàm $y=\\tan x$  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000953",
+  "loai": "trac_nghiem",
+  "de": "Tính giới hạn $L=\\lim\\limits_{x\\to3}\\dfrac{x-3}{x+3}$",
+  "lua_chon": [
+   "$L=-\\infty$.",
+   "$L=0$.",
+   "$L=+\\infty$.",
+   "$L=1$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mẫu có giá trị khác $0$ tại điểm đang xét nên dùng quy tắc giới hạn của thương, thay trực tiếp.\n**Bước 1.** Kiểm tra giá trị của mẫu tại điểm đang xét có khác $0$ hay không.\n**Bước 2.** Tính giới hạn của tử và giới hạn của mẫu bằng cách thay giá trị của $x$.\n**Bước 3.** Lấy thương hai giới hạn rồi chọn phương án.\n**Phần 2. Trình bày**\nTa có $\\lim\\limits_{x\\to3}(x-3)=0$ và $\\lim\\limits_{x\\to3}(x+3)=6\\ne0$.\nTheo quy tắc giới hạn của thương:\n$L=\\dfrac{0}{6}=0$\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T111000000966",
+  "loai": "trac_nghiem",
+  "de": "Tìm $a$ để hàm số $f(x)=\\begin{cases}x^2+ax+1 & \\text{khi } x>2 \\\\ 2x^2-x+1 & \\text{khi } x\\le2\\end{cases}$ có giới hạn tại $x=2$.",
+  "lua_chon": [
+   "$-1$.",
+   "$-2$.",
+   "$2$.",
+   "$1$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hàm số có giới hạn tại $x=2$ khi và chỉ khi giới hạn bên trái bằng giới hạn bên phải tại điểm đó.\n**Bước 1.** Tính giới hạn bên trái tại điểm đang xét bằng cách dùng công thức ứng với $x\\le2$.\n**Bước 2.** Tính giới hạn bên phải tại điểm đó bằng công thức ứng với $x>2$, kết quả còn chứa tham số $a$.\n**Bước 3.** Cho hai giới hạn một bên bằng nhau để lập phương trình theo $a$ rồi giải.\n**Phần 2. Trình bày**\nGiới hạn bên trái: $\\lim\\limits_{x\\to2^-}f(x)=\\lim\\limits_{x\\to2^-}\\left(2x^2-x+1\\right)=8-2+1=7$.\nGiới hạn bên phải: $\\lim\\limits_{x\\to2^+}f(x)=\\lim\\limits_{x\\to2^+}\\left(x^2+ax+1\\right)=4+2a+1=5+2a$.\nHàm số có giới hạn tại $x=2$ khi và chỉ khi hai giới h …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]
