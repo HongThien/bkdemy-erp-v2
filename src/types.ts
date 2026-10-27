@@ -58,6 +58,7 @@ export interface AdminLeaf {
   nhom: 'Vận hành' | 'Gamification' | 'Học thuật' | 'Quản lý chất lượng' | 'Core team' | 'Dashboard'
   ten: string
   founderOnly: boolean
+  anMenu?: boolean   // quyền vẫn cấp được ở Phân quyền nhưng không hiện trên menu ERP (màn nằm ở app khác)
 }
 
 // Nav tree dùng chung cho cả màn Nhân sự + Admin

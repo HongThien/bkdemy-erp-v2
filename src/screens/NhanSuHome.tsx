@@ -60,7 +60,6 @@ import { hoiDapDuocDung } from '../lib/hoidap'
 import { listDotChoDuyetDuoi } from '../lib/botro_duoi'
 import QuanLyLevelScreen from './gami/QuanLyLevelScreen'
 import ChotXuScreen from './gami/ChotXuScreen'
-import NgayNghiChuoiScreen from './gami/NgayNghiChuoiScreen'
 import HuyHieuScreen from './gami/HuyHieuScreen'
 import PhanQuyenScreen from './phanquyen/PhanQuyenScreen'
 import BaoLoiScreen from './baoloi/BaoLoiScreen'
@@ -72,7 +71,6 @@ import ScanDaChamScreen from './vanhanhops/ScanDaChamScreen'
 import DuyetOpsNgay from './vanhanhops/DuyetOpsNgay'
 import TuyenSinhScreen from './tuyensinh/TuyenSinhScreen'
 import TestDauVaoScreen, { moTabTestDauVao } from './tuyensinh/TestDauVaoScreen'
-import KhaoSatScreen from './khaosat/KhaoSatScreen'
 import BoTroHubScreen, { moBoTroTab } from './botro/BoTroHubScreen'
 import HieuSuatTAScreen from './dashboard/HieuSuatTAScreen' // thay ChatLuongVanHanhScreen (outdate, CEO 08/10)
 import PhDangNhapScreen from './dashboard/PhDangNhapScreen'
@@ -759,7 +757,6 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'hs' ? <HocSinhScreen />
       : staffLeaf === 'tuyensinh' ? <TuyenSinhScreen />
       : staffLeaf === 'test_dau_vao' ? <TestDauVaoScreen />
-      : staffLeaf === 'khaosat' ? <KhaoSatScreen />
       : staffLeaf === 'su_kien' ? <SuKienScreen />
       : staffLeaf === 'botro' ? <BoTroHubScreen />
       : staffLeaf === 'buoihoc' ? <BuoiHocScreen />
@@ -775,7 +772,6 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'duyetloigiai' ? <DuyetLoiGiaiScreen />
       : staffLeaf === 'quanlylevel' ? <QuanLyLevelScreen />
       : staffLeaf === 'chotxu' ? <ChotXuScreen />
-      : staffLeaf === 'chuoi_nghi' ? <NgayNghiChuoiScreen />
       : staffLeaf === 'huyhieu' ? <HuyHieuScreen />
       : staffLeaf === 'huyhieu_trao' ? <HuyHieuScreen chiTrao />
       : staffLeaf === 'phanquyen' ? <PhanQuyenScreen />

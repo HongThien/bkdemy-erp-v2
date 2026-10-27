@@ -15,10 +15,10 @@ import { execSync } from 'node:child_process'
 // Nhận diện project qua domain production (system env của Vercel) hoặc env tự đặt VERCEL_IGNORE_APP (ưu tiên).
 const URL_APP = [
   ['bkdemy-erp-v2-ta-v2', 'ta'], ['bkdemy-erp-v2-ta', 'ta'], ['bkdemy-erp-v2-gv', 'gv'], ['bkdemy-erp-v2-ops', 'ops'],
-  ['bkdemy-erp-v2-hs', 'hs'], ['bkdemy-erp-v2-pt', 'pt'], ['bkdemy-erp-v2-chi', 'chi'], ['bkdemy-erp-v2-gb', 'giaibai'],
-  ['bkdemy-erp-v2-giaibai', 'giaibai'], ['bkdemy-erp-v2-soan', 'soan'], ['bkdemy-erp-v2-khaosat', 'khaosat'], ['bkdemy-erp-v2-sukien', 'sukien'], ['bkdemy-erp-v2.vercel.app', 'erp'],
+  ['bkdemy-erp-v2-hs', 'hs'], ['bkdemy-erp-v2-pt', 'pt'], ['bkdemy-erp-v2-chi', 'chi'],
+  ['bkdemy-erp-v2-sukien', 'sukien'], ['bkdemy-erp-v2.vercel.app', 'erp'],
 ]
-const APPS = ['erp', 'ta', 'gv', 'ops', 'hs', 'pt', 'chi', 'giaibai', 'soan', 'khaosat', 'sukien']
+const APPS = ['erp', 'ta', 'gv', 'ops', 'hs', 'pt', 'chi', 'sukien']
 
 // Đường dẫn RIÊNG → chủ sở hữu. Prefix khớp đầu chuỗi; thư mục kết thúc bằng '/'.
 const RIENG = [
@@ -29,9 +29,6 @@ const RIENG = [
   { p: ['src/screens/hocsinh/'], chu: ['hs', 'erp'] },                       // ERP cũng import màn hocsinh
   { p: ['pt.html', 'vite.config.pt.ts', 'src/main-pt.tsx', 'src/AppPt.tsx', 'src/screens/pt/', 'api/pt-nhac-viec.mjs'], chu: ['pt'] },
   { p: ['chi.html', 'vite.config.chi.ts', 'src/main-chi.tsx', 'src/AppChi.tsx', 'src/screens/chi/'], chu: ['chi'] },
-  { p: ['giaibai.html', 'vite.config.giaibai.ts', 'src/main-giaibai.tsx', 'src/AppGiaiBai.tsx', 'src/screens/giaibai/'], chu: ['giaibai'] },
-  { p: ['soan.html', 'vite.config.soan.ts', 'src/main-soan.tsx', 'src/AppSoan.tsx'], chu: ['soan'] },
-  { p: ['khaosat.html', 'vite.config.khaosat.ts', 'src/main-khaosat.tsx', 'src/AppKhaoSat.tsx', 'src/screens/khaosat/'], chu: ['khaosat'] },
   { p: ['sukien.html', 'vite.config.sukien.ts', 'src/main-sukien.tsx', 'src/AppSuKien.tsx'], chu: ['sukien'] },
   { p: ['src/screens/sukien/', 'src/lib/sukien.ts'], chu: ['sukien', 'erp'] }, // ERP cũng có lá Sự kiện + TV qua hash
   { p: ['index.html', 'vite.config.ts', 'src/main.tsx', 'src/App.tsx'], chu: ['erp'] },
@@ -45,7 +42,7 @@ const RIENG = [
   // gv/pt/ta/ops/hs/chi KHÔNG import (đã grep xác nhận 07/09) — trước đây rơi vào nhóm "chung" ở dưới nên
   // build oan cả 8 project mỗi lần sửa (Thùy báo "sao sửa giải bài lại đụng gv/pt"). "src/soan/" ở đây KHÔNG
   // đụng ta.html/gv.html/… (những entry app khác) vì prefix so đầu chuỗi khác nhau hoàn toàn.
-  { p: ['src/lib/math/', 'src/components/math/', 'src/soan/'], chu: ['erp', 'giaibai', 'soan'] },
+  { p: ['src/lib/math/', 'src/components/math/', 'src/soan/'], chu: ['erp'] },
   // Chốt xu tháng (07/09) — ChotXuScreen/xu.ts/thanhtich.ts chỉ vào được qua NhanSuHome.tsx, mà NhanSuHome
   // CHỈ App.tsx (erp) import (đã grep xác nhận: AppTa/AppGv/AppOps/AppChi không import trực tiếp).
   { p: ['src/lib/xu.ts', 'src/lib/thanhtich.ts', 'src/screens/gami/ChotXuScreen.tsx'], chu: ['erp'] },

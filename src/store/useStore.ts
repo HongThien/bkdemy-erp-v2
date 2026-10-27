@@ -1,12 +1,12 @@
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
-import { users, opTasks, devTasks, adminLeaves, classesOfCoSo, worktypesByVai } from '../mock/fixtures'
+import { users, opTasks, devTasks, adminLeaves } from '../mock/fixtures'
 import { myQuyen, type MyQuyen } from '../lib/quyen'
 import { setReadOnlyLeafGetter } from '../lib/supabase'
 import { getMyProfile, updateMenuYeuThich, updateErpGiaoDien, updateHomeBoCuc, type DangCard, type MyProfile, type MyScope } from '../lib/nhansu'
 import { enqueueLinkGenJob } from '../lib/linkgen'
 import { YEU_THICH_TOI_DA } from '../lib/menu'
-import type { User, Vai, NavGroup, NavLeaf, AdminLeaf } from '../types'
+import type { User, NavGroup, NavLeaf, AdminLeaf } from '../types'
 
 // Kiểu + bản nhớ trên máy của giao diện ERP: 2 hàm thuần, KHÔNG import registry style ở đây (store được nhiều bundle dùng).
 export type GiaoDienErp = { skin?: string; nen?: string | null; nen_url?: string | null; che_do?: 'sang' | 'toi'; canh?: string | null }
@@ -386,7 +386,7 @@ function collapseGroup(leaves: NavLeaf[], parentId: string, parentTen: string, c
   return rest
 }
 export const adminNavFromQuyen = (q: MyQuyen | null): NavGroup[] => {
-  const leaves = accessibleLeaves(q)
+  const leaves = accessibleLeaves(q).filter((l) => !l.anMenu)
   const nhoms = [...new Set(leaves.map((l) => l.nhom))]
   return nhoms.map((n) => {
     let navLeaves: NavLeaf[] = leaves.filter((l) => l.nhom === n).map((l): NavLeaf =>
@@ -404,9 +404,6 @@ export const adminNavFromQuyen = (q: MyQuyen | null): NavGroup[] => {
 
 // ── Selectors (mock derive theo role) ────────────────────────────
 export const getUser = (id: string): User => users.find((u) => u.id === id)!
-export const vaisOf = (u: User): Vai[] => [...new Set(u.roles.map((r) => r.vai))]
-export const canAdmin = (u: User): boolean =>
-  u.roles.some((r) => r.vai === 'Founder' || r.vai === 'AdminCoSo')
 
 export const opTasksForUser = (u: User) =>
   opTasks.filter((t) =>
@@ -421,50 +418,11 @@ export const opTasksForUser = (u: User) =>
 export const devTasksForUser = (u: User) =>
   devTasks.filter((d) => d.assigneeUserId === u.id)
 
-export const leavesForUser = (u: User) => {
-  const isFounder = u.roles.some((r) => r.vai === 'Founder')
-  return adminLeaves.filter((l) => isFounder || !l.founderOnly)
-}
-
-// Cây Admin (derive theo role) → NavGroup[] cho NavTree
-export const adminNavForUser = (u: User): NavGroup[] => {
-  const leaves = leavesForUser(u)
-  const nhoms = [...new Set(leaves.map((l) => l.nhom))]
-  return nhoms.map((n) => ({
-    nhom: n,
-    leaves: leaves.filter((l) => l.nhom === n).map((l) => ({ id: l.id, ten: l.ten })),
-  }))
-}
-
 // Cây Nhân sự THẬT (từ getMyScope): chỉ "Việc của tôi" (vận hành). Mọi tra-cứu/sửa làm NGAY trong màn Việc-của-tôi
 // (bấm card đã làm để sửa) → đã BỎ nhóm "Tra cứu & sửa" (placeholder, không link đâu). `scope` giữ cho tương lai.
 export const staffNavFromScope = (_scope: MyScope | null): NavGroup[] => {
   // 'myplan' = Kế hoạch của tôi (Thùy 16/10) — mọi nhân sự đều có, không cần quyền (sổ riêng, RLS chỉ chính chủ).
   return [{ nhom: null, leaves: [{ id: 'viec', ten: 'Việc của tôi' }, { id: 'myplan', ten: 'Kế hoạch của tôi' }] }]
-}
-
-// (cũ — mock) Cây Nhân sự 2 tầng derive theo role mock. Giữ tạm cho tham chiếu.
-export const staffNavForUser = (u: User): NavGroup[] => {
-  const nodes: NavLeaf[] = []
-  const seen = new Set<string>()
-  for (const r of u.roles) {
-    const wts = worktypesByVai[r.vai]
-    if (!wts) continue
-    const classes = r.lops.length ? r.lops : classesOfCoSo[r.coSo]
-    for (const wt of wts) {
-      const id = `tc:${wt.key}`
-      if (seen.has(id)) continue
-      seen.add(id)
-      nodes.push({
-        id,
-        ten: wt.ten,
-        children: classes.map((lop) => ({ id: `${id}:${lop}`, ten: lop })),
-      })
-    }
-  }
-  const groups: NavGroup[] = [{ nhom: null, leaves: [{ id: 'viec', ten: 'Việc của tôi' }] }]
-  if (nodes.length) groups.push({ nhom: 'Tra cứu & sửa', leaves: nodes })
-  return groups
 }
 
 // Phím tắt công thức của NGƯỜI ĐANG ĐĂNG NHẬP (từ nhan_su.phim_tat_cong_thuc, load cùng `me`). Không persist

@@ -77939,3 +77939,14 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - Client BanDoMoi: ô Vùng → nhãn khoá '🔒 …'; chủ đề Hình có công tắc 📖 Học | 🌿 Luyện, đổi chủ đề tự về Học (sửa lỗi 'đổi chủ đề không đổi vùng'); '+ Chủ đề' chọn vùng lúc tạo; bỏ màn 'thuộc phần nào'. chuyenDeHinh.ts lọc chủ đề vùng 'hinh'. Kiểm `scripts/_test_khoa_vung.mjs` 6/6 + dev phiên admin (K8 Tứ giác / Đơn thức).
 - CHỜ Thùy gật xoá 2 chủ đề trùng RỖNG ở K9 sau gộp: NCD00181 «Ứng dụng hệ thức lượng giác» + NCD00183 «Tiếp tuyến của đường tròn» (bản Luyện cũ; 0 chuyên đề/nhóm/bài/mô hình/Đ-S).
 - Thùy gật 'ok' ⇒ ĐÃ XOÁ 2 dòng dai_bdm_chu_de NCD00181 + NCD00183 (K9, vùng hinh) — kiểm lại trong cùng transaction: _bdm_chu_de_co_noi_dung = false, 0 dòng ở cau_thieu_dang/cau_chua_khop/duyet_pham_vi; delete trả đúng 2 dòng.
+
+## 2026-10-27 — Rà soát & xoá chức năng/code outdate (Thùy duyệt "Xóa ABCD")
+- Đo: đồ thị import esbuild từ mọi entry (file không entry nào kéo = chết) + mỗi lá menu → bảng DB → ngày ghi cuối. ERP KHÔNG có nhật ký lượt mở màn ⇒ màn chỉ-xem không đo được. Danh sách duyệt: `reports/ra-soat-code-outdate-27-10.html`.
+- A (code chết) ĐÃ XOÁ: ChatLuongVanHanhScreen · ETBdmEditor · HinhYeuScreen/HinhYeuTA/botro_hinh_yeu · OpsBoxes · ChamCongTa/chamcong · QueueHome · ChamETSheet · LinkGenWorker · ChuyenDePickerOne · RichMathBox · shuffle · useDeviceTier · LichSuBoTroModal · ThongBaoLuot · 5 hàm mock nav trong useStore. GIỮ file chỉ chứa type (types.ts, skin/kieu.ts, kieuMau, anhGiaoDien, DauView, dautu/nguon/kieu) + gami/*.js (scripts còn gọi).
+- B: gỡ lá trống Tổng quan · Tài chính · Tuyển dụng; Tủ quà thêm cờ `anMenu` (ẩn khỏi menu ERP, vẫn là quyền cho app OPS).
+- C1/C2/C6: gỡ app Giải bài (12 file) · app Soạn (vỏ, khung soạn trong ERP giữ) · Khảo sát (lá + màn + app iPad) — html, vite config, npm scripts, vercel-ignore. DB giữ nguyên. Project Vercel tương ứng Thùy tự tắt.
+- C4: gỡ lá + màn Ngày nghỉ của chuỗi (0 dòng từ trước tới nay; bảng + hàm DB giữ).
+- ⚠ C3 KHÔNG LÀM — đã sửa rồi HOÀN TÁC: Giáo trình cũ còn dùng nhiều (14 ngày qua sửa 45 giáo trình bản cũ: Toán Đại 22 · Hình 11 · KHTN 6 · HGT 6); màn bản đồ mới chỉ mở Toán Đại ban_do='moi'. Bài học: "số dòng loại X" không đủ — phải tách theo cột phân biệt bản cũ/mới (ban_do, mon, nhanh) trước khi kết luận outdate.
+- C5 (Huy hiệu) + C7 (BXH game, Shop) CHƯA LÀM: đan vào app HS / khu Của tôi TA–OPS, xoá = đổi sản phẩm ⇒ chờ Thùy xem phạm vi cụ thể.
+- D: xoá 17 trang xem-thử (_xem_*.tsx + xem-thu-*.html, 4 trang đã commit) · 163 script `scripts/_*` cũ hơn 10/09 không nơi nào nhắc (GIỮ 55 cái DEVLOG/docs còn nhắc tên) · rác gốc (8 ảnh tên nhân đôi, .show33.tmp, x/, node) · out/, dist*, apk/.
+- Kiểm: tsc sạch (chỉ còn lỗi có sẵn src/lib/pdfRender.ts — không đụng) · esbuild bundle 9 entry OK · vite build ERP OK. Chưa mở app thật để nhìn menu.

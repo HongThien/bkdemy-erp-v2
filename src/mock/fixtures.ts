@@ -95,9 +95,8 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'test_dau_vao',nhom: 'Vận hành',  ten: 'Test đầu vào',                 founderOnly: false },
   // Tủ quà (Thùy 30/08): đổi quà thanh toán bằng xu + order đặt trước + kho. Màn ở APP OPS (tab Quà);
   // DB layer = mig 202608300908 (viết lại hệ qlht_* của Hải theo style ERP).
-  { id: 'tu_qua',      nhom: 'Vận hành',  ten: 'Tủ quà (đổi xu)',              founderOnly: false },
-  // Khảo sát 'Bạn của con ở BK' (CEO 08/09, spec-khao-sat-hs.md): đồ thị quan hệ HS — làm trên iPad (PWA riêng) + khớp tên + kết quả ở đây.
-  { id: 'khaosat',     nhom: 'Vận hành',  ten: 'Khảo sát Bạn của con',         founderOnly: false },
+  // anMenu (Thùy 27/10): ERP không có màn Tủ quà ⇒ ẩn khỏi menu ERP, vẫn là 1 quyền ở Phân quyền để mở tab Quà trên app OPS.
+  { id: 'tu_qua',      nhom: 'Vận hành',  ten: 'Tủ quà (đổi xu)',              founderOnly: false, anMenu: true },
   // Sự kiện (spec-su-kien.md, Trung thu 26/09): check-in · vòng quay · hàng chờ phòng iPad · quầy quà. Cấp cho nhân sự trực.
   { id: 'su_kien',     nhom: 'Vận hành',  ten: 'Sự kiện',                      founderOnly: false },
 
@@ -108,7 +107,6 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'chotxu',      nhom: 'Gamification', ten: 'Chốt xu tháng',            founderOnly: true }, // CEO chỉnh mốc + chốt (Thùy 08-29)
   { id: 'huyhieu',     nhom: 'Gamification', ten: 'Huy hiệu',                 founderOnly: false }, // ADMIN: chốt tháng · ma trận · (xem trao) — DB chặn chốt bằng co_quyen_ghi('huyhieu') · spec-huy-hieu-build.md
   { id: 'huyhieu_trao', nhom: 'Gamification', ten: 'Trao huy hiệu',           founderOnly: false }, // GV: CHỈ trao bản cứng lớp mình (Thùy 28/09: chốt không cần GV)
-  { id: 'chuoi_nghi',  nhom: 'Gamification', ten: 'Ngày nghỉ của chuỗi',    founderOnly: false }, // lễ/Tết/tuần thi không làm đứt chuỗi làm bài HS — DB chặn ghi bằng co_quyen_ghi('chuoi_nghi')
   { id: 'tinh_nang',   nhom: 'Gamification', ten: 'Mở tính năng app HS',      founderOnly: true }, // công tắc mở dần từng tính năng cho HS (Thùy 07/10) — DB chặn ghi bằng co_quyen_ghi('tinh_nang')
   { id: 'traogiai',    nhom: 'Gamification', ten: 'Trao giải',                founderOnly: false }, // thưởng tháng theo lớp (Xuất sắc/Tiến bộ/Chăm chỉ) — xem lib/traogiai.ts
 
@@ -141,7 +139,6 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'tkb',         nhom: 'Core team', ten: 'Thời khóa biểu',              founderOnly: false },
   { id: 'phanquyen',   nhom: 'Core team', ten: 'Phân quyền',                  founderOnly: true },
   { id: 'baoloi',      nhom: 'Core team', ten: 'Quản lý báo lỗi',             founderOnly: true },
-  { id: 'db_tuyendung',nhom: 'Core team', ten: 'Tuyển dụng',                  founderOnly: true },
   { id: 'giaoviec',    nhom: 'Core team', ten: 'Task phát triển',  founderOnly: false },
   { id: 'gay',         nhom: 'Core team', ten: 'Gậy của BK',                  founderOnly: false }, // hệ phạt: gậy tự động (chậm deadline ERP, máy đề xuất) + thủ công; công khai toàn công ty
   { id: 'thuchi',      nhom: 'Core team', ten: 'Thu chi',                      founderOnly: false }, // hoàn ứng chi tiêu NS: duyệt/ghi sổ/chốt kỳ gửi Ngân (PLAN-thu-chi.md, Thùy 09-02)
@@ -150,8 +147,6 @@ export const adminLeaves: AdminLeaf[] = [
 
 
   // ── DASHBOARD: chỉ phục vụ CEO ra quyết định (analytics, không phải màn thao tác) ──
-  { id: 'db_tongquan', nhom: 'Dashboard', ten: 'Tổng quan',                   founderOnly: false },
-  { id: 'db_taichinh', nhom: 'Dashboard', ten: 'Tài chính',                   founderOnly: true },
   { id: 'db_chatluong',nhom: 'Dashboard', ten: 'Chất lượng vận hành',         founderOnly: true },
   { id: 'db_phdangnhap',nhom: 'Dashboard', ten: 'Đăng nhập Phụ huynh',        founderOnly: true }, // bộ đo PH đã/chưa đăng nhập Cổng PH + reset MK (core team)
   { id: 'db_xemapp',   nhom: 'Dashboard', ten: 'Xem app phụ huynh',          founderOnly: true }, // chọn HS → nhúng app PH của em (chế độ xem admin) để kiểm tra
