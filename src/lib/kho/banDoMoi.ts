@@ -49,12 +49,19 @@ function loi(e: { code?: string; message?: string } | null): never {
 // Thêm vùng mới = thêm 1 dòng ở đây; màn BanDoMoi dispatch theo `khuon`, không `if (nhanh === …)` rải rác.
 export type BdmNhanh = 'toan' | 'hgt' | 'hinh' | 'hinh_hoc' | 'hinh_luyen'
 export type BdmKhuon = 'bon_tang' | 'hinh_hoc' | 'hinh_luyen' | 'chon'
+// Thùy 27/10: Hình cùng chương = MỘT chủ đề vùng 'hinh' có 2 phần Học | Luyện (khuôn chọn ở màn, xem PHAN_HINH); vùng chủ đề KHOÁ khi đã
+// có nội dung (trigger DB _trg_bdm_chu_de_khoa_vung). hinh_hoc / hinh_luyen = vùng cũ trước khi gộp — DB không cho ghi mới.
 export const BDM_NHANH: { id: BdmNhanh; nhan: string; khuon: BdmKhuon; an?: boolean }[] = [
   { id: 'toan', nhan: 'Đại', khuon: 'bon_tang' },
   { id: 'hgt', nhan: 'Hình giải tích', khuon: 'bon_tang' },
-  { id: 'hinh_hoc', nhan: 'Hình – Học', khuon: 'hinh_hoc' },
-  { id: 'hinh_luyen', nhan: 'Hình – Luyện', khuon: 'hinh_luyen' },
-  { id: 'hinh', nhan: 'Hình (chưa chọn Học/Luyện)', khuon: 'chon', an: true },   // giá trị cũ — không cho chọn mới
+  { id: 'hinh', nhan: 'Hình', khuon: 'hinh_hoc' },
+  { id: 'hinh_hoc', nhan: 'Hình – Học (cũ)', khuon: 'hinh_hoc', an: true },
+  { id: 'hinh_luyen', nhan: 'Hình – Luyện (cũ)', khuon: 'hinh_luyen', an: true },
+]
+// 2 phần của chủ đề Hình — khuôn màn tương ứng
+export const PHAN_HINH: { id: 'hoc' | 'luyen'; nhan: string; khuon: BdmKhuon }[] = [
+  { id: 'hoc', nhan: '📖 Học', khuon: 'hinh_hoc' },
+  { id: 'luyen', nhan: '🌿 Luyện', khuon: 'hinh_luyen' },
 ]
 export const khuonCuaVung = (nhanh: BdmNhanh): BdmKhuon => BDM_NHANH.find((n) => n.id === nhanh)?.khuon ?? 'bon_tang'
 export async function getCay(khoi: string): Promise<BdmCay> {
@@ -82,8 +89,8 @@ export async function xoaChuDeTronGoi(id: string): Promise<KqXoa> {
 }
 
 // ── Chủ đề ──
-export async function themChuDe(khoi: string, ten: string): Promise<void> {
-  const { error } = await supabase.from('dai_bdm_chu_de').insert({ khoi, ten: ten.trim() }) // vùng mặc định Đại — chọn lại sau ở đầu màn
+export async function themChuDe(khoi: string, ten: string, nhanh: BdmNhanh = 'toan'): Promise<void> {
+  const { error } = await supabase.from('dai_bdm_chu_de').insert({ khoi, ten: ten.trim(), nhanh }) // vùng chọn lúc tạo — có nội dung rồi thì khoá
   if (error) loi(error)
 }
 export async function doiVungChuDe(id: string, nhanh: BdmNhanh): Promise<void> {
