@@ -53,3 +53,28 @@ Vài dòng: kết luận · số câu sửa theo loại lỗi · các câu `Chư
 - Đề đúng là bài đường trung bình mà lời giải đi tắt qua đường trung bình (dù không gọi tên) ⇒ SAI luật, bắt buộc viết lại bằng hình bình hành / tam giác bằng nhau.
 - Số mũ nhỏ / dấu trừ ở ảnh nhỏ: không chắc ⇒ nói ra, đừng đoán.
 - Bài "nhiều nhất / ít nhất" cho số tự nhiên: kiểm điều kiện "đủ cả hai loại" (mỗi loại ≥ 1), "không vượt quá", khuyến mãi từ mức nào (≥ hay >).
+
+### ⭐ LUẬT TRÌNH BÀY HÌNH 7·8·9 (CEO 27/10) — áp cho MỌI lời giải bài Hình, cả Học lẫn Luyện lẫn Kho đề thi
+
+1. **Dòng ngắn — một dòng chỉ viết khoảng 50% bề ngang.** Bài Hình dày đặc ký hiệu nên dòng dài rất khó nhìn. Mỗi dòng một điều kiện / một mệnh đề / một lý do; khẳng định dài (nhiều điều nối bằng "và", "mà", dấu phẩy) phải **tách thành nhiều dòng**. Mốc tay: ≲ 60 ký tự hiển thị mỗi dòng (công thức tính theo chữ nó hiện ra). Khối "Xét … có:" vẫn mỗi điều kiện một dòng.
+2. **Giãn dòng cho thoáng mắt = tăng khoảng cách dòng thêm 20% so với hiện tại — KHÔNG bằng dòng trống (cách một dòng trống là quá xa, CEO 27/10).** Đây là việc HIỂN THỊ (line-height khối lời giải bài Hình, làm ở app một chỗ), không phải việc của người soạn. Trong DỮ LIỆU giữ nguyên luật R2 cũ: các dòng nối bằng `\n` đơn, **không thêm dòng trống** giữa các bước; dòng trống chỉ trước ý b) c) d) và trước `**Phần 2. Trình bày**`.
+3. **Mọi kiến thức dùng phải có chú thích trong ngoặc** ngay sau mệnh đề:
+   - Dữ kiện đề cho → **(gt)** (giả thiết). Vd: `$AB=AC$ (gt)`.
+   - Dùng định lý / tính chất / dấu hiệu → ghi **đúng tên** (theo whitelist của khối). Vd: `(định lý trung tuyến ứng với cạnh huyền)`, `(tính chất hai đường chéo hình chữ nhật)`, `(dấu hiệu nhận biết hình bình hành)`, `(trường hợp c.g.c)`.
+   - Kết quả đã chứng minh ở bước trên (cùng ý hay ý trước) → **(cmt)** (chứng minh trên). Vd: `$AKCI$ là hình bình hành (cmt)`.
+   - Thiếu chú thích = lời giải CHƯA đạt; trạm soát phải bắt. Không dùng lý do nào ngoài whitelist.
+
+*Ví dụ đúng (các dòng liền nhau, không dòng trống):*
+```
+Vì $AB=AC$ (gt)
+nên $\triangle ABC$ cân tại $A$ (định nghĩa tam giác cân).
+Do đó $\widehat{B}=\widehat{C}$ (tính chất tam giác cân).
+Xét $\triangle ABM$ và $\triangle ACM$ có:
+$AB=AC$ (gt);
+$\widehat{B}=\widehat{C}$ (cmt);
+$BM=CM$ (gt)
+nên $\triangle ABM=\triangle ACM$ (c.g.c).
+```
+
+
+**Trạm SOÁT:** lời giải bài Hình vi phạm 3 điều trên (dòng dài, không giãn dòng, thiếu (gt)/(cmt)/tên định lý) ⇒ sửa thẳng, ghi vào biên bản.

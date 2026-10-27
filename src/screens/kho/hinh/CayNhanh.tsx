@@ -955,7 +955,7 @@ function PopupBai({ L, bai, nhanhById, baiById, duong, doSau, saiTienDe, onDong,
             </Muc>
             <Muc ten="Đáp án chi tiết">
               {cach?.loi_giai
-                ? <div className="rounded-lg border border-emerald-200 bg-emerald-50/60 p-2.5"><MathText className="lg-lien">{cach.loi_giai}</MathText></div>
+                ? <div className="rounded-lg border border-emerald-200 bg-emerald-50/60 p-2.5"><MathText className="lg-lien lg-hinh">{cach.loi_giai}</MathText></div>
                 : <span className="text-slate-400">chưa có lời giải</span>}
               {cach?.anh_loi_giai && <div className="mt-2"><Fig src={cach.anh_loi_giai} cap="Hình lời giải" h="h-40" /></div>}
             </Muc>

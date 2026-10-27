@@ -98,7 +98,7 @@ function Doc({ ten, khoi, khois, gv }: { ten: string; khoi: string; khois: KhoiI
                 {b.doKho != null && <span className="ch-sao" title={`Độ khó ${b.doKho}/5`}>{SAO(b.doKho)}</span>}</div>
               {gv && (b.loiGiai || b.anhLoiGiai) && (
                 <div className="pv-loigiai">
-                  {b.loiGiai && <div className="pv-math"><MathText className="lg-lien">{b.loiGiai}</MathText></div>}
+                  {b.loiGiai && <div className="pv-math"><MathText className="lg-lien lg-hinh">{b.loiGiai}</MathText></div>}
                   {b.anhLoiGiai && <img className="pv-img" src={b.anhLoiGiai} alt="" />}
                 </div>)}
             </div>))}
