@@ -99,6 +99,8 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'tu_qua',      nhom: 'Vận hành',  ten: 'Tủ quà (đổi xu)',              founderOnly: false, anMenu: true },
   // Sự kiện (spec-su-kien.md, Trung thu 26/09): check-in · vòng quay · hàng chờ phòng iPad · quầy quà. Cấp cho nhân sự trực.
   { id: 'su_kien',     nhom: 'Vận hành',  ten: 'Sự kiện',                      founderOnly: false },
+  // Quy trình HS mới (Thùy 27/10): Ops tick checklist từng PH–HS mới; tab Checklist sửa các bước (mig 202610271810).
+  { id: 'hs_moi',      nhom: 'Vận hành',  ten: 'Quy trình HS mới',             founderOnly: false },
 
   // ── GAMIFICATION: Elo/EXP, thành tích, level ──
   { id: 'diemso',      nhom: 'Gamification', ten: 'Điểm số (Elo/EXP)',        founderOnly: false },

@@ -56,6 +56,7 @@ import BaoCaoCaNhan from './troly/BaoCaoCaNhan'
 import { trolyCaNhanDuocDung } from '../lib/troly-baocao'
 import HoiDapTab from './hoidap/HoiDapTab'
 import SuKienScreen from './sukien/SuKienScreen'
+import QuyTrinhHsMoiScreen from './vanhanhops/QuyTrinhHsMoiScreen'
 import { hoiDapDuocDung } from '../lib/hoidap'
 import { listDotChoDuyetDuoi } from '../lib/botro_duoi'
 import QuanLyLevelScreen from './gami/QuanLyLevelScreen'
@@ -758,6 +759,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'tuyensinh' ? <TuyenSinhScreen />
       : staffLeaf === 'test_dau_vao' ? <TestDauVaoScreen />
       : staffLeaf === 'su_kien' ? <SuKienScreen />
+      : staffLeaf === 'hs_moi' ? <QuyTrinhHsMoiScreen />
       : staffLeaf === 'botro' ? <BoTroHubScreen />
       : staffLeaf === 'buoihoc' ? <BuoiHocScreen />
       : staffLeaf === 'diemso' ? <GamiDiemScreen />
