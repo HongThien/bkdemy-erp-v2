@@ -24,10 +24,7 @@ import KhoScreen from './kho/KhoScreen'
 import BanDoMoiScreen from './kho/BanDoMoi'
 import SoTayCongThucScreen from './sotay/SoTayCongThucScreen'
 import NhapKhoScreen from './nhapkho/NhapKhoScreen'
-import TaiLieuScreen from './tailieu/TaiLieuScreen'
-import GiaoTrinhHinhEntry from './tailieu/GiaoTrinhHinhEntry'
 import GiaoTrinhBdmScreen from './tailieu/bdm/GiaoTrinhBdmScreen'
-import ETScreen from './tailieu/ETScreen'
 import ETBdmEditor from './tailieu/bdm/ETBdmEditor'
 import MTScreen from './tailieu/MTScreen'
 import BTScreen from './tailieu/BTScreen'
@@ -57,12 +54,11 @@ import BaoCaoCaNhan from './troly/BaoCaoCaNhan'
 import { trolyCaNhanDuocDung } from '../lib/troly-baocao'
 import HoiDapTab from './hoidap/HoiDapTab'
 import SuKienScreen from './sukien/SuKienScreen'
+import QuyTrinhHsMoiScreen from './vanhanhops/QuyTrinhHsMoiScreen'
 import { hoiDapDuocDung } from '../lib/hoidap'
 import { listDotChoDuyetDuoi } from '../lib/botro_duoi'
 import QuanLyLevelScreen from './gami/QuanLyLevelScreen'
 import ChotXuScreen from './gami/ChotXuScreen'
-import NgayNghiChuoiScreen from './gami/NgayNghiChuoiScreen'
-import HuyHieuScreen from './gami/HuyHieuScreen'
 import PhanQuyenScreen from './phanquyen/PhanQuyenScreen'
 import BaoLoiScreen from './baoloi/BaoLoiScreen'
 import OpsReportScreen from './vanhanhops/OpsReportScreen'
@@ -73,7 +69,6 @@ import ScanDaChamScreen from './vanhanhops/ScanDaChamScreen'
 import DuyetOpsNgay from './vanhanhops/DuyetOpsNgay'
 import TuyenSinhScreen from './tuyensinh/TuyenSinhScreen'
 import TestDauVaoScreen, { moTabTestDauVao } from './tuyensinh/TestDauVaoScreen'
-import KhaoSatScreen from './khaosat/KhaoSatScreen'
 import BoTroHubScreen, { moBoTroTab } from './botro/BoTroHubScreen'
 import HieuSuatTAScreen from './dashboard/HieuSuatTAScreen' // thay ChatLuongVanHanhScreen (outdate, CEO 08/10)
 import PhDangNhapScreen from './dashboard/PhDangNhapScreen'
@@ -89,7 +84,7 @@ import ThuChiScreen from './thuchi/ThuChiScreen'
 import KhungLoi from '../components/KhungLoi'
 
 // tk (trưởng khối) chỉ có Chấm MT · gv thêm 'mt' khi là fallback không có trưởng khối (tab tự ẩn nếu buổi không gán MT).
-const tabsCuaVai = (vai: VaiViec): TabKey[] => (vai === 'tk' ? ['mt'] : vai === 'gv' ? ['danhgia', 'ingame', 'mt'] : ['ingame', 'et', 'mt'])
+const tabsCuaVai = (vai: VaiViec): TabKey[] => (vai === 'tk' ? ['mt'] : vai === 'gv' ? ['danhgia', 'mt'] : ['et', 'mt'])
 type OpenBuoi = { id: string; tabs: TabKey[]; initialTab: TabKey; canManage: boolean; loai?: 'bu' | 'bo_tro_duoi' | 'bo_tro_yeu' }
 type TienDo = { tong: number; daDanh: number }
 
@@ -723,11 +718,9 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'bdm' ? <BanDoMoiScreen />
       : staffLeaf === 'sotay' ? <SoTayCongThucScreen />
       : staffLeaf === 'nhapkho' ? <NhapKhoScreen />
-      : (staffLeaf === 'lamtailieu' || staffLeaf === 'lamtailieu:giao_trinh') ? <TaiLieuScreen />
+      : staffLeaf === 'lamtailieu' ? <GiaoTrinhBdmScreen />
       : staffLeaf === 'lamtailieu:giao_trinh_bdm' ? <GiaoTrinhBdmScreen />
       : staffLeaf === 'lamtailieu:chuyen_de' ? <GiaoTrinhBdmScreen key="chuyen_de" loai="chuyen_de" />
-      : staffLeaf === 'lamtailieu:giao_trinh_hinh' ? <GiaoTrinhHinhEntry />
-      : staffLeaf === 'lamtailieu:et' ? <ETScreen />
       : staffLeaf === 'lamtailieu:et_bdm' ? <ETBdmEditor />
       : staffLeaf === 'lamtailieu:mt' ? <MTScreen />
       : staffLeaf === 'tl' ? <KhoTaiLieuScreen />
@@ -759,8 +752,8 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'hs' ? <HocSinhScreen />
       : staffLeaf === 'tuyensinh' ? <TuyenSinhScreen />
       : staffLeaf === 'test_dau_vao' ? <TestDauVaoScreen />
-      : staffLeaf === 'khaosat' ? <KhaoSatScreen />
       : staffLeaf === 'su_kien' ? <SuKienScreen />
+      : staffLeaf === 'hs_moi' ? <QuyTrinhHsMoiScreen />
       : staffLeaf === 'botro' ? <BoTroHubScreen />
       : staffLeaf === 'buoihoc' ? <BuoiHocScreen />
       : staffLeaf === 'diemso' ? <GamiDiemScreen />
@@ -775,9 +768,6 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'duyetloigiai' ? <DuyetLoiGiaiScreen />
       : staffLeaf === 'quanlylevel' ? <QuanLyLevelScreen />
       : staffLeaf === 'chotxu' ? <ChotXuScreen />
-      : staffLeaf === 'chuoi_nghi' ? <NgayNghiChuoiScreen />
-      : staffLeaf === 'huyhieu' ? <HuyHieuScreen />
-      : staffLeaf === 'huyhieu_trao' ? <HuyHieuScreen chiTrao />
       : staffLeaf === 'phanquyen' ? <PhanQuyenScreen />
       : staffLeaf === 'baoloi' ? <BaoLoiScreen />
       : staffLeaf === 'ops_report' ? <OpsReportScreen />

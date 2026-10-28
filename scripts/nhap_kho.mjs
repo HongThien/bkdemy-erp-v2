@@ -16,7 +16,10 @@
 //     → Đọc JSON [{ dang_chinh, loai_cau, noi_dung, ... }], INSERT vào bảng
 //       <subject>_cau_hoi trong 1 transaction. Ma_cau generate theo convention
 //       <dang_chinh> + lpad(STT, 3, '0'), STT = MAX + 1 trong cùng dạng.
-//     → In JSON { ok, ma_cau_list: [...] }.
+//     → In JSON { ok, ma_cau_list: [...], bdm }.  --thu = CHẠY KHÔ: chèn trong transaction rồi ROLLBACK (không ghi gì).
+//     → 26/10 BẢN ĐỒ MỚI (khối K6–12 Đại/HGT, xem đầu _kho_insert.mjs): dang_chinh luôn = dạng chờ khối; dạng bài qua field
+//       `dang_bai` (NDB…) ⇒ ĐỀ XUẤT *_bdm_de_xuat nguon 'ai' (`dang_bai_chot: true` = người đã chốt ⇒ gán thẳng 'nguoi');
+//       câu Đ/S: `chu_de` (NCD…) ⇒ *_bdm_kho_ds, mệnh đề không gắn dạng. Cấp 1 / KHTN giữ y cũ.
 //
 //   done    --file <path> --mode <mode> --sha <sha> --subject <subject>
 //           --ma_cau_json <path-to-json>
@@ -206,14 +209,14 @@ async function cmdInsert(args) {
   await c.connect()
   try {
     await c.query('BEGIN')
-    const { maCauList, trung, chua_dang } = await insertCauBatch({ client: c, subject, cauList, choTrung: !!args['cho-trung'] })
-    await c.query('COMMIT')
+    const { maCauList, trung, chua_dang, bdm } = await insertCauBatch({ client: c, subject, cauList, choTrung: !!args['cho-trung'] })
+    await c.query(args.thu ? 'ROLLBACK' : 'COMMIT')
     // ma_cau_list: vị trí trùng = ma_cau CŨ (không insert) — log `done` vẫn liệt kê để truy được câu nào đã có sẵn.
     const trungIdx = new Set(trung.map(t => t.idx))
     process.stdout.write(JSON.stringify({
-      ok: true, ma_cau_list: maCauList,
+      ok: true, ...(args.thu ? { chay_kho: 'ROLLBACK — chưa ghi gì' } : {}), ma_cau_list: maCauList,
       inserted: maCauList.filter((_, i) => !trungIdx.has(i)).length,
-      trung, chua_dang,
+      trung, chua_dang, bdm,
     }, null, 2) + '\n')
   } catch (e) {
     await c.query('ROLLBACK').catch(() => {})

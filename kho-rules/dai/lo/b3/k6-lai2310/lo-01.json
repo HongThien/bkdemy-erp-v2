@@ -1,0 +1,571 @@
+[
+ {
+  "ma_cau": "T106040203061",
+  "loai": "tra_loi_ngan",
+  "de": "Ba bạn Lan, Mai, Hoa cùng học một trường nhưng ở ba lớp khác nhau. Lan cứ 7 ngày trực nhật một lần, Mai 9 ngày một lần và Hoa 12 ngày một lần. Lần đầu cả ba bạn cùng trực nhật vào một ngày. Hỏi sau ít nhất bao nhiêu ngày thì ba bạn lại cùng trực nhật vào một ngày?",
+  "dap_an": "252",
+  "loi_giai": "Gọi số ngày ít nhất để ba bạn lại cùng trực nhật vào một ngày là $x$ $(x\\in \\mathrm{N}^*, \\text{ ngày})$.\nVì Lan cứ 7 ngày trực nhật một lần, Mai 9 ngày một lần và Hoa 12 ngày một lần nên $x\\vdots 7; x\\vdots 9; x\\vdots 12$.\nVì $x$ là số ngày ít nhất khác 0 nên $x=\\mathrm{BCNN}(7,9,12)$.\n$7=7$\n$9=3^2$\n$12=2^2\\cdot 3$\n$\\mathrm{BCNN}(7,9,12)=2^2\\cdot 3^2\\cdot 7=252$\nVậy sau ít nhất 252 ngày thì ba bạn lại cùng trực nhật vào một ngày.",
+  "nhan_cu": "Bội chung. Bội chung nhỏ nhất › Toán thực tế liên quan đến Bội chung/Bội chung nhỏ nhất"
+ },
+ {
+  "ma_cau": "T106040102038",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm UCLN bằng phân tích thừa số nguyên tố của $54; 90$ và $126$.",
+  "dap_an": "18",
+  "loi_giai": "$54=2\\cdot 3^3$\n$90=2\\cdot 3^2\\cdot 5$\n$126=2\\cdot 3^2\\cdot 7$\n$\\Rightarrow UCLN(54,90,126)=2\\cdot 3^2=18$",
+  "nhan_cu": "Ước chung. Ước chung lớn nhất › Tìm UCLN của các số"
+ },
+ {
+  "ma_cau": "T106040103058",
+  "loai": "tra_loi_ngan",
+  "de": "Học sinh khối 6 có 180 nữ và 132 nam tham gia trồng cây. Thầy phụ trách muốn chia thành các tổ sao cho số nam và số nữ mỗi tổ đều bằng nhau. Hỏi có thể chia nhiều nhất thành mấy tổ? Mỗi tổ lúc đó có bao nhiêu nam, bao nhiêu nữ?",
+  "dap_an": "12 tổ; mỗi tổ có 11 học sinh nam và 15 học sinh nữ.",
+  "loi_giai": "Gọi số tổ có thể chia được nhiều nhất là $x$ ($x\\in N^*$, tổ).\nVì cần chia 132 nam và 180 nữ thành các tổ đều nhau và nhiều tổ nhất nên\n$x=\\text{UCLN}(132,180)$.\n$132=2^2\\cdot 3\\cdot 11$\n$180=2^2\\cdot 3^2\\cdot 5$\n$\\text{UCLN}(132,180)=2^2\\cdot 3=12$\nVậy có thể chia nhiều nhất thành 12 tổ.\nSố học sinh nam ở mỗi tổ là:\n$132:12=11$ (học sinh)\nSố học sinh nữ ở mỗi tổ là:\n$180:12=15$ (học sinh).",
+  "nhan_cu": "Ước chung. Ước chung lớn nhất › Toán thực tế liên quan đến Ước chung/Ước chung lớn nhất"
+ },
+ {
+  "ma_cau": "T106020201012",
+  "loai": "tra_loi_ngan",
+  "de": "Tính: 997 + 37",
+  "dap_an": "1034",
+  "loi_giai": "997 + 37 = 1034",
+  "nhan_cu": "Các phép tính với Số tự nhiên › Tính toán với Số tự nhiên"
+ },
+ {
+  "ma_cau": "T106040201004",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $BC(3;5)$.",
+  "dap_an": "0;15;30;....",
+  "loi_giai": "$B(3)=\\{0;3;6;9;12;15;18;21;24;27;30;....\\}$\n$B(5)=\\{0;5;10;15;20;25;30;....\\}$\n$BC(3;5)=\\{0;15;30;....\\}$",
+  "nhan_cu": "Bội chung. Bội chung nhỏ nhất › Tìm Bội chung của các số"
+ },
+ {
+  "ma_cau": "T106000000353",
+  "loai": "tu_luan",
+  "de": "Tìm số tự nhiên $x$, biết: $30\\vdots x$ và $3<x\\le 15$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $30\\vdots x$ nghĩa là $x$ là **ước của 30**; tìm các ước của 30 rồi lọc theo khoảng đề cho.\n**Bước 1.** Đọc kí hiệu: $30\\vdots x$ nghĩa là 30 chia hết cho $x$, tức $x$ thuộc tập các ước của 30.\n**Bước 2.** Liệt kê các ước của 30 bằng cách chia 30 lần lượt cho $1;2;3;\\dots$ và ghi các số chia hết.\n**Bước 3.** Chọn các ước thoả mãn điều kiện $3<x\\le 15$ rồi viết tập hợp kết quả.\n**Chú ý:** $x=3$ bị loại vì đề cho $x>3$; $x=15$ được giữ vì đề cho $x\\le 15$.\n**Phần 2. Trình bày**\nVì $30\\vdots x$ nên $x\\in\\text{Ư}(30)$.\nTa có $\\text{Ư}(30)=\\{1;2;3;5;6;10;15;30\\}$.\nVì $3<x\\le 15$ nên $x\\in\\{5;6;10;15\\}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106020203036",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm x biết: $58 - x = 21$.",
+  "dap_an": "27",
+  "loi_giai": "$58 - x = 21$\n$x = 58 - 21$\n$x = 27$",
+  "nhan_cu": "Các phép tính với Số tự nhiên › Tìm x liên quan cộng trừ Số tự nhiên"
+ },
+ {
+  "ma_cau": "T106040103029",
+  "loai": "tra_loi_ngan",
+  "de": "Có 45 quả cam, 60 quả xoài và 75 quả táo. Mẹ muốn chia đều các loại quả vào các túi sao cho mỗi túi có số quả mỗi loại như nhau. Hỏi có thể chia được nhiều nhất bao nhiêu túi? Khi đó mỗi túi có bao nhiêu quả mỗi loại?",
+  "dap_an": "15 túi; mỗi túi có 3 quả cam, 4 quả xoài và 5 quả táo.",
+  "loi_giai": "Gọi số túi có thể chia được nhiều nhất là $x$ ($x\\in N^*$, túi).\nVì cần chia 45 quả cam, 60 quả xoài và 75 quả táo vào các túi đều nhau và nhiều túi nhất nên\n$x=\\text{UCLN}(45,60,75)$.\n$45=3^2\\cdot 5$\n$60=2^2\\cdot 3\\cdot 5$\n$75=3\\cdot 5^2$\n$\\text{UCLN}(45,60,75)=3\\cdot 5=15$\nVậy có thể chia nhiều nhất thành 15 túi.\nSố quả cam ở mỗi túi là:\n$45:15=3$ (quả)\nSố quả xoài ở mỗi túi là:\n$60:15=4$ (quả)\nSố quả táo ở mỗi túi là:\n$75:15=5$ (quả).",
+  "nhan_cu": "Ước chung. Ước chung lớn nhất › Toán thực tế liên quan đến Ước chung/Ước chung lớn nhất"
+ },
+ {
+  "ma_cau": "T106020302031",
+  "loai": "tu_luan",
+  "de": "Tính thuận tiện: $39 \\times 65 + 39 \\times 36 - 39$",
+  "dap_an": "3900",
+  "loi_giai": "= $39.(65 + 36 - 1)$\n= $39.(101 - 1)$\n= $39.100$\n= $3900$",
+  "nhan_cu": "Các phép tính với Số tự nhiên › Tính thuận tiện"
+ },
+ {
+  "ma_cau": "T106020601037",
+  "loai": "tra_loi_ngan",
+  "de": "Tính $A=1+4^2+4^4+\\ldots+4^{12}$.",
+  "dap_an": "$\\dfrac{4^{14}-1}{15}$",
+  "loi_giai": "$4^2A=4^2+4^4+4^6+\\ldots+4^{14}$\n$4^2A-A=4^{14}-1$\n$15A=4^{14}-1$\n$A=\\dfrac{4^{14}-1}{15}$",
+  "nhan_cu": "Dãy lũy thừa cùng cơ số › Dãy lũy thừa cơ số -  Dạng cùng dấu"
+ },
+ {
+  "ma_cau": "T106040303002",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm hai số a, b biết rằng: $[a,b]=20$ và $a-b=6$.",
+  "dap_an": "(10;4)",
+  "loi_giai": "Gọi $(a,b)=k\\Rightarrow \\begin{cases}a=km\\\\b=kn\\end{cases}$ $(m,n\\in N^*;(m,n)=1)$.\nMà $[a,b]=20\\Rightarrow kmn=20\\Rightarrow k\\in \\text{U}(20)$.\nTa có: $a-b=6$\n$\\Rightarrow km-kn=6$\n$\\Rightarrow k(m-n)=6$\n$\\Rightarrow k\\in \\text{U}(6)$\n$\\Rightarrow k\\in \\text{UC}(20,6)=\\{1;2\\}$\nTH1: $k=1\\Rightarrow \\begin{cases}m-n=6\\\\m\\cdot n=20\\end{cases}$\n$20=1\\cdot 20=2\\cdot 10=4\\cdot 5$.\nVậy không có $m,n$ thỏa mãn.\nTH2: $k=2\\Rightarrow \\begin{cases}m-n=3\\\\m\\cdot n=10\\end{cases}$\n$10=1\\cdot 10=2\\cdot 5$.\n$\\Rightarrow (m;n)=(5;2)$.\nVậy $(a;b)=(10;4)$.",
+  "nhan_cu": "Các bài toán nâng cao ứng dụng UCLN - BCNN › Tìm hai số a,b khi biết BCNN và hiệu"
+ },
+ {
+  "ma_cau": "T106020601043",
+  "loai": "tra_loi_ngan",
+  "de": "Tính $A=1+4^3+4^6+\\ldots+4^{12}$.",
+  "dap_an": "$\\dfrac{4^{15}-1}{63}$",
+  "loi_giai": "$4^3A=4^3+4^6+4^9+\\ldots+4^{15}$\n$4^3A-A=4^{15}-1$\n$63A=4^{15}-1$\n$A=\\dfrac{4^{15}-1}{63}$",
+  "nhan_cu": "Dãy lũy thừa cùng cơ số › Dãy lũy thừa cơ số -  Dạng cùng dấu"
+ },
+ {
+  "ma_cau": "T106000000225",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $x$, biết: $54:3^x+11=3.2^4-5.7$",
+  "dap_an": "3",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tính vế phải thành một số, tìm $3^x$ rồi đưa về **cùng cơ số 3** để so sánh số mũ.\n**Bước 1.** Tính vế phải: luỹ thừa $2^4$ trước, rồi hai phép nhân, cuối cùng phép trừ.\n**Bước 2.** Coi $54:3^x$ là số hạng chưa biết, tìm bằng cách lấy tổng trừ đi số hạng đã biết là 11.\n**Bước 3.** Xác định $3^x$ là số chia trong phép chia $54:3^x$, tìm số chia bằng cách lấy số bị chia chia cho thương.\n**Bước 4.** Viết kết quả thành luỹ thừa của 3 để hai vế cùng cơ số, từ đó suy ra hai số mũ bằng nhau.\nThử lại: $54:3^3+11=54:27+11=2+11=13$ và $3.16-35=13$ (đúng).\n**Phần 2. Trình bày**\n$54:3^x+11=3.2^4-5.7$\n$54:3^x+11=3.16-5.7$\n$54:3^x+11=48-35$\n$54:3^x+11=13$\n$54:3^x=13-11$ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106040203006",
+  "loai": "tra_loi_ngan",
+  "de": "Số học sinh của một trường là số lớn hơn 930 gồm ba chữ số. Mỗi lần xếp hàng 10, hàng 12, hàng 15 đều vừa đủ, không thừa ai. Hỏi trường đó có bao nhiêu học sinh?",
+  "dap_an": "960",
+  "loi_giai": "Gọi số học sinh của trường là $x$ (học sinh, $x\\in N^*$).\nVì xếp hàng 10, hàng 12, hàng 15 đều vừa đủ nên $x\\vdots 10$; $x\\vdots 12$; $x\\vdots 15$\n$\\Rightarrow x\\in BC(10,12,15)$.\n$10=2\\cdot 5$\n$12=2^2\\cdot 3$\n$15=3\\cdot 5$\n$BCNN(10,12,15)=2^2\\cdot 3\\cdot 5=60$\n$\\Rightarrow BC(10,12,15)=B(60)=\\{0;60;120;180;240;300;360;420;480;540;600;660;720;780;840;900;960;1020;....\\}$\nVì số học sinh lớn hơn 930 và có ba chữ số nên $x=960$.\nVậy trường đó có 960 học sinh.",
+  "nhan_cu": "Bội chung. Bội chung nhỏ nhất › Toán thực tế liên quan đến Bội chung/Bội chung nhỏ nhất"
+ },
+ {
+  "ma_cau": "T106040203002",
+  "loai": "tra_loi_ngan",
+  "de": "Khối 6 của một trường có khoảng 300 đến 380 học sinh. Mỗi lần xếp học sinh đi tham quan thì xếp 28 người hay 42 người lên một xe đều vừa vặn. Tính số học sinh của khối 6.",
+  "dap_an": "336",
+  "loi_giai": "Gọi số học sinh của khối 6 là $x$ (học sinh, $x\\in N^*$).\nVì xếp 28 người hay 42 người một xe đều vừa vặn nên $x\\vdots 28$ và $x\\vdots 42$\n$\\Rightarrow x\\in BC(28,42)$.\n$28=2^2\\cdot 7$\n$42=2\\cdot 3\\cdot 7$\n$BCNN(28,42)=2^2\\cdot 3\\cdot 7=84$\n$\\Rightarrow BC(28,42)=B(84)=\\{0;84;168;252;336;420;....\\}$\nVì số học sinh khối 6 có khoảng 300 học sinh đến 380 học sinh nên $x=336$.\nVậy khối 6 có 336 học sinh.",
+  "nhan_cu": "Bội chung. Bội chung nhỏ nhất › Toán thực tế liên quan đến Bội chung/Bội chung nhỏ nhất"
+ },
+ {
+  "ma_cau": "T106040101012",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $\\text{UC}(50;75)$.",
+  "dap_an": "1;5;25",
+  "loi_giai": "$U(50)=\\{1;2;5;10;25;50\\}$\n$U(75)=\\{1;3;5;15;25;75\\}$\n$\\text{UC}(50;75)=\\{1;5;25\\}$",
+  "nhan_cu": "Ước chung. Ước chung lớn nhất › Tìm ước chung của các số"
+ },
+ {
+  "ma_cau": "T106040104001",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $n$ lớn nhất sao cho $36 \\vdots n$ và $48 \\vdots n$.",
+  "dap_an": "12",
+  "loi_giai": "Vì $n$ là số tự nhiên lớn nhất sao cho $36 \\vdots n$ và $48 \\vdots n$ nên $n=UCLN(36,48)$.\n$36=2^2\\cdot 3^2$\n$48=2^4\\cdot 3$\nVậy $n=UCLN(36,48)=2^2\\cdot 3=12$.",
+  "nhan_cu": "Ước chung. Ước chung lớn nhất › Tìm x liên quan đến UCLN của các số"
+ },
+ {
+  "ma_cau": "T106040203030",
+  "loai": "tra_loi_ngan",
+  "de": "Số học sinh khối 6 của một trường khi xếp hàng 16, 24, 40 đều vừa đủ. Tính số học sinh khối 6 của trường đó biết rằng số học sinh đó chưa đến 400.",
+  "dap_an": "240",
+  "loi_giai": "Gọi số học sinh của khối 6 là $x$ (học sinh, $x\\in N^*$).\nVì khi xếp hàng 16, 24, 40 đều vừa đủ nên $x\\vdots 16$; $x\\vdots 24$; $x\\vdots 40$\n$\\Rightarrow x\\in BC(16,24,40)$.\n$16=2^4$\n$24=2^3\\cdot 3$\n$40=2^3\\cdot 5$\n$BCNN(16,24,40)=2^4\\cdot 3\\cdot 5=240$\n$\\Rightarrow BC(16,24,40)=B(240)=\\{0;240;480;....\\}$\nVì số học sinh chưa đến 400 nên $x=240$.\nVậy khối 6 có 240 học sinh.",
+  "nhan_cu": "Bội chung. Bội chung nhỏ nhất › Toán thực tế liên quan đến Bội chung/Bội chung nhỏ nhất"
+ },
+ {
+  "ma_cau": "T106000000057",
+  "loai": "tu_luan",
+  "de": "Cho $A=5+5^2+5^3+5^4+\\dots+5^{2025}$. Chứng tỏ: $A\\vdots31$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $1+5+5^2=31$ nên nhóm **3 số hạng liên tiếp**, mỗi nhóm đặt thừa số chung sẽ lộ ra cụm $(1+5+5^2)$.\n**Bước 1.** Đếm số số hạng để chắc nhóm vừa đủ: số mũ chạy từ 1 đến 2025 nên có $2025-1+1=2025$ số hạng, chia được thành 675 nhóm 3 số hạng.\n**Bước 2.** Nhóm từng ba số hạng liên tiếp bằng dấu ngoặc, bắt đầu từ $5+5^2+5^3$.\n**Bước 3.** Trong mỗi nhóm đặt luỹ thừa đứng đầu nhóm ra ngoài: $5^4+5^5+5^6=5^4.(1+5+5^2)$.\n**Bước 4.** Thay $1+5+5^2$ bằng 31 rồi đặt thừa số chung 31 cho cả tổng, suy ra tổng chia hết cho 31.\n**Chú ý:** nếu số số hạng không chia hết cho 3 thì phải để riêng số hạng thừa.\n**Phần 2. Trình bày**\n$A=5+5^2+5^3+5^4+\\dots+5^{2025}$\n$A=(5+5^2+5 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000763",
+  "loai": "tu_luan",
+  "de": "Cho tổng $M=4+4^2+4^3+4^4+\\ldots+4^{97}+4^{98}+4^{99}$.\nHãy giải thích vì sao tổng $M$ chia hết cho 21.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $1+4+4^2=21$ nên nhóm **3 số hạng liên tiếp**, mỗi nhóm đặt luỹ thừa đứng đầu ra ngoài thì lộ ra thừa số 21.\n**Bước 1.** Đếm số số hạng: số mũ chạy từ 1 đến 99 nên có $99-1+1=99$ số hạng, chia vừa đủ thành 33 nhóm, mỗi nhóm 3 số hạng liên tiếp.\n**Bước 2.** Trong mỗi nhóm, đặt luỹ thừa đứng đầu nhóm làm thừa số chung, ví dụ $4^4+4^5+4^6=4^4.(1+4+4^2)$.\n**Bước 3.** Tính $1+4+4^2=21$ rồi đặt thừa số chung 21 cho cả tổng, từ đó kết luận $M$ chia hết cho 21.\n**Phần 2. Trình bày**\n$M=4+4^2+4^3+4^4+\\ldots+4^{97}+4^{98}+4^{99}$\n$M=(4+4^2+4^3)+(4^4+4^5+4^6)+\\ldots+(4^{97}+4^{98}+4^{99})$\n$M=4.(1+4+4^2)+4^4.(1+4+4^2)+\\ldots+4^{97}.(1+4+4^2)$\n$M=4.21+4^4.21+\\ldots+4^ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1060000001044",
+  "loai": "tu_luan",
+  "de": "Cho $C=1+3+3^2+3^3+3^4+\\ldots+3^{98}+3^{99}$. Chứng tỏ rằng $B$ chia hết cho 4.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mỗi cặp hai số hạng liền nhau có dạng $3^k.(1+3)=3^k.4$ nên chia hết cho 4.\n**Bước 1.** Đếm số số hạng của tổng từ $3^0=1$ đến $3^{99}$ để xem ghép hai số hạng một nhóm có vừa đủ hay không.\n**Bước 2.** Trong mỗi nhóm hai số hạng liền nhau, đặt luỹ thừa có số mũ nhỏ làm thừa số chung; phần còn lại trong ngoặc là $1+3$.\n**Bước 3.** Tính $1+3$ rồi nhận ra mỗi nhóm có thừa số 4, từ đó suy ra cả tổng chia hết cho 4 nhờ tính chất chia hết của một tổng.\n**Chú ý:** đề in \"Chứng tỏ $B$\" nhưng biểu thức cho tên là $C$; ta hiểu đề muốn chứng tỏ $C\\vdots 4$ (với $B$ ở ý a thì không đúng).\n**Phần 2. Trình bày**\nTa chứng tỏ biểu thức $C$ vừa cho chia hết cho 4.\nTổng $C$ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106040203040",
+  "loai": "tra_loi_ngan",
+  "de": "Một tủ sách khi xếp thành từng bó 6 cuốn, 8 cuốn, 9 cuốn đều vừa đủ. Cho biết số sách trong khoảng từ 200 đến 250 cuốn. Tìm số cuốn sách trong tủ.",
+  "dap_an": "216",
+  "loi_giai": "Gọi số sách trong tủ là $x$ (cuốn, $x\\in N^*$).\nVì xếp thành từng bó 6 cuốn, 8 cuốn, 9 cuốn đều vừa đủ nên $x\\vdots 6$; $x\\vdots 8$; $x\\vdots 9$\n$\\Rightarrow x\\in BC(6,8,9)$.\n$6=2\\cdot 3$\n$8=2^3$\n$9=3^2$\n$BCNN(6,8,9)=2^3\\cdot 3^2=72$\n$\\Rightarrow BC(6,8,9)=B(72)=\\{0;72;144;216;288;....\\}$\nVì số sách trong khoảng từ 200 đến 250 cuốn nên $x=216$.\nVậy trong tủ có 216 cuốn sách.",
+  "nhan_cu": "Bội chung. Bội chung nhỏ nhất › Toán thực tế liên quan đến Bội chung/Bội chung nhỏ nhất"
+ },
+ {
+  "ma_cau": "T106040103008",
+  "loai": "tra_loi_ngan",
+  "de": "Có 40 chiếc bút và 56 quyển vở được chia thành các phần thưởng sao cho số bút và số vở được chia đều vào các phần thưởng.\nBiết số phần thưởng nhiều hơn 2.\na) Hỏi có mấy cách chia phần thưởng?\nb) Trong mỗi cách chia, mỗi phần thưởng có bao nhiêu chiếc bút và bao nhiêu quyển vở?",
+  "dap_an": "2",
+  "loi_giai": "Gọi số phần thưởng là $x$ (phần thưởng) $(x\\in \\mathrm{N^*})$.\nVì 40 chiếc bút và 56 quyển vở được chia đều vào các phần thưởng nên $x\\in \\text{UC}(40,56)$.\n$40=2^3\\cdot 5$\n$56=2^3\\cdot 7$\n$\\text{UCLN}(40,56)=2^3=8$\n$\\text{UC}(40,56)=\\text{U}(8)=\\{1;2;4;8\\}$\nVì số phần thưởng nhiều hơn 2 nên $x\\in\\{4;8\\}$.\nVới $x=4$: mỗi phần thưởng có $40:4=10$ chiếc bút và $56:4=14$ quyển vở.\nVới $x=8$: mỗi phần thưởng có $40:8=5$ chiếc bút và $56:8=7$ quyển vở.\nVậy có 2 cách chia phần thưởng.",
+  "nhan_cu": "Ước chung. Ước chung lớn nhất › Toán thực tế liên quan đến Ước chung/Ước chung lớn nhất"
+ },
+ {
+  "ma_cau": "T106040303022",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm hai số a, b biết rằng: $[a,b]=50$ và $a-b=15$.",
+  "dap_an": "(25;10)",
+  "loi_giai": "Gọi $(a,b)=k\\Rightarrow \\begin{cases}a=km\\\\b=kn\\end{cases}$ $(m,n\\in N^*;(m,n)=1)$.\nMà $[a,b]=50\\Rightarrow kmn=50\\Rightarrow k\\in \\text{U}(50)$.\nTa có: $a-b=15$\n$\\Rightarrow km-kn=15$\n$\\Rightarrow k(m-n)=15$\n$\\Rightarrow k\\in \\text{U}(15)$\n$\\Rightarrow k\\in \\text{UC}(50,15)=\\{1;5\\}$\nTH1: $k=1\\Rightarrow \\begin{cases}m-n=15\\\\m\\cdot n=50\\end{cases}$\n$50=1\\cdot 50=2\\cdot 25=5\\cdot 10$.\nVậy không có $m,n$ thỏa mãn.\nTH2: $k=5\\Rightarrow \\begin{cases}m-n=3\\\\m\\cdot n=10\\end{cases}$\n$10=1\\cdot 10=2\\cdot 5$.\n$\\Rightarrow (m;n)=(5;2)$.\nVậy $(a;b)=(25;10)$.",
+  "nhan_cu": "Các bài toán nâng cao ứng dụng UCLN - BCNN › Tìm hai số a,b khi biết BCNN và hiệu"
+ },
+ {
+  "ma_cau": "T106000000756",
+  "loai": "tu_luan",
+  "de": "Tìm các số tự nhiên $x$ sao cho: $x\\vdots 5$ và $13<x\\le 78$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $x\\vdots 5$ nghĩa là $x$ là một bội của 5, nên liệt kê các bội của 5 rồi lọc theo khoảng $13<x\\le 78$.\n**Bước 1.** Đổi điều kiện chia hết thành quan hệ bội: $x$ chia hết cho 5 thì $x$ thuộc $\\text{B}(5)$.\n**Bước 2.** Liệt kê các bội của 5 bằng cách nhân 5 lần lượt với $0;1;2;3;\\dots$ cho tới khi vượt quá 78.\n**Bước 3.** Đọc điều kiện $13<x\\le 78$: bỏ các bội không lớn hơn 13 (kể cả 10) và bỏ các bội lớn hơn 78.\n**Bước 4.** Viết các bội còn lại trong dấu ngoặc nhọn, mỗi phần tử một lần.\n**Chú ý:** dấu $<$ ở cận dưới nên không lấy $x=13$; cận trên 78 không phải bội của 5 nên dừng ở bội của 5 lớn nhất không vượt quá 78.\n**Phần 2. Trình bày**\nVì $x\\vdots 5$ nê …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000486",
+  "loai": "tu_luan",
+  "de": "Cho tập hợp $M=\\{x\\in\\mathbb{N}\\mid -4<x\\le 5\\}$\na) Viết tập hợp $M$ bằng cách liệt kê các phần tử.\nb) Tính tổng các phần tử của tập hợp $M$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $x$ phải là **số tự nhiên** (có số 0, không có số âm) và thoả mãn cả hai điều kiện $-4<x$ và $x\\le 5$.\n**Bước 1.** Đọc điều kiện đề cho: $x$ thuộc $\\mathbb{N}$ nên $x$ không âm, điều kiện $-4<x$ khi đó luôn thoả.\n**Bước 2.** Liệt kê mọi số tự nhiên từ 0 tới số lớn nhất mà $x$ được phép bằng, nhớ dấu $\\le$ cho phép lấy chính số cuối đó.\n**Bước 3.** Viết các phần tử trong dấu ngoặc nhọn, ngăn cách bằng dấu chấm phẩy.\n**Bước 4.** Ý b: cộng tất cả các phần tử vừa liệt kê, có thể gom cặp để cộng cho nhanh.\n**Chú ý:** đề cho $x\\in\\mathbb{N}$ nên không lấy các số âm $-3;-2;-1$ dù chúng lớn hơn $-4$; đừng bỏ sót số 0 và số 5 ở hai đầu.\n**Phần 2. Trình bày**\na) Vì  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000720",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $x$, biết: $5^x+5^{x+1}=750$.",
+  "dap_an": "3",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tách $5^{x+1}$ thành tích có chứa $5^x$ rồi đặt $5^x$ làm thừa số chung.\n**Bước 1.** Viết $5^{x+1}$ thành $5^x.5$, vì nhân hai luỹ thừa cùng cơ số là cộng số mũ.\n**Bước 2.** Đặt $5^x$ làm thừa số chung, trong ngoặc còn lại tổng $1+5$.\n**Bước 3.** Tìm thừa số $5^x$ bằng cách lấy tích chia cho thừa số đã biết.\n**Bước 4.** Viết kết quả thành luỹ thừa của 5 rồi cho số mũ hai vế bằng nhau.\n**Chú ý:** $5^x=5^x.1$ nên khi đặt thừa số chung, số hạng đầu còn lại là 1 chứ không phải 0.\nThử lại: $5^3+5^4=125+625=750$ (đúng).\n**Phần 2. Trình bày**\n$5^x+5^{x+1}=750$\n$5^x+5^x.5=750$\n$5^x.(1+5)=750$\n$5^x.6=750$\n$5^x=750:6$\n$5^x=125$\n$5^x=5^3$\n$x=3$\nVậy $x=3$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106040204007",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $n$ nhỏ nhất khác $0$ biết rằng $n:16$ và $n:20$.",
+  "dap_an": "80",
+  "loi_giai": "Vì $n$ là số tự nhiên nhỏ nhất khác $0$ sao cho $n:16$ và $n:20$ nên\n$n=BCNN(16,20)$.\n$16=2^4$\n$20=2^2\\cdot 5$\n$\\Rightarrow BCNN(16,20)=2^4\\cdot 5=80$.\nVậy $n=80$.",
+  "nhan_cu": "Bội chung. Bội chung nhỏ nhất › Tìm x liên quan đến BCNN"
+ },
+ {
+  "ma_cau": "T106040303030",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm hai số a, b biết rằng: $[a,b]=140$ và $a-b=7$.",
+  "dap_an": "(35;28)",
+  "loi_giai": "Gọi $(a,b)=k\\Rightarrow \\begin{cases}a=km\\\\b=kn\\end{cases}$ $(m,n\\in N^*;(m,n)=1)$.\nMà $[a,b]=140\\Rightarrow kmn=140\\Rightarrow k\\in \\text{U}(140)$.\nTa có: $a-b=7$\n$\\Rightarrow km-kn=7$\n$\\Rightarrow k(m-n)=7$\n$\\Rightarrow k\\in \\text{U}(7)$\n$\\Rightarrow k\\in \\text{UC}(140,7)=\\{1;7\\}$\nTH1: $k=1\\Rightarrow \\begin{cases}m-n=7\\\\m\\cdot n=140\\end{cases}$\n$140=1\\cdot 140=2\\cdot 70=4\\cdot 35=5\\cdot 28=7\\cdot 20=10\\cdot 14$.\nVậy không có $m,n$ thỏa mãn.\nTH2: $k=7\\Rightarrow \\begin{cases}m-n=1\\\\m\\cdot n=20\\end{cases}$\n$20=1\\cdot 20=2\\cdot 10=4\\cdot 5$.\n$\\Rightarrow (m;n)=(5;4)$.\nVậy $(a;b)=(35;28)$.",
+  "nhan_cu": "Các bài toán nâng cao ứng dụng UCLN - BCNN › Tìm hai số a,b khi biết BCNN và hiệu"
+ },
+ {
+  "ma_cau": "T106040102022",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm UCLN bằng phân tích thừa số nguyên tố của $48$ và $72$.",
+  "dap_an": "24",
+  "loi_giai": "$48=2^4\\cdot 3$\n$72=2^3\\cdot 3^2$\n$\\Rightarrow UCLN(48,72)=2^3\\cdot 3=24$",
+  "nhan_cu": "Ước chung. Ước chung lớn nhất › Tìm UCLN của các số"
+ },
+ {
+  "ma_cau": "T106040104041",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $n$ biết rằng $64 \\vdots n$ và $80 \\vdots n$ và $3<n<10$.",
+  "dap_an": "4;8",
+  "loi_giai": "Vì $64 \\vdots n$ và $80 \\vdots n$ nên $n\\in \\text{UC}(64;80)$.\nĐể tìm $\\text{UC}(64;80)$ ta sẽ tìm $UCLN(64,80)$.\n$64=2^6$\n$80=2^4\\cdot 5$\n$UCLN(64,80)=2^4=16$.\n$\\Rightarrow \\text{UC}(64;80)=U(16)=\\{1;2;4;8;16\\}$.\n$\\Rightarrow n\\in\\{1;2;4;8;16\\}$.\nMà $3<n<10$ nên $n\\in\\{4;8\\}$.",
+  "nhan_cu": "Ước chung. Ước chung lớn nhất › Tìm x liên quan đến UCLN của các số"
+ },
+ {
+  "ma_cau": "T106040102040",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm UCLN bằng phân tích thừa số nguyên tố của $72; 120$ và $168$.",
+  "dap_an": "24",
+  "loi_giai": "$72=2^3\\cdot 3^2$\n$120=2^3\\cdot 3\\cdot 5$\n$168=2^3\\cdot 3\\cdot 7$\n$\\Rightarrow UCLN(72,120,168)=2^3\\cdot 3=24$",
+  "nhan_cu": "Ước chung. Ước chung lớn nhất › Tìm UCLN của các số"
+ },
+ {
+  "ma_cau": "T106040103022",
+  "loai": "tra_loi_ngan",
+  "de": "Một mảnh vườn hình chữ nhật dài 360 m và rộng 252 m. Người ta muốn chia mảnh vườn thành những ô đất hình vuông bằng nhau. Tính độ dài cạnh lớn nhất của mỗi ô đất hình vuông, biết khi chia không thừa phần đất nào.",
+  "dap_an": "36",
+  "loi_giai": "Gọi độ dài cạnh lớn nhất của ô đất hình vuông là $x$ ($x\\in N^*$, m).\nVì cần chia chiều dài 360 m và chiều rộng 252 m thành các đoạn bằng nhau và độ dài cạnh là lớn nhất nên $x=\\text{UCLN}(360,252)$.\n$360=2^3\\cdot 3^2\\cdot 5$\n$252=2^2\\cdot 3^2\\cdot 7$\n$\\text{UCLN}(360,252)=2^2\\cdot 3^2=36$\nVậy độ dài cạnh lớn nhất của mỗi ô đất hình vuông là 36 m.",
+  "nhan_cu": "Ước chung. Ước chung lớn nhất › Toán thực tế liên quan đến Ước chung/Ước chung lớn nhất"
+ },
+ {
+  "ma_cau": "T106010103015",
+  "loai": "trac_nghiem",
+  "de": "Viết tập hợp số tự nhiên bằng cách liệt kê các phần tử của tập hợp:",
+  "lua_chon": [
+   "$N = \\{0;1;2;3;4;5\\}$",
+   "$N = \\{0;1;2;3;4;5;...\\}$",
+   "$N = \\{1;2;3;4;5\\}$",
+   "$N = \\{1;2;3;4;5;...\\}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Tập hợp số tự nhiên $N$ bao gồm các số tự nhiên bắt đầu từ $0$ và tiếp tục vô hạn.",
+  "nhan_cu": "Tập hợp › Mô tả tập hợp"
+ },
+ {
+  "ma_cau": "T106020302025",
+  "loai": "tu_luan",
+  "de": "Tính thuận tiện: $48 \\cdot 27-15 \\cdot 27 + 67 \\cdot 27$",
+  "dap_an": "2700",
+  "loi_giai": "= 27.(48 – 15 + 67)\n= 27.(33 + 67)\n= 27.100\n= 2700",
+  "nhan_cu": "Các phép tính với Số tự nhiên › Tính thuận tiện"
+ },
+ {
+  "ma_cau": "T106040202015",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm BCNN bằng định nghĩa của $4; 10$ và $20$.",
+  "dap_an": "20",
+  "loi_giai": "$B(4)=\\{0;4;8;12;16;20;24;....\\}$\n$B(10)=\\{0;10;20;30;40;....\\}$\n$B(20)=\\{0;20;40;....\\}$\n$\\Rightarrow BCNN(4,10,20)=20$",
+  "nhan_cu": "Bội chung. Bội chung nhỏ nhất › Tìm BCNN của các số"
+ },
+ {
+  "ma_cau": "T106040102014",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm UCLN bằng định nghĩa của $21; 35$ và $49$.",
+  "dap_an": "7",
+  "loi_giai": "$U(21)=\\{1;3;7;21\\}$\n$U(35)=\\{1;5;7;35\\}$\n$U(49)=\\{1;7;49\\}$\n$UCLN(21,35,49)=7$",
+  "nhan_cu": "Ước chung. Ước chung lớn nhất › Tìm UCLN của các số"
+ },
+ {
+  "ma_cau": "T106040303001",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm hai số a, b biết rằng: $[a,b]=12$ và $a-b=2$.",
+  "dap_an": "(6;4)",
+  "loi_giai": "Gọi $(a,b)=k\\Rightarrow \\begin{cases}a=km\\\\b=kn\\end{cases}$ $(m,n\\in N^*;(m,n)=1)$.\nMà $[a,b]=12\\Rightarrow kmn=12\\Rightarrow k\\in \\text{U}(12)$.\nTa có: $a-b=2$\n$\\Rightarrow km-kn=2$\n$\\Rightarrow k(m-n)=2$\n$\\Rightarrow k\\in \\text{U}(2)$\n$\\Rightarrow k\\in \\text{UC}(12,2)=\\{1;2\\}$\nTH1: $k=1\\Rightarrow \\begin{cases}m-n=2\\\\m\\cdot n=12\\end{cases}$\n$12=1\\cdot 12=2\\cdot 6=3\\cdot 4$.\nVậy không có $m,n$ thỏa mãn.\nTH2: $k=2\\Rightarrow \\begin{cases}m-n=1\\\\m\\cdot n=6\\end{cases}$\n$6=1\\cdot 6=2\\cdot 3$.\n$\\Rightarrow (m;n)=(3;2)$.\nVậy $(a;b)=(6;4)$.",
+  "nhan_cu": "Các bài toán nâng cao ứng dụng UCLN - BCNN › Tìm hai số a,b khi biết BCNN và hiệu"
+ },
+ {
+  "ma_cau": "T106020403046",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm x biết: $54: 3^x + 11 = 3.2^4 - 5.7$.",
+  "dap_an": "3",
+  "loi_giai": "$54: 3^x + 11 = 3 \\cdot 2^4 - 5 \\cdot 7$\n$54: 3^x + 11 = 3 \\cdot 16 - 35$\n$54: 3^x + 11 = 48 - 35$\n$54: 3^x + 11 = 13$\n$54: 3^x = 13 - 11$\n$54: 3^x = 2$\n$3^x = 54: 2$\n$3^x = 27$\n$3^x = 3^3$\n$x = 3$\nVậy $x = 3$.",
+  "nhan_cu": "Luỹ thừa với số mũ tự nhiên › Tìm x liên quan đến luỹ thừa với số mũ tự nhiên"
+ },
+ {
+  "ma_cau": "T106000000355",
+  "loai": "tu_luan",
+  "de": "Chứng minh rằng tổng 5 số tự nhiên chẵn liên tiếp chia hết cho 10.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** viết cả 5 số chẵn liên tiếp theo **cùng một chữ** để tổng gom được thành một tích có thừa số 10.\n**Bước 1.** Số chẵn là số chia hết cho 2 nên viết được số chẵn đầu tiên dưới dạng $2k$ với $k$ là số tự nhiên.\n**Bước 2.** Hai số chẵn liên tiếp hơn kém nhau 2 đơn vị, nên viết bốn số chẵn tiếp theo bằng cách cộng thêm 2 lần lượt.\n**Bước 3.** Cộng năm số lại, gom riêng các số hạng chứa $k$ và các số, rồi đặt thừa số chung để tổng thành tích của 10 với một số tự nhiên.\n**Chú ý:** đề yêu cầu chứng minh cho 5 số chẵn liên tiếp **bất kì**, nên không được chỉ thử với vài số cụ thể như $2;4;6;8;10$.\n**Phần 2. Trình bày**\nSố tự nhiên chẵn là số chia hết cho 2 nên có d …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106040302001",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm hai số $a$, $b$ biết rằng: $(a,b)=2$ và $a+b=10$.",
+  "dap_an": "(2;8), (8;2), (4;6), (6;4)",
+  "loi_giai": "Ta có $(a,b)=2$ nên $\\begin{cases}a=2m\\\\b=2n\\end{cases}$ $(m,n\\in N^*;(m,n)=1)$.\nMà $a+b=10$ nên $2m+2n=10\\Rightarrow 2(m+n)=10\\Rightarrow m+n=5$.\nVì $(m,n)=1$ nên ta có bảng sau:\n$\\begin{array} {|c|c|c|c|c|}\\hline m&1&4&2&3\\\\\\hline n&4&1&3&2\\\\\\hline a&2&8&4&6\\\\\\hline b&8&2&6&4\\\\\\hline\\end{array}$\nVậy $(a;b)\\in\\{(2;8);(8;2);(4;6);(6;4)\\}$.",
+  "nhan_cu": "Các bài toán nâng cao ứng dụng UCLN - BCNN › Tìm hai số a,b biết biết UCLN và tổng"
+ },
+ {
+  "ma_cau": "T106040303018",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm hai số a, b biết rằng: $[a,b]=84$ và $a-b=9$.",
+  "dap_an": "(21;12)",
+  "loi_giai": "Gọi $(a,b)=k\\Rightarrow \\begin{cases}a=km\\\\b=kn\\end{cases}$ $(m,n\\in N^*;(m,n)=1)$.\nMà $[a,b]=84\\Rightarrow kmn=84\\Rightarrow k\\in \\text{U}(84)$.\nTa có: $a-b=9$\n$\\Rightarrow km-kn=9$\n$\\Rightarrow k(m-n)=9$\n$\\Rightarrow k\\in \\text{U}(9)$\n$\\Rightarrow k\\in \\text{UC}(84,9)=\\{1;3\\}$\nTH1: $k=1\\Rightarrow \\begin{cases}m-n=9\\\\m\\cdot n=84\\end{cases}$\n$84=1\\cdot 84=2\\cdot 42=3\\cdot 28=4\\cdot 21=6\\cdot 14=7\\cdot 12$.\nVậy không có $m,n$ thỏa mãn.\nTH2: $k=3\\Rightarrow \\begin{cases}m-n=3\\\\m\\cdot n=28\\end{cases}$\n$28=1\\cdot 28=2\\cdot 14=4\\cdot 7$.\n$\\Rightarrow (m;n)=(7;4)$.\nVậy $(a;b)=(21;12)$.",
+  "nhan_cu": "Các bài toán nâng cao ứng dụng UCLN - BCNN › Tìm hai số a,b khi biết BCNN và hiệu"
+ },
+ {
+  "ma_cau": "T106000000853",
+  "loai": "tu_luan",
+  "de": "Tìm số tự nhiên $x$ để $(8-x)\\ \\vdots\\ x$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** cộng thêm $x$ vào số bị chia $8-x$ thì $x$ biến mất, và tổng vẫn chia hết cho $x$; vậy $x$ phải là ước của 8.\n**Bước 1.** Tìm điều kiện của $x$: số chia phải khác 0, và $8-x$ phải là số tự nhiên nên $x$ không vượt quá 8.\n**Bước 2.** Dùng tính chất chia hết của một tổng: $8-x$ chia hết cho $x$ và $x$ chia hết cho $x$ thì tổng của hai số đó cũng chia hết cho $x$.\n**Bước 3.** Tính tổng $(8-x)+x$ để thấy kết quả là số 8, từ đó suy ra $x$ thuộc tập các ước của 8.\n**Bước 4.** Liệt kê các ước của 8 rồi đối chiếu với điều kiện ở bước 1, sau đó thử lại từng giá trị.\n**Chú ý:** với $x=8$ thì $8-x=0$, và 0 chia hết cho mọi số khác 0 nên $x=8$ vẫn nhận.\n**Phần 2. Trìn …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106040203050",
+  "loai": "tra_loi_ngan",
+  "de": "Số sách của thư viện trong khoảng từ 300 đến 500 quyển. Nếu xếp mỗi bó 9 quyển, 12 quyển, 15 quyển thì vừa đủ. Hỏi số sách của thư viện là bao nhiêu quyển?",
+  "dap_an": "360",
+  "loi_giai": "Gọi số sách của thư viện là $x$ (quyển, $x\\in N^*$).\nVì xếp mỗi bó 9 quyển, 12 quyển, 15 quyển đều vừa đủ nên $x\\vdots 9$; $x\\vdots 12$; $x\\vdots 15$\n$\\Rightarrow x\\in BC(9,12,15)$.\n$9=3^2$\n$12=2^2\\cdot 3$\n$15=3\\cdot 5$\n$BCNN(9,12,15)=2^2\\cdot 3^2\\cdot 5=180$\n$\\Rightarrow BC(9,12,15)=B(180)=\\{0;180;360;540;....\\}$\nVì số sách trong khoảng từ 300 đến 500 quyển nên $x=360$.\nVậy thư viện có 360 quyển sách.",
+  "nhan_cu": "Bội chung. Bội chung nhỏ nhất › Toán thực tế liên quan đến Bội chung/Bội chung nhỏ nhất"
+ },
+ {
+  "ma_cau": "T106010103001",
+  "loai": "trac_nghiem",
+  "de": "Cách viết tập hợp A các số tự nhiên nhỏ hơn 5 bằng cách liệt kê các phần tử là:",
+  "lua_chon": [
+   "$A = \\{0;1;2;3;4\\}$",
+   "$A = \\{x \\in \\mathbb{N}^*|x < 5\\}$",
+   "$A = \\{x \\in \\mathbb{N}|x < 5\\}$",
+   "$A = \\{1;2;3;4\\}$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Các số tự nhiên nhỏ hơn $5$ là $0, 1, 2, 3, 4$.\nVậy, cách viết tập hợp $A$ bằng cách liệt kê các phần tử là $A = \\{0;1;2;3;4\\}$.",
+  "nhan_cu": "Tập hợp › Mô tả tập hợp"
+ },
+ {
+  "ma_cau": "T106040104023",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $n$ biết rằng $42 \\vdots n$ và $70 \\vdots n$ và $n<8$.",
+  "dap_an": "1;2;7",
+  "loi_giai": "Vì $42 \\vdots n$ và $70 \\vdots n$ nên $n\\in \\text{UC}(42;70)$.\nĐể tìm $\\text{UC}(42;70)$ ta sẽ tìm $UCLN(42,70)$.\n$42=2\\cdot 3\\cdot 7$\n$70=2\\cdot 5\\cdot 7$\n$UCLN(42,70)=2\\cdot 7=14$.\n$\\Rightarrow \\text{UC}(42;70)=U(14)=\\{1;2;7;14\\}$.\n$\\Rightarrow n\\in\\{1;2;7;14\\}$.\nMà $n<8$ nên $n\\in\\{1;2;7\\}$.",
+  "nhan_cu": "Ước chung. Ước chung lớn nhất › Tìm x liên quan đến UCLN của các số"
+ },
+ {
+  "ma_cau": "T106030402003",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $2x - 5y \\vdots 17$. Chứng minh rằng $3y - 8x \\vdots 17$.",
+  "loi_giai": "Ta có: $2x - 5y \\vdots 17$\nSuy ra $4(2x - 5y) \\vdots 17$\n$8x - 20y \\vdots 17$\nMà $(8x - 20y) + (3y - 8x) = -17y = 17(-y) \\vdots 17$\nSuy ra $3y - 8x \\vdots 17$",
+  "nhan_cu": "Các bài toán nâng cao ứng dụng Quan hệ chia hết › Tính chia hết của cặp biểu thức ax+by và cx+dy"
+ },
+ {
+  "ma_cau": "T106010103022",
+  "loai": "trac_nghiem",
+  "de": "Tập hợp M các số tự nhiên lẻ nhỏ hơn 10 được viết là:",
+  "lua_chon": [
+   "$M = \\{0;2;4;6;8;10\\}$",
+   "$M = \\{0;1;3;5;7;9\\}$",
+   "$M = \\{1;3;5;7;9\\}$",
+   "$M = \\{0;1;2;3;4;5;6;7;8;9\\}$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "Các số tự nhiên lẻ nhỏ hơn 10 là: 1; 3; 5; 7; 9.\nVậy tập hợp M là $M = \\{1;3;5;7;9\\}$.",
+  "nhan_cu": "Tập hợp › Mô tả tập hợp"
+ },
+ {
+  "ma_cau": "T106040303039",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm hai số a, b biết rằng: $[a,b]=42$ và $a-b=1$.",
+  "dap_an": "(7;6)",
+  "loi_giai": "Gọi $(a,b)=k\\Rightarrow \\begin{cases}a=km\\\\b=kn\\end{cases}$ $(m,n\\in N^*;(m,n)=1)$.\nMà $[a,b]=42\\Rightarrow kmn=42\\Rightarrow k\\in \\text{U}(42)$.\nTa có: $a-b=1$\n$\\Rightarrow km-kn=1$\n$\\Rightarrow k(m-n)=1$\n$\\Rightarrow k\\in \\text{U}(1)$\n$\\Rightarrow k\\in \\text{UC}(42,1)=\\{1\\}$\n$\\Rightarrow k=1$\n$\\Rightarrow \\begin{cases}m-n=1\\\\m\\cdot n=42\\end{cases}$\n$42=1\\cdot 42=2\\cdot 21=3\\cdot 14=6\\cdot 7$.\n$\\Rightarrow (m;n)=(7;6)$.\nVậy $(a;b)=(7;6)$.",
+  "nhan_cu": "Các bài toán nâng cao ứng dụng UCLN - BCNN › Tìm hai số a,b khi biết BCNN và hiệu"
+ },
+ {
+  "ma_cau": "T106040103052",
+  "loai": "tra_loi_ngan",
+  "de": "Người ta muốn chia 180 quyển vở, 84 cái thước và 132 nhãn vở thành các phần thưởng như nhau. Hỏi có thể chia được nhiều nhất bao nhiêu phần thưởng? Trong mỗi phần thưởng có bao nhiêu quyển vở, thước và nhãn vở?",
+  "dap_an": "12 phần thưởng; mỗi phần thưởng có 15 quyển vở, 7 cái thước và 11 nhãn vở.",
+  "loi_giai": "Gọi số phần thưởng có thể chia được nhiều nhất là $x$ ($x\\in N^*$, phần thưởng).\nVì cần chia 180 quyển vở, 84 cái thước và 132 nhãn vở thành các phần thưởng đều nhau và nhiều phần thưởng nhất nên $x=\\text{UCLN}(180,84,132)$.\n$180=2^2\\cdot 3^2\\cdot 5$\n$84=2^2\\cdot 3\\cdot 7$\n$132=2^2\\cdot 3\\cdot 11$\n$\\text{UCLN}(180,84,132)=2^2\\cdot 3=12$\nVậy có thể chia nhiều nhất thành 12 phần thưởng.\nSố quyển vở ở mỗi phần thưởng là:\n$180:12=15$ (quyển)\nSố cái thước ở mỗi phần thưởng là:\n$84:12=7$ (cái)\nSố nhãn vở ở mỗi phần thưởng là:\n$132:12=11$ (nhãn).",
+  "nhan_cu": "Ước chung. Ước chung lớn nhất › Toán thực tế liên quan đến Ước chung/Ước chung lớn nhất"
+ },
+ {
+  "ma_cau": "T106000000012",
+  "loai": "tu_luan",
+  "de": "Cơn bão số 3 Yagi ập đến gây thiệt hại nặng nề cho nhiều tỉnh đồng bằng và miền núi phía Bắc. Cơn bão đã tàn phá bao nhiều công trình, nhấn chìm nhiều làng mạc, nhà cửa, làm bao nhiêu người chết và mất tích. Những lúc khó khăn nhất, gian khổ nhất, chịu đựng đau thương nhiều nhất thì sự kiên cường, sự yêu thương, đùm bọc và tình người lại rực sáng. Bởi trong mỗi người trong chúng ta vẫn còn đó hai chữ “đồng bào” thiêng liêng.\nCon hãy viết tập hợp $A$ các chữ cái trong từ “ĐỒNG BÀO”, bằng cách liệt kê các phần tử.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mỗi chữ cái là một phần tử, chỉ viết **một lần**; dấu thanh không làm thành chữ cái mới.\n**Bước 1.** Tách từng chữ cái của từ \"ĐỒNG BÀO\": Đ, Ồ, N, G, B, À, O.\n**Bước 2.** Bỏ dấu thanh để lấy chữ cái gốc: \"Ồ\" là chữ Ô, \"À\" là chữ A.\n**Bước 3.** Mỗi chữ cái chỉ viết một lần (Ô, A, O là ba chữ cái khác nhau nên đều giữ) rồi viết tập hợp trong dấu ngoặc nhọn.\n**Phần 2. Trình bày**\n$A=\\{\\text{Đ};\\text{Ô};N;G;B;A;O\\}$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106010102007",
+  "loai": "trac_nghiem",
+  "de": "Cho tập hợp $M = \\{a,b,x,y\\}$. Khẳng định nào sau đây là đúng?",
+  "lua_chon": [
+   "$a \\notin M$",
+   "$y \\in M$",
+   "$1 \\in M$",
+   "$b \\notin M$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "Tập hợp đã cho là $M = \\{a,b,x,y\\}$.\nTa kiểm tra từng khẳng định:\n- Khẳng định A: $a \\notin M$. Khẳng định này sai vì $a \\in M$.\n- Khẳng định B: $y \\in M$. Khẳng định này đúng vì $y$ là một phần tử của tập hợp $M$.\n- Khẳng định C: $1 \\in M$. Khẳng định này sai vì $1$ không phải là phần tử của tập hợp $M$.\n- Khẳng định D: $b \\notin M$. Khẳng định này sai vì $b \\in M$.\nVậy, khẳng định đúng là khẳng định B.",
+  "nhan_cu": "Tập hợp › Quan hệ giữa phần tử và tập hợp"
+ },
+ {
+  "ma_cau": "T106040103044",
+  "loai": "tra_loi_ngan",
+  "de": "Một chương trình từ thiện có 270 thùng mì tôm, 360 thùng nước ngọt và 450 lốc sữa. Người ta muốn chia thành các phần quà giống nhau. Hỏi có thể chia được nhiều nhất bao nhiêu phần quà?",
+  "dap_an": "90",
+  "loi_giai": "Gọi số phần quà có thể chia được nhiều nhất là $x$ ($x\\in N^*$, phần quà).\nVì cần chia 270 thùng mì tôm, 360 thùng nước ngọt và 450 lốc sữa thành các phần quà đều nhau và nhiều phần quà nhất nên $x=\\text{UCLN}(270,360,450)$.\n$270=2\\cdot 3^3\\cdot 5$\n$360=2^3\\cdot 3^2\\cdot 5$\n$450=2\\cdot 3^2\\cdot 5^2$\n$\\text{UCLN}(270,360,450)=2\\cdot 3^2\\cdot 5=90$\nVậy có thể chia nhiều nhất thành 90 phần quà.",
+  "nhan_cu": "Ước chung. Ước chung lớn nhất › Toán thực tế liên quan đến Ước chung/Ước chung lớn nhất"
+ },
+ {
+  "ma_cau": "T106000000558",
+  "loai": "tu_luan",
+  "de": "Tìm tất cả các số tự nhiên $x$, biết: $x\\vdots 30$; $x\\vdots 45$ và $0\\le x\\le 200$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $x$ chia hết cho cả hai số nghĩa là $x$ là **bội chung** của hai số đó.\n**Bước 1.** Đổi \"$x$ chia hết cho $30$ và $45$\" thành \"$x$ thuộc tập bội chung của $30$ và $45$\".\n**Bước 2.** Tìm $\\text{BCNN}(30;45)$ bằng cách phân tích hai số ra thừa số nguyên tố, lấy các thừa số chung và riêng với số mũ lớn nhất.\n**Bước 3.** Liệt kê các bội của $\\text{BCNN}$ (nhớ có số $0$) rồi lọc theo điều kiện $0\\le x\\le 200$.\n**Chú ý:** $0$ chia hết cho mọi số khác $0$ nên $x=0$ thoả mãn.\n**Phần 2. Trình bày**\nVì $x\\vdots 30$ và $x\\vdots 45$ nên $x\\in\\text{BC}(30;45)$.\n$30=2.3.5$; $45=3^2.5$\n$\\text{BCNN}(30;45)=2.3^2.5=90$\n$\\text{BC}(30;45)=\\text{B}(90)=\\{0;90;180;270;\\dots\\}$ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000691",
+  "loai": "tu_luan",
+  "de": "Tính tổng: $H=1^3+2^3+3^3+\\dots+2025^3+2026^3$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** viết $k^3=(k-1).k.(k+1)+k$ để tổng các lập phương thành tổng các tích ba số liên tiếp cộng với tổng các số tự nhiên liên tiếp.\n**Bước 1.** Thử đưa $k^3$ về tích ba số liên tiếp $(k-1).k.(k+1)$, vì loại tích này đã biết cách cho triệt tiêu khi nhân với 4.\n**Bước 2.** Kiểm tra bằng phép nhân phân phối: $(k-1).(k+1)=k.k-1$, nên $(k-1).k.(k+1)=k^3-k$, suy ra $k^3=(k-1).k.(k+1)+k$.\n**Bước 3.** Thay vào từng số hạng của $H$ và nhóm lại thành tổng các tích ba số liên tiếp cộng tổng $1+2+\\dots+2026$.\n**Bước 4.** Tính tổng các tích ba số liên tiếp bằng cách nhân với 4 rồi triệt tiêu từng cặp tích bốn số.\n**Bước 5.** Tính tổng các số từ 1 đến 2026 bằng cách viết ngư …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106040203005",
+  "loai": "tra_loi_ngan",
+  "de": "Khối 6 của một trường có khoảng 500 đến 650 học sinh. Mỗi lần xếp học sinh đi tham quan thì xếp 40 người hay 60 người lên một xe đều vừa vặn. Tính số học sinh của khối 6.",
+  "dap_an": "600",
+  "loi_giai": "Gọi số học sinh của khối 6 là $x$ (học sinh, $x\\in N^*$).\nVì xếp 40 người hay 60 người một xe đều vừa vặn nên $x\\vdots 40$ và $x\\vdots 60$\n$\\Rightarrow x\\in BC(40,60)$.\n$40=2^3\\cdot 5$\n$60=2^2\\cdot 3\\cdot 5$\n$BCNN(40,60)=2^3\\cdot 3\\cdot 5=120$\n$\\Rightarrow BC(40,60)=B(120)=\\{0;120;240;360;480;600;720;....\\}$\nVì số học sinh khối 6 có khoảng 500 học sinh đến 650 học sinh nên $x=600$.\nVậy khối 6 có 600 học sinh.",
+  "nhan_cu": "Bội chung. Bội chung nhỏ nhất › Toán thực tế liên quan đến Bội chung/Bội chung nhỏ nhất"
+ },
+ {
+  "ma_cau": "T106020503058",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm x biết $2.(x+1)^3 - 15 = 39$",
+  "dap_an": "2",
+  "loi_giai": "$2.(x+1)^3 - 15 = 39$\n$2.(x+1)^3 = 39 + 15$\n$2.(x+1)^3 = 54$\n$(x+1)^3 = 54 : 2$\n$(x+1)^3 = 27 = 3^3$\n$x+1 = 3$\n$x = 2$\nVậy $x = 2$",
+  "nhan_cu": "Thứ tự thực hiện phép tính › Tìm x liên quan đến biểu thức chứa ngoặc"
+ },
+ {
+  "ma_cau": "T106000000956",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $n$ sao cho $n+2$ là ước của $n^2+1$.",
+  "dap_an": "3",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tạo ra một bội của $n+2$ có chứa $n^2$ để trừ đi $n^2+1$, rồi lặp lại cho đến khi chỉ còn một số cụ thể chia hết cho $n+2$.\n**Bước 1.** Đổi lời đề: $n+2$ là ước của $n^2+1$ nghĩa là $n^2+1$ chia hết cho $n+2$; xét riêng $n=0$ rồi làm với $n\\ge 1$.\n**Bước 2.** Nhân $n+2$ với $n$ để được bội của $n+2$ có chứa $n^2$, rồi lấy hiệu với $n^2+1$ để làm mất $n^2$, còn một biểu thức bậc nhất của $n$.\n**Bước 3.** Lấy bội $2.(n+2)$ trừ biểu thức bậc nhất vừa có để làm mất $n$, chỉ còn một số cụ thể chia hết cho $n+2$.\n**Bước 4.** Liệt kê các ước của số cụ thể, chú ý $n+2\\ge 2$ để loại ước không hợp lí, rồi tính $n$ và thử lại.\n**Chú ý:** phép trừ chỉ làm được khi số  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106040101010",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $\\text{UC}(45;60)$.",
+  "dap_an": "1;3;5;15",
+  "loi_giai": "$U(45)=\\{1;3;5;9;15;45\\}$\n$U(60)=\\{1;2;3;4;5;6;10;12;15;20;30;60\\}$\n$\\text{UC}(45;60)=\\{1;3;5;15\\}$",
+  "nhan_cu": "Ước chung. Ước chung lớn nhất › Tìm ước chung của các số"
+ },
+ {
+  "ma_cau": "T106040103002",
+  "loai": "tra_loi_ngan",
+  "de": "Tổ 2 của lớp 6B được nhận phần thưởng của cô giáo chủ nhiệm và mỗi em được nhận phần thưởng như nhau.\nCô giáo chủ nhiệm đã chia hết 56 quyển vở và 42 bút bi.\nHỏi số học sinh tổ 2 của lớp 6B là bao nhiêu? Biết mỗi tổ của lớp có số học sinh nhiều hơn 7.",
+  "dap_an": "14",
+  "loi_giai": "Gọi số học sinh của tổ 2 là $x$ (học sinh) $(x\\in \\mathrm{N^*})$.\nVì cô chủ nhiệm chia hết 56 quyển vở và 42 bút bi và mỗi học sinh nhận phần thưởng như nhau nên $x\\in \\text{UC}(56,42)$.\n$56=2^3\\cdot 7$\n$42=2\\cdot 3\\cdot 7$\n$\\text{UCLN}(56,42)=2\\cdot 7=14$\n$\\text{UC}(56,42)=\\text{U}(14)=\\{1;2;7;14\\}$\nVì số học sinh mỗi tổ nhiều hơn 7 nên $x=14$.\nVậy tổ 2 có 14 học sinh.",
+  "nhan_cu": "Ước chung. Ước chung lớn nhất › Toán thực tế liên quan đến Ước chung/Ước chung lớn nhất"
+ },
+ {
+  "ma_cau": "T106040104013",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $n$ lớn nhất sao cho $99 \\vdots n$ và $132 \\vdots n$.",
+  "dap_an": "33",
+  "loi_giai": "Vì $n$ là số tự nhiên lớn nhất sao cho $99 \\vdots n$ và $132 \\vdots n$ nên $n=UCLN(99,132)$.\n$99=3^2\\cdot 11$\n$132=2^2\\cdot 3\\cdot 11$\nVậy $n=UCLN(99,132)=3\\cdot 11=33$.",
+  "nhan_cu": "Ước chung. Ước chung lớn nhất › Tìm x liên quan đến UCLN của các số"
+ },
+ {
+  "ma_cau": "T106000000741",
+  "loai": "tu_luan",
+  "de": "Tìm ba số nguyên tố $a,\\ b,\\ c$ khác nhau sao cho $abc<ab+bc+ca$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** ba số khác nhau nên xếp được $a<b<c$; thay các tích ở vế phải bằng tích lớn hơn để \"kẹp\" lần lượt $a$, rồi $b$, rồi $c$ vào những khoảng rất nhỏ.\n**Bước 1.** Vì vai trò của $a$, $b$, $c$ như nhau và ba số khác nhau, ta sắp xếp thứ tự $a<b<c$ để so sánh được các tích.\n**Bước 2.** So sánh từng số hạng của vế phải với tích $bc$: cả $ab$ và $ca$ đều nhỏ hơn $bc$, nên vế phải nhỏ hơn ba lần $bc$; từ đó kẹp được $a$ rồi chọn số nguyên tố.\n**Bước 3.** Với $a$ đã biết, bớt $bc$ ở cả hai vế để bất đẳng thức chỉ còn $b$ và $c$; thay $2b$ bằng số lớn hơn là $2c$ để kẹp $b$.\n**Bước 4.** Biết $b$ thì thay vào, bớt hai vế cho gọn để kẹp $c$, rồi chọn số nguyên tố thoả đ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000428",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $A=1+2+2^2+\\dots+2^{100}$. Tìm số tự nhiên $x$, biết $A+1=2^x$.",
+  "dap_an": "101",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** nhân $A$ với cơ số 2 rồi trừ cho $A$, các số hạng giống nhau triệt tiêu và chỉ còn hai luỹ thừa ở hai đầu.\n**Bước 1.** Nhận ra các số hạng là các luỹ thừa liên tiếp của 2 nên nhân $A$ với 2 sẽ được dãy gần giống $A$.\n**Bước 2.** Lấy $2A$ trừ $A$: các số hạng từ $2$ đến $2^{100}$ triệt tiêu nhau, chỉ còn số hạng cuối của $2A$ trừ số hạng đầu của $A$.\n**Bước 3.** Cộng thêm 1 vào $A$ để được một luỹ thừa của 2, rồi so sánh số mũ với vế phải $2^x$.\n**Chú ý:** số hạng đầu của $A$ là $1$, nên khi trừ ta được $2^{101}-1$ chứ không phải $2^{101}$.\n**Phần 2. Trình bày**\nTa có $2A=2.(1+2+2^2+\\dots+2^{100})=2+2^2+2^3+\\dots+2^{101}$\nSuy ra $2A-A=(2+2^2+\\dots+2^{101})- …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106030402014",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $3x - 5y \\vdots 19$. Chứng minh rằng: $4x + 6y \\vdots 19$",
+  "loi_giai": "Ta có: $3x - 5y \\vdots 19$\nSuy ra $5(3x - 5y) \\vdots 19$\n$15x - 25y \\vdots 19$\nMà $(15x - 25y) + (4x + 6y) = 19x - 19y = 19(x - y) \\vdots 19$\nSuy ra $4x + 6y \\vdots 19$",
+  "nhan_cu": "Các bài toán nâng cao ứng dụng Quan hệ chia hết › Tính chia hết của cặp biểu thức ax+by và cx+dy"
+ },
+ {
+  "ma_cau": "T106040204022",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $n$ biết rằng $n:7$, $n:8$, $n:12$ và $100<n<400$.",
+  "dap_an": "168; 336",
+  "loi_giai": "Vì $n:7$, $n:8$, $n:12$ nên $n\\in BC(7,8,12)$.\nĐể tìm $BC(7,8,12)$ ta sẽ tìm $BCNN(7,8,12)$.\n$7=7$\n$8=2^3$\n$12=2^2\\cdot 3$\n$\\Rightarrow BCNN(7,8,12)=2^3\\cdot 3\\cdot 7=168$.\n$BC(7,8,12)=B(168)=\\{0;168;336;504;....\\}$\nVì $100<n<400$ nên $n\\in\\{168;336\\}$.",
+  "nhan_cu": "Bội chung. Bội chung nhỏ nhất › Tìm x liên quan đến BCNN"
+ },
+ {
+  "ma_cau": "T106040303009",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm hai số a, b biết rằng: $[a,b]=70$ và $a-b=4$.",
+  "dap_an": "(14;10)",
+  "loi_giai": "Gọi $(a,b)=k\\Rightarrow \\begin{cases}a=km\\\\b=kn\\end{cases}$ $(m,n\\in N^*;(m,n)=1)$.\nMà $[a,b]=70\\Rightarrow kmn=70\\Rightarrow k\\in \\text{U}(70)$.\nTa có: $a-b=4$\n$\\Rightarrow km-kn=4$\n$\\Rightarrow k(m-n)=4$\n$\\Rightarrow k\\in \\text{U}(4)$\n$\\Rightarrow k\\in \\text{UC}(70,4)=\\{1;2\\}$\nTH1: $k=1\\Rightarrow \\begin{cases}m-n=4\\\\m\\cdot n=70\\end{cases}$\n$70=1\\cdot 70=2\\cdot 35=5\\cdot 14=7\\cdot 10$.\nVậy không có $m,n$ thỏa mãn.\nTH2: $k=2\\Rightarrow \\begin{cases}m-n=2\\\\m\\cdot n=35\\end{cases}$\n$35=1\\cdot 35=5\\cdot 7$.\n$\\Rightarrow (m;n)=(7;5)$.\nVậy $(a;b)=(14;10)$.",
+  "nhan_cu": "Các bài toán nâng cao ứng dụng UCLN - BCNN › Tìm hai số a,b khi biết BCNN và hiệu"
+ },
+ {
+  "ma_cau": "T106020601007",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $C = 1+4+4^2+...+4^{30}$.Biết $3C+1 = 4^m$.Tìm $m$",
+  "dap_an": "31",
+  "loi_giai": "Ta có $4C = 4(1+4+4^2+...+4^{30}) = 4^1+4^2+...+4^{31}$\nSuy ra $4C-C = (4^1+4^2+...+4^{31})-(1+4+4^2+...+4^{30})$\n$3C = 4^{31}-1$\n$3C+1 = 4^{31}$\nMà $3C+1 = 4^m \\Rightarrow 4^m = 4^{31}$\nVậy $m = 31$",
+  "nhan_cu": "Dãy lũy thừa cùng cơ số › Dãy lũy thừa cơ số -  Dạng cùng dấu"
+ },
+ {
+  "ma_cau": "T106040103038",
+  "loai": "tra_loi_ngan",
+  "de": "Cô giáo chủ nhiệm muốn chia 96 quyển vở, 72 bút chì và 120 tập giấy thành các phần thưởng như nhau. Hỏi có thể chia được nhiều nhất bao nhiêu phần thưởng? Mỗi phần thưởng có bao nhiêu quyển vở, bao nhiêu bút chì và bao nhiêu tập giấy?",
+  "dap_an": "24 phần thưởng; mỗi phần thưởng có 4 quyển vở, 3 bút chì và 5 tập giấy.",
+  "loi_giai": "Gọi số phần thưởng có thể chia được nhiều nhất là $x$ ($x\\in N^*$, phần thưởng).\nVì cần chia 96 quyển vở, 72 bút chì và 120 tập giấy thành các phần thưởng đều nhau và nhiều phần thưởng nhất nên $x=\\text{UCLN}(96,72,120)$.\n$96=2^5\\cdot 3$\n$72=2^3\\cdot 3^2$\n$120=2^3\\cdot 3\\cdot 5$\n$\\text{UCLN}(96,72,120)=2^3\\cdot 3=24$\nVậy có thể chia nhiều nhất thành 24 phần thưởng.\nSố quyển vở ở mỗi phần thưởng là:\n$96:24=4$ (quyển)\nSố bút chì ở mỗi phần thưởng là:\n$72:24=3$ (bút)\nSố tập giấy ở mỗi phần thưởng là:\n$120:24=5$ (tập).",
+  "nhan_cu": "Ước chung. Ước chung lớn nhất › Toán thực tế liên quan đến Ước chung/Ước chung lớn nhất"
+ },
+ {
+  "ma_cau": "T106040303034",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm hai số a, b biết rằng: $[a,b]=15$ và $a-b=2$.",
+  "dap_an": "(5;3)",
+  "loi_giai": "Gọi $(a,b)=k\\Rightarrow \\begin{cases}a=km\\\\b=kn\\end{cases}$ $(m,n\\in N^*;(m,n)=1)$.\nMà $[a,b]=15\\Rightarrow kmn=15\\Rightarrow k\\in \\text{U}(15)$.\nTa có: $a-b=2$\n$\\Rightarrow km-kn=2$\n$\\Rightarrow k(m-n)=2$\n$\\Rightarrow k\\in \\text{U}(2)$\n$\\Rightarrow k\\in \\text{UC}(15,2)=\\{1\\}$\n$\\Rightarrow k=1$\n$\\Rightarrow \\begin{cases}m-n=2\\\\m\\cdot n=15\\end{cases}$\n$15=1\\cdot 15=3\\cdot 5$.\n$\\Rightarrow (m;n)=(5;3)$.\nVậy $(a;b)=(5;3)$.",
+  "nhan_cu": "Các bài toán nâng cao ứng dụng UCLN - BCNN › Tìm hai số a,b khi biết BCNN và hiệu"
+ },
+ {
+  "ma_cau": "T106000000011",
+  "loai": "tu_luan",
+  "de": "Chứng minh rằng: $D=1+4+4^2+4^3+\\dots+4^{58}+4^{59}$ chia hết cho 21.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $1+4+4^2=21$ nên nhóm **3 số hạng liên tiếp**, mỗi nhóm đặt thừa số chung sẽ lộ ra $(1+4+4^2)$.\n**Bước 1.** Đếm số số hạng để chắc nhóm vừa đủ: số mũ chạy từ 0 đến 59 nên có $59-0+1=60$ số hạng, chia được thành 20 nhóm 3 số hạng.\n**Bước 2.** Trong mỗi nhóm, đặt luỹ thừa đứng đầu nhóm ra ngoài: $4^3+4^4+4^5=4^3.(1+4+4^2)$.\n**Bước 3.** Thay $1+4+4^2$ bằng 21 rồi đặt thừa số chung 21 cho cả tổng, suy ra tổng chia hết cho 21.\n**Phần 2. Trình bày**\n$D=1+4+4^2+4^3+\\dots+4^{58}+4^{59}$\n$D=(1+4+4^2)+(4^3+4^4+4^5)+\\dots+(4^{57}+4^{58}+4^{59})$\n$D=(1+4+4^2)+4^3.(1+4+4^2)+\\dots+4^{57}.(1+4+4^2)$\n$D=21+4^3.21+\\dots+4^{57}.21$\n$D=21.(1+4^3+\\dots+4^{57})$\nSuy ra $D$ chi …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

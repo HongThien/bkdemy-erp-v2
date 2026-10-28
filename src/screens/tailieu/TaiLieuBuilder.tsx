@@ -5,7 +5,7 @@ import {
   DEFAULT_LUYEN_COUNTS, DEFAULT_BTVN_COUNTS, DEFAULT_BTVN_LINES,
   type TaiLieuFull, type PhanResolved, type CauHinh, type TrichState, type BuoiLop,
 } from '../../lib/tailieu'
-import { groupMap, LOAI_CAU, type CauHoi, type Tier1Node } from '../../lib/kho/api'
+import { groupMap, khoiChayBanDoMoi, LOAI_CAU, type CauHoi, type Tier1Node } from '../../lib/kho/api'
 import { CHE_DO_HINH, cheDoKe, type CheDoHinh } from '../../lib/kho/hinhGiaoTrinh'
 import { listLop, type Lop } from '../../lib/nhansu'
 import { MathText, inp } from '../kho/ui'
@@ -41,6 +41,27 @@ function groupBuois(phans: PhanResolved[]): BuoiUI[] {
 
 // Lọc buổi lưu theo TỪNG tài liệu (mở lại đúng buổi đang soạn dở, khỏi phải chọn lại mỗi lần).
 const filterKey = (id: string) => `tlb_buoi_${id}`
+
+// Thùy 26/10 ("chỉ cần cảnh báo là hiện tại đã chuyển sang giáo trình mới"): khối đã chạy bản đồ mới (DB quyết —
+// fn_bdm_dang_chon / _kho_ds_nhanh_khoi) ⇒ dải cảnh báo + lối sang lá "Giáo trình (bản đồ mới)". KHÔNG chặn: giáo trình
+// cũ đang dạy dở vẫn mở / sửa / trích được. Cấp 1 + môn chưa có bản đồ mới ⇒ không hiện gì.
+export function CanhBaoGiaoTrinhMoi({ khoi, mon }: { khoi: string | null | undefined; mon: string | null | undefined }) {
+  const [moi, setMoi] = useState(false)
+  useEffect(() => {
+    if (!khoi) { setMoi(false); return }
+    let alive = true
+    khoiChayBanDoMoi(khoi, mon ?? 'Toán').then((m) => { if (alive) setMoi(m) }).catch(() => { if (alive) setMoi(false) })
+    return () => { alive = false }
+  }, [khoi, mon])
+  if (!moi) return null
+  return (
+    <div className="flex shrink-0 flex-wrap items-center gap-2 border-b border-amber-200 bg-amber-50 px-5 py-2 text-[13px] text-amber-800">
+      <span>⚠️ <b>Hiện tại đã chuyển sang giáo trình mới</b> (bản đồ mới) cho khối {khoi}. Giáo trình cũ chỉ để dạy nốt / xem lại — soạn giáo trình mới ở mục Giáo trình (bản đồ mới).</span>
+      <button onClick={() => useStore.getState().setStaffLeaf('lamtailieu:giao_trinh_bdm')}
+        className="ml-auto rounded-md border border-amber-300 bg-white px-2.5 py-1 text-[12px] font-medium text-amber-800 hover:bg-amber-100">→ Sang Giáo trình (bản đồ mới)</button>
+    </div>
+  )
+}
 
 export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: () => void }) {
   const [full, setFull] = useState<TaiLieuFull | null>(null)
@@ -152,6 +173,7 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
   return (
     <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: onAnhMm, baChe: nhanh === 'hinh_hoc' }}>
     <div className="flex h-full flex-col bg-[#fafafb]">
+      <CanhBaoGiaoTrinhMoi khoi={full.taiLieu.khoi} mon={mon} />
       {/* Thanh trên */}
       <div className="flex items-center gap-3 border-b border-slate-200 bg-white px-5 py-2.5">
         {/* ⭐ 07-12: builder tự lưu liên tục (không nút Lưu) — điểm "xong 1 lượt sửa" DUY NHẤT là lúc

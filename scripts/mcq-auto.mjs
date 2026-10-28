@@ -866,6 +866,7 @@ const ANSWER_DANG_LIST = ['T109010301', 'T109010302', 'T109010304', 'T109010305'
 const ANSWER_RULE_THEM = ['R363', 'R364', 'R365', 'R366', 'R367', 'R368', 'R369', 'R370', 'R103']
 const ANSWER_DU_PHONG = new Set(['R345', 'R366', 'R103'])
 const ANSWER_DANG = Object.fromEntries(ANSWER_DANG_LIST.map((d) => [d, sinhNhieuDapSoThucTe]))
+ANSWER_DANG.dap_so = sinhNhieuDapSoThucTe // khuôn MÁY GÁN 'dap_so' (26/10, lib/khuon-dap-so.mjs) — không UU_TIEN, y như --theo-dap-so
 const TEXT_DANG = { T106030302: phanTichNguyenTo, T106030301: nhanBietNguyenToHopSo, T106040104: tapUcBc, T106040204: tapUcBc, T106030101: uocBoiCoBan, T106040101: ucBcCoBan, T106040201: ucBcCoBan, T107010103: sapXepSoHuuTi, T108010103: phanBienDonThuc, T108010201: congTruDonThucDongDang, T108010202: congTruDaThuc, T108010301: nhanDonThuc, T108010302: nhanDonDaThuc, T108010303: nhanDaThuc, T108010401: chiaDonThuc, T108010402: chiaDaChoDon, T108010403: chiaDaThucMotBien, T108010404: dieuKienChiaHetDonThuc, T108010501: rutGonBieuThuc, T108020101: khaiTrienBinhPhuong, T108020102: vietThanhBinhPhuong, T108020103: hoanThienBinhPhuong, T108020104: tachBinhPhuong, T108020301: khaiTrienLapPhuong, T108020401: vietThanhTichHieuBinhPhuong, T108040301: vietThanhTichHieuBinhPhuong, T108020501: tongHieuLapPhuong, T108020601: rutGonBieuThuc, T108030101: rutNhanTuChung, T108030102: nhomHangTu, T108030103: phanTichTamThucBac2, T108030104: tachHangTuKetHop, T108030105: phanTichNhamNghiem, T108030602: timXPhuongTrinhTich2Hang, T108030603: giaiPtBacBaQuaNhom, T109020201: giaiBptBacNhat, T109020202: giaiBptBacNhat, T109020203: giaiBptBacNhat, T109020103: giaiPtPhanThucBacNhat, T109020403: giaiPtPhanThucBacNhat, T109030203: rutGonPhanThucCan, T109010401: giaiHePtTongTich, T109020401: timXTichHaiNhiThuc, T109020402: giaiPtQuyVeTich, T109080102: gtlnGtnnBacHaiCoDieuKien, T109010201: giaiHePtBacNhatHaiAn, T109010202: giaiHePtBacNhatHaiAn, T109030101: tinhGiaTriCanThuc, T109030102: tinhGiaTriCanThuc, T109030201: timDkxdCanThuc, T109030202: tinhGiaTriCanThucTheoX, T109030301: timXPhanThucCanBac2 }
 const TEXT_FN = {
   T106030302: { canon: chuanHoaFactorText, val: evalFactorText },
@@ -997,29 +998,32 @@ const counts = { ...pool.phan_bo_dap_an_hien_co }
 const ruleUsed = {} // đếm số lần mỗi rule ĐÃ được chọn trong CẢ LÔ này — nền cho xoay vòng (Thùy 09/09).
 const out = [], bo = [], lech = []
 for (const q of pool.cau) {
-  if (onlyDang && q.dang_chinh !== onlyDang) continue
+  // KHOÁ MÁY (26/10): bộ đọc đáp số / sinh nhiễu chọn theo KHUÔN của câu (mcq-sinh --list ghi `khoa_may`, xem lib/khuon-dap-so.mjs),
+  // không theo bản đồ. Pool cũ (chưa có khoa_may) ⇒ dang_chinh như trước. --dang lọc theo khuôn HOẶC dạng bài NDB.
+  const K = q.khoa_may ?? q.dang_chinh
+  if (onlyDang && K !== onlyDang && q.ma_dang_bai !== onlyDang) continue
   if (debug && q.ma_cau !== debug) continue
   // ── Dạng "BÀI TOÁN THỰC TẾ" — sinh NHIỄU TỪ ĐÁP SỐ, KHÔNG đọc-hiểu đề (CEO 14/09) — hàm nhận `q.dap_an`
   // chứ KHÔNG PHẢI `q.noi_dung` (khác MỌI nhánh khác bên dưới). Vẫn tự đối chiếu lại `chuanHoaDapSoThucTe`
   // như 1 lưới an toàn (bắt lỗi format/parse), dù về bản chất luôn khớp vì res.text bắt nguồn từ chính dap_an.
-  const answerFn = ANSWER_DANG[q.dang_chinh] ?? (THEO_DAP_SO ? sinhNhieuDapSoThucTe : null)
+  const answerFn = ANSWER_DANG[K] ?? (THEO_DAP_SO ? sinhNhieuDapSoThucTe : null)
   if (answerFn) {
     // ctx (18/10): khối của dạng quyết "24,51" là 2 số (khối ≤4) hay số thập phân; noi_dung để nhận ra câu SẮP XẾP.
-    const ctx = { dang: q.dang_chinh, noiDung: q.noi_dung }
+    const ctx = { dang: K, noiDung: q.noi_dung }
     let res; try { res = answerFn(q.dap_an, null, ctx) } catch { res = null }
     if (!res || !res.text) { bo.push([q.ma_cau, 'đáp số kho không nhận dạng được (khác 1 số / 2 số / "N hoặc M")']); continue }
-    const correctText = chuanHoaDapSoThucTe(q.dap_an, q.dang_chinh), cText = chuanHoaDapSoThucTe(res.text, q.dang_chinh)
+    const correctText = chuanHoaDapSoThucTe(q.dap_an, K), cText = chuanHoaDapSoThucTe(res.text, K)
     if (cText !== correctText) { lech.push([q.ma_cau, cText, correctText, q.noi_dung.slice(0, 70)]); bo.push([q.ma_cau, `máy ra ${cText} ≠ đáp số kho ${correctText}`]); continue }
     // Nhân chứng ĐỘC LẬP (so-vn.mjs): lưới cũ ở trên so parser với CHÍNH nó nên mù với lỗi đọc số (sự cố 18/10).
-    const loiKey = kiemKeyVoiDapAn({ dapAn: q.dap_an, key: cText, textDung: res.text, dang: q.dang_chinh })
+    const loiKey = kiemKeyVoiDapAn({ dapAn: q.dap_an, key: cText, textDung: res.text, dang: K })
     if (loiKey.length) { bo.push([q.ma_cau, 'đọc sai đáp số kho: ' + loiKey.join(' · ')]); continue }
-    const uu = UU_TIEN[q.dang_chinh] ?? []
+    const uu = UU_TIEN[K] ?? []
     const order = [...uu, ...ALL.filter((r) => !uu.includes(r)), ...ANSWER_RULE_THEM.filter((r) => !uu.includes(r))]
     const cands = []; const seen = new Set([cText])
     for (const r of order) {
       let rres; try { rres = answerFn(q.dap_an, r, ctx) } catch { rres = null }
       if (!rres || !rres.text) continue
-      const c = chuanHoaDapSoThucTe(rres.text, q.dang_chinh); if (seen.has(c)) continue
+      const c = chuanHoaDapSoThucTe(rres.text, K); if (seen.has(c)) continue
       seen.add(c); cands.push({ r, c, ds: rres.ds || DS[r], text: rres.text })
     }
     if (debug) { console.log(q.noi_dung); console.log('đúng', cText); for (const c of cands) console.log('  ', c.r, c.c, '|', c.ds) }
@@ -1043,9 +1047,9 @@ for (const q of pool.cau) {
   // Dạng có NHIỀU SUB-SHAPE trộn lẫn (vd T107010103: vừa "so sánh tìm x,y" qua SPECIAL_DANG, vừa "sắp xếp" qua
   // TEXT_DANG) — nếu textFn(null) không nhận diện được câu này (trả null) thì KHÔNG bỏ ngay, rơi xuống thử nhánh
   // parseHuuTi/SPECIAL_DANG/AST bình thường bên dưới, như thể dạng đó không nằm trong TEXT_DANG.
-  const textFn = TEXT_DANG[q.dang_chinh]
+  const textFn = TEXT_DANG[K]
   if (textFn) {
-    const fn = TEXT_FN[q.dang_chinh]
+    const fn = TEXT_FN[K]
     let res; try { res = textFn(q.noi_dung, null) } catch { res = null }
     if (res && res.text) {
       const correctText = fn.canon(q.dap_an), nCorrect = fn.val(q.dap_an)
@@ -1053,7 +1057,7 @@ for (const q of pool.cau) {
       if (nOurs == null || nCorrect == null || nOurs !== nCorrect || cText !== correctText) {
         lech.push([q.ma_cau, cText, correctText, q.noi_dung.slice(0, 70)]); bo.push([q.ma_cau, `máy ra ${cText} ≠ đáp số kho ${correctText}`]); continue
       }
-      const uu = UU_TIEN[q.dang_chinh] ?? []
+      const uu = UU_TIEN[K] ?? []
       const order = [...uu, ...ALL.filter((r) => !uu.includes(r))]
       const cands = []; const seen = new Set([cText])
       for (const r of order) {
@@ -1080,14 +1084,14 @@ for (const q of pool.cau) {
     }
   }
   const key = parseHuuTi(q.dap_an); if (!key.ok) { bo.push([q.ma_cau, 'đáp số kho không parse']); continue }
-  const special = SPECIAL_DANG[q.dang_chinh]
+  const special = SPECIAL_DANG[K]
   let correct, correctText = null, tree = null, treeFlat = null, m = null
   if (special) {
     let sres; try { sres = special(q.noi_dung, null) } catch { sres = null }
     if (!sres || !sres.value) { bo.push([q.ma_cau, 'không tính được']); continue }
     correct = sres.value; correctText = sres.text ?? null
   } else {
-    try { const opts = CHAM_LA_NHAN.has(q.dang_chinh) ? { chamLaNhan: true } : {}; m = mathOf(q.noi_dung, opts); tree = parse(m); try { treeFlat = parse(m, true) } catch { treeFlat = null } }
+    try { const opts = CHAM_LA_NHAN.has(K) ? { chamLaNhan: true } : {}; m = mathOf(q.noi_dung, opts); tree = parse(m); try { treeFlat = parse(m, true) } catch { treeFlat = null } }
     catch (e) { bo.push([q.ma_cau, `parse: ${e.message}`]); continue }
     if (tree.t === 'eq' && countX(tree) < 1) { bo.push([q.ma_cau, 'phương trình không có x']); continue }
     if (tree.t !== 'eq' && hasX(tree)) { bo.push([q.ma_cau, 'có x nhưng không có =']); continue }
@@ -1097,7 +1101,7 @@ for (const q of pool.cau) {
   const cc = canonOf(correct)
   if (cc !== key.canon) { lech.push([q.ma_cau, cc, key.canon, (m ?? q.noi_dung).slice(0, 70)]); bo.push([q.ma_cau, `máy ra ${cc} ≠ đáp số kho ${key.canon}`]); continue }
   const kind = kindOf(correct)
-  const uu = UU_TIEN[q.dang_chinh] ?? []
+  const uu = UU_TIEN[K] ?? []
   const order = [...uu, ...ALL.filter((r) => !uu.includes(r))]
   const cands = []; const seen = new Set([cc])
   for (const r of order) {

@@ -140,7 +140,7 @@ export function ChuongBaoDong({ buoiId, hsId, hsTen, nguon, khoi, mon, dangTaiLi
         </div>, document.body)}
       {/* CEO 16/09: chuông phải báo được cả 3 bản đồ — Đại · Hình giải tích (2 nhánh dạng-based, `chonNhanh`) · Hình học
           (kho mô hình, pill thêm → picker riêng). Có kho Hình hay không do registry coKhoHinh quyết, không if môn. */}
-      {pick && createPortal(<DangPickerOne khoi={khoi ?? ''} mon={mon ?? undefined} chonNhanh
+      {pick && createPortal(<DangPickerOne khoi={khoi ?? ''} mon={mon ?? undefined} chonNhanh banDoMoi
         pillsThem={coKhoHinh(mon) ? [{ ten: 'Hình học', onClick: () => { setPick(false); setPickHinh(true) } }] : undefined}
         onClose={() => setPick(false)} onPick={(md) => { void chonTuKho(md) }} />, document.body)}
       {pickHinh && createPortal(<HinhDangPicker khoi={khoi} onClose={() => setPickHinh(false)} onPick={(md, ten) => { void chonTuKho(md, ten) }} />, document.body)}

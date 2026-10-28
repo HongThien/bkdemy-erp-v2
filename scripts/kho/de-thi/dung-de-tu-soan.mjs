@@ -38,7 +38,9 @@ const md = iGhiChu >= 0 ? mdDu.slice(0, iGhiChu) : mdDu
 const loi = [], nhac = []
 // Theo khối: khối 6 dấu nhân là dấu chấm như SGK, hình vào HGT (k6.md) · khối 8 dấu nhân \cdot, hình phẳng vào kho Hình học (k8.md §10)
 // · khối 9 dấu nhân \cdot (k9.md §3), hệ thức lượng vào HGT (hgt/k9.md).
-const NHAN_CHAM = !['8', '9', '10', '11'].includes(String(KHOI))
+// · tiểu học (khối 3–5, 4T, 5T) dấu nhân \times như vở (k5T.md §3) — không dấu chấm, không \cdot
+const TIEU_HOC = ['3', '4', '5', '4T', '5T'].includes(String(KHOI))
+const NHAN_CHAM = !TIEU_HOC && !['8', '9', '10', '11'].includes(String(KHOI))
 const KHO_DUOC = ['7', '8', '11'].includes(String(KHOI)) ? ['dai', 'hinh_hoc'] : String(KHOI) === '9' ? ['dai', 'hgt', 'hinh_hoc'] : ['dai', 'hgt'] // khối 7: hình phẳng THCS ⇒ kho Hình học, dạng chờ HH07000000 (mig 202610121650)
 // khối 9 BỘ ĐỀ GKI (Thùy 18/10: "đẩy tất cả bài Hình vào bài Ôn thi giữa kì I của phần Hình – học lớp 9"): mọi câu kho=hinh_hoc ghi thẳng vào dạng HH00140 "Ôn thi giữa kì I"
 const DANG_HINH_K9 = process.env.DANG_HINH_K9 || 'HH00140' // bộ đề cuối kì 1 K9 (18/10) đặt DANG_HINH_K9=<mã bài> khi chạy k9-cki-ghi-*.sh
@@ -56,7 +58,8 @@ function kiemCongThuc(nhan, cho, s) {
   for (const m of s.matchAll(/\$([^$]+)\$/g)) {
     try { katex.renderToString(m[1], { throwOnError: true, strict: 'ignore' }) } catch (e) { loi.push(`${nhan} (${cho}): KaTeX hỏng «${m[1].slice(0, 50)}» — ${e.message.slice(0, 80)}`) }
     if (/[À-ỹĐđ]/.test(m[1].replace(/\\text\{[^}]*\}/g, ''))) loi.push(`${nhan} (${cho}): chữ Việt trong công thức ngoài \\text{}: «${m[1].slice(0, 50)}»`)
-    if (NHAN_CHAM) { if (/\\cdot|\\times/.test(m[1])) loi.push(`${nhan} (${cho}): dấu nhân phải là dấu chấm như SGK, gặp «${m[1].slice(0, 50)}»`) }
+    if (TIEU_HOC) { if (/\\cdot/.test(m[1])) loi.push(`${nhan} (${cho}): khối ${KHOI} (tiểu học) dấu nhân là \\times, gặp «${m[1].slice(0, 50)}»`) }
+    else if (NHAN_CHAM) { if (/\\cdot|\\times/.test(m[1])) loi.push(`${nhan} (${cho}): dấu nhân phải là dấu chấm như SGK, gặp «${m[1].slice(0, 50)}»`) }
     else { // khối 8 (k8.md §3): dấu nhân tường minh là \cdot — không \times, không dấu chấm
       if (/\\times/.test(m[1])) loi.push(`${nhan} (${cho}): khối ${KHOI} không dùng \\times, dùng \\cdot — «${m[1].slice(0, 50)}»`)
       if (/[0-9A-Za-z)}]\s*\.\s*[0-9A-Za-z(\\]/.test(m[1].replace(/\\text\{[^}]*\}/g, ''))) loi.push(`${nhan} (${cho}): dấu chấm làm dấu nhân — khối ${KHOI} viết \\cdot — «${m[1].slice(0, 50)}»`)

@@ -1,0 +1,829 @@
+[
+ {
+  "ma_cau": "T110000000666",
+  "loai": "tu_luan",
+  "de": "Tính giá trị biểu thức sau: $D=\\cos 1^\\circ+\\cos 2^\\circ+\\cos 3^\\circ+\\ldots+\\cos 180^\\circ$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai góc bù nhau có côsin đối nhau nên các số hạng ghép cặp triệt tiêu, chỉ còn lại những số hạng không có cặp.\n**Bước 1.** Nhớ công thức hai góc bù nhau: $\\cos\\left(180^\\circ-x\\right)$ liên hệ với $\\cos x$ như thế nào.\n**Bước 2.** Ghép các số hạng $\\cos k^\\circ$ với $\\cos\\left(180^\\circ-k\\right)^\\circ$ và xét xem những góc nào không có góc bù trong tổng.\n**Bước 3.** Cộng các số hạng còn lại, nhớ giá trị đặc biệt tại góc đó để ra kết quả.\n**Phần 2. Trình bày**\nVì $\\cos\\left(180^\\circ-x\\right)=-\\cos x$ nên $\\cos 1^\\circ+\\cos 179^\\circ=0$, $\\cos 2^\\circ+\\cos 178^\\circ=0$, $\\ldots$, $\\cos 89^\\circ+\\cos 91^\\circ=0$.\nCác góc từ $1^\\circ$ đến $179^\\circ$ trừ $90^ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000541",
+  "loai": "trac_nghiem",
+  "de": "Trong các mệnh đề sau, mệnh đề nào đúng?",
+  "lua_chon": [
+   "$\\forall x\\in\\mathbb{R},x\\ge0$.",
+   "$\\forall x\\in\\mathbb{N},x\\ge0$.",
+   "$\\forall x\\in\\mathbb{Q},x\\ge0$.",
+   "$\\forall x\\in\\mathbb{Z},x\\ge0$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mệnh đề \"với mọi $x$ thuộc tập $X$ thì $x\\ge0$\" chỉ đúng khi tập $X$ không chứa số âm.\n**Bước 1.** Nhớ lại các phần tử của từng tập $\\mathbb{N}$, $\\mathbb{Z}$, $\\mathbb{Q}$, $\\mathbb{R}$.\n**Bước 2.** Với mỗi tập, kiểm tra xem tập đó có chứa số âm hay không.\n**Bước 3.** Chọn tập mà mọi phần tử đều không âm.\n**Phần 2. Trình bày**\nTập $\\mathbb{R}$, $\\mathbb{Q}$, $\\mathbb{Z}$ đều chứa số âm, chẳng hạn $-1$, nên các mệnh đề ở A, C, D đều sai.\nTập $\\mathbb{N}=\\{0;1;2;3;\\ldots\\}$ chỉ gồm các số không âm nên mệnh đề ở B đúng.\nVậy mệnh đề đúng là phương án B.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000646",
+  "loai": "trac_nghiem",
+  "de": "Cho hình thoi $ABCD$ có cạnh bằng $a$. Góc $\\widehat{BAD}=30^\\circ$. Diện tích hình thoi $ABCD$ là",
+  "lua_chon": [
+   "$\\dfrac{a^2}{4}$.",
+   "$\\dfrac{a^2}{2}$.",
+   "$\\dfrac{a^2\\sqrt{3}}{2}$.",
+   "$a^2$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đường chéo chia hình thoi thành hai tam giác bằng nhau nên tính diện tích một tam giác rồi nhân đôi.\n**Bước 1.** Chia hình thoi bằng đường chéo $BD$ thành hai tam giác $ABD$ và $CBD$ bằng nhau.\n**Bước 2.** Tính diện tích tam giác $ABD$ theo hai cạnh cùng bằng $a$ và góc xen giữa $30^\\circ$.\n**Bước 3.** Nhân đôi để được diện tích hình thoi.\n**Phần 2. Trình bày**\nHình thoi $ABCD$ có $AB=AD=a$ và hai tam giác $ABD$, $CBD$ bằng nhau.\n$S_{ABD}=\\dfrac{1}{2}\\cdot AB\\cdot AD\\cdot\\sin\\widehat{BAD}=\\dfrac{1}{2}\\cdot a\\cdot a\\cdot\\dfrac{1}{2}=\\dfrac{a^2}{4}$\n$S_{ABCD}=2S_{ABD}=\\dfrac{a^2}{2}$\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000064",
+  "loai": "trac_nghiem",
+  "de": "Cho tam giác $ABC$ vuông tại $A$, biết $AB=6 cm$, $AC=8 cm$ và $M$ là trung điểm của $BC$. Tính bán kính $R$ của đường tròn ngoại tiếp tam giác $ABM$.",
+  "lua_chon": [
+   "$R=\\dfrac{25}{6} cm$.",
+   "$R=\\dfrac{25}{16} cm$.",
+   "$R=\\dfrac{25}{8} cm$.",
+   "$R=5 cm$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Áp dụng định lí Pythagore trong tam giác $ABC$ vuông tại $A$, ta có\n$BC=\\sqrt{AB^{2}+AC^{2}}=\\sqrt{6^{2}+8^{2}}=10 \\left(cm\\right).$\nVì $M$ là trung điểm của cạnh huyền $BC$ nên\n$AM=BM=\\dfrac{BC}{2}=5 \\left(cm\\right).$\nTrong tam giác vuông $ABC$, ta có\n$\\sin B=\\dfrac{AC}{BC}=\\dfrac{8}{10}=\\dfrac{4}{5}.$\nXét tam giác $ABM$, áp dụng định lí sin ta có\n$\\dfrac{AM}{\\sin B}=2R\\Rightarrow R=\\dfrac{AM}{2\\sin B}=\\dfrac{5}{2\\cdot \\dfrac{4}{5}}=\\dfrac{25}{8} \\left(cm\\right).$\nVậy bán kính đường tròn ngoại tiếp tam giác $ABM$ là $R=\\dfrac{25}{8} cm$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000519",
+  "loai": "trac_nghiem",
+  "de": "Phần không gạch chéo (không kể các đường thẳng) ở hình sau đây là biểu diễn miền nghiệm của hệ bất phương trình nào trong các hệ bất phương trình sau?",
+  "lua_chon": [
+   "$\\begin{cases} y>0 \\\\ 3x+2y<6 \\end{cases}$.",
+   "$\\begin{cases} x>0 \\\\ 3x+2y<6 \\end{cases}$.",
+   "$\\begin{cases} y>0 \\\\ 3x+2y<-6 \\end{cases}$.",
+   "$\\begin{cases} x>0 \\\\ 3x+2y>-6 \\end{cases}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mỗi đường biên của miền ứng với một bất phương trình, và dùng điểm thử không nằm trên đường biên để biết miền nằm phía nào.\n**Bước 1.** Đọc hình để viết phương trình hai đường biên: trục $Ox$ và đường thẳng cắt hai trục tại hai điểm có toạ độ ghi trên hình.\n**Bước 2.** Xác định phía không gạch của từng đường biên: so với trục $Ox$, và so với đường thẳng bằng một điểm thử.\n**Bước 3.** Đối chiếu với từng hệ, chú ý miền còn kéo sang phía $x<0$ nên hệ có $x>0$ không phù hợp.\n**Phần 2. Trình bày**\nĐường thẳng qua $(0;3)$ và $(2;0)$ có phương trình $3x+2y=6$; đường biên còn lại là trục $Ox$: $y=0$.\nMiền không gạch nằm phía trên trục $Ox$ nên $y>0$.\nLấy điểm $(-1 …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000588",
+  "loai": "tu_luan",
+  "de": "Cho hai tập khác rỗng $A=(m-1;4]$, $B=(-2;2m+2)$ với $m\\in\\mathbb{R}$. Có bao nhiêu giá trị nguyên của tham số $m$ để $A\\cap B\\ne\\varnothing$?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai khoảng có giao khác rỗng khi đầu mút trái lớn hơn của chúng nhỏ hơn đầu mút phải nhỏ hơn.\n**Bước 1.** Dùng giả thiết hai tập khác rỗng để viết điều kiện đầu mút trái nhỏ hơn đầu mút phải của từng tập.\n**Bước 2.** Viết điều kiện để giao khác rỗng: so từng đầu mút trái của một tập với đầu mút phải của tập kia.\n**Bước 3.** Kết hợp các điều kiện trên trục số rồi đếm các số nguyên $m$ thoả mãn.\n**Phần 2. Trình bày**\n$A\\ne\\varnothing\\Leftrightarrow m-1<4\\Leftrightarrow m<5$.\n$B\\ne\\varnothing\\Leftrightarrow2m+2>-2\\Leftrightarrow m>-2$.\n$A\\cap B\\ne\\varnothing\\Leftrightarrow\\begin{cases}m-1<2m+2\\\\-2<4\\end{cases}$.\n$\\Leftrightarrow m>-3$.\nKết hợp ba điều kiện đư …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000544",
+  "loai": "trac_nghiem",
+  "de": "Trong các câu sau, câu nào là mệnh đề đúng?",
+  "lua_chon": [
+   "Nếu $a\\ge b$ thì $a^2\\ge b^2$.",
+   "Nếu $a$ chia hết cho $9$ thì $a$ chia hết cho $3$.",
+   "Nếu em chăm chỉ thì em thành công.",
+   "Nếu một tam giác có một góc bằng $60^\\circ$ thì tam giác đó đều."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mệnh đề đúng là mệnh đề có tính đúng sai xác định và đúng trong mọi trường hợp, nên mỗi phương án phải được thử bằng phản ví dụ.\n**Bước 1.** Với phương án A và D, thử các giá trị đặc biệt như số âm, tam giác không đều có góc $60^\\circ$.\n**Bước 2.** Với phương án B, dùng quan hệ chia hết giữa $9$ và $3$ để lập luận.\n**Bước 3.** Với phương án C, xét xem câu có tính đúng sai rõ ràng như một mệnh đề toán học hay không.\n**Phần 2. Trình bày**\nPhương án A: chọn $a=-1$, $b=-2$ thì $a\\ge b$ nhưng $a^2=1<b^2=4$, nên mệnh đề sai.\nPhương án B: nếu $a=9k$ thì $a=3\\cdot(3k)$ chia hết cho $3$, nên mệnh đề đúng.\nPhương án C: câu này không có tính đúng sai xác định (phụ th …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000539",
+  "loai": "trac_nghiem",
+  "de": "Trong các mệnh đề sau, mệnh đề nào đúng?",
+  "lua_chon": [
+   "Hình vuông là hình thoi có hai đường chéo bằng nhau.",
+   "Ba đường trung tuyến của một tam giác cắt nhau tại trung điểm mỗi đường.",
+   "Tâm đường tròn nội tiếp của tam giác vuông là trung điểm của cạnh huyền.",
+   "Ba đường cao tam giác đồng quy tại một điểm nằm trong tam giác."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** cần đối chiếu từng khẳng định hình học với định nghĩa và tính chất chuẩn của hình, rồi chọn khẳng định không có ngoại lệ.\n**Bước 1.** Với phương án A, nhớ định nghĩa hình vuông là hình thoi có thêm tính chất về hai đường chéo.\n**Bước 2.** Với phương án B và D, nhớ vị trí giao điểm của ba đường trung tuyến và của ba đường cao trong tam giác bất kì.\n**Bước 3.** Với phương án C, phân biệt đường tròn nội tiếp (tiếp xúc ba cạnh) với đường tròn ngoại tiếp (đi qua ba đỉnh).\n**Phần 2. Trình bày**\nPhương án A: hình vuông có bốn cạnh bằng nhau nên là hình thoi, và hai đường chéo bằng nhau, nên mệnh đề đúng.\nPhương án B: ba đường trung tuyến cắt nhau tại trọng tâm, đ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110030203056",
+  "loai": "tra_loi_ngan",
+  "de": "Các góc nhìn đến đỉnh núi so với mực nước biển được đo từ hai đèn tín hiệu $A$ và $B$ trên biển được thể hiện trên hình vẽ. Nếu các đèn tín hiệu cách nhau $1536 \\mathrm{m}$ thì ngọn núi cao bao nhiêu $m$? (làm tròn kết quả đến hàng đơn vị)?\n[hình]",
+  "dap_an": "2132",
+  "loi_giai": "Gọi $h = TN$ là chiều cao của ngọn núi so với mực nước biển.\nTrong tam giác $TAN$ vuông tại $N$ , ta có:\n$AN = \\dfrac{h}{\\tan \\widehat{TAN}} = \\dfrac{h}{\\tan 27,4^{\\circ}}$.\nTrong tam giác $TBN$ vuông tại $N$ , ta có:\n$BN = \\dfrac{h}{\\tan \\widehat{TBN}} = \\dfrac{h}{\\tan 39,6^{\\circ}}$.\nVì ba điểm $A,B,N$ thẳng hàng và $B$ nằm giữa $A$ và $N$ nên:\n$AB = AN - BN \\Leftrightarrow 1536 = \\dfrac{h}{\\tan 27,4^{\\circ}} - \\dfrac{h}{\\tan 39,6^{\\circ}} = h\\left(\\dfrac{1}{\\tan 27,4^{\\circ}} - \\dfrac{1}{\\tan 39,6^{\\circ}}\\right)$.\nSuy ra:\n$h = \\dfrac{1536}{\\dfrac{1}{\\tan 27,4^{\\circ}} - \\dfrac{1}{\\tan 39,6^{\\circ}}} \\approx \\dfrac{1536}{1,929186 - 1,208799} \\approx 2132,19 \\ (\\mathrm{m})$.\nLàm tròn kết q …",
+  "co_hinh": true,
+  "nhan_cu": "Hệ thức lượng trong tam giác › Giải tam giác và bài toán thực tế áp dụng định lý sin"
+ },
+ {
+  "ma_cau": "T110000000694",
+  "loai": "trac_nghiem",
+  "de": "Cho bảng số liệu ghi lại điểm của $40$ học sinh trong bài kiểm tra một tiết môn Toán: điểm $3;4;5;6;7;8;9;10$ với số học sinh tương ứng là $2;3;7;18;3;2;4;1$ (cộng $40$). Số trung vị là",
+  "lua_chon": [
+   "$7$.",
+   "$6{,}5$.",
+   "$6$.",
+   "$5$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** cỡ mẫu chẵn nên trung vị là trung bình cộng của hai giá trị đứng giữa khi sắp xếp mẫu theo thứ tự không giảm.\n**Bước 1.** Xác định cỡ mẫu và vị trí của hai giá trị đứng giữa trong mẫu đã sắp xếp.\n**Bước 2.** Cộng dồn tần số từ điểm nhỏ nhất để xem hai vị trí đó rơi vào giá trị nào.\n**Bước 3.** Lấy trung bình cộng hai giá trị đó rồi chọn phương án.\n**Phần 2. Trình bày**\nCỡ mẫu $n=40$ chẵn nên trung vị là trung bình cộng của giá trị thứ $20$ và thứ $21$.\nTần số cộng dồn: điểm $3$ có $2$ bài, đến điểm $4$ có $5$ bài, đến điểm $5$ có $12$ bài, đến điểm $6$ có $30$ bài.\nVì $12<20<21\\le30$ nên giá trị thứ $20$ và thứ $21$ đều bằng $6$.\nTrung vị: $M_e=\\dfrac{6+6} …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000518",
+  "loai": "trac_nghiem",
+  "de": "Cho góc $\\alpha\\in\\left(90^\\circ;180^\\circ\\right)$. Mệnh đề nào sau đây là mệnh đề **đúng**?",
+  "lua_chon": [
+   "$\\cos\\alpha>0$.",
+   "$\\tan\\alpha>0$.",
+   "$\\sin\\alpha>0$.",
+   "$\\cot\\alpha>0$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** dấu của giá trị lượng giác phụ thuộc vị trí điểm biểu diễn góc trên nửa đường tròn đơn vị.\n**Bước 1.** Với góc từ $90^\\circ$ đến $180^\\circ$, điểm biểu diễn nằm ở góc phần tư thứ hai nên hoành độ âm, tung độ dương.\n**Bước 2.** Nhớ rằng $\\cos\\alpha$ là hoành độ, $\\sin\\alpha$ là tung độ của điểm đó.\n**Bước 3.** Suy dấu của $\\tan\\alpha$, $\\cot\\alpha$ từ thương của $\\sin\\alpha$ và $\\cos\\alpha$.\n**Phần 2. Trình bày**\nVới $90^\\circ<\\alpha<180^\\circ$: $\\sin\\alpha>0$ và $\\cos\\alpha<0$.\nDo đó $\\tan\\alpha=\\dfrac{\\sin\\alpha}{\\cos\\alpha}<0$ và $\\cot\\alpha=\\dfrac{\\cos\\alpha}{\\sin\\alpha}<0$.\nChỉ có $\\sin\\alpha>0$ đúng.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000721",
+  "loai": "tra_loi_ngan",
+  "de": "Tiền lương hàng tháng của $7$ nhân viên trong một công ty du lịch là: $650,\\ 840,\\ 690,\\ 720,\\ 2500,\\ 670,\\ 3000$ (đơn vị: nghìn đồng). Tìm số trung vị của mẫu trên.",
+  "dap_an": "720",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** sắp xếp mẫu theo thứ tự tăng dần rồi lấy giá trị đứng giữa vì số phần tử là số lẻ.\n**Bước 1.** Sắp xếp $7$ giá trị theo thứ tự không giảm.\n**Bước 2.** Vì số phần tử lẻ nên trung vị là phần tử đứng chính giữa, xác định vị trí của nó.\n**Bước 3.** Đọc giá trị tại vị trí đó và ghi kèm đơn vị.\n**Phần 2. Trình bày**\nSắp xếp tăng dần: $650;\\ 670;\\ 690;\\ 720;\\ 840;\\ 2500;\\ 3000$.\nMẫu có $n=7$ phần tử, trung vị là phần tử thứ $4$ nên $Q_2=720$.\nVậy số trung vị của mẫu là $720$ nghìn đồng.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000552",
+  "loai": "trac_nghiem",
+  "de": "Cho tập hợp $A=\\{x\\in\\mathbb{R}\\mid|x|<3\\}$. Tìm khẳng định đúng.",
+  "lua_chon": [
+   "$A=\\{-2;-1;0;1;2\\}$.",
+   "$A=\\{-3;-2;-1;0;1;2;3\\}$.",
+   "$A=(-3;3)$.",
+   "$A=\\{0;1;2\\}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** bất phương trình $|x|<3$ tương đương với một khoảng trên tập số thực, không phải tập hữu hạn các số nguyên.\n**Bước 1.** Đổi bất phương trình có giá trị tuyệt đối thành hai bất đẳng thức không có giá trị tuyệt đối.\n**Bước 2.** Biểu diễn tập nghiệm trên $\\mathbb{R}$ bằng khoảng hoặc đoạn, chú ý đầu mút có thuộc tập hay không.\n**Bước 3.** Đối chiếu với các phương án, nhớ rằng $x$ chạy trên tập số thực chứ không chỉ trên tập số nguyên.\n**Phần 2. Trình bày**\n$|x|<3\\Leftrightarrow-3<x<3$.\nVì $x\\in\\mathbb{R}$ nên $A=(-3;3)$.\nCác phương án A, B, D là tập hữu hạn nên không bằng $A$.\nVậy khẳng định đúng là $A=(-3;3)$.\nChọn C.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000396",
+  "loai": "trac_nghiem",
+  "de": "Một người quan sát đứng cách một cái tháp $10 m$, nhìn thẳng cái tháp dưới một góc $55^\\circ$và được phân tích như trong hình. Chiều cao của tháp xấp xỉ bao nhiêu?",
+  "lua_chon": [
+   "$67 m$.",
+   "$24 m$.",
+   "$16 m$.",
+   "$12 m$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Gọi $E$ là vị trí mắt người quan sát, $EH$ là đường nằm ngang (nét đứt trên hình) cắt tháp tại điểm $H$.\nTheo hình vẽ, tia nhìn lên đỉnh tháp tạo với $EH$ góc $40^\\circ$, tia nhìn xuống chân tháp tạo với $EH$ góc $15^\\circ$; tổng hai góc này đúng bằng $40^\\circ+15^\\circ=55^\\circ$ như đề bài cho.\nKhoảng cách ngang từ mắt người quan sát đến tháp là $EH=10$ m.\nPhần tháp nằm phía trên đường nằm ngang có chiều cao\n$h_{1}=EH\\cdot \\tan 40^\\circ=10\\cdot \\tan 40^\\circ\\approx 8,39 \\left(m\\right).$\nPhần tháp nằm phía dưới đường nằm ngang có chiều cao\n$h_{2}=EH\\cdot \\tan 15^\\circ=10\\cdot \\tan 15^\\circ\\approx 2,68 \\left(m\\right).$\nDo đó chiều cao của tháp là\n$h=h_{1}+h_{2}\\approx 8,39+2,68=11,07 \\left(m\\ …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110010204092",
+  "loai": "tra_loi_ngan",
+  "de": "Trong cuộc thi FLASHMOB do Đoàn trường THPT Nguyễn Thị Minh Khai tổ chức. Lớp 10A1 có $15$ bạn tham gia nhảy bài thứ nhất, $11$ bạn tham gia nhảy bài thứ hai trong đó có $5$ bạn tham gia nhảy cả hai bài, biết có $20$ bạn không tham gia nhảy. Hỏi lớp 10A1 có bao nhiêu học sinh?",
+  "dap_an": "41",
+  "loi_giai": "Gọi $A$ là tập hợp các học sinh tham gia nhảy bài thứ nhất, $B$ là tập hợp các học sinh tham gia nhảy bài thứ hai.\nTheo giả thiết, ta có $|A|=15$, $|B|=11$ và $|A\\cap B|=5$.\nSố học sinh tham gia nhảy ít nhất một bài là\n$|A\\cup B|=|A|+|B|-|A\\cap B|=15+11-5=21.$\nVì có $20$ học sinh không tham gia nhảy nên tổng số học sinh của lớp 10A1 là\n$21+20=41 \\left(\\text{hoc sinh}\\right).$",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Bài toán thực tế tập hợp (2 Yếu tố)"
+ },
+ {
+  "ma_cau": "T110000000473",
+  "loai": "trac_nghiem",
+  "de": "Hãy liệt kê các phần tử của tập hợp $X=\\{x\\in\\mathbb{Z}\\mid 2x^2-3x+1=0\\}$.",
+  "lua_chon": [
+   "$X=\\{0\\}$.",
+   "$X=\\{1\\}$.",
+   "$X=\\left\\{1;\\dfrac{1}{2}\\right\\}$.",
+   "$X=\\left\\{1;\\dfrac{3}{2}\\right\\}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** phần tử của $X$ phải vừa là nghiệm của phương trình vừa là số nguyên.\n**Bước 1.** Giải phương trình bậc hai đã cho bằng cách phân tích thành nhân tử hoặc dùng biệt thức.\n**Bước 2.** Liệt kê các nghiệm tìm được rồi đối chiếu với điều kiện $x\\in\\mathbb{Z}$.\n**Bước 3.** Chỉ giữ lại các nghiệm là số nguyên để viết tập $X$.\n**Phần 2. Trình bày**\nTa có $2x^2-3x+1=0$\n$\\Leftrightarrow (x-1)(2x-1)=0$\n$\\Leftrightarrow x=1$ hoặc $x=\\dfrac{1}{2}$.\nVì $x\\in\\mathbb{Z}$ nên loại $x=\\dfrac{1}{2}$.\nVậy $X=\\{1\\}$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000530",
+  "loai": "tu_luan",
+  "de": "(1 điểm) Hãy biểu diễn miền nghiệm của bất phương trình $2x+y<1$ trên mặt phẳng tọa độ.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** miền nghiệm của bất phương trình bậc nhất hai ẩn là một nửa mặt phẳng bờ là đường thẳng ứng với phương trình tương ứng.\n**Bước 1.** Vẽ đường thẳng biên bằng cách tìm hai giao điểm với hai trục toạ độ, và vẽ nét đứt vì bất đẳng thức là ngặt.\n**Bước 2.** Chọn một điểm không nằm trên đường biên để thử vào bất phương trình.\n**Bước 3.** Tô nửa mặt phẳng chứa điểm thử nếu thoả, không chứa điểm thử nếu không thoả, và nhớ biên không thuộc miền.\n**Phần 2. Trình bày**\nVẽ đường thẳng $d: 2x+y=1$ đi qua hai điểm $\\left(\\dfrac{1}{2};0\\right)$ và $(0;1)$; vẽ nét đứt vì dấu bất đẳng thức là $<$.\nLấy điểm $O(0;0)$ không nằm trên $d$: $2\\cdot 0+0=0<1$ đúng.\nVậy miền nghiệm …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000550",
+  "loai": "trac_nghiem",
+  "de": "Cho hai tập hợp $A=\\{1;2;3;4\\}$, $B=\\{2;6;7;8\\}$. Tìm $A\\cup B$.",
+  "lua_chon": [
+   "$A\\cup B=\\{1;2;3;4;6;7;8\\}$.",
+   "$A\\cup B=\\{2\\}$.",
+   "$A\\cup B=\\{1;3;4\\}$.",
+   "$A\\cup B=\\{6;7;8\\}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hợp của hai tập hợp gồm tất cả các phần tử thuộc ít nhất một trong hai tập, mỗi phần tử chỉ viết một lần.\n**Bước 1.** Liệt kê các phần tử của tập $A$ rồi các phần tử của tập $B$.\n**Bước 2.** Gộp các phần tử lại và loại phần tử trùng nhau để chỉ viết một lần.\n**Bước 3.** Sắp xếp theo thứ tự tăng dần rồi đối chiếu với các phương án.\n**Phần 2. Trình bày**\nCác phần tử của $A$ là $1;2;3;4$ và của $B$ là $2;6;7;8$.\nPhần tử $2$ thuộc cả hai tập nên chỉ viết một lần.\nVậy $A\\cup B=\\{1;2;3;4;6;7;8\\}$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000793",
+  "loai": "tra_loi_ngan",
+  "de": "Cho tập hợp $A=\\{x\\in\\mathbb{R}:(2x-11)(x^2+3)\\le0\\}$. Tập hợp $A\\cap\\mathbb{N}$ có bao nhiêu phần tử?",
+  "dap_an": "6",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** rút gọn điều kiện của $x$ bằng cách nhận xét dấu của thừa số luôn dương, rồi đếm các số tự nhiên thỏa điều kiện.\n**Bước 1.** Xét dấu thừa số $x^2+3$ với mọi số thực $x$ để đưa bất phương trình về dạng đơn giản.\n**Bước 2.** Giải bất phương trình bậc nhất còn lại để biết $A$ là khoảng nào.\n**Bước 3.** Liệt kê các số tự nhiên thuộc $A$ (nhớ $0$ thuộc $\\mathbb{N}$) và đếm.\n**Phần 2. Trình bày**\nVì $x^2+3>0$ với mọi $x$ nên $(2x-11)(x^2+3)\\le0\\Leftrightarrow 2x-11\\le0\\Leftrightarrow x\\le\\dfrac{11}{2}$.\nDo đó $A=\\left(-\\infty;\\dfrac{11}{2}\\right]$.\nCác số tự nhiên thuộc $A$ là $0;1;2;3;4;5$, nên $A\\cap\\mathbb{N}=\\{0;1;2;3;4;5\\}$ có $6$ phần tử.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000789",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\triangle ABC$ có $AB=6$; $C=30^\\circ$. Tính bán kính $R$ đường tròn ngoại tiếp $\\triangle ABC$?",
+  "lua_chon": [
+   "6",
+   "3",
+   "12",
+   "8."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tỉ số giữa một cạnh và sin góc đối diện bằng đường kính đường tròn ngoại tiếp.\n**Bước 1.** Xác định góc đối diện với cạnh $AB$ đã cho.\n**Bước 2.** Viết hệ thức của định lí sin liên hệ cạnh, góc đối diện và $R$.\n**Bước 3.** Thay giá trị $\\sin30^\\circ$ rồi rút $R$.\n**Phần 2. Trình bày**\nCạnh $AB$ đối diện với góc $C$. Theo định lí sin: $\\dfrac{AB}{\\sin C}=2R$.\nSuy ra $R=\\dfrac{AB}{2\\sin C}=\\dfrac{6}{2\\cdot\\dfrac12}=6$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000745",
+  "loai": "trac_nghiem",
+  "de": "Rút gọn biểu thức $S=\\cos(90^\\circ-x)\\sin(180^\\circ-x)-\\sin(90^\\circ-x)\\cos(180^\\circ-x)$ ta được:",
+  "lua_chon": [
+   "$S=0$.",
+   "$S=\\sin^2x-\\cos^2x$.",
+   "$S=2\\sin x\\cos x$.",
+   "$S=1$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** dùng công thức giá trị lượng giác của hai góc phụ nhau và hai góc bù nhau để đưa mọi thừa số về $\\sin x$, $\\cos x$.\n**Bước 1.** Nhớ các công thức của góc phụ: $\\cos(90^\\circ-x)$ và $\\sin(90^\\circ-x)$ chuyển thành hàm đối của góc $x$.\n**Bước 2.** Nhớ công thức góc bù: $\\sin(180^\\circ-x)$ và $\\cos(180^\\circ-x)$ theo $\\sin x$, $\\cos x$.\n**Bước 3.** Thay vào biểu thức, rút gọn rồi dùng hằng đẳng thức $\\sin^2x+\\cos^2x=1$.\n**Phần 2. Trình bày**\nTa có $\\cos(90^\\circ-x)=\\sin x$, $\\sin(180^\\circ-x)=\\sin x$, $\\sin(90^\\circ-x)=\\cos x$, $\\cos(180^\\circ-x)=-\\cos x$.\n$S=\\sin x\\cdot\\sin x-\\cos x\\cdot(-\\cos x)$\n$S=\\sin^2x+\\cos^2x=1$\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000507",
+  "loai": "tra_loi_ngan",
+  "de": "Lớp $10B$ có $36$ học sinh giỏi từ một đến ba môn: Toán, Văn, Anh. Lớp có $4$ học sinh giỏi cả ba môn. Số học sinh trong lớp giỏi Toán, Văn, Anh lần lượt là $18$, $20$ và $22$ học sinh. Hỏi có bao nhiêu học sinh trong lớp chỉ giỏi một môn?",
+  "dap_an": "16",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** chia học sinh thành ba nhóm theo số môn giỏi (một môn, hai môn, ba môn) rồi lập hai phương trình từ tổng số học sinh và tổng số lượt giỏi.\n**Bước 1.** Gọi $x$ là số học sinh chỉ giỏi một môn và $y$ là số học sinh giỏi đúng hai môn.\n**Bước 2.** Lập phương trình tổng số học sinh: nhóm một môn, hai môn và ba môn cộng lại bằng $36$.\n**Bước 3.** Lập phương trình tổng số lượt giỏi: mỗi học sinh một môn tính một lượt, hai môn tính hai lượt, ba môn tính ba lượt, bằng $18+20+22$.\n**Bước 4.** Giải hệ hai phương trình và đọc kết quả của $x$.\n**Phần 2. Trình bày**\nGọi $x$ là số học sinh chỉ giỏi một môn, $y$ là số học sinh giỏi đúng hai môn.\nTổng số học sinh: $x+y+4=3 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000462",
+  "loai": "tra_loi_ngan",
+  "de": "Cho phát biểu \"$\\forall x\\in\\mathbb{R}$, $x^2-10x\\le0$\". Có bao nhiêu giá trị nguyên dương của $x$ để phát biểu đã cho là mệnh đề đúng?",
+  "dap_an": "10",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mệnh đề chứa biến chỉ đúng với những giá trị $x$ làm bất đẳng thức đúng, nên cần tìm điều kiện của $x$ nguyên dương rồi đếm.\n**Bước 1.** Hiểu đề là tìm các giá trị nguyên dương $x$ làm cho bất đẳng thức $x^2-10x\\le0$ đúng.\n**Bước 2.** Phân tích vế trái thành nhân tử $x(x-10)$, dùng $x>0$ để chia hai vế cho $x$ mà không đổi chiều.\n**Bước 3.** Liệt kê các số nguyên dương thoả điều kiện vừa tìm rồi đếm.\n**Phần 2. Trình bày**\nVới $x$ nguyên dương thì $x>0$.\n$x^2-10x\\le0$.\n$\\Leftrightarrow x(x-10)\\le0$.\n$\\Leftrightarrow x-10\\le0$ (chia hai vế cho $x>0$).\n$\\Leftrightarrow x\\le10$.\nCác số nguyên dương thoả mãn là $1;2;3;\\ldots;10$, có $10$ giá trị.\nVậy có $10$ gi …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110010201091",
+  "loai": "trac_nghiem",
+  "de": "Cho hai tập hợp $A$ và $B$. Hình nào sau đây minh họa $A$ là tập con của $B$?",
+  "lua_chon": [
+   "Hình A.",
+   "Hình B.",
+   "Hình C.",
+   "Hình D."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Tập hợp $A$ là tập con của tập hợp $B$ ($A\\subset B$) khi mọi phần tử của $A$ đều thuộc $B$.\nTrên sơ đồ Ven, hình biểu diễn tập hợp $A$ nằm trọn vẹn bên trong hình biểu diễn tập hợp $B$.\nQuan sát các hình vẽ:\n- Hình A: Tập hợp $A$ nằm hoàn toàn bên trong tập hợp $B$, minh họa $A\\subset B$.\n- Hình B: Tập hợp $B$ nằm hoàn toàn bên trong tập hợp $A$, minh họa $B\\subset A$.\n- Hình C và Hình D: Hai tập hợp giao nhau hoặc rời nhau.\nVậy Hình A minh họa $A$ là tập con của $B$.",
+  "co_hinh": true,
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Tập hợp và các phần tử của tập hợp. Tập con"
+ },
+ {
+  "ma_cau": "T110000000664",
+  "loai": "tu_luan",
+  "de": "Cho $\\tan\\alpha=3$. Tính giá trị biểu thức $P=\\dfrac{4\\sin^2\\alpha-3\\cos^2\\alpha}{1+2\\sin^2\\alpha}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** chia cả tử và mẫu cho $\\cos^2\\alpha$ để đưa biểu thức về $\\tan\\alpha$, chú ý số $1$ ở mẫu cần viết lại qua $\\tan^2\\alpha$.\n**Bước 1.** Chia tử và mẫu cho $\\cos^2\\alpha$ ($\\cos\\alpha\\ne 0$ vì $\\tan\\alpha$ xác định).\n**Bước 2.** Thay $\\dfrac{1}{\\cos^2\\alpha}$ bằng $1+\\tan^2\\alpha$ để mẫu chỉ còn $\\tan\\alpha$.\n**Bước 3.** Thay $\\tan\\alpha$ vào, tính tử và mẫu rồi rút gọn phân số.\n**Phần 2. Trình bày**\nVì $\\tan\\alpha$ xác định nên $\\cos\\alpha\\ne 0$. Chia cả tử và mẫu cho $\\cos^2\\alpha$:\n$P=\\dfrac{4\\tan^2\\alpha-3}{\\dfrac{1}{\\cos^2\\alpha}+2\\tan^2\\alpha}$.\nÁp dụng $\\dfrac{1}{\\cos^2\\alpha}=1+\\tan^2\\alpha$: $P=\\dfrac{4\\tan^2\\alpha-3}{1+3\\tan^2\\alpha}$.\nThay $\\tan\\a …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000654",
+  "loai": "trac_nghiem",
+  "de": "Hai chiếc tàu thuỷ cùng xuất phát từ vị trí $A$, đi thẳng theo hai hướng tạo với nhau một góc $60^\\circ$. Tàu thứ nhất chạy với tốc độ $30\\ \\text{km/h}$, tàu thứ hai chạy với tốc độ $40\\ \\text{km/h}$. Hỏi sau $2$ giờ hai tàu cách nhau bao nhiêu $\\text{km}$?",
+  "lua_chon": [
+   "$13$.",
+   "$20\\sqrt{13}$.",
+   "$10\\sqrt{13}$.",
+   "$15$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** sau $2$ giờ hai tàu cùng với $A$ tạo thành tam giác biết hai cạnh và góc xen giữa nên dùng định lí côsin.\n**Bước 1.** Tính quãng đường mỗi tàu đi được sau $2$ giờ bằng tốc độ nhân thời gian, đó chính là hai cạnh xuất phát từ $A$.\n**Bước 2.** Gọi $B$, $C$ là vị trí hai tàu và viết định lí côsin cho cạnh $BC$ với góc xen giữa $60^\\circ$.\n**Bước 3.** Tính $BC^2$, lấy căn bậc hai và rút gọn về dạng khớp với phương án.\n**Phần 2. Trình bày**\nSau $2$ giờ, tàu thứ nhất đi được $AB=30\\cdot 2=60$ (km), tàu thứ hai đi được $AC=40\\cdot 2=80$ (km), và $\\widehat{BAC}=60^\\circ$.\nTheo định lí côsin: $BC^2=AB^2+AC^2-2\\cdot AB\\cdot AC\\cdot\\cos 60^\\circ$.\nThay số: $BC^2=60^2 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000797",
+  "loai": "tu_luan",
+  "de": "Ở giữa hồ Hoàn Kiếm có một Tháp Rùa. Để tính khoảng cách từ điểm $A$ là Tháp Rùa đến điểm $B$ trên bờ hồ, người ta chọn điểm $C$. Sau đó thực hiện đo các góc $B$, $C$ và khoảng cách $BC$. Biết rằng $B=68^\\circ$, $C=75^\\circ$ và $BC=50\\,\\text{m}$, tính khoảng cách từ $A$ đến $B$ (làm tròn kết quả đến hàng đơn vị).",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** biết một cạnh và hai góc kề thì tính góc còn lại rồi dùng định lí sin để tìm cạnh cần đo, không dùng số đã làm tròn để tính tiếp.\n**Bước 1.** Xác định tam giác $ABC$ với các cạnh và góc đề cho, nêu cạnh cần tìm là $AB$.\n**Bước 2.** Tính góc $A$ bằng tổng ba góc của tam giác.\n**Bước 3.** Viết định lí sin liên hệ cạnh $AB$ với góc $C$ đối diện và cạnh $BC$ với góc $A$ đối diện.\n**Bước 4.** Rút $AB$, tính bằng máy tính rồi làm tròn ở kết quả cuối.\n**Phần 2. Trình bày**\nTrong $\\triangle ABC$ có $A=180^\\circ-68^\\circ-75^\\circ=37^\\circ$.\nTheo định lí sin: $\\dfrac{AB}{\\sin C}=\\dfrac{BC}{\\sin A}$.\nSuy ra $AB=\\dfrac{BC\\cdot\\sin C}{\\sin A}=\\dfrac{50\\cdot\\sin75^\\circ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000491",
+  "loai": "trac_nghiem",
+  "de": "Mệnh đề \"$\\forall x\\in\\mathbb{Q},\\ x^2>\\dfrac{1}{x}$\" có mệnh đề phủ định là",
+  "lua_chon": [
+   "\"$\\exists x\\in\\mathbb{Q},\\ x^2>\\dfrac{1}{x}$\".",
+   "\"$\\exists x\\notin\\mathbb{Q},\\ x^2<\\dfrac{1}{x}$\".",
+   "\"$\\forall x\\in\\mathbb{Q},\\ x^2\\le\\dfrac{1}{x}$\".",
+   "\"$\\exists x\\in\\mathbb{Q},\\ x^2\\le\\dfrac{1}{x}$\"."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** phủ định của mệnh đề có lượng từ \"với mọi\" là mệnh đề có lượng từ \"tồn tại\" và bất đẳng thức đổi sang chiều ngược lại (có cả dấu bằng).\n**Bước 1.** Nhận ra mệnh đề gốc có lượng từ $\\forall$ và tập xác định của biến là $\\mathbb{Q}$.\n**Bước 2.** Đổi lượng từ $\\forall$ thành $\\exists$ nhưng giữ nguyên tập $\\mathbb{Q}$ của biến.\n**Bước 3.** Phủ định bất đẳng thức $>$ thành $\\le$ rồi đối chiếu với các phương án.\n**Phần 2. Trình bày**\nPhủ định của \"$\\forall x\\in\\mathbb{Q},\\ P(x)$\" là \"$\\exists x\\in\\mathbb{Q},\\ \\overline{P(x)}$\".\nPhủ định của $x^2>\\dfrac{1}{x}$ là $x^2\\le\\dfrac{1}{x}$.\nVậy mệnh đề phủ định là \"$\\exists x\\in\\mathbb{Q},\\ x^2\\le\\dfrac{1}{x}$\".\nChọn  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000535",
+  "loai": "trac_nghiem",
+  "de": "Cách phát biểu nào sau đây **không thể** dùng để phát biểu mệnh đề: $A\\Rightarrow B$.",
+  "lua_chon": [
+   "Nếu $A$ thì $B$.",
+   "$A$ kéo theo $B$.",
+   "$A$ là điều kiện đủ để có $B$.",
+   "$A$ là điều kiện cần để có $B$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** với mệnh đề kéo theo $A\\Rightarrow B$, $A$ đóng vai trò điều kiện đủ còn $B$ đóng vai trò điều kiện cần, nên phải xét đúng chiều của điều kiện.\n**Bước 1.** Nhớ các cách đọc chuẩn của mệnh đề kéo theo: \"nếu … thì …\", \"kéo theo\", \"điều kiện đủ\", \"điều kiện cần\".\n**Bước 2.** Xác định mệnh đề nào là điều kiện đủ, mệnh đề nào là điều kiện cần trong $A\\Rightarrow B$.\n**Bước 3.** So sánh từng phương án với cách đọc chuẩn để tìm phương án nói ngược chiều.\n**Phần 2. Trình bày**\nMệnh đề $A\\Rightarrow B$ đọc là \"nếu $A$ thì $B$\", hoặc \"$A$ kéo theo $B$\", hoặc \"$A$ là điều kiện đủ để có $B$\", hoặc \"$B$ là điều kiện cần để có $A$\".\nPhương án A, B, C đều là cách phát bi …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110030203025",
+  "loai": "trac_nghiem",
+  "de": "Cho tam giác $ABC$ có $\\hat{A} = 30^\\circ, \\hat{B} = 105^\\circ$ và bán kính đường tròn ngoại tiếp $R = 2$. Tính độ dài cạnh $AB$?",
+  "lua_chon": [
+   "$AB = 2\\sqrt{2}$",
+   "$\\text{AB} = \\sqrt{2}$",
+   "$\\text{AB} = 1$",
+   "$\\text{AB} = 2"
+  ],
+  "dap_an": "A",
+  "loi_giai": "Trong tam giác $ABC$ ta có\n$\\hat{C} = 180^\\circ - \\hat{A} - \\hat{B} = 180^\\circ - 30^\\circ - 105^\\circ = 45^\\circ$.\nCạnh $AB$ đối diện với góc $C$ nên theo định lí sin\n$\\dfrac{AB}{\\sin C} = 2R \\Rightarrow AB = 2R\\sin C = 2 \\cdot 2 \\cdot \\sin 45^\\circ = 4 \\cdot \\dfrac{\\sqrt{2}}{2} = 2\\sqrt{2}$.\nVậy $AB = 2\\sqrt{2}$.",
+  "nhan_cu": "Hệ thức lượng trong tam giác › Giải tam giác và bài toán thực tế áp dụng định lý sin"
+ },
+ {
+  "ma_cau": "T110000000551",
+  "loai": "trac_nghiem",
+  "de": "Cho hai tập hợp $A=\\{n\\in\\mathbb{N}\\mid n<6\\}$, $B=\\{1;2\\}$. Tìm $C_AB$.",
+  "lua_chon": [
+   "$C_BA=\\{0;3;4;5;6\\}$.",
+   "$C_AB=\\{0;3;4;5\\}$.",
+   "$C_BA=\\{3;4;5\\}$.",
+   "$C_AB=\\{3;4;5;6\\}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** phần bù $C_AB$ chỉ có nghĩa khi $B\\subset A$ và bằng tập các phần tử của $A$ không thuộc $B$.\n**Bước 1.** Liệt kê các phần tử của $A$ từ điều kiện $n\\in\\mathbb{N}$ và $n<6$.\n**Bước 2.** Kiểm tra $B\\subset A$ để biết phần bù $C_AB$ có nghĩa.\n**Bước 3.** Lấy các phần tử của $A$ không thuộc $B$ rồi đối chiếu với các phương án, chú ý phương án nào viết $C_AB$ và không chứa số $6$.\n**Phần 2. Trình bày**\n$A=\\{0;1;2;3;4;5\\}$ vì $n\\in\\mathbb{N}$ và $n<6$.\n$B=\\{1;2\\}\\subset A$ nên $C_AB=A\\setminus B$.\nVậy $C_AB=\\{0;3;4;5\\}$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000478",
+  "loai": "trac_nghiem",
+  "de": "Trong mặt phẳng $Oxy$, nửa mặt phẳng không bị gạch chéo (không kể bờ) trong hình vẽ là miền nghiệm của bất phương trình nào?",
+  "lua_chon": [
+   "$3x-2y<-6$.",
+   "$3x-2y>-6$.",
+   "$3x-2y>0$.",
+   "$3x-2y<0$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** lập phương trình đường biên từ hai giao điểm với các trục, rồi dùng điểm thử để biết nửa mặt phẳng không gạch ứng với dấu nào.\n**Bước 1.** Đọc trên hình hai điểm mà đường biên cắt hai trục toạ độ.\n**Bước 2.** Lập phương trình đường thẳng đi qua hai điểm đó và đưa về dạng $3x-2y=c$.\n**Bước 3.** Chọn điểm thử nằm trong phần không gạch (gốc tọa độ nếu nó không nằm trên biên) và thay vào để xác định dấu bất phương trình.\n**Phần 2. Trình bày**\nĐường biên cắt $Ox$ tại $(-2;0)$ và cắt $Oy$ tại $(0;3)$.\nĐường biên có phương trình $3x-2y=-6$ (kiểm tra: $3\\cdot(-2)-0=-6$ và $0-2\\cdot 3=-6$).\nGốc toạ độ $O(0;0)$ nằm trong phần không bị gạch và $3\\cdot 0-2\\cdot 0=0>-6 …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000632",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\tan\\alpha=2$. Tính giá trị của biểu thức $A=\\dfrac{3\\sin\\alpha-2\\cos\\alpha}{2\\sin\\alpha+\\cos\\alpha}$ là",
+  "lua_chon": [
+   "$-\\dfrac{2}{5}$.",
+   "$\\dfrac{4}{5}$.",
+   "$\\dfrac{3}{2}$.",
+   "$-\\dfrac{3}{2}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** biểu thức là phân thức đồng bậc theo $\\sin\\alpha$ và $\\cos\\alpha$ nên chia cả tử và mẫu cho $\\cos\\alpha$ để chuyển về $\\tan\\alpha$.\n**Bước 1.** Kiểm tra $\\cos\\alpha\\ne0$ (vì $\\tan\\alpha$ xác định).\n**Bước 2.** Chia cả tử và mẫu của phân thức cho $\\cos\\alpha$.\n**Bước 3.** Thay $\\tan\\alpha$ đã cho và tính.\n**Phần 2. Trình bày**\nVì $\\tan\\alpha=2$ nên $\\cos\\alpha\\ne0$. Chia tử và mẫu cho $\\cos\\alpha$:\n$A=\\dfrac{3\\tan\\alpha-2}{2\\tan\\alpha+1}$\n$A=\\dfrac{3\\cdot2-2}{2\\cdot2+1}=\\dfrac{4}{5}$\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000490",
+  "loai": "trac_nghiem",
+  "de": "Cho hai mệnh đề $P$: \"Tứ giác $T$ là hình thoi\" và $Q$: \"Tứ giác $T$ là hình vuông\". Mệnh đề $P\\Rightarrow Q$ được phát biểu là",
+  "lua_chon": [
+   "\"Tứ giác $T$ là hình vuông là điều kiện đủ để $T$ là thoi\".",
+   "\"Tứ giác $T$ là hình thoi là điều kiện cần để $T$ là vuông\".",
+   "\"Tứ giác $T$ là hình thoi là điều kiện đủ để $T$ là hình vuông\".",
+   "\"Tứ giác $T$ là hình thoi là điều kiện cần và đủ để $T$ là vuông\"."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mệnh đề $P\\Rightarrow Q$ có $P$ là điều kiện đủ để có $Q$ và $Q$ là điều kiện cần để có $P$.\n**Bước 1.** Đọc rõ chiều của mệnh đề kéo theo: giả thiết là $P$, kết luận là $Q$.\n**Bước 2.** Nhắc lại cách phát biểu: nếu $P\\Rightarrow Q$ thì $P$ là điều kiện đủ của $Q$, còn $Q$ là điều kiện cần của $P$.\n**Bước 3.** Đối chiếu từng phương án với chiều đó, loại các phương án bị đảo chiều hoặc dùng \"cần và đủ\" khi chưa có $Q\\Rightarrow P$.\n**Phần 2. Trình bày**\nMệnh đề $P\\Rightarrow Q$ là \"Nếu tứ giác $T$ là hình thoi thì $T$ là hình vuông\".\nDo đó \"$T$ là hình thoi\" là điều kiện đủ để \"$T$ là hình vuông\".\nPhương án A đảo chiều (đó là $Q\\Rightarrow P$) nên loại.\nPhư …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000566",
+  "loai": "trac_nghiem",
+  "de": "Cho hai tập hợp $A=(1;5]$; $B=(2;7]$. Tập hợp $A\\setminus B$ là:",
+  "lua_chon": [
+   "$(1;2]$.",
+   "$(2;5)$.",
+   "$(-1;7]$.",
+   "$(-1;2)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hiệu $A\\setminus B$ gồm các phần tử thuộc $A$ nhưng không thuộc $B$, nên phải bỏ phần giao của hai tập khỏi $A$.\n**Bước 1.** Biểu diễn hai khoảng trên cùng một trục số để thấy phần chung của chúng.\n**Bước 2.** Bỏ phần chung đó khỏi $A$, chú ý đầu mút $2$ có thuộc $B$ hay không.\n**Bước 3.** Viết phần còn lại bằng kí hiệu khoảng rồi chọn phương án.\n**Phần 2. Trình bày**\n$x\\in A\\setminus B\\Leftrightarrow\\begin{cases}1<x\\le5\\\\x\\notin(2;7]\\end{cases}$.\nVì $x\\notin(2;7]$ nghĩa là $x\\le2$ hoặc $x>7$, kết hợp với $1<x\\le5$ ta được $1<x\\le2$.\nVậy $A\\setminus B=(1;2]$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000545",
+  "loai": "trac_nghiem",
+  "de": "Trong các mệnh đề sau, mệnh đề nào sai?",
+  "lua_chon": [
+   "$\\pi<-2\\Leftrightarrow\\pi^2<4$.",
+   "$\\pi<4\\Leftrightarrow\\pi^2<16$.",
+   "$\\sqrt{23}<5\\Leftrightarrow2\\sqrt{23}<2{,}5$.",
+   "$\\sqrt{23}<5\\Leftrightarrow-2\\sqrt{23}<-2{,}5$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mệnh đề tương đương $P\\Leftrightarrow Q$ chỉ đúng khi $P$ và $Q$ cùng đúng hoặc cùng sai, nên phải xác định tính đúng sai của hai vế ở mỗi phương án.\n**Bước 1.** Xác định giá trị gần đúng của $\\pi$ và $\\sqrt{23}$ để đánh giá từng bất đẳng thức.\n**Bước 2.** Với mỗi phương án, kết luận vế trái và vế phải đúng hay sai.\n**Bước 3.** Chọn phương án mà hai vế có tính đúng sai khác nhau.\n**Phần 2. Trình bày**\nTa có $\\pi\\approx3{,}14$ và $\\sqrt{23}\\approx4{,}80$.\nPhương án A: $\\pi<-2$ sai và $\\pi^2<4$ sai, hai vế cùng sai nên mệnh đề tương đương đúng.\nPhương án B: $\\pi<4$ đúng và $\\pi^2<16$ đúng, hai vế cùng đúng nên mệnh đề đúng.\nPhương án C: $\\sqrt{23}<5$ đúng nh …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000487",
+  "loai": "tu_luan",
+  "de": "Cho hai tập hợp $A=[-2;3]$ và $B=(1;+\\infty)$.\na) Xác định các tập hợp $A\\cup B$, $A\\cap B$ và $C_{\\mathbb{R}}B$.\nb) Cho tập hợp $C=\\{x\\in\\mathbb{R}\\mid x^2+(3m+1)x+3m=0\\}$, với $m$ là số thực. Tìm tất cả các giá trị của tham số $m$ để $C\\subset A$?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** biểu diễn các tập trên trục số để tìm hợp, giao, phần bù; với ý b thì liệt kê các phần tử của $C$ theo $m$ rồi đòi hỏi mọi phần tử đều thuộc $A$.\n**Bước 1.** Ý a: biểu diễn $A$ và $B$ trên trục số, chú ý đầu mút nào thuộc tập, đầu mút nào không để chọn đúng loại ngoặc.\n**Bước 2.** Ý a: tập bù của $B$ trong $\\mathbb{R}$ gồm các số thực không thuộc $B$; xác định đầu mút $1$ thuộc phần bù hay không.\n**Bước 3.** Ý b: phân tích vế trái của phương trình thành tích hai nhân tử bậc nhất để tìm các phần tử của $C$ theo $m$.\n**Bước 4.** Ý b: đưa điều kiện $C\\subset A$ về việc mỗi nghiệm phải nằm trong đoạn $[-2;3]$, kiểm tra nghiệm không phụ thuộc $m$ trước rồi giải …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000607",
+  "loai": "trac_nghiem",
+  "de": "Giá trị nhỏ nhất của biểu thức $F=y-x$ trên miền xác định bởi hệ $\\begin{cases} y-2x\\le2 \\\\ 2y-x\\ge4 \\\\ x+y\\le5 \\end{cases}$ là",
+  "lua_chon": [
+   "$\\min F=1$ khi $x=2$, $y=3$.",
+   "$\\min F=2$ khi $x=0$, $y=2$.",
+   "$\\min F=3$ khi $x=1$, $y=4$.",
+   "$\\min F=0$ khi $x=0$, $y=0$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** giá trị nhỏ nhất của biểu thức bậc nhất trên miền đa giác đạt tại một đỉnh của miền nên chỉ cần tìm các đỉnh và so sánh.\n**Bước 1.** Xác định miền nghiệm của hệ là một đa giác và tìm các đỉnh bằng cách giải hệ hai phương trình biên.\n**Bước 2.** Kiểm tra mỗi giao điểm tìm được có thoả mãn bất phương trình còn lại hay không để giữ đúng các đỉnh.\n**Bước 3.** Tính giá trị của $F$ tại từng đỉnh rồi so sánh để tìm giá trị nhỏ nhất.\n**Phần 2. Trình bày**\nGiải từng cặp đường biên:\n$y-2x=2$ và $2y-x=4$ cho $(0;2)$.\n$2y-x=4$ và $x+y=5$ cho $(2;3)$.\n$y-2x=2$ và $x+y=5$ cho $(1;4)$.\nCả ba điểm đều thoả mãn bất phương trình còn lại nên miền nghiệm là tam giác có ba đỉn …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000727",
+  "loai": "tra_loi_ngan",
+  "de": "Cho mẫu số liệu sau:\nGiá trị: $2;3;4;5;6$\nTần số: $4;2;5;2;6$\nHãy tìm độ lệch chuẩn của mẫu số liệu trên. Kết quả làm tròn đến hàng phần mười.",
+  "dap_an": "1,5",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** từ bảng tần số tính số phần tử và số trung bình, rồi phương sai theo tần số và lấy căn bậc hai.\n**Bước 1.** Cộng các tần số để có cỡ mẫu rồi tính số trung bình có trọng số tần số.\n**Bước 2.** Tính phương sai bằng trung bình của bình phương độ lệch, mỗi độ lệch nhân với tần số của nó.\n**Bước 3.** Lấy căn bậc hai của phương sai và làm tròn đến hàng phần mười ở bước cuối.\n**Phần 2. Trình bày**\nCỡ mẫu: $n=4+2+5+2+6=19$.\nSố trung bình: $\\overline{x}=\\dfrac{2\\cdot4+3\\cdot2+4\\cdot5+5\\cdot2+6\\cdot6}{19}=\\dfrac{80}{19}\\approx4{,}21$.\nPhương sai: $s^2=\\dfrac{4\\left(2-\\overline{x}\\right)^2+2\\left(3-\\overline{x}\\right)^2+5\\left(4-\\overline{x}\\right)^2+2\\left(5-\\overli …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000663",
+  "loai": "tu_luan",
+  "de": "Cho $\\cot\\alpha=\\dfrac{1}{3}$. Tính giá trị của biểu thức $A=\\dfrac{3\\sin\\alpha+4\\cos\\alpha}{2\\sin\\alpha-5\\cos\\alpha}$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** biểu thức thuần nhất bậc nhất theo $\\sin\\alpha$, $\\cos\\alpha$ nên chia cả tử và mẫu cho một hàm lượng giác để chuyển về $\\tan\\alpha$ hoặc $\\cot\\alpha$.\n**Bước 1.** Từ $\\cot\\alpha$ đã cho suy ra $\\tan\\alpha$ và nhận xét $\\sin\\alpha\\ne 0$, $\\cos\\alpha\\ne 0$.\n**Bước 2.** Chia cả tử và mẫu của $A$ cho $\\cos\\alpha$ để biểu thức chỉ còn chứa $\\tan\\alpha$.\n**Bước 3.** Thay giá trị $\\tan\\alpha$ vào và tính.\n**Phần 2. Trình bày**\nVì $\\cot\\alpha=\\dfrac{1}{3}$ nên $\\tan\\alpha=\\dfrac{1}{\\cot\\alpha}=3$ và $\\cos\\alpha\\ne 0$.\nChia cả tử và mẫu cho $\\cos\\alpha$: $A=\\dfrac{3\\tan\\alpha+4}{2\\tan\\alpha-5}$.\nThay $\\tan\\alpha=3$: $A=\\dfrac{3\\cdot 3+4}{2\\cdot 3-5}=\\dfrac{13}{1}= …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110010205032",
+  "loai": "tra_loi_ngan",
+  "de": "Lớp 10A có $20$ học sinh giỏi Toán và $15$ học sinh giỏi Văn, trong đó có $5$ học sinh giỏi cả hai môn; có $10$ học sinh không giỏi môn nào. Hỏi lớp 10A có tất cả bao nhiêu học sinh?",
+  "dap_an": "40",
+  "loi_giai": "Gọi $T$ là tập hợp học sinh giỏi Toán và $V$ là tập hợp học sinh giỏi Văn của lớp 10A.\nTheo giả thiết, ta có $|T|=20$, $|V|=15$ và $|T\\cap V|=5$.\nSố học sinh giỏi ít nhất một trong hai môn Toán hoặc Văn là:\n$|T\\cup V|=|T|+|V|-|T\\cap V|=20+15-5=30.$\nVì có $10$ học sinh không giỏi môn nào trong hai môn nên tổng số học sinh của lớp 10A là:\n$30+10=40 \\left(\\text{hoc sinh}\\right).$\nVậy lớp 10A có tất cả $40$ học sinh.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Bài toán thực tế tập hợp (3 yếu tố)"
+ },
+ {
+  "ma_cau": "T110000000527",
+  "loai": "tra_loi_ngan",
+  "de": "Cho tam giác $ABC$ có $AB=5$; $BC=7$; $AC=8$. Số đo góc $A$ bằng $a^\\circ$. Hãy tìm $a$.",
+  "dap_an": "60",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** biết ba cạnh của tam giác thì dùng hệ quả của định lí côsin để tính côsin của góc, rồi suy ra số đo góc.\n**Bước 1.** Xác định $BC$ là cạnh đối diện góc $A$, còn $AB$ và $AC$ là hai cạnh kề góc $A$.\n**Bước 2.** Viết công thức $\\cos A$ qua ba cạnh rồi thay số liệu của đề.\n**Bước 3.** Từ giá trị $\\cos A$ nhận ra góc đặc biệt tương ứng trong khoảng từ $0^\\circ$ đến $180^\\circ$.\n**Phần 2. Trình bày**\nTheo định lí côsin: $\\cos A=\\dfrac{AB^2+AC^2-BC^2}{2\\cdot AB\\cdot AC}$.\nThay số: $\\cos A=\\dfrac{25+64-49}{2\\cdot 5\\cdot 8}=\\dfrac{40}{80}=\\dfrac{1}{2}$.\nVì $0^\\circ<A<180^\\circ$ và $\\cos A=\\dfrac{1}{2}$ nên $A=60^\\circ$.\nVậy $a=60$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000571",
+  "loai": "trac_nghiem",
+  "de": "Cho hai tập hợp $A=\\left\\{x\\in\\mathbb{Z}\\,\\middle|\\,x^2-4x+3=0\\right\\}$ và $B=\\{1;a\\}$. Với giá trị nào của $a$ thì $A=B$?",
+  "lua_chon": [
+   "$a=0$.",
+   "$a=3$.",
+   "$a=1$.",
+   "$a=2$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai tập hợp bằng nhau khi có cùng các phần tử, nên phải liệt kê tập $A$ rồi so sánh với $B$.\n**Bước 1.** Giải phương trình bậc hai xác định tập $A$ và giữ lại các nghiệm nguyên.\n**Bước 2.** Liệt kê $A$ rồi so với $B=\\{1;a\\}$ để biết $a$ phải là phần tử nào.\n**Bước 3.** Chú ý một tập hợp không có hai phần tử trùng nhau, rồi chọn phương án.\n**Phần 2. Trình bày**\n$x^2-4x+3=0\\Leftrightarrow(x-1)(x-3)=0\\Leftrightarrow x=1$ hoặc $x=3$, cả hai đều là số nguyên.\nDo đó $A=\\{1;3\\}$.\n$A=B$ khi $\\{1;3\\}=\\{1;a\\}$, tức $a=3$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000128",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\triangle ABC$. Khẳng định nào sau đây là đúng?",
+  "lua_chon": [
+   "$a^{2}=b^{2}+c^{2}+2bc\\cos A$.",
+   "$S=\\left(a+b+c\\right)r$.",
+   "$S=\\dfrac{abc}{4R}$.",
+   "$\\dfrac{a}{\\sin a}=\\dfrac{b}{\\sin b}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Xét các khẳng định trong tam giác $ABC$:\n- Theo định lí côsin: $a^{2}=b^{2}+c^{2}-2bc\\cos A$, do đó khẳng định $a^{2}=b^{2}+c^{2}+2bc\\cos A$ là sai.\n- Công thức tính diện tích theo bán kính đường tròn nội tiếp: $S=pr=\\dfrac{a+b+c}{2}r$, do đó khẳng định $S=\\left(a+b+c\\right)r$ là sai.\n- Công thức tính diện tích theo bán kính đường tròn ngoại tiếp: $S=\\dfrac{abc}{4R}$, do đó khẳng định $S=\\dfrac{abc}{4R}$ là đúng.\n- Theo định lí sin: $\\dfrac{a}{\\sin A}=\\dfrac{b}{\\sin B}=\\dfrac{c}{\\sin C}=2R$, do đó khẳng định $\\dfrac{a}{\\sin a}=\\dfrac{b}{\\sin b}$ là sai.\nVậy khẳng định đúng là $S=\\dfrac{abc}{4R}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000594",
+  "loai": "tu_luan",
+  "de": "Một lớp $10$C$14$ có $45$ học sinh chuẩn bị cho hội diễn văn nghệ chào mừng ngày nhà giáo Việt Nam $20/11$. Trong danh sách đăng kí tham gia tiết mục nhảy Flashmob và tiết mục hát, có $35$ học sinh tham gia tiết mục nhảy Flashmob, $10$ học sinh tham gia cả hai tiết mục. Hỏi có bao nhiêu học sinh trong lớp tham gia tiết mục hát? Biết rằng lớp $10$C$14$ có bạn Kiệt, Hạ, Toàn, Thiện bị khuyết tật hòa nhập nên không tham gia tiết mục nào.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** loại $4$ bạn không tham gia khỏi sĩ số để có số học sinh thuộc hợp hai tiết mục, rồi dùng công thức bao hàm – loại trừ để tìm số học sinh hát.\n**Bước 1.** Tính số học sinh có tham gia ít nhất một tiết mục bằng sĩ số lớp trừ số bạn không tham gia tiết mục nào.\n**Bước 2.** Viết công thức $n(F\\cup H)=n(F)+n(H)-n(F\\cap H)$ với $F$ là tập nhảy Flashmob, $H$ là tập hát.\n**Bước 3.** Thay số đã biết và giải ra số học sinh tham gia hát.\n**Phần 2. Trình bày**\nSố học sinh tham gia ít nhất một tiết mục là $45-4=41$.\nGọi $F$ là tập học sinh nhảy Flashmob, $H$ là tập học sinh hát. Ta có $n(F\\cup H)=n(F)+n(H)-n(F\\cap H)$.\n$\\Leftrightarrow41=35+n(H)-10$.\n$\\Leftrightarrow  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000783",
+  "loai": "trac_nghiem",
+  "de": "Cho hình vẽ bên, miền nghiệm được biểu diễn bởi phần không bị tô là miền nghiệm của bất phương trình nào sau đây.",
+  "lua_chon": [
+   "$x+y>2$",
+   "$x+y\\le2$",
+   "$x+y<2$",
+   "$x+y\\ge2$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** xác định đường biên đi qua hai điểm nào, nét đứt hay nét liền, rồi dùng một điểm thử nằm trong phần không bị tô.\n**Bước 1.** Đọc hai giao điểm của đường biên với hai trục tọa độ để viết phương trình đường thẳng.\n**Bước 2.** Nhận xét đường biên là nét đứt hay liền để biết bất phương trình có dấu bằng không.\n**Bước 3.** Chọn một điểm nằm trong phần không bị tô, thay vào vế trái để biết dấu của bất phương trình.\n**Phần 2. Trình bày**\nĐường biên đi qua $(2;0)$ và $(0;2)$ nên có phương trình $x+y=2$; biên vẽ nét đứt nên không lấy dấu bằng.\nLấy điểm $(2;2)$ nằm trong phần không bị tô: $2+2=4>2$.\nVậy miền nghiệm là $x+y>2$.\nChọn A.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000340",
+  "loai": "tu_luan",
+  "de": "Hai bạn Oanh, Cường lần lượt đứng tại vị trí $O,C$ của một tòa nhà. Hai bạn An, Bình lần lượt đứng trên mặt đất tại vị trí $A,B$ mà tại đó nhìn các điểm $C,O$ các góc lần lượt bằng $\\alpha _{1}=30^\\circ,\\alpha _{2}=50^\\circ$ và $\\beta _{1}=70^\\circ,\\beta _{2}=80^\\circ$ so với phương nằm ngang. Gọi $H$ là hình chiếu của $O$ trên đường thẳng $AB$, giả sử $O,C,H$ thẳng hàng và biết khoảng cách giữa hai điểm $A,B$ là $l=20 m$ (Hình vẽ dưới). Tính khoảng cách $h$ giữa vị trí đứng của Oanh và Cường (làm tròn đến hàng phần trăm).",
+  "loi_giai": "Xét tam giác $OAB$, ta có $\\widehat{OAB}=\\alpha _{2}=50^\\circ$.\nGóc $\\widehat{OBA}$ và góc $\\widehat{OBH}$ là hai góc kề bù nên:\n$\\widehat{OBA}=180^\\circ-\\beta _{2}=180^\\circ-80^\\circ=100^\\circ.$\nSuy ra $\\widehat{AOB}=180^\\circ-\\left(\\widehat{OAB}+\\widehat{OBA}\\right)=180^\\circ-\\left(50^\\circ+100^\\circ\\right)=30^\\circ$.\nÁp dụng định lí sin trong tam giác $OAB$, ta có:\n$\\dfrac{OB}{\\sin \\widehat{OAB}}=\\dfrac{AB}{\\sin \\widehat{AOB}}\\Rightarrow OB=\\dfrac{AB\\cdot \\sin 50^\\circ}{\\sin 30^\\circ}=\\dfrac{20\\cdot \\sin 50^\\circ}{\\sin 30^\\circ}=40\\sin 50^\\circ \\left(m\\right).$\nTrong tam giác $OHB$ vuông tại $H$, ta có:\n$OH=OB\\cdot \\sin \\beta _{2}=40\\sin 50^\\circ\\cdot \\sin 80^\\circ\\approx 30,18 \\left(m\\ri …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000668",
+  "loai": "tu_luan",
+  "de": "Cho tam giác $ABC$ có $AB=4$, $AC=10$ và đường trung tuyến $AM=6$. Tính độ dài cạnh $BC$? Kết quả làm tròn đến hàng phần chục.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** biết hai cạnh kề và trung tuyến xuất phát từ cùng đỉnh nên dùng công thức độ dài đường trung tuyến để tìm cạnh đối diện.\n**Bước 1.** Xác định $AM$ là trung tuyến ứng với cạnh $BC$ và viết công thức trung tuyến theo ba cạnh.\n**Bước 2.** Thay $AB$, $AC$, $AM$ vào công thức và giải ra $BC^2$.\n**Bước 3.** Lấy căn bậc hai rồi làm tròn đến hàng phần chục theo yêu cầu đề.\n**Phần 2. Trình bày**\nVì $AM$ là trung tuyến ứng với cạnh $BC$ nên $AM^2=\\dfrac{2AB^2+2AC^2-BC^2}{4}$.\nThay số: $36=\\dfrac{2\\cdot 16+2\\cdot 100-BC^2}{4}$.\n$\\Leftrightarrow BC^2=232-144=88$.\nSuy ra $BC=\\sqrt{88}\\approx 9{,}4$.\nVậy $BC\\approx 9{,}4$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000642",
+  "loai": "trac_nghiem",
+  "de": "Cho tam giác $ABC$ thoả mãn hệ thức $b+c=2a$. Trong các mệnh đề sau, mệnh đề nào đúng?",
+  "lua_chon": [
+   "$\\cos B+\\cos C=2\\cos A$.",
+   "$\\sin B+\\sin C=2\\sin A$.",
+   "$\\sin B+\\sin C=\\dfrac{1}{2}\\sin A$.",
+   "$\\sin B+\\cos C=2\\sin A$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** định lí sin cho phép thay mỗi cạnh bằng $2R$ nhân với sin góc đối diện.\n**Bước 1.** Viết $a$, $b$, $c$ theo $R$ và sin của các góc đối diện.\n**Bước 2.** Thay vào hệ thức $b+c=2a$ của đề.\n**Bước 3.** Chia hai vế cho $2R$ để được hệ thức giữa các sin, rồi đối chiếu phương án.\n**Phần 2. Trình bày**\nTheo định lí sin: $a=2R\\sin A$, $b=2R\\sin B$, $c=2R\\sin C$.\nThay vào $b+c=2a$:\n$2R\\sin B+2R\\sin C=2\\cdot2R\\sin A$\nChia hai vế cho $2R>0$ ta được $\\sin B+\\sin C=2\\sin A$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000459",
+  "loai": "trac_nghiem",
+  "de": "Cho tam giác $ABC$ có $\\cos(A+B)=-\\dfrac15$; $AC=6$, $BC=5$. Tính độ dài cạnh $AB$ bằng",
+  "lua_chon": [
+   "$7$.",
+   "$8$.",
+   "$\\sqrt{55}$.",
+   "$\\sqrt{73}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tổng ba góc tam giác bằng $180^\\circ$ nên $A+B$ bù với góc $C$, từ đó suy ra $\\cos C$ rồi dùng định lí côsin.\n**Bước 1.** Biểu diễn góc $A+B$ qua góc $C$ nhờ tổng ba góc của tam giác.\n**Bước 2.** Dùng quan hệ hai góc bù nhau để tính $\\cos C$ từ $\\cos(A+B)$.\n**Bước 3.** Viết định lí côsin cho cạnh $AB$ đối diện góc $C$ với hai cạnh kề đã biết.\n**Bước 4.** Thay số, tính $AB^2$ rồi lấy căn bậc hai.\n**Phần 2. Trình bày**\nVì $A+B+C=180^\\circ$ nên $A+B=180^\\circ-C$, suy ra $\\cos C=-\\cos(A+B)=\\dfrac15$.\nTheo định lí côsin: $AB^2=AC^2+BC^2-2\\cdot AC\\cdot BC\\cdot\\cos C$.\n$AB^2=36+25-2\\cdot6\\cdot5\\cdot\\dfrac15=61-12=49$.\nSuy ra $AB=7$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000718",
+  "loai": "tra_loi_ngan",
+  "de": "Bạn Ngân có một mảnh nhựa với bề mặt hình tròn bán kính $1$ dm. Bạn ấy thực hiện đo chu vi của mép mảnh nhựa đó bằng cách sử dụng một sợi dây dài không dãn như sau: Cố định một đầu sợi dây trên mép mảnh nhựa, rồi quấn sợi dây quanh mép mảnh nhựa một vòng cho đến khi đầu dây cố định chạm vào thân sợi dây lần đầu tiên, sau đó đo độ dài phần dây chạm vào mép mảnh nhựa và được kết quả là $6$ dm. Khi đó sai số tương đối trong phép đo không vượt quá bao nhiêu $\\%$.",
+  "dap_an": "5",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** chu vi thật là $2\\pi R$ với $\\pi$ vô tỉ, nên chỉ chặn được sai số tuyệt đối bằng một khoảng chứa $\\pi$, rồi chia cho giá trị đo để có cận của sai số tương đối.\n**Bước 1.** Tính chu vi thật của mảnh nhựa từ công thức chu vi hình tròn với bán kính đã cho.\n**Bước 2.** Dùng khoảng quen thuộc chứa $\\pi$ để kẹp chu vi thật giữa hai số thập phân.\n**Bước 3.** Từ đó chặn trên sai số tuyệt đối, tức chênh lệch giữa chu vi thật và kết quả đo.\n**Bước 4.** Chia cận của sai số tuyệt đối cho giá trị đo được rồi đổi ra phần trăm.\n**Phần 2. Trình bày**\nChu vi thật của mảnh nhựa: $C=2\\pi R=2\\pi\\cdot1=2\\pi$ (dm).\nGiá trị gần đúng đo được là $a=6$ dm.\nVì $3{,}14<\\pi<3{,}15$ nê …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000720",
+  "loai": "tra_loi_ngan",
+  "de": "Một nhóm $11$ học sinh tham gia một kì thi. Số điểm thi của $11$ học sinh đó được sắp xếp từ thấp đến cao theo thang điểm $100$ như sau: $0;0;63;\\ 65;69;70;72;78;81;85;89$. Tìm điểm số trung bình của nhóm $11$ học sinh này? Kết quả làm tròn đến hàng đơn vị.",
+  "dap_an": "61",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** điểm trung bình là tổng các điểm chia cho số học sinh, rồi làm tròn đến hàng đơn vị.\n**Bước 1.** Đếm số học sinh để chắc có $11$ giá trị rồi cộng tất cả các điểm.\n**Bước 2.** Chia tổng cho $11$ để được số trung bình.\n**Bước 3.** Làm tròn kết quả cuối đến hàng đơn vị theo yêu cầu của đề.\n**Phần 2. Trình bày**\nTổng điểm: $0+0+63+65+69+70+72+78+81+85+89=672$.\n$\\overline{x}=\\dfrac{672}{11}\\approx61{,}09$.\nLàm tròn đến hàng đơn vị: $\\overline{x}\\approx61$.\nVậy điểm trung bình của nhóm là $61$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000750",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\triangle ABC$ có $a=4$, $c=6$, $B=120^\\circ$. Diện tích của tam giác $ABC$ là:",
+  "lua_chon": [
+   "$5\\sqrt3$.",
+   "$5$.",
+   "$12$.",
+   "$6\\sqrt3$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** biết hai cạnh và góc xen giữa thì tính diện tích bằng công thức $S=\\dfrac12ac\\sin B$.\n**Bước 1.** Xác định góc $B$ nằm giữa hai cạnh $a$ và $c$ nên dùng được công thức diện tích theo sin.\n**Bước 2.** Tính $\\sin120^\\circ$ bằng cách dùng công thức góc bù với $60^\\circ$.\n**Bước 3.** Thay số vào công thức và rút gọn kết quả.\n**Phần 2. Trình bày**\nTa có $\\sin120^\\circ=\\sin60^\\circ=\\dfrac{\\sqrt3}2$.\n$S=\\dfrac12ac\\sin B=\\dfrac12\\cdot4\\cdot6\\cdot\\dfrac{\\sqrt3}2=6\\sqrt3$\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000480",
+  "loai": "trac_nghiem",
+  "de": "Hệ nào sau đây là hệ bất phương trình bậc nhất hai ẩn?",
+  "lua_chon": [
+   "$\\begin{cases} x\\ge 0 \\\\ x+y\\le 3 \\\\ 2x+3y\\le 8 \\end{cases}$.",
+   "$\\begin{cases} x\\ge 0 \\\\ x^2+3y\\le 5 \\\\ 2x+y\\le 6 \\end{cases}$.",
+   "$\\begin{cases} x+y^2\\le 5 \\\\ x-y\\le 4 \\end{cases}$.",
+   "$\\begin{cases} y\\ge 0 \\\\ x+y\\le 3 \\\\ x-2xy\\le 8 \\end{cases}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hệ bất phương trình bậc nhất hai ẩn chỉ gồm các bất phương trình mà mỗi biểu thức có dạng $ax+by$ (ẩn $x$, $y$ chỉ ở bậc nhất, không có tích $xy$).\n**Bước 1.** Nhắc lại dạng tổng quát của bất phương trình bậc nhất hai ẩn.\n**Bước 2.** Kiểm tra từng bất phương trình trong mỗi hệ xem có chứa ẩn ở bậc cao hơn hoặc tích hai ẩn không.\n**Bước 3.** Chọn hệ mà mọi bất phương trình đều đúng dạng bậc nhất hai ẩn.\n**Phần 2. Trình bày**\nHệ B có $x^2$ nên bất phương trình $x^2+3y\\le 5$ không bậc nhất, loại.\nHệ C có $y^2$ nên bất phương trình $x+y^2\\le 5$ không bậc nhất, loại.\nHệ D có $xy$ nên bất phương trình $x-2xy\\le 8$ không bậc nhất, loại.\nHệ A gồm $x\\ge 0$, $x+y\\le …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000499",
+  "loai": "trac_nghiem",
+  "de": "Cho tam giác $ABC$. Mệnh đề nào sau đây là mệnh đề đúng?",
+  "lua_chon": [
+   "$\\cos A=\\dfrac{AB^2+AC^2-BC^2}{2AB\\cdot AC}$.",
+   "$\\cos A=\\dfrac{BC^2+AC^2-AB^2}{2BC\\cdot AC}$.",
+   "$\\cos A=\\dfrac{AB^2+BC^2-AC^2}{2AB\\cdot BC}$.",
+   "$\\cos A=\\dfrac{AB^2+AC^2-BC^2}{2AB\\cdot BC}$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** định lí côsin cho cạnh đối diện góc $A$ là $BC^2=AB^2+AC^2-2AB\\cdot AC\\cos A$, từ đó rút ra $\\cos A$.\n**Bước 1.** Viết định lí côsin cho cạnh $BC$ đối diện với góc $A$.\n**Bước 2.** Chuyển vế để rút $\\cos A$ theo ba cạnh của tam giác.\n**Bước 3.** Chú ý mẫu số gồm hai cạnh kề góc $A$, rồi đối chiếu với các phương án.\n**Phần 2. Trình bày**\nTheo định lí côsin: $BC^2=AB^2+AC^2-2AB\\cdot AC\\cos A$.\n$\\Leftrightarrow 2AB\\cdot AC\\cos A=AB^2+AC^2-BC^2$.\n$\\Leftrightarrow \\cos A=\\dfrac{AB^2+AC^2-BC^2}{2AB\\cdot AC}$.\nPhương án B, C có tử số hoặc mẫu số không đúng; phương án D có đúng tử số nhưng mẫu số $2AB\\cdot BC$ sai.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000782",
+  "loai": "trac_nghiem",
+  "de": "Cho các tập hợp $A=\\{x\\in\\mathbb{R}\\mid x\\ge-3\\}$. Viết tập hợp $A$ dưới dạng đoạn, khoảng, nửa khoảng là",
+  "lua_chon": [
+   "$A=[-3;+\\infty)$.",
+   "$A=(-\\infty;-3]$.",
+   "$A=(-\\infty;-3)$.",
+   "$A=[3;+\\infty)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** nhận biết hướng của tập số (về phía dương hay âm vô cùng) và đầu mút có được lấy hay không.\n**Bước 1.** Xác định các số thuộc $A$ nằm về phía bên phải hay bên trái của $-3$ trên trục số.\n**Bước 2.** Xét đầu mút $-3$ có thuộc $A$ hay không để chọn dấu ngoặc vuông hay tròn.\n**Bước 3.** Viết thành nửa khoảng và loại các phương án sai hướng hoặc sai đầu mút.\n**Phần 2. Trình bày**\nCác số $x\\ge-3$ nằm bên phải $-3$ và kể cả $-3$, nên $A=[-3;+\\infty)$.\nCác phương án B, C có hướng về $-\\infty$ nên sai; phương án D có đầu mút $3$ nên sai.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110010103092",
+  "loai": "trac_nghiem",
+  "de": "Cho mệnh đề $A :$ \"2 là số nguyên tố\". Mệnh đề phủ định của mệnh đề $A$ là",
+  "lua_chon": [
+   "2 là số nguyên.",
+   "2 không phải là số hữu tỷ.",
+   "2 không phải là số nguyên tố.",
+   "2 không là số nguyên."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Phủ định của mệnh đề \"$P$\" là mệnh đề \"không phải $P$\".\nMệnh đề $A$ khẳng định \"2 là số nguyên tố\", nên phủ định của nó là \"2 không phải là số nguyên tố\".",
+  "nhan_cu": "Mệnh đề › Mệnh đề chứa ký hiệu với mọi, tồn tại. Phủ định của mệnh đề"
+ },
+ {
+  "ma_cau": "T110000000784",
+  "loai": "trac_nghiem",
+  "de": "Lớp 10A có 25 học sinh giỏi Toán, 17 học sinh giỏi Lí và 8 em giỏi cả hai môn. Tổng số học sinh lớp 10A giỏi ít nhất một trong hai môn Toán và Lí là",
+  "lua_chon": [
+   "34",
+   "42.",
+   "50.",
+   "33."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** số học sinh giỏi ít nhất một môn là số phần tử của hợp hai tập, tính bằng công thức bao hàm – loại trừ.\n**Bước 1.** Gọi tập học sinh giỏi Toán và tập học sinh giỏi Lí rồi đọc số phần tử của từng tập và của giao.\n**Bước 2.** Nhận ra rằng cộng hai số đầu sẽ đếm hai lần các em giỏi cả hai môn.\n**Bước 3.** Trừ bớt phần đếm lặp để được số phần tử của hợp.\n**Phần 2. Trình bày**\nGọi $T$, $L$ là tập học sinh giỏi Toán, giỏi Lí; $n(T)=25$, $n(L)=17$, $n(T\\cap L)=8$.\n$n(T\\cup L)=n(T)+n(L)-n(T\\cap L)=25+17-8=34$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110010206032",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hai tập hợp $A=\\{x\\in \\mathbb{R}|\\left(x^{2}-4\\right)\\left(x^{2}-7x+m-3\\right)=0\\}$ và $B=\\left(0;+\\infty \\right)$ (với $m$ là tham số). Tìm điều kiện của $m$ để $A\\cap B$ có đúng $3$ phần tử và tích của $3$ phần tử đó bằng $24$.",
+  "dap_an": "15",
+  "loi_giai": "Xét phương trình $\\left(x^{2}-4\\right)\\left(x^{2}-7x+m-3\\right)=0\\left(∗\\right)$.\nTa có:\n$\\left(∗\\right)\\Leftrightarrow \\left[\\begin{array}{l} x^{2}-4=0 \\\\ x^{2}-7x+m-3=0\\left(1\\right) \\end{array}\\right.\\Leftrightarrow \\left[\\begin{array}{l} x=2 \\\\ x=-2 \\\\ x^{2}-7x+m-3=0\\left(1\\right). \\end{array}\\right.$\nTập hợp $B=\\left(0;+\\infty \\right)$ là tập hợp các số thực dương. Trong hai nghiệm $x=2$ và $x=-2$, chỉ có $x=2\\in B$.\nĐể $A\\cap B$ có đúng $3$ phần tử thì phương trình $\\left(1\\right)$ phải có hai nghiệm phân biệt $x_{1},x_{2}$ dương và khác $2$.\nKhi đó, $A\\cap B=\\{2;x_{1};x_{2}\\}$.\nTheo đề bài, tích của $3$ phần tử của $A\\cap B$ bằng $24$, nên ta có:\n$2\\cdot x_{1}\\cdot x_{2}=24\\Leftrighta …",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Bài toán tập hợp chứa tham số m"
+ },
+ {
+  "ma_cau": "T110000000741",
+  "loai": "trac_nghiem",
+  "de": "Cho tập hợp $A=\\{x\\in\\mathbb{R}\\mid -5<x\\le5\\}$. Tập hợp $A$ được viết dưới dạng khoảng, đoạn, nửa khoảng là:",
+  "lua_chon": [
+   "$A=[-5;5]$.",
+   "$A=(-5;5]$.",
+   "$A=[-5;5)$.",
+   "$A=(-5;5)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** dấu bất đẳng thức ngặt ứng với đầu mút mở (ngoặc tròn), dấu có bằng ứng với đầu mút đóng (ngoặc vuông).\n**Bước 1.** Xét đầu mút bên trái: điều kiện $-5<x$ cho biết $-5$ có thuộc tập hợp hay không.\n**Bước 2.** Xét đầu mút bên phải: điều kiện $x\\le5$ cho biết $5$ có thuộc tập hợp hay không.\n**Bước 3.** Ghép hai đầu mút lại thành khoảng, đoạn hoặc nửa khoảng rồi chọn phương án.\n**Phần 2. Trình bày**\nVì $-5<x$ nên $-5\\notin A$, đầu mút trái là ngoặc tròn.\nVì $x\\le5$ nên $5\\in A$, đầu mút phải là ngoặc vuông.\nVậy $A=(-5;5]$.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000601",
+  "loai": "trac_nghiem",
+  "de": "Cho tam giác $ABC$ có $A(1;2)$, $B(-3;-1)$ và $C(3;-4)$. Tìm điều kiện của tham số $m$ để điểm $M\\left(m;\\dfrac{m-5}{3}\\right)$ nằm bên trong tam giác $ABC$?",
+  "lua_chon": [
+   "$-1<m<2$.",
+   "$-1\\le m<3$.",
+   "$m\\ge2$.",
+   "$m<-3$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** điểm nằm trong tam giác khi và chỉ khi nó cùng phía với đỉnh đối diện đối với cả ba đường thẳng chứa cạnh.\n**Bước 1.** Viết phương trình ba đường thẳng $AB$, $BC$, $CA$ dưới dạng $ax+by+c=0$.\n**Bước 2.** Với mỗi đường thẳng, thay toạ độ đỉnh còn lại để biết dấu của biểu thức nằm phía trong tam giác.\n**Bước 3.** Thay toạ độ $M$ vào ba biểu thức, lập ba bất phương trình theo $m$.\n**Bước 4.** Giao ba tập nghiệm để được điều kiện của $m$ rồi đối chiếu phương án.\n**Phần 2. Trình bày**\nĐường thẳng $AB$: $3x-4y+5=0$. Thay $C(3;-4)$: $9+16+5=30>0$.\nĐường thẳng $BC$: $x+2y+5=0$. Thay $A(1;2)$: $1+4+5=10>0$.\nĐường thẳng $CA$: $3x+y-5=0$. Thay $B(-3;-1)$: $-9-1-5=-15 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000558",
+  "loai": "trac_nghiem",
+  "de": "Cho tập hợp $X=\\{1;5\\}$, $Y=\\{1;3;5\\}$. Tập $X\\cap Y$ là tập hợp nào sau đây?",
+  "lua_chon": [
+   "$\\{1\\}$.",
+   "$\\{1;3\\}$.",
+   "$\\{1;3;5\\}$.",
+   "$\\{1;5\\}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** giao của hai tập hợp gồm các phần tử thuộc đồng thời cả hai tập.\n**Bước 1.** Liệt kê các phần tử của tập $X$ và tập $Y$ để so sánh với nhau.\n**Bước 2.** Với từng phần tử của $X$, kiểm tra xem phần tử đó có xuất hiện trong $Y$ hay không.\n**Bước 3.** Gom các phần tử chung lại và đối chiếu với bốn phương án.\n**Phần 2. Trình bày**\nPhần tử $1$ thuộc cả $X$ và $Y$.\nPhần tử $5$ thuộc cả $X$ và $Y$.\nDo đó $X\\cap Y=\\{1;5\\}$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000652",
+  "loai": "trac_nghiem",
+  "de": "Tam giác $ABC$ có $AB=3$, $BC=8$. Gọi $M$ là trung điểm của $BC$. Biết $\\cos\\widehat{AMB}=\\dfrac{5\\sqrt{13}}{26}$ và $AM>3$. Tính độ dài cạnh $AC$.",
+  "lua_chon": [
+   "$AC=\\sqrt{13}$.",
+   "$AC=\\sqrt{7}$.",
+   "$AC=13$.",
+   "$AC=7$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tìm $AM$ bằng định lí côsin trong tam giác $ABM$ rồi dùng công thức đường trung tuyến để suy ra $AC$.\n**Bước 1.** Xác định $BM$ từ giả thiết $M$ là trung điểm của $BC$ và đặt ẩn $AM=x$.\n**Bước 2.** Viết định lí côsin cho tam giác $ABM$ với góc $\\widehat{AMB}$ để lập phương trình bậc hai ẩn $x$ rồi chọn nghiệm thoả $AM>3$.\n**Bước 3.** Viết công thức trung tuyến $AM^2=\\dfrac{2AB^2+2AC^2-BC^2}{4}$ và giải ra $AC$.\n**Phần 2. Trình bày**\nVì $M$ là trung điểm của $BC$ nên $BM=\\dfrac{BC}{2}=4$. Đặt $AM=x$ với $x>3$.\nÁp dụng định lí côsin trong tam giác $ABM$: $AB^2=AM^2+BM^2-2\\cdot AM\\cdot BM\\cdot\\cos\\widehat{AMB}$.\nThay số: $9=x^2+16-2\\cdot x\\cdot 4\\cdot\\dfrac{5 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000153",
+  "loai": "tra_loi_ngan",
+  "de": "Gia đình bác An có mảnh đất như hình bên. Nhà nước có dự án xây bệnh viện nên thu hồi mảnh đất của bác, giá đền bù là $1,2$triệu đồng $1 m^{2}$. Hỏi số tiền gia đình nhà bác An nhận được khoảng bao nhiêu triệu đồng? (làm tròn kết quả đến hàng đơn vị)",
+  "dap_an": "294",
+  "loi_giai": "Nối đường chéo $BD$ để chia mảnh đất thành hai tam giác $\\triangle ABD$ và $\\triangle BCD$.\nÁp dụng định lí côsin trong tam giác $ABD$, ta có:\n$BD^{2}=AB^{2}+AD^{2}\\text{-2\\cdot AB\\cdot AD\\cdot }\\cos \\widehat{BAD}={15}^{2}+{22}^{2}-2\\cdot 15\\cdot 22\\cdot \\cos 73,07^\\circ\\approx 516,81.$\nSuy ra $BD\\approx 22,73 m$.\nDiện tích tam giác $ABD$ là:\n$S_{ABD}=\\dfrac{1}{2}\\text{\\cdot AB\\cdot AD\\cdot }\\sin \\widehat{BAD}=\\dfrac{1}{2}\\cdot 15\\cdot 22\\cdot \\sin 73,07^\\circ\\approx 157,85 m^{2}.$\nTrong tam giác $BCD$, nửa chu vi là:\n$p=\\dfrac{BC+CD+BD}{2}\\approx \\dfrac{10+18+22,73}{2}=25,365 m.$\nÁp dụng công thức Heron, diện tích tam giác $BCD$ là:\n$S_{BCD}=\\sqrt{p\\left(p-BC\\right)\\left(p-CD\\right)\\left(p- …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000553",
+  "loai": "trac_nghiem",
+  "de": "Tập hợp $A=\\{x\\in\\mathbb{N}\\mid x(x-1)(x+2)=0\\}$ bằng tập hợp nào sau đây?",
+  "lua_chon": [
+   "$B=\\{-2;0;1\\}$.",
+   "$M=\\{-2;0\\}$.",
+   "$C=\\{-2;1\\}$.",
+   "$N=\\{0;1\\}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tích bằng $0$ khi một thừa số bằng $0$, và chỉ giữ lại các nghiệm thuộc tập số tự nhiên.\n**Bước 1.** Giải phương trình tích bằng cách cho từng thừa số bằng $0$.\n**Bước 2.** Loại các nghiệm không thuộc $\\mathbb{N}$ vì điều kiện $x\\in\\mathbb{N}$.\n**Bước 3.** Viết tập $A$ bằng cách liệt kê rồi đối chiếu với các phương án.\n**Phần 2. Trình bày**\n$x(x-1)(x+2)=0\\Leftrightarrow x=0$ hoặc $x=1$ hoặc $x=-2$.\nVì $x\\in\\mathbb{N}$ nên loại $x=-2$.\nVậy $A=\\{0;1\\}=N$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000742",
+  "loai": "trac_nghiem",
+  "de": "Cho các tập hợp $P=(-2;5)$, $Q=(0;+\\infty)$ và $R=[5;7]$. Trong các mệnh đề sau mệnh đề nào đúng:",
+  "lua_chon": [
+   "$P\\cup Q=(0;5)$.",
+   "$Q\\cap R=(5;7]$.",
+   "$P\\cap R=\\{5\\}$.",
+   "$P\\cap Q=(0;5)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** biểu diễn các khoảng trên trục số để tìm hợp và giao, chú ý đầu mút có thuộc tập hay không.\n**Bước 1.** Vẽ trục số và biểu diễn ba tập $P$, $Q$, $R$.\n**Bước 2.** Tính hợp $P\\cup Q$ bằng cách gộp hai miền, chú ý đầu mút nhỏ nhất và đầu mút lớn nhất.\n**Bước 3.** Tính các giao $Q\\cap R$, $P\\cap R$, $P\\cap Q$, chú ý số $5$ thuộc $R$ nhưng không thuộc $P$.\n**Phần 2. Trình bày**\n$P\\cup Q=(-2;+\\infty)\\ne(0;5)$ nên A sai.\n$Q\\cap R=[5;7]\\ne(5;7]$ vì $5\\in R$ và $5\\in Q$, nên B sai.\n$P\\cap R=\\varnothing$ vì $5\\notin P$, nên C sai.\n$P\\cap Q=(0;5)$ nên D đúng.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000493",
+  "loai": "trac_nghiem",
+  "de": "Cho hai tập hợp $A=(-4;1)$, $B=[-3;2]$. Tập $A\\cap B$ là",
+  "lua_chon": [
+   "$(-4;2]$.",
+   "$(1;2)$.",
+   "$[-3;1]$.",
+   "$[-3;1)$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** giao của hai khoảng – đoạn gồm các số thuộc cả hai tập, đầu mút lấy theo tập nào chặt hơn.\n**Bước 1.** Biểu diễn $A$ và $B$ trên trục số để thấy phần chung.\n**Bước 2.** Xác định đầu mút trái bằng số lớn hơn trong hai đầu trái và đầu mút phải bằng số nhỏ hơn trong hai đầu phải.\n**Bước 3.** Kiểm tra đầu mút nào được lấy (ngoặc vuông) hoặc không lấy (ngoặc tròn) dựa vào tập tạo ra đầu mút đó.\n**Phần 2. Trình bày**\nĐầu trái: $-3>-4$ nên lấy $-3$, và $-3\\in B$, $-3\\in A$ (vì $-4<-3<1$) nên giữ ngoặc vuông.\nĐầu phải: $1<2$ nên lấy $1$, nhưng $1\\notin A$ nên giữ ngoặc tròn.\nVậy $A\\cap B=[-3;1)$.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000651",
+  "loai": "trac_nghiem",
+  "de": "Tam giác $ABC$ có $a=6$, $b=4\\sqrt{2}$, $c=2$. $M$ là điểm trên cạnh $BC$ sao cho $BM=3$. Độ dài đoạn $AM$ bằng bao nhiêu?",
+  "lua_chon": [
+   "$\\sqrt{9}$.",
+   "$9$.",
+   "$3$.",
+   "$\\dfrac{1}{2}\\sqrt{108}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** so sánh $BM$ với độ dài $BC$ để biết vị trí của $M$ trên cạnh, rồi dùng công thức đường trung tuyến.\n**Bước 1.** Đối chiếu $BM=3$ với $BC=a=6$ để xác định $M$ nằm ở vị trí đặc biệt nào trên cạnh $BC$.\n**Bước 2.** Viết công thức tính độ dài trung tuyến $AM$ theo ba cạnh của tam giác.\n**Bước 3.** Thay $a$, $b$, $c$ vào công thức, tính $AM^2$ rồi lấy căn và đối chiếu các phương án.\n**Phần 2. Trình bày**\nLưu ý: đề sai — phương án A là $\\sqrt{9}=3$, trùng giá trị với phương án C; ta chọn phương án viết gọn là C.\nVì $BM=3=\\dfrac{BC}{2}$ nên $M$ là trung điểm của $BC$, do đó $AM$ là đường trung tuyến.\nTa có $AM^2=\\dfrac{2b^2+2c^2-a^2}{4}$.\nThay số: $AM^2=\\dfrac{2 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000674",
+  "loai": "tu_luan",
+  "de": "Để kéo dây điện từ cột điện vào nhà phải qua một cái ao, anh Nam không thể đo độ dài dây điện cần mua trực tiếp được nên đã làm như sau: Lấy một điểm $B$ như trong hình, người ta đo được độ dài từ $B$ đến $A$ (nhà) là $15\\text{ m}$, từ $B$ đến $C$ (cột điện) là $18\\text{ m}$ và $\\widehat{ABC}=120^\\circ$. Độ dài dây điện nối từ nhà ra đến cột điện là bao nhiêu mét? Kết quả làm tròn đến hàng phần chục.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** độ dài dây nối nhà với cột chính là cạnh đối diện góc $B$ của tam giác $ABC$ đã biết hai cạnh kề và góc xen giữa.\n**Bước 1.** Xác định tam giác $ABC$ cần xét và chỉ ra cạnh nào phải tính, cạnh nào đã cho.\n**Bước 2.** Áp dụng định lí côsin với góc $B$ tù, chú ý $\\cos 120^\\circ$ có giá trị âm.\n**Bước 3.** Khai căn kết quả rồi làm tròn theo yêu cầu đề.\n**Phần 2. Trình bày**\nCần tính $AC$ trong tam giác $ABC$ có $AB=15$, $BC=18$, $\\widehat{ABC}=120^\\circ$.\n$AC^2=AB^2+BC^2-2\\cdot AB\\cdot BC\\cdot\\cos\\widehat{ABC}$\n$=15^2+18^2-2\\cdot 15\\cdot 18\\cdot\\cos 120^\\circ$\n$=225+324+270=819$.\nSuy ra $AC=\\sqrt{819}\\approx 28{,}6$.\nVậy dây điện cần dài khoảng $28{,}6$ m.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000770",
+  "loai": "tu_luan",
+  "de": "Cho hai tập hợp khác rỗng $A=(-3;m+1]$; $B=[2m-4;6]$, $m\\in\\mathbb{R}$. Tìm $m$ để $A\\subset B$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $A\\subset B$ khi mọi số thuộc $A$ đều nằm trong $B$, nên so sánh hai đầu mút trái và hai đầu mút phải của hai tập.\n**Bước 1.** Viết điều kiện để hai tập khác rỗng, vì đề đã cho cả hai khác rỗng.\n**Bước 2.** So đầu mút trái: đầu mút $-3$ của $A$ không thuộc $A$ nên $B$ chỉ cần bắt đầu không muộn hơn $-3$.\n**Bước 3.** So đầu mút phải: đầu mút $m+1$ của $A$ thuộc $A$ nên nó phải không vượt quá đầu mút phải của $B$.\n**Bước 4.** Kết hợp các điều kiện thành một hệ bất phương trình theo $m$ rồi lấy giao các tập nghiệm.\n**Phần 2. Trình bày**\nĐiều kiện hai tập khác rỗng: $m+1>-3\\Leftrightarrow m>-4$ và $2m-4\\le 6\\Leftrightarrow m\\le 5$.\nVới $A=(-3;m+1]$ và $B=[2m-4 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

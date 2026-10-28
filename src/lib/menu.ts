@@ -35,18 +35,18 @@ const LEAF_ICON: Record<string, string> = {
   viec: '✅', myplan: '🗂',
   // Vận hành
   buoihoc: '🗓', ops_report: '📣', prep: '🧹', phancong_ops: '🧑‍🤝‍🧑', hs: '🎒', lop: '🏫', tuyensinh: '🎚', test_dau_vao: '📝',
-  botro: '🩹', phong_hoc: '🚪', tu_qua: '🎁', khaosat: '🕸', su_kien: '🎉',
+  botro: '🩹', phong_hoc: '🚪', tu_qua: '🎁', su_kien: '🎉', hs_moi: '📋',
   // Gamification
-  diemso: '📈', thanhtich: '🥇', quanlylevel: '🪜', chotxu: '🪙', huyhieu: '🎖', huyhieu_trao: '🏅', chuoi_nghi: '🏖', tinh_nang: '🎛', traogiai: '🏆',
+  diemso: '📈', thanhtich: '🥇', quanlylevel: '🪜', chotxu: '🪙', tinh_nang: '🎛', traogiai: '🏆',
   // Học thuật
   bdkt: '🗺', cau_bao_loi: '⚑', bdm: '🧭', sotay: '📓', tl: '🗂', khodethi: '📑', nhapkho: '📥',
-  lamtailieu: '✍️', 'lamtailieu:giao_trinh': '📘', 'lamtailieu:giao_trinh_bdm': '🗺️','lamtailieu:giao_trinh_hinh': '📐', 'lamtailieu:et': '📝', 'lamtailieu:et_bdm': '🗺️', 'lamtailieu:chuyen_de': '📚', 'lamtailieu:mt': '🏁', 'lamtailieu:bo_tro': '🩹',
+  lamtailieu: '✍️', 'lamtailieu:giao_trinh_bdm': '🗺️','lamtailieu:et_bdm': '🗺️', 'lamtailieu:chuyen_de': '📚', 'lamtailieu:mt': '🏁', 'lamtailieu:bo_tro': '🩹',
   // Quản lý chất lượng
   ketqua: '📊', cham_mt: '✏️', duyetcham: '✔️', duyetloigiai: '🔎', db_hoctap: '🧠', db_cuoicap: '🎯',db_theodoi_app: '📱', report_ph: '💌',
   // Core team
-  hocphi: '💰', ns: '🪪', orgchart: '🌳', phancong: '📌', tkb: '⏰', phanquyen: '🔐', baoloi: '🐞', db_tuyendung: '🧲', giaoviec: '🚀', gay: '🏑', thuchi: '🧾', ta_cong_duyet: '🕘', ta_luong: '💵',
+  hocphi: '💰', ns: '🪪', orgchart: '🌳', phancong: '📌', tkb: '⏰', phanquyen: '🔐', baoloi: '🐞', giaoviec: '🚀', gay: '🏑', thuchi: '🧾', ta_cong_duyet: '🕘', ta_luong: '💵',
   // Dashboard
-  db_tongquan: '🌐', db_taichinh: '💹', db_chatluong: '⚙️', db_phdangnhap: '🔑', db_xemapp: '👀', db_thongbao: '📢',
+  db_chatluong: '⚙️', db_phdangnhap: '🔑', db_xemapp: '👀', db_thongbao: '📢',
 }
 
 export type MucMenu = { id: string; ten: string; nhom: string | null; cha: string | null; icon: string }

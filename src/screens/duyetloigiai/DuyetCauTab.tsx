@@ -14,7 +14,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useLocDang, ChonDang } from './LocDang'
 import { nhanhCuaMon, NHANH_LABEL, LOAI_CAU, listHangDuyet, duyetCauHangDuyet, tuChoiCauHangDuyet, listCumBai, tenCum, khoTbls, HANG_DUYET_LABEL, laDangCho,
-  listNguLieuCuaCau, DANG_DE_ANH, type CauHangDuyet, type KhoMon, type HangDuyetLoc, type CumBai, type SuaCauDuyet, type NguLieu, type CauAnhThem } from '../../lib/kho/api'
+  listNguLieuCuaCau, DANG_DE_ANH, khoiChayBanDoMoi, getDangBaiTen, type CauHangDuyet, type KhoMon, type HangDuyetLoc, type CumBai, type SuaCauDuyet, type NguLieu, type CauAnhThem } from '../../lib/kho/api'
 import { MathText, TextAnh, NguLieuBlock, inp } from '../kho/ui'
 import { SolutionField } from '../kho/DangHub'
 import DangPickerOne from '../../components/DangPickerOne'
@@ -22,6 +22,7 @@ import { myNhanSuId } from '../../lib/nhansu'
 import { useNhanXet, NutCanSua, NhanXetCu, DongChoSua } from './CanSua'
 import { useDeSau, NutDeSau, NhanDeSau } from './DeSau'
 import PhanTrang from '../../components/PhanTrang'
+import { useLocNguon, ChonNguon } from './LocNguon'
 import type { MonNX, TrangThaiNX } from '../../lib/kho/nhanXet'
 
 type Row = CauHangDuyet & { mon: KhoMon }
@@ -36,7 +37,14 @@ const BATCH_SIZE = 20
 
 // Bộ lọc dạng của hàng duyệt. Tab "Chưa phân dạng": mọi câu cùng 1 dạng chờ ⇒ lọc vô nghĩa — lọc theo GỢI Ý BẢN ĐỒ MỚI
 // (chủ đề › nhóm › dạng bài do AI gán; rổ "chưa khớp" = ⚠ theo chủ đề). Tab khác: dạng thật như cũ. (Thùy 11/10: "ko check được riêng chủ đề tích phân")
-function layDangLoc(r: { dang_chinh: string; ten_dang: string; ten_chuyen_de: string; bdm_chu_de?: string | null; bdm_nhom?: string | null; bdm_dang_bai?: string | null; bdm_dang_bai_id?: string | null; bdm_trang_thai?: string | null }, loc: HangDuyetLoc) {
+// Khối chạy BẢN ĐỒ MỚI (Thùy 26/10, mig 202610261856): dạng của câu = DẠNG BÀI đã gán ⇒ lọc theo dạng bài ở MỌI tab (đề xuất tách riêng).
+function layDangLoc(r: { dang_chinh: string; ten_dang: string; ten_chuyen_de: string; bdm_chu_de?: string | null; bdm_nhom?: string | null; bdm_dang_bai?: string | null; bdm_dang_bai_id?: string | null; bdm_trang_thai?: string | null }, loc: HangDuyetLoc, bdm = false) {
+  if (bdm) {
+    if (r.bdm_trang_thai === 'gan' && r.bdm_dang_bai_id) return { ma: r.bdm_dang_bai_id, ten: r.bdm_dang_bai ?? r.bdm_dang_bai_id, cd: `${r.bdm_chu_de} › ${r.bdm_nhom}` }
+    if (r.bdm_trang_thai === 'de_xuat' && r.bdm_dang_bai_id) return { ma: `dx:${r.bdm_dang_bai_id}`, ten: `💡 đề xuất: ${r.bdm_dang_bai ?? r.bdm_dang_bai_id}`, cd: `${r.bdm_chu_de} › ${r.bdm_nhom}` }
+    if (r.bdm_trang_thai === 'chua_khop') return { ma: `ck:${r.bdm_chu_de}`, ten: '⚠ Chưa khớp dạng bài nào', cd: r.bdm_chu_de ?? '' }
+    return { ma: '_chua_dang_bai', ten: 'Chưa có dạng bài', cd: '' }
+  }
   if (loc === 'chua_dang') {
     if (r.bdm_dang_bai_id) return { ma: r.bdm_dang_bai_id, ten: r.bdm_dang_bai ?? r.bdm_dang_bai_id, cd: `${r.bdm_chu_de} › ${r.bdm_nhom}` }
     if (r.bdm_trang_thai === 'chua_khop') return { ma: `ck:${r.bdm_chu_de}`, ten: '⚠ Chưa khớp dạng bài nào', cd: r.bdm_chu_de ?? '' }
@@ -63,6 +71,10 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
   const setTrang = (t: number) => { setTrangRaw(t); cuon.current?.scrollTo({ top: 0 }) }
   const nhanXet = useNhanXet('cau')   // "✎ Cần sửa": câu chờ Claude sửa tạm ẩn, sửa xong hiện lại kèm nhận xét
   const deSau = useDeSau('cau')       // "⏭ Để sau": câu chưa muốn quyết xuống cuối hàng (Thùy 20/10)
+  // (môn, khối) chạy bản đồ mới (DB quyết, fn_bdm_dang_chon) ⇒ câu Đại/HGT thường chọn DẠNG BÀI, không ghi dang_chinh.
+  const [khoiMoi, setKhoiMoi] = useState(false)
+  useEffect(() => { let song = true; setKhoiMoi(false); void khoiChayBanDoMoi(khoi, mon).then((m) => { if (song) setKhoiMoi(m) }); return () => { song = false } }, [mon, khoi])
+  const laBdm = (r: Row) => khoiMoi && (r.mon === 'toan' || r.mon === 'hgt') && r.loai_cau !== 'dung_sai'
 
   async function reload() {
     const my = ++reqId.current
@@ -84,7 +96,7 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
     } catch (e: any) { if (my === reqId.current) setErr(e.message ?? String(e)) }
     finally { if (my === reqId.current) setLoading(false) }
   }
-  useEffect(() => { setNhanh('all'); locDang.reset(); setTrangRaw(0); reload() }, [mon, khoi, loc]) // eslint-disable-line
+  useEffect(() => { setNhanh('all'); locDang.reset(); locNguon.reset(); setTrangRaw(0); reload() }, [mon, khoi, loc]) // eslint-disable-line
 
   function bao(msg: string) { setThongBao(msg); setTimeout(() => setThongBao(null), 2500) }
   function xong(r: Row, msg: string) { setRows((a) => a.filter((x) => !(x.mon === r.mon && x.ma_cau === r.ma_cau))); bao(msg); onChanged?.() }
@@ -93,7 +105,9 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
   const rowsNhanh = deSau.xep((nhanh === 'all' ? rows : rows.filter((r) => r.mon === nhanh)).filter((r) => !nhanXet.dangChoSua(r.mon, r.ma_cau)), (r) => [r.mon, r.ma_cau])
   const soChoSua = rows.filter((r) => nhanXet.dangChoSua(r.mon, r.ma_cau)).length
   // Lọc theo DẠNG (Thùy 06/10) — lựa chọn = các dạng đang có câu trong hàng duyệt (LocDang.tsx, dùng chung mọi tab duyệt).
-  const locDang = useLocDang(rowsNhanh, (r) => layDangLoc(r, loc))
+  // Lọc NGUỒN tài liệu (Thùy 27/10): Đề thi · Đề cương · Sách <tác giả> · Kho cũ — tính ở DB, chỉ Toán Đại/HGT có nguồn tài liệu
+  const locNguon = useLocNguon(rowsNhanh, (r) => r.ma_cau, (r) => r.mon === 'toan' || r.mon === 'hgt')
+  const locDang = useLocDang(locNguon.loc, (r) => layDangLoc(r, loc, laBdm(r)))
   const rowsShown = locDang.loc
   // Trang đang mở: duyệt/từ chối xong thì câu rời hàng, câu trang sau tự dồn lên (như web). Trang vượt số trang (hàng vơi) ⇒ về trang cuối.
   const soTrang = Math.max(1, Math.ceil(rowsShown.length / BATCH_SIZE))
@@ -145,11 +159,15 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
             {kho.map((n) => chip(n, NHANH_LABEL[n], demNhanh(n)))}
           </div>
         )}
+        <ChonNguon opts={locNguon.opts} value={locNguon.nguonChon} tong={locNguon.tong} dangNap={locNguon.dangNap}
+          onChange={(v) => { locNguon.setChon(v); locDang.reset(); setTrangRaw(0) }} />
         <ChonDang opts={locDang.opts} value={locDang.dangChon} onChange={(v) => { locDang.setChon(v); setTrangRaw(0) }} tong={locDang.tong}
-          nhan={loc === 'chua_dang' ? 'Dạng bài (bản đồ mới)' : undefined} />
+          nhan={loc === 'chua_dang' || khoiMoi ? 'Dạng bài (bản đồ mới)' : undefined} />
         {loc === 'nghi' && <span className="text-[12px] text-amber-700">Máy/AI tính ra khác đáp số kho. Xem đề, tự tính; kho sai thì sửa đáp số rồi Duyệt — form trắc nghiệm của câu sẽ tự thu hồi để sinh lại.</span>}
         {loc === 'cau_moi' && <span className="text-[12px] text-slate-500">Câu vào kho sau 08/09 — HS chưa thấy tới khi duyệt.</span>}
-        {loc === 'chua_dang' && <span className="text-[12px] text-amber-700">Câu nhập kho mà Claude không chắc dạng (§1.5 thà bỏ trống). Lọc theo «Dạng bài (bản đồ mới)» để xem riêng 1 chủ đề; bấm 📁 chọn dạng thật cho từng câu rồi Duyệt — không có duyệt hàng loạt ở tab này.</span>}
+        {loc === 'chua_dang' && <span className="text-[12px] text-amber-700">{khoiMoi
+          ? 'Câu chưa có DẠNG BÀI (bản đồ mới). Bấm 📁 chọn dạng bài — hoặc 💡 nhận đề xuất — rồi Duyệt; dạng bài ghi ngay khi duyệt. Không có duyệt hàng loạt ở tab này.'
+          : 'Câu nhập kho mà Claude không chắc dạng (§1.5 thà bỏ trống). Lọc theo «Dạng bài (bản đồ mới)» để xem riêng 1 chủ đề; bấm 📁 chọn dạng thật cho từng câu rồi Duyệt — không có duyệt hàng loạt ở tab này.'}</span>}
         {thongBao && <span className="rounded-md bg-emerald-50 px-2.5 py-1 text-[12px] font-medium text-emerald-700">{thongBao}</span>}
         {/* Tab Chưa phân dạng: không có batch — mọi câu đều còn dạng chờ, DB (trg_chan_duyet_dang_cho) sẽ chặn từng câu. */}
         {loc !== 'chua_dang' && (
@@ -169,7 +187,7 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
           : (
             <>
               <div className="mb-3"><DongChoSua n={soChoSua} /></div>
-              <ul className="space-y-4">{batch.map((r) => <The key={`${r.mon}:${r.ma_cau}`} r={r} mon={mon} busyAll={busyAll}
+              <ul className="space-y-4">{batch.map((r) => <The key={`${r.mon}:${r.ma_cau}`} r={r} mon={mon} busyAll={busyAll} bdm={laBdm(r)}
                 deSauAt={deSau.luc(r.mon, r.ma_cau)} onDeSau={() => deSau.ghi(r.mon as MonNX, r.ma_cau, 'Duyệt kho › câu').then(() => bao(`⏭ ${r.ma_cau} xuống cuối hàng — duyệt sau`))}
                 nx={nhanXet.cua(r.mon, r.ma_cau)} onCanSua={(t) => { nhanXet.vaNX(t); bao(`✎ Đã gửi nhận xét ${r.ma_cau} — chờ Claude sửa`); onChanged?.() }}
                 anh={r.mon === 'anh' ? { cau: anhThem.cau[r.ma_cau], nl: anhThem.cau[r.ma_cau]?.ngu_lieu ? anhThem.nguLieu[anhThem.cau[r.ma_cau].ngu_lieu!] : undefined } : undefined} onXong={(msg) => xong(r, msg)}
@@ -183,7 +201,8 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
 }
 
 // 1 thẻ duyệt: state sửa cục bộ, so với bản gốc để chỉ gửi key ĐÃ ĐỔI (DB: key vắng = giữ nguyên).
-function The({ r, mon, busyAll, onXong, onSua, anh, nx, onCanSua, deSauAt, onDeSau }: { r: Row; mon: string; busyAll: boolean; onXong: (msg: string) => void; onSua: (s: SuaCauDuyet | null) => void; anh?: { cau?: CauAnhThem; nl?: NguLieu }; nx?: TrangThaiNX; onCanSua: (t: TrangThaiNX) => void; deSauAt: string | null; onDeSau: () => Promise<void> }) {
+// `bdm` = câu thường Đại/HGT ở khối chạy bản đồ mới: nút 📁 chọn DẠNG BÀI (gán khi Duyệt, nguon 'nguoi'), không cụm, không đổi dang_chinh.
+function The({ r, mon, busyAll, bdm, onXong, onSua, anh, nx, onCanSua, deSauAt, onDeSau }: { r: Row; mon: string; busyAll: boolean; bdm: boolean; onXong: (msg: string) => void; onSua: (s: SuaCauDuyet | null) => void; anh?: { cau?: CauAnhThem; nl?: NguLieu }; nx?: TrangThaiNX; onCanSua: (t: TrangThaiNX) => void; deSauAt: string | null; onDeSau: () => Promise<void> }) {
   const laAnh = r.mon === 'anh'
   const Chu = laAnh ? TextAnh : MathText   // câu Anh: chữ thường + gạch chân, không công thức / tự in đậm
   const [de, setDe] = useState(r.noi_dung)
@@ -192,6 +211,9 @@ function The({ r, mon, busyAll, onXong, onSua, anh, nx, onCanSua, deSauAt, onDeS
   const [opts, setOpts] = useState<string[]>(r.lua_chon ?? [])
   const [dang, setDang] = useState({ ma: r.dang_chinh, ten: r.ten_dang, cd: r.ten_chuyen_de })
   const [cum, setCum] = useState<string | null>(r.ma_cum)
+  // Dạng bài ĐANG gán (bdm_cau_dang: của câu hoặc câu gốc) — đề xuất KHÔNG tính là gán, phải bấm 💡 nhận.
+  const dbGoc = r.bdm_trang_thai === 'gan' && r.bdm_dang_bai_id ? { id: r.bdm_dang_bai_id, ten: r.bdm_dang_bai ?? r.bdm_dang_bai_id, cd: `${r.bdm_chu_de ?? ''} › ${r.bdm_nhom ?? ''}` } : null
+  const [dangBai, setDangBai] = useState(dbGoc)
   const [cums, setCums] = useState<CumBai[] | null>(null)   // null = chưa tải
   const [suaDe, setSuaDe] = useState(false)
   const [suaLg, setSuaLg] = useState(false)
@@ -203,16 +225,24 @@ function The({ r, mon, busyAll, onXong, onSua, anh, nx, onCanSua, deSauAt, onDeS
   const cauTbl = khoTbls(r.mon).cauTbl
   const hasOpts = !!(r.lua_chon && r.lua_chon.length)
 
-  useEffect(() => { let alive = true; listCumBai(dang.ma, cauTbl).then((c) => { if (alive) setCums(c) }).catch(() => { if (alive) setCums([]) }); return () => { alive = false } }, [dang.ma, cauTbl])
+  useEffect(() => { if (bdm) return; let alive = true; listCumBai(dang.ma, cauTbl).then((c) => { if (alive) setCums(c) }).catch(() => { if (alive) setCums([]) }); return () => { alive = false } }, [dang.ma, cauTbl, bdm])
 
   const doiDe = de.trim() !== r.noi_dung.trim()
   const doiDap = dapAn.trim() !== (r.dap_an ?? '').trim()
   const doiLg = loiGiai.trim() !== (r.loi_giai ?? '').trim()
   const doiOpts = hasOpts && opts.some((o, i) => o.trim() !== (r.lua_chon![i] ?? '').trim())
-  const doiDang = dang.ma !== r.dang_chinh
-  const doiCum = (cum ?? null) !== (r.ma_cum ?? null)
-  const coSua = doiDe || doiDap || doiLg || doiOpts || doiDang || doiCum
+  const doiDang = !bdm && dang.ma !== r.dang_chinh
+  const doiCum = !bdm && (cum ?? null) !== (r.ma_cum ?? null)
+  const doiDangBai = bdm && !!dangBai && dangBai.id !== dbGoc?.id
+  const coSua = doiDe || doiDap || doiLg || doiOpts || doiDang || doiCum || doiDangBai
+  // Thiếu dạng = luật DB (trg_chan_duyet_dang_cho): bản đồ mới ⇒ dạng chờ mà chưa có dạng bài; bản đồ cũ ⇒ dạng chờ.
+  const thieuDang = bdm ? laDangCho(r.dang_chinh) && !dangBai : laDangCho(dang.ma)
 
+  function chonDangBai(id: string, ten?: string, cd?: string) {
+    setPickDang(false)
+    setDangBai({ id, ten: ten ?? id, cd: cd ?? '' })
+    if (!ten) void getDangBaiTen(id).then((t) => { if (t) setDangBai((d) => (d && d.id === id ? { id, ten: t.ten, cd: t.cd } : d)) }).catch(() => {})
+  }
   function chonDang(maDang: string) {
     // DangPickerOne chỉ trả mã — tên hiện tạm là mã, DB trả tên thật khi tải lại; cụm reset vì cụm thuộc dạng.
     setDang({ ma: maDang, ten: maDang === r.dang_chinh ? r.ten_dang : maDang, cd: maDang === r.dang_chinh ? r.ten_chuyen_de : '' })
@@ -227,9 +257,10 @@ function The({ r, mon, busyAll, onXong, onSua, anh, nx, onCanSua, deSauAt, onDeS
     if (doiOpts) sua.lua_chon = opts.map((o) => o.trim())
     if (doiDang) sua.dang_chinh = dang.ma
     if (doiCum || doiDang) sua.ma_cum = cum
+    if (doiDangBai) sua.dang_bai = dangBai!.id
     return sua
   }
-  useEffect(() => { onSua(coSua ? tinhSua() : null) }, [de, dapAn, loiGiai, opts, dang.ma, cum, coSua]) // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { onSua(coSua ? tinhSua() : null) }, [de, dapAn, loiGiai, opts, dang.ma, cum, dangBai?.id, coSua]) // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => () => onSua(null), []) // eslint-disable-line react-hooks/exhaustive-deps
   async function onDuyet() {
     setBusy(true); setErr(null)
@@ -273,17 +304,33 @@ function The({ r, mon, busyAll, onXong, onSua, anh, nx, onCanSua, deSauAt, onDeS
           <button onClick={() => setTuChoi(tuChoi === null ? '' : null)} disabled={busy || busyAll}
             className="rounded-md px-2.5 py-1 text-[12px] font-medium text-rose-600 hover:bg-rose-50 disabled:opacity-40">✕ Từ chối</button>
           {/* Dạng chờ "Chưa phân dạng": thiếu data (dạng thật) ⇒ disable là đúng luật §6; DB cũng chặn (trg_chan_duyet_dang_cho). */}
-          <button onClick={onDuyet} disabled={busy || busyAll || !de.trim() || laDangCho(dang.ma)}
-            title={laDangCho(dang.ma) ? 'Câu chưa phân dạng — bấm 📁 chọn dạng thật rồi mới duyệt được' : undefined}
+          <button onClick={onDuyet} disabled={busy || busyAll || !de.trim() || thieuDang}
+            title={thieuDang ? (bdm ? 'Câu chưa có dạng bài — bấm 📁 chọn dạng bài rồi mới duyệt được' : 'Câu chưa phân dạng — bấm 📁 chọn dạng thật rồi mới duyệt được') : undefined}
             className="rounded-md bg-emerald-600 px-3 py-1 text-[12px] font-medium text-white shadow-sm hover:bg-emerald-500 disabled:opacity-40">
-            {busy ? '⏳…' : laDangCho(dang.ma) ? '⚠ Chọn dạng trước' : coSua ? '✓ Lưu sửa + Duyệt' : '✓ Duyệt'}
+            {busy ? '⏳…' : thieuDang ? (bdm ? '⚠ Chọn dạng bài trước' : '⚠ Chọn dạng trước') : coSua ? '✓ Lưu sửa + Duyệt' : '✓ Duyệt'}
           </button>
         </div>
       </div>
 
       {nx && <div className="mb-3"><NhanXetCu t={nx} /></div>}
 
-      {/* Dạng + cụm — sửa tại chỗ: dạng qua popup tìm kiếm, cụm là pill theo dạng đang chọn */}
+      {/* Bản đồ mới: DẠNG BÀI (gán) — không cụm, dạng cũ chỉ hiện để đối chiếu */}
+      {bdm ? (
+        <div className="mb-3 flex flex-wrap items-center gap-2 text-[12px]">
+          <button onClick={() => setPickDang(true)} disabled={busy || busyAll} title="Chọn dạng bài (bản đồ mới) — ghi khi bấm Duyệt"
+            className={`rounded-md border px-2.5 py-1 text-left font-medium hover:border-indigo-400 hover:bg-indigo-50 ${!dangBai ? 'border-amber-400 bg-amber-50 text-amber-800' : doiDangBai ? 'border-indigo-400 bg-indigo-50 text-indigo-800' : 'border-slate-200 text-slate-700'}`}>
+            📁 {dangBai ? <>{dangBai.cd ? <span className="text-slate-400">{dangBai.cd} › </span> : null}{dangBai.ten} <code className="ml-1 text-[11px] text-slate-400">{dangBai.id}</code></> : 'Chưa có dạng bài — bấm để chọn'}
+          </button>
+          {r.bdm_trang_thai === 'de_xuat' && r.bdm_dang_bai_id && dangBai?.id !== r.bdm_dang_bai_id && (
+            <button onClick={() => chonDangBai(r.bdm_dang_bai_id!, r.bdm_dang_bai ?? undefined, `${r.bdm_chu_de ?? ''} › ${r.bdm_nhom ?? ''}`)} disabled={busy || busyAll}
+              title={r.bdm_ly_do ? `Lý do đề xuất: ${r.bdm_ly_do}` : 'Đề xuất dạng bài chờ duyệt — bấm để nhận (ghi khi Duyệt)'}
+              className="rounded bg-violet-50 px-1.5 py-0.5 text-violet-700 ring-1 ring-violet-200 hover:bg-violet-100">💡 Đề xuất: {r.bdm_chu_de} › {r.bdm_nhom} › {r.bdm_dang_bai} — nhận</button>
+          )}
+          {r.bdm_trang_thai === 'chua_khop' && <span className="rounded bg-amber-50 px-1.5 py-0.5 text-amber-700" title={r.bdm_ly_do ?? ''}>⚠ Chưa khớp dạng bài ({r.bdm_chu_de}){r.bdm_ly_do ? ` — ${r.bdm_ly_do}` : ''}</span>}
+          {doiDangBai && dbGoc && <span className="text-slate-400">trước: {dbGoc.ten}</span>}
+          {!laDangCho(r.dang_chinh) && <span className="text-slate-400" title="Mã dạng bản đồ cũ — chỉ lưu trữ, không sửa ở đây">dạng cũ: {r.ten_dang} <code>{r.dang_chinh}</code></span>}
+        </div>
+      ) : (
       <div className="mb-3 flex flex-wrap items-center gap-2 text-[12px]">
         <button onClick={() => setPickDang(true)} disabled={busy || busyAll} title="Đổi dạng (mở bảng tìm dạng)"
           className={`rounded-md border px-2.5 py-1 text-left font-medium hover:border-indigo-400 hover:bg-indigo-50 ${laDangCho(dang.ma) ? 'border-amber-400 bg-amber-50 text-amber-800' : doiDang ? 'border-indigo-400 bg-indigo-50 text-indigo-800' : 'border-slate-200 text-slate-700'}`}>
@@ -306,6 +353,7 @@ function The({ r, mon, busyAll, onXong, onSua, anh, nx, onCanSua, deSauAt, onDeS
             </>
           )}
       </div>
+      )}
 
       <div className={`grid gap-4 ${r.anh_de || r.anh_dap_an ? 'grid-cols-[1fr_1fr_auto]' : 'grid-cols-2'}`}>
         <div className="min-w-0">
@@ -372,8 +420,8 @@ function The({ r, mon, busyAll, onXong, onSua, anh, nx, onCanSua, deSauAt, onDeS
       )}
       {err && <p className="mt-2 text-xs text-rose-600">{err}</p>}
       {pickDang && (
-        <DangPickerOne khoi={r.khoi} mon={mon} nhanh={r.mon === 'hgt' ? NHANH_HGT : r.mon === 'hinh_hoc' ? NHANH_HINH_HOC : null}
-          onClose={() => setPickDang(false)} onPick={(maDang) => chonDang(maDang)} />
+        <DangPickerOne khoi={r.khoi} mon={mon} nhanh={r.mon === 'hgt' ? NHANH_HGT : r.mon === 'hinh_hoc' ? NHANH_HINH_HOC : null} banDoMoi={bdm}
+          onClose={() => setPickDang(false)} onPick={(maDang, nh) => (nh === 'bdm' ? chonDangBai(maDang) : chonDang(maDang))} />
       )}
     </li>
   )

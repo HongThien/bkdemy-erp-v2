@@ -148,7 +148,7 @@ export type DangGoiY = {
   ma_dang: string; ten_dang: string; ten_chuyen_de: string
   score: number; n: number; muc: 'yeu' | 'can_luyen'; tin: 'cao' | 'tb' | 'thap'
 }
-export async function getDangYeuGoiY(hocSinhId: string, mon: string, banDo: 'cu' | 'moi' = 'cu'): Promise<DangGoiY[]> {
+export async function getDangYeuGoiY(hocSinhId: string, mon: string, banDo: 'cu' | 'moi' = 'moi'): Promise<DangGoiY[]> {
   // Ca mở sau khi bật bản đồ mới ⇒ gợi ý theo mastery bản đồ mới (lọc + tên + sắp ở DB — §2.0)
   if (banDo === 'moi') {
     const { data, error } = await supabase.rpc('fn_btyeu_dang_goi_y_moi', { p_hs: hocSinhId, p_mon: mon })

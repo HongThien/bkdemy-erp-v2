@@ -7,7 +7,7 @@
 // Lời dẫn (`dan`) = tiền tố chung của nội dung các ý, cắt về cuối cụm ": " (nếu có) hoặc cuối câu ". " — và PHẢI là tiền tố thật của
 // từng câu (còn phần dư không rỗng), không thì bỏ cả nhóm (để nguyên từng câu) và ghi cảnh báo.
 // Tiền tố tuỳ chọn cho đề cương có nhiều phần cùng đánh số lại từ 1 (Thành Công 19/10: "Hình Bài 2a", "Đề 1 Bài 2a") — nhãn vẫn duy nhất mà gom ý đúng.
-const RE_Y = /^((?:(?:Đại|Hình|Khác|Đề \d|Dạng \d|ĐMH) )?(?:Bài|Câu) \d+)\s*(?:\(([A-Za-z])\)|([a-z]))$/
+const RE_Y = /^((?:(?:Đại|Hình|Khác|Đề \d+|Dạng \d+|ĐMH|Tiết \d+|VN) )*(?:Bài|Câu) \d+)\s*(?:\(([A-Za-z])\)|([a-z]))$/
 
 const tienToChung = (xs) => {
   let p = xs[0] ?? ''

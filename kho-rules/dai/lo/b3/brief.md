@@ -34,3 +34,9 @@ Cuối cùng trả lời ngắn: mỗi lô bao nhiêu câu cao / vua / trống. 
 ## Luật bổ sung (Thùy 22/10, chủ đề Bất phương trình và hệ bất phương trình bậc nhất 2 ẩn)
 - **Câu có hình miền nghiệm mà ĐỀ thiếu số liệu, phụ thuộc vào hình, nhưng HÌNH đã đủ số liệu để làm ⇒ xếp mức `cao` luôn** (không hạ xuống `vua` chỉ vì đề không nêu hệ số/đường thẳng; chỉ hạ khi hình thật sự thiếu/không đọc được dữ kiện, hoặc mô tả dạng chưa phân biệt được đường thẳng đã biết hay phải lập).
 - Dạng mới **NDB01400 "Các tính chất cơ bản của bất phương trình bậc nhất 2 ẩn"**: các câu hỏi đơn giản xoay quanh định nghĩa/tính chất của bất phương trình bậc nhất 2 ẩn (đọc mô tả trong `dich.md`).
+
+## Luật chung (Thùy 23/10 — mọi khối): DẠNG SAU THẮNG
+- Câu trông thuộc hai (hay nhiều) dạng / nhóm khác nhau ⇒ luôn xếp vào dạng đứng **SAU** trong `dich.md` (số thứ tự lớn hơn), mức `cao`; không cần hạ xuống `vua` chỉ vì hai dạng cùng hợp. Ngoại lệ duy nhất: có bằng chứng thứ hai độc lập.
+- Câu "chọn mệnh đề / khẳng định đúng": dạng quyết định bởi phương án ĐÚNG, không bởi các phương án nhiễu.
+- Câu **Đúng/Sai** (4 mệnh đề) không gán dạng — nếu gặp thì để trống, `ly_do` "câu Đúng/Sai ⇒ kho riêng cấp chủ đề".
+- Đây là đợt K10 28/10 (bản đồ 75 dạng, vừa cập nhật 24–27/10): đọc kỹ mô tả mới của từng dạng trong `dich.md`; dạng mới (NDB01404 BPT bậc nhất 1 ẩn thực tế, NDB01595 tập hợp chứa tham số m khác, NDB01596 tổng số phần tử của cả nhóm …) nay có chỗ — câu từng để trống vì "thiếu dạng" này thì xếp vào đó.

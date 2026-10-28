@@ -10,26 +10,16 @@
 import { useEffect, useState } from 'react'
 import TruocBuoiTab from '../gami/TruocBuoiTab'
 import {
-  getBuoi, getRoster, getDangTen, listProblems, listGrades, addProblem, setProblemDang,
-  ensureProblems, gradeMuc, deleteGrade, closePhase, reopenPhase,
+  getBuoi, getRoster, getDangTen, listProblems, listGrades,
   getDanhGia, setDanhGiaDang, setNhanXet, setMuc, MUC_CATALOG, MUC_OPTS, nhanMuc,
   dongDanhGia, moLaiDanhGia, setNoiDungBuoi, listCanhBao,
   type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type DanhGiaHS, type DanhGiaDiem, type CanhBao,
 } from '../../lib/gami'
 import { tenHienThiDs } from '../../lib/hoten'
-import DangPickerOne from '../../components/DangPickerOne'
 import { ChuongBaoDong, ChipCanhBao, useDangTaiLieu, hopDang } from '../../components/ChuongBaoDong'
 import type { BuoiViewGv } from './GvHome'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 
-const MUC_IDLE = 'border-slate-200 text-slate-300'
-const MUC: { v: number; sel: string }[] = [
-  { v: 1, sel: 'bg-rose-600 text-white border-transparent' },
-  { v: 2, sel: 'bg-orange-500 text-white border-transparent' },
-  { v: 3, sel: 'bg-amber-500 text-white border-transparent' },
-  { v: 4, sel: 'bg-lime-600 text-white border-transparent' },
-  { v: 5, sel: 'bg-emerald-600 text-white border-transparent' },
-]
 // Đ/C/S đánh giá per dạng — thống nhất quy tắc với ERP DanhGiaTab (Đ=1 hiểu · C=0.5 một phần · S=0 chưa).
 const DG_SCORES: { v: DanhGiaDiem; lbl: string; sel: string }[] = [
   { v: 1, lbl: 'Đ', sel: 'bg-emerald-600 text-white border-transparent' },
@@ -40,9 +30,9 @@ const DG_SCORES: { v: DanhGiaDiem; lbl: string; sel: string }[] = [
 const MUC_REF = (muc?: number | null) => muc == null ? 'bg-slate-100 text-slate-300'
   : muc >= 4 ? 'bg-emerald-100 text-emerald-700' : muc === 3 ? 'bg-amber-100 text-amber-700' : 'bg-rose-100 text-rose-700'
 
-type TabKey = 'ingame' | 'et' | 'danhgia' | 'truocbuoi'
+type TabKey = 'et' | 'danhgia' | 'truocbuoi'
 const TABS: { key: TabKey; label: string }[] = [
-  { key: 'ingame', label: 'Bài trên lớp' }, { key: 'et', label: 'Điểm ET' }, { key: 'danhgia', label: 'Đánh giá' }, { key: 'truocbuoi', label: 'Trước buổi' },
+  { key: 'et', label: 'Điểm ET' }, { key: 'danhgia', label: 'Đánh giá' }, { key: 'truocbuoi', label: 'Trước buổi' },
 ]
 
 export type BuoiFull = BuoiHoc & { lop?: { ten_lop: string; mon: string; khoi: string | null }; gv_chinh_id: string | null }
@@ -95,7 +85,6 @@ export default function ChamBuoiGv({ view, onBack }: { view: BuoiViewGv; onBack:
         <div className="mx-auto max-w-[1000px] px-3 py-3 pb-10">
           {!buoi ? <p className="text-[13px] text-slate-400">Đang tải buổi…</p> : (
             <>
-              {tab === 'ingame' && <IngamePanel buoi={buoi} roster={roster} tenDang={tenDang} napTenDang={napTenDang} onChange={reload} />}
               {tab === 'et' && <EtRefPanel buoi={buoi} roster={roster} tenDang={tenDang} napTenDang={napTenDang} />}
               {tab === 'danhgia' && <DanhGiaPanel buoi={buoi} roster={roster} tenDang={tenDang} napTenDang={napTenDang} onChange={reload} />}
               {tab === 'truocbuoi' && (buoi.lop_id
@@ -124,86 +113,6 @@ function DongBar({ dong, dongLbl, onDong, onMoLai, closing, disabled }: {
   )
 }
 
-// ── CHẤM BÀI TRÊN LỚP: 1 bài/màn — port từ app TA (ChamBuoi.tsx), đổi tông màu ──
-function IngamePanel({ buoi, roster, tenDang, napTenDang, onChange }: {
-  buoi: BuoiFull; roster: BuoiHocHS[]; tenDang: (md: string | null) => string
-  napTenDang: (mds: (string | null)[]) => Promise<void>; onChange: () => void
-}) {
-  const buoiId = buoi.id
-  const [probs, setProbs] = useState<Problem[]>([])
-  const [grades, setGrades] = useState<Grade[]>([])
-  const [idx, setIdx] = useState(0)
-  const [dangPick, setDangPick] = useState<string | null>(null)
-  const [closing, setClosing] = useState(false)
-  const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
-  const tenHT = tenHienThiDs(coMat.map((r) => r.hoc_sinh?.ho_ten))
-  const dong = !!buoi.ingame_dong_at
-
-  async function reloadP() {
-    const [p, g] = await Promise.all([listProblems(buoiId, 'ingame'), listGrades(buoiId)])
-    setProbs(p); setGrades(g); napTenDang(p.map((x) => x.ma_dang))
-  }
-  useEffect(() => { (async () => { try { await ensureProblems(buoiId, 'ingame', 10) } catch { /* */ } reloadP() })() }, [buoiId]) // eslint-disable-line
-
-  const gradeOf = (pid: string, hsid: string) => grades.find((g) => g.problem_id === pid && g.hoc_sinh_id === hsid)
-  const p = probs[Math.min(idx, Math.max(0, probs.length - 1))]
-  const daCham = p ? coMat.filter((r) => gradeOf(p.id, r.hoc_sinh_id)).length : 0
-
-  async function setMucHS(hsId: string, muc: number) {
-    if (!p) return
-    try {
-      if (gradeOf(p.id, hsId)?.muc === muc) await deleteGrade(p.id, hsId)
-      else await gradeMuc({ buoiId, problemId: p.id, hocSinhId: hsId, muc })
-      await reloadP()
-    } catch (e: any) { alert(e.message ?? String(e)) }
-  }
-  async function dong_() {
-    if (closing) return
-    if (!confirm('Xác nhận chấm bài trên lớp? Sẽ tính EXP hạng. Mở lại được nếu cần sửa.')) return
-    setClosing(true)
-    try { const r = await closePhase(buoiId, 'ingame'); if (r.already) alert('Đã xác nhận rồi.'); else { if (r.khongCoDuLieu) alert('Đã đóng, nhưng chưa chấm ô nào.'); onChange() } }
-    catch (e: any) { alert(e?.message ?? String(e)) } finally { setClosing(false) }
-  }
-
-  if (coMat.length === 0) return <p className="text-[13px] text-slate-400">Chưa có HS điểm danh "có mặt" — OPS điểm danh trước.</p>
-  return (
-    <div>
-      <div className="mb-2.5 flex items-center gap-2">
-        <button onClick={() => setIdx((i) => Math.max(0, i - 1))} disabled={idx === 0} className="min-h-[40px] rounded-xl border border-slate-200 bg-white px-3.5 text-[15px] font-bold text-slate-600 disabled:opacity-30">‹</button>
-        <button onClick={() => p && !dong && setDangPick(p.id)} className="min-w-0 flex-1 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-center">
-          <span className="block text-[14px] font-bold text-slate-800">Bài {p?.problem_no ?? '—'} / {probs.length}</span>
-          <span className={`block truncate text-[11.5px] ${p?.ma_dang ? 'text-violet-600' : 'text-slate-400'}`}>{p?.ma_dang ? tenDang(p.ma_dang) : dong ? '—' : '+ chọn dạng'}</span>
-        </button>
-        <button onClick={() => setIdx((i) => Math.min(probs.length - 1, i + 1))} disabled={idx >= probs.length - 1} className="min-h-[40px] rounded-xl border border-slate-200 bg-white px-3.5 text-[15px] font-bold text-slate-600 disabled:opacity-30">›</button>
-      </div>
-      <div className="mb-2.5 flex items-center gap-2">
-        <span className="text-[12px] text-slate-400">Đã chấm {daCham}/{coMat.length} HS · bấm mức 1→5, bấm lại = bỏ</span>
-        <div className="ml-auto flex items-center gap-2">
-          {!dong && <button onClick={async () => { await addProblem(buoiId, 'ingame'); await reloadP(); setIdx(probs.length) }} className="min-h-[36px] rounded-lg border border-slate-200 bg-white px-2.5 text-[12.5px] font-semibold text-slate-600">+ Bài</button>}
-          <DongBar dong={dong} dongLbl="✓ Xác nhận" onDong={dong_} onMoLai={async () => { await reopenPhase(buoiId, 'ingame'); onChange() }} closing={closing} disabled={!probs.length} />
-        </div>
-      </div>
-      <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-2">
-        {coMat.map((r, i) => {
-          const g = p ? gradeOf(p.id, r.hoc_sinh_id) : undefined
-          return (
-            <div key={r.id} className="flex min-h-[52px] items-center gap-2 rounded-2xl border border-slate-200/70 bg-white px-3 py-1.5">
-              <span className="min-w-0 flex-1 truncate text-[13.5px] font-semibold text-slate-800">{tenHT[i]}</span>
-              <div className="flex gap-1">
-                {MUC.map((m) => (
-                  <button key={m.v} onClick={() => setMucHS(r.hoc_sinh_id, m.v)} disabled={dong}
-                    className={`h-11 w-11 rounded-xl border text-[15px] font-bold transition ${g?.muc === m.v ? m.sel : MUC_IDLE} ${dong && g?.muc !== m.v ? 'opacity-40' : ''}`}>{m.v}</button>
-                ))}
-              </div>
-            </div>
-          )
-        })}
-      </div>
-      {dangPick && <DangPickerOne khoi={buoi.lop?.khoi ?? ''} mon={buoi.lop?.mon} onClose={() => setDangPick(null)}
-        onPick={async (md) => { const pid = dangPick; setDangPick(null); await setProblemDang(pid, md); reloadP() }} />}
-    </div>
-  )
-}
 
 // ── ĐIỂM ET (tham khảo, READ-ONLY) — GV không chấm ET (việc của TA), chỉ xem để có căn cứ đánh giá.
 // Nguồn: CÙNG gami_session_problems/gami_grades mà TA chấm ở EtPanel (ta/ChamBuoi.tsx) — chỉ SELECT,

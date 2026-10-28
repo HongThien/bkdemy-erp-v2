@@ -10,7 +10,7 @@ import {
 } from '../../lib/bt'
 import { usePagedList } from '../../hooks/usePagedList'
 import {
-  getTaiLieuFull, updateTaiLieu, deletePhan, setCauOfPhan, autoSuggestByLoai, khoCuaMon,
+  getTaiLieuFull, updateTaiLieu, deletePhan, setCauOfPhan, autoSuggestByLoai, khoCuaMon, nhanhKhoCuaDang, NHANH_BDM,
   DEFAULT_LUYEN_COUNTS, DEFAULT_BTVN_LINES, ET_FORMS, etFormOf, type PhanResolved, type CauHinh, type ETForm as ETFormKind,
 } from '../../lib/tailieu'
 import { getMasteryHS, type DangMastery } from '../../lib/mastery'
@@ -213,7 +213,8 @@ export function BTEditor({ id, onClose }: { id: string; onClose: () => void }) {
       const full = await getTaiLieuFull(id)
       setCh(full.taiLieu.cau_hinh ?? {})
       setPhans(full.phans.filter((p) => p.loai_phan === 'dang'))
-      setGoiY(b.hoc_sinh_id && b.mon ? await getMasteryHS(b.hoc_sinh_id, b.mon) : [])
+      // Thùy 26/10 "chuyển hẳn sang bản đồ mới": gợi ý dạng yếu theo MASTERY MỚI (công tắc — K6–12 ra dạng bài NDB, cấp 1 giữ dạng cũ).
+      setGoiY(b.hoc_sinh_id && b.mon ? await getMasteryHS(b.hoc_sinh_id, b.mon, {}) : [])
       setGrades(await getBTGrades(id))
     } finally { setLoading(false) }
   }
@@ -264,8 +265,10 @@ export function BTEditor({ id, onClose }: { id: string; onClose: () => void }) {
   const dangDaCo = new Set(phans.map((p) => p.ref_ma).filter(Boolean))
   // Gợi ý có dạng MỌI nhánh (getMasteryHS 29/09). BT dùng 1 bảng câu theo bt.nhanh ⇒ đã có dạng thì chỉ gợi ý
   // CÙNG nhánh; chưa có dạng thì bấm gợi ý nào cũng được — themDang set nhánh theo dạng đầu tiên.
+  // Nhánh KHO của gợi ý: dạng bài NDB ⇒ 'bdm' (kho bdm_cau_hoi gộp Đại + HGT), không theo nhanh báo cáo của mastery (null/hinh_gt).
+  const nhanhGoiY = (d: DangMastery) => nhanhKhoCuaDang(d.ma_dang, d.nhanh)
   const goiYCanChu = goiY.filter((d) => (d.mastery?.muc === 'yeu' || d.mastery?.muc === 'can_luyen')
-    && (phans.length === 0 || d.nhanh === (bt.nhanh ?? null)))
+    && (phans.length === 0 || nhanhGoiY(d) === (bt.nhanh ?? null)))
 
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">
@@ -289,7 +292,7 @@ export function BTEditor({ id, onClose }: { id: string; onClose: () => void }) {
                 {goiYCanChu.map((d) => {
                   const daCo = dangDaCo.has(d.ma_dang)
                   return (
-                    <button key={d.ma_dang} onClick={() => !daCo && themDang(d.ma_dang, d.nhanh)} disabled={daCo}
+                    <button key={d.ma_dang} onClick={() => !daCo && themDang(d.ma_dang, nhanhGoiY(d))} disabled={daCo}
                       className={`rounded-full border px-2.5 py-1 text-[12px] font-medium ${daCo ? 'border-slate-200 bg-slate-50 text-slate-400' : MUC_CLASS[d.mastery!.muc]}`}>
                       {d.ten_dang} <span className="opacity-70">· {MUC_LABEL[d.mastery!.muc]}</span>{daCo ? ' ✓' : ' +'}
                     </button>
@@ -315,7 +318,10 @@ export function BTEditor({ id, onClose }: { id: string; onClose: () => void }) {
       </div>
 
       {/* chonNhanh CHỈ khi CHƯA có dạng nào — sau đó nhánh cố định theo bt.nhanh (mọi dạng cùng cauTbl). */}
-      {dangModal && <DangPickerOne khoi={bt.khoi} mon={bt.mon} nhanh={bt.nhanh ?? null} chonNhanh={phans.length === 0} onClose={() => setDangModal(false)}
+      {/* banDoMoi: BT mới (chưa có dạng) hoặc BT đã theo bản đồ mới ⇒ khối K6–12 chọn dạng bài NDB (nhánh 'bdm'). BT cũ đã có dạng
+          nhánh cũ giữ bản đồ cũ — trộn NDB vào kho câu nhánh cũ thì dạng bài không có câu. */}
+      {dangModal && <DangPickerOne khoi={bt.khoi} mon={bt.mon} nhanh={bt.nhanh ?? null} chonNhanh={phans.length === 0}
+        banDoMoi={phans.length === 0 || bt.nhanh === NHANH_BDM.ma} onClose={() => setDangModal(false)}
         onPick={(ma, nh) => { setDangModal(false); themDang(ma, nh) }} />}
       {picker && <KhoPicker maDangs={[picker.maDang]} cauTbl={cauTbl} selected={phans.find((p) => p.id === picker.phanId)?.caus.map((c) => c.ma_cau) ?? []} onClose={() => setPicker(null)}
         onConfirm={async (m) => { await applyCaus(picker.phanId, m); setPicker(null) }} />}

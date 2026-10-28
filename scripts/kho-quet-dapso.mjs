@@ -13,6 +13,9 @@
 // VÌ SAO whitelist theo DẠNG chứ không "cứ máy tính được là ký": lần quét đầu (09/09) 627 "lệch" phần lớn BÁO GIẢ —
 // toán có lời (máy vớ 1 số trong đề), đặt tính chia (kho ghi thương + dư / làm tròn), quy đồng (đáp số là cặp),
 // làm tròn, đổi đơn vị, lớp 6 viết phép nhân bằng dấu chấm. Máy chỉ đáng tin khi ĐÁP SỐ = GIÁ TRỊ BIỂU THỨC trong đề.
+// KHUÔN, KHÔNG PHẢI BẢN ĐỒ (26/10): whitelist tra theo KHUÔN ĐÁP SỐ của câu (scripts/lib/khuon-dap-so.mjs — KHUON_MAY_KY,
+// nội dung không đổi; khuôn = bảng <kho>_cau_khuon nếu đã có, không thì cột lưu trữ dang_chinh). Báo cáo "dạng lệch" nhóm
+// theo dạng bài bản đồ mới (NDB) khi câu đã gán (K6–12), còn lại theo khuôn (cấp 1).
 // Dạng loại ra và lý do (đối chiếu bằng mẫu thật khi quét 08/09):
 //   T103020101 (2 phép tính/câu → đáp số là cặp) · T104040105, T105040107 (đơn vị đo) · T14T040201, T105010201,
 //   T105040203 (phép chia: dư / thương làm tròn) · T105020102 (quy đồng) · 0770201102 (làm tròn) · T1077030101 (nhận diện).
@@ -20,38 +23,29 @@ import pg from 'pg'
 import { readFileSync, writeFileSync } from 'node:fs'
 import { tinh } from './mcq-auto.mjs'
 import { parseHuuTi } from './lib/huuti.mjs'
+import { KHUON_MAY_KY, coBangKhuon, khuonSql, khoaMay } from './lib/khuon-dap-so.mjs'
 
 const args = process.argv.slice(2)
 const opt = (k, d) => { const i = args.indexOf(k); return i >= 0 && args[i + 1] && !args[i + 1].startsWith('--') ? args[i + 1] : d }
 const kho = opt('--kho', 'dai')
 const GHI = args.includes('--ghi')
 
-// WHITELIST dạng máy được ký (kho Đại). `cham`: dấu chấm giữa 2 số = phép NHÂN (lớp 6 số tự nhiên, lớp 8 hằng đẳng thức).
-const C = { chamLaNhan: true }
-const WHITELIST = {
-  // K3–K4: cộng trừ số tự nhiên, tính thuận tiện, nhân
-  T103020103: {}, T104020101: {}, T104020102: {}, T104020103: {}, T104020104: {},
-  T14T040101: {}, T14T040102: {}, T14T040103: {},
-  // K5: biểu thức số tự nhiên, phân số, hỗn số, số thập phân (KHÔNG chia đặt tính, KHÔNG quy đồng, KHÔNG đơn vị)
-  T105010202: {}, T105010203: {}, T105020201: {}, T105020202: {}, T105020203: {}, T105020204: {},
-  T105030101: {}, T105030201: {}, T105030202: {}, T105030203: {}, T105040103: {}, T105040201: {}, T105040202: {}, T105040204: {},
-  T15T020101: {}, T15T020102: {},
-  // K6: số tự nhiên — dấu chấm là nhân
-  T106020202: C, T106020203: C, T106020301: C, T106020302: C, T106020303: C,
-  T106020401: C, T106020402: C, T106020403: C, T106020501: C, T106020503: C,
-  // K7: số hữu tỉ (tính, tìm x, luỹ thừa, thứ tự phép tính)
-  T107010201: {}, T107010202: {}, T107010203: {}, T107010206: {}, T107010207: {}, T107010301: {},
-  T107010401: {}, T107010403: {}, T107010404: {}, T10770330201: {}, T107703330301: {},
-  // K8–K9
-  T108020402: C, T109020101: {}, T109020102: {},
-}
+// WHITELIST KHUÔN máy được ký — chuyển sang lib/khuon-dap-so.mjs (KHUON_MAY_KY) 26/10, không đổi nội dung.
+const WHITELIST = KHUON_MAY_KY
 
 const url = readFileSync(new URL('../.env', import.meta.url), 'utf8').match(/^\s*DATABASE_URL\s*=\s*(.+?)\s*$/m)[1]
 const c = new pg.Client({ connectionString: url, connectionTimeoutMillis: 20000 }); await c.connect()
-const { rows } = await c.query(`select q.ma_cau, q.dang_chinh, b.khoi, b.ten_dang, q.noi_dung, q.dap_an, q.nguon, q.nguon_giai, q.da_duyet,
+const CO_BANG_KHUON = await coBangKhuon(c)
+const { rows: rows0 } = await c.query(`select q.ma_cau, q.dang_chinh, ${khuonSql(kho, 'q', CO_BANG_KHUON)} as khuon, d.dang_bai_id,
+    coalesce(nb.khoi, b.khoi::text) as khoi, coalesce(nb.ten_dang, b.ten_dang) as ten_dang, q.noi_dung, q.dap_an, q.nguon, q.nguon_giai, q.da_duyet,
     q.kiem_may, q.kiem_may_boi, q.kiem_may_ghi
-  from ${kho}_cau_hoi q left join ${kho}_ban_do b on b.ma_dang = q.dang_chinh
+  from ${kho}_cau_hoi q
+  left join bdm_cau_dang d on d.ma_cau = q.ma_cau and d.kho = '${kho}'
+  left join bdm_ban_do nb on nb.ma_dang = d.dang_bai_id
+  left join ${kho}_ban_do b on b.ma_dang = q.dang_chinh
   where q.xoa_at is null and q.dap_an is not null and q.dap_an <> ''`)
+// khoa = khoá tra khuôn (lib/khuon-dap-so.mjs); nhom = đơn vị báo cáo: dạng bài NDB nếu đã gán, không thì khuôn.
+const rows = rows0.map((q) => ({ ...q, khoa: khoaMay(q.khuon, q.dang_bai_id ? q.khoi : null, q.dang_chinh), nhom: q.dang_bai_id ?? q.khuon ?? q.dang_chinh }))
 
 const tk = { tong: rows.length, ds_parse: 0, may_tinh: 0, khop: 0, lech: 0 }
 const byKhoi = {}, byDang = {}, lech = []
@@ -64,28 +58,28 @@ for (const q of rows) {
   const chu = q.noi_dung.replace(/\$[^$]*\$/g, ' ').replace(/\$.*$/, ' ').replace(/\s+/g, ' ').trim()
   if (chu.length > 45 || /\d/.test(chu)) continue
   tk.ds_parse++
-  const w = WHITELIST[q.dang_chinh]
+  const w = WHITELIST[q.khoa]
   const r = tinh(q.noi_dung, w ?? {}); if (!r.ok) continue
   tk.may_tinh++; k.may++
-  const d = byDang[q.dang_chinh] ??= { ten: q.ten_dang, may: 0, lech: 0, ng: {} }; d.may++
+  const d = byDang[q.nhom] ??= { ten: q.ten_dang, may: 0, lech: 0, ng: {}, wl: false }; d.may++; if (w) d.wl = true
   const ngk = q.nguon === 'clone' ? 'clone' : 'goc'; const ng = d.ng[ngk] ??= { may: 0, lech: 0 }; ng.may++
   const khop = r.canon === key.canon
-  if (khop) { tk.khop++; k.khop++ } else { tk.lech++; k.lech++; d.lech++; ng.lech++; lech.push({ ma_cau: q.ma_cau, dang: q.dang_chinh, khoi: q.khoi, nguon: q.nguon, nguon_giai: q.nguon_giai, da_duyet: q.da_duyet, kho: key.canon, may: r.canon, de: q.noi_dung.replace(/\s+/g, ' ').slice(0, 120) }) }
+  if (khop) { tk.khop++; k.khop++ } else { tk.lech++; k.lech++; d.lech++; ng.lech++; lech.push({ ma_cau: q.ma_cau, dang_bai: q.dang_bai_id, khuon: q.khuon, khoi: q.khoi, nguon: q.nguon, nguon_giai: q.nguon_giai, da_duyet: q.da_duyet, kho: key.canon, may: r.canon, de: q.noi_dung.replace(/\s+/g, ' ').slice(0, 120) }) }
   if (!w) continue
   if (q.kiem_may_boi && q.kiem_may_boi !== 'mcq-auto') { wl.bo_qua_nguoi++; continue }   // người/Claude đã kiểm → máy không đè
   const ghi = khop ? null : `máy ${r.canon} ≠ kho ${key.canon}`
   if (khop && q.da_duyet) wl.da_ky_nguoi++
-  ;(khop ? wl.khop : wl.nghi).push({ ma_cau: q.ma_cau, dang: q.dang_chinh, khoi: q.khoi, ten_dang: q.ten_dang, nguon: q.nguon, da_duyet: q.da_duyet, kho: key.canon, may: r.canon, ghi, de: q.noi_dung.replace(/\s+/g, ' ').slice(0, 120), doi: q.kiem_may !== (khop ? 'khop' : 'nghi') || (q.kiem_may_ghi ?? null) !== ghi })
+  ;(khop ? wl.khop : wl.nghi).push({ ma_cau: q.ma_cau, dang_bai: q.dang_bai_id, khuon: q.khuon, khoi: q.khoi, ten_dang: q.ten_dang, nguon: q.nguon, da_duyet: q.da_duyet, kho: key.canon, may: r.canon, ghi, de: q.noi_dung.replace(/\s+/g, ' ').slice(0, 120), doi: q.kiem_may !== (khop ? 'khop' : 'nghi') || (q.kiem_may_ghi ?? null) !== ghi })
 }
 
 console.log(`Kho ${kho}: ${tk.tong} câu có đáp số · đáp số parse được ${tk.ds_parse} · MÁY TÍNH ĐƯỢC ${tk.may_tinh} (${(100 * tk.may_tinh / tk.tong).toFixed(1)}%) · khớp ${tk.khop} · LỆCH ${tk.lech} (${(100 * tk.lech / Math.max(1, tk.may_tinh)).toFixed(1)}% của phần máy tính được)`)
 console.log('Theo khối (tổng / máy tính được / lệch):', Object.entries(byKhoi).sort().map(([k, v]) => `${k}: ${v.tong}/${v.may}/${v.lech}`).join('  '))
-console.log('Dạng lệch nhiều nhất:'); for (const [ma, d] of Object.entries(byDang).filter(([, d]) => d.lech).sort((a, b) => b[1].lech - a[1].lech).slice(0, 12)) console.log(`  ${ma} ${d.ten}: ${d.lech}/${d.may}${WHITELIST[ma] ? '' : '  (ngoài whitelist)'}`)
+console.log('Dạng bài (NDB) / khuôn lệch nhiều nhất:'); for (const [ma, d] of Object.entries(byDang).filter(([, d]) => d.lech).sort((a, b) => b[1].lech - a[1].lech).slice(0, 12)) console.log(`  ${ma} ${d.ten}: ${d.lech}/${d.may}${d.wl ? '' : '  (ngoài whitelist khuôn)'}`)
 const byNguon = {}; for (const l of lech) { const k = `${l.nguon}/${l.nguon_giai}`; byNguon[k] = (byNguon[k] ?? 0) + 1 }
 console.log('Lệch theo nguồn đề/lời giải:', byNguon)
 
 const soDoi = wl.khop.filter((x) => x.doi).length + wl.nghi.filter((x) => x.doi).length
-console.log(`\nWHITELIST (${Object.keys(WHITELIST).length} dạng): máy ký KHỚP ${wl.khop.length} (trong đó người đã ký trước ${wl.da_ky_nguoi}) · NGHI ${wl.nghi.length} · bỏ qua vì người/Claude đã kiểm ${wl.bo_qua_nguoi} · dòng sẽ đổi so với DB ${soDoi}`)
+console.log(`\nWHITELIST (${Object.keys(WHITELIST).length} khuôn): máy ký KHỚP ${wl.khop.length} (trong đó người đã ký trước ${wl.da_ky_nguoi}) · NGHI ${wl.nghi.length} · bỏ qua vì người/Claude đã kiểm ${wl.bo_qua_nguoi} · dòng sẽ đổi so với DB ${soDoi}`)
 console.log('Câu NGHI (máy ≠ kho) — đưa vào hàng duyệt lại:')
 for (const l of wl.nghi) console.log(`  ${l.ma_cau} K${l.khoi} ${l.nguon}${l.da_duyet ? ' [người đã ký]' : ''} kho=${l.kho} máy=${l.may} | ${l.de.slice(0, 90)}`)
 

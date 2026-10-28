@@ -1,7 +1,7 @@
 // Data-layer "Ôn tập" trong BTVN (spaced repetition tầng LỚP) — seam mới, UI KHÔNG gọi supabase trực tiếp.
 // Xem spec-btvn-ontap.md + PLAN.md. Tầng LỚP (không per-HS) — chống quên cho cả lớp, GV pick hệ gợi ý.
 import { supabase } from './supabase'
-import { listPhan, addPhan, usedCausOfBuoi, suggestCauForDang, khoCuaMon, type CauHinh } from './tailieu'
+import { listPhan, addPhan, usedCausOfBuoi, suggestCauForDang, khoCuaMon, nhanhKhoCuaDang, laMaDangBdm, NHANH_BDM, type CauHinh } from './tailieu'
 import { dangInfoCuaMon } from './mastery'
 import { type CauHoi } from './kho/api'
 
@@ -117,7 +117,9 @@ export async function goiYOnTap(nguonId: string, buoiId: string, lopId: string, 
   const [hardExclude, softExclude] = await Promise.all([usedCausOfBuoi(nguonId, buoiId), neCauLopGanDay(lopId)])
   const out: GoiY[] = []
   for (const t of top) {
-    const cauTbl = khoCuaMon(mon, t.nhanh).cauTbl
+    // Dạng bài NDB (giáo trình đổi mã đợt 2 / chọn theo bản đồ mới) ⇒ kho bdm_cau_hoi — nhánh của dangInfoCuaMon là nhánh BÁO CÁO
+    // (null / hinh_gt), không phải nhánh kho: tra dai_cau_hoi theo mã NDB thì 0 câu.
+    const cauTbl = khoCuaMon(mon, nhanhKhoCuaDang(t.ma_dang, t.nhanh)).cauTbl
     const localExclude = new Set(hardExclude)
     const picked: CauHoi[] = []
     for (let k = 0; k < CAP_CAU_MOI_DANG; k++) {
@@ -164,10 +166,18 @@ export async function fetchCausByMa(maCaus: string[], cauTbl: string): Promise<C
 // Tên dạng theo ma_dang (cho UI — config/DangPickerOne chỉ có ma_dang, không kèm tên).
 export async function fetchTenDangByMa(maDangs: string[], mon: string, nhanh?: string | null): Promise<Map<string, string>> {
   if (!maDangs.length) return new Map()
-  const { data, error } = await supabase.from(khoCuaMon(mon, nhanh).banDoTbl).select('ma_dang, ten_dang').in('ma_dang', maDangs).limit(LIMIT)
-  if (error) throw error
-  return new Map(((data ?? []) as { ma_dang: string; ten_dang: string }[]).map((d) => [d.ma_dang, d.ten_dang]))
+  // Theo kho của TỪNG mã (NDB ⇒ bdm_ban_do) — ôn tập giáo trình cũ có thể trộn dạng cũ + dạng bài mới.
+  const out = new Map<string, string>()
+  for (const nh of [...new Set(maDangs.map((m) => nhanhKhoCuaDang(m, nhanh)))]) {
+    const mas = maDangs.filter((m) => nhanhKhoCuaDang(m, nhanh) === nh)
+    const { data, error } = await supabase.from(khoCuaMon(mon, nh).banDoTbl).select('ma_dang, ten_dang').in('ma_dang', mas).limit(LIMIT)
+    if (error) throw error
+    for (const d of (data ?? []) as { ma_dang: string; ten_dang: string }[]) out.set(d.ma_dang, d.ten_dang)
+  }
+  return out
 }
+// Bảng câu của 1 dạng ôn tập (NDB ⇒ kho bản đồ mới, còn lại theo nhánh tài liệu) — OnTapEditor + append dùng chung.
+export const cauTblOnTap = (mon: string, nhanh: string | null | undefined, maDang: string): string => khoCuaMon(mon, nhanhKhoCuaDang(maDang, nhanh)).cauTbl
 
 // ── Append vào doc BTVN đã trích (spec §6) — gọi SAU trichXuatBuoi (không sửa hàm đó, tránh vòng import
 // ngược tailieu.ts↔ontap.ts — compose ở CALL SITE, xem TrichPanel.gan trong TaiLieuBuilder.tsx). Không có
@@ -175,19 +185,23 @@ export async function fetchTenDangByMa(maDangs: string[], mon: string, nhanh?: s
 export async function appendOnTapToBtvnDoc(btvnDocId: string, nguonId: string, nguonBuoi: string, lopId: string, mon: string, nhanh?: string | null): Promise<{ added: number; matChet: string[] }> {
   const config = await getOnTapConfig(nguonId, nguonBuoi, lopId)
   if (!config || config.skipped || !config.dangs.length) return { added: 0, matChet: [] }
-  const K = khoCuaMon(mon, nhanh)
   const phans = await listPhan(btvnDocId)
   let t = phans.length ? Math.max(...phans.map((p) => p.thu_tu)) + 1 : 0
-  const { data: doc } = await supabase.from('tai_lieu').select('cau_hinh').eq('id', btvnDocId).single()
+  const { data: doc } = await supabase.from('tai_lieu').select('cau_hinh, nhanh').eq('id', btvnDocId).single()
   const chHienCo = ((doc as any)?.cau_hinh ?? {}) as CauHinh
+  const nhanhDoc = ((doc as any)?.nhanh ?? nhanh ?? null) as string | null
   const linesMerge: Record<string, number> = { ...(chHienCo.btvnLinesByCau ?? {}) }
   const colMerge: Record<string, number> = { ...(chHienCo.colByCau ?? {}) }
+  // Câu chọn theo DẠNG BÀI NDB nằm ở kho bản đồ mới (gộp Đại + HGT) ⇒ ghi nhánh theo câu (cau_hinh.nhanhByCau, khuôn MT) để
+  // getTaiLieuFull / in / phát hành online nạp đúng kho — phiếu BTVN của giáo trình cũ vẫn là nhánh Đại.
+  const nhanhMerge: Record<string, string> = { ...(chHienCo.nhanhByCau ?? {}) }
   const matChet: string[] = []
   let added = 0
   for (const d of config.dangs) {
     if (!d.ma_caus.length) continue
     // Revalidate: câu bị xoá/sửa mã ở kho sau khi GV chọn → bỏ khỏi phan, báo lại cho UI toast (không chặn).
-    const { data: caus } = await supabase.from(K.cauTbl).select('ma_cau').in('ma_cau', d.ma_caus).limit(LIMIT)
+    // (nhánh của DOC — rebuildOnTapInDoc không truyền nhanh; trước đây doc nhánh HGT bị tra nhầm kho Đại)
+    const { data: caus } = await supabase.from(cauTblOnTap(mon, nhanhDoc, d.ma_dang)).select('ma_cau').in('ma_cau', d.ma_caus).limit(LIMIT)
     const conSong = new Set(((caus ?? []) as { ma_cau: string }[]).map((c) => c.ma_cau))
     const maCauSong = d.ma_caus.filter((m) => conSong.has(m))
     for (const m of d.ma_caus) if (!conSong.has(m)) matChet.push(m)
@@ -197,8 +211,13 @@ export async function appendOnTapToBtvnDoc(btvnDocId: string, nguonId: string, n
     added++
     if (d.linesByCau) for (const [ma, n] of Object.entries(d.linesByCau)) if (conSong.has(ma)) linesMerge[ma] = n
     if (d.colByCau) for (const [ma, n] of Object.entries(d.colByCau)) if (conSong.has(ma)) colMerge[ma] = n
+    if (laMaDangBdm(d.ma_dang) && nhanhDoc !== NHANH_BDM.ma) for (const ma of maCauSong) nhanhMerge[ma] = NHANH_BDM.ma
   }
-  if (added) await supabase.from('tai_lieu').update({ cau_hinh: { ...chHienCo, btvnLinesByCau: linesMerge, colByCau: colMerge } }).eq('id', btvnDocId)
+  if (added) {
+    const chMoi: CauHinh = { ...chHienCo, btvnLinesByCau: linesMerge, colByCau: colMerge }
+    if (Object.keys(nhanhMerge).length) chMoi.nhanhByCau = nhanhMerge
+    await supabase.from('tai_lieu').update({ cau_hinh: chMoi }).eq('id', btvnDocId)
+  }
   return { added, matChet }
 }
 

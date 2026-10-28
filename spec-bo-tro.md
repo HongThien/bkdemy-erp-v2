@@ -350,6 +350,7 @@ hàng đợi **nhớ filter + list + vị trí cuộn + khối đang mở** khi 
 - **Một nguồn tiến trình:** `fn_duoi_tien_trinh(hs)` — HS (app), TA (ca đuổi), ERP cùng đọc. Mỗi dạng có trạng thái xong · đang học · tới lượt · khoá · trên giấy, và nơi làm (ở nhà / tại ca).
 - **Khoá tuần tự** theo độ khó trong chuyên đề của MỤC TIÊU; TA mở tay được (`fn_duoi_mo_dang`). Dạng ngoài mục tiêu KHÔNG hiện — học thêm thì ra phần Học tập.
 - **Đóng đợt** vẫn do giáo viên/TA xác nhận (hệ chỉ đề xuất khi đủ dạng / đủ buổi).
+- **26/10 — bản đồ mới (mig 202610261821):** K6–12 mục tiêu chọn theo dạng bài NDB (`fn_duoi_dang_chon`), khoá tuần tự theo thứ tự bản đồ mới (chủ đề → chuyên đề → nhóm → dạng bài); mã cũ chưa quy được (ứng ≥2 dạng bài) vẫn chạy bản đồ cũ. Cấp 1 không đổi.
 
 ## 23. Cập nhật 16/10 — TA xem câu em đang làm + lời giải chi tiết
 

@@ -217,7 +217,7 @@ function MTThangLop({ lop }: { lop: Lop }) {
 function RollupLop({ lop }: { lop: Lop }) {
   const [rows, setRows] = useState<HSRollup[] | null>(null)
   const [err, setErr] = useState<string | null>(null)
-  useEffect(() => { setRows(null); setErr(null); getMasteryRollup({ mon: lop.mon, lopId: lop.id, theoCongTac: true }).then(setRows).catch((e) => setErr(e.message ?? String(e))) }, [lop.id, lop.mon])
+  useEffect(() => { setRows(null); setErr(null); getMasteryRollup({ mon: lop.mon, lopId: lop.id }).then(setRows).catch((e) => setErr(e.message ?? String(e))) }, [lop.id, lop.mon])
   if (err) return <p className="rounded-2xl border border-rose-200 bg-rose-50 p-3 text-[13px] text-rose-700">⚠ {err}</p>
   if (!rows) return <p className="text-[13px] text-slate-400">Đang tính mastery cả lớp…</p>
   const sorted = [...rows].sort((a, b) => {

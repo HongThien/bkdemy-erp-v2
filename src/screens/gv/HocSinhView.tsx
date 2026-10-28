@@ -226,7 +226,7 @@ function DangBaiTab({ hsId, mon }: { hsId: string; mon: string }) {
     setRows(null); setErr(null)
     try {
       const [d, h] = await Promise.all([
-        getMasteryHS(hsId, mon, { theoCongTac: true }),
+        getMasteryHS(hsId, mon, {}),
         mon === 'Toán' ? getHinhMasteryHS(hsId).catch(() => [] as HinhMastery[]) : Promise.resolve([] as HinhMastery[]),
       ])
       setRows(d); setHinh(h)

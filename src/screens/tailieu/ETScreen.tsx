@@ -6,7 +6,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   createET, updateET, getTaiLieuFull, setETCaus, suggestCauForDang, suggestNForDang, khoCuaMon, getETByBuoi,
-  maET, ET_FORMS, etFormOf, sortETCaus, type ETDoc, type CauHinh, type ETForm as ETFormKind, type TaiLieuFull,
+  maET, ET_FORMS, etFormOf, sortETCaus, nhanhChonCuaKhoi, tenNhanh, coKhoHinh,
+  type ETDoc, type CauHinh, type ETForm as ETFormKind, type TaiLieuFull, type NhanhMon,
 } from '../../lib/tailieu'
 import { buildMaDe as buildMaDeLib, oTrongMaDe, usedMoiDe as usedMoiDeLib, setVarInCh } from '../../lib/made'
 import { listLop, type Lop } from '../../lib/nhansu'
@@ -277,6 +278,21 @@ export function ETEditor({ et, onClose, presetHinh }: { et?: ETView; onClose?: (
     if (v === nhanh || editing) return   // sửa ET đã lưu: nhánh cố định, không đổi được nữa
     setNhanh(v); setRows(blankRows()); setCau({}); setCh({}); setDangOpts([])
   }
+  // ── NHÁNH CHỌN theo khối (Thùy 26/10 "chuyển hẳn sang bản đồ + kho mới"): khối đã chạy bản đồ mới (DB quyết,
+  // _kho_ds_nhanh_khoi) ⇒ "Bản đồ mới" (dạng bài NDB, kho bdm_cau_hoi — gộp Đại + Hình giải tích) + Hình · Học; cấp 1 /
+  // môn khác giữ registry cũ. Soạn MỚI tự về nhánh đầu của khối; ET cũ đã lưu (nhánh cũ) vẫn mở/sửa/in theo nhánh của nó.
+  const [nhanhOpts, setNhanhOpts] = useState<NhanhMon[]>([])
+  useEffect(() => {
+    let alive = true
+    nhanhChonCuaKhoi(mon, khoi).then((o) => { if (alive) setNhanhOpts(o) }).catch(() => { if (alive) setNhanhOpts([]) })
+    return () => { alive = false }
+  }, [mon, khoi])
+  useEffect(() => {
+    if (editing || nhanh === 'hinh' || !nhanhOpts.length) return            // Hình (Luyện) không thuộc kho câu
+    if (nhanhOpts.some((o) => o.ma === nhanh)) return
+    if (savedId || rows.some((r) => r.maCau)) return                         // đang mở / đang soạn ET nhánh cũ ⇒ giữ
+    chonNhanh(nhanhOpts[0].ma)
+  }, [nhanhOpts]) // eslint-disable-line
 
   const usedExcept = (idx: number) => new Set(rows.filter((_, i) => i !== idx).map((r) => r.maCau).filter(Boolean) as string[])
   async function ensureCache(maDang: string) {
@@ -419,7 +435,9 @@ export function ETEditor({ et, onClose, presetHinh }: { et?: ETView; onClose?: (
       const ten = `ET ${lop.ten_lop} · ${ngay.split('-').reverse().join('/')}`
       const id = savedId ?? et?.id ?? null
       // updateET trả false = doc không còn (savedId trỏ doc đã xoá) → RƠI xuống tạo mới, tránh FK khi setETCaus.
-      if (id && await updateET(id, { ten, lop_id: lop.id, ngay, cau_hinh: chSave })) {
+      // nhanh ghi kèm: tạo mới nạp trúng ET cũ của buổi rồi đổi sang "Bản đồ mới" (câu đã reset theo nhánh) ⇒ doc theo nhánh mới,
+      // kho câu khi in / chấm / phát hành online (getTaiLieuFull → khoCuaMon(mon, nhanh)) mới khớp câu đang lưu.
+      if (id && await updateET(id, { ten, lop_id: lop.id, ngay, cau_hinh: chSave, nhanh: lop.mon === 'Toán' ? nhanh : null })) {
         await setETCaus(id, maCaus)
         // ⭐ 07-12: link PDF có sẵn ngay khi lưu → enqueue hàng đợi TOÀN CỤC (LinkGenWorker, App.tsx).
         useStore.getState().enqueueLinkGen(id, 'et')
@@ -454,15 +472,15 @@ export function ETEditor({ et, onClose, presetHinh }: { et?: ETView; onClose?: (
           <div className="w-44"><SearchSelect value={lopId} onChange={setLopId} placeholder="chọn lớp…"
             options={lops.map((l) => ({ id: l.id, label: l.ten_lop, sub: `${l.mon}${l.khoi ? ' · K' + l.khoi : ''}` }))} /></div>
         </div>
-        {mon === 'Toán' && (
+        {(nhanhOpts.length > 0 || coKhoHinh(mon)) && (
           <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5" title={editing ? 'Nhánh cố định khi sửa ET đã lưu' : 'Chọn nhánh trước khi soạn câu'}>
-            <button onClick={() => chonNhanh(null)} disabled={editing} className={`rounded-md px-3 py-1 text-[13px] font-medium transition disabled:cursor-not-allowed disabled:opacity-60 ${nhanh === null ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>Đại số</button>
-            <button onClick={() => chonNhanh('hinh_gt')} disabled={editing} className={`rounded-md px-3 py-1 text-[13px] font-medium transition disabled:cursor-not-allowed disabled:opacity-60 ${nhanh === 'hinh_gt' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>Hình giải tích</button>
-            {/* ⭐ 16/09 (CEO): "ET chưa pick theo kho mới" — thêm nhánh Hình học (phase HỌC). Đi CHUNG logic
-                Đại (khoCuaMon dispatch cauTbl='hinh_hoc_cau_hoi'), KHÔNG dùng panel Hình-Luyện bên dưới.
-                Đặt trước 'hinh' (Luyện) để 2 nhánh Hình xếp cạnh nhau; guard `nhanh === 'hinh'` chỉ áp Luyện. */}
-            <button onClick={() => chonNhanh('hinh_hoc')} disabled={editing} className={`rounded-md px-3 py-1 text-[13px] font-medium transition disabled:cursor-not-allowed disabled:opacity-60 ${nhanh === 'hinh_hoc' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>Hình học</button>
-            <button onClick={() => chonNhanh('hinh')} disabled={editing} className={`rounded-md px-3 py-1 text-[13px] font-medium transition disabled:cursor-not-allowed disabled:opacity-60 ${laHinh ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>Hình (Luyện)</button>
+            {/* Pill nhánh theo KHỐI (nhanhChonCuaKhoi): K6–12 = Bản đồ mới + Hình · Học; cấp 1 = Đại số / Hình giải tích / Hình · Học.
+                ET đã lưu theo nhánh cũ mà khối giờ không còn nhánh đó ⇒ vẫn hiện pill của nó (đánh dấu "bản đồ cũ") để mở/sửa/in. */}
+            {[...nhanhOpts, ...(nhanh !== 'hinh' && !nhanhOpts.some((o) => o.ma === nhanh) && nhanhOpts.length ? [{ ma: nhanh, ten: `${tenNhanh(mon, nhanh) ?? 'Đại số'} · bản đồ cũ` }] : [])].map((o) => (
+              <button key={o.ma ?? 'dai'} onClick={() => chonNhanh(o.ma)} disabled={editing} className={`rounded-md px-3 py-1 text-[13px] font-medium transition disabled:cursor-not-allowed disabled:opacity-60 ${nhanh === o.ma ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>{o.ten}</button>
+            ))}
+            {/* Hình (Luyện) = panel mô hình riêng (BuoiPickEditor), không phải kho câu — guard `nhanh === 'hinh'` chỉ áp Luyện. */}
+            {coKhoHinh(mon) && <button onClick={() => chonNhanh('hinh')} disabled={editing} className={`rounded-md px-3 py-1 text-[13px] font-medium transition disabled:cursor-not-allowed disabled:opacity-60 ${laHinh ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>Hình (Luyện)</button>}
           </div>
         )}
         <div className="flex items-center gap-1.5 text-[12px] text-slate-500">Ngày

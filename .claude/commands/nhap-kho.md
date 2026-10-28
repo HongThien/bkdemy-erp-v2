@@ -7,6 +7,25 @@ argument-hint: <co_giai|khong_giai>
 
 `$ARGUMENTS` = `co_giai` (luồng A, có lời giải sẵn) hoặc `khong_giai` (luồng B, chỉ có đề).
 
+## ⭐ SÁCH THAM KHẢO — VÍ DỤ vào KHO TRÊN LỚP, BÀI TẬP vào KHO VỀ NHÀ (Thùy 27/10, mọi khối)
+
+Tài liệu là sách tham khảo (có phần ví dụ mẫu + phần bài tập): **ví dụ hướng dẫn** ⇒ kho TRÊN LỚP (`dai_cau_lop`, gắn dạng bài mới, vai `giang`, qua `fn_dai_lop_them`), **bài tập** ⇒ kho VỀ NHÀ (kho câu luyện như các mục dưới). Không nhập ví dụ vào kho câu luyện. Khối/nhánh chưa có kho trên lớp ⇒ để riêng ví dụ, báo Thùy. Chi tiết: `kho-rules/README.md` §3.
+
+## ⭐ BẢN ĐỒ MỚI — Toán Đại/HGT khối K6–12 (Thùy 26/10 "chuyển hẳn sang bản đồ + kho mới") — ĐÈ các mục về dạng bên dưới
+
+Khối nào chạy bản đồ mới: DB quyết — `select public._bdm_ds_khoi_chay()` (hiện 6–12). **Cấp 1 (3/4/4T/5/5T), KHTN, Hình: giữ y như các mục bên dưới.**
+Luật đầy đủ nằm ở đầu `scripts/_kho_insert.mjs` (engine chung — script TỰ áp, không cần nhớ cờ):
+
+- **Không ghi mã dạng cũ.** Câu luôn vào dạng chờ của khối (`"khoi": "8"`, không `dang_chinh`). Lỡ truyền mã cũ ⇒ script đổi sang dạng chờ + cảnh báo (mã cũ giữ ở `dang_ai_de_xuat`).
+- **Dạng = DẠNG BÀI** (mã `NDB…`) ghi ở field **`dang_bai`** ⇒ script tạo **ĐỀ XUẤT** `<kho>_bdm_de_xuat` (nguon 'ai') chờ người duyệt — luật "đề xuất trước, ghi sau".
+  Kèm `dang_bai_chac` ('cao' | 'vua') + `dang_bai_ly_do`. **Chỉ khi người đã chốt trong chat** mới thêm `"dang_bai_chot": true` (ghi thẳng gán nguon 'nguoi').
+  Không chắc ⇒ bỏ `dang_bai` (câu chưa phân dạng, §1.5). Dạng bài phải cùng nhánh với kho (Đại ↔ HGT) — script kiểm.
+- **Đọc bản đồ mới**: `select ma_dang, ten_chu_de, ten_chuyen_de, ten_nhom, ten_dang from bdm_ban_do where khoi='12' and nhanh_bdm='toan' order by thu_tu_chu_de, thu_tu_chuyen_de, thu_tu_nhom, thu_tu_dang` (`nhanh_bdm='hgt'` cho kho HGT). Luật "Dạng sau thắng" vẫn áp.
+- **Câu Đúng/Sai**: KHÔNG gán dạng (cả câu lẫn từng ý — Thùy 26/10). Ghi field **`chu_de`** (mã `NCD…`, `select id, ten from dai_bdm_chu_de where khoi=… and nhanh=…`) ⇒ kho Đ/S của chủ đề `<kho>_bdm_kho_ds`; mệnh đề bỏ `ma_dang`.
+- **Mã câu** = dạng chờ + STT do script/DB cấp (cùng luật & khoá với màn Nhập kho `fn_bdm_nhap_cau`) — vẫn KHÔNG truyền `ma_cau`.
+- Output `insert` có thêm `bdm: { khoi, de_xuat, gan, kho_ds, doi_dang_cu }` — báo CEO số đề xuất / chủ đề Đ/S.
+- **Chạy khô**: `node scripts/nhap_kho.mjs insert --subject dai --json <f> --thu` (ROLLBACK, không ghi). Kiểm engine: `node scripts/_test_kho_insert_bdm.mjs`.
+
 ## Nguyên tắc bất di
 
 1. **KHÔNG tự giải luồng A.** Có lời giải sẵn ⇒ trích nguyên văn, không diễn giải, không "sửa cho gọn".

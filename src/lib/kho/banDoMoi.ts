@@ -49,12 +49,19 @@ function loi(e: { code?: string; message?: string } | null): never {
 // Thêm vùng mới = thêm 1 dòng ở đây; màn BanDoMoi dispatch theo `khuon`, không `if (nhanh === …)` rải rác.
 export type BdmNhanh = 'toan' | 'hgt' | 'hinh' | 'hinh_hoc' | 'hinh_luyen'
 export type BdmKhuon = 'bon_tang' | 'hinh_hoc' | 'hinh_luyen' | 'chon'
+// Thùy 27/10: Hình cùng chương = MỘT chủ đề vùng 'hinh' có 2 phần Học | Luyện (khuôn chọn ở màn, xem PHAN_HINH); vùng chủ đề KHOÁ khi đã
+// có nội dung (trigger DB _trg_bdm_chu_de_khoa_vung). hinh_hoc / hinh_luyen = vùng cũ trước khi gộp — DB không cho ghi mới.
 export const BDM_NHANH: { id: BdmNhanh; nhan: string; khuon: BdmKhuon; an?: boolean }[] = [
   { id: 'toan', nhan: 'Đại', khuon: 'bon_tang' },
   { id: 'hgt', nhan: 'Hình giải tích', khuon: 'bon_tang' },
-  { id: 'hinh_hoc', nhan: 'Hình – Học', khuon: 'hinh_hoc' },
-  { id: 'hinh_luyen', nhan: 'Hình – Luyện', khuon: 'hinh_luyen' },
-  { id: 'hinh', nhan: 'Hình (chưa chọn Học/Luyện)', khuon: 'chon', an: true },   // giá trị cũ — không cho chọn mới
+  { id: 'hinh', nhan: 'Hình', khuon: 'hinh_hoc' },
+  { id: 'hinh_hoc', nhan: 'Hình – Học (cũ)', khuon: 'hinh_hoc', an: true },
+  { id: 'hinh_luyen', nhan: 'Hình – Luyện (cũ)', khuon: 'hinh_luyen', an: true },
+]
+// 2 phần của chủ đề Hình — khuôn màn tương ứng
+export const PHAN_HINH: { id: 'hoc' | 'luyen'; nhan: string; khuon: BdmKhuon }[] = [
+  { id: 'hoc', nhan: '📖 Học', khuon: 'hinh_hoc' },
+  { id: 'luyen', nhan: '🌿 Luyện', khuon: 'hinh_luyen' },
 ]
 export const khuonCuaVung = (nhanh: BdmNhanh): BdmKhuon => BDM_NHANH.find((n) => n.id === nhanh)?.khuon ?? 'bon_tang'
 export async function getCay(khoi: string): Promise<BdmCay> {
@@ -82,8 +89,8 @@ export async function xoaChuDeTronGoi(id: string): Promise<KqXoa> {
 }
 
 // ── Chủ đề ──
-export async function themChuDe(khoi: string, ten: string): Promise<void> {
-  const { error } = await supabase.from('dai_bdm_chu_de').insert({ khoi, ten: ten.trim() }) // vùng mặc định Đại — chọn lại sau ở đầu màn
+export async function themChuDe(khoi: string, ten: string, nhanh: BdmNhanh = 'toan'): Promise<void> {
+  const { error } = await supabase.from('dai_bdm_chu_de').insert({ khoi, ten: ten.trim(), nhanh }) // vùng chọn lúc tạo — có nội dung rồi thì khoá
   if (error) loi(error)
 }
 export async function doiVungChuDe(id: string, nhanh: BdmNhanh): Promise<void> {
@@ -289,6 +296,18 @@ export type KhoCauRow = {
   menh_de: { noi_dung?: string; dap_an?: string }[] | null; dap_an: string | null; loi_giai: string | null
   anh_de: string | null; anh_dap_an: string | null; da_duyet: boolean; kho_chuan: boolean; kiem_may: string | null
   nguon: string; la_goc: boolean; nguon_gan: string; dang_bai_id: string | null; dang_bai: string | null; ly_do: string | null
+}
+// Thùy 27/10 — ngăn 📚 Kho câu: chuyển 1 câu sang dạng bài khác (gán của người; mặc định kèm bản sao của câu gốc) · đưa câu vào
+// KHO RÁC (xoa_at, khôi phục ở màn Kho rác). Kho gốc (Đại/HGT) và mọi luật chặn nằm ở DB (fn_bdm_cau_chuyen_dang / fn_bdm_cau_xoa).
+export async function chuyenCauSangDang(maCau: string, dangBai: string, caBanSao = true): Promise<{ id: string; ten: string; nhom: string; chu_de: string; so_cau: number }> {
+  const { data, error } = await supabase.rpc('fn_bdm_cau_chuyen_dang', { p_ma_cau: maCau, p_dang_bai: dangBai, p_ca_ban_sao: caBanSao })
+  if (error) loi(error)
+  return data as { id: string; ten: string; nhom: string; chu_de: string; so_cau: number }
+}
+export async function xoaCauKho(maCau: string, caBanSao: boolean): Promise<number> {
+  const { data, error } = await supabase.rpc('fn_bdm_cau_xoa', { p_ma_cau: maCau, p_ca_ban_sao: caBanSao })
+  if (error) loi(error)
+  return Number(data ?? 0)
 }
 export async function getKhoCau(loai: 'dang_bai' | 'nhom' | 'chua_khop' | 'de_xuat' | 'thieu_dang' | 'dung_sai', id: string, loc: KhoCauLoc = 'tat_ca', limit = 40, offset = 0): Promise<KhoCauRow[]> {
   const { data, error } = await supabase.rpc('fn_bdm_kho_cau', { p_loai: loai, p_id: id, p_loc: loc, p_limit: limit, p_offset: offset })

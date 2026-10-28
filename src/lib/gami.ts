@@ -140,6 +140,8 @@ export async function getDangTen(maDangs: string[], mon?: string): Promise<Recor
   const tbls = mon
     ? [...new Set([khoCuaMon(mon).banDoTbl, ...nhanhCuaMon(mon).map((n) => khoCuaMon(mon, n.ma).banDoTbl)])]
     : ['dai_ban_do', 'khtn_ban_do', 'hgt_ban_do']
+  // Dạng bài BẢN ĐỒ MỚI (mã 'NDB…', K6–12 — PLAN-mastery-ban-do-moi.md): cùng luật nhánh của DB (_kho_nhanh_cua_dang: NDB ⇒ 'bdm' ⇒ bdm_ban_do).
+  if (uniq.some((m) => m.startsWith('NDB')) && !tbls.includes('bdm_ban_do')) tbls.push('bdm_ban_do')
   for (const tbl of tbls) {
     const { data } = await supabase.from(tbl).select('ma_dang, ten_dang').in('ma_dang', uniq).limit(LIMIT)
     for (const r of (data ?? []) as any[]) out[r.ma_dang] = r.ten_dang
@@ -400,6 +402,14 @@ export type LuoiSync = {
 }
 const luoiNguyen = (probs: Problem[]): LuoiSync => ({ probs, moCoi: [], khongRoRang: null, doiCauTruc: false })
 
+// Câu → dạng bài NDB (chỉ câu quy được, khi bật bản đồ mới) — RPC lỗi (chưa áp mig) thì rỗng = hành vi cũ, không chặn chấm.
+async function dangBdmCuaCau(maCaus: string[]): Promise<Map<string, string>> {
+  const mas = [...new Set(maCaus.filter(Boolean))]
+  if (!mas.length) return new Map()
+  const { data, error } = await supabase.rpc('fn_bdm_dang_cua_cau', { p_ma_caus: mas }).limit(LIMIT)
+  if (error) return new Map()
+  return new Map(((data ?? []) as { ma_cau: string; ma_dang: string }[]).map((r) => [r.ma_cau, r.ma_dang]))
+}
 export async function syncDocProblems(buoiId: string, phase: 'et' | 'mt' | 'btvn', caus: CauHoi[], daDong?: boolean): Promise<LuoiSync> {
   const curAll = await listProblems(buoiId, phase)
   // ⭐ Hình (mô hình) dùng CHUNG bảng+phase (xem `syncHinhProblems`) — chỉ diff/đụng phần CỦA MÌNH
@@ -410,10 +420,15 @@ export async function syncDocProblems(buoiId: string, phase: 'et' | 'mt' | 'btvn
   const noTiep = () => (curAll.length ? Math.max(...curAll.map((p) => p.problem_no)) : 0)
   // Đề rỗng/chưa tải được → KHÔNG đụng lưới. (Đừng để một lần load hỏng biến thành "xoá sạch ô chấm".)
   if (!caus.length) return luoiNguyen(cur)
+  // NHÃN DẠNG của ô = dạng bài NDB của câu khi bản đồ mới bật (fn_bdm_dang_cua_cau — đúng đường mastery, mig 202610261906);
+  // câu không quy được / cấp 1 / môn khác ⇒ dang_chinh của câu như cũ. Thiếu bước này thì mở tab chấm của tài liệu cũ
+  // (nhánh Đại, dang_chinh mã cũ) GHI NGƯỢC ô đã đổi NDB (đổi mã lịch sử, mig 202610261847) về mã cũ.
+  const ndb = await dangBdmCuaCau(caus.map((c) => c.ma_cau))
+  const dangCua = (c: CauHoi): string | null => ndb.get(c.ma_cau) ?? c.dang_chinh ?? null
   if (!cur.length) {
     if (daDong) return { ...luoiNguyen(cur), doiCauTruc: true }
     let no0 = noTiep()
-    const rows = caus.map((c) => ({ buoi_hoc_id: buoiId, phase, problem_no: ++no0, ma_cau: c.ma_cau, ma_dang: c.dang_chinh ?? null }))
+    const rows = caus.map((c) => ({ buoi_hoc_id: buoiId, phase, problem_no: ++no0, ma_cau: c.ma_cau, ma_dang: dangCua(c) }))
     // ignoreDuplicates: chống đẻ trùng khi effect chạy 2 lần (StrictMode) — unique (buoi,phase,problem_no).
     const { error } = await supabase.from('gami_session_problems').upsert(rows, { onConflict: 'buoi_hoc_id,phase,problem_no', ignoreDuplicates: true })
     if (error) throw error
@@ -431,7 +446,7 @@ export async function syncDocProblems(buoiId: string, phase: 'et' | 'mt' | 'btvn
   let lam = cur
   if (cur.some((p) => !p.ma_cau)) {
     if (cur.length !== caus.length) return { ...luoiNguyen(cur), khongRoRang: 'lech_so' }
-    const dangKhop = cur.every((p, i) => !p.ma_dang || !caus[i].dang_chinh || p.ma_dang === caus[i].dang_chinh)
+    const dangKhop = cur.every((p, i) => !p.ma_dang || !caus[i].dang_chinh || p.ma_dang === caus[i].dang_chinh || p.ma_dang === dangCua(caus[i]))
     if (!dangKhop) return { ...luoiNguyen(cur), khongRoRang: 'lech_dang' }
     await Promise.all(cur.map((p, i) => supabase.from('gami_session_problems').update({ ma_cau: caus[i].ma_cau }).eq('id', p.id)))
     lam = cur.map((p, i) => ({ ...p, ma_cau: caus[i].ma_cau }))
@@ -467,19 +482,19 @@ export async function syncDocProblems(buoiId: string, phase: 'et' | 'mt' | 'btvn
   let no = noTiep()
   let daTao: Problem[] = []
   if (thieu.length) {
-    const rows = thieu.map((g) => ({ buoi_hoc_id: buoiId, phase, problem_no: ++no, ma_cau: g.cau.ma_cau, ma_dang: g.cau.dang_chinh ?? null }))
+    const rows = thieu.map((g) => ({ buoi_hoc_id: buoiId, phase, problem_no: ++no, ma_cau: g.cau.ma_cau, ma_dang: dangCua(g.cau) }))
     const { data, error } = await supabase.from('gami_session_problems').insert(rows).select()
     if (error) throw error
     daTao = (data ?? []) as Problem[]
   }
 
   // Dạng của câu có thể được sửa trong kho sau khi seed → đồng bộ lại nhãn của ô đang giữ.
-  const doiDang = ghep.filter((g) => g.co && (g.co.ma_dang ?? null) !== (g.cau.dang_chinh ?? null))
-  await Promise.all(doiDang.map((g) => supabase.from('gami_session_problems').update({ ma_dang: g.cau.dang_chinh ?? null }).eq('id', (g.co as Problem).id)))
+  const doiDang = ghep.filter((g) => g.co && (g.co.ma_dang ?? null) !== dangCua(g.cau))
+  await Promise.all(doiDang.map((g) => supabase.from('gami_session_problems').update({ ma_dang: dangCua(g.cau) }).eq('id', (g.co as Problem).id)))
 
   const taoMap = new Map(daTao.map((p) => [p.ma_cau as string, p]))
   const theoDe = ghep
-    .map((g) => (g.co ? { ...g.co, ma_dang: g.cau.dang_chinh ?? null } : taoMap.get(g.cau.ma_cau)))
+    .map((g) => (g.co ? { ...g.co, ma_dang: dangCua(g.cau) } : taoMap.get(g.cau.ma_cau)))
     .filter(Boolean) as Problem[]
   return { probs: [...theoDe, ...moCoi.map((m) => m.problem)], moCoi, khongRoRang: null, doiCauTruc: false }
 }
@@ -1121,7 +1136,7 @@ const taskTuRow = (r: ViecBuoiThuongRow): MyTask => ({
 // (chưa có dòng buoi_hoc ⇒ chưa có task để đọc). Chép lại một bản thứ hai ở troly.ts là đẻ
 // hai nguồn sự thật rồi lệch — thêm khâu ở đây mà quên bên kia thì rổ dự kiến thiếu âm thầm.
 export const TASKS_BY_VAI: Record<'gv' | 'tg', { tab: TabKey; label: string }[]> = {
-  gv: [{ tab: 'danhgia', label: 'Đánh giá sau buổi' }, { tab: 'ingame', label: 'Chấm bài trên lớp' }],
+  gv: [{ tab: 'danhgia', label: 'Đánh giá sau buổi' }],   // Thùy 28/10: chấm bài trên lớp không còn là việc của GV
   tg: [{ tab: 'et', label: 'Chấm ET' }, { tab: 'btvn', label: 'Chấm BTVN' }],   // Thùy 15/10: chấm bài trên lớp không còn của TA
 }
 export async function getMyTasks(): Promise<MyTask[]> {
@@ -1130,7 +1145,7 @@ export async function getMyTasks(): Promise<MyTask[]> {
   // Buổi THƯỜNG: owner + hạn + MT-thay-hẳn-các-khâu đều derive ở DB (fn_viec_buoi_thuong). Task XONG vẫn
   // trả về (done + doneAt) để hiện ở nhóm "Đã xong" — mở lại xem/sửa được.
   const rows = await viecBuoiThuong(null, null, false)
-  const out: MyTask[] = rows.map(taskTuRow)
+  const out: MyTask[] = rows.filter((r) => r.tab !== 'ingame').map(taskTuRow) // Thùy 28/10: khâu ingame không còn là việc của ai
   const tgLops = new Set(prof.phanCong.filter((pc) => pc.vai_tro === 'tg').map((pc) => pc.lop_id))
   // ── DUYỆT BÁO SAI test online (spec test-online §9) — THAY cho task "Chấm ET" đã bỏ ở trên.
   // Pure-derive đúng nghĩa: report `moi` TỒN TẠI ⇒ task; duyệt xong (dung/sai) là task tự biến
