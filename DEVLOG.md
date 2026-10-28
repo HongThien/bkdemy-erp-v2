@@ -78012,3 +78012,11 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - Verify dev, MT thử "[TEST Claude] MT ban do moi - xoa duoc" (K9, id 498ea213-4e25-4f94-946c-83d23ad6c367): sinh 3+1 câu · gõ 4→1 · kéo 1→sau 3 · ✎ Chọn thêm 2 câu (1 câu dạng bài khác trong nhóm) · gõ 6→7 sang Phần II · kéo về Phần I · Sinh đề 2&3 đủ. Thứ tự DB (`tai_lieu_cau`) khớp màn, `nhanhByCau` = 'bdm'. MT thử CHƯA xoá — chờ Thùy gật.
 ### 28/10 — K5 đề ôn GKI: bỏ 2 bài viết tay (Thùy gật)
 - **Làm:** gỡ Câu 11 viết tay khỏi Đề ôn tập số 5 (T105000000024, dãy 7, 12, 17…) và số 6 (T105000000036, dãy 1…412): xoá 2 dòng tai_lieu_cau, 2 câu vào kho rác (xoa_at), bỏ nhãn + ghi chú trong cau_hinh.deThi; ghi chú Câu 10 đề 6 bỏ chữ nhắc Câu 11. Mỗi đề còn 11 câu. DE5/DE6.soan.md cắt Câu 11 cho khớp.
+
+
+## 28/10 — Nhân bản MT (Thùy)
+
+- Thùy: "2 lớp thi gần giống nhau nhưng có tình huống đặc biệt nên khác nhau 20% ⇒ cần nhân bản đề thi để chỉ sửa 20%".
+- DB `fn_mt_nhan_ban(p_de, p_ten)` (mig `202610281643_mt_nhan_ban` ĐÃ ÁP, `--only`): chép MT MẪU thành mẫu mới trong 1 transaction — phần (tiêu đề, Cơ bản/Nâng cao, thứ tự, cha) + câu (đúng thứ tự) + cau_hinh. Mã gốc bất biến: phần và hàng Hình `HINH:<uuid>` là danh tính riêng của đề ⇒ cấp MÃ MỚI, mọi khoá trỏ tới chúng trong cau_hinh (hinhByMa, diemByCau `HINH:<uuid>#ý`, phanBac theo id phần, colByCau…) đổi theo; mã câu kho giữ nguyên. KHÔNG chép `hinhBuoiId` (deleteMT xoá kèm ⇒ xoá bản sao sẽ giết buổi Hình của bản gốc), `hsMaDe`, duyệt, lượt gán lớp. Dấu vết `cau_hinh.nhanBanTu`. `created_by` = `jwt_uid()` (auth.uid() bị chặn quyền schema auth khi dry-run — đã gặp 08/10).
+- Bảng đổi mã dạng jsonb (không dùng bảng tạm). Dry-run ROLLBACK: đề KS K9 (Hình 2 ý) + Đề cuối tháng 9 K7 (3 phần, phanBac): phần/câu/CB-NC khớp, Hình mã mới, không còn mã cũ, etMaDe giống.
+- App: nút "⧉ Nhân bản" ở danh sách MT + màn soạn MT (cả khi mở từ Kho tài liệu) → hộp đặt tên ("<tên> (bản sao)") → mở luôn bản mới. Verify dev: nhân bản MT thử ⇒ "[TEST Claude] … (bản sao)" (id fa87a706-cbac-438e-92e5-b09f104b8e94), 2 phần 6 câu đúng thứ tự, đủ 3 mã đề. 2 MT thử CHƯA xoá — chờ Thùy gật.

@@ -89,6 +89,13 @@ export async function createMT(input: { ten: string; khoi: string; mon: string; 
   return data as TaiLieu
 }
 export const renameMT = (id: string, ten: string): Promise<void> => updateTaiLieu(id, { ten })
+// Nhân bản MT mẫu (Thùy 28/10: 2 lớp thi gần giống nhau ⇒ chép đề rồi sửa phần khác) — chép ở DB 1 transaction (fn_mt_nhan_ban:
+// phần + câu + cau_hinh, cấp mã mới cho phần / hàng Hình). Trả id MT mới.
+export async function nhanBanMT(id: string, ten: string): Promise<string> {
+  const { data, error } = await supabase.rpc('fn_mt_nhan_ban', { p_de: id, p_ten: ten })
+  if (error) throw error
+  return data as string
+}
 // cascade phan+cau (KHÔNG xoá câu ở kho); xoá master KHÔNG tự xoá các instance đã gán (nguon_id giữ trace, nhưng
 // đứng độc lập). Buổi Hình MẪU (cau_hinh.hinhBuoiId) xoá kèm — bài Hình đã COPY sang buổi lớp vẫn còn (snapshot).
 export async function deleteMT(id: string): Promise<void> {

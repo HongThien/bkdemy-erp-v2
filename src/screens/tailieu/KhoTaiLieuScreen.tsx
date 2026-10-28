@@ -348,7 +348,7 @@ export default function KhoTaiLieuScreen() {
   if (editBdm) return <BuilderBanDoMoi id={editBdm.id} laChuyenDe={editBdm.chuyenDe} onClose={() => { setEditBdm(null); reload() }} />
   if (editGt) return <TaiLieuBuilder id={editGt} onClose={() => { setEditGt(null); reload() }} />
   if (editDeThi) return <DeThiEditor id={editDeThi} onClose={() => { setEditDeThi(null); reload() }} />
-  if (editMT) return <MTEditor id={editMT} onClose={() => { setEditMT(null); reload() }} />
+  if (editMT) return <MTEditor key={editMT} id={editMT} onClose={() => { setEditMT(null); reload() }} onMo={setEditMT} />
 
   const tab = (on: boolean) => `h-7 rounded-md px-2.5 text-xs font-semibold transition ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`
   return (
