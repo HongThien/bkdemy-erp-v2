@@ -294,35 +294,3 @@ $C=1-\dfrac{1}{2}+\dfrac{1}{2}-\dfrac{1}{3}+\dfrac{1}{3}-\dfrac{1}{4}+\ldots+\df
 $C=1-\dfrac{1}{11}$
 
 $C=\dfrac{10}{11}$
-
-### Câu 11 | kho=dai | loai=tu_luan | dap_an=—
-**Đề:** Cho dãy số tăng đều: 7, 12, 17, 22, …
-a) Số hạng đứng ở vị trí thứ 25 trong dãy là số nào?
-b) Tổng của 25 số đầu tiên trong dãy bằng bao nhiêu?
-**Ghi chú:** Bài này VIẾT TAY bằng bút tím trên bản in, ngay cạnh Câu 10 (không có trong đề in) — người duyệt xem có giữ trong đề không. Chép theo chữ viết tay.
-
-**Phần 1. Hướng dẫn**
-
-**Mấu chốt:** dãy cách đều có khoảng cách 5; số hạng thứ 25 bằng số đầu cộng 24 lần khoảng cách.
-
-**Bước 1.** Tìm khoảng cách giữa hai số liên tiếp: $12-7=5$, các số sau cũng hơn nhau 5.
-
-**Bước 2.** Từ số thứ nhất đến số thứ 25 có 24 khoảng cách, nên lấy 7 cộng với $24\times 5$.
-
-**Bước 3.** Ý b: tổng của dãy cách đều bằng (số đầu cộng số cuối) nhân số số hạng rồi chia 2.
-
-**Bước 4.** Thay số đầu 7, số cuối vừa tìm ở ý a và 25 số hạng vào để tính tổng.
-
-**Chú ý:** 25 số hạng chỉ có 24 khoảng cách, không phải 25 khoảng cách.
-
-**Phần 2. Trình bày**
-
-Bài giải
-
-a) Khoảng cách giữa hai số liên tiếp là: $12-7=5$
-
-Số hạng thứ 25 của dãy là: $7+(25-1)\times 5=127$
-
-b) Tổng của 25 số đầu tiên là: $(7+127)\times 25:2=1675$
-
-Đáp số: a) 127; b) 1675.

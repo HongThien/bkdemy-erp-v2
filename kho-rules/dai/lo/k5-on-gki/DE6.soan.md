@@ -268,7 +268,7 @@ Số tiền phải trả là: $180000\times 30=5400000$ (đồng)
 
 ### Câu 10 | kho=dai | loai=tu_luan | dap_an=1
 **Đề:** Tính nhanh: $C=\dfrac{2023\times 2022-1}{2021\times 2023+2022}$
-**Ghi chú:** Trên bản chụp biểu thức này có nét gạch chéo mờ và bên cạnh có bài viết tay (Câu 11) — người duyệt xem GV có bỏ câu in này không.
+**Ghi chú:** Trên bản chụp biểu thức này có nét gạch chéo mờ — người duyệt xem GV có bỏ câu in này không.
 
 **Phần 1. Hướng dẫn**
 
@@ -293,43 +293,3 @@ $C=\dfrac{2023\times 2021+2023-1}{2021\times 2023+2022}$
 $C=\dfrac{2023\times 2021+2022}{2021\times 2023+2022}$
 
 $C=1$
-
-### Câu 11 | kho=dai | loai=tu_luan | dap_an=—
-**Đề:** Cho dãy số: 1, 2, 3, …, 412.
-a) Dãy có bao nhiêu số chẵn và bao nhiêu số lẻ?
-b) Cần bao nhiêu chữ số để viết tất cả các số trong dãy?
-**Ghi chú:** Bài này VIẾT TAY bằng bút tím trên bản in, ngay cạnh Câu 10 (không có trong đề in) — người duyệt xem có giữ trong đề không. Chép theo chữ viết tay.
-
-**Phần 1. Hướng dẫn**
-
-**Mấu chốt:** dãy bắt đầu bằng số lẻ, kết thúc bằng số chẵn nên số chẵn và số lẻ bằng nhau; đếm chữ số thì chia dãy theo số có 1, 2, 3 chữ số.
-
-**Bước 1.** Dãy có 412 số, cứ một số lẻ lại đến một số chẵn, nên mỗi loại có $412:2$ số.
-
-**Bước 2.** Ý b: từ 1 đến 9 có 9 số có một chữ số, cần 9 chữ số.
-
-**Bước 3.** Từ 10 đến 99 có 90 số có hai chữ số, cần $90\times 2$ chữ số.
-
-**Bước 4.** Từ 100 đến 412 có $412-100+1=313$ số có ba chữ số, cần $313\times 3$ chữ số; cộng cả ba nhóm lại.
-
-**Chú ý:** đếm số các số từ 100 đến 412 phải cộng thêm 1.
-
-**Phần 2. Trình bày**
-
-Bài giải
-
-a) Dãy có số các số là: $(412-1):1+1=412$ (số)
-
-Dãy bắt đầu bằng số lẻ và kết thúc bằng số chẵn nên số số chẵn bằng số số lẻ.
-
-Số số chẵn là: $412:2=206$ (số); số số lẻ là: 206 (số)
-
-b) Từ 1 đến 9 có 9 số có một chữ số, cần: $9\times 1=9$ (chữ số)
-
-Từ 10 đến 99 có số các số là: $99-10+1=90$ (số), cần: $90\times 2=180$ (chữ số)
-
-Từ 100 đến 412 có số các số là: $412-100+1=313$ (số), cần: $313\times 3=939$ (chữ số)
-
-Số chữ số cần dùng là: $9+180+939=1128$ (chữ số)
-
-Đáp số: a) 206 số chẵn, 206 số lẻ; b) 1128 chữ số.
