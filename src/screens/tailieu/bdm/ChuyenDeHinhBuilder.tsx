@@ -390,7 +390,7 @@ function HocCard({ h, canUp, canDown, onMove, onBo, onLt, onXoaCau, onGoiY, onCh
 }
 
 // ── Bộ chọn bài học: bài học Hình của khối theo chủ đề (thứ tự bấm = thứ tự trong buổi) ──
-function ChonBaiHoc({ khoi, daChon, onClose, onConfirm }: { khoi: string; daChon: string[]; onClose: () => void; onConfirm: (mas: string[]) => void }) {
+export function ChonBaiHoc({ khoi, daChon, onClose, onConfirm, ghiChu }: { khoi: string; daChon: string[]; onClose: () => void; onConfirm: (mas: string[]) => void; ghiChu?: string }) {
   const [ds, setDs] = useState<HhChonBai[] | null>(null)
   const [chon, setChon] = useState<string[]>(daChon)
   const [err, setErr] = useState<string | null>(null)
@@ -406,7 +406,7 @@ function ChonBaiHoc({ khoi, daChon, onClose, onConfirm }: { khoi: string; daChon
       <div className="absolute inset-x-10 inset-y-8 flex flex-col overflow-hidden rounded-2xl bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center gap-3 border-b border-slate-200 px-6 py-3">
           <h3 className="text-base font-semibold text-slate-900">Chọn bài học Hình · Khối {khoi}</h3>
-          <span className="text-[12px] text-slate-400">thứ tự bấm = thứ tự trong buổi · bài mới tự gợi ý {SO_CAU_MAC_DINH} câu luyện + {SO_CAU_MAC_DINH} câu BTVN</span>
+          <span className="text-[12px] text-slate-400">{ghiChu ?? `thứ tự bấm = thứ tự trong buổi · bài mới tự gợi ý ${SO_CAU_MAC_DINH} câu luyện + ${SO_CAU_MAC_DINH} câu BTVN`}</span>
           <button onClick={onClose} className="ml-auto text-slate-400 hover:text-slate-700">✕</button>
         </div>
         <div className="min-h-0 flex-1 overflow-auto px-6 py-4">
@@ -443,7 +443,7 @@ function ChonBaiHoc({ khoi, daChon, onClose, onConfirm }: { khoi: string; daChon
 }
 
 // ── Chọn câu của 1 bài học cho khối Bài luyện / BTVN (câu đã chọn giữ thứ tự, câu mới thêm cuối; câu đang ở phần khác của buổi bị khoá) ──
-function ChonCauHoc({ maBai, ten, daChon, khoa, onClose, onConfirm }: { maBai: string; ten: string; daChon: string[]; khoa: string[]; onClose: () => void; onConfirm: (mas: string[]) => void }) {
+export function ChonCauHoc({ maBai, ten, daChon, khoa, onClose, onConfirm }: { maBai: string; ten: string; daChon: string[]; khoa: string[]; onClose: () => void; onConfirm: (mas: string[]) => void }) {
   const [kho, setKho] = useState<HhCauKho[] | null>(null)
   const [chon, setChon] = useState<string[]>(daChon)
   const [err, setErr] = useState<string | null>(null)

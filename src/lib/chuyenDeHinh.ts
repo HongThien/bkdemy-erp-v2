@@ -78,3 +78,9 @@ export async function hhGoiY(phanId: string, n: number): Promise<string[]> {
   if (error) throw error
   return (data ?? []) as string[]
 }
+/** N câu ít dùng nhất của 1 bài học (né `tru`) — hàng ET Hình học (mig 202610281911). */
+export async function hhGoiYBai(maBai: string, n: number, tru: string[]): Promise<string[]> {
+  const { data, error } = await supabase.rpc('fn_tl_hh_goi_y_bai', { p_bai: maBai, p_n: n, p_tru: tru })
+  if (error) throw error
+  return (data ?? []) as string[]
+}
