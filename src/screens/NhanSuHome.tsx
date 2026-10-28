@@ -24,10 +24,7 @@ import KhoScreen from './kho/KhoScreen'
 import BanDoMoiScreen from './kho/BanDoMoi'
 import SoTayCongThucScreen from './sotay/SoTayCongThucScreen'
 import NhapKhoScreen from './nhapkho/NhapKhoScreen'
-import TaiLieuScreen from './tailieu/TaiLieuScreen'
-import GiaoTrinhHinhEntry from './tailieu/GiaoTrinhHinhEntry'
 import GiaoTrinhBdmScreen from './tailieu/bdm/GiaoTrinhBdmScreen'
-import ETScreen from './tailieu/ETScreen'
 import ETBdmEditor from './tailieu/bdm/ETBdmEditor'
 import MTScreen from './tailieu/MTScreen'
 import BTScreen from './tailieu/BTScreen'
@@ -62,7 +59,6 @@ import { hoiDapDuocDung } from '../lib/hoidap'
 import { listDotChoDuyetDuoi } from '../lib/botro_duoi'
 import QuanLyLevelScreen from './gami/QuanLyLevelScreen'
 import ChotXuScreen from './gami/ChotXuScreen'
-import HuyHieuScreen from './gami/HuyHieuScreen'
 import PhanQuyenScreen from './phanquyen/PhanQuyenScreen'
 import BaoLoiScreen from './baoloi/BaoLoiScreen'
 import OpsReportScreen from './vanhanhops/OpsReportScreen'
@@ -722,11 +718,9 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'bdm' ? <BanDoMoiScreen />
       : staffLeaf === 'sotay' ? <SoTayCongThucScreen />
       : staffLeaf === 'nhapkho' ? <NhapKhoScreen />
-      : (staffLeaf === 'lamtailieu' || staffLeaf === 'lamtailieu:giao_trinh') ? <TaiLieuScreen />
+      : staffLeaf === 'lamtailieu' ? <GiaoTrinhBdmScreen />
       : staffLeaf === 'lamtailieu:giao_trinh_bdm' ? <GiaoTrinhBdmScreen />
       : staffLeaf === 'lamtailieu:chuyen_de' ? <GiaoTrinhBdmScreen key="chuyen_de" loai="chuyen_de" />
-      : staffLeaf === 'lamtailieu:giao_trinh_hinh' ? <GiaoTrinhHinhEntry />
-      : staffLeaf === 'lamtailieu:et' ? <ETScreen />
       : staffLeaf === 'lamtailieu:et_bdm' ? <ETBdmEditor />
       : staffLeaf === 'lamtailieu:mt' ? <MTScreen />
       : staffLeaf === 'tl' ? <KhoTaiLieuScreen />
@@ -774,8 +768,6 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'duyetloigiai' ? <DuyetLoiGiaiScreen />
       : staffLeaf === 'quanlylevel' ? <QuanLyLevelScreen />
       : staffLeaf === 'chotxu' ? <ChotXuScreen />
-      : staffLeaf === 'huyhieu' ? <HuyHieuScreen />
-      : staffLeaf === 'huyhieu_trao' ? <HuyHieuScreen chiTrao />
       : staffLeaf === 'phanquyen' ? <PhanQuyenScreen />
       : staffLeaf === 'baoloi' ? <BaoLoiScreen />
       : staffLeaf === 'ops_report' ? <OpsReportScreen />
