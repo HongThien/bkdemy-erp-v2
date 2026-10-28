@@ -78079,3 +78079,10 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 
 - **(28/10, sau) Thùy "bật đi":** mig `202610281827_bdm_k4_sang_ban_do_moi` (ĐÃ ÁP `--only`) — `_bdm_khoi_giu_cu` còn '3','5','5T' ⇒ khối chạy bản đồ mới: 4 · 4T · 6–12. Khối 4: nhánh Toán = bdm + hinh_hoc (registry, quy dạng mastery, Giáo trình/ET theo bản đồ mới). CAP1 luật đo không đổi.
 - **Thấy lỗi (của mig 202610281756, phiên khác, CHƯA sửa):** `fn_kho_dung_ban_do_cu` dùng `not ('bdm' = any(_kho_ds_nhanh_khoi(...)))` mà mảng nhánh cũ là `{NULL,'hinh_gt','hinh_hoc'}` ⇒ `'bdm' = any(...)` ra NULL ⇒ khối tiểu học (3/5/5T) KHÔNG bao giờ được trả ⇒ Giáo trình/ET cũ mở lại cho tiểu học không hiện. Sửa 1 dòng: `coalesce('bdm' = any(...), false)`.
+
+## 28/10 — Hình – Học theo bản đồ Đại mới: bài học = chuyên đề = nhóm = dạng bài, bỏ cụm — Thùy
+- Thùy: 'Mỗi bài hình – học là 1 chuyên đề – 1 nhóm bài – 1 dạng bài – tất cả cùng tên cho dễ đánh giá. Ko còn cụm gì nữa'.
+- CTO chọn: bài học (hinh_hoc_bai, mã HH…) CHÍNH LÀ 3 tầng (suy, không thêm bảng) ⇒ tên luôn trùng, mã gốc/mastery/giáo trình/bổ trợ không đổi.
+- Mig 202610281831 ĐÃ ÁP: _dgcc_nut/_dgcc_ten (đánh giá cuối cấp: Hình học có tầng chuyên đề + nhóm = bài học, trước chỉ chủ đề) · _kho_ban_do_dong (phiêu lưu: mỗi bài học 1 khu 1 màn; cột ma_chuyen_de/ten_chuyen_de 8T giữ dữ liệu, thôi đọc). Kiểm ROLLBACK: câu HH00062031 → NCD00178 / HH00062 / HH00062, tên 'Hình chữ nhật'.
+- Client: CUM_TBL bỏ hinh_hoc_cau_hoi (DangHub/KhoPicker tự ẩn cụm, không ghi ma_cum); findCauInKho dùng danh sách bảng riêng; bộ chọn dạng: tầng 2 = bài học; KhoHinhHocScreen vẽ mỗi bài = dải chuyên đề → hộp nhóm → thẻ dạng bài 1.1. Dev K8 Tứ giác: 10 bài đúng 3 tầng, mở kho 'Hình chữ nhật' không còn tab Cụm.
+- CHỜ Thùy: dữ liệu cụm cũ 15 cụm (K11 HH00087 10 cụm/134 câu · K11 HH00137 3 cụm/47 câu · K7 HH00001 1 cụm/0 câu · 8T HH00091 1 cụm/11 câu). Cụm K11 trông như dạng thật ⇒ đề xuất tách thành bài học riêng thay vì xoá.

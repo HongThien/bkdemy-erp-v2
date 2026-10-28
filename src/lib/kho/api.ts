@@ -214,7 +214,7 @@ export async function boDuyetCau(ma_cau: string, tbl = 'dai_cau_hoi'): Promise<v
 // nên dò TỪNG bảng thay vì đoán theo tiền tố. Trả `null` nếu không thấy ở bảng nào (câu đã bị xoá
 // cứng ngoài luồng kho rác, hoặc `ma_cau` không còn đúng — báo rõ ở nơi gọi, không giả định).
 export async function findCauInKho(ma_cau: string): Promise<{ cau: CauHoi; cauTbl: string } | null> {
-  for (const cauTbl of Object.keys(CUM_TBL)) {
+  for (const cauTbl of KHO_CAU_TBLS) {
     const { data, error } = await supabase.from(cauTbl).select('*').eq('ma_cau', ma_cau).maybeSingle()
     if (error) throw error
     if (data) return { cau: data as CauHoi, cauTbl }
@@ -232,8 +232,11 @@ export const tenCum = (c: CumBai) => c.ten?.trim() || `Cụm ${c.thu_tu}`   // c
 //   schema cache" và CHẾT CẢ LƯỢT LƯU. Mọi insert dính cụm phải đi qua cờ này.
 export const coCumBai = (cauTbl: string) => !!CUM_TBL[cauTbl]
 
-// Bảng cụm theo bảng câu. undefined = nhánh CHƯA có cụm (hgt/hình) → UI ẩn tab Cụm.
-export const CUM_TBL: Record<string, string> = { dai_cau_hoi: 'dai_cum_bai', khtn_cau_hoi: 'khtn_cum_bai', hgt_cau_hoi: 'hgt_cum_bai', hinh_hoc_cau_hoi: 'hinh_hoc_cum_bai', tsa_cau_hoi: 'tsa_cum_bai' }
+// Bảng cụm theo bảng câu. undefined = nhánh KHÔNG có cụm → UI ẩn tab Cụm, không ghi ma_cum.
+// Hình – Học bỏ cụm (Thùy 28/10: "mỗi bài hình học = 1 chuyên đề = 1 nhóm = 1 dạng bài, không còn cụm gì nữa").
+export const CUM_TBL: Record<string, string> = { dai_cau_hoi: 'dai_cum_bai', khtn_cau_hoi: 'khtn_cum_bai', hgt_cau_hoi: 'hgt_cum_bai', tsa_cau_hoi: 'tsa_cum_bai' }
+// Mọi bảng câu kho (dò 1 mã câu không rõ nhánh — findCauInKho). Tách khỏi CUM_TBL: bảng không có cụm vẫn là kho.
+const KHO_CAU_TBLS = ['dai_cau_hoi', 'khtn_cau_hoi', 'hgt_cau_hoi', 'hinh_hoc_cau_hoi', 'tsa_cau_hoi']
 // Bảng cạnh tiền đề theo bảng câu: [dạng↔dạng, cụm↔cụm]
 export const TIEN_DE_TBL: Record<string, { dang: string; cum: string }> = {
   dai_cau_hoi: { dang: 'dai_dang_tien_de', cum: 'dai_cum_tien_de' },
