@@ -121,14 +121,20 @@ function TheoDoi() {
             </div>
           ) : (
             <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-              <table className="w-full border-collapse text-[13px]">
+              <table className="w-full table-fixed border-collapse text-[13px]">
+                {/* Cột cố định rộng theo nội dung, các cột bước chia đều phần còn lại (table-fixed) ⇒ bảng vừa màn, không cuộn ngang. */}
+                <colgroup>
+                  <col className="w-[22%]" /><col className="w-[52px]" /><col className="w-[92px]" />
+                  {buoc.map((b) => <col key={b.id} />)}
+                  <col className="w-[96px]" />
+                </colgroup>
                 <thead className="sticky top-0 z-10 bg-slate-50 text-[12px] text-slate-500">
                   <tr>
                     <th className="px-3 py-2 text-left font-medium">Phụ huynh – Học sinh</th>
                     <th className="px-2 py-2 text-left font-medium">Khối</th>
                     <th className="px-2 py-2 text-left font-medium">Nhập học</th>
                     {buoc.map((b) => (
-                      <th key={b.id} title={b.mo_ta ?? undefined} className="min-w-[88px] px-1.5 py-2 text-center font-medium">
+                      <th key={b.id} title={b.mo_ta ?? undefined} className="px-1.5 py-2 text-center align-bottom font-medium leading-snug">
                         <span className="mr-1 inline-block h-2 w-2 rounded-full align-middle" style={{ background: b.mau }} />{b.ten}
                       </th>
                     ))}
@@ -138,7 +144,7 @@ function TheoDoi() {
                 <tbody>
                   {rows.map((r) => (
                     <tr key={r.hs_id} className="border-t border-slate-100">
-                      <td className="min-w-[220px] px-3 py-1.5">
+                      <td className="px-3 py-1.5">
                         <div className="font-medium text-slate-800">{r.ph_ten ?? '(chưa có PH)'} <span className="text-slate-400">–</span> {r.ho_ten}</div>
                         <div className="text-[11px] text-slate-400">{r.ma_hs}{r.ph_sdt ? ` · ${r.ph_sdt}` : ''}</div>
                       </td>
