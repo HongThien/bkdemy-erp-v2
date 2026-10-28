@@ -77991,3 +77991,9 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - Nguyên nhân: 9205a0d4 (26/10) gỡ lá 'ET (bản đồ mới)', trỏ lamtailieu:et_bdm về ETScreen cũ; 2d8e978d (27/10, Dọn ERP) thấy ETBdmEditor không ai import ⇒ xoá như code chết.
 - Khôi phục: ETBdmEditor.tsx lấy lại nguyên bản từ 2d8e978d^ · đảo phần ET của 9205a0d4 (lá menu, route NhanSuHome, Kho tài liệu mở ET ban_do='moi' bằng ETBdmEditor, ETEditor lại báo 'sửa ở mục ET (bản đồ mới)' khi buổi đã có ET mới) · GIỮ phần cảnh báo giáo trình cũ của 9205a0d4. tsc sạch; dev: lá hiện, màn ET mới mở (chọn lớp → dạng bài bản đồ mới).
 - ET hiện có: moi/∅ 20 (mở ETBdmEditor) · cu/bdm 1 (soạn ở mục ET cũ 27/10, vẫn mở ETEditor).
+
+## 28/10 — Giáo trình cũ → bản đồ mới (phase 0) + rà chỗ còn dính bản đồ cũ — Thùy: "chuyển hẳn sang bản đồ mới, xem còn gì dính thì fix nốt"
+- Làm: mig 202610281051 (`tai_lieu.phase`, `fn_tl_bdm_chuyen_luu_tru`) + `scripts/chuyen-giao-trinh-phase0.mjs`: 29 giáo trình Toán Đại K6–12 chuyển, 16.747 câu trước=sau, 163 chưa khớp; 96 giáo trình cũ giữ nguyên.
+- MT: công tắc `mastery_ban_do_moi` ĐÃ BẬT từ 24/10 ⇒ bảng kết quả MT đã theo bản đồ mới. KHÔNG gắn `nhanhByCau='bdm'` lên đề MT: 207/942 câu MT Toán chưa nằm trong view `bdm_cau_hoi` ⇒ sẽ rụng khỏi đề.
+- Rà (đo trên DB): `fn_mastery_cells_moi` cho 269 HS K6–12 ra 15.204 ô NDB, KHÔNG còn mã Đại cũ (T1xx). Sót: 4 ô HGT K9 `T309010301` (8 câu HGT K9 chưa gán dạng bài), HGT K10 còn 2 câu, HGT K12 còn 374/1397 câu chưa gán = việc bản đồ của Thùy. `bo_tro_yeu`: 268 ca đều `ban_do='moi'` ⇒ nhánh `cu` của `_btyeu_dang_con_yeu`/`fill_dang_yeu`/`fn_botro_ket_qua_tuan`/`fn_mastery_cells`/`fn_mastery_rollup` là mã chết (chưa xoá — Luật xoá).
+- Sửa: `BuoiHocScreen` dangOpts thêm dạng bài NDB (trước chỉ dai_ban_do ⇒ tab ET/BTVN/Đánh giá hiện mã trần NDB…); `getDangYeuGoiY` mặc định 'moi'.
