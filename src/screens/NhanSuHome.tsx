@@ -60,7 +60,7 @@ import QuyTrinhHsMoiScreen from './vanhanhops/QuyTrinhHsMoiScreen'
 import { hoiDapDuocDung } from '../lib/hoidap'
 import { listDotChoDuyetDuoi } from '../lib/botro_duoi'
 import QuanLyLevelScreen from './gami/QuanLyLevelScreen'
-import ChotXuScreen from './gami/ChotXuScreen'
+import TongKetXuScreen from './gami/TongKetXuScreen'
 import PhanQuyenScreen from './phanquyen/PhanQuyenScreen'
 import BaoLoiScreen from './baoloi/BaoLoiScreen'
 import OpsReportScreen from './vanhanhops/OpsReportScreen'
@@ -772,7 +772,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'duyetcham' ? <DuyetChamScreen />
       : staffLeaf === 'duyetloigiai' ? <DuyetLoiGiaiScreen />
       : staffLeaf === 'quanlylevel' ? <QuanLyLevelScreen />
-      : staffLeaf === 'chotxu' ? <ChotXuScreen />
+      : staffLeaf === 'chotxu' ? <TongKetXuScreen /> /* id 'chotxu' GIỮ để không mất quyền đã cấp (vai_tro_chuc_nang) — màn = Tổng kết xu (Thùy 28/10) */
       : staffLeaf === 'phanquyen' ? <PhanQuyenScreen />
       : staffLeaf === 'baoloi' ? <BaoLoiScreen />
       : staffLeaf === 'ops_report' ? <OpsReportScreen />

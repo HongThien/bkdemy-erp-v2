@@ -130,3 +130,31 @@ export async function listViXu(): Promise<Map<string, number>> {
   if (error) throw error
   return new Map(((data ?? []) as any[]).map((r) => [r.hoc_sinh_id, Number(r.so_du)]))
 }
+
+// ── TỔNG KẾT XU (Thùy 28/10 — thay màn Chốt xu): mỗi HS 1 dòng, xu theo NGUỒN. Mọi con số tính ở DB
+// (fn_xu_tong_ket · fn_xu_tong_ket_tong, mig 202610281926) — client chỉ render/sort/lọc (§2.0).
+// Cột từ EXP (et…thanh_tuu) = xu ĐÃ VÀO SỔ chia theo tỉ lệ nguồn (phần dư lớn nhất) ⇒ các cột cộng đúng = tong.
+// ky null = từ 8/2026 tới nay. so_du luôn là số dư HIỆN TẠI (không theo kỳ).
+export type XuTongKet = {
+  hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; khoi: string | null; lop: string | null; trang_thai: string
+  et: number; btvn: number; tren_lop: number; tham_du: number
+  nhiem_vu: number; vong_quay: number; thanh_tuu: number; nong_trai: number
+  giai_thuong: number; thay_co_cong: number; thay_co_tru: number; khac: number
+  tong: number; da_tieu: number; so_du: number
+}
+export type XuTongKetTong = Omit<XuTongKet, 'hoc_sinh_id' | 'ho_ten' | 'ma_hs' | 'khoi' | 'lop' | 'trang_thai'> & { so_hs: number }
+export async function listTongKetXu(ky: string | null): Promise<XuTongKet[]> {
+  const { data, error } = await supabase.rpc('fn_xu_tong_ket', { p_thang: ky }).limit(LIMIT)
+  if (error) throw error
+  return (data ?? []) as XuTongKet[]
+}
+export async function getTongKetXuHS(ky: string | null, hocSinhId: string): Promise<XuTongKet | null> {
+  const { data, error } = await supabase.rpc('fn_xu_tong_ket', { p_thang: ky, p_hoc_sinh_id: hocSinhId })
+  if (error) throw error
+  return ((data ?? []) as XuTongKet[])[0] ?? null
+}
+export async function getTongKetXuTong(ky: string | null): Promise<XuTongKetTong | null> {
+  const { data, error } = await supabase.rpc('fn_xu_tong_ket_tong', { p_thang: ky })
+  if (error) throw error
+  return ((data ?? []) as XuTongKetTong[])[0] ?? null
+}

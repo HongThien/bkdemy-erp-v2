@@ -106,7 +106,7 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'diemso',      nhom: 'Gamification', ten: 'Điểm số (Elo/EXP)',        founderOnly: false },
   { id: 'thanhtich',   nhom: 'Gamification', ten: 'Thành tích',               founderOnly: false },
   { id: 'quanlylevel', nhom: 'Gamification', ten: 'Quản lý Level',            founderOnly: false },
-  { id: 'chotxu',      nhom: 'Gamification', ten: 'Chốt xu tháng',            founderOnly: true }, // CEO chỉnh mốc + chốt (Thùy 08-29)
+  { id: 'chotxu',      nhom: 'Gamification', ten: 'Tổng kết xu',              founderOnly: true }, // Thùy 28/10: huỷ Chốt xu ⇒ dashboard xu toàn trung tâm (id giữ 'chotxu' vì quyền đã cấp theo id)
   { id: 'tinh_nang',   nhom: 'Gamification', ten: 'Mở tính năng app HS',      founderOnly: true }, // công tắc mở dần từng tính năng cho HS (Thùy 07/10) — DB chặn ghi bằng co_quyen_ghi('tinh_nang')
   { id: 'traogiai',    nhom: 'Gamification', ten: 'Trao giải',                founderOnly: false }, // thưởng tháng theo lớp (Xuất sắc/Tiến bộ/Chăm chỉ) — xem lib/traogiai.ts
 
