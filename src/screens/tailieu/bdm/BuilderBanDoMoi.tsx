@@ -269,7 +269,7 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
 }
 
 // ── Cấu hình in theo câu (dùng lại control của builder cũ, khoá theo mã câu) ──
-type CfgCau = {
+export type CfgCau = {
   lines: Record<string, number>; cols: Record<string, number>; cheDo: Record<string, CheDoHinh>
   onLine: (m: string, n: number) => void; onLineAll: (ms: string[], n: number) => void
   onCol: (m: string, n: number) => void; onCheDo: (m: string, v: CheDoHinh) => void
@@ -360,7 +360,7 @@ function NhomCard({ n, chiXem, cauMap, cfg, laChuyenDe = false, canUp, canDown, 
 }
 
 // ── 1 khối câu (bài luyện / BTVN / chưa khớp): số lượng theo loại + Gợi ý + Chọn câu + danh sách câu ──
-function KhoiCau({ tieuDe, mau, caus, cauMap, cfg, chiXem, btvn, soMacDinh, onXoa, onGoiY, onChonCau }: {
+export function KhoiCau({ tieuDe, mau, caus, cauMap, cfg, chiXem, btvn, soMacDinh, onXoa, onGoiY, onChonCau }: {
   tieuDe: string; mau: 'sky' | 'orange' | 'amber'; caus: string[]; cauMap: Map<string, CauHoi>; cfg: CfgCau; chiXem: boolean; btvn?: boolean
   soMacDinh?: Record<string, number>
   onXoa: (m: string) => void; onGoiY?: (so: Record<string, number>) => void; onChonCau?: () => void

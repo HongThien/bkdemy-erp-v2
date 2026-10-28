@@ -27,6 +27,9 @@ import BoChonNhom from './BoChonNhom'
 import ChonCauBdm from './ChonCauBdm'
 import { ChonBaiHoc, ChonCauHoc } from './ChuyenDeHinhBuilder'
 import { hhCayChon, hhGoiYBai } from '../../../lib/chuyenDeHinh'
+import { AnhXem, AnhMmCtl, CheDoHinhBtn } from '../TaiLieuBuilder'
+import { AnhMmEditCtx } from '../anhMmCtx'
+import type { CheDoHinh } from '../../../lib/kho/hinhGiaoTrinh'
 import { useStore } from '../../../store/useStore'
 import type { ETView } from '../ETScreen'
 
@@ -228,6 +231,13 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
   const setLines = (m: string, n: number) => setCh((c) => ({ ...c, btvnLinesByCau: { ...(c.btvnLinesByCau ?? {}), [m]: n } }))
   const setForm = (m: string, f: ETFormKind) => setCh((c) => ({ ...c, etFormByCau: { ...(c.etFormByCau ?? {}), [m]: f } }))
   const setColCau = (m: string, n: number) => setCh((c) => ({ ...c, colByCau: { ...(c.colByCau ?? {}), [m]: n } }))
+  // Hình của câu khi IN (như builder giáo trình — Thùy 28/10): chế độ hiện/ô trống/bỏ + cỡ % ảnh gốc; đề 2/3 kế thừa câu gốc lúc in
+  const setCheDo = (m: string, v: CheDoHinh) => setCh((c) => ({ ...c, hinhCheDoByCau: { ...(c.hinhCheDoByCau ?? {}), [m]: v } }))
+  const setAnhMm = (m: string, v: { pct: number; mm: number } | null) => setCh((c) => {
+    const mm = { ...(c.anhMmByCau ?? {}) }, pct = { ...(c.anhPctByCau ?? {}) }
+    if (v && v.mm > 0) { mm[m] = v.mm; pct[m] = v.pct } else { delete mm[m]; delete pct[m] }
+    return { ...c, anhMmByCau: mm, anhPctByCau: pct }
+  })
 
   // ── 3 mã đề — tính ở DB ──
   const baseRows = () => rows.filter((r) => r.maCau && r.db).map((r) => ({ maDang: r.db!, maCau: r.maCau! }))
@@ -438,6 +448,11 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
                         {c ? <div className="truncate text-[13px] text-slate-700"><MathText>{c.noi_dung}</MathText></div>
                           : r.db ? <span className="text-[12px] italic text-slate-400">chưa có câu</span>
                           : <span className="text-[12px] italic text-slate-300">chọn dạng bài để hệ gợi ý câu</span>}
+                        {c?.anh_de && (
+                          <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: setAnhMm, baChe: false }}>
+                            <div className="flex justify-start"><AnhXem ma={c.ma_cau} url={c.anh_de} cheDo={ch.hinhCheDoByCau?.[c.ma_cau] ?? 'hien'} /></div>
+                          </AnhMmEditCtx.Provider>
+                        )}
                         {c && (
                           <div className="mt-1 flex flex-wrap items-center gap-1.5">
                             <span className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] text-slate-500" title="Mã câu">{c.ma_cau}</span>
@@ -461,6 +476,15 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
                           <button onClick={() => doiCau(i)} title="Đổi câu khác (ít dùng kế tiếp)" className="rounded-md bg-indigo-50 px-2 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-100">↻ Đổi</button>
                           <button onClick={() => setChonCau(i)} className="rounded-md border border-slate-300 px-2 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-400">✎ Chọn</button>
                         </div>
+                      )}
+                      {c && c.anh_de && (
+                        // 3 chế độ (có ô trống cho HS vẽ) chỉ ở câu Hình học, như builder; Đại / HGT: hiện ↔ bỏ
+                        <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: setAnhMm, baChe: info?.nh === 'hinh_hoc' }}>
+                          <div className="flex shrink-0 flex-col items-end gap-1 pt-0.5">
+                            <CheDoHinhBtn cur={ch.hinhCheDoByCau?.[c.ma_cau] ?? 'hien'} onChange={(v) => setCheDo(c.ma_cau, v)} />
+                            {(ch.hinhCheDoByCau?.[c.ma_cau] ?? 'hien') !== 'khong' && <AnhMmCtl ma={c.ma_cau} url={c.anh_de} />}
+                          </div>
+                        </AnhMmEditCtx.Provider>
                       )}
                       {c && (
                         <label className="flex shrink-0 items-center gap-1 self-start pt-1.5 text-[11px] text-slate-500" title="Tích = in 2 cột — các câu 2 cột LIỀN NHAU tự xếp cạnh nhau">

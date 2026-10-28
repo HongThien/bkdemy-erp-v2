@@ -13,7 +13,8 @@ import { hsCoMatCuaBuoi } from '../../lib/gami'
 import { BK_CSS, BK_PAGE_CSS, ETHeaderBK } from './bkPrint'
 import type { CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
-import { cauItemParts, CauFlow, OptGrid, GvAnswer, splitStem, questionOnlyContent, TLNTable, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename, pruneGhostBlankPages } from './PrintView'
+import { cauItemParts, CauFlow, OptGrid, GvAnswer, splitStem, questionOnlyContent, TLNTable, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename, pruneGhostBlankPages, AnhDe } from './PrintView'
+import { AnhMmCtx } from './anhMmCtx'
 
 const DEFAULT_TL_LINES = 4
 const DEFAULT_TLN_LINES = 2
@@ -242,13 +243,17 @@ function ETAllDe({ full, gv, varCau, perHS }: { full: TaiLieuFull; gv: boolean; 
     // không dùng snapshot etFormByCau[variant] ghi lúc "Sinh mã đề" (made.ts). GV đổi form câu gốc SAU khi
     // đã sinh mã đề 2/3 mà không bấm sinh lại → snapshot cũ lệch với đề 1 → đề 2/3 in dòng kẻ khác đề 1.
     const formByCau = { ...(ch.etFormByCau ?? {}) }
+    // chế độ in hình + cỡ ảnh (28/10, như builder giáo trình) cũng kế thừa câu gốc ⇒ 3 mã đề cùng bố cục hình
+    const cheDo = { ...(ch.hinhCheDoByCau ?? {}) }, anhMm = { ...(ch.anhMmByCau ?? {}) }
     for (const bc of base) {
       const vm = etMaDe![bc.ma_cau][vIdx]; if (!vm) continue
       const bl = ch.btvnLinesByCau?.[bc.ma_cau]; if (bl != null) lines[vm] = bl
       const bc2 = ch.colByCau?.[bc.ma_cau]; if (bc2 != null) colByCau[vm] = bc2
+      const cd = ch.hinhCheDoByCau?.[bc.ma_cau]; if (cd != null) cheDo[vm] = cd
+      const mm = ch.anhMmByCau?.[bc.ma_cau]; if (mm != null) anhMm[vm] = mm
       formByCau[vm] = etFormOf(bc, ch)
     }
-    return { ...ch, btvnLinesByCau: lines, colByCau, etFormByCau: formByCau }
+    return { ...ch, btvnLinesByCau: lines, colByCau, etFormByCau: formByCau, hinhCheDoByCau: cheDo, anhMmByCau: anhMm }
   }
   // Mã đề n → (câu, cấu hình dòng). Chưa đủ 3 mã đề thì mọi mã về đề gốc (an toàn).
   const deOf = (maDe: number) => (complete && maDe === 2) ? { caus: build(0), ch: chVar(0) }
@@ -291,7 +296,9 @@ function ETDoc({ ten, caus, ch, gv, badge, hoTen }: { ten: string; caus: CauHoi[
   const ngayDe = _dot >= 0 ? ten.slice(_dot + 3) : ''
   const tenLop = rawName.replace(/^ET\s+/, '')                    // "6S1"
   const made = badge ? badge.replace(/^Mã đề\s*/i, '') : ''       // "2" (từ "Mã đề 2")
+  const cheDo = (c: CauHoi) => ch.hinhCheDoByCau?.[c.ma_cau] ?? 'hien'
   return (
+    <AnhMmCtx.Provider value={ch.anhMmByCau ?? {}}>
     <div className="pv-et pv-et-bk">
       <ETHeaderBK title={tenDe} ngay={ngayDe} lop={tenLop} made={made} hoTen={hoTen} soCau={caus.length} gv={gv} />
       {runs.map((run, ri) => (
@@ -299,13 +306,14 @@ function ETDoc({ ten, caus, ch, gv, badge, hoTen }: { ten: string; caus: CauHoi[
           {(!gv && run.g === 1) ? (
             // Trả lời ngắn (bản HS, Thùy: "đưa về dạng bảng — cột 1 đề, cột 2 điền đáp án") — BẢNG thay
             // dòng-kẻ-viết-tay (DEFAULT_TLN_LINES không còn dùng ở đây, xem TLNTable/PrintView.tsx).
-            <TLNTable rows={run.items.map((c) => { const n = next(); return { key: c.ma_cau, content: questionOnlyContent(n, c) } })} />
+            <TLNTable rows={run.items.map((c) => { const n = next(); return { key: c.ma_cau, content: questionOnlyContent(n, c, cheDo(c)) } })} />
           ) : (
             /* Số cột RIÊNG TỪNG CÂU (cau_hinh.colByCau) — CauFlow gom câu tag cột liền nhau; dòng kẻ chảy lấp trang. */
             <CauFlow items={run.items.map((c) => {
               const n = next()
               const cols = ch.colByCau?.[c.ma_cau] ?? 1
-              if (run.g === 0) return { key: c.ma_cau, cols, ...cauItemParts({ no: n, c, gv }) }
+              if (run.g === 0) return { key: c.ma_cau, cols, ...cauItemParts({ no: n, c, gv, cheDoHinh: cheDo(c) }) }
+              const cd = cheDo(c)
               const { stem, grid, emb } = splitStem(c)
               return {
                 key: c.ma_cau,
@@ -313,13 +321,13 @@ function ETDoc({ ten, caus, ch, gv, badge, hoTen }: { ten: string; caus: CauHoi[
                 content: (<>
                   <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${n}.</span> `}>{stem}</MathText></div>
                   {grid && <OptGrid grid={grid} emb={emb} />}
-                  {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
+                  {cd === 'khong' ? null : cd === 'o_trong' ? (gv && c.anh_de ? <AnhDe ma={c.ma_cau} src={c.anh_de} /> : <div className="pv-vebox" />) : c.anh_de && <AnhDe ma={c.ma_cau} src={c.anh_de} />}
                   {gv && <GvAnswer c={c} />}
                 </>),
                 // Cùng bug MT 04/09: `grid` (ý con a)/b) trong đề) từng chặn dòng kẻ của câu tự luận — bỏ điều kiện,
                 // dòng theo ô "dòng" GV đặt. Bản GV vẫn 0 dòng.
                 lines: gv ? 0 : (lines[c.ma_cau] ?? (run.g === 1 ? DEFAULT_TLN_LINES : DEFAULT_TL_LINES)),
-                hasImg: !!c.anh_de,
+                hasImg: !!c.anh_de && cd !== 'khong',
               }
             })} />
           )}
@@ -327,6 +335,7 @@ function ETDoc({ ten, caus, ch, gv, badge, hoTen }: { ten: string; caus: CauHoi[
       ))}
       {caus.length === 0 && <p className="pv-empty">ET chưa có câu nào.</p>}
     </div>
+    </AnhMmCtx.Provider>
   )
 }
 
