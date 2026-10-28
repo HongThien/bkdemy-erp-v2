@@ -214,7 +214,7 @@ export function BTEditor({ id, onClose }: { id: string; onClose: () => void }) {
       setCh(full.taiLieu.cau_hinh ?? {})
       setPhans(full.phans.filter((p) => p.loai_phan === 'dang'))
       // Thùy 26/10 "chuyển hẳn sang bản đồ mới": gợi ý dạng yếu theo MASTERY MỚI (công tắc — K6–12 ra dạng bài NDB, cấp 1 giữ dạng cũ).
-      setGoiY(b.hoc_sinh_id && b.mon ? await getMasteryHS(b.hoc_sinh_id, b.mon, { theoCongTac: true }) : [])
+      setGoiY(b.hoc_sinh_id && b.mon ? await getMasteryHS(b.hoc_sinh_id, b.mon, {}) : [])
       setGrades(await getBTGrades(id))
     } finally { setLoading(false) }
   }

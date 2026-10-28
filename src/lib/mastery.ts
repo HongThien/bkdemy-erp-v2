@@ -106,61 +106,6 @@ export const bucketMucDo = (md: number | null | undefined): 'co_ban' | 'nang_cao
 // TU_LUYEN (tự luyện online, 18-20/08) — CẤP 1 luôn vào (không qua toggle), CẤP 3 qua toggle như btvn.
 export const SRC_LABEL: Record<EvalSrc, string> = { ingame: 'IG', et: 'ET', mt: 'MT', dg: 'ĐG', btvn: 'BTVN', bt: 'BT', tu_luyen: 'TL' }
 
-// ── NGUỒN ĐO ONLINE (test online 07-04): bai_lam_cau (verdict ≠ null) = phép đo ──
-// ET + ĐỀ THI online → src 'et' (thi có giám sát, VÀO mastery — cùng chế độ THI, xem THI_LOAI HocSinhApp).
-// TỰ LUYỆN (18-20/08) → src RIÊNG 'tu_luyen' — TÁCH khỏi 'btvn' vì trọng số VÀO-mastery-trung-tâm-mặc-định
-// khác nhau theo cấp (xem laCap1 ở trên), dù cùng WEIGHT tính điểm (=1, gami/mastery.js).
-// BTVN + giáo-trình online → src 'btvn' (tham khảo — chỉ vào khi bật toggle, đúng chính sách BTVN).
-// Duyệt lại (manual/cache) sửa verdict tại chỗ → mastery tự đúng theo (suy động, không sync).
-const THI_LOAI = new Set(['et', 'de_thi'])
-type OnlineEvalRow = { hoc_sinh_id: string; ma_dang: string | null; value: number; t: string; src: EvalSrc; mon: string }
-async function fetchOnlineEvals(hs: string | string[], sinceIso?: string | null): Promise<OnlineEvalRow[]> {
-  // Embed 2 tầng FK ĐƠN (bai_lam_id → bai_test_id) + filter trên bảng nhúng qua !inner (pattern loadMasteryCells).
-  // Embed thêm buoi_hoc.ngay để neo timeline theo NGÀY BUỔI (bai_test gắn buổi) — GV/TA chấm trễ (buổi 10/08 chấm
-  // ngày 23/08) không được kéo phép đo về ngày chấm. Fallback cham_at cho test online không gắn buổi (tự luyện).
-  let q = supabase.from('bai_lam_cau')
-    .select('verdict, cham_at, lam:bai_lam_id!inner(hoc_sinh_id, trang_thai, test:bai_test_id(loai, mon, buoi:buoi_hoc_id(ngay))), cau:bai_test_cau_id(ma_dang)')
-    .not('verdict', 'is', null).limit(LIMIT)
-  q = Array.isArray(hs) ? q.in('lam.hoc_sinh_id', hs) : q.eq('lam.hoc_sinh_id', hs)
-  if (sinceIso) q = q.gte('cham_at', sinceIso)
-  const { data, error } = await q
-  if (error) throw error
-  const out: OnlineEvalRow[] = []
-  for (const r of (data ?? []) as any[]) {
-    const val = RESULT_VALUE[r.verdict as keyof typeof RESULT_VALUE]
-    if (val === undefined || !r.lam) continue
-    const loai = r.lam.test?.loai
-    const laThi = THI_LOAI.has(loai)
-    // Chế độ THI chỉ tính khi ĐÃ NỘP (verdict chỉ sinh lúc et_nop, nhưng belt-and-suspenders với backfill duyệt).
-    if (laThi && r.lam.trang_thai !== 'da_nop') continue
-    const src: EvalSrc = laThi ? 'et' : loai === 'tu_luyen' ? 'tu_luyen' : 'btvn'
-    const ngayBuoi = r.lam.test?.buoi?.ngay ?? null
-    out.push({
-      hoc_sinh_id: r.lam.hoc_sinh_id, ma_dang: r.cau?.ma_dang ?? null,
-      value: val, t: ngayBuoi ?? r.cham_at, src, mon: r.lam.test?.mon ?? '',
-    })
-  }
-  return out
-}
-
-// ── NGUỒN BT (bổ trợ tự luyện, mig 0094 bt_grades) — 1 HS × N câu, KHÔNG có buổi/session nên không
-// nằm trong gami_grades. LUÔN vào mastery (không toggle) dù trọng số thấp (=1, xem MASTERY_CONFIG.WEIGHT).
-type BTEvalRow = { hoc_sinh_id: string; ma_dang: string; value: number; t: string; mon: string }
-async function fetchBTEvals(hs: string | string[], sinceIso?: string | null): Promise<BTEvalRow[]> {
-  let q = supabase.from('bt_grades').select('result, graded_at, ma_dang, tl:tai_lieu_id!inner(hoc_sinh_id, mon)').limit(LIMIT)
-  q = Array.isArray(hs) ? q.in('tl.hoc_sinh_id', hs) : q.eq('tl.hoc_sinh_id', hs)
-  if (sinceIso) q = q.gte('graded_at', sinceIso)
-  const { data, error } = await q
-  if (error) throw error
-  const out: BTEvalRow[] = []
-  for (const r of (data ?? []) as any[]) {
-    const val = RESULT_VALUE[r.result as keyof typeof RESULT_VALUE]
-    if (val === undefined || !r.tl) continue
-    out.push({ hoc_sinh_id: r.tl.hoc_sinh_id, ma_dang: r.ma_dang, value: val, t: r.graded_at, mon: r.tl.mon })
-  }
-  return out
-}
-
 // Gom các lần đo của 1 HS (trong 1 MÔN) theo dạng → mastery + timeline.
 // opts.includeBTVN: gộp cả phase='btvn' + 'bt' + 'tu_luyen' (mặc định KHÔNG — tự luyện tham khảo,
 // không vào mastery; toggle để Thùy soi — Thùy 07-15: BT/BTVN cùng gate 1 toggle, KHÔNG còn "bt luôn
@@ -171,82 +116,10 @@ async function fetchBTEvals(hs: string | string[], sinceIso?: string | null): Pr
 export async function getMasteryHS(
   hocSinhId: string,
   mon: string,
-  opts?: { includeBTVN?: boolean; days?: number; theoCongTac?: boolean },
+  opts?: { includeBTVN?: boolean; days?: number },
 ): Promise<DangMastery[]> {
-  // Hoạt động MỚI (không phải bổ trợ) ⇒ theo công tắc bản đồ: số + lần đo ĐÃ QUY DẠNG đều từ DB (fn_mastery_*_moi)
-  if (opts?.theoCongTac) return getMasteryHSTheoCongTac(hocSinhId, mon, opts)
-  const { data: hsRow } = await supabase.from('hoc_sinh').select('khoi').eq('id', hocSinhId).single()
-  const phases: EvalSrc[] = opts?.includeBTVN ? ['et', 'mt', 'bt', 'btvn', 'tu_luyen']
-    : laCap1(hsRow?.khoi) ? ['et', 'mt', 'tu_luyen'] : ['et', 'mt']
-  const sinceIso = opts?.days ? new Date(Date.now() - opts.days * 86400_000).toISOString() : null // boundary INSTANT (được phép, §windowing)
-
-  // grades của HS, EMBED thẳng problem (phase, ma_dang, ngày buổi) — FK problem_id→gami_session_problems ĐƠN, sạch
-  // (khác buoi_hoc_hs 2-FK). 1 query thay 2 + bỏ IN(probIds) tránh URL dài.
-  // Embed thêm buoi:buoi_hoc_id(ngay) để timeline neo NGÀY BUỔI, không ngày chấm (GV/TA chấm trễ 1-2 tuần).
-  let gq = supabase.from('gami_grades').select('result, graded_at, prob:problem_id(phase, ma_dang, buoi:buoi_hoc_id(ngay))').eq('hoc_sinh_id', hocSinhId).limit(LIMIT)
-  if (sinceIso) gq = gq.gte('graded_at', sinceIso)
-  const [{ data: grades }, online, bt] = await Promise.all([
-    gq,
-    fetchOnlineEvals(hocSinhId, sinceIso),
-    fetchBTEvals(hocSinhId, sinceIso),
-  ])
-
-  // Gom measures theo ma_dang.
-  const byDang: Record<string, DangEval[]> = {}
-  const push = (ma: string | null | undefined, ev: DangEval) => { if (!ma) return; (byDang[ma] ??= []).push(ev) }
-  for (const g of (grades ?? []) as any[]) {
-    const p = g.prob // to-one embed → object (null nếu problem mất, phòng thủ)
-    if (!p || !p.ma_dang) continue
-    if (!phases.includes(p.phase as EvalSrc)) continue // lọc phase (chỉ et/mt mặc định, +btvn/bt nếu bật toggle)
-    const val = RESULT_VALUE[g.result as keyof typeof RESULT_VALUE]
-    if (val === undefined) continue
-    // Timeline neo NGÀY BUỔI (p.buoi.ngay), fallback graded_at nếu problem chưa gắn buổi (defensive — mọi
-    // gami_session_problems đều có buoi_hoc_id theo schema, chỉ dự phòng embed null).
-    push(p.ma_dang, { value: val, t: p.buoi?.ngay ?? g.graded_at, src: p.phase as EvalSrc })
-  }
-  for (const o of online) if (phases.includes(o.src)) push(o.ma_dang, { value: o.value, t: o.t, src: o.src })
-  if (phases.includes('bt')) for (const b of bt) push(b.ma_dang, { value: b.value, t: b.t, src: 'bt' })
-
-  const maList = Object.keys(byDang)
-  if (maList.length === 0) return []
-
-  // Resolve tên dạng + chuyên đề + độ khó theo MÔN (scope: dạng thuộc MỌI nhánh của môn này — dangInfoCuaMon).
-  const dangMap = await dangInfoCuaMon(mon, maList)
-
-  // §2.0 (30/08): SỐ mastery từ fn_mastery_cells (parity 391/391) — evals ở đây chỉ còn là
-  // TIMELINE hiển thị (lịch sử lần đo), không phải nguồn tính.
-  const { data: cellRows, error: eCells } = await supabase.rpc('fn_mastery_cells', {
-    p_hs: [hocSinhId], p_include_btvn: !!opts?.includeBTVN, p_since: sinceIso,
-  })
-  if (eCells) throw eCells
-  const cellMap = new Map(((cellRows ?? []) as any[]).map((c) => [c.ma_dang, { score: Number(c.score), n: Number(c.n), muc: c.muc, tin: c.tin } as Mastery]))
-
-  const out: DangMastery[] = []
-  for (const ma of maList) {
-    const info = dangMap.get(ma)
-    if (!info) continue // ma_dang không thuộc môn đang xem → bỏ
-    const evals = byDang[ma].sort((a, b) => Date.parse(b.t) - Date.parse(a.t)) // mới → cũ
-    out.push({
-      ma_dang: ma,
-      ten_dang: info.ten_dang,
-      ten_chuyen_de: info.ten_chuyen_de,
-      muc_do: info.muc_do,
-      mucDoBC: info.mucDoBC,
-      nhanh: info.nhanh,
-      nhomBC: info.nhomBC,
-      mastery: cellMap.get(ma) ?? null,
-      evals,
-    })
-  }
-  // Sort: YẾU trước, rồi MỚI đánh giá lên đầu (như V1: dạng cần chú ý nhất trên cùng).
-  const rank = { yeu: 0, can_luyen: 1, dat: 2 } as const
-  out.sort((a, b) => {
-    const ra = a.mastery ? rank[a.mastery.muc] : 3
-    const rb = b.mastery ? rank[b.mastery.muc] : 3
-    if (ra !== rb) return ra - rb
-    return Date.parse(b.evals[0]?.t ?? '0') - Date.parse(a.evals[0]?.t ?? '0')
-  })
-  return out
+  // Đã chuyển hẳn sang bản đồ mới (28/10): số + lần đo quy dạng ở DB (fn_mastery_cells_moi / fn_mastery_lan_do_moi)
+  return getMasteryHSTheoCongTac(hocSinhId, mon, opts ?? {})
 }
 
 // Bản theo công tắc (PLAN-mastery-ban-do-moi.md): ô = fn_mastery_cells_moi, timeline = fn_mastery_lan_do_moi (lần đo đã
@@ -422,8 +295,7 @@ export type CellBundle = {
   byHS: Map<string, Map<string, Mastery>> // mastery ĐÃ tính (non-null), CHỈ dạng thuộc môn
   dangInfo: Map<string, DangInfo>          // dạng MỌI nhánh của môn (dangInfoCuaMon)
 }
-// theoCongTac: hoạt động MỚI (không phải bổ trợ) ⇒ fn_mastery_cells_moi — tắt công tắc y hệt fn_mastery_cells, bật = bản đồ mới (PLAN-mastery-ban-do-moi.md)
-export type RollupScope = { mon: string; lopId?: string | null; khoi?: string | null; he?: string | null; includeBTVN?: boolean; theoCongTac?: boolean }
+export type RollupScope = { mon: string; lopId?: string | null; khoi?: string | null; he?: string | null; includeBTVN?: boolean }
 // export: dùng trực tiếp khi cần cell (HS × dạng) thô — vd Trước buổi cần "dạng yếu mức S, n>=3" theo HS,
 // khác getMasteryRollup/getMasteryByDang vốn chỉ trả về số đã GỘP (đếm), không giữ lại từng ô.
 export async function loadMasteryCells(opts: RollupScope): Promise<CellBundle> {
@@ -451,7 +323,7 @@ export async function loadMasteryCells(opts: RollupScope): Promise<CellBundle> {
   // 2+4) §2.0 (30/08): mastery cell (HS × dạng) tính ở DB — fn_mastery_cells (parity 391/391
   // với engine JS trên lớp 8S1). Gate nguồn (et/mt · toggle btvn/bt/tu_luyen · cấp-1) nằm
   // TRONG fn — cap1Set/phases client chỉ còn ý nghĩa chú thích lịch sử.
-  const { data: cells, error: eCells } = await supabase.rpc(opts.theoCongTac ? 'fn_mastery_cells_moi' : 'fn_mastery_cells', { p_hs: hsIds, p_include_btvn: !!opts.includeBTVN })
+  const { data: cells, error: eCells } = await supabase.rpc('fn_mastery_cells_moi', { p_hs: hsIds, p_include_btvn: !!opts.includeBTVN })
   if (eCells) throw eCells
   const allMa = new Set<string>(((cells ?? []) as any[]).map((c) => c.ma_dang as string))
 
