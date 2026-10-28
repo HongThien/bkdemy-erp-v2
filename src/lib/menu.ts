@@ -37,10 +37,10 @@ const LEAF_ICON: Record<string, string> = {
   buoihoc: '🗓', ops_report: '📣', prep: '🧹', phancong_ops: '🧑‍🤝‍🧑', hs: '🎒', lop: '🏫', tuyensinh: '🎚', test_dau_vao: '📝',
   botro: '🩹', phong_hoc: '🚪', tu_qua: '🎁', su_kien: '🎉', hs_moi: '📋',
   // Gamification
-  diemso: '📈', thanhtich: '🥇', quanlylevel: '🪜', chotxu: '🪙', huyhieu: '🎖', huyhieu_trao: '🏅', tinh_nang: '🎛', traogiai: '🏆',
+  diemso: '📈', thanhtich: '🥇', quanlylevel: '🪜', chotxu: '🪙', tinh_nang: '🎛', traogiai: '🏆',
   // Học thuật
   bdkt: '🗺', cau_bao_loi: '⚑', bdm: '🧭', sotay: '📓', tl: '🗂', khodethi: '📑', nhapkho: '📥',
-  lamtailieu: '✍️', 'lamtailieu:giao_trinh': '📘', 'lamtailieu:giao_trinh_bdm': '🗺️','lamtailieu:giao_trinh_hinh': '📐', 'lamtailieu:et': '📝', 'lamtailieu:et_bdm': '🗺️', 'lamtailieu:chuyen_de': '📚', 'lamtailieu:mt': '🏁', 'lamtailieu:bo_tro': '🩹',
+  lamtailieu: '✍️', 'lamtailieu:giao_trinh_bdm': '🗺️','lamtailieu:et_bdm': '🗺️', 'lamtailieu:chuyen_de': '📚', 'lamtailieu:mt': '🏁', 'lamtailieu:bo_tro': '🩹',
   // Quản lý chất lượng
   ketqua: '📊', cham_mt: '✏️', duyetcham: '✔️', duyetloigiai: '🔎', db_hoctap: '🧠', db_cuoicap: '🎯',db_theodoi_app: '📱', report_ph: '💌',
   // Core team

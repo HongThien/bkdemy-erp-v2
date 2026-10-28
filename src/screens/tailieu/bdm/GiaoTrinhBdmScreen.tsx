@@ -84,6 +84,7 @@ export default function GiaoTrinhBdmScreen({ loai = 'giao_trinh' }: { loai?: Loa
                     <div className="flex items-start gap-2">
                       <div className="min-w-0 flex-1 text-[16px] font-semibold text-slate-900">{t.ten}</div>
                       {t.luu_tru_tu && <span className="shrink-0 rounded bg-amber-50 px-1.5 py-0.5 text-[10.5px] font-semibold text-amber-700">Lưu trữ</span>}
+                      {t.phase === 0 && <span className="shrink-0 rounded bg-violet-50 px-1.5 py-0.5 text-[10.5px] font-semibold text-violet-700">Phase 0</span>}
                     </div>
                     <div className="mt-1 text-[12px] text-slate-400">Khối {t.khoi} · {t.nhanh === 'hinh' ? 'Hình' : t.nhanh === 'hinh_gt' ? 'Hình giải tích' : 'Đại số'}</div>
                     <div className="mt-1 text-[11px] text-slate-400">Tạo {fmtNgay(t.created_at)}{t.updated_at && t.updated_at !== t.created_at ? ` · sửa ${fmtNgay(t.updated_at)}` : ''}</div>

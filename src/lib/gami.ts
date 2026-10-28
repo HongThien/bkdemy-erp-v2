@@ -1136,7 +1136,7 @@ const taskTuRow = (r: ViecBuoiThuongRow): MyTask => ({
 // (chưa có dòng buoi_hoc ⇒ chưa có task để đọc). Chép lại một bản thứ hai ở troly.ts là đẻ
 // hai nguồn sự thật rồi lệch — thêm khâu ở đây mà quên bên kia thì rổ dự kiến thiếu âm thầm.
 export const TASKS_BY_VAI: Record<'gv' | 'tg', { tab: TabKey; label: string }[]> = {
-  gv: [{ tab: 'danhgia', label: 'Đánh giá sau buổi' }, { tab: 'ingame', label: 'Chấm bài trên lớp' }],
+  gv: [{ tab: 'danhgia', label: 'Đánh giá sau buổi' }],   // Thùy 28/10: chấm bài trên lớp không còn là việc của GV
   tg: [{ tab: 'et', label: 'Chấm ET' }, { tab: 'btvn', label: 'Chấm BTVN' }],   // Thùy 15/10: chấm bài trên lớp không còn của TA
 }
 export async function getMyTasks(): Promise<MyTask[]> {
@@ -1145,7 +1145,7 @@ export async function getMyTasks(): Promise<MyTask[]> {
   // Buổi THƯỜNG: owner + hạn + MT-thay-hẳn-các-khâu đều derive ở DB (fn_viec_buoi_thuong). Task XONG vẫn
   // trả về (done + doneAt) để hiện ở nhóm "Đã xong" — mở lại xem/sửa được.
   const rows = await viecBuoiThuong(null, null, false)
-  const out: MyTask[] = rows.map(taskTuRow)
+  const out: MyTask[] = rows.filter((r) => r.tab !== 'ingame').map(taskTuRow) // Thùy 28/10: khâu ingame không còn là việc của ai
   const tgLops = new Set(prof.phanCong.filter((pc) => pc.vai_tro === 'tg').map((pc) => pc.lop_id))
   // ── DUYỆT BÁO SAI test online (spec test-online §9) — THAY cho task "Chấm ET" đã bỏ ở trên.
   // Pure-derive đúng nghĩa: report `moi` TỒN TẠI ⇒ task; duyệt xong (dung/sai) là task tự biến
