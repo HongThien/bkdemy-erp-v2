@@ -78003,3 +78003,7 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - Mẫu Đại: 80 câu người-gán, mức cao đúng 52/68 (76,5%) — thấp hơn đợt trước (98,9%). 9/16 câu sai là ranh giới hình miền nghiệm 544↔886 / 540↔884 (AI chọn "phải lập đường biên từ hình", người chọn "đã biết"): hạ 8 câu cao thuộc 4 dạng này xuống đề xuất (vừa) trước khi ghi. Còn lại: 563↔557 (2), 818↔821, 764↔772/763 (dạng sau thắng vs nhãn cũ của người).
 - LT + ví dụ cho 8 dạng mới còn rỗng (NDB01401 · 01404 · 01421 · 01422 · 01425 · 01595 · 01596 · 01628): `htl/lt-vd-dang-moi-2810.mjs` (ví dụ lấy từ kho hoặc soạn mới, đáp số kiểm tay).
 - BẢN ĐỒ CÒN THIẾU: Đại — **Thống kê / số đặc trưng** (trung bình, trung vị, tứ phân vị, độ lệch chuẩn, giá trị ngoại lệ ~40 câu) · **số gần đúng, sai số** (~10 câu) · **Hàm số** (tập xác định, đồ thị, bảng biến thiên, parabol, ~22 câu) · lập BPT 2 ẩn từ bài toán thực tế (không tối ưu) · giải tam giác vuông · bất đẳng thức tam giác; hgt — quỹ tích/tập hợp điểm (~60 câu), chứng minh đẳng thức tích vô hướng/độ dài, tọa độ trên trục/hình chiếu/đối xứng, phân tích vectơ theo hai vectơ bằng tọa độ.
+
+## 28/10 — Quy trình HS mới: nhập 5 bước checklist thật — Thùy
+- mig 202610281629 (đã áp): 1 Add PH vào nhóm lớp · 2 Add TA, GV vào nhóm riêng · 3 Gửi Cẩm nang đi học · 4 Xác nhận PH đã nắm thông tin cẩm nang · 5 Hỏi PH sau buổi học đầu. Chạy lại không trùng. Sửa về sau ở tab Checklist.
+- Hiện có (chưa đủ, 0 tick): 1 tuần 5 · 2 tuần 9 · 3 tuần 17 · 4 tuần 25 PH–HS. Màn: cột tên rộng hơn, "Tiến độ" không bẻ dòng.

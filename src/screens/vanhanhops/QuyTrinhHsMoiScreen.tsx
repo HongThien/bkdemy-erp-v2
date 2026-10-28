@@ -132,13 +132,13 @@ function TheoDoi() {
                         <span className="mr-1 inline-block h-2 w-2 rounded-full align-middle" style={{ background: b.mau }} />{b.ten}
                       </th>
                     ))}
-                    <th className="px-3 py-2 text-center font-medium">Tiến độ</th>
+                    <th className="whitespace-nowrap px-3 py-2 text-center font-medium">Tiến độ</th>
                   </tr>
                 </thead>
                 <tbody>
                   {rows.map((r) => (
                     <tr key={r.hs_id} className="border-t border-slate-100">
-                      <td className="px-3 py-1.5">
+                      <td className="min-w-[220px] px-3 py-1.5">
                         <div className="font-medium text-slate-800">{r.ph_ten ?? '(chưa có PH)'} <span className="text-slate-400">–</span> {r.ho_ten}</div>
                         <div className="text-[11px] text-slate-400">{r.ma_hs}{r.ph_sdt ? ` · ${r.ph_sdt}` : ''}</div>
                       </td>
