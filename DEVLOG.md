@@ -77999,3 +77999,14 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - Sửa: `BuoiHocScreen` dangOpts thêm dạng bài NDB (trước chỉ dai_ban_do ⇒ tab ET/BTVN/Đánh giá hiện mã trần NDB…); `getDangYeuGoiY` mặc định 'moi'.
 - (28/10, Thùy gật xoá) Dọn nhánh bản đồ cũ: mig 202610281132 ĐÃ ÁP — sửa `_btyeu_dang_con_yeu` · `fn_btyeu_fill_dang_yeu` · `fn_botro_ket_qua_tuan` · `fn_btyeu_de_xuat_dang_moi` (chỉ còn đường bản đồ mới; test trước/sau ROLLBACK ra cùng kết quả) rồi XOÁ `fn_btyeu_dang_yeu_2_cua_so` · `fn_mastery_rollup` · `fn_mastery_cells`. Khôi phục: `docs/sao-luu-ham/ham-ban-do-cu-28-10.sql`. Client: `getMasteryHS`/`loadMasteryCells` luôn theo `fn_mastery_*_moi`, bỏ cờ `theoCongTac` + `fetchOnlineEvals`/`fetchBTEvals` (mã chết).
 - (28/10, Thùy chọn) Gỡ khỏi cây ERP 5 lá: `lamtailieu:giao_trinh` · `lamtailieu:giao_trinh_hinh` · `lamtailieu:et` (bản cũ; còn lá bản đồ mới) · `huyhieu` · `huyhieu_trao`. CHỈ bỏ khai báo lá + route + icon; `lamtailieu` trần giờ mở GiaoTrinhBdmScreen. File màn hình KHÔNG xoá: `TaiLieuScreen.tsx`, `GiaoTrinhHinhEntry.tsx`, `HuyHieuScreen.tsx` thành mồ côi (không ai import) — chờ Thùy cho xoá. `ETScreen` vẫn dùng (Kho tài liệu mở ET cũ, ETBdmEditor). Bảng `huy_hieu*` giữ nguyên.
+
+
+## 28/10 — Soạn MT giống ET mới: kế hoạch nhiều dạng × N câu, chọn nhiều câu, đổi thứ tự (Thùy)
+
+- Thùy: "Luồng tạo MT làm giống luồng ET mới về UI, chọn nhiều dạng nhiều câu, có chức năng thay đổi thứ tự (kéo thả hoặc điền vị trí)".
+- Làm ở `MTEditor` (`src/screens/tailieu/MTScreen.tsx`), GIỮ nguyên dữ liệu (phần · hàng · autosave · Hình · điểm từng câu · CB/NC · 3 mã đề · gán buổi):
+  - Mỗi phần có **⚡ Thêm nhiều dạng** (chỉ khối đã chạy bản đồ mới — `nhanhChonCuaKhoi` có 'bdm'): kế hoạch dạng bài × N câu, chọn bằng `BoChonNhom` (toggle Đại số | Hình giải tích khi khối có HGT), **⚡ Sinh** = `fn_tl_bdm_goi_y` (cùng luật ET mới, né câu đã có xuyên mọi phần), nối cuối phần, bỏ hàng trống.
+  - Hàng bản đồ mới hiện "nhóm › dạng bài"; **✎ Chọn** mở `ChonCauBdm` (kho luyện, cả nhóm) — tick NHIỀU câu: câu đầu thay hàng, câu sau chèn ngay sau, dạng từng câu tra `fn_tl_bdm_et_vi_tri`. Hàng nhánh cũ (KhoPicker) cũng chèn nhiều câu như vậy.
+  - **Đổi thứ tự:** tay ⠿ kéo thả (nửa trên/dưới hàng = trước/sau, thả lên "+ Thêm câu" = cuối phần, sang phần khác được) · ô số câu gõ được (Enter/rời ô ⇒ chuyển tới số đó, lớn hơn số cuối ⇒ cuối phần cuối). Lưu ngay `setCauOfPhan` cả phần nguồn và đích. Câu chuyển tới cuối phần đứng trước hàng trống.
+- Lỗi gặp khi thử: ô số giữ số vừa gõ sau khi chuyển (hàng cùng vị trí vẫn số cũ ⇒ effect không chạy) — sửa: rời ô luôn trả về số thật.
+- Verify dev, MT thử "[TEST Claude] MT ban do moi - xoa duoc" (K9, id 498ea213-4e25-4f94-946c-83d23ad6c367): sinh 3+1 câu · gõ 4→1 · kéo 1→sau 3 · ✎ Chọn thêm 2 câu (1 câu dạng bài khác trong nhóm) · gõ 6→7 sang Phần II · kéo về Phần I · Sinh đề 2&3 đủ. Thứ tự DB (`tai_lieu_cau`) khớp màn, `nhanhByCau` = 'bdm'. MT thử CHƯA xoá — chờ Thùy gật.
