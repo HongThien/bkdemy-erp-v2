@@ -4,9 +4,10 @@
 // Đại + Hình giải tích = BuilderBanDoMoi (nhóm bài · dạng bài) · Hình = HinhGiaoTrinhBuilder (bài học Học + mô hình Luyện).
 // ⭐ Thùy 21/10: CÙNG màn này phục vụ lá "Chuyên đề" (loai='chuyen_de') — builder y giáo trình nhưng KHÔNG đi với lớp nào
 // (không Gán lớp), mỗi chuyên đề 1 nhánh chọn lúc tạo: Đại (bản đồ mới) · Hình giải tích · Hình (Hình–Luyện) — 2 nhánh sau đang làm.
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../../lib/kho/api'
 import { listTaiLieu, createTaiLieu, deleteTaiLieu, type TaiLieu } from '../../../lib/tailieu'
+import { listLop, type Lop } from '../../../lib/nhansu'
 import { useStore } from '../../../store/useStore'
 import { useMonScope } from '../../../hooks/useMonScope'
 import { usePagedList } from '../../../hooks/usePagedList'
@@ -42,6 +43,10 @@ export default function GiaoTrinhBdmScreen({ loai = 'giao_trinh' }: { loai?: Loa
   const { allowedMons, isAll } = useMonScope()
   const coQuyen = isAll || allowedMons.includes(MON)
   const profileLoading = !isAll && me === null
+  // Map lop_id → ten_lop để hiện chip "Lớp 7S2" trên card (card hiện tên trước, không chờ fetch chi tiết).
+  const [lopAll, setLopAll] = useState<Lop[]>([])
+  useEffect(() => { listLop().then((ls) => setLopAll(ls.filter((l) => l.mon === MON))).catch(() => {}) }, [])
+  const lopMap = useMemo(() => new Map(lopAll.map((l) => [l.id, l.ten_lop])), [lopAll])
 
   const { rows: list, loading, loadingMore, hasMore, err, reload, loadMore } = usePagedList<TaiLieu>(
     // mọi nhánh (Đại · HGT · Hình) — cả giáo trình lẫn chuyên đề
@@ -96,7 +101,10 @@ export default function GiaoTrinhBdmScreen({ loai = 'giao_trinh' }: { loai?: Loa
                       {t.luu_tru_tu && <span className="shrink-0 rounded bg-amber-50 px-1.5 py-0.5 text-[10.5px] font-semibold text-amber-700">Lưu trữ</span>}
                       {t.phase === 0 && <span className="shrink-0 rounded bg-violet-50 px-1.5 py-0.5 text-[10.5px] font-semibold text-violet-700">Phase 0</span>}
                     </div>
-                    <div className="mt-1 text-[12px] text-slate-400">Khối {t.khoi} · {t.nhanh === 'hinh' ? 'Hình' : t.nhanh === 'hinh_gt' ? 'Hình giải tích' : 'Đại số'}</div>
+                    <div className="mt-1 text-[12px] text-slate-500">
+                      {t.lop_id && <span className="mr-1 rounded bg-sky-50 px-1.5 py-0.5 text-[10.5px] font-semibold text-sky-700">Lớp {lopMap.get(t.lop_id) ?? '…'}</span>}
+                      Khối {t.khoi} · {t.nhanh === 'hinh' ? 'Hình' : t.nhanh === 'hinh_gt' ? 'Hình giải tích' : 'Đại số'}
+                    </div>
                     <div className="mt-1 text-[11px] text-slate-400">Tạo {fmtNgay(t.created_at)}{t.updated_at && t.updated_at !== t.created_at ? ` · sửa ${fmtNgay(t.updated_at)}` : ''}</div>
                     <div className="mt-3 flex gap-2">
                       <button onClick={() => setOpenId(t.id, t.nhanh)} className="rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-indigo-500">Mở / Xuất</button>
@@ -114,7 +122,7 @@ export default function GiaoTrinhBdmScreen({ loai = 'giao_trinh' }: { loai?: Loa
           )}
       </div>
 
-      {creating && <TaoMoi loai={loai} khoi={khoi === ALL ? DEFAULT_KHOI : khoi} onClose={() => setCreating(false)} onCreated={(id, nhanh) => { setCreating(false); reload(); setOpenId(id, nhanh) }} />}
+      {creating && <TaoMoi loai={loai} khoi={khoi === ALL ? DEFAULT_KHOI : khoi} lopAll={lopAll} onClose={() => setCreating(false)} onCreated={(id, nhanh) => { setCreating(false); reload(); setOpenId(id, nhanh) }} />}
     </div>
   )
 }
@@ -126,18 +134,30 @@ const NHANH_CD: { id: string | null; ten: string; mo: boolean; ghi: string }[] =
   { id: 'hinh', ten: 'Hình', mo: true, ghi: 'Hình–Luyện: mô hình → bài trong kho (trọn ý)' },
 ]
 
-function TaoMoi({ loai, khoi, onClose, onCreated }: { loai: LoaiTL; khoi: string; onClose: () => void; onCreated: (id: string, nhanh: string | null) => void }) {
+function TaoMoi({ loai, khoi, lopAll, onClose, onCreated }: { loai: LoaiTL; khoi: string; lopAll: Lop[]; onClose: () => void; onCreated: (id: string, nhanh: string | null) => void }) {
   const T = TEN[loai]
   const [nhanh, setNhanh] = useState<string | null>(null)
   const [ten, setTen] = useState('')
+  // ⭐ Thùy 28/10: giáo trình đi theo LỚP — bắt buộc chọn lớp lúc tạo. Chuyên đề KHÔNG gắn lớp (giữ nguyên).
+  const [lopId, setLopId] = useState<string | null>(null)
+  const lopKhoi = useMemo(() => lopAll.filter((l) => l.khoi === khoi && l.trang_thai === 'dang_hoc').sort((a, b) => a.ten_lop.localeCompare(b.ten_lop)), [lopAll, khoi])
+  const canCapLop = loai === 'giao_trinh'
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
   async function create() {
     if (!ten.trim()) return
+    if (canCapLop && !lopId) { setError('Giáo trình phải gắn 1 lớp. Chọn lớp ở trên.'); return }
     setBusy(true); setError(null)
-    try { const tl = await createTaiLieu({ loai, ten: ten.trim(), khoi, mon: MON, nhanh, ban_do: 'moi' }); onCreated(tl.id, nhanh) }
+    try { const tl = await createTaiLieu({ loai, ten: ten.trim(), khoi, mon: MON, nhanh, ban_do: 'moi', lopId: canCapLop ? lopId : null }); onCreated(tl.id, nhanh) }
     catch (e: any) { setError(e.message ?? String(e)); setBusy(false) }
   }
+  // Gợi ý tên GT theo lớp đã chọn (chỉ khi người dùng chưa gõ tên).
+  useEffect(() => {
+    if (!canCapLop || !lopId) return
+    const l = lopKhoi.find((x) => x.id === lopId); if (!l) return
+    if (!ten.trim()) setTen(`Giáo trình ${l.ten_lop}`)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lopId])
   return (
     <Shell title={`Tạo ${T.mot} bản đồ mới · Toán · Khối ${khoi}`} onClose={onClose}>
       {(
@@ -152,12 +172,24 @@ function TaoMoi({ loai, khoi, onClose, onCreated }: { loai: LoaiTL; khoi: string
           </div>
         </Field>
       )}
+      {canCapLop && (
+        <Field label="Lớp (bắt buộc)">
+          {lopKhoi.length === 0 ? (
+            <div className="rounded-md border border-amber-200 bg-amber-50 px-3 py-2 text-[12px] text-amber-700">Khối {khoi} chưa có lớp đang học. Vào Nhân sự → Lớp để tạo trước.</div>
+          ) : (
+            <select value={lopId ?? ''} onChange={(e) => setLopId(e.target.value || null)} className={inp}>
+              <option value="">— Chọn lớp —</option>
+              {lopKhoi.map((l) => <option key={l.id} value={l.id}>{l.ten_lop}{l.bac ? ` · bậc ${l.bac}` : ''}</option>)}
+            </select>
+          )}
+        </Field>
+      )}
       <Field label={`Tên ${T.mot}`}><input value={ten} onChange={(e) => setTen(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && create()} className={inp} placeholder={loai === 'chuyen_de' ? 'vd: Chuyên đề Số hữu tỉ' : 'vd: Giáo trình 7A'} autoFocus /></Field>
-      <div className="mb-3 text-[11px] text-slate-400">Tạo xong vào builder → <b>+ Thêm {loai === 'chuyen_de' ? 'phần' : 'buổi'}</b> → <b>+ Chọn nhóm / dạng bài</b>.{loai === 'chuyen_de' && ' Chuyên đề không gắn lớp — in / xuất PDF dùng ở đâu cũng được.'}</div>
+      <div className="mb-3 text-[11px] text-slate-400">Tạo xong vào builder → <b>+ Thêm {loai === 'chuyen_de' ? 'phần' : 'buổi'}</b> → <b>+ Chọn nhóm / dạng bài</b>, hoặc <b>📥 Lấy bài từ lớp khác</b> để copy từ giáo trình lớp cùng hệ.{loai === 'chuyen_de' && ' Chuyên đề không gắn lớp — in / xuất PDF dùng ở đâu cũng được.'}</div>
       {error && <p className="mb-2 text-xs text-rose-600">{error}</p>}
       <div className="flex justify-end gap-2">
         <button onClick={onClose} className="rounded-md px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Huỷ</button>
-        <button onClick={create} disabled={!ten.trim() || busy} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{busy ? 'Đang tạo…' : 'Tạo'}</button>
+        <button onClick={create} disabled={!ten.trim() || (canCapLop && !lopId) || busy} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{busy ? 'Đang tạo…' : 'Tạo'}</button>
       </div>
     </Shell>
   )

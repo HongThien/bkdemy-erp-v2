@@ -4,15 +4,16 @@
 // Mọi đặt buổi / gợi ý câu ở DB (fn_tl_bdm_*); sau mỗi thao tác VÁ đúng buổi/phần đó tại chỗ, không tải lại cả giáo trình.
 // In / xem trước: PrintView chung (tự nhận ban_do='moi', in theo A3). Gán lớp + BTVN/ôn tập: GanLopBdm (riêng, không
 // dùng TrichPanel/OnTapConfirmScreen của builder cũ).
-import { useEffect, useState } from 'react'
-import { addBuoi, listBuoiTaiLieu, updatePhan, updateTaiLieu, fetchCausCuaTaiLieu, DEFAULT_BTVN_LINES, type CauHinh } from '../../../lib/tailieu'
+import { useEffect, useMemo, useState } from 'react'
+import { addBuoi, listBuoiTaiLieu, listTaiLieu, updatePhan, updateTaiLieu, fetchCausCuaTaiLieu, copyBuoiBdm, DEFAULT_BTVN_LINES, type CauHinh, type TaiLieu } from '../../../lib/tailieu'
+import { listLop, type Lop } from '../../../lib/nhansu'
 import {
   noiDung, datBuoi, datCau, goiY, datCoPhan, xoaBuoi, cauCuaBuoi, loiDoc, SO_LUYEN_MAC_DINH, SO_BTVN_MAC_DINH,
   type NoiDung, type NdBuoi, type NdNhom, type ChonBuoi,
 } from '../../../lib/tailieuBdm'
 import { LOAI_CAU, type CauHoi } from '../../../lib/kho/api'
 import type { CheDoHinh } from '../../../lib/kho/hinhGiaoTrinh'
-import { MathText, inp } from '../../kho/ui'
+import { MathText, Shell, Field, inp } from '../../kho/ui'
 import { AnhMmEditCtx } from '../anhMmCtx'
 import { ColSel, MaCau, AnhXem, AnhMmCtl, CheDoHinhBtn, ApplyLinesAll, MAU_PRESET } from '../TaiLieuBuilder'
 import BoChonNhom from './BoChonNhom'
@@ -45,6 +46,8 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
   const [inAll, setInAll] = useState(false)                 // 🖨 Xem / Xuất PDF cả giáo trình
   const [xemBuoi, setXemBuoi] = useState<string | null>(null) // 👁 Xem nhanh bản in 1 buổi
   const [ganLop, setGanLop] = useState(false)                  // ⬇ Gán lớp (trích buổi → tài liệu của lớp)
+  const [copyBuoi, setCopyBuoi] = useState(false)              // 📥 Copy buổi từ giáo trình lớp khác (Thùy 28/10)
+  const [tlLopId, setTlLopId] = useState<string | null>(null)  // lop_id của giáo trình (RPC noi_dung chưa trả; fetch riêng)
   const markSaved = () => setSaved(true)
   useEffect(() => { if (!saved) return; const t = setTimeout(() => setSaved(false), 2000); return () => clearTimeout(t) }, [saved])
 
@@ -74,6 +77,10 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
       try {
         const list = await listBuoiTaiLieu(id)
         setBuoiList(list)
+        // RPC fn_tl_bdm_noi_dung chưa trả lop_id (mig 202610172312) — fetch riêng, nhẹ.
+        const { supabase } = await import('../../../lib/supabase')
+        const { data: tlRow } = await supabase.from('tai_lieu').select('lop_id').eq('id', id).single()
+        setTlLopId(((tlRow as any)?.lop_id as string | null) ?? null)
         let nho: string | null = null
         // Chuyên đề luôn mở "Tất cả" (Thùy 21/10: nhớ lọc 1 phần ⇒ tưởng thiếu câu); giáo trình nhớ buổi đang soạn như cũ.
         if (!laChuyenDe) try { nho = localStorage.getItem(filterKey(id)) } catch { /* ignore */ }
@@ -244,7 +251,14 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
                   </div>
                 </div>
               ))}
-              {!chiXem && <button onClick={themBuoi} className="w-full rounded-xl border-2 border-dashed border-indigo-200 bg-indigo-50/40 py-3 text-[14px] font-medium text-indigo-700 transition hover:bg-indigo-50">+ Thêm {nhan}</button>}
+              {!chiXem && (
+                <div className="flex gap-2">
+                  <button onClick={themBuoi} className="flex-1 rounded-xl border-2 border-dashed border-indigo-200 bg-indigo-50/40 py-3 text-[14px] font-medium text-indigo-700 transition hover:bg-indigo-50">+ Thêm {nhan}</button>
+                  {!laChuyenDe && tlLopId && (
+                    <button onClick={() => setCopyBuoi(true)} className="rounded-xl border-2 border-dashed border-violet-300 bg-violet-50/40 px-4 py-3 text-[14px] font-medium text-violet-700 transition hover:bg-violet-50" title={`Copy ${nhan.toLowerCase()} từ giáo trình lớp khác (cùng khối ${nd.tai_lieu.khoi}) — chép độc lập, sau này sửa riêng không ảnh hưởng`}>📥 Lấy {nhan.toLowerCase()} từ lớp khác</button>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -263,6 +277,17 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
         {inAll && <PrintView id={id} onClose={() => setInAll(false)} />}
         {xemBuoi && <PrintView id={id} onlyBuoiId={xemBuoi} onClose={() => setXemBuoi(null)} />}
         {ganLop && <GanLopBdm masterId={id} khoi={nd.tai_lieu.khoi} tl={tl} onClose={() => setGanLop(false)} />}
+        {copyBuoi && (
+          <CopyBuoiModal tlId={id} tlLopId={tlLopId} khoi={nd.tai_lieu.khoi} mon={nd.tai_lieu.mon} nhanh={nd.tai_lieu.nhanh}
+            onClose={() => setCopyBuoi(false)}
+            onDone={async (r) => {
+              setCopyBuoi(false); setBao(null)
+              await lam(async () => {
+                const list = await listBuoiTaiLieu(id); setBuoiList(list)
+                await chonBuoiLoc(r.buoiMoiId); markSaved()
+              })
+            }} />
+        )}
       </div>
     </AnhMmEditCtx.Provider>
   )
@@ -444,5 +469,88 @@ function CayTrai({ nd, ten, nhan, onJump }: { nd: NoiDung; ten: string; nhan: st
         </div>
       ))}
     </div>
+  )
+}
+
+// ⭐ Thùy 28/10: Copy 1 buổi từ giáo trình LỚP KHÁC (cùng khối + môn + nhánh) sang giáo trình đang mở.
+// Flow: chọn lớp → chọn giáo trình của lớp đó → chọn 1 buổi → "📥 Copy vào cuối". Chép ĐỘC LẬP (câu + cấu hình).
+function CopyBuoiModal({ tlId, tlLopId, khoi, mon, nhanh, onClose, onDone }: {
+  tlId: string; tlLopId: string | null; khoi: string; mon: string; nhanh: string | null
+  onClose: () => void; onDone: (r: { buoiMoiId: string; soPhan: number; soCau: number }) => void
+}) {
+  const [lops, setLops] = useState<Lop[]>([])
+  const [lopId, setLopId] = useState<string | null>(null)
+  const [gts, setGts] = useState<TaiLieu[]>([])
+  const [gtId, setGtId] = useState<string | null>(null)
+  const [buois, setBuois] = useState<{ id: string; tieu_de: string | null; thu_tu: number }[]>([])
+  const [buoiId, setBuoiId] = useState<string | null>(null)
+  const [tenMoi, setTenMoi] = useState('')
+  const [busy, setBusy] = useState(false)
+  const [err, setErr] = useState<string | null>(null)
+  // Lớp cùng khối+môn, loại chính lớp của GT đang mở (không copy từ chính mình).
+  useEffect(() => {
+    listLop(khoi).then((ls) => setLops(ls.filter((l) => l.mon === mon && l.id !== tlLopId && l.trang_thai === 'dang_hoc').sort((a, b) => a.ten_lop.localeCompare(b.ten_lop))))
+      .catch((e) => setErr(e.message ?? String(e)))
+  }, [khoi, mon, tlLopId])
+  // Giáo trình của lớp đã chọn (bản đồ mới, cùng nhánh, không phải phase 0).
+  useEffect(() => {
+    if (!lopId) { setGts([]); setGtId(null); return }
+    listTaiLieu(khoi, 'giao_trinh', mon, nhanh ?? undefined, { banDo: 'moi', limit: 100 })
+      .then((all) => setGts(all.filter((t) => t.lop_id === lopId)))
+      .catch((e) => setErr(e.message ?? String(e)))
+  }, [lopId, khoi, mon, nhanh])
+  // Buổi của GT đã chọn
+  useEffect(() => {
+    if (!gtId) { setBuois([]); setBuoiId(null); return }
+    listBuoiTaiLieu(gtId).then(setBuois).catch((e) => setErr(e.message ?? String(e)))
+  }, [gtId])
+  const buoiChon = useMemo(() => buois.find((b) => b.id === buoiId) ?? null, [buois, buoiId])
+  async function copy() {
+    if (!buoiId) return
+    setBusy(true); setErr(null)
+    try {
+      const r = await copyBuoiBdm(buoiId, tlId, tenMoi.trim() || null)
+      onDone(r)
+    } catch (e: any) { setErr(e.message ?? String(e)); setBusy(false) }
+  }
+  return (
+    <Shell title={`📥 Lấy buổi từ giáo trình lớp khác · Khối ${khoi}`} onClose={onClose}>
+      <Field label="1. Lớp nguồn">
+        {lops.length === 0 ? <div className="text-[12px] italic text-slate-400">Không có lớp khác đang học cùng khối {khoi}.</div>
+          : <select value={lopId ?? ''} onChange={(e) => setLopId(e.target.value || null)} className={inp}>
+            <option value="">— Chọn lớp —</option>
+            {lops.map((l) => <option key={l.id} value={l.id}>{l.ten_lop}{l.bac ? ` · bậc ${l.bac}` : ''}</option>)}
+          </select>}
+      </Field>
+      {lopId && (
+        <Field label="2. Giáo trình của lớp">
+          {gts.length === 0 ? <div className="text-[12px] italic text-slate-400">Lớp này chưa có giáo trình bản đồ mới (cùng nhánh).</div>
+            : <select value={gtId ?? ''} onChange={(e) => setGtId(e.target.value || null)} className={inp}>
+              <option value="">— Chọn giáo trình —</option>
+              {gts.map((t) => <option key={t.id} value={t.id}>{t.ten}</option>)}
+            </select>}
+        </Field>
+      )}
+      {gtId && (
+        <Field label="3. Buổi để copy">
+          {buois.length === 0 ? <div className="text-[12px] italic text-slate-400">Giáo trình này chưa có buổi nào.</div>
+            : <select value={buoiId ?? ''} onChange={(e) => setBuoiId(e.target.value || null)} className={inp}>
+              <option value="">— Chọn buổi —</option>
+              {buois.map((b) => <option key={b.id} value={b.id}>{b.tieu_de || `Buổi ${b.thu_tu + 1}`}</option>)}
+            </select>}
+        </Field>
+      )}
+      {buoiChon && (
+        <Field label="4. Tên buổi mới (bỏ trống = giữ nguyên)">
+          <input value={tenMoi} onChange={(e) => setTenMoi(e.target.value)} placeholder={buoiChon.tieu_de || `Buổi ${buoiChon.thu_tu + 1}`} className={inp} />
+        </Field>
+      )}
+      {err && <p className="mb-2 text-xs text-rose-600">{err}</p>}
+      <div className="mb-3 text-[11px] text-slate-400">Chép <b>ĐỘC LẬP</b>: toàn bộ nhóm/dạng bài/BTVN/câu + cấu hình in của câu. Sau khi copy, 2 lớp sửa riêng không ảnh hưởng nhau.</div>
+      <div className="flex justify-end gap-2">
+        <button onClick={onClose} className="rounded-md px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Huỷ</button>
+        <button onClick={copy} disabled={!buoiId || busy} className="rounded-md bg-violet-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-violet-500 disabled:opacity-40">{busy ? 'Đang copy…' : '📥 Copy vào cuối'}</button>
+      </div>
+    </Shell>
   )
 }
