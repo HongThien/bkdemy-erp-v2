@@ -206,6 +206,12 @@ export async function boDuyetCau(ma_cau: string, tbl = 'dai_cau_hoi'): Promise<v
     .eq('ma_cau', ma_cau)
   if (error) throw error
 }
+// Duyệt / bỏ duyệt mà KHÔNG biết trước câu nằm bảng nào — dò xuyên các bảng kho rồi ghi (duyệt thẳng trong popup Kho — CEO 28/10).
+export async function duyetCauAuto(ma_cau: string, duyet: boolean): Promise<void> {
+  const found = await findCauInKho(ma_cau)
+  if (!found) throw new Error(`Không tìm thấy câu ${ma_cau} ở bất kỳ bảng kho nào.`)
+  if (duyet) await duyetCau(ma_cau, found.cauTbl); else await boDuyetCau(ma_cau, found.cauTbl)
+}
 
 // Tìm 1 câu THEO ma_cau xuyên suốt CẢ 3 bảng kho — dùng cho Duyệt chấm "Sửa trong Kho": chỗ gọi chỉ
 // có `ma_cau` (text, KHÔNG FK — CLAUDE.md §2 "tham chiếu bằng TEXT"), không biết trước câu thuộc

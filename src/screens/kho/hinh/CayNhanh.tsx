@@ -9,7 +9,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import * as api from '../../../lib/kho/api'
 import type { BaiToan, Luoi, MoHinh } from '../../../lib/kho/hinh'
 import type { BaiCay, ChuoiKho, DemKho, KetQuaCay } from '../../../lib/kho/hinhCay'
-import { MathText } from '../ui'
+import { MathText, LoiGiaiXem } from '../ui'
 import { AnhInput, Btn, Empty, Fig, Ma, Note, OcrButton, Seg, inpCls, tron } from './hinhUi'
 import Catalog from './Catalog'
 import ChuoiHinhPrintView, { type KhoiIn } from './ChuoiHinhPrintView'
@@ -936,7 +936,7 @@ function PopupBai({ L, bai, nhanhById, baiById, duong, doSau, saiTienDe, onDong,
   const nhanhSai = saiTienDe.length ? baiById.get(saiTienDe[0])?.mo_hinh_id : null
   return (
     <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-900/45 p-5" onClick={onDong}>
-      <div className="max-h-[92vh] w-full max-w-[900px] overflow-auto rounded-2xl bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
+      <div className="max-h-[95vh] w-full max-w-[95vw] overflow-auto rounded-2xl bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className="sticky top-0 z-10 flex items-center gap-2.5 border-b border-slate-200 bg-white px-5 py-3">
           <h2 className="text-[17px] font-semibold">Bài {bai.so}</h2>
           <Ma big>{bai.ma}</Ma>
@@ -955,7 +955,7 @@ function PopupBai({ L, bai, nhanhById, baiById, duong, doSau, saiTienDe, onDong,
             </Muc>
             <Muc ten="Đáp án chi tiết">
               {cach?.loi_giai
-                ? <div className="rounded-lg border border-emerald-200 bg-emerald-50/60 p-2.5"><MathText className="lg-lien lg-hinh">{cach.loi_giai}</MathText></div>
+                ? <div className="rounded-lg border border-emerald-200 bg-emerald-50/60 p-2.5"><LoiGiaiXem raw={cach.loi_giai} className="lg-lien lg-hinh" /></div>
                 : <span className="text-slate-400">chưa có lời giải</span>}
               {cach?.anh_loi_giai && <div className="mt-2"><Fig src={cach.anh_loi_giai} cap="Hình lời giải" h="h-40" /></div>}
             </Muc>

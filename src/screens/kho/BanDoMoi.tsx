@@ -23,9 +23,9 @@ import KhoHinhHocScreen from './hinh/KhoHinhHocScreen'
 import CayNhanh from './hinh/CayNhanh'
 import { loadLuoi } from '../../lib/kho/api'
 import type { Luoi } from '../../lib/kho/hinh'
-import { KHOI_OPTIONS, DEFAULT_KHOI, type LyThuyet } from '../../lib/kho/api'
+import { KHOI_OPTIONS, DEFAULT_KHOI, duyetCauAuto, type LyThuyet } from '../../lib/kho/api'
 import { LyThuyetModal } from './BanDo'
-import { MathText, inp } from './ui'
+import { MathText, LoiGiaiXem, inp } from './ui'
 import KhopBanDoMoiTab from '../duyetloigiai/KhopBanDoMoiTab'
 import HinhLuyenChuaPhanTab from '../duyetloigiai/HinhLuyenChuaPhanTab'
 import { demChuaPhanMoHinh } from '../../lib/kho/hinhCay'
@@ -1192,7 +1192,7 @@ function BangGanCau({ g, onDong, onDaGan }: { g: GanMo; onDong: () => void; onDa
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-6" onClick={onDong}>
-      <div className="flex max-h-full w-full max-w-5xl flex-col overflow-hidden rounded-xl bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
+      <div className="flex max-h-[95vh] w-full max-w-[95vw] flex-col overflow-hidden rounded-xl bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center gap-2 bg-rose-600 px-4 py-2.5 text-white">
           <span className="flex-1 text-[14px] font-semibold">Gán câu chưa có dạng bài — <MathText>{g.nhan}</MathText></span>
           {du && <span className="text-[12px] opacity-90">còn {du.tong_cau} câu ({du.tong_goc} câu gốc)</span>}
@@ -1350,6 +1350,16 @@ function KhoModal({ mo, khoi, onDong, onDaDoi }: { mo: KhoMo; khoi: string; onDo
       xong(r.ma_cau, true, `Đã đưa ${n} câu vào kho rác (khôi phục được ở Kho rác)`)
     } catch (e) { setLoi(e instanceof Error ? e.message : String(e)) }
   }
+  // Duyệt thẳng trong popup Kho — vá tại chỗ, không roi khỏi danh sách (câu vẫn thuộc dạng này).
+  // `kho_chuan` do DB tự tính (generated) nên state không đoán — chờ reload trang thì sẽ đúng.
+  const doiDuyet = async (r: KhoCauRow, duyet: boolean) => {
+    try {
+      await duyetCauAuto(r.ma_cau, duyet)
+      setRows((a) => a.map((x) => x.ma_cau === r.ma_cau ? { ...x, da_duyet: duyet } : x))
+      setTb(duyet ? `Đã duyệt ${r.ma_cau}` : `Đã bỏ duyệt ${r.ma_cau}`); setTimeout(() => setTb(null), 2500)
+      onDaDoi()
+    } catch (e) { setLoi(e instanceof Error ? e.message : String(e)) }
+  }
   const req = useRef(0)
   const TRANG = 40
   const tai = (batDau: number) => {
@@ -1368,7 +1378,7 @@ function KhoModal({ mo, khoi, onDong, onDaDoi }: { mo: KhoMo; khoi: string; onDo
   const tieuDe = mo.loai === 'dung_sai' ? 'Kho Đúng/Sai của chủ đề' : mo.loai === 'chua_khop' ? 'Chưa khớp dạng bài' : mo.loai === 'de_xuat' ? 'AI đề xuất — chờ duyệt' : mo.loai === 'thieu_dang' ? 'Thiếu dạng bài' : mo.loai === 'nhom' ? 'Kho của nhóm' : 'Kho của dạng bài'
   return (
     <div className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-900/40 p-6" onClick={onDong}>
-      <div className="flex h-full max-h-[92vh] w-full max-w-4xl flex-col overflow-hidden rounded-xl bg-slate-50 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+      <div className="flex h-full max-h-[95vh] w-full max-w-[95vw] flex-col overflow-hidden rounded-xl bg-slate-50 shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className="flex flex-wrap items-center gap-3 border-b border-slate-200 bg-white px-4 py-2.5">
           <span className="text-[14px] font-semibold text-slate-900">📚 {tieuDe}</span>
           <span className="min-w-0 flex-1 truncate text-[13px] text-slate-600"><MathText>{mo.ten}</MathText></span>
@@ -1385,7 +1395,7 @@ function KhoModal({ mo, khoi, onDong, onDaDoi }: { mo: KhoMo; khoi: string; onDo
           {loi && <div className="rounded-md bg-rose-50 px-3 py-2 text-[12.5px] text-rose-700">{loi} <button onClick={() => setLoi(null)} className="ml-2 underline">ẩn</button></div>}
           {tb && <div className="rounded-md bg-emerald-50 px-3 py-2 text-[12.5px] text-emerald-700">✓ {tb}</div>}
           {!dang && !loi && rows.length === 0 && <div className="py-10 text-center text-[13px] text-slate-400">Không có câu nào{loc !== 'tat_ca' ? ' ở bộ lọc này' : ''}.</div>}
-          {rows.map((r) => <CauKho key={r.ma_cau} r={r} nhom={mo.loai === 'nhom'} onChuyen={mo.loai === 'dung_sai' || r.loai_cau === 'dung_sai' ? undefined : () => setChuyen(r)} onXoa={(ca) => void xoa(r, ca)} />)}
+          {rows.map((r) => <CauKho key={r.ma_cau} r={r} nhom={mo.loai === 'nhom'} onChuyen={mo.loai === 'dung_sai' || r.loai_cau === 'dung_sai' ? undefined : () => setChuyen(r)} onXoa={(ca) => void xoa(r, ca)} onDuyet={(d) => void doiDuyet(r, d)} />)}
           {dang && <div className="py-3 text-center text-[12.5px] text-slate-400">Đang tải…</div>}
           {!dang && rows.length < tong && (
             <button onClick={() => tai(rows.length)} className="mx-auto block rounded-md border border-slate-300 bg-white px-4 py-1.5 text-[12.5px] font-medium text-slate-700 hover:border-indigo-300">Tải thêm {Math.min(TRANG, tong - rows.length)} câu</button>
@@ -1399,8 +1409,9 @@ function KhoModal({ mo, khoi, onDong, onDaDoi }: { mo: KhoMo; khoi: string; onDo
     </div>
   )
 }
-// Thanh thao tác của 1 câu: ↪ Chuyển dạng · 🗑 Xoá (hỏi lại ngay trên thẻ; câu gốc chọn "chỉ câu này" hay "kèm bản sao").
-function ThaoTacCau({ r, onChuyen, onXoa }: { r: KhoCauRow; onChuyen?: () => void; onXoa: (caBanSao: boolean) => void }) {
+// Thanh thao tác của 1 câu: ✓ Duyệt / ↩ Bỏ duyệt (Thùy 28/10 — thẳng trong popup Kho) · ↪ Chuyển dạng · 🗑 Xoá
+// (hỏi lại ngay trên thẻ; câu gốc chọn "chỉ câu này" hay "kèm bản sao").
+function ThaoTacCau({ r, onChuyen, onXoa, onDuyet }: { r: KhoCauRow; onChuyen?: () => void; onXoa: (caBanSao: boolean) => void; onDuyet?: (duyet: boolean) => void }) {
   const [hoi, setHoi] = useState(false)
   if (hoi) return (
     <span className="ml-auto flex items-center gap-1 text-[11.5px]">
@@ -1412,6 +1423,9 @@ function ThaoTacCau({ r, onChuyen, onXoa }: { r: KhoCauRow; onChuyen?: () => voi
   )
   return (
     <span className="ml-auto flex items-center gap-1">
+      {onDuyet && (r.da_duyet
+        ? <button onClick={() => onDuyet(false)} title="Bỏ dấu đã duyệt" className="rounded border border-sky-200 bg-sky-50 px-1.5 py-0.5 text-[11px] font-medium text-sky-700 hover:border-sky-300">↩ Bỏ duyệt</button>
+        : <button onClick={() => onDuyet(true)} title="Đánh dấu đã duyệt — câu vào kho chuẩn (trừ khi máy nghi đáp số)" className="rounded border border-emerald-300 bg-emerald-50 px-1.5 py-0.5 text-[11px] font-semibold text-emerald-700 hover:bg-emerald-100">✓ Duyệt</button>)}
       {onChuyen && <button onClick={onChuyen} title={r.la_goc ? 'Chuyển câu (kèm mọi bản sao) sang dạng bài khác' : 'Chuyển câu sang dạng bài khác'}
         className="rounded border border-slate-200 px-1.5 py-0.5 text-[11px] font-medium text-slate-600 hover:border-indigo-300 hover:text-indigo-700">↪ Chuyển dạng</button>}
       <button onClick={() => setHoi(true)} title="Đưa câu vào kho rác (khôi phục được ở màn Kho rác)"
@@ -1419,7 +1433,7 @@ function ThaoTacCau({ r, onChuyen, onXoa }: { r: KhoCauRow; onChuyen?: () => voi
     </span>
   )
 }
-function CauKho({ r, nhom, onChuyen, onXoa }: { r: KhoCauRow; nhom: boolean; onChuyen?: () => void; onXoa: (caBanSao: boolean) => void }) {
+function CauKho({ r, nhom, onChuyen, onXoa, onDuyet }: { r: KhoCauRow; nhom: boolean; onChuyen?: () => void; onXoa: (caBanSao: boolean) => void; onDuyet?: (duyet: boolean) => void }) {
   const nguonGan = r.nguon_gan === 'chua_khop' || r.nguon_gan === 'thieu_dang' || r.nguon_gan === 'dung_sai' ? null : r.nguon_gan.startsWith('de_xuat') ? 'AI đề xuất (chưa chắc)' : r.nguon_gan.endsWith(':ai') ? 'AI gán' : r.nguon_gan.endsWith(':nguoi') ? 'người gán' : r.nguon_gan.startsWith('gan_cum') ? 'gán theo cụm' : r.nguon_gan.startsWith('doi_ung') ? 'theo dạng cũ' : r.nguon_gan
   const chip = (c: string, t: string) => <span className={`rounded px-1.5 py-0.5 text-[10.5px] font-semibold ${c}`}>{t}</span>
   return (
@@ -1434,7 +1448,7 @@ function CauKho({ r, nhom, onChuyen, onXoa }: { r: KhoCauRow; nhom: boolean; onC
         {r.kiem_may === 'khong_kiem_duoc' && chip('bg-slate-100 text-slate-500', 'máy không kiểm được')}
         {nguonGan && chip('bg-violet-50 text-violet-700', nguonGan)}
         {(nhom || r.nguon_gan.startsWith('de_xuat')) && r.dang_bai && <span className="text-[11px] text-violet-600">› <MathText>{r.dang_bai}</MathText></span>}
-        <ThaoTacCau r={r} onChuyen={onChuyen} onXoa={onXoa} />
+        <ThaoTacCau r={r} onChuyen={onChuyen} onXoa={onXoa} onDuyet={onDuyet} />
       </div>
       {r.ly_do && <div className="mb-1.5 rounded bg-amber-50 px-2 py-1 text-[12px] text-amber-800">{r.nguon_gan.startsWith('de_xuat') ? 'Lý do đề xuất' : r.nguon_gan === 'thieu_dang' ? 'Vì sao thiếu dạng' : 'Vì sao chưa khớp'}: {r.ly_do}</div>}
       <div className="text-[13.5px] leading-relaxed text-slate-900"><MathText>{r.noi_dung}</MathText></div>
@@ -1453,7 +1467,7 @@ function CauKho({ r, nhom, onChuyen, onXoa }: { r: KhoCauRow; nhom: boolean; onC
       {r.loi_giai && (
         <details className="mt-1.5 text-[12.5px] text-slate-600">
           <summary className="cursor-pointer text-indigo-600">Lời giải</summary>
-          <div className="mt-1 whitespace-pre-wrap leading-relaxed"><MathText>{r.loi_giai}</MathText></div>
+          <LoiGiaiXem raw={r.loi_giai} className="mt-1 whitespace-pre-wrap leading-relaxed" />
           {r.anh_dap_an && <img src={r.anh_dap_an} alt="" className="mt-2 max-h-56 rounded border border-slate-200" />}
         </details>
       )}
