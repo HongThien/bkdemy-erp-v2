@@ -78120,3 +78120,52 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Chưa:** chưa xem màn trên app bằng phiên đăng nhập thật (không tự bấm đăng nhập nhanh tài khoản admin). Code chết chờ Thùy gật xoá: `ChotXuScreen.tsx`, `previewChotXu`/`ChotRow`/BacXu CRUD/`getViXu`/`listViXu` trong `src/lib/xu.ts`.
 - **Dọn (Thùy gật "cái gì ko dùng xóa đi"):** xoá `src/screens/gami/ChotXuScreen.tsx`; trong `src/lib/xu.ts` xoá BacXu CRUD (`luong_bac`), `ExpXuRow`/`expXuThang`, `ChotRow`/`previewChotXu`, `THANG_TU_DONG`, `getViXu`/`listViXu` (grep: 0 người gọi ngoài màn cũ). Giữ `dongBoXu` (TuQuaScreen) + `themPhatSinh` (Tổng kết xu). `vercel-ignore.mjs` trỏ sang `TongKetXuScreen.tsx`. Bảng `luong_bac` ở DB CHƯA đụng.
 - **Tối 28/10:** xoá bảng `luong_bac` (Thùy "Xóa ok"; 0 hàm/view/FK, 9 dòng ghi trong mig 202610282149 ĐÃ ÁP); `check-quyen-tien.mjs` bỏ đếm bảng. **Soát bất thường sổ xu** (`scripts/soat-xu-bat-thuong.sql`, chưa sửa, chờ Thùy): đồng bộ giờ chạy đều (21 lệch = ET chấm sau 21:05) · đổi quà khớp từng dòng · 0 ví âm · −390 ngày 16/10 = thu hồi TT07 · giá quà lệch = sửa giá sau. Ca lạ (chi tiết đã báo Thùy trong phiên, không ghi tên vào repo): 1 HS cộng tay 522 xu · 7 cặp cộng tay trùng vài giây (110 xu) · 1 lượt đổi quà trùng 1,5 phút · 260/303 lượt ± không lý do · thành tựu T10 661 xu, `tran_xu_app` = 100000.
+
+## 2026-10-28 (phiên tôi — chiều/tối) — Giáo trình bản đồ mới per-class + popup kho full màn + duyệt thẳng + tách Lời giải/Hướng dẫn
+
+**Yêu cầu CEO chạy liên tiếp trong phiên.** Mỗi commit đã push, deploy Vercel Thùy tự bấm.
+
+### 1) Giáo trình bản đồ mới ĐI THEO LỚP + copy buổi giữa 2 lớp cùng hệ (e92f3a06)
+- **Vì sao:** mỗi lớp giờ 1 giáo trình riêng (trước đó dùng chung). Các lớp cùng hệ ~80% giống nhau ⇒ cần chức năng chép bài 13 của 7S1 thành bài 13 của 7S2 (độc lập, sửa sau không ảnh hưởng).
+- **Sửa:**
+  - `src/lib/tailieu.ts` — `TaiLieu` thêm `lop_id`, `ngay`; `TaiLieuPhan` thêm `diem_moi_cau`; `createTaiLieu` nhận `lopId`; thêm hàm `copyBuoiBdm(buoiPhanId, tlDichId, tenMoi?)` chép phần buổi + mọi phần con + câu + merge `cau_hinh` của chỉ các mã câu được copy.
+  - `src/lib/tailieuBdm.ts` — `NoiDung.tai_lieu` thêm `lop_id`.
+  - `src/screens/tailieu/bdm/GiaoTrinhBdmScreen.tsx` — ô "Lớp (bắt buộc)" trong form `TaoMoi` khi `loai='giao_trinh'`; auto gợi ý "Giáo trình `<ten lop>`"; khối chưa có lớp → cảnh báo. Chuyên đề không gắn lớp. Card hiện chip "Lớp 7S2".
+  - `src/screens/tailieu/bdm/BuilderBanDoMoi.tsx` — fetch `lop_id` riêng (RPC `fn_tl_bdm_noi_dung` không trả ra); nút "📥 Lấy buổi từ lớp khác" cạnh "+ Thêm buổi" (chỉ hiện khi GT có `lop_id`, không hiện ở chuyên đề); modal 4 bước lớp → giáo trình → buổi → tên mới → chép vào cuối.
+- **Lưu ý:** 29 giáo trình `phase=0` (Lưu trữ, di sản mô hình cũ "dùng chung") KHÔNG có `lop_id` — tab Lưu trữ không yêu cầu, không cho copy từ chúng.
+
+### 2) Tự gán lop_id cho 16 giáo trình bản đồ mới chưa có lớp (mig 202610282231 ĐÃ ÁP · 4a13c886)
+- Match tên lớp từ cột `ten` của giáo trình → bảng `lop` cùng khối + môn Toán:
+  - 13 tên trùng tuyệt đối (6B1/7A1/8B2/5T1/9A2/…) → 13 lớp.
+  - 2 prefix duy nhất ("Giáo trình 11A" → 11A1 vì khối 11 chỉ 11A1 bắt đầu 'A'; "Giáo trình 12B" → 12B1 tương tự).
+  - 1 ambiguous "Giáo trình 4A" (b68cd3e8) — khối 4 có 4A1 và 4A2 ⇒ **ĐỂ TRỐNG**, CEO quyết tay sau. Chưa có cách UI nào cho sửa, Thùy tự chạy UPDATE hoặc tôi hỏi 4A1/4A2 rồi update.
+- Migration dùng guard `and loai='giao_trinh' and ban_do='moi' and lop_id is null` — áp lại không ghi đè bừa.
+
+### 3) Popup KHO full ~95vw/95vh + tách Lời giải / Hướng dẫn + ✓ Duyệt thẳng (84c45d18)
+Thùy nêu 4 việc, làm được 3:
+- **Popup to lên** (`max-w-4xl/5xl/900px` → `max-w-[95vw]`, `max-h-[95vh]`):
+  - `src/screens/kho/BanDoMoi.tsx`: popup Kho dạng bài (dòng ~1371) + popup Gán câu chưa có dạng (dòng ~1195).
+  - `src/screens/kho/KhoTrenLopModal.tsx`.
+  - `src/screens/kho/hinh/CayNhanh.tsx` — PopupBai.
+- **Tách Lời giải / Hướng dẫn** (`src/screens/kho/ui.tsx`):
+  - Export hàm `tach2Phan(raw)` tách lời giải 2 phần (dấu `**Phần 1. Hướng dẫn**` / `**Phần 2. Trình bày**`) thành 3 cụm HTML đã render.
+  - Component `LoiGiaiXem({raw, mac_dinh?})` với 3 tab: **📝 Lời giải (default) · 💡 Hướng dẫn · 📑 Cả 2**. Chọn tab lưu ở `localStorage` key `bk.loiGiaiXem.tab` ⇒ mọi popup khác nhớ lựa chọn.
+  - Chuỗi không có 2 phần → fallback MathText. Không ảnh hưởng trang in / list câu / BTVN... (vẫn dùng MathText).
+  - Dùng ở: `CauKho` (BanDoMoi), `TheCau` (KhoTrenLopModal), `PopupBai` (CayNhanh).
+- **✓ Duyệt / ↩ Bỏ duyệt thẳng trong popup Kho:**
+  - Thêm hàm `duyetCauAuto(ma_cau, duyet)` trong `src/lib/kho/api.ts` — gọi `findCauInKho()` để tự dò bảng (dai/khtn/hgt/hinh_hoc/tsa), rồi `duyetCau`/`boDuyetCau` đúng bảng.
+  - `ThaoTacCau` (BanDoMoi) thêm nút ✓ Duyệt / ↩ Bỏ duyệt cạnh ↪ Chuyển dạng · 🗑 Xoá; vá tại chỗ `da_duyet`; `kho_chuan` do DB generated nên không đoán ở client — chờ reload sẽ đúng.
+  - **Hình (hinh_baitoan) không có cột `da_duyet`** ⇒ không áp nút này cho Hình luyện. Nếu cần sau sẽ thêm.
+
+### 4) Việc còn pending — Bản đồ Hình cấu trúc giống Đại (LT · VD · kho lớp · kho nhà)
+- **Thùy chốt lộ trình:** làm "Hình HỌC trước (nặng)". Hình LUYỆN sau.
+- **Hiện trạng Hình HỌC đọc kỹ 28/10:**
+  - Thùy đã chốt (comment trong `KhoHinhHocScreen.tsx`): mỗi bài học `hinh_hoc_bai` = 1 chuyên đề = 1 nhóm = 1 dạng bài, cả 3 tầng CÙNG TÊN (cùng 1 đối tượng, mã gốc HH…, không lưu bảng cha). ⇒ **KHÔNG cần migration tách thêm bảng chuyên đề/nhóm**.
+  - Hạ tầng có: `hinh_hoc_bai` (ma_dang, ten_dang mặc định = ma_bai, ten_bai) · `hinh_hoc_bai_ly_thuyet` · `hinh_hoc_cau_hoi` (gán theo `dang_chinh` = ma_bai).
+  - Commit `d21ae002` ngày 28/10 "Hình – Học Theo bản đồ Đại mới: mỗi bài học = 1 chuyên đề = 1 nhóm = 1 dạng bài (cùng tên), bỏ cụm — mig 202610281831 ĐÃ ÁP" đã chạy phần cấu trúc này.
+- **Còn thiếu** để Hình HỌC popup có 4 panel giống Đại:
+  - **VD cho bài học** — hiện bảng LT chỉ có `noi_dung`/`file_url`. Thêm cột `vi_du`/`vi_du_file_url`/`vi_du_ten_file` vào `hinh_hoc_bai_ly_thuyet` HOẶC `hinh_hoc_bai`.
+  - **Kho trên lớp cho bài học** — bảng mới `hinh_hoc_cau_lop` clone từ `dai_cau_lop` nhưng `dang_bai_id` → `ma_bai` (text FK `hinh_hoc_bai.ma_bai`).
+  - **UI** — hoặc tái cấu trúc `KhoHinhHocScreen` để mỗi card bài có 4 nút LT/VD/Kho câu/Kho trên lớp, HOẶC gắn trực tiếp vào popup `ChiTiet` của BanDoMoi khi click bài học (nhánh='hinh', khuôn='hinh_hoc').
+- **Mai làm tiếp.** Thùy về trước; task #1 chưa đụng code, chỉ research + hỏi + ghi plan.
+
