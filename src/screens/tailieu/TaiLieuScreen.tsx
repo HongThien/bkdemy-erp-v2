@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
+import { KHOI_OPTIONS, DEFAULT_KHOI, khoiDungBanDoCu } from '../../lib/kho/api'
 import { listTaiLieu, createTaiLieu, deleteTaiLieu, nhanhCuaMon, type TaiLieu } from '../../lib/tailieu'
 import { useStore } from '../../store/useStore'
 import { useMonScope } from '../../hooks/useMonScope'
@@ -20,8 +20,10 @@ function fmtNgay(iso?: string): string {
 
 const ALL = '__all__'
 
-export default function TaiLieuScreen() {
+// chiBanDoCu (Thùy 28/10): lá "Giáo trình (bản đồ cũ)" — chỉ hiện khối còn chạy bản đồ cũ của môn đang chọn (Toán: tiểu học), bỏ "Tất cả".
+export default function TaiLieuScreen({ chiBanDoCu = false }: { chiBanDoCu?: boolean } = {}) {
   const [khoi, setKhoi] = useState<string>(DEFAULT_KHOI)
+  const [khoiCu, setKhoiCu] = useState<{ mon: string; khoi: string }[] | null>(null)
   const [creating, setCreating] = useState(false)
   const [openId, setOpenId] = useState<string | null>(null)
   const [qLive, setQLive] = useState('')
@@ -35,6 +37,9 @@ export default function TaiLieuScreen() {
   const [mon, setMon] = useState<string>('')
   useEffect(() => { if (allowedMons.length && !allowedMons.includes(mon)) setMon(allowedMons[0]) }, [allowedMons.join(','), mon])
   const profileLoading = !isAll && me === null
+  useEffect(() => { if (chiBanDoCu) khoiDungBanDoCu(KHO_MON, KHOI_OPTIONS).then(setKhoiCu).catch(() => setKhoiCu([])) }, [chiBanDoCu])
+  const khoiHien: readonly string[] = chiBanDoCu ? (khoiCu ?? []).filter((x) => x.mon === mon).map((x) => x.khoi) : KHOI_OPTIONS
+  useEffect(() => { if (chiBanDoCu && khoiCu && !khoiHien.includes(khoi) && khoiHien.length) setKhoi(khoiHien[0]) }, [chiBanDoCu, khoiCu, mon, khoi]) // eslint-disable-line
   // Nhánh TRONG mon='Toán' (Đại/Hình giải tích — cùng mon để RBAC/billing sạch, xem lib/tailieu.ts).
   // null = Đại (mặc định, không đổi hành vi cũ) · 'hinh_gt' = Hình giải tích.
   const [nhanh, setNhanh] = useState<string | null>(null)
@@ -42,9 +47,9 @@ export default function TaiLieuScreen() {
   // ⭐ 09-10 (Thùy: "rất nhiều builder tải cực lâu khi số lượng lớn") — mặc định chỉ PAGE giáo trình mới
   // nhất/khối+môn (+"Tải thêm"); gõ tìm → server-side ilike, không còn lọc trên list đã tải hết.
   const { rows: list, loading, loadingMore, hasMore, err, reload, loadMore } = usePagedList<TaiLieu>(
-    async ({ before, search }) => mon ? listTaiLieu(khoi === ALL ? undefined : khoi, 'giao_trinh', mon, mon === 'Toán' ? nhanh : undefined, { before, search, limit: PAGE, banDo: 'cu' }) : [], // giáo trình bản đồ mới ở lá riêng
+    async ({ before, search }) => mon && (!chiBanDoCu || khoiHien.includes(khoi)) ? listTaiLieu(khoi === ALL ? undefined : khoi, 'giao_trinh', mon, mon === 'Toán' ? nhanh : undefined, { before, search, limit: PAGE, banDo: 'cu' }) : [], // giáo trình bản đồ mới ở lá riêng
     (t) => t.created_at,
-    PAGE, q, [khoi, mon, nhanh],
+    PAGE, q, [khoi, mon, nhanh, khoiHien.join(',')],
   )
   // sort ở client — CHỈ sắp lại trang đã tải (không phải tính toán nghiệp vụ, thuần UI).
   const shown = [...list].sort((a, b) => sort === 'ten' ? a.ten.localeCompare(b.ten, 'vi') : (b.created_at ?? '').localeCompare(a.created_at ?? ''))
@@ -77,8 +82,8 @@ export default function TaiLieuScreen() {
           <input value={qLive} onChange={(e) => setQLive(e.target.value)} placeholder="Tìm theo tên…" className="mr-2 h-7 w-44 rounded-md border border-slate-200 px-2.5 text-[13px] outline-none focus:border-indigo-400" />
           <button onClick={() => setSort(sort === 'moi' ? 'ten' : 'moi')} className="mr-2 h-7 rounded-md border border-slate-200 px-2.5 text-[12px] font-medium text-slate-500 hover:bg-slate-100">{sort === 'moi' ? '↓ Mới nhất' : 'A→Z Tên'}</button>
           <span className="mr-1 text-[12px] font-semibold uppercase tracking-wider text-slate-600">Khối</span>
-          <button onClick={() => setKhoi(ALL)} className={`h-7 rounded-md px-2 text-xs font-semibold transition ${khoi === ALL ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`}>Tất cả</button>
-          {KHOI_OPTIONS.map((k) => (
+          {!chiBanDoCu && <button onClick={() => setKhoi(ALL)} className={`h-7 rounded-md px-2 text-xs font-semibold transition ${khoi === ALL ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`}>Tất cả</button>}
+          {khoiHien.map((k) => (
             <button key={k} onClick={() => setKhoi(k)} className={`h-7 min-w-7 rounded-md px-1.5 text-xs font-semibold transition ${khoi === k ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`}>{k}</button>
           ))}
           <button onClick={() => setCreating(true)} className="ml-3 rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500">+ Tạo giáo trình</button>

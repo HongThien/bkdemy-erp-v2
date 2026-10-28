@@ -1873,6 +1873,13 @@ export async function listBdmMap(khoi: string, mon = 'Toán'): Promise<MapRow[]>
     leafTen: d.ten_dang, bac: d.bac_toi_thieu ?? '', mucDo: d.muc_do ?? null,
   }))
 }
+// (môn, khối) CÒN chạy bản đồ cũ trong các cặp ứng viên — lá Giáo trình / ET cũ chỉ mở cho những cặp này (Thùy 28/10:
+// tiểu học chưa chuyển; mig 202610281756). Luật ở DB (_kho_ds_nhanh_khoi không có 'bdm'), client không giữ danh sách khối.
+export async function khoiDungBanDoCu(mons: readonly string[], khois: readonly string[]): Promise<{ mon: string; khoi: string }[]> {
+  const { data, error } = await supabase.rpc('fn_kho_dung_ban_do_cu', { p_mon: mons, p_khoi: khois }).limit(1000)
+  if (error) throw error
+  return (data ?? []) as { mon: string; khoi: string }[]
+}
 // (môn, khối) đã chạy bản đồ mới chưa — cùng luật DB (_kho_ds_nhanh_khoi có nhánh 'bdm').
 export async function khoiChayBanDoMoi(khoi: string, mon = 'Toán'): Promise<boolean> {
   const { data, error } = await supabase.rpc('fn_bdm_dang_chon', { p_mon: mon, p_khoi: khoi })

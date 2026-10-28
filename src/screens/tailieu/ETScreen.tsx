@@ -12,7 +12,7 @@ import {
 import { buildMaDe as buildMaDeLib, oTrongMaDe, usedMoiDe as usedMoiDeLib, setVarInCh } from '../../lib/made'
 import { listLop, type Lop } from '../../lib/nhansu'
 import { hsCoMatCuaBuoi } from '../../lib/gami'
-import { listCauByDang, LOAI_CAU, type CauHoi } from '../../lib/kho/api'
+import { listCauByDang, khoiDungBanDoCu, LOAI_CAU, type CauHoi } from '../../lib/kho/api'
 import { fetchCausByMa } from '../../lib/ontap'
 import { MathText } from '../kho/ui'
 import { KhoPicker, DangPicker } from './TaiLieuBuilder'
@@ -36,8 +36,9 @@ type Row = { maDang: string | null; maCau: string | null }
 const blankRows = () => Array.from({ length: DEFAULT_ROWS }, () => ({ maDang: null, maCau: null } as Row))
 
 // Leaf "ET" = form tạo mới (reset sau khi lưu).
-export default function ETScreen() {
-  return <ETEditor />
+// chiBanDoCu (Thùy 28/10): lá "ET (bản đồ cũ)" — chỉ chọn được lớp có (môn, khối) còn chạy bản đồ cũ (tiểu học Toán, KHTN…).
+export default function ETScreen({ chiBanDoCu = false }: { chiBanDoCu?: boolean } = {}) {
+  return <ETEditor chiBanDoCu={chiBanDoCu} />
 }
 
 // et === undefined → tạo mới (lưu xong reset form). et !== undefined → sửa (lưu xong gọi onClose).
@@ -47,7 +48,7 @@ export default function ETScreen() {
 // THẲNG vào form với lớp/ngày/nhánh đã điền sẵn — effect load-Hình-theo-(lopId,ngay) bên dưới tự chạy,
 // kéo đúng nội dung ET đã lưu lên (y hệt hành vi "chọn trúng buổi đã có ET" khi tạo mới, không cần code
 // load riêng). `onClose` vẫn hiện nút "← Kho tài liệu" bất kể editing hay không (xem JSX cuối file).
-export function ETEditor({ et, onClose, presetHinh }: { et?: ETView; onClose?: () => void; presetHinh?: { lopId: string; ngay: string } }) {
+export function ETEditor({ et, onClose, presetHinh, chiBanDoCu = false }: { et?: ETView; onClose?: () => void; presetHinh?: { lopId: string; ngay: string }; chiBanDoCu?: boolean }) {
   const editing = !!et
   // Nháp ET tạo-mới đã lưu ở store (Thùy 07-31: rời màn rồi quay lại KHÔNG reset). Chỉ khôi phục khi TẠO MỚI.
   const draft0 = et ? null : useStore.getState().etDraft
@@ -216,7 +217,11 @@ export function ETEditor({ et, onClose, presetHinh }: { et?: ETView; onClose?: (
   async function loadBase() {
     setLoading(true)
     try {
-      setLops(await listLop())
+      const ls = await listLop()
+      if (chiBanDoCu) {
+        const cu = new Set((await khoiDungBanDoCu([...new Set(ls.map((l) => l.mon))], [...new Set(ls.map((l) => l.khoi ?? '').filter(Boolean))])).map((x) => `${x.mon}|${x.khoi}`))
+        setLops(ls.filter((l) => cu.has(`${l.mon}|${l.khoi ?? ''}`)))
+      } else setLops(ls)
       if (et) await fillFromET(et.id)
     } catch (e: any) { setErr(e.message ?? String(e)) } finally { setLoading(false) }
   }

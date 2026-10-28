@@ -25,6 +25,8 @@ import BanDoMoiScreen from './kho/BanDoMoi'
 import SoTayCongThucScreen from './sotay/SoTayCongThucScreen'
 import NhapKhoScreen from './nhapkho/NhapKhoScreen'
 import GiaoTrinhBdmScreen from './tailieu/bdm/GiaoTrinhBdmScreen'
+import TaiLieuScreen from './tailieu/TaiLieuScreen'
+import ETScreen from './tailieu/ETScreen'
 import ETBdmEditor from './tailieu/bdm/ETBdmEditor'
 import MTScreen from './tailieu/MTScreen'
 import BTScreen from './tailieu/BTScreen'
@@ -722,6 +724,9 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'lamtailieu:giao_trinh_bdm' ? <GiaoTrinhBdmScreen />
       : staffLeaf === 'lamtailieu:chuyen_de' ? <GiaoTrinhBdmScreen key="chuyen_de" loai="chuyen_de" />
       : staffLeaf === 'lamtailieu:et_bdm' ? <ETBdmEditor />
+      // Thùy 28/10: lá cũ mở lại CHỈ cho (môn, khối) còn bản đồ cũ — tiểu học Toán, KHTN… (fn_kho_dung_ban_do_cu)
+      : staffLeaf === 'lamtailieu:giao_trinh' ? <TaiLieuScreen chiBanDoCu />
+      : staffLeaf === 'lamtailieu:et' ? <ETScreen chiBanDoCu />
       : staffLeaf === 'lamtailieu:mt' ? <MTScreen />
       : staffLeaf === 'tl' ? <KhoTaiLieuScreen />
       : staffLeaf === 'khodethi' ? <KhoDeThiScreen />

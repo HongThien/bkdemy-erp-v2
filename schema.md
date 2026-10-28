@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-450 bảng · 34 view · 0 enum · 230 trigger · 1341 function
+450 bảng · 34 view · 0 enum · 230 trigger · 1342 function
 
 ## _app_secrets
 
@@ -8906,8 +8906,8 @@ WITH luot AS (
 - `_kho_form_tn_cua(p_cautbl text)` → text
 - `_kho_form_tn_tbl(p_mon text, p_nhanh text DEFAULT NULL::text)` → text
 - `_kho_la_dang_cho(p_ma_dang text)` → boolean
-- `_kho_loc_duyet_sql(p_loc text, p_tbl text)` → text
 - `_kho_loc_duyet_sql(p_loc text)` → text
+- `_kho_loc_duyet_sql(p_loc text, p_tbl text)` → text
 - `_kho_lt_dang_tbl(p_kho text)` → text
 - `_kho_lt_tbl(p_mon text, p_nhanh text DEFAULT NULL::text)` → text
 - `_kho_muc_do_dang(p_mon text, p_ma_dang text)` → smallint
@@ -9630,6 +9630,7 @@ WITH luot AS (
 - `fn_kho_dem_cau_chua_giai(p_nhanh text[])` → TABLE(khoi text, so_cau bigint, so_cho_giai bigint)
 - `fn_kho_dem_hang_duyet(p_nhanh text[])` → TABLE(loc text, khoi text, so_cau bigint)
 - `fn_kho_doi_dang_tk(p_mon text, p_khoi text DEFAULT NULL::text, p_tu timestamp with time zone DEFAULT NULL::timestamp with time zone)` → TABLE(dang_cu text, ten_cu text, dang_moi text, ten_moi text, so_lan bigint, lan_cuoi timestamp with time zone, vi_du jsonb)
+- `fn_kho_dung_ban_do_cu(p_mon text[], p_khoi text[])` → TABLE(mon text, khoi text)
 - `fn_kho_duyet_cau(p_mon text, p_ma_cau text, p_nguoi uuid, p_sua jsonb DEFAULT '{}'::jsonb)` → jsonb
 - `fn_kho_duyet_cau_ds(p_mon text, p_ma_cau text, p_nguoi uuid, p_sua jsonb DEFAULT '{}'::jsonb, p_duyet_het boolean DEFAULT false)` → jsonb
 - `fn_kho_duyet_menh_de(p_mon text, p_ma_cau text, p_thu_tu integer, p_nguoi uuid, p_sua jsonb DEFAULT '{}'::jsonb)` → jsonb
@@ -9992,8 +9993,8 @@ WITH luot AS (
 - `hs_sotay_tim_ct(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_khoi text DEFAULT NULL::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_sotay_tim_lt(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_vao_ca_online(p_buoi uuid)` → jsonb
-- `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
 - `hs_xep_hang_tu_luyen(p_khoi text, p_mon text)` → jsonb
+- `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
 - `htd_co_mo(p_mon text)` → boolean
 - `htd_lo_trinh(p_mon text)` → jsonb
 - `htd_ly_thuyet(p_mon text, p_ma_dang text)` → jsonb
