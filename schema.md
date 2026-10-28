@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-451 bảng · 34 view · 0 enum · 230 trigger · 1348 function
+450 bảng · 34 view · 0 enum · 230 trigger · 1348 function
 
 ## _app_secrets
 
@@ -4351,13 +4351,6 @@ END |  |  |
 | ten | text |  |  |  |  |
 | thu_tu | smallint |  |  |  |  |
 | si_so_toi_da | smallint | Y |  |  |  |
-
-## luong_bac
-
-| cột | kiểu | null | default | khóa | giá trị hợp lệ |
-|---|---|---|---|---|---|
-| min_exp | integer |  |  | PK |  |
-| xu | integer |  |  |  |  |
 
 ## luyen_gioi_han
 
