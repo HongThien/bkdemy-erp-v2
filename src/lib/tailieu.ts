@@ -303,7 +303,9 @@ export type TaiLieuFull = { taiLieu: TaiLieu; phans: PhanResolved[]; ltChuyenDe:
 export const PAGE_MOI_NHAT = 20
 const PAGE_SEARCH = 200
 // banDo: lá "Giáo trình" (cũ) và "Giáo trình (bản đồ mới)" là 2 chức năng riêng (Thùy 18/10) ⇒ mỗi lá chỉ thấy giáo trình của mình.
-export type ListPageOpts = { before?: string; search?: string; limit?: number; banDo?: 'cu' | 'moi' }
+// luuTru: Thùy 28/10 — giáo trình cũ chuyển sang bản đồ mới mang `phase=0` (mig 202610281051). Mặc định ẨN khỏi
+//   danh sách giáo trình mới (chỉ xem khi `luuTru=true`) để không lẫn với giáo trình soạn thẳng bằng builder mới.
+export type ListPageOpts = { before?: string; search?: string; limit?: number; banDo?: 'cu' | 'moi'; luuTru?: boolean }
 // nhanh: undefined = không lọc (mọi nhánh) · null = CHỈ Đại (nhanh is null) · string = CHỈ nhánh đó.
 export async function listTaiLieu(khoi?: string, loai = 'giao_trinh', mon?: string, nhanh?: string | null, opts?: ListPageOpts): Promise<TaiLieu[]> {
   // khoi = undefined → tất cả khối. mon = undefined → mọi môn.
@@ -313,6 +315,8 @@ export async function listTaiLieu(khoi?: string, loai = 'giao_trinh', mon?: stri
   if (nhanh === null) q = q.is('nhanh', null)
   else if (nhanh) q = q.eq('nhanh', nhanh)
   if (opts?.banDo) q = q.eq('ban_do', opts.banDo)
+  if (opts?.luuTru) q = q.eq('phase', 0)
+  else q = q.or('phase.is.null,phase.neq.0')
   if (opts?.before) q = q.lt('created_at', opts.before)
   if (opts?.search?.trim()) q = q.ilike('ten', `%${opts.search.trim()}%`)
   q = q.limit(opts?.limit ?? (opts?.search?.trim() ? PAGE_SEARCH : PAGE_MOI_NHAT))

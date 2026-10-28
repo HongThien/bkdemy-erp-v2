@@ -35,6 +35,9 @@ export default function GiaoTrinhBdmScreen({ loai = 'giao_trinh' }: { loai?: Loa
   const [qLive, setQLive] = useState('')
   const [q, setQ] = useState('')
   useEffect(() => { const t = setTimeout(() => setQ(qLive), 300); return () => clearTimeout(t) }, [qLive])
+  // ⭐ Thùy 28/10: giáo trình chuyển từ cũ (phase=0) ẨN khỏi danh sách giáo trình mới; chọn "Lưu trữ" mới thấy.
+  //   Giữ 1 chiều rõ: Hiện tại (giáo trình soạn thẳng) · Lưu trữ (29 bản chuyển bản đồ cũ → mới, 28/10, mig 202610281051).
+  const [luuTru, setLuuTru] = useState(false)
   const me = useStore((s) => s.me)
   const { allowedMons, isAll } = useMonScope()
   const coQuyen = isAll || allowedMons.includes(MON)
@@ -42,9 +45,9 @@ export default function GiaoTrinhBdmScreen({ loai = 'giao_trinh' }: { loai?: Loa
 
   const { rows: list, loading, loadingMore, hasMore, err, reload, loadMore } = usePagedList<TaiLieu>(
     // mọi nhánh (Đại · HGT · Hình) — cả giáo trình lẫn chuyên đề
-    async ({ before, search }) => coQuyen ? listTaiLieu(khoi === ALL ? undefined : khoi, loai, MON, undefined, { before, search, limit: PAGE, banDo: 'moi' }) : [],
+    async ({ before, search }) => coQuyen ? listTaiLieu(khoi === ALL ? undefined : khoi, loai, MON, undefined, { before, search, limit: PAGE, banDo: 'moi', luuTru }) : [],
     (t) => t.created_at,
-    PAGE, q, [khoi, coQuyen, loai],
+    PAGE, q, [khoi, coQuyen, loai, luuTru],
   )
 
   if (openId && openHinh) return <ChuyenDeHinhBuilder id={openId} laGiaoTrinh={loai === 'giao_trinh'} onClose={() => { setOpenId(null); reload() }} />
@@ -55,6 +58,11 @@ export default function GiaoTrinhBdmScreen({ loai = 'giao_trinh' }: { loai?: Loa
       <div className="flex items-center gap-4 border-b border-slate-200 bg-white px-6 py-2.5">
         <span className="rounded bg-emerald-50 px-2 py-0.5 text-[12px] font-semibold text-emerald-700">🆕 {T.nhieu} · bản đồ mới</span>
         <span className="text-[12px] text-slate-400">{loai === 'chuyen_de' ? 'Tài liệu độc lập, không gắn lớp — Đại · Hình giải tích · Hình' : 'Toán — Đại · Hình giải tích · Hình'}</span>
+        {/* ⭐ Thùy 28/10: ẨN giáo trình chuyển từ bản đồ cũ (phase=0) khỏi lá chính; bấm "Lưu trữ" mới hiện. */}
+        <div className="ml-1 inline-flex overflow-hidden rounded-md border border-slate-200 text-[12px] font-medium">
+          <button onClick={() => setLuuTru(false)} className={`px-2.5 py-1 transition ${!luuTru ? 'bg-indigo-600 text-white' : 'bg-white text-slate-500 hover:bg-slate-50'}`}>Hiện tại</button>
+          <button onClick={() => setLuuTru(true)} className={`border-l border-slate-200 px-2.5 py-1 transition ${luuTru ? 'bg-violet-600 text-white' : 'bg-white text-slate-500 hover:bg-slate-50'}`} title="29 giáo trình cũ đã chuyển sang bản đồ mới (phase 0, 28/10)">Lưu trữ</button>
+        </div>
         <div className="ml-auto flex items-center gap-1">
           <input value={qLive} onChange={(e) => setQLive(e.target.value)} placeholder="Tìm theo tên…" className="mr-2 h-7 w-44 rounded-md border border-slate-200 px-2.5 text-[13px] outline-none focus:border-indigo-400" />
           <span className="mr-1 text-[12px] font-semibold uppercase tracking-wider text-slate-600">Khối</span>
@@ -62,7 +70,7 @@ export default function GiaoTrinhBdmScreen({ loai = 'giao_trinh' }: { loai?: Loa
           {KHOI_OPTIONS.map((k) => (
             <button key={k} onClick={() => setKhoi(k)} className={`h-7 min-w-7 rounded-md px-1.5 text-xs font-semibold transition ${khoi === k ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`}>{k}</button>
           ))}
-          {coQuyen && <button onClick={() => setCreating(true)} className="ml-3 whitespace-nowrap rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500">+ Tạo {T.mot}</button>}
+          {coQuyen && !luuTru && <button onClick={() => setCreating(true)} className="ml-3 whitespace-nowrap rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500">+ Tạo {T.mot}</button>}
         </div>
       </div>
 
@@ -73,7 +81,9 @@ export default function GiaoTrinhBdmScreen({ loai = 'giao_trinh' }: { loai?: Loa
           : err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
           : list.length === 0 ? (
             <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">
-              {qLive.trim() ? <>Không có {T.mot} khớp “{qLive}”.</> : <>Chưa có {T.mot} bản đồ mới {khoi === ALL ? '' : `khối ${khoi}`}. Bấm <b className="text-slate-600">+ Tạo {T.mot}</b>.</>}
+              {qLive.trim() ? <>Không có {T.mot} khớp “{qLive}”.</>
+                : luuTru ? <>Chưa có {T.mot} ở lưu trữ {khoi === ALL ? '' : `khối ${khoi}`}.</>
+                : <>Chưa có {T.mot} bản đồ mới {khoi === ALL ? '' : `khối ${khoi}`}. Bấm <b className="text-slate-600">+ Tạo {T.mot}</b>.</>}
             </div>
           ) : (
             <>
