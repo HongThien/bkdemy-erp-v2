@@ -18,12 +18,11 @@ import LopView, { type LopSubKey } from './LopView'
 import DashGv from './DashGv'
 import GopY from './GopY'
 
-type NvKey = 'danhgia' | 'ingame'
+type NvKey = 'danhgia' // Thùy 28/10: bỏ 'Bài trên lớp' khỏi việc của GV
 type TabKey = 'home' | 'viec' | 'hs' | 'lop' | 'dash'
 // ⚠ Tailwind JIT: class màu là CHUỖI LITERAL per nghiệp vụ (cấm ghép chuỗi động) — bài học OpsHome.
 const NGHIEP_VU: { key: NvKey; icon: string; label: string; chip: string }[] = [
   { key: 'danhgia', icon: '⭐', label: 'Đánh giá sau buổi', chip: 'bg-green-50' },
-  { key: 'ingame', icon: '📝', label: 'Bài trên lớp', chip: 'bg-sky-50' },
 ]
 const nvOf = (k: NvKey) => NGHIEP_VU.find((n) => n.key === k)!
 
@@ -62,7 +61,7 @@ export default function GvHome({ profile, quyen }: { profile: MyProfile; quyen: 
     if (!silent) setLoading(true)
     try {
       const all = await getMyTasks().catch(() => [] as MyTask[])
-      setTasks(all.filter((x) => x.vai === 'gv' && (x.tab === 'danhgia' || x.tab === 'ingame')))
+      setTasks(all.filter((x) => x.vai === 'gv' && x.tab === 'danhgia'))
     } finally { setLoading(false) }
     gvDashboard(homNay.slice(0, 7)).then(setDashTom).catch(() => setDashTom(null)) // best-effort, không chặn trang chủ
     buoiAoCuaNgay(homNay).then((all) => setBuoiHomNay(all.filter((b) => seenLop.has(b.lop.id)))).catch(() => setBuoiHomNay([]))

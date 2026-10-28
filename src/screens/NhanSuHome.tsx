@@ -88,7 +88,7 @@ import ThuChiScreen from './thuchi/ThuChiScreen'
 import KhungLoi from '../components/KhungLoi'
 
 // tk (trưởng khối) chỉ có Chấm MT · gv thêm 'mt' khi là fallback không có trưởng khối (tab tự ẩn nếu buổi không gán MT).
-const tabsCuaVai = (vai: VaiViec): TabKey[] => (vai === 'tk' ? ['mt'] : vai === 'gv' ? ['danhgia', 'ingame', 'mt'] : ['ingame', 'et', 'mt'])
+const tabsCuaVai = (vai: VaiViec): TabKey[] => (vai === 'tk' ? ['mt'] : vai === 'gv' ? ['danhgia', 'mt'] : ['et', 'mt'])
 type OpenBuoi = { id: string; tabs: TabKey[]; initialTab: TabKey; canManage: boolean; loai?: 'bu' | 'bo_tro_duoi' | 'bo_tro_yeu' }
 type TienDo = { tong: number; daDanh: number }
 
