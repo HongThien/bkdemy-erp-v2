@@ -1,0 +1,491 @@
+[
+  {
+    "id": "nbv-ot-d1-p1c1",
+    "vai": "luyen",
+    "dang_bai": "NDB01162",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Tử là hằng số, mẫu dần ra +∞; cũng giải bằng chia cho n (NDB01151).",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Tính $\\lim\\limits_{n\\to+\\infty}\\dfrac{1}{5n+3}$.",
+    "lua_chon": [
+      "$0$",
+      "$\\dfrac{1}{3}$",
+      "$+\\infty$",
+      "$\\dfrac{1}{5}$"
+    ],
+    "dap_an": "A",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử là hằng số còn mẫu tăng vô hạn, nên chia cả tử và mẫu cho $n$ rồi dùng giới hạn cơ bản của $\\dfrac{1}{n}$.\n\n**Bước 1.** Nhận ra tử là hằng số và mẫu là biểu thức bậc nhất theo $n$.\n\n**Bước 2.** Chia cả tử và mẫu cho $n$ để mọi số hạng còn lại có dạng hằng số chia cho $n$.\n\n**Bước 3.** Dùng $\\lim\\limits_{n\\to+\\infty}\\dfrac{1}{n}=0$ để tìm giới hạn của tử và của mẫu sau khi chia.\n\n**Bước 4.** Áp dụng quy tắc giới hạn của thương rồi đối chiếu với bốn phương án.\n\n**Phần 2. Trình bày**\n\nChia cả tử và mẫu cho $n$:\n\n$\\lim\\limits_{n\\to+\\infty}\\dfrac{1}{5n+3}=\\lim\\limits_{n\\to+\\infty}\\dfrac{\\dfrac{1}{n}}{5+\\dfrac{3}{n}}$\n\nVì $\\lim\\limits_{n\\to+\\infty}\\dfrac{1}{n}=0$ và $\\lim\\limits_{n\\to+\\infty}\\dfrac{3}{n}=0$ nên tử có giới hạn $0$, mẫu có giới hạn $5$.\n\nDo đó giới hạn bằng $\\dfrac{0}{5}=0$.\n\nChọn A.",
+    "kiem": [
+      "((v,o,k,tol)=>o.every((x,i)=>((typeof x==='string'?(x==='inf'?v>1e12:v<-1e12):Math.abs(x-v)<tol)===(i===k))))(1/(5*1e8+3),[0,1/3,'inf',1/5],0,0.000001)"
+    ],
+    "sach_dap_so": "A",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d1-p1c2",
+    "vai": "luyen",
+    "dang_bai": "NDB01157",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Căn thức ở tử, đưa n ra ngoài căn rồi chia cả tử và mẫu cho n.",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Tính $\\lim\\limits_{n\\to+\\infty}\\dfrac{\\sqrt{4n^{2}+1}-\\sqrt{n+2}}{2n-3}$.",
+    "lua_chon": [
+      "$\\dfrac{3}{2}$",
+      "$2$",
+      "$1$",
+      "$\\dfrac{1}{5}$"
+    ],
+    "dap_an": "C",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đưa $n$ ra ngoài mỗi căn (với $n>0$) rồi chia cả tử và mẫu cho $n$, chú ý $\\sqrt{n^{2}}=n$.\n\n**Bước 1.** Viết mỗi căn ở tử dưới dạng $n$ nhân một căn chứa các phân số có mẫu là luỹ thừa của $n$.\n\n**Bước 2.** Chia cả tử và mẫu cho $n$ để tử và mẫu chỉ còn hằng số cộng các phân số dần về $0$.\n\n**Bước 3.** Cho $n$ tiến ra vô cực: tìm giới hạn của tử và giới hạn của mẫu bằng các giới hạn cơ bản.\n\n**Bước 4.** Lấy thương hai giới hạn rồi đối chiếu bốn phương án.\n\n**Phần 2. Trình bày**\n\nVới $n>0$: $\\sqrt{4n^{2}+1}=n\\sqrt{4+\\dfrac{1}{n^{2}}}$ và $\\sqrt{n+2}=n\\sqrt{\\dfrac{1}{n}+\\dfrac{2}{n^{2}}}$.\n\nChia cả tử và mẫu cho $n$:\n\n$\\lim\\limits_{n\\to+\\infty}\\dfrac{\\sqrt{4n^{2}+1}-\\sqrt{n+2}}{2n-3}=\\lim\\limits_{n\\to+\\infty}\\dfrac{\\sqrt{4+\\dfrac{1}{n^{2}}}-\\sqrt{\\dfrac{1}{n}+\\dfrac{2}{n^{2}}}}{2-\\dfrac{3}{n}}$\n\nCác phân số $\\dfrac{1}{n}$, $\\dfrac{1}{n^{2}}$, $\\dfrac{2}{n^{2}}$, $\\dfrac{3}{n}$ đều dần về $0$ nên tử có giới hạn $\\sqrt{4}-0=2$, mẫu có giới hạn $2$.\n\nVậy giới hạn bằng $\\dfrac{2}{2}=1$.\n\nChọn C.",
+    "kiem": [
+      "((v,o,k,tol)=>o.every((x,i)=>((typeof x==='string'?(x==='inf'?v>1e12:v<-1e12):Math.abs(x-v)<tol)===(i===k))))(((n)=>(Math.sqrt(4*n*n+1)-Math.sqrt(n+2))/(2*n-3))(1e12),[3/2,2,1,1/5],2,0.0001)"
+    ],
+    "sach_dap_so": "C",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d1-p1c3",
+    "vai": "luyen",
+    "dang_bai": "NDB01169",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Hàm xác định tại x=3, mẫu khác 0: thay trực tiếp.",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Tính $\\lim\\limits_{x\\to3}\\dfrac{x-3}{x+3}$.",
+    "lua_chon": [
+      "$-\\infty$",
+      "$2$",
+      "$0$",
+      "$\\dfrac{1}{5}$"
+    ],
+    "dap_an": "C",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số là phân thức có mẫu khác $0$ tại điểm đang xét, nên giới hạn bằng giá trị của hàm tại điểm đó.\n\n**Bước 1.** Kiểm tra mẫu $x+3$ tại $x=3$ có khác $0$ hay không để biết hàm xác định tại điểm đó.\n\n**Bước 2.** Thay $x=3$ vào tử và vào mẫu để tính riêng từng giá trị.\n\n**Bước 3.** Lập thương hai giá trị vừa tính rồi đối chiếu bốn phương án.\n\n**Phần 2. Trình bày**\n\nHàm số xác định tại $x=3$ vì mẫu $x+3=6\\ne0$.\n\nDo đó $\\lim\\limits_{x\\to3}\\dfrac{x-3}{x+3}=\\dfrac{3-3}{3+3}=\\dfrac{0}{6}=0$.\n\nChọn C.",
+    "kiem": [
+      "((v,o,k,tol)=>o.every((x,i)=>((typeof x==='string'?(x==='inf'?v>1e12:v<-1e12):Math.abs(x-v)<tol)===(i===k))))((3+1e-7-3)/(3+1e-7+3),['-inf',2,0,1/5],2,0.001)",
+      "((v,o,k,tol)=>o.every((x,i)=>((typeof x==='string'?(x==='inf'?v>1e12:v<-1e12):Math.abs(x-v)<tol)===(i===k))))((3-1e-7-3)/(3-1e-7+3),['-inf',2,0,1/5],2,0.001)"
+    ],
+    "sach_dap_so": "C",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d1-p1c4",
+    "vai": "luyen",
+    "dang_bai": "NDB01178",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tử hằng số, mẫu bậc nhất, x→-∞: chia tử và mẫu cho x.",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Tính $\\lim\\limits_{x\\to-\\infty}\\dfrac{-1}{2x+5}$.",
+    "lua_chon": [
+      "$0$",
+      "$-\\infty$",
+      "$+\\infty$",
+      "$-\\dfrac{1}{2}$"
+    ],
+    "dap_an": "A",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử là hằng số còn mẫu có giá trị tuyệt đối tăng vô hạn khi $x\\to-\\infty$, nên chia cả tử và mẫu cho $x$.\n\n**Bước 1.** Nhận ra tử là hằng số và mẫu là biểu thức bậc nhất theo $x$.\n\n**Bước 2.** Rút $x$ làm nhân tử chung ở mẫu để mẫu có dạng $x$ nhân một biểu thức chứa phân số $\\dfrac{5}{x}$.\n\n**Bước 3.** Dùng $\\lim\\limits_{x\\to-\\infty}\\dfrac{1}{x}=0$ để tìm giới hạn của biểu thức trong ngoặc, từ đó xét giới hạn của mẫu.\n\n**Bước 4.** Dùng quy tắc hằng số chia cho đại lượng có giới hạn vô cực rồi đối chiếu bốn phương án.\n\n**Phần 2. Trình bày**\n\nVới $x\\ne0$: $\\dfrac{-1}{2x+5}=\\dfrac{-1}{x(2+\\dfrac{5}{x})}$.\n\nTa có $\\lim\\limits_{x\\to-\\infty}x=-\\infty$ và $\\lim\\limits_{x\\to-\\infty}(2+\\dfrac{5}{x})=2>0$ nên mẫu $x(2+\\dfrac{5}{x})$ có giới hạn $-\\infty$.\n\nTử bằng hằng số $-1$, mẫu có giới hạn vô cực, nên $\\lim\\limits_{x\\to-\\infty}\\dfrac{-1}{2x+5}=0$.\n\nChọn A.",
+    "kiem": [
+      "((v,o,k,tol)=>o.every((x,i)=>((typeof x==='string'?(x==='inf'?v>1e12:v<-1e12):Math.abs(x-v)<tol)===(i===k))))(-1/(2*(-1e9)+5),[0,'-inf','inf',-1/2],0,0.000001)"
+    ],
+    "sach_dap_so": "A",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d1-p1c5",
+    "vai": "luyen",
+    "dang_bai": "NDB01183",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Đa thức khi x→-∞: rút x^3, xét dấu theo luỹ thừa lẻ.",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Giá trị $\\lim\\limits_{x\\to-\\infty}(2x^{3}-3x^{2}+10)$ bằng",
+    "lua_chon": [
+      "$+\\infty$",
+      "$-\\infty$",
+      "$2$",
+      "$10$"
+    ],
+    "dap_an": "B",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Rút luỹ thừa cao nhất $x^{3}$ ra ngoài, rồi xét dấu của $x^{3}$ khi $x\\to-\\infty$ và giới hạn của thừa số còn lại.\n\n**Bước 1.** Xác định luỹ thừa cao nhất của $x$ trong đa thức và rút nó ra ngoài làm nhân tử.\n\n**Bước 2.** Tìm giới hạn của thừa số còn lại bằng cách cho các phân số chứa $x$ ở mẫu dần về $0$.\n\n**Bước 3.** Xét giới hạn của $x^{3}$ khi $x\\to-\\infty$, chú ý luỹ thừa bậc lẻ của số âm rất lớn.\n\n**Bước 4.** Dùng quy tắc giới hạn của tích (thừa số thứ hai dương) rồi đối chiếu phương án.\n\n**Phần 2. Trình bày**\n\nTa có $2x^{3}-3x^{2}+10=x^{3}(2-\\dfrac{3}{x}+\\dfrac{10}{x^{3}})$.\n\nVì $\\lim\\limits_{x\\to-\\infty}x^{3}=-\\infty$ và $\\lim\\limits_{x\\to-\\infty}(2-\\dfrac{3}{x}+\\dfrac{10}{x^{3}})=2>0$.\n\nDo đó $\\lim\\limits_{x\\to-\\infty}(2x^{3}-3x^{2}+10)=-\\infty$.\n\nChọn B.",
+    "kiem": [
+      "((v,o,k,tol)=>o.every((x,i)=>((typeof x==='string'?(x==='inf'?v>1e12:v<-1e12):Math.abs(x-v)<tol)===(i===k))))(2*(-1e6)**3-3*(-1e6)**2+10,['inf','-inf',2,10],1,0.001)"
+    ],
+    "sach_dap_so": "B",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d1-p1c6",
+    "vai": "luyen",
+    "dang_bai": "NDB01171",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Dạng 0/0 phân thức hữu tỉ: phân tích nhân tử, triệt x-2.",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Giá trị $\\lim\\limits_{x\\to2}\\dfrac{2x^{2}+3x-14}{x^{2}-4}$ bằng",
+    "lua_chon": [
+      "$\\dfrac{11}{4}$",
+      "$\\dfrac{11}{8}$",
+      "$\\dfrac{7}{2}$",
+      "$2$"
+    ],
+    "dap_an": "A",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu cùng triệt tiêu tại $x=2$, nên phân tích cả hai thành nhân tử và rút nhân tử chung $x-2$.\n\n**Bước 1.** Thay $x=2$ vào tử và mẫu để nhận ra dạng vô định $\\dfrac{0}{0}$.\n\n**Bước 2.** Phân tích tử $2x^{2}+3x-14$ thành tích có thừa số $x-2$ (chia Horner cho nghiệm $x=2$).\n\n**Bước 3.** Phân tích mẫu bằng hằng đẳng thức hiệu hai bình phương rồi rút nhân tử chung $x-2$ với $x\\ne2$.\n\n**Bước 4.** Thay $x=2$ vào phân thức đã rút gọn rồi đối chiếu bốn phương án.\n\n**Phần 2. Trình bày**\n\nThay $x=2$: tử $=8+6-14=0$, mẫu $=4-4=0$ nên là dạng $\\dfrac{0}{0}$.\n\nTa có $2x^{2}+3x-14=(x-2)(2x+7)$ và $x^{2}-4=(x-2)(x+2)$.\n\nVới $x\\ne2$: $\\dfrac{2x^{2}+3x-14}{x^{2}-4}=\\dfrac{2x+7}{x+2}$.\n\nDo đó $\\lim\\limits_{x\\to2}\\dfrac{2x^{2}+3x-14}{x^{2}-4}=\\lim\\limits_{x\\to2}\\dfrac{2x+7}{x+2}=\\dfrac{11}{4}$.\n\nChọn A.",
+    "kiem": [
+      "((v,o,k,tol)=>o.every((x,i)=>((typeof x==='string'?(x==='inf'?v>1e12:v<-1e12):Math.abs(x-v)<tol)===(i===k))))(((x)=>(2*x*x+3*x-14)/(x*x-4))(2+1e-6),[11/4,11/8,7/2,2],0,0.001)",
+      "((v,o,k,tol)=>o.every((x,i)=>((typeof x==='string'?(x==='inf'?v>1e12:v<-1e12):Math.abs(x-v)<tol)===(i===k))))(((x)=>(2*x*x+3*x-14)/(x*x-4))(2-1e-6),[11/4,11/8,7/2,2],0,0.001)"
+    ],
+    "sach_dap_so": "A",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d1-p1c7",
+    "vai": "luyen",
+    "dang_bai": "NDB01187",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Dùng định nghĩa liên tục tại điểm: lim f = f(x0); đề không có công thức cụ thể.",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Cho hàm số $y=f(x)$ liên tục trên $\\mathbb{R}$ và $\\lim\\limits_{x\\to1}f(x)=-3$. Khi đó giá trị $f(1)$ bằng",
+    "lua_chon": [
+      "$f(1)=3$",
+      "$f(1)=-1$",
+      "$f(1)=1$",
+      "$f(1)=-3$"
+    ],
+    "dap_an": "D",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số liên tục trên $\\mathbb{R}$ thì liên tục tại mọi điểm, và liên tục tại $x_{0}$ nghĩa là giới hạn tại $x_{0}$ bằng giá trị hàm tại đó.\n\n**Bước 1.** Nhớ lại định nghĩa: $f$ liên tục tại $x_{0}$ khi $\\lim\\limits_{x\\to x_{0}}f(x)=f(x_{0})$.\n\n**Bước 2.** Từ giả thiết liên tục trên $\\mathbb{R}$, suy ra $f$ liên tục tại điểm $x=1$.\n\n**Bước 3.** Áp dụng định nghĩa tại $x_{0}=1$ với giá trị giới hạn đã cho, rồi đối chiếu bốn phương án.\n\n**Phần 2. Trình bày**\n\nVì $f$ liên tục trên $\\mathbb{R}$ nên $f$ liên tục tại $x=1$.\n\nDo đó $f(1)=\\lim\\limits_{x\\to1}f(x)=-3$.\n\nChọn D.",
+    "kiem": [
+      "((v,o,k,tol)=>o.every((x,i)=>((typeof x==='string'?(x==='inf'?v>1e12:v<-1e12):Math.abs(x-v)<tol)===(i===k))))(-3,[3,-1,1,-3],3,1e-9)"
+    ],
+    "sach_dap_so": "D",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d1-p1c8",
+    "vai": "luyen",
+    "dang_bai": "NDB01195",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Nhận biết hàm sơ cấp liên tục trên toàn ℝ qua tập xác định.",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Hàm số nào dưới đây liên tục trên tập $\\mathbb{R}$?",
+    "lua_chon": [
+      "$f(x)=\\tan x$",
+      "$f(x)=\\dfrac{x+1}{x^{2}}$",
+      "$f(x)=\\sqrt{x+2}$",
+      "$f(x)=3x^{2}-5x+1$"
+    ],
+    "dap_an": "D",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm sơ cấp liên tục trên tập xác định của nó, nên hàm liên tục trên cả $\\mathbb{R}$ chỉ khi tập xác định là $\\mathbb{R}$.\n\n**Bước 1.** Tìm tập xác định của hàm số ở từng phương án.\n\n**Bước 2.** Loại các hàm có điều kiện xác định làm mất điểm (mẫu bằng $0$, biểu thức dưới căn âm, $\\cos x=0$).\n\n**Bước 3.** Chọn hàm có tập xác định là toàn bộ $\\mathbb{R}$ và là hàm sơ cấp.\n\n**Phần 2. Trình bày**\n\n$f(x)=\\tan x$ không xác định tại $x=\\dfrac{\\pi}{2}$ nên không liên tục trên $\\mathbb{R}$.\n\n$f(x)=\\dfrac{x+1}{x^{2}}$ không xác định tại $x=0$ nên không liên tục trên $\\mathbb{R}$.\n\n$f(x)=\\sqrt{x+2}$ chỉ xác định khi $x\\ge-2$ nên không liên tục trên $\\mathbb{R}$.\n\n$f(x)=3x^{2}-5x+1$ là đa thức, xác định và liên tục trên $\\mathbb{R}$.\n\nChọn D.",
+    "kiem": [
+      "(()=>{const gd=[Math.abs(Math.tan(Math.PI/2))>1e10,Math.abs((1e-6+1)/(1e-6)**2)>1e10,Number.isNaN(Math.sqrt(-3+2)),Number.isFinite(3*1e6*1e6-5e6+1)];return gd[0]&&gd[1]&&gd[2]&&gd[3]})()"
+    ],
+    "sach_dap_so": "D",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d1-p1c9",
+    "vai": "luyen",
+    "dang_bai": "NDB01154",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Thương các luỹ thừa 2^n, 7^n: chia cho luỹ thừa cơ số lớn nhất.",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Dãy số $(u_{n})$ với $u_{n}=\\dfrac{2^{n}-5\\cdot7^{n+1}}{3\\cdot2^{n}+2\\cdot7^{n}}$ có giới hạn bằng $-\\dfrac{a}{b}$ với $(a,b)=1$. Giá trị của biểu thức $P=a^{2}-b^{2}$ là",
+    "lua_chon": [
+      "$P=1225$",
+      "$P=1221$",
+      "$P=-37$",
+      "$P=-34$"
+    ],
+    "dap_an": "B",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đây là thương của các luỹ thừa có cơ số khác nhau, nên chia cả tử và mẫu cho luỹ thừa có cơ số lớn nhất là $7^{n}$.\n\n**Bước 1.** Viết $7^{n+1}=7\\cdot7^{n}$ để đưa tử về dạng chỉ chứa $2^{n}$ và $7^{n}$.\n\n**Bước 2.** Chia cả tử và mẫu cho $7^{n}$ để xuất hiện các số hạng dạng $(\\dfrac{2}{7})^{n}$.\n\n**Bước 3.** Dùng $\\lim\\limits_{n\\to+\\infty}q^{n}=0$ với $|q|<1$ để tìm giới hạn của tử và của mẫu.\n\n**Bước 4.** Viết giới hạn dưới dạng phân số tối giản $-\\dfrac{a}{b}$ rồi tính $P=a^{2}-b^{2}$.\n\n**Phần 2. Trình bày**\n\nChia cả tử và mẫu cho $7^{n}$: $u_{n}=\\dfrac{(\\dfrac{2}{7})^{n}-35}{3\\cdot(\\dfrac{2}{7})^{n}+2}$.\n\nVì $\\lim\\limits_{n\\to+\\infty}(\\dfrac{2}{7})^{n}=0$ nên $\\lim\\limits_{n\\to+\\infty}u_{n}=\\dfrac{-35}{2}=-\\dfrac{35}{2}$.\n\nPhân số $\\dfrac{35}{2}$ tối giản nên $a=35$, $b=2$.\n\nVậy $P=35^{2}-2^{2}=1225-4=1221$.\n\nChọn B.",
+    "kiem": [
+      "((v,o,k,tol)=>o.every((x,i)=>((typeof x==='string'?(x==='inf'?v>1e12:v<-1e12):Math.abs(x-v)<tol)===(i===k))))(35*35-2*2,[1225,1221,-37,-34],1,1e-9)",
+      "(()=>{const n=100;const u=(2**n-5*7**(n+1))/(3*2**n+2*7**n);return Math.abs(u+35/2)<1e-9})()"
+    ],
+    "sach_dap_so": "B",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d1-p1c10",
+    "vai": "luyen",
+    "dang_bai": "NDB01163",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tổng cấp số nhân lùi vô hạn, kiểm |q|<1, S=u1/(1-q).",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Gọi $S=1+\\dfrac{2}{3}+\\dfrac{4}{9}+\\dots+\\dfrac{2^{n}}{3^{n}}+\\dots$. Giá trị của $S$ bằng",
+    "lua_chon": [
+      "$S=3$",
+      "$S=5$",
+      "$S=6$",
+      "$S=4$"
+    ],
+    "dap_an": "A",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các số hạng lập thành cấp số nhân có công bội có giá trị tuyệt đối nhỏ hơn $1$, nên dùng công thức tổng cấp số nhân lùi vô hạn.\n\n**Bước 1.** Xác định số hạng đầu $u_{1}$ và công bội $q$ từ hai số hạng liên tiếp đầu tiên.\n\n**Bước 2.** Kiểm tra điều kiện $|q|<1$ để chắc chắn đây là cấp số nhân lùi vô hạn.\n\n**Bước 3.** Thay $u_{1}$ và $q$ vào công thức $S=\\dfrac{u_{1}}{1-q}$ rồi đối chiếu bốn phương án.\n\n**Phần 2. Trình bày**\n\nCác số hạng $1,\\dfrac{2}{3},\\dfrac{4}{9},\\dots$ lập thành cấp số nhân có $u_{1}=1$ và $q=\\dfrac{2}{3}$.\n\nVì $|q|=\\dfrac{2}{3}<1$ nên đây là cấp số nhân lùi vô hạn.\n\nDo đó $S=\\dfrac{u_{1}}{1-q}=\\dfrac{1}{1-\\dfrac{2}{3}}=\\dfrac{1}{\\dfrac{1}{3}}=3$.\n\nChọn A.",
+    "kiem": [
+      "((v,o,k,tol)=>o.every((x,i)=>((typeof x==='string'?(x==='inf'?v>1e12:v<-1e12):Math.abs(x-v)<tol)===(i===k))))((()=>{let s=0;for(let k=0;k<=2000;k++)s+=(2/3)**k;return s})(),[3,5,6,4],0,0.000001)"
+    ],
+    "sach_dap_so": "A",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d1-p1c11",
+    "vai": "luyen",
+    "dang_bai": "NDB01184",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Đưa về tích x^2 với thừa số có giới hạn âm; cũng thuộc căn khi x→-∞ (NDB01179).",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "$\\lim\\limits_{x\\to-\\infty}x(\\sqrt{x^{2}+5}-x)$ bằng:",
+    "lua_chon": [
+      "$+\\infty$",
+      "$\\sqrt{5}$",
+      "$-\\infty$",
+      "$\\dfrac{5}{2}$"
+    ],
+    "dap_an": "C",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Với $x<0$ thì $\\sqrt{x^{2}}=-x$, nên đưa $x^{2}$ ra ngoài để biểu thức thành tích của $x^{2}$ với một thừa số có giới hạn hữu hạn.\n\n**Bước 1.** Với $x<0$, viết $\\sqrt{x^{2}+5}=-x\\sqrt{1+\\dfrac{5}{x^{2}}}$ vì căn của $x^{2}$ là $|x|=-x$.\n\n**Bước 2.** Thay vào biểu thức trong ngoặc rồi nhân với $x$ để rút $x^{2}$ ra ngoài làm nhân tử chung.\n\n**Bước 3.** Tìm giới hạn của $x^{2}$ và của thừa số còn lại khi $x\\to-\\infty$.\n\n**Bước 4.** Áp dụng quy tắc giới hạn của tích, chú ý dấu của giới hạn hữu hạn, rồi đối chiếu phương án.\n\n**Phần 2. Trình bày**\n\nVới $x<0$: $\\sqrt{x^{2}+5}=-x\\sqrt{1+\\dfrac{5}{x^{2}}}$.\n\nDo đó $x(\\sqrt{x^{2}+5}-x)=x\\cdot(-x)(\\sqrt{1+\\dfrac{5}{x^{2}}}+1)=x^{2}(-\\sqrt{1+\\dfrac{5}{x^{2}}}-1)$.\n\nTa có $\\lim\\limits_{x\\to-\\infty}x^{2}=+\\infty$ và $\\lim\\limits_{x\\to-\\infty}(-\\sqrt{1+\\dfrac{5}{x^{2}}}-1)=-2<0$.\n\nVậy $\\lim\\limits_{x\\to-\\infty}x(\\sqrt{x^{2}+5}-x)=-\\infty$.\n\nChọn C.",
+    "kiem": [
+      "((v,o,k,tol)=>o.every((x,i)=>((typeof x==='string'?(x==='inf'?v>1e12:v<-1e12):Math.abs(x-v)<tol)===(i===k))))(((x)=>x*(Math.sqrt(x*x+5)-x))(-1e7),['inf',Math.sqrt(5),'-inf',5/2],2,0.001)"
+    ],
+    "sach_dap_so": "C",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d1-p1c12",
+    "vai": "luyen",
+    "dang_bai": "NDB01172",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Dạng 0/0 có một căn thức ở tử: nhân liên hợp.",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Tìm giới hạn của hàm số $\\lim\\limits_{x\\to3}\\dfrac{2-\\sqrt{x+1}}{x-3}$.",
+    "lua_chon": [
+      "$4$",
+      "$-4$",
+      "$\\dfrac{1}{4}$",
+      "$-\\dfrac{1}{4}$"
+    ],
+    "dap_an": "D",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử chứa một căn thức và cả tử, mẫu cùng dần về $0$, nên nhân cả tử và mẫu với biểu thức liên hợp của tử để triệt nhân tử $x-3$.\n\n**Bước 1.** Thay $x=3$ vào tử và mẫu để nhận ra dạng vô định $\\dfrac{0}{0}$.\n\n**Bước 2.** Nhân tử và mẫu với biểu thức liên hợp $2+\\sqrt{x+1}$ để tử trở thành hiệu hai bình phương.\n\n**Bước 3.** Biến đổi tử về dạng có thừa số $x-3$ rồi rút gọn với $x\\ne3$.\n\n**Bước 4.** Thay $x=3$ vào biểu thức đã rút gọn rồi đối chiếu bốn phương án.\n\n**Phần 2. Trình bày**\n\nThay $x=3$: tử $=2-\\sqrt{4}=0$, mẫu $=0$ nên là dạng $\\dfrac{0}{0}$.\n\nNhân tử và mẫu với $2+\\sqrt{x+1}>0$:\n\n$\\dfrac{2-\\sqrt{x+1}}{x-3}=\\dfrac{4-(x+1)}{(x-3)(2+\\sqrt{x+1})}=\\dfrac{-(x-3)}{(x-3)(2+\\sqrt{x+1})}$\n\nVới $x\\ne3$: $\\dfrac{2-\\sqrt{x+1}}{x-3}=\\dfrac{-1}{2+\\sqrt{x+1}}$.\n\nDo đó $\\lim\\limits_{x\\to3}\\dfrac{2-\\sqrt{x+1}}{x-3}=\\dfrac{-1}{2+\\sqrt{4}}=-\\dfrac{1}{4}$.\n\nChọn D.",
+    "kiem": [
+      "((v,o,k,tol)=>o.every((x,i)=>((typeof x==='string'?(x==='inf'?v>1e12:v<-1e12):Math.abs(x-v)<tol)===(i===k))))(((x)=>(2-Math.sqrt(x+1))/(x-3))(3+1e-6),[4,-4,1/4,-1/4],3,0.001)",
+      "((v,o,k,tol)=>o.every((x,i)=>((typeof x==='string'?(x==='inf'?v>1e12:v<-1e12):Math.abs(x-v)<tol)===(i===k))))(((x)=>(2-Math.sqrt(x+1))/(x-3))(3-1e-6),[4,-4,1/4,-1/4],3,0.001)"
+    ],
+    "sach_dap_so": "D",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d1-p2c1",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho dãy số $(u_{n})$ với $u_{n}=(\\dfrac{1}{3})^{n}$. Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "Số hạng đầu tiên của $(u_{n})$ bằng $\\dfrac{1}{3}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$(u_{n})$ là một cấp số nhân với công bội $q=\\dfrac{1}{3}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Số hạng thứ $4$ bằng $\\dfrac{1}{12}$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Tổng của các số hạng của dãy số $(u_{n})$ nằm trong khoảng $(0;1)$.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi ý chỉ cần tính trực tiếp từ công thức $u_{n}=(\\dfrac{1}{3})^{n}$: số hạng đầu, tỉ số hai số hạng liên tiếp, số hạng thứ tư và tổng cấp số nhân lùi vô hạn.\n\n**Bước 1.** Với ý a) và c), thay $n$ bằng chỉ số của số hạng cần tìm vào công thức $u_{n}$.\n\n**Bước 2.** Với ý b), tính tỉ số $\\dfrac{u_{n+1}}{u_{n}}$ và xem nó có là hằng số không.\n\n**Bước 3.** Với ý d), kiểm tra $|q|<1$ rồi dùng công thức tổng cấp số nhân lùi vô hạn để tính tổng.\n\n**Bước 4.** So từng kết quả với nội dung mệnh đề để kết luận đúng hay sai.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì $u_{1}=(\\dfrac{1}{3})^{1}=\\dfrac{1}{3}$.\n\nÝ b) Đúng vì $\\dfrac{u_{n+1}}{u_{n}}=\\dfrac{(\\dfrac{1}{3})^{n+1}}{(\\dfrac{1}{3})^{n}}=\\dfrac{1}{3}$ với mọi $n\\in\\mathbb{N}^{*}$, nên $(u_{n})$ là cấp số nhân có công bội $q=\\dfrac{1}{3}$.\n\nÝ c) Sai vì $u_{4}=(\\dfrac{1}{3})^{4}=\\dfrac{1}{81}$, khác $\\dfrac{1}{12}$.\n\nÝ d) Đúng vì $|q|=\\dfrac{1}{3}<1$ nên tổng là $S=\\dfrac{u_{1}}{1-q}=\\dfrac{\\dfrac{1}{3}}{1-\\dfrac{1}{3}}=\\dfrac{1}{2}$ và $\\dfrac{1}{2}\\in(0;1)$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Đúng, Sai, Đúng.",
+    "kiem": [
+      "Math.abs((1/3)**1-1/3)<1e-12===true",
+      "Math.abs((1/3)**6/(1/3)**5-1/3)<1e-12===true",
+      "Math.abs((1/3)**4-1/12)<1e-9===false",
+      "(()=>{let s=0;for(let k=1;k<=200;k++)s+=(1/3)**k;return s>0&&s<1&&Math.abs(s-0.5)<1e-9})()===true"
+    ],
+    "sach_dap_so": "a) Đúng; b) Đúng; c) Sai; d) Đúng",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d1-p2c2",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=\\dfrac{x^{2}+ax+b}{x-1}$ và $g(x)=x+a$ ($a$, $b$ là các tham số). Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "Giới hạn của hàm số $y=f(x)$ khi $x\\to+\\infty$ bằng $0$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Giới hạn của hàm số $y=f(x)-g(x)$ khi $x\\to-\\infty$ bằng $1$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Nếu $\\lim\\limits_{x\\to2}f(x)=-3$ và $\\lim\\limits_{x\\to2}g(x)=0$ thì $a=b$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Nếu $\\lim\\limits_{x\\to1}f(x)=5$ thì giá trị của biểu thức $a+b=1$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ý a) và b) là giới hạn tại vô cực của phân thức, ý c) là tính giới hạn bằng cách thay trực tiếp, ý d) là giới hạn dạng $\\dfrac{0}{0}$ chứa tham số.\n\n**Bước 1.** Với ý a), rút $x^{2}$ ở tử và $x$ ở mẫu rồi dùng quy tắc giới hạn của tích.\n\n**Bước 2.** Với ý b), quy đồng $f(x)-g(x)$ thành một phân thức rồi chia tử và mẫu cho $x$.\n\n**Bước 3.** Với ý c), thay $x=2$ vào $f$ và $g$ (cả hai xác định tại $x=2$) rồi giải hệ hai phương trình ẩn $a$, $b$.\n\n**Bước 4.** Với ý d), mẫu dần về $0$ mà giới hạn hữu hạn nên tử phải triệt tiêu tại $x=1$; từ đó tìm $a$, $b$ rồi tính $a+b$.\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì với $x>1$: $f(x)=x\\cdot\\dfrac{1+\\dfrac{a}{x}+\\dfrac{b}{x^{2}}}{1-\\dfrac{1}{x}}$, trong đó $\\lim\\limits_{x\\to+\\infty}x=+\\infty$ và thừa số còn lại có giới hạn $1>0$, nên $\\lim\\limits_{x\\to+\\infty}f(x)=+\\infty$, khác $0$.\n\nÝ b) Đúng vì $f(x)-g(x)=\\dfrac{x^{2}+ax+b-(x+a)(x-1)}{x-1}=\\dfrac{x+a+b}{x-1}=\\dfrac{1+\\dfrac{a+b}{x}}{1-\\dfrac{1}{x}}$ và giới hạn khi $x\\to-\\infty$ bằng $\\dfrac{1}{1}=1$.\n\nÝ c) Sai vì $\\lim\\limits_{x\\to2}f(x)=4+2a+b$ và $\\lim\\limits_{x\\to2}g(x)=2+a$. Ta có hệ $4+2a+b=-3$ và $2+a=0$, suy ra $a=-2$, $b=-3$, nên $a\\ne b$.\n\nÝ d) Sai vì nếu $1+a+b\\ne0$ thì $\\lim\\limits_{x\\to1}f(x)=\\infty$, không thoả. Do đó $1+a+b=0$, tức $b=-a-1$. Khi đó $f(x)=\\dfrac{(x-1)(x+1+a)}{x-1}=x+1+a$ với $x\\ne1$ nên $\\lim\\limits_{x\\to1}f(x)=2+a=5$, suy ra $a=3$, $b=-4$ và $a+b=-1$, khác $1$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Đúng, Sai, Sai.",
+    "kiem": [
+      "[[2,3],[-1,5],[0,0]].every(([a,b])=>Math.abs(((x)=>(x*x+a*x+b)/(x-1))(1e8))<1e-3)===false",
+      "[[2,3],[-1,5],[0,0]].every(([a,b])=>Math.abs(((x)=>(x*x+a*x+b)/(x-1)-(x+a))(-1e8)-1)<1e-4)===true",
+      "(()=>{const a=-2,b=-3;return Math.abs((4+2*a+b)+3)<1e-12&&Math.abs(2+a)<1e-12&&a===b})()===false",
+      "(()=>{const a=3,b=-4;const f=x=>(x*x+a*x+b)/(x-1);return Math.abs(f(1+1e-6)-5)<1e-3&&Math.abs(f(1-1e-6)-5)<1e-3&&a+b===1})()===false"
+    ],
+    "sach_dap_so": "a) Sai; b) Đúng; c) Sai; d) Sai",
+    "ghi_chu": "Lời giải sách đánh nhãn ý a) thành \"b)\" (lỗi in); nội dung kết luận vẫn là Sai."
+  },
+  {
+    "id": "nbv-ot-d1-p2c3",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho các dãy số $(a_{n})$, $(b_{n})$, $(c_{n})$ với $a_{n}=n(n+2)+2024$, $b_{n}=\\dfrac{1}{a_{n}}+\\dfrac{2}{a_{n}}+\\dfrac{3}{a_{n}}+\\dots+\\dfrac{n}{a_{n}}$ và $c_{n}=\\dfrac{1}{a_{1}-2024}+\\dfrac{1}{a_{2}-2024}+\\dots+\\dfrac{1}{a_{n}-2024}$. Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "$\\lim\\limits_{n\\to+\\infty}\\dfrac{1}{a_{n}-2024}=\\dfrac{1}{2}$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "$c_{n}=\\dfrac{1}{2}(1+\\dfrac{1}{2}-\\dfrac{1}{n+1}-\\dfrac{1}{n+2})$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{n\\to+\\infty}b_{n}=\\dfrac{1}{2}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$\\lim\\limits_{n\\to+\\infty}\\dfrac{b_{n}}{c_{n}}=\\dfrac{1}{3}$.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Rút gọn $a_{n}-2024=n(n+2)$, tách $\\dfrac{1}{k(k+2)}$ thành hiệu để khử liên tiếp trong $c_{n}$, và dùng tổng $1+2+\\dots+n$ trong $b_{n}$.\n\n**Bước 1.** Tính $a_{n}-2024$ rồi xét giới hạn của $\\dfrac{1}{a_{n}-2024}$ cho ý a).\n\n**Bước 2.** Tách $\\dfrac{1}{k(k+2)}=\\dfrac{1}{2}(\\dfrac{1}{k}-\\dfrac{1}{k+2})$ và cộng lại, các số hạng ở giữa triệt tiêu, để kiểm tra ý b).\n\n**Bước 3.** Dùng $1+2+\\dots+n=\\dfrac{n(n+1)}{2}$ để viết $b_{n}$ thành phân thức theo $n$, rồi tính giới hạn cho ý c).\n\n**Bước 4.** Tính $\\lim c_{n}$ từ công thức ở ý b), lấy thương hai giới hạn để xét ý d).\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì $\\dfrac{1}{a_{n}-2024}=\\dfrac{1}{n(n+2)}$ và $\\lim\\limits_{n\\to+\\infty}\\dfrac{1}{n(n+2)}=0$, khác $\\dfrac{1}{2}$.\n\nÝ b) Đúng vì $\\dfrac{1}{k(k+2)}=\\dfrac{1}{2}(\\dfrac{1}{k}-\\dfrac{1}{k+2})$ nên $c_{n}=\\dfrac{1}{2}(1-\\dfrac{1}{3}+\\dfrac{1}{2}-\\dfrac{1}{4}+\\dots+\\dfrac{1}{n-1}-\\dfrac{1}{n+1}+\\dfrac{1}{n}-\\dfrac{1}{n+2})=\\dfrac{1}{2}(1+\\dfrac{1}{2}-\\dfrac{1}{n+1}-\\dfrac{1}{n+2})$.\n\nÝ c) Đúng vì $b_{n}=\\dfrac{1+2+\\dots+n}{a_{n}}=\\dfrac{n(n+1)}{2(n^{2}+2n+2024)}=\\dfrac{1}{2}\\cdot\\dfrac{1+\\dfrac{1}{n}}{1+\\dfrac{2}{n}+\\dfrac{2024}{n^{2}}}$ nên $\\lim\\limits_{n\\to+\\infty}b_{n}=\\dfrac{1}{2}$.\n\nÝ d) Sai vì $\\lim\\limits_{n\\to+\\infty}c_{n}=\\dfrac{1}{2}\\cdot\\dfrac{3}{2}=\\dfrac{3}{4}$ nên $\\lim\\limits_{n\\to+\\infty}\\dfrac{b_{n}}{c_{n}}=\\dfrac{\\dfrac{1}{2}}{\\dfrac{3}{4}}=\\dfrac{2}{3}$, khác $\\dfrac{1}{3}$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Đúng, Đúng, Sai.",
+    "kiem": [
+      "Math.abs(1/(1e7*(1e7+2))-0.5)<1e-3===false",
+      "(()=>{const n=10;let s=0;for(let k=1;k<=n;k++)s+=1/(k*(k+2));return Math.abs(s-0.5*(1+0.5-1/(n+1)-1/(n+2)))<1e-12})()===true",
+      "(()=>{const n=1e7;const b=(n*(n+1)/2)/(n*(n+2)+2024);return Math.abs(b-0.5)<1e-4})()===true",
+      "(()=>{const n=1e7;const b=(n*(n+1)/2)/(n*(n+2)+2024);const c=0.5*(1.5-1/(n+1)-1/(n+2));return Math.abs(b/c-2/3)<1e-4&&Math.abs(b/c-1/3)<1e-3})()===false"
+    ],
+    "sach_dap_so": "a) Sai; b) Đúng; c) Đúng; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d1-p2c4",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Trong hồ có chứa $6000$ lít nước ngọt (có nồng độ muối xem như bằng $0$). Người ta bơm nước biển có nồng độ muối là $30$ gam/lít vào hồ với tốc độ $15$ lít/phút. Biết rằng nồng độ muối trong dung dịch được tính bằng công thức $C=\\dfrac{m}{V}$. Xét tính đúng, sai của các mệnh đề sau:",
+    "menh_de": [
+      {
+        "noi_dung": "Sau thời gian $t$ (phút), lượng nước được bơm vào hồ là $V(t)=15t$ (lít).",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Khối lượng muối được bơm vào hồ sau thời gian $t$ (phút) là $m=450t$ (g).",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Nồng độ muối trong hồ sau thời gian $t$ phút là $C(t)=\\dfrac{15t}{6000+450t}$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Khi thời gian $t$ phút càng lớn, nồng độ muối trong hồ càng cao nhưng không vượt quá $15$ (g/lít).",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lượng nước và lượng muối bơm vào đều tỉ lệ với thời gian $t$; nồng độ trong hồ là khối lượng muối chia cho tổng thể tích nước có trong hồ, rồi lấy giới hạn khi $t\\to+\\infty$.\n\n**Bước 1.** Nhân tốc độ bơm với thời gian $t$ để tìm thể tích nước biển được bơm vào hồ.\n\n**Bước 2.** Nhân thể tích đó với nồng độ $30$ g/lít để tìm khối lượng muối được bơm vào.\n\n**Bước 3.** Tính tổng thể tích nước trong hồ gồm nước ngọt ban đầu và nước biển bơm vào, rồi lập $C(t)=\\dfrac{m}{V}$.\n\n**Bước 4.** Cho $t\\to+\\infty$, chia tử và mẫu cho $t$ để tìm giá trị mà nồng độ muối tiến tới.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì tốc độ bơm là $15$ lít/phút nên sau $t$ phút lượng nước bơm vào là $V(t)=15t$ (lít).\n\nÝ b) Đúng vì mỗi lít nước biển chứa $30$ g muối nên $m=30\\cdot15t=450t$ (g).\n\nÝ c) Sai vì tổng thể tích nước trong hồ là $6000+15t$ (lít) nên $C(t)=\\dfrac{450t}{6000+15t}=\\dfrac{30t}{400+t}$ (g/lít), khác biểu thức ở ý c).\n\nÝ d) Sai vì $\\lim\\limits_{t\\to+\\infty}C(t)=\\lim\\limits_{t\\to+\\infty}\\dfrac{30t}{400+t}=\\lim\\limits_{t\\to+\\infty}\\dfrac{30}{\\dfrac{400}{t}+1}=30$, nên nồng độ muối tiến tới $30$ g/lít chứ không phải $15$ g/lít.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Đúng, Sai, Sai.",
+    "kiem": [
+      "15*4===60",
+      "30*(15*7)===450*7",
+      "Math.abs(15*100/(6000+450*100)-450*100/(6000+15*100))<1e-9===false",
+      "(()=>{const C=t=>450*t/(6000+15*t);return Math.abs(C(1e9)-30)<1e-3&&Math.abs(C(1e9)-15)<1e-3})()===false"
+    ],
+    "sach_dap_so": "a) Đúng; b) Đúng; c) Sai; d) Sai",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d1-p3c1",
+    "vai": "luyen",
+    "dang_bai": "NDB01154",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Thương các luỹ thừa 3^n, 7^n, 8^n: chia cho luỹ thừa cơ số lớn nhất.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính giới hạn sau $I=\\lim\\limits_{n\\to+\\infty}\\dfrac{3^{n+1}+8^{n+2}}{7^{n}+8^{n}}$.",
+    "dap_an": "64",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đây là thương của các luỹ thừa có cơ số khác nhau, nên chia cả tử và mẫu cho luỹ thừa có cơ số lớn nhất là $8^{n}$.\n\n**Bước 1.** Tách $3^{n+1}=3\\cdot3^{n}$ và $8^{n+2}=64\\cdot8^{n}$ để tử chỉ chứa $3^{n}$ và $8^{n}$.\n\n**Bước 2.** Chia cả tử và mẫu cho $8^{n}$ để xuất hiện các số hạng dạng $(\\dfrac{3}{8})^{n}$ và $(\\dfrac{7}{8})^{n}$.\n\n**Bước 3.** Dùng $\\lim\\limits_{n\\to+\\infty}q^{n}=0$ với $|q|<1$ để tìm giới hạn của tử và của mẫu.\n\n**Bước 4.** Lấy thương hai giới hạn để được kết quả.\n\n**Phần 2. Trình bày**\n\nTa có $I=\\lim\\limits_{n\\to+\\infty}\\dfrac{3\\cdot3^{n}+64\\cdot8^{n}}{7^{n}+8^{n}}$.\n\nChia cả tử và mẫu cho $8^{n}$: $I=\\lim\\limits_{n\\to+\\infty}\\dfrac{3\\cdot(\\dfrac{3}{8})^{n}+64}{(\\dfrac{7}{8})^{n}+1}$.\n\nVì $\\lim\\limits_{n\\to+\\infty}(\\dfrac{3}{8})^{n}=\\lim\\limits_{n\\to+\\infty}(\\dfrac{7}{8})^{n}=0$ nên $I=\\dfrac{0+64}{0+1}=64$.\n\nVậy $I=64$.",
+    "kiem": [
+      "(()=>{const n=300;const u=(3**(n+1)+8**(n+2))/(7**n+8**n);return Math.abs(u-64)<1e-6})()"
+    ],
+    "sach_dap_so": "64",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d1-p3c2",
+    "vai": "luyen",
+    "dang_bai": "NDB01177",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Hàm hai công thức, điều kiện tồn tại giới hạn: trái bằng phải.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tìm $m$ để hàm số $f(x)=\\begin{cases}3x+m&\\text{khi }x<0\\\\\\dfrac{2x^{2}+100x+21}{6x+1}&\\text{khi }x\\ge0\\end{cases}$ có giới hạn tại $x=0$.",
+    "dap_an": "21",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn tại $x=0$ tồn tại khi và chỉ khi giới hạn trái bằng giới hạn phải, nên tính hai giới hạn một bên rồi cho chúng bằng nhau.\n\n**Bước 1.** Với $x<0$, hàm cho bởi $3x+m$; tính giới hạn trái khi $x\\to0^{-}$ theo $m$.\n\n**Bước 2.** Với $x\\ge0$, hàm cho bởi phân thức có mẫu khác $0$ tại $x=0$; tính giới hạn phải khi $x\\to0^{+}$ bằng cách thay trực tiếp.\n\n**Bước 3.** Cho giới hạn trái bằng giới hạn phải để lập phương trình ẩn $m$ rồi giải.\n\n**Phần 2. Trình bày**\n\nTa có $\\lim\\limits_{x\\to0^{-}}f(x)=\\lim\\limits_{x\\to0^{-}}(3x+m)=m$.\n\nTa có $\\lim\\limits_{x\\to0^{+}}f(x)=\\lim\\limits_{x\\to0^{+}}\\dfrac{2x^{2}+100x+21}{6x+1}=\\dfrac{21}{1}=21$.\n\nGiới hạn tại $x=0$ tồn tại khi và chỉ khi $m=21$.\n\nVậy $m=21$.",
+    "kiem": [
+      "(()=>{const m=21;const Rr=x=>(2*x*x+100*x+21)/(6*x+1);const Ll=x=>3*x+m;return Math.abs(Rr(1e-9)-Ll(-1e-9))<1e-6&&Math.abs(Rr(1e-9)-(3*-1e-9+20))>0.5})()"
+    ],
+    "sach_dap_so": "21",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d1-p3c3",
+    "vai": "luyen",
+    "dang_bai": "NDB01177",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Hàm hai công thức có tham số: tìm m để giới hạn trái bằng phải.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Cho hàm số $f(x)=\\begin{cases}\\dfrac{\\sqrt{x+4}-2}{x}&\\text{khi }x>0\\\\mx^{2}+2m+\\dfrac{1}{4}&\\text{khi }x\\le0\\end{cases}$, với $m$ là tham số. Tìm $m$ để $\\lim\\limits_{x\\to0}f(x)$ tồn tại.",
+    "dap_an": "0",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn tại $x=0$ tồn tại khi giới hạn trái bằng giới hạn phải; giới hạn phải có dạng $\\dfrac{0}{0}$ chứa một căn nên dùng nhân liên hợp.\n\n**Bước 1.** Tính giới hạn trái khi $x\\to0^{-}$ bằng cách thay trực tiếp vào nhánh $x\\le0$, kết quả chứa $m$.\n\n**Bước 2.** Nhận ra giới hạn phải ở nhánh $x>0$ là dạng $\\dfrac{0}{0}$ và nhân tử với mẫu cho biểu thức liên hợp của tử.\n\n**Bước 3.** Rút nhân tử $x$ rồi thay $x=0$ để tìm giới hạn phải.\n\n**Bước 4.** Cho hai giới hạn một bên bằng nhau để lập phương trình ẩn $m$ rồi giải.\n\n**Phần 2. Trình bày**\n\nTa có $\\lim\\limits_{x\\to0^{-}}f(x)=\\lim\\limits_{x\\to0^{-}}(mx^{2}+2m+\\dfrac{1}{4})=2m+\\dfrac{1}{4}$.\n\nVới $x>0$: $\\dfrac{\\sqrt{x+4}-2}{x}=\\dfrac{(x+4)-4}{x(\\sqrt{x+4}+2)}=\\dfrac{1}{\\sqrt{x+4}+2}$.\n\nDo đó $\\lim\\limits_{x\\to0^{+}}f(x)=\\dfrac{1}{\\sqrt{4}+2}=\\dfrac{1}{4}$.\n\nGiới hạn tồn tại khi và chỉ khi $2m+\\dfrac{1}{4}=\\dfrac{1}{4}$, suy ra $m=0$.\n\nVậy $m=0$.",
+    "kiem": [
+      "(()=>{const R2=x=>(Math.sqrt(x+4)-2)/x;const Lf=(m,x)=>m*x*x+2*m+0.25;return Math.abs(R2(1e-6)-Lf(0,-1e-6))<1e-4&&Math.abs(R2(1e-6)-Lf(1,-1e-6))>1})()"
+    ],
+    "sach_dap_so": "0",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d1-p3c4",
+    "vai": "luyen",
+    "dang_bai": "NDB01185",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Mô hình thực tế có giới hạn tại vô cực: x→+∞.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Số dân của một thị trấn sau $x$ năm kể từ năm $1980$ được tính bởi công thức $f(x)=\\dfrac{6000x}{50+12x}$ ($f(x)$ được tính bằng nghìn người). Số dân của thị trấn đó không vượt quá bao nhiêu người?",
+    "dap_an": "500",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số dân dần tiến tới một giá trị giới hạn khi thời gian $x$ rất lớn, nên tính giới hạn của $f(x)$ khi $x\\to+\\infty$ bằng cách chia tử và mẫu cho $x$.\n\n**Bước 1.** Nhận ra $f(x)$ là phân thức có tử và mẫu cùng bậc nhất theo $x$.\n\n**Bước 2.** Chia cả tử và mẫu cho $x$ để các số hạng còn lại có dạng hằng số chia cho $x$.\n\n**Bước 3.** Dùng $\\lim\\limits_{x\\to+\\infty}\\dfrac{1}{x}=0$ để tìm giá trị mà $f(x)$ tiến tới, rồi nêu ý nghĩa với đơn vị của $f(x)$.\n\n**Phần 2. Trình bày**\n\nLưu ý: $f(x)$ tính bằng nghìn người nên đáp số $500$ có đơn vị là nghìn người, nghĩa là $500$ nghìn người.\n\nVới $x>0$: $f(x)=\\dfrac{6000x}{50+12x}=\\dfrac{6000}{\\dfrac{50}{x}+12}$.\n\nVì $\\lim\\limits_{x\\to+\\infty}\\dfrac{50}{x}=0$ nên $\\lim\\limits_{x\\to+\\infty}f(x)=\\dfrac{6000}{12}=500$.\n\nVậy số dân của thị trấn không vượt quá $500$ (nghìn người).",
+    "kiem": [
+      "Math.abs(6000*1e9/(50+12*1e9)-500)<1e-3",
+      "(()=>{for(let x=0;x<=1e5;x+=7)if(6000*x/(50+12*x)>=500)return false;return true})()"
+    ],
+    "sach_dap_so": "500",
+    "ghi_chu": "Đề in hỏi \"bao nhiêu người\" nhưng f(x) tính bằng nghìn người; đáp số sách 500 (nghìn người) = 500 000 người. Giữ đáp số 500 kèm lưu ý đơn vị ở Phần 2."
+  },
+  {
+    "id": "nbv-ot-d1-p3c5",
+    "vai": "luyen",
+    "dang_bai": "NDB01197",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Hàm hai nhánh đa thức, tìm tham số để liên tục trên ℝ.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính tổng các giá trị tìm được của tham số $m$ để hàm số $f(x)=\\begin{cases}m^{2}x^{2}&\\text{khi }x\\le1\\\\ (2-m)x&\\text{khi }x>1\\end{cases}$ liên tục trên $\\mathbb{R}$.",
+    "dap_an": "-1",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi nhánh là đa thức nên liên tục trên khoảng của nó; hàm liên tục trên $\\mathbb{R}$ khi và chỉ khi liên tục tại điểm ghép $x=1$.\n\n**Bước 1.** Nhận ra hai nhánh đều là đa thức nên chỉ cần xét tính liên tục tại $x=1$.\n\n**Bước 2.** Tính $f(1)$ và hai giới hạn một bên tại $x=1$ theo $m$.\n\n**Bước 3.** Cho giới hạn trái bằng giới hạn phải (và bằng $f(1)$) để lập phương trình ẩn $m$.\n\n**Bước 4.** Giải phương trình bậc hai tìm các giá trị của $m$ rồi cộng chúng lại.\n\n**Phần 2. Trình bày**\n\nTrên $(-\\infty;1)$ và $(1;+\\infty)$, $f$ là đa thức nên liên tục. Chỉ cần xét tại $x=1$.\n\nTa có $f(1)=m^{2}$ và $\\lim\\limits_{x\\to1^{-}}f(x)=m^{2}$, $\\lim\\limits_{x\\to1^{+}}f(x)=2-m$.\n\n$f$ liên tục tại $x=1$ khi và chỉ khi $m^{2}=2-m$.\n\n$\\Leftrightarrow m^{2}+m-2=0$\n\n$\\Leftrightarrow m=1$ hoặc $m=-2$.\n\nVậy tổng các giá trị của $m$ là $1+(-2)=-1$.",
+    "kiem": [
+      "(()=>{const ok=m=>m*m===2-m;return ok(1)&&ok(-2)&&1+(-2)===-1&&[-10,-9,-8,-7,-6,-5,-4,-3,-1,0,2,3,4,5,6,7,8,9,10].every(m=>!ok(m))})()"
+    ],
+    "sach_dap_so": "-1",
+    "ghi_chu": ""
+  }
+]

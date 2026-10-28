@@ -1,0 +1,432 @@
+[
+  {
+    "id": "nbv-ot-d2-I1",
+    "vai": "luyen",
+    "dang_bai": "NDB01151",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Phân thức cùng bậc 3, chia cho luỹ thừa cao nhất.",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Tìm $\\lim\\dfrac{3n^{3}-n^{2}+4}{4n^{3}-2n^{2}+3n}$.",
+    "lua_chon": [
+      "$+\\infty$",
+      "$3$",
+      "$4$",
+      "$\\dfrac{3}{4}$"
+    ],
+    "dap_an": "D",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu cùng bậc theo $n$ nên chia cả hai cho luỹ thừa cao nhất của $n$ rồi dùng quy tắc giới hạn.\n\n**Bước 1.** Xác định bậc cao nhất của $n$ ở tử và ở mẫu để chọn luỹ thừa dùng làm số chia.\n\n**Bước 2.** Chia cả tử và mẫu cho luỹ thừa vừa chọn, viết lại từng số hạng thành dạng $\\dfrac{a}{n^k}$.\n\n**Bước 3.** Dùng $\\lim\\dfrac{1}{n^k}=0$ để tìm giới hạn riêng của tử và của mẫu.\n\n**Bước 4.** Lấy thương hai giới hạn (mẫu khác $0$) rồi đối chiếu với bốn phương án.\n\n**Phần 2. Trình bày**\n\nChia cả tử và mẫu cho $n^{3}$:\n\n$\\lim\\dfrac{3n^{3}-n^{2}+4}{4n^{3}-2n^{2}+3n}=\\lim\\dfrac{3-\\dfrac{1}{n}+\\dfrac{4}{n^{3}}}{4-\\dfrac{2}{n}+\\dfrac{3}{n^{2}}}$.\n\nVì $\\lim\\dfrac{1}{n}=\\lim\\dfrac{1}{n^{2}}=\\lim\\dfrac{1}{n^{3}}=0$ nên tử có giới hạn $3$, mẫu có giới hạn $4$.\n\nVậy $\\lim\\dfrac{3n^{3}-n^{2}+4}{4n^{3}-2n^{2}+3n}=\\dfrac{3}{4}$.\n\nChọn D.",
+    "kiem": [
+      "((f,o,k)=>{const v=f();const w=v>1e6?Infinity:v<-1e6?-Infinity:v;return o.every((x,i)=>((x===w)||(isFinite(x)&&isFinite(w)&&Math.abs(x-w)<1e-4))===(i===k))})(()=>((n)=>(3*n**3-n**2+4)/(4*n**3-2*n**2+3*n))(1e7),[Infinity,3,4,3/4],3)"
+    ],
+    "sach_dap_so": "D",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d2-I2",
+    "vai": "luyen",
+    "dang_bai": "NDB01161",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Rút luỹ thừa trội 9ⁿ, quy tắc tích ra +∞; không có n^k nên không thuộc NDB01155.",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Tìm $\\lim(3^{2n}-5^{n})$.",
+    "lua_chon": [
+      "$3$",
+      "$+\\infty$",
+      "$5$",
+      "$-\\infty$"
+    ],
+    "dap_an": "B",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đưa $3^{2n}$ về cùng dạng luỹ thừa của $n$ với $5^{n}$, rồi rút luỹ thừa có cơ số lớn hơn ra ngoài và xét dấu.\n\n**Bước 1.** Viết $3^{2n}$ dưới dạng $a^{n}$ để hai số hạng cùng có dạng luỹ thừa của $n$.\n\n**Bước 2.** So sánh hai cơ số, rút luỹ thừa có cơ số lớn hơn làm thừa số chung ngoài ngoặc.\n\n**Bước 3.** Tìm giới hạn của thừa số rút ra và của biểu thức trong ngoặc bằng $\\lim q^{n}=0$ với $|q|<1$.\n\n**Bước 4.** Dùng quy tắc tích khi một thừa số có giới hạn vô cực để kết luận.\n\n**Phần 2. Trình bày**\n\nTa có $3^{2n}=9^{n}$ nên $3^{2n}-5^{n}=9^{n}-5^{n}=9^{n}(1-(\\dfrac{5}{9})^{n})$.\n\nVì $\\lim 9^{n}=+\\infty$ và $\\lim(1-(\\dfrac{5}{9})^{n})=1>0$ nên tích có giới hạn $+\\infty$.\n\nVậy $\\lim(3^{2n}-5^{n})=+\\infty$.\n\nChọn B.",
+    "kiem": [
+      "((f,o,k)=>{const v=f();const w=v>1e6?Infinity:v<-1e6?-Infinity:v;return o.every((x,i)=>((x===w)||(isFinite(x)&&isFinite(w)&&Math.abs(x-w)<1e-4))===(i===k))})(()=>((n)=>3**(2*n)-5**n)(20),[3,Infinity,5,-Infinity],1)"
+    ],
+    "sach_dap_so": "B",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d2-I3",
+    "vai": "luyen",
+    "dang_bai": "NDB01169",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Biết giới hạn f, g tại 1 điểm, tính giới hạn tổ hợp.",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Cho $\\lim\\limits_{x\\to1}f(x)=2$, $\\lim\\limits_{x\\to1}g(x)=-3$. Khi đó $\\lim\\limits_{x\\to1}[f(x)-2g(x)]$ bằng",
+    "lua_chon": [
+      "$-4$",
+      "$4$",
+      "$8$",
+      "$-1$"
+    ],
+    "dap_an": "C",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn của hiệu bằng hiệu các giới hạn và hằng số nhân được đưa ra ngoài dấu giới hạn.\n\n**Bước 1.** Nhận ra biểu thức là hiệu của hàm $f(x)$ và hàm $2g(x)$ có hệ số hằng.\n\n**Bước 2.** Áp dụng quy tắc giới hạn của hiệu, đưa hằng số $2$ ra ngoài dấu giới hạn.\n\n**Bước 3.** Thay hai giới hạn đã cho vào rồi thực hiện phép tính số học.\n\n**Bước 4.** Đối chiếu giá trị tìm được với bốn phương án.\n\n**Phần 2. Trình bày**\n\nTa có $\\lim\\limits_{x\\to1}[f(x)-2g(x)]=\\lim\\limits_{x\\to1}f(x)-2\\lim\\limits_{x\\to1}g(x)$.\n\n$=2-2\\cdot(-3)=2+6=8$.\n\nVậy $\\lim\\limits_{x\\to1}[f(x)-2g(x)]=8$.\n\nChọn C.",
+    "kiem": [
+      "((f,o,k)=>{const v=f();const w=v>1e6?Infinity:v<-1e6?-Infinity:v;return o.every((x,i)=>((x===w)||(isFinite(x)&&isFinite(w)&&Math.abs(x-w)<1e-4))===(i===k))})(()=>2-2*(-3),[-4,4,8,-1],2)"
+    ],
+    "sach_dap_so": "C",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d2-I4",
+    "vai": "luyen",
+    "dang_bai": "NDB01178",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Phân thức hữu tỉ khi x tiến tới âm vô cực.",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "$\\lim\\limits_{x\\to-\\infty}\\dfrac{2025}{2026x^{2}-1}$ bằng",
+    "lua_chon": [
+      "$0$",
+      "$2025$",
+      "$-\\infty$",
+      "$\\dfrac{2025}{2026}$"
+    ],
+    "dap_an": "A",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử là hằng số còn mẫu có bậc cao hơn, nên chia cả tử và mẫu cho luỹ thừa cao nhất của $x$.\n\n**Bước 1.** So sánh bậc của tử và mẫu để chọn luỹ thừa cao nhất của $x$ dùng làm số chia.\n\n**Bước 2.** Chia cả tử và mẫu cho $x^{2}$ rồi viết lại thành các phân thức có $x$ ở mẫu.\n\n**Bước 3.** Dùng $\\lim\\dfrac{1}{x^{k}}=0$ khi $x\\to-\\infty$ để tìm giới hạn của tử và mẫu.\n\n**Bước 4.** Lấy thương hai giới hạn rồi đối chiếu với các phương án.\n\n**Phần 2. Trình bày**\n\nChia cả tử và mẫu cho $x^{2}$:\n\n$\\lim\\limits_{x\\to-\\infty}\\dfrac{2025}{2026x^{2}-1}=\\lim\\limits_{x\\to-\\infty}\\dfrac{\\dfrac{2025}{x^{2}}}{2026-\\dfrac{1}{x^{2}}}$.\n\nVì $\\lim\\limits_{x\\to-\\infty}\\dfrac{1}{x^{2}}=0$ nên tử có giới hạn $0$, mẫu có giới hạn $2026$.\n\nVậy $\\lim\\limits_{x\\to-\\infty}\\dfrac{2025}{2026x^{2}-1}=\\dfrac{0}{2026}=0$.\n\nChọn A.",
+    "kiem": [
+      "((f,o,k)=>{const v=f();const w=v>1e6?Infinity:v<-1e6?-Infinity:v;return o.every((x,i)=>((x===w)||(isFinite(x)&&isFinite(w)&&Math.abs(x-w)<1e-4))===(i===k))})(()=>((x)=>2025/(2026*x*x-1))(-1e7),[0,2025,-Infinity,2025/2026],0)"
+    ],
+    "sach_dap_so": "A",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d2-I5",
+    "vai": "luyen",
+    "dang_bai": "NDB01180",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Dạng ∞-∞ chứa căn khi x→+∞; sách rút x, kết quả ±∞.",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "$\\lim\\limits_{x\\to+\\infty}(\\sqrt{1+2x^{2}}-x)$ bằng",
+    "lua_chon": [
+      "$0$",
+      "$+\\infty$",
+      "$\\sqrt{2}-1$",
+      "$-\\infty$"
+    ],
+    "dap_an": "B",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khi $x\\to+\\infty$ ta có $x>0$, nên đưa $x$ ra ngoài căn rồi xét dấu của thừa số còn lại.\n\n**Bước 1.** Nhận ra hiệu hai đại lượng cùng tiến tới vô cực nên chưa thể thay trực tiếp.\n\n**Bước 2.** Vì $x>0$, đưa $x$ ra ngoài dấu căn bằng $\\sqrt{x^{2}}=x$ rồi đặt $x$ làm thừa số chung.\n\n**Bước 3.** Tìm giới hạn của thừa số chứa căn khi $x\\to+\\infty$ và xét dấu của nó.\n\n**Bước 4.** Áp dụng quy tắc tích giữa $x\\to+\\infty$ và thừa số có giới hạn xác định để kết luận.\n\n**Phần 2. Trình bày**\n\nVới $x>0$ ta có $\\sqrt{1+2x^{2}}=x\\sqrt{\\dfrac{1}{x^{2}}+2}$ nên\n\n$\\sqrt{1+2x^{2}}-x=x(\\sqrt{\\dfrac{1}{x^{2}}+2}-1)$.\n\nTa có $\\lim\\limits_{x\\to+\\infty}x=+\\infty$ và $\\lim\\limits_{x\\to+\\infty}(\\sqrt{\\dfrac{1}{x^{2}}+2}-1)=\\sqrt{2}-1>0$.\n\nVậy $\\lim\\limits_{x\\to+\\infty}(\\sqrt{1+2x^{2}}-x)=+\\infty$.\n\nChọn B.",
+    "kiem": [
+      "((f,o,k)=>{const v=f();const w=v>1e6?Infinity:v<-1e6?-Infinity:v;return o.every((x,i)=>((x===w)||(isFinite(x)&&isFinite(w)&&Math.abs(x-w)<1e-4))===(i===k))})(()=>((x)=>Math.sqrt(1+2*x*x)-x)(1e7),[0,Infinity,Math.SQRT2-1,-Infinity],1)"
+    ],
+    "sach_dap_so": "B",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d2-I6",
+    "vai": "luyen",
+    "dang_bai": "NDB01171",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Phân thức 0/0, phân tích nhân tử triệt x-1.",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "$\\lim\\limits_{x\\to1}\\dfrac{x^{3}-x^{2}}{x-1}$ bằng",
+    "lua_chon": [
+      "$0$",
+      "$1$",
+      "$2$",
+      "$-\\infty$"
+    ],
+    "dap_an": "B",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thay $x=1$ cho tử và mẫu cùng bằng $0$, nên phân tích tử thành nhân tử để triệt nhân tử chung $x-1$.\n\n**Bước 1.** Thay $x=1$ vào tử và mẫu để nhận ra đây là dạng vô định $\\dfrac{0}{0}$.\n\n**Bước 2.** Đặt thừa số chung ở tử để xuất hiện nhân tử $x-1$.\n\n**Bước 3.** Rút gọn nhân tử chung với $x\\ne1$ rồi thay $x=1$ vào biểu thức còn lại.\n\n**Bước 4.** Đối chiếu giá trị tìm được với các phương án.\n\n**Phần 2. Trình bày**\n\nThay $x=1$: tử $=1-1=0$, mẫu $=0$ nên đây là dạng $\\dfrac{0}{0}$.\n\nVới $x\\ne1$: $\\dfrac{x^{3}-x^{2}}{x-1}=\\dfrac{x^{2}(x-1)}{x-1}=x^{2}$.\n\nDo đó $\\lim\\limits_{x\\to1}\\dfrac{x^{3}-x^{2}}{x-1}=\\lim\\limits_{x\\to1}x^{2}=1$.\n\nVậy giới hạn bằng $1$.\n\nChọn B.",
+    "kiem": [
+      "((f,o,k)=>{const v=f();const w=v>1e6?Infinity:v<-1e6?-Infinity:v;return o.every((x,i)=>((x===w)||(isFinite(x)&&isFinite(w)&&Math.abs(x-w)<1e-4))===(i===k))})(()=>((x)=>(x**3-x**2)/(x-1))(1+1e-6),[0,1,2,-Infinity],1)",
+      "((f,o,k)=>{const v=f();const w=v>1e6?Infinity:v<-1e6?-Infinity:v;return o.every((x,i)=>((x===w)||(isFinite(x)&&isFinite(w)&&Math.abs(x-w)<1e-4))===(i===k))})(()=>((x)=>(x**3-x**2)/(x-1))(1-1e-6),[0,1,2,-Infinity],1)"
+    ],
+    "sach_dap_so": "B",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d2-I8",
+    "vai": "luyen",
+    "dang_bai": "NDB01195",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm khoảng liên tục của hàm phân thức.",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Cho hàm số $f(x)=\\dfrac{x+2}{2x-3}$. Hàm số $f(x)$ liên tục trên khoảng",
+    "lua_chon": [
+      "$(-2;4)$",
+      "$(-\\infty;2)$",
+      "$(-2;1)$",
+      "$(0;+\\infty)$"
+    ],
+    "dap_an": "C",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm phân thức liên tục trên từng khoảng thuộc tập xác định, nên khoảng cần tìm không được chứa nghiệm của mẫu.\n\n**Bước 1.** Tìm điều kiện để mẫu khác $0$ và suy ra tập xác định của hàm số.\n\n**Bước 2.** Xác định các khoảng liên tục: hàm phân thức hữu tỉ liên tục trên từng khoảng của tập xác định.\n\n**Bước 3.** Với mỗi phương án, kiểm tra khoảng đó có chứa điểm làm mẫu bằng $0$ hay không.\n\n**Bước 4.** Chọn khoảng không chứa điểm đó.\n\n**Phần 2. Trình bày**\n\nHàm số xác định khi $2x-3\\ne0$, tức $x\\ne\\dfrac{3}{2}$. Tập xác định là $D=\\mathbb{R}\\setminus\\{\\dfrac{3}{2}\\}$.\n\nHàm số là phân thức hữu tỉ nên liên tục trên $(-\\infty;\\dfrac{3}{2})$ và $(\\dfrac{3}{2};+\\infty)$.\n\nCác khoảng $(-2;4)$, $(-\\infty;2)$, $(0;+\\infty)$ đều chứa $\\dfrac{3}{2}$ nên hàm số không liên tục trên các khoảng đó.\n\nKhoảng $(-2;1)$ không chứa $\\dfrac{3}{2}$ nên nằm trong $(-\\infty;\\dfrac{3}{2})$.\n\nVậy hàm số liên tục trên khoảng $(-2;1)$.\n\nChọn C.",
+    "kiem": [
+      "(()=>{const I=[[-2,4],[-Infinity,2],[-2,1],[0,Infinity]];const k=I.map(([a,b])=>a<1.5&&1.5<b);return JSON.stringify(k)===JSON.stringify([true,true,false,true])})()"
+    ],
+    "sach_dap_so": "C",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d2-I9",
+    "vai": "luyen",
+    "dang_bai": "NDB01163",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tổng cấp số nhân lùi vô hạn, công bội âm.",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Tính tổng $S=-1+\\dfrac{1}{10}-\\dfrac{1}{10^{2}}+\\dots+\\dfrac{(-1)^{n}}{10^{n-1}}+\\dots$",
+    "lua_chon": [
+      "$\\dfrac{9}{10}$",
+      "$-\\dfrac{10}{11}$",
+      "$\\dfrac{10}{11}$",
+      "$-\\dfrac{9}{10}$"
+    ],
+    "dap_an": "B",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các số hạng liên tiếp có tỉ số không đổi và trị tuyệt đối nhỏ hơn $1$, nên đây là tổng cấp số nhân lùi vô hạn.\n\n**Bước 1.** Xác định số hạng đầu $u_{1}$ của dãy các số hạng đang cộng.\n\n**Bước 2.** Tính công bội $q$ bằng thương của hai số hạng liên tiếp.\n\n**Bước 3.** Kiểm tra điều kiện $|q|<1$ để được phép dùng công thức tổng cấp số nhân lùi vô hạn.\n\n**Bước 4.** Thay $u_{1}$ và $q$ vào công thức $S=\\dfrac{u_{1}}{1-q}$ rồi đối chiếu phương án.\n\n**Phần 2. Trình bày**\n\nCác số hạng $-1;\\ \\dfrac{1}{10};\\ -\\dfrac{1}{10^{2}};\\ \\dots$ lập thành cấp số nhân có $u_{1}=-1$ và công bội $q=\\dfrac{\\frac{1}{10}}{-1}=-\\dfrac{1}{10}$.\n\nVì $|q|=\\dfrac{1}{10}<1$ nên đây là cấp số nhân lùi vô hạn.\n\n$S=\\dfrac{u_{1}}{1-q}=\\dfrac{-1}{1+\\dfrac{1}{10}}=\\dfrac{-1}{\\dfrac{11}{10}}=-\\dfrac{10}{11}$.\n\nVậy $S=-\\dfrac{10}{11}$.\n\nChọn B.",
+    "kiem": [
+      "(()=>{let s=0;for(let k=1;k<=60;k++)s+=(-1)**k/10**(k-1);const o=[9/10,-10/11,10/11,-9/10];return o.every((x,i)=>(Math.abs(x-s)<1e-9)===(i===1))})()"
+    ],
+    "sach_dap_so": "B",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d2-I10",
+    "vai": "luyen",
+    "dang_bai": "NDB01169",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Đa thức xác định tại điểm, thay trực tiếp tìm tham số.",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Cho hàm số $f(x)=x^{2}-x+m$ với $m$ là tham số thực. Tìm giá trị của tham số $m$ để $\\lim\\limits_{x\\to-7}f(x)=-3$.",
+    "lua_chon": [
+      "$53$",
+      "$-53$",
+      "$59$",
+      "$-59$"
+    ],
+    "dap_an": "D",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm đa thức xác định tại mọi điểm nên giới hạn tại $x=-7$ bằng giá trị hàm tại đó, từ đó lập phương trình theo $m$.\n\n**Bước 1.** Nhận ra $f(x)$ là hàm đa thức nên giới hạn tại một điểm bằng giá trị hàm tại điểm ấy.\n\n**Bước 2.** Thay $x=-7$ vào $f(x)$ để biểu diễn giới hạn theo $m$.\n\n**Bước 3.** Cho biểu thức vừa có bằng giá trị giới hạn đề bài cho và giải phương trình bậc nhất ẩn $m$.\n\n**Bước 4.** Đối chiếu giá trị $m$ tìm được với các phương án.\n\n**Phần 2. Trình bày**\n\nVì $f(x)$ là đa thức nên $\\lim\\limits_{x\\to-7}f(x)=f(-7)=(-7)^{2}-(-7)+m=56+m$.\n\nTheo đề: $56+m=-3$.\n\nSuy ra $m=-59$.\n\nVậy $m=-59$.\n\nChọn D.",
+    "kiem": [
+      "(()=>{const o=[53,-53,59,-59];return o.every((m,i)=>((49+7+m===-3)===(i===3)))})()"
+    ],
+    "sach_dap_so": "D",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d2-I11",
+    "vai": "luyen",
+    "dang_bai": "NDB01195",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm hàm không liên tục trên R trong các hàm sơ cấp.",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Hàm số nào sau đây không liên tục trên $\\mathbb{R}$?",
+    "lua_chon": [
+      "$f(x)=\\dfrac{x+1}{x^{2}+1}$",
+      "$f(x)=\\dfrac{x+1}{x-1}$",
+      "$f(x)=\\sin(x-\\dfrac{\\pi}{5})$",
+      "$f(x)=x^{3}-2x^{2}+x-7$"
+    ],
+    "dap_an": "B",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm sơ cấp liên tục trên toàn bộ tập xác định, nên hàm không liên tục trên $\\mathbb{R}$ là hàm có tập xác định khác $\\mathbb{R}$.\n\n**Bước 1.** Tìm tập xác định của từng hàm số trong bốn phương án.\n\n**Bước 2.** Với phân thức, kiểm tra mẫu có thể bằng $0$ hay không.\n\n**Bước 3.** Hàm đa thức và hàm lượng giác $\\sin$ xác định với mọi $x$ nên liên tục trên $\\mathbb{R}$.\n\n**Bước 4.** Chọn hàm có tập xác định không phải $\\mathbb{R}$.\n\n**Phần 2. Trình bày**\n\nPhương án A: $x^{2}+1>0$ với mọi $x$ nên tập xác định là $\\mathbb{R}$, hàm liên tục trên $\\mathbb{R}$.\n\nPhương án C và D: hàm $\\sin$ và hàm đa thức xác định và liên tục trên $\\mathbb{R}$.\n\nPhương án B: mẫu $x-1=0$ khi $x=1$ nên tập xác định là $\\mathbb{R}\\setminus\\{1\\}$, hàm số không liên tục trên $\\mathbb{R}$.\n\nVậy hàm số ở phương án B không liên tục trên $\\mathbb{R}$.\n\nChọn B.",
+    "kiem": [
+      "(()=>{const d=[x=>x*x+1,x=>x-1];return JSON.stringify(d.map(f=>[-3,-2,-1,0,1,2,3].some(x=>f(x)===0)))===\"[false,true]\"})()"
+    ],
+    "sach_dap_so": "B",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d2-I12",
+    "vai": "luyen",
+    "dang_bai": "NDB01191",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Liên tục tại 1 điểm, tham số chỉ ở một nhánh.",
+    "loai_cau": "trac_nghiem",
+    "noi_dung": "Tìm giá trị thực của tham số $m$ để hàm số $f(x)=\\begin{cases}\\dfrac{x^{2}-x-2}{x-2}&\\text{khi }x\\ne2\\\\ m&\\text{khi }x=2\\end{cases}$ liên tục tại $x=2$.",
+    "lua_chon": [
+      "$m=3$",
+      "$m=1$",
+      "$m=2$",
+      "$m=0$"
+    ],
+    "dap_an": "A",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm liên tục tại $x=2$ khi giới hạn tại $2$ bằng $f(2)$, nên tìm giới hạn của nhánh $x\\ne2$ trước.\n\n**Bước 1.** Viết điều kiện liên tục tại $x=2$: giới hạn của $f(x)$ khi $x\\to2$ bằng $f(2)$.\n\n**Bước 2.** Tính giới hạn của nhánh $x\\ne2$, đây là dạng $\\dfrac{0}{0}$ nên phân tích tử thành nhân tử.\n\n**Bước 3.** Rút gọn nhân tử $x-2$ rồi thay $x=2$ vào biểu thức còn lại.\n\n**Bước 4.** So giới hạn với $f(2)=m$ để tìm $m$.\n\n**Phần 2. Trình bày**\n\nVới $x\\ne2$: $\\dfrac{x^{2}-x-2}{x-2}=\\dfrac{(x-2)(x+1)}{x-2}=x+1$.\n\nDo đó $\\lim\\limits_{x\\to2}f(x)=\\lim\\limits_{x\\to2}(x+1)=3$ và $f(2)=m$.\n\nHàm số liên tục tại $x=2$ khi và chỉ khi $\\lim\\limits_{x\\to2}f(x)=f(2)$, tức $m=3$.\n\nVậy $m=3$.\n\nChọn A.",
+    "kiem": [
+      "((f,o,k)=>{const v=f();const w=v>1e6?Infinity:v<-1e6?-Infinity:v;return o.every((x,i)=>((x===w)||(isFinite(x)&&isFinite(w)&&Math.abs(x-w)<1e-4))===(i===k))})(()=>((x)=>(x*x-x-2)/(x-2))(2+1e-6),[3,1,2,0],0)",
+      "((f,o,k)=>{const v=f();const w=v>1e6?Infinity:v<-1e6?-Infinity:v;return o.every((x,i)=>((x===w)||(isFinite(x)&&isFinite(w)&&Math.abs(x-w)<1e-4))===(i===k))})(()=>((x)=>(x*x-x-2)/(x-2))(2-1e-6),[3,1,2,0],0)"
+    ],
+    "sach_dap_so": "A",
+    "ghi_chu": "Cuối lời giải sách có 3 dòng thừa (đồ thị cắt Ox tại 3 điểm) thuộc câu khác bị lẫn — bỏ qua."
+  },
+  {
+    "id": "nbv-ot-d2-II1",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho dãy số $(u_{n})$ với $u_{n}=(\\dfrac{1}{3})^{n}$. Các mệnh đề sau đúng hay sai?",
+    "menh_de": [
+      {
+        "noi_dung": "Số hạng đầu tiên của $(u_{n})$ bằng $\\dfrac{1}{3}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "$(u_{n})$ là một cấp số nhân với công bội $q=\\dfrac{1}{3}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Số hạng thứ $4$ bằng $\\dfrac{1}{12}$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Tổng của các số hạng của dãy số $(u_{n})$ nằm trong khoảng $(0;1)$.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dãy $u_{n}=(\\dfrac{1}{3})^{n}$ là cấp số nhân, nên số hạng đầu, công bội, số hạng thứ bốn và tổng đều tính từ công thức cấp số nhân.\n\n**Bước 1.** Ý a và ý c: thay giá trị $n$ cụ thể vào công thức tổng quát để tính số hạng.\n\n**Bước 2.** Ý b: lập thương $\\dfrac{u_{n+1}}{u_{n}}$ và xem thương đó có là hằng số không.\n\n**Bước 3.** Ý d: kiểm tra điều kiện $|q|<1$, dùng công thức tổng cấp số nhân lùi vô hạn rồi so với khoảng đã cho.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì $u_{1}=(\\dfrac{1}{3})^{1}=\\dfrac{1}{3}$.\n\nÝ b) Đúng vì $\\dfrac{u_{n+1}}{u_{n}}=\\dfrac{1}{3}$ với mọi $n\\ge1$, nên $(u_{n})$ là cấp số nhân có công bội $q=\\dfrac{1}{3}$.\n\nÝ c) Sai vì $u_{4}=(\\dfrac{1}{3})^{4}=\\dfrac{1}{81}\\ne\\dfrac{1}{12}$.\n\nÝ d) Đúng vì $|q|=\\dfrac{1}{3}<1$ nên tổng là $S=\\dfrac{u_{1}}{1-q}=\\dfrac{\\frac{1}{3}}{1-\\frac{1}{3}}=\\dfrac{1}{2}\\in(0;1)$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Đúng, Sai, Đúng.",
+    "kiem": [
+      "Math.abs((1/3)**1-1/3)<1e-12",
+      "Math.abs((1/3)**5/(1/3)**4-1/3)<1e-12&&Math.abs((1/3)**9/(1/3)**8-1/3)<1e-12",
+      "Math.abs((1/3)**4-1/81)<1e-12&&Math.abs((1/3)**4-1/12)>1e-3",
+      "(()=>{let s=0;for(let n=1;n<=60;n++)s+=(1/3)**n;return Math.abs(s-0.5)<1e-9&&s>0&&s<1})()"
+    ],
+    "sach_dap_so": "a) Đúng; b) Đúng; c) Sai; d) Đúng",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d2-II2",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Cho hàm số $f(x)=\\begin{cases}\\dfrac{\\sqrt{x+1}-2}{x-3}&\\text{khi }x>3\\\\ x+m&\\text{khi }x\\le3\\end{cases}$ với $m$ là tham số.",
+    "menh_de": [
+      {
+        "noi_dung": "Hàm số xác định trên $\\mathbb{R}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Giới hạn $\\lim\\limits_{x\\to8}f(x)=\\dfrac{1}{5}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Với $m=4$ thì hàm số có giới hạn tại điểm $x=3$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Có $2$ giá trị của tham số $m$ để $\\lim\\limits_{x\\to0}\\dfrac{f^{2}(x)+f(x)}{x}$ là một số hữu hạn.",
+        "dap_an": "D"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm cho bởi hai công thức nên mỗi ý chỉ dùng công thức của nhánh chứa điểm đang xét; riêng tại $x=3$ phải so hai giới hạn một bên.\n\n**Bước 1.** Ý a và ý b: xem mỗi nhánh có xác định không, rồi thay $x=8$ vào nhánh $x>3$.\n\n**Bước 2.** Ý c: tính giới hạn phải bằng cách nhân liên hợp ở tử, tính giới hạn trái bằng cách thay $x=3$ vào nhánh còn lại.\n\n**Bước 3.** Ý c: giới hạn tại $x=3$ chỉ tồn tại khi hai giới hạn một bên bằng nhau, từ đó xét $m=4$.\n\n**Bước 4.** Ý d: gần $x=0$ dùng nhánh $x+m$, để giới hạn hữu hạn thì tử phải triệt tiêu tại $x=0$.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì nhánh $x>3$ có mẫu $x-3\\ne0$ và biểu thức $\\sqrt{x+1}$ xác định, nhánh $x\\le3$ là đa thức, nên hàm số xác định trên $\\mathbb{R}$.\n\nÝ b) Đúng vì $8>3$ và hàm xác định tại $8$ nên $\\lim\\limits_{x\\to8}f(x)=\\dfrac{\\sqrt{9}-2}{8-3}=\\dfrac{1}{5}$.\n\nÝ c) Sai. Ta có $\\lim\\limits_{x\\to3^{+}}f(x)=\\lim\\limits_{x\\to3^{+}}\\dfrac{(x+1)-4}{(x-3)(\\sqrt{x+1}+2)}=\\lim\\limits_{x\\to3^{+}}\\dfrac{1}{\\sqrt{x+1}+2}=\\dfrac{1}{4}$ và $\\lim\\limits_{x\\to3^{-}}f(x)=3+m$.\n\nVới $m=4$: $3+m=7\\ne\\dfrac{1}{4}$ nên hai giới hạn một bên khác nhau, hàm số không có giới hạn tại $x=3$ (cần $m=-\\dfrac{11}{4}$).\n\nÝ d) Đúng. Gần $x=0$ ta có $f(x)=x+m$ nên $\\dfrac{f^{2}(x)+f(x)}{x}=\\dfrac{x^{2}+(2m+1)x+m^{2}+m}{x}$.\n\nGiới hạn hữu hạn khi và chỉ khi $m^{2}+m=0$, tức $m=0$ hoặc $m=-1$. Với $m=0$ giới hạn bằng $1$, với $m=-1$ giới hạn bằng $-1$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Đúng, Sai, Đúng.",
+    "kiem": [
+      "(()=>{const f=(x,m)=>x>3?(Math.sqrt(x+1)-2)/(x-3):x+m;return [-5,0,3,3.5,8,100].every(x=>Number.isFinite(f(x,1)))})()",
+      "Math.abs(((Math.sqrt(9)-2)/(8-3))-(1/5))<1e-3",
+      "(()=>{const R=(Math.sqrt(3+1e-6+1)-2)/1e-6;const L=3+4;return Math.abs(R-0.25)<1e-3&&Math.abs(L-R)>1&&Math.abs((3+(-11/4))-R)<1e-3})()",
+      "(()=>{const g=(m,x)=>((x+m)**2+(x+m))/x;const ok=[-3,-2,-1,0,1,2].filter(m=>m*m+m===0);return ok.length===2&&ok.every(m=>Math.abs(g(m,1e-6))<2&&Math.abs(Math.abs(g(m,1e-6))-1)<1e-3)&&[-3,-2,1,2].every(m=>Math.abs(g(m,1e-6))>1e3)})()"
+    ],
+    "sach_dap_so": "a) Đúng; b) Đúng; c) Sai; d) Đúng",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d2-II4",
+    "vai": "luyen",
+    "dang_bai": null,
+    "loai_cau": "dung_sai",
+    "noi_dung": "Một bảng giá cước taxi được cho như sau: giá mở cửa ($0{,}5$ km đầu) là $10000$ đồng, giá cước các km tiếp theo đến $30$ km là $13500$ đồng, giá cước từ km thứ $31$ là $11000$ đồng.",
+    "menh_de": [
+      {
+        "noi_dung": "Công thức hàm số mô tả số tiền khách phải trả theo quãng đường di chuyển là $f(x)=\\begin{cases}5000+13500(x-0{,}5)&\\text{khi }0{,}5<x\\le30\\\\ 403250+11000(x-30)&\\text{khi }x>30\\end{cases}$.",
+        "dap_an": "S"
+      },
+      {
+        "noi_dung": "Công thức hàm số mô tả số tiền khách phải trả theo quãng đường di chuyển là $f(x)=\\begin{cases}10000x&\\text{khi }x\\le0{,}5\\\\ 5000+13500(x-0{,}5)&\\text{khi }0{,}5<x\\le30\\\\ 403250+11000(x-30)&\\text{khi }x>30\\end{cases}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Hàm số $f(x)=\\begin{cases}10000x&\\text{khi }x\\le0{,}5\\\\ 5000+13500(x-0{,}5)&\\text{khi }0{,}5<x\\le30\\\\ 403250+11000(x-30)&\\text{khi }x>30\\end{cases}$ liên tục trên $\\mathbb{R}$.",
+        "dap_an": "D"
+      },
+      {
+        "noi_dung": "Khách hàng đi quãng đường $40$ km thì số tiền vị khách đó phải trả là $515000$ đồng.",
+        "dap_an": "S"
+      }
+    ],
+    "dap_an": null,
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lập hàm cước theo từng đoạn quãng đường, rồi kiểm tra liên tục bằng cách so giới hạn trái, giới hạn phải với giá trị hàm tại hai điểm chuyển đoạn.\n\n**Bước 1.** Ý a và ý b: xác định từng đoạn quãng đường và đơn giá của đoạn đó, rồi xem công thức đã cho có đủ các đoạn không.\n\n**Bước 2.** Ý c: chỉ cần xét tại hai điểm chuyển đoạn $x=0{,}5$ và $x=30$ vì mỗi đoạn là hàm bậc nhất.\n\n**Bước 3.** Ý c: tại mỗi điểm chuyển đoạn, tính giới hạn trái, giới hạn phải và giá trị hàm rồi so sánh.\n\n**Bước 4.** Ý d: dùng công thức của đoạn $x>30$ để tính số tiền cho quãng đường $40$ km.\n\n**Phần 2. Trình bày**\n\nLưu ý: đề mơ hồ. Bài giải hiểu $10000$ đồng là đơn giá mỗi km của $0{,}5$ km đầu (đi hết $0{,}5$ km trả $5000$ đồng), đúng như các công thức trong ý a), b), c). Nếu hiểu là trả trọn $10000$ đồng cho $0{,}5$ km đầu thì $f(30)=10000+13500\\cdot29{,}5=408250$, khi đó ý b) Sai, các ý còn lại không đổi.\n\nÝ a) Sai vì công thức chỉ cho $0{,}5<x\\le30$ và $x>30$, thiếu trường hợp $x\\le0{,}5$ nên chưa mô tả đầy đủ hàm số.\n\nÝ b) Đúng. Với $x\\le0{,}5$: $f(x)=10000x$ nên $f(0{,}5)=5000$. Với $0{,}5<x\\le30$: $f(x)=5000+13500(x-0{,}5)$ nên $f(30)=5000+13500\\cdot29{,}5=403250$. Với $x>30$: $f(x)=403250+11000(x-30)$.\n\nÝ c) Đúng. Tại $x=0{,}5$: $\\lim\\limits_{x\\to0{,}5^{-}}f(x)=10000\\cdot0{,}5=5000$, $\\lim\\limits_{x\\to0{,}5^{+}}f(x)=5000+13500\\cdot0=5000$ và $f(0{,}5)=5000$.\n\nTại $x=30$: $\\lim\\limits_{x\\to30^{-}}f(x)=5000+13500\\cdot29{,}5=403250$, $\\lim\\limits_{x\\to30^{+}}f(x)=403250+11000\\cdot0=403250$ và $f(30)=403250$.\n\nHai điểm chuyển đoạn đều liên tục, các đoạn còn lại là hàm bậc nhất nên $f$ liên tục trên $\\mathbb{R}$.\n\nÝ d) Sai vì $f(40)=403250+11000\\cdot(40-30)=513250\\ne515000$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Đúng, Đúng, Sai.",
+    "kiem": [
+      "(x=>x<=0.5?10000*x:x<=30?5000+13500*(x-0.5):403250+11000*(x-30))(0.4)===4000",
+      "(()=>{const f=(x=>x<=0.5?10000*x:x<=30?5000+13500*(x-0.5):403250+11000*(x-30));return f(0.5)===5000&&Math.abs(f(30)-(5000+13500*29.5))<1e-6&&f(30)===403250})()",
+      "(()=>{const f=(x=>x<=0.5?10000*x:x<=30?5000+13500*(x-0.5):403250+11000*(x-30));const e=1e-9;return Math.abs(f(0.5+e)-f(0.5))<1e-3&&Math.abs(f(0.5-e)-f(0.5))<1e-3&&Math.abs(f(30+e)-f(30))<1e-3&&Math.abs(f(30-e)-f(30))<1e-3})()",
+      "(x=>x<=0.5?10000*x:x<=30?5000+13500*(x-0.5):403250+11000*(x-30))(40)===513250&&(x=>x<=0.5?10000*x:x<=30?5000+13500*(x-0.5):403250+11000*(x-30))(40)!==515000"
+    ],
+    "sach_dap_so": "a) Sai; b) Đúng; c) Đúng; d) Sai",
+    "ghi_chu": "ĐỀ MƠ HỒ — CEO chọn cách hiểu. Theo 10000 đ/km (khớp đáp án sách): a S, b Đ, c Đ, d S (f(40)=513250). Theo trọn gói 10000 đ cho 0,5 km đầu (cách hiểu thường của \"giá mở cửa\", cũng là cách lời giải sách tự viết f=10000 khi 0<x≤0,5): f(30)=408250, f(40)=518250 ⇒ a S, b S, c Đ, d S — chỉ ý b đổi. Lời giải sách tự mâu thuẫn và in lỗi 403205 (đúng 403250), nhãn giới hạn tại x=30 ghi 0,5."
+  },
+  {
+    "id": "nbv-ot-d2-III1",
+    "vai": "luyen",
+    "dang_bai": "NDB01180",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Dạng ∞-∞ chứa căn khi x→-∞, nhân liên hợp, chú ý dấu.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính $\\lim\\limits_{x\\to-\\infty}(\\sqrt{x^{2}+x}+x)$.",
+    "dap_an": "-0,5",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đây là dạng $\\infty-\\infty$ nên nhân và chia với biểu thức liên hợp, chú ý $\\sqrt{x^{2}}=-x$ khi $x<0$.\n\n**Bước 1.** Nhận ra hai số hạng cùng tiến tới vô cực nên chưa thể thay trực tiếp.\n\n**Bước 2.** Nhân và chia biểu thức với liên hợp để bỏ căn ở tử.\n\n**Bước 3.** Vì $x\\to-\\infty$ nên $x<0$, đưa $x$ ra ngoài căn bằng $\\sqrt{x^{2}}=-x$ rồi đặt thừa số chung.\n\n**Bước 4.** Rút gọn thừa số chung và tính giới hạn của biểu thức còn lại.\n\n**Phần 2. Trình bày**\n\nNhân và chia với biểu thức liên hợp $\\sqrt{x^{2}+x}-x$ (khác $0$):\n\n$\\sqrt{x^{2}+x}+x=\\dfrac{(x^{2}+x)-x^{2}}{\\sqrt{x^{2}+x}-x}=\\dfrac{x}{\\sqrt{x^{2}+x}-x}$.\n\nKhi $x<0$: $\\sqrt{x^{2}+x}=|x|\\sqrt{1+\\dfrac{1}{x}}=-x\\sqrt{1+\\dfrac{1}{x}}$ nên mẫu bằng $-x(\\sqrt{1+\\dfrac{1}{x}}+1)$.\n\nDo đó $\\sqrt{x^{2}+x}+x=\\dfrac{x}{-x(\\sqrt{1+\\frac{1}{x}}+1)}=\\dfrac{-1}{\\sqrt{1+\\frac{1}{x}}+1}$.\n\nVì $\\lim\\limits_{x\\to-\\infty}\\dfrac{1}{x}=0$ nên giới hạn bằng $\\dfrac{-1}{1+1}=-\\dfrac{1}{2}=-0{,}5$.\n\nVậy $\\lim\\limits_{x\\to-\\infty}(\\sqrt{x^{2}+x}+x)=-0{,}5$.",
+    "kiem": [
+      "Math.abs((((x)=>Math.sqrt(x*x+x)+x)(-1e6))-(-0.5))<1e-3"
+    ],
+    "sach_dap_so": "-0,5",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d2-III2",
+    "vai": "luyen",
+    "dang_bai": "NDB01173",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Dạng 0/0 có hai căn thức, tách thành hiệu rồi liên hợp.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tính $\\lim\\limits_{x\\to0}\\dfrac{2\\sqrt{1+x}+\\sqrt{x+4}-4}{x}$.",
+    "dap_an": "1,25",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thay $x=0$ cho tử bằng $0$ nên tách tử thành hai hiệu, mỗi hiệu chứa một căn, rồi nhân liên hợp từng phần.\n\n**Bước 1.** Thay $x=0$ để nhận ra dạng $\\dfrac{0}{0}$ và thấy mỗi căn nhận giá trị nguyên tại $x=0$.\n\n**Bước 2.** Tách hằng số $-4$ thành hai phần để tử là tổng của hai hiệu, mỗi hiệu có một căn.\n\n**Bước 3.** Nhân liên hợp riêng từng hiệu để triệt $x$ ở mẫu.\n\n**Bước 4.** Thay $x=0$ vào hai biểu thức còn lại rồi cộng.\n\n**Phần 2. Trình bày**\n\nThay $x=0$: tử $=2\\cdot1+2-4=0$, mẫu $=0$ nên đây là dạng $\\dfrac{0}{0}$.\n\n$\\dfrac{2\\sqrt{1+x}+\\sqrt{x+4}-4}{x}=\\dfrac{2(\\sqrt{1+x}-1)}{x}+\\dfrac{\\sqrt{x+4}-2}{x}$.\n\nVới $x\\ne0$: $\\dfrac{\\sqrt{1+x}-1}{x}=\\dfrac{1}{\\sqrt{1+x}+1}$ và $\\dfrac{\\sqrt{x+4}-2}{x}=\\dfrac{1}{\\sqrt{x+4}+2}$.\n\nDo đó giới hạn bằng $\\lim\\limits_{x\\to0}[\\dfrac{2}{\\sqrt{1+x}+1}+\\dfrac{1}{\\sqrt{x+4}+2}]=\\dfrac{2}{2}+\\dfrac{1}{4}=\\dfrac{5}{4}=1{,}25$.\n\nVậy giới hạn bằng $1{,}25$.",
+    "kiem": [
+      "Math.abs((((x)=>(2*Math.sqrt(1+x)+Math.sqrt(x+4)-4)/x)(1e-6))-(1.25))<1e-3",
+      "Math.abs((((x)=>(2*Math.sqrt(1+x)+Math.sqrt(x+4)-4)/x)(-1e-6))-(1.25))<1e-3"
+    ],
+    "sach_dap_so": "1,25",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d2-III3",
+    "vai": "luyen",
+    "dang_bai": "NDB01169",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Đa thức xác định tại 2, thay trực tiếp để tìm tham số.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tìm giá trị của tham số $m$ để $\\lim\\limits_{x\\to2}(x^{2}-mx+3m-1)=3$.",
+    "dap_an": "0",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức là đa thức theo $x$ nên giới hạn tại $x=2$ chính là giá trị tại $x=2$, từ đó lập phương trình theo $m$.\n\n**Bước 1.** Nhận ra biểu thức là đa thức theo $x$ nên giới hạn bằng giá trị tại điểm.\n\n**Bước 2.** Thay $x=2$ vào và rút gọn để biểu diễn giới hạn theo $m$.\n\n**Bước 3.** Cho biểu thức vừa có bằng giá trị đề bài cho rồi giải phương trình bậc nhất ẩn $m$.\n\n**Phần 2. Trình bày**\n\nVì biểu thức là đa thức theo $x$ nên $\\lim\\limits_{x\\to2}(x^{2}-mx+3m-1)=2^{2}-2m+3m-1=m+3$.\n\nTheo đề: $m+3=3$.\n\nSuy ra $m=0$.\n\nVậy $m=0$.",
+    "kiem": [
+      "(()=>{const g=m=>4-2*m+3*m-1;return g(0)===3&&[1,-1,2,3].every(m=>g(m)!==3)})()"
+    ],
+    "sach_dap_so": "0",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d2-III4",
+    "vai": "luyen",
+    "dang_bai": "NDB01193",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Liên tục tại điểm, tham số xuất hiện ở cả hai nhánh.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tìm giá trị của tham số $m$ để hàm số $f(x)=\\begin{cases}x^{2}+2x-2m&\\text{khi }x\\ne1\\\\ 2x+m&\\text{khi }x=1\\end{cases}$ liên tục tại $x_{0}=1$ (làm tròn kết quả đến hàng phần trăm).",
+    "dap_an": "0,33",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm liên tục tại $x_{0}=1$ khi giới hạn của nhánh $x\\ne1$ bằng giá trị $f(1)$ của nhánh còn lại, cả hai đều chứa $m$.\n\n**Bước 1.** Viết điều kiện liên tục tại $x_{0}=1$ là giới hạn bằng giá trị hàm tại điểm đó.\n\n**Bước 2.** Tính giới hạn của nhánh $x\\ne1$ bằng cách thay $x=1$ vào đa thức.\n\n**Bước 3.** Tính giá trị $f(1)$ bằng cách dùng công thức của nhánh $x=1$.\n\n**Bước 4.** Cho hai kết quả bằng nhau, giải phương trình ẩn $m$ rồi làm tròn theo yêu cầu.\n\n**Phần 2. Trình bày**\n\nTa có $\\lim\\limits_{x\\to1}f(x)=\\lim\\limits_{x\\to1}(x^{2}+2x-2m)=3-2m$ và $f(1)=2\\cdot1+m=2+m$.\n\nHàm số liên tục tại $x_{0}=1$ khi và chỉ khi $3-2m=2+m$.\n\nSuy ra $3m=1$, tức $m=\\dfrac{1}{3}\\approx0{,}33$.\n\nVậy $m\\approx0{,}33$.",
+    "kiem": [
+      "(()=>{const m=1/3;return Math.abs((3-2*m)-(2+m))<1e-12&&Math.round(m*100)/100===0.33})()"
+    ],
+    "sach_dap_so": "0,33",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-ot-d2-III6",
+    "vai": "luyen",
+    "dang_bai": "NDB01201",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Phương trình chứa tham số có nghiệm, dùng giá trị trung gian.",
+    "loai_cau": "tra_loi_ngan",
+    "noi_dung": "Tìm tất cả các giá trị nguyên của tham số $m$ trong $[-2;9]$ sao cho phương trình $(m^{2}-5m+4)x^{5}+x^{2}+4=0$ có nghiệm.",
+    "dap_an": "10",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Xét riêng trường hợp hệ số của $x^{5}$ bằng $0$, còn lại là đa thức bậc lẻ nên đổi dấu và có nghiệm nhờ tính liên tục.\n\n**Bước 1.** Đặt $f(x)$ là vế trái và tìm các giá trị $m$ làm hệ số của $x^{5}$ bằng $0$.\n\n**Bước 2.** Với các giá trị $m$ đó, giải trực tiếp phương trình còn lại xem có nghiệm không.\n\n**Bước 3.** Với các giá trị $m$ còn lại, tính giới hạn của $f(x)$ khi $x\\to\\pm\\infty$ để tìm hai điểm mà $f$ có giá trị trái dấu.\n\n**Bước 4.** Dùng tính liên tục của đa thức để kết luận có nghiệm, rồi đếm các giá trị nguyên của $m$ trong $[-2;9]$.\n\n**Phần 2. Trình bày**\n\nĐặt $f(x)=(m^{2}-5m+4)x^{5}+x^{2}+4$, liên tục trên $\\mathbb{R}$.\n\nTrường hợp $m^{2}-5m+4=0$, tức $m=1$ hoặc $m=4$: phương trình trở thành $x^{2}+4=0$, vô nghiệm.\n\nTrường hợp $m^{2}-5m+4>0$: $\\lim\\limits_{x\\to+\\infty}f(x)=+\\infty$ và $\\lim\\limits_{x\\to-\\infty}f(x)=-\\infty$ nên tồn tại $a<0<b$ với $f(a)<0<f(b)$.\n\nTrường hợp $m^{2}-5m+4<0$: $\\lim\\limits_{x\\to+\\infty}f(x)=-\\infty$ và $\\lim\\limits_{x\\to-\\infty}f(x)=+\\infty$ nên tồn tại $a<0<b$ với $f(a)>0>f(b)$.\n\nCả hai trường hợp đều có $f(a)\\cdot f(b)<0$ và $f$ liên tục trên $[a;b]$ nên phương trình có ít nhất một nghiệm.\n\nVậy phương trình có nghiệm khi $m\\ne1$ và $m\\ne4$. Các giá trị nguyên của $m$ trong $[-2;9]$ là $-2;-1;0;2;3;5;6;7;8;9$, tất cả có $10$ giá trị.",
+    "kiem": [
+      "[-2,-1,0,1,2,3,4,5,6,7,8,9].filter(m=>{const c=m*m-5*m+4;const f=x=>c*x**5+x*x+4;return f(-1e6)*f(1e6)<0}).length===10"
+    ],
+    "sach_dap_so": "10",
+    "ghi_chu": "Hình mất ở \"[[img:image109.wmf]]\" được hiểu là ký hiệu m (phương trình chứa m)."
+  }
+]

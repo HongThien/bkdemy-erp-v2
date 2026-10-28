@@ -1,0 +1,1094 @@
+[
+  {
+    "id": "nbv-b2-f-1a",
+    "vai": "luyen",
+    "dang_bai": "NDB01169",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Hàm xác định tại điểm, thay trực tiếp.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to-3}\\bigg|\\dfrac{(x+1)(2-x)}{x-1}\\bigg|$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số trong dấu giá trị tuyệt đối xác định tại điểm đang xét, nên chỉ cần thay trực tiếp giá trị của $x$.\n\n**Bước 1.** Kiểm tra mẫu thức của phân thức có khác $0$ tại điểm đang xét để chắc hàm số xác định.\n\n**Bước 2.** Thay giá trị của $x$ vào tử và mẫu để tính phân thức bên trong dấu giá trị tuyệt đối.\n\n**Bước 3.** Lấy giá trị tuyệt đối của số vừa tính được để ra giới hạn cần tìm.\n\n**Phần 2. Trình bày**\n\nHàm số xác định tại $x=-3$ vì mẫu bằng $-3-1=-4\\ne0$.\n\n$\\lim\\limits_{x\\to-3}\\bigg|\\dfrac{(x+1)(2-x)}{x-1}\\bigg|=\\bigg|\\dfrac{(-3+1)(2+3)}{-3-1}\\bigg|$\n\n$=\\bigg|\\dfrac{-10}{-4}\\bigg|=\\dfrac52$.\n\nVậy giới hạn bằng $\\dfrac52$.",
+    "kiem": [
+      "(()=>{const f=x=>Math.abs((x+1)*(2-x)/(x-1));return Math.abs(f(-3+0.000001)-(5/2))<0.001&&Math.abs(f(-3-0.000001)-(5/2))<0.001})()"
+    ],
+    "sach_dap_so": "5/2",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-1b",
+    "vai": "luyen",
+    "dang_bai": "NDB01169",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Hàm xác định tại điểm, thay trực tiếp.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to1}\\dfrac{\\sqrt{2x^2+x-1}}{|x+1|}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số xác định tại $x=1$ nên giới hạn bằng giá trị của hàm số tại điểm đó.\n\n**Bước 1.** Kiểm tra biểu thức dưới căn không âm và mẫu khác $0$ tại điểm đang xét.\n\n**Bước 2.** Thay $x=1$ vào tử có căn và vào mẫu có giá trị tuyệt đối.\n\n**Bước 3.** Rút gọn kết quả về dạng phân số hoặc căn gọn nhất.\n\n**Phần 2. Trình bày**\n\nTại $x=1$: $2x^2+x-1=2>0$ và $|x+1|=2\\ne0$ nên hàm số xác định.\n\n$\\lim\\limits_{x\\to1}\\dfrac{\\sqrt{2x^2+x-1}}{|x+1|}=\\dfrac{\\sqrt{2\\cdot1^2+1-1}}{|1+1|}=\\dfrac{\\sqrt2}{2}$.\n\nVậy giới hạn bằng $\\dfrac{\\sqrt2}{2}$.",
+    "kiem": [
+      "(()=>{const f=x=>Math.sqrt(2*x*x+x-1)/Math.abs(x+1);return Math.abs(f(1+0.000001)-(Math.SQRT2/2))<0.001&&Math.abs(f(1-0.000001)-(Math.SQRT2/2))<0.001})()"
+    ],
+    "sach_dap_so": "sqrt2/2",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-2a",
+    "vai": "luyen",
+    "dang_bai": "NDB01171",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Phân thức hữu tỉ dạng 0/0, phân tích nhân tử.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to-2}\\dfrac{x^4-16}{x^3+2x^2}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thay $x=-2$ cho dạng $\\dfrac00$, nên phân tích tử và mẫu thành nhân tử rồi triệt nhân tử chung $x+2$.\n\n**Bước 1.** Thay $x=-2$ vào tử và mẫu để nhận ra dạng vô định $\\dfrac00$.\n\n**Bước 2.** Phân tích tử bằng hiệu hai bình phương và đặt $x^2$ làm nhân tử chung ở mẫu.\n\n**Bước 3.** Triệt nhân tử chung $x+2$ rồi thay $x=-2$ vào biểu thức còn lại.\n\n**Phần 2. Trình bày**\n\nThay $x=-2$: tử $=16-16=0$, mẫu $=-8+8=0$ nên đây là dạng $\\dfrac00$.\n\n$x^4-16=(x^2-4)(x^2+4)=(x-2)(x+2)(x^2+4)$ và $x^3+2x^2=x^2(x+2)$.\n\nVới $x\\ne-2$: $\\dfrac{x^4-16}{x^3+2x^2}=\\dfrac{(x-2)(x^2+4)}{x^2}$.\n\n$\\lim\\limits_{x\\to-2}\\dfrac{(x-2)(x^2+4)}{x^2}=\\dfrac{(-4)\\cdot8}{4}=-8$.\n\nVậy giới hạn bằng $-8$.",
+    "kiem": [
+      "(()=>{const f=x=>(x**4-16)/(x**3+2*x*x);return Math.abs(f(-2+0.000001)-(-8))<0.001&&Math.abs(f(-2-0.000001)-(-8))<0.001})()"
+    ],
+    "sach_dap_so": "-8",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-2b",
+    "vai": "luyen",
+    "dang_bai": "NDB01171",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Phân thức hữu tỉ dạng 0/0, phân tích nhân tử.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to-4}\\dfrac{x^2+3x-4}{x^2+4x}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu cùng triệt tiêu tại $x=-4$, nên phân tích nhân tử và triệt nhân tử $x+4$.\n\n**Bước 1.** Thay $x=-4$ để kiểm tra tử và mẫu cùng bằng $0$.\n\n**Bước 2.** Phân tích tam thức ở tử thành tích hai nhị thức và đặt $x$ làm nhân tử chung ở mẫu.\n\n**Bước 3.** Triệt nhân tử chung rồi thay $x=-4$ vào phân thức còn lại.\n\n**Phần 2. Trình bày**\n\nThay $x=-4$: tử $=16-12-4=0$, mẫu $=16-16=0$ nên là dạng $\\dfrac00$.\n\n$x^2+3x-4=(x+4)(x-1)$ và $x^2+4x=x(x+4)$.\n\nVới $x\\ne-4$: $\\dfrac{x^2+3x-4}{x^2+4x}=\\dfrac{x-1}{x}$.\n\n$\\lim\\limits_{x\\to-4}\\dfrac{x-1}{x}=\\dfrac{-5}{-4}=\\dfrac54$.\n\nVậy giới hạn bằng $\\dfrac54$.",
+    "kiem": [
+      "(()=>{const f=x=>(x*x+3*x-4)/(x*x+4*x);return Math.abs(f(-4+0.000001)-(5/4))<0.001&&Math.abs(f(-4-0.000001)-(5/4))<0.001})()"
+    ],
+    "sach_dap_so": "5/4",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-2c",
+    "vai": "luyen",
+    "dang_bai": "NDB01171",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Phân thức hữu tỉ dạng 0/0, phân tích nhân tử.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to1}\\dfrac{x^3-1}{x(x+5)-6}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khai triển mẫu rồi phân tích cả tử và mẫu có nhân tử $x-1$ để triệt tiêu.\n\n**Bước 1.** Khai triển mẫu thành đa thức bậc hai và thay $x=1$ để nhận ra dạng $\\dfrac00$.\n\n**Bước 2.** Phân tích tử bằng hiệu hai lập phương và mẫu thành tích hai nhị thức.\n\n**Bước 3.** Triệt nhân tử $x-1$ rồi thay $x=1$ vào biểu thức còn lại.\n\n**Phần 2. Trình bày**\n\nMẫu $x(x+5)-6=x^2+5x-6$. Thay $x=1$: tử $=0$, mẫu $=0$ nên là dạng $\\dfrac00$.\n\n$x^3-1=(x-1)(x^2+x+1)$ và $x^2+5x-6=(x-1)(x+6)$.\n\nVới $x\\ne1$: $\\dfrac{x^3-1}{x^2+5x-6}=\\dfrac{x^2+x+1}{x+6}$.\n\n$\\lim\\limits_{x\\to1}\\dfrac{x^2+x+1}{x+6}=\\dfrac{3}{7}$.\n\nVậy giới hạn bằng $\\dfrac37$.",
+    "kiem": [
+      "(()=>{const f=x=>(x**3-1)/(x*(x+5)-6);return Math.abs(f(1+0.000001)-(3/7))<0.001&&Math.abs(f(1-0.000001)-(3/7))<0.001})()"
+    ],
+    "sach_dap_so": "3/7",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-2d",
+    "vai": "luyen",
+    "dang_bai": "NDB01171",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Phân thức hữu tỉ dạng 0/0, phân tích nhân tử.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to-5}\\dfrac{x^2+2x-15}{x+5}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử triệt tiêu tại $x=-5$ nên có nhân tử $x+5$ để rút gọn với mẫu.\n\n**Bước 1.** Thay $x=-5$ vào tử và mẫu để nhận ra dạng vô định $\\dfrac00$.\n\n**Bước 2.** Phân tích tam thức bậc hai ở tử thành tích có nhân tử $x+5$.\n\n**Bước 3.** Triệt nhân tử chung rồi thay $x=-5$ vào kết quả rút gọn.\n\n**Phần 2. Trình bày**\n\nThay $x=-5$: tử $=25-10-15=0$, mẫu $=0$ nên là dạng $\\dfrac00$.\n\n$x^2+2x-15=(x+5)(x-3)$.\n\nVới $x\\ne-5$: $\\dfrac{x^2+2x-15}{x+5}=x-3$.\n\n$\\lim\\limits_{x\\to-5}(x-3)=-8$.\n\nVậy giới hạn bằng $-8$.",
+    "kiem": [
+      "(()=>{const f=x=>(x*x+2*x-15)/(x+5);return Math.abs(f(-5+0.000001)-(-8))<0.001&&Math.abs(f(-5-0.000001)-(-8))<0.001})()"
+    ],
+    "sach_dap_so": "-8",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-2e",
+    "vai": "luyen",
+    "dang_bai": "NDB01171",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Tổng n số hạng, tách từng nhóm x^k-1 rồi triệt x-1.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to1}\\dfrac{x+x^2+\\dots+x^n-n}{x-1}$ (với $n$ là số nguyên dương).",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tách $-n$ thành $n$ số $-1$ để ghép với từng số hạng, mỗi nhóm $x^k-1$ chia hết cho $x-1$.\n\n**Bước 1.** Thay $x=1$ để nhận ra dạng vô định $\\dfrac00$, rồi viết tử thành tổng các nhóm $x^k-1$.\n\n**Bước 2.** Mỗi nhóm $x^k-1$ đều chia hết cho $x-1$ nên viết thương của nhóm đó thành tổng các luỹ thừa.\n\n**Bước 3.** Thay $x=1$ vào tổng các thương rồi cộng lại bằng công thức tổng của cấp số cộng.\n\n**Phần 2. Trình bày**\n\nThay $x=1$: tử $=n-n=0$, mẫu $=0$ nên là dạng $\\dfrac00$.\n\nTử $=(x-1)+(x^2-1)+\\dots+(x^n-1)$.\n\nVới $x\\ne1$: $\\dfrac{x^k-1}{x-1}=x^{k-1}+x^{k-2}+\\dots+x+1$, gồm $k$ số hạng.\n\nDo đó thương của biểu thức đã cho bằng $1+(x+1)+(x^2+x+1)+\\dots+(x^{n-1}+\\dots+x+1)$.\n\nKhi $x\\to1$ thì nhóm thứ $k$ có giới hạn $k$, nên giới hạn cần tìm là $1+2+\\dots+n=\\dfrac{n(n+1)}{2}$.\n\nVậy giới hạn bằng $\\dfrac{n(n+1)}{2}$.",
+    "kiem": [
+      "(()=>{const f=x=>(x+x**2+x**3+x**4-4)/(x-1);return Math.abs(f(1+0.000001)-(10))<0.001&&Math.abs(f(1-0.000001)-(10))<0.001})()",
+      "(()=>{const f=x=>(x+x**2+x**3+x**4+x**5+x**6-6)/(x-1);return Math.abs(f(1+0.000001)-(21))<0.001&&Math.abs(f(1-0.000001)-(21))<0.001})()"
+    ],
+    "sach_dap_so": "n(n+1)/2",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-3a",
+    "vai": "luyen",
+    "dang_bai": "NDB01172",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một căn thức, nhân liên hợp.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to0}\\dfrac{\\sqrt{4+x}-2}{4x}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử có một căn thức và tử, mẫu cùng triệt tiêu, nên nhân cả tử và mẫu với biểu thức liên hợp của tử.\n\n**Bước 1.** Thay $x=0$ để nhận ra dạng vô định $\\dfrac00$.\n\n**Bước 2.** Nhân tử và mẫu với liên hợp của tử để mất căn và xuất hiện nhân tử $x$.\n\n**Bước 3.** Triệt $x$ rồi thay $x=0$ vào biểu thức còn lại.\n\n**Phần 2. Trình bày**\n\nThay $x=0$: tử $=\\sqrt4-2=0$, mẫu $=0$ nên là dạng $\\dfrac00$.\n\nNhân tử và mẫu với $\\sqrt{4+x}+2>0$. Với $x\\ne0$:\n\n$\\dfrac{\\sqrt{4+x}-2}{4x}=\\dfrac{(4+x)-4}{4x(\\sqrt{4+x}+2)}=\\dfrac{1}{4(\\sqrt{4+x}+2)}$.\n\n$\\lim\\limits_{x\\to0}\\dfrac{1}{4(\\sqrt{4+x}+2)}=\\dfrac{1}{4\\cdot4}=\\dfrac1{16}$.\n\nVậy giới hạn bằng $\\dfrac1{16}$.",
+    "kiem": [
+      "(()=>{const f=x=>(Math.sqrt(4+x)-2)/(4*x);return Math.abs(f(0+0.000001)-(1/16))<0.001&&Math.abs(f(0-0.000001)-(1/16))<0.001})()"
+    ],
+    "sach_dap_so": "1/16",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-3b",
+    "vai": "luyen",
+    "dang_bai": "NDB01173",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Căn bậc ba, liên hợp bậc ba.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to1}\\dfrac{\\sqrt[3]{x+7}-2}{x-1}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử chứa căn bậc ba nên dùng hằng đẳng thức $a-b=\\dfrac{a^3-b^3}{a^2+ab+b^2}$ để làm mất căn.\n\n**Bước 1.** Thay $x=1$ để nhận ra dạng $\\dfrac00$ và đặt $a=\\sqrt[3]{x+7}$, $b=2$.\n\n**Bước 2.** Nhân tử và mẫu với $a^2+ab+b^2$ để tử thành $a^3-b^3$, tức là một nhị thức bậc nhất.\n\n**Bước 3.** Triệt nhân tử $x-1$ rồi thay $x=1$ vào phần còn lại.\n\n**Phần 2. Trình bày**\n\nThay $x=1$: tử $=\\sqrt[3]{8}-2=0$, mẫu $=0$ nên là dạng $\\dfrac00$.\n\nĐặt $a=\\sqrt[3]{x+7}$, $b=2$; nhân tử và mẫu với $a^2+ab+b^2>0$.\n\nVới $x\\ne1$: $\\dfrac{a-b}{x-1}=\\dfrac{a^3-b^3}{(x-1)(a^2+ab+b^2)}=\\dfrac{(x+7)-8}{(x-1)(a^2+ab+b^2)}=\\dfrac{1}{a^2+ab+b^2}$.\n\nKhi $x\\to1$ thì $a\\to2$ nên $a^2+ab+b^2\\to4+4+4=12$.\n\nVậy giới hạn bằng $\\dfrac1{12}$.",
+    "kiem": [
+      "(()=>{const f=x=>(Math.cbrt(x+7)-2)/(x-1);return Math.abs(f(1+0.000001)-(1/12))<0.001&&Math.abs(f(1-0.000001)-(1/12))<0.001})()"
+    ],
+    "sach_dap_so": "1/12",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-4a",
+    "vai": "luyen",
+    "dang_bai": "NDB01173",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Hai căn thức, nhân liên hợp cả tử và mẫu.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to2}\\dfrac{\\sqrt{2x+5}-3}{\\sqrt{x+2}-2}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả tử và mẫu đều có một căn thức triệt tiêu tại $x=2$, nên nhân liên hợp cho cả hai rồi triệt $x-2$.\n\n**Bước 1.** Thay $x=2$ để nhận ra dạng vô định $\\dfrac00$.\n\n**Bước 2.** Nhân tử và mẫu với liên hợp của tử và liên hợp của mẫu để cả hai thành nhị thức bậc nhất.\n\n**Bước 3.** Triệt nhân tử $x-2$ rồi thay $x=2$ vào phần còn lại.\n\n**Phần 2. Trình bày**\n\nThay $x=2$: tử $=\\sqrt9-3=0$, mẫu $=\\sqrt4-2=0$ nên là dạng $\\dfrac00$.\n\nNhân tử và mẫu với $(\\sqrt{2x+5}+3)(\\sqrt{x+2}+2)>0$. Với $x\\ne2$:\n\n$\\dfrac{\\sqrt{2x+5}-3}{\\sqrt{x+2}-2}=\\dfrac{(2x+5-9)(\\sqrt{x+2}+2)}{(x+2-4)(\\sqrt{2x+5}+3)}=\\dfrac{2(x-2)(\\sqrt{x+2}+2)}{(x-2)(\\sqrt{2x+5}+3)}=\\dfrac{2(\\sqrt{x+2}+2)}{\\sqrt{2x+5}+3}$.\n\n$\\lim\\limits_{x\\to2}\\dfrac{2(\\sqrt{x+2}+2)}{\\sqrt{2x+5}+3}=\\dfrac{2\\cdot4}{6}=\\dfrac43$.\n\nVậy giới hạn bằng $\\dfrac43$.",
+    "kiem": [
+      "(()=>{const f=x=>(Math.sqrt(2*x+5)-3)/(Math.sqrt(x+2)-2);return Math.abs(f(2+0.000001)-(4/3))<0.001&&Math.abs(f(2-0.000001)-(4/3))<0.001})()"
+    ],
+    "sach_dap_so": "4/3",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-4b",
+    "vai": "luyen",
+    "dang_bai": "NDB01173",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Tách x^3-1 và căn rồi liên hợp từng phần.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to1}\\dfrac{x^3-\\sqrt{3x-2}}{x-1}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử triệt tiêu tại $x=1$, nên tách thành hai nhóm $x^3-1$ và $1-\\sqrt{3x-2}$ rồi xử lý riêng từng nhóm.\n\n**Bước 1.** Thay $x=1$ để nhận ra dạng $\\dfrac00$ và tách tử thành $(x^3-1)-(\\sqrt{3x-2}-1)$.\n\n**Bước 2.** Nhóm đa thức phân tích bằng hiệu hai lập phương, nhóm căn nhân liên hợp.\n\n**Bước 3.** Triệt nhân tử $x-1$ ở cả hai nhóm rồi thay $x=1$ và trừ hai kết quả.\n\n**Phần 2. Trình bày**\n\nThay $x=1$: tử $=1-1=0$, mẫu $=0$ nên là dạng $\\dfrac00$.\n\nVới $x\\ne1$: $\\dfrac{x^3-\\sqrt{3x-2}}{x-1}=\\dfrac{x^3-1}{x-1}-\\dfrac{\\sqrt{3x-2}-1}{x-1}$.\n\n$\\dfrac{x^3-1}{x-1}=x^2+x+1$ và $\\dfrac{\\sqrt{3x-2}-1}{x-1}=\\dfrac{3x-3}{(x-1)(\\sqrt{3x-2}+1)}=\\dfrac{3}{\\sqrt{3x-2}+1}$.\n\nDo đó $\\lim\\limits_{x\\to1}[(x^2+x+1)-\\dfrac{3}{\\sqrt{3x-2}+1}]=3-\\dfrac32=\\dfrac32$.\n\nVậy giới hạn bằng $\\dfrac32$.",
+    "kiem": [
+      "(()=>{const f=x=>(x**3-Math.sqrt(3*x-2))/(x-1);return Math.abs(f(1+0.000001)-(3/2))<0.001&&Math.abs(f(1-0.000001)-(3/2))<0.001})()"
+    ],
+    "sach_dap_so": "3/2",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-5a",
+    "vai": "luyen",
+    "dang_bai": "NDB01173",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Căn bậc bốn và bậc ba cùng biểu thức, liên hợp.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to-1}\\dfrac{\\sqrt[4]{x+2}-1}{\\sqrt[3]{x+2}-1}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đặt $u=x+2$ thì $u\\to1$; mỗi căn trừ $1$ đều được viết thành một phân thức có tử là $u-1$ bằng liên hợp.\n\n**Bước 1.** Đặt $u=x+2$ để đưa về giới hạn khi $u\\to1$ và nhận ra dạng $\\dfrac00$.\n\n**Bước 2.** Viết tử qua liên hợp bậc hai kép và mẫu qua liên hợp bậc ba, để cả hai cùng có tử là $u-1$.\n\n**Bước 3.** Triệt $u-1$ rồi thay $u=1$ vào thương còn lại.\n\n**Phần 2. Trình bày**\n\nĐặt $u=x+2$, khi $x\\to-1$ thì $u\\to1$ và $u>0$ gần $1$. Tử và mẫu đều bằng $0$ tại $u=1$ nên là dạng $\\dfrac00$.\n\n$\\sqrt[4]{u}-1=\\dfrac{(\\sqrt[4]{u}-1)(\\sqrt[4]{u}+1)(\\sqrt{u}+1)}{(\\sqrt[4]{u}+1)(\\sqrt{u}+1)}=\\dfrac{u-1}{(\\sqrt[4]{u}+1)(\\sqrt{u}+1)}$.\n\n$\\sqrt[3]{u}-1=\\dfrac{u-1}{\\sqrt[3]{u^2}+\\sqrt[3]{u}+1}$.\n\nVới $u\\ne1$: $\\dfrac{\\sqrt[4]{u}-1}{\\sqrt[3]{u}-1}=\\dfrac{\\sqrt[3]{u^2}+\\sqrt[3]{u}+1}{(\\sqrt[4]{u}+1)(\\sqrt{u}+1)}$.\n\nKhi $u\\to1$: giới hạn bằng $\\dfrac{1+1+1}{2\\cdot2}=\\dfrac34$.\n\nVậy giới hạn bằng $\\dfrac34$.",
+    "kiem": [
+      "(()=>{const f=x=>(Math.pow(x+2,0.25)-1)/(Math.cbrt(x+2)-1);return Math.abs(f(-1+0.000001)-(3/4))<0.001&&Math.abs(f(-1-0.000001)-(3/4))<0.001})()"
+    ],
+    "sach_dap_so": "3/4",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-5b",
+    "vai": "luyen",
+    "dang_bai": "NDB01173",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Hai căn khác bậc, tách hiệu rồi liên hợp từng phần.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to1}\\dfrac{\\sqrt[3]{x+7}-\\sqrt{x+3}}{x-1}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả hai căn đều bằng $2$ tại $x=1$, nên tách tử thành hiệu hai nhóm $\\sqrt[3]{x+7}-2$ và $\\sqrt{x+3}-2$.\n\n**Bước 1.** Thay $x=1$ để nhận ra dạng $\\dfrac00$ và tách tử bằng cách thêm bớt số $2$.\n\n**Bước 2.** Nhóm căn bậc ba dùng liên hợp bậc ba, nhóm căn bậc hai dùng liên hợp bậc hai.\n\n**Bước 3.** Triệt $x-1$ ở từng nhóm rồi thay $x=1$ và trừ hai kết quả.\n\n**Phần 2. Trình bày**\n\nThay $x=1$: tử $=2-2=0$, mẫu $=0$ nên là dạng $\\dfrac00$.\n\nVới $x\\ne1$: $\\dfrac{\\sqrt[3]{x+7}-\\sqrt{x+3}}{x-1}=\\dfrac{\\sqrt[3]{x+7}-2}{x-1}-\\dfrac{\\sqrt{x+3}-2}{x-1}$.\n\n$\\dfrac{\\sqrt[3]{x+7}-2}{x-1}=\\dfrac{(x+7)-8}{(x-1)(\\sqrt[3]{(x+7)^2}+2\\sqrt[3]{x+7}+4)}=\\dfrac{1}{\\sqrt[3]{(x+7)^2}+2\\sqrt[3]{x+7}+4}$.\n\n$\\dfrac{\\sqrt{x+3}-2}{x-1}=\\dfrac{(x+3)-4}{(x-1)(\\sqrt{x+3}+2)}=\\dfrac{1}{\\sqrt{x+3}+2}$.\n\nKhi $x\\to1$: giới hạn bằng $\\dfrac1{4+4+4}-\\dfrac1{2+2}=\\dfrac1{12}-\\dfrac14=-\\dfrac16$.\n\nVậy giới hạn bằng $-\\dfrac16$.",
+    "kiem": [
+      "(()=>{const f=x=>(Math.cbrt(x+7)-Math.sqrt(x+3))/(x-1);return Math.abs(f(1+0.000001)-(-1/6))<0.001&&Math.abs(f(1-0.000001)-(-1/6))<0.001})()"
+    ],
+    "sach_dap_so": "-1/6",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-6a",
+    "vai": "luyen",
+    "dang_bai": "NDB01171",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Phân thức hữu tỉ dạng 0/0, phân tích nhân tử.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to-1}\\dfrac{2x^2+3x+1}{x^2-1}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu cùng bằng $0$ tại $x=-1$, nên phân tích nhân tử và triệt $x+1$.\n\n**Bước 1.** Thay $x=-1$ vào tử và mẫu để nhận ra dạng $\\dfrac00$.\n\n**Bước 2.** Phân tích tam thức ở tử và hiệu hai bình phương ở mẫu thành tích.\n\n**Bước 3.** Triệt nhân tử chung rồi thay $x=-1$ vào phân thức còn lại.\n\n**Phần 2. Trình bày**\n\nThay $x=-1$: tử $=2-3+1=0$, mẫu $=1-1=0$ nên là dạng $\\dfrac00$.\n\n$2x^2+3x+1=(x+1)(2x+1)$ và $x^2-1=(x+1)(x-1)$.\n\nVới $x\\ne-1$: $\\dfrac{2x^2+3x+1}{x^2-1}=\\dfrac{2x+1}{x-1}$.\n\n$\\lim\\limits_{x\\to-1}\\dfrac{2x+1}{x-1}=\\dfrac{-1}{-2}=\\dfrac12$.\n\nVậy giới hạn bằng $\\dfrac12$.",
+    "kiem": [
+      "(()=>{const f=x=>(2*x*x+3*x+1)/(x*x-1);return Math.abs(f(-1+0.000001)-(1/2))<0.001&&Math.abs(f(-1-0.000001)-(1/2))<0.001})()"
+    ],
+    "sach_dap_so": "1/2",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-6b",
+    "vai": "luyen",
+    "dang_bai": "NDB01172",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một căn thức, nhân liên hợp.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to0}\\dfrac{\\sqrt{1+2x}-1}{3x}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử có một căn thức triệt tiêu tại $x=0$, nên nhân tử và mẫu với liên hợp của tử.\n\n**Bước 1.** Thay $x=0$ để nhận ra dạng vô định $\\dfrac00$.\n\n**Bước 2.** Nhân tử và mẫu với liên hợp của tử để tử trở thành đơn thức chứa $x$.\n\n**Bước 3.** Triệt $x$ rồi thay $x=0$ vào phân thức còn lại.\n\n**Phần 2. Trình bày**\n\nThay $x=0$: tử $=1-1=0$, mẫu $=0$ nên là dạng $\\dfrac00$.\n\nNhân tử và mẫu với $\\sqrt{1+2x}+1>0$. Với $x\\ne0$:\n\n$\\dfrac{\\sqrt{1+2x}-1}{3x}=\\dfrac{(1+2x)-1}{3x(\\sqrt{1+2x}+1)}=\\dfrac{2}{3(\\sqrt{1+2x}+1)}$.\n\n$\\lim\\limits_{x\\to0}\\dfrac{2}{3(\\sqrt{1+2x}+1)}=\\dfrac{2}{3\\cdot2}=\\dfrac13$.\n\nVậy giới hạn bằng $\\dfrac13$.",
+    "kiem": [
+      "(()=>{const f=x=>(Math.sqrt(1+2*x)-1)/(3*x);return Math.abs(f(0+0.000001)-(1/3))<0.001&&Math.abs(f(0-0.000001)-(1/3))<0.001})()"
+    ],
+    "sach_dap_so": "1/3",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-7a",
+    "vai": "luyen",
+    "dang_bai": "NDB01179",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Biểu thức chứa căn khi x tiến tới vô cực.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to+\\infty}\\sqrt{\\dfrac{x^3+1}{2x^3+5}}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tìm giới hạn của phân thức dưới dấu căn trước, rồi lấy căn bậc hai vì căn liên tục tại số dương.\n\n**Bước 1.** Chia cả tử và mẫu của phân thức dưới căn cho $x^3$, luỹ thừa cao nhất của $x$.\n\n**Bước 2.** Dùng $\\lim\\limits_{x\\to+\\infty}\\dfrac{1}{x^3}=0$ để tìm giới hạn của phân thức dưới căn.\n\n**Bước 3.** Lấy căn bậc hai của giới hạn vừa tìm để ra kết quả.\n\n**Phần 2. Trình bày**\n\nVới $x>0$:$\\dfrac{x^3+1}{2x^3+5}=\\dfrac{1+\\dfrac1{x^3}}{2+\\dfrac5{x^3}}$.\n\nVì $\\lim\\limits_{x\\to+\\infty}\\dfrac1{x^3}=0$ nên $\\lim\\limits_{x\\to+\\infty}\\dfrac{x^3+1}{2x^3+5}=\\dfrac12$.\n\nDo đó $\\lim\\limits_{x\\to+\\infty}\\sqrt{\\dfrac{x^3+1}{2x^3+5}}=\\sqrt{\\dfrac12}=\\dfrac{\\sqrt2}{2}$.\n\nVậy giới hạn bằng $\\dfrac{\\sqrt2}{2}$.",
+    "kiem": [
+      "(()=>{const f=x=>Math.sqrt((x**3+1)/(2*x**3+5));return [100000].every(x=>Math.abs(f(x)-(Math.SQRT1_2))<0.001)})()"
+    ],
+    "sach_dap_so": "+∞",
+    "ghi_chu": "LỆCH SÁCH — sách ghi kết quả +∞ (sai). Biểu thức dưới căn có giới hạn 1/2 nên giới hạn là căn(2)/2, đã kiểm bằng máy."
+  },
+  {
+    "id": "nbv-b2-f-7b",
+    "vai": "luyen",
+    "dang_bai": "NDB01179",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Biểu thức chứa căn khi x tiến tới -vô cực.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to-\\infty}\\dfrac{\\sqrt{x^2-x+1}}{2x+1}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khi $x\\to-\\infty$ thì $x<0$ nên $\\sqrt{x^2}=|x|=-x$; đưa $|x|$ ra ngoài căn rồi chia tử và mẫu cho $x$.\n\n**Bước 1.** Viết biểu thức dưới căn thành $x^2$ nhân với một biểu thức có giới hạn hữu hạn.\n\n**Bước 2.** Chú ý $x<0$ nên $\\sqrt{x^2}=-x$, rồi chia cả tử và mẫu cho $x$.\n\n**Bước 3.** Thay các giới hạn $\\dfrac1x\\to0$ và $\\dfrac1{x^2}\\to0$ để tính kết quả.\n\n**Phần 2. Trình bày**\n\nKhi $x\\to-\\infty$ ta có $x<0$ nên $\\sqrt{x^2-x+1}=\\sqrt{x^2(1-\\dfrac1x+\\dfrac1{x^2})}=-x\\sqrt{1-\\dfrac1x+\\dfrac1{x^2}}$.\n\n$\\dfrac{\\sqrt{x^2-x+1}}{2x+1}=\\dfrac{-x\\sqrt{1-\\dfrac1x+\\dfrac1{x^2}}}{x(2+\\dfrac1x)}=\\dfrac{-\\sqrt{1-\\dfrac1x+\\dfrac1{x^2}}}{2+\\dfrac1x}$.\n\nKhi $x\\to-\\infty$ thì $\\dfrac1x\\to0$, $\\dfrac1{x^2}\\to0$ nên giới hạn bằng $\\dfrac{-\\sqrt1}{2}=-\\dfrac12$.\n\nVậy giới hạn bằng $-\\dfrac12$.",
+    "kiem": [
+      "(()=>{const f=x=>Math.sqrt(x*x-x+1)/(2*x+1);return [-100000].every(x=>Math.abs(f(x)-(-0.5))<0.001)})()"
+    ],
+    "sach_dap_so": "-1/2",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-7c",
+    "vai": "luyen",
+    "dang_bai": "NDB01179",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Căn bậc ba và bậc hai khi x tiến tới -vô cực.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to-\\infty}\\dfrac{\\sqrt[3]{x^3-1}}{\\sqrt{2x^2+1}}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Căn bậc ba giữ nguyên dấu của $x$ còn căn bậc hai cho $|x|=-x$ khi $x<0$, nên rút $x$ ra ngoài từng căn.\n\n**Bước 1.** Đưa $x^3$ ra khỏi căn bậc ba và $x^2$ ra khỏi căn bậc hai.\n\n**Bước 2.** Chú ý $\\sqrt[3]{x^3}=x$ còn $\\sqrt{x^2}=-x$ khi $x<0$, rồi triệt $x$.\n\n**Bước 3.** Thay $\\dfrac1{x^3}\\to0$ và $\\dfrac1{x^2}\\to0$ để tính giới hạn.\n\n**Phần 2. Trình bày**\n\nKhi $x\\to-\\infty$ ta có $x<0$.\n\n$\\sqrt[3]{x^3-1}=\\sqrt[3]{x^3(1-\\dfrac1{x^3})}=x\\sqrt[3]{1-\\dfrac1{x^3}}$ và $\\sqrt{2x^2+1}=\\sqrt{x^2(2+\\dfrac1{x^2})}=-x\\sqrt{2+\\dfrac1{x^2}}$.\n\n$\\dfrac{\\sqrt[3]{x^3-1}}{\\sqrt{2x^2+1}}=\\dfrac{x\\sqrt[3]{1-\\dfrac1{x^3}}}{-x\\sqrt{2+\\dfrac1{x^2}}}=-\\dfrac{\\sqrt[3]{1-\\dfrac1{x^3}}}{\\sqrt{2+\\dfrac1{x^2}}}$.\n\nKhi $x\\to-\\infty$: giới hạn bằng $-\\dfrac{1}{\\sqrt2}=-\\dfrac{\\sqrt2}{2}$.\n\nVậy giới hạn bằng $-\\dfrac{\\sqrt2}{2}$.",
+    "kiem": [
+      "(()=>{const f=x=>Math.cbrt(x**3-1)/Math.sqrt(2*x*x+1);return [-100000].every(x=>Math.abs(f(x)-(-Math.SQRT1_2))<0.001)})()"
+    ],
+    "sach_dap_so": "-sqrt2/2",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-7d",
+    "vai": "luyen",
+    "dang_bai": "NDB01179",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Căn khi x tiến tới -vô cực, giới hạn vô cực.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to-\\infty}\\dfrac{\\sqrt[3]{x^6+x^4+x^2+1}}{\\sqrt{2x^2+1}}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Rút $x^6$ khỏi căn bậc ba và $x^2$ khỏi căn bậc hai, rồi xét dấu và bậc của phần còn lại.\n\n**Bước 1.** Đưa $x^6$ ra khỏi căn bậc ba và $x^2$ ra khỏi căn bậc hai.\n\n**Bước 2.** Chú ý $\\sqrt[3]{x^6}=x^2$ còn $\\sqrt{x^2}=|x|$, rồi rút gọn phần $x$.\n\n**Bước 3.** Phần còn lại có giới hạn hữu hạn dương nhân với $|x|$, áp dụng quy tắc tích.\n\n**Phần 2. Trình bày**\n\nVới $x\\ne0$: $\\sqrt[3]{x^6+x^4+x^2+1}=x^2\\sqrt[3]{1+\\dfrac1{x^2}+\\dfrac1{x^4}+\\dfrac1{x^6}}$ và $\\sqrt{2x^2+1}=|x|\\sqrt{2+\\dfrac1{x^2}}$.\n\n$\\dfrac{\\sqrt[3]{x^6+x^4+x^2+1}}{\\sqrt{2x^2+1}}=|x|\\cdot\\dfrac{\\sqrt[3]{1+\\dfrac1{x^2}+\\dfrac1{x^4}+\\dfrac1{x^6}}}{\\sqrt{2+\\dfrac1{x^2}}}$ (vì $\\dfrac{x^2}{|x|}=|x|$).\n\nKhi $x\\to-\\infty$: $|x|\\to+\\infty$ và thừa số còn lại có giới hạn $\\dfrac1{\\sqrt2}>0$.\n\nTheo quy tắc tích, giới hạn là $+\\infty$.\n\nVậy giới hạn bằng $+\\infty$.",
+    "kiem": [
+      "(()=>{const f=x=>Math.cbrt(x**6+x**4+x**2+1)/Math.sqrt(2*x*x+1);return f(-100000)*1>1e4})()"
+    ],
+    "sach_dap_so": "+∞",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-7e",
+    "vai": "luyen",
+    "dang_bai": "NDB01179",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Căn khi x tiến tới -vô cực, nhiều căn.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to-\\infty}\\dfrac{x-\\sqrt{2x^2+1}}{2x+3\\sqrt{x^2+1}}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khi $x<0$ thì $\\sqrt{x^2}=-x$, nên đưa $-x$ ra khỏi mỗi căn rồi chia tử và mẫu cho $x$.\n\n**Bước 1.** Đưa $x^2$ ra khỏi từng căn và đổi $\\sqrt{x^2}$ thành $-x$ vì $x<0$.\n\n**Bước 2.** Chia cả tử và mẫu cho $x$ để mọi số hạng chỉ còn phần có giới hạn hữu hạn.\n\n**Bước 3.** Thay $\\dfrac1{x^2}\\to0$ để tính giới hạn của tử và của mẫu.\n\n**Phần 2. Trình bày**\n\nKhi $x<0$: $\\sqrt{2x^2+1}=-x\\sqrt{2+\\dfrac1{x^2}}$ và $\\sqrt{x^2+1}=-x\\sqrt{1+\\dfrac1{x^2}}$.\n\n$\\dfrac{x-\\sqrt{2x^2+1}}{2x+3\\sqrt{x^2+1}}=\\dfrac{x+x\\sqrt{2+\\dfrac1{x^2}}}{2x-3x\\sqrt{1+\\dfrac1{x^2}}}=\\dfrac{1+\\sqrt{2+\\dfrac1{x^2}}}{2-3\\sqrt{1+\\dfrac1{x^2}}}$.\n\nKhi $x\\to-\\infty$: giới hạn bằng $\\dfrac{1+\\sqrt2}{2-3}=-1-\\sqrt2$.\n\nVậy giới hạn bằng $-1-\\sqrt2$.",
+    "kiem": [
+      "(()=>{const f=x=>(x-Math.sqrt(2*x*x+1))/(2*x+3*Math.sqrt(x*x+1));return [-100000].every(x=>Math.abs(f(x)-(-1-Math.SQRT2))<0.001)})()"
+    ],
+    "sach_dap_so": "-1-sqrt2",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-8a",
+    "vai": "luyen",
+    "dang_bai": "NDB01178",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Phân thức hữu tỉ khi x tiến tới vô cực.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to+\\infty}\\dfrac{2x^2-3x+1}{-2+3x-4x^2}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu cùng bậc hai, nên chia cả tử và mẫu cho $x^2$ rồi dùng $\\dfrac1x\\to0$.\n\n**Bước 1.** Xác định luỹ thừa cao nhất của $x$ ở tử và mẫu.\n\n**Bước 2.** Chia cả tử và mẫu cho $x^2$ để mọi số hạng còn lại có dạng $\\dfrac{c}{x^k}$.\n\n**Bước 3.** Thay $\\dfrac1x\\to0$ và $\\dfrac1{x^2}\\to0$ rồi tính tỉ số hai giới hạn.\n\n**Phần 2. Trình bày**\n\nChia cả tử và mẫu cho $x^2$ (với $x\\ne0$): $\\dfrac{2x^2-3x+1}{-2+3x-4x^2}=\\dfrac{2-\\dfrac3x+\\dfrac1{x^2}}{-\\dfrac2{x^2}+\\dfrac3x-4}$.\n\nKhi $x\\to+\\infty$: tử có giới hạn $2$, mẫu có giới hạn $-4\\ne0$.\n\nDo đó giới hạn bằng $\\dfrac{2}{-4}=-\\dfrac12$.\n\nVậy giới hạn bằng $-\\dfrac12$.",
+    "kiem": [
+      "(()=>{const f=x=>(2*x*x-3*x+1)/(-2+3*x-4*x*x);return [100000].every(x=>Math.abs(f(x)-(-0.5))<0.001)})()"
+    ],
+    "sach_dap_so": "-1/2",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-8b",
+    "vai": "luyen",
+    "dang_bai": "NDB01179",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Căn thức khi x tiến tới -vô cực.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to-\\infty}\\dfrac{\\sqrt{x^2+2x}+3x}{\\sqrt{4x^2+1}-x+3}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khi $x<0$ thì $\\sqrt{x^2}=-x$; đưa $-x$ ra khỏi mỗi căn rồi chia tử và mẫu cho $x$.\n\n**Bước 1.** Viết từng căn thành $-x$ nhân với một căn có giới hạn hữu hạn vì $x<0$.\n\n**Bước 2.** Chia cả tử và mẫu cho $x$ để loại bỏ hoàn toàn các thừa số $x$.\n\n**Bước 3.** Thay $\\dfrac1x\\to0$ và $\\dfrac1{x^2}\\to0$ rồi tính tỉ số.\n\n**Phần 2. Trình bày**\n\nKhi $x<0$: $\\sqrt{x^2+2x}=-x\\sqrt{1+\\dfrac2x}$ và $\\sqrt{4x^2+1}=-x\\sqrt{4+\\dfrac1{x^2}}$.\n\n$\\dfrac{\\sqrt{x^2+2x}+3x}{\\sqrt{4x^2+1}-x+3}=\\dfrac{-x\\sqrt{1+\\dfrac2x}+3x}{-x\\sqrt{4+\\dfrac1{x^2}}-x+3}=\\dfrac{-\\sqrt{1+\\dfrac2x}+3}{-\\sqrt{4+\\dfrac1{x^2}}-1+\\dfrac3x}$.\n\nKhi $x\\to-\\infty$: tử có giới hạn $-1+3=2$, mẫu có giới hạn $-2-1=-3$.\n\nDo đó giới hạn bằng $\\dfrac{2}{-3}=-\\dfrac23$.\n\nVậy giới hạn bằng $-\\dfrac23$.",
+    "kiem": [
+      "(()=>{const f=x=>(Math.sqrt(x*x+2*x)+3*x)/(Math.sqrt(4*x*x+1)-x+3);return [-100000].every(x=>Math.abs(f(x)-(-2/3))<0.001)})()"
+    ],
+    "sach_dap_so": "-2/3",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-9a",
+    "vai": "luyen",
+    "dang_bai": "NDB01180",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Dạng vô cùng trừ vô cùng, nhân liên hợp.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to-\\infty}(\\sqrt{4x^2-x+2}+2x)$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đây là dạng $\\infty-\\infty$ khi $x\\to-\\infty$, nên nhân và chia với biểu thức liên hợp để đưa về dạng $\\dfrac\\infty\\infty$.\n\n**Bước 1.** Nhận ra dạng $\\infty-\\infty$ vì $\\sqrt{4x^2-x+2}\\to+\\infty$ còn $2x\\to-\\infty$.\n\n**Bước 2.** Nhân và chia với $\\sqrt{4x^2-x+2}-2x$ để tử thành hiệu hai bình phương.\n\n**Bước 3.** Chú ý $x<0$ nên $\\sqrt{x^2}=-x$, rồi chia tử và mẫu cho $x$ để tính giới hạn.\n\n**Phần 2. Trình bày**\n\nNhân và chia với $\\sqrt{4x^2-x+2}-2x>0$ (vì $x<0$):\n\n$\\sqrt{4x^2-x+2}+2x=\\dfrac{(4x^2-x+2)-4x^2}{\\sqrt{4x^2-x+2}-2x}=\\dfrac{2-x}{\\sqrt{4x^2-x+2}-2x}$.\n\nVới $x<0$: $\\sqrt{4x^2-x+2}=-x\\sqrt{4-\\dfrac1x+\\dfrac2{x^2}}$, nên chia tử và mẫu cho $x$:\n\n$\\dfrac{2-x}{\\sqrt{4x^2-x+2}-2x}=\\dfrac{\\dfrac2x-1}{-\\sqrt{4-\\dfrac1x+\\dfrac2{x^2}}-2}$.\n\nKhi $x\\to-\\infty$: tử có giới hạn $-1$, mẫu có giới hạn $-2-2=-4$.\n\nDo đó giới hạn bằng $\\dfrac{-1}{-4}=\\dfrac14$.\n\nVậy giới hạn bằng $\\dfrac14$.",
+    "kiem": [
+      "(()=>{const f=x=>Math.sqrt(4*x*x-x+2)+2*x;return [-100000].every(x=>Math.abs(f(x)-(0.25))<0.001)})()"
+    ],
+    "sach_dap_so": "1/4",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-9b",
+    "vai": "luyen",
+    "dang_bai": "NDB01180",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Dạng vô cùng trừ vô cùng, nhân liên hợp.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to+\\infty}(\\sqrt{x^2+2x-3}-x)$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đây là dạng $\\infty-\\infty$, nên nhân và chia với liên hợp rồi chia tử và mẫu cho $x$.\n\n**Bước 1.** Nhận ra đây là dạng vô định $\\infty-\\infty$ khi $x\\to+\\infty$.\n\n**Bước 2.** Nhân và chia với $\\sqrt{x^2+2x-3}+x$ để tử thành đa thức bậc nhất.\n\n**Bước 3.** Chia tử và mẫu cho $x$ (với $x>0$) rồi thay $\\dfrac1x\\to0$.\n\n**Phần 2. Trình bày**\n\nNhân và chia với $\\sqrt{x^2+2x-3}+x>0$:\n\n$\\sqrt{x^2+2x-3}-x=\\dfrac{(x^2+2x-3)-x^2}{\\sqrt{x^2+2x-3}+x}=\\dfrac{2x-3}{\\sqrt{x^2+2x-3}+x}$.\n\nVới $x>0$, chia tử và mẫu cho $x$: $\\dfrac{2-\\dfrac3x}{\\sqrt{1+\\dfrac2x-\\dfrac3{x^2}}+1}$.\n\nKhi $x\\to+\\infty$: giới hạn bằng $\\dfrac{2}{1+1}=1$.\n\nVậy giới hạn bằng $1$.",
+    "kiem": [
+      "(()=>{const f=x=>Math.sqrt(x*x+2*x-3)-x;return [100000].every(x=>Math.abs(f(x)-(1))<0.001)})()"
+    ],
+    "sach_dap_so": "1",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-10a",
+    "vai": "luyen",
+    "dang_bai": "NDB01176",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Giá trị tuyệt đối tại điểm biên, giới hạn một bên.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to2^-}\\dfrac{|2-x|}{2x^2-5x+2}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khi $x\\to2^-$ thì $x<2$ nên bỏ dấu giá trị tuyệt đối theo dấu của $2-x$, rồi phân tích mẫu để triệt nhân tử.\n\n**Bước 1.** Xét dấu của $2-x$ khi $x\\to2^-$ để bỏ dấu giá trị tuyệt đối.\n\n**Bước 2.** Phân tích mẫu $2x^2-5x+2$ thành tích hai nhị thức.\n\n**Bước 3.** Triệt nhân tử chung rồi thay $x=2$ vào phần còn lại.\n\n**Phần 2. Trình bày**\n\nKhi $x\\to2^-$ ta có $x<2$ nên $2-x>0$ và $|2-x|=2-x$.\n\n$2x^2-5x+2=(x-2)(2x-1)$.\n\nVới $x<2$: $\\dfrac{|2-x|}{2x^2-5x+2}=\\dfrac{2-x}{(x-2)(2x-1)}=\\dfrac{-1}{2x-1}$.\n\n$\\lim\\limits_{x\\to2^-}\\dfrac{-1}{2x-1}=\\dfrac{-1}{3}$.\n\nVậy giới hạn bằng $-\\dfrac13$.",
+    "kiem": [
+      "(()=>{const f=x=>Math.abs(2-x)/(2*x*x-5*x+2);return Math.abs(f(2-0.000001)-(-1/3))<0.001})()"
+    ],
+    "sach_dap_so": "-1/3",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-10b",
+    "vai": "luyen",
+    "dang_bai": "NDB01176",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Giá trị tuyệt đối tại điểm biên, giới hạn một bên.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to3^-}\\dfrac{|3-x|}{3-x}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khi $x\\to3^-$ thì $3-x>0$ nên giá trị tuyệt đối của $3-x$ bằng chính nó.\n\n**Bước 1.** Xét dấu của $3-x$ khi $x$ tiến tới $3$ từ bên trái.\n\n**Bước 2.** Bỏ dấu giá trị tuyệt đối theo dấu vừa tìm được.\n\n**Bước 3.** Rút gọn phân thức rồi tính giới hạn của hằng số.\n\n**Phần 2. Trình bày**\n\nKhi $x\\to3^-$ ta có $x<3$ nên $3-x>0$ và $|3-x|=3-x$.\n\nVới $x<3$: $\\dfrac{|3-x|}{3-x}=\\dfrac{3-x}{3-x}=1$.\n\n$\\lim\\limits_{x\\to3^-}1=1$.\n\nVậy giới hạn bằng $1$.",
+    "kiem": [
+      "(()=>{const f=x=>Math.abs(3-x)/(3-x);return Math.abs(f(3-0.000001)-(1))<0.001})()"
+    ],
+    "sach_dap_so": "1",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-10c",
+    "vai": "luyen",
+    "dang_bai": "NDB01176",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Căn bình phương, giá trị tuyệt đối, giới hạn một bên.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to-2^+}\\dfrac{\\sqrt{x^2+4x+4}}{x+2}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức dưới căn là bình phương của $x+2$, nên căn bằng $|x+2|$; khi $x\\to-2^+$ thì $x+2>0$.\n\n**Bước 1.** Nhận ra biểu thức dưới căn là một bình phương hoàn hảo.\n\n**Bước 2.** Đổi căn thành giá trị tuyệt đối rồi xét dấu của $x+2$ khi $x\\to-2^+$.\n\n**Bước 3.** Bỏ dấu giá trị tuyệt đối, rút gọn rồi tính giới hạn.\n\n**Phần 2. Trình bày**\n\n$x^2+4x+4=(x+2)^2$ nên $\\sqrt{x^2+4x+4}=|x+2|$.\n\nKhi $x\\to-2^+$ ta có $x>-2$ nên $x+2>0$ và $|x+2|=x+2$.\n\nVới $x>-2$: $\\dfrac{\\sqrt{x^2+4x+4}}{x+2}=\\dfrac{x+2}{x+2}=1$.\n\n$\\lim\\limits_{x\\to-2^+}1=1$.\n\nVậy giới hạn bằng $1$.",
+    "kiem": [
+      "(()=>{const f=x=>Math.sqrt(x*x+4*x+4)/(x+2);return Math.abs(f(-2+0.000001)-(1))<0.001})()"
+    ],
+    "sach_dap_so": "1",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-11b",
+    "vai": "luyen",
+    "dang_bai": "NDB01181",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Tích dạng vô cùng nhân 0, đưa vào căn rồi chia.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to+\\infty}(2x-1)\\sqrt{\\dfrac{x^2+1}{x^4+3x+1}}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Với $x>0$ lớn, đưa thừa số $2x-1>0$ vào trong căn để chỉ còn một phân thức dưới căn, rồi chia cho luỹ thừa cao nhất.\n\n**Bước 1.** Xác định $2x-1>0$ khi $x$ đủ lớn để đưa nó vào dưới dấu căn bậc hai.\n\n**Bước 2.** Gộp thành một phân thức dưới căn rồi chia cả tử và mẫu cho $x^4$.\n\n**Bước 3.** Tính giới hạn của phân thức rồi lấy căn bậc hai.\n\n**Phần 2. Trình bày**\n\nVới $x>1$ ta có $2x-1>0$ nên $2x-1=\\sqrt{(2x-1)^2}$.\n\n$(2x-1)\\sqrt{\\dfrac{x^2+1}{x^4+3x+1}}=\\sqrt{\\dfrac{(x^2+1)(2x-1)^2}{x^4+3x+1}}$.\n\nChia tử và mẫu dưới căn cho $x^4$: $\\sqrt{\\dfrac{(1+\\dfrac1{x^2})(2-\\dfrac1x)^2}{1+\\dfrac3{x^3}+\\dfrac1{x^4}}}$.\n\nKhi $x\\to+\\infty$: phân thức dưới căn có giới hạn $\\dfrac{1\\cdot4}{1}=4$.\n\nDo đó giới hạn bằng $\\sqrt4=2$.\n\nVậy giới hạn bằng $2$.",
+    "kiem": [
+      "(()=>{const f=x=>(2*x-1)*Math.sqrt((x*x+1)/(x**4+3*x+1));return [100000].every(x=>Math.abs(f(x)-(2))<0.001)})()"
+    ],
+    "sach_dap_so": "2",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-12a",
+    "vai": "luyen",
+    "dang_bai": "NDB01177",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Điều kiện tồn tại giới hạn: so giới hạn trái và phải.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm giới hạn của hàm số $f(x)=\\begin{cases}\\dfrac{x^2-3x+2}{x^2-1}&\\text{nếu }x>1\\\\-\\dfrac{x}{2}&\\text{nếu }x\\le1\\end{cases}$ tại $x=1$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số đổi công thức tại $x=1$, nên tính giới hạn trái và giới hạn phải rồi so sánh.\n\n**Bước 1.** Tính giới hạn trái bằng công thức của nhánh $x\\le1$.\n\n**Bước 2.** Tính giới hạn phải ở nhánh $x>1$ bằng cách phân tích nhân tử tử và mẫu để triệt $x-1$.\n\n**Bước 3.** So sánh hai giới hạn một bên để kết luận về giới hạn tại $x=1$.\n\n**Phần 2. Trình bày**\n\nGiới hạn trái: $\\lim\\limits_{x\\to1^-}f(x)=\\lim\\limits_{x\\to1^-}(-\\dfrac x2)=-\\dfrac12$.\n\nGiới hạn phải: tại $x=1$ tử và mẫu cùng bằng $0$. Ta có $x^2-3x+2=(x-1)(x-2)$ và $x^2-1=(x-1)(x+1)$.\n\nVới $x>1$: $f(x)=\\dfrac{x-2}{x+1}$ nên $\\lim\\limits_{x\\to1^+}f(x)=\\dfrac{1-2}{1+1}=-\\dfrac12$.\n\nHai giới hạn một bên bằng nhau và cùng bằng $-\\dfrac12$.\n\nVậy $\\lim\\limits_{x\\to1}f(x)=-\\dfrac12$.",
+    "kiem": [
+      "(()=>{const f=x=>x>1?(x*x-3*x+2)/(x*x-1):-x/2;return Math.abs(f(1+1e-6)+0.5)<1e-3&&Math.abs(f(1-1e-6)+0.5)<1e-3})()"
+    ],
+    "sach_dap_so": "-1/2",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-12b",
+    "vai": "luyen",
+    "dang_bai": "NDB01177",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Giới hạn trái phải, nhánh phải dùng liên hợp và sin^2+cos^2=1.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm giới hạn của hàm số $f(x)=\\begin{cases}\\dfrac{1-\\sqrt{\\cos2x}}{\\sin^2x}&\\text{nếu }x\\ge0\\\\\\cos x&\\text{nếu }x<0\\end{cases}$ tại $x=0$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tính giới hạn trái và phải; ở nhánh phải nhân liên hợp rồi dùng công thức $1-\\cos2x=2\\sin^2x$ để triệt $\\sin^2x$.\n\n**Bước 1.** Giới hạn trái: dùng tính liên tục của hàm côsin tại $x=0$.\n\n**Bước 2.** Giới hạn phải: nhân tử và mẫu với liên hợp của tử để xuất hiện $1-\\cos2x$.\n\n**Bước 3.** Biến đổi $1-\\cos2x$ thành $2\\sin^2x$, triệt $\\sin^2x$ rồi thay $x=0$.\n\n**Bước 4.** So sánh hai giới hạn một bên để kết luận.\n\n**Phần 2. Trình bày**\n\nGiới hạn trái: $\\lim\\limits_{x\\to0^-}f(x)=\\lim\\limits_{x\\to0^-}\\cos x=\\cos0=1$.\n\nGiới hạn phải: với $x>0$ gần $0$, ta nhân tử và mẫu với $1+\\sqrt{\\cos2x}>0$:\n\n$f(x)=\\dfrac{1-\\cos2x}{\\sin^2x\\,(1+\\sqrt{\\cos2x})}$.\n\nVì $1-\\cos2x=2\\sin^2x$ nên $f(x)=\\dfrac{2\\sin^2x}{\\sin^2x\\,(1+\\sqrt{\\cos2x})}=\\dfrac{2}{1+\\sqrt{\\cos2x}}$ (do $\\sin x\\ne0$).\n\n$\\lim\\limits_{x\\to0^+}f(x)=\\dfrac{2}{1+\\sqrt{\\cos0}}=\\dfrac22=1$.\n\nHai giới hạn một bên cùng bằng $1$.\n\nVậy $\\lim\\limits_{x\\to0}f(x)=1$.",
+    "kiem": [
+      "(()=>{const f=x=>x>=0?(1-Math.sqrt(Math.cos(2*x)))/Math.sin(x)**2:Math.cos(x);return Math.abs(f(1e-3)-1)<2e-3&&Math.abs(f(-1e-3)-1)<2e-3})()"
+    ],
+    "sach_dap_so": "1",
+    "ghi_chu": "Theo công thức nhánh x≥0 thì f(0) không xác định (0/0); không ảnh hưởng giới hạn tại 0. Lời giải dùng 1-cos2x=2sin^2x, không dùng giới hạn đặc biệt."
+  },
+  {
+    "id": "nbv-b2-f-12c",
+    "vai": "luyen",
+    "dang_bai": "NDB01177",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Điều kiện tồn tại giới hạn: so giới hạn trái và phải.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm giới hạn của hàm số $f(x)=\\begin{cases}x^2-2x+3&\\text{nếu }x\\le2\\\\4x-3&\\text{nếu }x>2\\end{cases}$ tại $x=2$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số đổi công thức tại $x=2$, nên tính hai giới hạn một bên rồi so sánh để biết có tồn tại giới hạn hay không.\n\n**Bước 1.** Tính giới hạn trái bằng công thức của nhánh $x\\le2$.\n\n**Bước 2.** Tính giới hạn phải bằng công thức của nhánh $x>2$.\n\n**Bước 3.** So sánh hai giới hạn một bên rồi kết luận về sự tồn tại của giới hạn.\n\n**Phần 2. Trình bày**\n\n$\\lim\\limits_{x\\to2^-}f(x)=\\lim\\limits_{x\\to2^-}(x^2-2x+3)=4-4+3=3$.\n\n$\\lim\\limits_{x\\to2^+}f(x)=\\lim\\limits_{x\\to2^+}(4x-3)=8-3=5$.\n\nVì $3\\ne5$ nên hai giới hạn một bên khác nhau.\n\nVậy không tồn tại $\\lim\\limits_{x\\to2}f(x)$.",
+    "kiem": [
+      "(()=>{const f=x=>x<=2?x*x-2*x+3:4*x-3;return Math.abs(f(2-1e-6)-3)<1e-3&&Math.abs(f(2+1e-6)-5)<1e-3})()"
+    ],
+    "sach_dap_so": "Không tồn tại",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-13a",
+    "vai": "luyen",
+    "dang_bai": "NDB01177",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm tham số để giới hạn tồn tại: trái bằng phải.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $m$ để hàm số $f(x)=\\begin{cases}\\dfrac{\\sqrt{1+x^2}-1}{\\sqrt[3]{1-x}-1}&\\text{nếu }x<0\\\\m+\\dfrac12&\\text{nếu }x\\ge0\\end{cases}$ có giới hạn tại $x=0$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn tại $x=0$ tồn tại khi giới hạn trái bằng giới hạn phải; giới hạn trái cần liên hợp cả căn bậc hai và căn bậc ba.\n\n**Bước 1.** Tính giới hạn phải từ nhánh hằng số $x\\ge0$.\n\n**Bước 2.** Tính giới hạn trái: nhân liên hợp bậc hai cho tử và liên hợp bậc ba cho mẫu để xuất hiện nhân tử $x$.\n\n**Bước 3.** Cho hai giới hạn một bên bằng nhau để lập phương trình theo $m$ rồi giải.\n\n**Phần 2. Trình bày**\n\nGiới hạn phải: $\\lim\\limits_{x\\to0^+}f(x)=m+\\dfrac12$.\n\nGiới hạn trái: với $x<0$, ta có $\\sqrt{1+x^2}-1=\\dfrac{x^2}{\\sqrt{1+x^2}+1}$ và $\\sqrt[3]{1-x}-1=\\dfrac{-x}{\\sqrt[3]{(1-x)^2}+\\sqrt[3]{1-x}+1}$.\n\nDo đó $f(x)=\\dfrac{-x(\\sqrt[3]{(1-x)^2}+\\sqrt[3]{1-x}+1)}{\\sqrt{1+x^2}+1}$.\n\n$\\lim\\limits_{x\\to0^-}f(x)=\\dfrac{0\\cdot3}{2}=0$.\n\nGiới hạn tại $x=0$ tồn tại khi $m+\\dfrac12=0$, tức là $m=-\\dfrac12$.\n\nVậy $m=-\\dfrac12$.",
+    "kiem": [
+      "(()=>{const f=x=>(Math.sqrt(1+x*x)-1)/(Math.cbrt(1-x)-1);return Math.abs(f(-1e-3))<5e-3&&Math.abs((-0.5+0.5)-0)<1e-9})()"
+    ],
+    "sach_dap_so": "m=-1/2",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-13b",
+    "vai": "luyen",
+    "dang_bai": "NDB01177",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm tham số để giới hạn tồn tại: trái bằng phải.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $m$ để hàm số $f(x)=\\begin{cases}x+m&\\text{nếu }x<0\\\\\\dfrac{x^2+100x+3}{x+3}&\\text{nếu }x\\ge0\\end{cases}$ có giới hạn tại $x=0$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn tại $x=0$ tồn tại khi hai giới hạn một bên bằng nhau; cả hai nhánh đều xác định tại $x=0$ nên thay trực tiếp.\n\n**Bước 1.** Tính giới hạn trái từ nhánh $x+m$ bằng cách thay $x=0$.\n\n**Bước 2.** Tính giới hạn phải từ nhánh phân thức, kiểm tra mẫu khác $0$ tại $x=0$.\n\n**Bước 3.** Cho hai giới hạn một bên bằng nhau để tìm $m$.\n\n**Phần 2. Trình bày**\n\n$\\lim\\limits_{x\\to0^-}f(x)=\\lim\\limits_{x\\to0^-}(x+m)=m$.\n\nTại $x=0$ mẫu $x+3=3\\ne0$ nên $\\lim\\limits_{x\\to0^+}f(x)=\\dfrac{0+0+3}{0+3}=1$.\n\nGiới hạn tồn tại khi $m=1$.\n\nVậy $m=1$.",
+    "kiem": [
+      "(()=>{const f=x=>x<0?x+1:(x*x+100*x+3)/(x+3);return Math.abs(f(-1e-6)-f(1e-6))<1e-3&&Math.abs(f(1e-6)-1)<1e-3})()"
+    ],
+    "sach_dap_so": "m=1",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-13c",
+    "vai": "luyen",
+    "dang_bai": "NDB01177",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tìm tham số để giới hạn tồn tại: trái bằng phải.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm $m$ để hàm số $f(x)=\\begin{cases}\\dfrac{\\sqrt[3]{3x+2}-2}{x-2}&\\text{nếu }x>2\\\\mx-\\dfrac14&\\text{nếu }x\\le2\\end{cases}$ có giới hạn tại $x=2$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn tại $x=2$ tồn tại khi giới hạn trái bằng giới hạn phải; giới hạn phải cần liên hợp bậc ba.\n\n**Bước 1.** Tính giới hạn phải bằng liên hợp bậc ba để triệt nhân tử $x-2$.\n\n**Bước 2.** Tính giới hạn trái từ nhánh đa thức bằng cách thay $x=2$.\n\n**Bước 3.** Cho hai giới hạn một bên bằng nhau để lập phương trình theo $m$ rồi giải.\n\n**Phần 2. Trình bày**\n\nGiới hạn phải: tại $x=2$ tử $=\\sqrt[3]{8}-2=0$ và mẫu bằng $0$. Với $x>2$:\n\n$\\dfrac{\\sqrt[3]{3x+2}-2}{x-2}=\\dfrac{(3x+2)-8}{(x-2)(\\sqrt[3]{(3x+2)^2}+2\\sqrt[3]{3x+2}+4)}=\\dfrac{3}{\\sqrt[3]{(3x+2)^2}+2\\sqrt[3]{3x+2}+4}$.\n\n$\\lim\\limits_{x\\to2^+}f(x)=\\dfrac{3}{4+4+4}=\\dfrac14$.\n\nGiới hạn trái: $\\lim\\limits_{x\\to2^-}f(x)=\\lim\\limits_{x\\to2^-}(mx-\\dfrac14)=2m-\\dfrac14$.\n\nGiới hạn tại $x=2$ tồn tại khi $2m-\\dfrac14=\\dfrac14$, tức là $m=\\dfrac14$.\n\nVậy $m=\\dfrac14$.",
+    "kiem": [
+      "(()=>{const f=x=>(Math.cbrt(3*x+2)-2)/(x-2);return Math.abs(f(2+1e-4)-0.25)<1e-3&&Math.abs((2*0.25-0.25)-0.25)<1e-9})()"
+    ],
+    "sach_dap_so": "m=0",
+    "ghi_chu": "LỆCH SÁCH — đề in mx-1/4 (x≤2); lời giải sách dùng mx+1/4 (và viết nhầm x=0) nên ra m=0. Theo đề in: m=1/4. Có thể đề in nhầm dấu: cần Thùy kiểm."
+  },
+  {
+    "id": "nbv-b2-f-14",
+    "vai": "luyen",
+    "dang_bai": "NDB01174",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Tham số trong căn, tử phải có nghiệm kép; nâng cao.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tìm các số $a$, $b$, $c$ để $\\lim\\limits_{x\\to1}\\dfrac{\\sqrt{ax+b}+cx}{x^3-2x^2+x}=-\\dfrac12$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu có nhân tử $(x-1)^2$, nên tử nhân với liên hợp phải thành đa thức chia hết cho $(x-1)^2$; từ đó tìm $a$, $b$ theo $c$ rồi xét dấu $c$.\n\n**Bước 1.** Nhân tử và mẫu với liên hợp $\\sqrt{ax+b}-cx$ để tử trở thành một đa thức bậc hai.\n\n**Bước 2.** Dùng điều kiện giới hạn hữu hạn khi mẫu có nhân tử $(x-1)^2$ để suy ra đa thức đó chia hết cho $(x-1)^2$ và đồng nhất hệ số.\n\n**Bước 3.** Thay $a$, $b$ theo $c$ vào biểu thức rồi xét hai trường hợp dấu của $c$.\n\n**Bước 4.** Cho giới hạn còn lại bằng $-\\dfrac12$ để tìm $c$ rồi thử lại.\n\n**Phần 2. Trình bày**\n\nMẫu $x^3-2x^2+x=x(x-1)^2$. Đặt $P(x)=ax+b-c^2x^2$ thì $(\\sqrt{ax+b}+cx)(\\sqrt{ax+b}-cx)=P(x)$.\n\nVì giới hạn đã cho hữu hạn nên $\\dfrac{P(x)}{x(x-1)^2}=\\dfrac{\\sqrt{ax+b}+cx}{x(x-1)^2}\\cdot(\\sqrt{ax+b}-cx)$ cũng có giới hạn hữu hạn tại $x=1$.\n\nĐa thức $P$ có bậc không quá $2$ mà chia cho $(x-1)^2$ vẫn có giới hạn hữu hạn nên $P(x)$ chia hết cho $(x-1)^2$, tức $P(x)=-c^2(x-1)^2$.\n\nĐồng nhất hệ số: $a=2c^2$ và $b=-c^2$.\n\nNếu $c=0$ thì $a=b=0$, tử bằng $0$ và giới hạn bằng $0$, loại.\n\nVới $c\\ne0$: $\\sqrt{ax+b}=|c|\\sqrt{2x-1}$. Nếu $c>0$ thì tử $c(\\sqrt{2x-1}+x)\\to2c\\ne0$ còn mẫu $\\to0$, giới hạn là vô cực, loại.\n\nNếu $c<0$: tử $=c(x-\\sqrt{2x-1})=c\\cdot\\dfrac{(x-1)^2}{x+\\sqrt{2x-1}}$, nên biểu thức bằng $\\dfrac{c}{x(x+\\sqrt{2x-1})}$.\n\nKhi $x\\to1$: giới hạn bằng $\\dfrac c2$. Cho $\\dfrac c2=-\\dfrac12$ được $c=-1$ (thoả $c<0$), suy ra $a=2$, $b=-1$.\n\nThử lại: $\\dfrac{\\sqrt{2x-1}-x}{x(x-1)^2}=\\dfrac{-1}{x(\\sqrt{2x-1}+x)}\\to-\\dfrac12$.\n\nVậy $a=2$, $b=-1$, $c=-1$.",
+    "kiem": [
+      "(()=>{const f=x=>(Math.sqrt(2*x-1)-x)/(x*(x-1)**2);return Math.abs(f(1+1e-2)+0.5)<2e-2&&Math.abs(f(1-1e-2)+0.5)<2e-2})()",
+      "(()=>{const g=x=>(Math.sqrt(2*x-1)+x)/(x*(x-1)**2);return Math.abs(g(1.001))>1e5})()"
+    ],
+    "sach_dap_so": "a=2, b=-1, c=1",
+    "ghi_chu": "LỆCH SÁCH — sách ghi c=1 (sai: khi đó tử bằng 2 tại x=1, giới hạn vô cực). Đáp số đúng a=2, b=-1, c=-1, đã thử lại bằng máy."
+  },
+  {
+    "id": "nbv-b2-f-15b",
+    "vai": "luyen",
+    "dang_bai": "NDB01183",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Tổng có căn, rút luỹ thừa cao nhất, giới hạn vô cực.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to+\\infty}(x^4\\sqrt{x}+2x\\sqrt[3]{x}-2)$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Rút số hạng có bậc cao nhất $x^4\\sqrt x$ ra ngoài, phần trong ngoặc có giới hạn dương rồi áp dụng quy tắc tích.\n\n**Bước 1.** Xác định số hạng có bậc cao nhất trong tổng, đó là $x^4\\sqrt x=x^{9/2}$.\n\n**Bước 2.** Rút số hạng đó ra ngoài để các số hạng còn lại trở thành phân thức tiến về $0$.\n\n**Bước 3.** Dùng quy tắc tích: thừa số vô cực nhân với giới hạn dương.\n\n**Phần 2. Trình bày**\n\nVới $x>0$: $2x\\sqrt[3]{x}=2x^{4/3}$ và $x^4\\sqrt{x}=x^{9/2}$, nên $\\dfrac{2x\\sqrt[3]{x}}{x^4\\sqrt{x}}=2x^{-19/6}\\to0$ và $\\dfrac{2}{x^4\\sqrt x}\\to0$.\n\nDo đó $x^4\\sqrt{x}+2x\\sqrt[3]{x}-2=x^4\\sqrt{x}\\,(1+2x^{-19/6}-2x^{-9/2})$.\n\nKhi $x\\to+\\infty$: $x^4\\sqrt{x}\\to+\\infty$ và thừa số trong ngoặc có giới hạn $1>0$.\n\nTheo quy tắc tích, giới hạn là $+\\infty$.\n\nVậy giới hạn bằng $+\\infty$.",
+    "kiem": [
+      "(()=>{const f=x=>x**4*Math.sqrt(x)+2*x*Math.cbrt(x)-2;return f(100000)*1>1e4})()"
+    ],
+    "sach_dap_so": "+∞",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-16a",
+    "vai": "luyen",
+    "dang_bai": "NDB01179",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Căn bậc ba của phân thức khi x tiến tới -vô cực.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to-\\infty}\\sqrt[3]{\\dfrac{x^2+5}{6x^2-3x+2}}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tìm giới hạn của phân thức dưới căn bậc ba bằng cách chia cho $x^2$, rồi lấy căn bậc ba vì căn bậc ba liên tục.\n\n**Bước 1.** Chia cả tử và mẫu của phân thức dưới căn cho $x^2$.\n\n**Bước 2.** Dùng $\\dfrac1x\\to0$ và $\\dfrac1{x^2}\\to0$ để tìm giới hạn của phân thức.\n\n**Bước 3.** Lấy căn bậc ba của giới hạn vừa tìm.\n\n**Phần 2. Trình bày**\n\nVới $x\\ne0$: $\\dfrac{x^2+5}{6x^2-3x+2}=\\dfrac{1+\\dfrac5{x^2}}{6-\\dfrac3x+\\dfrac2{x^2}}$.\n\nKhi $x\\to-\\infty$: phân thức có giới hạn $\\dfrac16$.\n\nDo đó $\\lim\\limits_{x\\to-\\infty}\\sqrt[3]{\\dfrac{x^2+5}{6x^2-3x+2}}=\\sqrt[3]{\\dfrac16}$.\n\nVậy giới hạn bằng $\\sqrt[3]{\\dfrac16}$.",
+    "kiem": [
+      "(()=>{const f=x=>Math.cbrt((x*x+5)/(6*x*x-3*x+2));return [-100000].every(x=>Math.abs(f(x)-(Math.cbrt(1/6)))<0.001)})()"
+    ],
+    "sach_dap_so": "cbrt(1/6)",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-16b",
+    "vai": "luyen",
+    "dang_bai": "NDB01171",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Phân thức hữu tỉ dạng 0/0, phân tích nhân tử.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to-2}\\dfrac{x^4-16}{x^2+6x+8}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu cùng triệt tiêu tại $x=-2$, nên phân tích nhân tử và triệt $x+2$.\n\n**Bước 1.** Thay $x=-2$ vào tử và mẫu để nhận ra dạng $\\dfrac00$.\n\n**Bước 2.** Phân tích tử bằng hiệu hai bình phương và mẫu bằng tích hai nhị thức.\n\n**Bước 3.** Triệt nhân tử chung rồi thay $x=-2$ vào phần còn lại.\n\n**Phần 2. Trình bày**\n\nThay $x=-2$: tử $=16-16=0$, mẫu $=4-12+8=0$ nên là dạng $\\dfrac00$.\n\n$x^4-16=(x-2)(x+2)(x^2+4)$ và $x^2+6x+8=(x+2)(x+4)$.\n\nVới $x\\ne-2$: $\\dfrac{x^4-16}{x^2+6x+8}=\\dfrac{(x-2)(x^2+4)}{x+4}$.\n\n$\\lim\\limits_{x\\to-2}\\dfrac{(x-2)(x^2+4)}{x+4}=\\dfrac{(-4)\\cdot8}{2}=-16$.\n\nVậy giới hạn bằng $-16$.",
+    "kiem": [
+      "(()=>{const f=x=>(x**4-16)/(x*x+6*x+8);return Math.abs(f(-2+0.000001)-(-16))<0.001&&Math.abs(f(-2-0.000001)-(-16))<0.001})()"
+    ],
+    "sach_dap_so": "-16",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-16c",
+    "vai": "luyen",
+    "dang_bai": "NDB01171",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Phân thức hữu tỉ dạng 0/0, phân tích nhân tử.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to3}\\dfrac{x^4-27x}{2x^2-3x-9}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu cùng triệt tiêu tại $x=3$, nên đặt $x$ làm nhân tử chung ở tử rồi phân tích để triệt $x-3$.\n\n**Bước 1.** Thay $x=3$ vào tử và mẫu để nhận ra dạng $\\dfrac00$.\n\n**Bước 2.** Đặt $x$ ra ngoài ở tử rồi dùng hiệu hai lập phương; phân tích tam thức ở mẫu.\n\n**Bước 3.** Triệt nhân tử $x-3$ rồi thay $x=3$ vào phần còn lại.\n\n**Phần 2. Trình bày**\n\nThay $x=3$: tử $=81-81=0$, mẫu $=18-9-9=0$ nên là dạng $\\dfrac00$.\n\n$x^4-27x=x(x^3-27)=x(x-3)(x^2+3x+9)$ và $2x^2-3x-9=(x-3)(2x+3)$.\n\nVới $x\\ne3$: $\\dfrac{x^4-27x}{2x^2-3x-9}=\\dfrac{x(x^2+3x+9)}{2x+3}$.\n\n$\\lim\\limits_{x\\to3}\\dfrac{x(x^2+3x+9)}{2x+3}=\\dfrac{3\\cdot27}{9}=9$.\n\nVậy giới hạn bằng $9$.",
+    "kiem": [
+      "(()=>{const f=x=>(x**4-27*x)/(2*x*x-3*x-9);return Math.abs(f(3+0.000001)-(9))<0.001&&Math.abs(f(3-0.000001)-(9))<0.001})()"
+    ],
+    "sach_dap_so": "9",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-17a",
+    "vai": "luyen",
+    "dang_bai": "NDB01171",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Phân thức hữu tỉ dạng 0/0, phân tích nhân tử.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to2}\\dfrac{x^2-3x+2}{x^2+x-6}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu cùng triệt tiêu tại $x=2$, nên phân tích nhân tử và triệt $x-2$.\n\n**Bước 1.** Thay $x=2$ để nhận ra dạng vô định $\\dfrac00$.\n\n**Bước 2.** Phân tích cả tử và mẫu thành tích hai nhị thức.\n\n**Bước 3.** Triệt nhân tử chung rồi thay $x=2$ vào phần còn lại.\n\n**Phần 2. Trình bày**\n\nThay $x=2$: tử $=4-6+2=0$, mẫu $=4+2-6=0$ nên là dạng $\\dfrac00$.\n\n$x^2-3x+2=(x-1)(x-2)$ và $x^2+x-6=(x-2)(x+3)$.\n\nVới $x\\ne2$: $\\dfrac{x^2-3x+2}{x^2+x-6}=\\dfrac{x-1}{x+3}$.\n\n$\\lim\\limits_{x\\to2}\\dfrac{x-1}{x+3}=\\dfrac15$.\n\nVậy giới hạn bằng $\\dfrac15$.",
+    "kiem": [
+      "(()=>{const f=x=>(x*x-3*x+2)/(x*x+x-6);return Math.abs(f(2+0.000001)-(0.2))<0.001&&Math.abs(f(2-0.000001)-(0.2))<0.001})()"
+    ],
+    "sach_dap_so": "1/5",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-17b",
+    "vai": "luyen",
+    "dang_bai": "NDB01171",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Phân thức hữu tỉ dạng 0/0, phân tích nhân tử.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to-2}\\dfrac{x^3+3x^2+2x}{x^2-x-6}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu cùng triệt tiêu tại $x=-2$, nên đặt $x$ làm nhân tử chung ở tử, phân tích rồi triệt $x+2$.\n\n**Bước 1.** Thay $x=-2$ để nhận ra dạng vô định $\\dfrac00$.\n\n**Bước 2.** Đặt $x$ ra ngoài ở tử rồi phân tích tam thức; phân tích tam thức ở mẫu.\n\n**Bước 3.** Triệt nhân tử $x+2$ rồi thay $x=-2$ vào phần còn lại.\n\n**Phần 2. Trình bày**\n\nThay $x=-2$: tử $=-8+12-4=0$, mẫu $=4+2-6=0$ nên là dạng $\\dfrac00$.\n\n$x^3+3x^2+2x=x(x+1)(x+2)$ và $x^2-x-6=(x+2)(x-3)$.\n\nVới $x\\ne-2$: $\\dfrac{x^3+3x^2+2x}{x^2-x-6}=\\dfrac{x(x+1)}{x-3}$.\n\n$\\lim\\limits_{x\\to-2}\\dfrac{x(x+1)}{x-3}=\\dfrac{(-2)(-1)}{-5}=-\\dfrac25$.\n\nVậy giới hạn bằng $-\\dfrac25$.",
+    "kiem": [
+      "(()=>{const f=x=>(x**3+3*x*x+2*x)/(x*x-x-6);return Math.abs(f(-2+0.000001)-(-0.4))<0.001&&Math.abs(f(-2-0.000001)-(-0.4))<0.001})()"
+    ],
+    "sach_dap_so": "-2/5",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-17c",
+    "vai": "luyen",
+    "dang_bai": "NDB01171",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Phân thức hữu tỉ dạng 0/0, phân tích nhân tử.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to-1}\\dfrac{x^5+1}{x^3+1}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu cùng triệt tiêu tại $x=-1$, nên dùng hằng đẳng thức tổng luỹ thừa để tách nhân tử $x+1$.\n\n**Bước 1.** Thay $x=-1$ để nhận ra dạng vô định $\\dfrac00$.\n\n**Bước 2.** Phân tích $x^5+1$ và $x^3+1$ thành tích có nhân tử $x+1$.\n\n**Bước 3.** Triệt $x+1$ rồi thay $x=-1$ vào phần còn lại.\n\n**Phần 2. Trình bày**\n\nThay $x=-1$: tử $=-1+1=0$, mẫu $=-1+1=0$ nên là dạng $\\dfrac00$.\n\n$x^5+1=(x+1)(x^4-x^3+x^2-x+1)$ và $x^3+1=(x+1)(x^2-x+1)$.\n\nVới $x\\ne-1$: $\\dfrac{x^5+1}{x^3+1}=\\dfrac{x^4-x^3+x^2-x+1}{x^2-x+1}$.\n\n$\\lim\\limits_{x\\to-1}\\dfrac{x^4-x^3+x^2-x+1}{x^2-x+1}=\\dfrac{1+1+1+1+1}{1+1+1}=\\dfrac53$.\n\nVậy giới hạn bằng $\\dfrac53$.",
+    "kiem": [
+      "(()=>{const f=x=>(x**5+1)/(x**3+1);return Math.abs(f(-1+0.000001)-(5/3))<0.001&&Math.abs(f(-1-0.000001)-(5/3))<0.001})()"
+    ],
+    "sach_dap_so": "5/3",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-17d",
+    "vai": "luyen",
+    "dang_bai": "NDB01171",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Phân thức hữu tỉ dạng 0/0, phân tích nhân tử.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to2}\\dfrac{x^3+3x^2-9x-2}{x^3-x-6}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu cùng triệt tiêu tại $x=2$ nên chia được cho $x-2$; dùng phép chia Horner để phân tích nhân tử.\n\n**Bước 1.** Thay $x=2$ để nhận ra dạng vô định $\\dfrac00$.\n\n**Bước 2.** Chia tử và mẫu cho $x-2$ bằng sơ đồ Horner để được thương bậc hai.\n\n**Bước 3.** Triệt $x-2$ rồi thay $x=2$ vào phân thức còn lại.\n\n**Phần 2. Trình bày**\n\nThay $x=2$: tử $=8+12-18-2=0$, mẫu $=8-2-6=0$ nên là dạng $\\dfrac00$.\n\nChia Horner: $x^3+3x^2-9x-2=(x-2)(x^2+5x+1)$ và $x^3-x-6=(x-2)(x^2+2x+3)$.\n\nVới $x\\ne2$: $\\dfrac{x^3+3x^2-9x-2}{x^3-x-6}=\\dfrac{x^2+5x+1}{x^2+2x+3}$.\n\n$\\lim\\limits_{x\\to2}\\dfrac{x^2+5x+1}{x^2+2x+3}=\\dfrac{15}{11}$.\n\nVậy giới hạn bằng $\\dfrac{15}{11}$.",
+    "kiem": [
+      "(()=>{const f=x=>(x**3+3*x*x-9*x-2)/(x**3-x-6);return Math.abs(f(2+0.000001)-(15/11))<0.001&&Math.abs(f(2-0.000001)-(15/11))<0.001})()"
+    ],
+    "sach_dap_so": "15/11",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-17e",
+    "vai": "luyen",
+    "dang_bai": "NDB01171",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Tổng n số hạng, tách từng nhóm x^k-1 rồi triệt x-1.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to1}\\dfrac{x+x^2+\\dots+x^n-n}{x-1}$ (với $n$ là số nguyên dương).",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tách $-n$ thành $n$ số $-1$ để ghép với từng số hạng, mỗi nhóm $x^k-1$ chia hết cho $x-1$.\n\n**Bước 1.** Thay $x=1$ để nhận ra dạng vô định $\\dfrac00$, rồi viết tử thành tổng các nhóm $x^k-1$.\n\n**Bước 2.** Mỗi nhóm $x^k-1$ đều chia hết cho $x-1$ nên viết thương của nhóm đó thành tổng các luỹ thừa.\n\n**Bước 3.** Thay $x=1$ vào tổng các thương rồi cộng lại bằng công thức tổng của cấp số cộng.\n\n**Phần 2. Trình bày**\n\nThay $x=1$: tử $=n-n=0$, mẫu $=0$ nên là dạng $\\dfrac00$.\n\nTử $=(x-1)+(x^2-1)+\\dots+(x^n-1)$.\n\nVới $x\\ne1$: $\\dfrac{x^k-1}{x-1}=x^{k-1}+x^{k-2}+\\dots+x+1$, gồm $k$ số hạng.\n\nDo đó thương của biểu thức đã cho bằng $1+(x+1)+(x^2+x+1)+\\dots+(x^{n-1}+\\dots+x+1)$.\n\nKhi $x\\to1$ thì nhóm thứ $k$ có giới hạn $k$, nên giới hạn cần tìm là $1+2+\\dots+n=\\dfrac{n(n+1)}{2}$.\n\nVậy giới hạn bằng $\\dfrac{n(n+1)}{2}$.",
+    "kiem": [
+      "(()=>{const f=x=>(x+x**2+x**3+x**4+x**5-5)/(x-1);return Math.abs(f(1+0.000001)-(15))<0.001&&Math.abs(f(1-0.000001)-(15))<0.001})()"
+    ],
+    "sach_dap_so": "n(n+1)/2",
+    "ghi_chu": "Trùng đề với nbv-b2-f-2e."
+  },
+  {
+    "id": "nbv-b2-f-18a",
+    "vai": "luyen",
+    "dang_bai": "NDB01172",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một căn thức, nhân liên hợp.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to2}\\dfrac{\\sqrt{x^2+5}-3}{x-2}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử có một căn thức triệt tiêu tại $x=2$, nên nhân tử và mẫu với liên hợp của tử.\n\n**Bước 1.** Thay $x=2$ để nhận ra dạng vô định $\\dfrac00$.\n\n**Bước 2.** Nhân tử và mẫu với liên hợp của tử để tử trở thành $x^2-4$.\n\n**Bước 3.** Phân tích $x^2-4$, triệt $x-2$ rồi thay $x=2$.\n\n**Phần 2. Trình bày**\n\nThay $x=2$: tử $=\\sqrt9-3=0$, mẫu $=0$ nên là dạng $\\dfrac00$.\n\nNhân tử và mẫu với $\\sqrt{x^2+5}+3>0$. Với $x\\ne2$:\n\n$\\dfrac{\\sqrt{x^2+5}-3}{x-2}=\\dfrac{(x^2+5)-9}{(x-2)(\\sqrt{x^2+5}+3)}=\\dfrac{(x-2)(x+2)}{(x-2)(\\sqrt{x^2+5}+3)}=\\dfrac{x+2}{\\sqrt{x^2+5}+3}$.\n\n$\\lim\\limits_{x\\to2}\\dfrac{x+2}{\\sqrt{x^2+5}+3}=\\dfrac{4}{6}=\\dfrac23$.\n\nVậy giới hạn bằng $\\dfrac23$.",
+    "kiem": [
+      "(()=>{const f=x=>(Math.sqrt(x*x+5)-3)/(x-2);return Math.abs(f(2+0.000001)-(2/3))<0.001&&Math.abs(f(2-0.000001)-(2/3))<0.001})()"
+    ],
+    "sach_dap_so": "2/3",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-18b",
+    "vai": "luyen",
+    "dang_bai": "NDB01173",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Hai căn thức, nhân liên hợp cả tử và mẫu.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to2}\\dfrac{x-\\sqrt{x+2}}{\\sqrt{4x+1}-3}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu đều chứa một căn triệt tiêu tại $x=2$, nên nhân liên hợp cho cả hai rồi triệt $x-2$.\n\n**Bước 1.** Thay $x=2$ để nhận ra dạng vô định $\\dfrac00$.\n\n**Bước 2.** Nhân liên hợp cho tử để được $x^2-x-2$ và cho mẫu để được $4(x-2)$, rồi phân tích $x^2-x-2$.\n\n**Bước 3.** Triệt $x-2$ rồi thay $x=2$ vào phần còn lại.\n\n**Phần 2. Trình bày**\n\nThay $x=2$: tử $=2-2=0$, mẫu $=3-3=0$ nên là dạng $\\dfrac00$.\n\n$x-\\sqrt{x+2}=\\dfrac{x^2-(x+2)}{x+\\sqrt{x+2}}=\\dfrac{(x-2)(x+1)}{x+\\sqrt{x+2}}$ và $\\sqrt{4x+1}-3=\\dfrac{4x+1-9}{\\sqrt{4x+1}+3}=\\dfrac{4(x-2)}{\\sqrt{4x+1}+3}$.\n\nVới $x\\ne2$: $\\dfrac{x-\\sqrt{x+2}}{\\sqrt{4x+1}-3}=\\dfrac{(x+1)(\\sqrt{4x+1}+3)}{4(x+\\sqrt{x+2})}$.\n\n$\\lim\\limits_{x\\to2}\\dfrac{(x+1)(\\sqrt{4x+1}+3)}{4(x+\\sqrt{x+2})}=\\dfrac{3\\cdot6}{4\\cdot4}=\\dfrac98$.\n\nVậy giới hạn bằng $\\dfrac98$.",
+    "kiem": [
+      "(()=>{const f=x=>(x-Math.sqrt(x+2))/(Math.sqrt(4*x+1)-3);return Math.abs(f(2+0.000001)-(9/8))<0.001&&Math.abs(f(2-0.000001)-(9/8))<0.001})()"
+    ],
+    "sach_dap_so": "9/8",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-18c",
+    "vai": "luyen",
+    "dang_bai": "NDB01172",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Một căn thức ở mẫu, nhân liên hợp.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to0}\\dfrac{x}{\\sqrt{1+x}-1}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu có một căn thức triệt tiêu tại $x=0$, nên nhân tử và mẫu với liên hợp của mẫu.\n\n**Bước 1.** Thay $x=0$ để nhận ra dạng vô định $\\dfrac00$.\n\n**Bước 2.** Nhân tử và mẫu với liên hợp của mẫu để mẫu trở thành $x$.\n\n**Bước 3.** Triệt $x$ rồi thay $x=0$ vào biểu thức còn lại.\n\n**Phần 2. Trình bày**\n\nThay $x=0$: tử $=0$, mẫu $=\\sqrt1-1=0$ nên là dạng $\\dfrac00$.\n\nNhân tử và mẫu với $\\sqrt{1+x}+1>0$. Với $x\\ne0$:\n\n$\\dfrac{x}{\\sqrt{1+x}-1}=\\dfrac{x(\\sqrt{1+x}+1)}{(1+x)-1}=\\sqrt{1+x}+1$.\n\n$\\lim\\limits_{x\\to0}(\\sqrt{1+x}+1)=2$.\n\nVậy giới hạn bằng $2$.",
+    "kiem": [
+      "(()=>{const f=x=>x/(Math.sqrt(1+x)-1);return Math.abs(f(0+0.000001)-(2))<0.001&&Math.abs(f(0-0.000001)-(2))<0.001})()"
+    ],
+    "sach_dap_so": "2",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-19a",
+    "vai": "luyen",
+    "dang_bai": "NDB01173",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Căn bậc ba, liên hợp bậc ba.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to0}\\dfrac{1-\\sqrt[3]{1-x}}{3x}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử chứa căn bậc ba nên dùng $a-b=\\dfrac{a^3-b^3}{a^2+ab+b^2}$ với $a=1$, $b=\\sqrt[3]{1-x}$.\n\n**Bước 1.** Thay $x=0$ để nhận ra dạng vô định $\\dfrac00$.\n\n**Bước 2.** Nhân tử và mẫu với $1+\\sqrt[3]{1-x}+\\sqrt[3]{(1-x)^2}$ để tử thành $1-(1-x)$.\n\n**Bước 3.** Triệt $x$ rồi thay $x=0$ vào phần còn lại.\n\n**Phần 2. Trình bày**\n\nThay $x=0$: tử $=1-1=0$, mẫu $=0$ nên là dạng $\\dfrac00$.\n\nNhân tử và mẫu với $A=1+\\sqrt[3]{1-x}+\\sqrt[3]{(1-x)^2}>0$. Với $x\\ne0$:\n\n$\\dfrac{1-\\sqrt[3]{1-x}}{3x}=\\dfrac{1-(1-x)}{3xA}=\\dfrac{1}{3A}$.\n\nKhi $x\\to0$: $A\\to3$ nên giới hạn bằng $\\dfrac{1}{9}$.\n\nVậy giới hạn bằng $\\dfrac19$.",
+    "kiem": [
+      "(()=>{const f=x=>(1-Math.cbrt(1-x))/(3*x);return Math.abs(f(0+0.000001)-(1/9))<0.001&&Math.abs(f(0-0.000001)-(1/9))<0.001})()"
+    ],
+    "sach_dap_so": "1/9",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-19b",
+    "vai": "luyen",
+    "dang_bai": "NDB01173",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Căn bậc ba ở tử, căn bậc hai ở mẫu, liên hợp cả hai.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to-1}\\dfrac{\\sqrt[3]{x}+1}{\\sqrt{x^2+3}-2}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử dùng hằng đẳng thức tổng hai lập phương, mẫu nhân liên hợp bậc hai, để cả hai cùng xuất hiện nhân tử $x+1$.\n\n**Bước 1.** Thay $x=-1$ để nhận ra dạng vô định $\\dfrac00$.\n\n**Bước 2.** Viết $\\sqrt[3]{x}+1$ qua tổng hai lập phương và $\\sqrt{x^2+3}-2$ qua liên hợp, để cả hai chứa $x+1$.\n\n**Bước 3.** Triệt $x+1$ rồi thay $x=-1$ vào phần còn lại.\n\n**Phần 2. Trình bày**\n\nThay $x=-1$: tử $=-1+1=0$, mẫu $=2-2=0$ nên là dạng $\\dfrac00$.\n\n$\\sqrt[3]{x}+1=\\dfrac{x+1}{\\sqrt[3]{x^2}-\\sqrt[3]{x}+1}$ và $\\sqrt{x^2+3}-2=\\dfrac{x^2-1}{\\sqrt{x^2+3}+2}=\\dfrac{(x+1)(x-1)}{\\sqrt{x^2+3}+2}$.\n\nVới $x\\ne-1$: $\\dfrac{\\sqrt[3]{x}+1}{\\sqrt{x^2+3}-2}=\\dfrac{\\sqrt{x^2+3}+2}{(\\sqrt[3]{x^2}-\\sqrt[3]{x}+1)(x-1)}$.\n\nKhi $x\\to-1$: giới hạn bằng $\\dfrac{2+2}{(1+1+1)\\cdot(-2)}=-\\dfrac{2}{3}$.\n\nVậy giới hạn bằng $-\\dfrac23$.",
+    "kiem": [
+      "(()=>{const f=x=>(Math.cbrt(x)+1)/(Math.sqrt(x*x+3)-2);return Math.abs(f(-1+0.000001)-(-2/3))<0.001&&Math.abs(f(-1-0.000001)-(-2/3))<0.001})()"
+    ],
+    "sach_dap_so": "-2/3",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-19c",
+    "vai": "luyen",
+    "dang_bai": "NDB01173",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Căn bậc ba, hằng đẳng thức bình phương, liên hợp bậc ba.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to1}\\dfrac{\\sqrt[3]{x^2}-2\\sqrt[3]{x}+1}{(x-1)^2}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử là bình phương của $\\sqrt[3]{x}-1$, nên viết tử theo bình phương rồi dùng hiệu hai lập phương cho mẫu.\n\n**Bước 1.** Nhận ra tử là một bình phương hoàn hảo theo biến $\\sqrt[3]{x}$.\n\n**Bước 2.** Phân tích $x-1=(\\sqrt[3]{x}-1)(\\sqrt[3]{x^2}+\\sqrt[3]{x}+1)$ để mẫu cũng chứa $\\sqrt[3]{x}-1$.\n\n**Bước 3.** Triệt nhân tử chung $(\\sqrt[3]{x}-1)^2$ rồi thay $x=1$ vào phần còn lại.\n\n**Phần 2. Trình bày**\n\nĐặt $t=\\sqrt[3]{x}$ thì $\\sqrt[3]{x^2}-2\\sqrt[3]{x}+1=t^2-2t+1=(t-1)^2$ và $x-1=t^3-1=(t-1)(t^2+t+1)$.\n\nVới $x\\ne1$: $\\dfrac{(t-1)^2}{(t-1)^2(t^2+t+1)^2}=\\dfrac{1}{(t^2+t+1)^2}$.\n\nKhi $x\\to1$ thì $t\\to1$ nên $t^2+t+1\\to3$.\n\nDo đó giới hạn bằng $\\dfrac{1}{3^2}=\\dfrac19$.\n\nVậy giới hạn bằng $\\dfrac19$.",
+    "kiem": [
+      "(()=>{const f=x=>(Math.cbrt(x*x)-2*Math.cbrt(x)+1)/(x-1)**2;return Math.abs(f(1+0.001)-(1/9))<0.005&&Math.abs(f(1-0.001)-(1/9))<0.005})()"
+    ],
+    "sach_dap_so": "1/9",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-19d",
+    "vai": "luyen",
+    "dang_bai": "NDB01173",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Căn bậc ba ở tử, căn bậc hai ở mẫu, liên hợp cả hai.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to-1}\\dfrac{\\sqrt[3]{x}+1}{\\sqrt{x^2+3}-2}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử dùng hằng đẳng thức tổng hai lập phương, mẫu nhân liên hợp bậc hai, để cả hai cùng xuất hiện nhân tử $x+1$.\n\n**Bước 1.** Thay $x=-1$ để nhận ra dạng vô định $\\dfrac00$.\n\n**Bước 2.** Viết $\\sqrt[3]{x}+1$ qua tổng hai lập phương và $\\sqrt{x^2+3}-2$ qua liên hợp, để cả hai chứa $x+1$.\n\n**Bước 3.** Triệt $x+1$ rồi thay $x=-1$ vào phần còn lại.\n\n**Phần 2. Trình bày**\n\nThay $x=-1$: tử $=-1+1=0$, mẫu $=2-2=0$ nên là dạng $\\dfrac00$.\n\n$\\sqrt[3]{x}+1=\\dfrac{x+1}{\\sqrt[3]{x^2}-\\sqrt[3]{x}+1}$ và $\\sqrt{x^2+3}-2=\\dfrac{(x+1)(x-1)}{\\sqrt{x^2+3}+2}$.\n\nVới $x\\ne-1$: $\\dfrac{\\sqrt[3]{x}+1}{\\sqrt{x^2+3}-2}=\\dfrac{\\sqrt{x^2+3}+2}{(\\sqrt[3]{x^2}-\\sqrt[3]{x}+1)(x-1)}$.\n\nKhi $x\\to-1$: giới hạn bằng $\\dfrac{2+2}{(1+1+1)\\cdot(-2)}=-\\dfrac{2}{3}$.\n\nVậy giới hạn bằng $-\\dfrac23$.",
+    "kiem": [
+      "(()=>{const f=x=>(Math.cbrt(x)+1)/(Math.sqrt(x*x+3)-2);return Math.abs(f(-1+0.000001)-(-2/3))<0.001&&Math.abs(f(-1-0.000001)-(-2/3))<0.001})()"
+    ],
+    "sach_dap_so": "-2/3",
+    "ghi_chu": "Trùng đề với nbv-b2-f-19b."
+  },
+  {
+    "id": "nbv-b2-f-20a",
+    "vai": "luyen",
+    "dang_bai": "NDB01173",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Hai căn khác bậc, tách hiệu rồi liên hợp từng phần.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to0}\\dfrac{\\sqrt[3]{1+x}-\\sqrt{1-x}}{x}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả hai căn đều bằng $1$ tại $x=0$, nên tách tử thành $(\\sqrt[3]{1+x}-1)+(1-\\sqrt{1-x})$ và liên hợp từng nhóm.\n\n**Bước 1.** Thay $x=0$ để nhận ra dạng $\\dfrac00$ rồi thêm bớt số $1$ ở tử.\n\n**Bước 2.** Nhóm căn bậc ba dùng liên hợp bậc ba, nhóm căn bậc hai dùng liên hợp bậc hai.\n\n**Bước 3.** Triệt $x$ ở từng nhóm rồi thay $x=0$ và cộng hai kết quả.\n\n**Phần 2. Trình bày**\n\nThay $x=0$: tử $=1-1=0$, mẫu $=0$ nên là dạng $\\dfrac00$.\n\nVới $x\\ne0$: $\\dfrac{\\sqrt[3]{1+x}-\\sqrt{1-x}}{x}=\\dfrac{\\sqrt[3]{1+x}-1}{x}+\\dfrac{1-\\sqrt{1-x}}{x}$.\n\n$\\dfrac{\\sqrt[3]{1+x}-1}{x}=\\dfrac{1}{\\sqrt[3]{(1+x)^2}+\\sqrt[3]{1+x}+1}$ và $\\dfrac{1-\\sqrt{1-x}}{x}=\\dfrac{1}{1+\\sqrt{1-x}}$.\n\nKhi $x\\to0$: giới hạn bằng $\\dfrac13+\\dfrac12=\\dfrac56$.\n\nVậy giới hạn bằng $\\dfrac56$.",
+    "kiem": [
+      "(()=>{const f=x=>(Math.cbrt(1+x)-Math.sqrt(1-x))/x;return Math.abs(f(0+0.000001)-(5/6))<0.001&&Math.abs(f(0-0.000001)-(5/6))<0.001})()"
+    ],
+    "sach_dap_so": "5/6",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-20b",
+    "vai": "luyen",
+    "dang_bai": "NDB01173",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Hai căn khác bậc, tách hiệu rồi liên hợp từng phần.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to0}\\dfrac{\\sqrt{3x+4}-\\sqrt[3]{8+5x}}{x}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả hai căn đều bằng $2$ tại $x=0$, nên tách tử thành $(\\sqrt{3x+4}-2)+(2-\\sqrt[3]{8+5x})$ và liên hợp từng nhóm.\n\n**Bước 1.** Thay $x=0$ để nhận ra dạng $\\dfrac00$ rồi thêm bớt số $2$ ở tử.\n\n**Bước 2.** Nhóm căn bậc hai dùng liên hợp bậc hai, nhóm căn bậc ba dùng liên hợp bậc ba.\n\n**Bước 3.** Triệt $x$ ở từng nhóm rồi thay $x=0$ và cộng hai kết quả.\n\n**Phần 2. Trình bày**\n\nThay $x=0$: tử $=2-2=0$, mẫu $=0$ nên là dạng $\\dfrac00$.\n\nVới $x\\ne0$: $\\dfrac{\\sqrt{3x+4}-\\sqrt[3]{8+5x}}{x}=\\dfrac{\\sqrt{3x+4}-2}{x}+\\dfrac{2-\\sqrt[3]{8+5x}}{x}$.\n\n$\\dfrac{\\sqrt{3x+4}-2}{x}=\\dfrac{3}{\\sqrt{3x+4}+2}$ và $\\dfrac{2-\\sqrt[3]{8+5x}}{x}=\\dfrac{-5}{\\sqrt[3]{(8+5x)^2}+2\\sqrt[3]{8+5x}+4}$.\n\nKhi $x\\to0$: giới hạn bằng $\\dfrac34-\\dfrac{5}{12}=\\dfrac13$.\n\nVậy giới hạn bằng $\\dfrac13$.",
+    "kiem": [
+      "(()=>{const f=x=>(Math.sqrt(3*x+4)-Math.cbrt(8+5*x))/x;return Math.abs(f(0+0.000001)-(1/3))<0.001&&Math.abs(f(0-0.000001)-(1/3))<0.001})()"
+    ],
+    "sach_dap_so": "1/3",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-20c",
+    "vai": "luyen",
+    "dang_bai": "NDB01173",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Hai căn khác bậc, tách hiệu rồi liên hợp từng phần.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to2}\\dfrac{\\sqrt[3]{8x+11}-\\sqrt{x+7}}{x^2-3x+2}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả hai căn đều bằng $3$ tại $x=2$, nên tách tử thành $(\\sqrt[3]{8x+11}-3)+(3-\\sqrt{x+7})$, liên hợp từng nhóm và phân tích mẫu.\n\n**Bước 1.** Thay $x=2$ để nhận ra dạng $\\dfrac00$, thêm bớt số $3$ ở tử và phân tích mẫu thành $(x-1)(x-2)$.\n\n**Bước 2.** Nhóm căn bậc ba dùng liên hợp bậc ba, nhóm căn bậc hai dùng liên hợp bậc hai để cùng xuất hiện $x-2$.\n\n**Bước 3.** Triệt $x-2$ rồi thay $x=2$ vào phần còn lại và trừ hai kết quả.\n\n**Phần 2. Trình bày**\n\nThay $x=2$: tử $=3-3=0$, mẫu $=4-6+2=0$ nên là dạng $\\dfrac00$. Mẫu $x^2-3x+2=(x-1)(x-2)$.\n\n$\\sqrt[3]{8x+11}-3=\\dfrac{(8x+11)-27}{\\sqrt[3]{(8x+11)^2}+3\\sqrt[3]{8x+11}+9}=\\dfrac{8(x-2)}{\\sqrt[3]{(8x+11)^2}+3\\sqrt[3]{8x+11}+9}$.\n\n$3-\\sqrt{x+7}=\\dfrac{9-(x+7)}{3+\\sqrt{x+7}}=\\dfrac{-(x-2)}{3+\\sqrt{x+7}}$.\n\nVới $x\\ne2$ và $x\\ne1$: biểu thức bằng $\\dfrac{1}{x-1}[\\dfrac{8}{\\sqrt[3]{(8x+11)^2}+3\\sqrt[3]{8x+11}+9}-\\dfrac{1}{3+\\sqrt{x+7}}]$.\n\nKhi $x\\to2$: giới hạn bằng $\\dfrac{1}{1}(\\dfrac{8}{9+9+9}-\\dfrac{1}{3+3})=\\dfrac{8}{27}-\\dfrac16=\\dfrac{7}{54}$.\n\nVậy giới hạn bằng $\\dfrac7{54}$.",
+    "kiem": [
+      "(()=>{const f=x=>(Math.cbrt(8*x+11)-Math.sqrt(x+7))/(x*x-3*x+2);return Math.abs(f(2+0.0001)-(7/54))<0.002&&Math.abs(f(2-0.0001)-(7/54))<0.002})()"
+    ],
+    "sach_dap_so": "7/54",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-20d",
+    "vai": "luyen",
+    "dang_bai": "NDB01173",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Hai căn khác bậc, mẫu x^2: tách qua đa thức 2x+1 rồi liên hợp.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to0}\\dfrac{\\sqrt{1+4x}-\\sqrt[3]{1+6x}}{x^2}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả hai căn đều có khai triển bậc nhất $1+2x$ nên tách tử qua đa thức $2x+1$; mỗi nhóm khi liên hợp sinh ra nhân tử $x^2$.\n\n**Bước 1.** Thay $x=0$ để nhận ra dạng $\\dfrac00$, rồi thêm bớt đa thức $2x+1$ vào tử.\n\n**Bước 2.** Nhóm căn bậc hai nhân liên hợp bậc hai, nhóm căn bậc ba nhân liên hợp bậc ba, để mỗi nhóm có nhân tử $x^2$.\n\n**Bước 3.** Triệt $x^2$ rồi thay $x=0$ vào hai phần và cộng kết quả.\n\n**Phần 2. Trình bày**\n\nThay $x=0$: tử $=1-1=0$, mẫu $=0$ nên là dạng $\\dfrac00$.\n\nVới $x\\ne0$: tử $=[\\sqrt{1+4x}-(2x+1)]+[(2x+1)-\\sqrt[3]{1+6x}]$.\n\n$\\sqrt{1+4x}-(2x+1)=\\dfrac{(1+4x)-(2x+1)^2}{\\sqrt{1+4x}+(2x+1)}=\\dfrac{-4x^2}{\\sqrt{1+4x}+2x+1}$.\n\n$(2x+1)-\\sqrt[3]{1+6x}=\\dfrac{(2x+1)^3-(1+6x)}{A}=\\dfrac{x^2(8x+12)}{A}$ với $A=(2x+1)^2+(2x+1)\\sqrt[3]{1+6x}+\\sqrt[3]{(1+6x)^2}$.\n\nDo đó biểu thức bằng $\\dfrac{-4}{\\sqrt{1+4x}+2x+1}+\\dfrac{8x+12}{A}$.\n\nKhi $x\\to0$: $\\sqrt{1+4x}+2x+1\\to2$ và $A\\to3$, nên giới hạn bằng $-\\dfrac42+\\dfrac{12}{3}=2$.\n\nVậy giới hạn bằng $2$.",
+    "kiem": [
+      "(()=>{const f=x=>(Math.sqrt(1+4*x)-Math.cbrt(1+6*x))/(x*x);return Math.abs(f(0+0.001)-(2))<0.01&&Math.abs(f(0-0.001)-(2))<0.01})()"
+    ],
+    "sach_dap_so": "2",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-21a",
+    "vai": "luyen",
+    "dang_bai": "NDB01178",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Phân thức hữu tỉ khi x tiến tới vô cực.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to+\\infty}\\dfrac{x^2+1}{2x^2-x+1}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu cùng bậc hai, nên chia cả tử và mẫu cho $x^2$ rồi dùng $\\dfrac1x\\to0$.\n\n**Bước 1.** Xác định luỹ thừa cao nhất của $x$ ở tử và mẫu.\n\n**Bước 2.** Chia cả tử và mẫu cho $x^2$.\n\n**Bước 3.** Thay $\\dfrac1x\\to0$ và $\\dfrac1{x^2}\\to0$ rồi tính tỉ số hai giới hạn.\n\n**Phần 2. Trình bày**\n\nVới $x\\ne0$: $\\dfrac{x^2+1}{2x^2-x+1}=\\dfrac{1+\\dfrac1{x^2}}{2-\\dfrac1x+\\dfrac1{x^2}}$.\n\nKhi $x\\to+\\infty$: tử có giới hạn $1$, mẫu có giới hạn $2$.\n\nVậy giới hạn bằng $\\dfrac12$.",
+    "kiem": [
+      "(()=>{const f=x=>(x*x+1)/(2*x*x-x+1);return [100000].every(x=>Math.abs(f(x)-(0.5))<0.001)})()"
+    ],
+    "sach_dap_so": "1/2",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-21b",
+    "vai": "luyen",
+    "dang_bai": "NDB01183",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Phân thức tử bậc cao hơn mẫu, giới hạn vô cực.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính $\\lim\\limits_{x\\to+\\infty}\\dfrac{2x^2-x+1}{x-1}$ và $\\lim\\limits_{x\\to-\\infty}\\dfrac{2x^2-x+1}{x-1}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử bậc hai cao hơn mẫu bậc nhất, nên chia tử và mẫu cho $x$ rồi xét dấu vô cực của tử theo từng hướng.\n\n**Bước 1.** Chia cả tử và mẫu cho $x$, luỹ thừa cao nhất của mẫu.\n\n**Bước 2.** Tìm giới hạn của mẫu và của tử sau khi chia.\n\n**Bước 3.** Xét dấu vô cực của tử khi $x\\to+\\infty$ và khi $x\\to-\\infty$ rồi áp dụng quy tắc thương.\n\n**Phần 2. Trình bày**\n\nVới $x\\ne0$: $\\dfrac{2x^2-x+1}{x-1}=\\dfrac{2x-1+\\dfrac1x}{1-\\dfrac1x}$.\n\nMẫu có giới hạn $1>0$ khi $x\\to\\pm\\infty$.\n\nKhi $x\\to+\\infty$: $2x-1+\\dfrac1x\\to+\\infty$ nên $\\lim\\limits_{x\\to+\\infty}\\dfrac{2x^2-x+1}{x-1}=+\\infty$.\n\nKhi $x\\to-\\infty$: $2x-1+\\dfrac1x\\to-\\infty$ nên $\\lim\\limits_{x\\to-\\infty}\\dfrac{2x^2-x+1}{x-1}=-\\infty$.\n\nVậy giới hạn bằng $+\\infty$ khi $x\\to+\\infty$ và bằng $-\\infty$ khi $x\\to-\\infty$.",
+    "kiem": [
+      "(()=>{const f=x=>(2*x*x-x+1)/(x-1);return f(100000)*1>1e4})()",
+      "(()=>{const f=x=>(2*x*x-x+1)/(x-1);return f(-100000)*-1>1e4})()"
+    ],
+    "sach_dap_so": "±∞",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-21c",
+    "vai": "luyen",
+    "dang_bai": "NDB01178",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Phân thức hữu tỉ tử bậc thấp hơn mẫu khi x tiến tới vô cực.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính $\\lim\\limits_{x\\to+\\infty}\\dfrac{2x^2+1}{x^3-3x^2+2}$ và $\\lim\\limits_{x\\to-\\infty}\\dfrac{2x^2+1}{x^3-3x^2+2}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử bậc hai thấp hơn mẫu bậc ba, nên chia tử và mẫu cho $x^3$; cả hai hướng đều dùng $\\dfrac1x\\to0$.\n\n**Bước 1.** Chia cả tử và mẫu cho $x^3$, luỹ thừa cao nhất của mẫu.\n\n**Bước 2.** Dùng $\\dfrac1x\\to0$ cho cả hai hướng $x\\to+\\infty$ và $x\\to-\\infty$.\n\n**Bước 3.** Tính tỉ số hai giới hạn rồi kết luận cho từng hướng.\n\n**Phần 2. Trình bày**\n\nVới $x\\ne0$: $\\dfrac{2x^2+1}{x^3-3x^2+2}=\\dfrac{\\dfrac2x+\\dfrac1{x^3}}{1-\\dfrac3x+\\dfrac2{x^3}}$.\n\nKhi $x\\to\\pm\\infty$: tử có giới hạn $0$, mẫu có giới hạn $1$.\n\nVậy cả hai giới hạn khi $x\\to+\\infty$ và khi $x\\to-\\infty$ đều bằng $0$.",
+    "kiem": [
+      "(()=>{const f=x=>(2*x*x+1)/(x**3-3*x*x+2);return [100000,-100000].every(x=>Math.abs(f(x)-(0))<0.001)})()"
+    ],
+    "sach_dap_so": "0",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-22a",
+    "vai": "luyen",
+    "dang_bai": "NDB01179",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Căn bậc ba và bậc hai khi x tiến tới -vô cực, giới hạn vô cực.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to-\\infty}\\dfrac{\\sqrt[3]{x^6-x^4+1}+\\sqrt{x^6+1}}{2x-1}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Rút luỹ thừa cao nhất khỏi từng căn, nhớ $\\sqrt{x^6}=|x|^3=-x^3$ khi $x<0$, rồi chia cho $x$ và xét dấu vô cực.\n\n**Bước 1.** Đưa $x^6$ ra khỏi từng căn: căn bậc ba cho $x^2$, căn bậc hai cho $|x|^3$.\n\n**Bước 2.** Chú ý $x<0$ nên $|x|^3=-x^3$, rồi chia tử và mẫu cho $x$.\n\n**Bước 3.** Xét dấu vô cực của tử sau khi chia và giới hạn dương của mẫu.\n\n**Phần 2. Trình bày**\n\nKhi $x<0$: $\\sqrt[3]{x^6-x^4+1}=x^2\\sqrt[3]{1-\\dfrac1{x^2}+\\dfrac1{x^6}}$ và $\\sqrt{x^6+1}=-x^3\\sqrt{1+\\dfrac1{x^6}}$.\n\nChia tử và mẫu cho $x$: biểu thức bằng $\\dfrac{x\\sqrt[3]{1-\\dfrac1{x^2}+\\dfrac1{x^6}}-x^2\\sqrt{1+\\dfrac1{x^6}}}{2-\\dfrac1x}$.\n\nKhi $x\\to-\\infty$: $x\\sqrt[3]{\\cdots}\\to-\\infty$ và $-x^2\\sqrt{\\cdots}\\to-\\infty$, nên tử $\\to-\\infty$; mẫu có giới hạn $2>0$.\n\nTheo quy tắc thương, giới hạn là $-\\infty$.\n\nVậy giới hạn bằng $-\\infty$.",
+    "kiem": [
+      "(()=>{const f=x=>(Math.cbrt(x**6-x**4+1)+Math.sqrt(x**6+1))/(2*x-1);return f(-100000)*-1>1e4})()"
+    ],
+    "sach_dap_so": "-∞",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-22b",
+    "vai": "luyen",
+    "dang_bai": "NDB01179",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tử có căn bậc thấp hơn mẫu, khi x tiến tới +vô cực.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to+\\infty}\\dfrac{x\\sqrt{x}+1}{x^2+x+1}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử có bậc $\\dfrac32$ thấp hơn bậc hai của mẫu, nên chia cả tử và mẫu cho $x^2$.\n\n**Bước 1.** Xác định bậc của tử là $\\dfrac32$ và bậc của mẫu là $2$.\n\n**Bước 2.** Chia cả tử và mẫu cho $x^2$ và viết $\\dfrac{x\\sqrt x}{x^2}=\\dfrac1{\\sqrt x}$.\n\n**Bước 3.** Dùng $\\dfrac1{\\sqrt x}\\to0$ để tính giới hạn của tử và mẫu.\n\n**Phần 2. Trình bày**\n\nVới $x>0$: $\\dfrac{x\\sqrt{x}+1}{x^2+x+1}=\\dfrac{\\dfrac1{\\sqrt x}+\\dfrac1{x^2}}{1+\\dfrac1x+\\dfrac1{x^2}}$.\n\nKhi $x\\to+\\infty$: tử có giới hạn $0$, mẫu có giới hạn $1$.\n\nVậy giới hạn bằng $0$.",
+    "kiem": [
+      "(()=>{const f=x=>(x*Math.sqrt(x)+1)/(x*x+x+1);return [100000000].every(x=>Math.abs(f(x)-(0))<0.001)})()"
+    ],
+    "sach_dap_so": "0",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-22c",
+    "vai": "luyen",
+    "dang_bai": "NDB01179",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Nhiều căn khi x tiến tới -vô cực.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to-\\infty}\\dfrac{\\sqrt{x^2+2x}+2-x}{\\sqrt{9x^2+1}-x+2}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khi $x<0$ thì $\\sqrt{x^2}=-x$; đưa $-x$ ra khỏi mỗi căn rồi chia tử và mẫu cho $x$.\n\n**Bước 1.** Viết từng căn thành $-x$ nhân với một căn có giới hạn hữu hạn vì $x<0$.\n\n**Bước 2.** Chia cả tử và mẫu cho $x$ để loại bỏ các thừa số $x$.\n\n**Bước 3.** Thay $\\dfrac1x\\to0$ và $\\dfrac1{x^2}\\to0$ rồi tính tỉ số.\n\n**Phần 2. Trình bày**\n\nKhi $x<0$: $\\sqrt{x^2+2x}=-x\\sqrt{1+\\dfrac2x}$ và $\\sqrt{9x^2+1}=-x\\sqrt{9+\\dfrac1{x^2}}$.\n\nChia tử và mẫu cho $x$: $\\dfrac{\\sqrt{x^2+2x}+2-x}{\\sqrt{9x^2+1}-x+2}=\\dfrac{-\\sqrt{1+\\dfrac2x}+\\dfrac2x-1}{-\\sqrt{9+\\dfrac1{x^2}}-1+\\dfrac2x}$.\n\nKhi $x\\to-\\infty$: tử có giới hạn $-1-1=-2$, mẫu có giới hạn $-3-1=-4$.\n\nDo đó giới hạn bằng $\\dfrac{-2}{-4}=\\dfrac12$.\n\nVậy giới hạn bằng $\\dfrac12$.",
+    "kiem": [
+      "(()=>{const f=x=>(Math.sqrt(x*x+2*x)+2-x)/(Math.sqrt(9*x*x+1)-x+2);return [-100000].every(x=>Math.abs(f(x)-(0.5))<0.001)})()"
+    ],
+    "sach_dap_so": "1/2",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-22d",
+    "vai": "luyen",
+    "dang_bai": "NDB01179",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Nhiều căn, xét riêng hai hướng x tiến tới +vô cực và -vô cực.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính $\\lim\\limits_{x\\to+\\infty}\\dfrac{\\sqrt{x^2+2x+3}+4x+1}{\\sqrt{4x^2+1}+2-x}$ và $\\lim\\limits_{x\\to-\\infty}\\dfrac{\\sqrt{x^2+2x+3}+4x+1}{\\sqrt{4x^2+1}+2-x}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Căn bậc hai cho $\\sqrt{x^2}=|x|$ nên hai hướng $x\\to+\\infty$ và $x\\to-\\infty$ khác dấu; xét riêng từng hướng rồi chia cho $x$.\n\n**Bước 1.** Viết từng căn thành $|x|$ nhân với một căn có giới hạn hữu hạn.\n\n**Bước 2.** Với $x>0$ thì $|x|=x$, với $x<0$ thì $|x|=-x$; chia tử và mẫu cho $x$ theo từng trường hợp.\n\n**Bước 3.** Thay $\\dfrac1x\\to0$ để tính giới hạn ở mỗi hướng.\n\n**Phần 2. Trình bày**\n\nKhi $x\\to+\\infty$ ($x>0$): $\\sqrt{x^2+2x+3}=x\\sqrt{1+\\dfrac2x+\\dfrac3{x^2}}$ và $\\sqrt{4x^2+1}=x\\sqrt{4+\\dfrac1{x^2}}$.\n\nChia tử và mẫu cho $x$: $\\dfrac{\\sqrt{1+\\dfrac2x+\\dfrac3{x^2}}+4+\\dfrac1x}{\\sqrt{4+\\dfrac1{x^2}}+\\dfrac2x-1}\\to\\dfrac{1+4}{2-1}=5$.\n\nKhi $x\\to-\\infty$ ($x<0$): $\\sqrt{x^2+2x+3}=-x\\sqrt{1+\\dfrac2x+\\dfrac3{x^2}}$ và $\\sqrt{4x^2+1}=-x\\sqrt{4+\\dfrac1{x^2}}$.\n\nChia tử và mẫu cho $x$: $\\dfrac{-\\sqrt{1+\\dfrac2x+\\dfrac3{x^2}}+4+\\dfrac1x}{-\\sqrt{4+\\dfrac1{x^2}}+\\dfrac2x-1}\\to\\dfrac{-1+4}{-2-1}=-1$.\n\nVậy giới hạn bằng $5$ khi $x\\to+\\infty$ và bằng $-1$ khi $x\\to-\\infty$.",
+    "kiem": [
+      "(()=>{const f=x=>(Math.sqrt(x*x+2*x+3)+4*x+1)/(Math.sqrt(4*x*x+1)+2-x);return [100000].every(x=>Math.abs(f(x)-(5))<0.001)})()",
+      "(()=>{const f=x=>(Math.sqrt(x*x+2*x+3)+4*x+1)/(Math.sqrt(4*x*x+1)+2-x);return [-100000].every(x=>Math.abs(f(x)-(-1))<0.001)})()"
+    ],
+    "sach_dap_so": "5 và -1",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-23a",
+    "vai": "luyen",
+    "dang_bai": "NDB01179",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Nhiều căn lồng nhau khi x tiến tới +vô cực, giới hạn vô cực.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to+\\infty}\\dfrac{(x-1)\\sqrt{x^2+x\\sqrt{x}+1}}{\\sqrt{x^2+1}+2x}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Với $x>0$, đưa $x$ ra khỏi các căn, chia tử và mẫu cho $x$ rồi xét thừa số $x-1\\to+\\infty$ nhân với giới hạn dương.\n\n**Bước 1.** Đưa $x^2$ ra khỏi từng căn, với $x>0$ thì $\\sqrt{x^2}=x$.\n\n**Bước 2.** Chia tử và mẫu cho $x$ để các căn còn lại có giới hạn hữu hạn.\n\n**Bước 3.** Tách thừa số $x-1\\to+\\infty$ nhân với phân thức có giới hạn dương rồi áp dụng quy tắc tích.\n\n**Phần 2. Trình bày**\n\nVới $x>0$: $\\sqrt{x^2+x\\sqrt{x}+1}=x\\sqrt{1+\\dfrac1{\\sqrt x}+\\dfrac1{x^2}}$ và $\\sqrt{x^2+1}=x\\sqrt{1+\\dfrac1{x^2}}$.\n\nDo đó biểu thức bằng $(x-1)\\cdot\\dfrac{\\sqrt{1+\\dfrac1{\\sqrt x}+\\dfrac1{x^2}}}{\\sqrt{1+\\dfrac1{x^2}}+2}$.\n\nKhi $x\\to+\\infty$: $x-1\\to+\\infty$ và phân thức có giới hạn $\\dfrac13>0$.\n\nTheo quy tắc tích, giới hạn là $+\\infty$.\n\nVậy giới hạn bằng $+\\infty$.",
+    "kiem": [
+      "(()=>{const f=x=>(x-1)*Math.sqrt(x*x+x*Math.sqrt(x)+1)/(Math.sqrt(x*x+1)+2*x);return f(100000)*1>1e4})()"
+    ],
+    "sach_dap_so": "+∞",
+    "ghi_chu": "Lời giải sách làm ở x→-∞ (căn x không xác định), kết quả +∞ trùng đáp số của đề x→+∞ in."
+  },
+  {
+    "id": "nbv-b2-f-23b",
+    "vai": "luyen",
+    "dang_bai": "NDB01178",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Phân thức hữu tỉ tích nhiều nhân tử, tử và mẫu cùng bậc năm.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to-\\infty}\\dfrac{(x-1)(2x-1)(3x-1)(4x-1)(5x-1)}{(4x+5)^5}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu cùng bậc năm, nên chia mỗi nhân tử cho $x$ rồi dùng $\\dfrac1x\\to0$.\n\n**Bước 1.** Nhận ra tử và mẫu đều có bậc năm theo $x$.\n\n**Bước 2.** Chia từng nhân tử ở tử và mẫu cho $x$, tổng cộng chia cho $x^5$.\n\n**Bước 3.** Thay $\\dfrac1x\\to0$ rồi tính tích và luỹ thừa.\n\n**Phần 2. Trình bày**\n\nChia tử và mẫu cho $x^5$ (với $x\\ne0$): biểu thức bằng $\\dfrac{(1-\\dfrac1x)(2-\\dfrac1x)(3-\\dfrac1x)(4-\\dfrac1x)(5-\\dfrac1x)}{(4+\\dfrac5x)^5}$.\n\nKhi $x\\to-\\infty$: tử có giới hạn $1\\cdot2\\cdot3\\cdot4\\cdot5=120$, mẫu có giới hạn $4^5=1024$.\n\nDo đó giới hạn bằng $\\dfrac{120}{1024}=\\dfrac{15}{128}$.\n\nVậy giới hạn bằng $\\dfrac{15}{128}$.",
+    "kiem": [
+      "(()=>{const f=x=>(x-1)*(2*x-1)*(3*x-1)*(4*x-1)*(5*x-1)/(4*x+5)**5;return [-100000].every(x=>Math.abs(f(x)-(15/128))<0.001)})()"
+    ],
+    "sach_dap_so": "15/128",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-23d",
+    "vai": "luyen",
+    "dang_bai": "NDB01181",
+    "dang_bai_chac": "cao",
+    "dang_bai_ly_do": "Tích dạng vô cùng nhân 0 với căn bậc ba, liên hợp bậc ba.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to+\\infty}x^2(\\sqrt[3]{x^3+1}-x)$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đây là dạng $\\infty\\cdot0$; dùng $a-b=\\dfrac{a^3-b^3}{a^2+ab+b^2}$ với $a=\\sqrt[3]{x^3+1}$, $b=x$ để đưa về phân thức.\n\n**Bước 1.** Nhận ra dạng $\\infty\\cdot0$ vì $x^2\\to+\\infty$ còn $\\sqrt[3]{x^3+1}-x\\to0$.\n\n**Bước 2.** Nhân và chia hiệu hai căn với $a^2+ab+b^2$ để tử thành $a^3-b^3=1$.\n\n**Bước 3.** Chia tử và mẫu cho $x^2$ rồi thay $\\dfrac1{x^3}\\to0$.\n\n**Phần 2. Trình bày**\n\nĐặt $a=\\sqrt[3]{x^3+1}$, $b=x$ thì $a^3-b^3=1$ và $a-b=\\dfrac{1}{a^2+ab+b^2}$.\n\n$x^2(a-b)=\\dfrac{x^2}{a^2+ab+b^2}$.\n\nVới $x>0$, chia tử và mẫu cho $x^2$: $\\dfrac{1}{(\\sqrt[3]{1+\\dfrac1{x^3}})^2+\\sqrt[3]{1+\\dfrac1{x^3}}+1}$.\n\nKhi $x\\to+\\infty$: mẫu có giới hạn $1+1+1=3$.\n\nVậy giới hạn bằng $\\dfrac13$.",
+    "kiem": [
+      "(()=>{const f=x=>x*x*(Math.cbrt(x**3+1)-x);return [1000].every(x=>Math.abs(f(x)-(1/3))<0.002)})()"
+    ],
+    "sach_dap_so": "1/3",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-24a",
+    "vai": "luyen",
+    "dang_bai": "NDB01179",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Giá trị tuyệt đối của luỹ thừa khi x tiến tới -vô cực.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to-\\infty}\\dfrac{|2x|^3-|x|+1}{4|x^3|+x^2+1}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khi $x<0$ mọi giá trị tuyệt đối đều quy về luỹ thừa của $|x|$, nên chia tử và mẫu cho $|x|^3$.\n\n**Bước 1.** Viết $|2x|^3=8|x|^3$ và $|x^3|=|x|^3$ để mọi số hạng đều theo $|x|$.\n\n**Bước 2.** Chia cả tử và mẫu cho $|x|^3$, chú ý $x^2=|x|^2$.\n\n**Bước 3.** Dùng $|x|\\to+\\infty$ nên $\\dfrac1{|x|}\\to0$ để tính giới hạn.\n\n**Phần 2. Trình bày**\n\nTa có $|2x|^3=8|x|^3$, $|x^3|=|x|^3$ và $x^2=|x|^2$.\n\nChia tử và mẫu cho $|x|^3$: biểu thức bằng $\\dfrac{8-\\dfrac1{|x|^2}+\\dfrac1{|x|^3}}{4+\\dfrac1{|x|}+\\dfrac1{|x|^3}}$.\n\nKhi $x\\to-\\infty$ thì $|x|\\to+\\infty$: tử có giới hạn $8$, mẫu có giới hạn $4$.\n\nVậy giới hạn bằng $\\dfrac84=2$.",
+    "kiem": [
+      "(()=>{const f=x=>(Math.abs(2*x)**3-Math.abs(x)+1)/(4*Math.abs(x**3)+x*x+1);return [-100000].every(x=>Math.abs(f(x)-(2))<0.001)})()"
+    ],
+    "sach_dap_so": "2",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-24b",
+    "vai": "luyen",
+    "dang_bai": "NDB01179",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Giá trị tuyệt đối lồng căn khi x tiến tới -vô cực.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to-\\infty}\\dfrac{|x\\sqrt{x^2+3}+1|}{|x^2-1|+x}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khi $x\\to-\\infty$ xét dấu biểu thức trong từng giá trị tuyệt đối để bỏ dấu, rồi chia tử và mẫu cho $x^2$.\n\n**Bước 1.** Xét dấu $x\\sqrt{x^2+3}+1$ và $x^2-1$ khi $x$ là số âm có giá trị tuyệt đối rất lớn.\n\n**Bước 2.** Bỏ dấu giá trị tuyệt đối theo dấu vừa tìm, đưa $|x|$ ra khỏi căn.\n\n**Bước 3.** Chia tử và mẫu cho $x^2$ rồi thay $\\dfrac1x\\to0$.\n\n**Phần 2. Trình bày**\n\nVới $x<-1$: $x\\sqrt{x^2+3}<0$ và $|x|\\sqrt{x^2+3}>1$ nên $x\\sqrt{x^2+3}+1<0$, do đó $|x\\sqrt{x^2+3}+1|=-x\\sqrt{x^2+3}-1$.\n\nVới $x<-1$: $x^2-1>0$ nên $|x^2-1|=x^2-1$.\n\nVì $x<0$: $-x\\sqrt{x^2+3}=x^2\\sqrt{1+\\dfrac3{x^2}}$.\n\nChia tử và mẫu cho $x^2$: biểu thức bằng $\\dfrac{\\sqrt{1+\\dfrac3{x^2}}-\\dfrac1{x^2}}{1+\\dfrac1x-\\dfrac1{x^2}}$.\n\nKhi $x\\to-\\infty$: giới hạn bằng $\\dfrac11=1$.\n\nVậy giới hạn bằng $1$.",
+    "kiem": [
+      "(()=>{const f=x=>Math.abs(x*Math.sqrt(x*x+3)+1)/(Math.abs(x*x-1)+x);return [-100000].every(x=>Math.abs(f(x)-(1))<0.001)})()"
+    ],
+    "sach_dap_so": "1",
+    "ghi_chu": ""
+  },
+  {
+    "id": "nbv-b2-f-27b",
+    "vai": "luyen",
+    "dang_bai": "NDB01172",
+    "dang_bai_chac": "vua",
+    "dang_bai_ly_do": "Một căn thức chứa sin, nhân liên hợp, dùng sin^2+cos^2=1.",
+    "loai_cau": "tu_luan",
+    "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to0}\\dfrac{\\sqrt{1+\\sin^2x}-\\cos x}{\\sin^2x}$.",
+    "dap_an": "—",
+    "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử có một căn thức nên nhân liên hợp, rồi dùng $\\sin^2x+\\cos^2x=1$ để tử xuất hiện nhân tử $\\sin^2x$.\n\n**Bước 1.** Nhận ra dạng $\\dfrac00$ khi $x\\to0$ và nhân tử và mẫu với liên hợp của tử.\n\n**Bước 2.** Dùng $\\sin^2x+\\cos^2x=1$ để biến tử thành bội của $\\sin^2x$.\n\n**Bước 3.** Triệt $\\sin^2x$ (khác $0$ khi $x$ gần $0$ và khác $0$) rồi thay $x=0$.\n\n**Phần 2. Trình bày**\n\nKhi $x\\to0$: tử $\\to1-1=0$ và mẫu $\\to0$ nên là dạng $\\dfrac00$.\n\nNhân tử và mẫu với $\\sqrt{1+\\sin^2x}+\\cos x>0$. Với $x\\ne0$ gần $0$:\n\n$\\dfrac{\\sqrt{1+\\sin^2x}-\\cos x}{\\sin^2x}=\\dfrac{1+\\sin^2x-\\cos^2x}{\\sin^2x\\,(\\sqrt{1+\\sin^2x}+\\cos x)}$.\n\nVì $\\cos^2x=1-\\sin^2x$ nên $1+\\sin^2x-\\cos^2x=2\\sin^2x$, do đó biểu thức bằng $\\dfrac{2}{\\sqrt{1+\\sin^2x}+\\cos x}$.\n\nKhi $x\\to0$: $\\sin x\\to0$, $\\cos x\\to1$ nên giới hạn bằng $\\dfrac{2}{1+1}=1$.\n\nVậy giới hạn bằng $1$.",
+    "kiem": [
+      "(()=>{const f=x=>(Math.sqrt(1+Math.sin(x)**2)-Math.cos(x))/Math.sin(x)**2;return Math.abs(f(0+0.001)-(1))<0.002&&Math.abs(f(0-0.001)-(1))<0.002})()"
+    ],
+    "sach_dap_so": "1",
+    "ghi_chu": "Chỉ dùng liên hợp và sin^2+cos^2=1, không dùng giới hạn đặc biệt sin x / x."
+  }
+]

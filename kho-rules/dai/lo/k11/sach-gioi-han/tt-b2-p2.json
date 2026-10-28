@@ -1,0 +1,979 @@
+[
+ {
+  "id": "tt-b2-p2-C14",
+  "vai": "luyen",
+  "dang_bai": "NDB01184",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Thương có tử giới hạn dương, mẫu →0 dấu cố định; gần cả dạng L/0 (NDB01182).",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Biết $\\lim\\limits_{x\\to-1}f(x)=4$. Khi đó $\\lim\\limits_{x\\to-1}\\dfrac{f(x)}{(x+1)^4}$ bằng:",
+  "lua_chon": [
+   "$-\\infty$",
+   "$4$",
+   "$+\\infty$",
+   "$0$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử có giới hạn khác $0$ còn mẫu dần về $0$, nên kết luận giới hạn vô cực phải dựa vào dấu của tử và dấu của mẫu.\n\n**Bước 1.** Xác định dấu của giới hạn của tử $f(x)$ khi $x$ dần tới $-1$.\n\n**Bước 2.** Xét mẫu $(x+1)^4$: tìm giới hạn của nó và dấu của nó với mọi $x\\ne-1$.\n\n**Bước 3.** Áp dụng quy tắc giới hạn của thương khi mẫu dần về $0$ để suy ra dấu của vô cực.\n\n**Phần 2. Trình bày**\n\nTa có $\\lim\\limits_{x\\to-1}f(x)=4>0$.\n\nTa có $\\lim\\limits_{x\\to-1}(x+1)^4=0$ và $(x+1)^4>0$ với mọi $x\\ne-1$.\n\nVậy $\\lim\\limits_{x\\to-1}\\dfrac{f(x)}{(x+1)^4}=+\\infty$.\n\nChọn C.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const g=x=>(4+(x+1))/((x+1)**4);const o=[-Infinity,4,Infinity,0];return chk(o,[F(g,-1,1),F(g,-1,-1)],2)})()"
+  ],
+  "sach_dap_so": "C",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C15",
+  "vai": "luyen",
+  "dang_bai": "NDB01183",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Đa thức khi x→-∞, rút luỹ thừa cao nhất, xét dấu.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to-\\infty}(2x^3-x^2+1)$.",
+  "lua_chon": [
+   "$+\\infty$",
+   "$-\\infty$",
+   "$2$",
+   "$0$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Với đa thức khi $x\\to-\\infty$, ta rút luỹ thừa bậc cao nhất ra ngoài rồi xét dấu của tích.\n\n**Bước 1.** Rút $x^3$ ra ngoài dấu ngoặc để đưa biểu thức về dạng tích của hai thừa số.\n\n**Bước 2.** Tìm giới hạn của $x^3$ và giới hạn của nhân tử còn lại khi $x\\to-\\infty$.\n\n**Bước 3.** Áp dụng quy tắc giới hạn của tích, chú ý dấu của hai giới hạn.\n\n**Phần 2. Trình bày**\n\n$\\lim\\limits_{x\\to-\\infty}(2x^3-x^2+1)=\\lim\\limits_{x\\to-\\infty}x^3\\cdot(2-\\dfrac1x+\\dfrac1{x^3})$.\n\nTa có $\\lim\\limits_{x\\to-\\infty}x^3=-\\infty$ và $\\lim\\limits_{x\\to-\\infty}(2-\\dfrac1x+\\dfrac1{x^3})=2>0$.\n\nVậy $\\lim\\limits_{x\\to-\\infty}(2x^3-x^2+1)=-\\infty$.\n\nChọn B.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const g=x=>2*x**3-x**2+1;return pick([Infinity,-Infinity,2,0],I(g,-1))===1})()"
+  ],
+  "sach_dap_so": "B",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C16",
+  "vai": "luyen",
+  "dang_bai": null,
+  "dang_bai_ly_do": "Giới hạn tại vô cực của hàm lượng giác chặn bởi 1/x (dùng kẹp); bản đồ thiếu dạng kẹp tại vô cực.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Giới hạn $\\lim\\limits_{x\\to+\\infty}\\dfrac{\\sin x+1}{x}$ bằng",
+  "lua_chon": [
+   "$+\\infty$",
+   "$1$",
+   "$-\\infty$",
+   "$0$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử bị chặn còn mẫu tăng vô hạn, nên ta chặn hàm số giữa hai biểu thức cùng có giới hạn rồi dùng dãy số bất kì.\n\n**Bước 1.** Dùng tính chất $|\\sin x|\\le1$ để chặn tử số giữa hai giá trị không đổi.\n\n**Bước 2.** Với $x>0$, chia các bất đẳng thức cho $x$ để chặn cả hàm số giữa hai biểu thức đơn giản.\n\n**Bước 3.** Lấy dãy $(x_n)$ bất kì với $x_n\\to+\\infty$, tính giới hạn của hai vế chặn rồi dùng nguyên lí kẹp cho dãy số.\n\n**Phần 2. Trình bày**\n\nVì $-1\\le\\sin x\\le1$ nên $0\\le\\sin x+1\\le2$.\n\nVới $x>0$ ta có $0\\le\\dfrac{\\sin x+1}{x}\\le\\dfrac2x$.\n\nLấy dãy $(x_n)$ bất kì sao cho $x_n>0$ và $x_n\\to+\\infty$. Khi đó $0\\le\\dfrac{\\sin x_n+1}{x_n}\\le\\dfrac2{x_n}$ và $\\lim\\dfrac2{x_n}=0$.\n\nTheo nguyên lí kẹp, $\\lim\\dfrac{\\sin x_n+1}{x_n}=0$.\n\nVậy $\\lim\\limits_{x\\to+\\infty}\\dfrac{\\sin x+1}{x}=0$.\n\nChọn D.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const g=x=>(Math.sin(x)+1)/x;return pick([Infinity,1,-Infinity,0],I(g,1))===3&&Math.abs(g(1e7+0.5))<1e-6})()"
+  ],
+  "sach_dap_so": "D",
+  "ghi_chu": "Sách dùng lim sin x / x = 0 (ngoài phạm vi); đã giải bằng kẹp dãy."
+ },
+ {
+  "id": "tt-b2-p2-C17",
+  "vai": "luyen",
+  "dang_bai": "NDB01171",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Phân thức hữu tỉ dạng 0/0, phân tích nhân tử.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tính $\\lim\\limits_{x\\to5}\\dfrac{x^2-12x+35}{25-5x}$.",
+  "lua_chon": [
+   "$-\\dfrac25$",
+   "$+\\infty$",
+   "$\\dfrac25$",
+   "$-\\infty$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thay $x=5$ thì cả tử và mẫu đều bằng $0$, nên phải phân tích thành nhân tử và triệt tiêu nhân tử chung $x-5$.\n\n**Bước 1.** Kiểm tra bằng cách thay $x=5$ vào tử và mẫu để nhận ra dạng $\\dfrac00$.\n\n**Bước 2.** Phân tích tử thành nhân tử và đặt hệ số chung ở mẫu để lộ nhân tử $x-5$.\n\n**Bước 3.** Rút gọn nhân tử chung rồi thay $x=5$ vào biểu thức còn lại.\n\n**Phần 2. Trình bày**\n\nVới $x\\ne5$: $\\dfrac{x^2-12x+35}{25-5x}=\\dfrac{(x-5)(x-7)}{-5(x-5)}=\\dfrac{x-7}{-5}$.\n\n$\\lim\\limits_{x\\to5}\\dfrac{x^2-12x+35}{25-5x}=\\lim\\limits_{x\\to5}\\dfrac{x-7}{-5}=\\dfrac{5-7}{-5}=\\dfrac25$.\n\nVậy giới hạn bằng $\\dfrac25$.\n\nChọn C.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const g=x=>(x*x-12*x+35)/(25-5*x);return chk([-0.4,Infinity,0.4,-Infinity],[F(g,5,1),F(g,5,-1)],2)})()"
+  ],
+  "sach_dap_so": "C",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C18",
+  "vai": "luyen",
+  "dang_bai": "NDB01171",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Phân thức dạng 0/0, hằng đẳng thức hiệu hai bình phương.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tính $\\lim\\limits_{x\\to3}\\dfrac{x^2-9}{x-3}$ bằng:",
+  "lua_chon": [
+   "$3$",
+   "$6$",
+   "$+\\infty$",
+   "$-3$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu cùng triệt tiêu tại $x=3$, nên dùng hằng đẳng thức để rút gọn nhân tử $x-3$.\n\n**Bước 1.** Thay $x=3$ vào tử và mẫu để nhận ra dạng vô định $\\dfrac00$.\n\n**Bước 2.** Phân tích tử thành tích hai nhân tử bằng hằng đẳng thức hiệu hai bình phương.\n\n**Bước 3.** Rút gọn nhân tử chung rồi thay $x=3$ vào kết quả.\n\n**Phần 2. Trình bày**\n\nVới $x\\ne3$: $\\dfrac{x^2-9}{x-3}=\\dfrac{(x-3)(x+3)}{x-3}=x+3$.\n\n$\\lim\\limits_{x\\to3}\\dfrac{x^2-9}{x-3}=\\lim\\limits_{x\\to3}(x+3)=6$.\n\nVậy giới hạn bằng $6$.\n\nChọn B.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const g=x=>(x*x-9)/(x-3);return chk([3,6,Infinity,-3],[F(g,3,1),F(g,3,-1)],1)})()"
+  ],
+  "sach_dap_so": "B",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C19",
+  "vai": "luyen",
+  "dang_bai": "NDB01171",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Phân thức dạng 0/0, phân tích tam thức bậc hai.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tính $L=\\lim\\limits_{x\\to1}\\dfrac{x^2+3x-4}{x-1}$.",
+  "lua_chon": [
+   "$L=-5$",
+   "$L=0$",
+   "$L=-3$",
+   "$L=5$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử có nghiệm $x=1$ nên chia được cho $x-1$; ta phân tích tử rồi triệt tiêu nhân tử chung.\n\n**Bước 1.** Thay $x=1$ để kiểm tra dạng $\\dfrac00$ của giới hạn.\n\n**Bước 2.** Phân tích tam thức ở tử thành tích có chứa nhân tử $x-1$.\n\n**Bước 3.** Rút gọn nhân tử chung rồi thay $x=1$ vào biểu thức còn lại.\n\n**Phần 2. Trình bày**\n\nVới $x\\ne1$: $\\dfrac{x^2+3x-4}{x-1}=\\dfrac{(x-1)(x+4)}{x-1}=x+4$.\n\n$L=\\lim\\limits_{x\\to1}(x+4)=5$.\n\nVậy $L=5$.\n\nChọn D.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const g=x=>(x*x+3*x-4)/(x-1);return chk([-5,0,-3,5],[F(g,1,1),F(g,1,-1)],3)})()"
+  ],
+  "sach_dap_so": "D",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C20",
+  "vai": "luyen",
+  "dang_bai": "NDB01177",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Hàm hai công thức, tìm tham số để giới hạn tồn tại; gần cả NDB01174 (0/0 có tham số).",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Gọi $a,b$ là các giá trị để hàm số $f(x)=\\begin{cases}\\dfrac{x^2+ax+b}{x^2-4}&\\text{nếu }x<-2\\\\x+1&\\text{nếu }x\\ge-2\\end{cases}$ có giới hạn hữu hạn khi $x$ dần tới $-2$. Tính $3a-b$.",
+  "lua_chon": [
+   "$8$",
+   "$4$",
+   "$24$",
+   "$12$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn tại $-2$ tồn tại khi giới hạn trái bằng giới hạn phải, và nhánh trái có mẫu dần về $0$ nên tử cũng phải triệt tiêu tại $-2$.\n\n**Bước 1.** Tính giới hạn phải của hàm số tại $-2$ từ nhánh $x\\ge-2$.\n\n**Bước 2.** Vì mẫu nhánh trái dần về $0$ mà giới hạn hữu hạn, suy ra tử triệt tiêu tại $x=-2$, từ đó biểu diễn $b$ theo $a$.\n\n**Bước 3.** Phân tích tử và rút gọn nhân tử $x+2$ ở nhánh trái, rồi tính giới hạn trái theo $a$.\n\n**Bước 4.** Cho giới hạn trái bằng giới hạn phải để tìm $a$, $b$ rồi tính biểu thức cần tìm.\n\n**Phần 2. Trình bày**\n\nGiới hạn phải: $\\lim\\limits_{x\\to-2^+}f(x)=\\lim\\limits_{x\\to-2^+}(x+1)=-1$.\n\nKhi $x\\to-2^-$ mẫu $x^2-4\\to0$ mà giới hạn hữu hạn nên tử phải bằng $0$ tại $x=-2$: $4-2a+b=0$, tức $b=2a-4$.\n\nKhi đó $x^2+ax+b=x^2+ax+2a-4=(x+2)(x+a-2)$.\n\nVới $x<-2$: $f(x)=\\dfrac{(x+2)(x+a-2)}{(x+2)(x-2)}=\\dfrac{x+a-2}{x-2}$ nên $\\lim\\limits_{x\\to-2^-}f(x)=\\dfrac{a-4}{-4}$.\n\nGiới hạn tồn tại khi $\\dfrac{a-4}{-4}=-1$, suy ra $a=8$ và $b=12$.\n\nVậy $3a-b=24-12=12$.\n\nChọn D.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const a=8,b=12;const L=x=>(x*x+a*x+b)/(x*x-4);const Rr=x=>x+1;return eq(F(L,-2,-1),-1)&&eq(F(Rr,-2,1),-1)&&3*a-b===12&&pick([8,4,24,12],3*a-b)===3&&4-2*a+b===0})()"
+  ],
+  "sach_dap_so": "D",
+  "ghi_chu": "Lời giải sách viết nhân tử x-2 (in nhầm); đáp số D khớp."
+ },
+ {
+  "id": "tt-b2-p2-C21",
+  "vai": "luyen",
+  "dang_bai": "NDB01180",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Hiệu căn thức và x khi x→-∞ (dạng ∞-∞), rút x ra ngoài; kết quả vô cực.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tính $\\lim\\limits_{x\\to-\\infty}(\\sqrt{2x^2+x}+x)$.",
+  "lua_chon": [
+   "$+\\infty$",
+   "$-1$",
+   "$-\\infty$",
+   "$0$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khi $x\\to-\\infty$ thì $\\sqrt{x^2}=-x$; ta đưa $x$ ra ngoài căn rồi rút nhân tử chung để xét dấu của hai thừa số.\n\n**Bước 1.** Đưa $x^2$ ra ngoài căn và nhớ rằng $\\sqrt{x^2}=|x|=-x$ vì $x<0$.\n\n**Bước 2.** Rút $x$ làm nhân tử chung của cả biểu thức để có dạng tích.\n\n**Bước 3.** Tính giới hạn của $x$ và của nhân tử còn lại, so sánh $\\sqrt2$ với $1$ để xác định dấu.\n\n**Bước 4.** Áp dụng quy tắc giới hạn của tích để kết luận.\n\n**Phần 2. Trình bày**\n\n$\\sqrt{2x^2+x}=\\sqrt{x^2(2+\\dfrac1x)}=|x|\\sqrt{2+\\dfrac1x}=-x\\sqrt{2+\\dfrac1x}$ (vì $x<0$).\n\nDo đó $\\sqrt{2x^2+x}+x=x(1-\\sqrt{2+\\dfrac1x})$.\n\nTa có $\\lim\\limits_{x\\to-\\infty}x=-\\infty$ và $\\lim\\limits_{x\\to-\\infty}(1-\\sqrt{2+\\dfrac1x})=1-\\sqrt2<0$.\n\nVậy $\\lim\\limits_{x\\to-\\infty}(\\sqrt{2x^2+x}+x)=+\\infty$.\n\nChọn A.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const g=x=>Math.sqrt(2*x*x+x)+x;return pick([Infinity,-1,-Infinity,0],I(g,-1))===0})()"
+  ],
+  "sach_dap_so": "A",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C22",
+  "vai": "luyen",
+  "dang_bai": "NDB01178",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Phân thức hữu tỉ (dạng tích luỹ thừa) cùng bậc khi x→-∞.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho hàm số $f(x)=\\dfrac{(4x+1)^3(2x+1)^4}{(3+2x)^7}$. Tính $\\lim\\limits_{x\\to-\\infty}f(x)$.",
+  "lua_chon": [
+   "$2$",
+   "$8$",
+   "$4$",
+   "$0$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu đều có bậc $7$ theo $x$, nên chia cả tử và mẫu cho $x^7$ rồi dùng $\\lim\\dfrac1x=0$.\n\n**Bước 1.** Đếm bậc của tử và mẫu để chọn luỹ thừa $x^7$ cần chia.\n\n**Bước 2.** Chia từng thừa số cho luỹ thừa $x$ tương ứng để mỗi nhân tử có dạng hằng số cộng với $\\dfrac1x$.\n\n**Bước 3.** Cho $x\\to-\\infty$ và thay các giới hạn $\\dfrac1x\\to0$ để tính kết quả.\n\n**Phần 2. Trình bày**\n\n$f(x)=\\dfrac{(4+\\dfrac1x)^3(2+\\dfrac1x)^4}{(\\dfrac3x+2)^7}$ (chia tử và mẫu cho $x^7$).\n\n$\\lim\\limits_{x\\to-\\infty}f(x)=\\dfrac{4^3\\cdot2^4}{2^7}=\\dfrac{64\\cdot16}{128}=8$.\n\nVậy giới hạn bằng $8$.\n\nChọn B.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const g=x=>(4*x+1)**3*(2*x+1)**4/(3+2*x)**7;return pick([2,8,4,0],I(g,-1))===1})()"
+  ],
+  "sach_dap_so": "B",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C23",
+  "vai": "luyen",
+  "dang_bai": null,
+  "dang_bai_ly_do": "Tìm tham số để giới hạn tại vô cực thoả điều kiện cho trước; bản đồ thiếu dạng này.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tìm tất cả các giá trị thực của tham số $m$ thoả mãn $\\lim\\limits_{x\\to-\\infty}\\dfrac{mx^2-7x+5}{2x^2+8x-1}=-4$.",
+  "lua_chon": [
+   "$m=-4$",
+   "$m=-8$",
+   "$m=2$",
+   "$m=-3$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu cùng bậc hai, nên giới hạn tại vô cực bằng tỉ số hai hệ số cao nhất; ta lập phương trình theo $m$.\n\n**Bước 1.** Chia cả tử và mẫu cho $x^2$ để mỗi số hạng chứa $x$ có dạng hằng số nhân với luỹ thừa của $\\dfrac1x$.\n\n**Bước 2.** Tính giới hạn của biểu thức theo $m$ khi $x\\to-\\infty$.\n\n**Bước 3.** Cho giới hạn đó bằng giá trị đề bài rồi giải phương trình tìm $m$.\n\n**Phần 2. Trình bày**\n\n$\\lim\\limits_{x\\to-\\infty}\\dfrac{mx^2-7x+5}{2x^2+8x-1}=\\lim\\limits_{x\\to-\\infty}\\dfrac{m-\\dfrac7x+\\dfrac5{x^2}}{2+\\dfrac8x-\\dfrac1{x^2}}=\\dfrac m2$.\n\nGiới hạn bằng $-4$ nên $\\dfrac m2=-4$.\n\nVậy $m=-8$.\n\nChọn B.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const o=[-4,-8,2,-3];const v=o.map(m=>I(x=>(m*x*x-7*x+5)/(2*x*x+8*x-1),-1));return v.map((t,i)=>Math.abs(t+4)<2e-3?i:-1).filter(i=>i>=0).join()==='1'})()"
+  ],
+  "sach_dap_so": "B",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C24",
+  "vai": "luyen",
+  "dang_bai": null,
+  "dang_bai_ly_do": "Tìm tham số để giới hạn tại vô cực thoả điều kiện cho trước; bản đồ thiếu dạng này.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Biết $\\lim\\limits_{x\\to+\\infty}\\dfrac{ax+\\sqrt{x^2-3x+5}}{2x-7}=2$. Khi đó",
+  "lua_chon": [
+   "$-1\\le a\\le2$",
+   "$a<-1$",
+   "$a\\ge5$",
+   "$2<a<5$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia cả tử và mẫu cho $x$ với $x>0$ để đưa căn về dạng $\\sqrt{1-\\dfrac3x+\\dfrac5{x^2}}$, rồi lập phương trình theo $a$.\n\n**Bước 1.** Với $x>0$, đưa $x^2$ ra ngoài căn và nhận ra $\\sqrt{x^2}=x$.\n\n**Bước 2.** Chia tử và mẫu cho $x$ và tính giới hạn của biểu thức theo $a$.\n\n**Bước 3.** Giải phương trình tìm $a$ rồi đối chiếu với các khoảng ở bốn phương án.\n\n**Phần 2. Trình bày**\n\nVới $x>0$: $\\sqrt{x^2-3x+5}=x\\sqrt{1-\\dfrac3x+\\dfrac5{x^2}}$.\n\n$\\lim\\limits_{x\\to+\\infty}\\dfrac{ax+\\sqrt{x^2-3x+5}}{2x-7}=\\lim\\limits_{x\\to+\\infty}\\dfrac{a+\\sqrt{1-\\dfrac3x+\\dfrac5{x^2}}}{2-\\dfrac7x}=\\dfrac{a+1}{2}$.\n\nGiới hạn bằng $2$ nên $\\dfrac{a+1}2=2$, suy ra $a=3$.\n\nVì $2<3<5$ nên $a$ thuộc khoảng ở phương án D.\n\nChọn D.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const h=a=>I(x=>(a*x+Math.sqrt(x*x-3*x+5))/(2*x-7),1);const inn=a=>[a>=-1&&a<=2,a<-1,a>=5,a>2&&a<5].map((b,i)=>b?i:-1).filter(i=>i>=0).join();return eq(h(3),2)&&!eq(h(5),2)&&inn(3)==='3'})()"
+  ],
+  "sach_dap_so": "D",
+  "ghi_chu": "Lời giải sách in sai bước cuối (a=5); đúng là a=3, đáp án D vẫn khớp."
+ },
+ {
+  "id": "tt-b2-p2-C25",
+  "vai": "luyen",
+  "dang_bai": null,
+  "dang_bai_ly_do": "Tìm tham số để giới hạn tại vô cực thoả điều kiện cho trước; bản đồ thiếu dạng này.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho $\\lim\\limits_{x\\to+\\infty}(\\dfrac{x^2+3x+1}{x+1}+ax+b)=1$. Khi đó giá trị của biểu thức $T=a+b$ bằng",
+  "lua_chon": [
+   "$-2$",
+   "$0$",
+   "$1$",
+   "$2$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quy đồng về một phân thức; giới hạn hữu hạn khi $x\\to+\\infty$ buộc hệ số của luỹ thừa cao nhất ở tử phải bằng $0$.\n\n**Bước 1.** Quy đồng biểu thức trong ngoặc thành một phân thức có mẫu $x+1$ và gom tử theo luỹ thừa của $x$.\n\n**Bước 2.** Vì giới hạn hữu hạn nên hệ số của $x^2$ ở tử phải bằng $0$; từ đó tìm $a$.\n\n**Bước 3.** Khi đó tử chỉ còn bậc nhất, chia cho $x$ và cho giới hạn bằng $1$ để tìm $b$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{x^2+3x+1}{x+1}+ax+b=\\dfrac{x^2+3x+1+(ax+b)(x+1)}{x+1}=\\dfrac{(a+1)x^2+(a+b+3)x+b+1}{x+1}$.\n\nĐể giới hạn hữu hạn thì $a+1=0$, tức $a=-1$.\n\nKhi đó biểu thức bằng $\\dfrac{(b+2)x+b+1}{x+1}$, có giới hạn $b+2$ khi $x\\to+\\infty$.\n\nCho $b+2=1$ ta được $b=-1$.\n\nVậy $T=a+b=-2$.\n\nChọn A.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const a=-1,b=-1;const g=x=>(x*x+3*x+1)/(x+1)+a*x+b;return eq(I(g,1),1)&&pick([-2,0,1,2],a+b)===0})()"
+  ],
+  "sach_dap_so": "A",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C26",
+  "vai": "luyen",
+  "dang_bai": null,
+  "dang_bai_ly_do": "Tìm tham số để giới hạn tại vô cực thoả điều kiện cho trước; bản đồ thiếu dạng này.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Biết rằng $\\lim\\limits_{x\\to+\\infty}(\\dfrac{x^2+1}{x-2}+ax-b)=-5$. Tính tổng $a+b$.",
+  "lua_chon": [
+   "$6$",
+   "$7$",
+   "$8$",
+   "$5$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quy đồng thành một phân thức, buộc hệ số của $x^2$ ở tử bằng $0$ để giới hạn hữu hạn, rồi so sánh hệ số của $x$.\n\n**Bước 1.** Quy đồng biểu thức trong ngoặc về mẫu $x-2$ và gom tử theo luỹ thừa của $x$.\n\n**Bước 2.** Cho hệ số của $x^2$ ở tử bằng $0$ để tìm $a$.\n\n**Bước 3.** Chia tử và mẫu cho $x$, lấy giới hạn và cho bằng $-5$ để tìm $b$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{x^2+1}{x-2}+ax-b=\\dfrac{x^2+1+(ax-b)(x-2)}{x-2}=\\dfrac{(a+1)x^2-(2a+b)x+2b+1}{x-2}$.\n\nGiới hạn hữu hạn nên $a+1=0$, tức $a=-1$.\n\nKhi đó biểu thức bằng $\\dfrac{(2-b)x+2b+1}{x-2}$ nên giới hạn là $2-b$.\n\nCho $2-b=-5$ ta được $b=7$.\n\nVậy $a+b=6$.\n\nChọn A.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const a=-1,b=7;const g=x=>(x*x+1)/(x-2)+a*x-b;return eq(I(g,1),-5)&&pick([6,7,8,5],a+b)===0})()"
+  ],
+  "sach_dap_so": "A",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C27",
+  "vai": "luyen",
+  "dang_bai": "NDB01179",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Biểu thức chứa căn khi x→-∞, chú ý √(x²)=-x.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Giá trị của $\\lim\\limits_{x\\to-\\infty}\\dfrac{\\sqrt{x^2-3}}{x+3}$ bằng:",
+  "lua_chon": [
+   "$-\\infty$",
+   "$-1$",
+   "$+\\infty$",
+   "$1$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khi $x\\to-\\infty$ ta có $x<0$ nên $\\sqrt{x^2}=-x$; đưa $x$ ra ngoài căn và chia cả tử và mẫu cho $x$.\n\n**Bước 1.** Đưa $x^2$ ra ngoài căn và viết $\\sqrt{x^2}=|x|=-x$ vì $x<0$.\n\n**Bước 2.** Chia cả tử và mẫu cho $x$ để các số hạng còn lại có dạng $\\dfrac1x$.\n\n**Bước 3.** Thay các giới hạn của $\\dfrac1x$ và $\\dfrac1{x^2}$ rồi tính kết quả.\n\n**Phần 2. Trình bày**\n\nVới $x<0$: $\\sqrt{x^2-3}=|x|\\sqrt{1-\\dfrac3{x^2}}=-x\\sqrt{1-\\dfrac3{x^2}}$.\n\n$\\dfrac{\\sqrt{x^2-3}}{x+3}=\\dfrac{-\\sqrt{1-\\dfrac3{x^2}}}{1+\\dfrac3x}$.\n\nKhi $x\\to-\\infty$: giới hạn bằng $\\dfrac{-1}{1}=-1$.\n\nVậy giới hạn bằng $-1$.\n\nChọn B.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const g=x=>Math.sqrt(x*x-3)/(x+3);return pick([-Infinity,-1,Infinity,1],I(g,-1))===1})()"
+  ],
+  "sach_dap_so": "B",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C28",
+  "vai": "luyen",
+  "dang_bai": null,
+  "dang_bai_ly_do": "Tìm tham số để giới hạn tại vô cực thoả điều kiện cho trước; bản đồ thiếu dạng này.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho số thực $a$ thoả mãn $\\lim\\limits_{x\\to+\\infty}\\dfrac{a\\sqrt{2x^2+3}+2017}{2x+2018}=\\dfrac12$. Khi đó giá trị của $a$ là",
+  "lua_chon": [
+   "$a=\\dfrac{\\sqrt2}2$",
+   "$a=-\\dfrac{\\sqrt2}2$",
+   "$a=\\dfrac12$",
+   "$a=-\\dfrac12$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia cả tử và mẫu cho $x$ với $x>0$ để đưa căn về dạng $\\sqrt{2+\\dfrac3{x^2}}$, rồi lập phương trình theo $a$.\n\n**Bước 1.** Với $x>0$, đưa $x^2$ ra ngoài căn và dùng $\\sqrt{x^2}=x$.\n\n**Bước 2.** Chia tử và mẫu cho $x$ rồi tính giới hạn của biểu thức theo $a$.\n\n**Bước 3.** Cho giới hạn bằng $\\dfrac12$ và giải phương trình để tìm $a$.\n\n**Phần 2. Trình bày**\n\nVới $x>0$: $\\dfrac{a\\sqrt{2x^2+3}+2017}{2x+2018}=\\dfrac{a\\sqrt{2+\\dfrac3{x^2}}+\\dfrac{2017}x}{2+\\dfrac{2018}x}$.\n\nGiới hạn khi $x\\to+\\infty$ bằng $\\dfrac{a\\sqrt2}{2}$.\n\nCho $\\dfrac{a\\sqrt2}2=\\dfrac12$ ta được $a=\\dfrac1{\\sqrt2}=\\dfrac{\\sqrt2}2$.\n\nChọn A.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const o=[Math.SQRT2/2,-Math.SQRT2/2,0.5,-0.5];const v=o.map(a=>I(x=>(a*Math.sqrt(2*x*x+3)+2017)/(2*x+2018),1));return v.map((t,i)=>Math.abs(t-0.5)<2e-3?i:-1).filter(i=>i>=0).join()==='0'})()"
+  ],
+  "sach_dap_so": "A",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C29",
+  "vai": "luyen",
+  "dang_bai": null,
+  "dang_bai_ly_do": "Tìm tham số để giới hạn tại vô cực bằng +∞ rồi tìm min biểu thức; bản đồ thiếu dạng này.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Biết $\\lim\\limits_{x\\to+\\infty}\\dfrac{(2-a)x-3}{x-\\sqrt{x^2+1}}=+\\infty$ (với $a$ là tham số). Giá trị nhỏ nhất của $P=a^2-2a+4$ là",
+  "lua_chon": [
+   "$4$",
+   "$3$",
+   "$5$",
+   "$1$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu dần về $0$ nên nhân liên hợp để biến phân thức thành tích; điều kiện giới hạn bằng $+\\infty$ cho ta miền của $a$ để tìm giá trị nhỏ nhất.\n\n**Bước 1.** Nhân liên hợp mẫu để viết $\\dfrac1{x-\\sqrt{x^2+1}}$ thành một biểu thức không còn mẫu dần về $0$.\n\n**Bước 2.** Xét dấu của hệ số cao nhất khi $x\\to+\\infty$ theo từng trường hợp của $a$ để suy ra miền của $a$.\n\n**Bước 3.** Trên miền đó, biến đổi $P$ thành tích để đánh giá giá trị nhỏ nhất.\n\n**Phần 2. Trình bày**\n\nVới $x>0$: $x-\\sqrt{x^2+1}=\\dfrac{x^2-(x^2+1)}{x+\\sqrt{x^2+1}}=\\dfrac{-1}{x+\\sqrt{x^2+1}}$.\n\nDo đó $\\dfrac{(2-a)x-3}{x-\\sqrt{x^2+1}}=((a-2)x+3)(x+\\sqrt{x^2+1})$.\n\nThừa số $x+\\sqrt{x^2+1}\\to+\\infty$. Nếu $a>2$ thì $(a-2)x+3\\to+\\infty$; nếu $a=2$ thì thừa số này bằng $3>0$; nếu $a<2$ thì nó $\\to-\\infty$.\n\nVậy giới hạn bằng $+\\infty$ khi và chỉ khi $a\\ge2$.\n\nVới $a\\ge2$: $P=a(a-2)+4\\ge4$, dấu bằng khi $a=2$.\n\nVậy giá trị nhỏ nhất của $P$ là $4$.\n\nChọn A.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const g=a=>I(x=>((2-a)*x-3)/(x-Math.sqrt(x*x+1)),1);let mn=Infinity;for(let i=-50;i<=100;i++){const a=i/10;if(g(a)===Infinity||nm(g(a))===Infinity){mn=Math.min(mn,a*a-2*a+4)}}return pick([4,3,5,1],mn)===0&&nm(g(2))===Infinity&&nm(g(1.9))===-Infinity})()"
+  ],
+  "sach_dap_so": "A",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C30",
+  "vai": "luyen",
+  "dang_bai": "NDB01179",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Hiệu hai căn trên mẫu bậc nhất khi x→-∞, đưa |x| ra ngoài căn.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to-\\infty}\\dfrac{\\sqrt{4x^2+x+1}-\\sqrt{x^2-x+3}}{3x+2}$.",
+  "lua_chon": [
+   "$-\\dfrac13$",
+   "$\\dfrac23$",
+   "$\\dfrac13$",
+   "$-\\dfrac23$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khi $x\\to-\\infty$ thì $\\sqrt{x^2}=-x$; đưa $-x$ ra ngoài mỗi căn rồi chia cả tử và mẫu cho $x$.\n\n**Bước 1.** Đưa $x^2$ ra ngoài từng căn và viết $\\sqrt{x^2}=-x$ vì $x<0$.\n\n**Bước 2.** Rút $x$ ở tử rồi chia cả tử và mẫu cho $x$.\n\n**Bước 3.** Thay các giới hạn $\\dfrac1x\\to0$, $\\dfrac1{x^2}\\to0$ và tính kết quả.\n\n**Phần 2. Trình bày**\n\nVới $x<0$: $\\sqrt{4x^2+x+1}=-x\\sqrt{4+\\dfrac1x+\\dfrac1{x^2}}$ và $\\sqrt{x^2-x+3}=-x\\sqrt{1-\\dfrac1x+\\dfrac3{x^2}}$.\n\nChia tử và mẫu cho $x$: $\\dfrac{-\\sqrt{4+\\dfrac1x+\\dfrac1{x^2}}+\\sqrt{1-\\dfrac1x+\\dfrac3{x^2}}}{3+\\dfrac2x}$.\n\nKhi $x\\to-\\infty$: giới hạn bằng $\\dfrac{-2+1}{3}=-\\dfrac13$.\n\nChọn A.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const g=x=>(Math.sqrt(4*x*x+x+1)-Math.sqrt(x*x-x+3))/(3*x+2);return pick([-1/3,2/3,1/3,-2/3],I(g,-1))===0})()"
+  ],
+  "sach_dap_so": "A",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C31",
+  "vai": "luyen",
+  "dang_bai": "NDB01171",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Phân thức dạng 0/0, rồi tính a²+b².",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho giới hạn $\\lim\\limits_{x\\to2}\\dfrac{x^2-3x+2}{x^2-4}=\\dfrac ab$ trong đó $\\dfrac ab$ là phân số tối giản. Tính $S=a^2+b^2$.",
+  "lua_chon": [
+   "$S=20$",
+   "$S=17$",
+   "$S=10$",
+   "$S=25$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu cùng triệt tiêu tại $x=2$ nên phân tích nhân tử, rút gọn rồi mới đọc ra phân số $\\dfrac ab$.\n\n**Bước 1.** Phân tích tử và mẫu thành nhân tử để thấy nhân tử chung $x-2$.\n\n**Bước 2.** Rút gọn rồi thay $x=2$ để được phân số, kiểm tra nó đã tối giản.\n\n**Bước 3.** Đọc $a$, $b$ từ phân số tối giản và tính $S$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{x^2-3x+2}{x^2-4}=\\dfrac{(x-1)(x-2)}{(x+2)(x-2)}=\\dfrac{x-1}{x+2}$ với $x\\ne2$.\n\n$\\lim\\limits_{x\\to2}\\dfrac{x-1}{x+2}=\\dfrac14$, phân số tối giản nên $a=1$, $b=4$.\n\nVậy $S=1^2+4^2=17$.\n\nChọn B.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const g=x=>(x*x-3*x+2)/(x*x-4);const a=1,b=4;return eq(F(g,2,1),a/b)&&eq(F(g,2,-1),a/b)&&pick([20,17,10,25],a*a+b*b)===1})()"
+  ],
+  "sach_dap_so": "B",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C32",
+  "vai": "luyen",
+  "dang_bai": "NDB01171",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Phân thức đa thức bậc cao dạng 0/0, tách nhân tử x-1 bằng tổng cấp số nhân.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Giá trị của $\\lim\\limits_{x\\to1}\\dfrac{x^{2018}+x-2}{x^{2017}+x-2}$ bằng $\\dfrac ab$, với $\\dfrac ab$ là phân số tối giản. Tính giá trị của $a^2-b^2$.",
+  "lua_chon": [
+   "$4037$",
+   "$4035$",
+   "$-4035$",
+   "$4033$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu đều triệt tiêu tại $x=1$; tách mỗi đa thức thành $(x^n-1)+(x-1)$ rồi đặt nhân tử chung $x-1$.\n\n**Bước 1.** Viết $x^{2018}+x-2=(x^{2018}-1)+(x-1)$ và tương tự cho mẫu.\n\n**Bước 2.** Dùng hằng đẳng thức $x^n-1=(x-1)(x^{n-1}+\\dots+x+1)$ để đặt nhân tử chung $x-1$.\n\n**Bước 3.** Rút gọn $x-1$, thay $x=1$ và đếm đúng số số hạng của mỗi tổng.\n\n**Bước 4.** Đọc phân số tối giản $\\dfrac ab$ rồi tính $a^2-b^2$.\n\n**Phần 2. Trình bày**\n\n$x^{2018}+x-2=(x-1)(x^{2017}+x^{2016}+\\dots+x+1)+(x-1)=(x-1)(x^{2017}+x^{2016}+\\dots+x+2)$.\n\n$x^{2017}+x-2=(x-1)(x^{2016}+x^{2015}+\\dots+x+1)+(x-1)=(x-1)(x^{2016}+x^{2015}+\\dots+x+2)$.\n\nRút gọn $x-1$ và thay $x=1$: tử có $2018$ số hạng $1$ cộng thêm $1$ nên bằng $2019$; mẫu có $2017$ số hạng $1$ cộng thêm $1$ nên bằng $2018$.\n\nGiới hạn bằng $\\dfrac{2019}{2018}$, đã tối giản nên $a=2019$, $b=2018$.\n\nVậy $a^2-b^2=(a-b)(a+b)=1\\cdot4037=4037$.\n\nChọn A.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const g=x=>(x**2018+x-2)/(x**2017+x-2);const h=1e-9;const v=g(1+h);return Math.abs(v-2019/2018)<2e-3&&pick([4037,4035,-4035,4033],2019*2019-2018*2018)===0})()"
+  ],
+  "sach_dap_so": "A",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C33",
+  "vai": "luyen",
+  "dang_bai": "NDB01176",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Giới hạn một bên có dấu giá trị tuyệt đối, bỏ dấu theo bên phải.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "$\\lim\\limits_{x\\to5^+}\\dfrac{|10-2x|}{x^2-6x+5}$ là",
+  "lua_chon": [
+   "$+\\infty$",
+   "$0$",
+   "$-\\dfrac12$",
+   "$\\dfrac12$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khi $x\\to5^+$ ta có $x>5$ nên biết dấu của $10-2x$ để bỏ dấu giá trị tuyệt đối, sau đó rút gọn nhân tử $x-5$.\n\n**Bước 1.** Xét dấu của $10-2x$ khi $x>5$ để bỏ dấu giá trị tuyệt đối.\n\n**Bước 2.** Phân tích mẫu thành nhân tử để thấy nhân tử chung $x-5$ với tử.\n\n**Bước 3.** Rút gọn nhân tử chung rồi thay $x=5$ vào biểu thức còn lại.\n\n**Phần 2. Trình bày**\n\nVới $x>5$ ta có $10-2x<0$ nên $|10-2x|=2x-10=2(x-5)$.\n\nMẫu: $x^2-6x+5=(x-1)(x-5)$.\n\n$\\dfrac{|10-2x|}{x^2-6x+5}=\\dfrac{2(x-5)}{(x-1)(x-5)}=\\dfrac2{x-1}$ với $x>5$.\n\nVậy $\\lim\\limits_{x\\to5^+}\\dfrac2{x-1}=\\dfrac24=\\dfrac12$.\n\nChọn D.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const g=x=>Math.abs(10-2*x)/(x*x-6*x+5);return pick([Infinity,0,-0.5,0.5],F(g,5,1))===3})()"
+  ],
+  "sach_dap_so": "D",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C34",
+  "vai": "luyen",
+  "dang_bai": "NDB01171",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Phân thức dạng 0/0 với x³-1 và x²-1.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho $\\lim\\limits_{x\\to1}\\dfrac{x^3-1}{x^2-1}=\\dfrac ab$ với $a$, $b$ là các số nguyên dương và $\\dfrac ab$ là phân số tối giản. Tính tổng $S=a+b$.",
+  "lua_chon": [
+   "$5$",
+   "$10$",
+   "$3$",
+   "$4$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu đều triệt tiêu tại $x=1$, nên phân tích bằng hằng đẳng thức để rút gọn nhân tử $x-1$.\n\n**Bước 1.** Phân tích $x^3-1$ và $x^2-1$ bằng hằng đẳng thức để thấy nhân tử chung.\n\n**Bước 2.** Rút gọn nhân tử chung rồi thay $x=1$ để được một phân số.\n\n**Bước 3.** Kiểm tra phân số tối giản, đọc $a$, $b$ và tính $S$.\n\n**Phần 2. Trình bày**\n\nVới $x\\ne1$: $\\dfrac{x^3-1}{x^2-1}=\\dfrac{(x-1)(x^2+x+1)}{(x-1)(x+1)}=\\dfrac{x^2+x+1}{x+1}$.\n\n$\\lim\\limits_{x\\to1}\\dfrac{x^2+x+1}{x+1}=\\dfrac32$, phân số tối giản nên $a=3$, $b=2$.\n\nVậy $S=3+2=5$.\n\nChọn A.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const g=x=>(x**3-1)/(x*x-1);return eq(F(g,1,1),1.5)&&eq(F(g,1,-1),1.5)&&pick([5,10,3,4],3+2)===0})()"
+  ],
+  "sach_dap_so": "A",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C35",
+  "vai": "luyen",
+  "dang_bai": "NDB01174",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tìm hệ số để giới hạn dạng 0/0 bằng giá trị cho trước.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Biết $\\lim\\limits_{x\\to3}\\dfrac{x^2+bx+c}{x-3}=8$ ($b,c\\in\\mathbb{R}$). Tính $P=b+c$.",
+  "lua_chon": [
+   "$P=-13$",
+   "$P=-11$",
+   "$P=5$",
+   "$P=-12$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu dần về $0$ mà giới hạn hữu hạn nên tử cũng phải triệt tiêu tại $x=3$; từ đó biểu diễn $c$ theo $b$ rồi phân tích nhân tử.\n\n**Bước 1.** Từ điều kiện giới hạn hữu hạn, cho tử bằng $0$ tại $x=3$ để có liên hệ giữa $b$ và $c$.\n\n**Bước 2.** Thay $c$ theo $b$ và phân tích tử thành nhân tử có chứa $x-3$.\n\n**Bước 3.** Rút gọn rồi cho giới hạn bằng $8$ để tìm $b$, sau đó tìm $c$ và tính $P$.\n\n**Phần 2. Trình bày**\n\nVì giới hạn hữu hạn nên $3^2+3b+c=0$, tức $c=-9-3b$.\n\nKhi đó $x^2+bx+c=x^2-9+b(x-3)=(x-3)(x+3+b)$.\n\n$\\lim\\limits_{x\\to3}\\dfrac{x^2+bx+c}{x-3}=\\lim\\limits_{x\\to3}(x+3+b)=6+b$.\n\nCho $6+b=8$ ta được $b=2$ và $c=-15$.\n\nVậy $P=b+c=-13$.\n\nChọn A.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const b=2,c=-15;const g=x=>(x*x+b*x+c)/(x-3);return eq(F(g,3,1),8)&&eq(F(g,3,-1),8)&&pick([-13,-11,5,-12],b+c)===0})()"
+  ],
+  "sach_dap_so": "A",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C36",
+  "vai": "luyen",
+  "dang_bai": "NDB01171",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Phân thức dạng 0/0, phân tích nhân tử.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tính giới hạn $L=\\lim\\limits_{x\\to-1}\\dfrac{x^2-x-2}{3x^2+8x+5}$.",
+  "lua_chon": [
+   "$L=-\\dfrac32$",
+   "$L=\\dfrac12$",
+   "$L=-\\infty$",
+   "$L=0$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu cùng triệt tiêu tại $x=-1$ nên phân tích cả hai thành nhân tử và rút gọn $x+1$.\n\n**Bước 1.** Thay $x=-1$ vào tử và mẫu để nhận ra dạng $\\dfrac00$.\n\n**Bước 2.** Phân tích tử và mẫu thành nhân tử có chứa $x+1$.\n\n**Bước 3.** Rút gọn nhân tử chung rồi thay $x=-1$ vào phân thức còn lại.\n\n**Phần 2. Trình bày**\n\n$x^2-x-2=(x+1)(x-2)$ và $3x^2+8x+5=(x+1)(3x+5)$.\n\nVới $x\\ne-1$: $\\dfrac{x^2-x-2}{3x^2+8x+5}=\\dfrac{x-2}{3x+5}$.\n\n$L=\\lim\\limits_{x\\to-1}\\dfrac{x-2}{3x+5}=\\dfrac{-3}{2}=-\\dfrac32$.\n\nChọn A.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const g=x=>(x*x-x-2)/(3*x*x+8*x+5);return chk([-1.5,0.5,-Infinity,0],[F(g,-1,1),F(g,-1,-1)],0)})()"
+  ],
+  "sach_dap_so": "A",
+  "ghi_chu": "ĐỀ SAI (lỗi in): sách in tử x^2-x-2+1; đã sửa thành x^2-x-2 (lỗi in hiển nhiên, đáp án A của sách khớp)."
+ },
+ {
+  "id": "tt-b2-p2-C37",
+  "vai": "luyen",
+  "dang_bai": "NDB01174",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tìm cặp tham số để giới hạn 0/0 bằng giá trị cho trước.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cặp $(a,b)$ thoả mãn $\\lim\\limits_{x\\to3}\\dfrac{x^2+ax+b}{x-3}=3$ là",
+  "lua_chon": [
+   "$a=-3$, $b=0$",
+   "$a=3$, $b=0$",
+   "$a=0$, $b=-9$",
+   "không tồn tại cặp $(a,b)$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn hữu hạn với mẫu dần về $0$ buộc tử chia hết cho $x-3$; ta thực hiện phép chia để đọc giới hạn qua phần thương.\n\n**Bước 1.** Chia tử $x^2+ax+b$ cho $x-3$ để viết thành thương cộng phần dư.\n\n**Bước 2.** Cho phần dư bằng $0$ để giới hạn hữu hạn, rồi lấy giới hạn của thương.\n\n**Bước 3.** Lập hệ hai phương trình theo $a$, $b$ và giải hệ.\n\n**Phần 2. Trình bày**\n\nTa có $x^2+ax+b=(x-3)(x+a+3)+3a+b+9$.\n\nĐể giới hạn hữu hạn thì $3a+b+9=0$; khi đó $\\dfrac{x^2+ax+b}{x-3}=x+a+3$ với $x\\ne3$ và giới hạn bằng $a+6$.\n\nCho $a+6=3$ ta được $a=-3$, suy ra $b=0$.\n\nVậy cặp cần tìm là $a=-3$, $b=0$.\n\nChọn A.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const o=[[-3,0],[3,0],[0,-9]];const v=o.map(([a,b])=>nm(F(x=>(x*x+a*x+b)/(x-3),3,1)));return v.map((t,i)=>eq(t,3)?i:-1).filter(i=>i>=0).join()==='0'&&eq(F(x=>(x*x-3*x)/(x-3),3,-1),3)})()"
+  ],
+  "sach_dap_so": "A",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C38",
+  "vai": "luyen",
+  "dang_bai": "NDB01174",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tìm hệ số nguyên để giới hạn 0/0 bằng giá trị cho trước.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho $a$, $b$ là số nguyên và $\\lim\\limits_{x\\to1}\\dfrac{ax^2+bx-5}{x-1}=7$. Tính $a^2+b^2+a+b$.",
+  "lua_chon": [
+   "$18$",
+   "$1$",
+   "$15$",
+   "$5$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu dần về $0$ mà giới hạn hữu hạn nên tử triệt tiêu tại $x=1$; từ đó phân tích nhân tử và so sánh với giá trị giới hạn.\n\n**Bước 1.** Cho tử bằng $0$ tại $x=1$ để tìm liên hệ giữa $a$ và $b$.\n\n**Bước 2.** Thay $b$ theo $a$ và phân tích tử thành nhân tử có chứa $x-1$.\n\n**Bước 3.** Rút gọn rồi cho giới hạn bằng $7$ để tìm $a$, $b$ và tính biểu thức.\n\n**Phần 2. Trình bày**\n\nVì giới hạn hữu hạn nên $a+b-5=0$, tức $b=5-a$.\n\nKhi đó $ax^2+(5-a)x-5=(x-1)(ax+5)$.\n\n$\\lim\\limits_{x\\to1}\\dfrac{(x-1)(ax+5)}{x-1}=\\lim\\limits_{x\\to1}(ax+5)=a+5$.\n\nCho $a+5=7$ ta được $a=2$, $b=3$.\n\nVậy $a^2+b^2+a+b=4+9+2+3=18$.\n\nChọn A.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const a=2,b=3;const g=x=>(a*x*x+b*x-5)/(x-1);return eq(F(g,1,1),7)&&eq(F(g,1,-1),7)&&pick([18,1,15,5],a*a+b*b+a+b)===0})()"
+  ],
+  "sach_dap_so": "A",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C40",
+  "vai": "luyen",
+  "dang_bai": "NDB01174",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Tham số trong căn, giới hạn 0/0 có mẫu nghiệm kép; gần NDB01172 (liên hợp một căn).",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho biết $\\lim\\limits_{x\\to1}\\dfrac{\\sqrt{ax^2+1}-bx-2}{x^3-3x+2}$ ($a,b\\in\\mathbb{R}$) có kết quả là một số thực. Giá trị của biểu thức $a^2+b^2$ bằng",
+  "lua_chon": [
+   "$6+5\\sqrt3$",
+   "$\\dfrac{45}{16}$",
+   "$\\dfrac94$",
+   "$87-48\\sqrt3$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu có nghiệm kép $x=1$ nên phải khử $x-1$ hai lần: lần đầu bằng điều kiện tử triệt tiêu, lần sau bằng nhân liên hợp và điều kiện triệt tiêu thêm một lần nữa.\n\n**Bước 1.** Phân tích mẫu $x^3-3x+2$ thành nhân tử để thấy nghiệm kép $x=1$.\n\n**Bước 2.** Cho tử triệt tiêu tại $x=1$ để biểu diễn $a$ theo $b$.\n\n**Bước 3.** Nhân liên hợp, phân tích tử có nhân tử $x-1$ rồi rút gọn một lần.\n\n**Bước 4.** Giới hạn còn mẫu chứa $x-1$ nên tử còn lại cũng phải triệt tiêu tại $x=1$; từ đó tìm $b$, $a$ rồi tính $a^2+b^2$.\n\n**Phần 2. Trình bày**\n\n$x^3-3x+2=(x-1)^2(x+2)$.\n\nTử triệt tiêu tại $x=1$: $\\sqrt{a+1}-b-2=0$, suy ra $b\\ge-2$ và $a=b^2+4b+3$.\n\nNhân liên hợp: tử bằng $\\dfrac{(b^2+4b+3)x^2+1-(bx+2)^2}{\\sqrt{(b^2+4b+3)x^2+1}+bx+2}=\\dfrac{(4b+3)x^2-4bx-3}{\\sqrt{(b^2+4b+3)x^2+1}+bx+2}$.\n\nTa có $(4b+3)x^2-4bx-3=(x-1)((4b+3)x+3)$, nên biểu thức bằng $\\dfrac{(4b+3)x+3}{(x-1)(x+2)(\\sqrt{(b^2+4b+3)x^2+1}+bx+2)}$.\n\nĐể giới hạn hữu hạn thì $(4b+3)\\cdot1+3=0$, tức $b=-\\dfrac32$ (thoả $b\\ge-2$), suy ra $a=-\\dfrac34$.\n\nVậy $a^2+b^2=\\dfrac9{16}+\\dfrac94=\\dfrac{45}{16}$.\n\nChọn B.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const a=-0.75,b=-1.5;const g=x=>(Math.sqrt(a*x*x+1)-b*x-2)/(x**3-3*x+2);const v1=g(1+1e-3),v2=g(1-1e-3),v3=g(1+1e-4);return Math.abs(v1-v2)<2e-2&&Math.abs(v1-v3)<2e-2&&eq(Math.sqrt(a+1),b+2)&&a===b*b+4*b+3&&pick([6+5*Math.sqrt(3),45/16,9/4,87-48*Math.sqrt(3)],a*a+b*b)===1})()"
+  ],
+  "sach_dap_so": "B",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C41",
+  "vai": "luyen",
+  "dang_bai": "NDB01173",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Căn bậc ba trên hàm ẩn f(x), nhân liên hợp bậc ba; gần NDB01174.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho $f(x)$ là đa thức thoả mãn $\\lim\\limits_{x\\to2}\\dfrac{f(x)-20}{x-2}=10$. Tính $T=\\lim\\limits_{x\\to2}\\dfrac{\\sqrt[3]{6f(x)+5}-5}{x^2+x-6}$.",
+  "lua_chon": [
+   "$T=\\dfrac{12}{25}$",
+   "$T=\\dfrac4{25}$",
+   "$T=\\dfrac4{15}$",
+   "$T=\\dfrac6{25}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Từ giả thiết suy ra $f(x)\\to20$, nên căn bậc ba dần về $5$; nhân liên hợp bậc ba để xuất hiện $f(x)-20$ rồi tách $\\dfrac{f(x)-20}{x-2}$.\n\n**Bước 1.** Từ giả thiết, chứng tỏ $\\lim f(x)=20$ để biết tử có dạng $\\dfrac00$.\n\n**Bước 2.** Phân tích mẫu $x^2+x-6$ thành nhân tử và nhân liên hợp bậc ba cho tử.\n\n**Bước 3.** Tách giới hạn thành tích gồm $\\dfrac{f(x)-20}{x-2}$ và các thừa số còn lại.\n\n**Bước 4.** Thay giá trị giới hạn của từng thừa số để tính $T$.\n\n**Phần 2. Trình bày**\n\n$\\lim\\limits_{x\\to2}(f(x)-20)=\\lim\\limits_{x\\to2}\\dfrac{f(x)-20}{x-2}\\cdot(x-2)=10\\cdot0=0$ nên $\\lim\\limits_{x\\to2}f(x)=20$.\n\nĐặt $A=\\sqrt[3]{6f(x)+5}$. Nhân liên hợp: $A-5=\\dfrac{A^3-125}{A^2+5A+25}=\\dfrac{6(f(x)-20)}{A^2+5A+25}$.\n\nMẫu: $x^2+x-6=(x-2)(x+3)$. Do đó $\\dfrac{A-5}{x^2+x-6}=6\\cdot\\dfrac{f(x)-20}{x-2}\\cdot\\dfrac1{(x+3)(A^2+5A+25)}$.\n\nKhi $x\\to2$: $A\\to5$ nên $A^2+5A+25\\to75$ và $x+3\\to5$.\n\nVậy $T=6\\cdot10\\cdot\\dfrac1{5\\cdot75}=\\dfrac{60}{375}=\\dfrac4{25}$.\n\nChọn B.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const f=x=>10*x;const g=x=>(Math.cbrt(6*f(x)+5)-5)/(x*x+x-6);return chk([12/25,4/25,4/15,6/25],[F(g,2,1),F(g,2,-1)],1)&&eq((f(2+1e-6)-20)/1e-6,10)})()"
+  ],
+  "sach_dap_so": "B",
+  "ghi_chu": "Sách giải 2 cách (chọn f(x)=10x và cách tổng quát); đã trình bày cách tổng quát."
+ },
+ {
+  "id": "tt-b2-p2-C42",
+  "vai": "luyen",
+  "dang_bai": "NDB01180",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Hiệu căn và đa thức bậc nhất khi x→-∞, nhân liên hợp.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Biết rằng $\\lim\\limits_{x\\to-\\infty}(\\sqrt{2x^2-3x+1}+x\\sqrt2)=\\dfrac ab\\sqrt2$ ($a,b\\in\\mathbb{Z}$, $\\dfrac ab$ tối giản). Tổng $a+b$ có giá trị là",
+  "lua_chon": [
+   "$1$",
+   "$5$",
+   "$4$",
+   "$7$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn có dạng $\\infty-\\infty$ nên nhân và chia với biểu thức liên hợp, rồi chia tử và mẫu cho $x$ chú ý $x<0$.\n\n**Bước 1.** Nhân và chia với biểu thức liên hợp $\\sqrt{2x^2-3x+1}-x\\sqrt2$ để tử trở thành đa thức bậc nhất.\n\n**Bước 2.** Chia tử và mẫu cho $x$ và nhớ $\\sqrt{x^2}=-x$ vì $x<0$.\n\n**Bước 3.** Tính giới hạn, viết dưới dạng $\\dfrac ab\\sqrt2$ rồi đọc $a$, $b$ và tính $a+b$.\n\n**Phần 2. Trình bày**\n\n$\\sqrt{2x^2-3x+1}+x\\sqrt2=\\dfrac{2x^2-3x+1-2x^2}{\\sqrt{2x^2-3x+1}-x\\sqrt2}=\\dfrac{-3x+1}{\\sqrt{2x^2-3x+1}-x\\sqrt2}$.\n\nVới $x<0$, chia tử và mẫu cho $x$: $\\dfrac{-3+\\dfrac1x}{-\\sqrt{2-\\dfrac3x+\\dfrac1{x^2}}-\\sqrt2}$.\n\nKhi $x\\to-\\infty$: giới hạn bằng $\\dfrac{-3}{-2\\sqrt2}=\\dfrac{3\\sqrt2}4$.\n\nVậy $a=3$, $b=4$ và $a+b=7$.\n\nChọn D.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const g=x=>Math.sqrt(2*x*x-3*x+1)+x*Math.sqrt(2);return eq(I(g,-1),3*Math.sqrt(2)/4)&&pick([1,5,4,7],3+4)===3})()"
+  ],
+  "sach_dap_so": "D",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C43",
+  "vai": "luyen",
+  "dang_bai": null,
+  "dang_bai_ly_do": "Tìm tham số để giới hạn tại vô cực thoả điều kiện cho trước; bản đồ thiếu dạng này.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Biết $\\lim\\limits_{x\\to+\\infty}(\\sqrt{4x^2-3x+1}-(ax+b))=0$. Tính $a-4b$ ta được",
+  "lua_chon": [
+   "$3$",
+   "$5$",
+   "$-1$",
+   "$2$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Để hiệu hai biểu thức cùng bậc nhất dần về $0$, hệ số của $x$ phải khớp trước, sau đó nhân liên hợp để tìm số hạng tự do.\n\n**Bước 1.** So sánh hệ số của $x$ khi $x\\to+\\infty$ để tìm $a$ (chú ý $a>0$).\n\n**Bước 2.** Với $a$ vừa tìm, tách $b$ ra và nhân liên hợp biểu thức $\\sqrt{4x^2-3x+1}-ax$.\n\n**Bước 3.** Chia tử và mẫu cho $x$, tính giới hạn rồi cho bằng $b$ để tìm $b$ và tính $a-4b$.\n\n**Phần 2. Trình bày**\n\nĐể giới hạn hữu hạn thì $\\sqrt{4x^2-3x+1}$ và $ax$ cùng bậc nhất và cùng hệ số: $a^2=4$ với $a>0$, tức $a=2$.\n\nKhi đó $\\sqrt{4x^2-3x+1}-2x=\\dfrac{-3x+1}{\\sqrt{4x^2-3x+1}+2x}=\\dfrac{-3+\\dfrac1x}{\\sqrt{4-\\dfrac3x+\\dfrac1{x^2}}+2}$ (với $x>0$).\n\nGiới hạn của biểu thức này là $\\dfrac{-3}{4}$.\n\nHiệu ban đầu dần về $0$ nên $b=-\\dfrac34$.\n\nVậy $a-4b=2+3=5$.\n\nChọn B.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const a=2,b=-0.75;const g=x=>Math.sqrt(4*x*x-3*x+1)-(a*x+b);return eq(I(g,1),0)&&pick([3,5,-1,2],a-4*b)===1})()"
+  ],
+  "sach_dap_so": "B",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C44",
+  "vai": "luyen",
+  "dang_bai": "NDB01180",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Hiệu x+1 và căn khi x→+∞, nhân liên hợp.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tìm giới hạn $I=\\lim\\limits_{x\\to+\\infty}(x+1-\\sqrt{x^2-x+2})$.",
+  "lua_chon": [
+   "$I=\\dfrac12$",
+   "$I=\\dfrac{46}{31}$",
+   "$I=\\dfrac{17}{11}$",
+   "$I=\\dfrac32$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn có dạng $\\infty-\\infty$; nhân và chia với biểu thức liên hợp của $(x+1)-\\sqrt{x^2-x+2}$ rồi chia cho $x$.\n\n**Bước 1.** Nhân và chia với $(x+1)+\\sqrt{x^2-x+2}$ để tử trở thành hiệu hai bình phương.\n\n**Bước 2.** Rút gọn tử về đa thức bậc nhất.\n\n**Bước 3.** Với $x>0$, chia tử và mẫu cho $x$ rồi thay các giới hạn $\\dfrac1x\\to0$.\n\n**Phần 2. Trình bày**\n\n$x+1-\\sqrt{x^2-x+2}=\\dfrac{(x+1)^2-(x^2-x+2)}{x+1+\\sqrt{x^2-x+2}}=\\dfrac{3x-1}{x+1+\\sqrt{x^2-x+2}}$.\n\nVới $x>0$, chia tử và mẫu cho $x$: $\\dfrac{3-\\dfrac1x}{1+\\dfrac1x+\\sqrt{1-\\dfrac1x+\\dfrac2{x^2}}}$.\n\nKhi $x\\to+\\infty$: $I=\\dfrac3{1+1}=\\dfrac32$.\n\nChọn D.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const g=x=>x+1-Math.sqrt(x*x-x+2);return pick([0.5,46/31,17/11,1.5],I(g,1))===3})()"
+  ],
+  "sach_dap_so": "D",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C45",
+  "vai": "luyen",
+  "dang_bai": null,
+  "dang_bai_ly_do": "Câu Đúng/Sai không gán dạng.",
+  "loai_cau": "dung_sai",
+  "noi_dung": "Cho $L=\\lim\\limits_{x\\to-\\infty}(\\sqrt{x^2+ax+5}+x)$. Khi đó:",
+  "menh_de": [
+   {
+    "noi_dung": "$L=5$ khi $a=-10$",
+    "dap_an": "D"
+   },
+   {
+    "noi_dung": "$L>0$ khi $a>0$",
+    "dap_an": "S"
+   },
+   {
+    "noi_dung": "$L<0$ khi $a>0$",
+    "dap_an": "D"
+   },
+   {
+    "noi_dung": "$L=-1$ thì $a$ là một nghiệm của phương trình $x^2-3x+2=0$",
+    "dap_an": "D"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trước hết tính $L$ theo $a$ bằng nhân liên hợp với chú ý $x<0$; sau đó xét từng ý bằng cách thay điều kiện của $a$ vào kết quả.\n\n**Bước 1.** Nhân và chia với biểu thức liên hợp để tử trở thành đa thức bậc nhất theo $x$.\n\n**Bước 2.** Chia tử và mẫu cho $x$, nhớ $\\sqrt{x^2}=-x$ vì $x<0$, rồi tính $L$ theo $a$.\n\n**Bước 3.** Với từng ý, thay điều kiện của $a$ vào công thức của $L$ để kết luận Đúng hay Sai.\n\n**Phần 2. Trình bày**\n\n$\\sqrt{x^2+ax+5}+x=\\dfrac{ax+5}{\\sqrt{x^2+ax+5}-x}$. Với $x<0$, chia tử và mẫu cho $x$: $\\dfrac{a+\\dfrac5x}{-\\sqrt{1+\\dfrac ax+\\dfrac5{x^2}}-1}$. Suy ra $L=-\\dfrac a2$.\n\nÝ a) $L=5\\Leftrightarrow-\\dfrac a2=5\\Leftrightarrow a=-10$. Ý a) Đúng.\n\nÝ b) $L>0\\Leftrightarrow-\\dfrac a2>0\\Leftrightarrow a<0$, không phải $a>0$. Ý b) Sai.\n\nÝ c) $L<0\\Leftrightarrow-\\dfrac a2<0\\Leftrightarrow a>0$. Ý c) Đúng.\n\nÝ d) $L=-1\\Leftrightarrow-\\dfrac a2=-1\\Leftrightarrow a=2$; mà $2^2-3\\cdot2+2=0$ nên $a=2$ là nghiệm của phương trình. Ý d) Đúng.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Đúng, Đúng.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const L=a=>I(x=>Math.sqrt(x*x+a*x+5)+x,-1);return eq(L(-10),5)&&L(4)<0&&L(0.5)<0&&eq(L(2),-1)&&(4-6+2===0)&&!(L(4)>0)})()"
+  ],
+  "sach_dap_so": null,
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C46",
+  "vai": "luyen",
+  "dang_bai": null,
+  "dang_bai_ly_do": "Câu Đúng/Sai không gán dạng.",
+  "loai_cau": "dung_sai",
+  "noi_dung": "Cho $\\lim\\limits_{x\\to-\\infty}\\dfrac{a\\sqrt{x^2+1}+2023}{x+2024}=\\dfrac12$; $\\lim\\limits_{x\\to+\\infty}(\\sqrt{x^2+bx+1}-x)=2$. Khi đó:",
+  "menh_de": [
+   {
+    "noi_dung": "$a>0$",
+    "dap_an": "S"
+   },
+   {
+    "noi_dung": "$b>0$",
+    "dap_an": "D"
+   },
+   {
+    "noi_dung": "$a>b$",
+    "dap_an": "S"
+   },
+   {
+    "noi_dung": "$P=4a+b=2$",
+    "dap_an": "D"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi giới hạn cho một phương trình theo một tham số; tìm $a$ ở giới hạn thứ nhất (chú ý $x<0$) và $b$ ở giới hạn thứ hai (nhân liên hợp, $x>0$).\n\n**Bước 1.** Với giới hạn thứ nhất, đưa $\\sqrt{x^2+1}=-x\\sqrt{1+\\dfrac1{x^2}}$ vì $x<0$, chia cho $x$ và tính giới hạn theo $a$.\n\n**Bước 2.** Với giới hạn thứ hai, nhân liên hợp, chia tử và mẫu cho $x$ rồi tính giới hạn theo $b$.\n\n**Bước 3.** Giải hai phương trình để tìm $a$, $b$ rồi xét từng ý.\n\n**Phần 2. Trình bày**\n\nVới $x<0$: $\\dfrac{a\\sqrt{x^2+1}+2023}{x+2024}=\\dfrac{-a\\sqrt{1+\\dfrac1{x^2}}+\\dfrac{2023}x}{1+\\dfrac{2024}x}\\to-a$. Cho $-a=\\dfrac12$ ta được $a=-\\dfrac12$.\n\n$\\sqrt{x^2+bx+1}-x=\\dfrac{bx+1}{\\sqrt{x^2+bx+1}+x}=\\dfrac{b+\\dfrac1x}{\\sqrt{1+\\dfrac bx+\\dfrac1{x^2}}+1}\\to\\dfrac b2$ khi $x\\to+\\infty$. Cho $\\dfrac b2=2$ ta được $b=4$.\n\nÝ a) $a=-\\dfrac12<0$. Ý a) Sai.\n\nÝ b) $b=4>0$. Ý b) Đúng.\n\nÝ c) $a=-\\dfrac12<4=b$ nên $a>b$ là sai. Ý c) Sai.\n\nÝ d) $P=4a+b=4\\cdot(-\\dfrac12)+4=2$. Ý d) Đúng.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Đúng, Sai, Đúng.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const a=-0.5,b=4;const g1=x=>(a*Math.sqrt(x*x+1)+2023)/(x+2024);const g2=x=>Math.sqrt(x*x+b*x+1)-x;return eq(I(g1,-1),0.5)&&eq(I(g2,1),2)&&!(a>0)&&b>0&&!(a>b)&&eq(4*a+b,2)})()"
+  ],
+  "sach_dap_so": null,
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C48",
+  "vai": "luyen",
+  "dang_bai": null,
+  "dang_bai_ly_do": "Câu Đúng/Sai không gán dạng.",
+  "loai_cau": "dung_sai",
+  "noi_dung": "Biết $\\lim\\limits_{x\\to+\\infty}(\\sqrt{4x^2-3x+1}-(ax+b))=0$. Khi đó:",
+  "menh_de": [
+   {
+    "noi_dung": "$a$ là số lẻ",
+    "dap_an": "S"
+   },
+   {
+    "noi_dung": "$b>0$",
+    "dap_an": "S"
+   },
+   {
+    "noi_dung": "$a\\cdot b<0$",
+    "dap_an": "D"
+   },
+   {
+    "noi_dung": "$a-4b=5$",
+    "dap_an": "D"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Để hiệu dần về $0$, hệ số của $x$ phải khớp trước (tìm $a$), rồi nhân liên hợp để tìm số hạng tự do $b$; sau đó xét từng ý.\n\n**Bước 1.** So sánh hệ số của $x$ khi $x\\to+\\infty$ để tìm $a$ (chú ý $a>0$).\n\n**Bước 2.** Nhân liên hợp $\\sqrt{4x^2-3x+1}-ax$, chia tử và mẫu cho $x$ rồi tìm $b$.\n\n**Bước 3.** Thay $a$, $b$ vào từng ý để kết luận.\n\n**Phần 2. Trình bày**\n\nGiới hạn hữu hạn nên hệ số $x$ khớp: $a^2=4$, $a>0$, suy ra $a=2$.\n\n$\\sqrt{4x^2-3x+1}-2x=\\dfrac{-3x+1}{\\sqrt{4x^2-3x+1}+2x}\\to-\\dfrac34$ khi $x\\to+\\infty$, nên $b=-\\dfrac34$.\n\nÝ a) $a=2$ là số chẵn nên Ý a) Sai.\n\nÝ b) $b=-\\dfrac34<0$ nên Ý b) Sai.\n\nÝ c) $a\\cdot b=2\\cdot(-\\dfrac34)=-\\dfrac32<0$ nên Ý c) Đúng.\n\nÝ d) $a-4b=2+3=5$ nên Ý d) Đúng.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Sai, Đúng, Đúng.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const a=2,b=-0.75;const g=x=>Math.sqrt(4*x*x-3*x+1)-(a*x+b);return eq(I(g,1),0)&&a%2===0&&!(b>0)&&a*b<0&&eq(a-4*b,5)})()"
+  ],
+  "sach_dap_so": null,
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C49",
+  "vai": "luyen",
+  "dang_bai": null,
+  "dang_bai_ly_do": "Câu Đúng/Sai không gán dạng.",
+  "loai_cau": "dung_sai",
+  "noi_dung": "Cho các số thực $a$, $b$, $c$ thoả mãn $c^2+a=18$ và $\\lim\\limits_{x\\to+\\infty}(\\sqrt{ax^2+bx}-cx)=-2$. Khi đó:",
+  "menh_de": [
+   {
+    "noi_dung": "$a=9$",
+    "dap_an": "D"
+   },
+   {
+    "noi_dung": "$b=3c$",
+    "dap_an": "S"
+   },
+   {
+    "noi_dung": "$a=3c$",
+    "dap_an": "D"
+   },
+   {
+    "noi_dung": "$P=a+b+5c=14$",
+    "dap_an": "S"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân liên hợp để tử có dạng $(a-c^2)x^2+bx$; giới hạn hữu hạn buộc hệ số của $x^2$ bằng $0$, rồi kết hợp hai điều kiện còn lại để tìm $a$, $b$, $c$.\n\n**Bước 1.** Nhân và chia với biểu thức liên hợp để tử trở thành $(a-c^2)x^2+bx$.\n\n**Bước 2.** Giới hạn hữu hạn nên $a=c^2$ với $c>0$; kết hợp $c^2+a=18$ để tìm $a$, $c$.\n\n**Bước 3.** Dùng giá trị giới hạn bằng $-2$ để tìm $b$ rồi xét từng ý.\n\n**Phần 2. Trình bày**\n\n$\\sqrt{ax^2+bx}-cx=\\dfrac{(a-c^2)x^2+bx}{\\sqrt{ax^2+bx}+cx}$. Để giới hạn hữu hạn thì $a=c^2$ (và $c>0$, vì nếu $c\\le0$ giới hạn là $+\\infty$).\n\nTừ $c^2+a=18$ và $a=c^2$: $2c^2=18$, suy ra $c=3$, $a=9$.\n\nKhi đó giới hạn bằng $\\dfrac b{\\sqrt a+c}=\\dfrac b6=-2$ nên $b=-12$.\n\nÝ a) $a=9$. Ý a) Đúng.\n\nÝ b) $3c=9$ còn $b=-12$ nên $b\\ne3c$. Ý b) Sai.\n\nÝ c) $3c=9=a$. Ý c) Đúng.\n\nÝ d) $P=9-12+15=12\\ne14$. Ý d) Sai.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Đúng, Sai.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const a=9,b=-12,c=3;const g=x=>Math.sqrt(a*x*x+b*x)-c*x;return eq(I(g,1),-2)&&c*c+a===18&&a===9&&b!==3*c&&a===3*c&&a+b+5*c===12})()"
+  ],
+  "sach_dap_so": null,
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C50",
+  "vai": "luyen",
+  "dang_bai": null,
+  "dang_bai_ly_do": "Câu Đúng/Sai không gán dạng.",
+  "loai_cau": "dung_sai",
+  "noi_dung": "Cho $a$, $b$, $c$ là các số thực khác $0$. Biết giới hạn $L=\\lim\\limits_{x\\to-\\infty}\\dfrac{\\sqrt{x^2-3x}+ax}{bx-1}$. Khi đó:",
+  "menh_de": [
+   {
+    "noi_dung": "$L=3$ khi $\\dfrac{a-1}b=3$",
+    "dap_an": "D"
+   },
+   {
+    "noi_dung": "$L=6$ khi $\\dfrac{a-1}b=4$",
+    "dap_an": "S"
+   },
+   {
+    "noi_dung": "$L=2$ khi $a+2b=1$",
+    "dap_an": "S"
+   },
+   {
+    "noi_dung": "$L=1$ khi $a+b=1$",
+    "dap_an": "S"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tính $L$ theo $a$, $b$ bằng cách đưa $\\sqrt{x^2}=-x$ (vì $x<0$) và chia cả tử và mẫu cho $x$; sau đó thay điều kiện từng ý vào $L$.\n\n**Bước 1.** Đưa $x^2$ ra ngoài căn với chú ý $\\sqrt{x^2}=-x$ khi $x<0$.\n\n**Bước 2.** Chia tử và mẫu cho $x$ và tính $L$ theo $a$, $b$.\n\n**Bước 3.** Với từng ý, thay điều kiện cho trước vào công thức của $L$ và so với giá trị đề cho.\n\n**Phần 2. Trình bày**\n\nVới $x<0$: $\\sqrt{x^2-3x}=-x\\sqrt{1-\\dfrac3x}$ nên $\\dfrac{\\sqrt{x^2-3x}+ax}{bx-1}=\\dfrac{-\\sqrt{1-\\dfrac3x}+a}{b-\\dfrac1x}\\to\\dfrac{a-1}b$.\n\nVậy $L=\\dfrac{a-1}b$.\n\nÝ a) Nếu $\\dfrac{a-1}b=3$ thì $L=3$. Ý a) Đúng.\n\nÝ b) Nếu $\\dfrac{a-1}b=4$ thì $L=4\\ne6$. Ý b) Sai.\n\nÝ c) $L=2\\Leftrightarrow a-1=2b\\Leftrightarrow a-2b=1$. Điều kiện $a+2b=1$ cho $a-1=-2b$ nên $L=-2\\ne2$. Ý c) Sai.\n\nÝ d) $L=1\\Leftrightarrow a-1=b\\Leftrightarrow a-b=1$. Điều kiện $a+b=1$ cho $a-1=-b$ nên $L=-1\\ne1$. Ý d) Sai.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Sai, Sai.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const L=(a,b)=>I(x=>(Math.sqrt(x*x-3*x)+a*x)/(b*x-1),-1);return eq(L(7,2),3)&&!eq(L(9,2),6)&&eq(L(3,-1),-2)&&!eq(L(3,-1),2)&&eq(L(3,-2),-1)&&!eq(L(3,-2),1)})()"
+  ],
+  "sach_dap_so": null,
+  "ghi_chu": "LỆCH SÁCH — đề sách in ý c) \"a+2b=1\", ý d) \"a+b=1\" nhưng lời giải sách dùng a-2b=1 và a-b=1 (lỗi in thiếu dấu trừ) và chọn ĐÚNG. Giải theo số liệu in: ý c), d) Sai. Đề còn in \"a, 3, c\" (lỗi in, đúng là a, b, c)."
+ },
+ {
+  "id": "tt-b2-p2-C51",
+  "vai": "luyen",
+  "dang_bai": "NDB01180",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Hiệu căn bậc hai và căn bậc ba khi x→+∞, tách thành hai hiệu và liên hợp.",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Giới hạn $\\lim\\limits_{x\\to+\\infty}(\\sqrt{x^2-x}-\\sqrt[3]{x^3+1})=\\lim\\limits_{x\\to+\\infty}\\dfrac{-ax}{bx(\\sqrt{1-\\dfrac1x}+1)}$ với $a$, $b$ là các số tự nhiên và $\\dfrac ab$ là phân số tối giản. Tính $P=a+b^2$.",
+  "dap_an": "2",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tách hiệu hai căn khác bậc thành hai hiệu, mỗi hiệu có một căn và $x$; nhân liên hợp từng hiệu rồi so sánh với dạng đề cho.\n\n**Bước 1.** Chèn thêm $x$ để tách biểu thức thành $(\\sqrt{x^2-x}-x)+(x-\\sqrt[3]{x^3+1})$.\n\n**Bước 2.** Nhân liên hợp bậc hai cho hiệu thứ nhất và liên hợp bậc ba cho hiệu thứ hai.\n\n**Bước 3.** Chỉ ra hiệu thứ hai dần về $0$, còn hiệu thứ nhất đưa về dạng đề cho; đọc $a$, $b$ rồi tính $P$.\n\n**Phần 2. Trình bày**\n\n$\\sqrt{x^2-x}-\\sqrt[3]{x^3+1}=(\\sqrt{x^2-x}-x)+(x-\\sqrt[3]{x^3+1})$.\n\n$\\sqrt{x^2-x}-x=\\dfrac{-x}{\\sqrt{x^2-x}+x}=\\dfrac{-x}{x\\sqrt{1-\\dfrac1x}+x}=\\dfrac{-x}{x(\\sqrt{1-\\dfrac1x}+1)}$ (với $x>0$).\n\n$x-\\sqrt[3]{x^3+1}=\\dfrac{-1}{x^2+x\\sqrt[3]{x^3+1}+\\sqrt[3]{(x^3+1)^2}}$, mẫu dần tới $+\\infty$ nên hiệu này dần về $0$.\n\nVậy giới hạn bằng $\\lim\\limits_{x\\to+\\infty}\\dfrac{-x}{x(\\sqrt{1-\\dfrac1x}+1)}$, ứng với $a=1$, $b=1$.\n\nDo đó $P=1+1^2=2$.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const g=x=>Math.sqrt(x*x-x)-Math.cbrt(x**3+1);return eq(I(g,1),-0.5)&&1+1**2===2})()"
+  ],
+  "sach_dap_so": "2",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C52",
+  "vai": "luyen",
+  "dang_bai": "NDB01175",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Hàm Heaviside hai công thức, tính giới hạn trái và phải tại điểm chia nhánh.",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Hàm Heaviside có dạng $H(t)=\\begin{cases}0&\\text{khi }t<0\\\\1&\\text{khi }t\\ge0\\end{cases}$ thường được dùng để mô tả việc chuyển trạng thái tắt/mở của dòng điện tại thời điểm $t=0$. Tính $\\lim\\limits_{t\\to0^-}H(t)+\\lim\\limits_{t\\to0^+}H(t)$.",
+  "dap_an": "1",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn một bên chỉ phụ thuộc công thức của nhánh tương ứng; ta tính riêng giới hạn trái bằng nhánh $t<0$ và giới hạn phải bằng nhánh $t>0$.\n\n**Bước 1.** Xác định nhánh công thức dùng cho giới hạn trái tại $t=0$.\n\n**Bước 2.** Xác định nhánh công thức dùng cho giới hạn phải tại $t=0$.\n\n**Bước 3.** Tính hai giới hạn một bên rồi cộng lại.\n\n**Phần 2. Trình bày**\n\nKhi $t\\to0^-$ ta có $t<0$ nên $H(t)=0$, suy ra $\\lim\\limits_{t\\to0^-}H(t)=0$.\n\nKhi $t\\to0^+$ ta có $t>0$ nên $H(t)=1$, suy ra $\\lim\\limits_{t\\to0^+}H(t)=1$.\n\nVậy $\\lim\\limits_{t\\to0^-}H(t)+\\lim\\limits_{t\\to0^+}H(t)=0+1=1$.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const H=t=>t<0?0:1;return eq(H(-1e-9)+H(1e-9),1)&&H(-1e-12)===0&&H(1e-12)===1})()"
+  ],
+  "sach_dap_so": "1",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C53",
+  "vai": "luyen",
+  "dang_bai": "NDB01185",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Bài toán thực tế: nồng độ muối theo thời gian, giới hạn khi t→+∞.",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một cái hồ chứa $600$ lít nước ngọt. Người ta bơm nước biển có nồng độ muối $30$ g/lít vào hồ với tốc độ $15$ lít/phút. Nồng độ muối của nước trong hồ sau $t$ phút kể từ khi bắt đầu bơm là $C(t)=\\dfrac{30\\cdot15t}{600+15t}=\\dfrac{30t}{40+t}$ (g/lít). Khi đó nồng độ muối trong hồ sẽ bằng bao nhiêu (g/lít) khi $t$ dần về dương vô cùng?",
+  "dap_an": "30",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu của $C(t)$ cùng bậc nhất theo $t$, nên chia cả hai cho $t$ rồi dùng $\\lim\\dfrac1t=0$.\n\n**Bước 1.** Nhận ra $C(t)$ là phân thức bậc nhất trên bậc nhất.\n\n**Bước 2.** Chia tử và mẫu cho $t$ để chỉ còn các số hạng dạng $\\dfrac{\\text{hằng}}t$.\n\n**Bước 3.** Tính giới hạn khi $t\\to+\\infty$ và ghi đơn vị đúng.\n\n**Phần 2. Trình bày**\n\nVới $t>0$: $C(t)=\\dfrac{30t}{40+t}=\\dfrac{30}{\\dfrac{40}t+1}$.\n\n$\\lim\\limits_{t\\to+\\infty}C(t)=\\dfrac{30}{0+1}=30$ (g/lít).\n\nVậy nồng độ muối tiến tới $30$ g/lít.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const C=t=>30*t/(40+t);return eq(I(C,1),30)&&Math.abs(C(1e15)-30)<1e-6})()"
+  ],
+  "sach_dap_so": "30",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C54",
+  "vai": "luyen",
+  "dang_bai": "NDB01173",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tổng hai căn trừ hằng số, tách thành hai hiệu rồi liên hợp từng phần.",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Biết rằng giới hạn $\\lim\\limits_{x\\to0}\\dfrac{\\sqrt{x+9}+\\sqrt{x+16}-7}{x}=\\lim\\limits_{x\\to0}[\\dfrac a{\\sqrt{x+9}+b}+\\dfrac c{\\sqrt{x+16}+d}]$ với $a$, $b$, $c$, $d$ là các số nguyên dương. Tính tổng các số $a$, $b$, $c$, $d$.",
+  "dap_an": "9",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vì $7=3+4$ nên tách tử thành hai hiệu mỗi hiệu chứa một căn, rồi nhân liên hợp riêng từng hiệu để xuất hiện nhân tử $x$.\n\n**Bước 1.** Viết $\\sqrt{x+9}+\\sqrt{x+16}-7=(\\sqrt{x+9}-3)+(\\sqrt{x+16}-4)$ để tách thành hai phân thức.\n\n**Bước 2.** Nhân liên hợp từng phân thức: tử trở thành $x$.\n\n**Bước 3.** Rút gọn $x$ rồi đối chiếu với dạng đề cho để đọc $a$, $b$, $c$, $d$ và tính tổng.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{\\sqrt{x+9}+\\sqrt{x+16}-7}{x}=\\dfrac{\\sqrt{x+9}-3}{x}+\\dfrac{\\sqrt{x+16}-4}{x}$.\n\n$\\dfrac{\\sqrt{x+9}-3}{x}=\\dfrac{(x+9)-9}{x(\\sqrt{x+9}+3)}=\\dfrac1{\\sqrt{x+9}+3}$ và $\\dfrac{\\sqrt{x+16}-4}{x}=\\dfrac1{\\sqrt{x+16}+4}$ với $x\\ne0$.\n\nĐối chiếu dạng đề cho: $a=1$, $b=3$, $c=1$, $d=4$.\n\nVậy $a+b+c+d=1+3+1+4=9$.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const g=x=>(Math.sqrt(x+9)+Math.sqrt(x+16)-7)/x;const L=1/(Math.sqrt(9)+3)+1/(Math.sqrt(16)+4);return eq(F(g,0,1),L)&&eq(F(g,0,-1),L)&&1+3+1+4===9})()"
+  ],
+  "sach_dap_so": "9",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C55",
+  "vai": "luyen",
+  "dang_bai": "NDB01186",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Điểm A dịch chuyển ra vô cực, lập độ dài theo tham số rồi lấy giới hạn.",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Trong hệ trục toạ độ $Oxy$, lấy điểm $A$ thuộc tia $Ox$ và điểm $B(0;2)$ thuộc tia $Oy$. Giả sử hoành độ điểm $A$ là $a>0$. Độ dài đường cao $OH$ của tam giác $OAB$ được tính theo công thức $\\dfrac{2a}{\\sqrt{4+a^2}}$. Khi điểm $A$ dịch chuyển ra vô cực theo chiều dương trục $Ox$ thì độ dài $OH$ thay đổi về gần giá trị bao nhiêu?",
+  "dap_an": "2",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Điểm $A$ ra xa vô cực theo tia $Ox$ nghĩa là $a\\to+\\infty$; ta lấy giới hạn của công thức độ dài đã cho theo $a$.\n\n**Bước 1.** Đặt độ dài đường cao là một hàm số của $a$ và xác định hướng dần của $a$.\n\n**Bước 2.** Đưa $a$ ra ngoài căn (với $a>0$) và chia tử và mẫu cho $a$.\n\n**Bước 3.** Tính giới hạn khi $a\\to+\\infty$ và diễn giải ý nghĩa.\n\n**Phần 2. Trình bày**\n\nĐặt $h(a)=OH=\\dfrac{2a}{\\sqrt{4+a^2}}$. Khi $A$ ra xa vô cực theo tia $Ox$ thì $a\\to+\\infty$.\n\nVới $a>0$: $h(a)=\\dfrac{2a}{a\\sqrt{\\dfrac4{a^2}+1}}=\\dfrac2{\\sqrt{\\dfrac4{a^2}+1}}$.\n\n$\\lim\\limits_{a\\to+\\infty}h(a)=\\dfrac2{\\sqrt{0+1}}=2$.\n\nVậy độ dài $OH$ dần về $2$.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const h=a=>2*a/Math.sqrt(4+a*a);return eq(I(h,1),2)&&h(1e15)<=2})()"
+  ],
+  "sach_dap_so": "2",
+  "ghi_chu": "ĐỀ SAI (lỗi in): sách ghi \"AH\" nhưng công thức và đáp số là OH; đã sửa thành OH. Có hình trang trí [[img]] đầu bài, không cần để giải."
+ },
+ {
+  "id": "tt-b2-p2-C56",
+  "vai": "luyen",
+  "dang_bai": "NDB01173",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Hai căn trừ hằng số, tách thành hai hiệu rồi liên hợp từng phần.",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Biết rằng giới hạn $\\lim\\limits_{x\\to2}\\dfrac{\\sqrt{5x-1}-\\sqrt{9x-2}+1}{x-2}=\\lim\\limits_{x\\to2}(\\dfrac a{b\\sqrt{5x-1}+3}-\\dfrac c{4+d\\sqrt{9x-2}})$ với $a$, $b$, $c$, $d$ là các số nguyên dương. Tính tổng các số $a$, $b$, $c$, $d$.",
+  "dap_an": "16",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tại $x=2$ ta có $\\sqrt{5x-1}=3$ và $\\sqrt{9x-2}=4$, nên tách $1=4-3$ để chia tử thành hai hiệu rồi nhân liên hợp từng hiệu.\n\n**Bước 1.** Viết $\\sqrt{5x-1}-\\sqrt{9x-2}+1=(\\sqrt{5x-1}-3)+(4-\\sqrt{9x-2})$ để tách thành hai phân thức.\n\n**Bước 2.** Nhân liên hợp từng phân thức để tử xuất hiện nhân tử $x-2$.\n\n**Bước 3.** Rút gọn $x-2$, đối chiếu với dạng đề cho để đọc $a$, $b$, $c$, $d$ và tính tổng.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{\\sqrt{5x-1}-\\sqrt{9x-2}+1}{x-2}=\\dfrac{\\sqrt{5x-1}-3}{x-2}+\\dfrac{4-\\sqrt{9x-2}}{x-2}$.\n\n$\\dfrac{\\sqrt{5x-1}-3}{x-2}=\\dfrac{5x-10}{(x-2)(\\sqrt{5x-1}+3)}=\\dfrac5{\\sqrt{5x-1}+3}$.\n\n$\\dfrac{4-\\sqrt{9x-2}}{x-2}=\\dfrac{18-9x}{(x-2)(4+\\sqrt{9x-2})}=\\dfrac{-9}{4+\\sqrt{9x-2}}$.\n\nDo đó giới hạn bằng $\\lim\\limits_{x\\to2}(\\dfrac5{\\sqrt{5x-1}+3}-\\dfrac9{4+\\sqrt{9x-2}})$, nên $a=5$, $b=1$, $c=9$, $d=1$.\n\nVậy $a+b+c+d=5+1+9+1=16$.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const g=x=>(Math.sqrt(5*x-1)-Math.sqrt(9*x-2)+1)/(x-2);const L=5/(Math.sqrt(9)+3)-9/(4+Math.sqrt(16));return eq(F(g,2,1),L)&&eq(F(g,2,-1),L)&&5+1+9+1===16})()"
+  ],
+  "sach_dap_so": "16",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C57",
+  "vai": "luyen",
+  "dang_bai": "NDB01183",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Phân thức tử bậc cao hơn mẫu khi x→±∞, rút luỹ thừa cao nhất (dạng sau thắng NDB01178).",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho $\\lim\\limits_{x\\to-\\infty}\\dfrac{(3+2x^2)^5(3x^3-4)^2}{(5-x^3)^2(1-2x^2)^3}=\\lim\\limits_{x\\to-\\infty}x^4\\cdot\\dfrac{(\\dfrac3{x^2}+a)^5(b-\\dfrac4{x^3})^2}{(\\dfrac5{x^3}-c)^2(\\dfrac1{x^2}-d)^3}$ với $a$, $b$, $c$, $d$ là các số tự nhiên. Tính tích các số $a$, $b$, $c$, $d$.",
+  "dap_an": "12",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đưa luỹ thừa cao nhất của $x$ ra ngoài từng nhân tử, rồi đối chiếu hệ số còn lại với dạng đề cho để đọc $a$, $b$, $c$, $d$.\n\n**Bước 1.** Với mỗi nhân tử, rút luỹ thừa cao nhất của $x$ ra ngoài để phần còn lại có dạng hằng số cộng với luỹ thừa của $\\dfrac1x$.\n\n**Bước 2.** Gom các luỹ thừa của $x$ ở tử và ở mẫu để kiểm tra có đúng thừa số $x^4$.\n\n**Bước 3.** Đối chiếu hằng số còn lại với dạng đề cho để đọc $a$, $b$, $c$, $d$ rồi tính tích.\n\n**Phần 2. Trình bày**\n\n$(3+2x^2)^5=x^{10}(\\dfrac3{x^2}+2)^5$ và $(3x^3-4)^2=x^6(3-\\dfrac4{x^3})^2$.\n\n$(5-x^3)^2=x^6(\\dfrac5{x^3}-1)^2$ và $(1-2x^2)^3=x^6(\\dfrac1{x^2}-2)^3$.\n\nTỉ số luỹ thừa của $x$ là $\\dfrac{x^{10}\\cdot x^6}{x^6\\cdot x^6}=x^4$, đúng như dạng đề cho.\n\nĐối chiếu: $a=2$, $b=3$, $c=1$, $d=2$.\n\nVậy $a\\cdot b\\cdot c\\cdot d=2\\cdot3\\cdot1\\cdot2=12$.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const g=x=>(3+2*x*x)**5*(3*x**3-4)**2/((5-x**3)**2*(1-2*x*x)**3);const a=2,b=3,c=1,d=2;const h=x=>x**4*((3/(x*x)+a)**5*(b-4/x**3)**2)/((5/x**3-c)**2*(1/(x*x)-d)**3);const x0=-7.3;return Math.abs(g(x0)/h(x0)-1)<1e-9&&a*b*c*d===12})()"
+  ],
+  "sach_dap_so": "(bỏ trống) — tự tính 12",
+  "ghi_chu": "Đáp số in trong sách bị bỏ trống; lời giải sách cho P=12."
+ },
+ {
+  "id": "tt-b2-p2-C58",
+  "vai": "luyen",
+  "dang_bai": "NDB01183",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Phân thức tử bậc cao hơn mẫu khi x→±∞, rút luỹ thừa cao nhất (dạng sau thắng NDB01178).",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Biến đổi giới hạn $\\lim\\limits_{x\\to+\\infty}\\dfrac{(6-2x^4)^4(2-x^2)}{(x^2-3)^5(6-4x)}$ ta thu được kết quả dạng $\\lim\\limits_{x\\to+\\infty}x^a\\cdot\\dfrac{(\\dfrac6{x^4}-2)^4(\\dfrac2{x^2}-1)}{(1-\\dfrac3{x^2})^5(\\dfrac6x-4)}$ với $a$ là số tự nhiên. Xác định giá trị của $a$.",
+  "dap_an": "7",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Rút luỹ thừa cao nhất của $x$ ra ngoài từng nhân tử; số mũ $a$ bằng tổng số mũ ở tử trừ tổng số mũ ở mẫu.\n\n**Bước 1.** Tìm bậc của từng nhân tử ở tử và ở mẫu rồi rút $x$ mũ bậc đó ra ngoài.\n\n**Bước 2.** Nhân các luỹ thừa của $x$ ở tử và ở mẫu theo số mũ của nhân tử.\n\n**Bước 3.** Lấy số mũ ở tử trừ số mũ ở mẫu để được $a$.\n\n**Phần 2. Trình bày**\n\n$(6-2x^4)^4=x^{16}(\\dfrac6{x^4}-2)^4$ và $2-x^2=x^2(\\dfrac2{x^2}-1)$.\n\n$(x^2-3)^5=x^{10}(1-\\dfrac3{x^2})^5$ và $6-4x=x(\\dfrac6x-4)$.\n\nTỉ số luỹ thừa của $x$ là $\\dfrac{x^{16}\\cdot x^2}{x^{10}\\cdot x}=x^{7}$.\n\nVậy $a=7$.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const g=x=>(6-2*x**4)**4*(2-x*x)/((x*x-3)**5*(6-4*x));const h=x=>x**7*((6/x**4-2)**4*(2/(x*x)-1))/((1-3/(x*x))**5*(6/x-4));const x0=3.7;return Math.abs(g(x0)/h(x0)-1)<1e-9})()"
+  ],
+  "sach_dap_so": "7",
+  "ghi_chu": ""
+ },
+ {
+  "id": "tt-b2-p2-C59",
+  "vai": "luyen",
+  "dang_bai": "NDB01178",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Phân thức dạng tích luỹ thừa khi x→+∞, tìm số mũ trong dạng đã rút luỹ thừa.",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho $\\lim\\limits_{x\\to+\\infty}\\dfrac{(4-x^2)^6(3x^2+2)^2}{(5x^2-3)^2(1-2x^5)^3}=\\lim\\limits_{x\\to+\\infty}\\dfrac1{x^3}\\cdot\\dfrac{(\\dfrac4{x^2}-1)^6(3+\\dfrac2{x^2})^b}{(5-\\dfrac3{x^2})^a(\\dfrac1{x^5}-2)^3}$ với $a$, $b$ là các số tự nhiên. Tính $S=a-b$.",
+  "dap_an": "0",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Rút luỹ thừa cao nhất của $x$ ra ngoài từng nhân tử; số mũ của nhân tử còn lại giữ nguyên nên đối chiếu trực tiếp với dạng đề cho để đọc $a$, $b$.\n\n**Bước 1.** Rút luỹ thừa cao nhất của $x$ ra ngoài từng nhân tử ở tử và ở mẫu.\n\n**Bước 2.** Kiểm tra tỉ số các luỹ thừa của $x$ đúng bằng $\\dfrac1{x^3}$ như dạng đề cho.\n\n**Bước 3.** Đối chiếu số mũ của hai nhân tử $(3+\\dots)$ và $(5-\\dots)$ để đọc $b$, $a$ rồi tính $S$.\n\n**Phần 2. Trình bày**\n\n$(4-x^2)^6=x^{12}(\\dfrac4{x^2}-1)^6$, $(3x^2+2)^2=x^4(3+\\dfrac2{x^2})^2$.\n\n$(5x^2-3)^2=x^4(5-\\dfrac3{x^2})^2$, $(1-2x^5)^3=x^{15}(\\dfrac1{x^5}-2)^3$.\n\nTỉ số luỹ thừa của $x$ là $\\dfrac{x^{12}\\cdot x^4}{x^4\\cdot x^{15}}=\\dfrac1{x^3}$, đúng như dạng đề cho.\n\nĐối chiếu số mũ: $b=2$ và $a=2$.\n\nVậy $S=a-b=0$.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const g=x=>(4-x*x)**6*(3*x*x+2)**2/((5*x*x-3)**2*(1-2*x**5)**3);const a=2,b=2;const h=x=>(1/x**3)*((4/(x*x)-1)**6*(3+2/(x*x))**b)/((5-3/(x*x))**a*(1/x**5-2)**3);const x0=2.9;return Math.abs(g(x0)/h(x0)-1)<1e-9&&a-b===0})()"
+  ],
+  "sach_dap_so": "0",
+  "ghi_chu": "Đề in \"a;b;c;d\" thừa c, d (lỗi in), dạng chỉ có a, b."
+ },
+ {
+  "id": "tt-b2-p2-C60",
+  "vai": "luyen",
+  "dang_bai": "NDB01177",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Hàm hai công thức, tìm giới hạn tại điểm chia nhánh bằng giới hạn trái = phải; gần NDB01175.",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tìm giới hạn của hàm số sau tại điểm cho trước: $f(x)=\\begin{cases}\\dfrac{x^2-3x+2}{x^2-1}&\\text{khi }x>1\\\\-\\dfrac x2&\\text{khi }x\\le1\\end{cases}$ tại $x=1$.",
+  "dap_an": "-0,5",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Điểm $x=1$ là điểm chia nhánh nên tính riêng giới hạn trái và giới hạn phải, rồi so sánh để kết luận giới hạn tại $x=1$.\n\n**Bước 1.** Tính giới hạn phải bằng nhánh $x>1$, nhận ra dạng $\\dfrac00$ và phân tích nhân tử.\n\n**Bước 2.** Tính giới hạn trái bằng nhánh $x\\le1$.\n\n**Bước 3.** So sánh hai giới hạn một bên để kết luận.\n\n**Phần 2. Trình bày**\n\n$\\lim\\limits_{x\\to1^+}f(x)=\\lim\\limits_{x\\to1^+}\\dfrac{x^2-3x+2}{x^2-1}=\\lim\\limits_{x\\to1^+}\\dfrac{(x-1)(x-2)}{(x-1)(x+1)}=\\lim\\limits_{x\\to1^+}\\dfrac{x-2}{x+1}=-\\dfrac12$.\n\n$\\lim\\limits_{x\\to1^-}f(x)=\\lim\\limits_{x\\to1^-}(-\\dfrac x2)=-\\dfrac12$.\n\nHai giới hạn một bên bằng nhau nên $\\lim\\limits_{x\\to1}f(x)=-\\dfrac12=-0{,}5$.",
+  "kiem": [
+   "(()=>{const F=(f,a,s)=>f(a+s*1e-6);const I=(f,s)=>f(s*1e7);const nm=v=>Math.abs(v)>1e4?Math.sign(v)*Infinity:v;const eq=(x,y)=>x===y||Math.abs(x-y)<2e-3;const pick=(o,v)=>{v=nm(v);const m=o.map((x,i)=>eq(x,v)?i:-1).filter(i=>i>=0);return m.length===1?m[0]:-1};const chk=(o,vs,k)=>vs.every(v=>pick(o,v)===k);const R_=x=>(x*x-3*x+2)/(x*x-1);const Lx=x=>-x/2;return eq(F(R_,1,1),-0.5)&&eq(F(Lx,1,-1),-0.5)})()"
+  ],
+  "sach_dap_so": "-0,5",
+  "ghi_chu": ""
+ }
+]

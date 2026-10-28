@@ -1,0 +1,1268 @@
+[
+ {
+  "id": "nbv-b2-b-1",
+  "vai": "luyen",
+  "dang_bai": "NDB01168",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Chứng minh giới hạn bằng định nghĩa dãy.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Xét hàm số $f(x)=\\dfrac{x^{2}-9}{x-3}$ với $x\\ne 3$. Chứng minh rằng $\\lim\\limits_{x\\to 3}f(x)=6$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Để dùng định nghĩa, lấy một dãy $(x_{n})$ bất kì thuộc tập xác định, khác điểm đang xét và dần tới điểm đó rồi tính giới hạn của dãy $f(x_{n})$.\n\n**Bước 1.** Nêu dãy $(x_{n})$ bất kì thoả điều kiện của đề: thuộc tập xác định, khác giá trị đang xét và có giới hạn đã cho.\n\n**Bước 2.** Viết biểu thức $f(x_{n})$ rồi biến đổi (phân tích nhân tử, rút gọn hoặc chia cho luỹ thừa cao nhất) để dùng được quy tắc giới hạn dãy số.\n\n**Bước 3.** Áp dụng các quy tắc giới hạn của dãy số để tính giới hạn của $f(x_{n})$.\n\n**Bước 4.** Kết luận giới hạn của hàm số, vì kết quả không phụ thuộc cách chọn dãy $(x_{n})$.\n\n**Phần 2. Trình bày**\n\nGiả sử $(x_{n})$ là dãy số bất kì thoả mãn $x_{n}\\ne 3$ và $\\lim x_{n}=3$.\n\n$f(x_{n})=\\dfrac{x_{n}^{2}-9}{x_{n}-3}=\\dfrac{(x_{n}-3)(x_{n}+3)}{x_{n}-3}=x_{n}+3$ (vì $x_{n}-3\\ne 0$).\n\n$\\lim f(x_{n})=\\lim(x_{n}+3)=3+3=6$.\n\nVậy $\\lim\\limits_{x\\to 3}f(x)=6$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(x*x-9)/(x-3);const a=3,k=6;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)"
+  ],
+  "sach_dap_so": "6",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-2",
+  "vai": "luyen",
+  "dang_bai": "NDB01169",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Dùng quy tắc giới hạn của thương hai hàm số.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $\\lim\\limits_{x\\to 1}f(x)=2$. Chứng minh rằng $\\lim\\limits_{x\\to 1}\\dfrac{f(x)}{2}=1$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dùng quy tắc giới hạn của tổng, hiệu, tích, thương và căn đối với các hàm số đã biết giới hạn.\n\n**Bước 1.** Xác định các hàm thành phần đã biết giới hạn và biểu thức cần tính được tạo từ chúng bằng những phép toán nào.\n\n**Bước 2.** Kiểm tra điều kiện của quy tắc, chẳng hạn mẫu có giới hạn khác $0$ hoặc biểu thức dưới căn có giới hạn không âm.\n\n**Bước 3.** Thay các giới hạn đã biết vào quy tắc tương ứng rồi tính ra kết quả.\n\n**Phần 2. Trình bày**\n\nVì $\\lim\\limits_{x\\to 1}2=2\\ne 0$ nên áp dụng quy tắc giới hạn của thương:\n\n$\\lim\\limits_{x\\to 1}\\dfrac{f(x)}{2}=\\dfrac{\\lim\\limits_{x\\to 1}f(x)}{\\lim\\limits_{x\\to 1}2}=\\dfrac{2}{2}=1$.\n\nVậy $\\lim\\limits_{x\\to 1}\\dfrac{f(x)}{2}=1$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(2*x)/2;const a=1,k=1;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)"
+  ],
+  "sach_dap_so": "1",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-3",
+  "vai": "luyen",
+  "dang_bai": "NDB01174",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Thương có giới hạn hữu hạn, mẫu dần tới 0 nên tử dần tới 0.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $\\lim\\limits_{x\\to 1}\\dfrac{f(x)-4}{x-1}=2$. Tính:\na) $\\lim\\limits_{x\\to 1}f(x)$;\nb) $\\lim\\limits_{x\\to 1}3f(x)$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu dần tới $0$ mà thương có giới hạn hữu hạn thì tử cũng phải dần tới $0$.\n\n**Bước 1.** Nhận xét mẫu $x-1$ có giới hạn bằng $0$ khi $x$ dần tới $1$.\n\n**Bước 2.** Lập luận phản chứng: nếu tử có giới hạn khác $0$ thì thương có giới hạn vô cực, trái với giả thiết.\n\n**Bước 3.** Suy ra giới hạn của tử, từ đó tách ra giới hạn của $f(x)$ ở ý a.\n\n**Bước 4.** Dùng quy tắc nhân một hằng số với giới hạn để tính giới hạn ở ý b.\n\n**Phần 2. Trình bày**\n\na) Vì $\\lim\\limits_{x\\to 1}(x-1)=0$ nên nếu $\\lim\\limits_{x\\to 1}[f(x)-4]\\ne 0$ thì $\\lim\\limits_{x\\to 1}\\dfrac{f(x)-4}{x-1}$ bằng $+\\infty$ hoặc $-\\infty$, trái với giả thiết.\n\nDo đó $\\lim\\limits_{x\\to 1}[f(x)-4]=0$, suy ra $\\lim\\limits_{x\\to 1}f(x)=4$.\n\nb) $\\lim\\limits_{x\\to 1}3f(x)=3\\cdot\\lim\\limits_{x\\to 1}f(x)=3\\cdot 4=12$.\n\nVậy $\\lim\\limits_{x\\to 1}f(x)=4$ và $\\lim\\limits_{x\\to 1}3f(x)=12$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>4+2*(x-1);const a=1,k=4;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)",
+   "const {sqrt,cbrt,abs}=Math;const f=x=>3*(4+2*(x-1));const a=1,k=12;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)",
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(4+2*(x-1)-4)/(x-1);const a=1,k=2;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)"
+  ],
+  "sach_dap_so": "a) 4; b) 12",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-4",
+  "vai": "luyen",
+  "dang_bai": "NDB01177",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Hàm nhiều công thức, so giới hạn trái và phải.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho hàm số $f(x)=\\begin{cases}x&\\text{nếu }x>1\\\\2&\\text{nếu }x=1\\\\1&\\text{nếu }x<1\\end{cases}$. Hàm số $f(x)$ có giới hạn khi $x\\to 1$ không?",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số có giới hạn tại một điểm khi và chỉ khi giới hạn bên trái bằng giới hạn bên phải; giá trị tại chính điểm đó không ảnh hưởng.\n\n**Bước 1.** Xác định công thức của hàm số ở phía bên trái và phía bên phải của điểm đang xét.\n\n**Bước 2.** Tính giới hạn bên trái và giới hạn bên phải bằng cách thay điểm đó vào công thức tương ứng.\n\n**Bước 3.** So sánh hai giới hạn một bên (có tham số thì cho hai giới hạn bằng nhau) rồi kết luận.\n\n**Phần 2. Trình bày**\n\nKhi $x\\to 1^{+}$ ta có $x>1$ nên $f(x)=x$, do đó $\\lim\\limits_{x\\to 1^{+}}f(x)=1$.\n\nKhi $x\\to 1^{-}$ ta có $x<1$ nên $f(x)=1$, do đó $\\lim\\limits_{x\\to 1^{-}}f(x)=1$.\n\nHai giới hạn một bên bằng nhau (giá trị $f(1)=2$ không ảnh hưởng đến giới hạn).\n\nVậy hàm số $f(x)$ có giới hạn khi $x\\to 1$ và $\\lim\\limits_{x\\to 1}f(x)=1$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>x>1?x:(x<1?1:2);const a=1,k=1;Math.abs(f(a+(1)*1e-6)-k)<=2e-3*Math.max(1,Math.abs(k))",
+   "const {sqrt,cbrt,abs}=Math;const f=x=>x>1?x:(x<1?1:2);const a=1,k=1;Math.abs(f(a+(-1)*1e-6)-k)<=2e-3*Math.max(1,Math.abs(k))"
+  ],
+  "sach_dap_so": "Có, bằng 1",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-5a",
+  "vai": "luyen",
+  "dang_bai": "NDB01169",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Đa thức xác định tại điểm, thay trực tiếp.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to 3}(-x^{2}+x+2)$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nếu hàm số xác định tại điểm đang xét thì giới hạn tại điểm đó bằng giá trị của hàm số tại điểm đó (dùng quy tắc tổng, hiệu, tích, thương, căn).\n\n**Bước 1.** Kiểm tra biểu thức xác định tại điểm đang xét: mẫu khác $0$ và biểu thức dưới căn không âm.\n\n**Bước 2.** Thay giá trị của $x$ vào từng thành phần của biểu thức rồi tính riêng các thành phần đó.\n\n**Bước 3.** Ghép các giá trị đã tính theo quy tắc thương, tích hoặc căn để ra kết quả gọn nhất.\n\n**Phần 2. Trình bày**\n\nHàm số đa thức xác định tại $x=3$ nên thay trực tiếp:\n\n$\\lim\\limits_{x\\to 3}(-x^{2}+x+2)=-9+3+2=-4$.\n\nVậy giới hạn bằng $-4$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>-x*x+x+2;const a=3,k=-4;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)"
+  ],
+  "sach_dap_so": "-4",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-5b",
+  "vai": "luyen",
+  "dang_bai": "NDB01169",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Phân thức xác định tại điểm, thay trực tiếp.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to -1}\\dfrac{3x^{2}-2x+1}{3x-2}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nếu hàm số xác định tại điểm đang xét thì giới hạn tại điểm đó bằng giá trị của hàm số tại điểm đó (dùng quy tắc tổng, hiệu, tích, thương, căn).\n\n**Bước 1.** Kiểm tra biểu thức xác định tại điểm đang xét: mẫu khác $0$ và biểu thức dưới căn không âm.\n\n**Bước 2.** Thay giá trị của $x$ vào từng thành phần của biểu thức rồi tính riêng các thành phần đó.\n\n**Bước 3.** Ghép các giá trị đã tính theo quy tắc thương, tích hoặc căn để ra kết quả gọn nhất.\n\n**Phần 2. Trình bày**\n\nTại $x=-1$ mẫu $3x-2=-5\\ne 0$ nên hàm số xác định, ta thay trực tiếp.\n\nTử: $3\\cdot(-1)^{2}-2\\cdot(-1)+1=3+2+1=6$.\n\nMẫu: $3\\cdot(-1)-2=-5$.\n\nVậy $\\lim\\limits_{x\\to -1}\\dfrac{3x^{2}-2x+1}{3x-2}=\\dfrac{6}{-5}=-\\dfrac{6}{5}$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(3*x*x-2*x+1)/(3*x-2);const a=-1,k=-1.2;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)"
+  ],
+  "sach_dap_so": "-6/5",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-5c",
+  "vai": "luyen",
+  "dang_bai": "NDB01169",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Căn của biểu thức xác định tại điểm, thay trực tiếp.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to 2}\\sqrt{5x^{2}+x+4}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nếu hàm số xác định tại điểm đang xét thì giới hạn tại điểm đó bằng giá trị của hàm số tại điểm đó (dùng quy tắc tổng, hiệu, tích, thương, căn).\n\n**Bước 1.** Kiểm tra biểu thức xác định tại điểm đang xét: mẫu khác $0$ và biểu thức dưới căn không âm.\n\n**Bước 2.** Thay giá trị của $x$ vào từng thành phần của biểu thức rồi tính riêng các thành phần đó.\n\n**Bước 3.** Ghép các giá trị đã tính theo quy tắc thương, tích hoặc căn để ra kết quả gọn nhất.\n\n**Phần 2. Trình bày**\n\nTa có $\\lim\\limits_{x\\to 2}(5x^{2}+x+4)=5\\cdot 4+2+4=26>0$.\n\nDo đó $\\lim\\limits_{x\\to 2}\\sqrt{5x^{2}+x+4}=\\sqrt{26}$.\n\nVậy giới hạn bằng $\\sqrt{26}$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>sqrt(5*x*x+x+4);const a=2,k=Math.sqrt(26);const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)"
+  ],
+  "sach_dap_so": "\\sqrt{26}",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-6a",
+  "vai": "luyen",
+  "dang_bai": "NDB01178",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Phân thức khi x tiến tới dương vô cực, tử bậc thấp hơn mẫu.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to+\\infty}\\dfrac{1}{x^{2}+2}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Với phân thức hữu tỉ khi $x\\to\\pm\\infty$, chia tử và mẫu cho luỹ thừa cao nhất của $x$ rồi dùng giới hạn $\\dfrac{1}{x^{k}}\\to 0$.\n\n**Bước 1.** Xác định luỹ thừa cao nhất của $x$ ở tử và ở mẫu.\n\n**Bước 2.** Chia cả tử và mẫu cho luỹ thừa cao nhất đó để xuất hiện các số hạng dạng $\\dfrac{c}{x^{k}}$.\n\n**Bước 3.** Cho $x$ dần tới vô cực: các số hạng này có giới hạn $0$, tính giới hạn của tử và của mẫu rồi lập thương.\n\n**Phần 2. Trình bày**\n\nChia cả tử và mẫu cho $x^{2}$:\n\n$\\dfrac{1}{x^{2}+2}=\\dfrac{\\dfrac{1}{x^{2}}}{1+\\dfrac{2}{x^{2}}}$.\n\nVì $\\lim\\limits_{x\\to+\\infty}\\dfrac{1}{x^{2}}=0$ nên $\\lim\\limits_{x\\to+\\infty}\\dfrac{1}{x^{2}+2}=\\dfrac{0}{1+0}=0$.\n\nVậy giới hạn bằng $0$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>1/(x*x+2);const k=0;Math.abs(f(1*1e6)-k)<=2e-3*Math.max(1,Math.abs(k))"
+  ],
+  "sach_dap_so": "0",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-6b",
+  "vai": "luyen",
+  "dang_bai": "NDB01182",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Dạng L/0, xét dấu mẫu bên phải.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to 3^{+}}\\dfrac{1}{x-3}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn dạng $\\dfrac{L}{0}$ với $L\\ne 0$: xét dấu của mẫu khi $x$ tiến tới điểm từ mỗi phía rồi kết luận $+\\infty$ hay $-\\infty$.\n\n**Bước 1.** Tính giới hạn của tử (một số khác $0$) và xác định mẫu dần tới $0$.\n\n**Bước 2.** Xét dấu của mẫu khi $x$ tiến tới điểm đang xét từ bên phải hoặc từ bên trái.\n\n**Bước 3.** Áp dụng quy tắc giới hạn vô cực của thương, chú ý dấu của tử và dấu của mẫu, rồi kết luận.\n\n**Phần 2. Trình bày**\n\nTử bằng $1>0$.\n\nKhi $x\\to 3^{+}$ ta có $x>3$ nên $x-3>0$ và $x-3\\to 0$.\n\nTheo quy tắc giới hạn vô cực của thương, $\\lim\\limits_{x\\to 3^{+}}\\dfrac{1}{x-3}=+\\infty$.\n\nVậy giới hạn bằng $+\\infty$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>1/(x-3);(1)*f(3+(1)*1e-6)>1e4"
+  ],
+  "sach_dap_so": "+\\infty",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-6c",
+  "vai": "luyen",
+  "dang_bai": "NDB01178",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Phân thức bậc nhất khi x dần tới dương vô cực.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to+\\infty}\\dfrac{3x+2}{4x-5}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Với phân thức hữu tỉ khi $x\\to\\pm\\infty$, chia tử và mẫu cho luỹ thừa cao nhất của $x$ rồi dùng giới hạn $\\dfrac{1}{x^{k}}\\to 0$.\n\n**Bước 1.** Xác định luỹ thừa cao nhất của $x$ ở tử và ở mẫu.\n\n**Bước 2.** Chia cả tử và mẫu cho luỹ thừa cao nhất đó để xuất hiện các số hạng dạng $\\dfrac{c}{x^{k}}$.\n\n**Bước 3.** Cho $x$ dần tới vô cực: các số hạng này có giới hạn $0$, tính giới hạn của tử và của mẫu rồi lập thương.\n\n**Phần 2. Trình bày**\n\nChia cả tử và mẫu cho $x$:\n\n$\\dfrac{3x+2}{4x-5}=\\dfrac{3+\\dfrac{2}{x}}{4-\\dfrac{5}{x}}$.\n\nVì $\\lim\\limits_{x\\to+\\infty}\\dfrac{2}{x}=0$ và $\\lim\\limits_{x\\to+\\infty}\\dfrac{5}{x}=0$ nên giới hạn bằng $\\dfrac{3}{4}$.\n\nVậy giới hạn bằng $\\dfrac{3}{4}$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(3*x+2)/(4*x-5);const k=0.75;Math.abs(f(1*1e6)-k)<=2e-3*Math.max(1,Math.abs(k))"
+  ],
+  "sach_dap_so": "3/4",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-6d",
+  "vai": "luyen",
+  "dang_bai": "NDB01171",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Dạng 0/0 phân thức hữu tỉ, phân tích nhân tử.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to 1}\\dfrac{3x^{2}-4x+1}{x-1}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dạng $\\dfrac{0}{0}$ của phân thức hữu tỉ: phân tích tử và mẫu thành nhân tử, triệt nhân tử chung $x-x_{0}$ rồi thay giá trị.\n\n**Bước 1.** Thay giá trị $x_{0}$ vào tử và mẫu để nhận ra dạng $\\dfrac{0}{0}$.\n\n**Bước 2.** Phân tích tử và mẫu thành nhân tử (có thể chia Horner) để tìm nhân tử chung $x-x_{0}$.\n\n**Bước 3.** Rút gọn nhân tử chung với điều kiện $x\\ne x_{0}$ để được biểu thức mới.\n\n**Bước 4.** Thay $x_{0}$ vào biểu thức đã rút gọn để tính giới hạn.\n\n**Phần 2. Trình bày**\n\nThay $x=1$: tử $=3-4+1=0$, mẫu $=0$ nên đây là dạng $\\dfrac{0}{0}$.\n\nPhân tích $3x^{2}-4x+1=(x-1)(3x-1)$.\n\nVới $x\\ne 1$: $\\dfrac{3x^{2}-4x+1}{x-1}=3x-1$.\n\nDo đó $\\lim\\limits_{x\\to 1}\\dfrac{3x^{2}-4x+1}{x-1}=\\lim\\limits_{x\\to 1}(3x-1)=2$.\n\nVậy giới hạn bằng $2$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(3*x*x-4*x+1)/(x-1);const a=1,k=2;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)"
+  ],
+  "sach_dap_so": "2",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-7",
+  "vai": "luyen",
+  "dang_bai": "NDB01174",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Thương có giới hạn hữu hạn, mẫu dần tới 0 nên tử dần tới 0.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $\\lim\\limits_{x\\to 2}\\dfrac{f(x)-5}{x-2}=3$. Tìm $\\lim\\limits_{x\\to 2}f(x)$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu dần tới $0$ mà thương có giới hạn hữu hạn thì tử cũng phải dần tới $0$.\n\n**Bước 1.** Nhận xét mẫu $x-2$ có giới hạn bằng $0$ khi $x$ dần tới $2$.\n\n**Bước 2.** Lập luận phản chứng: nếu tử có giới hạn khác $0$ thì thương có giới hạn vô cực, trái với giả thiết.\n\n**Bước 3.** Suy ra giới hạn của $f(x)-5$ rồi tách ra giới hạn của $f(x)$.\n\n**Phần 2. Trình bày**\n\nVì $\\lim\\limits_{x\\to 2}(x-2)=0$ nên nếu $\\lim\\limits_{x\\to 2}[f(x)-5]\\ne 0$ thì $\\lim\\limits_{x\\to 2}\\dfrac{f(x)-5}{x-2}$ bằng $+\\infty$ hoặc $-\\infty$, trái với giả thiết.\n\nDo đó $\\lim\\limits_{x\\to 2}[f(x)-5]=0$.\n\nVậy $\\lim\\limits_{x\\to 2}f(x)=5$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>5+3*(x-2);const a=2,k=5;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)",
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(5+3*(x-2)-5)/(x-2);const a=2,k=3;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)"
+  ],
+  "sach_dap_so": "5",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-8a",
+  "vai": "luyen",
+  "dang_bai": "NDB01168",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Chứng minh bằng định nghĩa dãy.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Sử dụng định nghĩa, chứng minh rằng $\\lim\\limits_{x\\to -2}x^{3}=-8$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Để dùng định nghĩa, lấy một dãy $(x_{n})$ bất kì thuộc tập xác định, khác điểm đang xét và dần tới điểm đó rồi tính giới hạn của dãy $f(x_{n})$.\n\n**Bước 1.** Nêu dãy $(x_{n})$ bất kì thoả điều kiện của đề: thuộc tập xác định, khác giá trị đang xét và có giới hạn đã cho.\n\n**Bước 2.** Viết biểu thức $f(x_{n})$ rồi biến đổi (phân tích nhân tử, rút gọn hoặc chia cho luỹ thừa cao nhất) để dùng được quy tắc giới hạn dãy số.\n\n**Bước 3.** Áp dụng các quy tắc giới hạn của dãy số để tính giới hạn của $f(x_{n})$.\n\n**Bước 4.** Kết luận giới hạn của hàm số, vì kết quả không phụ thuộc cách chọn dãy $(x_{n})$.\n\n**Phần 2. Trình bày**\n\nXét hàm số $f(x)=x^{3}$. Giả sử $(x_{n})$ là dãy số bất kì thoả mãn $\\lim x_{n}=-2$.\n\n$\\lim f(x_{n})=\\lim x_{n}^{3}=(\\lim x_{n})^{3}=(-2)^{3}=-8$.\n\nVậy $\\lim\\limits_{x\\to -2}x^{3}=-8$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>x*x*x;const a=-2,k=-8;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)"
+  ],
+  "sach_dap_so": "-8",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-8b",
+  "vai": "luyen",
+  "dang_bai": "NDB01168",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Chứng minh bằng định nghĩa dãy.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Sử dụng định nghĩa, chứng minh rằng $\\lim\\limits_{x\\to -2}\\dfrac{x^{2}-4}{x+2}=-4$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Để dùng định nghĩa, lấy một dãy $(x_{n})$ bất kì thuộc tập xác định, khác điểm đang xét và dần tới điểm đó rồi tính giới hạn của dãy $f(x_{n})$.\n\n**Bước 1.** Nêu dãy $(x_{n})$ bất kì thoả điều kiện của đề: thuộc tập xác định, khác giá trị đang xét và có giới hạn đã cho.\n\n**Bước 2.** Viết biểu thức $f(x_{n})$ rồi biến đổi (phân tích nhân tử, rút gọn hoặc chia cho luỹ thừa cao nhất) để dùng được quy tắc giới hạn dãy số.\n\n**Bước 3.** Áp dụng các quy tắc giới hạn của dãy số để tính giới hạn của $f(x_{n})$.\n\n**Bước 4.** Kết luận giới hạn của hàm số, vì kết quả không phụ thuộc cách chọn dãy $(x_{n})$.\n\n**Phần 2. Trình bày**\n\nXét hàm số $g(x)=\\dfrac{x^{2}-4}{x+2}$. Giả sử $(x_{n})$ là dãy số bất kì thoả mãn $x_{n}\\ne -2$ và $\\lim x_{n}=-2$.\n\n$g(x_{n})=\\dfrac{x_{n}^{2}-4}{x_{n}+2}=\\dfrac{(x_{n}-2)(x_{n}+2)}{x_{n}+2}=x_{n}-2$ (vì $x_{n}+2\\ne 0$).\n\n$\\lim g(x_{n})=\\lim(x_{n}-2)=-2-2=-4$.\n\nVậy $\\lim\\limits_{x\\to -2}\\dfrac{x^{2}-4}{x+2}=-4$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(x*x-4)/(x+2);const a=-2,k=-4;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)"
+  ],
+  "sach_dap_so": "-4",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-9",
+  "vai": "luyen",
+  "dang_bai": "NDB01169",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Dùng quy tắc giới hạn của tích, thương, căn.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $\\lim\\limits_{x\\to 3}f(x)=4$. Chứng minh rằng:\na) $\\lim\\limits_{x\\to 3}3f(x)=12$;\nb) $\\lim\\limits_{x\\to 3}\\dfrac{f(x)}{4}=1$;\nc) $\\lim\\limits_{x\\to 3}\\sqrt{f(x)}=2$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dùng quy tắc giới hạn của tổng, hiệu, tích, thương và căn đối với các hàm số đã biết giới hạn.\n\n**Bước 1.** Xác định các hàm thành phần đã biết giới hạn và biểu thức cần tính được tạo từ chúng bằng những phép toán nào.\n\n**Bước 2.** Kiểm tra điều kiện của quy tắc, chẳng hạn mẫu có giới hạn khác $0$ hoặc biểu thức dưới căn có giới hạn không âm.\n\n**Bước 3.** Thay các giới hạn đã biết vào quy tắc tương ứng rồi tính ra kết quả.\n\n**Phần 2. Trình bày**\n\na) $\\lim\\limits_{x\\to 3}3f(x)=\\lim\\limits_{x\\to 3}3\\cdot\\lim\\limits_{x\\to 3}f(x)=3\\cdot 4=12$.\n\nb) $\\lim\\limits_{x\\to 3}\\dfrac{f(x)}{4}=\\dfrac{\\lim\\limits_{x\\to 3}f(x)}{\\lim\\limits_{x\\to 3}4}=\\dfrac{4}{4}=1$.\n\nc) Vì $\\lim\\limits_{x\\to 3}f(x)=4>0$ nên $\\lim\\limits_{x\\to 3}\\sqrt{f(x)}=\\sqrt{4}=2$.\n\nVậy cả ba đẳng thức đều đúng.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>3*(4+(x-3));const a=3,k=12;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)",
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(4+(x-3))/4;const a=3,k=1;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)",
+   "const {sqrt,cbrt,abs}=Math;const f=x=>sqrt(4+(x-3));const a=3,k=2;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)"
+  ],
+  "sach_dap_so": "a) 12; b) 1; c) 2",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-10a",
+  "vai": "luyen",
+  "dang_bai": "NDB01178",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Phân thức cùng bậc khi x tiến tới âm vô cực.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to-\\infty}\\dfrac{-5x+2}{3x+1}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Với phân thức hữu tỉ khi $x\\to\\pm\\infty$, chia tử và mẫu cho luỹ thừa cao nhất của $x$ rồi dùng giới hạn $\\dfrac{1}{x^{k}}\\to 0$.\n\n**Bước 1.** Xác định luỹ thừa cao nhất của $x$ ở tử và ở mẫu.\n\n**Bước 2.** Chia cả tử và mẫu cho luỹ thừa cao nhất đó để xuất hiện các số hạng dạng $\\dfrac{c}{x^{k}}$.\n\n**Bước 3.** Cho $x$ dần tới vô cực: các số hạng này có giới hạn $0$, tính giới hạn của tử và của mẫu rồi lập thương.\n\n**Phần 2. Trình bày**\n\nChia cả tử và mẫu cho $x$:\n\n$\\dfrac{-5x+2}{3x+1}=\\dfrac{-5+\\dfrac{2}{x}}{3+\\dfrac{1}{x}}$.\n\nVì $\\lim\\limits_{x\\to-\\infty}\\dfrac{2}{x}=0$ và $\\lim\\limits_{x\\to-\\infty}\\dfrac{1}{x}=0$ nên giới hạn bằng $\\dfrac{-5}{3}$.\n\nVậy giới hạn bằng $-\\dfrac{5}{3}$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(-5*x+2)/(3*x+1);const k=-1.6666666666666667;Math.abs(f(-1*1e6)-k)<=2e-3*Math.max(1,Math.abs(k))"
+  ],
+  "sach_dap_so": "-5/3",
+  "ghi_chu": "Lời giải sách in thừa cụm \"-2/x + 3/x^2\" ở cuối dòng (lỗi in); đáp số -5/3 đúng."
+ },
+ {
+  "id": "nbv-b2-b-10b",
+  "vai": "luyen",
+  "dang_bai": "NDB01178",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Phân thức có tử bậc thấp hơn mẫu khi x tiến tới âm vô cực.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to-\\infty}\\dfrac{-2x+3}{3x^{2}+2x+5}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Với phân thức hữu tỉ khi $x\\to\\pm\\infty$, chia tử và mẫu cho luỹ thừa cao nhất của $x$ rồi dùng giới hạn $\\dfrac{1}{x^{k}}\\to 0$.\n\n**Bước 1.** Xác định luỹ thừa cao nhất của $x$ ở tử và ở mẫu.\n\n**Bước 2.** Chia cả tử và mẫu cho luỹ thừa cao nhất đó để xuất hiện các số hạng dạng $\\dfrac{c}{x^{k}}$.\n\n**Bước 3.** Cho $x$ dần tới vô cực: các số hạng này có giới hạn $0$, tính giới hạn của tử và của mẫu rồi lập thương.\n\n**Phần 2. Trình bày**\n\nChia cả tử và mẫu cho $x^{2}$:\n\n$\\dfrac{-2x+3}{3x^{2}+2x+5}=\\dfrac{-\\dfrac{2}{x}+\\dfrac{3}{x^{2}}}{3+\\dfrac{2}{x}+\\dfrac{5}{x^{2}}}$.\n\nKhi $x\\to-\\infty$, tử có giới hạn $0$ và mẫu có giới hạn $3$ nên giới hạn bằng $\\dfrac{0}{3}=0$.\n\nVậy giới hạn bằng $0$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(-2*x+3)/(3*x*x+2*x+5);const k=0;Math.abs(f(-1*1e6)-k)<=2e-3*Math.max(1,Math.abs(k))"
+  ],
+  "sach_dap_so": "0",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-10c",
+  "vai": "luyen",
+  "dang_bai": "NDB01179",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Căn trên phân thức khi x tiến tới dương vô cực.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to+\\infty}\\dfrac{\\sqrt{9x^{2}+3}}{x+1}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức có căn khi $x\\to\\pm\\infty$: đưa $|x|$ ra ngoài căn, chú ý $\\sqrt{x^{2}}=x$ khi $x>0$ và $\\sqrt{x^{2}}=-x$ khi $x<0$.\n\n**Bước 1.** Xác định $x$ dần tới $+\\infty$ hay $-\\infty$ để biết dấu của $x$ và cách bỏ dấu giá trị tuyệt đối.\n\n**Bước 2.** Đưa $x^{2}$ ra ngoài căn thành $|x|$ rồi chia cả tử và mẫu cho $x$ với dấu phù hợp.\n\n**Bước 3.** Dùng $\\dfrac{1}{x^{k}}\\to 0$ để tính giới hạn của phần còn lại.\n\n**Phần 2. Trình bày**\n\nKhi $x\\to+\\infty$ ta có $x>0$ nên $\\sqrt{9x^{2}+3}=x\\sqrt{9+\\dfrac{3}{x^{2}}}$.\n\n$\\dfrac{\\sqrt{9x^{2}+3}}{x+1}=\\dfrac{x\\sqrt{9+\\dfrac{3}{x^{2}}}}{x(1+\\dfrac{1}{x})}=\\dfrac{\\sqrt{9+\\dfrac{3}{x^{2}}}}{1+\\dfrac{1}{x}}$.\n\nVì $\\dfrac{3}{x^{2}}\\to 0$ và $\\dfrac{1}{x}\\to 0$ nên giới hạn bằng $\\dfrac{\\sqrt{9}}{1}=3$.\n\nVậy giới hạn bằng $3$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>sqrt(9*x*x+3)/(x+1);const k=3;Math.abs(f(1*1e6)-k)<=2e-3*Math.max(1,Math.abs(k))"
+  ],
+  "sach_dap_so": "3",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-10d",
+  "vai": "luyen",
+  "dang_bai": "NDB01179",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Căn trên phân thức khi x tiến tới âm vô cực, chú ý dấu.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to-\\infty}\\dfrac{\\sqrt{9x^{2}+3}}{x+1}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức có căn khi $x\\to\\pm\\infty$: đưa $|x|$ ra ngoài căn, chú ý $\\sqrt{x^{2}}=x$ khi $x>0$ và $\\sqrt{x^{2}}=-x$ khi $x<0$.\n\n**Bước 1.** Xác định $x$ dần tới $+\\infty$ hay $-\\infty$ để biết dấu của $x$ và cách bỏ dấu giá trị tuyệt đối.\n\n**Bước 2.** Đưa $x^{2}$ ra ngoài căn thành $|x|$ rồi chia cả tử và mẫu cho $x$ với dấu phù hợp.\n\n**Bước 3.** Dùng $\\dfrac{1}{x^{k}}\\to 0$ để tính giới hạn của phần còn lại.\n\n**Phần 2. Trình bày**\n\nKhi $x\\to-\\infty$ ta có $x<0$ nên $\\sqrt{9x^{2}+3}=|x|\\sqrt{9+\\dfrac{3}{x^{2}}}=-x\\sqrt{9+\\dfrac{3}{x^{2}}}$.\n\n$\\dfrac{\\sqrt{9x^{2}+3}}{x+1}=\\dfrac{-x\\sqrt{9+\\dfrac{3}{x^{2}}}}{x(1+\\dfrac{1}{x})}=\\dfrac{-\\sqrt{9+\\dfrac{3}{x^{2}}}}{1+\\dfrac{1}{x}}$.\n\nVì $\\dfrac{3}{x^{2}}\\to 0$ và $\\dfrac{1}{x}\\to 0$ nên giới hạn bằng $\\dfrac{-\\sqrt{9}}{1}=-3$.\n\nVậy giới hạn bằng $-3$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>sqrt(9*x*x+3)/(x+1);const k=-3;Math.abs(f(-1*1e6)-k)<=2e-3*Math.max(1,Math.abs(k))"
+  ],
+  "sach_dap_so": "-3",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-10e",
+  "vai": "luyen",
+  "dang_bai": "NDB01171",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Dạng 0/0 phân thức hữu tỉ.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to 1}\\dfrac{2x^{2}-8x+6}{x^{2}-1}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dạng $\\dfrac{0}{0}$ của phân thức hữu tỉ: phân tích tử và mẫu thành nhân tử, triệt nhân tử chung $x-x_{0}$ rồi thay giá trị.\n\n**Bước 1.** Thay giá trị $x_{0}$ vào tử và mẫu để nhận ra dạng $\\dfrac{0}{0}$.\n\n**Bước 2.** Phân tích tử và mẫu thành nhân tử (có thể chia Horner) để tìm nhân tử chung $x-x_{0}$.\n\n**Bước 3.** Rút gọn nhân tử chung với điều kiện $x\\ne x_{0}$ để được biểu thức mới.\n\n**Bước 4.** Thay $x_{0}$ vào biểu thức đã rút gọn để tính giới hạn.\n\n**Phần 2. Trình bày**\n\nThay $x=1$: tử $=2-8+6=0$, mẫu $=0$ nên đây là dạng $\\dfrac{0}{0}$.\n\nPhân tích $2x^{2}-8x+6=(2x-6)(x-1)$ và $x^{2}-1=(x+1)(x-1)$.\n\nVới $x\\ne 1$: $\\dfrac{2x^{2}-8x+6}{x^{2}-1}=\\dfrac{2x-6}{x+1}$.\n\nDo đó $\\lim\\limits_{x\\to 1}\\dfrac{2x^{2}-8x+6}{x^{2}-1}=\\dfrac{2-6}{1+1}=-2$.\n\nVậy giới hạn bằng $-2$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(2*x*x-8*x+6)/(x*x-1);const a=1,k=-2;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)"
+  ],
+  "sach_dap_so": "-2",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-10g",
+  "vai": "luyen",
+  "dang_bai": "NDB01171",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Dạng 0/0 phân thức hữu tỉ.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to -3}\\dfrac{-x^{2}+2x+15}{x^{2}+4x+3}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dạng $\\dfrac{0}{0}$ của phân thức hữu tỉ: phân tích tử và mẫu thành nhân tử, triệt nhân tử chung $x-x_{0}$ rồi thay giá trị.\n\n**Bước 1.** Thay giá trị $x_{0}$ vào tử và mẫu để nhận ra dạng $\\dfrac{0}{0}$.\n\n**Bước 2.** Phân tích tử và mẫu thành nhân tử (có thể chia Horner) để tìm nhân tử chung $x-x_{0}$.\n\n**Bước 3.** Rút gọn nhân tử chung với điều kiện $x\\ne x_{0}$ để được biểu thức mới.\n\n**Bước 4.** Thay $x_{0}$ vào biểu thức đã rút gọn để tính giới hạn.\n\n**Phần 2. Trình bày**\n\nThay $x=-3$: tử $=-9-6+15=0$, mẫu $=9-12+3=0$ nên đây là dạng $\\dfrac{0}{0}$.\n\nPhân tích $-x^{2}+2x+15=(5-x)(x+3)$ và $x^{2}+4x+3=(x+1)(x+3)$.\n\nVới $x\\ne -3$: $\\dfrac{-x^{2}+2x+15}{x^{2}+4x+3}=\\dfrac{5-x}{x+1}$.\n\nDo đó giới hạn bằng $\\dfrac{5-(-3)}{-3+1}=\\dfrac{8}{-2}=-4$.\n\nVậy giới hạn bằng $-4$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(-x*x+2*x+15)/(x*x+4*x+3);const a=-3,k=-4;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)"
+  ],
+  "sach_dap_so": "-4",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-11",
+  "vai": "luyen",
+  "dang_bai": "NDB01178",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Chia tử và mẫu cho x, có hàm f(x) có giới hạn hữu hạn.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho hàm số $f(x)$ thoả mãn $\\lim\\limits_{x\\to+\\infty}f(x)=2022$. Tính $\\lim\\limits_{x\\to+\\infty}\\dfrac{x\\,f(x)}{x+1}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia cả tử và mẫu cho $x$ để đưa về thương của hàm đã biết giới hạn và một biểu thức có giới hạn tính được.\n\n**Bước 1.** Nhận xét tử có thừa số $x$ và mẫu có $x$ nên chia cả hai cho $x$ với $x\\ne 0$.\n\n**Bước 2.** Viết lại biểu thức dưới dạng thương của $f(x)$ và một biểu thức $1+\\dfrac{1}{x}$.\n\n**Bước 3.** Dùng quy tắc giới hạn của thương và $\\dfrac{1}{x}\\to 0$ để tính.\n\n**Phần 2. Trình bày**\n\nVới $x>0$, chia cả tử và mẫu cho $x$: $\\dfrac{x\\,f(x)}{x+1}=\\dfrac{f(x)}{1+\\dfrac{1}{x}}$.\n\nVì $\\lim\\limits_{x\\to+\\infty}(1+\\dfrac{1}{x})=1\\ne 0$ nên $\\lim\\limits_{x\\to+\\infty}\\dfrac{f(x)}{1+\\dfrac{1}{x}}=\\dfrac{2022}{1}=2022$.\n\nVậy $\\lim\\limits_{x\\to+\\infty}\\dfrac{x\\,f(x)}{x+1}=2022$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>x*(2022+1/x)/(x+1);const k=2022;Math.abs(f(1*1e6)-k)<=2e-3*Math.max(1,Math.abs(k))"
+  ],
+  "sach_dap_so": "2022",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-12",
+  "vai": "luyen",
+  "dang_bai": "NDB01169",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Quy tắc giới hạn, chia cho f(x) với giới hạn vô cực.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho số thực $a$ và hàm số $f(x)$ thoả mãn $\\lim\\limits_{x\\to a}f(x)=-\\infty$. Chứng minh rằng $\\lim\\limits_{x\\to a}\\dfrac{f(x)-3}{2f(x)+1}=\\dfrac{1}{2}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia cả tử và mẫu cho $f(x)$ rồi dùng quy tắc: nghịch đảo của hàm có giới hạn vô cực thì có giới hạn $0$.\n\n**Bước 1.** Nhận xét $f(x)$ dần tới $-\\infty$ nên khác $0$ khi $x$ gần $a$, có thể chia cả tử và mẫu cho $f(x)$.\n\n**Bước 2.** Viết lại biểu thức theo $\\dfrac{3}{f(x)}$ và $\\dfrac{1}{f(x)}$.\n\n**Bước 3.** Dùng giới hạn của $\\dfrac{1}{f(x)}$ bằng $0$ và quy tắc thương để kết luận.\n\n**Phần 2. Trình bày**\n\nKhi $x$ gần $a$ thì $f(x)\\ne 0$, chia cả tử và mẫu cho $f(x)$: $\\dfrac{f(x)-3}{2f(x)+1}=\\dfrac{1-\\dfrac{3}{f(x)}}{2+\\dfrac{1}{f(x)}}$.\n\nVì $\\lim\\limits_{x\\to a}f(x)=-\\infty$ nên $\\lim\\limits_{x\\to a}\\dfrac{3}{f(x)}=0$ và $\\lim\\limits_{x\\to a}\\dfrac{1}{f(x)}=0$.\n\nDo đó $\\lim\\limits_{x\\to a}\\dfrac{f(x)-3}{2f(x)+1}=\\dfrac{1-0}{2+0}=\\dfrac{1}{2}$.\n\nVậy $\\lim\\limits_{x\\to a}\\dfrac{f(x)-3}{2f(x)+1}=\\dfrac{1}{2}$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(-x-3)/(2*(-x)+1);const k=0.5;Math.abs(f(1*1e6)-k)<=2e-3*Math.max(1,Math.abs(k))"
+  ],
+  "sach_dap_so": "1/2",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-13",
+  "vai": "luyen",
+  "dang_bai": "NDB01172",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Dạng 0/0 có một căn, nhân liên hợp.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính $\\lim\\limits_{x\\to 4}\\dfrac{\\sqrt{x}-2}{x-4}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dạng $\\dfrac{0}{0}$ có căn thức: nhân cả tử và mẫu với biểu thức liên hợp để làm xuất hiện nhân tử dần tới $0$ rồi triệt tiêu.\n\n**Bước 1.** Thay giá trị $x_{0}$ vào để nhận ra dạng $\\dfrac{0}{0}$ và xác định biểu thức chứa căn cần liên hợp.\n\n**Bước 2.** Nhân cả tử và mẫu với biểu thức liên hợp, dùng hằng đẳng thức hiệu hai bình phương ở tử hoặc ở mẫu.\n\n**Bước 3.** Rút gọn nhân tử chung dần tới $0$ với điều kiện $x\\ne x_{0}$.\n\n**Bước 4.** Thay $x_{0}$ vào biểu thức còn lại để tính giới hạn.\n\n**Phần 2. Trình bày**\n\nThay $x=4$: tử $=0$, mẫu $=0$ nên đây là dạng $\\dfrac{0}{0}$.\n\nTa có $x-4=(\\sqrt{x}-2)(\\sqrt{x}+2)$, với $x\\ne 4$: $\\dfrac{\\sqrt{x}-2}{x-4}=\\dfrac{1}{\\sqrt{x}+2}$.\n\nDo đó $\\lim\\limits_{x\\to 4}\\dfrac{\\sqrt{x}-2}{x-4}=\\dfrac{1}{\\sqrt{4}+2}=\\dfrac{1}{4}$.\n\nVậy giới hạn bằng $\\dfrac{1}{4}$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(sqrt(x)-2)/(x-4);const a=4,k=0.25;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)"
+  ],
+  "sach_dap_so": "1/4",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-14",
+  "vai": "luyen",
+  "dang_bai": "NDB01179",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Căn trên x khi x tiến tới hai phía vô cực.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho hàm số $f(x)=\\dfrac{\\sqrt{x^{2}-x+2}}{x}$. Tính:\na) $\\lim\\limits_{x\\to+\\infty}f(x)$;\nb) $\\lim\\limits_{x\\to-\\infty}f(x)$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức có căn khi $x\\to\\pm\\infty$: đưa $|x|$ ra ngoài căn, chú ý $\\sqrt{x^{2}}=x$ khi $x>0$ và $\\sqrt{x^{2}}=-x$ khi $x<0$.\n\n**Bước 1.** Xác định $x$ dần tới $+\\infty$ hay $-\\infty$ để biết dấu của $x$ và cách bỏ dấu giá trị tuyệt đối.\n\n**Bước 2.** Đưa $x^{2}$ ra ngoài căn thành $|x|$ rồi chia cả tử và mẫu cho $x$ với dấu phù hợp.\n\n**Bước 3.** Dùng $\\dfrac{1}{x^{k}}\\to 0$ để tính giới hạn của phần còn lại.\n\n**Phần 2. Trình bày**\n\na) Khi $x\\to+\\infty$ ta có $x>0$ nên $\\sqrt{x^{2}-x+2}=x\\sqrt{1-\\dfrac{1}{x}+\\dfrac{2}{x^{2}}}$.\n\nDo đó $f(x)=\\sqrt{1-\\dfrac{1}{x}+\\dfrac{2}{x^{2}}}$ và $\\lim\\limits_{x\\to+\\infty}f(x)=\\sqrt{1-0+0}=1$.\n\nb) Khi $x\\to-\\infty$ ta có $x<0$ nên $\\sqrt{x^{2}-x+2}=|x|\\sqrt{1-\\dfrac{1}{x}+\\dfrac{2}{x^{2}}}=-x\\sqrt{1-\\dfrac{1}{x}+\\dfrac{2}{x^{2}}}$.\n\nDo đó $f(x)=-\\sqrt{1-\\dfrac{1}{x}+\\dfrac{2}{x^{2}}}$ và $\\lim\\limits_{x\\to-\\infty}f(x)=-1$.\n\nVậy $\\lim\\limits_{x\\to+\\infty}f(x)=1$ và $\\lim\\limits_{x\\to-\\infty}f(x)=-1$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>sqrt(x*x-x+2)/x;const k=1;Math.abs(f(1*1e6)-k)<=2e-3*Math.max(1,Math.abs(k))",
+   "const {sqrt,cbrt,abs}=Math;const f=x=>sqrt(x*x-x+2)/x;const k=-1;Math.abs(f(-1*1e6)-k)<=2e-3*Math.max(1,Math.abs(k))"
+  ],
+  "sach_dap_so": "a) 1; b) -1",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-15a",
+  "vai": "luyen",
+  "dang_bai": "NDB01168",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tính giới hạn bằng định nghĩa dãy.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Sử dụng định nghĩa, tìm giới hạn $\\lim\\limits_{x\\to 3}\\dfrac{x^{2}-x}{x+1}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Để dùng định nghĩa, lấy một dãy $(x_{n})$ bất kì thuộc tập xác định, khác điểm đang xét và dần tới điểm đó rồi tính giới hạn của dãy $f(x_{n})$.\n\n**Bước 1.** Nêu dãy $(x_{n})$ bất kì thoả điều kiện của đề: thuộc tập xác định, khác giá trị đang xét và có giới hạn đã cho.\n\n**Bước 2.** Viết biểu thức $f(x_{n})$ rồi biến đổi (phân tích nhân tử, rút gọn hoặc chia cho luỹ thừa cao nhất) để dùng được quy tắc giới hạn dãy số.\n\n**Bước 3.** Áp dụng các quy tắc giới hạn của dãy số để tính giới hạn của $f(x_{n})$.\n\n**Bước 4.** Kết luận giới hạn của hàm số, vì kết quả không phụ thuộc cách chọn dãy $(x_{n})$.\n\n**Phần 2. Trình bày**\n\nGiả sử $(x_{n})$ là dãy số bất kì thoả mãn $x_{n}\\ne -1$, $x_{n}\\ne 3$ với mọi $n$ và $\\lim x_{n}=3$.\n\n$\\lim\\dfrac{x_{n}^{2}-x_{n}}{x_{n}+1}=\\dfrac{(\\lim x_{n})^{2}-\\lim x_{n}}{\\lim x_{n}+1}=\\dfrac{3^{2}-3}{3+1}=\\dfrac{3}{2}$.\n\nVậy $\\lim\\limits_{x\\to 3}\\dfrac{x^{2}-x}{x+1}=\\dfrac{3}{2}$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(x*x-x)/(x+1);const a=3,k=1.5;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)"
+  ],
+  "sach_dap_so": "3/2",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-15b",
+  "vai": "luyen",
+  "dang_bai": "NDB01168",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tính giới hạn bằng định nghĩa dãy khi x dần tới vô cực.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Sử dụng định nghĩa, tìm giới hạn $\\lim\\limits_{x\\to+\\infty}\\dfrac{2x^{2}-5x}{x^{2}+2}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Để dùng định nghĩa, lấy một dãy $(x_{n})$ bất kì thuộc tập xác định, khác điểm đang xét và dần tới điểm đó rồi tính giới hạn của dãy $f(x_{n})$.\n\n**Bước 1.** Nêu dãy $(x_{n})$ bất kì thoả điều kiện của đề: thuộc tập xác định, khác giá trị đang xét và có giới hạn đã cho.\n\n**Bước 2.** Viết biểu thức $f(x_{n})$ rồi biến đổi (phân tích nhân tử, rút gọn hoặc chia cho luỹ thừa cao nhất) để dùng được quy tắc giới hạn dãy số.\n\n**Bước 3.** Áp dụng các quy tắc giới hạn của dãy số để tính giới hạn của $f(x_{n})$.\n\n**Bước 4.** Kết luận giới hạn của hàm số, vì kết quả không phụ thuộc cách chọn dãy $(x_{n})$.\n\n**Phần 2. Trình bày**\n\nGiả sử $(x_{n})$ là dãy số bất kì thoả mãn $\\lim x_{n}=+\\infty$.\n\n$\\dfrac{2x_{n}^{2}-5x_{n}}{x_{n}^{2}+2}=\\dfrac{2-\\dfrac{5}{x_{n}}}{1+\\dfrac{2}{x_{n}^{2}}}$.\n\nVì $\\lim\\dfrac{1}{x_{n}}=0$ và $\\lim\\dfrac{1}{x_{n}^{2}}=0$ nên giới hạn bằng $\\dfrac{2-5\\cdot 0}{1+2\\cdot 0}=2$.\n\nVậy $\\lim\\limits_{x\\to+\\infty}\\dfrac{2x^{2}-5x}{x^{2}+2}=2$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(2*x*x-5*x)/(x*x+2);const k=2;Math.abs(f(1*1e6)-k)<=2e-3*Math.max(1,Math.abs(k))"
+  ],
+  "sach_dap_so": "2",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-16a",
+  "vai": "luyen",
+  "dang_bai": "NDB01169",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tích hai đa thức xác định tại điểm.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn $\\lim\\limits_{x\\to 3}[(3x+1)(2-x^{2})]$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nếu hàm số xác định tại điểm đang xét thì giới hạn tại điểm đó bằng giá trị của hàm số tại điểm đó (dùng quy tắc tổng, hiệu, tích, thương, căn).\n\n**Bước 1.** Kiểm tra biểu thức xác định tại điểm đang xét: mẫu khác $0$ và biểu thức dưới căn không âm.\n\n**Bước 2.** Thay giá trị của $x$ vào từng thành phần của biểu thức rồi tính riêng các thành phần đó.\n\n**Bước 3.** Ghép các giá trị đã tính theo quy tắc thương, tích hoặc căn để ra kết quả gọn nhất.\n\n**Phần 2. Trình bày**\n\nHàm số xác định tại $x=3$ nên áp dụng quy tắc giới hạn của tích:\n\n$\\lim\\limits_{x\\to 3}(3x+1)=10$ và $\\lim\\limits_{x\\to 3}(2-x^{2})=2-9=-7$.\n\nVậy $\\lim\\limits_{x\\to 3}[(3x+1)(2-x^{2})]=10\\cdot(-7)=-70$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(3*x+1)*(2-x*x);const a=3,k=-70;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)"
+  ],
+  "sach_dap_so": "-70",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-16b",
+  "vai": "luyen",
+  "dang_bai": "NDB01169",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Thương có căn xác định tại điểm.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn $\\lim\\limits_{x\\to -2}\\dfrac{(4x+10)^{2}}{\\sqrt{x^{2}-6x}}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nếu hàm số xác định tại điểm đang xét thì giới hạn tại điểm đó bằng giá trị của hàm số tại điểm đó (dùng quy tắc tổng, hiệu, tích, thương, căn).\n\n**Bước 1.** Kiểm tra biểu thức xác định tại điểm đang xét: mẫu khác $0$ và biểu thức dưới căn không âm.\n\n**Bước 2.** Thay giá trị của $x$ vào từng thành phần của biểu thức rồi tính riêng các thành phần đó.\n\n**Bước 3.** Ghép các giá trị đã tính theo quy tắc thương, tích hoặc căn để ra kết quả gọn nhất.\n\n**Phần 2. Trình bày**\n\nTại $x=-2$ ta có $x^{2}-6x=4+12=16>0$ nên mẫu có giới hạn $\\sqrt{16}=4\\ne 0$.\n\nTử: $(4\\cdot(-2)+10)^{2}=2^{2}=4$.\n\nVậy $\\lim\\limits_{x\\to -2}\\dfrac{(4x+10)^{2}}{\\sqrt{x^{2}-6x}}=\\dfrac{4}{4}=1$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(4*x+10)**2/sqrt(x*x-6*x);const a=-2,k=1;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)"
+  ],
+  "sach_dap_so": "1",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-17a",
+  "vai": "luyen",
+  "dang_bai": "NDB01171",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Dạng 0/0 phân thức hữu tỉ.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn $\\lim\\limits_{x\\to -1}\\dfrac{x^{2}-4x-5}{x+1}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dạng $\\dfrac{0}{0}$ của phân thức hữu tỉ: phân tích tử và mẫu thành nhân tử, triệt nhân tử chung $x-x_{0}$ rồi thay giá trị.\n\n**Bước 1.** Thay giá trị $x_{0}$ vào tử và mẫu để nhận ra dạng $\\dfrac{0}{0}$.\n\n**Bước 2.** Phân tích tử và mẫu thành nhân tử (có thể chia Horner) để tìm nhân tử chung $x-x_{0}$.\n\n**Bước 3.** Rút gọn nhân tử chung với điều kiện $x\\ne x_{0}$ để được biểu thức mới.\n\n**Bước 4.** Thay $x_{0}$ vào biểu thức đã rút gọn để tính giới hạn.\n\n**Phần 2. Trình bày**\n\nThay $x=-1$: tử $=1+4-5=0$, mẫu $=0$ nên đây là dạng $\\dfrac{0}{0}$.\n\nPhân tích $x^{2}-4x-5=(x+1)(x-5)$, với $x\\ne -1$: $\\dfrac{x^{2}-4x-5}{x+1}=x-5$.\n\nDo đó giới hạn bằng $-1-5=-6$.\n\nVậy giới hạn bằng $-6$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(x*x-4*x-5)/(x+1);const a=-1,k=-6;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)"
+  ],
+  "sach_dap_so": "-6",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-17b",
+  "vai": "luyen",
+  "dang_bai": "NDB01172",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Dạng 0/0 có một căn, nhân liên hợp.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn $\\lim\\limits_{x\\to 2}\\dfrac{\\sqrt{x-1}-1}{x-2}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dạng $\\dfrac{0}{0}$ có căn thức: nhân cả tử và mẫu với biểu thức liên hợp để làm xuất hiện nhân tử dần tới $0$ rồi triệt tiêu.\n\n**Bước 1.** Thay giá trị $x_{0}$ vào để nhận ra dạng $\\dfrac{0}{0}$ và xác định biểu thức chứa căn cần liên hợp.\n\n**Bước 2.** Nhân cả tử và mẫu với biểu thức liên hợp, dùng hằng đẳng thức hiệu hai bình phương ở tử hoặc ở mẫu.\n\n**Bước 3.** Rút gọn nhân tử chung dần tới $0$ với điều kiện $x\\ne x_{0}$.\n\n**Bước 4.** Thay $x_{0}$ vào biểu thức còn lại để tính giới hạn.\n\n**Phần 2. Trình bày**\n\nThay $x=2$: tử $=0$, mẫu $=0$ nên đây là dạng $\\dfrac{0}{0}$.\n\nNhân tử và mẫu với $\\sqrt{x-1}+1>0$: $\\dfrac{\\sqrt{x-1}-1}{x-2}=\\dfrac{(x-1)-1}{(x-2)(\\sqrt{x-1}+1)}=\\dfrac{x-2}{(x-2)(\\sqrt{x-1}+1)}$.\n\nVới $x\\ne 2$: biểu thức bằng $\\dfrac{1}{\\sqrt{x-1}+1}$.\n\nVậy giới hạn bằng $\\dfrac{1}{\\sqrt{1}+1}=\\dfrac{1}{2}$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(sqrt(x-1)-1)/(x-2);const a=2,k=0.5;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)"
+  ],
+  "sach_dap_so": "1/2",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-18",
+  "vai": "luyen",
+  "dang_bai": "NDB01176",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Hàm chứa giá trị tuyệt đối tại điểm biên.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho hàm số $f(x)=\\dfrac{x^{2}-1}{|x-1|}$ với $x\\ne 1$. Tìm các giới hạn $\\lim\\limits_{x\\to 1^{+}}f(x)$, $\\lim\\limits_{x\\to 1^{-}}f(x)$ và $\\lim\\limits_{x\\to 1}f(x)$ (nếu có).",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm chứa dấu giá trị tuyệt đối: bỏ dấu giá trị tuyệt đối theo từng phía của điểm đang xét rồi tính giới hạn một bên.\n\n**Bước 1.** Xét dấu biểu thức trong dấu giá trị tuyệt đối khi $x$ tiến tới điểm đang xét từ bên phải và từ bên trái.\n\n**Bước 2.** Bỏ dấu giá trị tuyệt đối theo từng phía, rút gọn biểu thức rồi tính giới hạn mỗi bên.\n\n**Bước 3.** So sánh hai giới hạn một bên để kết luận về sự tồn tại của giới hạn.\n\n**Phần 2. Trình bày**\n\nVới $x>1$ ta có $|x-1|=x-1$ nên $f(x)=\\dfrac{(x+1)(x-1)}{x-1}=x+1$.\n\nVới $x<1$ ta có $|x-1|=-(x-1)$ nên $f(x)=\\dfrac{(x+1)(x-1)}{-(x-1)}=-(x+1)$.\n\n$\\lim\\limits_{x\\to 1^{+}}f(x)=\\lim\\limits_{x\\to 1^{+}}(x+1)=2$ và $\\lim\\limits_{x\\to 1^{-}}f(x)=\\lim\\limits_{x\\to 1^{-}}[-(x+1)]=-2$.\n\nHai giới hạn một bên khác nhau nên không tồn tại $\\lim\\limits_{x\\to 1}f(x)$.\n\nVậy $\\lim\\limits_{x\\to 1^{+}}f(x)=2$, $\\lim\\limits_{x\\to 1^{-}}f(x)=-2$ và không tồn tại $\\lim\\limits_{x\\to 1}f(x)$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(x*x-1)/abs(x-1);const a=1,k=2;Math.abs(f(a+(1)*1e-6)-k)<=2e-3*Math.max(1,Math.abs(k))",
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(x*x-1)/abs(x-1);const a=1,k=-2;Math.abs(f(a+(-1)*1e-6)-k)<=2e-3*Math.max(1,Math.abs(k))"
+  ],
+  "sach_dap_so": "2; -2; không tồn tại",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-19a",
+  "vai": "luyen",
+  "dang_bai": "NDB01178",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Phân thức cùng bậc khi x tiến tới dương vô cực.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn $\\lim\\limits_{x\\to+\\infty}\\dfrac{x^{2}-x+3}{2x^{2}+4}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Với phân thức hữu tỉ khi $x\\to\\pm\\infty$, chia tử và mẫu cho luỹ thừa cao nhất của $x$ rồi dùng giới hạn $\\dfrac{1}{x^{k}}\\to 0$.\n\n**Bước 1.** Xác định luỹ thừa cao nhất của $x$ ở tử và ở mẫu.\n\n**Bước 2.** Chia cả tử và mẫu cho luỹ thừa cao nhất đó để xuất hiện các số hạng dạng $\\dfrac{c}{x^{k}}$.\n\n**Bước 3.** Cho $x$ dần tới vô cực: các số hạng này có giới hạn $0$, tính giới hạn của tử và của mẫu rồi lập thương.\n\n**Phần 2. Trình bày**\n\nChia cả tử và mẫu cho $x^{2}$: $\\dfrac{x^{2}-x+3}{2x^{2}+4}=\\dfrac{1-\\dfrac{1}{x}+\\dfrac{3}{x^{2}}}{2+\\dfrac{4}{x^{2}}}$.\n\nKhi $x\\to+\\infty$ tử có giới hạn $1$ và mẫu có giới hạn $2$.\n\nVậy giới hạn bằng $\\dfrac{1}{2}$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(x*x-x+3)/(2*x*x+4);const k=0.5;Math.abs(f(1*1e6)-k)<=2e-3*Math.max(1,Math.abs(k))"
+  ],
+  "sach_dap_so": "1/2",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-19b",
+  "vai": "luyen",
+  "dang_bai": "NDB01179",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Căn trên phân thức khi x tiến tới âm vô cực.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn $\\lim\\limits_{x\\to-\\infty}\\dfrac{\\sqrt{4x^{2}+x}}{x+1}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức có căn khi $x\\to\\pm\\infty$: đưa $|x|$ ra ngoài căn, chú ý $\\sqrt{x^{2}}=x$ khi $x>0$ và $\\sqrt{x^{2}}=-x$ khi $x<0$.\n\n**Bước 1.** Xác định $x$ dần tới $+\\infty$ hay $-\\infty$ để biết dấu của $x$ và cách bỏ dấu giá trị tuyệt đối.\n\n**Bước 2.** Đưa $x^{2}$ ra ngoài căn thành $|x|$ rồi chia cả tử và mẫu cho $x$ với dấu phù hợp.\n\n**Bước 3.** Dùng $\\dfrac{1}{x^{k}}\\to 0$ để tính giới hạn của phần còn lại.\n\n**Phần 2. Trình bày**\n\nKhi $x\\to-\\infty$ ta có $x<0$ nên $\\sqrt{4x^{2}+x}=|x|\\sqrt{4+\\dfrac{1}{x}}=-x\\sqrt{4+\\dfrac{1}{x}}$.\n\n$\\dfrac{\\sqrt{4x^{2}+x}}{x+1}=\\dfrac{-x\\sqrt{4+\\dfrac{1}{x}}}{x(1+\\dfrac{1}{x})}=\\dfrac{-\\sqrt{4+\\dfrac{1}{x}}}{1+\\dfrac{1}{x}}$.\n\nVì $\\dfrac{1}{x}\\to 0$ nên giới hạn bằng $\\dfrac{-\\sqrt{4}}{1}=-2$.\n\nVậy giới hạn bằng $-2$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>sqrt(4*x*x+x)/(x+1);const k=-2;Math.abs(f(-1*1e6)-k)<=2e-3*Math.max(1,Math.abs(k))"
+  ],
+  "sach_dap_so": "-2",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-19c",
+  "vai": "luyen",
+  "dang_bai": "NDB01180",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Dạng vô cùng trừ vô cùng có căn, nhân liên hợp.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn $\\lim\\limits_{x\\to+\\infty}(\\sqrt{x^{2}+6x}-x)$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dạng $\\infty-\\infty$ có căn: nhân và chia với biểu thức liên hợp để đưa về dạng $\\dfrac{\\infty}{\\infty}$ rồi chia cho luỹ thừa cao nhất.\n\n**Bước 1.** Nhận ra hiệu của hai đại lượng cùng dần tới vô cực và xác định biểu thức liên hợp tương ứng.\n\n**Bước 2.** Nhân và chia với biểu thức liên hợp để tử thức trở thành đa thức đơn giản.\n\n**Bước 3.** Chia cả tử và mẫu cho luỹ thừa cao nhất của $x$, chú ý dấu của $x$ khi đưa ra khỏi căn.\n\n**Bước 4.** Dùng $\\dfrac{1}{x}\\to 0$ để tính giới hạn còn lại.\n\n**Phần 2. Trình bày**\n\nNhân và chia với $\\sqrt{x^{2}+6x}+x>0$:\n\n$\\sqrt{x^{2}+6x}-x=\\dfrac{(x^{2}+6x)-x^{2}}{\\sqrt{x^{2}+6x}+x}=\\dfrac{6x}{\\sqrt{x^{2}+6x}+x}$.\n\nKhi $x\\to+\\infty$ ta có $x>0$, chia tử và mẫu cho $x$: $\\dfrac{6}{\\sqrt{1+\\dfrac{6}{x}}+1}$.\n\nVì $\\dfrac{6}{x}\\to 0$ nên giới hạn bằng $\\dfrac{6}{1+1}=3$.\n\nVậy giới hạn bằng $3$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>sqrt(x*x+6*x)-x;const k=3;Math.abs(f(1*1e6)-k)<=2e-3*Math.max(1,Math.abs(k))"
+  ],
+  "sach_dap_so": "3",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-20a",
+  "vai": "luyen",
+  "dang_bai": "NDB01171",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Dạng 0/0 phân thức hữu tỉ.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn $\\lim\\limits_{x\\to -2}\\dfrac{x^{2}-4}{x+2}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dạng $\\dfrac{0}{0}$ của phân thức hữu tỉ: phân tích tử và mẫu thành nhân tử, triệt nhân tử chung $x-x_{0}$ rồi thay giá trị.\n\n**Bước 1.** Thay giá trị $x_{0}$ vào tử và mẫu để nhận ra dạng $\\dfrac{0}{0}$.\n\n**Bước 2.** Phân tích tử và mẫu thành nhân tử (có thể chia Horner) để tìm nhân tử chung $x-x_{0}$.\n\n**Bước 3.** Rút gọn nhân tử chung với điều kiện $x\\ne x_{0}$ để được biểu thức mới.\n\n**Bước 4.** Thay $x_{0}$ vào biểu thức đã rút gọn để tính giới hạn.\n\n**Phần 2. Trình bày**\n\nThay $x=-2$: tử $=0$, mẫu $=0$ nên đây là dạng $\\dfrac{0}{0}$.\n\nVới $x\\ne -2$: $\\dfrac{x^{2}-4}{x+2}=\\dfrac{(x+2)(x-2)}{x+2}=x-2$.\n\nVậy giới hạn bằng $-2-2=-4$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(x*x-4)/(x+2);const a=-2,k=-4;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)"
+  ],
+  "sach_dap_so": "-4",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-20b",
+  "vai": "luyen",
+  "dang_bai": "NDB01171",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Dạng 0/0 phân thức hữu tỉ, hiệu lập phương.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn $\\lim\\limits_{x\\to 1}\\dfrac{x^{3}-1}{1-x}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dạng $\\dfrac{0}{0}$ của phân thức hữu tỉ: phân tích tử và mẫu thành nhân tử, triệt nhân tử chung $x-x_{0}$ rồi thay giá trị.\n\n**Bước 1.** Thay giá trị $x_{0}$ vào tử và mẫu để nhận ra dạng $\\dfrac{0}{0}$.\n\n**Bước 2.** Phân tích tử và mẫu thành nhân tử (có thể chia Horner) để tìm nhân tử chung $x-x_{0}$.\n\n**Bước 3.** Rút gọn nhân tử chung với điều kiện $x\\ne x_{0}$ để được biểu thức mới.\n\n**Bước 4.** Thay $x_{0}$ vào biểu thức đã rút gọn để tính giới hạn.\n\n**Phần 2. Trình bày**\n\nThay $x=1$: tử $=0$, mẫu $=0$ nên đây là dạng $\\dfrac{0}{0}$.\n\nVới $x\\ne 1$: $\\dfrac{x^{3}-1}{1-x}=\\dfrac{(x-1)(x^{2}+x+1)}{-(x-1)}=-(x^{2}+x+1)$.\n\nVậy giới hạn bằng $-(1+1+1)=-3$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(x**3-1)/(1-x);const a=1,k=-3;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)"
+  ],
+  "sach_dap_so": "-3",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-20c",
+  "vai": "luyen",
+  "dang_bai": "NDB01171",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Dạng 0/0 phân thức hữu tỉ.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn $\\lim\\limits_{x\\to 3}\\dfrac{x^{2}-4x+3}{x-3}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dạng $\\dfrac{0}{0}$ của phân thức hữu tỉ: phân tích tử và mẫu thành nhân tử, triệt nhân tử chung $x-x_{0}$ rồi thay giá trị.\n\n**Bước 1.** Thay giá trị $x_{0}$ vào tử và mẫu để nhận ra dạng $\\dfrac{0}{0}$.\n\n**Bước 2.** Phân tích tử và mẫu thành nhân tử (có thể chia Horner) để tìm nhân tử chung $x-x_{0}$.\n\n**Bước 3.** Rút gọn nhân tử chung với điều kiện $x\\ne x_{0}$ để được biểu thức mới.\n\n**Bước 4.** Thay $x_{0}$ vào biểu thức đã rút gọn để tính giới hạn.\n\n**Phần 2. Trình bày**\n\nThay $x=3$: tử $=9-12+3=0$, mẫu $=0$ nên đây là dạng $\\dfrac{0}{0}$.\n\nVới $x\\ne 3$: $\\dfrac{x^{2}-4x+3}{x-3}=\\dfrac{(x-1)(x-3)}{x-3}=x-1$.\n\nVậy giới hạn bằng $3-1=2$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(x*x-4*x+3)/(x-3);const a=3,k=2;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)"
+  ],
+  "sach_dap_so": "2",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-20d",
+  "vai": "luyen",
+  "dang_bai": "NDB01172",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Dạng 0/0 có một căn, nhân liên hợp.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn $\\lim\\limits_{x\\to -2}\\dfrac{2-\\sqrt{x+6}}{x+2}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dạng $\\dfrac{0}{0}$ có căn thức: nhân cả tử và mẫu với biểu thức liên hợp để làm xuất hiện nhân tử dần tới $0$ rồi triệt tiêu.\n\n**Bước 1.** Thay giá trị $x_{0}$ vào để nhận ra dạng $\\dfrac{0}{0}$ và xác định biểu thức chứa căn cần liên hợp.\n\n**Bước 2.** Nhân cả tử và mẫu với biểu thức liên hợp, dùng hằng đẳng thức hiệu hai bình phương ở tử hoặc ở mẫu.\n\n**Bước 3.** Rút gọn nhân tử chung dần tới $0$ với điều kiện $x\\ne x_{0}$.\n\n**Bước 4.** Thay $x_{0}$ vào biểu thức còn lại để tính giới hạn.\n\n**Phần 2. Trình bày**\n\nThay $x=-2$: tử $=2-2=0$, mẫu $=0$ nên đây là dạng $\\dfrac{0}{0}$.\n\nNhân tử và mẫu với $2+\\sqrt{x+6}>0$: $\\dfrac{2-\\sqrt{x+6}}{x+2}=\\dfrac{4-(x+6)}{(x+2)(2+\\sqrt{x+6})}=\\dfrac{-(x+2)}{(x+2)(2+\\sqrt{x+6})}$.\n\nVới $x\\ne -2$: biểu thức bằng $\\dfrac{-1}{2+\\sqrt{x+6}}$.\n\nVậy giới hạn bằng $\\dfrac{-1}{2+\\sqrt{4}}=-\\dfrac{1}{4}$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(2-sqrt(x+6))/(x+2);const a=-2,k=-0.25;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)"
+  ],
+  "sach_dap_so": "-1/4",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-20e",
+  "vai": "luyen",
+  "dang_bai": "NDB01172",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Dạng 0/0 có một căn ở mẫu, nhân liên hợp.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn $\\lim\\limits_{x\\to 0}\\dfrac{x}{\\sqrt{x+1}-1}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dạng $\\dfrac{0}{0}$ có căn thức: nhân cả tử và mẫu với biểu thức liên hợp để làm xuất hiện nhân tử dần tới $0$ rồi triệt tiêu.\n\n**Bước 1.** Thay giá trị $x_{0}$ vào để nhận ra dạng $\\dfrac{0}{0}$ và xác định biểu thức chứa căn cần liên hợp.\n\n**Bước 2.** Nhân cả tử và mẫu với biểu thức liên hợp, dùng hằng đẳng thức hiệu hai bình phương ở tử hoặc ở mẫu.\n\n**Bước 3.** Rút gọn nhân tử chung dần tới $0$ với điều kiện $x\\ne x_{0}$.\n\n**Bước 4.** Thay $x_{0}$ vào biểu thức còn lại để tính giới hạn.\n\n**Phần 2. Trình bày**\n\nThay $x=0$: tử $=0$, mẫu $=0$ nên đây là dạng $\\dfrac{0}{0}$.\n\nNhân tử và mẫu với $\\sqrt{x+1}+1>0$: $\\dfrac{x}{\\sqrt{x+1}-1}=\\dfrac{x(\\sqrt{x+1}+1)}{(x+1)-1}=\\dfrac{x(\\sqrt{x+1}+1)}{x}$.\n\nVới $x\\ne 0$: biểu thức bằng $\\sqrt{x+1}+1$.\n\nVậy giới hạn bằng $\\sqrt{1}+1=2$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>x/(sqrt(x+1)-1);const a=0,k=2;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)"
+  ],
+  "sach_dap_so": "2",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-20g",
+  "vai": "luyen",
+  "dang_bai": "NDB01171",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Dạng 0/0 phân thức hữu tỉ.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn $\\lim\\limits_{x\\to 2}\\dfrac{x^{2}-4x+4}{x^{2}-4}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dạng $\\dfrac{0}{0}$ của phân thức hữu tỉ: phân tích tử và mẫu thành nhân tử, triệt nhân tử chung $x-x_{0}$ rồi thay giá trị.\n\n**Bước 1.** Thay giá trị $x_{0}$ vào tử và mẫu để nhận ra dạng $\\dfrac{0}{0}$.\n\n**Bước 2.** Phân tích tử và mẫu thành nhân tử (có thể chia Horner) để tìm nhân tử chung $x-x_{0}$.\n\n**Bước 3.** Rút gọn nhân tử chung với điều kiện $x\\ne x_{0}$ để được biểu thức mới.\n\n**Bước 4.** Thay $x_{0}$ vào biểu thức đã rút gọn để tính giới hạn.\n\n**Phần 2. Trình bày**\n\nThay $x=2$: tử $=0$, mẫu $=0$ nên đây là dạng $\\dfrac{0}{0}$.\n\nVới $x\\ne 2$: $\\dfrac{x^{2}-4x+4}{x^{2}-4}=\\dfrac{(x-2)^{2}}{(x+2)(x-2)}=\\dfrac{x-2}{x+2}$.\n\nVậy giới hạn bằng $\\dfrac{2-2}{2+2}=0$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(x*x-4*x+4)/(x*x-4);const a=2,k=0;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)"
+  ],
+  "sach_dap_so": "0",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-21",
+  "vai": "luyen",
+  "dang_bai": "NDB01169",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Suy ra giới hạn của g(x) rồi dùng quy tắc thương.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho hai hàm số $f(x)$ và $g(x)$ có $\\lim\\limits_{x\\to+\\infty}f(x)=3$ và $\\lim\\limits_{x\\to+\\infty}[f(x)+2g(x)]=7$. Tìm $\\lim\\limits_{x\\to+\\infty}\\dfrac{2f(x)+g(x)}{2f(x)-g(x)}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Từ hai giới hạn đã cho, tìm giới hạn của $g(x)$ rồi dùng quy tắc giới hạn của tổng, hiệu và thương.\n\n**Bước 1.** Biểu diễn $g(x)$ qua $f(x)$ và $f(x)+2g(x)$ là hai hàm đã biết giới hạn.\n\n**Bước 2.** Dùng quy tắc giới hạn của hiệu và của tích với hằng số để tìm giới hạn của $g(x)$.\n\n**Bước 3.** Kiểm tra mẫu của biểu thức cần tính có giới hạn khác $0$.\n\n**Bước 4.** Thay các giới hạn vừa tìm vào quy tắc thương để tính kết quả.\n\n**Phần 2. Trình bày**\n\nTa có $g(x)=\\dfrac{1}{2}\\{[f(x)+2g(x)]-f(x)\\}$.\n\nSuy ra $\\lim\\limits_{x\\to+\\infty}g(x)=\\dfrac{1}{2}(7-3)=2$.\n\nMẫu có giới hạn $2\\cdot 3-2=4\\ne 0$ nên áp dụng quy tắc thương:\n\n$\\lim\\limits_{x\\to+\\infty}\\dfrac{2f(x)+g(x)}{2f(x)-g(x)}=\\dfrac{2\\cdot 3+2}{2\\cdot 3-2}=\\dfrac{8}{4}=2$.\n\nVậy giới hạn cần tìm bằng $2$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(2*(3+1/x)+(2-1/(2*x)))/(2*(3+1/x)-(2-1/(2*x)));const k=2;Math.abs(f(1*1e6)-k)<=2e-3*Math.max(1,Math.abs(k))",
+   "Math.abs((3+2*2)-7)<1e-9"
+  ],
+  "sach_dap_so": "2",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-22",
+  "vai": "luyen",
+  "dang_bai": "NDB01177",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Hàm nhiều công thức, giới hạn trái, phải và kết luận.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho hàm số $f(x)=\\begin{cases}3x+4&\\text{nếu }x\\le -1\\\\3-2x^{2}&\\text{nếu }x>-1\\end{cases}$. Tìm các giới hạn $\\lim\\limits_{x\\to -1^{+}}f(x)$, $\\lim\\limits_{x\\to -1^{-}}f(x)$ và $\\lim\\limits_{x\\to -1}f(x)$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số có giới hạn tại một điểm khi và chỉ khi giới hạn bên trái bằng giới hạn bên phải; giá trị tại chính điểm đó không ảnh hưởng.\n\n**Bước 1.** Xác định công thức của hàm số ở phía bên trái và phía bên phải của điểm đang xét.\n\n**Bước 2.** Tính giới hạn bên trái và giới hạn bên phải bằng cách thay điểm đó vào công thức tương ứng.\n\n**Bước 3.** So sánh hai giới hạn một bên (có tham số thì cho hai giới hạn bằng nhau) rồi kết luận.\n\n**Phần 2. Trình bày**\n\nKhi $x\\to -1^{+}$ ta có $x>-1$ nên $f(x)=3-2x^{2}$, do đó $\\lim\\limits_{x\\to -1^{+}}f(x)=3-2=1$.\n\nKhi $x\\to -1^{-}$ ta có $x<-1$ nên $f(x)=3x+4$, do đó $\\lim\\limits_{x\\to -1^{-}}f(x)=-3+4=1$.\n\nHai giới hạn một bên bằng nhau nên tồn tại giới hạn tại $x=-1$.\n\nVậy $\\lim\\limits_{x\\to -1^{+}}f(x)=1$, $\\lim\\limits_{x\\to -1^{-}}f(x)=1$ và $\\lim\\limits_{x\\to -1}f(x)=1$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>x<=-1?3*x+4:3-2*x*x;const a=-1,k=1;Math.abs(f(a+(1)*1e-6)-k)<=2e-3*Math.max(1,Math.abs(k))",
+   "const {sqrt,cbrt,abs}=Math;const f=x=>x<=-1?3*x+4:3-2*x*x;const a=-1,k=1;Math.abs(f(a+(-1)*1e-6)-k)<=2e-3*Math.max(1,Math.abs(k))"
+  ],
+  "sach_dap_so": "1; 1; 1",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-23a",
+  "vai": "luyen",
+  "dang_bai": "NDB01176",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Hàm chứa giá trị tuyệt đối tại x=0.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giới hạn $\\lim\\limits_{x\\to 0}\\dfrac{x^{2}}{|x|}$ có tồn tại không? Nếu có, hãy tìm giới hạn đó.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm chứa dấu giá trị tuyệt đối: bỏ dấu giá trị tuyệt đối theo từng phía của điểm đang xét rồi tính giới hạn một bên.\n\n**Bước 1.** Xét dấu biểu thức trong dấu giá trị tuyệt đối khi $x$ tiến tới điểm đang xét từ bên phải và từ bên trái.\n\n**Bước 2.** Bỏ dấu giá trị tuyệt đối theo từng phía, rút gọn biểu thức rồi tính giới hạn mỗi bên.\n\n**Bước 3.** So sánh hai giới hạn một bên để kết luận về sự tồn tại của giới hạn.\n\n**Phần 2. Trình bày**\n\nVới $x>0$ ta có $|x|=x$ nên $\\dfrac{x^{2}}{|x|}=x$, do đó $\\lim\\limits_{x\\to 0^{+}}\\dfrac{x^{2}}{|x|}=0$.\n\nVới $x<0$ ta có $|x|=-x$ nên $\\dfrac{x^{2}}{|x|}=-x$, do đó $\\lim\\limits_{x\\to 0^{-}}\\dfrac{x^{2}}{|x|}=0$.\n\nHai giới hạn một bên bằng nhau.\n\nVậy tồn tại $\\lim\\limits_{x\\to 0}\\dfrac{x^{2}}{|x|}=0$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>x*x/abs(x);const a=0,k=0;Math.abs(f(a+(1)*1e-6)-k)<=2e-3*Math.max(1,Math.abs(k))",
+   "const {sqrt,cbrt,abs}=Math;const f=x=>x*x/abs(x);const a=0,k=0;Math.abs(f(a+(-1)*1e-6)-k)<=2e-3*Math.max(1,Math.abs(k))"
+  ],
+  "sach_dap_so": "Có, bằng 0",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-23b",
+  "vai": "luyen",
+  "dang_bai": "NDB01176",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Hàm chứa giá trị tuyệt đối tại x=2.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giới hạn $\\lim\\limits_{x\\to 2}\\dfrac{x^{2}-2x}{|x-2|}$ có tồn tại không? Nếu có, hãy tìm giới hạn đó.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm chứa dấu giá trị tuyệt đối: bỏ dấu giá trị tuyệt đối theo từng phía của điểm đang xét rồi tính giới hạn một bên.\n\n**Bước 1.** Xét dấu biểu thức trong dấu giá trị tuyệt đối khi $x$ tiến tới điểm đang xét từ bên phải và từ bên trái.\n\n**Bước 2.** Bỏ dấu giá trị tuyệt đối theo từng phía, rút gọn biểu thức rồi tính giới hạn mỗi bên.\n\n**Bước 3.** So sánh hai giới hạn một bên để kết luận về sự tồn tại của giới hạn.\n\n**Phần 2. Trình bày**\n\nVới $x>2$ ta có $|x-2|=x-2$ nên $\\dfrac{x^{2}-2x}{|x-2|}=\\dfrac{x(x-2)}{x-2}=x$, do đó $\\lim\\limits_{x\\to 2^{+}}\\dfrac{x^{2}-2x}{|x-2|}=2$.\n\nVới $x<2$ ta có $|x-2|=2-x$ nên $\\dfrac{x^{2}-2x}{|x-2|}=\\dfrac{x(x-2)}{2-x}=-x$, do đó $\\lim\\limits_{x\\to 2^{-}}\\dfrac{x^{2}-2x}{|x-2|}=-2$.\n\nHai giới hạn một bên khác nhau.\n\nVậy không tồn tại $\\lim\\limits_{x\\to 2}\\dfrac{x^{2}-2x}{|x-2|}$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(x*x-2*x)/abs(x-2);const a=2,k=2;Math.abs(f(a+(1)*1e-6)-k)<=2e-3*Math.max(1,Math.abs(k))",
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(x*x-2*x)/abs(x-2);const a=2,k=-2;Math.abs(f(a+(-1)*1e-6)-k)<=2e-3*Math.max(1,Math.abs(k))"
+  ],
+  "sach_dap_so": "Không tồn tại",
+  "ghi_chu": "Lời giải sách viết nhầm cận x→2+ ở nhánh trái (phải là 2-); kết quả đúng."
+ },
+ {
+  "id": "nbv-b2-b-24a",
+  "vai": "luyen",
+  "dang_bai": "NDB01178",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Phân thức cùng bậc khi x tiến tới dương vô cực.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn $\\lim\\limits_{x\\to+\\infty}\\dfrac{x}{x+4}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Với phân thức hữu tỉ khi $x\\to\\pm\\infty$, chia tử và mẫu cho luỹ thừa cao nhất của $x$ rồi dùng giới hạn $\\dfrac{1}{x^{k}}\\to 0$.\n\n**Bước 1.** Xác định luỹ thừa cao nhất của $x$ ở tử và ở mẫu.\n\n**Bước 2.** Chia cả tử và mẫu cho luỹ thừa cao nhất đó để xuất hiện các số hạng dạng $\\dfrac{c}{x^{k}}$.\n\n**Bước 3.** Cho $x$ dần tới vô cực: các số hạng này có giới hạn $0$, tính giới hạn của tử và của mẫu rồi lập thương.\n\n**Phần 2. Trình bày**\n\nChia cả tử và mẫu cho $x$: $\\dfrac{x}{x+4}=\\dfrac{1}{1+\\dfrac{4}{x}}$.\n\nVì $\\dfrac{4}{x}\\to 0$ nên giới hạn bằng $\\dfrac{1}{1+0}=1$.\n\nVậy giới hạn bằng $1$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>x/(x+4);const k=1;Math.abs(f(1*1e6)-k)<=2e-3*Math.max(1,Math.abs(k))"
+  ],
+  "sach_dap_so": "1",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-24b",
+  "vai": "luyen",
+  "dang_bai": "NDB01178",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Phân thức cùng bậc khi x tiến tới âm vô cực.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn $\\lim\\limits_{x\\to-\\infty}\\dfrac{2x^{2}+1}{(2x+1)^{2}}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Với phân thức hữu tỉ khi $x\\to\\pm\\infty$, chia tử và mẫu cho luỹ thừa cao nhất của $x$ rồi dùng giới hạn $\\dfrac{1}{x^{k}}\\to 0$.\n\n**Bước 1.** Xác định luỹ thừa cao nhất của $x$ ở tử và ở mẫu.\n\n**Bước 2.** Chia cả tử và mẫu cho luỹ thừa cao nhất đó để xuất hiện các số hạng dạng $\\dfrac{c}{x^{k}}$.\n\n**Bước 3.** Cho $x$ dần tới vô cực: các số hạng này có giới hạn $0$, tính giới hạn của tử và của mẫu rồi lập thương.\n\n**Phần 2. Trình bày**\n\nChia cả tử và mẫu cho $x^{2}$: $\\dfrac{2x^{2}+1}{(2x+1)^{2}}=\\dfrac{2+\\dfrac{1}{x^{2}}}{(2+\\dfrac{1}{x})^{2}}$.\n\nKhi $x\\to-\\infty$: tử có giới hạn $2$, mẫu có giới hạn $(2+0)^{2}=4$.\n\nVậy giới hạn bằng $\\dfrac{2}{4}=\\dfrac{1}{2}$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(2*x*x+1)/(2*x+1)**2;const k=0.5;Math.abs(f(-1*1e6)-k)<=2e-3*Math.max(1,Math.abs(k))"
+  ],
+  "sach_dap_so": "1/2",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-24c",
+  "vai": "luyen",
+  "dang_bai": "NDB01179",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Phân thức có căn ở mẫu khi x tiến tới âm vô cực.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn $\\lim\\limits_{x\\to-\\infty}\\dfrac{3x+1}{\\sqrt{x^{2}-2x}}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức có căn khi $x\\to\\pm\\infty$: đưa $|x|$ ra ngoài căn, chú ý $\\sqrt{x^{2}}=x$ khi $x>0$ và $\\sqrt{x^{2}}=-x$ khi $x<0$.\n\n**Bước 1.** Xác định $x$ dần tới $+\\infty$ hay $-\\infty$ để biết dấu của $x$ và cách bỏ dấu giá trị tuyệt đối.\n\n**Bước 2.** Đưa $x^{2}$ ra ngoài căn thành $|x|$ rồi chia cả tử và mẫu cho $x$ với dấu phù hợp.\n\n**Bước 3.** Dùng $\\dfrac{1}{x^{k}}\\to 0$ để tính giới hạn của phần còn lại.\n\n**Phần 2. Trình bày**\n\nKhi $x\\to-\\infty$ ta có $x<0$ nên $\\sqrt{x^{2}-2x}=|x|\\sqrt{1-\\dfrac{2}{x}}=-x\\sqrt{1-\\dfrac{2}{x}}$.\n\n$\\dfrac{3x+1}{\\sqrt{x^{2}-2x}}=\\dfrac{x(3+\\dfrac{1}{x})}{-x\\sqrt{1-\\dfrac{2}{x}}}=\\dfrac{3+\\dfrac{1}{x}}{-\\sqrt{1-\\dfrac{2}{x}}}$.\n\nVì $\\dfrac{1}{x}\\to 0$ nên giới hạn bằng $\\dfrac{3}{-\\sqrt{1}}=-3$.\n\nVậy giới hạn bằng $-3$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(3*x+1)/sqrt(x*x-2*x);const k=-3;Math.abs(f(-1*1e6)-k)<=2e-3*Math.max(1,Math.abs(k))"
+  ],
+  "sach_dap_so": "-3",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-24d",
+  "vai": "luyen",
+  "dang_bai": "NDB01180",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Dạng vô cùng trừ vô cùng có căn, nhân liên hợp.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn $\\lim\\limits_{x\\to+\\infty}(x-\\sqrt{x^{2}+2x})$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dạng $\\infty-\\infty$ có căn: nhân và chia với biểu thức liên hợp để đưa về dạng $\\dfrac{\\infty}{\\infty}$ rồi chia cho luỹ thừa cao nhất.\n\n**Bước 1.** Nhận ra hiệu của hai đại lượng cùng dần tới vô cực và xác định biểu thức liên hợp tương ứng.\n\n**Bước 2.** Nhân và chia với biểu thức liên hợp để tử thức trở thành đa thức đơn giản.\n\n**Bước 3.** Chia cả tử và mẫu cho luỹ thừa cao nhất của $x$, chú ý dấu của $x$ khi đưa ra khỏi căn.\n\n**Bước 4.** Dùng $\\dfrac{1}{x}\\to 0$ để tính giới hạn còn lại.\n\n**Phần 2. Trình bày**\n\nNhân và chia với $x+\\sqrt{x^{2}+2x}>0$:\n\n$x-\\sqrt{x^{2}+2x}=\\dfrac{x^{2}-(x^{2}+2x)}{x+\\sqrt{x^{2}+2x}}=\\dfrac{-2x}{x+\\sqrt{x^{2}+2x}}$.\n\nKhi $x\\to+\\infty$ ta có $x>0$, chia tử và mẫu cho $x$: $\\dfrac{-2}{1+\\sqrt{1+\\dfrac{2}{x}}}$.\n\nVì $\\dfrac{2}{x}\\to 0$ nên giới hạn bằng $\\dfrac{-2}{1+1}=-1$.\n\nVậy giới hạn bằng $-1$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>x-sqrt(x*x+2*x);const k=-1;Math.abs(f(1*1e6)-k)<=2e-3*Math.max(1,Math.abs(k))"
+  ],
+  "sach_dap_so": "-1",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-25",
+  "vai": "luyen",
+  "dang_bai": "NDB01168",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Chứng minh giới hạn bằng định nghĩa dãy và đánh giá kẹp.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho hàm số $f(x)=\\dfrac{\\sin^{2}x}{x^{2}}$. Chứng minh rằng $\\lim\\limits_{x\\to+\\infty}f(x)=0$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dùng định nghĩa dãy: lấy dãy $(x_{n})$ dần tới $+\\infty$, đánh giá $f(x_{n})$ bằng bất đẳng thức $|\\sin x|\\le 1$ rồi dùng nguyên lí kẹp.\n\n**Bước 1.** Lấy dãy $(x_{n})$ bất kì thoả mãn $x_{n}\\to+\\infty$, khi đó $x_{n}\\ne 0$ kể từ một số hạng nào đó.\n\n**Bước 2.** Đánh giá $0\\le f(x_{n})$ và $f(x_{n})\\le\\dfrac{1}{x_{n}^{2}}$ nhờ bất đẳng thức $\\sin^{2}x\\le 1$.\n\n**Bước 3.** Tính giới hạn của cận trên $\\dfrac{1}{x_{n}^{2}}$ và dùng nguyên lí kẹp để suy ra giới hạn của $f(x_{n})$.\n\n**Bước 4.** Kết luận giới hạn của hàm số vì dãy $(x_{n})$ được chọn bất kì.\n\n**Phần 2. Trình bày**\n\nLấy dãy số $(x_{n})$ bất kì sao cho $x_{n}\\to+\\infty$; khi đó $x_{n}\\ne 0$ kể từ một số hạng nào đó.\n\nVì $0\\le\\sin^{2}x_{n}\\le 1$ nên $0\\le f(x_{n})=\\dfrac{\\sin^{2}x_{n}}{x_{n}^{2}}\\le\\dfrac{1}{x_{n}^{2}}$.\n\nMà $\\lim\\dfrac{1}{x_{n}^{2}}=0$ nên theo nguyên lí kẹp, $\\lim f(x_{n})=0$.\n\nVậy $\\lim\\limits_{x\\to+\\infty}f(x)=0$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>Math.sin(x)**2/(x*x);const k=0;Math.abs(f(1*1e6)-k)<=2e-3*Math.max(1,Math.abs(k))"
+  ],
+  "sach_dap_so": "0",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-26",
+  "vai": "luyen",
+  "dang_bai": "NDB01181",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Dạng 0 nhân vô cực: đưa thừa số vào trong căn.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to 1^{-}}(x-1)\\sqrt{\\dfrac{x+2}{1-x^{2}}}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dạng $0\\cdot\\infty$: biến đổi (nhân liên hợp hoặc đưa vào chung một căn) để đưa về dạng giới hạn xác định.\n\n**Bước 1.** Nhận ra một thừa số dần tới $0$ và thừa số kia dần tới vô cực nên chưa dùng được quy tắc tích.\n\n**Bước 2.** Biến đổi biểu thức, chẳng hạn đưa thừa số vào trong căn, để các nhân tử dần tới $0$ lộ ra.\n\n**Bước 3.** Rút gọn rồi tính giới hạn của biểu thức mới.\n\n**Phần 2. Trình bày**\n\nKhi $x\\to 1^{-}$ ta có $x<1$ nên $x-1<0$ và $x-1=-\\sqrt{(x-1)^{2}}$.\n\n$(x-1)\\sqrt{\\dfrac{x+2}{1-x^{2}}}=-\\sqrt{\\dfrac{(x-1)^{2}(x+2)}{1-x^{2}}}$.\n\nVì $1-x^{2}=(1-x)(1+x)$ và $(x-1)^{2}=(1-x)^{2}$ nên biểu thức bằng $-\\sqrt{\\dfrac{(1-x)(x+2)}{1+x}}$.\n\nKhi $x\\to 1^{-}$: $1-x\\to 0$ và $\\dfrac{x+2}{1+x}\\to\\dfrac{3}{2}$ nên biểu thức dưới căn có giới hạn $0$.\n\nVậy giới hạn bằng $-\\sqrt{0}=0$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(x-1)*sqrt((x+2)/(1-x*x));const a=1,k=0;Math.abs(f(a+(-1)*1e-6)-k)<=2e-3*Math.max(1,Math.abs(k))"
+  ],
+  "sach_dap_so": "0",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-27",
+  "vai": "luyen",
+  "dang_bai": "NDB01180",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Dạng vô cùng trừ vô cùng có căn, nhân liên hợp.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to+\\infty}(\\sqrt{x^{2}+1}-x-1)$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dạng $\\infty-\\infty$ có căn: nhân và chia với biểu thức liên hợp để đưa về dạng $\\dfrac{\\infty}{\\infty}$ rồi chia cho luỹ thừa cao nhất.\n\n**Bước 1.** Nhận ra hiệu của hai đại lượng cùng dần tới vô cực và xác định biểu thức liên hợp tương ứng.\n\n**Bước 2.** Nhân và chia với biểu thức liên hợp để tử thức trở thành đa thức đơn giản.\n\n**Bước 3.** Chia cả tử và mẫu cho luỹ thừa cao nhất của $x$, chú ý dấu của $x$ khi đưa ra khỏi căn.\n\n**Bước 4.** Dùng $\\dfrac{1}{x}\\to 0$ để tính giới hạn còn lại.\n\n**Phần 2. Trình bày**\n\nNhân và chia với $\\sqrt{x^{2}+1}+x+1>0$:\n\n$\\sqrt{x^{2}+1}-(x+1)=\\dfrac{(x^{2}+1)-(x+1)^{2}}{\\sqrt{x^{2}+1}+x+1}=\\dfrac{-2x}{\\sqrt{x^{2}+1}+x+1}$.\n\nKhi $x\\to+\\infty$ ta có $x>0$, chia tử và mẫu cho $x$: $\\dfrac{-2}{\\sqrt{1+\\dfrac{1}{x^{2}}}+1+\\dfrac{1}{x}}$.\n\nVì $\\dfrac{1}{x^{2}}\\to 0$ và $\\dfrac{1}{x}\\to 0$ nên giới hạn bằng $\\dfrac{-2}{1+1+0}=-1$.\n\nVậy giới hạn bằng $-1$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>sqrt(x*x+1)-x-1;const k=-1;Math.abs(f(1*1e6)-k)<=2e-3*Math.max(1,Math.abs(k))"
+  ],
+  "sach_dap_so": "-1",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-30",
+  "vai": "luyen",
+  "dang_bai": "NDB01182",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Dạng L/0 với L=2>0, mẫu dương dần tới 0.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Biết $\\lim\\limits_{x\\to 1}f(x)=2$. Tính $\\lim\\limits_{x\\to 1}\\dfrac{f(x)}{(x-1)^{2}}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn dạng $\\dfrac{L}{0}$ với $L\\ne 0$: xét dấu của mẫu khi $x$ tiến tới điểm từ mỗi phía rồi kết luận $+\\infty$ hay $-\\infty$.\n\n**Bước 1.** Tính giới hạn của tử (một số khác $0$) và xác định mẫu dần tới $0$.\n\n**Bước 2.** Xét dấu của mẫu khi $x$ tiến tới điểm đang xét từ bên phải hoặc từ bên trái.\n\n**Bước 3.** Áp dụng quy tắc giới hạn vô cực của thương, chú ý dấu của tử và dấu của mẫu, rồi kết luận.\n\n**Phần 2. Trình bày**\n\nTa có $\\lim\\limits_{x\\to 1}f(x)=2>0$.\n\nVới mọi $x\\ne 1$ thì $(x-1)^{2}>0$ và $(x-1)^{2}\\to 0$ khi $x\\to 1$.\n\nTheo quy tắc giới hạn vô cực của thương, $\\lim\\limits_{x\\to 1}\\dfrac{f(x)}{(x-1)^{2}}=+\\infty$.\n\nVậy giới hạn bằng $+\\infty$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(2+(x-1))/((x-1)**2);(1)*f(1+(1)*1e-6)>1e4",
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(2+(x-1))/((x-1)**2);(1)*f(1+(-1)*1e-6)>1e4"
+  ],
+  "sach_dap_so": "+\\infty",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-31",
+  "vai": "luyen",
+  "dang_bai": "NDB01184",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tích có thừa số x^2 dần tới dương vô cực.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Biết $\\lim\\limits_{x\\to-\\infty}g(x)=1$. Tính $\\lim\\limits_{x\\to-\\infty}(x^{2}-1)g(x)$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn của tích khi một hàm có giới hạn vô cực: dùng bảng dấu của quy tắc tích với giới hạn của hàm còn lại.\n\n**Bước 1.** Tách biểu thức thành tích của hai hàm, một hàm có giới hạn vô cực và một hàm có giới hạn hữu hạn.\n\n**Bước 2.** Tính giới hạn của từng hàm và xác định dấu của giới hạn hữu hạn.\n\n**Bước 3.** Áp dụng quy tắc dấu của giới hạn tích để kết luận $+\\infty$ hay $-\\infty$.\n\n**Phần 2. Trình bày**\n\nViết $(x^{2}-1)g(x)=x^{2}\\cdot[(1-\\dfrac{1}{x^{2}})g(x)]$.\n\nTa có $\\lim\\limits_{x\\to-\\infty}x^{2}=+\\infty$ và $\\lim\\limits_{x\\to-\\infty}[(1-\\dfrac{1}{x^{2}})g(x)]=1\\cdot 1=1>0$.\n\nTheo quy tắc giới hạn vô cực của tích, $\\lim\\limits_{x\\to-\\infty}(x^{2}-1)g(x)=+\\infty$.\n\nVậy giới hạn bằng $+\\infty$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(x*x-1)*(1+1/x);(1)*f(-1*1e5)>1e4"
+  ],
+  "sach_dap_so": "+\\infty",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-32a",
+  "vai": "luyen",
+  "dang_bai": "NDB01172",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Dạng 0/0 có một căn, nhân liên hợp.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to 2}\\dfrac{\\sqrt{4x+1}-3}{x-2}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dạng $\\dfrac{0}{0}$ có căn thức: nhân cả tử và mẫu với biểu thức liên hợp để làm xuất hiện nhân tử dần tới $0$ rồi triệt tiêu.\n\n**Bước 1.** Thay giá trị $x_{0}$ vào để nhận ra dạng $\\dfrac{0}{0}$ và xác định biểu thức chứa căn cần liên hợp.\n\n**Bước 2.** Nhân cả tử và mẫu với biểu thức liên hợp, dùng hằng đẳng thức hiệu hai bình phương ở tử hoặc ở mẫu.\n\n**Bước 3.** Rút gọn nhân tử chung dần tới $0$ với điều kiện $x\\ne x_{0}$.\n\n**Bước 4.** Thay $x_{0}$ vào biểu thức còn lại để tính giới hạn.\n\n**Phần 2. Trình bày**\n\nThay $x=2$: tử $=3-3=0$, mẫu $=0$ nên đây là dạng $\\dfrac{0}{0}$.\n\nNhân tử và mẫu với $\\sqrt{4x+1}+3>0$: $\\dfrac{\\sqrt{4x+1}-3}{x-2}=\\dfrac{(4x+1)-9}{(x-2)(\\sqrt{4x+1}+3)}=\\dfrac{4(x-2)}{(x-2)(\\sqrt{4x+1}+3)}$.\n\nVới $x\\ne 2$: biểu thức bằng $\\dfrac{4}{\\sqrt{4x+1}+3}$.\n\nVậy giới hạn bằng $\\dfrac{4}{3+3}=\\dfrac{2}{3}$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(sqrt(4*x+1)-3)/(x-2);const a=2,k=0.6666666666666666;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)"
+  ],
+  "sach_dap_so": "2/3",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-32b",
+  "vai": "luyen",
+  "dang_bai": "NDB01171",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Dạng 0/0 phân thức hữu tỉ bậc ba.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to 1}\\dfrac{x^{3}+x^{2}+x-3}{x^{3}-1}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dạng $\\dfrac{0}{0}$ của phân thức hữu tỉ: phân tích tử và mẫu thành nhân tử, triệt nhân tử chung $x-x_{0}$ rồi thay giá trị.\n\n**Bước 1.** Thay giá trị $x_{0}$ vào tử và mẫu để nhận ra dạng $\\dfrac{0}{0}$.\n\n**Bước 2.** Phân tích tử và mẫu thành nhân tử (có thể chia Horner) để tìm nhân tử chung $x-x_{0}$.\n\n**Bước 3.** Rút gọn nhân tử chung với điều kiện $x\\ne x_{0}$ để được biểu thức mới.\n\n**Bước 4.** Thay $x_{0}$ vào biểu thức đã rút gọn để tính giới hạn.\n\n**Phần 2. Trình bày**\n\nThay $x=1$: tử $=1+1+1-3=0$, mẫu $=0$ nên đây là dạng $\\dfrac{0}{0}$.\n\nPhân tích $x^{3}+x^{2}+x-3=(x-1)(x^{2}+2x+3)$ và $x^{3}-1=(x-1)(x^{2}+x+1)$.\n\nVới $x\\ne 1$: biểu thức bằng $\\dfrac{x^{2}+2x+3}{x^{2}+x+1}$.\n\nVậy giới hạn bằng $\\dfrac{1+2+3}{1+1+1}=2$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(x**3+x*x+x-3)/(x**3-1);const a=1,k=2;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)"
+  ],
+  "sach_dap_so": "2",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-32c",
+  "vai": "luyen",
+  "dang_bai": "NDB01182",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Sau khi rút gọn thành dạng L/0, xét dấu mẫu bên phải.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to 2^{+}}\\dfrac{x^{2}-5x+6}{(x-2)^{2}}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn dạng $\\dfrac{L}{0}$ với $L\\ne 0$: xét dấu của mẫu khi $x$ tiến tới điểm từ mỗi phía rồi kết luận $+\\infty$ hay $-\\infty$.\n\n**Bước 1.** Tính giới hạn của tử (một số khác $0$) và xác định mẫu dần tới $0$.\n\n**Bước 2.** Xét dấu của mẫu khi $x$ tiến tới điểm đang xét từ bên phải hoặc từ bên trái.\n\n**Bước 3.** Áp dụng quy tắc giới hạn vô cực của thương, chú ý dấu của tử và dấu của mẫu, rồi kết luận.\n\n**Phần 2. Trình bày**\n\nPhân tích $x^{2}-5x+6=(x-2)(x-3)$, với $x\\ne 2$: $\\dfrac{x^{2}-5x+6}{(x-2)^{2}}=\\dfrac{x-3}{x-2}$.\n\nKhi $x\\to 2^{+}$: tử $x-3\\to -1<0$, mẫu $x-2>0$ và $x-2\\to 0$.\n\nTheo quy tắc giới hạn vô cực của thương, giới hạn bằng $-\\infty$.\n\nVậy giới hạn bằng $-\\infty$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(x*x-5*x+6)/((x-2)**2);(-1)*f(2+(1)*1e-6)>1e4"
+  ],
+  "sach_dap_so": "-\\infty",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-32d",
+  "vai": "luyen",
+  "dang_bai": "NDB01182",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Dạng L/0, xét dấu mẫu bên trái.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to 0^{-}}\\dfrac{x^{2}+x-2}{x}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn dạng $\\dfrac{L}{0}$ với $L\\ne 0$: xét dấu của mẫu khi $x$ tiến tới điểm từ mỗi phía rồi kết luận $+\\infty$ hay $-\\infty$.\n\n**Bước 1.** Tính giới hạn của tử (một số khác $0$) và xác định mẫu dần tới $0$.\n\n**Bước 2.** Xét dấu của mẫu khi $x$ tiến tới điểm đang xét từ bên phải hoặc từ bên trái.\n\n**Bước 3.** Áp dụng quy tắc giới hạn vô cực của thương, chú ý dấu của tử và dấu của mẫu, rồi kết luận.\n\n**Phần 2. Trình bày**\n\nKhi $x\\to 0^{-}$: tử $x^{2}+x-2\\to -2<0$.\n\nMẫu $x<0$ và $x\\to 0$.\n\nThương của một số âm với số âm dần tới $0$ là số dương lớn dần, nên giới hạn bằng $+\\infty$.\n\nVậy giới hạn bằng $+\\infty$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(x*x+x-2)/x;(1)*f(0+(-1)*1e-6)>1e4"
+  ],
+  "sach_dap_so": "+\\infty",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-33",
+  "vai": "luyen",
+  "dang_bai": "NDB01183",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tích đa thức khi x tiến tới dương vô cực.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to+\\infty}(1-x)(1-x^{2})(1-x^{3})$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức hoặc phân thức có tử bậc cao hơn mẫu khi $x\\to\\pm\\infty$: rút luỹ thừa cao nhất ra ngoài rồi xét dấu theo bậc chẵn hoặc lẻ.\n\n**Bước 1.** Xác định số hạng bậc cao nhất của tử và của mẫu để biết bậc của từng phần.\n\n**Bước 2.** Rút luỹ thừa cao nhất ra ngoài, phần còn lại có giới hạn hữu hạn khác $0$.\n\n**Bước 3.** Xét dấu của $x^{k}$ khi $x\\to+\\infty$ hoặc $x\\to-\\infty$ (bậc chẵn hay lẻ) và dấu của giới hạn phần còn lại rồi kết luận.\n\n**Phần 2. Trình bày**\n\nRút $x$, $x^{2}$, $x^{3}$ ở từng thừa số: $(1-x)(1-x^{2})(1-x^{3})=x^{6}(\\dfrac{1}{x}-1)(\\dfrac{1}{x^{2}}-1)(\\dfrac{1}{x^{3}}-1)$.\n\nTa có $\\lim\\limits_{x\\to+\\infty}x^{6}=+\\infty$ và giới hạn của tích ba thừa số còn lại là $(-1)(-1)(-1)=-1<0$.\n\nTheo quy tắc giới hạn vô cực của tích, giới hạn bằng $-\\infty$.\n\nVậy giới hạn bằng $-\\infty$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(1-x)*(1-x*x)*(1-x*x*x);(-1)*f(1*1e5)>1e4"
+  ],
+  "sach_dap_so": "-\\infty",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-34a",
+  "vai": "luyen",
+  "dang_bai": "NDB01183",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Đa thức bậc hai khi x tiến tới dương vô cực.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn $\\lim\\limits_{x\\to+\\infty}(-x^{2}+2x-4)$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức hoặc phân thức có tử bậc cao hơn mẫu khi $x\\to\\pm\\infty$: rút luỹ thừa cao nhất ra ngoài rồi xét dấu theo bậc chẵn hoặc lẻ.\n\n**Bước 1.** Xác định số hạng bậc cao nhất của tử và của mẫu để biết bậc của từng phần.\n\n**Bước 2.** Rút luỹ thừa cao nhất ra ngoài, phần còn lại có giới hạn hữu hạn khác $0$.\n\n**Bước 3.** Xét dấu của $x^{k}$ khi $x\\to+\\infty$ hoặc $x\\to-\\infty$ (bậc chẵn hay lẻ) và dấu của giới hạn phần còn lại rồi kết luận.\n\n**Phần 2. Trình bày**\n\nRút $x^{2}$ ra ngoài: $-x^{2}+2x-4=x^{2}(-1+\\dfrac{2}{x}-\\dfrac{4}{x^{2}})$.\n\nTa có $\\lim\\limits_{x\\to+\\infty}x^{2}=+\\infty$ và $\\lim\\limits_{x\\to+\\infty}(-1+\\dfrac{2}{x}-\\dfrac{4}{x^{2}})=-1<0$.\n\nVậy $\\lim\\limits_{x\\to+\\infty}(-x^{2}+2x-4)=-\\infty$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>-x*x+2*x-4;(-1)*f(1*1e5)>1e4"
+  ],
+  "sach_dap_so": "-\\infty",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-34b",
+  "vai": "luyen",
+  "dang_bai": "NDB01183",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Phân thức tử bậc cao hơn mẫu khi x tiến tới âm vô cực.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giới hạn $\\lim\\limits_{x\\to-\\infty}\\dfrac{x^{2}+3x+1}{2x-1}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức hoặc phân thức có tử bậc cao hơn mẫu khi $x\\to\\pm\\infty$: rút luỹ thừa cao nhất ra ngoài rồi xét dấu theo bậc chẵn hoặc lẻ.\n\n**Bước 1.** Xác định số hạng bậc cao nhất của tử và của mẫu để biết bậc của từng phần.\n\n**Bước 2.** Rút luỹ thừa cao nhất ra ngoài, phần còn lại có giới hạn hữu hạn khác $0$.\n\n**Bước 3.** Xét dấu của $x^{k}$ khi $x\\to+\\infty$ hoặc $x\\to-\\infty$ (bậc chẵn hay lẻ) và dấu của giới hạn phần còn lại rồi kết luận.\n\n**Phần 2. Trình bày**\n\nRút $x^{2}$ ở tử và $x$ ở mẫu: $\\dfrac{x^{2}+3x+1}{2x-1}=x\\cdot\\dfrac{1+\\dfrac{3}{x}+\\dfrac{1}{x^{2}}}{2-\\dfrac{1}{x}}$.\n\nTa có $\\lim\\limits_{x\\to-\\infty}x=-\\infty$ và $\\lim\\limits_{x\\to-\\infty}\\dfrac{1+\\dfrac{3}{x}+\\dfrac{1}{x^{2}}}{2-\\dfrac{1}{x}}=\\dfrac{1}{2}>0$.\n\nTheo quy tắc giới hạn vô cực của tích, giới hạn bằng $-\\infty$.\n\nVậy giới hạn bằng $-\\infty$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(x*x+3*x+1)/(2*x-1);(-1)*f(-1*1e5)>1e4"
+  ],
+  "sach_dap_so": "-\\infty",
+  "ghi_chu": "Dòng kết của lời giải sách in nhầm tử thức thành x^2+x+1; đáp số -∞ đúng."
+ },
+ {
+  "id": "nbv-b2-b-35a",
+  "vai": "luyen",
+  "dang_bai": "NDB01183",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Đa thức bậc ba khi x tiến tới âm vô cực.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to-\\infty}(x^{3}+2x^{2}-1)$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức hoặc phân thức có tử bậc cao hơn mẫu khi $x\\to\\pm\\infty$: rút luỹ thừa cao nhất ra ngoài rồi xét dấu theo bậc chẵn hoặc lẻ.\n\n**Bước 1.** Xác định số hạng bậc cao nhất của tử và của mẫu để biết bậc của từng phần.\n\n**Bước 2.** Rút luỹ thừa cao nhất ra ngoài, phần còn lại có giới hạn hữu hạn khác $0$.\n\n**Bước 3.** Xét dấu của $x^{k}$ khi $x\\to+\\infty$ hoặc $x\\to-\\infty$ (bậc chẵn hay lẻ) và dấu của giới hạn phần còn lại rồi kết luận.\n\n**Phần 2. Trình bày**\n\nRút $x^{3}$ ra ngoài: $x^{3}+2x^{2}-1=x^{3}(1+\\dfrac{2}{x}-\\dfrac{1}{x^{3}})$.\n\nTa có $\\lim\\limits_{x\\to-\\infty}x^{3}=-\\infty$ và $\\lim\\limits_{x\\to-\\infty}(1+\\dfrac{2}{x}-\\dfrac{1}{x^{3}})=1>0$.\n\nVậy giới hạn bằng $-\\infty$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>x**3+2*x*x-1;(-1)*f(-1*1e5)>1e4"
+  ],
+  "sach_dap_so": "-\\infty",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-35b",
+  "vai": "luyen",
+  "dang_bai": "NDB01183",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Phân thức tử bậc cao hơn mẫu khi x tiến tới dương vô cực.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to+\\infty}\\dfrac{x^{3}+2x^{2}}{3x^{2}+1}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức hoặc phân thức có tử bậc cao hơn mẫu khi $x\\to\\pm\\infty$: rút luỹ thừa cao nhất ra ngoài rồi xét dấu theo bậc chẵn hoặc lẻ.\n\n**Bước 1.** Xác định số hạng bậc cao nhất của tử và của mẫu để biết bậc của từng phần.\n\n**Bước 2.** Rút luỹ thừa cao nhất ra ngoài, phần còn lại có giới hạn hữu hạn khác $0$.\n\n**Bước 3.** Xét dấu của $x^{k}$ khi $x\\to+\\infty$ hoặc $x\\to-\\infty$ (bậc chẵn hay lẻ) và dấu của giới hạn phần còn lại rồi kết luận.\n\n**Phần 2. Trình bày**\n\nViết $\\dfrac{x^{3}+2x^{2}}{3x^{2}+1}=x\\cdot\\dfrac{x^{2}+2x}{3x^{2}+1}$.\n\nTa có $\\lim\\limits_{x\\to+\\infty}x=+\\infty$ và $\\lim\\limits_{x\\to+\\infty}\\dfrac{x^{2}+2x}{3x^{2}+1}=\\dfrac{1}{3}>0$.\n\nTheo quy tắc giới hạn vô cực của tích, giới hạn bằng $+\\infty$.\n\nVậy giới hạn bằng $+\\infty$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(x**3+2*x*x)/(3*x*x+1);(1)*f(1*1e5)>1e4"
+  ],
+  "sach_dap_so": "+\\infty",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-35c",
+  "vai": "luyen",
+  "dang_bai": "NDB01179",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Căn của đa thức khi x tiến tới âm vô cực, giới hạn vô cực.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to-\\infty}\\sqrt{x^{2}-2x+3}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức có căn khi $x\\to\\pm\\infty$: đưa $|x|$ ra ngoài căn, chú ý $\\sqrt{x^{2}}=x$ khi $x>0$ và $\\sqrt{x^{2}}=-x$ khi $x<0$.\n\n**Bước 1.** Xác định $x$ dần tới $+\\infty$ hay $-\\infty$ để biết dấu của $x$ và cách bỏ dấu giá trị tuyệt đối.\n\n**Bước 2.** Đưa $x^{2}$ ra ngoài căn thành $|x|$ rồi chia cả tử và mẫu cho $x$ với dấu phù hợp.\n\n**Bước 3.** Dùng $\\dfrac{1}{x^{k}}\\to 0$ để tính giới hạn của phần còn lại.\n\n**Phần 2. Trình bày**\n\nKhi $x\\to-\\infty$ ta có $x<0$ nên $\\sqrt{x^{2}-2x+3}=|x|\\sqrt{1-\\dfrac{2}{x}+\\dfrac{3}{x^{2}}}$.\n\nTa có $\\lim\\limits_{x\\to-\\infty}|x|=\\lim\\limits_{x\\to-\\infty}(-x)=+\\infty$ và $\\lim\\limits_{x\\to-\\infty}\\sqrt{1-\\dfrac{2}{x}+\\dfrac{3}{x^{2}}}=1>0$.\n\nTheo quy tắc giới hạn vô cực của tích, giới hạn bằng $+\\infty$.\n\nVậy giới hạn bằng $+\\infty$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>sqrt(x*x-2*x+3);(1)*f(-1*1e5)>1e4"
+  ],
+  "sach_dap_so": "+\\infty",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-36",
+  "vai": "luyen",
+  "dang_bai": "NDB01177",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tìm tham số để tồn tại giới hạn tại điểm chia nhánh.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho hàm số $f(x)=\\begin{cases}x+m&\\text{nếu }x<0\\\\x^{2}-1&\\text{nếu }x\\ge 0\\end{cases}$ với $m$ là tham số. Biết hàm số $f(x)$ có giới hạn hữu hạn khi $x\\to 0$. Tìm $m$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số có giới hạn tại một điểm khi và chỉ khi giới hạn bên trái bằng giới hạn bên phải; giá trị tại chính điểm đó không ảnh hưởng.\n\n**Bước 1.** Xác định công thức của hàm số ở phía bên trái và phía bên phải của điểm đang xét.\n\n**Bước 2.** Tính giới hạn bên trái và giới hạn bên phải bằng cách thay điểm đó vào công thức tương ứng.\n\n**Bước 3.** So sánh hai giới hạn một bên (có tham số thì cho hai giới hạn bằng nhau) rồi kết luận.\n\n**Phần 2. Trình bày**\n\nKhi $x\\to 0^{+}$: $f(x)=x^{2}-1$ nên $\\lim\\limits_{x\\to 0^{+}}f(x)=-1$.\n\nKhi $x\\to 0^{-}$: $f(x)=x+m$ nên $\\lim\\limits_{x\\to 0^{-}}f(x)=m$.\n\nHàm số có giới hạn khi $x\\to 0$ khi và chỉ khi hai giới hạn một bên bằng nhau: $m=-1$.\n\nVậy $m=-1$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>x<0?x-1:x*x-1;const a=0,k=-1;Math.abs(f(a+(1)*1e-6)-k)<=2e-3*Math.max(1,Math.abs(k))",
+   "const {sqrt,cbrt,abs}=Math;const f=x=>x<0?x-1:x*x-1;const a=0,k=-1;Math.abs(f(a+(-1)*1e-6)-k)<=2e-3*Math.max(1,Math.abs(k))"
+  ],
+  "sach_dap_so": "-1",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-37",
+  "vai": "luyen",
+  "dang_bai": "NDB01177",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tìm tham số để tồn tại giới hạn tại điểm chia nhánh.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm $a$ để hàm số $f(x)=\\begin{cases}x^{2}+ax&\\text{nếu }x>3\\\\3x^{2}+1&\\text{nếu }x\\le 3\\end{cases}$ có giới hạn khi $x\\to 3$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số có giới hạn tại một điểm khi và chỉ khi giới hạn bên trái bằng giới hạn bên phải; giá trị tại chính điểm đó không ảnh hưởng.\n\n**Bước 1.** Xác định công thức của hàm số ở phía bên trái và phía bên phải của điểm đang xét.\n\n**Bước 2.** Tính giới hạn bên trái và giới hạn bên phải bằng cách thay điểm đó vào công thức tương ứng.\n\n**Bước 3.** So sánh hai giới hạn một bên (có tham số thì cho hai giới hạn bằng nhau) rồi kết luận.\n\n**Phần 2. Trình bày**\n\nKhi $x\\to 3^{+}$: $f(x)=x^{2}+ax$ nên $\\lim\\limits_{x\\to 3^{+}}f(x)=9+3a$.\n\nKhi $x\\to 3^{-}$: $f(x)=3x^{2}+1$ nên $\\lim\\limits_{x\\to 3^{-}}f(x)=28$.\n\nHàm số có giới hạn khi $x\\to 3$ khi và chỉ khi $9+3a=28$, tức $a=\\dfrac{19}{3}$.\n\nVậy $a=\\dfrac{19}{3}$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>x>3?x*x+(19/3)*x:3*x*x+1;const a=3,k=28;Math.abs(f(a+(1)*1e-6)-k)<=2e-3*Math.max(1,Math.abs(k))",
+   "const {sqrt,cbrt,abs}=Math;const f=x=>x>3?x*x+(19/3)*x:3*x*x+1;const a=3,k=28;Math.abs(f(a+(-1)*1e-6)-k)<=2e-3*Math.max(1,Math.abs(k))"
+  ],
+  "sach_dap_so": "19/3",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-38",
+  "vai": "luyen",
+  "dang_bai": "NDB01174",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tìm tham số để giới hạn dạng 0/0 bằng giá trị cho trước.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm các số thực $a$ và $b$ sao cho $\\lim\\limits_{x\\to 1}\\dfrac{2x^{2}-ax+1}{x^{2}-3x+2}=b$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn hữu hạn của thương có mẫu dần tới $0$ thì tử cũng phải dần tới $0$; từ đó tìm điều kiện của tham số hoặc của hàm số.\n\n**Bước 1.** Nhận xét mẫu dần tới $0$ mà giới hạn của thương hữu hạn, nên tử cũng phải dần tới $0$ tại điểm đang xét.\n\n**Bước 2.** Từ điều kiện tử dần tới $0$, lập hệ thức giữa các tham số (hoặc suy ra giới hạn của tử).\n\n**Bước 3.** Thay hệ thức vào, rút gọn nhân tử chung rồi tính giới hạn theo tham số.\n\n**Bước 4.** Cho giới hạn bằng giá trị đề bài rồi giải ra tham số.\n\n**Phần 2. Trình bày**\n\nMẫu $x^{2}-3x+2$ có giới hạn $0$ khi $x\\to 1$ mà giới hạn của thương hữu hạn, nên tử cũng dần tới $0$: $2-a+1=0$, tức $a=3$.\n\nKhi đó $2x^{2}-3x+1=(2x-1)(x-1)$ và $x^{2}-3x+2=(x-1)(x-2)$.\n\nVới $x\\ne 1$: $\\dfrac{2x^{2}-3x+1}{x^{2}-3x+2}=\\dfrac{2x-1}{x-2}$.\n\nDo đó $b=\\lim\\limits_{x\\to 1}\\dfrac{2x-1}{x-2}=\\dfrac{1}{-1}=-1$.\n\nVậy $a=3$ và $b=-1$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(2*x*x-3*x+1)/(x*x-3*x+2);const a=1,k=-1;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)"
+  ],
+  "sach_dap_so": "a=3, b=-1",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-39",
+  "vai": "luyen",
+  "dang_bai": "NDB01180",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Tìm tham số để giới hạn hiệu hai căn bằng giá trị cho trước.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho hàm số $g(x)=\\sqrt{x^{2}+2x}-\\sqrt{x^{2}-1}-2m$ với $m$ là tham số. Biết $\\lim\\limits_{x\\to+\\infty}g(x)=0$, tìm giá trị của $m$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dạng $\\infty-\\infty$ có căn: nhân và chia với biểu thức liên hợp để đưa về dạng $\\dfrac{\\infty}{\\infty}$ rồi chia cho luỹ thừa cao nhất.\n\n**Bước 1.** Nhận ra hiệu của hai đại lượng cùng dần tới vô cực và xác định biểu thức liên hợp tương ứng.\n\n**Bước 2.** Nhân và chia với biểu thức liên hợp để tử thức trở thành đa thức đơn giản.\n\n**Bước 3.** Chia cả tử và mẫu cho luỹ thừa cao nhất của $x$, chú ý dấu của $x$ khi đưa ra khỏi căn.\n\n**Bước 4.** Dùng $\\dfrac{1}{x}\\to 0$ để tính giới hạn còn lại.\n\n**Phần 2. Trình bày**\n\nVới $x>1$, nhân và chia với biểu thức liên hợp: $\\sqrt{x^{2}+2x}-\\sqrt{x^{2}-1}=\\dfrac{(x^{2}+2x)-(x^{2}-1)}{\\sqrt{x^{2}+2x}+\\sqrt{x^{2}-1}}=\\dfrac{2x+1}{\\sqrt{x^{2}+2x}+\\sqrt{x^{2}-1}}$.\n\nChia tử và mẫu cho $x>0$: $\\dfrac{2+\\dfrac{1}{x}}{\\sqrt{1+\\dfrac{2}{x}}+\\sqrt{1-\\dfrac{1}{x^{2}}}}$, biểu thức này có giới hạn $\\dfrac{2}{1+1}=1$.\n\nDo đó $\\lim\\limits_{x\\to+\\infty}g(x)=1-2m$.\n\nGiả thiết $\\lim\\limits_{x\\to+\\infty}g(x)=0$ nên $1-2m=0$, tức $m=\\dfrac{1}{2}$.\n\nVậy $m=\\dfrac{1}{2}$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>sqrt(x*x+2*x)-sqrt(x*x-1)-2*0.5;const k=0;Math.abs(f(1*1e6)-k)<=2e-3*Math.max(1,Math.abs(k))"
+  ],
+  "sach_dap_so": "1/2",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-40",
+  "vai": "luyen",
+  "dang_bai": "NDB01183",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Xác định dấu của tham số theo giới hạn vô cực của đa thức.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $m$ là một số thực. Biết $\\lim\\limits_{x\\to-\\infty}[(m-x)(mx+1)]=-\\infty$. Xác định dấu của $m$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đa thức hoặc phân thức có tử bậc cao hơn mẫu khi $x\\to\\pm\\infty$: rút luỹ thừa cao nhất ra ngoài rồi xét dấu theo bậc chẵn hoặc lẻ.\n\n**Bước 1.** Xác định số hạng bậc cao nhất của tử và của mẫu để biết bậc của từng phần.\n\n**Bước 2.** Rút luỹ thừa cao nhất ra ngoài, phần còn lại có giới hạn hữu hạn khác $0$.\n\n**Bước 3.** Xét dấu của $x^{k}$ khi $x\\to+\\infty$ hoặc $x\\to-\\infty$ (bậc chẵn hay lẻ) và dấu của giới hạn phần còn lại rồi kết luận.\n\n**Phần 2. Trình bày**\n\nViết $(m-x)(mx+1)=x^{2}(\\dfrac{m}{x}-1)(m+\\dfrac{1}{x})$.\n\nTa có $\\lim\\limits_{x\\to-\\infty}x^{2}=+\\infty$ và $\\lim\\limits_{x\\to-\\infty}(\\dfrac{m}{x}-1)(m+\\dfrac{1}{x})=-m$.\n\nGiới hạn của tích bằng $-\\infty$ khi giới hạn của thừa số còn lại âm, tức $-m<0$.\n\nVới $m=0$ biểu thức bằng $-x$ có giới hạn $+\\infty$, không thoả mãn.\n\nVậy $m>0$.",
+  "kiem": [
+   "const g=(m,x)=>(m-x)*(m*x+1);g(1,-1e5)<-1e4&&g(2,-1e5)<-1e4&&g(-1,-1e5)>0&&g(-2,-1e5)>0&&g(0,-1e5)>0"
+  ],
+  "sach_dap_so": "m > 0",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-41",
+  "vai": "luyen",
+  "dang_bai": "NDB01174",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tìm tham số để giới hạn dạng 0/0 bằng giá trị cho trước.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giá trị của các tham số $a$ và $b$ biết $\\lim\\limits_{x\\to 1}\\dfrac{x^{2}+ax+b}{x-1}=4$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn hữu hạn của thương có mẫu dần tới $0$ thì tử cũng phải dần tới $0$; từ đó tìm điều kiện của tham số hoặc của hàm số.\n\n**Bước 1.** Nhận xét mẫu dần tới $0$ mà giới hạn của thương hữu hạn, nên tử cũng phải dần tới $0$ tại điểm đang xét.\n\n**Bước 2.** Từ điều kiện tử dần tới $0$, lập hệ thức giữa các tham số (hoặc suy ra giới hạn của tử).\n\n**Bước 3.** Thay hệ thức vào, rút gọn nhân tử chung rồi tính giới hạn theo tham số.\n\n**Bước 4.** Cho giới hạn bằng giá trị đề bài rồi giải ra tham số.\n\n**Phần 2. Trình bày**\n\nMẫu $x-1$ có giới hạn $0$ mà giới hạn của thương hữu hạn, nên tử cũng dần tới $0$: $1+a+b=0$, tức $b=-a-1$.\n\nKhi đó $x^{2}+ax+b=x^{2}-1+a(x-1)=(x-1)(x+1+a)$.\n\nVới $x\\ne 1$: $\\dfrac{x^{2}+ax+b}{x-1}=x+1+a$, nên giới hạn bằng $2+a$.\n\nCho $2+a=4$ ta được $a=2$, suy ra $b=-3$.\n\nVậy $a=2$ và $b=-3$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(x*x+2*x-3)/(x-1);const a=1,k=4;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)"
+  ],
+  "sach_dap_so": "a=2, b=-3",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-42",
+  "vai": "luyen",
+  "dang_bai": "NDB01177",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tìm tham số để tồn tại giới hạn tại điểm chia nhánh.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho hàm số $f(x)=\\begin{cases}2x+1&\\text{nếu }x\\le 1\\\\\\sqrt{x^{2}+a}&\\text{nếu }x>1\\end{cases}$. Tìm giá trị của tham số $a$ sao cho tồn tại giới hạn $\\lim\\limits_{x\\to 1}f(x)$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số có giới hạn tại một điểm khi và chỉ khi giới hạn bên trái bằng giới hạn bên phải; giá trị tại chính điểm đó không ảnh hưởng.\n\n**Bước 1.** Xác định công thức của hàm số ở phía bên trái và phía bên phải của điểm đang xét.\n\n**Bước 2.** Tính giới hạn bên trái và giới hạn bên phải bằng cách thay điểm đó vào công thức tương ứng.\n\n**Bước 3.** So sánh hai giới hạn một bên (có tham số thì cho hai giới hạn bằng nhau) rồi kết luận.\n\n**Phần 2. Trình bày**\n\nKhi $x\\to 1^{-}$: $f(x)=2x+1$ nên $\\lim\\limits_{x\\to 1^{-}}f(x)=3$.\n\nKhi $x\\to 1^{+}$: $f(x)=\\sqrt{x^{2}+a}$ nên $\\lim\\limits_{x\\to 1^{+}}f(x)=\\sqrt{1+a}$ (với $1+a\\ge 0$).\n\nTồn tại $\\lim\\limits_{x\\to 1}f(x)$ khi và chỉ khi $\\sqrt{1+a}=3$, suy ra $1+a=9$, tức $a=8$.\n\nVậy $a=8$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>x<=1?2*x+1:sqrt(x*x+8);const a=1,k=3;Math.abs(f(a+(1)*1e-6)-k)<=2e-3*Math.max(1,Math.abs(k))",
+   "const {sqrt,cbrt,abs}=Math;const f=x=>x<=1?2*x+1:sqrt(x*x+8);const a=1,k=3;Math.abs(f(a+(-1)*1e-6)-k)<=2e-3*Math.max(1,Math.abs(k))"
+  ],
+  "sach_dap_so": "8",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-43a",
+  "vai": "luyen",
+  "dang_bai": "NDB01174",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tìm tham số để giới hạn dạng 0/0 bằng giá trị cho trước.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giá trị của các tham số $a$ và $b$, biết rằng $\\lim\\limits_{x\\to 2}\\dfrac{ax+b}{x-2}=5$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn hữu hạn của thương có mẫu dần tới $0$ thì tử cũng phải dần tới $0$; từ đó tìm điều kiện của tham số hoặc của hàm số.\n\n**Bước 1.** Nhận xét mẫu dần tới $0$ mà giới hạn của thương hữu hạn, nên tử cũng phải dần tới $0$ tại điểm đang xét.\n\n**Bước 2.** Từ điều kiện tử dần tới $0$, lập hệ thức giữa các tham số (hoặc suy ra giới hạn của tử).\n\n**Bước 3.** Thay hệ thức vào, rút gọn nhân tử chung rồi tính giới hạn theo tham số.\n\n**Bước 4.** Cho giới hạn bằng giá trị đề bài rồi giải ra tham số.\n\n**Phần 2. Trình bày**\n\nMẫu $x-2$ có giới hạn $0$ mà giới hạn của thương hữu hạn, nên tử cũng dần tới $0$: $2a+b=0$, tức $b=-2a$.\n\nKhi đó $\\dfrac{ax+b}{x-2}=\\dfrac{a(x-2)}{x-2}=a$ với $x\\ne 2$, nên giới hạn bằng $a$.\n\nCho $a=5$ ta được $b=-10$.\n\nVậy $a=5$ và $b=-10$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(5*x-10)/(x-2);const a=2,k=5;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)"
+  ],
+  "sach_dap_so": "a=5, b=-10",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-43b",
+  "vai": "luyen",
+  "dang_bai": "NDB01174",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tìm tham số để giới hạn dạng 0/0 có căn bằng giá trị cho trước.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giá trị của các tham số $a$ và $b$, biết rằng $\\lim\\limits_{x\\to 1}\\dfrac{a\\sqrt{x}+b}{x-1}=3$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn hữu hạn của thương có mẫu dần tới $0$ thì tử cũng phải dần tới $0$; từ đó tìm điều kiện của tham số hoặc của hàm số.\n\n**Bước 1.** Nhận xét mẫu dần tới $0$ mà giới hạn của thương hữu hạn, nên tử cũng phải dần tới $0$ tại điểm đang xét.\n\n**Bước 2.** Từ điều kiện tử dần tới $0$, lập hệ thức giữa các tham số (hoặc suy ra giới hạn của tử).\n\n**Bước 3.** Thay hệ thức vào, rút gọn nhân tử chung rồi tính giới hạn theo tham số.\n\n**Bước 4.** Cho giới hạn bằng giá trị đề bài rồi giải ra tham số.\n\n**Phần 2. Trình bày**\n\nMẫu $x-1$ có giới hạn $0$ mà giới hạn của thương hữu hạn, nên tử cũng dần tới $0$: $a+b=0$, tức $b=-a$.\n\nKhi đó $\\dfrac{a\\sqrt{x}+b}{x-1}=\\dfrac{a(\\sqrt{x}-1)}{x-1}=\\dfrac{a(\\sqrt{x}-1)}{(\\sqrt{x}-1)(\\sqrt{x}+1)}=\\dfrac{a}{\\sqrt{x}+1}$ với $x\\ne 1$.\n\nGiới hạn bằng $\\dfrac{a}{2}$. Cho $\\dfrac{a}{2}=3$ ta được $a=6$, suy ra $b=-6$.\n\nVậy $a=6$ và $b=-6$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(6*sqrt(x)-6)/(x-1);const a=1,k=3;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)"
+  ],
+  "sach_dap_so": "a=6, b=-6",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-44",
+  "vai": "luyen",
+  "dang_bai": "NDB01185",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Mô hình lưu lượng xe, tính giới hạn tại giá trị vận tốc.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Số lượng xe ô tô vào một đường hầm được cho bởi công thức $f(v)=\\dfrac{290{,}4v}{0{,}36v^{2}+13{,}2v+264}$, trong đó $v$ ($\\text{m/s}$) là vận tốc trung bình của các xe khi đi vào đường hầm. Tính $\\lim\\limits_{v\\to 20}f(v)$ và cho biết ý nghĩa của kết quả (làm tròn kết quả đến hàng đơn vị).",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bài toán thực tế: thiết lập hàm số theo đề, tính giới hạn bằng các phép biến đổi quen thuộc rồi giải thích ý nghĩa bằng đơn vị của bài.\n\n**Bước 1.** Xác định đại lượng cần lấy giới hạn và giá trị mà biến số dần tới.\n\n**Bước 2.** Viết công thức hàm số rồi biến đổi để tính giới hạn (thay trực tiếp, rút gọn nhân tử hoặc chia cho luỹ thừa cao nhất).\n\n**Bước 3.** Diễn giải kết quả giới hạn theo ngữ cảnh thực tế và nêu đơn vị.\n\n**Phần 2. Trình bày**\n\nHàm số xác định tại $v=20$ vì mẫu dương, nên thay trực tiếp.\n\nTử: $290{,}4\\cdot 20=5808$.\n\nMẫu: $0{,}36\\cdot 20^{2}+13{,}2\\cdot 20+264=144+264+264=672$.\n\n$\\lim\\limits_{v\\to 20}f(v)=\\dfrac{5808}{672}\\approx 8{,}64\\approx 9$.\n\nÝ nghĩa: khi vận tốc trung bình của các xe là $20$ m/s thì lưu lượng xe vào hầm khoảng $9$ xe ô tô trong $1$ giây.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>290.4*x/(0.36*x*x+13.2*x+264);const a=20,k=5808/672;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)",
+   "Math.round(5808/672)===9"
+  ],
+  "sach_dap_so": "≈ 9",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-45",
+  "vai": "luyen",
+  "dang_bai": "NDB01185",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tốc độ gia tăng người bệnh tại thời điểm, tính giới hạn dạng 0/0.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Sau khi phát hiện một bệnh dịch, các chuyên gia y tế ước tính số người nhiễm bệnh kể từ ngày xuất hiện bệnh nhân đầu tiên là $g(t)=45t^{2}-t^{3}$ (người), với $t$ tính theo ngày. Tốc độ trung bình gia tăng người bệnh giữa hai thời điểm $t_{1}$, $t_{2}$ là $V_{tb}=\\dfrac{g(t_{2})-g(t_{1})}{t_{2}-t_{1}}$. Tính $\\lim\\limits_{t\\to 10}\\dfrac{g(t)-g(10)}{t-10}$ và cho biết ý nghĩa của kết quả tìm được.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bài toán thực tế: thiết lập hàm số theo đề, tính giới hạn bằng các phép biến đổi quen thuộc rồi giải thích ý nghĩa bằng đơn vị của bài.\n\n**Bước 1.** Xác định đại lượng cần lấy giới hạn và giá trị mà biến số dần tới.\n\n**Bước 2.** Viết công thức hàm số rồi biến đổi để tính giới hạn (thay trực tiếp, rút gọn nhân tử hoặc chia cho luỹ thừa cao nhất).\n\n**Bước 3.** Diễn giải kết quả giới hạn theo ngữ cảnh thực tế và nêu đơn vị.\n\n**Phần 2. Trình bày**\n\nTa có $g(10)=45\\cdot 100-1000=3500$.\n\n$g(t)-g(10)=45(t^{2}-100)-(t^{3}-1000)=(t-10)[45(t+10)-(t^{2}+10t+100)]$.\n\nVới $t\\ne 10$: $\\dfrac{g(t)-g(10)}{t-10}=-t^{2}+35t+350$.\n\nDo đó $\\lim\\limits_{t\\to 10}\\dfrac{g(t)-g(10)}{t-10}=-100+350+350=600$.\n\nÝ nghĩa: tại thời điểm $t=10$ (ngày), số người bệnh đang tăng với tốc độ $600$ người mỗi ngày.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(45*x*x-x**3-3500)/(x-10);const a=10,k=600;const t=s=>Math.abs(f(a+s*1e-5)-k)<=2e-3*Math.max(1,Math.abs(k));t(-1)&&t(1)"
+  ],
+  "sach_dap_so": "600 người/ngày",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-46",
+  "vai": "luyen",
+  "dang_bai": "NDB01185",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Chi phí trung bình khi sản lượng lớn dần, giới hạn tại vô cực.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Một đơn vị sản xuất hàng thủ công ước tính chi phí để sản xuất $x$ đơn vị sản phẩm là $C(x)=2x+55$ (triệu đồng).\na) Tìm hàm số $f(x)$ biểu thị chi phí trung bình để sản xuất mỗi đơn vị sản phẩm.\nb) Tính $\\lim\\limits_{x\\to+\\infty}f(x)$. Giới hạn này có ý nghĩa gì?",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bài toán thực tế: thiết lập hàm số theo đề, tính giới hạn bằng các phép biến đổi quen thuộc rồi giải thích ý nghĩa bằng đơn vị của bài.\n\n**Bước 1.** Xác định đại lượng cần lấy giới hạn và giá trị mà biến số dần tới.\n\n**Bước 2.** Viết công thức hàm số rồi biến đổi để tính giới hạn (thay trực tiếp, rút gọn nhân tử hoặc chia cho luỹ thừa cao nhất).\n\n**Bước 3.** Diễn giải kết quả giới hạn theo ngữ cảnh thực tế và nêu đơn vị.\n\n**Phần 2. Trình bày**\n\na) Chi phí trung bình mỗi đơn vị sản phẩm là $f(x)=\\dfrac{C(x)}{x}=\\dfrac{2x+55}{x}$ (với $x>0$).\n\nb) $f(x)=2+\\dfrac{55}{x}$, mà $\\lim\\limits_{x\\to+\\infty}\\dfrac{55}{x}=0$ nên $\\lim\\limits_{x\\to+\\infty}f(x)=2$.\n\nÝ nghĩa: khi số lượng sản phẩm sản xuất càng lớn thì chi phí trung bình của mỗi đơn vị sản phẩm càng gần $2$ triệu đồng.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(2*x+55)/x;const k=2;Math.abs(f(1*1e6)-k)<=2e-3*Math.max(1,Math.abs(k))"
+  ],
+  "sach_dap_so": "a) f(x)=(2x+55)/x; b) 2",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-47",
+  "vai": "luyen",
+  "dang_bai": "NDB01186",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Điểm dịch chuyển trên đường tròn, tính giới hạn tỉ số.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho điểm $M(t;\\sqrt{1-t^{2}})$ với $0<t<1$ nằm trên đường tròn đơn vị $(C):x^{2}+y^{2}=1$, điểm $A(1;0)$ là một giao điểm của $(C)$ với trục hoành. Gọi $H$ là hình chiếu vuông góc của $M$ trên trục hoành, $K$ là giao điểm của tiếp tuyến của $(C)$ tại $M$ với trục hoành. Khi điểm $M$ dần đến điểm $A$ thì tỉ số $\\dfrac{HK}{HA}$ dần đến giá trị nào?",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bài toán hình học với điểm di động: biểu diễn đại lượng cần xét theo tham số, rồi tính giới hạn của biểu thức đó khi điểm dần tới vị trí cho trước.\n\n**Bước 1.** Đặt toạ độ hoặc tham số cho điểm di động và xác định tham số dần tới giá trị nào.\n\n**Bước 2.** Lập biểu thức của đại lượng cần xét theo tham số bằng kiến thức hình học đã học.\n\n**Bước 3.** Rút gọn biểu thức rồi tính giới hạn, sau đó nêu vị trí giới hạn của điểm cần tìm.\n\n**Phần 2. Trình bày**\n\nĐiểm $M$ dần đến $A$ khi $t\\to 1^{-}$. Ta có $H(t;0)$.\n\nTiếp tuyến của $(C)$ tại $M$ vuông góc với $\\overrightarrow{OM}=(t;\\sqrt{1-t^{2}})$ nên có phương trình $t(x-t)+\\sqrt{1-t^{2}}(y-\\sqrt{1-t^{2}})=0$.\n\nThay $y=0$ vào phương trình ta được $x=\\dfrac{1}{t}$, suy ra $K(\\dfrac{1}{t};0)$.\n\n$HA=1-t$ và $HK=\\dfrac{1}{t}-t=\\dfrac{1-t^{2}}{t}$, nên $\\dfrac{HK}{HA}=\\dfrac{(1-t)(1+t)}{t(1-t)}=\\dfrac{1+t}{t}$.\n\n$\\lim\\limits_{t\\to 1^{-}}\\dfrac{HK}{HA}=\\lim\\limits_{t\\to 1^{-}}\\dfrac{1+t}{t}=\\dfrac{1+1}{1}=2$.\n\nVậy khi $M$ dần đến $A$ thì tỉ số $\\dfrac{HK}{HA}$ dần đến $2$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(1+x)/x;const a=1,k=2;Math.abs(f(a+(-1)*1e-6)-k)<=2e-3*Math.max(1,Math.abs(k))",
+   "const {sqrt,cbrt,abs}=Math;const f=x=>((1/x-x))/(1-x);const a=1,k=2;Math.abs(f(a+(-1)*1e-6)-k)<=2e-3*Math.max(1,Math.abs(k))"
+  ],
+  "sach_dap_so": "2",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-b-48",
+  "vai": "luyen",
+  "dang_bai": "NDB01186",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Điểm dịch chuyển trên parabol, tìm vị trí giới hạn của giao điểm.",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Trong mặt phẳng toạ độ $Oxy$, cho điểm $M(t;t^{2})$ với $t>0$ nằm trên parabol $y=x^{2}$. Đường trung trực của đoạn thẳng $OM$ cắt trục tung tại $N$. Điểm $N$ dần đến điểm nào khi điểm $M$ dần đến điểm $O$?",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bài toán hình học với điểm di động: biểu diễn đại lượng cần xét theo tham số, rồi tính giới hạn của biểu thức đó khi điểm dần tới vị trí cho trước.\n\n**Bước 1.** Đặt toạ độ hoặc tham số cho điểm di động và xác định tham số dần tới giá trị nào.\n\n**Bước 2.** Lập biểu thức của đại lượng cần xét theo tham số bằng kiến thức hình học đã học.\n\n**Bước 3.** Rút gọn biểu thức rồi tính giới hạn, sau đó nêu vị trí giới hạn của điểm cần tìm.\n\n**Phần 2. Trình bày**\n\nTrung điểm của $OM$ là $I(\\dfrac{t}{2};\\dfrac{t^{2}}{2})$.\n\nĐường trung trực của $OM$ vuông góc với $\\overrightarrow{OM}=(t;t^{2})$ nên có phương trình $t(x-\\dfrac{t}{2})+t^{2}(y-\\dfrac{t^{2}}{2})=0$.\n\nThay $x=0$ ta được $-\\dfrac{t^{2}}{2}+t^{2}y-\\dfrac{t^{4}}{2}=0$, suy ra $y=\\dfrac{1+t^{2}}{2}$ (vì $t\\ne 0$). Vậy $N(0;\\dfrac{1+t^{2}}{2})$.\n\n$M$ dần đến $O$ khi $t\\to 0^{+}$, khi đó $\\lim\\limits_{t\\to 0^{+}}\\dfrac{1+t^{2}}{2}=\\dfrac{1}{2}$.\n\nVậy $N$ dần đến điểm $(0;\\dfrac{1}{2})$.",
+  "kiem": [
+   "const {sqrt,cbrt,abs}=Math;const f=x=>(1+x*x)/2;const a=0,k=0.5;Math.abs(f(a+(1)*1e-6)-k)<=2e-3*Math.max(1,Math.abs(k))"
+  ],
+  "sach_dap_so": "N(0; 1/2)",
+  "ghi_chu": ""
+ }
+]
