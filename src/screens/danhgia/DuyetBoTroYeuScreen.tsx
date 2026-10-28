@@ -4,6 +4,7 @@
 //  Mỗi màn 1 học sinh. Máy KHÔNG đề xuất level. Sau mutation vá tại chỗ (CLAUDE.md §2), nhớ tab/vị trí khi rời màn.
 import { useEffect, useMemo, useState } from 'react'
 import { supabase } from '../../lib/supabase'
+import CapacityKhoiBar from '../../components/CapacityKhoiBar'
 import { laySucChua, type SucChua, type UuTienCase } from '../../lib/botro_yeu'
 import { chotTuan, danhSachTuan, baoDongLive, theoDoiVao, theoDoiKetThuc, duyetChinhThuc,
   type BaoDong, type BuoiET, type BuoiBTVN, type ChotTuan, type DangTheoDoi, type DuLieuTuan, type ChuyenDeAnh, type EtBtvn, type MauET, type UngVienDiemThap } from '../../lib/botro_tuan'
@@ -122,6 +123,7 @@ export default function DuyetBoTroYeuScreen() {
   const [cur, setCurS] = useState<Record<Tab, number>>(NHO.cur)
   const [du, setDu] = useState<Mon | null>(NHO.duMon === NHO.mon ? NHO.du : null)
   const [sucChua, setSucChua] = useState<SucChua | null>(null)
+  const [napCap, setNapCap] = useState(0)
   const [loi, setLoi] = useState<string | null>(null)
   const [chot, setChot] = useState<{ xong: number; tong: number } | null>(null)
   const [busy, setBusy] = useState(false)
@@ -130,7 +132,7 @@ export default function DuyetBoTroYeuScreen() {
   const [uuTien, setUuTien] = useState<UuTienCase>(2)
   const setTab = (t: Tab) => { NHO.tab = t; setTabS(t); setLoi(null) }
   const setCur = (t: Tab, v: number) => setCurS((p) => { const n = { ...p, [t]: v }; NHO.cur = n; return n })
-  const napSucChua = () => { laySucChua().then(setSucChua).catch(() => {}) }
+  const napSucChua = () => { laySucChua().then(setSucChua).catch(() => {}); setNapCap((n) => n + 1) }
   useEffect(napSucChua, [])
 
   useEffect(() => {
@@ -199,15 +201,14 @@ export default function DuyetBoTroYeuScreen() {
   const dangSlot = sucChua && sucChua.dang >= sucChua.tran
 
   return (
-    <section className="min-h-0 flex-1 overflow-auto bg-[#f5f5f7] p-6">
+    <section className="min-h-0 flex-1 overflow-auto bg-[#f5f5f7] px-6 pb-4 pt-3">
       <div className="mx-auto max-w-[1500px]">
-        <header className="mb-3 flex flex-wrap items-center gap-2">
+        <header className="mb-2 flex flex-wrap items-center gap-2">
           <h1 className="mr-1 text-[20px] font-bold text-slate-800">Duyệt bổ trợ</h1>
           {(['td', 'bd', 'dt'] as Tab[]).map((t) => (
             <button key={t} onClick={() => setTab(t)} className={`rounded-full px-3.5 py-1.5 text-[13px] font-semibold ${tab === t ? 'bg-indigo-600 text-white' : 'bg-white text-slate-600 ring-1 ring-slate-200 hover:bg-slate-50'}`}>
               {TAB_TEN[t]} <span className={tab === t ? 'opacity-80' : 'text-slate-400'}>{du ? `(${ds[t].length})` : ''}</span></button>
           ))}
-          <span className="text-[11.5px] text-slate-400">Vòng 2 = Đang theo dõi · Vòng 1 = Báo động + Điểm thấp</span>
           <span className="ml-auto flex gap-2">
             <select value={khoi} onChange={(x) => setKhoi(x.target.value)} className="rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-[13px]"><option value="">Tất cả khối</option>{khois.map((k) => <option key={k} value={k}>Khối {k}</option>)}</select>
             <select value={mon} onChange={(x) => setMon(x.target.value)} className="rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-[13px]">{mons.map((m) => <option key={m}>{m}</option>)}</select>
@@ -223,11 +224,13 @@ export default function DuyetBoTroYeuScreen() {
           </div>
         )}
 
-        <div className="mb-2 flex flex-wrap items-center gap-2.5 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-[12.5px]">
+        <CapacityKhoiBar mon={mon} khoi={khoi} onChon={setKhoi} nap={napCap} />
+
+        <div className="mb-2 flex flex-wrap items-center gap-2.5 rounded-xl border border-slate-200 bg-white px-3.5 py-1.5 text-[12.5px]">
           {tab === 'bd'
             ? <><span className="rounded-full bg-green-100 px-2 py-0.5 text-[11.5px] font-bold text-green-800">● LIVE</span><span><b>Báo động</b> hiện ngay khi GV/TA bấm chuông — không chờ chốt tuần.</span></>
             : <><span className="rounded-full bg-indigo-100 px-2 py-0.5 text-[11.5px] font-bold text-indigo-800">❄ ẢNH CHỤP TUẦN</span>
-              {chotTuanBtn ? <span>Chốt <b>{ngayVN(chotTuanBtn.chot_at)}</b> · {new Date(chotTuanBtn.chot_at).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' })}{chotTuanBtn.chot_ten ? ` · bởi ${chotTuanBtn.chot_ten}` : ''} — cả tuần mọi người xem cùng một bộ số liệu.</span>
+              {chotTuanBtn ? <span>Chốt <b>{ngayVN(chotTuanBtn.chot_at)}</b> · {new Date(chotTuanBtn.chot_at).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' })}{chotTuanBtn.chot_ten ? ` · bởi ${chotTuanBtn.chot_ten}` : ''} </span>
                 : <b className="text-amber-700">Chưa chốt tuần nào cho môn {mon} — bấm “Chốt tuần” để quét (làm sáng thứ 2 hằng tuần).</b>}</>}
           {tab !== 'bd' && chuaChotTuanNay && <b className={`w-full rounded-lg px-2.5 py-1 text-[12px] ${homNay === thuHai ? 'bg-rose-600 text-white' : 'bg-amber-100 text-amber-900'}`}>{homNay === thuHai ? '⏰ Hôm nay thứ 2 — ' : ''}Tuần này (thứ 2 {ddmmVN(thuHai)}) CHƯA chốt: đang xem ảnh chụp tuần {ddmmVN(chotTuanBtn!.tuan)}. Bấm “Chốt tuần” — phần chưa xử lý của tuần trước sẽ được cộng dồn sang.</b>}
           <span className="ml-auto flex items-center gap-2">
@@ -236,10 +239,14 @@ export default function DuyetBoTroYeuScreen() {
             <button disabled={busy} onClick={() => tai(mon)} title="Tải lại từ DB (không quét)" className="rounded-lg border border-slate-200 bg-white px-2 py-1 text-[12px] text-slate-500 hover:bg-slate-100">⟳</button>
           </span>
         </div>
-        <div className="mb-3 rounded-xl border border-amber-200 bg-amber-50 px-3.5 py-2 text-[12.5px] text-amber-900">
-          {tab === 'td' ? <><b>Vòng 2 · Theo dõi → Chính thức (thứ 2):</b> chỉ em ĐÃ vào theo dõi. Số liệu làm mới theo lần chốt tuần, kèm so với <b>lúc vào theo dõi</b>. Duyệt chính thức = bổ trợ <b>1 lần trong tuần</b> rồi tự kết thúc (dù chưa hết dạng yếu), tuần sau xét lại. Việc khẩn giữa tuần → loại <b>Bổ trợ Khẩn cấp</b>, không ở đây. Em hết tín hiệu vẫn nằm đây tới khi bạn <b>Gỡ tay</b>.</>
-            : tab === 'bd' ? <><b>Vòng 1 · 🚨 Báo động:</b> em bị GV/TA bấm chuông (ET/MT/BTVN/đánh giá/hổng nền) trong 30 ngày qua. Quyết <b>có đáng theo dõi không</b> — chưa tốn slot.</>
-            : <><b>Vòng 1 · 📉 Điểm thấp:</b> em máy gom từ ET · BTVN · chuyên đề (ảnh chụp tuần). Quyết <b>có đáng theo dõi không</b> — chưa tốn slot. Em có thêm báo động vẫn hiện ở đây kèm chip 🚨; duyệt xong ở tab nào thì biến mất ở cả hai.</>}
+        <div className="mb-2 flex flex-wrap items-center gap-x-2 rounded-xl border border-amber-200 bg-amber-50 px-3.5 py-1 text-[12px] text-amber-900"
+          title={tab === 'td' ? 'Vòng 2: chỉ em ĐÃ vào theo dõi. Số liệu làm mới theo lần chốt tuần, kèm so với lúc vào theo dõi. Duyệt chính thức = bổ trợ 1 lần trong tuần rồi tự kết thúc (dù chưa hết dạng yếu); sau bổ trợ mà còn dạng yếu em tự quay lại đây. Em hết tín hiệu vẫn nằm đây tới khi bạn Gỡ tay. Việc khẩn giữa tuần → loại Bổ trợ Khẩn cấp, không ở đây.'
+            : tab === 'bd' ? 'Vòng 1: em bị GV/TA bấm chuông (ET/MT/BTVN/đánh giá/hổng nền) trong 30 ngày qua. Quyết có đáng theo dõi không — chưa tốn slot.'
+            : 'Vòng 1: em máy gom từ ET · BTVN · chuyên đề (ảnh chụp tuần). Quyết có đáng theo dõi không — chưa tốn slot. Em có thêm báo động vẫn hiện ở đây kèm chip 🚨; duyệt xong ở tab nào thì biến mất ở cả hai.'}>
+          {tab === 'td' ? <><b>Vòng 2 · Theo dõi → Chính thức:</b> chỉ em ĐÃ vào theo dõi · duyệt chính thức = bổ trợ <b>1 lần/tuần</b> rồi tự kết thúc · hết tín hiệu vẫn ở đây tới khi <b>Gỡ tay</b></>
+            : tab === 'bd' ? <><b>Vòng 1 · 🚨 Báo động:</b> GV/TA bấm chuông trong 30 ngày · quyết <b>có đáng theo dõi không</b> — chưa tốn slot</>
+            : <><b>Vòng 1 · 📉 Điểm thấp:</b> máy gom từ ET · BTVN · chuyên đề · quyết <b>có đáng theo dõi không</b> — chưa tốn slot</>}
+          <span className="text-amber-700/70">ⓘ rê chuột xem đầy đủ</span>
         </div>
         {loi && <p className="mb-3 rounded-xl bg-rose-50 px-3 py-2 text-[12.5px] font-semibold text-rose-700 ring-1 ring-rose-200">{loi}</p>}
 
@@ -280,14 +287,14 @@ export default function DuyetBoTroYeuScreen() {
                   <Sec t="Điểm chuyên đề" ghi="như cũ (ảnh chụp tuần)"><KhoiChuyenDe cd={duLieu?.chuyen_de ?? (tab === 'bd' ? null : [])} /></Sec>
                   {tab === 'td' && <SoVoiLucVao e={e as DangTheoDoi} />}
 
-                  <div className="mt-5 flex flex-wrap items-center gap-2 rounded-2xl border border-slate-200 bg-slate-50 p-3.5">
-                    <span className="text-[13px] font-bold text-slate-800">{tab === 'td' ? 'Vòng 2 — duyệt chính thức' : 'Vòng 1 — đưa vào theo dõi?'}</span>
+                  <div className="sticky bottom-0 z-10 -mx-5 -mb-5 mt-4 flex flex-wrap items-center gap-2 rounded-b-2xl border-t border-slate-200 bg-slate-50/95 px-5 py-2.5 shadow-[0_-8px_14px_-10px_rgba(15,23,42,0.35)] backdrop-blur">
+                    <span className="cursor-help text-[13px] font-bold text-slate-800" title={tab === 'td' ? 'Chỉ lúc này mới trừ slot. Bổ trợ 1 lần trong tuần rồi tự kết thúc; sau đó em còn dạng yếu (trong dạng đã học) sẽ tự quay lại Đang theo dõi.' : 'Vòng 1 KHÔNG tốn slot, KHÔNG mở case, không chọn mức. Máy không đề xuất level.'}>{tab === 'td' ? 'Vòng 2 — duyệt chính thức' : 'Vòng 1 — đưa vào theo dõi?'} <span className="font-normal text-slate-400">ⓘ</span></span>
                     {tab === 'td' && <>
                       <select value={muc} onChange={(x) => setMuc(Number(x.target.value) as 1 | 2 | 3)} className="rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-[13px]">
                         <option value={1}>L1 · trước/sau giờ</option><option value={2}>L2 · buổi riêng (TA)</option><option value={3}>L3 · buổi riêng (GV cao cấp)</option></select>
                       <select value={uuTien} onChange={(x) => setUuTien(Number(x.target.value) as UuTienCase)} className="rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-[13px]">
                         <option value={2}>Ưu tiên Thường</option><option value={3}>Ưu tiên Cao ({sucChua?.cao ?? '?'}/{sucChua?.tran_cao ?? 20})</option><option value={1}>Ưu tiên Thấp</option></select></>}
-                    <input value={ghiChu} onChange={(x) => setGhiChu(x.target.value)} placeholder={tab === 'td' ? 'Lý do duyệt / gỡ (tuỳ chọn)…' : 'Ghi chú vì sao theo dõi (không bắt buộc)…'} className="min-w-[220px] flex-1 rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-[13px]" />
+                    <input value={ghiChu} onChange={(x) => setGhiChu(x.target.value)} placeholder={tab === 'td' ? 'Lý do duyệt / gỡ (tuỳ chọn)…' : 'Ghi chú vì sao theo dõi (không bắt buộc)…'} className="min-w-[160px] flex-1 rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-[13px]" />
                     {tab === 'td' ? <>
                       <button disabled={busy || !!dangSlot} onClick={chinhThuc} title={dangSlot ? 'Đã đủ slot' : ''} className="rounded-lg bg-green-600 px-4 py-2 text-[13px] font-bold text-white hover:bg-green-700 disabled:opacity-40">{busy ? '…' : '✅ Duyệt chính thức'}</button>
                       <button onClick={() => di(1)} className="rounded-lg bg-white px-3 py-2 text-[13px] font-semibold text-slate-600 ring-1 ring-slate-200">Giữ theo dõi</button>
@@ -295,7 +302,6 @@ export default function DuyetBoTroYeuScreen() {
                       : <>
                       <button disabled={busy} onClick={() => dua(false)} className="rounded-lg bg-indigo-600 px-4 py-2 text-[13px] font-bold text-white hover:bg-indigo-700 disabled:opacity-50">{busy ? '…' : '👁 Đưa vào theo dõi'}</button>
                       <button disabled={busy} onClick={() => dua(true)} className="rounded-lg bg-white px-3 py-2 text-[13px] font-semibold text-slate-600 ring-1 ring-slate-200 disabled:opacity-50">Bỏ qua</button></>}
-                    <p className="basis-full text-[11.5px] text-slate-500">{tab === 'td' ? 'Chỉ lúc này mới trừ slot. Bổ trợ tuần này 1 lần rồi tự kết thúc — chưa hết dạng yếu thì tuần sau xét lại.' : 'Vòng 1 KHÔNG tốn slot, KHÔNG mở case, không chọn mức. Máy không đề xuất level.'}</p>
                   </div>
                 </div>
               )}

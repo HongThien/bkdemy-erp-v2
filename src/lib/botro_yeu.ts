@@ -270,6 +270,13 @@ export async function laySucChua(): Promise<SucChua> {
   if (error) throw error
   return data as SucChua
 }
+// Capacity THEO KHỐI (Thùy 27/10): 40% × tổng đơn vị trong lịch bổ trợ (lịch trực) của khối. Chỉ hiển thị, không chặn. Mig 202610271546.
+export type CapacityKhoi = { khoi: string; dv_lich: number; capacity: number; dung: number; case_n: number; cao_n: number }
+export async function layCapacityKhoi(mon?: string): Promise<CapacityKhoi[]> {
+  const { data, error } = await supabase.rpc('fn_btyeu_capacity_khoi', { p_mon: mon ?? null })
+  if (error) throw error
+  return (data ?? []) as CapacityKhoi[]
+}
 // null = được mở case mới với ưu tiên này; text = lý do chặn (kiểm TRƯỚC khi Duyệt ghi level).
 export async function kiemSucChua(hocSinhId: string, mon: string, uuTien: UuTienCase): Promise<string | null> {
   const { data, error } = await supabase.rpc('fn_btyeu_kiem_suc_chua', { p_hs: hocSinhId, p_mon: mon, p_uu_tien: uuTien })

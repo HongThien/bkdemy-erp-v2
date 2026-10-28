@@ -1,7 +1,7 @@
 // KẾT QUẢ BỔ TRỢ YẾU của 1 tuần (Thùy 26/10): "cần biết từng học sinh bổ trợ đã đạt được gì sau ca — bấm vào số ca ra chi tiết từng ca".
 // Mở từ dòng Yếu của thẻ tuần ở Dashboard. Đầu panel: giảm được bao nhiêu dạng yếu / của bao nhiêu em / trong bao nhiêu ca. Dưới: từng (ca × em),
-// bấm mở ra từng dạng: trạng thái TRƯỚC ca → NAY, luyện đúng/tổng, test cuối ca đúng/tổng, nhãn tiến bộ.
-// "Giảm" = dạng yếu TRƯỚC ca mà nay không còn yếu (mastery đo đến 00:00 ngày ca vs hiện tại). Mọi số tính ở DB (fn_botro_ket_qua_tuan).
+// bấm mở ra từng dạng: trạng thái TRƯỚC ca → SAU ca, luyện đúng/tổng, test cuối ca đúng/tổng, nhãn tiến bộ.
+// "Giảm" = dạng yếu TRƯỚC ca mà SAU ca không còn yếu (mastery đo đến 00:00 ngày ca vs hết ngày ca — cố định, không đổi theo lúc xem). Mọi số tính ở DB (fn_botro_ket_qua_tuan).
 import { useEffect, useMemo, useState } from 'react'
 import { ketQuaBoTroTuan, type KetQuaTuan, type CaKetQua, type DangKetQua, type TienBo, type MucDang } from '../../lib/botro_dashboard'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
@@ -15,8 +15,8 @@ const MUC: Record<string, { ten: string; cls: string }> = {
   dat: { ten: 'Đạt', cls: 'bg-emerald-50 text-emerald-700 border-emerald-200' },
 }
 const TIEN_BO: Record<TienBo, { ten: string; cls: string; giai: string }> = {
-  giam: { ten: '✅ Hết yếu', cls: 'text-emerald-700', giai: 'Yếu trước ca, nay không còn yếu' },
-  van_yeu: { ten: '⚠ Vẫn yếu', cls: 'text-rose-700', giai: 'Yếu trước ca và nay vẫn yếu' },
+  giam: { ten: '✅ Hết yếu', cls: 'text-emerald-700', giai: 'Yếu trước ca, sau ca không còn yếu' },
+  van_yeu: { ten: '⚠ Vẫn yếu', cls: 'text-rose-700', giai: 'Yếu trước ca và sau ca vẫn yếu' },
   khac: { ten: '— không yếu từ trước', cls: 'text-slate-400', giai: 'Trước ca dạng này đã không ở mức Yếu (đã cải thiện từ lúc mở case)' },
   chua_do: { ten: '? chưa đo trước ca', cls: 'text-slate-400', giai: 'Trước ca chưa có số đo của dạng này nên không so được' },
 }
@@ -52,7 +52,7 @@ export default function KetQuaBoTroTuan({ tu, den, onDong }: { tu: string; den: 
         <span className="text-[14px] font-semibold text-slate-800">📊 Kết quả bổ trợ yếu · {ddmmVN(tu)} – {ddmmVN(den)}</span>
         <span className="text-[12px] text-slate-500">các ca đã diễn ra (em có mặt)</span>
         <span className="ml-auto flex items-center gap-2">
-          <button disabled={dangTai} onClick={tai} className="rounded-lg border border-slate-200 bg-white px-2.5 py-1 text-[12.5px] text-slate-600 hover:bg-slate-50 disabled:opacity-40" title="Tính lại (đo mastery mới nhất)">{dangTai ? 'Đang tính…' : '↻ Tính lại'}</button>
+          <button disabled={dangTai} onClick={tai} className="rounded-lg border border-slate-200 bg-white px-2.5 py-1 text-[12.5px] text-slate-600 hover:bg-slate-50 disabled:opacity-40" title="Tải lại số liệu">{dangTai ? 'Đang tính…' : '↻ Tính lại'}</button>
           <button onClick={onDong} className="text-[12.5px] text-slate-500 hover:text-slate-700">Đóng ✕</button>
         </span>
       </div>
@@ -70,7 +70,7 @@ export default function KetQuaBoTroTuan({ tu, den, onDong }: { tu: string; den: 
                   <p className="mt-0.5 text-[11.5px] text-emerald-800/80">trên {t.so_dang_yeu_truoc} dạng yếu trước ca{t.so_dang_yeu_truoc > 0 ? ` (${pct(t.so_dang_giam, t.so_dang_yeu_truoc)}%)` : ''}</p>
                 </div>
                 <div className="rounded-xl border border-rose-200 bg-rose-50 p-3">
-                  <p className="text-[12px] font-semibold text-rose-800">Vẫn còn yếu</p>
+                  <p className="text-[12px] font-semibold text-rose-800">Vẫn còn yếu sau ca</p>
                   <p className="mt-0.5 text-[26px] font-extrabold leading-none text-rose-700">{t.so_dang_con_yeu_nay}<span className="ml-1 text-[13px] font-semibold">dạng</span></p>
                   <p className="mt-1 text-[12px] text-rose-900">của <b>{t.so_hs_con_yeu}</b> em (trong dạng đã học)</p>
                   <p className="mt-0.5 text-[11.5px] text-rose-800/80">{t.so_hs_het_yeu_dang_hoc} em hết sạch dạng yếu đã học</p>
@@ -108,8 +108,8 @@ export default function KetQuaBoTroTuan({ tu, den, onDong }: { tu: string; den: 
                 </table>
               </div>
               <p className="mt-2 text-[11.5px] leading-relaxed text-slate-500">
-                <b>Giảm</b> = dạng ở mức <b>Yếu trước ca</b> (mastery đo đến 00:00 ngày ca) mà <b>nay không còn Yếu</b>. Dạng không yếu từ trước ca không tính là giảm (case có thể đã mở từ vài tuần trước, em đã khá lên dần).
-                Trạng thái “nay” đổi theo các lần đo mới (ET, BTVN…) — bấm ↻ để cập nhật. Ca mở càng gần thì “nay” càng ít số đo mới.
+                <b>Giảm</b> = dạng ở mức <b>Yếu trước ca</b> (mastery đo đến 00:00 ngày ca) mà <b>sau ca không còn Yếu</b> (mastery đo đến hết ngày ca, gồm luyện + test của chính ca). Dạng không yếu từ trước ca không tính là giảm (case có thể đã mở từ vài tuần trước, em đã khá lên dần).
+                Kết quả khoá theo ngày ca — các lần đo ET/BTVN SAU ngày ca không làm đổi số. Lưu ý: lần đo khác diễn ra CÙNG ngày với ca vẫn được tính vào “sau ca”.
               </p>
             </>
           )}
@@ -149,7 +149,7 @@ function DongCa({ c, mo, onBam }: { c: CaKetQua; mo: boolean; onBam: () => void 
               <p className="py-2 text-[12.5px] text-slate-500">Em có mặt nhưng không luyện câu nào và không có dạng nào được đánh dấu đã học{c.so_dang_case > 0 ? ` (case có ${c.so_dang_case} dạng)` : ''}. Case mở {ddmmVN(c.mo_ngay)}.</p>
             ) : (
               <table className="w-full text-left text-[12.5px]">
-                <thead className="text-[11px] uppercase tracking-wide text-slate-400"><tr><th className="py-1 pr-3 font-semibold">Dạng đã học</th><th className="py-1 pr-3 font-semibold">Trước ca</th><th className="py-1 pr-3 font-semibold">Nay</th><th className="py-1 pr-3 font-semibold">Tiến bộ</th><th className="py-1 pr-3 font-semibold">Luyện</th><th className="py-1 font-semibold">Test cuối ca</th></tr></thead>
+                <thead className="text-[11px] uppercase tracking-wide text-slate-400"><tr><th className="py-1 pr-3 font-semibold">Dạng đã học</th><th className="py-1 pr-3 font-semibold">Trước ca</th><th className="py-1 pr-3 font-semibold">Sau ca</th><th className="py-1 pr-3 font-semibold">Tiến bộ</th><th className="py-1 pr-3 font-semibold">Luyện</th><th className="py-1 font-semibold">Test cuối ca</th></tr></thead>
                 <tbody>
                   {c.dang.map((d: DangKetQua) => {
                     const tb = TIEN_BO[d.tien_bo]

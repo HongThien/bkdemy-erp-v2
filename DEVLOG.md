@@ -77777,3 +77777,28 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Làm:** mig `202610261654_botro_ket_qua_tuan` (ĐÃ ÁP) + `KetQuaBoTroTuan.tsx` + nút 📊 ở dòng Yếu `BoTroDashboardScreen.tsx`. Mig dữ liệu `202610261654_dua_4_em_sau_bo_tro_vao_theo_doi` (ĐÃ ÁP): 4 em vào `bo_tro_theo_doi` nguồn `sau_bo_tro` (dạng còn yếu ghi sẵn theo đo 26/10 — hàm đo cần phiên đăng nhập). Spec §29.
 - **Kiểm:** dry-run rollback trên DB thật — hàm khớp phép tính tay (7/8 và 35–36/51–54), 1 s / 3,9 s, HS gọi bị chặn, khoảng >32 ngày bị chặn; 4 em vào theo dõi đúng. UI local (Admin): panel tuần 19–25 và 12–18 hiện đúng số, mở chi tiết Thảo My đúng 4 dạng (1 vẫn yếu, đang theo dõi). **Chưa kiểm:** tuần có ca ĐANG dở (dạng đánh dấu muộn), màn hẹp (cột bị ép), bản deploy thật.
 - **Bẫy đã gặp:** (1) hai migration cùng phút có cùng tiền tố timestamp — chạy theo thứ tự chữ cái, không phụ thuộc nhau nên ổn. (2) `node_modules` mượn từ worktree khác thiếu gói ⇒ phải `npm ci` riêng cho worktree mới + chép `.env.local` (Vite cần `VITE_SUPABASE_URL`).
+
+## 26/10 (tối) — Bước quét Chốt tuần sang BẢN ĐỒ MỚI (Thùy chọn "B" sau khi em báo engine còn bản đồ cũ)
+- **Hỏi:** "Cái này tính theo bản đồ mới chưa?" → kết quả bổ trợ ✔ (211/211 case `ban_do='moi'`); engine quét Chốt tuần ✘ (xem spec §30 — mã chép cũ, chuyên đề cũ, 0/2.959 chuyên đề khớp bản đồ mới). Thùy: "B nhé" (em đã mô tả B là "chuyển bước quét sang SQL theo bản đồ mới").
+- **Điều chỉnh phạm vi so với lời em nói:** em mô tả B quá rộng. Chỉ bước NẠP dòng đo phụ thuộc bản đồ; phần chấm điểm thì không. Làm: `fn_botro_lan_do_lop` (SQL) + `napLanDo` (TS) gọi hàm đó; KHÔNG port ~1.300 dòng chấm điểm sang SQL (rủi ro lệch, không đổi được bản đồ). Cần báo Thùy rõ điều này khi trả lời.
+- **Làm:** mig `202610261813_botro_lan_do_lop_theo_ban_do` (ĐÃ ÁP) · `danhgia.ts`: `napLanDo` → RPC, `getStatSheetLop(lopId, cheDo?)`, `listCandidatesLop(lopId, giu?, cheDo?)`; gỡ bản TS cũ + import `RESULT_VALUE` thừa sau khi đối chiếu.
+- **Kiểm:** xem spec §30 — 0 dòng lệch trên 14k dòng/3 lớp; quét cả Toán 175 (cũ, ≈177 thật) vs 168 (mới); không ghi DB nên chưa thử nút Chốt tuần thật.
+- **Chưa làm / hỏi Thùy:** (1) bấm "Chốt lại tuần này" để ảnh chụp theo bản đồ mới (Trang đã chốt 13:59 — em không tự ghi đè). (2) `chotTuan` nuốt lỗi từng lớp (`.catch(() => [])`). (3) Port chấm điểm sang SQL nếu vẫn muốn trả nợ §2.0.
+
+## 26/10 (tối) — Màn Duyệt bổ trợ: nút duyệt không phải kéo xuống (Thùy 26/10)
+- **Thùy:** "Giao diện chỗ Duyệt bổ trợ đang bị thừa 1 tý dẫn đến việc phải kéo xuống mới bấm duyệt được. Tối ưu lại đi để không phải kéo xuống."
+- **Gốc (đo ở 1366×768):** thanh duyệt (Đưa vào theo dõi / Bỏ qua / Duyệt chính thức) nằm ở CUỐI thẻ học sinh, sau khối ET · BTVN · điểm chuyên đề; phía trên còn 5 dải (thanh hub, tab con, tiêu đề + bộ lọc, ô slot, dải chốt tuần, ô chú thích vàng 2–3 dòng) chiếm gần nửa màn ⇒ nút nằm dưới nếp gập ở mọi tab.
+- **Sửa (`DuyetBoTroYeuScreen.tsx`):** (1) thanh duyệt `sticky bottom-0` — ghim ở đáy vùng làm việc, bám mép dưới thẻ khi cuộn hết; (2) dải chú thích vàng 1 dòng, bản đầy đủ chuyển vào tooltip; (3) bỏ dòng gợi ý lặp ở header và câu "cả tuần mọi người xem cùng một bộ số liệu"; (4) ghi chú dưới nút chuyển vào tooltip "ⓘ"; (5) bớt padding trang. Sửa luôn câu tooltip cũ "tuần sau xét lại" cho khớp luật §28 (còn dạng yếu thì tự quay lại Đang theo dõi).
+- **Kiểm (màn thật, Admin, dữ liệu thật):** 1366×768 — nút bottom y=737/768 ở cả 3 tab (Đang theo dõi · Báo động · Điểm thấp), trước đó phải cuộn; cuộn hết xuống cuối thanh khớp đáy thẻ, không che nội dung; 1280×720 — nút bottom 691/720 ở Điểm thấp + Đang theo dõi. **Chưa kiểm:** màn nhỏ hơn 1280 (thanh có thể xuống 3 dòng), màn cảm ứng/iPad.
+
+## 27/10 — Capacity bổ trợ yếu theo khối (Thùy 27/10)
+- **Thùy:** capacity bổ trợ yếu hiển thị theo khối để xếp bổ trợ; capacity = 40% tổng đơn vị bổ trợ trong lịch bổ trợ của khối.
+- **Làm:** mig `202610271546_botro_capacity_theo_khoi` (`fn_btyeu_capacity_khoi`, ĐÃ ÁP) · `layCapacityKhoi` (`botro_yeu.ts`) · `CapacityKhoiBar` gắn vào Duyệt bổ trợ + Xếp bổ trợ · spec §31.
+- **Giả định em chọn (chưa hỏi Thùy):** "lịch bổ trợ khối" = lịch trực hiệu lực hôm nay (hằng tuần), "đã dùng" = đơn vị case ĐANG bổ trợ; chỉ hiển thị, không chặn.
+- **Kiểm:** dry-run rollback; màn thật Admin 1366×768 — dải 11 khối hiện ở cả 2 màn, bấm K9 lọc khối 9, nút Duyệt vẫn y=738/768. `tsc` chỉ còn lỗi cũ `pdfRender.ts`.
+
+## 28/10 — Kết quả bổ trợ tính SAU CA, không theo hiện tại (Thùy 28/10)
+- **Thùy (kèm 2 ảnh bảng chi tiết):** "kết quả phải tính trước và ngay sau khi ca kết thúc chứ không phải theo tình hình hiện tại, đúng không?" → đúng; lỗi do em ở §29: cột "Nay" gọi mastery không mốc.
+- **Làm:** mig `202610281725_botro_ket_qua_sau_ca` (ĐÃ ÁP; rebuild từ định nghĩa sống) · `KetQuaBoTroTuan.tsx` nhãn "Sau ca" + ghi chú · `botro_dashboard.ts` chú thích · spec §32.
+- **Số tuần 12–18/10 em từng báo (giảm 36) đã lệch:** hàm cũ chạy lại hôm nay cho 34 giảm / 51 yếu trước (dữ liệu chấm đổi nhẹ); sau ca = 31. Cần nói rõ với Thùy khi báo cáo tuần cũ.
+- **Chưa kiểm:** các dòng khác của bảng Thùy thấy "sao sao" ngoài lỗi mốc thời gian — chờ Thùy chỉ dòng cụ thể.

@@ -21,7 +21,7 @@ export async function dashboardBoTroTuan(den?: string | null, soTuan = 3): Promi
 }
 
 // ── KẾT QUẢ BỔ TRỢ YẾU THEO TUẦN (Thùy 26/10): từng ca × em đã đạt gì — dạng đã học, luyện/test, trạng thái dạng TRƯỚC ca → NAY.
-// "Giảm dạng yếu" = dạng yếu trước ca → nay không còn yếu. Mọi phép tính ở DB (fn_botro_ket_qua_tuan, mig 202610261654 — §2.0).
+// "Giảm dạng yếu" = dạng yếu trước ca → SAU ca không còn yếu. Khoá nay_* = mastery đo đến HẾT NGÀY ca (mig 202610281725, 28/10) — không phải hiện tại. Mọi phép tính ở DB (fn_botro_ket_qua_tuan, mig 202610261654 — §2.0).
 export type MucDang = 'yeu' | 'can_luyen' | 'dat' | string | null
 export type TienBo = 'giam' | 'van_yeu' | 'khac' | 'chua_do'
 export type DangKetQua = {
