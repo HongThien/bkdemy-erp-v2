@@ -56,7 +56,8 @@ await c.query('rollback'); await c.end()
 const dbIds = new Set(dich.map((d) => d.id))
 const chua = cau.filter((r) => (!r.dang_bai_id && (HANG ? r.o_hang : !r.o_hang)) || (LAI && r.dang_bai_id && r.gnguon === 'ai' && !r.o_hang && LAI.test(r.noi_dung)) || (LAIDANG && r.dang_bai_id && r.gnguon === 'ai' && !r.o_hang && LAIDANG.has(r.dang_bai_id))) // mặc định: bỏ câu ở hàng duyệt (người đang xử lý); --hang: CHỈ câu ở hàng duyệt
 // mẫu: câu do NGƯỜI nối (cụm cũ / dạng cũ 1 chỗ), đích nằm trong bảng đích nhánh Toán
-const mauDs = cau.filter((r) => r.dang_bai_id && (r.nguon === 'gan_cum' || r.nguon === 'doi_ung') && dbIds.has(r.dang_bai_id))
+const MAU_NGUOI = args.includes('--mau-nguoi') // 28/10: mẫu = câu NGƯỜI đã gán (gnguon 'nguoi') khi bản đồ cũ đã hết câu nối cụm/dạng cũ
+const mauDs = cau.filter((r) => r.dang_bai_id && (MAU_NGUOI ? r.gnguon === 'nguoi' : (r.nguon === 'gan_cum' || r.nguon === 'doi_ung')) && dbIds.has(r.dang_bai_id))
   .sort((a, b) => a.h.localeCompare(b.h)).slice(0, MAU)
 const mau = Object.fromEntries(mauDs.map((r) => [r.ma_cau, r.dang_bai_id]))
 

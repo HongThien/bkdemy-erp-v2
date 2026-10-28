@@ -1,0 +1,284 @@
+[
+ {
+  "ma_cau": "T110020102085",
+  "dang_bai_id": "NDB00541",
+  "chac": "vua",
+  "ly_do": "Lập bất phương trình bậc nhất 2 ẩn từ bài toán điểm thi; nhóm thực tế chỉ có dạng mua đồ vật gần nhất."
+ },
+ {
+  "ma_cau": "T110000000140",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc chương Hàm số / hàm số bậc hai: bản đồ đang thiếu dạng này."
+ },
+ {
+  "ma_cau": "T110000000430",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc chương Hàm số / hàm số bậc hai: bản đồ đang thiếu dạng này."
+ },
+ {
+  "ma_cau": "T110020101071",
+  "dang_bai_id": "NDB00541",
+  "chac": "vua",
+  "ly_do": "Lập bất phương trình 2 ẩn từ lượng protein; dạng thực tế gần nhất là mua 2 loại đồ vật."
+ },
+ {
+  "ma_cau": "T110000000139",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc chương Hàm số / hàm số bậc hai: bản đồ đang thiếu dạng này."
+ },
+ {
+  "ma_cau": "T110000000107",
+  "dang_bai_id": "NDB01595",
+  "chac": "cao",
+  "ly_do": "Ý a giao hai khoảng, ý b tập khác rỗng chứa m; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T110000000046",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc chương Hàm số / hàm số bậc hai: bản đồ đang thiếu dạng này."
+ },
+ {
+  "ma_cau": "T110000000363",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học: điểm C trên đường thẳng tối ưu tổng khoảng cách, phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T110000000433",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc chương Hàm số: tìm tập xác định, bản đồ đang thiếu dạng này."
+ },
+ {
+  "ma_cau": "T110010203169",
+  "dang_bai_id": "NDB00890",
+  "chac": "cao",
+  "ly_do": "Ý 1 giao hợp tập số, ý 2 cho sin tính cos cot; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T110010206039",
+  "dang_bai_id": "NDB01595",
+  "chac": "cao",
+  "ly_do": "Hợp hai đoạn chứa m có độ dài cho trước, không thuộc 5.1-5.3."
+ },
+ {
+  "ma_cau": "T110020204063",
+  "dang_bai_id": "NDB01404",
+  "chac": "cao",
+  "ly_do": "Thực chất x=0, chỉ còn bất phương trình bậc nhất 1 ẩn y thực tế rồi chọn y lớn nhất."
+ },
+ {
+  "ma_cau": "T110000000044",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc chương Hàm số / hàm số bậc hai: bản đồ đang thiếu dạng này."
+ },
+ {
+  "ma_cau": "T110000000096",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc chương Hàm số / hàm số bậc hai: bản đồ đang thiếu dạng này."
+ },
+ {
+  "ma_cau": "T110000000215",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc chương Hàm số: tìm tập xác định, bản đồ đang thiếu dạng này."
+ },
+ {
+  "ma_cau": "T110020104013",
+  "dang_bai_id": "NDB00541",
+  "chac": "vua",
+  "ly_do": "Lập bất phương trình 2 ẩn từ số tờ tiền ủng hộ; dạng thực tế gần nhất."
+ },
+ {
+  "ma_cau": "T110020104018",
+  "dang_bai_id": "NDB00541",
+  "chac": "vua",
+  "ly_do": "Lập bất phương trình 2 ẩn mua vở và bút theo số tiền; đồng nhất hệ số."
+ },
+ {
+  "ma_cau": "T110000000330",
+  "dang_bai_id": "NDB00772",
+  "chac": "vua",
+  "ly_do": "Trung tuyến vuông góc, dùng định lý cos và công thức diện tích để tính diện tích tam giác."
+ },
+ {
+  "ma_cau": "T110000000242",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học: diện tích phần tô đậm của đường tròn và tam giác đều."
+ },
+ {
+  "ma_cau": "T110000000067",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc HGT: khái niệm vectơ bằng nhau (Véc tơ)."
+ },
+ {
+  "ma_cau": "T110000000095",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc chương Hàm số / hàm số bậc hai: bản đồ đang thiếu dạng này."
+ },
+ {
+  "ma_cau": "T110000000147",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc chương Hàm số / hàm số bậc hai: bản đồ đang thiếu dạng này."
+ },
+ {
+  "ma_cau": "T110000000313",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc chương Hàm số / hàm số bậc hai: bản đồ đang thiếu dạng này."
+ },
+ {
+  "ma_cau": "T110000000393",
+  "dang_bai_id": "NDB00772",
+  "chac": "vua",
+  "ly_do": "Ý 1 tính AC và diện tích; ý 2 chứng minh tam giác cân bằng sin, cos."
+ },
+ {
+  "ma_cau": "T110000000306",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc chương Hàm số: tìm tập xác định, bản đồ đang thiếu dạng này."
+ },
+ {
+  "ma_cau": "T110000000042",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc chương Hàm số: tìm tập xác định, bản đồ đang thiếu dạng này."
+ },
+ {
+  "ma_cau": "T110020104016",
+  "dang_bai_id": "NDB00541",
+  "chac": "vua",
+  "ly_do": "Lập bất phương trình 2 ẩn từ thời gian sản xuất; dạng thực tế gần nhất."
+ },
+ {
+  "ma_cau": "T110000000262",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc chương Hàm số: tìm tập xác định, bản đồ đang thiếu dạng này."
+ },
+ {
+  "ma_cau": "T110020204099",
+  "dang_bai_id": "NDB00887",
+  "chac": "vua",
+  "ly_do": "Chỉ lập hệ bất phương trình 2 ẩn từ đề thực tế, không tìm min max."
+ },
+ {
+  "ma_cau": "T110000000048",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc chương Hàm số / hàm số bậc hai: bản đồ đang thiếu dạng này."
+ },
+ {
+  "ma_cau": "T110000000039",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Ý a vẽ miền nghiệm, ý b tìm lãi cao nhất 2 ẩn; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T110000000212",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc chương Hàm số / hàm số bậc hai: bản đồ đang thiếu dạng này."
+ },
+ {
+  "ma_cau": "T110000000261",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc chương Hàm số: tìm tập xác định, bản đồ đang thiếu dạng này."
+ },
+ {
+  "ma_cau": "T110000000308",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc chương Hàm số: tìm tập xác định, bản đồ đang thiếu dạng này."
+ },
+ {
+  "ma_cau": "T110020104017",
+  "dang_bai_id": "NDB00541",
+  "chac": "vua",
+  "ly_do": "Lập bất phương trình 2 ẩn từ doanh thu bán vé; dạng thực tế gần nhất."
+ },
+ {
+  "ma_cau": "T110000000280",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Ý a mua vở bút, ý b tìm lời cao nhất 2 ẩn; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T110020202094",
+  "dang_bai_id": "NDB00546",
+  "chac": "vua",
+  "ly_do": "Hệ bất phương trình có tham số, miền tứ giác cho diện tích; gần dạng vẽ miền nghiệm của hệ."
+ },
+ {
+  "ma_cau": "T110020204093",
+  "dang_bai_id": "NDB00887",
+  "chac": "cao",
+  "ly_do": "Ý 1 vẽ miền nghiệm, ý 2 lập hệ và tìm lãi lớn nhất 2 ẩn; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T110000000145",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc chương Hàm số: tìm tập xác định, bản đồ đang thiếu dạng này."
+ },
+ {
+  "ma_cau": "T110000000093",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc chương Hàm số: tìm tập xác định, bản đồ đang thiếu dạng này."
+ },
+ {
+  "ma_cau": "T110010204082",
+  "dang_bai_id": "NDB00528",
+  "chac": "cao",
+  "ly_do": "Ý a chỉ thích Văn, ý b số thích Văn; dạng sau thắng là chỉ thuộc một tập."
+ },
+ {
+  "ma_cau": "T110000000134",
+  "dang_bai_id": "NDB00550",
+  "chac": "vua",
+  "ly_do": "Đu quay: tính độ cao qua giá trị lượng giác góc 120 độ; có hình, thực tế."
+ },
+ {
+  "ma_cau": "T110000000047",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc chương Hàm số: tìm tập xác định, bản đồ đang thiếu dạng này."
+ },
+ {
+  "ma_cau": "T110020204090",
+  "dang_bai_id": "NDB00887",
+  "chac": "vua",
+  "ly_do": "Lập hệ ràng buộc 2 ẩn từ đề thực tế, không tìm min max; đồng nhất hệ số."
+ },
+ {
+  "ma_cau": "T110000000281",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Ý a cắt chữ nhật trong nửa đường tròn tìm diện tích max, ý b chứng minh công thức diện tích: chưa có dạng."
+ },
+ {
+  "ma_cau": "T110000000429",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc chương Hàm số / hàm số bậc hai: bản đồ đang thiếu dạng này."
+ },
+ {
+  "ma_cau": "T110020204067",
+  "dang_bai_id": "NDB00887",
+  "chac": "vua",
+  "ly_do": "Chọn hệ bất phương trình ràng buộc 2 ẩn từ đề thực tế, không tìm min max."
+ }
+]

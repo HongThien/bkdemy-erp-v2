@@ -1,0 +1,573 @@
+[
+ {
+  "ma_cau": "T106020402001",
+  "loai": "tu_luan",
+  "de": "Tính thuận tiện: $2^4 \\cdot 71 + 4^2 \\cdot 45 - 16^2$",
+  "dap_an": "1600",
+  "loi_giai": "$ = 16 \\cdot 71 + 16 \\cdot 45 - 16 \\cdot 16$\\n$ = 16 \\cdot (71 + 45 - 16)$\\n$ = 16 \\cdot (116 - 16)$\\n$ = 16 \\cdot 100$\\n$ = 1600$",
+  "nhan_cu": "Luỹ thừa với số mũ tự nhiên › Tính thuận tiện biểu thức luỹ thừa với số mũ tự nhiên"
+ },
+ {
+  "ma_cau": "T106000000801",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $x$ biết: $5^x=25$.",
+  "dap_an": "2",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đưa hai vế về **cùng cơ số** rồi so sánh số mũ.\n**Bước 1.** Nhận ra $x$ nằm ở số mũ, vế trái có cơ số 5 nên cần đưa vế phải về luỹ thừa của 5.\n**Bước 2.** Viết 25 thành luỹ thừa của 5 bằng cách phân tích 25 thành tích hai thừa số bằng nhau.\n**Bước 3.** Hai luỹ thừa cùng cơ số 5 mà bằng nhau thì số mũ bằng nhau, từ đó kết luận giá trị của $x$.\n**Phần 2. Trình bày**\n$5^x=25$\n$5^x=5^2$\n$x=2$\nVậy $x=2$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106040104040",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $n$ biết rằng $84 \\vdots n$ và $126 \\vdots n$ và $10<n<30$.",
+  "dap_an": "14;21",
+  "loi_giai": "Vì $84 \\vdots n$ và $126 \\vdots n$ nên $n\\in \\text{UC}(84;126)$.\nĐể tìm $\\text{UC}(84;126)$ ta sẽ tìm $UCLN(84,126)$.\n$84=2^2\\cdot 3\\cdot 7$\n$126=2\\cdot 3^2\\cdot 7$\n$UCLN(84,126)=2\\cdot 3\\cdot 7=42$.\n$\\Rightarrow \\text{UC}(84;126)=U(42)=\\{1;2;3;6;7;14;21;42\\}$.\n$\\Rightarrow n\\in\\{1;2;3;6;7;14;21;42\\}$.\nMà $10<n<30$ nên $n\\in\\{14;21\\}$.",
+  "nhan_cu": "Ước chung. Ước chung lớn nhất › Tìm x liên quan đến UCLN của các số"
+ },
+ {
+  "ma_cau": "T106040102020",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm UCLN bằng định nghĩa của $40; 60$ và $100$.",
+  "dap_an": "20",
+  "loi_giai": "$U(40)=\\{1;2;4;5;8;10;20;40\\}$\n$U(60)=\\{1;2;3;4;5;6;10;12;15;20;30;60\\}$\n$U(100)=\\{1;2;4;5;10;20;25;50;100\\}$\n$UCLN(40,60,100)=20$",
+  "nhan_cu": "Ước chung. Ước chung lớn nhất › Tìm UCLN của các số"
+ },
+ {
+  "ma_cau": "T106040303004",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm hai số a, b biết rằng: $[a,b]=30$ và $a-b=4$.",
+  "dap_an": "(10;6)",
+  "loi_giai": "Gọi $(a,b)=k\\Rightarrow \\begin{cases}a=km\\\\b=kn\\end{cases}$ $(m,n\\in N^*;(m,n)=1)$.\nMà $[a,b]=30\\Rightarrow kmn=30\\Rightarrow k\\in \\text{U}(30)$.\nTa có: $a-b=4$\n$\\Rightarrow km-kn=4$\n$\\Rightarrow k(m-n)=4$\n$\\Rightarrow k\\in \\text{U}(4)$\n$\\Rightarrow k\\in \\text{UC}(30,4)=\\{1;2\\}$\nTH1: $k=1\\Rightarrow \\begin{cases}m-n=4\\\\m\\cdot n=30\\end{cases}$\n$30=1\\cdot 30=2\\cdot 15=3\\cdot 10=5\\cdot 6$.\nVậy không có $m,n$ thỏa mãn.\nTH2: $k=2\\Rightarrow \\begin{cases}m-n=2\\\\m\\cdot n=15\\end{cases}$\n$15=1\\cdot 15=3\\cdot 5$.\n$\\Rightarrow (m;n)=(5;3)$.\nVậy $(a;b)=(10;6)$.",
+  "nhan_cu": "Các bài toán nâng cao ứng dụng UCLN - BCNN › Tìm hai số a,b khi biết BCNN và hiệu"
+ },
+ {
+  "ma_cau": "T106000000962",
+  "loai": "tu_luan",
+  "de": "Từ một tờ giấy ban đầu, bạn An đem cắt thành 6 mảnh hoặc 11 mảnh. Sau đó, An lại lấy một mảnh giấy bất kỳ thu được để tiếp tục cắt thành 6 mảnh hoặc 11 mảnh nhỏ hơn. Cứ làm như vậy, hỏi An có thể thu được đúng 2072 mảnh giấy không?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** xét xem **mỗi lần cắt làm số mảnh giấy tăng thêm bao nhiêu**; nếu lần nào cũng tăng thêm một bội của 5 thì tổng số mảnh có dạng cố định.\n**Bước 1.** Lấy một mảnh cắt thành 6 mảnh thì mảnh đó biến mất và thay bằng 6 mảnh, nên tổng số mảnh tăng thêm $6-1$ mảnh.\n**Bước 2.** Tương tự, cắt một mảnh thành 11 mảnh thì tổng số mảnh tăng thêm $11-1$ mảnh; so sánh hai số vừa tìm được để thấy điểm chung.\n**Bước 3.** Lúc đầu có đúng 1 tờ giấy, rồi mỗi lần cắt cộng thêm một bội của 5, nên suy ra dạng của số mảnh sau bất kì số lần cắt nào (xét số dư khi chia cho 5).\n**Bước 4.** So sánh dạng đó với số 2072: tìm số dư của 2072 khi chia cho 5 hoặc nhìn chữ số tận cùng rồi  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106040103013",
+  "loai": "tra_loi_ngan",
+  "de": "Một tấm gỗ hình chữ nhật có kích thước là $96 \\text{ cm} \\times 72 \\text{ cm}$. Người thợ muốn cắt tấm gỗ thành các miếng hình vuông bằng nhau, sao cho không thừa mẩu gỗ nào.\nHỏi độ dài cạnh mỗi miếng gỗ hình vuông có thể là bao nhiêu? Biết độ dài cạnh là một số tự nhiên với đơn vị là xăng-ti-mét.\nNếu cạnh mỗi miếng gỗ là lớn nhất thì cắt được bao nhiêu miếng?",
+  "dap_an": "a. 1; 2; 3; 4; 6; 8; 12; 24\nb. 12",
+  "loi_giai": "Gọi độ dài cạnh miếng gỗ hình vuông là $x$ ($x\\in N^*$, cm).\nVì tấm gỗ được cắt vừa hết thành các miếng hình vuông có cạnh bằng nhau nên $x\\in \\text{UC}(96,72)$.\n$96=2^5\\cdot 3$\n$72=2^3\\cdot 3^2$\n$\\text{UCLN}(96,72)=2^3\\cdot 3=24$\n$\\text{UC}(96,72)=\\text{U}(24)=\\{1;2;3;4;6;8;12;24\\}$\nVậy độ dài cạnh mỗi miếng gỗ có thể là 1 cm; 2 cm; 3 cm; 4 cm; 6 cm; 8 cm; 12 cm; 24 cm.\nVì độ dài cạnh miếng gỗ là lớn nhất nên $x=24$.\nSố miếng gỗ theo chiều dài là:\n$96:24=4$ (miếng)\nSố miếng gỗ theo chiều rộng là:\n$72:24=3$ (miếng)\nVậy số miếng gỗ hình vuông cắt được là:\n$4\\cdot 3=12$ (miếng).",
+  "nhan_cu": "Ước chung. Ước chung lớn nhất › Toán thực tế liên quan đến Ước chung/Ước chung lớn nhất"
+ },
+ {
+  "ma_cau": "T106020501042",
+  "loai": "tra_loi_ngan",
+  "de": "Tính: $2043 - \\left[ 36 - \\left( 2^3 \\cdot 5 - 6^2 \\right)^2 \\right] + 2024^0$",
+  "dap_an": "2024",
+  "loi_giai": "$2043 - \\left[ 36 - \\left( 2^3 \\cdot 5 - 6^2 \\right)^2 \\right] + 2024^0$\n$= 2043 - \\left[ 36 - \\left( 40 - 36 \\right)^2 \\right] + 2024^0$\n$= 2043 - \\left[ 36 - 4^2 \\right] + 2024^0$\n$= 2043 - \\left[ 36 - 16 \\right] + 2024^0$\n$= 2043 - 20 + 1$\n$= 2024$",
+  "nhan_cu": "Thứ tự thực hiện phép tính › Tính toán biểu thức chứa ngoặc"
+ },
+ {
+  "ma_cau": "T106040104028",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $n$ biết rằng $84 \\vdots n$ và $126 \\vdots n$ và $n<30$.",
+  "dap_an": "1;2;3;6;7;14;21",
+  "loi_giai": "Vì $84 \\vdots n$ và $126 \\vdots n$ nên $n\\in \\text{UC}(84;126)$.\nĐể tìm $\\text{UC}(84;126)$ ta sẽ tìm $UCLN(84,126)$.\n$84=2^2\\cdot 3\\cdot 7$\n$126=2\\cdot 3^2\\cdot 7$\n$UCLN(84,126)=2\\cdot 3\\cdot 7=42$.\n$\\Rightarrow \\text{UC}(84;126)=U(42)=\\{1;2;3;6;7;14;21;42\\}$.\n$\\Rightarrow n\\in\\{1;2;3;6;7;14;21;42\\}$.\nMà $n<30$ nên $n\\in\\{1;2;3;6;7;14;21\\}$.",
+  "nhan_cu": "Ước chung. Ước chung lớn nhất › Tìm x liên quan đến UCLN của các số"
+ },
+ {
+  "ma_cau": "T106040201010",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $BC(7;14)$.",
+  "dap_an": "0;14;28;....",
+  "loi_giai": "$B(7)=\\{0;7;14;21;28;....\\}$\n$B(14)=\\{0;14;28;....\\}$\n$BC(7;14)=\\{0;14;28;....\\}$",
+  "nhan_cu": "Bội chung. Bội chung nhỏ nhất › Tìm Bội chung của các số"
+ },
+ {
+  "ma_cau": "T106040101008",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $\\text{UC}(36;54)$.",
+  "dap_an": "1;2;3;6;9;18",
+  "loi_giai": "$U(36)=\\{1;2;3;4;6;9;12;18;36\\}$\n$U(54)=\\{1;2;3;6;9;18;27;54\\}$\n$\\text{UC}(36;54)=\\{1;2;3;6;9;18\\}$",
+  "nhan_cu": "Ước chung. Ước chung lớn nhất › Tìm ước chung của các số"
+ },
+ {
+  "ma_cau": "T106020501030",
+  "loai": "tra_loi_ngan",
+  "de": "Tính: $300 : [80-(10+5\\cdot3^2)]-9$",
+  "dap_an": "3",
+  "loi_giai": "$300 : [80-(10+5\\cdot3^2)]-9$\n$= 300 : [80-(10+45)]-9$\n$= 300 : [80-55]-9$\n$= 300 : 25-9$\n$= 12-9$\n$= 3$",
+  "nhan_cu": "Thứ tự thực hiện phép tính › Tính toán biểu thức chứa ngoặc"
+ },
+ {
+  "ma_cau": "T106020501048",
+  "loai": "tra_loi_ngan",
+  "de": "Tính: $100 : \\{250 : [450 - (4 \\cdot 5^3 - 2^2 \\cdot 25)]\\}$",
+  "dap_an": "20",
+  "loi_giai": "$100 : \\{250 : [450 - (4 \\cdot 5^3 - 2^2 \\cdot 25)]\\}$\n$= 100 : \\{250 : [450 - (4 \\cdot 125 - 4 \\cdot 25)]\\}$\n$= 100 : \\{250 : [450 - (500 - 100)]\\}$\n$= 100 : \\{250 : [450 - 400]\\}$\n$= 100 : \\{250 : 50\\}$\n$= 100 : 5$\n$= 20$",
+  "nhan_cu": "Thứ tự thực hiện phép tính › Tính toán biểu thức chứa ngoặc"
+ },
+ {
+  "ma_cau": "T106040301004",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm hai số a, b biết rằng: $(a,b)=6$ và $[a,b]=180$.",
+  "dap_an": "(6;180), (180;6), (12;90), (90;12), (18;60), (60;18), (30;36), (36;30)",
+  "loi_giai": "Ta có $(a,b)=6$ nên $\\begin{cases}a=6m\\\\b=6n\\end{cases}$ $(m,n\\in N^*;(m,n)=1)$.\nMà $[a,b]=180$ nên $6m\\cdot n=180\\Rightarrow m\\cdot n=30$.\nVì $(m,n)=1$ nên ta có bảng sau:\n$\\begin{array}{|c|c|c|c|c|c|c|c|c|}\n\\hline\nm&1&30&2&15&3&10&5&6\\\\\n\\hline\nn&30&1&15&2&10&3&6&5\\\\\n\\hline\na&6&180&12&90&18&60&30&36\\\\\n\\hline\nb&180&6&90&12&60&18&36&30\\\\\n\\hline\n\\end{array}$\nVậy $(a;b)\\in\\{(6;180);(180;6);(12;90);(90;12);(18;60);(60;18);(30;36);(36;30)\\}$.",
+  "nhan_cu": "Các bài toán nâng cao ứng dụng UCLN - BCNN › Tìm hai số tự nhiên a,b khi biết UCLN và BCNN"
+ },
+ {
+  "ma_cau": "T106040103019",
+  "loai": "tra_loi_ngan",
+  "de": "Khối 6 có 72 học sinh nữ và 96 học sinh nam tham gia hoạt động ngoại khóa. Thầy phụ trách muốn chia thành các nhóm sao cho số nam và số nữ ở mỗi nhóm đều bằng nhau. Hỏi có thể chia được nhiều nhất thành bao nhiêu nhóm, mỗi nhóm có bao nhiêu học sinh nam và bao nhiêu học sinh nữ?",
+  "dap_an": "24 nhóm; mỗi nhóm có 4 học sinh nam và 3 học sinh nữ.",
+  "loi_giai": "Gọi số nhóm có thể chia được nhiều nhất là $x$ ($x\\in N^*$, nhóm).\nVì cần chia 96 nam và 72 nữ thành các nhóm đều nhau và nhiều nhóm nhất nên\n$x=\\text{UCLN}(96,72)$.\n$96=2^5\\cdot 3$\n$72=2^3\\cdot 3^2$\n$\\text{UCLN}(96,72)=2^3\\cdot 3=24$\nVậy có thể chia nhiều nhất thành 24 nhóm.\nSố học sinh nam ở mỗi nhóm là:\n$96:24=4$ (học sinh)\nSố học sinh nữ ở mỗi nhóm là:\n$72:24=3$ (học sinh).",
+  "nhan_cu": "Ước chung. Ước chung lớn nhất › Toán thực tế liên quan đến Ước chung/Ước chung lớn nhất"
+ },
+ {
+  "ma_cau": "T106040303006",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm hai số a, b biết rằng: $[a,b]=40$ và $a-b=2$.",
+  "dap_an": "(10;8)",
+  "loi_giai": "Gọi $(a,b)=k\\Rightarrow \\begin{cases}a=km\\\\b=kn\\end{cases}$ $(m,n\\in N^*;(m,n)=1)$.\nMà $[a,b]=40\\Rightarrow kmn=40\\Rightarrow k\\in \\text{U}(40)$.\nTa có: $a-b=2$\n$\\Rightarrow km-kn=2$\n$\\Rightarrow k(m-n)=2$\n$\\Rightarrow k\\in \\text{U}(2)$\n$\\Rightarrow k\\in \\text{UC}(40,2)=\\{1;2\\}$\nTH1: $k=1\\Rightarrow \\begin{cases}m-n=2\\\\m\\cdot n=40\\end{cases}$\n$40=1\\cdot 40=2\\cdot 20=4\\cdot 10=5\\cdot 8$.\nVậy không có $m,n$ thỏa mãn.\nTH2: $k=2\\Rightarrow \\begin{cases}m-n=1\\\\m\\cdot n=20\\end{cases}$\n$20=1\\cdot 20=2\\cdot 10=4\\cdot 5$.\n$\\Rightarrow (m;n)=(5;4)$.\nVậy $(a;b)=(10;8)$.",
+  "nhan_cu": "Các bài toán nâng cao ứng dụng UCLN - BCNN › Tìm hai số a,b khi biết BCNN và hiệu"
+ },
+ {
+  "ma_cau": "T106040204009",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $n$ nhỏ nhất khác $0$ biết rằng $n:15$ và $n:25$.",
+  "dap_an": "75",
+  "loi_giai": "Vì $n$ là số tự nhiên nhỏ nhất khác $0$ sao cho $n:15$ và $n:25$ nên\n$n=BCNN(15,25)$.\n$15=3\\cdot 5$\n$25=5^2$\n$\\Rightarrow BCNN(15,25)=3\\cdot 5^2=75$.\nVậy $n=75$.",
+  "nhan_cu": "Bội chung. Bội chung nhỏ nhất › Tìm x liên quan đến BCNN"
+ },
+ {
+  "ma_cau": "T106040301044",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm hai số a, b biết rằng: $(a,b)=5$ và $[a,b]=60$.",
+  "dap_an": "(5;60), (60;5), (15;20), (20;15)",
+  "loi_giai": "Ta có $(a,b)=5$ nên $\\begin{cases}a=5m\\\\b=5n\\end{cases}$ $(m,n\\in N^*;(m,n)=1)$.\nMà $[a,b]=60$ nên $5m\\cdot n=60\\Rightarrow m\\cdot n=12$.\nVì $(m,n)=1$ nên ta có bảng sau:\n$\\begin{array}{|c|c|c|c|c|}\\hline m&1&12&3&4\\\\ \\hline n&12&1&4&3\\\\ \\hline a&5&60&15&20\\\\ \\hline b&60&5&20&15\\\\ \\hline \\end{array}$\nVậy $(a;b)\\in\\{(5;60);(60;5);(15;20);(20;15)\\}$.",
+  "nhan_cu": "Các bài toán nâng cao ứng dụng UCLN - BCNN › Tìm hai số tự nhiên a,b khi biết UCLN và BCNN"
+ },
+ {
+  "ma_cau": "T106000000079",
+  "loai": "trac_nghiem",
+  "de": "Biết $\\overline{75x}\\vdots 2$ và $5$ thì giá trị của chữ số $x$ bằng",
+  "lua_chon": [
+   "$x=0$",
+   "$x=5$",
+   "$x=6$",
+   "$x=3$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** số chia hết cho **cả 2 và 5** thì chữ số tận cùng chốt được ngay.\n**Bước 1.** Nhớ dấu hiệu chia hết cho 2: chữ số tận cùng là số chẵn.\n**Bước 2.** Nhớ dấu hiệu chia hết cho 5: chữ số tận cùng là 0 hoặc 5.\n**Bước 3.** Chữ số tận cùng phải thoả mãn cả hai dấu hiệu, từ đó chọn giá trị của $x$.\n**Chú ý:** $x=5$ chỉ chia hết cho 5 mà không chia hết cho 2.\n**Phần 2. Trình bày**\nVì $\\overline{75x}$ chia hết cho 2 nên $x\\in\\{0;2;4;6;8\\}$.\nVì $\\overline{75x}$ chia hết cho 5 nên $x\\in\\{0;5\\}$.\nDo đó $x=0$.\nChọn A.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106040303024",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm hai số a, b biết rằng: $[a,b]=75$ và $a-b=10$.",
+  "dap_an": "(25;15)",
+  "loi_giai": "Gọi $(a,b)=k\\Rightarrow \\begin{cases}a=km\\\\b=kn\\end{cases}$ $(m,n\\in N^*;(m,n)=1)$.\nMà $[a,b]=75\\Rightarrow kmn=75\\Rightarrow k\\in \\text{U}(75)$.\nTa có: $a-b=10$\n$\\Rightarrow km-kn=10$\n$\\Rightarrow k(m-n)=10$\n$\\Rightarrow k\\in \\text{U}(10)$\n$\\Rightarrow k\\in \\text{UC}(75,10)=\\{1;5\\}$\nTH1: $k=1\\Rightarrow \\begin{cases}m-n=10\\\\m\\cdot n=75\\end{cases}$\n$75=1\\cdot 75=3\\cdot 25=5\\cdot 15$.\nVậy không có $m,n$ thỏa mãn.\nTH2: $k=5\\Rightarrow \\begin{cases}m-n=2\\\\m\\cdot n=15\\end{cases}$\n$15=1\\cdot 15=3\\cdot 5$.\n$\\Rightarrow (m;n)=(5;3)$.\nVậy $(a;b)=(25;15)$.",
+  "nhan_cu": "Các bài toán nâng cao ứng dụng UCLN - BCNN › Tìm hai số a,b khi biết BCNN và hiệu"
+ },
+ {
+  "ma_cau": "T106040202024",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm BCNN bằng cách phân tích ra thừa số nguyên tố của $12$ và $18$.",
+  "dap_an": "36",
+  "loi_giai": "$12=2^2\\cdot 3$\n$18=2\\cdot 3^2$\n$\\Rightarrow BCNN(12,18)=2^2\\cdot 3^2=36$",
+  "nhan_cu": "Bội chung. Bội chung nhỏ nhất › Tìm BCNN của các số"
+ },
+ {
+  "ma_cau": "T106040301037",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm hai số a, b biết rằng: $(a,b)=3$ và $[a,b]=36$.",
+  "dap_an": "(3;36), (36;3), (9;12), (12;9)",
+  "loi_giai": "Ta có $(a,b)=3$ nên $\\begin{cases}a=3m\\\\b=3n\\end{cases}$ $(m,n\\in N^*;(m,n)=1)$.\nMà $[a,b]=36$ nên $3m\\cdot n=36\\Rightarrow m\\cdot n=12$.\nVì $(m,n)=1$ nên ta có bảng sau:\n$\\begin{array} {|c|c|c|c|c|}\\hline m&1&12&3&4\\\\ \\hline n&12&1&4&3\\\\ \\hline a&3&36&9&12\\\\ \\hline b&36&3&12&9\\\\ \\hline \\end{array}$\nVậy $(a;b)\\in\\{(3;36);(36;3);(9;12);(12;9)\\}$.",
+  "nhan_cu": "Các bài toán nâng cao ứng dụng UCLN - BCNN › Tìm hai số tự nhiên a,b khi biết UCLN và BCNN"
+ },
+ {
+  "ma_cau": "T106040301039",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm hai số a, b biết rằng: $(a,b)=5$ và $[a,b]=30$.",
+  "dap_an": "(5;30), (30;5), (10;15), (15;10)",
+  "loi_giai": "Ta có $(a,b)=5$ nên $\\begin{cases}a=5m\\\\b=5n\\end{cases}$ $(m,n\\in N^*;(m,n)=1)$.\nMà $[a,b]=30$ nên $5m\\cdot n=30\\Rightarrow m\\cdot n=6$.\nVì $(m,n)=1$ nên ta có bảng sau:\n$\\begin{array} {|c|c|c|c|c|}\\hline m&1&6&2&3\\\\ \\hline n&6&1&3&2\\\\ \\hline a&5&30&10&15\\\\ \\hline b&30&5&15&10\\\\ \\hline \\end{array}$\nVậy $(a;b)\\in\\{(5;30);(30;5);(10;15);(15;10)\\}$.",
+  "nhan_cu": "Các bài toán nâng cao ứng dụng UCLN - BCNN › Tìm hai số tự nhiên a,b khi biết UCLN và BCNN"
+ },
+ {
+  "ma_cau": "T106040204024",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $n$ biết rằng $n:9$, $n:14$, $n:21$ và $200<n<400$.",
+  "dap_an": "252;378",
+  "loi_giai": "Vì $n:9$, $n:14$, $n:21$ nên $n\\in BC(9;14;21)$.\nĐể tìm $BC(9;14;21)$ ta sẽ tìm $BCNN(9,14,21)$.\n$9=3^2$\n$14=2\\cdot 7$\n$21=3\\cdot 7$\n$\\Rightarrow BCNN(9,14,21)=2\\cdot 3^2\\cdot 7=126$.\n$BC(9;14;21)=B(126)=\\{0;126;252;378;504;....\\}$\nVì $200<n<400$ nên $n\\in\\{252;378\\}$.",
+  "nhan_cu": "Bội chung. Bội chung nhỏ nhất › Tìm x liên quan đến BCNN"
+ },
+ {
+  "ma_cau": "T106000000326",
+  "loai": "tu_luan",
+  "de": "Cho $A=7+7^2+7^3+7^4+7^5+7^6+\\dots+7^{21}$. Chứng tỏ rằng $A$ chia hết cho 57.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $1+7+7^2=57$ nên nhóm **3 số hạng liên tiếp**, mỗi nhóm đặt thừa số chung sẽ lộ ra $(1+7+7^2)$.\n**Bước 1.** Đếm số số hạng để chắc nhóm vừa đủ: số mũ chạy từ 1 đến 21 nên có $21-1+1=21$ số hạng, chia được thành 7 nhóm 3 số hạng.\n**Bước 2.** Trong mỗi nhóm, đặt luỹ thừa đứng đầu nhóm ra ngoài: $7+7^2+7^3=7.(1+7+7^2)$, $7^4+7^5+7^6=7^4.(1+7+7^2)$, và cứ thế tiếp tục.\n**Bước 3.** Tính $1+7+7^2$ rồi đặt thừa số chung 57 cho cả tổng, từ đó suy ra tổng chia hết cho 57.\n**Phần 2. Trình bày**\n$A=7+7^2+7^3+7^4+7^5+7^6+\\dots+7^{21}$\n$A=(7+7^2+7^3)+(7^4+7^5+7^6)+\\dots+(7^{19}+7^{20}+7^{21})$\n$A=7.(1+7+7^2)+7^4.(1+7+7^2)+\\dots+7^{19}.(1+7+7^2)$\n$A=7.57+7^4.57+\\dots+7^ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106020303013",
+  "loai": "tu_luan",
+  "de": "Tìm x biết: $2x - 120 = 48 + 74$",
+  "dap_an": "121",
+  "loi_giai": "$2x - 120 = 122$\n$2x = 122 + 120$\n$2x = 242$\n$x = 242:2$\n$x = 121$",
+  "nhan_cu": "Các phép tính với Số tự nhiên › Tìm x liên quan đến nhân chia Số tự nhiên"
+ },
+ {
+  "ma_cau": "T106020601040",
+  "loai": "tra_loi_ngan",
+  "de": "Tính $A=1+6^2+6^4+\\ldots+6^{10}$.",
+  "dap_an": "$\\dfrac{6^{12}-1}{35}$",
+  "loi_giai": "$6^2A=6^2+6^4+6^6+\\ldots+6^{12}$\n$6^2A-A=6^{12}-1$\n$35A=6^{12}-1$\n$A=\\dfrac{6^{12}-1}{35}$",
+  "nhan_cu": "Dãy lũy thừa cùng cơ số › Dãy lũy thừa cơ số -  Dạng cùng dấu"
+ },
+ {
+  "ma_cau": "T106000000695",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn: $\\dfrac{27^4.12+9^6.4}{4^2.3^8}$.",
+  "dap_an": "81",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đưa $27^4$ và $9^6$ về **cùng một luỹ thừa của 3** để đặt được thừa số chung ở tử.\n**Bước 1.** Thấy $27=3^3$ và $9=3^2$ nên khai triển $27^4$ và $9^6$ thành tích các luỹ thừa của 3 rồi cộng số mũ, xem hai luỹ thừa này có bằng nhau không.\n**Bước 2.** Hai số hạng ở tử cùng có thừa số luỹ thừa của 3 đó: đặt thừa số chung ra ngoài ngoặc rồi cộng trong ngoặc.\n**Bước 3.** So số trong ngoặc với $4^2$ ở mẫu: tính $4^2$ ra số, hai số này bằng nhau nên rút gọn được.\n**Bước 4.** Chia hai luỹ thừa cùng cơ số 3 bằng cách trừ số mũ rồi tính giá trị.\n**Phần 2. Trình bày**\nTa có $27^4=27.27.27.27=3^3.3^3.3^3.3^3=3^{12}$.\n$9^6=9.9.9.9.9.9=3^2.3^2.3^2.3^2.3^2.3^2=3^{12}$.\n$ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106020503087",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x$ biết $(x - 2) : 12 = 5$.",
+  "dap_an": "62",
+  "loi_giai": "$(x - 2) : 12 = 5$\n$x - 2 = 5 \\cdot 12$\n$x - 2 = 60$\n$x = 60 + 2$\n$x = 62$\nVậy $x = 62$.",
+  "nhan_cu": "Thứ tự thực hiện phép tính › Tìm x liên quan đến biểu thức chứa ngoặc"
+ },
+ {
+  "ma_cau": "T106000000690",
+  "loai": "tu_luan",
+  "de": "Tính tổng: $G=1.2^2+2.3^2+3.4^2+\\dots+99.100^2$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mỗi số hạng có dạng $k.(k+1)^2$ và viết được $k.(k+1)^2=k.(k+1).(k+2)-k.(k+1)$, nên tổng đưa về hiệu của hai tổng đã biết cách tính.\n**Bước 1.** Nhận ra mỗi số hạng là $k.(k+1).(k+1)$, tức tích hai số liên tiếp nhân thêm với số lớn hơn.\n**Bước 2.** Viết thừa số cuối $k+1=(k+2)-1$ rồi phân phối để $k.(k+1)^2=k.(k+1).(k+2)-k.(k+1)$.\n**Bước 3.** Nhóm lại thành hiệu của tổng các tích ba số liên tiếp và tổng các tích hai số liên tiếp.\n**Bước 4.** Tính tổng các tích ba số liên tiếp bằng cách nhân với 4 rồi triệt tiêu từng cặp tích bốn số.\n**Bước 5.** Tính tổng các tích hai số liên tiếp bằng cách nhân với 3 rồi triệt tiêu, sau đó lấy tổng thứ nhất trừ tổng thứ ha …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000614",
+  "loai": "tu_luan",
+  "de": "Cho $A=1+2+2^2+\\dots+2^{2024}+2^{2025}$ và $B=2^{2026}$. Chứng minh: $A$ và $B$ là hai số tự nhiên liên tiếp.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** nhân $A$ với cơ số 2 để được dãy gần giống $A$, rồi lấy hiệu hai dãy để các số hạng giữa triệt tiêu.\n**Bước 1.** Nhân cả $A$ với 2: mỗi số hạng được nhân thêm 2 nên số mũ mỗi luỹ thừa tăng thêm 1.\n**Bước 2.** Lấy $2A$ trừ $A$: các số hạng ở giữa hai dãy giống nhau nên triệt tiêu, chỉ còn số hạng cuối của $2A$ và số hạng đầu của $A$.\n**Bước 3.** Rút ra $A$ rồi so sánh với $B=2^{2026}$: nếu hai số hơn kém nhau đúng 1 đơn vị thì là hai số tự nhiên liên tiếp.\n**Phần 2. Trình bày**\n$A=1+2+2^2+\\dots+2^{2024}+2^{2025}$\nTa có $2A=2.(1+2+2^2+\\dots+2^{2025})=2+2^2+2^3+\\dots+2^{2026}$\nSuy ra $2A-A=(2+2^2+\\dots+2^{2026})-(1+2+2^2+\\dots+2^{2025})$\n$A=2^{2026}-1$\nMà $B= …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106040202038",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm BCNN bằng cách phân tích ra thừa số nguyên tố của $16; 24$ và $40$.",
+  "dap_an": "240",
+  "loi_giai": "$16=2^4$\n$24=2^3\\cdot 3$\n$40=2^3\\cdot 5$\n$\\Rightarrow BCNN(16,24,40)=2^4\\cdot 3\\cdot 5=240$",
+  "nhan_cu": "Bội chung. Bội chung nhỏ nhất › Tìm BCNN của các số"
+ },
+ {
+  "ma_cau": "T106040204008",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $n$ nhỏ nhất khác $0$ biết rằng $n:12$ và $n:18$.",
+  "dap_an": "36",
+  "loi_giai": "Vì $n$ là số tự nhiên nhỏ nhất khác $0$ sao cho $n:12$ và $n:18$ nên\n$n=BCNN(12,18)$.\n$12=2^2\\cdot 3$\n$18=2\\cdot 3^2$\n$\\Rightarrow BCNN(12,18)=2^2\\cdot 3^2=36$.\nVậy $n=36$.",
+  "nhan_cu": "Bội chung. Bội chung nhỏ nhất › Tìm x liên quan đến BCNN"
+ },
+ {
+  "ma_cau": "T106040201007",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $BC(6;15)$.",
+  "dap_an": "0;30;60;....",
+  "loi_giai": "$B(6)=\\{0;6;12;18;24;30;36;42;48;54;60;....\\}$\n$B(15)=\\{0;15;30;45;60;....\\}$\n$BC(6;15)=\\{0;30;60;....\\}$",
+  "nhan_cu": "Bội chung. Bội chung nhỏ nhất › Tìm Bội chung của các số"
+ },
+ {
+  "ma_cau": "T106000000176",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $x$, biết: $2^{x-1}=2^3.4$",
+  "dap_an": "6",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** đưa hai vế về **luỹ thừa cùng cơ số 2**, rồi cho hai số mũ bằng nhau.\n**Bước 1.** Nhìn vế phải $2^3.4$: viết 4 thành luỹ thừa của 2 để vế phải cùng cơ số 2.\n**Bước 2.** Nhân hai luỹ thừa cùng cơ số: giữ nguyên cơ số và cộng các số mũ.\n**Bước 3.** Hai luỹ thừa cùng cơ số 2 bằng nhau thì số mũ bằng nhau, từ đó lập được đẳng thức cho số mũ.\n**Bước 4.** Tìm $x$ từ đẳng thức đó, trong đó $x$ là số bị trừ: lấy hiệu cộng với số trừ.\nThử lại: $2^{6-1}=2^5=32$ và $2^3.4=8.4=32$ (đúng).\n**Phần 2. Trình bày**\n$2^{x-1}=2^3.4$\n$2^{x-1}=2^3.2^2$\n$2^{x-1}=2^5$\n$x-1=5$\n$x=5+1$\n$x=6$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106040204016",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $n$ nhỏ nhất khác $0$ biết rằng $n:32$ và $n:40$.",
+  "dap_an": "160",
+  "loi_giai": "Vì $n$ là số tự nhiên nhỏ nhất khác $0$ sao cho $n:32$ và $n:40$ nên\n$n=BCNN(32,40)$.\n$32=2^5$\n$40=2^3\\cdot 5$\n$\\Rightarrow BCNN(32,40)=2^5\\cdot 5=160$.\nVậy $n=160$.",
+  "nhan_cu": "Bội chung. Bội chung nhỏ nhất › Tìm x liên quan đến BCNN"
+ },
+ {
+  "ma_cau": "T106040203065",
+  "loai": "tra_loi_ngan",
+  "de": "Minh, Nam, Hùng cùng học một trường. Minh cứ 6 ngày trực nhật một lần, Nam 9 ngày trực nhật một lần, Hùng 12 ngày trực nhật một lần. Lần đầu cả ba bạn cùng trực nhật vào thứ 3. Hỏi sau ít nhất bao nhiêu ngày thì ba bạn cùng trực nhật một hôm? Ngày hôm đó là thứ mấy?",
+  "dap_an": "36",
+  "loi_giai": "Gọi số ngày ít nhất để ba bạn lại cùng trực nhật vào một ngày là $x$ $(x\\in \\mathrm{N}^*, \\text{ ngày})$.\nVì Minh cứ 6 ngày trực nhật một lần, Nam 9 ngày một lần và Hùng 12 ngày một lần nên $x\\vdots 6; x\\vdots 9; x\\vdots 12$.\nVì $x$ là số ngày ít nhất khác 0 nên $x=\\mathrm{BCNN}(6,9,12)$.\n$6=2\\cdot 3$\n$9=3^2$\n$12=2^2\\cdot 3$\n$\\mathrm{BCNN}(6,9,12)=2^2\\cdot 3^2=36$\nVậy sau ít nhất 36 ngày thì ba bạn lại cùng trực nhật vào một ngày.\nTa có $36:7=5$ dư 1.\nVì lần đầu ba bạn cùng trực nhật vào thứ 3 nên sau 36 ngày là thứ 4.\nVậy ngày ba bạn lại cùng trực nhật là thứ 4.",
+  "nhan_cu": "Bội chung. Bội chung nhỏ nhất › Toán thực tế liên quan đến Bội chung/Bội chung nhỏ nhất"
+ },
+ {
+  "ma_cau": "T106020501024",
+  "loai": "tra_loi_ngan",
+  "de": "Tính: $480 : [55 + (7^2 - 8 \\cdot 3) : 5] + 2025^0$",
+  "dap_an": "9",
+  "loi_giai": "$480 : [55 + (7^2 - 8 \\cdot 3) : 5] + 2025^0$\n$= 480 : [55 + (49 - 24) : 5] + 2025^0$\n$= 480 : [55 + 25 : 5] + 2025^0$\n$= 480 : [55 + 5] + 2025^0$\n$= 480 : 60 + 1$\n$= 8 + 1$\n$= 9$",
+  "nhan_cu": "Thứ tự thực hiện phép tính › Tính toán biểu thức chứa ngoặc"
+ },
+ {
+  "ma_cau": "T106040104025",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $n$ biết rằng $88 \\vdots n$ và $132 \\vdots n$ và $n<12$.",
+  "dap_an": "1;2;4;11",
+  "loi_giai": "Vì $88 \\vdots n$ và $132 \\vdots n$ nên $n\\in \\text{UC}(88;132)$.\nĐể tìm $\\text{UC}(88;132)$ ta sẽ tìm $UCLN(88,132)$.\n$88=2^3\\cdot 11$\n$132=2^2\\cdot 3\\cdot 11$\n$UCLN(88,132)=2^2\\cdot 11=44$.\n$\\Rightarrow \\text{UC}(88;132)=U(44)=\\{1;2;4;11;22;44\\}$.\n$\\Rightarrow n\\in\\{1;2;4;11;22;44\\}$.\nMà $n<12$ nên $n\\in\\{1;2;4;11\\}$.",
+  "nhan_cu": "Ước chung. Ước chung lớn nhất › Tìm x liên quan đến UCLN của các số"
+ },
+ {
+  "ma_cau": "T106040101004",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $\\text{UC}(21;28)$.",
+  "dap_an": "1;7",
+  "loi_giai": "$U(21)=\\{1;3;7;21\\}$\n$U(28)=\\{1;2;4;7;14;28\\}$\n$\\text{UC}(21;28)=\\{1;7\\}$",
+  "nhan_cu": "Ước chung. Ước chung lớn nhất › Tìm ước chung của các số"
+ },
+ {
+  "ma_cau": "T106040103004",
+  "loai": "tra_loi_ngan",
+  "de": "Một nhóm học sinh lớp 6D được nhận phần thưởng và mỗi em được nhận phần thưởng như nhau.\nGiáo viên đã chia hết 80 quyển vở và 100 bút bi.\nHỏi nhóm có bao nhiêu học sinh? Biết nhóm có nhiều hơn 10 học sinh.",
+  "dap_an": "20",
+  "loi_giai": "Gọi số học sinh của nhóm là $x$ (học sinh) $(x\\in \\mathrm{N^*})$.\nVì giáo viên chia hết 80 quyển vở và 100 bút bi và mỗi học sinh nhận phần thưởng như nhau nên $x\\in \\text{UC}(80,100)$.\n$80=2^4\\cdot 5$\n$100=2^2\\cdot 5^2$\n$\\text{UCLN}(80,100)=2^2\\cdot 5=20$\n$\\text{UC}(80,100)=\\text{U}(20)=\\{1;2;4;5;10;20\\}$\nVì nhóm có nhiều hơn 10 học sinh nên $x=20$.\nVậy nhóm có 20 học sinh.",
+  "nhan_cu": "Ước chung. Ước chung lớn nhất › Toán thực tế liên quan đến Ước chung/Ước chung lớn nhất"
+ },
+ {
+  "ma_cau": "T106040202035",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm BCNN bằng cách phân tích ra thừa số nguyên tố của $12; 18$ và $24$.",
+  "dap_an": "72",
+  "loi_giai": "$12=2^2\\cdot 3$\n$18=2\\cdot 3^2$\n$24=2^3\\cdot 3$\n$\\Rightarrow BCNN(12,18,24)=2^3\\cdot 3^2=72$",
+  "nhan_cu": "Bội chung. Bội chung nhỏ nhất › Tìm BCNN của các số"
+ },
+ {
+  "ma_cau": "T106000000324",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $x$, biết: $5^{x+1}-24=101$",
+  "dap_an": "2",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** coi cả luỹ thừa $5^{x+1}$ là **số bị trừ** chưa biết, rồi đưa về hai luỹ thừa cùng cơ số 5.\n**Bước 1.** Xác định vai trò: trong phép trừ $5^{x+1}-24=101$, luỹ thừa $5^{x+1}$ là số bị trừ, tìm bằng cách lấy hiệu cộng số trừ.\n**Bước 2.** Viết số vừa tìm được thành một luỹ thừa của 5 để hai vế có cùng cơ số.\n**Bước 3.** Hai luỹ thừa cùng cơ số bằng nhau thì số mũ bằng nhau, từ đó tìm $x$.\nThử lại: $5^{2+1}-24=125-24=101$ (đúng).\n**Phần 2. Trình bày**\n$5^{x+1}-24=101$\n$5^{x+1}=101+24$\n$5^{x+1}=125$\n$5^{x+1}=5^3$\n$x+1=3$\n$x=3-1$\n$x=2$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106040103006",
+  "loai": "tra_loi_ngan",
+  "de": "Có 24 chiếc bút và 36 quyển vở được chia thành các phần thưởng sao cho số bút và số vở được chia đều vào các phần thưởng.\nBiết số phần thưởng nhiều hơn 3.\na) Hỏi có mấy cách chia phần thưởng?\nb) Trong mỗi cách chia, mỗi phần thưởng có bao nhiêu chiếc bút và bao nhiêu quyển vở?",
+  "dap_an": "3",
+  "loi_giai": "Gọi số phần thưởng là $x$ (phần thưởng) $(x\\in \\mathrm{N^*})$.\nVì 24 chiếc bút và 36 quyển vở được chia đều vào các phần thưởng nên $x\\in \\text{UC}(24,36)$.\n$24=2^3\\cdot 3$\n$36=2^2\\cdot 3^2$\n$\\text{UCLN}(24,36)=2^2\\cdot 3=12$\n$\\text{UC}(24,36)=\\text{U}(12)=\\{1;2;3;4;6;12\\}$\nVì số phần thưởng nhiều hơn 3 nên $x\\in\\{4;6;12\\}$.\nVới $x=4$: mỗi phần thưởng có $24:4=6$ chiếc bút và $36:4=9$ quyển vở.\nVới $x=6$: mỗi phần thưởng có $24:6=4$ chiếc bút và $36:6=6$ quyển vở.\nVới $x=12$: mỗi phần thưởng có $24:12=2$ chiếc bút và $36:12=3$ quyển vở.\nVậy có 3 cách chia phần thưởng.",
+  "nhan_cu": "Ước chung. Ước chung lớn nhất › Toán thực tế liên quan đến Ước chung/Ước chung lớn nhất"
+ },
+ {
+  "ma_cau": "T106000000557",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm tất cả các số tự nhiên $x$, biết: $5^x.7+5^x=1000$",
+  "dap_an": "3",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** hai số hạng **cùng chứa $5^x$** nên đặt $5^x$ làm thừa số chung, đưa về một luỹ thừa bằng một số cho trước.\n**Bước 1.** Viết $5^x=5^x.1$ để thấy cả hai số hạng cùng có thừa số $5^x$.\n**Bước 2.** Đặt $5^x$ ra ngoài ngoặc, trong ngoặc là tổng $7+1$.\n**Bước 3.** Tìm $5^x$ bằng cách lấy tích chia cho thừa số đã biết.\n**Bước 4.** Viết kết quả thành luỹ thừa của $5$, hai luỹ thừa cùng cơ số bằng nhau thì số mũ bằng nhau.\nThử lại: $5^3.7+5^3=875+125=1000$ (đúng).\n**Phần 2. Trình bày**\n$5^x.7+5^x=1000$\n$5^x.7+5^x.1=1000$\n$5^x.(7+1)=1000$\n$5^x.8=1000$\n$5^x=1000:8$\n$5^x=125$\n$5^x=5^3$\n$x=3$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106040102010",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm UCLN bằng định nghĩa của $63$ và $81$.",
+  "dap_an": "9",
+  "loi_giai": "$U(63)=\\{1;3;7;9;21;63\\}$\n$U(81)=\\{1;3;9;27;81\\}$\n$UCLN(63,81)=9$",
+  "nhan_cu": "Ước chung. Ước chung lớn nhất › Tìm UCLN của các số"
+ },
+ {
+  "ma_cau": "T106020303001",
+  "loai": "tu_luan",
+  "de": "Tìm x biết: $87 - 5x = 27$",
+  "dap_an": "12",
+  "loi_giai": "$5x = 87 - 27$\n$5x = 60$\n$x = 60:5$\n$x = 12$",
+  "nhan_cu": "Các phép tính với Số tự nhiên › Tìm x liên quan đến nhân chia Số tự nhiên"
+ },
+ {
+  "ma_cau": "T106000000468",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số nguyên $x$, biết: $3^{x+1}-20235^0=2^4:2$",
+  "dap_an": "1",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tính hết vế phải và $20235^0$ trước, rồi đưa về dạng $3^{x+1}=3^2$ (hai luỹ thừa **cùng cơ số**).\n**Bước 1.** Tính các giá trị đã biết: $20235^0=1$ (quy ước $a^0=1$) và $2^4:2$ (tính luỹ thừa trước rồi chia).\n**Bước 2.** Tìm số bị trừ chưa biết $3^{x+1}$ bằng cách lấy hiệu cộng với số trừ.\n**Bước 3.** Viết vế phải thành luỹ thừa cơ số 3 rồi cho hai số mũ bằng nhau (cùng cơ số thì số mũ bằng nhau).\n**Bước 4.** Tìm số hạng chưa biết $x$ từ đẳng thức của hai số mũ.\nThử lại: $3^{1+1}-1=9-1=8=2^4:2$ (đúng).\n**Phần 2. Trình bày**\n$3^{x+1}-20235^0=2^4:2$\n$3^{x+1}-1=16:2$\n$3^{x+1}-1=8$\n$3^{x+1}=8+1$\n$3^{x+1}=9$\n$3^{x+1}=3^2$\n$x+1=2$\n$x=2-1$\n$x=1$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106040301002",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm hai số a, b biết rằng: $(a,b)=4$ và $[a,b]=80$.",
+  "dap_an": "(4;80), (80;4), (16;20), (20;16)",
+  "loi_giai": "Ta có $(a,b)=4$ nên $\\begin{cases}a=4m\\\\b=4n\\end{cases}$ $(m,n\\in N^*;(m,n)=1)$.\nMà $[a,b]=80$ nên $4m\\cdot n=80\\Rightarrow m\\cdot n=20$.\nVì $(m,n)=1$ nên ta có bảng sau:\n$\\begin{array} {|c|c|c|c|c|}\n\\hline\nm&1&20&4&5\\\\\n\\hline\nn&20&1&5&4\\\\\n\\hline\na&4&80&16&20\\\\\n\\hline\nb&80&4&20&16\\\\\n\\hline\n\\end{array}$\nVậy $(a;b)\\in\\{(4;80);(80;4);(16;20);(20;16)\\}$.",
+  "nhan_cu": "Các bài toán nâng cao ứng dụng UCLN - BCNN › Tìm hai số tự nhiên a,b khi biết UCLN và BCNN"
+ },
+ {
+  "ma_cau": "T106040303023",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm hai số a, b biết rằng: $[a,b]=60$ và $a-b=5$.",
+  "dap_an": "(20;15)",
+  "loi_giai": "Gọi $(a,b)=k\\Rightarrow \\begin{cases}a=km\\\\b=kn\\end{cases}$ $(m,n\\in N^*;(m,n)=1)$.\nMà $[a,b]=60\\Rightarrow kmn=60\\Rightarrow k\\in \\text{U}(60)$.\nTa có: $a-b=5$\n$\\Rightarrow km-kn=5$\n$\\Rightarrow k(m-n)=5$\n$\\Rightarrow k\\in \\text{U}(5)$\n$\\Rightarrow k\\in \\text{UC}(60,5)=\\{1;5\\}$\nTH1: $k=1\\Rightarrow \\begin{cases}m-n=5\\\\m\\cdot n=60\\end{cases}$\n$60=1\\cdot 60=2\\cdot 30=3\\cdot 20=4\\cdot 15=5\\cdot 12=6\\cdot 10$.\nVậy không có $m,n$ thỏa mãn.\nTH2: $k=5\\Rightarrow \\begin{cases}m-n=1\\\\m\\cdot n=12\\end{cases}$\n$12=1\\cdot 12=2\\cdot 6=3\\cdot 4$.\n$\\Rightarrow (m;n)=(4;3)$.\nVậy $(a;b)=(20;15)$.",
+  "nhan_cu": "Các bài toán nâng cao ứng dụng UCLN - BCNN › Tìm hai số a,b khi biết BCNN và hiệu"
+ },
+ {
+  "ma_cau": "T106000000999",
+  "loai": "tu_luan",
+  "de": "Một người bán năm giỏ táo và lê. Mỗi giỏ chỉ đựng một loại quả táo hoặc lê, với số lượng trong năm giỏ như sau: 20 quả, 25 quả, 30 quả, 35 quả và 40 quả. Sau khi bán một giỏ lê trong năm giỏ, người ấy thấy số táo còn lại gấp 2 lần số lê còn lại.\na) Tổng số táo và lê ban đầu là 150 quả\nb) Số quả lê trong giỏ đã bán phải chia hết cho 3\nc) Người đó đã bán đi giỏ 30 quả lê và số quả còn lại là 120 quả\nd) Số quả táo ban đầu là 50 quả",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** sau khi bán, số táo gấp 2 lần số lê nên tổng số quả còn lại gấp 3 lần số lê còn lại, tức là chia hết cho 3.\n**Bước 1.** Cộng số quả của cả năm giỏ để kiểm tra mệnh đề a.\n**Bước 2.** Gọi tổng còn lại là hiệu của tổng ban đầu và giỏ đã bán, rồi dùng tính chất chia hết của một hiệu để biết giỏ đã bán phải có tính chất gì.\n**Bước 3.** Trong năm giỏ, tìm giỏ thoả mãn tính chất đó để xét mệnh đề b và c.\n**Bước 4.** Chia số quả còn lại thành phần táo và phần lê, rồi đối chiếu với các giỏ để tìm số táo ban đầu và xét mệnh đề d.\n**Thử lại:** số táo còn lại có đúng gấp 2 lần số lê còn lại hay không.\n**Phần 2. Trình bày**\na) Tổng số quả ban đầu là $20+25+30+35+40=150 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000165",
+  "loai": "tu_luan",
+  "de": "Cho $A=3^1+3^2+3^3+\\dots+3^{29}+3^{30}$. Chứng minh rằng $A\\vdots 13$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $3+3^2+3^3=3.(1+3+3^2)=3.13$ nên nhóm **3 số hạng liên tiếp**, mỗi nhóm đặt thừa số chung sẽ lộ ra $(1+3+3^2)$.\n**Bước 1.** Đếm số số hạng để chắc nhóm vừa đủ: số mũ chạy từ 1 đến 30 nên có $30-1+1=30$ số hạng, chia được thành 10 nhóm 3 số hạng.\n**Bước 2.** Trong mỗi nhóm, đặt luỹ thừa đứng đầu nhóm ra ngoài: $3^4+3^5+3^6=3^4.(1+3+3^2)$.\n**Bước 3.** Thay $1+3+3^2$ bằng 13 rồi đặt thừa số chung 13 cho cả tổng, suy ra tổng chia hết cho 13.\n**Phần 2. Trình bày**\n$A=3^1+3^2+3^3+\\dots+3^{29}+3^{30}$\n$A=(3+3^2+3^3)+(3^4+3^5+3^6)+\\dots+(3^{28}+3^{29}+3^{30})$\n$A=3.(1+3+3^2)+3^4.(1+3+3^2)+\\dots+3^{28}.(1+3+3^2)$\n$A=3.13+3^4.13+\\dots+3^{28}.13$\n$A=13.(3+3^4+\\dots+3 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000651",
+  "loai": "tu_luan",
+  "de": "Cho bảng dữ liệu ban đầu về sở thích của các bạn học sinh lớp 6A như sau:\n(Viết tắt: Nghe nhạc: N, đọc sách: S, cầu lông: C, đá bóng: B)\na) Có bao nhiêu học sinh lớp 6A trong bảng dữ liệu trên?\nb) Hãy lập bảng thống kê về sở thích của các bạn học sinh lớp 6A theo mẫu sau: bảng có hàng \"Sở thích\" gồm bốn cột Nghe nhạc, Đọc sách, Cầu lông, Đá bóng và hàng \"Số học sinh\" để trống.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** mỗi ô của bảng dữ liệu là sở thích của **đúng một học sinh**, nên đếm ô cho ý a) và kiểm đếm từng kí hiệu cho ý b).\n**Bước 1.** Đếm số ô của bảng dữ liệu (số hàng nhân số ô mỗi hàng): mỗi ô là một học sinh.\n**Bước 2.** Kiểm đếm lần lượt từng kí hiệu N, S, C, B trong bảng, vừa đếm vừa gạch để không sót, không trùng.\n**Bước 3.** Điền kết quả vào bảng thống kê theo đúng thứ tự cột: Nghe nhạc, Đọc sách, Cầu lông, Đá bóng.\n**Bước 4.** Kiểm tra lại: tổng số học sinh ở bảng thống kê phải bằng số học sinh đã đếm ở ý a).\n**Chú ý:** đừng nhầm hai chữ S (đọc sách) và B (đá bóng), vì cả hai xuất hiện rất nhiều lần.\n**Phần 2. Trình bày**\na) Bảng dữ liệu có 2 hàng, mỗi  …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000274",
+  "loai": "trac_nghiem",
+  "de": "Số 60 được phân tích ra thừa số nguyên tố là:",
+  "lua_chon": [
+   "$2.3.5$",
+   "$2^2.3.5$",
+   "$3.5^2$",
+   "$3^2.5$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** phân tích 60 ra thừa số nguyên tố rồi so với phương án, hoặc nhân ngược các phương án để loại.\n**Bước 1.** Chia 60 lần lượt cho các số nguyên tố nhỏ nhất có thể chia hết: 2, rồi 3, rồi 5.\n**Bước 2.** Gom các thừa số giống nhau thành luỹ thừa rồi viết tích theo thừa số tăng dần.\n**Bước 3.** Đối chiếu với bốn phương án, hoặc nhân ngược từng phương án để loại các phương án không bằng 60.\n**Chú ý:** phải gom thừa số lặp lại thành luỹ thừa, đừng bỏ sót thừa số 2 xuất hiện hai lần.\n**Phần 2. Trình bày**\n$60:2=30$\n$30:2=15$\n$15:3=5$\n$5:5=1$\n$\\Rightarrow 60=2^2.3.5$\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000103",
+  "loai": "tu_luan",
+  "de": "Cho $M=2+2^2+2^3+\\dots+2^{40}$. Chứng tỏ rằng $M\\vdots 6$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $6=2.3$, nên đặt thừa số 2 ra ngoài rồi nhóm **hai số hạng liên tiếp** để lộ ra $1+2=3$.\n**Bước 1.** Đặt thừa số chung 2 ra ngoài, trong ngoặc là tổng các luỹ thừa của 2 từ $2^0$ đến $2^{39}$.\n**Bước 2.** Đếm số số hạng trong ngoặc: số mũ chạy từ 0 đến 39 nên có $39-0+1=40$ số hạng, chia vừa đủ thành 20 nhóm hai số.\n**Bước 3.** Trong mỗi nhóm, đặt luỹ thừa đứng đầu nhóm ra ngoài để xuất hiện thừa số $(1+2)$, tức là 3.\n**Bước 4.** Đặt thừa số chung 3 cho cả ngoặc rồi ghép với thừa số 2 ở ngoài để thấy $M$ là bội của 6.\n**Phần 2. Trình bày**\n$M=2+2^2+2^3+\\dots+2^{40}$\n$M=2.(1+2+2^2+\\dots+2^{39})$\n$M=2.\\left[(1+2)+(2^2+2^3)+\\dots+(2^{38}+2^{39})\\right]$\n$M=2. …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000217",
+  "loai": "trac_nghiem",
+  "de": "Trong các khẳng định sau, khẳng định đúng là:",
+  "lua_chon": [
+   "Có 5 số nguyên tố bé hơn 10.",
+   "Mọi số chẵn đều không là số nguyên tố.",
+   "Các số chia hết cho 3 thì chia hết cho 9.",
+   "Số 1 là ước của mọi số tự nhiên."
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** xét **từng** khẳng định và tìm phản ví dụ cho các khẳng định sai.\n**Bước 1.** Với khẳng định A, liệt kê các số nguyên tố nhỏ hơn 10 rồi đếm xem có đủ 5 số không.\n**Bước 2.** Với khẳng định B và C, thử tìm một số cụ thể làm khẳng định đó sai (số chẵn nào là số nguyên tố, số nào chia hết cho 3 mà không chia hết cho 9).\n**Bước 3.** Với khẳng định D, nhớ định nghĩa ước rồi kiểm xem 1 có chia hết được mọi số tự nhiên không.\n**Phần 2. Trình bày**\nA sai vì các số nguyên tố bé hơn 10 là $2;3;5;7$, chỉ có 4 số.\nB sai vì 2 là số chẵn nhưng là số nguyên tố.\nC sai vì $3\\vdots3$ nhưng $3\\not\\vdots9$.\nD đúng vì mọi số tự nhiên đều chia hết cho 1.\nChọn D.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000412",
+  "loai": "tu_luan",
+  "de": "Tìm số nguyên $x$, biết: $60\\vdots x$; $90\\vdots x$ và $x\\ge 10$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $x$ chia hết được cả 60 lẫn 90 nghĩa là $x$ là **ước chung** của hai số, rồi lọc theo điều kiện $x\\ge 10$.\n**Bước 1.** Đọc kí hiệu: $60\\vdots x$ nghĩa là $x$ là ước của 60, tương tự $x$ là ước của 90, nên $x$ thuộc ƯC của hai số.\n**Bước 2.** Phân tích 60 và 90 ra thừa số nguyên tố để tìm ƯCLN của chúng.\n**Bước 3.** Viết ƯC của 60 và 90 là tập hợp các ước của ƯCLN vừa tìm.\n**Bước 4.** Chọn trong tập hợp đó các số thoả mãn $x\\ge 10$.\n**Chú ý:** dấu $\\ge$ nghĩa là lấy cả giá trị 10 nếu 10 là ước chung.\n**Phần 2. Trình bày**\nVì $x$ là số nguyên và $x\\ge 10$ nên $x$ là số tự nhiên khác 0.\nVì $60\\vdots x$ và $90\\vdots x$ nên $x\\in\\text{ƯC}(60;90)$.\n$60=2^2.3.5$; …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000490",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $x\\in\\mathbb{Z}$, sao cho: $48\\vdots x$, $120\\vdots x$, $168\\vdots x$ và $x$ lớn nhất.",
+  "dap_an": "24",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $x$ chia hết cả ba số và \"lớn nhất\" nên $x$ là **ƯCLN** của ba số.\n**Bước 1.** Hiểu đề: ba số đều chia hết cho $x$ nghĩa là $x$ là ước chung của 48, 120, 168.\n**Bước 2.** Vì $x$ lớn nhất nên lấy ước chung lớn nhất, rồi phân tích mỗi số ra thừa số nguyên tố.\n**Bước 3.** Lấy các thừa số nguyên tố chung với số mũ nhỏ nhất rồi nhân lại.\n**Chú ý:** đề yêu cầu lớn nhất nên lấy ước dương lớn nhất, không phải một ước bất kì.\n**Phần 2. Trình bày**\nVì $48\\vdots x$, $120\\vdots x$, $168\\vdots x$ nên $x\\in\\text{ƯC}(48;120;168)$, mà $x$ lớn nhất nên $x=\\text{ƯCLN}(48;120;168)$.\n$48=2^4.3$\n$120=2^3.3.5$\n$168=2^3.3.7$\n$\\text{ƯCLN}(48;120;168)=2^3.3=24$\nVậy $x=24$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000227",
+  "loai": "tu_luan",
+  "de": "Trong giải bóng đá của trường Lương Thế Vinh, khối 6 có 10 đội tham gia, các đội thi đấu theo thể thức vòng tròn một lượt (mỗi đội đấu đúng một trận với mỗi đội khác). Tại một thời điểm của giải đấu, bạn Huy thống kê số trận đã đấu của mỗi đội thì thấy không có hai đội nào có số trận đã đấu giống nhau. Nhưng bạn Dũng khẳng định ngay là kết quả thống kê của bạn Huy bị sai, vì ở bất cứ thời điểm nào luôn có ít nhất hai đội có cùng số trận đã đấu. Theo em, kết quả của bạn Huy đúng hay khẳng định của bạn Dũng đúng? Vì sao?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** nếu 10 đội có số trận đã đấu **đôi một khác nhau** thì số trận phải là $0;1;\\dots;9$, mỗi giá trị đúng một lần — rồi tìm **mâu thuẫn**.\n**Bước 1.** Mỗi đội chỉ có thể đấu với 9 đội còn lại, nên số trận đã đấu của một đội chỉ nhận các giá trị từ 0 đến 9, tức 10 giá trị.\n**Bước 2.** Giả sử Huy đúng: 10 đội có 10 số trận khác nhau nên số trận của 10 đội là đúng các số từ 0 đến 9, mỗi số xuất hiện một lần.\n**Bước 3.** Xét hai đội đặc biệt: đội đã đấu 9 trận và đội chưa đấu trận nào, rồi tìm điều vô lí giữa hai đội này.\n**Bước 4.** Từ mâu thuẫn, kết luận giả sử sai và nói bạn nào đúng.\n**Phần 2. Trình bày**\nMỗi đội thi đấu vòng tròn một lượt với 9 đội còn lại n …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000788",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $x$ biết: $x:8=24$.",
+  "dap_an": "192",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $x$ là **số bị chia** nên lấy thương nhân với số chia.\n**Bước 1.** Xác định vai trò của $x$: trong phép chia $x:8=24$, $x$ là số bị chia, 8 là số chia, 24 là thương.\n**Bước 2.** Dùng quy tắc thành phần: số bị chia bằng thương nhân với số chia.\n**Bước 3.** Thực hiện phép nhân để ra giá trị của $x$ rồi thử lại bằng phép chia.\nThử lại: $192:8=24$ (đúng).\n**Phần 2. Trình bày**\n$x:8=24$\n$x=24.8$\n$x=192$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000456",
+  "loai": "tu_luan",
+  "de": "Bạn An viết các số tự nhiên liên tiếp từ 1 đến 30 lên bảng sau đó thực hiện trò chơi như sau: Mỗi lần xoá hai số $a$, $b$ bất kì trên bảng và viết một số mới bằng $a+b+2$ lên bảng. Việc làm này của An được thực hiện lặp lại liên tục, hỏi sau 29 bước số cuối cùng còn lại trên bảng là bao nhiêu? Tại sao?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** không theo dõi từng số cụ thể mà theo dõi **tổng các số trên bảng** sau mỗi lần thay đổi.\n**Bước 1.** Tính tổng các số trên bảng lúc đầu bằng cách tính tổng dãy số liên tiếp từ 1 đến 30.\n**Bước 2.** Xét một lần xoá $a$, $b$ rồi viết $a+b+2$: so sánh tổng trước và sau để biết tổng tăng thêm bao nhiêu.\n**Bước 3.** Tính tổng tăng thêm sau 29 bước và đếm xem sau 29 bước trên bảng còn lại mấy số.\n**Bước 4.** Số còn lại duy nhất chính là tổng các số trên bảng lúc đó, cộng lại để ra kết quả.\n**Phần 2. Trình bày**\nTổng các số trên bảng lúc đầu là:\n$1+2+3+\\dots+30=(30+1).30:2=465$\nMỗi lần thực hiện, hai số $a$ và $b$ (tổng bằng $a+b$) bị xoá và thay bằng số $a+b+2$ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106020503012",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm x biết $12 + 3^{x+1} = 174 - 3^4$",
+  "dap_an": "3",
+  "loi_giai": "$12 + 3^{x+1} = 174 - 3^4$\n$12 + 3^{x+1} = 174 - 81$\n$12 + 3^{x+1} = 93$\n$3^{x+1} = 93 - 12$\n$3^{x+1} = 81 = 3^4$\n$x+1 = 4$\n$x = 3$",
+  "nhan_cu": "Thứ tự thực hiện phép tính › Tìm x liên quan đến biểu thức chứa ngoặc"
+ },
+ {
+  "ma_cau": "T1060000001008",
+  "loai": "tu_luan",
+  "de": "Cho tập hợp $T=\\{n\\in\\mathbb{N}\\mid 0<n\\le 20\\}$\na) Viết tập hợp $T$ bằng cách liệt kê các phần tử. Tập hợp $T$ có bao nhiêu phần tử.\nb) Dùng kí hiệu $(\\in;\\ \\notin)$ để viết các số 15 và 22 thuộc hay không thuộc tập hợp $T$.\nc) Tính tổng tất cả các phần tử của tập hợp $T$.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $T$ gồm các số tự nhiên **lớn hơn 0** và **không vượt quá 20**, nên bắt đầu từ 1 và dừng ở 20; tổng các số cách đều nhau tính được bằng cách ghép cặp.\n**Bước 1.** Đọc điều kiện $0<n\\le 20$: số 0 bị loại vì $n$ phải lớn hơn 0, còn số 20 được giữ vì $n$ có thể bằng 20; rồi liệt kê từng phần tử và đếm.\n**Bước 2.** Ý b: so từng số 15 và 22 với danh sách vừa liệt kê, số nào có mặt thì dùng $\\in$, số nào không có thì dùng $\\notin$.\n**Bước 3.** Ý c: các phần tử cách đều nhau 1 đơn vị, nên ghép số đầu với số cuối, số thứ hai với số kề cuối, … để mọi cặp có cùng một tổng.\n**Bước 4.** Đếm số cặp bằng cách lấy số phần tử chia cho 2, rồi lấy tổng của một cặp nhân với  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000254",
+  "loai": "tra_loi_ngan",
+  "de": "Thả một cụm bèo xuống ao sau 50 ngày thì bèo phủ kín diện tích mặt ao. Hỏi nếu thả 8 cụm bèo vào cái ao đó thì sau bao nhiêu ngày bèo phủ kín diện tích mặt ao? Biết rằng sau một ngày thì cụm bèo nở gấp đôi.",
+  "dap_an": "47",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** thả 8 cụm bèo ngay từ đầu giống như bèo đã nở sẵn từ 1 cụm được vài ngày, nên chỉ cần tìm số ngày bèo nở từ 1 cụm ra 8 cụm.\n**Bước 1.** Đọc quy luật: mỗi ngày số cụm bèo gấp đôi, nên ngày nào cũng nhân số cụm với 2.\n**Bước 2.** Tính xem một cụm bèo cần mấy ngày để nở thành 8 cụm bằng cách nhân đôi liên tiếp.\n**Bước 3.** Số ngày này là số ngày được \"đi trước\" khi thả sẵn 8 cụm, nên lấy 50 ngày trừ đi số ngày đó.\n**Phần 2. Trình bày**\nSau 1 ngày, 1 cụm bèo nở thành $1.2=2$ (cụm).\nSau 2 ngày, bèo có $2.2=4$ (cụm).\nSau 3 ngày, bèo có $4.2=8$ (cụm).\nVậy thả 8 cụm bèo ngay từ đầu cũng giống như thả 1 cụm bèo và đã qua 3 ngày.\nMà thả 1 cụm bèo thì sau 50 ngày bèo …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000752",
+  "loai": "tra_loi_ngan",
+  "de": "Để chuẩn bị cho năm học mới, bố đi siêu thị mua cho Phượng 20 quyển vở, 5 quyển sổ, 6 cái bút. Biết giá mỗi quyển vở là 15 nghìn đồng, giá mỗi quyển sổ là 30 nghìn đồng, giá mỗi cái bút là 5 nghìn đồng. Tính tổng số tiền mà bố của Phượng phải trả cho siêu thị.",
+  "dap_an": "480",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** tiền mỗi loại = số lượng nhân giá một đơn vị, rồi **cộng** tiền ba loại.\n**Bước 1.** Tiền mua vở bằng số quyển vở nhân với giá một quyển vở.\n**Bước 2.** Tính tương tự cho tiền mua sổ và tiền mua bút, giữ nguyên đơn vị nghìn đồng.\n**Bước 3.** Cộng tiền ba loại để ra tổng số tiền phải trả.\n**Chú ý:** các giá tiền đều tính theo nghìn đồng nên kết quả cũng tính theo nghìn đồng.\n**Phần 2. Trình bày**\nTổng số tiền bố của Phượng phải trả cho siêu thị là:\n$15.20+30.5+5.6=480$ (nghìn đồng)",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000642",
+  "loai": "tu_luan",
+  "de": "Biểu đồ tranh dưới đây cho biết số cuốn sách bán được trong bốn ngày.\na) Số cuốn sách ngày thứ ba bán được là 6 cuốn.\nb) Ngày thứ tư bán được nhiều hơn ngày thứ nhất là 25 cuốn sách.\nc) Tổng số cuốn sách cả bốn ngày bán được là 135 cuốn.\nd) Ngày thứ hai bán được ít hơn ngày thứ tư 1 cuốn.",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** dòng chú thích dưới biểu đồ cho biết mỗi kí hiệu là **5 cuốn sách**, nên phải đổi số kí hiệu thành số cuốn rồi mới so sánh.\n**Bước 1.** Đếm số kí hiệu ở từng hàng của biểu đồ tranh, mỗi hàng ứng với một ngày.\n**Bước 2.** Nhân số kí hiệu của từng ngày với 5 để ra số cuốn sách bán được trong ngày đó.\n**Bước 3.** Xét từng ý a), b), c), d): ý nào so sánh hay cộng thì dùng số cuốn vừa tính, rồi kết luận Đúng hay Sai.\n**Chú ý:** số 6 ở ý a) là số kí hiệu chứ không phải số cuốn sách.\n**Phần 2. Trình bày**\nNgày thứ nhất có 4 kí hiệu: $4.5=20$ (cuốn).\nNgày thứ hai có 8 kí hiệu: $8.5=40$ (cuốn).\nNgày thứ ba có 6 kí hiệu: $6.5=30$ (cuốn).\nNgày thứ tư có 9 kí hiệu: $9 …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1060000001034",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $x$, biết: $54\\vdots x$; $81\\vdots x$ và $x>10$.",
+  "dap_an": "27",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** $54\\vdots x$ và $81\\vdots x$ nghĩa là $x$ là ước chung của 54 và 81, rồi lọc theo điều kiện $x>10$.\n**Bước 1.** Đổi hai điều kiện chia hết thành câu nói về ước: $x$ vừa là ước của 54 vừa là ước của 81.\n**Bước 2.** Tìm ƯCLN của 54 và 81 bằng cách phân tích hai số ra thừa số nguyên tố, lấy thừa số chung với số mũ nhỏ nhất.\n**Bước 3.** Lập tập ước chung bằng cách liệt kê các ước của ƯCLN vừa tìm.\n**Bước 4.** Chọn trong tập ước chung những số lớn hơn 10 để ra giá trị của $x$.\n**Chú ý:** tập ước chung của hai số chính là tập ước của ƯCLN của chúng.\n**Phần 2. Trình bày**\nVì $54\\vdots x$ và $81\\vdots x$ nên $x\\in\\text{ƯC}(54;81)$.\nTa có $54=2.3^3$; $81=3^4$.\nSuy  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106000000981",
+  "loai": "trac_nghiem",
+  "de": "Thứ tự thực hiện các phép tính đối với biểu thức không có dấu ngoặc là :",
+  "lua_chon": [
+   "Nhân và chia $\\Rightarrow$ Lũy thừa $\\Rightarrow$ Cộng và trừ.",
+   "Lũy thừa $\\Rightarrow$ Nhân và chia $\\Rightarrow$ Cộng và trừ.",
+   "Cộng và trừ $\\Rightarrow$ Nhân và chia $\\Rightarrow$ Lũy thừa.",
+   "Lũy thừa $\\Rightarrow$ Cộng và trừ $\\Rightarrow$ Nhân và chia."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** phép tính nào \"mạnh\" hơn thì làm trước: luỹ thừa mạnh nhất, rồi đến nhân chia, cuối cùng là cộng trừ.\n**Bước 1.** Nhớ quy tắc cho biểu thức không có ngoặc: làm các phép tính theo thứ tự từ phép mạnh đến phép yếu.\n**Bước 2.** Xếp ba nhóm phép tính theo thứ tự đó: luỹ thừa, rồi nhân và chia, rồi cộng và trừ.\n**Bước 3.** Đối chiếu với bốn phương án và loại những phương án đặt sai thứ tự của các nhóm.\n**Chú ý:** nhân và chia cùng cấp, cộng và trừ cùng cấp, nên trong cùng một cấp thì làm từ trái sang phải.\n**Phần 2. Trình bày**\nVới biểu thức không có dấu ngoặc, ta thực hiện theo thứ tự: luỹ thừa, rồi nhân và chia, rồi cộng và trừ.\nChọn B.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T106030402009",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $5x - y \\vdots 23$. Chứng minh rằng $2x - 5y \\vdots 23$.",
+  "loi_giai": "Ta có: $5x - y \\vdots 23 \\Rightarrow 3(5x - y) \\vdots 23 \\Rightarrow 15x - 3y \\vdots 23$\nMà : $23(x - y) \\vdots 23$ nên $23(x - y) - (15x - 3y) \\vdots 23$\n$8x - 20y \\vdots 23$\n$\\Rightarrow 4(2x - 5y) \\vdots 23$\nMà $4 \\not\\vdots 23 \\Rightarrow 2x - 5y \\vdots 23$",
+  "nhan_cu": "Các bài toán nâng cao ứng dụng Quan hệ chia hết › Tính chia hết của cặp biểu thức ax+by và cx+dy"
+ },
+ {
+  "ma_cau": "T106000000952",
+  "loai": "tu_luan",
+  "de": "Cho số nguyên tố $p>3$ thỏa mãn $2p+1$ là số nguyên tố. Khi đó $4p+1$ là số nguyên tố hay hợp số? Vì sao?",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n**Mấu chốt:** số nguyên tố $p>3$ không chia hết cho 3 nên chia 3 dư 1 hoặc dư 2; giả thiết $2p+1$ nguyên tố loại một trường hợp, trường hợp còn lại cho biết $4p+1$ có chia hết cho 3 hay không.\n**Bước 1.** Nhận ra $p$ là số nguyên tố lớn hơn 3 nên không chia hết cho 3, tức là $p$ chỉ có thể chia 3 dư 1 hoặc dư 2.\n**Bước 2.** Xét trường hợp $p$ chia 3 dư 1: viết $p=3k+1$ rồi tính $2p+1$ để xem nó có mâu thuẫn với giả thiết $2p+1$ là số nguyên tố hay không.\n**Bước 3.** Xét trường hợp $p$ chia 3 dư 2: viết $p=3k+2$ rồi tính $4p+1$, đặt thừa số chung để xem biểu thức có chia hết cho 3 không.\n**Bước 4.** Một số chia hết cho 3 mà lớn hơn 3 thì có ít nhất ba ước, từ đó nêu kết  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

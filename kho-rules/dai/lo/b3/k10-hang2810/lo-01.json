@@ -1,0 +1,501 @@
+[
+ {
+  "ma_cau": "T110020102085",
+  "loai": "trac_nghiem",
+  "de": "Bạn Hoa làm một bài thi giữa kỳ I môn Toán. Đề thi gồm $35$ câu hỏi trắc nghiệm và $3$ câu hỏi tự luận. Khi làm đúng mỗi câu trắc nghiệm được $0,2$ điểm, làm đúng mỗi câu tự luận được $1$ điểm. Giả sử bạn Hoa làm đúng $x$ câu trắc nghiệm, $y$ câu tự luận. Viết bất phương trình bậc nhất $2$ ẩn $x,y$ để đảm bảo bạn Hoa được ít nhất $9$ điểm.",
+  "lua_chon": [
+   "$x+0,2y\\le 9$.",
+   "$0,2x+y\\le 9$.",
+   "$0,2x+y\\ge 9$.",
+   "$x+0,2y>9$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Số điểm bạn Hoa đạt được từ phần trắc nghiệm khi làm đúng $x$ câu là $0,2x$ (điểm).\nSố điểm bạn Hoa đạt được từ phần tự luận khi làm đúng $y$ câu là $1\\cdot y=y$ (điểm).\nTổng số điểm của bạn Hoa là $0,2x+y$ (điểm).\nĐể bạn Hoa đạt được ít nhất $9$ điểm, tổng số điểm phải lớn hơn hoặc bằng $9$, tức là\n$0,2x+y\\ge 9.$\nVậy bất phương trình cần tìm là $0,2x+y\\ge 9$.",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Miền nghiệm và nghiệm của bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110000000140",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $f\\left(x\\right)=\\begin{cases} 2x+3 khi x\\ge 1 \\\\ x^{2}+4 khi x<1 \\end{cases}$. Tính giá trị của biểu thức $f\\left(0\\right)+f\\left(3\\right)$?",
+  "lua_chon": [
+   "$13$.",
+   "$12$.",
+   "$7$.",
+   "$-5$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Vì $0<1$ nên $f\\left(0\\right)$ được tính theo công thức $x^{2}+4$, do đó $f\\left(0\\right)=0^{2}+4=4$.\nVì $3\\ge 1$ nên $f\\left(3\\right)$ được tính theo công thức $2x+3$, do đó $f\\left(3\\right)=2\\cdot 3+3=9$.\nVậy $f\\left(0\\right)+f\\left(3\\right)=4+9=13$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000430",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$có đồ thị như hình vẽ. Kết luận nào trong các kết luận sau là đúng?",
+  "lua_chon": [
+   "Hàm số đồng biến trên khoảng $\\left(2;+\\infty \\right)$.",
+   "Hàm số nghịch biến trên khoảng $\\left(2;+\\infty \\right)$.",
+   "Hàm số đồng biến trên khoảng $\\left(1;3\\right)$.",
+   "Hàm số đồng biến trên khoảng $\\left(-1;+\\infty \\right)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Quan sát đồ thị hàm số $y=f\\left(x\\right)$, ta thấy: - Trên khoảng $\\left(-\\infty;2\\right)$, đồ thị đi xuống từ trái sang phải nên hàm số nghịch biến trên khoảng $\\left(-\\infty;2\\right)$.\n- Trên khoảng $\\left(2;+\\infty \\right)$, đồ thị đi lên từ trái sang phải nên hàm số đồng biến trên khoảng $\\left(2;+\\infty \\right)$.\nDo đó, kết luận \" Hàm số đồng biến trên khoảng $\\left(2;+\\infty \\right)$\"\\ là đúng.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110020101071",
+  "loai": "trac_nghiem",
+  "de": "Trong một lạng ($100$ gam) thịt bò chứa khoảng $26$ gam protein và một lạng cá rô phi chứa khoảng $20$ gam protein. Trung bình trong một ngày, một người đàn ông cần tối thiểu $52$ gam protein. Gọi $x$, $y$ lần lượt là số lạng thịt bò và số lạng cá rô phi mà một người đàn ông nên ăn trong một ngày. Đâu là bất phương trình bậc nhất hai ẩn $x$, $y$ biểu diễn lượng protein cần thiết cho một người đàn ông trong một ngày? Biết rằng trong một ngày đó, người đàn ông chỉ dùng hai loại thịt bò và thịt cá rô phi.",
+  "lua_chon": [
+   "$26x+20y\\le 52$.",
+   "$13x+10y\\ge 26$.",
+   "$13x+10y>26$.",
+   "$26x+20y<52$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Lượng protein có trong $x$ lạng thịt bò là $26x \\left(gam\\right)$.\nLượng protein có trong $y$ lạng cá rô phi là $20y \\left(gam\\right)$.\nTổng lượng protein mà người đàn ông nạp vào trong một ngày từ hai loại thực phẩm trên là $26x+20y \\left(gam\\right)$.\nVì mỗi ngày người đàn ông cần tối thiểu $52 gam$ protein nên ta có bất phương trình\n$26x+20y\\ge 52.$\nChia cả hai vế của bất phương trình cho $2$, ta được\n$13x+10y\\ge 26.$\nVậy bất phương trình cần tìm là $13x+10y\\ge 26$.",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Nhận diện bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110000000139",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left(x\\right)$xác định trên đoạn $\\left[-2;3\\right]$ và có đồ thị như hình vẽ bên. Hỏi hàm số nghịch biến trên khoảng nào sau đây?",
+  "lua_chon": [
+   "$\\left(-2;-1\\right)$.",
+   "$\\left(-1;1\\right)$.",
+   "$\\left(1;2\\right)$.",
+   "$\\left(2;3\\right)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Ta quan sát đồ thị của hàm số trên đoạn $\\left[-2;3\\right]$.\nTrên khoảng $\\left(-2;-1\\right)$ đồ thị đi lên nên hàm số đồng biến.\nTrên khoảng $\\left(-1;1\\right)$ đồ thị là đoạn thẳng nằm ngang nên hàm số không đổi.\nTrên khoảng $\\left(1;2\\right)$ đồ thị đi xuống nên hàm số nghịch biến.\nTrên khoảng $\\left(2;3\\right)$ đồ thị đi lên nên hàm số đồng biến.\nVậy hàm số nghịch biến trên khoảng $\\left(1;2\\right)$.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000107",
+  "loai": "tu_luan",
+  "de": "a) Xác định tập hợp sau và biểu diễn chúng trên trục số: $(-4;1]\\cap [0;3)$. b) Cho các tập hợp khác rỗng $A=[m;10-m)$ và $B=(2m;2m+1]$. Tìm các giá trị nguyên dương của $m$ để hai tập hợp trên khác rỗng.",
+  "loi_giai": "a) Ta có $(-4;1]\\cap [0;3)=\\left[0;1\\right]$.\nBiểu diễn tập hợp $\\left[0;1\\right]$ trên trục số:\nb) Tập hợp $A=[m;10-m)$ khác rỗng khi và chỉ khi\n$m<10-m\\Leftrightarrow 2m<10\\Leftrightarrow m<5.$\nTập hợp $B=(2m;2m+1]$ khác rỗng khi và chỉ khi\n$2m<2m+1\\Leftrightarrow 0<1\\left(\\text{luon dung voi moi }m\\right).$\nDo đó, cả hai tập hợp $A$ và $B$ đều khác rỗng khi và chỉ khi $m<5$.\nVì $m$ là số nguyên dương nên $m\\in \\{1;2;3;4\\}$.\nVậy các giá trị nguyên dương cần tìm của $m$ là $m\\in \\{1;2;3;4\\}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000046",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số bậc hai $y=ax^{2}+bx+c$ ($a\\ne 0$) có đồ thị $\\left(P\\right)$. Đỉnh của $\\left(P\\right)$ được xác định bởi công thức nào?",
+  "lua_chon": [
+   "$I\\left(-\\dfrac{b}{2a};-\\dfrac{\\Delta }{4a}\\right)$.",
+   "$I\\left(-\\dfrac{c}{2a};-\\dfrac{\\Delta }{4a}\\right)$.",
+   "$I\\left(-\\dfrac{b}{a};-\\dfrac{\\Delta }{4a}\\right)$.",
+   "$I\\left(-\\dfrac{b}{2a};\\dfrac{\\Delta }{4a}\\right)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Đồ thị của hàm số bậc hai $y=ax^{2}+bx+c$ ($a\\ne 0$) là một parabol có tọa độ đỉnh được xác định bởi công thức:\n$x_{I}=-\\dfrac{b}{2a},y_{I}=-\\dfrac{\\Delta }{4a}.$\nVậy đỉnh của $\\left(P\\right)$ là $I\\left(-\\dfrac{b}{2a};-\\dfrac{\\Delta }{4a}\\right)$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000363",
+  "loai": "tra_loi_ngan",
+  "de": "Sau trận siêu bão YAGI, thành phố Hà nội dự định xây dựng một trạm nước sạch để cung cấp cho hai khu dân cư $A$ và $B$ nằm trên bãi bồi giữa sông Hồng được mô hình hóa như hình vẽ. Biết rằng: trạm nước sạch phải đặt tại vị trí $C$ trên bờ sông; $AB=8 km$, khoảng cách từ $A$ và $B$ đến bờ sông lần lượt là $AM=3 km$, $BN=6 km$; $M,N,C$ thẳng hàng. Gọi $T$ là tổng độ dài đường ống từ trạm nước $C$ đến $A$ và $B$. Tìm giá trị nhỏ nhất của $T$. (Kết quả làm tròn đến hàng phần chục)",
+  "dap_an": "11.7",
+  "loi_giai": "Vì $\\text{AM\\perp MN}$ và $\\text{BN\\perp MN}$ nên $AM$ và $BN$ là khoảng cách từ $A$, $B$ tới bờ sông.\nGọi $H$ là hình chiếu của $A$ lên $BN$, khi đó $AH=MN$ và $BH=BN-AM=6-3=3$.\nTrong tam giác vuông $ABH$ ta có\n$MN=AH=\\sqrt{AB^{2}-BH^{2}}=\\sqrt{8^{2}-3^{2}}=\\sqrt{55}.$\nLấy $A'$ đối xứng với $A$ qua đường bờ sông, khi đó $CA=CA'$ với mọi vị trí $C$ trên bờ.\nDo đó $T=CA+CB=CA'+CB\\ge A'B$, dấu bằng xảy ra khi $A'$, $C$, $B$ thẳng hàng.\nĐiểm $A'$ cách bờ $3$ km về phía đối diện $B$, nên khoảng cách thẳng đứng giữa $A'$ và $B$ là $3+6=9$ km, còn khoảng cách ngang là $MN=\\sqrt{55}$ km.\n$T_{\\min }=A'B=\\sqrt{MN^{2}+\\left(AM+BN\\right)^{2}}=\\sqrt{55+81}=\\sqrt{136}\\approx 11,66.$\nLàm tròn đến hàng phầ …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000433",
+  "loai": "tra_loi_ngan",
+  "de": "Tập xác định của hàm số $f\\left(x\\right)=\\sqrt{x+3}+\\sqrt{5-x}$ chứa bao nhiêu phần tử thuộc tập hợp số nguyên?",
+  "dap_an": "9",
+  "loi_giai": "Hàm số $f\\left(x\\right)=\\sqrt{x+3}+\\sqrt{5-x}$ xác định khi và chỉ khi\n$\\begin{cases} x+3\\ge 0 \\\\ 5-x\\ge 0 \\end{cases}\\Leftrightarrow \\begin{cases} x\\ge -3 \\\\ x\\le 5 \\end{cases}\\Leftrightarrow -3\\le x\\le 5.$\nDo đó tập xác định của hàm số là $D=\\left[-3;5\\right]$.\nCác giá trị nguyên thuộc tập xác định là $x\\in \\{-3;-2;-1;0;1;2;3;4;5\\}$.\nSố phần tử nguyên là $5-\\left(-3\\right)+1=9$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110010203169",
+  "loai": "tu_luan",
+  "de": "1) Cho hai tập hợp $A=\\left[-4;5\\right]$, $B=[1;+\\infty)$. Xác định các tập hợp $A\\cap B$ và $A\\cup B$. 2) Cho góc $\\alpha$ thoả $90^\\circ<\\alpha <180^\\circ$ và $\\sin \\alpha =\\dfrac{1}{4}$. Tính $\\cos \\alpha$ và $\\cot \\alpha$.",
+  "loi_giai": "1) Biểu diễn hai tập hợp $A=\\left[-4;5\\right]$ và $B=[1;+\\infty)$ trên trục số:\nDựa vào trục số, ta có:\n• Giao của hai tập hợp là $A\\cap B=\\left[1;5\\right]$.\n• Hợp của hai tập hợp là $A\\cup B=[-4;+\\infty)$.\n2) Vì $90^\\circ<\\alpha <180^\\circ$ nên điểm biểu diễn góc $\\alpha$ nằm ở góc phần tư thứ hai, do đó $\\cos \\alpha <0$.\nÁp dụng công thức $\\sin ^{2}\\alpha +\\cos ^{2}\\alpha =1$, ta có\n$\\cos ^{2}\\alpha =1-\\sin ^{2}\\alpha =1-\\left(\\dfrac{1}{4}\\right)^{2}=1-\\dfrac{1}{16}=\\dfrac{15}{16}.$\nVì $\\cos \\alpha <0$ nên\n$\\cos \\alpha =-\\sqrt{\\dfrac{15}{16}}=-\\dfrac{\\sqrt{15}}{4}.$\nSuy ra\n$\\cot \\alpha =\\dfrac{\\cos \\alpha }{\\sin \\alpha }=\\dfrac{-\\dfrac{\\sqrt{15}}{4}}{\\dfrac{1}{4}}=-\\sqrt{15}.$\nVậy $\\cos \\a …",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Biểu diễn tập hợp trên trục số, các phép toán trên tập hợp số"
+ },
+ {
+  "ma_cau": "T110010206039",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hai tập hợp $M=\\left[2m-1;2m+6\\right]$ và $N=\\left[m+1;m+7\\right]$ (với $m$ là tham số thực). Tính tổng tất cả các giá trị của $m$ để hợp của hai tập hợp $M$ và $N$ là một đoạn có độ dài bằng $9$?",
+  "dap_an": "3",
+  "loi_giai": "Ta có độ dài đoạn $M$ là $\\left(2m+6\\right)-\\left(2m-1\\right)=7$, độ dài đoạn $N$ là $\\left(m+7\\right)-\\left(m+1\\right)=6$.\nĐể hợp của hai tập hợp $M$ và $N$ là một đoạn thì $M\\cap N\\ne \\varnothing$, tức là\n$\\begin{cases} 2m-1\\le m+7 \\\\ m+1\\le 2m+6 \\end{cases}\\Leftrightarrow \\begin{cases} m\\le 8 \\\\ m\\ge -5 \\end{cases}\\Leftrightarrow -5\\le m\\le 8.$\nKhi đó $M\\cup N=[\\min \\left(2m-1,m+1\\right);\\max \\left(2m+6,m+7\\right)]$.\nTa xét hai trường hợp sau:\nTH 1: $2m-1\\le m+1\\Leftrightarrow m\\le 2$.\nKhi đó $\\min \\left(2m-1,m+1\\right)=2m-1$.\n- Nếu $m\\le 1$ thì $2m+6\\le m+7$, suy ra $M\\cup N=\\left[2m-1;m+7\\right]$.\nĐoạn $M\\cup N$ có độ dài bằng $9$ khi và chỉ khi\n$\\left(m+7\\right)-\\left(2m-1\\right)=9\\Lef …",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Bài toán tập hợp chứa tham số m"
+ },
+ {
+  "ma_cau": "T110020204063",
+  "loai": "tu_luan",
+  "de": "Trong một tuần, bạn An có thể thu xếp được tối đa $12$ giờ để tập thể dục giảm cân bằng hai môn: đạp xe và cử tạ tại phòng tập. Cho biết mỗi giờ đạp xe sẽ tiêu hao $350$ calo, mỗi giờ tập cử tạ sẽ tiêu hao $700$ calo. An muốn tiêu hao nhiều calo nhưng không vượt quá $7000$ calo một tuần. Do tuần này xe đạp bị hỏng nên bạn An không thể đạp xe được. Để lượng calo tiêu hao là nhiều nhất thì bạn An cần tập tạ trong bao nhiêu giờ?",
+  "loi_giai": "Gọi $y$ là số giờ bạn An tập cử tạ trong tuần ($y\\ge 0$).\nDo tuần này xe đạp bị hỏng nên số giờ đạp xe của An là $x=0$.\nTheo giả thiết, thời gian tập thể dục trong tuần tối đa là $12$ giờ nên\n$y\\le 12.$\nMỗi giờ tập tạ tiêu hao $700$ calo và tổng lượng calo tiêu hao không vượt quá $7000$ calo nên\n$700y\\le 7000\\Leftrightarrow y\\le 10.$\nKết hợp hai điều kiện trên ta được\n$0\\le y\\le 10.$\nLượng calo tiêu hao trong tuần là $F\\left(y\\right)=700y$ (calo).\nVì $F\\left(y\\right)$ là hàm số đồng biến theo $y$ nên lượng calo tiêu hao đạt mức nhiều nhất khi $y$ lớn nhất, tức là $y=10$ (giờ).\nKhi đó lượng calo tiêu hao là $700\\cdot 10=7000$ calo.\nVậy để lượng calo tiêu hao là nhiều nhất thì bạn An cần tập t …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm"
+ },
+ {
+  "ma_cau": "T110000000044",
+  "loai": "trac_nghiem",
+  "de": "Bảng biến thiên của hàm số $y=-2x^{2}+4x+1$ là bảng nào sau đây?",
+  "lua_chon": [
+   ".",
+   ".",
+   ".",
+   "."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Hàm số $y=-2x^{2}+4x+1$ có hệ số $a=-2<0$ nên đồ thị hàm số là một parabol có bề lõm hướng xuống dưới, tức là giới hạn của hàm số khi $x\\to \\pm \\infty$ là $-\\infty$.\nĐỉnh của parabol có hoành độ $x_{I}=-\\dfrac{b}{2a}=-\\dfrac{4}{2\\left(-2\\right)}=1$.\nTung độ đỉnh $y_{I}=-2\\left(1\\right)^{2}+4\\left(1\\right)+1=3$.\nDo đó, bảng biến thiên của hàm số có đỉnh tại $\\left(1;3\\right)$ và đi xuống $-\\infty$ ở hai phía.\nĐối chiếu với các hình, ta thấy Hình 3 là bảng biến thiên đúng.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000096",
+  "loai": "trac_nghiem",
+  "de": "Đồ thị hàm số $y=f\\left(x\\right)=\\begin{cases} 2x+3khi x\\le 2 \\\\ x^{2}-3khi x>2 \\end{cases}$ đi qua điểm có tọa độ nào sau đây?",
+  "lua_chon": [
+   "$\\left(0;-3\\right)$.",
+   "$\\left(2;1\\right)$.",
+   "$\\left(3;6\\right)$.",
+   "$\\left(2;5\\right)$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Kiểm tra toạ độ các điểm đã cho:\nVới điểm $\\left(0;-3\\right)$: vì $x=0\\le 2$ nên $f\\left(0\\right)=2\\cdot 0+3=3\\ne -3$.\nVới điểm $\\left(2;1\\right)$ và $\\left(2;5\\right)$: vì $x=2\\le 2$ nên $f\\left(2\\right)=2\\cdot 2+3=7\\ne 1$ và $f\\left(2\\right)\\ne 5$.\nVới điểm $\\left(3;6\\right)$: vì $x=3>2$ nên $f\\left(3\\right)=3^{2}-3=6$.\nVậy đồ thị hàm số đã cho đi qua điểm $\\left(3;6\\right)$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000215",
+  "loai": "tu_luan",
+  "de": "Tìm tập xác định của các hàm số sau: a. $y=\\dfrac{2x-3}{x^{2}-4}$ b. $y=\\sqrt{2x+1}$ c. $y=\\dfrac{\\sqrt{6-3x}+\\sqrt{5-x}}{\\sqrt{2x-1}\\left(x^{2}-5x+6\\right)}$",
+  "loi_giai": "a) Hàm số $y=\\dfrac{2x-3}{x^{2}-4}$ xác định khi và chỉ khi\n$x^{2}-4\\ne 0\\Leftrightarrow x^{2}\\ne 4\\Leftrightarrow x\\ne \\pm 2.$\nVậy tập xác định của hàm số là $D=\\mathbb{R}\\setminus \\{-2;2\\}$.\nb) Hàm số $y=\\sqrt{2x+1}$ xác định khi và chỉ khi\n$2x+1\\ge 0\\Leftrightarrow 2x\\ge -1\\Leftrightarrow x\\ge -\\dfrac{1}{2}.$\nVậy tập xác định của hàm số là $D=[-\\dfrac{1}{2};+\\infty)$.\nc) Hàm số $y=\\dfrac{\\sqrt{6-3x}+\\sqrt{5-x}}{\\sqrt{2x-1}\\left(x^{2}-5x+6\\right)}$ xác định khi và chỉ khi\n$\\begin{cases} 6-3x\\ge 0 \\\\ 5-x\\ge 0 \\\\ 2x-1>0 \\\\ x^{2}-5x+6\\ne 0 \\end{cases}\\Leftrightarrow \\begin{cases} x\\le 2 \\\\ x\\le 5 \\\\ x>\\dfrac{1}{2} \\\\ x\\ne 2 \\\\ x\\ne 3 \\end{cases}\\Leftrightarrow \\dfrac{1}{2}<x<2.$\nVậy tập xác đ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110020104013",
+  "loai": "tra_loi_ngan",
+  "de": "Bạn An tiết kiệm được $600$ nghìn đồng. Trong đợt ủng hộ đồng bào miền Trung bị lũ lụt vừa qua, bạn Nam đã ủng hộ $x$ tờ tiền loại $100$ nghìn đồng, $y$ tờ tiền loại $50$ nghìn đồng. Khi đó bất phương trình biểu diễn tổng số tiền mà bạn Nam đã ủng hộ có dạng $\\text{ax+by\\le c}$. Tính giá trị biểu thức $T=\\dfrac{c}{a+b}$.",
+  "dap_an": "4",
+  "loi_giai": "Số tiền ủng hộ từ $x$ tờ loại $100$ nghìn đồng là $100x$ (nghìn đồng).\nSố tiền ủng hộ từ $y$ tờ loại $50$ nghìn đồng là $50y$ (nghìn đồng).\nTổng số tiền ủng hộ không vượt quá số tiền tiết kiệm được là $600$ nghìn đồng nên ta có bất phương trình\n$100x+50y\\le 600.$\nĐối chiếu với dạng $\\text{ax+by\\le c}$ ta được $a=100$, $b=50$, $c=600$.\nDo đó\n$T=\\dfrac{c}{a+b}=\\dfrac{600}{100+50}=\\dfrac{600}{150}=4.$\nVậy $T=4$.",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Bài toán thực tế về bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020104018",
+  "loai": "tra_loi_ngan",
+  "de": "Mẹ cho bạn An $200$ nghìn đồng để mua vở và bút bi cho năm học mới. Khi đến nhà sách loại vở mà An hay dùng có giá $7$ nghìn đồng một quyển, loại bút bi An hay dùng có giá $4,5$ nghìn đồng một cây. Gọi $x$ và $y$ ($x,y\\in \\mathbb{N}$) lần lượt là số quyển vở và số bút bi bạn An mua. Khi đó $x$ và $y$ thỏa mãn bất phương trình $\\text{ax+9y\\le b}$. Biểu thức $5a+b$ có giá trị là bao nhiêu?",
+  "dap_an": "470",
+  "loi_giai": "Số tiền An dùng để mua $x$ quyển vở là $7x$ (nghìn đồng).\nSố tiền An dùng để mua $y$ cây bút bi là $4,5y$ (nghìn đồng).\nTổng số tiền An mua vở và bút bi là $7x+4,5y$ (nghìn đồng).\nVì mẹ cho An $200$ nghìn đồng nên số tiền chi trả không vượt quá $200$ nghìn đồng, ta có bất phương trình\n$7x+4,5y\\le 200.$\nNhân cả hai vế của bất phương trình với $2$, ta được\n$14x+9y\\le 400.$\nĐồng nhất với bất phương trình $\\text{ax+9y\\le b}$, ta suy ra $a=14$ và $b=400$.\nDo đó\n$5a+b=5\\cdot 14+400=70+400=470.$\nVậy giá trị của biểu thức $5a+b$ bằng $470$.",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Bài toán thực tế về bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110000000330",
+  "loai": "tra_loi_ngan",
+  "de": "Tam giác $ABC$ có hai đường trung tuyến $BM$, $CN$ vuông góc với nhau và có $BC=6$, góc $\\widehat{BAC}=30^\\circ$. Tính diện tích tam giác $ABC$ (Kết quả làm tròn đến hàng phần chục).",
+  "dap_an": "20.8",
+  "loi_giai": "Gọi $G$ là trọng tâm của tam giác $ABC$, đặt $a=BC=6$, $b=AC$, $c=AB$.\nVì $\\text{BM\\perp CN}$ tại $G$ nên tam giác $GBC$ vuông tại $G$.\nGọi $I$ là trung điểm của $BC$, ta có\n$GI=\\dfrac{1}{2}BC=\\dfrac{1}{2}\\cdot 6=3.$\nDo $G$ là trọng tâm tam giác $ABC$ nên độ dài đường trung tuyến $AI$ là\n$m_{a}\\text{=AI=3GI=3\\cdot 3=9.}$\nÁp dụng công thức tính độ dài đường trung tuyến, ta có\n$m_{a}^{2}=\\dfrac{2\\left(b^{2}+c^{2}\\right)-a^{2}}{4}\\Rightarrow 9^{2}=\\dfrac{2\\left(b^{2}+c^{2}\\right)-6^{2}}{4}\\Rightarrow b^{2}+c^{2}=180.$\nTheo định lí côsin trong tam giác $ABC$, ta có\n$a^{2}=b^{2}+c^{2}-2bc\\cos A\\Rightarrow 6^{2}=180-2bc\\cos 30^\\circ\\Rightarrow 36=180-\\sqrt{3}\\text{bc\\Rightarrow bc=48}\\sqrt{3}.$\nDi …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000242",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $3$ đường tròn nhỏ bằng nhau có bán kính $r=2$ nằm trong và tiếp xúc đường tròn lớn (như hình vẽ). Tam giác đều có đỉnh là $3$ tâm của đường tròn. Tính diện tích phần tô đậm (làm tròn đến $1$ chữ số sau dấu phẩy)",
+  "dap_an": "26.3",
+  "loi_giai": "Gọi $A,B,C$ lần lượt là tâm của ba đường tròn nhỏ có bán kính $r=2$, và $O$ là tâm của đường tròn lớn.\nBa đường tròn nhỏ tiếp xúc ngoài đôi một nên tam giác $ABC$ là tam giác đều có độ dài cạnh là\n$a=2r=2\\cdot 2=4.$\nKhoảng cách từ tâm $O$ (trọng tâm tam giác $ABC$) đến các đỉnh $A,B,C$ là\n$OA=OB=OC=\\dfrac{a\\sqrt{3}}{3}=\\dfrac{4\\sqrt{3}}{3}.$\nBán kính đường tròn lớn là\n$R=OA+r=\\dfrac{4\\sqrt{3}}{3}+2.$\nDiện tích của hình tròn lớn là\n$S_{\\left(O\\right)}=\\pi R^{2}=\\pi \\left(2+\\dfrac{4\\sqrt{3}}{3}\\right)^{2}=\\pi \\left(\\dfrac{28+16\\sqrt{3}}{3}\\right).$\nDiện tích tam giác đều $ABC$ là\n$S_{\\triangle ABC}=\\dfrac{a^{2}\\sqrt{3}}{4}=\\dfrac{4^{2}\\sqrt{3}}{4}=4\\sqrt{3}.$\nBa hình quạt tròn góc $60^\\circ$ c …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000067",
+  "loai": "trac_nghiem",
+  "de": "Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "Hai vectơ $\\overrightarrow{a}$ và $\\overrightarrow{b}$ được gọi là bằng nhau nếu chúng cùng phương và cùng độ dài.",
+   "Hai vectơ $\\overrightarrow{a}$ và $\\overrightarrow{b}$ được gọi là bằng nhau nếu chúng cùng độ dài.",
+   "Hai vectơ $\\overrightarrow{a}$ và $\\overrightarrow{b}$ được gọi là bằng nhau nếu chúng cùng hướng và cùng độ dài.",
+   "Hai vectơ $\\overrightarrow{a}$ và $\\overrightarrow{b}$ được gọi là bằng nhau nếu $\\overrightarrow{a}^{2}=\\overrightarrow{b}^{2}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Theo định nghĩa, hai vectơ $\\overrightarrow{a}$ và $\\overrightarrow{b}$ được gọi là bằng nhau, kí hiệu $\\overrightarrow{a}=\\overrightarrow{b}$, nếu chúng cùng hướng và cùng độ dài.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000095",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $f\\left(x\\right)$ có bảng biến thiên như sau\nHàm số nghịch biến trong khoảng nào dưới đây?",
+  "lua_chon": [
+   "$\\left(1;+\\infty \\right)$.",
+   "$\\left(0;1\\right)$.",
+   "$\\left(-2;2\\right)$.",
+   "$\\left(-\\infty;0\\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Dựa vào bảng biến thiên của hàm số $f\\left(x\\right)$:\nHàm số đồng biến trên các khoảng $\\left(-\\infty;0\\right)$ và $\\left(1;+\\infty \\right)$.\nHàm số nghịch biến trên khoảng $\\left(0;1\\right)$.\nVậy hàm số nghịch biến trong khoảng $\\left(0;1\\right)$.",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000147",
+  "loai": "tra_loi_ngan",
+  "de": "Giá cước của một hãng taxi được tính theo bảng giá như sau:\n$\\begin{array}{|c|} \\hline \\text{\\multicolumn6|c|BẢNG GIÁ CƯỚC} \\\\ \\hline \\text{\\begintabular@l@QUÃNG ĐƯỜNG} \\\\ \\hline x \\text{(km)} \\\\ \\hline \\end{array}$\n& $0<x\\le 0,3$ & $0,3<x\\le 2$ & $2<x\\le 10$ & $10<x\\le 25$ & $x>25$\n\\hline GIÁ CƯỚC & $5\\,000$ đồng &\n$\\begin{array}{|c|} \\hline 20 600 \\\\ \\hline \\text{đồng/km} \\\\ \\hline \\end{array}$\n&\n$\\begin{array}{|c|} \\hline 16 000 \\\\ \\hline \\text{đồng/km} \\\\ \\hline \\end{array}$\n&\n$\\begin{array}{|c|} \\hline 17 600 \\\\ \\hline \\text{đồng/km} \\\\ \\hline \\end{array}$\n&\n$\\begin{array}{|c|} \\hline 15 100 \\\\ \\hline \\text{đồng/km} \\\\ \\hline \\end{array}$\n\\hline \\end{tabular}\nTheo bảng giá trên, nếu hành khách đi quãng đường $1 km$ thì cách tính sẽ là $5 000+\\left(1-0,3\\right)\\times 20 600=19 420$ đồng. Bạn Bình đặt xe của hãng taxi trên để đi từ trường Nguyễn Khuyến về nhà ở Bình Dương với quãng đường là $20 km$. Hỏi số tiền mà bạn Bình phải trả là bao nhiêu?",
+  "dap_an": "344020",
+  "loi_giai": "Quãng đường $20$ km của bạn Bình được chia thành các chặng theo bảng giá cước.\nChặng $0<x\\le 0,3$: tính giá cố định $5\\,000$ đồng.\nChặng $0,3<x\\le 2$ dài $2-0,3=1,7$ km, tiền cước là $1,7\\times 20 600=35 020$ đồng.\nChặng $2<x\\le 10$ dài $10-2=8$ km, tiền cước là $8\\times 16 000=128 000$ đồng.\nPhần còn lại thuộc chặng $10<x\\le 25$ dài $20-10=10$ km, tiền cước là $10\\times 17 600=176 000$ đồng.\nDo đó tổng số tiền phải trả là\n$5 000+35 020+128 000+176 000=344 020$\n(đồng)\n$.$\nVậy bạn Bình phải trả $344 020$ đồng.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000313",
+  "loai": "tu_luan",
+  "de": "Vẽ parabol $\\left(P\\right) :y=-x^{2}+4x-5$.",
+  "loi_giai": "Tập xác định $D=\\mathbb{R}$.\nToạ độ đỉnh $I\\left(2;-1\\right)$.\nTrục đối xứng là đường thẳng $x=2$.\nVì $a=-1<0$ nên bề lõm của parabol quay xuống dưới.\nBảng biến thiên:\nHàm số đồng biến trên khoảng $\\left(-\\infty;2\\right)$ và nghịch biến trên khoảng $\\left(2;+\\infty \\right)$.\nBảng giá trị:\n$\\begin{array}{|c|c|c|c|c|c|} \\hline x & 0 & 1 & 2 & 3 & 4 \\\\ \\hline y & -5 & -2 & -1 & -2 & -5 \\\\ \\hline \\end{array}$\nĐồ thị hàm số:",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000393",
+  "loai": "tu_luan",
+  "de": "1) Cho tam giác $ABC$ với $AB=1,BC=3,\\hat{B}=60^\\circ$. Tính độ dài cạnh $AC$ và diện tích của tam giác $ABC$. 2) Cho tam giác $ABC$ có các góc thỏa mãn $\\sin A=2\\sin C\\cos B$. Chứng minh rằng tam giác $\\triangle ABC$ là một tam giác cân.",
+  "loi_giai": "1) Hình vẽ minh hoạ tam giác $ABC$:\nÁp dụng định lí côsin trong tam giác $ABC$, ta có\n$AC^{2}=AB^{2}+BC^{2}\\text{-2\\cdot AB\\cdot BC\\cdot }\\cos B.$\nThay số vào ta được:\n$AC^{2}=1^{2}+3^{2}-2\\cdot 1\\cdot 3\\cdot \\cos 60^\\circ=1+9-6\\cdot \\dfrac{1}{2}\\text{=7\\Rightarrow AC=}\\sqrt{7}.$\nDiện tích tam giác $ABC$ là\n$S=\\dfrac{1}{2}\\text{\\cdot AB\\cdot BC\\cdot }\\sin B=\\dfrac{1}{2}\\cdot 1\\cdot 3\\cdot \\sin 60^\\circ=\\dfrac{3}{2}\\cdot \\dfrac{\\sqrt{3}}{2}=\\dfrac{3\\sqrt{3}}{4}.$\nVậy $AC=\\sqrt{7}$ và $S=\\dfrac{3\\sqrt{3}}{4}$.\n2) Đặt $a=BC$, $b=AC$, $c=AB$ và gọi $R$ là bán kính đường tròn ngoại tiếp tam giác $ABC$.\nTheo định lí sin, ta có\n$\\sin A=\\dfrac{a}{2R},\\sin C=\\dfrac{c}{2R}.$\nTheo hệ quả của định lí cô …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000306",
+  "loai": "trac_nghiem",
+  "de": "Tập xác định $D$ của hàm số $y=\\sqrt{2x-1}$ là",
+  "lua_chon": [
+   "$D=\\left(0;+\\infty \\right)$.",
+   "$D=[\\dfrac{1}{2};+\\infty)$.",
+   "$D=\\left(\\dfrac{1}{2};+\\infty \\right)$.",
+   "$D=[0;+\\infty)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Hàm số $y=\\sqrt{2x-1}$ xác định khi và chỉ khi\n$2x-1\\ge 0\\Leftrightarrow 2x\\ge 1\\Leftrightarrow x\\ge \\dfrac{1}{2}.$\nVậy tập xác định của hàm số là $D=[\\dfrac{1}{2};+\\infty)$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000042",
+  "loai": "trac_nghiem",
+  "de": "Tập xác định của hàm số $y=\\dfrac{\\sqrt{x+1}}{\\left(x^{2}-5x+6\\right)\\sqrt{4-x}}$ là:",
+  "lua_chon": [
+   "$[-1;4)$.",
+   "$[-1;4)\\setminus \\{2;3\\}$.",
+   "$(-1;4]\\setminus \\{2;3\\}$.",
+   "$\\left(-1;4\\right)\\setminus \\{2;3\\}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Điều kiện xác định của hàm số là\n$\\begin{cases} x+1\\ge 0 \\\\ 4-x>0 \\\\ x^{2}-5x+6\\ne 0 \\end{cases}$\n$\\Leftrightarrow \\begin{cases} x\\ge -1 \\\\ x<4 \\\\ x\\ne 2 \\\\ x\\ne 3 \\end{cases}$\n$\\Leftrightarrow \\begin{cases} -1\\le x<4 \\\\ x\\ne 2 \\\\ x\\ne 3. \\end{cases}$\nVậy tập xác định của hàm số là $D=[-1;4)\\setminus \\{2;3\\}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110020104016",
+  "loai": "tra_loi_ngan",
+  "de": "Một đội sản xuất cần $55$ giờ để làm xong một sản phẩm loại (I) và $45$ giờ để làm xong một sản phẩm loại (II). Biết thời gian tối đa cho việc sản xuất hai sản phẩm trên là $180$ giờ. Nếu $x,y$ ($x,y\\in \\mathbb{N}$) lần lượt là số sản phẩm loại (I), loại (II) mà đội làm được trong thời gian cho phép thì $x,y$ phải thỏa mãn bất phương trình $\\text{ax+9y\\le b}$ ($a,b\\in \\mathbb{N}$). Tính $T=2a+b$.",
+  "dap_an": "58",
+  "loi_giai": "Thời gian để đội sản xuất hoàn thành $x$ sản phẩm loại (I) là $55x$ (giờ).\nThời gian để đội sản xuất hoàn thành $y$ sản phẩm loại (II) là $45y$ (giờ).\nVì tổng thời gian sản xuất tối đa là $180$ giờ nên $x,y$ thoả mãn bất phương trình:\n$55x+45y\\le 180.$\nChia cả hai vế của bất phương trình cho $5$, ta được:\n$11x+9y\\le 36.$\nĐồng nhất với bất phương trình $\\text{ax+9y\\le b}$ ($a,b\\in \\mathbb{N}$), ta có $a=11$ và $b=36$.\nDo đó:\n$T=2a+b=2\\cdot 11+36=58.$\nVậy $T=58$.",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Bài toán thực tế về bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110000000262",
+  "loai": "trac_nghiem",
+  "de": "Tập xác định của hàm số $y=\\sqrt{8-2x}-x$ là:",
+  "lua_chon": [
+   "$(-\\infty;4]$.",
+   "$[4;+\\infty)$.",
+   "$\\left[0;4\\right]$.",
+   "$[0;+\\infty)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "Hàm số $y=\\sqrt{8-2x}-x$ xác định khi và chỉ khi:\n$8-2x\\ge 0\\Leftrightarrow 2x\\le 8\\Leftrightarrow x\\le 4.$\nVậy tập xác định của hàm số là $D=(-\\infty;4]$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110020204099",
+  "loai": "tu_luan",
+  "de": "Trong 1 lạng thịt bò chứa $24 g$ protein, 1 lạng cá chứa $20 g$ protein. Trung bình trong một ngày, một người đàn ông cần không quá $89 g$ protein. Theo lời khuyên của bác sĩ, để tốt cho sức khỏe thì không nên ăn thịt nhiều hơn cá. Gọi $x,y$ lần lượt là số lạng thịt bò, lạng cá mà một người đàn ông ăn trong một ngày. Hãy viết các bất phương trình biểu thị các điều kiện của bài toán thành một hệ bất phương trình.",
+  "loi_giai": "Theo đề bài, gọi $x,y$ lần lượt là số lạng thịt bò và số lạng cá mà người đàn ông ăn trong một ngày.\n- Vì lượng thực phẩm không thể âm nên ta có các điều kiện:\n$x\\ge 0,y\\ge 0.$\n- Lượng protein có trong $x$ lạng thịt bò là $24x \\left(g\\right)$ và trong $y$ lạng cá là $20y \\left(g\\right)$.\nTổng lượng protein trong một ngày là $24x+20y \\left(g\\right)$.\nVì nhu cầu protein trung bình trong một ngày không quá $89 g$ nên ta có bất phương trình:\n$24x+20y\\le 89.$\n- Để tốt cho sức khỏe, không nên ăn thịt nhiều hơn cá, tức là số lạng thịt bò phải nhỏ hơn hoặc bằng số lạng cá:\n$x\\le y\\Leftrightarrow x-y\\le 0.$\nKết hợp các điều kiện trên, hệ bất phương trình biểu thị bài toán là:\n$\\begin{cases} x\\ge 0 \\\\ …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm"
+ },
+ {
+  "ma_cau": "T110000000048",
+  "loai": "trac_nghiem",
+  "de": "Một chiếc cổng hình parabol bao gồm một cửa chính hình chữ nhật là $CDEF$ ở giữa như hình vẽ. Biết chiều dài $CD=6 m$, chiều rộng $DE=4 m$, chiều cao của cổng là $6 m$. Hãy tính khoảng cách giữa hai điểm $A$ và $B$ (xem hình vẽ bên dưới).",
+  "lua_chon": [
+   "$3\\sqrt{3} m$.",
+   "$15 m$.",
+   "$27 m$.",
+   "$6\\sqrt{3} m$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Chọn hệ trục tọa độ $Oxy$ sao cho gốc tọa độ $O$ là trung điểm của đoạn thẳng $CD$, trục $Ox$ đi qua $A,C,D,B$ và trục $Oy$ đi qua đỉnh $G$ của parabol.\nVì $CD=6 m$ nên $C\\left(-3;0\\right)$ và $D\\left(3;0\\right)$.\nCửa chữ nhật $CDEF$ có chiều cao $DE=4 m$ nên tọa độ điểm $E$ là $\\left(3;4\\right)$.\nParabol có đỉnh nằm trên trục tung nên phương trình có dạng $y=ax^{2}+c$.\nChiều cao của cổng là $6 m$ nên tung độ đỉnh $G$ là $y_{G}=6$. Suy ra parabol đi qua điểm $\\left(0;6\\right)$, do đó $c=6$.\nVậy phương trình parabol có dạng $y=ax^{2}+6$.\nMặt khác, parabol đi qua điểm $E\\left(3;4\\right)$ nên ta có:\n$4=a\\left(3\\right)^{2}+6\\Leftrightarrow 9a=-2\\Leftrightarrow a=-\\dfrac{2}{9}.$\nDo đó, phương trì …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000039",
+  "loai": "tu_luan",
+  "de": "a) Biểu diễn miền nghiệm của bất phương trình $2x-y\\le 2$.\nb) Có $2$ nhóm máy A và B dùng để sản xuất ra hai loại sản phẩm I và II. Số máy của nhóm A và B lần lượt là $10$, $12$. Số máy của từng nhóm dùng để sản xuất ra một đơn vị sản phẩm thuộc mỗi loại được cho trong bảng sau:\n$\\begin{array}{|c|c|c|} \\hline \\text{\\multirow2*Nhóm} & \\text{\\multicolumn2c|Số máy trong từng nhóm để sản xuất ra một đơn vị sản phẩm} & \\\\ \\hline \\text{\\cline2-3} & \\text{Loại I} & \\text{Loại II} \\\\ \\hline \\text{A} & \\text{2} & \\text{2} \\\\ \\hline \\text{B} & \\text{2} & \\text{4} \\\\ \\hline \\end{array}$\nMột đơn vị sản phẩm loại I lãi $30$ nghìn đồng, một đơn vị sản phẩm loại II lãi $50$ nghìn đồng. Để cho tổng số tiền lãi thu được là cao nhất thì cần sản xuất $x$ sản phẩm loại I và $y$ sản phẩm loại II. Tìm $x$ và $y$.",
+  "loi_giai": "a) Vẽ miền nghiệm của bất phương trình $2x-y\\le 2$:\nĐường thẳng $\\Delta :2x-y=2$ đi qua các điểm $\\left(1;0\\right)$ và $\\left(0;-2\\right)$.\nLấy điểm $O\\left(0;0\\right)$ không thuộc $\\Delta$, ta có $2\\left(0\\right)-0=0\\le 2$ (đúng).\nVậy miền nghiệm của bất phương trình là nửa mặt phẳng bờ $\\Delta$ có chứa điểm $O\\left(0;0\\right)$ (kể cả đường thẳng $\\Delta$).\nb) Gọi $x,y$ lần lượt là số sản phẩm loại I và loại II cần sản xuất ($x\\ge 0,y\\ge 0$ và $x,y\\in \\mathbb{N}$).\nThời gian hoạt động của nhóm máy A là $2x+2y$, điều kiện là $2x+2y\\le 10\\Leftrightarrow x+y\\le 5$.\nThời gian hoạt động của nhóm máy B là $2x+4y$, điều kiện là $2x+4y\\le 12\\Leftrightarrow x+2y\\le 6$.\nTổng tiền lãi thu được là $F\\l …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000212",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $f\\left(x\\right)=\\begin{cases} \\dfrac{x^{2}-5x+6}{x-3};x<3 \\\\ 2x+1;x\\ge 3 \\end{cases}$. Tính $f\\left(4\\right)$.",
+  "lua_chon": [
+   "$f\\left(4\\right)=2$.",
+   "$f\\left(4\\right)=9$.",
+   "$f\\left(4\\right)=7$.",
+   "Không xác định."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Vì $x=4\\ge 3$ nên giá trị của hàm số $f\\left(x\\right)$ được tính theo công thức $f\\left(x\\right)=2x+1$.\nThay $x=4$ vào biểu thức, ta được\n$f\\left(4\\right)=2\\cdot 4+1=9.$\nVậy $f\\left(4\\right)=9$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000261",
+  "loai": "trac_nghiem",
+  "de": "Tập xác định $D$ của hàm số $y=\\dfrac{x-4}{x+2}$ là:",
+  "lua_chon": [
+   "$D=\\mathbb{R}$.",
+   "$D=\\mathbb{R}\\setminus \\{-2\\}$.",
+   "$D=[-2;+\\infty)$.",
+   "$D=(-\\infty;-2]$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Hàm số $y=\\dfrac{x-4}{x+2}$ xác định khi và chỉ khi:\n$x+2\\ne 0\\Leftrightarrow x\\ne -2.$\nVậy tập xác định của hàm số là $D=\\mathbb{R}\\setminus \\{-2\\}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000308",
+  "loai": "trac_nghiem",
+  "de": "Tập xác định của hàm số $f\\left(x\\right)=\\dfrac{4}{x-5}$ là",
+  "lua_chon": [
+   "$D=\\{5\\}$.",
+   "$D=\\mathbb{R}$.",
+   "$D=\\mathbb{R}\\setminus \\{4\\}$.",
+   "$D=\\mathbb{R}\\setminus \\{5\\}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Hàm số $f\\left(x\\right)=\\dfrac{4}{x-5}$ xác định khi và chỉ khi\n$x-5\\ne 0\\Leftrightarrow x\\ne 5.$\nVậy tập xác định của hàm số là $D=\\mathbb{R}\\setminus \\{5\\}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110020104017",
+  "loai": "tra_loi_ngan",
+  "de": "Nhân ngày Quốc tế Thiếu nhi 1-6, một rạp chiếu phim phục vụ các khán giả một bộ phim hoạt hình. Vé được bán ra có hai loại: Loại 1 (dành cho trẻ từ 6-13 tuổi): $50 000$ đồng/vé. Loại 2 (dành cho người trên 13 tuổi): $100 000$ đồng/vé. Người ta tính toán rằng, để không phải bù lỗ thì số tiền vé thu được ở rạp chiếu phim này phải đạt tối thiểu $40$ triệu đồng. Nếu gọi $x,y$ ($x,y\\in \\mathbb{N}$) lần lượt là số vé bán ra của loại 1, loại 2. Bất phương trình trong trường hợp rạp chiếu phim không phải bù lỗ là $\\text{x+ay\\ge b}$ ($a,b\\in \\mathbb{N}$). Tính $P=a-b$.",
+  "dap_an": "-798",
+  "loi_giai": "Số tiền thu được từ việc bán $x$ vé loại 1 là $50 000x$ (đồng).\nSố tiền thu được từ việc bán $y$ vé loại 2 là $100 000y$ (đồng).\nTổng số tiền vé thu được là $50 000x+100 000y$ (đồng).\nĐể rạp chiếu phim không phải bù lỗ thì số tiền vé thu được tối thiểu là $40$ triệu đồng, tức là:\n$50 000x+100 000y\\ge 40 000 000.$\nChia cả hai vế của bất phương trình cho $50 000$, ta được bất phương trình tương đương:\n$x+2y\\ge 800.$\nĐối chiếu với dạng $\\text{x+ay\\ge b}$, ta suy ra:\n$a=2,b=800.$\nVậy giá trị của biểu thức $P=a-b$ là:\n$P=2-800=-798.$",
+  "nhan_cu": "Bất phương trình bậc nhất 2 ẩn › Bài toán thực tế về bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110000000280",
+  "loai": "tu_luan",
+  "de": "a) Bạn Lan mang $150 000$đồng đi nhà sách để mua một số quyển vở và bút. Biết rằng giá một quyển vở là $8 000$ đồng và giá của một cây bút là $6 000$ đồng. Bạn Lan có thể mua được tối đa bao nhiêu quyển vở nếu bạn đã mua $10$ cây bút.\nb) Một xưởng sản xuất hai loại sản phẩm là sản phẩm loại I và sản phẩm loại II:\n• Mỗi kg sản phẩm loại I cần $2 kg$ nguyên liệu và $30$ giờ, thu lời được $40$ nghìn.\n• Mỗi kg sản phẩm loại II cần $4 kg$ nguyên liệu và $15$ giờ, thu lời được $30$ nghìn. Xưởng có $200 kg$ nguyên liệu và $1200$ giờ làm việc tối đa. Nên sản xuất mỗi loại sản phẩm bao nhiêu để có mức lời cao nhất?",
+  "loi_giai": "a) Số tiền bạn Lan đã dùng để mua $10$ cây bút là\n$10\\cdot 6 000=60 000$\n(đồng)\n$.$\nSố tiền còn lại của bạn Lan để mua vở là\n$150 000-60 000=90 000$\n(đồng)\n$.$\nGọi $x$ ($x\\in \\mathbb{N}$) là số quyển vở bạn Lan có thể mua.\nSố tiền mua $x$ quyển vở là $8 000x$ (đồng).\nVì số tiền mua vở không vượt quá số tiền còn lại nên ta có bất phương trình:\n$8 000x\\le 90 000\\Leftrightarrow x\\le \\dfrac{90 000}{8 000}\\Leftrightarrow x\\le 11,25.$\nVì $x$ là số tự nhiên nên giá trị lớn nhất của $x$ là $11$.\nVậy bạn Lan có thể mua được tối đa $11$ quyển vở.\nb) Gọi $x$ (kg) và $y$ (kg) lần lượt là khối lượng sản phẩm loại I và loại II xưởng cần sản xuất ($x\\ge 0,y\\ge 0$).\nĐể sản xuất $x kg$ sản phẩm loại I và $y  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110020202094",
+  "loai": "tra_loi_ngan",
+  "de": "Biết rằng miền nghiệm của hệ bất phương trình $\\begin{cases} x+y-4\\le 0 \\\\ x-y+4\\ge 0 \\\\ y\\ge 0 \\\\ y-\\dfrac{a}{b}\\le 0 \\end{cases}$ (với $a,b\\in \\mathbb{N}^{∗}$ và $\\dfrac{a}{b}$ tối giản) là một miền tứ giác có diện tích bằng $\\dfrac{80}{9}$. Tính tổng $a+b$.",
+  "dap_an": "7",
+  "loi_giai": "Đặt $k=\\dfrac{a}{b}>0$. Hệ bất phương trình đã cho tương đương với $\\begin{cases} y\\le 4-x \\\\ y\\le x+4 \\\\ y\\ge 0 \\\\ y\\le k \\end{cases}$.\nNếu bỏ tạm điều kiện $y\\le k$ thì miền nghiệm là tam giác có ba đỉnh $\\left(-4;0\\right)$, $\\left(4;0\\right)$ và $\\left(0;4\\right)$, trong đó $\\left(0;4\\right)$ là giao điểm của hai đường thẳng $y=x+4$ và $y=4-x$.\nCắt tam giác đó bởi điều kiện $y\\le k$ với $0<k<4$ ta được một hình thang có đáy lớn nằm trên trục hoành dài $8$, đáy nhỏ nằm trên đường thẳng $y=k$ dài $\\left(4-k\\right)-\\left(k-4\\right)=8-2k$ và chiều cao bằng $k$. Diện tích hình thang đó là\n$S=\\dfrac{8+\\left(8-2k\\right)}{2}\\cdot k=\\left(8-k\\right)k.$\nTheo giả thiết $S=\\dfrac{80}{9}$ nên\n$\\left(8 …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Miền nghiệm của hệ bất phương trình bậc nhất 2 ẩn"
+ },
+ {
+  "ma_cau": "T110020204093",
+  "loai": "tu_luan",
+  "de": "1) Biểu diễn miền nghiệm của bất phương trình $x+2y\\le 4$ trên mặt phẳng tọa độ $Oxy$. 2) Một cơ sở sản xuất dùng ba loại nguyên liệu A, B, C để sản xuất ra hai loại sản phẩm X và Y. Để sản xuất $1 kg$ mỗi loại sản phẩm X hoặc Y phải dùng một số nguyên liệu khác nhau. Tổng số kilôgam nguyên liệu mỗi loại mà cơ sở đang có và số kilôgam từng loại nguyên liệu cần thiết để sản xuất ra $1 kg$ sản phẩm mỗi loại được cho trong bảng sau:\n$\\begin{array}{|c|c|c|c|} \\hline \\text{\\multirow2*Loại nguyên liệu} & \\text{Số kilôgam} & \\text{Số kilôgam nguyên liệu} & \\text{Số kilôgam nguyên liệu} \\\\ \\hline & \\text{nguyên liệu} & \\text{cần để sản xuất 1 kg} & \\text{cần để sản xuất 1 kg} \\\\ \\hline & \\text{đang có} & \\text{sản phẩm X} & \\text{sản phẩm Y} \\\\ \\hline \\text{A} & 10 & 2 & 2 \\\\ \\hline \\text{B} & 4 & 0 & 2 \\\\ \\hline \\text{C} & 12 & 2 & 4 \\\\ \\hline \\end{array}$\nBiết $1 kg$ sản phẩm X có lãi $4$ triệu đồng và $1 kg$ sản phẩm Y có lãi $5$ triệu đồng. a) Gọi $x,y$ (kg) lần lượt là khối lượng các sản phẩm X và Y mà cơ sở lên kế hoạch sản xuất. Hãy lập hệ bất phương trình biểu diễn mối quan hệ giữa $x$ và $y$ theo các dữ kiện nêu trên. b) Cơ sở sản xuất trên thu được số tiền lãi cao nhất bằng bao nhiêu?",
+  "loi_giai": "1) Vẽ đường thẳng $d :x+2y=4$ đi qua hai điểm $\\left(4;0\\right)$ và $\\left(0;2\\right)$.\nChọn gốc tọa độ $O\\left(0;0\\right)$ không thuộc đường thẳng $d$. Thay tọa độ điểm $O\\left(0;0\\right)$ vào vế trái của bất phương trình, ta được\n$0+2\\cdot 0=0\\le 4$\n(mệnh đề đúng)\n$.$\nDo đó, miền nghiệm của bất phương trình $x+2y\\le 4$ là nửa mặt phẳng bờ $d$ chứa gốc tọa độ $O\\left(0;0\\right)$ (kể cả bờ $d$).\n2) a) Gọi $x,y$ (kg) lần lượt là khối lượng các sản phẩm X và Y mà cơ sở lên kế hoạch sản xuất ($x\\ge 0,y\\ge 0$).\nTheo giả thiết: - Tổng số kilôgam nguyên liệu loại A cần dùng là $2x+2y\\le 10\\Leftrightarrow x+y\\le 5$.\n- Tổng số kilôgam nguyên liệu loại B cần dùng là $0x+2y\\le 4\\Leftrightarrow y\\le 2$ …",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm"
+ },
+ {
+  "ma_cau": "T110000000145",
+  "loai": "tra_loi_ngan",
+  "de": "Biết rằng tập xác định của hàm số $f\\left(x\\right)=\\dfrac{5x-1}{\\sqrt{2x-4}}+\\sqrt{5-x}$ có dạng nửa khoảng $(m;n]$, với $m,n$ là các hằng số dương. Giá trị của biểu thức $2m+n$ bằng bao nhiêu?",
+  "dap_an": "9",
+  "loi_giai": "Biểu thức $f\\left(x\\right)=\\dfrac{5x-1}{\\sqrt{2x-4}}+\\sqrt{5-x}$ có nghĩa khi và chỉ khi\n$\\begin{cases} 2x-4>0 \\\\ 5-x\\ge 0 \\end{cases}$\n$\\Leftrightarrow \\begin{cases} x>2 \\\\ x\\le 5 \\end{cases}$\nDo đó tập xác định của hàm số là $D=(2;5]$.\nSo với dạng $(m;n]$ ta được $m=2$ và $n=5$.\nVậy $2m+n=2\\cdot 2+5=9$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000093",
+  "loai": "trac_nghiem",
+  "de": "Tập xác định của hàm số $y=\\sqrt{4-x}+\\sqrt{x-2}$ là",
+  "lua_chon": [
+   "$D=\\{2;4\\}$.",
+   "$D=\\left[2;4\\right]$.",
+   "$D=\\left(2;4\\right)$.",
+   "$D=\\left(-\\infty;2\\right)\\cup \\left(4;+\\infty \\right)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Hàm số $y=\\sqrt{4-x}+\\sqrt{x-2}$ xác định khi và chỉ khi\n$\\begin{cases} 4-x\\ge 0 \\\\ x-2\\ge 0 \\end{cases}\\Leftrightarrow \\begin{cases} x\\le 4 \\\\ x\\ge 2 \\end{cases}\\Leftrightarrow 2\\le x\\le 4.$\nVậy tập xác định của hàm số là $D=\\left[2;4\\right]$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110010204082",
+  "loai": "tu_luan",
+  "de": "Một lớp có $40$ học sinh, trong đó có $20$ học sinh thích môn Toán, $5$ học sinh thích cả $2$ môn Toán và Văn, $4$ học sinh không thích cả $2$ môn Toán và Văn. a) Tính số học sinh chỉ thích môn văn. b) Tính số học sinh thích môn văn.",
+  "loi_giai": "Gọi $T$ là tập hợp các học sinh thích môn Toán, $V$ là tập hợp các học sinh thích môn Văn.\nTheo đề bài, ta có $|T|=20$, số học sinh thích cả hai môn là $|T\\cap V|=5$, và số học sinh không thích môn nào trong hai môn là $4$.\nSố học sinh thích ít nhất một trong hai môn Toán hoặc Văn là:\n$|T\\cup V|=40-4=36 \\left(\\text{hoc sinh}\\right).$\na) Số học sinh chỉ thích môn Văn là:\n$|V\\setminus T|=|T\\cup V|-|T|=36-20=16 \\left(\\text{hoc sinh}\\right).$\nb) Số học sinh thích môn Văn là:\n$|V|=|V\\setminus T|+|T\\cap V|=16+5=21 \\left(\\text{hoc sinh}\\right).$\nVậy số học sinh chỉ thích môn Văn là $16$ học sinh và số học sinh thích môn Văn là $21$ học sinh.",
+  "nhan_cu": "Tập hợp và phép toán trên tập hợp › Bài toán thực tế tập hợp (2 Yếu tố)"
+ },
+ {
+  "ma_cau": "T110000000134",
+  "loai": "tra_loi_ngan",
+  "de": "Một chiếc đu quay có bán kính $75 m$, tâm của vòng quay ở độ cao $90 m$, thời gian thực hiện mỗi vòng quay của đu quay là $15$phút. Nếu một người vào cabin tại vị trí thấp nhất của vòng quay, thì sau $5$ phút quay, người đó ở độ cao bao nhiêu mét so với mặt đất? (làm tròn đến hàng đơn vị)",
+  "dap_an": "128",
+  "loi_giai": "Đu quay quay một vòng hết $15$ phút, tương ứng với một góc quay $360^\\circ$.\nTốc độ quay của đu quay là:\n$\\dfrac{360^\\circ}{15}=24^\\circ/$\nphút\n$.$\nSau $5$ phút quay, góc quay của đu quay là:\n$5\\cdot 24^\\circ=120^\\circ.$\nChọn hệ trục toạ độ $Oxy$ có gốc $O$ trùng với tâm $C$ của vòng quay, trục $Oy$ hướng thẳng đứng lên trên.\nVị trí ban đầu của người đó là vị trí thấp nhất của vòng quay, có toạ độ $\\left(0;-75\\right)$.\nSau khi quay một góc $120^\\circ$, vị trí của người đó có độ cao so với tâm $C$ là:\n$y=-75\\cos 120^\\circ=-75\\cdot \\left(-\\dfrac{1}{2}\\right)=37,5 m.$\nVì tâm của vòng quay ở độ cao $90 m$ so với mặt đất nên sau $5$ phút, độ cao của người đó so với mặt đất là:\n$h=90+37,5=127,5 m. …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000047",
+  "loai": "trac_nghiem",
+  "de": "Tập xác định của hàm số: $f\\left(x\\right)=\\dfrac{-x^{2}+2x}{x+1}$ là tập hợp nào sau đây?",
+  "lua_chon": [
+   "$\\mathbb{R}\\setminus \\{1\\}$.",
+   "$\\mathbb{R}\\setminus \\{-1;1\\}$.",
+   "$\\mathbb{R}$.",
+   "$\\mathbb{R}\\setminus \\{-1\\}$."
+  ],
+  "dap_an": "D",
+  "loi_giai": "Hàm số phân thức xác định khi và chỉ khi mẫu thức khác $0$.\nĐiều kiện xác định của hàm số là $x+1\\ne 0\\Leftrightarrow x\\ne -1$.\nVậy tập xác định của hàm số là $D=\\mathbb{R}\\setminus \\{-1\\}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110020204090",
+  "loai": "tra_loi_ngan",
+  "de": "Một xưởng sản xuất hai loại sản phẩm, mỗi kg sản phẩm loại một cần $6 kg$ nguyên liệu và $10$ giờ. Mỗi sản phẩm loại hai cần $4 kg$ nguyên liệu và $5$ giờ. Xưởng có $200 kg$ nguyên liệu và $2000$ giờ làm việc. Gọi $x,y$ lần lượt là là số kg sản phẩm loại một và loại hai cần sản xuất, các bất phương trình $\\text{ax+by\\le 100}$ và $\\text{cx+dy\\le 400}$ lần lượt là bất phương trình biểu diễn ràng buộc về số nguyên liệu và số giờ cần dùng để sản xuất hai loại sản phẩm. Tính $S=a+b+c+d$.",
+  "dap_an": "8",
+  "loi_giai": "Gọi $x,y$ lần lượt là số kilôgam sản phẩm loại một và loại hai cần sản xuất ($x\\ge 0,y\\ge 0$).\nĐể sản xuất $x kg$ sản phẩm loại một và $y kg$ sản phẩm loại hai:\n- Số kilôgam nguyên liệu cần dùng là $6x+4y kg$. Vì xưởng có tối đa $200 kg$ nguyên liệu nên ta có bất phương trình:\n$6x+4y\\le 200\\Leftrightarrow 3x+2y\\le 100.$\nĐối chiếu với bất phương trình $\\text{ax+by\\le 100}$, ta xác định được $a=3$ và $b=2$.\n- Số giờ làm việc cần dùng là $10x+5y$ giờ. Vì xưởng có tối đa $2 000$ giờ làm việc nên ta có bất phương trình:\n$10x+5y\\le 2 000\\Leftrightarrow 2x+y\\le 400.$\nĐối chiếu với bất phương trình $\\text{cx+dy\\le 400}$, ta xác định được $c=2$ và $d=1$.\nDo đó\n$S=a+b+c+d=3+2+2+1=8.$\nVậy $S=8$.",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm"
+ },
+ {
+  "ma_cau": "T110000000281",
+  "loai": "tu_luan",
+  "de": "a) Từ một miếng tôn có hình dạng là nửa đường tròn bán kính $2 m$, người ta cắt ra một hình chữ nhật. Hỏi có thể cắt được miếng tôn có diện tích lớn nhất là bao nhiêu $m^{2}$?\nb) Chứng minh rằng trong tam giác $ABC$ bất kì ta luôn có $8S^{2}=\\left(a+b+c\\right)\\left(a+b-c\\right)\\left(a-b+c\\right)\\left(b+c-a\\right)$, trong đó $S$ là diện tích tam giác, $a,b,c$ là ba cạnh của tam giác.",
+  "loi_giai": "a) Gọi $O$ là tâm của nửa đường tròn bán kính $R=2 m$.\nDo tính đối xứng, hình chữ nhật $ABCD$ có cạnh $AB$ nằm trên đường kính sao cho $O$ là trung điểm của đoạn thẳng $AB$, và hai đỉnh $C,D$ thuộc nửa đường tròn.\nĐặt $OB=x$ (với $0<x<2$). Khi đó chiều dài $AB=2x$.\nTrong tam giác vuông $OBC$ vuông tại $B$, ta có\n$BC=\\sqrt{OC^{2}-OB^{2}}=\\sqrt{2^{2}-x^{2}}=\\sqrt{4-x^{2}}.$\nDiện tích của hình chữ nhật $ABCD$ là\n$\\text{S=AB\\cdot BC=2x}\\sqrt{4-x^{2}}.$\nÁp dụng bất đẳng thức Cauchy cho hai số dương $x^{2}$ và $4-x^{2}$, ta có\n$S=2\\sqrt{x^{2}\\left(4-x^{2}\\right)}\\le 2\\cdot \\dfrac{x^{2}+\\left(4-x^{2}\\right)}{2}=2\\cdot \\dfrac{4}{2}=4.$\nDấu đẳng thức xảy ra khi và chỉ khi\n$x^{2}=4-x^{2}\\Leftrightarro …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110000000429",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=x^{3}-3x+2$. Giá trị của hàm số tại điểm có hoành độ $x=2$ là?",
+  "lua_chon": [
+   "$y\\left(2\\right)=0$.",
+   "$y\\left(2\\right)=2$.",
+   "$y\\left(2\\right)=4$.",
+   "$y\\left(2\\right)=-2$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "Thay $x=2$ vào công thức hàm số $y=x^{3}-3x+2$, ta được\n$y\\left(2\\right)=2^{3}-3\\cdot 2+2=8-6+2=4.$\nVậy giá trị của hàm số tại điểm có hoành độ $x=2$ là $y\\left(2\\right)=4$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T110020204067",
+  "loai": "trac_nghiem",
+  "de": "Lớp 10E6 dự định mua $x$ chậu cây trầu bà và $y$ chậu thường xuân để trang trí cửa sổ lớp học. Biết mỗi cây trầu bà có giá $70 000$ đồng, mỗi cây thường xuân có giá $150 000$ đồng và lớp chỉ có tối đa $2 000 000$ đồng để mua cây. Hệ bất phương trình mô tả các điều kiện ràng buộc đối với $x$ và $y$ là? (biết rằng $x,y\\in \\mathbb{N}$).",
+  "lua_chon": [
+   "$\\begin{cases} x\\ge 0 \\\\ y\\ge 0 \\\\ 7x+15y>200 \\end{cases}$.",
+   "$\\begin{cases} x\\ge 0 \\\\ y\\ge 0 \\\\ 7x+15y\\le 200 \\end{cases}$.",
+   "$\\begin{cases} x\\ge 0 \\\\ y\\ge 0 \\\\ 15x+7y>200 \\end{cases}$.",
+   "$\\begin{cases} x\\ge 0 \\\\ y\\ge 0 \\\\ 15x+7y<200 \\end{cases}$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "Vì $x$, $y$ là số chậu cây nên $x\\ge 0$ và $y\\ge 0$.\nSố tiền mua $x$ chậu trầu bà và $y$ chậu thường xuân là $70 000x+150 000y$ (đồng).\nSố tiền này không vượt quá $2 000 000$ đồng nên\n$70 000x+150 000y\\le 2 000 000.$\nChia hai vế cho $10 000$ ta được $7x+15y\\le 200$.\nVậy hệ bất phương trình mô tả các ràng buộc là $\\begin{cases} x\\ge 0 \\\\ y\\ge 0 \\\\ 7x+15y\\le 200 \\end{cases}$.",
+  "nhan_cu": "Hệ bất phương trình bậc nhất 2 ẩn › Bài toán thực tế tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm"
+ }
+]

@@ -38,15 +38,16 @@ fs.writeFileSync(path.join(ra, 'bang-dich.md'), md)
 const rows = await q(`
   select h.ma_cau, h.loai_cau, h.noi_dung, h.lua_chon, h.menh_de, h.dap_an, h.loi_giai, h.anh_de, h.parent_ma_cau,
          b.ten_dang dang_cu, b.ten_chuyen_de chuyen_de_cu,
-         coalesce(g.dang_bai_id, e.dang_bai_id) hien_tai, case when g.ma_cau is not null then 'gan_ai' when e.ma_cau is not null then 'de_xuat' else 'thieu' end trang_thai
+         coalesce(g.dang_bai_id, e.dang_bai_id) hien_tai, case when g.ma_cau is not null then 'gan_ai' when e.ma_cau is not null then 'de_xuat' when t.ma_cau is not null then 'thieu' else 'chua_phan' end trang_thai
     from hgt_cau_hoi h
     join hgt_ban_do b on b.ma_dang = h.dang_chinh and b.khoi = $1
     left join hgt_bdm_gan_cau g on g.ma_cau = h.ma_cau
     left join hgt_bdm_de_xuat e on e.ma_cau = h.ma_cau
     left join hgt_bdm_cau_thieu_dang t on t.ma_cau = h.ma_cau
    where h.xoa_at is null and h.loai_cau <> 'dung_sai'
-     and (g.nguon = 'ai' or (g.ma_cau is null and (e.ma_cau is not null or (t.ma_cau is not null and t.nguon = 'ai'))))
-   order by b.ten_chuyen_de, h.ma_cau`, [khoi])
+     and ($2::boolean is true and (g.ma_cau is null and not exists (select 1 from hgt_bdm_kho_ds k where k.ma_cau = h.ma_cau) and (e.ma_cau is not null or t.ma_cau is null or t.nguon = 'ai'))
+          or $2::boolean is not true and (g.nguon = 'ai' or (g.ma_cau is null and (e.ma_cau is not null or (t.ma_cau is not null and t.nguon = 'ai')))))
+   order by b.ten_chuyen_de, h.ma_cau`, [khoi, process.argv.includes('--chua-va-hang')])
 await c.end()
 
 const gon = (r) => {
