@@ -219,6 +219,8 @@ Anh/KHTN: không cần pha riêng. Thêm ghế trưởng khối môn đó là m�
    > *"Thứ 4, ngày dd/mm, các bạn X, Y, Z sẽ ở lại sau giờ 20 phút để bổ trợ các phần kiến thức còn yếu. Bố mẹ nắm thông tin nhé ạ."*
    (Thời gian khác ⇒ câu ghi đúng giờ hẹn thay cho "ở lại sau giờ".)
 
+**✅ Đã build 29/10 (mig `202610291639`):** Bổ trợ › tab **Nhẹ** (`BoTroNheScreen.tsx`). Mô hình: `ca_bo_tro_nhe` (1 dòng/ca, giữ người mở/đóng + TA cùng làm + giờ = số liệu công) → mỗi em 1 case `bo_tro_yeu` trạng thái riêng **`nhe_mo` → `nhe_xong`** (ngoài mọi hàm đếm `dang_xu`: trần, hàng xếp Lộc, chốt tuần) + 1 `buoi_hoc` loại **`bo_tro_nhe`** (ngoài công TA/dashboard/trợ lý vốn lọc `bo_tro_yeu`). Chạy ca = `CaDetail` của app TA (export). Case đóng bằng trigger: hoàn tất ⇒ `day_xong`, huỷ/vắng ⇒ `bo`; Nhẹ KHÔNG vào "Đang theo dõi". Hàm: `fn_btnhe_lop_cua_toi` · `fn_btnhe_lop_hs` · `fn_btnhe_tao` · `fn_btnhe_ds` · `fn_btnhe_huy`; nới `_btyeu_buoi` · `fn_btyeu_bo_diem_danh` · `fn_btyeu_fill_dang_yeu` · `_btyeu_vao_theo_doi_sau_case` · `_btyeu_ca_cua_hs`.
+
 ### 8.3 Trong ca — đo được, nhưng **giấy là chính**
 
 - Nội dung **như ca Yếu**: dạng yếu của em → luyện → test cuối ca → kết quả vào mastery (để KPI đếm được dạng **Ra có bằng chứng**, §4.2).

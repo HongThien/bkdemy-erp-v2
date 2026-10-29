@@ -15,12 +15,14 @@ import DanhGiaCaBoTroScreen from '../danhgia/DanhGiaCaBoTroScreen'
 import LichPhongScreen from './LichPhongScreen'
 import LichTrucScreen from './LichTrucScreen'
 import BoTroDashboardScreen from './BoTroDashboardScreen'
+import BoTroNheScreen from './BoTroNheScreen'
 
-export type BoTroTab = 'dashboard' | 'duoi' | 'bu' | 'yeu' | 'hinh' | 'onthi' | 'lichphong' | 'lichtruc'
+export type BoTroTab = 'dashboard' | 'duoi' | 'bu' | 'nhe' | 'yeu' | 'hinh' | 'onthi' | 'lichphong' | 'lichtruc'
 const TABS: { k: BoTroTab; ten: string; mo_ta: string }[] = [
   { k: 'dashboard', ten: 'Dashboard', mo_ta: 'Tiến độ theo tuần: chốt bao nhiêu ca, thực tế chạy được bao nhiêu — 3 tuần gần nhất' }, // Thùy 13/10
   { k: 'duoi', ten: 'Đuổi', mo_ta: 'HS vào lớp giữa chừng — đợt đuổi, kế hoạch dạng' },
   { k: 'bu', ten: 'Bù', mo_ta: 'HS nghỉ buổi thường — lần nghỉ cần bù' },
+  { k: 'nhe', ten: 'Nhẹ', mo_ta: 'Bổ trợ Nhẹ (L1.1, 29/10): trưởng khối tự tạo ca 15–20 phút sau giờ — không qua Lộc, không suất, mỗi em ≤ 2 ca/tuần' },
   { k: 'yeu', ten: 'Yếu', mo_ta: 'Trọn luồng bổ trợ yếu: duyệt → nội dung → xếp → trạng thái → đánh giá ca' },
   { k: 'hinh', ten: 'Hình', mo_ta: 'Bổ trợ Hình (17/10): độc lập với Yếu — Trang/Lộc tự mở ca, xếp ở Lịch phòng, tài liệu theo buổi, cuối buổi chỉ nhận xét' },
   { k: 'onthi', ten: 'Ôn thi', mo_ta: 'Bổ trợ ôn thi (23/10): mỗi kỳ thi mở ca cho TẤT CẢ học sinh — đợt · ca · đăng ký · TA điểm danh + báo động · thống kê theo khối' },
@@ -70,7 +72,7 @@ export default function BoTroHubScreen({ mo }: { mo?: { tab: BoTroTab; yeu?: Yeu
         ))}
         <span className="ml-auto hidden text-[11.5px] text-slate-400 md:inline">{TABS.find((t) => t.k === tab)?.mo_ta}</span>
       </div>
-      {tab === 'dashboard' ? <BoTroDashboardScreen /> : tab === 'duoi' ? <BoTroDuoiScreen /> : tab === 'bu' ? <BoTroScreen /> : tab === 'yeu' ? <YeuTab /> : tab === 'hinh' ? <BoTroHinhScreen /> : tab === 'onthi' ? <BoTroOnThiScreen /> : tab === 'lichtruc' ? <LichTrucScreen /> : <LichPhongScreen />}
+      {tab === 'dashboard' ? <BoTroDashboardScreen /> : tab === 'duoi' ? <BoTroDuoiScreen /> : tab === 'bu' ? <BoTroScreen /> : tab === 'nhe' ? <BoTroNheScreen /> : tab === 'yeu' ? <YeuTab /> : tab === 'hinh' ? <BoTroHinhScreen /> : tab === 'onthi' ? <BoTroOnThiScreen /> : tab === 'lichtruc' ? <LichTrucScreen /> : <LichPhongScreen />}
     </div>
   )
 }
