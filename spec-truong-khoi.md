@@ -234,6 +234,8 @@ Anh/KHTN: không cần pha riêng. Thêm ghế trưởng khối môn đó là m�
 - Bấm 1 HS ⇒ **popup** chi tiết y như màn Duyệt bổ trợ của Trang hiện nay (ET 4 buổi · BTVN 4 buổi · điểm chuyên đề · lịch sử bổ trợ) — dùng lại component sẵn, không dựng kiểu mới.
 - Trưởng khối thấy khối mình; Trang / Thùy thấy mọi khối, lọc theo khối.
 
+**✅ Đã build 29/10 (mig `202610291652`) — số *hiện tại*:** widget ở **Việc của tôi › Vận hành** (`src/screens/qlcl/WidgetDangYeu.tsx`), tự ẩn nếu không quản ô nào. Đo thật: tính dạng yếu ~0,2–0,33 s/em ⇒ khối 8 mất 15 s, Toán toàn hệ 112 s, vượt trần ~8 s ⇒ **lưu sẵn** ở `dang_yeu_hien_tai` (1 dòng/em × môn), **làm mới lười** theo lô 10 em (`fn_qlcl_lam_moi`, ~2 s/lô) khi có người mở widget; em "cũ" = chưa tính · sang mốc 2 cửa sổ mới · có điểm chấm mới · quá 12 giờ. Hàm: `fn_qlcl_tong_quan` · `fn_qlcl_dang_yeu_hs`. Popup em dùng lại `KhoiET`/`KhoiBTVN` của màn Duyệt + `fn_botro_et_btvn`. **Số *đầu tuần* chưa có** (cột trả null, hiện "— chưa chốt") ⇒ làm ở P3. **Đề xuất Yếu** từ bảng chi tiết: chưa làm.
+
 ### 8.5 Thứ tự build đề xuất
 
 1. **Ca Bổ trợ Nhẹ** (tạo ca · thông báo Zalo · in tài liệu · mở/đóng ca · ghi kết quả) — dùng được ngay.

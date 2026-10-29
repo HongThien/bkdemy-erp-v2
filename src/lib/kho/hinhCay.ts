@@ -31,6 +31,15 @@ export async function giaThietHieuLuc(baiToanId: string): Promise<string> {
   if (error) throw error
   return (data as string | null) ?? ''
 }
+/** Giả thiết hiệu lực TỪNG PHẦN (gốc · từng nhánh trên đường · riêng của bài) cho nhiều bài 1 lượt — mig 202610291648.
+ *  Bài ghép nhiều ý cần phần để tách "đề chung" và "giả thiết thêm của ý" (spec-hinh-cay-nhanh §1.3). */
+export async function giaThietPhanNhieu(ids: string[]): Promise<Map<string, string[]>> {
+  const u = [...new Set(ids)].filter(Boolean)
+  if (!u.length) return new Map()
+  const { data, error } = await supabase.rpc('fn_hl_gia_thiet_phan_nhieu', { p_ids: u })
+  if (error) throw error
+  return new Map(((data ?? []) as { baitoan_id: string; phan: string[] | null }[]).map((r) => [r.baitoan_id, r.phan ?? []]))
+}
 /** Một dòng mô hình/nhánh — dùng để vá sau khi RPC tạo nhánh mới hoặc đổi neo. */
 export async function layMoHinh(id: string): Promise<MoHinh | null> {
   const { data, error } = await supabase.from('hinh_mo_hinh').select('*').eq('id', id).limit(1).maybeSingle()

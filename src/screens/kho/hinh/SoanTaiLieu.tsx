@@ -14,6 +14,7 @@ import { Btn, Cap, Empty, Fig, Ma, Panel, Seg, Sol, Tag, inpCls, tron } from './
 import { useStore, SOAN_HINH_DEFAULT, type SoanHinhDraft, type PickItem } from '../../../store/useStore'
 import * as gt from '../../../lib/kho/hinhGiaoTrinh'
 import { CHE_DO_HINH, cheDoKe, type CheDoHinh } from '../../../lib/kho/hinhGiaoTrinh'
+import { giaThietPhanNhieu } from '../../../lib/kho/hinhCay'
 
 // Nháp soạn tài liệu theo khối (store, RAM) — giữ lựa chọn khi rời/quay lại màn (như etDraft).
 // Trả slice của 1 chế độ + hàm patch (merge nông). Set→mảng, Map→record: component tự đổi qua lại.
@@ -791,16 +792,18 @@ export async function banInTheoMoHinh(tieuDe: string, phan: 'lop' | 'nha' | 'et'
   const cd = (k: string): CheDoHinh => cheDo[k] ?? 'hien'
   const dong = (key: string) => (phan === 'nha' || phan === 'et' ? (soDong[key] ?? DONG_BTVN) : soDong[key] ?? 0)   // BTVN/ET mặc định DONG_BTVN (viết tay); trên lớp KHÔNG kẻ dòng (bài sát nhau)
   const ps = dedupePicks(picks.filter((p) => p.phan === phan))
-  const [btMap, yMap] = await Promise.all([
+  const ghepChuan = ps.filter((p): p is Extract<PickItem, { kind: 'ghep' }> => p.kind === 'ghep' && !p.luaId)
+  const [btMap, yMap, gtPhan] = await Promise.all([
     gt.getBienTheByIds(ps.filter((p): p is Extract<PickItem, { kind: 'bienthe' }> => p.kind === 'bienthe').map((p) => p.bienTheId)),
     gt.getYFull(ps.filter((p): p is Extract<PickItem, { kind: 'y' }> => p.kind === 'y').map((p) => p.yId)),
+    giaThietPhanNhieu(ghepChuan.flatMap((p) => p.nodeIds)),   // giả thiết theo đường gốc → nhánh (ở DB)
   ])
   const mucs: MucIn[] = []
   for (const p of ps) {
     if (p.kind === 'bienthe') { const v = btMap.get(p.bienTheId); if (v) mucs.push(mucBienThe(L, v, cd(p.key), dong(p.key))) }
     else if (p.kind === 'y') { const yb = yMap.get(p.yId); if (yb) mucs.push(mucY(L, yb, cd(p.key), dong(p.key))) }
     else if (p.luaId) { const vs = await api.bienTheCuaLua(p.luaId); mucs.push(mucGhepLua(L, p.nodeIds, vs, cd(p.key), dong(p.key))) }
-    else mucs.push(mucGhep(L, p, cd(p.key), dong(p.key)))
+    else mucs.push(mucGhep(L, p, cd(p.key), dong(p.key), gtPhan))
   }
   // ⭐ 08-10 (Thùy: "lý thuyết in ở phiếu bài tập trên lớp giống bên đại"): CHỈ resolve cho phan='lop' —
   // khuôn Đại (LT chuyên đề chỉ hiện ở buổi trên lớp, KHÔNG lặp lại ở phiếu BTVN riêng).
@@ -847,14 +850,44 @@ function xaNhatTrongChuoi(ns: BaiToan[]): BaiToan | null {
   for (const n of ns) if (!xa || n.cap > xa.cap) xa = n
   return xa
 }
-/** Ghép chuỗi (đề chuẩn) → 1 bài a,b,c: giả thiết + hình của node XA NHẤT chung; ý a,b,c = câu hỏi + lời giải từng node. */
-export function mucGhep(L: Luoi, g: Extract<PickItem, { kind: 'ghep' }>, cheDo: CheDoHinh, soDong?: number | null): MucIn {
+/** Nối các mệnh đề giả thiết thành câu: mỗi phần kết thúc bằng dấu câu, cách nhau 1 khoảng (không "; " — CEO 29/10). */
+function noiCau(parts: (string | null | undefined)[]): string {
+  return parts.map((s) => (s ?? '').trim().replace(/[;,\s]+$/, '')).filter(Boolean)
+    .map((s) => (/[.!?:]$/.test(s) ? s : `${s}.`)).join(' ')
+}
+/** Như `noiCau` nhưng bỏ dấu chấm cuối — chỗ hiển thị tự nối "<giả thiết thêm>. <câu hỏi>". */
+const noiGtThem = (parts: (string | null | undefined)[]): string | null => noiCau(parts).replace(/\.$/, '') || null
+/** Phần đầu GIỐNG NHAU của mọi mảng (theo từng phần tử) = giả thiết chung của bài ghép. */
+function tienToChung(ds: string[][]): string[] {
+  if (!ds.length) return []
+  const out: string[] = []
+  for (let i = 0; i < ds[0].length; i++) { const x = ds[0][i]; if (ds.every((d) => d[i] === x)) out.push(x); else break }
+  return out
+}
+/** Ghép chuỗi (đề chuẩn) → 1 bài a,b,c; ý a,b,c = câu hỏi + lời giải từng node.
+ *  ⭐ 29/10 (CEO, spec-hinh-cay-nhanh §1.3 bước C3): khi có `gtPhan` (giả thiết TỪNG PHẦN tính ở DB theo đường
+ *  gốc → nhánh) thì ĐỀ = phần chung của mọi ý; ý nào nằm ở nhánh sâu hơn được in thêm đúng phần giả thiết của
+ *  nhánh đó trước câu hỏi (vd "c) Lấy điểm K đối xứng với M qua E. CMR AMCK là hình thoi."), mỗi phần chỉ in 1 lần.
+ *  Thiếu `gtPhan` (preview đồng bộ) ⇒ rơi về cách cũ: giả thiết node xa nhất. */
+export function mucGhep(L: Luoi, g: Extract<PickItem, { kind: 'ghep' }>, cheDo: CheDoHinh, soDong?: number | null, gtPhan?: Map<string, string[]>): MucIn {
   const khung = api.noDapAn(L, g.nodeIds)             // ý = node tick; buocNodes = node ẩn nở; gtPhuKeo = van
   const nodes = khung.map((k) => k.node)
-  const deep = xaNhatTrongChuoi(nodes) ?? nodes[0]
+  const coPhan = !!gtPhan && nodes.length > 0 && nodes.every((n) => gtPhan.has(n.id))
+  const phanCua = (id: string) => gtPhan?.get(id) ?? []
+  const chung = coPhan ? tienToChung(nodes.map((n) => phanCua(n.id))) : []
+  const daIn = new Set(chung)
+  // Hình: node mang NHIỀU giả thiết nhất (nhánh sâu nhất) — hình của nó, thiếu thì hình nhánh/mô hình trên đường.
+  const deep = coPhan
+    ? nodes.reduce((a, b) => (phanCua(b.id).length > phanCua(a.id).length ? b : a))
+    : (xaNhatTrongChuoi(nodes) ?? nodes[0])
   const ys: YIn[] = khung.map((k, i) => {
     const c = api.cachMacDinh(L, k.node.id)
-    const gtPhu = [k.node.gia_thiet_phu?.trim(), ...k.gtPhuKeo].filter(Boolean).join('; ') || null
+    let gtPhu: string | null
+    if (coPhan) {
+      const them = phanCua(k.node.id).filter((x) => !daIn.has(x))
+      them.forEach((x) => daIn.add(x))
+      gtPhu = noiGtThem([...them, k.node.gia_thiet_phu, ...k.gtPhuKeo])
+    } else gtPhu = [k.node.gia_thiet_phu?.trim(), ...k.gtPhuKeo].filter(Boolean).join('; ') || null
     return {
       // Nhãn a)/b)/c) CHỈ khi thật sự ghép NHIỀU ý (chuỗi) — Thùy 08-20: "chỉ chuỗi mới có abc thôi",
       // 1 ý riêng lẻ không tự gắn chữ gì. Câu hỏi lấy NGUYÊN `phat_bieu` — không tự thêm "Chứng minh".
@@ -867,8 +900,9 @@ export function mucGhep(L: Luoi, g: Extract<PickItem, { kind: 'ghep' }>, cheDo: 
       ma: k.node.ma, cap: k.node.cap,
     }
   })
-  const anhDe = api.anhCuaBaiToan(L, deep.id)
-  return { kieu: 'de', deBai: api.giaThietBaiToan(L, deep.id), anhDe, ma: nodes.map((b) => b.ma).join('+'), ys, cheDo, soDong: soDong ?? null, moHinhId: deep.mo_hinh_id }
+  const anhDe = coPhan ? (deep.anh_chuan ?? api.anhCauHinhCua(L, deep.mo_hinh_id)) : api.anhCuaBaiToan(L, deep.id)
+  const deBai = coPhan ? noiCau(chung) : api.giaThietBaiToan(L, deep.id)
+  return { kieu: 'de', deBai, anhDe, ma: nodes.map((b) => b.ma).join('+'), ys, cheDo, soDong: soDong ?? null, moHinhId: deep.mo_hinh_id }
 }
 // ⭐ 08-20 (Thùy: "hệ thống không được tự sinh ra cái gì hết" — kể cả chữ "Chứng minh" dùng làm MỐC KỸ
 // THUẬT để cắt ngược giả thiết/câu hỏi từ 1 cột `de_bai` gộp chung). Giờ giả thiết+câu hỏi được GHÉP bằng
