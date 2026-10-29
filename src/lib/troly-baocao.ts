@@ -91,7 +91,7 @@ export async function getBaoCao(soNgay: number, tinhLai = false): Promise<BaoCao
   return data as BaoCaoTroLy
 }
 
-// Trợ lý CÁ NHÂN theo khối quản lý (CEO 14/10): khối lấy từ sơ đồ tổ chức (vi_tri.khoi_quan_ly) ở DB,
+// Trợ lý CÁ NHÂN theo khối quản lý (CEO 14/10): khối lấy từ bảng phân công Trưởng/Phó khối (phan_cong_quan_ly_khoi, 29/10) ở DB,
 // client KHÔNG truyền người. Là bản lọc của báo cáo trung tâm đã lưu — không có nút "tính lại".
 export async function trolyCaNhanDuocDung(): Promise<boolean> {
   const { data, error } = await supabase.rpc('troly_ca_nhan_duoc_dung')

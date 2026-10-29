@@ -348,6 +348,9 @@
   hẹn `dang_ky_test` ≠ `ca_test` (ca sinh lúc em có mặt) · web gọi Edge Function `dang-ky-test`, Lộc nhập thay cùng hàm ghi `_ts_dang_ky_test`.
 - **`spec-bot-telegram-ta.md` — ĐỌC BẮT BUỘC trước khi đụng bot Telegram của TA** (Thùy chốt 14/10): bản tin 08:00 việc tồn từ ERP (mỗi TA 1 tin, tag phụ trách khối) ·
   webhook ghi mọi tin ngay (Telegram chỉ giữ 24h) · 24:00 Claude tổng kết theo `ref_key` → Trang duyệt → gậy + bản tin hôm sau · danh tính = `tg_user_id` nối mã 1 lần.
+- **`spec-truong-khoi.md` — ĐỌC BẮT BUỘC trước khi sửa PHÂN QUYỀN (ghế · phạm vi môn×khối · ai duyệt gì) hoặc trợ lý/dashboard Trưởng khối–Trang** (Thùy chốt 29/10):
+  team QLCL = Thùy + Trang + 6 trưởng khối · khối là đơn vị thấp nhất, có tính môn · phạm vi = bảng PHÂN CÔNG (môn × khối) sửa trên màn, không mặc định, cấm uuid (1 hàm `fn_pham_vi_cua_toi`) ·
+  trưởng khối quyết, Trang hậu kiểm · KPI dạng yếu đóng băng lúc Trang Chốt tuần (Vào/Ra/Độ phủ, chưa chốt số) · Lộc xếp lịch như cũ.
 - **`SPEC-troly-nhansu.md` — ĐỌC BẮT BUỘC (§6–§7) trước khi sửa tab 🤖 TRỢ LÝ** (CEO chốt 29/09): **báo cáo là chính, hỏi là phụ** · chỉ 3 tài khoản ·
   Báo cáo Sư phạm = 3 luồng (đếm chậm/miss → Detail → cảnh báo), mỗi người quản một mảng có một bộ báo cáo riêng (Trang = Sư phạm, Lộc = Vận hành) ·
   Tổng kết tuần = dashboard theo BẢNG, ngưỡng của mọi chỉ số là **thường đạt** (trung bình 8 tuần gần nhất đã lọc nhiễu), trình chiếu mỗi bảng một màn ·

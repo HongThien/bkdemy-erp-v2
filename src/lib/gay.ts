@@ -432,7 +432,8 @@ export async function listChotThang(ky: string): Promise<GayChotThangFull[]> {
 }
 
 // ── QUYỀN GẬY THEO KHỐI (Thùy 16/10, mig 202610161605/1606) — trục thứ hai bên cạnh cây vị trí.
-// Cấu hình ở bảng gay_quyen_khoi; phạm vi tính ở DB (fn_gay_pham_vi_khoi), trừ chính mình.
+// Nguồn = Trưởng khối được phân công (phan_cong_quan_ly_khoi, 29/10 — thay gay_quyen_khoi); toàn quyền = Lead/Quản lý chất lượng.
+// Phạm vi tính ở DB (fn_gay_pham_vi_khoi), trừ chính mình.
 export type PhamViKhoi = { toanQuyen: boolean; khoi: string[]; nsIds: Set<string>; deXuatIds: Set<string> }
 export const PHAM_VI_KHOI_RONG: PhamViKhoi = { toanQuyen: false, khoi: [], nsIds: new Set(), deXuatIds: new Set() }
 export async function phamViKhoi(): Promise<PhamViKhoi> {

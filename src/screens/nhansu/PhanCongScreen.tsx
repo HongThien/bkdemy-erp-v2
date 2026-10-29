@@ -2,7 +2,7 @@ import { Fragment, useEffect, useMemo, useState } from 'react'
 import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
 import {
   listLop, listNhanSu, listPhanCongAll, setPhanCongSlot,
-  listKhoiQuanLy,
+  listKhoiQuanLy, duocPhanCongKhoi, setKhoiQuanLy, listTeam, listNhanSuTeamMap,
   type Lop, type NhanSu, type PhanCongLop, type KhoiQuanLy,
 } from '../../lib/nhansu'
 import SearchSelect from '../../components/SearchSelect'
@@ -19,6 +19,8 @@ export default function PhanCongScreen() {
   const [pc, setPc] = useState<PhanCongLop[]>([])
   const [ds, setDs] = useState<NhanSu[]>([])
   const [tk, setTk] = useState<KhoiQuanLy[]>([])
+  const [suaTk, setSuaTk] = useState(false)             // Lead / Quản lý chất lượng (DB: fn_qlcl_duoc_phan_cong)
+  const [qlcl, setQlcl] = useState<Set<string>>(new Set()) // thành viên team qlcl — chỉ họ được làm Trưởng khối
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
 
@@ -30,10 +32,26 @@ export default function PhanCongScreen() {
     } catch (e: any) { setErr(e.message ?? String(e)) } finally { setLoading(false) }
   }
   useEffect(() => { reload() }, [khoi]) // eslint-disable-line
+  useEffect(() => {
+    duocPhanCongKhoi().then(setSuaTk).catch(() => setSuaTk(false))
+    Promise.all([listTeam(), listNhanSuTeamMap()]).then(([teams, map]) => {
+      const tid = teams.find((t) => t.ma === 'qlcl')?.id
+      setQlcl(new Set(Object.entries(map).filter(([, ts]) => tid && ts.includes(tid)).map(([id]) => id)))
+    }).catch(() => setQlcl(new Set()))
+  }, [])
 
-  // Trưởng / Phó khối (khối × MÔN) — CHỈ XEM ở đây, nguồn = SƠ ĐỒ TỔ CHỨC team Trợ giảng (Thùy 15/10: "phân công là phạm vi,
-  // chức danh về sơ đồ tổ chức"). Phó (không có Phó ⇒ Trưởng) nhận Chấm MT; Phó trở lên chấm được mọi lớp cùng khối.
+  // Trưởng / Phó khối (khối × MÔN) — PHÂN CÔNG ngay tại đây (Thùy 29/10, spec-truong-khoi.md §2): nguồn duy nhất
+  // phan_cong_quan_ly_khoi, không suy từ sơ đồ. Phó (không có Phó ⇒ Trưởng) nhận Chấm MT; Phó trở lên chấm được mọi lớp cùng khối.
   const tkOfMon = (mon: string) => tk.filter((r) => r.khoi === khoi && r.mon === mon)
+  const tkCua = (mon: string, vai: 'truong' | 'pho') => tkOfMon(mon).find((r) => r.cap === vai)?.nhan_su_id ?? null
+  async function luuTk(mon: string, vai: 'truong' | 'pho', id: string | null) {
+    try {
+      await setKhoiQuanLy(mon, khoi, vai, id)
+      const ns = id ? ds.find((n) => n.id === id) : null
+      setTk((prev) => [...prev.filter((r) => !(r.mon === mon && r.khoi === khoi && r.cap === vai)),
+        ...(id ? [{ mon, khoi, nhan_su_id: id, ho_ten: ns?.ho_ten ?? '?', cap: vai }] : [])])
+    } catch (e: any) { alert(e.message ?? String(e)) }
+  }
 
   // tải mỗi người = số lớp đang gánh (mọi vai) — hiện trong dropdown để soát quá tải
   const tai = useMemo(() => {
@@ -106,7 +124,21 @@ export default function PhanCongScreen() {
                     <tr><td colSpan={5} className="px-2 pb-0.5 pt-2">
                       <div className="flex flex-wrap items-center gap-2">
                         <span className="text-[12px] font-semibold text-slate-600">{g.mon} <span className="font-normal text-slate-400">· {g.lops.length} lớp</span></span>
-                        <span className="ml-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500" title="Theo Sơ đồ tổ chức team Trợ giảng · Phó (không có Phó thì Trưởng) nhận Chấm MT · Phó trở lên chấm được mọi lớp cùng khối">Khối {khoi} · {g.mon}</span>
+                        <span className="ml-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500" title="Trưởng khối = quản chất lượng + vận hành khối · Phó (không có Phó thì Trưởng) nhận Chấm MT · Phó trở lên chấm được mọi lớp cùng khối">Khối {khoi} · {g.mon}</span>
+                        {suaTk ? (
+                          <div className="flex flex-wrap items-center gap-2">
+                            <span className="text-[12px] text-indigo-700">Trưởng</span>
+                            <div className="w-48">
+                              <SearchSelect value={tkCua(g.mon, 'truong')} onChange={(id) => luuTk(g.mon, 'truong', id)} invalid placeholder="⚠ chưa có trưởng khối"
+                                options={ds.filter((n) => qlcl.has(n.id)).map((n) => ({ id: n.id, label: n.ho_ten }))} />
+                            </div>
+                            <span className="text-[12px] text-sky-700">Phó</span>
+                            <div className="w-48">
+                              <SearchSelect value={tkCua(g.mon, 'pho')} onChange={(id) => luuTk(g.mon, 'pho', id)} placeholder="— (không) —"
+                                options={ds.filter((n) => n.id !== tkCua(g.mon, 'truong')).map((n) => ({ id: n.id, label: n.ho_ten, sub: `${tai[n.id] ?? 0} lớp` }))} />
+                            </div>
+                          </div>
+                        ) : (
                         <div className="flex flex-wrap items-center gap-1">
                           {tkOfMon(g.mon).map((r) => (
                             <span key={r.nhan_su_id + r.cap} className={`rounded-full px-2.5 py-0.5 text-[12px] font-medium ${r.cap === 'truong' ? 'bg-indigo-50 text-indigo-700' : 'bg-sky-50 text-sky-700'}`}>
@@ -114,8 +146,9 @@ export default function PhanCongScreen() {
                             </span>
                           ))}
                           {tkOfMon(g.mon).length === 0 && <span className="text-[12px] text-amber-600">chưa có Trưởng/Phó khối — MT về GV lớp</span>}
-                          <span className="text-[11.5px] text-slate-400">· sửa ở Sơ đồ tổ chức</span>
+                          <span className="text-[11.5px] text-slate-400">· Lead / Quản lý chất lượng phân công</span>
                         </div>
+                        )}
                       </div>
                     </td></tr>
                     {g.lops.map((l) => {
