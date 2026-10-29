@@ -100,7 +100,8 @@ function Nhom({ tieuDe, cls, items, homNay, onMo, rong }: { tieuDe: string; cls:
 }
 
 // ── DETAIL 1 CA ──────────────────────────────────────────────────────────────
-function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
+// Export cho màn ERP Bổ trợ Nhẹ (Thùy 29/10): ca Nhẹ chạy bằng đúng máy ca Yếu (fn_btyeu_*); `nhe` chỉ đổi câu chữ vắng (không bù).
+export function CaDetail({ buoiId, onBack, nhe }: { buoiId: string; onBack: () => void; nhe?: boolean }) {
   const [ca, setCa] = useState<CaTA | null | undefined>(undefined)
   const [busy, setBusy] = useState<string | null>(null)
   const [loi, setLoi] = useState<string | null>(null)
@@ -229,7 +230,7 @@ function CaDetail({ buoiId, onBack }: { buoiId: string; onBack: () => void }) {
             : hoiVang ? (
               <div className="flex flex-wrap items-center gap-2 text-[13px]">
                 <span className="text-slate-600">Đánh vắng và HUỶ buổi này?</span>
-                <button disabled={!!busy} onClick={() => chay('vang', async () => { await diemDanh(ca.buoi_hoc_hs_id, 'vang'); await huyBuoi(ca.buoi_id, 'HS vắng ca bổ trợ yếu') }, 'Đã đánh vắng và huỷ buổi. OPS xếp lại ở màn Xếp bổ trợ yếu.')}
+                <button disabled={!!busy} onClick={() => chay('vang', async () => { await diemDanh(ca.buoi_hoc_hs_id, 'vang'); await huyBuoi(ca.buoi_id, nhe ? 'HS vắng ca Nhẹ — không bù' : 'HS vắng ca bổ trợ yếu') }, nhe ? 'Đã đánh vắng — ca Nhẹ không bù.' : 'Đã đánh vắng và huỷ buổi. OPS xếp lại ở màn Xếp bổ trợ yếu.')}
                   className="rounded-lg bg-rose-600 px-3 py-1.5 font-semibold text-white disabled:opacity-50">Vắng · huỷ buổi</button>
                 <button onClick={() => setHoiVang(false)} className="rounded-lg px-3 py-1.5 text-slate-500">Thôi</button>
               </div>
