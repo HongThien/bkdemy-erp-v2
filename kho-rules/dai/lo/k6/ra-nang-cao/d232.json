@@ -1,0 +1,145 @@
+[
+ {
+  "ma_cau": "T106020802001",
+  "parent_ma_cau": null,
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "le",
+  "da_duyet": true,
+  "noi_dung": "Tìm chữ số tận cùng của số $7^{9^{9}}$.",
+  "lua_chon": null,
+  "dap_an": "7",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chữ số tận cùng của $7^{m}$ lặp lại theo chu kì 4 của số mũ, nên **tìm số dư của số mũ khi chia cho 4** rồi dùng chữ số tận cùng của $7^4$.\n\n**Bước 1.** Xét số mũ $9^{9}$: cơ số 9 chia 4 dư 1, nên mọi thừa số của tích đều có cùng số dư và ta tìm số dư của cả lũy thừa bằng cách nhân các số dư.\n\n**Bước 2.** Viết số mũ dưới dạng $4k$ hoặc $4k+r$ rồi tách lũy thừa của $7$ thành tích của $7^{4k}$ với phần còn lại.\n\n**Bước 3.** Tính $7^4$ để biết chữ số tận cùng của nó, rồi dùng tính chất: số có chữ số tận cùng là 0, 1, 5 hoặc 6 nâng lên lũy thừa nào cũng giữ nguyên chữ số tận cùng.\n\n**Bước 4.** Nhân chữ số tận cùng của $7^{4k}$ với chữ số tận cùng của phần lũy thừa còn lại, chữ số tận cùng của tích là chữ số cần tìm.\n\n**Chú ý:** số mũ ở đây cũng là một lũy thừa, nên phải tìm số dư của nó khi chia cho 4 chứ không chia cho 10.\n\n**Phần 2. Trình bày**\n\nVì $9$ chia 4 dư 1 nên mỗi thừa số $9$ của $9^{9}$ chia 4 dư 1, mà tích các số chia 4 dư 1 thì chia 4 dư 1 (vì $(4a+1).(4b+1)=4.(4ab+a+b)+1$).\n\nSuy ra $9^{9}=4k+1$ ($k\\in\\mathbb{N}^*$).\n\nDo đó $7^{9^{9}}=7^{4k+1}=7^{4k}.7$.\n\nTa có $7^4=2401$ có chữ số tận cùng là 1 nên $7^{4k}=2401^k$ cũng có chữ số tận cùng là 1 (tích các số cùng có chữ số tận cùng là 1 thì vẫn có chữ số tận cùng là 1).\n\nSố $7$ có chữ số tận cùng là 7.\n\nTa có $1.7=7$ nên $7^{4k}.7$ có chữ số tận cùng là 7.\n\nVậy $7^{9^{9}}$ có chữ số tận cùng là 7."
+ },
+ {
+  "ma_cau": "T106020802004",
+  "parent_ma_cau": "T106020802001",
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "clone",
+  "da_duyet": true,
+  "noi_dung": "Tìm chữ số tận cùng của số $3^{7^{7}}$.",
+  "lua_chon": null,
+  "dap_an": "7",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chữ số tận cùng của $3^{m}$ lặp lại theo chu kì 4 của số mũ, nên **tìm số dư của số mũ khi chia cho 4** rồi dùng chữ số tận cùng của $3^4$.\n\n**Bước 1.** Xét số mũ $7^{7}$: cơ số 7 chia 4 dư 3, nên xét $7^2$ chia 4 dư mấy rồi ghép lại theo số mũ 7 chẵn hay lẻ.\n\n**Bước 2.** Viết số mũ dưới dạng $4k$ hoặc $4k+r$ rồi tách lũy thừa của $3$ thành tích của $3^{4k}$ với phần còn lại.\n\n**Bước 3.** Tính $3^4$ để biết chữ số tận cùng của nó, rồi dùng tính chất: số có chữ số tận cùng là 0, 1, 5 hoặc 6 nâng lên lũy thừa nào cũng giữ nguyên chữ số tận cùng.\n\n**Bước 4.** Nhân chữ số tận cùng của $3^{4k}$ với chữ số tận cùng của phần lũy thừa còn lại, chữ số tận cùng của tích là chữ số cần tìm.\n\n**Chú ý:** số mũ ở đây cũng là một lũy thừa, nên phải tìm số dư của nó khi chia cho 4 chứ không chia cho 10.\n\n**Phần 2. Trình bày**\n\nTa có $7^2=49=4.12+1$ chia 4 dư 1.\n\nVì số mũ $7$ là số lẻ nên $7^{7}=(7^2.7^2.\\dots.7^2).7$ (3 thừa số $7^2$ rồi nhân với $7$); phần trong ngoặc chia 4 dư 1, còn $7$ chia 4 dư 3 nên tích chia 4 dư 3 (vì $(4a+1).(4b+3)=4.(4ab+3a+b)+3$).\n\nSuy ra $7^{7}=4k+3$ ($k\\in\\mathbb{N}^*$).\n\nDo đó $3^{7^{7}}=3^{4k+3}=3^{4k}.3^3$.\n\nTa có $3^4=81$ có chữ số tận cùng là 1 nên $3^{4k}=81^k$ cũng có chữ số tận cùng là 1 (tích các số cùng có chữ số tận cùng là 1 thì vẫn có chữ số tận cùng là 1).\n\nTa có $3^3=27$ có chữ số tận cùng là 7.\n\nTa có $1.7=7$ nên $3^{4k}.3^3$ có chữ số tận cùng là 7.\n\nVậy $3^{7^{7}}$ có chữ số tận cùng là 7."
+ },
+ {
+  "ma_cau": "T106020802005",
+  "parent_ma_cau": "T106020802001",
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "clone",
+  "da_duyet": true,
+  "noi_dung": "Tìm chữ số tận cùng của số $2^{9^{9}}$.",
+  "lua_chon": null,
+  "dap_an": "2",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chữ số tận cùng của $2^{m}$ lặp lại theo chu kì 4 của số mũ, nên **tìm số dư của số mũ khi chia cho 4** rồi dùng chữ số tận cùng của $2^4$.\n\n**Bước 1.** Xét số mũ $9^{9}$: cơ số 9 chia 4 dư 1, nên mọi thừa số của tích đều có cùng số dư và ta tìm số dư của cả lũy thừa bằng cách nhân các số dư.\n\n**Bước 2.** Viết số mũ dưới dạng $4k$ hoặc $4k+r$ rồi tách lũy thừa của $2$ thành tích của $2^{4k}$ với phần còn lại.\n\n**Bước 3.** Tính $2^4$ để biết chữ số tận cùng của nó, rồi dùng tính chất: số có chữ số tận cùng là 0, 1, 5 hoặc 6 nâng lên lũy thừa nào cũng giữ nguyên chữ số tận cùng.\n\n**Bước 4.** Nhân chữ số tận cùng của $2^{4k}$ với chữ số tận cùng của phần lũy thừa còn lại, chữ số tận cùng của tích là chữ số cần tìm.\n\n**Chú ý:** số mũ ở đây cũng là một lũy thừa, nên phải tìm số dư của nó khi chia cho 4 chứ không chia cho 10.\n\n**Phần 2. Trình bày**\n\nVì $9$ chia 4 dư 1 nên mỗi thừa số $9$ của $9^{9}$ chia 4 dư 1, mà tích các số chia 4 dư 1 thì chia 4 dư 1 (vì $(4a+1).(4b+1)=4.(4ab+a+b)+1$).\n\nSuy ra $9^{9}=4k+1$ ($k\\in\\mathbb{N}^*$).\n\nDo đó $2^{9^{9}}=2^{4k+1}=2^{4k}.2$.\n\nTa có $2^4=16$ có chữ số tận cùng là 6 nên $2^{4k}=16^k$ cũng có chữ số tận cùng là 6 (tích các số cùng có chữ số tận cùng là 6 thì vẫn có chữ số tận cùng là 6).\n\nSố $2$ có chữ số tận cùng là 2.\n\nTa có $6.2=12$ nên $2^{4k}.2$ có chữ số tận cùng là 2.\n\nVậy $2^{9^{9}}$ có chữ số tận cùng là 2."
+ },
+ {
+  "ma_cau": "T106020802007",
+  "parent_ma_cau": "T106020802001",
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "clone",
+  "da_duyet": true,
+  "noi_dung": "Tìm chữ số tận cùng của số $8^{5^{13}}$.",
+  "lua_chon": null,
+  "dap_an": "8",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chữ số tận cùng của $8^{m}$ lặp lại theo chu kì 4 của số mũ, nên **tìm số dư của số mũ khi chia cho 4** rồi dùng chữ số tận cùng của $8^4$.\n\n**Bước 1.** Xét số mũ $5^{13}$: cơ số 5 chia 4 dư 1, nên mọi thừa số của tích đều có cùng số dư và ta tìm số dư của cả lũy thừa bằng cách nhân các số dư.\n\n**Bước 2.** Viết số mũ dưới dạng $4k$ hoặc $4k+r$ rồi tách lũy thừa của $8$ thành tích của $8^{4k}$ với phần còn lại.\n\n**Bước 3.** Tính $8^4$ để biết chữ số tận cùng của nó, rồi dùng tính chất: số có chữ số tận cùng là 0, 1, 5 hoặc 6 nâng lên lũy thừa nào cũng giữ nguyên chữ số tận cùng.\n\n**Bước 4.** Nhân chữ số tận cùng của $8^{4k}$ với chữ số tận cùng của phần lũy thừa còn lại, chữ số tận cùng của tích là chữ số cần tìm.\n\n**Chú ý:** số mũ ở đây cũng là một lũy thừa, nên phải tìm số dư của nó khi chia cho 4 chứ không chia cho 10.\n\n**Phần 2. Trình bày**\n\nVì $5$ chia 4 dư 1 nên mỗi thừa số $5$ của $5^{13}$ chia 4 dư 1, mà tích các số chia 4 dư 1 thì chia 4 dư 1 (vì $(4a+1).(4b+1)=4.(4ab+a+b)+1$).\n\nSuy ra $5^{13}=4k+1$ ($k\\in\\mathbb{N}^*$).\n\nDo đó $8^{5^{13}}=8^{4k+1}=8^{4k}.8$.\n\nTa có $8^4=4096$ có chữ số tận cùng là 6 nên $8^{4k}=4096^k$ cũng có chữ số tận cùng là 6 (tích các số cùng có chữ số tận cùng là 6 thì vẫn có chữ số tận cùng là 6).\n\nSố $8$ có chữ số tận cùng là 8.\n\nTa có $6.8=48$ nên $8^{4k}.8$ có chữ số tận cùng là 8.\n\nVậy $8^{5^{13}}$ có chữ số tận cùng là 8."
+ },
+ {
+  "ma_cau": "T106020802008",
+  "parent_ma_cau": "T106020802001",
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "clone",
+  "da_duyet": true,
+  "noi_dung": "Tìm chữ số tận cùng của số $17^{11^{11}}$.",
+  "lua_chon": null,
+  "dap_an": "3",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chữ số tận cùng của $17^{m}$ lặp lại theo chu kì 4 của số mũ, nên **tìm số dư của số mũ khi chia cho 4** rồi dùng chữ số tận cùng của $17^4$.\n\n**Bước 1.** Xét số mũ $11^{11}$: cơ số 11 chia 4 dư 3, nên xét $11^2$ chia 4 dư mấy rồi ghép lại theo số mũ 11 chẵn hay lẻ.\n\n**Bước 2.** Viết số mũ dưới dạng $4k$ hoặc $4k+r$ rồi tách lũy thừa của $17$ thành tích của $17^{4k}$ với phần còn lại.\n\n**Bước 3.** Tính $17^4$ để biết chữ số tận cùng của nó, rồi dùng tính chất: số có chữ số tận cùng là 0, 1, 5 hoặc 6 nâng lên lũy thừa nào cũng giữ nguyên chữ số tận cùng.\n\n**Bước 4.** Nhân chữ số tận cùng của $17^{4k}$ với chữ số tận cùng của phần lũy thừa còn lại, chữ số tận cùng của tích là chữ số cần tìm.\n\n**Chú ý:** số mũ ở đây cũng là một lũy thừa, nên phải tìm số dư của nó khi chia cho 4 chứ không chia cho 10.\n\n**Phần 2. Trình bày**\n\nTa có $11^2=121=4.30+1$ chia 4 dư 1.\n\nVì số mũ $11$ là số lẻ nên $11^{11}=(11^2.11^2.\\dots.11^2).11$ (5 thừa số $11^2$ rồi nhân với $11$); phần trong ngoặc chia 4 dư 1, còn $11$ chia 4 dư 3 nên tích chia 4 dư 3 (vì $(4a+1).(4b+3)=4.(4ab+3a+b)+3$).\n\nSuy ra $11^{11}=4k+3$ ($k\\in\\mathbb{N}^*$).\n\nDo đó $17^{11^{11}}=17^{4k+3}=17^{4k}.17^3$.\n\nTa có $17^4=83521$ có chữ số tận cùng là 1 nên $17^{4k}=83521^k$ cũng có chữ số tận cùng là 1 (tích các số cùng có chữ số tận cùng là 1 thì vẫn có chữ số tận cùng là 1).\n\nTa có $17^3=4913$ có chữ số tận cùng là 3.\n\nTa có $1.3=3$ nên $17^{4k}.17^3$ có chữ số tận cùng là 3.\n\nVậy $17^{11^{11}}$ có chữ số tận cùng là 3."
+ },
+ {
+  "ma_cau": "T106020802010",
+  "parent_ma_cau": "T106020802001",
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "clone",
+  "da_duyet": true,
+  "noi_dung": "Tìm chữ số tận cùng của số $14^{7^{9}}$.",
+  "lua_chon": null,
+  "dap_an": "4",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chữ số tận cùng của $14^{m}$ lặp lại theo chu kì 4 của số mũ, nên **tìm số dư của số mũ khi chia cho 4** rồi dùng chữ số tận cùng của $14^4$.\n\n**Bước 1.** Xét số mũ $7^{9}$: cơ số 7 chia 4 dư 3, nên xét $7^2$ chia 4 dư mấy rồi ghép lại theo số mũ 9 chẵn hay lẻ.\n\n**Bước 2.** Viết số mũ dưới dạng $4k$ hoặc $4k+r$ rồi tách lũy thừa của $14$ thành tích của $14^{4k}$ với phần còn lại.\n\n**Bước 3.** Tính $14^4$ để biết chữ số tận cùng của nó, rồi dùng tính chất: số có chữ số tận cùng là 0, 1, 5 hoặc 6 nâng lên lũy thừa nào cũng giữ nguyên chữ số tận cùng.\n\n**Bước 4.** Nhân chữ số tận cùng của $14^{4k}$ với chữ số tận cùng của phần lũy thừa còn lại, chữ số tận cùng của tích là chữ số cần tìm.\n\n**Chú ý:** số mũ ở đây cũng là một lũy thừa, nên phải tìm số dư của nó khi chia cho 4 chứ không chia cho 10.\n\n**Phần 2. Trình bày**\n\nTa có $7^2=49=4.12+1$ chia 4 dư 1.\n\nVì số mũ $9$ là số lẻ nên $7^{9}=(7^2.7^2.\\dots.7^2).7$ (4 thừa số $7^2$ rồi nhân với $7$); phần trong ngoặc chia 4 dư 1, còn $7$ chia 4 dư 3 nên tích chia 4 dư 3 (vì $(4a+1).(4b+3)=4.(4ab+3a+b)+3$).\n\nSuy ra $7^{9}=4k+3$ ($k\\in\\mathbb{N}^*$).\n\nDo đó $14^{7^{9}}=14^{4k+3}=14^{4k}.14^3$.\n\nTa có $14^4=38416$ có chữ số tận cùng là 6 nên $14^{4k}=38416^k$ cũng có chữ số tận cùng là 6 (tích các số cùng có chữ số tận cùng là 6 thì vẫn có chữ số tận cùng là 6).\n\nTa có $14^3=2744$ có chữ số tận cùng là 4.\n\nTa có $6.4=24$ nên $14^{4k}.14^3$ có chữ số tận cùng là 4.\n\nVậy $14^{7^{9}}$ có chữ số tận cùng là 4."
+ },
+ {
+  "ma_cau": "T106020802011",
+  "parent_ma_cau": "T106020802001",
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "clone",
+  "da_duyet": true,
+  "noi_dung": "Tìm chữ số tận cùng của số $19^{7^{20}}$.",
+  "lua_chon": null,
+  "dap_an": "9",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chữ số tận cùng của $19^{m}$ lặp lại theo chu kì 4 của số mũ, nên **tìm số dư của số mũ khi chia cho 4** rồi dùng chữ số tận cùng của $19^4$.\n\n**Bước 1.** Xét số mũ $7^{20}$: cơ số 7 chia 4 dư 3, nên xét $7^2$ chia 4 dư mấy rồi ghép lại theo số mũ 20 chẵn hay lẻ.\n\n**Bước 2.** Viết số mũ dưới dạng $4k$ hoặc $4k+r$ rồi tách lũy thừa của $19$ thành tích của $19^{4k}$ với phần còn lại.\n\n**Bước 3.** Tính $19^4$ để biết chữ số tận cùng của nó, rồi dùng tính chất: số có chữ số tận cùng là 0, 1, 5 hoặc 6 nâng lên lũy thừa nào cũng giữ nguyên chữ số tận cùng.\n\n**Bước 4.** Nhân chữ số tận cùng của $19^{4k}$ với chữ số tận cùng của phần lũy thừa còn lại, chữ số tận cùng của tích là chữ số cần tìm.\n\n**Chú ý:** số mũ ở đây cũng là một lũy thừa, nên phải tìm số dư của nó khi chia cho 4 chứ không chia cho 10.\n\n**Phần 2. Trình bày**\n\nTa có $7^2=49=4.12+1$ chia 4 dư 1.\n\nVì số mũ $20$ là số chẵn nên $7^{20}=7^2.7^2.\\dots.7^2$ (10 thừa số $7^2$) chia 4 dư 1 (tích các số chia 4 dư 1).\n\nSuy ra $7^{20}=4k+1$ ($k\\in\\mathbb{N}^*$).\n\nDo đó $19^{7^{20}}=19^{4k+1}=19^{4k}.19$.\n\nTa có $19^4=130321$ có chữ số tận cùng là 1 nên $19^{4k}=130321^k$ cũng có chữ số tận cùng là 1 (tích các số cùng có chữ số tận cùng là 1 thì vẫn có chữ số tận cùng là 1).\n\nSố $19$ có chữ số tận cùng là 9.\n\nTa có $1.9=9$ nên $19^{4k}.19$ có chữ số tận cùng là 9.\n\nVậy $19^{7^{20}}$ có chữ số tận cùng là 9."
+ },
+ {
+  "ma_cau": "T106020802012",
+  "parent_ma_cau": "T106020802001",
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "clone",
+  "da_duyet": true,
+  "noi_dung": "Tìm chữ số tận cùng của số $18^{3^{12}}$.",
+  "lua_chon": null,
+  "dap_an": "8",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chữ số tận cùng của $18^{m}$ lặp lại theo chu kì 4 của số mũ, nên **tìm số dư của số mũ khi chia cho 4** rồi dùng chữ số tận cùng của $18^4$.\n\n**Bước 1.** Xét số mũ $3^{12}$: cơ số 3 chia 4 dư 3, nên xét $3^2$ chia 4 dư mấy rồi ghép lại theo số mũ 12 chẵn hay lẻ.\n\n**Bước 2.** Viết số mũ dưới dạng $4k$ hoặc $4k+r$ rồi tách lũy thừa của $18$ thành tích của $18^{4k}$ với phần còn lại.\n\n**Bước 3.** Tính $18^4$ để biết chữ số tận cùng của nó, rồi dùng tính chất: số có chữ số tận cùng là 0, 1, 5 hoặc 6 nâng lên lũy thừa nào cũng giữ nguyên chữ số tận cùng.\n\n**Bước 4.** Nhân chữ số tận cùng của $18^{4k}$ với chữ số tận cùng của phần lũy thừa còn lại, chữ số tận cùng của tích là chữ số cần tìm.\n\n**Chú ý:** số mũ ở đây cũng là một lũy thừa, nên phải tìm số dư của nó khi chia cho 4 chứ không chia cho 10.\n\n**Phần 2. Trình bày**\n\nTa có $3^2=9=4.2+1$ chia 4 dư 1.\n\nVì số mũ $12$ là số chẵn nên $3^{12}=3^2.3^2.\\dots.3^2$ (6 thừa số $3^2$) chia 4 dư 1 (tích các số chia 4 dư 1).\n\nSuy ra $3^{12}=4k+1$ ($k\\in\\mathbb{N}^*$).\n\nDo đó $18^{3^{12}}=18^{4k+1}=18^{4k}.18$.\n\nTa có $18^4=104976$ có chữ số tận cùng là 6 nên $18^{4k}=104976^k$ cũng có chữ số tận cùng là 6 (tích các số cùng có chữ số tận cùng là 6 thì vẫn có chữ số tận cùng là 6).\n\nSố $18$ có chữ số tận cùng là 8.\n\nTa có $6.8=48$ nên $18^{4k}.18$ có chữ số tận cùng là 8.\n\nVậy $18^{3^{12}}$ có chữ số tận cùng là 8."
+ },
+ {
+  "ma_cau": "T106020802002",
+  "parent_ma_cau": null,
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "le",
+  "da_duyet": true,
+  "noi_dung": "Tìm chữ số tận cùng của số $14^{14^{14}}$.",
+  "lua_chon": null,
+  "dap_an": "6",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chữ số tận cùng của $14^{m}$ lặp lại theo chu kì 4 của số mũ, nên **tìm số dư của số mũ khi chia cho 4** rồi dùng chữ số tận cùng của $14^4$.\n\n**Bước 1.** Xét số mũ $14^{14}$: cơ số 14 là số chẵn, nên kiểm tra xem lũy thừa này có chia hết cho 4 không bằng cách tách ra thừa số $14^2$.\n\n**Bước 2.** Viết số mũ dưới dạng $4k$ hoặc $4k+r$ rồi tách lũy thừa của $14$ thành tích của $14^{4k}$ với phần còn lại.\n\n**Bước 3.** Tính $14^4$ để biết chữ số tận cùng của nó, rồi dùng tính chất: số có chữ số tận cùng là 0, 1, 5 hoặc 6 nâng lên lũy thừa nào cũng giữ nguyên chữ số tận cùng.\n\n**Chú ý:** số mũ ở đây cũng là một lũy thừa, nên phải tìm số dư của nó khi chia cho 4 chứ không chia cho 10.\n\n**Phần 2. Trình bày**\n\nTa có $14^{14}=14^2.14^{12}$ và $14^2=196=4.49$ chia hết cho 4.\n\nSuy ra $14^{14}=4k$ ($k\\in\\mathbb{N}^*$).\n\nDo đó $14^{14^{14}}=14^{4k}$.\n\nTa có $14^4=38416$ có chữ số tận cùng là 6 nên $14^{4k}=38416^k$ cũng có chữ số tận cùng là 6 (tích các số cùng có chữ số tận cùng là 6 thì vẫn có chữ số tận cùng là 6).\n\nVậy $14^{14^{14}}$ có chữ số tận cùng là 6."
+ },
+ {
+  "ma_cau": "T106020802006",
+  "parent_ma_cau": "T106020802002",
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "clone",
+  "da_duyet": true,
+  "noi_dung": "Tìm chữ số tận cùng của số $13^{6^{6}}$.",
+  "lua_chon": null,
+  "dap_an": "1",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chữ số tận cùng của $13^{m}$ lặp lại theo chu kì 4 của số mũ, nên **tìm số dư của số mũ khi chia cho 4** rồi dùng chữ số tận cùng của $13^4$.\n\n**Bước 1.** Xét số mũ $6^{6}$: cơ số 6 là số chẵn, nên kiểm tra xem lũy thừa này có chia hết cho 4 không bằng cách tách ra thừa số $6^2$.\n\n**Bước 2.** Viết số mũ dưới dạng $4k$ hoặc $4k+r$ rồi tách lũy thừa của $13$ thành tích của $13^{4k}$ với phần còn lại.\n\n**Bước 3.** Tính $13^4$ để biết chữ số tận cùng của nó, rồi dùng tính chất: số có chữ số tận cùng là 0, 1, 5 hoặc 6 nâng lên lũy thừa nào cũng giữ nguyên chữ số tận cùng.\n\n**Chú ý:** số mũ ở đây cũng là một lũy thừa, nên phải tìm số dư của nó khi chia cho 4 chứ không chia cho 10.\n\n**Phần 2. Trình bày**\n\nTa có $6^{6}=6^2.6^{4}$ và $6^2=36=4.9$ chia hết cho 4.\n\nSuy ra $6^{6}=4k$ ($k\\in\\mathbb{N}^*$).\n\nDo đó $13^{6^{6}}=13^{4k}$.\n\nTa có $13^4=28561$ có chữ số tận cùng là 1 nên $13^{4k}=28561^k$ cũng có chữ số tận cùng là 1 (tích các số cùng có chữ số tận cùng là 1 thì vẫn có chữ số tận cùng là 1).\n\nVậy $13^{6^{6}}$ có chữ số tận cùng là 1."
+ },
+ {
+  "ma_cau": "T106020802009",
+  "parent_ma_cau": "T106020802002",
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "clone",
+  "da_duyet": true,
+  "noi_dung": "Tìm chữ số tận cùng của số $12^{10^{10}}$.",
+  "lua_chon": null,
+  "dap_an": "6",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chữ số tận cùng của $12^{m}$ lặp lại theo chu kì 4 của số mũ, nên **tìm số dư của số mũ khi chia cho 4** rồi dùng chữ số tận cùng của $12^4$.\n\n**Bước 1.** Xét số mũ $10^{10}$: cơ số 10 là số chẵn, nên kiểm tra xem lũy thừa này có chia hết cho 4 không bằng cách tách ra thừa số $10^2$.\n\n**Bước 2.** Viết số mũ dưới dạng $4k$ hoặc $4k+r$ rồi tách lũy thừa của $12$ thành tích của $12^{4k}$ với phần còn lại.\n\n**Bước 3.** Tính $12^4$ để biết chữ số tận cùng của nó, rồi dùng tính chất: số có chữ số tận cùng là 0, 1, 5 hoặc 6 nâng lên lũy thừa nào cũng giữ nguyên chữ số tận cùng.\n\n**Chú ý:** số mũ ở đây cũng là một lũy thừa, nên phải tìm số dư của nó khi chia cho 4 chứ không chia cho 10.\n\n**Phần 2. Trình bày**\n\nTa có $10^{10}=10^2.10^{8}$ và $10^2=100=4.25$ chia hết cho 4.\n\nSuy ra $10^{10}=4k$ ($k\\in\\mathbb{N}^*$).\n\nDo đó $12^{10^{10}}=12^{4k}$.\n\nTa có $12^4=20736$ có chữ số tận cùng là 6 nên $12^{4k}=20736^k$ cũng có chữ số tận cùng là 6 (tích các số cùng có chữ số tận cùng là 6 thì vẫn có chữ số tận cùng là 6).\n\nVậy $12^{10^{10}}$ có chữ số tận cùng là 6."
+ },
+ {
+  "ma_cau": "T106020802003",
+  "parent_ma_cau": null,
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "le",
+  "da_duyet": true,
+  "noi_dung": "Tìm chữ số tận cùng của số $4^{5^{67}}$.",
+  "lua_chon": null,
+  "dap_an": "4",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chữ số tận cùng của $4^{m}$ lặp lại theo chu kì 4 của số mũ, nên **tìm số dư của số mũ khi chia cho 4** rồi dùng chữ số tận cùng của $4^4$.\n\n**Bước 1.** Xét số mũ $5^{67}$: cơ số 5 chia 4 dư 1, nên mọi thừa số của tích đều có cùng số dư và ta tìm số dư của cả lũy thừa bằng cách nhân các số dư.\n\n**Bước 2.** Viết số mũ dưới dạng $4k$ hoặc $4k+r$ rồi tách lũy thừa của $4$ thành tích của $4^{4k}$ với phần còn lại.\n\n**Bước 3.** Tính $4^4$ để biết chữ số tận cùng của nó, rồi dùng tính chất: số có chữ số tận cùng là 0, 1, 5 hoặc 6 nâng lên lũy thừa nào cũng giữ nguyên chữ số tận cùng.\n\n**Bước 4.** Nhân chữ số tận cùng của $4^{4k}$ với chữ số tận cùng của phần lũy thừa còn lại, chữ số tận cùng của tích là chữ số cần tìm.\n\n**Chú ý:** số mũ ở đây cũng là một lũy thừa, nên phải tìm số dư của nó khi chia cho 4 chứ không chia cho 10.\n\n**Phần 2. Trình bày**\n\nVì $5$ chia 4 dư 1 nên mỗi thừa số $5$ của $5^{67}$ chia 4 dư 1, mà tích các số chia 4 dư 1 thì chia 4 dư 1 (vì $(4a+1).(4b+1)=4.(4ab+a+b)+1$).\n\nSuy ra $5^{67}=4k+1$ ($k\\in\\mathbb{N}^*$).\n\nDo đó $4^{5^{67}}=4^{4k+1}=4^{4k}.4$.\n\nTa có $4^4=256$ có chữ số tận cùng là 6 nên $4^{4k}=256^k$ cũng có chữ số tận cùng là 6 (tích các số cùng có chữ số tận cùng là 6 thì vẫn có chữ số tận cùng là 6).\n\nSố $4$ có chữ số tận cùng là 4.\n\nTa có $6.4=24$ nên $4^{4k}.4$ có chữ số tận cùng là 4.\n\nVậy $4^{5^{67}}$ có chữ số tận cùng là 4."
+ },
+ {
+  "ma_cau": "T106020802013",
+  "parent_ma_cau": "T106020802003",
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "clone",
+  "da_duyet": true,
+  "noi_dung": "Tìm chữ số tận cùng của số $2^{2022}$.",
+  "lua_chon": null,
+  "dap_an": "4",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chữ số tận cùng của $2^{m}$ lặp lại theo chu kì 4 của số mũ, nên **tìm số dư của số mũ khi chia cho 4** rồi dùng chữ số tận cùng của $2^4$.\n\n**Bước 1.** Chia số mũ 2022 cho 4 để tìm số dư, tức là viết số mũ dưới dạng $4q+r$.\n\n**Bước 2.** Viết số mũ dưới dạng $4k$ hoặc $4k+r$ rồi tách lũy thừa của $2$ thành tích của $2^{4k}$ với phần còn lại.\n\n**Bước 3.** Tính $2^4$ để biết chữ số tận cùng của nó, rồi dùng tính chất: số có chữ số tận cùng là 0, 1, 5 hoặc 6 nâng lên lũy thừa nào cũng giữ nguyên chữ số tận cùng.\n\n**Bước 4.** Nhân chữ số tận cùng của $2^{4k}$ với chữ số tận cùng của phần lũy thừa còn lại, chữ số tận cùng của tích là chữ số cần tìm.\n\n**Chú ý:** chữ số tận cùng của một tích chỉ phụ thuộc chữ số tận cùng của từng thừa số.\n\n**Phần 2. Trình bày**\n\nTa có $2022=4.505+2$.\n\nSuy ra $2^{2022}=2^{4k+2}=2^{4k}.2^2$ với $k=505$.\n\nTa có $2^4=16$ có chữ số tận cùng là 6 nên $2^{4k}=16^k$ cũng có chữ số tận cùng là 6 (tích các số cùng có chữ số tận cùng là 6 thì vẫn có chữ số tận cùng là 6).\n\nTa có $2^2=4$ có chữ số tận cùng là 4.\n\nTa có $6.4=24$ nên $2^{4k}.2^2$ có chữ số tận cùng là 4.\n\nVậy $2^{2022}$ có chữ số tận cùng là 4."
+ }
+]

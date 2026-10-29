@@ -1,0 +1,145 @@
+[
+ {
+  "ma_cau": "T106000000242",
+  "parent_ma_cau": null,
+  "loai_cau": "tu_luan",
+  "nguon": "de_thi",
+  "da_duyet": false,
+  "noi_dung": "Cho $A=1+2+2^2+2^3+\\dots+2^{99}$. Chứng tỏ rằng $A+1$ là bình phương của một số tự nhiên.",
+  "lua_chon": null,
+  "dap_an": null,
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** nhân $A$ với cơ số 2 rồi trừ cho $A$ để các số hạng giống nhau triệt tiêu, chỉ còn hai số hạng ở hai đầu.\n\n**Bước 1.** Nhận dạng: $A$ là tổng các luỹ thừa cùng cơ số 2 với số mũ tăng dần đều, số hạng đầu là $1=2^0$.\n\n**Bước 2.** Nhân cả hai vế với 2 để mỗi số hạng tăng lên một bậc, được một tổng gần giống $A$.\n\n**Bước 3.** Lấy $2A$ trừ $A$: các số hạng chung triệt tiêu, từ đó tính được $A$ rồi suy ra $A+1$.\n\n**Bước 4.** Viết $A+1$ thành tích của hai thừa số bằng nhau bằng cách tách số mũ thành hai phần bằng nhau, rồi kết luận.\n\n**Chú ý:** \"bình phương của một số tự nhiên $a$\" nghĩa là $a.a$.\n\n**Phần 2. Trình bày**\n\nTa có $A=1+2+2^2+2^3+\\dots+2^{99}$\n\n$2A=2.(1+2+2^2+2^3+\\dots+2^{99})=2+2^2+2^3+\\dots+2^{100}$\n\nSuy ra $2A-A=(2+2^2+2^3+\\dots+2^{100})-(1+2+2^2+\\dots+2^{99})$\n\n$A=2^{100}-1$\n\nDo đó $A+1=2^{100}-1+1=2^{100}$\n\n$2^{100}=2^{50}.2^{50}$\n\nVậy $A+1$ là bình phương của số tự nhiên $2^{50}$."
+ },
+ {
+  "ma_cau": "T106000000428",
+  "parent_ma_cau": null,
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "de_thi",
+  "da_duyet": false,
+  "noi_dung": "Cho $A=1+2+2^2+\\dots+2^{100}$. Tìm số tự nhiên $x$, biết $A+1=2^x$.",
+  "lua_chon": null,
+  "dap_an": "101",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** nhân $A$ với cơ số 2 rồi trừ cho $A$, các số hạng giống nhau triệt tiêu và chỉ còn hai luỹ thừa ở hai đầu.\n\n**Bước 1.** Nhận ra các số hạng là các luỹ thừa liên tiếp của 2 nên nhân $A$ với 2 sẽ được dãy gần giống $A$.\n\n**Bước 2.** Lấy $2A$ trừ $A$: các số hạng từ $2$ đến $2^{100}$ triệt tiêu nhau, chỉ còn số hạng cuối của $2A$ trừ số hạng đầu của $A$.\n\n**Bước 3.** Cộng thêm 1 vào $A$ để được một luỹ thừa của 2, rồi so sánh số mũ với vế phải $2^x$.\n\n**Chú ý:** số hạng đầu của $A$ là $1$, nên khi trừ ta được $2^{101}-1$ chứ không phải $2^{101}$.\n\n**Phần 2. Trình bày**\n\nTa có $2A=2.(1+2+2^2+\\dots+2^{100})=2+2^2+2^3+\\dots+2^{101}$\n\nSuy ra $2A-A=(2+2^2+\\dots+2^{101})-(1+2+2^2+\\dots+2^{100})$\n\n$A=2^{101}-1$\n\nDo đó $A+1=2^{101}-1+1=2^{101}$\n\nMà $A+1=2^x$ nên $x=101$."
+ },
+ {
+  "ma_cau": "T106020601007",
+  "parent_ma_cau": null,
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "le",
+  "da_duyet": true,
+  "noi_dung": "Cho $C = 1+4+4^2+...+4^{30}$.Biết $3C+1 = 4^m$.Tìm $m$",
+  "lua_chon": null,
+  "dap_an": "31",
+  "loi_giai": "Ta có $4C = 4(1+4+4^2+...+4^{30}) = 4^1+4^2+...+4^{31}$\nSuy ra $4C-C = (4^1+4^2+...+4^{31})-(1+4+4^2+...+4^{30})$\n$3C = 4^{31}-1$\n$3C+1 = 4^{31}$\nMà $3C+1 = 4^m \\Rightarrow 4^m = 4^{31}$\nVậy $m = 31$"
+ },
+ {
+  "ma_cau": "T106020601008",
+  "parent_ma_cau": "T106020601007",
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "clone",
+  "da_duyet": true,
+  "noi_dung": "Cho $C = 1+2+2^2+...+2^{20}$.Biết $C+1 = 2^m$.Tìm $m$",
+  "lua_chon": null,
+  "dap_an": "21",
+  "loi_giai": "Ta có $2C = 2(1+2+2^2+...+2^{20}) = 2^1+2^2+...+2^{21}$\nSuy ra $2C-C = (2^1+2^2+...+2^{21})-(1+2+2^2+...+2^{20})$\n$C = 2^{21}-1$\n$C+1 = 2^{21}$\nMà $C+1 = 2^m \\Rightarrow 2^m = 2^{21}$\nVậy $m = 21$"
+ },
+ {
+  "ma_cau": "T106020601009",
+  "parent_ma_cau": "T106020601007",
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "clone",
+  "da_duyet": true,
+  "noi_dung": "Cho $C = 1+3+3^2+...+3^{15}$.Biết $2C+1 = 3^m$.Tìm $m$",
+  "lua_chon": null,
+  "dap_an": "16",
+  "loi_giai": "Ta có $3C = 3(1+3+3^2+...+3^{15}) = 3^1+3^2+...+3^{16}$\nSuy ra $3C-C = (3^1+3^2+...+3^{16})-(1+3+3^2+...+3^{15})$\n$2C = 3^{16}-1$\n$2C+1 = 3^{16}$\nMà $2C+1 = 3^m \\Rightarrow 3^m = 3^{16}$\nVậy $m = 16$"
+ },
+ {
+  "ma_cau": "T106020601010",
+  "parent_ma_cau": "T106020601007",
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "clone",
+  "da_duyet": true,
+  "noi_dung": "Cho $C = 1+5+5^2+...+5^{25}$.\nBiết $4C+1 = 5^m$.\nTìm $m$",
+  "lua_chon": null,
+  "dap_an": "26",
+  "loi_giai": "Ta có $5C = 5(1+5+5^2+...+5^{25}) = 5^1+5^2+...+5^{26}$\nSuy ra $5C-C = (5^1+5^2+...+5^{26})-(1+5+5^2+...+5^{25})$\n$4C = 5^{26}-1$\n$4C+1 = 5^{26}$\nMà $4C+1 = 5^m \\Rightarrow 5^m = 5^{26}$\nVậy $m = 26$"
+ },
+ {
+  "ma_cau": "T106020601011",
+  "parent_ma_cau": "T106020601007",
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "clone",
+  "da_duyet": true,
+  "noi_dung": "Cho $C = 1+6+6^2+...+6^{19}$.Biết $5C+1 = 6^m$.Tìm $m$",
+  "lua_chon": null,
+  "dap_an": "20",
+  "loi_giai": "Ta có $6C = 6(1+6+6^2+...+6^{19}) = 6^1+6^2+...+6^{20}$\nSuy ra $6C-C = (6^1+6^2+...+6^{20})-(1+6+6^2+...+6^{19})$\n$5C = 6^{20}-1$\n$5C+1 = 6^{20}$\nMà $5C+1 = 6^m \\Rightarrow 6^m = 6^{20}$\nVậy $m = 20$"
+ },
+ {
+  "ma_cau": "T106020601012",
+  "parent_ma_cau": "T106020601007",
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "clone",
+  "da_duyet": true,
+  "noi_dung": "Cho $C = 1+7+7^2+...+7^{32}$.Biết $6C+1 = 7^m$.Tìm $m$",
+  "lua_chon": null,
+  "dap_an": "33",
+  "loi_giai": "Ta có $7C = 7(1+7+7^2+...+7^{32}) = 7^1+7^2+...+7^{33}$\nSuy ra $7C-C = (7^1+7^2+...+7^{33})-(1+7+7^2+...+7^{32})$\n$6C = 7^{33}-1$\n$6C+1 = 7^{33}$\nMà $6C+1 = 7^m \\Rightarrow 7^m = 7^{33}$\nVậy $m = 33$"
+ },
+ {
+  "ma_cau": "T106020601013",
+  "parent_ma_cau": "T106020601007",
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "clone",
+  "da_duyet": true,
+  "noi_dung": "Cho $C = 1+8+8^2+...+8^{14}$.Biết $7C+1 = 8^m$.Tìm $m$",
+  "lua_chon": null,
+  "dap_an": "15",
+  "loi_giai": "Ta có $8C = 8(1+8+8^2+...+8^{14}) = 8^1+8^2+...+8^{15}$\nSuy ra $8C-C = (8^1+8^2+...+8^{15})-(1+8+8^2+...+8^{14})$\n$7C = 8^{15}-1$\n$7C+1 = 8^{15}$\nMà $7C+1 = 8^m \\Rightarrow 8^m = 8^{15}$\nVậy $m = 15$"
+ },
+ {
+  "ma_cau": "T106020601014",
+  "parent_ma_cau": "T106020601007",
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "clone",
+  "da_duyet": true,
+  "noi_dung": "Cho $C = 1+9+9^2+...+9^{28}$.Biết $8C+1 = 9^m$.Tìm $m$",
+  "lua_chon": null,
+  "dap_an": "29",
+  "loi_giai": "Ta có $9C = 9(1+9+9^2+...+9^{28}) = 9^1+9^2+...+9^{29}$\nSuy ra $9C-C = (9^1+9^2+...+9^{29})-(1+9+9^2+...+9^{28})$\n$8C = 9^{29}-1$\n$8C+1 = 9^{29}$\nMà $8C+1 = 9^m \\Rightarrow 9^m = 9^{29}$\nVậy $m = 29$"
+ },
+ {
+  "ma_cau": "T106020601015",
+  "parent_ma_cau": "T106020601007",
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "clone",
+  "da_duyet": true,
+  "noi_dung": "Cho $C = 1+10+10^2+...+10^{17}$.Biết $9C+1 = 10^m$.Tìm $m$",
+  "lua_chon": null,
+  "dap_an": "18",
+  "loi_giai": "Ta có $10C = 10(1+10+10^2+...+10^{17}) = 10^1+10^2+...+10^{18}$\nSuy ra $10C-C = (10^1+10^2+...+10^{18})-(1+10+10^2+...+10^{17})$\n$9C = 10^{18}-1$\n$9C+1 = 10^{18}$\nMà $9C+1 = 10^m \\Rightarrow 10^m = 10^{18}$\nVậy $m = 18$"
+ },
+ {
+  "ma_cau": "T106020601016",
+  "parent_ma_cau": "T106020601007",
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "clone",
+  "da_duyet": true,
+  "noi_dung": "Cho $C = 1+2+2^2+...+2^{35}$.Biết $C+1 = 2^m$.Tìm $m$",
+  "lua_chon": null,
+  "dap_an": "36",
+  "loi_giai": "Ta có $2C = 2(1+2+2^2+...+2^{35}) = 2^1+2^2+...+2^{36}$\nSuy ra $2C-C = (2^1+2^2+...+2^{36})-(1+2+2^2+...+2^{35})$\n$C = 2^{36}-1$\n$C+1 = 2^{36}$\nMà $C+1 = 2^m \\Rightarrow 2^m = 2^{36}$\nVậy $m = 36$"
+ },
+ {
+  "ma_cau": "T106020601017",
+  "parent_ma_cau": "T106020601007",
+  "loai_cau": "tra_loi_ngan",
+  "nguon": "clone",
+  "da_duyet": true,
+  "noi_dung": "Cho $C = 1+3+3^2+...+3^{22}$.Biết $2C+1 = 3^m$.Tìm $m$",
+  "lua_chon": null,
+  "dap_an": "23",
+  "loi_giai": "Ta có $3C = 3(1+3+3^2+...+3^{22}) = 3^1+3^2+...+3^{23}$\nSuy ra $3C-C = (3^1+3^2+...+3^{23})-(1+3+3^2+...+3^{22})$\n$2C = 3^{23}-1$\n$2C+1 = 3^{23}$\nMà $2C+1 = 3^m \\Rightarrow 3^m = 3^{23}$\nVậy $m = 23$"
+ }
+]

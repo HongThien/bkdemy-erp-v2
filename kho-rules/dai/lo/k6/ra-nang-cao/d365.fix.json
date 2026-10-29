@@ -1,0 +1,14 @@
+[
+ {
+  "ma_cau": "T106020601002",
+  "noi_dung": "Tính $A=1+2+2^2+...+2^{50}$",
+  "dap_an": "$2^{51}-1$",
+  "loi_giai": "Ta có $2A=2.(1+2+2^2+...+2^{50})=2^1+2^2+2^3+...+2^{51}$\nSuy ra $2A-A=(2^1+2^2+2^3+...+2^{51})-(1+2+2^2+...+2^{50})$\n$A=2^{51}-1$",
+  "loai_cau": "tra_loi_ngan",
+  "lua_chon": null,
+  "ly_do": "Lời giải/đáp số đúng; dap_an thiếu cặp $…$ so với khuôn gốc ($dfrac{…}{…}$) nên không render KaTeX",
+  "kiem": [
+   "(()=>{let t=0n;for(let i=0n;i<=50n;i++)t+=2n**i;return t===2n**51n-1n})()"
+  ]
+ }
+]

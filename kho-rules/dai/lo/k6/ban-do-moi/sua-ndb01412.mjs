@@ -31,7 +31,7 @@ for (const [ma, a, x, c] of BO) {
   // vét cạn: nghiệm tự nhiên (x', y') duy nhất
   const ns = []; for (let X = 0; X <= 14; X++) for (let Y = 0; Y <= 40; Y++) if (P(BigInt(a) ** BigInt(X)) + BigInt(c) ** BigInt(Y) === N) ns.push(`${X},${Y}`)
   if (ns.join(' ') !== `${x},0`) loi.push(`${ma}: nghiệm ${ns.join(' ')} ≠ ${x},0`)
-  rows.push({ ma, nd: `Tìm $x$ biết $${a}^x . (${a}^x + 1)(${a}^x + 2) + ${c}^y = ${N}$`, da: String(x), lg: lg(a, x, c, N), N, a, x, c })
+  rows.push({ ma, nd: `Tìm số tự nhiên $x$ biết $${a}^x . (${a}^x + 1)(${a}^x + 2) + ${c}^y = ${N}$ (với $y$ cũng là số tự nhiên)`, da: String(x), lg: lg(a, x, c, N), N, a, x, c })
 }
 if (loi.length) { console.error('✘\n' + loi.join('\n')); process.exit(3) }
 import { createRequire } from 'node:module'

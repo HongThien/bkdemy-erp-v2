@@ -1,0 +1,50 @@
+[
+ {
+  "ma_cau": "T106020601030",
+  "noi_dung": "Tính $K=1-2^4+2^8-...-...+2^{96}$.",
+  "dap_an": "$\\dfrac{2^{100}+1}{17}$",
+  "loi_giai": "Ta có $2^4 K = 2^4.(1-2^4+2^8-...-...+2^{96}) = 2^4-2^8+2^{12}-...-...+2^{100}$\n$2^4 K+K=(2^4-2^8+2^{12}-...-...+2^{100})+(1-2^4+2^8-...-...+2^{96})$\n$17K = 2^{100}+1$\n$K = \\dfrac{2^{100}+1}{17}$",
+  "loai_cau": "tra_loi_ngan",
+  "lua_chon": null,
+  "ly_do": "Đề cũ ghi số hạng cuối +2^100 nhưng theo quy luật xen dấu số hạng đó mang dấu − (số mũ cuối/4 lẻ) ⇒ tổng thật = (1−2^…)/17 âm, đáp số cũ sai. Đổi đề: đổi số mũ cuối 100 → 96 để dấu cuối là +; lời giải theo khuôn gốc.",
+  "kiem": [
+   "(()=>{let s=0n,k=0n;for(let e=0n;e<=96n;e+=4n,k++)s+=(k%2n?-1n:1n)*2n**e;return s*17n===2n**100n+1n && 96%4===0 && (24)%2===0})()"
+  ]
+ },
+ {
+  "ma_cau": "T106020601031",
+  "noi_dung": "Tính $L=1-3^4+3^8-...-...+3^{96}$.",
+  "dap_an": "$\\dfrac{3^{100}+1}{82}$",
+  "loi_giai": "Ta có $3^4 L = 3^4.(1-3^4+3^8-...-...+3^{96}) = 3^4-3^8+3^{12}-...-...+3^{100}$\n$3^4 L+L=(3^4-3^8+3^{12}-...-...+3^{100})+(1-3^4+3^8-...-...+3^{96})$\n$82L = 3^{100}+1$\n$L = \\dfrac{3^{100}+1}{82}$",
+  "loai_cau": "tra_loi_ngan",
+  "lua_chon": null,
+  "ly_do": "Đề cũ ghi số hạng cuối +3^100 nhưng theo quy luật xen dấu số hạng đó mang dấu − (số mũ cuối/4 lẻ) ⇒ tổng thật = (1−3^…)/82 âm, đáp số cũ sai. Đổi đề: đổi số mũ cuối 100 → 96 để dấu cuối là +; lời giải theo khuôn gốc.",
+  "kiem": [
+   "(()=>{let s=0n,k=0n;for(let e=0n;e<=96n;e+=4n,k++)s+=(k%2n?-1n:1n)*3n**e;return s*82n===3n**100n+1n && 96%4===0 && (24)%2===0})()"
+  ]
+ },
+ {
+  "ma_cau": "T106020601032",
+  "noi_dung": "Tính $M=1-4^2+4^4-...-...+4^{100}$.",
+  "dap_an": "$\\dfrac{4^{102}+1}{17}$",
+  "loi_giai": "Ta có $4^2 M = 4^2.(1-4^2+4^4-...-...+4^{100}) = 4^2-4^4+4^6-...-...+4^{102}$\n$4^2 M+M=(4^2-4^4+4^6-...-...+4^{102})+(1-4^2+4^4-...-...+4^{100})$\n$17M = 4^{102}+1$\n$M = \\dfrac{4^{102}+1}{17}$",
+  "loai_cau": "tra_loi_ngan",
+  "lua_chon": null,
+  "ly_do": "Đề cũ ghi số hạng cuối +4^98 nhưng theo quy luật xen dấu số hạng đó mang dấu − (số mũ cuối/2 lẻ) ⇒ tổng thật = (1−4^…)/17 âm, đáp số cũ sai. Đổi đề: đổi số mũ cuối 98 → 100 để dấu cuối là +; lời giải theo khuôn gốc.",
+  "kiem": [
+   "(()=>{let s=0n,k=0n;for(let e=0n;e<=100n;e+=2n,k++)s+=(k%2n?-1n:1n)*4n**e;return s*17n===4n**102n+1n && 100%2===0 && (50)%2===0})()"
+  ]
+ },
+ {
+  "ma_cau": "T106020601033",
+  "noi_dung": "Tính $N=1-5^3+5^6-...-...+5^{96}$.",
+  "dap_an": "$\\dfrac{5^{99}+1}{126}$",
+  "loi_giai": "Ta có $5^3 N = 5^3.(1-5^3+5^6-...-...+5^{96}) = 5^3-5^6+5^9-...-...+5^{99}$\n$5^3 N+N=(5^3-5^6+5^9-...-...+5^{99})+(1-5^3+5^6-...-...+5^{96})$\n$126N = 5^{99}+1$\n$N = \\dfrac{5^{99}+1}{126}$",
+  "loai_cau": "tra_loi_ngan",
+  "lua_chon": null,
+  "ly_do": "Đề cũ ghi số hạng cuối +5^99 nhưng theo quy luật xen dấu số hạng đó mang dấu − (số mũ cuối/3 lẻ) ⇒ tổng thật = (1−5^…)/126 âm, đáp số cũ sai. Đổi đề: đổi số mũ cuối 99 → 96 để dấu cuối là +; lời giải theo khuôn gốc.",
+  "kiem": [
+   "(()=>{let s=0n,k=0n;for(let e=0n;e<=96n;e+=3n,k++)s+=(k%2n?-1n:1n)*5n**e;return s*126n===5n**99n+1n && 96%3===0 && (32)%2===0})()"
+  ]
+ }
+]
