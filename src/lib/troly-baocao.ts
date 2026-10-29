@@ -107,3 +107,15 @@ export async function getBaoCaoCaNhan(soNgay: number): Promise<BaoCaoTroLy> {
 // ── Ngày giờ VN, KHÔNG toISOString / new Date('YYYY-MM-DD') (CLAUDE.md §2) ──────
 export const homNayVN = (): string => new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Ho_Chi_Minh' })
 export const ddmm = (ngay: string | null | undefined): string => (ngay ? `${ngay.slice(8, 10)}/${ngay.slice(5, 7)}` : '—')
+
+// Học tập theo lớp 2 tuần gần nhất của phạm vi mình (Thùy 29/10, spec-truong-khoi.md §5) — lọc từ số Tổng kết tuần ĐÃ LƯU ở DB.
+export type LopHocTapTuan = {
+  lop_id: string; ten_lop: string; mon: string; khoi: string
+  et_tb: number | null; et_so_luot: number; btvn_tb: number | null; btvn_so_luot: number
+  et_tb_truoc: number | null; btvn_tb_truoc: number | null
+}
+export async function getHocTapTuanCaNhan(): Promise<{ tuan: string | null; tuan_truoc: string | null; lop: LopHocTapTuan[] }> {
+  const { data, error } = await supabase.rpc('fn_troly_ca_nhan_tuan')
+  if (error) throw error
+  return (data ?? { tuan: null, tuan_truoc: null, lop: [] }) as { tuan: string | null; tuan_truoc: string | null; lop: LopHocTapTuan[] }
+}

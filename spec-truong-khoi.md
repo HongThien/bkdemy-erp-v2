@@ -173,6 +173,8 @@ Một màn, dữ liệu lọc theo `fn_pham_vi_cua_toi()`. Trưởng khối và 
 | **Tổng kết tuần** | các chỉ số có phạm vi khối | toàn hệ + theo khối |
 | **Hàng việc** | đề xuất gậy · case bổ trợ chờ duyệt · việc tồn TA của khối | **Hậu kiểm** (mọi quyết định của trưởng khối) + gậy trưởng khối |
 
+**✅ 29/10 (mig `202610291752`) — tab Trợ lý của trưởng khối / quản lý môn:** 3 mục **Báo cáo Sư phạm** (lọc theo (môn × khối) — trước đây theo khối trần) · **Dạng yếu** (widget §8.4) · **Học tập tuần** (ET/BTVN trung bình từng lớp, tuần gần nhất so tuần trước, lọc từ số Tổng kết tuần đã lưu — `fn_troly_ca_nhan_tuan`). **Hỏi đáp AI cho trưởng khối: Thùy 29/10 "không cần"** — không làm.
+
 Mọi con số tính ở `fn_troly_*` / `_troly_*` (spec `SPEC-troly-nhansu.md` §6–§7). Client chỉ hiển thị.
 
 ---
