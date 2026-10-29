@@ -129,9 +129,9 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'db_cuoicap',  nhom: 'Quản lý chất lượng', ten: 'Đánh giá cuối cấp', founderOnly: false }, // Thùy 23/10: lớp 5T·9·12 đo theo LẦN + xu hướng (spec-danh-gia-cuoi-cap)
   { id: 'db_theodoi_app', nhom: 'Quản lý chất lượng', ten: 'Theo dõi bài tập app', founderOnly: false }, // ma trận ngày×HS: tự luyện+bổ trợ+retest (CEO 17/09)
   // 'botroyeu' (folder Bổ trợ yếu: Duyệt · Nội dung · Trạng thái ca · Đánh giá ca) — Thùy 24/09 chuyển TOÀN BỘ vào Vận hành › Bổ trợ › Yếu (toggle).
-  { id: 'report_ph',   nhom: 'Quản lý chất lượng', ten: 'Report phụ huynh',   founderOnly: false },
+  { id: 'report_ph',   nhom: 'Quản lý chất lượng', ten: 'Report phụ huynh',   founderOnly: false }, // report tháng gửi PH: số liệu HS + nhận xét GV
   // Thùy 29/10 (spec-truong-khoi.md): 1 màn gom team · chức vụ · phạm vi của team QLCL; phân công ô = nguồn duy nhất, ghế trưởng khối tự sinh
-  { id: 'qlcl_team',   nhom: 'Quản lý chất lượng', ten: 'Team Quản lý chất lượng', founderOnly: false }, // report tháng gửi PH: số liệu HS + nhận xét GV
+  { id: 'qlcl_team',   nhom: 'Quản lý chất lượng', ten: 'Team Quản lý chất lượng', founderOnly: false },
 
   // ── CORE TEAM: nhân sự/tổ chức/vận hành nội bộ ──
   { id: 'hocphi',      nhom: 'Core team', ten: 'Học phí',                     founderOnly: false },
