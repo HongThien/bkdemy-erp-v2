@@ -486,3 +486,27 @@ export async function demDeXuatCho(): Promise<number> {
   if (error) throw error
   return count ?? 0
 }
+
+// ── HẬU KIỂM (Thùy 29/10, spec-truong-khoi.md §3): trưởng khối quyết gậy có hiệu lực ngay; Trang (toàn hệ) xem lại.
+// Hàng + quyền ở DB (fn_hau_kiem_gay chỉ trả cho toàn hệ). Sửa: gậy đánh/gỡ sai ⇒ thuHoiGay rồi ghi 'da_sua';
+// bỏ qua sai ⇒ mở lại đề xuất (về 'cho', DB ghi luôn hậu kiểm).
+export type HauKiemGay = {
+  loai: 'gay_ledger' | 'gay_bo_qua'; ref_id: string; at: string
+  nguoi_quyet_id: string; nguoi_quyet: string; nhan_su_id: string; nhan_su: string
+  hanh_dong: string; so_gay: number; loi: string | null; ly_do: string | null; viec: string | null; tre_phut?: number | null
+  thu_hoi_at: string | null
+  hk: { ket_qua: 'dong_y' | 'da_sua'; ghi_chu: string | null; at: string; nguoi: string } | null
+}
+export async function hauKiemGay(soNgay = 7): Promise<HauKiemGay[]> {
+  const { data, error } = await supabase.rpc('fn_hau_kiem_gay', { p_so_ngay: soNgay })
+  if (error) throw error
+  return (data ?? []) as HauKiemGay[]
+}
+export async function ghiHauKiem(loai: HauKiemGay['loai'], refId: string, ketQua: 'dong_y' | 'da_sua', ghiChu: string | null): Promise<void> {
+  const { error } = await supabase.rpc('fn_hau_kiem_ghi', { p_loai: loai, p_ref: refId, p_ket_qua: ketQua, p_ghi_chu: ghiChu })
+  if (error) throw error
+}
+export async function moLaiDeXuat(deXuatId: string, ghiChu: string | null): Promise<void> {
+  const { error } = await supabase.rpc('fn_hau_kiem_mo_lai_de_xuat', { p_de_xuat: deXuatId, p_ghi_chu: ghiChu })
+  if (error) throw error
+}

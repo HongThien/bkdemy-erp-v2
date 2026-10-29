@@ -121,6 +121,8 @@ Mô hình giai đoạn đầu: **hậu kiểm** (post-audit). Quyết định c�
 
 **Cơ chế hậu kiểm (dùng chung, không viết riêng cho từng việc):** mỗi bảng quyết định thêm `hau_kiem_boi · hau_kiem_at · hau_kiem` (`dong_y` / `da_sua`). Trigger ghi lịch sử (§4 CLAUDE.md). Một hàm `fn_hau_kiem_hang_doi()` gom mọi loại việc chưa hậu kiểm vào một hàng đợi duy nhất cho Trang.
 
+**✅ Gậy đã có hậu kiểm (29/10, mig `202610291740`):** bảng chung `hau_kiem(loai, ref_id, ket_qua dong_y|da_sua, ghi_chu, nguoi, at)` — không có dòng = chưa xem. Hàng = quyết định từ 29/10 của người KHÔNG phải toàn hệ / quản lý môn: gậy đánh·gỡ (`gay_ledger`) và đề xuất bị bỏ qua. Màn Gậy › tab **Hậu kiểm** (chỉ toàn hệ): ✓ Đồng ý · ↩ Thu hồi gậy · ↺ Mở lại đề xuất. Việc vận hành và case bổ trợ: thêm `loai` vào cùng bảng khi làm.
+
 **Phó khối:** không duyệt gậy, không duyệt case. Giữ vai vận hành (nhận chấm MT, bot tag) và chỉ xem như hiện tại.
 
 ---

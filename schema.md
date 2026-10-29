@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-464 bảng · 33 view · 0 enum · 252 trigger · 1410 function
+465 bảng · 33 view · 0 enum · 252 trigger · 1415 function
 
 ## _app_secrets
 
@@ -2357,6 +2357,18 @@ END |  |  |
 | ly_do | text | Y |  |  |  |
 | thu_bat_dau | smallint | Y |  |  |  |
 
+## hau_kiem
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| loai | text |  |  |  | `gay_ledger` · `gay_bo_qua` |
+| ref_id | uuid |  |  |  |  |
+| ket_qua | text |  |  |  | `dong_y` · `da_sua` |
+| ghi_chu | text | Y |  |  |  |
+| nguoi | uuid |  |  | FK→nhan_su.id |  |
+| at | timestamp with time zone |  | now() |  |  |
+
 ## he_thong_bi_mat
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -3883,7 +3895,7 @@ END |  |  |
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| mon | text |  |  | PK FK→huy_hieu.mon |  |
+| mon | text |  |  | PK FK→thanh_tuu.mon |  |
 | huy_hieu_key | text |  |  | PK FK→huy_hieu.key |  |
 | thanh_tuu_key | text |  |  | PK FK→thanh_tuu.key |  |
 | vai | text |  |  |  | `chuan` · `them` |
@@ -5403,8 +5415,8 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
-| mon | text |  |  | FK→sotay_ct_hinh.mon |  |
-| khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
+| mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
+| khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
 | ten | text |  |  |  |  |
@@ -9039,6 +9051,8 @@ WITH luot AS (
 - `_giai_xu(p_khoi text)` → integer
 - `_he_thong_cong_tac_ghi_log()` → trigger
 - `_hinh_bai_dong_bo_chuyen_de()` → trigger
+- `_hk_can_hau_kiem(p_ns uuid)` → boolean
+- `_hk_tu()` → timestamp with time zone
 - `_hl_bai_ghi_log()` → trigger
 - `_hl_cha_mo_hinh(p_mh uuid)` → uuid
 - `_hl_dong_thu_tu(p_mh uuid)` → void
@@ -9714,6 +9728,9 @@ WITH luot AS (
 - `fn_gv_tran_chat_luong(p_so_lan_tra_lai integer)` → numeric
 - `fn_gv_viec_thang(p_tu date, p_den date)` → TABLE(nhan_su_id uuid, ho_ten text, an_xep_hang boolean, ten_lop text, ngay date, tab text, kq text, ly_do text)
 - `fn_han_viec(p_lop uuid, p_ngay date, p_gio_bat_dau time without time zone, p_tab text)` → timestamp with time zone
+- `fn_hau_kiem_gay(p_so_ngay integer DEFAULT 7)` → jsonb
+- `fn_hau_kiem_ghi(p_loai text, p_ref uuid, p_ket_qua text, p_ghi_chu text)` → void
+- `fn_hau_kiem_mo_lai_de_xuat(p_de_xuat uuid, p_ghi_chu text)` → void
 - `fn_he_thong_cong_tac_dat(p_ma text, p_bat boolean)` → boolean
 - `fn_hinh_cau_chua_giai(p_khoi text, p_limit integer DEFAULT 500)` → SETOF v_hinh_chua_giai
 - `fn_hinh_chuoi_json(p_loai text, p_id uuid)` → jsonb
@@ -10246,8 +10263,8 @@ WITH luot AS (
 - `hs_sotay_tim_ct(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_khoi text DEFAULT NULL::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_sotay_tim_lt(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_vao_ca_online(p_buoi uuid)` → jsonb
-- `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
 - `hs_xep_hang_tu_luyen(p_khoi text, p_mon text)` → jsonb
+- `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
 - `htd_co_mo(p_mon text)` → boolean
 - `htd_lo_trinh(p_mon text)` → jsonb
 - `htd_ly_thuyet(p_mon text, p_ma_dang text)` → jsonb
@@ -10316,9 +10333,9 @@ WITH luot AS (
 - `tsa_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 

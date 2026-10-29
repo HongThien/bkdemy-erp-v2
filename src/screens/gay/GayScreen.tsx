@@ -23,9 +23,10 @@ import {
   type KhoangNgay, type TaskCuaNhanSu, type TienDoTask,
 } from '../../lib/gay'
 import { LichSuTask, GhiChuDong } from '../../components/LichSuDongTask'
+import HauKiemTab from './HauKiemTab'
 import { homNayVN, congNgay, tuanCuaNgay, khoangTuan, nhanTuan, ddmmVN } from '../../lib/tuan'
 
-type Tab = 'bang' | 'dexuat' | 'danhgo' | 'danhmuc' | 'chot'
+type Tab = 'bang' | 'dexuat' | 'danhgo' | 'haukiem' | 'danhmuc' | 'chot'
 type CheKy = 'thang' | 'tuan'
 // Khoảng ngày của kỳ tháng 'YYYY-MM-01' = [ngày 1, ngày cuối tháng]
 const khoangThang = (ky: string): KhoangNgay => ({ tu: ky, den: congNgay(kyCong(ky, 1), -1) })
@@ -119,6 +120,7 @@ export default function GayScreen() {
     { key: 'bang', ten: 'Bảng gậy' },
     { key: 'dexuat', ten: 'Đề xuất' },
     { key: 'danhgo', ten: 'Đánh / Gỡ', can: canAct },
+    { key: 'haukiem', ten: 'Hậu kiểm', can: laAdmin }, // Thùy 29/10: toàn hệ xem lại quyết định của trưởng khối (spec-truong-khoi.md §3)
     { key: 'danhmuc', ten: 'Danh mục', can: canAct },
     { key: 'chot', ten: 'Chốt tháng', can: canAct },
   ]
@@ -157,6 +159,7 @@ export default function GayScreen() {
         {tab === 'bang' && <BangGayTab k={khoang} canAct={canAct} trongPhamVi={trongPhamVi} onBao={bao} />}
         {tab === 'dexuat' && <DeXuatTab lois={lois} canAct={canAct} laAdmin={laAdmin} scopeIds={treeIds} meId={meId} onBao={bao} />}
         {tab === 'danhgo' && canAct && <DanhGoTab k={khoang} nhanKhoang={nhanKhoang} lois={lois} hds={hds} laAdmin={laAdmin} scopeIds={scopeIds} onBao={bao} />}
+        {tab === 'haukiem' && laAdmin && <HauKiemTab onBao={bao} />}
         {tab === 'danhmuc' && canAct && <DanhMucTab lois={lois} hds={hds} reload={async () => { setLois(await listGayLoi()); setHds(await listGayHoatDong()) }} onBao={bao} />}
         {tab === 'chot' && canAct && <ChotThangTab ky={kyChot} theoTuan={che === 'tuan'} onBao={bao} />}
       </div>
