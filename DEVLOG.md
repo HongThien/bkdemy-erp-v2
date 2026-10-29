@@ -78208,3 +78208,10 @@ Thùy nêu 4 việc, làm được 3:
 - **Sửa công cụ:** không (dùng `dc-lib.mjs` đã nhận `hinh_hoc`). Mới: `NQ/TC/GV2-GKI-2026.build.mjs`, `GKI26-3TRUONG.ghep-brief.mjs`.
 - **Đề sai ghi rõ (quy tắc 24/10):** GV2 Bài 17c thiếu giả thiết "ABC nhọn" · TC A Bài 4d (m=2 làm d3 trùng d2) · TC A Bài 13 in "trộn gam bao nhiêu" (đã sửa chữ). Không treo `Chưa chắc`.
 - **Chờ Thùy:** (1) quy ước `tra_loi_ngan` vs `tu_luan` cho câu một nghiệm đẹp (chung các đề cương K9); (2) xoá nhóm "lập phương trình" (đã hỏi 23/10: a chỉ nhóm rỗng "Bài toán Diện tích" · b cả chuyên đề + chuyển 25 câu); (3) bản Tây Mỗ 2026–27 chưa có phần Toán; (4) Hình HGT của NS/TM cũ chưa đẩy vào Hình–Luyện; (5) rà "đường trung bình" trong các tệp soạn bộ đề GKI/CKI K9.
+## 29/10 — Xu: em NGHỈ HỌC tự về 0 (Thùy: "Các tài khoản nghỉ tự động về 0 xu")
+- **Làm (mig 202610291637 ĐÃ ÁP --only):** loại sổ mới `nghi_ve_0` (dòng hệ thống, amount = −số dư, mon NULL) · `_xu_nghi_ve_0(p_hs)` khoá ví rồi ghi cho mọi em `trang_thai='nghi'` số dư ≠ 0 · gắn làm bước ④ CUỐI `_xu_dong_bo` (cron mỗi giờ :05) ⇒ đổi sang nghỉ thì ≤1 giờ ví về 0; ET chấm muộn → ③ quy đổi thêm → ④ đưa lại 0 cùng lượt. ③ chỉ so chot_thang/chot_lai nên không "trả lại". Đi học lại: xu cũ không hoàn.
+- `fn_xu_tong_ket`: `nghi_ve_0` vào cột Khác + Tổng (giữ tổng − đã tiêu = số dư). Phạm vi chỉ 'nghi' (bảo lưu giữ xu, test không đụng).
+- **Kết quả lượt đầu:** 18 dòng, −578 xu; còn 0 em nghỉ có số dư ≠ 0. Ví âm duy nhất vẫn là 1 em đang học (−59, từ đợt xoá cộng trùng).
+- **Sửa số:** hôm trước báo "19 em nghỉ + 2 test" — đếm lại đúng là 18 em nghỉ (danh sách có 2 dòng test lẫn vào).
+- **Phát hiện, CHƯA sửa:** view `qlht_v_so_du_xu` tính số dư chỉ từ chot_* + cong/tru/doi_qua/hoan — THIẾU nong_trai, giai_thuong (và nay nghi_ve_0); `qlht_doi_qua_moi`/`qlht_dieu_chinh_xu` + `listSoDuXu` (tuqua.ts) + thanhtich.ts còn đọc view đó. `fn_tuqua_so_du` thì cộng đủ.
+- **Xoá tài khoản test:** CHƯA làm — 10 em TEST01–10 (Thùy tạo 03/10 để test app) + `TESTQLHT003` (trạng thái dang_hoc, 501 xu, 5 dòng buổi học) kéo theo ~30 bảng; đã liệt kê, chờ Thùy gật theo Luật xoá.

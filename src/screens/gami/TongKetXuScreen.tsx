@@ -38,7 +38,7 @@ const NHOM: { ten: string; mau: string; cot: Cot[] }[] = [
   { ten: 'Khác', mau: 'bg-amber-50 text-amber-700', cot: [
     { key: 'giai_thuong', ten: 'Giải thưởng', goi: 'Giải tháng (khối 3–7)' },
     { key: 'thay_co_cong', ten: 'Thầy cô +' }, { key: 'thay_co_tru', ten: 'Thầy cô −' },
-    { key: 'khac', ten: 'Khác', goi: 'EXP gộp cũ (trước khi tách ET/BTVN) · cặp HS×môn vừa có EXP, chưa tới lượt chia giờ kế' },
+    { key: 'khac', ten: 'Khác', goi: 'EXP gộp cũ (trước khi tách ET/BTVN) · cặp HS×môn vừa có EXP, chưa tới lượt chia giờ kế · em nghỉ học: ví đưa về 0 (số âm)' },
   ] },
 ]
 const COT_CUOI: Cot[] = [
