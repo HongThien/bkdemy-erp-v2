@@ -6,6 +6,8 @@ import { setReadOnlyLeafGetter } from '../lib/supabase'
 import { getMyProfile, updateMenuYeuThich, updateErpGiaoDien, updateHomeBoCuc, type DangCard, type MyProfile, type MyScope } from '../lib/nhansu'
 import { enqueueLinkGenJob } from '../lib/linkgen'
 import { YEU_THICH_TOI_DA } from '../lib/menu'
+import { docCayYT, phangYT, datTabCuaMuc, taoIdTab, TAB_YT_TOI_DA, type CayYT } from '../lib/yeuThich'
+import { useMemo } from 'react'
 import type { User, NavGroup, NavLeaf, AdminLeaf } from '../types'
 
 // Kiểu + bản nhớ trên máy của giao diện ERP: 2 hàm thuần, KHÔNG import registry style ở đây (store được nhiều bundle dùng).
@@ -85,6 +87,14 @@ interface UiState {
   nhanLichSu: (st: unknown) => void
   // Ghim / bỏ ghim 1 mục menu lên Home (nhan_su.menu_yeu_thich) — vá store ngay, DB ghi nền, lỗi thì trả lại.
   doiYeuThich: (id: string) => void
+  // ── Yêu thích THEO TAB (Thùy 29/10, lib/yeuThich.ts) — mọi thao tác đi qua luuCayYT (vá ngay, DB ghi nền, lỗi trả lại) ──
+  luuCayYT: (cay: CayYT) => void
+  ghimTabYT: (id: string, tabIds: string[]) => void          // mục `id` nằm ĐÚNG ở các tab này (rỗng = bỏ ghim)
+  boGhimTabYT: (id: string, tabId: string) => void            // rút mục khỏi 1 tab
+  themTabYT: (ten: string, ghimMuc?: string) => string | null // trả id tab mới (null nếu đã đủ TAB_YT_TOI_DA)
+  doiTenTabYT: (tabId: string, ten: string) => void
+  xoaTabYT: (tabId: string) => void                           // luôn giữ ≥ 1 tab
+  doiChoTabYT: (tabId: string, buoc: -1 | 1) => void
   // Ẩn / hiện 1 box trên Trang chính (nhan_su.home_bo_cuc.an) — vá store ngay, DB ghi nền, lỗi thì trả lại.
   doiHomeAn: (id: string) => void
   // Lưu thứ tự box sau khi kéo thả (nhan_su.home_bo_cuc.thu_tu) — vá store ngay, DB ghi nền.
@@ -207,16 +217,68 @@ export const useStore = create<UiState>()(persist((set, get) => ({
     const me = get().me
     if (me) updateErpGiaoDien(me.nhanSu.id, moi).catch((e) => alert(`Chưa lưu được giao diện vào tài khoản (máy này vẫn nhớ): ${e?.message ?? e}`))
   },
+  // Bật/tắt nhanh (chỗ không có khung chọn tab): đã ghim ở đâu ⇒ rút khỏi MỌI tab; chưa ⇒ vào tab đầu còn chỗ.
   doiYeuThich: (id) => {
     const me = get().me
     if (!me) return
-    const cu = me.nhanSu.menu_yeu_thich ?? []
-    // Thiết kế chung: Yêu thích tối đa YEU_THICH_TOI_DA mục (Thùy 14/10: 8 → 21/10: 12).
-    if (!cu.includes(id) && cu.length >= YEU_THICH_TOI_DA) { alert(`Yêu thích tối đa ${YEU_THICH_TOI_DA} mục. Bỏ ★ một mục trước rồi ghim mục mới.`); return }
-    const moi = cu.includes(id) ? cu.filter((x) => x !== id) : [...cu, id]
-    const va = (ds: string[]) => set((s) => (s.me ? { me: { ...s.me, nhanSu: { ...s.me.nhanSu, menu_yeu_thich: ds } } } : {}))
-    va(moi)
-    updateMenuYeuThich(me.nhanSu.id, moi).catch((e) => { va(cu); alert(`Chưa lưu được mục Yêu thích: ${e?.message ?? e}`) })
+    const c = docCayYT(me.nhanSu.menu_yeu_thich)
+    if (phangYT(c).includes(id)) { get().ghimTabYT(id, []); return }
+    const tab = c.tabs.find((t) => t.muc.length < YEU_THICH_TOI_DA)
+    if (!tab) { alert(`Các tab Yêu thích đều đã đủ ${YEU_THICH_TOI_DA} mục. Bỏ ★ một mục hoặc tạo tab mới.`); return }
+    get().ghimTabYT(id, [tab.id])
+  },
+  luuCayYT: (cay) => {
+    const me = get().me
+    if (!me) return
+    const cu = me.nhanSu.menu_yeu_thich ?? null
+    const va = (v: typeof cu) => set((s) => (s.me ? { me: { ...s.me, nhanSu: { ...s.me.nhanSu, menu_yeu_thich: v } } } : {}))
+    va(cay)
+    updateMenuYeuThich(me.nhanSu.id, cay).catch((e) => { va(cu); alert(`Chưa lưu được mục Yêu thích: ${e?.message ?? e}`) })
+  },
+  ghimTabYT: (id, tabIds) => {
+    const me = get().me
+    if (!me) return
+    const { cay, tabDay } = datTabCuaMuc(docCayYT(me.nhanSu.menu_yeu_thich), id, tabIds)
+    if (tabDay.length) alert(`Tab ${tabDay.map((t) => `"${t}"`).join(', ')} đã đủ ${YEU_THICH_TOI_DA} mục — bỏ bớt một mục trong tab đó trước.`)
+    get().luuCayYT(cay)
+  },
+  boGhimTabYT: (id, tabId) => {
+    const me = get().me
+    if (!me) return
+    const c = docCayYT(me.nhanSu.menu_yeu_thich)
+    get().luuCayYT({ tabs: c.tabs.map((t) => (t.id === tabId ? { ...t, muc: t.muc.filter((x) => x !== id) } : t)) })
+  },
+  themTabYT: (ten, ghimMuc) => {
+    const me = get().me
+    if (!me) return null
+    const c = docCayYT(me.nhanSu.menu_yeu_thich)
+    if (c.tabs.length >= TAB_YT_TOI_DA) { alert(`Tối đa ${TAB_YT_TOI_DA} tab Yêu thích.`); return null }
+    const id = taoIdTab()
+    get().luuCayYT({ tabs: [...c.tabs, { id, ten: ten.trim().slice(0, 30) || 'Tab mới', muc: ghimMuc ? [ghimMuc] : [] }] })
+    return id
+  },
+  doiTenTabYT: (tabId, ten) => {
+    const me = get().me
+    const t = ten.trim().slice(0, 30)
+    if (!me || !t) return
+    const c = docCayYT(me.nhanSu.menu_yeu_thich)
+    get().luuCayYT({ tabs: c.tabs.map((x) => (x.id === tabId ? { ...x, ten: t } : x)) })
+  },
+  xoaTabYT: (tabId) => {
+    const me = get().me
+    if (!me) return
+    const c = docCayYT(me.nhanSu.menu_yeu_thich)
+    if (c.tabs.length <= 1) return
+    get().luuCayYT({ tabs: c.tabs.filter((x) => x.id !== tabId) })
+  },
+  doiChoTabYT: (tabId, buoc) => {
+    const me = get().me
+    if (!me) return
+    const ds = [...docCayYT(me.nhanSu.menu_yeu_thich).tabs]
+    const i = ds.findIndex((x) => x.id === tabId), j = i + buoc
+    if (i < 0 || j < 0 || j >= ds.length) return
+    ;[ds[i], ds[j]] = [ds[j], ds[i]]
+    get().luuCayYT({ tabs: ds })
   },
   doiHomeAn: (id) => {
     const me = get().me
@@ -429,8 +491,16 @@ export const staffNavFromScope = (_scope: MyScope | null): NavGroup[] => {
 // Phím tắt công thức của NGƯỜI ĐANG ĐĂNG NHẬP (từ nhan_su.phim_tat_cong_thuc, load cùng `me`). Không persist
 // localStorage → 2 người dùng chung máy mỗi người thấy đúng bộ phím của mình. EMPTY cố định để selector ổn định.
 // Mục menu YÊU THÍCH của người đang đăng nhập (nhan_su.menu_yeu_thich). EMPTY cố định để selector ổn định.
-const YEU_THICH_EMPTY: string[] = []
-export const useYeuThich = () => useStore((s) => s.me?.nhanSu.menu_yeu_thich ?? YEU_THICH_EMPTY)
+// Giá trị DB thô (mảng cũ / cây tab mới) đọc qua docCayYT — memo theo đúng giá trị thô để không đẻ mảng mới mỗi lần render.
+export const useCayYT = (): CayYT => {
+  const raw = useStore((s) => s.me?.nhanSu.menu_yeu_thich)
+  return useMemo(() => docCayYT(raw), [raw])
+}
+/** Mọi mục đã ghim (ở bất kỳ tab nào) — cho trạng thái ★ / ☆. */
+export const useYeuThich = (): string[] => {
+  const c = useCayYT()
+  return useMemo(() => phangYT(c), [c])
+}
 
 const PHIM_TAT_EMPTY: Record<string, string> = {}
 export const usePhimTat = () => useStore((s) => s.me?.nhanSu.phim_tat_cong_thuc ?? PHIM_TAT_EMPTY)

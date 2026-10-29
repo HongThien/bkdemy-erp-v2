@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import type { User, NavGroup } from '../types'
-import { useStore, staffNavFromScope } from '../store/useStore'
+import { useStore, staffNavFromScope, useCayYT } from '../store/useStore'
+import NutGhimYT from '../components/NutGhimYT'
 import { LEAF_HOME, laHome } from '../lib/menu'
 import { useDieuHuong } from '../lib/useDieuHuong'
 import { useSkinErp } from '../lib/erpSkin'
@@ -570,6 +571,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
 export default function NhanSuHome({ user }: { user: User }) {
   const { staffLeaf: leafStore, setStaffLeaf, quyen, nhanLichSu, lopPhu, moLopPhu, backLeaf } = useStore()
   const dh = useDieuHuong()
+  const cayYT = useCayYT()
   // Thanh địa chỉ đã là tiêu đề màn ⇒ ẩn tiêu đề đầu màn nào chỉ nhắc lại đúng tên màn (xem lib/useAnTieuDeTrung.ts).
   const manRef = useRef<HTMLDivElement>(null)
   const sk = useSkinErp()
@@ -624,7 +626,11 @@ export default function NhanSuHome({ user }: { user: User }) {
   // nav hợp nhất: Việc của tôi (vận hành) ++ leaf màn role cấp (phát triển)
   const { coHome, nha, adminNav } = dh
   const staffLeaf = dh.leaf   // người không có Trang chính: 'home' được đổi sẵn thành 'viec' (xem useDieuHuong)
-  const dsYeuThich = coHome ? dh.yeuThich.map((id) => dh.mucs.find((m) => m.id === id)).filter((m) => !!m).map((m) => ({ id: m.id, ten: m.ten })) : []
+  // ⭐ Yêu thích trên cây = "cây riêng" của người dùng (Thùy 29/10): chỉ 1 tab có mục ⇒ liệt kê phẳng; nhiều hơn ⇒ mỗi tab 1 thư mục (bỏ tab rỗng).
+  const laMuc = (ids: string[]) => ids.map((id) => dh.mucs.find((m) => m.id === id)).filter((m) => !!m).map((m) => ({ id: m.id, ten: m.ten }))
+  const tabsYT = coHome ? cayYT.tabs.map((t) => ({ t, ds: laMuc(t.muc) })).filter((x) => x.ds.length) : []
+  const dsYeuThich = tabsYT.length === 1 ? tabsYT[0].ds
+    : tabsYT.map(({ t, ds }) => ({ id: `yt:${t.id}`, ten: t.ten, children: ds }))
   const groups: NavGroup[] = [
     { nhom: null, leaves: [...(coHome ? [{ id: LEAF_HOME, ten: '🏠 Trang chính' }] : []), ...staffNavFromScope(scope).flatMap((g) => g.leaves)] },
     ...(dsYeuThich.length ? [{ nhom: '⭐ Yêu thích', leaves: dsYeuThich }] : []),
@@ -653,8 +659,10 @@ export default function NhanSuHome({ user }: { user: User }) {
             <button onClick={() => setNavOpen(true)} className="rounded-md border border-[var(--sk-line)] px-3 py-2 text-[15px] leading-none text-[var(--sk-ink)] active:bg-[var(--sk-surface2)]">☰</button>
             <div className="min-w-0 flex-1"><DuongDan duong={dh.duong} duoi={dh.duoi} onDi={setStaffLeaf} gon /></div>
             {dh.ghimDuoc && (
-              <button onClick={dh.ghim} title={dh.daGhim ? 'Bỏ khỏi Yêu thích' : 'Thêm vào Yêu thích'}
-                className={`rounded-md px-2 py-1.5 text-[19px] leading-none ${dh.daGhim ? 'text-[var(--sk-acc)]' : 'text-[var(--sk-muted)]'}`}>{dh.daGhim ? '★' : '☆'}</button>
+              <NutGhimYT mucId={staffLeaf} coDinh nut={(bat, mo) => (
+                <button onClick={mo} title={bat ? 'Đã ghim — đổi tab / bỏ ghim' : 'Ghim vào tab Yêu thích'}
+                  className={`rounded-md px-2 py-1.5 text-[19px] leading-none ${bat ? 'text-[var(--sk-acc)]' : 'text-[var(--sk-muted)]'}`}>{bat ? '★' : '☆'}</button>
+              )} />
             )}
           </div>
           {navOpen && (

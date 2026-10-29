@@ -7,6 +7,7 @@ import HoSoModal from '../screens/nhansu/HoSoModal'
 import ReportButton from './ReportButton'
 import DuongDan from './DuongDan'
 import HomThu from './HomThu'
+import NutGhimYT from './NutGhimYT'
 
 // Nút mũi tên của thanh địa chỉ (← → ↑) — mờ đi khi không còn chỗ để đi.
 function NutMuiTen({ kyHieu, title, bat, onClick }: { kyHieu: string; title: string; bat: boolean; onClick: () => void }) {
@@ -45,11 +46,14 @@ export default function TopBar({ email }: { email: string }) {
           </div>
           <div className="flex h-8 min-w-0 flex-1 items-center rounded-md border border-[var(--sk-line)] bg-[var(--sk-surface2)] px-1">
             <DuongDan duong={dh.duong} duoi={dh.duoi} onDi={dh.di} onDuoi={dh.lopPhu ? dh.lui : undefined} />
+            {/* ☆ Ghim ⇒ khung chọn TAB Yêu thích (Thùy 29/10) */}
             {dh.ghimDuoc && (
-              <button onClick={dh.ghim} title={dh.daGhim ? 'Bỏ khỏi Yêu thích' : 'Ghim màn này lên Trang chính'}
-                className={`ml-auto shrink-0 rounded px-2 py-1 text-[12px] font-medium hover:bg-[var(--sk-surface2)] ${dh.daGhim ? 'text-[var(--sk-acc)]' : 'text-[var(--sk-muted)] hover:text-[var(--sk-acc)]'}`}>
-                {dh.daGhim ? '★ Đã ghim' : '☆ Ghim'}
-              </button>
+              <span className="ml-auto shrink-0"><NutGhimYT mucId={dh.leaf} nut={(bat, mo) => (
+                <button onClick={mo} title={bat ? 'Đã ghim — đổi tab / bỏ ghim' : 'Ghim màn này vào một tab Yêu thích'}
+                  className={`rounded px-2 py-1 text-[12px] font-medium hover:bg-[var(--sk-surface2)] ${bat ? 'text-[var(--sk-acc)]' : 'text-[var(--sk-muted)] hover:text-[var(--sk-acc)]'}`}>
+                  {bat ? '★ Đã ghim' : '☆ Ghim'}
+                </button>
+              )} /></span>
             )}
           </div>
         </>

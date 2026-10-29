@@ -12,7 +12,7 @@ const LIMIT = 10000
 export type DangCard = 'vuong' | 'ngang' | 'cao' | 'tron' | 'gon'
 // notice = các tab của box Notice Board (góc trái trên) người này BẬT, theo thứ tự hiện (Thùy 16/10). Không khai ⇒ đủ mọi tab.
 export type HomeBoCuc = { an?: string[]; thu_tu?: string[]; dang_card?: DangCard; notice?: string[] }
-export type NhanSu = { id: string; ma_ns?: string; ho_ten: string; so_dien_thoai: string | null; email: string | null; anh_url: string | null; trang_thai: 'dang_lam' | 'nghi'; ngay_vao_lam: string | null; created_at?: string; phim_tat_cong_thuc?: Record<string, string> | null; menu_yeu_thich?: string[] | null; home_bo_cuc?: HomeBoCuc | null; erp_giao_dien?: { skin?: string; nen?: string | null; nen_url?: string | null; che_do?: 'sang' | 'toi'; canh?: string | null } | null }
+export type NhanSu = { id: string; ma_ns?: string; ho_ten: string; so_dien_thoai: string | null; email: string | null; anh_url: string | null; trang_thai: 'dang_lam' | 'nghi'; ngay_vao_lam: string | null; created_at?: string; phim_tat_cong_thuc?: Record<string, string> | null; menu_yeu_thich?: string[] | import('./yeuThich').CayYT | null; home_bo_cuc?: HomeBoCuc | null; erp_giao_dien?: { skin?: string; nen?: string | null; nen_url?: string | null; che_do?: 'sang' | 'toi'; canh?: string | null } | null }
 
 // Ai là "tôi" (nhân sự đang đăng nhập). Ném lỗi nếu tài khoản chưa gắn hồ sơ nhân sự.
 export async function myNhanSuId(): Promise<string> {
@@ -370,8 +370,8 @@ export async function updateErpGiaoDien(nhanSuId: string, gd: { skin?: string; n
   if (error) throw error
 }
 // Mục menu YÊU THÍCH của tôi (mig 202610131649) — mảng id mục theo thứ tự thêm. Ghi đè cả mảng.
-export async function updateMenuYeuThich(nhanSuId: string, ids: string[]): Promise<void> {
-  const { error } = await supabase.from('nhan_su').update({ menu_yeu_thich: ids, updated_at: new Date().toISOString() }).eq('id', nhanSuId)
+export async function updateMenuYeuThich(nhanSuId: string, cay: import('./yeuThich').CayYT): Promise<void> {
+  const { error } = await supabase.from('nhan_su').update({ menu_yeu_thich: cay, updated_at: new Date().toISOString() }).eq('id', nhanSuId)
   if (error) throw error
 }
 
