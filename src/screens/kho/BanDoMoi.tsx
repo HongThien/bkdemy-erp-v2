@@ -282,7 +282,6 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
       {/* Đầu màn: khối · CHỦ ĐỀ (dropdown, mỗi màn 1 chủ đề) · bản đồ cũ · tiến độ */}
       {/* MỘT dòng ở mọi khối (Thùy 17/10: K6 gãy dòng, K7 không): nút giữ cỡ, chỉ chữ tiến độ co lại */}
       <div className="flex flex-nowrap items-center gap-x-3 border-b border-slate-200 bg-white px-4 py-2 [&>*]:shrink-0">
-        <span className="text-[14px] font-semibold text-slate-900">🆕 Bản đồ mới</span>
         {/* dãy nút khối: màn hẹp thì cuộn ngang thay vì đẩy cả thanh xuống dòng */}
         <span className="flex min-w-0 !shrink overflow-x-auto [scrollbar-width:thin]">{dauMan}</span>
         <span className="flex items-center gap-1.5">
@@ -316,17 +315,10 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
         )}
         {chuDe && khuon === 'bon_tang' && tn.aiDuyet && (
           <>
-            <button onClick={() => moKho({ loai: 'de_xuat', id: chuDe.id, ten: chuDe.ten })} title="Câu AI đã đề xuất dạng bài nhưng chưa chắc — chờ người duyệt"
-              className="rounded-md border border-sky-200 bg-sky-50 px-2 py-1 text-[12.5px] font-medium text-sky-800 hover:border-sky-400">💡 Đề xuất</button>
-            <button onClick={() => moKho({ loai: 'thieu_dang', id: chuDe.id, ten: chuDe.ten })} title="Câu thuộc chủ đề này mà AI không xếp được vào dạng bài nào (có thể cần thêm dạng bài)"
-              className="rounded-md border border-amber-200 bg-amber-50 px-2 py-1 text-[12.5px] font-medium text-amber-800 hover:border-amber-400">⚠ Thiếu dạng</button>
+            {/* Đề xuất · Thiếu dạng · Chưa khớp: xem ở ✅ Duyệt kho (Thùy 29/10 bỏ khỏi đầu màn) */}
             {(chuDe.so_ds ?? 0) > 0 && (
               <button onClick={() => moKho({ loai: 'dung_sai', id: chuDe.id, ten: chuDe.ten })} title="Kho Đúng/Sai của chủ đề: mỗi câu có 4 ý ứng 4 dạng nên không nằm trong kho dạng bài"
                 className="rounded-md border border-violet-200 bg-violet-50 px-2 py-1 text-[12.5px] font-medium text-violet-800 hover:border-violet-400">✔✘ Kho Đúng/Sai ({chuDe.so_ds})</button>
-            )}
-            {chuDe.nhanh === 'toan' && (
-              <button onClick={() => moKho({ loai: 'chua_khop', id: chuDe.id, ten: chuDe.ten })} title="Rổ chưa khớp cũ (lượt gán 10/10) — chưa phân loại tiếp"
-                className="rounded-md border border-slate-200 bg-white px-2 py-1 text-[12.5px] font-medium text-slate-600 hover:border-slate-400">Chưa khớp</button>
             )}
           </>
         )}
