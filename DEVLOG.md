@@ -78269,3 +78269,7 @@ Thùy nêu 4 việc, làm được 3:
 - Bẫy: reset môn trong effect cleanup ⇒ StrictMode chạy cleanup ngay lần dựng đầu ⇒ cây tải nhầm Toán; bỏ, đặt môn mỗi lần render. Dev: KHTN K7 đúng 7 chủ đề / chưa phân / bảng gán 11 câu / kho dạng bài 10 câu; Toán K7 nguyên vẹn.
 
 - **Quản lý môn + xoá tag thừa (mig 202610291725 ĐÃ ÁP, Thùy gật xoá):** xoá 21 tag nhan_su_team không có ghế (guard ≤ 21). Quản lý môn = ghế gốc team gv (cap truong, không cha, có mon) ⇒ `_quan_ly_mon()`; nới fn_pham_vi_cua_toi (toàn hệ > quản lý môn > ô, mỗi ô 1 dòng) · _trong_pham_vi · _btnhe_duoc_tao · fn_gay_pham_vi_khoi · fn_qlcl_phan_cong_luu (đúng môn) · fn_qlcl_duoc_phan_cong · fn_qlcl_team (+mon_sua). Vai trò mới "Quản lý môn" (hợp màn GV·TA·Học thuật·QLCL, sửa được) gán lên 3 ghế gốc. Kiểm ROLLBACK: Ngọc KHTN 7·8·9 / Hoà Anh 5T·8·9, 27 màn, giao Trưởng KHTN được, Toán bị chặn. UI: Phân công + Team QLCL chỉ mở ô chọn ở môn được sửa.
+
+## 29/10 — KHTN: tự duyệt câu đã chuyển + tình trạng mô tả/lý thuyết/ví dụ — Thùy 'Mấy câu đã chuyển auto duyệt nhé'
+- Duyệt 519 câu đã gán dạng bài mới còn chưa duyệt (K7 454 · K9 65; kiem_may đều trống, 0 câu 'nghi'): da_duyet=true, duyet_nguon='may', duyet_at=now(). Nay 5.648/5.648 câu đã chuyển đều đã duyệt. 2.747 câu chưa phân không đụng.
+- Tình trạng nội dung bản đồ mới KHTN: nhóm có lý thuyết K7 47/67 · K8 46/46 · K9 70/182 (từ lý thuyết dạng cũ); mô tả nhóm 0; dạng bài (=cụm cũ) mô tả/lý thuyết/ví dụ đều 0 — bản đồ cũ KHTN không có ở tầng cụm. 99 lý thuyết nhóm có chữ 'ví dụ' trong thân (2 có thẻ ##VD).
