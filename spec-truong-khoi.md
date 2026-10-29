@@ -173,6 +173,7 @@ Mọi con số tính ở `fn_troly_*` / `_troly_*` (spec `SPEC-troly-nhansu.md` 
 | Pha | Việc | Đổi hành vi? |
 |---|---|---|
 | **P1 — Gộp phân quyền** | bảng `phan_cong_quan_ly_khoi` + lịch sử · màn Phân công trưởng khối · team `qlcl` · `fn_pham_vi_cua_toi` · gậy/trợ lý/chấm MT/bot đọc nguồn mới · gỡ uuid Trang | Có, nhỏ: Dương, Ngân **có quyền gậy** khối mình; 8T về Thùy. Chỉ bật sau khi Thùy điền xong lưới. |
+| ↳ *chuyển ghế (P1)* | Chỉ ghế **"Trưởng khối X" trong team `ta`** chuyển sang team `qlcl`. Ghế GV, ghế Học thuật (kể cả các ghế tên "Trưởng khối …" bên Học thuật), Phó khối **giữ nguyên**. Ai còn lớp trợ giảng (`phan_cong_lop.vai_tro='tg'`) mà ghế TA duy nhất là ghế trưởng khối thì **được thêm 1 ghế Trợ giảng thường** để không mất màn TA. Đo 29/10: Dương (5 lớp TG) và Đạt (1 lớp TG). Cường 0 lớp TG; Hà Giang, Hải, Ngân đã có ghế TA khác. | Không |
 | **P2 — Hai tầng** | cột + trigger hậu kiểm · `fn_hau_kiem_hang_doi` · màn Hậu kiểm cho Trang. Làm gậy trước, rồi việc vận hành, rồi case bổ trợ | Có |
 | **P3 — Đóng băng KPI** | `chat_luong_tuan_hs` + chốt tuần mới · ứng viên 4 kênh xuống DB | Có (số mới) |
 | **P4 — Dashboard** | §5 | Có |
