@@ -78250,3 +78250,8 @@ Thùy nêu 4 việc, làm được 3:
 - ChonYTuCay.tsx thay HinhBaiPicker (popup 2 bước mô hình chính/vệ tinh → chuỗi → ChonChuoiPopup). Chỉ gốc phan='luyen' đúng khối (như CayNhanh). Khối 9: 2 gốc luyen đều 0 bài ⇒ chưa chọn được gì; bài cũ BT.09.011 thuộc mô hình phan NULL bị ẩn. Hàng Hình trong MT: mỗi ý 1 dòng "Câu N" + ô điểm.
 - Verify: dựng đề bằng banInTheoMoHinh trên L khối 8 thật; popup bước 1 trên MT khối 9 thật (chỉ mở); bước 2 + Hoàn thành dựng riêng trong trang (onPick vào biến thử, không ghi đề). Chưa nhìn hàng Hình mới trong MT thật (MT khối 9 không còn hàng Hình; MT khối 8 đang có người sửa).
 - Phát hiện: MT khối 9 "Đề kháo sát tháng 10" mất hàng Hình lúc 16:18 (hinhByMa rỗng, không còn mã HINH: trong phần). Màn MT chỉ ghi qua luuPhan (thao tác sửa) — phiên t chỉ mở đọc, không bấm sửa ⇒ do người sửa trực tiếp. Đã báo Thùy.
+
+## 29/10 (tối) — Sửa đến cùng: bỏ view bdm_cum_bai + vá màn TA (Thùy: "sửa thì sửa đến cùng")
+- **Làm:** mig `202610291710_bo_view_bdm_cum_bai` (ĐÃ ÁP) — bỏ view; `fn_btyeu_ca_ta` không join cụm cho bdm, lịch sử cụm cũ gộp "Cả dạng". Spec §36.
+- **Kiểm:** ROLLBACK, băm kết quả trước/sau: ca HS 2 em, phiếu lưu 2 em giống 100%; màn TA 4/5 buổi giống, 1 khác chủ ý.
+- **Ranh giới nói thẳng với Thùy:** cụm Đại cũ còn nằm trong công cụ soạn bản đồ của Kho (đối ứng cụm cũ → dạng mới, tab Cụm bài, đề xuất) — không phải bổ trợ, chưa xoá, cần quyết riêng.

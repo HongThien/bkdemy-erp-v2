@@ -472,3 +472,10 @@ hàng đợi **nhớ filter + list + vị trí cuộn + khối đang mở** khi 
 - **Hệ quả đã đo:** chỉ 2 dạng cũ đang xử mất danh sách cụm → luyện "Cả dạng" (K4 `T104050102`, K7 `T107020302`). Hai em Hà Linh/Quỳnh Chi vào ca + luyện bình thường.
 - **KHÔNG đụng:** 300 câu `hgt` (Hình có cụm riêng, đang chạy) · bảng cụm `dai_cum_bai` (355) · `dai_cum_tien_de` (20) · view `bdm_cum_bai` (vẫn có `fn_btyeu_ca_ta`, `fn_ban_do_phieu_luu` nhắc tới) · `bai_test_cau.ma_cum` (lịch sử luyện) · cụm của KHTN/TSA/Hình.
 - **Còn lại nếu muốn dọn sâu hơn (cần Thùy gật riêng):** bỏ view `bdm_cum_bai` (phải sửa 2 hàm trước) · xoá bảng cụm cũ · 124 câu `dai` chưa gán NDB.
+
+## 36. Cập nhật 29/10 — BỎ HẲN CỤM KHỎI BỔ TRỢ + BẢN ĐỒ MỚI (Thùy: "sửa thì sửa đến cùng")
+
+- **Đã làm (mig `202610291710_bo_view_bdm_cum_bai`):** bỏ view `bdm_cum_bai` (bí danh của bảng cụm cũ — nguồn của cả họ lỗi "suy tên bảng cụm/tiền đề") · `fn_btyeu_ca_ta` (màn TA): nhánh `bdm`/không-bảng-cụm không join cụm, lịch sử luyện theo cụm cũ (8/10) gộp thành 1 dòng "Cả dạng" thay vì mã `DCUM…` trần. Cùng §34–35: ca HS (`_btyeu_ca_cua_hs`) bỏ cụm; 6.279 câu NDB hết `ma_cum` (có bản lưu).
+- **Đối chiếu trước/sau (ROLLBACK):** ca HS của 2 em · màn TA 5 buổi (4 giống 100%, 1 khác chủ ý — dòng lịch sử cụm cũ) · `fn_ban_do_phieu_luu('Toán')` của 2 em: **giống 100%**. Không còn chỗ nào trong DB/app tra `bdm_cum_bai` (đã grep `src`, `scripts`).
+- **Họ lỗi này đã chặn tận gốc?** Phía bổ trợ: ✔ (không còn đường nào của bản đồ mới đi qua bảng cụm/tiền đề; hàm tự kiểm §33 + dải đỏ Lịch phòng bắt phần còn lại). KHÔNG thay đổi nhánh Hình/KHTN/TSA (cụm riêng, còn dùng).
+- **GIỚI HẠN — cụm Đại cũ CÒN ở công cụ Kho, KHÔNG phải bổ trợ:** `dai_cum_bai` (355) · `dai_cum_tien_de` (20) · `dai_bdm_doi_ung_cum` (247) · 124 câu dai chưa gán NDB còn `ma_cum` · `bai_test_cau.ma_cum` (24.588 dòng lịch sử) · khoá ngoại + 10 hàm (`fn_bdm_gan_cum`, `fn_bdm_dang_cu`, `fn_dai_de_xuat_quyet`, `dai_cum_hau_due`, …) · tab Kho "Cụm bài", Bản đồ mới (đối ứng cụm cũ → dạng mới), Đề xuất. Đó là chỗ công cụ soạn bản đồ mới còn mượn "cụm cũ" để gán câu vào dạng; xoá = phá công cụ Kho nên cần quyết riêng.
