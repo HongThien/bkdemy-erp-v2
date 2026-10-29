@@ -93,7 +93,7 @@ Lưới **môn (hàng) × khối (cột)**. Mỗi ô có 2 chỗ chọn: *Trư�
 - **Đối xứng môn:** Anh/KHTN/Văn chỉ cần điền ô, mọi thứ chạy y như Toán.
 - **Cây ghế team TA bớt việc:** không còn phải giữ đúng `cha_id` từng TA → trưởng khối bằng tay (nguồn lệch thứ ba). Cây ghế chỉ còn để vẽ sơ đồ tổ chức.
 
-### 2.4 Bỏ đi (sau khi mọi chỗ đọc đã chuyển sang `fn_pham_vi_cua_toi`)
+### 2.4 Bỏ đi — ✅ ĐÃ XOÁ 29/10 (Thùy gật, mig `202610291813`): `gay_quyen_khoi` · `phan_cong_khoi` · cột `vi_tri.khoi_quan_ly`; uuid/mã Trang gõ cứng đã gỡ (hỏi đáp theo ghế core, xếp hạng theo ghế Lead/QLCL)
 
 Mỗi mục xoá đều hỏi Thùy riêng lúc đó theo **Luật xoá**:
 - `gay_quyen_khoi`: thay bằng bảng phân công.

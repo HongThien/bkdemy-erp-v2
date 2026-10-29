@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-465 bảng · 33 view · 0 enum · 252 trigger · 1419 function
+463 bảng · 33 view · 0 enum · 252 trigger · 1419 function
 
 ## _app_secrets
 
@@ -2266,17 +2266,6 @@ END |  |  |
 | active | boolean |  | true |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 
-## gay_quyen_khoi
-
-| cột | kiểu | null | default | khóa | giá trị hợp lệ |
-|---|---|---|---|---|---|
-| nhan_su_id | uuid |  |  | PK FK→nhan_su.id |  |
-| toan_quyen | boolean |  | false |  |  |
-| khoi | text[] |  | '{}'::text[] |  |  |
-| ghi_chu | text | Y |  |  |  |
-| created_at | timestamp with time zone |  | now() |  |  |
-| mon | text[] |  | '{}'::text[] |  |  |
-
 ## giai_thuong
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -3895,7 +3884,7 @@ END |  |  |
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| mon | text |  |  | PK FK→thanh_tuu.mon |  |
+| mon | text |  |  | PK FK→huy_hieu.mon |  |
 | huy_hieu_key | text |  |  | PK FK→huy_hieu.key |  |
 | thanh_tuu_key | text |  |  | PK FK→thanh_tuu.key |  |
 | vai | text |  |  |  | `chuan` · `them` |
@@ -4888,16 +4877,6 @@ END |  |  |
 | hieu_luc_den | date | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 
-## phan_cong_khoi
-
-| cột | kiểu | null | default | khóa | giá trị hợp lệ |
-|---|---|---|---|---|---|
-| id | uuid |  | gen_random_uuid() | PK |  |
-| nhan_su_id | uuid |  |  | FK→nhan_su.id |  |
-| khoi | text |  |  |  |  |
-| created_at | timestamp with time zone |  | now() |  |  |
-| mon | text |  |  |  |  |
-
 ## phan_cong_lop
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -5416,7 +5395,7 @@ END |  |  |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
 | mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
-| khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
+| khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
 | ten | text |  |  |  |  |
@@ -6565,7 +6544,6 @@ END |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | vai_tro_id | uuid | Y |  | FK→vai_tro.id |  |
 | mon | text | Y |  |  |  |
-| khoi_quan_ly | text[] |  | '{}'::text[] |  |  |
 | chi_xem | boolean |  | false |  |  |
 | tk_tu_dong | boolean |  | false |  |  |
 

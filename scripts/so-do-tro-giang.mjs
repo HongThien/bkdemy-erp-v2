@@ -9,6 +9,10 @@
 import fs from 'fs'
 import pg from 'pg'
 
+// ⛔ LỖI THỜI từ 29/10 (mig 202610291813 đã xoá cột vi_tri.khoi_quan_ly): trưởng / phó khối giờ PHÂN CÔNG ở màn Phân công hoặc
+// Team Quản lý chất lượng (bảng phan_cong_quan_ly_khoi); ghế trưởng khối ở team TA · Học thuật · QLCL do DB tự sinh. Đừng chạy script này.
+console.error("so-do-tro-giang.mjs đã lỗi thời (29/10) — dùng màn Phân công / Team Quản lý chất lượng."); process.exit(1)
+
 const AP = process.argv.includes('--ap')
 
 // ── KHAI BÁO (sửa ở đây là đủ) ────────────────────────────────────────────────
