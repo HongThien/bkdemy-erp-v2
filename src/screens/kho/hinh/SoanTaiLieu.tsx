@@ -1051,13 +1051,13 @@ export async function goiYMaDeChoBai(chuoi: BaiToan[], gocBan: Ban, n: number): 
   const opts = (await banOptionsOfChuoi(chuoi)).filter((o) => !sameBanBan(o.ban, gocBan))
   return (await rankBanOptions(opts, chuoi)).slice(0, n)
 }
-/** Mã đề 2/3 / ↻ Đổi cho BÀI KHO (MT chế độ 2): bài kho KHÁC của cùng mô hình, đã duyệt đủ ý, CÙNG SỐ Ý (điểm + ô chấm
+/** Mã đề 2/3 / ↻ Đổi cho BÀI KHO (MT chế độ 2): bài kho KHÁC của cùng mô hình, CÙNG SỐ Ý (điểm + ô chấm
  *  từng ý khớp 1-1 giữa các mã đề), ít dùng nhất trước. Thiếu thì trả ít hơn n — caller dùng lại bài gốc. */
 export async function goiYMaDeBaiKho(moHinhId: string | null, baiId: string, n: number): Promise<{ ban: Ban; label: string }[]> {
   if (!moHinhId) return []
   const [kho, goc] = await Promise.all([api.khoCuaMoHinh(moHinhId), api.baiFullHL(baiId)])
   const soY = goc?.ys.length ?? 0
-  const ung = kho.filter((c) => c.id !== baiId && c.y.length === soY && c.y.every((y) => y.da_duyet))
+  const ung = kho.filter((c) => c.id !== baiId && c.y.length === soY)
   const dung = await gt.baiKhoUsageCount(ung.map((c) => c.id))
   return [...ung].sort((a, b) => (dung.get(a.id) ?? 0) - (dung.get(b.id) ?? 0)).slice(0, n)
     .map((c) => ({ ban: { kind: 'bai', baiId: c.id, moHinhId }, label: c.ma_bai }))

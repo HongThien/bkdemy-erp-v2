@@ -5,7 +5,7 @@
 // thiết thêm của từng nhánh trước câu hỏi) do banInTheoMoHinh/mucGhep dựng — màn này chỉ CHỌN.
 // Mỗi ý = 1 lần đánh giá + 1 ô điểm (flattenGtBaiToDapAn / diemBaiHinh đã theo từng node).
 // ⭐ 29/10 (CEO "làm chế độ 2 — chọn được bài từ kho"): bước ② có 2 tab — "Tạo từ chuỗi" (ở trên) | "Bài trong kho" =
-// bài kho Hình luyện của mô hình đó (fn_hl_kho_cua_mo_hinh, chỉ bài đã duyệt đủ ý). Chọn 1 bài ⇒ PickItem kind 'bai':
+// bài kho Hình luyện của mô hình đó (fn_hl_kho_cua_mo_hinh — bài đã gán vào mô hình là đã vào kho, không lọc thêm cờ duyệt). Chọn 1 bài ⇒ PickItem kind 'bai':
 // lấy NGUYÊN bài, mọi ý (Hình không tách ý), mỗi ý = 1 câu chấm + điểm riêng.
 import { useEffect, useMemo, useState } from 'react'
 import * as api from '../../../lib/kho/api'
@@ -20,7 +20,6 @@ const soB = (so: string | undefined) => parseInt((so ?? '').replace(/\D/g, ''), 
 // Nhớ mô hình gốc vừa chọn theo khối (sống tới F5) — hàng Hình kế tiếp mở thẳng chuỗi đó, "← Đổi mô hình" để quay lại.
 const NHO: Record<string, string> = {}
 let NHO_CHE: 'chuoi' | 'kho' = 'chuoi'
-const daDuyetDu = (c: api.ChuoiKho) => c.y.length > 0 && c.y.every((y) => y.da_duyet)
 
 export default function ChonYTuCay({ L, khoi, phan, chonSan, baiSan, onClose, onPick }: {
   L: Luoi; khoi: string; phan: PickItem['phan']
@@ -129,13 +128,11 @@ export default function ChonYTuCay({ L, khoi, phan, chonSan, baiSan, onClose, on
   // Ý đã tick theo đúng thứ tự in (số B) — dùng cho chuỗi ở chân popup + nhãn "Câu k".
   const chon = [...tick].sort((a, b) => soB(so.get(a)) - soB(so.get(b)))
   const thuTu = new Map(chon.map((id, i) => [id, i + 1]))
-  // CEO 29/10 ("MT chưa chọn được bài Hình 7"): hiện MỌI bài kho của mô hình như màn Hình luyện — bài chưa duyệt đủ ý
-  // vẫn chọn được, có nhãn cảnh báo, xếp sau bài đã duyệt. (Mã đề 2/3 tự động vẫn chỉ lấy bài đã duyệt — goiYMaDeBaiKho.)
+  // CEO 29/10 ("MT chưa chọn được bài Hình 7" · "các bài trong kho hình 7 duyệt hết rồi mà"): bài đã gán vào mô hình = đã
+  // vào kho ⇒ hiện MỌI bài như màn Hình luyện, KHÔNG lọc/cảnh báo theo cờ da_duyet của ý (nút "Duyệt bài" là việc khác).
   const khoDu = (kho ?? []).filter((c) => c.y.length > 0)
-  const soDuyet = khoDu.filter(daDuyetDu).length
   const kwKho = timKho.trim().toLowerCase()
   const khoHien = khoDu.filter((c) => !kwKho || `${c.ma_bai} ${c.nguon ?? ''} ${c.gia_thiet_chung ?? ''} ${c.y.map((y) => y.noi_dung).join(' ')}`.toLowerCase().includes(kwKho))
-    .sort((a, b) => Number(daDuyetDu(b)) - Number(daDuyetDu(a)))
   const baiDangChon = khoDu.find((c) => c.id === baiChon)
   return (
     <div className="fixed inset-0 z-[60] bg-slate-900/50 backdrop-blur-sm" onClick={onClose}>
@@ -159,7 +156,7 @@ export default function ChonYTuCay({ L, khoi, phan, chonSan, baiSan, onClose, on
               <div className="mb-3 flex items-center gap-3">
                 <input value={timKho} onChange={(e) => setTimKho(e.target.value)} placeholder="Tìm trong kho (mã, nguồn, đề)…"
                   className="h-8 w-72 rounded-md border border-slate-200 px-2.5 text-[13px] outline-none focus:border-indigo-400" />
-                <span className="text-[12px] text-slate-400">{khoHien.length}/{khoDu.length} bài · {soDuyet} bài đã duyệt đủ ý</span>
+                <span className="text-[12px] text-slate-400">{khoHien.length}/{khoDu.length} bài</span>
               </div>
               <div className="space-y-3">
                 {khoHien.map((c) => { const on = baiChon === c.id; return (
@@ -172,7 +169,6 @@ export default function ChonYTuCay({ L, khoi, phan, chonSan, baiSan, onClose, on
                       <div className="flex flex-wrap items-center gap-x-3 text-[12px]">
                         <span className="font-mono font-semibold text-teal-700">{c.ma_bai}</span>
                         <span className="text-slate-500">{c.nguon ?? 'chưa rõ nguồn'}</span>
-                        {!daDuyetDu(c) && <span className="rounded-full border border-amber-300 bg-amber-50 px-2 py-0.5 font-semibold text-amber-700" title="Bài chưa duyệt xong — đề/lời giải chưa được kiểm, xem kỹ trước khi dùng">⚠ chưa duyệt {c.y.filter((y) => !y.da_duyet).length}/{c.y.length} ý</span>}
                         <span className="ml-auto font-medium text-slate-500">{c.y.length} ý = {c.y.length} câu</span>
                       </div>
                       {c.gia_thiet_chung && <div className="text-[13.5px] leading-relaxed text-slate-800"><MathText>{c.gia_thiet_chung}</MathText></div>}
