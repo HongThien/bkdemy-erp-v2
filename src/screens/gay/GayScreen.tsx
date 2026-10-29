@@ -92,7 +92,7 @@ export default function GayScreen() {
   const [hds, setHds] = useState<GayHoatDong[]>([])
   const [thongBao, setThongBao] = useState<{ ok: boolean; msg: string } | null>(null)
 
-  // Quyền khối (Thùy 16/10): gay_quyen_khoi — toàn quyền = như admin trong màn này; khối = thêm người/đề xuất của lớp khối đó.
+  // Quyền khối (Thùy 16/10 → 29/10): Trưởng khối được phân công — toàn quyền (Lead/Quản lý chất lượng) = như admin trong màn này; khối = thêm người/đề xuất của lớp khối đó.
   const [pvKhoi, setPvKhoi] = useState<PhamViKhoi>(PHAM_VI_KHOI_RONG)
   const laAdmin = !!quyen?.laAdmin || pvKhoi.toanQuyen
   const canAct = laAdmin || !!scope?.laQuanLy || pvKhoi.khoi.length > 0

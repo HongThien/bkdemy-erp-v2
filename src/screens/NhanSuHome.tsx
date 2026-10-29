@@ -249,7 +249,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   // MỌI role, trong khi lượt này chỉ 1 người dùng. Tab thì bỏ đi cũng sạch.
   // 'hoidap' = tab HỎI HỆ THỐNG (bot Claude Code đọc repo trả lời "vì sao/quy trình") —
   // screens/hoidap/HoiDapTab.tsx. Cùng lý do KHÔNG đẻ leaf như 'rasoat' ngay trên.
-  // Pilot TẠM THỜI 3 người (CEO 29/08): tab chỉ hiện khi DB gật (hoi_dap_duoc_dung) —
+  // Tab chỉ hiện khi DB gật (hoi_dap_duoc_dung = ghế team core, 29/10 — trước là 3 uuid gõ cứng) —
   // ẩn UI là lịch sự, rào thật nằm ở RLS (migration 202608291205).
   // CEO 29/09: tab 🤖 Trợ lý (báo cáo ngày) CŨNG chỉ mở cho đúng 3 người đó — dùng chung cờ này
   // (`troly_duoc_dung()` ở DB gọi lại chính `hoi_dap_duoc_dung()`: một danh sách duy nhất).

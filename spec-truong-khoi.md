@@ -71,7 +71,7 @@ Hai nguyên tắc:
 
 Lưới **môn (hàng) × khối (cột)**. Mỗi ô có 2 chỗ chọn: *Trưởng* (người trong team QLCL) và *Phó* (tuỳ chọn). Ai được sửa: Thùy và Trang. Đặt trong cây Admin cạnh màn Phân quyền.
 
-Phân công ban đầu Thùy tự điền trên màn (không seed). Theo hiện trạng sẽ là: Toán 3·4·5 Dương · 4T·5T Ngân · 6·7 Hà Giang · 8 Cường · **8T Thùy** · 9 Hải · 10·11·12 Đạt; Phó: 3·4·5 Ngân · 7 Quỳnh Trang · 8 Thảo Nguyên.
+**✅ Đã build 29/10 (mig `202610291556`):** lưới nằm ngay trong màn **Phân công** sẵn có (dòng tiêu đề "Khối X · Môn" của mỗi khối có 2 ô chọn Trưởng / Phó; ai không có quyền thì chỉ thấy tên). Dữ liệu ban đầu = **chuyển 1 lần đúng hiện trạng sơ đồ** (không phải luật mặc định): Toán 3·4·5 Dương · 4T·5T Ngân · 6·7 Hà Giang · 8 Cường · **8T Thùy** · 9 Hải · 10·11·12 Đạt; Phó: 3·4·5 Ngân · 7 Quỳnh Trang · 8 Thảo Nguyên. Từ đó chỉ đổi qua màn.
 
 ### 2.3 Ba trục, mỗi trục MỘT nguồn
 
@@ -172,7 +172,7 @@ Mọi con số tính ở `fn_troly_*` / `_troly_*` (spec `SPEC-troly-nhansu.md` 
 
 | Pha | Việc | Đổi hành vi? |
 |---|---|---|
-| **P1 — Gộp phân quyền** | bảng `phan_cong_quan_ly_khoi` + lịch sử · màn Phân công trưởng khối · team `qlcl` · `fn_pham_vi_cua_toi` · gậy/trợ lý/chấm MT/bot đọc nguồn mới · gỡ uuid Trang | Có, nhỏ: Dương, Ngân **có quyền gậy** khối mình; 8T về Thùy. Chỉ bật sau khi Thùy điền xong lưới. |
+| **P1 — Gộp phân quyền** ✅ 29/10 (mig `202610291556`) | bảng `phan_cong_quan_ly_khoi` + lịch sử · màn Phân công trưởng khối · team `qlcl` · `fn_pham_vi_cua_toi` · gậy/trợ lý/chấm MT/bot đọc nguồn mới · gỡ uuid Trang | Có, nhỏ: Dương, Ngân **có quyền gậy** khối mình; 8T về Thùy. Còn lại của P1: gỡ uuid Trang ở xếp hạng Tổng kết tuần / skin; xoá `gay_quyen_khoi` · `vi_tri.khoi_quan_ly` · `phan_cong_khoi` (chờ Thùy gật theo Luật xoá). |
 | ↳ *chuyển ghế (P1)* | Chỉ ghế **"Trưởng khối X" trong team `ta`** chuyển sang team `qlcl`. Ghế GV, ghế Học thuật (kể cả các ghế tên "Trưởng khối …" bên Học thuật), Phó khối **giữ nguyên**. Ai còn lớp trợ giảng (`phan_cong_lop.vai_tro='tg'`) mà ghế TA duy nhất là ghế trưởng khối thì **được thêm 1 ghế Trợ giảng thường** để không mất màn TA. Đo 29/10: Dương (5 lớp TG) và Đạt (1 lớp TG). Cường 0 lớp TG; Hà Giang, Hải, Ngân đã có ghế TA khác. | Không |
 | **P2 — Hai tầng** | cột + trigger hậu kiểm · `fn_hau_kiem_hang_doi` · màn Hậu kiểm cho Trang. Làm gậy trước, rồi việc vận hành, rồi case bổ trợ | Có |
 | **P3 — Đóng băng KPI** | `chat_luong_tuan_hs` + chốt tuần mới · ứng viên 4 kênh xuống DB | Có (số mới) |

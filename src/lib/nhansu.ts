@@ -222,7 +222,7 @@ export type MyProfile = {
   phanCong: (PhanCongLop & { lop?: Lop })[]       // phân công lớp (chỉ xem)
   mons: string[]                                  // môn được phân (scope④ — gate kho/tài liệu theo môn)
   hocThuatMons: string[]                          // môn NS là team học thuật (ghế hoc_thuat) — quyền chốt/duyệt kế hoạch (vd duyệt dạng đuổi)
-  khoiPhuTrach: { khoi: string; mon: string }[]   // (khối × môn) là Phó khối trở lên trên sơ đồ tổ chức team Trợ giảng (fn_khoi_cua_toi) — quyền chấm mọi lớp cùng khối
+  khoiPhuTrach: { khoi: string; mon: string }[]   // (khối × môn) được phân công Trưởng/Phó khối (fn_khoi_cua_toi ← phan_cong_quan_ly_khoi) — quyền chấm mọi lớp cùng khối
 }
 export async function getMyProfile(): Promise<MyProfile | null> {
   const { data: au } = await supabase.auth.getUser()
@@ -250,7 +250,7 @@ export async function getMyProfile(): Promise<MyProfile | null> {
     supabase.from('phan_cong_lop').select('*, lop(*)').eq('nhan_su_id', nsId).limit(LIMIT),
     listMonOfNhanSu(nsId),
     listMonHocThuatCuaToi(nsId),
-    // Phó khối trở lên trên SƠ ĐỒ TỔ CHỨC team Trợ giảng (Thùy 15/10 — thay phan_cong_khoi) ⇒ chấm được mọi lớp cùng khối + môn
+    // Trưởng/Phó khối được phân công (phan_cong_quan_ly_khoi, Thùy 29/10) ⇒ chấm được mọi lớp cùng khối + môn
     supabase.rpc('fn_khoi_cua_toi'),
   ])
   if (nsRes.error) throw nsRes.error
@@ -300,15 +300,14 @@ export async function getMyScope(): Promise<MyScope | null> {
   })
   const opsToanHe = prof.teams.some((t) => t.ma === 'ops')
 
-  // ② giám sát = người DƯỚI tôi trong cây vị trí (mọi team tôi có vị trí), TÍNH ĐỘ SÂU.
+  // ② giám sát = người DƯỚI tôi trong cây vị trí — cây đi XUYÊN TEAM (29/10: ghế Trưởng khối ở team qlcl, Phó/TA dưới nó
+  // ở team ta; như fn_task_cap_duoi ở DB), TÍNH ĐỘ SÂU.
   // Quyền QL đến từ GHẾ (Trưởng/Phó), KHÔNG từ vai GV — GV thường quản lý ZERO người.
   // GV xem được data lớp mình = trục B (data-scope, dashboard), KHÔNG nằm ở task-scope này.
   const depthByNs = new Map<string, number>() // nhan_su_id → độ sâu NHỎ NHẤT dưới tôi (1 = trực tiếp)
-  // Song song hoá — mỗi vị trí 1 round-trip riêng nhưng CHẠY CÙNG LÚC (trước đây tuần tự,
-  // ai giữ ≥2 vị trí (vd Trang) là chậm gấp N lần thấy rõ mỗi lần mở modal Giao việc).
-  const viTriAllTeams = await Promise.all(prof.viTris.map((vt) => listViTri(vt.team_id)))
-  prof.viTris.forEach((vt, i) => {
-    const all = viTriAllTeams[i]
+  // Bảng ghế nhỏ (~100 dòng) ⇒ đọc 1 lần cho mọi vị trí của tôi.
+  const all = prof.viTris.length ? await listViTri() : []
+  prof.viTris.forEach((vt) => {
     const childrenOf = (id: string) => all.filter((x) => x.cha_id === id)
     const seenSeat = new Set<string>()
     let frontier = childrenOf(vt.id), depth = 1
@@ -533,13 +532,23 @@ export async function removePhanCong(id: string): Promise<void> {
   if (error) throw error
 }
 
-// ── Trưởng / Phó khối: đọc từ SƠ ĐỒ TỔ CHỨC team Trợ giảng (Thùy 15/10: "phân công là phạm vi, chức danh về sơ đồ
-// tổ chức"). Bảng phan_cong_khoi cũ (bản chất là Phó) KHÔNG còn đọc/ghi — sửa Trưởng/Phó ở màn Sơ đồ tổ chức.
+// ── Trưởng / Phó khối (Thùy 29/10, spec-truong-khoi.md §2): nguồn DUY NHẤT = bảng phan_cong_quan_ly_khoi (môn × khối × vai),
+// PHÂN CÔNG trên màn Phân công — không suy từ ghế/tên ghế. Chỉ Lead/Quản lý chất lượng (toàn hệ) sửa được; DB chặn.
 export type KhoiQuanLy = { mon: string; khoi: string; nhan_su_id: string; ho_ten: string; cap: 'truong' | 'pho' }
 export async function listKhoiQuanLy(): Promise<KhoiQuanLy[]> {
   const { data, error } = await supabase.rpc('fn_khoi_quan_ly_ds').limit(LIMIT)
   if (error) throw error
   return (data ?? []) as KhoiQuanLy[]
+}
+export async function duocPhanCongKhoi(): Promise<boolean> {
+  const { data, error } = await supabase.rpc('fn_qlcl_duoc_phan_cong')
+  if (error) throw error
+  return !!data
+}
+// nhanSuId null = bỏ trống ô. Trưởng phải thuộc team qlcl (DB kiểm).
+export async function setKhoiQuanLy(mon: string, khoi: string, vai: 'truong' | 'pho', nhanSuId: string | null): Promise<void> {
+  const { error } = await supabase.rpc('fn_qlcl_phan_cong_luu', { p_mon: mon, p_khoi: khoi, p_vai: vai, p_nhan_su_id: nhanSuId })
+  if (error) throw error
 }
 
 // ── Học sinh ──────────────────────────────────────────────────────
