@@ -610,8 +610,9 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   }, [cap1, cap2, direct, khu])
   useEffect(() => {
     // Hold retest (Thùy 29/09): không gọi — ô "Bài kiểm tra lại" không hiện (DB cũng trả rỗng).
-    const tai = () => Promise.all([caCuaToi().catch(() => null), RETEST_BAT ? retestCuaToi().catch(() => []) : Promise.resolve([] as RetestCuaToi[]), lichBoTroCuaToi().catch(() => [] as LichBoTro[])])
-      .then(([ca, rt, lich]) => setBoTro({ coCa: !!ca || lich.some((l) => l.vao_ca && (l.loai === 'bo_tro_duoi' || l.loai === 'bu')), soRetest: rt.filter((r) => !r.da_nop).length, lich }))
+    const tai = () => Promise.all([caCuaToi().catch(() => 'loi' as const), RETEST_BAT ? retestCuaToi().catch(() => []) : Promise.resolve([] as RetestCuaToi[]), lichBoTroCuaToi().catch(() => [] as LichBoTro[])])
+      // 29/10: caCuaToi LỖI (DB dựng ca nổ) KHÔNG còn nuốt thành "không có ca" — lịch đã nói em vào ca được thì vẫn hiện nút, CaBoTroHS hiện lỗi thật (trước đây nút biến mất im lặng, em/TA không biết vì sao).
+      .then(([ca, rt, lich]) => setBoTro({ coCa: (!!ca && ca !== 'loi') || lich.some((l) => l.vao_ca && (l.loai === 'bo_tro_duoi' || l.loai === 'bu' || (ca === 'loi' && l.loai === 'bo_tro_yeu'))), soRetest: rt.filter((r) => !r.da_nop).length, lich }))
     tai()
     const id = setInterval(() => { if (document.visibilityState === 'visible' && !direct && !khu) tai() }, 15000)
     return () => clearInterval(id)

@@ -6,7 +6,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { tuKiemBoTro, type LoiHienThi } from '../../lib/ca_bo_tro'
 import { caCuaNgay, tomTatNgay, ungVienCa, xepVaoCa, goKhoiCa, huyCa, taoCaTay, LOAI_TEN, type CaBoTro, type HsTrongCa, type NgayTomTat, type UngVien, type UngVienCa, type LoaiBoTro } from '../../lib/ca_bo_tro'
-import { caTheoDoi, xuLyCaHetHan, type CaTheoDoi } from '../../lib/botro_yeu_ca'
+import { caTheoDoi, xuLyCaHetHan, kiemCaHS, type CaTheoDoi, type EmKhongVaoDuocCa } from '../../lib/botro_yeu_ca'
 import { homNayVN, congNgay, ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
 import { listPhong, type Phong } from '../../lib/phong'
@@ -41,6 +41,7 @@ export default function LichPhongScreen() {
   const [taoMoi, setTaoMoi] = useState(false)
   const [nss, setNss] = useState<NhanSu[]>([])
   const [phongs, setPhongs] = useState<Phong[]>([])
+  const [emLoi, setEmLoi] = useState<EmKhongVaoDuocCa[]>([])
 
   const taiTomTat = (d: string) => tomTatNgay(congNgay(d, -1), congNgay(d, 1)).then(setTomTat).catch(() => {})
   const taiLive = (d: string) => caTheoDoi(d).then((r) => { setLive(new Map(r.map((x) => [x.buoi_id, x]))); setNow(Date.now()) }).catch(() => {})
@@ -49,6 +50,7 @@ export default function LichPhongScreen() {
   useEffect(() => { NHO.ngay = ngay; taiNgay(ngay); taiTomTat(ngay); taiLive(ngay) }, [ngay])
   useEffect(() => { NHO.mon = monF }, [monF])
   useEffect(() => { xuLyCaHetHan().then((n) => { if (n > 0) { taiNgay(NHO.ngay ?? homNay); taiLive(NHO.ngay ?? homNay) } }).catch(() => {}) }, []) // eslint-disable-line -- 26/10 ca quá 14 ngày tự đóng
+  useEffect(() => { kiemCaHS().then(setEmLoi).catch(() => {}) }, []) // 29/10 tự kiểm: em nào sẽ KHÔNG vào được ca trên app HS
   useEffect(() => { const id = setInterval(() => { if (document.visibilityState === 'visible') taiLive(NHO.ngay ?? homNay) }, POLL_MS); return () => clearInterval(id) }, [])
 
   const mons = useMemo(() => [...new Set(cas.map((c) => c.mon))].sort(), [cas])
@@ -132,6 +134,12 @@ export default function LichPhongScreen() {
           <label className="ml-auto flex items-center gap-1.5 text-[12px] text-slate-500"><input type="checkbox" checked={hienHuy} onChange={(e) => setHienHuy(e.target.checked)} /> hiện ca đã huỷ</label>
           <button onClick={() => { taiNgay(ngay); taiTomTat(ngay); taiLive(ngay) }} title="Tải lại" className="rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-[12px] text-slate-500 hover:bg-slate-100">↻</button>
         </div>
+        {emLoi.length > 0 && (
+          <div className="mb-3 rounded-xl border border-rose-300 bg-rose-50 px-3 py-2 text-[12.5px] text-rose-800">
+            <b>⚠ {emLoi.length} em sẽ KHÔNG vào được ca trên app HS</b> (ca dựng lỗi ở hệ thống — báo kỹ thuật ngay): {emLoi.slice(0, 6).map((e) => `${e.ho_ten} ${e.ma_hs} (${ddmmVN(e.ngay)} ${String(e.gio_bat_dau ?? '').slice(0, 5)})`).join(' · ')}{emLoi.length > 6 ? ` · +${emLoi.length - 6}` : ''}
+            <div className="mt-0.5 text-[11.5px] text-rose-700/80">Lỗi: {emLoi[0].loi}</div>
+          </div>
+        )}
         {loi && <p className="mb-3 rounded-xl bg-rose-50 px-3 py-2 text-[12.5px] text-rose-700">{loi}</p>}
         <TuKiemHienThi />
 

@@ -78046,3 +78046,11 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - App: nút "⧉ Nhân bản" ở danh sách MT + màn soạn MT (cả khi mở từ Kho tài liệu) → hộp đặt tên ("<tên> (bản sao)") → mở luôn bản mới. Verify dev: nhân bản MT thử ⇒ "[TEST Claude] … (bản sao)" (id fa87a706-cbac-438e-92e5-b09f104b8e94), 2 phần 6 câu đúng thứ tự, đủ 3 mã đề. 2 MT thử CHƯA xoá — chờ Thùy gật.
 
 - **[Dọn MT thử — Thùy gật 28/10 "Xóa đi"]** Xoá 2 MT "[TEST Claude] MT ban do moi - xoa duoc" (+ bản sao): 12 dòng tai_lieu_cau · 4 tai_lieu_phan · 2 tai_lieu, 1 transaction, chặn theo đúng 2 id + tên + loai mt mẫu. Không bảng nào khác tham chiếu (đã đếm mọi FK → tai_lieu). Còn 0 MT thử.
+
+## 29/10 — Em không bấm vào ca bổ trợ yếu được: gốc rễ + tự kiểm (Thùy 29/10)
+- **Thùy:** ca yếu 16:30–17:30 của Hà Linh + Quỳnh Chi (Trang phụ trách) — em mở app không bấm vào ca được; "lỗi này gặp rất nhiều rồi, fix rồi mà vẫn bị, gốc rễ là sao".
+- **Gốc rễ:** `fn_btyeu_ca_cua_toi` nổ `relation "bdm_cum_tien_de" does not exist` (suy tên bảng bằng replace; nhánh bản đồ mới không có bảng tiền đề) ⇒ app HS nuốt lỗi thành "không có ca". Dính mọi em có dạng NDB* từ 24/10: 14 buổi / 14 em. Chi tiết spec §33.
+- **Làm:** mig `202610291637_btyeu_ca_hs_khong_bdm_tien_de` (ĐÃ ÁP) · `_btyeu_ca_cua_hs` + `fn_btyeu_kiem_ca_hs` · `kiemCaHS` + dải đỏ ở Lịch phòng · `HocSinhApp.tsx` không nuốt lỗi caCuaToi.
+- **Kiểm:** chạy hàm đúng như 2 em (ROLLBACK) — ca dựng được + luyện sinh bài; làm hỏng bảng cố ý ⇒ tự kiểm bắt đủ. KHÔNG bấm thử trên app HS thật (cần mật khẩu em).
+- **Việc cần Thùy:** DB đã sửa NGAY (2 em vào được ca bây giờ, không cần deploy). Deploy ERP (dải cảnh báo) + app HS (không nuốt lỗi) khi tiện.
+- **Nợ:** `fn_kho_*` suy tên bảng tiền đề cùng kiểu.

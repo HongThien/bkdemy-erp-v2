@@ -310,6 +310,18 @@ export async function buDangCuaToi(buoiId: string): Promise<BuDangHS> {
   return data as BuDangHS
 }
 
+// TỰ KIỂM (Thùy 29/10 "lỗi không bấm vào ca gặp rất nhiều lần"): em nào SẼ không vào được ca trên app HS (ca dựng lỗi ở DB — app HS nuốt lỗi thành "không có ca").
+// Rỗng = ổn. Nặng (~0,4 s/em-buổi) ⇒ chạy nền, 1 lần/5 phút/trình duyệt, KHÔNG chặn màn.
+export type EmKhongVaoDuocCa = { buoi_id: string; ngay: string; gio_bat_dau: string | null; hoc_sinh_id: string; ho_ten: string; ma_hs: string; loi: string }
+let kiemCaLanCuoi: { t: number; kq: EmKhongVaoDuocCa[] } | null = null
+export async function kiemCaHS(): Promise<EmKhongVaoDuocCa[]> {
+  if (kiemCaLanCuoi && Date.now() - kiemCaLanCuoi.t < 5 * 60 * 1000) return kiemCaLanCuoi.kq
+  const { data, error } = await supabase.rpc('fn_btyeu_kiem_ca_hs', { p_ngay: 7 })
+  if (error) throw error
+  kiemCaLanCuoi = { t: Date.now(), kq: (data as EmKhongVaoDuocCa[]) ?? [] }
+  return kiemCaLanCuoi.kq
+}
+
 // Mỗi case bổ trợ yếu sống TỐI ĐA 14 ngày (Thùy 26/10): hết hạn ⇒ đóng case, còn dạng yếu (trong dạng đã học) ⇒ vào Đang theo dõi.
 // Chạy LƯỜI khi nhân sự mở màn (hàm đo dạng yếu đòi người đăng nhập nên cron không gọi được) — idempotent, rẻ khi không có gì hết hạn.
 // Giới hạn 1 lần/10 phút/trình duyệt. Trả số case vừa đóng (>0 ⇒ màn nên tải lại).
