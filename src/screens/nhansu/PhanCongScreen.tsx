@@ -2,10 +2,11 @@ import { Fragment, useEffect, useMemo, useState } from 'react'
 import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
 import {
   listLop, listNhanSu, listPhanCongAll, setPhanCongSlot,
-  listKhoiQuanLy, duocPhanCongKhoi, setKhoiQuanLy,
+  listKhoiQuanLy, setKhoiQuanLy,
   type Lop, type NhanSu, type PhanCongLop, type KhoiQuanLy,
 } from '../../lib/nhansu'
 import SearchSelect from '../../components/SearchSelect'
+import { teamQlcl } from '../../lib/qlcl'
 
 // Ma trận PHÂN CÔNG: hàng = lớp, cột = SLOT việc. Gán theo vai (TG ôm toàn bộ chấm; GV chính/phụ làm đánh giá+nội dung).
 // Ghi vào phan_cong_lop (cùng seam màn Lớp — 1 sự thật, 2 cửa). Điểm danh = OPS toàn hệ (không gán per-lớp).
@@ -19,7 +20,7 @@ export default function PhanCongScreen() {
   const [pc, setPc] = useState<PhanCongLop[]>([])
   const [ds, setDs] = useState<NhanSu[]>([])
   const [tk, setTk] = useState<KhoiQuanLy[]>([])
-  const [suaTk, setSuaTk] = useState(false)             // Lead / Quản lý chất lượng (DB: fn_qlcl_duoc_phan_cong)
+  const [monSua, setMonSua] = useState<string[] | null | false>(false) // false = không sửa · null = mọi môn · [..] = quản lý môn (fn_qlcl_team)
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
 
@@ -32,7 +33,7 @@ export default function PhanCongScreen() {
   }
   useEffect(() => { reload() }, [khoi]) // eslint-disable-line
   useEffect(() => {
-    duocPhanCongKhoi().then(setSuaTk).catch(() => setSuaTk(false))
+    teamQlcl().then((d) => setMonSua(d?.duoc_sua ? d.mon_sua : false)).catch(() => setMonSua(false))
   }, [])
 
   // Trưởng / Phó khối (khối × MÔN) — PHÂN CÔNG ngay tại đây (Thùy 29/10, spec-truong-khoi.md §2): nguồn duy nhất
@@ -120,7 +121,7 @@ export default function PhanCongScreen() {
                       <div className="flex flex-wrap items-center gap-2">
                         <span className="text-[12px] font-semibold text-slate-600">{g.mon} <span className="font-normal text-slate-400">· {g.lops.length} lớp</span></span>
                         <span className="ml-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500" title="Trưởng khối = quản chất lượng + vận hành khối · Phó (không có Phó thì Trưởng) nhận Chấm MT · Phó trở lên chấm được mọi lớp cùng khối">Khối {khoi} · {g.mon}</span>
-                        {suaTk ? (
+                        {monSua !== false && (monSua === null || monSua.includes(g.mon)) ? (
                           <div className="flex flex-wrap items-center gap-2">
                             <span className="text-[12px] text-indigo-700">Trưởng</span>
                             <div className="w-48">

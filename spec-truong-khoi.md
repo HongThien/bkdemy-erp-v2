@@ -78,6 +78,8 @@ Lưới **môn (hàng) × khối (cột)**. Mỗi ô có 2 chỗ chọn: *Trư�
 - **Team suy từ ghế** (mig `202610291709`): có ghế ở team nào ⇒ tự có tag team đó; màn Nhân sự bỏ ô tick team. Tag tay không có ghế (22 dòng đo 29/10) chờ Thùy gật xoá.
 - **Màn Team Quản lý chất lượng** (lá `qlcl_team`, nhóm Quản lý chất lượng): lưới ô môn × khối (Trưởng/Phó) + thẻ từng thành viên (phạm vi · chức vụ ở mọi team). Bản chất vẫn 3 lớp; màn chỉ gom. mig `202610291712`.
 
+- **Quản lý môn** (Thùy 29/10): người ngồi ghế GỐC của môn ở team Giáo viên (Toán — Thùy · KHTN — Ngọc · Tiếng Anh — Hoà) = "admin của môn": phạm vi mọi khối của môn mình (`_quan_ly_mon`, xếp giữa toàn hệ và trưởng khối), vai trò "Quản lý môn" = mọi màn chuyên môn. mig `202610291725` (kèm xoá 21 tag team tay không ghế, Thùy gật).
+
 ### 2.3 Ba trục, mỗi trục MỘT nguồn
 
 | Trục | Câu hỏi | Nguồn duy nhất | Ghi chú |

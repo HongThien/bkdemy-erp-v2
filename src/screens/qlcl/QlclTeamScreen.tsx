@@ -34,6 +34,7 @@ export default function QlclTeamScreen() {
   if (!d) return <div className="p-8 text-[13px] text-slate-400">{loi ?? 'Đang tải…'}</div>
   const opts = ds.map((n) => ({ id: n.id, label: n.ho_ten }))
   const thieu = d.o.filter((o) => !o.truong_id).length
+  const sua = (o: OQlcl) => d.duoc_sua && (d.mon_sua == null || d.mon_sua.includes(o.mon)) // quản lý môn chỉ sửa môn mình (DB cũng chặn)
 
   return (
     <div className="min-h-0 flex-1 overflow-auto bg-[#fafafb] px-8 py-5">
@@ -56,11 +57,11 @@ export default function QlclTeamScreen() {
                   <td className="px-4 py-1.5 font-semibold text-slate-800">{o.mon} · {o.khoi}</td>
                   <td className="px-2 text-slate-500">{o.so_lop} lớp · {o.so_hs} HS</td>
                   <td className="w-60 px-2 py-1">
-                    {d.duoc_sua ? <SearchSelect value={o.truong_id} onChange={(id) => doi(o, 'truong', id)} invalid placeholder="⚠ chưa có trưởng khối" options={opts} />
+                    {sua(o) ? <SearchSelect value={o.truong_id} onChange={(id) => doi(o, 'truong', id)} invalid placeholder="⚠ chưa có trưởng khối" options={opts} />
                       : <span className={o.truong_ten ? 'text-slate-800' : 'text-rose-600'}>{o.truong_ten ?? 'chưa có'}</span>}
                   </td>
                   <td className="w-60 px-2 py-1">
-                    {d.duoc_sua ? <SearchSelect value={o.pho_id} onChange={(id) => doi(o, 'pho', id)} placeholder="— (không) —" options={opts.filter((x) => x.id !== o.truong_id)} />
+                    {sua(o) ? <SearchSelect value={o.pho_id} onChange={(id) => doi(o, 'pho', id)} placeholder="— (không) —" options={opts.filter((x) => x.id !== o.truong_id)} />
                       : <span className="text-slate-600">{o.pho_ten ?? '—'}</span>}
                   </td>
                 </tr>
