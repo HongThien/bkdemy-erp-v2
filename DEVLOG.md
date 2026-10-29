@@ -78186,3 +78186,10 @@ Thùy nêu 4 việc, làm được 3:
 - **Store:** luuCayYT (vá ngay, lỗi thì trả lại) + ghimTabYT / boGhimTabYT / themTabYT / doiTenTabYT / xoaTabYT (giữ ≥ 1 tab) / doiChoTabYT; `doiYeuThich` cũ = bật/tắt nhanh (rút khỏi mọi tab / vào tab đầu còn chỗ).
 - **UI:** `NutGhimYT` = khung tick tab (n/12, tab đầy khoá, tạo tab mới tại chỗ) — gắn ở ☆ thẻ trang nhóm, ☆ Ghim thanh địa chỉ, ☆ thanh mobile. Trang chính: thanh toggle tab + ✎ Sửa tab (đổi tên · ‹ › · 🗑 · ＋); ★ trên ô = rút khỏi TAB ĐANG MỞ. Tab đang mở nhớ theo máy (localStorage `erp.ytTab`), cảnh liền hiện tab đó. Cây trái: chỉ 1 tab có mục ⇒ phẳng, nhiều hơn ⇒ mỗi tab 1 thư mục.
 - **Kiểm:** trang xem thử dựng lại tạm ở `.nhap-tam/xem-erp/` (bản cũ đã xoá 27/10, không commit) — ghim qua khung, tạo tab, đổi tên, đổi chỗ, xoá, rút ★, trần 12 đều đúng. Sửa 2 chỗ lúc soi: tên tab trong khung bị căn giữa; ◀▶ hiện thành emoji xanh trên Windows ⇒ đổi ‹ ›. **Chưa bấm bằng đăng nhập thật.**
+
+
+## 29/10 — Spec Trưởng khối & Team QLCL (Sparring Thùy)
+- **Làm:** dò hiện trạng phân quyền (ghế `vi_tri`, `gay_quyen_khoi`, trợ lý 3 uuid, `getMyScope` client) + viết `spec-truong-khoi.md` theo 13 điểm Thùy chốt (team QLCL = Thùy+Trang+6 TK; khối đơn vị thấp nhất, có môn; TK = Trang thu nhỏ; TK quyết – Trang hậu kiểm; Trang đánh gậy TK; Trang bấm Chốt tuần, đóng băng số; Lộc xếp lịch như cũ; KPI chưa chốt số).
+- **Phát hiện (đo DB thật):** 2 nguồn phạm vi khối đã LỆCH — Dương, Ngân không có dòng `gay_quyen_khoi` (không duyệt được gậy khối mình); Cường có 8T ở gậy nhưng ghế chỉ ghi 8. Chữ "Trưởng khối" có ở 3 team (ta/gv/hoc_thuat). `getMyScope` duyệt cây trong 1 team ⇒ không tách được team QLCL nếu không chuyển xuống DB. `fn_botro_chot_tuan` nhận ứng viên tính ở client (§2.0).
+- **Quyết định CTO:** quyền theo GHẾ, 1 hàm phạm vi; toàn hệ = ghế trưởng team qlcl (không cột mới, không uuid); 1 ghế = 1 môn; KPI hiển thị Vào/Ra(có bằng chứng | rớt cửa sổ)/Độ phủ để chặn Goodhart.
+- **Chưa code gì.** Treo 4 câu ở spec §7.
