@@ -78303,3 +78303,5 @@ Thùy nêu 4 việc, làm được 3:
 - **Xoá nguồn phạm vi cũ (Thùy gật, mig 202610291813 ĐÃ ÁP):** drop gay_quyen_khoi (5 dòng) · phan_cong_khoi (12 dòng) · cột vi_tri.khoi_quan_ly (9 ghế). Migration tự kiểm không còn hàm/policy đọc trước khi xoá; chạy thử ROLLBACK: gậy Cường vẫn [8], phạm vi + fn_khoi_quan_ly_ds bình thường. scripts/so-do-tro-giang.mjs chặn exit 1 (lỗi thời).
 
 - **Widget dạng yếu lên Trang chính (Thùy: "phải hiện thẳng ở màn hình ERP"):** màn mở ERP là Trang chính (HomeScreen), không phải Việc của tôi. Bố cục thường: widget đầy đủ dưới hàng lời chào; bố cục cảnh (tranh cố định): nút nổi "📉 Dạng yếu" góc trên phải, bấm mở widget. Tự ẩn khi không quản ô nào (useCoDangYeu dùng chung bộ nhớ widget).
+
+- **Widget 2 bảng box (Thùy):** WidgetDangYeu đổi từ lưới card mỗi ô sang 2 box kiểu 1 cạnh nhau: "Đầu tuần" (đóng băng lúc Chốt tuần; ô chưa chốt = — chưa chốt) · "Hiện tại" (realtime, ⟳ đang cập nhật N em); mỗi box 1 dòng/ô môn × khối, bấm dòng ⇒ bảng chi tiết. Vị trí góc trái dưới Trang chính: đo 3 cảnh ghép thì góc đó có nhân vật + thú + đồ trên bàn (pegboard chỉ còn dải ~125px) ⇒ CHƯA đặt, chờ Thùy xác nhận đang dùng bố cục nào.

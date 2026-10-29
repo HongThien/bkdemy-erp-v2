@@ -48,30 +48,53 @@ export default function WidgetDangYeu({ onTaoCaNhe, className }: { onTaoCaNhe: (
   if (!rows || rows.length === 0) return null
 
   const dangCapNhat = rows.reduce((s, o) => s + o.so_can_tinh, 0) // đếm item đang render (badge)
+  // Thùy 29/10: 2 BẢNG BOX — Đầu tuần (đóng băng lúc Chốt tuần) · Hiện tại (realtime). Mỗi bảng 1 dòng / ô môn × khối; bấm dòng ⇒ chi tiết.
   return (
     <section className={className ?? 'mb-4'}>
-      <div className="mb-2 flex items-center gap-2">
-        <h3 className="text-[14px] font-bold text-slate-800">Dạng yếu · khối tôi quản</h3>
-        <span className="text-[12px] text-slate-400">{dangCapNhat > 0 ? `⟳ đang cập nhật ${dangCapNhat} em…` : 'bấm 1 ô để xem từng em'}</span>
-      </div>
-      <div className="grid gap-2.5 [grid-template-columns:repeat(auto-fill,minmax(170px,1fr))]">
-        {rows.map((o) => (
-          // Card kiểu 1 (CLAUDE.md §6): header màu + thân trắng, gần vuông
-          <button key={khoaO(o)} onClick={() => setMo(o)} className="overflow-hidden rounded-2xl border border-slate-200 bg-white text-left shadow-sm transition hover:shadow-md">
-            <div className={`px-3 py-1.5 text-[13px] font-bold text-white ${o.so_hs_yeu > 0 ? 'bg-rose-500' : 'bg-emerald-500'}`}>{o.mon} · Khối {o.khoi}</div>
-            <div className="px-3 py-2.5">
-              <div className="flex items-baseline gap-1.5"><span className="text-[24px] font-bold leading-none text-slate-800">{o.so_hs_yeu}</span><span className="text-[12px] text-slate-500">/ {o.so_hs} HS yếu</span></div>
-              <div className="mt-1 flex items-baseline gap-1.5"><span className="text-[18px] font-bold leading-none text-rose-600">{o.so_dang_yeu}</span><span className="text-[12px] text-slate-500">dạng yếu</span></div>
-              <p className="mt-2 text-[11px] text-slate-400">
-                Đầu tuần: {o.dau_tuan_hs_yeu == null ? '— (chưa chốt)' : `${o.dau_tuan_hs_yeu} HS · ${o.dau_tuan_dang_yeu} dạng`}
-              </p>
-              {o.so_can_tinh > 0 && <p className="text-[11px] text-indigo-500">⟳ còn {o.so_can_tinh} em chưa cập nhật</p>}
-            </div>
-          </button>
-        ))}
+      <div className="grid gap-3 [grid-template-columns:repeat(auto-fit,minmax(250px,1fr))]">
+        <BangBox tieuDe="Dạng yếu · Đầu tuần" phu="đóng băng lúc Chốt tuần (thứ 2)" mau="bg-slate-600" rows={rows} onMo={setMo}
+          so={(o) => (o.dau_tuan_hs_yeu == null ? null : { hs: o.dau_tuan_hs_yeu, dang: o.dau_tuan_dang_yeu ?? 0 })} />
+        <BangBox tieuDe="Dạng yếu · Hiện tại" phu={dangCapNhat > 0 ? `⟳ đang cập nhật ${dangCapNhat} em…` : 'cập nhật liên tục'} mau="bg-rose-500" rows={rows} onMo={setMo}
+          so={(o) => ({ hs: o.so_hs_yeu, dang: o.so_dang_yeu })} />
       </div>
       {mo && <BangChiTiet o={mo} onDong={() => setMo(null)} onTaoCaNhe={onTaoCaNhe} />}
     </section>
+  )
+}
+
+// Card kiểu 1 (CLAUDE.md §6): header màu + thân trắng. Thân = bảng ô môn × khối: HS yếu / tổng · số dạng yếu.
+function BangBox({ tieuDe, phu, mau, rows, so, onMo }: {
+  tieuDe: string; phu: string; mau: string; rows: OTongQuan[]
+  so: (o: OTongQuan) => { hs: number; dang: number } | null; onMo: (o: OTongQuan) => void
+}) {
+  return (
+    <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+      <div className={`px-3.5 py-2 text-white ${mau}`}>
+        <div className="text-[13.5px] font-bold">{tieuDe}</div>
+        <div className="text-[11px] opacity-90">{phu}</div>
+      </div>
+      <div className="max-h-[260px] overflow-auto">
+        <table className="w-full text-[12.5px]">
+          <thead><tr className="text-left text-[10.5px] uppercase tracking-wider text-slate-400">
+            <th className="px-3.5 py-1">Ô</th><th className="py-1">HS yếu</th><th className="py-1 pr-3.5 text-right">Dạng</th>
+          </tr></thead>
+          <tbody>
+            {rows.map((o) => {
+              const x = so(o)
+              return (
+                <tr key={khoaO(o)} onClick={() => onMo(o)} className="cursor-pointer border-t border-slate-100 hover:bg-slate-50">
+                  <td className="px-3.5 py-1.5 font-semibold text-slate-800">{o.mon === 'Toán' ? '' : `${o.mon} `}Khối {o.khoi}</td>
+                  {x == null ? <td colSpan={2} className="pr-3.5 text-slate-400">— chưa chốt</td> : <>
+                    <td><b className="text-slate-800">{x.hs}</b><span className="text-slate-400"> / {o.so_hs}</span></td>
+                    <td className="pr-3.5 text-right font-bold text-rose-600">{x.dang}</td>
+                  </>}
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
   )
 }
 
