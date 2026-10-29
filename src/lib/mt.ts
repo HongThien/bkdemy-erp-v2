@@ -21,6 +21,7 @@ export function pickCuaHinhRow(ma: string, h: HinhRowInfo): PickItem {
   const base = { key: ma, phan: 'mt' as const, nodeIds: h.nodeIds }
   if (h.kind === 'bienthe') return { ...base, kind: 'bienthe', bienTheId: h.bienTheId! }
   if (h.kind === 'y') return { ...base, kind: 'y', yId: h.yId! }
+  if (h.kind === 'bai') return { ...base, kind: 'bai', baiId: h.baiId!, moHinhId: h.moHinhId ?? null }
   return { ...base, kind: 'ghep', luaId: h.luaId ?? null }
 }
 

@@ -15,7 +15,7 @@ export type GtBuoi = {
   lop_id: string | null; ngay: string | null; stt_lop: number | null; nguon_buoi_id: string | null  // set = bản LỚP (snapshot)
 }
 export type GtBai = {
-  id: string; buoi_id: string; phan: 'lop' | 'nha' | 'et' | 'mt'; loai: 'chuan' | 'bienthe' | 'y' | 'ghep'
+  id: string; buoi_id: string; phan: 'lop' | 'nha' | 'et' | 'mt'; loai: 'chuan' | 'bienthe' | 'y' | 'ghep' | 'bai'   // 'bai' (29/10) = nguyên 1 bài kho Hình luyện, ref_id = hinh_bai.id
   ref_id: string | null; ghep_node_ids: string[]; lua_id: string | null; an_de: boolean; so_dong: number | null; thu_tu: number
   hinh_che_do: CheDoHinh
 }
@@ -95,7 +95,7 @@ export async function saveBuoiSelection(buoiId: string, nhap: NhapBuoi): Promise
   const rows: Omit<GtBai, 'id'>[] = []
   let thu = 0
   for (const p of nhap.picks) {
-    const sig = p.kind === 'ghep' ? `${p.phan}|ghep|${p.luaId ?? ''}|${[...p.nodeIds].sort().join(',')}` : `${p.phan}|${p.kind}|${p.kind === 'bienthe' ? p.bienTheId : p.yId}`
+    const sig = p.kind === 'ghep' ? `${p.phan}|ghep|${p.luaId ?? ''}|${[...p.nodeIds].sort().join(',')}` : `${p.phan}|${p.kind}|${p.kind === 'bienthe' ? p.bienTheId : p.kind === 'bai' ? p.baiId : p.yId}`
     if (seen.has(sig)) continue; seen.add(sig)
     // GHI CẢ HAI: `an_de` (cột cũ, suy ra) để mọi đường code chưa đổi còn chạy đúng · `hinh_che_do` là
     // nguồn thật. Khi nào chắc không còn ai đọc `an_de` thì mới bàn chuyện xoá (luật xoá).
@@ -103,6 +103,7 @@ export async function saveBuoiSelection(buoiId: string, nhap: NhapBuoi): Promise
     const base = { buoi_id: buoiId, phan: p.phan, an_de: cd !== 'hien', hinh_che_do: cd, so_dong: nhap.soDong[p.key] ?? null, thu_tu: thu++ }
     if (p.kind === 'ghep') rows.push({ ...base, loai: 'ghep', ref_id: null, ghep_node_ids: p.nodeIds, lua_id: p.luaId })
     else if (p.kind === 'bienthe') rows.push({ ...base, loai: 'bienthe', ref_id: p.bienTheId, ghep_node_ids: [], lua_id: null })
+    else if (p.kind === 'bai') rows.push({ ...base, loai: 'bai', ref_id: p.baiId, ghep_node_ids: [], lua_id: null })
     else rows.push({ ...base, loai: 'y', ref_id: p.yId, ghep_node_ids: [], lua_id: null })
   }
   const { error: e1 } = await supabase.from('hinh_gt_bai').delete().eq('buoi_id', buoiId)
@@ -159,6 +160,7 @@ export async function loadBuoiPicks(buoiId: string): Promise<NhapBuoi> {
     else if (b.loai === 'bienthe' && b.ref_id) { const v = btMap.get(b.ref_id); if (v) picks.push({ key: b.id, phan: b.phan, kind: 'bienthe', bienTheId: b.ref_id, nodeIds: [v.baitoan_id] }) }
     else if (b.loai === 'y' && b.ref_id) { const yb = yMap.get(b.ref_id); if (yb?.y.baitoan_id) picks.push({ key: b.id, phan: b.phan, kind: 'y', yId: b.ref_id, nodeIds: [yb.y.baitoan_id] }) }
     else if (b.loai === 'ghep') picks.push({ key: b.id, phan: b.phan, kind: 'ghep', luaId: b.lua_id, nodeIds: b.ghep_node_ids })
+    else if (b.loai === 'bai' && b.ref_id) picks.push({ key: b.id, phan: b.phan, kind: 'bai', baiId: b.ref_id, moHinhId: null, nodeIds: [] })
   }
   return { picks, cheDo, soDong }
 }
@@ -190,12 +192,13 @@ export async function saveBuoiSelectionPhan(buoiId: string, phan: 'lop' | 'nha' 
   let thu = 0
   for (const p of nhap.picks) {
     if (p.phan !== phan) continue
-    const sig = p.kind === 'ghep' ? `ghep|${p.luaId ?? ''}|${[...p.nodeIds].sort().join(',')}` : `${p.kind}|${p.kind === 'bienthe' ? p.bienTheId : p.yId}`
+    const sig = p.kind === 'ghep' ? `ghep|${p.luaId ?? ''}|${[...p.nodeIds].sort().join(',')}` : `${p.kind}|${p.kind === 'bienthe' ? p.bienTheId : p.kind === 'bai' ? p.baiId : p.yId}`
     if (seen.has(sig)) continue; seen.add(sig)
     const cd = cheDoCua(p.key)
     const base = { buoi_id: buoiId, phan, an_de: cd !== 'hien', hinh_che_do: cd, so_dong: nhap.soDong[p.key] ?? null, thu_tu: thu++ }
     if (p.kind === 'ghep') rows.push({ ...base, loai: 'ghep', ref_id: null, ghep_node_ids: p.nodeIds, lua_id: p.luaId })
     else if (p.kind === 'bienthe') rows.push({ ...base, loai: 'bienthe', ref_id: p.bienTheId, ghep_node_ids: [], lua_id: null })
+    else if (p.kind === 'bai') rows.push({ ...base, loai: 'bai', ref_id: p.baiId, ghep_node_ids: [], lua_id: null })
     else rows.push({ ...base, loai: 'y', ref_id: p.yId, ghep_node_ids: [], lua_id: null })
   }
   const { error: e1 } = await supabase.from('hinh_gt_bai').delete().eq('buoi_id', buoiId).eq('phan', phan)
@@ -311,7 +314,7 @@ export async function setHinhMoHinhLoc(buoiId: string, loc: HinhMoHinhLoc): Prom
 // dòng mỗi lần lưu nên id dòng không sống sót qua 1 lần sửa; nodeIds của 1 chuỗi thì có).
 // Mã đề 2/3 = BẢN KHÁC đã CÓ SẴN trong kho (Thùy chốt "biến thể Hình là cùng node là được" — KHÔNG phải
 // AI đổi đỉnh sinh mới) — xem `goiYMaDeChoBai` (SoanTaiLieu.tsx).
-export type HinhBanRef = { kind: 'ghep'; luaId: string | null } | { kind: 'bienthe'; bienTheId: string } | { kind: 'y'; yId: string }
+export type HinhBanRef = { kind: 'ghep'; luaId: string | null } | { kind: 'bienthe'; bienTheId: string } | { kind: 'y'; yId: string } | { kind: 'bai'; baiId: string; moHinhId: string | null }
 export type HinhCauHinhPhan = {
   // khoá = chuoiSig(nodeIds) của bài. null = kho CHƯA đủ bản khác cho ô đó (khuôn "ô TRỐNG" của Đại).
   maDe?: Record<string, [HinhBanRef | null, HinhBanRef | null]>
@@ -319,6 +322,9 @@ export type HinhCauHinhPhan = {
 }
 export type HinhCauHinh = Record<string, HinhCauHinhPhan>   // khoá ngoài = phan
 export const chuoiSig = (nodeIds: string[]): string => [...nodeIds].sort().join(',')
+/** Khoá mã đề 2/3 của 1 hàng/pick Hình: chuỗi ⇒ chuoiSig(nodeIds); bài kho (nodeIds rỗng) ⇒ `bai:<id>` — cùng 1 bài kho ở 2 hàng
+ *  dùng chung bộ mã đề (như 2 hàng cùng chuỗi). */
+export const sigHinh = (h: { kind: string; nodeIds: string[]; baiId?: string }): string => (h.kind === 'bai' && h.baiId ? `bai:${h.baiId}` : chuoiSig(h.nodeIds))
 export async function getHinhCauHinh(buoiId: string, phan: string): Promise<HinhCauHinhPhan> {
   const { data, error } = await supabase.from('hinh_gt_buoi').select('cau_hinh').eq('id', buoiId).single()
   if (error) throw error
@@ -339,6 +345,7 @@ export function applyBanToPick(p: PickItem, ban: HinhBanRef): PickItem {
   const base = { key: p.key, phan: p.phan, nodeIds: p.nodeIds }
   if (ban.kind === 'ghep') return { ...base, kind: 'ghep', luaId: ban.luaId }
   if (ban.kind === 'bienthe') return { ...base, kind: 'bienthe', bienTheId: ban.bienTheId }
+  if (ban.kind === 'bai') return { ...base, kind: 'bai', baiId: ban.baiId, moHinhId: ban.moHinhId }
   return { ...base, kind: 'y', yId: ban.yId }
 }
 
@@ -632,7 +639,7 @@ export async function getYFull(ids: string[]): Promise<Map<string, { y: Y; bai: 
 // được ý nào thuộc node nào). Tái dùng ĐÚNG bộ khung `noDapAn`/`ys` mà `mucGhep` dùng để in — không suy
 // diễn lại logic chuỗi (1 nguồn sự thật, khớp 1-1 với thứ tự "a) b) c)" hiện trên phiếu HS).
 export type HinhDapAn = {
-  hinhBaitoanId: string
+  hinhBaitoanId: string | null   // null = ý của BÀI KHO chưa gắn node (29/10) — ô vẫn chấm điểm, không vào mastery node
   hinhBienTheId: string | null
   hinhYId: string | null
   nhan: string   // "5" hoặc "5C" — snapshot lúc sync (mig 202608211127), KHÔNG tính lại khi hiển thị
@@ -645,6 +652,7 @@ export async function flattenGtBaiToDapAn(L: Luoi, bais: GtBai[]): Promise<HinhD
     getBienTheByIds(bais.filter((b) => b.loai === 'bienthe').map((b) => b.ref_id!).filter(Boolean)),
     getYFull(bais.filter((b) => b.loai === 'y').map((b) => b.ref_id!).filter(Boolean)),
   ])
+  const yCuaBai = await yCuaBaiKho(bais.filter((b) => b.loai === 'bai').map((b) => b.ref_id!).filter(Boolean))
   const out: HinhDapAn[] = []
   let baiSo = 0
   for (const b of bais) {
@@ -666,9 +674,34 @@ export async function flattenGtBaiToDapAn(L: Luoi, bais: GtBai[]): Promise<HinhD
       const yb = yMap.get(b.ref_id)
       if (yb?.y.baitoan_id) out.push({ hinhBaitoanId: yb.y.baitoan_id, hinhBienTheId: null, hinhYId: b.ref_id, nhan: String(baiSo) })
       else baiSo--
+    } else if (b.loai === 'bai' && b.ref_id) {
+      // Bài kho: MỖI Ý = 1 ô (đúng thứ tự in a) b) c)), khoá = hinh_y.id; node của ý nếu đã gắn (không thì null — không đoán).
+      const ys = yCuaBai.get(b.ref_id) ?? []
+      if (!ys.length) { baiSo--; continue }
+      const chu = ys.length > 2
+      ys.forEach((y, i) => out.push({ hinhBaitoanId: y.baitoan_id, hinhBienTheId: null, hinhYId: y.id, nhan: chu ? `${baiSo}${String.fromCharCode(65 + i)}` : String(baiSo) }))
     } else baiSo--
   }
   return out
+}
+/** Ý của các bài kho (hinh_y), theo thứ tự in. */
+async function yCuaBaiKho(baiIds: string[]): Promise<Map<string, { id: string; baitoan_id: string | null }[]>> {
+  const u = [...new Set(baiIds)]
+  const m = new Map<string, { id: string; baitoan_id: string | null }[]>()
+  if (!u.length) return m
+  const { data, error } = await supabase.from('hinh_y').select('id, bai_id, thu_tu, baitoan_id').in('bai_id', u).order('thu_tu').limit(LIMIT)
+  if (error) throw error
+  for (const y of (data ?? []) as { id: string; bai_id: string; baitoan_id: string | null }[]) m.set(y.bai_id, [...(m.get(y.bai_id) ?? []), { id: y.id, baitoan_id: y.baitoan_id }])
+  return m
+}
+/** Số lần mỗi bài kho đã được dùng (hinh_gt_bai loai='bai') — xếp mã đề 2/3 ít dùng nhất trước. */
+export async function baiKhoUsageCount(baiIds: string[]): Promise<Map<string, number>> {
+  const m = new Map<string, number>()
+  if (!baiIds.length) return m
+  const { data, error } = await supabase.from('hinh_gt_bai').select('ref_id').eq('loai', 'bai').in('ref_id', baiIds).limit(LIMIT)
+  if (error) throw error
+  for (const r of (data ?? []) as { ref_id: string }[]) m.set(r.ref_id, (m.get(r.ref_id) ?? 0) + 1)
+  return m
 }
 /** Buổi (giáo trình Hình, lớp+ngày) khớp `phan` cần chấm — null nếu buổi chưa gán giáo trình Hình nào.
  *  Khớp qua `hinh_gt_buoi.lop_id/ngay` (KHÔNG FK buoi_hoc — cùng nguyên lý ET/BTVN Đại, buổi có thể ẢO

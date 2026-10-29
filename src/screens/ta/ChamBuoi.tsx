@@ -7,7 +7,7 @@ import {
   getBuoi, getRoster, getDangTen, listProblems, listGrades, addProblem, setProblemDang,
   ensureProblems, gradeMuc, gradeET, gradeETBulk, deleteGrade, closePhase, reopenPhase,
   loadETForBuoi, syncDocProblems, loadHinhForBuoiPhase, syncHinhProblems, xepLuoiTheoDe, listCanhBao,
-  type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type ETResult, type LuoiSync, type CanhBao,
+  type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type ETResult, type LuoiSync, type CanhBao, laOHinh,
 } from '../../lib/gami'
 import { tenHienThiDs } from '../../lib/hoten'
 import DangPickerOne from '../../components/DangPickerOne'
@@ -298,9 +298,9 @@ function EtPanel({ buoi, roster, tenDang, napTenDang, onChange }: {
             <tr className="bg-slate-50">
               <th className="sticky left-0 z-20 border-b border-r border-slate-200 bg-slate-50 px-3 py-2 text-left text-[12px] font-semibold text-slate-600">Học sinh</th>
               {probs.map((p) => (
-                <th key={p.id} className={`min-w-[128px] border-b border-slate-200 px-2 py-1.5 text-center align-top ${p.hinh_baitoan_id ? 'bg-violet-50' : ''} ${moCoiIds.has(p.id) ? 'bg-rose-50' : ''}`}>
-                  <div className="text-[12px] font-bold text-slate-700">{p.hinh_baitoan_id ? `Bài ${p.hinh_nhan}` : `Câu ${p.problem_no}`}</div>
-                  <div className="mx-auto max-w-[120px] truncate text-[10.5px] font-medium text-violet-600">{p.hinh_baitoan_id ? 'Hình' : tenDang(p.ma_dang)}</div>
+                <th key={p.id} className={`min-w-[128px] border-b border-slate-200 px-2 py-1.5 text-center align-top ${laOHinh(p) ? 'bg-violet-50' : ''} ${moCoiIds.has(p.id) ? 'bg-rose-50' : ''}`}>
+                  <div className="text-[12px] font-bold text-slate-700">{laOHinh(p) ? `Bài ${p.hinh_nhan}` : `Câu ${p.problem_no}`}</div>
+                  <div className="mx-auto max-w-[120px] truncate text-[10.5px] font-medium text-violet-600">{laOHinh(p) ? 'Hình' : tenDang(p.ma_dang)}</div>
                 </th>
               ))}
             </tr>

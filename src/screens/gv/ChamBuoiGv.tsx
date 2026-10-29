@@ -13,7 +13,7 @@ import {
   getBuoi, getRoster, getDangTen, listProblems, listGrades,
   getDanhGia, setDanhGiaDang, setNhanXet, setMuc, MUC_CATALOG, MUC_OPTS, nhanMuc,
   dongDanhGia, moLaiDanhGia, setNoiDungBuoi, listCanhBao,
-  type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type DanhGiaHS, type DanhGiaDiem, type CanhBao,
+  type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type DanhGiaHS, type DanhGiaDiem, type CanhBao, laOHinh,
 } from '../../lib/gami'
 import { tenHienThiDs } from '../../lib/hoten'
 import { ChuongBaoDong, ChipCanhBao, useDangTaiLieu, hopDang } from '../../components/ChuongBaoDong'
@@ -166,8 +166,8 @@ function EtRefPanel({ buoi, roster, tenDang, napTenDang }: {
               <th className="sticky left-0 z-20 border-b border-r border-slate-200 bg-slate-50 px-3 py-2 text-left text-[12px] font-semibold text-slate-600">Học sinh</th>
               {probs.map((p) => (
                 <th key={p.id} className="min-w-[92px] border-b border-slate-200 px-2 py-1.5 text-center align-top">
-                  <div className="text-[12px] font-bold text-slate-700">{p.hinh_baitoan_id ? `Bài ${p.hinh_nhan}` : `Câu ${p.problem_no}`}</div>
-                  <div className="mx-auto max-w-[88px] truncate text-[10.5px] font-medium text-violet-600">{p.hinh_baitoan_id ? 'Hình' : tenDang(p.ma_dang)}</div>
+                  <div className="text-[12px] font-bold text-slate-700">{laOHinh(p) ? `Bài ${p.hinh_nhan}` : `Câu ${p.problem_no}`}</div>
+                  <div className="mx-auto max-w-[88px] truncate text-[10.5px] font-medium text-violet-600">{laOHinh(p) ? 'Hình' : tenDang(p.ma_dang)}</div>
                 </th>
               ))}
             </tr>

@@ -39,6 +39,9 @@ export type Problem = {
   // MT (08/10, fn_mt_khung_buoi): điểm tối đa ô (NULL = người chấm tự cho) · thuộc phần Nâng cao · ô không còn trong đề
   diem_toi_da?: number | null; nang_cao?: boolean; ngoai_de?: boolean
 }
+/** Ô chấm thuộc HÌNH: có node (hinh_baitoan_id) HOẶC là ý của bài kho Hình luyện (hinh_y_id, node có thể chưa gắn — 29/10).
+ *  Ô Đại: cả hai trống. MỌI chỗ chia miền Đại/Hình đi qua hàm này (DB: cùng điều kiện ở _mt_khung_tinh/_mt_o_bai_cu/fn_mt_bang_ket_qua). */
+export const laOHinh = (p: { hinh_baitoan_id?: string | null; hinh_y_id?: string | null }): boolean => !!(p.hinh_baitoan_id || p.hinh_y_id)
 export type Grade = { id: string; problem_id: string; hoc_sinh_id: string; result: string; presentation: string; speed: string; points: number; loi?: string[]; muc?: number | null; nhan_xet?: string | null; diem_dat?: number | null }
 export type ETResult = 'correct' | 'partial' | 'wrong'
 
@@ -414,7 +417,7 @@ export async function syncDocProblems(buoiId: string, phase: 'et' | 'mt' | 'btvn
   const curAll = await listProblems(buoiId, phase)
   // ⭐ Hình (mô hình) dùng CHUNG bảng+phase (xem `syncHinhProblems`) — chỉ diff/đụng phần CỦA MÌNH
   // (ma_cau), đừng đọc/xoá nhầm ô Hình (không có ma_cau, sẽ rơi vào "thừa" nếu không lọc trước).
-  const cur = curAll.filter((p) => !p.hinh_baitoan_id)
+  const cur = curAll.filter((p) => !laOHinh(p))
   // problem_no là 1 slot chung cho CẢ buổi+phase (Đại lẫn Hình) — luôn cấp số tiếp theo TOÀN BẢNG,
   // không chỉ trong phần của mình, để khỏi đụng unique (buoi,phase,problem_no) với ô Hình.
   const noTiep = () => (curAll.length ? Math.max(...curAll.map((p) => p.problem_no)) : 0)
@@ -432,7 +435,7 @@ export async function syncDocProblems(buoiId: string, phase: 'et' | 'mt' | 'btvn
     // ignoreDuplicates: chống đẻ trùng khi effect chạy 2 lần (StrictMode) — unique (buoi,phase,problem_no).
     const { error } = await supabase.from('gami_session_problems').upsert(rows, { onConflict: 'buoi_hoc_id,phase,problem_no', ignoreDuplicates: true })
     if (error) throw error
-    return luoiNguyen((await listProblems(buoiId, phase)).filter((p) => !p.hinh_baitoan_id))
+    return luoiNguyen((await listProblems(buoiId, phase)).filter((p) => !laOHinh(p)))
   }
 
   // Lưới đời cũ (trước mig 0106) chưa có ma_cau. Chỉ dám gắn nhãn khi SỐ Ô == SỐ CÂU — bằng nhau tức
@@ -545,10 +548,10 @@ export function thuTuMTTheoDe(probs: Problem[], phans: MTPhanCaus[]): Problem[] 
   for (const ph of phans) for (const ma of ph.maCaus) {
     if (laMaHinh(ma)) {
       k++
-      const cua = conLai.filter((p) => !!p.hinh_baitoan_id && parseInt(p.hinh_nhan ?? '', 10) === k).sort((a, b) => (a.hinh_nhan ?? '').localeCompare(b.hinh_nhan ?? ''))
+      const cua = conLai.filter((p) => laOHinh(p) && parseInt(p.hinh_nhan ?? '', 10) === k).sort((a, b) => (a.hinh_nhan ?? '').localeCompare(b.hinh_nhan ?? ''))
       for (const p of cua) { out.push(p); conLai.splice(conLai.indexOf(p), 1) }
     } else {
-      const i = conLai.findIndex((p) => !p.hinh_baitoan_id && p.ma_cau === ma)
+      const i = conLai.findIndex((p) => !laOHinh(p) && p.ma_cau === ma)
       if (i >= 0) out.push(conLai.splice(i, 1)[0])
     }
   }
@@ -589,14 +592,14 @@ export const syncBTVNProblems = (buoiId: string, caus: CauHoi[], daDong?: boolea
 // thường trong buổi) HOẶC mt (buổi được đánh dấu MT — Hình chưa có cơ chế gán MT riêng như
 // Đại's `tai_lieu loai='mt_buoi'`, tạm dùng CHUNG nội dung 'lop', chỉ khác `phase` ghi ra;
 // cần Thùy xác nhận nếu muốn tách nội dung MT riêng sau này).
-const hinhKey = (d: { hinhBaitoanId: string; hinhBienTheId: string | null; hinhYId: string | null }) =>
-  `${d.hinhBaitoanId}|${d.hinhBienTheId ?? ''}|${d.hinhYId ?? ''}`
+const hinhKey = (d: { hinhBaitoanId: string | null; hinhBienTheId: string | null; hinhYId: string | null }) =>
+  `${d.hinhBaitoanId ?? ''}|${d.hinhBienTheId ?? ''}|${d.hinhYId ?? ''}`
 const hinhKeyOfProblem = (p: Problem) => `${p.hinh_baitoan_id ?? ''}|${p.hinh_bien_the_id ?? ''}|${p.hinh_y_id ?? ''}`
 
 export async function syncHinhProblems(buoiId: string, phase: 'et' | 'mt' | 'btvn', dapAn: HinhDapAn[], daDong?: boolean): Promise<LuoiSync> {
   const curAll = await listProblems(buoiId, phase)
-  // ⭐ Chia miền NGƯỢC lại `syncDocProblems`: chỉ đụng ô Hình (có hinh_baitoan_id), đừng đọc/xoá nhầm ô Đại.
-  const cur = curAll.filter((p) => !!p.hinh_baitoan_id)
+  // ⭐ Chia miền NGƯỢC lại `syncDocProblems`: chỉ đụng ô Hình (laOHinh: có node hoặc ý kho), đừng đọc/xoá nhầm ô Đại.
+  const cur = curAll.filter((p) => laOHinh(p))
   const noTiep = () => (curAll.length ? Math.max(...curAll.map((p) => p.problem_no)) : 0)
   if (!dapAn.length) return luoiNguyen(cur)
   if (!cur.length) {
@@ -608,7 +611,7 @@ export async function syncHinhProblems(buoiId: string, phase: 'et' | 'mt' | 'btv
     }))
     const { error } = await supabase.from('gami_session_problems').upsert(rows, { onConflict: 'buoi_hoc_id,phase,problem_no', ignoreDuplicates: true })
     if (error) throw error
-    return luoiNguyen((await listProblems(buoiId, phase)).filter((p) => !!p.hinh_baitoan_id))
+    return luoiNguyen((await listProblems(buoiId, phase)).filter((p) => laOHinh(p)))
   }
 
   // Bắt cặp theo khoá NODE (splice: 1 buổi lỡ có 2 pick trùng node thì mỗi ô chỉ dùng 1 lần).
@@ -655,7 +658,7 @@ export async function syncHinhProblems(buoiId: string, phase: 'et' | 'mt' | 'btv
   const doiNhan = ghep.filter((g) => g.co && (g.co.hinh_nhan ?? null) !== g.d.nhan)
   await Promise.all(doiNhan.map((g) => supabase.from('gami_session_problems').update({ hinh_nhan: g.d.nhan }).eq('id', (g.co as Problem).id)))
 
-  const taoMap = new Map(daTao.map((p) => [hinhKey({ hinhBaitoanId: p.hinh_baitoan_id!, hinhBienTheId: p.hinh_bien_the_id ?? null, hinhYId: p.hinh_y_id ?? null }), p]))
+  const taoMap = new Map(daTao.map((p) => [hinhKey({ hinhBaitoanId: p.hinh_baitoan_id ?? null, hinhBienTheId: p.hinh_bien_the_id ?? null, hinhYId: p.hinh_y_id ?? null }), p]))
   const theoDe = ghep
     .map((g) => (g.co ? { ...g.co, hinh_nhan: g.d.nhan } : taoMap.get(hinhKey(g.d))))
     .filter(Boolean) as Problem[]
@@ -850,7 +853,7 @@ export async function loadDangTaiLieuBuoi(buoiId: string, nguon: NguonCanhBao, m
   if (coKhoHinh(mon)) {
     try {
       const { dapAn } = nguon === 'danhgia' ? await loadHinhForBuoi(buoiId, 'lop') : await loadHinhForBuoiPhase(buoiId, nguon)
-      mds.push(...(await dangHinhCuaBaiToan([...new Set(dapAn.map((d) => d.hinhBaitoanId))])).map((d) => d.ma_dang))
+      mds.push(...(await dangHinhCuaBaiToan([...new Set(dapAn.map((d) => d.hinhBaitoanId).filter((x): x is string => !!x))])).map((d) => d.ma_dang))
     } catch { /* buổi không có giáo trình Hình ⇒ bỏ qua, không làm hỏng list Đại */ }
   }
   const uniq = [...new Set(mds.filter(Boolean))] as string[]

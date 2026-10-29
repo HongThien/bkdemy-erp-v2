@@ -15,7 +15,7 @@ import type { CauHoi } from '../../lib/kho/api'
 import { loadLuoi } from '../../lib/kho/hinh'
 import { banInTheoMoHinh, DONG_BTVN } from '../kho/hinh/SoanTaiLieu'
 import { MucsBlock, HINH_CSS, type MucIn } from '../kho/hinh/HinhPrintView'
-import { applyBanToPick, chuoiSig, type CheDoHinh } from '../../lib/kho/hinhGiaoTrinh'
+import { applyBanToPick, sigHinh, type CheDoHinh } from '../../lib/kho/hinhGiaoTrinh'
 import { pickCuaHinhRow } from '../../lib/mt'
 type HinhMucs = Record<string, (MucIn | null)[]> // ma hàng → [gốc, đề 2, đề 3]
 import { MathText, LT_CORE_CSS } from '../kho/ui'
@@ -73,7 +73,7 @@ export default function MTPrintView({ id, onClose, headless, linkOnly, onFail, o
       for (const ma of mas) {
         const h = ch.hinhByMa![ma]
         const p0 = pickCuaHinhRow(ma, h)
-        const md = ch.hinhMaDe?.[chuoiSig(h.nodeIds)]
+        const md = ch.hinhMaDe?.[sigHinh(h)]
         const picks = [p0, md?.[0] ? applyBanToPick(p0, md[0]) : null, md?.[1] ? applyBanToPick(p0, md[1]) : null]
         const cheDo: Record<string, CheDoHinh> = { [ma]: h.cheDo ?? 'hien' }
         // phan='mt' mặc định 0 dòng kẻ → truyền tường minh: số đã chỉnh, không thì DONG_BTVN như ET (HS làm thẳng vào phiếu).

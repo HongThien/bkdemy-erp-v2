@@ -19,11 +19,11 @@ import { supabase } from '../../lib/supabase'
 // Hình (mô hình) trong MT = 1 HÀNG câu như Đại (Thùy 02/09: "pick câu hình phải như ET, có dòng, là câu đấy, in
 // cùng"). Chọn bài = ChonYTuCay (CEO 29/10: mô hình gốc → cả chuỗi → tick ý), banInTheoMoHinh dựng đề (preview + in),
 // goiYMaDeChoBai sinh mã đề 2/3 (bản KHÁC có sẵn cùng node, không AI sinh mới).
-import { banInTheoMoHinh, goiYMaDeChoBai, DONG_BTVN, type Ban } from '../kho/hinh/SoanTaiLieu'
+import { banInTheoMoHinh, goiYMaDeChoBai, goiYMaDeBaiKho, DONG_BTVN, type Ban } from '../kho/hinh/SoanTaiLieu'
 import ChonYTuCay from '../kho/hinh/ChonYTuCay'
 import { loadLuoi, chuoiKetNoi, type Luoi, type BaiToan } from '../../lib/kho/hinh'
 import type { MucIn } from '../kho/hinh/HinhPrintView'
-import { chuoiSig, CHE_DO_HINH, cheDoKe } from '../../lib/kho/hinhGiaoTrinh'
+import { sigHinh, CHE_DO_HINH, cheDoKe } from '../../lib/kho/hinhGiaoTrinh'
 import { buildMaDe as buildMaDeLib, oTrongMaDe, usedMoiDe as usedMoiDeLib, setVarInCh, maDeStale, type BaseItem } from '../../lib/made'
 import { listLop, listHSCuaLop, type Lop, type HocSinh } from '../../lib/nhansu'
 import { listCauByDang, listLopBac, LOAI_CAU, KHOI_OPTIONS, DEFAULT_KHOI, type CauHoi, type LopBac } from '../../lib/kho/api'
@@ -621,8 +621,8 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
   const mMeta = mtMeta({ cau_hinh: ch })
   const setMtField = (patch: { loaiDe?: MTLoaiDe | null; thang?: string | null }) => saveCh({ ...ch, mtMeta: { loaiDe: mMeta.loaiDe, thang: mMeta.thang, ...patch } })
   const hinhRowsAll = (): Row[] => phans.flatMap((p) => (rowsByPhan[p.id] ?? []).filter((r) => r.nhanh === 'hinh' && r.maCau))
-  // Hàng Hình chưa có mã đề 2/3 (khoá theo chuoiSig(nodeIds) — khuôn ET Hình).
-  const hinhTrong = (): number => hinhRowsAll().filter((r) => { const h = ch.hinhByMa?.[r.maCau!]; return !h || !ch.hinhMaDe?.[chuoiSig(h.nodeIds)] }).length
+  // Hàng Hình chưa có mã đề 2/3 (khoá theo sigHinh: chuỗi node, hoặc bài kho — khuôn ET Hình).
+  const hinhTrong = (): number => hinhRowsAll().filter((r) => { const h = ch.hinhByMa?.[r.maCau!]; return !h || !ch.hinhMaDe?.[sigHinh(h)] }).length
   async function sinhMaDe() {
     const rows = baseRows()
     const hinhRows = hinhRowsAll()
@@ -645,13 +645,15 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
       const thieu: string[] = []
       for (const r of hinhRows) {
         const h = chNext.hinhByMa?.[r.maCau!]; if (!h) continue
-        const chuoi = chuoiKetNoi(hinhL, h.nodeIds[0]); const goc = banCuaHinh(h)
-        const opts = await goiYMaDeChoBai(chuoi, goc, 2)
-        hm[chuoiSig(h.nodeIds)] = [opts[0]?.ban ?? goc, opts[1]?.ban ?? goc]
-        if (opts.length < 2) thieu.push(chuoi.map((b) => b.ma).join('+'))
+        const goc = banCuaHinh(h)
+        // Bài kho: bài kho khác cùng mô hình, cùng số ý. Chuỗi: bản khác cùng node.
+        const chuoi = h.kind === 'bai' ? [] : chuoiKetNoi(hinhL, h.nodeIds[0])
+        const opts = h.kind === 'bai' ? await goiYMaDeBaiKho(h.moHinhId ?? null, h.baiId!, 2) : await goiYMaDeChoBai(chuoi, goc, 2)
+        hm[sigHinh(h)] = [opts[0]?.ban ?? goc, opts[1]?.ban ?? goc]
+        if (opts.length < 2) thieu.push(h.kind === 'bai' ? `bài kho ${(hinhMuc[r.maCau!] as { ma?: string | null } | undefined)?.ma ?? ''}` : chuoi.map((b) => b.ma).join('+'))
       }
       chNext = { ...chNext, hinhMaDe: hm }
-      if (thieu.length) alert(`Kho chưa đủ 2 bản khác cho ${thieu.length} bài Hình (chỉ đếm biến thể CÙNG node, không tự sinh AI) — đã dùng lại bài gốc cho phần thiếu:\n${thieu.join('\n')}`)
+      if (thieu.length) alert(`Kho chưa đủ 2 bản khác cho ${thieu.length} bài Hình (chuỗi: biến thể CÙNG node; bài kho: bài khác cùng mô hình, cùng số ý — không tự sinh AI) — đã dùng lại bài gốc cho phần thiếu:\n${thieu.join('\n')}`)
     } else delete chNext.hinhMaDe
     setCau((p) => { const n = { ...p }; for (const c of allCaus) n[c.ma_cau] = c; return n })
     await saveCh(chNext)
@@ -659,7 +661,7 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
   // ── HÌNH: chọn bài cho 1 HÀNG (popup ChonYTuCay → PickItem) · tuỳ chọn hình vẽ / số dòng · ↻ Đổi bản khác ──
   async function pickHinh(phanId: string, idx: number, p: PickItem) {
     const ma = HINH_PREFIX + crypto.randomUUID()
-    const info: HinhRowInfo = { kind: p.kind, nodeIds: p.nodeIds, cheDo: 'hien', ...(p.kind === 'ghep' ? { luaId: p.luaId } : p.kind === 'bienthe' ? { bienTheId: p.bienTheId } : { yId: p.yId }) }
+    const info: HinhRowInfo = { kind: p.kind, nodeIds: p.nodeIds, cheDo: 'hien', ...(p.kind === 'ghep' ? { luaId: p.luaId } : p.kind === 'bienthe' ? { bienTheId: p.bienTheId } : p.kind === 'bai' ? { baiId: p.baiId, moHinhId: p.moHinhId } : { yId: p.yId }) }
     const nc: CauHinh = { ...chRef.current, hinhByMa: { ...(chRef.current.hinhByMa ?? {}), [ma]: info } }
     chRef.current = nc; setCh(nc); await updateTaiLieu(id, { cau_hinh: nc })
     const rows = (rowsByPhan[phanId] ?? []).map((r, i): Row => (i === idx ? { maDang: null, maCau: ma, nhanh: 'hinh' } : r))
@@ -670,15 +672,15 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
     await saveCh({ ...chRef.current, hinhByMa: { ...(chRef.current.hinhByMa ?? {}), [ma]: { ...cur, ...patch } } })
   }
   const chuoiCuaHinh = (h: HinhRowInfo): BaiToan[] => h.nodeIds.map((nid) => hinhL?.baiToan.find((b) => b.id === nid)).filter((b): b is BaiToan => !!b)
-  const banCuaHinh = (h: HinhRowInfo): Ban => h.kind === 'ghep' ? { kind: 'ghep', luaId: h.luaId ?? null } : h.kind === 'bienthe' ? { kind: 'bienthe', bienTheId: h.bienTheId! } : { kind: 'y', yId: h.yId! }
-  const nhanBanHinh = (h: HinhRowInfo) => (h.kind === 'ghep' ? (h.luaId ? 'Lứa (đổi đỉnh)' : 'Đề chuẩn') : h.kind === 'bienthe' ? 'Biến thể' : 'Ý thật')
+  const banCuaHinh = (h: HinhRowInfo): Ban => h.kind === 'ghep' ? { kind: 'ghep', luaId: h.luaId ?? null } : h.kind === 'bienthe' ? { kind: 'bienthe', bienTheId: h.bienTheId! } : h.kind === 'bai' ? { kind: 'bai', baiId: h.baiId!, moHinhId: h.moHinhId ?? null } : { kind: 'y', yId: h.yId! }
+  const nhanBanHinh = (h: HinhRowInfo) => (h.kind === 'ghep' ? (h.luaId ? 'Lứa (đổi đỉnh)' : 'Đề chuẩn') : h.kind === 'bienthe' ? 'Biến thể' : h.kind === 'bai' ? 'Bài trong kho' : 'Ý thật')
   // ↻ Đổi = bản KHÁC cùng chuỗi/node, ít dùng nhất (đúng goiYMaDeChoBai của ET Hình) — hết bản khác thì báo.
   async function doiHinh(ma: string) {
     const h = chRef.current.hinhByMa?.[ma]; if (!h || !hinhL) return
-    const opts = await goiYMaDeChoBai(chuoiKetNoi(hinhL, h.nodeIds[0]), banCuaHinh(h), 1)
-    if (!opts.length) { alert('Kho chưa có bản khác cho bài này (cùng node).'); return }
+    const opts = h.kind === 'bai' ? await goiYMaDeBaiKho(h.moHinhId ?? null, h.baiId!, 1) : await goiYMaDeChoBai(chuoiKetNoi(hinhL, h.nodeIds[0]), banCuaHinh(h), 1)
+    if (!opts.length) { alert(h.kind === 'bai' ? 'Kho của mô hình chưa có bài khác cùng số ý.' : 'Kho chưa có bản khác cho bài này (cùng node).'); return }
     const b = opts[0].ban
-    await setHinhInfo(ma, { kind: b.kind, luaId: b.kind === 'ghep' ? b.luaId : undefined, bienTheId: b.kind === 'bienthe' ? b.bienTheId : undefined, yId: b.kind === 'y' ? b.yId : undefined })
+    await setHinhInfo(ma, { kind: b.kind, luaId: b.kind === 'ghep' ? b.luaId : undefined, bienTheId: b.kind === 'bienthe' ? b.bienTheId : undefined, yId: b.kind === 'y' ? b.yId : undefined, baiId: b.kind === 'bai' ? b.baiId : undefined, moHinhId: b.kind === 'bai' ? b.moHinhId : undefined })
   }
   const setVar = (baseMaCau: string, v: number, maCau: string, form: ETFormKind) => saveCh(setVarInCh(ch, baseMaCau, v, maCau, form))
   const usedMoiDe = (): Set<string> => usedMoiDeLib(baseAll(), ch)
@@ -885,7 +887,7 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                               <SoHang nhan={nhanSo[`${p.id}:${i}`] ?? ''} onKeo={keoTu(p.id, i)} onKeoXong={keoXong} onDoi={(so) => diChuyen({ phanId: p.id, idx: i }, viTriTheoSo({ phanId: p.id, idx: i }, so))} />
                               <button onClick={() => setHinhPicker({ phanId: p.id, idx: i })} className="rounded-md border border-slate-300 bg-white px-2.5 py-1 text-left text-[13px] hover:border-indigo-400" title="Chọn bài Hình khác">
                                 <span className="mr-1 rounded bg-amber-50 px-1 py-0.5 text-[10px] font-medium text-amber-700">Hình</span>
-                                <span className="font-mono text-[12px] text-slate-700">{h ? (chuoiCuaHinh(h).map((b) => b.ma).join(' → ') || `${h.nodeIds.length} node`) : '?'}</span>
+                                <span className="font-mono text-[12px] text-slate-700">{h ? (h.kind === 'bai' ? ((m as { ma?: string | null } | undefined)?.ma ?? 'bài kho') : chuoiCuaHinh(h).map((b) => b.ma).join(' → ') || `${h.nodeIds.length} node`) : '?'}</span>
                               </button>
                               {h && (
                                 <>
@@ -902,7 +904,7 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                                   cả bài: giữ tổng, nhắc đặt lại (ô ý để "—" tới khi chọn). */}
                               {(() => { const db = diemBaiHinh(ch.diemByCau, ma, soYHinh(ma))
                                 return db.cu ? <span className="shrink-0 rounded bg-amber-100 px-1.5 py-0.5 text-[10.5px] font-medium text-amber-800" title="Đề soạn trước 07/10 đặt điểm cho cả bài — chọn điểm từng câu bên dưới để thay">cũ: {fmtDiem(db.tong)}đ cả bài — đặt lại từng câu</span> : null })()}
-                              <button onClick={() => doiHinh(ma)} title="Đổi bản khác (cùng node, ít dùng nhất)" className="rounded-md bg-indigo-50 px-2 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-100">↻ Đổi</button>
+                              <button onClick={() => doiHinh(ma)} title={h?.kind === 'bai' ? 'Đổi sang bài kho khác cùng mô hình, cùng số ý (ít dùng nhất)' : 'Đổi bản khác (cùng node, ít dùng nhất)'} className="rounded-md bg-indigo-50 px-2 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-100">↻ Đổi</button>
                               <button onClick={() => setHinhPicker({ phanId: p.id, idx: i })} className="rounded-md border border-slate-300 px-2 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-400">✎ Chọn</button>
                               <button onClick={() => xoaRow(p.id, i)} title="Xoá hàng" className="shrink-0 px-1 text-[13px] text-slate-300 hover:text-rose-600">✕</button>
                             </div>
@@ -1103,6 +1105,7 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
       {hinhPicker && d && (hinhL
         ? <ChonYTuCay L={hinhL} khoi={d.khoi} phan="mt"
             chonSan={(() => { const ma = rowsByPhan[hinhPicker.phanId]?.[hinhPicker.idx]?.maCau; const h = ma ? ch.hinhByMa?.[ma] : undefined; return h?.kind === 'ghep' && !h.luaId ? h.nodeIds : undefined })()}
+            baiSan={(() => { const ma = rowsByPhan[hinhPicker.phanId]?.[hinhPicker.idx]?.maCau; const h = ma ? ch.hinhByMa?.[ma] : undefined; return h?.kind === 'bai' && h.baiId ? { baiId: h.baiId, moHinhId: h.moHinhId ?? null } : undefined })()}
             onClose={() => setHinhPicker(null)} onPick={(pk) => { const { phanId, idx } = hinhPicker; setHinhPicker(null); pickHinh(phanId, idx, pk) }} />
         : <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-900/40" onClick={() => setHinhPicker(null)}><div className="rounded-xl bg-white px-5 py-3 text-sm text-slate-600">Đang tải kho Hình khối {d.khoi}… (bấm lại sau giây lát)</div></div>)}
       {chiaDe && <ChiaDeMTModal {...chiaDe} onClose={() => setChiaDe(null)} />}

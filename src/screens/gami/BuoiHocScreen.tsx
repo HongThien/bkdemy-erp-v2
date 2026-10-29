@@ -10,7 +10,7 @@ import {
   getDanhGia, setDanhGiaDang, setNhanXet, setMuc, MUC_OPTS, MUC_CATALOG, nhanMuc, dongDanhGia, moLaiDanhGia, setNoiDungBuoi,
   loadLiveTestForBuoi, getDangTen, chuanBiLuoiMT, getBangEloExp,
   loadHinhForBuoiPhase, syncHinhProblems, danhSoLaiTheoDe, thuTuMTTheoDe, dongBoETOnline, type ETOnlineDongBo, dongBoBTVNOnline, type BTVNOnlineDongBo,
-  type BuoiAo, type BuoiTim, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type DiemDanh, type DanhGiaHS, type DanhGiaDiem, type TabKey, type ETResult, type LuoiSync, type EloExpRow,
+  type BuoiAo, type BuoiTim, type BuoiHoc, type BuoiHocHS, type Problem, type Grade, type DiemDanh, type DanhGiaHS, type DanhGiaDiem, type TabKey, type ETResult, type LuoiSync, type EloExpRow, laOHinh,
 } from '../../lib/gami'
 import { getLiveSnapshot, phatHanhDang, thuHoiDang, moCau, dongCau, moToanBo, type BaiTest, type BaiTestCau, type BaiLam, type LiveAnswer } from '../../lib/testonline'
 import type { MTPhanCaus } from '../../lib/mt'
@@ -904,7 +904,7 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
               {probs.map((p, idx) => {
                 const c = cauOf(p)
                 const moCoi = moCoiIds.has(p.id)
-                const hinh = !!p.hinh_baitoan_id
+                const hinh = laOHinh(p)
                 return (
                   <th key={p.id} className={`sticky top-0 z-10 w-[150px] border border-slate-200 px-2 py-1.5 text-center align-top ${moCoi ? 'bg-rose-50' : hinh ? 'bg-violet-50' : 'bg-slate-100'}`}>
                     {/* Số câu = VỊ TRÍ TRONG ĐỀ (probs đã xếp theo đề), KHÔNG phải problem_no —
@@ -1552,12 +1552,12 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
   // Ô ↔ câu theo MÃ CÂU (không theo vị trí — Hình xen giữa nên index không còn là danh tính).
   const cauByMa = new Map(caus.map((c) => [c.ma_cau, c]))
   const cauOf = (p: Problem) => (p.ma_cau ? cauByMa.get(p.ma_cau) ?? null : null)
-  const hinhCount = probs.filter((p) => p.hinh_baitoan_id).length
+  const hinhCount = probs.filter((p) => laOHinh(p)).length
   // Hàng nhóm PHẦN theo thứ tự ô (đã đánh số theo đề — danhSoLaiTheoDe): ô Đại thuộc phần chứa ma_cau, ô Hình = nhóm
   // "Hình"; các ô liền nhau cùng nhóm gộp 1 th (Hình xen giữa 2 phần Đại thì hiện 3 nhóm, đúng như trên phiếu).
-  const nhomCua = (p: Problem) => (p.hinh_baitoan_id ? '🏆 Hình (mô hình)' : (phans.find((ph) => ph.caus.some((c) => c.ma_cau === p.ma_cau))?.tieuDe ?? '—'))
+  const nhomCua = (p: Problem) => (laOHinh(p) ? '🏆 Hình (mô hình)' : (phans.find((ph) => ph.caus.some((c) => c.ma_cau === p.ma_cau))?.tieuDe ?? '—'))
   const nhomCot: { ten: string; hinh: boolean; n: number }[] = []
-  for (const p of probs) { const ten = nhomCua(p); const last = nhomCot[nhomCot.length - 1]; if (last && last.ten === ten) last.n++; else nhomCot.push({ ten, hinh: !!p.hinh_baitoan_id, n: 1 }) }
+  for (const p of probs) { const ten = nhomCua(p); const last = nhomCot[nhomCot.length - 1]; if (last && last.ten === ten) last.n++; else nhomCot.push({ ten, hinh: laOHinh(p), n: 1 }) }
 
   return (
     <div className="flex h-full flex-col">
@@ -1606,7 +1606,7 @@ function MTTab({ buoiId, roster, buoi, onChange }: { buoiId: string; roster: Buo
             <tr className="bg-slate-100">
               <th className="sticky left-0 top-0 z-30 whitespace-nowrap border border-slate-200 bg-slate-100 px-4 py-1.5 text-left text-[12px] font-semibold text-slate-700">Học sinh</th>
               {probs.map((p) => {
-                const hinh = !!p.hinh_baitoan_id
+                const hinh = laOHinh(p)
                 const c = hinh ? null : cauOf(p)
                 return (
                   <th key={p.id} className={`sticky top-0 z-10 w-[130px] border border-slate-200 px-2 py-1.5 text-center align-top ${hinh ? 'bg-amber-50' : 'bg-slate-100'}`}>
@@ -1869,7 +1869,7 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
             <tr className="bg-slate-100">
               <th className="sticky left-0 top-0 z-30 min-w-[430px] border border-slate-200 bg-slate-100 px-3 py-2 text-left text-[12px] font-semibold text-slate-700">Học sinh · Nộp · Thái độ</th>
               {probs.map((p) => {
-                const hinh = !!p.hinh_baitoan_id
+                const hinh = laOHinh(p)
                 return (
                   <th key={p.id} className={`sticky top-0 z-10 min-w-[120px] border border-slate-200 px-2 py-1.5 text-center align-top ${moCoiIds.has(p.id) ? 'bg-rose-50' : hinh ? 'bg-violet-50' : 'bg-slate-100'}`}>
                     <div className="text-[12px] font-bold text-slate-700">{moCoiIds.has(p.id) ? 'Ngoài phiếu' : hinh ? `Bài ${p.hinh_nhan}` : `Câu ${p.problem_no}`}</div>

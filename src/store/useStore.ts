@@ -41,6 +41,7 @@ export type PickItem = {
   | { kind: 'ghep'; luaId: string | null }   // đề chuẩn (luaId=null) hoặc lứa — mọi cỡ chuỗi kể cả 1 node
   | { kind: 'bienthe'; bienTheId: string }   // biến thể riêng lẻ (kieu='doi_so') — CHỈ chuỗi 1 node
   | { kind: 'y'; yId: string }               // ý thật (đã chấm) — CHỈ chuỗi 1 node
+  | { kind: 'bai'; baiId: string; moHinhId: string | null }   // NGUYÊN 1 bài kho Hình luyện (hinh_bai, mọi ý) — nodeIds RỖNG (ý kho chưa chắc gắn node). Chỉ MT (29/10)
 )
 // ⭐ 08-08 (tiếp, "chuyển nhà"): chế độ 'mh' (Theo mô hình, build-rồi-lưu-popup) RÚT khỏi Soạn tài liệu —
 // việc dựng nội dung 1 buổi giáo trình giờ làm TẠI CHỖ trong cây buổi của GiaoTrinhScreen (khuôn

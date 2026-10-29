@@ -11,7 +11,7 @@
 import { useEffect, useState } from 'react'
 import { listLop, type Lop } from '../../lib/nhansu'
 import { supabase } from '../../lib/supabase'
-import { chuanBiLuoiMT, listProblems, gradeMTChiTiet, deleteGrade, type Problem, type Grade, type ETResult } from '../../lib/gami'
+import { chuanBiLuoiMT, laOHinh, listProblems, gradeMTChiTiet, deleteGrade, type Problem, type Grade, type ETResult } from '../../lib/gami'
 import { dsBuoiChamMT, dsKyKhaoSat, dsHSChamMT, chamCaBaiMT, luuTongMT, dungDiemTuCauMT, type MTBuoiCham, type MTHSCham } from '../../lib/chamMT'
 import { listMT, mtMeta, mtLoaiDeLabel, ganMTVaoBuoi, taoKyKhaoSat } from '../../lib/mt'
 import type { TaiLieu } from '../../lib/tailieu'
@@ -183,9 +183,9 @@ function ChamMTBody() {
     for (const c of ph.caus) if (!phanCuaCau.has(c.ma_cau)) phanCuaCau.set(c.ma_cau, ph.tieuDe)
   }
   const soY = new Map<number, number>(); const gapY = new Map<number, number>()
-  for (const p of probs) if (p.hinh_baitoan_id) { const k = parseInt(p.hinh_nhan ?? '', 10); soY.set(k, (soY.get(k) ?? 0) + 1) }
+  for (const p of probs) if (laOHinh(p)) { const k = parseInt(p.hinh_nhan ?? '', 10); soY.set(k, (soY.get(k) ?? 0) + 1) }
   const dongs: Dong[] = [...probs].sort((a, b) => a.problem_no - b.problem_no).map((p) => {
-    if (p.hinh_baitoan_id) {
+    if (laOHinh(p)) {
       const k = parseInt(p.hinh_nhan ?? '', 10); const i = gapY.get(k) ?? 0; gapY.set(k, i + 1)
       return { p, nhom: hinhHang[k - 1] ?? 'Hình (thêm ở buổi học)', hinh: `H${Number.isNaN(k) ? '?' : k}${(soY.get(k) ?? 1) > 1 ? String.fromCharCode(97 + i) : ''}` }
     }

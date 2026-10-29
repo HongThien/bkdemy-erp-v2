@@ -155,7 +155,7 @@ export function ETEditor({ et, onClose, presetHinh, chiBanDoCu = false }: { et?:
       for (const p of hinhPicks) {
         const sig = chuoiSig(p.nodeIds)
         const chuoi = chuoiKetNoi(hinhL, p.nodeIds[0])
-        const gocBan: Ban = p.kind === 'ghep' ? { kind: 'ghep', luaId: p.luaId } : p.kind === 'bienthe' ? { kind: 'bienthe', bienTheId: p.bienTheId } : { kind: 'y', yId: p.yId }
+        const gocBan: Ban = p.kind === 'ghep' ? { kind: 'ghep', luaId: p.luaId } : p.kind === 'bienthe' ? { kind: 'bienthe', bienTheId: p.bienTheId } : p.kind === 'bai' ? { kind: 'bai', baiId: p.baiId, moHinhId: p.moHinhId } : { kind: 'y', yId: p.yId }
         const opts = await goiYMaDeChoBai(chuoi, gocBan, 2)
         // ⭐ 24/08 (Thùy: "chốt logic là nếu ko đủ bài trong cụm thì cùng lấy bài gốc cho đề 2 đề 3" —
         // đúng khuôn buildMaDe của Đại, made.ts: hết biến thể khác thì CHO TRÙNG TRONG CỤM, tệ nhất

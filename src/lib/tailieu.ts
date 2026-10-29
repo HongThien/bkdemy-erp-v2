@@ -198,7 +198,7 @@ export function diemBaiHinh(dbc: Record<string, number> | undefined, ma: string,
 // chuoiSig(nodeIds) (khuôn ET Hình). hinhBuoiId = DI SẢN (buổi Hình mẫu, bản 02/09 sáng) — chỉ còn để deleteMT dọn.
 // mtMeta (MT) = phân loại đề (loaiDe: xem MTLoaiDe/mt.ts) + tháng dự kiến dùng ('YYYY-MM', gắn tay, KHÔNG
 // suy từ ngày gán buổi) — kiểu lỏng ở đây để tránh vòng import với mt.ts, validate chặt ở mtMeta()/mt.ts.
-export type HinhBanRefLite = { kind: 'ghep'; luaId: string | null } | { kind: 'bienthe'; bienTheId: string } | { kind: 'y'; yId: string }
+export type HinhBanRefLite = { kind: 'ghep'; luaId: string | null } | { kind: 'bienthe'; bienTheId: string } | { kind: 'y'; yId: string } | { kind: 'bai'; baiId: string; moHinhId: string | null }
 export const DEFAULT_BTVN_LINES = 5
 // Form hiển thị trong ET (độc lập loai_cau kho).
 export type ETForm = 'trac_nghiem' | 'tra_loi_ngan' | 'tu_luan'
@@ -290,7 +290,8 @@ export type PhanResolved = TaiLieuPhan & {
 // giữ đúng VỊ TRÍ trong phần; nội dung bài (kind/nodeIds/cheDo/soDong) ở `cau_hinh.hinhByMa[ma]`.
 export const HINH_PREFIX = 'HINH:'
 export const laMaHinh = (ma: string): boolean => ma.startsWith(HINH_PREFIX)
-export type HinhRowInfo = { kind: 'ghep' | 'bienthe' | 'y'; luaId?: string | null; bienTheId?: string; yId?: string; nodeIds: string[]; cheDo?: 'hien' | 'o_trong' | 'khong'; soDong?: number | null }
+// kind 'bai' (29/10) = nguyên 1 bài trong kho Hình luyện (hinh_bai) — nodeIds rỗng, moHinhId = mô hình gốc đã chọn bài từ đó.
+export type HinhRowInfo = { kind: 'ghep' | 'bienthe' | 'y' | 'bai'; luaId?: string | null; bienTheId?: string; yId?: string; baiId?: string; moHinhId?: string | null; nodeIds: string[]; cheDo?: 'hien' | 'o_trong' | 'khong'; soDong?: number | null }
 // ltChuyenDe / tenChuyenDe: map theo ma_chuyen_de — lý thuyết chuyên đề derive từ chuyên đề của các dạng.
 export type TaiLieuFull = { taiLieu: TaiLieu; phans: PhanResolved[]; ltChuyenDe: Record<string, LtRow | null>; tenChuyenDe: Record<string, string> }
 

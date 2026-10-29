@@ -379,7 +379,7 @@ export const DONG_BTVN = 6   // số dòng kẻ mặc định mỗi ý ở phi�
 // trùng trong ChuoiRow, Thùy 08-20: "builder hiện 2 câu nhưng preview chỉ hiện 1" — builder phải LỘ RÕ
 // pick nào sẽ bị loại lúc in, không âm thầm khác số với preview).
 function pickSig(p: PickItem): string {
-  const banSig = p.kind === 'ghep' ? `ghep|${p.luaId ?? ''}` : p.kind === 'bienthe' ? `bienthe|${p.bienTheId}` : `y|${p.yId}`
+  const banSig = p.kind === 'ghep' ? `ghep|${p.luaId ?? ''}` : p.kind === 'bienthe' ? `bienthe|${p.bienTheId}` : p.kind === 'bai' ? `bai|${p.baiId}` : `y|${p.yId}`
   return `${p.phan}|${banSig}|${[...p.nodeIds].sort().join(',')}`
 }
 function dedupePicks(arr: PickItem[]): PickItem[] {
@@ -793,15 +793,18 @@ export async function banInTheoMoHinh(tieuDe: string, phan: 'lop' | 'nha' | 'et'
   const dong = (key: string) => (phan === 'nha' || phan === 'et' ? (soDong[key] ?? DONG_BTVN) : soDong[key] ?? 0)   // BTVN/ET mặc định DONG_BTVN (viết tay); trên lớp KHÔNG kẻ dòng (bài sát nhau)
   const ps = dedupePicks(picks.filter((p) => p.phan === phan))
   const ghepChuan = ps.filter((p): p is Extract<PickItem, { kind: 'ghep' }> => p.kind === 'ghep' && !p.luaId)
-  const [btMap, yMap, gtPhan] = await Promise.all([
+  const [btMap, yMap, gtPhan, baiKho] = await Promise.all([
     gt.getBienTheByIds(ps.filter((p): p is Extract<PickItem, { kind: 'bienthe' }> => p.kind === 'bienthe').map((p) => p.bienTheId)),
     gt.getYFull(ps.filter((p): p is Extract<PickItem, { kind: 'y' }> => p.kind === 'y').map((p) => p.yId)),
     giaThietPhanNhieu(ghepChuan.flatMap((p) => p.nodeIds)),   // giả thiết theo đường gốc → nhánh (ở DB)
+    Promise.all(ps.filter((p): p is Extract<PickItem, { kind: 'bai' }> => p.kind === 'bai').map((p) => api.baiFullHL(p.baiId)))
+      .then((xs) => new Map(xs.filter((x): x is api.BaiFullHL => !!x).map((x) => [x.bai.id, x]))),
   ])
   const mucs: MucIn[] = []
   for (const p of ps) {
     if (p.kind === 'bienthe') { const v = btMap.get(p.bienTheId); if (v) mucs.push(mucBienThe(L, v, cd(p.key), dong(p.key))) }
     else if (p.kind === 'y') { const yb = yMap.get(p.yId); if (yb) mucs.push(mucY(L, yb, cd(p.key), dong(p.key))) }
+    else if (p.kind === 'bai') { const b = baiKho.get(p.baiId); if (b) mucs.push(mucBaiKho(b, p.moHinhId, cd(p.key), dong(p.key))) }
     else if (p.luaId) { const vs = await api.bienTheCuaLua(p.luaId); mucs.push(mucGhepLua(L, p.nodeIds, vs, cd(p.key), dong(p.key))) }
     else mucs.push(mucGhep(L, p, cd(p.key), dong(p.key), gtPhan))
   }
@@ -971,14 +974,27 @@ export function mucY(L: Luoi, yb: { y: Y; bai: Bai }, cheDo: CheDoHinh, soDong?:
   return { kieu: 'de', ma: yb.bai.ma_bai, deBai: yb.bai.de_bai, anhDe: yb.bai.anh_de, ys: [{ nhan: yb.y.nhan_hien_thi ?? String.fromCharCode(96 + yb.y.thu_tu), noiDung: yb.y.noi_dung, loiGiai: da.loiGiai, anh: da.anh, bacThamChieu: da.bac === 'tham_chieu', ma: yb.y.ma_y }], cheDo, soDong: soDong ?? null, moHinhId: node?.mo_hinh_id ?? null }
 }
 
+/** NGUYÊN 1 bài kho Hình luyện (MT chế độ 2, CEO 29/10) — đề chung = gia_thiet_chung (bài 1 ý không có: đề nằm trong ý),
+ *  mỗi ý = 1 câu, giả thiết thêm của ý in trước câu hỏi. Hình = hình hiệu lực của ý CUỐI (đủ điểm nhất), thiếu thì hình bài. */
+export function mucBaiKho(b: api.BaiFullHL, moHinhId: string | null, cheDo: CheDoHinh, soDong?: number | null): MucIn {
+  const cuoi = b.ys[b.ys.length - 1]
+  return {
+    kieu: 'de', ma: b.bai.ma_bai, deBai: b.bai.gia_thiet_chung?.trim() ?? '', anhDe: cuoi?.anh_hieu_luc ?? b.bai.anh_de, cheDo, soDong: soDong ?? null,
+    moHinhId: moHinhId ?? b.bai.mo_hinh_id ?? null,
+    ys: b.ys.map((y) => ({ nhan: y.nhan_hien_thi ?? String.fromCharCode(96 + y.thu_tu), noiDung: y.noi_dung, giaThietPhu: y.gia_thiet_them?.trim() || null,
+      loiGiai: y.loi_giai, anh: y.anh_loi_giai, ma: y.ma_y })),
+  }
+}
+
 // ── ⭐ 08-08 (Thùy chốt: "1 chuỗi ghép lại cũng là 1 bài") — 1 BẢN của 1 chuỗi (mọi cỡ, kể cả 1 node):
 // đề chuẩn / lứa (chuỗi ≥2 node) / biến thể + ý thật riêng lẻ (chuỗi 1 node, không nhóm lứa được). ──
-export type Ban = { kind: 'ghep'; luaId: string | null } | { kind: 'bienthe'; bienTheId: string } | { kind: 'y'; yId: string }
+export type Ban = { kind: 'ghep'; luaId: string | null } | { kind: 'bienthe'; bienTheId: string } | { kind: 'y'; yId: string } | { kind: 'bai'; baiId: string; moHinhId: string | null }
 export function sameBan(p: PickItem, ban: Ban): boolean {
   if (p.kind !== ban.kind) return false
   if (p.kind === 'ghep' && ban.kind === 'ghep') return p.luaId === ban.luaId
   if (p.kind === 'bienthe' && ban.kind === 'bienthe') return p.bienTheId === ban.bienTheId
   if (p.kind === 'y' && ban.kind === 'y') return p.yId === ban.yId
+  if (p.kind === 'bai' && ban.kind === 'bai') return p.baiId === ban.baiId
   return false
 }
 function sameBanBan(a: Ban, b: Ban): boolean {
@@ -986,6 +1002,7 @@ function sameBanBan(a: Ban, b: Ban): boolean {
   if (a.kind === 'ghep' && b.kind === 'ghep') return a.luaId === b.luaId
   if (a.kind === 'bienthe' && b.kind === 'bienthe') return a.bienTheId === b.bienTheId
   if (a.kind === 'y' && b.kind === 'y') return a.yId === b.yId
+  if (a.kind === 'bai' && b.kind === 'bai') return a.baiId === b.baiId
   return false
 }
 export async function banOptionsOfChuoi(chuoi: BaiToan[]): Promise<{ ban: Ban; label: string }[]> {
@@ -1015,7 +1032,7 @@ async function rankBanOptions(opts: { ban: Ban; label: string }[], chuoi: BaiToa
   const usage = await gt.banUsageCount(luaIds, bienTheIds, yIds, chuanNodeIds)
   const usageOf = (o: { ban: Ban }) => o.ban.kind === 'ghep'
     ? (o.ban.luaId ? (usage.lua.get(o.ban.luaId) ?? 0) : Math.max(0, ...chuanNodeIds.map((id) => usage.chuan.get(id) ?? 0)))
-    : o.ban.kind === 'bienthe' ? (usage.bienthe.get(o.ban.bienTheId) ?? 0) : (usage.y.get(o.ban.yId) ?? 0)
+    : o.ban.kind === 'bienthe' ? (usage.bienthe.get(o.ban.bienTheId) ?? 0) : o.ban.kind === 'y' ? (usage.y.get(o.ban.yId) ?? 0) : 0
   return [...opts].sort((a, b) => usageOf(a) - usageOf(b))
 }
 export async function goiYChuoi(chuoi: BaiToan[], phan: 'lop' | 'nha' | 'et' | 'mt', n: number): Promise<PickItem[]> {
@@ -1033,6 +1050,17 @@ export async function goiYChuoi(chuoi: BaiToan[], phan: 'lop' | 'nha' | 'et' | '
 export async function goiYMaDeChoBai(chuoi: BaiToan[], gocBan: Ban, n: number): Promise<{ ban: Ban; label: string }[]> {
   const opts = (await banOptionsOfChuoi(chuoi)).filter((o) => !sameBanBan(o.ban, gocBan))
   return (await rankBanOptions(opts, chuoi)).slice(0, n)
+}
+/** Mã đề 2/3 / ↻ Đổi cho BÀI KHO (MT chế độ 2): bài kho KHÁC của cùng mô hình, đã duyệt đủ ý, CÙNG SỐ Ý (điểm + ô chấm
+ *  từng ý khớp 1-1 giữa các mã đề), ít dùng nhất trước. Thiếu thì trả ít hơn n — caller dùng lại bài gốc. */
+export async function goiYMaDeBaiKho(moHinhId: string | null, baiId: string, n: number): Promise<{ ban: Ban; label: string }[]> {
+  if (!moHinhId) return []
+  const [kho, goc] = await Promise.all([api.khoCuaMoHinh(moHinhId), api.baiFullHL(baiId)])
+  const soY = goc?.ys.length ?? 0
+  const ung = kho.filter((c) => c.id !== baiId && c.y.length === soY && c.y.every((y) => y.da_duyet))
+  const dung = await gt.baiKhoUsageCount(ung.map((c) => c.id))
+  return [...ung].sort((a, b) => (dung.get(a.id) ?? 0) - (dung.get(b.id) ?? 0)).slice(0, n)
+    .map((c) => ({ ban: { kind: 'bai', baiId: c.id, moHinhId }, label: c.ma_bai }))
 }
 
 // ── Một CHUỖI (= 1 DẠNG, cùng logic tiền đề) — hiện 1 lần, kể cả chuỗi 1 câu (câu lẻ = chuỗi 1 node,
@@ -1082,6 +1110,9 @@ function PreviewPane({ L, xem, onNav, onClose }: {
         } else if (p.kind === 'y') {
           const yb = (await gt.getYFull([p.yId])).get(p.yId)
           if (yb) m = mucY(L, yb, 'hien', null)
+        } else if (p.kind === 'bai') {
+          const b = await api.baiFullHL(p.baiId)
+          if (b) m = mucBaiKho(b, p.moHinhId, 'hien', null)
         } else if (p.luaId) {
           const vs = await api.bienTheCuaLua(p.luaId)
           m = mucGhepLua(L, p.nodeIds, vs, 'hien', null)
