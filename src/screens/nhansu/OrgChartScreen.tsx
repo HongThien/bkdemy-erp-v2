@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { listTeam, listNhanSu, listViTri, createViTri, updateViTri, deleteViTri, listNhanSuTeamMap, listNhanSuMonMap, type Team, type NhanSu, type ViTri } from '../../lib/nhansu'
+import { listTeam, listNhanSu, listViTri, createViTri, updateViTri, deleteViTri, listNhanSuMonMap, type Team, type NhanSu, type ViTri } from '../../lib/nhansu'
 import { MON_LIST } from '../../lib/mon'
 import { listRoles, setViTriRole, type VaiTroFull } from '../../lib/quyen'
 import { Shell, Field, inp } from '../kho/ui'
@@ -28,7 +28,6 @@ export default function OrgChartScreen() {
   const [teams, setTeams] = useState<Team[]>([])
   const [teamId, setTeamId] = useState<string | null>(null)
   const [dsNhanSu, setDsNhanSu] = useState<NhanSu[]>([])
-  const [bienChe, setBienChe] = useState<Record<string, string[]>>({}) // nhan_su_id → [team_id] biên chế
   const [monOf, setMonOf] = useState<Record<string, string[]>>({}) // nhan_su_id → [mon] (lọc ứng viên theo môn)
   const [roles, setRoles] = useState<VaiTroFull[]>([]) // vai trò (gán cho ghế → quyền lúc login)
   const [ghe, setGhe] = useState<ViTri[]>([])
@@ -38,8 +37,8 @@ export default function OrgChartScreen() {
   const [mon, setMon] = useState<string>(MON_LIST[0]) // môn đang xem (chỉ cho team chuyên môn)
 
   useEffect(() => {
-    Promise.all([listTeam(), listNhanSu(), listNhanSuTeamMap(), listNhanSuMonMap(), listRoles()])
-      .then(([t, ns, bc, mn, rl]) => { setTeams(t); setDsNhanSu(ns); setBienChe(bc); setMonOf(mn); setRoles(rl); setTeamId((cur) => cur ?? t[0]?.id ?? null) })
+    Promise.all([listTeam(), listNhanSu(), listNhanSuMonMap(), listRoles()])
+      .then(([t, ns, mn, rl]) => { setTeams(t); setDsNhanSu(ns); setMonOf(mn); setRoles(rl); setTeamId((cur) => cur ?? t[0]?.id ?? null) })
       .catch((e) => setErr(e.message ?? String(e)))
   }, [])
 
@@ -160,7 +159,7 @@ export default function OrgChartScreen() {
       </div>
 
       {sel && (
-        <EditGhe g={sel} isChuyenMon={isChuyenMon} roles={roles} nsById={nsById} dsNhanSu={dsNhanSu} bienChe={bienChe} monOf={monOf} ghe={gheView} cam={descendants(sel.id)}
+        <EditGhe g={sel} isChuyenMon={isChuyenMon} roles={roles} nsById={nsById} dsNhanSu={dsNhanSu} monOf={monOf} ghe={gheView} cam={descendants(sel.id)}
           onClose={() => setSel(null)}
           onSaved={() => { setSel(null); if (teamId) reloadGhe(teamId) }} />
       )}
@@ -168,8 +167,8 @@ export default function OrgChartScreen() {
   )
 }
 
-function EditGhe({ g, isChuyenMon, roles, nsById, dsNhanSu, bienChe, monOf, ghe, cam, onClose, onSaved }: {
-  g: ViTri; isChuyenMon: boolean; roles: VaiTroFull[]; nsById: Map<string, NhanSu>; dsNhanSu: NhanSu[]; bienChe: Record<string, string[]>; monOf: Record<string, string[]>; ghe: ViTri[]; cam: Set<string>
+function EditGhe({ g, isChuyenMon, roles, nsById, dsNhanSu, monOf, ghe, cam, onClose, onSaved }: {
+  g: ViTri; isChuyenMon: boolean; roles: VaiTroFull[]; nsById: Map<string, NhanSu>; dsNhanSu: NhanSu[]; monOf: Record<string, string[]>; ghe: ViTri[]; cam: Set<string>
   onClose: () => void; onSaved: () => void
 }) {
   const [ten, setTen] = useState(g.ten ?? '')
@@ -180,11 +179,11 @@ function EditGhe({ g, isChuyenMon, roles, nsById, dsNhanSu, bienChe, monOf, ghe,
   const [moRong, setMoRong] = useState(false) // mở rộng: bỏ lọc (hiện hết NS đang làm)
   const [busy, setBusy] = useState(false)
   const gheLabel = (x: ViTri) => `${x.ten || 'Vị trí chưa tên'}${x.nhan_su_id ? ` · ${nsById.get(x.nhan_su_id)?.ho_ten ?? ''}` : ' · trống'}`
-  // Ứng viên — ghế CHUYÊN MÔN lọc theo MÔN của người (nhan_su_mon chứa g.mon); ghế LIÊN-MÔN lọc theo team biên chế.
+  // Ứng viên — ghế CHUYÊN MÔN lọc theo MÔN của người (nhan_su_mon chứa g.mon); ghế LIÊN-MÔN: mọi nhân sự đang làm
+  // (Thùy 29/10: team suy TỪ ghế — ngồi ghế là vào team, nên không lọc theo team được nữa).
   // "mở rộng" bỏ lọc; người ĐANG ngồi luôn giữ trong list (kể cả lệch) để không mất lựa chọn hiện tại.
   const thuocMon = (n: NhanSu) => !!g.mon && (monOf[n.id] ?? []).includes(g.mon)
-  const thuocTeam = (n: NhanSu) => (bienChe[n.id] ?? []).includes(g.team_id)
-  const phuHop = (n: NhanSu) => isChuyenMon ? (g.mon ? thuocMon(n) : true) : thuocTeam(n)
+  const phuHop = (n: NhanSu) => isChuyenMon ? (g.mon ? thuocMon(n) : true) : true
   const ungVien = dsNhanSu.filter((n) => n.trang_thai === 'dang_lam' && (moRong || phuHop(n) || n.id === g.nhan_su_id))
 
   async function save() {

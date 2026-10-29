@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { listNhanSu, createNhanSu, updateNhanSu, deleteNhanSu, listTeam, listViTri, listNhanSuTeamMap, setTeamsOfNhanSu, listNhanSuMonMap, setMonOfNhanSu, listTaiKhoanMap, capTaiKhoan, goTaiKhoan, suggestMaNS, uploadAvatar, type NhanSu, type Team } from '../../lib/nhansu'
+import { listNhanSu, createNhanSu, updateNhanSu, deleteNhanSu, listTeam, listViTri, listNhanSuTeamMap, listNhanSuMonMap, setMonOfNhanSu, listTaiKhoanMap, capTaiKhoan, goTaiKhoan, suggestMaNS, uploadAvatar, type NhanSu, type Team } from '../../lib/nhansu'
 import { MON_LIST } from '../../lib/mon'
 import { Shell, Field, inp, Seg, Actions } from '../kho/ui'
 
@@ -167,8 +167,6 @@ function EditModal({ nhanSu, teams, teamIds, monIds, onClose, onSaved }: { nhanS
   useEffect(() => { if (isNew) suggestMaNS().then(setMaNs).catch(() => {}) }, [isNew]) // đề xuất sẵn, sửa được
   const [sdt, setSdt] = useState(nhanSu?.so_dien_thoai ?? '')
   const [email, setEmail] = useState(nhanSu?.email ?? '')
-  const [selTeams, setSelTeams] = useState<Set<string>>(new Set(teamIds))
-  const toggleTeam = (id: string) => setSelTeams((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n })
   const [selMons, setSelMons] = useState<Set<string>>(new Set(monIds))
   const toggleMon = (m: string) => setSelMons((s) => { const n = new Set(s); n.has(m) ? n.delete(m) : n.add(m); return n })
   const [trang_thai, setTrangThai] = useState<NhanSu['trang_thai']>(nhanSu?.trang_thai ?? 'dang_lam')
@@ -185,7 +183,6 @@ function EditModal({ nhanSu, teams, teamIds, monIds, onClose, onSaved }: { nhanS
       const patch = { ho_ten: ho_ten.trim(), so_dien_thoai: sdt.trim() || null, email: email.trim() || null, trang_thai, anh_url: anh_url || null, ...(ma_ns.trim() ? { ma_ns: ma_ns.trim() } : {}) }
       const id = isNew ? (await createNhanSu(patch)).id : nhanSu!.id
       if (!isNew) await updateNhanSu(id, patch)
-      await setTeamsOfNhanSu(id, [...selTeams])
       await setMonOfNhanSu(id, [...selMons])
       onSaved()
     } catch (e: any) { setError(e.message ?? String(e)); setBusy(false) }
@@ -218,14 +215,11 @@ function EditModal({ nhanSu, teams, teamIds, monIds, onClose, onSaved }: { nhanS
         <Field label="Email"><input value={email} onChange={(e) => setEmail(e.target.value)} className={inp} /></Field>
       </div>
       <div className="mb-3">
-        <span className="mb-1.5 block text-[12px] font-semibold uppercase tracking-wider text-slate-600">Team (biên chế — chọn được NHIỀU)</span>
+        {/* Thùy 29/10: team KHÔNG chọn tay — có ghế ở Sơ đồ tổ chức của team nào thì tự thuộc team đó (trigger DB, mig 202610291709). */}
+        <span className="mb-1.5 block text-[12px] font-semibold uppercase tracking-wider text-slate-600">Team <span className="font-normal normal-case tracking-normal text-slate-400">· tự theo ghế ở Sơ đồ tổ chức</span></span>
         <div className="flex flex-wrap gap-1.5">
-          {teams.map((t) => (
-            <button key={t.id} onClick={() => toggleTeam(t.id)}
-              className={`h-8 rounded-lg border px-2.5 text-[13px] font-semibold transition ${selTeams.has(t.id) ? 'border-indigo-600 bg-indigo-600 text-white' : 'border-slate-200 text-slate-600 hover:border-indigo-300'}`}>
-              {selTeams.has(t.id) ? '✓ ' : ''}{t.ten}
-            </button>
-          ))}
+          {teamIds.length === 0 ? <span className="text-[12.5px] text-slate-400">Chưa ngồi ghế nào — xếp ghế ở Sơ đồ tổ chức.</span>
+            : teams.filter((t) => teamIds.includes(t.id)).map((t) => <span key={t.id} className="rounded-lg bg-indigo-50 px-2.5 py-1 text-[13px] font-semibold text-indigo-700">{t.ten}</span>)}
         </div>
       </div>
       <div className="mb-3">
@@ -244,7 +238,7 @@ function EditModal({ nhanSu, teams, teamIds, monIds, onClose, onSaved }: { nhanS
       <p className="mb-2 text-[11px] text-slate-400">VỊ TRÍ gán bên <b>Sơ đồ tổ chức</b> (tạo vị trí → đặt người vào) — team ở đây là biên chế, dùng lọc sẵn danh sách bên đó.{!isNew && <> · Xoá nhân sự: <button onClick={async () => { if (confirm('Xoá nhân sự này? (vị trí đang đảm nhiệm sẽ thành vị trí trống)')) { await deleteNhanSu(nhanSu!.id); onSaved() } }} className="text-rose-600 hover:underline">tại đây</button></>}</p>
 
       {error && <p className="mb-2 text-xs text-rose-600">{error}</p>}
-      <Actions onClose={onClose} onSave={save} disabled={!ho_ten.trim() || selTeams.size === 0 || busy} saving={busy} label={isNew ? 'Tạo' : 'Lưu'} />
+      <Actions onClose={onClose} onSave={save} disabled={!ho_ten.trim() || busy} saving={busy} label={isNew ? 'Tạo' : 'Lưu'} />
     </Shell>
   )
 }
