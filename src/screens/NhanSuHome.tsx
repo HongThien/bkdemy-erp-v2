@@ -70,6 +70,7 @@ import PhongHocScreen from './phonghoc/PhongHocScreen'
 import PhanCongOpsScreen from './vanhanhops/PhanCongOpsScreen'
 import ScanDaChamScreen from './vanhanhops/ScanDaChamScreen'
 import DuyetOpsNgay from './vanhanhops/DuyetOpsNgay'
+import WidgetDangYeu from './qlcl/WidgetDangYeu'
 import TuyenSinhScreen from './tuyensinh/TuyenSinhScreen'
 import TestDauVaoScreen, { moTabTestDauVao } from './tuyensinh/TestDauVaoScreen'
 import BoTroHubScreen, { moBoTroTab } from './botro/BoTroHubScreen'
@@ -413,6 +414,8 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
         <>
       {/* Thùy 08/10: duyệt Report/Báo tan/Prep gom THEO NGÀY, 1 nút/ngày — tự ẩn nếu không phải trưởng/phó Vận hành hoặc admin. */}
       <DuyetOpsNgay />
+      {/* Thùy 29/10 (spec-truong-khoi.md §8.4): HS có dạng yếu · số dạng yếu theo ô môn × khối — tự ẩn nếu không quản ô nào. */}
+      <WidgetDangYeu onTaoCaNhe={() => { moBoTroTab('nhe'); setStaffLeaf('botro') }} />
       {/* Dải số liệu tổng quan — compact (mobile, Thùy 07-06: "4 cái thẻ đếm quá to") */}
       <div className={isMobile ? 'mb-4 grid grid-cols-4 gap-1.5' : 'mb-4 grid grid-cols-2 gap-2.5 sm:grid-cols-4'}>
         <Metric label="Cần làm" value={canLam} tone="slate" compact={isMobile} />

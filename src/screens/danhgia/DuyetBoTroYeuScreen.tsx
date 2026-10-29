@@ -28,7 +28,8 @@ const ISO_NGAY = (s: string) => ddmmVN(s.slice(0, 10)) // cột kiểu DATE (bu�
 const ngayVN = (iso: string) => ddmmVN(new Date(iso).toLocaleDateString('en-CA', { timeZone: 'Asia/Ho_Chi_Minh' }))
 const sao = (x: number | null | undefined) => (x == null ? '—' : `${Math.round(x * 100)}%`)
 
-function KhoiET({ et }: { et: BuoiET[] }) {
+// export: popup em ở widget dạng yếu (Trưởng khối, 29/10) dùng lại đúng khối hiển thị này
+export function KhoiET({ et }: { et: BuoiET[] }) {
   if (!et.length) return <p className="rounded-xl bg-slate-50 px-3 py-3 text-[12.5px] text-slate-500">Chưa có buổi ET nào có điểm.</p>
   return (
     <>
@@ -52,7 +53,7 @@ function KhoiET({ et }: { et: BuoiET[] }) {
     </>
   )
 }
-function KhoiBTVN({ bt }: { bt: BuoiBTVN[] }) {
+export function KhoiBTVN({ bt }: { bt: BuoiBTVN[] }) {
   if (!bt.length) return <p className="rounded-xl bg-slate-50 px-3 py-3 text-[12.5px] text-slate-500">Chưa có buổi BTVN nào được chấm.</p>
   return (
     <div className="grid grid-cols-2 gap-2.5 md:grid-cols-4">
