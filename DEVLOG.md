@@ -78255,3 +78255,8 @@ Thùy nêu 4 việc, làm được 3:
 - **Làm:** mig `202610291710_bo_view_bdm_cum_bai` (ĐÃ ÁP) — bỏ view; `fn_btyeu_ca_ta` không join cụm cho bdm, lịch sử cụm cũ gộp "Cả dạng". Spec §36.
 - **Kiểm:** ROLLBACK, băm kết quả trước/sau: ca HS 2 em, phiếu lưu 2 em giống 100%; màn TA 4/5 buổi giống, 1 khác chủ ý.
 - **Ranh giới nói thẳng với Thùy:** cụm Đại cũ còn nằm trong công cụ soạn bản đồ của Kho (đối ứng cụm cũ → dạng mới, tab Cụm bài, đề xuất) — không phải bổ trợ, chưa xoá, cần quyết riêng.
+## 29/10 — KHTN: bản đồ mới 4 tầng (bước 1: bảng + chuyển dữ liệu + xếp câu) — Thùy
+- Thùy: 'Chuyển bản đồ 4 tầng của KHTN sang bản đồ mới giống Toán. Các tầng tương ứng'. Chốt (hỏi 3 câu): chủ đề→chủ đề · chuyên đề→chuyên đề · DẠNG→NHÓM · CỤM→DẠNG BÀI; câu không cụm = chưa phân trong nhóm; đợt này chỉ dựng bản đồ + xếp câu (mọi luồng KHTN vẫn bản đồ cũ).
+- Mig 202610291707 ĐÃ ÁP: bảng RIÊNG khtn_bdm_{chu_de,chuyen_de,o,nhom,dang_bai,nhom_tien_de,gan_cau,log} y khuôn dai_bdm_* (không nhét vào dai_bdm_*: 67 hàm Toán chỉ lọc khối ⇒ KHTN K7–9 lọt sang Toán; §1.6). Mã gốc KCD/KCH/KNB/KDB; cột ma_cu = mã bản đồ cũ (truy vết). Trigger thu_tu / touch / bump nhóm / log / tiền đề như Toán.
+- scripts/kho/khtn-bdm-chuyen.mjs --ghi: 24 chủ đề · 71 chuyên đề · 295 nhóm (=dạng cũ, kèm 163 lý thuyết) · 657 dạng bài (=cụm, độ khó/bậc kế thừa dạng) · 5.759 gán nguon 'cum'. Câu còn sống 8.853 = 5.648 gán + 2.747 chưa phân + 458 chưa khớp (3 dạng chờ …000000). Mọi đếm khớp, tên 4 tầng giữ nguyên 657/657. Chưa chuyển: lý thuyết chuyên đề (1 dòng, bảng mới không có tầng LT chuyên đề), tiền đề cụm (0 dòng).
+- Tiếp: bước 2 = màn soạn bản đồ mới cho KHTN (BanDoMoi dispatch theo môn).
