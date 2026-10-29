@@ -478,6 +478,7 @@ export default function HomeScreen() {
   const [dich, setDich] = useState<string | null>(null)  // box đang bị rê lên
   const isMobile = useIsMobile()
   const hep = useIsMobile(1180)   // dưới ~1180px không đủ chỗ cho cột nhân vật
+  const coDangYeu = useCoDangYeu() // widget dạng yếu (Thùy 29/10) — có ô môn × khối trong phạm vi không (hook: phải trước mọi return sớm)
   const coSao = !!dh.me           // tài khoản chưa gắn hồ sơ nhân sự thì không có chỗ lưu → ẩn ☆ thay vì cho bấm rồi mất
   const mucs = dh.mucs
   // Yêu thích: tra theo id (khoá tự nhiên); mục đã mất quyền/đã bỏ thì chỉ không hiện, không tự xoá khỏi DB.
@@ -616,6 +617,10 @@ export default function HomeScreen() {
   }
   const oVitri = (i: number): ReactNode => (hienBox(lon[i]) ? keoBox(lon[i], thanLon(lon[i])) : null)
   const coTrai = hienBox(lon[0]), coCanh = hienBox(lon[1]), coRong = hienBox(lon[2]), coNuaTrai = hienBox(lon[3])
+  // Thùy 29/10: 2 bảng dạng yếu (Đầu tuần · Hiện tại) ở GÓC TRÁI DƯỚI = cột trái của "Tất cả", ngay dưới box nửa trái.
+  // Bố cục chảy (flow) ⇒ các khối nối nhau, không đè. Tự ẩn nếu không quản ô môn × khối nào.
+  const coTraiDuoi = coNuaTrai || coDangYeu
+  const dangYeu = coDangYeu ? <WidgetDangYeu className={coNuaTrai ? 'mt-4' : ''} onTaoCaNhe={() => { moBoTroTab('nhe'); dh.di('botro') }} /> : null
   const soAn = an.length
 
   return (
@@ -663,18 +668,16 @@ export default function HomeScreen() {
             </div>
           </div>
 
-          {/* Thùy 29/10 (spec-truong-khoi.md §8.4): dạng yếu theo ô môn × khối — tự ẩn nếu không quản ô nào */}
-          <WidgetDangYeu className="mb-2 rounded-2xl bg-white/95 px-4 py-3 shadow-sm" onTaoCaNhe={() => { moBoTroTab('nhe'); dh.di('botro') }} />
           {coRong && <div className="mb-5 pt-3">{oVitri(2)}</div>}
 
           {/* TẤT CẢ: nửa TRÁI = vị trí 4 (mặc định Bảng Order) · nửa PHẢI = các box nhóm (ít dùng — đã có Yêu thích) */}
-          {(coNuaTrai || dsNhom.length > 0) && (
+          {(coTraiDuoi || dsNhom.length > 0) && (
             <>
               <Nhan>Tất cả</Nhan>
               <div className={isMobile ? 'space-y-4' : 'flex items-start gap-4 pt-3'}>
-                {coNuaTrai && <div className={isMobile ? '' : `min-w-[320px] ${dsNhom.length ? 'w-1/2 shrink-0' : 'flex-1'}`}>{oVitri(3)}</div>}
+                {coTraiDuoi && <div className={isMobile ? '' : `min-w-[320px] ${dsNhom.length ? 'w-1/2 shrink-0' : 'flex-1'}`}>{coNuaTrai && oVitri(3)}{dangYeu}</div>}
                 {dsNhom.length > 0 && (
-                  <div className={isMobile ? 'grid grid-cols-2 gap-2.5' : `grid min-w-0 flex-1 ${coNuaTrai ? luoiHep : luoiRong} gap-3`}>
+                  <div className={isMobile ? 'grid grid-cols-2 gap-2.5' : `grid min-w-0 flex-1 ${coTraiDuoi ? luoiHep : luoiRong} gap-3`}>
                     {dsNhom.map((id) => {
                       if (id === 'nhom:viec') return keoBox(id, <NhomBox dang={isMobile ? 'vuong' : dangCard} anh={sk.anhNhom.viec} matNa={sk.iconMatNa} chu={MUC_VIEC.icon} ten={MUC_VIEC.ten} phu={VIEC_MO_TA} onClick={lenViec} />)
                       const x = dh.adminNav.find((n) => `nhom:${n.nhom ?? ''}` === id)
