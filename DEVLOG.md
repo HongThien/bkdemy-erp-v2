@@ -78222,3 +78222,9 @@ Thùy nêu 4 việc, làm được 3:
 - **Sửa số:** hôm trước báo "19 em nghỉ + 2 test" — đếm lại đúng là 18 em nghỉ (danh sách có 2 dòng test lẫn vào).
 - **Phát hiện, CHƯA sửa:** view `qlht_v_so_du_xu` tính số dư chỉ từ chot_* + cong/tru/doi_qua/hoan — THIẾU nong_trai, giai_thuong (và nay nghi_ve_0); `qlht_doi_qua_moi`/`qlht_dieu_chinh_xu` + `listSoDuXu` (tuqua.ts) + thanhtich.ts còn đọc view đó. `fn_tuqua_so_du` thì cộng đủ.
 - **Xoá tài khoản test:** CHƯA làm — 10 em TEST01–10 (Thùy tạo 03/10 để test app) + `TESTQLHT003` (trạng thái dang_hoc, 501 xu, 5 dòng buổi học) kéo theo ~30 bảng; đã liệt kê, chờ Thùy gật theo Luật xoá.
+
+## 29/10 (tối) — Bản đồ mới không có cụm (Thùy 29/10)
+- **Thùy:** hỏi sao bản đồ mới rồi vẫn còn cụm / bảng tiền đề là gì → "bản đồ mới 4 tầng, dạng là tầng cuối, không có cụm".
+- **Làm:** mig `202610291649_btyeu_ca_hs_bdm_khong_cum` (ĐÃ ÁP) — ca HS nhánh bdm bỏ tra cụm + tiền đề. Spec §34 (đo: `bdm_cum_bai` là view của cụm cũ, 0/876 dạng NDB có cụm).
+- **Kiểm:** ROLLBACK — 2 em HS0115/HS0314 vào ca + luyện ok; 29 em-buổi nhánh cũ: 0 khác; tự kiểm 20 em-buổi 0 lỗi, 0,6 s.
+- **Chưa làm (chờ Thùy):** dọn `ma_cum` rác trên 6.579 câu bdm; bỏ view `bdm_cum_bai`; `fn_kho_*` còn suy tên bảng tiền đề.

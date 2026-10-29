@@ -456,3 +456,11 @@ hàng đợi **nhớ filter + list + vị trí cuộn + khối đang mở** khi 
 - **Giao diện:** Lịch phòng (ERP) hiện dải ĐỎ "N em sẽ KHÔNG vào được ca trên app HS" kèm thông báo lỗi (chạy nền, ≤1 lần/5 phút). App HS: `caCuaToi` lỗi KHÔNG còn nuốt — lịch báo `vao_ca` cho ca yếu thì vẫn hiện nút, màn ca hiện lỗi thật.
 - **Kiểm (29/10):** 2 em: ca dựng được (5 + 3 dạng), "luyện" ra bài 3 câu; tự kiểm 7 ngày tới 20 em-buổi, 0 lỗi (~8 s; nặng nên chạy nền).
 - **Còn nợ:** `fn_kho_duyet_cau` / `fn_kho_hang_duyet[_ds]` cũng suy tên bảng tiền đề theo cùng kiểu (công cụ Kho, chưa kiểm với nhánh bdm).
+
+## 34. Cập nhật 29/10 — BẢN ĐỒ MỚI KHÔNG CÓ CỤM (sửa tiếp §33)
+
+- **Thùy 29/10:** "Bản đồ mới 4 tầng, dạng là tầng cuối, không có cụm." §33 chỉ làm hàm thôi nổ lỗi; gốc là hệ thống bổ trợ vẫn coi mọi nhánh có cụm + tiền đề.
+- **Đo (29/10):** `bdm_cum_bai` chỉ là VIEW của bảng cụm CŨ `dai_cum_bai` (355 cụm / 145 dạng, toàn mã `T…`); 0/876 dạng `NDB*` có cụm. 6.579 câu bdm còn mang `ma_cum` (mã `DCUM…` kế thừa từ bản đồ cũ): 6.279 trỏ vào cụm của dạng KHÁC, 300 trỏ vào cụm không còn. Vô hại vì mọi đường bổ trợ bdm truyền `ma_cum = null` (luyện "Cả dạng").
+- **Sửa (mig `202610291649_btyeu_ca_hs_bdm_khong_cum`):** `_btyeu_ca_cua_hs` — nhánh `bdm` (và nhánh nào không có bảng cụm) trả `cums = []`, KHÔNG tra bảng cụm/tiền đề nữa. Nhánh cũ có bảng cụm giữ nguyên (đối chiếu 29 em-buổi dạng ngoài NDB: 0 khác, 4 em-buổi có cụm vẫn có). Hàm tự kiểm `fn_btyeu_kiem_ca_hs` nhanh hơn ~13 lần (8,1 s → 0,6 s) vì bỏ các truy vấn cụm vô nghĩa.
+- **KHÔNG làm (Luật xoá):** không xoá/null `ma_cum` trên 6.579 câu bdm; không bỏ view `bdm_cum_bai` (Kho còn dùng — chưa kiểm hết). Chờ Thùy gật nếu muốn dọn.
+- **Còn lại dùng cụm cho bdm:** `fn_btyeu_ca_ta` (app TA) vẫn left join `bdm_cum_bai` theo `ma_cum` của bài đã luyện — luôn null với bdm nên chỉ hiện "Cả dạng"; chưa đổi vì không lỗi.

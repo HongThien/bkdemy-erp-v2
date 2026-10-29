@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-453 bảng · 34 view · 0 enum · 232 trigger · 1366 function
+453 bảng · 34 view · 0 enum · 232 trigger · 1368 function
 
 ## _app_secrets
 
@@ -7130,7 +7130,7 @@ SELECT hs.id AS hoc_sinh_id,
      LEFT JOIN ( SELECT qlht_xu_ledger.hoc_sinh_id,
             sum(qlht_xu_ledger.amount) AS dieu_chinh
            FROM qlht_xu_ledger
-          WHERE qlht_xu_ledger.loai = ANY (ARRAY['cong_tay'::text, 'tru_tay'::text, 'doi_qua'::text, 'hoan'::text])
+          WHERE qlht_xu_ledger.loai <> ALL (ARRAY['chot_thang'::text, 'chot_lai'::text])
           GROUP BY qlht_xu_ledger.hoc_sinh_id) l ON l.hoc_sinh_id = hs.id
   WHERE la_thanh_vien();
 ```
@@ -9596,6 +9596,8 @@ WITH luot AS (
 - `fn_hl_gan_bai_mo_hinh(p_bai uuid, p_mo_hinh uuid)` → void
 - `fn_hl_gan_y(p_y uuid, p_baitoan uuid)` → void
 - `fn_hl_gia_thiet_hieu_luc(p_baitoan uuid)` → text
+- `fn_hl_gia_thiet_phan(p_baitoan uuid)` → text[]
+- `fn_hl_gia_thiet_phan_nhieu(p_ids uuid[])` → TABLE(baitoan_id uuid, phan text[])
 - `fn_hl_goc_mo_hinh(p_mh uuid)` → uuid
 - `fn_hl_kho_chua_phan(p_khoi text, p_gioi_han integer DEFAULT 30, p_bo_qua integer DEFAULT 0, p_che_do text DEFAULT 'cho'::text)` → jsonb
 - `fn_hl_kho_cua_mo_hinh(p_mo_hinh uuid, p_gioi_han integer DEFAULT 200)` → jsonb
@@ -10139,9 +10141,9 @@ WITH luot AS (
 - `tsa_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
