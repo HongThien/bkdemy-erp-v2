@@ -67,9 +67,14 @@ export default function ChonYTuCay({ L, khoi, phan, chonSan, baiSan, onClose, on
     if (!gocId) return
     let huy = false
     setKho(null)
-    api.khoCuaMoHinh(gocId).then((r) => { if (!huy) setKho(r) }).catch((e) => { if (!huy) setLoi(e.message ?? String(e)) })
+    api.khoCuaMoHinh(gocId).then((r) => {
+      if (huy) return
+      setKho(r)
+      // Cây chưa có bài mà kho có ⇒ mở thẳng tab kho (Hình 7 29/10: 8 mô hình Luyện, cây trống hết, bài nằm ở kho).
+      if (r.length && soBaiCua(gocId) === 0) setChe('kho')
+    }).catch((e) => { if (!huy) setLoi(e.message ?? String(e)) })
     return () => { huy = true }
-  }, [gocId])
+  }, [gocId]) // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => { NHO_CHE = che }, [che])
 
   const chonGoc = (id: string) => { if (id !== gocId) { setTick(new Set()); setBaiChon(null) } setGocId(id) }
@@ -124,10 +129,14 @@ export default function ChonYTuCay({ L, khoi, phan, chonSan, baiSan, onClose, on
   // Ý đã tick theo đúng thứ tự in (số B) — dùng cho chuỗi ở chân popup + nhãn "Câu k".
   const chon = [...tick].sort((a, b) => soB(so.get(a)) - soB(so.get(b)))
   const thuTu = new Map(chon.map((id, i) => [id, i + 1]))
-  const khoDuyet = (kho ?? []).filter(daDuyetDu)
+  // CEO 29/10 ("MT chưa chọn được bài Hình 7"): hiện MỌI bài kho của mô hình như màn Hình luyện — bài chưa duyệt đủ ý
+  // vẫn chọn được, có nhãn cảnh báo, xếp sau bài đã duyệt. (Mã đề 2/3 tự động vẫn chỉ lấy bài đã duyệt — goiYMaDeBaiKho.)
+  const khoDu = (kho ?? []).filter((c) => c.y.length > 0)
+  const soDuyet = khoDu.filter(daDuyetDu).length
   const kwKho = timKho.trim().toLowerCase()
-  const khoHien = khoDuyet.filter((c) => !kwKho || `${c.ma_bai} ${c.nguon ?? ''} ${c.gia_thiet_chung ?? ''} ${c.y.map((y) => y.noi_dung).join(' ')}`.toLowerCase().includes(kwKho))
-  const baiDangChon = khoDuyet.find((c) => c.id === baiChon)
+  const khoHien = khoDu.filter((c) => !kwKho || `${c.ma_bai} ${c.nguon ?? ''} ${c.gia_thiet_chung ?? ''} ${c.y.map((y) => y.noi_dung).join(' ')}`.toLowerCase().includes(kwKho))
+    .sort((a, b) => Number(daDuyetDu(b)) - Number(daDuyetDu(a)))
+  const baiDangChon = khoDu.find((c) => c.id === baiChon)
   return (
     <div className="fixed inset-0 z-[60] bg-slate-900/50 backdrop-blur-sm" onClick={onClose}>
       <div className="absolute inset-x-[8%] inset-y-8 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
@@ -136,7 +145,7 @@ export default function ChonYTuCay({ L, khoi, phan, chonSan, baiSan, onClose, on
           <h3 className="min-w-0 truncate text-[15px] font-semibold text-slate-900">{g?.ma} · <MathText>{tron(g?.ten ?? '')}</MathText></h3>
           <div className="flex rounded-lg bg-slate-100 p-0.5 text-[12.5px] font-medium">
             <button onClick={() => setChe('chuoi')} className={`rounded-md px-3 py-1 ${che === 'chuoi' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>Tạo từ chuỗi</button>
-            <button onClick={() => setChe('kho')} className={`rounded-md px-3 py-1 ${che === 'kho' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>Bài trong kho{kho ? ` (${khoDuyet.length})` : ''}</button>
+            <button onClick={() => setChe('kho')} className={`rounded-md px-3 py-1 ${che === 'kho' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>Bài trong kho{kho ? ` (${khoDu.length})` : ''}</button>
           </div>
           <span className="text-[12px] text-slate-500">{che === 'kho' ? 'Chọn 1 bài — lấy nguyên bài, mỗi ý là 1 câu, chấm và cho điểm riêng.' : 'Tick các ý muốn đưa vào bài — mỗi ý là 1 câu, chấm và cho điểm riêng.'}</span>
           <button onClick={onClose} className="ml-auto flex h-8 w-8 items-center justify-center rounded-md text-slate-400 hover:bg-slate-100">✕</button>
@@ -145,12 +154,12 @@ export default function ChonYTuCay({ L, khoi, phan, chonSan, baiSan, onClose, on
         {che === 'kho' ? (
         <div className="min-h-0 flex-1 overflow-auto px-6 py-4">
           {!kho ? <p className="py-8 text-center text-[13px] text-slate-400">Đang tải kho…</p>
-            : !khoDuyet.length ? <p className="py-8 text-center text-[13px] text-slate-400">Kho của mô hình này chưa có bài nào đã duyệt đủ ý{kho.length ? ` (${kho.length} bài còn ý chưa duyệt)` : ''}.</p>
+            : !khoDu.length ? <p className="py-8 text-center text-[13px] text-slate-400">Kho của mô hình này chưa có bài nào. Gán bài ở Duyệt kho › Hình luyện · chưa phân mô hình.</p>
             : <>
               <div className="mb-3 flex items-center gap-3">
                 <input value={timKho} onChange={(e) => setTimKho(e.target.value)} placeholder="Tìm trong kho (mã, nguồn, đề)…"
                   className="h-8 w-72 rounded-md border border-slate-200 px-2.5 text-[13px] outline-none focus:border-indigo-400" />
-                <span className="text-[12px] text-slate-400">{khoHien.length}/{khoDuyet.length} bài đã duyệt{kho.length > khoDuyet.length ? ` · ${kho.length - khoDuyet.length} bài còn ý chưa duyệt không hiện` : ''}</span>
+                <span className="text-[12px] text-slate-400">{khoHien.length}/{khoDu.length} bài · {soDuyet} bài đã duyệt đủ ý</span>
               </div>
               <div className="space-y-3">
                 {khoHien.map((c) => { const on = baiChon === c.id; return (
@@ -163,6 +172,7 @@ export default function ChonYTuCay({ L, khoi, phan, chonSan, baiSan, onClose, on
                       <div className="flex flex-wrap items-center gap-x-3 text-[12px]">
                         <span className="font-mono font-semibold text-teal-700">{c.ma_bai}</span>
                         <span className="text-slate-500">{c.nguon ?? 'chưa rõ nguồn'}</span>
+                        {!daDuyetDu(c) && <span className="rounded-full border border-amber-300 bg-amber-50 px-2 py-0.5 font-semibold text-amber-700" title="Bài chưa duyệt xong — đề/lời giải chưa được kiểm, xem kỹ trước khi dùng">⚠ chưa duyệt {c.y.filter((y) => !y.da_duyet).length}/{c.y.length} ý</span>}
                         <span className="ml-auto font-medium text-slate-500">{c.y.length} ý = {c.y.length} câu</span>
                       </div>
                       {c.gia_thiet_chung && <div className="text-[13.5px] leading-relaxed text-slate-800"><MathText>{c.gia_thiet_chung}</MathText></div>}
@@ -178,7 +188,7 @@ export default function ChonYTuCay({ L, khoi, phan, chonSan, baiSan, onClose, on
         </div>
         ) : (
         <div className="min-h-0 flex-1 overflow-auto px-6 py-4">
-          {khois.length === 0 ? <p className="text-sm text-slate-400">Mô hình này chưa có bài nào.</p> : khois.map(({ n, bai }) => {
+          {khois.length === 0 ? <p className="text-sm text-slate-400">Cây của mô hình này chưa có bài nào.{khoDu.length ? <> Kho có <button onClick={() => setChe('kho')} className="font-semibold text-indigo-700 underline">{khoDu.length} bài — chọn ở tab Bài trong kho</button>.</> : ''}</p> : khois.map(({ n, bai }) => {
             const laGoc = n.id === gocId
             const ct = chaTen(n)
             return (
