@@ -2,7 +2,7 @@ import { Fragment, useEffect, useMemo, useState } from 'react'
 import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
 import {
   listLop, listNhanSu, listPhanCongAll, setPhanCongSlot,
-  listKhoiQuanLy, duocPhanCongKhoi, setKhoiQuanLy, listTeam, listNhanSuTeamMap,
+  listKhoiQuanLy, duocPhanCongKhoi, setKhoiQuanLy,
   type Lop, type NhanSu, type PhanCongLop, type KhoiQuanLy,
 } from '../../lib/nhansu'
 import SearchSelect from '../../components/SearchSelect'
@@ -20,7 +20,6 @@ export default function PhanCongScreen() {
   const [ds, setDs] = useState<NhanSu[]>([])
   const [tk, setTk] = useState<KhoiQuanLy[]>([])
   const [suaTk, setSuaTk] = useState(false)             // Lead / Quản lý chất lượng (DB: fn_qlcl_duoc_phan_cong)
-  const [qlcl, setQlcl] = useState<Set<string>>(new Set()) // thành viên team qlcl — chỉ họ được làm Trưởng khối
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
 
@@ -34,10 +33,6 @@ export default function PhanCongScreen() {
   useEffect(() => { reload() }, [khoi]) // eslint-disable-line
   useEffect(() => {
     duocPhanCongKhoi().then(setSuaTk).catch(() => setSuaTk(false))
-    Promise.all([listTeam(), listNhanSuTeamMap()]).then(([teams, map]) => {
-      const tid = teams.find((t) => t.ma === 'qlcl')?.id
-      setQlcl(new Set(Object.entries(map).filter(([, ts]) => tid && ts.includes(tid)).map(([id]) => id)))
-    }).catch(() => setQlcl(new Set()))
   }, [])
 
   // Trưởng / Phó khối (khối × MÔN) — PHÂN CÔNG ngay tại đây (Thùy 29/10, spec-truong-khoi.md §2): nguồn duy nhất
@@ -130,7 +125,7 @@ export default function PhanCongScreen() {
                             <span className="text-[12px] text-indigo-700">Trưởng</span>
                             <div className="w-48">
                               <SearchSelect value={tkCua(g.mon, 'truong')} onChange={(id) => luuTk(g.mon, 'truong', id)} invalid placeholder="⚠ chưa có trưởng khối"
-                                options={ds.filter((n) => qlcl.has(n.id)).map((n) => ({ id: n.id, label: n.ho_ten }))} />
+                                options={ds.map((n) => ({ id: n.id, label: n.ho_ten }))} /* 29/10: chọn ai cũng được — ghế Trưởng khối ở team TA · Học thuật · QLCL tự sinh theo */ />
                             </div>
                             <span className="text-[12px] text-sky-700">Phó</span>
                             <div className="w-48">

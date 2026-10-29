@@ -38,3 +38,15 @@ export async function etBtvnCuaEm(hocSinhId: string): Promise<EtBtvn> {
   if (error) throw error
   return (data ?? { et: [], btvn: [] }) as EtBtvn
 }
+
+// Màn Team Quản lý chất lượng (Thùy 29/10): team · chức vụ · phạm vi gộp 1 chỗ — đọc gộp ở DB (fn_qlcl_team).
+// Ghi phạm vi = setKhoiQuanLy (nhansu.ts); ghế Trưởng khối ở team TA · Học thuật · QLCL do DB tự sinh theo.
+export type GheTV = { ten: string | null; cap: string; team_ma: string; team_ten: string; vai_tro: string | null; tu_dong: boolean }
+export type ThanhVienQlcl = { nhan_su_id: string; ho_ten: string; ghe: GheTV[]; o: { mon: string; khoi: string; vai: 'truong' | 'pho' }[] }
+export type OQlcl = { mon: string; khoi: string; so_lop: number; so_hs: number; truong_id: string | null; truong_ten: string | null; pho_id: string | null; pho_ten: string | null }
+export type TeamQlcl = { duoc_sua: boolean; thanh_vien: ThanhVienQlcl[]; o: OQlcl[] }
+export async function teamQlcl(): Promise<TeamQlcl | null> {
+  const { data, error } = await supabase.rpc('fn_qlcl_team')
+  if (error) throw error
+  return (data ?? null) as TeamQlcl | null
+}

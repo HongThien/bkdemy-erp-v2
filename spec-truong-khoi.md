@@ -73,6 +73,11 @@ Lưới **môn (hàng) × khối (cột)**. Mỗi ô có 2 chỗ chọn: *Trư�
 
 **✅ Đã build 29/10 (mig `202610291556`):** lưới nằm ngay trong màn **Phân công** sẵn có (dòng tiêu đề "Khối X · Môn" của mỗi khối có 2 ô chọn Trưởng / Phó; ai không có quyền thì chỉ thấy tên). Dữ liệu ban đầu = **chuyển 1 lần đúng hiện trạng sơ đồ** (không phải luật mặc định): Toán 3·4·5 Dương · 4T·5T Ngân · 6·7 Hà Giang · 8 Cường · **8T Thùy** · 9 Hải · 10·11·12 Đạt; Phó: 3·4·5 Ngân · 7 Quỳnh Trang · 8 Thảo Nguyên. Từ đó chỉ đổi qua màn.
 
+**Cập nhật 29/10 tối (Thùy):**
+- **Trưởng khối là trưởng khối ở MỌI team: Trợ giảng · Học thuật · Quản lý chất lượng** (team Giáo viên KHÔNG có trưởng khối). Ghế "Trưởng khối <các khối>" ở 3 team này là **ghế tự sinh** (`vi_tri.tk_tu_dong`) do trigger giữ khớp với ô Trưởng của bảng phân công: chọn ai ở ô ⇒ người đó có ghế ở cả 3 team (kèm vai trò từng team); hết ô ⇒ ghế để trống, không xoá. Người toàn hệ (Thùy, Trang) không sinh ghế trưởng khối. ⇒ ô Trưởng chọn được **mọi nhân sự** (bỏ điều kiện "phải thuộc team qlcl trước").
+- **Team suy từ ghế** (mig `202610291709`): có ghế ở team nào ⇒ tự có tag team đó; màn Nhân sự bỏ ô tick team. Tag tay không có ghế (22 dòng đo 29/10) chờ Thùy gật xoá.
+- **Màn Team Quản lý chất lượng** (lá `qlcl_team`, nhóm Quản lý chất lượng): lưới ô môn × khối (Trưởng/Phó) + thẻ từng thành viên (phạm vi · chức vụ ở mọi team). Bản chất vẫn 3 lớp; màn chỉ gom. mig `202610291712`.
+
 ### 2.3 Ba trục, mỗi trục MỘT nguồn
 
 | Trục | Câu hỏi | Nguồn duy nhất | Ghi chú |

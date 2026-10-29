@@ -35,7 +35,7 @@ const LEAF_ICON: Record<string, string> = {
   viec: '✅', myplan: '🗂',
   // Vận hành
   buoihoc: '🗓', ops_report: '📣', prep: '🧹', phancong_ops: '🧑‍🤝‍🧑', hs: '🎒', lop: '🏫', tuyensinh: '🎚', test_dau_vao: '📝',
-  botro: '🩹', phong_hoc: '🚪', tu_qua: '🎁', su_kien: '🎉', hs_moi: '📋',
+  botro: '🩹', qlcl_team: '🧭', phong_hoc: '🚪', tu_qua: '🎁', su_kien: '🎉', hs_moi: '📋',
   // Gamification
   diemso: '📈', thanhtich: '🥇', quanlylevel: '🪜', chotxu: '🪙', tinh_nang: '🎛', traogiai: '🏆',
   // Học thuật

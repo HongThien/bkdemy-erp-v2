@@ -71,6 +71,7 @@ import PhanCongOpsScreen from './vanhanhops/PhanCongOpsScreen'
 import ScanDaChamScreen from './vanhanhops/ScanDaChamScreen'
 import DuyetOpsNgay from './vanhanhops/DuyetOpsNgay'
 import WidgetDangYeu from './qlcl/WidgetDangYeu'
+import QlclTeamScreen from './qlcl/QlclTeamScreen'
 import TuyenSinhScreen from './tuyensinh/TuyenSinhScreen'
 import TestDauVaoScreen, { moTabTestDauVao } from './tuyensinh/TestDauVaoScreen'
 import BoTroHubScreen, { moBoTroTab } from './botro/BoTroHubScreen'
@@ -762,6 +763,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'botroyeu:danhgia' ? <BoTroHubScreen mo={{ tab: 'yeu', yeu: 'danhgia' }} />
       : staffLeaf === 'ns' ? <NhanSuScreen />
       : staffLeaf === 'phancong' ? <PhanCongScreen />
+      : staffLeaf === 'qlcl_team' ? <QlclTeamScreen />
       : staffLeaf === 'tkb' ? <TKBScreen />
       : staffLeaf === 'orgchart' ? <OrgChartScreen />
       : staffLeaf === 'lop' ? <LopScreen />
