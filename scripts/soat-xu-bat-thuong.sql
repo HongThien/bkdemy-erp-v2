@@ -1,4 +1,5 @@
 -- Soát bất thường sổ xu (28/10). Chạy bằng role đọc: node <script truy vấn> scripts/soat-xu-bat-thuong.sql
+-- ⚠ Số dư tính THẲNG từ sổ: view qlht_v_so_du_xu trả 0 dòng cho role claude_* (đọc qua view = mù, đã dính 28/10).
 -- Trả 1 jsonb: lệch đích/sổ T9–T10 · cộng tay lớn/không lý do/trùng vài giây · giải thưởng trùng · nông trại/tháng · đổi quà không khớp sổ/giá/trùng · HS không học còn xu · chốt lại âm.
 set statement_timeout = '120s';
 with dich as (
@@ -27,7 +28,8 @@ select json_build_object(
     from qlht_doi_qua d) x where coalesce(tru,0) <> -xu_tru or coalesce(hoan,0) <> case when trang_thai='huy' then xu_tru else 0 end),
  'doi_qua_gia_lech', (select json_agg(x) from (select q.ten, q.gia_xu, d.so_luong, d.xu_tru, count(*) n from qlht_doi_qua d join qlht_qua q on q.id=d.qua_id where d.xu_tru <> q.gia_xu*d.so_luong group by 1,2,3,4) x),
  'doi_qua_trung', (select json_agg(x) from (select h.ho_ten, q.ten, count(*) n, min(d.created_at) dau, max(d.created_at) cuoi from qlht_doi_qua d join hoc_sinh h on h.id=d.hoc_sinh_id join qlht_qua q on q.id=d.qua_id where d.trang_thai<>'huy' group by 1,2,d.hoc_sinh_id,d.qua_id having count(*)>1 and max(d.created_at)-min(d.created_at) < interval '2 minutes') x),
- 'hs_khong_hoc_co_xu', (select json_agg(x) from (select h.ho_ten, h.trang_thai, v.so_du, (select max(created_at)::date from qlht_xu_ledger l where l.hoc_sinh_id=h.id and l.amount>0) lan_cuoi_cong from qlht_v_so_du_xu v join hoc_sinh h on h.id=v.hoc_sinh_id where h.trang_thai <> 'dang_hoc' and v.so_du <> 0 order by v.so_du desc) x),
+ 'hs_khong_hoc_co_xu', (select json_agg(x) from (select h.ho_ten, h.trang_thai, z.so_du, z.lan_cuoi_cong from (select hoc_sinh_id, sum(amount) so_du, max(created_at) filter (where amount>0)::date lan_cuoi_cong from qlht_xu_ledger group by 1) z join hoc_sinh h on h.id=z.hoc_sinh_id where h.trang_thai <> 'dang_hoc' and z.so_du <> 0 order by z.so_du desc) x),
+ 'vi_am', (select json_agg(x) from (select h.ho_ten, h.ma_hs, z.so_du from (select hoc_sinh_id, sum(amount) so_du from qlht_xu_ledger group by 1) z join hoc_sinh h on h.id=z.hoc_sinh_id where z.so_du < 0) x),
  'chot_lai_am_lon', (select json_agg(x) from (select h.ho_ten, l.mon, l.thang, l.amount, l.exp_snapshot, l.created_at from qlht_xu_ledger l join hoc_sinh h on h.id=l.hoc_sinh_id where loai='chot_lai' and amount <= -5 order by amount limit 15) x),
  'chot_lai_am_theo_ngay', (select json_agg(x) from (select (created_at at time zone 'Asia/Ho_Chi_Minh')::date ngay, count(*) n, sum(amount) xu, count(distinct hoc_sinh_id) hs from qlht_xu_ledger where loai='chot_lai' and amount<0 group by 1 order by 1) x)
 )::text

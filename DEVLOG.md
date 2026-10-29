@@ -78169,3 +78169,9 @@ Thùy nêu 4 việc, làm được 3:
   - **UI** — hoặc tái cấu trúc `KhoHinhHocScreen` để mỗi card bài có 4 nút LT/VD/Kho câu/Kho trên lớp, HOẶC gắn trực tiếp vào popup `ChiTiet` của BanDoMoi khi click bài học (nhánh='hinh', khuôn='hinh_hoc').
 - **Mai làm tiếp.** Thùy về trước; task #1 chưa đụng code, chỉ research + hỏi + ghi plan.
 
+
+### 29/10 — [Xu] Xoá 4 dòng cộng tay trùng (< 10 giây) — mig 202610291254 ĐÃ ÁP — Thùy: "các trường hợp cộng dưới 10s là cộng trùng - m tự xóa nhé"
+- **Tiêu chí:** 2 dòng `cong_tay` liền nhau cùng HS, cùng số xu, cùng người ghi, cùng lý do, cách < 10 s ⇒ xoá dòng SAU. Đúng 4 cặp (3,4 / 4,0 / 5,5 / 6,1 s), tổng −140 xu; id + số xu + giờ của dòng bị xoá ghi trong migration (có chặn: khớp ≠ 4 dòng thì không xoá). 4 cặp còn lại cách 11 s → 2 phút: GIỮ (ngoài luật của Thùy).
+- **Hệ quả:** 1 HS về số dư **−59** (đã đổi quà bằng số xu trùng). Ví được âm theo luật 06/10.
+- **Ghi chú migration sửa SAU khi áp** (bỏ tên người ghi khỏi phần chú thích, SQL giữ nguyên) ⇒ cập nhật vân tay `_migrations.bam` của đúng file đó để `--status` không báo lệch.
+- **Sai sót soát 28/10:** view `qlht_v_so_du_xu` trả **0 dòng** cho role `claude_build` ⇒ 2 kiểm "ví âm" và "HS nghỉ còn xu" hôm qua là MÙ. Kiểm thẳng từ sổ: hôm qua đúng 0 ví âm, nhưng **19 HS nghỉ + 2 HS test còn xu** (nhiều nhất 84), không phải 0 như đã báo. `scripts/soat-xu-bat-thuong.sql` đã sửa: số dư tính thẳng từ sổ, thêm mục `vi_am`.
