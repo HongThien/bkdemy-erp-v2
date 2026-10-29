@@ -25,6 +25,8 @@ import ViecHangNgay, { NOTICE_TAB, noticeTabCua } from './home/ViecHangNgay'
 import HomThu from '../components/HomThu'
 import AvatarEditButton from '../components/AvatarEditButton'
 import BangOrder from './home/BangOrder'
+import WidgetDangYeu, { useCoDangYeu } from './qlcl/WidgetDangYeu'
+import { moBoTroTab } from './botro/BoTroHubScreen'
 import { LEAF_VIEC, MUC_VIEC, NHOM_MO_TA, VIEC_MO_TA, YEU_THICH_TOI_DA, leafNhom, nhomCuaLeafHome, nhomIcon, type MucMenu } from '../lib/menu'
 
 const NOI = 'transition hover:-translate-y-1 hover:brightness-110 hover:[outline:2px_solid_var(--sk-acc)]'   // thẻ bấm được: nhấc lên + viền màu nhấn
@@ -582,7 +584,9 @@ export default function HomeScreen() {
       return { khoa: KHOA_NHOM[id] ?? 'group-viec-cua-toi', ten: x?.nhom ?? '', icon: nhomIcon(x?.nhom ?? null), so: mucs.filter((m) => m.nhom === x?.nhom).length, onMo: () => dh.di(leafNhom(x?.nhom ?? '')) }
     })
     return (
-      <section style={khung} className="h-full min-h-0 overflow-hidden text-[var(--sk-ink)]">
+      <section style={khung} className="relative h-full min-h-0 overflow-hidden text-[var(--sk-ink)]">
+        {/* Thùy 29/10: widget dạng yếu phải thấy ngay ở Trang chính — cảnh là tranh cố định nên để nút nổi, bấm mở widget */}
+        <DangYeuNoi taoCaNhe={() => { moBoTroTab('nhe'); dh.di('botro') }} />
         <HomeScene canh={canh}
           today={hienBox('viec_ngay') ? <ViecHangNgay compact onMoVietCuaToi={lenViec} onMoKeHoach={() => dh.di('myplan')} tabs={noticeTabs} /> : null}
           dev={hienBox('tien_do') ? <TienDoViec /> : null}
@@ -659,6 +663,8 @@ export default function HomeScreen() {
             </div>
           </div>
 
+          {/* Thùy 29/10 (spec-truong-khoi.md §8.4): dạng yếu theo ô môn × khối — tự ẩn nếu không quản ô nào */}
+          <WidgetDangYeu className="mb-2 rounded-2xl bg-white/95 px-4 py-3 shadow-sm" onTaoCaNhe={() => { moBoTroTab('nhe'); dh.di('botro') }} />
           {coRong && <div className="mb-5 pt-3">{oVitri(2)}</div>}
 
           {/* TẤT CẢ: nửa TRÁI = vị trí 4 (mặc định Bảng Order) · nửa PHẢI = các box nhóm (ít dùng — đã có Yêu thích) */}
@@ -686,5 +692,18 @@ export default function HomeScreen() {
         </div>
       </div>
     </section>
+  )
+}
+
+// Nút nổi trên bố cục "cảnh" (tranh cố định, không có chỗ gắn box): bấm mở widget dạng yếu trong khung nổi.
+// Widget tự ẩn khi không quản ô nào ⇒ nút chỉ hiện khi fn_qlcl_tong_quan có ô (đọc qua chính widget lúc mở).
+function DangYeuNoi({ taoCaNhe }: { taoCaNhe: () => void }) {
+  const [mo, setMo] = useState(false)
+  if (!useCoDangYeu()) return null
+  return (
+    <div className="absolute right-4 top-4 z-[200] flex flex-col items-end">
+      <button onClick={() => setMo((v) => !v)} className="rounded-full bg-rose-500 px-4 py-2 text-[13px] font-bold text-white shadow-lg hover:bg-rose-600">📉 Dạng yếu {mo ? '▴' : '▾'}</button>
+      {mo && <div className="mt-2 max-h-[75vh] w-[min(760px,90vw)] overflow-auto rounded-2xl bg-white p-4 text-slate-800 shadow-2xl"><WidgetDangYeu onTaoCaNhe={taoCaNhe} /></div>}
+    </div>
   )
 }

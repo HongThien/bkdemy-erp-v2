@@ -26,7 +26,18 @@ async function chayLamMoi() {
   } catch { /* lỗi mạng: lần mở sau chạy tiếp */ } finally { NHO.dangChay = false }
 }
 
-export default function WidgetDangYeu({ onTaoCaNhe }: { onTaoCaNhe: () => void }) {
+// Có ô nào trong phạm vi không (Trang chính dùng để quyết hiện nút nổi) — dùng chung bộ nhớ + lần tải với widget.
+export function useCoDangYeu(): boolean {
+  const [rows, setRows] = useState<OTongQuan[] | null>(NHO.rows)
+  useEffect(() => {
+    NHO.nghe.add(setRows)
+    if (!NHO.rows) tongQuanDangYeu().then(phat).catch(() => {})
+    return () => { NHO.nghe.delete(setRows) }
+  }, [])
+  return !!rows && rows.length > 0
+}
+
+export default function WidgetDangYeu({ onTaoCaNhe, className }: { onTaoCaNhe: () => void; className?: string }) {
   const [rows, setRows] = useState<OTongQuan[] | null>(NHO.rows)
   const [mo, setMo] = useState<OTongQuan | null>(null)
   useEffect(() => {
@@ -38,7 +49,7 @@ export default function WidgetDangYeu({ onTaoCaNhe }: { onTaoCaNhe: () => void }
 
   const dangCapNhat = rows.reduce((s, o) => s + o.so_can_tinh, 0) // đếm item đang render (badge)
   return (
-    <section className="mb-4">
+    <section className={className ?? 'mb-4'}>
       <div className="mb-2 flex items-center gap-2">
         <h3 className="text-[14px] font-bold text-slate-800">Dạng yếu · khối tôi quản</h3>
         <span className="text-[12px] text-slate-400">{dangCapNhat > 0 ? `⟳ đang cập nhật ${dangCapNhat} em…` : 'bấm 1 ô để xem từng em'}</span>
