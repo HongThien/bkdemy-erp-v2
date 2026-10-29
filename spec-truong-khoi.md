@@ -81,6 +81,7 @@ Phân công ban đầu Thùy tự điền trên màn (không seed). Theo hiện 
 | ② **Phạm vi** | Dữ liệu (môn, khối) nào? | `phan_cong_quan_ly_khoi` | **Một hàm** `fn_pham_vi_cua_toi()` → `(mon, khoi, vai)`. Mọi module (gậy · trợ lý · duyệt bổ trợ · duyệt việc VH · chấm MT · bot tag) chỉ hỏi hàm này hoặc `_trong_pham_vi(mon, khoi)`. |
 | ③ **Cấp dưới** | Quản ai? | **Suy**, không dựng cây tay | TA thuộc khối nào = lớp TA được phân công (`phan_cong_lop`) ⇒ trưởng khối của ô đó. TA dạy nhiều khối có nhiều trưởng khối, mỗi việc thuộc khối của **buổi** (như `fn_gay_de_xuat_lop` đã làm). Trưởng khối là cấp dưới của Trang. |
 
+- **Ba thứ tách bạch, đừng gộp:** **team** = em thuộc tổ nào (sơ đồ: thêm team `qlcl` ngang `ta` · `ops` · `hoc_thuat`) · **vai trò** = mở được màn nào (2 vai mới: *Quản lý chất lượng* cho ghế trưởng khối; *Trưởng QLCL* = như trên + màn Phân công + Hậu kiểm, cho ghế của Trang) · **phân công** = quản ô (môn × khối) nào. Một người ngồi nhiều ghế ở nhiều team thì quyền = hợp các ghế (như hiện nay).
 - **Toàn hệ:** ghế *Trưởng QLCL* (Trang) và admin (Thùy) thấy mọi ô. Luật nằm trong hàm, đọc theo ghế, không theo uuid.
 - **Đối xứng môn:** Anh/KHTN/Văn chỉ cần điền ô, mọi thứ chạy y như Toán.
 - **Cây ghế team TA bớt việc:** không còn phải giữ đúng `cha_id` từng TA → trưởng khối bằng tay (nguồn lệch thứ ba). Cây ghế chỉ còn để vẽ sơ đồ tổ chức.
@@ -183,9 +184,8 @@ Anh/KHTN: không cần pha riêng. Thêm ghế trưởng khối môn đó là m�
 
 ## 7. Còn treo
 
-- **Hỏi đáp AI** trong tab Trợ lý (đang chỉ 3 tài khoản): mở cho trưởng khối, hay trưởng khối chỉ xem báo cáo? Không chặn P1; cần trả lời trước P4.
-
 Đã giải (29/10):
+- *Hỏi đáp AI trong tab Trợ lý*: **mở cho trưởng khối** (thay danh sách 3 uuid bằng luật theo ghế; câu trả lời chỉ trong phạm vi khối của người hỏi).
 - *Ghế trùng tên "Trưởng khối" ở team GV / Học thuật*: không cần đụng. Quyền không còn đọc từ tên hay cây ghế.
 - *8T*: Thùy quản. Cơ chế = màn phân công (chốt #12).
 - *Anh/KHTN chưa có trưởng khối*: ô chưa phân công ⇒ hiện đỏ, việc rơi lên Trang (§2.1).
