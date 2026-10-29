@@ -1460,7 +1460,7 @@ export async function getDiemHS(hocSinhId: string): Promise<DiemHS> {
   }
 }
 // EXP + xu của 1 HS trong 1 THÁNG (p_ym 'YYYY-MM') — dòng chi tiết per hoạt động + tổng per môn.
-// §2.0: tổng per môn lấy từ fn_gami_exp_xu_thang (RPC có sẵn của ChotXuScreen), KHÔNG cộng tay
+// §2.0: tổng per môn lấy từ fn_gami_exp_xu_thang (RPC có sẵn, đích quy đổi của _xu_dong_bo), KHÔNG cộng tay
 // từ dòng chi tiết ở client. Cùng luật "thuộc tháng nào" với hàm đó nên số luôn khớp Chốt xu.
 export async function getExpThang(hocSinhId: string, ym: string): Promise<{ rows: ExpRow[]; tongMon: Map<string, number> }> {
   const [detR, tongR] = await Promise.all([

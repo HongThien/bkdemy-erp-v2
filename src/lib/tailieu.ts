@@ -262,7 +262,7 @@ export function sortETCaus<T extends ETCauLike>(caus: T[], ch: CauHinh): T[] {
 // stt_lop = SỐ BUỔI CỦA LỚP (1,2,3…) cho doc vận hành bám (lop_id, ngay) — xem §"Bộ giáo trình riêng
 // của lớp" phía dưới. NULL với master/ET/đề thi (không thuộc lớp nào).
 // nhanh: chỉ có ý nghĩa trong mon='Toán' — null = Đại (mặc định, mã cũ) | 'hinh_gt' = Hình giải tích.
-export type TaiLieu = { id: string; loai: string; ten: string; khoi: string; mon: string; nhanh?: string | null; ma_chuyen_de: string | null; theme: string; cau_hinh?: CauHinh; created_at?: string; updated_at?: string; created_by?: string | null; file_url?: string | null; stt_lop?: number | null; ban_do?: 'cu' | 'moi'; luu_tru_tu?: string | null; phase?: number | null }
+export type TaiLieu = { id: string; loai: string; ten: string; khoi: string; mon: string; nhanh?: string | null; ma_chuyen_de: string | null; theme: string; cau_hinh?: CauHinh; created_at?: string; updated_at?: string; created_by?: string | null; file_url?: string | null; stt_lop?: number | null; ban_do?: 'cu' | 'moi'; luu_tru_tu?: string | null; phase?: number | null; lop_id?: string | null; ngay?: string | null }
 // kieu = KIỂU HIỂN THỊ của block (phan): 'thuong'(1 cột) | '2cot' | '3cot' | '4cot' | … (registry mở rộng). Câu giữ ma_dang.
 export type BlockKieu = 'thuong' | '2cot' | '3cot' | '4cot'
 export const BLOCK_KIEU: { v: BlockKieu; lbl: string; cols: number }[] = [
@@ -272,7 +272,7 @@ export const kieuCols = (k?: string): number => BLOCK_KIEU.find((x) => x.v === k
 // hien_lt = BẬT/TẮT lý thuyết RIÊNG cho phan này (chỉ có ý nghĩa với loai_phan='dang') — khác
 // cau_hinh.inLyThuyet (toàn doc): 1 buổi vừa học dạng mới (hien_lt=true) vừa ôn dạng cũ (hien_lt=false).
 // Default true = giữ nguyên hành vi cũ (mọi phan trước đây coi như luôn hiện LT nếu kho có nội dung).
-export type TaiLieuPhan = { id: string; tai_lieu_id: string; thu_tu: number; loai_phan: PhanLoai; ref_ma: string | null; tieu_de: string | null; noi_dung: string | null; kieu?: string; hien_lt?: boolean; nang_cao?: boolean }
+export type TaiLieuPhan = { id: string; tai_lieu_id: string; thu_tu: number; loai_phan: PhanLoai; ref_ma: string | null; tieu_de: string | null; noi_dung: string | null; kieu?: string; hien_lt?: boolean; nang_cao?: boolean; diem_moi_cau?: number | null }
 // MT (08/10): phần có chữ "nâng cao" trong tên ⇒ mặc định là phần Nâng cao (người soạn bật/tắt được — tai_lieu_phan.nang_cao).
 export const laTenPhanNangCao = (t: string | null | undefined): boolean => /n[âa]ng\s*cao/i.test(t ?? '')
 type LtRow = { noi_dung: string; file_url: string | null; ten_file: string | null }
@@ -345,13 +345,80 @@ export async function listTaiLieuFacets(): Promise<{ loai: string; mon: string }
   if (error) throw error
   return (data ?? []) as { loai: string; mon: string }[]
 }
-export async function createTaiLieu(input: { loai?: string; ten: string; khoi: string; mon?: string; nhanh?: string | null; ma_chuyen_de?: string | null; theme?: string; ban_do?: 'cu' | 'moi' }): Promise<TaiLieu> {
+export async function createTaiLieu(input: { loai?: string; ten: string; khoi: string; mon?: string; nhanh?: string | null; ma_chuyen_de?: string | null; theme?: string; ban_do?: 'cu' | 'moi'; lopId?: string | null }): Promise<TaiLieu> {
   const { data: { user } } = await supabase.auth.getUser() // người tạo = session hiện tại
   const { data, error } = await supabase.from('tai_lieu')
-    .insert({ loai: input.loai ?? 'giao_trinh', ten: input.ten, khoi: input.khoi, mon: input.mon ?? 'Toán', nhanh: input.nhanh ?? null, ma_chuyen_de: input.ma_chuyen_de ?? null, theme: input.theme ?? 'bkdemy', ban_do: input.ban_do ?? 'cu', created_by: user?.id ?? null })
+    .insert({ loai: input.loai ?? 'giao_trinh', ten: input.ten, khoi: input.khoi, mon: input.mon ?? 'Toán', nhanh: input.nhanh ?? null, ma_chuyen_de: input.ma_chuyen_de ?? null, theme: input.theme ?? 'bkdemy', ban_do: input.ban_do ?? 'cu', lop_id: input.lopId ?? null, created_by: user?.id ?? null })
     .select().single()
   if (error) throw error
   return data as TaiLieu
+}
+
+// ⭐ Thùy 28/10: giáo trình đi theo lớp. Copy ĐỘC LẬP 1 buổi (= bài 13…) từ giáo trình lớp A sang giáo trình
+// lớp B — câu + cấu hình riêng của câu (dòng/cột/chế độ hình/mm). Sau copy 2 lớp sửa riêng, không ảnh hưởng.
+//   `buoiPhanId` = id phần loại 'buoi' trong tl nguồn; copy TOÀN BỘ phần con tới hết buổi (dừng ở phần 'buoi' kế tiếp).
+//   `tlDichId` = id tl đích. Chèn vào CUỐI (tăng thu_tu tiếp theo); đổi tên buổi nếu caller cung cấp `tenMoi`.
+export async function copyBuoiBdm(buoiPhanId: string, tlDichId: string, tenMoi?: string | null): Promise<{ buoiMoiId: string; soPhan: number; soCau: number }> {
+  const { data: bRow } = await supabase.from('tai_lieu_phan').select('*').eq('id', buoiPhanId).single()
+  if (!bRow || (bRow as TaiLieuPhan).loai_phan !== 'buoi') throw new Error('Không phải phần buổi')
+  const b = bRow as TaiLieuPhan
+  const nguonPhans = await listPhan(b.tai_lieu_id)
+  const iBuoi = nguonPhans.findIndex((p) => p.id === buoiPhanId)
+  if (iBuoi < 0) throw new Error('Buổi không có trong tài liệu nguồn')
+  // Nhóm con = từ sau buổi tới trước phần 'buoi' kế tiếp.
+  const con: TaiLieuPhan[] = []
+  for (let i = iBuoi + 1; i < nguonPhans.length && nguonPhans[i].loai_phan !== 'buoi'; i++) con.push(nguonPhans[i])
+  const nguonCau = await supabase.from('tai_lieu_cau').select('*').in('phan_id', [buoiPhanId, ...con.map((p) => p.id)]).order('thu_tu')
+  if (nguonCau.error) throw nguonCau.error
+  const cauByPhan = new Map<string, { ma_cau: string; thu_tu: number; diem: number | null }[]>()
+  for (const r of (nguonCau.data ?? []) as any[]) {
+    const arr = cauByPhan.get(r.phan_id) ?? []
+    arr.push({ ma_cau: r.ma_cau, thu_tu: r.thu_tu, diem: r.diem })
+    cauByPhan.set(r.phan_id, arr)
+  }
+  const dichPhans = await listPhan(tlDichId)
+  let tt = dichPhans.length ? Math.max(...dichPhans.map((p) => p.thu_tu)) + 1 : 0
+  // Insert buổi mới
+  const buoiMoi = await addPhan({ tai_lieu_id: tlDichId, thu_tu: tt++, loai_phan: 'buoi', ref_ma: null, tieu_de: (tenMoi ?? b.tieu_de) ?? null, noi_dung: b.noi_dung })
+  let soPhan = 1, soCau = 0
+  // Copy câu của chính phần buổi nếu có (hiếm)
+  const cBuoi = cauByPhan.get(buoiPhanId) ?? []
+  if (cBuoi.length) { await supabase.from('tai_lieu_cau').insert(cBuoi.map((c) => ({ ...c, phan_id: buoiMoi.id }))); soCau += cBuoi.length }
+  // Copy từng phần con theo thứ tự
+  const maCauCopy = new Set<string>(cBuoi.map((c) => c.ma_cau))
+  for (const p of con) {
+    const pMoi = await addPhan({ tai_lieu_id: tlDichId, thu_tu: tt++, loai_phan: p.loai_phan, ref_ma: p.ref_ma, tieu_de: p.tieu_de, noi_dung: p.noi_dung, kieu: p.kieu, hien_lt: p.hien_lt, diem_moi_cau: p.diem_moi_cau, nang_cao: p.nang_cao })
+    soPhan++
+    const cs = cauByPhan.get(p.id) ?? []
+    if (cs.length) {
+      const { error } = await supabase.from('tai_lieu_cau').insert(cs.map((c) => ({ ...c, phan_id: pMoi.id })))
+      if (error) throw error
+      soCau += cs.length
+      for (const c of cs) maCauCopy.add(c.ma_cau)
+    }
+  }
+  // Merge cau_hinh (chỉ các khoá của câu copy) nguồn → đích.
+  if (maCauCopy.size) {
+    const [{ data: tlNguon }, { data: tlDich }] = await Promise.all([
+      supabase.from('tai_lieu').select('cau_hinh').eq('id', b.tai_lieu_id).single(),
+      supabase.from('tai_lieu').select('cau_hinh').eq('id', tlDichId).single(),
+    ])
+    const chNguon = ((tlNguon as any)?.cau_hinh ?? {}) as CauHinh
+    const chDich = ((tlDich as any)?.cau_hinh ?? {}) as CauHinh
+    const KHOA: (keyof CauHinh)[] = ['btvnLinesByCau', 'colByCau', 'hinhCheDoByCau', 'anhMmByCau', 'anhPctByCau', 'etFormByCau', 'diemByCau']
+    const chMoi: CauHinh = { ...chDich }
+    for (const k of KHOA) {
+      const nguonMap = (chNguon as any)[k] as Record<string, unknown> | undefined
+      if (!nguonMap) continue
+      const dichMap = { ...((chDich as any)[k] as Record<string, unknown> | undefined ?? {}) }
+      for (const ma of maCauCopy) if (ma in nguonMap) dichMap[ma] = nguonMap[ma]
+      ;(chMoi as any)[k] = dichMap
+    }
+    await supabase.from('tai_lieu').update({ cau_hinh: chMoi, updated_at: new Date().toISOString() }).eq('id', tlDichId)
+  } else {
+    await supabase.from('tai_lieu').update({ updated_at: new Date().toISOString() }).eq('id', tlDichId)
+  }
+  return { buoiMoiId: buoiMoi.id, soPhan, soCau }
 }
 export async function updateTaiLieu(id: string, patch: Partial<Pick<TaiLieu, 'ten' | 'theme' | 'ma_chuyen_de' | 'cau_hinh' | 'nhanh'>>): Promise<void> {
   const { error } = await supabase.from('tai_lieu').update({ ...patch, updated_at: new Date().toISOString() }).eq('id', id)

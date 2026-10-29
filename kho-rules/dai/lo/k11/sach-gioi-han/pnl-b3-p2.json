@@ -1,0 +1,1176 @@
+[
+ {
+  "id": "pnl-b3-p2-C28",
+  "vai": "luyen",
+  "dang_bai": "NDB01196",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Hàm hai công thức, xét liên tục trên tập xác định; điểm ghép x=√3.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho hàm số $f(x)=\\begin{cases}\\dfrac{x^2-3}{x-\\sqrt{3}}&\\text{nếu }x\\ne\\sqrt{3}\\\\2\\sqrt{3}&\\text{nếu }x=\\sqrt{3}\\end{cases}$. Hàm số đã cho liên tục trên tập nào sau đây?",
+  "lua_chon": [
+   "$\\mathbb{R}$",
+   "$(-\\infty;\\sqrt{3}]$",
+   "$(0;+\\infty)$",
+   "$[1;+\\infty)$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số liên tục trên mỗi khoảng mà một công thức xác định, nên chỉ còn phải xét tính liên tục tại điểm ghép $x=\\sqrt{3}$.\n\n**Bước 1.** Xét từng nhánh của hàm số: với $x\\ne\\sqrt{3}$ thì $f(x)$ là hàm phân thức hữu tỉ, liên tục trên tập xác định của nó.\n\n**Bước 2.** Tại điểm ghép, rút gọn nhân tử chung của tử và mẫu để tính giới hạn của $f(x)$ khi $x$ tiến tới điểm đó.\n\n**Bước 3.** So sánh giới hạn vừa tính với giá trị $f(\\sqrt{3})$ rồi kết luận tập liên tục lớn nhất, đối chiếu các phương án.\n\n**Phần 2. Trình bày**\n\nLưu ý: bốn phương án đều là tập con của $\\mathbb{R}$ nên theo nghĩa hẹp đều đúng; đề hỏi tập liên tục lớn nhất và sách chọn phương án A.\n\nVới $x\\ne\\sqrt{3}$ thì $f(x)=\\dfrac{x^2-3}{x-\\sqrt{3}}$ là hàm phân thức hữu tỉ nên liên tục trên $(-\\infty;\\sqrt{3})$ và $(\\sqrt{3};+\\infty)$.\n\nTại $x=\\sqrt{3}$ ta có $f(\\sqrt{3})=2\\sqrt{3}$.\n\nVới $x\\ne\\sqrt{3}$: $\\dfrac{x^2-3}{x-\\sqrt{3}}=\\dfrac{(x-\\sqrt{3})(x+\\sqrt{3})}{x-\\sqrt{3}}=x+\\sqrt{3}$.\n\nDo đó $\\lim\\limits_{x\\to\\sqrt{3}}f(x)=\\lim\\limits_{x\\to\\sqrt{3}}(x+\\sqrt{3})=2\\sqrt{3}=f(\\sqrt{3})$ nên $f$ liên tục tại $x=\\sqrt{3}$.\n\nVậy hàm số liên tục trên $\\mathbb{R}$.\n\nChọn A.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const s=Math.sqrt(3),f=x=>(x*x-3)/(x-s);C(f,f,2*s,s)"
+  ],
+  "sach_dap_so": "A",
+  "ghi_chu": "ĐỀ MƠ HỒ: B, C, D đều là tập con của R nên cũng đúng theo nghĩa hẹp; sách chọn A (tập lớn nhất)."
+ },
+ {
+  "id": "pnl-b3-p2-C29",
+  "vai": "luyen",
+  "dang_bai": "NDB01191",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Tìm m để liên tục tại x=3; hàm chứa |x-3|/(x-3), tham số ở nhánh x=3.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho hàm số $f(x)=\\begin{cases}\\dfrac{\\sqrt{(x-3)^2}}{x-3}&\\text{nếu }x\\ne3\\\\m&\\text{nếu }x=3\\end{cases}$. Tìm tất cả các giá trị của tham số thực $m$ để hàm số liên tục tại $x=3$.",
+  "lua_chon": [
+   "$m\\in\\varnothing$",
+   "$m\\in\\mathbb{R}$",
+   "$m=1$",
+   "$m=-1$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số liên tục tại một điểm chỉ khi giới hạn tại điểm đó tồn tại, nên phải xét giới hạn hai bên trước khi so với $f(3)$.\n\n**Bước 1.** Đưa căn bậc hai của bình phương về giá trị tuyệt đối để bỏ được dấu căn trong biểu thức của $f(x)$.\n\n**Bước 2.** Bỏ dấu giá trị tuyệt đối theo từng bên của điểm $x=3$ rồi tính giới hạn trái và giới hạn phải.\n\n**Bước 3.** So sánh hai giới hạn một bên để xem giới hạn tại điểm đó có tồn tại không, từ đó kết luận về tham số.\n\n**Phần 2. Trình bày**\n\nVới $x\\ne3$ ta có $\\sqrt{(x-3)^2}=|x-3|$ nên $f(x)=\\dfrac{|x-3|}{x-3}$.\n\nKhi $x\\to3^+$: $x-3>0$ nên $f(x)=\\dfrac{x-3}{x-3}=1$, suy ra $\\lim\\limits_{x\\to3^+}f(x)=1$.\n\nKhi $x\\to3^-$: $x-3<0$ nên $f(x)=\\dfrac{-(x-3)}{x-3}=-1$, suy ra $\\lim\\limits_{x\\to3^-}f(x)=-1$.\n\nHai giới hạn một bên khác nhau nên không tồn tại $\\lim\\limits_{x\\to3}f(x)$.\n\nDo đó với mọi $m$, hàm số không liên tục tại $x=3$.\n\nVậy không có giá trị nào của $m$ thoả mãn, tức là $m\\in\\varnothing$.\n\nChọn A.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const f=x=>Math.sqrt((x-3)**2)/(x-3);ok(f(3-h),-1)&&ok(f(3+h),1)"
+  ],
+  "sach_dap_so": "A",
+  "ghi_chu": "Ảnh [[img]] trong đề chỉ là \"x=3\" (suy từ lời giải); đề đủ dữ kiện."
+ },
+ {
+  "id": "pnl-b3-p2-C30",
+  "vai": "luyen",
+  "dang_bai": "NDB01191",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tham số chỉ ở nhánh x=1; giới hạn 0/0 phân tích nhân tử.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tìm $m$ để hàm số $f(x)=\\begin{cases}\\dfrac{x^2-1}{x-1}&\\text{nếu }x\\ne1\\\\m+2&\\text{nếu }x=1\\end{cases}$ liên tục tại điểm $x_0=1$.",
+  "lua_chon": [
+   "$m=3$",
+   "$m=0$",
+   "$m=4$",
+   "$m=1$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số liên tục tại $x_0$ khi và chỉ khi giới hạn của $f(x)$ khi $x\\to x_0$ bằng $f(x_0)$.\n\n**Bước 1.** Tính $f(1)$ theo nhánh $x=1$, kết quả chứa tham số $m$.\n\n**Bước 2.** Rút gọn phân thức bằng cách phân tích tử thành nhân tử để tính $\\lim\\limits_{x\\to1}f(x)$.\n\n**Bước 3.** Cho giới hạn bằng giá trị tại điểm để lập phương trình ẩn $m$ rồi giải.\n\n**Phần 2. Trình bày**\n\nTa có $f(1)=m+2$.\n\nVới $x\\ne1$: $\\dfrac{x^2-1}{x-1}=\\dfrac{(x-1)(x+1)}{x-1}=x+1$.\n\nSuy ra $\\lim\\limits_{x\\to1}f(x)=\\lim\\limits_{x\\to1}(x+1)=2$.\n\nHàm số liên tục tại $x_0=1$ khi và chỉ khi $\\lim\\limits_{x\\to1}f(x)=f(1)$, tức là $m+2=2$.\n\nSuy ra $m=0$.\n\nVậy $m=0$.\n\nChọn B.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const g=x=>(x*x-1)/(x-1);ok(g(1-h),2)&&ok(g(1+h),2)&&ok(0+2,2)&&[3,4,1].every(m=>!ok(m+2,2))"
+  ],
+  "sach_dap_so": "B",
+  "ghi_chu": ""
+ },
+ {
+  "id": "pnl-b3-p2-C31",
+  "vai": "luyen",
+  "dang_bai": "NDB01200",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Đếm nghiệm phương trình bậc ba bằng đổi dấu trên nhiều khoảng.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Số nghiệm của phương trình $x^3-3x-1=0$ là",
+  "lua_chon": [
+   "$0$",
+   "$1$",
+   "$2$",
+   "$3$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm đa thức liên tục, nên mỗi khoảng mà hàm đổi dấu ở hai đầu chứa ít nhất một nghiệm; phương trình bậc ba có tối đa ba nghiệm.\n\n**Bước 1.** Đặt $f(x)$ bằng vế trái rồi tính giá trị tại vài điểm nguyên gần gốc toạ độ để tìm các đoạn mà $f$ đổi dấu.\n\n**Bước 2.** Áp dụng định lí giá trị trung gian trên từng đoạn đổi dấu để chỉ ra mỗi đoạn chứa ít nhất một nghiệm.\n\n**Bước 3.** So số nghiệm tìm được với số nghiệm tối đa của phương trình bậc ba để kết luận số nghiệm chính xác.\n\n**Phần 2. Trình bày**\n\nĐặt $f(x)=x^3-3x-1$, là hàm đa thức nên liên tục trên $\\mathbb{R}$.\n\nTa có $f(-2)=-3$, $f(-1)=1$, $f(0)=-1$, $f(2)=1$.\n\nVì $f(-2)\\cdot f(-1)<0$ nên phương trình có ít nhất một nghiệm thuộc $(-2;-1)$.\n\nVì $f(-1)\\cdot f(0)<0$ nên phương trình có ít nhất một nghiệm thuộc $(-1;0)$.\n\nVì $f(0)\\cdot f(2)<0$ nên phương trình có ít nhất một nghiệm thuộc $(0;2)$.\n\nBa khoảng này đôi một rời nhau nên phương trình có ít nhất $3$ nghiệm, mà phương trình bậc ba có tối đa $3$ nghiệm.\n\nVậy phương trình có đúng $3$ nghiệm.\n\nChọn D.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const f=x=>x**3-3*x-1;f(-2)*f(-1)<0&&f(-1)*f(0)<0&&f(0)*f(2)<0&&Array.from({length:6001},(_,i)=>-3+i/1000).filter((x,i,a)=>i>0&&f(a[i-1])*f(x)<0).length===3"
+  ],
+  "sach_dap_so": "B (gạch chân) nhưng lời giải sách ra 3 nghiệm",
+  "ghi_chu": "LỆCH SÁCH — sách gạch chân B (1 nghiệm) nhưng chính lời giải sách kết luận đúng 3 nghiệm; kiểm máy: 3 nghiệm, chọn D."
+ },
+ {
+  "id": "pnl-b3-p2-C32",
+  "vai": "luyen",
+  "dang_bai": "NDB01199",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Hàm liên tục với f(-1)=2, f(4)=7 ⇒ f(x)=5 có nghiệm (đặt g=f-5, g(-1)g(4)<0).",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho hàm số $f(x)$ liên tục trên đoạn $[-1;4]$ sao cho $f(-1)=2$, $f(4)=7$. Có thể nói gì về số nghiệm của phương trình $f(x)=5$ trên đoạn $[-1;4]$?",
+  "lua_chon": [
+   "Vô nghiệm.",
+   "Có ít nhất một nghiệm.",
+   "Có đúng một nghiệm.",
+   "Có đúng hai nghiệm."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đưa phương trình $f(x)=5$ về dạng $g(x)=0$ với $g$ liên tục, rồi dùng định lí giá trị trung gian khi $g$ đổi dấu ở hai đầu đoạn.\n\n**Bước 1.** Đặt hàm phụ $g(x)$ bằng $f(x)$ trừ vế phải để phương trình trở thành $g(x)=0$.\n\n**Bước 2.** Tính $g$ tại hai đầu đoạn $-1$ và $4$ dựa vào hai giá trị đã cho rồi xét dấu tích.\n\n**Bước 3.** Áp dụng định lí giá trị trung gian để kết luận số nghiệm tối thiểu, đối chiếu các phương án.\n\n**Phần 2. Trình bày**\n\nĐặt $g(x)=f(x)-5$. Hàm $g$ liên tục trên $[-1;4]$ và $f(x)=5\\Leftrightarrow g(x)=0$.\n\nTa có $g(-1)=f(-1)-5=2-5=-3$ và $g(4)=f(4)-5=7-5=2$.\n\nSuy ra $g(-1)\\cdot g(4)<0$.\n\nDo đó phương trình $g(x)=0$ có ít nhất một nghiệm thuộc $(-1;4)$.\n\nVậy phương trình $f(x)=5$ có ít nhất một nghiệm trên đoạn $[-1;4]$.\n\nChọn B.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const f=x=>x+3;f(-1)===2&&f(4)===7&&(f(-1)-5)*(f(4)-5)<0&&f(2)===5"
+  ],
+  "sach_dap_so": "B",
+  "ghi_chu": "Sách in khoảng (1;4) trong lời giải; đúng phải là (-1;4)."
+ },
+ {
+  "id": "pnl-b3-p2-C33",
+  "vai": "luyen",
+  "dang_bai": "NDB01198",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Giá điện bậc thang: kiểm liên tục tại hai điểm ghép x=50, x=100.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tiền điện sinh hoạt tính theo bậc thang. Gọi $y$ (đồng) là số tiền phải trả khi dùng $x$ kW điện, ta có $y=\\begin{cases}865x&\\text{nếu }x\\le50\\\\1135x-13500&\\text{nếu }50<x\\le100\\\\1495x-49500&\\text{nếu }x>100\\end{cases}$. Mệnh đề nào sau đây đúng?",
+  "lua_chon": [
+   "Hàm số liên tục trên $(0;+\\infty)$",
+   "Hàm số gián đoạn tại $x=50$",
+   "Hàm số gián đoạn tại $x=100$",
+   "Hàm số gián đoạn tại $x=50$ và $x=100$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi công thức là hàm đa thức nên liên tục trên khoảng của nó; chỉ cần kiểm tra tại hai điểm ghép $x=50$ và $x=100$.\n\n**Bước 1.** Nêu tính liên tục của hàm trên từng khoảng mở $(0;50)$, $(50;100)$, $(100;+\\infty)$ vì mỗi nhánh là đa thức.\n\n**Bước 2.** Tại $x=50$, tính giới hạn trái, giới hạn phải và giá trị hàm rồi so sánh ba số này.\n\n**Bước 3.** Làm tương tự tại $x=100$, sau đó kết luận về tính liên tục trên cả nửa khoảng và đối chiếu các phương án.\n\n**Phần 2. Trình bày**\n\nMỗi nhánh là hàm đa thức nên $y$ liên tục trên $(0;50)$, $(50;100)$ và $(100;+\\infty)$.\n\nTại $x=50$: $y(50)=865\\cdot50=43250$.\n\n$\\lim\\limits_{x\\to50^-}y=\\lim\\limits_{x\\to50^-}865x=43250$ và $\\lim\\limits_{x\\to50^+}y=\\lim\\limits_{x\\to50^+}(1135x-13500)=56750-13500=43250$.\n\nBa giá trị bằng nhau nên $y$ liên tục tại $x=50$.\n\nTại $x=100$: $y(100)=1135\\cdot100-13500=100000$.\n\n$\\lim\\limits_{x\\to100^-}y=100000$ và $\\lim\\limits_{x\\to100^+}y=\\lim\\limits_{x\\to100^+}(1495x-49500)=149500-49500=100000$.\n\nBa giá trị bằng nhau nên $y$ liên tục tại $x=100$.\n\nVậy hàm số liên tục trên $(0;+\\infty)$.\n\nChọn A.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const a=x=>865*x,b=x=>1135*x-13500,c=x=>1495*x-49500;ok(a(50),b(50))&&ok(b(100),c(100))&&ok(a(50),43250)&&ok(c(100),100000)"
+  ],
+  "sach_dap_so": "A",
+  "ghi_chu": ""
+ },
+ {
+  "id": "pnl-b3-p2-C34",
+  "vai": "luyen",
+  "dang_bai": "NDB01194",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tìm tham số để hàm gián đoạn tại x=1; hai nhánh có giới hạn bằng nhau.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho hàm số $f(x)=\\begin{cases}x^2+3&\\text{nếu }x<1\\\\k^2&\\text{nếu }x=1\\\\ (x+1)^2&\\text{nếu }x>1\\end{cases}$. Tìm tất cả các giá trị thực của $k$ để $f(x)$ gián đoạn tại $x=1$.",
+  "lua_chon": [
+   "$k\\ne-2$",
+   "$k\\ne2$",
+   "$k\\ne\\pm2$",
+   "$k\\ne\\pm1$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số gián đoạn tại $x=1$ khi giới hạn tại $1$ không tồn tại hoặc tồn tại nhưng khác $f(1)$.\n\n**Bước 1.** Tính giới hạn trái và giới hạn phải của $f(x)$ tại $x=1$ theo công thức của từng nhánh.\n\n**Bước 2.** Nhận xét hai giới hạn một bên có bằng nhau không để biết giới hạn tại điểm đó có tồn tại không.\n\n**Bước 3.** Viết điều kiện giới hạn khác $f(1)=k^2$ rồi giải theo $k$.\n\n**Phần 2. Trình bày**\n\nTa có $f(1)=k^2$.\n\n$\\lim\\limits_{x\\to1^-}f(x)=\\lim\\limits_{x\\to1^-}(x^2+3)=4$ và $\\lim\\limits_{x\\to1^+}f(x)=\\lim\\limits_{x\\to1^+}(x+1)^2=4$.\n\nHai giới hạn một bên bằng nhau nên $\\lim\\limits_{x\\to1}f(x)=4$.\n\nHàm số gián đoạn tại $x=1$ khi và chỉ khi $\\lim\\limits_{x\\to1}f(x)\\ne f(1)$, tức là $k^2\\ne4$.\n\nSuy ra $k\\ne2$ và $k\\ne-2$.\n\nVậy $k\\ne\\pm2$.\n\nChọn C.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const l=x=>x*x+3,rr=x=>(x+1)**2;ok(l(1-h),4)&&ok(rr(1+h),4)&&[-2,2].every(k=>ok(k*k,4))&&[0,1,3].every(k=>!ok(k*k,4))"
+  ],
+  "sach_dap_so": "C",
+  "ghi_chu": "Đề in công thức hàm số bằng đối tượng MathType hỏng; dựng lại từ lời giải sách (x²+3 nếu x<1; k² nếu x=1; (x+1)² nếu x>1)."
+ },
+ {
+  "id": "pnl-b3-p2-C35",
+  "vai": "luyen",
+  "dang_bai": "NDB01193",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Hai tham số m, n ở hai nhánh; giới hạn trái = phải = f(1).",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tìm $m$, $n$ để hàm số $f(x)=\\begin{cases}\\dfrac{x^3-x^2}{x-1}&\\text{nếu }x>1\\\\n&\\text{nếu }x=1\\\\mx+1&\\text{nếu }x<1\\end{cases}$ liên tục tại $x=1$.",
+  "lua_chon": [
+   "$n=-1$ và $m=0$",
+   "$n=m=1$",
+   "$n=0$ và $m=1$",
+   "$n=1$ và $m=0$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số liên tục tại $x=1$ khi giới hạn trái, giới hạn phải và giá trị $f(1)$ bằng nhau; điều kiện này cho hệ phương trình ẩn $m$, $n$.\n\n**Bước 1.** Tính giới hạn phải bằng cách rút gọn nhân tử $x-1$ ở tử và mẫu.\n\n**Bước 2.** Tính giới hạn trái theo nhánh $mx+1$ và ghi nhận $f(1)$ theo nhánh $x=1$.\n\n**Bước 3.** Cho ba đại lượng bằng nhau để lập hệ rồi giải ra $m$ và $n$.\n\n**Phần 2. Trình bày**\n\nTa có $f(1)=n$.\n\n$\\lim\\limits_{x\\to1^+}f(x)=\\lim\\limits_{x\\to1^+}\\dfrac{x^2(x-1)}{x-1}=\\lim\\limits_{x\\to1^+}x^2=1$.\n\n$\\lim\\limits_{x\\to1^-}f(x)=\\lim\\limits_{x\\to1^-}(mx+1)=m+1$.\n\nHàm số liên tục tại $x=1$ khi và chỉ khi $m+1=n=1$.\n\nSuy ra $m=0$ và $n=1$.\n\nVậy $n=1$ và $m=0$.\n\nChọn D.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const R=x=>(x**3-x*x)/(x-1);ok(R(1+h),1)&&[[-1,0],[1,1],[0,1],[1,0]].map(([n,m])=>ok(m+1,1)&&ok(n,1)).join()==='false,false,false,true'"
+  ],
+  "sach_dap_so": "D",
+  "ghi_chu": "Đề in công thức hàm số bằng đối tượng MathType hỏng; dựng lại từ lời giải sách (x>1: (x³-x²)/(x-1); x=1: n; x<1: mx+1)."
+ },
+ {
+  "id": "pnl-b3-p2-C36",
+  "vai": "luyen",
+  "dang_bai": "NDB01187",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Nhận hàm không liên tục tại x=2: hàm không xác định tại 2.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Hàm số nào sau đây không liên tục tại $x=2$?",
+  "lua_chon": [
+   "$y=\\sqrt{x+2}$",
+   "$y=\\sin x$",
+   "$y=\\dfrac{x^2}{x-2}$",
+   "$y=x^2-3x+2$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm sơ cấp liên tục tại mọi điểm thuộc tập xác định của nó, nên hàm không liên tục tại $x=2$ phải không xác định tại $2$.\n\n**Bước 1.** Tìm tập xác định của từng hàm số ở bốn phương án.\n\n**Bước 2.** Kiểm tra xem điểm $x=2$ có thuộc tập xác định của mỗi hàm số hay không.\n\n**Bước 3.** Chọn hàm số mà điểm $x=2$ nằm ngoài tập xác định của nó.\n\n**Phần 2. Trình bày**\n\nCác hàm $y=\\sqrt{x+2}$ (xác định với $x\\ge-2$), $y=\\sin x$ và $y=x^2-3x+2$ đều xác định tại $x=2$ nên liên tục tại $x=2$.\n\nHàm $y=\\dfrac{x^2}{x-2}$ không xác định tại $x=2$ vì mẫu bằng $0$.\n\nDo đó hàm số này không liên tục tại $x=2$.\n\nChọn C.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);ok(Math.sqrt(2+2),2)&&Math.abs(Math.sin(2+h)-Math.sin(2))<1e-3&&!isFinite(4/(2-2))"
+  ],
+  "sach_dap_so": "C",
+  "ghi_chu": ""
+ },
+ {
+  "id": "pnl-b3-p2-C37",
+  "vai": "luyen",
+  "dang_bai": "NDB01187",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Điểm làm mẫu bằng 0 là điểm gián đoạn của hàm phân thức.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Hàm số $y=\\dfrac{1}{x^2-4}$ gián đoạn tại điểm nào dưới đây?",
+  "lua_chon": [
+   "$x=1$",
+   "$x=0$",
+   "$x=2$",
+   "$x=-1$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm phân thức gián đoạn tại những điểm làm mẫu thức bằng $0$, vì tại đó hàm không xác định.\n\n**Bước 1.** Giải phương trình mẫu thức bằng $0$ để tìm các điểm hàm số không xác định.\n\n**Bước 2.** Kiểm tra từng giá trị ở bốn phương án xem có làm mẫu thức bằng $0$ hay không.\n\n**Bước 3.** Kết luận điểm gián đoạn là giá trị làm mẫu bằng $0$ có trong các phương án.\n\n**Phần 2. Trình bày**\n\nMẫu thức $x^2-4=0\\Leftrightarrow x=2$ hoặc $x=-2$.\n\nHàm số không xác định tại $x=2$ nên gián đoạn tại $x=2$.\n\nCác giá trị $x=1$, $x=0$, $x=-1$ làm mẫu khác $0$ nên hàm số liên tục tại các điểm đó.\n\nChọn C.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const f=x=>1/(x*x-4);[1,0,-1].every(a=>isFinite(f(a)))&&!isFinite(f(2))"
+  ],
+  "sach_dap_so": "C",
+  "ghi_chu": ""
+ },
+ {
+  "id": "pnl-b3-p2-C38",
+  "vai": "luyen",
+  "dang_bai": "NDB01188",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Điểm ghép x=0 của hàm hai công thức, giới hạn trái khác giới hạn phải.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho hàm số $f(x)=\\begin{cases}\\dfrac{\\sqrt{1+2x}-1}{x}&\\text{nếu }x>0\\\\x+2023&\\text{nếu }x\\le0\\end{cases}$. Mệnh đề nào sau đây là đúng?",
+  "lua_chon": [
+   "Hàm số liên tục trên $\\mathbb{R}$",
+   "Hàm số liên tục tại $x=3$",
+   "Hàm số gián đoạn tại $x=0$",
+   "Hàm số gián đoạn tại $x=1$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số liên tục tại mọi điểm nằm trong khoảng mà một công thức xác định, nên chỉ điểm ghép $x=0$ cần xét kĩ.\n\n**Bước 1.** Tính giới hạn phải tại $x=0$ bằng cách nhân liên hợp để khử căn ở tử.\n\n**Bước 2.** Tính giới hạn trái tại $x=0$ theo nhánh $x+2023$ rồi so với giới hạn phải.\n\n**Bước 3.** Từ đó xét tính liên tục tại điểm ghép và tại các điểm $x=3$, $x=1$ rồi đối chiếu bốn phương án.\n\n**Phần 2. Trình bày**\n\nLưu ý: đề sai — phương án B cũng đúng vì $x=3$ thuộc nhánh $x>0$ nên hàm số liên tục tại $x=3$; theo đáp án sách ta chọn C.\n\nVới $x>0$: $\\dfrac{\\sqrt{1+2x}-1}{x}=\\dfrac{(1+2x)-1}{x(\\sqrt{1+2x}+1)}=\\dfrac{2}{\\sqrt{1+2x}+1}$.\n\nSuy ra $\\lim\\limits_{x\\to0^+}f(x)=\\dfrac{2}{1+1}=1$.\n\nMặt khác $\\lim\\limits_{x\\to0^-}f(x)=\\lim\\limits_{x\\to0^-}(x+2023)=2023$.\n\nHai giới hạn một bên khác nhau nên không tồn tại $\\lim\\limits_{x\\to0}f(x)$, do đó hàm số gián đoạn tại $x=0$.\n\nPhương án A sai vì hàm số gián đoạn tại $x=0$.\n\nTại $x=1$ và $x=3$ ta có $x>0$ và biểu thức $\\dfrac{\\sqrt{1+2x}-1}{x}$ xác định nên hàm số liên tục tại các điểm này; phương án D sai còn phương án B cũng đúng (xem Lưu ý).\n\nPhương án C đúng và đúng với đáp án sách.\n\nChọn C.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const f=x=>x>0?(Math.sqrt(1+2*x)-1)/x:x+2023;ok(f(h),1)&&ok(f(-h),2023)"
+  ],
+  "sach_dap_so": "C",
+  "ghi_chu": "ĐỀ SAI: phương án B (\"liên tục tại x=3\") cũng đúng vì x=3>0 nằm trong nhánh phân thức xác định; sách chỉ chọn C."
+ },
+ {
+  "id": "pnl-b3-p2-C39",
+  "vai": "luyen",
+  "dang_bai": "NDB01196",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Hàm ba công thức, xét hai điểm ghép x=0 và x=1.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho hàm số $f(x)=\\begin{cases}-x\\cos x&\\text{nếu }x<0\\\\\\dfrac{x^2}{1+x}&\\text{nếu }0\\le x<1\\\\x^3&\\text{nếu }x\\ge1\\end{cases}$. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "Hàm số $f(x)$ liên tục tại mọi điểm $x$ thuộc $\\mathbb{R}$",
+   "Hàm số $f(x)$ bị gián đoạn tại điểm $x=0$",
+   "Hàm số $f(x)$ bị gián đoạn tại điểm $x=1$",
+   "Hàm số $f(x)$ bị gián đoạn tại điểm $x=0$ và $x=1$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ba nhánh đều liên tục trên khoảng của mình, nên chỉ cần xét các điểm ghép $x=0$ và $x=1$.\n\n**Bước 1.** Tại $x=0$, tính giới hạn trái, giới hạn phải và giá trị $f(0)$ rồi so sánh.\n\n**Bước 2.** Tại $x=1$, làm tương tự với giới hạn trái theo nhánh phân thức và giới hạn phải theo nhánh $x^3$.\n\n**Bước 3.** Tổng hợp kết quả hai điểm ghép để chọn khẳng định đúng.\n\n**Phần 2. Trình bày**\n\nTại $x=0$: $\\lim\\limits_{x\\to0^-}f(x)=\\lim\\limits_{x\\to0^-}(-x\\cos x)=0$ và $\\lim\\limits_{x\\to0^+}f(x)=\\lim\\limits_{x\\to0^+}\\dfrac{x^2}{1+x}=0$.\n\nMặt khác $f(0)=\\dfrac{0^2}{1+0}=0$ nên $f$ liên tục tại $x=0$.\n\nTại $x=1$: $\\lim\\limits_{x\\to1^-}f(x)=\\lim\\limits_{x\\to1^-}\\dfrac{x^2}{1+x}=\\dfrac12$ và $\\lim\\limits_{x\\to1^+}f(x)=\\lim\\limits_{x\\to1^+}x^3=1$.\n\nHai giới hạn một bên khác nhau nên $f$ gián đoạn tại $x=1$.\n\nVậy hàm số liên tục tại $x=0$ và gián đoạn tại $x=1$.\n\nChọn C.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const a=x=>-x*Math.cos(x),b=x=>x*x/(1+x),c=x=>x**3;C(a,b,b(0),0)&&!ok(b(1-h),c(1+h))"
+  ],
+  "sach_dap_so": "C",
+  "ghi_chu": ""
+ },
+ {
+  "id": "pnl-b3-p2-C40",
+  "vai": "luyen",
+  "dang_bai": "NDB01194",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tìm m để hàm gián đoạn tại x=2; giới hạn bằng 1 (x²-3x+2 = (x-1)(x-2)).",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho hàm số $f(x)=\\begin{cases}\\dfrac{x^2-3x+2}{x-2}&\\text{nếu }x\\ne2\\\\m&\\text{nếu }x=2\\end{cases}$. Giá trị của $m$ để hàm số $f(x)$ gián đoạn tại $x=2$ là",
+  "lua_chon": [
+   "$m\\ne3$",
+   "$m\\ne1$",
+   "$m=1$",
+   "$m=3$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số liên tục tại $x=2$ khi $m$ bằng giới hạn của $f(x)$ tại $2$, nên gián đoạn khi $m$ khác giới hạn đó.\n\n**Bước 1.** Phân tích tử thành nhân tử để rút gọn $x-2$ rồi tính giới hạn của $f(x)$ khi $x\\to2$.\n\n**Bước 2.** Viết điều kiện liên tục là $m$ bằng giới hạn vừa tính.\n\n**Bước 3.** Lấy phủ định của điều kiện đó để được điều kiện gián đoạn.\n\n**Phần 2. Trình bày**\n\nVới $x\\ne2$: $\\dfrac{x^2-3x+2}{x-2}=\\dfrac{(x-1)(x-2)}{x-2}=x-1$.\n\nSuy ra $\\lim\\limits_{x\\to2}f(x)=\\lim\\limits_{x\\to2}(x-1)=1$ và $f(2)=m$.\n\nHàm số gián đoạn tại $x=2$ khi và chỉ khi $m\\ne1$.\n\nChọn B.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const g=x=>(x*x-3*x+2)/(x-2);ok(g(2-h),1)&&ok(g(2+h),1)"
+  ],
+  "sach_dap_so": "B",
+  "ghi_chu": "Sách không gạch chân đáp án; lời giải sách cho m≠1 (B)."
+ },
+ {
+  "id": "pnl-b3-p2-C41",
+  "vai": "luyen",
+  "dang_bai": "NDB01188",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Hàm hai công thức x≠1 / x=1, giới hạn căn bậc ba bằng 1/3 khác f(1)=2/3.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho hàm số $f(x)=\\begin{cases}\\dfrac{\\sqrt[3]{x}-1}{x-1}&\\text{nếu }x\\ne1\\\\\\dfrac23&\\text{nếu }x=1\\end{cases}$. Khẳng định nào sau đây là đúng?",
+  "lua_chon": [
+   "Hàm số liên tục tại $x=1$",
+   "Hàm số liên tục tại mọi điểm",
+   "Hàm số gián đoạn tại $x=1$",
+   "Tất cả đều sai"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn biết hàm số có liên tục tại $x=1$ không, ta so sánh giới hạn của $f(x)$ khi $x\\to1$ với giá trị $f(1)$.\n\n**Bước 1.** Đặt ẩn phụ là căn bậc ba của $x$ để biến đổi mẫu thành một hiệu hai lập phương.\n\n**Bước 2.** Rút gọn nhân tử chung rồi tính giới hạn của $f(x)$ khi $x\\to1$.\n\n**Bước 3.** So giới hạn với $f(1)$ và đối chiếu các phương án.\n\n**Phần 2. Trình bày**\n\nĐặt $t=\\sqrt[3]{x}$, khi $x\\to1$ thì $t\\to1$ và $x-1=t^3-1=(t-1)(t^2+t+1)$.\n\nVới $x\\ne1$: $f(x)=\\dfrac{t-1}{(t-1)(t^2+t+1)}=\\dfrac{1}{t^2+t+1}$.\n\nSuy ra $\\lim\\limits_{x\\to1}f(x)=\\dfrac{1}{1+1+1}=\\dfrac13$.\n\nMà $f(1)=\\dfrac23\\ne\\dfrac13$ nên hàm số gián đoạn tại $x=1$.\n\nChọn C.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const f=x=>(Math.cbrt(x)-1)/(x-1);ok(f(1-h),1/3)&&ok(f(1+h),1/3)&&!ok(2/3,1/3)"
+  ],
+  "sach_dap_so": "C",
+  "ghi_chu": "Lời giải sách in nhầm f(2)=2/3; đúng phải là f(1)=2/3."
+ },
+ {
+  "id": "pnl-b3-p2-C42",
+  "vai": "luyen",
+  "dang_bai": "NDB01194",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tìm m để hàm gián đoạn tại x=1; tử phân tích (x-1)(x²+2).",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tìm giá trị thực của tham số $m$ để hàm số $f(x)=\\begin{cases}\\dfrac{x^3-x^2+2x-2}{x-1}&\\text{nếu }x\\ne1\\\\3x+m&\\text{nếu }x=1\\end{cases}$ gián đoạn tại $x=1$.",
+  "lua_chon": [
+   "$m\\ne0$",
+   "$m\\ne6$",
+   "$m=0$",
+   "$m=6$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số gián đoạn tại $x=1$ khi $f(1)$ khác giới hạn của $f(x)$ khi $x\\to1$.\n\n**Bước 1.** Nhóm các hạng tử của tử số để đặt được nhân tử chung $x-1$ rồi rút gọn phân thức.\n\n**Bước 2.** Tính giới hạn của $f(x)$ khi $x\\to1$ và tính $f(1)$ theo nhánh $x=1$.\n\n**Bước 3.** Lập điều kiện $f(1)$ khác giới hạn để tìm $m$.\n\n**Phần 2. Trình bày**\n\nVới $x\\ne1$: $x^3-x^2+2x-2=x^2(x-1)+2(x-1)=(x-1)(x^2+2)$.\n\nSuy ra $f(x)=x^2+2$ và $\\lim\\limits_{x\\to1}f(x)=3$.\n\nTa có $f(1)=3\\cdot1+m=3+m$.\n\nHàm số gián đoạn tại $x=1$ khi và chỉ khi $3+m\\ne3$.\n\nVậy $m\\ne0$.\n\nChọn A.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const g=x=>(x**3-x*x+2*x-2)/(x-1);ok(g(1-h),3)&&ok(g(1+h),3)&&ok(3+0,3)&&!ok(3+6,3)"
+  ],
+  "sach_dap_so": "A",
+  "ghi_chu": "Lời giải sách in nhầm lim x→2 (đúng phải là x→1); đáp số không đổi."
+ },
+ {
+  "id": "pnl-b3-p2-C43",
+  "vai": "luyen",
+  "dang_bai": "NDB01194",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tìm m để hàm gián đoạn tại x=1; giới hạn dạng 0/0 có một căn, nhân liên hợp.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho hàm số $f(x)=\\begin{cases}\\dfrac{\\sqrt{3x^2+2x-1}-2}{x^2-1}&\\text{nếu }x\\ne1\\\\4-m&\\text{nếu }x=1\\end{cases}$. Hàm số $f(x)$ gián đoạn tại $x=1$ khi",
+  "lua_chon": [
+   "$m=3$",
+   "$m\\ne3$",
+   "$m=7$",
+   "$m\\ne7$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khi $x\\to1$ cả tử và mẫu cùng tiến tới $0$, nên phải nhân liên hợp biểu thức chứa căn trước khi tính giới hạn.\n\n**Bước 1.** Nhân cả tử và mẫu với biểu thức liên hợp của tử để khử căn, tử trở thành một đa thức bậc hai.\n\n**Bước 2.** Phân tích tử thành nhân tử để rút gọn $x-1$ rồi tính giới hạn khi $x\\to1$.\n\n**Bước 3.** So giới hạn với $f(1)=4-m$ và lập điều kiện gián đoạn.\n\n**Phần 2. Trình bày**\n\nVới $x\\ne1$: $\\dfrac{\\sqrt{3x^2+2x-1}-2}{x^2-1}=\\dfrac{3x^2+2x-5}{(x^2-1)(\\sqrt{3x^2+2x-1}+2)}$.\n\nVì $3x^2+2x-5=(x-1)(3x+5)$ và $x^2-1=(x-1)(x+1)$ nên $f(x)=\\dfrac{3x+5}{(x+1)(\\sqrt{3x^2+2x-1}+2)}$.\n\nSuy ra $\\lim\\limits_{x\\to1}f(x)=\\dfrac{8}{2\\cdot(2+2)}=1$.\n\nHàm số gián đoạn tại $x=1$ khi và chỉ khi $4-m\\ne1$.\n\nVậy $m\\ne3$.\n\nChọn B.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const g=x=>(Math.sqrt(3*x*x+2*x-1)-2)/(x*x-1);ok(g(1-h),1)&&ok(g(1+h),1)&&ok(4-3,1)&&!ok(4-7,1)"
+  ],
+  "sach_dap_so": "B",
+  "ghi_chu": "Lời giải sách in nhầm lim x→2 (đúng phải là x→1); đáp số không đổi."
+ },
+ {
+  "id": "pnl-b3-p2-C44",
+  "vai": "luyen",
+  "dang_bai": "NDB01194",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tìm m để hàm gián đoạn tại x=-1; hai nhánh, tham số ở nhánh x≥-1.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tìm giá trị của tham số $m$ để hàm số $f(x)=\\begin{cases}\\dfrac{x^2+3x+2}{x^2-1}&\\text{nếu }x<-1\\\\mx+2&\\text{nếu }x\\ge-1\\end{cases}$ gián đoạn tại $x=-1$.",
+  "lua_chon": [
+   "$m=\\dfrac32$",
+   "$m=\\dfrac52$",
+   "$m\\ne\\dfrac32$",
+   "$m\\ne\\dfrac52$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số gián đoạn tại $x=-1$ khi giá trị $f(-1)$ khác giới hạn trái, vì giới hạn phải luôn bằng $f(-1)$.\n\n**Bước 1.** Rút gọn phân thức của nhánh $x<-1$ bằng cách phân tích tử và mẫu thành nhân tử.\n\n**Bước 2.** Tính giới hạn trái, giới hạn phải và $f(-1)$ theo các nhánh tương ứng.\n\n**Bước 3.** Lập điều kiện giới hạn trái khác $f(-1)$ rồi giải tìm $m$.\n\n**Phần 2. Trình bày**\n\nVới $x<-1$: $\\dfrac{x^2+3x+2}{x^2-1}=\\dfrac{(x+1)(x+2)}{(x-1)(x+1)}=\\dfrac{x+2}{x-1}$.\n\nSuy ra $\\lim\\limits_{x\\to-1^-}f(x)=\\dfrac{-1+2}{-1-1}=-\\dfrac12$.\n\n$f(-1)=-m+2$ và $\\lim\\limits_{x\\to-1^+}f(x)=\\lim\\limits_{x\\to-1^+}(mx+2)=-m+2$.\n\nHàm số gián đoạn tại $x=-1$ khi và chỉ khi $-m+2\\ne-\\dfrac12$.\n\nVậy $m\\ne\\dfrac52$.\n\nChọn D.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const l=x=>(x*x+3*x+2)/(x*x-1);ok(l(-1-h),-0.5)&&ok(-(5/2)+2,-0.5)&&!ok(-(3/2)+2,-0.5)"
+  ],
+  "sach_dap_so": "D",
+  "ghi_chu": "Lời giải sách in nhầm lim x→1⁺ (đúng phải là x→-1⁺); đáp số không đổi."
+ },
+ {
+  "id": "pnl-b3-p2-C45",
+  "vai": "luyen",
+  "dang_bai": "NDB01191",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tham số chỉ ở nhánh x≠1; giới hạn = m²+m-2 = f(1)=0, tính tổng nghiệm.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho hàm số $f(x)=\\begin{cases}m^2+mx-2&\\text{nếu }x\\ne1\\\\0&\\text{nếu }x=1\\end{cases}$. Tính tổng các giá trị tìm được của tham số $m$ để hàm số liên tục tại $x=1$.",
+  "lua_chon": [
+   "$2$",
+   "$4$",
+   "$1$",
+   "$-1$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Điều kiện liên tục cho một phương trình bậc hai ẩn $m$, và tổng hai nghiệm tính được bằng hệ thức Viète.\n\n**Bước 1.** Tính giới hạn của $f(x)$ khi $x\\to1$ theo nhánh $x\\ne1$, kết quả chỉ còn chứa $m$.\n\n**Bước 2.** Lập điều kiện giới hạn bằng $f(1)$ để được phương trình ẩn $m$.\n\n**Bước 3.** Kiểm tra phương trình có hai nghiệm phân biệt rồi tính tổng hai nghiệm.\n\n**Phần 2. Trình bày**\n\n$\\lim\\limits_{x\\to1}f(x)=\\lim\\limits_{x\\to1}(m^2+mx-2)=m^2+m-2$ và $f(1)=0$.\n\nHàm số liên tục tại $x=1$ khi và chỉ khi $m^2+m-2=0$.\n\nPhương trình có $\\Delta=1+8=9>0$ nên có hai nghiệm phân biệt $m=1$ và $m=-2$.\n\nTổng các giá trị của $m$ là $1+(-2)=-1$.\n\nVậy tổng cần tìm bằng $-1$.\n\nChọn D.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);[1,-2].every(m=>ok(m*m+m-2,0))&&ok(1+(-2),-1)"
+  ],
+  "sach_dap_so": "D",
+  "ghi_chu": ""
+ },
+ {
+  "id": "pnl-b3-p2-C46",
+  "vai": "luyen",
+  "dang_bai": "NDB01191",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tham số chỉ ở nhánh x=1; giới hạn 0/0 phân tích nhân tử.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho hàm số $f(x)=\\begin{cases}\\dfrac{x^2-3x+2}{x-1}&\\text{nếu }x\\ne1\\\\m&\\text{nếu }x=1\\end{cases}$. Tìm $m$ để hàm số liên tục tại $x=1$.",
+  "lua_chon": [
+   "$m=-2$",
+   "$m=2$",
+   "$m=-1$",
+   "$m=1$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số liên tục tại $x=1$ khi $m$ bằng giới hạn của $f(x)$ khi $x\\to1$.\n\n**Bước 1.** Phân tích tử thành nhân tử để rút gọn $x-1$ trong phân thức.\n\n**Bước 2.** Tính giới hạn của biểu thức đã rút gọn khi $x\\to1$.\n\n**Bước 3.** Cho giá trị tại điểm $f(1)=m$ bằng giới hạn vừa tính.\n\n**Phần 2. Trình bày**\n\nVới $x\\ne1$: $\\dfrac{x^2-3x+2}{x-1}=\\dfrac{(x-1)(x-2)}{x-1}=x-2$.\n\nSuy ra $\\lim\\limits_{x\\to1}f(x)=\\lim\\limits_{x\\to1}(x-2)=-1$.\n\nHàm số liên tục tại $x=1$ khi và chỉ khi $\\lim\\limits_{x\\to1}f(x)=f(1)$, tức là $m=-1$.\n\nChọn C.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const g=x=>(x*x-3*x+2)/(x-1);ok(g(1-h),-1)&&ok(g(1+h),-1)&&[-2,2,1].every(m=>!ok(m,-1))"
+  ],
+  "sach_dap_so": "C",
+  "ghi_chu": ""
+ },
+ {
+  "id": "pnl-b3-p2-C47",
+  "vai": "luyen",
+  "dang_bai": "NDB01191",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tham số chỉ ở nhánh x=2; giới hạn bằng 12 (x³-8 = (x-2)(x²+2x+4)).",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho hàm số $f(x)=\\begin{cases}\\dfrac{x^3-8}{x-2}&\\text{nếu }x\\ne2\\\\mx+1&\\text{nếu }x=2\\end{cases}$. Tìm tất cả các giá trị $m$ để hàm số $y=f(x)$ liên tục tại $x=2$.",
+  "lua_chon": [
+   "$m=\\dfrac{11}{2}$",
+   "$m=\\dfrac{15}{2}$",
+   "$m=\\dfrac{13}{2}$",
+   "$m=\\dfrac{17}{2}$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số liên tục tại $x=2$ khi giới hạn của $f(x)$ khi $x\\to2$ bằng $f(2)=2m+1$.\n\n**Bước 1.** Phân tích hiệu hai lập phương ở tử để rút gọn nhân tử $x-2$.\n\n**Bước 2.** Tính giới hạn của biểu thức đã rút gọn khi $x\\to2$.\n\n**Bước 3.** Lập phương trình bậc nhất ẩn $m$ từ điều kiện liên tục rồi giải.\n\n**Phần 2. Trình bày**\n\nVới $x\\ne2$: $\\dfrac{x^3-8}{x-2}=\\dfrac{(x-2)(x^2+2x+4)}{x-2}=x^2+2x+4$.\n\nSuy ra $\\lim\\limits_{x\\to2}f(x)=4+4+4=12$.\n\nTa có $f(2)=2m+1$.\n\nHàm số liên tục tại $x=2$ khi và chỉ khi $2m+1=12$, suy ra $m=\\dfrac{11}{2}$.\n\nChọn A.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const g=x=>(x**3-8)/(x-2);ok(g(2-h),12)&&ok(g(2+h),12)&&ok(2*(11/2)+1,12)&&[15/2,13/2,17/2].every(m=>!ok(2*m+1,12))"
+  ],
+  "sach_dap_so": "A",
+  "ghi_chu": ""
+ },
+ {
+  "id": "pnl-b3-p2-C48",
+  "vai": "luyen",
+  "dang_bai": "NDB01191",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tham số chỉ ở nhánh x=2; nhánh còn lại là hàm bậc nhất.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho hàm số $f(x)=\\begin{cases}2x+2&\\text{nếu }x\\ne2\\\\m+1&\\text{nếu }x=2\\end{cases}$. Giá trị của tham số $m$ để hàm số liên tục tại $x=2$ bằng",
+  "lua_chon": [
+   "$4$",
+   "$2$",
+   "$0$",
+   "$5$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số liên tục tại $x=2$ khi giới hạn của $f(x)$ tại $2$ bằng $f(2)$, nên cần so sánh hai số này.\n\n**Bước 1.** Tính giới hạn của $f(x)$ khi $x\\to2$ theo nhánh $x\\ne2$ là một đa thức.\n\n**Bước 2.** Ghi lại $f(2)$ theo nhánh $x=2$, có chứa tham số $m$.\n\n**Bước 3.** Cho hai đại lượng bằng nhau rồi giải tìm $m$.\n\n**Phần 2. Trình bày**\n\n$\\lim\\limits_{x\\to2}f(x)=\\lim\\limits_{x\\to2}(2x+2)=6$ và $f(2)=m+1$.\n\nHàm số liên tục tại $x=2$ khi và chỉ khi $6=m+1$.\n\nVậy $m=5$.\n\nChọn D.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);ok(2*(2+h)+2,6)&&ok(2*(2-h)+2,6)&&[4,2,0].every(m=>!ok(m+1,6))&&ok(5+1,6)"
+  ],
+  "sach_dap_so": "D",
+  "ghi_chu": ""
+ },
+ {
+  "id": "pnl-b3-p2-C49",
+  "vai": "luyen",
+  "dang_bai": "NDB01191",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Tham số chỉ ở nhánh x=1 (m²+m-8); phương trình bậc hai, tích nghiệm.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Gọi $S$ là tập các giá trị của tham số $m$ để hàm số $f(x)=\\begin{cases}x^2-3x&\\text{nếu }x\\ne1\\\\m^2+m-8&\\text{nếu }x=1\\end{cases}$ liên tục tại $x=1$. Tích các phần tử của tập $S$ bằng",
+  "lua_chon": [
+   "$-2$",
+   "$-8$",
+   "$-6$",
+   "$-1$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Điều kiện liên tục cho phương trình bậc hai ẩn $m$, rồi lấy tích hai nghiệm của phương trình đó.\n\n**Bước 1.** Tính giới hạn của $f(x)$ khi $x\\to1$ bằng cách thay trực tiếp vì biểu thức là đa thức.\n\n**Bước 2.** Lập điều kiện giới hạn bằng $f(1)=m^2+m-8$ để có phương trình ẩn $m$.\n\n**Bước 3.** Giải phương trình rồi lập tập $S$ và tính tích các phần tử.\n\n**Phần 2. Trình bày**\n\n$\\lim\\limits_{x\\to1}f(x)=\\lim\\limits_{x\\to1}(x^2-3x)=1-3=-2$ và $f(1)=m^2+m-8$.\n\nHàm số liên tục tại $x=1$ khi và chỉ khi $m^2+m-8=-2$.\n\nSuy ra $m^2+m-6=0$, tức là $m=2$ hoặc $m=-3$.\n\nVậy $S=\\{2;-3\\}$ và tích các phần tử của $S$ là $2\\cdot(-3)=-6$.\n\nChọn C.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);[2,-3].every(m=>ok(m*m+m-8,-2))&&ok(2*-3,-6)"
+  ],
+  "sach_dap_so": "C",
+  "ghi_chu": "Đề in công thức hàm số bằng đối tượng MathType hỏng; dựng lại từ lời giải sách (x≠1: x²-3x; x=1: m²+m-8). Nếu bản gốc nhánh x≠1 là phân thức rút gọn được thành x²-3x thì đáp số vẫn không đổi."
+ },
+ {
+  "id": "pnl-b3-p2-C50",
+  "vai": "luyen",
+  "dang_bai": "NDB01191",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tham số chỉ ở nhánh x=1 (m²+2m-4); giới hạn 0/0 bằng -1.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tìm $m$ để hàm số $f(x)=\\begin{cases}\\dfrac{x^2-3x+2}{x-1}&\\text{nếu }x\\ne1\\\\m^2+2m-4&\\text{nếu }x=1\\end{cases}$ liên tục tại $x=1$.",
+  "lua_chon": [
+   "$m=1$",
+   "$m=-3$ hoặc $m=1$",
+   "$m=3$ hoặc $m=1$",
+   "$m=-3$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số liên tục tại $x=1$ khi giới hạn của $f(x)$ khi $x\\to1$ bằng $f(1)=m^2+2m-4$.\n\n**Bước 1.** Phân tích tử thành nhân tử để rút gọn phân thức rồi tính giới hạn khi $x\\to1$.\n\n**Bước 2.** Lập điều kiện giới hạn bằng $f(1)$ để được một phương trình bậc hai ẩn $m$.\n\n**Bước 3.** Giải phương trình bậc hai và đối chiếu với các phương án.\n\n**Phần 2. Trình bày**\n\nVới $x\\ne1$: $\\dfrac{x^2-3x+2}{x-1}=\\dfrac{(x-1)(x-2)}{x-1}=x-2$.\n\nSuy ra $\\lim\\limits_{x\\to1}f(x)=\\lim\\limits_{x\\to1}(x-2)=-1$.\n\nHàm số liên tục tại $x=1$ khi và chỉ khi $m^2+2m-4=-1$.\n\nSuy ra $m^2+2m-3=0$, tức là $m=1$ hoặc $m=-3$.\n\nChọn B.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const g=x=>(x*x-3*x+2)/(x-1);ok(g(1-h),-1)&&ok(g(1+h),-1)&&[1,-3].every(m=>ok(m*m+2*m-4,-1))&&![3,-1,0].some(m=>ok(m*m+2*m-4,-1))"
+  ],
+  "sach_dap_so": "B",
+  "ghi_chu": "Đề in công thức hàm số bằng đối tượng MathType hỏng; dựng lại từ lời giải sách (x≠1: (x²-3x+2)/(x-1); x=1: m²+2m-4)."
+ },
+ {
+  "id": "pnl-b3-p2-C51",
+  "vai": "luyen",
+  "dang_bai": "NDB01191",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tham số chỉ ở nhánh x≤2; nhánh x>2 không chứa m (khử 0/0 bằng liên hợp).",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho hàm số $f(x)=\\begin{cases}\\dfrac{x^2-3x+2}{\\sqrt{x+2}-2}&\\text{nếu }x>2\\\\m^2x-4m+6&\\text{nếu }x\\le2\\end{cases}$, $m$ là tham số. Có bao nhiêu giá trị của $m$ để hàm số đã cho liên tục tại $x=2$?",
+  "lua_chon": [
+   "$0$",
+   "$2$",
+   "$1$",
+   "$3$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số liên tục tại $x=2$ khi giới hạn phải, giới hạn trái và $f(2)$ bằng nhau; giới hạn phải cần khử dạng $\\dfrac00$ bằng nhân liên hợp.\n\n**Bước 1.** Tính giới hạn phải bằng cách phân tích tử thành nhân tử và nhân liên hợp mẫu để rút gọn $x-2$.\n\n**Bước 2.** Tính giới hạn trái và $f(2)$ theo nhánh $x\\le2$, kết quả chứa $m$.\n\n**Bước 3.** Cho ba đại lượng bằng nhau, giải phương trình ẩn $m$ rồi đếm số nghiệm.\n\n**Phần 2. Trình bày**\n\nVới $x>2$: $x^2-3x+2=(x-1)(x-2)$ và $\\sqrt{x+2}-2=\\dfrac{x-2}{\\sqrt{x+2}+2}$.\n\nSuy ra $f(x)=(x-1)(\\sqrt{x+2}+2)$ và $\\lim\\limits_{x\\to2^+}f(x)=1\\cdot(2+2)=4$.\n\nTa có $f(2)=2m^2-4m+6$ và $\\lim\\limits_{x\\to2^-}f(x)=\\lim\\limits_{x\\to2^-}(m^2x-4m+6)=2m^2-4m+6$.\n\nHàm số liên tục tại $x=2$ khi và chỉ khi $2m^2-4m+6=4$.\n\nSuy ra $2m^2-4m+2=0$, tức là $2(m-1)^2=0$, nên $m=1$.\n\nVậy có đúng $1$ giá trị của $m$.\n\nChọn C.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const g=x=>(x*x-3*x+2)/(Math.sqrt(x+2)-2);ok(g(2+h),4)&&Array.from({length:2001},(_,i)=>-5+i/200).filter(m=>Math.abs(2*m*m-4*m+6-4)<1e-9).length===1"
+  ],
+  "sach_dap_so": "C",
+  "ghi_chu": ""
+ },
+ {
+  "id": "pnl-b3-p2-C52",
+  "vai": "luyen",
+  "dang_bai": "NDB01191",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tham số chỉ ở nhánh x≤8; nhánh x>8 không chứa a (liên hợp bậc ba).",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho hàm số $f(x)=\\begin{cases}\\dfrac{x-8}{\\sqrt[3]{x}-2}&\\text{nếu }x>8\\\\ax+4&\\text{nếu }x\\le8\\end{cases}$. Để hàm số liên tục tại $x=8$, giá trị của $a$ là",
+  "lua_chon": [
+   "$2$",
+   "$3$",
+   "$1$",
+   "$4$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn phải dạng $\\dfrac00$ có căn bậc ba nên dùng hằng đẳng thức hiệu hai lập phương để rút gọn nhân tử.\n\n**Bước 1.** Đặt ẩn phụ là căn bậc ba của $x$ để mẫu thành một hiệu và tử thành hiệu hai lập phương.\n\n**Bước 2.** Phân tích tử và rút gọn nhân tử chung để tính giới hạn phải tại $x=8$.\n\n**Bước 3.** Tính giới hạn trái và $f(8)$ rồi cho ba đại lượng bằng nhau để tìm $a$.\n\n**Phần 2. Trình bày**\n\nĐặt $t=\\sqrt[3]{x}$, khi $x\\to8^+$ thì $t\\to2^+$ và $x-8=t^3-8=(t-2)(t^2+2t+4)$.\n\nVới $x>8$: $f(x)=\\dfrac{(t-2)(t^2+2t+4)}{t-2}=t^2+2t+4$, nên $\\lim\\limits_{x\\to8^+}f(x)=4+4+4=12$.\n\nTa có $f(8)=8a+4$ và $\\lim\\limits_{x\\to8^-}f(x)=\\lim\\limits_{x\\to8^-}(ax+4)=8a+4$.\n\nHàm số liên tục tại $x=8$ khi và chỉ khi $8a+4=12$.\n\nVậy $a=1$.\n\nChọn C.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const g=x=>(x-8)/(Math.cbrt(x)-2);ok(g(8+h),12)&&ok(8*1+4,12)&&[2,3,4].every(a=>!ok(8*a+4,12))"
+  ],
+  "sach_dap_so": "C",
+  "ghi_chu": ""
+ },
+ {
+  "id": "pnl-b3-p2-C53",
+  "vai": "luyen",
+  "dang_bai": "NDB01191",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Tìm a để liên tục tại 0 (giới hạn có căn), rồi đếm nghiệm nguyên bất phương trình.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho hàm số $f(x)=\\begin{cases}\\dfrac{\\sqrt{4x+1}-1}{ax^2+(2a+1)x}&\\text{nếu }x\\ne0\\\\3&\\text{nếu }x=0\\end{cases}$. Biết $a$ là giá trị để hàm số liên tục tại $x_0=0$. Tìm số nghiệm nguyên của bất phương trình $x^2-x+36a<0$.",
+  "lua_chon": [
+   "$4$",
+   "$3$",
+   "$2$",
+   "$0$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trước hết tìm $a$ từ điều kiện liên tục tại $x_0=0$, sau đó thay $a$ vào bất phương trình bậc hai để đếm nghiệm nguyên.\n\n**Bước 1.** Nhân liên hợp tử số và rút gọn nhân tử $x$ để tính giới hạn của $f(x)$ khi $x\\to0$ theo $a$.\n\n**Bước 2.** Cho giới hạn bằng $f(0)=3$ để tìm giá trị của $a$.\n\n**Bước 3.** Thay $a$ vào bất phương trình, giải bất phương trình bậc hai rồi liệt kê các số nguyên thoả mãn.\n\n**Phần 2. Trình bày**\n\nVới $x\\ne0$: $\\dfrac{\\sqrt{4x+1}-1}{ax^2+(2a+1)x}=\\dfrac{4x}{x(ax+2a+1)(\\sqrt{4x+1}+1)}=\\dfrac{4}{(ax+2a+1)(\\sqrt{4x+1}+1)}$.\n\nSuy ra $\\lim\\limits_{x\\to0}f(x)=\\dfrac{4}{(2a+1)\\cdot2}=\\dfrac{2}{2a+1}$.\n\nHàm số liên tục tại $x_0=0$ khi và chỉ khi $\\dfrac{2}{2a+1}=3$, suy ra $2a+1=\\dfrac23$ và $a=-\\dfrac16$.\n\nKhi đó $36a=-6$ nên bất phương trình trở thành $x^2-x-6<0$.\n\nTa có $x^2-x-6=(x-3)(x+2)<0\\Leftrightarrow-2<x<3$.\n\nCác số nguyên thoả mãn là $-1;0;1;2$, vậy có $4$ nghiệm nguyên.\n\nChọn A.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const a=-1/6,g=x=>(Math.sqrt(4*x+1)-1)/(a*x*x+(2*a+1)*x);ok(g(h),3)&&ok(g(-h),3)&&Array.from({length:21},(_,i)=>i-10).filter(x=>x*x-x+36*a<0).length===4"
+  ],
+  "sach_dap_so": "A",
+  "ghi_chu": ""
+ },
+ {
+  "id": "pnl-b3-p2-C54",
+  "vai": "luyen",
+  "dang_bai": "NDB01193",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Hai tham số a, b; giới hạn dạng 0/0 có căn bậc ba và căn bậc hai, tách hiệu rồi liên hợp.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho hàm số $f(x)=\\begin{cases}\\dfrac{\\sqrt[3]{ax+1}-\\sqrt{1-bx}}{x}&\\text{nếu }x\\ne0\\\\3a-5b-1&\\text{nếu }x=0\\end{cases}$. Tìm điều kiện của tham số $a$, $b$ để hàm số trên liên tục tại điểm $x=0$. Khẳng định nào sau đây là đúng?",
+  "lua_chon": [
+   "$a-8b=1$",
+   "$2a-6b=1$",
+   "$16a-33b=6$",
+   "$2a-4b=1$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tách tử thành hai hiệu mỗi hiệu chứa một căn, liên hợp riêng từng hiệu để rút gọn $x$, rồi cho giới hạn bằng $f(0)$.\n\n**Bước 1.** Thêm bớt $1$ vào tử để tách thành hiệu của căn bậc ba với $1$ và hiệu của $1$ với căn bậc hai.\n\n**Bước 2.** Nhân liên hợp từng hiệu (liên hợp bậc ba cho hiệu đầu, liên hợp bậc hai cho hiệu sau) để rút gọn $x$ rồi tính giới hạn.\n\n**Bước 3.** Cho giới hạn bằng $f(0)$ và biến đổi về một hệ thức tuyến tính giữa $a$ và $b$.\n\n**Phần 2. Trình bày**\n\nVới $x\\ne0$: $\\dfrac{\\sqrt[3]{ax+1}-\\sqrt{1-bx}}{x}=\\dfrac{\\sqrt[3]{ax+1}-1}{x}+\\dfrac{1-\\sqrt{1-bx}}{x}$.\n\n$\\dfrac{\\sqrt[3]{ax+1}-1}{x}=\\dfrac{a}{\\sqrt[3]{(ax+1)^2}+\\sqrt[3]{ax+1}+1}\\to\\dfrac a3$ khi $x\\to0$.\n\n$\\dfrac{1-\\sqrt{1-bx}}{x}=\\dfrac{b}{1+\\sqrt{1-bx}}\\to\\dfrac b2$ khi $x\\to0$.\n\nSuy ra $\\lim\\limits_{x\\to0}f(x)=\\dfrac a3+\\dfrac b2=\\dfrac{2a+3b}{6}$ và $f(0)=3a-5b-1$.\n\nHàm số liên tục tại $x=0$ khi và chỉ khi $\\dfrac{2a+3b}{6}=3a-5b-1$, tức là $2a+3b=18a-30b-6$.\n\nVậy $16a-33b=6$.\n\nChọn C.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const t=(a,b)=>{const g=x=>(Math.cbrt(a*x+1)-Math.sqrt(1-b*x))/x;return ok(g(1e-6),3*a-5*b-1)&&ok(g(-1e-6),3*a-5*b-1)};t(3/8,0)&&t(4.5,2)&&!t(9,1)&&!t(0.5,0)&&!t(1,0)"
+  ],
+  "sach_dap_so": "C",
+  "ghi_chu": ""
+ },
+ {
+  "id": "pnl-b3-p2-C55",
+  "vai": "luyen",
+  "dang_bai": "NDB01195",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Nhận hàm không liên tục trên R: phân thức có mẫu bằng 0 tại x=2.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Hàm số nào sau đây không liên tục trên $\\mathbb{R}$?",
+  "lua_chon": [
+   "$y=x^3+1$",
+   "$y=x^4-2x^2+1$",
+   "$y=\\sin x$",
+   "$y=\\dfrac{3x-4}{x-2}$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số liên tục trên $\\mathbb{R}$ phải xác định tại mọi điểm; hàm không xác định tại một điểm thì không liên tục trên $\\mathbb{R}$.\n\n**Bước 1.** Nhận dạng từng hàm số: đa thức, lượng giác hay phân thức.\n\n**Bước 2.** Nhớ rằng đa thức và hàm sin liên tục trên toàn bộ tập số thực.\n\n**Bước 3.** Tìm tập xác định của hàm phân thức còn lại để biết nó có liên tục trên $\\mathbb{R}$ hay không.\n\n**Phần 2. Trình bày**\n\nCác hàm $y=x^3+1$ và $y=x^4-2x^2+1$ là đa thức nên liên tục trên $\\mathbb{R}$.\n\nHàm $y=\\sin x$ xác định trên $\\mathbb{R}$ nên liên tục trên $\\mathbb{R}$.\n\nHàm $y=\\dfrac{3x-4}{x-2}$ có tập xác định $\\mathbb{R}\\setminus\\{2\\}$ nên không xác định tại $x=2$.\n\nDo đó hàm số này gián đoạn tại $x=2$, không liên tục trên $\\mathbb{R}$.\n\nChọn D.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const f=x=>(3*x-4)/(x-2);Math.abs(f(2+h))>1e4&&Math.abs(f(2-h))>1e4&&f(2+h)*f(2-h)<0"
+  ],
+  "sach_dap_so": "D",
+  "ghi_chu": ""
+ },
+ {
+  "id": "pnl-b3-p2-C56",
+  "vai": "luyen",
+  "dang_bai": "NDB01195",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Hàm liên tục trên khoảng (-∞;+∞): chỉ hàm đa thức.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Hàm số nào dưới đây liên tục trên khoảng $(-\\infty;+\\infty)$?",
+  "lua_chon": [
+   "$y=x+\\dfrac1x$",
+   "$y=\\sqrt{2-x}$",
+   "$y=\\dfrac{2x+1}{x-7}$",
+   "$y=x+7$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Một hàm số liên tục trên cả $(-\\infty;+\\infty)$ khi và chỉ khi nó xác định tại mọi số thực.\n\n**Bước 1.** Tìm tập xác định của từng hàm số ở bốn phương án.\n\n**Bước 2.** Loại những hàm có điểm làm mẫu bằng $0$ hoặc làm biểu thức trong căn âm.\n\n**Bước 3.** Chọn hàm số có tập xác định là toàn bộ $\\mathbb{R}$.\n\n**Phần 2. Trình bày**\n\n$y=x+\\dfrac1x$ không xác định tại $x=0$.\n\n$y=\\sqrt{2-x}$ chỉ xác định khi $x\\le2$.\n\n$y=\\dfrac{2x+1}{x-7}$ không xác định tại $x=7$.\n\n$y=x+7$ là hàm đa thức, xác định và liên tục trên $\\mathbb{R}$.\n\nChọn D.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);!isFinite(1/0)&&isNaN(Math.sqrt(2-3))&&!isFinite((2*7+1)/(7-7))&&isFinite(5+7)"
+  ],
+  "sach_dap_so": "D",
+  "ghi_chu": ""
+ },
+ {
+  "id": "pnl-b3-p2-C57",
+  "vai": "luyen",
+  "dang_bai": "NDB01195",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Nhận hàm không liên tục trên R: phân thức x/(x-1).",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Hàm số nào trong các hàm số sau đây không liên tục trên $\\mathbb{R}$?",
+  "lua_chon": [
+   "$y=|x|$",
+   "$y=\\dfrac{x}{x-1}$",
+   "$y=\\sin x$",
+   "$y=\\dfrac{x}{|x|+1}$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm số không liên tục trên $\\mathbb{R}$ khi tập xác định của nó thiếu ít nhất một số thực.\n\n**Bước 1.** Tìm tập xác định của từng hàm số trong bốn phương án.\n\n**Bước 2.** Kiểm tra mẫu thức của hai hàm phân thức có thể bằng $0$ hay không.\n\n**Bước 3.** Chọn hàm có tập xác định không phải toàn bộ $\\mathbb{R}$.\n\n**Phần 2. Trình bày**\n\nCác hàm $y=|x|$ và $y=\\sin x$ xác định và liên tục trên $\\mathbb{R}$.\n\nHàm $y=\\dfrac{x}{|x|+1}$ có mẫu $|x|+1\\ge1>0$ nên xác định và liên tục trên $\\mathbb{R}$.\n\nHàm $y=\\dfrac{x}{x-1}$ có tập xác định $\\mathbb{R}\\setminus\\{1\\}$ nên không liên tục trên $\\mathbb{R}$.\n\nChọn B.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);!isFinite(1/(1-1))&&[-3,0,2,5].every(x=>isFinite(x/(Math.abs(x)+1)))"
+  ],
+  "sach_dap_so": "B",
+  "ghi_chu": ""
+ },
+ {
+  "id": "pnl-b3-p2-C58",
+  "vai": "luyen",
+  "dang_bai": "NDB01195",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tìm khoảng liên tục của hàm phân thức: khoảng không chứa nghiệm của mẫu.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho hàm số $f(x)=\\dfrac{x^2+2}{x^2+5x+6}$. Hàm số đã cho liên tục trên khoảng nào sau đây?",
+  "lua_chon": [
+   "$(-3;3)$",
+   "$(-\\infty;3)$",
+   "$(-3;2)$",
+   "$(-2;+\\infty)$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm phân thức liên tục trên mỗi khoảng nằm trong tập xác định, nên khoảng cần tìm không được chứa nghiệm nào của mẫu thức.\n\n**Bước 1.** Giải phương trình mẫu thức bằng $0$ để tìm các điểm hàm số không xác định.\n\n**Bước 2.** Viết tập xác định và các khoảng liên tục của hàm số.\n\n**Bước 3.** Chọn phương án là khoảng không chứa điểm nào làm mẫu bằng $0$.\n\n**Phần 2. Trình bày**\n\nMẫu thức $x^2+5x+6=(x+2)(x+3)=0\\Leftrightarrow x=-2$ hoặc $x=-3$.\n\nTập xác định là $D=\\mathbb{R}\\setminus\\{-3;-2\\}$; hàm số liên tục trên $(-\\infty;-3)$, $(-3;-2)$ và $(-2;+\\infty)$.\n\nCác khoảng $(-3;3)$, $(-\\infty;3)$, $(-3;2)$ đều chứa $x=-2$ nên hàm số không liên tục trên chúng.\n\nKhoảng $(-2;+\\infty)$ không chứa $-2$ và $-3$ nên nằm trong tập xác định.\n\nChọn D.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const c=(lo,hi)=>[-2,-3].some(a=>a>lo&&a<hi);[-2,-3].every(a=>a*a+5*a+6===0)&&c(-3,3)&&c(-Infinity,3)&&c(-3,2)&&!c(-2,Infinity)"
+  ],
+  "sach_dap_so": "D",
+  "ghi_chu": ""
+ },
+ {
+  "id": "pnl-b3-p2-C59",
+  "vai": "luyen",
+  "dang_bai": "NDB01196",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Hàm hai công thức, điểm ghép x=2: giới hạn trái -1/24 khác giới hạn phải 0.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho hàm số $f(x)=\\begin{cases}\\dfrac{x^2-5x+6}{2x^3-16}&\\text{nếu }x<2\\\\2-x&\\text{nếu }x\\ge2\\end{cases}$. Khẳng định nào sau đây là đúng?",
+  "lua_chon": [
+   "Hàm số liên tục trên $\\mathbb{R}$",
+   "Hàm số liên tục tại mọi điểm trên $\\mathbb{R}$",
+   "Hàm số không liên tục trên $(2;+\\infty)$",
+   "Hàm số gián đoạn tại điểm $x=2$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi nhánh liên tục trên khoảng của nó, nên tính liên tục của cả hàm quyết định bởi điểm ghép $x=2$.\n\n**Bước 1.** Nêu tính liên tục của hai nhánh trên các khoảng $(-\\infty;2)$ và $(2;+\\infty)$.\n\n**Bước 2.** Tính giới hạn phải theo nhánh $2-x$ và giới hạn trái bằng cách rút gọn nhân tử $x-2$ ở tử và mẫu.\n\n**Bước 3.** So sánh hai giới hạn một bên với $f(2)$ rồi đối chiếu các phương án.\n\n**Phần 2. Trình bày**\n\nVới $x<2$, $f(x)=\\dfrac{x^2-5x+6}{2x^3-16}$ xác định nên liên tục trên $(-\\infty;2)$; với $x>2$, $f(x)=2-x$ là đa thức nên liên tục trên $(2;+\\infty)$.\n\nTại $x=2$: $f(2)=2-2=0$ và $\\lim\\limits_{x\\to2^+}f(x)=\\lim\\limits_{x\\to2^+}(2-x)=0$.\n\nVới $x<2$: $\\dfrac{x^2-5x+6}{2x^3-16}=\\dfrac{(x-2)(x-3)}{2(x-2)(x^2+2x+4)}=\\dfrac{x-3}{2(x^2+2x+4)}$.\n\nSuy ra $\\lim\\limits_{x\\to2^-}f(x)=\\dfrac{2-3}{2\\cdot12}=-\\dfrac1{24}\\ne0=\\lim\\limits_{x\\to2^+}f(x)$.\n\nDo đó không tồn tại $\\lim\\limits_{x\\to2}f(x)$ nên hàm số gián đoạn tại $x=2$; các phương án A, B, C sai.\n\nChọn D.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const l=x=>(x*x-5*x+6)/(2*x**3-16);ok(l(2-h),-1/24)&&ok(2-(2+h),0)&&!ok(-1/24,0)"
+  ],
+  "sach_dap_so": "D",
+  "ghi_chu": ""
+ },
+ {
+  "id": "pnl-b3-p2-C60",
+  "vai": "luyen",
+  "dang_bai": "NDB01197",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tìm tham số m để hàm liên tục trên R: liên tục tại điểm ghép x=2, phương trình bậc hai.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Có bao nhiêu giá trị thực của tham số $m$ để hàm số $f(x)=\\begin{cases}m^2x^2&\\text{nếu }x\\le2\\\\ (1-m)x&\\text{nếu }x>2\\end{cases}$ liên tục trên $\\mathbb{R}$?",
+  "lua_chon": [
+   "$0$",
+   "$1$",
+   "$2$",
+   "$3$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi nhánh là đa thức nên hàm liên tục trên mỗi khoảng của nó; liên tục trên $\\mathbb{R}$ khi và chỉ khi liên tục tại điểm ghép $x=2$.\n\n**Bước 1.** Nêu rõ mỗi nhánh liên tục trên khoảng của nó, nên chỉ cần xét điểm ghép $x=2$.\n\n**Bước 2.** Tính $f(2)$, giới hạn trái và giới hạn phải tại $x=2$ theo $m$.\n\n**Bước 3.** Cho các đại lượng bằng nhau, giải phương trình bậc hai ẩn $m$ rồi đếm số nghiệm.\n\n**Phần 2. Trình bày**\n\nHàm số liên tục trên $(-\\infty;2)$ và $(2;+\\infty)$ vì mỗi nhánh là đa thức.\n\nTa có $f(2)=4m^2$, $\\lim\\limits_{x\\to2^-}f(x)=4m^2$ và $\\lim\\limits_{x\\to2^+}f(x)=2(1-m)$.\n\nHàm số liên tục trên $\\mathbb{R}$ khi và chỉ khi liên tục tại $x=2$, tức là $4m^2=2(1-m)$.\n\nSuy ra $2m^2+m-1=0$, tức là $(m+1)(2m-1)=0$.\n\nDo đó $m=-1$ hoặc $m=\\dfrac12$, vậy có $2$ giá trị của $m$.\n\nChọn C.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);Array.from({length:20001},(_,i)=>-5+i/2000).filter(m=>Math.abs(4*m*m-2*(1-m))<1e-9).length===2"
+  ],
+  "sach_dap_so": "C",
+  "ghi_chu": "Lời giải sách in nhầm lim (m²x) thay vì m²x²; đáp số không đổi."
+ },
+ {
+  "id": "pnl-b3-p2-C61",
+  "vai": "luyen",
+  "dang_bai": "NDB01197",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Tìm m để liên tục trên [0;+∞): chỉ cần liên tục tại x=1; giới hạn có căn, nhân liên hợp.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Biết rằng hàm số $f(x)=\\begin{cases}\\dfrac{x^2-1}{\\sqrt{x}-1}&\\text{nếu }x\\ne1\\\\m&\\text{nếu }x=1\\end{cases}$ liên tục trên đoạn $[0;+\\infty)$ (với $m$ là tham số). Khẳng định nào dưới đây là đúng?",
+  "lua_chon": [
+   "$m$ là một số hữu tỉ",
+   "$m$ là một số vô tỉ",
+   "$m>10$",
+   "$m<0$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Với $x\\ne1$ hàm xác định trên $[0;+\\infty)$ nên liên tục; vậy chỉ cần liên tục tại $x=1$, tức là $m$ bằng giới hạn của $f(x)$ khi $x\\to1$.\n\n**Bước 1.** Nêu rằng với $x\\ne1$ biểu thức xác định nên hàm liên tục, chỉ còn điểm $x=1$ cần xét.\n\n**Bước 2.** Phân tích $x^2-1$ và $x-1$ theo $\\sqrt{x}$ để rút gọn nhân tử $\\sqrt{x}-1$ rồi tính giới hạn tại $x=1$.\n\n**Bước 3.** Cho $m$ bằng giới hạn vừa tính rồi đối chiếu các tính chất của $m$ ở bốn phương án.\n\n**Phần 2. Trình bày**\n\nVới $x\\ge0$, $x\\ne1$ hàm số xác định nên liên tục trên $[0;1)$ và $(1;+\\infty)$.\n\nTa có $x^2-1=(x-1)(x+1)=(\\sqrt{x}-1)(\\sqrt{x}+1)(x+1)$.\n\nVới $x\\ne1$: $f(x)=(\\sqrt{x}+1)(x+1)$ nên $\\lim\\limits_{x\\to1}f(x)=2\\cdot2=4$.\n\nHàm số liên tục tại $x=1$ khi và chỉ khi $m=4$.\n\nSố $4$ là số hữu tỉ, không lớn hơn $10$ và không âm, nên chỉ phương án A đúng.\n\nChọn A.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const g=x=>(x*x-1)/(Math.sqrt(x)-1);ok(g(1+h),4)&&ok(g(1-h),4)&&Number.isInteger(4)&&!(4>10)&&!(4<0)"
+  ],
+  "sach_dap_so": "A",
+  "ghi_chu": ""
+ },
+ {
+  "id": "pnl-b3-p2-C62",
+  "vai": "luyen",
+  "dang_bai": "NDB01197",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Hàm ba công thức, liên tục trên tập xác định: xét điểm x=1 (giới hạn trái 2, phải m+1, f(1)=2).",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Tìm $m$ để hàm số $f(x)=\\begin{cases}x^2+x&\\text{nếu }x<1\\\\2&\\text{nếu }x=1\\\\mx+1&\\text{nếu }x>1\\end{cases}$ liên tục trên tập xác định của nó.",
+  "lua_chon": [
+   "$m=2$",
+   "$m=3$",
+   "$m=4$",
+   "$m=1$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các nhánh đều là đa thức nên liên tục trên khoảng của mình; hàm liên tục trên tập xác định khi liên tục tại $x=1$.\n\n**Bước 1.** Nêu tính liên tục của hai nhánh $x<1$ và $x>1$ vì đều là đa thức.\n\n**Bước 2.** Tính giới hạn trái, giới hạn phải và giá trị $f(1)$ rồi lập đẳng thức.\n\n**Bước 3.** Giải đẳng thức để tìm $m$.\n\n**Phần 2. Trình bày**\n\nTập xác định là $\\mathbb{R}$; $f$ liên tục trên $(-\\infty;1)$ và $(1;+\\infty)$ vì mỗi nhánh là đa thức.\n\nTa có $f(1)=2$, $\\lim\\limits_{x\\to1^-}f(x)=\\lim\\limits_{x\\to1^-}(x^2+x)=2$ và $\\lim\\limits_{x\\to1^+}f(x)=\\lim\\limits_{x\\to1^+}(mx+1)=m+1$.\n\nHàm số liên tục tại $x=1$ khi và chỉ khi $m+1=2$.\n\nVậy $m=1$.\n\nChọn D.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);ok(1+1,2)&&ok(1*1+1,2)&&[2,3,4].every(m=>!ok(m+1,2))"
+  ],
+  "sach_dap_so": "D",
+  "ghi_chu": ""
+ },
+ {
+  "id": "pnl-b3-p2-C63",
+  "vai": "luyen",
+  "dang_bai": "NDB01198",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Nhiệt độ tủ sấy hai giai đoạn: tìm hằng số k để hàm liên tục tại t=60.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Trong một tủ thí nghiệm, nhiệt độ trong tủ sấy được điều khiển tăng từ $10^\\circ\\text{C}$, mỗi phút tăng $2^\\circ\\text{C}$ trong $60$ phút, sau đó giảm mỗi phút $3^\\circ\\text{C}$ trong $40$ phút. Hàm số biểu thị nhiệt độ (tính theo $^\\circ\\text{C}$) trong tủ theo thời gian $t$ (tính theo phút) có dạng $T(t)=\\begin{cases}10+2t&\\text{nếu }0\\le t\\le60\\\\k-3t&\\text{nếu }60<t\\le100\\end{cases}$ ($k$ là hằng số). Biết rằng $T(t)$ là hàm liên tục trên tập xác định. Giá trị của $k$ là",
+  "lua_chon": [
+   "$k=0$",
+   "$k=340$",
+   "$k=310$",
+   "$k=430$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai nhánh đều là hàm bậc nhất nên chỉ cần $T$ liên tục tại thời điểm ghép $t=60$, tức hai nhánh cho cùng một giá trị tại đó.\n\n**Bước 1.** Tính giá trị nhiệt độ ở cuối giai đoạn tăng theo nhánh đầu tại $t=60$.\n\n**Bước 2.** Viết giá trị của nhánh sau khi $t$ tiến tới $60$ từ bên phải, chứa hằng số $k$.\n\n**Bước 3.** Cho hai giá trị bằng nhau để lập phương trình bậc nhất ẩn $k$.\n\n**Phần 2. Trình bày**\n\nMỗi nhánh là hàm bậc nhất nên $T$ liên tục trên $(0;60)$ và $(60;100)$.\n\nTa có $T(60)=10+2\\cdot60=130$ và $\\lim\\limits_{t\\to60^-}T(t)=130$.\n\n$\\lim\\limits_{t\\to60^+}T(t)=\\lim\\limits_{t\\to60^+}(k-3t)=k-180$.\n\n$T$ liên tục tại $t=60$ khi và chỉ khi $k-180=130$.\n\nVậy $k=310$.\n\nChọn C.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const A=t=>10+2*t,B=(t,k)=>k-3*t;ok(A(60),B(60,310))&&[0,340,430].every(k=>!ok(A(60),B(60,k)))"
+  ],
+  "sach_dap_so": "B (k=340)",
+  "ghi_chu": "LỆCH SÁCH — sách gạch chân B (k=340) do tính sai k-180=130; đúng là k=310 (phương án C). Kiểm máy: T(60)=130, k-180=130 ⇒ k=310."
+ },
+ {
+  "id": "pnl-b3-p2-C64",
+  "vai": "luyen",
+  "dang_bai": "NDB01200",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Xét nghiệm của bậc ba trên bốn khoảng: đổi dấu trên ba khoảng, khoảng (1;2) không đổi dấu.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho hàm số $f(x)=x^3-1000x^2+0{,}01$. Phương trình $f(x)=0$ có nghiệm thuộc khoảng nào trong các khoảng: I. $(-1;0)$; II. $(0;1)$; III. $(1;2)$; IV. $(2;1000)$?",
+  "lua_chon": [
+   "Chỉ I, II, III",
+   "Chỉ I và II",
+   "Chỉ I, II, IV",
+   "Cả I, II, III và IV"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm đa thức liên tục, nên khoảng nào mà $f$ đổi dấu ở hai đầu chắc chắn chứa nghiệm; phương trình bậc ba có tối đa ba nghiệm.\n\n**Bước 1.** Tính giá trị của $f$ tại các đầu mút $-1$, $0$, $1$, $2$, $1000$.\n\n**Bước 2.** Xét dấu tích hai đầu mút của từng khoảng để tìm khoảng chắc chắn có nghiệm.\n\n**Bước 3.** So số khoảng có nghiệm với số nghiệm tối đa của phương trình bậc ba để xét khoảng còn lại.\n\n**Phần 2. Trình bày**\n\n$f$ là hàm đa thức nên liên tục trên $\\mathbb{R}$. Ta có $f(-1)=-1000{,}99$, $f(0)=0{,}01$, $f(1)=-998{,}99$, $f(2)=-3991{,}99$, $f(1000)=0{,}01$.\n\n$f(-1)\\cdot f(0)<0$ nên có nghiệm thuộc $(-1;0)$; $f(0)\\cdot f(1)<0$ nên có nghiệm thuộc $(0;1)$.\n\n$f(2)\\cdot f(1000)<0$ nên có nghiệm thuộc $(2;1000)$.\n\nPhương trình bậc ba có tối đa $3$ nghiệm mà đã có ít nhất một nghiệm trong mỗi khoảng I, II, IV (ba khoảng rời nhau).\n\nDo đó mỗi khoảng I, II, IV chứa đúng một nghiệm và khoảng III không chứa nghiệm nào.\n\nChọn C.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const n=(f,a,b)=>{let c=0,p=f(a+1e-7);for(let x=a+1e-3;x<b;x+=1e-3){const v=f(x);if(p*v<0)c++;p=v}return c};const f=x=>x**3-1000*x*x+0.01;f(-1)*f(0)<0&&f(0)*f(1)<0&&f(1)*f(2)>0&&f(2)*f(1000)<0&&n(f,-2,1001)===3&&n(f,1,2)===0"
+  ],
+  "sach_dap_so": "C",
+  "ghi_chu": "Lời giải sách in nhầm f(2)·f(1000) ở bước cuối; đáp số không đổi."
+ },
+ {
+  "id": "pnl-b3-p2-C65",
+  "vai": "luyen",
+  "dang_bai": "NDB01199",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Hàm liên tục với f(-1)=2, f(4)=7 ⇒ f(x)=5 có nghiệm (đặt g=f-5).",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho hàm số $f(x)$ liên tục trên đoạn $[-1;4]$ sao cho $f(-1)=2$ và $f(4)=7$. Có thể nói gì về số nghiệm của phương trình $f(x)=5$ trên đoạn $[-1;4]$?",
+  "lua_chon": [
+   "Vô nghiệm.",
+   "Có ít nhất một nghiệm.",
+   "Có đúng một nghiệm.",
+   "Có đúng hai nghiệm."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chuyển phương trình về dạng $g(x)=0$ với $g$ liên tục rồi dùng định lí giá trị trung gian nếu $g$ đổi dấu ở hai đầu đoạn.\n\n**Bước 1.** Đặt $g(x)=f(x)-5$ để phương trình $f(x)=5$ trở thành $g(x)=0$.\n\n**Bước 2.** Tính $g(-1)$ và $g(4)$ từ hai giá trị đã cho của $f$ rồi xét dấu tích.\n\n**Bước 3.** Kết luận về số nghiệm tối thiểu bằng định lí giá trị trung gian rồi đối chiếu các phương án.\n\n**Phần 2. Trình bày**\n\nĐặt $g(x)=f(x)-5$, liên tục trên $[-1;4]$ và $f(x)=5\\Leftrightarrow g(x)=0$.\n\nTa có $g(-1)=2-5=-3$ và $g(4)=7-5=2$ nên $g(-1)\\cdot g(4)<0$.\n\nDo đó phương trình $g(x)=0$ có ít nhất một nghiệm thuộc $(-1;4)$.\n\nVậy phương trình $f(x)=5$ có ít nhất một nghiệm trên đoạn $[-1;4]$.\n\nChọn B.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const f=x=>x+3;f(-1)===2&&f(4)===7&&(f(-1)-5)*(f(4)-5)<0&&f(2)===5"
+  ],
+  "sach_dap_so": "B",
+  "ghi_chu": ""
+ },
+ {
+  "id": "pnl-b3-p2-C66",
+  "vai": "luyen",
+  "dang_bai": "NDB01200",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Số nghiệm của x³-3x-1=0 trên R: ba khoảng đổi dấu và bậc ba tối đa ba nghiệm.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho hàm số $f(x)=x^3-3x-1$. Số nghiệm của phương trình $f(x)=0$ trên $\\mathbb{R}$ là",
+  "lua_chon": [
+   "$0$",
+   "$1$",
+   "$2$",
+   "$3$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm đa thức liên tục nên mỗi đoạn mà $f$ đổi dấu chứa một nghiệm; ba đoạn rời nhau cùng bậc ba tối đa ba nghiệm cho số nghiệm chính xác.\n\n**Bước 1.** Tính $f$ tại các điểm nguyên $-2$, $-1$, $0$, $2$ để tìm các đoạn mà $f$ đổi dấu.\n\n**Bước 2.** Áp dụng định lí giá trị trung gian trên từng đoạn đổi dấu.\n\n**Bước 3.** Đối chiếu số nghiệm tìm được với số nghiệm tối đa của phương trình bậc ba.\n\n**Phần 2. Trình bày**\n\n$f$ liên tục trên $\\mathbb{R}$. Ta có $f(-2)=-3$, $f(-1)=1$, $f(0)=-1$, $f(2)=1$.\n\n$f(-2)\\cdot f(-1)<0$ nên có nghiệm thuộc $(-2;-1)$; $f(-1)\\cdot f(0)<0$ nên có nghiệm thuộc $(-1;0)$; $f(0)\\cdot f(2)<0$ nên có nghiệm thuộc $(0;2)$.\n\nBa khoảng này rời nhau nên phương trình có ít nhất $3$ nghiệm, mà phương trình bậc ba có tối đa $3$ nghiệm.\n\nVậy phương trình có đúng $3$ nghiệm.\n\nChọn D.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const n=(f,a,b)=>{let c=0,p=f(a+1e-7);for(let x=a+1e-3;x<b;x+=1e-3){const v=f(x);if(p*v<0)c++;p=v}return c};const f=x=>x**3-3*x-1;f(-2)*f(-1)<0&&f(-1)*f(0)<0&&f(0)*f(2)<0&&n(f,-3,3)===3"
+  ],
+  "sach_dap_so": "D",
+  "ghi_chu": ""
+ },
+ {
+  "id": "pnl-b3-p2-C67",
+  "vai": "luyen",
+  "dang_bai": "NDB01200",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Xét mệnh đề về số nghiệm của quartic trong các khoảng, đổi dấu trên (-2;-1), (-1;0).",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho phương trình $2x^4-5x^2+x+1=0$. Trong các mệnh đề sau, mệnh đề nào đúng?",
+  "lua_chon": [
+   "Phương trình có một nghiệm trong khoảng $(-2;1)$.",
+   "Phương trình có ít nhất hai nghiệm trong khoảng $(-2;0)$.",
+   "Phương trình không có nghiệm trong khoảng $(-2;0)$.",
+   "Phương trình không có nghiệm trong khoảng $(-1;1)$."
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hàm đa thức liên tục, nên mỗi đoạn mà $f$ đổi dấu chứa ít nhất một nghiệm; ta dùng điều này để kiểm từng mệnh đề.\n\n**Bước 1.** Đặt $f(x)$ bằng vế trái rồi tính giá trị tại $-2$, $-1$, $0$, $1$.\n\n**Bước 2.** Xét dấu tích ở hai đầu từng đoạn để chỉ ra các đoạn chắc chắn chứa nghiệm.\n\n**Bước 3.** Dùng các đoạn đó để kiểm từng mệnh đề, loại mệnh đề phủ nhận sự tồn tại nghiệm hoặc nói số nghiệm sai.\n\n**Phần 2. Trình bày**\n\nĐặt $f(x)=2x^4-5x^2+x+1$, liên tục trên $\\mathbb{R}$. Ta có $f(-2)=11$, $f(-1)=-3$, $f(0)=1$, $f(1)=-1$.\n\n$f(-2)\\cdot f(-1)<0$ nên có nghiệm thuộc $(-2;-1)$; $f(-1)\\cdot f(0)<0$ nên có nghiệm thuộc $(-1;0)$.\n\nVậy phương trình có ít nhất hai nghiệm trong $(-2;0)$, nên mệnh đề B đúng và mệnh đề C sai.\n\n$f(-1)\\cdot f(0)<0$ cho nghiệm thuộc $(-1;0)\\subset(-1;1)$ nên mệnh đề D sai.\n\nTrong $(-2;1)$ có ít nhất ba nghiệm (thêm $f(0)\\cdot f(1)<0$) nên mệnh đề A sai.\n\nChọn B.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const n=(f,a,b)=>{let c=0,p=f(a+1e-7);for(let x=a+1e-3;x<b;x+=1e-3){const v=f(x);if(p*v<0)c++;p=v}return c};const f=x=>2*x**4-5*x*x+x+1;f(-2)===11&&n(f,-2,0)>=2&&n(f,-2,1)>=3&&n(f,-1,1)>0"
+  ],
+  "sach_dap_so": "B",
+  "ghi_chu": "Lời giải sách in nhầm f(-2)=15 (đúng 11); đáp số không đổi."
+ },
+ {
+  "id": "pnl-b3-p2-C68",
+  "vai": "luyen",
+  "dang_bai": "NDB01200",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Đếm số nghiệm quartic x⁴-3x²+x-1/8 trong (-1;3): đánh giá dấu f<0 trên [-1;1.5], tăng trên [1.5;3].",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho phương trình $f(x)=x^4-3x^2+x-\\dfrac18=0$. Trong các mệnh đề sau, mệnh đề nào đúng?",
+  "lua_chon": [
+   "Phương trình có đúng một nghiệm trong khoảng $(-1;3)$.",
+   "Phương trình có đúng hai nghiệm trong khoảng $(-1;3)$.",
+   "Phương trình có đúng ba nghiệm trong khoảng $(-1;3)$.",
+   "Phương trình có đúng bốn nghiệm trong khoảng $(-1;3)$."
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn đếm chính xác số nghiệm cần vừa chỉ ra nghiệm bằng đổi dấu, vừa chặn những đoạn mà $f$ luôn mang một dấu.\n\n**Bước 1.** Tính giá trị $f(3)$ và một vài giá trị ở đầu trái để biết đoạn nào có đổi dấu.\n\n**Bước 2.** Dùng đánh giá bất đẳng thức để chứng minh $f$ luôn âm trên một đoạn liên tiếp phía trái của khoảng.\n\n**Bước 3.** Chứng minh $f$ tăng ở phần còn lại rồi đếm nghiệm ở phần đó và đối chiếu các phương án.\n\n**Phần 2. Trình bày**\n\nLưu ý: đề sách có thể in sai — các giá trị $f(-1)=\\dfrac{23}8$, $f(\\dfrac12)=\\dfrac1{16}$, $f(3)=\\dfrac{23}8$ trong lời giải sách ứng với $x^4-3x^3+x-\\dfrac18$ (khi đó có đúng bốn nghiệm, chọn D); dưới đây giải theo đề in $x^4-3x^2+x-\\dfrac18$.\n\nVới $x\\in[-1;1]$ ta có $x^4\\le x^2$ nên $f(x)\\le x^2-3x^2+x-\\dfrac18=-2(x-\\dfrac14)^2\\le0$, dấu bằng không xảy ra đồng thời nên $f(x)<0$ trên $[-1;1]$.\n\nVới $x\\in[1;1{,}5]$ đặt $u=x^2\\in[1;\\dfrac94]$ thì $u^2-3u+\\dfrac{27}{16}=(u-\\dfrac34)(u-\\dfrac94)\\le0$, nên $x^4-3x^2\\le-\\dfrac{27}{16}$.\n\nSuy ra $f(x)\\le-\\dfrac{27}{16}+\\dfrac32-\\dfrac18=-\\dfrac5{16}<0$ trên $[1;1{,}5]$. Vậy $f$ không có nghiệm trong $(-1;1{,}5]$.\n\nVới $\\dfrac32\\le a<b$: $f(b)-f(a)=(b-a)(a^3+a^2b+ab^2+b^3-3(a+b)+1)$ và bốn số hạng đầu có tổng không nhỏ hơn $\\dfrac92(a+b)>3(a+b)-1$, nên $f$ tăng trên $[\\dfrac32;+\\infty)$.\n\nVì $f(\\dfrac32)=-\\dfrac5{16}<0$ và $f(3)=\\dfrac{455}8>0$ nên $f$ có đúng một nghiệm trên $(\\dfrac32;3)$.\n\nVậy phương trình có đúng một nghiệm trong khoảng $(-1;3)$.\n\nChọn A.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const n=(f,a,b)=>{let c=0,p=f(a+1e-7);for(let x=a+1e-3;x<b;x+=1e-3){const v=f(x);if(p*v<0)c++;p=v}return c};const f=x=>x**4-3*x*x+x-1/8;n(f,-1,3)===1&&f(3)>0&&f(1.5)<0&&n(f,-2,3)===2"
+  ],
+  "sach_dap_so": "D (bốn nghiệm)",
+  "ghi_chu": "LỆCH SÁCH — sách gạch chân D (4 nghiệm) nhưng các giá trị f trong lời giải sách sai (f(-1)=-25/8 chứ không phải 23/8, f(1/2)=-5/16 chứ không phải 1/16). Với đề in x⁴-3x²+x-1/8, kiểm máy: đúng 1 nghiệm trong (-1;3) (nghiệm thứ hai nằm trong (-2;-1)) ⇒ A. Nghi đề gốc có hệ số khác; cần người đối chiếu bản gốc. | SOÁT: cả 5 giá trị f(-1)=23/8, f(0)=-1/8, f(1/2)=1/16, f(1)=-9/8, f(3)=23/8 trong lời giải sách KHỚP ĐÚNG với x⁴-3x³+x-1/8 (máy: 4 nghiệm -0,582; 0,131; 0,566; 2,885 trong (-1;3) ⇒ D) ⇒ gần chắc đề gốc là 3x³, in nhầm thành 3x². Chờ Thùy chọn: giữ đề in (A) hay sửa thành 3x³ (D)."
+ },
+ {
+  "id": "pnl-b3-p2-C69",
+  "vai": "luyen",
+  "dang_bai": "NDB01200",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Mệnh đề SAI về nghiệm của -4x³+4x-1: có nghiệm trong (-2;0) và (0;1/2), nên phủ nhận nghiệm trong (-∞;1) là sai.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Cho phương trình $-4x^3+4x-1=0$. Trong các mệnh đề sau, mệnh đề nào sai?",
+  "lua_chon": [
+   "Phương trình có nghiệm trong khoảng $(-2;0)$.",
+   "Phương trình có ít nhất hai nghiệm trong khoảng $(-3;\\dfrac12)$.",
+   "Phương trình không có nghiệm trong khoảng $(-\\infty;1)$.",
+   "Hàm số $f(x)=-4x^3+4x-1$ liên tục trên $\\mathbb{R}$."
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mệnh đề sai là mệnh đề phủ nhận điều mà định lí giá trị trung gian chỉ ra; cần tìm các đoạn đổi dấu của hàm đa thức.\n\n**Bước 1.** Đặt $f(x)$ bằng vế trái rồi tính giá trị tại $-2$, $0$ và $\\dfrac12$.\n\n**Bước 2.** Xét dấu tích ở hai đầu từng đoạn để chỉ ra các đoạn chắc chắn chứa nghiệm.\n\n**Bước 3.** Dùng các đoạn đó kiểm từng mệnh đề, chọn mệnh đề mâu thuẫn với kết quả đã tìm.\n\n**Phần 2. Trình bày**\n\nĐặt $f(x)=-4x^3+4x-1$, là đa thức nên liên tục trên $\\mathbb{R}$; mệnh đề D đúng.\n\nTa có $f(-2)=23$, $f(0)=-1$, $f(\\dfrac12)=\\dfrac12$.\n\n$f(-2)\\cdot f(0)<0$ nên phương trình có nghiệm thuộc $(-2;0)$; mệnh đề A đúng.\n\n$f(0)\\cdot f(\\dfrac12)<0$ nên có thêm nghiệm thuộc $(0;\\dfrac12)$; hai khoảng này nằm trong $(-3;\\dfrac12)$ nên mệnh đề B đúng.\n\nNghiệm thuộc $(-2;0)$ cũng thuộc $(-\\infty;1)$ nên phương trình có nghiệm trong $(-\\infty;1)$; mệnh đề C sai.\n\nChọn C.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const n=(f,a,b)=>{let c=0,p=f(a+1e-7);for(let x=a+1e-3;x<b;x+=1e-3){const v=f(x);if(p*v<0)c++;p=v}return c};const f=x=>-4*x**3+4*x-1;f(-2)===23&&f(0)===-1&&f(.5)===.5&&n(f,-2,0)>=1&&n(f,-3,.5)>=2&&n(f,-50,1)>=1"
+  ],
+  "sach_dap_so": "C",
+  "ghi_chu": "Lời giải sách in nhầm khoảng (-1;0) thay vì (-2;0) ở bước kết luận; đáp số không đổi."
+ },
+ {
+  "id": "pnl-b3-p2-C70",
+  "vai": "luyen",
+  "dang_bai": "NDB01199",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Tìm phương trình có nghiệm trong (0;1): f(0)f(1)<0; loại phương trình vô nghiệm bằng đánh giá.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Phương trình nào dưới đây có nghiệm trong khoảng $(0;1)$?",
+  "lua_chon": [
+   "$2x^2-3x+4=0$",
+   "$3x^4-4x^2+5=0$",
+   "$(x-1)^5-x^7-2=0$",
+   "$3x^{2023}-8x+4=0$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phương trình chắc chắn có nghiệm trong $(0;1)$ khi hàm vế trái liên tục và đổi dấu giữa hai đầu $0$ và $1$; các phương trình còn lại phải được loại bằng đánh giá.\n\n**Bước 1.** Xét phương trình bậc hai và phương trình trùng phương bằng biệt thức để xem chúng có nghiệm thực hay không.\n\n**Bước 2.** Đánh giá dấu vế trái của phương trình thứ ba trên $(0;1)$ để kiểm có nghiệm hay không.\n\n**Bước 3.** Tính giá trị vế trái phương trình cuối tại $0$ và $1$ rồi dùng định lí giá trị trung gian.\n\n**Phần 2. Trình bày**\n\nPhương trình A có $\\Delta=9-32<0$ nên vô nghiệm.\n\nPhương trình B: đặt $t=x^2\\ge0$ thì $3t^2-4t+5=0$ có $\\Delta=16-60<0$ nên vô nghiệm.\n\nPhương trình C: với $0<x<1$ thì $(x-1)^5<0$ và $-x^7<0$ nên vế trái nhỏ hơn $-2<0$, phương trình vô nghiệm trong $(0;1)$.\n\nPhương trình D: đặt $f(x)=3x^{2023}-8x+4$, liên tục trên $[0;1]$ với $f(0)=4$ và $f(1)=-1$.\n\nVì $f(0)\\cdot f(1)<0$ nên phương trình $f(x)=0$ có nghiệm trong $(0;1)$.\n\nChọn D.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const f=x=>3*x**2023-8*x+4;9-32<0&&16-60<0&&Array.from({length:999},(_,i)=>(i+1)/1000).every(x=>(x-1)**5-x**7-2<0)&&f(0)*f(1)<0"
+  ],
+  "sach_dap_so": "D",
+  "ghi_chu": ""
+ },
+ {
+  "id": "pnl-b3-p2-C71",
+  "vai": "luyen",
+  "dang_bai": "NDB01199",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tìm khoảng chứa nghiệm của 3x⁵+5x³+10=0: f(-2)f(-1)<0.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Phương trình $3x^5+5x^3+10=0$ có nghiệm thuộc khoảng nào sau đây?",
+  "lua_chon": [
+   "$(-2;-1)$",
+   "$(-1;0)$",
+   "$(0;1)$",
+   "$(-10;-2)$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khoảng chứa nghiệm là khoảng mà vế trái đổi dấu ở hai đầu; các khoảng còn lại phải được loại bằng cách chỉ ra vế trái luôn cùng dấu.\n\n**Bước 1.** Tính giá trị vế trái tại các đầu mút $-10$, $-2$, $-1$, $0$, $1$.\n\n**Bước 2.** Chỉ ra khoảng có hai đầu mút trái dấu để dùng định lí giá trị trung gian.\n\n**Bước 3.** Đánh giá dấu vế trái trên các khoảng còn lại để loại chúng.\n\n**Phần 2. Trình bày**\n\nĐặt $f(x)=3x^5+5x^3+10$, liên tục trên $\\mathbb{R}$. Ta có $f(-2)=-126$ và $f(-1)=2$.\n\nVì $f(-2)\\cdot f(-1)<0$ nên phương trình có nghiệm trong $(-2;-1)$.\n\nVới $|x|<1$: $|3x^5+5x^3|<8$ nên $f(x)>2>0$, phương trình không có nghiệm trong $(-1;0)$ và $(0;1)$.\n\nVới $x\\le-2$: $x^5\\le-32$ và $x^3\\le-8$ nên $f(x)<0$, phương trình không có nghiệm trong $(-10;-2)$.\n\nChọn A.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const n=(f,a,b)=>{let c=0,p=f(a+1e-7);for(let x=a+1e-3;x<b;x+=1e-3){const v=f(x);if(p*v<0)c++;p=v}return c};const f=x=>3*x**5+5*x**3+10;f(-2)===-126&&f(-1)===2&&n(f,-2,-1)===1&&n(f,-1,1)===0&&n(f,-10,-2)===0"
+  ],
+  "sach_dap_so": "A",
+  "ghi_chu": ""
+ },
+ {
+  "id": "pnl-b3-p2-C72",
+  "vai": "luyen",
+  "dang_bai": "NDB01199",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tìm khoảng chứa nghiệm của 2x⁴-4x³-3=0: f(-3)f(0)<0, trên (0;2) luôn âm.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Phương trình $2x^4-4x^3-3=0$ có nghiệm thuộc khoảng nào sau đây?",
+  "lua_chon": [
+   "$(-3;0)$",
+   "$(0;1)$",
+   "$(1;2)$",
+   "$(\\dfrac32;2)$"
+  ],
+  "dap_an": "A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khoảng chứa nghiệm là khoảng mà vế trái đổi dấu ở hai đầu; các khoảng nằm trong $(0;2)$ cần được loại bằng cách chỉ ra vế trái luôn âm.\n\n**Bước 1.** Tính giá trị vế trái tại $-3$ và $0$ để tìm khoảng đổi dấu.\n\n**Bước 2.** Dùng định lí giá trị trung gian cho khoảng đổi dấu đó.\n\n**Bước 3.** Phân tích vế trái trên $(0;2)$ thành tích để chứng minh nó luôn âm, loại ba khoảng còn lại.\n\n**Phần 2. Trình bày**\n\nĐặt $f(x)=2x^4-4x^3-3$, liên tục trên $\\mathbb{R}$. Ta có $f(-3)=267$ và $f(0)=-3$.\n\nVì $f(-3)\\cdot f(0)<0$ nên phương trình có nghiệm trong $(-3;0)$.\n\nVới $0<x<2$: $f(x)=2x^3(x-2)-3<0$ vì $2x^3>0$ và $x-2<0$.\n\nDo đó phương trình không có nghiệm trong $(0;1)$, $(1;2)$, $(\\dfrac32;2)$.\n\nChọn A.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const n=(f,a,b)=>{let c=0,p=f(a+1e-7);for(let x=a+1e-3;x<b;x+=1e-3){const v=f(x);if(p*v<0)c++;p=v}return c};const f=x=>2*x**4-4*x**3-3;f(-3)===267&&f(0)===-3&&n(f,-3,0)===1&&n(f,0,2)===0"
+  ],
+  "sach_dap_so": "A",
+  "ghi_chu": ""
+ },
+ {
+  "id": "pnl-b3-p2-C73",
+  "vai": "luyen",
+  "dang_bai": "NDB01199",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tìm khoảng chứa nghiệm của 3x³+4x²-5=0: f(0)f(1)<0.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Phương trình $3x^3+4x^2-5=0$ có nghiệm thuộc khoảng nào sau đây?",
+  "lua_chon": [
+   "$(-2;-1)$",
+   "$(-1;0)$",
+   "$(1;2)$",
+   "$(0;1)$"
+  ],
+  "dap_an": "D",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khoảng chứa nghiệm là khoảng mà vế trái đổi dấu ở hai đầu; các khoảng còn lại cần được loại bằng đánh giá dấu vế trái.\n\n**Bước 1.** Tính giá trị vế trái tại các số nguyên $-2$, $-1$, $0$, $1$, $2$.\n\n**Bước 2.** Chỉ ra khoảng có hai đầu mút trái dấu để dùng định lí giá trị trung gian.\n\n**Bước 3.** Đánh giá dấu vế trái trên các khoảng còn lại để loại chúng.\n\n**Phần 2. Trình bày**\n\nĐặt $f(x)=3x^3+4x^2-5$, liên tục trên $\\mathbb{R}$. Ta có $f(0)=-5$ và $f(1)=2$.\n\nVì $f(0)\\cdot f(1)<0$ nên phương trình có nghiệm trong $(0;1)$.\n\nVới $-1<x<0$: $3x^3<0$ và $4x^2<4$ nên $f(x)<-1<0$. Với $-2<x\\le-1$: nếu $3x+4\\le0$ thì $x^2(3x+4)\\le0$ nên $f(x)\\le-5$; nếu $3x+4>0$ thì $0<3x+4\\le1$ và $x^2<4$ nên $f(x)<4-5<0$.\n\nVới $x>1$: $3x^3>3$ và $4x^2>4$ nên $f(x)>2>0$, không có nghiệm trong $(1;2)$.\n\nChọn D.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const n=(f,a,b)=>{let c=0,p=f(a+1e-7);for(let x=a+1e-3;x<b;x+=1e-3){const v=f(x);if(p*v<0)c++;p=v}return c};const f=x=>3*x**3+4*x*x-5;f(0)===-5&&f(1)===2&&n(f,0,1)===1&&n(f,-2,0)===0&&n(f,1,2)===0"
+  ],
+  "sach_dap_so": "D",
+  "ghi_chu": ""
+ },
+ {
+  "id": "pnl-b3-p2-C74",
+  "vai": "luyen",
+  "dang_bai": "NDB01199",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Số nghiệm phương trình chứa căn: có nghiệm (đổi dấu) và nghiệm duy nhất (hàm tăng).",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Số nghiệm của phương trình $x^3+2x=4+3\\sqrt{3-2x}$ là",
+  "lua_chon": [
+   "$0$",
+   "$1$",
+   "$2$",
+   "$3$"
+  ],
+  "dap_an": "B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chuyển phương trình về dạng $f(x)=0$ với $f$ liên tục trên tập xác định, dùng đổi dấu để có nghiệm và tính đơn điệu để chặn số nghiệm.\n\n**Bước 1.** Tìm điều kiện xác định, đưa mọi hạng tử về một vế để lập hàm $f(x)$ liên tục trên tập xác định.\n\n**Bước 2.** Tính $f$ ở hai đầu mút của tập xác định để chứng minh phương trình có nghiệm bằng định lí giá trị trung gian.\n\n**Bước 3.** Chứng minh $f$ tăng trên tập xác định bằng cách xét hiệu $f(b)-f(a)$ để chặn số nghiệm.\n\n**Phần 2. Trình bày**\n\nĐiều kiện: $3-2x\\ge0\\Leftrightarrow x\\le\\dfrac32$. Phương trình tương đương $f(x)=x^3+2x-4-3\\sqrt{3-2x}=0$.\n\n$f$ liên tục trên $(-\\infty;\\dfrac32]$ và $f(0)=-4-3\\sqrt3<0$, $f(\\dfrac32)=\\dfrac{27}8+3-4=\\dfrac{19}8>0$.\n\nDo đó phương trình $f(x)=0$ có ít nhất một nghiệm thuộc $(0;\\dfrac32)$.\n\nVới $a<b\\le\\dfrac32$: $3-2b<3-2a$ nên $\\sqrt{3-2b}<\\sqrt{3-2a}$, suy ra $-3\\sqrt{3-2b}>-3\\sqrt{3-2a}$.\n\nLại có $b^3+2b>a^3+2a$ nên $f(b)>f(a)$, tức là $f$ tăng trên $(-\\infty;\\dfrac32]$.\n\nHàm tăng nên phương trình $f(x)=0$ có không quá một nghiệm; vậy phương trình có đúng $1$ nghiệm.\n\nChọn B.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const n=(f,a,b)=>{let c=0,p=f(a+1e-7);for(let x=a+1e-3;x<b;x+=1e-3){const v=f(x);if(p*v<0)c++;p=v}return c};const f=x=>x**3+2*x-4-3*Math.sqrt(3-2*x);f(0)<0&&f(1.5)>0&&n(f,-30,1.5)===1&&Array.from({length:3000},(_,i)=>-30+i*0.01).every((x,i,a)=>i===0||f(x)>f(a[i-1]))"
+  ],
+  "sach_dap_so": "B",
+  "ghi_chu": "Lời giải sách kết luận cuối \"hàm số liên tục trên khoảng (0;+∞)\" là câu chép nhầm; ý đúng là phương trình có đúng một nghiệm."
+ },
+ {
+  "id": "pnl-b3-p2-C75",
+  "vai": "luyen",
+  "dang_bai": "NDB01198",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Cước taxi hai giai đoạn: tại x=0,7 hai nhánh luôn cùng giá trị nên liên tục với mọi a.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Bảng giá cước của một hãng taxi: giá mở cửa là $11\\,000$ đồng cho $0{,}7$ km đầu; giá mỗi km tiếp theo là $a$ đồng ($a>11\\,000$). Khi lên taxi mà quãng đường di chuyển không quá $0{,}7$ km thì hãng vẫn tính $11\\,000$ đồng. Gọi $y$ (đồng) là số tiền phải trả sau khi đi $x$ (km). Có bao nhiêu giá trị nguyên của $a$ để hàm số của $y$ theo $x$ liên tục tại $x=0{,}7$?",
+  "lua_chon": [
+   "$0$",
+   "$1$",
+   "Vô số",
+   "$3$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lập hàm số của $y$ theo $x$ gồm hai nhánh, rồi kiểm tra tại $x=0{,}7$ xem điều kiện liên tục có phụ thuộc $a$ hay không.\n\n**Bước 1.** Viết số tiền theo hai trường hợp: quãng đường không quá $0{,}7$ km và quãng đường vượt $0{,}7$ km.\n\n**Bước 2.** Tính giá trị hàm tại $x=0{,}7$ cùng giới hạn trái và giới hạn phải tại đó.\n\n**Bước 3.** Xem điều kiện liên tục có buộc $a$ nhận giá trị riêng nào không để đếm số giá trị nguyên của $a$.\n\n**Phần 2. Trình bày**\n\nNếu $x\\le0{,}7$ thì $y=11\\,000$; nếu $x>0{,}7$ thì $y=11\\,000+(x-0{,}7)\\cdot a$.\n\nTa có $y(0{,}7)=11\\,000$ và $\\lim\\limits_{x\\to0{,}7^-}y=11\\,000$.\n\n$\\lim\\limits_{x\\to0{,}7^+}y=\\lim\\limits_{x\\to0{,}7^+}(11\\,000+(x-0{,}7)\\cdot a)=11\\,000$ với mọi $a$.\n\nBa giá trị bằng nhau với mọi $a$ nên hàm số luôn liên tục tại $x=0{,}7$.\n\nVì mọi số nguyên $a>11\\,000$ đều thoả mãn nên có vô số giá trị nguyên của $a$.\n\nChọn C.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);[11001,12000,50000].every(a=>ok(11000+(1e-9)*a,11000))"
+  ],
+  "sach_dap_so": "C",
+  "ghi_chu": ""
+ },
+ {
+  "id": "pnl-b3-p2-C76",
+  "vai": "luyen",
+  "dang_bai": "NDB01198",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Giá cước nhiều bậc: các điểm ghép đã liên tục, tại x=30 luôn đúng với mọi a; đếm a là bội của 1000.",
+  "loai_cau": "trac_nghiem",
+  "noi_dung": "Giá cước gọi quốc tế của một tập đoàn viễn thông $X$ trong dịp khuyến mãi như sau: $5$ phút đầu giá $6000$ đồng mỗi phút; từ phút thứ $6$ đến phút thứ $10$ giá $5800$ đồng mỗi phút; từ phút thứ $11$ đến phút thứ $20$ giá $5200$ đồng mỗi phút; từ phút thứ $21$ đến phút thứ $30$ giá $5000$ đồng mỗi phút; từ phút thứ $31$ trở đi giá $a$ đồng mỗi phút ($1000\\le a\\le4500$). Gọi $y$ (đồng) là số tiền bác An phải trả sau khi gọi $x$ (phút). Có bao nhiêu giá trị nguyên của $a$ là bội của $1000$ để hàm số của $y$ theo $x$ liên tục trên $[0;+\\infty)$?",
+  "lua_chon": [
+   "$0$",
+   "$1$",
+   "$4$",
+   "$3$"
+  ],
+  "dap_an": "C",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lập hàm số nhiều bậc theo công thức tích luỹ rồi kiểm tra liên tục tại từng điểm ghép; điểm ghép cuối chứa $a$ cần xem điều kiện có ràng buộc $a$ hay không.\n\n**Bước 1.** Viết số tiền phải trả theo từng khoảng thời gian, cộng dồn số tiền của các bậc đã qua.\n\n**Bước 2.** Kiểm tra liên tục tại các điểm ghép $x=5$, $x=10$, $x=20$ bằng cách so hai công thức hai bên.\n\n**Bước 3.** Kiểm tra điểm ghép $x=30$ có chứa $a$, rồi liệt kê các giá trị $a$ là bội của $1000$ trong đoạn đã cho.\n\n**Phần 2. Trình bày**\n\nVới $0\\le x\\le5$: $y=6000x$. Với $5<x\\le10$: $y=6000\\cdot5+5800(x-5)=5800x+1000$.\n\nVới $10<x\\le20$: $y=30000+29000+5200(x-10)=5200x+7000$. Với $20<x\\le30$: $y=111000+5000(x-20)=5000x+11000$.\n\nVới $x>30$: $y=161000+a(x-30)$.\n\nTại $x=5$, $x=10$, $x=20$ hai công thức hai bên cùng cho $30000$, $59000$, $111000$ nên $y$ liên tục tại các điểm này.\n\nTại $x=30$: $y(30)=161000$, $\\lim\\limits_{x\\to30^-}y=161000$ và $\\lim\\limits_{x\\to30^+}y=161000$ với mọi $a$ nên $y$ luôn liên tục tại $x=30$.\n\nVì $1000\\le a\\le4500$ và $a$ là bội của $1000$ nên $a\\in\\{1000;2000;3000;4000\\}$, vậy có $4$ giá trị của $a$.\n\nChọn C.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);ok(6000*5,5800*5+1000)&&ok(5800*10+1000,5200*10+7000)&&ok(5200*20+7000,5000*20+11000)&&ok(5000*30+11000,6000*5+5800*5+5200*10+5000*10)&&[1000,3000,4500].every(a=>ok(161000+a*1e-9,161000))&&Array.from({length:4501},(_,i)=>i).filter(a=>a>=1000&&a%1000===0).length===4"
+  ],
+  "sach_dap_so": "C",
+  "ghi_chu": "Đề sách ghi \"liên tục trên R\" nhưng hàm chỉ xác định với x≥0; đã đổi thành \"[0;+∞)\" cho đúng. Lời giải sách vẫn dùng chung kết quả."
+ },
+ {
+  "id": "pnl-b3-p2-DS1",
+  "vai": "luyen",
+  "dang_bai": null,
+  "loai_cau": "dung_sai",
+  "noi_dung": "Cho hàm số $f(x)=\\begin{cases}\\dfrac{x^2-2025}{x-45}&\\text{nếu }x\\ne45\\\\2m+4&\\text{nếu }x=45\\end{cases}$ ($m$ là tham số). Xét tính đúng sai của các khẳng định sau:",
+  "menh_de": [
+   {
+    "noi_dung": "Tập xác định của hàm số là $\\mathbb{R}\\setminus\\{45\\}$.",
+    "dap_an": "S"
+   },
+   {
+    "noi_dung": "$\\lim\\limits_{x\\to45}f(x)=90$.",
+    "dap_an": "D"
+   },
+   {
+    "noi_dung": "Hàm số liên tục tại $x=20$ với mọi $m$.",
+    "dap_an": "D"
+   },
+   {
+    "noi_dung": "Hàm số liên tục trên $\\mathbb{R}$ khi $m=44$.",
+    "dap_an": "S"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi ý xét một tính chất riêng: tập xác định, giới hạn tại $45$, tính liên tục tại điểm không thuộc nhánh chứa tham số, và điều kiện liên tục trên toàn $\\mathbb{R}$.\n\n**Bước 1.** Xác định hàm số có giá trị tại mọi $x$ hay không, nhìn vào nhánh $x=45$.\n\n**Bước 2.** Rút gọn nhân tử $x-45$ ở nhánh $x\\ne45$ để tính giới hạn tại $45$ và giá trị hàm tại $x=20$.\n\n**Bước 3.** Cho giới hạn bằng $f(45)$ để tìm $m$ làm hàm liên tục trên toàn $\\mathbb{R}$ rồi đối chiếu với ý d).\n\n**Phần 2. Trình bày**\n\nÝ a) Sai vì hàm số có giá trị $f(45)=2m+4$ nên xác định trên $\\mathbb{R}$.\n\nÝ b) Đúng vì với $x\\ne45$: $\\dfrac{x^2-2025}{x-45}=\\dfrac{(x-45)(x+45)}{x-45}=x+45$ nên $\\lim\\limits_{x\\to45}f(x)=90$.\n\nÝ c) Đúng vì $x=20\\ne45$ nên $f(x)=x+45$ trên một khoảng chứa $20$, hàm này liên tục tại $x=20$ (không phụ thuộc $m$).\n\nÝ d) Sai vì hàm số liên tục trên $\\mathbb{R}$ khi và chỉ khi $\\lim\\limits_{x\\to45}f(x)=f(45)$, tức là $90=2m+4$, suy ra $m=43$; với $m=44$ thì $2m+4=92\\ne90$.\n\nVậy các ý a), b), c), d) lần lượt là Sai, Đúng, Đúng, Sai.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const f=x=>(x*x-2025)/(x-45);ok(f(45+h),90)&&ok(f(45-h),90)&&ok(f(20),65)&&ok(2*43+4,90)&&!ok(2*44+4,90)"
+  ],
+  "sach_dap_so": "a) S, b) Đ, c) Đ, d) S (m=43)",
+  "ghi_chu": "Lời giải sách có vài chữ in nhầm (b: \"Vậy a) Đúng\"; d: \"90=2m+45\"); kết luận m=43 đúng."
+ },
+ {
+  "id": "pnl-b3-p2-DS2",
+  "vai": "luyen",
+  "dang_bai": null,
+  "loai_cau": "dung_sai",
+  "noi_dung": "Cho hàm số $f(x)=\\begin{cases}\\dfrac{x^2-1}{\\sqrt{x}-1}&\\text{nếu }x>1\\\\mx+3&\\text{nếu }x\\le1\\end{cases}$ (với $m$ là tham số). Xét tính đúng sai của các khẳng định sau:",
+  "menh_de": [
+   {
+    "noi_dung": "Hàm số xác định trên $\\mathbb{R}$.",
+    "dap_an": "D"
+   },
+   {
+    "noi_dung": "$\\lim\\limits_{x\\to1^+}f(x)=2$.",
+    "dap_an": "S"
+   },
+   {
+    "noi_dung": "Hàm số luôn liên tục trên khoảng $(1;+\\infty)$.",
+    "dap_an": "D"
+   },
+   {
+    "noi_dung": "Hàm số liên tục trên $\\mathbb{R}$ khi $m=-1$.",
+    "dap_an": "S"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi nhánh liên tục trên khoảng của nó; giới hạn phải tại $1$ cần nhân liên hợp, rồi so với nhánh $x\\le1$ để tìm $m$ làm hàm liên tục trên $\\mathbb{R}$.\n\n**Bước 1.** Xét tập xác định của từng nhánh để kết luận hàm số xác định trên đâu.\n\n**Bước 2.** Tính giới hạn phải tại $x=1$ bằng cách phân tích $x^2-1$ theo $\\sqrt{x}-1$ rồi rút gọn.\n\n**Bước 3.** Lập điều kiện giới hạn trái, giới hạn phải và $f(1)$ bằng nhau để tìm $m$ rồi đối chiếu ý d).\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì với $x>1$ biểu thức $\\dfrac{x^2-1}{\\sqrt{x}-1}$ xác định và với $x\\le1$ thì $mx+3$ xác định.\n\nÝ b) Sai vì $x^2-1=(\\sqrt{x}-1)(\\sqrt{x}+1)(x+1)$ nên $f(x)=(\\sqrt{x}+1)(x+1)$ với $x>1$, suy ra $\\lim\\limits_{x\\to1^+}f(x)=2\\cdot2=4$.\n\nÝ c) Đúng vì với $x>1$ hàm $\\dfrac{x^2-1}{\\sqrt{x}-1}$ xác định nên liên tục trên $(1;+\\infty)$.\n\nÝ d) Sai vì hàm số liên tục trên $\\mathbb{R}$ khi và chỉ khi liên tục tại $x=1$, tức là $m+3=4$, suy ra $m=1$; với $m=-1$ thì $m+3=2\\ne4$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Đúng, Sai.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const f=x=>(x*x-1)/(Math.sqrt(x)-1);ok(f(1+h),4)&&!ok(f(1+h),2)&&ok(1+3,4)&&!ok(-1+3,4)"
+  ],
+  "sach_dap_so": "a) Đ, b) S, c) Đ, d) S (m=1)",
+  "ghi_chu": ""
+ },
+ {
+  "id": "pnl-b3-p2-DS3",
+  "vai": "luyen",
+  "dang_bai": null,
+  "loai_cau": "dung_sai",
+  "noi_dung": "Cho hàm số $g(x)=\\begin{cases}\\cos\\dfrac{\\pi x}{2}&\\text{nếu }|x|\\le1\\\\x-1&\\text{nếu }|x|>1\\end{cases}$. Xét tính đúng sai của các khẳng định sau:",
+  "menh_de": [
+   {
+    "noi_dung": "Hàm số $g(x)$ có tập xác định là $\\mathbb{R}$.",
+    "dap_an": "D"
+   },
+   {
+    "noi_dung": "$g(-1)=-2$.",
+    "dap_an": "S"
+   },
+   {
+    "noi_dung": "Hàm số $g(x)$ liên tục tại $x=-1$.",
+    "dap_an": "S"
+   },
+   {
+    "noi_dung": "Hàm số $g(x)$ liên tục tại $x=1$.",
+    "dap_an": "D"
+   }
+  ],
+  "dap_an": null,
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Điều kiện $|x|\\le1$ là $-1\\le x\\le1$; các điểm ghép là $x=-1$ và $x=1$, tại mỗi điểm so sánh giới hạn trái, giới hạn phải và giá trị hàm.\n\n**Bước 1.** Xác định hai khoảng ứng với từng công thức và kiểm tra chúng có phủ kín $\\mathbb{R}$ hay không.\n\n**Bước 2.** Tính $g(-1)$ theo nhánh chứa $x=-1$ rồi tính hai giới hạn một bên tại $-1$.\n\n**Bước 3.** Làm tương tự tại $x=1$ và so với giá trị hàm tại điểm đó.\n\n**Phần 2. Trình bày**\n\nÝ a) Đúng vì $\\cos\\dfrac{\\pi x}{2}$ xác định trên $[-1;1]$ còn $x-1$ xác định trên $(-\\infty;-1)\\cup(1;+\\infty)$, hai tập này hợp thành $\\mathbb{R}$.\n\nÝ b) Sai vì $|-1|\\le1$ nên $g(-1)=\\cos(-\\dfrac{\\pi}2)=0\\ne-2$.\n\nÝ c) Sai vì $\\lim\\limits_{x\\to-1^-}g(x)=\\lim\\limits_{x\\to-1^-}(x-1)=-2$ còn $\\lim\\limits_{x\\to-1^+}g(x)=\\cos(-\\dfrac{\\pi}2)=0$, hai giới hạn khác nhau nên $g$ gián đoạn tại $x=-1$.\n\nÝ d) Đúng vì $\\lim\\limits_{x\\to1^+}g(x)=1-1=0$, $\\lim\\limits_{x\\to1^-}g(x)=\\cos\\dfrac{\\pi}2=0$ và $g(1)=\\cos\\dfrac{\\pi}2=0$ nên $g$ liên tục tại $x=1$.\n\nVậy các ý a), b), c), d) lần lượt là Đúng, Sai, Sai, Đúng.",
+  "kiem": [
+   "const h=1e-5,ok=(x,y)=>Math.abs(x-y)<1e-3,C=(fl,fr,v,a)=>ok(fl(a-h),v)&&ok(fr(a+h),v);const g=x=>Math.abs(x)<=1?Math.cos(Math.PI*x/2):x-1;ok(g(-1),0)&&ok(g(-1-h),-2)&&ok(g(-1+h),0)&&!ok(g(-1-h),g(-1+h))&&ok(g(1-h),0)&&ok(g(1+h),0)&&ok(g(1),0)"
+  ],
+  "sach_dap_so": "a) Đ, b) S, c) S, d) Đ",
+  "ghi_chu": ""
+ }
+]

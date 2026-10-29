@@ -1,5 +1,5 @@
 // Primitives UI gu SaaS — dùng chung cho mọi nhánh bản đồ (Đại / Hình).
-import { Fragment, type ReactNode } from 'react'
+import { Fragment, useState, type ReactNode } from 'react'
 import katex from 'katex'
 import { katexMacros } from '../../lib/math/macros'
 import { fixAccentScript, widenSingleHat } from '../../lib/math/latex-fix'
@@ -241,13 +241,61 @@ function htmlPhan1(body: string): string {
 }
 /** Trả HTML khi chuỗi là lời giải 2 phần, ngược lại null (để MathText render như cũ). */
 function html2Phan(raw: string): string | null {
-  const i1 = raw.search(P1_RE), i2 = raw.search(P2_RE)
+  const t = tach2Phan(raw)
+  if (!t) return null
+  return t.truoc_html
+    + `<div class="lg-tieude">Phần 1. Hướng dẫn</div><div class="lg-p1">${t.p1_html}</div>`
+    + `<div class="lg-tieude lg-tieude2">Phần 2. Trình bày</div>` + t.p2_html
+}
+/** Tách lời giải 2 phần thành 3 cụm HTML đã render (truoc / p1 Hướng dẫn / p2 Lời giải). */
+export function tach2Phan(raw: unknown): { truoc_html: string; p1_html: string; p2_html: string } | null {
+  const text = epChuoi(raw)
+  const i1 = text.search(P1_RE), i2 = text.search(P2_RE)
   if (i1 < 0 || i2 < i1) return null
-  const truoc = raw.slice(0, i1).trim()
-  const p1 = raw.slice(i1, i2).replace(P1_RE, ''), p2 = raw.slice(i2).replace(P2_RE, '').replace(/^\s*\n/, '')
-  return (truoc ? htmlDongLienTiep(truoc) : '')
-    + `<div class="lg-tieude">Phần 1. Hướng dẫn</div><div class="lg-p1">${htmlPhan1(p1)}</div>`
-    + `<div class="lg-tieude lg-tieude2">Phần 2. Trình bày</div>` + htmlDongLienTiep(p2)
+  const truoc = text.slice(0, i1).trim()
+  const p1 = text.slice(i1, i2).replace(P1_RE, '')
+  const p2 = text.slice(i2).replace(P2_RE, '').replace(/^\s*\n/, '')
+  return {
+    truoc_html: truoc ? htmlDongLienTiep(truoc) : '',
+    p1_html: htmlPhan1(p1),
+    p2_html: htmlDongLienTiep(p2),
+  }
+}
+// Toggle Lời giải / Hướng dẫn / Cả 2 — mặc định "Lời giải" (p2). Nhớ chọn tab qua localStorage theo người dùng.
+// Dùng ở popup kho (BanDoMoi · PopupBai Hình). Trang in / list câu / BTVN... vẫn dùng MathText tự ghép cả 2 phần.
+// Chuỗi KHÔNG có 2 phần (không có marker **Phần 1./2.**) → fallback MathText render như cũ.
+type LoiGiaiTab = 'huong_dan' | 'loi_giai' | 'ca_hai'
+const LS_LG_TAB = 'bk.loiGiaiXem.tab'
+const docTab = (mac_dinh: LoiGiaiTab): LoiGiaiTab => {
+  try {
+    const s = localStorage.getItem(LS_LG_TAB)
+    if (s === 'huong_dan' || s === 'loi_giai' || s === 'ca_hai') return s
+  } catch { /* bỏ qua */ }
+  return mac_dinh
+}
+export function LoiGiaiXem({ raw, className, mac_dinh = 'loi_giai' }: { raw: unknown; className?: string; mac_dinh?: LoiGiaiTab }) {
+  const [tab, setTab] = useState<LoiGiaiTab>(() => docTab(mac_dinh))
+  const text = epChuoi(raw)
+  if (!text.trim()) return null
+  const t = tach2Phan(text)
+  if (!t) return <MathText className={className}>{text}</MathText>
+  const chon = (k: LoiGiaiTab) => { setTab(k); try { localStorage.setItem(LS_LG_TAB, k) } catch { /* bỏ qua */ } }
+  const html = tab === 'huong_dan'
+    ? t.truoc_html + `<div class="lg-tieude">Phần 1. Hướng dẫn</div><div class="lg-p1">${t.p1_html}</div>`
+    : tab === 'loi_giai'
+      ? t.truoc_html + `<div class="lg-tieude">Phần 2. Trình bày</div>${t.p2_html}`
+      : t.truoc_html + `<div class="lg-tieude">Phần 1. Hướng dẫn</div><div class="lg-p1">${t.p1_html}</div><div class="lg-tieude lg-tieude2">Phần 2. Trình bày</div>${t.p2_html}`
+  return (
+    <div className={className}>
+      <div className="mb-1.5 flex w-fit gap-0.5 rounded-lg bg-slate-100 p-0.5 text-[11.5px]">
+        {([['loi_giai', '📝 Lời giải'], ['huong_dan', '💡 Hướng dẫn'], ['ca_hai', '📑 Cả 2']] as [LoiGiaiTab, string][]).map(([k, nhan]) => (
+          <button key={k} type="button" onClick={() => chon(k)}
+            className={`rounded px-2 py-0.5 font-semibold ${tab === k ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-500 hover:text-slate-800'}`}>{nhan}</button>
+        ))}
+      </div>
+      <div className="katex-text" dangerouslySetInnerHTML={{ __html: html }} />
+    </div>
+  )
 }
 // Thùy 09/10 (nhắc lại luật 07/10): Phần 2 KHÔNG hiện kiểu "mỗi dòng cách 1 dòng trống". Dòng trống trong dữ liệu (luật viết
 // README §3) chỉ là ranh giới đoạn ⇒ hiện liền dòng; riêng dòng mở ý b) c) d)… thì chừa khoảng cách trước (lg-cach-y). Dữ liệu không đổi.

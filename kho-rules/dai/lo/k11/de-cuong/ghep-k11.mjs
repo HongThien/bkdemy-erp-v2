@@ -40,7 +40,7 @@ for (let n = 1; n <= +SO; n++) {
     }
   }
 }
-let md = `# ĐỀ | ${TEN}\nnam: 2026\nbo_sach: KNTT\nkieu: de_cuong\n`
+let md = `# ĐỀ | ${TEN}\nnam: ${process.env.NAM ?? 2026}\nbo_sach: KNTT\nkieu: de_cuong\n`
 for (const [t, P] of [...phan.entries()].sort((x, y) => x[0] - y[0])) md += `\n## PHẦN ${t} | ${P.ten} | ${P.dang}\n` + P.cau.map((c) => `\n${c}\n`).join('')
 writeFileSync(FULL, md)
 

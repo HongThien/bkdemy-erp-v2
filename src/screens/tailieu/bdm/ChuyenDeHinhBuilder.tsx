@@ -6,13 +6,17 @@
 import { useEffect, useMemo, useState } from 'react'
 import { addBuoi, updatePhan, updateTaiLieu, type CauHinh } from '../../../lib/tailieu'
 import { xoaBuoi, loiDoc, datCoPhan } from '../../../lib/tailieuBdm'
-import { cdhNoiDung, cdhDatMoHinh, cdhDatBai, cdhCayChon, hhCayChon, hhCau, hhDatBai, hhDatCau, hhGoiY, type CdhNoiDung, type CdhPhan, type CdhMoHinh, type CdhChonMoHinh, type CdhChonNhom, type CdhChonChuDe, type HhBai, type HhCau, type HhChonBai, type HhCauKho } from '../../../lib/chuyenDeHinh'
+import { cdhNoiDung, cdhDatMoHinh, cdhDatBai, cdhCayChon, hhCayChon, hhCau, hhDatBai, hhDatCau, hhGoiY, type CdhNoiDung, type CdhPhan, type CdhMoHinh, type CdhChonMoHinh, type CdhChonNhom, type CdhChonChuDe, type HhBai, type HhChonBai, type HhCauKho } from '../../../lib/chuyenDeHinh'
 import { khoCuaMoHinh, demKhoMoHinh, type ChuoiKho, type DemKho } from '../../../lib/kho/hinhCay'
 import { MathText, inp } from '../../kho/ui'
 import { MAU_PRESET } from '../TaiLieuBuilder'
 import ChuyenDeHinhPrintView from './ChuyenDeHinhPrintView'
 import PrintView from '../PrintView'
 import GanLopBdm from './GanLopBdm'
+import { KhoiCau, type CfgCau } from './BuilderBanDoMoi'
+import { AnhMmEditCtx } from '../anhMmCtx'
+import type { CauHoi } from '../../../lib/kho/api'
+import type { CheDoHinh } from '../../../lib/kho/hinhGiaoTrinh'
 
 const SO_CAU_MAC_DINH = 4   // khớp p_so_luyen / p_so_btvn mặc định của fn_tl_hh_dat_bai
 
@@ -69,6 +73,20 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
   const doiTenPhan = (p: CdhPhan, t: string) => lam(async () => { await updatePhan(p.id, { tieu_de: t }); vaPhan({ ...p, tieu_de: t }) })
   const saveTen = () => { if (nd?.tai_lieu && ten.trim() && ten.trim() !== nd.tai_lieu.ten) lam(async () => { await updateTaiLieu(id, { ten: ten.trim() }); setNd((x) => (x && x.tai_lieu ? { ...x, tai_lieu: { ...x.tai_lieu, ten: ten.trim() } } : x)); markSaved() }) }
   const saveMau = (mau: string) => lam(async () => { const next = { ...ch, mau }; setCh(next); await updateTaiLieu(id, { cau_hinh: next }); markSaved() })
+  // Cấu hình IN theo câu của phần Học — y builder giáo trình bản đồ mới (khoá theo mã câu, lưu cau_hinh)
+  const saveCh = (patch: Partial<CauHinh>) => lam(async () => { const next = { ...ch, ...patch }; setCh(next); await updateTaiLieu(id, { cau_hinh: next }); markSaved() })
+  const onAnhMm = (maCau: string, v: { pct: number; mm: number } | null) => {
+    const mm = { ...(ch.anhMmByCau ?? {}) }, pct = { ...(ch.anhPctByCau ?? {}) }
+    if (v && v.mm > 0) { mm[maCau] = v.mm; pct[maCau] = v.pct } else { delete mm[maCau]; delete pct[maCau] }
+    saveCh({ anhMmByCau: mm, anhPctByCau: pct })
+  }
+  const cfgCau: CfgCau = {
+    lines: ch.btvnLinesByCau ?? {}, cols: ch.colByCau ?? {}, cheDo: (ch.hinhCheDoByCau ?? {}) as Record<string, CheDoHinh>,
+    onLine: (m, n) => saveCh({ btvnLinesByCau: { ...(ch.btvnLinesByCau ?? {}), [m]: n } }),
+    onLineAll: (ms, n) => { const x = { ...(ch.btvnLinesByCau ?? {}) }; ms.forEach((m) => { x[m] = n }); saveCh({ btvnLinesByCau: x }) },
+    onCol: (m, n) => saveCh({ colByCau: { ...(ch.colByCau ?? {}), [m]: n } }),
+    onCheDo: (m, v) => saveCh({ hinhCheDoByCau: { ...(ch.hinhCheDoByCau ?? {}), [m]: v } }),
+  }
   const jump = (pid: string) => document.getElementById('cdh-' + pid)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
   if (err) return <div className="p-8 text-sm text-rose-600">Lỗi: {err}</div>
@@ -76,6 +94,7 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
   const khoi = nd.tai_lieu.khoi
 
   return (
+    <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: onAnhMm, baChe: true }}>
     <div className="flex h-full flex-col bg-[#fafafb]">
       <div className="flex flex-wrap items-center gap-3 border-b border-slate-200 bg-white px-5 py-2.5">
         <button onClick={onClose} className="text-[13px] font-medium text-slate-400 hover:text-indigo-600">← Thư viện</button>
@@ -132,7 +151,7 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
                 </div>
                 <div className="space-y-4 p-4">
                   {laGiaoTrinh && (p.hoc ?? []).map((h, i) => (
-                    <HocCard key={h.phan_id} h={h} canUp={i > 0} canDown={i < (p.hoc ?? []).length - 1}
+                    <HocCard key={h.phan_id} h={h} cfg={cfgCau} canUp={i > 0} canDown={i < (p.hoc ?? []).length - 1}
                       onMove={(d) => doiChoHoc(p, i, i + d)} onBo={() => datBaiHoc(p, (p.hoc ?? []).filter((x) => x.phan_id !== h.phan_id).map((x) => x.ma_bai))}
                       onLt={() => batLtHoc(p, h)} onXoaCau={(phanId, mas) => datCauHoc(p, phanId, mas)} onGoiY={(phanId, n) => goiYHoc(p, phanId, n)}
                       onChonCau={(btvn) => setChonCauHoc({ p, h, btvn })} />
@@ -226,6 +245,7 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
       })()}
       {ganLop && <GanLopBdm hinh masterId={id} khoi={khoi} tl={{ mon: nd.tai_lieu.mon, nhanh: nd.tai_lieu.nhanh, cau_hinh: ch }} onClose={() => setGanLop(false)} />}
     </div>
+    </AnhMmEditCtx.Provider>
   )
 }
 
@@ -341,31 +361,13 @@ function ChonBai({ moHinhId, ten, daChon, khoa, onClose, onConfirm }: { moHinhId
 }
 
 // ── HỌC (giáo trình Hình): 1 bài học trong buổi — lý thuyết (bật/tắt in) · bài luyện · BTVN ──
-function HocCard({ h, canUp, canDown, onMove, onBo, onLt, onXoaCau, onGoiY, onChonCau }: {
-  h: HhBai; canUp: boolean; canDown: boolean; onMove: (d: number) => void; onBo: () => void; onLt: () => void
+function HocCard({ h, cfg, canUp, canDown, onMove, onBo, onLt, onXoaCau, onGoiY, onChonCau }: {
+  h: HhBai; cfg: CfgCau; canUp: boolean; canDown: boolean; onMove: (d: number) => void; onBo: () => void; onLt: () => void
   onXoaCau: (phanId: string, mas: string[]) => void; onGoiY: (phanId: string, n: number) => void; onChonCau: (btvn: boolean) => void
 }) {
-  const khoi = (nhan: string, phanId: string, caus: HhCau[], btvn: boolean) => (
-    <div>
-      <div className="mb-1 flex items-center gap-2">
-        <span className={`rounded px-1.5 py-0.5 text-[11px] font-semibold ${btvn ? 'bg-orange-50 text-orange-700' : 'bg-sky-50 text-sky-700'}`}>{nhan} · {caus.length}</span>
-        <button onClick={() => onGoiY(phanId, caus.length)} title="Thay bằng câu ít dùng nhất (giữ số câu)" className="ml-auto rounded border border-slate-200 px-2 py-0.5 text-[11px] text-slate-600 hover:border-sky-300">↻ Gợi ý</button>
-        <button onClick={() => onChonCau(btvn)} className="rounded border border-slate-200 px-2 py-0.5 text-[11px] text-slate-600 hover:border-sky-300">✎ Chọn câu</button>
-      </div>
-      <ol className="space-y-1">
-        {caus.length === 0 && <li className="text-[12px] italic text-slate-400">Chưa có câu.</li>}
-        {caus.map((c, j) => (
-          <li key={c.ma_cau} className="flex items-start gap-2 rounded-md border border-slate-100 bg-slate-50/50 px-2 py-1">
-            <span className="text-[12px] font-bold text-slate-400">{j + 1}.</span>
-            <span className="shrink-0 rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] text-slate-500">{c.ma_cau}</span>
-            {!c.con_trong_kho && <span className="shrink-0 rounded bg-amber-50 px-1.5 text-[10px] font-medium text-amber-700">không còn trong kho</span>}
-            <span className="line-clamp-2 min-w-0 flex-1 text-[12.5px] leading-relaxed text-slate-700"><MathText>{c.noi_dung ?? ''}</MathText></span>
-            <button onClick={() => onXoaCau(phanId, caus.filter((x) => x.ma_cau !== c.ma_cau).map((x) => x.ma_cau))} className="shrink-0 text-[12px] text-slate-400 hover:text-rose-600">✕</button>
-          </li>
-        ))}
-      </ol>
-    </div>
-  )
+  // câu Học (hinh_hoc_cau_hoi) ⇒ khối câu chung của builder giáo trình (KhoiCau) — cùng control: dòng, 2 cột, chế độ hình, cỡ ảnh
+  const cauMap = new Map<string, CauHoi>([...h.caus, ...(h.btvn?.caus ?? [])].map((x) => [x.ma_cau, x as unknown as CauHoi]))
+  const tong = (so: Record<string, number>) => Object.values(so).reduce((a, b) => a + b, 0)   // ô số người gõ (UI)
   return (
     <div id={`cdh-${h.phan_id}`} className="scroll-mt-3 overflow-hidden rounded-xl border border-sky-200">
       <div className="flex items-center gap-2 bg-sky-600 px-3 py-2 text-white">
@@ -381,16 +383,26 @@ function HocCard({ h, canUp, canDown, onMove, onBo, onLt, onXoaCau, onGoiY, onCh
         </label>
         <button onClick={onBo} title="Bỏ bài học khỏi buổi (mất cả bài luyện + BTVN đã chọn)" className="shrink-0 text-[12px] text-white/70 hover:text-white">✕</button>
       </div>
-      <div className="grid gap-3 bg-white p-3 md:grid-cols-2">
-        {khoi('Bài luyện', h.phan_id, h.caus, false)}
-        {h.btvn ? khoi('BTVN', h.btvn.phan_id, h.btvn.caus, true) : <div className="text-[12px] italic text-slate-400">Không có khối BTVN.</div>}
+      <div className="bg-white">
+        <KhoiCau tieuDe="📘 Bài luyện" mau="sky" caus={h.caus.map((x) => x.ma_cau)} cauMap={cauMap} cfg={cfg} chiXem={false}
+          soMacDinh={{ tu_luan: Math.max(h.caus.length, SO_CAU_MAC_DINH) }}
+          onXoa={(m) => onXoaCau(h.phan_id, h.caus.filter((x) => x.ma_cau !== m).map((x) => x.ma_cau))}
+          onGoiY={(so) => onGoiY(h.phan_id, tong(so))} onChonCau={() => onChonCau(false)} />
+        {h.btvn && (
+          <div className="border-t border-orange-100 bg-orange-50/30">
+            <KhoiCau tieuDe="🏠 BTVN" mau="orange" caus={h.btvn.caus.map((x) => x.ma_cau)} cauMap={cauMap} cfg={cfg} chiXem={false} btvn
+              soMacDinh={{ tu_luan: Math.max(h.btvn.caus.length, SO_CAU_MAC_DINH) }}
+              onXoa={(m) => onXoaCau(h.btvn!.phan_id, h.btvn!.caus.filter((x) => x.ma_cau !== m).map((x) => x.ma_cau))}
+              onGoiY={(so) => onGoiY(h.btvn!.phan_id, tong(so))} onChonCau={() => onChonCau(true)} />
+          </div>
+        )}
       </div>
     </div>
   )
 }
 
 // ── Bộ chọn bài học: bài học Hình của khối theo chủ đề (thứ tự bấm = thứ tự trong buổi) ──
-function ChonBaiHoc({ khoi, daChon, onClose, onConfirm }: { khoi: string; daChon: string[]; onClose: () => void; onConfirm: (mas: string[]) => void }) {
+export function ChonBaiHoc({ khoi, daChon, onClose, onConfirm, ghiChu }: { khoi: string; daChon: string[]; onClose: () => void; onConfirm: (mas: string[]) => void; ghiChu?: string }) {
   const [ds, setDs] = useState<HhChonBai[] | null>(null)
   const [chon, setChon] = useState<string[]>(daChon)
   const [err, setErr] = useState<string | null>(null)
@@ -406,7 +418,7 @@ function ChonBaiHoc({ khoi, daChon, onClose, onConfirm }: { khoi: string; daChon
       <div className="absolute inset-x-10 inset-y-8 flex flex-col overflow-hidden rounded-2xl bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center gap-3 border-b border-slate-200 px-6 py-3">
           <h3 className="text-base font-semibold text-slate-900">Chọn bài học Hình · Khối {khoi}</h3>
-          <span className="text-[12px] text-slate-400">thứ tự bấm = thứ tự trong buổi · bài mới tự gợi ý {SO_CAU_MAC_DINH} câu luyện + {SO_CAU_MAC_DINH} câu BTVN</span>
+          <span className="text-[12px] text-slate-400">{ghiChu ?? `thứ tự bấm = thứ tự trong buổi · bài mới tự gợi ý ${SO_CAU_MAC_DINH} câu luyện + ${SO_CAU_MAC_DINH} câu BTVN`}</span>
           <button onClick={onClose} className="ml-auto text-slate-400 hover:text-slate-700">✕</button>
         </div>
         <div className="min-h-0 flex-1 overflow-auto px-6 py-4">
@@ -443,7 +455,7 @@ function ChonBaiHoc({ khoi, daChon, onClose, onConfirm }: { khoi: string; daChon
 }
 
 // ── Chọn câu của 1 bài học cho khối Bài luyện / BTVN (câu đã chọn giữ thứ tự, câu mới thêm cuối; câu đang ở phần khác của buổi bị khoá) ──
-function ChonCauHoc({ maBai, ten, daChon, khoa, onClose, onConfirm }: { maBai: string; ten: string; daChon: string[]; khoa: string[]; onClose: () => void; onConfirm: (mas: string[]) => void }) {
+export function ChonCauHoc({ maBai, ten, daChon, khoa, onClose, onConfirm }: { maBai: string; ten: string; daChon: string[]; khoa: string[]; onClose: () => void; onConfirm: (mas: string[]) => void }) {
   const [kho, setKho] = useState<HhCauKho[] | null>(null)
   const [chon, setChon] = useState<string[]>(daChon)
   const [err, setErr] = useState<string | null>(null)

@@ -1,7 +1,7 @@
 // KHO TRÊN LỚP của 1 dạng bài (Đại — Thùy 22/10): 2 chuỗi Bài giảng · Luyện trên lớp. Thêm / sửa / xếp thứ tự / đổi vai /
 // bỏ (kho rác) / chép từ kho luyện. Mutation vá tại chỗ (CLAUDE.md §2), không tải lại cả danh sách.
 import { useEffect, useState } from 'react'
-import { MathText, inp } from './ui'
+import { MathText, LoiGiaiXem, inp } from './ui'
 import { uploadKhoImage } from '../../lib/kho/api'
 import { getKhoCau, type KhoCauRow } from '../../lib/kho/banDoMoi'
 import {
@@ -49,7 +49,7 @@ export default function KhoTrenLopModal({ dangBaiId, ten, onDong }: { dangBaiId:
 
   return (
     <div className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-900/40 p-6" onClick={() => onDong(doi)}>
-      <div className="flex h-full max-h-[92vh] w-full max-w-5xl flex-col overflow-hidden rounded-xl bg-slate-50 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+      <div className="flex h-full max-h-[95vh] w-full max-w-[95vw] flex-col overflow-hidden rounded-xl bg-slate-50 shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center gap-3 border-b border-slate-200 bg-white px-4 py-2.5">
           <span className="text-[14px] font-semibold text-slate-900">🏫 Kho trên lớp</span>
           <span className="min-w-0 flex-1 truncate text-[13px] text-slate-600"><MathText>{ten}</MathText></span>
@@ -140,7 +140,7 @@ function TheCau({ c, so, len, xuong, sua, doiVai, bo }: {
       {(c.loi_giai || c.anh_dap_an) && (
         <details className="mt-1 text-[12px] text-slate-600">
           <summary className="cursor-pointer text-indigo-600">Lời giải</summary>
-          {c.loi_giai && <div className="mt-1 whitespace-pre-wrap leading-relaxed"><MathText>{c.loi_giai}</MathText></div>}
+          {c.loi_giai && <LoiGiaiXem raw={c.loi_giai} className="mt-1 whitespace-pre-wrap leading-relaxed" />}
           {c.anh_dap_an && <img src={c.anh_dap_an} alt="" className="mt-1 max-h-40 rounded border border-slate-200" />}
         </details>
       )}

@@ -73,11 +73,11 @@ export async function countHinhHocCauByBai(khoi: string): Promise<Record<string,
 export async function listHinhHocMap(khoi: string): Promise<MapRow[]> {
   const bais = await listHinhHocBai(khoi)
   const t1Ma = `HH.K${khoi}`
-  const t2Ma = `${t1Ma}.BAI`
+  // Thùy 28/10: mỗi bài học = 1 chuyên đề = 1 nhóm = 1 dạng bài, cùng tên ⇒ tầng 2 của bộ chọn = chính bài học
   return bais.map((b) => ({
     leafMa: b.ma_bai, khoi: b.khoi,
     t1Ma, t1Ten: `Hình học · Khối ${khoi}`,
-    t2Ma, t2Ten: 'Danh sách Bài',
+    t2Ma: b.ma_bai, t2Ten: b.ten_bai,
     leafTen: b.ten_bai, bac: b.bac_toi_thieu ?? '', mucDo: b.muc_do,   // CEO 27/09: truyền độ khó thật để DangPicker filter
   }))
 }

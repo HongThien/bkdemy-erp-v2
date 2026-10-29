@@ -985,7 +985,7 @@ export function WriteLines({ n }: { n: number }) {
 }
 /** Ảnh đề của câu. Có cỡ IN riêng (cau_hinh.anhMmByCau) ⇒ width đúng mm, cao theo tỉ lệ, KHÔNG bị max-height 60mm / max-width cột
  *  co lại (ảnh "cầm thước đo" phải in đúng cm). Không có ⇒ như cũ (.pv-img tự co). */
-function AnhDe({ ma, src }: { ma: string; src: string }) {
+export function AnhDe({ ma, src }: { ma: string; src: string }) {
   const mm = useContext(AnhMmCtx)[ma]
   if (!(mm > 0)) return <img src={src} alt="" className="pv-img" />
   return <img src={src} alt="" className="pv-img" style={{ width: `${mm}mm`, height: 'auto', maxWidth: 'none', maxHeight: 'none' }} />
@@ -1055,12 +1055,14 @@ export function CauItem(props: { no: number; c: CauHoi; gv: boolean; lines?: num
   return <div className="pv-cau">{content}{lines > 0 && <WriteLines n={lines} />}</div>
 }
 // Câu hỏi THUẦN (đề + hình + grid nhúng, KHÔNG đáp án/dòng kẻ) — dùng cho ô cột 1 của TLNTable.
-export function questionOnlyContent(no: number, c: CauHoi): React.ReactNode {
+// cheDoHinh (ET 28/10): bảng trả lời ngắn chỉ có ở bản HS ⇒ 'o_trong' = khung trống cho HS vẽ, 'khong' = bỏ hình.
+export function questionOnlyContent(no: number, c: CauHoi, cheDoHinh?: CheDoHinh): React.ReactNode {
   const { stem, grid, emb } = splitStem(c)
+  const cd = cheDoHinh ?? 'hien'
   return (<>
     <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${no}.</span> `}>{stem}</MathText></div>
     {grid && <OptGrid grid={grid} emb={emb} />}
-    {c.anh_de && <AnhDe ma={c.ma_cau} src={c.anh_de} />}
+    {cd === 'o_trong' ? <div className="pv-vebox" /> : cd === 'khong' ? null : c.anh_de && <AnhDe ma={c.ma_cau} src={c.anh_de} />}
   </>)
 }
 // Trả lời ngắn (Thùy: "đưa về dạng bảng — cột 1 đề, cột 2 điền đáp án") — BẢNG 2 cột thay dòng-kẻ-viết-tay.

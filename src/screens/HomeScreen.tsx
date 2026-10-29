@@ -6,7 +6,9 @@
 // Màu chỉ đọc biến `--sk-*` (bienCss của app HS); hình chỉ lấy qua useSkinErp — không gõ mã màu hay đường dẫn ảnh ở đây,
 // không `if (skin === …)`.
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
-import { useStore } from '../store/useStore'
+import { useStore, useCayYT } from '../store/useStore'
+import NutGhimYT from '../components/NutGhimYT'
+import { docTabMo, ghiTabMo, TAB_YT_TOI_DA } from '../lib/yeuThich'
 import { useDieuHuong } from '../lib/useDieuHuong'
 import { useIsMobile } from '../hooks/useIsMobile'
 import { useSkinErp, cheDoErp, SKINS_ERP, NEN_TU_CHON, nenErpCho, MEO_NGU, VIT_DI, DOI_BAN } from '../lib/erpSkin'
@@ -23,7 +25,7 @@ import ViecHangNgay, { NOTICE_TAB, noticeTabCua } from './home/ViecHangNgay'
 import HomThu from '../components/HomThu'
 import AvatarEditButton from '../components/AvatarEditButton'
 import BangOrder from './home/BangOrder'
-import { LEAF_VIEC, MUC_VIEC, NHOM_MO_TA, VIEC_MO_TA, leafNhom, nhomCuaLeafHome, nhomIcon, type MucMenu } from '../lib/menu'
+import { LEAF_VIEC, MUC_VIEC, NHOM_MO_TA, VIEC_MO_TA, YEU_THICH_TOI_DA, leafNhom, nhomCuaLeafHome, nhomIcon, type MucMenu } from '../lib/menu'
 
 const NOI = 'transition hover:-translate-y-1 hover:brightness-110 hover:[outline:2px_solid_var(--sk-acc)]'   // thẻ bấm được: nhấc lên + viền màu nhấn
 
@@ -33,9 +35,9 @@ function IconStyle({ src, matNa, className }: { src: string; matNa: boolean; cla
   return <img src={src} alt="" draggable={false} className={`object-contain drop-shadow-[0_6px_10px_rgba(0,0,0,.35)] ${className}`} />
 }
 
-function Sao({ bat, onClick, className }: { bat: boolean; onClick: () => void; className: string }) {
+function Sao({ bat, onClick, className, title }: { bat: boolean; onClick: () => void; className: string; title?: string }) {
   return (
-    <button onClick={onClick} title={bat ? 'Bỏ khỏi Yêu thích' : 'Thêm vào Yêu thích'}
+    <button onClick={onClick} title={title ?? (bat ? 'Bỏ khỏi Yêu thích' : 'Thêm vào Yêu thích')}
       className={`absolute rounded px-1 leading-none ${className} ${bat ? 'text-[var(--sk-acc)]' : 'text-[var(--sk-muted)] opacity-50 hover:text-[var(--sk-acc)] hover:opacity-100'}`}>
       {bat ? '★' : '☆'}
     </button>
@@ -46,7 +48,8 @@ const HuyHieu = ({ chu, co }: { chu: string; co: string }) => (
 )
 
 // MỤC CON dạng CARD TO (trang nhóm) — Thùy 13/10: "card bên trong phải to ra cho dễ nhìn, để thừa không gian làm gì".
-function MucCard({ m, bat, coSao, onMo, onSao }: { m: MucMenu; bat: boolean; coSao: boolean; onMo: () => void; onSao: () => void }) {
+// ☆ ở góc thẻ mở khung chọn TAB Yêu thích (NutGhimYT) — ghim là chọn luôn tab hiển thị (Thùy 29/10).
+function MucCard({ m, coSao, onMo }: { m: MucMenu; coSao: boolean; onMo: () => void }) {
   return (
     <div className="relative">
       <button onClick={onMo} style={THE} className={`flex aspect-[1/0.72] min-h-[150px] w-full flex-col items-center justify-center gap-2 px-3 py-4 text-center ${NOI}`}>
@@ -55,7 +58,14 @@ function MucCard({ m, bat, coSao, onMo, onSao }: { m: MucMenu; bat: boolean; coS
         {/* mục nằm trong 1 thư mục con (vd "Vận hành lớp học") ⇒ ghi tên thư mục ngay trên card, không tách lưới riêng */}
         {m.cha && m.cha !== m.ten && <span className="block max-w-full truncate text-[11.5px] text-[var(--sk-muted)]">{m.cha}</span>}
       </button>
-      {coSao && <Sao bat={bat} onClick={onSao} className="right-2.5 top-2.5 text-[22px]" />}
+      {coSao && (
+        <div className="absolute right-1.5 top-1.5">
+          <NutGhimYT mucId={m.id} nut={(bat, mo) => (
+            <button onClick={mo} title={bat ? 'Đã ghim — đổi tab / bỏ ghim' : 'Ghim vào tab Yêu thích'}
+              className={`rounded px-1 text-[22px] leading-none ${bat ? 'text-[var(--sk-acc)]' : 'text-[var(--sk-muted)] opacity-50 hover:text-[var(--sk-acc)] hover:opacity-100'}`}>{bat ? '★' : '☆'}</button>
+          )} />
+        </div>
+      )}
     </div>
   )
 }
@@ -71,7 +81,7 @@ function MucNgang({ m, phu, coSao, onMo, onSao }: { m: MucMenu; phu?: string; co
           {phu && <span className="block truncate text-[11.5px] text-[var(--sk-muted)]">{phu}</span>}
         </span>
       </button>
-      {coSao && <Sao bat onClick={onSao} className="right-3 top-1/2 -translate-y-1/2 text-[19px]" />}
+      {coSao && <Sao bat onClick={onSao} title="Bỏ khỏi tab này" className="right-3 top-1/2 -translate-y-1/2 text-[19px]" />}
     </div>
   )
 }
@@ -374,6 +384,83 @@ function TuyChinh({ cacBox, an, doi, hep, dang, doiDang, notice, doiNotice }: {
   )
 }
 
+// ★ YÊU THÍCH THEO TAB (Thùy 29/10): thanh toggle các tab người dùng tự đặt tên · mỗi tab ≤ 12 mục · ✎ Sửa tab = đổi tên,
+// đổi chỗ, xoá, thêm tab. ★ trên ô = rút mục khỏi TAB ĐANG MỞ (các tab khác giữ nguyên). Tab đang mở nhớ trên máy (lib/yeuThich).
+function KhoiYeuThich({ mucs, coSao, hep, tam, di }: { mucs: MucMenu[]; coSao: boolean; hep: boolean; tam: CSSProperties; di: (id: string) => void }) {
+  const cay = useCayYT()
+  const boGhimTabYT = useStore((s) => s.boGhimTabYT)
+  const themTabYT = useStore((s) => s.themTabYT)
+  const doiTenTabYT = useStore((s) => s.doiTenTabYT)
+  const xoaTabYT = useStore((s) => s.xoaTabYT)
+  const doiChoTabYT = useStore((s) => s.doiChoTabYT)
+  const [tabNho, setTabNho] = useState<string | null>(null)
+  const [sua, setSua] = useState(false)
+  const [moi, setMoi] = useState('')
+  const tab = tabNho && cay.tabs.some((t) => t.id === tabNho) ? tabNho : docTabMo(cay)
+  const chon = (id: string) => { setTabNho(id); ghiTabMo(id) }
+  const t = cay.tabs.find((x) => x.id === tab) ?? cay.tabs[0]
+  const ds = t.muc.map((id) => mucs.find((m) => m.id === id)).filter((m) => !!m)
+  const them = () => { const ten = moi.trim(); if (!ten) return; const id = themTabYT(ten); if (id) { setMoi(''); chon(id) } }
+  const oNhap = 'min-w-0 border border-[var(--sk-line)] bg-[var(--sk-surface2)] px-2 py-1 text-[13px] text-[var(--sk-ink)] outline-none focus:border-[var(--sk-acc)]'
+  const nutNho = 'px-1.5 py-0.5 text-[13px] leading-none text-[var(--sk-muted)] hover:text-[var(--sk-ink)] disabled:opacity-25'
+  return (
+    <div>
+      <Nhan>★ Yêu thích</Nhan>
+      {/* THANH TOGGLE TAB */}
+      <div className="mb-2.5 flex flex-wrap items-center gap-1.5">
+        <div className="inline-flex max-w-full flex-wrap gap-0.5 border border-[var(--sk-line)] p-0.5" style={{ ...tam, borderRadius: 'var(--sk-radius-pill)' }}>
+          {cay.tabs.map((x) => (
+            <button key={x.id} onClick={() => chon(x.id)}
+              className={`px-3 py-1 text-[12.5px] font-bold ${x.id === t.id ? 'bg-[var(--sk-acc)] text-[var(--sk-acc-ink)]' : 'text-[var(--sk-muted)] hover:text-[var(--sk-ink)]'}`}
+              style={{ borderRadius: 'var(--sk-radius-pill)' }}>{x.ten} <span className="font-semibold opacity-70">{x.muc.length}</span></button>
+          ))}
+        </div>
+        {coSao && (
+          <button onClick={() => setSua(!sua)} className="px-2.5 py-1 text-[12px] font-semibold text-[var(--sk-ink)] hover:brightness-110" style={{ ...tam, borderRadius: 'var(--sk-radius-pill)' }}>
+            {sua ? '✓ Xong' : '✎ Sửa tab'}
+          </button>
+        )}
+      </div>
+      {/* SỬA TAB: đổi tên (Enter/rời ô là lưu) · đổi chỗ ‹ › · xoá · thêm */}
+      {sua && coSao && (
+        <div className="mb-3 max-w-[560px] space-y-1.5 p-2.5" style={tam}>
+          {cay.tabs.map((x, i) => (
+            <div key={x.id} className="flex items-center gap-1.5">
+              <input key={x.id + x.ten} defaultValue={x.ten} maxLength={30} className={`flex-1 ${oNhap}`} style={{ borderRadius: 7 }}
+                onBlur={(e) => { const v = e.target.value.trim(); if (v && v !== x.ten) doiTenTabYT(x.id, v); else e.target.value = x.ten }}
+                onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur() }} />
+              <span className="w-10 shrink-0 text-right text-[11px] tabular-nums text-[var(--sk-muted)]">{x.muc.length}/{YEU_THICH_TOI_DA}</span>
+              <button onClick={() => doiChoTabYT(x.id, -1)} disabled={i === 0} title="Lên trước" className={`${nutNho} text-[17px]`}>‹</button>
+              <button onClick={() => doiChoTabYT(x.id, 1)} disabled={i === cay.tabs.length - 1} title="Ra sau" className={`${nutNho} text-[17px]`}>›</button>
+              <button disabled={cay.tabs.length === 1} title={cay.tabs.length === 1 ? 'Cần giữ ít nhất 1 tab' : 'Xoá tab'} className={`${nutNho} hover:text-rose-500`}
+                onClick={() => { if (x.muc.length && !window.confirm(`Xoá tab "${x.ten}"? ${x.muc.length} mục trong tab sẽ bỏ ghim khỏi tab này (màn vẫn còn trong menu).`)) return; xoaTabYT(x.id) }}>🗑</button>
+            </div>
+          ))}
+          {cay.tabs.length < TAB_YT_TOI_DA ? (
+            <form onSubmit={(e) => { e.preventDefault(); them() }} className="flex gap-1.5 pt-1">
+              <input value={moi} onChange={(e) => setMoi(e.target.value)} maxLength={30} placeholder="Tên tab mới (vd Kho · Báo cáo · Hằng ngày)…" className={`flex-1 ${oNhap}`} style={{ borderRadius: 7 }} />
+              <button type="submit" disabled={!moi.trim()} className="shrink-0 bg-[var(--sk-acc)] px-3 text-[12.5px] font-bold text-[var(--sk-acc-ink)] disabled:opacity-40" style={{ borderRadius: 7 }}>＋ Thêm tab</button>
+            </form>
+          ) : <p className="pt-1 text-[11.5px] text-[var(--sk-muted)]">Đã đủ {TAB_YT_TOI_DA} tab.</p>}
+        </div>
+      )}
+      {ds.length === 0 ? (
+        <div className="border border-dashed border-[var(--sk-line)] px-4 py-3 text-[13px] text-[var(--sk-muted)]" style={tam}>
+          {coSao ? `Tab "${t.ten}" chưa có mục nào. Bấm ☆ ở mục hay dùng (trong một nhóm bên dưới, hoặc ☆ Ghim trên thanh địa chỉ) rồi tick tab này.`
+            : 'Tài khoản chưa gắn hồ sơ nhân sự nên chưa lưu được mục Yêu thích.'}
+        </div>
+      ) : (
+        <div className={hep ? 'grid gap-2' : 'grid gap-3 [grid-template-columns:repeat(auto-fill,minmax(235px,1fr))]'}>
+          {ds.map((m) => (
+            <MucNgang key={m.id} m={m} phu={[m.nhom, m.cha].filter(Boolean).join(' › ') || undefined} coSao={coSao}
+              onMo={() => di(m.id)} onSao={() => boGhimTabYT(m.id, t.id)} />
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
 export default function HomeScreen() {
   const dh = useDieuHuong()
   const sk = useSkinErp()
@@ -393,6 +480,9 @@ export default function HomeScreen() {
   const mucs = dh.mucs
   // Yêu thích: tra theo id (khoá tự nhiên); mục đã mất quyền/đã bỏ thì chỉ không hiện, không tự xoá khỏi DB.
   const dsYeuThich = dh.yeuThich.map((id) => mucs.find((m) => m.id === id)).filter((m) => !!m)
+  // Cảnh tranh không có chỗ cho thanh tab ⇒ hiện tab đang mở gần nhất trên máy này (đổi tab ở bố cục thường / ☰ menu).
+  const cayYT = useCayYT()
+  const dsTabMo = (cayYT.tabs.find((t) => t.id === docTabMo(cayYT))?.muc ?? []).map((id) => mucs.find((m) => m.id === id)).filter((m) => !!m)
   const khung: CSSProperties = { ...sk.bien, background: 'var(--sk-page)', fontFamily: 'var(--sk-font)' }
   const le = isMobile ? 'px-3 py-4' : 'px-8 py-6'
   const tam: CSSProperties = { background: 'var(--sk-surface)', borderRadius: 'var(--sk-radius)', backdropFilter: 'var(--sk-blur)' }   // tấm nền sau chữ đặt trên tranh
@@ -418,7 +508,7 @@ export default function HomeScreen() {
           </div>
           <div className={luoi}>
             {cuaNhom.map((m) => (
-              <MucCard key={m.id} m={m} bat={dh.yeuThich.includes(m.id)} coSao={coSao} onMo={() => dh.di(m.id)} onSao={() => dh.doiYeuThich(m.id)} />
+              <MucCard key={m.id} m={m} coSao={coSao} onMo={() => dh.di(m.id)} />
             ))}
           </div>
         </div>
@@ -479,24 +569,7 @@ export default function HomeScreen() {
     if (id === 'viec_ngay') return <ViecHangNgay compact onMoVietCuaToi={lenViec} onMoKeHoach={() => dh.di('myplan')} tabs={noticeTabs} />
     if (id === 'tien_do') return <TienDoViec />
     if (id === 'order') return <BangOrder />
-    return (
-      <div>
-        <Nhan>★ Yêu thích</Nhan>
-        {dsYeuThich.length === 0 ? (
-          <div className="border border-dashed border-[var(--sk-line)] px-4 py-3 text-[13px] text-[var(--sk-muted)]" style={tam}>
-            {coSao ? 'Chưa có mục nào. Mở một nhóm bên dưới rồi bấm ☆ ở mục hay dùng — nó sẽ nằm ở đây, bấm là vào thẳng.'
-              : 'Tài khoản chưa gắn hồ sơ nhân sự nên chưa lưu được mục Yêu thích.'}
-          </div>
-        ) : (
-          <div className={isMobile ? 'grid gap-2' : 'grid gap-3 [grid-template-columns:repeat(auto-fill,minmax(235px,1fr))]'}>
-            {dsYeuThich.map((m) => (
-              <MucNgang key={m.id} m={m} phu={[m.nhom, m.cha].filter(Boolean).join(' › ') || undefined} coSao={coSao}
-                onMo={() => dh.di(m.id)} onSao={() => dh.doiYeuThich(m.id)} />
-            ))}
-          </div>
-        )}
-      </div>
-    )
+    return <KhoiYeuThich mucs={mucs} coSao={coSao} hep={isMobile} tam={tam} di={dh.di} />
   }
   const lon = xep(KHU_LON)
 
@@ -531,7 +604,7 @@ export default function HomeScreen() {
           tuyChinh={coSao ? <TuyChinh cacBox={cacBox} an={an} doi={dh.doiHomeAn} hep={false} dang={dangCard} doiDang={dh.doiHomeDangCard} notice={noticeTabs} doiNotice={dh.doiNoticeTab} /> : null}
           giaoDien={<ChonGiaoDien hep={false} />}
           // cảnh có bao nhiêu ô Yêu thích thì hiện bấy nhiêu (cảnh ghép cũ: 8; cảnh liền: theo tranh, tối đa 12) — mục dư vẫn có ở ☰ menu › ⭐ Yêu thích
-          yeuThich={dsYeuThich.slice(0, canh.yeuThichO.length).map((m) => ({ id: m.id, ten: m.ten, onMo: () => dh.di(m.id), onSao: coSao ? () => dh.doiYeuThich(m.id) : undefined }))}
+          yeuThich={dsTabMo.slice(0, canh.yeuThichO.length).map((m) => ({ id: m.id, ten: m.ten, onMo: () => dh.di(m.id), onSao: coSao ? () => dh.doiYeuThich(m.id) : undefined }))}
           nhom={nhomCanh}
         />
       </section>

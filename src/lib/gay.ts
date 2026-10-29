@@ -432,7 +432,8 @@ export async function listChotThang(ky: string): Promise<GayChotThangFull[]> {
 }
 
 // ── QUYỀN GẬY THEO KHỐI (Thùy 16/10, mig 202610161605/1606) — trục thứ hai bên cạnh cây vị trí.
-// Cấu hình ở bảng gay_quyen_khoi; phạm vi tính ở DB (fn_gay_pham_vi_khoi), trừ chính mình.
+// Nguồn = Trưởng khối được phân công (phan_cong_quan_ly_khoi, 29/10 — thay gay_quyen_khoi); toàn quyền = Lead/Quản lý chất lượng.
+// Phạm vi tính ở DB (fn_gay_pham_vi_khoi), trừ chính mình.
 export type PhamViKhoi = { toanQuyen: boolean; khoi: string[]; nsIds: Set<string>; deXuatIds: Set<string> }
 export const PHAM_VI_KHOI_RONG: PhamViKhoi = { toanQuyen: false, khoi: [], nsIds: new Set(), deXuatIds: new Set() }
 export async function phamViKhoi(): Promise<PhamViKhoi> {
@@ -440,6 +441,19 @@ export async function phamViKhoi(): Promise<PhamViKhoi> {
   if (error) throw error
   const j = (data ?? {}) as { toan_quyen?: boolean; khoi?: string[]; ns_ids?: string[]; de_xuat_ids?: string[] }
   return { toanQuyen: !!j.toan_quyen, khoi: j.khoi ?? [], nsIds: new Set(j.ns_ids ?? []), deXuatIds: new Set(j.de_xuat_ids ?? []) }
+}
+
+// Khối/lớp của từng đề xuất (Thùy 29/10, lọc theo khối) — suy ở DB (fn_gay_de_xuat_lop, mig 202610291307).
+// Đề xuất không gắn buổi học (việc OPS gộp theo ca) KHÔNG có trong Map.
+export type DeXuatLop = { khoi: string | null; mon: string; ten_lop: string }
+export async function deXuatLop(ids: string[]): Promise<Map<string, DeXuatLop>> {
+  const out = new Map<string, DeXuatLop>()
+  for (let i = 0; i < ids.length; i += 400) {
+    const { data, error } = await supabase.rpc('fn_gay_de_xuat_lop', { p_ids: ids.slice(i, i + 400) }).limit(1000)
+    if (error) throw error
+    for (const r of (data ?? []) as ({ id: string } & DeXuatLop)[]) out.set(r.id, { khoi: r.khoi, mon: r.mon, ten_lop: r.ten_lop })
+  }
+  return out
 }
 
 // ── MIỄN GẬY TỰ ĐỘNG (nhan_su.mien_gay) — CEO bật/tắt qua UI Danh mục ────────

@@ -206,6 +206,12 @@ export async function boDuyetCau(ma_cau: string, tbl = 'dai_cau_hoi'): Promise<v
     .eq('ma_cau', ma_cau)
   if (error) throw error
 }
+// Duyệt / bỏ duyệt mà KHÔNG biết trước câu nằm bảng nào — dò xuyên các bảng kho rồi ghi (duyệt thẳng trong popup Kho — CEO 28/10).
+export async function duyetCauAuto(ma_cau: string, duyet: boolean): Promise<void> {
+  const found = await findCauInKho(ma_cau)
+  if (!found) throw new Error(`Không tìm thấy câu ${ma_cau} ở bất kỳ bảng kho nào.`)
+  if (duyet) await duyetCau(ma_cau, found.cauTbl); else await boDuyetCau(ma_cau, found.cauTbl)
+}
 
 // Tìm 1 câu THEO ma_cau xuyên suốt CẢ 3 bảng kho — dùng cho Duyệt chấm "Sửa trong Kho": chỗ gọi chỉ
 // có `ma_cau` (text, KHÔNG FK — CLAUDE.md §2 "tham chiếu bằng TEXT"), không biết trước câu thuộc
@@ -214,7 +220,7 @@ export async function boDuyetCau(ma_cau: string, tbl = 'dai_cau_hoi'): Promise<v
 // nên dò TỪNG bảng thay vì đoán theo tiền tố. Trả `null` nếu không thấy ở bảng nào (câu đã bị xoá
 // cứng ngoài luồng kho rác, hoặc `ma_cau` không còn đúng — báo rõ ở nơi gọi, không giả định).
 export async function findCauInKho(ma_cau: string): Promise<{ cau: CauHoi; cauTbl: string } | null> {
-  for (const cauTbl of Object.keys(CUM_TBL)) {
+  for (const cauTbl of KHO_CAU_TBLS) {
     const { data, error } = await supabase.from(cauTbl).select('*').eq('ma_cau', ma_cau).maybeSingle()
     if (error) throw error
     if (data) return { cau: data as CauHoi, cauTbl }
@@ -232,8 +238,11 @@ export const tenCum = (c: CumBai) => c.ten?.trim() || `Cụm ${c.thu_tu}`   // c
 //   schema cache" và CHẾT CẢ LƯỢT LƯU. Mọi insert dính cụm phải đi qua cờ này.
 export const coCumBai = (cauTbl: string) => !!CUM_TBL[cauTbl]
 
-// Bảng cụm theo bảng câu. undefined = nhánh CHƯA có cụm (hgt/hình) → UI ẩn tab Cụm.
-export const CUM_TBL: Record<string, string> = { dai_cau_hoi: 'dai_cum_bai', khtn_cau_hoi: 'khtn_cum_bai', hgt_cau_hoi: 'hgt_cum_bai', hinh_hoc_cau_hoi: 'hinh_hoc_cum_bai', tsa_cau_hoi: 'tsa_cum_bai' }
+// Bảng cụm theo bảng câu. undefined = nhánh KHÔNG có cụm → UI ẩn tab Cụm, không ghi ma_cum.
+// Hình – Học bỏ cụm (Thùy 28/10: "mỗi bài hình học = 1 chuyên đề = 1 nhóm = 1 dạng bài, không còn cụm gì nữa").
+export const CUM_TBL: Record<string, string> = { dai_cau_hoi: 'dai_cum_bai', khtn_cau_hoi: 'khtn_cum_bai', hgt_cau_hoi: 'hgt_cum_bai', tsa_cau_hoi: 'tsa_cum_bai' }
+// Mọi bảng câu kho (dò 1 mã câu không rõ nhánh — findCauInKho). Tách khỏi CUM_TBL: bảng không có cụm vẫn là kho.
+const KHO_CAU_TBLS = ['dai_cau_hoi', 'khtn_cau_hoi', 'hgt_cau_hoi', 'hinh_hoc_cau_hoi', 'tsa_cau_hoi']
 // Bảng cạnh tiền đề theo bảng câu: [dạng↔dạng, cụm↔cụm]
 export const TIEN_DE_TBL: Record<string, { dang: string; cum: string }> = {
   dai_cau_hoi: { dang: 'dai_dang_tien_de', cum: 'dai_cum_tien_de' },
@@ -1872,6 +1881,13 @@ export async function listBdmMap(khoi: string, mon = 'Toán'): Promise<MapRow[]>
     t2Ma: `${d.ma_chuyen_de ?? ''}|${d.ma_nhom ?? ''}`, t2Ten: [d.ten_chuyen_de, d.ten_nhom].filter(Boolean).join(' · '),
     leafTen: d.ten_dang, bac: d.bac_toi_thieu ?? '', mucDo: d.muc_do ?? null,
   }))
+}
+// (môn, khối) CÒN chạy bản đồ cũ trong các cặp ứng viên — lá Giáo trình / ET cũ chỉ mở cho những cặp này (Thùy 28/10:
+// tiểu học chưa chuyển; mig 202610281756). Luật ở DB (_kho_ds_nhanh_khoi không có 'bdm'), client không giữ danh sách khối.
+export async function khoiDungBanDoCu(mons: readonly string[], khois: readonly string[]): Promise<{ mon: string; khoi: string }[]> {
+  const { data, error } = await supabase.rpc('fn_kho_dung_ban_do_cu', { p_mon: mons, p_khoi: khois }).limit(1000)
+  if (error) throw error
+  return (data ?? []) as { mon: string; khoi: string }[]
 }
 // (môn, khối) đã chạy bản đồ mới chưa — cùng luật DB (_kho_ds_nhanh_khoi có nhánh 'bdm').
 export async function khoiChayBanDoMoi(khoi: string, mon = 'Toán'): Promise<boolean> {

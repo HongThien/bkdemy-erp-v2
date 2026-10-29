@@ -78054,3 +78054,171 @@ Thùy giao 13/10 (tiếp việc vẽ lại hình kho Hình): thay ảnh chụp G
 - **Kiểm:** chạy hàm đúng như 2 em (ROLLBACK) — ca dựng được + luyện sinh bài; làm hỏng bảng cố ý ⇒ tự kiểm bắt đủ. KHÔNG bấm thử trên app HS thật (cần mật khẩu em).
 - **Việc cần Thùy:** DB đã sửa NGAY (2 em vào được ca bây giờ, không cần deploy). Deploy ERP (dải cảnh báo) + app HS (không nuốt lỗi) khi tiện.
 - **Nợ:** `fn_kho_*` suy tên bảng tiền đề cùng kiểu.
+
+## 28/10 — Nhân bản MT (Thùy)
+
+- Thùy: "2 lớp thi gần giống nhau nhưng có tình huống đặc biệt nên khác nhau 20% ⇒ cần nhân bản đề thi để chỉ sửa 20%".
+- DB `fn_mt_nhan_ban(p_de, p_ten)` (mig `202610281643_mt_nhan_ban` ĐÃ ÁP, `--only`): chép MT MẪU thành mẫu mới trong 1 transaction — phần (tiêu đề, Cơ bản/Nâng cao, thứ tự, cha) + câu (đúng thứ tự) + cau_hinh. Mã gốc bất biến: phần và hàng Hình `HINH:<uuid>` là danh tính riêng của đề ⇒ cấp MÃ MỚI, mọi khoá trỏ tới chúng trong cau_hinh (hinhByMa, diemByCau `HINH:<uuid>#ý`, phanBac theo id phần, colByCau…) đổi theo; mã câu kho giữ nguyên. KHÔNG chép `hinhBuoiId` (deleteMT xoá kèm ⇒ xoá bản sao sẽ giết buổi Hình của bản gốc), `hsMaDe`, duyệt, lượt gán lớp. Dấu vết `cau_hinh.nhanBanTu`. `created_by` = `jwt_uid()` (auth.uid() bị chặn quyền schema auth khi dry-run — đã gặp 08/10).
+- Bảng đổi mã dạng jsonb (không dùng bảng tạm). Dry-run ROLLBACK: đề KS K9 (Hình 2 ý) + Đề cuối tháng 9 K7 (3 phần, phanBac): phần/câu/CB-NC khớp, Hình mã mới, không còn mã cũ, etMaDe giống.
+- App: nút "⧉ Nhân bản" ở danh sách MT + màn soạn MT (cả khi mở từ Kho tài liệu) → hộp đặt tên ("<tên> (bản sao)") → mở luôn bản mới. Verify dev: nhân bản MT thử ⇒ "[TEST Claude] … (bản sao)" (id fa87a706-cbac-438e-92e5-b09f104b8e94), 2 phần 6 câu đúng thứ tự, đủ 3 mã đề. 2 MT thử CHƯA xoá — chờ Thùy gật.
+
+- **[Dọn MT thử — Thùy gật 28/10 "Xóa đi"]** Xoá 2 MT "[TEST Claude] MT ban do moi - xoa duoc" (+ bản sao): 12 dòng tai_lieu_cau · 4 tai_lieu_phan · 2 tai_lieu, 1 transaction, chặn theo đúng 2 id + tên + loai mt mẫu. Không bảng nào khác tham chiếu (đã đếm mọi FK → tai_lieu). Còn 0 MT thử.
+### 28/10 — K5: sách "Đề kiểm tra Toán 5" (Qbooks, KNTT, HK1 + HK2) — 40 đề, 574 câu lên Kho đề thi
+- **Làm:** Thùy thả `E:\BK ACADEMY\Tài liệu tham khảo\K5\Sách đề lớp 5A.pdf` (128 trang = 2 cuốn HK1 p1–64, HK2 p65–128; mỗi cuốn 5 GK + 15 CK, 3 trang/đề; KHÔNG in lời giải — đáp án chỉ qua QR) + SGK Toán 5 tập 1 KNTT; bảo "tự giải". Dây chuyền chép K6: tách 40 PDF (pdf-lib ở scratchpad) → `boc-pdf.mjs` (Gemini, 4 vòng song song) → Sonnet soạn `kho-rules/dai/lo/k5/<MA>.soan.md` (brief `lo/k5-brief-soan.md`, mẫu `HK1-GK01.soan.md` do Opus phiên chính soát) → Opus soát MÙ (`k5-brief-soat.md`, `.kiem.md` + `.soat.md`, 40/40 ĐẠT) → `scripts/kho/de-thi/k5-ghi-het.sh --ghi` (ky gk1/ck1/gk2/ck2 theo mã, 40 phút, dạng chờ T105000000, da_duyet=false). DB: ck1 15 đề 220 câu · ck2 15/213 · gk1 5/77 · gk2 5/64; 0 trùng trừ 3 câu (CK04 ×2, GK03 ×1 trỏ về câu cũ). Tên đề: "Đề kiểm tra giữa/cuối kì số N — Toán 5 học kì K (sách Đề kiểm tra Toán 5, Qbooks)".
+- **Sai / bắt được:** scan nằm ngang + trang lẻ lộn ngược (mọi trang cờ /Rotate 270) ⇒ đặt lại 0/180 theo chẵn lẻ (soi bảng ảnh nhỏ). Sonnet đọc nhầm HỖN SỐ (2 8/9 → 2−8/9; 2 3/4 → 2/4) và HÀNG thập phân (3 đề) ⇒ sai đáp án; đảo màu biểu đồ quạt (HK2-CK11); đọc "80 kẹo táo" thay vì 80 kẹo cả ba loại (HK2-GK04) — Opus soát bắt hết, sửa trước khi ghi. Thêm bẫy hỗn số + đơn vị chép đúng sách (km/h) vào brief giữa chừng. Gemini mục lục đoán đáp án sai nhiều câu — không dùng.
+- **Sửa công cụ:** `build-duyet-html.mjs` nhận `DUYET_LO`/`DUYET_LV` (trước ghi cứng K7). Trang duyệt `kho-rules/dai/k5-sach-de-can-xem.html` (4 chỗ cần Thùy: HK2-CK06 Bài 3 % Tiếng Việt suy từ góc 90° · HK1-GK03 Bài 4b đề in 1 9/5 · HK1-GK04 Câu 3 hai phương án đúng · HK2-CK11 Bài 4 màu A/C).
+
+## 28/10 — Mở lại Giáo trình / ET bản đồ cũ cho khối chưa chuyển (tiểu học) — Thùy
+- Thùy: 'nãy ở nhà xóa chức năng làm ET cũ nhưng quên mất là tiểu học chưa chuyển sang bản đồ mới — phục hồi lại cái làm ET và giáo trình cũ cho riêng khối tiểu học'. (348fa8a8 sáng 28/10 gỡ lá Giáo trình · Giáo trình (Hình) · ET khỏi cây; file màn vẫn còn.)
+- Lá mới: 'Giáo trình (bản đồ cũ)' (TaiLieuScreen chiBanDoCu) + 'ET (bản đồ cũ)' (ETScreen chiBanDoCu): chỉ (môn, khối) còn bản đồ cũ, luật ở DB fn_kho_dung_ban_do_cu = _kho_ds_nhanh_khoi không có 'bdm' (mig 202610281756 + _sua_null [= any với mảng có NULL ra NULL] + 202610281800 [security definer: authenticated không execute được _kho_ds_nhanh]). Toán: 3·4·5·5T (4T đã sang bản đồ mới); KHTN/Tiếng Anh/Văn/TSA: mọi khối (chưa có bản đồ mới — KHTN vẫn đang dùng: 18 ET + 8 giáo trình trong 30 ngày). Giáo trình bỏ nút 'Tất cả'.
+- Kiểm dev: Toán hiện khối 3/4/5/5T, mở danh sách giáo trình K3 (2 giáo trình); KHTN đủ 13 khối; ET chọn lớp: Toán chỉ K3/K4/K5/K5T. Lá 'Giáo trình (Hình)' cũ không mở lại (tiểu học không dùng).
+
+
+### [28/10] Bản đồ mới KHỐI 4 lùi xuống 1 tầng — toàn bộ vào chủ đề «Số tự nhiên» + mang bài tập theo
+- **Thùy:** "Chuyển bản đồ kiến thức của khối 4 mới lùi xuống 1 tầng — toàn bộ nằm trong chủ đề Số tự nhiên" → duyệt cách chuyển + gật xoá: "Cách m chuyển là đúng rồi nhé. Chuyển đi. Và mang bài tập theo".
+- **Trước:** K4 dùng 3 tầng (9 chủ đề › 26 chuyên đề › 80 nhóm, 0 dạng bài, 0 câu gán); K4 KHÔNG nằm trong khối chạy bản đồ mới (98 tài liệu bản đồ cũ, 3 tài liệu bản đồ mới tạo 28/10 — Giáo trình 4A + GT/BTVN 4A1 buổi 26, trỏ nhóm NNB00752). Tôi từng báo nhầm "lớp đang dùng hôm nay" — Thùy chỉ ra K4 chưa chạy bản đồ mới.
+- **Làm (`scripts/bdm-k4-lui-tang.mjs --ghi`, 1 transaction, chạy thử trước):** chủ đề mới **NCD00214 «Số tự nhiên»** (NCD00213 bị nuốt bởi lượt chạy thử); 9 chủ đề cũ → 9 chuyên đề · 26 chuyên đề → 26 nhóm · 80 nhóm → 80 dạng bài (28 dạng mang lý thuyết). MÃ MỚI (đổi tầng = đổi bảng = đổi loại mã; Thùy duyệt). 80 đối ứng dạng cũ → dạng bài mới (1–1, `dich_nhom` → `dich_dang_bai`); 7 phần tài liệu 4A trỏ NNB00752 → nhóm mới NNB01782 «Phép nhân chia số tự nhiên» (câu đã chọn giữ nguyên, bump tài liệu). **Mang bài tập theo:** 638 câu gốc sống → `dai_bdm_gan_cau` nguon 'doi_ung' (0 Đ/S), bản sao theo gốc ⇒ view quy được 2.089 câu K4. Xoá cũ: 80 nhóm · 26 ô · 26 chuyên đề · 9 chủ đề NCD00103–00111 (không bảng nào khác trỏ tới, đã kiểm FK + cau_hinh).
+- K4 vẫn chưa bật chạy bản đồ mới — bật là quyết định riêng.
+### 28/10 — Hình–Học K8: nhập "DRAFT ĐỊNH LÍ THALES" (Thùy gửi PDF) → 3 bài HH00142 · HH00143 · HH00144, 43 câu
+- **Làm:** đọc 20 trang PDF → `de-nguon.md` (đề + whitelist + sửa lỗi in) → lý thuyết 3 bài (INSERT `hinh_hoc_bai_ly_thuyet`) → 10 trạm Sonnet soạn (đề + lời giải 2 phần + hình code + verify toạ độ ~2.500 phép, 0 FAIL) → 3 trạm Opus soát mù (giải lại độc lập, 43/43 khớp; sửa trình bày/lộ đáp số/hình) → `nhap_hh_tu_draft.mjs --ghi` (16 + 16 + 11 câu, da_duyet=false, giai_method=claude_code) → `gan_hinh.mjs --ghi` (hình đề `_de`, hình lời giải `_lg`). Kiểm cuối: 43/43 có lời giải + hình, 86 URL ảnh HEAD 200, 3.106 công thức KaTeX parse sạch. Trang duyệt: `kho-rules/hinh/k8-thales-dtb-pg-duyet.html`. Lô nháp + brief: `kho-rules/hinh/lo/k8-thales/`.
+- **Sai/sửa:** (1) tôi hiểu nhầm "kho trên lớp / kho về nhà" lúc đầu — kho Hình–Học KHÔNG có cờ này (một kho theo bài; trên lớp/về nhà chỉ là phần `dang`/`btvn` của giáo trình chọn từ kho) ⇒ đánh nhãn TL/VN theo thứ tự tài liệu, câu trên lớp đứng trước; (2) soát bắt: gạch ký hiệu "bằng nhau" đặt trên đoạn con trong hình (VN1/VN5/VN7 ĐTB, VN2/VN3 phân giác) dễ đọc nhầm — đã bỏ/đổi sang cung góc; 3 chỗ Phần 1 lộ đáp số (Thales TL2.2, VN2; phân giác VN3) đã viết lại.
+- **Quyết định:** sửa lỗi in hiển nhiên (I∈AD · DE⟂AC · FM · E trung điểm AI · ∥AB · MC/MP) và thêm điều kiện chống suy biến (xem trang duyệt); **KHÔNG nhập** VN5 ý b) Thales (tài liệu sai, chờ Thùy xác nhận `MN/MB + MP/MC = 3`); các dòng "1 bài cho …, 2 bài thực tế …" là ghi chú chưa có đề ⇒ chưa nhập; Pythagore chỉ có lý thuyết, không có bài trong DB ⇒ bỏ.
+
+- **(28/10, sau) Thùy "bật đi":** mig `202610281827_bdm_k4_sang_ban_do_moi` (ĐÃ ÁP `--only`) — `_bdm_khoi_giu_cu` còn '3','5','5T' ⇒ khối chạy bản đồ mới: 4 · 4T · 6–12. Khối 4: nhánh Toán = bdm + hinh_hoc (registry, quy dạng mastery, Giáo trình/ET theo bản đồ mới). CAP1 luật đo không đổi.
+- **Thấy lỗi (của mig 202610281756, phiên khác, CHƯA sửa):** `fn_kho_dung_ban_do_cu` dùng `not ('bdm' = any(_kho_ds_nhanh_khoi(...)))` mà mảng nhánh cũ là `{NULL,'hinh_gt','hinh_hoc'}` ⇒ `'bdm' = any(...)` ra NULL ⇒ khối tiểu học (3/5/5T) KHÔNG bao giờ được trả ⇒ Giáo trình/ET cũ mở lại cho tiểu học không hiện. Sửa 1 dòng: `coalesce('bdm' = any(...), false)`.
+
+## 28/10 — Hình – Học theo bản đồ Đại mới: bài học = chuyên đề = nhóm = dạng bài, bỏ cụm — Thùy
+- Thùy: 'Mỗi bài hình – học là 1 chuyên đề – 1 nhóm bài – 1 dạng bài – tất cả cùng tên cho dễ đánh giá. Ko còn cụm gì nữa'.
+- CTO chọn: bài học (hinh_hoc_bai, mã HH…) CHÍNH LÀ 3 tầng (suy, không thêm bảng) ⇒ tên luôn trùng, mã gốc/mastery/giáo trình/bổ trợ không đổi.
+- Mig 202610281831 ĐÃ ÁP: _dgcc_nut/_dgcc_ten (đánh giá cuối cấp: Hình học có tầng chuyên đề + nhóm = bài học, trước chỉ chủ đề) · _kho_ban_do_dong (phiêu lưu: mỗi bài học 1 khu 1 màn; cột ma_chuyen_de/ten_chuyen_de 8T giữ dữ liệu, thôi đọc). Kiểm ROLLBACK: câu HH00062031 → NCD00178 / HH00062 / HH00062, tên 'Hình chữ nhật'.
+- Client: CUM_TBL bỏ hinh_hoc_cau_hoi (DangHub/KhoPicker tự ẩn cụm, không ghi ma_cum); findCauInKho dùng danh sách bảng riêng; bộ chọn dạng: tầng 2 = bài học; KhoHinhHocScreen vẽ mỗi bài = dải chuyên đề → hộp nhóm → thẻ dạng bài 1.1. Dev K8 Tứ giác: 10 bài đúng 3 tầng, mở kho 'Hình chữ nhật' không còn tab Cụm.
+- CHỜ Thùy: dữ liệu cụm cũ 15 cụm (K11 HH00087 10 cụm/134 câu · K11 HH00137 3 cụm/47 câu · K7 HH00001 1 cụm/0 câu · 8T HH00091 1 cụm/11 câu). Cụm K11 trông như dạng thật ⇒ đề xuất tách thành bài học riêng thay vì xoá.
+
+### 28/10 — [Hình 7] HH00103055: vẽ hình + chuẩn hoá LaTeX
+- Câu `HH00103055` (bài HH00103 "Các trường hợp bằng nhau của tam giác vuông", nguon 'le', đã duyệt) chưa có hình, LaTeX lẫn `\angle`, `^0`, "Chứng minh :" không a) b), loai_cau `tra_loi_ngan` (sai: câu chứng minh; 16 câu cùng bài đều `tu_luan`).
+- Vẽ hình bằng code (`scripts/anh/ve_hinh_hh00103055.mjs`; vuông tại A ⇒ AB đứng, AC ngang; chỉ đánh dấu giả thiết: góc vuông tại A và E, hai cung ∠ABD = ∠DBE bán kính khác nhau; 7 phép kiểm toạ độ đúng, kể cả IA=IE nhưng KHÔNG vẽ ký hiệu). Gắn bằng `gan_hinh.mjs` (anh_de + anh_dap_an).
+- Sửa đề + lời giải (`scripts/anh/sua_latex_hh00103055.mjs`): `\widehat{…}`, `^\circ`, a) b), dòng ngắn, (gt)/(cmt), tên trường hợp "cạnh huyền - góc nhọn", "c.g.c"; loai_cau → `tu_luan`. Bản cũ lưu ở `scripts/anh/bien_ban/sua-latex-HH00103055-*.json`.
+
+## 28/10 — ET (bản đồ mới) làm được Hình + Hình giải tích (lượng giác) — Thùy: 'ET chưa làm được ET hình và lượng giác kìa'
+- 1 ET chọn dạng bài của 3 nhánh: Đại · Hình giải tích (cayChon 'hgt') · Hình (bài học = dạng bài, hhCayChon). Nút '+ Chọn dạng bài: Đại | Hình giải tích | Hình' (nhánh trống ẩn) + thanh đổi nhánh nổi trên bộ chọn; hàng ✎ Chọn câu Hình dùng ChonCauHoc (xuất từ ChuyenDeHinhBuilder). Câu nhớ nhánh kho ở cau_hinh.nhanhByCau (khuôn MT, chỉ câu khác Đại) ⇒ getTaiLieuFull/chấm/in đọc đúng bảng; mở lại ET: Hình lấy dạng = dang_chinh.
+- Mig 202610281911 ĐÃ ÁP: fn_tl_bdm_et_ma_de đọc ứng viên ở đúng bảng (Đại/HGT/Hình học; Hình không cụm) — trước câu HGT/Hình luôn 3 đề giống hệt (ROLLBACK: T310010101001 → 002/003, HH00062031 → HH00062002/003); fn_tl_bdm_et_de_xuat thêm bài học của giáo trình Hình; fn_tl_hh_goi_y_bai.
+- Kiểm dev (không lưu): 8A1 K8 nút Đại+Hình, kế hoạch 'Hình chữ nhật' → sinh câu HH00062007, đề 2/3 khác câu; 10A1 K10 nút Đại+Hình giải tích, 'Phương, chiều của véc tơ' → T310010101011 + đề 2/3 012/013. Hình–Luyện (bài mô hình nhiều ý) chưa vào ET.
+
+## 28/10 — ET + giáo trình Hình: chỉnh hình/dòng y builder giáo trình (dùng lại module sẵn) — Thùy
+- Thùy: 'ET chưa có tính năng điều chỉnh hình như builder giáo trình' + 'builder Hình – học cũng thế, chưa có chỗ chọn dòng… có module sẵn hết rồi m tự đẻ ra kiểu mới làm gì'. BÀI HỌC: thẻ Học (27/10) t tự vẽ list câu riêng ⇒ thiếu dòng/cột/hình. Sửa = DÙNG LẠI khối câu KhoiCau + CfgCau của BuilderBanDoMoi (xuất ra), bọc AnhMmEditCtx (baChe = 3 chế độ cho Hình học).
+- Giáo trình Hình: thẻ Học = KhoiCau (số câu theo loại · Gợi ý · Chọn câu · dòng cả dạng / từng câu ở BTVN · 2 cột · chế độ hình · cỡ ảnh), lưu cau_hinh như builder. Dev 7S1: đủ control. (Gợi ý Hình học cộng tổng số các loại — chưa chia theo loại câu.)
+- ET (ETBdmEditor): mỗi câu có ảnh thêm CheDoHinhBtn + AnhMmCtl + AnhXem (component của TaiLieuBuilder); Hình học có ô trống. ETPrintView: đọc hinhCheDoByCau + anhMmByCau (AnhMmCtx), đề 2/3 kế thừa câu gốc; questionOnlyContent nhận chế độ hình; AnhDe xuất từ PrintView. Dev 8A1 'Tứ giác' 3 câu: câu 1 Ô trống ⇒ pv-vebox, câu 2 50% ⇒ img 113.77mm.
+
+### 28/10 — [Buổi học] Việc Chấm ET / Chấm BTVN tự đóng khi buổi không có ET / BTVN, 1 tiếng sau giờ kết thúc (mig 202610282052 ĐÃ ÁP) — Thùy
+- **Thùy:** "các buổi không có ET và BT trên hệ thống — sau 1 tiếng mà không có — task tự động đóng luôn, coi như đã hoàn thành".
+- **Hiện trạng đo:** `fn_viec_buoi_thuong` sinh việc ET + BTVN cho TA ở MỌI buổi thường; chỉ đóng khi có người bấm. 87 ET + 120 BTVN treo ở buổi không có gì để chấm (tháng 9–10, Toán · Văn · Anh). ET treo còn CHẶN đóng ET các buổi sau (`fn_dong_phase` bắt đóng theo ngày vì Elo tuần tự) và đẻ đề xuất gậy trễ oan.
+- **Cách làm (Claude tự chốt, đã báo Thùy):** ĐÓNG THẬT bằng job thay vì "coi như đóng" ở 1 hàm — có >30 hàm đọc `et_dong_at`/`btvn_dong_at` (gậy, trợ lý, tiến độ, ma trận lớp…), derive 1 chỗ thì chỗ khác vẫn thấy trễ. Từng khâu riêng (có ET mà không BTVN ⇒ chỉ BTVN tự đóng). Mốc = giờ KẾT THÚC buổi + 1h (giờ VN); giờ đóng ghi = chính mốc ⇒ `_viec_dong_dau`/`fn_viec_tien_do` thấy đúng hạn. Đóng y như đóng tay khâu trống (fn_dong_phase với ET 0 ô chấm cũng chỉ ghi giờ + `fn_buoi_recompute_hoan_tat`, không Elo/EXP). Rút đề xuất gậy 'cho' của đúng khâu đó ('bo_qua', lý do "Máy tự rút (Thùy 28/10)…").
+- **Định nghĩa:** có ET = ô chấm phase 'et' · bai_test 'et' · tai_lieu 'et' (lớp + ngày). Có BTVN = tai_lieu 'btvn' · ô chấm 'btvn' · btvn_nop · bai_test 'btvn' (như `fn_dong_btvn` + bản online). Giáo trình buổi = bài trên lớp, không tính. Bỏ qua buổi MT, buổi huỷ.
+- **Áp 28/10 (dọn tồn đọng ngay trong migration):** đóng 82 ET + 116 BTVN (actor null, giờ đóng = mốc, 122/122 việc TA tính đúng hạn) · 60 buổi thành hoàn tất · rút 51 đề xuất gậy (ET 21 · BTVN 30; Nguyễn Mai Trang 39). Buổi có phiếu ET vẫn mở nguyên (3 → 3). Chạy lại = 0.
+- **Chờ Thùy (SQL Editor):** `202610282053` lịch 15 phút/lần `buoi-tu-dong-et-btvn-trong` — chưa chạy thì buổi MỚI chưa tự đóng (tồn đọng đã dọn). Còn treo cùng: `202610141558` (nhắc hạn 8h).
+- **Giới hạn:** phiếu ET/BTVN thêm SAU khi khâu đã tự đóng ⇒ người làm bấm Mở lại như đóng nhầm thường.
+
+### 28/10 — [Xu] Huỷ "Chốt xu tháng" → màn "Tổng kết xu" (dashboard toàn trung tâm, 1 HS 1 dòng) — mig 202610281926 ĐÃ ÁP — Thùy
+- **Yêu cầu:** "Hủy tính năng chốt xu… thay bằng Tổng kết xu, mỗi HS 1 dòng, cột tổng xu + thành phần ET, BTVN, trên lớp, vòng quay, thành tựu…". Lá giữ id `chotxu` (2 vai trò đang được cấp trong `vai_tro_chuc_nang`), đổi tên "Tổng kết xu"; `NhanSuHome` render `TongKetXuScreen`.
+- **Vấn đề:** xu quy đổi tính trên TỔNG EXP (HS×môn×tháng), ceil + trần app ⇒ không có sẵn "xu từ ET". **Cách:** lấy xu ĐÃ VÀO VÍ (sổ chot_thang/chot_lai) chia cho nguồn theo tỉ lệ EXP, làm tròn kiểu phần dư lớn nhất (Hamilton) ⇒ cột cộng đúng = tổng, kể cả tháng 8 chốt tay (công thức hiện tại cao hơn 1322 xu so với số đã trả — chia theo số ĐÃ TRẢ nên "Khác" không âm).
+- **Sai/sửa:** tính tỉ lệ trực tiếp mất 16–20s (vướng `fn_exp_app_thang` phần nhiệm vụ) > trần 8s PostgREST ⇒ bảng cache `xu_thanh_phan` (HS×môn×tháng×nguồn), `_xu_thanh_phan_lam_moi` chạy ở bước ⓪ của `_xu_dong_bo` (lượt cả trung tâm hằng giờ, TRƯỚC khi khoá ví). Số xu vẫn đọc sổ trực tiếp; chỉ tỉ lệ cũ tối đa 1h. Màn ~0,1–0,2s.
+- **Hàm:** `fn_xu_tong_ket(p_thang, p_hoc_sinh_id)` (staff, 1 HS 1 dòng: et·btvn·tren_lop·tham_du·nhiem_vu·vong_quay·thanh_tuu·nong_trai·giai_thuong·thay_co_cong·thay_co_tru·khac·tong·da_tieu·so_du; số dư = mọi thời gian) + `fn_xu_tong_ket_tong`. Kiểm: 371 dòng, cột cộng = tổng mọi dòng, tổng − đã tiêu = số dư, số dư khớp sổ, khac ≥ 0, non-staff bị chặn. Toàn TT: 34.514 vào ví · 12.677 đã tiêu · 21.837 dư.
+- **UI:** kỳ (toàn bộ / từng tháng từ 08/2026) · 4 ô số · lọc khối/lớp/tên/đang học · sort theo cột · dòng tổng từ DB · nút ± cộng/trừ tay (chuyển từ màn Chốt xu) vá đúng dòng.
+- **Chưa:** chưa xem màn trên app bằng phiên đăng nhập thật (không tự bấm đăng nhập nhanh tài khoản admin). Code chết chờ Thùy gật xoá: `ChotXuScreen.tsx`, `previewChotXu`/`ChotRow`/BacXu CRUD/`getViXu`/`listViXu` trong `src/lib/xu.ts`.
+- **Dọn (Thùy gật "cái gì ko dùng xóa đi"):** xoá `src/screens/gami/ChotXuScreen.tsx`; trong `src/lib/xu.ts` xoá BacXu CRUD (`luong_bac`), `ExpXuRow`/`expXuThang`, `ChotRow`/`previewChotXu`, `THANG_TU_DONG`, `getViXu`/`listViXu` (grep: 0 người gọi ngoài màn cũ). Giữ `dongBoXu` (TuQuaScreen) + `themPhatSinh` (Tổng kết xu). `vercel-ignore.mjs` trỏ sang `TongKetXuScreen.tsx`. Bảng `luong_bac` ở DB CHƯA đụng.
+- **Tối 28/10:** xoá bảng `luong_bac` (Thùy "Xóa ok"; 0 hàm/view/FK, 9 dòng ghi trong mig 202610282149 ĐÃ ÁP); `check-quyen-tien.mjs` bỏ đếm bảng. **Soát bất thường sổ xu** (`scripts/soat-xu-bat-thuong.sql`, chưa sửa, chờ Thùy): đồng bộ giờ chạy đều (21 lệch = ET chấm sau 21:05) · đổi quà khớp từng dòng · 0 ví âm · −390 ngày 16/10 = thu hồi TT07 · giá quà lệch = sửa giá sau. Ca lạ (chi tiết đã báo Thùy trong phiên, không ghi tên vào repo): 1 HS cộng tay 522 xu · 7 cặp cộng tay trùng vài giây (110 xu) · 1 lượt đổi quà trùng 1,5 phút · 260/303 lượt ± không lý do · thành tựu T10 661 xu, `tran_xu_app` = 100000.
+
+## 2026-10-28 (phiên tôi — chiều/tối) — Giáo trình bản đồ mới per-class + popup kho full màn + duyệt thẳng + tách Lời giải/Hướng dẫn
+
+**Yêu cầu CEO chạy liên tiếp trong phiên.** Mỗi commit đã push, deploy Vercel Thùy tự bấm.
+
+### 1) Giáo trình bản đồ mới ĐI THEO LỚP + copy buổi giữa 2 lớp cùng hệ (e92f3a06)
+- **Vì sao:** mỗi lớp giờ 1 giáo trình riêng (trước đó dùng chung). Các lớp cùng hệ ~80% giống nhau ⇒ cần chức năng chép bài 13 của 7S1 thành bài 13 của 7S2 (độc lập, sửa sau không ảnh hưởng).
+- **Sửa:**
+  - `src/lib/tailieu.ts` — `TaiLieu` thêm `lop_id`, `ngay`; `TaiLieuPhan` thêm `diem_moi_cau`; `createTaiLieu` nhận `lopId`; thêm hàm `copyBuoiBdm(buoiPhanId, tlDichId, tenMoi?)` chép phần buổi + mọi phần con + câu + merge `cau_hinh` của chỉ các mã câu được copy.
+  - `src/lib/tailieuBdm.ts` — `NoiDung.tai_lieu` thêm `lop_id`.
+  - `src/screens/tailieu/bdm/GiaoTrinhBdmScreen.tsx` — ô "Lớp (bắt buộc)" trong form `TaoMoi` khi `loai='giao_trinh'`; auto gợi ý "Giáo trình `<ten lop>`"; khối chưa có lớp → cảnh báo. Chuyên đề không gắn lớp. Card hiện chip "Lớp 7S2".
+  - `src/screens/tailieu/bdm/BuilderBanDoMoi.tsx` — fetch `lop_id` riêng (RPC `fn_tl_bdm_noi_dung` không trả ra); nút "📥 Lấy buổi từ lớp khác" cạnh "+ Thêm buổi" (chỉ hiện khi GT có `lop_id`, không hiện ở chuyên đề); modal 4 bước lớp → giáo trình → buổi → tên mới → chép vào cuối.
+- **Lưu ý:** 29 giáo trình `phase=0` (Lưu trữ, di sản mô hình cũ "dùng chung") KHÔNG có `lop_id` — tab Lưu trữ không yêu cầu, không cho copy từ chúng.
+
+### 2) Tự gán lop_id cho 16 giáo trình bản đồ mới chưa có lớp (mig 202610282231 ĐÃ ÁP · 4a13c886)
+- Match tên lớp từ cột `ten` của giáo trình → bảng `lop` cùng khối + môn Toán:
+  - 13 tên trùng tuyệt đối (6B1/7A1/8B2/5T1/9A2/…) → 13 lớp.
+  - 2 prefix duy nhất ("Giáo trình 11A" → 11A1 vì khối 11 chỉ 11A1 bắt đầu 'A'; "Giáo trình 12B" → 12B1 tương tự).
+  - 1 ambiguous "Giáo trình 4A" (b68cd3e8) — khối 4 có 4A1 và 4A2 ⇒ **ĐỂ TRỐNG**, CEO quyết tay sau. Chưa có cách UI nào cho sửa, Thùy tự chạy UPDATE hoặc tôi hỏi 4A1/4A2 rồi update.
+- Migration dùng guard `and loai='giao_trinh' and ban_do='moi' and lop_id is null` — áp lại không ghi đè bừa.
+
+### 3) Popup KHO full ~95vw/95vh + tách Lời giải / Hướng dẫn + ✓ Duyệt thẳng (84c45d18)
+Thùy nêu 4 việc, làm được 3:
+- **Popup to lên** (`max-w-4xl/5xl/900px` → `max-w-[95vw]`, `max-h-[95vh]`):
+  - `src/screens/kho/BanDoMoi.tsx`: popup Kho dạng bài (dòng ~1371) + popup Gán câu chưa có dạng (dòng ~1195).
+  - `src/screens/kho/KhoTrenLopModal.tsx`.
+  - `src/screens/kho/hinh/CayNhanh.tsx` — PopupBai.
+- **Tách Lời giải / Hướng dẫn** (`src/screens/kho/ui.tsx`):
+  - Export hàm `tach2Phan(raw)` tách lời giải 2 phần (dấu `**Phần 1. Hướng dẫn**` / `**Phần 2. Trình bày**`) thành 3 cụm HTML đã render.
+  - Component `LoiGiaiXem({raw, mac_dinh?})` với 3 tab: **📝 Lời giải (default) · 💡 Hướng dẫn · 📑 Cả 2**. Chọn tab lưu ở `localStorage` key `bk.loiGiaiXem.tab` ⇒ mọi popup khác nhớ lựa chọn.
+  - Chuỗi không có 2 phần → fallback MathText. Không ảnh hưởng trang in / list câu / BTVN... (vẫn dùng MathText).
+  - Dùng ở: `CauKho` (BanDoMoi), `TheCau` (KhoTrenLopModal), `PopupBai` (CayNhanh).
+- **✓ Duyệt / ↩ Bỏ duyệt thẳng trong popup Kho:**
+  - Thêm hàm `duyetCauAuto(ma_cau, duyet)` trong `src/lib/kho/api.ts` — gọi `findCauInKho()` để tự dò bảng (dai/khtn/hgt/hinh_hoc/tsa), rồi `duyetCau`/`boDuyetCau` đúng bảng.
+  - `ThaoTacCau` (BanDoMoi) thêm nút ✓ Duyệt / ↩ Bỏ duyệt cạnh ↪ Chuyển dạng · 🗑 Xoá; vá tại chỗ `da_duyet`; `kho_chuan` do DB generated nên không đoán ở client — chờ reload sẽ đúng.
+  - **Hình (hinh_baitoan) không có cột `da_duyet`** ⇒ không áp nút này cho Hình luyện. Nếu cần sau sẽ thêm.
+
+### 4) Việc còn pending — Bản đồ Hình cấu trúc giống Đại (LT · VD · kho lớp · kho nhà)
+- **Thùy chốt lộ trình:** làm "Hình HỌC trước (nặng)". Hình LUYỆN sau.
+- **Hiện trạng Hình HỌC đọc kỹ 28/10:**
+  - Thùy đã chốt (comment trong `KhoHinhHocScreen.tsx`): mỗi bài học `hinh_hoc_bai` = 1 chuyên đề = 1 nhóm = 1 dạng bài, cả 3 tầng CÙNG TÊN (cùng 1 đối tượng, mã gốc HH…, không lưu bảng cha). ⇒ **KHÔNG cần migration tách thêm bảng chuyên đề/nhóm**.
+  - Hạ tầng có: `hinh_hoc_bai` (ma_dang, ten_dang mặc định = ma_bai, ten_bai) · `hinh_hoc_bai_ly_thuyet` · `hinh_hoc_cau_hoi` (gán theo `dang_chinh` = ma_bai).
+  - Commit `d21ae002` ngày 28/10 "Hình – Học Theo bản đồ Đại mới: mỗi bài học = 1 chuyên đề = 1 nhóm = 1 dạng bài (cùng tên), bỏ cụm — mig 202610281831 ĐÃ ÁP" đã chạy phần cấu trúc này.
+- **Còn thiếu** để Hình HỌC popup có 4 panel giống Đại:
+  - **VD cho bài học** — hiện bảng LT chỉ có `noi_dung`/`file_url`. Thêm cột `vi_du`/`vi_du_file_url`/`vi_du_ten_file` vào `hinh_hoc_bai_ly_thuyet` HOẶC `hinh_hoc_bai`.
+  - **Kho trên lớp cho bài học** — bảng mới `hinh_hoc_cau_lop` clone từ `dai_cau_lop` nhưng `dang_bai_id` → `ma_bai` (text FK `hinh_hoc_bai.ma_bai`).
+  - **UI** — hoặc tái cấu trúc `KhoHinhHocScreen` để mỗi card bài có 4 nút LT/VD/Kho câu/Kho trên lớp, HOẶC gắn trực tiếp vào popup `ChiTiet` của BanDoMoi khi click bài học (nhánh='hinh', khuôn='hinh_hoc').
+- **Mai làm tiếp.** Thùy về trước; task #1 chưa đụng code, chỉ research + hỏi + ghi plan.
+
+
+### 29/10 — [Xu] Xoá 4 dòng cộng tay trùng (< 10 giây) — mig 202610291254 ĐÃ ÁP — Thùy: "các trường hợp cộng dưới 10s là cộng trùng - m tự xóa nhé"
+- **Tiêu chí:** 2 dòng `cong_tay` liền nhau cùng HS, cùng số xu, cùng người ghi, cùng lý do, cách < 10 s ⇒ xoá dòng SAU. Đúng 4 cặp (3,4 / 4,0 / 5,5 / 6,1 s), tổng −140 xu; id + số xu + giờ của dòng bị xoá ghi trong migration (có chặn: khớp ≠ 4 dòng thì không xoá). 4 cặp còn lại cách 11 s → 2 phút: GIỮ (ngoài luật của Thùy).
+- **Hệ quả:** 1 HS về số dư **−59** (đã đổi quà bằng số xu trùng). Ví được âm theo luật 06/10.
+- **Ghi chú migration sửa SAU khi áp** (bỏ tên người ghi khỏi phần chú thích, SQL giữ nguyên) ⇒ cập nhật vân tay `_migrations.bam` của đúng file đó để `--status` không báo lệch.
+- **Sai sót soát 28/10:** view `qlht_v_so_du_xu` trả **0 dòng** cho role `claude_build` ⇒ 2 kiểm "ví âm" và "HS nghỉ còn xu" hôm qua là MÙ. Kiểm thẳng từ sổ: hôm qua đúng 0 ví âm, nhưng **19 HS nghỉ + 2 HS test còn xu** (nhiều nhất 84), không phải 0 như đã báo. `scripts/soat-xu-bat-thuong.sql` đã sửa: số dư tính thẳng từ sổ, thêm mục `vi_am`.
+
+### 29/10 — Gậy: lọc đề xuất theo khối (Thùy)
+- Lỗi "permission denied for function current_nhan_su_id" (28/10) = phiên đăng nhập rơi về anon (fn_viec_buoi_thuong/fn_ops_viec_nhom_thang cho PUBLIC gọi, bên trong gọi current_nhan_su_id đã revoke anon). Thùy đăng nhập lại là hết. Không sửa DB.
+- **mig `202610291307` ĐÃ ÁP (--only):** `fn_gay_de_xuat_lop(uuid[])` (invoker) trả khối/môn/lớp của đề xuất qua ref_key vh:<buoi>| → buoi_hoc → lop. Việc OPS gộp theo ca (vh:ops:grp:…) không có lớp ⇒ không trả dòng.
+- **App:** tab Đề xuất thêm ô lọc Khối (Mọi khối · Khối của tôi · từng khối · Vận hành theo ca), người có quyền khối mặc định "Khối của tôi"; ô lọc người đếm theo khối đang lọc. tsc sạch, Vite biên dịch được; **chưa bấm thử bằng đăng nhập thật**.
+
+### 29/10 — Yêu thích chia TAB (Thùy: "nhiều sub tab, mỗi tab tối đa 12, tự đặt tên, toggle bar, ghim là chọn luôn tab")
+- **Dữ liệu:** dùng lại cột jsonb `nhan_su.menu_yeu_thich`, khuôn mới `{tabs:[{id,ten,muc[]}]}` (≤ 8 tab, ≤ 12 mục/tab, id tab cấp 1 lần — đổi tên/đổi chỗ không đổi id). Mảng cũ đọc thành 1 tab "Yêu thích" (`src/lib/yeuThich.ts` docCayYT) ⇒ không chuyển dữ liệu. **mig `202610291317` ĐÃ ÁP (--only):** chỉ sửa chú thích cột.
+- **Store:** luuCayYT (vá ngay, lỗi thì trả lại) + ghimTabYT / boGhimTabYT / themTabYT / doiTenTabYT / xoaTabYT (giữ ≥ 1 tab) / doiChoTabYT; `doiYeuThich` cũ = bật/tắt nhanh (rút khỏi mọi tab / vào tab đầu còn chỗ).
+- **UI:** `NutGhimYT` = khung tick tab (n/12, tab đầy khoá, tạo tab mới tại chỗ) — gắn ở ☆ thẻ trang nhóm, ☆ Ghim thanh địa chỉ, ☆ thanh mobile. Trang chính: thanh toggle tab + ✎ Sửa tab (đổi tên · ‹ › · 🗑 · ＋); ★ trên ô = rút khỏi TAB ĐANG MỞ. Tab đang mở nhớ theo máy (localStorage `erp.ytTab`), cảnh liền hiện tab đó. Cây trái: chỉ 1 tab có mục ⇒ phẳng, nhiều hơn ⇒ mỗi tab 1 thư mục.
+- **Kiểm:** trang xem thử dựng lại tạm ở `.nhap-tam/xem-erp/` (bản cũ đã xoá 27/10, không commit) — ghim qua khung, tạo tab, đổi tên, đổi chỗ, xoá, rút ★, trần 12 đều đúng. Sửa 2 chỗ lúc soi: tên tab trong khung bị căn giữa; ◀▶ hiện thành emoji xanh trên Windows ⇒ đổi ‹ ›. **Chưa bấm bằng đăng nhập thật.**
+
+
+## 29/10 — Spec Trưởng khối & Team QLCL (Sparring Thùy)
+- **Làm:** dò hiện trạng phân quyền (ghế `vi_tri`, `gay_quyen_khoi`, trợ lý 3 uuid, `getMyScope` client) + viết `spec-truong-khoi.md` theo 13 điểm Thùy chốt (team QLCL = Thùy+Trang+6 TK; khối đơn vị thấp nhất, có môn; TK = Trang thu nhỏ; TK quyết – Trang hậu kiểm; Trang đánh gậy TK; Trang bấm Chốt tuần, đóng băng số; Lộc xếp lịch như cũ; KPI chưa chốt số).
+- **Phát hiện (đo DB thật):** 2 nguồn phạm vi khối đã LỆCH — Dương, Ngân không có dòng `gay_quyen_khoi` (không duyệt được gậy khối mình); Cường có 8T ở gậy nhưng ghế chỉ ghi 8. Chữ "Trưởng khối" có ở 3 team (ta/gv/hoc_thuat). `getMyScope` duyệt cây trong 1 team ⇒ không tách được team QLCL nếu không chuyển xuống DB. `fn_botro_chot_tuan` nhận ứng viên tính ở client (§2.0).
+- **Quyết định CTO:** quyền theo GHẾ, 1 hàm phạm vi; toàn hệ = ghế trưởng team qlcl (không cột mới, không uuid); 1 ghế = 1 môn; KPI hiển thị Vào/Ra(có bằng chứng | rớt cửa sổ)/Độ phủ để chặn Goodhart.
+- **Chưa code gì.** Treo 4 câu ở spec §7.
+- **Sửa spec (Thùy trả lời §7):** "đổi/bỏ ghế trùng tên để làm gì" ⇒ đúng, không cần — quyền không đọc từ tên ghế. **8T = Thùy.** Thùy: *trưởng khối phải PHÂN CÔNG, không mặc định* ⇒ đổi nguồn phạm vi từ `vi_tri.khoi_quan_ly` sang bảng mới `phan_cong_quan_ly_khoi(mon,khoi,vai)` khoá (mon,khoi,vai) + màn lưới môn×khối (ô = suy từ lớp đang mở, hiện 20 ô); cấp dưới suy từ `phan_cong_lop` thay cho cây ghế tay; ô trống ⇒ đỏ, việc rơi lên Trang. Không dùng lại `phan_cong_khoi` legacy (12 dòng cũ). Còn treo: hỏi đáp AI cho TK (trước P4).
+- **Thùy 29/10 (tiếp):** hỏi đáp AI **mở cho trưởng khối** (trong phạm vi khối). Làm rõ 3 lớp: team `qlcl` (sơ đồ, ngang hoc_thuat/ops/ta) · 2 vai trò mới *Quản lý chất lượng* / *Trưởng QLCL* (màn) · bảng phân công (môn×khối). Ghi vào spec §2.3/§7.
+- **Đo ghế 6 TK (29/10):** mỗi người 3–5 ghế (GV · Học thuật · TA). Chỉ ghế "Trưởng khối X" team ta chuyển sang qlcl; Dương (5 lớp TG) + Đạt (1 lớp TG) chỉ có màn TA qua ghế đó ⇒ P1 thêm ghế Trợ giảng thường cho 2 người. Bên hoc_thuat còn ghế tên "Trưởng khối 345/4T 5T/6" — không đụng.
+- **P1 build (mig 202610291556 ĐÃ ÁP --only):** team qlcl + vai trò "Quản lý chất lượng" (màn TA + gậy + bổ trợ) · bảng `phan_cong_quan_ly_khoi`(mon,khoi,vai) + `_log` (trigger) · chuyển 1 lần hiện trạng (18 ô: 13 Trưởng gồm 8T=Thùy, 5 Phó) · 6 ghế TK sang team qlcl tên chung "Trưởng khối", cha = ghế Trang; ghế TA thường cho Dương, Đạt · `_khoi_quan_ly` đổi ruột sang bảng mới (kéo theo _khoi_van_hanh/_khoi_nguoi_theo_doi/fn_khoi_cua_toi/fn_khoi_quan_ly_ds) · `fn_gay_pham_vi_khoi` (chỉ Trưởng, toàn quyền = `_qlcl_toan_he`) · `troly_ca_nhan_khoi` · `hoi_dap_ds_tai_khoan` = ghế team core · mới: `fn_pham_vi_cua_toi`, `_trong_pham_vi`, `fn_qlcl_phan_cong_luu`, `fn_qlcl_duoc_phan_cong`. Client: `getMyScope` duyệt cây XUYÊN team (1 lần listViTri) · màn Phân công có ô chọn Trưởng/Phó (vá tại chỗ, không reload).
+- **Sai rồi sửa:** guard đếm 14 ô Trưởng — đúng là 13 (12 khối cũ + 8T); bắt được ở lượt chạy thử ROLLBACK, chưa áp sai.
+- **Kiểm:** giả lập JWT trong ROLLBACK — TK tự phân công bị chặn · Trang giao được · Trưởng ngoài team qlcl bị chặn · log đủ cũ/mới/người sửa · gậy Hà Giang đổi theo · Lộc giữ hỏi đáp · anon 0 hàm. **CHƯA mở màn bằng đăng nhập thật** (nút dev login gửi mật khẩu lên Supabase thật — không bấm).
+- **Thùy chốt Bổ trợ NHẸ + widget (tối 29/10):** Nhẹ = L1.1 (Yếu cũ = L1.2/L2/L3) · TK+Trang họp đầu tuần quyết nhẹ/nặng, máy KHÔNG gợi ý (chờ chấm AI) · Nhẹ TK tự tạo (Trang hậu kiểm), không qua Lộc, không suất/phòng/trần em, ≤2 ca/em/tuần, vắng không bù · tạo ca: thời gian (sau buổi/khác) → lớp → HS (tô em yếu) → TA cùng làm → nút sinh thông báo Zalo · ca giấy là chính ⇒ in phiếu luyện + test dùng lại engine in Yếu · công: ghi số liệu, chưa tính lương · widget 2 số (đầu tuần đóng băng → hiện tại realtime), bảng chi tiết, popup HS như màn Duyệt. Ghi spec-truong-khoi.md §8.
+
+## 29/10/2026 — K9: đẩy Hình giữa kì vào Hình–Luyện + 3 đề cương mới (NQ · TC · GV2)
+- **Thùy:** "Đẩy danh sách các bài hình trong đề thi đề cương giữa kì lớp 9 vào kho Hình - luyện" → giữa chừng: "t mới cập nhật thêm mấy đề cương giữa kì. Giải và đưa vào luôn".
+- **Hình–Luyện:** `scripts/hinh-luyen/nhap_tu_de_thi.mjs --khoi 9 --loc 'giữa'` (thử `--thu` ROLLBACK trước): 143 bài / 280 ý (GKI 58 đề + đề cương NS/TM/NT/AK). Sau khi thêm 3 đề cương: chạy lại ⇒ +24 bài / +47 ý ⇒ K9 167 bài / 327 ý. Bài đã nhập tự bỏ qua theo `nguon_ma_cau`. Chưa gán mô hình.
+- **3 đề cương mới** (`Tài liệu tham khảo/K9/Đề cương/GKI`): `NQ-GKI-2026` 12 câu · `TC-GKI-2026` 74 câu · `GV2-GKI-2026` 49 câu (135 câu; Đại 111 + Hình 24). 15 trạm soạn Sonnet + 15 lượt soát Opus giải mù, đáp số khớp 100%. Ghi: NQ `56391c89…`, TC `0bc2e227…`, GV2 `d4890b31…` (kieu de_cuong, chưa duyệt).
+- **Sửa công cụ:** không (dùng `dc-lib.mjs` đã nhận `hinh_hoc`). Mới: `NQ/TC/GV2-GKI-2026.build.mjs`, `GKI26-3TRUONG.ghep-brief.mjs`.
+- **Đề sai ghi rõ (quy tắc 24/10):** GV2 Bài 17c thiếu giả thiết "ABC nhọn" · TC A Bài 4d (m=2 làm d3 trùng d2) · TC A Bài 13 in "trộn gam bao nhiêu" (đã sửa chữ). Không treo `Chưa chắc`.
+- **Chờ Thùy:** (1) quy ước `tra_loi_ngan` vs `tu_luan` cho câu một nghiệm đẹp (chung các đề cương K9); (2) xoá nhóm "lập phương trình" (đã hỏi 23/10: a chỉ nhóm rỗng "Bài toán Diện tích" · b cả chuyên đề + chuyển 25 câu); (3) bản Tây Mỗ 2026–27 chưa có phần Toán; (4) Hình HGT của NS/TM cũ chưa đẩy vào Hình–Luyện; (5) rà "đường trung bình" trong các tệp soạn bộ đề GKI/CKI K9.
+## 29/10 — Xu: em NGHỈ HỌC tự về 0 (Thùy: "Các tài khoản nghỉ tự động về 0 xu")
+- **Làm (mig 202610291637 ĐÃ ÁP --only):** loại sổ mới `nghi_ve_0` (dòng hệ thống, amount = −số dư, mon NULL) · `_xu_nghi_ve_0(p_hs)` khoá ví rồi ghi cho mọi em `trang_thai='nghi'` số dư ≠ 0 · gắn làm bước ④ CUỐI `_xu_dong_bo` (cron mỗi giờ :05) ⇒ đổi sang nghỉ thì ≤1 giờ ví về 0; ET chấm muộn → ③ quy đổi thêm → ④ đưa lại 0 cùng lượt. ③ chỉ so chot_thang/chot_lai nên không "trả lại". Đi học lại: xu cũ không hoàn.
+- `fn_xu_tong_ket`: `nghi_ve_0` vào cột Khác + Tổng (giữ tổng − đã tiêu = số dư). Phạm vi chỉ 'nghi' (bảo lưu giữ xu, test không đụng).
+- **Kết quả lượt đầu:** 18 dòng, −578 xu; còn 0 em nghỉ có số dư ≠ 0. Ví âm duy nhất vẫn là 1 em đang học (−59, từ đợt xoá cộng trùng).
+- **Sửa số:** hôm trước báo "19 em nghỉ + 2 test" — đếm lại đúng là 18 em nghỉ (danh sách có 2 dòng test lẫn vào).
+- **Phát hiện, CHƯA sửa:** view `qlht_v_so_du_xu` tính số dư chỉ từ chot_* + cong/tru/doi_qua/hoan — THIẾU nong_trai, giai_thuong (và nay nghi_ve_0); `qlht_doi_qua_moi`/`qlht_dieu_chinh_xu` + `listSoDuXu` (tuqua.ts) + thanhtich.ts còn đọc view đó. `fn_tuqua_so_du` thì cộng đủ.
+- **Xoá tài khoản test:** CHƯA làm — 10 em TEST01–10 (Thùy tạo 03/10 để test app) + `TESTQLHT003` (trạng thái dang_hoc, 501 xu, 5 dòng buổi học) kéo theo ~30 bảng; đã liệt kê, chờ Thùy gật theo Luật xoá.

@@ -1,0 +1,882 @@
+[
+ {
+  "id": "nbv-b2-e-1",
+  "vai": "luyen",
+  "dang_bai": "NDB01172",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Rút nhân tử √x ở tử và mẫu (0/0 có căn); không cần liên hợp",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính $\\lim\\limits_{x\\to0^{+}}\\dfrac{2x+\\sqrt{x}}{5x-4\\sqrt{x}}$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu cùng chứa thừa số $\\sqrt{x}$ nên đặt nó làm nhân tử chung rồi rút gọn.\n\n**Bước 1.** Nhận ra khi $x\\to0^{+}$ cả tử và mẫu cùng dần về $0$ nên giới hạn có dạng $\\dfrac00$.\n\n**Bước 2.** Đặt $\\sqrt{x}$ ra ngoài làm nhân tử chung ở cả tử và mẫu, chú ý $x=\\sqrt{x}\\cdot\\sqrt{x}$.\n\n**Bước 3.** Rút gọn $\\sqrt{x}$ (khác $0$ vì $x>0$) rồi thay $x=0$ vào biểu thức còn lại.\n\n**Phần 2. Trình bày**\n\nVới $x>0$ ta có $\\dfrac{2x+\\sqrt{x}}{5x-4\\sqrt{x}}=\\dfrac{\\sqrt{x}(2\\sqrt{x}+1)}{\\sqrt{x}(5\\sqrt{x}-4)}=\\dfrac{2\\sqrt{x}+1}{5\\sqrt{x}-4}$.\n\nDo đó $\\lim\\limits_{x\\to0^{+}}\\dfrac{2x+\\sqrt{x}}{5x-4\\sqrt{x}}=\\dfrac{2\\cdot0+1}{5\\cdot0-4}=-\\dfrac14$.\n\nVậy giới hạn bằng $-0{,}25$.",
+  "kiem": [
+   "(() => { const f = (x) => (2 * x + Math.sqrt(x)) / (5 * x - 4 * Math.sqrt(x)); return Math.abs(f(1e-12) + 0.25) < 1e-4 })()"
+  ],
+  "sach_dap_so": "-0,25",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-2",
+  "vai": "luyen",
+  "dang_bai": "NDB01178",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Phân thức hữu tỉ cùng bậc khi x→+∞",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính $\\lim\\limits_{x\\to+\\infty}\\dfrac{1000x^{4}+x^{3}-2x^{2}-3}{x-4x^{4}}$.",
+  "dap_an": "-250",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu cùng bậc cao nhất nên chia cả hai cho luỹ thừa cao nhất của $x$.\n\n**Bước 1.** Xác định luỹ thừa cao nhất của $x$ ở tử và mẫu, đều là bậc $4$, khi $x\\to+\\infty$.\n\n**Bước 2.** Chia cả tử và mẫu cho $x^{4}$ để mọi số hạng còn lại có dạng $\\dfrac{c}{x^{k}}$ với $k>0$.\n\n**Bước 3.** Dùng $\\lim\\dfrac{1}{x^{k}}=0$ để bỏ các số hạng đó rồi lấy thương hai hệ số đầu.\n\n**Phần 2. Trình bày**\n\nChia cả tử và mẫu cho $x^{4}$ ta được $\\dfrac{1000x^{4}+x^{3}-2x^{2}-3}{x-4x^{4}}=\\dfrac{1000+\\dfrac1x-\\dfrac{2}{x^{2}}-\\dfrac{3}{x^{4}}}{\\dfrac{1}{x^{3}}-4}$.\n\nKhi $x\\to+\\infty$ thì $\\dfrac1x$, $\\dfrac{2}{x^{2}}$, $\\dfrac{3}{x^{4}}$, $\\dfrac{1}{x^{3}}$ đều dần về $0$.\n\nDo đó giới hạn bằng $\\dfrac{1000}{0-4}=-250$.\n\nVậy $\\lim\\limits_{x\\to+\\infty}\\dfrac{1000x^{4}+x^{3}-2x^{2}-3}{x-4x^{4}}=-250$.",
+  "kiem": [
+   "(() => { const f = (x) => (1000 * x ** 4 + x ** 3 - 2 * x ** 2 - 3) / (x - 4 * x ** 4); return Math.abs(f(1e6) + 250) < 1e-2 })()"
+  ],
+  "sach_dap_so": "-125",
+  "ghi_chu": "LỆCH SÁCH — sách in -125, nhưng chính dòng biến đổi của sách cho 1000/(0-4) = -250; giữ -250 (có thể đề gốc là 500x^4)."
+ },
+ {
+  "id": "nbv-b2-e-3",
+  "vai": "luyen",
+  "dang_bai": "NDB01173",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Hiệu căn bậc ba và căn bậc hai, tách rồi liên hợp từng phần",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Biết $\\lim\\limits_{x\\to1}\\dfrac{\\sqrt[3]{x+7}-\\sqrt{x+3}}{x^{2}-3x+2}=\\dfrac ab$, trong đó $a,b\\in\\mathbb{Z}$ và $\\dfrac ab$ tối giản. Tính $-106a+b$.",
+  "dap_an": "-100",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử có hai căn đều bằng $2$ tại $x=1$ nên tách thành hai nhóm rồi nhân liên hợp riêng từng nhóm.\n\n**Bước 1.** Phân tích mẫu $x^{2}-3x+2=(x-1)(x-2)$ và nhận ra dạng $\\dfrac00$ khi $x\\to1$.\n\n**Bước 2.** Tách tử thành $(\\sqrt[3]{x+7}-2)+(2-\\sqrt{x+3})$ vì cả hai căn cùng nhận giá trị $2$ tại $x=1$.\n\n**Bước 3.** Nhân liên hợp bậc ba cho nhóm thứ nhất và liên hợp bậc hai cho nhóm thứ hai để triệt nhân tử $x-1$.\n\n**Bước 4.** Cộng hai giới hạn thu được thành phân số tối giản $\\dfrac ab$ rồi tính $-106a+b$.\n\n**Phần 2. Trình bày**\n\nVới $x\\ne1$, $x\\ne2$ ta có $\\dfrac{\\sqrt[3]{x+7}-\\sqrt{x+3}}{x^{2}-3x+2}=\\dfrac{\\sqrt[3]{x+7}-2}{(x-1)(x-2)}+\\dfrac{2-\\sqrt{x+3}}{(x-1)(x-2)}$.\n\n$\\dfrac{\\sqrt[3]{x+7}-2}{(x-1)(x-2)}=\\dfrac{(x+7)-8}{(x-1)(x-2)(\\sqrt[3]{(x+7)^{2}}+2\\sqrt[3]{x+7}+4)}=\\dfrac{1}{(x-2)(\\sqrt[3]{(x+7)^{2}}+2\\sqrt[3]{x+7}+4)}$.\n\nKhi $x\\to1$ giới hạn này bằng $\\dfrac{1}{(-1)\\cdot(4+4+4)}=-\\dfrac1{12}$.\n\n$\\dfrac{2-\\sqrt{x+3}}{(x-1)(x-2)}=\\dfrac{4-(x+3)}{(x-1)(x-2)(2+\\sqrt{x+3})}=\\dfrac{-1}{(x-2)(2+\\sqrt{x+3})}$.\n\nKhi $x\\to1$ giới hạn này bằng $\\dfrac{-1}{(-1)\\cdot4}=\\dfrac14$.\n\nSuy ra giới hạn cần tìm bằng $-\\dfrac1{12}+\\dfrac14=\\dfrac16$, do đó $a=1$, $b=6$.\n\nVậy $-106a+b=-106+6=-100$.",
+  "kiem": [
+   "(() => { const f = (x) => (Math.cbrt(x + 7) - Math.sqrt(x + 3)) / (x * x - 3 * x + 2); return Math.abs(f(1 + 1e-6) - 1 / 6) < 1e-4 && Math.abs(f(1 - 1e-6) - 1 / 6) < 1e-4 && -106 + 6 === -100 })()"
+  ],
+  "sach_dap_so": "-100",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-4",
+  "vai": "luyen",
+  "dang_bai": "NDB01169",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Cho giới hạn của hàm ẩn f(x), suy ra giới hạn khác; bản đồ thiếu dạng hàm ẩn",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hàm số $f(x)$ thoả mãn $\\lim\\limits_{x\\to0}\\dfrac{f(x)}{x}=3$. Tính giá trị của giới hạn $\\lim\\limits_{x\\to0}\\dfrac{x+2f(x)}{f(x)-2x}$.",
+  "dap_an": "7",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia cả tử và mẫu cho $x$ để biểu thức chỉ còn phụ thuộc vào thương $\\dfrac{f(x)}{x}$ đã biết giới hạn.\n\n**Bước 1.** Nhận thấy tử và mẫu đều là tổ hợp của $x$ và $f(x)$, còn giới hạn cho sẵn là của $\\dfrac{f(x)}{x}$.\n\n**Bước 2.** Chia cả tử và mẫu cho $x$ (với $x\\ne0$) để viết biểu thức theo $\\dfrac{f(x)}{x}$.\n\n**Bước 3.** Áp dụng quy tắc giới hạn của tổng và thương rồi thay giới hạn đã cho vào.\n\n**Phần 2. Trình bày**\n\nVới $x\\ne0$ ta có $\\dfrac{x+2f(x)}{f(x)-2x}=\\dfrac{1+2\\cdot\\dfrac{f(x)}{x}}{\\dfrac{f(x)}{x}-2}$.\n\nVì $\\lim\\limits_{x\\to0}\\dfrac{f(x)}{x}=3$ nên tử có giới hạn $1+2\\cdot3=7$ và mẫu có giới hạn $3-2=1\\ne0$.\n\nVậy giới hạn cần tìm bằng $\\dfrac71=7$.",
+  "kiem": [
+   "(() => { const f = (x) => 3 * x + x * x, g = (x) => (x + 2 * f(x)) / (f(x) - 2 * x); return Math.abs(f(1e-7) / 1e-7 - 3) < 1e-4 && Math.abs(g(1e-7) - 7) < 1e-4 })()"
+  ],
+  "sach_dap_so": "7",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-5",
+  "vai": "luyen",
+  "dang_bai": "NDB01169",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Cho giới hạn của hàm ẩn f(x), suy ra giới hạn khác; bản đồ thiếu dạng hàm ẩn",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hàm số $f(x)$ thoả mãn $\\lim\\limits_{x\\to2}\\dfrac{f(x-2)}{x-2}=15$. Tính giá trị của giới hạn $\\lim\\limits_{x\\to2}\\dfrac{2x\\,f(x-2)}{x^{2}+x-6}$.",
+  "dap_an": "12",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu có thừa số $x-2$ nên tách nó ra để xuất hiện thương $\\dfrac{f(x-2)}{x-2}$ đã biết giới hạn.\n\n**Bước 1.** Phân tích mẫu $x^{2}+x-6=(x-2)(x+3)$ để thấy thừa số $x-2$ trùng với giả thiết.\n\n**Bước 2.** Viết biểu thức thành tích của $\\dfrac{2x}{x+3}$ và thương $\\dfrac{f(x-2)}{x-2}$ (với $x\\ne2$).\n\n**Bước 3.** Dùng quy tắc giới hạn của tích rồi thay $x=2$ vào phần còn lại.\n\n**Phần 2. Trình bày**\n\nTa có $x^{2}+x-6=(x-2)(x+3)$.\n\nVới $x\\ne2$: $\\dfrac{2x\\,f(x-2)}{x^{2}+x-6}=\\dfrac{2x}{x+3}\\cdot\\dfrac{f(x-2)}{x-2}$.\n\nKhi $x\\to2$: $\\dfrac{2x}{x+3}\\to\\dfrac{4}{5}$ và $\\dfrac{f(x-2)}{x-2}\\to15$.\n\nVậy giới hạn cần tìm bằng $\\dfrac45\\cdot15=12$.",
+  "kiem": [
+   "(() => { const f = (u) => 15 * u + u * u, g = (x) => 2 * x * f(x - 2) / (x * x + x - 6); return Math.abs(g(2 + 1e-7) - 12) < 1e-4 && Math.abs(g(2 - 1e-7) - 12) < 1e-4 })()"
+  ],
+  "sach_dap_so": "12",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-6",
+  "vai": "luyen",
+  "dang_bai": "NDB01169",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Cho giới hạn của hàm ẩn f(x), suy ra giới hạn khác; bản đồ thiếu dạng hàm ẩn",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hàm số $f(x)$ thoả mãn $\\lim\\limits_{x\\to1}(x+1)f(x)=1$. Gọi $\\lim\\limits_{x\\to1}(2x^{2}+1)f(x)=a$. Tính giá trị của $20a$.",
+  "dap_an": "30",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Viết $(2x^{2}+1)f(x)$ thành tích của $(x+1)f(x)$ với một phân thức có giới hạn tính được.\n\n**Bước 1.** Nhận ra giả thiết cho giới hạn của tích $(x+1)f(x)$ chứ không cho giới hạn của $f(x)$.\n\n**Bước 2.** Nhân và chia $(2x^{2}+1)f(x)$ với $x+1$ (khác $0$ gần $x=1$) để tách thừa số $(x+1)f(x)$.\n\n**Bước 3.** Áp dụng quy tắc giới hạn của tích rồi tính $20a$.\n\n**Phần 2. Trình bày**\n\nVới $x$ gần $1$ ta có $x+1\\ne0$ nên $(2x^{2}+1)f(x)=\\dfrac{2x^{2}+1}{x+1}\\cdot(x+1)f(x)$.\n\nKhi $x\\to1$: $\\dfrac{2x^{2}+1}{x+1}\\to\\dfrac{3}{2}$ và $(x+1)f(x)\\to1$.\n\nSuy ra $a=\\dfrac32\\cdot1=\\dfrac32$.\n\nVậy $20a=20\\cdot\\dfrac32=30$.",
+  "kiem": [
+   "(() => { const f = (x) => 1 / (x + 1) + (x - 1) ** 2, g = (x) => (2 * x * x + 1) * f(x); return Math.abs((1 + 1e-7 + 1) * f(1 + 1e-7) - 1) < 1e-5 && Math.abs(20 * g(1 + 1e-7) - 30) < 1e-3 })()"
+  ],
+  "sach_dap_so": "30",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-7",
+  "vai": "luyen",
+  "dang_bai": "NDB01169",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Cho giới hạn của hàm ẩn f(x), suy ra giới hạn khác; bản đồ thiếu dạng hàm ẩn",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hai hàm số $f(x)$ và $g(x)$ thoả mãn $\\lim\\limits_{x\\to1}\\dfrac{f(x)}{x-1}=9$, $\\lim\\limits_{x\\to1}\\dfrac{g(x)}{x^{2}-1}=\\dfrac12$. Tính giới hạn $L=\\lim\\limits_{x\\to1}\\dfrac{(x+1)f(x)}{g(x)}$.",
+  "dap_an": "18",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia tử và mẫu cho $x^{2}-1$ để $L$ được viết qua hai thương có giới hạn đã cho.\n\n**Bước 1.** Phân tích $x^{2}-1=(x-1)(x+1)$ để thấy mối liên hệ giữa hai thương trong giả thiết.\n\n**Bước 2.** Chia cả tử và mẫu của biểu thức cho $x^{2}-1$ (khác $0$ khi $x\\ne1$).\n\n**Bước 3.** Biến đổi tử về dạng $\\dfrac{f(x)}{x-1}$ rồi áp dụng quy tắc giới hạn của thương.\n\n**Phần 2. Trình bày**\n\nVới $x\\ne\\pm1$ ta có $\\dfrac{(x+1)f(x)}{g(x)}=\\dfrac{(x+1)\\cdot\\dfrac{f(x)}{x^{2}-1}}{\\dfrac{g(x)}{x^{2}-1}}$.\n\nVì $(x+1)\\cdot\\dfrac{f(x)}{x^{2}-1}=(x+1)\\cdot\\dfrac{f(x)}{(x-1)(x+1)}=\\dfrac{f(x)}{x-1}$ nên $\\dfrac{(x+1)f(x)}{g(x)}=\\dfrac{\\dfrac{f(x)}{x-1}}{\\dfrac{g(x)}{x^{2}-1}}$.\n\nKhi $x\\to1$: tử có giới hạn $9$, mẫu có giới hạn $\\dfrac12\\ne0$.\n\nVậy $L=\\dfrac{9}{\\frac12}=18$.",
+  "kiem": [
+   "(() => { const h = 1e-7, x = 1 + h, f = (t) => 9 * (t - 1) * (1 + (t - 1)), g = (t) => 0.5 * (t * t - 1) * (1 + (t - 1)); return Math.abs(f(x) / (x - 1) - 9) < 1e-5 && Math.abs(g(x) / (x * x - 1) - 0.5) < 1e-5 && Math.abs((x + 1) * f(x) / g(x) - 18) < 1e-4 })()"
+  ],
+  "sach_dap_so": "18",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-8",
+  "vai": "luyen",
+  "dang_bai": "NDB01169",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Cho giới hạn của hàm ẩn f(x), suy ra giới hạn khác; bản đồ thiếu dạng hàm ẩn",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hai hàm số $f(x)$ và $g(x)$ thoả mãn $\\lim\\limits_{x\\to1}f(x)=\\alpha$, $\\lim\\limits_{x\\to1}g(x)=\\beta$, và $\\lim\\limits_{x\\to1}(f(x)+g(x))=1$, $\\lim\\limits_{x\\to1}f(x)g(x)=-12$ với điều kiện $\\alpha>\\beta$. Tính giá trị của giới hạn $\\lim\\limits_{x\\to1}\\dfrac{f(x)+2}{2g(x)+7}$.",
+  "dap_an": "6",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dùng quy tắc giới hạn của tổng và tích để lập hệ cho $\\alpha,\\beta$, giải ra rồi thay vào thương cần tính.\n\n**Bước 1.** Áp dụng quy tắc giới hạn của tổng và của tích để viết $\\alpha+\\beta$ và $\\alpha\\beta$ theo giả thiết.\n\n**Bước 2.** Coi $\\alpha,\\beta$ là hai nghiệm của một phương trình bậc hai theo định lí Viète rồi giải.\n\n**Bước 3.** Dùng điều kiện $\\alpha>\\beta$ để xác định đúng giá trị của từng số.\n\n**Bước 4.** Thay $\\alpha,\\beta$ vào thương, kiểm tra mẫu khác $0$ rồi kết luận.\n\n**Phần 2. Trình bày**\n\nTheo quy tắc giới hạn: $\\alpha+\\beta=1$ và $\\alpha\\beta=-12$.\n\nDo đó $\\alpha,\\beta$ là nghiệm của phương trình $X^{2}-X-12=0$, tức $X=4$ hoặc $X=-3$.\n\nVì $\\alpha>\\beta$ nên $\\alpha=4$ và $\\beta=-3$.\n\nKhi đó tử có giới hạn $\\alpha+2=6$, mẫu có giới hạn $2\\beta+7=1\\ne0$.\n\nVậy giới hạn cần tìm bằng $\\dfrac{6}{1}=6$.",
+  "kiem": [
+   "(() => { const a = 4, b = -3; return a + b === 1 && a * b === -12 && a > b && (a + 2) / (2 * b + 7) === 6 })()"
+  ],
+  "sach_dap_so": "6",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-9",
+  "vai": "luyen",
+  "dang_bai": "NDB01180",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Hiệu hai căn khi x→+∞ có tham số a; bản đồ thiếu dạng tham số ở vô cực",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hàm số $f(x)=a(x-1)^{2}+1$ với $a>0$. Biết $\\lim\\limits_{x\\to+\\infty}(\\sqrt{f(-x)}-\\sqrt{f(x)})=6$. Tìm giá trị của $a$.",
+  "dap_an": "9",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tính $f(-x)$, nhân liên hợp hiệu hai căn rồi chia cho $x$ để giới hạn chỉ còn phụ thuộc $a$.\n\n**Bước 1.** Thay $-x$ vào $f$ để viết $f(-x)$ và $f(x)$ thành hai biểu thức bậc hai cùng dạng.\n\n**Bước 2.** Nhân và chia với biểu thức liên hợp của hiệu hai căn để đưa về dạng $\\dfrac{\\infty}{\\infty}$.\n\n**Bước 3.** Chia cả tử và mẫu cho $x$ với $x>0$, dùng $\\lim\\dfrac1{x^{k}}=0$ để tìm giới hạn theo $a$.\n\n**Bước 4.** Cho giới hạn bằng giá trị đề bài rồi giải phương trình tìm $a$ với điều kiện $a>0$.\n\n**Phần 2. Trình bày**\n\nTa có $f(-x)=a(x+1)^{2}+1$ và $f(x)=a(x-1)^{2}+1$.\n\n$\\sqrt{f(-x)}-\\sqrt{f(x)}=\\dfrac{a(x+1)^{2}-a(x-1)^{2}}{\\sqrt{a(x+1)^{2}+1}+\\sqrt{a(x-1)^{2}+1}}=\\dfrac{4ax}{\\sqrt{a(x+1)^{2}+1}+\\sqrt{a(x-1)^{2}+1}}$.\n\nVới $x>0$, chia tử và mẫu cho $x$: $\\dfrac{4a}{\\sqrt{a+\\dfrac{2a}{x}+\\dfrac{a+1}{x^{2}}}+\\sqrt{a-\\dfrac{2a}{x}+\\dfrac{a+1}{x^{2}}}}$.\n\nKhi $x\\to+\\infty$ giới hạn bằng $\\dfrac{4a}{2\\sqrt a}=2\\sqrt a$.\n\nCho $2\\sqrt a=6$, suy ra $\\sqrt a=3$ và $a=9$ (thoả $a>0$).\n\nVậy $a=9$.",
+  "kiem": [
+   "(() => { const a = 9, g = (x) => Math.sqrt(a * (x + 1) ** 2 + 1) - Math.sqrt(a * (x - 1) ** 2 + 1); return Math.abs(g(1e7) - 6) < 1e-3 && Math.abs(g(-1e7) + 6) < 1e-3 })()"
+  ],
+  "sach_dap_so": "9",
+  "ghi_chu": "Sách ghi x→∞; hiểu là x→+∞ (nếu x→-∞ thì giới hạn là -2√a < 0 nên không bằng 6)."
+ },
+ {
+  "id": "nbv-b2-e-10",
+  "vai": "luyen",
+  "dang_bai": "NDB01173",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Căn bậc hai và căn bậc ba ở cả tử lẫn mẫu, dạng 0/0",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho giới hạn $I=\\lim\\limits_{x\\to0}\\dfrac{\\sqrt{2x+1}-\\sqrt[3]{x^{2}+1}}{\\sqrt[3]{8-x}-\\sqrt[3]{8+x}}$. Tính giá trị của $100I$.",
+  "dap_an": "-600",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia tử và mẫu cho $x$ rồi nhân liên hợp từng hiệu căn để mỗi thương có giới hạn riêng.\n\n**Bước 1.** Nhận ra tử và mẫu cùng dần về $0$ nên viết $I$ thành tích hai thương, mỗi thương chia cho $x$.\n\n**Bước 2.** Tách $\\sqrt{2x+1}-\\sqrt[3]{x^{2}+1}$ thành $(\\sqrt{2x+1}-1)+(1-\\sqrt[3]{x^{2}+1})$ vì cả hai căn bằng $1$ tại $x=0$.\n\n**Bước 3.** Nhân liên hợp bậc hai cho nhóm đầu, liên hợp bậc ba cho nhóm sau và cho hiệu hai căn ở mẫu.\n\n**Bước 4.** Tính từng giới hạn, nhân lại rồi lấy $100I$.\n\n**Phần 2. Trình bày**\n\nViết $I=\\lim\\limits_{x\\to0}(\\dfrac{\\sqrt{2x+1}-1}{x}+\\dfrac{1-\\sqrt[3]{x^{2}+1}}{x})\\cdot\\dfrac{x}{\\sqrt[3]{8-x}-\\sqrt[3]{8+x}}$.\n\n$\\dfrac{\\sqrt{2x+1}-1}{x}=\\dfrac{2x}{x(\\sqrt{2x+1}+1)}=\\dfrac{2}{\\sqrt{2x+1}+1}\\to1$.\n\n$\\dfrac{1-\\sqrt[3]{x^{2}+1}}{x}=\\dfrac{-x^{2}}{x(1+\\sqrt[3]{x^{2}+1}+\\sqrt[3]{(x^{2}+1)^{2}})}=\\dfrac{-x}{1+\\sqrt[3]{x^{2}+1}+\\sqrt[3]{(x^{2}+1)^{2}}}\\to0$.\n\nĐặt $a=\\sqrt[3]{8-x}$, $b=\\sqrt[3]{8+x}$ thì $a-b=\\dfrac{a^{3}-b^{3}}{a^{2}+ab+b^{2}}=\\dfrac{-2x}{a^{2}+ab+b^{2}}$, nên $\\dfrac{x}{a-b}=\\dfrac{a^{2}+ab+b^{2}}{-2}\\to\\dfrac{4+4+4}{-2}=-6$.\n\nDo đó $I=(1+0)\\cdot(-6)=-6$.\n\nVậy $100I=-600$.",
+  "kiem": [
+   "(() => { const f = (x) => (Math.sqrt(2 * x + 1) - Math.cbrt(x * x + 1)) / (Math.cbrt(8 - x) - Math.cbrt(8 + x)); return Math.abs(f(1e-5) + 6) < 1e-3 && Math.abs(f(-1e-5) + 6) < 1e-3 })()"
+  ],
+  "sach_dap_so": "-600",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-11",
+  "vai": "luyen",
+  "dang_bai": "NDB01177",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tìm tham số để giới hạn tồn tại: giới hạn trái bằng giới hạn phải",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hàm số $f(x)=\\begin{cases}\\sqrt{x-2}+3&\\text{khi }x\\ge2\\\\ax-1&\\text{khi }x<2\\end{cases}$. Tìm $a$ để $\\lim\\limits_{x\\to2}f(x)$ tồn tại.",
+  "dap_an": "2",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn tại điểm chia nhánh tồn tại khi và chỉ khi giới hạn trái bằng giới hạn phải.\n\n**Bước 1.** Xác định nhánh nào dùng cho $x\\to2^{-}$ và nhánh nào dùng cho $x\\to2^{+}$.\n\n**Bước 2.** Tính giới hạn trái và giới hạn phải của $f(x)$ tại $x=2$ theo $a$.\n\n**Bước 3.** Cho hai giới hạn một bên bằng nhau rồi giải phương trình tìm $a$.\n\n**Phần 2. Trình bày**\n\nKhi $x\\to2^{-}$ ta có $x<2$ nên $\\lim\\limits_{x\\to2^{-}}f(x)=\\lim\\limits_{x\\to2^{-}}(ax-1)=2a-1$.\n\nKhi $x\\to2^{+}$ ta có $x>2$ nên $\\lim\\limits_{x\\to2^{+}}f(x)=\\lim\\limits_{x\\to2^{+}}(\\sqrt{x-2}+3)=3$.\n\n$\\lim\\limits_{x\\to2}f(x)$ tồn tại khi và chỉ khi $2a-1=3$.\n\nSuy ra $a=2$.\n\nVậy $a=2$.",
+  "kiem": [
+   "(() => { const a = 2, f = (x) => x >= 2 ? Math.sqrt(x - 2) + 3 : a * x - 1; return Math.abs(f(2 + 1e-12) - 3) < 1e-4 && Math.abs(f(2 - 1e-9) - 3) < 1e-4 && 2 * a - 1 === 3 })()"
+  ],
+  "sach_dap_so": "2",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-12",
+  "vai": "luyen",
+  "dang_bai": "NDB01174",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Quy đồng đưa về 0/0 có tham số, giới hạn hữu hạn; bản đồ thiếu dạng ∞-∞ ở điểm hữu hạn",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Biết rằng $a,b$ là các số thực thoả mãn $a+b=4$ và $\\lim\\limits_{x\\to1}(\\dfrac{a}{1-x}-\\dfrac{b}{1-x^{3}})$ hữu hạn. Tính $a-b$.",
+  "dap_an": "-2",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Quy đồng về một phân thức có mẫu dần về $0$; giới hạn hữu hạn buộc tử cũng phải dần về $0$.\n\n**Bước 1.** Phân tích $1-x^{3}=(1-x)(1+x+x^{2})$ rồi quy đồng hai phân thức về cùng mẫu.\n\n**Bước 2.** Vì mẫu dần về $0$ mà giới hạn hữu hạn nên tử phải dần về $0$ khi $x\\to1$, từ đó lập một phương trình theo $a,b$.\n\n**Bước 3.** Kết hợp với $a+b=4$ để giải hệ tìm $a$ và $b$.\n\n**Bước 4.** Thử lại bằng cách rút gọn nhân tử $1-x$, rồi tính $a-b$.\n\n**Phần 2. Trình bày**\n\nTa có $\\dfrac{a}{1-x}-\\dfrac{b}{1-x^{3}}=\\dfrac{a(1+x+x^{2})-b}{(1-x)(1+x+x^{2})}$.\n\nMẫu dần về $0$ khi $x\\to1$ mà giới hạn hữu hạn nên tử cũng dần về $0$: $a(1+1+1)-b=0$, tức $3a-b=0$.\n\nKết hợp $a+b=4$ ta được hệ $\\begin{cases}a+b=4\\\\3a-b=0\\end{cases}$, suy ra $a=1$, $b=3$.\n\nThử lại: $\\dfrac{1}{1-x}-\\dfrac{3}{1-x^{3}}=\\dfrac{x^{2}+x-2}{(1-x)(1+x+x^{2})}=\\dfrac{-(x+2)}{1+x+x^{2}}\\to-1$ (hữu hạn).\n\nVậy $a-b=1-3=-2$.",
+  "kiem": [
+   "(() => { const a = 1, b = 3, f = (x) => a / (1 - x) - b / (1 - x ** 3); return a + b === 4 && 3 * a - b === 0 && Math.abs(f(1 + 1e-5) + 1) < 1e-3 && Math.abs(f(1 - 1e-5) + 1) < 1e-3 && a - b === -2 })()"
+  ],
+  "sach_dap_so": "-2",
+  "ghi_chu": "Sách viết tử có nghiệm x=1 ⇔ 2a-b=-1 (sai bước trung gian: a+ax+ax^2-b tại x=1 bằng 3a-b); a=1, b=3 vẫn đúng nên đáp số -2 không đổi."
+ },
+ {
+  "id": "nbv-b2-e-13",
+  "vai": "luyen",
+  "dang_bai": "NDB01180",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Hiệu căn trừ đa thức khi x→-∞ (∞-∞), nhân liên hợp",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Biết rằng $\\lim\\limits_{x\\to-\\infty}(\\sqrt{5x^{2}+2x}+x\\sqrt5)=a\\sqrt5+b$ với $a,b\\in\\mathbb{Q}$. Tính $S=5a+b$.",
+  "dap_an": "-1",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân liên hợp để đưa dạng $\\infty-\\infty$ về phân thức, rồi chia cho $x$ chú ý $x<0$ nên $\\sqrt{x^{2}}=-x$.\n\n**Bước 1.** Nhận ra khi $x\\to-\\infty$ hai số hạng trái dấu nhau nên giới hạn có dạng $\\infty-\\infty$.\n\n**Bước 2.** Nhân và chia với biểu thức liên hợp $\\sqrt{5x^{2}+2x}-x\\sqrt5$ để triệt hai căn bậc hai.\n\n**Bước 3.** Chia cả tử và mẫu cho $x$ với $x<0$, nhớ đưa $x$ vào căn bằng $\\dfrac{\\sqrt{5x^{2}+2x}}{x}=-\\sqrt{5+\\dfrac2x}$.\n\n**Bước 4.** Viết kết quả dưới dạng $a\\sqrt5+b$ để đọc $a,b$ rồi tính $S$.\n\n**Phần 2. Trình bày**\n\n$\\sqrt{5x^{2}+2x}+x\\sqrt5=\\dfrac{(5x^{2}+2x)-5x^{2}}{\\sqrt{5x^{2}+2x}-x\\sqrt5}=\\dfrac{2x}{\\sqrt{5x^{2}+2x}-x\\sqrt5}$.\n\nVới $x<0$ ta có $\\sqrt{5x^{2}+2x}=-x\\sqrt{5+\\dfrac2x}$, nên chia tử và mẫu cho $x$ được $\\dfrac{2}{-\\sqrt{5+\\dfrac2x}-\\sqrt5}$.\n\nKhi $x\\to-\\infty$ giới hạn bằng $\\dfrac{2}{-2\\sqrt5}=-\\dfrac{1}{\\sqrt5}=-\\dfrac15\\sqrt5$.\n\nSuy ra $a=-\\dfrac15$, $b=0$.\n\nVậy $S=5a+b=-1$.",
+  "kiem": [
+   "(() => { const g = (x) => Math.sqrt(5 * x * x + 2 * x) + x * Math.sqrt(5); return Math.abs(g(-1e7) + 1 / Math.sqrt(5)) < 1e-3 && 5 * (-1 / 5) + 0 === -1 })()"
+  ],
+  "sach_dap_so": "-1",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-14",
+  "vai": "luyen",
+  "dang_bai": "NDB01180",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Phân thức trừ đa thức bậc nhất khi x→+∞ tìm a,b; bản đồ thiếu dạng tham số ở vô cực",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hai số thực $a$ và $b$ thoả mãn $\\lim\\limits_{x\\to+\\infty}(\\dfrac{4x^{2}-3x+1}{x+2}-ax-b)=0$. Khi đó $2a+b$ bằng bao nhiêu?",
+  "dap_an": "-3",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia đa thức để tách phân thức thành phần nguyên cộng phần dư rồi cho các hệ số của phần không dần về $0$ bằng $0$.\n\n**Bước 1.** Chia $4x^{2}-3x+1$ cho $x+2$ để viết phân thức thành đa thức bậc nhất cộng một phân thức có tử hằng.\n\n**Bước 2.** Gộp với $-ax-b$ thành dạng hệ số của $x$, cộng hằng số, cộng phần dư.\n\n**Bước 3.** Phần dư dần về $0$ nên giới hạn bằng $0$ khi hệ số của $x$ và phần hằng số đều bằng $0$.\n\n**Bước 4.** Giải hai phương trình đó để tìm $a$, $b$ rồi tính $2a+b$.\n\n**Phần 2. Trình bày**\n\nTa có $4x^{2}-3x+1=(x+2)(4x-11)+23$ nên $\\dfrac{4x^{2}-3x+1}{x+2}=4x-11+\\dfrac{23}{x+2}$.\n\nDo đó biểu thức bằng $(4-a)x-(11+b)+\\dfrac{23}{x+2}$.\n\nVì $\\dfrac{23}{x+2}\\to0$ nên giới hạn bằng $0$ khi và chỉ khi $4-a=0$ và $11+b=0$.\n\nSuy ra $a=4$, $b=-11$.\n\nVậy $2a+b=8-11=-3$.",
+  "kiem": [
+   "(() => { const a = 4, b = -11, f = (x) => (4 * x * x - 3 * x + 1) / (x + 2) - a * x - b; return Math.abs(f(1e7)) < 1e-4 && 2 * a + b === -3 })()"
+  ],
+  "sach_dap_so": "-3",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-15",
+  "vai": "luyen",
+  "dang_bai": "NDB01185",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Chi phí trung bình khi sản lượng rất lớn",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tại một cơ sở sản xuất nước tinh khiết, nếu mỗi ngày sản xuất $x$ ($\\text{m}^{3}$) nước tinh khiết thì phải chi các khoản sau: $3$ triệu đồng chi phí cố định; $0{,}12$ triệu đồng chi phí bảo dưỡng máy móc cho mỗi mét khối sản phẩm. Gọi $C(x)$ là chi phí sản xuất $x$ ($\\text{m}^{3}$) sản phẩm mỗi ngày và $\\overline{C}(x)$ là chi phí trung bình mỗi mét khối sản phẩm. Tính $\\lim\\limits_{x\\to+\\infty}\\overline{C}(x)$.",
+  "dap_an": "0,12",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lập hàm chi phí từ hai khoản, lấy chi phí chia cho sản lượng rồi cho sản lượng tăng vô hạn.\n\n**Bước 1.** Cộng chi phí cố định với chi phí bảo dưỡng tỉ lệ theo sản lượng để lập $C(x)$.\n\n**Bước 2.** Lập chi phí trung bình $\\overline{C}(x)=\\dfrac{C(x)}{x}$ và tách thành số hạng hằng cộng số hạng $\\dfrac{c}{x}$.\n\n**Bước 3.** Cho $x\\to+\\infty$ và dùng $\\lim\\dfrac1x=0$ để tính giới hạn.\n\n**Phần 2. Trình bày**\n\nChi phí mỗi ngày là $C(x)=0{,}12x+3$ (triệu đồng).\n\nChi phí trung bình mỗi mét khối là $\\overline{C}(x)=\\dfrac{0{,}12x+3}{x}=0{,}12+\\dfrac3x$.\n\nDo đó $\\lim\\limits_{x\\to+\\infty}\\overline{C}(x)=\\lim\\limits_{x\\to+\\infty}(0{,}12+\\dfrac3x)=0{,}12$.\n\nVậy giới hạn bằng $0{,}12$ (triệu đồng mỗi mét khối).",
+  "kiem": [
+   "(() => { const c = (x) => (0.12 * x + 3) / x; return Math.abs(c(1e9) - 0.12) < 1e-6 })()"
+  ],
+  "sach_dap_so": "0,12",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-16",
+  "vai": "luyen",
+  "dang_bai": "NDB01174",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tử phải có nghiệm x=1 để giới hạn 0/0 hữu hạn, rồi so với giá trị cho trước",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hai số thực $a,b$ thoả mãn $\\lim\\limits_{x\\to1}\\dfrac{ax^{2}+bx-2}{x-1}=3$. Tính giá trị biểu thức $S=a+\\dfrac b4$.",
+  "dap_an": "1,25",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu dần về $0$ mà giới hạn hữu hạn nên tử phải triệt tiêu tại $x=1$; từ đó rút $b$ theo $a$ và phân tích nhân tử.\n\n**Bước 1.** Lập luận tử phải dần về $0$ khi $x\\to1$ để thu được một hệ thức giữa $a$ và $b$.\n\n**Bước 2.** Thay $b$ theo $a$ vào tử rồi phân tích tử thành tích có thừa số $x-1$.\n\n**Bước 3.** Rút gọn $x-1$, lấy giới hạn theo $a$ rồi cho bằng $3$ để tìm $a$, sau đó tìm $b$.\n\n**Bước 4.** Thay giá trị $a,b$ tìm được vào biểu thức $S$ để tính kết quả.\n\n**Phần 2. Trình bày**\n\nVì $\\lim\\limits_{x\\to1}(x-1)=0$ và giới hạn đã cho hữu hạn nên $\\lim\\limits_{x\\to1}(ax^{2}+bx-2)=0$, tức $a+b-2=0$ hay $b=2-a$.\n\nKhi đó $ax^{2}+bx-2=ax^{2}+(2-a)x-2=(x-1)(ax+2)$.\n\nVới $x\\ne1$: $\\dfrac{ax^{2}+bx-2}{x-1}=ax+2$, nên giới hạn bằng $a+2$.\n\nCho $a+2=3$ ta được $a=1$, suy ra $b=1$.\n\nVậy $S=1+\\dfrac14=1{,}25$.",
+  "kiem": [
+   "(() => { const a = 1, b = 1, f = (x) => (a * x * x + b * x - 2) / (x - 1); return Math.abs(f(1 + 1e-7) - 3) < 1e-4 && a + b - 2 === 0 && a + b / 4 === 1.25 })()"
+  ],
+  "sach_dap_so": "1,25",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-17",
+  "vai": "luyen",
+  "dang_bai": "NDB01185",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Chi phí trung bình khi số sản phẩm rất lớn",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Chi phí (đơn vị: triệu đồng) để sản xuất $x$ sản phẩm của một công ty được xác định bởi hàm số $C(x)=2x+55$. Gọi $\\overline{C}(x)$ là chi phí trung bình để sản xuất một sản phẩm. Khi số lượng sản phẩm sản xuất được càng lớn thì chi phí trung bình để sản xuất một sản phẩm càng gần với bao nhiêu triệu đồng?",
+  "dap_an": "2",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chi phí trung bình là chi phí chia cho số sản phẩm; \"càng gần\" chính là giới hạn khi $x\\to+\\infty$.\n\n**Bước 1.** Lập chi phí trung bình bằng cách chia hàm chi phí cho số sản phẩm $x$.\n\n**Bước 2.** Chia tử cho $x$ để tách thành hằng số cộng số hạng có dạng $\\dfrac{c}{x}$.\n\n**Bước 3.** Lấy giới hạn khi $x\\to+\\infty$ và diễn giải ý nghĩa kết quả.\n\n**Phần 2. Trình bày**\n\nTa có $\\overline{C}(x)=\\dfrac{C(x)}{x}=\\dfrac{2x+55}{x}=2+\\dfrac{55}{x}$.\n\nDo đó $\\lim\\limits_{x\\to+\\infty}\\overline{C}(x)=2+0=2$.\n\nVậy khi số sản phẩm càng lớn thì chi phí trung bình càng gần $2$ triệu đồng.",
+  "kiem": [
+   "(() => { const c = (x) => (2 * x + 55) / x; return Math.abs(c(1e9) - 2) < 1e-6 })()"
+  ],
+  "sach_dap_so": "2",
+  "ghi_chu": "Đề sách là câu trắc nghiệm nhưng bản nguồn không còn các phương án; chuyển thành trả lời ngắn (hỏi giá trị gần nhất)."
+ },
+ {
+  "id": "nbv-b2-e-18",
+  "vai": "luyen",
+  "dang_bai": "NDB01172",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Liên hợp một căn, f(x) cho bởi giới hạn thương; bản đồ thiếu dạng hàm ẩn",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hàm số $y=f(x)$ xác định trên $\\mathbb{R}$ thoả mãn $\\lim\\limits_{x\\to2}\\dfrac{f(x)-2}{x-2}=2025$. Tìm $\\lim\\limits_{x\\to2}\\dfrac{\\sqrt{f(x)+2}-2}{x^{2}+2x-8}$ (làm tròn kết quả đến hàng đơn vị).",
+  "dap_an": "84",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chứng tỏ $f(x)\\to2$, nhân liên hợp để xuất hiện thương $\\dfrac{f(x)-2}{x-2}$ đã biết giới hạn.\n\n**Bước 1.** Từ giả thiết suy ra $f(x)-2=\\dfrac{f(x)-2}{x-2}\\cdot(x-2)$ để tìm giới hạn của $f(x)$ khi $x\\to2$.\n\n**Bước 2.** Phân tích mẫu $x^{2}+2x-8=(x-2)(x+4)$ và nhân liên hợp với $\\sqrt{f(x)+2}+2$.\n\n**Bước 3.** Tách thành tích của thương $\\dfrac{f(x)-2}{x-2}$ và một biểu thức có giới hạn tính được.\n\n**Bước 4.** Tính tích hai giới hạn rồi làm tròn đến hàng đơn vị.\n\n**Phần 2. Trình bày**\n\nTa có $f(x)-2=\\dfrac{f(x)-2}{x-2}\\cdot(x-2)\\to2025\\cdot0=0$ khi $x\\to2$, nên $\\lim\\limits_{x\\to2}f(x)=2$.\n\nVới $x\\ne2$: $\\dfrac{\\sqrt{f(x)+2}-2}{x^{2}+2x-8}=\\dfrac{f(x)+2-4}{(x-2)(x+4)(\\sqrt{f(x)+2}+2)}=\\dfrac{f(x)-2}{x-2}\\cdot\\dfrac{1}{(x+4)(\\sqrt{f(x)+2}+2)}$.\n\nKhi $x\\to2$: $\\dfrac{f(x)-2}{x-2}\\to2025$ và $(x+4)(\\sqrt{f(x)+2}+2)\\to6\\cdot4=24$.\n\nGiới hạn bằng $\\dfrac{2025}{24}=84{,}375$, làm tròn đến hàng đơn vị được $84$.\n\nVậy kết quả là $84$.",
+  "kiem": [
+   "(() => { const f = (x) => 2 + 2025 * (x - 2), g = (x) => (Math.sqrt(f(x) + 2) - 2) / (x * x + 2 * x - 8); return Math.abs(g(2 + 1e-7) - 2025 / 24) < 1e-2 && Math.round(2025 / 24) === 84 })()"
+  ],
+  "sach_dap_so": "88",
+  "ghi_chu": "LỆCH SÁCH — sách ghi 2025/24 ≈ 88; tính đúng 2025/24 = 84,375 ≈ 84."
+ },
+ {
+  "id": "nbv-b2-e-19",
+  "vai": "luyen",
+  "dang_bai": "NDB01185",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Vận tốc tức thời (thực tế) nhưng tính bằng 0/0 phân tích nhân tử",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Quãng đường của một vật chuyển động có công thức $s(t)=2t^{2}+t+3$, trong đó $s$ tính bằng mét và $t$ là thời gian tính bằng giây. Giới hạn $\\lim\\limits_{t\\to3}\\dfrac{s(t)-s(3)}{t-3}$ được gọi là vận tốc tức thời của chuyển động tại thời điểm $t_{0}=3$. Tính giới hạn này.",
+  "dap_an": "13",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tính $s(3)$, quy tử về đa thức bậc hai có nghiệm $t=3$ rồi phân tích nhân tử để rút gọn $t-3$.\n\n**Bước 1.** Tính $s(3)$ bằng cách thay $t=3$ vào công thức quãng đường.\n\n**Bước 2.** Lập hiệu $s(t)-s(3)$ và nhận ra nó dần về $0$ cùng với mẫu nên có dạng $\\dfrac00$.\n\n**Bước 3.** Phân tích $s(t)-s(3)$ thành tích có thừa số $t-3$ rồi rút gọn.\n\n**Bước 4.** Thay $t=3$ vào biểu thức còn lại để ra vận tốc tức thời.\n\n**Phần 2. Trình bày**\n\nTa có $s(3)=2\\cdot9+3+3=24$.\n\n$s(t)-s(3)=2t^{2}+t-21=(t-3)(2t+7)$.\n\nVới $t\\ne3$: $\\dfrac{s(t)-s(3)}{t-3}=2t+7$.\n\nDo đó $\\lim\\limits_{t\\to3}\\dfrac{s(t)-s(3)}{t-3}=2\\cdot3+7=13$.\n\nVậy vận tốc tức thời tại $t_{0}=3$ là $13$ m/s.",
+  "kiem": [
+   "(() => { const s = (t) => 2 * t * t + t + 3; return s(3) === 24 && Math.abs((s(3 + 1e-6) - s(3)) / 1e-6 - 13) < 1e-4 })()"
+  ],
+  "sach_dap_so": "13",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-20",
+  "vai": "luyen",
+  "dang_bai": "NDB01179",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Biểu thức chứa căn khi x→-∞, chú ý dấu của căn",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Biết $\\lim\\limits_{x\\to-\\infty}\\dfrac{5x+\\sqrt{9x^{2}+2023x+1}}{5x-1}=\\dfrac ab$ với $\\dfrac ab$ là phân số tối giản và $a,b\\in\\mathbb{N}^{*}$. Giá trị $2a-b$ bằng bao nhiêu?",
+  "dap_an": "-1",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia cả tử và mẫu cho $x$, nhớ khi $x<0$ thì $\\sqrt{x^{2}}=-x$ nên căn mang dấu âm sau khi chia.\n\n**Bước 1.** Đưa $x^{2}$ ra ngoài căn bằng cách viết $\\sqrt{9x^{2}+2023x+1}=|x|\\sqrt{9+\\dfrac{2023}{x}+\\dfrac1{x^{2}}}$.\n\n**Bước 2.** Với $x\\to-\\infty$ ta có $|x|=-x$, chia cả tử và mẫu cho $x$ nên căn nhận dấu trừ.\n\n**Bước 3.** Dùng $\\lim\\dfrac1{x^{k}}=0$ để tìm giới hạn của thương rồi rút gọn thành phân số tối giản.\n\n**Bước 4.** Đọc $a,b$ từ phân số rồi tính $2a-b$.\n\n**Phần 2. Trình bày**\n\nVới $x<0$: $\\sqrt{9x^{2}+2023x+1}=-x\\sqrt{9+\\dfrac{2023}{x}+\\dfrac{1}{x^{2}}}$.\n\nChia cả tử và mẫu cho $x$: $\\dfrac{5x+\\sqrt{9x^{2}+2023x+1}}{5x-1}=\\dfrac{5-\\sqrt{9+\\dfrac{2023}{x}+\\dfrac{1}{x^{2}}}}{5-\\dfrac1x}$.\n\nKhi $x\\to-\\infty$ giới hạn bằng $\\dfrac{5-3}{5}=\\dfrac25$.\n\nSuy ra $a=2$, $b=5$.\n\nVậy $2a-b=4-5=-1$.",
+  "kiem": [
+   "(() => { const f = (x) => (5 * x + Math.sqrt(9 * x * x + 2023 * x + 1)) / (5 * x - 1); return Math.abs(f(-1e9) - 0.4) < 1e-3 && 2 * 2 - 5 === -1 })()"
+  ],
+  "sach_dap_so": "11",
+  "ghi_chu": "LỆCH SÁCH — sách chia cho x nhưng giữ căn dương (5+√9), ra 8/5 và 11; với x→-∞ căn phải mang dấu trừ nên giới hạn là 2/5 và 2a-b=-1 (đã kiểm bằng máy)."
+ },
+ {
+  "id": "nbv-b2-e-21",
+  "vai": "luyen",
+  "dang_bai": "NDB01173",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Căn bậc ba liên hợp, f(x) cho bởi giới hạn thương; bản đồ thiếu dạng hàm ẩn",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho $f(x)$ là đa thức thoả mãn $\\lim\\limits_{x\\to2}\\dfrac{f(x)-20}{x-2}=10$. Gọi $T=\\lim\\limits_{x\\to2}\\dfrac{\\sqrt[3]{6f(x)+5}-5}{x^{2}+x-6}$. Tính $25T$.",
+  "dap_an": "4",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chứng tỏ $f(x)\\to20$, nhân liên hợp bậc ba để xuất hiện thương $\\dfrac{f(x)-20}{x-2}$.\n\n**Bước 1.** Từ giả thiết suy ra $f(x)\\to20$ khi $x\\to2$ nên $\\sqrt[3]{6f(x)+5}$ dần về một số tính được.\n\n**Bước 2.** Phân tích $x^{2}+x-6=(x-2)(x+3)$ và nhân liên hợp bậc ba với $A^{2}+5A+25$, trong đó $A=\\sqrt[3]{6f(x)+5}$.\n\n**Bước 3.** Tách tích gồm thương $\\dfrac{f(x)-20}{x-2}$ và phần còn lại có giới hạn xác định.\n\n**Bước 4.** Tính giá trị của $T$ rồi nhân kết quả với $25$.\n\n**Phần 2. Trình bày**\n\nVì $f(x)-20=\\dfrac{f(x)-20}{x-2}\\cdot(x-2)\\to10\\cdot0=0$ nên $\\lim\\limits_{x\\to2}f(x)=20$.\n\nĐặt $A=\\sqrt[3]{6f(x)+5}$. Khi $x\\to2$: $A\\to\\sqrt[3]{125}=5$. Ta có $A-5=\\dfrac{A^{3}-125}{A^{2}+5A+25}=\\dfrac{6(f(x)-20)}{A^{2}+5A+25}$.\n\nDo đó $\\dfrac{A-5}{x^{2}+x-6}=\\dfrac{f(x)-20}{x-2}\\cdot\\dfrac{6}{(x+3)(A^{2}+5A+25)}$.\n\nKhi $x\\to2$: $\\dfrac{f(x)-20}{x-2}\\to10$ và $(x+3)(A^{2}+5A+25)\\to5\\cdot75=375$.\n\nSuy ra $T=10\\cdot\\dfrac{6}{375}=\\dfrac{4}{25}$.\n\nVậy $25T=4$.",
+  "kiem": [
+   "(() => { const f = (x) => 20 + 10 * (x - 2) + (x - 2) ** 2, g = (x) => (Math.cbrt(6 * f(x) + 5) - 5) / (x * x + x - 6); return Math.abs(25 * g(2 + 1e-6) - 4) < 1e-3 && Math.abs(25 * g(2 - 1e-6) - 4) < 1e-3 })()"
+  ],
+  "sach_dap_so": "4",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-22",
+  "vai": "luyen",
+  "dang_bai": "NDB01185",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Chi phí trung bình (thực tế) với hiệu hai căn khi x→+∞",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một đơn vị sản xuất ước tính rằng chi phí (đơn vị: nghìn đồng) để sản xuất $x$ đơn vị sản phẩm là $C(x)=100\\,000x(\\sqrt{9x^{2}+18x+12}-3x)$. Gọi $f(x)$ là hàm số biểu thị chi phí trung bình để sản xuất một đơn vị sản phẩm. Ta tính được $\\lim\\limits_{x\\to+\\infty}f(x)=L$. Khi đó $\\dfrac{L}{300\\,000}$ bằng bao nhiêu?",
+  "dap_an": "1",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chi phí trung bình là $C(x)$ chia cho $x$, rồi nhân liên hợp hiệu hai căn để tìm giới hạn khi $x\\to+\\infty$.\n\n**Bước 1.** Lập $f(x)=\\dfrac{C(x)}{x}$ và rút gọn thừa số $x$ ở tử và mẫu.\n\n**Bước 2.** Nhận ra hiệu $\\sqrt{9x^{2}+18x+12}-3x$ có dạng $\\infty-\\infty$ khi $x\\to+\\infty$ rồi nhân liên hợp.\n\n**Bước 3.** Chia tử và mẫu cho $x$ với $x>0$ để tìm giới hạn $L$.\n\n**Bước 4.** Lấy giá trị $L$ vừa tìm được rồi chia cho số đã cho ở đề bài.\n\n**Phần 2. Trình bày**\n\nVới $x>0$: $f(x)=\\dfrac{C(x)}{x}=100\\,000(\\sqrt{9x^{2}+18x+12}-3x)$.\n\nNhân liên hợp: $\\sqrt{9x^{2}+18x+12}-3x=\\dfrac{(9x^{2}+18x+12)-9x^{2}}{\\sqrt{9x^{2}+18x+12}+3x}=\\dfrac{18x+12}{\\sqrt{9x^{2}+18x+12}+3x}$.\n\nChia tử và mẫu cho $x$: $\\dfrac{18+\\dfrac{12}{x}}{\\sqrt{9+\\dfrac{18}{x}+\\dfrac{12}{x^{2}}}+3}\\to\\dfrac{18}{3+3}=3$.\n\nSuy ra $L=100\\,000\\cdot3=300\\,000$.\n\nVậy $\\dfrac{L}{300\\,000}=1$.",
+  "kiem": [
+   "(() => { const f = (x) => 1e5 * (Math.sqrt(9 * x * x + 18 * x + 12) - 3 * x); return Math.abs(f(1e7) / 3e5 - 1) < 1e-4 })()"
+  ],
+  "sach_dap_so": "1",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-24",
+  "vai": "luyen",
+  "dang_bai": "NDB01180",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Hiệu căn cộng đa thức khi x→-∞, nhân liên hợp",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Biết rằng $\\lim\\limits_{x\\to-\\infty}(\\sqrt{2x^{2}+x}+x\\sqrt2)=\\dfrac{-a\\sqrt b}{4}$ với $a,b\\in\\mathbb{N}$. Tính $S=a+b$.",
+  "dap_an": "3",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân liên hợp để triệt hai căn bậc hai, chia cho $x$ với $x<0$ rồi đối chiếu kết quả với dạng $\\dfrac{-a\\sqrt b}{4}$.\n\n**Bước 1.** Nhận ra giới hạn có dạng $\\infty-\\infty$ khi $x\\to-\\infty$ và nhân liên hợp với $\\sqrt{2x^{2}+x}-x\\sqrt2$.\n\n**Bước 2.** Rút gọn tử, rồi chia cả tử và mẫu cho $x$, chú ý khi $x<0$ thì $\\sqrt{x^{2}}=-x$.\n\n**Bước 3.** Tính giới hạn và đưa về dạng $\\dfrac{-\\sqrt2}{4}$.\n\n**Bước 4.** So sánh với $\\dfrac{-a\\sqrt b}{4}$ để tìm $a,b$ rồi tính $S$.\n\n**Phần 2. Trình bày**\n\n$\\sqrt{2x^{2}+x}+x\\sqrt2=\\dfrac{(2x^{2}+x)-2x^{2}}{\\sqrt{2x^{2}+x}-x\\sqrt2}=\\dfrac{x}{\\sqrt{2x^{2}+x}-x\\sqrt2}$.\n\nVới $x<0$: $\\sqrt{2x^{2}+x}=-x\\sqrt{2+\\dfrac1x}$, nên chia tử và mẫu cho $x$ được $\\dfrac{1}{-\\sqrt{2+\\dfrac1x}-\\sqrt2}$.\n\nKhi $x\\to-\\infty$ giới hạn bằng $\\dfrac{1}{-2\\sqrt2}=-\\dfrac{\\sqrt2}{4}$.\n\nSuy ra $a\\sqrt b=\\sqrt2$, tức $a^{2}b=2$ với $a,b\\in\\mathbb{N}$, nên $a=1$, $b=2$.\n\nVậy $S=a+b=3$.",
+  "kiem": [
+   "(() => { const g = (x) => Math.sqrt(2 * x * x + x) + x * Math.sqrt(2); return Math.abs(g(-1e7) + Math.sqrt(2) / 4) < 1e-3 && 1 + 2 === 3 })()"
+  ],
+  "sach_dap_so": "3",
+  "ghi_chu": "Sách in dòng kết \"a=2; a=1\" (lỗi in); đúng là a=1, b=2, S=3."
+ },
+ {
+  "id": "nbv-b2-e-25",
+  "vai": "luyen",
+  "dang_bai": "NDB01180",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Hiệu căn cộng đa thức khi x→-∞, nhân liên hợp",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tính giới hạn $\\lim\\limits_{x\\to-\\infty}(\\sqrt{4x^{2}-x+2}+2x-1)$.",
+  "dap_an": "—",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân liên hợp để đưa dạng $\\infty-\\infty$ về phân thức, rồi chia cho $x$ với $x<0$.\n\n**Bước 1.** Nhân và chia với biểu thức liên hợp $\\sqrt{4x^{2}-x+2}-(2x-1)$.\n\n**Bước 2.** Rút gọn tử bằng cách khai triển $(2x-1)^{2}$ rồi trừ cho $4x^{2}-x+2$.\n\n**Bước 3.** Chia cả tử và mẫu cho $x$ với $x<0$, nhớ căn lúc này mang dấu âm.\n\n**Bước 4.** Dùng $\\lim\\dfrac1{x^{k}}=0$ để tính giới hạn còn lại.\n\n**Phần 2. Trình bày**\n\n$\\sqrt{4x^{2}-x+2}+2x-1=\\dfrac{4x^{2}-x+2-(2x-1)^{2}}{\\sqrt{4x^{2}-x+2}-2x+1}=\\dfrac{3x+1}{\\sqrt{4x^{2}-x+2}-2x+1}$.\n\nVới $x<0$: $\\sqrt{4x^{2}-x+2}=-x\\sqrt{4-\\dfrac1x+\\dfrac2{x^{2}}}$.\n\nChia tử và mẫu cho $x$: $\\dfrac{3+\\dfrac1x}{-\\sqrt{4-\\dfrac1x+\\dfrac2{x^{2}}}-2+\\dfrac1x}$.\n\nKhi $x\\to-\\infty$ giới hạn bằng $\\dfrac{3}{-2-2}=-\\dfrac34$.\n\nVậy giới hạn bằng $-0{,}75$.",
+  "kiem": [
+   "(() => { const g = (x) => Math.sqrt(4 * x * x - x + 2) + 2 * x - 1; return Math.abs(g(-1e8) + 0.75) < 1e-3 })()"
+  ],
+  "sach_dap_so": "-0,75",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-26",
+  "vai": "luyen",
+  "dang_bai": "NDB01180",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Căn cộng bx khi x→+∞ tìm a,b; Bản đồ thiếu dạng tham số ở vô cực",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho biết $\\lim\\limits_{x\\to+\\infty}(\\sqrt{x^{2}+ax}+bx)=2$. Tính giá trị biểu thức $P=a+2b$.",
+  "dap_an": "2",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giới hạn hữu hạn buộc hệ số của $x$ phải triệt tiêu để xác định $b$, sau đó nhân liên hợp để tìm $a$.\n\n**Bước 1.** Đưa $x$ ra ngoài căn khi $x>0$ để viết biểu thức dưới dạng $x\\cdot(\\dots)$.\n\n**Bước 2.** Xét các trường hợp của $b$ để loại những giá trị làm giới hạn ra vô cực và xác định $b$.\n\n**Bước 3.** Với $b$ vừa tìm, nhân liên hợp rồi chia cho $x$ để tính giới hạn theo $a$.\n\n**Bước 4.** Cho giới hạn bằng $2$ để tìm $a$, rồi tính $P$.\n\n**Phần 2. Trình bày**\n\nVới $x>0$: $\\sqrt{x^{2}+ax}+bx=x(\\sqrt{1+\\dfrac ax}+b)$.\n\nNếu $b>-1$ thì biểu thức dần về $+\\infty$; nếu $b<-1$ thì dần về $-\\infty$. Cả hai trường hợp trái giả thiết, nên $b=-1$.\n\nKhi đó $\\sqrt{x^{2}+ax}-x=\\dfrac{ax}{\\sqrt{x^{2}+ax}+x}=\\dfrac{a}{\\sqrt{1+\\dfrac ax}+1}\\to\\dfrac a2$.\n\nCho $\\dfrac a2=2$ ta được $a=4$.\n\nVậy $P=a+2b=4-2=2$.",
+  "kiem": [
+   "(() => { const a = 4, b = -1, g = (x) => Math.sqrt(x * x + a * x) + b * x; return Math.abs(g(1e8) - 2) < 1e-3 && a + 2 * b === 2 })()"
+  ],
+  "sach_dap_so": "2",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-27",
+  "vai": "luyen",
+  "dang_bai": "NDB01185",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Nồng độ muối trong hồ khi bơm nước ngọt, t→+∞",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một cái hồ đang chứa $300\\,\\text{m}^{3}$ nước mặn với nồng độ muối $15\\,\\text{kg}/\\text{m}^{3}$. Người ta ngọt hoá nước trong hồ bằng cách bơm nước ngọt vào hồ với tốc độ $3\\,\\text{m}^{3}$/phút. Gọi $C(t)$ là nồng độ muối trong hồ sau $t$ phút kể từ khi bắt đầu bơm. Tìm giới hạn $\\lim\\limits_{t\\to+\\infty}C(t)$.",
+  "dap_an": "0",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lượng muối không đổi còn thể tích nước tăng đều theo thời gian, nên nồng độ là thương của hai đại lượng đó.\n\n**Bước 1.** Tính khối lượng muối ban đầu bằng nồng độ nhân thể tích; nước ngọt bơm vào không thêm muối.\n\n**Bước 2.** Lập thể tích nước trong hồ sau $t$ phút.\n\n**Bước 3.** Lập nồng độ $C(t)$ bằng khối lượng muối chia thể tích rồi cho $t\\to+\\infty$.\n\n**Phần 2. Trình bày**\n\nKhối lượng muối trong hồ là $15\\cdot300=4500$ (kg) và không đổi.\n\nThể tích nước sau $t$ phút là $V(t)=300+3t$ ($\\text{m}^{3}$).\n\nNồng độ muối là $C(t)=\\dfrac{4500}{300+3t}$.\n\nKhi $t\\to+\\infty$ thì mẫu $300+3t\\to+\\infty$ còn tử không đổi nên $\\lim\\limits_{t\\to+\\infty}C(t)=0$.\n\nVậy nồng độ muối dần về $0$ ($\\text{kg}/\\text{m}^{3}$).",
+  "kiem": [
+   "(() => { const C = (t) => 4500 / (300 + 3 * t); return C(1e12) < 1e-6 })()"
+  ],
+  "sach_dap_so": "0",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-28",
+  "vai": "luyen",
+  "dang_bai": "NDB01185",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Nồng độ muối trong hồ khi bơm nước biển, t→+∞",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Trong hồ có chứa $6000$ lít nước ngọt. Người ta bơm nước biển có nồng độ muối là $30$ gam/lít vào hồ với tốc độ $15$ lít/phút. Khi $t\\to+\\infty$ thì nồng độ muối trong hồ (gam/lít) dần tới giá trị nào? Biết nồng độ muối bằng khối lượng muối chia cho thể tích nước.",
+  "dap_an": "30",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khối lượng muối và thể tích nước trong hồ đều tăng đều theo $t$; nồng độ là thương của hai biểu thức bậc nhất.\n\n**Bước 1.** Tính lượng nước biển và lượng muối được bơm vào sau $t$ phút.\n\n**Bước 2.** Lập thể tích nước trong hồ và nồng độ $C(t)$ bằng khối lượng muối chia thể tích.\n\n**Bước 3.** Rút gọn phân thức rồi chia tử và mẫu cho $t$ để lấy giới hạn khi $t\\to+\\infty$.\n\n**Phần 2. Trình bày**\n\nSau $t$ phút bơm vào $15t$ lít nước biển, chứa $30\\cdot15t=450t$ gam muối.\n\nThể tích nước trong hồ là $6000+15t$ lít nên $C(t)=\\dfrac{450t}{6000+15t}=\\dfrac{30t}{400+t}$.\n\nChia tử và mẫu cho $t$: $C(t)=\\dfrac{30}{\\dfrac{400}{t}+1}$.\n\nKhi $t\\to+\\infty$ thì $\\dfrac{400}{t}\\to0$ nên $\\lim\\limits_{t\\to+\\infty}C(t)=30$.\n\nVậy nồng độ muối dần tới $30$ gam/lít.",
+  "kiem": [
+   "(() => { const C = (t) => 450 * t / (6000 + 15 * t); return Math.abs(C(1e12) - 30) < 1e-6 })()"
+  ],
+  "sach_dap_so": "30",
+  "ghi_chu": "Đề sách hỏi \"nồng độ muối như thế nào\"; chuyển thành hỏi giá trị giới hạn (đáp số sách: 30). Dòng cuối lời giải sách mất công thức (EQ-FAILED) nhưng không ảnh hưởng."
+ },
+ {
+  "id": "nbv-b2-e-29",
+  "vai": "luyen",
+  "dang_bai": "NDB01173",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Căn bậc ba liên hợp, f(x) cho bởi giới hạn thương; bản đồ thiếu dạng hàm ẩn",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho $f(x)$ là đa thức thoả mãn $\\lim\\limits_{x\\to2}\\dfrac{f(x)-20}{x-2}=10$. Tính $T=\\lim\\limits_{x\\to2}\\dfrac{\\sqrt[3]{6f(x)+5}-5}{x^{2}+x-6}$.",
+  "dap_an": "0,16",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chứng tỏ $f(x)\\to20$, nhân liên hợp bậc ba để xuất hiện thương $\\dfrac{f(x)-20}{x-2}$ đã biết giới hạn.\n\n**Bước 1.** Từ giả thiết suy ra $f(x)\\to20$ khi $x\\to2$ nên $\\sqrt[3]{6f(x)+5}$ dần về một số tính được.\n\n**Bước 2.** Phân tích $x^{2}+x-6=(x-2)(x+3)$ và nhân liên hợp bậc ba với $A^{2}+5A+25$, trong đó $A=\\sqrt[3]{6f(x)+5}$.\n\n**Bước 3.** Tách thành tích của thương $\\dfrac{f(x)-20}{x-2}$ và phần còn lại có giới hạn xác định.\n\n**Bước 4.** Tính tích hai giới hạn để được $T$.\n\n**Phần 2. Trình bày**\n\nVì $f(x)-20=\\dfrac{f(x)-20}{x-2}\\cdot(x-2)\\to10\\cdot0=0$ nên $\\lim\\limits_{x\\to2}f(x)=20$.\n\nĐặt $A=\\sqrt[3]{6f(x)+5}$. Khi $x\\to2$: $A\\to5$. Ta có $A-5=\\dfrac{A^{3}-125}{A^{2}+5A+25}=\\dfrac{6(f(x)-20)}{A^{2}+5A+25}$.\n\nDo đó $\\dfrac{A-5}{x^{2}+x-6}=\\dfrac{f(x)-20}{x-2}\\cdot\\dfrac{6}{(x+3)(A^{2}+5A+25)}$.\n\nKhi $x\\to2$: $\\dfrac{f(x)-20}{x-2}\\to10$ và $(x+3)(A^{2}+5A+25)\\to5\\cdot75=375$.\n\nSuy ra $T=10\\cdot\\dfrac{6}{375}=\\dfrac{4}{25}$.\n\nVậy $T=0{,}16$.",
+  "kiem": [
+   "(() => { const f = (x) => 20 + 10 * (x - 2) + (x - 2) ** 2, g = (x) => (Math.cbrt(6 * f(x) + 5) - 5) / (x * x + x - 6); return Math.abs(g(2 + 1e-6) - 0.16) < 1e-4 && Math.abs(g(2 - 1e-6) - 0.16) < 1e-4 })()"
+  ],
+  "sach_dap_so": "0,16",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-30",
+  "vai": "luyen",
+  "dang_bai": "NDB01174",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tử phải có nghiệm x=2 để giới hạn 0/0 hữu hạn, rồi so với giá trị cho trước",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hai số thực $a,b$ thoả mãn $\\lim\\limits_{x\\to2}\\dfrac{ax^{2}+bx-2}{x-2}=5$. Tính giá trị biểu thức $S=a+2b$.",
+  "dap_an": "-4",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu dần về $0$ mà giới hạn hữu hạn nên tử phải triệt tiêu tại $x=2$; từ đó rút $b$ theo $a$ và phân tích nhân tử.\n\n**Bước 1.** Lập luận tử phải dần về $0$ khi $x\\to2$ để thu được một hệ thức giữa $a$ và $b$.\n\n**Bước 2.** Thay $b$ theo $a$ vào tử rồi phân tích tử thành tích có thừa số $x-2$.\n\n**Bước 3.** Rút gọn $x-2$, lấy giới hạn theo $a$ rồi cho bằng $5$ để tìm $a$, sau đó tìm $b$.\n\n**Bước 4.** Thay giá trị $a,b$ tìm được vào biểu thức $S$ để tính kết quả.\n\n**Phần 2. Trình bày**\n\nVì $\\lim\\limits_{x\\to2}(x-2)=0$ và giới hạn đã cho hữu hạn nên $\\lim\\limits_{x\\to2}(ax^{2}+bx-2)=0$, tức $4a+2b-2=0$ hay $b=1-2a$.\n\nKhi đó $ax^{2}+bx-2=ax^{2}+(1-2a)x-2=ax(x-2)+(x-2)=(x-2)(ax+1)$.\n\nVới $x\\ne2$: $\\dfrac{ax^{2}+bx-2}{x-2}=ax+1$, nên giới hạn bằng $2a+1$.\n\nCho $2a+1=5$ ta được $a=2$, suy ra $b=-3$.\n\nVậy $S=2+2\\cdot(-3)=-4$.",
+  "kiem": [
+   "(() => { const a = 2, b = -3, f = (x) => (a * x * x + b * x - 2) / (x - 2); return Math.abs(f(2 + 1e-7) - 5) < 1e-4 && 4 * a + 2 * b - 2 === 0 && a + 2 * b === -4 })()"
+  ],
+  "sach_dap_so": "-4",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-31",
+  "vai": "luyen",
+  "dang_bai": "NDB01174",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Tìm a để tử triệt tiêu tại x=2 (0/0 có căn) rồi tính giới hạn",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Biết giới hạn $\\lim\\limits_{x\\to2}\\dfrac{\\sqrt{3x+3}+a}{x-2}=\\dfrac bc$, trong đó $a$ là số thực, $b,c$ là các số nguyên dương và $\\dfrac bc$ tối giản. Tính tổng $a+b+c$.",
+  "dap_an": "0",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu dần về $0$ mà giới hạn hữu hạn nên tử phải dần về $0$; tìm $a$ rồi nhân liên hợp để tính giới hạn.\n\n**Bước 1.** Lập luận tử $\\sqrt{3x+3}+a$ phải dần về $0$ khi $x\\to2$ để xác định $a$.\n\n**Bước 2.** Thay $a$ vào và nhân tử, mẫu với biểu thức liên hợp của tử.\n\n**Bước 3.** Rút gọn nhân tử $x-2$ rồi tính giới hạn thu được phân số tối giản $\\dfrac bc$.\n\n**Bước 4.** Đọc $b,c$ từ phân số tối giản rồi tính tổng $a+b+c$.\n\n**Phần 2. Trình bày**\n\nVì $\\lim\\limits_{x\\to2}(x-2)=0$ và giới hạn hữu hạn nên $\\lim\\limits_{x\\to2}(\\sqrt{3x+3}+a)=0$, tức $3+a=0$ hay $a=-3$.\n\nVới $a=-3$ và $x\\ne2$: $\\dfrac{\\sqrt{3x+3}-3}{x-2}=\\dfrac{(3x+3)-9}{(x-2)(\\sqrt{3x+3}+3)}=\\dfrac{3(x-2)}{(x-2)(\\sqrt{3x+3}+3)}=\\dfrac{3}{\\sqrt{3x+3}+3}$.\n\nKhi $x\\to2$ giới hạn bằng $\\dfrac{3}{3+3}=\\dfrac12$, nên $b=1$, $c=2$.\n\nVậy $a+b+c=-3+1+2=0$.",
+  "kiem": [
+   "(() => { const g = (x) => (Math.sqrt(3 * x + 3) - 3) / (x - 2); return Math.abs(g(2 + 1e-7) - 0.5) < 1e-4 && Math.abs(g(2 - 1e-7) - 0.5) < 1e-4 && -3 + 1 + 2 === 0 })()"
+  ],
+  "sach_dap_so": "0",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-32",
+  "vai": "luyen",
+  "dang_bai": "NDB01173",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Hai căn ở tử và mẫu, nhân liên hợp cả hai",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Biết giới hạn $L=\\lim\\limits_{x\\to0}\\dfrac{\\sqrt{x+1}-1}{3-\\sqrt{2x+9}}=\\dfrac ab$, với $\\dfrac ab$ tối giản, $a,b\\in\\mathbb{Z}$, $b>0$. Tính $a+b$.",
+  "dap_an": "-1",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử và mẫu mỗi bên có một căn nên nhân liên hợp cả hai bên để cùng triệt nhân tử $x$.\n\n**Bước 1.** Nhận ra khi $x\\to0$ tử và mẫu cùng dần về $0$ nên giới hạn có dạng $\\dfrac00$.\n\n**Bước 2.** Nhân liên hợp $\\sqrt{x+1}+1$ cho tử và $3+\\sqrt{2x+9}$ cho mẫu.\n\n**Bước 3.** Rút gọn nhân tử $x$ rồi thay $x=0$ để được phân số tối giản $\\dfrac ab$.\n\n**Bước 4.** Đọc $a,b$ với điều kiện $b>0$ và tính $a+b$.\n\n**Phần 2. Trình bày**\n\nVới $x\\ne0$: $\\sqrt{x+1}-1=\\dfrac{x}{\\sqrt{x+1}+1}$ và $3-\\sqrt{2x+9}=\\dfrac{9-(2x+9)}{3+\\sqrt{2x+9}}=\\dfrac{-2x}{3+\\sqrt{2x+9}}$.\n\nDo đó $\\dfrac{\\sqrt{x+1}-1}{3-\\sqrt{2x+9}}=\\dfrac{x(3+\\sqrt{2x+9})}{-2x(\\sqrt{x+1}+1)}=\\dfrac{3+\\sqrt{2x+9}}{-2(\\sqrt{x+1}+1)}$.\n\nKhi $x\\to0$ giới hạn bằng $\\dfrac{3+3}{-2\\cdot2}=-\\dfrac32$.\n\nSuy ra $a=-3$, $b=2$.\n\nVậy $a+b=-1$.",
+  "kiem": [
+   "(() => { const f = (x) => (Math.sqrt(x + 1) - 1) / (3 - Math.sqrt(2 * x + 9)); return Math.abs(f(1e-6) + 1.5) < 1e-3 && Math.abs(f(-1e-6) + 1.5) < 1e-3 })()"
+  ],
+  "sach_dap_so": "-1",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-33",
+  "vai": "luyen",
+  "dang_bai": "NDB01180",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Hiệu hai căn bậc hai khi x→+∞, nhân liên hợp",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Giới hạn của hàm số $\\lim\\limits_{x\\to+\\infty}(\\sqrt{x^{2}+x+2}-\\sqrt{x^{2}+2x})=\\dfrac ab$ với $a,b\\in\\mathbb{Z}$ và $\\dfrac ab$ là phân số tối giản. Khi đó giá trị của biểu thức $2a+b$ là bao nhiêu?",
+  "dap_an": "0",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân liên hợp để biến hiệu hai căn thành phân thức, rồi chia cả tử và mẫu cho $x$.\n\n**Bước 1.** Nhận ra dạng $\\infty-\\infty$ và nhân liên hợp với tổng hai căn.\n\n**Bước 2.** Rút gọn tử, rồi chia cả tử và mẫu cho $x$ với $x>0$.\n\n**Bước 3.** Dùng $\\lim\\dfrac1{x^{k}}=0$ để tính giới hạn thành phân số tối giản.\n\n**Bước 4.** Đọc $a,b$ từ phân số tối giản rồi tính giá trị $2a+b$.\n\n**Phần 2. Trình bày**\n\n$\\sqrt{x^{2}+x+2}-\\sqrt{x^{2}+2x}=\\dfrac{(x^{2}+x+2)-(x^{2}+2x)}{\\sqrt{x^{2}+x+2}+\\sqrt{x^{2}+2x}}=\\dfrac{2-x}{\\sqrt{x^{2}+x+2}+\\sqrt{x^{2}+2x}}$.\n\nVới $x>0$, chia tử và mẫu cho $x$: $\\dfrac{\\dfrac2x-1}{\\sqrt{1+\\dfrac1x+\\dfrac2{x^{2}}}+\\sqrt{1+\\dfrac2x}}$.\n\nKhi $x\\to+\\infty$ giới hạn bằng $\\dfrac{-1}{1+1}=-\\dfrac12$.\n\nSuy ra $a=-1$, $b=2$.\n\nVậy $2a+b=-2+2=0$.",
+  "kiem": [
+   "(() => { const g = (x) => Math.sqrt(x * x + x + 2) - Math.sqrt(x * x + 2 * x); return Math.abs(g(1e8) + 0.5) < 1e-3 })()"
+  ],
+  "sach_dap_so": "0",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-34",
+  "vai": "luyen",
+  "dang_bai": "NDB01173",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Căn bậc hai trừ căn bậc ba, tách rồi liên hợp từng phần",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Biết $\\lim\\limits_{x\\to1}\\dfrac{\\sqrt{x^{2}+x+2}-\\sqrt[3]{7x+1}}{\\sqrt2(x-1)}=\\dfrac{a\\sqrt2}{b}+c$ (với $a,b,c\\in\\mathbb{N}$ và $\\dfrac ab$ tối giản). Tính giá trị của $a+b+c$.",
+  "dap_an": "13",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả hai căn bằng $2$ tại $x=1$ nên tách tử thành hai hiệu, mỗi hiệu nhân liên hợp riêng để triệt nhân tử $x-1$.\n\n**Bước 1.** Kiểm tra tại $x=1$ cả hai căn cùng bằng $2$ nên tử và mẫu cùng dần về $0$.\n\n**Bước 2.** Viết tử thành hiệu của hai nhóm $(\\sqrt{x^{2}+x+2}-2)-(\\sqrt[3]{7x+1}-2)$ để xử lí riêng.\n\n**Bước 3.** Nhân liên hợp bậc hai cho hiệu thứ nhất và liên hợp bậc ba cho hiệu thứ hai, đưa cả hai về dạng có thừa số $x-1$.\n\n**Bước 4.** Rút gọn $x-1$, thay $x=1$ rồi đưa kết quả về dạng $\\dfrac{a\\sqrt2}{b}+c$.\n\n**Phần 2. Trình bày**\n\n$\\sqrt{x^{2}+x+2}-2=\\dfrac{x^{2}+x-2}{\\sqrt{x^{2}+x+2}+2}=\\dfrac{(x-1)(x+2)}{\\sqrt{x^{2}+x+2}+2}$.\n\n$\\sqrt[3]{7x+1}-2=\\dfrac{7x-7}{\\sqrt[3]{(7x+1)^{2}}+2\\sqrt[3]{7x+1}+4}=\\dfrac{7(x-1)}{\\sqrt[3]{(7x+1)^{2}}+2\\sqrt[3]{7x+1}+4}$.\n\nVới $x\\ne1$, biểu thức bằng $\\dfrac{1}{\\sqrt2}[\\dfrac{x+2}{\\sqrt{x^{2}+x+2}+2}-\\dfrac{7}{\\sqrt[3]{(7x+1)^{2}}+2\\sqrt[3]{7x+1}+4}]$.\n\nKhi $x\\to1$ giới hạn bằng $\\dfrac{1}{\\sqrt2}(\\dfrac34-\\dfrac7{12})=\\dfrac{1}{\\sqrt2}\\cdot\\dfrac16=\\dfrac{\\sqrt2}{12}$.\n\nDo đó $\\dfrac{a\\sqrt2}{b}+c=\\dfrac{\\sqrt2}{12}$ nên $a=1$, $b=12$, $c=0$.\n\nVậy $a+b+c=13$.",
+  "kiem": [
+   "(() => { const f = (x) => (Math.sqrt(x * x + x + 2) - Math.cbrt(7 * x + 1)) / (Math.sqrt(2) * (x - 1)); return Math.abs(f(1 + 1e-6) - Math.SQRT2 / 12) < 1e-4 && Math.abs(f(1 - 1e-6) - Math.SQRT2 / 12) < 1e-4 })()"
+  ],
+  "sach_dap_so": "13",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-35",
+  "vai": "luyen",
+  "dang_bai": "NDB01172",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Một căn thức ở tử, nhân liên hợp",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Biết $\\lim\\limits_{x\\to3}\\dfrac{\\sqrt{x^{2}+x}-2\\sqrt3}{x-3}=\\dfrac{a\\sqrt3}{b}$ ($a,b$ dương và $\\dfrac ab$ tối giản). Tính $T=a+b$.",
+  "dap_an": "19",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử có một căn bằng $2\\sqrt3$ tại $x=3$ nên nhân liên hợp để xuất hiện nhân tử $x-3$ ở tử.\n\n**Bước 1.** Kiểm tra tại $x=3$ thì $\\sqrt{x^{2}+x}=\\sqrt{12}=2\\sqrt3$ nên giới hạn có dạng $\\dfrac00$.\n\n**Bước 2.** Nhân tử và mẫu với liên hợp $\\sqrt{x^{2}+x}+2\\sqrt3$ rồi phân tích $x^{2}+x-12$.\n\n**Bước 3.** Rút gọn $x-3$, thay $x=3$ để được giá trị dạng $\\dfrac{a\\sqrt3}{b}$.\n\n**Bước 4.** Đọc $a,b$ từ phân số tối giản rồi tính giá trị $T$.\n\n**Phần 2. Trình bày**\n\nVới $x\\ne3$: $\\dfrac{\\sqrt{x^{2}+x}-2\\sqrt3}{x-3}=\\dfrac{x^{2}+x-12}{(x-3)(\\sqrt{x^{2}+x}+2\\sqrt3)}$.\n\nVì $x^{2}+x-12=(x-3)(x+4)$ nên biểu thức bằng $\\dfrac{x+4}{\\sqrt{x^{2}+x}+2\\sqrt3}$.\n\nKhi $x\\to3$ giới hạn bằng $\\dfrac{7}{2\\sqrt3+2\\sqrt3}=\\dfrac{7}{4\\sqrt3}=\\dfrac{7\\sqrt3}{12}$.\n\nSuy ra $a=7$, $b=12$ (phân số $\\dfrac7{12}$ tối giản).\n\nVậy $T=7+12=19$.",
+  "kiem": [
+   "(() => { const f = (x) => (Math.sqrt(x * x + x) - 2 * Math.sqrt(3)) / (x - 3); return Math.abs(f(3 + 1e-6) - 7 * Math.sqrt(3) / 12) < 1e-4 && Math.abs(f(3 - 1e-6) - 7 * Math.sqrt(3) / 12) < 1e-4 })()"
+  ],
+  "sach_dap_so": "19",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-36",
+  "vai": "luyen",
+  "dang_bai": "NDB01179",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Thương hai biểu thức chứa căn khi x→-∞, chú ý dấu",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính giới hạn sau: $\\lim\\limits_{x\\to-\\infty}\\dfrac{\\sqrt{x^{2}+2x+3}+4x+1}{\\sqrt{4x^{2}+1}-x+2}$.",
+  "dap_an": "-1",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia cả tử và mẫu cho $x$ với $x<0$, mỗi căn bậc hai khi đưa $x$ vào mang dấu âm.\n\n**Bước 1.** Đưa $x^{2}$ ra ngoài từng căn, nhớ khi $x<0$ thì $\\sqrt{x^{2}}=-x$.\n\n**Bước 2.** Chia cả tử và mẫu cho $x$ để mọi số hạng trở thành hằng số hoặc dạng $\\dfrac{c}{x^{k}}$.\n\n**Bước 3.** Dùng $\\lim\\dfrac1{x^{k}}=0$ rồi lấy thương hai giới hạn.\n\n**Phần 2. Trình bày**\n\nVới $x<0$: $\\sqrt{x^{2}+2x+3}=-x\\sqrt{1+\\dfrac2x+\\dfrac3{x^{2}}}$ và $\\sqrt{4x^{2}+1}=-x\\sqrt{4+\\dfrac1{x^{2}}}$.\n\nChia tử và mẫu cho $x$: $\\dfrac{-\\sqrt{1+\\dfrac2x+\\dfrac3{x^{2}}}+4+\\dfrac1x}{-\\sqrt{4+\\dfrac1{x^{2}}}-1+\\dfrac2x}$.\n\nKhi $x\\to-\\infty$ tử có giới hạn $-1+4=3$, mẫu có giới hạn $-2-1=-3$.\n\nVậy giới hạn bằng $\\dfrac{3}{-3}=-1$.",
+  "kiem": [
+   "(() => { const f = (x) => (Math.sqrt(x * x + 2 * x + 3) + 4 * x + 1) / (Math.sqrt(4 * x * x + 1) - x + 2); return Math.abs(f(-1e8) + 1) < 1e-3 })()"
+  ],
+  "sach_dap_so": "-1",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-37",
+  "vai": "luyen",
+  "dang_bai": "NDB01173",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Hiệu căn bậc hai và căn bậc ba, tách rồi liên hợp",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Giới hạn $\\lim\\limits_{x\\to1}\\dfrac{\\sqrt{2x-1}-\\sqrt[3]{3x-2}}{x-1}$ bằng bao nhiêu?",
+  "dap_an": "0",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cả hai căn bằng $1$ tại $x=1$ nên tách thành hai hiệu với $1$, mỗi hiệu nhân liên hợp riêng.\n\n**Bước 1.** Kiểm tra tại $x=1$ cả hai căn bằng $1$ nên giới hạn có dạng $\\dfrac00$.\n\n**Bước 2.** Tách tử thành hai nhóm $(\\sqrt{2x-1}-1)+(1-\\sqrt[3]{3x-2})$ để xử lí riêng.\n\n**Bước 3.** Nhân liên hợp bậc hai cho nhóm đầu, bậc ba cho nhóm sau để rút gọn $x-1$.\n\n**Bước 4.** Thay $x=1$ vào hai phân thức còn lại rồi trừ.\n\n**Phần 2. Trình bày**\n\nVới $x\\ne1$: $\\sqrt{2x-1}-1=\\dfrac{2x-2}{\\sqrt{2x-1}+1}=\\dfrac{2(x-1)}{\\sqrt{2x-1}+1}$.\n\n$1-\\sqrt[3]{3x-2}=\\dfrac{1-(3x-2)}{1+\\sqrt[3]{3x-2}+\\sqrt[3]{(3x-2)^{2}}}=\\dfrac{-3(x-1)}{1+\\sqrt[3]{3x-2}+\\sqrt[3]{(3x-2)^{2}}}$.\n\nDo đó biểu thức bằng $\\dfrac{2}{\\sqrt{2x-1}+1}-\\dfrac{3}{1+\\sqrt[3]{3x-2}+\\sqrt[3]{(3x-2)^{2}}}$.\n\nKhi $x\\to1$ giới hạn bằng $\\dfrac22-\\dfrac33=1-1=0$.\n\nVậy giới hạn bằng $0$.",
+  "kiem": [
+   "(() => { const f = (x) => (Math.sqrt(2 * x - 1) - Math.cbrt(3 * x - 2)) / (x - 1); return Math.abs(f(1 + 1e-5)) < 1e-3 && Math.abs(f(1 - 1e-5)) < 1e-3 })()"
+  ],
+  "sach_dap_so": "0",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-39",
+  "vai": "luyen",
+  "dang_bai": "NDB01185",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Tốc độ gia tăng (thực tế) nhưng tính bằng 0/0 phân tích nhân tử",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Sau khi phát hiện một bệnh dịch, các chuyên gia y tế ước tính số người nhiễm bệnh kể từ ngày xuất hiện bệnh nhân đầu tiên biến đổi theo hàm số thời gian (tính theo ngày) là $g(t)=45t^{2}-t^{3}$ (người). Tốc độ trung bình gia tăng người bệnh giữa hai thời điểm $t_{1}$, $t_{2}$ là $V_{tb}=\\dfrac{g(t_{2})-g(t_{1})}{t_{2}-t_{1}}$. Tính $\\lim\\limits_{t\\to10}\\dfrac{g(t)-g(10)}{t-10}$.",
+  "dap_an": "600",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phân tích hiệu $g(t)-g(10)$ thành tích có thừa số $t-10$ bằng hằng đẳng thức hiệu hai bình phương và hiệu hai lập phương.\n\n**Bước 1.** Tính $g(10)$ và lập hiệu $g(t)-g(10)$, nhận ra tử và mẫu cùng dần về $0$.\n\n**Bước 2.** Nhóm $45(t^{2}-100)$ và $-(t^{3}-1000)$ rồi phân tích từng nhóm có thừa số $t-10$.\n\n**Bước 3.** Rút gọn $t-10$ rồi thay $t=10$ vào đa thức còn lại.\n\n**Phần 2. Trình bày**\n\nTa có $g(10)=45\\cdot100-1000=3500$.\n\n$g(t)-g(10)=45(t^{2}-100)-(t^{3}-1000)=(t-10)[45(t+10)-(t^{2}+10t+100)]=(t-10)(-t^{2}+35t+350)$.\n\nVới $t\\ne10$: $\\dfrac{g(t)-g(10)}{t-10}=-t^{2}+35t+350$.\n\nDo đó giới hạn bằng $-100+350+350=600$.\n\nVậy giới hạn bằng $600$ (người mỗi ngày).",
+  "kiem": [
+   "(() => { const g = (t) => 45 * t * t - t ** 3; return g(10) === 3500 && Math.abs((g(10 + 1e-6) - g(10)) / 1e-6 - 600) < 1e-3 })()"
+  ],
+  "sach_dap_so": "600",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-40",
+  "vai": "luyen",
+  "dang_bai": "NDB01174",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tử phải có nghiệm x=1 để giới hạn 0/0 hữu hạn, rồi so với giá trị cho trước",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho $a,b$ thoả mãn $\\lim\\limits_{x\\to1}\\dfrac{ax^{2}+bx-2}{x-1}=3$. Tính giá trị biểu thức $P=a+2b$.",
+  "dap_an": "3",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu dần về $0$ mà giới hạn hữu hạn nên tử phải triệt tiêu tại $x=1$; từ đó rút $b$ theo $a$ và phân tích nhân tử.\n\n**Bước 1.** Lập luận tử phải dần về $0$ khi $x\\to1$ để thu được một hệ thức giữa $a$ và $b$.\n\n**Bước 2.** Thay $b$ theo $a$ vào tử rồi phân tích tử thành tích có thừa số $x-1$.\n\n**Bước 3.** Rút gọn $x-1$, lấy giới hạn theo $a$ rồi cho bằng $3$ để tìm $a$, sau đó tìm $b$.\n\n**Bước 4.** Thay giá trị $a,b$ tìm được vào biểu thức $P$ để tính kết quả.\n\n**Phần 2. Trình bày**\n\nVì $\\lim\\limits_{x\\to1}(x-1)=0$ và giới hạn đã cho hữu hạn nên $\\lim\\limits_{x\\to1}(ax^{2}+bx-2)=0$, tức $a+b-2=0$ hay $b=2-a$.\n\nKhi đó $ax^{2}+bx-2=ax^{2}+(2-a)x-2=(x-1)(ax+2)$.\n\nVới $x\\ne1$: $\\dfrac{ax^{2}+bx-2}{x-1}=ax+2$, nên giới hạn bằng $a+2$.\n\nCho $a+2=3$ ta được $a=1$, suy ra $b=1$.\n\nVậy $P=1+2\\cdot1=3$.",
+  "kiem": [
+   "(() => { const a = 1, b = 1, f = (x) => (a * x * x + b * x - 2) / (x - 1); return Math.abs(f(1 + 1e-7) - 3) < 1e-4 && a + 2 * b === 3 })()"
+  ],
+  "sach_dap_so": "3",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-42",
+  "vai": "luyen",
+  "dang_bai": "NDB01179",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Căn chứa x khi x→-∞ có tham số a; Bản đồ thiếu dạng tham số ở vô cực",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Biết $\\lim\\limits_{x\\to-\\infty}\\dfrac{ax-1}{\\sqrt{x^{2}+1}-1}=2$. Khi đó $a$ bằng bao nhiêu?",
+  "dap_an": "-2",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia cả tử và mẫu cho $x$ với $x<0$, căn bậc hai mang dấu âm, rồi cho giới hạn bằng $2$.\n\n**Bước 1.** Đưa $x^{2}$ ra ngoài căn, nhớ khi $x<0$ thì $\\sqrt{x^{2}}=-x$.\n\n**Bước 2.** Chia cả tử và mẫu cho $x$ để mọi số hạng còn lại là hằng số hoặc dạng $\\dfrac{c}{x^{k}}$.\n\n**Bước 3.** Tính giới hạn theo $a$ rồi cho bằng $2$ để giải $a$.\n\n**Phần 2. Trình bày**\n\nVới $x<0$: $\\sqrt{x^{2}+1}=-x\\sqrt{1+\\dfrac1{x^{2}}}$.\n\nChia tử và mẫu cho $x$: $\\dfrac{ax-1}{\\sqrt{x^{2}+1}-1}=\\dfrac{a-\\dfrac1x}{-\\sqrt{1+\\dfrac1{x^{2}}}-\\dfrac1x}$.\n\nKhi $x\\to-\\infty$ giới hạn bằng $\\dfrac{a}{-1}=-a$.\n\nCho $-a=2$, suy ra $a=-2$.\n\nVậy $a=-2$.",
+  "kiem": [
+   "(() => { const a = -2, f = (x) => (a * x - 1) / (Math.sqrt(x * x + 1) - 1); return Math.abs(f(-1e8) - 2) < 1e-3 })()"
+  ],
+  "sach_dap_so": "-2",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-43",
+  "vai": "luyen",
+  "dang_bai": "NDB01180",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Hiệu căn cộng đa thức khi x→-∞, nhân liên hợp",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho $\\lim\\limits_{x\\to-\\infty}(\\sqrt{2x^{2}+5x}+\\sqrt2\\,x)=\\dfrac{a\\sqrt b}{c}$ với $\\dfrac ac$ là phân số tối giản và $b,c\\in\\{2;3;4;5\\}$. Hãy tính $a^{3}+b+c$.",
+  "dap_an": "-119",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân liên hợp, chia cho $x$ với $x<0$ để tìm giá trị giới hạn rồi đối chiếu với dạng $\\dfrac{a\\sqrt b}{c}$.\n\n**Bước 1.** Nhân và chia với biểu thức liên hợp $\\sqrt{2x^{2}+5x}-\\sqrt2\\,x$ để triệt hai căn.\n\n**Bước 2.** Chia cả tử và mẫu cho $x$, nhớ khi $x<0$ thì $\\sqrt{x^{2}}=-x$.\n\n**Bước 3.** Tính giới hạn và đưa về dạng $\\dfrac{a\\sqrt b}{c}$.\n\n**Bước 4.** Chọn $a,b,c$ thoả điều kiện đề rồi tính $a^{3}+b+c$.\n\n**Phần 2. Trình bày**\n\n$\\sqrt{2x^{2}+5x}+\\sqrt2\\,x=\\dfrac{(2x^{2}+5x)-2x^{2}}{\\sqrt{2x^{2}+5x}-\\sqrt2\\,x}=\\dfrac{5x}{\\sqrt{2x^{2}+5x}-\\sqrt2\\,x}$.\n\nVới $x<0$: $\\sqrt{2x^{2}+5x}=-x\\sqrt{2+\\dfrac5x}$, chia tử và mẫu cho $x$ được $\\dfrac{5}{-\\sqrt{2+\\dfrac5x}-\\sqrt2}$.\n\nKhi $x\\to-\\infty$ giới hạn bằng $\\dfrac{5}{-2\\sqrt2}=-\\dfrac{5\\sqrt2}{4}$.\n\nSuy ra $a=-5$, $b=2$, $c=4$ (thoả $\\dfrac ac=-\\dfrac54$ tối giản và $b,c\\in\\{2;3;4;5\\}$).\n\nVậy $a^{3}+b+c=-125+2+4=-119$.",
+  "kiem": [
+   "(() => { const g = (x) => Math.sqrt(2 * x * x + 5 * x) + Math.sqrt(2) * x; return Math.abs(g(-1e7) + 5 * Math.SQRT2 / 4) < 1e-3 && (-5) ** 3 + 2 + 4 === -119 })()"
+  ],
+  "sach_dap_so": "-119",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-44",
+  "vai": "luyen",
+  "dang_bai": "NDB01173",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Căn bậc ba và căn bậc hai, tham số a,b, dạng 0/0; bản đồ thiếu dạng tham số",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho $\\lim\\limits_{x\\to0}\\dfrac{(x^{2}+2024)\\sqrt[3]{1+ax}-2024\\sqrt{1+bx}}{x}=4048$. Tính giá trị $-2a+3b$.",
+  "dap_an": "-12",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cộng bớt $2024$ để tách tử thành các hiệu căn với $1$, nhân liên hợp từng hiệu rồi tính giới hạn theo $a,b$.\n\n**Bước 1.** Kiểm tra tại $x=0$ tử dần về $0$, tách $(x^{2}+2024)\\sqrt[3]{1+ax}-2024\\sqrt{1+bx}$ thành ba nhóm theo $2024$.\n\n**Bước 2.** Nhân liên hợp bậc ba cho $\\sqrt[3]{1+ax}-1$ và liên hợp bậc hai cho $1-\\sqrt{1+bx}$ để rút gọn $x$.\n\n**Bước 3.** Lấy giới hạn từng phần theo $a$ và $b$.\n\n**Bước 4.** Cho tổng bằng $4048$ để thu được hệ thức giữa $a,b$ rồi suy ra $-2a+3b$.\n\n**Phần 2. Trình bày**\n\nVới $x\\ne0$: $\\dfrac{(x^{2}+2024)\\sqrt[3]{1+ax}-2024\\sqrt{1+bx}}{x}=x\\sqrt[3]{1+ax}+2024\\cdot\\dfrac{\\sqrt[3]{1+ax}-1}{x}-2024\\cdot\\dfrac{\\sqrt{1+bx}-1}{x}$.\n\n$\\dfrac{\\sqrt[3]{1+ax}-1}{x}=\\dfrac{a}{\\sqrt[3]{(1+ax)^{2}}+\\sqrt[3]{1+ax}+1}\\to\\dfrac a3$ và $\\dfrac{\\sqrt{1+bx}-1}{x}=\\dfrac{b}{\\sqrt{1+bx}+1}\\to\\dfrac b2$.\n\nCòn $x\\sqrt[3]{1+ax}\\to0$. Do đó giới hạn đã cho bằng $\\dfrac{2024a}{3}-1012b=\\dfrac{1012}{3}(2a-3b)$.\n\nCho $\\dfrac{1012}{3}(2a-3b)=4048$, suy ra $2a-3b=12$.\n\nVậy $-2a+3b=-12$.",
+  "kiem": [
+   "(() => { const h = (a, b) => (x) => ((x * x + 2024) * Math.cbrt(1 + a * x) - 2024 * Math.sqrt(1 + b * x)) / x; return Math.abs(h(6, 0)(1e-6) - 4048) < 0.1 && Math.abs(h(0, -4)(1e-6) - 4048) < 0.1 && -2 * 6 + 3 * 0 === -12 && -2 * 0 + 3 * (-4) === -12 })()"
+  ],
+  "sach_dap_so": "-12",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-45",
+  "vai": "luyen",
+  "dang_bai": "NDB01180",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Phân thức cộng mx+n khi x→+∞ tìm m,n; Bản đồ thiếu dạng tham số ở vô cực",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho $\\lim\\limits_{x\\to+\\infty}(\\dfrac{7x^{2}+4x+1}{2x-3}+mx+n)=4$. Tính giá trị của biểu thức $2m+4n$.",
+  "dap_an": "-20",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia đa thức để tách phân thức thành phần nguyên cộng phần dư, cho hệ số của $x$ bằng $0$ rồi cho phần hằng số bằng giá trị đề cho.\n\n**Bước 1.** Chia $7x^{2}+4x+1$ cho $2x-3$ để viết phân thức thành đa thức bậc nhất cộng một phân thức có tử hằng.\n\n**Bước 2.** Gộp với $mx+n$ thành dạng hệ số của $x$, cộng hằng số, cộng phần dư.\n\n**Bước 3.** Phần dư dần về $0$ nên cho hệ số của $x$ bằng $0$ và phần hằng số bằng $4$ để tìm $m,n$.\n\n**Bước 4.** Thay giá trị $m,n$ tìm được vào biểu thức $2m+4n$ để tính kết quả.\n\n**Phần 2. Trình bày**\n\nTa có $7x^{2}+4x+1=(2x-3)(\\dfrac72x+\\dfrac{29}{4})+\\dfrac{91}{4}$ nên $\\dfrac{7x^{2}+4x+1}{2x-3}=\\dfrac72x+\\dfrac{29}{4}+\\dfrac{91}{4(2x-3)}$.\n\nDo đó biểu thức bằng $(\\dfrac72+m)x+n+\\dfrac{29}{4}+\\dfrac{91}{4(2x-3)}$.\n\nVì $\\dfrac{91}{4(2x-3)}\\to0$ nên giới hạn bằng $4$ khi và chỉ khi $\\dfrac72+m=0$ và $n+\\dfrac{29}{4}=4$.\n\nSuy ra $m=-\\dfrac72$, $n=-\\dfrac{13}{4}$.\n\nVậy $2m+4n=-7-13=-20$.",
+  "kiem": [
+   "(() => { const m = -3.5, n = -3.25, f = (x) => (7 * x * x + 4 * x + 1) / (2 * x - 3) + m * x + n; return Math.abs(f(1e8) - 4) < 1e-3 && 2 * m + 4 * n === -20 })()"
+  ],
+  "sach_dap_so": "-20",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-46",
+  "vai": "luyen",
+  "dang_bai": "NDB01186",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Điểm M dịch chuyển về O trên parabol, lập hàm theo t rồi lấy giới hạn",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Trong mặt phẳng toạ độ $Oxy$, cho điểm $M(t;t^{2})$, $t>0$, nằm trên parabol $y=x^{2}$. Đường trung trực của đoạn $OM$ cắt trục tung tại điểm $N$. Điểm $N$ sẽ dần đến điểm có tung độ bằng bao nhiêu khi điểm $M$ dần đến điểm $O$?",
+  "dap_an": "0,5",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Viết phương trình trung trực của $OM$, tìm giao điểm $N$ với trục tung theo $t$ rồi cho $t\\to0^{+}$.\n\n**Bước 1.** Tìm trung điểm $I$ của $OM$ và vectơ pháp tuyến của đường trung trực.\n\n**Bước 2.** Viết phương trình đường trung trực rồi cho $x=0$ để tìm tung độ của $N$ theo $t$.\n\n**Bước 3.** Nhận ra $M\\to O$ tương ứng với $t\\to0^{+}$ và lấy giới hạn tung độ của $N$.\n\n**Phần 2. Trình bày**\n\nTrung điểm của $OM$ là $I(\\dfrac t2;\\dfrac{t^{2}}{2})$ và $\\overrightarrow{OM}=(t;t^{2})$ là vectơ pháp tuyến của trung trực.\n\nPhương trình trung trực: $t(x-\\dfrac t2)+t^{2}(y-\\dfrac{t^{2}}{2})=0$.\n\nCho $x=0$: $-\\dfrac{t^{2}}{2}+t^{2}y-\\dfrac{t^{4}}{2}=0$, chia cho $t^{2}$ (với $t>0$) được $y_{N}=\\dfrac{1+t^{2}}{2}$.\n\nKhi $M\\to O$ thì $t\\to0^{+}$ nên $\\lim\\limits_{t\\to0^{+}}y_{N}=\\dfrac12$.\n\nVậy $N$ dần đến điểm có tung độ $0{,}5$.",
+  "kiem": [
+   "(() => { const t = 1e-6, y = (1 + t * t) / 2, N = [0, y], M = [t, t * t], d1 = Math.hypot(N[0], N[1]), d2 = Math.hypot(N[0] - M[0], N[1] - M[1]); return Math.abs(d1 - d2) < 1e-9 && Math.abs(y - 0.5) < 1e-6 })()"
+  ],
+  "sach_dap_so": "0,5",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-47",
+  "vai": "luyen",
+  "dang_bai": "NDB01185",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Nồng độ muối trong hồ khi bơm nước biển, thời gian rất dài",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Trong hồ có chứa $10\\,\\text{m}^{3}$ nước ngọt. Người ta bơm nước biển có nồng độ muối $33$ gam/lít vào hồ với tốc độ $15$ lít/phút. Sau một thời gian rất dài bơm nước biển vào hồ thì nồng độ muối trong hồ có thể bằng bao nhiêu gam/lít?",
+  "dap_an": "33",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đổi thể tích về lít, lập nồng độ theo thời gian rồi cho thời gian tăng vô hạn.\n\n**Bước 1.** Đổi $10\\,\\text{m}^{3}$ sang lít để cùng đơn vị với tốc độ bơm.\n\n**Bước 2.** Tính lượng nước biển và khối lượng muối được bơm vào sau $t$ phút.\n\n**Bước 3.** Lập nồng độ $C(t)$ bằng khối lượng muối chia thể tích nước trong hồ.\n\n**Bước 4.** Chia tử và mẫu cho $t$ rồi lấy giới hạn khi $t\\to+\\infty$.\n\n**Phần 2. Trình bày**\n\nTa có $10\\,\\text{m}^{3}=10\\,000$ lít.\n\nSau $t$ phút bơm vào $15t$ lít nước biển, chứa $33\\cdot15t=495t$ gam muối.\n\nNồng độ muối là $C(t)=\\dfrac{495t}{10\\,000+15t}=\\dfrac{495}{\\dfrac{10\\,000}{t}+15}$.\n\nKhi $t\\to+\\infty$ thì $\\dfrac{10\\,000}{t}\\to0$ nên $\\lim\\limits_{t\\to+\\infty}C(t)=\\dfrac{495}{15}=33$.\n\nVậy nồng độ muối có thể đạt tới $33$ gam/lít.",
+  "kiem": [
+   "(() => { const C = (t) => 495 * t / (10000 + 15 * t); return Math.abs(C(1e13) - 33) < 1e-6 })()"
+  ],
+  "sach_dap_so": "33",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-49",
+  "vai": "luyen",
+  "dang_bai": "NDB01186",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Điểm P chạy trên đồ thị ra vô cực, lập tỉ số độ dài rồi lấy giới hạn",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho $P(x;\\sqrt{2x})$ là điểm thay đổi trên đồ thị hàm số $y=\\sqrt{2x}$ ($x\\ge0$). $Q$ là hình chiếu của điểm $P$ trên trục hoành $Ox$. Tìm giới hạn $\\lim\\limits_{x\\to+\\infty}\\dfrac{OP}{OQ}$.",
+  "dap_an": "1",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tính $OP$ và $OQ$ theo $x$ bằng toạ độ rồi lập tỉ số và cho $x\\to+\\infty$.\n\n**Bước 1.** Xác định toạ độ của hình chiếu $Q$ của $P$ lên trục hoành.\n\n**Bước 2.** Tính các độ dài $OP$ và $OQ$ theo $x$ bằng công thức khoảng cách.\n\n**Bước 3.** Lập tỉ số $\\dfrac{OP}{OQ}$, chia cho $x$ với $x>0$ rồi lấy giới hạn.\n\n**Phần 2. Trình bày**\n\nTa có $Q(x;0)$ nên $OQ=x$ và $OP=\\sqrt{x^{2}+(\\sqrt{2x})^{2}}=\\sqrt{x^{2}+2x}$.\n\nVới $x>0$: $\\dfrac{OP}{OQ}=\\dfrac{\\sqrt{x^{2}+2x}}{x}=\\sqrt{1+\\dfrac2x}$.\n\nKhi $x\\to+\\infty$ thì $\\dfrac2x\\to0$ nên giới hạn bằng $\\sqrt{1+0}=1$.\n\nVậy $\\lim\\limits_{x\\to+\\infty}\\dfrac{OP}{OQ}=1$.",
+  "kiem": [
+   "(() => { const r = (x) => Math.hypot(x, Math.sqrt(2 * x)) / x; return Math.abs(r(1e12) - 1) < 1e-5 })()"
+  ],
+  "sach_dap_so": "1",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-50",
+  "vai": "luyen",
+  "dang_bai": "NDB01186",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Điểm P dịch chuyển về O trên parabol, lập tỉ số độ dài rồi lấy giới hạn",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho đường cong $y=x^{2}$. Trên đường cong lấy điểm $P(t;t^{2})$ với $t>0$, và lấy $O$ là gốc toạ độ. Gọi $M$ là trung điểm của đoạn $OP$. Đường thẳng qua $M$ song song với trục $Ox$ cắt đường cong $y=x^{2}$ tại hai điểm $A,B$. Tính $\\lim\\limits_{t\\to0^{+}}\\dfrac{AB}{OP}$ (làm tròn kết quả đến hàng phần trăm).",
+  "dap_an": "1,41",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tìm tung độ của $M$, giải hoành độ hai giao điểm $A,B$ rồi lập tỉ số $\\dfrac{AB}{OP}$ theo $t$.\n\n**Bước 1.** Tính toạ độ trung điểm $M$ của $OP$, từ đó có phương trình đường thẳng qua $M$ song song với $Ox$.\n\n**Bước 2.** Giải phương trình hoành độ giao điểm với parabol để tìm hoành độ của $A$ và $B$, suy ra $AB$.\n\n**Bước 3.** Tính $OP$ theo $t$, lập tỉ số rồi rút gọn $t$ trước khi lấy giới hạn $t\\to0^{+}$.\n\n**Phần 2. Trình bày**\n\nTa có $M(\\dfrac t2;\\dfrac{t^{2}}{2})$ nên đường thẳng cần tìm là $y=\\dfrac{t^{2}}{2}$.\n\nPhương trình hoành độ giao điểm: $x^{2}=\\dfrac{t^{2}}{2}$, suy ra $x=\\pm\\dfrac{t}{\\sqrt2}$. Do đó $AB=\\dfrac{2t}{\\sqrt2}=t\\sqrt2$.\n\n$OP=\\sqrt{t^{2}+t^{4}}=t\\sqrt{1+t^{2}}$ (vì $t>0$).\n\nVới $t>0$: $\\dfrac{AB}{OP}=\\dfrac{t\\sqrt2}{t\\sqrt{1+t^{2}}}=\\dfrac{\\sqrt2}{\\sqrt{1+t^{2}}}\\to\\sqrt2$ khi $t\\to0^{+}$.\n\nVậy giới hạn bằng $\\sqrt2\\approx1{,}41$.",
+  "kiem": [
+   "(() => { const t = 1e-6, AB = 2 * Math.sqrt((t * t / 2)), OP = Math.hypot(t, t * t); return Math.abs(AB / OP - Math.SQRT2) < 1e-6 && Math.round(Math.SQRT2 * 100) / 100 === 1.41 })()"
+  ],
+  "sach_dap_so": "1,41",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-51",
+  "vai": "luyen",
+  "dang_bai": "NDB01186",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Điểm P dịch chuyển về A, lập tỉ số độ dài theo a rồi lấy giới hạn một bên",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho đường cong $y=-x^{2}+6$ và đường thẳng $y=x$. Gọi $A$ là giao điểm của hai đồ thị trong góc phần tư thứ nhất, và từ $A$ hạ vuông góc xuống trục $Ox$ được điểm $B$. Trên đường thẳng $y=x$ lấy điểm $P(a;a)$ với $0<a<2$. Từ $P$ hạ đường vuông góc đến đoạn $AB$ được điểm $Q$. Đường thẳng qua $P$ song song với trục $Oy$ cắt đường cong $y=-x^{2}+6$ tại điểm $R$. Tìm giá trị của giới hạn $\\lim\\limits_{a\\to2^{-}}\\dfrac{PQ}{PR}$.",
+  "dap_an": "0,2",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tìm toạ độ $A$ rồi suy ra $Q$, $R$ theo $a$, tính $PQ$ và $PR$, phân tích nhân tử để rút gọn $2-a$.\n\n**Bước 1.** Giải phương trình hoành độ giao điểm để tìm $A$ trong góc phần tư thứ nhất, suy ra đường thẳng $AB$.\n\n**Bước 2.** Tìm toạ độ $Q$ (chân đường vuông góc từ $P$ đến $AB$) và $R$ (cùng hoành độ với $P$ trên đường cong).\n\n**Bước 3.** Tính $PQ$ và $PR$ theo $a$, phân tích $PR$ thành tích có thừa số $2-a$.\n\n**Bước 4.** Rút gọn $2-a$ (khác $0$ khi $a<2$) rồi lấy giới hạn khi $a\\to2^{-}$.\n\n**Phần 2. Trình bày**\n\nPhương trình hoành độ: $-x^{2}+6=x\\Leftrightarrow x^{2}+x-6=0$, nên $x=2$ hoặc $x=-3$. Giao điểm trong góc phần tư thứ nhất là $A(2;2)$, và $B(2;0)$.\n\nĐường thẳng $AB$ là $x=2$ nên $Q(2;a)$; còn $R(a;-a^{2}+6)$.\n\nDo đó $PQ=2-a$ và $PR=(-a^{2}+6)-a=-a^{2}-a+6=(2-a)(a+3)$ (vì $0<a<2$ nên cả hai dương).\n\nVới $a<2$: $\\dfrac{PQ}{PR}=\\dfrac{2-a}{(2-a)(a+3)}=\\dfrac{1}{a+3}$.\n\nVậy $\\lim\\limits_{a\\to2^{-}}\\dfrac{PQ}{PR}=\\dfrac15=0{,}2$.",
+  "kiem": [
+   "(() => { const a = 2 - 1e-7, PQ = 2 - a, PR = (-a * a + 6) - a; return Math.abs(PQ / PR - 0.2) < 1e-5 })()"
+  ],
+  "sach_dap_so": "0,2",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-52",
+  "vai": "luyen",
+  "dang_bai": "NDB01186",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Điểm A_n chạy xa trên parabol, lập tỉ số độ dài theo n rồi lấy giới hạn",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho các số tự nhiên $n$. Trên đồ thị hàm số $y=x^{2}$ lấy điểm $A_{n}(n;n^{2})$. Vẽ đường thẳng qua $A_{n}$ có hệ số góc $-\\sqrt3$, nó cắt trục $Ox$ tại điểm $B_{n}$. Tìm giá trị của giới hạn $\\lim\\limits_{n\\to\\infty}\\dfrac{OB_{n}}{OA_{n}}$, với $O$ là gốc toạ độ (làm tròn kết quả đến hàng phần trăm).",
+  "dap_an": "0,58",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Viết phương trình đường thẳng qua $A_{n}$, tìm $B_{n}$ trên $Ox$, tính hai độ dài theo $n$ rồi chia cho $n^{2}$.\n\n**Bước 1.** Viết phương trình đường thẳng qua $A_{n}$ với hệ số góc đã cho.\n\n**Bước 2.** Cho $y=0$ để tìm hoành độ của $B_{n}$, suy ra $OB_{n}$.\n\n**Bước 3.** Tính $OA_{n}$ bằng công thức khoảng cách rồi lập tỉ số.\n\n**Bước 4.** Chia tử và mẫu cho $n^{2}$ rồi cho $n\\to+\\infty$ và làm tròn.\n\n**Phần 2. Trình bày**\n\nĐường thẳng qua $A_{n}$ có hệ số góc $-\\sqrt3$ là $y=-\\sqrt3(x-n)+n^{2}$.\n\nCho $y=0$: $\\sqrt3(x-n)=n^{2}$, suy ra $x=n+\\dfrac{n^{2}}{\\sqrt3}$. Vậy $B_{n}(n+\\dfrac{n^{2}}{\\sqrt3};0)$ và $OB_{n}=n+\\dfrac{n^{2}}{\\sqrt3}$.\n\n$OA_{n}=\\sqrt{n^{2}+n^{4}}=n\\sqrt{1+n^{2}}$.\n\n$\\dfrac{OB_{n}}{OA_{n}}=\\dfrac{n+\\dfrac{n^{2}}{\\sqrt3}}{n\\sqrt{1+n^{2}}}=\\dfrac{1+\\dfrac{n}{\\sqrt3}}{\\sqrt{1+n^{2}}}=\\dfrac{\\dfrac1n+\\dfrac1{\\sqrt3}}{\\sqrt{\\dfrac1{n^{2}}+1}}\\to\\dfrac1{\\sqrt3}$.\n\nVậy giới hạn bằng $\\dfrac{1}{\\sqrt3}\\approx0{,}58$.",
+  "kiem": [
+   "(() => { const n = 1e7, x = n + n * n / Math.sqrt(3), r = x / Math.hypot(n, n * n); return Math.abs(r - 1 / Math.sqrt(3)) < 1e-5 && Math.round(100 / Math.sqrt(3)) / 100 === 0.58 })()"
+  ],
+  "sach_dap_so": "0,58",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-53",
+  "vai": "luyen",
+  "dang_bai": "NDB01186",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Bán kính r thay đổi, tìm hoành độ giao điểm theo r rồi lấy giới hạn",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Trên mặt phẳng toạ độ cho hai đường tròn $C_{1}:x^{2}+y^{2}=1$ và $C_{2}:(x-1)^{2}+y^{2}=r^{2}$ ($0<r<\\sqrt2$). Hai đường tròn này cắt nhau tại các điểm có cùng hoành độ; gọi $f(r)$ là hoành độ đó. Cho $L=\\lim\\limits_{r\\to\\sqrt2^{-}}\\dfrac{f(r)}{4-r^{4}}$. Giá trị của $8L$ bằng bao nhiêu?",
+  "dap_an": "1",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trừ vế hai phương trình đường tròn để tìm hoành độ giao điểm theo $r$, rồi phân tích $4-r^{4}$ để rút gọn.\n\n**Bước 1.** Trừ phương trình của hai đường tròn để khử $y^{2}$ và tìm hoành độ giao điểm theo $r$.\n\n**Bước 2.** Lập thương $\\dfrac{f(r)}{4-r^{4}}$ và phân tích $4-r^{4}=(2-r^{2})(2+r^{2})$.\n\n**Bước 3.** Rút gọn $2-r^{2}$ (khác $0$ khi $r<\\sqrt2$) rồi lấy giới hạn và tính $8L$.\n\n**Phần 2. Trình bày**\n\nGiao điểm thoả cả hai phương trình nên $x^{2}+y^{2}-1-[(x-1)^{2}+y^{2}-r^{2}]=0$, tức $2x-1=1-r^{2}$.\n\nSuy ra $f(r)=x=\\dfrac{2-r^{2}}{2}$.\n\nVới $r<\\sqrt2$: $\\dfrac{f(r)}{4-r^{4}}=\\dfrac{2-r^{2}}{2(2-r^{2})(2+r^{2})}=\\dfrac{1}{2(2+r^{2})}$.\n\nKhi $r\\to\\sqrt2^{-}$ giới hạn bằng $\\dfrac{1}{2\\cdot4}=\\dfrac18$, nên $L=\\dfrac18$.\n\nVậy $8L=1$.",
+  "kiem": [
+   "(() => { const r = Math.SQRT2 - 1e-6, f = (2 - r * r) / 2, g = f / (4 - r ** 4); return Math.abs(8 * g - 1) < 1e-4 })()"
+  ],
+  "sach_dap_so": "1",
+  "ghi_chu": "Đề sách viết \"cắt nhau tại một điểm P\" nhưng hai đường tròn cắt nhau tại hai điểm đối xứng qua Ox có cùng hoành độ; đã sửa chữ cho chính xác, đáp số không đổi."
+ },
+ {
+  "id": "nbv-b2-e-54",
+  "vai": "luyen",
+  "dang_bai": "NDB01186",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Điểm P chạy xa trên đồ thị, tìm giao điểm của đường vuông góc với hai trục",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho đường cong $y=\\sqrt x$. Trên đường cong lấy điểm $P(t;\\sqrt t)$ ($t>0$). Vẽ đường thẳng $l$ đi qua $P$ và vuông góc với đoạn $OP$ (với $O$ là gốc toạ độ). Gọi $f(t)$ là hoành độ giao điểm của $l$ với trục $Ox$, $g(t)$ là tung độ giao điểm của $l$ với trục $Oy$. Tìm $\\lim\\limits_{t\\to+\\infty}\\dfrac{g(t)-f(t)}{g(t)+f(t)}$.",
+  "dap_an": "1",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Viết phương trình đường thẳng qua $P$ vuông góc $OP$, tìm hai giao điểm với trục theo $t$ rồi lập thương và chia cho $\\sqrt t+1$.\n\n**Bước 1.** Lấy $\\overrightarrow{OP}$ làm vectơ pháp tuyến để viết phương trình đường thẳng $l$.\n\n**Bước 2.** Cho $y=0$ để tìm $f(t)$ và cho $x=0$ để tìm $g(t)$.\n\n**Bước 3.** Lập thương $\\dfrac{g-f}{g+f}$, đặt nhân tử chung $t+1$ rồi rút gọn.\n\n**Bước 4.** Chia tử và mẫu cho $\\sqrt t$ rồi cho $t\\to+\\infty$.\n\n**Phần 2. Trình bày**\n\n$\\overrightarrow{OP}=(t;\\sqrt t)$ là vectơ pháp tuyến của $l$ nên $l$: $t(x-t)+\\sqrt t(y-\\sqrt t)=0$.\n\nCho $y=0$: $t(x-t)-t=0$, suy ra $f(t)=t+1$.\n\nCho $x=0$: $-t^{2}+\\sqrt t(y-\\sqrt t)=0$, suy ra $g(t)=\\sqrt t+t\\sqrt t=\\sqrt t(t+1)$.\n\n$\\dfrac{g(t)-f(t)}{g(t)+f(t)}=\\dfrac{(t+1)(\\sqrt t-1)}{(t+1)(\\sqrt t+1)}=\\dfrac{\\sqrt t-1}{\\sqrt t+1}=\\dfrac{1-\\dfrac1{\\sqrt t}}{1+\\dfrac1{\\sqrt t}}$.\n\nKhi $t\\to+\\infty$ thì $\\dfrac1{\\sqrt t}\\to0$ nên giới hạn bằng $1$.\n\nVậy giới hạn bằng $1$.",
+  "kiem": [
+   "(() => { const t = 1e10, p = [t, Math.sqrt(t)], f = p[0] + p[1] * p[1] / p[0], g = p[1] + p[0] * p[0] / p[1]; return Math.abs((g - f) / (g + f) - 1) < 1e-3 && Math.abs(f - (t + 1)) < 1e-3 })()"
+  ],
+  "sach_dap_so": "1",
+  "ghi_chu": "Đề sách ghi t→∞; hiểu là t→+∞ vì t>0."
+ },
+ {
+  "id": "nbv-b2-e-55",
+  "vai": "luyen",
+  "dang_bai": "NDB01186",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Đường thẳng y=t cắt đồ thị, tính khoảng cách hai giao điểm theo t rồi t→0+",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho số thực $t$ thoả mãn $0<t<3$. Xét đồ thị hàm số $y=|\\dfrac2x-3|$ và đường thẳng $y=t$. Gọi $f(t)$ là khoảng cách giữa hai giao điểm của đường thẳng $y=t$ với đồ thị hàm số. Tìm $\\lim\\limits_{t\\to0^{+}}\\dfrac{f(t)}{t}$ (làm tròn kết quả đến hàng phần trăm).",
+  "dap_an": "0,44",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giải hai phương trình bỏ dấu giá trị tuyệt đối để tìm hoành độ hai giao điểm theo $t$, rồi lập $\\dfrac{f(t)}{t}$.\n\n**Bước 1.** Xét phương trình hoành độ $|\\dfrac2x-3|=t$ và tách thành hai trường hợp theo dấu của biểu thức trong dấu giá trị tuyệt đối.\n\n**Bước 2.** Giải từng trường hợp để có hoành độ hai giao điểm theo $t$ và kiểm tra tính hợp lệ.\n\n**Bước 3.** Tính khoảng cách $f(t)$ giữa hai giao điểm, rồi chia cho $t$.\n\n**Bước 4.** Rút gọn $t$ rồi cho $t\\to0^{+}$ và làm tròn.\n\n**Phần 2. Trình bày**\n\nVới $0<t<3$ ta có $|\\dfrac2x-3|=t\\Leftrightarrow\\dfrac2x-3=t$ hoặc $\\dfrac2x-3=-t$.\n\nTừ $\\dfrac2x=3+t$ ta được $x_{G}=\\dfrac{2}{3+t}$; từ $\\dfrac2x=3-t$ ta được $x_{H}=\\dfrac{2}{3-t}$ (cả hai khác $0$ và hợp lệ).\n\nHai giao điểm cùng tung độ $t$ nên $f(t)=x_{H}-x_{G}=\\dfrac{2}{3-t}-\\dfrac{2}{3+t}=\\dfrac{4t}{(3-t)(3+t)}$.\n\nVới $t>0$: $\\dfrac{f(t)}{t}=\\dfrac{4}{(3-t)(3+t)}\\to\\dfrac49$ khi $t\\to0^{+}$.\n\nVậy giới hạn bằng $\\dfrac49\\approx0{,}44$.",
+  "kiem": [
+   "(() => { const t = 1e-6, f = 2 / (3 - t) - 2 / (3 + t); return Math.abs(f / t - 4 / 9) < 1e-5 && Math.round(400 / 9) / 100 === 0.44 })()"
+  ],
+  "sach_dap_so": "0,44",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-56",
+  "vai": "luyen",
+  "dang_bai": "NDB01186",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Điểm dịch chuyển trên đường tròn và đồ thị căn, diện tích tam giác theo t rồi t→0+",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho đường tròn $x^{2}+y^{2}=1$ và đồ thị hàm số $y=\\sqrt{x+1}$. Trong góc phần tư thứ nhất, đường thẳng $x=t$ ($0<t<1$) lần lượt cắt đường tròn tại điểm $P$ và đồ thị $y=\\sqrt{x+1}$ tại điểm $Q$. Gọi $S(t)$ là diện tích tam giác $OPQ$ (với $O$ là gốc toạ độ). Tìm $\\lim\\limits_{t\\to0^{+}}\\dfrac{S(t)}{t^{2}}$.",
+  "dap_an": "0,25",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tính toạ độ $P,Q$ cùng hoành độ $t$, lấy $PQ$ làm đáy với chiều cao $t$, rồi nhân liên hợp hiệu hai căn.\n\n**Bước 1.** Xác định toạ độ $P$ trên đường tròn và $Q$ trên đồ thị với hoành độ $t$.\n\n**Bước 2.** Lập diện tích $S(t)$ bằng $\\dfrac12\\cdot PQ\\cdot t$ vì $PQ$ song song với $Oy$.\n\n**Bước 3.** Lập $\\dfrac{S(t)}{t^{2}}$ rồi nhân liên hợp hiệu hai căn để xuất hiện nhân tử $t$.\n\n**Bước 4.** Rút gọn thừa số $t$ chung rồi cho $t\\to0^{+}$.\n\n**Phần 2. Trình bày**\n\nTa có $P(t;\\sqrt{1-t^{2}})$ và $Q(t;\\sqrt{t+1})$, hai điểm cùng hoành độ nên $PQ=\\sqrt{t+1}-\\sqrt{1-t^{2}}>0$ và khoảng cách từ $O$ đến $PQ$ là $t$.\n\nSuy ra $S(t)=\\dfrac12\\cdot t\\cdot(\\sqrt{t+1}-\\sqrt{1-t^{2}})$.\n\nDo đó $\\dfrac{S(t)}{t^{2}}=\\dfrac{\\sqrt{t+1}-\\sqrt{1-t^{2}}}{2t}$.\n\nNhân liên hợp: $\\sqrt{t+1}-\\sqrt{1-t^{2}}=\\dfrac{(t+1)-(1-t^{2})}{\\sqrt{t+1}+\\sqrt{1-t^{2}}}=\\dfrac{t(1+t)}{\\sqrt{t+1}+\\sqrt{1-t^{2}}}$, nên $\\dfrac{S(t)}{t^{2}}=\\dfrac{1+t}{2(\\sqrt{t+1}+\\sqrt{1-t^{2}})}$.\n\nKhi $t\\to0^{+}$ giới hạn bằng $\\dfrac{1}{2\\cdot2}=\\dfrac14$.\n\nVậy giới hạn bằng $0{,}25$.",
+  "kiem": [
+   "(() => { const t = 1e-6, P = Math.sqrt(1 - t * t), Q = Math.sqrt(t + 1), S = 0.5 * t * (Q - P); return Math.abs(S / (t * t) - 0.25) < 1e-3 })()"
+  ],
+  "sach_dap_so": "0,25",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-57",
+  "vai": "luyen",
+  "dang_bai": "NDB01186",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Hai tam giác có đỉnh dịch chuyển về A, lập tỉ số diện tích theo t rồi t→1+",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho hai đồ thị $y=\\dfrac1x$ và $y=\\sqrt x$ cắt nhau tại điểm $A(1;1)$. Cho $t>1$. Đường thẳng $y=t$ lần lượt cắt đồ thị $y=\\dfrac1x$ và $y=\\sqrt x$ tại các điểm $B$ và $C$. Từ $C$ kẻ đường thẳng song song với trục $Oy$, cắt đồ thị $y=\\dfrac1x$ tại điểm $D$. Gọi $f(t)$ là diện tích tam giác $ACB$, và $g(t)$ là diện tích tam giác $ADC$. Tính $\\lim\\limits_{t\\to1^{+}}\\dfrac{g(t)}{f(t)}$.",
+  "dap_an": "2",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tìm toạ độ $B,C,D$ theo $t$, tính hai diện tích bằng đáy nằm trên đường song song với trục rồi lập tỉ số và rút gọn.\n\n**Bước 1.** Xác định toạ độ $B$, $C$ trên đường $y=t$ và $D$ cùng hoành độ với $C$ trên đồ thị $y=\\dfrac1x$.\n\n**Bước 2.** Tính $f(t)$ với đáy $BC$ nằm ngang và chiều cao là khoảng cách từ $A$ đến đường $y=t$.\n\n**Bước 3.** Tính $g(t)$ với đáy $CD$ thẳng đứng và chiều cao là khoảng cách từ $A$ đến đường thẳng $CD$.\n\n**Bước 4.** Lập $\\dfrac{g(t)}{f(t)}$, phân tích nhân tử $t^{3}-1$ và $t^{2}-1$ rồi rút gọn trước khi cho $t\\to1^{+}$.\n\n**Phần 2. Trình bày**\n\nLưu ý: đề sách in \"song song với trục $Ox$\" nhưng khi đó $D$ trùng $B$; theo lời giải của sách phải hiểu là song song với trục $Oy$ (đề in sai).\n\nTa có $B(\\dfrac1t;t)$, $C(t^{2};t)$, $D(t^{2};\\dfrac1{t^{2}})$.\n\nTam giác $ACB$ có đáy $BC=t^{2}-\\dfrac1t$ và chiều cao $t-1$, nên $f(t)=\\dfrac12(t^{2}-\\dfrac1t)(t-1)=\\dfrac12\\cdot\\dfrac{(t^{3}-1)(t-1)}{t}$.\n\nTam giác $ADC$ có đáy $CD=t-\\dfrac1{t^{2}}$ và chiều cao $t^{2}-1$, nên $g(t)=\\dfrac12(t-\\dfrac1{t^{2}})(t^{2}-1)=\\dfrac12\\cdot\\dfrac{(t^{3}-1)(t^{2}-1)}{t^{2}}$.\n\nVới $t>1$: $\\dfrac{g(t)}{f(t)}=\\dfrac{(t^{2}-1)\\cdot t}{t^{2}\\,(t-1)}=\\dfrac{t+1}{t}$.\n\nKhi $t\\to1^{+}$ giới hạn bằng $\\dfrac{1+1}{1}=2$.\n\nVậy giới hạn bằng $2$.",
+  "kiem": [
+   "(() => { const t = 1 + 1e-6, A = [1, 1], B = [1 / t, t], C = [t * t, t], D = [t * t, 1 / (t * t)], ar = (p, q, r) => Math.abs((q[0] - p[0]) * (r[1] - p[1]) - (r[0] - p[0]) * (q[1] - p[1])) / 2; return Math.abs(ar(A, D, C) / ar(A, C, B) - 2) < 1e-4 })()"
+  ],
+  "sach_dap_so": "2",
+  "ghi_chu": "Đề sách in sai \"song song với trục Ox\" (khi đó D trùng B); sửa thành trục Oy theo lời giải sách và ghi chú trong lời giải. Đáp số 2 khớp sách."
+ },
+ {
+  "id": "nbv-b2-e-58",
+  "vai": "luyen",
+  "dang_bai": "NDB01186",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tam giác PAQ khi đường thẳng quay về OA, lập diện tích theo t rồi t→1-",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Trên mặt phẳng toạ độ, cho đường tròn $x^{2}+y^{2}=2$ và đồ thị hàm số $y=x^{2}$ cắt nhau tại điểm $A$ nằm trong góc phần tư thứ nhất. Cho $t$ là số thực thoả $0<t<1$. Đường thẳng $y=tx$ cắt đường tròn $x^{2}+y^{2}=2$ tại điểm $P$ trong góc phần tư thứ nhất, và cắt đồ thị $y=x^{2}$ tại điểm $Q$ trong góc phần tư thứ nhất. Gọi $S(t)$ là diện tích tam giác $PAQ$. Biết $\\lim\\limits_{t\\to1^{-}}\\dfrac{S(t)}{(1-t)^{2}}=k$. Tìm giá trị của $20k$.",
+  "dap_an": "15",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tìm $A$, tính đáy $PQ=OP-OQ$ và chiều cao từ $A$ đến đường thẳng $y=tx$, rồi nhân liên hợp để rút gọn $(1-t)^{2}$.\n\n**Bước 1.** Giải hệ đường tròn và parabol để tìm $A$; tìm $Q$ là giao điểm của đường thẳng $y=tx$ với parabol.\n\n**Bước 2.** Tính $OP$ (bán kính đường tròn) và $OQ$ để có đáy $PQ=OP-OQ$.\n\n**Bước 3.** Tính chiều cao là khoảng cách từ $A$ đến đường thẳng $y=tx$ rồi lập $S(t)$.\n\n**Bước 4.** Lập $\\dfrac{S(t)}{(1-t)^{2}}$, nhân liên hợp hiệu $\\sqrt2-t\\sqrt{1+t^{2}}$ để xuất hiện nhân tử $1-t$ rồi lấy giới hạn.\n\n**Phần 2. Trình bày**\n\nThay $x^{2}=y$ vào đường tròn: $y+y^{2}=2$, tức $y=1$ (loại $y=-2$). Với $x>0$ ta có $A(1;1)$.\n\nPhương trình $x^{2}=tx$ cho $x=t$ (loại $x=0$), nên $Q(t;t^{2})$ và $OQ=t\\sqrt{1+t^{2}}$. Còn $OP=\\sqrt2$.\n\nVì $t<1$ nên $Q$ nằm giữa $O$ và $P$, suy ra $PQ=\\sqrt2-t\\sqrt{1+t^{2}}$.\n\nKhoảng cách từ $A$ đến đường thẳng $tx-y=0$ là $h=\\dfrac{|t-1|}{\\sqrt{t^{2}+1}}=\\dfrac{1-t}{\\sqrt{t^{2}+1}}$. Do đó $S(t)=\\dfrac12(\\sqrt2-t\\sqrt{1+t^{2}})\\dfrac{1-t}{\\sqrt{t^{2}+1}}$.\n\nNhân liên hợp: $\\sqrt2-t\\sqrt{1+t^{2}}=\\dfrac{2-t^{2}-t^{4}}{\\sqrt2+t\\sqrt{1+t^{2}}}=\\dfrac{(1-t)(1+t)(t^{2}+2)}{\\sqrt2+t\\sqrt{1+t^{2}}}$.\n\nSuy ra $\\dfrac{S(t)}{(1-t)^{2}}=\\dfrac{(1+t)(t^{2}+2)}{2\\sqrt{t^{2}+1}\\,(\\sqrt2+t\\sqrt{1+t^{2}})}\\to\\dfrac{2\\cdot3}{2\\sqrt2\\cdot2\\sqrt2}=\\dfrac34$ khi $t\\to1^{-}$.\n\nVậy $k=\\dfrac34$ và $20k=15$.",
+  "kiem": [
+   "(() => { const t = 1 - 1e-4, s = Math.sqrt(2 / (1 + t * t)), P = [s, t * s], Q = [t, t * t], A = [1, 1], S = Math.abs((Q[0] - A[0]) * (P[1] - A[1]) - (P[0] - A[0]) * (Q[1] - A[1])) / 2; return Math.abs(S / ((1 - t) ** 2) - 0.75) < 1e-2 && 20 * 0.75 === 15 })()"
+  ],
+  "sach_dap_so": "15",
+  "ghi_chu": ""
+ },
+ {
+  "id": "nbv-b2-e-59",
+  "vai": "luyen",
+  "dang_bai": "NDB01186",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tam giác có cạnh phụ thuộc x, tính diện tích bằng định lí cosin rồi x→+∞",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho tam giác $ABC$ có độ dài các cạnh phụ thuộc vào $x$ ($x>0$) như sau: $AB=\\sqrt{1+\\dfrac1x}$, $BC=\\sqrt{x+\\dfrac1x}$, $CA=\\sqrt{1+x}$. Gọi $S(x)$ là diện tích tam giác $ABC$. Tìm $\\lim\\limits_{x\\to+\\infty}\\dfrac{S(x)}{\\sqrt x}$.",
+  "dap_an": "0,5",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dùng định lí cosin tìm $\\cos\\widehat{BAC}$, suy ra $\\sin\\widehat{BAC}$ rồi tính diện tích bằng $\\dfrac12\\cdot AB\\cdot AC\\cdot\\sin A$.\n\n**Bước 1.** Tính tích $AB\\cdot AC$ và bình phương các cạnh để chuẩn bị cho định lí cosin.\n\n**Bước 2.** Áp dụng định lí cosin cho góc $A$ để tìm $\\cos A$, rồi suy ra $\\sin A$ (góc trong tam giác nên $\\sin A>0$).\n\n**Bước 3.** Lập diện tích $S(x)=\\dfrac12\\cdot AB\\cdot AC\\cdot\\sin A$ rồi rút gọn biểu thức.\n\n**Bước 4.** Chia $S(x)$ cho $\\sqrt x$ rồi lấy giới hạn khi $x\\to+\\infty$.\n\n**Phần 2. Trình bày**\n\nTa có $AB\\cdot AC=\\sqrt{(1+\\dfrac1x)(1+x)}=\\sqrt{\\dfrac{(x+1)^{2}}{x}}=\\dfrac{x+1}{\\sqrt x}$.\n\nTheo định lí cosin: $\\cos A=\\dfrac{AB^{2}+AC^{2}-BC^{2}}{2\\,AB\\cdot AC}=\\dfrac{(1+\\frac1x)+(1+x)-(x+\\frac1x)}{2\\,AB\\cdot AC}=\\dfrac{1}{AB\\cdot AC}=\\dfrac{\\sqrt x}{x+1}$.\n\nVì $\\sin A>0$ nên $\\sin A=\\sqrt{1-\\dfrac{x}{(x+1)^{2}}}=\\dfrac{\\sqrt{x^{2}+x+1}}{x+1}$.\n\nDo đó $S(x)=\\dfrac12\\cdot\\dfrac{x+1}{\\sqrt x}\\cdot\\dfrac{\\sqrt{x^{2}+x+1}}{x+1}=\\dfrac{\\sqrt{x^{2}+x+1}}{2\\sqrt x}$.\n\nVới $x>0$: $\\dfrac{S(x)}{\\sqrt x}=\\dfrac{\\sqrt{x^{2}+x+1}}{2x}=\\dfrac12\\sqrt{1+\\dfrac1x+\\dfrac1{x^{2}}}\\to\\dfrac12$.\n\nVậy giới hạn bằng $0{,}5$.",
+  "kiem": [
+   "(() => { const x = 1e5, a2 = 1 + 1 / x, b2 = x + 1 / x, c2 = 1 + x, S = Math.sqrt(2 * (a2 * b2 + b2 * c2 + c2 * a2) - (a2 * a2 + b2 * b2 + c2 * c2)) / 4; return Math.abs(S / Math.sqrt(x) - 0.5) < 1e-3 })()"
+  ],
+  "sach_dap_so": "0,5",
+  "ghi_chu": ""
+ }
+]

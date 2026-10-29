@@ -1,6 +1,6 @@
 // ============================================================================
 // TRỢ LÝ CÁ NHÂN — báo cáo Sư phạm của CÁC KHỐI MÌNH QUẢN LÝ (CEO 14/10).
-// Khối lấy từ sơ đồ tổ chức ở DB (`vi_tri.khoi_quan_ly`); mọi số lọc từ báo cáo trung tâm đã lưu
+// Khối lấy từ bảng phân công Trưởng/Phó khối ở DB (`phan_cong_quan_ly_khoi`, 29/10); mọi số lọc từ báo cáo trung tâm đã lưu
 // (`fn_troly_ca_nhan_lay`) — luật đếm chỉ có MỘT nguồn. Màn này KHÔNG tính gì.
 // Trưởng khối: nhắc TA của khối, báo cáo lên Quản lý trợ giảng.
 // Phó khối (chi_xem): xem + nhắc TA, báo cáo lại trưởng khối — không giao việc / không gậy.

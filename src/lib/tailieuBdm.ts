@@ -33,7 +33,7 @@ export type NdNhom = {
 export type NdOnTap = { phan_id: string; id: string; ten: string | null; caus: string[] }
 export type NdBuoi = { id: string; tieu_de: string | null; thu_tu: number; nhom: NdNhom[]; chua_khop: KhoiCau | null; on_tap?: NdOnTap[] }
 export type NoiDung = {
-  tai_lieu: { id: string; ten: string; khoi: string; mon: string; nhanh: string | null; ban_do: 'cu' | 'moi'; luu_tru_tu: string | null; cau_hinh: Record<string, unknown>; updated_at: string }
+  tai_lieu: { id: string; ten: string; khoi: string; mon: string; nhanh: string | null; ban_do: 'cu' | 'moi'; luu_tru_tu: string | null; cau_hinh: Record<string, unknown>; updated_at: string; lop_id?: string | null }
   buoi: NdBuoi[]
 }
 /** Nguồn từng câu / bài của 1 tài liệu (mã ⇒ "Đề thi giữa kì 1 năm 2025-2026 — THCS …") — chuyên đề in kèm (Thùy 21/10). Rút gọn tên ở DB. */

@@ -6,7 +6,9 @@
 //   · gợi ý câu (fn_tl_bdm_goi_y) + đề 2/3 (fn_tl_bdm_et_ma_de) tính ở DB, không tính ở client như bản cũ.
 // Lưu Y KHUÔN ET cũ (tai_lieu loai='et' + ban_do='moi', 1 phần câu + cau_hinh.etMaDe/etFormByCau/hsMaDe) ⇒ Chấm ET, in, ET online,
 // đo đọc như cũ. DB chặn trộn ET bản cũ/bản mới trong cùng buổi (trg_et_khong_tron_ban_do).
-// Hình: đợt sau (trỏ sang Hình–Luyện mới); ET Hình hiện vẫn soạn ở mục ET cũ.
+// ⭐ Thùy 28/10 "ET chưa làm được ET hình và lượng giác": 1 ET chọn dạng bài của cả 3 nhánh — Đại · Lượng giác (HGT) · Hình
+//   (bài học = dạng bài, Thùy 28/10). Câu nhớ NHÁNH KHO ở cau_hinh.nhanhByCau (khuôn MT; chỉ câu khác Đại) ⇒ chấm/in/đo đọc
+//   đúng bảng. Hình–Luyện (bài mô hình nhiều ý) chưa vào ET.
 import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   createET, updateET, getTaiLieuFull, setETCaus, getETByBuoi, fetchCausCuaTaiLieu, maET, ET_FORMS, etFormOf, sortETCaus,
@@ -23,6 +25,11 @@ import SearchSelect from '../../../components/SearchSelect'
 import BuoiNgaySelect from '../../../components/BuoiNgaySelect'
 import BoChonNhom from './BoChonNhom'
 import ChonCauBdm from './ChonCauBdm'
+import { ChonBaiHoc, ChonCauHoc } from './ChuyenDeHinhBuilder'
+import { hhCayChon, hhGoiYBai } from '../../../lib/chuyenDeHinh'
+import { AnhXem, AnhMmCtl, CheDoHinhBtn } from '../TaiLieuBuilder'
+import { AnhMmEditCtx } from '../anhMmCtx'
+import type { CheDoHinh } from '../../../lib/kho/hinhGiaoTrinh'
 import { useStore } from '../../../store/useStore'
 import type { ETView } from '../ETScreen'
 
@@ -31,7 +38,12 @@ const DEFAULT_ROWS = 5
 const SO_CAU_MAC_DINH = 1                      // kế hoạch điền sẵn từ giáo trình buổi: 1 câu / dạng bài (GV tăng nếu cần)
 type Row = { db: string | null; maCau: string | null }   // db = id dạng bài bản đồ mới
 type Plan = { db: string; soCau: number }
-type DbInfo = { id: string; ten: string; nhom_id: string; nhom_ten: string; so_cau: number }
+// Nhánh của dạng bài: 'toan' Đại · 'hgt' lượng giác (Hình giải tích) · 'hinh_hoc' Hình (bài học = nhóm = dạng bài)
+type Nh = 'toan' | 'hgt' | 'hinh_hoc'
+const KHO_NH: Record<Nh, string | null> = { toan: null, hgt: 'hinh_gt', hinh_hoc: 'hinh_hoc' }   // nhánh KHO (khoCuaMon) của câu
+const TEN_NH: Record<Nh, string> = { toan: 'Đại', hgt: 'Hình giải tích', hinh_hoc: 'Hình' }
+const DS_NH: Nh[] = ['toan', 'hgt', 'hinh_hoc']
+type DbInfo = { id: string; ten: string; nhom_id: string; nhom_ten: string; so_cau: number; nh: Nh }
 const blankRows = (): Row[] => Array.from({ length: DEFAULT_ROWS }, () => ({ db: null, maCau: null }))
 // Nháp tạo-mới sống tới F5 (rời màn rồi quay lại không mất) — riêng bản mới, không đụng nháp ET cũ trong store.
 let NHAP: { lopId: string | null; ngay: string; savedId: string | null; rows: Row[]; cau: Record<string, CauHoi>; ch: CauHinh; plan: Plan[] } | null = null
@@ -47,8 +59,9 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
   const [ch, setCh] = useState<CauHinh>(() => nhap0?.ch ?? {})
   const [plan, setPlan] = useState<Plan[]>(() => nhap0?.plan ?? [])
   const [dbs, setDbs] = useState<Map<string, DbInfo>>(new Map())          // dạng bài của khối (tên, nhóm, số câu)
-  const [chonPlan, setChonPlan] = useState(false)
-  const [chonHang, setChonHang] = useState<number | null>(null)           // chọn dạng bài cho 1 hàng
+  const [chonPlan, setChonPlan] = useState<Nh | null>(null)              // bộ chọn kế hoạch đang mở ở nhánh nào
+  const [chonHang, setChonHang] = useState<{ i: number; nh: Nh } | null>(null)   // chọn dạng bài cho 1 hàng
+  const nhRef = useRef<Record<string, string>>({})                        // mã câu → nhánh kho (chỉ câu khác Đại) — lưu vào nhanhByCau
   const [chonCau, setChonCau] = useState<number | null>(null)             // ✎ chọn tay câu của 1 hàng
   const [chonVar, setChonVar] = useState<{ base: string; v: number; db: string; form: ETFormKind } | null>(null)
   const [roster, setRoster] = useState<{ id: string; ho_ten: string; ma_hs: string | null }[]>([])
@@ -64,15 +77,22 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
 
   const lop = lops.find((l) => l.id === lopId) ?? null
   const khoi = lop?.khoi ?? et?.khoi ?? ''
-  const tlCtx = { mon: 'Toán', nhanh: null, cau_hinh: ch }
   const tenDb = (id: string | null) => (id ? dbs.get(id)?.ten ?? id : '')
+  const nhCuaDb = (db: string | null): Nh => (db ? dbs.get(db)?.nh ?? 'toan' : 'toan')
+  const tlCua = (db: string | null) => ({ mon: 'Toán', nhanh: KHO_NH[nhCuaDb(db)], cau_hinh: {} as CauHinh })
+  const ghiNh = (mas: (string | null | undefined)[], db: string | null) => {   // câu vào đề ⇒ nhớ nhánh kho của nó
+    const k = KHO_NH[nhCuaDb(db)]
+    for (const m of mas) if (m) { if (k) nhRef.current[m] = k; else delete nhRef.current[m] }
+  }
 
-  // ── nạp ──
+  // ── nạp ── (câu nạp theo NHÁNH của từng câu: nhRef; câu không có key = kho Đại)
   async function napNoiDung(mas: string[], bank = cau): Promise<Record<string, CauHoi>> {
     const can = [...new Set(mas)].filter((m) => m && !bank[m])
     if (!can.length) return bank
-    const rs = await fetchCausCuaTaiLieu(tlCtx, can)
-    const next = { ...bank }; for (const c of rs) next[c.ma_cau] = c
+    const nhom = new Map<string, string[]>()
+    for (const m of can) { const k = nhRef.current[m] ?? ''; nhom.set(k, [...(nhom.get(k) ?? []), m]) }
+    const next = { ...bank }
+    for (const [k, ms] of nhom) for (const c of await fetchCausCuaTaiLieu({ mon: 'Toán', nhanh: k || null, cau_hinh: {} }, ms)) next[c.ma_cau] = c
     setCau(next)
     return next
   }
@@ -80,12 +100,14 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
     const full = await getTaiLieuFull(docId)
     const caus = full.phans.find((p) => p.loai_phan === 'custom')?.caus ?? []
     const ch0 = full.taiLieu.cau_hinh ?? {}
+    nhRef.current = { ...(ch0.nhanhByCau ?? {}) }
     const bank: Record<string, CauHoi> = Object.fromEntries(caus.map((c) => [c.ma_cau, c]))
     const them = Object.values(ch0.etMaDe ?? {}).flat().filter((m): m is string => !!m && !bank[m])
     if (them.length) for (const c of await fetchCausCuaTaiLieu({ mon: 'Toán', nhanh: null, cau_hinh: ch0 }, them)) bank[c.ma_cau] = c
     const vt = new Map((await etViTri(khoiDoc, caus.map((c) => c.ma_cau))).map((v) => [v.ma_cau, v.dang_bai_id]))
     setCau(bank); setCh(ch0)
-    const r: Row[] = caus.map((c) => ({ db: vt.get(c.ma_cau) ?? null, maCau: c.ma_cau }))
+    // câu Hình học: dạng bài = bài học của câu (dang_chinh); Đại / lượng giác: theo vị trí trên bản đồ mới
+    const r: Row[] = caus.map((c) => ({ db: vt.get(c.ma_cau) ?? (nhRef.current[c.ma_cau] === 'hinh_hoc' ? c.dang_chinh : null), maCau: c.ma_cau }))
     while (r.length < DEFAULT_ROWS) r.push({ db: null, maCau: null })
     setRows(r)
   }
@@ -103,9 +125,11 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
   // dạng bài của khối (đổi khi đổi lớp khác khối)
   useEffect(() => {
     if (!khoi) { setDbs(new Map()); return }
-    cayChon(khoi).then((cay) => {
+    Promise.all([cayChon(khoi, 'toan'), cayChon(khoi, 'hgt'), hhCayChon(khoi)]).then(([dai, hgt, hh]) => {
       const m = new Map<string, DbInfo>()
-      for (const cd of cay) for (const chd of cd.chuyen_de) for (const n of chd.nhom) for (const d of n.dang_bai) m.set(d.id, { id: d.id, ten: d.ten, nhom_id: n.id, nhom_ten: n.ten, so_cau: d.so_cau })
+      for (const [cay, nh] of [[dai, 'toan'], [hgt, 'hgt']] as const)
+        for (const cd of cay) for (const chd of cd.chuyen_de) for (const n of chd.nhom) for (const d of n.dang_bai) m.set(d.id, { id: d.id, ten: d.ten, nhom_id: n.id, nhom_ten: n.ten, so_cau: d.so_cau, nh })
+      for (const b of hh) m.set(b.ma_bai, { id: b.ma_bai, ten: b.ten, nhom_id: b.ma_bai, nhom_ten: b.chu_de ?? 'Hình', so_cau: b.so_cau, nh: 'hinh_hoc' })
       setDbs(m)
     }).catch((e) => setErr(loiDoc(e)))
   }, [khoi])
@@ -146,7 +170,7 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
     if (lopRef.current === lopId) return
     const prev = lopRef.current; lopRef.current = lopId
     if (prev == null) return
-    setRows(blankRows()); setCau({}); setCh({}); setPlan([]); setNgay(''); setRoster([]); setClassPrint(null); setDeXuatTu(null); setErr(null)
+    setRows(blankRows()); setCau({}); setCh({}); setPlan([]); setNgay(''); setRoster([]); setClassPrint(null); setDeXuatTu(null); setErr(null); nhRef.current = {}
     if (!et) setSavedId(null)
   }, [lopId]) // eslint-disable-line
   useEffect(() => { if (!flash) return; const t = setTimeout(() => setFlash(null), 3000); return () => clearTimeout(t) }, [flash])
@@ -159,9 +183,15 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
 
   // ── soạn ──
   const usedExcept = (idx: number) => rows.filter((_, i) => i !== idx).map((r) => r.maCau).filter((m): m is string => !!m)
+  // gợi ý N câu ít dùng của 1 dạng bài (Hình học: theo bài học) — tính ở DB
+  async function goiYN(db: string, n: number, tru: string[]): Promise<string[]> {
+    const info = dbs.get(db); if (!info) return []
+    const ms = info.nh === 'hinh_hoc' ? await hhGoiYBai(db, n, tru) : await goiYDangBai(info.nhom_id, db, n, tru)
+    ghiNh(ms, db)
+    return ms
+  }
   async function goiY1(db: string, tru: string[]): Promise<string | null> {
-    const info = dbs.get(db); if (!info) return null
-    const [m] = await goiYDangBai(info.nhom_id, db, 1, tru)
+    const [m] = await goiYN(db, 1, tru)
     if (m) await napNoiDung([m])
     return m ?? null
   }
@@ -186,7 +216,7 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
       const moi: Row[] = []; const thieu: string[] = []
       for (const p of ps) {
         const info = dbs.get(p.db); if (!info) { thieu.push(`${p.db}: không còn trên bản đồ`); continue }
-        const got = await goiYDangBai(info.nhom_id, p.db, p.soCau, used)
+        const got = await goiYN(p.db, p.soCau, used)
         got.forEach((m) => { used.push(m); moi.push({ db: p.db, maCau: m }) })
         if (got.length < p.soCau) thieu.push(`${info.ten}: chỉ được ${got.length}/${p.soCau} câu`)
       }
@@ -201,13 +231,21 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
   const setLines = (m: string, n: number) => setCh((c) => ({ ...c, btvnLinesByCau: { ...(c.btvnLinesByCau ?? {}), [m]: n } }))
   const setForm = (m: string, f: ETFormKind) => setCh((c) => ({ ...c, etFormByCau: { ...(c.etFormByCau ?? {}), [m]: f } }))
   const setColCau = (m: string, n: number) => setCh((c) => ({ ...c, colByCau: { ...(c.colByCau ?? {}), [m]: n } }))
+  // Hình của câu khi IN (như builder giáo trình — Thùy 28/10): chế độ hiện/ô trống/bỏ + cỡ % ảnh gốc; đề 2/3 kế thừa câu gốc lúc in
+  const setCheDo = (m: string, v: CheDoHinh) => setCh((c) => ({ ...c, hinhCheDoByCau: { ...(c.hinhCheDoByCau ?? {}), [m]: v } }))
+  const setAnhMm = (m: string, v: { pct: number; mm: number } | null) => setCh((c) => {
+    const mm = { ...(c.anhMmByCau ?? {}) }, pct = { ...(c.anhPctByCau ?? {}) }
+    if (v && v.mm > 0) { mm[m] = v.mm; pct[m] = v.pct } else { delete mm[m]; delete pct[m] }
+    return { ...c, anhMmByCau: mm, anhPctByCau: pct }
+  })
 
   // ── 3 mã đề — tính ở DB ──
   const baseRows = () => rows.filter((r) => r.maCau && r.db).map((r) => ({ maDang: r.db!, maCau: r.maCau! }))
   async function tinhMaDe(chGoc: CauHinh, bank: Record<string, CauHoi>): Promise<CauHinh> {
     const base = baseRows().map((b) => ({ ma_cau: b.maCau, dang_bai: b.maDang, form: bank[b.maCau] ? etFormOf(bank[b.maCau], chGoc) : 'tra_loi_ngan' }))
     const kq = await etMaDe(khoi, base)
-    await napNoiDung(Object.values(kq.etMaDe).flat(), bank)
+    for (const b of baseRows()) ghiNh(kq.etMaDe[b.maCau] ?? [], b.maDang)   // đề 2/3 cùng dạng bài ⇒ cùng nhánh với câu gốc
+    await napNoiDung(Object.values(kq.etMaDe).flat().filter((m): m is string => !!m), bank)
     return { ...chGoc, etMaDe: kq.etMaDe, etFormByCau: { ...(chGoc.etFormByCau ?? {}), ...kq.etFormByCau } }
   }
   async function sinhMaDe() {
@@ -249,8 +287,12 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
       const baseSet = chon.map((r) => r.maCau)
       const cur = ch.etMaDe ?? {}
       const lech = baseSet.some((m) => !cur[m]) || Object.keys(cur).some((k) => !baseSet.includes(k))
-      const chSave = lech ? await tinhMaDe(ch, bank) : ch
+      const chSave: CauHinh = { ...(lech ? await tinhMaDe(ch, bank) : ch) }
       if (lech) setCh(chSave)
+      // nhánh kho của từng câu (gốc + đề 2/3) — chỉ câu khác Đại (khuôn MT); chấm/in/đo đọc qua đây
+      const dung = new Set([...baseSet, ...Object.values(chSave.etMaDe ?? {}).flat().filter((m): m is string => !!m)])
+      const nbc = Object.fromEntries(Object.entries(nhRef.current).filter(([m]) => dung.has(m)))
+      if (Object.keys(nbc).length) chSave.nhanhByCau = nbc; else delete chSave.nhanhByCau
       const soTrong = baseSet.filter((m) => { const a = chSave.etMaDe?.[m]; return !a || !a[0] || !a[1] }).length
       if (soTrong) { setErr(`Mã đề 2/3 còn ${soTrong} ô TRỐNG — bấm ✎ ở đề 2/đề 3 để chọn tay rồi lưu lại. Chưa lưu.`); return null }
       const maCaus = sortETCaus(chon.map((r) => bank[r.maCau]), chSave).map((c) => c.ma_cau)
@@ -276,11 +318,33 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
     setFlash('Đã lưu ET vào Kho tài liệu. Form đã reset để tạo ET mới.')
   }
 
+  // nhánh có dạng bài ở khối này (ẩn nút nhánh trống)
+  const nhCo = DS_NH.filter((nh) => [...dbs.values()].some((d) => d.nh === nh))
+  // kế hoạch: thay phần của 1 nhánh, giữ nguyên các nhánh khác
+  function datPlanNhanh(nh: Nh, ids: string[]) {
+    const cu = new Map(plan.map((p) => [p.db, p.soCau]))
+    setPlan([...plan.filter((p) => nhCuaDb(p.db) !== nh), ...ids.map((db) => ({ db, soCau: cu.get(db) ?? SO_CAU_MAC_DINH }))])
+  }
+  async function chotCauHang(i: number, ms: string[]) {
+    const used = new Set(usedExcept(i))
+    const pick = ms.find((m) => !used.has(m)) ?? null
+    const db = rows[i]?.db ?? null
+    if (pick) { ghiNh([pick], db); await napNoiDung([pick]) }
+    setRows((rs) => rs.map((x, j) => (j === i ? { ...x, maCau: pick } : x)))
+    setChonCau(null)
+  }
+  async function chotCauDe(ms: string[]) {
+    if (!chonVar) return
+    const used = usedMoiDe()
+    const pick = ms.find((m) => !used.has(m)) ?? ms[0] ?? null
+    if (pick) { ghiNh([pick], chonVar.db); await napNoiDung([pick]); setVar(chonVar.base, chonVar.v, pick, chonVar.form) }
+    setChonVar(null)
+  }
   if (loading) return <div className="p-8 text-sm text-slate-400">Đang tải…</div>
   const soCau = rows.filter((r) => r.maCau).length
   const daChonPlan: ChonBuoi = (() => {
     const m = new Map<string, string[]>()
-    for (const p of plan) { const n = dbs.get(p.db)?.nhom_id; if (n) m.set(n, [...(m.get(n) ?? []), p.db]) }
+    for (const p of plan) { const d = dbs.get(p.db); if (d && d.nh === chonPlan) m.set(d.nhom_id, [...(m.get(d.nhom_id) ?? []), p.db]) }
     return [...m.entries()].map(([nhom, dang_bai]) => ({ nhom, dang_bai }))
   })()
 
@@ -326,7 +390,7 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
                         <div key={p.db} className="flex items-center gap-2">
                           <span className="w-6 shrink-0 text-center text-[12px] font-bold text-violet-600">{i + 1}</span>
                           <span className="min-w-0 flex-1 truncate rounded-md border border-slate-200 bg-white px-2.5 py-1.5 text-[13px] text-slate-700" title={info ? `${info.nhom_ten} › ${info.ten}` : p.db}>
-                            {info ? <><span className="text-slate-400">{info.nhom_ten} › </span>{info.ten}</> : p.db}
+                            {info ? <>{info.nh !== 'toan' && <span className="mr-1 rounded bg-sky-50 px-1 text-[10.5px] font-semibold text-sky-700">{TEN_NH[info.nh]}</span>}{info.nh !== 'hinh_hoc' && <span className="text-slate-400">{info.nhom_ten} › </span>}{info.ten}</> : p.db}
                           </span>
                           {info && <span className={`shrink-0 text-[11px] ${info.so_cau < p.soCau ? 'font-medium text-rose-600' : 'text-slate-400'}`}>kho {info.so_cau}</span>}
                           <span className="text-[12px] text-slate-400">×</span>
@@ -339,7 +403,10 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
                       )
                     })}
                   <div className="flex items-center gap-2 pt-1">
-                    <button onClick={() => setChonPlan(true)} className="rounded-md border border-dashed border-indigo-300 px-2.5 py-1 text-[12px] font-medium text-indigo-600 hover:bg-indigo-50">+ Chọn dạng bài {plan.length ? '(thêm/bớt)' : '(nhiều dạng cùng lúc)'}</button>
+                    <span className="text-[12px] font-medium text-indigo-600">+ Chọn dạng bài:</span>
+                    {nhCo.map((nh) => (
+                      <button key={nh} onClick={() => setChonPlan(nh)} className="rounded-md border border-dashed border-indigo-300 px-2.5 py-1 text-[12px] font-medium text-indigo-600 hover:bg-indigo-50">{TEN_NH[nh]}</button>
+                    ))}
                     <button onClick={sinhTheoKeHoach} disabled={bulkBusy || !plan.length}
                       className="ml-auto rounded-md bg-indigo-600 px-3 py-1.5 text-[12px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40">
                       {bulkBusy ? 'Đang sinh…' : `⚡ Sinh ${plan.reduce((s, p) => s + p.soCau, 0)} câu`}
@@ -371,9 +438,9 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
                   <div key={i} className="rounded-xl border border-slate-200 bg-white p-2.5">
                     <div className="flex items-start gap-2">
                       <span className="mt-1.5 w-6 shrink-0 text-center text-[13px] font-bold text-violet-600">{i + 1}</span>
-                      <button onClick={() => khoi && setChonHang(i)} disabled={!khoi} title={info ? `${info.nhom_ten} › ${info.ten}` : undefined}
+                      <button onClick={() => khoi && setChonHang({ i, nh: info?.nh ?? 'toan' })} disabled={!khoi} title={info ? `${TEN_NH[info.nh]} · ${info.nhom_ten} › ${info.ten}` : undefined}
                         className="w-56 shrink-0 rounded-md border border-slate-300 bg-white px-2.5 py-2 text-left text-[13px] hover:border-indigo-400 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-300">
-                        {r.db ? <span className="line-clamp-2 text-slate-700">{tenDb(r.db)}</span>
+                        {r.db ? <span className="line-clamp-2 text-slate-700">{info && info.nh !== 'toan' && <span className="mr-1 rounded bg-sky-50 px-1 text-[10.5px] font-semibold text-sky-700">{TEN_NH[info.nh]}</span>}{tenDb(r.db)}</span>
                           : r.maCau ? <span className="text-amber-600">⚠ câu chưa thuộc dạng bài mới</span>
                           : <span className={khoi ? 'text-indigo-500' : ''}>{khoi ? '+ chọn dạng bài…' : 'chọn lớp trước'}</span>}
                       </button>
@@ -381,6 +448,11 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
                         {c ? <div className="truncate text-[13px] text-slate-700"><MathText>{c.noi_dung}</MathText></div>
                           : r.db ? <span className="text-[12px] italic text-slate-400">chưa có câu</span>
                           : <span className="text-[12px] italic text-slate-300">chọn dạng bài để hệ gợi ý câu</span>}
+                        {c?.anh_de && (
+                          <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: setAnhMm, baChe: false }}>
+                            <div className="flex justify-start"><AnhXem ma={c.ma_cau} url={c.anh_de} cheDo={ch.hinhCheDoByCau?.[c.ma_cau] ?? 'hien'} /></div>
+                          </AnhMmEditCtx.Provider>
+                        )}
                         {c && (
                           <div className="mt-1 flex flex-wrap items-center gap-1.5">
                             <span className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] text-slate-500" title="Mã câu">{c.ma_cau}</span>
@@ -404,6 +476,15 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
                           <button onClick={() => doiCau(i)} title="Đổi câu khác (ít dùng kế tiếp)" className="rounded-md bg-indigo-50 px-2 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-100">↻ Đổi</button>
                           <button onClick={() => setChonCau(i)} className="rounded-md border border-slate-300 px-2 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-400">✎ Chọn</button>
                         </div>
+                      )}
+                      {c && c.anh_de && (
+                        // 3 chế độ (có ô trống cho HS vẽ) chỉ ở câu Hình học, như builder; Đại / HGT: hiện ↔ bỏ
+                        <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: setAnhMm, baChe: info?.nh === 'hinh_hoc' }}>
+                          <div className="flex shrink-0 flex-col items-end gap-1 pt-0.5">
+                            <CheDoHinhBtn cur={ch.hinhCheDoByCau?.[c.ma_cau] ?? 'hien'} onChange={(v) => setCheDo(c.ma_cau, v)} />
+                            {(ch.hinhCheDoByCau?.[c.ma_cau] ?? 'hien') !== 'khong' && <AnhMmCtl ma={c.ma_cau} url={c.anh_de} />}
+                          </div>
+                        </AnhMmEditCtx.Provider>
                       )}
                       {c && (
                         <label className="flex shrink-0 items-center gap-1 self-start pt-1.5 text-[11px] text-slate-500" title="Tích = in 2 cột — các câu 2 cột LIỀN NHAU tự xếp cạnh nhau">
@@ -477,46 +558,62 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
 
       {printing && <ETPrintView id={savedId ?? et?.id ?? 'preview'} fullOverride={previewFull} varCauOverride={cau} onClose={() => setPrinting(false)} />}
       {classPrint && <ETPrintView id={savedId ?? et?.id ?? 'preview'} fullOverride={previewFull} varCauOverride={cau} perHS={classPrint} onClose={() => setClassPrint(null)} />}
-      {chonPlan && (
-        <BoChonNhom khoi={khoi} daChon={daChonPlan} onClose={() => setChonPlan(false)}
-          onConfirm={(c) => {
-            const cu = new Map(plan.map((p) => [p.db, p.soCau]))
-            setPlan(c.flatMap((x) => x.dang_bai).map((db) => ({ db, soCau: cu.get(db) ?? SO_CAU_MAC_DINH })))
-            setChonPlan(false)
-          }} />
+      {chonPlan && (<>
+        <TabNhanh co={nhCo} nh={chonPlan} onDoi={setChonPlan} />
+        {chonPlan === 'hinh_hoc'
+          ? <ChonBaiHoc khoi={khoi} ghiChu="Hình: mỗi bài học = 1 dạng bài · thứ tự bấm = thứ tự trong kế hoạch"
+              daChon={plan.filter((p) => nhCuaDb(p.db) === 'hinh_hoc').map((p) => p.db)} onClose={() => setChonPlan(null)}
+              onConfirm={(mas) => { datPlanNhanh('hinh_hoc', mas); setChonPlan(null) }} />
+          : <BoChonNhom key={chonPlan} khoi={khoi} nhanh={chonPlan} daChon={daChonPlan} onClose={() => setChonPlan(null)}
+              onConfirm={(c) => { datPlanNhanh(chonPlan, c.flatMap((x) => x.dang_bai)); setChonPlan(null) }} />}
+      </>)}
+      {chonHang !== null && (<>
+        <TabNhanh co={nhCo} nh={chonHang.nh} onDoi={(nh) => setChonHang({ ...chonHang, nh })} />
+        {chonHang.nh === 'hinh_hoc'
+          ? <ChonBaiHoc khoi={khoi} ghiChu="Chọn 1 bài học cho hàng này" daChon={rows[chonHang.i]?.db && nhCuaDb(rows[chonHang.i].db) === 'hinh_hoc' ? [rows[chonHang.i].db!] : []}
+              onClose={() => setChonHang(null)}
+              onConfirm={async (mas) => {
+                const db = mas.find((d) => d !== rows[chonHang.i]?.db) ?? mas[0]
+                const i = chonHang.i; setChonHang(null)
+                if (db) await datDangHang(i, db)
+              }} />
+          : <BoChonNhom key={chonHang.nh} khoi={khoi} nhanh={chonHang.nh}
+              daChon={rows[chonHang.i]?.db && nhCuaDb(rows[chonHang.i].db) === chonHang.nh ? [{ nhom: dbs.get(rows[chonHang.i].db!)?.nhom_id ?? '', dang_bai: [rows[chonHang.i].db!] }].filter((x) => x.nhom) : []}
+              onClose={() => setChonHang(null)}
+              onConfirm={async (c) => {
+                const db = c.flatMap((x) => x.dang_bai).find((d) => d !== rows[chonHang.i]?.db) ?? c.flatMap((x) => x.dang_bai)[0]
+                const i = chonHang.i; setChonHang(null)
+                if (db) await datDangHang(i, db)
+              }} />}
+      </>)}
+      {chonCau !== null && rows[chonCau]?.db && dbs.get(rows[chonCau].db!) && (nhCuaDb(rows[chonCau].db) === 'hinh_hoc'
+        ? <ChonCauHoc maBai={rows[chonCau].db!} ten={tenDb(rows[chonCau].db)} daChon={rows[chonCau].maCau ? [rows[chonCau].maCau!] : []} khoa={usedExcept(chonCau)}
+            onClose={() => setChonCau(null)}
+            onConfirm={async (ms) => { await chotCauHang(chonCau, ms) }} />
+        : <ChonCauBdm tl={tlCua(rows[chonCau].db)} coKhoLop={false} nhomId={dbs.get(rows[chonCau].db!)!.nhom_id} uuTien={rows[chonCau].db}
+            selected={rows[chonCau].maCau ? [rows[chonCau].maCau!] : []} khoa={usedExcept(chonCau)}
+            onClose={() => setChonCau(null)}
+            onConfirm={async (ms) => { await chotCauHang(chonCau, ms) }} />
       )}
-      {chonHang !== null && (
-        <BoChonNhom khoi={khoi} daChon={rows[chonHang]?.db ? [{ nhom: dbs.get(rows[chonHang].db!)?.nhom_id ?? '', dang_bai: [rows[chonHang].db!] }].filter((x) => x.nhom) : []}
-          onClose={() => setChonHang(null)}
-          onConfirm={async (c) => {
-            const db = c.flatMap((x) => x.dang_bai).find((d) => d !== rows[chonHang]?.db) ?? c.flatMap((x) => x.dang_bai)[0]
-            const i = chonHang; setChonHang(null)
-            if (db) await datDangHang(i, db)
-          }} />
+      {chonVar && dbs.get(chonVar.db) && (nhCuaDb(chonVar.db) === 'hinh_hoc'
+        ? <ChonCauHoc maBai={chonVar.db} ten={`${tenDb(chonVar.db)} · đề ${chonVar.v + 2}`} daChon={ch.etMaDe?.[chonVar.base]?.[chonVar.v] ? [ch.etMaDe[chonVar.base][chonVar.v]!] : []}
+            khoa={[...usedMoiDe()]} onClose={() => setChonVar(null)} onConfirm={async (ms) => { await chotCauDe(ms) }} />
+        : <ChonCauBdm tl={tlCua(chonVar.db)} coKhoLop={false} nhomId={dbs.get(chonVar.db)!.nhom_id} uuTien={chonVar.db}
+            selected={ch.etMaDe?.[chonVar.base]?.[chonVar.v] ? [ch.etMaDe[chonVar.base][chonVar.v]!] : []}
+            khoa={[...usedMoiDe()]} onClose={() => setChonVar(null)} onConfirm={async (ms) => { await chotCauDe(ms) }} />
       )}
-      {chonCau !== null && rows[chonCau]?.db && dbs.get(rows[chonCau].db!) && (
-        <ChonCauBdm tl={tlCtx} coKhoLop={false} nhomId={dbs.get(rows[chonCau].db!)!.nhom_id} uuTien={rows[chonCau].db}
-          selected={rows[chonCau].maCau ? [rows[chonCau].maCau!] : []} khoa={usedExcept(chonCau)}
-          onClose={() => setChonCau(null)}
-          onConfirm={async (ms) => {
-            const i = chonCau; const used = new Set(usedExcept(i))
-            const pick = ms.find((m) => !used.has(m)) ?? null
-            if (pick) await napNoiDung([pick])
-            setRows((rs) => rs.map((x, j) => (j === i ? { ...x, maCau: pick } : x)))
-            setChonCau(null)
-          }} />
-      )}
-      {chonVar && dbs.get(chonVar.db) && (
-        <ChonCauBdm tl={tlCtx} coKhoLop={false} nhomId={dbs.get(chonVar.db)!.nhom_id} uuTien={chonVar.db}
-          selected={ch.etMaDe?.[chonVar.base]?.[chonVar.v] ? [ch.etMaDe[chonVar.base][chonVar.v]!] : []}
-          khoa={[...usedMoiDe()]} onClose={() => setChonVar(null)}
-          onConfirm={async (ms) => {
-            const used = usedMoiDe()
-            const pick = ms.find((m) => !used.has(m)) ?? ms[0] ?? null
-            if (pick) { await napNoiDung([pick]); setVar(chonVar.base, chonVar.v, pick, chonVar.form) }
-            setChonVar(null)
-          }} />
-      )}
+    </div>
+  )
+}
+
+// Thanh đổi nhánh nổi trên bộ chọn dạng bài (bộ chọn mỗi nhánh là 1 modal riêng)
+function TabNhanh({ co, nh, onDoi }: { co: Nh[]; nh: Nh; onDoi: (nh: Nh) => void }) {
+  if (co.length < 2) return null
+  return (
+    <div className="fixed left-1/2 top-1 z-[90] flex -translate-x-1/2 gap-0.5 rounded-lg bg-white p-0.5 shadow-lg ring-1 ring-slate-200">
+      {co.map((x) => (
+        <button key={x} onClick={() => onDoi(x)} className={`rounded-md px-3 py-1 text-[13px] font-semibold ${x === nh ? 'bg-indigo-600 text-white' : 'text-slate-600 hover:bg-slate-100'}`}>{TEN_NH[x]}</button>
+      ))}
     </div>
   )
 }
