@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-455 bảng · 34 view · 0 enum · 232 trigger · 1373 function
+463 bảng · 34 view · 0 enum · 251 trigger · 1380 function
 
 ## _app_secrets
 
@@ -4063,6 +4063,107 @@ END |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | mo_ta_ngan | text | Y |  |  |  |
 
+## khtn_bdm_chu_de
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | text |  | ('KCD'::text \|\| lpad((nextval('khtn_bdm_chu_de_seq'::regclass))::text, 5, '0'::text)) | PK |  |
+| khoi | text |  |  |  |  |
+| ten | text |  |  |  |  |
+| thu_tu | integer | Y |  |  |  |
+| ma_cu | text | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## khtn_bdm_chuyen_de
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | text |  | ('KCH'::text \|\| lpad((nextval('khtn_bdm_chuyen_de_seq'::regclass))::text, 5, '0'::text)) | PK |  |
+| ten | text |  |  |  |  |
+| mo_ta | text |  | ''::text |  |  |
+| ma_cu | text | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## khtn_bdm_dang_bai
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | text |  | ('KDB'::text \|\| lpad((nextval('khtn_bdm_dang_bai_seq'::regclass))::text, 5, '0'::text)) | PK |  |
+| nhom_id | text |  |  | FK→khtn_bdm_nhom.id |  |
+| ten | text |  |  |  |  |
+| mo_ta | text |  | ''::text |  |  |
+| vi_du | text |  | ''::text |  |  |
+| vi_du_file_url | text | Y |  |  |  |
+| vi_du_ten_file | text | Y |  |  |  |
+| ly_thuyet | text |  | ''::text |  |  |
+| ly_thuyet_file_url | text | Y |  |  |  |
+| ly_thuyet_ten_file | text | Y |  |  |  |
+| thu_tu | integer | Y |  |  |  |
+| muc_do | smallint | Y |  |  |  |
+| bac_toi_thieu | text | Y |  |  | `S` · `A` · `B` · `C` · `D` |
+| ma_cu | text | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## khtn_bdm_gan_cau
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_cau | text |  |  | PK FK→khtn_cau_hoi.ma_cau |  |
+| dang_bai_id | text |  |  | FK→khtn_bdm_dang_bai.id |  |
+| nguon | text |  |  |  | `nguoi` · `ai` · `cum` |
+| actor | uuid | Y | jwt_uid() |  |  |
+| at | timestamp with time zone |  | now() |  |  |
+
+## khtn_bdm_log
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | bigint |  |  | PK |  |
+| bang | text |  |  |  |  |
+| khoa | text | Y |  |  |  |
+| hanh_dong | text |  |  |  | `them` · `sua` · `xoa` |
+| cu | jsonb | Y |  |  |  |
+| moi | jsonb | Y |  |  |  |
+| actor | uuid | Y | jwt_uid() |  |  |
+| at | timestamp with time zone |  | now() |  |  |
+
+## khtn_bdm_nhom
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | text |  | ('KNB'::text \|\| lpad((nextval('khtn_bdm_nhom_seq'::regclass))::text, 5, '0'::text)) | PK |  |
+| chu_de_id | text |  |  | FK→khtn_bdm_o.chu_de_id |  |
+| chuyen_de_id | text |  |  | FK→khtn_bdm_o.chuyen_de_id |  |
+| ten | text |  |  |  |  |
+| mo_ta | text |  | ''::text |  |  |
+| ly_thuyet | text |  | ''::text |  |  |
+| ly_thuyet_file_url | text | Y |  |  |  |
+| ly_thuyet_ten_file | text | Y |  |  |  |
+| thu_tu | integer | Y |  |  |  |
+| ma_cu | text | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## khtn_bdm_nhom_tien_de
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| nhom_id | text |  |  | PK FK→khtn_bdm_nhom.id |  |
+| tien_de_nhom_id | text |  |  | PK FK→khtn_bdm_nhom.id |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
+## khtn_bdm_o
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| chu_de_id | text |  |  | PK FK→khtn_bdm_chu_de.id |  |
+| chuyen_de_id | text |  |  | PK FK→khtn_bdm_chuyen_de.id |  |
+| thu_tu | integer | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
 ## khtn_cau_form_tn
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -5290,7 +5391,7 @@ END |  |  |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
 | mon | text |  |  | FK→sotay_ct_hinh.mon |  |
-| khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
+| khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
 | ten | text |  |  |  |  |
@@ -8725,6 +8826,24 @@ WITH luot AS (
 | kho_doi_dang_log | trg_kho_doi_dang_log_dong_bo_btyeu | AFTER | INSERT | _trg_btyeu_dong_bo_dang_ban_do |
 | khtn_ban_do | trg_khtn_ban_do_sync_ca_test_cau | AFTER | UPDATE | tg_ban_do_sync_ca_test_cau |
 | khtn_ban_do | trg_khtn_ban_do_xoa_dong_bo_btyeu | AFTER | DELETE | _trg_btyeu_dong_bo_dang_ban_do |
+| khtn_bdm_chu_de | trg_khtn_bdm_chu_de_log | AFTER | INSERT/DELETE/UPDATE | _khtn_bdm_ghi_log |
+| khtn_bdm_chu_de | trg_khtn_bdm_chu_de_thu_tu | BEFORE | INSERT | _khtn_bdm_thu_tu |
+| khtn_bdm_chu_de | trg_khtn_bdm_chu_de_touch | BEFORE | UPDATE | _bdm_touch |
+| khtn_bdm_chuyen_de | trg_khtn_bdm_chuyen_de_log | AFTER | INSERT/DELETE/UPDATE | _khtn_bdm_ghi_log |
+| khtn_bdm_chuyen_de | trg_khtn_bdm_chuyen_de_touch | BEFORE | UPDATE | _bdm_touch |
+| khtn_bdm_dang_bai | trg_khtn_bdm_dang_bai_bump | AFTER | INSERT/DELETE/UPDATE | _khtn_bdm_bump_nhom |
+| khtn_bdm_dang_bai | trg_khtn_bdm_dang_bai_log | AFTER | INSERT/DELETE/UPDATE | _khtn_bdm_ghi_log |
+| khtn_bdm_dang_bai | trg_khtn_bdm_dang_bai_thu_tu | BEFORE | INSERT | _khtn_bdm_thu_tu |
+| khtn_bdm_dang_bai | trg_khtn_bdm_dang_bai_touch | BEFORE | UPDATE | _bdm_touch |
+| khtn_bdm_gan_cau | trg_khtn_bdm_gan_cau_log | AFTER | INSERT/DELETE/UPDATE | _khtn_bdm_ghi_log |
+| khtn_bdm_nhom | trg_khtn_bdm_nhom_log | AFTER | INSERT/DELETE/UPDATE | _khtn_bdm_ghi_log |
+| khtn_bdm_nhom | trg_khtn_bdm_nhom_thu_tu | BEFORE | INSERT | _khtn_bdm_thu_tu |
+| khtn_bdm_nhom | trg_khtn_bdm_nhom_tien_de_cung_o | AFTER | UPDATE | _khtn_bdm_tien_de_cung_o |
+| khtn_bdm_nhom | trg_khtn_bdm_nhom_touch | BEFORE | UPDATE | _bdm_touch |
+| khtn_bdm_nhom_tien_de | trg_khtn_bdm_nhom_tien_de_log | AFTER | INSERT/DELETE/UPDATE | _khtn_bdm_ghi_log |
+| khtn_bdm_nhom_tien_de | trg_khtn_bdm_tien_de_kiem | BEFORE | INSERT/UPDATE | _khtn_bdm_tien_de_kiem |
+| khtn_bdm_o | trg_khtn_bdm_o_log | AFTER | INSERT/DELETE/UPDATE | _khtn_bdm_ghi_log |
+| khtn_bdm_o | trg_khtn_bdm_o_thu_tu | BEFORE | INSERT | _khtn_bdm_thu_tu |
 | khtn_cau_form_tn | khtn_cau_form_tn_kiem | BEFORE | INSERT/UPDATE | khtn_cau_form_tn_kiem |
 | khtn_cau_hoi | trg_chan_duyet_dang_cho | BEFORE | INSERT/UPDATE | _trg_chan_duyet_dang_cho |
 | khtn_cau_hoi | trg_de_thi_dien_dang | AFTER | UPDATE | _trg_de_thi_dien_dang |
@@ -8793,6 +8912,7 @@ WITH luot AS (
 | tuyen_sinh_nhan_bao | trg_log_tuyen_sinh_nhan_bao | AFTER | INSERT/DELETE/UPDATE | _lich_test_ghi_log |
 | ung_vien | trg_log_ung_vien | AFTER | INSERT/UPDATE | log_ung_vien |
 | ung_vien | trg_ung_vien_doi_khoi_phan_cong | AFTER | UPDATE | tg_ung_vien_doi_khoi_phan_cong |
+| vi_tri | trg_vi_tri_dong_bo_team | AFTER | INSERT/DELETE/UPDATE | _trg_vi_tri_dong_bo_team |
 | viec_van_hanh_duyet | tg_vvhd_tinh | BEFORE | INSERT/UPDATE | fn_vvhd_tinh |
 
 ## Functions
@@ -8998,6 +9118,11 @@ WITH luot AS (
 - `_khoi_quan_ly()` → TABLE(mon text, khoi text, nhan_su_id uuid, cap text, vi_tri_id uuid)
 - `_khoi_so(p_khoi text)` → integer
 - `_khoi_van_hanh(p_mon text, p_khoi text)` → TABLE(nhan_su_id uuid)
+- `_khtn_bdm_bump_nhom()` → trigger
+- `_khtn_bdm_ghi_log()` → trigger
+- `_khtn_bdm_thu_tu()` → trigger
+- `_khtn_bdm_tien_de_cung_o()` → trigger
+- `_khtn_bdm_tien_de_kiem()` → trigger
 - `_la_gv_kiem_ta(p_ns uuid)` → boolean
 - `_lich_test_cham_updated()` → trigger
 - `_lich_test_ghi_log()` → trigger
@@ -9020,6 +9145,7 @@ WITH luot AS (
 - `_nhac_han_hang_ngay()` → integer
 - `_nhan_su_plan_ghi_log()` → trigger
 - `_nhan_su_plan_truoc()` → trigger
+- `_nst_dong_bo(p_ns uuid, p_team uuid)` → void
 - `_nt_bam(p_k text)` → double precision
 - `_nt_bonus_mua(p_ngay0 integer, p_d0 integer)` → double precision
 - `_nt_cung_lop(p_a uuid, p_b uuid)` → boolean
@@ -9158,6 +9284,7 @@ WITH luot AS (
 - `_trg_ta_retest_push()` → trigger
 - `_trg_tai_lieu_duyet_log()` → trigger
 - `_trg_task_pt_push()` → trigger
+- `_trg_vi_tri_dong_bo_team()` → trigger
 - `_troly_bc_btvn_ti_le(p_tu date, p_den date)` → jsonb
 - `_troly_bc_ca_yeu(p_tu date, p_den date)` → TABLE(ngay date, gio time without time zone, mon text, nguoi_day text, ho_ten text, ten_lop text, ket_qua text, ly_do_huy text, khoa_ca text)
 - `_troly_bc_canh_bao(p_tu date, p_den date)` → jsonb
@@ -10359,6 +10486,11 @@ WITH luot AS (
 | kho_nhan_xet | kho_nhan_xet_ma_check | `CHECK ((btrim(ma) <> ''::text))` |
 | kho_nhan_xet | kho_nhan_xet_noi_dung_check | `CHECK ((btrim(noi_dung) <> ''::text))` |
 | kho_nhan_xet_xu_ly | kho_nhan_xet_xu_ly_ghi_chu_check | `CHECK ((btrim(ghi_chu) <> ''::text))` |
+| khtn_bdm_chu_de | khtn_bdm_chu_de_ten_check | `CHECK ((btrim(ten) <> ''::text))` |
+| khtn_bdm_chuyen_de | khtn_bdm_chuyen_de_ten_check | `CHECK ((btrim(ten) <> ''::text))` |
+| khtn_bdm_dang_bai | khtn_bdm_dang_bai_ten_check | `CHECK ((btrim(ten) <> ''::text))` |
+| khtn_bdm_nhom | khtn_bdm_nhom_ten_check | `CHECK ((btrim(ten) <> ''::text))` |
+| khtn_bdm_nhom_tien_de | khtn_bdm_nhom_tien_de_check | `CHECK ((nhom_id <> tien_de_nhom_id))` |
 | khtn_cau_hoi | khtn_cau_hoi_muc_cau_check | `CHECK (((muc_cau >= 1) AND (muc_cau <= 5)))` |
 | khtn_cum_tien_de | khtn_cum_tien_de_check | `CHECK ((ma_cum <> tien_de_ma_cum))` |
 | khtn_dang_tien_de | khtn_dang_tien_de_check | `CHECK ((ma_dang <> tien_de_ma_dang))` |
