@@ -78175,3 +78175,8 @@ Thùy nêu 4 việc, làm được 3:
 - **Hệ quả:** 1 HS về số dư **−59** (đã đổi quà bằng số xu trùng). Ví được âm theo luật 06/10.
 - **Ghi chú migration sửa SAU khi áp** (bỏ tên người ghi khỏi phần chú thích, SQL giữ nguyên) ⇒ cập nhật vân tay `_migrations.bam` của đúng file đó để `--status` không báo lệch.
 - **Sai sót soát 28/10:** view `qlht_v_so_du_xu` trả **0 dòng** cho role `claude_build` ⇒ 2 kiểm "ví âm" và "HS nghỉ còn xu" hôm qua là MÙ. Kiểm thẳng từ sổ: hôm qua đúng 0 ví âm, nhưng **19 HS nghỉ + 2 HS test còn xu** (nhiều nhất 84), không phải 0 như đã báo. `scripts/soat-xu-bat-thuong.sql` đã sửa: số dư tính thẳng từ sổ, thêm mục `vi_am`.
+
+### 29/10 — Gậy: lọc đề xuất theo khối (Thùy)
+- Lỗi "permission denied for function current_nhan_su_id" (28/10) = phiên đăng nhập rơi về anon (fn_viec_buoi_thuong/fn_ops_viec_nhom_thang cho PUBLIC gọi, bên trong gọi current_nhan_su_id đã revoke anon). Thùy đăng nhập lại là hết. Không sửa DB.
+- **mig `202610291307` ĐÃ ÁP (--only):** `fn_gay_de_xuat_lop(uuid[])` (invoker) trả khối/môn/lớp của đề xuất qua ref_key vh:<buoi>| → buoi_hoc → lop. Việc OPS gộp theo ca (vh:ops:grp:…) không có lớp ⇒ không trả dòng.
+- **App:** tab Đề xuất thêm ô lọc Khối (Mọi khối · Khối của tôi · từng khối · Vận hành theo ca), người có quyền khối mặc định "Khối của tôi"; ô lọc người đếm theo khối đang lọc. tsc sạch, Vite biên dịch được; **chưa bấm thử bằng đăng nhập thật**.

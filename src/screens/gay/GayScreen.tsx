@@ -18,7 +18,7 @@ import {
   listGayLoi, createGayLoi, updateGayLoi, listGayHoatDong, createGayHoatDong, updateGayHoatDong,
   quetGayTuDong, listDeXuat, chotDeXuat, boQuaDeXuat,
   danhGayThuCong, goGay, thuHoiGay, bangGay, chotThang, listChotThang, listMienGay, setMienGay, listTaskCuaNhanSu, tienDoTask,
-  phamViKhoi, PHAM_VI_KHOI_RONG, type PhamViKhoi,
+  phamViKhoi, PHAM_VI_KHOI_RONG, deXuatLop, type PhamViKhoi, type DeXuatLop,
   type GayLoi, type GayHoatDong, type GayDeXuatFull, type BangGayRow, type GayChotThangFull, type NsMienGay,
   type KhoangNgay, type TaskCuaNhanSu, type TienDoTask,
 } from '../../lib/gay'
@@ -292,13 +292,22 @@ function DeXuatTab({ lois, canAct, laAdmin, scopeIds, meId, onBao }: {
   const loiChamDeadline = lois.find((l) => l.ma === MA_LOI_CHAM_DEADLINE)?.id ?? lois[0]?.id ?? ''
   // Đề xuất thuộc lớp khối của tôi (quyền khối, Thùy 16/10) — lấy SAU lượt quét để có cả đề xuất vừa sinh.
   const [dxKhoi, setDxKhoi] = useState<Set<string>>(new Set())
+  // LỌC THEO KHỐI (Thùy 29/10): '' = tất cả · 'cua_toi' = các khối tôi phụ trách · '_ops' = việc OPS theo ca (không có lớp) · còn lại = 1 khối.
+  // Người có quyền khối mở tab thì mặc định lọc sẵn "Khối của tôi".
+  const [lopById, setLopById] = useState<Map<string, DeXuatLop>>(new Map())
+  const [khoiToi, setKhoiToi] = useState<string[]>([])
+  const [locKhoi, setLocKhoi] = useState<string | null>(null) // null = chưa chọn lần nào (chờ biết khối của tôi)
 
   const load = async () => {
     setLoading(true)
     try {
       await quetGayTuDong() // quét lazy — idempotent nhờ ref_key unique
       const [ds, pv] = await Promise.all([listDeXuat('cho'), phamViKhoi().catch(() => PHAM_VI_KHOI_RONG)])
-      setDxs(ds); setDxKhoi(pv.deXuatIds)
+      const lop = await deXuatLop(ds.map((d) => d.id)).catch(() => new Map<string, DeXuatLop>())
+      setDxs(ds); setDxKhoi(pv.deXuatIds); setLopById(lop)
+      const kt = pv.toanQuyen ? [] : pv.khoi
+      setKhoiToi(kt)
+      setLocKhoi((cu) => cu ?? (kt.length ? 'cua_toi' : ''))
     } catch (e: any) { onBao(false, String(e.message ?? e)) }
     setLoading(false)
   }
@@ -308,14 +317,28 @@ function DeXuatTab({ lois, canAct, laAdmin, scopeIds, meId, onBao }: {
   // đây chỉ là NHẮC leader, không đổi được gì bằng cách lờ đi.
   const qua48h = (createdAt: string) => Date.now() - new Date(createdAt).getTime() > 48 * 3600000
 
+  const khoiCua = (d: GayDeXuatFull) => lopById.get(d.id)?.khoi ?? null
+  const cacKhoi = useMemo(() => {
+    const dem = new Map<string, number>()
+    for (const d of dxs) { const k = khoiCua(d) ?? '_ops'; dem.set(k, (dem.get(k) ?? 0) + 1) }
+    return [...dem.entries()].sort(([a], [b]) => (a === '_ops' ? 1 : b === '_ops' ? -1 : a.localeCompare(b, 'vi', { numeric: true })))
+  }, [dxs, lopById])
+  const lk = locKhoi ?? ''
+  const dxsLoc = useMemo(() => !lk ? dxs : dxs.filter((d) => {
+    const k = khoiCua(d)
+    if (lk === 'cua_toi') return k != null && khoiToi.includes(k)
+    if (lk === '_ops') return k == null
+    return k === lk
+  }), [dxs, lopById, lk, khoiToi])
+
   // Gom theo người (nhiều nhất lên đầu) — mặc định mở sẵn người đang lọc / chính mình
   const nhom = useMemo(() => {
     const by = new Map<string, GayDeXuatFull[]>()
-    for (const d of dxs) { if (!by.has(d.nhan_su_id)) by.set(d.nhan_su_id, []); by.get(d.nhan_su_id)!.push(d) }
+    for (const d of dxsLoc) { if (!by.has(d.nhan_su_id)) by.set(d.nhan_su_id, []); by.get(d.nhan_su_id)!.push(d) }
     return [...by.entries()]
       .map(([nsId, items]) => ({ nsId, ten: items[0].ns_ten ?? '?', items: items.sort((a, b) => (b.tre_phut ?? 0) - (a.tre_phut ?? 0)) }))
       .sort((a, b) => b.items.length - a.items.length)
-  }, [dxs])
+  }, [dxsLoc])
   const nhomHien = locNs ? nhom.filter((n) => n.nsId === locNs) : nhom
 
   const lamChot = async (d: GayDeXuatFull) => {
@@ -340,8 +363,13 @@ function DeXuatTab({ lois, canAct, laAdmin, scopeIds, meId, onBao }: {
         <span className="rounded-full border border-amber-200 bg-amber-50 px-2.5 py-0.5 text-xs font-medium text-amber-700">⚠ Máy đề xuất — người chốt. Chưa chốt = chưa thành gậy.</span>
         <span className="text-xs text-slate-400">Danh sách công khai để mọi người kiểm tra & phản biện — thấy sai thì báo leader bỏ qua kèm lý do.</span>
         <div className="ml-auto flex items-center gap-1.5">
+          <select className={inputCls + ' !py-1 text-xs'} value={lk} onChange={(e) => { setLocKhoi(e.target.value); setLocNs(''); setMoNs(null) }}>
+            <option value="">Mọi khối ({dxs.length})</option>
+            {khoiToi.length > 0 && <option value="cua_toi">Khối của tôi: {khoiToi.join(', ')}</option>}
+            {cacKhoi.map(([k, n]) => <option key={k} value={k}>{k === '_ops' ? 'Vận hành theo ca (không theo khối)' : `Khối ${k}`} ({n})</option>)}
+          </select>
           <select className={inputCls + ' !py-1 text-xs'} value={locNs} onChange={(e) => { setLocNs(e.target.value); setMoNs(e.target.value || null) }}>
-            <option value="">Tất cả ({dxs.length})</option>
+            <option value="">Mọi người ({dxsLoc.length})</option>
             {nhom.map((n) => <option key={n.nsId} value={n.nsId}>{n.ten} ({n.items.length})</option>)}
           </select>
           <button className={btnGhost} onClick={load}>↻ Quét lại</button>
