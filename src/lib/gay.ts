@@ -502,7 +502,7 @@ export async function hauKiemGay(soNgay = 7): Promise<HauKiemGay[]> {
   if (error) throw error
   return (data ?? []) as HauKiemGay[]
 }
-export async function ghiHauKiem(loai: HauKiemGay['loai'], refId: string, ketQua: 'dong_y' | 'da_sua', ghiChu: string | null): Promise<void> {
+export async function ghiHauKiem(loai: HauKiemGay['loai'] | 'viec_van_hanh' | 'ca_nhe', refId: string, ketQua: 'dong_y' | 'da_sua', ghiChu: string | null): Promise<void> {
   const { error } = await supabase.rpc('fn_hau_kiem_ghi', { p_loai: loai, p_ref: refId, p_ket_qua: ketQua, p_ghi_chu: ghiChu })
   if (error) throw error
 }

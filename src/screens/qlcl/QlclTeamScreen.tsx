@@ -7,17 +7,22 @@ import { useEffect, useState } from 'react'
 import { teamQlcl, type TeamQlcl, type OQlcl } from '../../lib/qlcl'
 import { listNhanSu, setKhoiQuanLy, type NhanSu } from '../../lib/nhansu'
 import SearchSelect from '../../components/SearchSelect'
+import HauKiemTab from '../gay/HauKiemTab'
+import HauKiemKhac from './HauKiemKhac'
 
 const TEAM_MAU: Record<string, string> = {
   qlcl: 'bg-rose-50 text-rose-700', ta: 'bg-sky-50 text-sky-700', hoc_thuat: 'bg-violet-50 text-violet-700',
   gv: 'bg-emerald-50 text-emerald-700', core: 'bg-slate-100 text-slate-700', ops: 'bg-amber-50 text-amber-800',
 }
-const NHO: { d: TeamQlcl | null } = { d: null }
+const NHO: { d: TeamQlcl | null; tab: 'team' | 'haukiem' } = { d: null, tab: 'team' }
 
 export default function QlclTeamScreen() {
   const [d, setD] = useState<TeamQlcl | null>(NHO.d)
   const [ds, setDs] = useState<NhanSu[]>([])
   const [loi, setLoi] = useState<string | null>(null)
+  const [tab, setTabS] = useState(NHO.tab)
+  const setTab = (t: typeof tab) => { NHO.tab = t; setTabS(t) }
+  const [bao, setBao] = useState<{ ok: boolean; msg: string } | null>(null)
   const tai = () => teamQlcl().then((x) => { NHO.d = x; setD(x) }).catch((e) => setLoi(e?.message ?? String(e)))
   useEffect(() => { tai(); listNhanSu().then((n) => setDs(n.filter((x) => x.trang_thai === 'dang_lam'))).catch(() => {}) }, [])
 
@@ -34,15 +39,32 @@ export default function QlclTeamScreen() {
   if (!d) return <div className="p-8 text-[13px] text-slate-400">{loi ?? 'Đang tải…'}</div>
   const opts = ds.map((n) => ({ id: n.id, label: n.ho_ten }))
   const thieu = d.o.filter((o) => !o.truong_id).length
+  const toanHe = d.duoc_sua && d.mon_sua == null // hậu kiểm = việc của toàn hệ (Lead / Quản lý chất lượng)
   const sua = (o: OQlcl) => d.duoc_sua && (d.mon_sua == null || d.mon_sua.includes(o.mon)) // quản lý môn chỉ sửa môn mình (DB cũng chặn)
 
   return (
     <div className="min-h-0 flex-1 overflow-auto bg-[#fafafb] px-8 py-5">
       <div className="mb-4 flex flex-wrap items-baseline gap-3">
         <h2 className="text-[17px] font-bold text-slate-800">Team Quản lý chất lượng</h2>
+        {toanHe && (
+          <div className="inline-flex rounded-lg border border-slate-200 bg-white p-0.5 text-[12.5px] font-semibold">
+            {([['team', 'Phân công · thành viên'], ['haukiem', 'Hậu kiểm']] as const).map(([k, t]) => (
+              <button key={k} onClick={() => setTab(k)} className={`rounded-md px-3 py-1 ${tab === k ? 'bg-indigo-600 text-white' : 'text-slate-600'}`}>{t}</button>
+            ))}
+          </div>
+        )}
         <span className="text-[12.5px] text-slate-500">Chọn Trưởng cho ô môn × khối ⇒ người đó tự có ghế Trưởng khối ở team Trợ giảng · Học thuật · Quản lý chất lượng (⚙ = ghế tự sinh).{!d.duoc_sua && ' Bạn chỉ xem.'}</span>
       </div>
       {loi && <p className="mb-3 rounded-lg bg-rose-50 px-3 py-2 text-[12.5px] text-rose-700">{loi}</p>}
+      {toanHe && tab === 'haukiem' ? (
+        <div>
+          <p className="mb-4 text-[12.5px] text-slate-500">Quyết định của trưởng khối có hiệu lực ngay — ở đây bạn xem lại (từ 29/10). Đồng ý, hoặc sửa.</p>
+          {bao && <p className={`mb-3 rounded-lg px-3 py-2 text-[12.5px] ${bao.ok ? 'bg-emerald-50 text-emerald-700' : 'bg-rose-50 text-rose-700'}`}>{bao.msg}</p>}
+          <p className="mb-2 text-[13px] font-bold text-slate-700">Gậy</p>
+          <HauKiemTab onBao={(ok, msg) => setBao({ ok, msg })} />
+          <div className="mt-6"><HauKiemKhac /></div>
+        </div>
+      ) : <>
 
       <section className="mb-7">
         <p className="mb-2 text-[11.5px] font-bold uppercase tracking-wider text-slate-500">Phân công ô · {d.o.length} ô{thieu ? <span className="ml-1 text-rose-600">· {thieu} ô chưa có Trưởng</span> : null}</p>
@@ -99,6 +121,7 @@ export default function QlclTeamScreen() {
           ))}
         </div>
       </section>
+      </>}
     </div>
   )
 }

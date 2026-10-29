@@ -56,3 +56,28 @@ export async function teamQlcl(): Promise<TeamQlcl | null> {
   if (error) throw error
   return (data ?? null) as TeamQlcl | null
 }
+
+// Hậu kiểm ngoài gậy (Thùy 29/10): duyệt việc vận hành có phán đoán + ca Bổ trợ Nhẹ do trưởng khối tạo. Chỉ toàn hệ (DB chặn).
+export type HauKiemKhac = {
+  loai: 'viec_van_hanh' | 'ca_nhe'; ref_id: string; at: string; nguoi_quyet: string; nhan_su: string | null; mo_ta: string
+  chat_luong?: number; tien_do?: number; tien_do_de_xuat?: number; ghi_chu?: string | null
+  hoc_sinh?: string | null; ta?: string | null; trang_thai?: 'mo' | 'huy'
+  hk: { ket_qua: 'dong_y' | 'da_sua'; ghi_chu: string | null; at: string; nguoi: string } | null
+}
+export async function hauKiemKhac(soNgay = 7): Promise<HauKiemKhac[]> {
+  const { data, error } = await supabase.rpc('fn_hau_kiem_khac', { p_so_ngay: soNgay })
+  if (error) throw error
+  return (data ?? []) as HauKiemKhac[]
+}
+export async function suaDuyetVanHanh(id: string, chatLuong: number, tienDo: number, ghiChu: string | null): Promise<void> {
+  const { error } = await supabase.rpc('fn_hau_kiem_sua_vvh', { p_id: id, p_chat_luong: chatLuong, p_tien_do: tienDo, p_ghi_chu: ghiChu })
+  if (error) throw error
+}
+
+// Dòng chảy dạng yếu 1 ô (spec §4.2): so 2 ảnh đầu tuần gần nhất. null = chưa đủ 2 tuần chốt.
+export type DongChay = { tuan: string | null; tuan_truoc: string | null; vao: number | null; ra_bang_chung: number | null; ra_cua_so: number | null; so_hs: number; so_hs_co_do: number }
+export async function dongChayDangYeu(mon: string, khoi: string): Promise<DongChay> {
+  const { data, error } = await supabase.rpc('fn_qlcl_dong_chay', { p_mon: mon, p_khoi: khoi })
+  if (error) throw error
+  return data as DongChay
+}

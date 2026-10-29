@@ -5,7 +5,7 @@
 // Quyền: AI CŨNG XEM được bảng gậy (minh bạch — Thùy chốt 08-29); hành động
 // (chốt đề xuất/đánh/gỡ/thu hồi/chốt tháng) chỉ leader theo cây tổ chức
 // (getMyScope.laQuanLy, đúng phạm vi người dưới quyền) hoặc admin hệ thống,
-// CỘNG quyền theo khối của lớp (bảng gay_quyen_khoi, Thùy 16/10 — toàn quyền = như admin).
+// CỘNG quyền theo khối của lớp (Trưởng khối được phân công — phan_cong_quan_ly_khoi, 29/10; toàn quyền = Lead/Quản lý chất lượng = như admin).
 // Style: tông Apple sáng như các màn khác (card trắng + bóng mềm, pill mềm —
 // Thùy 08-29: KHÔNG dùng style scifi HUD).
 // ============================================================================

@@ -3,7 +3,7 @@
 // Bấm ô ⇒ bảng chi tiết em yếu + trạng thái xử lý · bấm em ⇒ popup (dạng yếu · ET · BTVN như màn Duyệt bổ trợ).
 // Số tính ở DB, lưu sẵn; widget gọi làm mới lười theo lô cho tới khi hết em cũ (fn_qlcl_lam_moi). Không tự ẩn số cũ khi đang làm mới.
 import { useEffect, useState } from 'react'
-import { tongQuanDangYeu, lamMoiDangYeu, hsDangYeu, etBtvnCuaEm, deXuatYeu, type OTongQuan, type HsDangYeu } from '../../lib/qlcl'
+import { tongQuanDangYeu, lamMoiDangYeu, hsDangYeu, etBtvnCuaEm, deXuatYeu, dongChayDangYeu, type DongChay, type OTongQuan, type HsDangYeu } from '../../lib/qlcl'
 import type { EtBtvn } from '../../lib/botro_tuan'
 import { KhoiET, KhoiBTVN } from '../danhgia/DuyetBoTroYeuScreen'
 
@@ -85,7 +85,9 @@ function BangChiTiet({ o, onDong, onTaoCaNhe }: { o: OTongQuan; onDong: () => vo
       setDs((p) => p && p.map((x) => x.hoc_sinh_id === h.hoc_sinh_id ? { ...x, dang_theo_doi: true, theo_doi_nguon: 'truong_khoi' } : x)) // vá tại chỗ
     } catch (e: any) { setLoi(e?.message ?? String(e)) }
   }
+  const [dc, setDc] = useState<DongChay | null>(null)
   useEffect(() => { setDs(null); hsDangYeu(o.mon, o.khoi).then(setDs).catch((e) => setLoi(e?.message ?? String(e))) }, [o.mon, o.khoi])
+  useEffect(() => { setDc(null); dongChayDangYeu(o.mon, o.khoi).then(setDc).catch(() => {}) }, [o.mon, o.khoi])
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center overflow-auto bg-slate-900/40 p-6" onClick={onDong}>
       <div className="w-full max-w-5xl rounded-2xl bg-white shadow-xl" onClick={(e) => e.stopPropagation()}>
@@ -95,6 +97,17 @@ function BangChiTiet({ o, onDong, onTaoCaNhe }: { o: OTongQuan; onDong: () => vo
           <button onClick={onTaoCaNhe} className="ml-auto rounded-lg bg-indigo-600 px-3 py-1.5 text-[12.5px] font-semibold text-white hover:bg-indigo-700">＋ Tạo ca Nhẹ</button>
           <button onClick={onDong} className="rounded-lg px-2 py-1 text-[18px] leading-none text-slate-400 hover:text-slate-700">×</button>
         </div>
+        {/* Dòng chảy (spec §4.2): so 2 ảnh đầu tuần gần nhất — Ra chỉ tính là thành tích khi có lần đo mới; độ phủ = đối trọng "đo ít đi" */}
+        {dc && (
+          <div className="flex flex-wrap gap-x-5 gap-y-1 border-b border-slate-100 bg-slate-50 px-5 py-2 text-[12.5px] text-slate-600">
+            {dc.tuan_truoc == null ? <span className="text-slate-400">Vào / Ra: cần ít nhất 2 lần Chốt tuần để so.</span> : <>
+              <span title="Dạng yếu ở ảnh tuần này mà tuần trước chưa yếu">Vào <b className="text-rose-600">+{dc.vao}</b></span>
+              <span title="Tuần trước yếu, tuần này hết yếu VÀ có lần đo mới dạng đó">Ra có bằng chứng <b className="text-emerald-600">−{dc.ra_bang_chung}</b></span>
+              <span title="Hết yếu chỉ vì không còn đo trong cửa sổ — không tính thành tích">Rớt cửa sổ <b className="text-slate-500">{dc.ra_cua_so}</b></span>
+            </>}
+            <span title="Em có ≥ 1 lần chấm trong 7 ngày qua">Độ phủ đo <b className="text-slate-700">{dc.so_hs_co_do}/{dc.so_hs} em</b></span>
+          </div>
+        )}
         <div className="max-h-[75vh] overflow-auto px-5 py-3">
           {loi ? <p className="text-[13px] text-rose-600">{loi}</p>
             : ds === null ? <p className="text-[13px] text-slate-400">Đang tải…</p>
