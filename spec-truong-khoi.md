@@ -190,3 +190,51 @@ Anh/KHTN: không cần pha riêng. Thêm ghế trưởng khối môn đó là m�
 - *Ghế trùng tên "Trưởng khối" ở team GV / Học thuật*: không cần đụng. Quyền không còn đọc từ tên hay cây ghế.
 - *8T*: Thùy quản. Cơ chế = màn phân công (chốt #12).
 - *Anh/KHTN chưa có trưởng khối*: ô chưa phân công ⇒ hiện đỏ, việc rơi lên Trang (§2.1).
+
+---
+
+## 8. Widget dạng yếu + BỔ TRỢ NHẸ (Thùy chốt 29/10, tối)
+
+### 8.1 Bổ trợ chia 2 nhánh trong cấp L1
+
+| | **L1.1 — Bổ trợ NHẸ** (mới) | **L1.2 / L2 / L3 — Bổ trợ YẾU** (như cũ) |
+|---|---|---|
+| Dành cho | Ca nhẹ, xử lý được sau giờ | Ca nặng, hoặc không có lịch sau giờ phù hợp |
+| Ai quyết nhẹ / nặng | **Trưởng khối + Trang họp đầu tuần**. Máy **không** gợi ý Nhẹ/Yếu (chưa đủ dữ liệu; chờ hệ chấm bài bằng AI) | như cũ |
+| Duyệt | **Trưởng khối tự tạo, không chờ Trang** (Trang hậu kiểm — §3) | Trưởng khối đề xuất → Trang **Duyệt chính thức** như cũ |
+| Xếp lịch | **Trưởng khối tự xếp, không qua Lộc**, không luồng xếp lịch | Lộc xếp như cũ |
+| Thời lượng | 15–20 phút, đa số **sau buổi học** | như cũ |
+| Suất / phòng | **Không trừ suất khối, không giới hạn số em mỗi ca, không kiểm phòng** (ngoài khung giờ chính) | trần theo khối như cũ |
+| Mỗi em | **Tối đa 2 ca Nhẹ / tuần** (lớp học tối đa 2 buổi/tuần). Sau ca vẫn yếu ⇒ không giới hạn, GV/trưởng khối tự xử lý tiếp | 1 tuần 1 lần, 14 ngày như cũ |
+| Vắng | Chỉ ghi vắng, **không bù** | như cũ |
+
+### 8.2 Tạo ca Bổ trợ Nhẹ (trưởng khối)
+
+1. **Thời gian:** *Sau buổi học* (mặc định = buổi của lớp vào ngày bấm) / *Thời gian khác* (chọn ngày · giờ · phòng; trùng lịch phòng thì **cảnh báo, không chặn**).
+2. **Lớp:** chỉ lớp thuộc khối mình (phạm vi `fn_pham_vi_cua_toi`).
+3. **Học sinh:** hiện cả lớp, **tô nổi em có dạng yếu** (kèm số dạng); trưởng khối tick chọn. Em đã đủ 2 ca Nhẹ trong tuần ⇒ không chọn được.
+4. **TA lớp cùng làm:** có / không. Giai đoạn thử: trưởng khối **và** TA cùng đứng; **trưởng khối mở + đóng ca**.
+5. **Dạng:** máy điền sẵn dạng yếu của từng em; trưởng khối bỏ/thêm.
+6. **Tạo thông báo phụ huynh:** sau khi mở ca có nút sinh đoạn chữ để copy dán nhóm Zalo lớp:
+   > *"Thứ 4, ngày dd/mm, các bạn X, Y, Z sẽ ở lại sau giờ 20 phút để bổ trợ các phần kiến thức còn yếu. Bố mẹ nắm thông tin nhé ạ."*
+   (Thời gian khác ⇒ câu ghi đúng giờ hẹn thay cho "ở lại sau giờ".)
+
+### 8.3 Trong ca — đo được, nhưng **giấy là chính**
+
+- Nội dung **như ca Yếu**: dạng yếu của em → luyện → test cuối ca → kết quả vào mastery (để KPI đếm được dạng **Ra có bằng chứng**, §4.2).
+- Ca thường có GV ⇒ ưu tiên dạng phức tạp ⇒ **in giấy là chính**. ERP có **chức năng In tài liệu cho ca**: phiếu luyện + bài test theo dạng của từng em, trang đáp án/lời giải cho thầy cô. Dùng lại đúng engine in của ca Yếu (`fn_btyeu_in_sinh` · `fn_btyeu_in_test` · nhập kết quả `fn_btyeu_giay_nhap` · `fn_btyeu_giay_nop`), không viết engine in thứ hai.
+- **Công:** chỉ **ghi số liệu** (ai đứng, bao nhiêu phút, bao nhiêu em). Chưa tính lương — tính sau.
+
+### 8.4 Widget màn chính ERP (trưởng khối luôn thấy)
+
+- Mỗi ô (môn × khối) trong phạm vi: **HS có dạng yếu · Số dạng yếu**, hiện **2 số**: *đầu tuần* (đóng băng lúc Trang bấm Chốt tuần, §4.1) → *hiện tại* (realtime).
+- Bấm vào ⇒ **bảng chi tiết**: mỗi dòng 1 HS — dạng yếu · trạng thái (chưa xử lý / có ca Nhẹ / đang case Yếu / đang theo dõi) · nút **Tạo ca Nhẹ** / **Đề xuất Yếu**.
+- Bấm 1 HS ⇒ **popup** chi tiết y như màn Duyệt bổ trợ của Trang hiện nay (ET 4 buổi · BTVN 4 buổi · điểm chuyên đề · lịch sử bổ trợ) — dùng lại component sẵn, không dựng kiểu mới.
+- Trưởng khối thấy khối mình; Trang / Thùy thấy mọi khối, lọc theo khối.
+
+### 8.5 Thứ tự build đề xuất
+
+1. **Ca Bổ trợ Nhẹ** (tạo ca · thông báo Zalo · in tài liệu · mở/đóng ca · ghi kết quả) — dùng được ngay.
+2. **Widget + bảng chi tiết + popup**, số *hiện tại* trước.
+3. **Đóng băng đầu tuần** trong Chốt tuần (P3) ⇒ widget có số *đầu tuần*.
+4. **Đề xuất Yếu** từ bảng chi tiết ⇒ vào màn Duyệt của Trang.
