@@ -78235,3 +78235,8 @@ Thùy nêu 4 việc, làm được 3:
 - **Còn sót:** user Supabase Auth `testqlht003@hs.bkdemy.local` — role ghi không có quyền schema auth; xoá tay trong Supabase Auth (không còn tai_khoan nên đăng nhập vào cũng không thấy gì).
 - TEST01–10 giữ tài khoản; TEST06 (3) + TEST07 (4) ghi tru_tay về 0, người ghi Admin hệ thống. KHÔNG tự động lặp (còn dùng thử luồng xu).
 - **View `qlht_v_so_du_xu`:** xu_dieu_chinh = mọi loại không phải chot_* ⇒ so_du = tổng cả sổ (trước thiếu nong_trai/giai_thuong/nghi_ve_0). Sửa luôn chỗ kiểm đủ xu của qlht_doi_qua_moi/qlht_dieu_chinh_xu + listSoDuXu + thanhtich.ts. claude_build đọc view ra 0 dòng (la_thanh_vien) ⇒ chỉ kiểm được định nghĩa, chưa thấy số trên app.
+
+## 29/10 (tối) — Dọn cụm khỏi câu bản đồ mới (Thùy: "Dọn cụm đi. ko dùng nữa rồi")
+- **Làm:** mig `202610291703_don_cum_cau_ban_do_moi` (ĐÃ ÁP) — null `ma_cum` 6.279 câu dai gán NDB, có bảng lưu `bdm_ma_cum_luu_20261029` + lệnh hoàn lại (đã thử). Spec §35.
+- **Đính chính lời em:** trước đó em báo mã cụm trên câu bdm là "rác của bản đồ mới" — sai, là cột bản đồ cũ trên cùng dòng; hậu quả là 2 dạng cũ T… đang xử mất cụm (K4, K7). Đã nói với Thùy.
+- **Không đụng:** 300 câu Hình hgt · bảng cụm · view bdm_cum_bai.

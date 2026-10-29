@@ -464,3 +464,11 @@ hàng đợi **nhớ filter + list + vị trí cuộn + khối đang mở** khi 
 - **Sửa (mig `202610291649_btyeu_ca_hs_bdm_khong_cum`):** `_btyeu_ca_cua_hs` — nhánh `bdm` (và nhánh nào không có bảng cụm) trả `cums = []`, KHÔNG tra bảng cụm/tiền đề nữa. Nhánh cũ có bảng cụm giữ nguyên (đối chiếu 29 em-buổi dạng ngoài NDB: 0 khác, 4 em-buổi có cụm vẫn có). Hàm tự kiểm `fn_btyeu_kiem_ca_hs` nhanh hơn ~13 lần (8,1 s → 0,6 s) vì bỏ các truy vấn cụm vô nghĩa.
 - **KHÔNG làm (Luật xoá):** không xoá/null `ma_cum` trên 6.579 câu bdm; không bỏ view `bdm_cum_bai` (Kho còn dùng — chưa kiểm hết). Chờ Thùy gật nếu muốn dọn.
 - **Còn lại dùng cụm cho bdm:** `fn_btyeu_ca_ta` (app TA) vẫn left join `bdm_cum_bai` theo `ma_cum` của bài đã luyện — luôn null với bdm nên chỉ hiện "Cả dạng"; chưa đổi vì không lỗi.
+
+## 35. Cập nhật 29/10 — ĐÃ DỌN CỤM KHỎI CÂU BẢN ĐỒ MỚI (Thùy: "ko dùng nữa rồi")
+
+- **Đính chính §34:** em từng gọi mã cụm trên câu bdm là "rác riêng của bản đồ mới" — SAI. `bdm_cau_hoi` là VIEW trên chính các dòng `dai_cau_hoi`/`hgt_cau_hoi`, nên `ma_cum` là cột của bản đồ cũ trên cùng dòng câu. Dọn = các dạng mã cũ `T…` dùng chung câu đó cũng mất cụm.
+- **Đã làm (mig `202610291703_don_cum_cau_ban_do_moi`):** `dai_cau_hoi.ma_cum = null` cho **6.279 câu** kho `dai` đã gán dạng `NDB*` (còn 124 câu `dai` chưa gán NDB giữ cụm). **Bản lưu** `bdm_ma_cum_luu_20261029` (6.279 dòng); hoàn lại bằng `update dai_cau_hoi q set ma_cum = l.ma_cum from bdm_ma_cum_luu_20261029 l where l.ma_cau = q.ma_cau` (đã thử trong transaction: về đúng 6.403 câu có cụm).
+- **Hệ quả đã đo:** chỉ 2 dạng cũ đang xử mất danh sách cụm → luyện "Cả dạng" (K4 `T104050102`, K7 `T107020302`). Hai em Hà Linh/Quỳnh Chi vào ca + luyện bình thường.
+- **KHÔNG đụng:** 300 câu `hgt` (Hình có cụm riêng, đang chạy) · bảng cụm `dai_cum_bai` (355) · `dai_cum_tien_de` (20) · view `bdm_cum_bai` (vẫn có `fn_btyeu_ca_ta`, `fn_ban_do_phieu_luu` nhắc tới) · `bai_test_cau.ma_cum` (lịch sử luyện) · cụm của KHTN/TSA/Hình.
+- **Còn lại nếu muốn dọn sâu hơn (cần Thùy gật riêng):** bỏ view `bdm_cum_bai` (phải sửa 2 hàm trước) · xoá bảng cụm cũ · 124 câu `dai` chưa gán NDB.
