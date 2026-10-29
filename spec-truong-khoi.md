@@ -243,6 +243,8 @@ Anh/KHTN: không cần pha riêng. Thêm ghế trưởng khối môn đó là m�
 
 **✅ Đã build 29/10 (mig `202610291652`) — số *hiện tại*:** widget ở **Việc của tôi › Vận hành** (`src/screens/qlcl/WidgetDangYeu.tsx`), tự ẩn nếu không quản ô nào. Đo thật: tính dạng yếu ~0,2–0,33 s/em ⇒ khối 8 mất 15 s, Toán toàn hệ 112 s, vượt trần ~8 s ⇒ **lưu sẵn** ở `dang_yeu_hien_tai` (1 dòng/em × môn), **làm mới lười** theo lô 10 em (`fn_qlcl_lam_moi`, ~2 s/lô) khi có người mở widget; em "cũ" = chưa tính · sang mốc 2 cửa sổ mới · có điểm chấm mới · quá 12 giờ. Hàm: `fn_qlcl_tong_quan` · `fn_qlcl_dang_yeu_hs`. Popup em dùng lại `KhoiET`/`KhoiBTVN` của màn Duyệt + `fn_botro_et_btvn`. **Số *đầu tuần* chưa có** (cột trả null, hiện "— chưa chốt") ⇒ làm ở P3. **Đề xuất Yếu** từ bảng chi tiết: chưa làm.
 
+**✅ 29/10 (mig `202610291734`) — số *đầu tuần* + Đề xuất Yếu:** Trang bấm Chốt tuần ⇒ màn làm mới cache dạng yếu mọi khối của môn trước, rồi `fn_botro_chot_tuan` (cùng transaction) chụp sang `dang_yeu_dau_tuan` (tuần · môn · khối · em). Widget hiện *đầu tuần → hiện tại*; bảng chi tiết có cột Đầu tuần. Nút **Đề xuất Yếu** ⇒ `fn_qlcl_de_xuat_yeu` (kiểm phạm vi) đưa em vào "Đang theo dõi" nguồn `truong_khoi` — màn Duyệt của Trang hiện chip "🧭 trưởng khối đề xuất Yếu", Trang Duyệt chính thức như cũ. Còn: Vào/Ra/Độ phủ (§4.2) chưa hiện.
+
 ### 8.5 Thứ tự build đề xuất
 
 1. **Ca Bổ trợ Nhẹ** (tạo ca · thông báo Zalo · in tài liệu · mở/đóng ca · ghi kết quả) — dùng được ngay.

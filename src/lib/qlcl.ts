@@ -25,12 +25,18 @@ export type DangYeuCuaEm = { ma_dang: string; ten_dang: string; score: number; n
 export type HsDangYeu = {
   hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; lop_id: string; ten_lop: string
   so_dang_yeu: number; dang: DangYeuCuaEm[]; tinh_at: string
-  so_ca_nhe_tuan: number; co_case_yeu: boolean; dang_theo_doi: boolean
+  so_dang_dau_tuan: number | null   // null = tuần này chưa chốt / em chưa có trong ảnh
+  so_ca_nhe_tuan: number; co_case_yeu: boolean; dang_theo_doi: boolean; theo_doi_nguon: string | null
 }
 export async function hsDangYeu(mon: string, khoi: string): Promise<HsDangYeu[]> {
   const { data, error } = await supabase.rpc('fn_qlcl_dang_yeu_hs', { p_mon: mon, p_khoi: khoi }).limit(1000)
   if (error) throw error
   return (data ?? []) as HsDangYeu[]
+}
+// Đề xuất Yếu (trưởng khối) ⇒ em vào "Đang theo dõi" (vòng 2 màn Duyệt của Trang), nguồn 'truong_khoi'. DB kiểm phạm vi.
+export async function deXuatYeu(hocSinhId: string, mon: string, ghiChu: string | null): Promise<void> {
+  const { error } = await supabase.rpc('fn_qlcl_de_xuat_yeu', { p_hs: hocSinhId, p_mon: mon, p_ghi_chu: ghiChu })
+  if (error) throw error
 }
 // ET 4 buổi (so lớp, màu) + BTVN 4 buổi — cùng hàm màn Duyệt bổ trợ dùng (fn_botro_et_btvn), đọc sống.
 export async function etBtvnCuaEm(hocSinhId: string): Promise<EtBtvn> {

@@ -3,7 +3,7 @@
 // Bấm ô ⇒ bảng chi tiết em yếu + trạng thái xử lý · bấm em ⇒ popup (dạng yếu · ET · BTVN như màn Duyệt bổ trợ).
 // Số tính ở DB, lưu sẵn; widget gọi làm mới lười theo lô cho tới khi hết em cũ (fn_qlcl_lam_moi). Không tự ẩn số cũ khi đang làm mới.
 import { useEffect, useState } from 'react'
-import { tongQuanDangYeu, lamMoiDangYeu, hsDangYeu, etBtvnCuaEm, type OTongQuan, type HsDangYeu } from '../../lib/qlcl'
+import { tongQuanDangYeu, lamMoiDangYeu, hsDangYeu, etBtvnCuaEm, deXuatYeu, type OTongQuan, type HsDangYeu } from '../../lib/qlcl'
 import type { EtBtvn } from '../../lib/botro_tuan'
 import { KhoiET, KhoiBTVN } from '../danhgia/DuyetBoTroYeuScreen'
 
@@ -68,7 +68,7 @@ function ChipTrangThai({ h }: { h: HsDangYeu }) {
   const chips: [string, string][] = []
   if (h.so_ca_nhe_tuan > 0) chips.push([`Ca Nhẹ ${h.so_ca_nhe_tuan}/2 tuần này`, 'bg-indigo-50 text-indigo-700'])
   if (h.co_case_yeu) chips.push(['Đang bổ trợ Yếu', 'bg-violet-50 text-violet-700'])
-  if (h.dang_theo_doi) chips.push(['Đang theo dõi', 'bg-amber-50 text-amber-800'])
+  if (h.dang_theo_doi) chips.push(h.theo_doi_nguon === 'truong_khoi' ? ['Đã đề xuất Yếu', 'bg-indigo-600 text-white'] : ['Đang theo dõi', 'bg-amber-50 text-amber-800'])
   if (!chips.length) chips.push(['Chưa xử lý', 'bg-rose-50 text-rose-700'])
   return <span className="flex flex-wrap gap-1">{chips.map(([t, c]) => <span key={t} className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${c}`}>{t}</span>)}</span>
 }
@@ -77,6 +77,14 @@ function BangChiTiet({ o, onDong, onTaoCaNhe }: { o: OTongQuan; onDong: () => vo
   const [ds, setDs] = useState<HsDangYeu[] | null>(null)
   const [loi, setLoi] = useState<string | null>(null)
   const [em, setEm] = useState<HsDangYeu | null>(null)
+  async function deXuat(h: HsDangYeu) {
+    const gc = window.prompt(`Đề xuất Bổ trợ Yếu cho ${h.ho_ten}? Ghi chú cho Trang (tuỳ chọn):`, '')
+    if (gc === null) return
+    try {
+      await deXuatYeu(h.hoc_sinh_id, o.mon, gc.trim() || null)
+      setDs((p) => p && p.map((x) => x.hoc_sinh_id === h.hoc_sinh_id ? { ...x, dang_theo_doi: true, theo_doi_nguon: 'truong_khoi' } : x)) // vá tại chỗ
+    } catch (e: any) { setLoi(e?.message ?? String(e)) }
+  }
   useEffect(() => { setDs(null); hsDangYeu(o.mon, o.khoi).then(setDs).catch((e) => setLoi(e?.message ?? String(e))) }, [o.mon, o.khoi])
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center overflow-auto bg-slate-900/40 p-6" onClick={onDong}>
@@ -94,15 +102,19 @@ function BangChiTiet({ o, onDong, onTaoCaNhe }: { o: OTongQuan; onDong: () => vo
             : (
               <table className="w-full text-[13px]">
                 <thead><tr className="text-left text-[11px] uppercase tracking-wider text-slate-400">
-                  <th className="py-1.5">Học sinh</th><th>Lớp</th><th>Dạng yếu</th><th>Trạng thái</th>
+                  <th className="py-1.5">Học sinh</th><th>Lớp</th><th title="Số dạng yếu lúc chốt đầu tuần">Đầu tuần</th><th>Dạng yếu (hiện tại)</th><th>Trạng thái</th><th></th>
                 </tr></thead>
                 <tbody>
                   {ds.map((h) => (
                     <tr key={h.hoc_sinh_id} onClick={() => setEm(h)} className="cursor-pointer border-t border-slate-100 hover:bg-slate-50">
                       <td className="py-2 font-medium text-slate-800">{h.ho_ten}</td>
                       <td className="text-slate-500">{h.ten_lop}</td>
+                      <td className="text-slate-500">{h.so_dang_dau_tuan ?? '—'}</td>
                       <td className="max-w-[380px]"><b className="text-rose-600">{h.so_dang_yeu}</b> <span className="text-slate-500">· {h.dang.slice(0, 3).map((d) => d.ten_dang).join(' · ')}{h.dang.length > 3 ? ' …' : ''}</span></td>
                       <td><ChipTrangThai h={h} /></td>
+                      <td className="text-right">{!h.co_case_yeu && !h.dang_theo_doi && (
+                        <button onClick={(e) => { e.stopPropagation(); deXuat(h) }} className="whitespace-nowrap rounded-lg border border-violet-200 px-2 py-0.5 text-[11.5px] font-semibold text-violet-700 hover:bg-violet-50">Đề xuất Yếu</button>
+                      )}</td>
                     </tr>
                   ))}
                 </tbody>

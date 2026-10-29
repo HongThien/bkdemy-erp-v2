@@ -78281,3 +78281,5 @@ Thùy nêu 4 việc, làm được 3:
 - **Kiểm (chỉ đọc, không ghi đề thật):** dựng popup K8 MH.072 → tab kho 19/19 bài → chọn HLB00099 → pick kind 'bai'; banInTheoMoHinh ra đề chung + 4 ý có lời giải; mã đề 2/3 = HLB00152, HLB00159 (4 ý); flattenGtBaiToDapAn 2 bài ⇒ 1A–1D, 2A–2D theo hinh_y_id. 3 hàm DB chạy trên 3 buổi MT thật (11/26/26 ô, như cũ) + bảng KQ 2 đề.
 
 ## 29/10 — Bản đồ mới: bỏ chữ '🆕 Bản đồ mới' + nút Đề xuất / Thiếu dạng / Chưa khớp ở đầu màn (Thùy: đã có trong Duyệt kho)
+
+- **Đầu tuần + Đề xuất Yếu (mig 202610291734 ĐÃ ÁP):** bảng `dang_yeu_dau_tuan`; `_qlcl_dong_bang_tuan` gọi trong `fn_botro_chot_tuan` (bản vá sinh từ định nghĩa đang chạy, +1 dòng); chotTuan (client) làm mới cache từng khối trước khi chốt (thông báo "Đang cập nhật dạng yếu… còn N em"). `fn_qlcl_tong_quan` trả số đầu tuần; `fn_qlcl_dang_yeu_hs` (drop/create) thêm so_dang_dau_tuan + theo_doi_nguon. Nguồn theo dõi mới `truong_khoi` (nới CHECK + fn_botro_theo_doi_vao); `fn_qlcl_de_xuat_yeu` kiểm phạm vi. Kiểm ROLLBACK: chốt 0,8 s, ảnh 45 em K8, widget Cường 34/92 → 34/92; Cường đề xuất em K8 ✔, em K9 bị chặn.

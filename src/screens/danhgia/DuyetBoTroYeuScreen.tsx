@@ -175,7 +175,7 @@ export default function DuyetBoTroYeuScreen() {
     if (!mon) return
     if (!confirm(`Chốt tuần môn ${mon}: quét lại TOÀN BỘ lớp (mất vài chục giây) và thay ảnh chụp cho cả tuần. Tiếp tục?`)) return
     setBusy(true); setLoi(null); setChot({ xong: 0, tong: 1 })
-    try { await chotTuan(mon, (xong, tong) => setChot({ xong, tong })); await tai(mon) } catch (x: any) { setLoi(x?.message ?? String(x)) } finally { setBusy(false); setChot(null) }
+    try { await chotTuan(mon, (xong, tong) => setChot({ xong, tong }), (con) => setChot({ xong: -1, tong: con })); await tai(mon) } catch (x: any) { setLoi(x?.message ?? String(x)) } finally { setBusy(false); setChot(null) }
   }
   async function dua(boQua: boolean) {
     if (!e) return
@@ -235,7 +235,7 @@ export default function DuyetBoTroYeuScreen() {
                 : <b className="text-amber-700">Chưa chốt tuần nào cho môn {mon} — bấm “Chốt tuần” để quét (làm sáng thứ 2 hằng tuần).</b>}</>}
           {tab !== 'bd' && chuaChotTuanNay && <b className={`w-full rounded-lg px-2.5 py-1 text-[12px] ${homNay === thuHai ? 'bg-rose-600 text-white' : 'bg-amber-100 text-amber-900'}`}>{homNay === thuHai ? '⏰ Hôm nay thứ 2 — ' : ''}Tuần này (thứ 2 {ddmmVN(thuHai)}) CHƯA chốt: đang xem ảnh chụp tuần {ddmmVN(chotTuanBtn!.tuan)}. Bấm “Chốt tuần” — phần chưa xử lý của tuần trước sẽ được cộng dồn sang.</b>}
           <span className="ml-auto flex items-center gap-2">
-            {chot && <span className="text-[12px] text-slate-500">Đang quét lớp {chot.xong}/{chot.tong}…</span>}
+            {chot && <span className="text-[12px] text-slate-500">{chot.xong < 0 ? `Đang cập nhật dạng yếu (đóng băng đầu tuần)… còn ${chot.tong} em` : `Đang quét lớp ${chot.xong}/${chot.tong}…`}</span>}
             <button disabled={busy} onClick={lamChot} className="rounded-lg border border-slate-300 bg-white px-3 py-1 text-[12.5px] font-bold text-slate-700 hover:bg-slate-50 disabled:opacity-50">↻ {chotTuanBtn ? 'Chốt lại tuần này' : 'Chốt tuần'}</button>
             <button disabled={busy} onClick={() => tai(mon)} title="Tải lại từ DB (không quét)" className="rounded-lg border border-slate-200 bg-white px-2 py-1 text-[12px] text-slate-500 hover:bg-slate-100">⟳</button>
           </span>
@@ -276,6 +276,7 @@ export default function DuyetBoTroYeuScreen() {
                       {tab === 'dt' && (e as UngVienDiemThap).cung_bao_dong && <span className="rounded-full border border-dashed border-rose-300 bg-rose-50 px-2.5 py-0.5 text-rose-700">cũng ở tab 🚨 Báo động</span>}
                       {tab === 'bd' && (e as BaoDong).cung_diem_thap && <span className="rounded-full border border-dashed border-orange-300 bg-orange-50 px-2.5 py-0.5 text-orange-700">cũng ở tab 📉 Điểm thấp</span>}
                       {tab === 'td' && (e as DangTheoDoi).nguon === 'sau_bo_tro' && <span className="rounded-full bg-violet-100 px-2.5 py-0.5 text-violet-800">↩ sau bổ trợ yếu</span>}
+                      {tab === 'td' && (e as DangTheoDoi).nguon === 'truong_khoi' && <span className="rounded-full bg-indigo-600 px-2.5 py-0.5 text-white">🧭 trưởng khối đề xuất Yếu</span>}
                       {tab === 'dt' && ((e as UngVienDiemThap).ly_do[0] ?? '').startsWith('Tồn từ tuần') && <span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-amber-900">📌 tồn tuần trước</span>}
                       {tab === 'td' && <span className="rounded-full bg-indigo-100 px-2.5 py-0.5 text-indigo-800">👁 theo dõi từ {ngayVN((e as DangTheoDoi).vao_at)}{(e as DangTheoDoi).vao_ten ? ` · ${(e as DangTheoDoi).vao_ten}` : ''}{(e as DangTheoDoi).ghi_chu ? ` — “${(e as DangTheoDoi).ghi_chu}”` : ''}</span>}
                     </div>

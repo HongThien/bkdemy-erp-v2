@@ -5,6 +5,7 @@
 import { supabase } from './supabase'
 import { listCandidatesLop, duyetLevel, type Candidate, type ChuyenDeStat } from './danhgia'
 import { moHoacGopCaseBoTroYeu, kiemSucChua, type UuTienCase } from './botro_yeu'
+import { lamMoiDangYeu } from './qlcl'
 
 export type MauET = 'do_dam' | 'do_nhat' | 'xanh_nhat' | 'xanh'
 export type BuoiET = { buoi_id: string; ngay: string; diem: number; tb_lop: number; n: number; hang: number; so_bang: number; mau: MauET; ly_do: string }
@@ -20,7 +21,7 @@ export type UngVienDiemThap = {
 }
 export type DangTheoDoi = {
   id: string; hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; khoi: string | null; lop: string | null
-  vao_at: string; nguon: 'bao_dong' | 'diem_thap' | 'sau_bo_tro'; ghi_chu: string | null; vao_ten: string | null
+  vao_at: string; nguon: 'bao_dong' | 'diem_thap' | 'sau_bo_tro' | 'truong_khoi'; ghi_chu: string | null; vao_ten: string | null
   so_lieu_vao: Partial<DuLieuTuan>; du_lieu: DuLieuTuan; co_anh_chup: boolean
 }
 export type BaoDong = {
@@ -53,7 +54,7 @@ export async function theoDoiKetThuc(id: string, tt: 'go' | 'len_chinh_thuc', ly
 
 // Vòng 2: duyệt CHÍNH THỨC — đi đúng đường cũ (kiểm trần → hs_level + log → mở case → đổ dạng yếu theo luật DB), rồi đánh dấu đã lên chính thức.
 // Máy KHÔNG đề xuất level (levelMayDeXuat = null). Dạng của case đổ bằng luật DB cũ (fn_btyeu_fill_dang_yeu) — người chỉnh ở bước Nội dung.
-export async function duyetChinhThuc(input: { theoDoiId: string; hocSinhId: string; mon: string; level: 1 | 2 | 3; uuTien: UuTienCase; lyDo: string | null; nguon: 'bao_dong' | 'diem_thap' | 'sau_bo_tro' }): Promise<void> {
+export async function duyetChinhThuc(input: { theoDoiId: string; hocSinhId: string; mon: string; level: 1 | 2 | 3; uuTien: UuTienCase; lyDo: string | null; nguon: 'bao_dong' | 'diem_thap' | 'sau_bo_tro' | 'truong_khoi' }): Promise<void> {
   const chan = await kiemSucChua(input.hocSinhId, input.mon, input.uuTien)
   if (chan) throw new Error(chan)
   await duyetLevel({ hocSinhId: input.hocSinhId, mon: input.mon, loai: 'kien_thuc', levelChot: input.level, levelMayDeXuat: null,
@@ -73,10 +74,15 @@ function anhChuyenDe(cds: ChuyenDeStat[]): ChuyenDeAnh[] {
     diem: cd.cham?.pha === 1 ? cd.cham.diem : null, rank: cd.cham?.pha === 1 ? cd.cham.rank : null, si_so: cd.cham?.pha === 1 ? cd.cham.siSo : null,
   })).filter((x) => x.pha != null)
 }
-export async function chotTuan(mon: string, onTienDo?: (xong: number, tong: number) => void): Promise<string> {
+export async function chotTuan(mon: string, onTienDo?: (xong: number, tong: number) => void, onDangYeu?: (conLai: number) => void): Promise<string> {
   const { data: lops, error } = await supabase.from('lop').select('id, ten_lop, khoi').eq('trang_thai', 'dang_hoc').eq('mon', mon).limit(500)
   if (error) throw error
   const ls = (lops ?? []) as { id: string; ten_lop: string; khoi: string | null }[]
+  // Thùy 29/10 (spec-truong-khoi.md §4.1): chốt tuần ĐÓNG BĂNG số dạng yếu đầu tuần từ cache dang_yeu_hien_tai (trong fn_botro_chot_tuan)
+  // ⇒ làm mới cache từng khối của môn cho đủ trước (DB tính, lô 10 em/lần; lần đầu cả môn ~2 phút).
+  for (const khoi of [...new Set(ls.map((l) => l.khoi).filter(Boolean) as string[])]) {
+    for (let con = 1, vong = 0; con > 0 && vong < 100; vong++) { con = await lamMoiDangYeu(mon, khoi, 10); onDangYeu?.(con) }
+  }
   const dangTheoDoi = await danhSachTuan(mon, 'theo_doi')
   const giu = { hsIds: new Set(dangTheoDoi.ds.map((x) => x.hoc_sinh_id)), out: new Map<string, ChuyenDeStat[]>() }
   const ungVien: any[] = []
