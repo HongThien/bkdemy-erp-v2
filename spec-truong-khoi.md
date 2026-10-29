@@ -21,6 +21,8 @@
 | 9 | **Lộc vẫn xếp lịch bổ trợ như cũ**, không đổi gì. |
 | 10 | **KPI** của nhân sự QLCL = **số dạng yếu ở mức chấp nhận được**. Chưa chốt số: làm, đo vài tuần rồi mới chốt. |
 | 11 | **Phân quyền đang rối**, phải gộp lại cho dễ quản lý. |
+| 12 | **Trưởng khối do người PHÂN CÔNG trên màn, không mặc định** (không seed trong migration, không suy từ tên ghế). |
+| 13 | **8T do Thùy quản.** |
 
 ---
 
@@ -50,44 +52,46 @@
 
 ---
 
-## 2. Mô hình phân quyền mới — "Ghế quyết định tất cả"
+## 2. Mô hình phân quyền mới — "Phân công (môn × khối) là nguồn duy nhất"
 
-Một nguyên tắc: **quyền đi theo GHẾ, không theo người, không theo uuid.** Đổi người = đổi người ngồi ghế, không sửa code.
+Hai nguyên tắc:
+- **Không uuid, không mặc định.** Ai quản ô nào là **dữ liệu do người phân công** trên màn. Đổi người = sửa một ô, không sửa code, không migration.
+- **Một ô (môn × khối) có đúng một trưởng khối.** Khối là đơn vị thấp nhất (chốt #2), nên ràng buộc ở DB: khoá `(mon, khoi, vai)` duy nhất ⇒ không thể hai người cùng quản một khối, cũng không thể lệch giữa hai bảng.
 
-### 2.1 Ba trục, mỗi trục MỘT nguồn
+### 2.1 Bảng phân công
+
+`phan_cong_quan_ly_khoi (mon, khoi, vai, nhan_su_id, phan_cong_boi, phan_cong_at)`
+- `vai` ∈ `truong` · `pho`. Khoá chính `(mon, khoi, vai)`.
+- **Danh sách ô = suy từ lớp đang mở** (`lop.mon × lop.khoi`), không gõ tay. Hiện có 20 ô: Toán 13 khối (3 · 4 · 4T · 5 · 5T · 6 · 7 · 8 · 8T · 9 · 10 · 11 · 12) · Anh 3 (5T · 8 · 9) · KHTN 3 (7 · 8 · 9) · Văn 1 (8). Mở lớp khối mới ⇒ ô mới tự hiện.
+- **Ô chưa phân công:** hiện đỏ *"chưa có trưởng khối"*. Việc của ô đó rơi lên Trưởng QLCL (Trang). Không ô nào bị "mồ côi" im lặng.
+- **Đổi người có vết:** trigger ghi lịch sử (ai, lúc nào, người cũ → người mới), theo §4 CLAUDE.md.
+- Không dùng lại bảng legacy `phan_cong_khoi` (12 dòng cũ, không khoá, không có vai): dữ liệu cũ không đáng tin, dùng lại là tự rước lệch.
+
+### 2.2 Màn Phân công trưởng khối
+
+Lưới **môn (hàng) × khối (cột)**. Mỗi ô có 2 chỗ chọn: *Trưởng* (người trong team QLCL) và *Phó* (tuỳ chọn). Ai được sửa: Thùy và Trang. Đặt trong cây Admin cạnh màn Phân quyền.
+
+Phân công ban đầu Thùy tự điền trên màn (không seed). Theo hiện trạng sẽ là: Toán 3·4·5 Dương · 4T·5T Ngân · 6·7 Hà Giang · 8 Cường · **8T Thùy** · 9 Hải · 10·11·12 Đạt; Phó: 3·4·5 Ngân · 7 Quỳnh Trang · 8 Thảo Nguyên.
+
+### 2.3 Ba trục, mỗi trục MỘT nguồn
 
 | Trục | Câu hỏi | Nguồn duy nhất | Ghi chú |
 |---|---|---|---|
-| ① **Màn** | Mở được màn nào? | `vai_tro` trên ghế (giữ như cũ) | Thêm vai trò **"Quản lý chất lượng"**. |
-| ② **Phạm vi** | Dữ liệu (môn, khối) nào? | `vi_tri.mon` + `vi_tri.khoi_quan_ly` | **Một hàm** `fn_pham_vi_cua_toi()` → `(mon, khoi, cap, vi_tri_id)`. Mọi module (gậy · trợ lý · duyệt bổ trợ · duyệt việc VH · chấm MT · bot) chỉ hỏi hàm này hoặc `_trong_pham_vi(mon, khoi)`. |
-| ③ **Cấp dưới** | Quản ai? | cây `vi_tri.cha_id`, **đi xuyên team** | Chuyển xuống DB: `fn_cap_duoi_cua_toi()` (thay phần client của `getMyScope` và `fn_task_cap_duoi`). |
+| ① **Màn** | Mở được màn nào? | `vai_tro` trên ghế (giữ như cũ) | Thêm vai trò **"Quản lý chất lượng"** cho ghế team QLCL. |
+| ② **Phạm vi** | Dữ liệu (môn, khối) nào? | `phan_cong_quan_ly_khoi` | **Một hàm** `fn_pham_vi_cua_toi()` → `(mon, khoi, vai)`. Mọi module (gậy · trợ lý · duyệt bổ trợ · duyệt việc VH · chấm MT · bot tag) chỉ hỏi hàm này hoặc `_trong_pham_vi(mon, khoi)`. |
+| ③ **Cấp dưới** | Quản ai? | **Suy**, không dựng cây tay | TA thuộc khối nào = lớp TA được phân công (`phan_cong_lop`) ⇒ trưởng khối của ô đó. TA dạy nhiều khối có nhiều trưởng khối, mỗi việc thuộc khối của **buổi** (như `fn_gay_de_xuat_lop` đã làm). Trưởng khối là cấp dưới của Trang. |
 
-- **Toàn hệ** không cần cột mới: ghế `cap='truong'` của team `qlcl` (Trang) có phạm vi = mọi (môn, khối). Admin hệ thống (Thùy) bypass như cũ. Luật này nằm trong hàm, theo vị trí ghế, không theo uuid.
-- **Một ghế = một môn.** Sau này trưởng khối 8 kiêm cả Anh 8 thì thêm ghế *Trưởng khối 8 · Anh* (có thể cùng người). Phạm vi = hợp các ghế. Đây là cách đối xứng môn mà không phải đổi schema.
+- **Toàn hệ:** ghế *Trưởng QLCL* (Trang) và admin (Thùy) thấy mọi ô. Luật nằm trong hàm, đọc theo ghế, không theo uuid.
+- **Đối xứng môn:** Anh/KHTN/Văn chỉ cần điền ô, mọi thứ chạy y như Toán.
+- **Cây ghế team TA bớt việc:** không còn phải giữ đúng `cha_id` từng TA → trưởng khối bằng tay (nguồn lệch thứ ba). Cây ghế chỉ còn để vẽ sơ đồ tổ chức.
 
-### 2.2 Cây ghế đích
+### 2.4 Bỏ đi (sau khi mọi chỗ đọc đã chuyển sang `fn_pham_vi_cua_toi`)
 
-```
-team qlcl (Quản lý chất lượng)
-  Lead QLCL ................ Thùy        (admin)
-  └ Trưởng QLCL ........... Trang       [Toán · toàn hệ]
-     ├ Trưởng khối 3 4 5 ·Toán ....... Dương
-     ├ Trưởng khối 4T 5T ·Toán ....... Ngân
-     ├ Trưởng khối 6 7 ·Toán ......... Hà Giang
-     ├ Trưởng khối 8 ·Toán ........... Cường
-     ├ Trưởng khối 9 ·Toán ........... Hải
-     └ Trưởng khối 10 11 12 ·Toán .... Đạt
-
-team ta (Trợ giảng)  — cha của từng ghế trỏ SANG ghế trưởng khối bên qlcl
-  Phó khối 3 4 5 (Ngân) · Phó khối 7 (Quỳnh Trang) · Phó khối 8 (Thảo Nguyên)   — giữ nguyên
-  các ghế TA                                                                    — cha = trưởng khối khối mình
-```
-
-### 2.3 Bỏ đi (sau khi mọi chỗ đọc đã chuyển sang `fn_pham_vi_cua_toi`)
-
-- `gay_quyen_khoi`: bảng, sau này xoá theo **Luật xoá** (hỏi Thùy riêng lúc đó).
-- `hoi_dap_ds_tai_khoan()`: danh sách 3 uuid, thay bằng luật theo ghế.
-- `phan_cong_khoi`: legacy, không hàm nào đọc.
+Mỗi mục xoá đều hỏi Thùy riêng lúc đó theo **Luật xoá**:
+- `gay_quyen_khoi`: thay bằng bảng phân công.
+- `vi_tri.khoi_quan_ly`: thay bằng bảng phân công.
+- `phan_cong_khoi`: legacy.
+- `hoi_dap_ds_tai_khoan()`: 3 uuid, thay bằng luật theo ghế.
 - Mọi chỗ gõ cứng uuid của Trang.
 
 ---
@@ -99,7 +103,7 @@ Mô hình giai đoạn đầu: **hậu kiểm** (post-audit). Quyết định c�
 | Việc | Trưởng khối (khối mình) | Trang | Ghi chú |
 |---|---|---|---|
 | Đánh / bỏ qua **gậy TA** | Quyết | Hậu kiểm | Đề xuất gậy → khối qua `fn_gay_de_xuat_lop` (đã có). |
-| **Gậy của trưởng khối** | — | Quyết | Ghế cha của trưởng khối = Trang (trục ③). |
+| **Gậy của trưởng khối** | — | Quyết | Trưởng khối là cấp dưới của Trang (trục ③). |
 | Duyệt chất lượng **việc vận hành** TA (`viec_van_hanh_duyet`) | Quyết | Hậu kiểm | |
 | **Duyệt case bổ trợ yếu** (theo dõi → chính thức) | Quyết | Hậu kiểm | |
 | **Chốt tuần** (đóng băng số) | Xem | **Bấm** | Như cũ, theo môn. |
@@ -167,7 +171,7 @@ Mọi con số tính ở `fn_troly_*` / `_troly_*` (spec `SPEC-troly-nhansu.md` 
 
 | Pha | Việc | Đổi hành vi? |
 |---|---|---|
-| **P1 — Gộp phân quyền** | team `qlcl` + chuyển 7 ghế · `fn_pham_vi_cua_toi` · `fn_cap_duoi_cua_toi` xuyên team · gậy/trợ lý/chấm MT/bot đọc nguồn mới · gỡ uuid Trang | Có, nhỏ: Dương, Ngân **có quyền gậy** khối mình; chỗ lệch 8T theo quyết định của Thùy (§7). |
+| **P1 — Gộp phân quyền** | bảng `phan_cong_quan_ly_khoi` + lịch sử · màn Phân công trưởng khối · team `qlcl` · `fn_pham_vi_cua_toi` · gậy/trợ lý/chấm MT/bot đọc nguồn mới · gỡ uuid Trang | Có, nhỏ: Dương, Ngân **có quyền gậy** khối mình; 8T về Thùy. Chỉ bật sau khi Thùy điền xong lưới. |
 | **P2 — Hai tầng** | cột + trigger hậu kiểm · `fn_hau_kiem_hang_doi` · màn Hậu kiểm cho Trang. Làm gậy trước, rồi việc vận hành, rồi case bổ trợ | Có |
 | **P3 — Đóng băng KPI** | `chat_luong_tuan_hs` + chốt tuần mới · ứng viên 4 kênh xuống DB | Có (số mới) |
 | **P4 — Dashboard** | §5 | Có |
@@ -177,9 +181,11 @@ Anh/KHTN: không cần pha riêng. Thêm ghế trưởng khối môn đó là m�
 
 ---
 
-## 7. Còn treo — cần Thùy trả lời trước P1
+## 7. Còn treo
 
-1. **Ghế trùng tên ở team GV / Học thuật** (*Trưởng khối THCS/THPT/tiểu học*, *Trưởng khối KHTN*): đổi tên (vd *Trưởng chuyên môn THCS*) để khỏi lẫn, hay bỏ?
-2. **Khối 8T** của ai? Bảng gậy ghi Cường có 8T, nhưng ghế của Cường chỉ ghi 8.
-3. **Trang ngoài Toán**: hiện chưa có trưởng khối Anh/KHTN. Phạm vi Anh/KHTN tạm thuộc Trang, hay giữ ở Hoà / Anh Ngọc như cây hiện tại?
-4. **Hỏi đáp AI** trong tab Trợ lý (đang chỉ 3 tài khoản): mở cho trưởng khối, hay trưởng khối chỉ xem báo cáo?
+- **Hỏi đáp AI** trong tab Trợ lý (đang chỉ 3 tài khoản): mở cho trưởng khối, hay trưởng khối chỉ xem báo cáo? Không chặn P1; cần trả lời trước P4.
+
+Đã giải (29/10):
+- *Ghế trùng tên "Trưởng khối" ở team GV / Học thuật*: không cần đụng. Quyền không còn đọc từ tên hay cây ghế.
+- *8T*: Thùy quản. Cơ chế = màn phân công (chốt #12).
+- *Anh/KHTN chưa có trưởng khối*: ô chưa phân công ⇒ hiện đỏ, việc rơi lên Trang (§2.1).
