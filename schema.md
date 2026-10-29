@@ -7130,7 +7130,7 @@ SELECT hs.id AS hoc_sinh_id,
      LEFT JOIN ( SELECT qlht_xu_ledger.hoc_sinh_id,
             sum(qlht_xu_ledger.amount) AS dieu_chinh
            FROM qlht_xu_ledger
-          WHERE qlht_xu_ledger.loai = ANY (ARRAY['cong_tay'::text, 'tru_tay'::text, 'doi_qua'::text, 'hoan'::text])
+          WHERE qlht_xu_ledger.loai <> ALL (ARRAY['chot_thang'::text, 'chot_lai'::text])
           GROUP BY qlht_xu_ledger.hoc_sinh_id) l ON l.hoc_sinh_id = hs.id
   WHERE la_thanh_vien();
 ```
