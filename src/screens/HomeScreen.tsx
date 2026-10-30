@@ -11,7 +11,7 @@ import NutGhimYT from '../components/NutGhimYT'
 import { docTabMo, ghiTabMo, TAB_YT_TOI_DA } from '../lib/yeuThich'
 import { useDieuHuong } from '../lib/useDieuHuong'
 import { useIsMobile } from '../hooks/useIsMobile'
-import { useSkinErp, cheDoErp, SKINS_ERP, NEN_TU_CHON, nenErpCho, MEO_NGU, VIT_DI, DOI_BAN } from '../lib/erpSkin'
+import { useSkinErp, cheDoErp, skinsErpCho, NEN_TU_CHON, nenErpCho, MEO_NGU, VIT_DI, DOI_BAN } from '../lib/erpSkin'
 import MeoNgu, { meoCao } from '../components/MeoNgu'
 import VitDi from '../components/VitDi'
 import DoiBan from '../components/DoiBan'
@@ -189,7 +189,7 @@ function ChonGiaoDien({ hep }: { hep: boolean }) {
         <div className={`z-40 mt-2 border border-[var(--sk-line)] bg-[var(--sk-bg)] p-3 text-[var(--sk-ink)] shadow-2xl ${hep ? 'fixed inset-x-3' : 'absolute right-0 w-[560px]'}`} style={{ borderRadius: 'var(--sk-radius)' }}>
           <div className={muc}>Giao diện</div>
           <div className={hep ? 'grid grid-cols-3 gap-2' : 'grid grid-cols-5 gap-2'}>
-            {SKINS_ERP.map((s) => (
+            {skinsErpCho(maNs).map((s) => (
               <button key={s.id} title={s.moTa} onClick={() => doi({ skin: s.id, nen: null, che_do: undefined })} className={o(s.id === sk.skin.id)} style={{ borderRadius: 8 }}>
                 <span className="block h-[58px]" style={{ background: nenCua(s.hinhNen[0], cheDoErp(s, {}), false) }} />
                 <span className={ten}>{s.ten}</span>

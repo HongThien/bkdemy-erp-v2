@@ -34,8 +34,18 @@ const NHU_CU: SkinErp = {
 const KHONG_DUA_VAO_ERP = new Set<string>(['toi_gian'])
 export const SKINS_ERP: SkinErp[] = [NHU_CU, ...SKINS.filter((s) => !KHONG_DUA_VAO_ERP.has(s.id))]
 
-// id lạ / đã bỏ / chưa chọn ⇒ Mặc định (phần tử đầu).
-export const skinErp = (id: string | null | undefined): SkinErp => SKINS_ERP.find((s) => s.id === id) ?? SKINS_ERP[0]
+// STYLE MỚI CHO XEM TRƯỚC: id style → danh sách mã nhân sự (ma_ns) được thấy trong bảng Giao diện của ERP. Không có trong bảng = ai cũng thấy.
+// Thùy 30/10: Halloween (có hoạt cảnh) chỉ NS008 xem trước — ổn thì XOÁ dòng `halloween` là mọi nhân sự thấy. (App HS không bị giới hạn này.)
+export const STYLE_RIENG_CHO: Record<string, string[]> = {
+  halloween: ['NS008'],
+}
+const duocThay = (id: string, maNs: string | null | undefined) => !STYLE_RIENG_CHO[id] || (!!maNs && STYLE_RIENG_CHO[id].includes(maNs))
+// Style người này được chọn (đúng thứ tự SKINS_ERP).
+export const skinsErpCho = (maNs: string | null | undefined): SkinErp[] => SKINS_ERP.filter((s) => duocThay(s.id, maNs))
+
+// id lạ / đã bỏ / chưa chọn / style chưa mở cho người này ⇒ Mặc định (phần tử đầu).
+export const skinErp = (id: string | null | undefined, maNs?: string | null): SkinErp =>
+  SKINS_ERP.find((s) => s.id === id && duocThay(s.id, maNs)) ?? SKINS_ERP[0]
 export const cheDoErp = (skin: SkinErp, gd: GiaoDienErp): 'sang' | 'toi' => cheDoThat(skin as Skin, gd.che_do ?? skin.cheDo[0], false)
 
 // Icon cho box nhóm — mượn icon Ô CHỨC NĂNG của style theo NGHĨA (mọi style đều có đủ các ô này: check:style-hs kiểm):
@@ -160,7 +170,7 @@ export function useSkinErp() {
   const maNs = useStore((s) => s.me?.nhanSu.ma_ns)
   const doc = useIsMobile()
   return useMemo(() => {
-    const skin = skinErp(gd.skin)
+    const skin = skinErp(gd.skin, maNs)
     // Ảnh nền ĐÈ hình nền của style: ảnh người dùng tự đưa lên, hoặc 1 trong NEN_ERP.
     const nenCo = gd.nen === NEN_TU_CHON ? undefined : NEN_ERP.find((n) => n.id === gd.nen)
     const nenUrl = gd.nen === NEN_TU_CHON ? (gd.nen_url ?? null) : (nenCo?.url ?? null)

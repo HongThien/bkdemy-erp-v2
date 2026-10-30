@@ -712,3 +712,5 @@ Dùng `homeSong.linhVat` (đã có, `LinhVatSong` ở `kieu.ts`) — không đ�
 - Trang chính ERP: tranh nền giờ nằm trên `section` NGOÀI (không cuộn), nội dung cuộn trong khối bên trong ⇒ hoạt cảnh đứng yên khớp tranh. Style khác (đã soi Đáng yêu) cuộn y như cũ.
 - **Đã soi (trang `/xem-thu-erp.html` lấy lại TẠM từ lịch sử, không commit):** 1600×860 cả 3 nền · điện thoại 375×812. **Chưa đo được khung hình/giây thật** — khung trình duyệt
   của Claude chạy ngầm nên bị hạ nhịp; cần mở trên máy thật để cảm nhận.
+- **Thùy 30/10: "Chỉ NS008 trước"** — Halloween trong bảng Giao diện ERP chỉ NS008 thấy (`STYLE_RIENG_CHO` trong `lib/erpSkin.ts`; người khác dù đã lưu `halloween` cũng rơi về Mặc định).
+  **Ổn thì XOÁ dòng `halloween: ['NS008']`** là mọi nhân sự thấy. App HS KHÔNG bị giới hạn này (mọi em chọn được từ 25/10). Đã soi: không mã NS ⇒ 5 style, không hoạt cảnh · NS008 ⇒ 6 style + hoạt cảnh.
