@@ -349,6 +349,21 @@ export function mucDoCua(L: Luoi, baiToanId: string): number | null {
   return mucDoTuCap(bt.cap, !!c && boDeCuaCach(L, c.id).length > 0)
 }
 
+/** Thứ tự các ý được hỏi: GIỮ thứ tự người chọn (popup chọn xếp theo số B = đúng thứ tự chip trên hàng Hình), chỉ đẩy ý lên
+ *  sau tiền đề của nó (ý tick là tiền đề của ý tick khác ⇒ phải đứng trước). Trước đây sort cap↑ ⇒ lệch chip (B12 cap 3 đứng sau B24 cap 2). */
+function thuTuYTick(L: Luoi, tickIds: string[]): BaiToan[] {
+  const ds = tickIds.map((id) => L.baiToan.find((b) => b.id === id)).filter(Boolean) as BaiToan[]
+  const set = new Set(ds.map((b) => b.id))
+  const tienDeTick = new Map(ds.map((b) => [b.id, [...baoDongTienDe(L, b.id).keys()].filter((x) => set.has(x) && x !== b.id)]))
+  const out: BaiToan[] = []; const xong = new Set<string>(); const con = [...ds]
+  while (con.length) {
+    const i = con.findIndex((b) => (tienDeTick.get(b.id) ?? []).every((x) => xong.has(x)))
+    const [b] = con.splice(i < 0 ? 0 : i, 1)   // vòng (không xảy ra với DAG) ⇒ lấy tiếp theo thứ tự chọn
+    out.push(b); xong.add(b.id)
+  }
+  return out
+}
+
 /** Bao đóng tiền đề trên snapshot (theo cách mặc định) — id → số bước lùi tối thiểu. */
 export function baoDongTienDe(L: Luoi, goc: string): Map<string, number> {
   const ra = new Map<string, number>()
@@ -408,7 +423,7 @@ export type YKhung = { node: BaiToan; buocNodes: BaiToan[]; gtPhuKeo: string[] }
 export function noDapAn(L: Luoi, tickIds: string[]): YKhung[] {
   const tick = new Set(tickIds)
   const bt = (id: string) => L.baiToan.find((b) => b.id === id)
-  const ticks = (tickIds.map(bt).filter(Boolean) as BaiToan[]).sort((a, b) => a.cap - b.cap || a.ma.localeCompare(b.ma))
+  const ticks = thuTuYTick(L, tickIds)
   const emitted = new Set<string>()   // node ẩn đã nở ở ý trước ⇒ không nở lại (hiện 1 lần)
   const gom = (goc: string, next: (id: string) => string[], stop: (id: string) => boolean): BaiToan[] => {
     const out: BaiToan[] = []; const seen = new Set<string>(); const stack = [...next(goc)]
@@ -444,7 +459,7 @@ export function noDapAnLua(L: Luoi, bienThes: BienThe[], tickIds: string[]): YKh
     return v ? (v.tien_de_ids.map(nodeOfVar).filter(Boolean) as string[]) : []
   }
   const tick = new Set(tickIds)
-  const ticks = (tickIds.map(bt).filter(Boolean) as BaiToan[]).sort((a, b) => a.cap - b.cap || a.ma.localeCompare(b.ma))
+  const ticks = thuTuYTick(L, tickIds)
   const emitted = new Set<string>()
   const gom = (goc: string, next: (id: string) => string[], stop: (id: string) => boolean): BaiToan[] => {
     const out: BaiToan[] = []; const seen = new Set<string>(); const stack = [...next(goc)]
