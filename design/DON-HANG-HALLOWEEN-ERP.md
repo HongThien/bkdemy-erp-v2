@@ -12,7 +12,7 @@
   (sổ `_doi_ten.log.txt`, thư mục trong `.gitignore`) · nén: `public/bk-ui/erp/halloween/nha_ma_ngang.jpg` · `nha_ma_doc.jpg`.
 - **Đo lại trên tranh thật:** ngang 15 bí ngô · 10 ô cửa sổ / cửa · trăng · 8 bia mộ (ma trồi) · dọc 13 bí ngô · 10 ô cửa · trăng · 6 bia mộ. Khổ dọc giờ CÓ hoạt cảnh
   (khoá `nha_ma:doc` — `HoatCanhNen` đọc `<id>:doc` khi màn dọc). Soi bằng cách tắt chuyển động + kẻ viền từng quầng: khớp đúng vật ở 1600×860 và 375×812.
-- **#03 rừng chết · #04 làng bỏ hoang: để sau** (Thùy). Vẫn chỉ NS008 thấy Halloween ERP.
+- **#03 rừng chết · #04 làng bỏ hoang: để sau** (Thùy). **Cùng ngày Thùy duyệt "đẹp rồi" ⇒ Halloween ERP mở cho MỌI nhân sự** (`STYLE_RIENG_CHO = {}`).
 - File tạm `public/bk-ui/erp/halloween/nha_ma.jpg` (khung đầu video) KHÔNG commit, không còn được gọi.
 
 ## Đã làm (bản thử, 30/10) — nhánh `claude/erp-halloween` trong BK_V2_1, CHƯA commit

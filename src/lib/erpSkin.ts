@@ -39,10 +39,8 @@ const BAN_ERP: Record<string, SkinErp> = { halloween: HALLOWEEN_ERP }
 export const SKINS_ERP: SkinErp[] = [NHU_CU, ...SKINS.filter((s) => !KHONG_DUA_VAO_ERP.has(s.id)).map((s) => BAN_ERP[s.id] ?? s)]
 
 // STYLE MỚI CHO XEM TRƯỚC: id style → danh sách mã nhân sự (ma_ns) được thấy trong bảng Giao diện của ERP. Không có trong bảng = ai cũng thấy.
-// Thùy 30/10: Halloween (có hoạt cảnh) chỉ NS008 xem trước — ổn thì XOÁ dòng `halloween` là mọi nhân sự thấy. (App HS không bị giới hạn này.)
-export const STYLE_RIENG_CHO: Record<string, string[]> = {
-  halloween: ['NS008'],
-}
+// Thùy 30/10: Halloween chỉ NS008 xem trước → cùng ngày duyệt "đẹp rồi, cho mọi nhân sự dùng" ⇒ bỏ giới hạn. Style mới muốn xem trước: thêm `id: ['NSxxx']`. (App HS không bị giới hạn này.)
+export const STYLE_RIENG_CHO: Record<string, string[]> = {}
 const duocThay = (id: string, maNs: string | null | undefined) => !STYLE_RIENG_CHO[id] || (!!maNs && STYLE_RIENG_CHO[id].includes(maNs))
 // Style người này được chọn (đúng thứ tự SKINS_ERP).
 export const skinsErpCho = (maNs: string | null | undefined): SkinErp[] => SKINS_ERP.filter((s) => duocThay(s.id, maNs))
