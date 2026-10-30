@@ -10,6 +10,7 @@ import { useMemo, type CSSProperties } from 'react'
 import { SKINS, bienCss, cheDoThat, layHinhNen, type Skin } from '../screens/hocsinh/skin/registry'
 import { useStore, type GiaoDienErp } from '../store/useStore'
 import { useIsMobile } from '../hooks/useIsMobile'
+import { HALLOWEEN_ERP } from './erpHalloween'
 
 // Style của vỏ ERP = style app HS, chỉ khác `id` không bị bó trong danh sách id của HS (ERP có thêm style riêng "mac_dinh").
 export type SkinErp = Omit<Skin, 'id'> & { id: string }
@@ -32,7 +33,10 @@ const NHU_CU: SkinErp = {
 }
 // Style HS KHÔNG đưa vào bảng chọn của ERP: Tối giản — cũng là nền trơn, trùng vai với Mặc định (Thùy đếm 5 = 1 mặc định + 4 tranh).
 const KHONG_DUA_VAO_ERP = new Set<string>(['toi_gian'])
-export const SKINS_ERP: SkinErp[] = [NHU_CU, ...SKINS.filter((s) => !KHONG_DUA_VAO_ERP.has(s.id))]
+// BẢN RIÊNG CHO ERP của 1 style app HS (cùng id ⇒ lựa chọn đã lưu giữ nguyên): Halloween ERP = tranh nhà ma + ma trồi từ mộ (Thùy 30/10, lib/erpHalloween.ts) —
+// app HS vẫn bản đáng yêu.
+const BAN_ERP: Record<string, SkinErp> = { halloween: HALLOWEEN_ERP }
+export const SKINS_ERP: SkinErp[] = [NHU_CU, ...SKINS.filter((s) => !KHONG_DUA_VAO_ERP.has(s.id)).map((s) => BAN_ERP[s.id] ?? s)]
 
 // STYLE MỚI CHO XEM TRƯỚC: id style → danh sách mã nhân sự (ma_ns) được thấy trong bảng Giao diện của ERP. Không có trong bảng = ai cũng thấy.
 // Thùy 30/10: Halloween (có hoạt cảnh) chỉ NS008 xem trước — ổn thì XOÁ dòng `halloween` là mọi nhân sự thấy. (App HS không bị giới hạn này.)

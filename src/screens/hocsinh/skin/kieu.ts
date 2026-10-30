@@ -96,17 +96,23 @@ export type BoDau = {
 }
 /** HOẠT CẢNH TRÊN TRANH NỀN (Halloween 30/10 — skin/HoatCanhNen.tsx): lớp chuyển động phủ lên tranh nền màn ngoài, CHỈ dùng transform + opacity
  *  (chạy trên GPU, không khựng khi trang đang tải dữ liệu). Không khai ⇒ tranh tĩnh như cũ.
- *  diem[id hình nền] = các điểm SÁNG vẽ sẵn trong tranh KHỔ NGANG: tl = rộng/cao ảnh nền; x, y = tâm (% ảnh); r = đường kính quầng (% bề ngang ảnh);
+ *  diem[id hình nền] = các điểm SÁNG vẽ sẵn trong tranh KHỔ NGANG (khoá `<id>:doc` = tranh KHỔ DỌC của hình nền đó, nếu đã đo — không có ⇒ điện thoại chỉ có dơi / ma trôi): tl = rộng/cao ảnh nền; x, y = tâm (% ảnh); r = đường kính quầng (% bề ngang ảnh);
  *    kieu: 'bi' bí ngô sáng → TẮT → sáng · 'den' đèn chập chờn nhẹ · 'nen' nến lay · 'dom' đom đóm loé rồi tắt · 'trang' trăng thở chậm;
  *    mau = màu quầng (mặc định theo kiểu) · ck = chu kỳ (giây) · tre = lệch pha (giây) để các điểm không nháy cùng lúc.
  *  tienCanh = vật ĐẶT RỜI ở góc dưới màn (ảnh trong suốt, mép mờ dần) + điểm sáng của nó (x, y, r theo % ảnh đó) — cho vật trong tranh hay bị xén / bị nhân vật che
  *    (bí ngô Halloween); canh = góc trái / phải, rong = bề ngang (CSS), tl = rộng/cao ảnh. Mọi hình nền đều dùng.
  *  doi = dơi bay ngang trời (src ảnh 1 con, so con) · ma = bé ma nhỏ trôi xa (mỗi ảnh 1 con) · nvBong = nhân vật Home bồng bềnh (cần homeSong.linhVat). */
+/** MA VẢI trồi lên từ 1 bia mộ rồi bay lượn, mờ dần, lặp lại (ERP Halloween 30/10 — kiểu video Thùy gửi). x, y = chân bia mộ (% ảnh nền) · s = bề ngang
+ *  con ma (% bề ngang ảnh) · ck = chu kỳ 1 vòng (giây) · tre = lệch pha · lat = bay lượn ngược chiều (lật ngang quỹ đạo). Ma vẽ bằng SVG trong HoatCanhNen. */
+export type MaVai = { x: number; y: number; s: number; ck?: number; tre?: number; lat?: boolean }
 export type DiemSang = { x: number; y: number; r: number; kieu: 'bi' | 'den' | 'nen' | 'dom' | 'trang'; mau?: string; ck?: number; tre?: number }
 export type HoatCanh = {
-  diem?: Record<string, { tl: number; ds: DiemSang[] }>
+  /** neoY = điểm neo dọc của tranh khi phủ khung (0 = `center top` như tranh app HS · 0.5 = `center`) — PHẢI khớp `background-position` của hình nền đó.
+   *  ma = ma vải trồi từ mộ · suong = sương mù trôi sát đất (2 lớp ngược chiều). */
+  diem?: Record<string, { tl: number; neoY?: number; ds: DiemSang[]; ma?: MaVai[]; suong?: boolean }>
   /** truoc = đứng TRƯỚC nhân vật khi màn có cột nhân vật (như ảnh mẫu: bí ngô tiền cảnh, ma phía sau); màn không có cột nhân vật ⇒ lùi ra sau nội dung. */
-  tienCanh?: { src: string; tl: number; rong: string; canh: 'trai' | 'phai'; ds: DiemSang[]; truoc?: boolean }[]
+  /** chiNen = chỉ hiện với các hình nền này (bỏ trống = mọi hình nền). */
+  tienCanh?: { src: string; tl: number; rong: string; canh: 'trai' | 'phai'; ds: DiemSang[]; truoc?: boolean; chiNen?: string[] }[]
   doi?: { src: string; so: number }
   ma?: string[]
   nvBong?: boolean

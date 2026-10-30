@@ -84,6 +84,7 @@ design/bk-ui-src/khoi/
 design/bk-ui-src/lofi/
 design/bk-ui-src/nho-xinh/
 design/bk-ui-src/halloween/
+design/bk-ui-src/halloween-erp/
 
 # Đệm của `tsc -b` — tự sinh lại mỗi lần kiểm kiểu
 *.tsbuildinfo
