@@ -3,7 +3,7 @@
 // out-NN.md: mỗi câu một khối, mở bằng dòng "=== <ma_cau>", tiếp theo là Phần 1 mới (bắt đầu "**Phần 1. Hướng dẫn**").
 import { createRequire } from 'node:module'
 import { readFileSync } from 'node:fs'
-const require = createRequire('C:/Users/WBPC/Desktop/BKERP/bkdemy-erp-v2/package.json')
+const require = createRequire(import.meta.url)   // trước đây gõ cứng đường dẫn máy WBPC ⇒ máy khác không tìm thấy katex
 const katex = require('katex')
 
 export function docOut(txt) {
