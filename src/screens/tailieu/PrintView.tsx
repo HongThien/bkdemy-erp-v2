@@ -50,6 +50,10 @@ export function pruneGhostBlankPages(container: HTMLElement) {
   for (let i = 0; i < pages.length; i++) {
     const p = pages[i]
     if ((p.textContent ?? '').trim()) continue          // có nội dung thật — không đụng
+    // ⭐ 30/10 (Thùy: MT Hình 7 đặt 50 dòng để đẩy Nâng cao sang trang → "mất dòng"): trang CHỈ có dòng kẻ
+    // (div rỗng có border) / ảnh / ô vẽ cũng là nội dung thật dù textContent rỗng — trước đây cả trang dòng
+    // kẻ giữa (~30 dòng) bị coi là trang ma và xoá mất. Tái hiện bằng paged.js 0.4.3 + Chromium.
+    if (p.querySelector('.pv-wline, .hp-wline, .hp-draw-r, img, svg, canvas')) continue
     const next = pages[i + 1]
     if (!next) continue                                  // trắng CUỐI CÙNG — đệm hợp lệ (canh in 2 mặt), giữ
     if (next.querySelector('.pv-bkh')) continue          // ngay trước khối mới — đệm hợp lệ, giữ
