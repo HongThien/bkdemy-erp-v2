@@ -177,6 +177,11 @@ export function useSkinErp() {
       // Nền ảnh cá nhân ⇒ BỎ các asset trang trí của style (nhân vật, hoạ tiết góc, gạch) — ảnh của người dùng là chính.
       nhanVat: tuChon ? undefined : nv?.nam,
       nhanVatLoc: skin.nhanVatLoc,
+      // Hoạt cảnh trên tranh (Halloween 30/10: bí ngô sáng/tắt, dơi, ma — screens/hocsinh/skin/HoatCanhNen.tsx). Ảnh cá nhân ⇒ bỏ (điểm sáng đo trên tranh của style).
+      hoatCanh: tuChon ? undefined : skin.hoatCanh,
+      doc,
+      // Nhân vật bồng bềnh (thân trôi, đế đứng yên) — chỉ khi style khai linh vật nhiều lớp + bật nvBong.
+      linhVat: tuChon || !skin.hoatCanh?.nvBong ? undefined : skin.homeSong?.linhVat?.nam,
       gach: tuChon ? undefined : skin.trangTri?.gach,
     }
   }, [gd, doc, maNs])

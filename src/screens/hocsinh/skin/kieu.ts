@@ -94,6 +94,23 @@ export type BoDau = {
   nv: Record<'nam' | 'nu', { thanDung: number; tu: Record<string, { ax: number; ay: number; tay: number[][] }> }>
   fx?: Record<'fx_cau_lua' | 'fx_cau_bang' | 'fx_dan_ma' | 'fx_thien_thach' | 'fx_bang_boc', string>
 }
+/** HOẠT CẢNH TRÊN TRANH NỀN (Halloween 30/10 — skin/HoatCanhNen.tsx): lớp chuyển động phủ lên tranh nền màn ngoài, CHỈ dùng transform + opacity
+ *  (chạy trên GPU, không khựng khi trang đang tải dữ liệu). Không khai ⇒ tranh tĩnh như cũ.
+ *  diem[id hình nền] = các điểm SÁNG vẽ sẵn trong tranh KHỔ NGANG: tl = rộng/cao ảnh nền; x, y = tâm (% ảnh); r = đường kính quầng (% bề ngang ảnh);
+ *    kieu: 'bi' bí ngô sáng → TẮT → sáng · 'den' đèn chập chờn nhẹ · 'nen' nến lay · 'dom' đom đóm loé rồi tắt · 'trang' trăng thở chậm;
+ *    mau = màu quầng (mặc định theo kiểu) · ck = chu kỳ (giây) · tre = lệch pha (giây) để các điểm không nháy cùng lúc.
+ *  tienCanh = vật ĐẶT RỜI ở góc dưới màn (ảnh trong suốt, mép mờ dần) + điểm sáng của nó (x, y, r theo % ảnh đó) — cho vật trong tranh hay bị xén / bị nhân vật che
+ *    (bí ngô Halloween); canh = góc trái / phải, rong = bề ngang (CSS), tl = rộng/cao ảnh. Mọi hình nền đều dùng.
+ *  doi = dơi bay ngang trời (src ảnh 1 con, so con) · ma = bé ma nhỏ trôi xa (mỗi ảnh 1 con) · nvBong = nhân vật Home bồng bềnh (cần homeSong.linhVat). */
+export type DiemSang = { x: number; y: number; r: number; kieu: 'bi' | 'den' | 'nen' | 'dom' | 'trang'; mau?: string; ck?: number; tre?: number }
+export type HoatCanh = {
+  diem?: Record<string, { tl: number; ds: DiemSang[] }>
+  /** truoc = đứng TRƯỚC nhân vật khi màn có cột nhân vật (như ảnh mẫu: bí ngô tiền cảnh, ma phía sau); màn không có cột nhân vật ⇒ lùi ra sau nội dung. */
+  tienCanh?: { src: string; tl: number; rong: string; canh: 'trai' | 'phai'; ds: DiemSang[]; truoc?: boolean }[]
+  doi?: { src: string; so: number }
+  ma?: string[]
+  nvBong?: boolean
+}
 /** Thẻ "Việc tiếp theo" (nền · chữ · viền) */
 export type TheTiep = { bg: string; ink: string; border: string }
 export type NenManId = 'bxh' | 'nhiem_vu' | 'thanh_tuu'
@@ -234,6 +251,8 @@ export type Skin = {
   nhanVatBoCuc?: { cot: string; cao: string; lech: string; bong?: number; dinh?: boolean }
   // Màn chính "sống" (mây trôi sau cửa sổ + nhân vật cử động) — xem `HomeSong`. Không khai ⇒ Home tĩnh.
   homeSong?: HomeSong
+  // Hoạt cảnh phủ trên tranh nền màn ngoài (bí ngô sáng/tắt · dơi bay · ma trôi) — xem `HoatCanh`. Không khai ⇒ tranh tĩnh.
+  hoatCanh?: HoatCanh
   // Bộ đánh riêng (linh vật của style ra trận) — xem `BoDau`. Không khai ⇒ màn đấu dùng nhân vật em chọn (6 nhân vật anime).
   dau?: BoDau
   // Bảng màu 3D của bản đồ phiêu lưu (thế giới · lục địa · chặng đường · màn đấu) — 1 bảng duy nhất cho cả cảnh (skin/the3d/kieuMau.ts).

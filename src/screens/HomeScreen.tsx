@@ -15,6 +15,7 @@ import { useSkinErp, cheDoErp, SKINS_ERP, NEN_TU_CHON, nenErpCho, MEO_NGU, VIT_D
 import MeoNgu, { meoCao } from '../components/MeoNgu'
 import VitDi from '../components/VitDi'
 import DoiBan from '../components/DoiBan'
+import { HoatCanhNen, NvBong } from './hocsinh/skin/HoatCanhNen'
 import { napCanh, CANH_ERP, duongDanCanh, KHOA_NHOM, type Canh } from '../lib/canhErp'
 import HomeScene from './home/HomeScene'
 import { uploadNenErp } from '../lib/nhansu'
@@ -624,7 +625,10 @@ export default function HomeScreen() {
   const soAn = an.length
 
   return (
-    <section style={khung} className="min-h-0 overflow-auto text-[var(--sk-ink)]">
+    // Tranh nền nằm trên section NGOÀI (không cuộn) ⇒ lớp hoạt cảnh (bí ngô sáng/tắt, dơi, ma) đứng yên khớp tranh; nội dung cuộn trong khối bên trong.
+    <section style={khung} className="relative min-h-0 overflow-hidden text-[var(--sk-ink)]">
+      {sk.hoatCanh && <HoatCanhNen hc={sk.hoatCanh} nenId={sk.nenId} doc={sk.doc} coTruoc={coNv} />}
+      <div className="relative z-[1] h-full overflow-auto">
       <div className={`mx-auto flex min-h-full max-w-[1500px] gap-5 ${le}`}>
         {coNv && (
           <div className="flex w-[25%] shrink-0 flex-col self-stretch">
@@ -634,8 +638,10 @@ export default function HomeScreen() {
                 {dsYeuThich.length ? 'Mục hay dùng nằm ngay hàng ★ Yêu thích — bấm là vào thẳng.' : 'Mở một nhóm rồi bấm ☆ ở mục hay dùng, mình sẽ để sẵn ở hàng Yêu thích.'}
                 <span className="absolute -bottom-1.5 left-8 size-3 rotate-45 bg-white/95" />
               </div>
-              <img src={sk.nhanVat} alt="" draggable={false} className="max-h-[56vh] w-full object-contain object-bottom"
-                style={{ filter: sk.nhanVatLoc ?? 'drop-shadow(0 14px 22px rgba(0,0,0,.5))' }} />
+              {sk.linhVat
+                ? <NvBong lv={sk.linhVat} cao="56vh" loc={sk.nhanVatLoc ?? 'drop-shadow(0 14px 22px rgba(0,0,0,.5))'} />
+                : <img src={sk.nhanVat} alt="" draggable={false} className="max-h-[56vh] w-full object-contain object-bottom"
+                    style={{ filter: sk.nhanVatLoc ?? 'drop-shadow(0 14px 22px rgba(0,0,0,.5))' }} />}
             </div>
           </div>
         )}
@@ -693,6 +699,7 @@ export default function HomeScreen() {
           {nhomThua > 0 && <p className="mt-4 text-[12px] text-[var(--sk-muted)]">Còn {nhomThua} nhóm khác — mở ở ☰ menu bên trái hoặc thanh địa chỉ. (Trang chính chỉ hiện tối đa 4 nhóm: kéo nhóm cần dùng lên đầu hoặc ẩn bớt.)</p>}
           {soAn > 0 && coSao && <p className="mt-6 text-[12px] text-[var(--sk-muted)]">Đang ẩn {soAn} box — bật lại ở ⚙ Tuỳ chỉnh.</p>}
         </div>
+      </div>
       </div>
     </section>
   )

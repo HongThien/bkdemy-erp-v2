@@ -693,3 +693,22 @@ Dùng `homeSong.linhVat` (đã có, `LinhVatSong` ở `kieu.ts`) — không đ�
 
 Ô → icon (khai `anhO` trong `skin/styles/halloween.ts`): `giao_trinh → o_tren_lop` · `thanh_tuu → o_cup` · `xep_hang → o_xep_hang` ·
 `tu_luyen_rieng → o_tu_luyen` · `de_thi_thu → o_thi_thu` · còn lại cùng tên ô.
+
+---
+
+## ✅ HOẠT CẢNH ERP 30/10 (Thùy: "làm giao diện Halloween cho ERP — bí ngô phát sáng rồi tắt rồi sáng, vài con dơi bay, con ma di chuyển, không bị khựng") — nhánh `claude/erp-halloween`
+
+- Style Halloween đã có sẵn trong bảng Giao diện ERP (vỏ ERP lấy mọi style của app HS — `lib/erpSkin.ts`). Việc mới = **hoạt cảnh** trên tranh nền Trang chính:
+  `skin/HoatCanhNen.tsx` + cấu hình `hoatCanh` trong `styles/halloween.ts` (hợp đồng `HoatCanh` ở `skin/kieu.ts`, dùng lại được cho app HS / style khác).
+  - **Điểm sáng** đo trên 3 tranh ngang (lưới %): phố đêm 3 bí ngô (sáng → TẮT → sáng, lệch pha) + đèn hiên, đèn đường, 5 bóng đèn dây (chập chờn) ·
+    nghĩa địa 3 cụm nến (lay) + trăng (thở chậm) · vườn bí 2 bí ngô + 5 đom đóm (loé rồi tắt).
+  - **Tiền cảnh bí ngô:** bí ngô trong tranh ở màn rộng bị XÉN (tranh phủ theo bề ngang, đáy rơi ra ngoài khung — đo 1904×929: bí ngô ở y 964–1077),
+    màn hẹp bị bé ma che ⇒ cắt cụm 3 bí (phố đêm) + quả bí khoét mặt (vườn bí) thành ảnh mép mờ dần (`tien_canh/bi_trai.webp` · `bi_phai.webp`,
+    `scripts/halloween-hinh.mjs` phần 6), đặt 2 góc dưới, có quầng sáng tắt/bật. Cụm trái đứng TRƯỚC bé ma khi có cột nhân vật (như ảnh mẫu), không có cột ⇒ lùi ra sau thẻ.
+  - **6 con dơi** bay ngang trời (đường thẳng đều + nhấp nhô sin + vỗ cánh co giãn 0,2 giây), nửa số bay ngược chiều · **2 bé ma nhỏ** trôi rất chậm ở xa ·
+    **bé ma chính bồng bềnh** (thân trôi, đế lá đứng yên — dùng 2 lớp `homeSong.linhVat`).
+- **Vì sao không khựng** (ghi luật chung ở `design/STYLE-HS.md` §2.7): chỉ `transform` + `opacity` (kiểm bằng `document.getAnimations()`: 44 chuyển động, đúng 2 thuộc tính
+  này), không đổi hình theo nấc, `will-change`, keyframe không `var()`, thông số tất định + memo, gốc `contain: strict`. Máy bật giảm chuyển động ⇒ đứng yên.
+- Trang chính ERP: tranh nền giờ nằm trên `section` NGOÀI (không cuộn), nội dung cuộn trong khối bên trong ⇒ hoạt cảnh đứng yên khớp tranh. Style khác (đã soi Đáng yêu) cuộn y như cũ.
+- **Đã soi (trang `/xem-thu-erp.html` lấy lại TẠM từ lịch sử, không commit):** 1600×860 cả 3 nền · điện thoại 375×812. **Chưa đo được khung hình/giây thật** — khung trình duyệt
+  của Claude chạy ngầm nên bị hạ nhịp; cần mở trên máy thật để cảm nhận.

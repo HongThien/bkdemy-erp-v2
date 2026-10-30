@@ -23,6 +23,7 @@
 | Bảng màu 3D của bản đồ phiêu lưu (thế giới · lục địa · chặng · màn đấu) | `skin/the3d/bangMau<id>.ts` → khai `the3d` trong style (hợp đồng `skin/the3d/kieuMau.ts`) | Cảnh 3D viết bằng CODE, chỉ đọc màu qua bảng này (không gõ hex trong màn). Thiếu `the3d` ⇒ màn phiêu lưu báo "style chưa có bản đồ 3D". Quái/boss cắm qua `skin/the3d/nguonQuai.ts` (Thùy thiết kế riêng) |
 | Sổ hình BẢN ĐỒ PHIÊU LƯU 2D · ảnh QUÁI · hình GAME NHÚNG (07/10) | `skin/styles/<id>BanDo2d.ts` → khai `banDo2d` + `quai2d` · `game` trong style (hợp đồng `BanDo2D` ở `skin/kieu.ts`) | Màn bản đồ (`phieuluu/ban2d/hinh2d.ts`) và game Đấu trường/leo tháp (`src/dautu/hinhGame.ts`, nhận `?skin=`) CHỈ đọc qua đây — cấm gõ `/rpg/` trong màn. Thiếu biome nào ⇒ hình tạm; thiếu `quai2d` ⇒ quái tạm CC0. Mẫu: `rpgBanDo2d.ts` · `khoiBanDo2d.ts` |
 | Bộ ĐÁNH riêng (linh vật của style ra trận — Halloween 25/10) | `skin/styles/<id>Dau.ts` (sinh bởi script) → khai `dau` (hợp đồng `BoDau` ở `skin/kieu.ts`) | 15 tư thế × nam/nữ cùng khung + neo chân/điểm phát đòn + 5 vật bay. Mọi màn đấu đọc qua `skin/nhanVat.ts` (`anhDauNv`/`hopDauNv`/`tayDauNv`) và `thuthach/hieuUng.ts` — CẤM màn tự chọn hình theo style. Không khai ⇒ nhân vật em chọn. Màn chọn nhân vật luôn dùng bản gốc (`anhDauNvGoc`) |
+| HOẠT CẢNH trên tranh nền (Halloween 30/10: bí ngô sáng/tắt · đèn/nến chập chờn · dơi bay · ma trôi · nhân vật bồng bềnh) | khai `hoatCanh` trong style (hợp đồng `HoatCanh` ở `skin/kieu.ts`), vẽ bởi `skin/HoatCanhNen.tsx` | Điểm sáng đo theo % tranh NGANG (lớp `.hc-tranh` dựng lại đúng khung `center top / cover` bằng đơn vị container) · tiền cảnh = vật cắt từ tranh, mép mờ dần, đặt góc dưới (vật trong tranh hay bị xén / bị nhân vật che). Đang dùng: Trang chính vỏ ERP. Không khai ⇒ tranh tĩnh |
 | Ảnh gốc từ ChatGPT (chưa nén) | `design/bk-ui-src/…` · ảnh toàn cảnh chuẩn trong `design/handoff/<kit>/reference/` | nguồn để nén lại khi cần |
 
 Style RPG hiện tại (02/10: nền + nhân vật đã CHIBI — `bg_*_chibi_*.jpg`, `nv_*_chibi.png`; icon/banner còn anime cũ): `skin/styles/rpg.ts` + `public/bk-ui/hs/skin/rpg/` (3 nền: Lâu đài — ảnh 37 bản dọc · Đảo trời · Đêm sao; 13 icon ô;
@@ -89,6 +90,12 @@ Style RPG hiện tại (02/10: nền + nhân vật đã CHIBI — `bg_*_chibi_*.
   trùng nhau. Vẽ bởi `LinhVatHome`: nhịp vẫy / chớp / ăn / ngủ / giật mình dậy, nét rung tay, co giãn khi đổi tư thế. Bản đồ thế giới kiểu đảo rời: xếp cột so le CAO / THẤP,
   đừng để 5 đảo cùng một tầm cao — tên dài (rộng tới 290px) sẽ đè lên nhau.
 - Soi trang xem thử ở chế độ sáng: thêm `&che_do=sang` (mặc định các trang `?xem=` gắn chế độ tối).
+- **⭐ ẢNH ĐỘNG KHÔNG KHỰNG (Thùy 30/10: "lâu nay các ảnh động toàn bị khựng") — luật cho MỌI chuyển động trang trí:** ① chỉ animate `transform` +
+  `opacity` (chạy trên GPU, không giật khi trang đang tải) — CẤM animate `left/top/width/height/filter/box-shadow/background`; ② chuyển động LIỀN (ease, sin) thay vì
+  đổi 2–3 hình theo nấc `steps(1)` (2 hình/giây là tự nhiên đã giật); ③ `will-change` trên lớp chuyển động; ④ bộ lọc (bóng đổ) đặt TRÊN chính lớp đang
+  chuyển động, không đặt ở lớp cha đứng yên (cha có filter ⇒ vẽ lại mỗi khung); ⑤ keyframe không dùng `var()`; ⑥ thông số tất định (không `Math.random`
+  lúc vẽ) + memo ⇒ trang vẽ lại không làm chuyển động chạy lại từ đầu. Mẫu: `skin/HoatCanhNen.tsx`. Vịt / corgi / đôi bạn ERP (`components/VitDi.tsx`…)
+  còn chạy `left` + đổi dáng theo nấc — chưa sửa.
 
 ## 3. Thêm TÍNH NĂNG / MÀN mới (bắt buộc)
 

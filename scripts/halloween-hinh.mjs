@@ -236,6 +236,23 @@ for (const gt of ['nam', 'nu']) {
 }
 for (const [f, dai] of [['cau_lua', 640], ['cau_bang', 640], ['dan_ma', 512], ['thien_thach', 400], ['bang_boc', 500]]) await thu(g(`danh/hw_fx_${f}`), `${OUT}/dau/fx_${f}.webp`, dai)
 
+// ════ 6. TIỀN CẢNH BÍ NGÔ (hoạt cảnh 30/10 — skin/HoatCanhNen.tsx) ══════════════════════════════════════════════════════
+// Bí ngô vẽ sẵn trong tranh nền thì ở màn rộng bị XÉN (tranh phủ theo bề ngang, đáy rơi ra ngoài) còn màn hẹp bị nhân vật che ⇒ cắt chính cụm bí ngô
+// trong tranh (đúng nét, đúng màu) thành lớp tiền cảnh đặt ở góc dưới màn. Mép trên + 2 bên MỜ DẦN (elip làm mờ), đáy để liền vì chạm đáy màn.
+// box = vùng cắt (% ảnh nền: x0, y0, x1, y1). Điểm sáng của tiền cảnh khai trong halloween.ts theo % ảnh cắt.
+fs.mkdirSync(`${OUT}/tien_canh`, { recursive: true })
+for (const [ten, nenGoc, box] of [['bi_trai', 'hw_bg_pho_dem_ngang', [0, 55, 23, 84]], ['bi_phai', 'hw_bg_vuon_bi_ngang', [76, 78, 100, 100]]]) {
+  const im = await loadImage(g(nenGoc)), W = im.width, H = im.height
+  const [x0, y0, x1, y1] = [box[0] * W / 100, box[1] * H / 100, box[2] * W / 100, box[3] * H / 100], w = Math.round(x1 - x0), h = Math.round(y1 - y0)
+  const c = createCanvas(w, h), x = c.getContext('2d'); x.drawImage(im, x0, y0, w, h, 0, 0, w, h)
+  const fe = 0.16, m = createCanvas(w, h), mx = m.getContext('2d')
+  mx.filter = `blur(${Math.round(Math.min(w, h) * fe * 0.5)}px)`; mx.fillStyle = '#fff'
+  mx.beginPath(); mx.ellipse(w / 2, h * (fe + 1.55) / 2, w * (1 - fe) / 2, h * (1.55 - fe) / 2, 0, 0, Math.PI * 2); mx.fill()
+  x.globalCompositeOperation = 'destination-in'; x.drawImage(m, 0, 0)
+  ghi(`${OUT}/tien_canh/${ten}.webp`, await c.encode('webp', 88))
+  console.log('tiền cảnh', ten, w, h, 'tl', r4(w / h))
+}
+
 // ════ sinh cấu hình ══════════════════════════════════════════════════════════════════════════════════════════════════
 const DAU = '// SINH TỰ ĐỘNG bởi scripts/halloween-hinh.mjs — đừng sửa tay.'
 const HOP = 'Record<string, { x0: number; y0: number; x1: number; y1: number }>'
