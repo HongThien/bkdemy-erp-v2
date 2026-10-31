@@ -4,7 +4,10 @@
 import { etFormOf, canBeETForm, type CauHinh, type ETForm } from './tailieu'
 import { cumKey, listCauByDang, type CauHoi } from './kho/api'
 
-export type BaseItem = { maDang: string; maCau: string }
+// maDang = null: câu đang nằm trong đề nhưng KHÔNG còn thuộc dạng nào (vd bản đồ mới: câu bị gỡ khỏi dạng bài —
+// fetchCausCuaTaiLieu nạp từ kho gốc với dang_chinh trống). Vẫn là câu GỐC của đề ⇒ phải có mặt trong base, nếu không
+// đề 2/3 thiếu đúng vị trí đó và bản in rơi về 1 đề (MT 4a câu 6–7, Thùy 31/10).
+export type BaseItem = { maDang: string | null; maCau: string }
 
 // Sinh đề 2/3 PURE: base = câu GỐC (đúng thứ tự), baseCh = cấu hình hiện tại. Trả cau_hinh mới (etMaDe +
 // etFormByCau bổ sung form cho câu biến thể) + toàn bộ câu đã nạp (để cache/preview). cauCache = câu đã
@@ -24,7 +27,7 @@ export async function buildMaDe(
   cauCache: Record<string, CauHoi> = {},
 ): Promise<{ ch: CauHinh; caus: CauHoi[] }> {
   const pools: Record<string, CauHoi[]> = {}
-  for (const md of new Set(base.map((b) => b.maDang))) pools[md] = await listCauByDang(md, cauTbl)
+  for (const md of new Set(base.map((b) => b.maDang))) if (md) pools[md] = await listCauByDang(md, cauTbl)
   const allCau = Object.values(pools).flat()
   const byMa = new Map(allCau.map((c) => [c.ma_cau, c]))
   const etFormByCau: Record<string, string> = { ...(baseCh.etFormByCau ?? {}) }
@@ -38,7 +41,9 @@ export async function buildMaDe(
     // Ứng viên = câu CÙNG CỤM BÀI + in được cùng form. KHÔNG lấy sang cụm KHÁC dù cùng dạng — đó chính
     // là chỗ gây "loạn": bài thay thế phải TƯƠNG ĐƯƠNG câu gốc, không chỉ tình cờ cùng dạng.
     // Dạng vẫn tự khớp vì cụm nằm gọn trong 1 dạng.
-    const candidates = (pools[b.maDang] ?? []).filter((c) => rootOf(c) === root && canBeETForm(c, form))
+    // Câu KHÔNG có dạng ⇒ không có pool ⇒ candidates rỗng ⇒ đề 2/3 dùng lại chính câu gốc (cụm = chính nó, như
+    // fn_tl_bdm_et_ma_de) — không đoán câu "tương đương" khi không biết dạng (§1.5).
+    const candidates = (b.maDang ? pools[b.maDang] ?? [] : []).filter((c) => rootOf(c) === root && canBeETForm(c, form))
     const picks: (string | null)[] = []
     for (let v = 0; v < 2; v++) {
       const fresh = candidates.find((c) => !used.has(c.ma_cau))   // biến thể KHÁC chưa dùng ở bất kỳ đề nào

@@ -615,8 +615,11 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
 
   // ── 3 MÃ ĐỀ (như ET) — base = MỌI câu XUYÊN mọi phần (đúng thứ tự phần → hàng). Đề 2/3 tự sinh khác
   //    câu (cùng dạng + form), neo theo ma_cau gốc; lưu NGAY vào cau_hinh (MT autosave). Dùng lib/made. ──
-  const baseRows = (): Row[] => phans.flatMap((p) => (rowsByPhan[p.id] ?? []).filter((r) => r.maCau && r.maDang))
-  const baseAll = (): BaseItem[] => baseRows().map((r) => ({ maDang: r.maDang!, maCau: r.maCau! }))
+  //    ⭐ base = MỌI hàng câu kho (trừ hàng Hình), KỂ CẢ câu không còn dạng (maDang null — câu bị gỡ khỏi dạng bài):
+  //    lọc `r.maDang` như trước thì câu đó bị bỏ qua IM LẶNG ⇒ không có đề 2/3, màn vẫn báo "✓ đủ 3 mã đề" trong khi
+  //    bản in (base = mọi câu) thấy thiếu ⇒ in 1 đề cho cả MT (MT 4a câu 6–7, Thùy 31/10).
+  const baseRows = (): Row[] => phans.flatMap((p) => (rowsByPhan[p.id] ?? []).filter((r) => r.maCau && r.nhanh !== 'hinh'))
+  const baseAll = (): BaseItem[] => baseRows().map((r) => ({ maDang: r.maDang, maCau: r.maCau! }))
   async function saveCh(next: CauHinh) { chRef.current = next; setCh(next); await updateTaiLieu(id, { cau_hinh: next }); markSaved() }
   const mMeta = mtMeta({ cau_hinh: ch })
   const setMtField = (patch: { loaiDe?: MTLoaiDe | null; thang?: string | null }) => saveCh({ ...ch, mtMeta: { loaiDe: mMeta.loaiDe, thang: mMeta.thang, ...patch } })
@@ -633,7 +636,7 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
     let chNext: CauHinh = { ...chRef.current, etMaDe: {} }
     const allCaus: CauHoi[] = []
     for (const nh of nhs) {
-      const base: BaseItem[] = rows.filter((r) => r.nhanh === nh).map((r) => ({ maDang: r.maDang!, maCau: r.maCau! }))
+      const base: BaseItem[] = rows.filter((r) => r.nhanh === nh).map((r) => ({ maDang: r.maDang, maCau: r.maCau! }))
       const { ch: c2, caus } = await buildMaDeLib(base, chNext, tblCua(nh), cau)
       chNext = { ...c2, etMaDe: { ...(chNext.etMaDe ?? {}), ...(c2.etMaDe ?? {}) } }
       allCaus.push(...caus)
@@ -657,6 +660,8 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
     } else delete chNext.hinhMaDe
     setCau((p) => { const n = { ...p }; for (const c of allCaus) n[c.ma_cau] = c; return n })
     await saveCh(chNext)
+    const khongDang = rows.filter((r) => !r.maDang).map((r) => r.maCau!)
+    if (khongDang.length) alert(`${khongDang.length} câu KHÔNG thuộc dạng bài nào (đã bị gỡ khỏi dạng trên bản đồ) — đề 2 & 3 dùng lại chính câu gốc:\n${khongDang.join('\n')}\n\nMuốn đề 2/3 khác câu: gán lại dạng cho câu ở bản đồ rồi Sinh lại, hoặc bấm ô dạng để chọn câu khác.`)
   }
   // ── HÌNH: chọn bài cho 1 HÀNG (popup ChonYTuCay → PickItem) · tuỳ chọn hình vẽ / số dòng · ↻ Đổi bản khác ──
   async function pickHinh(phanId: string, idx: number, p: PickItem) {
@@ -958,7 +963,8 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                                 {coNhieuNhanh && <span className="mr-1 rounded bg-sky-50 px-1 py-0.5 text-[10px] font-medium text-sky-700" title="Bản đồ kiến thức (nhánh kho) của câu này">{tenNhanh(d.mon, r.nhanh) ?? ''}</span>}
                                 {tenDang(r.maDang, r.nhanh)}
                               </span>
-                            ) : <span className="text-indigo-500">+ chọn dạng…</span>}
+                            ) : c ? <span className="text-amber-700" title="Câu này đã bị gỡ khỏi dạng bài trên bản đồ — vẫn in được, nhưng đề 2/3 chỉ dùng lại chính câu này. Bấm để chọn dạng (sẽ THAY câu bằng câu gợi ý của dạng đó).">⚠ Câu chưa thuộc dạng bài nào</span>
+                              : <span className="text-indigo-500">+ chọn dạng…</span>}
                           </button>
                           <div className="min-w-0 flex-1 pt-1">
                             {c ? <div className="truncate text-[13px] text-slate-700"><MathText>{c.noi_dung}</MathText></div>
@@ -1021,8 +1027,10 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                                     ) : (
                                       <span className="min-w-0 flex-1 font-medium text-rose-500">⚠ TRỐNG — chưa có câu cùng dạng + form khác</span>
                                     )}
-                                    <button onClick={() => setVarPicker({ baseMaCau: c.ma_cau, v, maDang: r.maDang ?? c.dang_chinh, nhanh: r.nhanh, form: f })}
-                                      className="shrink-0 rounded-md border border-slate-300 px-2 py-0.5 text-[11px] font-medium text-slate-600 hover:border-violet-400">✎ {vm ? 'Đổi' : 'Chọn'}</button>
+                                    {(r.maDang ?? c.dang_chinh) && (
+                                      <button onClick={() => setVarPicker({ baseMaCau: c.ma_cau, v, maDang: (r.maDang ?? c.dang_chinh)!, nhanh: r.nhanh, form: f })}
+                                        className="shrink-0 rounded-md border border-slate-300 px-2 py-0.5 text-[11px] font-medium text-slate-600 hover:border-violet-400">✎ {vm ? 'Đổi' : 'Chọn'}</button>
+                                    )}
                                   </div>
                                 )
                               })}
@@ -1236,7 +1244,7 @@ function ChiaDeMTModal({ taiLieuId, lopId, lopTen, onClose }: { taiLieuId: strin
     return () => { alive = false }
   }, [taiLieuId, lopId])
 
-  const base: BaseItem[] = (phans ?? []).flatMap((p) => p.caus.filter((c) => c.ma_cau && c.dang_chinh).map((c) => ({ maDang: c.dang_chinh, maCau: c.ma_cau })))
+  const base: BaseItem[] = (phans ?? []).flatMap((p) => p.caus.filter((c) => c.ma_cau).map((c) => ({ maDang: c.dang_chinh, maCau: c.ma_cau })))
   // ⭐ KHÔNG dùng maDeReady/maDeStale ở đây (Thùy báo "mỗi lần vào lại mất đề 2/3"): những hàm đó so
   // KHỚP TUYỆT ĐỐI base ↔ etMaDe, đúng cho MTEditor (base = TOÀN BỘ câu của MT master) nhưng SAI ở đây —
   // base của 1 lớp là TẬP CON (ganMTVaoBuoi LỌC BỚT câu nâng cao lớp không đủ bậc, xem mt.ts) trong khi
