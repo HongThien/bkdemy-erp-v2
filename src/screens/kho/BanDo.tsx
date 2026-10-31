@@ -621,12 +621,12 @@ export function LyThuyetModal({ ma, ten, current, api, allowKhongCan, onClose, o
 
   return (
     <div className="fixed inset-0 z-[60] bg-slate-900/50 backdrop-blur-sm" onClick={(e) => e.stopPropagation()}>
-      <div className="absolute inset-4 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
+      <div className="absolute inset-4 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl max-md:inset-0 max-md:rounded-none max-md:border-0" onClick={(e) => e.stopPropagation()}>
         {dauTrang?.(roiDuoc)}
         {/* Header: hàng tiêu đề + hàng công cụ AI (tách 2 hàng cho khỏi chen) */}
-        <div className="border-b border-slate-200 px-6 py-3">
-          <div className="flex items-center gap-3">
-            <h3 className="text-base font-semibold text-slate-900">{dauTrang ? ten : `Lý thuyết · ${ten}`}</h3>
+        <div className="border-b border-slate-200 px-6 py-3 max-md:px-3 max-md:py-2">
+          <div className="flex items-center gap-3 max-md:gap-2">
+            <h3 className="text-base font-semibold text-slate-900 max-md:min-w-0 max-md:flex-1 max-md:truncate max-md:text-[14px]">{dauTrang ? ten : `Lý thuyết · ${ten}`}</h3>
             <span className="hidden text-[12px] text-slate-400 lg:inline">soạn tay, hoặc upload ảnh/PDF → AI bóc LaTeX</span>
             {allowKhongCan && (
               <label className="flex shrink-0 cursor-pointer items-center gap-1.5 rounded-md border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-600 hover:border-slate-300">
@@ -670,18 +670,18 @@ export function LyThuyetModal({ ma, ten, current, api, allowKhongCan, onClose, o
             <p className="max-w-md text-sm text-slate-500">Đã đánh dấu <b className="text-slate-700">"không cần lý thuyết chung"</b> cho chuyên đề này → tính là <b className="text-emerald-600">hoàn thành</b> (không trừ % tiến độ). Bỏ tick ở trên để soạn lý thuyết.</p>
           </div>
         ) : (
-        <div className="grid min-h-0 flex-1 grid-cols-2">
-          <div className="flex min-h-0 flex-col border-r border-slate-200">
+        <div className="grid min-h-0 flex-1 grid-cols-2 max-md:grid-cols-1 max-md:grid-rows-2">
+          <div className="flex min-h-0 flex-col border-r border-slate-200 max-md:border-b max-md:border-r-0">
             <div className="border-b border-slate-100 px-4 py-1.5 text-[12px] font-bold uppercase tracking-wide text-slate-500">Code (LaTeX) — sửa tự do</div>
             <textarea ref={taRef} value={noiDung} onChange={(e) => setNoiDung(e.target.value)}
               onPaste={(e) => { const f = Array.from(e.clipboardData.files).find((x) => x.type.startsWith('image/')); if (f) { e.preventDefault(); void insertImg(f) } }}
               placeholder={'Lý thuyết · phương pháp · ví dụ…\nCông thức $\\dfrac{-b}{2a}$, $x \\neq 0$\nChèn hình: ![](url) — nút 🖼 Chèn ảnh / ✂️ Cắt hình chèn, hoặc dán ảnh (Ctrl+V) thẳng vào đây\nĐóng khung: ##ĐL định lý · ##ĐN định nghĩa · ##CY chú ý · ##PP phương pháp giải · ##VD ví dụ · ##NX nhận xét — đầu dòng, có thể kèm tiêu đề cùng dòng'}
-              className="min-h-0 flex-1 resize-none p-4 font-mono text-[13px] leading-relaxed outline-none" />
+              className="min-h-0 flex-1 resize-none p-4 font-mono text-[13px] leading-relaxed outline-none max-md:p-2.5" />
           </div>
           <div className="flex min-h-0 flex-col">
             <div className="border-b border-slate-100 px-4 py-1.5 text-[12px] font-bold uppercase tracking-wide text-slate-500">Xem trước</div>
             <style>{LT_CORE_CSS}</style>
-            <div className="min-h-0 flex-1 overflow-auto p-4 text-[16px] leading-loose text-slate-800">
+            <div className="min-h-0 flex-1 overflow-auto p-4 text-[16px] leading-loose text-slate-800 max-md:p-2.5 max-md:text-[14.5px]">
               {noiDung.trim() ? <LyThuyetBlocksPreview text={noiDung} /> : <span className="text-slate-400">— preview hiện ở đây</span>}
             </div>
           </div>
@@ -689,7 +689,7 @@ export function LyThuyetModal({ ma, ten, current, api, allowKhongCan, onClose, o
         )}
 
         {/* Footer: đính kèm + lưu */}
-        <div className="flex flex-wrap items-center gap-3 border-t border-slate-200 px-6 py-3">
+        <div className="flex flex-wrap items-center gap-3 border-t border-slate-200 px-6 py-3 max-md:gap-2 max-md:px-3 max-md:py-2 max-md:pb-[max(0.5rem,env(safe-area-inset-bottom))]">
           {!khongCan && <button onClick={() => setShowFile((s) => !s)} className="text-[12px] font-medium text-slate-400 hover:text-indigo-600">{showFile ? '− Ẩn đính kèm' : '+ Đính kèm file / link (tuỳ chọn)'}</button>}
           {!khongCan && showFile && (
             <div className="flex items-center gap-2">

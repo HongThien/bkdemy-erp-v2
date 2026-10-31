@@ -48,17 +48,17 @@ export default function KhoTrenLopModal({ dangBaiId, ten, onDong }: { dangBaiId:
   }
 
   return (
-    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-900/40 p-6" onClick={() => onDong(doi)}>
-      <div className="flex h-full max-h-[95vh] w-full max-w-[95vw] flex-col overflow-hidden rounded-xl bg-slate-50 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-900/40 p-6 max-md:p-0" onClick={() => onDong(doi)}>
+      <div className="flex h-full max-h-[95vh] w-full max-w-[95vw] flex-col overflow-hidden rounded-xl bg-slate-50 shadow-2xl max-md:max-h-none max-md:max-w-none max-md:rounded-none" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center gap-3 border-b border-slate-200 bg-white px-4 py-2.5">
           <span className="text-[14px] font-semibold text-slate-900">🏫 Kho trên lớp</span>
           <span className="min-w-0 flex-1 truncate text-[13px] text-slate-600"><MathText>{ten}</MathText></span>
           {dangLam && <span className="text-[12px] text-slate-400">đang lưu…</span>}
-          <span className="text-[11.5px] text-slate-400">Bài giảng + luyện trên lớp · giáo trình chọn từ đây và từ kho luyện</span>
+          <span className="text-[11.5px] text-slate-400 max-md:hidden">Bài giảng + luyện trên lớp · giáo trình chọn từ đây và từ kho luyện</span>
           <button onClick={() => onDong(doi)} className="rounded-md px-2 py-1 text-[13px] text-slate-500 hover:bg-slate-100">✕</button>
         </div>
         {loi && <div className="border-b border-rose-200 bg-rose-50 px-4 py-2 text-[12.5px] text-rose-700">⚠ {loi}</div>}
-        <div className="grid min-h-0 flex-1 grid-cols-2 gap-4 overflow-y-auto p-4">
+        <div className="grid min-h-0 flex-1 grid-cols-2 gap-4 overflow-y-auto p-4 max-md:grid-cols-1 max-md:gap-3 max-md:p-2.5">
           {VAI.map((vai) => {
             const ds = chuoi(vai)
             return (
@@ -165,11 +165,11 @@ function SoanCau({ vai, cau, onHuy, onLuu }: { vai: VaiLop; cau: CauLop | null; 
   const thieu = !f.noi_dung.trim() || (tn && (lc.some((x) => !x.trim()) || !f.dap_an))
   const ta = `${inp} min-h-[70px] w-full font-mono text-[12.5px]`
   return (
-    <div className="fixed inset-0 z-[80] flex items-center justify-center bg-slate-900/40 p-6" onClick={(e) => { e.stopPropagation(); onHuy() }}>
-      <div className="flex max-h-[92vh] w-full max-w-3xl flex-col overflow-hidden rounded-xl bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}
+    <div className="fixed inset-0 z-[80] flex items-center justify-center bg-slate-900/40 p-6 max-md:p-0" onClick={(e) => { e.stopPropagation(); onHuy() }}>
+      <div className="flex max-h-[92vh] w-full max-w-3xl flex-col overflow-hidden rounded-xl bg-white shadow-2xl max-md:h-dvh max-md:max-h-none max-md:rounded-none" onClick={(e) => e.stopPropagation()}
         onKeyDown={(e) => { if (e.key === 'Escape') { e.stopPropagation(); onHuy() } }}>
         <div className={`px-4 py-2.5 text-[14px] font-semibold text-white ${MAU[vai].dau}`}>{cau ? `Sửa ${cau.ma_cau}` : 'Thêm câu'} · {NHAN_VAI[vai]}</div>
-        <div className="grid min-h-0 flex-1 grid-cols-2 gap-4 overflow-y-auto p-4">
+        <div className="grid min-h-0 flex-1 grid-cols-2 gap-4 overflow-y-auto p-4 max-md:grid-cols-1 max-md:gap-3 max-md:p-3">
           <div className="space-y-2.5">
             <label className="block text-[12px] font-medium text-slate-600">Loại câu
               <select value={f.loai_cau} onChange={(e) => dat({ loai_cau: e.target.value as CauLopNhap['loai_cau'], lua_chon: e.target.value === 'trac_nghiem' ? lc : null })} className={`${inp} mt-1 h-8 w-full`}>
@@ -241,9 +241,9 @@ function ChepTuKho({ dangBaiId, vai, daChep, onHuy, onChep }: { dangBaiId: strin
   useEffect(() => { getKhoCau('dang_bai', dangBaiId, 'tat_ca', 200, 0).then(setRows).catch((e) => setLoi(e.message ?? String(e))) }, [dangBaiId])
   const bat = (m: string) => setChon((x) => (x.includes(m) ? x.filter((y) => y !== m) : [...x, m]))
   return (
-    <div className="fixed inset-0 z-[80] flex items-center justify-center bg-slate-900/40 p-6" onClick={(e) => { e.stopPropagation(); onHuy() }}>
-      <div className="flex max-h-[92vh] w-full max-w-3xl flex-col overflow-hidden rounded-xl bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
-        <div className="flex items-center gap-2 border-b border-slate-200 px-4 py-2.5">
+    <div className="fixed inset-0 z-[80] flex items-center justify-center bg-slate-900/40 p-6 max-md:p-0" onClick={(e) => { e.stopPropagation(); onHuy() }}>
+      <div className="flex max-h-[92vh] w-full max-w-3xl flex-col overflow-hidden rounded-xl bg-white shadow-2xl max-md:h-dvh max-md:max-h-none max-md:rounded-none" onClick={(e) => e.stopPropagation()}>
+        <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 px-4 py-2.5 max-md:px-3">
           <span className="text-[14px] font-semibold text-slate-900">📥 Chép từ kho luyện → {NHAN_VAI[vai]}</span>
           <span className="text-[12px] text-slate-400">Câu chép là câu MỚI của kho trên lớp (sửa thoải mái, không đụng câu gốc).</span>
         </div>

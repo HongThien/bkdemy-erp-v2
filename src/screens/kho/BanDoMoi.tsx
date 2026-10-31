@@ -281,13 +281,15 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
     <div className="flex h-full min-h-0 flex-col">
       {/* Đầu màn: khối · CHỦ ĐỀ (dropdown, mỗi màn 1 chủ đề) · bản đồ cũ · tiến độ */}
       {/* MỘT dòng ở mọi khối (Thùy 17/10: K6 gãy dòng, K7 không): nút giữ cỡ, chỉ chữ tiến độ co lại */}
-      <div className="flex flex-nowrap items-center gap-x-3 border-b border-slate-200 bg-white px-4 py-2 [&>*]:shrink-0">
+      {/* Điện thoại (<768px, Thùy 31/10 "chuẩn hoá cho mobile"): thanh xuống dòng — dãy khối cuộn ngang cả dòng, chủ đề full dòng,
+          các nút sau đó; ẩn chữ tiến độ (đọc ở máy tính). Desktop giữ MỘT dòng như cũ. */}
+      <div className="flex flex-nowrap items-center gap-x-3 border-b border-slate-200 bg-white px-4 py-2 [&>*]:shrink-0 max-md:flex-wrap max-md:gap-y-1.5 max-md:px-2.5">
         {/* dãy nút khối: màn hẹp thì cuộn ngang thay vì đẩy cả thanh xuống dòng */}
-        <span className="flex min-w-0 !shrink overflow-x-auto [scrollbar-width:thin]">{dauMan}</span>
-        <span className="flex items-center gap-1.5">
-          <span className="ml-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">Chủ đề</span>
+        <span className="flex min-w-0 !shrink overflow-x-auto [scrollbar-width:thin] max-md:basis-full">{dauMan}</span>
+        <span className="flex items-center gap-1.5 max-md:basis-full">
+          <span className="ml-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500 max-md:ml-0">Chủ đề</span>
           <select value={chuDe?.id ?? ''} onChange={(e) => chonChuDe(e.target.value)} disabled={!cay.chu_de.length}
-            title={chuDe?.ten} className={`${inp} !w-[240px] truncate py-1 text-[13px] font-medium`}>
+            title={chuDe?.ten} className={`${inp} !w-[240px] truncate py-1 text-[13px] font-medium max-md:!w-auto max-md:min-w-0 max-md:flex-1`}>
             {!cay.chu_de.length && <option value="">— chưa có chủ đề —</option>}
             {cay.chu_de.map((cd, i) => <option key={cd.id} value={cd.id}>{i + 1}. {cd.ten}{tn.coVung && cd.nhanh !== 'toan' ? ` · ${BDM_NHANH.find((n) => n.id === cd.nhanh)?.nhan ?? cd.nhanh}` : ''}</option>)}
           </select>
@@ -340,7 +342,7 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
             ✅ Duyệt kho{(khuon === 'hinh_luyen' ? canDuyetHinh : canDuyet) ? <span className="ml-1 rounded-full bg-rose-500 px-1.5 text-[10.5px] font-bold text-white">{khuon === 'hinh_luyen' ? canDuyetHinh : canDuyet}</span> : null}
           </button>
         )}
-        <span className={`ml-auto flex min-w-0 !shrink-[1000] flex-col items-end overflow-hidden text-[11px] leading-tight text-slate-500 ${khuon === 'bon_tang' ? '' : 'invisible'}`}>
+        <span className={`ml-auto flex min-w-0 !shrink-[1000] flex-col items-end overflow-hidden text-[11px] leading-tight text-slate-500 max-md:hidden ${khuon === 'bon_tang' ? '' : 'invisible'}`}>
           <span className="max-w-full truncate">Nhóm <b>{tienDo.nhom}</b> · mô tả {tienDo.nhomMoTa} · lý thuyết {tienDo.nhomLt}</span>
           <span className="max-w-full truncate">Dạng bài <b>{tienDo.db}</b> · mô tả {tienDo.dbMoTa} · lý thuyết {tienDo.dbLt} · ví dụ {tienDo.dbVd} · trên lớp {tienDo.dbLop}</span>
         </span>
@@ -379,15 +381,16 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
           )}
         </div>
       ) : (
-      <div className="flex min-h-0 flex-1">
-        {/* Cột CHUYÊN ĐỀ — trên→dưới = thứ tự học; kéo để sắp; thả nhóm vào để chuyển */}
+      <div className="flex min-h-0 flex-1 max-md:flex-col">
+        {/* Cột CHUYÊN ĐỀ — trên→dưới = thứ tự học; kéo để sắp; thả nhóm vào để chuyển.
+            Điện thoại: thành DẢI NGANG trên đầu (chip cuộn ngang, chip đang chọn có ▲▼ đổi thứ tự) — cột 260px ăn mất 2/3 màn. */}
         {chuDe && (
-          <div className="flex w-[260px] shrink-0 flex-col border-r border-slate-200 bg-white">
-            <div className="flex items-center gap-2 border-b border-slate-100 px-3 py-2">
+          <div className="flex w-[260px] shrink-0 flex-col border-r border-slate-200 bg-white max-md:w-full max-md:border-b max-md:border-r-0">
+            <div className="flex items-center gap-2 border-b border-slate-100 px-3 py-2 max-md:border-b-0 max-md:px-2.5 max-md:pb-0 max-md:pt-1.5">
               <span className="flex-1 text-[11px] font-semibold uppercase tracking-wider text-slate-500">Chuyên đề ({chuDe.o.length})</span>
               <ThemChuyenDe cay={cay} cd={chuDe} onThem={(a) => lam(() => themChuyenDeVaoChuDe(chuDe.id, a), 'Đã thêm chuyên đề')} />
             </div>
-            <div className="min-h-0 flex-1 overflow-y-auto p-1.5">
+            <div className="min-h-0 flex-1 overflow-y-auto p-1.5 max-md:flex max-md:gap-1 max-md:overflow-x-auto max-md:overflow-y-hidden">
               {!chuDe.o.length && <div className="p-2 text-[12px] text-slate-400">Chưa có — bấm «+ Chuyên đề».</div>}
               {chuDe.o.map((x) => {
                 const conChuaGan = (HIEN_KHOP_CU || tinhNangBdm().chuaPhan) && (x.chua_gan > 0 || x.nhom.some((n) => n.chua_gan > 0))
@@ -403,19 +406,19 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
                       if (kk.loai === 'nhom') return lam(() => chuyenNhom(kk.id, chuDe.id, x.chuyen_de_id, null), `Đã chuyển nhóm sang «${x.ten}»`)
                     })}
                     onClick={() => chonChuyenDe(x.chuyen_de_id)}
-                    className={`group relative mb-0.5 flex w-full cursor-pointer items-start gap-2 rounded-md px-2 py-1.5 text-left text-[12.5px] transition ${
+                    className={`group relative mb-0.5 flex w-full cursor-pointer items-start gap-2 rounded-md px-2 py-1.5 text-left text-[12.5px] transition max-md:mb-0 max-md:w-auto max-md:max-w-[75vw] max-md:shrink-0 max-md:items-center max-md:border max-md:border-slate-200 ${
                       vachChen ? 'before:absolute before:-top-1 before:left-0 before:right-0 before:h-1 before:rounded before:bg-indigo-500' : ''} ${
                       nhanNhom ? 'ring-2 ring-emerald-500 ring-offset-1' : ''} ${
                       dangChonCD ? 'bg-sky-600 font-semibold text-white' : 'text-slate-700 hover:bg-sky-50'}`}>
-                    <span className="mt-px w-5 shrink-0 text-right text-[11px] opacity-70">{x.so}</span>
-                    <span className="flex-1 leading-snug">
+                    <span className="mt-px w-5 shrink-0 text-right text-[11px] opacity-70 max-md:mt-0 max-md:w-auto">{x.so}</span>
+                    <span className="flex-1 leading-snug max-md:line-clamp-2">
                       <MathText>{x.ten}</MathText>
                       {nhanNhom && <span className="mt-0.5 block text-[10.5px] font-semibold text-emerald-700">⤵ thả: chuyển nhóm vào đây</span>}
                     </span>
                     {x.so_chu_de > 1 && <span title="Chuyên đề dùng chung nhiều chủ đề" className="mt-px shrink-0 text-[10px] opacity-70">⇆{x.so_chu_de}</span>}
                     {conChuaGan && <span title="Còn câu chưa gán dạng bài" className="mt-px shrink-0 text-[10px]">⚠</span>}
                     {/* ▲▼ đổi thứ tự — hiện khi rê chuột hoặc đang chọn; không cần kéo */}
-                    <span className={`flex shrink-0 flex-col ${dangChonCD ? 'flex' : 'hidden group-hover:flex'}`}>
+                    <span className={`flex shrink-0 flex-col ${dangChonCD ? 'flex' : 'hidden group-hover:flex max-md:!hidden'}`}>
                       <button onClick={(e) => { e.stopPropagation(); doiThuTuCD(x.chuyen_de_id, -1) }} disabled={x.so <= 1} title="Lên trên (Alt+↑)"
                         className={`rounded px-1.5 text-[11px] leading-[13px] disabled:opacity-20 ${dangChonCD ? 'hover:bg-white/25' : 'hover:bg-slate-200'}`}>▲</button>
                       <button onClick={(e) => { e.stopPropagation(); doiThuTuCD(x.chuyen_de_id, 1) }} disabled={x.so >= chuDe.o.length} title="Xuống dưới (Alt+↓)"
@@ -425,7 +428,7 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
                 )
               })}
             </div>
-            <div className="border-t border-slate-100 px-3 py-1.5 text-[10.5px] leading-relaxed text-slate-400">↑ ↓ chọn chuyên đề · ▲▼ hoặc Alt+↑ ↓ đổi thứ tự · thả box nhóm vào tên chuyên đề = chuyển nhóm</div>
+            <div className="border-t border-slate-100 px-3 py-1.5 text-[10.5px] leading-relaxed text-slate-400 max-md:hidden">↑ ↓ chọn chuyên đề · ▲▼ hoặc Alt+↑ ↓ đổi thứ tự · thả box nhóm vào tên chuyên đề = chuyển nhóm</div>
           </div>
         )}
 
@@ -454,13 +457,13 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
       {/* ── DUYỆT KHO toàn màn (che cả thanh trên + menu trái của ERP) ── */}
       {duyet && chuDe && (khuon === 'bon_tang' || khuon === 'hinh_luyen') && (
         <div className={`fixed inset-0 z-[65] flex flex-col bg-slate-50 ${xemBanDo ? 'hidden' : ''}`}>
-          <div className="flex shrink-0 items-center gap-3 border-b border-emerald-700 bg-emerald-600 px-5 py-2.5 text-white">
+          <div className="flex shrink-0 items-center gap-3 border-b border-emerald-700 bg-emerald-600 px-5 py-2.5 text-white max-md:flex-wrap max-md:gap-x-2 max-md:gap-y-1 max-md:px-3 max-md:py-2">
             <span className="text-[15px] font-semibold">✅ Duyệt kho</span>
-            <span className="text-[13px] text-white/80">Khối {khoi} · <MathText>{chuDe.ten}</MathText></span>
+            <span className="text-[13px] text-white/80 max-md:order-last max-md:basis-full max-md:truncate">Khối {khoi} · <MathText>{chuDe.ten}</MathText></span>
             {khuon === 'hinh_luyen'
               ? <span className="text-[13px] text-white/80">· bài Hình chờ vào kho Luyện{canDuyetHinh ? ` (${canDuyetHinh} bài)` : ''}</span>
               : canDuyet ? <span className="rounded-full bg-white/20 px-2 py-0.5 text-[12px] font-medium">{canDuyet} câu cần xử lý</span> : null}
-            <button onClick={() => setDuyet(false)} className="ml-auto rounded-md bg-white/15 px-3 py-1.5 text-[13px] font-semibold hover:bg-white/25">✕ Về bản đồ</button>
+            <button onClick={() => setDuyet(false)} className="ml-auto rounded-md bg-white/15 px-3 py-1.5 text-[13px] font-semibold hover:bg-white/25 max-md:px-2.5 max-md:py-1">✕ Về bản đồ</button>
           </div>
           <div className="mx-auto flex min-h-0 w-full max-w-6xl flex-1 flex-col bg-white shadow-sm">
             {khuon === 'hinh_luyen'
@@ -472,10 +475,10 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
       )}
       {duyet && xemBanDo && (
         <button onClick={() => setXemBanDo(false)}
-          className="fixed bottom-6 right-6 z-30 rounded-full bg-emerald-600 px-5 py-3 text-[14px] font-semibold text-white shadow-xl hover:bg-emerald-500">↩ Quay lại Duyệt kho</button>
+          className="fixed bottom-6 right-6 z-30 rounded-full bg-emerald-600 px-5 py-3 text-[14px] font-semibold text-white shadow-xl hover:bg-emerald-500 max-md:bottom-4 max-md:right-4 max-md:px-4 max-md:py-2.5 max-md:text-[13px]">↩ Quay lại Duyệt kho</button>
       )}
 
-      {bao && <div className="pointer-events-none fixed bottom-6 left-1/2 z-[70] -translate-x-1/2 rounded-full bg-slate-900/90 px-4 py-2 text-[13px] font-medium text-white shadow-lg">✓ {bao}</div>}
+      {bao && <div className="pointer-events-none fixed bottom-6 left-1/2 z-[70] -translate-x-1/2 rounded-full max-md:max-w-[90vw] max-md:text-center bg-slate-900/90 px-4 py-2 text-[13px] font-medium text-white shadow-lg">✓ {bao}</div>}
 
       {(HIEN_KHOP_CU || tn.chuaPhan) && ganMo && (
         <BangGanCau g={ganMo} onDong={() => setGanMo(null)} onDaGan={(n) => { thongBao(n); void napLai() }} />
@@ -518,13 +521,14 @@ function SoDoChuyenDe(p: {
   const { cd, o, chon, sang, vung, lam } = p
   const dangChon = (c: Chon) => !!chon && JSON.stringify(chon) === JSON.stringify(c)
   return (
-    <div className="min-w-0 flex-1 overflow-auto bg-[#fafafb] p-6">
-      {/* min-w-max: khung rộng bằng hàng nhóm ⇒ hết chỗ thì KÉO THANH CUỘN NGANG của ô ngoài (không xuống dòng) */}
-      <div className="flex min-w-max flex-col items-center gap-6">
+    <div className="min-w-0 flex-1 overflow-auto bg-[#fafafb] p-6 max-md:min-h-0 max-md:p-2.5">
+      {/* min-w-max: khung rộng bằng hàng nhóm ⇒ hết chỗ thì KÉO THANH CUỘN NGANG của ô ngoài (không xuống dòng).
+          Điện thoại: bỏ cuộn ngang — nhóm xếp DỌC theo số thứ tự, full bề ngang (đọc trên→dưới thay trái→phải). */}
+      <div className="flex min-w-max flex-col items-center gap-6 max-md:min-w-0 max-md:items-stretch max-md:gap-3">
         {/* Box CHUYÊN ĐỀ */}
         <div onClick={() => p.onChon({ loai: 'o' })}
           {...vung(`goc:${o.chuyen_de_id}`, (k) => k.loai === 'dang_cu', p.ganVao({ chuDe: cd.id, chuyenDe: o.chuyen_de_id }, `chuyên đề «${o.ten}»`))}
-          className={`w-[360px] cursor-pointer overflow-hidden rounded-xl border bg-white shadow-sm ${sang(`goc:${o.chuyen_de_id}`)} ${dangChon({ loai: 'o' }) ? 'border-amber-400 ring-2 ring-amber-300' : 'border-sky-200 hover:border-sky-400'}`}>
+          className={`w-[360px] cursor-pointer overflow-hidden rounded-xl border bg-white shadow-sm max-md:w-full ${sang(`goc:${o.chuyen_de_id}`)} ${dangChon({ loai: 'o' }) ? 'border-amber-400 ring-2 ring-amber-300' : 'border-sky-200 hover:border-sky-400'}`}>
           <div className="flex items-center gap-2 bg-sky-600 px-4 py-2 text-white">
             <span className="rounded bg-white/25 px-1.5 text-[11px] font-bold">{o.so}</span>
             <span className="flex-1 text-[14px] font-semibold"><MathText>{o.ten}</MathText></span>
@@ -554,9 +558,9 @@ function SoDoChuyenDe(p: {
 
         {/* Các NHÓM BÀI theo số thứ tự: trái → phải, MỘT HÀNG NGANG (Thùy 12/10: "hết chỗ thì kéo thanh bar") */}
         {o.nhom.length > 0 && (
-          <div className="flex flex-nowrap items-start gap-5">
+          <div className="flex flex-nowrap items-start gap-5 max-md:flex-col max-md:items-stretch max-md:gap-3">
             {o.nhom.map((n) => (
-              <div key={n.id} className="w-[280px] shrink-0">
+              <div key={n.id} className="w-[280px] shrink-0 max-md:w-full">
                 <BoxNhom n={n} cd={cd} o={o} chon={dangChon({ loai: 'nhom', id: n.id })} chonDangBai={chon?.loai === 'dang_bai' ? chon.id : null}
                   sapHa={p.hover === `n:${n.id}` && p.dangKeo === 'nhom'} sang={sang}
                   batDauKeo={p.batDauKeo} ketThucKeo={p.ketThucKeo} vung={vung} onChon={p.onChon} lam={lam}
@@ -567,7 +571,7 @@ function SoDoChuyenDe(p: {
         )}
 
         <ThemNhanh nhan="+ Nhóm bài" goiY="Tên nhóm bài…" rong onThem={(ten) => lam(() => themNhom(cd.id, o.chuyen_de_id, ten), 'Đã thêm nhóm bài')} />
-        {o.nhom.length > 1 && <div className="text-[11px] text-slate-400">Kéo một nhóm thả vào TRONG nhóm khác = hạ nó thành dạng bài của nhóm đó · ◀ ▶ trên đầu box để đổi thứ tự</div>}
+        {o.nhom.length > 1 && <div className="text-[11px] text-slate-400 max-md:hidden">Kéo một nhóm thả vào TRONG nhóm khác = hạ nó thành dạng bài của nhóm đó · ◀ ▶ trên đầu box để đổi thứ tự</div>}
       </div>
     </div>
   )
@@ -617,11 +621,12 @@ function BoxNhom(p: {
       <div className="flex items-start gap-2 bg-slate-700 px-3 py-2 text-white">
         <span className="mt-px rounded bg-white/20 px-1.5 text-[11px] font-bold">{n.so}</span>
         <span className="flex-1 text-[13px] font-semibold leading-snug"><MathText>{n.ten}</MathText></span>
-        <span className="hidden shrink-0 gap-0.5 group-hover/nhom:flex">
+        {/* Điện thoại: luôn hiện (không có rê chuột), nhóm xếp dọc nên mũi tên là ▲▼ */}
+        <span className="hidden shrink-0 gap-0.5 group-hover/nhom:flex max-md:flex">
           <button onClick={(e) => { e.stopPropagation(); doiCho(-1, 'Đã đưa lên trước') }} disabled={viTri <= 0}
-            title="Đổi chỗ với nhóm liền trước" className="rounded px-1 text-[11px] text-white/80 hover:bg-white/20 disabled:opacity-25">◀</button>
+            title="Đổi chỗ với nhóm liền trước" className="rounded px-1 text-[11px] text-white/80 hover:bg-white/20 disabled:opacity-25 max-md:px-1.5 max-md:py-0.5"><span className="max-md:hidden">◀</span><span className="hidden max-md:inline">▲</span></button>
           <button onClick={(e) => { e.stopPropagation(); doiCho(1, 'Đã đưa ra sau') }} disabled={viTri < 0 || viTri >= theoSo.length - 1}
-            title="Đổi chỗ với nhóm liền sau" className="rounded px-1 text-[11px] text-white/80 hover:bg-white/20 disabled:opacity-25">▶</button>
+            title="Đổi chỗ với nhóm liền sau" className="rounded px-1 text-[11px] text-white/80 hover:bg-white/20 disabled:opacity-25 max-md:px-1.5 max-md:py-0.5"><span className="max-md:hidden">▶</span><span className="hidden max-md:inline">▼</span></button>
         </span>
         <button onClick={(e) => { e.stopPropagation(); p.moLyThuyet() }} draggable={false}
           title={n.co_ly_thuyet ? 'Xem / sửa lý thuyết' : 'Gán lý thuyết cho nhóm này'}
@@ -671,7 +676,7 @@ function CardDangBai(p: {
         return lam(() => (k.nhomId === n.id ? sapXep('dang_bai', ids) : chuyenDangBai(k.id, n.id, ids)), k.nhomId === n.id ? 'Đã đổi thứ tự' : 'Đã chuyển dạng bài')
       })}
       onClick={(e) => { e.stopPropagation(); p.onChon({ loai: 'dang_bai', id: d.id }) }}
-      className={`flex cursor-grab items-start gap-1.5 rounded-lg border px-2 py-1.5 text-[12px] active:cursor-grabbing ${sang(`d:${d.id}`)} ${
+      className={`flex cursor-grab items-start gap-1.5 rounded-lg border px-2 py-1.5 text-[12px] active:cursor-grabbing max-md:py-2 max-md:text-[13px] ${sang(`d:${d.id}`)} ${
         p.chon ? 'border-amber-400 bg-amber-50' : 'border-violet-200 bg-violet-50 hover:border-violet-400'}`}>
       <span className="mt-px shrink-0 text-[10.5px] font-bold text-violet-500">{n.so}.{d.so}</span>
       <span className="flex-1 leading-snug text-violet-950">
@@ -791,7 +796,7 @@ function ThemNhanh({ nhan, goiY, onThem, rong }: { nhan: string; goiY: string; o
     <input autoFocus value={ten} placeholder={goiY} onClick={(e) => e.stopPropagation()}
       onChange={(e) => setTen(e.target.value)}
       onKeyDown={(e) => { if (e.key === 'Enter') xong(); if (e.key === 'Escape') { setTen(''); setMo(false) } }}
-      onBlur={xong} className={`${inp} ${rong ? 'w-64 shrink-0 self-center' : 'py-1 text-[12px]'}`} />
+      onBlur={xong} className={`${inp} ${rong ? 'w-64 shrink-0 self-center max-md:w-full' : 'py-1 text-[12px]'}`} />
   )
 }
 
@@ -807,7 +812,7 @@ function ThemChuyenDe({ cay, cd, onThem }: { cay: BdmCay; cd: BdmChuDe; onThem: 
     <div className="relative shrink-0">
       <button onClick={() => setMo(!mo)} className="rounded-md border border-dashed border-slate-300 px-2.5 py-1 text-[12.5px] font-medium text-slate-500 hover:border-sky-400 hover:text-sky-700">+ Chuyên đề</button>
       {mo && (
-        <div className="absolute left-0 top-full z-30 mt-1 w-80 rounded-lg border border-sky-300 bg-white p-2 shadow-lg">
+        <div className="absolute left-0 top-full z-30 mt-1 w-80 rounded-lg border border-sky-300 bg-white p-2 shadow-lg max-md:left-auto max-md:right-0 max-md:w-[min(20rem,calc(100vw-1.25rem))]">
           <input autoFocus value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm chuyên đề có sẵn hoặc gõ tên mới…"
             onKeyDown={(e) => { if (e.key === 'Escape') dong() }} className={inp} />
           <div className="mt-1.5 max-h-64 overflow-y-auto">
@@ -847,26 +852,32 @@ function ChiTiet(p: {
   // Nhóm bài / dạng bài: POPUP GIỮA MÀN (CEO 08/10). Chủ đề / chuyên đề: khung phải như cũ.
   const giuaMan = chon.loai === 'nhom' || chon.loai === 'dang_bai'
   const khung = (tieuDe: string, mau: string, noiDung: ReactNode) => giuaMan ? (
-    <div className="fixed inset-0 z-40 flex items-center justify-center gap-5 bg-slate-900/40 p-6" onClick={p.onDong}>
-      {chon.loai === 'dang_bai' && p.dieuHuong && <NutChuyenDang huong="truoc" onBam={p.dieuHuong.truoc} />}
-      <div className="flex max-h-full w-full max-w-2xl flex-col overflow-hidden rounded-xl bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
-        <div className={`flex items-center gap-2 px-5 py-3 text-white ${mau}`}>
+    // Điện thoại: popup TOÀN MÀN; nút tròn ‹ › hai bên ẩn (không đủ bề ngang) — thay bằng ‹ › nhỏ trên dải tiêu đề.
+    <div className="fixed inset-0 z-40 flex items-center justify-center gap-5 bg-slate-900/40 p-6 max-md:p-0" onClick={p.onDong}>
+      {chon.loai === 'dang_bai' && p.dieuHuong && <span className="contents max-md:hidden"><NutChuyenDang huong="truoc" onBam={p.dieuHuong.truoc} /></span>}
+      <div className="flex max-h-full w-full max-w-2xl flex-col overflow-hidden rounded-xl bg-white shadow-2xl max-md:h-dvh max-md:max-w-none max-md:rounded-none" onClick={(e) => e.stopPropagation()}>
+        <div className={`flex items-center gap-2 px-5 py-3 text-white max-md:px-3 max-md:py-2 ${mau}`}>
+          {chon.loai === 'dang_bai' && p.dieuHuong && <button onClick={() => p.dieuHuong?.truoc?.()} disabled={!p.dieuHuong.truoc} title="Dạng bài trước"
+            className="hidden h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/20 text-[18px] font-bold disabled:opacity-30 max-md:flex">‹</button>}
           <span className="flex-1 text-[14px] font-semibold">{tieuDe}</span>
           {chon.loai === 'dang_bai' && p.dieuHuong && <span className="rounded-full bg-white/20 px-2 py-0.5 text-[11.5px] font-medium">{p.dieuHuong.nhan}</span>}
-          <span className="text-[11px] text-white/60">{chon.loai === 'dang_bai' && p.dieuHuong ? '← → chuyển dạng · Esc để đóng' : 'Esc để đóng'}</span>
-          <button onClick={p.onDong} className="text-white/70 hover:text-white">✕</button>
+          <span className="text-[11px] text-white/60 max-md:hidden">{chon.loai === 'dang_bai' && p.dieuHuong ? '← → chuyển dạng · Esc để đóng' : 'Esc để đóng'}</span>
+          {chon.loai === 'dang_bai' && p.dieuHuong && <button onClick={() => p.dieuHuong?.sau?.()} disabled={!p.dieuHuong.sau} title="Dạng bài sau"
+            className="hidden h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/20 text-[18px] font-bold disabled:opacity-30 max-md:flex">›</button>}
+          <button onClick={p.onDong} className="text-white/70 hover:text-white max-md:px-1.5 max-md:text-[16px]">✕</button>
         </div>
-        <div className="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto p-5">{noiDung}</div>
+        <div className="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto p-5 max-md:p-3.5">{noiDung}</div>
       </div>
-      {chon.loai === 'dang_bai' && p.dieuHuong && <NutChuyenDang huong="sau" onBam={p.dieuHuong.sau} />}
+      {chon.loai === 'dang_bai' && p.dieuHuong && <span className="contents max-md:hidden"><NutChuyenDang huong="sau" onBam={p.dieuHuong.sau} /></span>}
     </div>
   ) : (
-    <div className="flex w-[380px] shrink-0 flex-col border-l border-slate-200 bg-white">
+    // Chủ đề / chuyên đề: khung phải 380px — điện thoại thì PHỦ toàn màn (cột phải không có chỗ).
+    <div className="flex w-[380px] shrink-0 flex-col border-l border-slate-200 bg-white max-md:fixed max-md:inset-0 max-md:z-40 max-md:w-full max-md:border-l-0">
       <div className={`flex items-center gap-2 px-4 py-2.5 text-white ${mau}`}>
         <span className="flex-1 text-[13px] font-semibold">{tieuDe}</span>
-        <button onClick={p.onDong} className="text-white/70 hover:text-white">✕</button>
+        <button onClick={p.onDong} className="text-white/70 hover:text-white max-md:px-1.5 max-md:text-[16px]">✕</button>
       </div>
-      <div className="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto p-4">{noiDung}</div>
+      <div className="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto p-4 max-md:p-3.5">{noiDung}</div>
     </div>
   )
   // Mọi ô (chủ đề › chuyên đề) trong khối — đích để chuyển
@@ -1015,7 +1026,7 @@ function ChonDich({ nhan, moTa, lua, onChon, goiY = '— chọn —', gon }: { n
   if (!lua.length && !gon) return null
   const nut = (
     <div className="mt-1.5 flex gap-1.5">
-      <select value={v} onChange={(e) => setV(e.target.value)} className={`${inp} text-[12.5px]`}>
+      <select value={v} onChange={(e) => setV(e.target.value)} className={`${inp} min-w-0 text-[12.5px]`}>
         <option value="">{goiY}</option>
         {lua.map((x) => <option key={x.id} value={x.id}>{x.nhan}</option>)}
       </select>
@@ -1267,7 +1278,7 @@ function HinhLuyenTrongBanDo({ khoi, chuDeId }: { khoi: string; chuDeId: string 
   useEffect(() => { void nap() }, [nap])
   if (loi) return <div className="p-8 text-sm text-rose-600">Không tải được lưới Hình: {loi}</div>
   if (!L) return <div className="flex h-full items-center justify-center text-sm text-slate-400">Đang tải mô hình…</div>
-  return <div className="h-full min-h-0 overflow-hidden p-5"><CayNhanh L={L} khoi={khoi} reload={nap} chuDeId={chuDeId} /></div>
+  return <div className="h-full min-h-0 overflow-hidden p-5 max-md:p-2"><CayNhanh L={L} khoi={khoi} reload={nap} chuDeId={chuDeId} /></div>
 }
 
 // Môn đang soạn (Thùy 29/10: KHTN có bản đồ mới riêng). Nhớ lựa chọn gần nhất (sở thích cá nhân).
@@ -1387,21 +1398,21 @@ function KhoModal({ mo, khoi, cay, onDong, onDaDoi }: { mo: KhoMo; khoi: string;
   }, [onDong])
   const tieuDe = mo.loai === 'dung_sai' ? 'Kho Đúng/Sai của chủ đề' : mo.loai === 'chua_khop' ? 'Chưa khớp dạng bài' : mo.loai === 'de_xuat' ? 'AI đề xuất — chờ duyệt' : mo.loai === 'thieu_dang' ? 'Thiếu dạng bài' : mo.loai === 'nhom' ? 'Kho của nhóm' : 'Kho của dạng bài'
   return (
-    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-900/40 p-6" onClick={onDong}>
-      <div className="flex h-full max-h-[95vh] w-full max-w-[95vw] flex-col overflow-hidden rounded-xl bg-slate-50 shadow-2xl" onClick={(e) => e.stopPropagation()}>
-        <div className="flex flex-wrap items-center gap-3 border-b border-slate-200 bg-white px-4 py-2.5">
+    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-900/40 p-6 max-md:p-0" onClick={onDong}>
+      <div className="flex h-full max-h-[95vh] w-full max-w-[95vw] flex-col overflow-hidden rounded-xl bg-slate-50 shadow-2xl max-md:max-h-none max-md:max-w-none max-md:rounded-none" onClick={(e) => e.stopPropagation()}>
+        <div className="flex flex-wrap items-center gap-3 border-b border-slate-200 bg-white px-4 py-2.5 max-md:gap-x-2 max-md:gap-y-1.5 max-md:px-3 max-md:py-2">
           <span className="text-[14px] font-semibold text-slate-900">📚 {tieuDe}</span>
-          <span className="min-w-0 flex-1 truncate text-[13px] text-slate-600"><MathText>{mo.ten}</MathText></span>
+          <span className="min-w-0 flex-1 truncate text-[13px] text-slate-600 max-md:order-1 max-md:basis-full"><MathText>{mo.ten}</MathText></span>
           <span className="text-[12px] text-slate-500"><b>{tong}</b> câu{rows.length < tong ? ` · đang hiện ${rows.length}` : ''}</span>
-          <span className="flex items-center gap-0.5 rounded-lg bg-slate-100 p-0.5">
+          <span className="flex items-center gap-0.5 rounded-lg bg-slate-100 p-0.5 max-md:order-2 max-md:w-full max-md:[&>button]:flex-1">
             {LOC_KHO.map((x) => (
               <button key={x.id} onClick={() => setLoc(x.id)}
                 className={`rounded-md px-2 py-0.5 text-[12px] font-medium ${loc === x.id ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-500 hover:text-slate-800'}`}>{x.nhan}</button>
             ))}
           </span>
-          <button onClick={onDong} className="rounded-md px-2 py-1 text-[13px] text-slate-500 hover:bg-slate-100">✕</button>
+          <button onClick={onDong} className="rounded-md px-2 py-1 text-[13px] text-slate-500 hover:bg-slate-100 max-md:ml-auto">✕</button>
         </div>
-        <div className="min-h-0 flex-1 space-y-3 overflow-y-auto p-4">
+        <div className="min-h-0 flex-1 space-y-3 overflow-y-auto p-4 max-md:p-2.5">
           {loi && <div className="rounded-md bg-rose-50 px-3 py-2 text-[12.5px] text-rose-700">{loi} <button onClick={() => setLoi(null)} className="ml-2 underline">ẩn</button></div>}
           {tb && <div className="rounded-md bg-emerald-50 px-3 py-2 text-[12.5px] text-emerald-700">✓ {tb}</div>}
           {!dang && !loi && rows.length === 0 && <div className="py-10 text-center text-[13px] text-slate-400">Không có câu nào{loc !== 'tat_ca' ? ' ở bộ lọc này' : ''}.</div>}
@@ -1426,7 +1437,7 @@ function KhoModal({ mo, khoi, cay, onDong, onDaDoi }: { mo: KhoMo; khoi: string;
 function ThaoTacCau({ r, onChuyen, onXoa, onDuyet }: { r: KhoCauRow; onChuyen?: () => void; onXoa: (caBanSao: boolean) => void; onDuyet?: (duyet: boolean) => void }) {
   const [hoi, setHoi] = useState(false)
   if (hoi) return (
-    <span className="ml-auto flex items-center gap-1 text-[11.5px]">
+    <span className="ml-auto flex flex-wrap items-center gap-1 text-[11.5px] max-md:ml-0 max-md:basis-full max-md:justify-end max-md:pt-1">
       <span className="text-rose-700">Đưa vào kho rác?</span>
       <button onClick={() => { setHoi(false); onXoa(false) }} className="rounded bg-rose-600 px-2 py-0.5 font-semibold text-white hover:bg-rose-700">{r.la_goc ? 'Chỉ câu này' : 'Xoá'}</button>
       {r.la_goc && <button onClick={() => { setHoi(false); onXoa(true) }} className="rounded bg-rose-700 px-2 py-0.5 font-semibold text-white hover:bg-rose-800">Kèm bản sao</button>}
@@ -1434,7 +1445,7 @@ function ThaoTacCau({ r, onChuyen, onXoa, onDuyet }: { r: KhoCauRow; onChuyen?: 
     </span>
   )
   return (
-    <span className="ml-auto flex items-center gap-1">
+    <span className="ml-auto flex items-center gap-1 max-md:ml-0 max-md:basis-full max-md:justify-end max-md:pt-1">
       {onDuyet && (r.da_duyet
         ? <button onClick={() => onDuyet(false)} title="Bỏ dấu đã duyệt" className="rounded border border-sky-200 bg-sky-50 px-1.5 py-0.5 text-[11px] font-medium text-sky-700 hover:border-sky-300">↩ Bỏ duyệt</button>
         : <button onClick={() => onDuyet(true)} title="Đánh dấu đã duyệt — câu vào kho chuẩn (trừ khi máy nghi đáp số)" className="rounded border border-emerald-300 bg-emerald-50 px-1.5 py-0.5 text-[11px] font-semibold text-emerald-700 hover:bg-emerald-100">✓ Duyệt</button>)}
@@ -1449,7 +1460,7 @@ function CauKho({ r, nhom, onChuyen, onXoa, onDuyet }: { r: KhoCauRow; nhom: boo
   const nguonGan = r.nguon_gan === 'chua_khop' || r.nguon_gan === 'thieu_dang' || r.nguon_gan === 'dung_sai' ? null : r.nguon_gan.startsWith('de_xuat') ? 'AI đề xuất (chưa chắc)' : r.nguon_gan.endsWith(':ai') ? 'AI gán' : r.nguon_gan.endsWith(':nguoi') ? 'người gán' : (r.nguon_gan.startsWith('gan_cum') || r.nguon_gan.endsWith(':cum')) ? 'gán theo cụm' : r.nguon_gan.startsWith('doi_ung') ? 'theo dạng cũ' : r.nguon_gan
   const chip = (c: string, t: string) => <span className={`rounded px-1.5 py-0.5 text-[10.5px] font-semibold ${c}`}>{t}</span>
   return (
-    <div className={`rounded-lg border bg-white p-3 shadow-sm ${r.la_goc ? 'border-slate-200' : 'ml-6 border-dashed border-slate-300'}`}>
+    <div className={`rounded-lg border bg-white p-3 shadow-sm max-md:p-2.5 ${r.la_goc ? 'border-slate-200' : 'ml-6 border-dashed border-slate-300 max-md:ml-3'}`}>
       <div className="mb-1.5 flex flex-wrap items-center gap-1.5">
         <code className="text-[11px] text-slate-400">{r.ma_cau}</code>
         {chip('bg-slate-100 text-slate-600', NHAN_LOAI[r.loai_cau] ?? r.loai_cau)}
@@ -1494,8 +1505,8 @@ function ChonDangBaiTrenCay({ cay, onClose, onPick }: { cay: BdmCay | null; onCl
   const t = tim.trim().toLowerCase()
   const hien = t ? ds.filter((d) => (d.ten + ' ' + d.duong).toLowerCase().includes(t)) : ds
   return (
-    <div className="fixed inset-0 z-[80] flex items-center justify-center bg-slate-900/40 p-6" onClick={onClose}>
-      <div className="flex max-h-[80vh] w-[720px] flex-col overflow-hidden rounded-xl bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
+    <div className="fixed inset-0 z-[80] flex items-center justify-center bg-slate-900/40 p-6 max-md:p-0" onClick={onClose}>
+      <div className="flex max-h-[80vh] w-[720px] flex-col overflow-hidden rounded-xl bg-white shadow-2xl max-md:h-dvh max-md:max-h-none max-md:w-full max-md:rounded-none" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center gap-2 border-b border-slate-200 px-4 py-2.5">
           <span className="text-[14px] font-semibold text-slate-800">↪ Chuyển sang dạng bài</span>
           <input autoFocus value={tim} onChange={(e) => setTim(e.target.value)} placeholder="Tìm theo tên dạng bài / nhóm…" className={`${inp} ml-2 flex-1 py-1 text-[13px]`} />
