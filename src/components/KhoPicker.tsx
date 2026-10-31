@@ -118,20 +118,20 @@ export function KhoPicker({ maDangs, selected, disabled = [], cauTbl = 'dai_cau_
   }
   return (
     <div className="fixed inset-0 z-[70] bg-slate-900/50 backdrop-blur-sm" onClick={onClose}>
-      <div className="absolute inset-x-[12%] inset-y-10 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
-        <div className="flex items-center gap-3 border-b border-slate-200 px-6 py-3">
+      <div className="absolute inset-x-[12%] inset-y-10 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl max-md:inset-0 max-md:rounded-none max-md:border-0" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center gap-3 border-b border-slate-200 px-6 py-3 max-md:px-3 max-md:py-2">
           <h3 className="text-base font-semibold text-slate-900">Chọn câu từ kho</h3>
           <span className="text-[13px] text-slate-400">đã chọn <b className="text-indigo-600">{sel.size}</b></span>
           <button onClick={onClose} className="ml-auto flex h-8 w-8 items-center justify-center rounded-md text-slate-400 hover:bg-slate-100">✕</button>
         </div>
-        <div className="flex flex-wrap items-center gap-1.5 border-b border-slate-100 px-6 py-2">
+        <div className="flex flex-wrap items-center gap-1.5 border-b border-slate-100 px-6 py-2 max-md:px-3">
           <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">Lọc loại:</span>
           {LOAI_CAU.map((l) => (
             <button key={l.value} onClick={() => toggleLoai(l.value)} className={`rounded-md px-2.5 py-1 text-[12px] font-medium transition ${fLoai.has(l.value) ? 'bg-indigo-600 text-white shadow-sm' : 'border border-slate-200 text-slate-500 hover:border-indigo-300 hover:text-indigo-700'}`}>{l.label}</button>
           ))}
           {fLoai.size > 0 && <button onClick={() => setFLoai(new Set())} className="ml-1 text-[12px] font-medium text-slate-400 hover:text-rose-600">Xoá lọc</button>}
         </div>
-        <div className="min-h-0 flex-1 overflow-auto p-5">
+        <div className="min-h-0 flex-1 overflow-auto p-5 max-md:p-2.5">
           {loading ? <p className="text-sm text-slate-400">Đang tải kho…</p>
             : groups.every((g) => !g.caus.length) ? <p className="text-sm text-slate-400">Kho các dạng này chưa có câu nào.</p>
             : groups.map((g) => {
@@ -186,9 +186,9 @@ export function KhoPicker({ maDangs, selected, disabled = [], cauTbl = 'dai_cau_
               )
             })}
         </div>
-        <div className="flex justify-end gap-2 border-t border-slate-200 px-6 py-3">
+        <div className="flex justify-end gap-2 border-t border-slate-200 px-6 py-3 max-md:px-3 max-md:pb-[max(0.75rem,env(safe-area-inset-bottom))]">
           <button onClick={onClose} className="rounded-md px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Huỷ</button>
-          <button onClick={confirm} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500">Dùng {sel.size} câu</button>
+          <button onClick={confirm} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 max-md:flex-1 max-md:py-2.5">Dùng {sel.size} câu</button>
         </div>
       </div>
     </div>

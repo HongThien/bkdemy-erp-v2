@@ -184,20 +184,20 @@ export default function MTPrintView({ id, onClose, headless, linkOnly, onFail, o
   )
   return createPortal(
     <div className="pv-overlay fixed inset-0 z-[80] flex flex-col bg-slate-300/90">
-      <div className="no-print flex items-center gap-3 border-b border-slate-300 bg-white px-5 py-2.5 shadow-sm">
-        <span className="text-sm font-semibold text-slate-800">Xem &amp; in MT</span>
+      <div className="no-print flex items-center gap-3 border-b border-slate-300 bg-white px-5 py-2.5 shadow-sm max-md:flex-wrap max-md:gap-2 max-md:px-3 max-md:py-2">
+        <span className="text-sm font-semibold text-slate-800 max-md:hidden">Xem &amp; in MT</span>
         <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
           <button onClick={() => setGv(false)} className={seg(!gv)}>Bản học sinh</button>
           <button onClick={() => setGv(true)} className={seg(gv)}>Bản giáo viên</button>
         </div>
         <span className="text-[12px] text-slate-400">{rendering ? 'đang dựng trang…' : `${pages} trang`}</span>
         {dlErr && <span className="text-[12px] text-rose-600">{dlErr}</span>}
-        <div className="ml-auto flex gap-2">
-          <button onClick={() => printWithFilename(printFileName())} disabled={rendering} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">🖨 In / Xuất PDF</button>
+        <div className="ml-auto flex gap-2 max-md:ml-0 max-md:basis-full">
+          <button onClick={() => printWithFilename(printFileName())} disabled={rendering} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40 max-md:flex-1">🖨 In / Xuất PDF</button>
           <button onClick={onClose} className="rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-100">Đóng</button>
         </div>
       </div>
-      <div className="pv-scroll min-h-0 flex-1 overflow-auto py-6">
+      <div className="pv-scroll min-h-0 flex-1 overflow-auto py-6 max-md:py-3">
         {err ? <p className="text-center text-rose-600">Lỗi: {err}</p>
           : !full ? <p className="text-center text-slate-400">Đang tải…</p>
           : <div ref={dstRef} className="pv-pages" />}

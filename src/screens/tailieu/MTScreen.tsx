@@ -33,6 +33,7 @@ import DangPickerOne from '../../components/DangPickerOne'
 import BuoiNgaySelect from '../../components/BuoiNgaySelect'
 import SearchSelect from '../../components/SearchSelect'
 import MTPrintView from './MTPrintView'
+import { useIsMobile } from '../../hooks/useIsMobile'
 // ⭐ 28/10 (Thùy: "luồng tạo MT làm giống ET mới · chọn nhiều dạng nhiều câu · đổi thứ tự kéo thả / điền vị trí") — kế hoạch
 // nhiều dạng bài × N câu + popup chọn câu theo NHÓM của ET bản đồ mới (ETBdmEditor), chỉ ở khối đã chạy bản đồ mới.
 import BoChonNhom from './bdm/BoChonNhom'
@@ -83,23 +84,30 @@ export default function MTScreen() {
   }), [list, fThang, fLoaiDe, fKhoi])
   const dangLoc = fThang !== '__all__' || fLoaiDe !== '__all__' || fKhoi !== '__all__'
   const xoaLoc = () => { setFThang('__all__'); setFLoaiDe('__all__'); setFKhoi('__all__') }
+  async function xoaMTList(d: { id: string; ten: string }) {
+    if (!confirm(`Xoá MT "${d.ten}"? Toàn bộ phần/câu trong mẫu này sẽ mất (câu vẫn còn trong kho). Các buổi đã gán từ mẫu này trước đó KHÔNG bị xoá theo.`)) return
+    await deleteMT(d.id); reload()
+  }
 
+  // ⭐ 31/10 (Thùy: "chuẩn hoá màn làm tài liệu cho mobile — làm MT"): điện thoại (<768px) thay BẢNG 5 cột bằng THẺ
+  // (tên to, dòng phụ tháng · loại đề · khối, nút thao tác dưới) — bảng ép cột Tên còn ~80px, đọc không được tên MT.
+  const hep = useIsMobile()
   if (openId) return <MTEditor key={openId} id={openId} onClose={() => { setOpenId(null); reload() }} onMo={setOpenId} />
 
   const selCls = "h-8 rounded-md border border-slate-200 bg-white px-2 text-[12.5px] text-slate-600 outline-none focus:border-indigo-400"
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">
-      <div className="flex items-center gap-3 border-b border-slate-200 bg-white px-6 py-2.5">
+      <div className="flex items-center gap-3 border-b border-slate-200 bg-white px-6 py-2.5 max-md:gap-2 max-md:px-3">
         <span className="text-sm font-semibold text-slate-900">MT</span>
-        <span className="rounded bg-slate-100 px-2 py-0.5 text-[11px] text-slate-500">kỳ thi lớn — soạn 1 lần, gán được nhiều lớp/nhiều lần</span>
+        <span className="rounded bg-slate-100 px-2 py-0.5 text-[11px] text-slate-500 max-md:hidden">kỳ thi lớn — soạn 1 lần, gán được nhiều lớp/nhiều lần</span>
         {allowedMons.length > 1 && (
           <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
             {allowedMons.map((m) => <button key={m} onClick={() => setMon(m)} className={`rounded-md px-3 py-1 text-[13px] font-medium ${mon === m ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500'}`}>{m}</button>)}
           </div>
         )}
-        <button onClick={() => setCreating(true)} className="ml-auto rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500">+ Tạo MT mới</button>
+        <button onClick={() => setCreating(true)} className="ml-auto shrink-0 rounded-md bg-indigo-600 px-3 py-1.5 text-[13px] font-medium text-white shadow-sm hover:bg-indigo-500">+ Tạo MT{hep ? '' : ' mới'}</button>
       </div>
-      <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 bg-white px-6 py-2">
+      <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 bg-white px-6 py-2 max-md:px-3">
         <select value={fThang} onChange={(e) => setFThang(e.target.value)} className={selCls}>
           <option value="__all__">Mọi tháng</option>
           {thangOptions.map((t) => <option key={t} value={t}>{nhanThang(t)}</option>)}
@@ -115,11 +123,34 @@ export default function MTScreen() {
         {dangLoc && <button onClick={xoaLoc} className="text-[12px] text-slate-400 hover:text-indigo-600">Xoá lọc</button>}
         <span className="ml-auto text-[12px] text-slate-400">{shown.length}/{list.length} MT</span>
       </div>
-      <div className="min-h-0 flex-1 overflow-auto p-6">
+      <div className="min-h-0 flex-1 overflow-auto p-6 max-md:p-3">
         {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
           : list.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 bg-white py-14 text-center text-sm text-slate-400">Chưa có MT nào ở môn {mon}.</div>
           : shown.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 bg-white py-14 text-center text-sm text-slate-400">Không có MT nào khớp bộ lọc. <button onClick={xoaLoc} className="text-indigo-600 hover:underline">Xoá lọc</button></div>
-          : (
+          : hep ? (
+            <div className="space-y-2">
+              {shown.map((d) => {
+                const m = mtMeta(d)
+                return (
+                  <div key={d.id} className="rounded-xl border border-slate-200 bg-white">
+                    <button onClick={() => setOpenId(d.id)} className="block w-full px-3.5 pb-2 pt-3 text-left">
+                      <span className="block text-[14px] font-semibold leading-snug text-slate-800">{d.ten}</span>
+                      <span className="mt-1 flex flex-wrap items-center gap-1.5 text-[12px] text-slate-500">
+                        <span>Khối {d.khoi}</span>
+                        {m.thang && <><span className="text-slate-300">·</span><span>{nhanThang(m.thang)}</span></>}
+                        {m.loaiDe && <span className="rounded bg-violet-50 px-1.5 py-0.5 text-[11px] font-medium text-violet-600">{mtLoaiDeLabel(m.loaiDe)}</span>}
+                      </span>
+                    </button>
+                    <div className="flex items-center gap-1 border-t border-slate-100 px-2 py-1">
+                      <button onClick={() => setOpenId(d.id)} className="rounded-md px-2.5 py-1.5 text-[13px] font-medium text-indigo-600">Mở</button>
+                      <button onClick={() => setNhanBan({ id: d.id, ten: d.ten })} className="rounded-md px-2.5 py-1.5 text-[13px] font-medium text-slate-500">⧉ Nhân bản</button>
+                      <button onClick={() => xoaMTList(d)} title="Xoá MT" className="ml-auto rounded-md px-2.5 py-1.5 text-[14px] text-slate-300">🗑</button>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          ) : (
             <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
               <table className="w-full text-[13px]">
                 <thead className="text-left text-[11px] uppercase tracking-wide text-slate-400">
@@ -147,10 +178,7 @@ export default function MTScreen() {
                           <button onClick={() => setNhanBan({ id: d.id, ten: d.ten })} title="Nhân bản thành MT mới (chép mọi phần, câu, điểm, 3 mã đề) rồi sửa phần khác"
                             className="rounded-md px-2 py-1 text-[12px] font-medium text-slate-500 hover:bg-slate-100">⧉ Nhân bản</button>
                           <button
-                            onClick={async () => {
-                              if (!confirm(`Xoá MT "${d.ten}"? Toàn bộ phần/câu trong mẫu này sẽ mất (câu vẫn còn trong kho). Các buổi đã gán từ mẫu này trước đó KHÔNG bị xoá theo.`)) return
-                              await deleteMT(d.id); reload()
-                            }}
+                            onClick={() => xoaMTList(d)}
                             title="Xoá MT"
                             className="rounded-md px-2 py-1 text-[13px] text-slate-300 hover:text-rose-600"
                           >🗑</button>
@@ -218,7 +246,7 @@ function TaoMTModal({ mon, onClose, onCreated }: { mon: string; onClose: () => v
         <div className="mt-1 flex flex-wrap gap-1.5">
           {MT_LOAI_DE.map((o) => <button key={o.value} onClick={() => setLoaiDe(loaiDe === o.value ? null : o.value)} className={`rounded-lg px-2.5 py-1 text-[13px] font-medium ${loaiDe === o.value ? 'bg-violet-600 text-white' : 'bg-slate-100 text-slate-600'}`}>{o.label}</button>)}
         </div>
-        <div className="mt-3 flex gap-3">
+        <div className="mt-3 flex gap-3 max-md:flex-col">
           <div>
             <label className="block text-[12px] font-medium text-slate-600">Tháng</label>
             <input type="month" value={thang} onChange={(e) => setThang(e.target.value)} className={`${inp} mt-1`} />
@@ -284,6 +312,9 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
   const [keo, setKeo] = useState<{ phanId: string; idx: number } | null>(null)
   const [dich, setDich] = useState<{ phanId: string; idx: number; sau: boolean } | null>(null)
   const [loi, setLoi] = useState<string | null>(null)
+  // Điện thoại (<768px): thanh trên gọn (tên full dòng, nút 1 hàng icon), hàng câu xếp dọc, ẩn tay kéo ⠿ (kéo thả HTML5
+  // không chạy trên cảm ứng — đổi thứ tự bằng gõ số câu). Desktop giữ nguyên bố cục cũ.
+  const hep = useIsMobile()
   const coBdm = dbs.size > 0
   const coHgt = [...dbs.values()].some((x) => x.nhanh === 'hgt')
 
@@ -744,13 +775,13 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
 
   return (
     <div className="flex h-full flex-col bg-[#fafafb]">
-      <div className="flex flex-wrap items-center gap-3 border-b border-slate-200 bg-white px-5 py-2.5">
+      <div className="flex flex-wrap items-center gap-3 border-b border-slate-200 bg-white px-5 py-2.5 max-md:gap-x-1.5 max-md:gap-y-1.5 max-md:px-3 max-md:py-2">
         {/* ⭐ 07-12: MT master cũng autosave (không nút Lưu) — enqueue link ở lúc ĐÓNG. Bản thân master
             hiếm khi tự gửi PH (thường gửi bản mt_buoi đã gán lớp), nhưng vẫn có link sẵn nếu cần. */}
-        <button onClick={() => { useStore.getState().enqueueLinkGen(id, 'mt'); onClose() }} className="text-[13px] font-medium text-slate-400 hover:text-indigo-600">← Kho tài liệu</button>
-        <input value={ten} onChange={(e) => setTen(e.target.value)} onBlur={saveTen} className="min-w-[260px] flex-1 rounded-md border border-transparent px-2 py-1 text-[15px] font-semibold text-slate-900 hover:border-slate-200 focus:border-indigo-400 focus:outline-none" />
-        <span className="rounded bg-violet-50 px-2 py-0.5 text-[11px] font-medium text-violet-600">{d.mon} · Khối {d.khoi} · mẫu độc lập</span>
-        {coBdm && <span className="rounded bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700" title="Chọn câu theo bản đồ kiến thức mới (nhóm bài · dạng bài), giống ET mới">🆕 Bản đồ mới</span>}
+        <button onClick={() => { useStore.getState().enqueueLinkGen(id, 'mt'); onClose() }} className="shrink-0 text-[13px] font-medium text-slate-400 hover:text-indigo-600">{hep ? '←' : '← Kho tài liệu'}</button>
+        <input value={ten} onChange={(e) => setTen(e.target.value)} onBlur={saveTen} className="min-w-[260px] flex-1 rounded-md border border-transparent px-2 py-1 text-[15px] font-semibold text-slate-900 hover:border-slate-200 focus:border-indigo-400 focus:outline-none max-md:min-w-0 max-md:basis-[80%] max-md:border-slate-200" />
+        <span className="rounded bg-violet-50 px-2 py-0.5 text-[11px] font-medium text-violet-600">{d.mon} · Khối {d.khoi}{hep ? '' : ' · mẫu độc lập'}</span>
+        {coBdm && <span className="rounded bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700" title="Chọn câu theo bản đồ kiến thức mới (nhóm bài · dạng bài), giống ET mới">🆕{hep ? '' : ' Bản đồ mới'}</span>}
         <select value={mMeta.loaiDe ?? ''} onChange={(e) => setMtField({ loaiDe: (e.target.value || null) as MTLoaiDe | null })}
           title="Loại đề" className="h-7 rounded-md border border-slate-200 bg-white px-1.5 text-[11.5px] font-medium text-slate-500 hover:border-violet-300">
           <option value="">Chưa gắn loại đề</option>
@@ -759,14 +790,17 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
         <input type="month" value={mMeta.thang ?? ''} onChange={(e) => setMtField({ thang: e.target.value || null })}
           title="Tháng" className="h-7 rounded-md border border-slate-200 bg-white px-1.5 text-[11.5px] font-medium text-slate-500 hover:border-violet-300" />
         {saved && <span className="text-[12px] text-emerald-600">✓ Đã lưu</span>}
-        <span className="text-[12px] text-slate-400">{soCau} câu · <b className="text-violet-700">tổng {fmtDiem(tongDiem)} đ</b> · {phans.length} phần{ganList.length ? ` · đã gán ${ganList.length} lớp` : ''}</span>
-        <button onClick={() => setPrinting(true)} disabled={!soCau} className="ml-auto rounded-md border border-slate-300 px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-400 disabled:opacity-40">🖨 Xem / In</button>
-        <button onClick={() => setGanModal(true)} disabled={!soCau} className="rounded-md border border-emerald-300 bg-emerald-50 px-3 py-1.5 text-[13px] font-medium text-emerald-700 hover:bg-emerald-100 disabled:opacity-40">🎯 Gán vào buổi</button>
-        {onMo && <button onClick={() => setNhanBan(true)} title="Nhân bản thành MT mới rồi sửa phần khác (bản này giữ nguyên)" className="rounded-md border border-slate-300 px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-400">⧉ Nhân bản</button>}
-        <button onClick={xoaMT} title="Xoá MT" className="rounded-md border border-rose-200 px-3 py-1.5 text-[13px] font-medium text-rose-600 hover:bg-rose-50">🗑 Xoá</button>
+        <span className="text-[12px] text-slate-400 max-md:basis-full">{soCau} câu · <b className="text-violet-700">tổng {fmtDiem(tongDiem)} đ</b> · {phans.length} phần{ganList.length ? ` · đã gán ${ganList.length} lớp` : ''}</span>
+        {/* Điện thoại: 4 nút xuống 1 hàng riêng chia đều bề ngang (basis-full ép xuống dòng), chữ gọn. */}
+        <div className="ml-auto flex items-center gap-3 max-md:ml-0 max-md:grid max-md:basis-full max-md:grid-cols-4 max-md:gap-1.5">
+          <button onClick={() => setPrinting(true)} disabled={!soCau} className="rounded-md border border-slate-300 px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-400 disabled:opacity-40 max-md:px-1">🖨 {hep ? 'In' : 'Xem / In'}</button>
+          <button onClick={() => setGanModal(true)} disabled={!soCau} className="rounded-md border border-emerald-300 bg-emerald-50 px-3 py-1.5 text-[13px] font-medium text-emerald-700 hover:bg-emerald-100 disabled:opacity-40 max-md:px-1">🎯 {hep ? 'Gán' : 'Gán vào buổi'}</button>
+          {onMo && <button onClick={() => setNhanBan(true)} title="Nhân bản thành MT mới rồi sửa phần khác (bản này giữ nguyên)" className="rounded-md border border-slate-300 px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:border-indigo-400 max-md:px-1">⧉ {hep ? 'Bản sao' : 'Nhân bản'}</button>}
+          <button onClick={xoaMT} title="Xoá MT" className="rounded-md border border-rose-200 px-3 py-1.5 text-[13px] font-medium text-rose-600 hover:bg-rose-50 max-md:px-1">🗑 Xoá</button>
+        </div>
       </div>
 
-      <div className="min-h-0 flex-1 overflow-auto p-5">
+      <div className="min-h-0 flex-1 overflow-auto p-5 max-md:p-2.5">
         <div className="mx-auto max-w-[900px]">
           {ganList.length > 0 && (
             <div className="mb-4 rounded-xl border border-slate-200 bg-white p-3">
@@ -787,14 +821,14 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
           <p className="mb-3 text-[12px] text-slate-400">
             {coBdm ? <>Mỗi phần bấm <b>⚡ Thêm nhiều dạng</b> → chọn nhiều dạng bài × số câu → hệ gợi ý câu <b>ít dùng nhất</b>; <b>✎ Chọn</b> tick được nhiều câu. </>
               : <>Mỗi câu chọn 1 dạng → hệ gợi ý câu <b>ít dùng nhất</b> (đổi được). </>}
-            Đổi thứ tự: <b>kéo ⠿</b> hoặc <b>gõ số câu mới</b> vào ô số. Câu không trùng nhau XUYÊN mọi phần.
+            Đổi thứ tự: {hep ? <>bấm <b>ô số câu</b>, gõ số mới</> : <><b>kéo ⠿</b> hoặc <b>gõ số câu mới</b> vào ô số</>}. Câu không trùng nhau XUYÊN mọi phần.
           </p>
           {soCau > 0 && (() => { const base = baseAll(); const t = oTrong().length + hinhTrong()
             const gen = !!(ch.etMaDe && Object.keys(ch.etMaDe).length) || !!(ch.hinhMaDe && Object.keys(ch.hinhMaDe).length); const stale = gen && base.length > 0 && maDeStale(base, ch)
             return (
               <div className="mb-3 flex flex-wrap items-center gap-2 rounded-lg border border-violet-100 bg-violet-50/40 px-3 py-2">
                 <span className="text-[12px] font-semibold text-violet-700">🧩 3 mã đề</span>
-                <span className="text-[11px] text-slate-500">Đề gốc = các câu dưới; đề 2 &amp; 3 tự sinh — cùng dạng + form, khác câu (xuyên mọi phần).</span>
+                <span className="text-[11px] text-slate-500 max-md:hidden">Đề gốc = các câu dưới; đề 2 &amp; 3 tự sinh — cùng dạng + form, khác câu (xuyên mọi phần).</span>
                 <button onClick={sinhMaDe} className="ml-auto rounded-md border border-violet-300 bg-white px-2.5 py-1 text-[11px] font-medium text-violet-700 hover:bg-violet-100">🎲 {gen ? 'Sinh lại' : 'Sinh'} đề 2 &amp; 3</button>
                 {stale ? <span className="rounded bg-amber-50 px-2 py-0.5 text-[11px] font-medium text-amber-700">đã đổi câu — bấm Sinh lại</span>
                   : t ? <span className="rounded bg-rose-50 px-2 py-0.5 text-[11px] font-medium text-rose-600">{t} ô trống — chọn tay trước khi in</span>
@@ -805,9 +839,9 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
             {phans.map((p) => {
               const rows = rowsByPhan[p.id] ?? []
               return (
-                <div key={p.id} className="rounded-xl border border-slate-200 bg-white p-4">
-                  <div className="mb-2 flex items-center gap-2">
-                    <span className="font-semibold text-slate-800">{p.tieu_de}</span>
+                <div key={p.id} className="rounded-xl border border-slate-200 bg-white p-4 max-md:p-2.5">
+                  <div className="mb-2 flex flex-wrap items-center gap-2 max-md:gap-1.5">
+                    <span className="font-semibold text-slate-800 max-md:basis-full">{p.tieu_de}</span>
                     <span className="text-[12px] text-slate-400">{rows.filter((r) => r.maCau).length} câu</span>
                     <span className="rounded bg-violet-50 px-1.5 py-0.5 text-[11px] font-medium text-violet-600" title="Hệ đang thấy được phần này (gán vào buổi tự lọc/loại nếu lớp không đủ tư cách)">{nhanHe(bacHieuLucCuaPhan(p.id))}</span>
                     <select value={bacEpCuaPhan(p.id) ?? ''} onChange={(e) => setPhanBac(p.id, e.target.value || null)}
@@ -827,7 +861,7 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                     <button onClick={() => xoaPhan(p)} className="ml-auto text-[12px] text-slate-300 hover:text-rose-600">Xoá phần</button>
                   </div>
                   {kh?.phanId === p.id && (
-                    <div className="mb-3 rounded-xl border border-indigo-100 bg-indigo-50/40 p-3">
+                    <div className="mb-3 rounded-xl border border-indigo-100 bg-indigo-50/40 p-3 max-md:p-2">
                       <div className="flex flex-wrap items-center gap-2">
                         <span className="text-[13px] font-semibold text-indigo-700">⚡ Kế hoạch — nhiều dạng bài, mỗi dạng N câu</span>
                         <span className="text-[11px] text-slate-500">→ nối vào cuối {p.tieu_de}</span>
@@ -839,18 +873,18 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                           : kh.plan.map((pl, j) => {
                             const info = dbs.get(pl.db)
                             return (
-                              <div key={pl.db} className="flex items-center gap-2">
+                              <div key={pl.db} className="flex items-center gap-2 max-md:flex-wrap max-md:gap-1.5 max-md:rounded-md max-md:bg-white/70 max-md:p-1.5">
                                 <span className="w-6 shrink-0 text-center text-[12px] font-bold text-violet-600">{j + 1}</span>
-                                <span className="min-w-0 flex-1 truncate rounded-md border border-slate-200 bg-white px-2.5 py-1.5 text-[13px] text-slate-700" title={info ? `${info.nhom_ten} › ${info.ten}` : pl.db}>
+                                <span className="min-w-0 flex-1 truncate rounded-md border border-slate-200 bg-white px-2.5 py-1.5 text-[13px] text-slate-700 max-md:basis-[calc(100%-2rem)] max-md:whitespace-normal" title={info ? `${info.nhom_ten} › ${info.ten}` : pl.db}>
                                   {info ? <>{info.nhanh === 'hgt' && <span className="mr-1 rounded bg-sky-50 px-1 py-0.5 text-[10px] font-medium text-sky-700">HGT</span>}<span className="text-slate-400">{info.nhom_ten} › </span>{info.ten}</> : pl.db}
                                 </span>
-                                {info && <span className={`shrink-0 text-[11px] ${info.so_cau < pl.soCau ? 'font-medium text-rose-600' : 'text-slate-400'}`}>kho {info.so_cau}</span>}
+                                {info && <span className={`shrink-0 text-[11px] max-md:ml-8 ${info.so_cau < pl.soCau ? 'font-medium text-rose-600' : 'text-slate-400'}`}>kho {info.so_cau}</span>}
                                 <span className="text-[12px] text-slate-400">×</span>
                                 <input type="number" min={1} max={50} value={pl.soCau}
                                   onChange={(e) => { const v = Math.max(1, Math.min(50, +e.target.value || 1)); setKh((k) => k && { ...k, plan: k.plan.map((x) => (x.db === pl.db ? { ...x, soCau: v } : x)) }) }}
                                   className="h-8 w-16 rounded border border-slate-300 px-1 text-center text-[13px]" />
                                 <span className="text-[12px] text-slate-400">câu</span>
-                                <button onClick={() => setKh((k) => k && { ...k, plan: k.plan.filter((x) => x.db !== pl.db) })} title="Bỏ dạng bài" className="text-[13px] text-slate-300 hover:text-rose-600">✕</button>
+                                <button onClick={() => setKh((k) => k && { ...k, plan: k.plan.filter((x) => x.db !== pl.db) })} title="Bỏ dạng bài" className="text-[13px] text-slate-300 hover:text-rose-600 max-md:ml-auto max-md:px-2 max-md:py-1">✕</button>
                               </div>
                             )
                           })}
@@ -865,7 +899,7 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                           )}
                           <button onClick={() => setChonPlan(true)} className="rounded-md border border-dashed border-indigo-300 px-2.5 py-1 text-[12px] font-medium text-indigo-600 hover:bg-indigo-50">+ Chọn dạng bài {kh.plan.length ? '(thêm/bớt)' : '(nhiều dạng cùng lúc)'}</button>
                           <button onClick={sinhKeHoach} disabled={khBusy || !kh.plan.length}
-                            className="ml-auto rounded-md bg-indigo-600 px-3 py-1.5 text-[12px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40">
+                            className="ml-auto rounded-md bg-indigo-600 px-3 py-1.5 text-[12px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40 max-md:w-full max-md:py-2">
                             {khBusy ? 'Đang sinh…' : `⚡ Sinh ${kh.plan.reduce((s, x) => s + x.soCau, 0)} câu`}
                           </button>
                         </div>
@@ -909,12 +943,12 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                               <button onClick={() => xoaRow(p.id, i)} title="Xoá hàng" className="shrink-0 px-1 text-[13px] text-slate-300 hover:text-rose-600">✕</button>
                             </div>
                             {/* Preview = đề + các ý (trái, trải rộng) + HÌNH VẼ (phải) — "preview bài của hình thì phải có cả hình" */}
-                            <div className="mt-2 flex items-start gap-4 pl-10">
+                            <div className="mt-2 flex items-start gap-4 pl-10 max-md:flex-col max-md:gap-2 max-md:pl-0">
                               {m && m.kieu === 'de' ? (
                                 <>
                                   {/* ⭐ 29/10 (CEO): mỗi Ý = 1 CÂU riêng (số câu + điểm ngay trên dòng ý) — giả thiết thêm của nhánh
                                       in trước câu hỏi của ý cần nó (mucGhep). Điểm từng ý giữ khoá diemBaiHinh (07/10). */}
-                                  <div className="min-w-0 flex-1 text-[13px] leading-relaxed text-slate-700">
+                                  <div className="min-w-0 flex-1 text-[13px] leading-relaxed text-slate-700 max-md:w-full">
                                     {m.deBai && <div><MathText>{m.deBai}</MathText></div>}
                                     {(() => { const db = diemBaiHinh(ch.diemByCau, ma, soYHinh(ma)); const dau = soDau[`${p.id}:${i}`] ?? 1
                                       return m.ys.map((y, yi) => (
@@ -929,7 +963,7 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                                         </div>
                                       )) })()}
                                   </div>
-                                  {m.anhDe && <img src={m.anhDe} alt="" className="max-h-40 w-auto max-w-[280px] shrink-0 rounded border border-slate-200 bg-white object-contain" />}
+                                  {m.anhDe && <img src={m.anhDe} alt="" className="max-h-40 w-auto max-w-[280px] shrink-0 rounded border border-slate-200 bg-white object-contain max-md:max-w-full max-md:self-center" />}
                                 </>
                               ) : <span className="text-[12px] italic text-slate-400">{hinhL ? 'đang dựng đề…' : 'đang tải kho Hình…'}</span>}
                             </div>
@@ -944,10 +978,12 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                       const dbInfo = r.nhanh === 'bdm' && r.maDang ? dbs.get(r.maDang) ?? null : null
                       return (
                         <div key={i} {...tha(p.id, i)} className={`rounded-xl border border-slate-200 bg-slate-50/60 p-2.5${vach(p.id, i)}`}>
-                          <div className="flex items-start gap-2">
+                          {/* Điện thoại: wrap + order — dòng 1 = số · dạng (giãn) · ✕; dòng 2 = đề câu full bề ngang; dòng 3 = dòng kẻ ·
+                              ↻ ✎ · 2 cột · điểm. Desktop vẫn 1 hàng ngang như cũ (order chỉ bật dưới md). */}
+                          <div className="flex items-start gap-2 max-md:flex-wrap max-md:items-center max-md:gap-1.5">
                           <SoHang className="mt-0.5" nhan={nhanSo[`${p.id}:${i}`] ?? ''} onKeo={keoTu(p.id, i)} onKeoXong={keoXong} onDoi={(so) => diChuyen({ phanId: p.id, idx: i }, viTriTheoSo({ phanId: p.id, idx: i }, so))} />
                           <button onClick={() => setDangModal({ phanId: p.id, idx: i, nhanh: r.nhanh })} title={dbInfo ? `${dbInfo.nhom_ten} › ${dbInfo.ten}` : undefined}
-                            className="w-56 shrink-0 rounded-md border border-slate-300 bg-white px-2.5 py-2 text-left text-[13px] hover:border-indigo-400">
+                            className="w-56 shrink-0 rounded-md border border-slate-300 bg-white px-2.5 py-2 text-left text-[13px] hover:border-indigo-400 max-md:w-auto max-md:min-w-0 max-md:flex-1 max-md:shrink">
                             {dbInfo ? (
                               <span className="line-clamp-2 text-slate-700">
                                 {dbInfo.nhanh === 'hgt' && <span className="mr-1 rounded bg-sky-50 px-1 py-0.5 text-[10px] font-medium text-sky-700">HGT</span>}
@@ -960,8 +996,8 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                               </span>
                             ) : <span className="text-indigo-500">+ chọn dạng…</span>}
                           </button>
-                          <div className="min-w-0 flex-1 pt-1">
-                            {c ? <div className="truncate text-[13px] text-slate-700"><MathText>{c.noi_dung}</MathText></div>
+                          <div className="min-w-0 flex-1 pt-1 max-md:order-2 max-md:basis-full max-md:pt-0.5">
+                            {c ? <div className="truncate text-[13px] text-slate-700 max-md:line-clamp-4 max-md:whitespace-normal"><MathText>{c.noi_dung}</MathText></div>
                               : r.maDang ? <span className="text-[12px] italic text-slate-400">chưa có câu</span>
                               : <span className="text-[12px] italic text-slate-300">chọn dạng để hệ gợi ý câu</span>}
                             {c && (
@@ -978,34 +1014,34 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                             )}
                           </div>
                           {c && form === 'tu_luan' && (
-                            <label className="flex shrink-0 items-center gap-1 pt-1.5 text-[11px] text-slate-400" title="Số dòng kẻ cho HS viết (bản in)">dòng
+                            <label className="flex shrink-0 items-center gap-1 pt-1.5 text-[11px] text-slate-400 max-md:order-3 max-md:pt-0" title="Số dòng kẻ cho HS viết (bản in)">dòng
                               <input type="number" min={0} max={50} value={ch.btvnLinesByCau?.[c.ma_cau] ?? 4} onChange={(e) => setLines(c.ma_cau, Math.max(0, Math.min(50, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
                             </label>
                           )}
                           {r.maDang && (
-                            <div className="flex shrink-0 gap-1 pt-0.5">
+                            <div className="flex shrink-0 gap-1 pt-0.5 max-md:order-3 max-md:pt-0">
                               <button onClick={() => doiCau(p.id, i)} title="Đổi câu khác (ít dùng kế tiếp)" className="rounded-md bg-indigo-50 px-2 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-100">↻ Đổi</button>
                               <button onClick={() => (dbInfo ? setChonCauBdm({ phanId: p.id, idx: i }) : setPicker({ phanId: p.id, idx: i, maDang: r.maDang!, nhanh: r.nhanh }))}
                                 title="Chọn câu — tick NHIỀU câu được: câu thêm chèn ngay sau hàng này" className="rounded-md border border-slate-300 px-2 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-400">✎ Chọn</button>
                             </div>
                           )}
                           {c && (
-                            <label className="flex shrink-0 items-center gap-1 self-start pt-1.5 text-[11px] text-slate-500" title="Tích = in 2 cột — các câu 2 cột LIỀN NHAU tự xếp cạnh nhau">
+                            <label className="flex shrink-0 items-center gap-1 self-start pt-1.5 text-[11px] text-slate-500 max-md:order-3 max-md:self-center max-md:pt-0" title="Tích = in 2 cột — các câu 2 cột LIỀN NHAU tự xếp cạnh nhau">
                               <input type="checkbox" checked={(ch.colByCau?.[c.ma_cau] ?? 1) === 2} onChange={(e) => setColCau(c.ma_cau, e.target.checked ? 2 : 1)} className="h-3.5 w-3.5 accent-sky-600" />
                               2 cột
                             </label>
                           )}
                           {c && (
                             <select value={ch.diemByCau?.[c.ma_cau] ?? DEFAULT_DIEM_MT} onChange={(e) => setDiem(c.ma_cau, +e.target.value)}
-                              title="Điểm câu này" className="h-7 shrink-0 self-start rounded border border-slate-300 bg-white px-1 text-[12px] font-medium text-slate-700">
+                              title="Điểm câu này" className="h-7 shrink-0 self-start rounded border border-slate-300 bg-white px-1 text-[12px] font-medium text-slate-700 max-md:order-3 max-md:ml-auto max-md:self-center">
                               {MT_DIEM_OPTS.map((n) => <option key={n} value={n}>{n} đ</option>)}
                             </select>
                           )}
-                          <button onClick={() => xoaRow(p.id, i)} title="Xoá hàng" className="shrink-0 px-1 pt-1 text-[13px] text-slate-300 hover:text-rose-600">✕</button>
+                          <button onClick={() => xoaRow(p.id, i)} title="Xoá hàng" className="shrink-0 px-1 pt-1 text-[13px] text-slate-300 hover:text-rose-600 max-md:order-1 max-md:px-2 max-md:py-1.5 max-md:pt-1.5">✕</button>
                           </div>
                           {/* Mã đề 2 & 3 — câu khác cùng dạng + form với câu gốc; TRỐNG thì chọn tay (giống ET). */}
                           {c && ch.etMaDe?.[c.ma_cau] && (
-                            <div className="mt-2 ml-8 space-y-1 border-t border-dashed border-slate-200 pt-2">
+                            <div className="mt-2 ml-8 space-y-1 border-t border-dashed border-slate-200 pt-2 max-md:ml-0">
                               {[0, 1].map((v) => {
                                 const vm = ch.etMaDe?.[c.ma_cau]?.[v] ?? null
                                 const vc = vm ? cau[vm] : null
@@ -1015,7 +1051,7 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                                     <span className="shrink-0 rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-medium text-slate-500">Mã đề {v + 2}</span>
                                     {vm ? (
                                       <>
-                                        <span className="shrink-0 rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] text-slate-400">{vm}</span>
+                                        <span className="shrink-0 rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] text-slate-400 max-md:hidden">{vm}</span>
                                         <span className="min-w-0 flex-1 truncate text-slate-600">{vc ? <MathText>{vc.noi_dung}</MathText> : '…'}</span>
                                       </>
                                     ) : (
@@ -1128,14 +1164,15 @@ function SoHang({ nhan, className, onKeo, onKeoXong, onDoi }: {
   return (
     <span className={`flex shrink-0 items-center ${className ?? ''}`}>
       <span draggable onDragStart={onKeo} onDragEnd={onKeoXong} title="Kéo để đổi thứ tự (thả sang phần khác cũng được)"
-        className="cursor-grab select-none px-0.5 text-[15px] leading-none text-slate-300 hover:text-indigo-500 active:cursor-grabbing">⠿</span>
+        className="cursor-grab select-none px-0.5 text-[15px] leading-none text-slate-300 hover:text-indigo-500 active:cursor-grabbing max-md:hidden">⠿</span>
       <input value={v} placeholder="·" onChange={(e) => setV(e.target.value)} onFocus={(e) => e.target.select()} onBlur={xong}
         onKeyDown={(e) => {
           if (e.key === 'Enter') e.currentTarget.blur()
           if (e.key === 'Escape') { setV(nhan); e.currentTarget.blur() }
         }}
         title="Số câu trên phiếu — gõ số mới rồi Enter để chuyển câu tới vị trí đó"
-        className="h-7 w-11 rounded border border-transparent bg-transparent text-center text-[12px] font-bold text-violet-600 hover:border-slate-300 focus:border-indigo-400 focus:bg-white focus:outline-none" />
+        inputMode="numeric"
+        className="h-7 w-11 rounded border border-transparent bg-transparent text-center text-[12px] font-bold text-violet-600 hover:border-slate-300 focus:border-indigo-400 focus:bg-white focus:outline-none max-md:h-8 max-md:w-10 max-md:border-violet-200 max-md:bg-white" />
     </span>
   )
 }
@@ -1256,7 +1293,7 @@ function ChiaDeMTModal({ taiLieuId, lopId, lopTen, onClose }: { taiLieuId: strin
 
   return (
     <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/30 px-4" onClick={onClose}>
-      <div className="flex max-h-[85vh] w-[520px] max-w-full flex-col rounded-2xl bg-white p-5 shadow-xl" onClick={(e) => e.stopPropagation()}>
+      <div className="flex max-h-[85vh] w-[520px] max-w-full flex-col rounded-2xl bg-white p-5 shadow-xl max-md:max-h-[92dvh] max-md:p-4" onClick={(e) => e.stopPropagation()}>
         <div className="mb-1 flex items-center gap-2">
           <p className="text-[15px] font-semibold text-slate-900">Chia đề — {lopTen}</p>
           {saved && <span className="text-[12px] text-emerald-600">✓ Đã lưu</span>}
@@ -1281,10 +1318,10 @@ function ChiaDeMTModal({ taiLieuId, lopId, lopTen, onClose }: { taiLieuId: strin
                       <div className="flex gap-0.5">
                         {[1, 2, 3].map((n) => (
                           <button key={n} onClick={() => setHsMa(hs.id, n)} title={`Mã đề ${n}`}
-                            className={`h-6 w-6 rounded text-[12px] font-bold ${cur === n ? 'bg-violet-600 text-white' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}>{n}</button>
+                            className={`h-6 w-6 rounded text-[12px] font-bold max-md:h-8 max-md:w-8 max-md:text-[13px] ${cur === n ? 'bg-violet-600 text-white' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}>{n}</button>
                         ))}
                       </div>
-                      <button onClick={() => setPrinting([{ id: hs.id, ho_ten: hs.ho_ten, maDe: ch.hsMaDe?.[hs.id] ?? 1 }])} title="In riêng phiếu HS này" className="shrink-0 text-[13px] text-slate-400 hover:text-indigo-600">🖨</button>
+                      <button onClick={() => setPrinting([{ id: hs.id, ho_ten: hs.ho_ten, maDe: ch.hsMaDe?.[hs.id] ?? 1 }])} title="In riêng phiếu HS này" className="shrink-0 text-[13px] text-slate-400 hover:text-indigo-600 max-md:px-1.5 max-md:text-[15px]">🖨</button>
                     </li>
                   )
                 })}
