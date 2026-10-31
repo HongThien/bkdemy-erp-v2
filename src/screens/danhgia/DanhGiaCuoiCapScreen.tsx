@@ -97,7 +97,6 @@ export default function DanhGiaCuoiCapScreen() {
         : cot.length === 0 ? (
           <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">
             Lớp này chưa có lần nào đo được ở tầng {TANG.find((t) => t[0] === tang)?.[1].toLowerCase()} (từ 15/06/2026).
-            {tang === 'nhom' && lop?.khoi === '5T' && <div className="mt-1 text-[12px]">5T đang dùng bản đồ cũ — không có tầng Nhóm bài.</div>}
           </div>
         ) : (
           <div ref={khung} onScroll={(e) => { NHO.cuon = e.currentTarget.scrollTop }}
