@@ -16,8 +16,12 @@
   không còn dạng nào giải lần đầu mà chưa có luật. Dạng nào bước 2 mới gặp ⇒ dừng dạng đó, giải thử cho CEO duyệt như bước 1.
 - **Câu đã giải xong thì duyệt luôn** (CEO 08/10, ca 271 câu STP của 5T): câu đã có dạng trong bản đồ cũ không phải chờ bước 3 mới duyệt.
   Câu ở dạng chờ thì vẫn chưa bấm duyệt được (dòng dưới).
-- **Bản đồ kiến thức là việc của CEO.** Claude KHÔNG tự dựng / tự sửa bản đồ, không đặt câu hỏi "bản đồ nên chia thế nào" trong
-  bước 1–2. Thứ Claude đưa được cho bản đồ: hồ sơ sách (danh sách chuyên đề, chỗ bản đồ hiện có thiếu dạng) — làm tư liệu, không làm quyết định.
+- ~~**Bản đồ kiến thức là việc của CEO.** Claude KHÔNG tự dựng / tự sửa bản đồ…~~ — **THAY 01/11 (Thùy, `spec-phong-truong-khoi.md`):**
+  **Claude làm** draft bản đồ, lý thuyết dạng, giải bài, phân dạng; **trưởng khối trở lên duyệt / sửa / chốt** (Phó không); luật giải mới
+  **trưởng khối gật là đủ**; Thùy chỉ **phát động** (phát động giải bài chưa giao). Trưởng khối làm với Claude qua **phiên chat** trên ERP
+  (Phòng làm việc trưởng khối), không qua Thùy. Thứ tự mới theo khối: Phase 1 bản đồ → Phase 2 lý thuyết dạng → Phase 3 nhập kho & phân dạng
+  (vòng xoáy: câu đủ 3 điều kiện máy kiểm thì tự duyệt, câu không chắc về trưởng khối sửa mô tả/thêm dạng rồi Claude phân lại).
+  Bảng 3 bước ở trên còn đúng cho phần **luật giải** (bước 1–2, Thùy cầm lái); phần bản đồ đọc theo spec mới.
 - **Bước 1–2 không chờ bản đồ, bước 3 không chờ bước 2 xong hết** — giải và xếp là 2 việc độc lập; câu giải xong thì nằm dạng chờ
   tới khi bản đồ khối đó xong. Hệ quả DB: câu dạng chờ chưa bấm duyệt lời giải được (`_kho_la_dang_cho`) ⇒ lời giải được duyệt sau bước 3.
 - Thứ tự cũ "bản đồ → gán dạng → giải" (`spec-luong-kho.md` V3-1, §7) **không còn đúng** — theo bảng trên.
