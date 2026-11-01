@@ -27,6 +27,17 @@
 //   HET
 //     Ô cho phép: chuyen_de.mo_ta · nhom.mo_ta|ly_thuyet · dang_bai.mo_ta|ly_thuyet|vi_du. Ô đang có chữ ⇒ BẮT BUỘC md5_cu
 //     (lấy từ doc) — lệch là trưởng khối vừa sửa tay, phải doc lại. Không ghi nội dung trống. Kiểm định dạng trước khi gửi.
+//   ── phiên NHẬP KHO & PHÂN DẠNG ──
+//   node scripts/phien/ban-do.mjs kho-tong                                    số câu từng hàng của khối (trong · de_xuat · thieu · mau)
+//   node scripts/phien/ban-do.mjs kho-cau '{"hang":"trong|de_xuat|thieu|mau","limit":20,"offset":0}'   một trang câu (đề · đáp án · dạng cũ · đề xuất)
+//   node scripts/phien/ban-do.mjs kho-dang '{"dang_bai_id":"...","limit":30}'  câu đang nằm trong một dạng (rà lại sau khi sửa mô tả)
+//   node scripts/phien/ban-do.mjs phan_dang <<'HET'                            phân một lô ≤ 50 câu:
+//   [{"ma_cau":"...","ket_qua":"cao","dang_bai_id":"NDB..."},
+//    {"ma_cau":"...","ket_qua":"vua","dang_bai_id":"NDB...","ly_do":"phân vân với NDB... vì ..."},
+//    {"ma_cau":"...","ket_qua":"thieu","ly_do":"câu hỏi ... mà bản đồ chưa có dạng","chu_de_id":"NCD... (tuỳ chọn)"}]
+//   HET
+//     cao = CHẮC ⇒ tự gán (hậu kiểm mẫu ~10%) · vua = chưa chắc ⇒ trưởng khối duyệt · thieu = bản đồ thiếu dạng.
+//     Câu NGƯỜI đã quyết thì DB từ chối. Câu lỗi không kéo cả lô — kết quả trả từng câu.
 // ============================================================================
 import { readFileSync } from 'node:fs'
 import { join, dirname } from 'node:path'
@@ -90,6 +101,21 @@ function inNoiDung(d) {
   return L.join('\n')
 }
 
+// Một câu cho Claude đọc khi phân dạng. Câu có HÌNH: Claude không xem được ảnh ⇒ ghi rõ để tự hạ mức chắc.
+function inCau(c) {
+  const L = [`CÂU ${c.ma_cau}${c.nhanh ? ` [${c.nhanh}]` : ''}${c.loai || c.loai_cau ? ` (${c.loai ?? c.loai_cau})` : ''}${c.nguon_gan ? ` · đang gán: ${c.nguon_gan === 'ai' ? 'AI' : c.nguon_gan}` : ''}`]
+  if (c.dang_cu || c.chuyen_de_cu) L.push(`  bản đồ cũ: ${[c.chuyen_de_cu, c.dang_cu].filter(Boolean).join(' › ')}`)
+  L.push(`  đề: ${String(c.noi_dung ?? '').trim()}`)
+  if (Array.isArray(c.lua_chon) && c.lua_chon.length) L.push(`  lựa chọn: ${c.lua_chon.join(' | ')}`)
+  if (Array.isArray(c.menh_de) && c.menh_de.length) L.push(`  mệnh đề: ${c.menh_de.map((m) => m.noi_dung ?? '').join(' | ')}`)
+  if (c.dap_an) L.push(`  đáp án: ${c.dap_an}`)
+  if (c.loi_giai) L.push(`  lời giải: ${String(c.loi_giai).replace(/\s+/g, ' ').slice(0, 600)}`)
+  if (c.anh_de) L.push('  ⚠ ĐỀ CÓ HÌNH (bạn không xem được) — đề phụ thuộc hình thì đừng phân "cao"')
+  if (c.dang_bai_id) L.push(`  dạng hiện tại/đề xuất: ${c.dang_bai_id} ${c.dang_bai ?? ''}${c.nhom ? ` (nhóm ${c.nhom})` : ''}${c.chac ? ` · mức ${c.chac}` : ''}`)
+  if (c.ly_do) L.push(`  lý do trước: ${c.ly_do}`)
+  return L.join('\n')
+}
+
 // Kiểm định dạng theo spec-format-noidung.md + khuôn K9/K11 (kho-rules/dai/k11.md §4). Lỗi ⇒ chặn; cảnh báo ⇒ vẫn ghi.
 const KI_HIEU = ['ĐL', 'DL', 'ĐN', 'DN', 'TC', 'CY', 'PP', 'VD', 'NX', 'BT']
 function kiemDinhDang(t, truong) {
@@ -148,13 +174,44 @@ if (lenh === 'thay-doi') {
   process.exit(0)
 }
 
+if (lenh === 'kho-tong') {
+  const { data, error } = await svc.rpc('fn_phien_kho_tong', { p_phien: PHIEN })
+  if (error) loi(error.message)
+  const d = data.dem ?? {}
+  console.log(`Kho khối ${data.khoi}: chưa có dạng (trong) ${d.trong ?? '?'} · đề xuất chờ duyệt ${d.de_xuat ?? '?'} · thiếu dạng ${d.thieu ?? '?'} · mẫu hậu kiểm chờ xem ${d.mau ?? '?'}` +
+    (d.kiem_n != null ? ` · đã kiểm mẫu ${d.kiem_n} câu, giữ ${d.kiem_giu}` : ''))
+  process.exit(0)
+}
+
 let ts
-try { ts = JSON.parse(con[0] ?? '{}') } catch { loi(`Tham số phải là JSON trong dấu nháy đơn, vd: node scripts/phien/ban-do.mjs ${lenh} '{"ten":"..."}'`) }
+const thamSo = con[0] ?? (lenh === 'phan_dang' ? await docStdin() : '{}')
+try { ts = JSON.parse(thamSo) } catch { loi(`Tham số phải là JSON (trong dấu nháy đơn, hoặc qua heredoc với phan_dang), vd: node scripts/phien/ban-do.mjs ${lenh} '{"ten":"..."}'`) }
 
 if (lenh === 'doc') {
   const { data, error } = await svc.rpc('fn_phien_bd_doc', { p_phien: PHIEN, p_loai: ts.loai, p_id: ts.id })
   if (error) loi(error.message)
   console.log(inNoiDung(data))
+  process.exit(0)
+}
+
+if (lenh === 'kho-cau' || lenh === 'kho-dang') {
+  const { data, error } = lenh === 'kho-cau'
+    ? await svc.rpc('fn_phien_kho_hang', { p_phien: PHIEN, p_hang: ts.hang ?? 'trong', p_limit: ts.limit ?? 20, p_offset: ts.offset ?? 0 })
+    : await svc.rpc('fn_phien_kho_dang', { p_phien: PHIEN, p_dang_bai: ts.dang_bai_id, p_limit: ts.limit ?? 30, p_offset: ts.offset ?? 0 })
+  if (error) loi(error.message)
+  const rows = lenh === 'kho-cau' ? (data.rows ?? []) : (data ?? [])
+  const tong = lenh === 'kho-cau' ? data.tong : rows[0]?.tong
+  console.log(lenh === 'kho-cau' ? `Hàng "${ts.hang ?? 'trong'}": ${tong ?? 0} câu — trang này ${rows.length} câu (offset ${ts.offset ?? 0})` : `Dạng ${ts.dang_bai_id}: ${tong ?? 0} câu — trang này ${rows.length}`)
+  console.log(rows.map(inCau).join('\n\n') || '(không có câu)')
+  process.exit(0)
+}
+
+if (lenh === 'phan_dang') {
+  if (!Array.isArray(ts)) loi('phan_dang cần một MẢNG câu (xem tro-giup).')
+  const { data, error } = await svc.rpc('fn_phien_kho_phan', { p_phien: PHIEN, p_ds: ts })
+  if (error) loi(error.message)
+  console.log(`Phân lô: ${data.ok} câu OK · ${data.loi} câu lỗi`)
+  for (const x of data.chi_tiet ?? []) if (!x.ok) console.log(`  ✗ ${x.ma_cau}: ${x.loi}`)
   process.exit(0)
 }
 

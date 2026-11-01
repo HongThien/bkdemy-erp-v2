@@ -11,12 +11,12 @@ export type PhienTrangThai = 'mo' | 'dang_dong' | 'dong'
 export const PHIEN_LOAI: { id: PhienLoai; ten: string; mo_ta: string; mo: boolean }[] = [
   { id: 'ban_do', ten: '🗺 Bản đồ', mo_ta: 'Phase 1 — Claude dựng nháp, sửa theo lệnh; trưởng khối duyệt các dạng', mo: true },
   { id: 'ly_thuyet', ten: '📘 Lý thuyết dạng', mo_ta: 'Phase 2 — lý thuyết · ví dụ · mô tả nhận biết từng dạng', mo: true },
-  { id: 'nhap_kho', ten: '📥 Nhập kho & phân dạng', mo_ta: 'Phase 3 — đẩy câu vào kho, xử lý câu chưa phân được dạng', mo: false },
+  { id: 'nhap_kho', ten: '📥 Nhập kho & phân dạng', mo_ta: 'Phase 3 — xếp câu trong kho vào dạng: chắc thì tự gán, chưa chắc thì trưởng khối duyệt', mo: true },
   { id: 'bao_sai', ten: '⚑ Câu bị báo sai', mo_ta: 'Xử lý câu trợ giảng báo sai', mo: false },
   { id: 'giai_bai', ten: '✍️ Giải bài', mo_ta: 'Thùy phát động', mo: false },
 ]
 // Loại việc GHI VÀO BẢN ĐỒ — khớp _phien_loai_sua_ban_do() ở DB: cần môn có bản đồ mới, mỗi khối một phiên mở.
-export const LOAI_SUA_BAN_DO: PhienLoai[] = ['ban_do', 'ly_thuyet']
+export const LOAI_SUA_BAN_DO: PhienLoai[] = ['ban_do', 'ly_thuyet', 'nhap_kho']
 export const tenLoai = (l: PhienLoai) => PHIEN_LOAI.find((x) => x.id === l)?.ten ?? l
 
 export type PhienPhamVi = { mon: string; khoi: string; co_ban_do: boolean }

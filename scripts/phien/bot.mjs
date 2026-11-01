@@ -19,6 +19,7 @@
 //   PHIEN_TAI_LIEU_DIR    thư mục tài liệu cho Claude đọc (vd E:\BK ACADEMY\Tài liệu tham khảo), nhiều thư mục cách nhau ';'
 //   PHIEN_MODEL           ép model (bỏ trống = mặc định của Claude Code)
 //   PHIEN_DUNG_API=1      dùng ANTHROPIC_API_KEY thay cho login subscription (mặc định: subscription — Thùy 01/11)
+//   PHIEN_TU_TIEP         số lượt Claude TỰ làm tiếp tối đa sau mỗi tin của người (mặc định 6; 0 = tắt)
 //
 // ⭐ RANH GIỚI AN TOÀN (đừng nới — xem README cùng thư mục):
 //   Claude được: Read/Grep/Glob trong repo (+ thư mục tài liệu) và ĐÚNG MỘT lệnh Bash
@@ -53,6 +54,9 @@ const HEARTBEAT_MS = 60_000
 const DAY_MS = 1000                        // nhịp đẩy chữ đang viết lên DB (màn thấy chữ chạy)
 const TAI_LIEU = (env('PHIEN_TAI_LIEU_DIR') ?? '').split(';').map((s) => s.trim()).filter(Boolean)
 const MODEL = env('PHIEN_MODEL')
+// Lượt TỰ ĐỘNG tối đa sau mỗi tin của người (Claude kết thúc bằng [[TIEP]] khi còn việc dài như phân hết kho). Chặn đốt hạn mức vô hạn.
+const TU_TIEP_TOI_DA = Math.max(0, Number(env('PHIEN_TU_TIEP') ?? 6) || 0)
+const DAU_TIEP = '[[TIEP]]'
 
 // Task Scheduler chạy với PATH tối thiểu — dò tận file cài mặc định (đã dính ở bot hỏi–đáp 29/08).
 const CLAUDE_BIN = env('CLAUDE_BIN')
@@ -251,10 +255,14 @@ async function chayLuot(phienId) {
     if (!noiDung() && kq.result) phan.push(String(kq.result).trim())
     if (!noiDung()) phan.push('(Claude không trả lời gì.)')
     dangViet = ''
+    // Dấu [[TIEP]] là lệnh cho BOT, không phải chữ cho người đọc ⇒ gỡ khỏi tin trước khi lưu bản cuối.
+    const muonTiep = noiDung().includes(DAU_TIEP)
+    if (muonTiep) phan = [noiDung().split(DAU_TIEP).join('').trim()]
     await day(true)
     await svc.from('claude_phien_tin').update({ noi_dung: noiDung(), trang_thai: 'xong', usage: kq.usage ?? null }).eq('id', tinId)
     await svc.from('claude_phien_tin').update({ trang_thai: 'xong', loi: null }).in('id', ids)
     if (laTongKet) await svc.from('claude_phien').update({ trang_thai: 'dong' }).eq('id', phienId)
+    else if (muonTiep) await xepLuotTiep(phienId)
     log(`✓ phiên ${phienId.slice(0, 8)} xong lượt`)
   } catch (e) {
     const msg = e?.message ?? String(e)
@@ -279,6 +287,27 @@ async function chayLuot(phienId) {
       await svc.rpc('fn_phien_bot_tra', { p_ids: ids, p_loi: msg.slice(0, 500), p_tinh_lan: true, p_toi_da: TOI_DA_LAN })
     }
   }
+}
+
+// Claude xin làm tiếp ⇒ bot tự xếp một tin hệ thống "[TIẾP TỤC]" (đi đúng đường việc chờ như tin người gõ).
+// Đếm số lượt tự động kể từ tin NGƯỜI gần nhất — quá trần thì dừng, báo người. Phiên đã đóng / người vừa nhắn thì thôi.
+async function xepLuotTiep(phienId) {
+  const { data: p } = await svc.from('claude_phien').select('trang_thai').eq('id', phienId).single()
+  if (p?.trang_thai !== 'mo') return
+  const { data: nguoiCuoi } = await svc.from('claude_phien_tin').select('id').eq('phien_id', phienId).eq('vai', 'nguoi')
+    .order('id', { ascending: false }).limit(1).maybeSingle()
+  const { count: dangCho } = await svc.from('claude_phien_tin').select('id', { count: 'exact', head: true }).eq('phien_id', phienId).eq('trang_thai', 'cho')
+  if (dangCho) return   // người vừa nhắn thêm — lượt sau đọc tin của người, không tự tiếp
+  const { count: daTiep } = await svc.from('claude_phien_tin').select('id', { count: 'exact', head: true })
+    .eq('phien_id', phienId).eq('vai', 'he_thong').like('noi_dung', '[TIẾP TỤC]%').gt('id', nguoiCuoi?.id ?? 0)
+  const lan = (daTiep ?? 0) + 1
+  if (lan > TU_TIEP_TOI_DA) {
+    await svc.from('claude_phien_tin').insert({ phien_id: phienId, vai: 'he_thong', trang_thai: 'xong',
+      noi_dung: `[DỪNG TỰ ĐỘNG] Claude đã tự làm tiếp ${TU_TIEP_TOI_DA} lượt — nhắn "tiếp" nếu muốn chạy thêm.` })
+    return
+  }
+  await svc.from('claude_phien_tin').insert({ phien_id: phienId, vai: 'he_thong', trang_thai: 'cho',
+    noi_dung: `[TIẾP TỤC] Lượt tự động ${lan}/${TU_TIEP_TOI_DA}: làm tiếp phần còn lại đúng như việc người đã giao. Xong hết, hoặc gặp chỗ cần người quyết, thì dừng và KHÔNG ghi ${DAU_TIEP}.` })
 }
 
 // ── Hàng đợi: phiên có tin chờ, cũ nhất trước; tối đa SONG_SONG phiên cùng lúc ──

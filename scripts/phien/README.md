@@ -1,6 +1,6 @@
 # Bot phiên Claude — trưởng khối chat thẳng với Claude Code trên ERP
 
-Spec: `spec-phong-truong-khoi.md`. Loại việc đang mở: **Bản đồ** (Phase 1, mig `202611011822`) · **Lý thuyết dạng** (Phase 2, mig `202611011910`).
+Spec: `spec-phong-truong-khoi.md`. Loại việc đang mở: **Bản đồ** (Phase 1, mig `202611011822`) · **Lý thuyết dạng** (Phase 2, mig `202611011910`) · **Nhập kho & phân dạng** (Phase 3, mig `202611012151`).
 Hướng dẫn Claude theo loại việc: `scripts/phien/loai/<loại>.md` + luật chung `scripts/phien/CHUNG.md`.
 
 Trưởng khối mở **Phòng làm việc trưởng khối › 🤖 Phiên Claude** trên ERP → chọn
@@ -12,13 +12,14 @@ atomic ở DB (`fn_phien_bot_nhan`) nên chạy chồng listener + `--once` vẫ
 
 ## Cài lần đầu (máy Thùy)
 
-1. Áp 2 migration `202611011822_phien_claude_truong_khoi.sql` + `202611011910_phien_claude_ly_thuyet.sql`: `npm run migrate` → `npm run schema` → commit `schema.md`.
+1. Áp 3 migration `202611011822_phien_claude_truong_khoi.sql` · `202611011910_phien_claude_ly_thuyet.sql` · `202611012151_phien_claude_nhap_kho.sql`: `npm run migrate` → `npm run schema` → commit `schema.md`.
    Migration cảnh báo thiếu quyền Realtime thì chạy tay trong SQL Editor (câu lệnh in sẵn trong warning):
    `alter publication supabase_realtime add table public.claude_phien;` và `… public.claude_phien_tin;`
 2. `.env.local` đã có `VITE_SUPABASE_URL` + `SUPABASE_SERVICE_ROLE` (cùng file bot hỏi–đáp). Thêm nếu cần:
    - `PHIEN_TAI_LIEU_DIR=E:\BK ACADEMY\Tài liệu tham khảo` — để Claude đọc được sách khi dựng bản đồ nháp.
    - `PHIEN_SONG_SONG=1` (mặc định) — số phiên chạy cùng lúc. Một subscription, chung hạn mức với việc riêng của Thùy.
    - `PHIEN_TIMEOUT_PHUT=30` (mặc định).
+   - `PHIEN_TU_TIEP=6` (mặc định) — số lượt Claude tự làm tiếp sau mỗi tin của người (việc dài như phân hết kho). 0 = tắt.
 3. **Đăng nhập subscription**: mở terminal, chạy `claude`, gõ `/login`. Bot **bỏ hẳn** `ANTHROPIC_API_KEY` khỏi env
    của Claude (còn key là Claude Code ưu tiên key, âm thầm trả tiền API). Muốn dùng API thì đặt `PHIEN_DUNG_API=1`.
 4. Thử tay: `node scripts/phien/bot.mjs --once` (làm hết việc đang chờ rồi thoát).

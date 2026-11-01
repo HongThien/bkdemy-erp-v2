@@ -28,6 +28,7 @@ Nhân sự hiểu bản đồ rất sâu — thứ thiếu chỉ là **đường
 | 6 | Claude chạy **trên máy Thùy**, bằng **subscription Claude Code** (không API). Test xong mới tính VPS. |
 | 7 | **Mỗi bản đồ chỉ một phiên sửa tại một thời điểm.** |
 | 8 | Bản đồ là **công cụ làm việc chính** của trưởng khối. Trưởng khối có **phòng làm việc riêng** trong ERP (ERP = sảnh chung). |
+| 8b | **Phase 3 (01/11): Claude chắc thì TỰ GÁN dạng, chấp nhận một phần sai, hậu kiểm sau.** Áp cho **phân dạng** câu vào bản đồ (đúng luật B3/B4 đã chốt 16/10: "mức cao = coi như đã gán, ~1,3% sai, sửa bằng kiểm mẫu"). **Không** đụng luật 09/09 "lời giải Claude ghi phải duyệt" — đó là duyệt LỜI GIẢI (kho chuẩn), vẫn ở màn Duyệt kho. |
 | 9 | Rủi ro "trưởng khối gộp dạng cho đẹp KPI" **không cần chặn** — bản đồ dùng chung toàn trung tâm, đổi cấu trúc là việc đại sự ai cũng thấy. (Kỹ thuật vẫn giữ: cấu trúc đổi ⇒ chuỗi KPI đánh dấu "gãy", không đem so.) |
 
 ## 2. Nghiệp vụ bản đồ & kho — 3 phase
@@ -122,10 +123,31 @@ hạn mức trả việc không tính lần · mất phân công giữa chừng 
   Bắt 1 lỗi (nhánh đọc chuyên đề gán boolean vào jsonb) ⇒ sửa. Chạy lại toàn bộ kịch bản Phase 1: không hỏng.
 - Đo quyền Claude Code thật: heredoc khớp quyền; `.env*` bị chặn cả qua Read, `cat/grep/head` và Grep; lệnh Bash chỉ đọc (`cat`, `head`) Claude Code tự cho.
 
-**Chưa làm (theo thứ tự đề xuất):** Phase 3 `nhap_kho` (gom cụm câu không chắc, tự duyệt
-3 điều kiện, đo lọt) → `bao_sai` (nối báo sai → rút khỏi kho → hàng trưởng khối) → hàng việc "Hôm nay" trong phòng → Claude ghi luật khối
-(đề xuất → trưởng khối gật → file luật) → nút "Dừng" lượt đang chạy → kiểm phiên bản trước khi ghi (chống ghi đè khi người sửa tay cùng
-lúc — hiện mới dựa "một phiên một bản đồ").
+**Phase 3 — Nhập kho & phân dạng (01/11, mig `202611012151`):**
+- Loại việc `nhap_kho` mở (Toán: câu Đại `dai_cau_hoi` + Hình giải tích `hgt_cau_hoi`, cùng đổ vào bản đồ `dai_bdm_*`; registry
+  `_phien_kho_nhanh_ds` / `_phien_kho_mon`). KHTN chưa nối ⇒ chặn ngay lúc mở phiên.
+- **Dùng lại nguyên luồng khớp bản đồ mới B3/B4** (mig `202610161046` · `202610221734`) — không bảng mới: `cao` ⇒ `*_bdm_gan_cau` nguon `ai`
+  (tự gán) · `vua` ⇒ `*_bdm_de_xuat` (trưởng khối duyệt) · `thieu` ⇒ `*_bdm_cau_thieu_dang`. Hậu kiểm = hàng **mẫu** ~10% câu AI gán (sẵn có)
+  ở màn **Bản đồ mới › Duyệt kho**.
+- Luật ghi (`_phien_kho_phan1`): chỉ câu gốc · không Đúng/Sai · đúng khối · dạng đích đúng khối + đúng vùng (Đại→`toan`, HGT→`hgt`) ·
+  **không bao giờ đụng câu NGƯỜI đã quyết** (gán tay / đã kiểm mẫu) · `vua` bắt buộc lý do phân vân · `thieu` bắt buộc lý do.
+  Lô ≤ 50 câu, mỗi câu một savepoint (câu lỗi không kéo cả lô). Claude phân lại sau khi mô tả đổi: `vua` tự bỏ gán AI cũ.
+- Phiên Nhập kho **được đổi cấu trúc** (thêm dạng khi trưởng khối gật cụm "thiếu dạng") — cùng nhóm "một phiên sửa bản đồ mỗi khối";
+  mở phiên khoá theo (môn, khối) bằng `pg_advisory_xact_lock` (không thêm index cho mỗi loại).
+- `_bdm_duyet_duoc` (quyền duyệt khớp) thêm vế **trưởng khối trở lên** (một nguồn `_truong_khoi_tro_len`) — trước chỉ đọc bảng giao tay.
+- Lệnh Claude: `kho-tong` · `kho-cau` · `kho-dang` · `phan_dang` (lô qua heredoc). Hướng dẫn: `scripts/phien/loai/nhap_kho.md` — "cao" chỉ khi khớp
+  đúng 1 dạng, không dạng thứ hai hợp lý, đọc được trọn đề (đề phụ thuộc hình ⇒ không "cao"); cuối lượt **gom cụm** câu không chắc thành đề xuất
+  thêm dạng / sửa mô tả.
+- **Tự làm tiếp**: Claude kết thúc lượt bằng `[[TIEP]]` khi việc dài chưa xong ⇒ bot tự xếp lượt kế (tin hệ thống `[TIẾP TỤC]`), tối đa
+  `PHIEN_TU_TIEP` (mặc định 6) lượt sau mỗi tin của người; người nhắn chen vào thì dừng tự tiếp.
+- Kiểm trên Postgres tạm: cao/vua/thieu đúng bảng · chặn sai khối, bản sao, Đúng/Sai, sai vùng, câu không tồn tại, thiếu lý do · vòng xoáy (thêm dạng →
+  phân lại; cao→vua bỏ gán AI) · câu người đã gán / đã kiểm mẫu ⇒ Claude bị từ chối · trưởng khối 7 duyệt được khối 7, không khối 8 · lô rỗng/>50 ·
+  KHTN chặn lúc mở · chạy lại toàn bộ ca Phase 1 + 2 không hỏng.
+
+**Chưa làm (theo thứ tự đề xuất):** `bao_sai` (nối báo sai của TA → câu rút khỏi kho → hàng trưởng khối) → đo tỉ lệ lọt của câu tự gán theo
+khối (từ kiểm mẫu + báo sai; vượt ngưỡng thì tắt tự gán khối đó) → Phase 3 cho KHTN (chưa có bảng đề xuất / thiếu dạng) → hàng việc "Hôm nay"
+trong phòng → Claude ghi luật khối (đề xuất → trưởng khối gật → file luật) → nút "Dừng" lượt đang chạy → kiểm phiên bản khi người sửa tay
+CẤU TRÚC cùng lúc Claude (nội dung chữ đã có md5 ở Phase 2; cấu trúc mới dựa "một phiên một bản đồ").
 
 ## 6. Chạy thử (máy Thùy)
 

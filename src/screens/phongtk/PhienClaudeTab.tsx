@@ -18,6 +18,7 @@ const NHO: { chon: string | null; ds: PhienItem[] | null; nhap: Record<string, s
 // Câu gợi ý lúc phiên còn trống — theo loại việc.
 const GOI_Y: Partial<Record<PhienLoai, string[]>> = {
   ban_do: ['Dựng nháp bản đồ chương Số hữu tỉ theo sách, cho mình xem khung trước', 'Nhóm 2.3 tách thành hai: cộng trừ và nhân chia', 'Mình vừa sửa tay chuyên đề 3, làm tiếp đi'],
+  nhap_kho: ['Phân dạng các câu chưa có dạng của khối, cho mình xem kết quả lượt đầu', 'Chạy hết kho đi, xong báo mình các cụm cần thêm dạng', 'Ok thêm dạng "Tìm x trong tỉ lệ thức" như em đề xuất rồi phân lại cụm đó'],
   ly_thuyet: ['Soạn lý thuyết + 2 ví dụ cho các dạng của chuyên đề Cộng trừ số hữu tỉ', 'Ví dụ 2 dạng 1.2.1 dễ quá, đổi bài khó hơn', 'Mình vừa sửa tay phương pháp dạng 1.3.2, áp cách viết đó cho các dạng còn lại'],
 }
 const POLL_DS_MS = 15_000
@@ -223,7 +224,9 @@ function KhungChat({ phien, onDoiTrangThai }: { phien: PhienItem; onDoiTrangThai
           </div>
         ) : t.vai === 'he_thong' ? (
           <div key={t.id} className="text-center text-[12px] text-slate-400">
-            {t.noi_dung.startsWith('[ĐÓNG PHIÊN]') ? '— Đã yêu cầu đóng phiên, Claude viết tổng kết —' : t.noi_dung}
+            {t.noi_dung.startsWith('[ĐÓNG PHIÊN]') ? '— Đã yêu cầu đóng phiên, Claude viết tổng kết —'
+              : t.noi_dung.startsWith('[TIẾP TỤC]') ? `— Claude tự làm tiếp (${t.noi_dung.match(/\d+\/\d+/)?.[0] ?? ''}) —`
+              : t.noi_dung}
             {t.trang_thai === 'loi' && <span className="ml-1 text-red-600">(lỗi: {t.loi})</span>}
           </div>
         ) : (
