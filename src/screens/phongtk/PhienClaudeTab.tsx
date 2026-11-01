@@ -6,7 +6,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { supabase } from '../../lib/supabase'
 import {
-  PHIEN_LOAI, tenLoai, BOT_SONG_TRONG_MS, getPhamVi, listPhien, moPhien, listTin, guiTin, dongPhien, moLaiPhien,
+  PHIEN_LOAI, LOAI_SUA_BAN_DO, tenLoai, BOT_SONG_TRONG_MS, getPhamVi, listPhien, moPhien, listTin, guiTin, dongPhien, moLaiPhien,
   listGhi, getBot, getPhien,
   type PhienItem, type PhienTin, type PhienPhamVi, type PhienLoai, type PhienBot, type PhienGhi, type PhienTrangThai,
 } from '../../lib/phien'
@@ -15,6 +15,11 @@ import ChuPhien from './ChuPhien'
 const NHO: { chon: string | null; ds: PhienItem[] | null; nhap: Record<string, string>; tin: Record<string, PhienTin[]> } =
   { chon: null, ds: null, nhap: {}, tin: {} }
 
+// Câu gợi ý lúc phiên còn trống — theo loại việc.
+const GOI_Y: Partial<Record<PhienLoai, string[]>> = {
+  ban_do: ['Dựng nháp bản đồ chương Số hữu tỉ theo sách, cho mình xem khung trước', 'Nhóm 2.3 tách thành hai: cộng trừ và nhân chia', 'Mình vừa sửa tay chuyên đề 3, làm tiếp đi'],
+  ly_thuyet: ['Soạn lý thuyết + 2 ví dụ cho các dạng của chuyên đề Cộng trừ số hữu tỉ', 'Ví dụ 2 dạng 1.2.1 dễ quá, đổi bài khó hơn', 'Mình vừa sửa tay phương pháp dạng 1.3.2, áp cách viết đó cho các dạng còn lại'],
+}
 const POLL_DS_MS = 15_000
 const POLL_TIN_MS = 4_000      // chỉ khi phiên đang có việc chạy — Realtime là đường chính
 const gio = (s: string) => new Date(s).toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit' })
@@ -59,7 +64,7 @@ function PhienMoi({ onXong, onHuy }: { onXong: (id: string) => void; onHuy: () =
     getPhamVi().then((p) => { setPhamVi(p); const d = p.find((x) => x.co_ban_do); if (d) setO(`${d.mon}|${d.khoi}`) })
       .catch((e) => setLoi(e.message ?? String(e)))
   }, [])
-  const chon = phamVi?.filter((p) => loai !== 'ban_do' || p.co_ban_do) ?? []
+  const chon = phamVi?.filter((p) => !LOAI_SUA_BAN_DO.includes(loai) || p.co_ban_do) ?? []
   async function tao() {
     const [mon, khoi] = o.split('|')
     if (!mon || !khoi || busy) return
@@ -114,7 +119,7 @@ function VetGhi({ phienId, soTin }: { phienId: string; soTin: number }) {
         <div className="mt-1.5 max-h-48 overflow-auto text-[12px] text-slate-600">
           {ds == null ? 'Đang tải…' : ds.length === 0 ? 'Chưa có thay đổi nào.' : ds.map((g) => (
             <div key={g.id} className="border-b border-slate-50 py-1">
-              <span className="text-slate-400">{gio(g.at)}</span> · <b>{g.viec}</b> · <code className="text-[11px]">{JSON.stringify(g.tham_so)}</code>
+              <span className="text-slate-400">{gio(g.at)}</span> · <b>{g.viec}</b> · <code className="text-[11px]">{JSON.stringify(g.tham_so).slice(0, 240)}</code>
             </div>
           ))}
         </div>
@@ -203,8 +208,8 @@ function KhungChat({ phien, onDoiTrangThai }: { phien: PhienItem; onDoiTrangThai
         className="flex-1 space-y-3 overflow-auto px-4 py-3">
         {tin.length === 0 && (
           <div className="py-10 text-center text-[13px] text-slate-400">
-            Nhắn cho Claude như nhắn đồng nghiệp — vd: <i>"Dựng nháp bản đồ chương Số hữu tỉ theo sách, cho mình xem khung trước"</i>,
-            <br /><i>"Nhóm 2.3 tách thành hai: cộng trừ và nhân chia"</i>, <i>"Mình vừa sửa tay chuyên đề 3, làm tiếp đi"</i>.
+            Nhắn cho Claude như nhắn đồng nghiệp — vd:{' '}
+            {(GOI_Y[phien.loai] ?? GOI_Y.ban_do ?? []).map((g, i) => <span key={i}>{i ? (i === 1 ? <br /> : ', ') : null}<i>"{g}"</i></span>)}.
           </div>
         )}
         {tin.map((t) => t.vai === 'claude' ? (

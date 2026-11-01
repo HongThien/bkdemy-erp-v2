@@ -20,6 +20,13 @@
 //     chuyen_nhom     {"id": "<nhóm>", "chu_de_id": "...", "chuyen_de_id": "..."}
 //     chuyen_dang_bai {"id": "<dạng bài>", "nhom_id": "..."}
 //     sap_xep         {"loai": "chu_de|o|nhom|dang_bai", "ids": ["...", "..."], "chu_de_id": "<chỉ khi loai=o>"}
+//   ── phiên LÝ THUYẾT DẠNG ──
+//   node scripts/phien/ban-do.mjs doc '{"loai":"nhom|dang_bai|chuyen_de","id":"..."}'   đọc ĐỦ nội dung + md5 từng ô
+//   node scripts/phien/ban-do.mjs ghi_noi_dung '{"loai":"dang_bai","id":"...","truong":"ly_thuyet|vi_du|mo_ta","md5_cu":"..."}' <<'HET'
+//   <nội dung — dán nguyên văn, $ và \ giữ nguyên vì delimiter có nháy>
+//   HET
+//     Ô cho phép: chuyen_de.mo_ta · nhom.mo_ta|ly_thuyet · dang_bai.mo_ta|ly_thuyet|vi_du. Ô đang có chữ ⇒ BẮT BUỘC md5_cu
+//     (lấy từ doc) — lệch là trưởng khối vừa sửa tay, phải doc lại. Không ghi nội dung trống. Kiểm định dạng trước khi gửi.
 // ============================================================================
 import { readFileSync } from 'node:fs'
 import { join, dirname } from 'node:path'
@@ -60,6 +67,56 @@ function inCay(cay) {
   return L.length ? L.join('\n') : '(Bản đồ khối này đang trống.)'
 }
 
+// In nội dung đọc được: mỗi ô kèm md5 (để ghi đè an toàn) — Claude đọc chữ thật, không phải JSON lồng.
+function inNoiDung(d) {
+  const o = (ten, nd, md5) => `── ${ten}${md5 ? ` (md5 ${md5})` : ''}:\n${nd && String(nd).trim() ? nd : '(trống)'}`
+  const L = []
+  if (d.loai === 'nhom') {
+    L.push(`NHÓM ${d.id} — ${d.ten}  (chủ đề ${d.chu_de} › chuyên đề ${d.chuyen_de})${d.co_file_ly_thuyet ? '  · có FILE lý thuyết đính kèm' : ''}`)
+    L.push(o('mo_ta', d.mo_ta, d.md5?.mo_ta), o('ly_thuyet', d.ly_thuyet, d.md5?.ly_thuyet))
+    for (const x of d.dang_bai ?? []) {
+      L.push(`\n== DẠNG ${x.id} [${x.thu_tu}] ${x.ten}`)
+      L.push(o('mo_ta', x.mo_ta, x.md5?.mo_ta), o('ly_thuyet', x.ly_thuyet, x.md5?.ly_thuyet), o('vi_du', x.vi_du, x.md5?.vi_du))
+    }
+  } else if (d.loai === 'dang_bai') {
+    L.push(`DẠNG ${d.id} — ${d.ten}  (nhóm ${d.nhom?.id} ${d.nhom?.ten})`)
+    L.push(o('mo_ta', d.mo_ta, d.md5?.mo_ta), o('ly_thuyet', d.ly_thuyet, d.md5?.ly_thuyet), o('vi_du', d.vi_du, d.md5?.vi_du))
+    L.push(`\n── lý thuyết NHÓM cha (đừng chép lặp):\n${d.nhom?.ly_thuyet?.trim() ? d.nhom.ly_thuyet : '(trống)'}`)
+    L.push(`\n── các dạng anh em (mô tả phải phân biệt được):\n${(d.dang_anh_em ?? []).map((x) => `- ${x.id} ${x.ten}${x.mo_ta ? ` — ${x.mo_ta}` : ''}`).join('\n') || '(không có)'}`)
+  } else {
+    L.push(`CHUYÊN ĐỀ ${d.id} — ${d.ten}`, o('mo_ta', d.mo_ta, d.md5?.mo_ta))
+    L.push(`Nhóm trong khối: ${(d.nhom ?? []).map((x) => `${x.id} ${x.ten}`).join(' · ') || '(chưa có)'}`)
+  }
+  return L.join('\n')
+}
+
+// Kiểm định dạng theo spec-format-noidung.md + khuôn K9/K11 (kho-rules/dai/k11.md §4). Lỗi ⇒ chặn; cảnh báo ⇒ vẫn ghi.
+const KI_HIEU = ['ĐL', 'DL', 'ĐN', 'DN', 'TC', 'CY', 'PP', 'VD', 'NX', 'BT']
+function kiemDinhDang(t, truong) {
+  const loi = [], canh_bao = []
+  const doiDo = (t.replace(/\\\$/g, '').match(/\$/g) ?? []).length
+  if (doiDo % 2) loi.push('số dấu $ lẻ — có công thức chưa đóng')
+  if (/\$\$/.test(t)) loi.push('không dùng $$…$$ — chỉ $…$')
+  if (/\\\(|\\\[/.test(t)) loi.push('không dùng \\( \\[ — chỉ $…$')
+  for (const m of t.matchAll(/^##(\S*)/gm)) if (!KI_HIEU.includes(m[1])) loi.push(`kí hiệu khối lạ "##${m[1]}" — chỉ ##ĐL ##ĐN ##TC ##CY ##PP ##VD ##NX ##BT`)
+  if (truong === 'vi_du' && !/^##VD/m.test(t)) canh_bao.push('ô ví dụ nên mở mỗi ví dụ bằng ##VD')
+  if (truong === 'vi_du' && /^##VD/m.test(t) && !/^(Bài giải|Lời giải|Giải)\s*[:.]/m.test(t)) canh_bao.push('ví dụ chưa có dòng "Bài giải:"')
+  if (/\\times/.test(t)) canh_bao.push('dấu nhân nên dùng \\cdot thay \\times')
+  if (/^(?:Bước|B)\s*\d+\s*[:.]/m.test(t)) canh_bao.push('##PP không ghi "Bước N" — app tự đánh số')
+  if (/(^|[^*])\*[^*\s][^*]*\*(?!\*)/.test(t)) canh_bao.push('chỉ dùng **đậm**, không *nghiêng*')
+  return { loi, canh_bao }
+}
+
+function docStdin() {
+  return new Promise((resolve) => {
+    let s = ''
+    const het = setTimeout(() => loi('Không nhận được nội dung: dùng heredoc  … ghi_noi_dung \'{…}\' <<\'HET\'  (nội dung)  HET'), 10_000)
+    process.stdin.setEncoding('utf8')
+    process.stdin.on('data', (d) => { s += d })
+    process.stdin.on('end', () => { clearTimeout(het); resolve(s) })
+  })
+}
+
 if (!lenh || lenh === 'tro-giup' || lenh === '--help') {
   // In đúng khối "Cách dùng" ở đầu file — một nguồn, không chép hướng dẫn hai nơi.
   const dong = readFileSync(fileURLToPath(import.meta.url), 'utf8').split('\n')
@@ -82,7 +139,10 @@ if (lenh === 'thay-doi') {
   if (error) loi(error.message)
   const ds = data.thay_doi ?? []
   if (!ds.length) { console.log(`Không có thay đổi nào trên bản đồ khối ${data.khoi} từ ${data.tu}.`); process.exit(0) }
-  const gon = (r) => r ? JSON.stringify(Object.fromEntries(Object.entries(r).filter(([k]) => !['created_at', 'updated_at', 'ly_thuyet', 'vi_du'].includes(k)))) : '∅'
+  // Ô chữ dài (lý thuyết, ví dụ) chỉ hiện độ dài + đầu đoạn — muốn đọc đủ thì dùng lệnh doc.
+  const gon = (r) => r ? JSON.stringify(Object.fromEntries(Object.entries(r)
+    .filter(([k]) => !['created_at', 'updated_at'].includes(k) && !k.endsWith('_file_url') && !k.endsWith('_ten_file'))
+    .map(([k, v]) => ['ly_thuyet', 'vi_du', 'mo_ta'].includes(k) && typeof v === 'string' && v.length > 80 ? [k, `«${v.length} ký tự: ${v.slice(0, 80).replace(/\s+/g, ' ')}…»`] : [k, v]))) : '∅'
   console.log(`${ds.length} thay đổi trên bản đồ khối ${data.khoi} từ ${data.tu}:`)
   for (const t of ds) console.log(`- ${t.at} · ${t.nguon === 'claude' ? 'CLAUDE (qua phiên)' : 'SỬA TAY'} · ${t.ai_sua} · ${t.hanh_dong} ${t.loai}\n    cũ: ${gon(t.cu)}\n    mới: ${gon(t.moi)}`)
   process.exit(0)
@@ -90,6 +150,25 @@ if (lenh === 'thay-doi') {
 
 let ts
 try { ts = JSON.parse(con[0] ?? '{}') } catch { loi(`Tham số phải là JSON trong dấu nháy đơn, vd: node scripts/phien/ban-do.mjs ${lenh} '{"ten":"..."}'`) }
+
+if (lenh === 'doc') {
+  const { data, error } = await svc.rpc('fn_phien_bd_doc', { p_phien: PHIEN, p_loai: ts.loai, p_id: ts.id })
+  if (error) loi(error.message)
+  console.log(inNoiDung(data))
+  process.exit(0)
+}
+
+if (lenh === 'ghi_noi_dung') {
+  if (typeof ts.noi_dung !== 'string') ts.noi_dung = await docStdin()
+  ts.noi_dung = ts.noi_dung.replace(/\r\n/g, '\n').replace(/^\n+|\s+$/g, '')
+  const k = kiemDinhDang(ts.noi_dung, ts.truong)
+  if (k.loi.length) loi(`nội dung chưa đúng định dạng, CHƯA ghi:\n- ${k.loi.join('\n- ')}`)
+  const { data, error } = await svc.rpc('fn_phien_lt_ghi', { p_phien: PHIEN, p_ts: ts })
+  if (error) loi(error.message)
+  console.log(`OK ghi_noi_dung: ${JSON.stringify(data)}`)
+  if (k.canh_bao.length) console.log(`Lưu ý định dạng (đã ghi, nên sửa ở lượt sau):\n- ${k.canh_bao.join('\n- ')}`)
+  process.exit(0)
+}
 const { data, error } = await svc.rpc('fn_phien_bd_ghi', { p_phien: PHIEN, p_viec: lenh, p_ts: ts })
 if (error) loi(error.message)
 console.log(`OK ${lenh}: ${JSON.stringify(data)}`)

@@ -91,7 +91,8 @@ function dongTool(b) {
   if (b.name === 'Bash') {
     const cmd = String(i.command ?? '')
     const m = cmd.match(/scripts\/phien\/ban-do\.mjs\s+(\S+)\s*([\s\S]*)/)
-    if (m) return `🗺 bản đồ: ${m[1]} ${m[2].replace(/^'|'$/g, '').slice(0, 160)}`
+    // Lệnh ghi nội dung đưa chữ qua heredoc — chỉ hiện phần lệnh, không hiện cả bài lý thuyết.
+    if (m) return `🗺 bản đồ: ${m[1]} ${m[2].split('<<')[0].trim().replace(/^'|'$/g, '').slice(0, 160)}`
     return `🔧 ${cmd.slice(0, 160)}`
   }
   if (b.name === 'Read') return `📖 đọc ${basename(String(i.file_path ?? ''))}`

@@ -334,7 +334,7 @@
 - **`kho-rules/README.md` — ĐỌC BẮT BUỘC trước khi giải / nhập bài cho BẤT KỲ khối nào** (CEO chốt 08/10, §0 — khối nào cũng làm thế này):
   **(1)** Claude đọc sách → giải thử → CEO duyệt → rút luật giải ghi vào `kho-rules/dai/k<khối>.md` · **(2)** luật đủ tốt (một lô không bị sửa = v1)
   ⇒ giải TOÀN BỘ tài liệu, lên DB chờ sẵn ở dạng chờ `…000000` · **(3)** CEO làm xong bản đồ kiến thức khối đó ⇒ Claude xếp các bài vào bản đồ ⇒ CEO duyệt.
-  **Bản đồ kiến thức là việc của CEO** — Claude không tự dựng/sửa bản đồ. Khối nào đang ở bước nào: README §5.
+  ~~Bản đồ kiến thức là việc của CEO~~ — **THAY 01/11: Claude dựng nháp bản đồ + lý thuyết dạng + phân dạng, trưởng khối trở lên duyệt/sửa/chốt qua phiên Claude** (`spec-phong-truong-khoi.md`; bước 1–2 luật giải vẫn do Thùy cầm lái). Khối nào đang ở bước nào: README §5.
 - **`spec-hinh-cay-nhanh.md` — ĐỌC BẮT BUỘC trước khi đụng bản đồ HÌNH phần LUYỆN** (CEO duyệt mockup 14/10): mô hình = cây nhánh (thân 1.1→1.2, rẽ nhánh từ bài mẹ thành 1.6.1, 1.6.1.1) · số hiển thị = vị trí (suy), mã bất biến · giả thiết hiệu lực = đường gốc→nhánh (bỏ luật 17/08) · xếp chỗ CHỈ xuống/sang phải, nhánh phía sau ưu tiên hàng 1, nhánh trước không đè · thẻ giả thiết thêm lục giác khác thẻ bài · popup đề·hình·đáp án. Mockup: `docs/mockup-hinh-mo-hinh-2tab.html`. Phần tách ý/nhập kho: `spec-hinh-luyen.md`.
 - **`spec-luong-kho.md` — ĐỌC BẮT BUỘC trước khi đụng LUỒNG KHO** (tài liệu vào → bản đồ + câu đạt chuẩn; CEO chốt 28/09): 3 lớp
   Tri thức / Dây chuyền / Đo · luật phân tầng dạng–cụm–biến thể · cổng ghi "không biên bản kiểm thì không ghi" · luật lên cấp tự duyệt

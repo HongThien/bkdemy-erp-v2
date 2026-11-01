@@ -108,7 +108,21 @@ chưa mở · bot nhận 2 tin một lượt, không nhận chồng · Claude gh
 nút · actor log = người mở phiên · `thay-doi` tách SỬA TAY / CLAUDE · đóng phiên → tổng kết → đóng; tổng kết hỏng 2 lần vẫn đóng ·
 hạn mức trả việc không tính lần · mất phân công giữa chừng ⇒ chặn · `anon` không gọi được gì. **Chưa** kiểm trên DB thật + app thật.
 
-**Chưa làm (theo thứ tự đề xuất):** Phase 2 `ly_thuyet` (lệnh sửa lý thuyết/ví dụ) → Phase 3 `nhap_kho` (gom cụm câu không chắc, tự duyệt
+**Phase 2 — Lý thuyết dạng (01/11, mig `202611011910`):**
+- Loại việc `ly_thuyet` mở. Một khối chỉ **một phiên sửa bản đồ** (Bản đồ HOẶC Lý thuyết) tại một thời điểm.
+- Lệnh đọc `doc` (`fn_phien_bd_doc`): nhóm ⇒ lý thuyết nhóm + đủ nội dung mọi dạng; dạng ⇒ nội dung + lý thuyết nhóm cha + mô tả các dạng anh em;
+  kèm **md5 từng ô**.
+- Lệnh ghi `ghi_noi_dung` (`fn_phien_lt_ghi`, chỉ phiên Lý thuyết): ô chuyên đề.mo_ta · nhóm.mo_ta/ly_thuyet · dạng.mo_ta/ly_thuyet/vi_du; không file,
+  không xoá trắng. **Ô đang có chữ ⇒ bắt buộc `md5_cu` khớp bản hiện tại** — trưởng khối vừa sửa tay thì md5 lệch, Claude bị từ chối và phải đọc lại
+  (optimistic concurrency; nội dung cũ vẫn trong `*_bdm_log`). Nội dung qua heredoc; `ban-do.mjs` **chặn** lỗi định dạng (`$` lẻ, `$$`, `\(`, kí hiệu `##` lạ),
+  **cảnh báo** lỗi kiểu (`\times`, "Bước N", *nghiêng*, ví dụ thiếu "Bài giải:").
+- Phiên Lý thuyết được `sua` tên/mô tả, KHÔNG đổi cấu trúc.
+- Kiểm thêm trên Postgres tạm: chặn mở chéo Bản đồ/Lý thuyết cùng khối · chặn ghi LT từ phiên Bản đồ · chặn đổi cấu trúc từ phiên Lý thuyết · ô lạ ·
+  nội dung trống · ghi đè thiếu md5 / md5 sai / md5 cũ sau khi người sửa tay ⇒ chặn, md5 mới ⇒ được · `thay-doi` tách tay/Claude · log giữ bản cũ.
+  Bắt 1 lỗi (nhánh đọc chuyên đề gán boolean vào jsonb) ⇒ sửa. Chạy lại toàn bộ kịch bản Phase 1: không hỏng.
+- Đo quyền Claude Code thật: heredoc khớp quyền; `.env*` bị chặn cả qua Read, `cat/grep/head` và Grep; lệnh Bash chỉ đọc (`cat`, `head`) Claude Code tự cho.
+
+**Chưa làm (theo thứ tự đề xuất):** Phase 3 `nhap_kho` (gom cụm câu không chắc, tự duyệt
 3 điều kiện, đo lọt) → `bao_sai` (nối báo sai → rút khỏi kho → hàng trưởng khối) → hàng việc "Hôm nay" trong phòng → Claude ghi luật khối
 (đề xuất → trưởng khối gật → file luật) → nút "Dừng" lượt đang chạy → kiểm phiên bản trước khi ghi (chống ghi đè khi người sửa tay cùng
 lúc — hiện mới dựa "một phiên một bản đồ").
