@@ -1,6 +1,6 @@
 # NUÔI HEO — Spec v0.1 (app giảm béo gamification)
 
-> Trạng thái: **BẢN NHÁP chờ Thùy duyệt** · viết 01/11/2026 từ phiên sparring Thùy ↔ Claude.
+> Trạng thái: **BẢN NHÁP chờ Thùy duyệt** · viết 01/11/2026 từ phiên sparring Thùy ↔ Claude · cập nhật 01/11: chốt thủ quỹ, đăng nhập, kiểu bữa trưa (§15).
 > Tạm đặt trong repo ERP (`docs/nuoi-heo/`), có repo riêng `nuoi-heo` thì chuyển sang. **Không dính code ERP.**
 > Mọi con số ở §14 là **mặc định đề xuất**, chỉnh được — không phải luật cứng.
 
@@ -37,7 +37,9 @@
 
 ## 3. Người dùng · nhóm · quyền riêng tư
 
-- **Tài khoản:** đăng nhập Supabase Auth (Google hoặc email OTP — §15).
+- **Tài khoản (chốt 01/11):** mỗi người 1 tài khoản riêng, **email + mật khẩu** giống ERP (`signInWithPassword`).
+  **Không tự đăng ký công khai** — admin cấp tài khoản trên web (mẫu `capTaiKhoan` của ERP: client phụ `signUp`, tắt "Confirm email").
+  Mở cho người quen (giai đoạn ③) thì thêm **mã mời nhóm**. Tài khoản Nuôi Heo **tách** tài khoản ERP (2 project Supabase khác nhau), dùng lại email được.
 - **Hồ sơ:** giới, năm sinh, chiều cao, cân hiện tại, kiểu công việc (ngồi nhiều / đi lại nhiều), tốc độ giảm (§4). Sửa bất cứ lúc nào.
 - **Nhóm:** 1 người vào được nhiều nhóm. Mỗi nhóm có **luật riêng** (mức phạt, thủ quỹ) và **quỹ riêng**.
   - Đề xuất: mỗi người chỉ có **1 "nhóm cược"** để tránh một tuần trượt bị phạt nhiều lần (§15).
@@ -159,7 +161,7 @@ Mỗi bữa hiện nhãn ✅/≈; ngày có % calo từ món ✅ cao ⇒ **độ
 - **Tự nguyện:** người bật "tham gia cược" mới bị phạt. **Tuần đầu tiên = tuần làm quen, không phạt.**
 - **Phạt:** trượt tuần ⇒ trừ **mức phạt của nhóm** (mặc định 50.000đ; nhóm tự thống nhất 50–100k).
 - **App chỉ ghi sổ, không giữ tiền.** Màn quỹ hiện tạm **DANH SÁCH ÂM**: mỗi người một số dư, ai âm nhiều nhất lên đầu.
-  Nộp tiền thật ⇒ **thủ quỹ** bấm "đã nhận" ⇒ số dư về lại.
+  Nộp tiền thật ⇒ **thủ quỹ** bấm "đã nhận" ⇒ số dư về lại. **Thủ quỹ nhóm đầu tiên: Lộc Trần** (chốt 01/11).
 - Sổ quỹ **append-only**: mỗi khoản (phạt / nộp / thưởng / chi trả) là 1 dòng, có người xác nhận + thời điểm; không sửa/xoá — sai thì thêm dòng điều chỉnh.
 - **Thưởng (để sau):** cuối tuần quỹ chi tối đa **30% số dư** cho những người xuất sắc, chia đều, mỗi người ≤ 1× mức phạt. Quỹ nhiều thưởng nhiều, quỹ ít thưởng ít, **quỹ = 0 không thưởng**, quỹ không bao giờ âm.
 
@@ -234,16 +236,17 @@ Mỗi bữa hiện nhãn ✅/≈; ngày có % calo từ món ✅ cao ⇒ **độ
 1. **Lợn có tụt cấp khi gầy không?** Đề xuất: **không tụt cấp** (giữ thành tựu), chỉ đổi hình dạng + dễ ốm.
 2. **Món + số đo dùng chung trong nhóm?** Đề xuất: **có**.
 3. **Mỗi người chỉ 1 nhóm cược?** Đề xuất: **có**.
-4. **Thủ quỹ nhóm đầu tiên:** Thùy hay Trang?
-5. **Đăng nhập:** Google hay email OTP?
-6. **Bữa trưa thường là gì** (cơm quán mâm chung / cơm hộp / tự nấu)? — quyết định đưa mâm chung tự cân lên sớm hay không.
+4. ~~Thủ quỹ nhóm đầu~~ → **Lộc Trần** (chốt 01/11).
+5. ~~Đăng nhập~~ → **email + mật khẩu, admin cấp**, giống ERP (chốt 01/11).
+6. ~~Bữa trưa~~ → **trộn**: hay ăn cơm/bún (quán bán na ná nhau ⇒ món chung dùng tốt), có lúc chung mâm, có lúc tự nấu, có lúc ăn nhà (chốt 01/11).
+   ⇒ Mâm chung là tính năng **phụ**: giữ bản 1 người ở P2, bản tự cân nhiều người để P4.
 7. **Học sinh (giai đoạn ④):** đề xuất **không tham gia cược tiền** (trẻ vị thành niên + tiền thật) và **không có ngân sách thâm hụt** (ăn kiêng tuổi dậy thì nhạy cảm) — chỉ bản vận động/thói quen. Quyết khi mở rộng.
 
 ## 16. Lộ trình build
 
 | Pha | Nội dung | Xong = |
 |---|---|---|
-| **P0** | Repo `nuoi-heo`, Supabase Free org riêng, Vercel, đăng nhập, hồ sơ, ngân sách ngày | Đăng nhập thấy ngân sách của mình |
+| **P0** | Repo `nuoi-heo`, Supabase Free org riêng, Vercel, đăng nhập email + mật khẩu (admin cấp), hồ sơ, ngân sách ngày | Đăng nhập thấy ngân sách của mình |
 | **P1** | Món@quán + pop-up thêm món (số tay / AI ước) + số đo thật · ghi bữa · hoạt động (bí mật) · 3 nhiệm vụ + chốt ngày · dashboard ngày | **Thùy + Trang dùng thử 1 tuần** |
 | **P2** | Con lợn + xu + thuốc/vắc xin · nhóm + feed · mâm chung (bản 1 người) | Hai con lợn cạnh nhau |
 | **P3** | Chốt tuần + quỹ (danh sách âm) · bước chân Phím tắt · nhắc push · gợi ý nên đo món nào | Tuần cược đầu tiên |
