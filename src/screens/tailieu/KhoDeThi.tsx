@@ -17,7 +17,7 @@ import {
   patchCauHinhDeThi, tronCauHinh, KY_DE, dangMoiCuaDe, dichMoi, ganDangMoi, namHocKhoDeThi, tenNamHoc,
   type DeThi, type KyDe, type LocNamHoc, type DangMoi, type DichMoi, type DeThiMeta, type DeThiCau, type DeThiThieu, type DeThiDong, type Kho, type LoiDeThi, type SuaCauPatch, type TabKhoDe,
 } from '../../lib/dethi'
-import { setCauOfPhan, deletePhan, updatePhan, type TaiLieuPhan } from '../../lib/tailieu'
+import { setCauOfPhan, deletePhan, updatePhan, anhPhaiCua, type TaiLieuPhan } from '../../lib/tailieu'
 import type { CheDoHinh } from '../../lib/kho/hinhGiaoTrinh'
 import { ColSel, AnhXem, AnhMmCtl, CheDoHinhBtn, MAU_PRESET } from './TaiLieuBuilder'
 import { AnhMmEditCtx } from './anhMmCtx'
@@ -453,7 +453,7 @@ export function DeThiSoan({ id, onClose, tuKho }: { id: string; onClose: () => v
   const jump = (elId: string) => document.getElementById(elId)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
   return (
-    <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: onAnhMm, baChe: true }}>
+    <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: onAnhMm, baChe: true, phai: anhPhaiCua(ch, null), setPhai: (m, v) => { void luuCh({ anhPhaiByCau: { [m]: v } }) } }}>
     <div className="flex h-full flex-col bg-[#fafafb]">
       {/* Khung như builder giáo trình: thanh trên (tên · tự lưu · Xem/Xuất PDF · màu) · dải tình trạng · cây trái · thẻ phần */}
       <div className="flex flex-wrap items-center gap-2.5 border-b border-slate-200 bg-white px-5 py-2.5">

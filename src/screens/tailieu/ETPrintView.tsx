@@ -7,14 +7,14 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
-import { getTaiLieuFull, etGroupOf, etFormOf, khoCuaMon, type ETGroup, type TaiLieuFull, type CauHinh } from '../../lib/tailieu'
+import { getTaiLieuFull, etGroupOf, etFormOf, khoCuaMon, anhPhaiCua, type ETGroup, type TaiLieuFull, type CauHinh } from '../../lib/tailieu'
 import { fetchCausByMa } from '../../lib/ontap'
 import { hsCoMatCuaBuoi } from '../../lib/gami'
 import { BK_CSS, BK_PAGE_CSS, ETHeaderBK } from './bkPrint'
 import type { CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
 import { cauItemParts, CauFlow, OptGrid, GvAnswer, splitStem, questionOnlyContent, TLNTable, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename, pruneGhostBlankPages, AnhDe } from './PrintView'
-import { AnhMmCtx } from './anhMmCtx'
+import { AnhMmCtx, AnhPhaiCtx } from './anhMmCtx'
 
 const DEFAULT_TL_LINES = 4
 const DEFAULT_TLN_LINES = 2
@@ -261,15 +261,15 @@ function ETAllDe({ full, gv, varCau, perHS }: { full: TaiLieuFull; gv: boolean; 
   // Chế độ IN THEO HS: mỗi HS 1 phiếu = mã đề đã gán + tên in sẵn.
   if (perHS) {
     return <>{perHS.map((hs) => { const d = deOf(hs.maDe)
-      return <div key={hs.id} className="pv-de-recto"><ETDoc ten={full.taiLieu.ten} caus={d.caus} ch={d.ch} gv={gv} badge={`Mã đề ${hs.maDe}`} hoTen={hs.ho_ten} /></div> })}</>
+      return <div key={hs.id} className="pv-de-recto"><ETDoc ten={full.taiLieu.ten} nhanh={full.taiLieu.nhanh} caus={d.caus} ch={d.ch} gv={gv} badge={`Mã đề ${hs.maDe}`} hoTen={hs.ho_ten} /></div> })}</>
   }
   const des = complete
     ? [{ label: 'Mã đề 1', caus: base, ch }, { label: 'Mã đề 2', caus: build(0), ch: chVar(0) }, { label: 'Mã đề 3', caus: build(1), ch: chVar(1) }]
     : [{ label: '', caus: base, ch }]
-  return <>{des.map((d, i) => <div key={i} className="pv-de-recto"><ETDoc ten={full.taiLieu.ten} caus={d.caus} ch={d.ch} gv={gv} badge={d.label} /></div>)}</>
+  return <>{des.map((d, i) => <div key={i} className="pv-de-recto"><ETDoc ten={full.taiLieu.ten} nhanh={full.taiLieu.nhanh} caus={d.caus} ch={d.ch} gv={gv} badge={d.label} /></div>)}</>
 }
 
-function ETDoc({ ten, caus, ch, gv, badge, hoTen }: { ten: string; caus: CauHoi[]; ch: CauHinh; gv: boolean; badge?: string; hoTen?: string }) {
+function ETDoc({ ten, nhanh, caus, ch, gv, badge, hoTen }: { ten: string; nhanh?: string | null; caus: CauHoi[]; ch: CauHinh; gv: boolean; badge?: string; hoTen?: string }) {
   const lines = ch.btvnLinesByCau ?? {}
   // ⭐ 07-20: KHÔNG gom lại theo loại ở đây nữa. Thứ tự in = ĐÚNG `thu_tu` của DB (đã gom theo nhóm
   // từ lúc LƯU — sortETCaus trong ETScreen.luu). Trước đây gom ở render nên "Câu 3" trên giấy khác
@@ -299,6 +299,7 @@ function ETDoc({ ten, caus, ch, gv, badge, hoTen }: { ten: string; caus: CauHoi[
   const cheDo = (c: CauHoi) => ch.hinhCheDoByCau?.[c.ma_cau] ?? 'hien'
   return (
     <AnhMmCtx.Provider value={ch.anhMmByCau ?? {}}>
+    <AnhPhaiCtx.Provider value={anhPhaiCua(ch, nhanh)}>
     <div className="pv-et pv-et-bk">
       <ETHeaderBK title={tenDe} ngay={ngayDe} lop={tenLop} made={made} hoTen={hoTen} soCau={caus.length} gv={gv} />
       {runs.map((run, ri) => (
@@ -335,6 +336,7 @@ function ETDoc({ ten, caus, ch, gv, badge, hoTen }: { ten: string; caus: CauHoi[
       ))}
       {caus.length === 0 && <p className="pv-empty">ET chưa có câu nào.</p>}
     </div>
+    </AnhPhaiCtx.Provider>
     </AnhMmCtx.Provider>
   )
 }

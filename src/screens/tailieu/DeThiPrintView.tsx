@@ -4,11 +4,11 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
-import { getTaiLieuFull, kieuCols, type TaiLieuFull } from '../../lib/tailieu'
+import { getTaiLieuFull, kieuCols, anhPhaiCua, type TaiLieuFull } from '../../lib/tailieu'
 import { deThiMeta as getMeta, coDongKeDeThi, dongMacDinhDeThi, baiTheoDe } from '../../lib/dethi'
 import type { CheDoHinh } from '../../lib/kho/hinhGiaoTrinh'
 import { CauFlow, itemsTheoDe, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename } from './PrintView'
-import { AnhMmCtx } from './anhMmCtx'
+import { AnhMmCtx, AnhPhaiCtx } from './anhMmCtx'
 
 const CAP_LABEL: Record<string, string> = { vao_10: 'Tuyển sinh vào 10', thpt_qg: 'THPT Quốc gia', hsg: 'Học sinh giỏi' }
 
@@ -152,7 +152,12 @@ export default function DeThiPrintView({ id, onClose, headless, linkOnly, onFail
 
 // Cỡ ảnh IN theo câu (cau_hinh.anhMmByCau) — cùng context với giáo trình để <AnhDe> đọc được.
 function DeThiDoc(props: { full: TaiLieuFull; gv: boolean; onlyPhanId?: string }) {
-  return <AnhMmCtx.Provider value={props.full.taiLieu.cau_hinh?.anhMmByCau ?? {}}><DeThiDocInner {...props} /></AnhMmCtx.Provider>
+  const tl = props.full.taiLieu
+  return (
+    <AnhMmCtx.Provider value={tl.cau_hinh?.anhMmByCau ?? {}}>
+      <AnhPhaiCtx.Provider value={anhPhaiCua(tl.cau_hinh, tl.nhanh)}><DeThiDocInner {...props} /></AnhPhaiCtx.Provider>
+    </AnhMmCtx.Provider>
+  )
 }
 function DeThiDocInner({ full, gv, onlyPhanId }: { full: TaiLieuFull; gv: boolean; onlyPhanId?: string }) {
   const ch = full.taiLieu.cau_hinh ?? {}

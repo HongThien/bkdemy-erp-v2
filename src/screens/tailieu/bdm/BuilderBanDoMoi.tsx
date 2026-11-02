@@ -5,7 +5,7 @@
 // In / xem trước: PrintView chung (tự nhận ban_do='moi', in theo A3). Gán lớp + BTVN/ôn tập: GanLopBdm (riêng, không
 // dùng TrichPanel/OnTapConfirmScreen của builder cũ).
 import { useEffect, useMemo, useState } from 'react'
-import { addBuoi, listBuoiTaiLieu, listTaiLieu, updatePhan, updateTaiLieu, fetchCausCuaTaiLieu, copyBuoiBdm, DEFAULT_BTVN_LINES, type CauHinh, type TaiLieu } from '../../../lib/tailieu'
+import { addBuoi, listBuoiTaiLieu, listTaiLieu, updatePhan, updateTaiLieu, fetchCausCuaTaiLieu, copyBuoiBdm, DEFAULT_BTVN_LINES, anhPhaiCua, type CauHinh, type TaiLieu } from '../../../lib/tailieu'
 import { listLop, type Lop } from '../../../lib/nhansu'
 import {
   noiDung, datBuoi, datCau, goiY, datCoPhan, xoaBuoi, cauCuaBuoi, loiDoc, SO_LUYEN_MAC_DINH, SO_BTVN_MAC_DINH,
@@ -172,7 +172,7 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
   if (!nd || !tl) return <div className="p-8 text-sm text-slate-400">Đang tải…</div>
 
   return (
-    <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: onAnhMm, baChe: false }}>
+    <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: onAnhMm, baChe: false, phai: anhPhaiCua(ch, nd.tai_lieu.nhanh), setPhai: (m, v) => saveCh({ anhPhaiByCau: { ...(ch.anhPhaiByCau ?? {}), [m]: v } }) }}>
       <div className="flex h-full flex-col bg-[#fafafb]">
         <div className="flex items-center gap-3 border-b border-slate-200 bg-white px-5 py-2.5">
           {/* Như builder cũ: điểm "xong 1 lượt sửa" DUY NHẤT là lúc đóng ⇒ xếp hàng làm link PDF ở đây (không mỗi lần tự lưu). */}

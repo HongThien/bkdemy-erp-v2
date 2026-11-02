@@ -4,7 +4,7 @@
 // ⭐ laGiaoTrinh (Thùy 27/10 — giáo trình Hình bản đồ mới, mig 202610271757): CÙNG builder, đơn vị "Buổi", mỗi buổi thêm phần HỌC
 // (bài học → lý thuyết + bài luyện + BTVN) trước phần LUYỆN (mô hình); có Gán lớp; in bằng PrintView chung (Học + Luyện).
 import { useEffect, useMemo, useState } from 'react'
-import { addBuoi, updatePhan, updateTaiLieu, type CauHinh } from '../../../lib/tailieu'
+import { addBuoi, updatePhan, updateTaiLieu, anhPhaiCua, type CauHinh } from '../../../lib/tailieu'
 import { xoaBuoi, loiDoc, datCoPhan } from '../../../lib/tailieuBdm'
 import { cdhNoiDung, cdhDatMoHinh, cdhDatBai, cdhCayChon, hhCayChon, hhCau, hhDatBai, hhDatCau, hhGoiY, type CdhNoiDung, type CdhPhan, type CdhMoHinh, type CdhChonMoHinh, type CdhChonNhom, type CdhChonChuDe, type HhBai, type HhChonBai, type HhCauKho } from '../../../lib/chuyenDeHinh'
 import { khoCuaMoHinh, demKhoMoHinh, type ChuoiKho, type DemKho } from '../../../lib/kho/hinhCay'
@@ -94,7 +94,7 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
   const khoi = nd.tai_lieu.khoi
 
   return (
-    <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: onAnhMm, baChe: true }}>
+    <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: onAnhMm, baChe: true, phai: anhPhaiCua(ch, nd.tai_lieu.nhanh), setPhai: (m, v) => saveCh({ anhPhaiByCau: { ...(ch.anhPhaiByCau ?? {}), [m]: v } }) }}>
     <div className="flex h-full flex-col bg-[#fafafb]">
       <div className="flex flex-wrap items-center gap-3 border-b border-slate-200 bg-white px-5 py-2.5">
         <button onClick={onClose} className="text-[13px] font-medium text-slate-400 hover:text-indigo-600">← Thư viện</button>

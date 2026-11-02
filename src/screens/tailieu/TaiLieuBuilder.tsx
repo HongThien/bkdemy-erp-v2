@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import {
   getTaiLieuFull, updateTaiLieu, updatePhan, setCauOfPhan,
   addBuoi, deleteBuoi, setDangOfBuoi, reorderDangInBuoi, autoSuggestByLoai, autoSuggestBtvn, trichXuatBuoi, listTrichXuat, listGiaoTrinhLop, renumberBuoiLop, tieuDeBuoiLop, khoCuaMon, setPhanHienLt, listBuoiTaiLieu,
-  DEFAULT_LUYEN_COUNTS, DEFAULT_BTVN_COUNTS, DEFAULT_BTVN_LINES,
+  DEFAULT_LUYEN_COUNTS, DEFAULT_BTVN_COUNTS, DEFAULT_BTVN_LINES, anhPhaiCua,
   type TaiLieuFull, type PhanResolved, type CauHinh, type TrichState, type BuoiLop,
 } from '../../lib/tailieu'
 import { groupMap, khoiChayBanDoMoi, LOAI_CAU, type CauHoi, type Tier1Node } from '../../lib/kho/api'
@@ -171,7 +171,7 @@ export default function TaiLieuBuilder({ id, onClose }: { id: string; onClose: (
   const coCheDoHinh = true                           // 12/10 (Thùy): MỌI nhánh đều có tuỳ chọn hình (hiện/ẩn + %); Hình học Bài có thêm 'ô trống' (CEO 21/09)
 
   return (
-    <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: onAnhMm, baChe: nhanh === 'hinh_hoc' }}>
+    <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: onAnhMm, baChe: nhanh === 'hinh_hoc', phai: anhPhaiCua(ch, nhanh), setPhai: (m, v) => saveCh({ anhPhaiByCau: { ...(ch.anhPhaiByCau ?? {}), [m]: v } }) }}>
     <div className="flex h-full flex-col bg-[#fafafb]">
       <CanhBaoGiaoTrinhMoi khoi={full.taiLieu.khoi} mon={mon} />
       {/* Thanh trên */}
@@ -449,7 +449,7 @@ export function AnhXem({ ma, url, cheDo }: { ma: string; url: string; cheDo?: Ch
 //   Để trống = tự động (vừa cột, tối đa 60mm — như cũ). Lưu cả % (hiển thị) lẫn mm (in, không phải đoán lúc dựng trang).
 //   Ảnh cầm thước (hinh-doan-thang-thuoc.mjs, 600 dpi) bấm 100% = ĐÚNG cm. Ghi khi rời ô / Enter, không ghi từng phím.
 export function AnhMmCtl({ ma, url }: { ma: string; url: string }) {
-  const { mm, pct, set } = useContext(AnhMmEditCtx)
+  const { mm, pct, set, phai, setPhai } = useContext(AnhMmEditCtx)
   const [goc, setGoc] = useState<number | null>(null)
   const [txt, setTxt] = useState('')
   const [bao, setBao] = useState('')
@@ -478,6 +478,12 @@ export function AnhMmCtl({ ma, url }: { ma: string; url: string }) {
       {mmHt ? <span className="text-slate-400" title="Bề rộng ảnh khi in">={mmHt}mm</span> : null}
       {mmHt ? <button onClick={() => set(ma, null)} className="text-slate-400 hover:text-rose-600" title="Về tự động">↺</button> : null}
       {bao && <span className="text-rose-500">{bao}</span>}
+      {/* ⭐ 02/11 (Thùy): vị trí hình khi IN — nửa phải (đề + ý bên trái, đỡ tốn giấy) / dưới đề. Mặc định theo nhánh (anhPhaiCua). */}
+      {setPhai && phai && (
+        <button onClick={() => setPhai(ma, !phai(ma))} title={phai(ma) ? 'Hình đang in NỬA PHẢI, đề bên trái — bấm để đưa hình xuống dưới đề' : 'Hình đang in DƯỚI đề, cả hàng — bấm để đưa hình sang nửa phải'}
+          className={`ml-1 rounded border px-1.5 py-0.5 text-[10px] font-medium ${phai(ma) ? 'border-violet-300 bg-violet-50 text-violet-700' : 'border-slate-200 bg-white text-slate-500 hover:border-violet-300'}`}>
+          {phai(ma) ? '◨ hình phải' : '⬓ hình dưới'}</button>
+      )}
     </span>
   )
 }

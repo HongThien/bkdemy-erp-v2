@@ -1,7 +1,7 @@
 import { Children, Fragment, useContext, useEffect, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
-import { getTaiLieuFull, setTaiLieuFileUrl, DEFAULT_BTVN_LINES, kieuCols, type TaiLieuFull, type PhanResolved } from '../../lib/tailieu'
+import { getTaiLieuFull, setTaiLieuFileUrl, DEFAULT_BTVN_LINES, kieuCols, anhPhaiCua, type TaiLieuFull, type PhanResolved } from '../../lib/tailieu'
 import type { CauHinh } from '../../lib/tailieu'
 import { type CheDoHinh } from '../../lib/kho/hinhGiaoTrinh'
 import { listLop } from '../../lib/nhansu'
@@ -12,7 +12,7 @@ import { MathText, LT_CORE_CSS, LyThuyetBlockView, BaiTapHeader } from '../kho/u
 import { parseLyThuyetBlocks, laDauNhomBaiTap } from '../../lib/lythuyetBlocks'
 import { uploadKhoFile } from '../../lib/kho/api'
 import type { CauHoi } from '../../lib/kho/api'
-import { AnhMmCtx } from './anhMmCtx'
+import { AnhMmCtx, AnhPhaiCtx } from './anhMmCtx'
 import { noiDung as noiDungBdm, nguonCau, type NoiDung } from '../../lib/tailieuBdm'
 import { cdhNoiDung, type CdhNoiDung, type CdhPhan } from '../../lib/chuyenDeHinh'
 import { BaiHinhIn, CDH_CSS } from './bdm/HinhLuyenIn'
@@ -465,7 +465,12 @@ type DocProps = {
 }
 // Bọc context cỡ ảnh IN theo câu (cau_hinh.anhMmByCau — Thùy 12/10) để mọi <AnhDe> bên trong đọc được mà khỏi khoan prop.
 function Doc(props: DocProps) {
-  return <AnhMmCtx.Provider value={props.full.taiLieu.cau_hinh?.anhMmByCau ?? {}}><DocInner {...props} /></AnhMmCtx.Provider>
+  const tl = props.full.taiLieu
+  return (
+    <AnhMmCtx.Provider value={tl.cau_hinh?.anhMmByCau ?? {}}>
+      <AnhPhaiCtx.Provider value={anhPhaiCua(tl.cau_hinh, tl.nhanh)}><DocInner {...props} /></AnhPhaiCtx.Provider>
+    </AnhMmCtx.Provider>
+  )
 }
 
 function DocInner(props: DocProps) {
@@ -989,6 +994,13 @@ export function WriteLines({ n }: { n: number }) {
 }
 /** Ảnh đề của câu. Có cỡ IN riêng (cau_hinh.anhMmByCau) ⇒ width đúng mm, cao theo tỉ lệ, KHÔNG bị max-height 60mm / max-width cột
  *  co lại (ảnh "cầm thước đo" phải in đúng cm). Không có ⇒ như cũ (.pv-img tự co). */
+/** Đề (+ ý con) và hình của 1 câu. Hình đặt NỬA PHẢI (AnhPhaiCtx, Thùy 02/11 "đỡ tốn giấy") ⇒ 2 cột: đề + ý bên trái, hình bên
+ *  phải; không ⇒ đề → hình → ý chồng dọc như cũ. Div/flex (không grid/column-count — paged.js treo, xem CauColumns). */
+function DeVaHinh({ ma, de, anh, y }: { ma: string; de: React.ReactNode; anh: React.ReactNode; y: React.ReactNode }) {
+  const phai = useContext(AnhPhaiCtx)(ma)
+  if (!anh || !phai) return <>{de}{anh}{y}</>
+  return <div className="pv-hp"><div className="pv-hp-l">{de}{y}</div><div className="pv-hp-r">{anh}</div></div>
+}
 export function AnhDe({ ma, src }: { ma: string; src: string }) {
   const mm = useContext(AnhMmCtx)[ma]
   if (!(mm > 0)) return <img src={src} alt="" className="pv-img" />
@@ -1018,9 +1030,9 @@ export function cauItemParts({ no, c, gv, lines = 0, cheDoHinh, tienTo = 'Câu',
     content: (<>
       {/* THỨ TỰ: đề → HÌNH → ý con → phương án/Đ-S → lời giải GV (Thùy chốt) */}
       {nguon && <div className="pv-nguon" style={{ breakAfter: 'avoid' }}><span className="pv-cau-no">{tienTo} {no}.</span> <i style={{ color: '#5b6470' }}>({nguon})</i></div>}
-      <div className="pv-math"><MathText prefix={nguon ? '' : nhan ? `<span class="pv-cau-no">${nhan}</span> ` : `<span class="pv-cau-no">${tienTo} ${no}.</span> `}>{md ? c.noi_dung : stem}</MathText></div>
-      {anhBlock}
-      {!md && grid && <OptGrid grid={grid} emb={emb} />}
+      <DeVaHinh ma={c.ma_cau} anh={anhBlock}
+        de={<div className="pv-math"><MathText prefix={nguon ? '' : nhan ? `<span class="pv-cau-no">${nhan}</span> ` : `<span class="pv-cau-no">${tienTo} ${no}.</span> `}>{md ? c.noi_dung : stem}</MathText></div>}
+        y={!md && grid ? <OptGrid grid={grid} emb={emb} /> : null} />
       {md && (
         <ol className="pv-ds">
           {md.map((m, i) => (
@@ -1260,6 +1272,12 @@ const CONTENT_CSS = `
 .pv-tlnt-q{flex:1;min-width:0;padding:7px 10px 7px 0;display:flex;flex-direction:column;justify-content:center}
 .pv-tlnt-a{width:42mm;flex-shrink:0;border-left:1.4px solid #475569}
 .pv-img{display:block;margin:7px auto;max-height:60mm;max-width:100%}
+/* Hình nửa phải (DeVaHinh): đề + ý trái, hình phải ≤ 45% bề ngang. Cỡ mm đặt tay vẫn bị chặn trong nửa phải (không tràn sang chữ). */
+.pv-hp{display:flex;align-items:flex-start;gap:5mm;break-inside:avoid}
+.pv-hp-l{flex:1 1 0;min-width:0}
+.pv-hp-r{flex:0 0 45%;max-width:45%;display:flex;justify-content:center}
+.pv-hp-r .pv-img{margin:4px 0 0;max-width:100% !important}
+.pv-hp-r .pv-vebox{width:100%;margin:4px 0 0}
 /* ⭐ 21/09 (CEO): ô "Vẽ hình" — chế độ o_trong (bản HS) chừa khung cho HS tự vẽ; bản GV vẫn dùng .pv-img
    để hiện ảnh đối chiếu. Soi khung tương đương .pv-img (max-height 60mm) để layout không nhảy.
    ⭐ 27/09 (CEO): đổi thành LƯỚI Ô VUÔNG kiểu vở caro (5mm/ô), bỏ chữ "Vẽ hình" — HS vẽ hình học dựa lưới. */

@@ -268,7 +268,7 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
     const baseCaus = sortETCaus(chon.map((r) => cau[r.maCau!]), ch)
     const ten = lop && ngay ? `ET ${lop.ten_lop} · ${ngay.split('-').reverse().join('/')}` : (et?.ten ?? 'ET')
     return {
-      taiLieu: { ...(et ?? {}), id: et?.id ?? 'preview', ten, loai: 'et', mon: 'Toán', nhanh: null, khoi, lop_id: lopId, ngay, cau_hinh: ch, ban_do: 'moi' } as any,
+      taiLieu: { ...(et ?? {}), id: et?.id ?? 'preview', ten, loai: 'et', mon: 'Toán', nhanh: null, khoi, lop_id: lopId, ngay, cau_hinh: { ...ch, nhanhByCau: { ...(ch.nhanhByCau ?? {}), ...nhRef.current } }, ban_do: 'moi' } as any,
       phans: [{ id: 'custom', tai_lieu_id: 'preview', thu_tu: 0, loai_phan: 'custom', ref_ma: null, tieu_de: 'ET', noi_dung: null, hien_lt: false, caus: baseCaus } as any],
     } as TaiLieuFull
   }, [rows, cau, ch, lop, ngay, khoi, lopId, et])
@@ -466,7 +466,8 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
                         )}
                         {c && c.anh_de && (
                           // 3 chế độ (có ô trống cho HS vẽ) chỉ ở câu Hình học, như builder; Đại / HGT: hiện ↔ bỏ
-                          <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: setAnhMm, baChe: info?.nh === 'hinh_hoc' }}>
+                          <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: setAnhMm, baChe: info?.nh === 'hinh_hoc',
+                            phai: (m) => ch.anhPhaiByCau?.[m] ?? nhRef.current[m] === 'hinh_hoc', setPhai: (m, v) => setCh((x) => ({ ...x, anhPhaiByCau: { ...(x.anhPhaiByCau ?? {}), [m]: v } })) }}>
                             <CheDoHinhBtn cur={ch.hinhCheDoByCau?.[c.ma_cau] ?? 'hien'} onChange={(v) => setCheDo(c.ma_cau, v)} />
                             {(ch.hinhCheDoByCau?.[c.ma_cau] ?? 'hien') !== 'khong' && <AnhMmCtl ma={c.ma_cau} url={c.anh_de} />}
                           </AnhMmEditCtx.Provider>
