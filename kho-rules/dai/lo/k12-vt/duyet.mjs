@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url'
 import { createRequire } from 'node:module'
 import { CAY, CHU_DE, THONG_KE } from './cau-truc.mjs'
 import { docTep } from './kiem.mjs'
+import { htmlQuyet, cssQuyet } from '../quyet.mjs'
 import { TEN_KHO } from './phan-loai-dang.mjs'
 import { veHinh } from './ve.mjs'
 
@@ -105,6 +106,170 @@ const CAU_HOI = [
   ["Khi chị chốt mới ghi DB","Như chương Hàm số: bản này chưa ghi DB. Khi chị chốt tôi ghi cây + lý thuyết + ví dụ + độ khó + nguồn vào DB (cần thêm cột độ khó và nguồn ở dạng bài), rồi gán lại câu theo bản đồ mới; 6 dạng chị đã tạo sẽ được đối chiếu để không trùng."],
 ]
 
+const QUYET = [
+ {
+  "ma": "V1",
+  "tieu_de": "Phạm vi chương",
+  "mo_ta": "Hiện làm cả chương \"Vectơ và hệ trục toạ độ trong không gian\" = 3 bài (Vectơ trong KG · Toạ độ của vectơ · Biểu thức toạ độ các phép toán) → 3 chuyên đề, 15 nhóm, 50 dạng.",
+  "chon": [
+   [
+    "Cả 3 bài",
+    "",
+    true
+   ],
+   [
+    "Chỉ Bài 1 (Vectơ trong không gian)",
+    "Bỏ chuyên đề 2 và 3.",
+    false
+   ]
+  ]
+ },
+ {
+  "ma": "V2",
+  "tieu_de": "3 dạng tôi thêm sau khi kiểm độ phủ (mỗi dạng ≥10 câu sách)",
+  "mo_ta": "P1.2.7 Cùng phương, thẳng hàng, tìm tỉ số trên hình khối · P1.4.6 Chứng minh vuông góc và tính góc giữa hai đường thẳng bằng tích vô hướng · P3.2.5 Tìm điểm thoả đẳng thức vectơ (chồng một phần với P3.6.1).",
+  "chon": [
+   [
+    "Giữ cả 3",
+    "",
+    true
+   ],
+   [
+    "Giữ P1.2.7, P1.4.6; bỏ P3.2.5",
+    "P3.2.5 chồng với P3.6.1 (cùng ΣkMA=0).",
+    false
+   ],
+   [
+    "Bỏ cả 3",
+    "",
+    false
+   ]
+  ]
+ },
+ {
+  "ma": "V3",
+  "tieu_de": "3 kiểu nhỏ chưa thêm: (a) chân đường cao / chân phân giác trong; (b) hình thang, hình vuông cho diện tích tìm đỉnh; (c) tâm ngoại tiếp, nội tiếp, trực tâm bằng toạ độ",
+  "mo_ta": "(c) gần kiến thức lớp 10, ngoài chương.",
+  "chon": [
+   [
+    "Thêm (a) và (b), không thêm (c)",
+    "",
+    true
+   ],
+   [
+    "Thêm cả 3",
+    "",
+    false
+   ],
+   [
+    "Không thêm",
+    "",
+    false
+   ]
+  ]
+ },
+ {
+  "ma": "V4",
+  "tieu_de": "P3.6.3 ví dụ 2 thực chất là quỹ tích mặt cầu (không gọi tên mặt cầu)",
+  "mo_ta": "Mặt cầu thuộc chương sau.",
+  "chon": [
+   [
+    "Giữ như hiện tại",
+    "",
+    false
+   ],
+   [
+    "Thay bằng bài không dính mặt cầu",
+    "",
+    true
+   ]
+  ]
+ },
+ {
+  "ma": "V5",
+  "tieu_de": "Dạng P1.2.4 \"Chứng minh đẳng thức vectơ\" (sách 13+ câu, đề thi không ra)",
+  "mo_ta": "Chỉ có ở sách.",
+  "chon": [
+   [
+    "Giữ",
+    "",
+    true
+   ],
+   [
+    "Gộp vào dạng khác",
+    "Ghi dạng nào ở ô ghi chú.",
+    false
+   ],
+   [
+    "Bỏ",
+    "",
+    false
+   ]
+  ]
+ },
+ {
+  "ma": "V6",
+  "tieu_de": "Dạng P1.5.2 \"Công của lực\" (đề thi không có câu công)",
+  "mo_ta": "Chỉ có ở sách.",
+  "chon": [
+   [
+    "Giữ",
+    "",
+    true
+   ],
+   [
+    "Gộp vào dạng khác",
+    "Ghi dạng nào ở ô ghi chú.",
+    false
+   ],
+   [
+    "Bỏ",
+    "",
+    false
+   ]
+  ]
+ },
+ {
+  "ma": "V7",
+  "tieu_de": "Hình 3D trong ví dụ (hộp, lăng trụ, chóp, hệ Oxyz)",
+  "mo_ta": "Máy vẽ hiện chỉ vẽ đồ thị và bảng biến thiên; các ví dụ đang mô tả hình bằng lời.",
+  "chon": [
+   [
+    "Chưa cần — mô tả bằng lời",
+    "Ghi DB trước, làm hình sau.",
+    true
+   ],
+   [
+    "Làm module vẽ hình khối rồi mới ghi",
+    "Chậm hơn nhưng ví dụ có hình.",
+    false
+   ]
+  ]
+ },
+ {
+  "ma": "V8",
+  "tieu_de": "Độ khó (muc_do 1–5) của từng dạng",
+  "mo_ta": "Là đề xuất theo kiểu bài, chưa đo bằng câu thật. (Cột \"nguồn dạng\" không ghi vào DB.)",
+  "chon": [
+   [
+    "Ghi như đề xuất",
+    "Rồi chỉnh sau khi đo bằng câu thật.",
+    true
+   ],
+   [
+    "Chị chỉnh trước khi ghi",
+    "",
+    false
+   ],
+   [
+    "Chưa ghi độ khó",
+    "",
+    false
+   ]
+  ]
+ }
+]
+
 const page = `<title>K12 Vectơ — bản đồ mới 4 tầng (đề xuất)</title>
 <style>
 :root{--nen:#f5f6f8;--the:#fff;--chu:#1f2937;--mo:#6b7280;--vien:#e3e6ea;--tc:#2D9CDB;--pp:#6b7280;--cy:#d97706;--vd:#b23a72;--dn:#c89b52;--dl:#7c5cbf;--nx:#0f9d8a;--nen-mota:#f3f4f6;--moi:#047857;--nen-moi:#ecfdf5;--thieu:#b45309;--bb:#1d4ed8;--nc:#9333ea;--lk:#2563eb}
@@ -141,6 +306,7 @@ details.cauhoi{background:var(--the);border:1px solid var(--vien);border-radius:
 math{font-size:1.06em}
 .the.kho{color:var(--mo)}.the.kho.k1,.the.kho.k2{color:#047857}.the.kho.k4,.the.kho.k5{color:#b45309}.the.ng.chi_sach{color:#7c5cbf}.the.ng.ca_hai{color:#0f9d8a}.the.ng.chua{color:var(--thieu)}
 td.cot-so{text-align:center;white-space:nowrap}td.cot-ng{white-space:nowrap;font-size:12.5px}
+${cssQuyet}
 </style>
 <div class="bo">
 <aside><strong>Mục lục</strong><ul><li><a href="#tong-quan">Tổng quan cây 4 tầng</a></li><li><a href="#quyet">Cần chị quyết</a></li><li><a href="#xem">Điểm cần xem khi soạn</a></li>${toc.join('')}</ul></aside>
@@ -151,7 +317,9 @@ td.cot-so{text-align:center;white-space:nowrap}td.cot-ng{white-space:nowrap;font
 <h2 id="tong-quan">Tổng quan cây 4 tầng</h2>
 ${cauTruc}
 <h2 id="quyet">Cần chị quyết</h2>
-${CAU_HOI.map(([t, m]) => `<details class="cauhoi" open><summary>${esc(t)}</summary><p>${dong(m)}</p></details>`).join('')}
+${htmlQuyet(QUYET, 'k12-vt')}
+<h3>Ghi chú các lần sửa</h3>
+${CAU_HOI.map(([t, m]) => `<details class="cauhoi"><summary>${esc(t)}</summary><p>${dong(m)}</p></details>`).join('')}
 <h2 id="xem">Điểm cần xem khi soạn</h2>
 ${xem || '<p class="dan">Không có.</p>'}
 ${html}

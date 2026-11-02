@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url'
 import { createRequire } from 'node:module'
 import { CAY, CHU_DE, THONG_KE } from './cau-truc.mjs'
 import { docTep } from './kiem.mjs'
+import { htmlQuyet, cssQuyet } from '../quyet.mjs'
 import { TEN_KHO } from './phan-loai-dang.mjs'
 import { veHinh } from './ve.mjs'
 
@@ -103,6 +104,204 @@ const CAU_HOI = [
   ["Phần 3 và các nhóm \"nâng cao\"","Phần 3 (ôn từ lớp 11), P2.4–P2.7 (hàm hợp/hàm ẩn), tốc độ liên quan (P4.7) đang đánh dấu nâng cao (không chặn \"xong chuyên đề\"). Phần 3 có nên bắt buộc không?"],
 ]
 
+const QUYET = [
+ {
+  "ma": "H1",
+  "tieu_de": "Số nghiệm của f(x)=m (từ đồ thị hàm bậc ba) đặt ở đâu",
+  "mo_ta": "Hiện ở P2.1 (bậc ba). Nó cũng là bài tương giao của đồ thị với đường y=m.",
+  "chon": [
+   [
+    "Giữ ở P2.1 (bậc ba)",
+    "Như bản đang trình bày.",
+    true
+   ],
+   [
+    "Chuyển sang P3.1 (tương giao)",
+    "Coi là tương giao với y=m, thuộc Phần 3 (nâng cao).",
+    false
+   ]
+  ]
+ },
+ {
+  "ma": "H2",
+  "tieu_de": "Dạng \"tìm m để đồ thị có đúng k tiệm cận\" (hàm mẫu bậc hai, vd y=(2x+1)/(x²−2x+m))",
+  "mo_ta": "Không thuộc 3 hàm của Phần 2, nên đang để ở nhóm P1.7 (tiệm cận đứng và ngang).",
+  "chon": [
+   [
+    "Giữ ở P1.7",
+    "",
+    true
+   ],
+   [
+    "Bỏ hẳn",
+    "Dạng này không vào bản đồ.",
+    false
+   ],
+   [
+    "Đặt chỗ khác",
+    "Ghi chỗ nào ở ô ghi chú.",
+    false
+   ]
+  ]
+ },
+ {
+  "ma": "H3",
+  "tieu_de": "Quy ước khi ad−bc=0 (hàm nhất biến suy biến thành hằng): đường y=a/c có tính là tiệm cận ngang không?",
+  "mo_ta": "Theo định nghĩa bằng giới hạn thì có; nhiều tài liệu ghi \"không có tiệm cận\". Lý thuyết hiện viết trung tính (chỉ khẳng định không có tiệm cận đứng) và ví dụ không dùng ca này.",
+  "chon": [
+   [
+    "Không tính — loại ca suy biến",
+    "Đề cho hàm hằng thì kết luận \"không có tiệm cận\".",
+    true
+   ],
+   [
+    "Có tính (theo định nghĩa giới hạn)",
+    "y=a/c là tiệm cận ngang của hàm hằng.",
+    false
+   ],
+   [
+    "Cứ để trung bình như hiện tại",
+    "Không nêu, không dùng ví dụ.",
+    false
+   ]
+  ]
+ },
+ {
+  "ma": "H4",
+  "tieu_de": "Nhóm \"nâng cao\" — Phần 3 (tương giao · tiếp tuyến · khoảng cách)",
+  "mo_ta": "Đang bat_buoc=false (không chặn \"xong chuyên đề\").",
+  "chon": [
+   [
+    "Nâng cao",
+    "",
+    true
+   ],
+   [
+    "Bắt buộc",
+    "Ôn từ lớp 11 nên mọi HS phải qua.",
+    false
+   ]
+  ]
+ },
+ {
+  "ma": "H5",
+  "tieu_de": "Nhóm \"nâng cao\" — 4 nhóm hàm hợp / hàm ẩn (P2.4–P2.7)",
+  "mo_ta": "Đang bat_buoc=false.",
+  "chon": [
+   [
+    "Nâng cao",
+    "",
+    true
+   ],
+   [
+    "Bắt buộc",
+    "",
+    false
+   ]
+  ]
+ },
+ {
+  "ma": "H6",
+  "tieu_de": "Nhóm \"tốc độ liên quan giữa hai đại lượng\" (P4.7)",
+  "mo_ta": "Chỉ sách PNL có (15 câu); NBV, Từ Tâm không có; kho hiện 0 câu.",
+  "chon": [
+   [
+    "Giữ, nâng cao",
+    "",
+    true
+   ],
+   [
+    "Giữ, bắt buộc",
+    "",
+    false
+   ],
+   [
+    "Bỏ",
+    "Không đưa vào bản đồ.",
+    false
+   ]
+  ]
+ },
+ {
+  "ma": "H7",
+  "tieu_de": "Dạng bậc ba \"tìm tham số\" (M2.1.1): còn nhắc \"hai cực trị đối xứng / cách đều một đường thẳng\"",
+  "mo_ta": "Quan hệ AB với đường thẳng/điểm khác đã có ở nhóm \"đường thẳng qua hai điểm cực trị\" (H2.5.3).",
+  "chon": [
+   [
+    "Bỏ khỏi M2.1.1",
+    "Tránh trùng với H2.5.3.",
+    true
+   ],
+   [
+    "Giữ ở cả hai",
+    "",
+    false
+   ]
+  ]
+ },
+ {
+  "ma": "H8",
+  "tieu_de": "Dạng nhất biến \"tìm tham số\" (M2.3.1 và M2.2.1): giữ các giá trị m làm tử chia hết cho mẫu / m=0 (hàm suy biến)?",
+  "mo_ta": "Đúng toán nhưng một số tài liệu loại các giá trị này (vd M2.2.1 ví dụ 5: y=(x+2)/(mx−1) với m=0 thành hàm bậc nhất, hiện nhận).",
+  "chon": [
+   [
+    "Giữ như hiện tại",
+    "Nhận các giá trị suy biến khi đề không loại.",
+    true
+   ],
+   [
+    "Loại các giá trị đó",
+    "Theo quy ước \"hàm nhất biến thì ad−bc≠0\".",
+    false
+   ]
+  ]
+ },
+ {
+  "ma": "H9",
+  "tieu_de": "Ví dụ còn thiếu: (a) nhận diện hàm bậc hai/bậc nhất đọc từ bảng biến thiên; (b) \"tâm đối xứng thuộc đường cho trước\" của hàm nhất biến",
+  "mo_ta": "Mô tả dạng có nhắc nhưng chưa có ví dụ.",
+  "chon": [
+   [
+    "Thêm cả hai",
+    "",
+    true
+   ],
+   [
+    "Chỉ thêm (a)",
+    "",
+    false
+   ],
+   [
+    "Không thêm",
+    "",
+    false
+   ]
+  ]
+ },
+ {
+  "ma": "H10",
+  "tieu_de": "Độ khó (muc_do 1–5) của từng dạng",
+  "mo_ta": "Là đề xuất theo kiểu bài, chưa đo bằng câu thật. Thẻ độ khó hiện ở từng dạng bên dưới. (Cột \"nguồn dạng\" không ghi vào DB.)",
+  "chon": [
+   [
+    "Ghi như đề xuất",
+    "Rồi chỉnh sau khi đo bằng câu thật.",
+    true
+   ],
+   [
+    "Chị chỉnh trước khi ghi",
+    "Ghi các dạng cần đổi ở ô ghi chú.",
+    false
+   ],
+   [
+    "Chưa ghi độ khó",
+    "Để trống muc_do.",
+    false
+   ]
+  ]
+ }
+]
+
 const page = `<title>K12 Hàm số — bản đồ mới 4 tầng (đề xuất)</title>
 <style>
 :root{--nen:#f5f6f8;--the:#fff;--chu:#1f2937;--mo:#6b7280;--vien:#e3e6ea;--tc:#2D9CDB;--pp:#6b7280;--cy:#d97706;--vd:#b23a72;--dn:#c89b52;--dl:#7c5cbf;--nx:#0f9d8a;--nen-mota:#f3f4f6;--moi:#047857;--nen-moi:#ecfdf5;--thieu:#b45309;--bb:#1d4ed8;--nc:#9333ea;--lk:#2563eb}
@@ -139,6 +338,7 @@ details.cauhoi{background:var(--the);border:1px solid var(--vien);border-radius:
 math{font-size:1.06em}
 .the.kho{color:var(--mo)}.the.kho.k1,.the.kho.k2{color:#047857}.the.kho.k4,.the.kho.k5{color:#b45309}.the.ng.chi_sach{color:#7c5cbf}.the.ng.ca_hai{color:#0f9d8a}.the.ng.chua{color:var(--thieu)}
 td.cot-so{text-align:center;white-space:nowrap}td.cot-ng{white-space:nowrap;font-size:12.5px}
+${cssQuyet}
 </style>
 <div class="bo">
 <aside><strong>Mục lục</strong><ul><li><a href="#tong-quan">Tổng quan cây 4 tầng</a></li><li><a href="#quyet">Cần chị quyết</a></li><li><a href="#xem">Điểm cần xem khi soạn</a></li>${toc.join('')}</ul></aside>
@@ -149,7 +349,9 @@ td.cot-so{text-align:center;white-space:nowrap}td.cot-ng{white-space:nowrap;font
 <h2 id="tong-quan">Tổng quan cây 4 tầng</h2>
 ${cauTruc}
 <h2 id="quyet">Cần chị quyết</h2>
-${CAU_HOI.map(([t, m]) => `<details class="cauhoi" open><summary>${esc(t)}</summary><p>${dong(m)}</p></details>`).join('')}
+${htmlQuyet(QUYET, 'k12-hs')}
+<h3>Ghi chú các lần sửa</h3>
+${CAU_HOI.map(([t, m]) => `<details class="cauhoi"><summary>${esc(t)}</summary><p>${dong(m)}</p></details>`).join('')}
 <h2 id="xem">Điểm cần xem khi soạn</h2>
 ${xem || '<p class="dan">Không có.</p>'}
 ${html}
