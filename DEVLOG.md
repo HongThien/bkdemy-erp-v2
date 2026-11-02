@@ -78381,3 +78381,4 @@ Thùy nêu 4 việc, làm được 3:
 - Sau: gami_grades 0,34s · bai_test_cau 1,2s · tai_lieu_cau 0,54s · tu_luyen_dang_lan 0,93s · dtv_cau_log 0,81s · dai_bdm_log 0,42s · bai_lam_cau 0,16s · dai_cau_hoi 0,21s · khtn_cau_hoi 0,81s.
 - Còn lại: 17 bảng owner postgres (giải thưởng, sk_*, thong_bao_*, hinh_gt_*) ≤19 dòng ⇒ chưa cần. bai_test_cau còn 1,2s do policy HS (EXISTS + hs_o_lop theo dòng) — chấp nhận được.
 - **Luật cho policy mới:** hàm không phụ thuộc dòng trong policy PHẢI viết (select fn()) — không viết trần.
+- **Thùy đã chạy mig 202610291729 ở SQL Editor:** kiểm DB — hinh_gt_bai_loai_check đã có 'bai' ⇒ ghi sổ `--ghi-so`. "Gán buổi" MT có bài kho Hình luyện hết bị chặn. (Lỡ gõ `migrate.mjs --help`: kiểm sổ — không áp file nào, mục mới nhất 202611021935 do phiên khác áp 20:19.)
