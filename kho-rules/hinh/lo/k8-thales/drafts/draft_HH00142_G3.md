@@ -158,19 +158,46 @@ Verify (kiem_G3.mjs): 6 bộ toạ độ ngẫu nhiên (tam giác bất kì, $t$
 Cho tam giác $MNP$ có trung tuyến $MA$. Gọi $G$ là trọng tâm tam giác $MNP$.
 Qua $G$ kẻ đường thẳng bất kì cắt $MN$, $MP$ tại $B$ và $C$.
 Qua $N$ và $P$ kẻ các đường thẳng song song với $BC$, cắt $MA$ lần lượt tại $E$ và $F$.
-Chứng minh $\dfrac{MC}{MP}=\dfrac{MG}{MF}$.
+a) Chứng minh $\dfrac{MC}{MP}=\dfrac{MG}{MF}$.
+b) Chứng minh $\dfrac{MN}{MB}+\dfrac{MP}{MC}=3$.
 **loi_giai:**
 **Phần 1. Hướng dẫn**
-$\dfrac{MC}{MP}=\dfrac{MG}{MF}$
+a) $\dfrac{MC}{MP}=\dfrac{MG}{MF}$
 $\Uparrow$ (định lí Thalès cho $\triangle MPF$ có $C\in MP$, $G\in MF$)
 $C\in MP$ ✓ (gt) · $G\in MF$ ✓ ($G$ thuộc trung tuyến $MA$, $F$ thuộc $MA$) · $CG\parallel PF$
 **Nhánh ①:** $CG\parallel PF$
 $\Uparrow$ ($C$, $G$ thuộc đường thẳng $BC$)
 $PF\parallel BC$ ✓ (gt)
 
+b) $\dfrac{MN}{MB}+\dfrac{MP}{MC}=3$
+$\Uparrow$ (thay hai tỉ số bằng hai tỉ số bằng chúng)
+$\dfrac{MN}{MB}=\dfrac{ME}{MG}$ · $\dfrac{MP}{MC}=\dfrac{MF}{MG}$ · $\dfrac{ME+MF}{MG}=3$
+**Nhánh ①:** $\dfrac{MN}{MB}=\dfrac{ME}{MG}$
+$\Uparrow$ (định lí Thalès cho $\triangle MNE$ có $B\in MN$, $G\in ME$)
+$BG\parallel NE$ ($B$, $G$ thuộc $BC$, $NE\parallel BC$ ✓) · $G\in ME$ (nhánh ③.3)
+**Nhánh ②:** $\dfrac{MP}{MC}=\dfrac{MF}{MG}$
+$\Uparrow$ (nghịch đảo hai vế của đẳng thức ở ý a)
+$\dfrac{MC}{MP}=\dfrac{MG}{MF}$ (ý a) ✓
+**Nhánh ③:** $\dfrac{ME+MF}{MG}=3$
+$\Uparrow$ ($MG=\dfrac23MA$: tính chất trọng tâm)
+$ME+MF=2MA$
+$\Uparrow$ ($A$ là trung điểm $EF$, $E$ và $F$ cùng thuộc tia $MA$)
+$AE=AF$ · $A$ nằm giữa $E$, $F$ · $E$, $F$ thuộc tia $MA$
+**Nhánh ③.1:** $AE=AF$
+$\Uparrow$ (hai cạnh tương ứng)
+$\triangle ANE=\triangle APF$
+$\Uparrow$ (g.c.g)
+$\widehat{ANE}=\widehat{APF}$ (so le trong, $NE\parallel PF$) · $AN=AP$ ✓ (gt) · $\widehat{NAE}=\widehat{PAF}$ (đối đỉnh)
+**Nhánh ③.2:** $A$ nằm giữa $E$, $F$
+$\Uparrow$ ($A$ nằm giữa hai đường thẳng song song $NE$, $PF$)
+$A$ là trung điểm $NP$ ✓ (gt) · $NE\parallel PF$ ($NE\parallel BC$, $PF\parallel BC$) ✓
+**Nhánh ③.3:** $E$, $F$ thuộc tia $MA$
+$\Uparrow$ ($E$, $F$ cùng phía với $N$, $P$; $M$ khác phía đối với $BC$)
+$B$ nằm giữa $M$, $N$ ✓ (gt) · $C$ nằm giữa $M$, $P$ ✓ (gt) · $NE\parallel BC$, $PF\parallel BC$ ✓ (gt)
+
 **Phần 2. Trình bày**
-Vì $PF\parallel BC$ (gt)
-mà $C$, $G$ thuộc đường thẳng $BC$
+a) Vì $PF\parallel BC$ (gt)
+mà $C$, $G$ thuộc đường thẳng $BC$ (gt)
 nên $CG\parallel PF$.
 Xét $\triangle MPF$ có:
 $C\in MP$ (gt);
@@ -178,12 +205,63 @@ $G\in MF$ ($G$ thuộc trung tuyến $MA$, $F$ thuộc $MA$);
 $CG\parallel PF$ (cmt)
 nên $\dfrac{MC}{MP}=\dfrac{MG}{MF}$ (định lí Thalès).
 Vậy $\dfrac{MC}{MP}=\dfrac{MG}{MF}$.
+
+b) Vì $B$ nằm giữa $M$ và $N$ (gt)
+nên $M$, $N$ khác phía đối với đường thẳng $BC$.
+Vì $C$ nằm giữa $M$ và $P$ (gt)
+nên $M$, $P$ khác phía đối với đường thẳng $BC$.
+Do đó $N$, $P$ cùng phía, còn $M$ khác phía.
+Mà $NE\parallel BC$, $PF\parallel BC$ (gt)
+nên $E$, $F$ cũng cùng phía với $N$, $P$.
+Đường thẳng $MA$ cắt $BC$ tại $G$ (gt)
+nên $G$ nằm giữa $M$ và $E$, giữa $M$ và $F$.
+Do đó $E$, $F$ thuộc tia $MA$.
+Vì $NE\parallel BC$ (gt)
+mà $B$, $G$ thuộc đường thẳng $BC$ (gt)
+nên $BG\parallel NE$.
+Xét $\triangle MNE$ có:
+$B\in MN$ (gt);
+$G\in ME$ (cmt);
+$BG\parallel NE$ (cmt)
+nên $\dfrac{MN}{MB}=\dfrac{ME}{MG}$ (định lí Thalès). (1)
+Từ $\dfrac{MC}{MP}=\dfrac{MG}{MF}$ (ý a)
+suy ra $\dfrac{MP}{MC}=\dfrac{MF}{MG}$. (2)
+Vì $NE\parallel BC$, $PF\parallel BC$ (gt)
+nên $NE\parallel PF$.
+Mà $A$ là trung điểm của $NP$ (gt)
+nên $A$ nằm giữa hai đường thẳng song song $NE$ và $PF$.
+Do đó $A$ nằm giữa $E$ và $F$ ($E$, $F$ thuộc $MA$).
+Xét $\triangle ANE$ và $\triangle APF$ có:
+$\widehat{ANE}=\widehat{APF}$ (hai góc so le trong, $NE\parallel PF$);
+$AN=AP$ (gt);
+$\widehat{NAE}=\widehat{PAF}$ (hai góc đối đỉnh)
+nên $\triangle ANE=\triangle APF$ (g.c.g).
+Suy ra $AE=AF$ (hai cạnh tương ứng).
+Vậy $A$ là trung điểm của $EF$.
+Vì $E$, $F$ cùng thuộc tia $MA$ (cmt)
+nên một trong hai điểm nằm giữa $M$ và $A$.
+Giả sử $E$ nằm giữa $M$ và $A$
+(trường hợp $F$ nằm giữa làm tương tự).
+Khi đó $ME=MA-AE$ và $MF=MA+AF$.
+Mà $AE=AF$ (cmt)
+nên $ME+MF=2MA$. (3)
+(Nếu $BC\parallel NP$ thì $E$, $F$ trùng $A$, (3) vẫn đúng.)
+Vì $G$ là trọng tâm của $\triangle MNP$ (gt)
+nên $MG=\dfrac23MA$ (tính chất trọng tâm).
+Từ (1), (2): $\dfrac{MN}{MB}+\dfrac{MP}{MC}=\dfrac{ME+MF}{MG}$.
+Từ (3) và $MG=\dfrac23MA$ (cmt):
+$\dfrac{ME+MF}{MG}=\dfrac{2MA}{\frac23MA}=3$.
+Vậy $\dfrac{MN}{MB}+\dfrac{MP}{MC}=3$.
 **cấu hình hình / nghi vấn:**
-Chữ in sai đã sửa: bản in "MC/MD = MG/MF" ($D$ chưa định nghĩa) ⇒ $\dfrac{MC}{MP}=\dfrac{MG}{MF}$. Ý b) của tài liệu "MB/MN = MP/MC" SAI nên KHÔNG nhập: thử toạ độ (kiem_G3.mjs) được $MB/MN=0{,}7328$ còn $MP/MC=1{,}6354$ (khác nhau); hệ thức đúng là $\dfrac{MN}{MB}+\dfrac{MP}{MC}=3$ (đã kiểm = 3,0000) — hỏi Thùy xem ý b) có ý định này không.
-Đề: thêm "lần lượt" vào "cắt $MA$ lần lượt tại $E$ và $F$" để biết $E$ từ $N$, $F$ từ $P$. Chỉ còn một ý nên bỏ nhãn "a)" khỏi đề và lời giải (nếu sau này bổ sung ý b) thì thêm lại "a) ").
-Ý này không dùng tính chất trọng tâm: chỉ cần $G$ thuộc $MA$. $E$, $F$ nằm trên đường thẳng $MA$ (một trong hai điểm nằm ngoài đoạn $MA$ — vì $A$ là trung điểm $NP$ nên $E$, $F$ đối xứng nhau qua $A$ — nên đề "cắt $MA$" hiểu là cắt đường thẳng $MA$); hình vẽ đúng như vậy ($F$ nằm dưới $A$).
+Chữ in sai đã sửa: bản in "MC/MD = MG/MF" ($D$ chưa định nghĩa) ⇒ $\dfrac{MC}{MP}=\dfrac{MG}{MF}$. Ý b) bản in "MB/MN = MP/MC" SAI (thử toạ độ: $MB/MN=0{,}7328$, $MP/MC=1{,}6354$); Thùy xác nhận 02/11 ý đúng là $\dfrac{MN}{MB}+\dfrac{MP}{MC}=3$ — đã nhập làm ý b).
+Đề: thêm "lần lượt" vào "cắt $MA$ lần lượt tại $E$ và $F$" để biết $E$ từ $N$, $F$ từ $P$. Nay có 2 ý nên đặt lại nhãn a), b) trong đề, sơ đồ và phần trình bày.
+Ý b) — thứ tự $E$, $F$: gợi ý "E giữa M và A, F ngoài" CHỈ đúng với một số vị trí đường $BC$; kiểm toạ độ cho thấy tuỳ đường qua $G$ (đúng một trong $E$, $F$ nằm giữa $M$ và $A$, điểm kia ngoài đoạn $MA$; nếu $BC\parallel NP$ thì $E\equiv F\equiv A$ — kết luận vẫn đúng, $MN/MB=MP/MC=3/2$; soát 02/11 thêm một dòng ghi chú ca này ngay sau (3), vì khi đó $\triangle ANE$, $\triangle APF$ suy biến). Vì vậy lời giải KHÔNG giả định ai nằm trong: chứng minh $E$, $F$ thuộc tia $MA$ (hai phía của $BC$), $A$ nằm giữa $E$, $F$ (giữa hai đường song song $NE$, $PF$), $\triangle ANE=\triangle APF$ (g.c.g) ⇒ $A$ là trung điểm $EF$, rồi "giả sử $E$ nằm giữa $M$, $A$ (trường hợp kia tương tự)" để có $ME+MF=2MA$. Công cụ: Thalès, g.c.g, tính chất trọng tâm (lớp 7), hai điểm cùng/khác phía đối với đường thẳng (lớp 6) — đều trong whitelist.
+Chi tiết cơ sở vị trí viết hơi dài (7 dòng) để chặt chẽ; nếu muốn ngắn hơn có thể bỏ, chỉ giữ "E, F thuộc tia MA".
+Ý a) không dùng tính chất trọng tâm (ý b) có dùng): chỉ cần $G$ thuộc $MA$. $E$, $F$ nằm trên đường thẳng $MA$ (một trong hai điểm nằm ngoài đoạn $MA$ — vì $A$ là trung điểm $NP$ nên $E$, $F$ đối xứng nhau qua $A$ — nên đề "cắt $MA$" hiểu là cắt đường thẳng $MA$); hình vẽ đúng như vậy ($F$ nằm dưới $A$).
 Chỗ chưa chốt trong lời giải: "$G\in MF$" ghi theo nghĩa $G$, $F$ cùng thuộc đường thẳng $MA$ (và $G$ nằm giữa $M$, $F$ — đã kiểm bằng toạ độ trên 8 bộ).
 Hình: $M$ đỉnh trên, $N$ trái, $P$ phải, $A$ trung điểm $NP$ (đánh dấu bằng nhau $NA$, $AP$ theo giả thiết), $G$ trọng tâm (dựng bằng toạ độ), $B\in MN$ với $MB/MN=5/6$, $C\in MP$ với $MC/MP=5/9$ nên $B$, $G$, $C$ thẳng hàng đúng; $NE\parallel BC$, $PF\parallel BC$ dựng đúng.
 Verify (kiem_G3.mjs): 8 bộ toạ độ ngẫu nhiên (tam giác bất kì, đường qua $G$ bất kì) + bộ vẽ hình: $G$ thuộc $MA$ với $MG=\tfrac23MA$, $B,G,C$ thẳng hàng, $NE\parallel BC$, $PF\parallel BC$, $CG\parallel PF$, $G$ nằm giữa $M$ và $F$, $MC/MP=MG/MF$ — PASS hết.
-Chỉ dùng Thalès (whitelist). Không dùng đường trung bình, tính chất phân giác.
+Verify ý b) (kiem_G3_vn5b.mjs): 11 bộ toạ độ (5 bộ cố định gồm tam giác tù tại $N$, tù tại $M$, tù tại $P$ + bộ dùng vẽ hình, 6 bộ ngẫu nhiên; $E$ nằm giữa $M$, $A$ ở 8 bộ, $F$ ở 3 bộ), mỗi bộ 22 phép kiểm: $B,G,C$ thẳng hàng; $N,P$ cùng phía và $M$ khác phía đối với $BC$; $E$, $F$ thuộc tia $MA$, $G$ giữa $M$–$E$ và $M$–$F$; $A$ giữa $E$, $F$; $NE\parallel PF$; $AN=AP$; hai góc đối đỉnh, hai góc so le trong bằng nhau; $AE=AF$; $ME+MF=2MA$; $MG=\tfrac23MA$; $MN/MB=ME/MG$; $MP/MC=MF/MG$; tổng $=3$ — 242 PASS, 0 FAIL.
+Chỉ dùng Thalès, g.c.g, trọng tâm (whitelist). Không dùng đường trung bình, tính chất phân giác.
+Hình VN5 giữ nguyên (đủ điểm $M,N,P,A,G,B,C,E,F$; trong hình $E$ nằm giữa $M$ và $A$, $F$ ngoài đoạn — một trường hợp hợp lệ; lời giải không phụ thuộc).
 **hinh:** VN5.png
