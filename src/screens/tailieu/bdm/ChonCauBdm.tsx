@@ -70,27 +70,27 @@ export default function ChonCauBdm({ tl, nhomId, uuTien, selected, khoa, macDinh
 
   return (
     <div className="fixed inset-0 z-[75] bg-slate-900/50 backdrop-blur-sm" onClick={onClose}>
-      <div className="absolute inset-x-[8%] inset-y-8 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
-        <div className="flex items-center gap-3 border-b border-slate-200 px-6 py-3">
+      <div className="absolute inset-x-[8%] inset-y-8 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl max-md:inset-0 max-md:rounded-none max-md:border-0" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center gap-3 border-b border-slate-200 px-6 py-3 max-md:flex-wrap max-md:gap-2 max-md:px-3 max-md:py-2">
           <h3 className="text-base font-semibold text-slate-900">Chọn câu từ kho</h3>
           <span className="text-[13px] text-slate-400">đã chọn <b className="text-indigo-600">{sel.size}</b></span>
-          {coKhoLop && <div className="ml-3 flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
+          {coKhoLop && <div className="ml-3 flex gap-0.5 rounded-lg bg-slate-100 p-0.5 max-md:order-last max-md:ml-0 max-md:w-full">
             {([['lop', '🏫 Kho trên lớp', lop], ['luyen', '📚 Kho luyện tập', kho]] as const).map(([k, nhan, ds]) => (
-              <button key={k} onClick={() => setNguon(k)} className={`rounded-md px-3 py-1 text-[12.5px] font-medium ${nguon === k ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-500 hover:text-slate-800'}`}>
+              <button key={k} onClick={() => setNguon(k)} className={`rounded-md px-3 py-1 text-[12.5px] font-medium max-md:flex-1 ${nguon === k ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-500 hover:text-slate-800'}`}>
                 {nhan} <span className="text-[11px] text-slate-400">{ds ? ds.length : '…'}{soChon(ds) ? ` · chọn ${soChon(ds)}` : ''}</span>
               </button>
             ))}
           </div>}
           <button onClick={onClose} className="ml-auto flex h-8 w-8 items-center justify-center rounded-md text-slate-400 hover:bg-slate-100">✕</button>
         </div>
-        <div className="flex flex-wrap items-center gap-1.5 border-b border-slate-100 px-6 py-2">
+        <div className="flex flex-wrap items-center gap-1.5 border-b border-slate-100 px-6 py-2 max-md:px-3">
           <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">Lọc loại:</span>
           {LOAI_CAU.map((l) => (
             <button key={l.value} onClick={() => toggleLoai(l.value)} className={`rounded-md px-2.5 py-1 text-[12px] font-medium transition ${fLoai.has(l.value) ? 'bg-indigo-600 text-white shadow-sm' : 'border border-slate-200 text-slate-500 hover:border-indigo-300 hover:text-indigo-700'}`}>{l.label}</button>
           ))}
           {fLoai.size > 0 && <button onClick={() => setFLoai(new Set())} className="ml-1 text-[12px] font-medium text-slate-400 hover:text-rose-600">Xoá lọc</button>}
         </div>
-        <div className="min-h-0 flex-1 overflow-auto p-5">
+        <div className="min-h-0 flex-1 overflow-auto p-5 max-md:p-2.5">
           {err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
             : !kho || !lop ? <p className="text-sm text-slate-400">Đang tải kho…</p>
             : nhomCau.length === 0 ? <p className="text-sm text-slate-400">{nguon === 'lop' ? `Nhóm này chưa có câu ở kho trên lớp${fLoai.size ? ' khớp lọc' : ''} — soạn ở Bản đồ mới › dạng bài › 🏫 Kho trên lớp.` : `Nhóm này chưa có câu kho chuẩn${fLoai.size ? ' khớp lọc' : ''}.`}</p>
@@ -125,10 +125,10 @@ export default function ChonCauBdm({ tl, nhomId, uuTien, selected, khoa, macDinh
               </div>
             ))}
         </div>
-        <div className="flex items-center justify-end gap-2 border-t border-slate-200 px-6 py-3">
-          {loiGhi && <span className="mr-auto text-[12.5px] text-rose-600">⚠ {loiGhi}</span>}
+        <div className="flex flex-wrap items-center justify-end gap-2 border-t border-slate-200 px-6 py-3 max-md:px-3 max-md:pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+          {loiGhi && <span className="mr-auto text-[12.5px] text-rose-600 max-md:basis-full">⚠ {loiGhi}</span>}
           <button onClick={onClose} className="rounded-md px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Huỷ</button>
-          <button onClick={xong} disabled={busy} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-50">Dùng {sel.size} câu</button>
+          <button onClick={xong} disabled={busy} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-50 max-md:flex-1 max-md:py-2.5">Dùng {sel.size} câu</button>
         </div>
       </div>
     </div>

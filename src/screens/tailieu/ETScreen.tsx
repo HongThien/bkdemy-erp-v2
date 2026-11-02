@@ -9,7 +9,7 @@ import {
   maET, ET_FORMS, etFormOf, sortETCaus, nhanhChonCuaKhoi, tenNhanh, coKhoHinh,
   type ETDoc, type CauHinh, type ETForm as ETFormKind, type TaiLieuFull, type NhanhMon,
 } from '../../lib/tailieu'
-import { buildMaDe as buildMaDeLib, oTrongMaDe, usedMoiDe as usedMoiDeLib, setVarInCh } from '../../lib/made'
+import { buildMaDe as buildMaDeLib, oTrongMaDe, usedMoiDe as usedMoiDeLib, setVarInCh, setFormInCh } from '../../lib/made'
 import { listLop, type Lop } from '../../lib/nhansu'
 import { hsCoMatCuaBuoi } from '../../lib/gami'
 import { listCauByDang, khoiDungBanDoCu, LOAI_CAU, type CauHoi } from '../../lib/kho/api'
@@ -344,7 +344,7 @@ export function ETEditor({ et, onClose, presetHinh, chiBanDoCu = false }: { et?:
     } finally { setBulkBusy(false) }
   }
   const setLines = (maCau: string, n: number) => setCh((c) => ({ ...c, btvnLinesByCau: { ...(c.btvnLinesByCau ?? {}), [maCau]: n } }))
-  const setForm = (maCau: string, f: ETFormKind) => setCh((c) => ({ ...c, etFormByCau: { ...(c.etFormByCau ?? {}), [maCau]: f } }))
+  const setForm = (maCau: string, f: ETFormKind) => setCh((c) => setFormInCh(c, maCau, f, (m) => cau[m]))
   // ── CHẾ ĐỘ CỘT khi in — RIÊNG TỪNG CÂU (Thùy): tag số cột trên mỗi câu; câu tag cột LIỀN NHAU tự xếp
   // cạnh nhau (mỗi câu 1 cột), cách xa thì không ghép. Lưu ở cau_hinh.colByCau; áp cho cả 3 mã đề. ──
   const setColCau = (maCau: string, n: number) => setCh((c) => ({ ...c, colByCau: { ...(c.colByCau ?? {}), [maCau]: n } }))

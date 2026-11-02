@@ -84,8 +84,8 @@ export default function ChonYTuCay({ L, khoi, phan, chonSan, baiSan, onClose, on
     const kw = tim.trim().toLowerCase()
     const hien = goc.filter((m) => !kw || m.ten.toLowerCase().includes(kw) || m.ma.toLowerCase().includes(kw))
     return (
-      <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-900/50 p-4 backdrop-blur-sm" onClick={onClose}>
-        <div className="flex max-h-[85vh] w-full max-w-lg flex-col rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
+      <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-900/50 p-4 backdrop-blur-sm max-md:p-0" onClick={onClose}>
+        <div className="flex max-h-[85vh] w-full max-w-lg flex-col rounded-2xl border border-slate-200 bg-white shadow-2xl max-md:h-dvh max-md:max-h-none max-md:max-w-none max-md:rounded-none max-md:border-0" onClick={(e) => e.stopPropagation()}>
           <div className="border-b border-slate-200 px-5 py-3">
             <div className="flex items-center gap-2">
               <h2 className="text-[15px] font-semibold text-slate-900">Chọn mô hình · Khối {khoi}</h2>
@@ -136,36 +136,36 @@ export default function ChonYTuCay({ L, khoi, phan, chonSan, baiSan, onClose, on
   const baiDangChon = khoDu.find((c) => c.id === baiChon)
   return (
     <div className="fixed inset-0 z-[60] bg-slate-900/50 backdrop-blur-sm" onClick={onClose}>
-      <div className="absolute inset-x-[8%] inset-y-8 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
-        <div className="flex flex-wrap items-center gap-3 border-b border-slate-200 px-6 py-3">
+      <div className="absolute inset-x-[8%] inset-y-8 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl max-md:inset-0 max-md:rounded-none max-md:border-0" onClick={(e) => e.stopPropagation()}>
+        <div className="flex flex-wrap items-center gap-3 border-b border-slate-200 px-6 py-3 max-md:gap-2 max-md:px-3 max-md:py-2">
           <button onClick={() => { setGocId(null); setTim('') }} className="rounded-md border border-slate-300 px-2 py-1 text-[12px] text-slate-600 hover:border-indigo-400">← Đổi mô hình</button>
-          <h3 className="min-w-0 truncate text-[15px] font-semibold text-slate-900">{g?.ma} · <MathText>{tron(g?.ten ?? '')}</MathText></h3>
-          <div className="flex rounded-lg bg-slate-100 p-0.5 text-[12.5px] font-medium">
+          <h3 className="min-w-0 truncate text-[15px] font-semibold text-slate-900 max-md:flex-1">{g?.ma} · <MathText>{tron(g?.ten ?? '')}</MathText></h3>
+          <div className="flex rounded-lg bg-slate-100 p-0.5 text-[12.5px] font-medium max-md:order-last max-md:w-full max-md:[&>button]:flex-1">
             <button onClick={() => setChe('chuoi')} className={`rounded-md px-3 py-1 ${che === 'chuoi' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>Tạo từ chuỗi</button>
             <button onClick={() => setChe('kho')} className={`rounded-md px-3 py-1 ${che === 'kho' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>Bài trong kho{kho ? ` (${khoDu.length})` : ''}</button>
           </div>
-          <span className="text-[12px] text-slate-500">{che === 'kho' ? 'Chọn 1 bài — lấy nguyên bài, mỗi ý là 1 câu, chấm và cho điểm riêng.' : 'Tick các ý muốn đưa vào bài — mỗi ý là 1 câu, chấm và cho điểm riêng.'}</span>
+          <span className="text-[12px] text-slate-500 max-md:hidden">{che === 'kho' ? 'Chọn 1 bài — lấy nguyên bài, mỗi ý là 1 câu, chấm và cho điểm riêng.' : 'Tick các ý muốn đưa vào bài — mỗi ý là 1 câu, chấm và cho điểm riêng.'}</span>
           <button onClick={onClose} className="ml-auto flex h-8 w-8 items-center justify-center rounded-md text-slate-400 hover:bg-slate-100">✕</button>
         </div>
-        {loi && <div className="bg-rose-50 px-6 py-2 text-[12.5px] text-rose-700">{loi}</div>}
+        {loi && <div className="bg-rose-50 px-6 py-2 text-[12.5px] text-rose-700 max-md:px-3">{loi}</div>}
         {che === 'kho' ? (
-        <div className="min-h-0 flex-1 overflow-auto px-6 py-4">
+        <div className="min-h-0 flex-1 overflow-auto px-6 py-4 max-md:px-2.5 max-md:py-2.5">
           {!kho ? <p className="py-8 text-center text-[13px] text-slate-400">Đang tải kho…</p>
             : !khoDu.length ? <p className="py-8 text-center text-[13px] text-slate-400">Kho của mô hình này chưa có bài nào. Gán bài ở Duyệt kho › Hình luyện · chưa phân mô hình.</p>
             : <>
               <div className="mb-3 flex items-center gap-3">
                 <input value={timKho} onChange={(e) => setTimKho(e.target.value)} placeholder="Tìm trong kho (mã, nguồn, đề)…"
-                  className="h-8 w-72 rounded-md border border-slate-200 px-2.5 text-[13px] outline-none focus:border-indigo-400" />
+                  className="h-8 w-72 rounded-md border border-slate-200 px-2.5 text-[13px] outline-none focus:border-indigo-400 max-md:w-auto max-md:min-w-0 max-md:flex-1" />
                 <span className="text-[12px] text-slate-400">{khoHien.length}/{khoDu.length} bài</span>
               </div>
               <div className="space-y-3">
                 {khoHien.map((c) => { const on = baiChon === c.id; return (
-                  <label key={c.id} className={`flex cursor-pointer gap-4 rounded-xl border p-3.5 ${on ? 'border-indigo-400 bg-indigo-50/50 shadow-sm' : 'border-slate-200 hover:border-indigo-200'}`}>
+                  <label key={c.id} className={`flex cursor-pointer gap-4 rounded-xl border p-3.5 max-md:flex-wrap max-md:gap-2.5 max-md:p-2.5 ${on ? 'border-indigo-400 bg-indigo-50/50 shadow-sm' : 'border-slate-200 hover:border-indigo-200'}`}>
                     <input type="radio" name="bai-kho" checked={on} onChange={() => setBaiChon(c.id)} className="mt-1" />
                     {c.anh_de
-                      ? <img src={c.anh_de} alt="" className="h-32 w-44 shrink-0 self-start rounded-lg border border-slate-200 bg-white object-contain" />
-                      : <div className="flex h-32 w-44 shrink-0 items-center justify-center rounded-lg border border-dashed border-slate-200 text-[11px] text-slate-300">chưa có hình</div>}
-                    <div className="min-w-0 flex-1 space-y-1.5">
+                      ? <img src={c.anh_de} alt="" className="h-32 w-44 shrink-0 self-start rounded-lg border border-slate-200 bg-white object-contain max-md:w-auto max-md:max-w-[calc(100%-2rem)]" />
+                      : <div className="flex h-32 w-44 shrink-0 items-center justify-center rounded-lg border border-dashed border-slate-200 text-[11px] text-slate-300 max-md:hidden">chưa có hình</div>}
+                    <div className="min-w-0 flex-1 space-y-1.5 max-md:basis-full">
                       <div className="flex flex-wrap items-center gap-x-3 text-[12px]">
                         <span className="font-mono font-semibold text-teal-700">{c.ma_bai}</span>
                         <span className="text-slate-500">{c.nguon ?? 'chưa rõ nguồn'}</span>
@@ -183,13 +183,13 @@ export default function ChonYTuCay({ L, khoi, phan, chonSan, baiSan, onClose, on
             </>}
         </div>
         ) : (
-        <div className="min-h-0 flex-1 overflow-auto px-6 py-4">
+        <div className="min-h-0 flex-1 overflow-auto px-6 py-4 max-md:px-2.5 max-md:py-2.5">
           {khois.length === 0 ? <p className="text-sm text-slate-400">Cây của mô hình này chưa có bài nào.{khoDu.length ? <> Kho có <button onClick={() => setChe('kho')} className="font-semibold text-indigo-700 underline">{khoDu.length} bài — chọn ở tab Bài trong kho</button>.</> : ''}</p> : khois.map(({ n, bai }) => {
             const laGoc = n.id === gocId
             const ct = chaTen(n)
             return (
               <section key={n.id} className="mb-4 rounded-xl border border-slate-200">
-                <div className="flex gap-3 border-b border-slate-100 bg-slate-50/70 px-4 py-2.5">
+                <div className="flex gap-3 border-b border-slate-100 bg-slate-50/70 px-4 py-2.5 max-md:flex-col max-md:gap-2 max-md:px-3">
                   <div className="min-w-0 flex-1">
                     <div className={`text-[12.5px] font-bold ${laGoc ? 'text-teal-700' : 'text-slate-600'}`}>
                       {laGoc ? 'Giả thiết' : `${L.canh.find((x) => x.mo_hinh_id === n.id)?.chinh ? 'Nhánh chính' : 'Nhánh phụ'}: ${tron(n.ten)}`}
@@ -213,10 +213,10 @@ export default function ChonYTuCay({ L, khoi, phan, chonSan, baiSan, onClose, on
                   {bai.map((b) => {
                     const on = tick.has(b.id), dk = doKho.get(b.id)
                     return (
-                      <label key={b.id} className={`flex cursor-pointer items-start gap-2.5 px-4 py-2 text-[13px] ${on ? 'bg-indigo-50/70' : 'hover:bg-slate-50'}`}>
+                      <label key={b.id} className={`flex cursor-pointer items-start gap-2.5 px-4 py-2 text-[13px] max-md:flex-wrap max-md:gap-x-2 max-md:gap-y-1 max-md:px-3 ${on ? 'bg-indigo-50/70' : 'hover:bg-slate-50'}`}>
                         <input type="checkbox" checked={on} onChange={() => doi(b.id)} className="mt-1" />
-                        <span className="w-9 shrink-0 font-semibold text-slate-500">{so.get(b.id) ?? '…'}</span>
-                        <span className="min-w-0 flex-1 text-slate-800"><MathText>{[b.gia_thiet_rieng, b.phat_bieu].filter((x) => x && x.trim()).join(' ')}</MathText></span>
+                        <span className="w-9 shrink-0 font-semibold text-slate-500 max-md:w-auto">{so.get(b.id) ?? '…'}</span>
+                        <span className="min-w-0 flex-1 text-slate-800 max-md:order-last max-md:basis-full max-md:pl-5"><MathText>{[b.gia_thiet_rieng, b.phat_bieu].filter((x) => x && x.trim()).join(' ')}</MathText></span>
                         {on && <span className="shrink-0 rounded bg-indigo-100 px-1.5 py-0.5 text-[11px] font-semibold text-indigo-700">Câu {thuTu.get(b.id)}</span>}
                         {dk != null && <span className="shrink-0 text-[11px] tracking-wide text-orange-600" title={`Độ khó ${dk}/5`}>{SAO(dk)}</span>}
                       </label>
@@ -228,7 +228,7 @@ export default function ChonYTuCay({ L, khoi, phan, chonSan, baiSan, onClose, on
           })}
         </div>
         )}
-        <div className="flex items-center gap-3 border-t border-slate-200 px-6 py-3">
+        <div className="flex items-center gap-3 border-t border-slate-200 px-6 py-3 max-md:flex-wrap max-md:gap-2 max-md:px-3 max-md:pb-[max(0.75rem,env(safe-area-inset-bottom))]">
           {che === 'kho'
             ? <span className="text-[13px] text-slate-600">{baiDangChon ? <>Đã chọn <b className="font-mono text-indigo-700">{baiDangChon.ma_bai}</b> = {baiDangChon.y.length} câu</> : 'Chưa chọn bài nào'}</span>
             : <>
@@ -247,7 +247,7 @@ export default function ChonYTuCay({ L, khoi, phan, chonSan, baiSan, onClose, on
               {tick.size > 0 && <button onClick={() => setTick(new Set())} className="shrink-0 text-[12px] text-slate-400 hover:text-rose-600">Bỏ chọn hết</button>}
             </>}
           <button onClick={onClose} className="ml-auto rounded-md px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Huỷ</button>
-          <button onClick={xong} disabled={che === 'kho' ? !baiDangChon : !tick.size} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">Hoàn thành</button>
+          <button onClick={xong} disabled={che === 'kho' ? !baiDangChon : !tick.size} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40 max-md:flex-1 max-md:py-2.5">Hoàn thành</button>
         </div>
       </div>
     </div>

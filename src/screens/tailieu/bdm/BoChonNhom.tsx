@@ -76,25 +76,25 @@ export default function BoChonNhom({ khoi, nhanh = 'toan', daChon, onClose, onCo
 
   return (
     <div className="fixed inset-0 z-[70] bg-slate-900/50 backdrop-blur-sm" onClick={onClose}>
-      <div className="absolute inset-x-6 inset-y-6 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
-        <div className="flex items-center gap-3 border-b border-slate-200 px-6 py-3">
-          <h3 className="text-base font-semibold text-slate-900">Chọn nhóm bài · dạng bài · Khối {khoi}</h3>
-          <span className="text-[12px] text-slate-400">Bấm tên nhóm = cả nhóm · bấm dạng bài = chọn lẻ (được lấy từ nhiều nhóm)</span>
-          <input value={tim} onChange={(e) => setTim(e.target.value)} placeholder="Tìm nhóm / dạng bài…" className="ml-auto h-8 w-64 rounded-md border border-slate-300 px-2.5 text-[13px] outline-none focus:border-indigo-500" />
+      <div className="absolute inset-x-6 inset-y-6 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl max-md:inset-0 max-md:rounded-none max-md:border-0" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center gap-3 border-b border-slate-200 px-6 py-3 max-md:flex-wrap max-md:gap-2 max-md:px-3 max-md:py-2">
+          <h3 className="text-base font-semibold text-slate-900 max-md:flex-1 max-md:text-[15px]">Chọn nhóm bài · dạng bài · Khối {khoi}</h3>
+          <span className="text-[12px] text-slate-400 max-md:hidden">Bấm tên nhóm = cả nhóm · bấm dạng bài = chọn lẻ (được lấy từ nhiều nhóm)</span>
+          <input value={tim} onChange={(e) => setTim(e.target.value)} placeholder="Tìm nhóm / dạng bài…" className="ml-auto h-8 w-64 rounded-md border border-slate-300 px-2.5 text-[13px] outline-none focus:border-indigo-500 max-md:order-last max-md:ml-0 max-md:h-9 max-md:w-full" />
           <button onClick={onClose} className="flex h-8 w-8 items-center justify-center rounded-md text-slate-400 hover:bg-slate-100">✕</button>
         </div>
         {err ? <p className="p-6 text-sm text-rose-600">Lỗi: {err}</p>
           : !cay ? <p className="p-6 text-sm text-slate-400">Đang tải bản đồ…</p>
           : cay.length === 0 ? <p className="p-6 text-sm text-slate-400">Khối này chưa có chủ đề nào trên bản đồ mới.</p>
           : (
-            <div className="grid min-h-0 flex-1 grid-cols-[220px_1fr_300px] overflow-hidden">
+            <div className="grid min-h-0 flex-1 grid-cols-[220px_1fr_300px] overflow-hidden max-md:flex max-md:flex-col">
               {/* Chủ đề */}
-              <aside className="min-h-0 overflow-auto border-r border-slate-200 bg-slate-50/60 p-2">
+              <aside className="min-h-0 overflow-auto border-r border-slate-200 bg-slate-50/60 p-2 max-md:flex max-md:shrink-0 max-md:gap-1 max-md:overflow-x-auto max-md:border-b max-md:border-r-0 max-md:p-1.5">
                 {cay.map((cd) => {
                   const n = chon.filter((c) => nhomTheoId.get(c.nhom)?.chuDe === cd.ten).length
                   return (
                     <button key={cd.id} onClick={() => { setChuDe(cd.id); setTim('') }}
-                      className={`mb-0.5 flex w-full items-center gap-2 rounded-md px-2.5 py-2 text-left text-[13px] ${!q && chuDe === cd.id ? 'bg-indigo-600 font-semibold text-white' : 'text-slate-700 hover:bg-white'}`}>
+                      className={`mb-0.5 flex w-full items-center gap-2 rounded-md px-2.5 py-2 text-left text-[13px] max-md:mb-0 max-md:w-auto max-md:shrink-0 max-md:whitespace-nowrap max-md:py-1.5 ${!q && chuDe === cd.id ? 'bg-indigo-600 font-semibold text-white' : 'text-slate-700 hover:bg-white'}`}>
                       <span className="min-w-0 flex-1">{cd.ten}</span>
                       {n > 0 && <span className={`shrink-0 rounded-full px-1.5 text-[11px] font-bold ${!q && chuDe === cd.id ? 'bg-white/25' : 'bg-indigo-100 text-indigo-700'}`}>{n}</span>}
                     </button>
@@ -103,7 +103,7 @@ export default function BoChonNhom({ khoi, nhanh = 'toan', daChon, onClose, onCo
               </aside>
 
               {/* Chuyên đề → nhóm → dạng bài */}
-              <div className="min-h-0 overflow-auto p-4">
+              <div className="min-h-0 overflow-auto p-4 max-md:flex-1 max-md:p-2.5">
                 {hien.length === 0 && <p className="text-sm text-slate-400">Không có nhóm / dạng bài khớp “{tim}”.</p>}
                 {hien.map((cd) => (
                   <div key={cd.id}>
@@ -151,8 +151,8 @@ export default function BoChonNhom({ khoi, nhanh = 'toan', daChon, onClose, onCo
               </div>
 
               {/* Đã chọn — thứ tự nhóm trong buổi */}
-              <aside className="flex min-h-0 flex-col border-l border-slate-200 bg-slate-50/60">
-                <div className="border-b border-slate-200 px-3 py-2 text-[12px] font-semibold uppercase tracking-wide text-slate-500">Đã chọn · {chon.length} nhóm</div>
+              <aside className="flex min-h-0 flex-col border-l border-slate-200 bg-slate-50/60 max-md:max-h-[38%] max-md:shrink-0 max-md:border-l-0 max-md:border-t">
+                <div className="border-b border-slate-200 px-3 py-2 text-[12px] font-semibold uppercase tracking-wide text-slate-500 max-md:py-1.5">Đã chọn · {chon.length} nhóm</div>
                 <div className="min-h-0 flex-1 overflow-auto p-2">
                   {chon.length === 0 && <p className="px-1 text-[12px] italic text-slate-400">Chưa chọn gì.</p>}
                   {chon.map((c, i) => {
@@ -176,9 +176,9 @@ export default function BoChonNhom({ khoi, nhanh = 'toan', daChon, onClose, onCo
                   })}
                 </div>
                 {loiGhi && <div className="border-t border-rose-200 bg-rose-50 px-3 py-2 text-[12px] text-rose-700">⚠ {loiGhi}</div>}
-                <div className="flex justify-end gap-2 border-t border-slate-200 px-3 py-2.5">
+                <div className="flex justify-end gap-2 border-t border-slate-200 px-3 py-2.5 max-md:pb-[max(0.625rem,env(safe-area-inset-bottom))]">
                   <button onClick={onClose} className="rounded-md px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Huỷ</button>
-                  <button onClick={xong} disabled={busy} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-50">{busy ? 'Đang dựng…' : `Dùng ${chon.length} nhóm`}</button>
+                  <button onClick={xong} disabled={busy} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-50 max-md:flex-1 max-md:py-2.5">{busy ? 'Đang dựng…' : `Dùng ${chon.length} nhóm`}</button>
                 </div>
               </aside>
             </div>

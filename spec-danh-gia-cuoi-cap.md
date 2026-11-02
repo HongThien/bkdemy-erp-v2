@@ -93,7 +93,7 @@ Câu chưa quy được ⇒ bỏ khỏi lần đó (không đoán — §1.5). L�
 
 ## 6. Đã chốt thêm (Thùy 23/10)
 
-1. **5T tạm dùng bản đồ CŨ** (`dai_ban_do`: Chủ đề → Chuyên đề → Dạng) ⇒ 5T chỉ có tầng Chủ đề + Chuyên đề, **không có tầng Nhóm bài**.
+1. ~~**5T tạm dùng bản đồ CŨ**~~ → **Thùy 31/10: khối 5T chuyển hẳn sang bản đồ mới** (mig `202611010017`) ⇒ 5T có đủ 3 tầng như khối 9/12. Khối nào còn bản đồ cũ không ghi ở đây nữa — đọc `_bdm_khoi_giu_cu` (DB, một nơi quyết).
 2. **Khối 9 Hình: tạm chỉ tầng Chủ đề.** Chuyên đề / Nhóm bài của Hình để sau.
 3. **Trên app không tính gì** ⇒ thi thử loại. *(Phạm vi câu này — xem §7.)*
 

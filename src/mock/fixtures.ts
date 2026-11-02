@@ -132,6 +132,8 @@ export const adminLeaves: AdminLeaf[] = [
   { id: 'report_ph',   nhom: 'Quản lý chất lượng', ten: 'Report phụ huynh',   founderOnly: false }, // report tháng gửi PH: số liệu HS + nhận xét GV
   // Thùy 29/10 (spec-truong-khoi.md): 1 màn gom team · chức vụ · phạm vi của team QLCL; phân công ô = nguồn duy nhất, ghế trưởng khối tự sinh
   { id: 'qlcl_team',   nhom: 'Quản lý chất lượng', ten: 'Team Quản lý chất lượng', founderOnly: false },
+  // Thùy 01/11 (spec-phong-truong-khoi.md): khu làm việc riêng của trưởng khối — phiên chat Claude · bản đồ · quản trị
+  { id: 'phong_tk',    nhom: 'Quản lý chất lượng', ten: 'Phòng làm việc trưởng khối', founderOnly: false },
 
   // ── CORE TEAM: nhân sự/tổ chức/vận hành nội bộ ──
   { id: 'hocphi',      nhom: 'Core team', ten: 'Học phí',                     founderOnly: false },

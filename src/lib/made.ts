@@ -88,3 +88,17 @@ export function setVarInCh(ch: CauHinh, baseMaCau: string, v: number, maCau: str
   const next = [...cur]; next[v] = maCau
   return { ...ch, etMaDe: { ...(ch.etMaDe ?? {}), [baseMaCau]: next }, etFormByCau: { ...(ch.etFormByCau ?? {}), [maCau]: form } }
 }
+
+// Đổi form in của 1 câu GỐC — mã đề 2/3 của nó phải đi THEO (cùng form là luật của 3 mã đề), nếu không
+// đổi gốc sau khi đã sinh thì đề 2/3 giữ form cũ (bug ÂM THẦM: gốc Tự luận, đề 2/3 ra Trả lời ngắn).
+// Form trắc nghiệm cần phương án: chỉ kéo theo câu biến thể in được (`canBeETForm` qua `tra`); câu không
+// kiểm được/không in được thì giữ nguyên form cũ. Trả cau_hinh mới (không setState — caller lưu).
+export function setFormInCh(ch: CauHinh, maCau: string, form: ETForm, tra?: (ma: string) => Parameters<typeof canBeETForm>[0] | null | undefined): CauHinh {
+  const byCau: Record<string, string> = { ...(ch.etFormByCau ?? {}), [maCau]: form }
+  for (const m of ch.etMaDe?.[maCau] ?? []) {
+    if (!m) continue
+    if (form === 'trac_nghiem') { const c = tra?.(m); if (!c || !canBeETForm(c, form)) continue }
+    byCau[m] = form
+  }
+  return { ...ch, etFormByCau: byCau }
+}
