@@ -24,7 +24,7 @@ import ChonYTuCay from '../kho/hinh/ChonYTuCay'
 import { loadLuoi, chuoiKetNoi, type Luoi, type BaiToan } from '../../lib/kho/hinh'
 import type { MucIn } from '../kho/hinh/HinhPrintView'
 import { sigHinh, CHE_DO_HINH, cheDoKe } from '../../lib/kho/hinhGiaoTrinh'
-import { buildMaDe as buildMaDeLib, oTrongMaDe, usedMoiDe as usedMoiDeLib, setVarInCh, maDeStale, type BaseItem } from '../../lib/made'
+import { buildMaDe as buildMaDeLib, oTrongMaDe, usedMoiDe as usedMoiDeLib, setVarInCh, setFormInCh, maDeStale, type BaseItem } from '../../lib/made'
 import { listLop, listHSCuaLop, type Lop, type HocSinh } from '../../lib/nhansu'
 import { listCauByDang, listLopBac, LOAI_CAU, KHOI_OPTIONS, DEFAULT_KHOI, type CauHoi, type LopBac } from '../../lib/kho/api'
 import { MathText, inp } from '../kho/ui'
@@ -620,7 +620,7 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
     setCh(next); await updateTaiLieu(id, { cau_hinh: next }); markSaved()
   }
   async function setForm(maCau: string, f: ETFormKind) {
-    const next: CauHinh = { ...ch, etFormByCau: { ...(ch.etFormByCau ?? {}), [maCau]: f } }
+    const next: CauHinh = setFormInCh(ch, maCau, f, (m) => cau[m])
     setCh(next); await updateTaiLieu(id, { cau_hinh: next }); markSaved()
   }
   // ⭐ 30/09 (Thùy) — điểm per câu (áp mọi mã: câu kho + HÌNH). Default DEFAULT_DIEM_MT. Không lưu key
