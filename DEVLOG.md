@@ -78361,3 +78361,8 @@ Thùy nêu 4 việc, làm được 3:
 ## 2/11 — Draft bản đồ K10 chương Hàm số (đề xuất, chưa ghi DB)
 - Làm: thu tư liệu 17 trạm (sách NBV/PNL/Từ Tâm, đề thi ERP 750 câu, đề cương 620 câu), gán mã kiểu, tổng hợp → `kho-rules/dai/ban-do-moi-k10-ham-so-de-xuat.md` (4 chuyên đề, ~35 dạng đề xuất). Thô ở `C:\Users\WBPC\bk-kho-lam-viec\bdm\k10-ham-so\`.
 - Quyết định chờ Thùy: phạm vi Bài 3–4, tách/gộp đọc đồ thị, dạng ít nguồn, tham số.
+
+## 02/11 — ET bản đồ mới: hàng câu bị ép + câu Hình rụng khi mở lại — Thùy "ET hình bị lỗi cấu trúc hiển thị… phóng to khu vực chọn câu"
+- **Bố cục:** hàng câu ETBdmEditor 2 tầng như CauRow builder — dòng 1 = số · dạng bài · ↻ Đổi ✎ Chọn · (phải) dòng · hình vẽ · cỡ · 2 cột · ✕; dòng 2 = ĐỀ trải hết bề ngang (bỏ `truncate`, câu a/b/c xuống dòng đủ) + hình bên phải; khung 820 → 1100px. Kiểm local (admin dev): ET nháp 7S2 30/10, 2 bài học Hình → đúng bố cục, không lưu.
+- **Lỗi thật lộ ra:** ET 7S2 · 02/11 lưu câu Hình HHC000850 mà cau_hinh KHÔNG có nhanhByCau ⇒ mở lại/in/chấm tra câu ở kho Đại ⇒ câu rụng im lặng (getTaiLieuFull ra 0 câu). Gốc: nhRef (nhánh kho từng câu) chỉ sống trong bộ nhớ tạm, không theo nháp NHAP ⇒ rời màn, quay lại, Lưu là mất. Sửa (94294a26): NHAP mang `nh`; lúc Lưu suy lại nhánh từ DẠNG BÀI của từng hàng (+ mã đề 2/3 cùng hàng), bản đồ chưa tải thì chặn lưu. Quét: 2 ET dính — 7S2 02/11 (HHC000850 · HH00099001 · HHC000841) và 7S1 28/10 (HH00103055), mỗi mã chỉ có ở hinh_hoc_cau_hoi.
+- **Treo:** file vá dữ liệu (thêm nhanhByCau cho 4 mã, rào nhân chứng 1 kho) đã viết nhưng lệnh áp bị chặn (ghi dữ liệu dùng chung) ⇒ cất ở scratchpad phiên, chờ Thùy cho phép.
