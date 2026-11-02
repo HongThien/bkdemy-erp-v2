@@ -46,7 +46,8 @@ const DS_NH: Nh[] = ['toan', 'hgt', 'hinh_hoc']
 type DbInfo = { id: string; ten: string; nhom_id: string; nhom_ten: string; so_cau: number; nh: Nh }
 const blankRows = (): Row[] => Array.from({ length: DEFAULT_ROWS }, () => ({ db: null, maCau: null }))
 // Nháp tạo-mới sống tới F5 (rời màn rồi quay lại không mất) — riêng bản mới, không đụng nháp ET cũ trong store.
-let NHAP: { lopId: string | null; ngay: string; savedId: string | null; rows: Row[]; cau: Record<string, CauHoi>; ch: CauHinh; plan: Plan[] } | null = null
+// nh = nhánh kho từng câu (nhRef) — PHẢI theo nháp: thiếu nó, quay lại màn rồi Lưu ⇒ mất nhanhByCau ⇒ câu Hình rụng (02/11, ET 7S2).
+let NHAP: { lopId: string | null; ngay: string; savedId: string | null; rows: Row[]; cau: Record<string, CauHoi>; ch: CauHinh; plan: Plan[]; nh: Record<string, string> } | null = null
 
 export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: () => void }) {
   const editing = !!et
@@ -61,7 +62,7 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
   const [dbs, setDbs] = useState<Map<string, DbInfo>>(new Map())          // dạng bài của khối (tên, nhóm, số câu)
   const [chonPlan, setChonPlan] = useState<Nh | null>(null)              // bộ chọn kế hoạch đang mở ở nhánh nào
   const [chonHang, setChonHang] = useState<{ i: number; nh: Nh } | null>(null)   // chọn dạng bài cho 1 hàng
-  const nhRef = useRef<Record<string, string>>({})                        // mã câu → nhánh kho (chỉ câu khác Đại) — lưu vào nhanhByCau
+  const nhRef = useRef<Record<string, string>>({ ...(nhap0?.nh ?? {}) })  // mã câu → nhánh kho (chỉ câu khác Đại) — lưu vào nhanhByCau
   const [chonCau, setChonCau] = useState<number | null>(null)             // ✎ chọn tay câu của 1 hàng
   const [chonVar, setChonVar] = useState<{ base: string; v: number; db: string; form: ETFormKind } | null>(null)
   const [roster, setRoster] = useState<{ id: string; ho_ten: string; ma_hs: string | null }[]>([])
@@ -162,7 +163,7 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
   useEffect(() => {
     if (et) return
     const trong = !lopId && !ngay && rows.every((r) => !r.maCau) && !plan.length
-    NHAP = trong ? null : { lopId, ngay, savedId, rows, cau, ch, plan }
+    NHAP = trong ? null : { lopId, ngay, savedId, rows, cau, ch, plan, nh: nhRef.current }
   }, [et, lopId, ngay, savedId, rows, cau, ch, plan])
   // đổi LỚP ⇒ câu thuộc khối khác ⇒ reset (không reset lúc mount / lần chọn lớp đầu)
   const lopRef = useRef(lopId)
@@ -289,7 +290,11 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
       const lech = baseSet.some((m) => !cur[m]) || Object.keys(cur).some((k) => !baseSet.includes(k))
       const chSave: CauHinh = { ...(lech ? await tinhMaDe(ch, bank) : ch) }
       if (lech) setCh(chSave)
-      // nhánh kho của từng câu (gốc + đề 2/3) — chỉ câu khác Đại (khuôn MT); chấm/in/đo đọc qua đây
+      // nhánh kho của từng câu (gốc + đề 2/3) — chỉ câu khác Đại (khuôn MT); chấm/in/đo đọc qua đây.
+      // ⭐ 02/11: suy LẠI từ dạng bài của hàng (khoá thật, luôn có) ngay lúc lưu — không tin riêng nhRef (bộ nhớ tạm, từng mất
+      //   khi rời màn ⇒ ET 7S2 02/11 lưu câu Hình không nhánh ⇒ mở lại câu rụng im lặng). Dạng bài chưa tải ⇒ không đoán, dừng.
+      if (!dbs.size) { setErr('Bản đồ dạng bài của khối chưa tải xong — đợi vài giây rồi Lưu lại.'); return null }
+      for (const r of chon) if (r.db && dbs.has(r.db)) ghiNh([r.maCau, ...(chSave.etMaDe?.[r.maCau] ?? [])], r.db)
       const dung = new Set([...baseSet, ...Object.values(chSave.etMaDe ?? {}).flat().filter((m): m is string => !!m)])
       const nbc = Object.fromEntries(Object.entries(nhRef.current).filter(([m]) => dung.has(m)))
       if (Object.keys(nbc).length) chSave.nhanhByCau = nbc; else delete chSave.nhanhByCau
@@ -369,7 +374,7 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
 
       <div className="flex min-h-0 flex-1 overflow-hidden">
         <div className="min-h-0 flex-1 overflow-auto p-5">
-          <div className="mx-auto max-w-[820px]">
+          <div className="mx-auto max-w-[1100px]">
             {flash && <div className="mb-3 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-[13px] font-medium text-emerald-700">✓ {flash}</div>}
             {err && <div className="mb-3 whitespace-pre-line rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-600">{err} <button onClick={() => setErr(null)} className="ml-2 text-rose-400 hover:text-rose-700">✕</button></div>}
             <p className="mb-3 text-[12px] text-slate-400">Mỗi câu thuộc 1 <b>dạng bài</b> của bản đồ mới → hệ gợi ý câu <b>ít dùng nhất</b> (đổi được). Câu không trùng nhau trong đề.{!khoi && <span className="text-amber-600"> Chọn <b>lớp</b> trước.</span>}</p>
@@ -435,64 +440,70 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
                 const formOpts = ET_FORMS.filter((f) => f.v !== 'trac_nghiem' || !!(c?.lua_chon && c.lua_chon.length))
                 const info = r.db ? dbs.get(r.db) : null
                 return (
-                  <div key={i} className="rounded-xl border border-slate-200 bg-white p-2.5">
-                    <div className="flex items-start gap-2">
-                      <span className="mt-1.5 w-6 shrink-0 text-center text-[13px] font-bold text-violet-600">{i + 1}</span>
+                  <div key={i} className="rounded-xl border border-slate-200 bg-white p-3">
+                    {/* ⭐ 02/11 (Thùy: "ET hình bị lỗi cấu trúc hiển thị… phóng to khu vực chọn câu"): 2 tầng như CauRow của builder —
+                        dòng 1 = số · dạng bài · mọi nút; dòng 2 = ĐỀ trải hết bề ngang + hình bên phải (trước: đề bị ép còn ~100px
+                        giữa dãy nút, `truncate` cắt cụt câu nhiều ý a/b/c). */}
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="w-6 shrink-0 text-center text-[13px] font-bold text-violet-600">{i + 1}</span>
                       <button onClick={() => khoi && setChonHang({ i, nh: info?.nh ?? 'toan' })} disabled={!khoi} title={info ? `${TEN_NH[info.nh]} · ${info.nhom_ten} › ${info.ten}` : undefined}
-                        className="w-56 shrink-0 rounded-md border border-slate-300 bg-white px-2.5 py-2 text-left text-[13px] hover:border-indigo-400 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-300">
+                        className="min-w-[14rem] max-w-[26rem] shrink rounded-md border border-slate-300 bg-white px-2.5 py-1.5 text-left text-[13px] hover:border-indigo-400 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-300">
                         {r.db ? <span className="line-clamp-2 text-slate-700">{info && info.nh !== 'toan' && <span className="mr-1 rounded bg-sky-50 px-1 text-[10.5px] font-semibold text-sky-700">{TEN_NH[info.nh]}</span>}{tenDb(r.db)}</span>
                           : r.maCau ? <span className="text-amber-600">⚠ câu chưa thuộc dạng bài mới</span>
                           : <span className={khoi ? 'text-indigo-500' : ''}>{khoi ? '+ chọn dạng bài…' : 'chọn lớp trước'}</span>}
                       </button>
-                      <div className="min-w-0 flex-1 pt-1">
-                        {c ? <div className="truncate text-[13px] text-slate-700"><MathText>{c.noi_dung}</MathText></div>
-                          : r.db ? <span className="text-[12px] italic text-slate-400">chưa có câu</span>
-                          : <span className="text-[12px] italic text-slate-300">chọn dạng bài để hệ gợi ý câu</span>}
-                        {c?.anh_de && (
-                          <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: setAnhMm, baChe: false }}>
-                            <div className="flex justify-start"><AnhXem ma={c.ma_cau} url={c.anh_de} cheDo={ch.hinhCheDoByCau?.[c.ma_cau] ?? 'hien'} /></div>
-                          </AnhMmEditCtx.Provider>
-                        )}
-                        {c && (
-                          <div className="mt-1 flex flex-wrap items-center gap-1.5">
-                            <span className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] text-slate-500" title="Mã câu">{c.ma_cau}</span>
-                            <span className="text-[10px] text-slate-300">kho: {loaiLabel(c.loai_cau)} · in dạng:</span>
-                            <div className="flex gap-0.5">
-                              {formOpts.map((f) => (
-                                <button key={f.v} onClick={() => setForm(c.ma_cau, f.v)} title="Form hiển thị trong đề (khác loại kho)"
-                                  className={`rounded px-1.5 py-0.5 text-[10px] font-medium ${form === f.v ? 'bg-violet-600 text-white' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}>{f.lbl}</button>
-                              ))}
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                      {c && form === 'tu_luan' && (
-                        <label className="flex shrink-0 items-center gap-1 pt-1.5 text-[11px] text-slate-400" title="Số dòng kẻ cho HS viết (bản in)">dòng
-                          <input type="number" min={0} max={50} value={ch.btvnLinesByCau?.[c.ma_cau] ?? 4} onChange={(e) => setLines(c.ma_cau, Math.max(0, Math.min(50, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
-                        </label>
-                      )}
                       {r.db && (
-                        <div className="flex shrink-0 gap-1 pt-0.5">
+                        <div className="flex shrink-0 gap-1">
                           <button onClick={() => doiCau(i)} title="Đổi câu khác (ít dùng kế tiếp)" className="rounded-md bg-indigo-50 px-2 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-100">↻ Đổi</button>
                           <button onClick={() => setChonCau(i)} className="rounded-md border border-slate-300 px-2 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-400">✎ Chọn</button>
                         </div>
                       )}
-                      {c && c.anh_de && (
-                        // 3 chế độ (có ô trống cho HS vẽ) chỉ ở câu Hình học, như builder; Đại / HGT: hiện ↔ bỏ
-                        <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: setAnhMm, baChe: info?.nh === 'hinh_hoc' }}>
-                          <div className="flex shrink-0 flex-col items-end gap-1 pt-0.5">
+                      <div className="ml-auto flex flex-wrap items-center justify-end gap-2">
+                        {c && form === 'tu_luan' && (
+                          <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Số dòng kẻ cho HS viết (bản in)">dòng
+                            <input type="number" min={0} max={50} value={ch.btvnLinesByCau?.[c.ma_cau] ?? 4} onChange={(e) => setLines(c.ma_cau, Math.max(0, Math.min(50, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
+                          </label>
+                        )}
+                        {c && c.anh_de && (
+                          // 3 chế độ (có ô trống cho HS vẽ) chỉ ở câu Hình học, như builder; Đại / HGT: hiện ↔ bỏ
+                          <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: setAnhMm, baChe: info?.nh === 'hinh_hoc' }}>
                             <CheDoHinhBtn cur={ch.hinhCheDoByCau?.[c.ma_cau] ?? 'hien'} onChange={(v) => setCheDo(c.ma_cau, v)} />
                             {(ch.hinhCheDoByCau?.[c.ma_cau] ?? 'hien') !== 'khong' && <AnhMmCtl ma={c.ma_cau} url={c.anh_de} />}
-                          </div>
-                        </AnhMmEditCtx.Provider>
-                      )}
+                          </AnhMmEditCtx.Provider>
+                        )}
+                        {c && (
+                          <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-500" title="Tích = in 2 cột — các câu 2 cột LIỀN NHAU tự xếp cạnh nhau">
+                            <input type="checkbox" checked={(ch.colByCau?.[c.ma_cau] ?? 1) === 2} onChange={(e) => setColCau(c.ma_cau, e.target.checked ? 2 : 1)} className="h-3.5 w-3.5 accent-sky-600" />
+                            2 cột
+                          </label>
+                        )}
+                        <button onClick={() => xoaHang(i)} title="Xoá hàng" className="shrink-0 px-1 text-[13px] text-slate-300 hover:text-rose-600">✕</button>
+                      </div>
+                    </div>
+                    <div className="ml-8 mt-2">
+                      {c ? (
+                        <div className="flex items-start gap-4">
+                          <div className="min-w-0 flex-1 text-[14px] leading-relaxed text-slate-800"><MathText>{c.noi_dung}</MathText></div>
+                          {c.anh_de && (
+                            <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: setAnhMm, baChe: false }}>
+                              <div className="shrink-0"><AnhXem ma={c.ma_cau} url={c.anh_de} cheDo={ch.hinhCheDoByCau?.[c.ma_cau] ?? 'hien'} /></div>
+                            </AnhMmEditCtx.Provider>
+                          )}
+                        </div>
+                      ) : r.db ? <span className="text-[12px] italic text-slate-400">chưa có câu</span>
+                        : <span className="text-[12px] italic text-slate-300">chọn dạng bài để hệ gợi ý câu</span>}
                       {c && (
-                        <label className="flex shrink-0 items-center gap-1 self-start pt-1.5 text-[11px] text-slate-500" title="Tích = in 2 cột — các câu 2 cột LIỀN NHAU tự xếp cạnh nhau">
-                          <input type="checkbox" checked={(ch.colByCau?.[c.ma_cau] ?? 1) === 2} onChange={(e) => setColCau(c.ma_cau, e.target.checked ? 2 : 1)} className="h-3.5 w-3.5 accent-sky-600" />
-                          2 cột
-                        </label>
+                        <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
+                          <span className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] text-slate-500" title="Mã câu">{c.ma_cau}</span>
+                          <span className="text-[10px] text-slate-400">kho: {loaiLabel(c.loai_cau)} · in dạng:</span>
+                          <div className="flex gap-0.5">
+                            {formOpts.map((f) => (
+                              <button key={f.v} onClick={() => setForm(c.ma_cau, f.v)} title="Form hiển thị trong đề (khác loại kho)"
+                                className={`rounded px-1.5 py-0.5 text-[10px] font-medium ${form === f.v ? 'bg-violet-600 text-white' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}>{f.lbl}</button>
+                            ))}
+                          </div>
+                        </div>
                       )}
-                      <button onClick={() => xoaHang(i)} title="Xoá hàng" className="shrink-0 px-1 pt-1 text-[13px] text-slate-300 hover:text-rose-600">✕</button>
                     </div>
                     {c && (
                       <div className="ml-8 mt-2 space-y-1 border-t border-dashed border-slate-100 pt-2">
