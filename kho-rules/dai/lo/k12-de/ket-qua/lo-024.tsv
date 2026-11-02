@@ -1,0 +1,100 @@
+T312000000928	PPTD	NDB00866		1	1	
+T312000000388	PPTD	NDB00836		1	1	
+T1120000003962	HS	P4.4.1		3	1	
+T112070301059	VT	P2.1.3		1	1	
+T112010305089	HS	P1.8.1		2	1	
+T112010101034	HS	P1.2.2		1	1	
+T312000000103	PPTD	NEW	thực tế: mặt phẳng qua điểm cố định chắn ba trục, thể tích tứ diện nhỏ nhất	4	0	có thể thuộc HS tối ưu
+T312000000669	PPTD	NDB00859		2	1	
+T112010305095	HS	P1.8.1		2	1	
+T112010202205	HS	P1.4.1		1	1	
+T1120000004456	SDT	NHOM:NNB01259		2	1	
+T1120000004682	HS	P4.2.2		4	0	diện tích mặt cắt lớn nhất, hình trụ; có thể là hình học không gian
+T112010301086	HS	P1.7.1		1	1	
+T112010402184	HS	P1.5.4		3	0	DS nhiều ý: TXĐ, giá trị, nghiệm f', GTLN hàm logarit
+T112070301119	VT	P3.2.3		2	1	
+T1120000001251	NHTP	NDB00780		4	0	DS nhiều ý: chóp cong, thiết diện, thể tích
+T1120000004654	SDT	NHOM:NNB01259		1	1	
+T1120000006911	NHTP	NDB00746		2	1	
+T112010402037	HS	P1.5.2		2	1	
+T112070301135	VT	P2.1.2		2	1	
+T1120000005623	NHTP	NDB00780		3	1	
+T112010401143	HS	P1.6.2		1	1	
+T112000000071	NHTP	NDB00775		4	0	DS nhiều ý: bồn hoa parabol, diện tích hai miền
+T112020105015	HS	P2.1.9		3	1	
+T112010102182	HS	P1.2.4		2	0	f' nhân tử, so sánh giá trị f
+T1120000005708	HS	P2.1.1		2	1	
+T312000000396	PPTD	NDB00835		1	1	
+T1120000006941	NHTP	NDB00753		1	1	
+T312000000365	PPTD	NDB00858		2	1	
+T1120000005932	HS	P3.3.1		4	0	khoảng cách ngắn nhất từ đồ thị bậc ba đến đường thẳng, thực tế
+T112020103006	HS	P2.1.2		2	1	
+T112000000627	HS	P3.2.1		3	1	
+T112020401015	HS	P4.4.2		3	1	
+T1120000005591	NHTP	NDB00752		1	1	
+T312000000158	VT	P2.3.1		3	0	DS nhiều ý: bể cá hộp CN trong hệ trục
+T312010301108	PPTD	NDB00837		1	1	
+T112020201023	HS	P2.2.1		1	0	đọc đồ thị hàm nhất biến, giao trục hoành
+T312000000968	PPTD	NEW	tứ diện đều trong Oxyz: tìm tâm mặt cầu ngoại tiếp từ đỉnh và chân đường cao	4	0	
+T1120000004583	HS	P1.8.1		2	1	
+T112020402103	HS	P4.5.1		1	1	
+T112000000923	O	NEW	hình học không gian: thể tích khối lập phương trong ly trụ, nước tràn	3	0	thực tế thể tích khối đa diện, khối tròn xoay
+T1120000006040	VT	P1.5.1		4	0	bể cá chỏm cầu trên chân chóp cụt, lực tác dụng lên chân đế
+T112020104094	HS	P2.1.1		2	1	
+T112070301142	VT	P2.1.3		1	1	
+T312000000919	PPTD	NDB00852		1	0	vtcp đường thẳng vuông góc mặt phẳng
+T112010201080	HS	NEW	tìm cực trị hàm trùng phương	1	1	
+T112000000075	SDT	NHOM:NNB01259		3	0	DS nhiều ý: mẫu gốc, tứ phân vị, khoảng tứ phân vị, xác suất
+T1120000005450	NHTP	NDB00778		4	0	DS nhiều ý: hình tròn xoay, diện tích S1 S2
+T1120000001160	SDT	NHOM:NNB01260		2	1	
+T1120000005673	VT	P1.4.1		2	1	
+T1120000003873	HS	P4.1.1		2	0	lợi nhuận hàm cho sẵn, tìm max
+T112000000641	HS	P1.9.2		3	0	tìm m để có tiệm cận đứng, ngang từ BBT
+T112010102245	HS	P1.2.4		1	1	
+T1120000006191	VT	P1.2.6		2	1	
+T1120000006959	NHTP	NDB00750		2	1	
+T112010401100	HS	P1.6.2		1	1	
+T112020302036	HS	P2.3.1		2	1	
+T1120000004949	NHTP	NDB00636		2	1	
+T112020402049	HS	P4.2.4		4	0	bậc ba trong hệ toạ độ, tối ưu chi phí dây trang trí
+T1120000006311	HS	P4.1.1		2	1	
+T1120000003697	VT	P3.3.2		2	1	
+T1120000001228	HS	P2.2.3		2	1	
+T112000000475	XS	NHOM:NNB01255		3	1	DS nhiều ý: xác suất toàn phần, Bayes
+T1120000004249	HS	P3.3.1		4	0	khoảng cách ngắn nhất parabol đến đường tròn, thực tế
+T1120000003734	VT	P1.1.1		1	1	
+T1120000001429	SDT	NHOM:NNB01258		1	1	
+T312010301140	PPTD	NDB00846		2	0	mặt cầu tâm I qua A
+T112010201118	HS	P1.3.2		2	1	
+T1120000006271	VT	P1.4.6		3	1	
+T112010201120	HS	P1.4.4		2	1	
+T112070101209	VT	P1.4.2		3	0	DS nhiều ý: hình chóp, vectơ, tích vô hướng
+T312010503022	PPTD	NDB00860		1	1	
+T112010402084	HS	P1.5.1		2	1	
+T1120000001257	SDT	NHOM:NNB01258		1	1	
+T312000000956	PPTD	NDB00860		3	0	AB=3AM, M thuộc mp, khoảng cách B đến mp
+T1120000003547	VT	P1.4.3		3	1	
+T1120000006141	HS	P1.3.1		2	0	DS nhiều ý: cực trị, hệ số góc đường qua hai cực trị, GTLN
+T1120000004726	SDT	NHOM:NNB01260		3	0	độ lệch chuẩn hai mẫu, tổng a+b
+T312000000154	VT	P3.7.1		3	0	DS nhiều ý: chuyển động chim bồ câu trong Oxyz
+T112010305114	HS	NEW	khoảng cách từ điểm cực trị đến tiệm cận xiên	3	0	
+T112020302062	HS	P2.3.1		2	1	
+T1120000006946	NHTP	NDB00752		1	1	
+T1120000003423	HS	P1.9.2		2	1	
+T1120000005092	XS	NHOM:NNB01255		3	1	lồng gà, chuyển con rồi bắt
+T1120000005040	NHTP	NDB00752		1	0	tính chất tích phân
+T1120000006528	HS	P1.1.1		2	1	
+T1120000004914	NHTP	NDB00636		2	1	
+T112000000937	XS	NHOM:NNB01256		4	0	DS nhiều ý: toàn phần và Bayes quy trình 2 vòng
+T312000000212	VT	P2.3.1		3	0	DS nhiều ý: nhà kho trong Oxyz
+T112010201085	HS	P1.4.4		2	1	
+T112010202092	HS	P1.4.3		1	1	
+T1120000004884	XS	NHOM:NNB01256		3	0	Bayes xét nghiệm
+T112010101077	HS	P1.2.2		1	1	
+T1120000005830	HS	P1.4.3		2	1	
+T112000000414	NHTP	NDB00760		3	1	DS nhiều ý: thuỷ triều
+T1120000006629	HS	P1.9.2		1	1	
+T112020402200	HS	P4.1.2		3	0	hàm nhất biến từ đồ thị, chi phí ô nhiễm
+T1120000001207	HS	P1.4.1		3	0	DS nhiều ý: TXĐ, cực đại, số cực trị, so sánh
+T112010202062	HS	P1.4.2		1	1	
+T112010202072	HS	P1.4.3		1	1	

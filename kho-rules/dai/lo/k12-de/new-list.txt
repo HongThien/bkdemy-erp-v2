@@ -1,0 +1,309 @@
+1	? | tối ưu quãng đường ngắn nhất trên mặt hộp chữ nhật (trải phẳng)
+1	? | tự luận hai ý riêng rẽ: tích phân và phương trình mặt phẳng
+1	HONG | đề hỏng, hỏi vectơ vuông góc mặt cầu, không có đáp án
+1	HS | cực trị của hàm trùng phương khi biết hàm số
+1	HS | cực trị hàm đa thức bậc cao
+1	HS | cực trị hàm trùng phương: đếm cực trị theo điều kiện
+1	HS | cực trị hàm trùng phương: tìm giá trị cực trị
+1	HS | đếm cực trị hàm đa thức bậc cao
+1	HS | điểm trên đồ thị làm tổng khoảng cách tới hai đường thẳng nhỏ nhất
+1	HS | diện tích hình chữ nhật nội tiếp nửa đường tròn theo góc, xét đơn điệu
+1	HS | diện tích tam giác tạo bởi hai điểm cực trị hàm phân thức
+1	HS | định nghĩa giá trị lớn nhất của hàm số
+1	HS | định nghĩa tính đơn điệu: chọn phát biểu đúng
+1	HS | đọc đặc điểm hàm số từ đồ thị (đề cụt)
+1	HS | đọc đại lượng từ bảng biến thiên, yêu cầu không rõ
+2	HS | đọc toạ độ giao điểm của đồ thị với trục từ hình vẽ
+1	HS | Đúng–Sai khảo sát tổng hợp hàm nhất biến
+4	HS | Đúng–Sai khảo sát tổng hợp hàm phân thức bậc hai/bậc nhất
+1	HS | giới hạn của nghiệm phương trình f(x)=n khi n tiến ra vô cực
+1	HS | hàm bậc ba từ đồ thị: đọc hệ số, đơn điệu, f', diện tích (đúng sai)
+1	HS | hàm bậc ba: khảo sát tổng hợp nhiều ý (đúng sai)
+4	HS | hàm bậc hai trên bậc nhất: khảo sát tổng hợp nhiều ý (đúng sai)
+1	HS | hàm bậc hai/bậc nhất: diện tích hình chữ nhật tạo bởi hai điểm cực trị trên đồ thị
+1	HS | hàm chi phí cho sẵn: tìm ngưỡng biến để chi phí không vượt mức
+1	HS | hàm phân thức bậc hai: đường thẳng qua hai cực trị, diện tích tam giác với trục
+1	HS | hệ số góc tiếp tuyến lớn nhất hoặc nhỏ nhất của đồ thị
+1	HS | hình cầu trong hình lập phương: tối ưu tổng thể tích
+1	HS | khảo sát hàm bậc ba: đạo hàm, BBT, đồ thị
+3	HS | khảo sát hàm bậc hai trên bậc nhất: nhiều ý về cực trị, tiệm cận, đơn điệu
+7	HS | khảo sát hàm bậc hai/bậc nhất: tiệm cận, cực trị, đơn điệu
+1	HS | khảo sát hàm logarit: bất phương trình, tiệm cận, đơn điệu, cực trị
+1	HS | khảo sát hàm số cụ thể: đạo hàm, BBT, đồ thị
+1	HS | khảo sát hàm trùng phương: cực trị, đơn điệu, GTNN
+1	HS | khảo sát sự biến thiên và vẽ đồ thị hàm số
+2	HS | khảo sát sự biến thiên và vẽ đồ thị hàm số (tự luận)
+2	HS | khảo sát tổng hợp hàm bậc hai trên bậc nhất
+2	HS | khảo sát tổng hợp hàm bậc hai trên bậc nhất (GTNN, tiệm cận, đơn điệu, cực trị)
+4	HS | khảo sát tổng hợp hàm số cụ thể nhiều ý đúng-sai
+8	HS | khảo sát tổng hợp hàm số: Đúng-Sai nhiều ý (đơn điệu, cực trị, tiệm cận, GTLN)
+1	HS | khoảng cách từ điểm cực trị đến tiệm cận xiên
+1	HS | kiểm điểm thuộc đồ thị bằng thay toạ độ vào hàm
+1	HS | kiểm tra điểm thuộc đồ thị hàm số
+2	HS | kinh tế: giải bất phương trình lợi nhuận hoặc hoà vốn, không dùng đạo hàm
+1	HS | kinh tế: tối ưu lợi nhuận xuất khẩu có thuế
+1	HS | lập hàm bậc ba mô hình vận tốc từ giá trị cho trước, tính giá trị
+1	HS | lập hàm năng lượng theo vận tốc rồi tìm giá trị nhỏ nhất
+1	HS | lập hàm tổng chi phí chuyến đi theo vận tốc rồi tìm nhỏ nhất
+1	HS | lý thuyết đơn điệu: mệnh đề đạo hàm và đồng biến, nghịch biến
+1	HS | lý thuyết: điều kiện đơn điệu và dấu đạo hàm
+1	HS | lý thuyết: điều kiện đồng biến theo dấu f'
+1	HS | lý thuyết: điều kiện đủ để hàm số có cực trị
+1	HS | lý thuyết: mệnh đề đúng về dấu f′ và tính đơn điệu
+1	HS | mệnh đề lý thuyết về cực trị
+4	HS | NEW hàm bậc hai/bậc nhất: khảo sát tổng hợp nhiều ý (tiệm cận, cực trị, tâm đối xứng, tiếp tuyến)
+1	HS | nhận biết định nghĩa giá trị nhỏ nhất, lớn nhất của hàm số
+1	HS | nhận dạng đồ thị hàm số trong các hàm cho sẵn
+1	HS | nhận dạng đồ thị hàm trùng phương
+2	HS | nhận dạng đồ thị: chọn hàm số đúng trong bốn loại hàm khác nhau
+1	HS | nhận dạng hàm số theo đồ thị trong bốn hàm khác loại
+2	HS | nhận diện đồ thị trong các loại hàm hỗn hợp
+1	HS | nhận diện hàm số trùng phương từ bảng biến thiên
+1	HS | phương trình đường thẳng qua hai cực trị hàm bậc hai trên bậc nhất
+7	HS | tâm đối xứng của đồ thị hàm bậc hai trên bậc nhất
+1	HS | tâm đối xứng đồ thị hàm bậc hai trên bậc nhất (giao hai tiệm cận)
+1	HS | tâm đối xứng đồ thị hàm bậc hai trên bậc nhất, tính tổng toạ độ
+1	HS | thực tế tìm số ngày ít nhất, đề thiếu dữ kiện
+1	HS | tìm cực trị của hàm trùng phương
+1	HS | tìm cực trị hàm trùng phương
+1	HS | tìm giá trị cực tiểu hàm trùng phương cho công thức
+1	HS | tìm m để hàm đa thức bậc cao đạt cực đại tại điểm cho trước
+2	HS | tìm m để hàm số đơn điệu trên khoảng cho trước
+2	HS | tìm m để hàm số đơn điệu trên khoảng hoặc trên R
+1	HS | tìm tâm đối xứng của đồ thị hàm bậc hai trên bậc nhất
+2	HS | tìm tâm đối xứng đồ thị hàm bậc hai trên bậc nhất
+1	HS | tìm tham số để hàm bậc bốn đạt cực tiểu tại điểm cho trước
+1	HS | tính đạo hàm của hàm phân thức hữu tỉ
+2	HS | tối ưu kinh tế có thuế phụ thu: tìm mức thuế t
+1	HS | tối ưu lập hàm từ phân công sản xuất, tìm số ngày ít nhất
+1	HS | tối ưu quãng đường lớn nhất, lập hàm theo góc
+1	HS | tối ưu thời gian dùng hết nhiên liệu của hai người
+1	HS | tối ưu tổng hai hàm theo phân bổ x+y cố định
+1	HS | xác suất kết hợp điều kiện số cực trị hàm trùng phương
+1	NHTP | diện tích hình phẳng giới hạn bởi đường cônic (hypebol) trong hình vuông, bài thực tế trang trí
+1	NHTP | diện tích hình phẳng thực tế giữa hai đường cong tịnh tiến, tính chi phí
+2	NHTP | diện tích miền parabol trong bối cảnh thực tế rồi tính chi phí
+1	NHTP | diện tích miền thoả điều kiện khoảng cách, đưa về parabol rồi tích phân
+1	NHTP | diện tích phần giới hạn bởi đồ thị hàm phân thức trong hình chữ nhật
+1	NHTP | định nghĩa tích phân qua nguyên hàm (Newton–Leibniz)
+1	NHTP | định nghĩa tích phân xác định bằng nguyên hàm (Newton-Leibniz)
+1	NHTP | độ dài đường cong bằng tích phân, công thức cho sẵn
+1	NHTP | giá trị trung bình của hàm số trên đoạn bằng tích phân
+1	NHTP | giá trị trung bình của hàm số trên đoạn, tìm tham số
+1	NHTP | hàm chứa tích phân hằng số, tìm giá trị hàm
+1	NHTP | lý thuyết: công thức thể tích khối tròn xoay quanh Ox
+1	NHTP | mô hình hypebol quay quanh trục: lập phương trình, tính diện tích, thể tích
+2	NHTP | thể tích vật tròn xoay thực tế: lập hàm biên rồi tích phân
+2	NHTP | thực tế: diện tích hình phẳng giới hạn bởi parabol, tính chi phí
+2	NHTP | tích phân bằng hiệu giá trị nguyên hàm tại hai cận
+1	NHTP | tích phân của f′ đọc giá trị f từ đồ thị
+1	NHTP | tích phân của f′ đọc giá trị f(a), f(b) từ đồ thị
+1	NHTP | tích phân hai hàm ngược nhau, tính tổng bằng đổi biến
+1	NHTP | tích phân hàm chứa căn bậc hai cận cho trước
+1	NHTP | tích phân hàm chứa căn bậc hai tam thức, đổi biến lượng giác hoặc hình tròn
+1	NHTP | tích phân tính thể tích công trình thực tế mái parabol
+1	NHTP | tính hiệu F(b)−F(a) của nguyên hàm hàm chứa logarit
+1	NHTP | ứng dụng tích phân: diện tích hình parabol suy ra khối lượng chi phí
+1	O | 
+1	O | cấp số cộng kết hợp phương trình mũ, tìm giá trị nhỏ nhất
+1	O | cấp số cộng: tìm công sai
+1	O | cấp số cộng: tính số hạng
+1	O | cấp số cộng: tính số hạng thứ n
+1	O | cấp số nhân: tìm công bội
+1	O | đạo hàm hàm lượng giác
+1	O | đạo hàm: tính đạo hàm hàm đa thức
+1	O | đạo hàm: tính giá trị đạo hàm của đa thức
+1	O | dãy cấp số nhân: tổng diện tích hình vuông lồng nhau
+1	O | dãy số: vay trả góp ngân hàng lãi suất tháng cuối
+1	O | định nghĩa GTLN, GTNN: chọn mệnh đề đúng
+1	O | elip: khoảng cách ngắn nhất từ điểm đến điểm trên elip
+1	O | hàm mũ: ứng dụng thực tế suy giảm theo năm (lớp 11)
+1	O | hàm số: điểm thuộc đồ thị (thay toạ độ)
+1	O | hình chóp cụt: thể tích
+1	O | hình chóp: đường đi ngắn nhất trên mặt, trải phẳng
+1	O | hình học không gian lớp 11: đường trung bình, song song
+1	O | hình học không gian lớp 11: đường vuông góc mặt phẳng
+1	O | hình học không gian lớp 11: khoảng cách hai đường thẳng chéo nhau
+1	O | hình học không gian lớp 11: khoảng cách từ tâm tứ diện đều đến mặt
+1	O | hình học không gian thực tế: độ dài lớn nhất trong vật hình trụ
+1	O | hình học không gian: công thức thể tích khối trụ
+1	O | hình học không gian: đường gấp khúc ngắn nhất trên mặt hộp trải phẳng
+1	O | hình học không gian: đường ngắn nhất trải phẳng
+1	O | hình học không gian: góc nhị diện trong thực tế
+1	O | hình học không gian: góc nhị diện, thể tích chóp
+1	O | hình học không gian: góc phẳng nhị diện
+1	O | hình học không gian: khoảng cách giữa hai đường chéo nhau
+1	O | hình học không gian: khoảng cách giữa hai đường thẳng chéo nhau
+1	O | hình học không gian: khối nón cắt bởi mặt phẳng song song trục, thể tích
+1	O | hình học không gian: thể tích khối chóp
+1	O | hình học không gian: thể tích khối chóp và góc nhị diện
+1	O | hình học không gian: thể tích khối chóp, góc đường–mặt đáy
+1	O | hình học không gian: thể tích khối lập phương trong ly trụ, nước tràn
+1	O | hình học không gian: thể tích và khoảng cách hình chóp
+1	O | hình học không gian: thể tích, khoảng cách, góc của chóp đáy vuông
+1	O | hình học mặt cầu: khoảng cách trên mặt đất theo kinh vĩ độ
+1	O | hình học phẳng: diện tích hình tròn kèm chi phí
+1	O | hình học phẳng: dựng hình lặp theo bước rồi tính diện tích/chu vi
+1	O | logarit: giải phương trình logarit cơ bản
+1	O | lôgarit: giải phương trình lôgarit cơ bản
+1	O | logarit: rút gọn biểu thức
+1	O | lượng giác: bất phương trình thực tế mực nước thuỷ triều
+1	O | lượng giác: giải phương trình cơ bản
+1	O | lượng giác: giải phương trình sin x = 1
+1	O | mũ-logarit: giải bất phương trình logarit
+1	O | mũ–logarit: giải bất phương trình logarit
+1	O | mũ–logarit: mô hình y'=ky (định luật làm lạnh) tìm k, C
+1	O | mũ–logarit: tăng trưởng lãi kép thực tế
+1	O | mũ: bài toán tăng trưởng liên tục thực tế
+1	O | mũ: công thức tăng trưởng A=Pe^(rt)
+1	O | mũ: giải phương trình mũ
+1	O | phương trình vi phân mũ: mô hình làm mát
+1	O | thể tích khối lăng trụ theo công thức
+1	O | thể tích lăng trụ đứng từ độ dài cạnh
+1	O | thống kê ghép nhóm: số trung bình
+1	O | thống kê: đọc số liệu từ biểu đồ cột
+1	O | thống kê: nhóm chứa mốt của mẫu ghép nhóm
+1	O | thống kê: số trung bình của mẫu số liệu ghép nhóm
+1	O | thống kê: số trung bình mẫu số liệu ghép nhóm
+1	O | tổ hợp xác suất chọn ngẫu nhiên một số câu
+1	O | tổ hợp xác suất: đếm dãy số, chia hết
+1	O | tổ hợp: đếm cách chia sách và xác suất cổ điển
+1	O | tổ hợp: đếm cách chọn đỉnh đa giác đều
+1	O | tổ hợp: đếm cách chọn nhóm đối tượng khác loại
+1	O | toán rời rạc: tìm đường đi ngắn nhất qua các điểm trên sơ đồ trọng số
+1	O | xác suất cổ điển nhiều giai đoạn chọn bài tập (lớp 11)
+1	O | xác suất cổ điển: đếm biến cố trên bảng ô vuông điền số
+1	O | xác suất cổ điển: đếm tam giác từ đa giác đều
+1	O | xác suất cổ điển: gieo xúc xắc rồi tính xác suất tam giác
+1	O | xác suất cổ điển: hoán vị, đếm biến cố
+1	O | xác suất cổ điển: thử ngẫu nhiên không lặp, ít nhất một người đúng
+1	O | xác suất: đếm biến cố trò chơi đổi trạng thái
+1	PPTD | bài toán thực tế Oxyz: mặt phẳng, đường thẳng, khoảng cách
+1	PPTD | bài toán thực tế Oxyz: mặt phẳng, mặt cầu, đường thẳng bay (vị trí tương đối)
+1	PPTD | chiếu xuyên tâm hình tròn lên mặt phẳng, tính diện tích bóng
+1	PPTD | chuyển động bay trong Oxyz: vận tốc tích phân, quãng đường, radar
+1	PPTD | cực trị biểu thức tuyến tính của điểm trên mặt cầu
+1	PPTD | cực trị chu vi tam giác có hai đỉnh di động trên hai đường thẳng
+1	PPTD | cực trị khoảng cách điểm trên đường tròn giao tuyến mặt phẳng và mặt cầu
+1	PPTD | cực trị khoảng cách từ gốc đến hình chiếu của điểm lên mặt phẳng chứa đường thẳng cố định
+1	PPTD | cực trị MA+MB với M thuộc mặt phẳng
+1	PPTD | cực trị tổng khoảng cách hai điểm với điểm thuộc mặt cầu
+1	PPTD | cực trị tổng khoảng cách từ hai điểm đến mặt phẳng qua điểm cố định
+1	PPTD | cực trị: điểm trên mặt phẳng thoả hệ thức độ dài, tìm max min khoảng cách
+1	PPTD | cực trị: mặt phẳng qua điểm cố định cắt ba trục, thể tích nhỏ nhất
+1	PPTD | điểm di động trên mặt cầu thoả hệ thức vectơ, tìm mặt phẳng cố định
+1	PPTD | điểm di động trong mặt phẳng, tìm khoảng cách nhỏ nhất
+1	PPTD | điểm thay đổi trên đường thẳng làm diện tích tam giác nhỏ nhất
+1	PPTD | điểm thuộc mặt phẳng thoả góc vuông, tìm độ dài lớn nhất
+1	PPTD | điểm trên đường thẳng cách giao điểm hai đường thẳng một khoảng cho trước (thực tế)
+1	PPTD | điểm trên đường thẳng để hai tia tạo góc bằng nhau với mặt phẳng
+1	PPTD | điểm trên mặt cầu có khoảng cách đến mặt phẳng nhỏ nhất
+1	PPTD | điểm trên mặt phẳng làm MA+MB nhỏ nhất (đối xứng)
+1	PPTD | định vị GPS: tìm vị trí vật thể từ khoảng cách tới các vệ tinh
+1	PPTD | đoạn nối hai đường chéo nhau song song mặt phẳng, ngắn nhất
+1	PPTD | đường thẳng cắt trục và đường thẳng khác, song song mặt phẳng, cực trị độ dài đoạn
+1	PPTD | đường thẳng nằm trong mặt phẳng tạo góc nhỏ nhất với đường thẳng cho trước
+1	PPTD | đường tròn qua ba điểm trong Oxyz: tâm, bán kính, độ dài cung
+1	PPTD | đường tròn trong mặt phẳng tiếp xúc hai đường thẳng song song
+1	PPTD | góc nhị diện giữa hai nửa mặt phẳng theo toạ độ
+1	PPTD | GPS: xác định vị trí điểm từ khoảng cách tới các vệ tinh
+1	PPTD | khoảng cách nhỏ nhất hai điểm chạy trên mặt cầu và mặt phẳng theo phương cho trước
+1	PPTD | khoảng cách từ giao tuyến hai mặt phẳng đến mặt phẳng, thực tế
+1	PPTD | mặt cầu chứa hai đường tròn chung dây cung: tính bán kính
+1	PPTD | mặt cầu có tâm thuộc trục đi qua hai điểm, tính bán kính
+1	PPTD | mặt cầu đường kính cho trước: viết phương trình
+1	PPTD | mặt cầu qua hai điểm tiếp xúc mặt phẳng: quỹ tích tiếp điểm, cực trị
+1	PPTD | mặt cầu tiếp xúc ba mặt phẳng toạ độ, bài toán thực tế
+1	PPTD | mặt cầu, điểm M nhìn AB góc vuông, quan hệ đường thẳng và mặt phẳng
+1	PPTD | mặt cầu: đường ngắn nhất qua tiếp tuyến và cung trên mặt cầu, bài thực tế
+1	PPTD | mặt cầu: tiếp điểm tia sáng từ điểm ngoài, mặt phẳng chứa đường tròn tiếp điểm
+1	PPTD | mặt cầu: tiếp tuyến từ điểm ngoài và đường ngắn nhất trên mặt cầu, bài thực tế
+1	PPTD | mặt phẳng cắt ba tia toạ độ các đoạn bằng nhau (đoạn chắn)
+1	PPTD | mặt phẳng chứa đường thẳng tạo góc lớn nhất với đường thẳng khác
+1	PPTD | mặt phẳng qua điểm cách gốc lớn nhất, tính thể tích tứ diện
+1	PPTD | mặt phẳng qua điểm cách gốc lớn nhất, tính thể tích tứ diện chắn
+1	PPTD | mặt phẳng qua điểm cắt ba trục, cực trị biểu thức
+1	PPTD | mô hình chuyển động trong Oxyz: tốc độ thay đổi diện tích bóng
+1	PPTD | mô hình giá đỡ ba chân: độ dài trụ để mặt phẳng nghiêng góc cho trước
+1	PPTD | mô hình radar không lưu: mặt cầu vùng phủ sóng và đường bay
+1	PPTD | mô hình thực tế chỏm cầu gắn hệ trục Oxyz, tính khoảng cách
+1	PPTD | mô hình thực tế chuyển động trong Oxyz: đường thẳng và mặt phẳng
+1	PPTD | mô hình thực tế hình nón chùm sáng trong Oxyz
+1	PPTD | mô hình thực tế lập phương trình mặt phẳng từ khoảng cách trong Oxyz
+1	PPTD | mô hình thực tế mái nhà trong Oxyz: toạ độ đỉnh, mặt phẳng, góc
+1	PPTD | mô hình thực tế mặt phẳng: tìm điểm thoả tam giác đều, độ cao
+1	PPTD | mô hình thực tế quỹ đạo cung tròn trong mặt phẳng chứa hai điểm
+1	PPTD | mp chứa đường thẳng tạo góc nhỏ nhất với mp cho trước, tính khoảng cách
+1	PPTD | nhận biết dạng phương trình chính tắc của đường thẳng
+1	PPTD | nhận biết phương trình mặt phẳng toạ độ
+1	PPTD | nhận biết phương trình mặt phẳng toạ độ Oxy, Oyz, Oxz
+4	PPTD | nhận biết phương trình tổng quát của mặt phẳng
+1	PPTD | nhận dạng phương trình chính tắc của đường thẳng
+1	PPTD | nhận dạng phương trình tổng quát của mặt phẳng
+1	PPTD | nhận diện phương trình tổng quát của mặt phẳng
+1	PPTD | phương trình mặt phẳng toạ độ
+1	PPTD | phương trình mặt phẳng toạ độ Oxy, Oyz, Oxz
+1	PPTD | quãng đường ngắn nhất qua các mặt phẳng trong Oxyz thực tế
+1	PPTD | quỹ đạo parabol trong không gian Oxyz bóng rổ thực tế
+1	PPTD | quỹ tích điểm là đường tròn giao mặt cầu và mặt phẳng, tìm khoảng cách lớn nhất
+1	PPTD | quỹ tích vệt tia sáng trên mặt phẳng toạ độ, khoảng cách lớn nhất
+1	PPTD | radar: độ dài đoạn đường thẳng nằm trong mặt cầu
+1	PPTD | tàu rời mặt cầu theo tiếp tuyến, tìm khoảng cách tới đường tròn
+1	PPTD | thực tế bể nước nghiêng: lập mặt phẳng, khoảng cách, góc
+1	PPTD | thực tế game: mặt cầu vùng bay, đường thẳng, khoảng cách ngắn nhất
+1	PPTD | thực tế gắn Oxyz: mặt phẳng qua điểm, tối ưu độ dài
+1	PPTD | thực tế hình hộp gắn toạ độ: tối ưu góc giữa hai mặt phẳng
+1	PPTD | thực tế mặt cầu tâm tìm chân cột từ hai điểm trên mặt cầu
+1	PPTD | thực tế mặt cầu: tiếp điểm tia sáng từ điểm ngoài, so sánh hai mặt cầu
+2	PPTD | thực tế Oxyz: vật chuyển động thẳng, giao với mặt cầu vùng quan sát
+1	PPTD | thực tế quỹ đạo parabol trong Oxyz và giao mặt phẳng khung thành
+1	PPTD | thực tế toạ độ: cực trị tổng khoảng cách qua điểm trên mặt phẳng
+2	PPTD | thực tế vùng phủ sóng/tín hiệu hình cầu: điểm, mặt phẳng, chuyển động
+2	PPTD | thực tế: chuyển động thẳng đều trong Oxyz, lập phương trình đường, toạ độ, quãng đường
+1	PPTD | thực tế: giao hai mặt phẳng, tìm điểm cao nhất
+1	PPTD | thực tế: hai vật chuyển động trong Oxyz, khoảng cách theo thời gian
+1	PPTD | thực tế: lập phương trình mặt phẳng chứa quỹ đạo từ các điểm trong Oxyz
+1	PPTD | thực tế: mặt phẳng qua điểm cố định chắn ba trục, thể tích tứ diện nhỏ nhất
+1	PPTD | thực tế: quỹ đạo parabol, tính độ cao theo khoảng cách đến trục đối xứng
+1	PPTD | thực tế: tìm hệ số phương trình mặt phẳng chứa quỹ đạo
+1	PPTD | tia sáng chiếu tới mặt phẳng, tìm giao điểm và toạ độ điểm đích
+1	PPTD | tia thay đổi tạo góc cố định với trục, khoảng cách lớn nhất của vệt trên mặt phẳng
+1	PPTD | tìm điểm trên đường thẳng cách giao điểm hai đường thẳng một khoảng cho trước
+1	PPTD | tìm điểm từ khoảng cách tới bốn tâm cho trước (GPS)
+1	PPTD | tìm hình chiếu vuông góc của điểm lên đường thẳng, bài thực tế
+1	PPTD | toạ độ Trái Đất hệ Oxyz: tính khoảng cách trên mặt đất
+1	PPTD | tứ diện đều trong Oxyz: tìm tâm mặt cầu ngoại tiếp từ đỉnh và chân đường cao
+1	PPTD | ứng dụng thực tế Oxyz: đường thẳng đường đạn, tính đại lượng yêu cầu
+2	PPTD | ứng dụng thực tế: đường bay thẳng và vùng phủ sóng mặt cầu trong Oxyz
+1	PPTD | vectơ chỉ phương của giao tuyến hai mặt phẳng
+1	PPTD | viết phương trình mặt cầu biết đường kính AB
+1	PPTD | viết phương trình mặt cầu biết đường kính hai điểm
+1	PPTD | viết phương trình mặt cầu biết tâm và điểm đi qua
+1	PPTD | viết phương trình mặt cầu có tâm thuộc mặt cầu khác và đi qua hai điểm
+1	PPTD | viết phương trình mặt phẳng cắt ba tia toạ độ theo điều kiện độ dài
+1	PPTD | viết phương trình mặt phẳng chứa tam giác có ba cạnh tiếp xúc mặt cầu
+1	PPTD | viết phương trình mặt phẳng theo đoạn chắn biết trọng tâm tam giác
+2	PPTD | viết phương trình mặt phẳng toạ độ Oxy, Oyz, Oxz
+1	PPTD | viết phương trình mặt phẳng toạ độ Oxz
+1	PPTD | vùng quan sát hình tròn trên mặt phẳng từ khoảng cách điểm đến mặt phẳng
+1	SDT | đọc tần số một nhóm từ bảng ghép nhóm
+1	SDT | mẫu ghép nhóm: nhận xét trung vị, mốt, tần số tích luỹ, trung bình
+1	SDT | tìm nhóm có tần số lớn nhất trong bảng ghép nhóm
+5	SDT | tính số trung bình của mẫu số liệu ghép nhóm
+1	SDT | tính số trung bình mẫu ghép nhóm từ biểu đồ
+1	SDT | trung bình cộng của mẫu số liệu ghép nhóm
+1	SDT | xác định cỡ mẫu từ bảng số liệu ghép nhóm
+1	VT | bài thực tế hình hộp nghiêng trong Oxyz, tìm toạ độ điểm
+1	VT | bóng nảy parabol: tổng cấp số nhân, toạ độ điểm cao nhất
+1	VT | chân phân giác trong tam giác Oxyz và bán kính ngoại tiếp
+1	VT | cực trị độ dài đoạn nối hai cạnh chéo trong lăng trụ (gắn hệ trục)
+1	VT | dây điện ngắn nhất dọc các tường phòng hộp chữ nhật toạ độ
+1	VT | hình thang vuông trong Oxyz: tìm đỉnh còn lại từ diện tích
+1	VT | quy tắc ba điểm cộng vectơ
+1	VT | quỹ tích trực tâm tam giác khi điểm di động trên trục Oxyz
+1	VT | tìm toạ độ chân đường cao hạ từ đỉnh tam giác trong Oxyz
+1	VT | tìm toạ độ điểm từ các hệ thức tích vô hướng cho trước
+1	VT | tìm toạ độ đỉnh hình thang cân biết ba đỉnh
+1	VT | toạ độ mô hình Trái Đất: tính độ dài cung qua góc giữa hai vectơ
+1	XS | xác suất biến cố độc lập, quy tắc cộng và nhân
+1	XS | xác suất đi ngẫu nhiên qua các phòng (sơ đồ) đến đích

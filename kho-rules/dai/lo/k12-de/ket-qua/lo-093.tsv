@@ -1,0 +1,100 @@
+T1120000003616	HS	P1.2.2		1	1	
+T112000000699	NHTP	NDB00632		2	1	
+T112020104067	HS	P2.1.1		1	1	
+T1120000004577	HS	P1.2.1		1	1	
+T1120000006003	HS	P1.4.3		1	1	
+T112000000166	NHTP	NDB00744		2	1	DS nhiều ý nguyên hàm
+T1120000006598	VT	P1.4.2		2	1	
+T312000000247	VT	P2.3.1		2	1	
+T1120000001095	O	?	xác suất cổ điển: thử ngẫu nhiên không lặp, ít nhất một người đúng	3	1	
+T112010305076	HS	P1.8.1		2	1	
+T312000000228	VT	P3.7.1		3	1	DS thực tế máy bay
+T1120000006127	HS	P4.4.2		3	1	
+T1120000005615	NHTP	NDB00752		1	1	
+T1120000004316	VT	P3.6.2		4	1	
+T1120000005398	XS	NHOM:NNB01257		3	0	giữa NNB01256 Bayes và NNB01257 thực tiễn
+T1120000004139	PPTD	NEW	định vị GPS: tìm vị trí vật thể từ khoảng cách tới các vệ tinh	4	0	có thể thuộc VT P3.7.2 radar
+T1120000004528	VT	P3.2.2		2	1	
+T112010202136	HS	P1.4.3		1	1	
+T312000000373	PPTD	NDB00835		1	1	
+T112070109030	VT	P1.5.1		3	1	
+T1120000002995	HS	NEW	khảo sát hàm bậc hai/bậc nhất: tiệm cận, cực trị, đơn điệu	3	0	DS nhiều ý; thực đơn chỉ có P2.3.1-3
+T112010301064	HS	P1.7.1		1	1	
+T112070305048	VT	P2.1.2		2	1	
+T112070301134	VT	P3.4.1		1	1	
+T112000000880	NHTP	NDB00631		3	1	DS đồ thị vận tốc parabol
+T112070301034	VT	P3.4.1		2	1	
+T1120000006556	HS	NEW	khảo sát hàm bậc hai/bậc nhất: tiệm cận, cực trị, đơn điệu	3	0	DS nhiều ý
+T1120000003955	HS	P1.2.1		1	1	
+T112000000364	NHTP	NEW	thực tế: diện tích hình phẳng giới hạn bởi parabol, tính chi phí	3	0	giữa NDB00777 và NDB00787
+T1120000004135	VT	P3.2.3		2	1	DS toạ độ hình hộp
+T112000000532	HS	NEW	khảo sát hàm bậc hai/bậc nhất: tiệm cận, cực trị, đơn điệu	3	0	DS nhiều ý
+T112010102180	HS	P1.4.3		3	0	DS nhiều ý f′ đồ thị: GTLN, cực trị, đơn điệu
+T112000000741	NHTP	NEW	thực tế: diện tích hình phẳng giới hạn bởi parabol, tính chi phí	3	0	parabol + nửa đường tròn
+T112000000084	NHTP	NDB00752		1	1	
+T112000000897	NHTP	NDB00747		1	1	
+T112000000945	NHTP	NDB00631		4	0	hai vận động viên, đồ thị vận tốc, quãng đường chênh lệch
+T1120000005613	NHTP	NDB00747		1	1	
+T312000000116	VT	P2.3.1		3	1	DS sân vận động
+T1120000001025	NHTP	NDB00745		1	0	hỗn hợp mũ + đa thức
+T112010202158	HS	P1.4.3		1	1	
+T112070107057	VT	P1.4.3		2	1	
+T312000000991	PPTD	NDB00835		1	1	
+T1120000006701	HS	P1.5.1		2	0	DS nhiều ý bậc ba: GTLN GTNN, giới hạn, tiệm cận
+T1120000006825	NHTP	NDB00753		1	1	
+T112010201097	HS	P2.1.7		3	1	
+T112010202109	HS	P1.4.3		1	1	
+T112010305032	HS	P1.8.1		2	1	
+T312010102106	PPTD	NDB00851		3	1	
+T1120000003522	VT	P2.3.1		2	0	giữa P2.2.1 và P2.3.1; DS nhiều ý
+T112010301113	HS	P1.7.1		1	1	
+T1120000004681	VT	P3.4.1		3	0	thực tế máy bay, bản chất góc hai vectơ
+T1120000004624	NHTP	NDB00747		1	1	
+T112000000428	HS	P1.9.2		1	1	
+T112070301177	VT	P2.2.1		3	1	DS nhiều ý toạ độ hộp chữ nhật
+T112010401092	HS	P1.6.2		2	1	
+T1120000004349	HS	NEW	khảo sát hàm bậc hai/bậc nhất: tiệm cận, cực trị, đơn điệu	2	0	DS nhiều ý
+T112020401270	HS	P4.2.1		3	1	
+T312010101241	PPTD	NDB00851		2	1	DS nhiều ý mặt phẳng
+T312000000797	PPTD	NDB00839		1	1	
+T1120000003272	HS	P1.7.1		1	1	
+T1120000001242	HS	P2.2.2		2	1	
+T1120000004001	VT	P3.1.1		2	0	DS nhiều ý toạ độ vectơ, trung điểm, độ dài
+T1120000003823	HS	NEW	khảo sát hàm bậc hai/bậc nhất: tiệm cận, cực trị, đơn điệu	3	0	DS nhiều ý
+T312000000331	PPTD	NEW	đoạn nối hai đường chéo nhau song song mặt phẳng, ngắn nhất	4	1	
+T112010201123	HS	P1.3.1		1	1	
+T1120000006864	NHTP	NDB00742		1	1	
+T312000000432	PPTD	NDB00853		4	0	đường thẳng cắt d và mặt phẳng nhận A là trung điểm
+T1120000002930	VT	P3.7.3		3	1	DS lực giá đỡ chậu cây
+T112010102199	HS	P1.3.1		2	0	tự luận 2 ý: đơn điệu cực trị bậc ba + GTLN GTNN trên đoạn
+T1120000002978	HS	P4.2.3		3	1	
+T112010102066	HS	P1.2.4		2	1	
+T1120000001008	HS	P1.3.1		2	0	DS nhiều ý bậc ba: cực trị, đường qua hai cực trị, GTLN
+T1120000001076	XS	NHOM:NNB01257		3	1	DS toàn phần + Bayes xét nghiệm
+T112010402159	HS	P1.5.1		2	1	
+T312000000920	PPTD	NDB00854		1	1	
+T112000000677	NHTP	NDB00755		2	0	tích phân từ diện tích S1,S2 trên đồ thị
+T112010202055	HS	P1.4.1		1	1	
+T112070301180	VT	P2.1.2		1	1	
+T112020401040	HS	P4.2.1		3	1	
+T112010202012	HS	P1.4.2		1	1	
+T112000000492	NHTP	NDB00743		1	0	hỗn hợp lượng giác + mũ + phân thức
+T112070311032	VT	P3.7.1		4	1	
+T1120000003425	VT	P1.2.5		2	0	giữa P1.2.1 hình hộp và P1.2.5 trung điểm
+T1120000004694	VT	P3.2.4		2	1	
+T1120000006636	VT	P1.2.1		3	0	DS nhiều ý vectơ trong lập phương
+T312000000610	PPTD	NDB00837		1	1	
+T112010102188	HS	NEW	khảo sát hàm logarit: bất phương trình, tiệm cận, đơn điệu, cực trị	3	0	DS nhiều ý
+T112000000504	NHTP	NDB00781		3	0	thực tế thể tích tròn xoay hình giữa hai nửa đường tròn
+T312000000491	PPTD	NEW	thực tế bể nước nghiêng: lập mặt phẳng, khoảng cách, góc	4	0	DS nhiều ý
+T1120000004505	HS	P4.4.2		4	0	hàm chi phí bậc hai/bậc nhất, hệ số từ tiệm cận xiên
+T1120000001383	HS	P2.1.3		3	0	DS nhiều ý bậc ba từ đồ thị
+T112010402110	HS	P1.5.2		2	1	
+T112000000769	HS	NEW	khảo sát hàm bậc hai/bậc nhất: tiệm cận, cực trị, đơn điệu	3	0	DS nhiều ý
+T1120000006547	VT	P1.1.1		1	1	
+T1120000001376	HS	P2.2.2		3	0	DS nhiều ý nhất biến từ đồ thị
+T112020402022	HS	P4.5.2		3	1	
+T112000000420	XS	NHOM:NNB01257		3	1	DS toàn phần + Bayes
+T1120000006750	NHTP	NDB00775		3	1	
+T1120000006378	HS	NEW	khảo sát hàm bậc hai/bậc nhất: tiệm cận, cực trị, đơn điệu	3	0	DS nhiều ý
+T312010102123	PPTD	NDB00851		2	1	

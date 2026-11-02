@@ -1,0 +1,342 @@
+# THỰC ĐƠN DẠNG ỨNG VIÊN — 6 chương Toán 12
+
+Mã chương: HS · NHTP · VT · XS · SDT · PPTD · O (ngoài 6 chương: kiến thức lớp 10/11 hoặc chương khác)
+
+## HS — Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số (Hàm số)
+### Các phương diện khảo sát hàm số
+- Nhóm P1.1 Xét tính đơn điệu khi biết hàm số
+  - P1.1.1 Hàm đa thức, hàm phân thức
+  - P1.1.2 Hàm chứa căn, mũ, logarit, giá trị tuyệt đối, lượng giác
+- Nhóm P1.2 Đọc tính đơn điệu từ bảng biến thiên, đồ thị, f′
+  - P1.2.1 Đọc từ bảng biến thiên
+  - P1.2.2 Đọc từ đồ thị của f
+  - P1.2.3 Bảng xét dấu hoặc đồ thị của f′
+  - P1.2.4 f′ cho bằng biểu thức tích nhân tử
+- Nhóm P1.3 Tìm cực trị khi biết hàm số
+  - P1.3.1 Hàm bậc ba
+  - P1.3.2 Hàm phân thức
+  - P1.3.3 Hàm mũ, logarit, căn, lượng giác và hàm có điểm không khả vi
+- Nhóm P1.4 Đọc cực trị từ bảng biến thiên, đồ thị, f′
+  - P1.4.1 Đọc cực trị từ bảng biến thiên
+  - P1.4.2 Đọc cực trị từ đồ thị của f
+  - P1.4.3 Bảng xét dấu hoặc đồ thị của f′
+  - P1.4.4 f′ cho bằng biểu thức nhân tử
+- Nhóm P1.5 Tìm GTLN, GTNN khi biết hàm số
+  - P1.5.1 Hàm đa thức trên đoạn
+  - P1.5.2 Hàm phân thức trên đoạn
+  - P1.5.3 Hàm chứa căn thức
+  - P1.5.4 Hàm lượng giác, mũ, logarit
+  - P1.5.5 Trên khoảng, nửa khoảng hoặc trên ℝ
+- Nhóm P1.6 Đọc GTLN, GTNN từ bảng biến thiên, đồ thị
+  - P1.6.1 Đọc từ đồ thị của f
+  - P1.6.2 Đọc từ bảng biến thiên hoặc bảng xét dấu f′
+- Nhóm P1.7 Tiệm cận đứng và tiệm cận ngang khi biết hàm số
+  - P1.7.1 Hàm bậc nhất trên bậc nhất
+  - P1.7.2 Đếm tiệm cận của hàm phân thức hữu tỉ
+  - P1.7.3 Hàm chứa căn thức hoặc giá trị tuyệt đối
+  - P1.7.4 Tìm m để có, không có hoặc có đúng k tiệm cận
+- Nhóm P1.8 Tiệm cận xiên khi biết hàm số
+  - P1.8.1 Hàm bậc hai trên bậc nhất: chia đa thức
+  - P1.8.2 Hàm đã tách phần nguyên
+  - P1.8.3 Hàm chứa căn: dùng a=lim f(x)/x, b=lim(f(x)−ax)
+- Nhóm P1.9 Đọc tiệm cận từ bảng biến thiên, đồ thị, giới hạn
+  - P1.9.1 Đọc từ đồ thị
+  - P1.9.2 Đọc từ bảng biến thiên, đếm tiệm cận
+  - P1.9.3 Từ giới hạn cho trước, theo định nghĩa
+### Các loại hàm số
+- Nhóm P2.1 Hàm bậc ba
+  - P2.1.1 Nhận diện hàm số bậc ba
+  - P2.1.2 Dấu a, b, c, d của hàm bậc ba
+  - P2.1.3 Lập công thức hàm số bậc ba từ điều kiện
+  - P2.1.4 Điểm uốn và tâm đối xứng của đồ thị hàm bậc ba
+  - P2.1.5 Số nghiệm của f(x)=m từ đồ thị hàm bậc ba
+  - P2.1.6 Phương trình đường thẳng qua hai điểm cực trị
+  - P2.1.7 Độ dài AB, khoảng cách từ O đến AB, diện tích tam giác OAB
+  - P2.1.8 Quan hệ của AB với đường thẳng hoặc điểm khác
+  - P2.1.9 Tìm tham số để hàm số bậc ba thoả mãn điều kiện
+- Nhóm P2.2 Hàm bậc nhất trên bậc nhất
+  - P2.2.1 Nhận diện hàm số bậc nhất trên bậc nhất
+  - P2.2.2 Hệ số của hàm bậc nhất trên bậc nhất
+  - P2.2.3 Giao hai tiệm cận và tâm đối xứng của hàm nhất biến
+  - P2.2.4 Tìm tham số để hàm số bậc nhất trên bậc nhất thoả mãn điều kiện
+- Nhóm P2.3 Hàm bậc hai trên bậc nhất
+  - P2.3.1 Nhận diện hàm số bậc hai trên bậc nhất
+  - P2.3.2 Hệ số của hàm bậc hai trên bậc nhất
+  - P2.3.3 Tìm tham số để hàm số bậc hai trên bậc nhất thoả mãn điều kiện
+- Nhóm P2.4 Hàm hợp, hàm ẩn: tính đơn điệu
+  - P2.4.1 g(x)=f(u(x)) khi biết f′
+  - P2.4.2 g(x)=f(u(x))+v(x) (có hàm phụ)
+  - P2.4.3 Hàm lượng giác, logarit, căn, mũ, giá trị tuyệt đối: đặt t=u(x)
+  - P2.4.4 Hàm ẩn, hàm hợp có tham số m
+- Nhóm P2.5 Hàm hợp, hàm chứa trị tuyệt đối: cực trị
+  - P2.5.1 Số cực trị của g(x)=f(x)+ax khi biết đồ thị f′
+  - P2.5.2 Hàm |f(x)| và f(|x|)
+  - P2.5.3 Hàm hợp f(u(x)) không chứa giá trị tuyệt đối
+  - P2.5.4 Tìm m để f(u(x,m)) có số cực trị cho trước
+- Nhóm P2.6 Hàm hợp, hàm ẩn, hàm có tham số: GTLN, GTNN
+  - P2.6.1 Từ đồ thị f′ kèm giả thiết nối các giá trị f(a), f(b)
+  - P2.6.2 Cho GTLN hoặc GTNN bằng k, tìm m
+  - P2.6.3 Hàm y=|f(x)+m| trên đoạn
+  - P2.6.4 Phương trình, bất phương trình chứa m dùng max–min
+  - P2.6.5 Hàm hợp f(u(x)) từ bảng biến thiên hoặc đồ thị f′
+  - P2.6.6 Biểu thức nhiều biến có ràng buộc
+- Nhóm P2.7 Hàm hợp: tiệm cận và phương trình
+  - P2.7.1 Hàm hợp g=1/(f(x)+m) cho qua bảng biến thiên
+  - P2.7.2 Phương trình f(u(x))=m, f(f(x))=m
+  - P2.7.3 Phương trình chứa |f(x)|, f(|x|)
+### Tương giao, tiếp tuyến, khoảng cách
+- Nhóm P3.1 Tương giao của đồ thị với đường thẳng, với trục
+  - P3.1.1 Số giao điểm, số nghiệm theo m
+  - P3.1.2 Hoành độ giao điểm thoả hệ thức
+  - P3.1.3 Hình học trên các giao điểm
+- Nhóm P3.2 Tiếp tuyến của đồ thị
+  - P3.2.1 Tiếp tuyến tại một điểm cho trước
+  - P3.2.2 Tiếp tuyến song song hoặc vuông góc đường thẳng cho trước
+  - P3.2.3 Tiếp tuyến cắt hai tiệm cận của hàm nhất biến
+- Nhóm P3.3 Khoảng cách, điểm di động và hình học của tiệm cận
+  - P3.3.1 Khoảng cách nhỏ nhất từ điểm trên đồ thị đến điểm hoặc đường cho trước
+  - P3.3.2 Hai điểm thuộc hai nhánh, cặp điểm đối xứng qua tâm
+  - P3.3.3 Điểm có toạ độ nguyên thuộc đồ thị
+  - P3.3.4 Khoảng cách từ điểm M thuộc đồ thị tới hai tiệm cận
+  - P3.3.5 Diện tích hình tạo bởi tiệm cận và trục toạ độ
+  - P3.3.6 Góc giữa hai tiệm cận, giữa đường thẳng và tiệm cận
+### Bài toán thực tế
+- Nhóm P4.1 Tối ưu khi hàm mô hình đã cho sẵn
+  - P4.1.1 Tìm GTLN, GTNN của hàm mô hình trên miền thực tế
+  - P4.1.2 Tìm tham số của mô hình từ điều kiện cực trị hoặc điều kiện đầu
+  - P4.1.3 Khoảng tăng, giảm và ý nghĩa thực tiễn của hàm mô hình
+- Nhóm P4.2 Tối ưu phải lập hàm từ hình học
+  - P4.2.1 Hộp, bể, lon: thể tích hoặc diện tích cố định, vật liệu nhỏ nhất
+  - P4.2.2 Diện tích, chu vi hình phẳng lớn nhất
+  - P4.2.3 Cắt, uốn dây thành hai hình
+  - P4.2.4 Parabol, đồ thị bậc ba đặt trong hệ toạ độ
+- Nhóm P4.3 Tối ưu khoảng cách, đường đi, góc
+  - P4.3.1 Đường đi qua hai môi trường
+  - P4.3.2 Khoảng cách ngắn nhất
+  - P4.3.3 Thang, sào, ống dài nhất qua góc hành lang
+  - P4.3.4 Góc nhìn, góc chiếu lớn nhất
+- Nhóm P4.4 Tối ưu kinh tế
+  - P4.4.1 Giá và cầu tuyến tính
+  - P4.4.2 Lợi nhuận bằng doanh thu trừ chi phí cho sẵn
+  - P4.4.3 Chi phí trung bình nhỏ nhất
+  - P4.4.4 Số máy, số lô hàng tối ưu
+- Nhóm P4.5 Chuyển động: quãng đường, vận tốc, gia tốc
+  - P4.5.1 Tính vận tốc, gia tốc; chiều chuyển động; tăng giảm tốc
+  - P4.5.2 Vận tốc, gia tốc lớn nhất
+- Nhóm P4.6 Tốc độ thay đổi của một đại lượng
+  - P4.6.1 Ý nghĩa của đạo hàm, chi phí biên
+  - P4.6.2 Mô hình tăng trưởng: thời điểm tốc độ lớn nhất
+- Nhóm P4.7 Tốc độ liên quan giữa hai đại lượng
+  - P4.7.1 Quan hệ hình học: thang trượt, khoảng cách
+  - P4.7.2 Thể tích nước dâng, diện tích thay đổi theo thời gian
+- Nhóm P4.8 Tiệm cận và giới hạn dài hạn trong mô hình
+  - P4.8.1 Mô hình bão hoà cho sẵn: giá trị ngưỡng
+  - P4.8.2 Tự lập hàm nồng độ, chi phí trung bình rồi tìm tiệm cận
+  - P4.8.3 Tiệm cận đứng trong chi phí làm sạch
+
+## VT — Vectơ và hệ trục toạ độ trong không gian
+### Vectơ trong không gian
+- Nhóm P1.1 Khái niệm vectơ trong không gian
+  - P1.1.1 Nhận biết các yếu tố của vectơ trên hình khối
+  - P1.1.2 Độ dài của tổng và hiệu hai vectơ trên hình đặc biệt
+- Nhóm P1.2 Tổng, hiệu hai vectơ và tích của một số với một vectơ
+  - P1.2.1 Tổng và hiệu vectơ trong hình hộp
+  - P1.2.2 Tổng và hiệu vectơ trong lăng trụ
+  - P1.2.3 Tổng và hiệu vectơ trong hình chóp và tứ diện
+  - P1.2.4 Chứng minh đẳng thức vectơ
+  - P1.2.5 Hệ thức trung điểm và trọng tâm
+  - P1.2.6 Phân tích một vectơ theo ba vectơ không đồng phẳng
+  - P1.2.7 Cùng phương, thẳng hàng và tìm tỉ số trên hình khối
+- Nhóm P1.3 Ba vectơ đồng phẳng
+  - P1.3.1 Nhận biết ba vectơ đồng phẳng, không đồng phẳng trên hình
+  - P1.3.2 Chứng minh đồng phẳng và tìm hệ số
+- Nhóm P1.4 Tích vô hướng của hai vectơ và góc giữa hai vectơ
+  - P1.4.1 Tích vô hướng khi biết độ dài và góc
+  - P1.4.2 Tích vô hướng của hai vectơ trên hình
+  - P1.4.3 Góc giữa hai vectơ trong hình đặc biệt
+  - P1.4.4 Tìm góc khi biết tích vô hướng
+  - P1.4.5 Biến đổi và đánh giá bằng tích vô hướng
+  - P1.4.6 Chứng minh vuông góc và tính góc giữa hai đường thẳng bằng tích vô hướng
+- Nhóm P1.5 Lực và công trong không gian
+  - P1.5.1 Hợp lực, lực căng và cân bằng của vật
+  - P1.5.2 Công của lực
+### Hệ trục toạ độ trong không gian
+- Nhóm P2.1 Toạ độ của điểm và của vectơ
+  - P2.1.1 Đọc toạ độ điểm và vị trí điểm so với trục, mặt phẳng toạ độ
+  - P2.1.2 Hình chiếu và điểm đối xứng
+  - P2.1.3 Biểu diễn vectơ theo i, j, k và đọc toạ độ vectơ
+- Nhóm P2.2 Gắn hệ trục toạ độ vào hình khối
+  - P2.2.1 Gắn hệ trục vào hình hộp chữ nhật, lập phương, hình hộp đứng
+  - P2.2.2 Gắn hệ trục vào hình chóp, tứ diện có cạnh vuông góc
+  - P2.2.3 Tìm toạ độ đỉnh khi biết độ dài cạnh và góc
+- Nhóm P2.3 Mô hình thực tế dùng hệ trục toạ độ
+  - P2.3.1 Công trình, sân, phòng: lập hệ trục và đọc toạ độ
+  - P2.3.2 Cần trục, giá đỡ, thiết bị: toạ độ và vectơ
+### Biểu thức toạ độ của các phép toán vectơ
+- Nhóm P3.1 Toạ độ của tổng, hiệu, tích với một số; hai vectơ cùng phương
+  - P3.1.1 Tính toạ độ của tổng, hiệu và tích với một số
+  - P3.1.2 Hai vectơ cùng phương và ba điểm thẳng hàng
+  - P3.1.3 Tìm vectơ thoả đẳng thức vectơ
+- Nhóm P3.2 Toạ độ vectơ AB, trung điểm, trọng tâm; tìm toạ độ điểm
+  - P3.2.1 Toạ độ của vectơ AB
+  - P3.2.2 Trung điểm và trọng tâm
+  - P3.2.3 Hình bình hành và hình hộp: tìm đỉnh còn lại
+  - P3.2.4 Điểm chia đoạn theo tỉ số; điểm trên trục và mặt phẳng toạ độ
+  - P3.2.5 Tìm điểm thoả mãn đẳng thức vectơ
+- Nhóm P3.3 Độ dài vectơ và khoảng cách giữa hai điểm
+  - P3.3.1 Độ dài vectơ và khoảng cách giữa hai điểm
+  - P3.3.2 Chu vi và loại tam giác bằng độ dài
+  - P3.3.3 Điểm cách đều và điểm có khoảng cách cho trước
+- Nhóm P3.4 Tích vô hướng, góc và vuông góc theo toạ độ
+  - P3.4.1 Tích vô hướng và cosin góc giữa hai vectơ
+  - P3.4.2 Hai vectơ vuông góc và tham số
+  - P3.4.3 Góc trong tam giác và tứ diện; điểm cho trước góc
+- Nhóm P3.5 Tích có hướng và ứng dụng
+  - P3.5.1 Tính tích có hướng và vectơ vuông góc với hai vectơ
+  - P3.5.2 Diện tích tam giác và hình bình hành
+  - P3.5.3 Thể tích hình hộp, tứ diện, chóp; ba vectơ đồng phẳng
+- Nhóm P3.6 Cực trị hình học và tâm tỉ cự
+  - P3.6.1 Tâm tỉ cự và tổng Σk_i·MA_i²
+  - P3.6.2 Điểm M thuộc mặt phẳng toạ độ làm biểu thức nhỏ nhất
+  - P3.6.3 Cực trị vectơ khác
+- Nhóm P3.7 Ứng dụng thực tế: chuyển động, radar, lực
+  - P3.7.1 Chuyển động thẳng đều trong không gian
+  - P3.7.2 Radar, khoảng cách và quan sát hai vật
+  - P3.7.3 Lực và công viết bằng toạ độ
+
+## NHTP — Nguyên hàm và tích phân
+### Nguyên hàm
+- Nhóm NNB01407 Nguyên hàm của hàm cơ bản
+  - NDB00747 Áp dụng định nghĩa  / tính chất
+  - NDB00742 Nguyên hàm của hàm đa thức
+  - NDB00744 Nguyên hàm của hàm phân thức
+  - NDB00743 Nguyên hàm của hàm lượng giác
+  - NDB00748 Nguyên hàm của hàm căn thức
+  - NDB00745 Nguyên hàm của hàm mũ
+  - NDB00746 Tìm nguyên hàm khi có điều kiện
+- Nhóm NNB01408 Bài toán thực tế ứng dụng nguyên hàm
+  - NDB00749 Bài toán thực tế liên quan đến quãng đường, vận tốc, gia tốc
+  - NDB00750 Bài toán thực tế liên quan đến tốc độ tăng trưởng....
+### Tích phân
+- Nhóm NNB01217 Áp dụng định nghĩa – tính chất
+  - NDB00751 Tính tích phân dựa trên tính chất của cận
+  - NDB00752 Tính tích phân dựa trên tính chất tổng hiệu các tích phân
+- Nhóm NNB01220 Tích phân của hàm số cơ bản
+  - NDB00753 Tích phân của hàm đưa về đa thức
+  - NDB00629 Tích phân hàm số lượng giác
+  - NDB00630 Tích phân hàm số mũ
+  - NDB00754 Tích phân của hàm đưa về phân thức
+- Nhóm NNB01218 Tích phân của hàm số nhiều dạng
+  - NDB00627 Tích phân hàm số có chứa giá trị tuyệt đối
+  - NDB00628 Tích phân hàm số nhiều dạng trên đừng đoạn
+  - NDB00755 Tích phân của hàm số nhiều dạng cho bởi đồ thị
+- Nhóm NNB01221 Ứng dụng tích phân vào bài toán chuyển động
+  - NDB00631 Tính toán các đại lượng chuyển động dựa trên đồ thị
+  - NDB00632 Tính toán các đại lượng chuyển động dựa trên phương trình có sẵn
+  - NDB00756 Tính toán các đại lượng dựa trên các đại lượng đã cho với chuyển động thẳng
+  - NDB00757 Tính toán các đại lượng dựa trên các đại lượng đã cho với chuyển động bay/rơi
+- Nhóm NNB01414 Ứng dụng tích phân vào các bài toán thực tế khác
+  - NDB00758 Bài toán ứng dụng tích phân vào tìm các đại lượng vật lý, hóa học
+  - NDB00759 Bài toán về doanh thu , dân số....
+  - NDB00760 Cho tốc độ thay đổi của đại lượng. Tính giá trị đại lượng tại thời điểm
+  - NDB00761 Cho giá trị các đại lượng. Tính tốc độ thay đổi của đại lượng
+### Ứng dụng hình học của tích phân
+- Nhóm NNB01415 Tính diện tích hình phẳng
+  - NDB00774 Tính diện tích của hình phằng có cho cận
+  - NDB00775 Tính diện tích của hình phẳng giới hạn bởi hai hàm số
+  - NDB00777 Tính diện tích hình phẳng trên đồ thị
+- Nhóm NNB01499 Diện tích các hình phẳng đặc biệt
+  - NDB00787 Tính diện tích các hình phẳng có công thức
+  - NDB00788 Tính diện tích các hình đối xứng
+- Nhóm NNB01227 Thể tích khối tròn xoay
+  - NDB00636 Thể tích hình giới hạn bởi hai hàm số quay quanh trục Ox có cận
+  - NDB00635 Thể tích hình giới hạn bởi hai hàm số quay quanh trục Ox khuyết cận
+  - NDB00639 Thể tích hình giới hạn bởi hai hàm số quay quanh trục tung Oy
+  - NDB00778 Thể tích của hình tròn xoay cho bởi đồ thị
+  - NDB00781 Tính thể tích của các hình quen thuộc bằng công thức
+- Nhóm NNB01226 Thể tích của vật khi biết công thức thiết diện
+  - NDB00782 Thể tích của hình có thiết diện không đổi
+  - NDB00779 Thể tích của hình có thiết diện thay đổi có sẵn công thức
+  - NDB00780 Thể tích của hình có thiết diện cần xây công thức
+  - NDB00786 Thể tích phần giao nhau của các hình
+
+## XS — Xác suất có điều kiện
+### Xác suất có điều kiện
+- Nhóm NNB01251 Tính xác suất có điều kiện khi đã cho sẵn các xác suất bằng số   (chưa có dạng bài — gắn ở mức NHÓM)
+- Nhóm NNB01252 Tính xác suất có điều kiện từ bảng số liệu hoặc dữ kiện đếm   (chưa có dạng bài — gắn ở mức NHÓM)
+- Nhóm NNB01253 Công thức nhân xác suất và sơ đồ hình cây   (chưa có dạng bài — gắn ở mức NHÓM)
+- Nhóm NNB01254 Kiểm tra tính độc lập của hai biến cố   (chưa có dạng bài — gắn ở mức NHÓM)
+### Công thức xác suất toàn phần và công thức Bayes
+- Nhóm NNB01255 Tính xác suất bằng công thức xác suất toàn phần   (chưa có dạng bài — gắn ở mức NHÓM)
+- Nhóm NNB01256 Tính xác suất hậu nghiệm bằng công thức Bayes   (chưa có dạng bài — gắn ở mức NHÓM)
+- Nhóm NNB01257 Giải bài toán thực tiễn bằng công thức toàn phần hoặc Bayes   (chưa có dạng bài — gắn ở mức NHÓM)
+
+## SDT — Các số đặc trưng đo mức độ phân tán của mẫu số liệu ghép nhóm
+### Các số đặc trưng đo mức độ phân tán của mẫu số liệu ghép nhóm
+- Nhóm NNB01258 Tính khoảng biến thiên của mẫu số liệu ghép nhóm   (chưa có dạng bài — gắn ở mức NHÓM)
+- Nhóm NNB01259 Tính tứ phân vị và khoảng tứ phân vị của mẫu ghép nhóm   (chưa có dạng bài — gắn ở mức NHÓM)
+- Nhóm NNB01260 Tính phương sai và độ lệch chuẩn của mẫu ghép nhóm   (chưa có dạng bài — gắn ở mức NHÓM)
+- Nhóm NNB01261 So sánh độ phân tán của hai mẫu số liệu   (chưa có dạng bài — gắn ở mức NHÓM)
+- Nhóm NNB01262 Ý nghĩa và lựa chọn số đặc trưng phù hợp   (chưa có dạng bài — gắn ở mức NHÓM)
+- Nhóm NNB01263 Lập bảng ghép nhóm từ số liệu thô rồi tính số đặc trưng   (chưa có dạng bài — gắn ở mức NHÓM)
+- Nhóm NNB01264 Phát hiện giá trị bất thường bằng tứ phân vị   (chưa có dạng bài — gắn ở mức NHÓM)
+
+## PPTD — Phương pháp toạ độ trong không gian
+### Các bài toán cơ bản về Mặt phẳng - Đường thẳng - Mặt cầu
+- Nhóm NNB01507 Các đại lượng cơ bản
+  - NDB00835 Xác định vector pháp tuyến , vector chỉ phương của mặt phẳng
+  - NDB00836 Xác định vector pháp tuyến , vector chỉ phương của đường thẳng
+  - NDB00837 Xác định tâm và bán kính của mặt cầu
+  - NDB00838 Xác định quan hệ của điểm với mặt phẳng
+  - NDB00839 Xác định quan hệ của điểm với đường thẳng
+  - NDB00840 Xác định quan hệ của điểm với mặt cầu
+- Nhóm NNB01508 Viết phương trình mặt phẳng - đường thẳng - mặt cầu dạng cơ bản
+  - NDB00841 Viết phương trình mặt phẳng biết vector pháp tuyến
+  - NDB00842 Viết phương trình mặt phẳng biết 2 vector chỉ phương
+  - NDB00843 Viết phương trình đường thẳng biết vector chỉ phương
+  - NDB00844 Viết phương trình đường thẳng biết 2 vector pháp tuyến
+  - NDB00845 Chuyển dạng của phương trình đường thẳng
+  - NDB00846 Viết phương trình mặt cầu biết tâm và bán kính
+- Nhóm NNB01509 Viết phương trình mặt phẳng - đường thẳng - mặt cầu khi biết quan hệ hình học
+  - NDB00848 Viết phương trình mặt phẳng qua 1 điểm và vuông góc  với đường thẳng
+  - NDB00849 Viết phương trình mặt phẳng qua 3 điểm
+  - NDB00850 Viết phương trình mặt phẳng trung trực của đoạn thẳng
+  - NDB00851 Viết phương trình mặt phẳng khi biết 2 quan hệ hình học
+  - NDB00852 Viết phương trình đường thẳng qua 1 điểm và vuông góc với mặt phẳng
+  - NDB00853 Viết phương trình đường thẳng khi biết 2 quan hệ hình học
+  - NDB00854 Viết phương trình đường thẳng đi qua 2 điểm
+  - NDB00855 Viết phương trình đường thẳng cắt đường thẳng khác
+  - NDB00856 Viết phương trình mặt cầu qua 4 điểm
+### Các bài toán cơ bản về Góc  và Khoảng cách
+- Nhóm NNB01510 Tính góc giữa các đối tượng
+  - NDB00857 Góc giữa hai mặt phẳng
+  - NDB00858 Góc giữa hai đường thẳng
+  - NDB00859 Góc giữa đường thẳng và mặt phẳng
+- Nhóm NNB01511 Tính khoảng cách giữa các đối tượng
+  - NDB00860 Khoảng cách từ điểm đến mặt phẳng
+  - NDB00861 Khoảng cách từ điểm đến đường thẳng
+  - NDB00864 Khoảng cách giữa đường thẳng và mặt phẳng
+- Nhóm NNB01512 Các bài toán ứng dụng góc
+  - NDB00865 Viết phương trình mặt phẳng hợp với mặt phẳng khác góc cho trước
+### Ví trí tương đối của Mặt phẳng - Đường thẳng - Mặt cầu
+- Nhóm NNB01513 Vị trí tương đối giữa mặt phẳng và mặt phẳng
+  - NDB00866 Xác định vị trí tương đối của 2 mặt phẳng
+  - NDB00867 Khoảng cách giữa 2 mặt phẳng song song
+- Nhóm NNB01514 Ví trí tương đối giữa đường thẳng và đường thẳng
+  - NDB00868 Xét vị trí tương đối của 2 đường thẳng
+  - NDB00869 Khoảng cách giữa 2 đường thẳng chéo nhau
+  - NDB00870 Bài toán về đường vuông góc chung của 2 đường thẳng chéo nhau
+- Nhóm NNB01515 Ví trí tương đối giữa đường thẳng và mặt phẳng
+  - NDB00871 Xét vị trí tương đối của đường thẳng và mặt phẳng
+  - NDB00872 Giao điểm của đường thẳng và mặt phẳng
+  - NDB00873 Chân đường vuông góc - điểm đối xứng qua mặt phẳng
+- Nhóm NNB01516 Vị trí tương đối của mặt phẳng và mặt cầu
+  - NDB00874 Xét vị trị tương đối của mặt phẳng và mặt cầu
+  - NDB00875 Viết phương trình mặt phẳng khi biết thiết diện cắt mặt cầu
+  - NDB00876 Viết phương trình mặt cầu khi biết thiết diện cắt mặt phẳng
+  - NDB00877 Bài toán liên quan đến mặt cầu tiếp xúc với mặt phẳng
+- Nhóm NNB01517 Vị trí tương đối của đường thẳng và mặt cầu
+  - NDB00878 Xét vị trí tương đối của đường thẳng mặt cầu
+  - NDB00879 Viết phương trình đường thẳng cắt mặt cầu
+  - NDB00880 Viết phương trình mặt cầu cắt đường thẳng
+  - NDB00881 Bài toán đường thẳng tiếp xúc với mặt cầu
