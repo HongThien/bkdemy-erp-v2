@@ -158,7 +158,7 @@ export default function KhoTaiLieuScreen() {
     setLoading(true)
     try {
       const [{ dai, hinh }, l, fc] = await Promise.all([fetchFirstPage(), listLop(), listTaiLieuFacets()])
-      setDaiRows(dai); setHinhRows(hinh); setLops(l); setFacets(fc)
+      setDaiRows(dai); setHinhRows(hinh); setLops(l); setFacets(fc.filter((f) => f.loai !== 'de_thi'))
     } finally { setLoading(false) }
   }
   // eslint-disable-next-line react-hooks/exhaustive-deps

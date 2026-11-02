@@ -327,7 +327,8 @@ export async function listTaiLieu(khoi?: string, loai = 'giao_trinh', mon?: stri
 }
 // Kho tài liệu = MỌI loại (giáo trình/ET/…). lop_id/ngay cho ET. mon = undefined → mọi môn (admin); set → lọc môn.
 export async function listAllTaiLieu(mon?: string | string[], opts?: ListPageOpts & { loai?: string }): Promise<TaiLieu[]> {
-  let q = supabase.from('tai_lieu').select('*').order('created_at', { ascending: false })
+  // Đề thi KHÔNG nằm ở Kho tài liệu — chỗ của nó là Học thuật › Kho đề thi (Thùy 02/11)
+  let q = supabase.from('tai_lieu').select('*').neq('loai', 'de_thi').order('created_at', { ascending: false })
   if (Array.isArray(mon)) { if (mon.length) q = q.in('mon', mon) }
   else if (mon) q = q.eq('mon', mon)
   if (opts?.loai) q = q.eq('loai', opts.loai)

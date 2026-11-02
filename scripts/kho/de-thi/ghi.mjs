@@ -51,6 +51,14 @@ if (loi.length) { console.error('❌ de.json chưa ghi được:\n  ' + loi.join
 // ── upload (chỉ khi ghi thật) ────────────────────────────────────────────────
 const envLocal = docEnv(join(GOC_REPO, '.env.local'))
 let sb = null
+// DB đọc `deThi.nam` bằng ::int ⇒ chuỗi "2024 - 2025" làm CẢ màn Kho đề thi chết. Khoảng năm → `namHoc` (năm đầu), `nam` chỉ nhận 4 chữ số.
+function namDeThi(nam) {
+  const s = String(nam ?? '').trim()
+  if (/^\d{4}$/.test(s)) return { nam: Number(s) }
+  const m = s.match(/^(\d{4})\s*[-–]\s*\d{4}$/)
+  return m ? { nam: null, namHoc: Number(m[1]) } : { nam: null }
+}
+
 function storage() {
   if (!sb) {
     const u = envLocal.VITE_SUPABASE_URL, k = envLocal.SUPABASE_SERVICE_ROLE
@@ -145,7 +153,7 @@ try {
   const cauHinh = {
     // `kieu: 'de_cuong'` ⇒ tab "Đề cương" của Kho đề thi (không lẫn Chờ duyệt / Sẵn sàng / Đã giao); đề cương không có thời gian làm bài (null)
     // `ky` đặt tay (gk1/ck1/…) khi tên đề không nói kỳ (vd "Đề ôn tập số 4" K5, 27/10); vắng ⇒ DB suy từ tên (_de_thi_ky_doan)
-    deThi: { ...(de.kieu ? { kieu: de.kieu } : {}), ...(de.ky ? { ky: de.ky } : {}), nguon: de.nguon ?? 'le', nam: de.nam ?? null,
+    deThi: { ...(de.kieu ? { kieu: de.kieu } : {}), ...(de.ky ? { ky: de.ky } : {}), nguon: de.nguon ?? 'le', ...namDeThi(de.nam),
       thoiGianPhut: de.thoi_gian_phut === null ? null : (de.thoi_gian_phut ?? 90), thangDiem: de.thang_diem ?? 10,
       sha256: de.sha256, file: de.file, pdfGocUrl, phan: de.phan.map(({ thu_tu, ten, dang_thuc, diem_moi_cau }) => ({ thu_tu, ten, dang_thuc, diem_moi_cau })),
       ...(Object.keys(canhBaoCau).length ? { canhBaoCau } : {}),
