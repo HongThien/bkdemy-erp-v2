@@ -21,9 +21,12 @@ const TABS: { id: Tab; ten: string; goi_y: string }[] = [
 export default function PhongTruongKhoiScreen({ onTaoCaNhe }: { onTaoCaNhe: () => void }) {
   const [tab, setTab] = useState<Tab>(NHO.tab)
   useEffect(() => { NHO.tab = tab }, [tab])
+  // Thùy 03/11: phòng CO VÀO GIỮA (lề ≥ 1 inch mỗi bên) — card đang thừa chỗ, trải sát 2 mép khó đọc.
+  // Riêng tab Bản đồ giữ full ngang: các nhóm xếp ngang, càng rộng càng ít phải cuộn.
+  const giua = 'mx-auto w-full max-w-[1180px] px-4 md:px-10'
   return (
     <div className="px-1">
-      <div className="mb-3 flex flex-wrap items-end gap-2">
+      <div className={`mb-3 flex flex-wrap items-end gap-2 ${giua}`}>
         <div className="mr-2">
           <div className="text-[18px] font-bold text-slate-800">Phòng làm việc trưởng khối</div>
           <div className="text-[12px] text-slate-500">{TABS.find((t) => t.id === tab)?.goi_y}</div>
@@ -38,11 +41,11 @@ export default function PhongTruongKhoiScreen({ onTaoCaNhe }: { onTaoCaNhe: () =
         </div>
       </div>
       {/* Giữ tab Phiên Claude luôn gắn (ẩn bằng CSS) — chuyển sang Bản đồ sửa tay rồi quay lại không mất khung chat đang chạy chữ. */}
-      <div className={tab === 'phien' ? '' : 'hidden'}><PhienClaudeTab /></div>
+      <div className={tab === 'phien' ? giua : 'hidden'}><PhienClaudeTab /></div>
       {tab === 'ban_do' && <BanDoMoiScreen />}
       {tab === 'quan_tri' && (
-        <div className="space-y-3">
-          <WidgetDangYeu onTaoCaNhe={onTaoCaNhe} />
+        <div className={`space-y-3 ${giua}`}>
+          <WidgetDangYeu kieu="so" onTaoCaNhe={onTaoCaNhe} />
           <BaoCaoCaNhan />
         </div>
       )}
