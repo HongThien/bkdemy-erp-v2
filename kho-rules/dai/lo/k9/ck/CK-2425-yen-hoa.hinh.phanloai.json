@@ -1,0 +1,19 @@
+{
+  "P1 Bài 1": { "tt": "khong_tt", "ghi": "Lượng giác thực tế: độ dốc lối đi xe lăn, tính góc nghiêng bằng sin" },
+  "P1 Bài 2": { "tt": "khong_tt", "ghi": "Lượng giác thực tế: thang gấp chữ A (tam giác cân, đường cao, cos)" },
+  "P1 Bài 3": { "tt": "khong_tt", "ghi": "Lượng giác thực tế: độ cao máy bay sau 10 phút (sin 20 độ, có dữ kiện thừa)" },
+  "P1 Bài 4": { "tt": "khong_tt", "ghi": "Lượng giác thực tế: thuyền qua sông bị dòng nước đẩy lệch 30 độ" },
+  "P1 Bài 5": { "tt": "khong_tt", "ghi": "Diện tích hình quạt tròn: giá miếng pizza tỉ lệ thuận với diện tích" },
+  "P1 Bài 6": { "tt": "khong_tt", "ghi": "Diện tích hình vành khuyên: dung lượng đĩa DVD" },
+  "P1 Bài 7": { "tt": "khong_tt", "ghi": "Diện tích hình vành khuyên: khối lượng 100 vòng đệm thép" },
+  "P1 Bài 8": { "tt": "khong_tt", "ghi": "Diện tích nửa hình vành khuyên: giấy dán hai mặt quạt" },
+  "P1 Bài 9": { "tt": "khong_tt", "ghi": "Độ dài cung tròn: quãng đường xe đi, góc quay bánh trước (số liệu không thực tế)" },
+  "P1 Bài 10": { "tt": "khong_tt", "ghi": "Diện tích hình tròn, vành khuyên: phần lõi thép của đĩa mài" },
+  "P2 Bài 1": { "tt": "khong_tt", "ghi": "Hình bình hành BHCK, bốn điểm cùng thuộc đường tròn, OI song song AH, BE.BA+CD.CA=BC^2 (không có tiếp tuyến)" },
+  "P2 Bài 2": { "tt": "ba_tt", "ghi": "Nửa đường tròn: tiếp tuyến Ax, By và tiếp tuyến tại M cắt tại C, D; CD = AC + BD, AC.BD = R^2, AB tiếp tuyến của đường tròn đường kính CD" },
+  "P2 Bài 3": { "tt": "hai_tt", "ghi": "Hai tiếp tuyến MA, MD cắt nhau tại M của đường tròn đường kính AC; AD^2 = BD.CD, OM song song BC, OD tiếp tuyến của đường tròn (DEF)" },
+  "P2 Bài 4": { "tt": "hai_tt", "ghi": "Hai tiếp tuyến AB, AC cắt nhau tại A với OA = 2R: A, B, O, C cùng đường tròn, cung BC, dây BC, DC song song OA, OM.OA = R^2, BC^2 = 4.OM.MA" },
+  "P2 Bài 5": { "tt": "tt_khac", "ghi": "Tiếp tuyến tại A và cát tuyến CB: CA^2 = CE.CB, tính AE và cung AE; chứng minh DB là tiếp tuyến của (O) (ý d)" },
+  "P3 Bài 4": { "tt": "khong_tt", "ghi": "Nâng cao: tứ giác ABCD có hai đường chéo là hai đường kính, diện tích lớn nhất bằng 2R^2" },
+  "P3 Bài 5": { "tt": "khong_tt", "ghi": "Nâng cao: hình chữ nhật nội tiếp nửa hình tròn, tìm PQ để diện tích lớn nhất" }
+}

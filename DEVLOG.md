@@ -78486,6 +78486,7 @@ Thùy nêu 4 việc, làm được 3:
 - Chưa có: màn cho thầy cô xem sổ chặn / sửa `tu_cam`; bình luận cũ không bị lọc lại khi thêm mẫu mới. check:style-hs RỚT ở CaBoTroHS.tsx (từ 17/10, không thuộc đợt này).
 - **Đã áp (Thùy "Áp đi"):** `202611031736` + `npm run schema`. Kiểm vai Thùy trên DB thật (chỉ đọc, trần 8 s): `fn_phong_ghe_gd` 1,5 s (Lộc · Ngọc · anh Hoà · Trang · Văn trống), `fn_phong_ghe_tbm_mon('Toán')` 7 ghế 1 s. App dev chỉ có Admin (không phải Thùy, không phải GĐ) ⇒ chỉ kiểm được phòng Trưởng bộ môn của Admin vẫn chạy; phòng GĐ chưa nhìn bằng mắt — Thùy mở sau deploy.
 
+<<<<<<< HEAD
 
 ## 2026-11-03 — BTVN học bù gắn về buổi mẹ (Report PH + tab BTVN buổi học) — Thùy 03/11 "Dữ liệu BTVN học bù phải được fill vào buổi học và cả report cũng như mastery"
 - **Đo:** BTVN bù (mig 202609291823) nằm ở CA BÙ: 61 lượt / 1.044 câu chấm, 74 dòng btvn_ket_qua (462 lượt bù có mặt, chỉ 118 từ 29/09). **Mastery ĐÃ ĂN** (`_mastery_lan_do` đọc gami_grades mọi buổi; lượt tính ngày ca bù) — không sửa. Hỏng 2 chỗ: (1) Report PH "Chi tiết theo buổi" + tab BTVN buổi học chỉ đọc buổi thường ⇒ buổi mẹ em vắng chỉ "Vắng", BTVN trống; (2) luật câu bỏ trống = 0 đòi `btvn_dong_at`, ca bù không có nút đóng ⇒ câu bỏ trống BTVN bù không vào mẫu số (% thổi lên, cả ② Tổng quan).
@@ -78498,6 +78499,8 @@ Thùy nêu 4 việc, làm được 3:
 - Kiểm: test-engine "Tất cả luật đúng" (+12 ca mới: phút, 1 mẻ, giá ×1,28–1,33, lưu cũ, EXP giúp offline/bạn thật/server cũ) · trong trình duyệt (chặn setItem, không đè bản lưu): bảng máy, đặt bánh mì → ⏳ 3:00 → tua 3' → lấy được 1 bánh mì · icon khoai nghiền đã chụp. test-nt-ban: JS↔SQL khớp, `exp:4` trả về; 2 ca đỏ do fixture (ô còn sâu ⇒ giúp lần 2 hợp lệ; HS "ngoài lớp" giờ đã có nt_luu thật ⇒ trùng khoá) — chưa sửa test.
 - Chưa: Thùy chưa chốt giá xây máy (đang miễn phí, mở cấp 2); ý tưởng tăng tốc bằng 3 câu toán chờ Thùy gật luật.
 
+=======
+>>>>>>> origin/main
 ## 03/11 (chiều) — K9 đề cương CUỐI KÌ I (kho tham khảo) · LƯỢT HÌNH xong: 26 đề · Hình–Luyện +298 bài · 67 bài hai tiếp tuyến + 25 bài ba tiếp tuyến gắn mô hình
 - Thùy: "Làm Cuối kì trước đi. Ưu tiên bài Hình trước. T cần m giải, vẽ hình, đẩy vào kho Hình Luyện của khối 9 phần tiếp tuyến". 27 PDF (182 trang; 6 tệp scan) ⇒ `kho-rules/dai/lo/k9/ck/` (chuan-bi · brief soạn/soát · 27 × `.hinh.soan/.kiem/.soat/.phanloai` · `gan-mo-hinh-tt.mjs` · `scripts/kho/de-thi/k9-ck-ghi-{de,het}.sh`). Chi tiết + cờ gửi Thùy: `kho-rules/dai/k9.md` §13.
 - Làm: 27 trạm soạn Sonnet song song (tối đa 20) → 27 trạm soát Opus giải mù (đều "KẾT LUẬN: ĐẠT") → ghi tuần tự 26 tai_lieu (Thọ Lộc 24–25 ≡ 25–26 ⇒ chỉ ghi 1) → `nhap_tu_de_thi.mjs --khoi 9 --loc 'cuối học kì I Toán 9 .* phần Hình$'` (+298 bài) → `gan-mo-hinh-tt.mjs --xep --ghi`.
@@ -78513,6 +78516,7 @@ Thùy nêu 4 việc, làm được 3:
 - ⚠️ ĐO: `_hs_dang_da_hoc` (dùng chung với leo tháp / trận bot) mất 9–15 s ở vài lớp 10–12 ⇒ quá trần 8 s PostgREST. KHÔNG sửa hàm chung (việc riêng); tăng tốc dùng `_hs_dang_em_da_lam` (0,1–3 s). Lấy NỘI DUNG cả kho một lúc (`_dtv_kho_cau_moi(...,true)`) có lần > 40 s ⇒ bốc 2 bước: mã câu → 12 ứng viên → `_dtv_kho_cau_tim` từng câu. Thử 37 lớp có nông trại: 34 ra đề, chậm nhất 3,1 s; 3 lớp 'chua_hoc' (chưa bài nào được chấm). Thử `_hs_dang_lop_da_giao` (chỉ bai_test lớp) trước: 23/37 lớp rỗng vì ET đi qua gami ⇒ bỏ.
 - App: `TangTocToanHS.tsx` (bảng đè lên iframe, MathText, viền xanh đáp án đúng / đỏ câu chọn sai) · `TroChoiHS` chặn rpc 'tang_toc' của game ⇒ mở bảng, xong trả {ok,dat,giam} · `nt_luu.ts` ntTangTocDe/Nop. Game: nút ⚡ ở bảng máy khi đang làm + chơi theo tài khoản, `E.tangTocLo` áp kết quả.
 - Kiểm: RPC dưới JWT HS thật (rollback): đề đúng dạng, đáp án khớp kho, nộp lại bị chặn, trượt ⇒ chờ 60 s, đạt ⇒ xin đề mới ngay được · test-engine "Tất cả luật đúng" (+3 ca) · trình duyệt (hs.html?xem=tro_choi&vao=nong_trai, giả lập server bằng chặn fetch, không ghi DB): bảng hiện 16 công thức KaTeX, nộp gửi đúng p_chon, game nhận kết quả, mẻ 300 s → 148 s. CHƯA thử bằng phiên HS đăng nhập thật.
+<<<<<<< HEAD
 
 ## 03/11 (tối) — `_hs_dang_da_hoc` (dạng LỚP đã học) làm nhanh, kết quả giữ nguyên — mig 202611031839 ĐÃ ÁP
 - Đo 59 lớp Toán/KHTN (1 HS mỗi lớp, 2 lần): chỉ **12A1** vượt trần (9,2 / 8,6 s); các lớp khác ≤ 2,2 s. Nhưng gọi qua `fn_dtv_de_tran_moi` dưới JWT HS (rollback) thì 11A1 trận bot mất **7,98 s** (sát trần 8 s), 9K1 2,8 s, 8B1 1,8 s. 12A1 chưa em nào có hồ sơ người chơi nên không gọi thử được hàm đề.
@@ -78587,3 +78591,5 @@ Thùy nêu 4 việc, làm được 3:
 - Nông trại: mẹo Lộc `nha_canh` (nút 🎨), `may_cb` (thay mẹo "lò bánh 1 mẻ/ngày", kèm ⚡ toán), `giup_exp` — mọi em thấy 1 lần, lần lượt.
 - Giúp bạn: Thùy "tạm thời cộng exp, 1 ngày tối đa 10 lần" ⇒ `_nt_luat().giup` 5 → 10 (server tự chặn lượt 11) + `LUAT.giup = 10`. Điểm Friendship: CHƯA làm ("tính sau").
 - Chưa thử bằng phiên HS đăng nhập thật; cần deploy app.
+=======
+>>>>>>> origin/main

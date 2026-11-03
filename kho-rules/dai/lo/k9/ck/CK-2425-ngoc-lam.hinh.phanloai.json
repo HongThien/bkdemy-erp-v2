@@ -1,0 +1,9 @@
+{
+  "P1 Bài 22": { "tt": "khong_tt", "ghi": "diện tích hình tròn từ chu vi, không có tiếp tuyến" },
+  "P1 Bài 23": { "tt": "khong_tt", "ghi": "diện tích hình vành khuyên, không có tiếp tuyến" },
+  "P1 Bài 24": { "tt": "khong_tt", "ghi": "diện tích phần giấy làm quạt (hiệu hai hình quạt), không có tiếp tuyến" },
+  "P1 Bài 25": { "tt": "ba_tt", "ghi": "Ax và By là hai tiếp tuyến tại hai đầu đường kính AB, CD là tiếp tuyến thứ ba tại M; dùng CA = CM, DB = DM, OC và OD là phân giác, CD = AC + BD, OM² = AC·BD" },
+  "P1 Bài 26": { "tt": "hai_tt", "ghi": "từ điểm M ngoài đường tròn kẻ hai tiếp tuyến MA, MB; dùng MA = MB, MO phân giác của góc AMB, MO ⊥ AB" },
+  "P1 Bài 27": { "tt": "tt_khac", "ghi": "chứng minh AH và DE là tiếp tuyến chung của hai đường tròn tiếp xúc ngoài (đường kính HB, HC); không có hai tiếp tuyến cắt nhau tại một điểm" },
+  "P1 Bài 28": { "tt": "hai_tt", "ghi": "chứng minh CA, CB là hai tiếp tuyến của (O') kẻ từ điểm C ngoài đường tròn; dùng CA = CB, CO' phân giác của góc ACB và góc AO'B" }
+}

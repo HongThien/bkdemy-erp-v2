@@ -1,0 +1,11 @@
+{
+  "P1 Bài 13": { "tt": "khong_tt", "ghi": "Lượng giác thực tế: máy bay cất cánh, tính đoạn đường bay từ độ cao và góc" },
+  "P1 Bài 14": { "tt": "khong_tt", "ghi": "Lượng giác thực tế: tàu ngầm lặn, tính quãng đường từ độ sâu và góc" },
+  "P1 Bài 15": { "tt": "khong_tt", "ghi": "Lượng giác thực tế: ngọn đèn biển, góc nhìn xuống, tính khoảng cách tới chân đèn" },
+  "P1 Bài 16": { "tt": "khong_tt", "ghi": "Lượng giác thực tế: tính chiều cao tòa nhà từ góc nhìn và khoảng cách" },
+  "P1 Bài 17": { "tt": "khong_tt", "ghi": "Hai đường cao: OD=OE, bốn điểm B, C, D, E cùng thuộc đường tròn tâm O, OM vuông góc ED; không có tiếp tuyến" },
+  "P1 Bài 18": { "tt": "khong_tt", "ghi": "Hai đường tròn cắt nhau, hai đường kính AC, AD: tam giác vuông, C-B-D thẳng hàng, CD=2OO'; không có tiếp tuyến" },
+  "P1 Bài 19": { "tt": "khong_tt", "ghi": "Tam giác vuông (tính AH, BC, góc) và đường tròn tâm B cắt BC, AB, NC: CE.CD=CM.CN; đề không nêu tiếp tuyến" },
+  "P1 Bài 20": { "tt": "ba_tt", "ghi": "Hai tiếp tuyến Ax, By tại hai đầu đường kính AB và tiếp tuyến thứ ba CD (H là tiếp điểm), CD=AC+BD; HIOK hình chữ nhật, diện tích ABDC" },
+  "P1 Bài 21": { "tt": "tt_khac", "ghi": "Tiếp tuyến NE và cát tuyến NBC: NE^2=NB.NC; chứng minh NF là tiếp tuyến thứ hai từ N (hai tiếp tuyến NE, NF cắt nhau nhưng đề không dùng tính chất đó)" }
+}

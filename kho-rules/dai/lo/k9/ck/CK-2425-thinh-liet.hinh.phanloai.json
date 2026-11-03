@@ -1,0 +1,11 @@
+{
+  "P3 Bài 20": { "tt": "khong_tt", "ghi": "tỉ số lượng giác, khoảng cách từ điểm đến đường thẳng" },
+  "P3 Bài 21": { "tt": "khong_tt", "ghi": "tỉ số lượng giác thực tế, hai thuyền" },
+  "P3 Bài 22": { "tt": "khong_tt", "ghi": "tỉ số lượng giác thực tế, bóng tháp" },
+  "P3 Bài 23": { "tt": "khong_tt", "ghi": "tỉ số lượng giác thực tế, dốc" },
+  "P4 Bài 24": { "tt": "hai_tt", "ghi": "hai tiếp tuyến AM, AN cắt nhau tại A; OA vuông MN, tính AM, MN" },
+  "P4 Bài 25": { "tt": "khong_tt", "ghi": "tam giác nội tiếp, không có tiếp tuyến" },
+  "P4 Bài 26": { "tt": "ba_tt", "ghi": "ba tiếp tuyến: tại B, C (hai đầu đường kính BC) và tiếp tuyến thứ ba tại A cắt chúng ở D, E (tiếp tuyến tại C là EC, chứng minh ở ý 2); dùng DA=DB của hai tiếp tuyến cắt nhau tại D, góc DOE vuông" },
+  "P4 Bài 27": { "tt": "khong_tt", "ghi": "diện tích phần tư hình vành khuyên" },
+  "P4 Bài 28": { "tt": "khong_tt", "ghi": "diện tích hình vành khuyên, hình quạt" }
+}

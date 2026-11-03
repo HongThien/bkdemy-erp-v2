@@ -1,0 +1,14 @@
+{
+  "P1 Bài 1": { "tt": "khong_tt", "ghi": "Lượng giác thực tế: chiều cao tháp (tan 58°)." },
+  "P1 Bài 2": { "tt": "khong_tt", "ghi": "Diện tích hồ tròn và lối đi hình vành khuyên." },
+  "P1 Bài 3": { "tt": "khong_tt", "ghi": "Diện tích hình quạt và độ dài cung tròn." },
+  "P1 Bài 4": { "tt": "khong_tt", "ghi": "Diện tích giấy quạt (vành quạt, hai mặt)." },
+  "P1 Bài 5": { "tt": "hai_tt", "ghi": "Hai tiếp tuyến MA, MB cắt nhau tại M: độ dài MA = MB và số đo AMB, AOB." },
+  "P2 Bài 1": { "tt": "hai_tt", "ghi": "Hai tiếp tuyến MC, MD cắt nhau tại M; A, B, M thẳng hàng; OCAD hình thoi; góc CMD." },
+  "P2 Bài 2": { "tt": "tt_khac", "ghi": "Tiếp tuyến EC tại C cắt AB tại E; chứng minh ED là tiếp tuyến; OI.OE = R^2; D, O, F thẳng hàng." },
+  "P2 Bài 3": { "tt": "hai_tt", "ghi": "Hai tiếp tuyến MA, MB cắt nhau tại M; MO vuông góc AB; MA theo R; góc AMB; góc MHC = góc ADC." },
+  "P2 Bài 4": { "tt": "tt_khac", "ghi": "Tiếp tuyến Ax tại A; chứng minh MC là tiếp tuyến; ACB = 90 độ; OM phân giác COA." },
+  "P2 Bài 5": { "tt": "hai_tt", "ghi": "Hai tiếp tuyến DB, DE cắt nhau tại D (kèm tiếp tuyến AE từ A); DO // EC, AO.AB = AE.AD, góc DHK = góc DCO, ODNC hình bình hành." },
+  "P2 Bài 6": { "tt": "tt_khac", "ghi": "Một tiếp tuyến KA cùng cát tuyến KC (CD.CK = 4R^2); AK theo sin C, cos C." },
+  "P3 Bài 3": { "tt": "khong_tt", "ghi": "Hình chữ nhật nội tiếp nửa đường tròn bán kính 14 m, diện tích lớn nhất (trạm soát bổ sung)." }
+}

@@ -1,0 +1,14 @@
+{
+  "P1 Bài 20.1": { "tt": "khong_tt", "ghi": "Xích đu: tam giác vuông OAH, tính cạnh bằng sin của góc, không có đường tròn." },
+  "P1 Bài 20.2": { "tt": "khong_tt", "ghi": "Hải đăng: tam giác vuông, tính khoảng cách bằng tan của góc nâng." },
+  "P1 Bài 20.3": { "tt": "khong_tt", "ghi": "Máy bay cất cánh: tam giác vuông, tính cạnh huyền bằng sin của góc." },
+  "P1 Bài 20.4": { "tt": "khong_tt", "ghi": "Ô tô leo dốc: quãng đường từ vận tốc và thời gian, tính góc dốc bằng cos." },
+  "P1 Bài 21.1": { "tt": "khong_tt", "ghi": "Một phần tư hình vành khuyên: diện tích vành khuyên chia 4." },
+  "P1 Bài 21.2": { "tt": "khong_tt", "ghi": "Diện tích hình vành khuyên (mặt đĩa CD), lấy pi = 3,14." },
+  "P1 Bài 21.3a": { "tt": "khong_tt", "ghi": "Diện tích hình quạt tròn bán kính 2 dm, góc ở tâm 150 độ." },
+  "P1 Bài 21.3b": { "tt": "khong_tt", "ghi": "Độ dài cung tròn tương ứng hình quạt bán kính 2 dm, góc ở tâm 150 độ." },
+  "P1 Bài 22": { "tt": "hai_tt", "ghi": "Hai tiếp tuyến MA, MB cắt nhau tại M: MA=MB, MO là trung trực của AB và phân giác góc AMB; tính MA khi OM=2R; thêm đường kính AD, cát tuyến MD cắt (O) tại C." },
+  "P1 Bài 23": { "tt": "ba_tt", "ghi": "Nửa đường tròn đường kính AB, hai tiếp tuyến Ax, By và tiếp tuyến thứ ba MN tại C: MN=AM+BN, góc MON=90 độ, AM·BN=R², ICKO hình chữ nhật, CD vuông AB." },
+  "P1 Bài 24": { "tt": "tt_khac", "ghi": "Cát tuyến PMN và đường kính AB (AD, BC vuông góc MN, hình chữ nhật AICD); tiếp tuyến PK, PH chỉ dùng để chứng minh PK²=PA·PB (tính độ dài tiếp tuyến), không dùng hai tiếp tuyến cắt nhau." },
+  "P1 Bài 25": { "tt": "hai_tt", "ghi": "Hai tiếp tuyến AB, AC cắt nhau tại A: AO là trung trực của BC, OA vuông BC; thêm đường kính CD, cát tuyến AD cắt (O) tại E, AD·AE=AH·AO, các góc bằng nhau và E là trung điểm MN." }
+}
