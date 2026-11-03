@@ -1,0 +1,155 @@
+# B2 — chạy THỬ ghi-cay.mjs (ROLLBACK) · 12:40 3/11/26 giờ VN
+# (đã lọc dòng nhiễu KaTeX 'No character metrics…')
+
+$ node kho-rules/dai/lo/k12-de/de-xuat/db/ghi-cay.mjs tat-ca
+[kiểm khuôn] HS: noi-dung/HS.txt 19 nhóm · 77 dạng · lỗi 0 · cảnh báo 0
+[kiểm khuôn] VT: noi-dung/VT.txt 13 nhóm · 32 dạng · lỗi 0 · cảnh báo 0
+[kiểm khuôn] XS: noi-dung/XS.txt 6 nhóm · 15 dạng · lỗi 0 · cảnh báo 0
+[kiểm khuôn] SDT: noi-dung/SDT.txt 6 nhóm · 10 dạng · lỗi 0 · cảnh báo 0
+[kiểm khuôn] NHTP: KHÔNG có tệp nội dung · lỗi 0 · cảnh báo 0
+[kiểm khuôn] PPTD: KHÔNG có tệp nội dung · lỗi 0 · cảnh báo 0
+
+[trước] chuyen_de 167 · o 169 · nhom 503 · dang 1164 · log 51038 · seq NCH 590 NNB 1907 NDB 2171
+
+══ HS → NCD00094 «Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số» (vùng toan) — CŨ: 3 chuyên đề · 33 nhóm · 11 dạng
+  + chuyên đề C1 → NCH00591 (ô thu_tu 8) «Các phương diện khảo sát hàm số»
+      + nhóm C1.1 → NNB01908 «Tính đơn điệu» · 6 dạng: C1.1.1→NDB02172 C1.1.2→NDB02173 C1.1.3→NDB02174 C1.1.4→NDB02175 C1.1.5→NDB02176 C1.1.6→NDB02177
+      + nhóm C1.2 → NNB01909 «Cực trị» · 6 dạng: C1.2.1→NDB02178 C1.2.2→NDB02179 C1.2.3→NDB02180 C1.2.4→NDB02181 C1.2.5→NDB02182 C1.2.6→NDB02183
+      + nhóm C1.3 → NNB01910 «Giá trị lớn nhất, giá trị nhỏ nhất» · 6 dạng: C1.3.1→NDB02184 C1.3.2→NDB02185 C1.3.3→NDB02186 C1.3.4→NDB02187 C1.3.5→NDB02188 C1.3.6→NDB02189
+      + nhóm C1.4 → NNB01911 «Tiệm cận» · 6 dạng: C1.4.1→NDB02190 C1.4.2→NDB02191 C1.4.3→NDB02192 C1.4.4→NDB02193 C1.4.5→NDB02194 C1.4.6→NDB02195
+      + nhóm C1.5 → NNB01912 «Lý thuyết và khảo sát tổng quát» · 2 dạng: C1.5.1→NDB02196(hiếm) C1.5.2→NDB02197(hiếm)
+  + chuyên đề C2 → NCH00592 (ô thu_tu 9) «Các loại hàm số quan trọng»
+      + nhóm C2.1 → NNB01913 «Nhận dạng hàm số qua đồ thị, bảng biến thiên» · 5 dạng: C2.1.1→NDB02198 C2.1.2→NDB02199 C2.1.3→NDB02200 C2.1.4→NDB02201(hiếm) C2.1.5→NDB02202(hiếm)
+      + nhóm C2.2 → NNB01914 «Hàm bậc ba (và đa thức bậc cao có tham số)» · 6 dạng: C2.2.1→NDB02203 C2.2.2→NDB02204 C2.2.3→NDB02205 C2.2.4→NDB02206 C2.2.5→NDB02207 C2.2.6→NDB02208(hiếm)
+      + nhóm C2.3 → NNB01915 «Hàm bậc nhất trên bậc nhất» · 3 dạng: C2.3.1→NDB02209 C2.3.2→NDB02210 C2.3.3→NDB02211
+      + nhóm C2.4 → NNB01916 «Hàm bậc hai trên bậc nhất» · 3 dạng: C2.4.1→NDB02212 C2.4.2→NDB02213 C2.4.3→NDB02214
+      + nhóm C2.5 → NNB01917 «Hàm hợp, hàm ẩn, hàm chứa trị tuyệt đối (nâng cao)» · 6 dạng: C2.5.1→NDB02215(hiếm) C2.5.2→NDB02216 C2.5.3→NDB02217 C2.5.4→NDB02218(hiếm) C2.5.5→NDB02219 C2.5.6→NDB02220(hiếm)
+  + chuyên đề C3 → NCH00593 (ô thu_tu 10) «Tương giao, tiếp tuyến, khoảng cách»
+      + nhóm C3.1 → NNB01918 «Tương giao của đồ thị» · 3 dạng: C3.1.1→NDB02221(hiếm) C3.1.2→NDB02222 C3.1.3→NDB02223(hiếm)
+      + nhóm C3.2 → NNB01919 «Tiếp tuyến» · 2 dạng: C3.2.1→NDB02224(hiếm) C3.2.2→NDB02225(hiếm)
+      + nhóm C3.3 → NNB01920 «Khoảng cách và hình học của tiệm cận» · 2 dạng: C3.3.1→NDB02226 C3.3.2→NDB02227
+  + chuyên đề C4 → NCH00594 (ô thu_tu 11) «Bài toán thực tế»
+      + nhóm C4.1 → NNB01921 «Hàm mô hình cho sẵn» · 4 dạng: C4.1.1→NDB02228 C4.1.2→NDB02229 C4.1.3→NDB02230 C4.1.4→NDB02231
+      + nhóm C4.2 → NNB01922 «Tối ưu phải lập hàm từ hình học» · 3 dạng: C4.2.1→NDB02232 C4.2.2→NDB02233 C4.2.3→NDB02234
+      + nhóm C4.3 → NNB01923 «Tối ưu đường đi, khoảng cách, góc» · 3 dạng: C4.3.1→NDB02235 C4.3.2→NDB02236 C4.3.3→NDB02237
+      + nhóm C4.4 → NNB01924 «Tối ưu kinh tế» · 6 dạng: C4.4.1→NDB02238 C4.4.2→NDB02239 C4.4.3→NDB02240 C4.4.4→NDB02241 C4.4.5→NDB02242(hiếm) C4.4.6→NDB02243(hiếm)
+      + nhóm C4.5 → NNB01925 «Chuyển động: vận tốc, gia tốc» · 2 dạng: C4.5.1→NDB02244 C4.5.2→NDB02245
+      + nhóm C4.6 → NNB01926 «Tốc độ thay đổi của đại lượng» · 3 dạng: C4.6.1→NDB02246 C4.6.2→NDB02247 C4.6.3→NDB02248(hiếm)
+  ⇒ HS SẼ THÊM: 4 chuyên đề · 19 nhóm · 77 dạng · 67 hình SVG · hiếm 15: C1.5.1,C1.5.2,C2.1.4,C2.1.5,C2.2.6,C2.5.1,C2.5.4,C2.5.6,C3.1.1,C3.1.3,C3.2.1,C3.2.2,C4.4.5,C4.4.6,C4.6.3
+     muc_do: JSON không có ⇒ NULL cho 77/77 dạng (CHECK 1–5 cho phép NULL; chưa có nguồn mức độ)
+     ℹ bo_moi: 3 mô tả câu không lập dạng (ghi trong JSON, không ghi DB)
+
+══ VT → NCD00096 «Vectơ và hệ trục toạ độ trong không gian» (vùng toan) — CŨ: 3 chuyên đề · 21 nhóm · 6 dạng
+  + chuyên đề C1 → NCH00595 (ô thu_tu 4) «Vectơ trong không gian (trên hình, chưa có toạ độ)»
+      + nhóm C1.1 → NNB01927 «Vectơ và độ dài vectơ trên hình khối» · 2 dạng: C1.1.1→NDB02249 C1.1.2→NDB02250
+      + nhóm C1.2 → NNB01928 «Cộng, trừ vectơ và nhân vectơ với một số» · 4 dạng: C1.2.1→NDB02251 C1.2.2→NDB02252 C1.2.3→NDB02253 C1.2.4→NDB02254
+      + nhóm C1.3 → NNB01929 «Tích vô hướng và góc giữa hai vectơ trên hình» · 3 dạng: C1.3.1→NDB02255 C1.3.2→NDB02256 C1.3.3→NDB02257
+  + chuyên đề C2 → NCH00596 (ô thu_tu 5) «Hệ trục toạ độ trong không gian»  ⚠ TRÙNG TÊN chuyên đề cũ — cùng hiện hai cái tới B5
+      + nhóm C2.1 → NNB01930 «Toạ độ của điểm và của vectơ» · 2 dạng: C2.1.1→NDB02258 C2.1.2→NDB02259
+      + nhóm C2.2 → NNB01931 «Gắn hệ trục toạ độ vào hình khối» · 2 dạng: C2.2.1→NDB02260 C2.2.2→NDB02261
+  + chuyên đề C3 → NCH00597 (ô thu_tu 6) «Biểu thức toạ độ của các phép toán vectơ»  ⚠ TRÙNG TÊN chuyên đề cũ — cùng hiện hai cái tới B5
+      + nhóm C3.1 → NNB01932 «Phép toán vectơ bằng toạ độ» · 3 dạng: C3.1.1→NDB02262 C3.1.2→NDB02263 C3.1.3→NDB02264
+      + nhóm C3.2 → NNB01933 «Tìm toạ độ điểm» · 3 dạng: C3.2.1→NDB02265 C3.2.2→NDB02266 C3.2.3→NDB02267
+      + nhóm C3.3 → NNB01934 «Độ dài vectơ và khoảng cách giữa hai điểm» · 2 dạng: C3.3.1→NDB02268 C3.3.2→NDB02269(hiếm)
+      + nhóm C3.4 → NNB01935 «Tích vô hướng, góc, vuông góc và tích có hướng th…» · 3 dạng: C3.4.1→NDB02270 C3.4.2→NDB02271 C3.4.3→NDB02272
+      + nhóm C3.5 → NNB01936 «Cực trị bằng toạ độ» · 2 dạng: C3.5.1→NDB02273 C3.5.2→NDB02274
+  + chuyên đề C4 → NCH00598 (ô thu_tu 7) «Ứng dụng thực tế của vectơ và toạ độ»
+      + nhóm C4.1 → NNB01937 «Lực trong không gian» · 2 dạng: C4.1.1→NDB02275 C4.1.2→NDB02276
+      + nhóm C4.2 → NNB01938 «Mô hình công trình, đồ vật bằng toạ độ» · 2 dạng: C4.2.1→NDB02277 C4.2.2→NDB02278
+      + nhóm C4.3 → NNB01939 «Vật chuyển động và radar trong Oxyz» · 2 dạng: C4.3.1→NDB02279 C4.3.2→NDB02280
+  ⇒ VT SẼ THÊM: 4 chuyên đề · 13 nhóm · 32 dạng · 0 hình SVG · hiếm 1: C3.3.2
+     muc_do: JSON không có ⇒ NULL cho 32/32 dạng (CHECK 1–5 cho phép NULL; chưa có nguồn mức độ)
+
+══ XS → NCD00097 «Xác suất có điều kiện» (vùng toan) — CŨ: 2 chuyên đề · 7 nhóm · 0 dạng
+  + chuyên đề C1 → NCH00599 (ô thu_tu 3) «Xác suất có điều kiện»  ⚠ TRÙNG TÊN chuyên đề cũ — cùng hiện hai cái tới B5
+      + nhóm C1.1 → NNB01940 «Công thức xác suất có điều kiện» · 3 dạng: C1.1.1→NDB02281 C1.1.2→NDB02282 C1.1.3→NDB02283
+      + nhóm C1.2 → NNB01941 «Tính xác suất có điều kiện bằng đếm» · 2 dạng: C1.2.1→NDB02284 C1.2.2→NDB02285
+      + nhóm C1.3 → NNB01942 «Công thức nhân xác suất và biến cố độc lập» · 2 dạng: C1.3.1→NDB02286 C1.3.2→NDB02287
+  + chuyên đề C2 → NCH00600 (ô thu_tu 4) «Công thức xác suất toàn phần và công thức Bayes»  ⚠ TRÙNG TÊN chuyên đề cũ — cùng hiện hai cái tới B5
+      + nhóm C2.1 → NNB01943 «Công thức xác suất toàn phần cơ bản» · 3 dạng: C2.1.1→NDB02288 C2.1.2→NDB02289 C2.1.3→NDB02290
+      + nhóm C2.2 → NNB01944 «Toàn phần nhiều bước» · 3 dạng: C2.2.1→NDB02291(hiếm) C2.2.2→NDB02292(hiếm) C2.2.3→NDB02293(hiếm)
+      + nhóm C2.3 → NNB01945 «Công thức Bayes» · 2 dạng: C2.3.1→NDB02294 C2.3.2→NDB02295
+  ⇒ XS SẼ THÊM: 2 chuyên đề · 6 nhóm · 15 dạng · 0 hình SVG · hiếm 3: C2.2.1,C2.2.2,C2.2.3
+     muc_do: JSON không có ⇒ NULL cho 15/15 dạng (CHECK 1–5 cho phép NULL; chưa có nguồn mức độ)
+
+══ SDT → NCD00098 «Các số đặc trưng đo mức độ phân tán của mẫu số liệu ghép nhóm» (vùng toan) — CŨ: 1 chuyên đề · 7 nhóm · 0 dạng
+  + chuyên đề C1 → NCH00601 (ô thu_tu 2) «Tính các số đo độ phân tán của mẫu số liệu ghép nhóm»
+      + nhóm C1.1 → NNB01946 «Khoảng biến thiên» · 1 dạng: C1.1.1→NDB02296
+      + nhóm C1.2 → NNB01947 «Tứ phân vị và khoảng tứ phân vị» · 4 dạng: C1.2.1→NDB02297 C1.2.2→NDB02298 C1.2.3→NDB02299 C1.2.4→NDB02300(hiếm)
+      + nhóm C1.3 → NNB01948 «Phương sai và độ lệch chuẩn» · 2 dạng: C1.3.1→NDB02301 C1.3.2→NDB02302
+  + chuyên đề C2 → NCH00602 (ô thu_tu 3) «Vận dụng các số đặc trưng»
+      + nhóm C2.1 → NNB01949 «So sánh độ phân tán» · 1 dạng: C2.1.1→NDB02303
+      + nhóm C2.2 → NNB01950 «Từ số liệu thô đến mẫu ghép nhóm» · 1 dạng: C2.2.1→NDB02304(hiếm)
+      + nhóm C2.3 → NNB01951 «Đọc bảng ghép nhóm và số trung bình» · 1 dạng: C2.3.1→NDB02305(hiếm)
+  ⇒ SDT SẼ THÊM: 2 chuyên đề · 6 nhóm · 10 dạng · 0 hình SVG · hiếm 3: C1.2.4,C2.2.1,C2.3.1
+     muc_do: JSON không có ⇒ NULL cho 10/10 dạng (CHECK 1–5 cho phép NULL; chưa có nguồn mức độ)
+     ℹ gop: NHOM:NNB01264→C1.2.2 (chỉ là ghi chú đối ứng, không ghi DB)
+
+══ NHTP → NCD00095 «Nguyên hàm và tích phân» (vùng toan) — CŨ: 3 chuyên đề · 11 nhóm · 40 dạng
+  + dạng M1 → NDB02306 vào NNB01217 (thu_tu 3) «Tính tích phân từ nguyên hàm cho sẵn (F(b)−F(a))» · 7 câu đề
+  ℹ dạng cũ không xuất hiện trong đề (GIỮ NGUYÊN, không đụng): NDB00757, NDB00761, NDB00639, NDB00786
+  ℹ 13 câu "nghi gán nhầm" trong JSON — KHÔNG xử lý ở đây (thuộc B3/B4)
+  ⇒ NHTP SẼ THÊM: 0 chuyên đề · 0 nhóm · 1 dạng · 0 hình SVG
+     muc_do: JSON không có ⇒ NULL cho 1/1 dạng (CHECK 1–5 cho phép NULL; chưa có nguồn mức độ)
+     ⚠ 1 dạng CHÈN mà THIẾU lý thuyết/ví dụ: M1 — xuất lô phân dạng (B4) sẽ CHẶN các dạng này
+     ℹ bo_moi: 16 mô tả câu không lập dạng (ghi trong JSON, không ghi DB)
+
+══ PPTD → NCD00099 «Phương pháp toạ độ trong không gian» (vùng hgt) — CŨ: 4 chuyên đề · 11 nhóm · 44 dạng
+  + dạng M1 → NDB02307 vào NNB01507 (thu_tu 7) «Nhận biết dạng phương trình mặt phẳng, đường thẳng» · 15 câu đề
+  + dạng M2 → NDB02308 vào NNB01512 (thu_tu 2) «Mặt phẳng, đường thẳng tạo góc lớn nhất hoặc nhỏ nhất» (hiếm) · 3 câu đề
+  ⏸ M3 «Tổng khoảng cách nhỏ nhất: lấy đối xứng qua mặt phẳng» — nhóm MỚI «Cực trị trong không gian Oxyz» CHƯA có chuyên đề (thêm --nhom-moi "MỚI: Cực trị trong không gian Oxyz=NCH…") — CHỜ, không chèn
+  ⏸ M4 «Điểm thoả hệ thức chạy trên đường tròn: tìm khoảng cách lớn…» — nhóm MỚI «Cực trị trong không gian Oxyz» CHƯA có chuyên đề (thêm --nhom-moi "MỚI: Cực trị trong không gian Oxyz=NCH…") — CHỜ, không chèn
+  ⏸ M5 «Cực trị với điểm chạy trên mặt cầu» — nhóm MỚI «Cực trị trong không gian Oxyz» CHƯA có chuyên đề (thêm --nhom-moi "MỚI: Cực trị trong không gian Oxyz=NCH…") — CHỜ, không chèn
+  ⏸ M6 «Mặt phẳng qua điểm cố định: cách gốc xa nhất, chắn ba trục …» — nhóm MỚI «Cực trị trong không gian Oxyz» CHƯA có chuyên đề (thêm --nhom-moi "MỚI: Cực trị trong không gian Oxyz=NCH…") — CHỜ, không chèn
+  ⏸ M7 «Điểm chạy trên đường thẳng: tham số hoá tìm độ dài, diện tí…» — nhóm MỚI «Cực trị trong không gian Oxyz» CHƯA có chuyên đề (thêm --nhom-moi "MỚI: Cực trị trong không gian Oxyz=NCH…") — CHỜ, không chèn
+  ℹ dạng cũ không xuất hiện trong đề (GIỮ NGUYÊN, không đụng): NDB00844, NDB00845, NDB00864, NDB00865, NDB00870, NDB00875, NDB00876, NDB00880, NDB00881
+  ℹ 31 câu "nghi gán nhầm" trong JSON — KHÔNG xử lý ở đây (thuộc B3/B4)
+  ⇒ PPTD SẼ THÊM: 0 chuyên đề · 0 nhóm · 2 dạng · 0 hình SVG · hiếm 1: M2
+     muc_do: JSON không có ⇒ NULL cho 2/2 dạng (CHECK 1–5 cho phép NULL; chưa có nguồn mức độ)
+     ⚠ 2 dạng CHÈN mà THIẾU lý thuyết/ví dụ: M1,M2 — xuất lô phân dạng (B4) sẽ CHẶN các dạng này
+     ℹ bo_moi: 53 mô tả câu không lập dạng (ghi trong JSON, không ghi DB)
+
+[CẢNH BÁO TRIGGER] dai_bdm_log sẽ có thêm: dai_bdm_chuyen_de/them 12 · dai_bdm_dang_bai/them 137 · dai_bdm_nhom/them 44 · dai_bdm_o/them 12 — actor = jwt_uid() = NULL khi chạy bằng script
+  _bdm_bump_nhom: 3 nhóm CŨ được bump updated_at (do chèn dạng vào nhóm cũ — không đổi nội dung, log bỏ qua vì chỉ đổi updated_at)
+  _bdm_thu_tu: thu_tu ô/nhóm/dạng mới = max+1 ⇒ cây mới hiện SAU cây cũ trong cùng chủ đề cho tới B5
+  trg_bdm_chu_de_khoa_vung: KHÔNG kích hoạt (script không INSERT/UPDATE dai_bdm_chu_de)
+
+[sau ROLLBACK] chuyen_de 167 · o 169 · nhom 503 · dang 1164 · log 51038 · seq NCH 602 NNB 1951 NDB 2308
+✔ DB KHÔNG ĐỔI: đếm dòng + vân tay md5 cây 6 chủ đề K12 trước = sau.
+  (sequence nhảy: NCH +12 · NNB +44 · NDB +137 — nextval không rollback, mã đó bỏ trống vĩnh viễn)
+  ⚠ Nếu chạy --ghi bây giờ sẽ bị CHẶN: NHTP: 1 dạng thiếu nội dung · PPTD M3: nhóm mới chưa chọn chuyên đề · PPTD M4: nhóm mới chưa chọn chuyên đề · PPTD M5: nhóm mới chưa chọn chuyên đề · PPTD M6: nhóm mới chưa chọn chuyên đề · PPTD M7: nhóm mới chưa chọn chuyên đề · PPTD: 2 dạng thiếu nội dung
+Đã ROLLBACK. Thêm --ghi để ghi thật (chỉ sau khi Thùy gật).
+exit=0
+
+#### Lần 2 — CHỈ để thử đường "nhóm MỚI" của PPTD, chuyên đề NCH00431 là GIẢ ĐỊNH để chạy thử, KHÔNG phải đề xuất
+$ node kho-rules/dai/lo/k12-de/de-xuat/db/ghi-cay.mjs PPTD --nhom-moi "MỚI: Cực trị trong không gian Oxyz=NCH00431"
+[kiểm khuôn] PPTD: KHÔNG có tệp nội dung · lỗi 0 · cảnh báo 0
+
+[trước] chuyen_de 167 · o 169 · nhom 503 · dang 1164 · log 51038 · seq NCH 602 NNB 1951 NDB 2308
+
+══ PPTD → NCD00099 «Phương pháp toạ độ trong không gian» (vùng hgt) — CŨ: 4 chuyên đề · 11 nhóm · 44 dạng
+  + dạng M1 → NDB02309 vào NNB01507 (thu_tu 7) «Nhận biết dạng phương trình mặt phẳng, đường thẳng» · 15 câu đề
+  + dạng M2 → NDB02310 vào NNB01512 (thu_tu 2) «Mặt phẳng, đường thẳng tạo góc lớn nhất hoặc nhỏ nhất» (hiếm) · 3 câu đề
+  + nhóm MỚI «Cực trị trong không gian Oxyz» → NNB01952 trong NCH00431 (thu_tu 4) — chưa có lý thuyết nhóm
+  + dạng M3 → NDB02311 vào NNB01952 (thu_tu 1) «Tổng khoảng cách nhỏ nhất: lấy đối xứng qua mặt phẳng» · 5 câu đề
+  + dạng M4 → NDB02312 vào NNB01952 (thu_tu 2) «Điểm thoả hệ thức chạy trên đường tròn: tìm khoảng cách lớn…» · 8 câu đề
+  + dạng M5 → NDB02313 vào NNB01952 (thu_tu 3) «Cực trị với điểm chạy trên mặt cầu» · 5 câu đề
+  + dạng M6 → NDB02314 vào NNB01952 (thu_tu 4) «Mặt phẳng qua điểm cố định: cách gốc xa nhất, chắn ba trục …» · 7 câu đề
+  + dạng M7 → NDB02315 vào NNB01952 (thu_tu 5) «Điểm chạy trên đường thẳng: tham số hoá tìm độ dài, diện tí…» (hiếm) · 3 câu đề
+  ℹ dạng cũ không xuất hiện trong đề (GIỮ NGUYÊN, không đụng): NDB00844, NDB00845, NDB00864, NDB00865, NDB00870, NDB00875, NDB00876, NDB00880, NDB00881
+  ℹ 31 câu "nghi gán nhầm" trong JSON — KHÔNG xử lý ở đây (thuộc B3/B4)
+  ⇒ PPTD SẼ THÊM: 0 chuyên đề · 1 nhóm · 7 dạng · 0 hình SVG · hiếm 2: M2,M7
+     muc_do: JSON không có ⇒ NULL cho 7/7 dạng (CHECK 1–5 cho phép NULL; chưa có nguồn mức độ)
+     ⚠ 7 dạng CHÈN mà THIẾU lý thuyết/ví dụ: M1,M2,M3,M4,M5,M6,M7 — xuất lô phân dạng (B4) sẽ CHẶN các dạng này
+     ℹ bo_moi: 53 mô tả câu không lập dạng (ghi trong JSON, không ghi DB)
+
+[CẢNH BÁO TRIGGER] dai_bdm_log sẽ có thêm: dai_bdm_dang_bai/them 7 · dai_bdm_nhom/them 1 — actor = jwt_uid() = NULL khi chạy bằng script
+  _bdm_bump_nhom: 2 nhóm CŨ được bump updated_at (do chèn dạng vào nhóm cũ — không đổi nội dung, log bỏ qua vì chỉ đổi updated_at)
+  _bdm_thu_tu: thu_tu ô/nhóm/dạng mới = max+1 ⇒ cây mới hiện SAU cây cũ trong cùng chủ đề cho tới B5
+  trg_bdm_chu_de_khoa_vung: KHÔNG kích hoạt (script không INSERT/UPDATE dai_bdm_chu_de)
+
+[sau ROLLBACK] chuyen_de 167 · o 169 · nhom 503 · dang 1164 · log 51038 · seq NCH 602 NNB 1952 NDB 2315
+✔ DB KHÔNG ĐỔI: đếm dòng + vân tay md5 cây 6 chủ đề K12 trước = sau.
+  (sequence nhảy: NCH +0 · NNB +1 · NDB +7 — nextval không rollback, mã đó bỏ trống vĩnh viễn)
+  ⚠ Nếu chạy --ghi bây giờ sẽ bị CHẶN: PPTD: 7 dạng thiếu nội dung
+Đã ROLLBACK. Thêm --ghi để ghi thật (chỉ sau khi Thùy gật).
