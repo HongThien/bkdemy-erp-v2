@@ -23,8 +23,12 @@ export async function listCapDuoi(): Promise<CapDuoi[]> {
   return (data ?? []) as CapDuoi[]
 }
 
-export async function chiTietCapDuoi(ns: string): Promise<ChiTietCapDuoi> {
-  const { data, error } = await supabase.rpc('fn_phong_cap_duoi_chi_tiet', { p_ns: ns })
+// Số chỉ tính LỚP THUỘC PHẠM VI phòng (Thùy 03/11 — TA dạy khối 8 + 9 thì trưởng khối 8 chỉ thấy/tính việc khối 8; mig 202611031657):
+// ghe = trưởng bộ môn đang xem phòng 1 trưởng khối / 1 ô trống ⇒ phạm vi = ghế đó; không có ⇒ khối của chính người xem.
+export async function chiTietCapDuoi(ns: string, ghe?: GheTbm | null): Promise<ChiTietCapDuoi> {
+  const { data, error } = await supabase.rpc('fn_phong_cap_duoi_chi_tiet_pv', {
+    p_ns: ns, p_tk: ghe?.nhan_su_id ?? null, p_mon: ghe && !ghe.nhan_su_id ? ghe.mon : null, p_khoi: ghe && !ghe.nhan_su_id ? ghe.khoi : null,
+  })
   if (error) throw error
   return data as ChiTietCapDuoi
 }

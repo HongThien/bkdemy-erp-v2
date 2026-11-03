@@ -166,7 +166,7 @@ export default function PhongTruongKhoiScreen({ onTaoCaNhe }: { onTaoCaNhe: () =
           </div>
         )}
       </div>
-      {nguoi && <ChiTietCapDuoiPopup ns={nguoi} onDong={() => setNguoi(null)} />}
+      {nguoi && <ChiTietCapDuoiPopup ns={nguoi} ghe={xemTk} onDong={() => setNguoi(null)} />}
     </section>
   )
 }

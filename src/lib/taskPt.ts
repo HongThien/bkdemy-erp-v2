@@ -12,6 +12,14 @@ export type TaskBang = {
   nguoi_lam_id: string; nguoi_lam_ten: string; nguoi_giao_id: string; nguoi_giao_ten: string
   tien_do_bao_cao: number | null; ket_qua_pct: number | null; nhan_xet: string | null
   cap_nhat_cuoi_at: string | null; created_at: string; dong_at: string | null
+  // mig 202611031700 (Thùy 03/11): hạn tính theo lúc NGƯỜI LÀM báo xong, không theo lúc cấp trên duyệt ⇒ qua_han chỉ còn task chưa báo xong.
+  xong_at: string | null; dung_han: boolean | null
+  xin_gia_han: { id: string; han_de_xuat: string; ly_do: string; created_at: string } | null   // đề xuất gia hạn đang chờ người giao
+}
+export type XinGiaHan = {
+  id: string; han_cu: string; han_de_xuat: string; ly_do: string; trang_thai: 'cho' | 'dong_y' | 'tu_choi' | 'huy'
+  han_chot: string | null; ghi_chu_quyet: string | null; quyet_at: string | null; created_at: string
+  nguoi_xin: { ho_ten: string } | null; nguoi_quyet: { ho_ten: string } | null
 }
 export type TaskLog = {
   id: string; nguoi_id: string; hanh_dong: 'giao' | 'cap_nhat' | 'bao_xong' | 'duyet' | 'gia_han' | 'huy'
@@ -25,9 +33,16 @@ export const TEN_TASK: Record<TrangThaiTask, string> = {
 export const dangMoTask = (t: TrangThaiTask) => t === 'dang_lam' || t === 'cho_duyet'
 
 export async function listTaskBang(): Promise<TaskBang[]> {
-  const { data, error } = await supabase.rpc('fn_task_bang')
+  const { data, error } = await supabase.rpc('fn_task_bang_v2')
   if (error) throw error
   return (data ?? []) as TaskBang[]
+}
+export async function listXinGiaHan(taskId: string): Promise<XinGiaHan[]> {
+  const { data, error } = await supabase.from('task_xin_gia_han')
+    .select('id, han_cu, han_de_xuat, ly_do, trang_thai, han_chot, ghi_chu_quyet, quyet_at, created_at, nguoi_xin:nguoi_xin_id(ho_ten), nguoi_quyet:nguoi_quyet_id(ho_ten)')
+    .eq('task_id', taskId).order('created_at').limit(50)
+  if (error) throw error
+  return (data ?? []) as unknown as XinGiaHan[]
 }
 export async function listCapDuoi(): Promise<{ nhan_su_id: string; ho_ten: string }[]> {
   const { data, error } = await supabase.rpc('fn_task_cap_duoi')
@@ -58,6 +73,13 @@ export const giaHanTask = async (id: string, hanMoi: string, lyDo: string, coTre
   await goi('fn_task_gia_han', { p_task: id, p_han_moi: hanMoi, p_ly_do: lyDo, p_co_tre: coTre })
 }
 export const huyTask = async (id: string, lyDo: string, coTre: boolean): Promise<void> => { await goi('fn_task_huy', { p_task: id, p_ly_do: lyDo, p_co_tre: coTre }) }
+// Người làm xin gia hạn → người giao đồng ý (có thể chốt hạn khác, đánh cờ trễ) hoặc không (Thùy 03/11).
+export const xinGiaHanTask = async (id: string, hanDeXuat: string, lyDo: string): Promise<void> => {
+  await goi('fn_task_xin_gia_han', { p_task: id, p_han_de_xuat: hanDeXuat, p_ly_do: lyDo })
+}
+export const quyetGiaHanTask = async (xinId: string, dongY: boolean, han: string | null, ghiChu: string | null, coTre: boolean): Promise<void> => {
+  await goi('fn_task_quyet_gia_han', { p_xin: xinId, p_dong_y: dongY, p_han: han, p_ghi_chu: ghiChu, p_co_tre: coTre })
+}
 
 // Kết quả THÁNG của 1 người (trợ lý tra cứu): task có HẠN trong tháng. Tính ở DB (fn_task_ket_qua_thang).
 export type KetQuaThang = { soTask: number; soDuyet: number; ketQuaTB: number | null; soGiaHan: number; soCoTre: number }

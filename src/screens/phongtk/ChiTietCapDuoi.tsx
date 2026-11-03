@@ -1,7 +1,7 @@
 // Bấm 1 nhân vật trong cảnh phòng ⇒ chi tiết TA đó: hiệu suất tháng (BTVN · ET · Bổ trợ — số fn_hsta_thang) · 4 số việc tuần
 // (đếm sẵn ở fn_phong_cap_duoi) · danh sách việc tuần + việc tồn · gậy tháng. Màn laptop thấp ⇒ dàn NGANG: 2 cột, mỗi cột tự cuộn.
 import { useEffect, useState } from 'react'
-import { chiTietCapDuoi, type CapDuoi, type ChiTietCapDuoi } from '../../lib/phongTk'
+import { chiTietCapDuoi, type CapDuoi, type ChiTietCapDuoi, type GheTbm } from '../../lib/phongTk'
 import { ddmmVN } from '../../lib/tuan'
 import { mauHS } from './CanhPhong'
 
@@ -12,10 +12,10 @@ const TT: Record<string, [string, string]> = {
 const gio = (ts: string | null) => ts ? new Date(ts).toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit' }) : '—'
 const so = (v: number | null | undefined) => (v == null ? '—' : `${Math.round(v)}`)
 
-export default function ChiTietCapDuoiPopup({ ns, onDong }: { ns: CapDuoi; onDong: () => void }) {
+export default function ChiTietCapDuoiPopup({ ns, ghe, onDong }: { ns: CapDuoi; ghe?: GheTbm | null; onDong: () => void }) {
   const [ct, setCt] = useState<ChiTietCapDuoi | null>(null)
   const [loi, setLoi] = useState<string | null>(null)
-  useEffect(() => { setCt(null); setLoi(null); chiTietCapDuoi(ns.nhan_su_id).then(setCt).catch((e) => setLoi(e?.message ?? String(e))) }, [ns.nhan_su_id])
+  useEffect(() => { setCt(null); setLoi(null); chiTietCapDuoi(ns.nhan_su_id, ghe).then(setCt).catch((e) => setLoi(e?.message ?? String(e))) }, [ns.nhan_su_id, ghe?.khoa])   // eslint-disable-line react-hooks/exhaustive-deps
   const hs = ct?.hieu_suat
   const btChot = hs?.chot?.bo_tro?.diem_chot ?? null
   return (
@@ -25,7 +25,7 @@ export default function ChiTietCapDuoiPopup({ ns, onDong }: { ns: CapDuoi; onDon
         <div className="flex flex-wrap items-center gap-x-5 gap-y-2 border-b border-slate-100 px-5 py-3">
           <div className="min-w-0">
             <div className="text-[17px] font-bold text-slate-800">{ns.ho_ten}</div>
-            <div className="text-[12px] text-slate-500">Trợ giảng · khối {ns.khoi.join(' · ')}</div>
+            <div className="text-[12px] text-slate-500">Trợ giảng · khối {ns.khoi.join(' · ')} <span className="text-slate-400">· số chỉ tính lớp khối này</span></div>
           </div>
           <div className="flex items-baseline gap-2 rounded-xl border-2 px-3 py-1" style={{ borderColor: mauHS(ns.hieu_suat) }}>
             <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Hiệu suất tháng</span>

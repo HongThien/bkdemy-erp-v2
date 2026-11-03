@@ -6,8 +6,8 @@ import { useEffect, useMemo, useState } from 'react'
 import { useStore } from '../../store/useStore'
 import SearchSelect from '../../components/SearchSelect'
 import {
-  listTaskBang, listCapDuoi, listTaskLog, giaoTask, capNhatTask, baoXongTask, duyetTask, giaHanTask, huyTask,
-  TEN_TASK, dangMoTask, type TaskBang, type TaskLog, type TrangThaiTask,
+  listTaskBang, listCapDuoi, listTaskLog, listXinGiaHan, giaoTask, capNhatTask, baoXongTask, duyetTask, giaHanTask, huyTask,
+  xinGiaHanTask, quyetGiaHanTask, TEN_TASK, dangMoTask, type TaskBang, type TaskLog, type TrangThaiTask, type XinGiaHan,
 } from '../../lib/taskPt'
 import { homNayVN } from '../../lib/tuan'
 
@@ -127,14 +127,94 @@ function DanhGia({ t, onXong }: { t: TaskBang; onXong: () => void }) {
   )
 }
 
+// Người làm XIN GIA HẠN (Thùy 03/11): chọn hạn mới + lý do → người giao đồng ý / không.
+function FormXinGiaHan({ t, onXong, onDong }: { t: TaskBang; onXong: () => void; onDong: () => void }) {
+  const [han, setHan] = useState(congNgay(t.han > homNayVN() ? t.han : homNayVN(), 3))
+  const [lyDo, setLyDo] = useState('')
+  const [dang, setDang] = useState(false)
+  const [loi, setLoi] = useState<string | null>(null)
+  const gui = async () => {
+    setDang(true); setLoi(null)
+    try { await xinGiaHanTask(t.id, han, lyDo.trim()); onXong() } catch (e: any) { setLoi(e?.message ?? String(e)); setDang(false) }
+  }
+  return (
+    <div className="mb-2 space-y-2 rounded-xl border border-amber-200 bg-amber-50/50 p-3">
+      <p className="text-[12.5px] font-bold text-amber-800">Xin gia hạn <span className="font-normal text-slate-500">— {t.nguoi_giao_ten} sẽ đồng ý hoặc không</span></p>
+      <label className="flex items-center gap-2 text-[13px] text-slate-600">Hạn mới đề xuất
+        <input type="date" value={han} min={congNgay(t.han, 1)} onChange={(e) => setHan(e.target.value)} className="rounded-lg border border-slate-200 px-2 py-1 text-[13px]" />
+        <span className="text-slate-400">(hạn hiện tại {ddmm(t.han)})</span>
+      </label>
+      <input value={lyDo} onChange={(e) => setLyDo(e.target.value)} maxLength={300} placeholder="Lý do cần thêm thời gian (bắt buộc)" className={inp} />
+      <div className="flex items-center gap-2">
+        <button disabled={dang || !han || !lyDo.trim()} onClick={gui} className="rounded-lg bg-amber-600 px-4 py-1.5 text-[13px] font-semibold text-white disabled:opacity-40">{dang ? 'Đang gửi…' : 'Gửi đề xuất'}</button>
+        <button onClick={onDong} className="px-3 py-1.5 text-[13px] text-slate-500 hover:text-slate-800">Thôi</button>
+        {loi && <span className="text-[12.5px] text-rose-600">{loi}</span>}
+      </div>
+    </div>
+  )
+}
+
+// Người giao quyết đề xuất gia hạn: đồng ý (chốt hạn — mặc định hạn đề xuất — có thể đánh cờ trễ) hoặc không.
+function QuyetGiaHan({ t, onXong }: { t: TaskBang; onXong: () => void }) {
+  const x = t.xin_gia_han!
+  const [han, setHan] = useState(x.han_de_xuat)
+  const [ghiChu, setGhiChu] = useState('')
+  const [coTre, setCoTre] = useState(false)
+  const [dang, setDang] = useState(false)
+  const [loi, setLoi] = useState<string | null>(null)
+  const chay = async (dongY: boolean) => {
+    setDang(true); setLoi(null)
+    try { await quyetGiaHanTask(x.id, dongY, dongY ? han : null, ghiChu.trim() || null, dongY && coTre); onXong() }
+    catch (e: any) { setLoi(e?.message ?? String(e)); setDang(false) }
+  }
+  return (
+    <div className="mt-2 rounded-xl border border-amber-200 bg-amber-50/60 p-3">
+      <p className="text-[12.5px] font-bold text-amber-800">{t.nguoi_lam_ten} xin gia hạn {ddmm(t.han)} → {ddmm(x.han_de_xuat)} <span className="font-normal text-slate-400">· gửi {gio(x.created_at)}</span></p>
+      <p className="mb-2 text-[13px] text-slate-700">💬 {x.ly_do}</p>
+      <div className="flex flex-wrap items-center gap-3">
+        <label className="flex items-center gap-2 text-[13px] text-slate-600">Chốt hạn
+          <input type="date" value={han} min={congNgay(t.han, 1)} onChange={(e) => setHan(e.target.value)} className="rounded-lg border border-slate-200 px-2 py-1 text-[13px]" />
+        </label>
+        <label className="flex items-center gap-2 text-[13px] text-slate-700">
+          <input type="checkbox" checked={coTre} onChange={(e) => setCoTre(e.target.checked)} /> 🏴 Đánh cờ trễ deadline <span className="text-slate-400">(= 1 gậy)</span>
+        </label>
+      </div>
+      <input value={ghiChu} onChange={(e) => setGhiChu(e.target.value)} maxLength={300} placeholder="Nhắn lại (không bắt buộc)" className={`${inp} mt-2`} />
+      <div className="mt-2 flex items-center gap-2">
+        <button disabled={dang || !han} onClick={() => chay(true)} className="rounded-lg bg-emerald-600 px-4 py-1.5 text-[13px] font-semibold text-white disabled:opacity-40">✓ Đồng ý gia hạn</button>
+        <button disabled={dang} onClick={() => chay(false)} className="rounded-lg border border-rose-200 px-4 py-1.5 text-[13px] font-semibold text-rose-700 hover:bg-rose-50 disabled:opacity-40">✕ Không đồng ý</button>
+        {loi && <span className="text-[12.5px] text-rose-600">{loi}</span>}
+      </div>
+    </div>
+  )
+}
+
+const TEN_XIN: Record<XinGiaHan['trang_thai'], string> = { cho: 'đang chờ duyệt', dong_y: 'được đồng ý', tu_choi: 'không được đồng ý', huy: 'tự đóng (task đã xong / đã gia hạn)' }
+
+// Hạn hiển thị: task đã báo xong ⇒ đúng/trễ tính theo LÚC BÁO XONG (không theo lúc cấp trên duyệt).
+function NhanHan({ t }: { t: TaskBang }) {
+  if (t.xong_at) return <span className={t.dung_han ? '' : 'font-semibold text-amber-700'}>hạn {ddmm(t.han)} · báo xong {gio(t.xong_at)} {t.dung_han ? '(đúng hạn)' : '(trễ)'}</span>
+  return <span className={t.qua_han ? 'font-bold text-rose-500' : ''}>hạn {ddmm(t.han)}{t.qua_han ? ' (quá hạn)' : t.den_han ? ' (hôm nay)' : ''}</span>
+}
+
 function ChiTiet({ t, meId, laAdmin, onDoi }: { t: TaskBang; meId: string; laAdmin: boolean; onDoi: () => void }) {
   const [log, setLog] = useState<TaskLog[] | null>(null)
+  const [xin, setXin] = useState<XinGiaHan[]>([])
+  const [moXin, setMoXin] = useState(false)
   const [ghiChu, setGhiChu] = useState('')
   const [phanTram, setPhanTram] = useState('')
   const [dang, setDang] = useState(false)
   const [loi, setLoi] = useState<string | null>(null)
-  const nap = () => listTaskLog(t.id).then(setLog).catch(() => setLog((c) => c ?? []))
-  useEffect(() => { nap() }, [t.id, t.trang_thai, t.han, t.cap_nhat_cuoi_at])   // eslint-disable-line react-hooks/exhaustive-deps
+  const nap = () => {
+    listTaskLog(t.id).then(setLog).catch(() => setLog((c) => c ?? []))
+    listXinGiaHan(t.id).then(setXin).catch(() => {})
+  }
+  useEffect(() => { nap() }, [t.id, t.trang_thai, t.han, t.cap_nhat_cuoi_at, t.xin_gia_han?.id])   // eslint-disable-line react-hooks/exhaustive-deps
+  // nhật ký = log task + các lần xin gia hạn, xếp theo giờ (chỉ ghép để hiển thị)
+  const dong = useMemo(() => [
+    ...(log ?? []).map((l) => ({ k: l.id, at: l.created_at, ai: l.nguoi?.ho_ten ?? '—', nd: nhanLog(l), gc: l.ghi_chu })),
+    ...xin.map((x) => ({ k: `x${x.id}`, at: x.created_at, ai: x.nguoi_xin?.ho_ten ?? '—', nd: `Xin gia hạn đến ${ddmm(x.han_de_xuat)} — ${TEN_XIN[x.trang_thai]}${x.trang_thai === 'dong_y' && x.han_chot && x.han_chot !== x.han_de_xuat ? ` (chốt ${ddmm(x.han_chot)})` : ''}${x.nguoi_quyet ? ` bởi ${x.nguoi_quyet.ho_ten}` : ''}`, gc: [x.ly_do, x.ghi_chu_quyet].filter(Boolean).join(' · ↪ ') })),
+  ].sort((a, b) => a.at.localeCompare(b.at)), [log, xin])
   const laNguoiLam = t.nguoi_lam_id === meId
   const laNguoiGiao = t.nguoi_giao_id === meId || laAdmin
   const mo = dangMoTask(t.trang_thai)
@@ -146,15 +226,21 @@ function ChiTiet({ t, meId, laAdmin, onDoi }: { t: TaskBang; meId: string; laAdm
     <div className="mt-2 border-t border-slate-100 pt-2">
       {t.mo_ta && <p className="mb-2 whitespace-pre-line text-[13px] text-slate-700">{t.mo_ta}</p>}
       {t.nhan_xet && <p className="mb-2 text-[12.5px] text-slate-600">💬 {t.nhan_xet}</p>}
-      {log && log.length > 0 && (
+      {dong.length > 0 && (
         <ul className="mb-2 space-y-1">
-          {log.slice(-8).map((l) => (
-            <li key={l.id} className="text-[12px] text-slate-500">
-              <span className="tabular-nums">{gio(l.created_at)}</span> · <b className="text-slate-700">{l.nguoi?.ho_ten ?? '—'}</b> · {nhanLog(l)}
-              {l.ghi_chu && <span className="block pl-3 text-slate-700">💬 {l.ghi_chu}</span>}
+          {dong.slice(-10).map((l) => (
+            <li key={l.k} className="text-[12px] text-slate-500">
+              <span className="tabular-nums">{gio(l.at)}</span> · <b className="text-slate-700">{l.ai}</b> · {l.nd}
+              {l.gc && <span className="block pl-3 text-slate-700">💬 {l.gc}</span>}
             </li>
           ))}
         </ul>
+      )}
+      {laNguoiLam && t.xin_gia_han && (
+        <p className="mb-2 rounded-lg bg-amber-50 px-3 py-1.5 text-[12.5px] text-amber-800">⏳ Đã xin gia hạn đến <b>{ddmm(t.xin_gia_han.han_de_xuat)}</b> — chờ {t.nguoi_giao_ten} duyệt</p>
+      )}
+      {laNguoiLam && t.trang_thai === 'dang_lam' && !t.xin_gia_han && moXin && (
+        <FormXinGiaHan t={t} onDong={() => setMoXin(false)} onXong={() => { setMoXin(false); onDoi() }} />
       )}
       {loi && <p className="mb-1.5 text-[12.5px] text-rose-600">{loi}</p>}
       {laNguoiLam && mo && (
@@ -170,8 +256,13 @@ function ChiTiet({ t, meId, laAdmin, onDoi }: { t: TaskBang; meId: string; laAdm
             <button disabled={dang} onClick={() => chay(() => baoXongTask(t.id, ghiChu.trim() || null))}
               className="rounded-full bg-emerald-600 px-3 py-1 text-[12.5px] font-semibold text-white disabled:opacity-40">✓ Báo xong</button>
           )}
+          {t.trang_thai === 'dang_lam' && !t.xin_gia_han && !moXin && (
+            <button disabled={dang} onClick={() => setMoXin(true)}
+              className="rounded-full border border-amber-300 px-3 py-1 text-[12.5px] font-semibold text-amber-700 hover:bg-amber-50 disabled:opacity-40">⏳ Xin gia hạn</button>
+          )}
         </div>
       )}
+      {laNguoiGiao && mo && t.xin_gia_han && <QuyetGiaHan key={t.xin_gia_han.id} t={t} onXong={onDoi} />}
       {laNguoiGiao && mo && <DanhGia t={t} onXong={onDoi} />}
     </div>
   )
@@ -200,7 +291,7 @@ export default function BangTaskScreen({ nhung = false, macDinh = 'team' }: { nh
     }
     return [...m.entries()].sort((a, b) => (a[0] === meId ? -1 : b[0] === meId ? 1 : a[1].ten.localeCompare(b[1].ten, 'vi')))
   }, [loc, meId])
-  const canDanhGia = (rows ?? []).filter((t) => t.nguoi_giao_id === meId && t.den_han || t.nguoi_giao_id === meId && t.trang_thai === 'cho_duyet').length
+  const canDanhGia = (rows ?? []).filter((t) => t.nguoi_giao_id === meId && (t.den_han || t.trang_thai === 'cho_duyet' || !!t.xin_gia_han)).length
 
   const tab = (k: typeof xem, ten: string, badge = 0) => (
     <button onClick={() => setXem(k)} className={`h-7 rounded-md px-3 text-xs font-semibold ${xem === k ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`}>
@@ -228,7 +319,7 @@ export default function BangTaskScreen({ nhung = false, macDinh = 'team' }: { nh
                     <ul>
                       {g.ds.map((t) => {
                         const p = pct(t); const dongRong = mo === t.id
-                        const canToiDanhGia = (t.nguoi_giao_id === meId || laAdmin) && (t.den_han || t.trang_thai === 'cho_duyet')
+                        const canToiDanhGia = (t.nguoi_giao_id === meId || laAdmin) && (t.den_han || t.trang_thai === 'cho_duyet' || !!t.xin_gia_han)
                         return (
                           <li key={t.id} className="border-b border-slate-100 py-2 last:border-0">
                             <button onClick={() => setMo(dongRong ? null : t.id)} className="flex w-full items-center gap-3 text-left">
@@ -237,10 +328,11 @@ export default function BangTaskScreen({ nhung = false, macDinh = 'team' }: { nh
                                 <span className="block truncate text-[13.5px] font-semibold text-slate-800">{t.tieu_de}</span>
                                 <span className="block truncate text-[12px] text-slate-400">
                                   {xem !== 'giao' && <>Giao bởi {t.nguoi_giao_ten} · </>}
-                                  <span className={t.qua_han ? 'font-bold text-rose-500' : ''}>hạn {ddmm(t.han)}{t.qua_han ? ' (quá hạn)' : t.den_han ? ' (hôm nay)' : ''}</span>
+                                  <NhanHan t={t} />
                                   {t.so_lan_gia_han > 0 && <> · gia hạn {t.so_lan_gia_han} lần</>}
                                 </span>
                               </span>
+                              {t.xin_gia_han && <span className="shrink-0 rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-bold text-amber-800">Xin gia hạn → {ddmm(t.xin_gia_han.han_de_xuat)}</span>}
                               {canToiDanhGia && <span className="shrink-0 rounded-full bg-rose-100 px-2 py-0.5 text-[11px] font-bold text-rose-700">Cần đánh giá</span>}
                               <span className="relative hidden h-2 w-28 shrink-0 overflow-hidden rounded-full bg-slate-100 sm:block"><span className="absolute inset-y-0 left-0 rounded-full bg-indigo-500" style={{ width: `${p}%` }} /></span>
                               <span className="w-10 shrink-0 text-right text-[12.5px] font-bold tabular-nums text-slate-600">{p}%</span>

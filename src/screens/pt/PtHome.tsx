@@ -26,7 +26,9 @@ export default function PtHome({ gate }: { gate: PtGate }) {
   useEffect(() => {
     const meId = profile.nhanSu.id
     listTaskBang().then((r) => {
-      const n = r.filter((t) => (t.nguoi_lam_id === meId && t.den_han) || (t.nguoi_giao_id === meId && (t.den_han || t.trang_thai === 'cho_duyet'))).length
+      // khớp fn_pt_push_dem: người làm chỉ đếm task CHƯA báo xong tới hạn · người giao đếm thêm đề xuất gia hạn chờ
+      const n = r.filter((t) => (t.nguoi_lam_id === meId && t.den_han && t.trang_thai === 'dang_lam')
+        || (t.nguoi_giao_id === meId && (t.den_han || t.trang_thai === 'cho_duyet' || !!t.xin_gia_han))).length
       setSoViec(n); setAppBadgeCount(n)
     }).catch(() => { /* chưa tải được thì giữ nguyên số cũ */ })
   }, [profile.nhanSu.id, tab])
