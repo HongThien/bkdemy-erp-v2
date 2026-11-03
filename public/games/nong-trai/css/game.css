@@ -344,7 +344,8 @@ body.dangTham .cu[data-cu="gieo"], body.dangTham .cu[data-cu="bon"] { opacity: .
 #viBox, #diemBox { padding: 1px 10px 1px 4px; }
 #viBox img, #diemBox img { width: 28px; height: 28px; margin: -4px 0 -4px -4px; }
 #viBox b, #diemBox b { font-size: 17px; }
-#expThanh { width: 46px; height: 15px; margin-left: 4px; }
+#expThanh { width: 46px; height: 18px; margin-left: 4px; }   /* Thùy 03/11: ruột 11px thấp hơn dòng chữ ⇒ số tụt đáy, bị cắt */
+#expThanh span { line-height: 1; padding-top: 1px; font-size: 10.5px; }
 #nutPhai { position: fixed; right: 8px; top: max(96px, calc(env(safe-area-inset-top) + 88px)); z-index: 20; display: flex; flex-direction: column; gap: 6px; }
 #nutPhai .nutNho { width: 50px; height: 50px; border-radius: 15px; font-size: 9.5px; }
 #nutPhai .nutNho img { width: 28px; height: 28px; }
