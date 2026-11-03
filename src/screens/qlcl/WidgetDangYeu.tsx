@@ -68,51 +68,60 @@ function HaiBoxSo({ rows, dangCapNhat, onMo }: { rows: OTongQuan[]; dangCapNhat:
   const chon = (k: string) => { NHO_O.khoa = k; setKhoa(k) }
   const ten = (x: OTongQuan) => `${x.mon === 'Toán' ? '' : `${x.mon} `}Khối ${x.khoi}`
   const chuaChot = o.dau_tuan_hs_yeu == null
+  // Màn laptop thấp (Thùy 03/11) ⇒ dàn NGANG: chip chọn ô (nếu >1) · 2 box thấp nằm cùng một hàng; tên ô ghi ngay trên header box.
   return (
-    <div>
-      <div className="mb-2 flex flex-wrap items-center gap-1.5">
-        <span className="mr-1 text-[13px] font-bold text-slate-700">Dạng yếu</span>
-        {rows.length > 1 && rows.map((x) => (
-          <button key={khoaO(x)} onClick={() => chon(khoaO(x))}
-            className={`rounded-full px-2.5 py-0.5 text-[12px] font-medium transition ${khoaO(x) === khoaO(o) ? 'bg-slate-800 text-white' : 'bg-white text-slate-600 shadow-sm hover:bg-slate-50'}`}>
-            {ten(x)}
-          </button>
-        ))}
-        {rows.length === 1 && <span className="text-[12px] text-slate-500">· {ten(o)}</span>}
-        {dangCapNhat > 0 && <span className="ml-auto text-[11.5px] text-indigo-500">⟳ đang cập nhật {dangCapNhat} em…</span>}
-      </div>
-      <div className="flex flex-wrap gap-3">
-        <BoxSo tieuDe="Dạng yếu" mau="bg-rose-500" chuSo="text-rose-600" onClick={() => onMo(o)}
-          dauTuan={chuaChot ? null : (o.dau_tuan_dang_yeu ?? 0)} hienTai={o.so_dang_yeu} />
-        <BoxSo tieuDe="Học sinh yếu" mau="bg-violet-500" chuSo="text-violet-600" onClick={() => onMo(o)}
-          dauTuan={o.dau_tuan_hs_yeu ?? null} hienTai={o.so_hs_yeu} tong={o.so_hs} />
-      </div>
+    <div className="flex flex-wrap items-stretch gap-3">
+      <BoxSo tieuDe="Dạng yếu" phu={ten(o)} mau="bg-rose-500" chuSo="text-rose-600" onClick={() => onMo(o)}
+        dauTuan={chuaChot ? null : (o.dau_tuan_dang_yeu ?? 0)} hienTai={o.so_dang_yeu} />
+      <BoxSo tieuDe="Học sinh yếu" phu={ten(o)} mau="bg-violet-500" chuSo="text-violet-600" onClick={() => onMo(o)}
+        dauTuan={o.dau_tuan_hs_yeu ?? null} hienTai={o.so_hs_yeu} tong={o.so_hs} />
+      {(rows.length > 1 || dangCapNhat > 0) && (
+        <div className="flex min-w-0 max-w-[560px] flex-1 flex-col justify-center gap-1.5">
+          {rows.length > 1 && (
+            <div className="flex flex-wrap gap-1">
+              {rows.map((x) => (
+                <button key={khoaO(x)} onClick={() => chon(khoaO(x))}
+                  className={`rounded-full px-2.5 py-0.5 text-[12px] font-medium transition ${khoaO(x) === khoaO(o) ? 'bg-slate-800 text-white' : 'bg-white/90 text-slate-600 shadow-sm hover:bg-white'}`}>
+                  {ten(x)}
+                </button>
+              ))}
+            </div>
+          )}
+          {dangCapNhat > 0 && <span className="text-[11.5px] text-indigo-500">⟳ đang cập nhật {dangCapNhat} em…</span>}
+        </div>
+      )}
     </div>
   )
 }
 
-// Card kiểu 1 (CLAUDE.md §6): header màu + thân trắng, gần vuông. Thân = 2 số: đầu tuần (trái, xám) · hiện tại (phải, đậm màu).
-function BoxSo({ tieuDe, mau, chuSo, dauTuan, hienTai, tong, onClick }: {
-  tieuDe: string; mau: string; chuSo: string; dauTuan: number | null; hienTai: number; tong?: number; onClick: () => void
+// Card kiểu 1 (CLAUDE.md §6): header màu + thân trắng. Thân = 2 số cạnh nhau: đầu tuần (trái, xám) · hiện tại (phải, đậm màu).
+// div + flex-col (không dùng <button>: button tự căn nội dung GIỮA theo chiều dọc ⇒ box thấp hơn bị lệch header khi kéo cao bằng box bên).
+function BoxSo({ tieuDe, phu, mau, chuSo, dauTuan, hienTai, tong, onClick }: {
+  tieuDe: string; phu: string; mau: string; chuSo: string; dauTuan: number | null; hienTai: number; tong?: number; onClick: () => void
 }) {
   return (
-    <button onClick={onClick} title="Bấm để xem chi tiết từng em"
-      className="w-[260px] overflow-hidden rounded-2xl border border-slate-200 bg-white text-left shadow-sm transition hover:shadow-md">
-      <div className={`px-4 py-2 text-[13.5px] font-bold text-white ${mau}`}>{tieuDe}</div>
-      <div className="grid grid-cols-2 divide-x divide-slate-100 px-2 py-4">
-        <div className="px-2 text-center">
-          <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Đầu tuần</div>
+    <div role="button" tabIndex={0} onClick={onClick} onKeyDown={(e) => { if (e.key === 'Enter') onClick() }} title="Bấm để xem chi tiết từng em"
+      className="flex w-[250px] cursor-pointer flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:shadow-md">
+      <div className={`flex items-baseline justify-between gap-2 px-3.5 py-1.5 text-white ${mau}`}>
+        <span className="text-[13.5px] font-bold">{tieuDe}</span>
+        <span className="truncate text-[11px] opacity-90">{phu}</span>
+      </div>
+      <div className="grid flex-1 grid-cols-2 divide-x divide-slate-100 py-2.5">
+        <div className="flex flex-col items-center justify-center px-2">
+          <div className="text-[10.5px] font-semibold uppercase tracking-wider text-slate-400">Đầu tuần</div>
           {dauTuan == null
-            ? <div className="mt-2 text-[13px] text-slate-400">chưa chốt</div>
-            : <div className="mt-1 text-[34px] font-bold leading-none text-slate-500">{dauTuan}</div>}
+            ? <div className="mt-1.5 text-[13px] text-slate-400">chưa chốt</div>
+            : <div className="mt-0.5 text-[28px] font-bold leading-none text-slate-500">{dauTuan}</div>}
         </div>
-        <div className="px-2 text-center">
-          <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Hiện tại</div>
-          <div className={`mt-1 text-[34px] font-bold leading-none ${chuSo}`}>{hienTai}</div>
-          {tong != null && <div className="mt-1 text-[11.5px] text-slate-400">/ {tong} em</div>}
+        <div className="flex flex-col items-center justify-center px-2">
+          <div className="text-[10.5px] font-semibold uppercase tracking-wider text-slate-400">Hiện tại</div>
+          <div className="mt-0.5 leading-none">
+            <span className={`text-[28px] font-bold ${chuSo}`}>{hienTai}</span>
+            {tong != null && <span className="ml-0.5 text-[12px] text-slate-400">/{tong}</span>}
+          </div>
         </div>
       </div>
-    </button>
+    </div>
   )
 }
 

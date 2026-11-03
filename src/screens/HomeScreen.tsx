@@ -28,6 +28,7 @@ import AvatarEditButton from '../components/AvatarEditButton'
 import BangOrder from './home/BangOrder'
 import WidgetDangYeu, { useCoDangYeu } from './qlcl/WidgetDangYeu'
 import { moBoTroTab } from './botro/BoTroHubScreen'
+import NutDoiMoiTruong from './phongtk/NutDoiMoiTruong'
 import { LEAF_VIEC, MUC_VIEC, NHOM_MO_TA, VIEC_MO_TA, YEU_THICH_TOI_DA, leafNhom, nhomCuaLeafHome, nhomIcon, type MucMenu } from '../lib/menu'
 
 const NOI = 'transition hover:-translate-y-1 hover:brightness-110 hover:[outline:2px_solid_var(--sk-acc)]'   // thẻ bấm được: nhấc lên + viền màu nhấn
@@ -588,7 +589,10 @@ export default function HomeScreen() {
     return (
       <section style={khung} className="relative h-full min-h-0 overflow-hidden text-[var(--sk-ink)]">
         {/* Thùy 29/10: widget dạng yếu phải thấy ngay ở Trang chính — cảnh là tranh cố định nên để nút nổi, bấm mở widget */}
-        <DangYeuNoi taoCaNhe={() => { moBoTroTab('nhe'); dh.di('botro') }} />
+        <div className="absolute right-4 top-4 z-[200] flex items-start gap-2">
+          <NutDoiMoiTruong den="phong" />
+          <DangYeuNoi taoCaNhe={() => { moBoTroTab('nhe'); dh.di('botro') }} />
+        </div>
         <HomeScene canh={canh}
           today={hienBox('viec_ngay') ? <ViecHangNgay compact onMoVietCuaToi={lenViec} onMoKeHoach={() => dh.di('myplan')} tabs={noticeTabs} /> : null}
           dev={hienBox('tien_do') ? <TienDoViec /> : null}
@@ -669,6 +673,7 @@ export default function HomeScreen() {
             </div>
             {coCanh && <div className={isMobile ? '' : 'min-w-[330px] max-w-[620px] flex-1'}>{oVitri(1)}</div>}
             <div className="ml-auto flex flex-wrap items-start gap-2">
+              <NutDoiMoiTruong den="phong" />
               {coSao && <TuyChinh cacBox={cacBox} an={an} doi={dh.doiHomeAn} hep={isMobile} dang={dangCard} doiDang={dh.doiHomeDangCard} notice={noticeTabs} doiNotice={dh.doiNoticeTab} />}
               <ChonGiaoDien hep={isMobile} />
             </div>
@@ -711,7 +716,7 @@ function DangYeuNoi({ taoCaNhe }: { taoCaNhe: () => void }) {
   const [mo, setMo] = useState(false)
   if (!useCoDangYeu()) return null
   return (
-    <div className="absolute right-4 top-4 z-[200] flex flex-col items-end">
+    <div className="flex flex-col items-end">
       <button onClick={() => setMo((v) => !v)} className="rounded-full bg-rose-500 px-4 py-2 text-[13px] font-bold text-white shadow-lg hover:bg-rose-600">📉 Dạng yếu {mo ? '▴' : '▾'}</button>
       {mo && <div className="mt-2 max-h-[75vh] w-fit max-w-[90vw] overflow-auto rounded-2xl bg-white p-4 text-slate-800 shadow-2xl"><WidgetDangYeu onTaoCaNhe={taoCaNhe} /></div>}
     </div>

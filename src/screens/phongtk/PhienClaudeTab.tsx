@@ -194,7 +194,7 @@ function KhungChat({ phien, onDoiTrangThai }: { phien: PhienItem; onDoiTrangThai
   const daTraLoi = useMemo(() => new Set(tin.filter((t) => t.vai === 'claude').map((t) => t.tra_loi_cho)), [tin])
 
   return (
-    <div className="flex h-[calc(100vh-220px)] min-h-[480px] flex-col rounded-2xl border border-slate-200/70 bg-white shadow-sm">
+    <div className="flex h-[calc(100vh-240px)] min-h-[420px] flex-col rounded-2xl border border-slate-200/70 bg-white shadow-sm">
       <div className="flex flex-wrap items-center gap-2 border-b border-slate-100 px-4 py-2.5">
         <div className="min-w-0 flex-1">
           <div className="truncate text-[14.5px] font-semibold text-slate-800">{phien.tieu_de}</div>
