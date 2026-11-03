@@ -2,7 +2,7 @@
 // Mỗi tính năng: ngày mở chung (trống = đóng) + ngoại lệ theo lớp (mở thử 1 lớp trước / đóng riêng 1 lớp).
 // Mọi quyết định "em nào thấy gì" do Postgres tính (fn_hs_tinh_nang_mo); màn này chỉ ghi công tắc. Ghi cần quyền lá 'tinh_nang' (DB kiểm).
 import { useCallback, useEffect, useState } from 'react'
-import { tinhNangDs, tinhNangDat, tinhNangLopDat, type TinhNangAdmin, type TinhNangDs } from '../../lib/tinhnang'
+import { epCapNhatHS, mocEpCapNhatHS, tinhNangDs, tinhNangDat, tinhNangLopDat, type TinhNangAdmin, type TinhNangDs } from '../../lib/tinhnang'
 
 const fmt = (s: string) => `${s.slice(8, 10)}/${s.slice(5, 7)}/${s.slice(0, 4)}`
 
@@ -69,6 +69,33 @@ function Dong({ t, ds, homNay, onXong, onLoi }: { t: TinhNangAdmin; ds: TinhNang
   )
 }
 
+// BẮT BUỘC CẬP NHẬT NGAY (Thùy 03/11 "chủ động, khi nào t muốn mới bật"): sau khi deploy bản sửa gấp, bấm ⇒ máy HS đang mở app
+// tự tải bản mới trong ~30 giây, lúc em ở màn chính (không làm mất bài đang làm). Không bấm thì app vẫn tự cập nhật như thường.
+function EpCapNhat() {
+  const [moc, setMoc] = useState<string | null | undefined>(undefined)
+  const [ban, setBan] = useState(false)
+  const [bao, setBao] = useState<string | null>(null)
+  useEffect(() => { mocEpCapNhatHS().then(setMoc).catch(() => setMoc(null)) }, [])
+  const gio = (m: string) => new Date(m).toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit' })
+  const bam = async () => {
+    if (ban || !confirm('Bắt mọi máy học sinh đang mở app tải bản mới ngay? Chỉ nên bấm SAU KHI đã deploy xong. Máy nào đang làm bài sẽ đợi em về màn chính mới tải lại.')) return
+    setBan(true); setBao(null)
+    try { const m = await epCapNhatHS(); setMoc(m); setBao('Đã bật — các máy đang mở app sẽ tải bản mới trong khoảng 30 giây.') }
+    catch (e) { setBao((e as Error).message) } finally { setBan(false) }
+  }
+  return (
+    <div className="flex flex-wrap items-center gap-3 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3">
+      <div className="min-w-0 flex-1">
+        <p className="text-[14px] font-bold text-slate-800">Bắt buộc cập nhật app học sinh ngay</p>
+        <p className="text-[12.5px] leading-relaxed text-slate-600">Bình thường app tự lên bản mới khi em mở lại app hoặc sau 30 phút. Bấm nút này sau khi deploy bản sửa gấp ⇒ máy đang mở app tải lại trong ~30 giây (lúc em ở màn chính).
+          {moc && <> Lần bấm gần nhất: <b>{gio(moc)}</b>.</>}</p>
+        {bao && <p className="mt-1 text-[12.5px] font-semibold text-slate-700">{bao}</p>}
+      </div>
+      <button disabled={ban} onClick={() => void bam()} className="rounded-md bg-amber-600 px-3 py-1.5 text-[13px] font-semibold text-white disabled:opacity-50">{ban ? 'Đang bật…' : 'Cập nhật ngay'}</button>
+    </div>
+  )
+}
+
 export default function TinhNangScreen() {
   const [ds, setDs] = useState<TinhNangDs | null>(null)
   const [loi, setLoi] = useState<string | null>(null)
@@ -85,6 +112,7 @@ export default function TinhNangScreen() {
           Bài trên lớp · ET · BTVN · ca bổ trợ là việc thầy cô giao nên không nằm ở đây. Đổi xong có hiệu lực khi học sinh về lại màn chính.
         </p>
       </div>
+      <EpCapNhat />
       {loi && <div className="rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-700">{loi}</div>}
       {!ds && !loi && <div className="text-[13px] text-slate-400">Đang tải…</div>}
       {ds && (['hoc', 'choi'] as const).map((nhom) => (

@@ -38,3 +38,14 @@ export async function tinhNangLopDat(ma: string, lopId: string, mo: boolean | nu
   const { error } = await supabase.rpc('fn_tinh_nang_lop_dat', { p_ma: ma, p_lop_id: lopId, p_mo: mo })
   if (error) throw error
 }
+/** BẮT BUỘC mọi máy HS đang mở app tải bản mới (mig 202611032025). Trả mốc vừa ghi. Chỉ người có quyền màn Mở tính năng. */
+export async function epCapNhatHS(): Promise<string> {
+  const { data, error } = await supabase.rpc('fn_hs_ep_cap_nhat_bat')
+  if (error) throw error
+  return String(data)
+}
+export async function mocEpCapNhatHS(): Promise<string | null> {
+  const { data, error } = await supabase.rpc('fn_hs_ep_cap_nhat')
+  if (error) throw error
+  return data ? String(data) : null
+}

@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-478 bảng · 38 view · 0 enum · 258 trigger · 1541 function
+480 bảng · 38 view · 0 enum · 258 trigger · 1543 function
 
 ## _app_secrets
 
@@ -3760,6 +3760,22 @@ END |  |  |
 | lien_ket | text | Y |  |  |  |
 | da_doc | boolean |  | false |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
+
+## hs_ep_cap_nhat
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | smallint |  | 1 | PK |  |
+| luc | timestamp with time zone |  |  |  |  |
+| boi | uuid | Y |  |  |  |
+
+## hs_ep_cap_nhat_log
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | bigint |  |  | PK |  |
+| luc | timestamp with time zone |  | now() |  |  |
+| boi | uuid | Y |  |  |  |
 
 ## hs_giai_thuong
 
@@ -9656,8 +9672,8 @@ WITH luot AS (
 - `_tk_dong_bo(p_ns uuid)` → void
 - `_tk_goc_team(p_team text, p_mon text)` → uuid
 - `_tl_bdm_cau_da_dung(p_buoi uuid, p_tru_phan uuid DEFAULT NULL::uuid)` → text[]
-- `_tl_bdm_cau_vi_tri(p_khoi text, p_mon text)` → TABLE(ma_cau text, la_goc boolean, cum text, loai_cau text, dang_bai_id text, nhom_id text)
 - `_tl_bdm_cau_vi_tri(p_khoi text)` → TABLE(ma_cau text, la_goc boolean, cum text, loai_cau text, dang_bai_id text, nhom_id text)
+- `_tl_bdm_cau_vi_tri(p_khoi text, p_mon text)` → TABLE(ma_cau text, la_goc boolean, cum text, loai_cau text, dang_bai_id text, nhom_id text)
 - `_tl_bdm_ghi_cau(p_phan uuid, p_ma_caus text[])` → void
 - `_tl_bdm_khoi_nhom(p_nhom text)` → text
 - `_tl_bdm_kiem_buoi(p_tai_lieu uuid, p_buoi uuid)` → void
@@ -10230,6 +10246,8 @@ WITH luot AS (
 - `fn_hs_bao_loi_cau(p_bai_test_cau_id uuid, p_ly_do text, p_ghi_chu text DEFAULT NULL::text)` → jsonb
 - `fn_hs_bu_dang(p_buoi uuid)` → jsonb
 - `fn_hs_chon_nhan_vat(p_nhan_vat text)` → text
+- `fn_hs_ep_cap_nhat()` → timestamp with time zone
+- `fn_hs_ep_cap_nhat_bat()` → timestamp with time zone
 - `fn_hs_giao_dien_cua_toi()` → jsonb
 - `fn_hs_gop_y_chua_doc()` → integer
 - `fn_hs_gop_y_cua_toi()` → jsonb
@@ -10796,9 +10814,9 @@ WITH luot AS (
 - `tsa_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
@@ -10973,6 +10991,7 @@ WITH luot AS (
 | hinh_y_nhan_de_xuat | hinh_y_nhan_de_xuat_ly_do_check | `CHECK ((btrim(ly_do) <> ''::text))` |
 | hoc_phi_phat_sinh | hoc_phi_phat_sinh_dung_loai | `CHECK ((((loai = 'lop'::text) AND (lop_id IS NOT NULL) AND (hoc_sinh_id IS NULL)) OR ((loai = 'ca_nhan'::text) AND (hoc_sinh_id IS NOT NULL) AND (lop_id IS NULL))))` |
 | hoi_dap_bot | hoi_dap_bot_id_check | `CHECK ((id = 1))` |
+| hs_ep_cap_nhat | hs_ep_cap_nhat_id_check | `CHECK ((id = 1))` |
 | hs_giai_thuong | hs_giai_thuong_xu_check | `CHECK ((xu >= 0))` |
 | hs_giao_dien | hs_giao_dien_hinh_nen_check | `CHECK ((hinh_nen ~ '^[a-z0-9_]{1,40}$'::text))` |
 | hs_huy_hieu_dat | hs_huy_hieu_dat_lan_check | `CHECK ((lan >= 1))` |
