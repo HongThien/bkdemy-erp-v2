@@ -78627,3 +78627,9 @@ Thùy nêu 4 việc, làm được 3:
 - Làm: `ck/xep-khong-tt.mjs --ghi` — chỉ câu tt=khong_tt (nhân chứng nội dung như gan-mo-hinh-tt), đang ở HH00108: ⇒ HH00095 lượng giác 89 · HH00107 quạt/hình tròn/vành khuyên 52 · HH00105 đường tròn 31 · HH00106 cung 9 · HH00110 hai đường tròn 3 · HH00086 hệ thức đường cao 1 · HH00140 (đỗ tạm, bài thực tế/cực trị chưa có bài hợp: HHC011362/363/437/438/481) 5. Giữ HH00108: HHC011335, HHC011484 (vị trí tương đối thật). Chỉ đổi dang_chinh, mã câu bất biến; hoàn tác bằng `ck/xep-khong-tt.undo.json`.
 - HH00108 còn 105 câu (ba_tt 26 + tt_khac 27 + 50 câu từ lượt trước + 2). Chưa kiểm từng câu của phần còn lại ngoài nhãn tt.
 - Sai của tôi: đã báo "cần xếp tay" mà để nguyên lúc bàn giao, thay vì xếp luôn. Lần sau: bài đỗ tạm phải xếp xong trước khi báo "xong".
+
+## 03/11 khuya — Nông trại: rừng nhiều mẫu cây (Thùy: "Cây hơi xấu. m có đổi được nhiều mẫu cây hơn ko") — game 4b8ae55
+- Trước: 4 kiểu (tròn · cao · thông · bụi) cùng MỘT bộ xanh chói gần trùng màu cỏ ⇒ rừng chìm vào nền, cây nào cũng như nhau.
+- Giờ 9 kiểu trong `models.js` `cayBongGeo`: tròn · cao · **bàng** (3 tầng tán mỏng lệch hai bên, thấy thân giữa tầng) · **bạch dương** (thân trắng vằn đen) · **bách** (thon như ngọn lửa) · thông (4 tầng) · **tre** (8 thân đốt, lá mảnh rủ) · **dừa** (thân cong ngấn, 8 tàu lá) · bụi. Mỗi kiểu 3 bộ màu `LAR` (xanh đậm · xanh vàng · xanh lam); bảng `LA` cũ giữ nguyên cho cây ăn quả/bụi vườn.
+- `rungBong` lệch màu từng bản sao (sáng ±7%, ấm/lạnh ±3,5%, theo nghiên cứu Little Habitats). Rải theo trọng số `chonKieuCay` (scene.js): dừa/tre gần trại, thông/bách ra xa; khoảng cách riêng `CAY_CACH`.
+- Soi 1024×768: đồng quê + thu + tuyết + Tết + Halloween — shader mùa ăn đúng vào cây mới. Bản đầu tre có chỏm tròn như bóng bay, dừa bé lá như sợi, bàng thành khối bánh kem ⇒ đã sửa cả 3.
