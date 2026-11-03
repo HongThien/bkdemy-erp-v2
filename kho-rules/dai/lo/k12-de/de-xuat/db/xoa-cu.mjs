@@ -27,7 +27,7 @@ import pg from 'pg'
 import { bien } from '../../../../../../scripts/kho/cau-hinh.mjs'
 
 const DIR = dirname(fileURLToPath(import.meta.url))
-const BACKUP = 'C:\\Users\\Admin\\AppData\\Local\\Temp\\claude\\C--Users-Admin-Desktop-BKERP-bkdemy-erp-v2\\5e42aa3b-8930-4334-a4cb-119870ea66c6\\scratchpad\\backup-xoa-cu'
+const BACKUP = process.env.BACKUP_DIR ?? ['C:', 'Users', 'WBPC', 'Desktop', 'BKERP', '_backup-xoa-cu-k12-0311'].join('/')   // NGOÀI repo; máy nhà dùng BACKUP_DIR
 const XOA = { HS: 'NCD00094', VT: 'NCD00096', XS: 'NCD00097', SDT: 'NCD00098' }
 const GIU = { NHTP: 'NCD00095', PPTD: 'NCD00099' }
 // Kỳ vọng số CŨ sẽ xoá (B1 03/11, kiểm lại DB 03/11): chuyên đề · nhóm · dạng
@@ -158,7 +158,7 @@ try {
       (select count(*) from dai_bdm_dang_bai d join dai_bdm_nhom n on n.id=d.nhom_id where n.chu_de_id=x.cd)::int dang from unnest($1::text[]) x(cd) order by 1`, [[...cdXoa, ...cdGiu]])).map((r) => [r.cd, r]))
   const tongBang = async () => { const r = {}; for (const [t] of B) r[t] = await md5Bang(t); return r }
 
-  const truocNgoai = await chup(), truocCay = await demCay(), truocTong = await tongBang()
+  const truocCay = await demCay(), truocTong = await tongBang()
   const logTruoc = (await Q(`select count(*)::int n, coalesce(max(id),0)::bigint mx from dai_bdm_log`))[0]
 
   // REPEATABLE READ: một ảnh chụp cố định cho cả tx (bảng đo lường đang được app ghi liên tục — READ COMMITTED làm lệch đếm).
@@ -166,6 +166,9 @@ try {
   await c.query('begin isolation level repeatable read')
   await c.query(`set local statement_timeout = '600s'`)
   await c.query(`set local lock_timeout = '20s'`)
+  // ảnh chụp ngoài phạm vi lấy TRONG tx (cùng snapshot với lúc 'sau xoá'): bảng sống như diem_thi/tai_lieu bị app ghi đồng thời thì chụp trước tx sẽ lệch oan (dry-run 03/11 chiều)
+  const truocNgoai = await chup()
+  const BANG_SONG = new Set(['diem_thi (cả bảng)', 'tai_lieu (cả bảng, bỏ updated_at)'])
 
   // ── 3. Đếm + sao lưu (trong tx, trước khi xoá) ────────────────────────────────────────────────────────
   for (const [nhan, s] of CHAN) { const n = (await Q(s, [ID]))[0].n; if (n) nguy.push(`${nhan}: ${n} dòng`); in_(`  kiểm ${nhan}: ${n}`) }
@@ -320,7 +323,7 @@ try {
   const logSau = (await Q(`select count(*)::int n from dai_bdm_log`))[0]
   in_(`\n══ SAU ${GHI ? 'COMMIT' : 'ROLLBACK'}: đếm + md5 ══`)
   let giong = true
-  for (const k of Object.keys(CHUP)) { const a = truocNgoai[k], b = sauNgoai[k], ok = a.n === b.n && a.h === b.h; if (!ok) giong = false; in_(`  ${k}: ${a.n} → ${b.n} ${ok ? '✔' : '✘'}`) }
+  for (const k of Object.keys(CHUP)) { const a = truocNgoai[k], b = sauNgoai[k], ok = a.n === b.n && a.h === b.h; if (!ok && !BANG_SONG.has(k)) giong = false; in_(`  ${k}: ${a.n} → ${b.n} ${ok ? '✔' : '✘'}`) }
   in_('  (bảng · dòng phạm vi xoá: trong tx trước xoá → sau ' + (GHI ? 'COMMIT phải 0' : 'ROLLBACK phải = và cùng md5') + ' · tổng bảng trước tx → sau [bảng sống: app ghi đồng thời thì tổng có thể đổi, không tính là lỗi])')
   for (const k of KE) { const pred = B.find((x) => x[0] === k.t)[1]; const d = await md5Bang(k.t, pred); const ok = GHI ? d.n === 0 : d.n === k.del.n && d.h === k.del.h; if (!ok) giong = false; const a = truocTong[k.t], b = sauTongR[k.t]; in_(`  ${k.t}: ${k.del.n} → ${d.n} ${ok ? '✔' : '✘'} · tổng ${a.n} → ${b.n}${a.n === b.n && a.h === b.h ? ' =' : ' (đổi)'}`) }
   in_(`  dai_bdm_log: ${logTruoc.n} → ${logSau.n}`)

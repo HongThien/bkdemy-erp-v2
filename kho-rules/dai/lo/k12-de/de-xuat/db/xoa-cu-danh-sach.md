@@ -1,27 +1,27 @@
 # Danh sách XOÁ bản đồ CŨ K12 — 4 chủ đề làm lại (xoa-cu.mjs)
 
-> Sinh bởi `xoa-cu.mjs` (chạy thử 14:10:22 3/11/2026). Thùy đã duyệt xoá 03/11. KHÔNG đụng NCD00095 (NHTP) · NCD00099 (PPTD). Sao lưu JSON: `C:\Users\Admin\AppData\Local\Temp\claude\C--Users-Admin-Desktop-BKERP-bkdemy-erp-v2\5e42aa3b-8930-4334-a4cb-119870ea66c6\scratchpad\backup-xoa-cu`.
+> Sinh bởi `xoa-cu.mjs` (chạy thử 17:13:04 3/11/2026). Thùy đã duyệt xoá 03/11. KHÔNG đụng NCD00095 (NHTP) · NCD00099 (PPTD). Sao lưu JSON: `C:/Users/WBPC/Desktop/BKERP/_backup-xoa-cu-k12-0311`.
 
 ## 1. Số dòng mỗi bảng
 
 | bảng | kiểu | xoá trực tiếp | cascade | tổng mất |
 |---|---|---|---|---|
-| `dai_bdm_gan_cau` | trực tiếp | 0 | 365 | **365** |
+| `dai_bdm_gan_cau` | trực tiếp | 365 | 0 | **365** |
 | `hgt_bdm_gan_cau` | trực tiếp | 0 | 0 | **0** |
-| `dai_bdm_de_xuat` | trực tiếp | 0 | 352 | **352** |
+| `dai_bdm_de_xuat` | trực tiếp | 352 | 0 | **352** |
 | `hgt_bdm_de_xuat` | trực tiếp | 0 | 0 | **0** |
 | `dai_bdm_kiem_mau` | trực tiếp | 0 | 0 | **0** |
 | `hgt_bdm_kiem_mau` | trực tiếp | 0 | 0 | **0** |
 | `dai_bdm_tu_choi` | trực tiếp | 0 | 0 | **0** |
 | `hgt_bdm_tu_choi` | trực tiếp | 0 | 0 | **0** |
 | `dai_cau_lop` | trực tiếp | 0 | 0 | **0** |
-| `dai_bdm_doi_ung` | trực tiếp | 0 | 72 | **72** |
-| `dai_bdm_doi_ung_cum` | trực tiếp | 0 | 11 | **11** |
+| `dai_bdm_doi_ung` | trực tiếp | 72 | 0 | **72** |
+| `dai_bdm_doi_ung_cum` | trực tiếp | 11 | 0 | **11** |
 | `dai_bdm_nhom_tien_de` | trực tiếp | 0 | 0 | **0** |
-| `gami_session_problems` | trực tiếp | 0 | 127 | **127** |
+| `gami_session_problems` | trực tiếp | 127 | 0 | **127** |
 | `gami_grades` | cascade ← gami_session_problems | 0 | 356 | **356** |
-| `bai_test_dang_phat_hanh` | trực tiếp | 0 | 1 | **1** |
-| `bai_test_cau` | trực tiếp | 0 | 226 | **226** |
+| `bai_test_dang_phat_hanh` | trực tiếp | 1 | 0 | **1** |
+| `bai_test_cau` | trực tiếp | 226 | 0 | **226** |
 | `bai_lam_cau` | cascade ← bai_test_cau | 0 | 112 | **112** |
 | `bai_lam_cau_sua_log` | cascade ← bai_lam_cau | 0 | 0 | **0** |
 | `bai_test_report` | cascade ← bai_lam_cau | 0 | 0 | **0** |
@@ -29,15 +29,15 @@
 | `bai_test_cham_lai_log` | cascade ← bai_test_cau | 0 | 0 | **0** |
 | `bai_lam_goi_y` | cascade ← bai_test_cau | 0 | 0 | **0** |
 | `thi_thu_anh` | cascade ← bai_test_cau | 0 | 0 | **0** |
-| `ca_test_cau` | trực tiếp | 0 | 49 | **49** |
+| `ca_test_cau` | trực tiếp | 49 | 0 | **49** |
 | `ca_test_cau_kq` | cascade ← ca_test_cau | 0 | 49 | **49** |
-| `tu_luyen_dang_lan` | trực tiếp | 0 | 44 | **44** |
-| `tai_lieu_phan` | trực tiếp (ref_ma) + cascade con (cha_id) | undefined | NaN | **104** |
+| `tu_luyen_dang_lan` | trực tiếp | 44 | 0 | **44** |
+| `tai_lieu_phan` | trực tiếp (ref_ma) + cascade con (cha_id) | 104 | 0 | **104** |
 | `tai_lieu_cau` | cascade ← tai_lieu_phan | 0 | 293 | **293** |
-| `dai_bdm_dang_bai` | trực tiếp | 0 | 17 | **17** |
-| `dai_bdm_nhom` | trực tiếp | 0 | 68 | **68** |
-| `dai_bdm_o` | trực tiếp | 0 | 9 | **9** |
-| `dai_bdm_chuyen_de` | trực tiếp | 0 | 9 | **9** |
+| `dai_bdm_dang_bai` | trực tiếp | 17 | 0 | **17** |
+| `dai_bdm_nhom` | trực tiếp | 68 | 0 | **68** |
+| `dai_bdm_o` | trực tiếp | 9 | 0 | **9** |
+| `dai_bdm_chuyen_de` | trực tiếp | 9 | 0 | **9** |
 | **tổng** | | | | **2266** |
 
 Kèm: `tai_lieu.updated_at` bump 3 giáo trình (CLAUDE.md §2). `dai_bdm_log` thêm 551 dòng (dai_bdm_chuyen_de/xoa 9 · dai_bdm_dang_bai/xoa 17 · dai_bdm_doi_ung/xoa 72 · dai_bdm_doi_ung_cum/xoa 11 · dai_bdm_gan_cau/xoa 365 · dai_bdm_nhom/xoa 68 · dai_bdm_o/xoa 9).
