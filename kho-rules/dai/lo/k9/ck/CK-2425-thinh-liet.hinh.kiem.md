@@ -1,0 +1,16 @@
+# CK-2425-thinh-liet · phần Hình — trạm SOÁT giải mù (Pha 1)
+
+Danh sách bài Hình tự lập từ ảnh (Pha 0): Bài 20–23 (Dạng 3 Tỉ số lượng giác), Bài 24–28 (Dạng 4 Đường tròn). Tổng 9 bài. Bài 31 (bất đẳng thức với ba cạnh tam giác) là Đại số thuần — không lấy.
+Máy kiểm: `C:\Users\WBPC\bk-kho-lam-viec\de-cuong\K9\CK\CK-2425-thinh-liet\tam\soat_kiem.mjs`.
+
+| Nhãn | Đáp án / đáp số / hướng chứng minh (1 dòng) | Ghi chú về đề (in lỗi, mờ, hai cách hiểu, đề sai) |
+|---|---|---|
+| P3 Bài 20 | Kẻ $OH\perp MN$; $\triangle AHO$ vuông tại $H$: $OH=OA\cdot\sin 44^\circ=18\sin44^\circ\approx12{,}5$ m (máy: 12,5039) | Đề in $\widehat{ABC}=44^\circ$ nhưng không có điểm $B$; theo hình góc $44^\circ$ là góc giữa $AN$ và $AO$ ⇒ đọc $\widehat{OAN}=44^\circ$ (lỗi in hiển nhiên) |
+| P3 Bài 21 | $IA=380\tan50^\circ\approx452{,}87$; $\widehat{IKB}=65^\circ$, $IB=380\tan65^\circ\approx814{,}91$; $AB=IB-IA\approx362$ m (máy: 362,05) | Đề chỉ có hình: $KI=380$ m, $\widehat{IKA}=50^\circ$, $\widehat{AKB}=15^\circ$, $I,A,B$ thẳng hàng, $KI\perp IB$; đề in "dưới dây" (= "dưới đây") |
+| P3 Bài 22 | Tam giác vuông tại $H$: $BH=AH\cdot\tan34^\circ=86\tan34^\circ\approx58$ m (máy: 58,008) | — |
+| P3 Bài 23 | a) $CH=\dfrac{762}{\cot6^\circ+\cot4^\circ}\approx32$ m (máy 31,9966); b) $AC=\dfrac{CH}{\sin6^\circ}\approx306{,}1$ m, $CB=\dfrac{CH}{\sin4^\circ}\approx458{,}7$ m, thời gian $\approx0{,}1007$ h $\approx6$ phút ⇒ đến trường khoảng 6 giờ 6 phút | Ý b không nói làm tròn; dùng 32 hay giá trị đúng đều 6,04 phút |
+| P4 Bài 24 | a) $AM=AN$, $OM=ON$ ⇒ $OA$ là trung trực $MN$ ⇒ $OA\perp MN$; b) $OM=ON=OC$ ⇒ $\triangle MNC$ có trung tuyến $MO=\frac12NC$ ⇒ $\widehat{NMC}=90^\circ$ ⇒ $MC\perp MN$, cùng $\perp$ với $OA$ ⇒ $MC\parallel AO$; c) $AM=AN=4$ cm, $MN=2\cdot\dfrac{3\cdot4}{5}=4{,}8$ cm | Kí hiệu $\perp$ ở ý a mất font (in ô vuông); câu "Tính độ dài các cạnh…" không có nhãn — coi là ý c |
+| P4 Bài 25 | a) Kẻ đường kính $AD$ (hoặc dùng tam giác cân $OAC$): $\widehat{OAC}=90^\circ-\widehat{ABC}=\widehat{BAH}$; b) $\triangle ABH\backsim\triangle ADC$ (g.g) ⇒ $AB\cdot AC=AD\cdot AH=2R\cdot AH$. Máy: đúng cả tam giác nhọn và tù (3000 ca) | Đề không nói tam giác nhọn; nếu không được dùng góc nội tiếp thì cần đi qua tam giác cân / đường kính — phải soát lời giải chỗ $\widehat{ACD}=90^\circ$ |
+| P4 Bài 26 | 1) $\widehat{OAD}=\widehat{OBD}=90^\circ$ ⇒ $A,B$ cách đều trung điểm $OD$ ⇒ $O,A,D,B$ cùng thuộc đường tròn đường kính $OD$; 2) $\widehat{EOA}=\widehat{ODA}=\widehat{ODB}$ … ⇒ $\widehat{EOC}=\widehat{EOA}$ ⇒ $\triangle EOA=\triangle EOC$ (c.g.c) ⇒ $\widehat{OCE}=\widehat{OAE}=90^\circ$ ⇒ $EC$ tiếp tuyến. Máy: đúng 3000 ca, $A$ luôn nằm giữa $D$, $E$ | $O$ là trung điểm $BC$ (tam giác vuông nội tiếp) phải chứng minh không bằng góc nội tiếp |
+| P4 Bài 27 | $S=\dfrac14\pi(5^2-3^2)=4\pi\approx12{,}6$ dm² (máy: 12,566) | — |
+| P4 Bài 28 | a) $r=3$ ft $=91{,}44$ cm, $R=91{,}44+15{,}24=106{,}68$ cm, $S=\dfrac{72}{360}\pi(R^2-r^2)\approx1897$ cm² (máy: 1897,11); b) cần $OA$ (cạnh tam giác vuông / cạnh huyền $OE$… hai cạnh xác định tam giác), $OB$ (bán kính quạt) và góc $\widehat{AOD}$ (hoặc đủ yếu tố để tính) | Số liệu Hình 3: $\widehat{NIP}=72^\circ$, $IP=3$ ft, $PQ=6$ in; ý b là câu hỏi mở, nhiều đáp án đúng |

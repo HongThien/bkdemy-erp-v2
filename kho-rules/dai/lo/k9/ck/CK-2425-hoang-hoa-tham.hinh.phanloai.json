@@ -1,0 +1,18 @@
+{
+  "P1 Bài 24.1": { "tt": "khong_tt", "ghi": "Tỉ số lượng giác: tính góc từ hai cạnh góc vuông (bóng nắng cột đèn)." },
+  "P1 Bài 24.2": { "tt": "khong_tt", "ghi": "Tỉ số lượng giác thực tế: tháp hải đăng, góc 32 độ, hai đường song song." },
+  "P1 Bài 24.3": { "tt": "khong_tt", "ghi": "Tỉ số lượng giác thực tế: tàu ngầm lặn xiên 30 độ, quãng đường và thời gian." },
+  "P1 Bài 25.1": { "tt": "khong_tt", "ghi": "Hình quạt tròn: diện tích và độ dài cung." },
+  "P1 Bài 25.2": { "tt": "khong_tt", "ghi": "Diện tích hình tròn (hai mặt trống)." },
+  "P1 Bài 25.3": { "tt": "khong_tt", "ghi": "Diện tích hình vành khuyên." },
+  "P1 Bài 26": { "tt": "ba_tt", "ghi": "Ba tiếp tuyến: tại A, B (hai đầu đường kính) và tại M cắt hai tiếp tuyến kia ở C, D; CD = AC + BD, AB tiếp tuyến của đường tròn đường kính CD." },
+  "P1 Bài 27": { "tt": "hai_tt", "ghi": "Hai tiếp tuyến MA, MB cắt nhau tại M; chứng minh KD là tiếp tuyến; đề in H sai (sửa H = OM giao AB)." },
+  "P1 Bài 28": { "tt": "hai_tt", "ghi": "Hai tiếp tuyến PA, PM cắt nhau tại P (kèm tiếp tuyến Ax tại đầu đường kính); BM song song OP, hình bình hành OBNP, I J K thẳng hàng." },
+  "P1 Bài 29": { "tt": "hai_tt", "ghi": "Tiếp tuyến MA và chứng minh MB là tiếp tuyến thứ hai từ M; OI.OM = R^2; thêm tiếp tuyến tại D cắt AB tại N, MD vuông góc ON." },
+  "P1 Bài 30": { "tt": "hai_tt", "ghi": "Hai tiếp tuyến AB, AC từ điểm A ngoài đường tròn; OA vuông góc BC, OH.HA = BK.BA, HK tiếp tuyến của đường tròn đường kính AC." },
+  "P1 Bài 31": { "tt": "hai_tt", "ghi": "Hai tiếp tuyến KA, KB từ điểm K ngoài đường tròn; BC song song KO, BC.KO = 2R^2, diện tích ABC khi OK = 2R." },
+  "P1 Bài 32": { "tt": "hai_tt", "ghi": "Hai tiếp tuyến AB, AC với OA = 2R; DC song song OA, OCEA hình thang cân, diện tích hình thoi AKOS." },
+  "P1 Bài 33": { "tt": "hai_tt", "ghi": "Hai tiếp tuyến CB, CD cắt nhau tại C; OC vuông góc BD, góc CMD = góc CDA, chu vi tam giác OMH lớn nhất." },
+  "P2 Bài 39": { "tt": "tt_khac", "ghi": "Tính độ dài tiếp tuyến từ vệ tinh tới Trái Đất (tam giác OTV vuông tại T, Pythagore)." },
+  "P2 Bài 40": { "tt": "khong_tt", "ghi": "Hình chữ nhật nội tiếp đường tròn (đường tròn ngoại tiếp qua bốn đỉnh), diện tích nhỏ nhất của phần mở rộng." }
+}

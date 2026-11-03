@@ -1,0 +1,21 @@
+{
+  "P1 Bài 1": { "tt": "khong_tt", "ghi": "Định lý Pythagore thực tế: khoảng cách từ trạm phát sóng đến đầu tàu." },
+  "P2 Bài 1": { "tt": "hai_tt", "ghi": "Hai đường thẳng vuông góc OA, OB tại A, B là hai tiếp tuyến cắt nhau tại M: MA=MB, MO là trung trực của AB, OH·OM=R²." },
+  "P2 Bài 2": { "tt": "tt_khac", "ghi": "Đường kính AB, hai đường cao BE, AF; ý c thực chất chứng minh IE ⊥ OE tại E thuộc (O) (IE là tiếp tuyến), đề không dùng chữ tiếp tuyến." },
+  "P2 Bài 3": { "tt": "khong_tt", "ghi": "Tam giác đều: bốn điểm B, C, M, N cùng thuộc đường tròn đường kính BC; vị trí điểm G, A so với đường tròn." },
+  "P2 Bài 4": { "tt": "khong_tt", "ghi": "Góc ở tâm, số đo cung nhỏ, cung lớn; đề in thiếu số đo góc ở tâm nên giải theo n°." },
+  "P2 Bài 5": { "tt": "tt_khac", "ghi": "Hình thang vuông, chứng minh đường thẳng AD tiếp xúc với đường tròn đường kính BC (khoảng cách từ tâm bằng bán kính)." },
+  "P2 Bài 6": { "tt": "tt_khac", "ghi": "Phân giác BD, DM = DA; xác định vị trí tương đối của BC với đường tròn (D; DA): BC tiếp xúc tại M." },
+  "P2 Bài 7": { "tt": "tt_khac", "ghi": "Chứng minh IM là tiếp tuyến của (O) tại M qua đường tròn đường kính IO (dấu hiệu nhận biết tiếp tuyến)." },
+  "P2 Bài 8": { "tt": "hai_tt", "ghi": "Có tiếp tuyến CA, chứng minh CB cũng là tiếp tuyến: hai tiếp tuyến cắt nhau tại C (CA=CB, tam giác OAC=OBC)." },
+  "P2 Bài 9": { "tt": "tt_khac", "ghi": "Chứng minh ME là tiếp tuyến của đường tròn đường kính AH (tâm O) tại E bằng góc OEM = 90°." },
+  "P2 Bài 10": { "tt": "hai_tt", "ghi": "Hai tiếp tuyến AB, AC cắt nhau tại A (ý a); DC, DE cắt nhau tại D (ý b); ý c dùng đường kính BK. Có ba tiếp tuyến AB, AC, DE." },
+  "P3 Bài 1": { "tt": "khong_tt", "ghi": "So sánh diện tích hai miếng bánh hình quạt tròn." },
+  "P3 Bài 2": { "tt": "khong_tt", "ghi": "Diện tích quạt giấy: nửa hình vành khuyên." },
+  "P3 Bài 3": { "tt": "khong_tt", "ghi": "Diện tích hình quạt và độ dài cung (150°, R = 2 dm)." },
+  "P3 Bài 4": { "tt": "khong_tt", "ghi": "Độ dài cung tròn do đầu kim phút vạch trong 20 phút." },
+  "P3 Bài 5": { "tt": "khong_tt", "ghi": "Diện tích khăn trải bàn hình tròn (hai đường tròn đồng tâm)." },
+  "P3 Bài 6": { "tt": "khong_tt", "ghi": "Chu vi bánh xe, quãng đường xe đạp đi được." },
+  "P3 Bài 7": { "tt": "khong_tt", "ghi": "Diện tích hình quạt tròn (vùng biển) và khoảng cách từ tâm đến dây cung." },
+  "P3 Bài 8": { "tt": "hai_tt", "ghi": "Bánh xe tiếp xúc mặt đất và bức tường: hai tiếp tuyến cắt nhau tại góc tường, CO là phân giác (tính OC)." }
+}
