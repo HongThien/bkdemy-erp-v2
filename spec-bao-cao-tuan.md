@@ -153,7 +153,7 @@ Bắt buộc có trước khi Nộp (nút Nộp chỉ disable khi **thiếu data
   (đối chiếu 03/11 trên dữ liệu thật: khớp 100% với `fn_btyeu_dang_yeu_2_cua_so_moi` — Toán 150/150, KHTN 186/186) ·
   `_dang_yeu_chup_tuan(tuần)` chụp từ hàm (không từ bảng làm mới lười), HS theo lớp TẠI MỐC · `_tu_dong_sang_t2()` = chụp + cập nhật Tổng kết tuần.
   **Thùy 03/11: không tính ngược** — ảnh đầu tiên do cron chụp sáng 09/11. Lịch cron = file `202611031347_tu_dong_sang_t2_cron_sql_editor.sql`
-  (**phải chạy bằng SQL Editor** — claude_build không vào được schema cron). Chưa nối hàm cũ sang hàm mới (việc dọn "một nguồn công thức" — làm sau, đã đối chiếu khớp).
+  (**phải chạy bằng SQL Editor** — claude_build không vào được schema cron; **Thùy đã chạy 03/11**, đã ghi sổ). Chưa nối hàm cũ sang hàm mới (việc dọn "một nguồn công thức" — làm sau, đã đối chiếu khớp).
   Ghi nhận: "Tổng kết tuần ngừng từ 19/10" KHÔNG phải lỗi — nó là bộ đệm tính lười (chỉ tính khi có người mở màn); cron sáng T2 giờ cập nhật luôn.
 - **P2 — mig `202611031351`** (ĐÃ ÁP) + màn `BaoCaoTuanTK` (đồ vật "📝 Báo cáo tuần" — lịch treo tường trong Phòng làm việc): bảng
   `bao_cao_tuan_khoi` + log trigger · `fn_bctk_so` (6 nhóm, toàn khối + từng lớp + HS còn yếu) · `fn_bctk_trend` · `fn_bctk_lay / _luu_nhap / _nop`.
