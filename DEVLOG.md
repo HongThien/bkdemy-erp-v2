@@ -78581,3 +78581,9 @@ Thùy nêu 4 việc, làm được 3:
 - Kiểm JWT HS (rollback): cả 3 tiêu chí + tháp Sinh tồn/Vô tận + C1 = trống; chơi 1 trận thắng ⇒ XP +40 hạng 1, chuỗi thắng 1, chuỗi ngày 1; hồ sơ giữ xp 1675 / 29 trận / chuỗi max 11.
 - Mở mùa sau: insert dtv_mua + update xp_dau_mua = xp, chuoi_thang_mua = 0, chuoi_thang_max_mua = 0 cùng transaction.
 - 03/11 tối: Thùy gật ⇒ mig `202611031927_nt_ban_vuon_giao_dien.sql` **ĐÃ ÁP** (`migrate.mjs --only`). Kiểm: prosrc có `giaoDien`, ACL giữ nguyên (claude_build + authenticated, không anon). Gọi thật dưới JWT HS (ROLLBACK): bạn cùng lớp có `giaoDien {nha:'nhat', nen:'bay'}` ⇒ trả `{nha:'nhat', nen:null}` (giá trị lạ bị lọc). Hiện 0/159 vườn có `giaoDien` (game mới chưa deploy).
+
+## 03/11 (tối) — TIN MỚI cho HS: chặng Lộc "Có gì mới" (app) + 3 mẹo trong Nông trại · giúp bạn 10 lượt — game 62e2dcb (đã push) · mig 202611031932 ĐÃ ÁP
+- App: chặng tutorial `moi_0311` "Có gì mới" (noiDungTutorial.ts + màn mô phỏng `MpMoi0311`): Đấu trường chọn sai bị trừ đúng bằng điểm câu đúng cùng tốc độ (100/70/50) · đáp án đổi chỗ mỗi đề · Thách đấu bốc mọi dạng đã học · BXH Đấu trường MÙA MỚI (cấp/XP giữ) · bạn robot góp ý góc dưới trái. `CHUONG_TIN_MOI` — HocSinhApp TỰ MỞ 1 lần khi em (đã qua hành trình đầu) về màn chính; xem/bỏ qua đều ghi `hs_tutorial`. Đợt sau thêm chặng mới vào `CHUONG_TIN_MOI`. Soi: `hs.html?xem=tutorial&chang=14`.
+- Nông trại: mẹo Lộc `nha_canh` (nút 🎨), `may_cb` (thay mẹo "lò bánh 1 mẻ/ngày", kèm ⚡ toán), `giup_exp` — mọi em thấy 1 lần, lần lượt.
+- Giúp bạn: Thùy "tạm thời cộng exp, 1 ngày tối đa 10 lần" ⇒ `_nt_luat().giup` 5 → 10 (server tự chặn lượt 11) + `LUAT.giup = 10`. Điểm Friendship: CHƯA làm ("tính sau").
+- Chưa thử bằng phiên HS đăng nhập thật; cần deploy app.

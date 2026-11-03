@@ -88,7 +88,7 @@ import { LocMoi } from './tutorial/LocMoi'
 import { LocMoGame } from './tutorial/LocMoGame'
 import { NutBaoLoiCau } from './gopy/BaoLoiCau'
 import { datMan, EVT_MO_GOP_Y } from './gopy/manHienTai'
-import { chuongMo, CHUONG_LOI, NGUOI_DAN_LOC, type DichThu } from './tutorial/noiDungTutorial'
+import { chuongMo, CHUONG_LOI, CHUONG_TIN_MOI, NGUOI_DAN_LOC, type DichThu } from './tutorial/noiDungTutorial'
 import { tutorialDaXem, tutorialGhi } from '../../lib/tutorial_hs'
 import AlbumHS from './AlbumHS'
 import HoSoHS from './HoSoHS'
@@ -525,6 +525,8 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   useEffect(() => {
     if (direct !== null || daTuMoTut.current || !tutXong || tn === undefined) return
     if (tutXong.size === 0 && chuongMo(moTN, CHUONG_LOI).length > 0) { daTuMoTut.current = true; tutLanDau.current = true; setTutDs([...CHUONG_LOI]); setDirect('tutorial') }
+    // TIN MỚI (Thùy 03/11): em đã qua hành trình đầu mà chưa xem chặng báo thay đổi ⇒ Lộc tự mở đúng chặng đó MỘT lần (xem hoặc bỏ qua đều ghi hs_tutorial)
+    else if (tutXong.size > 0) { const moi = CHUONG_TIN_MOI.filter((id) => !tutXong.has(id)); if (moi.length) { daTuMoTut.current = true; tutLanDau.current = false; setTutDs([...moi]); setDirect('tutorial') } }
   }) // eslint-disable-line react-hooks/exhaustive-deps
   const thuNgay = (d: DichThu) => {
     setTuHome(d !== 'hoc_tap' && d !== 'luyen_yeu') // màn lẻ mở từ tutorial ⇒ "Quay lại" về màn chính

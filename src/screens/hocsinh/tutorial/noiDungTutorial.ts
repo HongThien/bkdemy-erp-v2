@@ -10,7 +10,7 @@
 // ============================================================================
 
 export type BuocTutorial = { noi: string; soi?: string; loc?: string } // loc = động tác của Lộc ép cho câu này (mặc định: chỉ tay ở câu đầu chặng, giải thích ở các câu sau)
-export type IdChuong = 'giao_dien' | 'hoc_tap' | 'chu_de' | 'tu_luyen' | 'luot_that' | 'chuoi' | 'tro_choi' | 'nong_trai' | 'thu_thach' | 'dau_chinh_phuc' | 'nhiem_vu_ngay' | 'bxh' | 'rank' | 'huy_hieu' | 'xu_may_man' | 'the_gioi'
+export type IdChuong = 'giao_dien' | 'hoc_tap' | 'chu_de' | 'tu_luyen' | 'luot_that' | 'chuoi' | 'tro_choi' | 'nong_trai' | 'thu_thach' | 'dau_chinh_phuc' | 'nhiem_vu_ngay' | 'bxh' | 'rank' | 'huy_hieu' | 'xu_may_man' | 'the_gioi' | 'moi_0311'
 export type ChuongTutorial = {
   id: IdChuong
   ten: string
@@ -209,6 +209,18 @@ const CHUONG_TAT_CA: ChuongTutorial[] = [
     ],
   },
   {
+    // TIN MỚI 03/11 (Thùy: "tutorial các thay đổi lần này, thông báo ngay khi học sinh vào app") — app TỰ MỞ 1 lần cho em đã qua hành trình đầu (HocSinhApp, CHUONG_TIN_MOI).
+    id: 'moi_0311', ten: 'Có gì mới', phu: 'Đấu trường · Bảng xếp hạng · Góp ý', icon: { emoji: '✨' },
+    kyNang: 'Đã nắm luật mới của Đấu trường, mùa xếp hạng mới và chỗ góp ý',
+    buoc: [
+      { noi: 'Chào em! App vừa có vài thay đổi, mình kể nhanh nhé.', soi: 'dau_truong', loc: 'greeting' },
+      { noi: 'Đấu trường đổi luật: chọn sai bây giờ bị TRỪ điểm, đúng bằng số điểm em được nếu trả lời đúng ở cùng tốc độ. Đoán bừa là lỗ, nên nghĩ kỹ rồi hãy chọn.', soi: 'tru_diem', loc: 'explaining' },
+      { noi: 'Vị trí các đáp án A, B, C, D cũng được đổi chỗ mỗi lần ra đề, nên nhớ vị trí không còn tác dụng. Thách đấu bốc câu ngẫu nhiên trong mọi dạng em đã học.', soi: 'xao', loc: 'winking' },
+      { noi: 'Bảng xếp hạng Đấu trường bắt đầu MÙA MỚI từ hôm nay: mọi bảng tính lại từ 0 với luật mới. Cấp và XP em đang có vẫn giữ nguyên.', soi: 'bxh', loc: 'open_book' },
+      { noi: 'Muốn góp ý hay báo lỗi thì chạm bạn robot ở góc dưới bên trái màn chính. Ý kiến của em giúp app tốt hơn mỗi ngày!', soi: 'gop_y', loc: 'greeting' },
+    ],
+  },
+  {
     id: 'the_gioi', ten: 'Thế giới BK', phu: 'Khoe thành tích, thả tim bạn bè', icon: { o: 'the_gioi' },
     kyNang: 'Thế giới BK — khoe thành tích thật, tương tác với bạn',
     buoc: [
@@ -238,6 +250,8 @@ export const THU_NGAY: Partial<Record<IdChuong, { dich: DichThu; nut: string }>>
 
 /** 5 CHẶNG LÕI cho LẦN ĐẦU (Thùy 08/10: 12 chặng một lúc hơi dài): Học tập · Luyện dạng yếu · Chuỗi · Nhiệm vụ · Thành tựu. Các chặng còn lại Lộc "kể dần" qua lời mời ở góc màn chính. */
 export const CHUONG_LOI: readonly IdChuong[] = ['hoc_tap', 'tu_luyen', 'chuoi', 'nhiem_vu_ngay', 'huy_hieu']
+/** TIN MỚI: chặng báo thay đổi, app TỰ MỞ một lần khi em vào màn chính (đã qua hành trình đầu, chưa xem). Đợt sau: thêm chặng mới vào đây. */
+export const CHUONG_TIN_MOI: readonly IdChuong[] = ['moi_0311']
 
 /** Các chặng của hành trình theo công tắc tính năng (`chiId`: chỉ các chặng này, đánh số lại trong tập đó): `mo(ma)` = tính năng ma đang MỞ cho em. Đánh số lại "Chặng N:"; thay {sr1}/{sr2} theo việc Chinh phục BK / Giải Vô địch BK đã mở chưa. */
 export function chuongMo(mo: (ma: string) => boolean, chiId?: readonly string[]): ChuongTutorial[] {

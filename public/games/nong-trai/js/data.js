@@ -166,8 +166,8 @@ const LUAT = {
   tranXuTieuThang: 5,            // CEO 30/09: "chỉ nên cho HS dùng 5 xu" — xu đổi ra để mua bịch/đồ mỗi tháng (muốn thêm: trả bằng điểm = phải học)
   tranXuTuan: null,              // BỎ 30/09 (thay bằng giới hạn hạt mỗi ngày = số ô). Đặt số > 0 để bật lại trần xu tiêu mỗi tuần
   // sang vườn bạn (spec §5.7 — CEO: trộm 3 / giúp 5)
-  trom: 3, giup: 5, tromToiDa: 0.2, tromMoiLan: 1,   // CEO 30/09: giảm trộm — mỗi lượt 1 quả, mỗi ô mất tối đa 20%
-  expGiup: 4,                    // Thùy 03/11: giúp bạn 1 lượt +4 EXP (≈ 1/3 phần tưới hộ tạo ra cho bạn; 5 lượt = 20 EXP/ngày). Chơi theo tài khoản: số do server trả (_nt_luat().expGiup)
+  trom: 3, giup: 10, tromToiDa: 0.2, tromMoiLan: 1,   // CEO 30/09: giảm trộm — mỗi lượt 1 quả, mỗi ô mất tối đa 20% · giúp 5 → 10 lượt/ngày (Thùy 03/11 tối, khớp server _nt_luat)
+  expGiup: 4,                    // Thùy 03/11: giúp bạn 1 lượt +4 EXP (≈ 1/3 phần tưới hộ tạo ra cho bạn; 10 lượt = 40 EXP/ngày). Chơi theo tài khoản: số do server trả (_nt_luat().expGiup)
   choDuoi: [0, 0.2, 0.4, 0.6],   // tỉ lệ chó đuổi trộm theo mốc thiện cảm
   // thú cưng (spec §5.8)
   tcMoi: 5, tcMoc: [20, 50, 100], chimBatSau: 50,
