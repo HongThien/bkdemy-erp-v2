@@ -244,7 +244,7 @@ Vậy $m\ge0$.
 === C2.2.6
 @ly_thuyet:
 ##TC Cực trị của hàm đa thức chứa tham số
-- Đạt cực trị tại $x_0$ thì $y'(x_0)=0$ (điều kiện cần). Điều kiện đủ: nếu $y''(x_0)<0$ thì $x_0$ là điểm cực đại, nếu $y''(x_0)>0$ thì là điểm cực tiểu; nếu $y''(x_0)=0$ hoặc không tính được thì xét dấu $y'$ hai bên $x_0$.
+- Đạt cực trị tại $x_0$ thì $y'(x_0)=0$ (điều kiện cần). Điều kiện đủ: $y'$ đổi dấu từ $+$ sang $-$ khi qua $x_0$ thì $x_0$ là điểm cực đại, từ $-$ sang $+$ thì là điểm cực tiểu.
 - Điểm cực trị $A(x_0;y_0)$ của đồ thị cho hai điều kiện: $y'(x_0)=0$ và $y(x_0)=y_0$ (cộng thêm điều kiện loại cực đại hay cực tiểu).
 - Hàm bậc ba có hai cực trị thoả hệ thức giữa $x_1,x_2$: dùng Viète $S=x_1+x_2$, $P=x_1x_2$, với $x_1^2+x_2^2=S^2-2P$ và $(x_1-x_2)^2=S^2-4P$; hệ thức không đối xứng (như $x_1+2x_2=1$) thì ghép với $x_1+x_2=S$ để tính $x_1,x_2$ theo $m$ rồi thay vào $x_1x_2=P$; luôn đối chiếu $\Delta'>0$.
 - Hai điểm cực trị nằm trong khoảng $(\alpha;\beta)$: khi $y'=0$ có hai nghiệm viết được theo $m$ thì đặt điều kiện hai nghiệm khác nhau và cùng thuộc $(\alpha;\beta)$.
@@ -253,7 +253,7 @@ Vậy $m\ge0$.
 - Đa thức có dạng $y=y(0)+cx^k+\dots$ với $c\ne0$ là hạng tử bậc thấp nhất khác $0$ của $y-y(0)$: nếu $k$ chẵn thì $x=0$ là cực tiểu khi $c>0$, cực đại khi $c<0$; nếu $k$ lẻ thì $x=0$ không phải điểm cực trị.
 
 ##PP Tìm $m$ để hàm đa thức có cực trị thoả điều kiện
-Tính $y'$ (và $y''$ nếu cần), đặt điều kiện để $y'=0$ có đủ nghiệm cho đề (ví dụ $\Delta'>0$).
+Tính $y'$, đặt điều kiện để $y'=0$ có đủ nghiệm cho đề (ví dụ $\Delta'>0$).
 Chuyển điều kiện của đề thành phương trình: $y'(x_0)=0$, $y(x_0)=y_0$ hoặc hệ thức Viète của $x_1,x_2$.
 Giải theo $m$ (hoặc theo $a$, $b$ nếu đề cho điểm cực trị cụ thể).
 Thử lại từng giá trị tìm được: kiểm tra $y'$ đổi dấu đúng loại cực trị (cực đại hay cực tiểu) và nghiệm thoả điều kiện có hai cực trị, loại nghiệm không thoả.
@@ -319,5 +319,6 @@ Vậy a) $5$ giá trị; b) $\dfrac{1}{22}$.
 ## GHI CHÚ CHO CEO
 - Nguồn: hồ sơ NBV 12-5 và Từ Tâm (thư mục ho-so của k12-hs), PNL Bài 1 Dạng 03 bản GV; trạm soát đã trích thêm Word NBV 12-1, 12-2, 12-5 (A. LÝ THUYẾT) và 12-5 (B. TỰ LUẬN). Công thức trong Word là ảnh WMF nên chỉ đối chiếu được lời văn: tâm đối xứng là điểm có hoành độ nghiệm $y''=0$ (khớp); cực trị theo dấu $y'$ (khớp). Điều kiện đủ bằng $y''$ không có trong phần lý thuyết NBV nhưng PNL dùng, nên giữ.
 - C2.2.5: lý thuyết chỉ nói đơn điệu, đúng mô tả. Khi gắn lại câu, cần chuyển khỏi C2.2.5: khoảng 11 câu cực trị theo $m$ sang C2.2.6; 2 câu "góc $OAB$ nhọn" sang C2.2.4; 2 câu GTLN theo $m$ (T1120000006683, T112010402127) sang chương GTLN–GTNN.
+- (03/11 dọn) C2.2.6: đã bỏ y″ khỏi lý thuyết/phương pháp, chỉ xét dấu y′: cả 3 câu đề thật của dạng (T112000000159, T112000000462, T1120000005975) làm được không cần y″; lời giải đề T112000000159 chỉ dùng y″ để kiểm lại, còn y′=2(x−2)(2x²+4x+5) đổi dấu rõ ràng. Ví dụ 1a đã kiểm bằng dấu y′.
 - (03/11 bổ sung) C2.2.6: đã thêm 2 ví dụ: ví dụ 3 (hai cực trị cùng nằm trong khoảng cho trước, kiểu đề T1120000006638 đang gắn ở C2.2.5) và ví dụ 4 (a: cực đại tại x=0 kiểu x^10; b: xác suất hai hàm trùng phương có cực trị chung); trạm soát 2 đổi thứ tự để ví dụ khó đứng sau. Cả 3 ví dụ mới đã tự thử bằng máy.
 - (03/11 bổ sung) C2.2.4: đã thêm ý đối xứng qua đường thẳng (MP+MQ nhỏ nhất, M thuộc AB) vào lý thuyết, bước phương pháp và ví dụ 3 (thử bằng máy: M(2;-1), a-b=3). Đề chỉ có 1 câu kiểu này nên ví dụ chỉ 1 bài.

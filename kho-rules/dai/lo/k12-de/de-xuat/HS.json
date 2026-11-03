@@ -376,7 +376,7 @@
       {
        "id": "C2.1.5",
        "ten": "Phân biệt các loại hàm qua dấu hiệu đặc trưng",
-       "mo_ta": "Bốn phương án thuộc các loại hàm khác nhau và chỉ cần nhận ra LOẠI hàm (có/không tiệm cận, tiệm cận xiên, số cực trị, dáng đồ thị) là chọn được.",
+       "mo_ta": "Chọn công thức khi các phương án thuộc nhiều loại hàm (kể cả parabol, x+1/x; có thể hai phương án cùng loại): nhận ra LOẠI hàm rồi dùng tiệm cận, cực trị, điểm đi qua để phân biệt các phương án còn lại.",
        "tu": [],
        "moi": [
         "nhận diện đồ thị trong các loại hàm hỗn hợp",
@@ -840,8 +840,8 @@
       },
       {
        "id": "C4.3.2",
-       "ten": "Quãng đường, khoảng cách ngắn nhất hoặc dài nhất",
-       "mo_ta": "Lập hàm khoảng cách/quãng đường theo vị trí, thời gian hoặc góc (hai vật chuyển động, đặt trạm, gấp giấy…) rồi tìm max–min.",
+       "ten": "Max–min của đại lượng hình học theo vị trí, thời gian, góc",
+       "mo_ta": "Lập hàm khoảng cách/quãng đường/độ cao theo vị trí, thời gian hoặc góc (hai vật chuyển động, đặt trạm, gấp giấy, con kiến bò trên thanh trượt…) rồi tìm giá trị lớn nhất, nhỏ nhất bằng đạo hàm.",
        "tu": [
         "P4.3.2"
        ],

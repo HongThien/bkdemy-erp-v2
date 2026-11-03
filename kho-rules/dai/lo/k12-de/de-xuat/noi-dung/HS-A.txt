@@ -246,21 +246,20 @@ Vậy hàm số đồng biến trên $(-\infty;0)$ và $(2;+\infty)$, nghịch b
 - Đề cho công thức $f'(x)$ (như $f'(x)=-x+1$) thì xét dấu biểu thức đó như xét dấu một đa thức.
 - Điểm làm $f'(x)=0$ mà $f'$ không đổi dấu khi qua nó (đồ thị $f'$ tiếp xúc trục hoành) thì không làm $f$ đổi chiều.
 - Nếu $f'(x)<0$ với mọi $x$ thì $f$ nghịch biến trên $\mathbb{R}$, khi đó $f(u)<f(v)\Leftrightarrow u>v$ (đồng biến thì cùng chiều).
-- Cột kẻ đôi ($||$) trong bảng xét dấu $f'$ là điểm $f'$ không xác định. Nếu đề cho $f$ liên tục tại điểm đó thì $x_0$ vẫn nằm trong tập xác định: hai bên cùng dấu thì nối hai khoảng thành một, hai bên trái dấu thì $x_0$ là mốc đổi chiều. Nếu $f$ cũng không xác định tại $x_0$ thì phải tách thành hai khoảng.
+- Cột kẻ đôi ($||$) trong bảng xét dấu $f'$ là điểm $f'$ không xác định (chưa nói $f$ không xác định). Nếu đề cho $f$ liên tục tại điểm đó thì $x_0$ vẫn nằm trong tập xác định: hai bên cùng dấu thì nối hai khoảng thành một, hai bên trái dấu thì $x_0$ là mốc đổi chiều. Nếu $f$ cũng không xác định tại $x_0$ thì phải tách thành hai khoảng.
 
 ##PP Đọc từ bảng xét dấu hoặc đồ thị của $f'$
 Đọc các hoành độ làm $f'=0$ (cột có số $0$ hoặc giao điểm với $Ox$).
 Xác định dấu của $f'$ trên mỗi khoảng (dấu trong bảng, hoặc đồ thị nằm trên/dưới $Ox$).
 Kết luận khoảng đồng biến ($f'>0$), nghịch biến ($f'<0$).
 Nếu dấu $f'$ không đổi qua một cột có số $0$, nối hai khoảng thành một.
-Cột kẻ đôi ($f'$ không xác định): xem $f$ có liên tục (có xác định) tại điểm đó không rồi mới nối hoặc tách khoảng.
+Cột kẻ đôi: đọc điều kiện liên tục hoặc tập xác định của đề rồi nối hoặc tách khoảng (quy tắc ở phần lý thuyết).
 Bất phương trình dạng $f(u)<f(v)$ với $f$ đơn điệu trên $\mathbb{R}$: bỏ $f$, đổi chiều bất đẳng thức nếu $f$ nghịch biến, rồi giải bất phương trình theo $x$.
 Câu so sánh $f(a)$ với $f(b)$: xác định $a$, $b$ nằm trong khoảng đồng biến hay nghịch biến rồi so sánh.
 
 ##CY
 - Đồ thị chỉ tiếp xúc $Ox$ tại một điểm (không cắt) thì $f'$ không đổi dấu, đừng chia khoảng ở điểm đó.
 - Đề cho đồ thị $f'$ thì đồ thị nằm trên $Ox$ nghĩa là $f$ đồng biến, không phải $f$ nằm trên $Ox$.
-- Cột kẻ đôi chỉ nói $f'$ không xác định tại đó, chưa nói $f$ không xác định: đọc điều kiện "liên tục" hay tập xác định của đề trước khi nối hay tách khoảng.
 - Hình đi lên hay đi xuống của đồ thị $f'$ không nói gì về tính đơn điệu của $f$; chỉ dấu của $f'$ (trên/dưới $Ox$) mới quyết định.
 
 @vi_du:
@@ -371,4 +370,5 @@ Vậy $g$ đồng biến trên $(2;4)$, đây là khoảng đồng biến duy nh
 - C1.1.2: ví dụ b) dạng "chọn hàm đồng biến trên R" nằm ở dạng này (đề hay trộn với C1.1.1); có thể chuyển nếu CEO muốn tách.
 - Mọi ví dụ đã thử lại bằng script node (quét dấu y', so sánh giá trị): không phát hiện sai.
 - (Trạm soát 03/11) Đã thay 3 ví dụ trùng gần nguyên câu đề thi trong kho (C1.1.1 vd1 ≈ T112010102062; C1.1.2 vd1 b, c = T112010102049, T1120000005883); thêm công thức $ad-bc$, trùng phương, $\log_a u$, $a^u$ vào lý thuyết vì đề hỏi nhiều. Chi tiết: `HS-A.soat.md`.
+- (03/11 dọn) C1.1.5: ý cột kẻ đôi gom về một chỗ đầy đủ trong lý thuyết (kèm lưu ý chưa nói f không xác định), phương pháp chỉ nhắc ngắn, bỏ lặp ở lỗi hay gặp.
 - (Bổ sung 03/11, theo quyết định Thùy) C1.1.4: ví dụ 2 đổi sang đồ thị bậc bốn (4 mệnh đề đúng/sai, có "f′>0 trên khoảng"), ví dụ đồ thị phân thức có tiệm cận đứng chuyển thành ví dụ 3 (đề có 2 câu), lý thuyết thêm đồ thị bậc bốn và dấu f′ tại điểm. C1.1.5: lý thuyết + ví dụ 3 (cột kẻ đôi "f′ không xác định", chia ca f liên tục / không xác định), ví dụ 4 (f′<0 mọi x, giải f(u)>f(v), đếm nghiệm nguyên). C1.1.6: ví dụ 3 (g=kf, k<0, "n−m lớn nhất") + ý lý thuyết. Mọi ví dụ mới đã thử bằng script node. Không bổ sung: kiểu "hàm hợp f(u(x))" (không thuộc nhóm C1.1 này).

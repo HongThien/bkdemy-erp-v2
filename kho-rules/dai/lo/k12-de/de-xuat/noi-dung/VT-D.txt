@@ -384,14 +384,16 @@ Sau $5$ giây, drone ở $M=A+5\overrightarrow{v}=(1+20;\ -2+30;\ 3+60)$.
 Vậy drone ở $M(21;28;63)$.
 
 ##VD
-Hai flycam bay thẳng đều trong không gian $Oxyz$ (đơn vị độ dài là mét, thời gian là giây). Lúc $t=0$, flycam $P$ ở $P_0(0;0;8)$ và có vận tốc $(1;2;0)$ m/s; flycam $Q$ ở $Q_0(30;40;20)$ và có vận tốc $(-2;-2;0)$ m/s. Tìm khoảng cách nhỏ nhất giữa hai flycam và thời điểm đạt được.
+Trong không gian $Oxyz$ (đơn vị độ dài là mét, thời gian là giây), tháp điều khiển đặt tại gốc $O(0;0;0)$. Lúc $t=0$ một flycam ở $A(100;75;60)$ và bay thẳng đều với vận tốc $\overrightarrow{v}=(-4;-3;0)$ m/s trong $40$ giây.
+a) Tìm khoảng cách nhỏ nhất từ flycam đến tháp và thời điểm đạt được.
+b) Trong khoảng thời gian nào flycam cách tháp dưới $65$ m?
 
 Bài giải:
-Sau $t$ giây: $P(t)=(t;2t;8)$ và $Q(t)=(30-2t;40-2t;20)$.
-Suy ra $\overrightarrow{PQ}=(30-3t;\ 40-4t;\ 12)$.
-Ta có $PQ^2=(30-3t)^2+(40-4t)^2+144=9(t-10)^2+16(t-10)^2+144=25(t-10)^2+144$.
-$PQ^2\ge144$, dấu bằng khi $t=10$.
-Vậy khoảng cách nhỏ nhất giữa hai flycam bằng $\sqrt{144}=12$ m, đạt lúc $t=10$ giây.
+Sau $t$ giây, flycam ở $P(t)=(100-4t;\ 75-3t;\ 60)$ với $0\le t\le40$, nên $\overrightarrow{OP}=(100-4t;\ 75-3t;\ 60)$.
+a) $OP^2=(100-4t)^2+(75-3t)^2+60^2=25t^2-1250t+19225=25(t-25)^2+3600$.
+Vì $25\in[0;40]$ nên $OP^2\ge3600$, dấu bằng khi $t=25$. Khoảng cách nhỏ nhất là $\sqrt{3600}=60$ m, đạt lúc $t=25$ giây.
+b) $OP<65\Leftrightarrow25(t-25)^2+3600<4225\Leftrightarrow(t-25)^2<25\Leftrightarrow20<t<30$ (thuộc $[0;40]$).
+Vậy a) nhỏ nhất $60$ m lúc $t=25$ giây; b) flycam cách tháp dưới $65$ m trong khoảng từ giây thứ $20$ đến giây thứ $30$.
 
 === C4.3.2
 @ly_thuyet:
@@ -452,5 +454,5 @@ Vậy sau $2$ phút khoảng cách lần đầu giảm xuống còn $25$ km, và
 - C4.2.1: đã THÊM dây điện ngắn nhất dọc tường (đề thật T1120000006474, T312000000142 — cùng một bài phòng 4×3×3, đèn và công tắc trên hai tường ĐỐI DIỆN, có cột nhô ra; T312000000100 — dây LED sân nhiều chặng). Trạm soát lần 2 đổi VD3 từ "hai tường kề, một điểm gấp" sang "hai tường đối diện, hai điểm gấp" cho đúng kiểu đề (6,5 m, thử bằng quét). Chi tiết cột nhô ra chưa đưa (một bài, làm tăng độ lẻ). KHÔNG thêm: bóng nảy parabol (đề thật chỉ 1 câu, cần parabol + tổng cấp số nhân, quá lẻ) và cung Trái Đất (1 câu T312000000072, cho bằng phương trình mặt cầu ⇒ PP toạ độ). C4.2.2 mục moi hình hộp nghiêng (bể nước T312000000213) cũng chỉ 1 câu, cần thể tích + phương trình mặt nước ⇒ không thêm.
 - C4.3.1: đề thật có câu viên đạn cho bằng phương trình tham số đường thẳng (T312000000676) — thuộc PP toạ độ theo ranh giới; ví dụ chỉ dùng $A+t\overrightarrow{v}$.
 - C4.3.2: đã khớp tên/mô tả mới trong VT.json (hai vật chuyển động: $M(t)$, $d(t)$, nhỏ nhất, mốc an toàn). Thêm VD3 (hai máy bay: lần đầu còn 25 km sau 2 phút, dưới 25 km trong 8 phút; tự thử bằng số), ý "$d(t)=D$" vào lý thuyết/PP (đề thật T312010802051, T312010802024). KHÔNG đưa "thời điểm gặp $d(t)=0$" vì đề thật không có câu nào. Các ví dụ radar đứng yên + tỉ lệ thời gian giữ nguyên (nhiều câu radar đài kiểm soát, vẫn chỉ dùng độ dài vectơ). Các câu đường bay cắt hình cầu (T312010802048, T312010802063…) thuộc PP toạ độ, gắn lại.
-- (Soát lần 2) C4.3.1 vẫn giữ ý + VD2 "hai flycam, khoảng cách nhỏ nhất" theo mô tả cũ, trùng mô tả MỚI của C4.3.2 — đề nghị chuyển sang C4.3.2 hoặc sửa mô tả C4.3.1; chờ CEO.
+- (03/11 dọn) C4.3.1 VD2 trùng đề tài với C4.3.2 (hai vật chuyển động, $d(t)^2$ bậc hai): đã đổi VD2 thành vật bay thẳng đều so với ĐIỂM ĐỨNG YÊN (tháp), có ý nhỏ nhất và ý $d<D$; vì mô tả JSON của C4.3.1 còn nói "vật và điểm theo thời gian". Kiểu hai vật với nhau để ở C4.3.2. Đã tự thử bằng node (nhỏ nhất 60 m lúc t=25; dưới 65 m khi 20<t<30). Lưu ý: yêu cầu ghi "HS C4.3.1" nhưng ví dụ flycam nằm ở VT C4.3.1; HS C4.3.1 (hai môi trường) không có ví dụ Oxyz nên giữ nguyên.
 - Gắn nhầm chương: T112010102173 (khảo sát hàm số $y=x^3-3x^2$) và T312000000630 (hải đăng phủ sáng bán kính 4 km, người đi trên đoạn ID — vùng phủ hình cầu, thuộc PP toạ độ) đang xếp ở C4.3.2.

@@ -85,6 +85,7 @@ Vậy robot xuất phát muộn nhất lúc $8$ giờ $7$ phút $45$ giây (làm
 - Tổng hai đoạn: $A$ cách đường thẳng $a$, $B$ cách đường thẳng $b$ (hai điểm cùng phía của bờ sông, hoặc hai bên sông có cầu), $HK=S$ là khoảng cách giữa hai chân đường vuông góc; $M$ chạy trên $HK$ với $HM=x$ thì $f(x)=\sqrt{a^2+x^2}+\sqrt{b^2+(S-x)^2}$. Đề cho độ dài $AB$ của hai điểm cùng phía thì $S=\sqrt{AB^2-(b-a)^2}$.
 - Với dạng $f(x)$ trên, $f'(x)=0\Leftrightarrow\dfrac{x}{a}=\dfrac{S-x}{b}$ (suy ra từ $\dfrac{x}{\sqrt{a^2+x^2}}=\dfrac{S-x}{\sqrt{b^2+(S-x)^2}}$), nên $x=\dfrac{aS}{a+b}$ và $f_{\min}=\sqrt{S^2+(a+b)^2}$.
 - Điểm $M(x;f(x))$ chạy trên đường cong, điểm cố định $A(x_0;y_0)$: $d^2=(x-x_0)^2+(f(x)-y_0)^2$. Khoảng cách từ $A$ đến một điểm của đường tròn tâm $I$ bán kính $R$ ($A$ ở ngoài) nhỏ nhất bằng $IA-R$.
+- Điểm chuyển động trên vật đang chuyển động (con kiến bò trên thanh đang trượt): viết đại lượng cần xét (độ cao…) trực tiếp theo $t$ rồi tìm giá trị lớn nhất bằng đạo hàm; đây là bài tối ưu theo $t$, không phải quan hệ giữa hai tốc độ tại một thời điểm.
 
 ##PP Lập hàm khoảng cách rồi tìm nhỏ nhất
 Chọn ẩn: thời gian $t\ge0$ (hai vật chuyển động), độ dài $x$ của một đoạn cố định gốc (trạm, chân cầu) hoặc hoành độ điểm chạy trên đường cong; nêu miền của ẩn.
@@ -122,6 +123,16 @@ Bình phương hai vế (cả hai vế không âm): $49x^2+x^2(12-x)^2=4(12-x)^2
 Ta có $f'(0)<0$, $f'(12)>0$ và $f'$ chỉ triệt tiêu tại $x=\dfrac83$ nên $f$ giảm trên $\left[0;\dfrac83\right]$ và tăng trên $\left[\dfrac83;12\right]$.
 $f\left(\dfrac83\right)=\sqrt{4+\dfrac{64}{9}}+\sqrt{49+\dfrac{784}{9}}=\dfrac{10}{3}+\dfrac{35}{3}=15$ (và $f(0)\approx15{,}9$, $f(12)\approx19{,}2$).
 Vậy đặt trạm bơm cách $A'$ là $\dfrac83\approx2{,}67$ km thì tổng độ dài hai đường ống ngắn nhất, bằng $15$ km.
+
+##VD
+Một chiếc thang $AB$ dài $2{,}5$ m dựng sát một bức tường thẳng đứng (đầu $A$ chạm tường, đầu $B$ chạm sàn ngang). Tại thời điểm $t=0$, đầu $B$ bắt đầu trượt ra xa tường theo sàn với tốc độ không đổi $0{,}5$ m/s (đầu $A$ luôn tì lên tường), đồng thời một con kiến đậu ở $B$ bắt đầu bò dọc theo thang về phía $A$ với tốc độ $0{,}3$ m/s đối với thang. Tìm độ cao lớn nhất của con kiến so với sàn và thời điểm đạt độ cao đó.
+
+Bài giải:
+Sau $t$ giây ($0\le t\le5$, khi $t=5$ thang nằm trên sàn), chân thang cách tường $0{,}5t$ m, nên đầu $A$ ở độ cao $\sqrt{6{,}25-0{,}25t^2}$; góc $\theta$ giữa thang và sàn có $\sin\theta=\dfrac{\sqrt{6{,}25-0{,}25t^2}}{2{,}5}$.
+Con kiến cách $B$ đoạn $0{,}3t$ (dọc theo thang) nên độ cao của nó $h(t)=0{,}3t\sin\theta=\dfrac{0{,}3t\sqrt{6{,}25-0{,}25t^2}}{2{,}5}=0{,}12t\sqrt{6{,}25-0{,}25t^2}$. Kiến chưa tới $A$ vì $0{,}3t\le1{,}5<2{,}5$.
+$h^2=0{,}0144t^2\left(6{,}25-0{,}25t^2\right)=0{,}0144\left(6{,}25t^2-0{,}25t^4\right)$; $(h^2)'=0{,}0144\left(12{,}5t-t^3\right)=0\Leftrightarrow t^2=12{,}5$, $t=\dfrac{5}{\sqrt2}\approx3{,}54$ (thuộc $[0;5]$).
+$(h^2)'>0$ khi $t<\dfrac5{\sqrt2}$ và $<0$ khi $t>\dfrac5{\sqrt2}$ nên $h^2$ (cũng là $h$) lớn nhất tại $t=\dfrac5{\sqrt2}$: $h^2=0{,}0144\left(6{,}25\cdot12{,}5-0{,}25\cdot156{,}25\right)=0{,}0144\cdot39{,}0625=0{,}5625$, suy ra $h=0{,}75$.
+Vậy độ cao lớn nhất của con kiến là $0{,}75$ m, đạt lúc $t=\dfrac5{\sqrt2}\approx3{,}54$ giây.
 
 === C4.3.3   (dạng "Thang, sào, xe qua góc hành lang; độ chiếu sáng lớn nhất" — mô tả: Thang/sào/ống/xe đi qua góc hai hành lang (lập hàm theo góc hoặc theo toạ độ); gara, hành lang có kích thước cho trước; độ chiếu sáng lớn nhất.)
 @ly_thuyet:
@@ -425,7 +436,6 @@ Vậy sau khoảng $3{,}22$ tháng thì tốc độ bán hàng lớn nhất, b�
 - Bể nón đỉnh ở dưới, bán kính đáy $R$, cao $H$: mặt nước ở độ cao $h$ có bán kính $r=\dfrac{R}{H}h$ (đồng dạng) và $V=\dfrac13\pi r^2h$.
 - Tổng quát: thể tích nước $V$ theo mực nước $h$ có $V'(h)=S(h)$ là diện tích mặt nước ở độ cao $h$, nên $h'(t)=\dfrac{V'(t)}{S(h)}$; bể có vật chắn (viên bi, khối cầu) thì $S(h)$ là diện tích mặt cắt **trừ** phần vật chắn bị mặt nước cắt. Hình cầu bán kính $R$ có mặt cắt ở độ cao $h\le2R$ là hình tròn bán kính $r$ với $r^2=h(2R-h)$, thể tích phần cầu dưới mực nước (chỏm cầu) $\dfrac{\pi h^2(3R-h)}{3}$.
 - Bể lăng trụ có mặt cắt là hình thang (đáy nghiêng, thành nghiêng…): bề rộng mặt nước là hàm bậc nhất của $h$, nên $S(h)$ bằng chiều dài bể nhân bề rộng mặt nước.
-- Điểm chuyển động trên vật đang chuyển động (con kiến bò trên thanh đang trượt): viết đại lượng cần xét (độ cao…) trực tiếp theo $t$ rồi tìm giá trị lớn nhất bằng đạo hàm; đây là bài tối ưu theo $t$, không phải quan hệ giữa hai tốc độ tại một thời điểm.
 - Điểm chuyển động thẳng đều so với một điểm cố định: khoảng cách $d=\sqrt{x^2+y^2}$ theo $t$, $d'=\dfrac{xx'+yy'}{d}$.
 
 ##PP Giải bài toán tốc độ liên quan
@@ -476,16 +486,6 @@ Cách khác: $V'(h)$ là diện tích mặt nước, bằng diện tích đáy t
 Từ $V'(t)=V'(h)\cdot h'(t)$ ta có $15\pi=\pi\left(100-10h+h^2\right)h'(t)$.
 Khi mực nước ngang tâm khối cầu thì $h=5$: $100-50+25=75$ nên $15\pi=75\pi\cdot h'(t)$, suy ra $h'(t)=\dfrac15=0{,}2$.
 Vậy mực nước dâng với tốc độ $0{,}2$ dm/phút.
-
-##VD
-Một chiếc thang $AB$ dài $2{,}5$ m dựng sát một bức tường thẳng đứng (đầu $A$ chạm tường, đầu $B$ chạm sàn ngang). Tại thời điểm $t=0$, đầu $B$ bắt đầu trượt ra xa tường theo sàn với tốc độ không đổi $0{,}5$ m/s (đầu $A$ luôn tì lên tường), đồng thời một con kiến đậu ở $B$ bắt đầu bò dọc theo thang về phía $A$ với tốc độ $0{,}3$ m/s đối với thang. Tìm độ cao lớn nhất của con kiến so với sàn và thời điểm đạt độ cao đó.
-
-Bài giải:
-Sau $t$ giây ($0\le t\le5$, khi $t=5$ thang nằm trên sàn), chân thang cách tường $0{,}5t$ m, nên đầu $A$ ở độ cao $\sqrt{6{,}25-0{,}25t^2}$; góc $\theta$ giữa thang và sàn có $\sin\theta=\dfrac{\sqrt{6{,}25-0{,}25t^2}}{2{,}5}$.
-Con kiến cách $B$ đoạn $0{,}3t$ (dọc theo thang) nên độ cao của nó $h(t)=0{,}3t\sin\theta=\dfrac{0{,}3t\sqrt{6{,}25-0{,}25t^2}}{2{,}5}=0{,}12t\sqrt{6{,}25-0{,}25t^2}$. Kiến chưa tới $A$ vì $0{,}3t\le1{,}5<2{,}5$.
-$h^2=0{,}0144t^2\left(6{,}25-0{,}25t^2\right)=0{,}0144\left(6{,}25t^2-0{,}25t^4\right)$; $(h^2)'=0{,}0144\left(12{,}5t-t^3\right)=0\Leftrightarrow t^2=12{,}5$, $t=\dfrac{5}{\sqrt2}\approx3{,}54$ (thuộc $[0;5]$).
-$(h^2)'>0$ khi $t<\dfrac5{\sqrt2}$ và $<0$ khi $t>\dfrac5{\sqrt2}$ nên $h^2$ (cũng là $h$) lớn nhất tại $t=\dfrac5{\sqrt2}$: $h^2=0{,}0144\left(6{,}25\cdot12{,}5-0{,}25\cdot156{,}25\right)=0{,}0144\cdot39{,}0625=0{,}5625$, suy ra $h=0{,}75$.
-Vậy độ cao lớn nhất của con kiến là $0{,}75$ m, đạt lúc $t=\dfrac5{\sqrt2}\approx3{,}54$ giây.
 
 ##VD
 Trên hệ trục $Oxyz$ (đơn vị m), một xe điều khiển xuất phát từ $A(0;0;0)$ chạy thẳng đến $B(0;240;0)$ trong $4$ phút. Từ $B$ xe đổi hướng chạy thẳng đến $C(600;240;0)$ với tốc độ không đổi, bằng tốc độ khi đi từ $A$ đến $B$. Ở thời điểm $3$ phút kể từ khi đổi hướng, khoảng cách giữa xe và vị trí xuất phát $A$ đang thay đổi với tốc độ bao nhiêu m/phút?
