@@ -14,10 +14,14 @@ export type BdmMon = 'Toán' | 'KHTN'
 // aiDuyet = luồng AI xếp câu (Duyệt kho · Đề xuất · Thiếu dạng · Chưa khớp · Đúng/Sai) · khoLop = kho trên lớp · mastery = công tắc mastery
 // chuaPhan = hiện "⚠ n câu chưa gán dạng bài · gán →" ở nhóm/chuyên đề (KHTN: câu không cụm sau chuyển 29/10)
 // chonQuaCay = chuyển câu sang dạng bài khác: chọn thẳng trên cây đang mở (Toán dùng DangPickerOne — nhiều khối, bản đồ cũ)
-export const BDM_MON: Record<BdmMon, { bang: string; ham: string; coVung: boolean; aiDuyet: boolean; khoLop: boolean; mastery: boolean; chuaPhan: boolean; chonQuaCay: boolean }> = {
-  'Toán': { bang: 'dai_bdm_', ham: 'fn_bdm_', coVung: true, aiDuyet: true, khoLop: true, mastery: true, chuaPhan: false, chonQuaCay: false },
-  'KHTN': { bang: 'khtn_bdm_', ham: 'fn_khtn_bdm_', coVung: false, aiDuyet: false, khoLop: false, mastery: false, chuaPhan: true, chonQuaCay: true },
+// nhanhTl = p_nhanh của cây chọn giáo trình / ET (fn_tl_bdm_cay_chon, mig 202611031655) cho vùng chính của môn
+export const BDM_MON: Record<BdmMon, { bang: string; ham: string; coVung: boolean; aiDuyet: boolean; khoLop: boolean; mastery: boolean; chuaPhan: boolean; chonQuaCay: boolean; nhanhTl: string }> = {
+  'Toán': { bang: 'dai_bdm_', ham: 'fn_bdm_', coVung: true, aiDuyet: true, khoLop: true, mastery: true, chuaPhan: false, chonQuaCay: false, nhanhTl: 'toan' },
+  'KHTN': { bang: 'khtn_bdm_', ham: 'fn_khtn_bdm_', coVung: false, aiDuyet: false, khoLop: false, mastery: false, chuaPhan: true, chonQuaCay: true, nhanhTl: 'khtn' },
 }
+export const BDM_DS_MON = Object.keys(BDM_MON) as BdmMon[]
+/** Cờ của môn tài liệu (giáo trình / ET); môn chưa có bản đồ mới ⇒ null. */
+export const bdmCuaMon = (mon: string | null | undefined) => (mon && mon in BDM_MON ? BDM_MON[mon as BdmMon] : null)
 export const tinhNangBdm = () => BDM_MON[monBdm]
 let monBdm: BdmMon = 'Toán'
 export function datMonBdm(m: BdmMon): void { monBdm = m }

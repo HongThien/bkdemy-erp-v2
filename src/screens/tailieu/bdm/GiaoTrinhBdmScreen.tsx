@@ -4,6 +4,8 @@
 // Đại + Hình giải tích = BuilderBanDoMoi (nhóm bài · dạng bài) · Hình = HinhGiaoTrinhBuilder (bài học Học + mô hình Luyện).
 // ⭐ Thùy 21/10: CÙNG màn này phục vụ lá "Chuyên đề" (loai='chuyen_de') — builder y giáo trình nhưng KHÔNG đi với lớp nào
 // (không Gán lớp), mỗi chuyên đề 1 nhánh chọn lúc tạo: Đại (bản đồ mới) · Hình giải tích · Hình (Hình–Luyện) — 2 nhánh sau đang làm.
+// ⭐ Thùy 03/11 "luồng làm ET, giáo trình theo bản đồ mới cho KHTN giống với Toán": công tắc MÔN theo registry BDM_MON (Toán · KHTN).
+//   KHTN một vùng ⇒ không chọn nhánh; cùng BuilderBanDoMoi (hàm fn_tl_bdm_* đi theo môn, mig 202611031655). Lá cũ KHTN vẫn chạy song song.
 import { useEffect, useMemo, useState } from 'react'
 import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../../lib/kho/api'
 import { listTaiLieu, createTaiLieu, deleteTaiLieu, type TaiLieu } from '../../../lib/tailieu'
@@ -13,11 +15,13 @@ import { useMonScope } from '../../../hooks/useMonScope'
 import { usePagedList } from '../../../hooks/usePagedList'
 import { Shell, Field, inp } from '../../kho/ui'
 import BuilderBanDoMoi from './BuilderBanDoMoi'
+import { BDM_DS_MON, BDM_MON, type BdmMon } from '../../../lib/kho/banDoMoi'
 import ChuyenDeHinhBuilder from './ChuyenDeHinhBuilder'
 
 const PAGE = 20
 const ALL = '__all__'
-const MON = 'Toán'
+const KEY_MON = 'bk.gtBdm.mon'   // môn đang xem — tiện ích riêng người xem
+function monDaNho(): BdmMon { try { const m = localStorage.getItem(KEY_MON); return m && (BDM_DS_MON as string[]).includes(m) ? m as BdmMon : 'Toán' } catch { return 'Toán' } }
 function fmtNgay(iso?: string): string {
   if (!iso) return '—'
   return new Date(iso).toLocaleDateString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', day: '2-digit', month: '2-digit', year: 'numeric' })
@@ -29,6 +33,8 @@ const TEN: Record<LoaiTL, { mot: string; nhieu: string }> = { giao_trinh: { mot:
 export default function GiaoTrinhBdmScreen({ loai = 'giao_trinh' }: { loai?: LoaiTL }) {
   const T = TEN[loai]
   const [khoi, setKhoi] = useState<string>(DEFAULT_KHOI)
+  const [mon, setMonRaw] = useState<BdmMon>(monDaNho)
+  const setMon = (m: BdmMon) => { setMonRaw(m); try { localStorage.setItem(KEY_MON, m) } catch { /* bỏ qua */ } }
   const [creating, setCreating] = useState(false)
   const [openId, setOpenIdRaw] = useState<string | null>(null)
   const [openHinh, setOpenHinh] = useState(false)   // nhánh Hình ⇒ builder Hình riêng (chuyên đề: Luyện · giáo trình: Học + Luyện)
@@ -41,18 +47,21 @@ export default function GiaoTrinhBdmScreen({ loai = 'giao_trinh' }: { loai?: Loa
   const [luuTru, setLuuTru] = useState(false)
   const me = useStore((s) => s.me)
   const { allowedMons, isAll } = useMonScope()
-  const coQuyen = isAll || allowedMons.includes(MON)
+  const coQuyen = isAll || allowedMons.includes(mon)
+  const dsMon = BDM_DS_MON.filter((m) => isAll || allowedMons.includes(m))
+  // người chỉ được phân KHTN (vd trưởng bộ môn KHTN) ⇒ vào thẳng KHTN, không kẹt ở Toán
+  useEffect(() => { if (dsMon.length && !dsMon.includes(mon)) setMonRaw(dsMon[0]) }, [dsMon.join('|')]) // eslint-disable-line react-hooks/exhaustive-deps
   const profileLoading = !isAll && me === null
   // Map lop_id → ten_lop để hiện chip "Lớp 7S2" trên card (card hiện tên trước, không chờ fetch chi tiết).
   const [lopAll, setLopAll] = useState<Lop[]>([])
-  useEffect(() => { listLop().then((ls) => setLopAll(ls.filter((l) => l.mon === MON))).catch(() => {}) }, [])
+  useEffect(() => { listLop().then((ls) => setLopAll(ls.filter((l) => l.mon === mon))).catch(() => {}) }, [mon])
   const lopMap = useMemo(() => new Map(lopAll.map((l) => [l.id, l.ten_lop])), [lopAll])
 
   const { rows: list, loading, loadingMore, hasMore, err, reload, loadMore } = usePagedList<TaiLieu>(
     // mọi nhánh (Đại · HGT · Hình) — cả giáo trình lẫn chuyên đề
-    async ({ before, search }) => coQuyen ? listTaiLieu(khoi === ALL ? undefined : khoi, loai, MON, undefined, { before, search, limit: PAGE, banDo: 'moi', luuTru }) : [],
+    async ({ before, search }) => coQuyen ? listTaiLieu(khoi === ALL ? undefined : khoi, loai, mon, undefined, { before, search, limit: PAGE, banDo: 'moi', luuTru }) : [],
     (t) => t.created_at,
-    PAGE, q, [khoi, coQuyen, loai, luuTru],
+    PAGE, q, [khoi, coQuyen, loai, luuTru, mon],
   )
 
   if (openId && openHinh) return <ChuyenDeHinhBuilder id={openId} laGiaoTrinh={loai === 'giao_trinh'} onClose={() => { setOpenId(null); reload() }} />
@@ -62,7 +71,12 @@ export default function GiaoTrinhBdmScreen({ loai = 'giao_trinh' }: { loai?: Loa
     <div className="flex h-full flex-col bg-[#fafafb]">
       <div className="flex items-center gap-4 border-b border-slate-200 bg-white px-6 py-2.5">
         <span className="rounded bg-emerald-50 px-2 py-0.5 text-[12px] font-semibold text-emerald-700">🆕 {T.nhieu} · bản đồ mới</span>
-        <span className="text-[12px] text-slate-400">{loai === 'chuyen_de' ? 'Tài liệu độc lập, không gắn lớp — Đại · Hình giải tích · Hình' : 'Toán — Đại · Hình giải tích · Hình'}</span>
+        {dsMon.length > 1 && (
+          <div className="inline-flex overflow-hidden rounded-md border border-slate-200 text-[12px] font-medium">
+            {dsMon.map((m, i) => <button key={m} onClick={() => setMon(m)} className={`px-2.5 py-1 transition ${i ? 'border-l border-slate-200' : ''} ${mon === m ? 'bg-emerald-600 text-white' : 'bg-white text-slate-500 hover:bg-slate-50'}`}>{m}</button>)}
+          </div>
+        )}
+        <span className="text-[12px] text-slate-400">{loai === 'chuyen_de' ? 'Tài liệu độc lập, không gắn lớp' : mon}{BDM_MON[mon].coVung ? ' — Đại · Hình giải tích · Hình' : ''}</span>
         {/* ⭐ Thùy 28/10: ẨN giáo trình chuyển từ bản đồ cũ (phase=0) khỏi lá chính; bấm "Lưu trữ" mới hiện. */}
         <div className="ml-1 inline-flex overflow-hidden rounded-md border border-slate-200 text-[12px] font-medium">
           <button onClick={() => setLuuTru(false)} className={`px-2.5 py-1 transition ${!luuTru ? 'bg-indigo-600 text-white' : 'bg-white text-slate-500 hover:bg-slate-50'}`}>Hiện tại</button>
@@ -81,7 +95,7 @@ export default function GiaoTrinhBdmScreen({ loai = 'giao_trinh' }: { loai?: Loa
 
       <div className="min-h-0 flex-1 overflow-auto p-6">
         {profileLoading ? <p className="text-sm text-slate-400">Đang tải hồ sơ…</p>
-          : !coQuyen ? <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Bạn chưa được phân môn Toán — liên hệ quản trị để soạn {T.mot}.</div>
+          : !coQuyen ? <div className="rounded-xl border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">Bạn chưa được phân môn {mon} — liên hệ quản trị để soạn {T.mot}.</div>
           : loading ? <p className="text-sm text-slate-400">Đang tải…</p>
           : err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
           : list.length === 0 ? (
@@ -103,7 +117,7 @@ export default function GiaoTrinhBdmScreen({ loai = 'giao_trinh' }: { loai?: Loa
                     </div>
                     <div className="mt-1 text-[12px] text-slate-500">
                       {t.lop_id && <span className="mr-1 rounded bg-sky-50 px-1.5 py-0.5 text-[10.5px] font-semibold text-sky-700">Lớp {lopMap.get(t.lop_id) ?? '…'}</span>}
-                      Khối {t.khoi} · {t.nhanh === 'hinh' ? 'Hình' : t.nhanh === 'hinh_gt' ? 'Hình giải tích' : 'Đại số'}
+                      Khối {t.khoi} · {!BDM_MON[mon].coVung ? mon : t.nhanh === 'hinh' ? 'Hình' : t.nhanh === 'hinh_gt' ? 'Hình giải tích' : 'Đại số'}
                     </div>
                     <div className="mt-1 text-[11px] text-slate-400">Tạo {fmtNgay(t.created_at)}{t.updated_at && t.updated_at !== t.created_at ? ` · sửa ${fmtNgay(t.updated_at)}` : ''}</div>
                     <div className="mt-3 flex gap-2">
@@ -122,7 +136,7 @@ export default function GiaoTrinhBdmScreen({ loai = 'giao_trinh' }: { loai?: Loa
           )}
       </div>
 
-      {creating && <TaoMoi loai={loai} khoi={khoi === ALL ? DEFAULT_KHOI : khoi} lopAll={lopAll} onClose={() => setCreating(false)} onCreated={(id, nhanh) => { setCreating(false); reload(); setOpenId(id, nhanh) }} />}
+      {creating && <TaoMoi loai={loai} mon={mon} khoi={khoi === ALL ? DEFAULT_KHOI : khoi} lopAll={lopAll} onClose={() => setCreating(false)} onCreated={(id, nhanh) => { setCreating(false); reload(); setOpenId(id, nhanh) }} />}
     </div>
   )
 }
@@ -134,7 +148,7 @@ const NHANH_CD: { id: string | null; ten: string; mo: boolean; ghi: string }[] =
   { id: 'hinh', ten: 'Hình', mo: true, ghi: 'Hình–Luyện: mô hình → bài trong kho (trọn ý)' },
 ]
 
-function TaoMoi({ loai, khoi, lopAll, onClose, onCreated }: { loai: LoaiTL; khoi: string; lopAll: Lop[]; onClose: () => void; onCreated: (id: string, nhanh: string | null) => void }) {
+function TaoMoi({ loai, mon, khoi, lopAll, onClose, onCreated }: { loai: LoaiTL; mon: BdmMon; khoi: string; lopAll: Lop[]; onClose: () => void; onCreated: (id: string, nhanh: string | null) => void }) {
   const T = TEN[loai]
   const [nhanh, setNhanh] = useState<string | null>(null)
   const [ten, setTen] = useState('')
@@ -148,7 +162,7 @@ function TaoMoi({ loai, khoi, lopAll, onClose, onCreated }: { loai: LoaiTL; khoi
     if (!ten.trim()) return
     if (canCapLop && !lopId) { setError('Giáo trình phải gắn 1 lớp. Chọn lớp ở trên.'); return }
     setBusy(true); setError(null)
-    try { const tl = await createTaiLieu({ loai, ten: ten.trim(), khoi, mon: MON, nhanh, ban_do: 'moi', lopId: canCapLop ? lopId : null }); onCreated(tl.id, nhanh) }
+    try { const tl = await createTaiLieu({ loai, ten: ten.trim(), khoi, mon, nhanh, ban_do: 'moi', lopId: canCapLop ? lopId : null }); onCreated(tl.id, nhanh) }
     catch (e: any) { setError(e.message ?? String(e)); setBusy(false) }
   }
   // Gợi ý tên GT theo lớp đã chọn (chỉ khi người dùng chưa gõ tên).
@@ -159,8 +173,8 @@ function TaoMoi({ loai, khoi, lopAll, onClose, onCreated }: { loai: LoaiTL; khoi
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lopId])
   return (
-    <Shell title={`Tạo ${T.mot} bản đồ mới · Toán · Khối ${khoi}`} onClose={onClose}>
-      {(
+    <Shell title={`Tạo ${T.mot} bản đồ mới · ${mon} · Khối ${khoi}`} onClose={onClose}>
+      {BDM_MON[mon].coVung && (   // KHTN một vùng ⇒ không chọn nhánh (nhanh = null như giáo trình KHTN cũ)
         <Field label="Nhánh">
           <div className="flex flex-col gap-1.5">
             {NHANH_CD.map((n) => ({ ...n, ghi: loai === 'giao_trinh' && n.id === 'hinh' ? 'Học: bài học (lý thuyết + câu) · Luyện: mô hình → bài' : n.ghi })).map((n) => (

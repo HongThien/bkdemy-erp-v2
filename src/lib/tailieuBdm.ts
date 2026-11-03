@@ -89,7 +89,8 @@ export async function cauCuaNhom(nhomId: string): Promise<CauKho[]> {
 
 // Dạng bài của 1 nhóm theo thứ tự bản đồ (chỉ để đặt tên nhóm câu trong popup chọn câu).
 export async function dangBaiCuaNhom(nhomId: string): Promise<{ id: string; ten: string }[]> {
-  const { data, error } = await supabase.from('dai_bdm_dang_bai').select('id, ten').eq('nhom_id', nhomId).order('thu_tu').order('id').limit(500)
+  // registry môn (Toán · KHTN), mig 202611031655
+  const { data, error } = await supabase.from('tl_bdm_dang_bai_v').select('id, ten').eq('nhom_id', nhomId).order('thu_tu').order('id').limit(500)
   if (error) throw error
   return (data ?? []) as { id: string; ten: string }[]
 }

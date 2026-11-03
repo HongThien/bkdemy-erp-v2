@@ -21,6 +21,7 @@ import ChonCauBdm from './ChonCauBdm'
 import PrintView from '../PrintView'
 import GanLopBdm from './GanLopBdm'
 import { useStore } from '../../../store/useStore'
+import { bdmCuaMon } from '../../../lib/kho/banDoMoi'
 
 const loaiLabel = (v: string) => LOAI_CAU.find((x) => x.value === v)?.label ?? v
 const filterKey = (id: string) => `tlb_buoi_${id}`   // buổi đang soạn — tiện ích riêng mỗi máy (như builder cũ)
@@ -52,7 +53,8 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
   useEffect(() => { if (!saved) return; const t = setTimeout(() => setSaved(false), 2000); return () => clearTimeout(t) }, [saved])
 
   const tl = nd ? { mon: nd.tai_lieu.mon, nhanh: nd.tai_lieu.nhanh, cau_hinh: ch } : null
-  const nhanhBdm = nd?.tai_lieu.nhanh === 'hinh_gt' ? 'hgt' : 'toan'   // nhánh bản đồ mới của tài liệu (chuyên đề HGT)
+  const monBdm = bdmCuaMon(nd?.tai_lieu.mon)   // registry môn (Toán · KHTN)
+  const nhanhBdm = nd?.tai_lieu.nhanh === 'hinh_gt' ? 'hgt' : monBdm?.nhanhTl ?? 'toan'   // nhánh bản đồ mới của tài liệu (chuyên đề HGT)
   const chiXem = !!nd?.tai_lieu.luu_tru_tu   // bản lưu trữ: chỉ xem (DB cũng chặn ghi)
 
   // Nạp nội dung câu còn thiếu (theo mã) — chỉ đọc, không tính gì.
@@ -268,7 +270,7 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
             onConfirm={async (c) => { vaBuoi(await datBuoi(id, boChon.id, c)); setBoChon(null) }} />
         )}
         {chonCau && (
-          <ChonCauBdm tl={tl} nhomId={chonCau.nhom.id} uuTien={chonCau.uuTien} selected={chonCau.caus}
+          <ChonCauBdm tl={tl} nhomId={chonCau.nhom.id} uuTien={chonCau.uuTien} selected={chonCau.caus} coKhoLop={monBdm?.khoLop ?? false}
             macDinh={chonCau.nhom.btvn?.phan_id === chonCau.phanId ? 'luyen' : 'lop'}
             khoa={cauCuaBuoi(chonCau.buoi).filter((m) => !chonCau.caus.includes(m))}
             onClose={() => setChonCau(null)}

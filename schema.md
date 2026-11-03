@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-472 bảng · 33 view · 0 enum · 258 trigger · 1507 function
+472 bảng · 38 view · 0 enum · 258 trigger · 1509 function
 
 ## _app_secrets
 
@@ -7397,6 +7397,157 @@ SELECT q.id AS qua_id,
   WHERE la_thanh_vien();
 ```
 
+### tl_bdm_chu_de_v
+
+| cột | kiểu |
+|---|---|
+| mon | text |
+| id | text |
+| khoi | text |
+| ten | text |
+| thu_tu | integer |
+| nhanh | text |
+
+```sql
+SELECT 'Toán'::text AS mon,
+    c.id,
+    c.khoi,
+    c.ten,
+    c.thu_tu,
+    c.nhanh
+   FROM dai_bdm_chu_de c
+UNION ALL
+ SELECT 'KHTN'::text AS mon,
+    c.id,
+    c.khoi,
+    c.ten,
+    c.thu_tu,
+    'khtn'::text AS nhanh
+   FROM khtn_bdm_chu_de c;
+```
+
+### tl_bdm_chuyen_de_v
+
+| cột | kiểu |
+|---|---|
+| mon | text |
+| id | text |
+| ten | text |
+
+```sql
+SELECT 'Toán'::text AS mon,
+    c.id,
+    c.ten
+   FROM dai_bdm_chuyen_de c
+UNION ALL
+ SELECT 'KHTN'::text AS mon,
+    c.id,
+    c.ten
+   FROM khtn_bdm_chuyen_de c;
+```
+
+### tl_bdm_dang_bai_v
+
+| cột | kiểu |
+|---|---|
+| mon | text |
+| id | text |
+| nhom_id | text |
+| ten | text |
+| mo_ta | text |
+| ly_thuyet | text |
+| ly_thuyet_file_url | text |
+| vi_du | text |
+| vi_du_file_url | text |
+| thu_tu | integer |
+
+```sql
+SELECT 'Toán'::text AS mon,
+    d.id,
+    d.nhom_id,
+    d.ten,
+    d.mo_ta,
+    d.ly_thuyet,
+    d.ly_thuyet_file_url,
+    d.vi_du,
+    d.vi_du_file_url,
+    d.thu_tu
+   FROM dai_bdm_dang_bai d
+UNION ALL
+ SELECT 'KHTN'::text AS mon,
+    d.id,
+    d.nhom_id,
+    d.ten,
+    d.mo_ta,
+    d.ly_thuyet,
+    d.ly_thuyet_file_url,
+    d.vi_du,
+    d.vi_du_file_url,
+    d.thu_tu
+   FROM khtn_bdm_dang_bai d;
+```
+
+### tl_bdm_nhom_v
+
+| cột | kiểu |
+|---|---|
+| mon | text |
+| id | text |
+| chu_de_id | text |
+| chuyen_de_id | text |
+| ten | text |
+| mo_ta | text |
+| ly_thuyet | text |
+| ly_thuyet_file_url | text |
+| thu_tu | integer |
+
+```sql
+SELECT 'Toán'::text AS mon,
+    n.id,
+    n.chu_de_id,
+    n.chuyen_de_id,
+    n.ten,
+    n.mo_ta,
+    n.ly_thuyet,
+    n.ly_thuyet_file_url,
+    n.thu_tu
+   FROM dai_bdm_nhom n
+UNION ALL
+ SELECT 'KHTN'::text AS mon,
+    n.id,
+    n.chu_de_id,
+    n.chuyen_de_id,
+    n.ten,
+    n.mo_ta,
+    n.ly_thuyet,
+    n.ly_thuyet_file_url,
+    n.thu_tu
+   FROM khtn_bdm_nhom n;
+```
+
+### tl_bdm_o_v
+
+| cột | kiểu |
+|---|---|
+| mon | text |
+| chu_de_id | text |
+| chuyen_de_id | text |
+| thu_tu | integer |
+
+```sql
+SELECT 'Toán'::text AS mon,
+    o.chu_de_id,
+    o.chuyen_de_id,
+    o.thu_tu
+   FROM dai_bdm_o o
+UNION ALL
+ SELECT 'KHTN'::text AS mon,
+    o.chu_de_id,
+    o.chuyen_de_id,
+    o.thu_tu
+   FROM khtn_bdm_o o;
+```
+
 ### v_btvn_dap_an
 
 | cột | kiểu |
@@ -9408,9 +9559,11 @@ WITH luot AS (
 - `_tk_goc_team(p_team text, p_mon text)` → uuid
 - `_tl_bdm_cau_da_dung(p_buoi uuid, p_tru_phan uuid DEFAULT NULL::uuid)` → text[]
 - `_tl_bdm_cau_vi_tri(p_khoi text)` → TABLE(ma_cau text, la_goc boolean, cum text, loai_cau text, dang_bai_id text, nhom_id text)
+- `_tl_bdm_cau_vi_tri(p_khoi text, p_mon text)` → TABLE(ma_cau text, la_goc boolean, cum text, loai_cau text, dang_bai_id text, nhom_id text)
 - `_tl_bdm_ghi_cau(p_phan uuid, p_ma_caus text[])` → void
 - `_tl_bdm_khoi_nhom(p_nhom text)` → text
 - `_tl_bdm_kiem_buoi(p_tai_lieu uuid, p_buoi uuid)` → void
+- `_tl_bdm_mon_nhom(p_nhom text)` → text
 - `_tl_bdm_phan_cua_buoi(p_buoi uuid)` → SETOF tai_lieu_phan
 - `_tl_bdm_so_lan_dung(p_ma_caus text[])` → TABLE(ma_cau text, n bigint)
 - `_tl_hh_cau_chuan(p_bai text)` → TABLE(ma_cau text, la_goc boolean, thu_tu integer)
@@ -10464,8 +10617,8 @@ WITH luot AS (
 - `hs_sotay_tim_ct(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_khoi text DEFAULT NULL::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_sotay_tim_lt(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_vao_ca_online(p_buoi uuid)` → jsonb
-- `hs_xep_hang_tu_luyen(p_khoi text, p_mon text)` → jsonb
 - `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
+- `hs_xep_hang_tu_luyen(p_khoi text, p_mon text)` → jsonb
 - `htd_co_mo(p_mon text)` → boolean
 - `htd_lo_trinh(p_mon text)` → jsonb
 - `htd_ly_thuyet(p_mon text, p_ma_dang text)` → jsonb
@@ -10534,8 +10687,8 @@ WITH luot AS (
 - `tsa_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
