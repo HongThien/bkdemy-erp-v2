@@ -7,6 +7,7 @@
 ## Mục lục (số dòng trong file này)
 
 - dòng 36 — ⭐⭐⭐ LUẬT DUYỆT (Thùy 14/10, "nói bao lần rồi") — MỌI KHỐI, MỌI LÔ: muốn Thùy duy�
+- Bài học 03/11 — Phòng làm việc · Báo cáo tuần · thử nghiệm trên DB thật (ngay dưới mục lục ②)
 - Bài học 23/10 — Dashboard học tập · mastery · push (ngay dưới mục lục ②)
 - Bài học 12→23/10 — Nông trại + app HS (cuối file)
 - Bài học 07→23/10 — Chấm MT · Khảo sát · bảng kết quả theo chuyên đề (cuối file)
@@ -38,6 +39,19 @@
 ---
 
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
+
+## Bài học 03/11 — Phòng làm việc · Báo cáo tuần · thử nghiệm trên DB thật
+- **Tạo file mới: KIỂM TÊN TRƯỚC.** Write lên `src/lib/phong.ts` đè mất file danh mục phòng học bổ trợ (tool không chặn). Glob tên trước khi tạo file `lib/*.ts`.
+- **Nút "←"/"‹" ở đầu màn bị hook chung `useNutQuayVe` TỰ ẨN** (thay bằng ← của thanh địa chỉ). Nút quay về riêng phải thấy được ⇒ class `no-nut-ve` (trên nút hoặc khung cha). Popup `.fixed` thì hook bỏ qua.
+- **Băm chuỗi ra chỉ số mảng: dùng `>>>`, không `>>`** — h > 2^31 thì `>>` ra số âm ⇒ `arr[-k]` undefined ⇒ SVG fill đen.
+- **Chiều cao theo % cần khung cha có chiều cao** (`h-full`), thiếu là về 0 im lặng.
+- **Màn làm việc đặt trên tranh nền ⇒ nền TRẮNG riêng** cho nội dung chữ/chat (Thùy: "dùng background của phòng thì khó nhìn").
+- **Tính năng có hạn/gậy: đặt MỐC BẮT ĐẦU.** Gậy "chưa nộp báo cáo" không mốc ⇒ kỳ trước khi có tính năng cũng bị gậy (suýt gậy 7 trưởng khối kỳ 26/10).
+- **Thử luồng GHI trên DB thật mà không để lại dữ liệu:** 1 transaction + `set_config('request.jwt.claims', '{"sub":<tai_khoan.id>,"email":…,"role":"authenticated"}', true)` để giả lập từng người (hàm `current_nhan_su_id`/`la_thanh_vien` đọc được) + savepoint cho các ca mong bị chặn + ROLLBACK cuối. Đếm lại bảng sau đó để chứng minh sạch.
+- **Đổi hàm đang chạy sang bản "tại mốc": thêm hàm MỚI trước, đối chiếu kết quả trên dữ liệu thật, rồi mới nối hàm cũ** (thêm tham số default vào hàm cũ = tạo overload ⇒ "function is not unique"). Đổi cột trả về ⇒ `create or replace` không được ⇒ tên hàm mới, hàm cũ chờ CEO gật xoá.
+- **Hàm chặn quyền bằng `co_chuc_nang` đọc JWT, không đọc role** ⇒ gọi từ hàm security definer vẫn bị chặn; nới cổng phải sửa chính hàm (thân lấy từ bản đang chạy).
+- **Áp migration lên DB thật: hệ thống CHẶN nếu lượt đó Thùy chưa nói "áp đi"** — chuẩn bị xong rồi hỏi một lần cho cả cụm, đừng thử lách.
+- **"Tổng kết tuần ngừng" ≠ hỏng:** bộ đệm `troly_tuan_so_luu` chỉ tính khi có người mở màn — đọc cơ chế làm mới trước khi kết luận lỗi.
 
 ## Bài học 23/10 — Dashboard học tập · mastery · push
 
