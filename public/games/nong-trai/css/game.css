@@ -463,7 +463,7 @@ body.dangTham .cu[data-cu="gieo"], body.dangTham .cu[data-cu="bon"] { opacity: .
 #bang { zoom: var(--k); width: min(calc(96vw / var(--k)), 760px); max-height: min(calc(88vh / var(--k)), 720px); }
 #hdHop { width: min(94vw, calc(520px * var(--k))); bottom: calc(max(10px, env(safe-area-inset-bottom)) + 92px * var(--k)); }
 #goiY, body.dangTham #goiY { font-size: calc(15px * var(--k)); padding: calc(6px * var(--k)) calc(16px * var(--k)); border-radius: calc(16px * var(--k)); max-width: min(92vw, calc(520px * var(--k))); bottom: calc(max(10px, env(safe-area-inset-bottom)) + 86px * var(--k)); }
-#banBanner { font-size: calc(16px * var(--k)); padding: calc(6px * var(--k)) calc(8px * var(--k)) calc(6px * var(--k)) calc(16px * var(--k)); border-radius: calc(20px * var(--k)); gap: calc(10px * var(--k)); bottom: calc(max(10px, env(safe-area-inset-bottom)) + 124px * var(--k)); }
+#banBanner { font-size: calc(16px * var(--k)); padding: calc(6px * var(--k)) calc(8px * var(--k)) calc(6px * var(--k)) calc(16px * var(--k)); border-radius: calc(20px * var(--k)); gap: calc(10px * var(--k)); bottom: calc(max(10px, env(safe-area-inset-bottom)) + 150px * var(--k)); }   /* trên dòng gợi ý 2 hàng đã phóng */
 .nhan3d { font-size: calc(13px * var(--k)); padding: calc(2px * var(--k)) calc(10px * var(--k)); border-radius: calc(12px * var(--k)); }
 .nhan3d.xay { font-size: calc(14px * var(--k)); } .nhan3d.mo { font-size: calc(12px * var(--k)); }
 .bay { font-size: calc(18px * var(--k)); }

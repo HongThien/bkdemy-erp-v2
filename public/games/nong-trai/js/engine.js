@@ -435,7 +435,7 @@ function banTT(s, k) {
   if (laBanThat(k)) {
     const F = banThatCua(k), V = F && BAN_THAT.vuon[F.id];
     if (!V) return { k, ten: F ? F.ten : '?', cap: F ? F.cap : 1, hat: 'x', ngay0: s.ngay0, oMo: 0, ruong: [], vat: { ga: { con: [] }, bo: { con: [] } }, lo: null, trangTri: [], thu: { cho: { tc: 0, d: -1 }, meo: { tc: 0, d: -1 }, chim: { tc: 0, d: -1 } }, laBan: true, that: true, id: F && F.id };
-    return { k, ten: V.ten, cap: V.cap, hat: V.hat, ngay0: V.ngay0, oMo: V.oMo, ruong: V.ruong, vat: V.vat, lo: null, trangTri: V.trangTri, thu: V.thu, laBan: true, that: true, id: V.id };
+    return { k, ten: V.ten, cap: V.cap, hat: V.hat, ngay0: V.ngay0, oMo: V.oMo, ruong: V.ruong, vat: V.vat, lo: null, trangTri: V.trangTri, thu: V.thu, laBan: true, that: true, id: V.id, giaoDien: V.giaoDien };   // giaoDien = nhà & cảnh BẠN chọn (fn_nt_ban_vuon)
   }
   const B = BAN_AO[k], t = gio(s), Dn = ngayCua(t), vao = daVaoCua(B, Dn, gioVN(t)), my = s.ban[k] || {}, hat = 'b' + k;
   const ruong = B.cay.map(() => ({ cay: null }));
@@ -461,7 +461,7 @@ function banTT(s, k) {
   });
   const vat = { ga: { con: Array.from({ length: B.ga }, () => ({ an: lanCuoi })) }, bo: { con: Array.from({ length: B.bo }, () => ({ an: lanCuoi })) } };
   const tts = Object.keys(TRANG_TRI), trangTri = Array.from({ length: LUAT.soChoTrangTri }, (_, o) => bam(hat + '|tt' + o) < 0.4 ? tts[Math.floor(bam(hat + '|ttl' + o) * tts.length)] : null);
-  return { k, ten: B.ten, cap: B.cap, hat, oMo: ruong.length, ruong, vat, lo: null, trangTri, thu: { cho: { tc: [0, 20, 50, 100][B.cho], d: -1 }, meo: { tc: 0, d: -1 }, chim: { tc: 0, d: -1 } }, laBan: true };
+  return { k, ten: B.ten, cap: B.cap, hat, oMo: ruong.length, ruong, vat, lo: null, trangTri, thu: { cho: { tc: [0, 20, 50, 100][B.cho], d: -1 }, meo: { tc: 0, d: -1 }, chim: { tc: 0, d: -1 } }, giaoDien: { nha: ['viet', 'nhat', 'hylap', 'go'][k % 4], nen: ['thuong', 'tuyet', 'dem'][k % 3] }, laBan: true };
 }
 // bạn thật: khoá ô = hat|o{j} (khoaO của chủ vườn), bonus mùa theo ngày gieo + ngay0 của CHỦ — khớp hàm server _nt_o_tt
 function oBanTT(s, st, j) {

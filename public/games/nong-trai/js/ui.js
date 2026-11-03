@@ -14,7 +14,7 @@ const DUNG = [['tay', '👆', 'Tay'], ['gieo', '🌱', 'Gieo'], ['tuoi', '💧',
 const ten = id => E.ten(id);
 const img = (id, cls) => `<img src="${M.icon(id)}" alt="${ten(id)}"${cls ? ` class="${cls}"` : ''}>`;
 const stXem = () => xem == null ? s : E.banTT(s, xem);
-function dongBo() { const st = stXem(); S.dongBo(st, s); return st; }
+function dongBo() { const st = stXem(); S.dongBo(st, s); apGiaoDien(st); return st; }
 const TEN_CHUONG = { ga: 'Chuồng gà', bo: 'Bãi cỏ bò' };
 
 // ---------- hành động ----------
@@ -670,7 +670,8 @@ function moLenCap(e) {
 const IC_NHA = { go: '🏡', viet: '🛖', nhat: '🏯', hylap: '🏛️' }, IC_NEN = { thuong: '🌤️', tuyet: '❄️', dem: '🎃' };
 const MO_NEN = { thuong: 'Nắng xanh, cỏ mướt', tuyet: 'Tuyết rơi, người tuyết', dem: 'Trăng tròn, bí ngô, dơi' };
 function giaoDien() { if (!s.giaoDien || typeof s.giaoDien !== 'object') s.giaoDien = { nha: 'go', nen: 'thuong' }; return s.giaoDien; }
-function apGiaoDien() { const g = giaoDien(); if (S.doiNha) { S.doiNha(g.nha); S.doiNen(g.nen); } }
+// đang ở vườn bạn ⇒ nhà & cảnh của BẠN (bạn chưa chọn bao giờ ⇒ mặc định); về nhà ⇒ của em
+function apGiaoDien(st) { const g = xem != null ? ((st && st.giaoDien) || { nha: 'go', nen: 'thuong' }) : giaoDien(); if (S.doiNha) { S.doiNha(g.nha); S.doiNen(g.nen); } }
 function moGiaoDien() {
   const KN = (window.NT_DOHOA && NT_DOHOA.KIEU_NHA) || {};
   moBang('Nhà & cảnh', () => {
