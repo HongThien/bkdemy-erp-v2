@@ -33,9 +33,14 @@ export default function PhongTruongKhoiScreen({ onTaoCaNhe }: { onTaoCaNhe: () =
   const [nguoi, setNguoi] = useState<CapDuoi | null>(null)
   useEffect(() => { if (mo === 'phien') setDaMoPhien(true) }, [mo])
   useEffect(() => {
-    // refetch NỀN: giữ ds cũ tới khi có ds mới, không bao giờ trắng
-    listCapDuoi().then((d) => { NHO.ds = d; setDs(d); setLoi(null) }).catch((e) => setLoi(e?.message ?? String(e)))
-  }, [])
+    // Thùy 03/11: hiệu suất hiện REALTIME — số tháng đang chạy, tính lại mỗi lần gọi (không đóng băng, không lấy tháng trước).
+    // Refetch NỀN mỗi 60 giây khi đang ở cảnh phòng: giữ ds cũ tới khi có ds mới, không bao giờ trắng.
+    const tai = () => listCapDuoi().then((d) => { NHO.ds = d; setDs(d); setLoi(null) }).catch((e) => setLoi(e?.message ?? String(e)))
+    tai()
+    if (mo) return
+    const id = setInterval(() => { if (document.visibilityState === 'visible') tai() }, 60_000)
+    return () => clearInterval(id)
+  }, [mo])
 
   const sk = useSkinErp()
   const khung: CSSProperties = { ...sk.bien, background: 'var(--sk-page)', fontFamily: 'var(--sk-font)' }

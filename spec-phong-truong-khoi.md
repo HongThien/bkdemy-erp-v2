@@ -110,7 +110,8 @@ Cổng quyền 4 hàm `fn_hsta_*` nới thêm đúng một ca: trưởng khối 
 
 **Task phát triển KHÔNG thuộc việc của TA** (Thùy 03/11): chỉ trưởng khối có task phát triển — nó nằm ở việc của chính trưởng khối, không đưa vào chi tiết TA.
 
-**Còn treo:** đầu tháng hiệu suất tháng hầu hết "—" (chưa có task đã đóng) — có nên hiện tháng trước khi tháng này chưa có số?
+**Hiệu suất hiện REALTIME** (Thùy 03/11): số tháng đang chạy, tính lại mỗi lần gọi; cảnh phòng tự làm mới nền mỗi 60 giây. Không lấy số tháng trước —
+đầu tháng chưa có task đã đóng/quá hạn thì hiện "—" (đúng nghĩa: chưa có gì để đo, §1.5).
 
 ## 5. Bản thử đã dựng (01/11) — mig `202611011822`
 
