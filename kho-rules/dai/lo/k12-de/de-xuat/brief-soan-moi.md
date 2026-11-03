@@ -20,3 +20,12 @@
 
 ## Trả lời cuối (≤ 120 từ)
 Số nhóm · số dạng · số ví dụ · số hình/bảng · máy kiểm lỗi 0 chưa · đã thử bằng số chưa · các điểm GHI CHÚ CHO CEO (mỗi điểm một dòng ngắn).
+
+## BỔ SUNG (03/11, sau bản thử XS/SDT) — ĐỌC KỸ
+A. **Bám ĐỀ THI, không thêm kiến thức đề không hỏi.** Mỗi ý trong lý thuyết dạng phải phục vụ một kiểu câu đề thi THẬT của dạng (xem câu đề bằng `node S\cau-dang.cjs <CH> <id_dạng> 8`; HS/VT đã có `HS-cau.tsv`/`VT-cau.tsv`). Sách có mà đề không hỏi → KHÔNG đưa. Thùy: "không đề nào hỏi thì lấy ở đâu ra".
+B. **BẮT BUỘC đọc sách tham khảo** của phần mình (bản thử SDT bỏ qua mục này và bị trả lại): tìm đúng chương/bài trong 3 bộ ở `G:\…\K12\` (NBV NEW FULL, Từ Tâm, PNL), chuyển bằng `scripts/docx-doc.mjs`, lấy kiến thức SGK + cách giải; cuối tệp, mục GHI CHÚ, ghi rõ ĐÃ đọc những file nào. Với Hàm số, văn bản sách đã trích sẵn: `S\txt\nbv\`, `S\txt\tutam\`, `S\txt\pnl\` (đọc bản `_GV` của PNL) và hồ sơ `kho-rules/dai/lo/k12-hs/ho-so/` — dùng trước, khỏi trích lại.
+C. **Tái dùng nội dung Hàm số đã duyệt (chỉ HS):** bản v1 đã soát nằm ở `kho-rules/dai/lo/k12-hs/ra/J*.txt` (khối mã H…); mỗi dạng mới có trường `tu` (mã thực đơn P…) → tra `kho-rules/dai/lo/k12-hs/cau-truc.mjs` (trường `cu`) ra mã H… cũ → grep `=== H…` trong `ra/J*.txt`. Có thì lấy làm gốc, viết lại cho ĐÚNG dạng MỚI (mô tả mới, đề thi mới hay hỏi); vẫn phải tự thử lại bằng số mọi ví dụ. Dạng mới tách/gộp từ nhiều dạng cũ thì tổng hợp, không dán nối.
+D. **Ranh giới VT / PP toạ độ (Thùy chốt):** chương VT chỉ thao tác quanh vectơ (không phương trình mặt phẳng/đường thẳng/mặt cầu). Dạng C4.3.2 (radar, vùng phủ sóng, định vị) chỉ gồm phần khoảng cách/toạ độ giữa các vật; bài cần phương trình mặt cầu/mặt phẳng/đường thẳng (vùng phủ sóng hình cầu cắt đường bay, GPS giải hệ khoảng cách, mặt phẳng chắn sóng) thuộc chương PP toạ độ, KHÔNG đưa vào VT.
+E. **Hình:** Hàm số/hình khối cần hình thì dùng `[[HINH {…}]]` như brief-soan.md mục 3 (dạng nhận dạng đồ thị/BBT bắt buộc có hình). Hình khối không vẽ được → mô tả đủ bằng lời (tên đỉnh, độ dài, góc) để làm được không cần hình.
+F. **Khuôn chung toàn chương:** các tệp con của chương sẽ ghép lại theo thứ tự cây; vì vậy mỗi tệp CHỈ chứa các khối của phần mình (nhóm trước dạng của nhóm), không lặp, không lệch mã. Tệp ra của lượt: `noi-dung/<CH>-<JOB>.txt`; chạy `kiem-moi.mjs <CH> <tệp> <danh sách mã giao>`.
+G. **Lý thuyết dạng không lặp lý thuyết nhóm; ví dụ 2 khó hơn ví dụ 1 một bậc; số liệu không tạo ca suy biến/biên không chủ ý** (bài học bản thử: trạm soát bắt 31 chỗ).

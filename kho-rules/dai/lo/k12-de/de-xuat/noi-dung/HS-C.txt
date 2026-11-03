@@ -1,0 +1,302 @@
+=== N C1.3   (nhóm "Giá trị lớn nhất, giá trị nhỏ nhất")
+@ly_thuyet:
+##TC Định nghĩa và sự tồn tại
+- Số $M$ là **giá trị lớn nhất** của $f$ trên tập $D$ nếu $f(x)\le M$ với mọi $x\in D$ và tồn tại $x_0\in D$ sao cho $f(x_0)=M$. Kí hiệu $M=\max_{D}f(x)$.
+- Số $m$ là **giá trị nhỏ nhất** của $f$ trên $D$ nếu $f(x)\ge m$ với mọi $x\in D$ và tồn tại $x_0\in D$ sao cho $f(x_0)=m$. Kí hiệu $m=\min_{D}f(x)$.
+- GTLN, GTNN là một **giá trị của $y$** (tung độ); điểm đạt được là giá trị của $x$.
+- Đề không nói "trên tập nào" thì hiểu là trên tập xác định của hàm số.
+- Hàm số liên tục trên đoạn $[a;b]$ luôn có GTLN và GTNN trên đoạn đó. Trên khoảng, nửa khoảng hoặc $\mathbb{R}$ thì có thể không tồn tại.
+
+##PP Tìm GTLN, GTNN theo miền
+Xác định miền $D$ đề cho (đoạn, khoảng, nửa khoảng hay $\mathbb{R}$) và kiểm tra hàm liên tục trên $D$.
+Miền là **đoạn** $[a;b]$: giải $y'=0$ (và tìm điểm $y'$ không xác định), giữ các nghiệm thuộc $[a;b]$, tính $y$ tại các nghiệm đó và tại $a$, $b$, lấy số lớn nhất và số nhỏ nhất.
+Miền là **khoảng, nửa khoảng, $\mathbb{R}$**: lập bảng biến thiên có giới hạn ở đầu mở rồi đọc kết quả.
+Có hình (đồ thị hoặc bảng biến thiên): chỉ xét phần hình nằm trong miền, đọc tung độ của điểm cao nhất, thấp nhất.
+Trả lời đúng điều đề hỏi: giá trị $M$, $m$ (tung độ) hay điểm đạt được (hoành độ), hay biểu thức như $M+m$, $M-m$.
+
+##CY
+- Trên đoạn $[a;b]$ phải tính giá trị tại **cả hai đầu mút**; GTLN, GTNN có thể nằm ở đầu mút chứ không ở điểm cực trị.
+- Nghiệm của $y'=0$ nằm ngoài miền phải loại trước khi tính.
+- Đầu mở không thuộc miền nên giá trị tại đó (hoặc giới hạn) chỉ là cận, không phải GTLN, GTNN.
+
+=== C1.3.1   (dạng "Tìm GTLN, GTNN của hàm đa thức trên đoạn" — mô tả: Đề cho đa thức và đoạn [a;b]; ba bước: nghiệm y′ trong đoạn, giá trị tại nghiệm và hai đầu mút, so sánh.)
+@ly_thuyet:
+##TC Hàm đa thức trên đoạn
+- Hàm đa thức xác định và liên tục trên $\mathbb{R}$ nên luôn có GTLN, GTNN trên mọi đoạn $[a;b]$.
+- Hàm bậc ba có $y'$ là tam thức bậc hai; hàm trùng phương $y=ax^4+bx^2+c$ có $y'=2x(2ax^2+b)$ nên có nghiệm $x=0$ và (nếu $ab<0$) hai nghiệm đối nhau.
+- Giá trị cần tìm cho ra con số cụ thể; đề thường hỏi thêm biểu thức như $M+m$, $M+3m$ hay điểm đạt được.
+
+##PP Hàm đa thức trên đoạn
+Tính $y'$ rồi giải $y'=0$.
+Chỉ giữ các nghiệm thuộc $[a;b]$.
+Tính $y$ tại các nghiệm đã giữ và tại $a$, $b$ (thay vào hàm số ban đầu).
+Số lớn nhất là $M$, số nhỏ nhất là $m$; nếu đề hỏi biểu thức theo $M$, $m$ thì tính ở bước cuối.
+
+##CY
+- Nghiệm của $y'=0$ có thể vô tỉ (vd $y=x^3-21x$ có $x=\sqrt7\in[2;4]$): vẫn giữ nếu thuộc đoạn và tính giá trị ở dạng đúng ($-14\sqrt7$), không làm tròn rồi bỏ.
+- Tính giá trị bằng cách thay vào $y$, không thay vào $y'$.
+- Đề hỏi $M+3m$ (hay $2M-m$...) thì dùng đúng $M$ và $m$ tìm được, không lấy giá trị tại điểm khác.
+
+@vi_du:
+##VD
+Tìm giá trị lớn nhất và giá trị nhỏ nhất của hàm số $y=x^3-12x+3$ trên đoạn $[-3;3]$.
+
+Bài giải:
+Hàm số liên tục trên $[-3;3]$ và $y'=3x^2-12=3(x-2)(x+2)$.
+$y'=0$ khi $x=2$ hoặc $x=-2$, cả hai đều thuộc $[-3;3]$.
+Ta có $y(-3)=12$, $y(-2)=19$, $y(2)=-13$, $y(3)=-6$.
+Vậy $\max_{[-3;3]}y=19$ tại $x=-2$ và $\min_{[-3;3]}y=-13$ tại $x=2$.
+
+##VD
+Gọi $M$, $m$ lần lượt là giá trị lớn nhất, giá trị nhỏ nhất của hàm số $y=x^4-4x^2+3$ trên đoạn $[-1;3]$. Tính $M+3m$.
+
+Bài giải:
+Hàm số liên tục trên $[-1;3]$ và $y'=4x^3-8x=4x(x^2-2)$.
+$y'=0$ khi $x=0$, $x=\sqrt{2}$ hoặc $x=-\sqrt{2}$; trong đoạn $[-1;3]$ chỉ nhận $x=0$ và $x=\sqrt{2}$ (loại $x=-\sqrt{2}$ vì $-\sqrt{2}<-1$).
+Ta có $y(-1)=0$, $y(0)=3$, $y(\sqrt{2})=4-8+3=-1$, $y(3)=81-36+3=48$.
+Suy ra $M=48$ và $m=-1$.
+Vậy $M+3m=48+3\cdot(-1)=45$.
+
+=== C1.3.2   (dạng "Tìm GTLN, GTNN của hàm phân thức trên đoạn" — mô tả: Đề cho phân thức hữu tỉ và đoạn; kiểm tra đoạn nằm trong tập xác định, rồi làm ba bước như đa thức.)
+@ly_thuyet:
+##TC Hàm phân thức hữu tỉ trên đoạn
+- Hàm phân thức liên tục trên đoạn $[a;b]$ khi đoạn đó **không chứa** nghiệm của mẫu thức; khi đó hàm luôn có GTLN, GTNN trên đoạn.
+- $y=\dfrac{ax+b}{cx+d}$ có $y'=\dfrac{ad-bc}{(cx+d)^2}$ cùng dấu với $ad-bc$ nên đơn điệu trên mỗi khoảng xác định; GTLN, GTNN nằm ở hai đầu mút.
+- $y=\dfrac{ax^2+bx+c}{dx+e}$ (hay dạng $y=x+\dfrac{k}{x}$) thường có $y'=0$ với tử số là tam thức bậc hai, phải xét nghiệm và so sánh.
+
+##PP Hàm phân thức trên đoạn
+Tìm nghiệm của mẫu và kiểm tra đoạn $[a;b]$ không chứa nghiệm đó.
+Tính $y'$, rút gọn tử số rồi giải $y'=0$ (hàm bậc nhất trên bậc nhất thì xét dấu $ad-bc$, không có nghiệm).
+Giữ nghiệm thuộc $[a;b]$; tính $y$ tại các nghiệm đó và tại hai đầu mút.
+So sánh các giá trị (nên quy đồng khi có phân số) và kết luận.
+
+##CY
+- Hàm bậc nhất trên bậc nhất đơn điệu nên giá trị tại **hai đầu mút** là đáp số; đừng tìm cực trị.
+- Khi tính $y'$ của hàm bậc hai trên bậc nhất, rút gọn tử số cẩn thận ($(2x+\dots)(\dots)-(\dots)$) rồi mới giải nghiệm.
+- Khi đề cho $y=x+\dfrac{k}{x}$ trên đoạn, vẫn dùng đạo hàm; chỉ lấy nghiệm thuộc đoạn.
+
+@vi_du:
+##VD
+Tìm giá trị lớn nhất và giá trị nhỏ nhất của hàm số $y=\dfrac{x-2}{x+1}$ trên đoạn $[0;3]$.
+
+Bài giải:
+Mẫu có nghiệm $x=-1$ không thuộc $[0;3]$ nên hàm số liên tục trên đoạn này.
+$y'=\dfrac{1\cdot1-(-2)\cdot1}{(x+1)^2}=\dfrac{3}{(x+1)^2}>0$ nên hàm số đồng biến trên $[0;3]$.
+Do đó $\min y=y(0)=-2$ và $\max y=y(3)=\dfrac{1}{4}$.
+Vậy $\max_{[0;3]}y=\dfrac{1}{4}$ tại $x=3$ và $\min_{[0;3]}y=-2$ tại $x=0$.
+
+##VD
+Gọi $M$, $m$ lần lượt là giá trị lớn nhất, giá trị nhỏ nhất của hàm số $y=\dfrac{x^2-x+4}{x-1}$ trên đoạn $[2;6]$. Tính $5M-m$.
+
+Bài giải:
+Mẫu có nghiệm $x=1$ không thuộc $[2;6]$ nên hàm số liên tục trên đoạn này.
+$y'=\dfrac{(2x-1)(x-1)-(x^2-x+4)}{(x-1)^2}=\dfrac{x^2-2x-3}{(x-1)^2}=\dfrac{(x-3)(x+1)}{(x-1)^2}$.
+$y'=0$ khi $x=3$ hoặc $x=-1$; trong đoạn $[2;6]$ chỉ nhận $x=3$.
+Ta có $y(2)=6$, $y(3)=5$, $y(6)=\dfrac{34}{5}$.
+Suy ra $M=\dfrac{34}{5}$ và $m=5$ nên $5M-m=34-5=29$.
+Vậy $5M-m=29$.
+
+=== C1.3.3   (dạng "Tìm GTLN, GTNN của hàm căn, lượng giác, mũ, logarit" — mô tả: Hàm chứa căn (đoạn là tập xác định) hoặc lượng giác, mũ, logarit (thường đặt ẩn phụ t, đổi miền của t).)
+@ly_thuyet:
+##TC Đạo hàm và miền xác định của từng loại hàm
+- Hàm chứa căn: $\sqrt{u}$ xác định khi $u\ge0$; $(\sqrt{u})'=\dfrac{u'}{2\sqrt{u}}$ (không xác định tại $u=0$ nhưng hàm vẫn xác định, nên điểm $u=0$ ở đầu mút vẫn phải tính giá trị). Đề không cho đoạn thì lấy tập xác định làm miền.
+- Hàm mũ, logarit: $(e^{x})'=e^{x}$, $(a^{x})'=a^{x}\ln a$, $(\ln x)'=\dfrac{1}{x}$ với $x>0$; $e^{x}>0$ nên dấu của $y'$ chỉ phụ thuộc thừa số còn lại.
+- Hàm lượng giác: $(\sin x)'=\cos x$, $(\cos x)'=-\sin x$; có thể đặt $t=\sin x$ hoặc $t=\cos x$ với miền của $t$ lấy theo đoạn $x$ đề cho.
+- Hàm liên tục trên đoạn $[a;b]$ nhận mọi giá trị trong $[m;M]$, nên **tập giá trị** của nó trên đoạn đó là $[m;M]$.
+
+##PP Hàm căn, lượng giác, mũ, logarit
+Tìm miền xác định (hoặc đoạn đề cho) và kiểm tra hàm liên tục trên miền đó.
+Hàm lượng giác hay biểu thức lặp lại một hàm: đặt $t=u(x)$, tìm miền của $t$ theo miền của $x$, đưa về hàm $g(t)$ rồi khảo sát trên miền của $t$.
+Tính đạo hàm, giải $y'=0$ (hoặc $g'(t)=0$) và giữ nghiệm thuộc miền.
+Tính giá trị tại các nghiệm và hai đầu mút; với số vô tỉ, mũ, logarit giữ dạng đúng ($\sqrt{2}$, $e$, $\ln2$) và so sánh bằng giá trị gần đúng nếu cần; kết luận.
+
+##CY
+- Đặt $t=\sin x$ hoặc $t=\cos x$ phải đổi **miền của $t$** (đoạn $[0;\pi]$ thì $\sin x\in[0;1]$ chứ không phải $[-1;1]$).
+- Một giá trị của $t$ có thể ứng với nhiều giá trị của $x$: GTLN, GTNN đạt tại mọi $x$ thoả mãn.
+- Logarit đòi $x>0$; đoạn đề cho phải nằm trong tập xác định.
+- Khi bình phương hai vế để giải $y'=0$ (hàm hai căn), thử lại nghiệm vì có thể có nghiệm ngoại lai.
+
+@vi_du:
+##VD
+Tìm giá trị lớn nhất và giá trị nhỏ nhất của các hàm số sau:
+a) $y=\sqrt{8+2x-x^2}$.
+b) $y=xe^{-x}$ trên đoạn $[0;2]$.
+
+Bài giải:
+a) Điều kiện $8+2x-x^2\ge0\Leftrightarrow-2\le x\le4$ nên hàm số xác định và liên tục trên $[-2;4]$.
+Với $x\in(-2;4)$ ta có $y'=\dfrac{1-x}{\sqrt{8+2x-x^2}}$, và $y'=0$ khi $x=1$.
+Ta có $y(-2)=0$, $y(1)=\sqrt{9}=3$, $y(4)=0$.
+b) $y'=e^{-x}-xe^{-x}=(1-x)e^{-x}$, và $y'=0$ khi $x=1\in[0;2]$.
+Ta có $y(0)=0$, $y(1)=\dfrac{1}{e}$, $y(2)=\dfrac{2}{e^2}$; vì $\dfrac{2}{e^2}\approx0{,}271<\dfrac{1}{e}\approx0{,}368$ nên GTLN là $\dfrac{1}{e}$.
+Vậy a) $\max y=3$ tại $x=1$, $\min y=0$ tại $x=-2$ và $x=4$; b) $\max y=\dfrac{1}{e}$ tại $x=1$, $\min y=0$ tại $x=0$.
+
+##VD
+a) Tìm giá trị lớn nhất và giá trị nhỏ nhất của hàm số $y=\cos2x+2\sin x$ trên đoạn $[0;\pi]$.
+b) Tìm giá trị lớn nhất và giá trị nhỏ nhất của hàm số $y=x^2-8\ln x$ trên đoạn $[1;e^2]$.
+c) Tìm tập giá trị của hàm số $y=x+\sqrt{18-x^2}$.
+
+Bài giải:
+a) Ta có $y=1-2\sin^2x+2\sin x$. Đặt $t=\sin x$; với $x\in[0;\pi]$ thì $t\in[0;1]$.
+Xét $g(t)=-2t^2+2t+1$ trên $[0;1]$: $g'(t)=-4t+2=0$ khi $t=\dfrac{1}{2}$.
+Ta có $g(0)=1$, $g\left(\dfrac{1}{2}\right)=\dfrac{3}{2}$, $g(1)=1$.
+Suy ra $\max y=\dfrac{3}{2}$ (khi $\sin x=\dfrac{1}{2}$, tức $x=\dfrac{\pi}{6}$ hoặc $x=\dfrac{5\pi}{6}$) và $\min y=1$ (khi $\sin x=0$ hoặc $\sin x=1$, tức $x=0$, $x=\dfrac{\pi}{2}$, $x=\pi$).
+b) Đoạn $[1;e^2]$ nằm trong $(0;+\infty)$. Ta có $y'=2x-\dfrac{8}{x}=\dfrac{2(x^2-4)}{x}$, và $y'=0$ khi $x=2$ (nhận, vì $1<2<e^2$), $x=-2$ loại.
+Ta có $y(1)=1$, $y(2)=4-8\ln2\approx-1{,}545$, $y(e^2)=e^4-16\approx38{,}6$.
+c) Điều kiện $18-x^2\ge0\Leftrightarrow-3\sqrt2\le x\le3\sqrt2$; hàm số liên tục trên $[-3\sqrt2;3\sqrt2]$.
+Với $x\in(-3\sqrt2;3\sqrt2)$: $y'=1-\dfrac{x}{\sqrt{18-x^2}}$; $y'=0\Leftrightarrow\sqrt{18-x^2}=x\Leftrightarrow\begin{cases}x\ge0\\18-x^2=x^2\end{cases}\Leftrightarrow x=3$.
+Ta có $y(-3\sqrt2)=-3\sqrt2$, $y(3)=3+3=6$, $y(3\sqrt2)=3\sqrt2$.
+Suy ra $\max y=6$, $\min y=-3\sqrt2$, nên tập giá trị là $T=[-3\sqrt2;6]$.
+Vậy a) $\max y=\dfrac{3}{2}$, $\min y=1$; b) $\max y=e^4-16$ tại $x=e^2$, $\min y=4-8\ln2$ tại $x=2$; c) $T=[-3\sqrt2;6]$.
+
+=== C1.3.4   (dạng "Tìm GTLN, GTNN trên khoảng hoặc trên ℝ" — mô tả: Miền là khoảng, nửa khoảng hoặc ℝ: phải lập bảng biến thiên (không chỉ thay đầu mút), có thể không tồn tại GTLN/GTNN.)
+@ly_thuyet:
+##TC Miền không phải đoạn
+- Nếu giới hạn tại một đầu mở là $+\infty$ thì không có GTLN; là $-\infty$ thì không có GTNN.
+- Hàm số đơn điệu trên một khoảng mở thì **không có** GTLN, GTNN trên khoảng đó (giá trị ở hai đầu chỉ tiến tới, không đạt).
+- Hàm số liên tục trên một khoảng mà chỉ có **một** điểm cực trị: là cực tiểu thì giá trị cực tiểu là GTNN, là cực đại thì giá trị cực đại là GTLN trên khoảng đó.
+
+##PP Lập bảng biến thiên trên khoảng
+Tìm tập xác định, tính $y'$ và giải $y'=0$, chỉ giữ nghiệm thuộc miền đề cho.
+Tính các giới hạn tại đầu mở (và tại $\pm\infty$).
+Lập bảng biến thiên có ghi giá trị tại các nghiệm và các giới hạn.
+Đọc bảng: giá trị cao nhất (thấp nhất) **đạt được** là GTLN (GTNN); nếu chỉ là giới hạn hoặc $\pm\infty$ thì kết luận không tồn tại.
+
+##CY
+- Không dùng quy tắc "so sánh với đầu mút" cho khoảng: đầu mở không thuộc miền.
+- Hàm bị chặn vẫn có thể không có GTLN, GTNN (giá trị cận không đạt được).
+- Nửa khoảng như $(-3;2]$ chứa đầu đóng $2$ nên giá trị $y(2)$ **được** tính; đầu mở $-3$ thì không.
+- Đề hỏi "đạt tại điểm nào" thì trả lời hoành độ $x_0$, không phải giá trị.
+
+@vi_du:
+##VD
+Tìm giá trị lớn nhất, giá trị nhỏ nhất (nếu có) của các hàm số sau:
+a) $y=x+\dfrac{9}{x-1}$ trên khoảng $(1;+\infty)$.
+b) $y=-x^4+2x^2+1$ trên $\mathbb{R}$.
+
+Bài giải:
+a) $y'=1-\dfrac{9}{(x-1)^2}=\dfrac{(x-4)(x+2)}{(x-1)^2}$; trên $(1;+\infty)$, $y'=0$ khi $x=4$, $y'<0$ trên $(1;4)$ và $y'>0$ trên $(4;+\infty)$.
+Khi $x\to1^+$ thì $y\to+\infty$; khi $x\to+\infty$ thì $y\to+\infty$; $y(4)=7$.
+Từ bảng biến thiên, hàm đạt giá trị nhỏ nhất $7$ tại $x=4$ và không có GTLN.
+b) $y'=-4x^3+4x=-4x(x-1)(x+1)$; $y'=0$ khi $x=0$, $x=\pm1$; $y'>0$ trên $(-\infty;-1)$ và $(0;1)$, $y'<0$ trên $(-1;0)$ và $(1;+\infty)$.
+Ta có $y(\pm1)=2$, $y(0)=1$ và $\lim_{x\to\pm\infty}y=-\infty$.
+Hàm đạt giá trị lớn nhất $2$ tại $x=-1$ và $x=1$, không có GTNN.
+Vậy a) $\min=7$, không có $\max$; b) $\max=2$, không có $\min$.
+
+##VD
+Tìm giá trị lớn nhất, giá trị nhỏ nhất (nếu có) của các hàm số sau:
+a) $y=\dfrac{x^2+1}{x}$ trên khoảng $(-\infty;0)$.
+b) $y=x^3-3x$ trên nửa khoảng $(-3;2]$.
+
+Bài giải:
+a) $y'=\dfrac{x^2-1}{x^2}$; trên $(-\infty;0)$, $y'=0$ khi $x=-1$, $y'>0$ trên $(-\infty;-1)$ và $y'<0$ trên $(-1;0)$.
+Khi $x\to-\infty$ thì $y\to-\infty$; khi $x\to0^-$ thì $y\to-\infty$; $y(-1)=-2$.
+Hàm đạt giá trị lớn nhất $-2$ tại $x=-1$, không có GTNN.
+b) $y'=3x^2-3=3(x-1)(x+1)$; $y'>0$ trên $(-3;-1)$ và $(1;2]$, $y'<0$ trên $(-1;1)$.
+Ta có $y(-1)=2$, $y(1)=-2$, $y(2)=2$ và $\lim_{x\to-3^+}y=-18$.
+Hàm đạt giá trị lớn nhất $2$ tại $x=-1$ và $x=2$.
+Khi $x$ gần $-3$ thì $y$ nhỏ hơn $y(1)=-2$ và tiến sát $-18$, nhưng $x=-3$ không thuộc nửa khoảng nên giá trị $-18$ không đạt được; do đó hàm số không có GTNN.
+Vậy a) $\max=-2$, không có $\min$; b) $\max=2$, không có $\min$.
+
+=== C1.3.5   (dạng "Đọc GTLN, GTNN từ đồ thị" — mô tả: Đề cho đồ thị của f trên đoạn/khoảng; đọc GTLN, GTNN, tính M±m. Hình: dothi)
+@ly_thuyet:
+##TC Điểm cao nhất, thấp nhất của đồ thị
+- Trên đoạn $[a;b]$, $M$ là **tung độ** của điểm cao nhất và $m$ là tung độ của điểm thấp nhất của phần đồ thị ứng với $a\le x\le b$.
+- Hai đầu mút $x=a$, $x=b$ luôn được xét.
+- Miền là khoảng hoặc nửa khoảng: điểm của đồ thị tại đầu mở không thuộc phần đang xét; đồ thị đi lên (xuống) mãi về một phía thì không có GTLN (GTNN).
+- Điểm đạt GTLN, GTNN là **hoành độ** của các điểm đó.
+
+##PP Đọc GTLN, GTNN từ đồ thị
+Kẻ hai đường thẳng đứng $x=a$, $x=b$ để chặn phần đồ thị cần xét.
+Tìm các điểm đỉnh, đáy của phần đồ thị đó và hai điểm đầu mút, ghi tung độ.
+Điểm cao nhất cho $M$, điểm thấp nhất cho $m$; ghi cả hoành độ nơi đạt.
+Tính biểu thức đề hỏi ($M+m$, $M-m$, $2M-m$...) hoặc trả lời hoành độ điểm đạt GTLN, GTNN.
+
+##CY
+- Đồ thị có thể cao hơn hoặc thấp hơn ở ngoài đoạn $[a;b]$: không đọc đỉnh nằm ngoài đoạn.
+- Đỉnh (cực đại) chưa chắc là GTLN: so với tung độ ở hai đầu mút.
+- Đề hỏi $M-m$ thì trừ tung độ, không trừ hoành độ; GTNN có thể đạt tại nhiều điểm.
+
+@vi_du:
+##VD
+Cho hàm số $y=f(x)$ có đồ thị như hình vẽ. Tìm giá trị lớn nhất $M$, giá trị nhỏ nhất $m$ của $f(x)$ trên đoạn $[0;2]$ và tính $M+m$.
+[[HINH {"loai":"dothi","x":[-2,2],"y":[-8,4],"f":[{"e":"-x^4+2*x^2+2","ten":"y=f(x)"}]}]]
+
+Bài giải:
+Trên đoạn $[0;2]$, đồ thị bắt đầu tại điểm đầu mút $(0;2)$, đi lên đỉnh $(1;3)$ rồi đi xuống đến điểm cuối $(2;-6)$.
+Điểm cao nhất là đỉnh có tung độ $3$ tại $x=1$ nên $M=3$.
+Điểm thấp nhất là đầu mút $(2;-6)$ nên $m=-6$.
+Vậy $M=3$, $m=-6$ và $M+m=-3$.
+
+##VD
+Cho hàm số $y=f(x)$ có đồ thị như hình vẽ.
+a) Gọi $M$, $m$ lần lượt là giá trị lớn nhất, giá trị nhỏ nhất của $f(x)$ trên đoạn $[0;4]$. Tính $M-m$ và cho biết hàm số đạt GTLN tại điểm nào.
+b) Tìm giá trị lớn nhất, giá trị nhỏ nhất (nếu có) của $f(x)$ trên khoảng $(-1;3)$.
+[[HINH {"loai":"dothi","x":[-1,4],"y":[-6,18],"f":[{"e":"x^3-3*x^2","ten":"y=f(x)"}]}]]
+
+Bài giải:
+a) Trên đoạn $[0;4]$, đồ thị đi từ đầu mút $(0;0)$ xuống đáy $(2;-4)$ rồi đi lên đến đầu mút $(4;16)$.
+Điểm cao nhất không phải điểm $(0;0)$ mà là đầu mút $(4;16)$ nên $M=16$, đạt tại $x=4$.
+Điểm thấp nhất là đáy $(2;-4)$ nên $m=-4$, do đó $M-m=16-(-4)=20$.
+b) Trên khoảng $(-1;3)$, đồ thị đi lên từ gần điểm $(-1;-4)$ (không lấy) tới đỉnh $(0;0)$, xuống đáy $(2;-4)$ rồi đi lên tới gần điểm $(3;0)$ (không lấy).
+Điểm cao nhất đạt được là đỉnh $(0;0)$: tung độ $0$ đạt tại $x=0$ thuộc khoảng, nên GTLN bằng $0$ dù $x=3$ bị loại.
+Điểm thấp nhất đạt được là đáy $(2;-4)$, nên GTNN bằng $-4$ tại $x=2$.
+Vậy a) $M-m=20$, hàm số đạt GTLN tại $x=4$; b) $\max_{(-1;3)}f(x)=0$ tại $x=0$, $\min_{(-1;3)}f(x)=-4$ tại $x=2$.
+
+=== C1.3.6   (dạng "Đọc GTLN, GTNN từ bảng biến thiên hoặc bảng xét dấu f′" — mô tả: Đề cho bảng biến thiên hoặc bảng xét dấu f′ trên một miền; đọc hoặc so sánh f(a), f(b) để chọn GTLN, GTNN, mệnh đề đúng. Hình: bbt)
+@ly_thuyet:
+##TC Đọc bảng biến thiên và bảng xét dấu $f'$
+- Trên khoảng mà $f'>0$ (mũi tên đi lên) hàm đồng biến; $f'<0$ (mũi tên đi xuống) hàm nghịch biến.
+- Giá trị ở cột đầu mút chỉ **đạt được** khi đầu mút thuộc miền đang xét; giá trị $\pm\infty$ hoặc giá trị giới hạn ở đầu mở thì không đạt.
+- Bảng biến thiên cho biết **giá trị** của $f$ tại các cột; bảng xét dấu $f'$ (hoặc công thức của $f'(x)$) chỉ cho biết hàm đạt GTLN, GTNN **tại điểm nào**, không cho giá trị.
+- $f$ liên tục và đồng biến trên $[a;b]$ thì $\max_{[a;b]}f=f(b)$, $\min_{[a;b]}f=f(a)$; nghịch biến thì $\max_{[a;b]}f=f(a)$, $\min_{[a;b]}f=f(b)$.
+- Nghiệm bội chẵn của $f'$ (như $(x+1)^2$) không làm $f'$ đổi dấu nên không phải điểm cực trị.
+
+##PP Đọc GTLN, GTNN từ bảng
+Xác định miền $D$ đề hỏi (đoạn, nửa khoảng...) và các cột của bảng nằm trong $D$.
+Với bảng biến thiên: ghi giá trị $y$ tại các cực trị nằm trong $D$ và tại các đầu mút thuộc $D$ (nếu bảng không cho giá trị ở đầu mút thì dùng chiều biến thiên để chọn điểm).
+Số lớn nhất, nhỏ nhất trong các giá trị đạt được là GTLN, GTNN; nếu chỉ là giới hạn tại đầu mở thì kết luận không có.
+Với bảng xét dấu $f'$ hoặc công thức $f'(x)$: (giải $f'(x)=0$, xét dấu) suy ra chiều biến thiên của $f$ trên $D$, rồi chọn điểm mà hàm đi lên tới đó và đi xuống sau đó (GTLN), hoặc ngược lại (GTNN).
+
+##CY
+- Cùng một bảng, miền $D$ khác nhau cho kết quả khác nhau: phải nêu rõ đang xét miền nào.
+- Cực đại không phải lúc nào cũng là GTLN: so với giá trị ở các đầu mút thuộc miền.
+- Miền có đầu mở (như $(-\infty;-2)$, $[-5;7)$): giá trị ở cột đầu mở không đạt được, nên mệnh đề kiểu "$\min_{(-\infty;-2)}f(x)=f(-2)$" là sai.
+
+@vi_du:
+##VD
+Cho hàm số $y=f(x)$ liên tục trên đoạn $[-3;4]$ và có bảng biến thiên như hình vẽ.
+a) Tìm giá trị lớn nhất và giá trị nhỏ nhất của $f(x)$ trên đoạn $[-3;4]$.
+b) Tìm giá trị lớn nhất và giá trị nhỏ nhất (nếu có) của $f(x)$ trên nửa khoảng $(-1;4]$.
+[[HINH {"loai":"bbt","x":["-3","-1","2","4"],"dau":["+","-","+"],"y":["1","5","-2","3"]}]]
+
+Bài giải:
+a) Trên $[-3;4]$, các giá trị đạt được tại các cột là $f(-3)=1$, $f(-1)=5$, $f(2)=-2$, $f(4)=3$.
+Số lớn nhất là $5$ (tại $x=-1$), số nhỏ nhất là $-2$ (tại $x=2$).
+b) Trên $(-1;4]$: hàm nghịch biến trên $(-1;2]$ (giá trị giảm từ gần $5$ xuống $-2$) rồi đồng biến trên $[2;4]$ (từ $-2$ lên $3$).
+Giá trị nhỏ nhất là $f(2)=-2$.
+Khi $x$ gần $-1$ thì $f(x)$ gần $5$, lớn hơn $f(4)=3$, nhưng $x=-1$ không thuộc nửa khoảng nên giá trị $5$ không đạt được; do đó không có GTLN.
+Vậy a) $\max=5$, $\min=-2$; b) $\min=-2$ tại $x=2$, không có $\max$.
+
+##VD
+Cho hàm số $y=f(x)$ liên tục trên $\mathbb{R}$.
+a) Biết $f'(x)$ có bảng xét dấu như hình vẽ. Mỗi mệnh đề sau đúng hay sai?
+(1) $\max_{(-2;3)}f(x)=f(1)$; (2) $\min_{(-\infty;1)}f(x)=f(-2)$; (3) $\min_{(-\infty;-2)}f(x)=f(-2)$.
+b) Biết $f'(x)=(x+1)^2(x-2)$ với mọi $x\in\mathbb{R}$. Hàm số $f(x)$ đạt giá trị nhỏ nhất trên đoạn $[-3;3]$ tại điểm nào?
+[[HINH {"loai":"bbt","hang":"dau","x":["-∞","-2","1","3","+∞"],"dau":["-","+","-","+"],"ten_dao":"f'(x)"}]]
+
+Bài giải:
+a) Từ bảng: $f$ nghịch biến trên $(-\infty;-2)$, đồng biến trên $(-2;1)$, nghịch biến trên $(1;3)$, đồng biến trên $(3;+\infty)$.
+(1) Trên $(-2;3)$, $f$ đi lên tới $x=1$ rồi đi xuống, nên $f(x)\le f(1)$ và dấu bằng tại $x=1$: **đúng**.
+(2) Trên $(-\infty;1)$, $f$ đi xuống tới $x=-2$ rồi đi lên, nên $f(x)\ge f(-2)$ và dấu bằng tại $x=-2$: **đúng**.
+(3) Trên $(-\infty;-2)$, $f$ nghịch biến nên $f(x)>f(-2)$ với mọi $x$ của khoảng, mà $x=-2$ không thuộc khoảng; $f(-2)$ không đạt được nên mệnh đề **sai** (hàm không có GTNN trên khoảng này).
+b) $f'(x)=0\Leftrightarrow x=-1$ hoặc $x=2$. Vì $(x+1)^2\ge0$ nên $f'(x)$ cùng dấu với $x-2$: $f'(x)\le0$ trên $[-3;2]$ (chỉ bằng $0$ tại $x=-1$, $x=2$) và $f'(x)>0$ trên $(2;3]$.
+Do đó $f$ nghịch biến trên $[-3;2]$, đồng biến trên $[2;3]$; $x=-1$ không phải điểm cực trị.
+Vậy a) (1) đúng, (2) đúng, (3) sai; b) $f(x)$ đạt giá trị nhỏ nhất trên $[-3;3]$ tại $x=2$.
+
+## GHI CHÚ CHO CEO
+- Đã đọc sách: NBV 12-3 file `A. LY THUYET.docx` (lý thuyết SGK, ví dụ 1–4); PNL Toán 12 Chương 1 Bài 2 `Dạng 01 ..._GV.docx` (định nghĩa, quy trình đoạn/miền, ghi chú hàm đơn điệu, Cô-si); Từ Tâm `C1-B2-GIÁ TRỊ LỚN NHẤT-NHỎ NHẤT CỦA HÀM SỐ-P1.docx` (Dạng 1 trên đoạn, Dạng 2 trên khoảng). Hồ sơ `k12-hs/ho-so/hoso-nbv-3-4.md` và gốc v1 `k12-hs/ra/J4.txt` (H3.1, H3.2) dùng làm nền, các ví dụ viết lại và tính lại bằng số (`soan/HS/thu-C13.mjs`, quét lưới 2 triệu điểm, khớp mọi đáp số).
+- Phần "Ứng dụng" (tốc độ, mô hình thực tế), tham số m, hàm hợp, $|f+m|$ của NBV 12-3 nằm ngoài C1.3 (thuộc phần khác của cây), không đưa vào.
+- C1.3.3: đề thi trộn cả câu trả lời ngắn có dạng $a\sqrt{b}$, "làm tròn" và "tập giá trị"; ví dụ viết tự luận nên không có câu làm tròn, chỉ nêu "tập giá trị = $[m;M]$" ở lý thuyết.
+- C1.3.4 (trạm soát kiểm lại bằng số cả 20 câu đề thật của dạng): câu **T112010402145** ($y=x^3-\dfrac{3x^2}{2}-6x-4$ trên $(-\infty;-1)$, đáp án C $=-\dfrac12$) **sai theo định nghĩa** — hàm đồng biến trên cả khoảng, $-\dfrac12$ là giá trị tại đầu mở $x=-1$ không đạt, nên GTLN không tồn tại (không có phương án đúng). Câu bậc ba trên $(-1;3)$ (**T1120000005639**, $x^3-3x^2+3$, đáp án $x_0=0$) thì **đúng** (GTLN $3$ đạt tại $x=0$). Các câu còn lại khớp. Ví dụ của dạng viết theo đúng định nghĩa.
+- C1.3.4: câu **T1120000006307** ($f'(x)=3$, hỏi GTLN–GTNN trên đoạn $[2;3]$) xếp nhầm vào dạng "trên khoảng"; hợp với C1.3.6 (hàm đơn điệu trên đoạn) hơn.
+- C1.3.6: đề thi có 3 kiểu — bảng biến thiên trên đoạn/nửa khoảng/ℝ; bảng xét dấu $f'$ với mệnh đề về max/min trên khoảng; công thức $f'(x)$ (hoặc "liên tục và đồng biến trên đoạn") hỏi điểm đạt. Ví dụ đã phủ cả 3 kiểu. Hai ví dụ chỉ dựa bảng, trạm soát kiểm bằng hàm dựng khớp bảng (nội suy đơn điệu qua các cột; $f'=(x+2)(x-1)(x-3)$ cho bảng dấu).

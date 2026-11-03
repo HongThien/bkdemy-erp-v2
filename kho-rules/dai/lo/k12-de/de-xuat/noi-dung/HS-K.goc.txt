@@ -1,0 +1,427 @@
+=== N C4.3   (nhóm "Tối ưu đường đi, khoảng cách, góc")
+@ly_thuyet:
+##TC Tối ưu một đại lượng hình học – thực tế
+- Đề hỏi thời gian, chi phí, độ dài hoặc góc **nhỏ nhất (lớn nhất)** khi vị trí một điểm hoặc thời điểm thay đổi; chọn ẩn là vị trí đó (một độ dài, một thời điểm hoặc một góc) và nêu điều kiện của ẩn.
+- Khoảng cách hai điểm $M(x_1;y_1)$, $N(x_2;y_2)$: $MN=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$; định lí Pi-ta-go dùng để tính đoạn nghiêng.
+- Tam giác vuông: $\sin\theta=\dfrac{\text{đối}}{\text{huyền}}$, $\cos\theta=\dfrac{\text{kề}}{\text{huyền}}$, $\tan\theta=\dfrac{\text{đối}}{\text{kề}}$.
+- Thời gian $=\dfrac{\text{quãng đường}}{\text{vận tốc}}$; chi phí $=$ đơn giá $\cdot$ độ dài.
+- Khoảng cách $d\ge0$ nhỏ nhất khi và chỉ khi $d^2$ nhỏ nhất.
+
+##PP Lập hàm theo một ẩn rồi tìm giá trị nhỏ nhất (lớn nhất)
+Vẽ hình, ghi các độ dài đã biết, chọn ẩn $x$ (hoặc góc $\theta$) và nêu miền của ẩn.
+Biểu diễn đại lượng cần tối ưu theo $x$ bằng Pi-ta-go hoặc tỉ số lượng giác.
+Tính đạo hàm, giải $f'(x)=0$ (chuyển căn sang một vế rồi bình phương nếu cần) và loại nghiệm ngoài miền.
+So sánh giá trị tại nghiệm với hai đầu mút (hoặc lập bảng biến thiên), kết luận bằng ngữ cảnh và đơn vị.
+
+##CY
+- Bình phương hai vế khi giải $f'=0$ có thể sinh nghiệm ngoại lai: thử lại nghiệm vào phương trình trước khi bình phương và vào miền của ẩn.
+- Tối ưu $d^2$ cho gọn nhưng đề hỏi $d$ thì phải khai căn ở kết luận.
+- Đề hỏi đại lượng khác với đại lượng đã tối ưu (quãng đường đi bộ, vị trí của điểm, thời gian lúc đó…) thì tính tiếp từ ẩn tìm được.
+
+=== C4.3.1   (dạng "Đường đi qua hai môi trường" — mô tả: Đi qua bờ và nước (hai vận tốc hoặc hai đơn giá), chọn điểm rẽ để thời gian/chi phí nhỏ nhất.)
+@ly_thuyet:
+##TC Hai môi trường, hai vận tốc hoặc hai đơn giá
+- Điểm $A$ cách bờ thẳng đoạn $a$, $H$ là chân đường vuông góc hạ từ $A$ xuống bờ, $B$ nằm trên bờ với $HB=L$. Điểm rẽ $M$ nằm trên đoạn $HB$, đặt $HM=x$ với $0\le x\le L$.
+- Đoạn nghiêng $AM=\sqrt{a^2+x^2}$, đoạn trên bờ $MB=L-x$.
+- Thời gian (vận tốc $v_1$ trên đoạn $AM$, $v_2$ trên đoạn $MB$): $T(x)=\dfrac{\sqrt{a^2+x^2}}{v_1}+\dfrac{L-x}{v_2}$.
+- Chi phí (đơn giá $p_1$ trên đoạn $AM$, $p_2$ trên đoạn $MB$): $C(x)=p_1\sqrt{a^2+x^2}+p_2(L-x)$.
+
+##PP Chọn điểm rẽ để thời gian (chi phí) nhỏ nhất
+Đặt $x=HM$ (hoặc đặt ẩn là độ dài đoạn trên bờ nếu đề hỏi đoạn đó), nêu điều kiện $0\le x\le L$.
+Viết $T(x)$ (hoặc $C(x)$) như trên, nhớ chia cho vận tốc hoặc nhân đơn giá đúng đoạn.
+Tính $T'(x)=\dfrac{x}{v_1\sqrt{a^2+x^2}}-\dfrac{1}{v_2}$, giải $T'(x)=0$ bằng cách đưa về $v_2x=v_1\sqrt{a^2+x^2}$ rồi bình phương.
+So sánh $T$ tại nghiệm với $T(0)$ và $T(L)$, chọn nhỏ nhất rồi trả lời đúng điều đề hỏi (vị trí $M$, quãng đường đoạn bờ, thời gian hay chi phí).
+
+##CY
+- Đề cho "đi bộ bao nhiêu km" là hỏi độ dài đoạn trên bờ $L-x$, không phải $x$.
+- Nghiệm của $T'(x)=0$ phải thuộc $[0;L]$; nếu lớn hơn $L$ thì giá trị nhỏ nhất ở đầu mút $x=L$.
+- Giờ đổi sang phút (nhân $60$) khi đề hỏi phút; đơn giá và vận tốc phải cùng đơn vị độ dài.
+
+@vi_du:
+##VD
+Một người ở vị trí $A$ trên một hòn đảo, cách bờ biển thẳng $8$ km. Gọi $H$ là chân đường vuông góc hạ từ $A$ xuống bờ và $B$ là điểm trên bờ với $HB=12$ km. Người đó chèo xuồng từ $A$ đến điểm $M$ trên đoạn $HB$ với vận tốc $6$ km/h, rồi đi bộ dọc bờ từ $M$ đến $B$ với vận tốc $10$ km/h. Tìm vị trí $M$ để tổng thời gian ít nhất và tính thời gian đó.
+
+Bài giải:
+Đặt $HM=x$ (km), $0\le x\le12$. Khi đó $AM=\sqrt{64+x^2}$ và $MB=12-x$.
+Thời gian $T(x)=\dfrac{\sqrt{64+x^2}}{6}+\dfrac{12-x}{10}$.
+$T'(x)=\dfrac{x}{6\sqrt{64+x^2}}-\dfrac{1}{10}=0\Leftrightarrow5x=3\sqrt{64+x^2}$.
+Bình phương hai vế (cả hai vế không âm): $25x^2=9\cdot64+9x^2$, suy ra $x^2=36$, $x=6$ (thuộc $[0;12]$).
+Tính $T(0)=\dfrac43+\dfrac65=\dfrac{38}{15}$; $T(6)=\dfrac{10}{6}+\dfrac{6}{10}=\dfrac{34}{15}$; $T(12)=\dfrac{\sqrt{208}}{6}\approx2{,}40$.
+Giá trị nhỏ nhất là $\dfrac{34}{15}$ tại $x=6$.
+Vậy $M$ cách $H$ là $6$ km thì thời gian ít nhất, bằng $\dfrac{34}{15}\approx2{,}27$ giờ (tức $2$ giờ $16$ phút).
+
+##VD
+Cần kéo dây điện từ nhà máy $A$ trên bờ biển ra hòn đảo $C$. Gọi $B$ là chân đường vuông góc hạ từ $C$ xuống bờ, $AB=20$ km, $BC=12$ km. Dây điện đặt từ $A$ dọc bờ tới điểm $M$ trên đoạn $AB$ với chi phí $3$ tỷ đồng/km, sau đó đặt từ $M$ ra đảo dưới biển với chi phí $5$ tỷ đồng/km. Đoạn dây dọc bờ phải dài bao nhiêu km để tổng chi phí thấp nhất? Tính chi phí đó.
+
+Bài giải:
+Đặt $BM=y$ (km), $0\le y\le20$. Khi đó $AM=20-y$ và $MC=\sqrt{144+y^2}$.
+Chi phí (tỷ đồng) $C(y)=3(20-y)+5\sqrt{144+y^2}$.
+$C'(y)=-3+\dfrac{5y}{\sqrt{144+y^2}}=0\Leftrightarrow5y=3\sqrt{144+y^2}$.
+Bình phương hai vế (cả hai vế không âm): $25y^2=9\cdot144+9y^2$, suy ra $y^2=81$, $y=9$ (thuộc $[0;20]$).
+Tính $C(0)=60+60=120$; $C(9)=3\cdot11+5\cdot15=108$; $C(20)=5\sqrt{544}\approx116{,}6$.
+Giá trị nhỏ nhất là $108$ tại $y=9$, khi đó đoạn dây dọc bờ dài $AM=20-9=11$ km.
+Vậy đoạn dây dọc bờ dài $11$ km thì chi phí thấp nhất, bằng $108$ tỷ đồng.
+
+=== C4.3.2   (dạng "Quãng đường, khoảng cách ngắn nhất hoặc dài nhất" — mô tả: Lập hàm khoảng cách/quãng đường theo vị trí, thời gian hoặc góc (hai vật chuyển động, đặt trạm, gấp giấy…) rồi tìm max–min.)
+@ly_thuyet:
+##TC Khoảng cách theo thời gian và tổng hai đoạn
+- Hai vật chuyển động đều: toạ độ mỗi vật là hàm bậc nhất của $t$; $d^2(t)=(x_1-x_2)^2+(y_1-y_2)^2$ là tam thức bậc hai theo $t$ (khi hai vật đi trên hai đường vuông góc), nhỏ nhất tại đỉnh parabol.
+- Tổng hai đoạn: $A$ cách đường thẳng $a$, $B$ cách đường thẳng $b$ (hai điểm cùng phía hoặc cầu bắc qua sông), $HK=S$ là khoảng cách giữa hai chân đường vuông góc; $M$ chạy trên $HK$ với $HM=x$ thì $f(x)=\sqrt{a^2+x^2}+\sqrt{b^2+(S-x)^2}$.
+- Với dạng $f(x)$ trên, $f'(x)=0\Leftrightarrow\dfrac{x}{a}=\dfrac{S-x}{b}$ (suy ra từ $\dfrac{x}{\sqrt{a^2+x^2}}=\dfrac{S-x}{\sqrt{b^2+(S-x)^2}}$), nên $x=\dfrac{aS}{a+b}$ và $f_{\min}=\sqrt{S^2+(a+b)^2}$.
+- Điểm $M(x;f(x))$ chạy trên đường cong, điểm cố định $A(x_0;y_0)$: $d^2=(x-x_0)^2+(f(x)-y_0)^2$. Khoảng cách từ $A$ đến một điểm của đường tròn tâm $I$ bán kính $R$ ($A$ ở ngoài) nhỏ nhất bằng $IA-R$.
+
+##PP Lập hàm khoảng cách rồi tìm nhỏ nhất
+Chọn ẩn: thời gian $t\ge0$ (hai vật chuyển động), độ dài $x$ của một đoạn cố định gốc (trạm, chân cầu) hoặc hoành độ điểm chạy trên đường cong; nêu miền của ẩn.
+Viết toạ độ (hoặc độ dài các đoạn) theo ẩn, lập $d^2=g(x)$ hoặc tổng các đoạn $f(x)$.
+Tính đạo hàm, giải phương trình đạo hàm bằng $0$ (bình phương khi có căn) và lập bảng biến thiên hoặc so với đầu mút.
+Trả lời đúng điều đề hỏi: khoảng cách nhỏ nhất, thời điểm đạt, hay vị trí điểm; có cầu hoặc đoạn cố định thì cộng thêm vào độ dài đường đi.
+
+##CY
+- Hai vật: đề hỏi $d$ thì cuối cùng phải khai căn $d^2$; nhớ miền của $t$ (có vật dừng hay đổi hướng không) và đơn vị (km, giờ).
+- Tổng hai đoạn: hai điểm ở hai phía của đường thẳng (hoặc cầu) khác với cùng phía; vẽ hình để biết $a$, $b$, $S$ là đoạn nào, không đặt $x$ sai chân.
+- Khi cầu có độ dài không đổi, độ dài đường đi tối ưu còn phải **cộng độ dài cầu**.
+
+@vi_du:
+##VD
+Hai con đường thẳng vuông góc cắt nhau tại $O$. Lúc $t=0$, tàu $A$ cách $O$ là $15$ km trên đường thứ nhất và chạy về phía $O$ với vận tốc $12$ km/h; tàu $B$ xuất phát từ $O$ chạy trên đường thứ hai với vận tốc $9$ km/h. Hai tàu cứ chạy mãi theo hướng đó. Sau bao lâu hai tàu gần nhau nhất và khoảng cách khi đó là bao nhiêu?
+
+Bài giải:
+Đặt hệ trục sao cho tàu $A$ ở $A(15-12t;0)$ trên $Ox$ và tàu $B$ ở $B(0;9t)$ trên $Oy$ với $t\ge0$.
+$d^2=(15-12t)^2+(9t)^2=225t^2-360t+225=g(t)$.
+$g'(t)=450t-360=0\Leftrightarrow t=\dfrac45$; $g'<0$ trên $\left[0;\dfrac45\right)$ và $g'>0$ trên $\left(\dfrac45;+\infty\right)$ nên $g$ nhỏ nhất tại $t=\dfrac45$.
+$g\left(\dfrac45\right)=225\cdot\dfrac{16}{25}-360\cdot\dfrac45+225=144-288+225=81$.
+Suy ra $d_{\min}=\sqrt{81}=9$ km.
+Vậy sau $0{,}8$ giờ (tức $48$ phút) hai tàu gần nhau nhất, khi đó cách nhau $9$ km.
+
+##VD
+Hai thành phố $A$ và $B$ nằm ở hai bên một con sông có hai bờ song song, rộng $1$ km. Thành phố $A$ cách bờ gần nó $3$ km, thành phố $B$ cách bờ gần nó $6$ km. Một cây cầu $EF$ vuông góc với hai bờ ($E$ ở bờ phía $A$, $F$ ở bờ phía $B$) sao cho $HE+KF=12$ km, trong đó $H$, $K$ lần lượt là hình chiếu vuông góc của $A$, $B$ lên bờ gần nó. Tìm vị trí cầu để đường đi $A\to E\to F\to B$ ngắn nhất và tính độ dài đó.
+
+Bài giải:
+Đặt $HE=x$ (km), $0\le x\le12$ thì $KF=12-x$.
+$AE=\sqrt{9+x^2}$, $FB=\sqrt{36+(12-x)^2}$ và $EF=1$ không đổi, nên độ dài đường đi $f(x)=\sqrt{9+x^2}+\sqrt{36+(12-x)^2}+1$.
+$f'(x)=\dfrac{x}{\sqrt{9+x^2}}-\dfrac{12-x}{\sqrt{36+(12-x)^2}}=0\Leftrightarrow x\sqrt{36+(12-x)^2}=(12-x)\sqrt{9+x^2}$.
+Bình phương hai vế (cả hai vế không âm): $36x^2+x^2(12-x)^2=9(12-x)^2+x^2(12-x)^2$, suy ra $36x^2=9(12-x)^2$, tức $2x=12-x$ (vì $x$ và $12-x$ không âm), nên $x=4$.
+Ta có $f'(0)<0$, $f'(12)>0$ và $f'$ chỉ triệt tiêu tại $x=4$ nên $f$ giảm trên $[0;4]$ và tăng trên $[4;12]$.
+$f(4)=\sqrt{25}+\sqrt{36+64}+1=5+10+1=16$ (và $f(0)\approx17{,}4$, $f(12)\approx19{,}4$).
+Vậy xây cầu sao cho $E$ cách $H$ là $4$ km (khi đó $F$ cách $K$ là $8$ km), đường đi ngắn nhất dài $16$ km.
+
+=== C4.3.3   (dạng "Thang dài nhất qua góc hành lang, góc nhìn lớn nhất" — mô tả: Thang/sào/ống đi qua góc hai hành lang (lập hàm theo góc), góc nhìn hoặc góc chiếu lớn nhất.)
+@ly_thuyet:
+##TC Thang, sào qua một điểm cố định
+- Thang (đoạn thẳng) chạm đất và chạm tường thẳng đứng, đi qua một điểm cố định cách tường $d$ và cách mặt đất $h$ (đỉnh hàng rào, mép mái che, điểm góc trong của hành lang chữ L).
+- Gọi $\alpha\in\left(0;\dfrac{\pi}{2}\right)$ là góc giữa thang và mặt đất: phần từ chân thang đến điểm cố định dài $\dfrac{h}{\sin\alpha}$, phần từ điểm cố định đến tường dài $\dfrac{d}{\cos\alpha}$.
+- Chiều dài thang: $\ell(\alpha)=\dfrac{h}{\sin\alpha}+\dfrac{d}{\cos\alpha}$.
+- $\ell'(\alpha)=0\Leftrightarrow d\sin^3\alpha=h\cos^3\alpha\Leftrightarrow\tan^3\alpha=\dfrac{h}{d}$; giá trị nhỏ nhất $\ell_{\min}=\left(h^{\frac23}+d^{\frac23}\right)^{\frac32}$.
+- Hành lang chữ L có hai nhánh rộng $a$ và $b$: sào chạm góc trong và tựa hai tường ngoài có $\ell(\theta)=\dfrac{a}{\sin\theta}+\dfrac{b}{\cos\theta}$ (cùng dạng, $h=a$, $d=b$); sào dài $\ell$ chỉ đưa qua được góc khi $\ell\le\ell_{\min}$.
+
+##PP Chiều dài ngắn nhất của thang, sào
+Đặt góc $\alpha\in\left(0;\dfrac{\pi}{2}\right)$ giữa thang và mặt đất (hoặc giữa sào và một nhánh hành lang).
+Dùng tam giác vuông viết hai đoạn của thang theo $\alpha$, được $\ell(\alpha)=\dfrac{h}{\sin\alpha}+\dfrac{d}{\cos\alpha}$; chú ý $h$, $d$ đã tính từ chân thang (trừ độ cao chân thang nếu có).
+Tính $\ell'(\alpha)$, giải $\tan^3\alpha=\dfrac{h}{d}$ để suy ra $\sin\alpha$, $\cos\alpha$.
+Xét dấu $\ell'$ (hoặc bảng biến thiên) để chắc đó là giá trị nhỏ nhất, tính $\ell_{\min}$ và kết luận bằng ngữ cảnh.
+
+##CY
+- Thang (sào) qua được góc hay vượt được hàng rào là **nhỏ nhất** của $\ell(\alpha)$, vì phải ngắn hơn mọi vị trí kẹt; chiều dài ngắn nhất để thang chạm tường qua điểm cố định cũng là nhỏ nhất của $\ell$.
+- Đổi vai trò góc $\alpha\leftrightarrow\dfrac{\pi}{2}-\alpha$ thì đổi vị trí của $h$ và $d$: kiểm tra góc đang đo ở đâu.
+- Chân thang đặt ở độ cao nào đó so với mặt đất thì $h$ là độ cao của điểm cố định so với **chân thang**.
+
+##NX Độ chiếu sáng lớn nhất
+Bóng đèn treo cách mặt bàn tròn bán kính $r$ một đoạn $h$ (ngay phía trên tâm bàn): đèn cách mép bàn $s=\sqrt{h^2+r^2}$ và tia sáng tới mép bàn hợp với mặt bàn góc $\alpha$ có $\sin\alpha=\dfrac{h}{s}$ nên độ chiếu sáng $I(h)=\dfrac{k\sin\alpha}{s^2}=\dfrac{kh}{(h^2+r^2)^{3/2}}$.
+$I'(h)=0\Leftrightarrow r^2-2h^2=0\Leftrightarrow h=\dfrac{r}{\sqrt2}$: lập bảng biến thiên để kết luận đó là độ cao làm $I$ lớn nhất.
+
+@vi_du:
+##VD
+Một chiếc thang được dựa vào bức tường thẳng đứng của ngôi nhà, đầu dưới chạm mặt đất và thang đi qua đỉnh của một hàng rào cao $1$ m, hàng rào đặt song song với tường và cách tường $8$ m. Coi thang là một đoạn thẳng. Tính chiều dài ngắn nhất của thang.
+
+Bài giải:
+Gọi $\alpha\in\left(0;\dfrac{\pi}{2}\right)$ là góc giữa thang và mặt đất.
+Phần thang từ chân thang đến đỉnh hàng rào dài $\dfrac{1}{\sin\alpha}$, phần từ đỉnh hàng rào đến tường dài $\dfrac{8}{\cos\alpha}$, nên $\ell(\alpha)=\dfrac{1}{\sin\alpha}+\dfrac{8}{\cos\alpha}$.
+$\ell'(\alpha)=-\dfrac{\cos\alpha}{\sin^2\alpha}+\dfrac{8\sin\alpha}{\cos^2\alpha}=\dfrac{8\sin^3\alpha-\cos^3\alpha}{\sin^2\alpha\cos^2\alpha}=0\Leftrightarrow\tan^3\alpha=\dfrac18\Leftrightarrow\tan\alpha=\dfrac12$.
+Do $0<\alpha<\dfrac{\pi}{2}$ nên $\sin\alpha=\dfrac{1}{\sqrt5}$, $\cos\alpha=\dfrac{2}{\sqrt5}$.
+$\ell'<0$ khi $\tan\alpha<\dfrac12$ và $\ell'>0$ khi $\tan\alpha>\dfrac12$ nên $\ell$ nhỏ nhất tại $\tan\alpha=\dfrac12$.
+$\ell_{\min}=\sqrt5+\dfrac{8\sqrt5}{2}=5\sqrt5\approx11{,}18$.
+Vậy chiều dài ngắn nhất của thang là $5\sqrt5\approx11{,}18$ m.
+
+##VD
+Một chiếc thang của xe cứu hỏa phải vươn qua mép phần mái che nhô ra khỏi tường $6{,}4$ m để chạm vào mặt tường phía trước tòa nhà. Mép mái che cao $3{,}7$ m so với mặt đất, còn đầu dưới của thang được đặt trên xe ở độ cao $1$ m so với mặt đất. Coi thang là một đoạn thẳng đi qua mép mái che. Tính chiều dài ngắn nhất của thang để thang chạm được tường.
+
+Bài giải:
+So với đầu dưới của thang, mép mái che cao $3{,}7-1=2{,}7$ m và cách tường $6{,}4$ m.
+Gọi $\alpha\in\left(0;\dfrac{\pi}{2}\right)$ là góc giữa thang và phương ngang. Phần thang từ đầu dưới đến mép mái che dài $\dfrac{2{,}7}{\sin\alpha}$, phần từ mép mái che đến tường dài $\dfrac{6{,}4}{\cos\alpha}$, nên $\ell(\alpha)=\dfrac{2{,}7}{\sin\alpha}+\dfrac{6{,}4}{\cos\alpha}$.
+$\ell'(\alpha)=-\dfrac{2{,}7\cos\alpha}{\sin^2\alpha}+\dfrac{6{,}4\sin\alpha}{\cos^2\alpha}=0\Leftrightarrow6{,}4\sin^3\alpha=2{,}7\cos^3\alpha\Leftrightarrow\tan^3\alpha=\dfrac{27}{64}\Leftrightarrow\tan\alpha=\dfrac34$.
+Do $0<\alpha<\dfrac{\pi}{2}$ nên $\sin\alpha=\dfrac35$, $\cos\alpha=\dfrac45$.
+$\ell'<0$ khi $\tan\alpha<\dfrac34$ và $\ell'>0$ khi $\tan\alpha>\dfrac34$ nên $\ell_{\min}=\dfrac{2{,}7}{3/5}+\dfrac{6{,}4}{4/5}=4{,}5+8=12{,}5$.
+Vậy thang phải dài ít nhất $12{,}5$ m.
+
+=== N C4.5   (nhóm "Chuyển động: vận tốc, gia tốc")
+@ly_thuyet:
+##TC Quãng đường, vận tốc, gia tốc
+- Vật chuyển động thẳng có phương trình $s=s(t)$ (toạ độ hoặc quãng đường theo thời gian $t$).
+- Vận tốc tức thời $v(t)=s'(t)$; gia tốc tức thời $a(t)=v'(t)=s''(t)$.
+- $v>0$: vật đi theo chiều dương; $v<0$: vật đi theo chiều âm; $v=0$: vật dừng hoặc đổi chiều (nếu $v$ đổi dấu).
+- Tốc độ là $|v|$. Vật chuyển động nhanh dần khi $v\cdot a>0$, chậm dần khi $v\cdot a<0$.
+- Đơn vị: $s$ mét, $t$ giây thì $v$ tính bằng m/s, $a$ tính bằng m/s$^2$.
+
+##PP Giải bài toán chuyển động thẳng
+Xác định đơn vị của $s$ và $t$ cùng miền của $t$ (thường $t\ge0$).
+Tính $v(t)=s'(t)$ và $a(t)=v'(t)$.
+Cần giá trị tại một thời điểm thì thay $t$; cần thời điểm có $v=k$ hay $a=k$ thì giải phương trình rồi chọn nghiệm thuộc miền.
+Cần khoảng thời gian thì xét dấu $v$ hoặc $a$; cần giá trị lớn nhất, nhỏ nhất của $v$ hay $a$ thì tối ưu hàm đó trên khoảng của đề.
+
+##CY
+- Chỉ lấy nghiệm $t$ thuộc miền của đề (thường $t\ge0$, hoặc trong $[0;T]$).
+- Hỏi "tại thời điểm vật dừng lại" là $v=0$, rồi thay $t$ vào $a(t)$ (không thay vào $v$).
+
+=== C4.5.1   (dạng "Tính vận tốc, gia tốc; chiều chuyển động" — mô tả: Cho phương trình chuyển động s(t): v=s′, a=v′ tại thời điểm; khi nào vật dừng, đổi chiều, tăng/giảm tốc.)
+@ly_thuyet:
+##TC Vận tốc tăng, giảm; chiều chuyển động
+- Hàm vị trí đa thức bậc ba: $v$ là tam thức bậc hai, $a$ là hàm bậc nhất.
+- Vận tốc $v(t)$ **tăng** trên khoảng nào thì $a(t)=v'(t)>0$ trên khoảng đó; vận tốc giảm khi $a<0$.
+- Vật đổi chiều chuyển động tại $t_0$ khi $v(t_0)=0$ và $v$ đổi dấu qua $t_0$.
+- Quãng đường đi được từ $t_1$ đến $t_2$ là tổng độ dài các đoạn giữa các lần đổi chiều: nếu $v$ đổi dấu tại $t_0$ thì $S=|s(t_0)-s(t_1)|+|s(t_2)-s(t_0)|$.
+- Hàm lượng giác: $(\sin t)'=\cos t$, $(\cos t)'=-\sin t$; vị trí $s=A\cos t$ có $v=-A\sin t$.
+
+##PP Tính vận tốc, gia tốc và xét chiều chuyển động
+Tính $v(t)=s'(t)$ và $a(t)=v'(t)$.
+Thay thời điểm đề cho để tính $v$ hoặc $a$; đề cho $v=k$ (kể cả $v=0$) thì giải $v(t)=k$, chọn nghiệm thuộc miền rồi thay vào $a$ (hoặc $s$) theo yêu cầu.
+Đề hỏi khoảng thời gian: giải $v=0$, $a=0$ rồi lập bảng xét dấu $v$ và $a$ (vận tốc tăng khi $a>0$; theo chiều dương khi $v>0$; nhanh dần khi $v\cdot a>0$).
+Đề hỏi quãng đường: tính $s$ tại các thời điểm đổi chiều và cộng độ dài từng đoạn.
+
+##CY
+- "Vận tốc tăng" ($a>0$) khác "chuyển động nhanh dần" ($v\cdot a>0$): nếu $v<0$ và $a>0$ thì vận tốc tăng nhưng vật chuyển động chậm dần.
+- Quãng đường đi được không phải $s(t_2)-s(t_1)$ khi vật đổi chiều giữa chừng.
+- "Kể từ thời điểm $t_0$ trở đi vận tốc tăng" nghĩa là $a(t)\ge0$ với mọi $t\ge t_0$, nên $t_0$ là nghiệm của $a(t)=0$.
+
+@vi_du:
+##VD
+Một chất điểm chuyển động thẳng theo phương trình $s(t)=t^3-6t^2-15t+4$ ($t\ge0$ tính bằng giây, $s$ tính bằng mét).
+a) Tính vận tốc và gia tốc của chất điểm tại thời điểm $t=3$ giây.
+b) Tính gia tốc của chất điểm tại thời điểm nó dừng lại.
+c) Kể từ giây thứ mấy trở đi thì vận tốc của chất điểm tăng?
+
+Bài giải:
+Vận tốc $v(t)=s'(t)=3t^2-12t-15$ và gia tốc $a(t)=v'(t)=6t-12$.
+a) $v(3)=27-36-15=-24$ (m/s) và $a(3)=18-12=6$ (m/s$^2$). Vận tốc âm nên lúc này chất điểm đang đi theo chiều âm.
+b) Chất điểm dừng lại khi $v(t)=0\Leftrightarrow t^2-4t-5=0\Leftrightarrow t=5$ hoặc $t=-1$ (loại vì $t\ge0$). Khi đó $a(5)=30-12=18$ (m/s$^2$).
+c) Vận tốc tăng khi $a(t)>0\Leftrightarrow6t-12>0\Leftrightarrow t>2$.
+Vậy $v(3)=-24$ m/s và $a(3)=6$ m/s$^2$; gia tốc lúc vật dừng lại ($t=5$ giây) là $18$ m/s$^2$; kể từ giây thứ $2$ trở đi vận tốc của chất điểm tăng.
+
+##VD
+Một vật chuyển động trên một đường thẳng nằm ngang với phương trình $s(t)=\dfrac13t^3-4t^2+12t$ ($t\ge0$ tính bằng giây, $s$ tính bằng mét).
+a) Vật đổi chiều chuyển động tại những thời điểm nào và gia tốc lúc đó bằng bao nhiêu?
+b) Tính quãng đường vật đi được trong $8$ giây đầu tiên.
+c) Trong $8$ giây đầu, vật chuyển động nhanh dần trong những khoảng thời gian nào?
+
+Bài giải:
+$v(t)=s'(t)=t^2-8t+12=(t-2)(t-6)$ và $a(t)=v'(t)=2t-8$.
+a) $v(t)=0\Leftrightarrow t=2$ hoặc $t=6$. Ta có $v>0$ trên $[0;2)$, $v<0$ trên $(2;6)$, $v>0$ trên $(6;8]$ nên $v$ đổi dấu tại cả hai thời điểm: vật đổi chiều khi $t=2$ giây và $t=6$ giây. Khi đó $a(2)=-4$ m/s$^2$ và $a(6)=4$ m/s$^2$.
+b) $s(0)=0$, $s(2)=\dfrac83-16+24=\dfrac{32}{3}$, $s(6)=72-144+72=0$, $s(8)=\dfrac{512}{3}-256+96=\dfrac{32}{3}$.
+Quãng đường là $\left|\dfrac{32}{3}-0\right|+\left|0-\dfrac{32}{3}\right|+\left|\dfrac{32}{3}-0\right|=32$ (m).
+c) $a(t)=0\Leftrightarrow t=4$. Xét dấu: trên $(0;2)$ có $v>0$, $a<0$ nên $v\cdot a<0$ (chậm dần); trên $(2;4)$ có $v<0$, $a<0$ nên $v\cdot a>0$ (nhanh dần); trên $(4;6)$ có $v<0$, $a>0$ (chậm dần); trên $(6;8)$ có $v>0$, $a>0$ (nhanh dần).
+Vậy vật đổi chiều lúc $t=2$ và $t=6$ giây (gia tốc lần lượt $-4$ và $4$ m/s$^2$); quãng đường $8$ giây đầu là $32$ m; vật chuyển động nhanh dần trong các khoảng $(2;4)$ và $(6;8)$.
+
+=== C4.5.2   (dạng "Vận tốc, gia tốc lớn nhất" — mô tả: Tìm thời điểm vận tốc (hoặc gia tốc) lớn nhất/nhỏ nhất trong khoảng thời gian: tối ưu hàm v(t) hoặc a(t).)
+@ly_thuyet:
+##TC Tối ưu vận tốc, gia tốc
+- Vận tốc lớn nhất (nhỏ nhất) trên $[a;b]$ là GTLN (GTNN) của $v(t)=s'(t)$; điểm cần xét là nghiệm của $v'(t)=a(t)=0$ trong $[a;b]$ và hai đầu mút.
+- Gia tốc lớn nhất (nhỏ nhất) trên $[a;b]$ là GTLN (GTNN) của $a(t)=s''(t)$; điểm cần xét là nghiệm của $a'(t)=s'''(t)=0$ và hai đầu mút.
+- Hàm vị trí bậc ba $s=\alpha t^3+\beta t^2+\gamma t+\delta$ có $v=s'$ là tam thức bậc hai: đạt cực trị tại $t=-\dfrac{\beta}{3\alpha}$, đó cũng là nghiệm $s''(t)=0$.
+- Vận tốc lớn nhất khác tốc độ lớn nhất $|v|$.
+
+##PP Tìm thời điểm và giá trị lớn nhất của vận tốc, gia tốc
+Tính $v(t)=s'(t)$ và $a(t)=v'(t)$, ghi rõ khoảng thời gian của đề.
+Với hàm cần tối ưu ($v$ hoặc $a$), tính đạo hàm của chính nó và giải đạo hàm bằng $0$ trong khoảng.
+Tính giá trị của hàm tại các nghiệm và hai đầu mút, so sánh để chọn lớn nhất (hoặc nhỏ nhất).
+Đề cho đồ thị của $s(t)$: đọc điểm đi qua, điểm cực trị (có $s'=0$) để lập hệ tìm hệ số, rồi làm như trên. Trả lời đúng đại lượng hỏi (thời điểm, vận tốc, quãng đường hay vận tốc lúc gia tốc nhỏ nhất).
+
+##CY
+- Phải so sánh cả hai đầu mút của khoảng thời gian, GTLN có thể nằm ở đó.
+- Đề hỏi "thời điểm" thì trả lời $t$, hỏi "vận tốc lớn nhất" thì trả lời $v$; hỏi vận tốc (quãng đường) **lúc** gia tốc đạt cực trị thì phải thay $t$ vào $v$ (hoặc $s$).
+- Không lẫn: $v=0$ là lúc vật dừng, còn $a=0$ mới là lúc vận tốc đạt cực trị.
+
+@vi_du:
+##VD
+Một chất điểm chuyển động theo phương trình $s(t)=-t^3+12t^2+5t$ ($t$ tính bằng giây, $s$ tính bằng mét). Trong $10$ giây đầu tiên, tại thời điểm nào vận tốc của chất điểm lớn nhất? Tính vận tốc lớn nhất đó và quãng đường chất điểm đi được từ lúc bắt đầu chuyển động đến thời điểm đó.
+
+Bài giải:
+Vận tốc $v(t)=s'(t)=-3t^2+24t+5$ với $t\in[0;10]$.
+$v'(t)=-6t+24=0\Leftrightarrow t=4$, thuộc $[0;10]$.
+$v(0)=5$, $v(4)=-48+96+5=53$, $v(10)=-300+240+5=-55$.
+Vận tốc lớn nhất là $53$ m/s, đạt tại $t=4$ giây.
+Trên $[0;4]$ ta có $v(t)\ge v(0)=5>0$ (vì $v$ tăng) nên vật chưa đổi chiều, quãng đường bằng $s(4)-s(0)=-64+192+20=148$ (m).
+Vậy vận tốc lớn nhất là $53$ m/s lúc $t=4$ giây; khi đó vật đã đi được $148$ m.
+
+##VD
+Quãng đường $s$ (km) một người đi xe đạp đi được sau $t$ giờ ($0\le t\le4$) là hàm số $s(t)=at^3+bt^2+ct+d$ ($a\ne0$) có đồ thị như hình vẽ (trục hoành là $t$, trục tung là $s$). Đồ thị đi qua gốc toạ độ $O$, tiếp xúc với trục hoành tại $O$ và có điểm cực đại $(4;32)$. Tìm vận tốc lớn nhất của người đó trong $4$ giờ đầu.
+[[HINH {"loai":"dothi","x":[-1,5],"y":[-4,36],"f":[{"e":"-x^3+6*x^2","x":[0,4],"ten":"s=s(t)"}],"diem":[{"x":4,"y":32,"nhan":"(4;32)"}]}]]
+
+Bài giải:
+Từ đồ thị: $s(0)=0$ nên $d=0$; tiếp xúc trục hoành tại $O$ nên $s'(0)=0$, suy ra $c=0$.
+Điểm $(4;32)$ thuộc đồ thị và là cực đại nên $s(4)=32$ và $s'(4)=0$: $64a+16b=32$ và $48a+8b=0$.
+Từ phương trình thứ hai, $b=-6a$; thay vào phương trình thứ nhất: $64a-96a=32$, suy ra $a=-1$, $b=6$. Vậy $s(t)=-t^3+6t^2$.
+Vận tốc $v(t)=s'(t)=-3t^2+12t$; $v'(t)=-6t+12=0\Leftrightarrow t=2$, thuộc $[0;4]$.
+$v(0)=0$, $v(2)=-12+24=12$, $v(4)=-48+48=0$.
+Vậy vận tốc lớn nhất của người đó là $12$ km/h, đạt lúc $t=2$ giờ.
+
+=== N C4.6   (nhóm "Tốc độ thay đổi của đại lượng")
+@ly_thuyet:
+##TC Đạo hàm là tốc độ thay đổi tức thời
+- Nếu đại lượng $f$ phụ thuộc thời gian $t$ thì $f'(t_0)$ là tốc độ thay đổi tức thời của $f$ tại thời điểm $t_0$; đơn vị là (đơn vị của $f$) trên (đơn vị của $t$).
+- $f'(t_0)>0$: đại lượng đang tăng; $f'(t_0)<0$: đang giảm.
+- Tốc độ thay đổi lớn nhất (nhỏ nhất) là GTLN (GTNN) của hàm $f'(t)$.
+- Đạo hàm cần dùng: $(e^{kt})'=ke^{kt}$; $\left(\dfrac{ax+b}{cx+d}\right)'=\dfrac{ad-bc}{(cx+d)^2}$.
+
+##PP Bài toán tốc độ thay đổi
+Gọi tên đại lượng và đơn vị: $f(t)$ là gì, $t$ tính từ mốc nào.
+Tính đạo hàm (đạo hàm theo thời gian) của đại lượng.
+Hỏi tốc độ tại $t_0$ thì thay $t_0$ vào đạo hàm; hỏi lúc tốc độ bằng $k$ thì giải phương trình đạo hàm bằng $k$; hỏi tốc độ lớn nhất thì tìm GTLN của đạo hàm.
+Trả lời bằng ngữ cảnh, đổi $t$ về năm, ngày… và kèm đơn vị.
+
+##CY
+- Tốc độ thay đổi của $f$ là $f'(t)$, không phải $f(t)$.
+- Hỏi theo năm (ví dụ năm $2035$) thì phải đổi về $t$ đúng với mốc của đề, không thay thẳng số năm.
+
+=== C4.6.1   (dạng "Ý nghĩa của đạo hàm, chi phí biên" — mô tả: Đạo hàm là tốc độ thay đổi tức thời; chi phí biên, tốc độ tăng dân số/nhiệt độ tại một thời điểm.)
+@ly_thuyet:
+##TC Tốc độ tăng dân số và chi phí biên
+- Dân số $N(t)$ tại thời điểm $t$ thì $N'(t_0)$ là tốc độ tăng dân số tại $t_0$ (người/năm hoặc nghìn người/năm tuỳ đơn vị của $N$).
+- Chi phí biên là $C'(x)$, xấp xỉ chi phí sản xuất thêm một đơn vị sau khi đã sản xuất $x$ đơn vị: $C'(x)\approx C(x+1)-C(x)$, tức xấp xỉ chi phí của sản phẩm thứ $x+1$.
+- Đề cho số liệu ban đầu của mô hình chưa biết hệ số (ví dụ $f(0)$ và $f'(0)$) thì dùng điều kiện đó để lập hệ tìm hệ số.
+
+##PP Tính tốc độ tại một thời điểm, giải theo tốc độ cho trước
+Xác định mốc $t=0$ và đổi năm (hoặc ngày) cần tính thành $t$.
+Tính $f'(t)$ (hoặc $C'(x)$) của hàm cho sẵn.
+Cần tốc độ tại $t_0$ thì thay $t_0$; biết tốc độ bằng $k$ hoặc "ít nhất $k$" thì giải $f'(t)=k$ (hoặc bất phương trình), "sau ít nhất bao nhiêu năm" thì làm tròn lên số nguyên.
+Nêu ý nghĩa bằng lời kèm đơn vị; hỏi chi phí sản phẩm thứ $x+1$ thì dùng $C'(x)$ để ước lượng hoặc tính chính xác $C(x+1)-C(x)$.
+
+##CY
+- Chi phí biên $C'(x)$ chỉ **xấp xỉ** chi phí của sản phẩm thứ $x+1$, không bằng đúng; sản phẩm thứ $101$ ứng với $C'(100)$, không phải $C'(101)$.
+- Chi phí biên khác chi phí trung bình $\dfrac{C(x)}{x}$.
+- Đơn vị: dân số tính bằng nghìn người thì tốc độ tính bằng nghìn người/năm; đề hỏi $1000k$ là đổi sang người/năm.
+
+@vi_du:
+##VD
+Dân số của một quốc gia sau $t$ năm kể từ năm $2025$ được ước tính bởi công thức $N(t)=50e^{0{,}015t}$ (triệu người), $0\le t\le50$. Đạo hàm $N'(t)$ biểu thị tốc độ tăng dân số của quốc gia đó (triệu người/năm).
+a) Tính tốc độ tăng dân số vào năm $2035$ (làm tròn đến hàng phần trăm).
+b) Sau ít nhất bao nhiêu năm kể từ năm $2025$ thì tốc độ tăng dân số đạt ít nhất $1{,}2$ triệu người/năm?
+
+Bài giải:
+$N'(t)=50\cdot0{,}015e^{0{,}015t}=0{,}75e^{0{,}015t}$.
+a) Năm $2035$ ứng với $t=10$: $N'(10)=0{,}75e^{0{,}15}\approx0{,}87$ (triệu người/năm).
+b) $N'(t)\ge1{,}2\Leftrightarrow e^{0{,}015t}\ge1{,}6\Leftrightarrow t\ge\dfrac{\ln1{,}6}{0{,}015}\approx31{,}33$.
+Kiểm tra: $N'(31)\approx1{,}194<1{,}2$ và $N'(32)\approx1{,}212>1{,}2$ nên $t$ nguyên nhỏ nhất là $32$.
+Vậy vào năm $2035$ tốc độ tăng dân số khoảng $0{,}87$ triệu người/năm; sau ít nhất $32$ năm thì tốc độ đạt ít nhất $1{,}2$ triệu người/năm.
+
+##VD
+Chi phí (triệu đồng) để sản xuất $x$ sản phẩm là $C(x)=4000+60x-0{,}3x^2+0{,}002x^3$.
+a) Tính chi phí biên tại $x=100$, giải thích ý nghĩa và so sánh với chi phí thực để sản xuất sản phẩm thứ $101$.
+b) Với mức sản xuất nào thì chi phí biên bằng $105$ triệu đồng?
+
+Bài giải:
+Chi phí biên là $C'(x)=60-0{,}6x+0{,}006x^2$.
+a) $C'(100)=60-60+60=60$ (triệu đồng): khi đã sản xuất $100$ sản phẩm, sản xuất thêm $1$ sản phẩm tốn xấp xỉ $60$ triệu đồng.
+Chi phí thực của sản phẩm thứ $101$ là $C(101)-C(100)=60-0{,}3\cdot201+0{,}002\cdot(101^3-100^3)=60-60{,}3+0{,}002\cdot30\,301=60{,}302$ (triệu đồng), xấp xỉ $60$.
+b) $C'(x)=105\Leftrightarrow0{,}006x^2-0{,}6x-45=0\Leftrightarrow x^2-100x-7500=0\Leftrightarrow x=150$ hoặc $x=-50$ (loại).
+Vậy chi phí biên tại $x=100$ là $60$ triệu đồng (chi phí thực $60{,}302$ triệu đồng); chi phí biên bằng $105$ triệu đồng khi sản xuất $150$ sản phẩm.
+
+=== C4.6.2   (dạng "Thời điểm tốc độ tăng trưởng lớn nhất" — mô tả: Mô hình tăng trưởng (logistic, bơm xăng, lan truyền tin…): tốc độ là f′(t); tìm thời điểm f′ lớn nhất (thường f″=0).)
+@ly_thuyet:
+##TC Tốc độ tăng trưởng lớn nhất
+- Tốc độ tăng trưởng của $f$ là $g(t)=f'(t)$. Tốc độ lớn nhất (nhỏ nhất) là GTLN (GTNN) của $g$, xét bằng $g'(t)=f''(t)$.
+- Tốc độ tăng khi $f''(t)>0$ và giảm khi $f''(t)<0$; thời điểm tốc độ đạt cực đại là lúc $f''=0$ và $f''$ đổi dấu từ $+$ sang $-$.
+- Hàm bậc ba $f$: $f'$ là tam thức bậc hai, tốc độ lớn nhất tại đỉnh parabol.
+- Hàm logistic $f(t)=\dfrac{a}{1+be^{-kt}}$ ($a,b,k>0$): $f'(t)=\dfrac{abke^{-kt}}{(1+be^{-kt})^2}$; tốc độ lớn nhất tại $t=\dfrac{\ln b}{k}$ (nếu $b>1$), khi đó $f=\dfrac a2$ và $f'=\dfrac{ak}{4}$.
+
+##PP Tìm thời điểm tốc độ tăng trưởng lớn nhất
+Tính tốc độ $g(t)=f'(t)$.
+Tính $g'(t)=f''(t)$ và giải $f''(t)=0$ trong miền của $t$.
+Lập bảng biến thiên của $g$ (hoặc so sánh $g$ tại nghiệm với đầu mút); với hàm logistic nên đặt ẩn phụ $u=e^{-kt}$ để biểu thức gọn.
+Kết luận thời điểm, tốc độ lớn nhất và giá trị của $f$ lúc đó nếu đề hỏi.
+
+##CY
+- Tốc độ lớn nhất của $f$ ứng với $f''=0$, không phải $f'=0$ (khi $f'=0$ là cực trị của chính $f$).
+- Đề hỏi "tốc độ giảm" trong khoảng nào thì lấy khoảng mà $f''<0$; tốc độ giảm ô nhiễm là $-P'(t)$, lớn nhất khi $P'$ nhỏ nhất.
+- Với hàm logistic có $b<1$ thì $\ln b<0$ nên $g$ giảm ngay từ $t=0$: tốc độ lớn nhất ở đầu mút $t=0$.
+
+@vi_du:
+##VD
+Số người nhiễm bệnh (đơn vị: trăm người) sau $t$ tuần kể từ khi bệnh bùng phát được mô hình hoá bởi $N(t)=-t^3+15t^2$ với $0\le t\le15$. Tốc độ lây lan là $N'(t)$.
+a) Virus lây nhanh nhất vào tuần thứ mấy? Tốc độ đó là bao nhiêu?
+b) Trong khoảng thời gian nào tốc độ lây lan giảm?
+
+Bài giải:
+Tốc độ lây lan $g(t)=N'(t)=-3t^2+30t$, và $g'(t)=N''(t)=-6t+30$.
+$g'(t)=0\Leftrightarrow t=5$, thuộc $[0;15]$.
+$g(0)=0$, $g(5)=-75+150=75$, $g(15)=-675+450=-225$.
+a) $g$ lớn nhất bằng $75$ tại $t=5$.
+b) $g'(t)<0\Leftrightarrow t>5$, nên tốc độ lây lan giảm trong khoảng $(5;15)$.
+Vậy virus lây nhanh nhất vào tuần thứ $5$ với tốc độ $75$ trăm người mỗi tuần (tức $7\,500$ người mỗi tuần); tốc độ lây lan giảm trong các tuần từ thứ $5$ đến thứ $15$.
+
+##VD
+Số sản phẩm bán được (tích luỹ) sau $t$ tháng kể từ khi ra mắt tuân theo quy luật logistic $f(t)=\dfrac{600}{1+5e^{-0{,}5t}}$ ($t\ge0$). Đạo hàm $f'(t)$ là tốc độ bán hàng. Sau bao nhiêu tháng thì tốc độ bán hàng lớn nhất (làm tròn đến hàng phần trăm)? Tính tốc độ lớn nhất và số sản phẩm đã bán lúc đó.
+
+Bài giải:
+Đặt $u=e^{-0{,}5t}>0$ thì $u'=-0{,}5u$. Tốc độ bán hàng là $g(t)=f'(t)=\dfrac{600\cdot5\cdot0{,}5u}{(1+5u)^2}=\dfrac{1500u}{(1+5u)^2}$.
+$g'(t)=1500\cdot\dfrac{u'(1+5u)^2-u\cdot2(1+5u)\cdot5u'}{(1+5u)^4}=1500\cdot\dfrac{u'(1-5u)}{(1+5u)^3}=\dfrac{750u(5u-1)}{(1+5u)^3}$.
+$g'(t)=0\Leftrightarrow u=\dfrac15\Leftrightarrow e^{-0{,}5t}=\dfrac15\Leftrightarrow t=2\ln5\approx3{,}22$.
+Khi $0\le t<2\ln5$ thì $u>\dfrac15$ nên $g'(t)>0$; khi $t>2\ln5$ thì $u<\dfrac15$ nên $g'(t)<0$. Do đó $g$ lớn nhất tại $t=2\ln5$.
+$g(2\ln5)=\dfrac{1500\cdot\frac15}{(1+1)^2}=75$ và $f(2\ln5)=\dfrac{600}{1+1}=300$.
+Vậy sau khoảng $3{,}22$ tháng thì tốc độ bán hàng lớn nhất, bằng $75$ sản phẩm mỗi tháng; lúc đó đã bán được $300$ sản phẩm.
+
+=== C4.6.3   (dạng "Tốc độ liên quan giữa hai đại lượng" — mô tả: Hai đại lượng liên hệ qua hình học (thang trượt, nước dâng trong bình): đạo hàm hai vế theo thời gian.)
+@ly_thuyet:
+##TC Quan hệ giữa các tốc độ
+- Nhiều đại lượng cùng thay đổi theo $t$ và liên hệ nhau bằng một công thức hình học, ví dụ $x^2+y^2=\ell^2$ (thang trượt), $d^2=x^2+h^2$ (khoảng cách đến điểm cố định).
+- Lấy đạo hàm hai vế theo $t$ (đạo hàm hàm hợp): $(x^2)'=2x\cdot x'$, $(V(h))'=V'(h)\cdot h'(t)$. Ta được quan hệ giữa các tốc độ.
+- Thang dài $\ell$ dựa tường: $x\,x'+y\,y'=0$ ($x$ là khoảng cách chân thang đến tường, $y$ là độ cao đầu thang).
+- Thể tích nước $V$ là hàm của mực nước $h$, và $h$ là hàm của $t$: lưu lượng bơm (rò) là $V'(t)$, nên $V'(t)=V'(h)\cdot h'(t)$ và $h'(t)=\dfrac{V'(t)}{V'(h)}$.
+- Bể nón đỉnh ở dưới, bán kính đáy $R$, cao $H$: mặt nước ở độ cao $h$ có bán kính $r=\dfrac{R}{H}h$ (đồng dạng) và $V=\dfrac13\pi r^2h$.
+
+##PP Giải bài toán tốc độ liên quan
+Đặt tên các đại lượng thay đổi theo $t$, ghi các tốc độ cho biết và tốc độ cần tìm.
+Viết công thức liên hệ các đại lượng (chưa thay số của thời điểm xét); với bể nước thì đưa thể tích về MỘT biến $h$.
+Lấy đạo hàm hai vế theo $t$.
+Thay giá trị tại thời điểm xét (tính thêm đại lượng còn thiếu từ công thức liên hệ), giải ra tốc độ cần tìm.
+Kết luận có dấu và đơn vị: tăng hay giảm.
+
+##CY
+- Không thay giá trị tại thời điểm xét vào công thức trước khi đạo hàm, vì các đại lượng đều thay đổi theo $t$.
+- Tốc độ giảm ghi bằng số âm; thang trượt: chân thang ra xa ($x'>0$) thì đầu thang tụt xuống ($y'<0$).
+- Bể có đáy nghiêng: khi mực nước thấp, mặt cắt của khối nước chỉ là một tam giác; công thức $V(h)$ chỉ đúng trong khoảng $h$ đó, nhớ kiểm tra $h$ có nằm trong khoảng không.
+- Đổi đơn vị cho thống nhất (lít, dm$^3$, m$^3$; giây, phút).
+
+@vi_du:
+##VD
+a) Một chiếc thang dài $13$ m dựa vào bức tường thẳng đứng. Chân thang bị kéo ra xa tường với tốc độ $0{,}6$ m/s. Khi chân thang cách tường $5$ m thì đầu trên của thang trượt xuống với tốc độ bao nhiêu?
+b) Một bể chứa hình nón đỉnh ở phía dưới, bán kính đáy $3$ m, chiều cao $9$ m. Người ta bơm nước vào bể với lưu lượng $4$ m$^3$/phút. Khi mực nước cao $6$ m thì mực nước dâng với tốc độ bao nhiêu?
+
+Bài giải:
+a) Gọi $x(t)$ là khoảng cách từ chân thang đến tường, $y(t)$ là độ cao đầu thang. Ta có $x^2+y^2=169$.
+Đạo hàm hai vế theo $t$: $2xx'+2yy'=0$, suy ra $y'=-\dfrac{x\,x'}{y}$.
+Khi $x=5$ thì $y=\sqrt{169-25}=12$; với $x'=0{,}6$ ta có $y'=-\dfrac{5\cdot0{,}6}{12}=-0{,}25$.
+b) Gọi $h$ là chiều cao mực nước, $r$ là bán kính mặt nước. Do đồng dạng, $\dfrac{r}{h}=\dfrac39$ nên $r=\dfrac h3$.
+Thể tích nước là $V=\dfrac13\pi r^2h=\dfrac{\pi h^3}{27}$, suy ra $V'(h)=\dfrac{\pi h^2}{9}$.
+Từ $V'(t)=V'(h)\cdot h'(t)$ ta có $4=\dfrac{\pi h^2}{9}\cdot h'(t)$. Khi $h=6$: $\dfrac{\pi\cdot36}{9}=4\pi$ nên $h'(t)=\dfrac{4}{4\pi}=\dfrac1\pi\approx0{,}32$.
+Vậy a) đầu trên của thang trượt xuống với tốc độ $0{,}25$ m/s; b) mực nước dâng với tốc độ $\dfrac1\pi\approx0{,}32$ m/phút.
+
+##VD
+Một bể bơi có mặt bể là hình chữ nhật dài $20$ m, rộng $6$ m. Đáy bể là một mặt phẳng nghiêng: đầu nông sâu $1$ m, đầu sâu sâu $2{,}5$ m (hai đầu thuộc hai cạnh rộng của bể). Ban đầu bể không có nước; người ta bơm nước vào bể với lưu lượng không đổi $2$ m$^3$/phút. Sau $20$ phút kể từ lúc bắt đầu bơm thì mực nước dâng với tốc độ $\dfrac1a$ (m/phút). Tìm $a$.
+
+Bài giải:
+Gọi $h$ (m) là chiều cao mực nước tính từ đáy ở đầu sâu. Đáy nâng lên $2{,}5-1=1{,}5$ m trên chiều dài $20$ m.
+Khi $0<h\le1{,}5$, nước chưa chạm tới đầu nông; mặt cắt dọc của khối nước là tam giác vuông có một cạnh dài $h$ và cạnh còn lại dài $\dfrac{20h}{1{,}5}=\dfrac{40h}{3}$, nên diện tích mặt cắt là $\dfrac12\cdot h\cdot\dfrac{40h}{3}=\dfrac{20h^2}{3}$.
+Thể tích nước $V=6\cdot\dfrac{20h^2}{3}=40h^2$, suy ra $V'(h)=80h$.
+Sau $20$ phút thể tích nước là $V=2\cdot20=40$ m$^3$, nên $40h^2=40$, $h=1$ (thoả $h\le1{,}5$).
+Từ $V'(t)=V'(h)\cdot h'(t)$ ta có $2=80h\cdot h'(t)$; với $h=1$ được $h'(t)=\dfrac{2}{80}=\dfrac{1}{40}$.
+Vậy mực nước dâng với tốc độ $\dfrac{1}{40}$ m/phút, tức $a=40$.
+
+## GHI CHÚ CHO CEO
+- Sách đã đọc: hồ sơ trích sẵn `k12-hs/ho-so/hoso-pnl-3-5.md` (PNL Bài 5: B5-D1 tốc độ thay đổi, B5-D2 tối ưu hình học/vật lí, B5-D3 tăng trưởng, B5-D5 tốc độ liên quan), `hoso-nbv-3-4.md` (NBV 12-3: K11 GTLN của đạo hàm, K16 đường đi hai môi trường, K17 thang qua góc L, K18 khoảng cách đến đồ thị), `hoso-nbv-5-6-7.md` (5.12, 6.15), `hoso-tutam.md` (Dạng thực tế Từ Tâm); lý thuyết gốc PNL Bài 5 dạng 01 bản GV `S\txt\pnl\BAI 5. UDDH GIAI BAI THUC TE\…_GV.txt`; bản v1 đã soát `k12-hs/ra/J9.txt`, `J10.txt` (mã H7.3, H7.5, H7.6, H7.7) làm gốc rồi viết lại theo dạng mới. Không trích lại Word gốc.
+- C4.3.3: mô tả có "góc nhìn lớn nhất" nhưng đề thi thật của dạng không có câu nào (16 câu: thang/sào/gara/chiếu sáng), nên đã bỏ phần góc nhìn của bản v1; chỉ giữ độ chiếu sáng của bóng đèn (1 câu thật) dưới dạng khung nhận xét, không có ví dụ riêng. Gara ô tô (2 câu: xe 5 m x 1,9 m vào đường rộng 2,6 m, đáp số 3,7) cần mô hình tấm chữ nhật qua góc, khó hơn nhiều; chưa soạn ví dụ, đề nghị tách dạng hoặc bổ sung sau.
+- C4.3.2: dạng gồm nhiều kiểu (hai vật, trạm/cầu, khoảng cách điểm–đường cong, gấp giấy, hai đường cong). Ví dụ chỉ làm 2 kiểu phổ biến nhất (hai vật; cầu qua sông, cùng công thức với đặt trạm). Gấp giấy (2 câu), điểm–đường cong, đường cong–đường cong chỉ nhắc ở lý thuyết/không có ví dụ; mục "lập hàm theo góc, quãng đường lớn nhất" (câu ao vịt) chưa có ví dụ vì chỉ 1 câu và rất riêng.
+- C4.3.2: bỏ phần radar/vùng phủ sóng theo ranh giới VT (Thùy chốt); dạng này không đụng phương trình mặt cầu/mặt phẳng.
+- C4.3.1: đề thi có thêm câu robot đi qua bãi cát chữ nhật (3 vùng, 2 vận tốc) và "xuất phát muộn nhất lúc mấy giờ"; chưa có ví dụ riêng (cùng PP, thêm cộng thời gian).
+- C4.5.1: câu tàu con thoi Hubble xuất hiện với hai bộ hệ số khác nhau ($0{,}08029$ và $0{,}09029$, đáp số $105$ và $23{,}1$) và đáp số bằng làm tròn; đã không dùng mô hình này làm ví dụ.
+- C4.6.2: câu 'tốc độ giảm trong khoảng $(m;n)$' (đề thi) được nêu ở ví dụ 1 phần b. Số liệu bản v1 ($45t^2-t^3$) trùng đề thi thật nên đã đổi sang $-t^3+15t^2$.
+- C4.6.3 (hiếm): chưa có ví dụ cho bể có vật chắn (bi, bình nén khí) hay thanh/kiến di chuyển (3 câu); chỉ có bể nón, bể đáy nghiêng và thang trượt.
+- Mọi ví dụ đã thử lại bằng số (quét lưới/sai phân, `S\soan\HS\thu-K.mjs`), kết quả khớp lời giải; riêng đồ thị ví dụ 2 của C4.5.2 vẽ theo công thức $s=-t^3+6t^2$ (cực đại $(4;32)$).
