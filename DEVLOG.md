@@ -78559,3 +78559,5 @@ Thùy nêu 4 việc, làm được 3:
 - Sửa (main.js/cau.js): nhúng mà không lấy được bản tài khoản ⇒ DỪNG ở màn tải + nút "Thử lại", không bao giờ rơi về bản trên máy; chờ 15 s. Soi `hs.html?xem=tro_choi&vao=nong_trai` (không đăng nhập): hiện đúng thông báo, không mở vườn.
 - Hệ quả còn lại: việc em làm trong lúc chạy chế độ máy hôm nay KHÔNG lên server (mất phần chơi hôm nay, cấp cũ còn nguyên). Phạm Khánh Huy "mất 6 xu" nhiều khả năng cùng nguyên nhân (ví trong vườn trên máy khác ví server).
 - Mở lại: Thùy deploy app (gồm hộp bảo trì + bản game sửa) ⇒ tắt `nt_bao_tri`.
+
+- 03/11 tối: Thùy deploy xong ⇒ TẮT bảo trì (`tinh_nang.nt_bao_tri.mo_tu = null`). Kiểm dưới JWT HS: `_nt_bao_tri()` = false, `fn_nt_nhip` het=false, nong_trai vẫn mở.
