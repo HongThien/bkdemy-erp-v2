@@ -667,8 +667,8 @@ function moLenCap(e) {
 }
 
 // ---------- NHÀ & CẢNH (Thùy 03/11): em tự chọn kiểu nhà + khung cảnh — lưu trong bản lưu (s.giaoDien), đi cùng cơ chế lưu theo tài khoản ----------
-const IC_NHA = { go: '🏡', viet: '🛖', nhat: '🏯', hylap: '🏛️' }, IC_NEN = { thuong: '🌤️', tuyet: '❄️', dem: '🎃' };
-const MO_NEN = { thuong: 'Nắng xanh, cỏ mướt', tuyet: 'Tuyết rơi, người tuyết', dem: 'Trăng tròn, bí ngô, dơi' };
+const IC_NHA = { go: '🏡', viet: '🛖', nhat: '🏯', hylap: '🏛️' }, IC_NEN = { thuong: '🌤️', tet: '🌸', thu: '🍂', tuyet: '❄️', trungthu: '🏮', dem: '🎃' };
+const MO_NEN = { thuong: 'Nắng xanh, cỏ mướt', tet: 'Hoa đào, mai vàng', thu: 'Hoàng hôn, lá vàng rơi', tuyet: 'Tuyết rơi, người tuyết', trungthu: 'Trăng rằm, đèn ông sao', dem: 'Bí ngô, dơi, ma nhỏ' };
 function giaoDien() { if (!s.giaoDien || typeof s.giaoDien !== 'object') s.giaoDien = { nha: 'go', nen: 'thuong' }; return s.giaoDien; }
 // đang ở vườn bạn ⇒ nhà & cảnh của BẠN (bạn chưa chọn bao giờ ⇒ mặc định); về nhà ⇒ của em
 function apGiaoDien(st) { const g = xem != null ? ((st && st.giaoDien) || { nha: 'go', nen: 'thuong' }) : giaoDien(); if (S.doiNha) { S.doiNha(g.nha); S.doiNen(g.nen); } }

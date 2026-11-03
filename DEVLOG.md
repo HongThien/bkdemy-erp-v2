@@ -78593,6 +78593,14 @@ Thùy nêu 4 việc, làm được 3:
 - Máy HS: mỗi 30 s (màn đang hiện + có phiên) gọi `fn_hs_ep_cap_nhat()`; mốc mới hơn lúc mở trang ⇒ `reg.update()` rồi tải lại, CHỈ khi em ở màn chính (`layMan()`), đang ở màn khác thì đợi `EVT_MAN`. Mốc đã xử lý nhớ ở localStorage ⇒ đồng hồ máy lệch không tải lại lặp. Không bấm thì không có gì xảy ra.
 - Kiểm: HS gọi được hàm hỏi, HS bấm bị chặn (42501). CHƯA thử vòng thật trên máy HS đã đăng nhập (cần deploy).
 - Push: thư mục làm việc chính đang chậm GitHub 3 commit (4 file K9 sửa dở của phiên khác trùng file với commit K9 efb391d9) ⇒ gộp/push từ worktree tạm trong scratchpad; lần gộp đầu (44e887a6) lỡ đẩy 6 dòng dấu xung đột vào DEVLOG, đã sửa ở ffd4ee0c. BÀI HỌC: lệnh commit/push phải nối `&&` sau bước gộp, không để dòng riêng.
+## 03/11 (tối, tiếp) — Nông trại: +3 nền (Xuân — Tết · Chiều thu · Đêm Trung thu), Halloween tối lại — game 0ae6747
+- Thùy: "thêm 3 loại background khác nữa đi. Halloween sáng quá". Bảng chọn giờ 6 nền theo mùa: Đồng quê · Xuân — Tết · Chiều thu · Trang trại tuyết · Đêm Trung thu · Đêm Halloween.
+- Shader chung (`dohoa.js`, `DH.TUYET`) thêm 2 kênh, cùng luật trừ vùng ruộng: `hoa` (tán lá xanh điểm ô hồng/trắng theo ô 18 cm, không chạm mặt đất) cho Tết; `thu` (lá xanh ⇒ đỏ/cam/vàng theo mảng, chừa ~15% cây xanh; mặt đất chỉ ngả vàng úa 50%). Bản thu đầu cam đều cả cảnh (cỏ cũng cam) — đã giảm.
+- Đồ riêng mỗi nền: Tết = cây đào/mai to, chậu quất, đèn lồng đỏ, thảm + cánh đào bay; Thu = rơm cuộn, đống lá, bí ngô, lá rơi; Trung thu = đèn ông sao (Extrude 5 cánh, tự sáng), đèn lồng sáng, dây đèn lồng dọc rào trước sân, trăng rằm, sao, đèn trời bay lên. Hạt rơi gộp 1 hàm `hatRoi` (tuyết · cánh đào · lá).
+- Halloween: nắng 1.0 → 0.7, bán cầu 1.0 → 0.68, tối mép 0.66. Nước ao nhân màu theo nền (`nuocMat`, đêm ×0.45–0.5) — trước đó ao sáng chói giữa đêm. Bản Trung thu đầu sáng như buổi chiều + thưa đèn — đã tối lại, thêm đèn.
+- `dongBo()` giờ áp lựa chọn đã lưu mỗi lần đồng bộ ⇒ thử bằng `NT_SCENE.doiNen` tay sẽ bị đè; thử phải sửa `NT_UI.s.giaoDien` hoặc qua bảng chọn.
+- Mig `202611032033_nt_ban_vuon_giao_dien_mau.sql`: danh sách trắng cứng (3 nền) ⇒ kiểm theo mẫu `^[a-z_]{1,16}$`, thêm nền sau này không cần migration. **CHƯA ÁP** (lệnh bị chặn quyền, chờ Thùy gật). Chưa áp thì bạn chọn Tết/Thu/Trung thu sẽ hiện "Đồng quê" khi em khác sang thăm.
+- Soi 1024×768 đủ 6 nền + bảng chọn. `test-engine`: tất cả luật đúng.
 
 ## 03/11 tối — ET 8S1 / 5A1 không chấm được + quét toàn bộ ET (Thùy: "ET hình của 8S1 sao chưa lên… 5A1 cũng báo lỗi ET, check lại toàn bộ ET")
 - **Quét 160 ET 13/10–03/11** — so BỘ MÃ CÂU của ET với ô chấm ET chung của buổi (so nội dung, không so số lượng). Lệch thật 5 buổi; cột "ngoài kho" của ET bản cũ là báo động giả (ô khớp đúng mã).
@@ -78607,3 +78615,9 @@ Thùy nêu 4 việc, làm được 3:
 - Làm: `nhap_tu_de_thi.mjs --khoi 9 --loc 'cuối học kì 1 Toán 9 năm 2025-2026' --ghi` ⇒ +43 bài / 96 ý. Gắn mô hình: 20 bài `hai tiếp tuyến` (câu đã ở HH00109 từ lượt Hình học — nhân chứng độc lập) + 1 bài `ba tiếp tuyến` (Cầu Diễn, CD = AC + BD); Hoàng Liệt (một tiếp tuyến) để trống. Mô hình giờ: hai tiếp tuyến 87 bài, ba tiếp tuyến 26 bài.
 - Còn lại chưa gắn (cố ý, §1.5): bài `tt_khac` (chứng minh là tiếp tuyến, một tiếp tuyến + cát tuyến…) — vd Thanh Quan GKI 24–25 (HLB00442).
 - Lượt ĐẠI SỐ của 27 đề cương cuối kì: brief + script ghi đã viết (`ck/brief-dai-soan.md`, `brief-dai-soat.md`, `scripts/kho/de-thi/k9-ck-ghi-dai-*.sh`), 7 bản soạn nộp (Thọ Lộc 25–26, Ái Mộ, Phan Chu Trinh, Nguyễn Du, Thịnh Liệt, Giảng Võ 2 + …) chưa soát/ghi; 13 trạm bị dừng giữa chừng. CHỜ Thùy nói có làm tiếp không.
+
+## 03/11 tối — Nông trại: áp mig nền mới + nới thanh nút phải
+- **Mig `202611032033` ĐÃ ÁP** (`--only`, sổ còn file phiên khác treo): `fn_nt_ban_vuon` kiểm tên nhà/nền theo mẫu `^[a-z_]{1,16}$` thay danh sách trắng ⇒ bạn chọn Tết/Thu/Trung thu thì người sang thăm thấy đúng. Kiểm: prosrc có mẫu, ACL chỉ authenticated (không anon); JWT HS trong ROLLBACK, bạn cùng lớp đặt {nhat, trungthu} ⇒ hàm trả đúng {nhat, trungthu}. schema.md refresh.
+- **Thanh nút phải lệch** (Thùy gửi ảnh: "Thú cưng", "Nhà & cảnh" xuống 2 dòng ⇒ icon các ô không thẳng hàng): nới ngang `#nutPhai .nutNho` 50→72px (điện thoại ngang 44→62px), nhãn `nowrap`. Đo 1024×768 và 844×390: cả 6 nhãn 1 dòng, cao ô đều. Game commit riêng ở repo NongTrai.
+- Chưa xử: nút góp ý tím (của khung app HS, không thuộc game) đè góc ô "Thư" trong ảnh Thùy.
+- **Ô xu góc trên phải lệch** (Thùy gửi ảnh): số EXP trong thanh xanh tụt đáy, bị cắt nửa — ruột thanh 11px thấp hơn dòng chữ. Thanh 15→18px, chữ line-height 1. Đo 1024×768 + 844×390: số nằm giữa. Game e2395ba.

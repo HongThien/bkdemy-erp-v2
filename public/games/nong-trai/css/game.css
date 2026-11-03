@@ -344,11 +344,14 @@ body.dangTham .cu[data-cu="gieo"], body.dangTham .cu[data-cu="bon"] { opacity: .
 #viBox, #diemBox { padding: 1px 10px 1px 4px; }
 #viBox img, #diemBox img { width: 28px; height: 28px; margin: -4px 0 -4px -4px; }
 #viBox b, #diemBox b { font-size: 17px; }
-#expThanh { width: 46px; height: 15px; margin-left: 4px; }
+#expThanh { width: 46px; height: 18px; margin-left: 4px; }   /* Thùy 03/11: ruột 11px thấp hơn dòng chữ ⇒ số tụt đáy, bị cắt */
+#expThanh span { line-height: 1; padding-top: 1px; font-size: 10.5px; }
 #nutPhai { position: fixed; right: 8px; top: max(96px, calc(env(safe-area-inset-top) + 88px)); z-index: 20; display: flex; flex-direction: column; gap: 6px; }
 #nutPhai .nutNho { width: 50px; height: 50px; border-radius: 15px; font-size: 9.5px; }
 #nutPhai .nutNho img { width: 28px; height: 28px; }
 #nutPhai .nutNho .emo { font-size: 21px; }
+#nutPhai .nutNho { width: 72px; }   /* Thùy 03/11: nhãn 2 chữ (Thú cưng · Nhà & cảnh) xuống dòng làm icon lệch ⇒ nới ngang, nhãn 1 dòng */
+#nutPhai .nutNho > span:not(.emo):not(.so) { white-space: nowrap; line-height: 1.15; }
 .chip { font-size: 12px; padding: 1px 8px; }
 @media (max-width: 560px) {
   #capSao { width: 44px; height: 44px; } #capSao b { font-size: 20px; } #capSao img { width: 24px; height: 24px; }
@@ -412,6 +415,7 @@ body.dangTham .cu[data-cu="gieo"], body.dangTham .cu[data-cu="bon"] { opacity: .
   #nutPhai { gap: 5px; top: max(50px, calc(env(safe-area-inset-top) + 44px)); }
   #nutPhai .nutNho { width: 44px; height: 44px; border-radius: 13px; font-size: 8.5px; }
   #nutPhai .nutNho img { width: 24px; height: 24px; } #nutPhai .nutNho .emo { font-size: 18px; }
+  #nutPhai .nutNho { width: 62px; }
   #thanhCu { gap: 4px; padding: 4px 6px; border-radius: 18px; }
   .cu { width: 50px; height: 50px; font-size: 9px; border-radius: 13px; }
   .cu .ic { font-size: 22px; height: 26px; } .cu .ic img { width: 26px; height: 26px; }
@@ -446,6 +450,10 @@ body.dangTham .cu[data-cu="gieo"], body.dangTham .cu[data-cu="bon"] { opacity: .
 .gdThe.nen-tuyet { background: linear-gradient(#eef5ff, #fff); }
 .gdThe.nen-dem { background: linear-gradient(#3a2a66, #5b3a7a); color: #fff; }
 .gdThe.nen-dem .nho { color: #e8d8ff; }
+.gdThe.nen-tet { background: linear-gradient(#ffe6ef, #fff); }
+.gdThe.nen-thu { background: linear-gradient(#ffd9b8, #fff4ea); }
+.gdThe.nen-trungthu { background: linear-gradient(#16265e, #2f4a8a); color: #fff; }
+.gdThe.nen-trungthu .nho { color: #ffe3a8; }
 
 /* ===== PHÓNG TO GIAO DIỆN (Thùy 03/11: mọi ô chữ, nút to ~50% trên PC / iPad) =====
    --k = hệ số phóng: màn ≥ 600px cao (iPad 1024×768, 1180×820, PC) ⇒ 1.5 · màn vừa ⇒ 1.25 · điện thoại ngang (≤ 500px cao) giữ nguyên.
