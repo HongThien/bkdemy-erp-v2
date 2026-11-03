@@ -78621,3 +78621,9 @@ Thùy nêu 4 việc, làm được 3:
 - **Thanh nút phải lệch** (Thùy gửi ảnh: "Thú cưng", "Nhà & cảnh" xuống 2 dòng ⇒ icon các ô không thẳng hàng): nới ngang `#nutPhai .nutNho` 50→72px (điện thoại ngang 44→62px), nhãn `nowrap`. Đo 1024×768 và 844×390: cả 6 nhãn 1 dòng, cao ô đều. Game commit riêng ở repo NongTrai.
 - Chưa xử: nút góp ý tím (của khung app HS, không thuộc game) đè góc ô "Thư" trong ảnh Thùy.
 - **Ô xu góc trên phải lệch** (Thùy gửi ảnh): số EXP trong thanh xanh tụt đáy, bị cắt nửa — ruột thanh 11px thấp hơn dòng chữ. Thanh 15→18px, chữ line-height 1. Đo 1024×768 + 844×390: số nằm giữa. Game e2395ba.
+
+## 03/11 (đêm) — Dọn bài tiếp tuyến: 190 câu KHÔNG phải tiếp tuyến lẫn trong HH00108 → về đúng bài
+- Thùy: "sao trong bản đồ phần tiếp tuyến đường tròn lại lẫn mấy câu tam giác vuông các thứ vào vậy". Nguyên nhân: lượt Hình cuối kì 1 K9 ghi MỌI câu vào HH00108 (Vị trí tương đối đt–đường tròn) "tạm", chỉ xếp riêng hai_tt → HH00109; phần còn lại (khong_tt / ba_tt / tt_khac) tôi ghi "người xếp tay" trong k9.md §13 nhưng KHÔNG xếp ⇒ bài tiếp tuyến lẫn cả lượng giác, quạt, vành khuyên… (295 câu).
+- Làm: `ck/xep-khong-tt.mjs --ghi` — chỉ câu tt=khong_tt (nhân chứng nội dung như gan-mo-hinh-tt), đang ở HH00108: ⇒ HH00095 lượng giác 89 · HH00107 quạt/hình tròn/vành khuyên 52 · HH00105 đường tròn 31 · HH00106 cung 9 · HH00110 hai đường tròn 3 · HH00086 hệ thức đường cao 1 · HH00140 (đỗ tạm, bài thực tế/cực trị chưa có bài hợp: HHC011362/363/437/438/481) 5. Giữ HH00108: HHC011335, HHC011484 (vị trí tương đối thật). Chỉ đổi dang_chinh, mã câu bất biến; hoàn tác bằng `ck/xep-khong-tt.undo.json`.
+- HH00108 còn 105 câu (ba_tt 26 + tt_khac 27 + 50 câu từ lượt trước + 2). Chưa kiểm từng câu của phần còn lại ngoài nhãn tt.
+- Sai của tôi: đã báo "cần xếp tay" mà để nguyên lúc bàn giao, thay vì xếp luôn. Lần sau: bài đỗ tạm phải xếp xong trước khi báo "xong".
