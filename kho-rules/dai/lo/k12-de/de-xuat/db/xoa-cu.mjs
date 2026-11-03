@@ -53,6 +53,7 @@ const moiTat = new Set(Object.values(MOI).flatMap((m) => [...m.ch, ...m.nhom, ..
 const moCoi = new Set(readFileSync(join(DIR, 'mo-coi.md'), 'utf8').split(/\r?\n/).map((l) => l.split('|').map((x) => x.trim())).filter((c) => c.length > 8 && /^T\d+/.test(c[3] ?? '')).map((c) => c[3]))
 
 const c = new pg.Client({ connectionString: url, ssl: { rejectUnauthorized: false } })
+c.on('error', (e) => console.error('✘ kết nối lỗi:', e.message))
 await c.connect()
 const Q = async (s, p) => (await c.query(s, p)).rows
 let ma = 0
@@ -160,7 +161,9 @@ try {
   const truocNgoai = await chup(), truocCay = await demCay(), truocTong = await tongBang()
   const logTruoc = (await Q(`select count(*)::int n, coalesce(max(id),0)::bigint mx from dai_bdm_log`))[0]
 
-  await c.query('begin')
+  // REPEATABLE READ: một ảnh chụp cố định cho cả tx (bảng đo lường đang được app ghi liên tục — READ COMMITTED làm lệch đếm).
+  // Ai đó sửa đúng dòng đang xoá ⇒ lỗi tuần tự hoá ⇒ tx huỷ (an toàn).
+  await c.query('begin isolation level repeatable read')
   await c.query(`set local statement_timeout = '600s'`)
   await c.query(`set local lock_timeout = '20s'`)
 
@@ -170,12 +173,12 @@ try {
   const KE = [] // {t, kieu, n, conLai, h, vd, file, md5file}
   for (const [t, pred, kieu] of B) {
     const rows = (await q2(`select to_jsonb(t) j from ${t} t where ${pred}`)).map((r) => r.j)
-    const con = await md5Bang(t, `(${pred}) is not true`)
+    const con = await md5Bang(t, `(${pred}) is not true`), del = await md5Bang(t, pred)
     const body = JSON.stringify(rows, null, 1)
     const file = join(BACKUP, `${t}.json`)
     writeFileSync(file, body)
     const vd = rows.slice(0, 3).map((r) => r.id ?? r.ma_cau ?? r.ma_cum_cu ?? r.bai_test_cau_id ?? (r.chu_de_id && r.chuyen_de_id ? `${r.chu_de_id}|${r.chuyen_de_id}` : null) ?? `${r.bai_test_id}|${r.ma_dang}`).join(', ')
-    KE.push({ t, kieu, n: rows.length, con, vd, file, md5file: createHash('md5').update(body).digest('hex') })
+    KE.push({ t, kieu, n: rows.length, con, del, vd, file, md5file: createHash('md5').update(body).digest('hex') })
   }
   // gan_cau: nhân chứng thứ hai = mo-coi.md; không dòng 'nguoi'
   const gc = (await Q(`select ma_cau, nguon from dai_bdm_gan_cau where dang_bai_id = any($1) union all select ma_cau, nguon from hgt_bdm_gan_cau where dang_bai_id = any($1)`, [ID]))
@@ -204,8 +207,11 @@ try {
   // quét toàn schema TRƯỚC (cột text/json/array có id cũ) — phải nằm trong các bảng đã có vị từ
   const re = `(${ID.join('|')})([^0-9]|$)`
   const quet = async () => {
-    const cols = await Q(`select c.table_name t, c.column_name col from information_schema.columns c join information_schema.tables t on t.table_name=c.table_name and t.table_schema=c.table_schema
+    const cols0 = await Q(`select c.table_name t, c.column_name col from information_schema.columns c join information_schema.tables t on t.table_name=c.table_name and t.table_schema=c.table_schema
       where c.table_schema='public' and t.table_type='BASE TABLE' and c.data_type in ('text','character varying','jsonb','json','ARRAY','character') and c.table_name <> 'dai_bdm_log' order by 1,2`)
+    const theoBang = new Map(); for (const x of cols0) theoBang.set(x.t, [...(theoBang.get(x.t) ?? []), x.col])
+    const cols = []
+    for (const [t, cs] of theoBang) { await c.query('savepoint q'); try { const n = (await c.query(`select count(*)::int n from "${t}" where concat_ws('|', ${cs.map((x) => `"${x}"::text`).join(', ')}) ~ $1`, [re])).rows[0].n; await c.query('release savepoint q'); if (n) for (const col of cs) cols.push({ t, col }) } catch (e) { await c.query('rollback to savepoint q'); for (const col of cs) cols.push({ t, col }) } }
     const r = []
     for (const x of cols) { await c.query('savepoint q'); try { const n = (await c.query(`select count(*)::int n from "${x.t}" where "${x.col}"::text ~ $1`, [re])).rows[0].n; await c.query('release savepoint q'); if (n) r.push({ ...x, n }) } catch (e) { await c.query('rollback to savepoint q'); r.push({ ...x, n: -1, loi: e.message }) } }
     return r
@@ -230,7 +236,7 @@ try {
   in_(`\n══ BẢNG · dòng xoá trực tiếp · dòng cascade · còn lại · md5 phần còn lại = md5 sau xoá? · ví dụ ══`)
   in_(['bảng', 'kiểu', 'trực tiếp', 'cascade', 'tổng mất', 'trước', 'sau', 'khớp', 'ví dụ'].join('\t'))
   for (const k of KE) {
-    const tr = truocTong[k.t], sa = sauTong[k.t]
+    const tr = { n: k.con.n + k.n }, sa = sauTong[k.t]
     const truc = k.kieu.startsWith('cascade') ? 0 : k.t === 'tai_lieu_phan' ? daXoa[k.t] : (daXoa[k.t] ?? 0)
     const cas = k.n - truc
     const khop = sa.n === k.con.n && sa.h === k.con.h && tr.n - sa.n === k.n
@@ -315,11 +321,12 @@ try {
   in_(`\n══ SAU ${GHI ? 'COMMIT' : 'ROLLBACK'}: đếm + md5 ══`)
   let giong = true
   for (const k of Object.keys(CHUP)) { const a = truocNgoai[k], b = sauNgoai[k], ok = a.n === b.n && a.h === b.h; if (!ok) giong = false; in_(`  ${k}: ${a.n} → ${b.n} ${ok ? '✔' : '✘'}`) }
-  for (const [t] of B) { const a = truocTong[t], b = sauTongR[t], ok = a.n === b.n && a.h === b.h; if (!GHI && !ok) giong = false; in_(`  ${t}: ${a.n} (md5 ${a.h.slice(0, 8)}) → ${b.n} (md5 ${b.h.slice(0, 8)}) ${ok ? '=' : GHI ? '(đã xoá)' : '✘'}`) }
+  in_('  (bảng · dòng phạm vi xoá: trong tx trước xoá → sau ' + (GHI ? 'COMMIT phải 0' : 'ROLLBACK phải = và cùng md5') + ' · tổng bảng trước tx → sau [bảng sống: app ghi đồng thời thì tổng có thể đổi, không tính là lỗi])')
+  for (const k of KE) { const pred = B.find((x) => x[0] === k.t)[1]; const d = await md5Bang(k.t, pred); const ok = GHI ? d.n === 0 : d.n === k.del.n && d.h === k.del.h; if (!ok) giong = false; const a = truocTong[k.t], b = sauTongR[k.t]; in_(`  ${k.t}: ${k.del.n} → ${d.n} ${ok ? '✔' : '✘'} · tổng ${a.n} → ${b.n}${a.n === b.n && a.h === b.h ? ' =' : ' (đổi)'}`) }
   in_(`  dai_bdm_log: ${logTruoc.n} → ${logSau.n}`)
   if (!GHI) {
     if (logTruoc.n !== logSau.n) giong = false
-    in_(giong ? '✔ DB KHÔNG ĐỔI: đếm + md5 mọi bảng trong phạm vi, các ảnh chụp ngoài phạm vi và số dòng log trước = sau ROLLBACK.' : '✘ CẢNH BÁO: trước ≠ sau — kiểm ngay!')
+    in_(giong ? '✔ DB KHÔNG ĐỔI: mọi dòng trong phạm vi xoá còn nguyên (đếm + md5), các ảnh chụp ngoài phạm vi và số dòng log trước = sau ROLLBACK.' : '✘ CẢNH BÁO: trước ≠ sau — kiểm ngay!')
     if (!giong) ma = 4
     in_('Đã ROLLBACK. --ghi chỉ sau khi Thùy gật.')
   } else if (!giong) { in_('✘ Ngoài phạm vi đổi sau COMMIT — kiểm ngay!'); ma = 4 }
