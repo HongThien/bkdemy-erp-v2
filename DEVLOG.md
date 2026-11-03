@@ -78587,3 +78587,9 @@ Thùy nêu 4 việc, làm được 3:
 - Nông trại: mẹo Lộc `nha_canh` (nút 🎨), `may_cb` (thay mẹo "lò bánh 1 mẻ/ngày", kèm ⚡ toán), `giup_exp` — mọi em thấy 1 lần, lần lượt.
 - Giúp bạn: Thùy "tạm thời cộng exp, 1 ngày tối đa 10 lần" ⇒ `_nt_luat().giup` 5 → 10 (server tự chặn lượt 11) + `LUAT.giup = 10`. Điểm Friendship: CHƯA làm ("tính sau").
 - Chưa thử bằng phiên HS đăng nhập thật; cần deploy app.
+
+## 03/11 (tối) — App HS: nút "Cập nhật ngay" (Thùy: "làm đi · chủ động, khi nào t muốn mới bật") — mig 202611032025 ĐÃ ÁP
+- Bình thường app HS tự lên bản mới khi em mở lại / quay lại app hoặc sau 30 phút (main-hs.tsx registerSW). Nút này cho bản sửa GẤP: Admin → "Mở tính năng app học sinh" → khối vàng "Bắt buộc cập nhật app học sinh ngay" → `fn_hs_ep_cap_nhat_bat()` (quyền `co_quyen_ghi('tinh_nang')`) ghi mốc `hs_ep_cap_nhat` + sổ `hs_ep_cap_nhat_log`.
+- Máy HS: mỗi 30 s (màn đang hiện + có phiên) gọi `fn_hs_ep_cap_nhat()`; mốc mới hơn lúc mở trang ⇒ `reg.update()` rồi tải lại, CHỈ khi em ở màn chính (`layMan()`), đang ở màn khác thì đợi `EVT_MAN`. Mốc đã xử lý nhớ ở localStorage ⇒ đồng hồ máy lệch không tải lại lặp. Không bấm thì không có gì xảy ra.
+- Kiểm: HS gọi được hàm hỏi, HS bấm bị chặn (42501). CHƯA thử vòng thật trên máy HS đã đăng nhập (cần deploy).
+- Push: thư mục làm việc chính đang chậm GitHub 3 commit (4 file K9 sửa dở của phiên khác trùng file với commit K9 efb391d9) ⇒ gộp/push từ worktree tạm trong scratchpad; lần gộp đầu (44e887a6) lỡ đẩy 6 dòng dấu xung đột vào DEVLOG, đã sửa ở ffd4ee0c. BÀI HỌC: lệnh commit/push phải nối `&&` sau bước gộp, không để dòng riêng.
