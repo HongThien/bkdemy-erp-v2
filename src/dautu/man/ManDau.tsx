@@ -173,7 +173,7 @@ export function ManDau({ phien, onThoat, onVeBang, nhanCheDo }: { phien: PhienDa
             <SanDau2D trai={s.nguoi[trai].nv} phai={s.nguoi[phai].nv} suKien={suKien} thap={!laTu} />
             {s.pha === 'ket' && s.thangVong !== null && (
               <div className={'bong-ket ' + (s.thangVong === toi ? 'tot' : s.thangVong === -1 ? 'trung' : 'xau')}>
-                {s.thangVong === -1 ? '⌛ Hết giờ!' : s.thangVong === toi ? `+${s.cong[toi]} ⚡ ${s.giayThang}s` : xemThoi ? `${s.nguoi[s.thangVong].ten} +${s.cong[s.thangVong]}` : 'Chậm hơn một chút!'}
+                {s.cong[toi] < 0 ? `❌ Sai ${s.cong[toi]} điểm` : s.thangVong === -1 ? '⌛ Hết giờ!' : s.thangVong === toi ? `+${s.cong[toi]} ⚡ ${s.giayThang}s` : xemThoi ? `${s.nguoi[s.thangVong].ten} +${s.cong[s.thangVong]}` : 'Chậm hơn một chút!'}
                 {(s.thangVong === 0 || s.thangVong === 1) && s.chuoi[s.thangVong] > 0 && s.chuoi[s.thangVong] % 3 === 0 && <div className="chuoi-thuong">🔥 Chuỗi {s.chuoi[s.thangVong]}! +30</div>}
               </div>
             )}
@@ -213,6 +213,7 @@ function TheNguoi({ s, g, ben }: { s: Snap; g: 0 | 1; ben: 'trai' | 'phai' }) {
         <div className="phu">✔ {s.dung[g]} {s.chuoi[g] >= 2 && <span className="lua">🔥{s.chuoi[g]}</span>}</div>
       </div>
       {thang && s.cong[g] > 0 && <div className="cong-bay">+{s.cong[g]}</div>}
+      {s.cong[g] < 0 && <div className="cong-bay tru">{s.cong[g]}</div>}
     </div>
   )
 }

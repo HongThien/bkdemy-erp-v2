@@ -11,7 +11,7 @@ import { phienBot, phienDoi, type PhienDau } from './lib/phien'
 import type { NguoiTran } from './lib/trongTai'
 import { maSo } from './lib/tienich'
 import { Avatar, Toast, toast } from './ui/Chung'
-import { ChonCheDo, ChonChuDe, type LuaChonCheDo } from './man/ChonTran'
+import { ChonCheDo, ChonChuDe, TEN_TRON, type LuaChonCheDo } from './man/ChonTran'
 import { ManDau } from './man/ManDau'
 import { HopLoiMoi, ModalOnline, PhongThachDau, TimTran, useSanh } from './man/Online'
 import { ManGiai } from './man/Giai'
@@ -102,7 +102,11 @@ export default function App() {
   else if (!toi) noiDung = <Home onDi={() => {}} />
   else switch (man.ten) {
     case 'home': noiDung = <Home onDi={(d) => setMan(d === 'dau' ? { ten: 'chu_de' } : d === 'giai' ? { ten: 'giai', tran: { mon: nguon.mon, cap, chuDe: 'tron', tenChuDe: 'Trộn tất cả', soCau: 10 } } : d === 'noi_tu' ? { ten: 'noi_tu' } : d === 'thap' ? { ten: 'thap' } : { ten: 'goc' })} />; break
-    case 'chu_de': noiDung = <ChonChuDe nguon={nguon} cap={cap} setCap={setCap} onChon={(chuDe, tenChuDe) => setMan({ ten: 'che_do', chuDe, tenChuDe })} onLui={veNha} />; break
+    // Thách đấu KHÔNG chọn chủ đề lẻ nữa (Thùy 03/11: tránh học thuộc) ⇒ luôn ngẫu nhiên toàn bộ dạng em đã học ('tron', máy chủ lọc dạng đã học).
+    //  Trong app HS: vào thẳng màn chế độ. Bản chạy riêng (khách/demo) còn màn này chỉ để chọn khối/cấp độ.
+    case 'chu_de': noiDung = NHUNG
+      ? <ChonCheDo nguon={nguon} tenChuDe={TEN_TRON} onChon={(c) => chonCheDo('tron', TEN_TRON, c)} onLui={veNha} />
+      : <ChonChuDe nguon={nguon} cap={cap} setCap={setCap} onChon={(chuDe, tenChuDe) => setMan({ ten: 'che_do', chuDe, tenChuDe })} onLui={veNha} />; break
     case 'che_do': noiDung = <ChonCheDo nguon={nguon} tenChuDe={man.tenChuDe} onChon={(c) => chonCheDo(man.chuDe, man.tenChuDe, c)} onLui={() => setMan({ ten: 'chu_de' })} />; break
     case 'tran': noiDung = <ManDau key={man.phien.chuDe + man.nhan} phien={man.phien} nhanCheDo={man.nhan} onThoat={() => { man.phien.roi(); veNha() }} />; break
     case 'tim': { const tr = man.tran; noiDung = <TimTran tran={tr} onLui={veNha}

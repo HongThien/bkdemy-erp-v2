@@ -78539,3 +78539,10 @@ Thùy nêu 4 việc, làm được 3:
 ## 03/11 (tối) — ĐÍNH CHÍNH mục trên: `fn_kho_dung_ban_do_cu` KHÔNG hỏng
 - Tôi kết luận "trả rỗng mọi môn" khi gọi bằng `claude_build` KHÔNG kèm JWT ⇒ `la_thanh_vien()` = false ⇒ rỗng là đúng thiết kế. Bản đang chạy đã vá NULL bằng `array_position` (mig 202610281756_..._sua_null). Kiểm lại dưới JWT nhân sự (rollback): trả đủ mọi khối KHTN · Văn · Anh; Toán 0 khối (hết bản đồ cũ sau mig 202611031857). Không sửa gì.
 - Bài học: hàm có cổng quyền (`la_thanh_vien`, `my_hoc_sinh_id`…) gọi không JWT ⇒ "rỗng" không phải bằng chứng hỏng — luôn giả JWT trước khi kết luận.
+
+## 03/11 (tối) — Đấu trường: SAI BỊ TRỪ điểm bằng câu đúng · Thách đấu bỏ chọn chủ đề lẻ — mig 202611031857 ĐÃ ÁP
+- Thùy: "luật ko trừ làm người dùng cứ spam… để sai bị trừ điểm bằng câu đúng luôn cho nghiêm túc" ⇒ `trongTai.ts`: bấm sai trừ `diemVong(tốc độ, chuỗi 0)` = 100/70/50, reset chuỗi; áp mọi trận đua (bot · online · giải), bot sai cũng bị trừ. Màn trận hiện "❌ Sai −X điểm" + số bay đỏ.
+- Tổng trận được âm ⇒ mig 202611031857 bỏ kẹp ≥0 ở `fn_dtv_ghi_tran_mon` (−10000…10000) và `fn_dtv_tran_ket`. Thử JWT HS (rollback): ghi −170 ⇒ dtv_tran.diem = −170.
+- Thùy: "Thách đấu giờ là ngẫu nhiên hoàn toàn tất cả các câu đã học" ⇒ trong app HS (`nhung=1`) màn chọn chủ đề bỏ, vào thẳng màn chế độ với `tron` (máy chủ lọc dạng em đã học qua `_hs_dang_da_hoc`); bản chạy riêng chỉ còn ô "Trộn tất cả" + chọn cấp.
+- Kiểm trên trình duyệt (dautu.html, Tiếng Anh, trận bot): bấm sai ⇒ −50/−100 cho em, bot sai cũng −70; banner "❌ Sai −50 điểm". (Có tạo 1 hồ sơ khách "Thu nghiem" ở dtv_nguoi_choi khi thử.)
+- Nợ §2.0 còn nguyên: điểm trận đua vẫn tính ở trọng tài client (đua tốc độ với bot/đối thủ thời gian thực), chưa xuống Postgres.
