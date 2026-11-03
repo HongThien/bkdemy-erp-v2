@@ -544,7 +544,7 @@ export function BanTongKetTuan({ d, mo, moSan, hienSo = false }: { d: DuLieu; mo
 const TL_TOI_DA = 2.4, TL_TOI_THIEU = 0.6
 const RONG_GOC = 1080, RONG_GOC_SO = 1500   // bật "Số từng tuần" thêm 8 cột ⇒ cần khổ rộng hơn
 
-function VuaMan({ rong, children }: { rong: number; children: any }) {
+export function VuaMan({ rong, children }: { rong: number; children: any }) {   // dùng chung: chiếu Báo cáo Chuyên môn tuần (phongtk/ChieuBaoCaoMon)
   const ngoai = useRef<HTMLDivElement>(null)
   const trong = useRef<HTMLDivElement>(null)
   const [tl, setTl] = useState(1)

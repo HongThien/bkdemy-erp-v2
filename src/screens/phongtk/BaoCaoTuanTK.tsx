@@ -98,16 +98,17 @@ export default function BaoCaoTuanTK() {
 
 // Phần NỘI DUNG một báo cáo khối (5 ô chỉ số · từng lớp · HS còn yếu · cá nhân · tự viết) — dùng chung cho trưởng khối soạn (sua) và
 // trưởng bộ môn xem / duyệt (chỉ đọc). Chỉ hiển thị số DB trả về.
-export function NoiDungBaoCao({ duLieu, caNhan, setCaNhan, tuViet, setTuViet, sua, anChu }: {
+export function NoiDungBaoCao({ duLieu, caNhan, setCaNhan, tuViet, setTuViet, sua, anChu, phan = 'tat_ca' }: {
   duLieu: SoBaoCao; caNhan: DongCaNhan[]; setCaNhan: Dispatch<SetStateAction<DongCaNhan[]>>; tuViet: TuViet; setTuViet: Dispatch<SetStateAction<TuViet>>; sua: boolean
   anChu?: boolean   // báo cáo môn: chỉ phần số, không có cá nhân / tự viết của một khối
+  phan?: 'tat_ca' | 'o' | 'lop'   // chiếu TV: 'o' = chỉ 5 ô chỉ số · 'lop' = chỉ bảng từng lớp + HS còn yếu (mỗi phần một trang, chữ to)
 }) {
   const t = duLieu.tong
   const uuTien = [0, 1, 2].map((i) => tuViet.uu_tien?.[i] ?? '')
   return (
     <>
       {/* HÀNG 1 — 5 nhóm chỉ số toàn khối + trend 4 tuần */}
-      <div className="grid gap-2.5 [grid-template-columns:repeat(auto-fit,minmax(200px,1fr))]">
+      {phan !== 'lop' && <div className="grid gap-2.5 [grid-template-columns:repeat(auto-fit,minmax(200px,1fr))]">
         <O ten="Chấm ET" chinh={so(t.et.ti_le_dung_han, '%')} nhanChinh="đúng hạn" phu={`Điểm TB ${so(t.et.diem_tb)} · ${t.et.dung_han}/${t.et.so_viec} buổi`}
           trend={duLieu.trend.map((w) => w.tong.et.ti_le_dung_han)} mau="text-sky-600" />
         <O ten="BTVN" chinh={so(t.btvn.ti_le_nop, '%')} nhanChinh="nộp" phu={`Điểm TB ${so(t.btvn.diem_tb)} · đúng hạn ${so(t.btvn.ti_le_dung_han, '%')}`}
@@ -121,27 +122,17 @@ export function NoiDungBaoCao({ duLieu, caNhan, setCaNhan, tuViet, setTuViet, su
         <O ten="Bổ trợ" chinh={`${t.bo_tro.ca_yeu} + ${t.bo_tro.ca_nhe}`} nhanChinh="ca Yếu + Nhẹ"
           phu={`${t.bo_tro.luot_hs} lượt em · độ phủ ${so(t.bo_tro.do_phu, '%')} · hết yếu sau ca ${so(t.bo_tro.het_yeu_sau_ca)}`}
           trend={duLieu.trend.map((w) => w.tong.bo_tro.ca_yeu + w.tong.bo_tro.ca_nhe)} mau="text-indigo-600" />
-      </div>
+      </div>}
 
       {/* HÀNG 2 — từng lớp | HS còn yếu */}
-      <div className="grid gap-3 lg:grid-cols-[3fr_2fr]">
+      {/* chiếu TV: bảng chiếm hết bề ngang, chia đôi 2 cột lớp (danh sách HS đã có trang riêng) */}
+      {phan === 'lop' && <div className="grid grid-cols-2 gap-3">
+        <Khung ten="Từng lớp"><BangLop lop={duLieu.lop.slice(0, Math.ceil(duLieu.lop.length / 2))} /></Khung>
+        <Khung ten="Từng lớp (tiếp)"><BangLop lop={duLieu.lop.slice(Math.ceil(duLieu.lop.length / 2))} /></Khung>
+      </div>}
+      {phan === 'tat_ca' && <div className="grid gap-3 lg:grid-cols-[3fr_2fr]">
         <Khung ten="Từng lớp">
-          <table className="w-full text-[12.5px]">
-            <thead><tr className="text-left text-[10.5px] uppercase tracking-wider text-slate-400">
-              <th className="py-1">Lớp</th><th>ET đúng hạn</th><th>ET TB</th><th>BTVN nộp</th><th>BTVN TB</th><th>Dạng yếu</th><th>HS yếu</th>
-            </tr></thead>
-            <tbody>{duLieu.lop.map((l) => (
-              <tr key={l.lop_id} className="border-t border-slate-100">
-                <td className="py-1.5 font-semibold text-slate-800">{l.ten_lop}</td>
-                <td>{so(l.et.ti_le_dung_han, '%')} <span className="text-slate-400">({l.et.dung_han}/{l.et.so_viec})</span></td>
-                <td>{so(l.et.diem_tb)}</td>
-                <td>{so(l.btvn.ti_le_nop, '%')}</td>
-                <td>{so(l.btvn.diem_tb)}</td>
-                <td>{so(l.dang_yeu.dau)} → <b className="text-rose-600">{so(l.dang_yeu.cuoi)}</b></td>
-                <td>{so(l.hs_yeu.dau)} → <b className="text-violet-600">{so(l.hs_yeu.cuoi)}</b><span className="text-slate-400">/{l.hs_yeu.si_so}</span></td>
-              </tr>
-            ))}</tbody>
-          </table>
+          <BangLop lop={duLieu.lop} />
           {duLieu.lop.length === 0 && <p className="py-2 text-[12.5px] text-slate-400">Không có lớp nào trong kỳ.</p>}
         </Khung>
         <Khung ten={`HS còn yếu cuối tuần (${duLieu.hs_con_yeu.length})`}>
@@ -155,10 +146,10 @@ export function NoiDungBaoCao({ duLieu, caNhan, setCaNhan, tuViet, setTuViet, su
             ))}</ul>
           )}
         </Khung>
-      </div>
+      </div>}
 
       {/* HÀNG 3 — cá nhân | tự viết */}
-      {!anChu && <div className="grid gap-3 lg:grid-cols-[3fr_2fr]">
+      {!anChu && phan === 'tat_ca' && <div className="grid gap-3 lg:grid-cols-[3fr_2fr]">
         <Khung ten="Cá nhân — việc phát triển được giao">
           {caNhan.length === 0 ? <p className="text-[12.5px] text-slate-400">Không có việc phát triển nào trong kỳ.</p> : (
             <table className="w-full text-[12.5px]">
@@ -203,6 +194,28 @@ export function NoiDungBaoCao({ duLieu, caNhan, setCaNhan, tuViet, setTuViet, su
   )
 }
 
+// Bảng từng lớp (chỉ hiển thị số DB trả về).
+function BangLop({ lop }: { lop: SoBaoCao['lop'] }) {
+  return (
+    <table className="w-full text-[12.5px]">
+      <thead><tr className="text-left text-[10.5px] uppercase tracking-wider text-slate-400">
+        <th className="py-1">Lớp</th><th>ET đúng hạn</th><th>ET TB</th><th>BTVN nộp</th><th>BTVN TB</th><th>Dạng yếu</th><th>HS yếu</th>
+      </tr></thead>
+      <tbody>{lop.map((l) => (
+        <tr key={l.lop_id} className="border-t border-slate-100">
+          <td className="py-1.5 font-semibold text-slate-800">{l.ten_lop}</td>
+          <td>{so(l.et.ti_le_dung_han, '%')} <span className="text-slate-400">({l.et.dung_han}/{l.et.so_viec})</span></td>
+          <td>{so(l.et.diem_tb)}</td>
+          <td>{so(l.btvn.ti_le_nop, '%')}</td>
+          <td>{so(l.btvn.diem_tb)}</td>
+          <td>{so(l.dang_yeu.dau)} → <b className="text-rose-600">{so(l.dang_yeu.cuoi)}</b></td>
+          <td>{so(l.hs_yeu.dau)} → <b className="text-violet-600">{so(l.hs_yeu.cuoi)}</b><span className="text-slate-400">/{l.hs_yeu.si_so}</span></td>
+        </tr>
+      ))}</tbody>
+    </table>
+  )
+}
+
 // Ô chỉ số: số chính to + dòng phụ + 4 cột trend (chỉ vẽ dãy số DB trả về, không tính gì).
 export function O({ ten, chinh, nhanChinh, phu, trend, mau }: { ten: string; chinh: string; nhanChinh: string; phu: string; trend: (number | null)[]; mau: string }) {
   const lon = Math.max(1, ...trend.map((v) => v ?? 0))
@@ -216,7 +229,8 @@ export function O({ ten, chinh, nhanChinh, phu, trend, mau }: { ten: string; chi
       <div className="text-[11.5px] leading-snug text-slate-500">{phu}</div>
       <div className="mt-1.5 flex h-7 items-end gap-1" title="4 tuần gần nhất (cũ → mới)">
         {trend.map((v, i) => (
-          <div key={i} className="flex flex-1 flex-col items-center justify-end">
+          // h-full: cột con cao theo % ⇒ khung cha phải có chiều cao, thiếu là mọi cột về 0 (chỉ cột trống 2px còn thấy)
+          <div key={i} className="flex h-full flex-1 flex-col items-center justify-end" title={v == null ? 'chưa có số' : String(v)}>
             <div className={`w-full rounded-t ${i === trend.length - 1 ? 'bg-indigo-400' : 'bg-slate-200'}`} style={{ height: v == null ? 2 : `${Math.max(8, (v / lon) * 100)}%` }} />
           </div>
         ))}

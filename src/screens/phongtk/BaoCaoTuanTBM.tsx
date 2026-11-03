@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 import { chotBaoCaoMon, hangBaoCao, layBaoCaoMon, luuBaoCaoMon, xemBaoCao, xuLyBaoCao, type BaoCaoMon, type BaoCaoTuan, type HangBaoCao } from '../../lib/baoCaoTuan'
 import { congNgay, ddmmVN } from '../../lib/tuan'
 import BaoCaoTuanTK, { NoiDungBaoCao, Khung } from './BaoCaoTuanTK'
+import NutChieuBaoCaoMon from './ChieuBaoCaoMon'
 
 type Tab = 'khoi' | 'mon' | 'cua_toi'
 const NHO: { tab: Tab; tuan: string | null; mon: string | null } = { tab: 'khoi', tuan: null, mon: null }
@@ -163,6 +164,7 @@ function BaoCaoMonView({ tuan, mon }: { tuan: string; mon: string }) {
         <span className="ml-auto flex items-center gap-2">
           {bao && <span className="text-[12.5px] text-emerald-600">{bao}</span>}
           {loi && <span className="max-w-[320px] truncate text-[12px] text-rose-600" title={loi}>{loi}</span>}
+          <NutChieuBaoCaoMon bc={{ ...bc, nhan_xet: chot0 ? bc.nhan_xet : nhanXet }} />
           {!chot0 && <button onClick={luu} disabled={!!dang} className="rounded-lg border border-slate-200 px-3 py-1.5 text-[13px] text-slate-700 hover:bg-slate-50 disabled:opacity-50">Lưu nháp</button>}
           {!chot0 && <button onClick={chot} disabled={!!dang || !nhanXet.trim() || !bc.ky_xong} title={!bc.ky_xong ? 'Tuần chưa kết thúc' : !nhanXet.trim() ? 'Cần nhận xét' : 'Chốt — snap số tổng môn + ghép các khối đã duyệt'}
             className="rounded-lg bg-indigo-600 px-4 py-1.5 text-[13px] font-semibold text-white hover:bg-indigo-700 disabled:opacity-40">{dang === 'chot' ? 'Đang chốt…' : 'Chốt báo cáo môn'}</button>}

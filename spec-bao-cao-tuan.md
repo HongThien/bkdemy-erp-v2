@@ -166,7 +166,10 @@ Bắt buộc có trước khi Nộp (nút Nộp chỉ disable khi **thiếu data
   báo cáo trưởng bộ môn tự nộp; ô thiếu ghi rõ) · `_bctk_de_xuat_tre` (gậy trễ vào `gay_de_xuat`, ref `bctk:<tuần>|<người>`, **chỉ từ kỳ 02/11–08/11** —
   kỳ trước tính năng chưa có, không gậy oan). Đo 03/11 (phiên giả lập): hàng Trang 0,1 s · báo cáo môn Toán 41 lớp 1,1 s · anh Ngọc thấy KHTN 7·8·9 chưa có trưởng khối.
   **Treo:** `gay_de_xuat.nguon` CHECK chỉ có `vanhanh · giaoviec` ⇒ đề xuất báo cáo trễ tạm dùng `vanhanh`; muốn giá trị riêng (`bao_cao`) phải alter bảng — chờ CEO gật (Luật xoá).
-- **P4 — Chiếu TV:** chưa làm.
+- **P4 — Chiếu TV** (`ChieuBaoCaoMon.tsx`, nút "📺 Chiếu TV" ở tab Báo cáo môn): khuôn trình chiếu Tổng kết tuần (lớp phủ kín cửa sổ, toàn màn hình là phần
+  cộng thêm · → ← / bút trình chiếu · Home/End · Esc · mục lục) · mỗi trang co VỪA KHÍT màn (`VuaMan`), khổ gốc riêng từng trang (ít nội dung ⇒ khổ hẹp ⇒ chữ to).
+  Trang: **Tổng môn** (5 ô chỉ số + trend) → **Từng lớp** (bảng chia 2 cột) → **mỗi khối** (5 ô + nhận định · ưu tiên · cần hỗ trợ) → **HS yếu chưa xử lý** →
+  **Nhận xét trưởng bộ môn**. Số = đúng dữ liệu báo cáo môn (đã chốt ⇒ bản snap); vẽ bằng `NoiDungBaoCao` (tham số `phan` = `o` / `lop`). Kiểm 03/11 ở 1920×1080.
 
 ## 5. Bàn sau (detail — không chặn logic)
 
