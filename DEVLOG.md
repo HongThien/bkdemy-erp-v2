@@ -78394,3 +78394,10 @@ Thùy nêu 4 việc, làm được 3:
 - **Đã đo (chỉ đọc):** NCD00094 Hàm số = 3 chuyên đề · 33 nhóm · 11 dạng · 952 gán (đơn điệu 479 · tiệm cận 99 · cực trị 374); NCD00096 Vectơ = 3 chuyên đề · 21 nhóm · 6 dạng · 154 gán. FK vào `dai_bdm_dang_bai` từ gan_cau/de_xuat/doi_ung/doi_ung_cum/kiem_mau/tu_choi/`dai_cau_lop` + `hgt_bdm_*`; trigger log mọi bảng `dai_bdm_*`; `thu_tu` tự cấp khi INSERT. Chưa đo tham chiếu không-FK (đo lường/ET/tài liệu).
 - **Kế hoạch B1–B5 + cảnh báo Luật xoá:** xem HANDOFF.md ① mục đầu. Không có lệnh ghi DB nào được chạy trong phiên này cho việc này.
 - **Cùng phiên (đã xong):** 13 câu đề thi K12 cuối giải lại độc lập + ghi (DEVLOG 23/10 ở trên); Vectơ đề xuất 50 dạng (DEVLOG 22/10 khuya).
+
+## 03/11 — Bản đồ mới K3 / K5: chuyển 3 tầng sang "chuyên đề › nhóm › dạng" dưới chủ đề bao trùm (Thùy)
+- **Làm:** `scripts/chuyen-cap1-bdm.mjs --ghi` (ĐÃ GHI). Chủ đề cũ→chuyên đề mới · chuyên đề cũ→nhóm mới · nhóm cũ (= 1 dạng bản đồ cũ)→dạng mới. K3: chủ đề **Số tự nhiên** (5 chuyên đề, gồm lời văn + đo lường) + **Hình học**. K5: 5 chủ đề (Phép toán với các số · Bài toán về tỉ số · Toán chuyển động · Thống kê xác suất · Diện tích các hình), chuyên đề 11 "Ôn tập giữa kỳ I" và "Chưa phân dạng" KHÔNG đưa vào.
+- **Số:** 7 chủ đề · 16 chuyên đề · 35 nhóm · 124 dạng mới + 5 dạng NDB chuyển nhóm (giữ mã) · `dai_bdm_doi_ung` 105 dòng đổi `dich_nhom`→`dich_dang_bai` + 24 dòng thêm (dạng cũ trước chưa có đối ứng).
+- **Quyết định:** dựng cây mới trước, xoá cây cũ SAU (chờ Thùy gật, Luật xoá). Ca K5 Tổng Tỉ: nhóm cũ có dạng con (NNB00859 1 con, NNB00860 4 con) → bỏ làm 1 tầng, 5 dạng con chuyển lên nhóm «Tổng Tỉ» (ngang hàng với dạng NNB00861).
+- **Còn treo:** cây cũ K3 (NCD00100–102 + chuyên đề NCH00203–208…) và K5 (NCD00135–144) chưa xoá; sau khi xoá cần `npm run schema`? (không đổi schema — không cần).
+- **03/11 (sau) — XOÁ cây cũ K3/K5 theo lệnh Thùy "Liệt kê rồi xoá":** `fn_bdm_xoa_chu_de` cho NCD00100–102 (K3) + NCD00135–144 (K5): 13 chủ đề · 30 chuyên đề · 105 nhóm cũ (0 dạng con, 0 câu gán, 0 đối ứng, 0 tham chiếu ngoài). Lý thuyết đã chép sang 54 dạng mới trước khi xoá. Bản đồ mới K3/K5 giờ chỉ còn cây mới.
