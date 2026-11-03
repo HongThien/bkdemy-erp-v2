@@ -349,6 +349,8 @@ body.dangTham .cu[data-cu="gieo"], body.dangTham .cu[data-cu="bon"] { opacity: .
 #nutPhai .nutNho { width: 50px; height: 50px; border-radius: 15px; font-size: 9.5px; }
 #nutPhai .nutNho img { width: 28px; height: 28px; }
 #nutPhai .nutNho .emo { font-size: 21px; }
+#nutPhai .nutNho { width: 72px; }   /* Thùy 03/11: nhãn 2 chữ (Thú cưng · Nhà & cảnh) xuống dòng làm icon lệch ⇒ nới ngang, nhãn 1 dòng */
+#nutPhai .nutNho > span:not(.emo):not(.so) { white-space: nowrap; line-height: 1.15; }
 .chip { font-size: 12px; padding: 1px 8px; }
 @media (max-width: 560px) {
   #capSao { width: 44px; height: 44px; } #capSao b { font-size: 20px; } #capSao img { width: 24px; height: 24px; }
@@ -412,6 +414,7 @@ body.dangTham .cu[data-cu="gieo"], body.dangTham .cu[data-cu="bon"] { opacity: .
   #nutPhai { gap: 5px; top: max(50px, calc(env(safe-area-inset-top) + 44px)); }
   #nutPhai .nutNho { width: 44px; height: 44px; border-radius: 13px; font-size: 8.5px; }
   #nutPhai .nutNho img { width: 24px; height: 24px; } #nutPhai .nutNho .emo { font-size: 18px; }
+  #nutPhai .nutNho { width: 62px; }
   #thanhCu { gap: 4px; padding: 4px 6px; border-radius: 18px; }
   .cu { width: 50px; height: 50px; font-size: 9px; border-radius: 13px; }
   .cu .ic { font-size: 22px; height: 26px; } .cu .ic img { width: 26px; height: 26px; }
