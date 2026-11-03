@@ -12,9 +12,10 @@
 // ============================================================================
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import { ManHS, DauTrangHS, MAU, THE, THE_TRON, HEAD, NhomHS, TrongHS } from '../skin/KhungHS'
+import { tinhNangMoCuaToi } from '../../../lib/tinhnang'
 import { ICON_TIN, ICON_TG, anhTG, anhTin, anhTuongTac, anhSticker, anhPhaoGiay } from '../gami/hinh'
 import {
-  layKenh, layChoKhoe, dangKhoe, goKhoe, thaCamXuc, guiBinhLuan, goBinhLuan, anBinhLuan, layChiTiet, anTin, datHien, banBeCuaToi, goiYKetBan, guiKetBan, traLoiKetBan, layDanhMuc,
+  layKenh, layChoKhoe, dangKhoe, goKhoe, thaCamXuc, guiBinhLuan, guiBinhLuanChu, goBinhLuan, anBinhLuan, layChiTiet, anTin, datHien, banBeCuaToi, goiYKetBan, guiKetBan, traLoiKetBan, layDanhMuc,
   type KenhId, type KenhTG, type TinTG, type GopTG, type KhenTG, type NguoiTG, type BanBeTG, type GoiYTG, type DanhMucTG, type BinhLuanTG, type ChiTietTG, type ChoKhoe, type ThanhTichKhoe,
 } from '../../../lib/thegioi'
 
@@ -190,14 +191,14 @@ function BongBL({ b, nho, duoi }: { b: BinhLuanTG; nho?: boolean; duoi?: ReactNo
     <div className="flex items-start gap-2" style={{ opacity: b.an ? 0.5 : 1 }}>
       <Avatar n={b.nguoi} size={nho ? 28 : 34} />
       <div className="min-w-0 flex-1">
-        {b.loai === 'cau'
+        {b.loai !== 'sticker'
           ? <div className="inline-block max-w-full rounded-[18px] px-3 py-1.5" style={{ background: MAU.surface2 }}>
               <p className="text-[14px] font-bold leading-tight">{b.la_em ? 'Em' : <TenLop n={b.nguoi} rutGon />}</p>
               <p className="text-[15px] leading-snug">{b.noi_dung}</p>
             </div>
           : <div>
               <p className="px-1 text-[14px] font-bold leading-tight">{b.la_em ? 'Em' : <TenLop n={b.nguoi} rutGon />}</p>
-              <span className="mt-0.5 inline-block"><Hinh src={anhSticker(b.ma)} emoji={b.noi_dung} size={nho ? 52 : 72} /></span>
+              <span className="mt-0.5 inline-block"><Hinh src={anhSticker(b.ma ?? '')} emoji={b.noi_dung} size={nho ? 52 : 72} /></span>
             </div>}
         {duoi && <div className="mt-0.5 flex gap-3 px-3 text-[12.5px] font-semibold" style={{ color: MAU.muted }}>{duoi}</div>}
       </div>
@@ -501,11 +502,15 @@ export function cauHop(ds: DanhMucTG[], nhom: string, chuTin = false): DanhMucTG
 export type BanPhim = 'dong' | 'cau' | 'sticker'
 // Tấm BÌNH LUẬN kiểu FB: đầu = dòng cảm xúc (bấm ⇒ ai đã thả) · giữa = bình luận · đáy = ô "Viết bình luận…" + 🙂 sticker.
 // Không gõ chữ: chạm ô ⇒ bật "bàn phím" câu soạn sẵn / sticker, CHẠM LÀ GỬI (như bấm sticker trên Messenger).
-export function TamBinhLuan({ tin, ct, xem, onXem, loc, onLoc, banPhim, onBanPhim, danhMuc, onGui, dangGui, loi, onGo, onAn, onDong }: {
+// choGo (công tắc 'binh_luan_tu_do', 03/11): ô gõ chữ thật + nút Gửi; câu soạn sẵn/sticker vẫn ở nút 🙂. onGuiChu trả true ⇒ xoá ô.
+export function TamBinhLuan({ tin, ct, xem, onXem, loc, onLoc, banPhim, onBanPhim, danhMuc, onGui, dangGui, loi, onGo, onAn, onDong, choGo, onGuiChu }: {
   tin: TinTG; ct: ChiTietTG | null; xem: 'bl' | 'tha'; onXem: (x: 'bl' | 'tha') => void; loc: string | null; onLoc: (ma: string | null) => void
   banPhim: BanPhim; onBanPhim: (b: BanPhim) => void; danhMuc: DanhMucTG[]; onGui: (ma: string) => void; dangGui: boolean; loi: string | null
   onGo: (b: BinhLuanTG) => void; onAn: (b: BinhLuanTG, an: boolean) => void; onDong: () => void
+  choGo?: boolean; onGuiChu?: (s: string) => Promise<boolean>
 }) {
+  const [chu, setChu] = useState('')
+  const guiChu = async () => { const s = chu.trim(); if (!s || dangGui || !onGuiChu) return; if (await onGuiChu(s)) setChu('') }
   const k = ct?.khen ?? tin.khen
   const chuTin = ct?.chu_tin ?? tin.cua_toi
   if (xem === 'tha') {
@@ -539,11 +544,21 @@ export function TamBinhLuan({ tin, ct, xem, onXem, loc, onLoc, banPhim, onBanPhi
       chan={<>
         {loi && <p className="text-[14.5px] font-semibold" style={{ color: MAU.sai }}>{loi}</p>}
         <div className="flex items-center gap-2">
-          <button onClick={() => onBanPhim(banPhim === 'cau' ? 'dong' : 'cau')} className="h-10 min-w-0 flex-1 truncate rounded-full px-4 text-left text-[15.5px]"
-            style={{ background: MAU.surface2, color: MAU.muted, border: `1px solid ${banPhim !== 'dong' ? MAU.acc : 'transparent'}` }}>
-            {dangGui ? 'Đang gửi…' : chuTin ? 'Trả lời mọi người…' : 'Viết bình luận…'}</button>
-          <button onClick={() => onBanPhim(banPhim === 'sticker' ? 'dong' : 'sticker')} aria-label="Sticker" className="flex h-10 w-10 flex-none items-center justify-center rounded-full text-[23px]"
-            style={{ background: banPhim === 'sticker' ? MAU.surface2 : 'transparent' }}>🙂</button>
+          {choGo
+            ? <input value={chu} onChange={(e) => setChu(e.target.value.slice(0, 120))} maxLength={120} enterKeyHint="send"
+                onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); guiChu() } }} onFocus={() => { if (banPhim !== 'dong') onBanPhim('dong') }}
+                placeholder={dangGui ? 'Đang gửi…' : chuTin ? 'Trả lời mọi người…' : 'Viết bình luận…'} aria-label="Viết bình luận"
+                className="h-10 min-w-0 flex-1 rounded-full px-4 text-[15.5px] outline-none"
+                style={{ background: MAU.surface2, color: MAU.ink, border: `1px solid ${chu ? MAU.acc : 'transparent'}` }} />
+            : <button onClick={() => onBanPhim(banPhim === 'cau' ? 'dong' : 'cau')} className="h-10 min-w-0 flex-1 truncate rounded-full px-4 text-left text-[15.5px]"
+                style={{ background: MAU.surface2, color: MAU.muted, border: `1px solid ${banPhim !== 'dong' ? MAU.acc : 'transparent'}` }}>
+                {dangGui ? 'Đang gửi…' : chuTin ? 'Trả lời mọi người…' : 'Viết bình luận…'}</button>}
+          {/* có ô gõ: 🙂 bật/tắt cả bàn phím câu + sticker · không có: 🙂 chỉ là sticker như cũ */}
+          <button onClick={() => onBanPhim(choGo ? (banPhim === 'dong' ? 'cau' : 'dong') : (banPhim === 'sticker' ? 'dong' : 'sticker'))}
+            aria-label={choGo ? 'Câu có sẵn và sticker' : 'Sticker'} className="flex h-10 w-10 flex-none items-center justify-center rounded-full text-[23px]"
+            style={{ background: (choGo ? banPhim !== 'dong' : banPhim === 'sticker') ? MAU.surface2 : 'transparent' }}>🙂</button>
+          {choGo && chu.trim() !== '' && <button onClick={guiChu} disabled={dangGui} className="h-10 flex-none px-4 text-[15px] font-extrabold disabled:opacity-50"
+            style={{ background: MAU.acc, color: MAU.accInk, borderRadius: 'var(--sk-radius-pill)' }}>Gửi</button>}
         </div>
         {banPhim !== 'dong' && <>
           <div className="flex gap-1 rounded-full p-1" style={THE_TRON}>{tabPhim('cau', 'Câu')}{tabPhim('sticker', 'Sticker')}</div>
@@ -608,7 +623,7 @@ export function TamKetBan({ tim, onTim, ds, onGui, onDong }: { tim: string; onTi
 
 // ── CONTAINER ───────────────────────────────────────────────────────────────
 // Nhớ dữ liệu từng tab tới F5 ⇒ rời màn quay lại không trắng, tải nền rồi thay (CLAUDE §2).
-const NHO: { tab: KenhId; kenh: Partial<Record<KenhId, KenhTG>>; banBe: BanBeTG | null; danhMuc: DanhMucTG[] | null; choKhoe: ChoKhoe | null } = { tab: 'tg', kenh: {}, banBe: null, danhMuc: null, choKhoe: null }
+const NHO: { tab: KenhId; kenh: Partial<Record<KenhId, KenhTG>>; banBe: BanBeTG | null; danhMuc: DanhMucTG[] | null; choKhoe: ChoKhoe | null; choGo: boolean | null } = { tab: 'tg', kenh: {}, banBe: null, danhMuc: null, choKhoe: null, choGo: null }
 const loiText = (e: unknown) => (e as { message?: string })?.message ?? String(e)
 type TamBL = { tin: TinTG; ct: ChiTietTG | null; xem: 'bl' | 'tha'; loc: string | null; banPhim: BanPhim; dangGui: boolean; loi: string | null }
 
@@ -617,6 +632,7 @@ export default function TheGioiHS({ onBack }: { onBack: () => void }) {
   const [kenh, setKenh] = useState<Partial<Record<KenhId, KenhTG>>>(NHO.kenh)
   const [banBe, setBanBe] = useState<BanBeTG | null>(NHO.banBe)
   const [danhMuc, setDanhMuc] = useState<DanhMucTG[]>(NHO.danhMuc ?? [])
+  const [choGo, setChoGo] = useState(NHO.choGo ?? false)   // công tắc 'binh_luan_tu_do' (DB vẫn tự chặn nếu đóng)
   const [loi, setLoi] = useState<string | null>(null)
   const [moGop, setMoGop] = useState<Record<string, boolean>>({})
   const [menuKhoa, setMenuKhoa] = useState<string | null>(null)
@@ -635,6 +651,7 @@ export default function TheGioiHS({ onBack }: { onBack: () => void }) {
   const taiBan = () => banBeCuaToi().then(setBanBe).catch(() => {})
   useEffect(() => { taiKenh(tab); if (tab === 'ban') taiBan() }, [tab])
   useEffect(() => { layChoKhoe().then((c) => { NHO.choKhoe = c; setChoKhoe(c) }).catch(() => {}) }, [])
+  useEffect(() => { tinhNangMoCuaToi().then((s) => { const mo = s === 'tat_ca' || s.has('binh_luan_tu_do'); NHO.choGo = mo; setChoGo(mo) }).catch(() => {}) }, [])
   useEffect(() => { if (!NHO.danhMuc) layDanhMuc().then((d) => { NHO.danhMuc = d; setDanhMuc(d) }).catch(() => {}) }, [])
   const baoLoi = (s: string) => { setBao(s); window.clearTimeout(baoRef.current); baoRef.current = window.setTimeout(() => setBao(null), 2800) }
 
@@ -675,6 +692,19 @@ export default function TheGioiHS({ onBack }: { onBack: () => void }) {
       setTamBL((b) => b && { ...b, dangGui: false, banPhim: b.banPhim === 'sticker' ? 'sticker' : 'dong', ct: b.ct && { ...b.ct, bl: [...b.ct.bl, r.bl] } })
       vaKhen(khoa, r.khen)
     } catch (e) { setTamBL((b) => b && { ...b, dangGui: false, loi: `Chưa gửi được — ${loiText(e)}` }) }
+  }
+  // Bình luận chữ: bị chặn (từ bậy/link/số) ⇒ hiện câu DB trả về, GIỮ chữ trong ô để em sửa.
+  const guiBLChu = async (s: string): Promise<boolean> => {
+    if (!tamBL || tamBL.dangGui) return false
+    const khoa = tamBL.tin.khoa
+    setTamBL({ ...tamBL, dangGui: true, loi: null })
+    try {
+      const r = await guiBinhLuanChu(khoa, s)
+      if (!r.ok) { setTamBL((b) => b && { ...b, dangGui: false, loi: r.loi }); return false }
+      setTamBL((b) => b && { ...b, dangGui: false, ct: b.ct && { ...b.ct, bl: [...b.ct.bl, r.bl] } })
+      vaKhen(khoa, r.khen)
+      return true
+    } catch (e) { setTamBL((b) => b && { ...b, dangGui: false, loi: `Chưa gửi được — ${loiText(e)}` }); return false }
   }
   const goBL = async (bl: BinhLuanTG) => {
     if (!tamBL) return
@@ -730,7 +760,8 @@ export default function TheGioiHS({ onBack }: { onBack: () => void }) {
       choKhoe={choKhoe} onKhoe={(tt) => setTamKhoe({ tt, cau: null, dang: false, loi: null })} onGoKhoe={goBaiKhoe}>
       {tamBL && <TamBinhLuan tin={tamBL.tin} ct={tamBL.ct} xem={tamBL.xem} onXem={(xem) => setTamBL((b) => b && { ...b, xem, loc: null })}
         loc={tamBL.loc} onLoc={(loc) => setTamBL((b) => b && { ...b, loc })} banPhim={tamBL.banPhim} onBanPhim={(banPhim) => setTamBL((b) => b && { ...b, banPhim })}
-        danhMuc={danhMuc} onGui={guiBL} dangGui={tamBL.dangGui} loi={tamBL.loi} onGo={goBL} onAn={anBL} onDong={() => setTamBL(null)} />}
+        danhMuc={danhMuc} onGui={guiBL} dangGui={tamBL.dangGui} loi={tamBL.loi} onGo={goBL} onAn={anBL} onDong={() => setTamBL(null)}
+        choGo={choGo} onGuiChu={guiBLChu} />}
       {tamKhoe && <TamKhoe tt={tamKhoe.tt} danhMuc={danhMuc} cau={tamKhoe.cau} onCau={(cau) => setTamKhoe((x) => x && { ...x, cau })}
         onDang={dang} dangDang={tamKhoe.dang} loi={tamKhoe.loi} onDong={() => setTamKhoe(null)} />}
       {lenSong && <LenSong tt={lenSong} onXem={() => { setLenSong(null); setMenuKhoa(null); setTab('tg'); window.scrollTo({ top: 0 }) }} />}

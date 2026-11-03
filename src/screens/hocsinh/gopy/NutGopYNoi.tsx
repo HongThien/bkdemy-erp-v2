@@ -4,6 +4,8 @@
 // · Bấm ⇒ tấm nhập nhanh NGAY TẠI CHỖ (không rời màn đang làm — em đang làm bài không bị mất): Báo lỗi / Góp ý tưởng · 10–1.500 chữ · ảnh tuỳ chọn.
 // · Báo kèm màn đang mở + môn + cỡ màn (ngữ cảnh) để thầy cô tái hiện lỗi. Luật (độ dài, 5 lần/ngày) ở DB — fn_hs_gui_gop_y (lib/gopy_hs.ts).
 // · Muốn xem thầy cô trả lời ⇒ "Xem góp ý của em" mở màn Góp ý đầy đủ (HocSinhApp nghe sự kiện). Màn Góp ý + Hướng dẫn tương tác thì ẩn nút.
+// · MÀN CHÍNH (Thùy 03/11: HS không nhận ra chỗ góp ý): thay chấm nhỏ bằng LINH VẬT to ở góc dưới trái + bong bóng "Góp ý ở đây nhé!"
+//   — bấm mở đúng tấm nhập ở trên. Hình dùng chung mọi style (public/bk-ui/hs/gop-y/), bong bóng lấy màu skin.
 // Màu/khung CHỈ từ skin (KhungHS). Gốc FORMAL: chữ trung tính.
 // ============================================================================
 import { useCallback, useEffect, useRef, useState } from 'react'
@@ -27,9 +29,9 @@ function docVt(): ViTri {
   return { ben: 'r', y: null }
 }
 
-function Tam({ man, onDong }: { man: string; onDong: () => void }) {
+function Tam({ man, onDong, loaiDau = 'bug' }: { man: string; onDong: () => void; loaiDau?: LoaiGopY }) {
   const mon = useMonHS()
-  const [loai, setLoai] = useState<LoaiGopY>('bug')
+  const [loai, setLoai] = useState<LoaiGopY>(loaiDau)
   const [moTa, setMoTa] = useState('')
   const [anh, setAnh] = useState<Blob | null>(null)
   const [xemAnh, setXemAnh] = useState<string | null>(null)
@@ -142,6 +144,12 @@ export function NutGopYNoi() {
   }, [])
 
   if (AN_O.has(man)) return null
+  if (man === 'man_chinh') return (
+    <>
+      <LinhVatGopY onMo={() => setMo(true)} />
+      {mo && <Tam man={man} loaiDau="yeu_cau" onDong={() => setMo(false)} />}
+    </>
+  )
   const pos: React.CSSProperties = keo
     ? { left: keo.x - 22, top: keo.y - 22 }
     : { [vt.ben === 'l' ? 'left' : 'right']: 10, ...(vt.y === null ? { bottom: 'calc(14px + env(safe-area-inset-bottom))' } : { top: `calc(${vt.y * 100}% - 22px)` }) }
@@ -157,5 +165,27 @@ export function NutGopYNoi() {
       </button>
       {mo && <Tam man={man} onDong={() => setMo(false)} />}
     </>
+  )
+}
+
+// Linh vật góp ý ở màn chính: nổi nhẹ lên xuống (chỉ transform, tắt khi máy bật giảm chuyển động — STYLE-HS §2.7).
+const ANH_LINH_VAT = '/bk-ui/hs/gop-y/linh_vat_gop_y.png'
+function LinhVatGopY({ onMo }: { onMo: () => void }) {
+  return (
+    <button onClick={onMo} aria-label="Góp ý ở đây nhé — gửi góp ý hoặc báo lỗi cho thầy cô"
+      className="fixed z-50 flex select-none flex-col items-center active:scale-95"
+      style={{ left: 'calc(6px + env(safe-area-inset-left))', bottom: 'calc(6px + env(safe-area-inset-bottom))' }}>
+      <style>{`@keyframes gopy-noi{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+        .gopy-noi{animation:gopy-noi 2.6s ease-in-out infinite;will-change:transform}
+        @media (prefers-reduced-motion: reduce){.gopy-noi{animation:none}}`}</style>
+      <span className="relative mb-1 whitespace-nowrap px-3 py-1.5 text-[14px] font-extrabold leading-tight sm:text-[15.5px]"
+        style={{ background: MAU.surface, color: MAU.ink, border: `2px solid ${MAU.acc}`, borderRadius: 'var(--sk-radius-pill)', fontFamily: 'var(--sk-font-head)', boxShadow: '0 4px 12px rgba(0,0,0,.3)' }}>
+        Góp ý ở đây nhé!
+        <span aria-hidden className="absolute left-1/2 top-full h-0 w-0 -translate-x-1/2"
+          style={{ borderLeft: '7px solid transparent', borderRight: '7px solid transparent', borderTop: `8px solid ${MAU.acc}` }} />
+      </span>
+      <img src={ANH_LINH_VAT} alt="" draggable={false} className="gopy-noi h-[92px] w-auto sm:h-[120px]"
+        style={{ filter: 'drop-shadow(0 6px 10px rgba(0,0,0,.35))' }} />
+    </button>
   )
 }

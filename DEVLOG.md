@@ -78477,3 +78477,10 @@ Thùy nêu 4 việc, làm được 3:
 - Theo GHẾ, không gõ tên: GĐ = ghế gốc 'truong' team core (`_phong_la_gd`) · trưởng vận hành = gốc team ops · trưởng bộ môn môn X = ghế truong/pho cao nhất cây GV môn X khác người xem ⇒ Toán Trang · KHTN Ngọc · **Tiếng Anh anh Hoà** (dữ liệu có, Thùy không kể — giữ vì cùng luật phòng TBM đang dùng) · Văn chưa có ⇒ ghế trống đỏ.
 - `_phong_ghe_tbm_core(mon[])` (thân fn_phong_ghe_tbm, md5 Ngọc + Trang khớp trước/sau) · `fn_phong_ghe_tbm_mon` · `fn_phong_ghe_gd` (số trưởng bộ môn = gộp ghế trưởng khối: hiệu suất trung bình theo TA có số). Thử ROLLBACK: Trang bị chặn, phòng Thùy 1,2 s.
 - Client: tầng xemMon trên xemTk (GĐ → phòng TBM môn → phòng TK → chi tiết TA); Lộc bấm ⇒ hộp "chưa có cơ cấu".
+
+## 03/11 (tối) — App HS: linh vật góp ý ở màn chính + bình luận tự do Thế giới BK có lọc từ bậy — mig 202611031739 ĐÃ ÁP
+- Thùy: HS không nhận ra chỗ góp ý ⇒ màn chính thay chấm nhỏ bằng linh vật to (ảnh Thùy gửi, đã tách nền trắng → `public/bk-ui/hs/gop-y/linh_vat_gop_y.png`) góc dưới trái + bong bóng "Góp ý ở đây nhé!", bấm mở tấm góp ý (mặc định tab Góp ý tưởng). Màn khác giữ chấm nhỏ. KHÔNG dính xu (Thùy đính chính: "nhận ra chỗ để góp ý").
+- Bình luận tự do: `the_gioi_binh_luan.noi_dung_tu_do` (CHECK đúng 1 trong noi_dung_ma/noi_dung_tu_do) · RPC `fn_the_gioi_binh_luan_chu` (công tắc `tinh_nang.binh_luan_tu_do` mở 03/11, 3 bl/tin, 30 bl chữ/ngày, ≤120 chữ) · bị chặn trả {ok:false} để sổ `the_gioi_bl_chan` còn.
+- Lọc: bảng `tu_cam` (sửa không cần deploy) + `_bl_kiem`: NFC, leet, gộp chữ lặp, nối chữ cái rời; 3 kiểu mẫu tu_co_dau (lồn≠lớn, ngu≠ngủ…) / tu_khong_dau (teencode) / dinh (chuỗi con bỏ khoảng trắng); chặn link, tên MXH, @tài khoản, ≥9 chữ số.
+- Kiểm: 46 câu bậy/lách luật lọt 0 · 50 câu lành + 104 câu soạn sẵn + 506 tên HS ×2 + góp ý thật: chặn nhầm 0 (3 câu bị chặn đều đúng). RPC thử dưới JWT HS (rollback): câu lành lên, "đm…" và "zalo" bị chặn + ghi sổ.
+- Chưa có: màn cho thầy cô xem sổ chặn / sửa `tu_cam`; bình luận cũ không bị lọc lại khi thêm mẫu mới. check:style-hs RỚT ở CaBoTroHS.tsx (từ 17/10, không thuộc đợt này).

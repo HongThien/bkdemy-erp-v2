@@ -4,8 +4,9 @@ import { supabase } from './supabase'
 
 export type KenhId = 'tg' | 'ban' | 'lop'
 export type NguoiTG = { an: boolean; id?: string; ten?: string; lop?: string; anh?: string; ma?: string }
-// Tương tác kiểu FACEBOOK (mig 202609290148): ① thả cảm xúc (1 / em / tin) · ② bình luận = câu soạn sẵn hoặc sticker.
-export type BinhLuanTG = { id: string; at: string; loai: 'cau' | 'sticker'; ma: string; noi_dung: string; nguoi: NguoiTG; la_em: boolean; an: boolean }
+// Tương tác kiểu FACEBOOK (mig 202609290148): ① thả cảm xúc (1 / em / tin) · ② bình luận = câu soạn sẵn hoặc sticker
+// · ③ (03/11, mig 202611031739) chữ tự gõ — loai 'chu', ma null; lọc từ bậy ở DB (_bl_kiem + bảng tu_cam).
+export type BinhLuanTG = { id: string; at: string; loai: 'cau' | 'sticker' | 'chu'; ma: string | null; noi_dung: string; nguoi: NguoiTG; la_em: boolean; an: boolean }
 export type KhenTG = {
   dem: { icon: string; ma: string; nhan: string; so: number }[]
   tong: number
@@ -55,6 +56,9 @@ const locKenh = (k: KenhTG): KenhTG => (RANK_BAT() ? k : { ...k, tin: k.tin.filt
 export const layKenh = (k: KenhId) => rpc<KenhTG>('fn_the_gioi_kenh', { p_kenh: k }).then(locKenh)
 export const thaCamXuc = (khoa: string, icon: string | null) => rpc<KhenTG>('fn_the_gioi_tha', { p_khoa: khoa, p_icon: icon })   // null = bỏ thả
 export const guiBinhLuan = (khoa: string, ma: string) => rpc<{ bl: BinhLuanTG; khen: KhenTG }>('fn_the_gioi_binh_luan', { p_khoa: khoa, p_ma: ma })
+// Bị chặn (từ bậy / link / số điện thoại) ⇒ ok:false + câu báo cho em, KHÔNG ném lỗi (DB giữ sổ the_gioi_bl_chan).
+export type KetQuaBLChu = { ok: true; bl: BinhLuanTG; khen: KhenTG } | { ok: false; loi: string }
+export const guiBinhLuanChu = (khoa: string, noiDung: string) => rpc<KetQuaBLChu>('fn_the_gioi_binh_luan_chu', { p_khoa: khoa, p_noi_dung: noiDung })
 export const goBinhLuan = (id: string) => rpc<KhenTG>('fn_the_gioi_go_binh_luan', { p_id: id })
 export const anBinhLuan = (id: string, an: boolean) => rpc<KhenTG>('fn_the_gioi_an_binh_luan', { p_id: id, p_an: an })
 export const layChiTiet = (khoa: string) => rpc<ChiTietTG>('fn_the_gioi_chi_tiet', { p_khoa: khoa })
