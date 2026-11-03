@@ -78587,3 +78587,12 @@ Thùy nêu 4 việc, làm được 3:
 - Nông trại: mẹo Lộc `nha_canh` (nút 🎨), `may_cb` (thay mẹo "lò bánh 1 mẻ/ngày", kèm ⚡ toán), `giup_exp` — mọi em thấy 1 lần, lần lượt.
 - Giúp bạn: Thùy "tạm thời cộng exp, 1 ngày tối đa 10 lần" ⇒ `_nt_luat().giup` 5 → 10 (server tự chặn lượt 11) + `LUAT.giup = 10`. Điểm Friendship: CHƯA làm ("tính sau").
 - Chưa thử bằng phiên HS đăng nhập thật; cần deploy app.
+
+## 03/11 (tối, tiếp) — Nông trại: +3 nền (Xuân — Tết · Chiều thu · Đêm Trung thu), Halloween tối lại — game 0ae6747
+- Thùy: "thêm 3 loại background khác nữa đi. Halloween sáng quá". Bảng chọn giờ 6 nền theo mùa: Đồng quê · Xuân — Tết · Chiều thu · Trang trại tuyết · Đêm Trung thu · Đêm Halloween.
+- Shader chung (`dohoa.js`, `DH.TUYET`) thêm 2 kênh, cùng luật trừ vùng ruộng: `hoa` (tán lá xanh điểm ô hồng/trắng theo ô 18 cm, không chạm mặt đất) cho Tết; `thu` (lá xanh ⇒ đỏ/cam/vàng theo mảng, chừa ~15% cây xanh; mặt đất chỉ ngả vàng úa 50%). Bản thu đầu cam đều cả cảnh (cỏ cũng cam) — đã giảm.
+- Đồ riêng mỗi nền: Tết = cây đào/mai to, chậu quất, đèn lồng đỏ, thảm + cánh đào bay; Thu = rơm cuộn, đống lá, bí ngô, lá rơi; Trung thu = đèn ông sao (Extrude 5 cánh, tự sáng), đèn lồng sáng, dây đèn lồng dọc rào trước sân, trăng rằm, sao, đèn trời bay lên. Hạt rơi gộp 1 hàm `hatRoi` (tuyết · cánh đào · lá).
+- Halloween: nắng 1.0 → 0.7, bán cầu 1.0 → 0.68, tối mép 0.66. Nước ao nhân màu theo nền (`nuocMat`, đêm ×0.45–0.5) — trước đó ao sáng chói giữa đêm. Bản Trung thu đầu sáng như buổi chiều + thưa đèn — đã tối lại, thêm đèn.
+- `dongBo()` giờ áp lựa chọn đã lưu mỗi lần đồng bộ ⇒ thử bằng `NT_SCENE.doiNen` tay sẽ bị đè; thử phải sửa `NT_UI.s.giaoDien` hoặc qua bảng chọn.
+- Mig `202611032033_nt_ban_vuon_giao_dien_mau.sql`: danh sách trắng cứng (3 nền) ⇒ kiểm theo mẫu `^[a-z_]{1,16}$`, thêm nền sau này không cần migration. **CHƯA ÁP** (lệnh bị chặn quyền, chờ Thùy gật). Chưa áp thì bạn chọn Tết/Thu/Trung thu sẽ hiện "Đồng quê" khi em khác sang thăm.
+- Soi 1024×768 đủ 6 nền + bảng chọn. `test-engine`: tất cả luật đúng.

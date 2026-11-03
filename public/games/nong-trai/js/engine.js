@@ -461,7 +461,7 @@ function banTT(s, k) {
   });
   const vat = { ga: { con: Array.from({ length: B.ga }, () => ({ an: lanCuoi })) }, bo: { con: Array.from({ length: B.bo }, () => ({ an: lanCuoi })) } };
   const tts = Object.keys(TRANG_TRI), trangTri = Array.from({ length: LUAT.soChoTrangTri }, (_, o) => bam(hat + '|tt' + o) < 0.4 ? tts[Math.floor(bam(hat + '|ttl' + o) * tts.length)] : null);
-  return { k, ten: B.ten, cap: B.cap, hat, oMo: ruong.length, ruong, vat, lo: null, trangTri, thu: { cho: { tc: [0, 20, 50, 100][B.cho], d: -1 }, meo: { tc: 0, d: -1 }, chim: { tc: 0, d: -1 } }, giaoDien: { nha: ['viet', 'nhat', 'hylap', 'go'][k % 4], nen: ['thuong', 'tuyet', 'dem'][k % 3] }, laBan: true };
+  return { k, ten: B.ten, cap: B.cap, hat, oMo: ruong.length, ruong, vat, lo: null, trangTri, thu: { cho: { tc: [0, 20, 50, 100][B.cho], d: -1 }, meo: { tc: 0, d: -1 }, chim: { tc: 0, d: -1 } }, giaoDien: { nha: ['viet', 'nhat', 'hylap', 'go'][k % 4], nen: ['tet', 'tuyet', 'dem', 'thu', 'trungthu', 'thuong'][k % 6] }, laBan: true };
 }
 // bạn thật: khoá ô = hat|o{j} (khoaO của chủ vườn), bonus mùa theo ngày gieo + ngay0 của CHỦ — khớp hàm server _nt_o_tt
 function oBanTT(s, st, j) {

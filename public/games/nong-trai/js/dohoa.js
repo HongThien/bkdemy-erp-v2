@@ -30,13 +30,13 @@ const TS = {
 };
 
 // ---------- 1. viền sáng (+ tuyết phủ): chèn vào MỌI MeshStandardMaterial (kể cả mô hình KayKit/Quaternius) ----------
-const TUYET = { manh: { value: 0 }, chua: { value: new T.Vector4(1e5, 1e5, 1e5, 1e5) } }; // chua = (x0, z0, x1, z1) vùng không phủ tuyết
+const TUYET = { manh: { value: 0 }, thu: { value: 0 }, hoa: { value: 0 }, chua: { value: new T.Vector4(1e5, 1e5, 1e5, 1e5) } }; // chua = (x0, z0, x1, z1) vùng không phủ tuyết
 if (moi) {
   const P = T.MeshStandardMaterial.prototype;
   P.onBeforeCompile = function (sh) {
     if (this.userData && this.userData.khongVien) return;
     // TUYẾT (nền "Trang trại tuyết", 03/11): mặt hướng lên trời phủ trắng theo uTuyet (0 = tắt) — trừ vùng uChua (ruộng: giữ đất/cây đọc được trạng thái)
-    sh.uniforms.uTuyet = TUYET.manh; sh.uniforms.uChua = TUYET.chua;
+    sh.uniforms.uTuyet = TUYET.manh; sh.uniforms.uThu = TUYET.thu; sh.uniforms.uHoa = TUYET.hoa; sh.uniforms.uChua = TUYET.chua;
     sh.vertexShader = 'varying vec3 vDhTg;\n' + sh.vertexShader.replace('#include <project_vertex>', `#include <project_vertex>
       {
         vec4 dhP = vec4(transformed, 1.0);
@@ -45,13 +45,31 @@ if (moi) {
         #endif
         vDhTg = (modelMatrix * dhP).xyz;
       }`);
-    sh.fragmentShader = 'uniform float uTuyet; uniform vec4 uChua; varying vec3 vDhTg;\n' + sh.fragmentShader.replace('#include <normal_fragment_maps>', `#include <normal_fragment_maps>
+    sh.fragmentShader = 'uniform float uTuyet, uThu, uHoa; uniform vec4 uChua; varying vec3 vDhTg;\n' + sh.fragmentShader.replace('#include <normal_fragment_maps>', `#include <normal_fragment_maps>
       if (uTuyet > 0.0) {
         float dhLen = (vec4(normal, 0.0) * viewMatrix).y;
         float dhNgoai = max(max(uChua.x - vDhTg.x, vDhTg.x - uChua.z), max(uChua.y - vDhTg.z, vDhTg.z - uChua.w));
         float dhLoang = 0.85 + 0.15 * sin(vDhTg.x * 1.7 + sin(vDhTg.z * 0.9) * 2.0) * sin(vDhTg.z * 1.3);
         float dhPhu = uTuyet * smoothstep(0.35, 0.7, dhLen) * smoothstep(0.0, 0.3, dhNgoai) * dhLoang;
         diffuseColor.rgb = mix(diffuseColor.rgb, vec3(0.9, 0.94, 1.0), clamp(dhPhu, 0.0, 1.0));
+      }
+      if (uHoa > 0.0) { // XUÂN (03/11): tán lá xanh điểm hoa hồng / trắng theo ô nhỏ (không chạm mặt đất, trừ ruộng)
+        vec3 dhC = diffuseColor.rgb; float dhXanh = clamp((dhC.g - max(dhC.r, dhC.b)) * 7.0, 0.0, 1.0);
+        float dhNgoai = max(max(uChua.x - vDhTg.x, vDhTg.x - uChua.z), max(uChua.y - vDhTg.z, vDhTg.z - uChua.w));
+        float dhNen = smoothstep(0.85, 0.97, (vec4(normal, 0.0) * viewMatrix).y) * step(vDhTg.y, 0.15);
+        float dhO = fract(sin(dot(floor(vDhTg * 5.5), vec3(12.9898, 78.233, 37.719))) * 43758.5453);
+        vec3 dhHong = mix(vec3(1.0, 0.45, 0.62), vec3(1.0, 0.85, 0.9), step(0.93, dhO));
+        diffuseColor.rgb = mix(dhC, dhHong, step(0.6, dhO) * dhXanh * uHoa * (1.0 - dhNen) * smoothstep(0.0, 0.3, dhNgoai) * step(0.35, vDhTg.y));
+      }
+      if (uThu > 0.0) { // MÙA THU (03/11): màu xanh lá ngả cam / đỏ / vàng theo mảng; mặt đất (hướng lên) chỉ ngả vàng úa — trừ ruộng
+        vec3 dhC = diffuseColor.rgb; float dhXanh = clamp((dhC.g - max(dhC.r, dhC.b)) * 7.0, 0.0, 1.0);
+        float dhNgoai = max(max(uChua.x - vDhTg.x, vDhTg.x - uChua.z), max(uChua.y - vDhTg.z, vDhTg.z - uChua.w));
+        float dhN = 0.5 + 0.5 * sin(vDhTg.x * 0.9 + 1.3) * sin(vDhTg.z * 0.7 + vDhTg.y * 1.1);
+        vec3 dhLa = (dhN < 0.5 ? mix(vec3(0.78, 0.12, 0.04), vec3(0.95, 0.42, 0.03), dhN * 2.0) : mix(vec3(0.95, 0.42, 0.03), vec3(0.92, 0.72, 0.05), dhN * 2.0 - 1.0)) * (dhC.g * 1.9 + 0.03);
+        float dhGiu = 1.0 - smoothstep(0.1, 0.22, fract(sin(dot(floor(vDhTg.xz * 0.45), vec2(12.9898, 78.233))) * 43758.5453)); // ~15% mảng cây còn xanh
+        vec3 dhCo = mix(dhC, vec3(dhC.g * 0.95, dhC.g * 0.86, dhC.g * 0.3), 0.5);
+        float dhDat = smoothstep(0.8, 0.97, (vec4(normal, 0.0) * viewMatrix).y);
+        diffuseColor.rgb = mix(dhC, mix(dhLa, dhCo, dhDat), dhXanh * uThu * smoothstep(0.0, 0.3, dhNgoai) * mix(1.0 - dhGiu, 1.0, dhDat));
       }`).replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
       {
         float dhVien = pow(1.0 - clamp(dot(normal, normalize(vViewPosition)), 0.0, 1.0), 3.0);

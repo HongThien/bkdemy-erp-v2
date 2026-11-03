@@ -446,6 +446,10 @@ body.dangTham .cu[data-cu="gieo"], body.dangTham .cu[data-cu="bon"] { opacity: .
 .gdThe.nen-tuyet { background: linear-gradient(#eef5ff, #fff); }
 .gdThe.nen-dem { background: linear-gradient(#3a2a66, #5b3a7a); color: #fff; }
 .gdThe.nen-dem .nho { color: #e8d8ff; }
+.gdThe.nen-tet { background: linear-gradient(#ffe6ef, #fff); }
+.gdThe.nen-thu { background: linear-gradient(#ffd9b8, #fff4ea); }
+.gdThe.nen-trungthu { background: linear-gradient(#16265e, #2f4a8a); color: #fff; }
+.gdThe.nen-trungthu .nho { color: #ffe3a8; }
 
 /* ===== PHÓNG TO GIAO DIỆN (Thùy 03/11: mọi ô chữ, nút to ~50% trên PC / iPad) =====
    --k = hệ số phóng: màn ≥ 600px cao (iPad 1024×768, 1180×820, PC) ⇒ 1.5 · màn vừa ⇒ 1.25 · điện thoại ngang (≤ 500px cao) giữ nguyên.
