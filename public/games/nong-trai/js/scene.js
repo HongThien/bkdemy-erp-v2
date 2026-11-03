@@ -362,14 +362,18 @@ function dungTheGioi() {
   const themBui = (x, z) => { if (!trongHo(x, z, 0)) bui.push({ x, z, kieu: 'bui', xoay: r2() * 6, k: 1.05 + r2() * 0.5 }); };
   for (let x = B.x0 + 0.8; x < B.x1 + 0.5; x += 1.1 + r2() * 0.5) { themBui(x, B.z0 - 0.5 - r2() * 0.5); themBui(x, B.z1 + 0.5 + r2() * 0.5); }
   for (let z = B.z0; z < B.z1 + 0.5; z += 1.1 + r2() * 0.5) { themBui(B.x1 + 0.5 + r2() * 0.5, z); themBui(B.x0 - 0.5 - r2() * 0.5, z); }
+  // Thùy 03/11 'cây hơi xấu, nhiều mẫu hơn': 9 kiểu (models.js cayBongGeo); dừa/tre gần trại, thông/bách ra xa
+  const CAY_CACH = { bui: 1.1, bach: 1.25, bachTung: 1.15, tre: 1.35, dua: 1.6, tang: 2.0 };
+  const chonKieuCay = (q, ngoai) => { const ds = [['tron', 26], ['cao', 13], ['tang', 11], ['bach', 9], ['bui', 8], ['tre', ngoai < 14 ? 8 : 2], ['dua', ngoai < 12 ? 5 : 0], ['bachTung', ngoai > 4 ? 8 : 1], ['thong', ngoai > 8 ? 12 : 0]];
+    let t = 0; for (const d of ds) t += d[1]; q *= t; for (const d of ds) { if (q < d[1]) return d[0]; q -= d[1]; } return 'tron'; };
   const rung = [], luoi = new Map();
   const choTrong = (x, z, d) => { const gx = Math.floor(x / 3), gz = Math.floor(z / 3); for (let i = -1; i <= 1; i++) for (let j = -1; j <= 1; j++) for (const p of luoi.get((gx + i) + ',' + (gz + j)) || []) if (Math.hypot(p[0] - x, p[1] - z) < d) return false; return true; };
   const ghi = (x, z) => { const k = Math.floor(x / 3) + ',' + Math.floor(z / 3); if (!luoi.has(k)) luoi.set(k, []); luoi.get(k).push([x, z]); };
   for (let i = 0; i < 9000 && rung.length < 300; i++) {
     const x = -60 + r2() * 110, z = -50 + r2() * 100, ngoai = Math.max(B.x0 - x, x - B.x1, B.z0 - z, z - B.z1);
     if (ngoai < 1.8 || r2() > (ngoai < 10 ? 1 : ngoai < 22 ? 0.5 : 0.22)) continue;
-    const q = r2(), kieu = ngoai > 8 && q < 0.14 ? 'thong' : q < 0.4 ? 'cao' : q < 0.5 ? 'bui' : 'tron', k = kieu === 'bui' ? 1.2 + r2() * 0.6 : 1.15 + r2() * 0.75;
-    if (!choTrong(x, z, (kieu === 'bui' ? 1.1 : 1.7) * k)) continue;
+    const kieu = chonKieuCay(r2(), ngoai), k = kieu === 'bui' ? 1.2 + r2() * 0.6 : kieu === 'tre' ? 1.0 + r2() * 0.35 : kieu === 'dua' ? 1.3 + r2() * 0.35 : 1.15 + r2() * 0.75;
+    if (!choTrong(x, z, (CAY_CACH[kieu] || 1.7) * k)) continue;
     ghi(x, z); rung.push({ x, z, kieu, xoay: r2() * 6, k, min: ngoai > 12 ? 0 : 1 });
   }
   // vài cây to đứng trong góc trại

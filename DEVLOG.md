@@ -78608,3 +78608,9 @@ Thùy nêu 4 việc, làm được 3:
 - **Thanh nút phải lệch** (Thùy gửi ảnh: "Thú cưng", "Nhà & cảnh" xuống 2 dòng ⇒ icon các ô không thẳng hàng): nới ngang `#nutPhai .nutNho` 50→72px (điện thoại ngang 44→62px), nhãn `nowrap`. Đo 1024×768 và 844×390: cả 6 nhãn 1 dòng, cao ô đều. Game commit riêng ở repo NongTrai.
 - Chưa xử: nút góp ý tím (của khung app HS, không thuộc game) đè góc ô "Thư" trong ảnh Thùy.
 - **Ô xu góc trên phải lệch** (Thùy gửi ảnh): số EXP trong thanh xanh tụt đáy, bị cắt nửa — ruột thanh 11px thấp hơn dòng chữ. Thanh 15→18px, chữ line-height 1. Đo 1024×768 + 844×390: số nằm giữa. Game e2395ba.
+
+## 03/11 khuya — Nông trại: rừng nhiều mẫu cây (Thùy: "Cây hơi xấu. m có đổi được nhiều mẫu cây hơn ko") — game 4b8ae55
+- Trước: 4 kiểu (tròn · cao · thông · bụi) cùng MỘT bộ xanh chói gần trùng màu cỏ ⇒ rừng chìm vào nền, cây nào cũng như nhau.
+- Giờ 9 kiểu trong `models.js` `cayBongGeo`: tròn · cao · **bàng** (3 tầng tán mỏng lệch hai bên, thấy thân giữa tầng) · **bạch dương** (thân trắng vằn đen) · **bách** (thon như ngọn lửa) · thông (4 tầng) · **tre** (8 thân đốt, lá mảnh rủ) · **dừa** (thân cong ngấn, 8 tàu lá) · bụi. Mỗi kiểu 3 bộ màu `LAR` (xanh đậm · xanh vàng · xanh lam); bảng `LA` cũ giữ nguyên cho cây ăn quả/bụi vườn.
+- `rungBong` lệch màu từng bản sao (sáng ±7%, ấm/lạnh ±3,5%, theo nghiên cứu Little Habitats). Rải theo trọng số `chonKieuCay` (scene.js): dừa/tre gần trại, thông/bách ra xa; khoảng cách riêng `CAY_CACH`.
+- Soi 1024×768: đồng quê + thu + tuyết + Tết + Halloween — shader mùa ăn đúng vào cây mới. Bản đầu tre có chỏm tròn như bóng bay, dừa bé lá như sợi, bàng thành khối bánh kem ⇒ đã sửa cả 3.
