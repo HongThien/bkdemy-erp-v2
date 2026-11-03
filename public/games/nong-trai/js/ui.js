@@ -321,6 +321,20 @@ function bongChuong(k) {
 }
 
 // ---------- MÁY CHẾ BIẾN (tên cũ trong code: lò bánh) ----------
+let choTangToc = false;   // đang chờ app trả kết quả "tăng tốc bằng toán" (app vẽ bảng câu hỏi đè lên game)
+// Tăng tốc bằng toán (03/11): chỉ khi chơi theo tài khoản — app mở bảng 3 câu, SERVER phát đề + chấm; đạt thì app trả giam ⇒ engine rút thời gian còn lại.
+function tangToc() {
+  if (choTangToc || !dht() || E.loTT(s).tt !== 'dang') return;
+  choTangToc = true; if (bangMo) veBang(true);
+  window.NT_CAU.rpc('tang_toc', { muc_tieu: 'may' }, 20 * 60e3).then(kq => {
+    choTangToc = false;
+    if (kq && kq.ok && kq.dat) {
+      const r = E.tangTocLo(s, kq.giam);
+      if (r.ok) { hieuUng(r.su, { loai: 'lo' }); E.luu(s); thongBao('⚡ Máy chạy nhanh gấp đôi — còn ' + dongHoCon(E.loTT(s).con)); AM.on('sao'); }
+    } else if (kq && kq.ok) thongBao('Chưa đạt lần này — 60 giây nữa thử lại nhé');
+    if (bangMo) veBang(true);
+  });
+}
 const dongHoCon = ms => { const g = Math.ceil(ms / 1000); return Math.floor(g / 60) + ':' + String(g % 60).padStart(2, '0'); };
 function chamLo() {
   if (D.LO_CAP > 30) return;
@@ -332,6 +346,7 @@ function veLo() {
   const tt = E.loTT(s), key = tt.tt + (tt.tt === 'dang' ? dongHoCon(tt.con) : '') + JSON.stringify(s.kho) + s.cap;
   let html = tt.tt === 'dang' ? `<div class="muc">⏳ Đang làm ${ten(tt.mon).toLowerCase()} — còn <b>${dongHoCon(tt.con)}</b>. Em đi tưới, giúp bạn rồi quay lại lấy nhé</div>`
     : '<div class="muc">Bỏ nguyên liệu vào máy, chờ vài phút ra món mới — bán được hơn bán thẳng khoảng 30%. Máy làm 1 mẻ một lúc.</div>';
+  if (tt.tt === 'dang' && dht()) html += `<div class="muc"><button class="nut vang" data-tang-toc ${choTangToc ? 'disabled' : ''}>⚡ ${choTangToc ? 'Đang làm toán…' : 'Tăng tốc bằng toán'}</button> <span class="nho">Đúng 2/3 câu ⇒ phần còn lại nhanh gấp đôi</span></div>`;
   html += '<div class="luoi">';
   for (const id in D.BANH) {
     const B = D.BANH[id];
@@ -340,7 +355,10 @@ function veLo() {
     html += `<div class="the ${tt.tt === 'trong' ? 'duoc' : ''} ${thieu ? 'thieu' : ''}" data-banh="${id}">${img(id)}<b>${B.ten}</b><span class="nho">⏱ ${B.phut} phút · bán ${B.gia} EXP (nguyên liệu bán thẳng ${von})</span><div class="canList">${Object.keys(B.can).map(k => `<span class="can ${E.so(s, k) < B.can[k] ? 'thieu' : ''}">${img(k)}${E.so(s, k)}/${B.can[k]}</span>`).join('')}</div></div>`;
   }
   html += '</div>';
-  return { key, html, gan: el => el.querySelectorAll('[data-banh]').forEach(c => c.onclick = () => { if (lam(E.nuong(s, c.dataset.banh), { loai: 'lo' })) dongBang(); }) };
+  return { key: key + choTangToc, html, gan: el => {
+    el.querySelectorAll('[data-banh]').forEach(c => c.onclick = () => { if (lam(E.nuong(s, c.dataset.banh), { loai: 'lo' })) dongBang(); });
+    const n = el.querySelector('[data-tang-toc]'); if (n) n.onclick = tangToc;
+  } };
 }
 
 // ---------- THÚ CƯNG ----------

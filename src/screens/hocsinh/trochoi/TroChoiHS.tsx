@@ -5,7 +5,8 @@
 // ============================================================================
 import { DauTrangHS, HEAD, MAU, ManHS, NhanHS, TheHS } from '../skin/KhungHS'
 import { DS_GAME, type GameHS } from './dsGame'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import TangTocToanHS, { type KqTangToc } from './TangTocToanHS'
 import { ntDhtDongBo, ntLuuDoc, ntLuuGhi, ntNhip, ntRpc, ntXuDongBo, type NtNhip } from '../../../lib/nt_luu'
 
 function Anh({ g }: { g: GameHS }) {
@@ -52,6 +53,7 @@ export function GameNongTraiHS({ onBack }: { onBack: () => void }) {
   const xung = useRef(false)
   const dang = useRef(false)
   const sanSang = useRef(false)   // đã bắt tay xong ⇒ mới gửi nhịp giờ chơi
+  const [tangToc, setTangToc] = useState<number | null>(null)   // id rpc game đang chờ kết quả "tăng tốc bằng toán" (app vẽ bảng câu hỏi đè lên game)
   const noi = (m: Record<string, unknown>) => khung.current?.contentWindow?.postMessage({ bk: 'nt', ...m }, location.origin)
   const xa = useRef<() => Promise<void>>(async () => {})
   xa.current = async () => {
@@ -85,6 +87,9 @@ export function GameNongTraiHS({ onBack }: { onBack: () => void }) {
           try { await xa.current(); const r = await ntDhtDongBo(tong); noi({ loai: 'dht', ok: r.ok, loi: r.loi, soDu: r.so_du, daTieu: r.da_tieu }) }
           catch { noi({ loai: 'dht', ok: false, loi: 'mang' }) }
         })()
+      } else if (d.loai === 'rpc' && d.ten === 'tang_toc' && typeof d.id === 'number') {
+        // tăng tốc bằng toán (03/11): KHÔNG gọi thẳng server — app mở bảng 3 câu, server phát đề + chấm, xong mới trả kết quả cho game
+        setTangToc(d.id)
       } else if (d.loai === 'rpc' && typeof d.id === 'number' && typeof d.ten === 'string') {
         // bạn lớp thật: game xin gọi hàm server (danh sách trắng ở ntRpc)
         const id = d.id
@@ -112,6 +117,7 @@ export function GameNongTraiHS({ onBack }: { onBack: () => void }) {
   return (
     <div className="fixed inset-0 z-40" style={{ background: 'var(--sk-bg)' }}>
       <iframe ref={khung} title="Nông trại BK" src="/games/nong-trai/index.html?nhung=1" className="h-full w-full border-0" allow="autoplay" />
+      {tangToc !== null && <TangTocToanHS onXong={(kq: KqTangToc) => { noi({ loai: 'rpc', id: tangToc, kq }); setTangToc(null) }} />}
       <button onClick={onBack} aria-label="Về danh sách trò chơi"
         className="absolute bottom-[calc(10px+env(safe-area-inset-bottom))] right-2.5 z-50 flex h-10 w-10 items-center justify-center rounded-full text-[24px] leading-none active:scale-95"
         style={{ background: 'var(--sk-surface)', color: 'var(--sk-ink)', border: '1.5px solid var(--sk-line)', opacity: 0.92 }}>‹</button>

@@ -321,6 +321,14 @@ function nuong(s, id) {
   const t = gio(s); s.lo = { mon: id, bd: t, xong: t + B.phut * 60e3 }; dem(s, 'nuong'); dem(s, 'nuong:' + id);
   return xong([{ loai: 'nuong', mon: id }]);
 }
+// TĂNG TỐC BẰNG TOÁN (03/11): app + server chấm 3 câu; đạt thì app trả giam (0..1) ⇒ rút phần thời gian CÒN LẠI của mẻ đang làm.
+// Luật đạt/không, số lần/ngày, thời gian chờ đều ở SERVER (fn_nt_tang_toc_*) — ở đây chỉ áp kết quả.
+function tangTocLo(s, giam) {
+  const tt = loTT(s); if (tt.tt !== 'dang') return loi('Máy không có mẻ nào đang làm');
+  const g = Math.max(0, Math.min(1, +giam || 0)); if (!g) return loi('');
+  const t = gio(s); s.lo.xong = t + Math.round(tt.con * (1 - g)); dem(s, 'tangToc');
+  return xong([{ loai: 'tangToc', con: s.lo.xong - t }]);
+}
 function layBanh(s) {
   const tt = loTT(s); if (tt.tt !== 'xong') return loi(tt.tt === 'dang' ? 'Chưa xong — còn ' + Math.ceil(tt.con / 60e3) + ' phút' : 'Máy chưa làm gì');
   const id = s.lo.mon, su = [{ loai: 'layBanh', mon: id }, { loai: 'mon', id, n: 1 }];
@@ -610,6 +618,6 @@ window.NT_ENGINE = {
   oTT, ttO, sauCua, hatHom, bangLai, toiDaVat, vatTT, loTT, thuTT, mocTc, banTT, oBanTT, tomTatBan, viecHom,
   datDiem, thuMo, muaThu,
   BAN_THAT_K0, BAN_THAT, laBanThat, datBanThatDs, datVuonBan, banThatCua, banTong, soBanCoViec, ketQuaBanThat, apDungViec, tromCua,
-  moO, gieo, tuoi, bon, batSau, thu, muaVat, choAn, thuVat, nuong, layBanh, ban, muaPhan, lamLuot, choiThu, datTT, goTT, tromBan, giupBan, capNhat,
+  moO, gieo, tuoi, bon, batSau, thu, muaVat, choAn, thuVat, nuong, tangTocLo, layBanh, ban, muaPhan, lamLuot, choiThu, datTT, goTT, tromBan, giupBan, capNhat,
 };
 })();

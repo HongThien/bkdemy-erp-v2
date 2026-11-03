@@ -49,6 +49,22 @@ export async function ntRpc(ten: string, tham: Record<string, unknown>): Promise
   const kq = (data ?? {}) as Record<string, unknown>
   return fn === 'fn_nt_ban_ds' || fn === 'fn_nt_ban_vuon' || fn === 'fn_nt_viec_ve_toi' ? { ok: true, ...kq } : kq
 }
+// TĂNG TỐC BẰNG TOÁN (mig 202611031809): server phát 3 câu (dạng em đã làm, mức 2–3) và CHẤM; đáp án đúng chỉ trả về sau khi nộp.
+export type NtTangTocCau = { de: string | null; anh: string | null; opts: string[]; dang: string | null }
+export type NtTangTocDe = { ok: true; de_id: string; can_dung: number; giam: number; con_luot: number; cau: NtTangTocCau[] }
+  | { ok: false; loi: string; cho_giay?: number; con_luot?: number }
+export type NtTangTocNop = { ok: true; so_dung: number; dat: boolean; giam: number; dap_an: number[]; con_luot: number; cho_giay: number }
+  | { ok: false; loi: string }
+export async function ntTangTocDe(mon = 'Toán'): Promise<NtTangTocDe> {
+  const { data, error } = await supabase.rpc('fn_nt_tang_toc_de', { p_muc_tieu: 'may', p_mon: mon })
+  if (error) throw error
+  return data as NtTangTocDe
+}
+export async function ntTangTocNop(deId: string, chon: number[]): Promise<NtTangTocNop> {
+  const { data, error } = await supabase.rpc('fn_nt_tang_toc_nop', { p_de_id: deId, p_chon: chon })
+  if (error) throw error
+  return data as NtTangTocNop
+}
 export async function ntDhtDongBo(tongTieu: number): Promise<NtDht> {
   const { data, error } = await supabase.rpc('fn_nt_dht_dong_bo', { p_tong_tieu: Math.max(0, Math.floor(tongTieu)) })
   if (error) throw error
