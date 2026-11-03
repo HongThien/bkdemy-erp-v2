@@ -354,6 +354,9 @@
 - **`spec-truong-khoi.md` — ĐỌC BẮT BUỘC trước khi sửa PHÂN QUYỀN (ghế · phạm vi môn×khối · ai duyệt gì) hoặc trợ lý/dashboard Trưởng khối–Trang** (Thùy chốt 29/10):
   team QLCL = Thùy + Trang + 6 trưởng khối · khối là đơn vị thấp nhất, có tính môn · phạm vi = bảng PHÂN CÔNG (môn × khối) sửa trên màn, không mặc định, cấm uuid (1 hàm `fn_pham_vi_cua_toi`) ·
   trưởng khối quyết, Trang hậu kiểm · KPI dạng yếu đóng băng lúc Trang Chốt tuần (Vào/Ra/Độ phủ, chưa chốt số) · Lộc xếp lịch như cũ.
+- **`spec-bao-cao-tuan.md` — ĐỌC BẮT BUỘC trước khi build/sửa BÁO CÁO TUẦN** (Thùy chốt 03/11): trưởng khối nộp chiều T2 (kỳ T2→CN tuần trước) · bấm Nộp là SNAP, không tính lại ·
+  cá nhân = task phát triển (đã duyệt tự điền) · quản lý = ET · BTVN · dạng yếu · HS yếu (≥1 dạng) · bổ trợ Yếu+Nhẹ · trend 4 tuần, toàn khối + từng lớp · tự viết Plans/Progress/Problems ·
+  dạng yếu tại mốc D = 1 hàm tính ngược (chỉ lần đo ≤ D), chụp tự động T2 00:00 · nộp trễ ⇒ gậy · trưởng bộ môn duyệt/trả lại → ghép Báo cáo Chuyên môn tuần theo môn → chiếu TV cho CEO.
 - **`SPEC-troly-nhansu.md` — ĐỌC BẮT BUỘC (§6–§7) trước khi sửa tab 🤖 TRỢ LÝ** (CEO chốt 29/09): **báo cáo là chính, hỏi là phụ** · chỉ 3 tài khoản ·
   Báo cáo Sư phạm = 3 luồng (đếm chậm/miss → Detail → cảnh báo), mỗi người quản một mảng có một bộ báo cáo riêng (Trang = Sư phạm, Lộc = Vận hành) ·
   Tổng kết tuần = dashboard theo BẢNG, ngưỡng của mọi chỉ số là **thường đạt** (trung bình 8 tuần gần nhất đã lọc nhiễu), trình chiếu mỗi bảng một màn ·
