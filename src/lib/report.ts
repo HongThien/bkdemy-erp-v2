@@ -19,6 +19,17 @@ export type ReportBuoiRow = {
   btvnPct: number | null         // % BTVN
   btvnTrangThai: string | null   // nop_dung_han | nop_muon | xin_phep | khong_lam
   btvnThaiDo: string | null      // nghiem_tuc | chua_het_suc | chua_nghiem_tuc | chong_doi
+  btvnBuNgay: string | null      // em vắng buổi này, BTVN lấy từ CA BÙ ngày này (03/11) — null = BTVN của chính buổi
+}
+
+// BTVN BÙ gắn về BUỔI MẸ (Thùy 03/11): em vắng buổi thường, làm BTVN buổi đó ở ca bù ⇒ hiện kết quả ở đúng buổi mẹ.
+// % tính ở DB (fn_btvn_bu_theo_buoi_me, cùng công thức pctFromAgg, câu bỏ trống vào mẫu số). hsId null = mọi em của các buổi.
+export type BtvnBuRow = { buoi_me_id: string; hoc_sinh_id: string; buoi_bu_id: string; ngay_bu: string; so_cau: number; pct: number | null; trang_thai_nop: string | null; thai_do: string | null }
+export async function listBtvnBuTheoBuoiMe(buoiIds: string[], hsId?: string | null): Promise<BtvnBuRow[]> {
+  if (!buoiIds.length) return []
+  const { data, error } = await supabase.rpc('fn_btvn_bu_theo_buoi_me', { p_buoi: buoiIds, p_hs: hsId ?? null })
+  if (error) throw error
+  return (data ?? []) as BtvnBuRow[]
 }
 
 export async function getReportBuoiHS(hocSinhId: string, mon: string, ym: string): Promise<ReportBuoiRow[]> {
@@ -57,15 +68,21 @@ export async function getReportBuoiHS(hocSinhId: string, mon: string, ym: string
   for (const r of (trong ?? []) as { buoi_hoc_id: string; so_bo_trong: number }[]) {
     const a = btAgg.get(r.buoi_hoc_id) ?? { pts: 0, n: 0 }; a.n += r.so_bo_trong; btAgg.set(r.buoi_hoc_id, a)
   }
+  // BTVN làm ở ca bù ⇒ điền vào buổi mẹ (chỉ khi buổi mẹ em vắng — có mặt thì BTVN của chính buổi là nguồn).
+  const buMap = new Map((await listBtvnBuTheoBuoiMe(ids, hocSinhId).catch(() => [] as BtvnBuRow[])).map((r) => [r.buoi_me_id, r]))
   const pct = (m: Map<string, { pts: number; n: number }>, id: string) => { const a = m.get(id); return pctFromAgg(a?.pts ?? 0, a?.n ?? 0) }
-  return buois.map((b) => ({
-    buoiId: b.id, ngay: b.ngay, maBuoi: b.ma_buoi,
-    vang: b.diem_danh === 'vang' || b.diem_danh === 'vang_phep',
-    etPct: pct(etAgg, b.id),
-    btvnPct: pct(btAgg, b.id),
-    btvnTrangThai: kqMap.get(b.id)?.tt ?? null,
-    btvnThaiDo: kqMap.get(b.id)?.td ?? null,
-  }))
+  return buois.map((b) => {
+    const vang = b.diem_danh === 'vang' || b.diem_danh === 'vang_phep'
+    const bu = vang ? buMap.get(b.id) : undefined
+    return {
+      buoiId: b.id, ngay: b.ngay, maBuoi: b.ma_buoi, vang,
+      etPct: pct(etAgg, b.id),
+      btvnPct: bu ? bu.pct : pct(btAgg, b.id),
+      btvnTrangThai: bu ? bu.trang_thai_nop : kqMap.get(b.id)?.tt ?? null,
+      btvnThaiDo: bu ? bu.thai_do : kqMap.get(b.id)?.td ?? null,
+      btvnBuNgay: bu ? bu.ngay_bu : null,
+    }
+  })
 }
 
 // ── Nhận xét GV cho (HS × môn × tháng) ──

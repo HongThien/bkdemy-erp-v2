@@ -243,7 +243,7 @@ function BuoiRow({ r }: { r: ReportBuoiRow }) {
     <tr className="border-b border-slate-100 last:border-0">
       <td className="px-4 py-1.5 font-medium text-slate-700">{fmtNgay(r.ngay)}</td>
       <td className="px-3 py-1.5 text-center">{r.vang ? <span className="rounded bg-rose-100 px-1.5 py-0.5 text-[12px] font-semibold text-rose-700">Vắng</span> : r.etPct != null ? <span className={`font-bold tabular-nums ${pctCls(r.etPct)}`}>{r.etPct}%</span> : <span className="text-slate-300">—</span>}</td>
-      <td className="px-3 py-1.5 text-center">{btvnCell}</td>
+      <td className="px-3 py-1.5 text-center">{btvnCell}{r.btvnBuNgay && <div className="text-[10px] font-medium text-indigo-500">học bù {fmtNgay(r.btvnBuNgay)}</div>}</td>
       <td className="px-4 py-1.5">{r.btvnThaiDo ? <span className={`text-[12px] ${TD_CLS[r.btvnThaiDo] ?? 'text-slate-600'}`}>{TD_LABEL[r.btvnThaiDo] ?? r.btvnThaiDo}</span> : <span className="text-slate-300">—</span>}</td>
     </tr>
   )

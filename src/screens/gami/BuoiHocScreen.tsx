@@ -30,6 +30,7 @@ import { NGU_CANH_LUOT, setNguCanhLuotBuoi, type NguCanhLuot } from '../../lib/k
 import { ChuongBaoDong, ChipCanhBao, useDangTaiLieu, hopDang } from '../../components/ChuongBaoDong'
 import { useIsMobile } from '../../hooks/useIsMobile'
 import { listNopTheoBuoi, type BtvnNop } from '../../lib/btvnnop'
+import { listBtvnBuTheoBuoiMe, type BtvnBuRow } from '../../lib/report'
 import { tenHienThiDs, tenNganHS } from '../../lib/hoten'
 import { useStore } from '../../store/useStore'
 
@@ -1727,6 +1728,8 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
   const [cb, setCb] = useState<CanhBao[]>([])
   // Lượt nộp qua APP PH (📱) — TA thấy ai đã nộp app để chấm trên app TA (CEO 30/08 ④; chấm ảnh ở app TA).
   const [nop, setNop] = useState<Record<string, BtvnNop>>({})
+  // BTVN BÙ của em vắng buổi này (làm + chấm ở ca bù, ChamBtvnBu) — hiện ở đây để buổi mẹ đủ dữ liệu (Thùy 03/11). Chỉ đọc.
+  const [buRows, setBuRows] = useState<BtvnBuRow[]>([])
   const [loading, setLoading] = useState(true)
   const [closing, setClosing] = useState(false)
   const khoi = (buoi as any).lop?.khoi ?? ''
@@ -1742,7 +1745,7 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
   const dangBuoi = [...new Set(probs.map((p) => p.ma_dang).filter(Boolean))] as string[] // dạng có trong BTVN (cho báo động)
 
   async function reloadP() { const [p, g] = await Promise.all([listProblems(buoiId, 'btvn'), listGrades(buoiId)]); setProbs(p); setGrades(g) }
-  async function reloadKq() { setKq(await getBtvnKetQua(buoiId)); setCb(await listCanhBao(buoiId)); setNop(await listNopTheoBuoi(buoiId).catch(() => ({}))) }
+  async function reloadKq() { setKq(await getBtvnKetQua(buoiId)); setCb(await listCanhBao(buoiId)); setNop(await listNopTheoBuoi(buoiId).catch(() => ({}))); setBuRows(await listBtvnBuTheoBuoiMe([buoiId]).catch(() => [])) }
   // Nạp lưới = sync bám PHIẾU BTVN (lớp+ngày) rồi đọc ô/điểm. `dongHienTai` truyền tường minh vì được gọi
   // lại NGAY sau "Mở lại" (effect chỉ chạy theo buoiId). Bài học 7S1 20/09 (23/09): gán nhầm phiếu → chấm →
   // đóng BTVN → gán lại phiếu đúng ⇒ sync từ chối đổi cấu trúc (đúng luật, phase đã đóng) NHƯNG kết quả bị
@@ -1925,6 +1928,23 @@ function BtvnTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: string;
         </table>
       </div>
 
+      {buRows.length > 0 && (
+        <div className="mt-4 rounded-xl border border-indigo-200 bg-indigo-50/40 p-3">
+          <div className="mb-2 text-[13px] font-semibold text-indigo-800">📝 Em vắng đã làm BTVN buổi này ở ca học bù <span className="font-normal text-indigo-500">(chấm ở ca bù — chỉ xem)</span></div>
+          <table className="w-full text-[12.5px]">
+            <thead><tr className="text-left text-slate-500"><th className="py-1 pr-3 font-medium">Học sinh</th><th className="py-1 pr-3 font-medium">Ngày bù</th><th className="py-1 pr-3 font-medium">Kết quả</th><th className="py-1 pr-3 font-medium">Nộp</th><th className="py-1 font-medium">Thái độ</th></tr></thead>
+            <tbody>{buRows.map((b) => (
+              <tr key={b.hoc_sinh_id} className="border-t border-indigo-100">
+                <td className="py-1 pr-3 font-medium text-slate-800">{roster.find((r) => r.hoc_sinh_id === b.hoc_sinh_id)?.hoc_sinh?.ho_ten ?? '?'}</td>
+                <td className="py-1 pr-3 text-slate-600">{b.ngay_bu.split('-').reverse().slice(0, 2).join('/')}</td>
+                <td className="py-1 pr-3 font-bold tabular-nums text-slate-700">{b.pct == null ? '—' : `${b.pct}%`} <span className="font-normal text-slate-400">({b.so_cau} câu)</span></td>
+                <td className="py-1 pr-3 text-slate-600">{NOP_OPTS.find((o) => o.v === b.trang_thai_nop)?.l ?? '—'}</td>
+                <td className="py-1 text-slate-600">{THAIDO_OPTS.find((o) => o.v === b.thai_do)?.l ?? '—'}</td>
+              </tr>
+            ))}</tbody>
+          </table>
+        </div>
+      )}
     </div>
   )
 }
