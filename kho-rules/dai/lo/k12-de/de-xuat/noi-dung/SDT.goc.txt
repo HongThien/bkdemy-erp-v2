@@ -1,0 +1,535 @@
+=== N C1.1
+@ly_thuyet:
+##TC Mẫu số liệu ghép nhóm và khoảng biến thiên
+- Mẫu số liệu ghép nhóm gồm các nhóm $[u_1;u_2),[u_2;u_3),\dots,[u_k;u_{k+1})$ cùng **tần số** $n_1,n_2,\dots,n_k$; cỡ mẫu $n=n_1+n_2+\dots+n_k$.
+- **Khoảng biến thiên** $R$ của mẫu số liệu ghép nhóm là hiệu giữa đầu mút phải của nhóm cuối cùng có tần số khác $0$ và đầu mút trái của nhóm đầu tiên có tần số khác $0$.
+- $R$ càng lớn thì mẫu càng trải rộng; $R$ chỉ dùng hai đầu mút nên rất nhạy với giá trị ở hai đầu.
+
+##PP Hướng làm chung với khoảng biến thiên
+Đọc bảng, loại các nhóm có tần số $0$ ở hai đầu.
+Lấy đầu mút phải của nhóm cuối còn lại trừ đầu mút trái của nhóm đầu còn lại.
+Kết luận kèm đơn vị đo.
+
+##CY
+- Nhóm có tần số $0$ ở đầu hoặc cuối bảng thì **bỏ qua**, không lấy đầu mút của nhóm đó.
+- Không lấy hiệu hai giá trị đại diện; $R$ tính bằng **đầu mút**, không phải bằng giá trị đại diện.
+
+=== C1.1.1
+@ly_thuyet:
+##TC Công thức khoảng biến thiên
+- $R=u_{p+1}-u_q$, trong đó $[u_q;u_{q+1})$ là nhóm đầu tiên có tần số $>0$ và $[u_p;u_{p+1})$ là nhóm cuối cùng có tần số $>0$.
+- Với hai mẫu cho trong cùng một bảng, tính $R$ của từng mẫu riêng rồi mới cộng hoặc so sánh.
+
+##PP Tính khoảng biến thiên từ bảng ghép nhóm
+Tìm nhóm đầu tiên có tần số khác $0$ và đọc đầu mút trái của nó.
+Tìm nhóm cuối cùng có tần số khác $0$ và đọc đầu mút phải của nó.
+Lấy đầu mút phải trừ đầu mút trái, ghi kèm đơn vị của đại lượng đang xét.
+Nếu đề cho hai mẫu (hai lớp, hai nhóm) thì làm riêng cho từng mẫu rồi mới thực hiện phép tính đề yêu cầu.
+
+##CY
+- Đề cho bảng có thể dài hơn phần có số liệu thật: chỉ cần nhóm có tần số $>0$.
+- "Chênh lệch nhiều nhất" cũng chính là khoảng biến thiên của mẫu ghép nhóm.
+
+@vi_du:
+##VD
+Thời gian hoàn thành một bài kiểm tra (đơn vị: phút) của $30$ học sinh được thống kê ở bảng sau:
+$\begin{array}{|c|c|c|c|c|c|} \hline \text{Thời gian (phút)} & [10;15) & [15;20) & [20;25) & [25;30) & [30;35) \\ \hline \text{Số học sinh} & 3 & 8 & 12 & 5 & 2 \\ \hline \end{array}$
+Tìm khoảng biến thiên của mẫu số liệu ghép nhóm trên.
+
+Bài giải:
+Nhóm đầu tiên là $[10;15)$ có tần số $3>0$, đầu mút trái là $10$.
+Nhóm cuối cùng là $[30;35)$ có tần số $2>0$, đầu mút phải là $35$.
+Khoảng biến thiên: $R=35-10=25$ (phút).
+Vậy khoảng biến thiên của mẫu số liệu là $25$ phút.
+
+##VD
+Điểm khảo sát môn Toán của hai lớp $12A$ và $12B$ được ghi ở bảng sau:
+$\begin{array}{|c|c|c|c|c|c|} \hline \text{Khoảng điểm} & [10;20) & [20;30) & [30;40) & [40;50) & [50;60) \\ \hline \text{Số học sinh lớp 12A} & 0 & 4 & 9 & 5 & 2 \\ \hline \text{Số học sinh lớp 12B} & 3 & 6 & 8 & 0 & 0 \\ \hline \end{array}$
+Gọi $R_A,R_B$ lần lượt là khoảng biến thiên của mẫu số liệu ghép nhóm của lớp $12A$, lớp $12B$. Tính $R_A+R_B$.
+
+Bài giải:
+Lớp $12A$: nhóm $[10;20)$ có tần số $0$ nên nhóm đầu tiên có tần số khác $0$ là $[20;30)$, đầu mút trái là $20$; nhóm cuối cùng $[50;60)$ có tần số $2>0$, đầu mút phải là $60$.
+Do đó $R_A=60-20=40$.
+Lớp $12B$: nhóm đầu tiên $[10;20)$ có tần số $3>0$, đầu mút trái là $10$; hai nhóm cuối $[40;50)$ và $[50;60)$ có tần số $0$ nên nhóm cuối cùng có tần số khác $0$ là $[30;40)$, đầu mút phải là $40$.
+Do đó $R_B=40-10=30$.
+Vậy $R_A+R_B=40+30=70$.
+
+=== N C1.2
+@ly_thuyet:
+##TC Tứ phân vị của mẫu số liệu ghép nhóm
+- Cỡ mẫu $n$; tần số tích luỹ của một nhóm là tổng tần số của các nhóm đứng trước nó (tính đến hết nhóm đang xét thì gọi là tần số tích luỹ đến hết nhóm đó).
+- Tứ phân vị thứ $k$ ($k=1,2,3$), kí hiệu $Q_k$, chia mẫu thành bốn phần: $Q_1$ ứng với $\dfrac{n}{4}$, $Q_2$ (trung vị) ứng với $\dfrac{2n}{4}=\dfrac{n}{2}$, $Q_3$ ứng với $\dfrac{3n}{4}$.
+- Nhóm chứa $Q_k$ là nhóm **đầu tiên** có tần số tích luỹ đến hết nhóm đó $\ge\dfrac{kn}{4}$.
+- Công thức nội suy: $Q_k=u_m+\dfrac{\dfrac{kn}{4}-C}{n_m}\cdot(u_{m+1}-u_m)$, trong đó $[u_m;u_{m+1})$ là nhóm chứa $Q_k$, $n_m$ là tần số của nhóm đó và $C$ là tổng tần số của các nhóm đứng **trước** nhóm đó.
+- **Khoảng tứ phân vị** $\Delta_Q=Q_3-Q_1$; nó đo độ phân tán của một nửa số liệu ở giữa, ít bị ảnh hưởng bởi giá trị ngoại lệ.
+
+##PP Quy trình chung tìm tứ phân vị
+Tính cỡ mẫu $n$, rồi tính $\dfrac{n}{4}$, $\dfrac{n}{2}$, $\dfrac{3n}{4}$.
+Lập hàng tần số tích luỹ và dò nhóm đầu tiên có tích luỹ $\ge$ giá trị cần tìm.
+Thay vào công thức nội suy với $u_m,u_{m+1},n_m,C$ đọc đúng từ bảng.
+Kết luận theo ngữ cảnh (làm tròn theo yêu cầu, có đơn vị nếu đề cho).
+
+##CY
+- $C$ là tích luỹ của các nhóm **trước** nhóm chứa, không tính tần số của chính nhóm chứa.
+- Độ dài nhóm $u_{m+1}-u_m$ phải lấy của nhóm chứa, không lấy độ dài tuỳ ý.
+- $Q_2$ chính là trung vị của mẫu ghép nhóm.
+
+=== C1.2.1
+@ly_thuyet:
+##TC Nhóm chứa tứ phân vị
+- Nhóm chứa $Q_1$: nhóm đầu tiên có tần số tích luỹ $\ge\dfrac{n}{4}$.
+- Nhóm chứa $Q_2$ (trung vị): nhóm đầu tiên có tần số tích luỹ $\ge\dfrac{n}{2}$.
+- Nhóm chứa $Q_3$: nhóm đầu tiên có tần số tích luỹ $\ge\dfrac{3n}{4}$.
+
+##PP Xác định nhóm chứa tứ phân vị mà không cần nội suy
+Cộng các tần số để có cỡ mẫu $n$ và tính $\dfrac{n}{4}$ (hoặc $\dfrac{n}{2}$, $\dfrac{3n}{4}$).
+Cộng dồn tần số từ nhóm đầu, dừng ở nhóm đầu tiên mà tích luỹ đạt hoặc vượt giá trị đó.
+Đọc nhóm tìm được; nếu đề hỏi tần số hoặc $a+b$ của nhóm $[a;b)$ thì trả lời đúng đại lượng đề hỏi.
+
+##CY
+- Dừng ở nhóm đầu tiên có tích luỹ $\ge$ giá trị cần tìm, không nhảy sang nhóm kế tiếp.
+- Khi tích luỹ đúng bằng $\dfrac{kn}{4}$ thì nhóm chứa vẫn là nhóm vừa đạt giá trị đó.
+
+@vi_du:
+##VD
+Khảo sát thời gian tập thể dục trong ngày (đơn vị: phút) của $40$ học sinh, ta có mẫu số liệu ghép nhóm:
+$\begin{array}{|c|c|c|c|c|c|} \hline \text{Thời gian (phút)} & [0;10) & [10;20) & [20;30) & [30;40) & [40;50) \\ \hline \text{Số học sinh} & 4 & 10 & 14 & 8 & 4 \\ \hline \end{array}$
+Hãy cho biết nhóm chứa tứ phân vị thứ nhất, nhóm chứa trung vị và nhóm chứa tứ phân vị thứ ba.
+
+Bài giải:
+Cỡ mẫu $n=4+10+14+8+4=40$; các tần số tích luỹ đến hết từng nhóm lần lượt là $4;14;28;36;40$.
+Với $Q_1$: $\dfrac{n}{4}=10$; nhóm đầu tiên có tích luỹ $\ge10$ là $[10;20)$ (tích luỹ $14$).
+Với $Q_2$: $\dfrac{n}{2}=20$; nhóm đầu tiên có tích luỹ $\ge20$ là $[20;30)$ (tích luỹ $28$).
+Với $Q_3$: $\dfrac{3n}{4}=30$; nhóm đầu tiên có tích luỹ $\ge30$ là $[30;40)$ (tích luỹ $36$).
+Vậy nhóm chứa $Q_1$ là $[10;20)$, nhóm chứa trung vị là $[20;30)$, nhóm chứa $Q_3$ là $[30;40)$.
+
+##VD
+Điểm thi thử môn Toán của $45$ học sinh được cho ở bảng sau:
+$\begin{array}{|c|c|c|c|c|c|} \hline \text{Điểm} & [50;60) & [60;70) & [70;80) & [80;90) & [90;100) \\ \hline \text{Số học sinh} & 5 & 8 & 15 & 12 & 5 \\ \hline \end{array}$
+Gọi $[a;b)$ là nhóm chứa tứ phân vị thứ nhất. Tính $a+b$. Tìm tần số của nhóm chứa tứ phân vị thứ ba.
+
+Bài giải:
+Cỡ mẫu $n=45$; tần số tích luỹ đến hết từng nhóm là $5;13;28;40;45$.
+$\dfrac{n}{4}=11{,}25$; nhóm đầu tiên có tích luỹ $\ge11{,}25$ là $[60;70)$ (tích luỹ $13$), nên $a=60$, $b=70$ và $a+b=130$.
+$\dfrac{3n}{4}=33{,}75$; nhóm đầu tiên có tích luỹ $\ge33{,}75$ là $[80;90)$ (tích luỹ $40$), nhóm này có tần số $12$.
+Vậy $a+b=130$ và tần số của nhóm chứa tứ phân vị thứ ba là $12$.
+
+=== C1.2.2
+@ly_thuyet:
+##TC Công thức nội suy tứ phân vị
+- $Q_k=u_m+\dfrac{\dfrac{kn}{4}-C}{n_m}\cdot(u_{m+1}-u_m)$ với $k=1,2,3$.
+- Ý nghĩa thực tế: $Q_1$ là giá trị mà khoảng $25\%$ số liệu nhỏ hơn nó; $Q_3$ là giá trị mà khoảng $75\%$ số liệu nhỏ hơn nó, tức khoảng $25\%$ số liệu lớn nhất bắt đầu từ $Q_3$.
+
+##PP Tính tứ phân vị bằng công thức nội suy
+Tính $n$ và $\dfrac{kn}{4}$, lập tần số tích luỹ rồi tìm nhóm chứa $Q_k$.
+Ghi rõ $u_m$, $u_{m+1}$, $n_m$ và $C$ (tổng tần số các nhóm đứng trước).
+Thay vào công thức: $Q_k=u_m+\dfrac{\dfrac{kn}{4}-C}{n_m}\cdot(u_{m+1}-u_m)$ và tính.
+Với câu thực tế "$25\%$ cao nhất từ bao nhiêu", "$75\%$ từ bao nhiêu trở lên": đổi sang $Q_3$ hoặc $Q_1$ rồi kết luận bằng ngữ cảnh.
+
+##CY
+- "$25\%$ số hộ có mức tiêu thụ cao nhất" tương ứng $Q_3$ (phía trên $75\%$), không phải $Q_1$.
+- Đề hỏi $Q_k$ làm tròn thì chỉ làm tròn ở kết quả cuối.
+
+@vi_du:
+##VD
+Thời gian chờ phục vụ (đơn vị: phút) của $24$ khách hàng tại một quầy được ghi lại ở bảng sau:
+$\begin{array}{|c|c|c|c|c|c|} \hline \text{Thời gian (phút)} & [0;10) & [10;20) & [20;30) & [30;40) & [40;50) \\ \hline \text{Số khách hàng} & 2 & 3 & 4 & 10 & 5 \\ \hline \end{array}$
+Tính $Q_1$, $Q_2$ và $Q_3$ của mẫu số liệu ghép nhóm trên.
+
+Bài giải:
+Cỡ mẫu $n=24$; tần số tích luỹ đến hết từng nhóm là $2;5;9;19;24$.
+Với $Q_1$: $\dfrac{n}{4}=6$; nhóm chứa là $[20;30)$ với $u_m=20$, $n_m=4$, $C=2+3=5$ và độ dài nhóm $10$.
+$Q_1=20+\dfrac{6-5}{4}\cdot10=22{,}5$.
+Với $Q_2$: $\dfrac{n}{2}=12$; nhóm chứa là $[30;40)$ với $u_m=30$, $n_m=10$, $C=9$.
+$Q_2=30+\dfrac{12-9}{10}\cdot10=33$.
+Với $Q_3$: $\dfrac{3n}{4}=18$; nhóm chứa vẫn là $[30;40)$ (tích luỹ $19\ge18$).
+$Q_3=30+\dfrac{18-9}{10}\cdot10=39$.
+Vậy $Q_1=22{,}5$, $Q_2=33$, $Q_3=39$.
+
+##VD
+Điện năng tiêu thụ trong một tháng (đơn vị: kWh) của $80$ hộ gia đình trong một khu phố được thống kê ở bảng sau:
+$\begin{array}{|c|c|c|c|c|c|} \hline \text{Điện năng (kWh)} & [150;160) & [160;170) & [170;180) & [180;190) & [190;200) \\ \hline \text{Số hộ} & 6 & 14 & 30 & 20 & 10 \\ \hline \end{array}$
+Để khuyến nghị tiết kiệm điện, công ty điện lực gửi thông báo tới $25\%$ số hộ có mức tiêu thụ cao nhất. 
+a) Hỏi các hộ nhận thông báo tiêu thụ từ bao nhiêu kWh trở lên?
+b) $25\%$ số hộ tiêu thụ thấp nhất có mức tiêu thụ dưới bao nhiêu kWh?
+
+Bài giải:
+Cỡ mẫu $n=80$; tần số tích luỹ đến hết từng nhóm là $6;20;50;70;80$.
+a) $25\%$ số hộ tiêu thụ cao nhất bắt đầu từ $Q_3$. Ta có $\dfrac{3n}{4}=60$; nhóm đầu tiên có tích luỹ $\ge60$ là $[180;190)$ với $n_m=20$, $C=50$.
+$Q_3=180+\dfrac{60-50}{20}\cdot10=185$.
+b) $\dfrac{n}{4}=20$; nhóm đầu tiên có tích luỹ $\ge20$ là $[160;170)$ với $n_m=14$, $C=6$.
+$Q_1=160+\dfrac{20-6}{14}\cdot10=170$.
+Vậy các hộ nhận thông báo tiêu thụ từ $185$ kWh trở lên; $25\%$ số hộ tiêu thụ thấp nhất dưới $170$ kWh.
+
+=== C1.2.3
+@ly_thuyet:
+##TC Khoảng tứ phân vị
+- $\Delta_Q=Q_3-Q_1$.
+- $\Delta_Q$ càng lớn thì nửa số liệu ở giữa càng phân tán.
+- Muốn có $\Delta_Q$ từ bảng phải tính **cả hai** $Q_1$ và $Q_3$ bằng công thức nội suy.
+
+##PP Tính khoảng tứ phân vị từ bảng ghép nhóm
+Tính $n$, lập tần số tích luỹ.
+Tìm nhóm chứa $Q_1$ (ứng với $\dfrac{n}{4}$) và tính $Q_1$ theo công thức nội suy.
+Tìm nhóm chứa $Q_3$ (ứng với $\dfrac{3n}{4}$) và tính $Q_3$ theo công thức nội suy.
+Lấy $\Delta_Q=Q_3-Q_1$, làm tròn nếu đề yêu cầu (chỉ làm tròn ở kết quả cuối).
+
+##CY
+- Không dùng $Q_2$ trong $\Delta_Q$.
+- Đừng làm tròn $Q_1$, $Q_3$ trước khi trừ nếu đề chỉ yêu cầu làm tròn $\Delta_Q$.
+
+@vi_du:
+##VD
+Thời gian chạy $100$ m (đơn vị: giây) của $40$ học sinh được cho ở bảng sau:
+$\begin{array}{|c|c|c|c|c|c|} \hline \text{Thời gian (giây)} & [0;5) & [5;10) & [10;15) & [15;20) & [20;25) \\ \hline \text{Số học sinh} & 3 & 9 & 12 & 10 & 6 \\ \hline \end{array}$
+Tính khoảng tứ phân vị của mẫu số liệu ghép nhóm trên (làm tròn đến hàng phần mười).
+
+Bài giải:
+Cỡ mẫu $n=40$; tần số tích luỹ đến hết từng nhóm là $3;12;24;34;40$.
+$\dfrac{n}{4}=10$: nhóm chứa $Q_1$ là $[5;10)$ với $n_m=9$, $C=3$, độ dài nhóm $5$.
+$Q_1=5+\dfrac{10-3}{9}\cdot5=\dfrac{80}{9}$.
+$\dfrac{3n}{4}=30$: nhóm chứa $Q_3$ là $[15;20)$ với $n_m=10$, $C=24$.
+$Q_3=15+\dfrac{30-24}{10}\cdot5=18$.
+$\Delta_Q=18-\dfrac{80}{9}=\dfrac{82}{9}\approx9{,}1$.
+Vậy khoảng tứ phân vị là $\Delta_Q\approx9{,}1$.
+
+##VD
+Quãng đường đi bộ mỗi ngày (đơn vị: km) của một người trong $40$ ngày được thống kê ở bảng sau:
+$\begin{array}{|c|c|c|c|c|c|} \hline \text{Quãng đường (km)} & [2{,}5;3{,}0) & [3{,}0;3{,}5) & [3{,}5;4{,}0) & [4{,}0;4{,}5) & [4{,}5;5{,}0) \\ \hline \text{Số ngày} & 4 & 8 & 12 & 10 & 6 \\ \hline \end{array}$
+Tính khoảng tứ phân vị của mẫu số liệu ghép nhóm trên.
+
+Bài giải:
+Cỡ mẫu $n=40$; tần số tích luỹ đến hết từng nhóm là $4;12;24;34;40$.
+$\dfrac{n}{4}=10$: nhóm chứa $Q_1$ là $[3{,}0;3{,}5)$ với $n_m=8$, $C=4$, độ dài nhóm $0{,}5$.
+$Q_1=3+\dfrac{10-4}{8}\cdot0{,}5=3{,}375$.
+$\dfrac{3n}{4}=30$: nhóm chứa $Q_3$ là $[4{,}0;4{,}5)$ với $n_m=10$, $C=24$.
+$Q_3=4+\dfrac{30-24}{10}\cdot0{,}5=4{,}3$.
+$\Delta_Q=4{,}3-3{,}375=0{,}925$.
+Vậy khoảng tứ phân vị của mẫu là $0{,}925$ km.
+
+=== C1.2.4
+@ly_thuyet:
+##TC Công thức khoảng tứ phân vị
+- $\Delta_Q=Q_3-Q_1$ (hiệu giữa tứ phân vị thứ ba và tứ phân vị thứ nhất).
+- $Q_2$ là trung vị, **không** xuất hiện trong $\Delta_Q$; $Q_3-Q_2$ và $Q_2-Q_1$ là các hiệu khác, không phải khoảng tứ phân vị.
+
+##PP Dùng công thức khi đã biết các tứ phân vị
+Đọc đúng giá trị $Q_1$ và $Q_3$ trong đề (đề có thể liệt kê $Q_1,Q_2,Q_3$ theo thứ tự).
+Tính $\Delta_Q=Q_3-Q_1$.
+Nếu đề hỏi biểu thức khác (như $R-\Delta_Q$) thì tính $\Delta_Q$ trước rồi thay vào.
+
+##CY
+- Bẫy hay gặp: chọn $Q_3-Q_2$ hoặc $Q_2-Q_1$ hoặc $Q_3+Q_1-Q_2$.
+- Khi đề liệt kê "lần lượt là" thì thứ tự là $Q_1,Q_2,Q_3$; đừng lấy nhầm số thứ hai làm $Q_1$.
+
+@vi_du:
+##VD
+Một mẫu số liệu ghép nhóm có tứ phân vị thứ nhất, thứ hai, thứ ba lần lượt là $24{,}5$; $30$ và $38$. Tính khoảng tứ phân vị của mẫu số liệu đó.
+
+Bài giải:
+Theo đề $Q_1=24{,}5$, $Q_2=30$, $Q_3=38$.
+Khoảng tứ phân vị $\Delta_Q=Q_3-Q_1=38-24{,}5=13{,}5$.
+Vậy khoảng tứ phân vị bằng $13{,}5$.
+
+##VD
+a) Khoảng tứ phân vị $\Delta_Q$ của mẫu số liệu ghép nhóm được tính bằng công thức nào trong các công thức: $Q_3-Q_2$; $Q_3-Q_1$; $Q_2-Q_1$; $Q_3+Q_1-Q_2$?
+b) Một mẫu số liệu ghép nhóm có khoảng biến thiên $R=48$ và tứ phân vị $Q_1=22$, $Q_2=29$, $Q_3=37{,}5$. Tính $R-\Delta_Q$.
+
+Bài giải:
+a) Theo định nghĩa, khoảng tứ phân vị là hiệu của tứ phân vị thứ ba và tứ phân vị thứ nhất nên công thức đúng là $\Delta_Q=Q_3-Q_1$; ba công thức còn lại đều sai.
+b) $\Delta_Q=Q_3-Q_1=37{,}5-22=15{,}5$ ($Q_2$ không dùng).
+$R-\Delta_Q=48-15{,}5=32{,}5$.
+Vậy $\Delta_Q=Q_3-Q_1$ và $R-\Delta_Q=32{,}5$.
+
+=== N C1.3
+@ly_thuyet:
+##TC Số trung bình, phương sai, độ lệch chuẩn của mẫu ghép nhóm
+- Giá trị đại diện của nhóm $[u_i;u_{i+1})$: $c_i=\dfrac{u_i+u_{i+1}}{2}$, tần số $n_i$, cỡ mẫu $n=n_1+\dots+n_k$.
+- Số trung bình: $\bar{x}=\dfrac{n_1c_1+n_2c_2+\dots+n_kc_k}{n}$.
+- Phương sai: $s^2=\dfrac{n_1(c_1-\bar{x})^2+\dots+n_k(c_k-\bar{x})^2}{n}=\dfrac{n_1c_1^2+\dots+n_kc_k^2}{n}-\bar{x}^2$.
+- Độ lệch chuẩn: $s=\sqrt{s^2}$.
+- $s^2$ và $s$ càng lớn thì số liệu càng phân tán quanh số trung bình; cả hai đều $\ge0$.
+
+##PP Hướng làm chung với phương sai và độ lệch chuẩn
+Lập giá trị đại diện $c_i$ của từng nhóm, tính $n$ và $\bar{x}$.
+Tính $s^2$ bằng công thức rút gọn (hoặc công thức định nghĩa) rồi lấy căn để có $s$.
+Chỉ làm tròn ở kết quả cuối, kèm đơn vị khi có.
+
+##CY
+- Mẫu ghép nhóm lấy **giá trị đại diện** $c_i$ thay cho từng số liệu; không dùng đầu mút.
+- Công thức rút gọn $\dfrac{\sum n_ic_i^2}{n}-\bar{x}^2$: phải chia cho $n$ **trước** khi trừ $\bar{x}^2$.
+
+=== C1.3.1
+@ly_thuyet:
+##TC Tính phương sai từ bảng
+- Lập thêm các cột $c_i$, $n_ic_i$, $n_ic_i^2$ để tính nhanh.
+- $s^2=\dfrac{\sum n_ic_i^2}{n}-\bar{x}^2$ và $s=\sqrt{s^2}$.
+
+##PP Tính phương sai, độ lệch chuẩn của mẫu ghép nhóm
+Tính cỡ mẫu $n$ và giá trị đại diện $c_i$ của từng nhóm.
+Tính số trung bình $\bar{x}=\dfrac{\sum n_ic_i}{n}$.
+Tính $\dfrac{\sum n_ic_i^2}{n}$ rồi $s^2=\dfrac{\sum n_ic_i^2}{n}-\bar{x}^2$.
+Lấy $s=\sqrt{s^2}$ khi đề hỏi độ lệch chuẩn; làm tròn ở bước cuối.
+
+##CY
+- Đừng làm tròn $\bar{x}$ quá sớm; lỗi làm tròn bị phóng đại khi bình phương.
+- Nhầm giữa $s^2$ (phương sai) và $s$ (độ lệch chuẩn) khi làm tròn đề hỏi.
+
+@vi_du:
+##VD
+Quãng đường đi làm hằng ngày (đơn vị: km) của $50$ nhân viên được thống kê ở bảng sau:
+$\begin{array}{|c|c|c|c|c|} \hline \text{Quãng đường (km)} & [0;10) & [10;20) & [20;30) & [30;40) \\ \hline \text{Số nhân viên} & 5 & 10 & 20 & 15 \\ \hline \end{array}$
+Tính số trung bình, phương sai và độ lệch chuẩn (làm tròn đến hàng phần trăm) của mẫu số liệu ghép nhóm trên.
+
+Bài giải:
+Giá trị đại diện của các nhóm lần lượt là $5;15;25;35$; cỡ mẫu $n=50$.
+Số trung bình: $\bar{x}=\dfrac{5\cdot5+10\cdot15+20\cdot25+15\cdot35}{50}=\dfrac{1200}{50}=24$.
+$\dfrac{\sum n_ic_i^2}{n}=\dfrac{5\cdot25+10\cdot225+20\cdot625+15\cdot1225}{50}=\dfrac{33250}{50}=665$.
+Phương sai: $s^2=665-24^2=665-576=89$.
+Độ lệch chuẩn: $s=\sqrt{89}\approx9{,}43$.
+Vậy $\bar{x}=24$, $s^2=89$, $s\approx9{,}43$.
+
+##VD
+Chiều dài (đơn vị: m) của $30$ cây giống sau một thời gian trồng được cho ở bảng sau:
+$\begin{array}{|c|c|c|c|c|c|} \hline \text{Chiều dài (m)} & [4{,}0;4{,}5) & [4{,}5;5{,}0) & [5{,}0;5{,}5) & [5{,}5;6{,}0) & [6{,}0;6{,}5) \\ \hline \text{Số cây} & 3 & 8 & 10 & 5 & 4 \\ \hline \end{array}$
+Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm trên (làm tròn đến hàng phần trăm).
+
+Bài giải:
+Giá trị đại diện lần lượt là $4{,}25;\ 4{,}75;\ 5{,}25;\ 5{,}75;\ 6{,}25$; cỡ mẫu $n=30$.
+Số trung bình: $\bar{x}=\dfrac{3\cdot4{,}25+8\cdot4{,}75+10\cdot5{,}25+5\cdot5{,}75+4\cdot6{,}25}{30}=\dfrac{157}{30}\approx5{,}2333$.
+$\dfrac{\sum n_ic_i^2}{n}=\dfrac{3\cdot4{,}25^2+8\cdot4{,}75^2+10\cdot5{,}25^2+5\cdot5{,}75^2+4\cdot6{,}25^2}{30}=\dfrac{54{,}1875+180{,}5+275{,}625+165{,}3125+156{,}25}{30}=\dfrac{831{,}875}{30}\approx27{,}7292$.
+Phương sai: $s^2\approx27{,}7292-\left(\dfrac{157}{30}\right)^2\approx27{,}7292-27{,}3878\approx0{,}34$.
+Độ lệch chuẩn: $s\approx\sqrt{0{,}3414}\approx0{,}58$.
+Vậy phương sai khoảng $0{,}34$ và độ lệch chuẩn khoảng $0{,}58$ (m).
+
+=== C1.3.2
+@ly_thuyet:
+##TC Quan hệ và ý nghĩa
+- $s=\sqrt{s^2}$, tức $s^2=s\cdot s$ (độ lệch chuẩn là căn bậc hai số học của phương sai; phương sai là bình phương của độ lệch chuẩn).
+- Công thức phương sai: $s^2=\dfrac{n_1(c_1-\bar{x})^2+\dots+n_k(c_k-\bar{x})^2}{n}=\dfrac{n_1c_1^2+\dots+n_kc_k^2}{n}-\bar{x}^2$.
+- Các số đo độ phân tán: khoảng biến thiên $R$, khoảng tứ phân vị $\Delta_Q$, phương sai $s^2$, độ lệch chuẩn $s$. **Số trung bình, mốt, trung vị không đo độ phân tán** (đo xu thế trung tâm).
+- Phương sai và độ lệch chuẩn càng lớn thì mẫu càng phân tán.
+
+##PP Trả lời câu hỏi nhận biết
+Cho $s^2$ thì lấy căn bậc hai để có $s$; cho $s$ thì bình phương để có $s^2$.
+Với câu công thức: kiểm tra tử là tổng $n_i\cdot(\dots)^2$, mẫu là $n$ (không phải số nhóm $k$), và trong dạng rút gọn thì **chia $n$ rồi mới trừ $\bar{x}^2$**.
+Với câu đúng/sai về ý nghĩa: đối chiếu từng ý với định nghĩa và dùng ví dụ số đơn giản nếu cần.
+
+##CY
+- Chia cho số nhóm $k$ thay vì cỡ mẫu $n$ là lỗi thường gặp trong công thức phương sai.
+- Nhầm "$s^2=\sqrt{s}$": đúng là $s=\sqrt{s^2}$.
+
+@vi_du:
+##VD
+a) Một mẫu số liệu ghép nhóm có phương sai $s^2=12{,}25$. Tính độ lệch chuẩn.
+b) Một mẫu số liệu ghép nhóm khác có độ lệch chuẩn $s=0{,}8$. Tính phương sai.
+c) Mẫu $A$ có phương sai $25$, mẫu $B$ có độ lệch chuẩn $4{,}5$. Mẫu nào phân tán hơn (cùng đơn vị đo)?
+
+Bài giải:
+a) $s=\sqrt{12{,}25}=3{,}5$.
+b) $s^2=0{,}8^2=0{,}64$.
+c) Mẫu $A$ có độ lệch chuẩn $s_A=\sqrt{25}=5$, mẫu $B$ có $s_B=4{,}5$. Vì $s_A>s_B$ nên mẫu $A$ phân tán hơn.
+Vậy độ lệch chuẩn ở ý a) là $3{,}5$, phương sai ở ý b) là $0{,}64$, và mẫu $A$ phân tán hơn.
+
+##VD
+Xét mẫu số liệu ghép nhóm với giá trị đại diện $c_1,\dots,c_k$, tần số $n_1,\dots,n_k$, cỡ mẫu $n$ và số trung bình $\bar{x}$. Trong các khẳng định sau, khẳng định nào đúng, khẳng định nào sai? Giải thích.
+a) $s^2=\dfrac{n_1c_1^2+\dots+n_kc_k^2}{n}-\bar{x}^2$.
+b) $s^2=\dfrac{n_1(c_1-\bar{x})^2+\dots+n_k(c_k-\bar{x})^2}{k}$.
+c) Độ lệch chuẩn là bình phương của phương sai.
+d) Độ lệch chuẩn của mẫu càng lớn thì mẫu càng phân tán.
+
+Bài giải:
+a) Đúng: đây là công thức rút gọn của phương sai, trong đó tổng được chia cho $n$ rồi mới trừ $\bar{x}^2$.
+b) Sai: mẫu số phải là cỡ mẫu $n$, không phải số nhóm $k$.
+c) Sai: độ lệch chuẩn là căn bậc hai số học của phương sai ($s=\sqrt{s^2}$), còn phương sai mới là bình phương của độ lệch chuẩn.
+d) Đúng: độ lệch chuẩn đo mức độ lệch của các số liệu so với số trung bình, càng lớn thì mẫu càng phân tán.
+Vậy a) đúng, b) sai, c) sai, d) đúng.
+
+=== N C2.1
+@ly_thuyet:
+##TC So sánh độ phân tán của hai mẫu
+- Hai mẫu có cùng đơn vị đo thì mẫu có $R$, $\Delta_Q$ hoặc $s$ lớn hơn là mẫu **phân tán hơn**; mẫu có giá trị nhỏ hơn là **đồng đều hơn**.
+- $s$ cho cái nhìn đầy đủ nhất vì dùng mọi số liệu; $\Delta_Q$ bền với giá trị ngoại lệ; $R$ chỉ dựa vào hai đầu mút.
+- So sánh $s$ chỉ có ý nghĩa khi hai mẫu có số trung bình xấp xỉ nhau và cùng đơn vị đo.
+- **Phép biến đổi mẫu:** cộng cùng một hằng số vào mọi số liệu (tịnh tiến) thì $R,\Delta_Q,s$ **không đổi**; nhân mọi số liệu với $a>0$ thì chúng nhân lên $a$ lần; nhân đồng thời tất cả tần số lên cùng một số lần (cỡ mẫu đổi, tỉ lệ không đổi) thì $\Delta_Q$ và $s$ **không đổi**.
+
+##PP Hướng làm chung khi so sánh hai mẫu
+Chọn tiêu chí so sánh ($R$, $\Delta_Q$ hoặc $s$).
+Tính đại lượng đó cho từng mẫu (hoặc lập luận từ phép biến đổi giữa hai mẫu).
+So sánh và kết luận mẫu nào phân tán hơn, đồng đều hơn.
+
+##CY
+- Kết luận phải nêu rõ tiêu chí so sánh ($R$, $\Delta_Q$ hay $s$); các tiêu chí có thể cho kết luận khác nhau.
+- Không so sánh độ phân tán của hai mẫu có đơn vị khác nhau bằng độ lệch chuẩn.
+
+=== C2.1.1
+@ly_thuyet:
+##TC Công cụ so sánh
+- Mẫu nào có $s$ (hoặc $\Delta_Q$, $R$) lớn hơn thì phân tán hơn theo tiêu chí đó.
+- Mẫu bị tịnh tiến $a$ đơn vị giữ nguyên $R,\Delta_Q,s$; mẫu có tần số nhân $t$ lần giữ nguyên $\Delta_Q,s$, chỉ cỡ mẫu nhân $t$.
+
+##PP So sánh độ phân tán của hai mẫu ghép nhóm
+Xác định tiêu chí (đề nói $R$, $\Delta_Q$, $s$ hay chỉ nói "đồng đều hơn").
+Tính đại lượng đó của từng mẫu (với $s$: tính $\bar{x}$ rồi $s^2$ và $s$ cho cả hai mẫu).
+Nếu hai mẫu quan hệ với nhau qua tịnh tiến hoặc nhân tần số thì lập luận ngay từ phép biến đổi, không cần tính hết.
+So sánh rồi kết luận mẫu nào phân tán hơn (đồng đều hơn) theo tiêu chí đã chọn.
+
+##CY
+- Số trung bình khác nhau nhiều thì khó kết luận "đồng đều hơn" chỉ bằng $s$; nhắc cả hai trung bình khi nhận xét.
+- Hai mẫu có cùng tần số nhưng khác nhóm do tịnh tiến thì độ phân tán bằng nhau dù số trung bình khác nhau.
+
+@vi_du:
+##VD
+Điểm kiểm tra của hai lớp $10A$ và $10B$ (mỗi lớp $50$ học sinh) được thống kê ở bảng sau:
+$\begin{array}{|c|c|c|c|c|c|} \hline \text{Điểm} & [50;60) & [60;70) & [70;80) & [80;90) & [90;100) \\ \hline \text{Lớp 10A} & 6 & 10 & 14 & 12 & 8 \\ \hline \text{Lớp 10B} & 1 & 9 & 20 & 14 & 6 \\ \hline \end{array}$
+Tính số trung bình và độ lệch chuẩn của từng lớp (làm tròn đến hàng phần trăm), rồi cho biết lớp nào có điểm số đồng đều hơn.
+
+Bài giải:
+Giá trị đại diện các nhóm: $55;65;75;85;95$.
+Lớp $10A$: $\bar{x}_A=\dfrac{6\cdot55+10\cdot65+14\cdot75+12\cdot85+8\cdot95}{50}=\dfrac{3810}{50}=76{,}2$.
+$\dfrac{\sum n_ic_i^2}{n}=\dfrac{18150+42250+78750+86700+72200}{50}=\dfrac{298050}{50}=5961$.
+$s_A^2=5961-76{,}2^2=154{,}56$ nên $s_A\approx12{,}43$.
+Lớp $10B$: $\bar{x}_B=\dfrac{55+585+1500+1190+570}{50}=\dfrac{3900}{50}=78$.
+$\dfrac{\sum n_ic_i^2}{n}=\dfrac{3025+38025+112500+101150+54150}{50}=\dfrac{308850}{50}=6177$.
+$s_B^2=6177-78^2=93$ nên $s_B\approx9{,}64$.
+Hai lớp có điểm trung bình gần nhau ($76{,}2$ và $78$) và $s_B<s_A$.
+Vậy lớp $10B$ có điểm số đồng đều hơn lớp $10A$.
+
+##VD
+Hai mẫu số liệu ghép nhóm $M_1$ và $M_2$ có bảng tần số như sau:
+$\begin{array}{|c|c|c|c|c|c|} \hline M_1 & [1;3) & [3;5) & [5;7) & [7;9) & [9;11) \\ \hline \text{Tần số} & 2 & 5 & 7 & 3 & 3 \\ \hline \end{array}$
+$\begin{array}{|c|c|c|c|c|c|} \hline M_2 & [4;6) & [6;8) & [8;10) & [10;12) & [12;14) \\ \hline \text{Tần số} & 4 & 10 & 14 & 6 & 6 \\ \hline \end{array}$
+Gọi $\Delta_{Q_1},\Delta_{Q_2}$ là khoảng tứ phân vị và $s_1,s_2$ là độ lệch chuẩn của $M_1,M_2$. So sánh $\Delta_{Q_1}$ với $\Delta_{Q_2}$ và $s_1$ với $s_2$.
+
+Bài giải:
+Các nhóm của $M_2$ là các nhóm của $M_1$ cộng thêm $3$ đơn vị (tịnh tiến), còn các tần số của $M_2$ gấp đôi tần số của $M_1$ (cỡ mẫu từ $20$ lên $40$, tỉ lệ các nhóm không đổi).
+Kiểm tra bằng tính toán với $M_1$ ($n=20$, tích luỹ $2;7;14;17;20$): $Q_1=3+\dfrac{5-2}{5}\cdot2=4{,}2$ và $Q_3=7+\dfrac{15-14}{3}\cdot2=\dfrac{23}{3}$ nên $\Delta_{Q_1}=\dfrac{23}{3}-4{,}2=\dfrac{52}{15}$.
+Với $M_2$ ($n=40$, tích luỹ $4;14;28;34;40$): $Q_1=6+\dfrac{10-4}{10}\cdot2=7{,}2$ và $Q_3=10+\dfrac{30-28}{6}\cdot2=\dfrac{32}{3}$ nên $\Delta_{Q_2}=\dfrac{32}{3}-7{,}2=\dfrac{52}{15}$.
+Phương sai: $s_1^2=\dfrac{2\cdot4+5\cdot16+7\cdot36+3\cdot64+3\cdot100}{20}-6^2=41{,}6-36=5{,}6$ và $s_2^2=\dfrac{4\cdot25+10\cdot49+14\cdot81+6\cdot121+6\cdot169}{40}-9^2=86{,}6-81=5{,}6$ (số trung bình của $M_1$ và $M_2$ lần lượt là $6$ và $9$).
+Vậy $\Delta_{Q_1}=\Delta_{Q_2}$ và $s_1=s_2$.
+
+=== N C2.2
+@ly_thuyet:
+##TC Ghép nhóm số liệu thô
+- Số liệu thô (số liệu gốc) là dãy các giá trị cụ thể; muốn dùng công thức của mẫu ghép nhóm phải lập bảng các nhóm $[a;a+h),[a+h;a+2h),\dots$ liên tiếp, **cùng độ dài** $h$.
+- Mỗi giá trị thuộc đúng một nhóm: nhóm nửa khoảng $[u_i;u_{i+1})$ chứa $u_i$ nhưng không chứa $u_{i+1}$.
+- Đếm tần số từng nhóm, kiểm tra tổng bằng số giá trị đã cho; sau đó dùng công thức ghép nhóm với giá trị đại diện.
+- Số đặc trưng tính từ mẫu ghép nhóm chỉ là **xấp xỉ** số đặc trưng của mẫu gốc.
+
+##PP Hướng làm chung với số liệu thô
+Xác định nhóm đầu tiên và độ dài nhóm, viết các nhóm liên tiếp phủ hết số liệu.
+Đếm tần số từng nhóm và kiểm tra tổng bằng số giá trị cho.
+Tính đại lượng đề yêu cầu từ bảng vừa lập.
+
+##CY
+- Giá trị trùng đầu mút nhóm thuộc nhóm **bên phải** (vì nhóm có dạng $[a;b)$).
+- Đếm xong phải cộng lại để chắc tổng tần số bằng số liệu đã cho.
+
+=== C2.2.1
+@ly_thuyet:
+##TC So sánh với mẫu gốc
+- Với số liệu gốc: số trung bình $\bar{x}=\dfrac{x_1+\dots+x_N}{N}$, phương sai $s^2=\dfrac{(x_1-\bar{x})^2+\dots+(x_N-\bar{x})^2}{N}$.
+- Hiệu "đặc trưng ghép nhóm $-$ đặc trưng gốc" cho biết sai lệch do ghép nhóm; chia cho giá trị gốc ta được sai số tương đối.
+
+##PP Lập bảng ghép nhóm từ số liệu thô rồi tính
+Xác định nhóm đầu tiên và độ dài nhóm $h$, viết liên tiếp các nhóm cho đến khi chứa hết số liệu.
+Đếm tần số từng nhóm (giá trị bằng đầu mút phải thì xếp vào nhóm kế tiếp), kiểm tra tổng bằng $N$.
+Tính đại lượng đề yêu cầu ($R$, $\Delta_Q$, $s$) từ bảng ghép nhóm bằng công thức ghép nhóm.
+Nếu đề so sánh với mẫu gốc: tính thêm đại lượng của mẫu gốc từ dữ liệu thô rồi lấy hiệu hoặc sai số.
+
+##CY
+- Nhóm không có số liệu vẫn phải nằm trong bảng (tần số $0$) nếu ở giữa dãy nhóm.
+- Dùng công thức mẫu ghép nhóm (giá trị đại diện), không tính từ số liệu thô khi đề đã yêu cầu bảng ghép nhóm.
+
+@vi_du:
+##VD
+Thời gian chạy bền (đơn vị: phút) của $20$ học sinh được ghi lại:
+$8{,}2;\ 8{,}9;\ 9{,}1;\ 9{,}4;\ 9{,}8;\ 10{,}1;\ 10{,}3;\ 10{,}5;\ 10{,}8;\ 11{,}2;\ 11{,}4;\ 11{,}5;\ 11{,}9;\ 12{,}2;\ 12{,}6;\ 12{,}9;\ 13{,}4;\ 13{,}8;\ 14{,}5;\ 15{,}2$.
+Lập mẫu số liệu ghép nhóm với bốn nhóm có độ dài bằng nhau, nhóm đầu tiên là $[8;10)$, rồi tính độ lệch chuẩn của mẫu ghép nhóm đó (làm tròn đến hàng phần mười).
+
+Bài giải:
+Bốn nhóm là $[8;10)$, $[10;12)$, $[12;14)$, $[14;16)$.
+Đếm số liệu: $[8;10)$ có $8{,}2;8{,}9;9{,}1;9{,}4;9{,}8$ nên tần số $5$; $[10;12)$ có $10{,}1;10{,}3;10{,}5;10{,}8;11{,}2;11{,}4;11{,}5;11{,}9$ nên tần số $8$; $[12;14)$ có $12{,}2;12{,}6;12{,}9;13{,}4;13{,}8$ nên tần số $5$; $[14;16)$ có $14{,}5;15{,}2$ nên tần số $2$. Tổng $5+8+5+2=20$.
+Giá trị đại diện: $9;11;13;15$.
+$\bar{x}=\dfrac{5\cdot9+8\cdot11+5\cdot13+2\cdot15}{20}=\dfrac{228}{20}=11{,}4$.
+$\dfrac{\sum n_ic_i^2}{n}=\dfrac{5\cdot81+8\cdot121+5\cdot169+2\cdot225}{20}=\dfrac{2668}{20}=133{,}4$.
+$s^2=133{,}4-11{,}4^2=3{,}44$ nên $s=\sqrt{3{,}44}\approx1{,}9$.
+Vậy độ lệch chuẩn của mẫu ghép nhóm khoảng $1{,}9$ phút.
+
+##VD
+Số tiền (đơn vị: nghìn đồng) $12$ bạn học sinh góp quỹ lớp là: $12;\ 15;\ 18;\ 23;\ 25;\ 27;\ 31;\ 34;\ 38;\ 44;\ 47;\ 49$.
+a) Ghép số liệu thành bốn nhóm có độ dài bằng nhau, nhóm đầu tiên là $[10;20)$. Tính khoảng biến thiên và khoảng tứ phân vị của mẫu ghép nhóm.
+b) Tính hiệu giữa độ lệch chuẩn của mẫu ghép nhóm và độ lệch chuẩn của mẫu số liệu gốc (làm tròn đến hàng phần chục).
+
+Bài giải:
+a) Bốn nhóm: $[10;20)$ có $12;15;18$ nên tần số $3$; $[20;30)$ có $23;25;27$ nên tần số $3$; $[30;40)$ có $31;34;38$ nên tần số $3$; $[40;50)$ có $44;47;49$ nên tần số $3$. Cỡ mẫu $n=12$.
+Khoảng biến thiên: $R=50-10=40$.
+Tích luỹ $3;6;9;12$. $\dfrac{n}{4}=3$: nhóm chứa $Q_1$ là $[10;20)$ với $n_m=3$, $C=0$ nên $Q_1=10+\dfrac{3-0}{3}\cdot10=20$.
+$\dfrac{3n}{4}=9$: nhóm chứa $Q_3$ là $[30;40)$ với $n_m=3$, $C=6$ nên $Q_3=30+\dfrac{9-6}{3}\cdot10=40$.
+Vậy $\Delta_Q=40-20=20$.
+b) Mẫu ghép nhóm: đại diện $15;25;35;45$, $\bar{x}=30$, $\dfrac{\sum n_ic_i^2}{n}=\dfrac{225+625+1225+2025}{4}=1025$ nên $s^2=1025-900=125$ và $s=\sqrt{125}\approx11{,}18$.
+Mẫu gốc: $\bar{x}=\dfrac{363}{12}=30{,}25$; tổng bình phương độ lệch $\sum(x_i-\bar{x})^2=1702{,}25$ nên $s^2=\dfrac{1702{,}25}{12}\approx141{,}85$ và $s\approx11{,}91$.
+Hiệu $11{,}18-11{,}91\approx-0{,}7$.
+Vậy $R=40$, $\Delta_Q=20$ và hiệu hai độ lệch chuẩn khoảng $-0{,}7$.
+
+=== N C2.3
+@ly_thuyet:
+##TC Đọc bảng và số trung bình
+- Mỗi cột của bảng ghép nhóm cho một nhóm $[u_i;u_{i+1})$ và tần số $n_i$ của nhóm đó; cỡ mẫu $n$ là tổng mọi tần số.
+- Nhóm có tần số lớn nhất là nhóm có $n_i$ lớn nhất (thường gọi là nhóm chứa mốt).
+- Số trung bình của mẫu ghép nhóm: $\bar{x}=\dfrac{n_1c_1+\dots+n_kc_k}{n}$ với $c_i=\dfrac{u_i+u_{i+1}}{2}$.
+
+##PP Hướng làm chung khi đọc bảng
+Đọc nhóm và tần số tương ứng, cộng các tần số để có $n$.
+Cần số trung bình thì tính $c_i$, lập $\sum n_ic_i$ rồi chia cho $n$.
+Trả lời đúng đại lượng đề hỏi (tần số, cỡ mẫu, nhóm, hay số trung bình).
+
+##CY
+- Nhóm tần số $0$ vẫn nằm trong bảng nhưng không đóng góp vào tổng $\sum n_ic_i$.
+- Chia cho cỡ mẫu $n$, không chia cho số nhóm.
+
+=== C2.3.1
+@ly_thuyet:
+##TC Đọc số liệu
+- Tần số của nhóm: số ở hàng "tần số" ngay dưới nhóm; cỡ mẫu: tổng hàng tần số.
+- Nhóm tần số lớn nhất: nhóm có số lớn nhất trong hàng tần số.
+- $\bar{x}=\dfrac{\sum n_ic_i}{n}$.
+
+##PP Đọc bảng và tính số trung bình
+Đọc kỹ bảng: nhóm nào, tần số nào; cộng các tần số để có $n$.
+Với nhóm tần số lớn nhất: so sánh các tần số và đọc nhóm tương ứng.
+Với số trung bình: tính giá trị đại diện $c_i$, lập $\sum n_ic_i$ rồi chia $n$ (làm tròn theo yêu cầu).
+
+##CY
+- Đổi nhầm giữa tần số ($n_i$) và giá trị đại diện ($c_i$) khi nhân.
+- Đề nói "làm tròn" thì chỉ làm tròn ở bước cuối.
+
+@vi_du:
+##VD
+Chiều cao (đơn vị: cm) của $40$ học sinh nam được thống kê ở bảng sau:
+$\begin{array}{|c|c|c|c|c|} \hline \text{Chiều cao (cm)} & [150;160) & [160;170) & [170;180) & [180;190) \\ \hline \text{Số học sinh} & 4 & 10 & 16 & 10 \\ \hline \end{array}$
+a) Xác định cỡ mẫu, tần số của nhóm $[160;170)$ và nhóm có tần số lớn nhất.
+b) Tính chiều cao trung bình của mẫu số liệu ghép nhóm.
+
+Bài giải:
+a) Cỡ mẫu $n=4+10+16+10=40$. Tần số của nhóm $[160;170)$ là $10$. Tần số lớn nhất là $16$ nên nhóm có tần số lớn nhất là $[170;180)$.
+b) Giá trị đại diện lần lượt là $155;165;175;185$.
+$\bar{x}=\dfrac{4\cdot155+10\cdot165+16\cdot175+10\cdot185}{40}=\dfrac{620+1650+2800+1850}{40}=\dfrac{6920}{40}=173$.
+Vậy cỡ mẫu $40$, tần số nhóm $[160;170)$ bằng $10$, nhóm có tần số lớn nhất là $[170;180)$ và chiều cao trung bình là $173$ cm.
+
+##VD
+Điểm thưởng (đơn vị: điểm) của $30$ nhân viên trong tháng được cho ở bảng sau:
+$\begin{array}{|c|c|c|c|c|c|} \hline \text{Điểm} & [0;2) & [2;4) & [4;6) & [6;8) & [8;10) \\ \hline \text{Số nhân viên} & 3 & 7 & 12 & 8 & 0 \\ \hline \end{array}$
+Tính số trung bình của mẫu số liệu ghép nhóm trên và cho biết nhóm có tần số lớn nhất.
+
+Bài giải:
+Cỡ mẫu $n=3+7+12+8+0=30$; giá trị đại diện lần lượt là $1;3;5;7;9$.
+$\bar{x}=\dfrac{3\cdot1+7\cdot3+12\cdot5+8\cdot7+0\cdot9}{30}=\dfrac{3+21+60+56}{30}=\dfrac{140}{30}=\dfrac{14}{3}\approx4{,}67$.
+Tần số lớn nhất là $12$ nên nhóm tương ứng là $[4;6)$.
+Vậy số trung bình khoảng $4{,}67$ điểm và nhóm có tần số lớn nhất là $[4;6)$.
+
+## GHI CHÚ CHO CEO
+- Mọi ví dụ đã tính lại bằng node (script soan/SDT/thu.mjs), khớp đáp số.
+- C1.2.2 VD2 ý b): tích luỹ đến hết nhóm [160;170) đúng bằng n/4 = 20, nên Q1 = 170 rơi đúng biên nhóm (theo quy tắc "nhóm đầu tiên có tích luỹ ≥ n/4"). Cố ý để minh hoạ ca biên; nếu CEO thấy dễ gây nhầm cho HS thì đổi số liệu.
+- Không đọc sách tham khảo (ví dụ tự thiết kế từ đề thi và công thức SGK), nên không có lỗi sách để báo.
+- C2.3.1 giữ trong SDT theo đề xuất H1 (CEO chưa chốt). C1.2.3 VD2 cho đáp số đúng 0,925 (không làm tròn).
