@@ -78426,3 +78426,10 @@ Thùy nêu 4 việc, làm được 3:
 - **Báo cáo tuần (spec-bao-cao-tuan.md, Thùy chốt 18 điểm):** P1 mig 1346 `_dang_yeu_tai_lo(hs[],môn,mốc)` khớp 100% hàm đang chạy (Toán 150/150, KHTN 186/186) · chụp đầu tuần từ hàm (không từ bảng làm mới lười) · `_tu_dong_sang_t2` + cron 1347 (Thùy chạy SQL Editor, đã ghi sổ). Thùy: KHÔNG tính ngược; ảnh đầu tiên 09/11. "Tổng kết tuần ngừng từ 19/10" KHÔNG phải lỗi — bộ đệm lười. P2 mig 1351 bảng `bao_cao_tuan_khoi` + log, fn_bctk_so/trend/lay/luu_nhap/nop (<1s mọi khối). P3 mig 1407 hàng duyệt, duyệt/trả lại, gậy trễ (chỉ từ kỳ 02/11 — suýt gậy oan 7 trưởng khối kỳ 26/10), bao_cao_chuyen_mon_tuan + chốt. P4 chiếu TV (`ChieuBaoCaoMon`, khuôn Tổng kết tuần, VuaMan export).
 - **Kiểm:** phiên giả lập bằng `set_config('request.jwt.claims', …)` trong transaction chỉ đọc; vòng ghi (nộp → trả lại → nộp lại → duyệt → chốt) chạy trong 1 transaction rồi ROLLBACK: 19/19 đúng, DB sạch.
 - **Treo:** `gay_de_xuat.nguon` CHECK chỉ vanhanh·giaoviec ⇒ gậy báo cáo trễ tạm 'vanhanh' (thêm 'bao_cao' = alter, chờ Thùy) · `fn_phong_truong_khoi` không dùng, chưa xoá · chưa nối hàm dạng yếu cũ sang `_dang_yeu_tai_lo` · nhánh gậy sau hạn chỉ kiểm được sau 17:00 09/11 · ERP chưa deploy.
+
+## 03/11 (chiều) — Cài thêm bot phiên Claude trên MÁY CÔNG TY (DESKTOP-HD2484P) — Thùy
+- Lý do: bot chỉ ở máy nhà, heartbeat cuối 14:37 (máy nhà tắt/ngủ) ⇒ trưởng khối không ai được trả lời.
+- `.env.local` thêm `PHIEN_TAI_LIEU_DIR=E:\BK ACADEMY\Tài liệu tham khảo` · claude CLI 2.1.294 ở `~/.local/bin` · login Max hết hạn ("OAuth session expired") ⇒ Thùy `/login` lại.
+- 2 tác vụ Windows y máy nhà (Register-ScheduledTask, `conhost --headless`, không dừng khi chạy pin, không trần thời gian): `BKdemy Phien Claude` (khi đăng nhập) + `BKdemy Phien Luoi Vot` (--once mỗi 15').
+- Kiểm: lưới vớt 16:12 đã trả lời tin "chào" của chị Trang (phiên KHTN 7, treo từ 14:52); listener 16:20 Realtime SUBSCRIBED, `claude_phien_bot` ghi `DESKTOP-HD2484P` · `chay`.
+- Lưu ý: `claude_phien_bot` chỉ 1 dòng (id=1) ⇒ hai máy cùng chạy thì ERP hiện tên máy báo sau cùng; nhận việc atomic nên không trả lời trùng; chung hạn mức subscription.
