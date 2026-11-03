@@ -43,7 +43,9 @@ export default function ChiTietCapDuoiPopup({ ns, onDong }: { ns: CapDuoi; onDon
             <O ten="Đang làm" so={ns.dang_lam} mau="text-sky-600" />
             <O ten="Đã xong" so={ns.da_xong} mau="text-emerald-600" />
             <O ten="Trễ hạn" so={ns.tre_han} mau="text-rose-600" ghi={ns.qua_han ? `${ns.qua_han} chưa xong` : undefined} />
-            <O ten="Gậy tháng" so={ns.gay_thang} mau="text-amber-700" />
+            {/* số = gậy đã vào sổ (DB); đề xuất chưa chốt chỉ ghi kèm — đếm dòng đang hiện ở cột Gậy */}
+            <O ten="Gậy tháng" so={ns.gay_thang} mau="text-amber-700"
+              ghi={ct && ct.gay.some((g) => g.trang_thai === 'cho_chot') ? `+${ct.gay.filter((g) => g.trang_thai === 'cho_chot').length} đề xuất` : undefined} />
           </div>
           <button onClick={onDong} className="rounded-lg px-2 py-1 text-[20px] leading-none text-slate-400 hover:text-slate-700">×</button>
         </div>
