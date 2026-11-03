@@ -40,7 +40,8 @@ function Ban({ x, y, s }: { x: number; y: number; s: number }) {
 
 function NhanVat({ ns, x, y, s, onMo }: { ns: NguoiCanh; x: number; y: number; s: number; onMo: () => void }) {
   const h = bam(ns.nhan_su_id)
-  const toc = TOC[h % TOC.length], ao = AO[(h >> 3) % AO.length], da = DA[(h >> 6) % DA.length], kieu = (h >> 9) % 3
+  // >>> (dịch không dấu): h có thể > 2^31 — dùng >> ra số âm ⇒ chỉ số mảng âm ⇒ màu undefined ⇒ mặt/áo bị tô ĐEN (Thùy chụp 03/11)
+  const toc = TOC[h % TOC.length], ao = AO[(h >>> 3) % AO.length], da = DA[(h >>> 6) % DA.length], kieu = (h >>> 9) % 3
   const mau = mauHS(ns.hieu_suat)
   const phu = [ns.tre_han > 0 ? `${ns.tre_han} trễ` : null, ns.gay_thang > 0 ? `${ns.gay_thang} gậy` : null].filter(Boolean).join(' · ')
   return (
@@ -102,14 +103,16 @@ function GheTrong({ x, y, s }: { x: number; y: number; s: number }) {
   )
 }
 
-// Bức tranh treo tường (bấm được): khung gỗ 260×175 từ y=70, tên ghi ở dải tối dưới đáy khung.
+// Bức tranh treo tường (bấm được): khung gỗ 260×160 từ y=30, tên ghi ở dải tối dưới đáy khung.
+// Đáy khung y=190 — dưới đó là chỗ biển tên hàng sau (biển trưởng khối cao ~100, đỉnh ~y=210; Thùy 03/11: trước bị đè lên chữ "Chất lượng").
+// Hình bên trong vẽ theo hệ cũ (khung từ y=70) rồi dời lên 40.
 function Tranh({ x, ten, onMo, children }: { x: number; ten: string; onMo: () => void; children: React.ReactNode }) {
   return (
     <g className="dv" onClick={onMo} role="button" aria-label={`Mở ${ten.replace(/^\S+\s/, '')}`}>
-      <rect className="vien" x={x} y={70} width={260} height={175} rx={8} fill="#fffaf0" stroke="#8f5e31" strokeWidth={9} />
-      {children}
-      <rect x={x + 5} y={205} width={250} height={35} fill="#1e293b" opacity={0.88} />
-      <text x={x + 130} y={230} textAnchor="middle" fontSize={20} fontWeight={700} fill="#fff">{ten}</text>
+      <rect className="vien" x={x} y={30} width={260} height={160} rx={8} fill="#fffaf0" stroke="#8f5e31" strokeWidth={9} />
+      <g transform="translate(0 -40)">{children}</g>
+      <rect x={x + 5} y={152} width={250} height={34} fill="#1e293b" opacity={0.88} />
+      <text x={x + 130} y={176} textAnchor="middle" fontSize={20} fontWeight={700} fill="#fff">{ten}</text>
     </g>
   )
 }
@@ -159,11 +162,11 @@ export default function CanhPhong<T extends NguoiCanh>({ ds, onMoNguoi, onMoDoVa
         {[[430, 160], [490, 150], [545, 118], [600, 140]].map(([cx, cy], i) => <circle key={i} cx={cx} cy={cy} r={10} fill={['#e58aa8', '#6d8bd6', '#f2b25c', '#a08ad6'][i]} stroke="#fff" strokeWidth={3} />)}
       </Tranh>
       <Tranh x={670} ten="📋 Quản trị" onMo={() => onMoDoVat('quan_tri')}>
-        <rect x={735} y={88} width={130} height={118} rx={8} fill="#fff" stroke="#cbd5e1" strokeWidth={3} />
+        <rect x={735} y={88} width={130} height={100} rx={8} fill="#fff" stroke="#cbd5e1" strokeWidth={3} />
         <rect x={775} y={80} width={50} height={16} rx={5} fill="#94a3b8" />
         {[0, 1, 2].map((i) => <g key={i}>
-          <path d={`M750 ${118 + i * 30} l8 8 l14 -16`} fill="none" stroke={i < 2 ? '#16a34a' : '#e11d48'} strokeWidth={5} strokeLinecap="round" strokeLinejoin="round" />
-          <rect x={782} y={112 + i * 30} width={68} height={10} rx={5} fill="#e2e8f0" />
+          <path d={`M750 ${116 + i * 25} l8 8 l14 -16`} fill="none" stroke={i < 2 ? '#16a34a' : '#e11d48'} strokeWidth={5} strokeLinecap="round" strokeLinejoin="round" />
+          <rect x={782} y={110 + i * 25} width={68} height={10} rx={5} fill="#e2e8f0" />
         </g>)}
       </Tranh>
       <Tranh x={970} ten="📈 Chất lượng" onMo={() => onMoDoVat('chat_luong')}>
