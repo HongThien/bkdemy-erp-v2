@@ -18,7 +18,8 @@
         "P1.1.1"
        ],
        "moi": [],
-       "hiem": false
+       "hiem": false,
+       "muc_do": 1
       },
       {
        "id": "C1.1.2",
@@ -28,7 +29,8 @@
         "P1.1.2"
        ],
        "moi": [],
-       "hiem": false
+       "hiem": false,
+       "muc_do": 2
       }
      ]
     },
@@ -45,7 +47,8 @@
         "P1.2.2"
        ],
        "moi": [],
-       "hiem": false
+       "hiem": false,
+       "muc_do": 1
       },
       {
        "id": "C1.2.2",
@@ -58,7 +61,8 @@
        "moi": [
         "quy tắc ba điểm cộng vectơ"
        ],
-       "hiem": false
+       "hiem": false,
+       "muc_do": 1
       },
       {
        "id": "C1.2.3",
@@ -69,7 +73,8 @@
         "P1.2.7"
        ],
        "moi": [],
-       "hiem": false
+       "hiem": false,
+       "muc_do": 2
       },
       {
        "id": "C1.2.4",
@@ -81,7 +86,8 @@
         "P1.3.2"
        ],
        "moi": [],
-       "hiem": false
+       "hiem": false,
+       "muc_do": 2
       }
      ]
     },
@@ -99,7 +105,8 @@
         "P1.5.2"
        ],
        "moi": [],
-       "hiem": false
+       "hiem": false,
+       "muc_do": 1
       },
       {
        "id": "C1.3.2",
@@ -109,7 +116,8 @@
         "P1.4.2"
        ],
        "moi": [],
-       "hiem": false
+       "hiem": false,
+       "muc_do": 2
       },
       {
        "id": "C1.3.3",
@@ -121,7 +129,8 @@
         "P1.4.6"
        ],
        "moi": [],
-       "hiem": false
+       "hiem": false,
+       "muc_do": 2
       }
      ]
     }
@@ -144,7 +153,8 @@
         "P2.1.3"
        ],
        "moi": [],
-       "hiem": false
+       "hiem": false,
+       "muc_do": 1
       },
       {
        "id": "C2.1.2",
@@ -155,7 +165,8 @@
         "P2.1.1"
        ],
        "moi": [],
-       "hiem": false
+       "hiem": false,
+       "muc_do": 1
       }
      ]
     },
@@ -171,7 +182,8 @@
         "P2.2.1"
        ],
        "moi": [],
-       "hiem": false
+       "hiem": false,
+       "muc_do": 2
       },
       {
        "id": "C2.2.2",
@@ -182,7 +194,8 @@
         "P2.2.3"
        ],
        "moi": [],
-       "hiem": false
+       "hiem": false,
+       "muc_do": 3
       }
      ]
     }
@@ -206,7 +219,8 @@
         "P3.1.3"
        ],
        "moi": [],
-       "hiem": false
+       "hiem": false,
+       "muc_do": 1
       },
       {
        "id": "C3.1.2",
@@ -216,7 +230,8 @@
         "P3.2.1"
        ],
        "moi": [],
-       "hiem": false
+       "hiem": false,
+       "muc_do": 1
       },
       {
        "id": "C3.1.3",
@@ -226,7 +241,8 @@
         "P3.1.2"
        ],
        "moi": [],
-       "hiem": false
+       "hiem": false,
+       "muc_do": 2
       }
      ]
     },
@@ -242,7 +258,8 @@
         "P3.2.2"
        ],
        "moi": [],
-       "hiem": false
+       "hiem": false,
+       "muc_do": 1
       },
       {
        "id": "C3.2.2",
@@ -255,7 +272,8 @@
         "hình thang vuông trong Oxyz: tìm đỉnh còn lại từ diện tích",
         "tìm toạ độ đỉnh hình thang cân biết ba đỉnh"
        ],
-       "hiem": false
+       "hiem": false,
+       "muc_do": 2
       },
       {
        "id": "C3.2.3",
@@ -268,7 +286,8 @@
        "moi": [
         "chân phân giác trong tam giác Oxyz và bán kính ngoại tiếp"
        ],
-       "hiem": false
+       "hiem": false,
+       "muc_do": 2
       }
      ]
     },
@@ -285,7 +304,8 @@
         "P3.3.2"
        ],
        "moi": [],
-       "hiem": false
+       "hiem": false,
+       "muc_do": 1
       },
       {
        "id": "C3.3.2",
@@ -295,7 +315,8 @@
         "P3.3.3"
        ],
        "moi": [],
-       "hiem": true
+       "hiem": true,
+       "muc_do": 2
       }
      ]
     },
@@ -312,7 +333,8 @@
         "P3.4.3"
        ],
        "moi": [],
-       "hiem": false
+       "hiem": false,
+       "muc_do": 2
       },
       {
        "id": "C3.4.2",
@@ -326,7 +348,8 @@
         "tìm toạ độ điểm từ các hệ thức tích vô hướng cho trước",
         "quỹ tích trực tâm tam giác khi điểm di động trên trục Oxyz"
        ],
-       "hiem": false
+       "hiem": false,
+       "muc_do": 3
       },
       {
        "id": "C3.4.3",
@@ -338,7 +361,8 @@
         "P3.5.3"
        ],
        "moi": [],
-       "hiem": false
+       "hiem": false,
+       "muc_do": 2
       }
      ]
     },
@@ -357,7 +381,8 @@
        "moi": [
         "cực trị độ dài đoạn nối hai cạnh chéo trong lăng trụ (gắn hệ trục)"
        ],
-       "hiem": false
+       "hiem": false,
+       "muc_do": 5
       },
       {
        "id": "C3.5.2",
@@ -367,7 +392,8 @@
         "P3.6.2"
        ],
        "moi": [],
-       "hiem": false
+       "hiem": false,
+       "muc_do": 3
       }
      ]
     }
@@ -390,7 +416,8 @@
         "P1.5.1"
        ],
        "moi": [],
-       "hiem": false
+       "hiem": false,
+       "muc_do": 2
       },
       {
        "id": "C4.1.2",
@@ -400,7 +427,8 @@
         "P3.7.3"
        ],
        "moi": [],
-       "hiem": false
+       "hiem": false,
+       "muc_do": 3
       }
      ]
     },
@@ -420,7 +448,8 @@
         "bóng nảy parabol: tổng cấp số nhân, toạ độ điểm cao nhất",
         "toạ độ mô hình Trái Đất: tính độ dài cung qua góc giữa hai vectơ"
        ],
-       "hiem": false
+       "hiem": false,
+       "muc_do": 3
       },
       {
        "id": "C4.2.2",
@@ -432,7 +461,8 @@
        "moi": [
         "bài thực tế hình hộp nghiêng trong Oxyz, tìm toạ độ điểm"
        ],
-       "hiem": false
+       "hiem": false,
+       "muc_do": 3
       }
      ]
     },
@@ -448,7 +478,8 @@
         "P3.7.1"
        ],
        "moi": [],
-       "hiem": false
+       "hiem": false,
+       "muc_do": 3
       },
       {
        "id": "C4.3.2",
@@ -458,7 +489,8 @@
         "P3.7.2"
        ],
        "moi": [],
-       "hiem": false
+       "hiem": false,
+       "muc_do": 3
       }
      ]
     }

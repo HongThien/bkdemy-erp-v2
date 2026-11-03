@@ -1,177 +1,235 @@
 {
-  "chuong": "SDT",
-  "chuyen_de": [
+ "chuong": "SDT",
+ "chuyen_de": [
+  {
+   "id": "C1",
+   "ten": "Tính các số đo độ phân tán của mẫu số liệu ghép nhóm",
+   "mo_ta": "Cho bảng tần số ghép nhóm (hoặc biểu đồ cột), tính khoảng biến thiên, tứ phân vị – khoảng tứ phân vị, phương sai – độ lệch chuẩn. Chiếm ~92% câu đề của chương.",
+   "nhom": [
     {
-      "id": "C1",
-      "ten": "Tính các số đo độ phân tán của mẫu số liệu ghép nhóm",
-      "mo_ta": "Cho bảng tần số ghép nhóm (hoặc biểu đồ cột), tính khoảng biến thiên, tứ phân vị – khoảng tứ phân vị, phương sai – độ lệch chuẩn. Chiếm ~92% câu đề của chương.",
-      "nhom": [
-        {
-          "id": "C1.1",
-          "ten": "Khoảng biến thiên",
-          "dang": [
-            {
-              "id": "C1.1.1",
-              "ten": "Tính khoảng biến thiên của mẫu số liệu ghép nhóm",
-              "mo_ta": "Đề cho bảng/biểu đồ ghép nhóm, hỏi khoảng biến thiên R (hoặc 'chênh lệch nhiều nhất'): lấy đầu mút phải nhóm cuối có tần số khác 0 trừ đầu mút trái nhóm đầu có tần số khác 0. Gồm cả kiểu R_A + R_B của hai lớp.",
-              "tu": ["NHOM:NNB01258"],
-              "moi": [],
-              "hiem": false
-            }
-          ]
-        },
-        {
-          "id": "C1.2",
-          "ten": "Tứ phân vị và khoảng tứ phân vị",
-          "dang": [
-            {
-              "id": "C1.2.1",
-              "ten": "Xác định nhóm chứa tứ phân vị (trung vị)",
-              "mo_ta": "Hỏi 'nhóm chứa Q1/Q3/trung vị là nhóm nào' (có khi hỏi tần số hoặc a+b của nhóm đó): tính n/4, 3n/4 rồi dò tần số tích luỹ, không cần thay công thức nội suy.",
-              "tu": [],
-              "moi": [],
-              "hiem": false
-            },
-            {
-              "id": "C1.2.2",
-              "ten": "Tính tứ phân vị Q1, Q2, Q3 của mẫu ghép nhóm",
-              "mo_ta": "Hỏi giá trị Q1, Q3 hoặc trung vị (Q2), kể cả câu thực tế '25% hộ cao nhất từ bao nhiêu', '75% học sinh từ bao nhiêu trở lên': tìm nhóm chứa rồi thay công thức nội suy Q = u_m + (k·n/4 − C)/n_m · h.",
-              "tu": [],
-              "moi": [],
-              "hiem": false
-            },
-            {
-              "id": "C1.2.3",
-              "ten": "Tính khoảng tứ phân vị từ bảng ghép nhóm",
-              "mo_ta": "Cho bảng/biểu đồ, hỏi ΔQ (thường làm tròn, có khi dạng m/n hoặc hiệu R − ΔQ): tính Q1 và Q3 bằng công thức nội suy rồi lấy Q3 − Q1.",
-              "tu": ["NHOM:NNB01259"],
-              "moi": [],
-              "hiem": false
-            },
-            {
-              "id": "C1.2.4",
-              "ten": "Khoảng tứ phân vị khi biết sẵn Q1, Q3 hoặc công thức",
-              "mo_ta": "Nhận biết: đề cho sẵn Q1, Q2, Q3 (hoặc hỏi công thức ΔQ) — chỉ cần ΔQ = Q3 − Q1, bẫy là chọn Q3 − Q2 hay Q2 − Q1.",
-              "tu": [],
-              "moi": [],
-              "hiem": true
-            }
-          ]
-        },
-        {
-          "id": "C1.3",
-          "ten": "Phương sai và độ lệch chuẩn",
-          "dang": [
-            {
-              "id": "C1.3.1",
-              "ten": "Tính phương sai, độ lệch chuẩn từ bảng ghép nhóm",
-              "mo_ta": "Cho bảng hoặc biểu đồ ghép nhóm, hỏi s² hoặc s (làm tròn, 'thuộc khoảng nào', tự luận kèm số trung bình): lấy giá trị đại diện, tính x̄ rồi s² = Σn_i c_i²/n − x̄², s = √s².",
-              "tu": ["NHOM:NNB01260"],
-              "moi": [],
-              "hiem": false
-            },
-            {
-              "id": "C1.3.2",
-              "ten": "Quan hệ phương sai – độ lệch chuẩn, công thức và ý nghĩa",
-              "mo_ta": "Nhận biết: cho phương sai tìm độ lệch chuẩn (hoặc ngược lại), chọn công thức phương sai đúng, chọn khẳng định đúng/sai về s, s² và số nào đo độ phân tán.",
-              "tu": ["NHOM:NNB01262"],
-              "moi": [],
-              "hiem": false
-            }
-          ]
-        }
-      ]
+     "id": "C1.1",
+     "ten": "Khoảng biến thiên",
+     "dang": [
+      {
+       "id": "C1.1.1",
+       "ten": "Tính khoảng biến thiên của mẫu số liệu ghép nhóm",
+       "mo_ta": "Đề cho bảng/biểu đồ ghép nhóm, hỏi khoảng biến thiên R (hoặc 'chênh lệch nhiều nhất'): lấy đầu mút phải nhóm cuối có tần số khác 0 trừ đầu mút trái nhóm đầu có tần số khác 0. Gồm cả kiểu R_A + R_B của hai lớp.",
+       "tu": [
+        "NHOM:NNB01258"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 1
+      }
+     ]
     },
     {
-      "id": "C2",
-      "ten": "Vận dụng các số đặc trưng",
-      "mo_ta": "Dùng số đo phân tán để so sánh hai mẫu, làm việc từ số liệu thô, và các câu đọc bảng/số trung bình ôn từ lớp 11 xuất hiện trong đề chương này.",
-      "nhom": [
-        {
-          "id": "C2.1",
-          "ten": "So sánh độ phân tán",
-          "dang": [
-            {
-              "id": "C2.1.1",
-              "ten": "So sánh độ phân tán của hai mẫu số liệu ghép nhóm",
-              "mo_ta": "Hai lớp/hai nhóm/hai mẫu cùng bảng, hỏi mẫu nào phân tán hơn (đồng đều hơn) theo R, ΔQ hoặc s, hoặc quan hệ ΔQ/s khi mẫu bị tịnh tiến/nhân tần số; tính cả hai rồi so, hoặc lập luận ý nghĩa (chỉ so được khi trung bình xấp xỉ).",
-              "tu": ["NHOM:NNB01261"],
-              "moi": [],
-              "hiem": false
-            }
-          ]
-        },
-        {
-          "id": "C2.2",
-          "ten": "Từ số liệu thô đến mẫu ghép nhóm",
-          "dang": [
-            {
-              "id": "C2.2.1",
-              "ten": "Ghép nhóm số liệu thô rồi tính số đặc trưng",
-              "mo_ta": "Đề cho dãy số liệu gốc và nhóm đầu tiên/độ dài nhóm: lập bảng ghép nhóm rồi tính R, ΔQ hoặc s; có kiểu so sánh với số đặc trưng của mẫu gốc (hiệu, sai số tương đối). Dạng hiếm nhưng cách làm riêng.",
-              "tu": ["NHOM:NNB01263"],
-              "moi": [],
-              "hiem": true
-            }
-          ]
-        },
-        {
-          "id": "C2.3",
-          "ten": "Đọc bảng ghép nhóm và số trung bình",
-          "dang": [
-            {
-              "id": "C2.3.1",
-              "ten": "Đọc bảng ghép nhóm, tính số trung bình",
-              "mo_ta": "Đọc tần số một nhóm, cỡ mẫu, nhóm có tần số lớn nhất; tính số trung bình của mẫu ghép nhóm (từ bảng hoặc biểu đồ) bằng giá trị đại diện. Kiến thức lớp 11 xuất hiện lẻ trong đề chương này.",
-              "tu": [],
-              "moi": [
-                "tính số trung bình của mẫu số liệu ghép nhóm",
-                "đọc tần số một nhóm từ bảng ghép nhóm",
-                "tìm nhóm có tần số lớn nhất trong bảng ghép nhóm",
-                "tính số trung bình mẫu ghép nhóm từ biểu đồ",
-                "trung bình cộng của mẫu số liệu ghép nhóm",
-                "xác định cỡ mẫu từ bảng số liệu ghép nhóm"
-              ],
-              "hiem": true
-            }
-          ]
-        }
-      ]
+     "id": "C1.2",
+     "ten": "Tứ phân vị và khoảng tứ phân vị",
+     "dang": [
+      {
+       "id": "C1.2.1",
+       "ten": "Xác định nhóm chứa tứ phân vị (trung vị)",
+       "mo_ta": "Hỏi 'nhóm chứa Q1/Q3/trung vị là nhóm nào' (có khi hỏi tần số hoặc a+b của nhóm đó): tính n/4, 3n/4 rồi dò tần số tích luỹ, không cần thay công thức nội suy.",
+       "tu": [],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 2
+      },
+      {
+       "id": "C1.2.2",
+       "ten": "Tính tứ phân vị Q1, Q2, Q3 của mẫu ghép nhóm",
+       "mo_ta": "Hỏi giá trị Q1, Q3 hoặc trung vị (Q2), kể cả câu thực tế '25% hộ cao nhất từ bao nhiêu', '75% học sinh từ bao nhiêu trở lên': tìm nhóm chứa rồi thay công thức nội suy Q = u_m + (k·n/4 − C)/n_m · h.",
+       "tu": [],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 2
+      },
+      {
+       "id": "C1.2.3",
+       "ten": "Tính khoảng tứ phân vị từ bảng ghép nhóm",
+       "mo_ta": "Cho bảng/biểu đồ, hỏi ΔQ (thường làm tròn, có khi dạng m/n hoặc hiệu R − ΔQ): tính Q1 và Q3 bằng công thức nội suy rồi lấy Q3 − Q1.",
+       "tu": [
+        "NHOM:NNB01259"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 2
+      },
+      {
+       "id": "C1.2.4",
+       "ten": "Khoảng tứ phân vị khi biết sẵn Q1, Q3 hoặc công thức",
+       "mo_ta": "Nhận biết: đề cho sẵn Q1, Q2, Q3 (hoặc hỏi công thức ΔQ) — chỉ cần ΔQ = Q3 − Q1, bẫy là chọn Q3 − Q2 hay Q2 − Q1.",
+       "tu": [],
+       "moi": [],
+       "hiem": true,
+       "muc_do": 1
+      }
+     ]
+    },
+    {
+     "id": "C1.3",
+     "ten": "Phương sai và độ lệch chuẩn",
+     "dang": [
+      {
+       "id": "C1.3.1",
+       "ten": "Tính phương sai, độ lệch chuẩn từ bảng ghép nhóm",
+       "mo_ta": "Cho bảng hoặc biểu đồ ghép nhóm, hỏi s² hoặc s (làm tròn, 'thuộc khoảng nào', tự luận kèm số trung bình): lấy giá trị đại diện, tính x̄ rồi s² = Σn_i c_i²/n − x̄², s = √s².",
+       "tu": [
+        "NHOM:NNB01260"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 2
+      },
+      {
+       "id": "C1.3.2",
+       "ten": "Quan hệ phương sai – độ lệch chuẩn, công thức và ý nghĩa",
+       "mo_ta": "Nhận biết: cho phương sai tìm độ lệch chuẩn (hoặc ngược lại), chọn công thức phương sai đúng, chọn khẳng định đúng/sai về s, s² và số nào đo độ phân tán.",
+       "tu": [
+        "NHOM:NNB01262"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 1
+      }
+     ]
     }
-  ],
-  "gop": [
-    {"ma": "NHOM:NNB01264", "vao": "C1.2.2", "ly_do": "Phát hiện giá trị bất thường bằng tứ phân vị: 0 câu đề không Đ/S. Không lập dạng riêng; nếu đề sau có thì nằm cạnh việc tính tứ phân vị (Q1 − 1,5ΔQ, Q3 + 1,5ΔQ)."}
-  ],
-  "bo_moi": [],
-  "cau_hoi": [
+   ]
+  },
+  {
+   "id": "C2",
+   "ten": "Vận dụng các số đặc trưng",
+   "mo_ta": "Dùng số đo phân tán để so sánh hai mẫu, làm việc từ số liệu thô, và các câu đọc bảng/số trung bình ôn từ lớp 11 xuất hiện trong đề chương này.",
+   "nhom": [
     {
-      "ma": "H1",
-      "tieu_de": "Câu số trung bình / đọc bảng ghép nhóm để ở chương này hay chuyển về chương lớp 11?",
-      "mo_ta": "10 câu (7 tính số trung bình, 3 đọc tần số/cỡ mẫu/nhóm tần số lớn nhất) nằm trong đề K12 nhưng là kiến thức 'số đặc trưng đo xu thế trung tâm' lớp 11. Chương SDT không có chỗ cho chúng; số trung bình cũng là bước con của tính phương sai.",
-      "chon": [
-        ["Giữ dạng hiếm C2.3.1 trong SDT", "HS K12 vẫn được đo khi đề hỏi; bản đồ K12 tự đủ, không phụ thuộc bản đồ K11", true],
-        ["Chuyển sang bản đồ lớp 11 (xu thế trung tâm)", "SDT gọn hơn; 10 câu đi sang khối khác", false],
-        ["Gộp vào C1.3.1 (tính phương sai)", "Mất phân biệt 'tính trung bình' với 'tính phương sai'", false]
-      ]
+     "id": "C2.1",
+     "ten": "So sánh độ phân tán",
+     "dang": [
+      {
+       "id": "C2.1.1",
+       "ten": "So sánh độ phân tán của hai mẫu số liệu ghép nhóm",
+       "mo_ta": "Hai lớp/hai nhóm/hai mẫu cùng bảng, hỏi mẫu nào phân tán hơn (đồng đều hơn) theo R, ΔQ hoặc s, hoặc quan hệ ΔQ/s khi mẫu bị tịnh tiến/nhân tần số; tính cả hai rồi so, hoặc lập luận ý nghĩa (chỉ so được khi trung bình xấp xỉ).",
+       "tu": [
+        "NHOM:NNB01261"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 2
+      }
+     ]
     },
     {
-      "ma": "H2",
-      "tieu_de": "Tách 'nhóm chứa tứ phân vị' và 'tính Q1/Q3' khỏi 'tính khoảng tứ phân vị'?",
-      "mo_ta": "Nhóm tứ phân vị có 122 câu: tính ΔQ 79, nhóm chứa Q 16, tính Q1/Q2/Q3 16, ΔQ khi biết sẵn Q 11. Hai dạng nhỏ là bước con của tính ΔQ nhưng đề hỏi riêng (mức 1 và mức 2), nên đo riêng giúp biết HS hỏng ở bước nào.",
-      "chon": [
-        ["Tách 4 dạng như đề xuất", "Chẩn đoán được bước hỏng; 2 dạng 16 câu, 1 dạng 11 câu", true],
-        ["Gộp nhóm chứa Q + tính Q thành một dạng (32 câu)", "Ít dạng hơn, mất phân biệt 'dò nhóm' với 'thay công thức'", false],
-        ["Gộp cả vào tính khoảng tứ phân vị", "1 dạng ~122 câu, không chẩn đoán được bước", false]
-      ]
+     "id": "C2.2",
+     "ten": "Từ số liệu thô đến mẫu ghép nhóm",
+     "dang": [
+      {
+       "id": "C2.2.1",
+       "ten": "Ghép nhóm số liệu thô rồi tính số đặc trưng",
+       "mo_ta": "Đề cho dãy số liệu gốc và nhóm đầu tiên/độ dài nhóm: lập bảng ghép nhóm rồi tính R, ΔQ hoặc s; có kiểu so sánh với số đặc trưng của mẫu gốc (hiệu, sai số tương đối). Dạng hiếm nhưng cách làm riêng.",
+       "tu": [
+        "NHOM:NNB01263"
+       ],
+       "moi": [],
+       "hiem": true,
+       "muc_do": 2
+      }
+     ]
     },
     {
-      "ma": "H3",
-      "tieu_de": "Giữ dạng hiếm 'Ghép nhóm số liệu thô rồi tính số đặc trưng' (8 câu)?",
-      "mo_ta": "8 câu, mức 2–3: đề cho dãy số liệu gốc, HS phải tự lập bảng ghép nhóm (nhóm đầu, độ dài nhóm) rồi tính R/ΔQ/s, có câu so với mẫu gốc. Phương pháp khác hẳn (thêm bước lập bảng) nhưng dưới ngưỡng 12 câu.",
-      "chon": [
-        ["Giữ riêng, ghi dạng hiếm", "Đo được kỹ năng lập bảng; dạng nhỏ", true],
-        ["Gộp vào dạng tính số đặc trưng tương ứng (R/ΔQ/s)", "Bớt 1 dạng; câu khó lẫn vào dạng tính thường", false]
-      ]
+     "id": "C2.3",
+     "ten": "Đọc bảng ghép nhóm và số trung bình",
+     "dang": [
+      {
+       "id": "C2.3.1",
+       "ten": "Đọc bảng ghép nhóm, tính số trung bình",
+       "mo_ta": "Đọc tần số một nhóm, cỡ mẫu, nhóm có tần số lớn nhất; tính số trung bình của mẫu ghép nhóm (từ bảng hoặc biểu đồ) bằng giá trị đại diện. Kiến thức lớp 11 xuất hiện lẻ trong đề chương này.",
+       "tu": [],
+       "moi": [
+        "tính số trung bình của mẫu số liệu ghép nhóm",
+        "đọc tần số một nhóm từ bảng ghép nhóm",
+        "tìm nhóm có tần số lớn nhất trong bảng ghép nhóm",
+        "tính số trung bình mẫu ghép nhóm từ biểu đồ",
+        "trung bình cộng của mẫu số liệu ghép nhóm",
+        "xác định cỡ mẫu từ bảng số liệu ghép nhóm"
+       ],
+       "hiem": true,
+       "muc_do": 1
+      }
+     ]
     }
-  ]
+   ]
+  }
+ ],
+ "gop": [
+  {
+   "ma": "NHOM:NNB01264",
+   "vao": "C1.2.2",
+   "ly_do": "Phát hiện giá trị bất thường bằng tứ phân vị: 0 câu đề không Đ/S. Không lập dạng riêng; nếu đề sau có thì nằm cạnh việc tính tứ phân vị (Q1 − 1,5ΔQ, Q3 + 1,5ΔQ)."
+  }
+ ],
+ "bo_moi": [],
+ "cau_hoi": [
+  {
+   "ma": "H1",
+   "tieu_de": "Câu số trung bình / đọc bảng ghép nhóm để ở chương này hay chuyển về chương lớp 11?",
+   "mo_ta": "10 câu (7 tính số trung bình, 3 đọc tần số/cỡ mẫu/nhóm tần số lớn nhất) nằm trong đề K12 nhưng là kiến thức 'số đặc trưng đo xu thế trung tâm' lớp 11. Chương SDT không có chỗ cho chúng; số trung bình cũng là bước con của tính phương sai.",
+   "chon": [
+    [
+     "Giữ dạng hiếm C2.3.1 trong SDT",
+     "HS K12 vẫn được đo khi đề hỏi; bản đồ K12 tự đủ, không phụ thuộc bản đồ K11",
+     true
+    ],
+    [
+     "Chuyển sang bản đồ lớp 11 (xu thế trung tâm)",
+     "SDT gọn hơn; 10 câu đi sang khối khác",
+     false
+    ],
+    [
+     "Gộp vào C1.3.1 (tính phương sai)",
+     "Mất phân biệt 'tính trung bình' với 'tính phương sai'",
+     false
+    ]
+   ]
+  },
+  {
+   "ma": "H2",
+   "tieu_de": "Tách 'nhóm chứa tứ phân vị' và 'tính Q1/Q3' khỏi 'tính khoảng tứ phân vị'?",
+   "mo_ta": "Nhóm tứ phân vị có 122 câu: tính ΔQ 79, nhóm chứa Q 16, tính Q1/Q2/Q3 16, ΔQ khi biết sẵn Q 11. Hai dạng nhỏ là bước con của tính ΔQ nhưng đề hỏi riêng (mức 1 và mức 2), nên đo riêng giúp biết HS hỏng ở bước nào.",
+   "chon": [
+    [
+     "Tách 4 dạng như đề xuất",
+     "Chẩn đoán được bước hỏng; 2 dạng 16 câu, 1 dạng 11 câu",
+     true
+    ],
+    [
+     "Gộp nhóm chứa Q + tính Q thành một dạng (32 câu)",
+     "Ít dạng hơn, mất phân biệt 'dò nhóm' với 'thay công thức'",
+     false
+    ],
+    [
+     "Gộp cả vào tính khoảng tứ phân vị",
+     "1 dạng ~122 câu, không chẩn đoán được bước",
+     false
+    ]
+   ]
+  },
+  {
+   "ma": "H3",
+   "tieu_de": "Giữ dạng hiếm 'Ghép nhóm số liệu thô rồi tính số đặc trưng' (8 câu)?",
+   "mo_ta": "8 câu, mức 2–3: đề cho dãy số liệu gốc, HS phải tự lập bảng ghép nhóm (nhóm đầu, độ dài nhóm) rồi tính R/ΔQ/s, có câu so với mẫu gốc. Phương pháp khác hẳn (thêm bước lập bảng) nhưng dưới ngưỡng 12 câu.",
+   "chon": [
+    [
+     "Giữ riêng, ghi dạng hiếm",
+     "Đo được kỹ năng lập bảng; dạng nhỏ",
+     true
+    ],
+    [
+     "Gộp vào dạng tính số đặc trưng tương ứng (R/ΔQ/s)",
+     "Bớt 1 dạng; câu khó lẫn vào dạng tính thường",
+     false
+    ]
+   ]
+  }
+ ]
 }

@@ -57,6 +57,7 @@ function napKiem(ch, j) {
   for (const k of Object.keys(NHOM)) delete NHOM[k]
   if (j.chuyen_de) for (const cd of j.chuyen_de) for (const n of cd.nhom) { NHOM[n.id] = { id: n.id, ten: n.ten, dang: n.dang }; for (const d of n.dang) DANG[d.id] = { ten: d.ten, mo_ta: d.mo_ta, hinh: d.hinh || 'khong', nhom: n.id } }
   if (j.them) for (const d of j.them) DANG[d.id] = { ten: d.ten, mo_ta: d.mo_ta, hinh: d.hinh || 'khong', nhom: d.nhom }
+  if (ch === 'PPTD') NHOM.MN1 = { id: 'MN1', ten: 'Cực trị trong không gian Oxyz' } // nhóm mới, mã tạm
 }
 function docChuong(ch) {
   const j = JSON.parse(readFileSync(join(DX, ch + '.json'), 'utf8'))
@@ -205,10 +206,19 @@ try {
           if (!nhomTao[d.nhom]) {
             const chId = nhomMoiO[d.nhom] ?? nhomMoiO[ten]
             if (!chId) { in_(`  ⏸ ${d.id} «${ngan(d.ten, 60)}» — nhóm MỚI «${ten}» CHƯA có chuyên đề (thêm --nhom-moi "${d.nhom}=NCH…") — CHỜ, không chèn`); chan.push(`${ch} ${d.id}: nhóm mới chưa chọn chuyên đề`); continue }
-            if (!oCu.has(chId)) throw new Error(`${ch}: --nhom-moi chỉ ${chId}, không phải chuyên đề của ${cdId}`)
-            const r = await c.query(`insert into dai_bdm_nhom (chu_de_id, chuyen_de_id, ten) values ($1,$2,$3) returning id, thu_tu`, [cdId, chId, ten])
+            let chDung = chId
+            if (/^NEW:/.test(chId)) { // Thùy 03/11: tạo CHUYÊN ĐỀ MỚI cho nhóm này (vd "Bài toán cực trị")
+              const tenCd = chId.slice(4).trim()
+              const r1 = await c.query(`insert into dai_bdm_chuyen_de (ten, mo_ta) values ($1,$2) returning id`, [tenCd, ''])
+              chDung = r1.rows[0].id; nCh++
+              const r2 = await c.query(`insert into dai_bdm_o (chu_de_id, chuyen_de_id) values ($1,$2) returning thu_tu`, [cdId, chDung])
+              bm.chuyen_de[tenCd] = chDung
+              in_(`  + chuyên đề MỚI «${tenCd}» → ${chDung} (ô thu_tu ${r2.rows[0].thu_tu})`)
+            } else if (!oCu.has(chId)) throw new Error(`${ch}: --nhom-moi chỉ ${chId}, không phải chuyên đề của ${cdId}`)
+            const ltNhom = kNhom.get('MN1')?.lt ?? '' // nhóm mới duy nhất hiện nay: «Cực trị trong không gian Oxyz» (mã tạm MN1)
+            const r = await c.query(`insert into dai_bdm_nhom (chu_de_id, chuyen_de_id, ten, ly_thuyet) values ($1,$2,$3,$4) returning id, thu_tu`, [cdId, chDung, ten, ltNhom])
             nhomTao[d.nhom] = r.rows[0].id; bm.nhom[d.nhom] = r.rows[0].id; nNb++
-            in_(`  + nhóm MỚI «${ten}» → ${r.rows[0].id} trong ${chId} (thu_tu ${r.rows[0].thu_tu}) — chưa có lý thuyết nhóm`)
+            in_(`  + nhóm MỚI «${ten}» → ${r.rows[0].id} trong ${chDung} (thu_tu ${r.rows[0].thu_tu}) — lý thuyết nhóm ${ltNhom ? ltNhom.length + ' ký tự' : 'CHƯA có'}`)
           }
           nbId = nhomTao[d.nhom]
         }

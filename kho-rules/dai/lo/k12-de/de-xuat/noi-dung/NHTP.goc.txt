@@ -1,0 +1,52 @@
+=== M1
+@ly_thuyet:
+##TC Công thức Newton–Leibniz cho $f$ và cho $f'$
+- Nếu $F$ là một nguyên hàm của $f$ trên $[a;b]$ thì $\int_{a}^{b} f(x)\,dx=F(b)-F(a)$.
+- Nếu $f'$ liên tục trên $[a;b]$ thì $\int_{a}^{b} f'(x)\,dx=f(b)-f(a)$ (vì $f$ là một nguyên hàm của $f'$).
+- Đề chỉ cho giá trị tại hai cận (hoặc đọc trên đồ thị) thì không cần biết công thức của hàm.
+
+##PP Tính tích phân từ nguyên hàm hoặc từ giá trị tại hai cận
+Xác định đề cho nguyên hàm $F$ của hàm dưới dấu tích phân hay cho chính hàm $f$ mà dấu tích phân là $f'$.
+Tách biểu thức dưới dấu tích phân thành các phần: phần chứa $f$ dùng $F(b)-F(a)$, phần còn lại tính trực tiếp.
+Thay hai cận vào $F$ (hoặc $f$, đọc trên đồ thị nếu đề cho hình) rồi lấy giá trị cận trên trừ giá trị cận dưới.
+Đề cho tích phân và hỏi ngược giá trị $f(a)$ hay $f(b)$ thì viết $f(b)-f(a)=\int_{a}^{b} f'(x)\,dx$ rồi giải phương trình.
+
+##CY
+- Luôn lấy cận trên trừ cận dưới, không đảo thứ tự; cận cho âm thì thay cả dấu âm vào.
+- Hằng số cộng hoặc nhân trước $f$ phải xử lý riêng: $\int_{a}^{b} \big[k\,f(x)+c\big]dx=k\big[F(b)-F(a)\big]+c\,(b-a)$.
+- Đề cho $F$ là nguyên hàm của $f$ thì $\int f$ dùng $F$; đừng thay $F$ vào chỗ của $f$ khi tính phần còn lại.
+
+@vi_du:
+##VD
+a) Biết $F(x)=x^3-2x$ là một nguyên hàm của hàm số $f(x)$ trên $\mathbb{R}$. Tính $\int_{0}^{2} f(x)\,dx$.
+b) Biết $F(x)$ là một nguyên hàm của $f(x)$ trên $\mathbb{R}$ và $F(1)=3$, $F(5)=11$. Tính $\int_{1}^{5} f(x)\,dx$.
+c) Cho hàm số $f(x)$ có đạo hàm liên tục trên $[2;7]$, $f(2)=-1$ và $f(7)=4$. Tính $\int_{2}^{7} f'(x)\,dx$.
+
+Bài giải:
+a) Theo công thức Newton–Leibniz, $\int_{0}^{2} f(x)\,dx=F(2)-F(0)$.
+Ta có $F(2)=2^3-2\cdot2=4$ và $F(0)=0$.
+Do đó $\int_{0}^{2} f(x)\,dx=4-0=4$.
+b) $\int_{1}^{5} f(x)\,dx=F(5)-F(1)=11-3=8$.
+c) Vì $f$ là một nguyên hàm của $f'$ nên $\int_{2}^{7} f'(x)\,dx=f(7)-f(2)=4-(-1)=5$.
+Vậy ba giá trị lần lượt là $4$, $8$ và $5$.
+
+##VD
+a) Biết $F(x)=x\ln x$ là một nguyên hàm của hàm số $f(x)$ trên $(0;+\infty)$. Tính $I=\int_{1}^{e} \big[2f(x)-3\big]dx$.
+b) Cho hàm số $f(x)$ có đạo hàm liên tục trên $[0;2]$, $f(0)=3$ và $\int_{0}^{2} \big[f'(x)+2x\big]dx=1$. Tính $f(2)$.
+
+Bài giải:
+a) Tách tích phân: $I=2\int_{1}^{e} f(x)\,dx-\int_{1}^{e} 3\,dx$.
+Vì $F$ là nguyên hàm của $f$ nên $\int_{1}^{e} f(x)\,dx=F(e)-F(1)=e\ln e-1\cdot\ln 1=e-0=e$.
+Phần hằng số: $\int_{1}^{e} 3\,dx=3(e-1)$.
+Do đó $I=2e-3(e-1)=3-e$.
+b) Tách tích phân: $\int_{0}^{2} f'(x)\,dx+\int_{0}^{2} 2x\,dx=1$.
+Ta có $\int_{0}^{2} 2x\,dx=x^2\Big|_{0}^{2}=4$ nên $\int_{0}^{2} f'(x)\,dx=1-4=-3$.
+Mặt khác $\int_{0}^{2} f'(x)\,dx=f(2)-f(0)=f(2)-3$.
+Suy ra $f(2)-3=-3$, tức $f(2)=0$.
+Vậy $I=3-e$ và $f(2)=0$.
+
+## GHI CHÚ CHO CEO
+- Không có điểm mơ hồ: mô tả M1 rõ; lý thuyết nhóm NNB01217 (định nghĩa, tính chất, $\int f'=f(b)-f(a)$) đã có nên khối dạng chỉ nêu cách áp dụng, không lặp lại.
+- Đã xem mẫu trong DB (chỉ SELECT): lý thuyết nhóm NNB01217 và ví dụ dạng NDB00751, NDB00752 (hai ví dụ, lời giải ngắn). Dạng NDB00747 hiện không còn trong nhóm NNB01217 nên không lấy mẫu.
+- Đề thi thật của M1 (53 câu) gồm các kiểu: cho $F=x^3$ hay $\dfrac1x$ rồi tính $\int(1+f)$ hoặc $\int 6[f+x]$; cho $F(a),F(b)$; $\int f'=f(b)-f(a)$ với giá trị cho sẵn hoặc đọc đồ thị; hỏi ngược $f(2)$; chọn mệnh đề Newton–Leibniz đúng. Ví dụ bám các kiểu đó. Kiểu đọc đồ thị $f$ không dựng hình ở đây (đề dùng hình ảnh có sẵn), lời giải vẫn là $f(b)-f(a)$.
+- Chưa đọc 3 bộ sách tham khảo: nội dung dạng chỉ là Newton–Leibniz cơ bản, đã có đủ trong lý thuyết nhóm và đề thi (theo yêu cầu: bám đề, không thêm kiến thức đề không hỏi). Ví dụ đã tự thử lại bằng node (tích phân số bằng Simpson khớp đáp số): $S\soan\NHTP\thu-M1.mjs.

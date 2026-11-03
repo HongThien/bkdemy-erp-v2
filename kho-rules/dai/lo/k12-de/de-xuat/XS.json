@@ -1,206 +1,259 @@
 {
-  "chuong": "XS",
-  "chuyen_de": [
+ "chuong": "XS",
+ "chuyen_de": [
+  {
+   "id": "C1",
+   "ten": "Xác suất có điều kiện",
+   "mo_ta": "Định nghĩa P(A|B), tính từ số liệu cho sẵn hoặc từ đếm/bảng, công thức nhân và biến cố độc lập. 172 câu đề.",
+   "nhom": [
     {
-      "id": "C1",
-      "ten": "Xác suất có điều kiện",
-      "mo_ta": "Định nghĩa P(A|B), tính từ số liệu cho sẵn hoặc từ đếm/bảng, công thức nhân và biến cố độc lập. 172 câu đề.",
-      "nhom": [
-        {
-          "id": "C1.1",
-          "ten": "Công thức xác suất có điều kiện",
-          "dang": [
-            {
-              "id": "C1.1.1",
-              "ten": "Chọn công thức đúng của xác suất có điều kiện",
-              "mo_ta": "Câu lý thuyết nhận biết: đề cho 4 khẳng định về P(A|B), P(B|A), P(Ā|B); HS chọn P(A|B)=P(AB)/P(B) và loại các công thức sai. 27 câu, hầu hết mức 1.",
-              "tu": [],
-              "moi": [],
-              "hiem": false
-            },
-            {
-              "id": "C1.1.2",
-              "ten": "Tính P(A|B) khi cho sẵn P(AB), P(A), P(B)",
-              "mo_ta": "Đề cho các xác suất bằng ký hiệu; thay vào P(A|B)=P(AB)/P(B) hoặc suy ngược P(AB), P(B); gồm cả P(Ā|B)=1−P(A|B) và tính P(B|A) từ P(A|B) qua P(AB). Dạng đông nhất chương (46 câu).",
-              "tu": ["NHOM:NNB01251"],
-              "moi": [],
-              "hiem": false
-            },
-            {
-              "id": "C1.1.3",
-              "ten": "Phối hợp xác suất có điều kiện với biến cố đối, công thức cộng",
-              "mo_ta": "Đề cho P(A∪B), P(AB̄), P(A|B̄)… hoặc tình huống hai chiều có điều kiện (mưa hai xã, cổ phiếu); phải dùng P(A)=P(AB)+P(AB̄), công thức cộng, biến cố đối để ra P(AB) trước rồi mới tính. 14 câu.",
-              "tu": [],
-              "moi": [],
-              "hiem": false
-            }
-          ]
-        },
-        {
-          "id": "C1.2",
-          "ten": "Tính xác suất có điều kiện bằng đếm",
-          "dang": [
-            {
-              "id": "C1.2.1",
-              "ten": "Tính xác suất có điều kiện từ bảng số liệu, tỉ lệ thống kê",
-              "mo_ta": "Đề cho bảng 2 chiều, số lượng (nam/nữ, giỏi/không) hoặc tỉ lệ % trong khảo sát; lấy n(AB)/n(B) hoặc P(AB)/P(B) trên dữ liệu thực tế. 25 câu.",
-              "tu": ["NHOM:NNB01252"],
-              "moi": [],
-              "hiem": false
-            },
-            {
-              "id": "C1.2.2",
-              "ten": "Đếm trên không gian mẫu thu hẹp",
-              "mo_ta": "Gieo xúc xắc/đồng xu, chọn nhóm người, lấy liên tiếp không hoàn lại 'biết lần 1 ra…', 'biết có ít nhất…'; liệt kê hoặc tổ hợp đếm lại trên không gian mẫu đã thu hẹp. 22 câu (gồm 7 câu lấy không hoàn lại).",
-              "tu": [],
-              "moi": [],
-              "hiem": false
-            }
-          ]
-        },
-        {
-          "id": "C1.3",
-          "ten": "Công thức nhân xác suất và biến cố độc lập",
-          "dang": [
-            {
-              "id": "C1.3.1",
-              "ten": "Tính xác suất giao bằng công thức nhân, sơ đồ cây",
-              "mo_ta": "P(AB)=P(A)·P(B|A): đề ký hiệu (cho P(A), P(B|A) tìm P(AB), P(AB̄)) hoặc thực tế nhiều bước nối tiếp (lấy không hoàn lại 'người 1 … và người 2 …', kiểm tra 2 lần, phỏng vấn 3 vòng, trò chơi); vẽ sơ đồ cây nhân dọc nhánh. 23 câu.",
-              "tu": ["NHOM:NNB01253"],
-              "moi": [],
-              "hiem": false
-            },
-            {
-              "id": "C1.3.2",
-              "ten": "Dùng tính độc lập của hai biến cố",
-              "mo_ta": "Đề cho A, B độc lập: suy P(A|B)=P(A), P(AB)=P(A)P(B), chọn khẳng định đúng/sai; hoặc nhiều biến cố độc lập dùng quy tắc cộng–nhân (kể cả tìm tham số); so sánh P(A|B) với P(A) để kết luận ảnh hưởng. 15 câu.",
-              "tu": ["NHOM:NNB01254"],
-              "moi": [],
-              "hiem": false
-            }
-          ]
-        }
-      ]
+     "id": "C1.1",
+     "ten": "Công thức xác suất có điều kiện",
+     "dang": [
+      {
+       "id": "C1.1.1",
+       "ten": "Chọn công thức đúng của xác suất có điều kiện",
+       "mo_ta": "Câu lý thuyết nhận biết: đề cho 4 khẳng định về P(A|B), P(B|A), P(Ā|B); HS chọn P(A|B)=P(AB)/P(B) và loại các công thức sai. 27 câu, hầu hết mức 1.",
+       "tu": [],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 1
+      },
+      {
+       "id": "C1.1.2",
+       "ten": "Tính P(A|B) khi cho sẵn P(AB), P(A), P(B)",
+       "mo_ta": "Đề cho các xác suất bằng ký hiệu; thay vào P(A|B)=P(AB)/P(B) hoặc suy ngược P(AB), P(B); gồm cả P(Ā|B)=1−P(A|B) và tính P(B|A) từ P(A|B) qua P(AB). Dạng đông nhất chương (46 câu).",
+       "tu": [
+        "NHOM:NNB01251"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 1
+      },
+      {
+       "id": "C1.1.3",
+       "ten": "Phối hợp xác suất có điều kiện với biến cố đối, công thức cộng",
+       "mo_ta": "Đề cho P(A∪B), P(AB̄), P(A|B̄)… hoặc tình huống hai chiều có điều kiện (mưa hai xã, cổ phiếu); phải dùng P(A)=P(AB)+P(AB̄), công thức cộng, biến cố đối để ra P(AB) trước rồi mới tính. 14 câu.",
+       "tu": [],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 2
+      }
+     ]
     },
     {
-      "id": "C2",
-      "ten": "Công thức xác suất toàn phần và công thức Bayes",
-      "mo_ta": "Hệ đầy đủ biến cố, tính P(A) bằng toàn phần, tính xác suất hậu nghiệm bằng Bayes; bài nhiều bước (chuyển hộp, nhiều giai đoạn) và bài ngược. 141 câu đề.",
-      "nhom": [
-        {
-          "id": "C2.1",
-          "ten": "Công thức xác suất toàn phần cơ bản",
-          "dang": [
-            {
-              "id": "C2.1.1",
-              "ten": "Chọn công thức toàn phần, Bayes đúng",
-              "mo_ta": "Câu lý thuyết: 4 phương án công thức P(A)=P(B)P(A|B)+P(B̄)P(A|B̄) hoặc công thức Bayes viết sai vị trí; chọn đáp án đúng. 13 câu (2 câu về Bayes).",
-              "tu": [],
-              "moi": [],
-              "hiem": false
-            },
-            {
-              "id": "C2.1.2",
-              "ten": "Tính P(A) khi cho sẵn P(B), P(A|B), P(A|B̄) hoặc sơ đồ cây",
-              "mo_ta": "Đề ký hiệu hoặc hình sơ đồ cây đã ghi số; thay vào công thức toàn phần (2 nhánh). 20 câu, mức 1–2.",
-              "tu": [],
-              "moi": [],
-              "hiem": false
-            },
-            {
-              "id": "C2.1.3",
-              "ten": "Bài toán thực tế tính xác suất bằng công thức toàn phần",
-              "mo_ta": "Bối cảnh thực tế (phân xưởng–sản phẩm lỗi, bệnh–thuốc lá, chọn hộp rồi lấy bi, tên lửa…), 2–3 nhóm; đặt hệ đầy đủ, lập sơ đồ cây, cộng các nhánh. 20 câu.",
-              "tu": ["NHOM:NNB01255"],
-              "moi": [],
-              "hiem": false
-            }
-          ]
-        },
-        {
-          "id": "C2.2",
-          "ten": "Toàn phần nhiều bước",
-          "dang": [
-            {
-              "id": "C2.2.1",
-              "ten": "Chuyển vật giữa các hộp rồi lấy tiếp",
-              "mo_ta": "Lấy bi/thỏ/gà từ hộp này bỏ sang hộp kia (hoặc lấy liên tiếp không hoàn lại) rồi hỏi xác suất lần lấy sau; hệ đầy đủ là kết quả lần chuyển. 10 câu, mức 3–4 (dạng hiếm nhưng giữ vì phương pháp riêng).",
-              "tu": [],
-              "moi": [],
-              "hiem": true
-            },
-            {
-              "id": "C2.2.2",
-              "ten": "Bài toán nhiều giai đoạn, trò chơi phức tạp",
-              "mo_ta": "Trò chơi rút thẻ nhiều bước, giải đấu, lật bài, mê cung, chuỗi ván…: phải phân nhiều tầng trường hợp (cây ≥3 tầng hoặc kết hợp tổ hợp) rồi cộng xác suất. 10 câu, chủ yếu mức 4 (dạng hiếm).",
-              "tu": [],
-              "moi": [],
-              "hiem": true
-            },
-            {
-              "id": "C2.2.3",
-              "ten": "Bài toán ngược: tìm tỉ lệ chưa biết từ toàn phần",
-              "mo_ta": "Đề cho kết quả toàn phần (hoặc tỉ lệ tổng) và ẩn một xác suất thành phần; lập phương trình theo công thức toàn phần để tìm ẩn, có thể dùng tiếp Bayes. 5 câu (dạng hiếm — xem H2).",
-              "tu": [],
-              "moi": [],
-              "hiem": true
-            }
-          ]
-        },
-        {
-          "id": "C2.3",
-          "ten": "Công thức Bayes",
-          "dang": [
-            {
-              "id": "C2.3.1",
-              "ten": "Tính xác suất hậu nghiệm bằng công thức Bayes",
-              "mo_ta": "Biết kết quả đã xảy ra (dương tính, sản phẩm lỗi, bắn trúng…), hỏi xác suất thuộc nhóm nào; tính P(A) bằng toàn phần rồi P(Bi|A)=P(Bi)P(A|Bi)/P(A). Gồm đề ký hiệu/sơ đồ cây và thực tế 2–3 nhóm. 48 câu.",
-              "tu": ["NHOM:NNB01256"],
-              "moi": [],
-              "hiem": false
-            },
-            {
-              "id": "C2.3.2",
-              "ten": "Bayes nhiều tầng hoặc sau khi chuyển hộp",
-              "mo_ta": "Biến cố quan sát được sinh qua nhiều tầng (chuyển bi rồi lấy, hai bộ lọc, nhiều người đoán, mưa–ùn tắc–trễ) hoặc cần đếm tổ hợp; tính từng nhánh của cây rồi áp Bayes. 15 câu, mức 3–4.",
-              "tu": ["NHOM:NNB01257"],
-              "moi": [],
-              "hiem": false
-            }
-          ]
-        }
-      ]
+     "id": "C1.2",
+     "ten": "Tính xác suất có điều kiện bằng đếm",
+     "dang": [
+      {
+       "id": "C1.2.1",
+       "ten": "Tính xác suất có điều kiện từ bảng số liệu, tỉ lệ thống kê",
+       "mo_ta": "Đề cho bảng 2 chiều, số lượng (nam/nữ, giỏi/không) hoặc tỉ lệ % trong khảo sát; lấy n(AB)/n(B) hoặc P(AB)/P(B) trên dữ liệu thực tế. 25 câu.",
+       "tu": [
+        "NHOM:NNB01252"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 2
+      },
+      {
+       "id": "C1.2.2",
+       "ten": "Đếm trên không gian mẫu thu hẹp",
+       "mo_ta": "Gieo xúc xắc/đồng xu, chọn nhóm người, lấy liên tiếp không hoàn lại 'biết lần 1 ra…', 'biết có ít nhất…'; liệt kê hoặc tổ hợp đếm lại trên không gian mẫu đã thu hẹp. 22 câu (gồm 7 câu lấy không hoàn lại).",
+       "tu": [],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 2
+      }
+     ]
+    },
+    {
+     "id": "C1.3",
+     "ten": "Công thức nhân xác suất và biến cố độc lập",
+     "dang": [
+      {
+       "id": "C1.3.1",
+       "ten": "Tính xác suất giao bằng công thức nhân, sơ đồ cây",
+       "mo_ta": "P(AB)=P(A)·P(B|A): đề ký hiệu (cho P(A), P(B|A) tìm P(AB), P(AB̄)) hoặc thực tế nhiều bước nối tiếp (lấy không hoàn lại 'người 1 … và người 2 …', kiểm tra 2 lần, phỏng vấn 3 vòng, trò chơi); vẽ sơ đồ cây nhân dọc nhánh. 23 câu.",
+       "tu": [
+        "NHOM:NNB01253"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 2
+      },
+      {
+       "id": "C1.3.2",
+       "ten": "Dùng tính độc lập của hai biến cố",
+       "mo_ta": "Đề cho A, B độc lập: suy P(A|B)=P(A), P(AB)=P(A)P(B), chọn khẳng định đúng/sai; hoặc nhiều biến cố độc lập dùng quy tắc cộng–nhân (kể cả tìm tham số); so sánh P(A|B) với P(A) để kết luận ảnh hưởng. 15 câu.",
+       "tu": [
+        "NHOM:NNB01254"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 2
+      }
+     ]
     }
-  ],
-  "gop": [],
-  "bo_moi": [],
-  "cau_hoi": [
+   ]
+  },
+  {
+   "id": "C2",
+   "ten": "Công thức xác suất toàn phần và công thức Bayes",
+   "mo_ta": "Hệ đầy đủ biến cố, tính P(A) bằng toàn phần, tính xác suất hậu nghiệm bằng Bayes; bài nhiều bước (chuyển hộp, nhiều giai đoạn) và bài ngược. 141 câu đề.",
+   "nhom": [
     {
-      "ma": "H1",
-      "tieu_de": "Câu thực tế toàn phần/Bayes: tách theo bối cảnh hay theo công thức?",
-      "mo_ta": "Câu thực tế (toàn phần 20 + Bayes 48) có nhiều bối cảnh: xét nghiệm y khoa (~20 câu Bayes), phân xưởng–sản phẩm lỗi (~15), khảo sát–mua hàng, quân sự, chọn hộp. Phương pháp giải giống hệt nhau trong cùng một công thức. Đề xuất giữ theo CÔNG THỨC (toàn phần / Bayes), bối cảnh chỉ ghi trong mô tả.",
-      "chon": [
-        ["Theo công thức (đang làm)", "C2.1.3 = 20 câu, C2.3.1 = 48 câu; dạng = cách giải, đúng luật 3", true],
-        ["Tách thêm theo bối cảnh", "C2.3.1 tách thành 'xét nghiệm, dương tính giả' (~20) + 'sản xuất, sản phẩm lỗi và khác' (~28); nhiều dạng hơn nhưng cùng cách giải", false]
-      ]
+     "id": "C2.1",
+     "ten": "Công thức xác suất toàn phần cơ bản",
+     "dang": [
+      {
+       "id": "C2.1.1",
+       "ten": "Chọn công thức toàn phần, Bayes đúng",
+       "mo_ta": "Câu lý thuyết: 4 phương án công thức P(A)=P(B)P(A|B)+P(B̄)P(A|B̄) hoặc công thức Bayes viết sai vị trí; chọn đáp án đúng. 13 câu (2 câu về Bayes).",
+       "tu": [],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 1
+      },
+      {
+       "id": "C2.1.2",
+       "ten": "Tính P(A) khi cho sẵn P(B), P(A|B), P(A|B̄) hoặc sơ đồ cây",
+       "mo_ta": "Đề ký hiệu hoặc hình sơ đồ cây đã ghi số; thay vào công thức toàn phần (2 nhánh). 20 câu, mức 1–2.",
+       "tu": [],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 2
+      },
+      {
+       "id": "C2.1.3",
+       "ten": "Bài toán thực tế tính xác suất bằng công thức toàn phần",
+       "mo_ta": "Bối cảnh thực tế (phân xưởng–sản phẩm lỗi, bệnh–thuốc lá, chọn hộp rồi lấy bi, tên lửa…), 2–3 nhóm; đặt hệ đầy đủ, lập sơ đồ cây, cộng các nhánh. 20 câu.",
+       "tu": [
+        "NHOM:NNB01255"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 2
+      }
+     ]
     },
     {
-      "ma": "H2",
-      "tieu_de": "Giữ 'bài toán ngược' thành dạng riêng (5 câu)?",
-      "mo_ta": "5 câu (mức 3–4) cho kết quả toàn phần rồi bắt tìm một tỉ lệ thành phần (lập phương trình). Ít câu nhưng thao tác khác: phải đặt ẩn. Hiện để C2.2.3, hiem=true.",
-      "chon": [
-        ["Giữ dạng hiếm riêng (đang làm)", "C2.2.3 = 5 câu; HS luyện riêng kỹ năng đặt ẩn", true],
-        ["Gộp vào C2.1.3 (toàn phần thực tế)", "C2.1.3 = 25 câu; mất dấu vết kỹ năng lập phương trình", false]
-      ]
+     "id": "C2.2",
+     "ten": "Toàn phần nhiều bước",
+     "dang": [
+      {
+       "id": "C2.2.1",
+       "ten": "Chuyển vật giữa các hộp rồi lấy tiếp",
+       "mo_ta": "Lấy bi/thỏ/gà từ hộp này bỏ sang hộp kia (hoặc lấy liên tiếp không hoàn lại) rồi hỏi xác suất lần lấy sau; hệ đầy đủ là kết quả lần chuyển. 10 câu, mức 3–4 (dạng hiếm nhưng giữ vì phương pháp riêng).",
+       "tu": [],
+       "moi": [],
+       "hiem": true,
+       "muc_do": 3
+      },
+      {
+       "id": "C2.2.2",
+       "ten": "Bài toán nhiều giai đoạn, trò chơi phức tạp",
+       "mo_ta": "Trò chơi rút thẻ nhiều bước, giải đấu, lật bài, mê cung, chuỗi ván…: phải phân nhiều tầng trường hợp (cây ≥3 tầng hoặc kết hợp tổ hợp) rồi cộng xác suất. 10 câu, chủ yếu mức 4 (dạng hiếm).",
+       "tu": [],
+       "moi": [],
+       "hiem": true,
+       "muc_do": 5
+      },
+      {
+       "id": "C2.2.3",
+       "ten": "Bài toán ngược: tìm tỉ lệ chưa biết từ toàn phần",
+       "mo_ta": "Đề cho kết quả toàn phần (hoặc tỉ lệ tổng) và ẩn một xác suất thành phần; lập phương trình theo công thức toàn phần để tìm ẩn, có thể dùng tiếp Bayes. 5 câu (dạng hiếm — xem H2).",
+       "tu": [],
+       "moi": [],
+       "hiem": true,
+       "muc_do": 3
+      }
+     ]
     },
     {
-      "ma": "H3",
-      "tieu_de": "Chuyển hộp: Bayes sau chuyển hộp tách khỏi toàn phần chuyển hộp?",
-      "mo_ta": "Chuyển hộp có 10 câu hỏi P (toàn phần, C2.2.1) và 7 câu hỏi ngược 'biết bi lấy ra…, tính xác suất bi chuyển sang' (đang nằm trong C2.3.2 cùng Bayes nhiều tầng). Đề xuất giữ như hiện tại: chia theo câu hỏi toàn phần hay Bayes.",
-      "chon": [
-        ["Giữ như hiện tại", "C2.2.1 = 10 (toàn phần), Bayes chuyển hộp nằm trong C2.3.2 = 15", true],
-        ["Gom mọi bài chuyển hộp vào một dạng", "Dạng 'chuyển hộp' = 17 câu, C2.3.2 còn 8 câu", false]
-      ]
+     "id": "C2.3",
+     "ten": "Công thức Bayes",
+     "dang": [
+      {
+       "id": "C2.3.1",
+       "ten": "Tính xác suất hậu nghiệm bằng công thức Bayes",
+       "mo_ta": "Biết kết quả đã xảy ra (dương tính, sản phẩm lỗi, bắn trúng…), hỏi xác suất thuộc nhóm nào; tính P(A) bằng toàn phần rồi P(Bi|A)=P(Bi)P(A|Bi)/P(A). Gồm đề ký hiệu/sơ đồ cây và thực tế 2–3 nhóm. 48 câu.",
+       "tu": [
+        "NHOM:NNB01256"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 3
+      },
+      {
+       "id": "C2.3.2",
+       "ten": "Bayes nhiều tầng hoặc sau khi chuyển hộp",
+       "mo_ta": "Biến cố quan sát được sinh qua nhiều tầng (chuyển bi rồi lấy, hai bộ lọc, nhiều người đoán, mưa–ùn tắc–trễ) hoặc cần đếm tổ hợp; tính từng nhánh của cây rồi áp Bayes. 15 câu, mức 3–4.",
+       "tu": [
+        "NHOM:NNB01257"
+       ],
+       "moi": [],
+       "hiem": false,
+       "muc_do": 3
+      }
+     ]
     }
-  ]
+   ]
+  }
+ ],
+ "gop": [],
+ "bo_moi": [],
+ "cau_hoi": [
+  {
+   "ma": "H1",
+   "tieu_de": "Câu thực tế toàn phần/Bayes: tách theo bối cảnh hay theo công thức?",
+   "mo_ta": "Câu thực tế (toàn phần 20 + Bayes 48) có nhiều bối cảnh: xét nghiệm y khoa (~20 câu Bayes), phân xưởng–sản phẩm lỗi (~15), khảo sát–mua hàng, quân sự, chọn hộp. Phương pháp giải giống hệt nhau trong cùng một công thức. Đề xuất giữ theo CÔNG THỨC (toàn phần / Bayes), bối cảnh chỉ ghi trong mô tả.",
+   "chon": [
+    [
+     "Theo công thức (đang làm)",
+     "C2.1.3 = 20 câu, C2.3.1 = 48 câu; dạng = cách giải, đúng luật 3",
+     true
+    ],
+    [
+     "Tách thêm theo bối cảnh",
+     "C2.3.1 tách thành 'xét nghiệm, dương tính giả' (~20) + 'sản xuất, sản phẩm lỗi và khác' (~28); nhiều dạng hơn nhưng cùng cách giải",
+     false
+    ]
+   ]
+  },
+  {
+   "ma": "H2",
+   "tieu_de": "Giữ 'bài toán ngược' thành dạng riêng (5 câu)?",
+   "mo_ta": "5 câu (mức 3–4) cho kết quả toàn phần rồi bắt tìm một tỉ lệ thành phần (lập phương trình). Ít câu nhưng thao tác khác: phải đặt ẩn. Hiện để C2.2.3, hiem=true.",
+   "chon": [
+    [
+     "Giữ dạng hiếm riêng (đang làm)",
+     "C2.2.3 = 5 câu; HS luyện riêng kỹ năng đặt ẩn",
+     true
+    ],
+    [
+     "Gộp vào C2.1.3 (toàn phần thực tế)",
+     "C2.1.3 = 25 câu; mất dấu vết kỹ năng lập phương trình",
+     false
+    ]
+   ]
+  },
+  {
+   "ma": "H3",
+   "tieu_de": "Chuyển hộp: Bayes sau chuyển hộp tách khỏi toàn phần chuyển hộp?",
+   "mo_ta": "Chuyển hộp có 10 câu hỏi P (toàn phần, C2.2.1) và 7 câu hỏi ngược 'biết bi lấy ra…, tính xác suất bi chuyển sang' (đang nằm trong C2.3.2 cùng Bayes nhiều tầng). Đề xuất giữ như hiện tại: chia theo câu hỏi toàn phần hay Bayes.",
+   "chon": [
+    [
+     "Giữ như hiện tại",
+     "C2.2.1 = 10 (toàn phần), Bayes chuyển hộp nằm trong C2.3.2 = 15",
+     true
+    ],
+    [
+     "Gom mọi bài chuyển hộp vào một dạng",
+     "Dạng 'chuyển hộp' = 17 câu, C2.3.2 còn 8 câu",
+     false
+    ]
+   ]
+  }
+ ]
 }

@@ -19,7 +19,8 @@
     "nhận dạng phương trình chính tắc của đường thẳng",
     "nhận biết dạng phương trình chính tắc của đường thẳng"
    ],
-   "so_cau": 15
+   "so_cau": 15,
+   "muc_do": 1
   },
   {
    "id": "M2",
@@ -32,7 +33,8 @@
     "đường thẳng nằm trong mặt phẳng tạo góc nhỏ nhất với đường thẳng cho trước",
     "mp chứa đường thẳng tạo góc nhỏ nhất với mp cho trước, tính khoảng cách"
    ],
-   "so_cau": 3
+   "so_cau": 3,
+   "muc_do": 5
   },
   {
    "id": "M3",
@@ -46,7 +48,8 @@
     "quãng đường ngắn nhất qua các mặt phẳng trong Oxyz thực tế",
     "cực trị chu vi tam giác có hai đỉnh di động trên hai đường thẳng"
    ],
-   "so_cau": 5
+   "so_cau": 5,
+   "muc_do": 5
   },
   {
    "id": "M4",
@@ -63,7 +66,8 @@
     "cực trị khoảng cách từ gốc đến hình chiếu của điểm lên mặt phẳng chứa đường thẳng cố định",
     "điểm di động trên mặt cầu thoả hệ thức vectơ, tìm mặt phẳng cố định"
    ],
-   "so_cau": 8
+   "so_cau": 8,
+   "muc_do": 5
   },
   {
    "id": "M5",
@@ -77,7 +81,8 @@
     "khoảng cách nhỏ nhất hai điểm chạy trên mặt cầu và mặt phẳng theo phương cho trước",
     "cực trị khoảng cách điểm trên đường tròn giao tuyến mặt phẳng và mặt cầu"
    ],
-   "so_cau": 5
+   "so_cau": 5,
+   "muc_do": 5
   },
   {
    "id": "M6",
@@ -93,7 +98,8 @@
     "thực tế gắn Oxyz: mặt phẳng qua điểm, tối ưu độ dài",
     "cực trị tổng khoảng cách từ hai điểm đến mặt phẳng qua điểm cố định"
    ],
-   "so_cau": 7
+   "so_cau": 7,
+   "muc_do": 5
   },
   {
    "id": "M7",
@@ -106,7 +112,8 @@
     "đường thẳng cắt trục và đường thẳng khác, song song mặt phẳng, cực trị độ dài đoạn",
     "đoạn nối hai đường chéo nhau song song mặt phẳng, ngắn nhất"
    ],
-   "so_cau": 3
+   "so_cau": 3,
+   "muc_do": 5
   }
  ],
  "bo_moi": [

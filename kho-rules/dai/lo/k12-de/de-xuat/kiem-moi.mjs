@@ -11,8 +11,8 @@ const [ch, tep, dsArg] = process.argv.slice(2)
 const j = JSON.parse(readFileSync(join(DIR, ch + '.json'), 'utf8'))
 for (const k of Object.keys(DANG)) delete DANG[k]
 for (const k of Object.keys(NHOM)) delete NHOM[k]
-for (const cd of j.chuyen_de) for (const n of cd.nhom) { NHOM[n.id] = { id: n.id, ten: n.ten, dang: n.dang }; for (const d of n.dang) DANG[d.id] = { ten: d.ten, mo_ta: d.mo_ta, hinh: d.hinh || 'khong', nhom: n.id } }
-if (ch === 'NHTP' || ch === 'PPTD') { console.log('chương bổ sung: dùng mã M…'); for (const d of j.them) DANG[d.id] = { ten: d.ten, mo_ta: d.mo_ta, hinh: d.hinh || 'khong', nhom: d.nhom } }
+for (const cd of (j.chuyen_de ?? [])) for (const n of cd.nhom) { NHOM[n.id] = { id: n.id, ten: n.ten, dang: n.dang }; for (const d of n.dang) DANG[d.id] = { ten: d.ten, mo_ta: d.mo_ta, hinh: d.hinh || 'khong', nhom: n.id } }
+if (ch === 'NHTP' || ch === 'PPTD') { console.log('chương bổ sung: dùng mã M…'); for (const d of j.them) { DANG[d.id] = { ten: d.ten, mo_ta: d.mo_ta, hinh: d.hinh || 'khong', nhom: d.nhom }; if (!NHOM[d.nhom]) NHOM[d.nhom] = { id: d.nhom } } ; NHOM.MN1 = { id: 'MN1', ten: 'Cực trị trong không gian Oxyz' } }
 
 const khoi = docTep(readFileSync(tep, 'utf8'))
 const loi = [], canh = []
