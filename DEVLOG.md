@@ -78535,3 +78535,7 @@ Thùy nêu 4 việc, làm được 3:
 - Đo trước khi bật: câu sống có dạng bài mới — K3 1337/1337 · K5 3572/4327 (kho chuẩn 3488/3744); lượt đo quy được — K3 1374/1374 · K5 14899/15092 (193 lượt bỏ trống ô tới khi câu được xếp). So: lúc bật K4 là 91%, 5T 62%.
 - Sau áp: `_kho_ds_nhanh_khoi('Toán','3'|'5')` = {bdm, hinh_hoc}; `_dgcc_tham_so().khoi_ban_do_cu` = {}; `_hs_dang_da_hoc` các lớp 3A1 · 5A1 · 5A2 · 5B1 · 5B2 chạy (cả lô 0,8 s).
 - ⚠️ PHÁT HIỆN (chưa sửa): `fn_kho_dung_ban_do_cu` trả RỖNG cho mọi môn/khối từ trước bản này — `_kho_ds_nhanh_khoi` trả mảng có phần tử `null` (vd Toán 3 cũ: {null, hinh_gt, hinh_hoc}; KHTN 7: {null}) ⇒ `not ('bdm' = any(...))` = NULL ⇒ lọc mất. Tức lá ET/Giáo trình cũ (Thùy mở lại 28/10 cho tiểu học) đã không hiện; với Toán giờ không còn cần, nhưng KHTN/môn khác (chưa có bản đồ mới) cũng đang bị đóng.
+
+## 03/11 (tối) — ĐÍNH CHÍNH mục trên: `fn_kho_dung_ban_do_cu` KHÔNG hỏng
+- Tôi kết luận "trả rỗng mọi môn" khi gọi bằng `claude_build` KHÔNG kèm JWT ⇒ `la_thanh_vien()` = false ⇒ rỗng là đúng thiết kế. Bản đang chạy đã vá NULL bằng `array_position` (mig 202610281756_..._sua_null). Kiểm lại dưới JWT nhân sự (rollback): trả đủ mọi khối KHTN · Văn · Anh; Toán 0 khối (hết bản đồ cũ sau mig 202611031857). Không sửa gì.
+- Bài học: hàm có cổng quyền (`la_thanh_vien`, `my_hoc_sinh_id`…) gọi không JWT ⇒ "rỗng" không phải bằng chứng hỏng — luôn giả JWT trước khi kết luận.
