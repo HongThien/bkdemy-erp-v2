@@ -1060,3 +1060,27 @@ T312000000492	NDB00856	nhận từ VT (theo VT-thucte-phanloai.tsv): điểm bi�
 T312000000623	NDB00856	nhận từ VT (theo VT-thucte-phanloai.tsv): điểm biết khoảng cách tới 4 điểm (GPS)
 T312000000856	NDB00856	nhận từ VT (theo VT-thucte-phanloai.tsv): điểm biết khoảng cách tới 4 điểm (GPS)
 T312000000240	NDB00856	nhận từ VT (theo VT-thucte-phanloai.tsv): điểm biết khoảng cách tới 4 điểm (GPS)
+T112000000454	NDB00859	nhận từ VT: góc đường thẳng–mặt phẳng (dựng toạ độ cho hình chóp)
+T312000000130	NDB00857	nhận từ VT: góc giữa hai mặt phẳng (gấp giấy, dựng toạ độ)
+T3120000001079	NDB00835	nhận từ VT: vectơ pháp tuyến mặt phẳng (hình lập phương)
+T312000000972	NDB00835	nhận từ VT: VTPT (ABC) = tích có hướng
+T3120000001098	NDB00835	nhận từ VT: VTPT mặt phẳng (ABC) cho toạ độ
+T112000000479	NDB00835	nhận từ VT: cặp VTCP của mặt phẳng (hình hộp)
+T3120000001103	NDB00849	nhận từ VT: phương trình mặt phẳng qua 3 điểm O, A, B (sân vận động)
+T312000000560	M5	nhận từ VT: M trên mặt cầu, min MA²+2MB² (tâm tỉ cự → điểm trên mặt cầu gần nhất)
+T312000000119	M5	nhận từ VT: M trên mặt cầu, min 3MA²+MB²
+T312000000650	M5	nhận từ VT: M trên mặt cầu, min |MA−MB−MC|
+T312000000349	M5	nhận từ VT: M trên mặt cầu, min |MA−MB−MC| (cùng đề T312000000650)
+T312000000074	M3	nhận từ VT: B trên đường thẳng, C trên mặt đất, chu vi ABC nhỏ nhất (đối xứng)
+T312010403001	M7	nhận từ VT: M trên d, chu vi MAB nhỏ nhất (tham số hoá)
+T312000000819	CHUA	nhận từ VT, chưa chắc: quỹ tích MA²+MB²+MC²=4MD² là mặt cầu, tìm tâm (không có dạng khớp ≥90%)
+T312010107080	CHUA	nhận từ VT, chưa chắc: M thuộc (P), min MA²+MB²+3MC² (tâm tỉ cự + hình chiếu) — chưa có dạng
+T312000000148	CHUA	nhận từ VT, chưa chắc: M thuộc (P), min 2MA²+MB² — chưa có dạng
+T312000000105	CHUA	nhận từ VT, chưa chắc: M trên mặt cầu, N trên mặt phẳng thoả diện tích, max MN — quỹ tích N không rõ
+T312010802024	CHUA	nhận từ VT, chưa chắc: radar gắn trên máy bay đang bay, chuyển động tương đối
+T312000000481	CHUA	nhận từ VT, chưa chắc: mặt phẳng trung trực + mặt cầu + thời gian
+T312000000150	CHUA	nhận từ VT, chưa chắc: góc phụ nhau, quỹ tích không phải đường tròn
+T312010802025	CHUA	nhận từ VT, chưa chắc: tường chắn sóng, vùng bóng
+T312010802033	CHUA	nhận từ VT, chưa chắc: tường chắn sóng, vùng bóng
+T312010802038	CHUA	nhận từ VT, chưa chắc: tấm chắn + tích phân vận tốc
+T312000000153	CHUA	nhận từ VT, chưa chắc: lều, chiếu sáng xuyên tâm
