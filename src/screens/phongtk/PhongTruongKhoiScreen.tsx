@@ -11,6 +11,9 @@
 //   'tbm' = phòng TRƯỞNG BỘ MÔN (Thùy 03/11: 'Phó GĐ chuyên môn' gọi đúng là trưởng bộ môn — vd anh Ngọc = KHTN; toàn hệ QLCL thấy mọi môn)
 //           — nhân vật = các TRƯỞNG KHỐI + GHẾ TRỐNG cho ô chưa có trưởng khối, số = gộp TA trong khối (DB tính);
 //           bấm 1 ghế ⇒ vào phòng của trưởng khối đó / của ô đó (TA của họ). Quản trị / Chất lượng nhìn mọi khối, chọn 1 khối ⇒ y như trưởng khối.
+// PHÒNG GIÁM ĐỐC (Thùy 03/11, fn_phong_la_gd — ghế gốc team core) nằm TRÊN phòng trưởng bộ môn: nhân vật = trưởng vận hành (Lộc — chưa có
+//   cơ cấu phòng vận hành, ngồi tạm, chưa có số) + trưởng bộ môn từng môn (số gộp các ghế trưởng khối). Bấm trưởng bộ môn ⇒ phòng trưởng
+//   bộ môn của môn đó ⇒ bấm trưởng khối ⇒ phòng trưởng khối. Đồ vật (Quản trị / Chất lượng / Báo cáo tuần) dùng khuôn trưởng bộ môn, mọi môn.
 import { useEffect, useState, type CSSProperties } from 'react'
 import PhienClaudeTab from './PhienClaudeTab'
 import BanDoMoiScreen from '../kho/BanDoMoi'
@@ -22,7 +25,7 @@ import { QuanTriTbm, ChatLuongTbm } from './PhanViecPgd'
 import BaoCaoTuanTK from './BaoCaoTuanTK'
 import BaoCaoTuanTBM from './BaoCaoTuanTBM'
 import { ChonGiaoDien } from '../HomeScreen'
-import { cheDoPhong, listCapDuoi, listCapDuoiCuaGhe, listGheTbm, monTbm, type CapDuoi, type GheTbm } from '../../lib/phongTk'
+import { cheDoPhong, laGiamDoc, listCapDuoi, listCapDuoiCuaGhe, listGheGd, listGheTbm, monTbm, type CapDuoi, type GheGd, type GheTbm } from '../../lib/phongTk'
 import { useSkinErp } from '../../lib/erpSkin'
 import { HoatCanhNen } from '../hocsinh/skin/HoatCanhNen'
 import { HEAD } from '../home/khung'
@@ -32,8 +35,8 @@ type CheDo = 'tk' | 'tbm'
 const TEN: Record<DoVat, string> = { phien: '🤖 Phiên Claude', ban_do: '🗺 Bản đồ', quan_tri: '📋 Quản trị', chat_luong: '📈 Chất lượng', bao_cao: '📝 Báo cáo tuần' }
 const nhanKhoi = (o: string[]) => `Khối ${o.join(' · ')}`
 // Sống tới F5: rời phòng quay lại = đúng chỗ cũ, danh sách không trắng (CLAUDE.md §2 React).
-const NHO: { mo: Mo; cheDo: CheDo | null; mon: string[] | null; xemTk: GheTbm | null; ta: CapDuoi[] | null; tk: GheTbm[] | null } =
-  { mo: null, cheDo: null, mon: null, xemTk: null, ta: null, tk: null }
+const NHO: { mo: Mo; cheDo: CheDo | null; laGd: boolean; mon: string[] | null; xemMon: GheGd | null; xemTk: GheTbm | null; ta: CapDuoi[] | null; tk: GheTbm[] | null; gd: GheGd[] | null } =
+  { mo: null, cheDo: null, laGd: false, mon: null, xemMon: null, xemTk: null, ta: null, tk: null, gd: null }
 
 export default function PhongTruongKhoiScreen({ onTaoCaNhe }: { onTaoCaNhe: () => void }) {
   const [mo, setMoS] = useState<Mo>(NHO.mo)
@@ -41,6 +44,11 @@ export default function PhongTruongKhoiScreen({ onTaoCaNhe }: { onTaoCaNhe: () =
   const [cheDo, setCheDo] = useState<CheDo | null>(NHO.cheDo)
   const [xemTk, setXemTkS] = useState<GheTbm | null>(NHO.xemTk)
   const setXemTk = (t: GheTbm | null) => { NHO.xemTk = t; setXemTkS(t); if (t) { NHO.ta = null; setDsTa(null) } }
+  const [laGd, setLaGd] = useState(NHO.laGd)
+  const [xemMon, setXemMonS] = useState<GheGd | null>(NHO.xemMon)   // Giám đốc đang xem phòng trưởng bộ môn của môn này
+  const setXemMon = (m: GheGd | null) => { NHO.xemMon = m; setXemMonS(m); NHO.tk = null; setDsTk(null) }
+  const [dsGd, setDsGd] = useState<GheGd[] | null>(NHO.gd)
+  const [vanHanh, setVanHanh] = useState<GheGd | null>(null)   // bấm trưởng vận hành: chưa có cơ cấu phòng ⇒ chỉ báo
   const [daMoPhien, setDaMoPhien] = useState(NHO.mo === 'phien')   // khung chat chỉ gắn từ lần đầu mở, rồi giữ luôn (không mất chữ đang chạy)
   const [dsTa, setDsTa] = useState<CapDuoi[] | null>(NHO.ta)
   const [dsTk, setDsTk] = useState<GheTbm[] | null>(NHO.tk)
@@ -49,25 +57,29 @@ export default function PhongTruongKhoiScreen({ onTaoCaNhe }: { onTaoCaNhe: () =
   const [nguoi, setNguoi] = useState<CapDuoi | null>(null)
   useEffect(() => { if (mo === 'phien') setDaMoPhien(true) }, [mo])
   useEffect(() => {
+    laGiamDoc().then((g) => { NHO.laGd = g; setLaGd(g) }).catch(() => {})
     cheDoPhong().then((c) => {
       NHO.cheDo = c; setCheDo(c)
       if (c === 'tbm') monTbm().then((m) => { NHO.mon = m; setMon(m) }).catch(() => {})
     }).catch(() => { NHO.cheDo = 'tk'; setCheDo('tk') })
   }, [])
   const xemPhongTk = cheDo === 'tk' || !!xemTk   // cảnh đang là phòng có TA ngồi
+  const xemPhongGd = laGd && !xemMon && !xemTk     // cảnh đang là phòng Giám đốc
   useEffect(() => {
     if (!cheDo) return
     // Thùy 03/11: hiệu suất hiện REALTIME — số tháng đang chạy, tính lại mỗi lần gọi (không đóng băng, không lấy tháng trước).
     // Refetch NỀN mỗi 60 giây khi đang ở cảnh phòng: giữ danh sách cũ tới khi có danh sách mới, không bao giờ trắng.
     const xong = () => setLoi(null), hong = (e: any) => setLoi(e?.message ?? String(e))
-    const tai = () => cheDo === 'tbm' && !xemTk
-      ? listGheTbm().then((d) => { NHO.tk = d; setDsTk(d); xong() }).catch(hong)
+    const tai = () => laGd && !xemMon && !xemTk
+      ? listGheGd().then((d) => { NHO.gd = d; setDsGd(d); xong() }).catch(hong)
+      : cheDo === 'tbm' && !xemTk
+      ? listGheTbm(xemMon?.mon).then((d) => { NHO.tk = d; setDsTk(d); xong() }).catch(hong)
       : (xemTk ? listCapDuoiCuaGhe(xemTk) : listCapDuoi()).then((d) => { NHO.ta = d; setDsTa(d); xong() }).catch(hong)
     tai()
     if (mo) return
     const id = setInterval(() => { if (document.visibilityState === 'visible') tai() }, 60_000)
     return () => clearInterval(id)
-  }, [mo, cheDo, xemTk])
+  }, [mo, cheDo, xemTk, laGd, xemMon])
 
   const sk = useSkinErp()
   const khung: CSSProperties = { ...sk.bien, background: 'var(--sk-page)', fontFamily: 'var(--sk-font)' }
@@ -76,18 +88,28 @@ export default function PhongTruongKhoiScreen({ onTaoCaNhe }: { onTaoCaNhe: () =
   // Người ngồi trong cảnh: TA (phòng trưởng khối) hoặc ghế trưởng khối / ô trống (phòng trưởng bộ môn)
   const ngoi: NguoiCanh[] = xemPhongTk
     ? (dsTa ?? [])
+    : xemPhongGd
+    // trưởng vận hành trước, rồi trưởng bộ môn theo môn, ghế trống sau — chỉ sắp để vẽ
+    ? [...(dsGd ?? [])].sort((a, b) => Number(a.vai !== 'van_hanh') - Number(b.vai !== 'van_hanh') || Number(!a.nhan_su_id) - Number(!b.nhan_su_id) || (a.mon ?? '').localeCompare(b.mon ?? '', 'vi'))
+        .map((g) => ({ ...g, nhan_su_id: g.khoa, ho_ten: g.ho_ten ?? `Chưa có trưởng bộ môn ${g.mon}`, trong: !g.nhan_su_id,
+                       nhan: g.vai === 'van_hanh' ? 'Trưởng vận hành' : `Bộ môn ${g.mon} · ${g.so_ghe} khối · ${g.so_ta} TA` }))
     // thứ tự hiển thị: trưởng khối ngồi trong phòng trước, ghế trống (ô chưa có trưởng khối) sau — chỉ sắp để vẽ, giữ thứ tự DB trong mỗi nhóm
     : [...(dsTk ?? [])].sort((a, b) => Number(!a.nhan_su_id) - Number(!b.nhan_su_id)).map((t) => ({ ...t, nhan_su_id: t.khoa, ho_ten: t.ho_ten ?? 'Chưa có trưởng khối', trong: !t.nhan_su_id, nhan: `${nhanKhoi(t.o)} · ${t.so_ta} TA` }))
   const thua = ngoi.slice(SO_GHE)
   const bamNguoi = (n: NguoiCanh) => {
     if (xemPhongTk) setNguoi(n as CapDuoi)
+    else if (xemPhongGd) {
+      const g = (dsGd ?? []).find((x) => x.khoa === n.nhan_su_id)
+      if (g?.vai === 'van_hanh') setVanHanh(g); else if (g) setXemMon(g)
+    }
     else setXemTk((dsTk ?? []).find((t) => t.khoa === n.nhan_su_id) ?? null)
   }
   // Nút góc phải: đang mở việc ⇒ về cảnh phòng; đang ở phòng của 1 trưởng khối (TBM) ⇒ về phòng chính của trưởng bộ môn.
-  const coVe = !!mo || !!xemTk
-  const ve = () => { if (mo) setMo(null); else setXemTk(null) }
-  const veGoc = () => { setMo(null); setXemTk(null) }
-  const tenPhong = cheDo === 'tbm' ? `Phòng làm việc Trưởng bộ môn${mon?.length ? ' ' + mon.join(' · ') : ''}` : 'Phòng làm việc trưởng khối'
+  const coVe = !!mo || !!xemTk || !!xemMon
+  const ve = () => { if (mo) setMo(null); else if (xemTk) setXemTk(null); else setXemMon(null) }
+  const veGoc = () => { setMo(null); setXemTk(null); if (xemMon) setXemMon(null) }
+  const tenPhong = laGd ? 'Phòng làm việc Giám đốc'
+    : cheDo === 'tbm' ? `Phòng làm việc Trưởng bộ môn${mon?.length ? ' ' + mon.join(' · ') : ''}` : 'Phòng làm việc trưởng khối'
   return (
     <section style={khung} className="relative h-full min-h-0 overflow-hidden text-[var(--sk-ink)]">
       {sk.hoatCanh && <HoatCanhNen hc={sk.hoatCanh} nenId={sk.nenId} doc={sk.doc} coTruoc={false} />}
@@ -99,12 +121,15 @@ export default function PhongTruongKhoiScreen({ onTaoCaNhe }: { onTaoCaNhe: () =
             <span className="text-[20px]">{cheDo === 'tbm' ? '👩‍💼' : '🧑‍💼'}</span>
             <span className="text-[17px] font-bold leading-tight" style={HEAD}>{cheDo ? tenPhong : 'Phòng làm việc'}</span>
           </button>
+          {xemMon && <span className="px-3 py-1.5 text-[13.5px] font-semibold" style={vien}>› Trưởng bộ môn {xemMon.mon}{xemMon.ho_ten ? ` · ${xemMon.ho_ten}` : ' · chưa có người'}</span>}
           {xemTk && <span className="px-3 py-1.5 text-[13.5px] font-semibold" style={vien}>› {xemTk.ho_ten ? `Phòng của ${xemTk.ho_ten}` : 'Chưa có trưởng khối'} · {nhanKhoi(xemTk.o)}</span>}
           {mo && <span className="px-3 py-1.5 text-[13.5px] font-semibold" style={vien}>› {TEN[mo]}</span>}
           {!mo && ngoi.length > 0 && (
             <span className="px-3 py-1.5 text-[12.5px]" style={vien}>
               {xemPhongTk
                 ? `${ngoi.length} trợ giảng · số trên đầu = hiệu suất tháng · bấm vào người để xem chi tiết`
+                : xemPhongGd
+                ? 'Trưởng vận hành + trưởng bộ môn · số trên đầu = hiệu suất trung bình của TA trong bộ môn · bấm để vào phòng của họ'
                 : `${ngoi.length} ghế trưởng khối · số trên đầu = hiệu suất trung bình của TA trong khối · bấm để vào phòng của họ`}
             </span>
           )}
@@ -166,6 +191,16 @@ export default function PhongTruongKhoiScreen({ onTaoCaNhe }: { onTaoCaNhe: () =
           </div>
         )}
       </div>
+      {vanHanh && (
+        <div className="fixed inset-0 z-[300] flex items-center justify-center bg-slate-900/45 p-4" onClick={() => setVanHanh(null)}>
+          <div className="w-[min(440px,94vw)] rounded-2xl bg-white p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+            <div className="text-[17px] font-bold text-slate-800">{vanHanh.ho_ten}</div>
+            <div className="mb-3 text-[12.5px] text-slate-500">Trưởng vận hành</div>
+            <p className="text-[13.5px] text-slate-600">Phòng vận hành chưa có cơ cấu nên chưa có số và chưa vào phòng được. Khi dựng xong, bấm vào đây sẽ ra phòng vận hành.</p>
+            <div className="mt-4 text-right"><button onClick={() => setVanHanh(null)} className="rounded-lg bg-slate-100 px-4 py-1.5 text-[13px] font-semibold text-slate-700 hover:bg-slate-200">Đóng</button></div>
+          </div>
+        </div>
+      )}
       {nguoi && <ChiTietCapDuoiPopup ns={nguoi} ghe={xemTk} onDong={() => setNguoi(null)} />}
     </section>
   )

@@ -54,10 +54,30 @@ export type GheTbm = {
   hieu_suat: number | null   // trung bình hiệu suất tháng của các TA đã có số (gộp ở DB)
   viec_tuan: number; dang_lam: number; da_xong: number; tre_han: number; qua_han: number; gay_thang: number
 }
-export async function listGheTbm(): Promise<GheTbm[]> {
-  const { data, error } = await supabase.rpc('fn_phong_ghe_tbm')
+// mon: Giám đốc đang xem phòng trưởng bộ môn của 1 môn (fn_phong_ghe_tbm_mon) · bỏ trống = phòng của chính người xem.
+export async function listGheTbm(mon?: string | null): Promise<GheTbm[]> {
+  const { data, error } = mon ? await supabase.rpc('fn_phong_ghe_tbm_mon', { p_mon: mon }) : await supabase.rpc('fn_phong_ghe_tbm')
   if (error) throw error
   return (data ?? []) as GheTbm[]
+}
+
+// ── Phòng Giám đốc (mig 202611031736, Thùy 03/11): trưởng vận hành + trưởng bộ môn từng môn — theo GHẾ trên sơ đồ tổ chức ──
+export async function laGiamDoc(): Promise<boolean> {
+  const { data, error } = await supabase.rpc('fn_phong_la_gd')
+  if (error) throw error
+  return data === true
+}
+// vai 'van_hanh': chưa có cơ cấu phòng vận hành ⇒ chưa có số · 'bo_mon': số gộp các ghế trưởng khối của môn (DB tính).
+// nhan_su_id null = môn chưa có trưởng bộ môn (ghế trống).
+export type GheGd = {
+  khoa: string; vai: 'van_hanh' | 'bo_mon'; nhan_su_id: string | null; ho_ten: string | null; anh_url: string | null; mon: string | null
+  so_ghe: number; so_ta: number; hieu_suat: number | null
+  viec_tuan: number; dang_lam: number; da_xong: number; tre_han: number; qua_han: number; gay_thang: number
+}
+export async function listGheGd(): Promise<GheGd[]> {
+  const { data, error } = await supabase.rpc('fn_phong_ghe_gd')
+  if (error) throw error
+  return (data ?? []) as GheGd[]
 }
 // TA ngồi sau một ghế (cùng hình dạng listCapDuoi): trưởng khối ⇒ TA các ô họ quản · ô trống ⇒ TA của ô.
 export async function listCapDuoiCuaGhe(g: GheTbm): Promise<CapDuoi[]> {
