@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-477 bảng · 38 view · 0 enum · 258 trigger · 1538 function
+477 bảng · 38 view · 0 enum · 258 trigger · 1539 function
 
 ## _app_secrets
 
@@ -2036,6 +2036,7 @@ END |  |  |
 | cau_cuoi_at | timestamp with time zone | Y |  |  |  |
 | ket_thuc_at | timestamp with time zone | Y |  |  |  |
 | luot_id | uuid | Y |  |  |  |
+| xao | text | Y | md5(((random())::text \|\| (clock_timestamp())::text)) |  |  |
 
 ## dtv_gop_tu
 
@@ -4009,7 +4010,7 @@ END |  |  |
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| mon | text |  |  | PK FK→thanh_tuu.mon |  |
+| mon | text |  |  | PK FK→huy_hieu.mon |  |
 | huy_hieu_key | text |  |  | PK FK→huy_hieu.key |  |
 | thanh_tuu_key | text |  |  | PK FK→thanh_tuu.key |  |
 | vai | text |  |  |  | `chuan` · `them` |
@@ -5543,7 +5544,7 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
-| mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
+| mon | text |  |  | FK→sotay_ct_hinh.mon |  |
 | khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
@@ -9376,6 +9377,7 @@ WITH luot AS (
 - `_dtv_giay_thap(p_mon text)` → integer
 - `_dtv_giay_vo_tan(p_tang integer, p_goc integer)` → integer
 - `_dtv_ho_so_json(p_uid text)` → jsonb
+- `_dtv_hoan_vi(p_xao text, p_thu_tu integer, p_n integer)` → integer[]
 - `_dtv_hom_nay()` → date
 - `_dtv_kho_cau_moi(p_mon text, p_khois text[], p_chu_de text, p_hoc text[], p_noi_dung boolean)` → TABLE(cautbl text, ma_cau text, ma_dang text, de text, anh text, giai text, opts jsonb, dung integer)
 - `_dtv_kho_cau_mot(p_mon text, p_ma_cau text)` → jsonb
@@ -10710,8 +10712,8 @@ WITH luot AS (
 - `hs_sotay_tim_ct(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_khoi text DEFAULT NULL::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_sotay_tim_lt(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_vao_ca_online(p_buoi uuid)` → jsonb
-- `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
 - `hs_xep_hang_tu_luyen(p_khoi text, p_mon text)` → jsonb
+- `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
 - `htd_co_mo(p_mon text)` → boolean
 - `htd_lo_trinh(p_mon text)` → jsonb
 - `htd_ly_thuyet(p_mon text, p_ma_dang text)` → jsonb
