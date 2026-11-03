@@ -78552,3 +78552,10 @@ Thùy nêu 4 việc, làm được 3:
 - Server (hiệu lực NGAY cả với app cũ): `fn_nt_nhip` trả het=true + bao_tri ⇒ game hiện màn "hết giờ" chặn chơi, không cộng giờ · `fn_nt_luu_ghi` KHÔNG ghi (ok=false, bao_tri). Thử dưới JWT HS (rollback): het=true, ghi bị từ chối, md5 bản lưu không đổi.
 - App (cần deploy): `BaoTriNongTraiHS` (TroChoiHS.tsx) — bấm Nông trại ⇒ hộp "Nông trại đang bảo trì", không mở game; Lộc mời chơi ẩn khi bảo trì. Xem thử: `hs.html?xem=tro_choi&vao=nong_trai&bao_tri=1` (đã soi).
 - Thùy báo "level nông trại bị reset hết": KIỂM DB — 157 vườn, `nn` = `dem.nn` (luỹ kế mọi lần cộng) ở 100% vườn (lệch max 0), `taoLuc` vẫn 23–25/10, không vườn nào tạo lại trong 24h. Cấp thấp (max 4, 97 vườn cấp 1) là do trần 8 điểm nhà nông/ngày (12 ngày ≈ 96 điểm = cấp 4) — không phải mất dữ liệu. Chờ Thùy chỉ tài khoản/màn thấy bị reset.
+
+## 03/11 (tối) — NGUYÊN NHÂN "lên cấp 4 lại về cấp 1" (Vũ Phan Gia Bảo 18:18, tài khoản test của Thùy) — game 3a? (xem commit), ĐÃ SỬA, chờ deploy
+- Bản lưu SERVER KHÔNG mất: Gia Bảo vẫn cấp 4 / 96 điểm; 157 vườn `nn` = `dem.nn`. Nhưng em có nhịp giờ chơi tới 18:20 mà bản lưu dừng 08:11 ⇒ game đã chạy CHẾ ĐỘ MÁY.
+- Cơ chế: game nhúng xin bản lưu (`NT_CAU.hoi(4000)`), quá 4 s ⇒ lặng lẽ dùng `localStorage` (vườn cấp 1 cũ trên máy) và chỉ lưu vào máy; app trả muộn vẫn bật nhịp giờ chơi. Thời điểm trùng lúc t chạy truy vấn nặng thử tăng tốc (18:10–18:40, có câu > 40 s) giờ cao điểm ⇒ nghi DB chậm làm quá 4 s. BÀI HỌC: không chạy truy vấn quét cả kho trên DB thật vào giờ HS chơi (17–22h).
+- Sửa (main.js/cau.js): nhúng mà không lấy được bản tài khoản ⇒ DỪNG ở màn tải + nút "Thử lại", không bao giờ rơi về bản trên máy; chờ 15 s. Soi `hs.html?xem=tro_choi&vao=nong_trai` (không đăng nhập): hiện đúng thông báo, không mở vườn.
+- Hệ quả còn lại: việc em làm trong lúc chạy chế độ máy hôm nay KHÔNG lên server (mất phần chơi hôm nay, cấp cũ còn nguyên). Phạm Khánh Huy "mất 6 xu" nhiều khả năng cùng nguyên nhân (ví trong vườn trên máy khác ví server).
+- Mở lại: Thùy deploy app (gồm hộp bảo trì + bản game sửa) ⇒ tắt `nt_bao_tri`.

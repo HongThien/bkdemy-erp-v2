@@ -5,7 +5,7 @@
                   {bk:'nt', loai:'luu', state}           đẩy bản lưu mới (đã giãn ≥ 3 giây giữa 2 lần)
      app → game : {bk:'nt', loai:'nap', ok, state|null}  trả bản lưu (state null = tài khoản chưa có)
                   {bk:'nt', loai:'xung_dot'}             thiết bị khác vừa lưu ⇒ NGỪNG ghi, báo em tải lại
-   Không nhúng (mở thẳng) hoặc app không trả lời trong 4 giây ⇒ chạy như cũ với localStorage (chế độ thử). */
+   Không nhúng (mở thẳng) ⇒ chạy với localStorage (chế độ thử). Nhúng mà app không trả lời trong 15 giây ⇒ main.js DỪNG và báo "chưa kết nối" (03/11: KHÔNG rơi về bản trên máy nữa). */
 (function () {
   'use strict';
   const nhung = /[?&]nhung=1/.test(location.search) && window.parent !== window;
