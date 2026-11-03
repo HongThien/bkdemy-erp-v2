@@ -29,12 +29,30 @@ const TS = {
   vien: 0.14,                                                  // viền sáng
 };
 
-// ---------- 1. viền sáng: chèn vào MỌI MeshStandardMaterial (kể cả mô hình KayKit/Quaternius) ----------
+// ---------- 1. viền sáng (+ tuyết phủ): chèn vào MỌI MeshStandardMaterial (kể cả mô hình KayKit/Quaternius) ----------
+const TUYET = { manh: { value: 0 }, chua: { value: new T.Vector4(1e5, 1e5, 1e5, 1e5) } }; // chua = (x0, z0, x1, z1) vùng không phủ tuyết
 if (moi) {
   const P = T.MeshStandardMaterial.prototype;
   P.onBeforeCompile = function (sh) {
     if (this.userData && this.userData.khongVien) return;
-    sh.fragmentShader = sh.fragmentShader.replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
+    // TUYẾT (nền "Trang trại tuyết", 03/11): mặt hướng lên trời phủ trắng theo uTuyet (0 = tắt) — trừ vùng uChua (ruộng: giữ đất/cây đọc được trạng thái)
+    sh.uniforms.uTuyet = TUYET.manh; sh.uniforms.uChua = TUYET.chua;
+    sh.vertexShader = 'varying vec3 vDhTg;\n' + sh.vertexShader.replace('#include <project_vertex>', `#include <project_vertex>
+      {
+        vec4 dhP = vec4(transformed, 1.0);
+        #ifdef USE_INSTANCING
+          dhP = instanceMatrix * dhP;
+        #endif
+        vDhTg = (modelMatrix * dhP).xyz;
+      }`);
+    sh.fragmentShader = 'uniform float uTuyet; uniform vec4 uChua; varying vec3 vDhTg;\n' + sh.fragmentShader.replace('#include <normal_fragment_maps>', `#include <normal_fragment_maps>
+      if (uTuyet > 0.0) {
+        float dhLen = (vec4(normal, 0.0) * viewMatrix).y;
+        float dhNgoai = max(max(uChua.x - vDhTg.x, vDhTg.x - uChua.z), max(uChua.y - vDhTg.z, vDhTg.z - uChua.w));
+        float dhLoang = 0.85 + 0.15 * sin(vDhTg.x * 1.7 + sin(vDhTg.z * 0.9) * 2.0) * sin(vDhTg.z * 1.3);
+        float dhPhu = uTuyet * smoothstep(0.35, 0.7, dhLen) * smoothstep(0.0, 0.3, dhNgoai) * dhLoang;
+        diffuseColor.rgb = mix(diffuseColor.rgb, vec3(0.9, 0.94, 1.0), clamp(dhPhu, 0.0, 1.0));
+      }`).replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
       {
         float dhVien = pow(1.0 - clamp(dot(normal, normalize(vViewPosition)), 0.0, 1.0), 3.0);
         totalEmissiveRadiance += vec3(1.0, 0.94, 0.82) * diffuseColor.rgb * dhVien * ${TS.vien.toFixed(3)};
@@ -1935,6 +1953,7 @@ function taoHauKy(R) {
       W = w; H = h; rt.setSize(w, h); const w2 = Math.max(1, w >> 1), h2 = Math.max(1, h >> 1); moA.setSize(w2, h2); moB.setSize(w2, h2);
       lamH.uniforms.d.value.set(1.6 / w2, 0); lamV.uniforms.d.value.set(0, 1.6 / h2); mauF.uniforms.uRes.value.set(w, h);
     },
+    u: mauF.uniforms, // chỉnh màu theo nền (đêm Halloween: bớt ấm, tối mép đậm hơn)
     setMsaa(n) { if (gl2 && rt.samples !== n) { rt.samples = n; rt.dispose(); } },
     tatTilt() { TS.tilt.bat = false; },
     render(sc, cam, tg, tilt) { // tilt: 0..1 — độ mờ trên/dưới (phóng gần thì giảm để không che chỗ đang chơi)
@@ -1974,7 +1993,7 @@ function taoBongDat(R, sc, vung) { // vung: {x0,x1,z0,z1}
   const ve = (m, dich) => { quad.material = m; R.setRenderTarget(dich); R.render(scQ, camQ); };
   const _cc = new T.Color();
   function capNhat() {
-    const an = []; sc.traverse(o => { if ((o.isSprite || o === tam) && o.visible) { o.visible = false; an.push(o); } });
+    const an = []; sc.traverse(o => { if ((o.isSprite || o.isPoints || o === tam) && o.visible) { o.visible = false; an.push(o); } });
     const cuMat = sc.overrideMaterial, cuNen = sc.background, cuSm = sc.fog, cuAuto = R.shadowMap.autoUpdate, cuMau = R.getClearColor(_cc).getHex(), cuA = R.getClearAlpha();
     sc.overrideMaterial = matSau; sc.background = null; sc.fog = null; R.shadowMap.autoUpdate = false; R.setClearColor(0x000000, 1);
     R.setRenderTarget(rtCao); R.clear(); R.render(sc, camT);
@@ -1994,5 +2013,5 @@ function taoBongDat(R, sc, vung) { // vung: {x0,x1,z0,z1}
   return { capNhat, tam };
 }
 
-window.NT_DOHOA = { moi, TS, nuongMau, gaMoi, vatMoi, cayMoi, trangThaiO, tenPha, coCay: id => !!CAY_MOI[id], CAY_MOI, nhaMoi, nhaDoVat, KIEU_NHA, choMoi, DT_CHO, GIONG_CHO, GIONG_GA, GIONG_BO, ganGio, gio: t => { GIO.value = t; }, boMin, taoHauKy, taoBongDat };
+window.NT_DOHOA = { moi, TS, nuongMau, gaMoi, vatMoi, cayMoi, trangThaiO, tenPha, coCay: id => !!CAY_MOI[id], CAY_MOI, nhaMoi, nhaDoVat, KIEU_NHA, choMoi, DT_CHO, GIONG_CHO, GIONG_GA, GIONG_BO, ganGio, gio: t => { GIO.value = t; }, boMin, taoHauKy, taoBongDat, TUYET };
 })();

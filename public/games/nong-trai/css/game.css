@@ -433,3 +433,44 @@ body.dangTham .cu[data-cu="gieo"], body.dangTham .cu[data-cu="bon"] { opacity: .
   #xoayMay .xoayHinh { font-size: 72px; line-height: 1; animation: xoayMay 2.4s ease-in-out infinite; }
 }
 @keyframes xoayMay { 0%, 25% { transform: rotate(0); } 55%, 85% { transform: rotate(-90deg); } 100% { transform: rotate(0); } }
+
+/* ===== NHÀ & CẢNH (Thùy 03/11): thẻ chọn kiểu nhà / khung cảnh ===== */
+.gdLuoi { display: grid; grid-template-columns: repeat(auto-fit, minmax(125px, 1fr)); gap: 10px; }
+.gdThe { position: relative; padding: 10px 8px 8px; border-radius: 18px; background: #fff; border: 3px solid #e8d4a6; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 2px; font-family: inherit; color: var(--chu); cursor: pointer; }
+.gdThe .ic { font-size: 40px; line-height: 1.1; }
+.gdThe b { font-size: 15px; line-height: 1.15; }
+.gdThe .nho { font-size: 12px; color: var(--mo); line-height: 1.2; }
+.gdThe:active { transform: scale(.97); }
+.gdThe.chon { border-color: var(--xanh); box-shadow: 0 0 0 3px #c9f0b0; }
+.gdThe.chon::after { content: '✓'; position: absolute; top: -9px; right: -9px; width: 26px; height: 26px; border-radius: 50%; background: var(--xanh); color: #fff; font-weight: 800; display: grid; place-items: center; }
+.gdThe.nen-tuyet { background: linear-gradient(#eef5ff, #fff); }
+.gdThe.nen-dem { background: linear-gradient(#3a2a66, #5b3a7a); color: #fff; }
+.gdThe.nen-dem .nho { color: #e8d8ff; }
+
+/* ===== PHÓNG TO GIAO DIỆN (Thùy 03/11: mọi ô chữ, nút to ~50% trên PC / iPad) =====
+   --k = hệ số phóng: màn ≥ 600px cao (iPad 1024×768, 1180×820, PC) ⇒ 1.5 · màn vừa ⇒ 1.25 · điện thoại ngang (≤ 500px cao) giữ nguyên.
+   Chỉ đặt `zoom` lên phần tử CON hoặc phần tử neo bằng px một góc — KHÔNG đặt lên khối căn giữa bằng % (Safari/Chrome xử % dưới zoom khác nhau);
+   khối căn giữa thì nhân cỡ chữ / khoảng cách với --k. JS đo vị trí bằng getBoundingClientRect của khối cha (không zoom) nên vẫn đúng. */
+:root { --k: 1; }
+@media (min-height: 501px) and (min-width: 800px) { :root { --k: 1.25; } }
+@media (min-height: 600px) and (min-width: 900px) { :root { --k: 1.5; } }
+@media (min-height: 501px) and (min-width: 800px) {
+#capBox, #viBox, #diemBox, #hang2, #nutDev, #nutPhai, #thanhCu > *, #viecBox > *, #bongMenu > *, #hdHop > *, #thongBao > *, #banBanner .nut, .tai { zoom: var(--k); }
+#hud { gap: calc(8px * var(--k)); }
+#thanhCu { gap: calc(6px * var(--k)); padding: calc(6px * var(--k)) calc(8px * var(--k)); border-radius: calc(22px * var(--k)); }
+#viecBox { width: calc(172px * var(--k)); }
+#bongMenu { padding: calc(10px * var(--k)) calc(12px * var(--k)); border-radius: calc(20px * var(--k)); min-width: calc(150px * var(--k)); max-width: min(94vw, calc(460px * var(--k))); transform: translate(-50%, calc(-100% - 18px * var(--k))); }
+#bang { zoom: var(--k); width: min(calc(96vw / var(--k)), 760px); max-height: min(calc(88vh / var(--k)), 720px); }
+#hdHop { width: min(94vw, calc(520px * var(--k))); bottom: calc(max(10px, env(safe-area-inset-bottom)) + 92px * var(--k)); }
+#goiY, body.dangTham #goiY { font-size: calc(15px * var(--k)); padding: calc(6px * var(--k)) calc(16px * var(--k)); border-radius: calc(16px * var(--k)); max-width: min(92vw, calc(520px * var(--k))); bottom: calc(max(10px, env(safe-area-inset-bottom)) + 86px * var(--k)); }
+#banBanner { font-size: calc(16px * var(--k)); padding: calc(6px * var(--k)) calc(8px * var(--k)) calc(6px * var(--k)) calc(16px * var(--k)); border-radius: calc(20px * var(--k)); gap: calc(10px * var(--k)); bottom: calc(max(10px, env(safe-area-inset-bottom)) + 124px * var(--k)); }
+.nhan3d { font-size: calc(13px * var(--k)); padding: calc(2px * var(--k)) calc(10px * var(--k)); border-radius: calc(12px * var(--k)); }
+.nhan3d.xay { font-size: calc(14px * var(--k)); } .nhan3d.mo { font-size: calc(12px * var(--k)); }
+.bay { font-size: calc(18px * var(--k)); }
+#muiTen { font-size: calc(46px * var(--k)); }
+@media (orientation: landscape) {
+  #nutPhai { top: max(58px, calc(env(safe-area-inset-top) + 52px)); }   /* đã zoom ⇒ px tự nhân --k, vẫn nằm dưới HUD đã phóng */
+  #hang1 #capBox { max-width: 320px; }
+  #nutDev { width: 118px; }   /* cụm 🔊 ⚙ ngày xếp hẹp, không đè thanh dụng cụ đã phóng */
+}
+}

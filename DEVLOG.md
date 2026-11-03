@@ -78561,3 +78561,12 @@ Thùy nêu 4 việc, làm được 3:
 - Mở lại: Thùy deploy app (gồm hộp bảo trì + bản game sửa) ⇒ tắt `nt_bao_tri`.
 
 - 03/11 tối: Thùy deploy xong ⇒ TẮT bảo trì (`tinh_nang.nt_bao_tri.mo_tu = null`). Kiểm dưới JWT HS: `_nt_bao_tri()` = false, `fn_nt_nhip` het=false, nong_trai vẫn mở.
+
+## 03/11 (tối) — Nông trại: giao diện to ~50% · em tự chọn kiểu nhà · nền tuyết / đêm Halloween — game b728032 (nhánh nhip-ngay, CHƯA push), chờ deploy
+- Nguồn sửa = `BKGame/NongTrai` (nhánh `nhip-ngay`), chép sang `public/games/nong-trai/` bằng `node scripts/dong-bo-nong-trai.mjs`.
+- **To ~50%:** biến `--k` ở `css/game.css` (màn ≥ 600px cao & ≥ 900px rộng ⇒ 1.5; màn vừa ⇒ 1.25; điện thoại ngang ≤ 500px cao ⇒ 1, giữ nguyên). Chỉ đặt `zoom` lên phần tử CON hoặc phần tử neo bằng px một góc (HUD, nút phải, nút trong thanh dụng cụ, bảng `#bang`); khối căn giữa bằng `left:50%` thì nhân cỡ chữ/khoảng cách với `--k`. Lý do: Safari và Chrome xử % dưới `zoom` khác nhau; zoom con thì khối cha (JS đo bằng getBoundingClientRect) vẫn đúng. Cụm 🔊 ⚙ ngày ở góc trái dưới phải xếp hẹp (118px) mới không đè thanh dụng cụ ở 1024×768. Bong bóng menu kẹp mép theo bề rộng thật (offsetWidth) thay vì 110px cố định.
+- **Kiểu nhà:** game có 4 kiểu (gỗ đồng quê · Việt ba gian · Nhật · Hy Lạp), mỗi kiểu 10 mức — không phải 10 kiểu. Nút 🎨 "Nhà & cảnh" + chạm vào nhà ⇒ bảng chọn; đổi tại chỗ (`NT_SCENE.doiNha`). Mức nhà vẫn như cũ (`?nha=`, mặc định 1).
+- **Nền:** `NT_SCENE.doiNen('thuong'|'tuyet'|'dem')` đổi vòm trời, sương mù, nắng, ánh sáng bán cầu, chỉnh màu hậu kỳ (`hk.u`) + bật nhóm đồ riêng. Tuyết = chèn vào hook `MeshStandardMaterial.prototype.onBeforeCompile` có sẵn ở `dohoa.js` (uniform `DH.TUYET`): mặt hướng lên trời ngả trắng, TRỪ vùng ruộng (giữ đất khô/ướt + cây đọc được); ô cỏ chưa mở đổi màu tay. Tuyết rơi = Points (bóng tiếp đất bỏ qua Points). Halloween: bí ngô mặt sáng, đèn lồng, trăng + sao, dơi, ma nhỏ, đom đóm — vật liệu tự sáng, KHÔNG dùng PointLight (đổi số đèn = dịch lại mọi shader). Đêm bản đầu tối quá, đã nâng sáng trăng.
+- **Lưu:** `s.giaoDien = { nha, nen }` nằm trong bản lưu ⇒ đi cùng `fn_nt_luu_ghi` (jsonb tự do, chỉ kiểm v=2 và ≤ 256KB) — KHÔNG cần migration. Đã kiểm: chọn → tải lại trang ⇒ giữ đúng lựa chọn.
+- Kiểm trên Browser pane: 1024×768 · 1180×820 (iPad) · 1600×900 (PC) · 844×390 (điện thoại, --k=1 không đổi). `node tools/test-engine.mjs`: tất cả luật đúng. Chưa kiểm trên Safari iPad thật.
+- Còn để ngỏ: vườn bạn vẫn hiện nhà/nền của chính em (server `fn_nt_ban_vuon` không trả `giaoDien`).

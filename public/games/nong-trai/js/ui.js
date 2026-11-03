@@ -180,7 +180,7 @@ function veBong(ep) {
 function datViTriBong() {
   if (!neo) return; const p = S.viTri(neo.chon); if (!p) return;
   const m = S.manHinh(p), el = $('bongMenu');
-  el.style.left = Math.max(110, Math.min(innerWidth - 110, m.x)) + 'px'; el.style.top = Math.max(el.offsetHeight + 30, m.y) + 'px';
+  const hw = el.offsetWidth / 2 + 6; el.style.left = Math.max(hw, Math.min(innerWidth - hw, m.x)) + 'px'; el.style.top = Math.max(el.offsetHeight + 30, m.y) + 'px';
 }
 
 // ---------- RUỘNG (vườn mình) ----------
@@ -666,6 +666,26 @@ function moLenCap(e) {
     gan: el => el.querySelector('[data-l=ok]').onclick = () => { hangLenCap.shift(); if (hangLenCap.length) moLenCap(hangLenCap[0]); else dongBang(); } }));
 }
 
+// ---------- NHÀ & CẢNH (Thùy 03/11): em tự chọn kiểu nhà + khung cảnh — lưu trong bản lưu (s.giaoDien), đi cùng cơ chế lưu theo tài khoản ----------
+const IC_NHA = { go: '🏡', viet: '🛖', nhat: '🏯', hylap: '🏛️' }, IC_NEN = { thuong: '🌤️', tuyet: '❄️', dem: '🎃' };
+const MO_NEN = { thuong: 'Nắng xanh, cỏ mướt', tuyet: 'Tuyết rơi, người tuyết', dem: 'Trăng tròn, bí ngô, dơi' };
+function giaoDien() { if (!s.giaoDien || typeof s.giaoDien !== 'object') s.giaoDien = { nha: 'go', nen: 'thuong' }; return s.giaoDien; }
+function apGiaoDien() { const g = giaoDien(); if (S.doiNha) { S.doiNha(g.nha); S.doiNen(g.nen); } }
+function moGiaoDien() {
+  const KN = (window.NT_DOHOA && NT_DOHOA.KIEU_NHA) || {};
+  moBang('Nhà & cảnh', () => {
+    const g = giaoDien();
+    const theNha = Object.keys(KN).map(k => { const [ten, phu] = KN[k].ten.split(' — '); return `<button class="gdThe${g.nha === k ? ' chon' : ''}" data-nha="${k}"><span class="ic">${IC_NHA[k] || '🏠'}</span><b>${ten}</b><span class="nho">${phu || '&nbsp;'}</span></button>`; }).join('');
+    const theNen = Object.keys(S.NEN || {}).map(k => `<button class="gdThe nen-${k}${g.nen === k ? ' chon' : ''}" data-nen="${k}"><span class="ic">${IC_NEN[k] || '🌿'}</span><b>${S.NEN[k].ten}</b><span class="nho">${MO_NEN[k] || ''}</span></button>`).join('');
+    return { key: 'gd' + g.nha + g.nen, html: `<div class="muc">🏡 Kiểu nhà</div><div class="gdLuoi">${theNha}</div><div class="muc">🎨 Khung cảnh</div><div class="gdLuoi">${theNen}</div>
+      <p class="nho" style="margin:10px 2px 0">Đổi lúc nào cũng được, miễn phí.</p>`,
+      gan: el => {
+        el.querySelectorAll('[data-nha]').forEach(b => b.onclick = () => { g.nha = b.dataset.nha; S.doiNha(g.nha); E.luu(s); veBang(true); });
+        el.querySelectorAll('[data-nen]').forEach(b => b.onclick = () => { g.nen = b.dataset.nen; S.doiNen(g.nen); E.luu(s); veBang(true); });
+      } };
+  });
+}
+
 // ---------- TUỲ CHỌN ----------
 function moMenu() {
   let hoi = false;
@@ -770,7 +790,7 @@ const cb = {
     if (chon.loai === 'sap') { dongBong(); return moCho(); }
     if (chon.loai === 'hopThu') { dongBong(); return moThu(); }
     if (chon.loai === 'kho') { dongBong(); return moKho(); }
-    if (chon.loai === 'nha') { dongBong(); return thongBao('🏡 Nhà của em'); }
+    if (chon.loai === 'nha') { dongBong(); return moGiaoDien(); }
   },
   batDauVuot(i) {
     if (xem != null) return false;
@@ -808,7 +828,7 @@ function batDau(state) {
   s = state;
   $('icXp').src = M.icon('xp'); $('icXu').src = M.icon('xu'); $('icDiem').src = M.icon('diem');
   $('icKho').src = M.icon('kho_barn'); $('icShop').src = M.icon('sap');
-  S.init($('c3d'), $('lopNhan'), cb);
+  S.init($('c3d'), $('lopNhan'), cb); apGiaoDien();
   E.capNhat(s); ngayCu = E.homNay(s); dongBo(); capHud(); veThanhCu();
   const doLe = () => S.datLe($('hud').getBoundingClientRect().bottom + 6, innerHeight - $('thanhCu').getBoundingClientRect().top + 6);
   doLe(); addEventListener('resize', () => setTimeout(doLe, 50));
@@ -820,6 +840,7 @@ function batDau(state) {
   $('btnThu').onclick = () => { if (xem != null) return; moThu(); };
   $('nutVe').onclick = veNha;
   $('btnMenu').onclick = moMenu;
+  $('btnGiaoDien').onclick = () => { if (xem != null) return thongBao('Về nhà rồi đổi nhà, đổi cảnh nhé'); moGiaoDien(); };
   $('btnDiem').onclick = moDiem;
   $('btnAm').textContent = AM.tat ? '🔇' : '🔊';
   $('btnAm').onclick = () => { $('btnAm').textContent = AM.doiTat() ? '🔇' : '🔊'; };
