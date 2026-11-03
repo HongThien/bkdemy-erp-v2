@@ -6,13 +6,20 @@ import { useEffect, useState } from 'react'
 import BaoCaoCaNhan, { type OChon } from '../troly/BaoCaoCaNhan'
 import WidgetDangYeu, { khoaO } from '../qlcl/WidgetDangYeu'
 import { tongQuanDangYeu, type OTongQuan } from '../../lib/qlcl'
+import { monTbm } from '../../lib/phongTk'
 
 const NHO: { cacO: OTongQuan[] | null; qt: OChon | null; cl: OChon | null } = { cacO: null, qt: null, cl: null }
 const tenO = (o: OChon) => `${o.mon === 'Toán' ? '' : `${o.mon} `}Khối ${o.khoi}`
 
+// Ô của PHÒNG: ô trong phạm vi (fn_qlcl_tong_quan) ∩ môn của phòng (fn_phong_mon_tbm; null = mọi môn) — Thùy 03/11: phòng Trang chỉ Toán.
+// Lọc môn là lọc thuần UI trên danh sách ô đã có; số của từng ô vẫn do DB tính.
 function useCacO() {
   const [ds, setDs] = useState<OTongQuan[] | null>(NHO.cacO)
-  useEffect(() => { tongQuanDangYeu().then((d) => { NHO.cacO = d; setDs(d) }).catch(() => {}) }, [])
+  useEffect(() => {
+    Promise.all([tongQuanDangYeu(), monTbm()])
+      .then(([d, mon]) => { const x = mon ? d.filter((o) => mon.includes(o.mon)) : d; NHO.cacO = x; setDs(x) })
+      .catch(() => {})
+  }, [])
   return ds
 }
 
@@ -36,7 +43,7 @@ export function QuanTriTbm() {
   return (
     <div>
       {cacO && <ChipO cacO={cacO} chon={chon} onChon={setChon} nhanTatCa="Mọi khối" />}
-      <BaoCaoCaNhan key={chon ? khoaO(chon) : 'tat_ca'} chiMuc={['baocao']} o={chon} />
+      <BaoCaoCaNhan key={chon ? khoaO(chon) : 'tat_ca'} chiMuc={['baocao']} o={chon} phong />
     </div>
   )
 }

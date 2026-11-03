@@ -121,7 +121,10 @@ Cổng quyền 4 hàm `fn_hsta_*` nới thêm đúng một ca: trưởng khối 
 **DB:** mig `202611031237` (`_phong_chi_so` — một nguồn đếm cho TA lẫn trưởng khối; `_troly_bc_theo_lop` — lõi báo cáo Sư phạm tách từ `fn_troly_ca_nhan_lay`, dùng chung với `fn_troly_o_lay`) +
 mig `202611031246` (chế độ `'tbm'` mở cho quản lý môn · `fn_phong_ghe_tbm()` ghế trưởng khối + ô trống · `fn_phong_cap_duoi_o`). `fn_phong_truong_khoi` (mig 1237) không còn dùng trên màn — để nguyên, chờ CEO gật mới xoá.
 
-**Còn treo:** Trang ở DB là *toàn hệ* (ghế Trưởng QLCL) nên phòng Trang thấy **mọi môn**. Nếu Trang là trưởng bộ môn **Toán** thì phải đổi ở phân quyền (ghế quản lý môn Toán), không sửa code.
+**Phạm vi phòng THEO CÂY GIÁO VIÊN** (Thùy 03/11: phòng Trang "chỉ Toán"; mig `202611031255`): trưởng bộ môn = người giữ ghế trưởng/phó trong
+cây team GV của một môn, môn = môn ở **gốc cây** (`_phong_mon_cua_toi`). Đo 03/11: Trang (Trưởng khối THCS/THPT, Giáo viên trưởng — cây Toán) ⇒
+**Toán** · anh Ngọc ⇒ KHTN · anh Hoà ⇒ Tiếng Anh · admin ⇒ mọi môn. **Chỉ thu hẹp PHÒNG** — quyền toàn hệ của Trang ở màn khác (hậu kiểm, gậy,
+chốt tuần…) giữ nguyên. Đổi người quản môn = đổi ghế trên cây GV, phòng tự theo. "Mọi khối" ở Quản trị = `fn_troly_phong_lay` (lớp đúng môn của phòng).
 
 **Task phát triển KHÔNG thuộc việc của TA** (Thùy 03/11): chỉ trưởng khối có task phát triển — nó nằm ở việc của chính trưởng khối, không đưa vào chi tiết TA.
 

@@ -103,6 +103,12 @@ export async function getBaoCaoCaNhan(soNgay: number): Promise<BaoCaoTroLy> {
   if (error) throw error
   return data as BaoCaoTroLy
 }
+// Báo cáo Sư phạm "Mọi khối" của PHÒNG TRƯỞNG BỘ MÔN — đúng môn của phòng (mig 202611031255; Trang ⇒ Toán).
+export async function getBaoCaoPhong(soNgay: number): Promise<BaoCaoTroLy> {
+  const { data, error } = await supabase.rpc('fn_troly_phong_lay', { p_so_ngay: soNgay })
+  if (error) throw error
+  return data as BaoCaoTroLy
+}
 // Báo cáo Sư phạm của MỘT ô (môn × khối) — phòng PGĐ chọn khối (mig 202611031237, cùng lõi _troly_bc_theo_lop).
 export async function getBaoCaoO(soNgay: number, mon: string, khoi: string): Promise<BaoCaoTroLy> {
   const { data, error } = await supabase.rpc('fn_troly_o_lay', { p_so_ngay: soNgay, p_mon: mon, p_khoi: khoi })

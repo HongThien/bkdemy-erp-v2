@@ -8,7 +8,7 @@
 // Phạm vi = (môn × khối) của fn_pham_vi_cua_toi ở DB (quản lý môn = mọi khối của môn).
 // ============================================================================
 import { useEffect, useState } from 'react'
-import { getBaoCaoCaNhan, getBaoCaoO, getHocTapTuanCaNhan, type BaoCaoTroLy, type LopHocTapTuan } from '../../lib/troly-baocao'
+import { getBaoCaoCaNhan, getBaoCaoO, getBaoCaoPhong, getHocTapTuanCaNhan, type BaoCaoTroLy, type LopHocTapTuan } from '../../lib/troly-baocao'
 import { BanBaoCao } from './BaoCao'
 import WidgetDangYeu from '../qlcl/WidgetDangYeu'
 import { moBoTroTab } from '../botro/BoTroHubScreen'
@@ -29,9 +29,10 @@ export type OChon = { mon: string; khoi: string }
 // Báo cáo Sư phạm tải ở đây (không ở mục con) để khoảng "Nhìn lại" + dòng khối nằm chung hàng với tab mục.
 // chiMuc: chỉ hiện các mục này (Phòng trưởng khối, Thùy 03/11: tranh Quản trị = ['baocao'] · tranh Chất lượng = ['tuan']).
 // Còn 1 mục thì không vẽ thanh chọn mục.
-// o: chỉ một ô (môn × khối) — phòng Phó GĐ chuyên môn chọn khối ⇒ thấy y như trưởng khối khối đó (fn_troly_o_lay).
-export default function BaoCaoCaNhan({ chiMuc, o }: { chiMuc?: Muc[]; o?: OChon | null } = {}) {
-  const khoa = o ? `${o.mon}|${o.khoi}` : ''
+// o: chỉ một ô (môn × khối) — phòng Trưởng bộ môn chọn khối ⇒ thấy y như trưởng khối khối đó (fn_troly_o_lay).
+// phong: không chọn ô thì lấy "mọi khối CỦA PHÒNG" (đúng môn của phòng — fn_troly_phong_lay) thay vì cả phạm vi của tôi.
+export default function BaoCaoCaNhan({ chiMuc, o, phong }: { chiMuc?: Muc[]; o?: OChon | null; phong?: boolean } = {}) {
+  const khoa = o ? `${o.mon}|${o.khoi}` : phong ? 'phong' : ''
   const [mucS, setMucS] = useState<Muc>(NHO_MUC.muc)
   const dsMuc = MUC.filter(([k]) => !chiMuc || chiMuc.includes(k))
   const muc: Muc = dsMuc.some(([k]) => k === mucS) ? mucS : dsMuc[0][0]
@@ -47,7 +48,7 @@ export default function BaoCaoCaNhan({ chiMuc, o }: { chiMuc?: Muc[]; o?: OChon 
     if (NHO.bc && NHO.soNgay === soNgay && NHO.khoa === khoa) { setBc(NHO.bc); return }
     let con = true
     setBc(null); setLoi(null); setDangTai(true)
-    ;(o ? getBaoCaoO(soNgay, o.mon, o.khoi) : getBaoCaoCaNhan(soNgay))
+    ;(o ? getBaoCaoO(soNgay, o.mon, o.khoi) : phong ? getBaoCaoPhong(soNgay) : getBaoCaoCaNhan(soNgay))
       .then((d) => { if (!con) return; NHO.soNgay = soNgay; NHO.khoa = khoa; NHO.bc = d; setBc(d) })
       .catch((e: any) => { if (con) setLoi(e?.message ?? String(e)) })
       .finally(() => { if (con) setDangTai(false) })
