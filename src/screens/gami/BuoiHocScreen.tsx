@@ -870,7 +870,15 @@ function ETChamTab({ buoiId, roster, buoi, dangOpts, onChange }: { buoiId: strin
 
       {/* Lưới KHÔNG khớp đề — 3 tình huống, mỗi cái nói rõ mất gì / phải làm gì. Im lặng là điều DUY
           NHẤT không được phép ở đây (bug 07-21: lệch âm thầm suốt từ 20/07 tới lúc Thùy tự phát hiện). */}
-      {sync?.doiCauTruc && (
+      {/* Đóng ET lúc CHƯA có đề (0 ô — "xác nhận đóng không có ET") rồi mới làm ET: không có gì đã chấm, chỉ cần Mở lại
+          (Thùy 03/11, 5A1: câu "đề đã đổi" làm người chấm tưởng hệ lỗi). */}
+      {sync?.doiCauTruc && !sync.probs.length && (
+        <div className="mb-3 rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-[12px] text-amber-800">
+          ⚠️ Buổi này đã được <b>xác nhận đóng ET lúc CHƯA có đề</b> (chưa chấm ô nào, chưa tính Elo). Nay đã có ET —
+          bấm <b>↩ Mở lại để sửa</b> là lưới chấm tự dựng theo đề.
+        </div>
+      )}
+      {sync?.doiCauTruc && !!sync.probs.length && (
         <div className="mb-3 rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-[12px] text-amber-800">
           ⚠️ Đề ET đã đổi sau khi ET được xác nhận — lưới chấm giữ nguyên theo lúc chấm (Elo đã tính).
           Muốn lưới bám đề mới thì bấm <b>↩ Mở lại để sửa</b>, hệ sẽ tự đồng bộ.
