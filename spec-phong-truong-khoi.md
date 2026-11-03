@@ -92,6 +92,24 @@ PHASE 3 — NHẬP KHO & PHÂN DẠNG (vòng xoáy, sau khi Thùy phát động 
   tập · phiên Claude) · ③ **quản trị** như Trang thu nhỏ (BTVN/ET/dữ liệu đủ chưa · bổ trợ · gậy).
 - Đích bố cục: **Hôm nay** (một hàng việc suy theo invariant) · **Học thuật** · **Quản trị** · cửa sang việc vận hành của tôi.
 
+### 4.1 Phòng = môi trường làm việc, màn chính là CẢNH PHÒNG (Thùy chốt 03/11)
+
+| # | Chốt |
+|---|---|
+| 1 | Sảnh và Phòng **ngang hàng** (cùng vai trò, khác địa điểm) — Phòng không phải "một tính năng". Nút **⇄** đổi qua lại ở cả hai nơi (`NutDoiMoiTruong`; sang Phòng chỉ hiện khi có quyền `phong_tk`). |
+| 2 | Nền **đổi được như Sảnh** (cùng 🎨 Giao diện / style). Cảnh phòng có cửa sổ trong suốt ⇒ nền style hiện ngoài cửa sổ. |
+| 3 | Cảnh = phòng làm việc, **mỗi bàn một nhân vật = một TA cấp dưới** (TA của khối, suy từ `phan_cong_lop` — §2.3 spec-truong-khoi). Trên đầu: tên + **hiệu suất TA tháng** (đúng `fn_hsta_thang`, công thức 08/10) chữ to để so sánh. Bấm ⇒ chi tiết: việc tuần này (đang làm · đã xong · trễ hạn) + gậy tháng. |
+| 4 | 3 phần việc là **đồ vật trong cảnh**: máy tính bàn trưởng khối = Phiên Claude · bản đồ treo tường = Bản đồ · tủ hồ sơ = Quản trị. |
+| 5 | Tranh **demo vẽ bằng SVG** (`src/screens/phongtk/CanhPhong.tsx`); Thùy sẽ vẽ lại bằng ChatGPT. Khi có tranh: giữ toạ độ ghế / đồ vật (hệ 1600×900) làm ô bấm, thay phần vẽ bằng 1 ảnh (khuôn cảnh liền `lib/canhErp.ts`). 8 ghế; quá 8 người ⇒ dải "Ngồi phòng bên". |
+
+**DB (mig `202611031122`):** `fn_phong_cap_duoi()` (1 dòng / TA) · `fn_phong_cap_duoi_chi_tiet(p_ns)` · `_phong_cap_duoi_ds()` · `_phong_la_cap_duoi(p_ns)` · `_phong_viec_ta(p_ns)`.
+Cổng quyền 4 hàm `fn_hsta_*` nới thêm đúng một ca: trưởng khối xem **một** TA cấp dưới (`p_ns`). Không đổi công thức.
+
+**Định nghĩa việc (tạm, sửa ở `_phong_viec_ta` là đổi mọi nơi):** việc = chấm BTVN · chấm ET (trừ ET online) từ `fn_viec_buoi_thuong`; trạng thái theo
+**lần đóng đầu** (như Gậy): đang làm · xong đúng hạn · xong trễ · quá hạn. "Tuần" = buổi T2→CN tuần này + việc tồn quá hạn 30 ngày trước. Gậy = `fn_gay_bang_khoang` tháng.
+
+**Còn treo:** đầu tháng hiệu suất tháng hầu hết "—" (chưa có task đã đóng) — có nên hiện tháng trước khi tháng này chưa có số? · thêm task phát triển vào "việc"?
+
 ## 5. Bản thử đã dựng (01/11) — mig `202611011822`
 
 | Phần | Chỗ |

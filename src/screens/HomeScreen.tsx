@@ -154,7 +154,7 @@ const Nhan = ({ children, className = '' }: { children: React.ReactNode; classNa
 )
 
 // 🎨 CHỌN GIAO DIỆN — Mặc định (ERP như cũ) + 4 style có tranh của app HS; style có nhiều hình nền / có cả sáng lẫn tối thì chọn tiếp ở dưới. Đổi là áp ngay.
-function ChonGiaoDien({ hep }: { hep: boolean }) {
+export function ChonGiaoDien({ hep }: { hep: boolean }) {   // dùng chung: Phòng làm việc trưởng khối đổi nền y như Sảnh
   const sk = useSkinErp()
   const tep = useRef<HTMLInputElement>(null)
   const [dangTai, setDangTai] = useState(false)

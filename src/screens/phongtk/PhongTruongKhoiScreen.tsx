@@ -2,68 +2,111 @@
 // ERP là SẢNH chung (mọi việc, tới việc nhỏ nhất); phòng này cắt đúng theo việc của ghế trưởng khối.
 // Luật: phòng là LỐI ĐI TẮT, không phải bản sao — mỗi ô mở đúng màn/hàm đang có ở sảnh, không có số/logic riêng,
 // nên đi đường nào cũng ra cùng kết quả. Dữ liệu tự lọc theo phạm vi (fn_pham_vi_cua_toi) ở từng màn.
-// Thùy 03/11: phòng là MÔI TRƯỜNG LÀM VIỆC như Sảnh (cùng vai trò, khác địa điểm) — KHÔNG phải một tính năng:
-// cùng khung nền theo style (useSkinErp, biến --sk-*), có nút ⇄ đổi qua lại Sảnh. Màn laptop thấp ⇒ dàn NGANG, không phình dọc.
+// Thùy 03/11: phòng là MÔI TRƯỜNG LÀM VIỆC như Sảnh (cùng vai trò, khác địa điểm) — cùng khung nền theo style (đổi được như Sảnh),
+// nút ⇄ đổi qua lại Sảnh. Màn chính = CẢNH PHÒNG (CanhPhong): mỗi bàn một TA cấp dưới, số trên đầu = hiệu suất tháng, bấm ⇒ chi tiết;
+// 3 phần việc (Phiên Claude · Bản đồ · Quản trị) là ĐỒ VẬT trong cảnh, mở ra thì có nút ← Về phòng.
 import { useEffect, useState, type CSSProperties } from 'react'
 import PhienClaudeTab from './PhienClaudeTab'
 import BanDoMoiScreen from '../kho/BanDoMoi'
 import BaoCaoCaNhan from '../troly/BaoCaoCaNhan'
 import WidgetDangYeu from '../qlcl/WidgetDangYeu'
 import NutDoiMoiTruong from './NutDoiMoiTruong'
+import CanhPhong, { SO_GHE, mauHS, type DoVat } from './CanhPhong'
+import ChiTietCapDuoiPopup from './ChiTietCapDuoi'
+import { ChonGiaoDien } from '../HomeScreen'
+import { listCapDuoi, type CapDuoi } from '../../lib/phongTk'
 import { useSkinErp } from '../../lib/erpSkin'
 import { HoatCanhNen } from '../hocsinh/skin/HoatCanhNen'
 import { HEAD } from '../home/khung'
 
-type Tab = 'phien' | 'ban_do' | 'quan_tri'
-const NHO: { tab: Tab } = { tab: 'phien' }   // rời phòng rồi quay lại = đúng tab cũ
-
-const TABS: { id: Tab; ten: string; goi_y: string }[] = [
-  { id: 'phien', ten: '🤖 Phiên Claude', goi_y: 'Ra lệnh cho Claude dựng / sửa bản đồ' },
-  { id: 'ban_do', ten: '🗺 Bản đồ', goi_y: 'Xem và sửa tay bản đồ (rồi bảo Claude "làm tiếp")' },
-  { id: 'quan_tri', ten: '📋 Quản trị', goi_y: 'Báo cáo sư phạm · dạng yếu của khối' },
-]
+type Mo = DoVat | null
+const TEN: Record<DoVat, string> = { phien: '🤖 Phiên Claude', ban_do: '🗺 Bản đồ', quan_tri: '📋 Quản trị' }
+// Sống tới F5: rời phòng quay lại = đúng chỗ cũ, danh sách cấp dưới không trắng (CLAUDE.md §2 React).
+const NHO: { mo: Mo; ds: CapDuoi[] | null } = { mo: null, ds: null }
 
 export default function PhongTruongKhoiScreen({ onTaoCaNhe }: { onTaoCaNhe: () => void }) {
-  const [tab, setTab] = useState<Tab>(NHO.tab)
-  useEffect(() => { NHO.tab = tab }, [tab])
+  const [mo, setMoS] = useState<Mo>(NHO.mo)
+  const setMo = (m: Mo) => { NHO.mo = m; setMoS(m) }
+  const [daMoPhien, setDaMoPhien] = useState(NHO.mo === 'phien')   // khung chat chỉ gắn từ lần đầu mở, rồi giữ luôn (không mất chữ đang chạy)
+  const [ds, setDs] = useState<CapDuoi[] | null>(NHO.ds)
+  const [loi, setLoi] = useState<string | null>(null)
+  const [nguoi, setNguoi] = useState<CapDuoi | null>(null)
+  useEffect(() => { if (mo === 'phien') setDaMoPhien(true) }, [mo])
+  useEffect(() => {
+    // refetch NỀN: giữ ds cũ tới khi có ds mới, không bao giờ trắng
+    listCapDuoi().then((d) => { NHO.ds = d; setDs(d); setLoi(null) }).catch((e) => setLoi(e?.message ?? String(e)))
+  }, [])
+
   const sk = useSkinErp()
   const khung: CSSProperties = { ...sk.bien, background: 'var(--sk-page)', fontFamily: 'var(--sk-font)' }
   const tam: CSSProperties = { background: 'var(--sk-surface)', borderRadius: 'var(--sk-radius)', backdropFilter: 'var(--sk-blur)' }
-  // Co vào giữa (lề ≥ 1 inch mỗi bên); riêng Bản đồ giữ rộng — các nhóm xếp ngang, càng rộng càng ít cuộn.
-  const be = tab === 'ban_do' ? 'max-w-[1600px]' : 'max-w-[1180px]'
+  const thua = (ds ?? []).slice(SO_GHE)
   return (
-    // Giống Sảnh: tranh nền + hoạt cảnh ở section NGOÀI (đứng yên), nội dung cuộn trong khối bên trong.
     <section style={khung} className="relative h-full min-h-0 overflow-hidden text-[var(--sk-ink)]">
       {sk.hoatCanh && <HoatCanhNen hc={sk.hoatCanh} nenId={sk.nenId} doc={sk.doc} coTruoc={false} />}
-      <div className="relative z-[1] h-full overflow-auto">
-        <div className={`mx-auto w-full ${be} px-4 py-4 md:px-10`}>
-          {/* 1 hàng: biển tên phòng · tab · nút đổi về Sảnh */}
-          <div className="mb-3 flex flex-wrap items-center gap-2">
-            <div className="mr-1 flex items-center gap-2 px-3.5 py-1.5" style={tam}>
-              <span className="text-[20px]">🧑‍💼</span>
-              <span className="text-[17px] font-bold leading-tight" style={HEAD}>Phòng làm việc trưởng khối</span>
-            </div>
-            {TABS.map((t) => (
-              <button key={t.id} onClick={() => setTab(t.id)} title={t.goi_y}
-                className={`px-3.5 py-1.5 text-[13px] font-semibold transition ${tab === t.id ? 'text-white' : 'text-[var(--sk-ink)] hover:brightness-110'}`}
-                style={{ borderRadius: 'var(--sk-radius-pill)', ...(tab === t.id ? { background: 'var(--sk-acc)' } : { background: 'var(--sk-surface)', backdropFilter: 'var(--sk-blur)' }) }}>
-                {t.ten}
-              </button>
-            ))}
-            <div className="ml-auto"><NutDoiMoiTruong den="sanh" /></div>
+      <div className="relative z-[1] flex h-full flex-col">
+        {/* 1 hàng: biển tên phòng (hoặc ← Về phòng khi đang mở một việc) · đổi giao diện · ⇄ Về Sảnh */}
+        <div className="flex shrink-0 flex-wrap items-center gap-2 px-4 pt-3 md:px-8">
+          <div className="flex items-center gap-2 px-3.5 py-1.5" style={tam}>
+            <span className="text-[20px]">🧑‍💼</span>
+            <span className="text-[17px] font-bold leading-tight" style={HEAD}>Phòng làm việc trưởng khối</span>
           </div>
-          {/* Giữ tab Phiên Claude luôn gắn (ẩn bằng CSS) — chuyển sang Bản đồ sửa tay rồi quay lại không mất khung chat đang chạy chữ. */}
-          <div className={tab === 'phien' ? '' : 'hidden'}><PhienClaudeTab /></div>
-          {/* Bản đồ tự cuộn bên trong (h-full) ⇒ khung phải có chiều cao cố định theo màn */}
-          {tab === 'ban_do' && <div className="h-[calc(100vh-150px)] min-h-[460px] overflow-hidden rounded-2xl bg-white shadow-sm"><BanDoMoiScreen /></div>}
-          {tab === 'quan_tri' && (
-            <div className="space-y-3">
-              <WidgetDangYeu onTaoCaNhe={onTaoCaNhe} />
-              <div className="rounded-2xl bg-white/90 p-3 shadow-sm"><BaoCaoCaNhan /></div>
+          {mo && <>
+            <button onClick={() => setMo(null)} className="px-3.5 py-1.5 text-[13px] font-bold text-white transition hover:brightness-110"
+              style={{ background: 'var(--sk-acc)', borderRadius: 'var(--sk-radius-pill)' }}>← Về phòng</button>
+            <span className="px-3 py-1.5 text-[13.5px] font-semibold" style={{ ...tam, borderRadius: 'var(--sk-radius-pill)' }}>{TEN[mo]}</span>
+          </>}
+          {!mo && ds && ds.length > 0 && (
+            <span className="px-3 py-1.5 text-[12.5px]" style={{ ...tam, borderRadius: 'var(--sk-radius-pill)' }}>
+              {ds.length} trợ giảng · số trên đầu = hiệu suất tháng · bấm vào người để xem chi tiết
+            </span>
+          )}
+          <div className="ml-auto flex items-start gap-2">
+            <ChonGiaoDien hep={false} />
+            <NutDoiMoiTruong den="sanh" />
+          </div>
+        </div>
+
+        {/* CẢNH PHÒNG — vừa khít chiều cao còn lại (laptop thấp: không bắt cuộn để thấy hết phòng) */}
+        <div className={mo ? 'hidden' : 'flex min-h-0 flex-1 flex-col px-4 pb-3 pt-2 md:px-8'}>
+          {loi && <p className="mb-1 self-center rounded-lg bg-white/90 px-3 py-1 text-[12.5px] text-rose-600">Chưa tải được danh sách trợ giảng: {loi}</p>}
+          <div className="min-h-0 flex-1">
+            <CanhPhong ds={ds ?? []} onMoNguoi={setNguoi} onMoDoVat={setMo} />
+          </div>
+          {thua.length > 0 && (
+            <div className="mt-2 flex shrink-0 flex-wrap items-center justify-center gap-1.5">
+              <span className="text-[12px] font-semibold" style={HEAD}>Ngồi phòng bên ({thua.length}):</span>
+              {thua.map((n) => (
+                <button key={n.nhan_su_id} onClick={() => setNguoi(n)} className="rounded-full bg-white/95 px-2.5 py-1 text-[12px] font-medium text-slate-700 shadow-sm hover:bg-white">
+                  {n.ho_ten} <b style={{ color: mauHS(n.hieu_suat) }}>{n.hieu_suat == null ? '—' : `${Math.round(n.hieu_suat)}%`}</b>
+                </button>
+              ))}
             </div>
           )}
         </div>
+
+        {/* 3 PHẦN VIỆC — mở từ đồ vật trong cảnh */}
+        {mo && (
+          <div className="min-h-0 flex-1 overflow-auto px-4 pb-4 pt-3 md:px-8">
+            <div className={`mx-auto w-full ${mo === 'ban_do' ? 'max-w-[1600px]' : 'max-w-[1180px]'}`}>
+              {mo === 'ban_do' && <div className="h-[calc(100vh-150px)] min-h-[460px] overflow-hidden rounded-2xl bg-white shadow-sm"><BanDoMoiScreen /></div>}
+              {mo === 'quan_tri' && (
+                <div className="space-y-3">
+                  <WidgetDangYeu onTaoCaNhe={onTaoCaNhe} />
+                  <div className="rounded-2xl bg-white/90 p-3 shadow-sm"><BaoCaoCaNhan /></div>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+        {/* Phiên Claude giữ gắn sau lần mở đầu (ẩn bằng CSS) — sang Bản đồ sửa tay rồi quay lại không mất khung chat đang chạy chữ. */}
+        {daMoPhien && (
+          <div className={mo === 'phien' ? 'min-h-0 flex-1 overflow-auto px-4 pb-4 pt-3 md:px-8' : 'hidden'}>
+            <div className="mx-auto w-full max-w-[1180px]"><PhienClaudeTab /></div>
+          </div>
+        )}
       </div>
+      {nguoi && <ChiTietCapDuoiPopup ns={nguoi} onDong={() => setNguoi(null)} />}
     </section>
   )
 }
