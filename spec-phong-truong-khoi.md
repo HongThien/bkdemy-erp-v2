@@ -109,6 +109,20 @@ Cổng quyền 4 hàm `fn_hsta_*` nới thêm đúng một ca: trưởng khối 
 **Định nghĩa việc (tạm, sửa ở `_phong_viec_ta` là đổi mọi nơi):** việc = chấm BTVN · chấm ET (trừ ET online) từ `fn_viec_buoi_thuong`; trạng thái theo
 **lần đóng đầu** (như Gậy): đang làm · xong đúng hạn · xong trễ · quá hạn. "Tuần" = buổi T2→CN tuần này + việc tồn quá hạn 30 ngày trước. Gậy = `fn_gay_bang_khoang` tháng.
 
+### 4.2 Phòng Trưởng bộ môn (Thùy 03/11 — trước gọi "Phó giám đốc chuyên môn"; gọi đúng là **trưởng bộ môn**, mỗi môn một người, vd anh Ngọc = KHTN)
+
+| # | Chốt |
+|---|---|
+| 1 | Cùng khuôn phòng, phạm vi to hơn. Ai vào: người **toàn hệ QLCL** (mọi môn) hoặc **quản lý môn** (môn của mình) — `fn_phong_che_do()` = `'tbm'`, theo ghế, không uuid. Tên phòng ghi môn khi không phải toàn hệ. |
+| 2 | Nhân vật = **các trưởng khối** của ô trong phạm vi. Chỉ số = **gộp TA trong khối**: hiệu suất = trung bình hiệu suất tháng của các TA đã có số · việc / trễ / gậy = cộng. Bấm 1 trưởng khối ⇒ **phòng của người đó** (TA của họ, chỉ ô trong phạm vi). |
+| 3 | **Ô chưa có trưởng khối** (03/11: KHTN 7·8·9) = **ghế trống biển đỏ** trong phòng, vẫn mang chỉ số gộp TA của ô, bấm vào xem TA của ô — không để ô mồ côi biến mất im lặng (spec-truong-khoi §2.1). |
+| 4 | **Bản đồ**: màn bản đồ sẵn có (mọi khối theo quyền). **Quản trị**: chip lọc [Mọi khối · từng ô] — chọn 1 ô = y như trưởng khối ô đó (`fn_troly_o_lay`). **Chất lượng**: lưới các khối trước (dạng yếu · HS yếu), bấm 1 khối = 2 box dạng yếu + học tập tuần của khối đó. |
+
+**DB:** mig `202611031237` (`_phong_chi_so` — một nguồn đếm cho TA lẫn trưởng khối; `_troly_bc_theo_lop` — lõi báo cáo Sư phạm tách từ `fn_troly_ca_nhan_lay`, dùng chung với `fn_troly_o_lay`) +
+mig `202611031246` (chế độ `'tbm'` mở cho quản lý môn · `fn_phong_ghe_tbm()` ghế trưởng khối + ô trống · `fn_phong_cap_duoi_o`). `fn_phong_truong_khoi` (mig 1237) không còn dùng trên màn — để nguyên, chờ CEO gật mới xoá.
+
+**Còn treo:** Trang ở DB là *toàn hệ* (ghế Trưởng QLCL) nên phòng Trang thấy **mọi môn**. Nếu Trang là trưởng bộ môn **Toán** thì phải đổi ở phân quyền (ghế quản lý môn Toán), không sửa code.
+
 **Task phát triển KHÔNG thuộc việc của TA** (Thùy 03/11): chỉ trưởng khối có task phát triển — nó nằm ở việc của chính trưởng khối, không đưa vào chi tiết TA.
 
 **Hiệu suất hiện REALTIME** (Thùy 03/11): số tháng đang chạy, tính lại mỗi lần gọi; cảnh phòng tự làm mới nền mỗi 60 giây. Không lấy số tháng trước —

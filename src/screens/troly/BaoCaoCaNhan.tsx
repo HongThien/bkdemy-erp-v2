@@ -8,7 +8,7 @@
 // Phạm vi = (môn × khối) của fn_pham_vi_cua_toi ở DB (quản lý môn = mọi khối của môn).
 // ============================================================================
 import { useEffect, useState } from 'react'
-import { getBaoCaoCaNhan, getHocTapTuanCaNhan, type BaoCaoTroLy, type LopHocTapTuan } from '../../lib/troly-baocao'
+import { getBaoCaoCaNhan, getBaoCaoO, getHocTapTuanCaNhan, type BaoCaoTroLy, type LopHocTapTuan } from '../../lib/troly-baocao'
 import { BanBaoCao } from './BaoCao'
 import WidgetDangYeu from '../qlcl/WidgetDangYeu'
 import { moBoTroTab } from '../botro/BoTroHubScreen'
@@ -21,32 +21,38 @@ const MUC: [Muc, string][] = [['baocao', 'Báo cáo Sư phạm'], ['dangyeu', 'D
 const NHO_MUC: { muc: Muc } = { muc: 'baocao' }
 
 const KHOANG = [7, 14, 30]
-const NHO: { soNgay: number; bc: BaoCaoTroLy | null } = { soNgay: 14, bc: null }
+// khoa = ô đang xem ('' = mọi ô trong phạm vi của tôi, 'môn|khối' = một ô) — đổi ô là đổi ngữ cảnh ⇒ tải lại.
+const NHO: { soNgay: number; khoa: string; bc: BaoCaoTroLy | null } = { soNgay: 14, khoa: '', bc: null }
+export type OChon = { mon: string; khoi: string }
 
 // Thùy 03/11: mọi bộ lọc trên MỘT hàng (mục · nhìn lại · khối quản lý) — trước chiếm 3 dòng.
 // Báo cáo Sư phạm tải ở đây (không ở mục con) để khoảng "Nhìn lại" + dòng khối nằm chung hàng với tab mục.
 // chiMuc: chỉ hiện các mục này (Phòng trưởng khối, Thùy 03/11: tranh Quản trị = ['baocao'] · tranh Chất lượng = ['tuan']).
 // Còn 1 mục thì không vẽ thanh chọn mục.
-export default function BaoCaoCaNhan({ chiMuc }: { chiMuc?: Muc[] } = {}) {
+// o: chỉ một ô (môn × khối) — phòng Phó GĐ chuyên môn chọn khối ⇒ thấy y như trưởng khối khối đó (fn_troly_o_lay).
+export default function BaoCaoCaNhan({ chiMuc, o }: { chiMuc?: Muc[]; o?: OChon | null } = {}) {
+  const khoa = o ? `${o.mon}|${o.khoi}` : ''
   const [mucS, setMucS] = useState<Muc>(NHO_MUC.muc)
   const dsMuc = MUC.filter(([k]) => !chiMuc || chiMuc.includes(k))
   const muc: Muc = dsMuc.some(([k]) => k === mucS) ? mucS : dsMuc[0][0]
   const setMuc = (m: Muc) => { NHO_MUC.muc = m; setMucS(m) }
   const setStaffLeaf = useStore((s) => s.setStaffLeaf)
   const [soNgay, setSoNgay] = useState(NHO.soNgay)
-  const [bc, setBc] = useState<BaoCaoTroLy | null>(NHO.bc)
+  const [bc, setBc] = useState<BaoCaoTroLy | null>(NHO.khoa === khoa ? NHO.bc : null)
   const [dangTai, setDangTai] = useState(false)
   const [loi, setLoi] = useState<string | null>(null)
 
   useEffect(() => {
     if (muc !== 'baocao') return
-    if (NHO.bc && NHO.soNgay === soNgay) return
+    if (NHO.bc && NHO.soNgay === soNgay && NHO.khoa === khoa) { setBc(NHO.bc); return }
+    let con = true
     setBc(null); setLoi(null); setDangTai(true)
-    getBaoCaoCaNhan(soNgay)
-      .then((d) => { NHO.soNgay = soNgay; NHO.bc = d; setBc(d) })
-      .catch((e: any) => setLoi(e?.message ?? String(e)))
-      .finally(() => setDangTai(false))
-  }, [soNgay, muc])
+    ;(o ? getBaoCaoO(soNgay, o.mon, o.khoi) : getBaoCaoCaNhan(soNgay))
+      .then((d) => { if (!con) return; NHO.soNgay = soNgay; NHO.khoa = khoa; NHO.bc = d; setBc(d) })
+      .catch((e: any) => { if (con) setLoi(e?.message ?? String(e)) })
+      .finally(() => { if (con) setDangTai(false) })
+    return () => { con = false }
+  }, [soNgay, muc, khoa])   // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div>
@@ -82,7 +88,7 @@ export default function BaoCaoCaNhan({ chiMuc }: { chiMuc?: Muc[] } = {}) {
           {bc && <BanBaoCao bc={bc} mo={dangTai} />}
         </>
         : muc === 'dangyeu' ? <WidgetDangYeu onTaoCaNhe={() => { moBoTroTab('nhe'); setStaffLeaf('botro') }} />
-        : <HocTapTuan />}
+        : <HocTapTuan o={o} />}
     </div>
   )
 }
@@ -91,7 +97,7 @@ export default function BaoCaoCaNhan({ chiMuc }: { chiMuc?: Muc[] } = {}) {
 type HocTapTuanData = { tuan: string | null; tuan_truoc: string | null; lop: LopHocTapTuan[] }
 const NHO_TUAN: { d: HocTapTuanData | null } = { d: null }
 
-function HocTapTuan() {
+function HocTapTuan({ o }: { o?: OChon | null }) {
   const [d, setD] = useState<HocTapTuanData | null>(NHO_TUAN.d)
   const [loi, setLoi] = useState<string | null>(null)
   useEffect(() => {
@@ -114,7 +120,8 @@ function HocTapTuan() {
         <thead><tr className="text-left text-[11px] uppercase tracking-wider text-slate-400">
           <th className="px-4 py-1.5">Lớp</th><th>ET trung bình</th><th>Lượt ET</th><th>BTVN trung bình</th><th>Lượt BTVN</th>
         </tr></thead>
-        <tbody>{d.lop.map((l) => (
+        {/* lọc theo ô đang chọn = lọc thuần UI trên danh sách đã có (số do DB tính sẵn) */}
+        <tbody>{d.lop.filter((l) => !o || (l.mon === o.mon && l.khoi === o.khoi)).map((l) => (
           <tr key={l.lop_id} className="border-t border-slate-100">
             <td className="px-4 py-1.5 font-semibold text-slate-800">{l.ten_lop} <span className="font-normal text-slate-400">· {l.mon}</span></td>
             <td>{so(l.et_tb)}{lech(l.et_tb, l.et_tb_truoc)}</td><td className="text-slate-500">{l.et_so_luot}</td>

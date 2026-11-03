@@ -28,3 +28,38 @@ export async function chiTietCapDuoi(ns: string): Promise<ChiTietCapDuoi> {
   if (error) throw error
   return data as ChiTietCapDuoi
 }
+
+// ── Phòng Trưởng bộ môn (mig 202611031237 + 202611031246; Thùy 03/11: "Phó GĐ chuyên môn" = Trưởng bộ môn) ──
+// 'tbm' = người toàn hệ QLCL hoặc quản lý môn: nhân vật là trưởng khối · 'tk' = phòng trưởng khối (nhân vật là TA).
+export async function cheDoPhong(): Promise<'tbm' | 'tk'> {
+  const { data, error } = await supabase.rpc('fn_phong_che_do')
+  if (error) throw error
+  return data === 'tbm' ? 'tbm' : 'tk'
+}
+// Môn của phòng trưởng bộ môn: null = toàn hệ (mọi môn).
+export async function monTbm(): Promise<string[] | null> {
+  const { data, error } = await supabase.rpc('fn_phong_mon_tbm')
+  if (error) throw error
+  return (data as string[] | null) ?? null
+}
+// Một ghế trong phòng trưởng bộ môn: trưởng khối (nhan_su_id) hoặc Ô CHƯA CÓ TRƯỞNG KHỐI (nhan_su_id null, mon/khoi có).
+export type GheTbm = {
+  khoa: string; nhan_su_id: string | null; ho_ten: string | null; anh_url: string | null
+  o: string[]; mon: string | null; khoi: string | null   // o = nhãn ô, vd "9" · "KHTN 9"
+  so_ta: number; so_ta_co_hs: number
+  hieu_suat: number | null   // trung bình hiệu suất tháng của các TA đã có số (gộp ở DB)
+  viec_tuan: number; dang_lam: number; da_xong: number; tre_han: number; qua_han: number; gay_thang: number
+}
+export async function listGheTbm(): Promise<GheTbm[]> {
+  const { data, error } = await supabase.rpc('fn_phong_ghe_tbm')
+  if (error) throw error
+  return (data ?? []) as GheTbm[]
+}
+// TA ngồi sau một ghế (cùng hình dạng listCapDuoi): trưởng khối ⇒ TA các ô họ quản · ô trống ⇒ TA của ô.
+export async function listCapDuoiCuaGhe(g: GheTbm): Promise<CapDuoi[]> {
+  const { data, error } = g.nhan_su_id
+    ? await supabase.rpc('fn_phong_cap_duoi_cua', { p_tk: g.nhan_su_id })
+    : await supabase.rpc('fn_phong_cap_duoi_o', { p_mon: g.mon, p_khoi: g.khoi })
+  if (error) throw error
+  return (data ?? []) as CapDuoi[]
+}

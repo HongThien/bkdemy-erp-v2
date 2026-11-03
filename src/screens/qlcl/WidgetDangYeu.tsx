@@ -7,7 +7,7 @@ import { tongQuanDangYeu, lamMoiDangYeu, hsDangYeu, etBtvnCuaEm, deXuatYeu, dong
 import type { EtBtvn } from '../../lib/botro_tuan'
 import { KhoiET, KhoiBTVN } from '../danhgia/DuyetBoTroYeuScreen'
 
-const khoaO = (o: { mon: string; khoi: string }) => `${o.mon}|${o.khoi}`
+export const khoaO = (o: { mon: string; khoi: string }) => `${o.mon}|${o.khoi}`
 // Sống tới F5: số đã có (mở lại màn không trắng) + ô đang làm mới (2 lần mount không chạy trùng).
 const NHO: { rows: OTongQuan[] | null; dangChay: boolean; nghe: Set<(r: OTongQuan[]) => void> } = { rows: null, dangChay: false, nghe: new Set() }
 const phat = (r: OTongQuan[]) => { NHO.rows = r; NHO.nghe.forEach((f) => f(r)) }
@@ -38,7 +38,8 @@ export function useCoDangYeu(): boolean {
 }
 
 // Thùy 03/11 (thay 2 bảng 29/10): 2 box ngắn Dạng yếu · Học sinh yếu, mỗi box 2 số đầu tuần | hiện tại — mục tiêu là làm nổi SỐ.
-export default function WidgetDangYeu({ onTaoCaNhe, className }: { onTaoCaNhe: () => void; className?: string }) {
+// chiO = 'môn|khối': chỉ hiện đúng ô đó (phòng Phó GĐ chuyên môn chọn khối ⇒ y như trưởng khối khối đó) — lọc thuần UI.
+export default function WidgetDangYeu({ onTaoCaNhe, className, chiO }: { onTaoCaNhe: () => void; className?: string; chiO?: string }) {
   const [rows, setRows] = useState<OTongQuan[] | null>(NHO.rows)
   const [mo, setMo] = useState<OTongQuan | null>(null)
   useEffect(() => {
@@ -49,9 +50,10 @@ export default function WidgetDangYeu({ onTaoCaNhe, className }: { onTaoCaNhe: (
   if (!rows || rows.length === 0) return null
 
   const dangCapNhat = rows.reduce((s, o) => s + o.so_can_tinh, 0) // đếm item đang render (badge)
+  const hien = chiO ? rows.filter((o) => khoaO(o) === chiO) : rows
   return (
     <section className={className ?? 'mb-4'}>
-      <HaiBoxSo rows={rows} dangCapNhat={dangCapNhat} onMo={setMo} />
+      {hien.length > 0 && <HaiBoxSo rows={hien} dangCapNhat={dangCapNhat} onMo={setMo} />}
       {mo && <BangChiTiet o={mo} onDong={() => setMo(null)} onTaoCaNhe={onTaoCaNhe} />}
     </section>
   )

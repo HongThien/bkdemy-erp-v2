@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-468 bảng · 33 view · 0 enum · 256 trigger · 1457 function
+468 bảng · 33 view · 0 enum · 256 trigger · 1468 function
 
 ## _app_secrets
 
@@ -9240,7 +9240,10 @@ WITH luot AS (
 - `_phien_xem_duoc(p_phien uuid)` → boolean
 - `_phieu_luu_bo()` → jsonb
 - `_phong_cap_duoi_ds()` → TABLE(nhan_su_id uuid, khoi text[])
+- `_phong_chi_so(p_ds uuid[])` → TABLE(nhan_su_id uuid, hieu_suat numeric, hieu_suat_du boolean, viec_tuan integer, dang_lam integer, da_xong integer, tre_han integer, qua_han integer, gay_thang integer)
 - `_phong_la_cap_duoi(p_ns uuid)` → boolean
+- `_phong_ta_cua_o(p_mon text, p_khoi text)` → TABLE(nhan_su_id uuid, khoi text[])
+- `_phong_ta_cua_tk(p_tk uuid)` → TABLE(nhan_su_id uuid, khoi text[])
 - `_phong_viec_ta(p_ns uuid)` → TABLE(buoi_id uuid, ten_lop text, ngay date, tab text, han timestamp with time zone, dong_dau timestamp with time zone, trang_thai text, la_ton boolean)
 - `_plan_nhac_han()` → integer
 - `_push_bao_cap_nhat(p_ns uuid, p_app text)` → void
@@ -9372,6 +9375,7 @@ WITH luot AS (
 - `_troly_bc_canh_bao(p_tu date, p_den date)` → jsonb
 - `_troly_bc_gia_dinh()` → jsonb
 - `_troly_bc_them(p_tu date, p_den date)` → jsonb
+- `_troly_bc_theo_lop(p_so_ngay integer, p_khoi text[], p_lops text[], p_ten text, p_ghi_chu text)` → jsonb
 - `_troly_bc_thong_so(p_tu date, p_den date)` → jsonb
 - `_troly_bc_viec_bu(p_tu date, p_den date)` → TABLE(muc text, loai text, ngay date, doi_tuong text, viec text, phu_trach text, han timestamp with time zone, xong_luc timestamp with time zone, tinh_trang text)
 - `_troly_bc_viec_buoi(p_tu date, p_den date)` → TABLE(muc text, loai text, ngay date, doi_tuong text, viec text, phu_trach text, han timestamp with time zone, xong_luc timestamp with time zone, tinh_trang text)
@@ -9885,8 +9889,8 @@ WITH luot AS (
 - `fn_hs_len_bac_da_xem(p_mon text)` → void
 - `fn_hs_len_bac_moi(p_mon text)` → jsonb
 - `fn_hs_lich_bo_tro()` → jsonb
-- `fn_hs_lich_su_lam_bai(p_so_ngay integer, p_mon text)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
 - `fn_hs_lich_su_lam_bai(p_so_ngay integer DEFAULT 30)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
+- `fn_hs_lich_su_lam_bai(p_so_ngay integer, p_mon text)` → TABLE(ngay date, so_cau integer, so_dung integer, so_sai integer, thoi_gian_giay integer)
 - `fn_hs_luu_giao_dien(p_skin text, p_che_do text, p_hinh_nen text)` → jsonb
 - `fn_hs_luu_hieu_ung_game(p_bat boolean)` → jsonb
 - `fn_hs_luyen_con_lai(p_mon text, p_ma_dang text)` → integer
@@ -10083,7 +10087,13 @@ WITH luot AS (
 - `fn_phien_pham_vi()` → jsonb
 - `fn_phong_cap_duoi()` → TABLE(nhan_su_id uuid, ho_ten text, anh_url text, khoi text[], hieu_suat numeric, hieu_suat_du boolean, viec_tuan integer, dang_lam integer, da_xong integer, tre_han integer, qua_han integer, gay_thang integer)
 - `fn_phong_cap_duoi_chi_tiet(p_ns uuid)` → jsonb
+- `fn_phong_cap_duoi_cua(p_tk uuid)` → TABLE(nhan_su_id uuid, ho_ten text, anh_url text, khoi text[], hieu_suat numeric, hieu_suat_du boolean, viec_tuan integer, dang_lam integer, da_xong integer, tre_han integer, qua_han integer, gay_thang integer)
+- `fn_phong_cap_duoi_o(p_mon text, p_khoi text)` → TABLE(nhan_su_id uuid, ho_ten text, anh_url text, khoi text[], hieu_suat numeric, hieu_suat_du boolean, viec_tuan integer, dang_lam integer, da_xong integer, tre_han integer, qua_han integer, gay_thang integer)
+- `fn_phong_che_do()` → text
+- `fn_phong_ghe_tbm()` → TABLE(khoa text, nhan_su_id uuid, ho_ten text, anh_url text, o text[], mon text, khoi text, so_ta integer, so_ta_co_hs integer, hieu_suat numeric, viec_tuan integer, dang_lam integer, da_xong integer, tre_han integer, qua_han integer, gay_thang integer)
 - `fn_phong_lich_test_ngay(p_ngay date)` → TABLE(khung_id uuid, ma_phong text, gio_bat_dau time without time zone, gio_ket_thuc time without time zone, so_hen integer)
+- `fn_phong_mon_tbm()` → text[]
+- `fn_phong_truong_khoi()` → TABLE(nhan_su_id uuid, ho_ten text, anh_url text, o text[], so_ta integer, so_ta_co_hs integer, hieu_suat numeric, viec_tuan integer, dang_lam integer, da_xong integer, tre_han integer, qua_han integer, gay_thang integer)
 - `fn_plan_dat_order(p_plan uuid, p_nguoi_nhan uuid, p_han date DEFAULT NULL::date)` → uuid
 - `fn_plan_giao_task(p_plan uuid, p_nguoi_lam uuid, p_han date)` → uuid
 - `fn_pt_push_danh_sach(p_secret text, p_app text DEFAULT 'pt'::text)` → TABLE(id uuid, endpoint text, p256dh text, auth text, nhan_su_id uuid)
@@ -10262,6 +10272,7 @@ WITH luot AS (
 - `fn_troly_ca_nhan_tuan()` → jsonb
 - `fn_troly_danh_muc()` → jsonb
 - `fn_troly_goi(p_cong_cu text, p_tham_so jsonb DEFAULT '{}'::jsonb)` → jsonb
+- `fn_troly_o_lay(p_so_ngay integer, p_mon text, p_khoi text)` → jsonb
 - `fn_troly_tuan(p_tuan date)` → jsonb
 - `fn_troly_tuan_lay(p_tuan date DEFAULT NULL::date, p_tinh_lai boolean DEFAULT false)` → jsonb
 - `fn_troly_tuan_tu_dong(p_secret text, p_app text DEFAULT 'pt'::text)` → jsonb
@@ -10423,8 +10434,8 @@ WITH luot AS (
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 

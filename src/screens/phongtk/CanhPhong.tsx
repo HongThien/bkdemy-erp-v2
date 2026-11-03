@@ -4,7 +4,10 @@
 // tường = Bản đồ · Quản trị (báo cáo sư phạm — việc TA) · Chất lượng (dạng yếu · học tập tuần).
 // Cửa sổ là LỖ TRONG SUỐT trên tường ⇒ nền style người dùng chọn (như Sảnh) hiện qua cửa sổ — đổi giao diện là đổi cảnh ngoài trời.
 // Khi có tranh vẽ thật: giữ nguyên toạ độ GHE / DO_VAT (hệ 1600×900) làm ô bấm, thay phần vẽ bằng 1 ảnh (khuôn cảnh liền, lib/canhErp.ts).
-import type { CapDuoi } from '../../lib/phongTk'
+// Người ngồi ở một bàn: TA (phòng trưởng khối) hoặc trưởng khối (phòng Trưởng bộ môn — số = gộp TA trong khối, DB tính).
+// nhan = dòng phụ dưới tên (vd "Khối 9 · 8 TA"). trong = ghế trống (ô chưa có trưởng khối): vẽ ghế không người + biển đỏ, vẫn bấm được.
+// nhan_su_id = khoá vẽ (ghế trống dùng khoá ô).
+export type NguoiCanh = { nhan_su_id: string; ho_ten: string; hieu_suat: number | null; tre_han: number; gay_thang: number; nhan?: string; trong?: boolean }
 
 export type DoVat = 'phien' | 'ban_do' | 'quan_tri' | 'chat_luong'
 const W = 1600, H = 900, SAN = 560   // mép tường / sàn
@@ -35,13 +38,17 @@ function Ban({ x, y, s }: { x: number; y: number; s: number }) {
   )
 }
 
-function NhanVat({ ns, x, y, s, onMo }: { ns: CapDuoi; x: number; y: number; s: number; onMo: () => void }) {
+function NhanVat({ ns, x, y, s, onMo }: { ns: NguoiCanh; x: number; y: number; s: number; onMo: () => void }) {
   const h = bam(ns.nhan_su_id)
   const toc = TOC[h % TOC.length], ao = AO[(h >> 3) % AO.length], da = DA[(h >> 6) % DA.length], kieu = (h >> 9) % 3
   const mau = mauHS(ns.hieu_suat)
   const phu = [ns.tre_han > 0 ? `${ns.tre_han} trễ` : null, ns.gay_thang > 0 ? `${ns.gay_thang} gậy` : null].filter(Boolean).join(' · ')
   return (
     <g className="nv cursor-pointer" onClick={onMo} role="button" aria-label={`${ns.ho_ten} — hiệu suất ${ns.hieu_suat ?? 'chưa có'}`}>
+      {ns.trong ? <>
+        <g transform={`translate(${x} ${y}) scale(${s})`}><rect x={-46} y={-100} width={92} height={96} rx={18} fill="#8a919c" opacity={0.8} /></g>
+        <Ban x={x} y={y} s={s} />
+      </> : <>
       <g transform={`translate(${x} ${y}) scale(${s})`}>
         {/* ghế */}
         <rect x={-46} y={-118} width={92} height={110} rx={18} fill="#58606e" />
@@ -66,14 +73,22 @@ function NhanVat({ ns, x, y, s, onMo }: { ns: CapDuoi; x: number; y: number; s: 
         <path d="M-46 0 L-40 -56 L40 -56 L46 0 Z" fill="#cfd6e2" stroke="#9aa6b8" strokeWidth={2} />
         <circle cx={0} cy={-28} r={6} fill="#fff" opacity=".8" />
       </g>
-      {/* biển tên + hiệu suất */}
-      <g transform={`translate(${x} ${y - 185 * s})`}>
-        <rect className="the" x={-92} y={-58} width={184} height={phu ? 84 : 68} rx={16} fill="#fff" stroke={mau} strokeWidth={3} />
-        <text x={0} y={-34} textAnchor="middle" fontSize={17} fontWeight={700} fill="#334155">{tenGon(ns.ho_ten)}</text>
-        <text x={0} y={2} textAnchor="middle" fontSize={32} fontWeight={800} fill={mau}>{ns.hieu_suat == null ? '—' : `${Math.round(ns.hieu_suat)}%`}</text>
-        {phu && <text x={0} y={20} textAnchor="middle" fontSize={13} fontWeight={700} fill="#e11d48">{phu}</text>}
-        <path d={`M-9 ${phu ? 26 : 10} L0 ${phu ? 38 : 22} L9 ${phu ? 26 : 10} Z`} fill={mau} />
-      </g>
+      </>}
+      {/* biển tên + hiệu suất (ghế trống: viền đỏ nét đứt, tên đỏ) */}
+      {(() => {
+        // biển xếp dòng từ trên xuống: tên · (nhãn) · số · (trễ/gậy); đáy biển luôn ở y=10 (mũi tên chỉ xuống đầu)
+        const cao = 68 + (ns.nhan ? 15 : 0) + (phu ? 16 : 0), dinh = 10 - cao
+        return (
+          <g transform={`translate(${x} ${y - 185 * s})`}>
+            <rect className="the" x={-92} y={dinh} width={184} height={cao} rx={16} fill="#fff" stroke={ns.trong ? '#e11d48' : mau} strokeWidth={3} strokeDasharray={ns.trong ? '8 6' : undefined} />
+            <text x={0} y={dinh + 22} textAnchor="middle" fontSize={ns.trong ? 15 : 17} fontWeight={700} fill={ns.trong ? '#e11d48' : '#334155'}>{ns.trong ? ns.ho_ten : tenGon(ns.ho_ten)}</text>
+            {ns.nhan && <text x={0} y={dinh + 37} textAnchor="middle" fontSize={12} fontWeight={600} fill="#64748b">{ns.nhan}</text>}
+            <text x={0} y={dinh + (ns.nhan ? 15 : 0) + 56} textAnchor="middle" fontSize={32} fontWeight={800} fill={mau}>{ns.hieu_suat == null ? '—' : `${Math.round(ns.hieu_suat)}%`}</text>
+            {phu && <text x={0} y={dinh + cao - 8} textAnchor="middle" fontSize={13} fontWeight={700} fill="#e11d48">{phu}</text>}
+            <path d="M-9 10 L0 22 L9 10 Z" fill={mau} />
+          </g>
+        )
+      })()}
     </g>
   )
 }
@@ -109,8 +124,8 @@ function Bien({ x, y, chu }: { x: number; y: number; chu: string }) {
   )
 }
 
-export default function CanhPhong({ ds, onMoNguoi, onMoDoVat }: {
-  ds: CapDuoi[]; onMoNguoi: (ns: CapDuoi) => void; onMoDoVat: (d: DoVat) => void
+export default function CanhPhong<T extends NguoiCanh>({ ds, onMoNguoi, onMoDoVat }: {
+  ds: T[]; onMoNguoi: (ns: T) => void; onMoDoVat: (d: DoVat) => void
 }) {
   const ngoi = ds.slice(0, SO_GHE)
   // Tường có 2 lỗ cửa sổ ở 2 đầu (evenodd) ⇒ nền style phía sau hiện qua. Giữa tường: 3 bức tranh (Thùy 03/11).
