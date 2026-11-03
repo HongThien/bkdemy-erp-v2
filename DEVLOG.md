@@ -78580,3 +78580,4 @@ Thùy nêu 4 việc, làm được 3:
 - Sai lần 1 (sửa ở mig …1930): chuỗi ngày kẹp theo số ngày từ mốc ⇒ em học hôm nay TRƯỚC mốc vẫn hiện chuỗi 1 (10 em hạng 1 ngay sau reset). Nay chuỗi ngày SUY từ ngày có trận/lượt tháp trong mùa (gaps-and-islands), không cột mới.
 - Kiểm JWT HS (rollback): cả 3 tiêu chí + tháp Sinh tồn/Vô tận + C1 = trống; chơi 1 trận thắng ⇒ XP +40 hạng 1, chuỗi thắng 1, chuỗi ngày 1; hồ sơ giữ xp 1675 / 29 trận / chuỗi max 11.
 - Mở mùa sau: insert dtv_mua + update xp_dau_mua = xp, chuoi_thang_mua = 0, chuoi_thang_max_mua = 0 cùng transaction.
+- 03/11 tối: Thùy gật ⇒ mig `202611031927_nt_ban_vuon_giao_dien.sql` **ĐÃ ÁP** (`migrate.mjs --only`). Kiểm: prosrc có `giaoDien`, ACL giữ nguyên (claude_build + authenticated, không anon). Gọi thật dưới JWT HS (ROLLBACK): bạn cùng lớp có `giaoDien {nha:'nhat', nen:'bay'}` ⇒ trả `{nha:'nhat', nen:null}` (giá trị lạ bị lọc). Hiện 0/159 vườn có `giaoDien` (game mới chưa deploy).
