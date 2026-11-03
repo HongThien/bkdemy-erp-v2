@@ -287,7 +287,9 @@ function EtPanel({ buoi, roster, tenDang, napTenDang, onChange }: {
         <div className="ml-auto"><DongBar dong={dong} dongLbl="✓ Xác nhận ET" onDong={() => dong_()} onMoLai={async () => { await reopenPhase(buoiId, 'et'); onChange() }} closing={closing} disabled={!probs.length} /></div>
       </div>
       {/* Cảnh báo lưới lệch đề — so NỘI DUNG không so số lượng (bài học 07-21), không bao giờ im lặng */}
-      {sync?.doiCauTruc && <CanhBaoLuoi mau="amber" text="Đề ET đã đổi sau khi xác nhận — lưới giữ theo lúc chấm (Elo đã tính). Muốn bám đề mới: ↩ Mở lại, hệ tự đồng bộ." />}
+      {sync?.doiCauTruc && (sync.probs.length
+        ? <CanhBaoLuoi mau="amber" text="Đề ET đã đổi sau khi xác nhận — lưới giữ theo lúc chấm (Elo đã tính). Muốn bám đề mới: ↩ Mở lại, hệ tự đồng bộ." />
+        : <CanhBaoLuoi mau="amber" text="Buổi đã được xác nhận đóng ET lúc CHƯA có đề (chưa chấm ô nào, chưa tính Elo). Nay đã có ET — bấm ↩ Mở lại là lưới chấm tự dựng theo đề." />)}
       {sync?.khongRoRang === 'lech_so' && <CanhBaoLuoi mau="rose" text={`Số ô (${probs.length}) khác số câu trong đề — hệ KHÔNG tự đoán ô nào ứng câu nào. Đối chiếu trên ERP desktop.`} />}
       {sync?.khongRoRang === 'lech_dang' && <CanhBaoLuoi mau="rose" text="Dạng của ô không khớp dạng của câu (đề bị thay/bớt câu ở giữa sau khi chấm) — hệ không đoán. Đối chiếu trên ERP desktop." />}
       {!!sync?.moCoi.length && <CanhBaoLuoi mau="rose" text={`${sync.moCoi.length} ô có điểm nhưng câu đã bị bỏ khỏi đề — điểm giữ nguyên, ô xếp cuối.`} />}

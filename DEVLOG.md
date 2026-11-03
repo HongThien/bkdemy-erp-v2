@@ -78596,3 +78596,9 @@ Thùy nêu 4 việc, làm được 3:
 - `dongBo()` giờ áp lựa chọn đã lưu mỗi lần đồng bộ ⇒ thử bằng `NT_SCENE.doiNen` tay sẽ bị đè; thử phải sửa `NT_UI.s.giaoDien` hoặc qua bảng chọn.
 - Mig `202611032033_nt_ban_vuon_giao_dien_mau.sql`: danh sách trắng cứng (3 nền) ⇒ kiểm theo mẫu `^[a-z_]{1,16}$`, thêm nền sau này không cần migration. **CHƯA ÁP** (lệnh bị chặn quyền, chờ Thùy gật). Chưa áp thì bạn chọn Tết/Thu/Trung thu sẽ hiện "Đồng quê" khi em khác sang thăm.
 - Soi 1024×768 đủ 6 nền + bảng chọn. `test-engine`: tất cả luật đúng.
+
+## 03/11 tối — ET 8S1 / 5A1 không chấm được + quét toàn bộ ET (Thùy: "ET hình của 8S1 sao chưa lên… 5A1 cũng báo lỗi ET, check lại toàn bộ ET")
+- **Quét 160 ET 13/10–03/11** — so BỘ MÃ CÂU của ET với ô chấm ET chung của buổi (so nội dung, không so số lượng). Lệch thật 5 buổi; cột "ngoài kho" của ET bản cũ là báo động giả (ô khớp đúng mã).
+- **8S1 · 02/11 (bản đồ mới):** cùng lỗi 7S2 hôm 02/11 — ET lưu 21:19 bằng bản app chưa có commit 94294a26 (19:09, deploy tay) ⇒ thiếu `nhanhByCau` ⇒ 2 câu Hình rụng ⇒ 0 ô. **Mig `202611032041` ĐÃ ÁP** (rào nhân chứng 1 kho như 202611021909 + loại kho KHTN): 6 mã ⇒ hinh_hoc. loadETForBuoi giờ ra HHC004381, HHC004384.
+- **5A1 · 03/11:** TA bấm "xác nhận đóng ET (không có ET)" lúc 17:01, ET mới tạo 19:04 ⇒ phase đóng + 0 ô ⇒ syncDocProblems cố ý không dựng lưới, chỉ báo "Đề ET đã đổi sau khi xác nhận" (gây hiểu nhầm). Đã gọi `fn_mo_lai_phase(buổi,'et')` (rào: 0 ô, 0 điểm ⇒ không Elo nào bị rút) ⇒ buổi mở, lưới tự dựng khi mở tab chấm. Sửa thông báo (BuoiHocScreen + TA ChamBuoi): đóng lúc chưa có đề ⇒ nói thẳng "bấm ↩ Mở lại là lưới tự dựng".
+- **Chưa xử lý, chờ Thùy:** 7B1 · 25/10 — ET có từ 09:44 25/10 nhưng buổi đóng ET 18:50 26/10 với 0 ô, 0 điểm (ET bị bỏ không chấm; buổi đã hoàn tất) · 11A1 · 21/10 — 2 tài liệu ET Hình cùng lớp + ngày, lưới (12 điểm) khớp bản thứ nhất, bản thứ 2 lệch 1 câu · 7B1 · 03/11 — ET 20:37, buổi mở, đang chấm (không phải lỗi).
