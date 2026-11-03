@@ -637,7 +637,7 @@ export default function NhanSuHome({ user }: { user: User }) {
   const dsYeuThich = tabsYT.length === 1 ? tabsYT[0].ds
     : tabsYT.map(({ t, ds }) => ({ id: `yt:${t.id}`, ten: t.ten, children: ds }))
   const groups: NavGroup[] = [
-    { nhom: null, leaves: [...(coHome ? [{ id: LEAF_HOME, ten: '🏠 Trang chính' }] : []), ...staffNavFromScope(scope).flatMap((g) => g.leaves)] },
+    { nhom: null, leaves: [...(coHome ? [{ id: LEAF_HOME, ten: '🏠 Trang chính' }] : []), ...(dh.coPhong ? [{ id: 'phong_tk', ten: '🧑‍💼 Phòng làm việc' }] : []), ...staffNavFromScope(scope).flatMap((g) => g.leaves)] },
     ...(dsYeuThich.length ? [{ nhom: '⭐ Yêu thích', leaves: dsYeuThich }] : []),
     ...adminNav,
   ]

@@ -1,9 +1,9 @@
 // MỘT nguồn cho mọi chỗ vẽ điều hướng (thanh trên desktop · thanh mobile · Trang chính): đang ở đâu, đường dẫn
 // tới đó, lùi / tiến / lên cấp, ghim Yêu thích. Hai nơi vẽ không tự tính lại — tính 2 nơi là lệch nhau.
 import { useMemo } from 'react'
-import { useStore, useYeuThich, adminNavFromQuyen } from '../store/useStore'
+import { useStore, useYeuThich, adminNavFromQuyen, accessibleLeaves } from '../store/useStore'
 import { adminLeaves } from '../mock/fixtures'
-import { LEAF_HOME, LEAF_VIEC, MUC_PLAN, MUC_VIEC, cayMenu, duongDan, laHome, traiMuc } from './menu'
+import { LEAF_HOME, LEAF_PHONG, LEAF_VIEC, MUC_PHONG, MUC_PLAN, MUC_VIEC, cayMenu, duongDan, laHome, traiMuc } from './menu'
 
 // Màn không có trên menu (chỉ vào được bằng card việc) — tên để hiện ở cuối đường dẫn.
 const TEN_NGOAI_MENU: Record<string, string> = { test_dau_vao_scan: 'Scan bài đã chấm' }
@@ -14,12 +14,14 @@ export function useDieuHuong() {
   const adminNav = useMemo(() => adminNavFromQuyen(quyen), [quyen])
   // Người CHỈ có "Việc của tôi" (không được cấp màn nào khác) thì Trang chính chỉ còn đúng 1 box — vô nghĩa,
   // thêm 1 cú bấm mỗi lần mở app. Với họ "nhà" = Việc của tôi như trước giờ.
-  const coHome = adminNav.length > 0
+  // Phòng làm việc (khu riêng, không thuộc nhóm nào — lib/menu.ts LEAF_PHONG): có quyền leaf 'phong_tk' là có.
+  const coPhong = useMemo(() => accessibleLeaves(quyen).some((l) => l.id === LEAF_PHONG), [quyen])
+  const coHome = adminNav.length > 0 || coPhong
   const nha = coHome ? LEAF_HOME : LEAF_VIEC
   const leaf = !coHome && laHome(leafStore) ? LEAF_VIEC : leafStore
-  const cay = useMemo(() => cayMenu(adminNav, coHome), [adminNav, coHome])
+  const cay = useMemo(() => cayMenu(adminNav, coHome, coPhong), [adminNav, coHome, coPhong])
   const duong = useMemo(() => duongDan(cay, leaf), [cay, leaf])
-  const mucs = useMemo(() => [MUC_VIEC, MUC_PLAN, ...traiMuc(adminNav)], [adminNav])
+  const mucs = useMemo(() => [MUC_VIEC, MUC_PLAN, ...(coPhong ? [MUC_PHONG] : []), ...traiMuc(adminNav)], [adminNav, coPhong])
   const mucHienTai = mucs.find((m) => m.id === leaf)
   const trongCay = duong[duong.length - 1].id === leaf
   const tenNgoai = trongCay ? null : (TEN_NGOAI_MENU[leaf] ?? adminLeaves.find((l) => l.id === leaf.split(':')[0])?.ten ?? null)
@@ -34,7 +36,7 @@ export function useDieuHuong() {
     if (cha?.id) setStaffLeaf(cha.id)
   }
   return {
-    leaf, nha, coHome, adminNav, mucs, mucHienTai, duong, duoi, lopPhu,
+    leaf, nha, coHome, coPhong, adminNav, mucs, mucHienTai, duong, duoi, lopPhu,
     coLui: navIdx > 0 || !!capPhuEl, coTien: navIdx < navMax, coLen: !!capPhuEl || !!lopPhu || !trongCay || duong.length > 1,
     lui: () => (capPhuEl ? capPhuEl.dong() : backLeaf()), tien: tienLeaf, len, di: setStaffLeaf,
     ghimDuoc, daGhim: yeuThich.includes(leaf), ghim: () => doiYeuThich(leaf), yeuThich, doiYeuThich, doiHomeAn, doiHomeThuTu, doiHomeDangCard, doiNoticeTab, me,

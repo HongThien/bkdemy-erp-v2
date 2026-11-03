@@ -99,7 +99,8 @@ PHASE 3 — NHẬP KHO & PHÂN DẠNG (vòng xoáy, sau khi Thùy phát động 
 | 1 | Sảnh và Phòng **ngang hàng** (cùng vai trò, khác địa điểm) — Phòng không phải "một tính năng". Nút **⇄** đổi qua lại ở cả hai nơi (`NutDoiMoiTruong`; sang Phòng chỉ hiện khi có quyền `phong_tk`). |
 | 2 | Nền **đổi được như Sảnh** (cùng 🎨 Giao diện / style). Cảnh phòng có cửa sổ trong suốt ⇒ nền style hiện ngoài cửa sổ. |
 | 3 | Cảnh = phòng làm việc, **mỗi bàn một nhân vật = một TA cấp dưới** (TA của khối, suy từ `phan_cong_lop` — §2.3 spec-truong-khoi). Trên đầu: tên + **hiệu suất TA tháng** (đúng `fn_hsta_thang`, công thức 08/10) chữ to để so sánh. Bấm ⇒ chi tiết: việc tuần này (đang làm · đã xong · trễ hạn) + gậy tháng. |
-| 4 | 3 phần việc là **đồ vật trong cảnh**: máy tính bàn trưởng khối = Phiên Claude · bản đồ treo tường = Bản đồ · tủ hồ sơ = Quản trị. |
+| 4 | Phần việc là **đồ vật trong cảnh**: máy tính bàn trưởng khối = Phiên Claude · **3 bức tranh ngang nhau giữa tường** = Bản đồ · Quản trị (báo cáo sư phạm — việc TA) · Chất lượng (dạng yếu + học tập tuần). Mở ra: nền trắng riêng cho dễ đọc; nút góc phải = **← Về phòng chính** (trưởng khối làm việc chủ yếu ở phòng; về Sảnh dùng 🏠 trên thanh trên cùng). |
+| 4b | Phòng là **khu riêng** ngang Trang chính trên menu/đường dẫn ("Trang chính › Phòng làm việc"), **không** là con của nhóm Quản lý chất lượng (`lib/menu.ts` LEAF_PHONG). Quyền vẫn là leaf `phong_tk` ở Phân quyền. |
 | 5 | Tranh **demo vẽ bằng SVG** (`src/screens/phongtk/CanhPhong.tsx`); Thùy sẽ vẽ lại bằng ChatGPT. Khi có tranh: giữ toạ độ ghế / đồ vật (hệ 1600×900) làm ô bấm, thay phần vẽ bằng 1 ảnh (khuôn cảnh liền `lib/canhErp.ts`). 8 ghế; quá 8 người ⇒ dải "Ngồi phòng bên". |
 
 **DB (mig `202611031122`):** `fn_phong_cap_duoi()` (1 dòng / TA) · `fn_phong_cap_duoi_chi_tiet(p_ns)` · `_phong_cap_duoi_ds()` · `_phong_la_cap_duoi(p_ns)` · `_phong_viec_ta(p_ns)`.

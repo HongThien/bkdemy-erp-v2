@@ -450,7 +450,8 @@ function collapseGroup(leaves: NavLeaf[], parentId: string, parentTen: string, c
   return rest
 }
 export const adminNavFromQuyen = (q: MyQuyen | null): NavGroup[] => {
-  const leaves = accessibleLeaves(q).filter((l) => !l.anMenu)
+  // 'phong_tk' = Phòng làm việc: khu riêng ngang Trang chính (Thùy 03/11) — không xếp vào nhóm nào, menu vẽ riêng (lib/menu.ts LEAF_PHONG)
+  const leaves = accessibleLeaves(q).filter((l) => !l.anMenu && l.id !== 'phong_tk')
   const nhoms = [...new Set(leaves.map((l) => l.nhom))]
   return nhoms.map((n) => {
     let navLeaves: NavLeaf[] = leaves.filter((l) => l.nhom === n).map((l): NavLeaf =>

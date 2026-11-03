@@ -25,8 +25,12 @@ const NHO: { soNgay: number; bc: BaoCaoTroLy | null } = { soNgay: 14, bc: null }
 
 // Thùy 03/11: mọi bộ lọc trên MỘT hàng (mục · nhìn lại · khối quản lý) — trước chiếm 3 dòng.
 // Báo cáo Sư phạm tải ở đây (không ở mục con) để khoảng "Nhìn lại" + dòng khối nằm chung hàng với tab mục.
-export default function BaoCaoCaNhan() {
-  const [muc, setMucS] = useState<Muc>(NHO_MUC.muc)
+// chiMuc: chỉ hiện các mục này (Phòng trưởng khối, Thùy 03/11: tranh Quản trị = ['baocao'] · tranh Chất lượng = ['tuan']).
+// Còn 1 mục thì không vẽ thanh chọn mục.
+export default function BaoCaoCaNhan({ chiMuc }: { chiMuc?: Muc[] } = {}) {
+  const [mucS, setMucS] = useState<Muc>(NHO_MUC.muc)
+  const dsMuc = MUC.filter(([k]) => !chiMuc || chiMuc.includes(k))
+  const muc: Muc = dsMuc.some(([k]) => k === mucS) ? mucS : dsMuc[0][0]
   const setMuc = (m: Muc) => { NHO_MUC.muc = m; setMucS(m) }
   const setStaffLeaf = useStore((s) => s.setStaffLeaf)
   const [soNgay, setSoNgay] = useState(NHO.soNgay)
@@ -47,11 +51,13 @@ export default function BaoCaoCaNhan() {
   return (
     <div>
       <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-2">
-        <div className="inline-flex rounded-xl border border-slate-200 bg-white p-0.5 text-[13px] font-semibold shadow-sm">
-          {MUC.map(([k, t]) => (
-            <button key={k} onClick={() => setMuc(k)} className={`rounded-lg px-4 py-1.5 ${muc === k ? 'bg-indigo-600 text-white' : 'text-slate-600 hover:bg-slate-50'}`}>{t}</button>
-          ))}
-        </div>
+        {dsMuc.length > 1 ? (
+          <div className="inline-flex rounded-xl border border-slate-200 bg-white p-0.5 text-[13px] font-semibold shadow-sm">
+            {dsMuc.map(([k, t]) => (
+              <button key={k} onClick={() => setMuc(k)} className={`rounded-lg px-4 py-1.5 ${muc === k ? 'bg-indigo-600 text-white' : 'text-slate-600 hover:bg-slate-50'}`}>{t}</button>
+            ))}
+          </div>
+        ) : <span className="text-[14px] font-bold text-slate-800">{dsMuc[0][1]}</span>}
         {muc === 'baocao' && (
           <div className="flex items-center gap-1.5">
             <span className="text-[12.5px] text-slate-500">Nhìn lại</span>

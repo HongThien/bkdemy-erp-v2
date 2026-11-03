@@ -4,13 +4,13 @@
 // nên đi đường nào cũng ra cùng kết quả. Dữ liệu tự lọc theo phạm vi (fn_pham_vi_cua_toi) ở từng màn.
 // Thùy 03/11: phòng là MÔI TRƯỜNG LÀM VIỆC như Sảnh (cùng vai trò, khác địa điểm) — cùng khung nền theo style (đổi được như Sảnh),
 // nút ⇄ đổi qua lại Sảnh. Màn chính = CẢNH PHÒNG (CanhPhong): mỗi bàn một TA cấp dưới, số trên đầu = hiệu suất tháng, bấm ⇒ chi tiết;
-// 3 phần việc (Phiên Claude · Bản đồ · Quản trị) là ĐỒ VẬT trong cảnh, mở ra thì có nút ← Về phòng.
+// Phần việc là ĐỒ VẬT trong cảnh: máy tính = Phiên Claude · 3 tranh giữa tường = Bản đồ · Quản trị · Chất lượng; mở ra có nút ← Về phòng chính.
+// Phòng là KHU RIÊNG ngang Trang chính trên menu/đường dẫn (lib/menu.ts LEAF_PHONG), không thuộc nhóm Quản lý chất lượng.
 import { useEffect, useState, type CSSProperties } from 'react'
 import PhienClaudeTab from './PhienClaudeTab'
 import BanDoMoiScreen from '../kho/BanDoMoi'
 import BaoCaoCaNhan from '../troly/BaoCaoCaNhan'
 import WidgetDangYeu from '../qlcl/WidgetDangYeu'
-import NutDoiMoiTruong from './NutDoiMoiTruong'
 import CanhPhong, { SO_GHE, mauHS, type DoVat } from './CanhPhong'
 import ChiTietCapDuoiPopup from './ChiTietCapDuoi'
 import { ChonGiaoDien } from '../HomeScreen'
@@ -20,7 +20,7 @@ import { HoatCanhNen } from '../hocsinh/skin/HoatCanhNen'
 import { HEAD } from '../home/khung'
 
 type Mo = DoVat | null
-const TEN: Record<DoVat, string> = { phien: '🤖 Phiên Claude', ban_do: '🗺 Bản đồ', quan_tri: '📋 Quản trị' }
+const TEN: Record<DoVat, string> = { phien: '🤖 Phiên Claude', ban_do: '🗺 Bản đồ', quan_tri: '📋 Quản trị', chat_luong: '📈 Chất lượng' }
 // Sống tới F5: rời phòng quay lại = đúng chỗ cũ, danh sách cấp dưới không trắng (CLAUDE.md §2 React).
 const NHO: { mo: Mo; ds: CapDuoi[] | null } = { mo: null, ds: null }
 
@@ -50,17 +50,15 @@ export default function PhongTruongKhoiScreen({ onTaoCaNhe }: { onTaoCaNhe: () =
     <section style={khung} className="relative h-full min-h-0 overflow-hidden text-[var(--sk-ink)]">
       {sk.hoatCanh && <HoatCanhNen hc={sk.hoatCanh} nenId={sk.nenId} doc={sk.doc} coTruoc={false} />}
       <div className="relative z-[1] flex h-full flex-col">
-        {/* 1 hàng: biển tên phòng (hoặc ← Về phòng khi đang mở một việc) · đổi giao diện · ⇄ Về Sảnh */}
+        {/* 1 hàng: biển tên phòng · (đang mở việc: tên việc) · đổi giao diện · NÚT VỀ PHÒNG CHÍNH ở góc phải.
+            Thùy 03/11: trưởng khối làm việc chủ yếu ở phòng ⇒ nút góc phải là về PHÒNG CHÍNH, không phải về Sảnh
+            (về Sảnh đã có nút 🏠 trên thanh trên cùng). */}
         <div className="flex shrink-0 flex-wrap items-center gap-2 px-4 pt-3 md:px-8">
-          <div className="flex items-center gap-2 px-3.5 py-1.5" style={tam}>
+          <button onClick={() => setMo(null)} title="Về phòng chính" className="flex items-center gap-2 px-3.5 py-1.5" style={tam}>
             <span className="text-[20px]">🧑‍💼</span>
             <span className="text-[17px] font-bold leading-tight" style={HEAD}>Phòng làm việc trưởng khối</span>
-          </div>
-          {mo && <>
-            <button onClick={() => setMo(null)} className="px-3.5 py-1.5 text-[13px] font-bold text-white transition hover:brightness-110"
-              style={{ background: 'var(--sk-acc)', borderRadius: 'var(--sk-radius-pill)' }}>← Về phòng</button>
-            <span className="px-3 py-1.5 text-[13.5px] font-semibold" style={{ ...tam, borderRadius: 'var(--sk-radius-pill)' }}>{TEN[mo]}</span>
-          </>}
+          </button>
+          {mo && <span className="px-3 py-1.5 text-[13.5px] font-semibold" style={{ ...tam, borderRadius: 'var(--sk-radius-pill)' }}>› {TEN[mo]}</span>}
           {!mo && ds && ds.length > 0 && (
             <span className="px-3 py-1.5 text-[12.5px]" style={{ ...tam, borderRadius: 'var(--sk-radius-pill)' }}>
               {ds.length} trợ giảng · số trên đầu = hiệu suất tháng · bấm vào người để xem chi tiết
@@ -68,7 +66,11 @@ export default function PhongTruongKhoiScreen({ onTaoCaNhe }: { onTaoCaNhe: () =
           )}
           <div className="ml-auto flex items-start gap-2">
             <ChonGiaoDien hep={false} />
-            <NutDoiMoiTruong den="sanh" />
+            {mo && (
+              // no-nut-ve: hook chung useNutQuayVe tự ẨN mọi nút "←" đầu màn (thay bằng ← trên thanh địa chỉ) — nút này phải luôn hiện (Thùy 03/11)
+              <button onClick={() => setMo(null)} className="no-nut-ve px-4 py-2 text-[13px] font-bold text-white shadow-sm transition hover:brightness-110"
+                style={{ background: 'var(--sk-acc)', borderRadius: 'var(--sk-radius-pill)' }}>← Về phòng chính</button>
+            )}
           </div>
         </div>
 
@@ -91,14 +93,16 @@ export default function PhongTruongKhoiScreen({ onTaoCaNhe }: { onTaoCaNhe: () =
         </div>
 
         {/* 3 PHẦN VIỆC — mở từ đồ vật trong cảnh */}
-        {mo && (
+        {mo && mo !== 'phien' && (
           <div className="min-h-0 flex-1 overflow-auto px-4 pb-4 pt-3 md:px-8">
             <div className={`mx-auto w-full ${mo === 'ban_do' ? 'max-w-[1600px]' : 'max-w-[1180px]'}`}>
               {mo === 'ban_do' && <div className="h-[calc(100vh-150px)] min-h-[460px] overflow-hidden rounded-2xl bg-white shadow-sm"><BanDoMoiScreen /></div>}
-              {mo === 'quan_tri' && (
-                <div className="space-y-3">
-                  <WidgetDangYeu onTaoCaNhe={onTaoCaNhe} />
-                  <div className="rounded-2xl bg-white/90 p-3 shadow-sm"><BaoCaoCaNhan /></div>
+              {/* Thùy 03/11: Quản trị = báo cáo sư phạm (việc TA) · Chất lượng = dạng yếu + học tập tuần (chất lượng học của HS). Nền trắng riêng cho dễ đọc. */}
+              {mo === 'quan_tri' && <div className="rounded-2xl bg-white p-4 shadow-sm"><BaoCaoCaNhan chiMuc={['baocao']} /></div>}
+              {mo === 'chat_luong' && (
+                <div className="space-y-4 rounded-2xl bg-white p-4 shadow-sm">
+                  <WidgetDangYeu className="" onTaoCaNhe={onTaoCaNhe} />
+                  <BaoCaoCaNhan chiMuc={['tuan']} />
                 </div>
               )}
             </div>
@@ -107,7 +111,8 @@ export default function PhongTruongKhoiScreen({ onTaoCaNhe }: { onTaoCaNhe: () =
         {/* Phiên Claude giữ gắn sau lần mở đầu (ẩn bằng CSS) — sang Bản đồ sửa tay rồi quay lại không mất khung chat đang chạy chữ. */}
         {daMoPhien && (
           <div className={mo === 'phien' ? 'min-h-0 flex-1 overflow-auto px-4 pb-4 pt-3 md:px-8' : 'hidden'}>
-            <div className="mx-auto w-full max-w-[1180px]"><PhienClaudeTab /></div>
+            {/* Thùy 03/11: nền TRẮNG riêng — chat đặt thẳng trên tranh nền phòng khó đọc */}
+            <div className="mx-auto w-full max-w-[1180px] rounded-2xl bg-white p-4 shadow-sm"><PhienClaudeTab /></div>
           </div>
         )}
       </div>

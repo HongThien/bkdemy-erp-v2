@@ -1,12 +1,12 @@
 // CẢNH PHÒNG LÀM VIỆC TRƯỞNG KHỐI — bản DEMO vẽ bằng SVG (Thùy 03/11: "m vẽ trước, sau t dùng ChatGPT chỉnh cho đẹp").
 // Ý tưởng: phòng làm việc, mỗi bàn một nhân vật = một TA cấp dưới (fn_phong_cap_duoi). Trên đầu: tên + HIỆU SUẤT THÁNG to để so sánh;
-// bấm nhân vật ⇒ chi tiết. 3 phần việc chính là ĐỒ VẬT trong tranh: máy tính bàn trưởng khối = Phiên Claude · bản đồ treo tường =
-// Bản đồ · tủ hồ sơ = Quản trị.
+// bấm nhân vật ⇒ chi tiết. Phần việc là ĐỒ VẬT trong tranh: máy tính bàn trưởng khối = Phiên Claude · 3 bức tranh ngang nhau giữa
+// tường = Bản đồ · Quản trị (báo cáo sư phạm — việc TA) · Chất lượng (dạng yếu · học tập tuần).
 // Cửa sổ là LỖ TRONG SUỐT trên tường ⇒ nền style người dùng chọn (như Sảnh) hiện qua cửa sổ — đổi giao diện là đổi cảnh ngoài trời.
 // Khi có tranh vẽ thật: giữ nguyên toạ độ GHE / DO_VAT (hệ 1600×900) làm ô bấm, thay phần vẽ bằng 1 ảnh (khuôn cảnh liền, lib/canhErp.ts).
 import type { CapDuoi } from '../../lib/phongTk'
 
-export type DoVat = 'phien' | 'ban_do' | 'quan_tri'
+export type DoVat = 'phien' | 'ban_do' | 'quan_tri' | 'chat_luong'
 const W = 1600, H = 900, SAN = 560   // mép tường / sàn
 
 // 8 chỗ ngồi: hàng sau nhỏ hơn (xa hơn). Thứ tự lấp: hàng trước giữa → ra hai bên → hàng sau.
@@ -87,6 +87,18 @@ function GheTrong({ x, y, s }: { x: number; y: number; s: number }) {
   )
 }
 
+// Bức tranh treo tường (bấm được): khung gỗ 260×175 từ y=70, tên ghi ở dải tối dưới đáy khung.
+function Tranh({ x, ten, onMo, children }: { x: number; ten: string; onMo: () => void; children: React.ReactNode }) {
+  return (
+    <g className="dv" onClick={onMo} role="button" aria-label={`Mở ${ten.replace(/^\S+\s/, '')}`}>
+      <rect className="vien" x={x} y={70} width={260} height={175} rx={8} fill="#fffaf0" stroke="#8f5e31" strokeWidth={9} />
+      {children}
+      <rect x={x + 5} y={205} width={250} height={35} fill="#1e293b" opacity={0.88} />
+      <text x={x + 130} y={230} textAnchor="middle" fontSize={20} fontWeight={700} fill="#fff">{ten}</text>
+    </g>
+  )
+}
+
 // Đồ vật bấm được: viền sáng khi rê chuột + biển tên.
 function Bien({ x, y, chu }: { x: number; y: number; chu: string }) {
   return (
@@ -101,8 +113,8 @@ export default function CanhPhong({ ds, onMoNguoi, onMoDoVat }: {
   ds: CapDuoi[]; onMoNguoi: (ns: CapDuoi) => void; onMoDoVat: (d: DoVat) => void
 }) {
   const ngoi = ds.slice(0, SO_GHE)
-  // Tường có 3 lỗ cửa sổ (evenodd) ⇒ nền style phía sau hiện qua.
-  const CUA = [[90, 90, 210, 240], [340, 90, 210, 240], [1050, 90, 210, 240]]
+  // Tường có 2 lỗ cửa sổ ở 2 đầu (evenodd) ⇒ nền style phía sau hiện qua. Giữa tường: 3 bức tranh (Thùy 03/11).
+  const CUA = [[60, 90, 190, 220], [1350, 90, 190, 220]]
   const tuong = `M0 0 H${W} V${SAN} H0 Z ` + CUA.map(([x, y, w, h]) => `M${x} ${y} h${w} v${h} h${-w} Z`).join(' ')
   return (
     <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid meet" className="h-full w-full select-none">
@@ -118,30 +130,32 @@ export default function CanhPhong({ ds, onMoNguoi, onMoDoVat }: {
         </g>
       ))}
       {/* đồng hồ */}
-      <circle cx={1330} cy={140} r={40} fill="#fff" stroke="#c8915c" strokeWidth={7} />
-      <line x1={1330} y1={140} x2={1330} y2={112} stroke="#334155" strokeWidth={5} strokeLinecap="round" />
-      <line x1={1330} y1={140} x2={1350} y2={150} stroke="#334155" strokeWidth={5} strokeLinecap="round" />
+      <circle cx={1290} cy={130} r={32} fill="#fff" stroke="#c8915c" strokeWidth={6} />
+      <line x1={1290} y1={130} x2={1290} y2={108} stroke="#334155" strokeWidth={4} strokeLinecap="round" />
+      <line x1={1290} y1={130} x2={1306} y2={138} stroke="#334155" strokeWidth={4} strokeLinecap="round" />
       {/* sàn gỗ + thảm */}
       <rect x={0} y={SAN} width={W} height={H - SAN} fill="#d9b48a" />
       {[0, 1, 2, 3, 4].map((i) => <line key={i} x1={0} y1={SAN + 30 + i * 68} x2={W} y2={SAN + 30 + i * 68} stroke="#c9a074" strokeWidth={3} />)}
       <ellipse cx={800} cy={700} rx={640} ry={150} fill="var(--sk-acc,#e8a0b4)" opacity={0.22} />
 
-      {/* BẢN ĐỒ treo tường */}
-      <g className="dv" onClick={() => onMoDoVat('ban_do')} role="button" aria-label="Mở Bản đồ">
-        <rect className="vien" x={620} y={80} width={360} height={250} rx={10} fill="#fffaf0" stroke="#8f5e31" strokeWidth={10} />
-        <path d="M650 280 Q700 160 760 210 T880 150 T950 230" fill="none" stroke="#7cc4a4" strokeWidth={8} strokeLinecap="round" />
-        {[[690, 225], [760, 205], [830, 175], [900, 190], [945, 235]].map(([cx, cy], i) => <circle key={i} cx={cx} cy={cy} r={11} fill={['#e58aa8', '#6d8bd6', '#f2b25c', '#a08ad6', '#7cc4a4'][i]} stroke="#fff" strokeWidth={3} />)}
-        <rect x={650} y={105} width={120} height={14} rx={7} fill="#e2cfb3" /><rect x={650} y={128} width={80} height={10} rx={5} fill="#eadbc4" />
-        <Bien x={800} y={360} chu="🗺 Bản đồ" />
-      </g>
-
-      {/* TỦ HỒ SƠ = Quản trị */}
-      <g className="dv" onClick={() => onMoDoVat('quan_tri')} role="button" aria-label="Mở Quản trị">
-        <rect className="vien" x={1420} y={250} width={150} height={330} rx={10} fill="#7d8aa0" stroke="#5c677b" strokeWidth={4} />
-        {[0, 1, 2].map((i) => <g key={i}><rect x={1435} y={268 + i * 104} width={120} height={90} rx={6} fill="#93a0b6" /><rect x={1473} y={300 + i * 104} width={44} height={10} rx={5} fill="#e2e8f0" /></g>)}
-        <rect x={1432} y={226} width={60} height={26} rx={4} fill="#f2b25c" /><rect x={1498} y={232} width={56} height={20} rx={4} fill="#e58aa8" />
-        <Bien x={1495} y={612} chu="📋 Quản trị" />
-      </g>
+      {/* 3 BỨC TRANH giữa tường, ngang nhau (Thùy 03/11): Bản đồ · Quản trị · Chất lượng. Tên ghi TRONG khung (dưới khung là chỗ biển tên hàng sau). */}
+      <Tranh x={370} ten="🗺 Bản đồ" onMo={() => onMoDoVat('ban_do')}>
+        <path d="M395 190 Q440 110 490 150 T580 100 T610 150" fill="none" stroke="#7cc4a4" strokeWidth={7} strokeLinecap="round" />
+        {[[430, 160], [490, 150], [545, 118], [600, 140]].map(([cx, cy], i) => <circle key={i} cx={cx} cy={cy} r={10} fill={['#e58aa8', '#6d8bd6', '#f2b25c', '#a08ad6'][i]} stroke="#fff" strokeWidth={3} />)}
+      </Tranh>
+      <Tranh x={670} ten="📋 Quản trị" onMo={() => onMoDoVat('quan_tri')}>
+        <rect x={735} y={88} width={130} height={118} rx={8} fill="#fff" stroke="#cbd5e1" strokeWidth={3} />
+        <rect x={775} y={80} width={50} height={16} rx={5} fill="#94a3b8" />
+        {[0, 1, 2].map((i) => <g key={i}>
+          <path d={`M750 ${118 + i * 30} l8 8 l14 -16`} fill="none" stroke={i < 2 ? '#16a34a' : '#e11d48'} strokeWidth={5} strokeLinecap="round" strokeLinejoin="round" />
+          <rect x={782} y={112 + i * 30} width={68} height={10} rx={5} fill="#e2e8f0" />
+        </g>)}
+      </Tranh>
+      <Tranh x={970} ten="📈 Chất lượng" onMo={() => onMoDoVat('chat_luong')}>
+        {[0, 1, 2, 3].map((i) => <rect key={i} x={1015 + i * 45} y={190 - (i + 1) * 24} width={30} height={(i + 1) * 24} rx={4} fill={['#f2b25c', '#e58aa8', '#6d8bd6', '#7cc4a4'][i]} />)}
+        <path d="M1010 165 L1060 140 L1105 120 L1160 88" fill="none" stroke="#334155" strokeWidth={4} strokeLinecap="round" strokeDasharray="2 8" />
+        <text x={1190} y={100} textAnchor="middle" fontSize={30}>⭐</text>
+      </Tranh>
 
       {/* chậu cây */}
       <g><rect x={40} y={500} width={70} height={70} rx={10} fill="#c8915c" />
