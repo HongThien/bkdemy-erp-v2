@@ -1,0 +1,199 @@
+{
+ "chuong": "NHTP",
+ "them": [
+  {
+   "id": "M1",
+   "nhom": "NNB01217",
+   "ten": "Tính tích phân từ nguyên hàm cho sẵn (F(b)−F(a))",
+   "mo_ta": "Đề cho sẵn nguyên hàm F (hoặc giá trị F, f tại hai cận, hoặc đồ thị f) và hỏi ∫f, ∫f′, hoặc hỏi định nghĩa tích phân. Việc làm: áp đúng công thức Newton–Leibniz ∫_a^b f = F(b)−F(a), ∫_a^b f′ = f(b)−f(a) (đọc f(a), f(b) trên đồ thị nếu cần). Lưu ý: khoảng 12 câu cùng kiểu đang nằm rải ở NDB00747 / NDB00751 / NDB00752 — xem câu hỏi T1.",
+   "moi": [
+    "tích phân bằng hiệu giá trị nguyên hàm tại hai cận",
+    "định nghĩa tích phân qua nguyên hàm (Newton–Leibniz)",
+    "định nghĩa tích phân xác định bằng nguyên hàm (Newton-Leibniz)",
+    "tích phân của f′ đọc giá trị f từ đồ thị",
+    "tích phân của f′ đọc giá trị f(a), f(b) từ đồ thị",
+    "tính hiệu F(b)−F(a) của nguyên hàm hàm chứa logarit"
+   ],
+   "so_cau": 7
+  }
+ ],
+ "bo_moi": [
+  {
+   "mo_ta": "diện tích miền parabol trong bối cảnh thực tế rồi tính chi phí",
+   "ly_do": "Khớp dạng đã có NDB00787 (diện tích hình phẳng thực tế: dựng hệ trục, lập hàm biên, tích phân, nhân đơn giá/độ dày) — 24 câu cùng kiểu đang ở đó."
+  },
+  {
+   "mo_ta": "thực tế: diện tích hình phẳng giới hạn bởi parabol, tính chi phí",
+   "ly_do": "Khớp dạng đã có NDB00787 (diện tích hình phẳng thực tế: dựng hệ trục, lập hàm biên, tích phân, nhân đơn giá/độ dày) — 24 câu cùng kiểu đang ở đó."
+  },
+  {
+   "mo_ta": "diện tích phần giới hạn bởi đồ thị hàm phân thức trong hình chữ nhật",
+   "ly_do": "Khớp dạng đã có NDB00787 (diện tích hình phẳng thực tế: dựng hệ trục, lập hàm biên, tích phân, nhân đơn giá/độ dày) — 24 câu cùng kiểu đang ở đó."
+  },
+  {
+   "mo_ta": "diện tích miền thoả điều kiện khoảng cách, đưa về parabol rồi tích phân",
+   "ly_do": "Khớp dạng đã có NDB00787 (diện tích hình phẳng thực tế: dựng hệ trục, lập hàm biên, tích phân, nhân đơn giá/độ dày) — 24 câu cùng kiểu đang ở đó."
+  },
+  {
+   "mo_ta": "diện tích hình phẳng thực tế giữa hai đường cong tịnh tiến, tính chi phí",
+   "ly_do": "Khớp dạng đã có NDB00787 (diện tích hình phẳng thực tế: dựng hệ trục, lập hàm biên, tích phân, nhân đơn giá/độ dày) — 24 câu cùng kiểu đang ở đó."
+  },
+  {
+   "mo_ta": "ứng dụng tích phân: diện tích hình parabol suy ra khối lượng chi phí",
+   "ly_do": "Khớp dạng đã có NDB00787 (diện tích hình phẳng thực tế: dựng hệ trục, lập hàm biên, tích phân, nhân đơn giá/độ dày) — 24 câu cùng kiểu đang ở đó."
+  },
+  {
+   "mo_ta": "diện tích hình phẳng giới hạn bởi đường cônic (hypebol) trong hình vuông, bài thực tế trang trí",
+   "ly_do": "Khớp dạng đã có NDB00788 (họa tiết đối xứng trong hình vuông — tính 1 phần rồi nhân)."
+  },
+  {
+   "mo_ta": "thể tích vật tròn xoay thực tế: lập hàm biên rồi tích phân",
+   "ly_do": "Khớp dạng đã có NDB00778 (vật tròn xoay thực tế: bình gốm, ly, thùng — lập hàm đường sinh rồi V=π∫f²)."
+  },
+  {
+   "mo_ta": "tích phân tính thể tích công trình thực tế mái parabol",
+   "ly_do": "Khớp dạng đã có NDB00782 (sảnh mái parabol = thiết diện không đổi: diện tích mặt cắt parabol × chiều dài)."
+  },
+  {
+   "mo_ta": "lý thuyết: công thức thể tích khối tròn xoay quanh Ox",
+   "ly_do": "Khớp dạng đã có NDB00636 (câu nhận biết công thức V=π∫f² quanh Ox — cùng dạng với câu tính có cận)."
+  },
+  {
+   "mo_ta": "giá trị trung bình của hàm số trên đoạn bằng tích phân",
+   "ly_do": "Quá lẻ (2 câu). Đề định nghĩa sẵn công thức 1/(b−a)∫f, việc làm thực chất là tính tích phân đa thức (NDB00753); đề sau còn hỏi thêm thì xét lại."
+  },
+  {
+   "mo_ta": "giá trị trung bình của hàm số trên đoạn, tìm tham số",
+   "ly_do": "Quá lẻ (2 câu). Đề định nghĩa sẵn công thức 1/(b−a)∫f, việc làm thực chất là tính tích phân đa thức (NDB00753); đề sau còn hỏi thêm thì xét lại."
+  },
+  {
+   "mo_ta": "hàm chứa tích phân hằng số, tìm giá trị hàm",
+   "ly_do": "Quá lẻ (1 câu, VDC): đặt ∫f = hằng số k rồi giải."
+  },
+  {
+   "mo_ta": "tích phân hai hàm ngược nhau, tính tổng bằng đổi biến",
+   "ly_do": "Quá lẻ (1 câu, VDC): tích phân hàm ngược, kỹ thuật ngoài chương trình 2018."
+  },
+  {
+   "mo_ta": "tích phân hàm chứa căn bậc hai tam thức, đổi biến lượng giác hoặc hình tròn",
+   "ly_do": "Quá lẻ (2 câu): ∫√(a²−x²) cần đổi biến lượng giác — chương trình 2018 không dạy đổi biến; giải được bằng diện tích phần hình tròn. Nếu đề tăng thì gần NDB00748 (nguyên hàm căn thức)."
+  },
+  {
+   "mo_ta": "tích phân hàm chứa căn bậc hai cận cho trước",
+   "ly_do": "Quá lẻ (2 câu): ∫√(a²−x²) cần đổi biến lượng giác — chương trình 2018 không dạy đổi biến; giải được bằng diện tích phần hình tròn. Nếu đề tăng thì gần NDB00748 (nguyên hàm căn thức)."
+  }
+ ],
+ "dang_cu_khong_xuat_hien": [
+  {
+   "ma": "NDB00757",
+   "ten": "Tính toán các đại lượng dựa trên các đại lượng đã cho với chuyển động bay/rơi",
+   "so_cau": 1
+  },
+  {
+   "ma": "NDB00761",
+   "ten": "Cho giá trị các đại lượng. Tính tốc độ thay đổi của đại lượng",
+   "so_cau": 1
+  },
+  {
+   "ma": "NDB00639",
+   "ten": "Thể tích hình giới hạn bởi hai hàm số quay quanh trục tung Oy",
+   "so_cau": 1
+  },
+  {
+   "ma": "NDB00786",
+   "ten": "Thể tích phần giao nhau của các hình",
+   "so_cau": 1
+  }
+ ],
+ "nghi_gan_nham": [
+  {
+   "id": "T112000000971",
+   "dang_cu": "NDB00787",
+   "ly_do": "NEW «diện tích miền parabol trong bối cảnh thực tế rồi tính chi phí» — Khớp dạng đã có NDB00787 (diện tích hình phẳng thực tế: dựng hệ trục, lập hàm biên, tích phân, nhân đơn giá/độ dày) — 24 câu cùng kiểu đang ở đó."
+  },
+  {
+   "id": "T1120000005601",
+   "dang_cu": "NDB00787",
+   "ly_do": "NEW «diện tích miền parabol trong bối cảnh thực tế rồi tính chi phí» — Khớp dạng đã có NDB00787 (diện tích hình phẳng thực tế: dựng hệ trục, lập hàm biên, tích phân, nhân đơn giá/độ dày) — 24 câu cùng kiểu đang ở đó."
+  },
+  {
+   "id": "T112000000364",
+   "dang_cu": "NDB00787",
+   "ly_do": "NEW «thực tế: diện tích hình phẳng giới hạn bởi parabol, tính chi phí» — Khớp dạng đã có NDB00787 (diện tích hình phẳng thực tế: dựng hệ trục, lập hàm biên, tích phân, nhân đơn giá/độ dày) — 24 câu cùng kiểu đang ở đó."
+  },
+  {
+   "id": "T112000000741",
+   "dang_cu": "NDB00787",
+   "ly_do": "NEW «thực tế: diện tích hình phẳng giới hạn bởi parabol, tính chi phí» — Khớp dạng đã có NDB00787 (diện tích hình phẳng thực tế: dựng hệ trục, lập hàm biên, tích phân, nhân đơn giá/độ dày) — 24 câu cùng kiểu đang ở đó."
+  },
+  {
+   "id": "T112000000332",
+   "dang_cu": "NDB00787",
+   "ly_do": "NEW «diện tích phần giới hạn bởi đồ thị hàm phân thức trong hình chữ nhật» — Khớp dạng đã có NDB00787 (diện tích hình phẳng thực tế: dựng hệ trục, lập hàm biên, tích phân, nhân đơn giá/độ dày) — 24 câu cùng kiểu đang ở đó."
+  },
+  {
+   "id": "T112000000946",
+   "dang_cu": "NDB00787",
+   "ly_do": "NEW «diện tích miền thoả điều kiện khoảng cách, đưa về parabol rồi tích phân» — Khớp dạng đã có NDB00787 (diện tích hình phẳng thực tế: dựng hệ trục, lập hàm biên, tích phân, nhân đơn giá/độ dày) — 24 câu cùng kiểu đang ở đó."
+  },
+  {
+   "id": "T1120000005633",
+   "dang_cu": "NDB00787",
+   "ly_do": "NEW «diện tích hình phẳng thực tế giữa hai đường cong tịnh tiến, tính chi phí» — Khớp dạng đã có NDB00787 (diện tích hình phẳng thực tế: dựng hệ trục, lập hàm biên, tích phân, nhân đơn giá/độ dày) — 24 câu cùng kiểu đang ở đó."
+  },
+  {
+   "id": "T1120000006751",
+   "dang_cu": "NDB00787",
+   "ly_do": "NEW «ứng dụng tích phân: diện tích hình parabol suy ra khối lượng chi phí» — Khớp dạng đã có NDB00787 (diện tích hình phẳng thực tế: dựng hệ trục, lập hàm biên, tích phân, nhân đơn giá/độ dày) — 24 câu cùng kiểu đang ở đó."
+  },
+  {
+   "id": "T1120000001293",
+   "dang_cu": "NDB00788",
+   "ly_do": "NEW «diện tích hình phẳng giới hạn bởi đường cônic (hypebol) trong hình vuông, bài thực tế trang trí» — Khớp dạng đã có NDB00788 (họa tiết đối xứng trong hình vuông — tính 1 phần rồi nhân)."
+  },
+  {
+   "id": "T1120000001223",
+   "dang_cu": "NDB00778",
+   "ly_do": "NEW «thể tích vật tròn xoay thực tế: lập hàm biên rồi tích phân» — Khớp dạng đã có NDB00778 (vật tròn xoay thực tế: bình gốm, ly, thùng — lập hàm đường sinh rồi V=π∫f²)."
+  },
+  {
+   "id": "T112000000425",
+   "dang_cu": "NDB00778",
+   "ly_do": "NEW «thể tích vật tròn xoay thực tế: lập hàm biên rồi tích phân» — Khớp dạng đã có NDB00778 (vật tròn xoay thực tế: bình gốm, ly, thùng — lập hàm đường sinh rồi V=π∫f²)."
+  },
+  {
+   "id": "T1120000005292",
+   "dang_cu": "NDB00782",
+   "ly_do": "NEW «tích phân tính thể tích công trình thực tế mái parabol» — Khớp dạng đã có NDB00782 (sảnh mái parabol = thiết diện không đổi: diện tích mặt cắt parabol × chiều dài)."
+  },
+  {
+   "id": "T1120000006812",
+   "dang_cu": "NDB00636",
+   "ly_do": "NEW «lý thuyết: công thức thể tích khối tròn xoay quanh Ox» — Khớp dạng đã có NDB00636 (câu nhận biết công thức V=π∫f² quanh Ox — cùng dạng với câu tính có cận)."
+  }
+ ],
+ "cau_hoi": [
+  {
+   "ma": "T1",
+   "tieu_de": "Câu Newton–Leibniz (F(b)−F(a), ∫f′=f(b)−f(a)) có thành dạng riêng không?",
+   "mo_ta": "7 câu NEW + khoảng 12 câu cùng kiểu đang rải ở 3 dạng khác nhau: NDB00747 \"Áp dụng định nghĩa / tính chất\" (nhóm Nguyên hàm, ~7 câu), NDB00751 \"Tính chất của cận\" (~4 câu), NDB00752 \"Tổng hiệu\" (~1 câu). Người đọc không thống nhất được chỗ đặt — dấu hiệu thiếu một dạng. Tổng ~19 câu, mức 1, hỏi đều mỗi năm.",
+   "chon": [
+    [
+     "Thêm dạng M1 vào nhóm NNB01217 và chuyển ~12 câu đang rải sang",
+     "Một dạng rõ việc (áp Newton–Leibniz), HS yếu luyện riêng được; 3 dạng cũ sạch hơn",
+     true
+    ],
+    [
+     "Thêm M1 nhưng không chuyển câu cũ",
+     "Không đụng câu đã gắn; dạng mới chỉ có 7 câu, câu cùng kiểu vẫn nằm 4 chỗ",
+     false
+    ],
+    [
+     "Không thêm — gắn 7 câu NEW vào NDB00751",
+     "Giữ cây như cũ; NDB00751 lẫn hai việc khác nhau (đổi cận / Newton–Leibniz)",
+     false
+    ]
+   ]
+  }
+ ]
+}

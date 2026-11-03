@@ -1,0 +1,1073 @@
+{
+ "chuong": "HS",
+ "chuyen_de": [
+  {
+   "id": "C1",
+   "ten": "Các phương diện khảo sát hàm số",
+   "mo_ta": "Bốn phương diện — đơn điệu, cực trị, GTLN–GTNN, tiệm cận — tính được cho MỌI hàm. Bài cơ bản: đề cho công thức (tính) hoặc cho hình/bảng (đọc). Mỗi phương diện một nhóm; trong nhóm tách theo \"đề cho gì\".",
+   "nhom": [
+    {
+     "id": "C1.1",
+     "ten": "Tính đơn điệu",
+     "dang": [
+      {
+       "id": "C1.1.1",
+       "ten": "Tìm khoảng đơn điệu của hàm đa thức, phân thức",
+       "mo_ta": "Đề cho công thức đa thức hoặc phân thức hữu tỉ, hỏi khoảng đồng biến/nghịch biến hoặc mệnh đề đúng; tính y′, lập bảng xét dấu. Kể cả câu chỉ hỏi tính y′.",
+       "tu": [
+        "P1.1.1"
+       ],
+       "moi": [
+        "tính đạo hàm của hàm phân thức hữu tỉ"
+       ],
+       "hiem": false
+      },
+      {
+       "id": "C1.1.2",
+       "ten": "Tìm khoảng đơn điệu của hàm căn, mũ, logarit, lượng giác",
+       "mo_ta": "Hàm chứa căn, mũ, logarit, lượng giác, trị tuyệt đối: chú ý tập xác định và cách xét dấu y′ riêng của từng loại.",
+       "tu": [
+        "P1.1.2"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C1.1.3",
+       "ten": "Đọc khoảng đơn điệu từ bảng biến thiên",
+       "mo_ta": "Đề cho bảng biến thiên của f, hỏi khoảng đồng biến/nghịch biến (đọc theo trục x, không lấy khoảng y).",
+       "tu": [
+        "P1.2.1"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C1.1.4",
+       "ten": "Đọc khoảng đơn điệu từ đồ thị hàm số",
+       "mo_ta": "Đề cho đồ thị của f, hỏi khoảng đồng biến/nghịch biến.",
+       "tu": [
+        "P1.2.2"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C1.1.5",
+       "ten": "Suy đơn điệu từ bảng xét dấu hoặc đồ thị f′",
+       "mo_ta": "Đề cho bảng xét dấu f′, đồ thị của f′ hoặc dữ kiện f′>0 trên khoảng; đọc dấu f′ để kết luận f tăng/giảm (không nhầm đồ thị f′ với đồ thị f).",
+       "tu": [
+        "P1.2.3"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C1.1.6",
+       "ten": "Xét đơn điệu khi f′ cho dạng tích",
+       "mo_ta": "Đề cho f′(x) là tích các nhân tử (có nghiệm bội); lập bảng xét dấu, nghiệm bội chẵn không đổi dấu.",
+       "tu": [
+        "P1.2.4"
+       ],
+       "moi": [],
+       "hiem": false
+      }
+     ]
+    },
+    {
+     "id": "C1.2",
+     "ten": "Cực trị",
+     "dang": [
+      {
+       "id": "C1.2.1",
+       "ten": "Tìm cực trị của hàm đa thức",
+       "mo_ta": "Đề cho công thức đa thức (bậc ba, trùng phương, bậc cao), hỏi điểm cực trị, giá trị cực đại/cực tiểu, số điểm cực trị; giải y′=0, xét dấu. Hàm trùng phương tính cực trị nằm ở đây vì cùng cách giải.",
+       "tu": [
+        "P1.3.1"
+       ],
+       "moi": [
+        "cực trị hàm trùng phương: tìm giá trị cực trị",
+        "tìm cực trị hàm trùng phương",
+        "cực trị của hàm trùng phương khi biết hàm số",
+        "tìm cực trị của hàm trùng phương",
+        "cực trị hàm trùng phương: đếm cực trị theo điều kiện",
+        "tìm giá trị cực tiểu hàm trùng phương cho công thức",
+        "đếm cực trị hàm đa thức bậc cao",
+        "cực trị hàm đa thức bậc cao"
+       ],
+       "hiem": false
+      },
+      {
+       "id": "C1.2.2",
+       "ten": "Tìm cực trị của hàm phân thức, căn, mũ, lượng giác",
+       "mo_ta": "Đề cho hàm phân thức (chủ yếu), hoặc hàm căn, mũ, logarit, lượng giác, hàm có điểm không khả vi; tìm cực trị qua y′ và tập xác định.",
+       "tu": [
+        "P1.3.2",
+        "P1.3.3"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C1.2.3",
+       "ten": "Đọc cực trị từ bảng biến thiên",
+       "mo_ta": "Đề cho bảng biến thiên; phân biệt điểm cực trị (x), giá trị cực trị (y), điểm cực trị của đồ thị (x;y).",
+       "tu": [
+        "P1.4.1"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C1.2.4",
+       "ten": "Đọc cực trị từ đồ thị hàm số",
+       "mo_ta": "Đề cho đồ thị của f; đọc điểm cực đại/cực tiểu, giá trị cực trị, số điểm cực trị.",
+       "tu": [
+        "P1.4.2"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C1.2.5",
+       "ten": "Suy cực trị từ bảng xét dấu hoặc đồ thị f′",
+       "mo_ta": "Đề cho bảng xét dấu f′ hoặc đồ thị của f′; cực trị là nơi f′ đổi dấu (điểm f′ chạm trục không phải cực trị).",
+       "tu": [
+        "P1.4.3"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C1.2.6",
+       "ten": "Đếm cực trị khi f′ cho dạng tích",
+       "mo_ta": "Đề cho f′(x) là tích nhân tử có nghiệm bội; đếm nghiệm bội lẻ, xét dấu để chỉ ra cực đại/cực tiểu.",
+       "tu": [
+        "P1.4.4"
+       ],
+       "moi": [],
+       "hiem": false
+      }
+     ]
+    },
+    {
+     "id": "C1.3",
+     "ten": "Giá trị lớn nhất, giá trị nhỏ nhất",
+     "dang": [
+      {
+       "id": "C1.3.1",
+       "ten": "Tìm GTLN, GTNN của hàm đa thức trên đoạn",
+       "mo_ta": "Đề cho đa thức và đoạn [a;b]; ba bước: nghiệm y′ trong đoạn, giá trị tại nghiệm và hai đầu mút, so sánh.",
+       "tu": [
+        "P1.5.1"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C1.3.2",
+       "ten": "Tìm GTLN, GTNN của hàm phân thức trên đoạn",
+       "mo_ta": "Đề cho phân thức hữu tỉ và đoạn; kiểm tra đoạn nằm trong tập xác định, rồi làm ba bước như đa thức.",
+       "tu": [
+        "P1.5.2"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C1.3.3",
+       "ten": "Tìm GTLN, GTNN của hàm căn, lượng giác, mũ, logarit",
+       "mo_ta": "Hàm chứa căn (đoạn là tập xác định) hoặc lượng giác, mũ, logarit (thường đặt ẩn phụ t, đổi miền của t).",
+       "tu": [
+        "P1.5.3",
+        "P1.5.4"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C1.3.4",
+       "ten": "Tìm GTLN, GTNN trên khoảng hoặc trên ℝ",
+       "mo_ta": "Miền là khoảng, nửa khoảng hoặc ℝ: phải lập bảng biến thiên (không chỉ thay đầu mút), có thể không tồn tại GTLN/GTNN.",
+       "tu": [
+        "P1.5.5"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C1.3.5",
+       "ten": "Đọc GTLN, GTNN từ đồ thị",
+       "mo_ta": "Đề cho đồ thị của f trên đoạn/khoảng; đọc GTLN, GTNN, tính M±m.",
+       "tu": [
+        "P1.6.1"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C1.3.6",
+       "ten": "Đọc GTLN, GTNN từ bảng biến thiên hoặc bảng xét dấu f′",
+       "mo_ta": "Đề cho bảng biến thiên hoặc bảng xét dấu f′ trên một miền; đọc hoặc so sánh f(a), f(b) để chọn GTLN, GTNN, mệnh đề đúng.",
+       "tu": [
+        "P1.6.2"
+       ],
+       "moi": [],
+       "hiem": false
+      }
+     ]
+    },
+    {
+     "id": "C1.4",
+     "ten": "Tiệm cận",
+     "dang": [
+      {
+       "id": "C1.4.1",
+       "ten": "Tìm tiệm cận đứng, ngang của hàm bậc nhất trên bậc nhất",
+       "mo_ta": "Đề cho y=(ax+b)/(cx+d); tiệm cận đứng x=−d/c, tiệm cận ngang y=a/c.",
+       "tu": [
+        "P1.7.1"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C1.4.2",
+       "ten": "Đếm tiệm cận của hàm phân thức, hàm chứa căn",
+       "mo_ta": "Phân thức bậc cao (phải rút gọn nhân tử chung) hoặc hàm chứa căn, trị tuyệt đối; tính giới hạn để đếm tiệm cận đứng và ngang.",
+       "tu": [
+        "P1.7.2",
+        "P1.7.3"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C1.4.3",
+       "ten": "Tìm tiệm cận xiên",
+       "mo_ta": "Hàm bậc hai trên bậc nhất (chia đa thức), hàm đã viết dạng ax+b+c/(x−d) (đọc thẳng), hoặc hàm chứa căn (a=lim f/x, b=lim(f−ax)); hỏi phương trình hoặc biểu thức theo a, b.",
+       "tu": [
+        "P1.8.1",
+        "P1.8.2",
+        "P1.8.3"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C1.4.4",
+       "ten": "Đọc tiệm cận từ đồ thị",
+       "mo_ta": "Đề cho đồ thị; đọc phương trình tiệm cận đứng, ngang, xiên.",
+       "tu": [
+        "P1.9.1"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C1.4.5",
+       "ten": "Đọc và đếm tiệm cận từ bảng biến thiên",
+       "mo_ta": "Đề cho bảng biến thiên; đếm tiệm cận từ các giới hạn ở ±∞ và hai bên điểm không xác định.",
+       "tu": [
+        "P1.9.2"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C1.4.6",
+       "ten": "Tìm tiệm cận từ giới hạn cho trước",
+       "mo_ta": "Đề cho sẵn các giới hạn của f; áp định nghĩa tiệm cận đứng, ngang.",
+       "tu": [
+        "P1.9.3"
+       ],
+       "moi": [],
+       "hiem": false
+      }
+     ]
+    },
+    {
+     "id": "C1.5",
+     "ten": "Lý thuyết và khảo sát tổng quát",
+     "dang": [
+      {
+       "id": "C1.5.1",
+       "ten": "Chọn mệnh đề đúng về đơn điệu, cực trị, GTLN",
+       "mo_ta": "Câu lý thuyết thuần: định nghĩa đồng biến, GTLN–GTNN; điều kiện cần/đủ của đơn điệu theo dấu f′ và của cực trị. Không có hàm cụ thể.",
+       "tu": [],
+       "moi": [
+        "lý thuyết: điều kiện đơn điệu và dấu đạo hàm",
+        "định nghĩa tính đơn điệu: chọn phát biểu đúng",
+        "lý thuyết: điều kiện đồng biến theo dấu f'",
+        "lý thuyết đơn điệu: mệnh đề đạo hàm và đồng biến, nghịch biến",
+        "lý thuyết: mệnh đề đúng về dấu f′ và tính đơn điệu",
+        "mệnh đề lý thuyết về cực trị",
+        "lý thuyết: điều kiện đủ để hàm số có cực trị",
+        "định nghĩa giá trị lớn nhất của hàm số",
+        "nhận biết định nghĩa giá trị nhỏ nhất, lớn nhất của hàm số"
+       ],
+       "hiem": true
+      },
+      {
+       "id": "C1.5.2",
+       "ten": "Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+       "mo_ta": "Tự luận: trình bày đủ tập xác định, y′, giới hạn/tiệm cận, bảng biến thiên, điểm đặc biệt, vẽ đồ thị. Tổng hợp cả 4 phương diện.",
+       "tu": [],
+       "moi": [
+        "khảo sát sự biến thiên và vẽ đồ thị hàm số (tự luận)",
+        "khảo sát sự biến thiên và vẽ đồ thị hàm số"
+       ],
+       "hiem": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "C2",
+   "ten": "Các loại hàm số quan trọng",
+   "mo_ta": "Đi theo TỪNG LOẠI HÀM (bậc ba, bậc nhất trên bậc nhất, bậc hai trên bậc nhất): đặc trưng riêng suy từ phần 1 — nhận dạng đồ thị, dấu hệ số, tâm đối xứng, hai điểm cực trị, bài có tham số. Bài KHÓ của 4 phương diện (tham số, hàm hợp, hàm ẩn) rơi vào đây.",
+   "nhom": [
+    {
+     "id": "C2.1",
+     "ten": "Nhận dạng hàm số qua đồ thị, bảng biến thiên",
+     "dang": [
+      {
+       "id": "C2.1.1",
+       "ten": "Nhận dạng đồ thị, bảng biến thiên hàm bậc ba",
+       "mo_ta": "Đề cho đồ thị hoặc bảng biến thiên, đáp án là hàm bậc ba; chọn công thức qua dấu a, toạ độ cực trị, giao trục tung (kể cả khi các phương án lẫn loại hàm khác).",
+       "tu": [
+        "P2.1.1"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C2.1.2",
+       "ten": "Nhận dạng đồ thị hàm bậc nhất trên bậc nhất",
+       "mo_ta": "Đáp án là hàm nhất biến; chọn qua hai tiệm cận, chiều biến thiên, giao điểm với trục.",
+       "tu": [
+        "P2.2.1"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C2.1.3",
+       "ten": "Nhận dạng đồ thị hàm bậc hai trên bậc nhất",
+       "mo_ta": "Đáp án là hàm bậc hai trên bậc nhất; chọn qua tiệm cận đứng, tiệm cận xiên, hai cực trị hai bên tiệm cận đứng.",
+       "tu": [
+        "P2.3.1"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C2.1.4",
+       "ten": "Nhận dạng đồ thị, bảng biến thiên hàm trùng phương",
+       "mo_ta": "Đáp án là hàm y=ax⁴+bx²+c; nhận qua đối xứng trục tung, số cực trị (dấu ab), dấu a.",
+       "tu": [],
+       "moi": [
+        "nhận dạng đồ thị hàm trùng phương",
+        "nhận diện hàm số trùng phương từ bảng biến thiên"
+       ],
+       "hiem": true
+      },
+      {
+       "id": "C2.1.5",
+       "ten": "Phân biệt các loại hàm qua dấu hiệu đặc trưng",
+       "mo_ta": "Bốn phương án thuộc các loại hàm khác nhau và chỉ cần nhận ra LOẠI hàm (có/không tiệm cận, tiệm cận xiên, số cực trị, dáng đồ thị) là chọn được.",
+       "tu": [],
+       "moi": [
+        "nhận diện đồ thị trong các loại hàm hỗn hợp",
+        "nhận dạng đồ thị: chọn hàm số đúng trong bốn loại hàm khác nhau",
+        "nhận dạng đồ thị hàm số trong các hàm cho sẵn",
+        "nhận dạng hàm số theo đồ thị trong bốn hàm khác loại"
+       ],
+       "hiem": true
+      }
+     ]
+    },
+    {
+     "id": "C2.2",
+     "ten": "Hàm bậc ba (và đa thức bậc cao có tham số)",
+     "dang": [
+      {
+       "id": "C2.2.1",
+       "ten": "Xét dấu hệ số a, b, c, d của hàm bậc ba",
+       "mo_ta": "Đề cho đồ thị/bảng biến thiên của y=ax³+bx²+cx+d; suy dấu a (dáng), d (giao trục tung), b, c (tổng, tích hoành độ cực trị).",
+       "tu": [
+        "P2.1.2"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C2.2.2",
+       "ten": "Lập công thức hàm bậc ba từ đồ thị hoặc điều kiện",
+       "mo_ta": "Biết điểm cực trị, điểm đi qua, đồ thị/bảng biến thiên có số liệu; lập hệ tìm a, b, c, d rồi tính giá trị hoặc biểu thức.",
+       "tu": [
+        "P2.1.3"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C2.2.3",
+       "ten": "Tìm tâm đối xứng (điểm uốn) của đồ thị bậc ba",
+       "mo_ta": "Tâm đối xứng là điểm có hoành độ nghiệm y″=0 (trung điểm hai cực trị); đọc từ đồ thị hoặc tính từ công thức.",
+       "tu": [
+        "P2.1.4"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C2.2.4",
+       "ten": "Hai điểm cực trị bậc ba: độ dài, diện tích, đường thẳng",
+       "mo_ta": "Tìm hai điểm cực trị A, B rồi tính AB, diện tích tam giác OAB, khoảng cách, phương trình đường thẳng AB, quan hệ của AB với điểm/đường khác.",
+       "tu": [
+        "P2.1.6",
+        "P2.1.7",
+        "P2.1.8"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C2.2.5",
+       "ten": "Tìm m để hàm đa thức đơn điệu trên ℝ hoặc khoảng",
+       "mo_ta": "Hàm bậc ba (đôi khi bậc bốn) chứa m: đơn điệu trên ℝ ⇒ điều kiện Δ của y′; trên một khoảng ⇒ cô lập m. Đang kế thừa cả P2.1.9 (gồm ~11 câu cực trị theo m sẽ chuyển sang C2.2.6 khi gắn lại câu).",
+       "tu": [
+        "P2.1.9"
+       ],
+       "moi": [
+        "tìm m để hàm số đơn điệu trên khoảng cho trước",
+        "tìm m để hàm số đơn điệu trên khoảng hoặc trên R"
+       ],
+       "hiem": false
+      },
+      {
+       "id": "C2.2.6",
+       "ten": "Tìm m để hàm đa thức có cực trị thoả điều kiện",
+       "mo_ta": "Hàm đa thức chứa tham số: có/không có cực trị, đạt cực trị tại điểm cho trước, hệ thức giữa hai điểm cực trị (Viète), số cực trị của trùng phương theo dấu ab. Nhận ~11 câu cực trị theo m hiện gắn P2.1.9.",
+       "tu": [],
+       "moi": [
+        "tìm tham số để hàm bậc bốn đạt cực tiểu tại điểm cho trước",
+        "tìm m để hàm đa thức bậc cao đạt cực đại tại điểm cho trước",
+        "xác suất kết hợp điều kiện số cực trị hàm trùng phương"
+       ],
+       "hiem": true
+      }
+     ]
+    },
+    {
+     "id": "C2.3",
+     "ten": "Hàm bậc nhất trên bậc nhất",
+     "dang": [
+      {
+       "id": "C2.3.1",
+       "ten": "Xét hệ số của hàm bậc nhất trên bậc nhất",
+       "mo_ta": "Đề cho đồ thị/bảng biến thiên của y=(ax+b)/(cx+d); suy dấu hoặc giá trị a, b, c, d từ tiệm cận, giao điểm với trục, chiều biến thiên.",
+       "tu": [
+        "P2.2.2"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C2.3.2",
+       "ten": "Tâm đối xứng của đồ thị hàm nhất biến",
+       "mo_ta": "Tâm đối xứng = giao hai tiệm cận; điểm đối xứng qua tâm, tính biểu thức theo toạ độ tâm.",
+       "tu": [
+        "P2.2.3"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C2.3.3",
+       "ten": "Tìm tham số cho hàm nhất biến",
+       "mo_ta": "Hàm nhất biến chứa m: đơn điệu trên từng khoảng xác định (dấu ad−bc) hoặc trên khoảng cho trước (thêm điều kiện −d/c ngoài khoảng), GTLN/GTNN trên đoạn bằng k, tiệm cận cho trước.",
+       "tu": [
+        "P2.2.4"
+       ],
+       "moi": [],
+       "hiem": false
+      }
+     ]
+    },
+    {
+     "id": "C2.4",
+     "ten": "Hàm bậc hai trên bậc nhất",
+     "dang": [
+      {
+       "id": "C2.4.1",
+       "ten": "Xét hệ số của hàm bậc hai trên bậc nhất",
+       "mo_ta": "Đề cho đồ thị/bảng biến thiên của y=(ax²+bx+c)/(dx+e); suy hệ số từ tiệm cận đứng, tiệm cận xiên, cực trị, giao trục.",
+       "tu": [
+        "P2.3.2"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C2.4.2",
+       "ten": "Tâm đối xứng của đồ thị bậc hai trên bậc nhất",
+       "mo_ta": "Tâm đối xứng = giao tiệm cận đứng và tiệm cận xiên (chia đa thức để có tiệm cận xiên); tính biểu thức theo toạ độ tâm.",
+       "tu": [],
+       "moi": [
+        "tâm đối xứng của đồ thị hàm bậc hai trên bậc nhất",
+        "tìm tâm đối xứng đồ thị hàm bậc hai trên bậc nhất",
+        "tâm đối xứng đồ thị hàm bậc hai trên bậc nhất (giao hai tiệm cận)",
+        "tâm đối xứng đồ thị hàm bậc hai trên bậc nhất, tính tổng toạ độ",
+        "tìm tâm đối xứng của đồ thị hàm bậc hai trên bậc nhất"
+       ],
+       "hiem": false
+      },
+      {
+       "id": "C2.4.3",
+       "ten": "Hai cực trị và tham số hàm bậc hai trên bậc nhất",
+       "mo_ta": "Đường thẳng qua hai cực trị (y=u′/v′), diện tích/khoảng cách gắn với hai điểm cực trị, khoảng cách tới tiệm cận xiên; tìm m để có cực đại–cực tiểu, đạt cực trị tại điểm, đơn điệu.",
+       "tu": [
+        "P2.3.3"
+       ],
+       "moi": [
+        "khoảng cách từ điểm cực trị đến tiệm cận xiên",
+        "hàm phân thức bậc hai: đường thẳng qua hai cực trị, diện tích tam giác với trục",
+        "hàm bậc hai/bậc nhất: diện tích hình chữ nhật tạo bởi hai điểm cực trị trên đồ thị",
+        "diện tích tam giác tạo bởi hai điểm cực trị hàm phân thức",
+        "phương trình đường thẳng qua hai cực trị hàm bậc hai trên bậc nhất"
+       ],
+       "hiem": false
+      }
+     ]
+    },
+    {
+     "id": "C2.5",
+     "ten": "Hàm hợp, hàm ẩn, hàm chứa trị tuyệt đối (nâng cao)",
+     "dang": [
+      {
+       "id": "C2.5.1",
+       "ten": "Xét đơn điệu của hàm hợp f(u(x)) khi biết f′",
+       "mo_ta": "Đề cho đồ thị/bảng xét dấu f′; xét g=f(u(x))(+v(x)) bằng g′=u′·f′(u), có thể chứa tham số.",
+       "tu": [
+        "P2.4.1",
+        "P2.4.2",
+        "P2.4.4"
+       ],
+       "moi": [],
+       "hiem": true
+      },
+      {
+       "id": "C2.5.2",
+       "ten": "Đếm cực trị của hàm hợp, hàm chứa trị tuyệt đối",
+       "mo_ta": "Số cực trị của f(x)+ax (từ đồ thị f′), |f(x)|, f(|x|), f(u(x)); tìm m để có số cực trị cho trước.",
+       "tu": [
+        "P2.5.1",
+        "P2.5.2",
+        "P2.5.3",
+        "P2.5.4"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C2.5.3",
+       "ten": "GTLN, GTNN chứa tham số hoặc hàm ẩn",
+       "mo_ta": "Cho GTLN/GTNN bằng k tìm m; từ đồ thị f′ so sánh f(a), f(b); phương trình–bất phương trình chứa m dùng max–min; biểu thức nhiều biến có ràng buộc.",
+       "tu": [
+        "P2.6.1",
+        "P2.6.2",
+        "P2.6.4",
+        "P2.6.6"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C2.5.4",
+       "ten": "Tiệm cận của hàm hợp hoặc hàm có tham số",
+       "mo_ta": "Đếm tiệm cận của g=1/(f(x)+m), g=h(x)/f(x) qua bảng biến thiên của f; tìm m để đồ thị có đúng k tiệm cận.",
+       "tu": [
+        "P2.7.1",
+        "P1.7.4"
+       ],
+       "moi": [],
+       "hiem": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "C3",
+   "ten": "Tương giao, tiếp tuyến, khoảng cách",
+   "mo_ta": "Bài toán trên đồ thị quen từ lớp 11, nay dùng với các hàm ở phần 2. Trong đề K12 phần này ít (≈100 câu không Đ/S).",
+   "nhom": [
+    {
+     "id": "C3.1",
+     "ten": "Tương giao của đồ thị",
+     "dang": [
+      {
+       "id": "C3.1.1",
+       "ten": "Điểm thuộc đồ thị, giao điểm với trục toạ độ",
+       "mo_ta": "Thay toạ độ để kiểm điểm thuộc đồ thị; đọc/tính giao điểm với trục tung, trục hoành; điểm có toạ độ nguyên thuộc đồ thị.",
+       "tu": [
+        "P3.3.3"
+       ],
+       "moi": [
+        "kiểm tra điểm thuộc đồ thị hàm số",
+        "kiểm điểm thuộc đồ thị bằng thay toạ độ vào hàm",
+        "đọc toạ độ giao điểm của đồ thị với trục từ hình vẽ"
+       ],
+       "hiem": true
+      },
+      {
+       "id": "C3.1.2",
+       "ten": "Đếm nghiệm f(x)=m, số giao điểm từ đồ thị",
+       "mo_ta": "Đề cho đồ thị/bảng biến thiên (thường bậc ba); số nghiệm của f(x)=m là số giao điểm với đường ngang y=m; tìm m để có số nghiệm cho trước.",
+       "tu": [
+        "P3.1.1",
+        "P2.1.5"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C3.1.3",
+       "ten": "Giao điểm thoả hệ thức hoặc điều kiện hình học",
+       "mo_ta": "Lập phương trình hoành độ giao điểm, dùng Viète cho hệ thức hoành độ, hình học trên các giao điểm, giới hạn của hoành độ giao điểm.",
+       "tu": [
+        "P3.1.2",
+        "P3.1.3"
+       ],
+       "moi": [
+        "giới hạn của nghiệm phương trình f(x)=n khi n tiến ra vô cực"
+       ],
+       "hiem": true
+      }
+     ]
+    },
+    {
+     "id": "C3.2",
+     "ten": "Tiếp tuyến",
+     "dang": [
+      {
+       "id": "C3.2.1",
+       "ten": "Viết tiếp tuyến tại điểm hoặc biết hệ số góc",
+       "mo_ta": "Tiếp tuyến tại điểm cho trước, song song/vuông góc đường thẳng, hệ số góc tiếp tuyến lớn nhất/nhỏ nhất (tìm max–min của y′).",
+       "tu": [
+        "P3.2.1",
+        "P3.2.2"
+       ],
+       "moi": [
+        "hệ số góc tiếp tuyến lớn nhất hoặc nhỏ nhất của đồ thị"
+       ],
+       "hiem": true
+      },
+      {
+       "id": "C3.2.2",
+       "ten": "Tiếp tuyến cắt hai tiệm cận của hàm nhất biến",
+       "mo_ta": "Tiếp tuyến tại M cắt hai tiệm cận tại A, B: M là trung điểm AB, diện tích tam giác IAB không đổi.",
+       "tu": [
+        "P3.2.3"
+       ],
+       "moi": [],
+       "hiem": true
+      }
+     ]
+    },
+    {
+     "id": "C3.3",
+     "ten": "Khoảng cách và hình học của tiệm cận",
+     "dang": [
+      {
+       "id": "C3.3.1",
+       "ten": "Khoảng cách nhỏ nhất từ điểm trên đồ thị",
+       "mo_ta": "Điểm M chạy trên đồ thị: khoảng cách nhỏ nhất tới điểm/đường cho trước, tổng khoảng cách tới hai tiệm cận (hoặc hai đường thẳng) nhỏ nhất.",
+       "tu": [
+        "P3.3.1",
+        "P3.3.4"
+       ],
+       "moi": [
+        "điểm trên đồ thị làm tổng khoảng cách tới hai đường thẳng nhỏ nhất"
+       ],
+       "hiem": false
+      },
+      {
+       "id": "C3.3.2",
+       "ten": "Diện tích, góc tạo bởi tiệm cận và trục toạ độ",
+       "mo_ta": "Tìm tiệm cận rồi tính diện tích hình tạo bởi tiệm cận với hai trục (hoặc với nhau), góc giữa hai tiệm cận / giữa đường thẳng và tiệm cận.",
+       "tu": [
+        "P3.3.5",
+        "P3.3.6"
+       ],
+       "moi": [],
+       "hiem": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "C4",
+   "ten": "Bài toán thực tế",
+   "mo_ta": "Ứng dụng đạo hàm vào bài toán thực tiễn, tách theo loại mô hình: hàm cho sẵn · lập hàm từ hình học · đường đi · kinh tế · chuyển động · tốc độ thay đổi.",
+   "nhom": [
+    {
+     "id": "C4.1",
+     "ten": "Hàm mô hình cho sẵn",
+     "dang": [
+      {
+       "id": "C4.1.1",
+       "ten": "Tìm GTLN, GTNN của hàm mô hình cho sẵn",
+       "mo_ta": "Đề cho sẵn công thức mô hình (nồng độ, lợi nhuận, chi phí…) và miền thực tế; tìm giá trị lớn nhất/nhỏ nhất hoặc thời điểm đạt.",
+       "tu": [
+        "P4.1.1"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C4.1.2",
+       "ten": "Tìm tham số của mô hình từ điều kiện",
+       "mo_ta": "Mô hình có hệ số chưa biết; dùng giá trị cho trước, điều kiện đầu hoặc điều kiện cực trị để lập hệ tìm hệ số rồi tính tiếp.",
+       "tu": [
+        "P4.1.2"
+       ],
+       "moi": [
+        "lập hàm bậc ba mô hình vận tốc từ giá trị cho trước, tính giá trị"
+       ],
+       "hiem": false
+      },
+      {
+       "id": "C4.1.3",
+       "ten": "Khoảng tăng giảm và ngưỡng của hàm mô hình",
+       "mo_ta": "Hàm mô hình cho sẵn: khoảng tăng/giảm và ý nghĩa thực tiễn; tìm ngưỡng của biến để đại lượng không vượt mức, hoà vốn, có lãi (giải bất phương trình, có khi không cần đạo hàm).",
+       "tu": [
+        "P4.1.3"
+       ],
+       "moi": [
+        "kinh tế: giải bất phương trình lợi nhuận hoặc hoà vốn, không dùng đạo hàm",
+        "hàm chi phí cho sẵn: tìm ngưỡng biến để chi phí không vượt mức"
+       ],
+       "hiem": false
+      },
+      {
+       "id": "C4.1.4",
+       "ten": "Giá trị ngưỡng dài hạn của mô hình (tiệm cận)",
+       "mo_ta": "Mô hình bão hoà cho sẵn hoặc tự lập hàm nồng độ, chi phí trung bình; tìm tiệm cận ngang để kết luận giá trị dài hạn.",
+       "tu": [
+        "P4.8.1",
+        "P4.8.2"
+       ],
+       "moi": [],
+       "hiem": false
+      }
+     ]
+    },
+    {
+     "id": "C4.2",
+     "ten": "Tối ưu phải lập hàm từ hình học",
+     "dang": [
+      {
+       "id": "C4.2.1",
+       "ten": "Hộp, bể, lon: vật liệu nhỏ nhất, thể tích lớn nhất",
+       "mo_ta": "Khối hộp, hình trụ, bể có thể tích hoặc diện tích cố định; đặt ẩn kích thước, lập hàm vật liệu/thể tích rồi tìm cực trị (kể cả bài tối ưu tổng thể tích các khối cầu).",
+       "tu": [
+        "P4.2.1"
+       ],
+       "moi": [
+        "hình cầu trong hình lập phương: tối ưu tổng thể tích"
+       ],
+       "hiem": false
+      },
+      {
+       "id": "C4.2.2",
+       "ten": "Diện tích, chu vi hình phẳng lớn nhất; cắt uốn dây",
+       "mo_ta": "Hình chữ nhật, tam giác, hình nội tiếp nửa đường tròn (ẩn có thể là góc); cắt sợi dây thành hai hình có tổng diện tích nhỏ nhất.",
+       "tu": [
+        "P4.2.2",
+        "P4.2.3"
+       ],
+       "moi": [
+        "diện tích hình chữ nhật nội tiếp nửa đường tròn theo góc, xét đơn điệu"
+       ],
+       "hiem": false
+      },
+      {
+       "id": "C4.2.3",
+       "ten": "Tối ưu trên parabol, đồ thị đặt trong hệ toạ độ",
+       "mo_ta": "Hình (cổng, mái vòm, mặt cắt) mô hình bằng parabol/bậc ba trong hệ trục; lập hàm theo toạ độ điểm rồi tối ưu.",
+       "tu": [
+        "P4.2.4"
+       ],
+       "moi": [],
+       "hiem": false
+      }
+     ]
+    },
+    {
+     "id": "C4.3",
+     "ten": "Tối ưu đường đi, khoảng cách, góc",
+     "dang": [
+      {
+       "id": "C4.3.1",
+       "ten": "Đường đi qua hai môi trường",
+       "mo_ta": "Đi qua bờ và nước (hai vận tốc hoặc hai đơn giá), chọn điểm rẽ để thời gian/chi phí nhỏ nhất.",
+       "tu": [
+        "P4.3.1"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C4.3.2",
+       "ten": "Quãng đường, khoảng cách ngắn nhất hoặc dài nhất",
+       "mo_ta": "Lập hàm khoảng cách/quãng đường theo vị trí, thời gian hoặc góc (hai vật chuyển động, đặt trạm, gấp giấy…) rồi tìm max–min.",
+       "tu": [
+        "P4.3.2"
+       ],
+       "moi": [
+        "tối ưu quãng đường lớn nhất, lập hàm theo góc"
+       ],
+       "hiem": false
+      },
+      {
+       "id": "C4.3.3",
+       "ten": "Thang dài nhất qua góc hành lang, góc nhìn lớn nhất",
+       "mo_ta": "Thang/sào/ống đi qua góc hai hành lang (lập hàm theo góc), góc nhìn hoặc góc chiếu lớn nhất.",
+       "tu": [
+        "P4.3.3",
+        "P4.3.4"
+       ],
+       "moi": [],
+       "hiem": false
+      }
+     ]
+    },
+    {
+     "id": "C4.4",
+     "ten": "Tối ưu kinh tế",
+     "dang": [
+      {
+       "id": "C4.4.1",
+       "ten": "Giá và lượng cầu tuyến tính: doanh thu, lợi nhuận lớn nhất",
+       "mo_ta": "Giảm giá x đồng thì bán thêm y sản phẩm; tự lập hàm doanh thu/lợi nhuận theo giá rồi tối ưu.",
+       "tu": [
+        "P4.4.1"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C4.4.2",
+       "ten": "Lợi nhuận bằng doanh thu trừ chi phí cho sẵn",
+       "mo_ta": "Cho sẵn hàm doanh thu, chi phí (hoặc chi phí biên); lập lợi nhuận và tìm sản lượng tối ưu.",
+       "tu": [
+        "P4.4.2"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C4.4.3",
+       "ten": "Chi phí trung bình nhỏ nhất",
+       "mo_ta": "Chi phí trung bình C(x)/x hoặc mô hình EOQ; tìm sản lượng/lượng nhập để chi phí trung bình nhỏ nhất.",
+       "tu": [
+        "P4.4.3"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C4.4.4",
+       "ten": "Số máy, số lô hàng, phân bổ nguồn lực tối ưu",
+       "mo_ta": "Chọn số máy, số lô, số đợt giao, hoặc chia một tổng cố định (x+y không đổi) giữa hai việc/hai người để chi phí hoặc thời gian nhỏ nhất.",
+       "tu": [
+        "P4.4.4"
+       ],
+       "moi": [
+        "tối ưu tổng hai hàm theo phân bổ x+y cố định",
+        "tối ưu thời gian dùng hết nhiên liệu của hai người",
+        "tối ưu lập hàm từ phân công sản xuất, tìm số ngày ít nhất"
+       ],
+       "hiem": false
+      },
+      {
+       "id": "C4.4.5",
+       "ten": "Chọn mức thuế để tiền thuế thu được lớn nhất",
+       "mo_ta": "Hai tầng: với mỗi mức thuế t, doanh nghiệp chọn sản lượng tối ưu Q(t); rồi tối ưu tiền thuế t·Q(t). Nhận thêm ~5 câu \"thuế phụ thu\" hiện gắn P4.4.2 khi gắn lại câu.",
+       "tu": [],
+       "moi": [
+        "tối ưu kinh tế có thuế phụ thu: tìm mức thuế t",
+        "kinh tế: tối ưu lợi nhuận xuất khẩu có thuế"
+       ],
+       "hiem": true
+      },
+      {
+       "id": "C4.4.6",
+       "ten": "Chi phí chuyến đi theo vận tốc",
+       "mo_ta": "Chi phí/nhiên liệu mỗi giờ phụ thuộc vận tốc (thường bậc ba), thời gian = quãng đường/vận tốc (có dòng nước thì trừ vận tốc dòng); lập hàm tổng chi phí theo v rồi tìm min. Nhận thêm ~8 câu hiện rải ở P4.4.2, P4.4.3, P4.1.3.",
+       "tu": [],
+       "moi": [
+        "lập hàm tổng chi phí chuyến đi theo vận tốc rồi tìm nhỏ nhất",
+        "lập hàm năng lượng theo vận tốc rồi tìm giá trị nhỏ nhất"
+       ],
+       "hiem": true
+      }
+     ]
+    },
+    {
+     "id": "C4.5",
+     "ten": "Chuyển động: vận tốc, gia tốc",
+     "dang": [
+      {
+       "id": "C4.5.1",
+       "ten": "Tính vận tốc, gia tốc; chiều chuyển động",
+       "mo_ta": "Cho phương trình chuyển động s(t): v=s′, a=v′ tại thời điểm; khi nào vật dừng, đổi chiều, tăng/giảm tốc.",
+       "tu": [
+        "P4.5.1"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C4.5.2",
+       "ten": "Vận tốc, gia tốc lớn nhất",
+       "mo_ta": "Tìm thời điểm vận tốc (hoặc gia tốc) lớn nhất/nhỏ nhất trong khoảng thời gian: tối ưu hàm v(t) hoặc a(t).",
+       "tu": [
+        "P4.5.2"
+       ],
+       "moi": [],
+       "hiem": false
+      }
+     ]
+    },
+    {
+     "id": "C4.6",
+     "ten": "Tốc độ thay đổi của đại lượng",
+     "dang": [
+      {
+       "id": "C4.6.1",
+       "ten": "Ý nghĩa của đạo hàm, chi phí biên",
+       "mo_ta": "Đạo hàm là tốc độ thay đổi tức thời; chi phí biên, tốc độ tăng dân số/nhiệt độ tại một thời điểm.",
+       "tu": [
+        "P4.6.1"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C4.6.2",
+       "ten": "Thời điểm tốc độ tăng trưởng lớn nhất",
+       "mo_ta": "Mô hình tăng trưởng (logistic, bơm xăng, lan truyền tin…): tốc độ là f′(t); tìm thời điểm f′ lớn nhất (thường f″=0).",
+       "tu": [
+        "P4.6.2"
+       ],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C4.6.3",
+       "ten": "Tốc độ liên quan giữa hai đại lượng",
+       "mo_ta": "Hai đại lượng liên hệ qua hình học (thang trượt, nước dâng trong bình): đạo hàm hai vế theo thời gian.",
+       "tu": [
+        "P4.7.1",
+        "P4.7.2"
+       ],
+       "moi": [],
+       "hiem": true
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "gop": [],
+ "bo_moi": [
+  {
+   "mo_ta": "đọc đại lượng từ bảng biến thiên, yêu cầu không rõ",
+   "ly_do": "đề hỏng: yêu cầu không rõ, không xác định được việc phải làm"
+  },
+  {
+   "mo_ta": "đọc đặc điểm hàm số từ đồ thị (đề cụt)",
+   "ly_do": "đề hỏng: đề cụt, thiếu câu hỏi"
+  },
+  {
+   "mo_ta": "thực tế tìm số ngày ít nhất, đề thiếu dữ kiện",
+   "ly_do": "đề hỏng: thiếu dữ kiện (bản đủ của bài này là T112010403013, đã xếp C4.4.4)"
+  }
+ ],
+ "cau_hoi": [
+  {
+   "ma": "H1",
+   "tieu_de": "Nhận dạng đồ thị: một nhóm chung hay trả về từng loại hàm?",
+   "mo_ta": "Có 305 câu \"đường cong trong hình là đồ thị hàm nào\" (bậc ba 143, nhất biến 100, bậc hai/bậc nhất 62) + 9 câu NEW (trùng phương, hỗn hợp). 128 câu có bốn phương án khác loại hàm, nhưng chỉ ~7 câu chọn được chỉ nhờ nhận LOẠI hàm; ~121 câu vẫn phải phân biệt trong cùng loại (dấu a, toạ độ cực trị). Vì vậy tôi gom thành nhóm C2.1 \"Nhận dạng\" (mỗi loại một dạng theo loại của đáp án) + một dạng hiếm C2.1.5 cho câu chỉ cần nhận loại.",
+   "chon": [
+    [
+     "Nhóm chung C2.1 \"Nhận dạng\" (như đề xuất)",
+     "HS học nhận dạng mọi loại hàm ở một chỗ, so sánh trực tiếp; các nhóm loại hàm còn lại gọn hơn (3–6 dạng).",
+     true
+    ],
+    [
+     "Trả dạng nhận dạng về từng nhóm loại hàm",
+     "Đúng khung \"đi theo từng loại hàm\" hơn; dạng C2.1.5 (phân biệt loại) và C2.1.4 (trùng phương) phải tìm chỗ khác.",
+     false
+    ]
+   ]
+  },
+  {
+   "ma": "H2",
+   "tieu_de": "Hàm trùng phương: có cần nhóm riêng ở Phần 2?",
+   "mo_ta": "Trong 3.768 câu chỉ ~15 câu mang đặc trưng trùng phương (6 câu tính cực trị khi cho công thức, 2 câu nhận dạng đồ thị/BBT, 3 câu tham số/số cực trị theo dấu ab); các bài GTLN/đơn điệu trên x⁴ (≈25 câu) là tính toán thuần đã nằm ở Phần 1. Đề xuất: tính cực trị → C1.2.1 (cùng cách giải với bậc ba), nhận dạng → C2.1.4, tham số → C2.2.6.",
+   "chon": [
+    [
+     "Không nhóm riêng, rải theo cách giải (như đề xuất)",
+     "Không có nhóm 3 dạng mỗi dạng 2–6 câu; trùng phương vẫn có chỗ rõ ở cả 3 nơi.",
+     true
+    ],
+    [
+     "Nhóm riêng \"Hàm trùng phương\" trong Phần 2",
+     "Nhóm gồm 3 dạng hiếm (cực trị, nhận dạng, tham số) ~15 câu; đối xứng với các loại hàm khác nhưng rất mỏng dữ liệu.",
+     false
+    ]
+   ]
+  },
+  {
+   "ma": "H3",
+   "tieu_de": "Tâm đối xứng đồ thị phân thức: tách theo loại hàm hay gộp?",
+   "mo_ta": "Nhất biến (P2.2.3, 43 câu) và bậc hai/bậc nhất (NEW, ~12 câu) cùng một cách giải: tâm = giao hai tiệm cận (bậc hai/bậc nhất phải chia đa thức để có tiệm cận xiên). Bậc ba (17 câu) khác hẳn (điểm uốn, y″=0). Đề xuất tách theo loại hàm (C2.3.2, C2.4.2) cho đúng khung Phần 2.",
+   "chon": [
+    [
+     "Tách theo loại hàm: C2.3.2 + C2.4.2 (như đề xuất)",
+     "Mỗi nhóm loại hàm có đủ \"tâm đối xứng\" của nó; C2.4.2 chỉ ~12 câu.",
+     true
+    ],
+    [
+     "Gộp một dạng \"Tâm đối xứng = giao hai tiệm cận\" (~55 câu)",
+     "Đúng luật \"cùng cách giải là một dạng\" hơn, nhưng dạng nằm vắt giữa hai nhóm loại hàm.",
+     false
+    ]
+   ]
+  },
+  {
+   "ma": "H4",
+   "tieu_de": "Hàm hợp / hàm ẩn / trị tuyệt đối: giữ nhóm nâng cao riêng?",
+   "mo_ta": "P2.4–P2.7 cộng lại chỉ ~44 câu (mức 3–4), không thuộc một \"loại hàm\" cụ thể. Đề xuất giữ một nhóm C2.5 \"nâng cao\" gồm 4 dạng theo phương diện (đơn điệu 6, cực trị 14, GTLN có tham số 14, tiệm cận 10 — gồm cả P1.7.4 tìm m để có k tiệm cận).",
+   "chon": [
+    [
+     "Giữ nhóm nâng cao C2.5 trong Phần 2 (như đề xuất)",
+     "Bài khó của 4 phương diện có một chỗ rõ; hai dạng đơn điệu, tiệm cận là dạng hiếm.",
+     true
+    ],
+    [
+     "Gộp xuống thành 2 dạng (đơn điệu+cực trị · GTLN+tiệm cận)",
+     "Đỡ dạng hiếm, nhưng trộn các kỹ thuật khác nhau trong một dạng.",
+     false
+    ]
+   ]
+  }
+ ]
+}
