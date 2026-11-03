@@ -78572,3 +78572,11 @@ Thùy nêu 4 việc, làm được 3:
 - Còn để ngỏ: vườn bạn vẫn hiện nhà/nền của chính em (server `fn_nt_ban_vuon` không trả `giaoDien`).
 - 03/11 tối (tiếp) — Thùy: "sang thăm bạn thì phải hiện vườn nhà bạn". Game 6b87408: `banTT` mang `giaoDien` của bạn (bạn thật: từ `fn_nt_ban_vuon`; bạn ảo bản thử: suy từ k), `dongBo()` gọi `apGiaoDien(st)` ⇒ đang thăm thì nhà & cảnh của BẠN, bạn chưa chọn ⇒ mặc định, về nhà ⇒ của em. Đã soi ở 1024×768: bạn Minh = nhà Nhật + tuyết, bạn An = Hy Lạp + Halloween, về nhà = gỗ + đồng quê. Sửa kèm: thanh "Vườn của…" nâng lên `150px * --k` (trước đè dòng gợi ý 2 hàng khi chữ to).
 - Mig `202611031927_nt_ban_vuon_giao_dien.sql` (fn_nt_ban_vuon trả thêm `giaoDien` {nha, nen} theo danh sách trắng, phần còn lại y bản 202610131557 — đã đối chiếu prosrc live): **CHƯA ÁP** — lệnh migrate bị chặn quyền trong phiên. Chưa áp thì game vẫn chạy, chỉ là vườn bạn thật hiện mặc định (gỗ + đồng quê).
+
+## 03/11 (tối) — Đấu trường: RESET bảng xếp hạng bằng MỐC MÙA (không xoá gì) — mig 202611031929 + 202611031930 ĐÃ ÁP
+- Thùy: "reset lại toàn bộ bảng xếp hạng của đấu trường" (sau đổi luật trừ điểm + xáo đáp án), chốt **"Chỉ BXH"** ⇒ cấp/XP/số trận/chuỗi trong hồ sơ giữ nguyên.
+- Nguồn số BXH: (1) `fn_dtv_bxh` XP · chuỗi thắng · chuỗi ngày (cột cộng dồn `dtv_nguoi_choi`); (2) `fn_dtv_thap_bxh_mon` tháp Kỷ lục/Hôm nay (`dtv_thap_luot`); (3) ô C1 Leo tháp Sinh tồn trong BXH chung (`_bxh_gia_tri`).
+- Làm: bảng `dtv_mua` (mùa 1 = lúc áp) + `_dtv_mua_bat_dau()`. BXH XP = xp − `xp_dau_mua` (chụp lúc mở mùa); chuỗi thắng = `chuoi_thang_max_mua` (`fn_dtv_ghi_tran_mon` cập nhật); tháp + C1 lọc `tao_at >= mốc`.
+- Sai lần 1 (sửa ở mig …1930): chuỗi ngày kẹp theo số ngày từ mốc ⇒ em học hôm nay TRƯỚC mốc vẫn hiện chuỗi 1 (10 em hạng 1 ngay sau reset). Nay chuỗi ngày SUY từ ngày có trận/lượt tháp trong mùa (gaps-and-islands), không cột mới.
+- Kiểm JWT HS (rollback): cả 3 tiêu chí + tháp Sinh tồn/Vô tận + C1 = trống; chơi 1 trận thắng ⇒ XP +40 hạng 1, chuỗi thắng 1, chuỗi ngày 1; hồ sơ giữ xp 1675 / 29 trận / chuỗi max 11.
+- Mở mùa sau: insert dtv_mua + update xp_dau_mua = xp, chuoi_thang_mua = 0, chuoi_thang_max_mua = 0 cùng transaction.
