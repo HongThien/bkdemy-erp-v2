@@ -1,0 +1,2848 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00396",
+   "khoi": "8",
+   "chu_de": "Sinh học ở cơ thể người",
+   "chuyen_de": "Khái quát cơ thể người và hệ vận động ở người",
+   "nhom": "KHÁI QUÁT TỔ CHỨC CƠ THỂ NGƯỜI VÀ CÁC HỆ CƠ QUAN",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "•  Cấp độ tổ chức cơ thể xếp theo thứ tự từ nhỏ đến lớn: tế bào → mô → cơ quan → hệ cơ quan → cơ thể.\n•  Tế bào là đơn vị cấu trúc và chức năng cơ bản của cơ thể sống.\n•  Mô gồm các tế bào giống nhau về cấu tạo, cùng thực hiện một chức năng nhất định.\n•  Cơ quan được tạo thành từ nhiều loại mô khác nhau, cùng thực hiện một chức năng nhất định.\n•  Hệ cơ quan gồm nhiều cơ quan phối hợp thực hiện một chức năng chung.\n•  Cơ thể gồm 8 hệ cơ quan chính: vận động, tuần hoàn, hô hấp, tiêu hoá, bài tiết, thần kinh, nội tiết, sinh dục.\n•  Các hệ cơ quan phối hợp thống nhất, dưới sự điều khiển của hệ thần kinh và điều hoà của hệ nội tiết (cơ chế thần kinh - thể dịch).",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00397",
+   "khoi": "8",
+   "chu_de": "Sinh học ở cơ thể người",
+   "chuyen_de": "Khái quát cơ thể người và hệ vận động ở người",
+   "nhom": "CẤU TẠO VÀ CHỨC NĂNG CỦA BỘ XƯƠNG",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "•  Bộ xương chia 3 phần: xương đầu (bảo vệ não), xương thân (cột sống, xương sườn, xương ức), xương chi (xương đai và xương tự do).\n•  Chức năng bộ xương: nâng đỡ, bảo vệ nội quan, là nơi bám của cơ giúp cơ thể vận động, tuỷ đỏ sinh tế bào máu, dự trữ calcium và phosphorus.\n•  Xương dài gồm đầu xương (mô xương xốp) và thân xương (mô xương cứng, ống tuỷ chứa tuỷ xương), bọc ngoài là màng xương.\n•  Thành phần hoá học của xương: chất hữu cơ (cốt giao - tạo tính đàn hồi) và chất vô cơ (muối khoáng - tạo tính cứng rắn); tỉ lệ chất hữu cơ giảm dần theo tuổi khiến xương người già giòn, dễ gãy hơn.\n•  Có 3 loại khớp: khớp động (cử động dễ dàng, ví dụ khớp gối), khớp bán động (cử động hạn chế, ví dụ khớp giữa các đốt sống), khớp bất động (không cử động, ví dụ khớp giữa các xương sọ).",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00398",
+   "khoi": "8",
+   "chu_de": "Sinh học ở cơ thể người",
+   "chuyen_de": "Khái quát cơ thể người và hệ vận động ở người",
+   "nhom": "HỆ CƠ VÀ SỰ PHỐI HỢP HOẠT ĐỘNG GIỮA CƠ VÀ XƯƠNG",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "•  Cơ vân (cơ xương) bám vào xương qua gân, cấu tạo từ nhiều bó sợi cơ, mỗi sợi cơ gồm nhiều tơ cơ.\n•  Cơ có tính chất co và dãn; khi co, bắp cơ ngắn lại và to bề ngang hơn.\n•  Cơ thường sắp xếp thành cặp đối kháng: khi cơ này co thì cơ kia dãn (ví dụ cơ nhị đầu và cơ tam đầu ở cánh tay).\n•  Sự phối hợp cơ - xương theo nguyên lí đòn bẩy: xương là đòn bẩy, khớp là điểm tựa, cơ co tạo lực kéo làm xương cử động quanh khớp.\n•  Hệ thần kinh điều khiển cơ co, dãn đúng lúc để tạo ra động tác chính xác.\n•  Mỏi cơ xảy ra khi cơ hoạt động quá sức, kéo dài, do thiếu oxygen và tích tụ acid lactic; nghỉ ngơi, xoa bóp, hít thở sâu giúp cơ nhanh hết mỏi.\n•  Luyện tập thể dục thể thao đều đặn, đúng cách giúp cơ phát triển, tăng sức bền.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00399",
+   "khoi": "8",
+   "chu_de": "Sinh học ở cơ thể người",
+   "chuyen_de": "Khái quát cơ thể người và hệ vận động ở người",
+   "nhom": "BẢO VỆ HỆ VẬN ĐỘNG",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "•  Một số bệnh, tật thường gặp: loãng xương (giảm mật độ khoáng, hay gặp ở người cao tuổi), còi xương (thiếu calcium, vitamin D ở trẻ em), cong vẹo cột sống (do ngồi sai tư thế, mang vác lệch), bong gân (tổn thương dây chằng), trật khớp, gãy xương.\n•  Biện pháp phòng tránh: bổ sung đủ calcium và vitamin D, tắm nắng hợp lý, ngồi/đứng đúng tư thế, mang vác cân đối hai vai, luyện tập thể dục thể thao đều đặn, khởi động kĩ trước khi vận động mạnh.\n•  Nguyên tắc sơ cứu khi nghi ngờ gãy xương: cố định xương gãy bằng nẹp (qua cả khớp trên và dưới chỗ gãy), không tự ý nắn xương, nhanh chóng đưa nạn nhân đến cơ sở y tế.\n•  Khi bị bong gân: chườm lạnh vùng tổn thương, không xoa bóp mạnh ngay để tránh làm tổn thương nặng thêm.\n•  Khi nghi ngờ chấn thương cột sống: hạn chế tối đa di chuyển, đặc biệt là vùng cổ và lưng.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00400",
+   "khoi": "8",
+   "chu_de": "Sinh học ở cơ thể người",
+   "chuyen_de": "Dinh dưỡng và Tiêu hóa ở người",
+   "nhom": "CHẤT DINH DƯỠNG VÀ NHU CẦU DINH DƯỠNG CỦA CƠ THỂ",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "•  Carbohydrate, protein, lipid là nhóm chất sinh năng lượng; vitamin, chất khoáng, nước, chất xơ là nhóm chất cần lượng nhỏ nhưng thiết yếu, phần lớn không sinh năng lượng.\n•  Carbohydrate cung cấp năng lượng chính (gạo, ngô, khoai); protein cấu tạo, đổi mới tế bào, tạo enzyme, hormone (thịt, cá, trứng, sữa); lipid dự trữ năng lượng, cấu tạo màng tế bào, hoà tan vitamin tan trong dầu (dầu, mỡ, bơ).\n•  Vitamin chia 2 nhóm: tan trong nước (B, C) và tan trong dầu (A, D, E, K); thiếu vitamin A gây quáng gà, thiếu vitamin D gây còi xương, thiếu vitamin C gây chảy máu chân răng.\n•  Chất khoáng: calcium (xương, răng), sắt (tạo hemoglobin), iodine (tuyến giáp, thiếu gây bướu cổ).\n•  Nước là môi trường cho phản ứng chuyển hoá và vận chuyển chất dinh dưỡng; chất xơ hỗ trợ tiêu hoá, phòng táo bón.\n•  Nhu cầu dinh dưỡng phụ thuộc độ tuổi, giới tính, mức độ vận động, trạng thái sinh lý (mang thai, cho con bú, ốm...); khẩu phần ăn hợp lý phải đủ năng lượng và cân đối các nhóm chất.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00401",
+   "khoi": "8",
+   "chu_de": "Sinh học ở cơ thể người",
+   "chuyen_de": "Dinh dưỡng và Tiêu hóa ở người",
+   "nhom": "TÍNH TOÁN NĂNG LƯỢNG KHẨU PHẦN ĂN",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "•  Hệ số năng lượng (Atwater): 1 g carbohydrate ≈ 4 kcal; 1 g protein ≈ 4 kcal; 1 g lipid ≈ 9 kcal.\n•  Công thức tính tổng năng lượng khẩu phần: E = 4×C + 4×P + 9×L (C, P, L là khối lượng carbohydrate, protein, lipid tính bằng gam).\n•  Khi biết tổng năng lượng và khối lượng hai nhóm chất, tính khối lượng nhóm còn lại bằng cách trừ đi phần năng lượng đã biết rồi chia cho hệ số tương ứng.\n•  Biện luận khẩu phần: so sánh tổng năng lượng khẩu phần với nhu cầu năng lượng khuyến nghị để kết luận thừa/thiếu, từ đó đề xuất điều chỉnh khối lượng một nhóm chất cho phù hợp.\nVí dụ minh hoạ 1:\nMột bữa ăn chứa 50 g carbohydrate, 20 g protein và 10 g lipid. Tính tổng năng lượng bữa ăn cung cấp.\nBài giải:\n– E = 4×C + 4×P + 9×L = 4×50 + 4×20 + 9×10 = 200 + 80 + 90 = 370 kcal.\nVí dụ minh hoạ 2:\nMột bữa ăn chứa 48 g carbohydrate, 17 g protein và một lượng lipid chưa biết, tổng năng lượng bữa ăn là 395 kcal. Tính khối lượng lipid trong bữa ăn.\nBài giải:\n– Năng lượng từ lipid: E − 4×C − 4×P = 395 − 192 − 68 = 135 kcal.\n– Khối lượng lipid: 135/9 = 15 g.\nVí dụ minh hoạ 3:\nMột bữa ăn hiện có 80 g carbohydrate, 22 g protein, 15 g lipid. Nhu cầu năng lượng của bữa ăn này là 575 kcal. Nếu chỉ điều chỉnh khối lượng carbohydrate, cần thêm bao nhiêu gam carbohydrate để bữa ăn đạt đúng nhu cầu?\nBài giải:\n– Năng lượng hiện tại: E = 4×80 + 4×22 + 9×15 = 320 + 88 + 135 = 543 kcal.\n– Bữa ăn còn thiếu so với nhu cầu: 575 − 543 = 32 kcal.\n– Vì 1 g carbohydrate cung cấp 4 kcal, khối lượng carbohydrate cần thêm: 32/4 = 8 g.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00402",
+   "khoi": "8",
+   "chu_de": "Sinh học ở cơ thể người",
+   "chuyen_de": "Dinh dưỡng và Tiêu hóa ở người",
+   "nhom": "CẤU TẠO HỆ TIÊU HOÁ",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "•  Hệ tiêu hoá gồm ống tiêu hoá và tuyến tiêu hoá.\n•  Ống tiêu hoá là một ống liên tục: miệng → thực quản → dạ dày → ruột non → ruột già → hậu môn.\n•  Tuyến tiêu hoá gồm tuyến nước bọt (tiết nước bọt), tuyến vị (trong thành dạ dày, tiết dịch vị), gan (tiết dịch mật, dự trữ ở túi mật), tuỵ (tiết dịch tuỵ), tuyến ruột (ở thành ruột non, tiết dịch ruột).\n•  Dịch vị gồm acid HCl và enzyme pepsin, tiêu hoá một phần protein.\n•  Dịch mật giúp nhũ tương hoá lipid; dịch tuỵ chứa nhiều loại enzyme tiêu hoá cả ba nhóm chất.\n•  Ruột non là nơi tiêu hoá hoá học mạnh nhất và hấp thụ phần lớn chất dinh dưỡng, nhờ nhung mao làm tăng diện tích bề mặt.\n•  Ruột già hấp thụ nước, hình thành phân.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00403",
+   "khoi": "8",
+   "chu_de": "Sinh học ở cơ thể người",
+   "chuyen_de": "Dinh dưỡng và Tiêu hóa ở người",
+   "nhom": "QUÁ TRÌNH TIÊU HOÁ VÀ HẤP THỤ CHẤT DINH DƯỠNG",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "•  Ở khoang miệng: biến đổi cơ học (nhai, nghiền, đảo trộn) và biến đổi hoá học một phần (enzyme amylase trong nước bọt biến đổi một phần tinh bột chín thành đường đôi).\n•  Thực quản chỉ có chức năng dẫn truyền thức ăn (nhu động), hầu như không biến đổi hoá học.\n•  Ở dạ dày: biến đổi cơ học (co bóp, nhào trộn) và biến đổi hoá học (pepsin cùng HCl biến đổi một phần protein thành các chuỗi polypeptide ngắn); lớp chất nhày ở thành dạ dày bảo vệ niêm mạc khỏi tác động của acid.\n•  Ở ruột non: nhận dịch tuỵ, dịch mật, dịch ruột; biến đổi hoàn toàn carbohydrate thành đường đơn, protein thành amino acid, lipid (đã nhũ tương hoá) thành glycerol và acid béo.\n•  Hấp thụ chất dinh dưỡng diễn ra chủ yếu ở ruột non: đường đơn và amino acid hấp thụ chủ yếu vào máu; glycerol và acid béo hấp thụ phần lớn vào mạch bạch huyết.\n•  Ruột già hấp thụ nước và một số chất còn lại, vi khuẩn có lợi lên men chất xơ và tổng hợp một số vitamin; phần chất bã hình thành phân, thải qua hậu môn.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00404",
+   "khoi": "8",
+   "chu_de": "Sinh học ở cơ thể người",
+   "chuyen_de": "Dinh dưỡng và Tiêu hóa ở người",
+   "nhom": "VỆ SINH HỆ TIÊU HOÁ VÀ AN TOÀN THỰC PHẨM",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "•  Một số bệnh tiêu hoá thường gặp: viêm loét dạ dày (liên quan vi khuẩn Helicobacter pylori, ăn uống không điều độ, căng thẳng), tiêu chảy (nhiễm khuẩn, virus hoặc kí sinh trùng qua thức ăn, nước uống không hợp vệ sinh), táo bón (ăn ít chất xơ, uống ít nước, ít vận động), nhiễm giun sán (ăn thức ăn sống, không rửa tay), ngộ độc thực phẩm (thức ăn ôi thiu, nhiễm độc tố vi khuẩn).\n•  Biện pháp bảo vệ hệ tiêu hoá: ăn uống điều độ đúng giờ, ăn chậm nhai kĩ, rửa tay trước khi ăn, ăn chín uống sôi, hạn chế rượu bia và đồ cay nóng nhiều dầu mỡ, giữ tinh thần thoải mái, luyện tập thể dục thể thao hợp lý, tẩy giun định kỳ.\n•  An toàn thực phẩm: chọn thực phẩm tươi, rõ nguồn gốc, còn hạn sử dụng; bảo quản thực phẩm sống và chín riêng biệt; nấu chín kĩ thức ăn; không sử dụng thực phẩm có dấu hiệu ôi thiu, nấm mốc.\n•  Khi có dấu hiệu ngộ độc thực phẩm: ngừng ngay thức ăn nghi ngờ; nếu triệu chứng nặng (mất nước nhiều, sốt cao) cần đưa đến cơ sở y tế kịp thời.",
+   "can_dien_ly_thuyet_nhom": false
+  }
+ ],
+ "dang_bai": [
+  {
+   "dang_id": "KDB00926",
+   "nhom_id": "KNB00396",
+   "thu_tu": 1,
+   "dang": "Các cấp độ tổ chức cơ thể",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 9,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030101002",
+     "loai": "trac_nghiem",
+     "de": "Tập hợp các tế bào giống nhau về cấu tạo, cùng thực hiện một chức năng nhất định, gọi là gì?",
+     "lua_chon": [
+      "Mô",
+      "Tế bào",
+      "Cơ quan",
+      "Hệ cơ quan"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Mô gồm các tế bào giống nhau về cấu tạo, cùng thực hiện một chức năng nhất định."
+    },
+    {
+     "ma_cau": "K08030101001",
+     "loai": "trac_nghiem",
+     "de": "Đơn vị cấu trúc và chức năng cơ bản của cơ thể sống là gì?",
+     "lua_chon": [
+      "Tế bào",
+      "Mô",
+      "Hệ cơ quan",
+      "Cơ quan"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tế bào là đơn vị cấu trúc và chức năng cơ bản của cơ thể sống."
+    },
+    {
+     "ma_cau": "K08030101009",
+     "loai": "trac_nghiem",
+     "de": "Tim gồm nhiều loại mô (mô cơ, mô liên kết, mô thần kinh) cùng thực hiện chức năng bơm máu.\nTim thuộc cấp độ tổ chức nào?",
+     "lua_chon": [
+      "Hệ cơ quan",
+      "Cơ quan",
+      "Mô",
+      "Tế bào"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tim gồm nhiều loại mô phối hợp thực hiện một chức năng nhất định nên là một cơ quan."
+    },
+    {
+     "ma_cau": "K08030101006",
+     "loai": "trac_nghiem",
+     "de": "Cấp độ tổ chức nào bao hàm tất cả các cấp độ còn lại của cơ thể?",
+     "lua_chon": [
+      "Mô",
+      "Hệ cơ quan",
+      "Cơ thể",
+      "Cơ quan"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Cơ thể là cấp độ tổ chức cao nhất, được tạo nên từ tất cả các hệ cơ quan."
+    },
+    {
+     "ma_cau": "K08030101004",
+     "loai": "trac_nghiem",
+     "de": "Nhiều cơ quan cùng phối hợp thực hiện một chức năng chung tạo thành gì?",
+     "lua_chon": [
+      "Cơ thể",
+      "Mô",
+      "Cơ quan",
+      "Hệ cơ quan"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Hệ cơ quan gồm nhiều cơ quan phối hợp thực hiện một chức năng chung."
+    },
+    {
+     "ma_cau": "K08030101005",
+     "loai": "trac_nghiem",
+     "de": "Theo thứ tự cấp độ tổ chức từ nhỏ đến lớn, cấp độ nào đứng giữa 'mô' và 'hệ cơ quan'?",
+     "lua_chon": [
+      "Cơ thể",
+      "Cơ quan",
+      "Không có cấp độ nào",
+      "Tế bào"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Thứ tự tăng dần: tế bào, mô, cơ quan, hệ cơ quan, cơ thể; cơ quan đứng giữa mô và hệ cơ quan."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00927",
+   "nhom_id": "KNB00396",
+   "thu_tu": 2,
+   "dang": "Tên gọi và chức năng các hệ cơ quan",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 12,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030101018",
+     "loai": "trac_nghiem",
+     "de": "Bộ xương và hệ cơ cấu tạo nên hệ cơ quan nào?",
+     "lua_chon": [
+      "Hệ vận động",
+      "Hệ thần kinh",
+      "Hệ bài tiết",
+      "Hệ tuần hoàn"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Hệ vận động gồm bộ xương và hệ cơ, phối hợp giúp cơ thể vận động."
+    },
+    {
+     "ma_cau": "K08030101014",
+     "loai": "trac_nghiem",
+     "de": "Hệ cơ quan nào lọc máu và thải chất cặn bã qua nước tiểu?",
+     "lua_chon": [
+      "Hệ hô hấp",
+      "Hệ tiêu hoá",
+      "Hệ bài tiết",
+      "Hệ tuần hoàn"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Hệ bài tiết gồm thận và đường dẫn nước tiểu, lọc máu và thải chất cặn bã ra ngoài."
+    },
+    {
+     "ma_cau": "K08030101012",
+     "loai": "trac_nghiem",
+     "de": "Hệ cơ quan nào thực hiện trao đổi khí giữa cơ thể và môi trường?",
+     "lua_chon": [
+      "Hệ bài tiết",
+      "Hệ tuần hoàn",
+      "Hệ tiêu hoá",
+      "Hệ hô hấp"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Hệ hô hấp lấy khí oxygen và thải khí carbon dioxide."
+    },
+    {
+     "ma_cau": "K08030101011",
+     "loai": "trac_nghiem",
+     "de": "Hệ cơ quan nào vận chuyển chất dinh dưỡng, khí oxygen và chất thải trong cơ thể?",
+     "lua_chon": [
+      "Hệ tiêu hoá",
+      "Hệ bài tiết",
+      "Hệ tuần hoàn",
+      "Hệ hô hấp"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Hệ tuần hoàn gồm tim và mạch máu, vận chuyển chất dinh dưỡng, khí oxygen và chất thải đi khắp cơ thể."
+    },
+    {
+     "ma_cau": "K08030101020",
+     "loai": "trac_nghiem",
+     "de": "Nào và tuỷ sống là cơ quan trung ương của hệ cơ quan nào?",
+     "lua_chon": [
+      "Hệ bài tiết",
+      "Hệ tuần hoàn",
+      "Hệ nội tiết",
+      "Hệ thần kinh"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Não và tuỷ sống là trung ương thần kinh, thuộc hệ thần kinh."
+    },
+    {
+     "ma_cau": "K08030101021",
+     "loai": "trac_nghiem",
+     "de": "Dạ dày và ruột cùng thuộc hệ cơ quan nào?",
+     "lua_chon": [
+      "Hệ bài tiết",
+      "Hệ tiêu hoá",
+      "Hệ hô hấp",
+      "Hệ tuần hoàn"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Dạ dày và ruột là các cơ quan của ống tiêu hoá, thuộc hệ tiêu hoá."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00928",
+   "nhom_id": "KNB00396",
+   "thu_tu": 3,
+   "dang": "Sự phối hợp hoạt động giữa các hệ cơ quan",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 9,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030101027",
+     "loai": "trac_nghiem",
+     "de": "Hệ thần kinh và hệ nội tiết cùng đảm nhiệm vai trò gì đối với cơ thể?",
+     "lua_chon": [
+      "Vận chuyển chất dinh dưỡng đi khắp cơ thể.",
+      "Trao đổi khí giữa cơ thể và môi trường.",
+      "Biến đổi thức ăn thành chất dinh dưỡng.",
+      "Điều khiển, điều hoà hoạt động phối hợp của các các cơ quan."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Hệ thần kinh và hệ nội tiết cùng điều khiển, điều hoà hoạt động phối hợp của các các cơ quan trong cơ thể."
+    },
+    {
+     "ma_cau": "K08030101024",
+     "loai": "trac_nghiem",
+     "de": "Chất dinh dưỡng do hệ tiêu hoá hấp thụ được vận chuyển đến tế bào nhờ hệ cơ quan nào?",
+     "lua_chon": [
+      "Hệ tuần hoàn",
+      "Hệ bài tiết",
+      "Hệ hô hấp",
+      "Hệ thần kinh"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Hệ tuần hoàn vận chuyển chất dinh dưỡng đến từng tế bào qua đường máu."
+    },
+    {
+     "ma_cau": "K08030101023",
+     "loai": "trac_nghiem",
+     "de": "Khi vận động mạnh, nhịp thở và nhịp tim thay đổi như thế nào?",
+     "lua_chon": [
+      "Chỉ nhịp thở tăng, nhịp tim không đổi.",
+      "Chỉ nhịp tim tăng, nhịp thở không đổi.",
+      "Đều giảm, để tiết kiệm năng lượng.",
+      "Đều tăng, để cung cấp thêm khí oxygen và chất dinh dưỡng cho cơ."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cơ cần nhiều năng lượng hơn khi vận động mạnh nên nhịp thở và nhịp tim đều tăng, để cung cấp khí oxygen và chất dinh dưỡng."
+    },
+    {
+     "ma_cau": "K08030101028",
+     "loai": "trac_nghiem",
+     "de": "Sự phối hợp hoạt động của các hệ cơ quan trong cơ thể được điều hoà theo cơ chế nào?",
+     "lua_chon": [
+      "Cơ chế trao đổi khí",
+      "Cơ chế miễn dịch",
+      "Cơ chế thần kinh - thể dịch",
+      "Cơ chế phản xạ không điều kiện"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Hệ thần kinh và hệ nội tiết (thể dịch) phối hợp điều hoà hoạt động cơ thể theo cơ chế thần kinh - thể dịch."
+    },
+    {
+     "ma_cau": "K08030101025",
+     "loai": "trac_nghiem",
+     "de": "Khí oxygen do hệ hô hấp lấy vào được vận chuyển đến tế bào nhờ hệ cơ quan nào?",
+     "lua_chon": [
+      "Hệ tuần hoàn",
+      "Hệ thần kinh",
+      "Hệ tiêu hoá",
+      "Hệ bài tiết"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Hệ tuần hoàn vận chuyển khí oxygen từ phổi đến tế bào qua đường máu."
+    },
+    {
+     "ma_cau": "K08030101026",
+     "loai": "trac_nghiem",
+     "de": "Chất thải từ tế bào được máu vận chuyển tới hệ cơ quan nào để đào thải ra ngoài?",
+     "lua_chon": [
+      "Hệ thần kinh",
+      "Hệ bài tiết và hệ hô hấp",
+      "Hệ tiêu hoá",
+      "Hệ sinh dục"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Chất thải từ tế bào được máu vận chuyển đến hệ bài tiết (thải qua nước tiểu) và hệ hô hấp (thải khí carbon dioxide)."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00929",
+   "nhom_id": "KNB00397",
+   "thu_tu": 1,
+   "dang": "Thành phần và chức năng của bộ xương",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030102007",
+     "loai": "trac_nghiem",
+     "de": "Bộ xương có vai trò gì đối với hệ cơ?",
+     "lua_chon": [
+      "Tiêu hoá chất dinh dưỡng nuôi cơ",
+      "Tiết hormone điều hoà cơ",
+      "Trao đổi khí cho cơ hoạt động",
+      "Là nơi bám của cơ, cùng cơ giúp cơ thể vận động"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cơ bám vào xương qua gân; khi cơ co, xương cử động, giúp cơ thể vận động."
+    },
+    {
+     "ma_cau": "K08030102006",
+     "loai": "trac_nghiem",
+     "de": "Xương sườn cùng xương ức tạo thành khoang nào để bảo vệ tim, phổi?",
+     "lua_chon": [
+      "Khoang ngực (lồng ngực)",
+      "Khoang bụng",
+      "Khoang chậu",
+      "Khoang sọ"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Xương sườn và xương ức tạo thành lồng ngực, bảo vệ tim và phổi."
+    },
+    {
+     "ma_cau": "K08030102004",
+     "loai": "trac_nghiem",
+     "de": "Xương chi gồm những thành phần nào?",
+     "lua_chon": [
+      "Xương sọ và xương thân",
+      "Xương đai (đai vai, đai hông) và xương tự do (tay, chân)",
+      "Chỉ gồm xương tay",
+      "Chỉ gồm xương chân"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Xương chi gồm xương đai (đai vai, đai hông) nối xương tự do (xương tay, xương chân) với xương thân."
+    },
+    {
+     "ma_cau": "K08030102009",
+     "loai": "trac_nghiem",
+     "de": "Bộ xương là nơi dự trữ những chất khoáng nào?",
+     "lua_chon": [
+      "Sắt và kẽm",
+      "Natri và kali",
+      "Iodine và magnesium",
+      "Calcium (canxi) và phosphorus (phospho)"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Xương dự trữ calcium và phosphorus cho cơ thể."
+    },
+    {
+     "ma_cau": "K08030102001",
+     "loai": "trac_nghiem",
+     "de": "Bộ xương người được chia thành mấy phần chính?",
+     "lua_chon": [
+      "2 phần: xương đầu, xương thân",
+      "5 phần: xương đầu, xương thân, xương đai, xương tay, xương chân",
+      "3 phần: xương đầu, xương thân, xương chi",
+      "4 phần: xương đầu, xương thân, xương tay, xương chân"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Bộ xương người chia 3 phần chính: xương đầu, xương thân và xương chi."
+    },
+    {
+     "ma_cau": "K08030102008",
+     "loai": "trac_nghiem",
+     "de": "Tuỷ đỏ trong một số xương có chức năng gì?",
+     "lua_chon": [
+      "Sinh sản tế bào máu",
+      "Co dãn tạo ra vận động",
+      "Dẫn truyền xung thần kinh",
+      "Tiêu hoá thức ăn"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tuỷ đỏ trong xương là nơi sinh sản tế bào máu."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00930",
+   "nhom_id": "KNB00397",
+   "thu_tu": 2,
+   "dang": "Cấu tạo và thành phần hoá học của xương",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030102020",
+     "loai": "trac_nghiem",
+     "de": "Vì sao xương trẻ em mềm dẻo hơn xương người lớn?",
+     "lua_chon": [
+      "Vì xương trẻ em không có mô xương cứng",
+      "Vì xương trẻ em không chứa muối khoáng",
+      "Vì tỉ lệ chất hữu cơ trong xương cao hơn",
+      "Vì tỉ lệ chất vô cơ trong xương cao hơn"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ở trẻ em, tỉ lệ chất hữu cơ trong xương cao hơn người lớn nên xương mềm dẻo hơn."
+    },
+    {
+     "ma_cau": "K08030102012",
+     "loai": "trac_nghiem",
+     "de": "Mô xương cứng phân bố chủ yếu ở phần nào của xương dài?",
+     "lua_chon": [
+      "Thân xương",
+      "Màng xương",
+      "Đầu xương",
+      "Tuỷ xương"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Mô xương cứng tập trung chủ yếu ở thân xương, giúp xương chịu lực."
+    },
+    {
+     "ma_cau": "K08030102016",
+     "loai": "trac_nghiem",
+     "de": "Xương gồm hai thành phần hoá học chính nào?",
+     "lua_chon": [
+      "Chỉ có nước và protein",
+      "Chỉ có calcium và sắt",
+      "Chất béo và carbohydrate",
+      "Chất hữu cơ (cốt giao) và chất vô cơ (muối khoáng)"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Thành phần hoá học của xương gồm chất hữu cơ (cốt giao) và chất vô cơ (chủ yếu là muối calcium)."
+    },
+    {
+     "ma_cau": "K08030102015",
+     "loai": "trac_nghiem",
+     "de": "Màng xương xương bao bọc bên ngoài xương có vai trò gì?",
+     "lua_chon": [
+      "Giúp xương lớn lên về chiều ngang",
+      "Sinh sản tế bào máu",
+      "Dự trữ chất khoáng",
+      "Giúp xương dài ra"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Các tế bào ở màng xương phân chia giúp xương to ra về chiều ngang."
+    },
+    {
+     "ma_cau": "K08030102019",
+     "loai": "trac_nghiem",
+     "de": "Vì sao xương người già thường giòn và dễ gãy hơn xương trẻ em?",
+     "lua_chon": [
+      "Vì tỉ lệ chất vô cơ trong xương giảm dần theo tuổi",
+      "Vì xương người già không còn tuỷ xương",
+      "Vì xương người già không có màng xương",
+      "Vì tỉ lệ chất hữu cơ trong xương giảm dần theo tuổi"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Theo tuổi tác, tỉ lệ chất hữu cơ trong xương giảm, tỉ lệ chất vô cơ tăng tương đối, khiến xương giòn hơn."
+    },
+    {
+     "ma_cau": "K08030102013",
+     "loai": "trac_nghiem",
+     "de": "Mô xương xốp phân bố chủ yếu ở phần nào của xương dài?",
+     "lua_chon": [
+      "Thân xương",
+      "Màng xương",
+      "Đầu xương",
+      "Ống tuỷ"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Mô xương xốp gồm nhiều nan xương, phân bố chủ yếu ở đầu xương."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00931",
+   "nhom_id": "KNB00397",
+   "thu_tu": 3,
+   "dang": "Các loại khớp xương",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030102030",
+     "loai": "trac_nghiem",
+     "de": "Vai trò chung của khớp xương trong bộ xương là gì?",
+     "lua_chon": [
+      "Dự trữ chất khoáng",
+      "Liên kết các xương và giúp cơ thể cử động linh hoạt",
+      "Bảo vệ các nội quan",
+      "Sinh sản tế bào máu"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khớp xương liên kết các xương với nhau, tạo điều kiện cho cơ thể cử động linh hoạt."
+    },
+    {
+     "ma_cau": "K08030102026",
+     "loai": "trac_nghiem",
+     "de": "Khớp nào sau đây là khớp bán động?",
+     "lua_chon": [
+      "Khớp gối",
+      "Khớp giữa các đốt sống",
+      "Khớp xương sọ",
+      "Khớp khuỷu tay"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khớp giữa các đốt sống là khớp bán động, cử động hạn chế."
+    },
+    {
+     "ma_cau": "K08030102024",
+     "loai": "trac_nghiem",
+     "de": "Khớp nào sau đây là khớp động?",
+     "lua_chon": [
+      "Khớp giữa các đốt sống",
+      "Khớp gối",
+      "Khớp giữa các xương sọ",
+      "Khớp giữa xương chậu và xương cùng"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khớp gối là khớp động, cử động dễ dàng, biên độ lớn."
+    },
+    {
+     "ma_cau": "K08030102021",
+     "loai": "trac_nghiem",
+     "de": "Khớp xương là gì?",
+     "lua_chon": [
+      "Nơi cơ bám vào xương",
+      "Nơi xương bị gãy",
+      "Nơi tiếp giáp giữa các đầu xương",
+      "Nơi mạch máu đi vào nuôi xương"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khớp xương là nơi tiếp giáp giữa các đầu xương với nhau."
+    },
+    {
+     "ma_cau": "K08030102028",
+     "loai": "trac_nghiem",
+     "de": "Khớp nào sau đây là khớp bất động?",
+     "lua_chon": [
+      "Khớp giữa các xương sọ",
+      "Khớp gối",
+      "Khớp giữa các đốt sống",
+      "Khớp khuỷu tay"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Các xương sọ gắn chặt với nhau bằng khớp bất động."
+    },
+    {
+     "ma_cau": "K08030102025",
+     "loai": "trac_nghiem",
+     "de": "Khớp bán động có đặc điểm gì?",
+     "lua_chon": [
+      "Chỉ xuất hiện ở xương chi",
+      "Hoàn toàn không cử động",
+      "Cử động hạn chế",
+      "Cử động dễ dàng, biên độ lớn"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khớp bán động cho phép cử động nhưng ở mức hạn chế."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00932",
+   "nhom_id": "KNB00398",
+   "thu_tu": 1,
+   "dang": "Cấu tạo và tính chất của cơ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030103008",
+     "loai": "trac_nghiem",
+     "de": "Dây chằng có vai trò gì trong hệ vận động?",
+     "lua_chon": [
+      "Sinh sản tế bào máu",
+      "Giữ chắc các xương ở khớp với nhau",
+      "Dự trữ chất khoáng cho xương",
+      "Tạo lực kéo làm xương cử động"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Dây chằng nối các xương với nhau tại khớp, giữ khớp chắc chắn khi cử động."
+    },
+    {
+     "ma_cau": "K08030103001",
+     "loai": "trac_nghiem",
+     "de": "Loại cơ nào bám vào xương, tạo nên hệ cơ của cơ thể người?",
+     "lua_chon": [
+      "Cơ trơn",
+      "Mô liên kết",
+      "Cơ tim",
+      "Cơ vân (cơ xương)"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cơ vân (còn gọi là cơ xương) bám vào xương, tạo nên hệ cơ."
+    },
+    {
+     "ma_cau": "K08030103005",
+     "loai": "trac_nghiem",
+     "de": "Tính chất đặc trưng của cơ vân là gì?",
+     "lua_chon": [
+      "Chỉ dãn, không co được",
+      "Chỉ có khả năng co, không dãn được",
+      "Không có khả năng co dãn",
+      "Có khả năng co và dãn"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cơ vân có khả năng co (ngắn và to bề ngang) và dãn (trở lại trạng thái ban đầu)."
+    },
+    {
+     "ma_cau": "K08030103004",
+     "loai": "trac_nghiem",
+     "de": "Cơ bám vào xương thông qua bộ phận nào?",
+     "lua_chon": [
+      "Màng xương",
+      "Gân",
+      "Sụn",
+      "Dây chằng"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Hai đầu bắp cơ thường thuôn lại thành gân, bám vào xương."
+    },
+    {
+     "ma_cau": "K08030103003",
+     "loai": "trac_nghiem",
+     "de": "Mỗi sợi cơ được cấu tạo từ nhiều đơn vị nhỏ hơn gọi là gì?",
+     "lua_chon": [
+      "Mạch máu nhỏ",
+      "Tơ cơ",
+      "Đầu dây thần kinh",
+      "Tế bào mỡ"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Sợi cơ gồm nhiều tơ cơ xếp song song."
+    },
+    {
+     "ma_cau": "K08030103009",
+     "loai": "trac_nghiem",
+     "de": "Cơ thường hoạt động theo cặp có tính chất nào?",
+     "lua_chon": [
+      "Luôn co cùng lúc với nhau",
+      "Luôn dãn cùng lúc với nhau",
+      "Hoàn toàn độc lập, không liên quan nhau",
+      "Đối kháng nhau (một cơ co thì cơ kia dãn)"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Các cơ thường sắp xếp thành cặp đối kháng: khi cơ này co thì cơ kia dãn."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00933",
+   "nhom_id": "KNB00398",
+   "thu_tu": 2,
+   "dang": "Sự phối hợp hoạt động giữa cơ và xương",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030103013",
+     "loai": "trac_nghiem",
+     "de": "Trong sự phối hợp cơ - xương, bộ phận nào tạo ra lực kéo làm xương cử động?",
+     "lua_chon": [
+      "Tuỷ xương",
+      "Cơ (khi co)",
+      "Màng xương",
+      "Khớp xương"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khi cơ co, cơ tạo lực kéo tác động lên xương thông qua gân."
+    },
+    {
+     "ma_cau": "K08030103012",
+     "loai": "trac_nghiem",
+     "de": "Trong sự phối hợp cơ - xương, bộ phận nào đóng vai trò điểm tựa?",
+     "lua_chon": [
+      "Khớp xương",
+      "Bắp cơ",
+      "Tuỷ xương",
+      "Gân"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khớp xương là điểm tựa để xương cử động khi cơ co kéo."
+    },
+    {
+     "ma_cau": "K08030103014",
+     "loai": "trac_nghiem",
+     "de": "Khi cơ nhị đầu (mặt trước cánh tay) co, cẳng tay sẽ cử động như thế nào?",
+     "lua_chon": [
+      "Xoay tròn liên tục",
+      "Duỗi thẳng ra",
+      "Gập lại (co lên) ở khớp khuỷu tay",
+      "Không cử động"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Cơ nhị đầu co kéo cẳng tay gập lại ở khớp khuỷu tay."
+    },
+    {
+     "ma_cau": "K08030103015",
+     "loai": "trac_nghiem",
+     "de": "Khi cơ tam đầu (mặt sau cánh tay) co, cẳng tay sẽ cử động như thế nào?",
+     "lua_chon": [
+      "Xoay tròn liên tục",
+      "Gập lại",
+      "Duỗi thẳng ra ở khớp khuỷu tay",
+      "Không cử động"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Cơ tam đầu co kéo cẳng tay duỗi thẳng ra ở khớp khuỷu tay."
+    },
+    {
+     "ma_cau": "K08030103017",
+     "loai": "trac_nghiem",
+     "de": "Vì sao cơ vân cần bám vào hai đầu xương khác nhau (qua khớp) mới tạo được vận động?",
+     "lua_chon": [
+      "Vì khớp xương tạo ra lực kéo thay cho cơ",
+      "Vì lực co cơ chỉ làm xương cử động quanh khớp khi hai đầu cơ bám vào hai xương khác nhau",
+      "Vì cơ không thể bám trực tiếp vào một xương duy nhất",
+      "Vì xương tự cử động không cần lực từ cơ"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Cơ bám vào hai xương ở hai bên một khớp; khi co, cơ kéo hai xương lại gần nhau, tạo cử động quanh khớp."
+    },
+    {
+     "ma_cau": "K08030103018",
+     "loai": "trac_nghiem",
+     "de": "Động tác nâng vật nặng bằng tay là kết quả phối hợp trực tiếp giữa những cơ quan nào?",
+     "lua_chon": [
+      "Chỉ riêng xương tay",
+      "Chỉ riêng khớp tay",
+      "Chỉ riêng cơ tay",
+      "Cơ, xương và khớp ở tay"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Động tác nâng vật là kết quả phối hợp giữa cơ (tạo lực kéo), xương (đòn bẩy) và khớp (điểm tựa)."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00934",
+   "nhom_id": "KNB00398",
+   "thu_tu": 3,
+   "dang": "Hoạt động của cơ, mỏi cơ và luyện tập",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030103028",
+     "loai": "trac_nghiem",
+     "de": "Chế độ dinh dưỡng hợp lí có ảnh hưởng như thế nào đến hoạt động của cơ?",
+     "lua_chon": [
+      "Cung cấp đủ năng lượng và chất dinh dưỡng giúp cơ hoạt động hiệu quả, lâu mỏi",
+      "Không ảnh hưởng đến hoạt động của cơ",
+      "Làm cơ nhanh mỏi hơn",
+      "Chỉ ảnh hưởng đến xương, không ảnh hưởng đến cơ"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Dinh dưỡng hợp lí cung cấp năng lượng cho cơ co, giúp cơ hoạt động hiệu quả và lâu mỏi hơn."
+    },
+    {
+     "ma_cau": "K08030103022",
+     "loai": "trac_nghiem",
+     "de": "Mỏi cơ là hiện tượng gì?",
+     "lua_chon": [
+      "Cơ giảm khả năng co khi hoạt động liên tục, kéo dài",
+      "Cơ tăng khả năng co liên tục",
+      "Cơ mất khả năng dẫn vĩnh viễn",
+      "Cơ bị đứt hoàn toàn"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Mỏi cơ là hiện tượng sức co của cơ giảm hoặc mất hẳn sau khi hoạt động quá sức, kéo dài."
+    },
+    {
+     "ma_cau": "K08030103030",
+     "loai": "trac_nghiem",
+     "de": "Sau buổi tập luyện thể thao cường độ cao, nên làm gì để cơ phục hồi tốt?",
+     "lua_chon": [
+      "Nghỉ ngơi hợp lí, bổ sung dinh dưỡng và nước đầy đủ",
+      "Tiếp tục vận động cường độ cao ngay sau đó",
+      "Giữ nguyên tư thế vận động cuối cùng, không thay đổi",
+      "Nhịn ăn và nhịn uống nước"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nghỉ ngơi hợp lí cùng dinh dưỡng, nước đầy đủ giúp cơ phục hồi sau vận động cường độ cao."
+    },
+    {
+     "ma_cau": "K08030103025",
+     "loai": "trac_nghiem",
+     "de": "Luyện tập thể dục thể thao thường xuyên, đúng cách có tác dụng gì với cơ?",
+     "lua_chon": [
+      "Không ảnh hưởng gì đến hoạt động của cơ",
+      "Làm giảm kích thước và sức mạnh của cơ",
+      "Làm cơ nhanh mỏi hơn khi vận động",
+      "Giúp cơ phát triển, tăng sức bền và khả năng co"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Luyện tập đều đặn, đúng cách giúp cơ phát triển, tăng sức bền và hiệu suất co cơ."
+    },
+    {
+     "ma_cau": "K08030103027",
+     "loai": "trac_nghiem",
+     "de": "Vì sao khi vận động mạnh và kéo dài, cơ dễ bị mỏi hơn khi vận động nhẹ?",
+     "lua_chon": [
+      "Vì vận động mạnh làm giảm lượng máu đến cơ",
+      "Vì cơ vận động nhẹ tiêu tốn oxygen nhiều hơn",
+      "Vì vận động mạnh làm cơ ngừng hoạt động",
+      "Vì cơ tiêu tốn nhiều oxygen và năng lượng hơn, dễ thiếu oxygen, tích tụ acid lactic"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Vận động mạnh, kéo dài đòi hỏi cơ tiêu tốn nhiều năng lượng và oxygen hơn, dễ dẫn đến thiếu oxygen cục bộ và tích tụ acid lactic."
+    },
+    {
+     "ma_cau": "K08030103024",
+     "loai": "trac_nghiem",
+     "de": "Biện pháp nào giúp cơ nhanh hết mỏi sau khi vận động?",
+     "lua_chon": [
+      "Tiếp tục vận động với cường độ cao hơn",
+      "Giữ nguyên tư thế co cứng",
+      "Nghỉ ngơi, xoa bóp, hít thở sâu",
+      "Nhịn ăn để cơ nghỉ ngơi hoàn toàn"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nghỉ ngơi, xoa bóp và hít thở sâu giúp tăng cường oxygen, đào thải acid lactic, cơ nhanh hết mỏi."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00935",
+   "nhom_id": "KNB00399",
+   "thu_tu": 1,
+   "dang": "Một số bệnh, tật liên quan đến hệ vận động",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030104002",
+     "loai": "trac_nghiem",
+     "de": "Loãng xương thường gặp nhiều nhất ở nhóm đối tượng nào?",
+     "lua_chon": [
+      "Người cao tuổi",
+      "Thanh niên luyện tập thể thao đều đặn",
+      "Trẻ sơ sinh",
+      "Người có chế độ dinh dưỡng đầy đủ"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Loãng xương thường gặp ở người cao tuổi do mật độ khoáng trong xương giảm dần theo tuổi."
+    },
+    {
+     "ma_cau": "K08030104007",
+     "loai": "trac_nghiem",
+     "de": "Gãy xương là tình trạng gì?",
+     "lua_chon": [
+      "Dây chằng quanh khớp bị giãn",
+      "Xương bị nứt hoặc gãy rời thành nhiều đoạn",
+      "Khớp bị lệch nhưng xương còn nguyên vẹn",
+      "Cơ bị mỏi do vận động quá sức"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Gãy xương là hiện tượng xương bị nứt hoặc gãy rời do lực tác động mạnh."
+    },
+    {
+     "ma_cau": "K08030104010",
+     "loai": "trac_nghiem",
+     "de": "Đối tượng nào có nguy cơ cao gặp chấn thương như bong gân, trật khớp, gãy xương?",
+     "lua_chon": [
+      "Người có chế độ dinh dưỡng và luyện tập hợp lí",
+      "Người luôn khởi động kĩ trước khi vận động",
+      "Người chơi thể thao hoặc lao động mà không cẩn trọng, đúng kĩ thuật",
+      "Người vận động nhẹ nhàng, đúng tư thế"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Chấn thương xương khớp dễ xảy ra khi vận động mạnh, sai kĩ thuật hoặc bất cẩn."
+    },
+    {
+     "ma_cau": "K08030104005",
+     "loai": "trac_nghiem",
+     "de": "Bong gân là tổn thương xảy ra ở bộ phận nào?",
+     "lua_chon": [
+      "Màng xương",
+      "Tuỷ xương",
+      "Dây chằng quanh khớp",
+      "Thân xương dài"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Bong gân là tổn thương dây chằng quanh khớp do vận, xoắn khớp đột ngột."
+    },
+    {
+     "ma_cau": "K08030104009",
+     "loai": "trac_nghiem",
+     "de": "Mang vác vật nặng lệch về một bên vai trong thời gian dài dễ gây ra tật nào?",
+     "lua_chon": [
+      "Loãng xương",
+      "Cong vẹo cột sống",
+      "Còi xương",
+      "Bong gân cổ chân"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Mang vác lệch một bên kéo dài làm cột sống chịu lực không đều, dễ dẫn đến cong vẹo."
+    },
+    {
+     "ma_cau": "K08030104001",
+     "loai": "trac_nghiem",
+     "de": "Loãng xương là tình trạng gì?",
+     "lua_chon": [
+      "Xương tăng mật độ khoáng bất thường",
+      "Xương bị viêm nhiễm cấp tính",
+      "Xương mọc dài quá mức bình thường",
+      "Xương xốp, giòn, giảm mật độ khoáng, dễ gãy"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Loãng xương là tình trạng xương giảm mật độ khoáng, trở nên xốp, giòn, dễ gãy."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00936",
+   "nhom_id": "KNB00399",
+   "thu_tu": 2,
+   "dang": "Nguyên nhân và biện pháp phòng tránh",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030104011",
+     "loai": "trac_nghiem",
+     "de": "Biện pháp nào giúp phòng tránh loãng xương?",
+     "lua_chon": [
+      "Bổ sung đủ calcium, vitamin D và luyện tập thể dục đều đặn",
+      "Tránh tiếp xúc với ánh nắng mặt trời",
+      "Ăn kiêng, giảm khẩu phần calcium",
+      "Hạn chế tối đa vận động thể chất"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Chế độ dinh dưỡng đủ calcium, vitamin D cùng luyện tập đều đặn giúp phòng tránh loãng xương."
+    },
+    {
+     "ma_cau": "K08030104020",
+     "loai": "trac_nghiem",
+     "de": "Biện pháp nào sau đây KHÔNG giúp bảo vệ hệ vận động?",
+     "lua_chon": [
+      "Luyện tập thể dục thể thao đều đặn, đúng cách",
+      "Bổ sung đủ calcium và vitamin D",
+      "Ngồi học và làm việc sai tư thế trong thời gian dài",
+      "Khởi động kĩ trước khi vận động mạnh"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ngồi sai tư thế kéo dài gây hại cho cột sống, không phải biện pháp bảo vệ hệ vận động."
+    },
+    {
+     "ma_cau": "K08030104019",
+     "loai": "trac_nghiem",
+     "de": "Chế độ ăn thiếu calcium kéo dài có thể dẫn đến hậu quả nào cho hệ vận động?",
+     "lua_chon": [
+      "Không ảnh hưởng đến hệ vận động",
+      "Xương yếu, dễ loãng xương và gãy xương",
+      "Cột sống tự điều chỉnh về tư thế thẳng",
+      "Xương chắc khoẻ hơn bình thường"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Thiếu calcium kéo dài làm xương yếu, giảm mật độ khoáng, dễ dẫn đến loãng xương và gãy xương."
+    },
+    {
+     "ma_cau": "K08030104016",
+     "loai": "trac_nghiem",
+     "de": "Trước khi vận động mạnh, cần thực hiện biện pháp nào để phòng tránh chấn thương?",
+     "lua_chon": [
+      "Nhịn ăn để cơ thể nhẹ nhàng",
+      "Không cần chuẩn bị gì trước",
+      "Vận động ngay với cường độ tối đa",
+      "Khởi động kĩ các khớp và cơ"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khởi động kĩ giúp cơ, khớp thích nghi dần, giảm nguy cơ chấn thương khi vận động mạnh."
+    },
+    {
+     "ma_cau": "K08030104018",
+     "loai": "trac_nghiem",
+     "de": "Khi lao động hoặc chơi thể thao, cần chú ý điều gì để tránh bong gân, trật khớp?",
+     "lua_chon": [
+      "Vận động với cường độ tối đa ngay từ đầu",
+      "Thực hiện đúng kĩ thuật và cẩn trọng khi vận động",
+      "Vận động càng nhanh càng tốt, không cần chú ý kĩ thuật",
+      "Bỏ qua bước khởi động để tiết kiệm thời gian"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Thực hiện đúng kĩ thuật, cẩn trọng khi vận động giúp giảm nguy cơ bong gân, trật khớp."
+    },
+    {
+     "ma_cau": "K08030104012",
+     "loai": "trac_nghiem",
+     "de": "Tắm nắng vào thời điểm thích hợp có tác dụng gì đối với hệ vận động?",
+     "lua_chon": [
+      "Giúp cơ thể tổng hợp vitamin D, hỗ trợ hấp thụ calcium",
+      "Làm xương giòn, dễ gãy hơn",
+      "Gây thiếu calcium trong xương",
+      "Không có tác dụng gì với xương"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ánh nắng giúp da tổng hợp vitamin D, hỗ trợ hấp thụ calcium để xương chắc khoẻ."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00937",
+   "nhom_id": "KNB00399",
+   "thu_tu": 3,
+   "dang": "Sơ cứu khi gặp chấn thương hệ vận động",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030104022",
+     "loai": "trac_nghiem",
+     "de": "Khi sơ cứu gãy xương, dụng cụ thường dùng để cố định xương là gì?",
+     "lua_chon": [
+      "Nẹp",
+      "Băng gạc y tế thông thường",
+      "Túi chườm nóng",
+      "Dây chun thể thao"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nẹp được dùng để cố định xương gãy, giữ cho xương không di lệch thêm."
+    },
+    {
+     "ma_cau": "K08030104023",
+     "loai": "trac_nghiem",
+     "de": "Khi sơ cứu người bị gãy xương, KHÔNG được làm điều gì?",
+     "lua_chon": [
+      "Đưa nạn nhân đến cơ sở y tế",
+      "Cố định xương bằng nẹp",
+      "Giữ cho nạn nhân yên tĩnh, hạn chế cử động",
+      "Tự ý nắn chỗ xương gãy về vị trí cũ"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tự ý nắn xương gãy có thể làm tổn thương thêm mạch máu, dây thần kinh quanh chỗ gãy."
+    },
+    {
+     "ma_cau": "K08030104028",
+     "loai": "trac_nghiem",
+     "de": "Khi sơ cứu gãy xương ở tay, nẹp cần được đặt cố định qua những vị trí nào?",
+     "lua_chon": [
+      "Chỉ cố định khớp phía trên chỗ gãy",
+      "Chỉ cố định đúng vị trí xương gãy",
+      "Không cần cố định qua khớp nào",
+      "Cố định qua cả khớp phía trên và phía dưới chỗ gãy"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Nẹp cần cố định qua cả khớp trên và dưới chỗ gãy để hạn chế cử động, tránh tổn thương thêm."
+    },
+    {
+     "ma_cau": "K08030104027",
+     "loai": "trac_nghiem",
+     "de": "Khi nghi ngờ nạn nhân bị chấn thương cột sống, cần lưu ý điều gì khi sơ cứu?",
+     "lua_chon": [
+      "Nhanh chóng bế xốc nạn nhân dậy",
+      "Xoay người nạn nhân nhiều lần để kiểm tra",
+      "Cho nạn nhân ngồi dậy ngay để kiểm tra",
+      "Hạn chế tối đa việc di chuyển, đặc biệt là vùng cổ và lưng"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Chấn thương cột sống rất nguy hiểm nếu di chuyển sai cách, cần hạn chế tối đa cử động vùng cổ, lưng."
+    },
+    {
+     "ma_cau": "K08030104029",
+     "loai": "trac_nghiem",
+     "de": "Vì sao cần đưa nạn nhân gãy xương đến cơ sở y tế sớm sau khi sơ cứu?",
+     "lua_chon": [
+      "Vì không cần thiết, có thể tự điều trị tại nhà",
+      "Để được chẩn đoán và điều trị đúng chuyên môn, tránh biến chứng",
+      "Vì sơ cứu tại chỗ đã đủ để xương tự lành",
+      "Vì cơ sở y tế chỉ xử lí được vết thương ngoài da"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đưa nạn nhân đến cơ sở y tế sớm giúp chẩn đoán, xử lí đúng cách và tránh biến chứng."
+    },
+    {
+     "ma_cau": "K08030104021",
+     "loai": "trac_nghiem",
+     "de": "Khi nghi ngờ nạn nhân bị gãy xương, việc đầu tiên cần làm là gì?",
+     "lua_chon": [
+      "Cố định chỗ xương gãy, không di chuyển tuỳ tiện",
+      "Cố nắn thẳng xương về vị trí cũ",
+      "Để nạn nhân tự vận động bình thường",
+      "Xoa bóp mạnh vào chỗ gãy"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cần cố định chỗ xương gãy trước, tránh di chuyển tuỳ tiện để không làm tổn thương nặng hơn."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00938",
+   "nhom_id": "KNB00400",
+   "thu_tu": 1,
+   "dang": "Carbohydrate, protein, lipid và vai trò",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030201006",
+     "loai": "trac_nghiem",
+     "de": "Thực phẩm nào sau đây là nguồn cung cấp lipid chính?",
+     "lua_chon": [
+      "Gạo, ngô, khoai",
+      "Dầu, mỡ, bơ",
+      "Nước uống",
+      "Rau xanh, trái cây"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Dầu, mỡ, bơ là các thực phẩm giàu lipid."
+    },
+    {
+     "ma_cau": "K08030201004",
+     "loai": "trac_nghiem",
+     "de": "Thực phẩm nào sau đây là nguồn cung cấp protein chính?",
+     "lua_chon": [
+      "Thịt, cá, trứng, sữa",
+      "Gạo, ngô, khoai",
+      "Dầu, mỡ, bơ",
+      "Rau xanh, trái cây"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thịt, cá, trứng, sữa là các thực phẩm giàu protein."
+    },
+    {
+     "ma_cau": "K08030201003",
+     "loai": "trac_nghiem",
+     "de": "Protein (chất đạm) có vai trò chính nào đối với cơ thể?",
+     "lua_chon": [
+      "Cấu tạo, đổi mới tế bào và tham gia tạo enzyme, hormone",
+      "Cung cấp năng lượng dự trữ chính",
+      "Hoà tan vitamin tan trong dầu",
+      "Điều hoà thân nhiệt cơ thể"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Protein là thành phần cấu tạo tế bào, tham gia đổi mới tế bào và tạo enzyme, hormone."
+    },
+    {
+     "ma_cau": "K08030201010",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây đúng về nhóm chất sinh năng lượng?",
+     "lua_chon": [
+      "Chỉ lipid cung cấp năng lượng cho cơ thể",
+      "Carbohydrate, protein và lipid đều là nhóm chất cung cấp năng lượng cho cơ thể",
+      "Vitamin là nhóm chất cung cấp năng lượng chính",
+      "Chỉ carbohydrate cung cấp năng lượng cho cơ thể"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Cả ba nhóm chất carbohydrate, protein và lipid đều cung cấp năng lượng cho cơ thể."
+    },
+    {
+     "ma_cau": "K08030201008",
+     "loai": "trac_nghiem",
+     "de": "Trong ba nhóm chất carbohydrate, protein, lipid, nhóm nào cung cấp năng lượng nhiều nhất tính trên cùng một khối lượng?",
+     "lua_chon": [
+      "Lipid",
+      "Protein",
+      "Cả ba cung cấp năng lượng bằng nhau",
+      "Carbohydrate"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cùng một khối lượng, lipid cung cấp năng lượng cao hơn carbohydrate và protein."
+    },
+    {
+     "ma_cau": "K08030201009",
+     "loai": "trac_nghiem",
+     "de": "Cơ thể thiếu protein kéo dài dẫn đến hậu quả nào?",
+     "lua_chon": [
+      "Suy dinh dưỡng, chậm phát triển, giảm sức đề kháng",
+      "Thừa cân, béo phì",
+      "Tăng mật độ khoáng trong xương",
+      "Rối loạn thị giác"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thiếu protein kéo dài khiến cơ thể suy dinh dưỡng, chậm phát triển và giảm sức đề kháng."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00939",
+   "nhom_id": "KNB00400",
+   "thu_tu": 2,
+   "dang": "Vitamin, chất khoáng, nước, chất xơ và vai trò",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030201015",
+     "loai": "trac_nghiem",
+     "de": "Chất khoáng nào cần thiết cho cấu tạo xương và răng?",
+     "lua_chon": [
+      "Kẽm (zinc)",
+      "Calcium (canxi)",
+      "Sắt (iron)",
+      "Iodine (i-ốt)"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Calcium là thành phần chính cấu tạo xương và răng."
+    },
+    {
+     "ma_cau": "K08030201020",
+     "loai": "trac_nghiem",
+     "de": "Thực phẩm nào sau đây là nguồn cung cấp chất xơ dồi dào?",
+     "lua_chon": [
+      "Dầu, mỡ",
+      "Đường tinh luyện",
+      "Rau xanh, trái cây, ngũ cốc nguyên hạt",
+      "Thịt, cá"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Rau xanh, trái cây và ngũ cốc nguyên hạt là các nguồn cung cấp chất xơ dồi dào."
+    },
+    {
+     "ma_cau": "K08030201019",
+     "loai": "trac_nghiem",
+     "de": "Chất xơ có vai trò nào sau đây đối với cơ thể?",
+     "lua_chon": [
+      "Vận chuyển oxygen trong máu",
+      "Hỗ trợ tiêu hoá, phòng chống táo bón",
+      "Cung cấp năng lượng chính",
+      "Cấu tạo tế bào và mô"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Chất xơ hỗ trợ hoạt động tiêu hoá, giúp phòng chống táo bón, dù không sinh năng lượng."
+    },
+    {
+     "ma_cau": "K08030201012",
+     "loai": "trac_nghiem",
+     "de": "Cơ thể thiếu vitamin A kéo dài dễ dẫn đến bệnh nào?",
+     "lua_chon": [
+      "Bướu cổ",
+      "Chảy máu chân răng",
+      "Quáng gà, khô mắt",
+      "Còi xương"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Thiếu vitamin A kéo dài gây quáng gà, khô mắt."
+    },
+    {
+     "ma_cau": "K08030201011",
+     "loai": "trac_nghiem",
+     "de": "Vitamin được chia thành hai nhóm chính nào?",
+     "lua_chon": [
+      "Vitamin đa lượng và vi lượng",
+      "Vitamin tự nhiên và vitamin tổng hợp",
+      "Vitamin động vật và vitamin thực vật",
+      "Vitamin tan trong nước và vitamin tan trong dầu"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Vitamin được chia thành hai nhóm: tan trong nước (như B, C) và tan trong dầu (như A, D, E, K)."
+    },
+    {
+     "ma_cau": "K08030201016",
+     "loai": "trac_nghiem",
+     "de": "Chất khoáng nào tham gia cấu tạo hemoglobin, cần thiết cho quá trình tạo máu?",
+     "lua_chon": [
+      "Sắt (iron)",
+      "Calcium (canxi)",
+      "Kẽm (zinc)",
+      "Iodine (i-ốt)"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Sắt tham gia cấu tạo hemoglobin trong hồng cầu, cần thiết cho quá trình tạo máu."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00940",
+   "nhom_id": "KNB00400",
+   "thu_tu": 3,
+   "dang": "Nhu cầu dinh dưỡng và các yếu tố ảnh hưởng",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030201028",
+     "loai": "trac_nghiem",
+     "de": "Khẩu phần ăn hợp lý cần đảm bảo yêu cầu nào sau đây?",
+     "lua_chon": [
+      "Giống nhau cho mọi lứa tuổi, giới tính",
+      "Càng nhiều protein càng tốt, không cần nhóm chất khác",
+      "Chỉ cần đủ năng lượng, không cần cân đối nhóm chất",
+      "Đủ năng lượng và cân đối giữa các nhóm chất dinh dưỡng, phù hợp với từng đối tượng"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khẩu phần ăn hợp lý phải đủ năng lượng, cân đối các nhóm chất và phù hợp với từng đối tượng cụ thể."
+    },
+    {
+     "ma_cau": "K08030201022",
+     "loai": "trac_nghiem",
+     "de": "Nhu cầu dinh dưỡng của mỗi người phụ thuộc vào yếu tố nào sau đây?",
+     "lua_chon": [
+      "Độ tuổi, giới tính, mức độ vận động, trạng thái sinh lý",
+      "Chỉ phụ thuộc vào cân nặng",
+      "Chỉ phụ thuộc vào chiều cao",
+      "Không phụ thuộc vào yếu tố nào, giống nhau ở mọi người"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nhu cầu dinh dưỡng phụ thuộc vào độ tuổi, giới tính, mức độ vận động và trạng thái sinh lý của mỗi người."
+    },
+    {
+     "ma_cau": "K08030201027",
+     "loai": "trac_nghiem",
+     "de": "Giữa nam và nữ cùng độ tuổi, cùng mức vận động, nhu cầu năng lượng thường khác nhau chủ yếu do đâu?",
+     "lua_chon": [
+      "Do sự khác biệt về khối lượng cơ và mức chuyển hoá cơ bản giữa hai giới",
+      "Do nữ giới tiêu hoá thức ăn nhanh hơn",
+      "Do nam giới không cần protein",
+      "Do nữ giới không cần năng lượng để vận động"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nam giới thường có khối lượng cơ lớn hơn, mức chuyển hoá cơ bản cao hơn nên nhu cầu năng lượng thường cao hơn nữ giới."
+    },
+    {
+     "ma_cau": "K08030201025",
+     "loai": "trac_nghiem",
+     "de": "Phụ nữ mang thai và cho con bú có nhu cầu dinh dưỡng như thế nào so với bình thường?",
+     "lua_chon": [
+      "Chỉ cần giảm carbohydrate",
+      "Cao hơn bình thường, cần bổ sung thêm để nuôi dưỡng thai nhi hoặc tiết sữa",
+      "Thấp hơn bình thường",
+      "Không thay đổi so với bình thường"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Phụ nữ mang thai, cho con bú cần bổ sung thêm dinh dưỡng để nuôi dưỡng thai nhi hoặc tạo sữa."
+    },
+    {
+     "ma_cau": "K08030201024",
+     "loai": "trac_nghiem",
+     "de": "Người lao động nặng, vận động thể lực nhiều có nhu cầu năng lượng như thế nào so với người ít vận động?",
+     "lua_chon": [
+      "Bằng nhau",
+      "Không liên quan đến mức độ vận động",
+      "Thấp hơn",
+      "Cao hơn"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Vận động thể lực nhiều tiêu tốn nhiều năng lượng hơn nên nhu cầu năng lượng cao hơn."
+    },
+    {
+     "ma_cau": "K08030201021",
+     "loai": "trac_nghiem",
+     "de": "Nhu cầu dinh dưỡng là gì?",
+     "lua_chon": [
+      "Lượng vitamin dư thừa cơ thể đào thải ra ngoài",
+      "Lượng nước cơ thể cần uống mỗi ngày",
+      "Lượng chất dinh dưỡng cơ thể cần được cung cấp hằng ngày để duy trì sự sống và hoạt động",
+      "Lượng thức ăn tối đa cơ thể có thể tiêu hoá"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nhu cầu dinh dưỡng là lượng chất dinh dưỡng cần cung cấp hằng ngày để cơ thể duy trì sự sống và hoạt động."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00941",
+   "nhom_id": "KNB00401",
+   "thu_tu": 1,
+   "dang": "Tính nhanh năng lượng từ khối lượng một nhóm chất",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030202003",
+     "loai": "trac_nghiem",
+     "de": "Một khẩu phần ăn chứa 12 g lipid. Tính năng lượng do lượng lipid này cung cấp, biết 1 g lipid cung cấp khoảng 9 kcal.",
+     "lua_chon": [
+      "1,33 kcal",
+      "12 kcal",
+      "108 kcal",
+      "48 kcal"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Năng lượng = khối lượng \\times hệ số năng lượng = $12 \\times 9 = 108$ kcal."
+    },
+    {
+     "ma_cau": "K08030202005",
+     "loai": "trac_nghiem",
+     "de": "Một khẩu phần ăn chứa 55 g protein. Tính năng lượng do lượng protein này cung cấp, biết 1 g protein cung cấp khoảng 4 kcal.",
+     "lua_chon": [
+      "495 kcal",
+      "220 kcal",
+      "13,75 kcal",
+      "55 kcal"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Năng lượng = khối lượng $\\times$ hệ số năng lượng = $55 \\times 4 = 220$ kcal."
+    },
+    {
+     "ma_cau": "K08030202004",
+     "loai": "trac_nghiem",
+     "de": "Một khẩu phần ăn chứa 18 g lipid. Tính năng lượng do lượng lipid này cung cấp, biết 1 g lipid cung cấp khoảng 9 kcal.",
+     "lua_chon": [
+      "72 kcal",
+      "18 kcal",
+      "162 kcal",
+      "2,00 kcal"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Năng lượng = khối lượng \\times hệ số năng lượng = $18 \\times 9 = 162$ kcal."
+    },
+    {
+     "ma_cau": "K08030202001",
+     "loai": "trac_nghiem",
+     "de": "Một khẩu phần ăn chứa 25 g carbohydrate. Tính năng lượng do lượng carbohydrate này cung cấp, biết 1 g carbohydrate cung cấp khoảng 4 kcal.",
+     "lua_chon": [
+      "25 kcal",
+      "225 kcal",
+      "6,25 kcal",
+      "100 kcal"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Năng lượng = khối lượng \\times hệ số năng lượng = $25 \\times 4 = 100$ kcal."
+    },
+    {
+     "ma_cau": "K08030202002",
+     "loai": "trac_nghiem",
+     "de": "Một khẩu phần ăn chứa 35 g protein. Tính năng lượng do lượng protein này cung cấp, biết 1 g protein cung cấp khoảng 4 kcal.",
+     "lua_chon": [
+      "315 kcal",
+      "8,75 kcal",
+      "140 kcal",
+      "35 kcal"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Năng lượng = khối lượng \\times hệ số năng lượng = $35 \\times 4 = 140$ kcal."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00942",
+   "nhom_id": "KNB00401",
+   "thu_tu": 2,
+   "dang": "Tính tổng năng lượng khi biết khối lượng cả ba nhóm chất",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030202008",
+     "loai": "trac_nghiem",
+     "de": "Một bữa ăn chứa 60 g carbohydrate, 25 g protein và 12 g lipid. Tính tổng năng lượng bữa ăn cung cấp (biết 1 g carbohydrate và 1 g protein cung cấp khoảng 4 kcal, 1 g lipid cung cấp khoảng 9 kcal).",
+     "lua_chon": [
+      "340 kcal",
+      "573 kcal",
+      "388 kcal",
+      "448 kcal"
+     ],
+     "dap_an": "D",
+     "loi_giai": "E = $4\\times C + 4\\times P + 9\\times L = 4\\times 60 + 4\\times 25 + 9\\times 12 = 240 + 100 + 108 = 448$ kcal."
+    },
+    {
+     "ma_cau": "K08030202007",
+     "loai": "trac_nghiem",
+     "de": "Một bữa ăn chứa 40 g carbohydrate, 15 g protein và 8 g lipid. Tính tổng năng lượng bữa ăn cung cấp (biết 1 g carbohydrate và 1 g protein cung cấp khoảng 4 kcal, 1 g lipid cung cấp khoảng 9 kcal).",
+     "lua_chon": [
+      "220 kcal",
+      "367 kcal",
+      "292 kcal",
+      "252 kcal"
+     ],
+     "dap_an": "C",
+     "loi_giai": "E = $4\\times C + 4\\times P + 9\\times L = 4\\times 40 + 4\\times 15 + 9\\times 8 = 160 + 60 + 72 = 292$ kcal."
+    },
+    {
+     "ma_cau": "K08030202006",
+     "loai": "trac_nghiem",
+     "de": "Một bữa ăn chứa 50 g carbohydrate, 20 g protein và 10 g lipid. Tính tổng năng lượng bữa ăn cung cấp (biết 1 g carbohydrate và 1 g protein cung cấp khoảng 4 kcal, 1 g lipid cung cấp khoảng 9 kcal).",
+     "lua_chon": [
+      "280 kcal",
+      "370 kcal",
+      "470 kcal",
+      "320 kcal"
+     ],
+     "dap_an": "B",
+     "loi_giai": "E = $4\\times C + 4\\times P + 9\\times L = 4\\times 50 + 4\\times 20 + 9\\times 10 = 200 + 80 + 90 = 370$ kcal."
+    },
+    {
+     "ma_cau": "K08030202009",
+     "loai": "trac_nghiem",
+     "de": "Một bữa ăn chứa 35 g carbohydrate, 18 g protein và 6 g lipid. Tính tổng năng lượng bữa ăn cung cấp (biết 1 g carbohydrate và 1 g protein cung cấp khoảng 4 kcal, 1 g lipid cung cấp khoảng 9 kcal).",
+     "lua_chon": [
+      "266 kcal",
+      "212 kcal",
+      "236 kcal",
+      "356 kcal"
+     ],
+     "dap_an": "A",
+     "loi_giai": "E = $4 \\times \\text{C} + 4 \\times \\text{P} + 9 \\times \\text{L} = 4 \\times 35 + 4 \\times 18 + 9 \\times 6 = 140 + 72 + 54 = 266$ kcal."
+    },
+    {
+     "ma_cau": "K08030202010",
+     "loai": "trac_nghiem",
+     "de": "Một bữa ăn chứa 55 g carbohydrate, 22 g protein và 9 g lipid. Tính tổng năng lượng bữa ăn cung cấp (biết 1 g carbohydrate và 1 g protein cung cấp khoảng 4 kcal, 1 g lipid cung cấp khoảng 9 kcal).",
+     "lua_chon": [
+      "308 kcal",
+      "389 kcal",
+      "499 kcal",
+      "344 kcal"
+     ],
+     "dap_an": "B",
+     "loi_giai": "E = $4 \\times \\text{C} + 4 \\times \\text{P} + 9 \\times \\text{L} = 4 \\times 55 + 4 \\times 22 + 9 \\times 9 = 220 + 88 + 81 = 389$ kcal."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00943",
+   "nhom_id": "KNB00401",
+   "thu_tu": 3,
+   "dang": "Tính ngược khối lượng một nhóm chất khi biết tổng năng lượng",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030202013",
+     "loai": "trac_nghiem",
+     "de": "Một bữa ăn chứa 58 g carbohydrate, 12 g protein và một lượng lipid chưa biết, tổng năng lượng bữa ăn là 406 kcal (biết 1 g carbohydrate và 1 g protein cung cấp khoảng 4 kcal, 1 g lipid cung cấp khoảng 9 kcal). Tính khối lượng lipid trong bữa ăn.",
+     "lua_chon": [
+      "14 g",
+      "76,22 g",
+      "31,50 g",
+      "126 g"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Năng lượng từ lipid: $\\mathrm{E} - 4 \\times \\mathrm{C} - 4 \\times \\mathrm{P} = 406 - 232 - 48 = 126 \\text{ kcal}$. Khối lượng lipid: $126/9 = 14 \\text{ g}$."
+    },
+    {
+     "ma_cau": "K08030202014",
+     "loai": "trac_nghiem",
+     "de": "Một bữa ăn chứa 27 g carbohydrate, 33 g protein và một lượng lipid chưa biết, tổng năng lượng bữa ăn là 303 kcal (biết 1 g carbohydrate và 1 g protein cung cấp khoảng 4 kcal, 1 g lipid cung cấp khoảng 9 kcal). Tính khối lượng lipid trong bữa ăn.",
+     "lua_chon": [
+      "63 g",
+      "7 g",
+      "15,75 g",
+      "60,33 g"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Năng lượng từ lipid: $\\mathrm{E} - 4 \\times \\mathrm{C} - 4 \\times \\mathrm{P} = 303 - 108 - 132 = 63$ kcal.\nKhối lượng lipid: $63/9 = 7$ g."
+    },
+    {
+     "ma_cau": "K08030202011",
+     "loai": "trac_nghiem",
+     "de": "Một bữa ăn chứa 48 g carbohydrate, 17 g protein và một lượng lipid chưa biết, tổng năng lượng bữa ăn là 395 kcal (biết 1 g carbohydrate và 1 g protein cung cấp khoảng 4 kcal, 1 g lipid cung cấp khoảng 9 kcal). Tính khối lượng lipid trong bữa ăn.",
+     "lua_chon": [
+      "15 g",
+      "33,75 g",
+      "135 g",
+      "72,78 g"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Năng lượng từ lipid: $\\mathrm{E} - 4 \\times \\mathrm{C} - 4 \\times \\mathrm{P} = 395 - 192 - 68 = 135 \\text{ kcal}$. Khối lượng lipid: $135/9 = 15 \\text{ g}$."
+    },
+    {
+     "ma_cau": "K08030202015",
+     "loai": "trac_nghiem",
+     "de": "Một bữa ăn chứa 44 g carbohydrate, 26 g protein và một lượng lipid chưa biết, tổng năng lượng bữa ăn là 397 kcal (biết 1 g carbohydrate và 1 g protein cung cấp khoảng 4 kcal, 1 g lipid cung cấp khoảng 9 kcal). Tính khối lượng lipid trong bữa ăn.",
+     "lua_chon": [
+      "117 g",
+      "75,22 g",
+      "13 g",
+      "29,25 g"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Năng lượng từ lipid: $\\mathrm{E} - 4 \\times \\mathrm{C} - 4 \\times \\mathrm{P} = 397 - 176 - 104 = 117$ kcal.\nKhối lượng lipid: $117/9 = 13$ g."
+    },
+    {
+     "ma_cau": "K08030202012",
+     "loai": "trac_nghiem",
+     "de": "Một bữa ăn chứa 33 g carbohydrate, 27 g protein và một lượng lipid chưa biết, tổng năng lượng bữa ăn là 339 kcal (biết 1 g carbohydrate và 1 g protein cung cấp khoảng 4 kcal, 1 g lipid cung cấp khoảng 9 kcal). Tính khối lượng lipid trong bữa ăn.",
+     "lua_chon": [
+      "24,75 g",
+      "64,33 g",
+      "99 g",
+      "11 g"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Năng lượng từ lipid: $\\mathrm{E} - 4 \\times \\mathrm{C} - 4 \\times \\mathrm{P} = 339 - 132 - 108 = 99 \\text{ kcal}$. Khối lượng lipid: $99/9 = 11 \\text{ g}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00944",
+   "nhom_id": "KNB00401",
+   "thu_tu": 4,
+   "dang": "So sánh năng lượng giữa hai khẩu phần",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030202020",
+     "loai": "trac_nghiem",
+     "de": "Khẩu phần A chứa 15 g carbohydrate, 30 g protein, 10 g lipid. Khẩu phần B chứa 35 g carbohydrate, 15 g protein, 5 g lipid. So sánh năng lượng hai khẩu phần (biết 1 g carbohydrate và 1 g protein cung cấp khoảng 4 kcal, 1 g lipid cung cấp khoảng 9 kcal).",
+     "lua_chon": [
+      "Hai khẩu phần có năng lượng bằng nhau",
+      "Khẩu phần B có năng lượng lớn hơn, chênh lệch 25 kcal",
+      "Khẩu phần B có năng lượng lớn hơn, chênh lệch 20 kcal",
+      "Khẩu phần A có năng lượng lớn hơn, chênh lệch 25 kcal"
+     ],
+     "dap_an": "D",
+     "loi_giai": "E(A) = $4\\times 15 + 4\\times 30 + 9\\times 10 = 270$ kcal. E(B) = $4\\times 35 + 4\\times 15 + 9\\times 5 = 245$ kcal. Khẩu phần A lớn hơn, chênh lệch 25 kcal."
+    },
+    {
+     "ma_cau": "K08030202016",
+     "loai": "trac_nghiem",
+     "de": "Khẩu phần A chứa 40 g carbohydrate, 10 g protein, 5 g lipid. Khẩu phần B chứa 30 g carbohydrate, 15 g protein, 10 g lipid. So sánh năng lượng hai khẩu phần (biết 1 g carbohydrate và 1 g protein cung cấp khoảng 4 kcal, 1 g lipid cung cấp khoảng 9 kcal).",
+     "lua_chon": [
+      "Hai khẩu phần có năng lượng bằng nhau",
+      "Khẩu phần B có năng lượng lớn hơn, chênh lệch 25 kcal",
+      "Khẩu phần A có năng lượng lớn hơn, chênh lệch 25 kcal",
+      "Khẩu phần A có năng lượng lớn hơn, chênh lệch 20 kcal"
+     ],
+     "dap_an": "B",
+     "loi_giai": "E(A) = $4\\times 40 + 4\\times 10 + 9\\times 5 = 245$ kcal. E(B) = $4\\times 30 + 4\\times 15 + 9\\times 10 = 270$ kcal. Khẩu phần B lớn hơn, chênh lệch 25 kcal."
+    },
+    {
+     "ma_cau": "K08030202018",
+     "loai": "trac_nghiem",
+     "de": "Khẩu phần A chứa 50 g carbohydrate, 8 g protein, 4 g lipid. Khẩu phần B chứa 20 g carbohydrate, 25 g protein, 12 g lipid. So sánh năng lượng hai khẩu phần (biết 1 g carbohydrate và 1 g protein cung cấp khoảng 4 kcal, 1 g lipid cung cấp khoảng 9 kcal).",
+     "lua_chon": [
+      "Khẩu phần B có năng lượng lớn hơn, chênh lệch 20 kcal",
+      "Khẩu phần A có năng lượng lớn hơn, chênh lệch 20 kcal",
+      "Khẩu phần A có năng lượng lớn hơn, chênh lệch 52 kcal",
+      "Hai khẩu phần có năng lượng bằng nhau"
+     ],
+     "dap_an": "A",
+     "loi_giai": "E(A) = $4\\times 50 + 4\\times 8 + 9\\times 4 = 268$ kcal. E(B) = $4\\times 20 + 4\\times 25 + 9\\times 12 = 288$ kcal. Khẩu phần B lớn hơn, chênh lệch 20 kcal."
+    },
+    {
+     "ma_cau": "K08030202019",
+     "loai": "trac_nghiem",
+     "de": "Khẩu phần A chứa 60 g carbohydrate, 5 g protein, 3 g lipid. Khẩu phần B chứa 45 g carbohydrate, 10 g protein, 8 g lipid. So sánh năng lượng hai khẩu phần (biết 1 g carbohydrate và 1 g protein cung cấp khoảng 4 kcal, 1 g lipid cung cấp khoảng 9 kcal).",
+     "lua_chon": [
+      "Khẩu phần B có năng lượng lớn hơn, chênh lệch 5 kcal",
+      "Hai khẩu phần có năng lượng bằng nhau",
+      "Khẩu phần A có năng lượng lớn hơn, chênh lệch 5 kcal",
+      "Khẩu phần A có năng lượng lớn hơn, chênh lệch 40 kcal"
+     ],
+     "dap_an": "A",
+     "loi_giai": "E(A) = $4\\times 60 + 4\\times 5 + 9\\times 3 = 287$ kcal. E(B) = $4\\times 45 + 4\\times 10 + 9\\times 8 = 292$ kcal. Khẩu phần B lớn hơn, chênh lệch 5 kcal."
+    },
+    {
+     "ma_cau": "K08030202017",
+     "loai": "trac_nghiem",
+     "de": "Khẩu phần A chứa 25 g carbohydrate, 20 g protein, 8 g lipid. Khẩu phần B chứa 35 g carbohydrate, 12 g protein, 6 g lipid. So sánh năng lượng hai khẩu phần (biết 1 g carbohydrate và 1 g protein cung cấp khoảng 4 kcal, 1 g lipid cung cấp khoảng 9 kcal).",
+     "lua_chon": [
+      "Khẩu phần B có năng lượng lớn hơn, chênh lệch 8 kcal",
+      "Khẩu phần B có năng lượng lớn hơn, chênh lệch 10 kcal",
+      "Hai khẩu phần có năng lượng bằng nhau",
+      "Khẩu phần A có năng lượng lớn hơn, chênh lệch 10 kcal"
+     ],
+     "dap_an": "D",
+     "loi_giai": "E(A) = $4\\times 25 + 4\\times 20 + 9\\times 8 = 252$ kcal. E(B) = $4\\times 35 + 4\\times 12 + 9\\times 6 = 242$ kcal. Khẩu phần A lớn hơn, chênh lệch 10 kcal."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00945",
+   "nhom_id": "KNB00401",
+   "thu_tu": 5,
+   "dang": "Tính tổng năng lượng một bữa ăn",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030202021",
+     "loai": "tra_loi_ngan",
+     "de": "Một bữa ăn chứa 42 g carbohydrate, 14 g protein và 9 g lipid. Tính tổng năng lượng bữa ăn cung cấp (biết 1 g carbohydrate và 1 g protein cung cấp khoảng 4 kcal, 1 g lipid cung cấp khoảng 9 kcal).",
+     "dap_an": "305",
+     "loi_giai": "$$E = 4\\times C + 4\\times P + 9\\times L = 4\\times 42 + 4\\times 14 + 9\\times 9 = 168 + 56 + 81 = 305 \\text{ kcal}.$$"
+    },
+    {
+     "ma_cau": "K08030202025",
+     "loai": "tra_loi_ngan",
+     "de": "Một bữa ăn chứa 47 g carbohydrate, 19 g protein và 13 g lipid. Tính tổng năng lượng bữa ăn cung cấp (biết 1 g carbohydrate và 1 g protein cung cấp khoảng 4 kcal, 1 g lipid cung cấp khoảng 9 kcal).",
+     "dap_an": "381",
+     "loi_giai": "$$E = 4\\times C + 4\\times P + 9\\times L = 4\\times 47 + 4\\times 19 + 9\\times 13 = 188 + 76 + 117 = 381 \\text{ kcal}.$$"
+    },
+    {
+     "ma_cau": "K08030202024",
+     "loai": "tra_loi_ngan",
+     "de": "Một bữa ăn chứa 29 g carbohydrate, 31 g protein và 6 g lipid. Tính tổng năng lượng bữa ăn cung cấp (biết 1 g carbohydrate và 1 g protein cung cấp khoảng 4 kcal, 1 g lipid cung cấp khoảng 9 kcal).",
+     "dap_an": "294",
+     "loi_giai": "$$E = 4\\times C + 4\\times P + 9\\times L = 4\\times 29 + 4\\times 31 + 9\\times 6 = 116 + 124 + 54 = 294 \\text{ kcal}.$$"
+    },
+    {
+     "ma_cau": "K08030202022",
+     "loai": "tra_loi_ngan",
+     "de": "Một bữa ăn chứa 38 g carbohydrate, 22 g protein và 7 g lipid. Tính tổng năng lượng bữa ăn cung cấp (biết 1 g carbohydrate và 1 g protein cung cấp khoảng 4 kcal, 1 g lipid cung cấp khoảng 9 kcal).",
+     "dap_an": "303",
+     "loi_giai": "$$E = 4\\times C + 4\\times P + 9\\times L = 4\\times 38 + 4\\times 22 + 9\\times 7 = 152 + 88 + 63 = 303 \\text{ kcal}.$$"
+    },
+    {
+     "ma_cau": "K08030202023",
+     "loai": "tra_loi_ngan",
+     "de": "Một bữa ăn chứa 52 g carbohydrate, 9 g protein và 11 g lipid. Tính tổng năng lượng bữa ăn cung cấp (biết 1 g carbohydrate và 1 g protein cung cấp khoảng 4 kcal, 1 g lipid cung cấp khoảng 9 kcal).",
+     "dap_an": "343",
+     "loi_giai": "$$E = 4\\times C + 4\\times P + 9\\times L = 4\\times 52 + 4\\times 9 + 9\\times 11 = 208 + 36 + 99 = 343 \\text{ kcal}.$$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00946",
+   "nhom_id": "KNB00401",
+   "thu_tu": 6,
+   "dang": "Tính ngược khối lượng lipid khi biết tổng năng lượng",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030202026",
+     "loai": "tra_loi_ngan",
+     "de": "Một bữa ăn chứa 36 g carbohydrate, 24 g protein và một lượng lipid chưa biết, tổng năng lượng bữa ăn là 384 kcal (biết 1 g carbohydrate và 1 g protein cung cấp khoảng 4 kcal, 1 g lipid cung cấp khoảng 9 kcal). Tính khối lượng lipid trong bữa ăn.",
+     "dap_an": "16",
+     "loi_giai": "Năng lượng từ lipid: $E = 4\\times C + 4\\times P = 384 - 144 - 96 = 144$ kcal. \nKhối lượng lipid: $144/9 = 16$ g."
+    },
+    {
+     "ma_cau": "K08030202029",
+     "loai": "tra_loi_ngan",
+     "de": "Một bữa ăn chứa 54 g carbohydrate, 16 g protein và một lượng lipid chưa biết, tổng năng lượng bữa ăn là 352 kcal (biết 1 g carbohydrate và 1 g protein cung cấp khoảng 4 kcal, 1 g lipid cung cấp khoảng 9 kcal). Tính khối lượng lipid trong bữa ăn.",
+     "dap_an": "8",
+     "loi_giai": "Năng lượng từ lipid: $E = 4\\times C + 4\\times P = 352 - 216 - 64 = 72$ kcal. \nKhối lượng lipid: $72/9 = 8$ g."
+    },
+    {
+     "ma_cau": "K08030202027",
+     "loai": "tra_loi_ngan",
+     "de": "Một bữa ăn chứa 41 g carbohydrate, 19 g protein và một lượng lipid chưa biết, tổng năng lượng bữa ăn là 330 kcal (biết 1 g carbohydrate và 1 g protein cung cấp khoảng 4 kcal, 1 g lipid cung cấp khoảng 9 kcal). Tính khối lượng lipid trong bữa ăn.",
+     "dap_an": "10",
+     "loi_giai": "Năng lượng từ lipid: $E = 4\\times C + 4\\times P = 330 - 164 - 76 = 90$ kcal. \nKhối lượng lipid: $90/9 = 10$ g."
+    },
+    {
+     "ma_cau": "K08030202030",
+     "loai": "tra_loi_ngan",
+     "de": "Một bữa ăn chứa 19 g carbohydrate, 41 g protein và một lượng lipid chưa biết, tổng năng lượng bữa ăn là 420 kcal (biết 1 g carbohydrate và 1 g protein cung cấp khoảng 4 kcal, 1 g lipid cung cấp khoảng 9 kcal). Tính khối lượng lipid trong bữa ăn.",
+     "dap_an": "20",
+     "loi_giai": "Năng lượng từ lipid: $E = 4\\times C + 4\\times P = 420 - 76 - 164 = 180$ kcal. \nKhối lượng lipid: $180/9 = 20$ g."
+    },
+    {
+     "ma_cau": "K08030202028",
+     "loai": "tra_loi_ngan",
+     "de": "Một bữa ăn chứa 23 g carbohydrate, 37 g protein và một lượng lipid chưa biết, tổng năng lượng bữa ăn là 402 kcal (biết 1 g carbohydrate và 1 g protein cung cấp khoảng 4 kcal, 1 g lipid cung cấp khoảng 9 kcal). Tính khối lượng lipid trong bữa ăn.",
+     "dap_an": "18",
+     "loi_giai": "Năng lượng từ lipid: $E = 4\\times C + 4\\times P = 402 - 92 - 148 = 162$ kcal. \nKhối lượng lipid: $162/9 = 18$ g."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00947",
+   "nhom_id": "KNB00401",
+   "thu_tu": 7,
+   "dang": "Tính tổng năng lượng khẩu phần cả ngày và biện luận so với nhu cầu",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030202035",
+     "loai": "tu_luan",
+     "de": "Trong một ngày, một học sinh ăn ba bữa với thành phần dinh dưỡng như sau: bữa sáng 65 g carbohydrate, 19 g protein, 11 g lipid; bữa trưa 98 g carbohydrate, 27 g protein, 21 g lipid; bữa tối 72 g carbohydrate, 21 g protein, 13 g lipid. Nhu cầu năng lượng khuyến nghị của học sinh này là 1550 kcal/ngày (biết 1 g carbohydrate và 1 g protein cung cấp khoảng 4 kcal, 1 g lipid cung cấp khoảng 9 kcal). Tính tổng năng lượng khẩu phần cả ngày và cho biết khẩu phần này thừa hay thiếu năng lượng so với nhu cầu, thiếu/thừa bao nhiêu kcal.",
+     "dap_an": "1613",
+     "loi_giai": "Tổng khối lượng cả ngày: carbohydrate 235 g, protein 67 g, lipid 45 g. Tổng năng lượng: $\\mathrm{E} = 4\\times235 + 4\\times67 + 9\\times45 = 940 + 268 + 405 = 1613$ kcal. So với nhu cầu 1550 kcal: 1613 kcal thừa 63 kcal so với nhu cầu."
+    },
+    {
+     "ma_cau": "K08030202034",
+     "loai": "tu_luan",
+     "de": "Trong một ngày, một học sinh ăn ba bữa với thành phần dinh dưỡng như sau: bữa sáng 55 g carbohydrate, 16 g protein, 9 g lipid; bữa trưa 95 g carbohydrate, 28 g protein, 19 g lipid; bữa tối 75 g carbohydrate, 19 g protein, 14 g lipid. Nhu cầu năng lượng khuyến nghị của học sinh này là 1600 kcal/ngày (biết 1 g carbohydrate và 1 g protein cung cấp khoảng 4 kcal, 1 g lipid cung cấp khoảng 9 kcal). Tính tổng năng lượng khẩu phần cả ngày và cho biết khẩu phần này thừa hay thiếu năng lượng so với nhu cầu, thiếu/thừa bao nhiêu kcal.",
+     "dap_an": "1530",
+     "loi_giai": "Tổng khối lượng cả ngày: carbohydrate 225 g, protein 63 g, lipid 42 g. Tổng năng lượng: $\\mathrm{E} = 4\\times225 + 4\\times63 + 9\\times42 = 900 + 252 + 378 = 1530$ kcal. So với nhu cầu 1600 kcal: 1530 kcal thiếu 70 kcal so với nhu cầu."
+    },
+    {
+     "ma_cau": "K08030202032",
+     "loai": "tu_luan",
+     "de": "Trong một ngày, một học sinh ăn ba bữa với thành phần dinh dưỡng như sau: bữa sáng $50$ g carbohydrate, $18$ g protein, $8$ g lipid; bữa trưa $85$ g carbohydrate, $22$ g protein, $18$ g lipid; bữa tối $65$ g carbohydrate, $17$ g protein, $12$ g lipid. Nhu cầu năng lượng khuyến nghị của học sinh này là $1500$ kcal/ngày (biết $1$ g carbohydrate và $1$ g protein cung cấp khoảng $4$ kcal, $1$ g lipid cung cấp khoảng $9$ kcal). Tính tổng năng lượng khẩu phần cả ngày và cho biết khẩu phần này thừa hay thiếu năng lượng so với nhu cầu, thiếu/thừa bao nhiêu kcal.",
+     "dap_an": "1370",
+     "loi_giai": "Tổng khối lượng cả ngày: carbohydrate $200$ g, protein $57$ g, lipid $38$ g. Tổng năng lượng: $\\mathrm{E} = 4\\times 200 + 4\\times 57 + 9\\times 38 = 800 + 228 + 342 = 1370$ kcal. So với nhu cầu $1500$ kcal: $1370$ kcal thiếu $130$ kcal so với nhu cầu."
+    },
+    {
+     "ma_cau": "K08030202031",
+     "loai": "tu_luan",
+     "de": "Trong một ngày, một học sinh ăn ba bữa với thành phần dinh dưỡng như sau: bữa sáng $60$ g carbohydrate, $15$ g protein, $10$ g lipid; bữa trưa $90$ g carbohydrate, $25$ g protein, $20$ g lipid; bữa tối $70$ g carbohydrate, $20$ g protein, $15$ g lipid. Nhu cầu năng lượng khuyến nghị của học sinh này là $1600$ kcal/ngày (biết $1$ g carbohydrate và $1$ g protein cung cấp khoảng $4$ kcal, $1$ g lipid cung cấp khoảng $9$ kcal). Tính tổng năng lượng khẩu phần cả ngày và cho biết khẩu phần này thừa hay thiếu năng lượng so với nhu cầu, thiếu/thừa bao nhiêu kcal.",
+     "dap_an": "1525",
+     "loi_giai": "Tổng khối lượng cả ngày: carbohydrate $220$ g, protein $60$ g, lipid $45$ g. Tổng năng lượng: $\\mathrm{E} = 4\\times 220 + 4\\times 60 + 9\\times 45 = 880 + 240 + 405 = 1525$ kcal. So với nhu cầu $1600$ kcal: $1525$ kcal thiếu $75$ kcal so với nhu cầu."
+    },
+    {
+     "ma_cau": "K08030202033",
+     "loai": "tu_luan",
+     "de": "Trong một ngày, một học sinh ăn ba bữa với thành phần dinh dưỡng như sau: bữa sáng $70$ g carbohydrate, $20$ g protein, $12$ g lipid; bữa trưa $100$ g carbohydrate, $30$ g protein, $22$ g lipid; bữa tối $80$ g carbohydrate, $25$ g protein, $16$ g lipid. Nhu cầu năng lượng khuyến nghị của học sinh này là $1700$ kcal/ngày (biết $1$ g carbohydrate và $1$ g protein cung cấp khoảng $4$ kcal, $1$ g lipid cung cấp khoảng $9$ kcal). Tính tổng năng lượng khẩu phần cả ngày và cho biết khẩu phần này thừa hay thiếu năng lượng so với nhu cầu, thiếu/thừa bao nhiêu kcal.",
+     "dap_an": "1750",
+     "loi_giai": "Tổng khối lượng cả ngày: carbohydrate $250$ g, protein $75$ g, lipid $50$ g. Tổng năng lượng: $\\mathrm{E} = 4\\times 250 + 4\\times 75 + 9\\times 50 = 1000 + 300 + 450 = 1750$ kcal. So với nhu cầu $1700$ kcal: $1750$ kcal thừa $50$ kcal so với nhu cầu."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00948",
+   "nhom_id": "KNB00401",
+   "thu_tu": 8,
+   "dang": "Biện luận điều chỉnh khối lượng carbohydrate để đạt đúng nhu cầu năng lượng",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030202038",
+     "loai": "tu_luan",
+     "de": "Một bữa ăn hiện có $95$ g carbohydrate, $25$ g protein, $20$ g lipid. Nhu cầu năng lượng của bữa ăn này là $620$ kcal (biết $1$ g carbohydrate và $1$ g protein cung cấp khoảng $4$ kcal, $1$ g lipid cung cấp khoảng $9$ kcal). Nếu chỉ điều chỉnh khối lượng carbohydrate (giữ nguyên protein và lipid), cần giảm bao nhiêu gam carbohydrate để bữa ăn đạt đúng nhu cầu năng lượng?",
+     "dap_an": "10",
+     "loi_giai": "Năng lượng hiện tại: $\\mathrm{E} = 4\\times 95+4\\times 25+9\\times 20 = 380 + 100 + 180 = 660$ kcal. \nBữa ăn đã dư so với nhu cầu: $660 - 620 = 40$ kcal. Vì $1$ g carbohydrate cung cấp $4$ kcal, khối lượng carbohydrate cần giảm: $40/4 = 10$ g."
+    },
+    {
+     "ma_cau": "K08030202040",
+     "loai": "tu_luan",
+     "de": "Một bữa ăn hiện có $100$ g carbohydrate, $28$ g protein, $18$ g lipid. Nhu cầu năng lượng của bữa ăn này là $650$ kcal (biết $1$ g carbohydrate và $1$ g protein cung cấp khoảng $4$ kcal, $1$ g lipid cung cấp khoảng $9$ kcal). Nếu chỉ điều chỉnh khối lượng carbohydrate (giữ nguyên protein và lipid), cần giảm bao nhiêu gam carbohydrate để bữa ăn đạt đúng nhu cầu năng lượng?",
+     "dap_an": "6",
+     "loi_giai": "Năng lượng hiện tại: $\\mathrm{E} = 4\\times100 + 4\\times28 + 9\\times18 = 400 + 112 + 162 = 674$ kcal. \nBữa ăn đã dư so với nhu cầu: $674 - 650 = 24$ kcal. Vì $1$ g carbohydrate cung cấp $4$ kcal, khối lượng carbohydrate cần giảm: $24/4 = 6$ g."
+    },
+    {
+     "ma_cau": "K08030202037",
+     "loai": "tu_luan",
+     "de": "Một bữa ăn hiện có $70$ g carbohydrate, $18$ g protein, $12$ g lipid. Nhu cầu năng lượng của bữa ăn này là $500$ kcal (biết $1$ g carbohydrate và $1$ g protein cung cấp khoảng $4$ kcal, $1$ g lipid cung cấp khoảng $9$ kcal). Nếu chỉ điều chỉnh khối lượng carbohydrate (giữ nguyên protein và lipid), cần thêm bao nhiêu gam carbohydrate để bữa ăn đạt đúng nhu cầu năng lượng?",
+     "dap_an": "10",
+     "loi_giai": "Năng lượng hiện tại: $\\mathrm{E} = 4\\times 70+4\\times 18+9\\times 12 = 280 + 72 + 108 = 460$ kcal. \nBữa ăn còn thiếu so với nhu cầu: $500 - 460 = 40$ kcal. Vì $1$ g carbohydrate cung cấp $4$ kcal, khối lượng carbohydrate cần thêm: $40/4 = 10$ g."
+    },
+    {
+     "ma_cau": "K08030202036",
+     "loai": "tu_luan",
+     "de": "Một bữa ăn hiện có $80$ g carbohydrate, $22$ g protein, $15$ g lipid. Nhu cầu năng lượng của bữa ăn này là $575$ kcal (biết $1$ g carbohydrate và $1$ g protein cung cấp khoảng $4$ kcal, $1$ g lipid cung cấp khoảng $9$ kcal). Nếu chỉ điều chỉnh khối lượng carbohydrate (giữ nguyên protein và lipid), cần thêm bao nhiêu gam carbohydrate để bữa ăn đạt đúng nhu cầu năng lượng?",
+     "dap_an": "8",
+     "loi_giai": "Năng lượng hiện tại: $\\mathrm{E} = 4\\times 80+4\\times 22+9\\times 15 = 320 + 88 + 135 = 543$ kcal. \nBữa ăn còn thiếu so với nhu cầu: $575 - 543 = 32$ kcal. Vì $1$ g carbohydrate cung cấp $4$ kcal, khối lượng carbohydrate cần thêm: $32/4 = 8$ g."
+    },
+    {
+     "ma_cau": "K08030202039",
+     "loai": "tu_luan",
+     "de": "Một bữa ăn hiện có $60$ g carbohydrate, $20$ g protein, $10$ g lipid. Nhu cầu năng lượng của bữa ăn này là $450$ kcal (biết $1$ g carbohydrate và $1$ g protein cung cấp khoảng $4$ kcal, $1$ g lipid cung cấp khoảng $9$ kcal). Nếu chỉ điều chỉnh khối lượng carbohydrate (giữ nguyên protein và lipid), cần thêm bao nhiêu gam carbohydrate để bữa ăn đạt đúng nhu cầu năng lượng?",
+     "dap_an": "10",
+     "loi_giai": "Năng lượng hiện tại: $\\mathrm{E} = 4\\times 60+4\\times 20+9\\times 10 = 240 + 80 + 90 = 410$ kcal. \nBữa ăn còn thiếu so với nhu cầu: $450 - 410 = 40$ kcal. Vì $1$ g carbohydrate cung cấp $4$ kcal, khối lượng carbohydrate cần thêm: $40/4 = 10$ g."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00949",
+   "nhom_id": "KNB00402",
+   "thu_tu": 1,
+   "dang": "Các cơ quan của ống tiêu hoá",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030203008",
+     "loai": "trac_nghiem",
+     "de": "Trong ống tiêu hoá, cơ quan nào tiếp nhận thức ăn trực tiếp từ thực quản?",
+     "lua_chon": [
+      "Ruột non",
+      "Dạ dày",
+      "Khoang miệng",
+      "Ruột già"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Thức ăn từ thực quản được đưa trực tiếp xuống dạ dày."
+    },
+    {
+     "ma_cau": "K08030203003",
+     "loai": "trac_nghiem",
+     "de": "Cơ quan nào nối liền khoang miệng với dạ dày?",
+     "lua_chon": [
+      "Thực quản",
+      "Ruột non",
+      "Ruột già",
+      "Hầu"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thực quản là ống nối khoang miệng (qua hầu) với dạ dày."
+    },
+    {
+     "ma_cau": "K08030203001",
+     "loai": "trac_nghiem",
+     "de": "Ống tiêu hoá ở người gồm những cơ quan nào, theo đúng thứ tự?",
+     "lua_chon": [
+      "Miệng, dạ dày, thực quản, ruột non, ruột già, hậu môn",
+      "Miệng, thực quản, dạ dày, ruột non, ruột già, hậu môn",
+      "Miệng, thực quản, dạ dày, ruột non, ruột già, hậu môn",
+      "Miệng, thực quản, ruột non, dạ dày, ruột già, hậu môn"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ống tiêu hoá gồm các cơ quan nối tiếp theo thứ tự: miệng, thực quản, dạ dày, ruột non, ruột già, hậu môn."
+    },
+    {
+     "ma_cau": "K08030203005",
+     "loai": "trac_nghiem",
+     "de": "Cơ quan nào của ống tiêu hoá có chiều dài lớn nhất?",
+     "lua_chon": [
+      "Ruột già",
+      "Ruột non",
+      "Dạ dày",
+      "Thực quản"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ruột non là cơ quan dài nhất trong ống tiêu hoá."
+    },
+    {
+     "ma_cau": "K08030203006",
+     "loai": "trac_nghiem",
+     "de": "Cơ quan nào nằm giữa ruột non và hậu môn?",
+     "lua_chon": [
+      "Gan",
+      "Thực quản",
+      "Ruột già",
+      "Dạ dày"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ruột già là đoạn ống tiêu hoá nằm giữa ruột non và hậu môn."
+    },
+    {
+     "ma_cau": "K08030203002",
+     "loai": "trac_nghiem",
+     "de": "Cơ quan nào là nơi thức ăn được đưa vào cơ thể đầu tiên trong quá trình tiêu hoá?",
+     "lua_chon": [
+      "Khoang miệng",
+      "Thực quản",
+      "Ruột non",
+      "Dạ dày"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khoang miệng là nơi tiếp nhận thức ăn đầu tiên của ống tiêu hoá."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00950",
+   "nhom_id": "KNB00402",
+   "thu_tu": 2,
+   "dang": "Các tuyến tiêu hoá và dịch tiêu hoá",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030203015",
+     "loai": "trac_nghiem",
+     "de": "Dịch tụy do tụy tiết ra đổ trực tiếp vào cơ quan nào?",
+     "lua_chon": [
+      "Ruột già",
+      "Thực quản",
+      "Ruột non",
+      "Dạ dày"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Dịch tụy đổ trực tiếp vào ruột non để tham gia tiêu hoá thức ăn."
+    },
+    {
+     "ma_cau": "K08030203014",
+     "loai": "trac_nghiem",
+     "de": "Tuyến tiêu hoá nào tiết dịch tụy chứa nhiều loại enzyme tiêu hoá?",
+     "lua_chon": [
+      "Tụy",
+      "Tuyến vị",
+      "Tuyến nước bọt",
+      "Gan"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tụy tiết dịch tụy chứa nhiều enzyme tiêu hoá carbohydrate, protein, lipid."
+    },
+    {
+     "ma_cau": "K08030203019",
+     "loai": "trac_nghiem",
+     "de": "Hệ tiêu hoá gồm hai thành phần chính nào?",
+     "lua_chon": [
+      "Chỉ có tuyến tiêu hoá",
+      "Ống tiêu hoá và tuyến tiêu hoá",
+      "Ống tiêu hoá và hệ tuần hoàn",
+      "Chỉ có ống tiêu hoá"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Hệ tiêu hoá gồm ống tiêu hoá và các tuyến tiêu hoá phối hợp hoạt động."
+    },
+    {
+     "ma_cau": "K08030203011",
+     "loai": "trac_nghiem",
+     "de": "Tuyến tiêu hoá nào tiết nước bọt vào khoang miệng?",
+     "lua_chon": [
+      "Gan",
+      "Tuyến vị",
+      "Tụy",
+      "Tuyến nước bọt"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tuyến nước bọt nằm quanh khoang miệng, tiết nước bọt hỗ trợ tiêu hoá."
+    },
+    {
+     "ma_cau": "K08030203018",
+     "loai": "trac_nghiem",
+     "de": "Tuyển ruột (ở thành ruột non) có vai trò gì?",
+     "lua_chon": [
+      "Tiết dịch ruột chứa enzyme hỗ trợ tiêu hoá",
+      "Tiết dịch vị",
+      "Nghiền nhỏ thức ăn bằng lực cơ học",
+      "Tiết dịch mật"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tuyển ruột tiết dịch ruột chứa enzyme, hỗ trợ tiêu hoá thức ăn ở ruột non."
+    },
+    {
+     "ma_cau": "K08030203016",
+     "loai": "trac_nghiem",
+     "de": "Tuyển vị (nằm trong thành dạ dày) tiết ra loại dịch nào?",
+     "lua_chon": [
+      "Dịch tụy",
+      "Nước bọt",
+      "Dịch mật",
+      "Dịch vị"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tuyển vị nằm trong thành dạ dày, tiết dịch vị."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00951",
+   "nhom_id": "KNB00402",
+   "thu_tu": 3,
+   "dang": "Chức năng riêng của từng cơ quan trong hệ tiêu hoá",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030203029",
+     "loai": "trac_nghiem",
+     "de": "Vì sao ruột non được coi là nơi hấp thụ chất dinh dưỡng chủ yếu của cơ thể?",
+     "lua_chon": [
+      "Vì là nơi thức ăn lưu lại lâu nhất",
+      "Vì có nhung mao làm tăng diện tích bề mặt, đồng thời nhận đủ các loại dịch tiêu hoá",
+      "Vì có kích thước nhỏ nhất trong ống tiêu hoá",
+      "Vì không tiếp xúc với enzyme tiêu hoá"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Nhung mao làm tăng diện tích bề mặt, cùng với đủ các loại dịch tiêu hoá đổ vào, giúp ruột non hấp thụ chất dinh dưỡng hiệu quả."
+    },
+    {
+     "ma_cau": "K08030203023",
+     "loai": "trac_nghiem",
+     "de": "Chức năng chính của dạ dày trong tiêu hoá là gì?",
+     "lua_chon": [
+      "Hấp thụ nước, tạo phân",
+      "Tiết dịch mật",
+      "Hấp thụ hầu hết chất dinh dưỡng",
+      "Co bóp nghiền thức ăn và tiêu hoá một phần protein nhờ dịch vị"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Dạ dày co bóp nghiền thức ăn và tiêu hoá một phần protein nhờ dịch vị."
+    },
+    {
+     "ma_cau": "K08030203025",
+     "loai": "trac_nghiem",
+     "de": "Chức năng chính của ruột già trong tiêu hoá là gì?",
+     "lua_chon": [
+      "Tiết dịch vị",
+      "Hấp thụ hầu hết chất dinh dưỡng",
+      "Hấp thụ nước và hình thành phân",
+      "Tiêu hoá hoá học mạnh nhất"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ruột già hấp thụ nước từ chất bã, hình thành phân."
+    },
+    {
+     "ma_cau": "K08030203027",
+     "loai": "trac_nghiem",
+     "de": "Tuỵ có vai trò gì trong tiêu hoá?",
+     "lua_chon": [
+      "Nghiền nhỏ thức ăn bằng lực cơ học",
+      "Tiết dịch tuỵ chứa enzyme tiêu hoá carbohydrate, protein và lipid",
+      "Chỉ hấp thụ nước",
+      "Chỉ tiêu hoá carbohydrate"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Dịch tuỵ chứa nhiều loại enzyme, tiêu hoá cả carbohydrate, protein và lipid."
+    },
+    {
+     "ma_cau": "K08030203022",
+     "loai": "trac_nghiem",
+     "de": "Chức năng chính của thực quản là gì?",
+     "lua_chon": [
+      "Tiêu hoá hoá học thức ăn",
+      "Dẫn thức ăn từ khoang miệng xuống dạ dày",
+      "Hấp thụ chất dinh dưỡng",
+      "Nghiền nhỏ thức ăn"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Thực quản có chức năng dẫn thức ăn từ khoang miệng xuống dạ dày, hầu như không tiêu hoá thức ăn."
+    },
+    {
+     "ma_cau": "K08030203030",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây KHÔNG đúng về chức năng các cơ quan tiêu hoá?",
+     "lua_chon": [
+      "Ruột già là nơi tiêu hoá hoá học mạnh nhất và hấp thụ hầu hết chất dinh dưỡng",
+      "Gan tiết dịch mật hỗ trợ tiêu hoá lipid",
+      "Dạ dày tiêu hoá một phần protein",
+      "Ruột non hấp thụ phần lớn chất dinh dưỡng"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ruột non, không phải ruột già, mới là nơi tiêu hoá hoá học mạnh nhất và hấp thụ hầu hết chất dinh dưỡng."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00952",
+   "nhom_id": "KNB00403",
+   "thu_tu": 1,
+   "dang": "Tiêu hoá ở khoang miệng và dạ dày",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030204009",
+     "loai": "trac_nghiem",
+     "de": "Ở dạ dày, protein trong thức ăn được biến đổi thành gì nhờ enzyme pepsin?",
+     "lua_chon": [
+      "Amino acid hoàn toàn",
+      "Glucose",
+      "Glycerol và acid béo",
+      "Các chuỗi polypeptide ngắn hơn"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Pepsin cắt protein thành các chuỗi polypeptide ngắn hơn, chưa thành amino acid hoàn toàn."
+    },
+    {
+     "ma_cau": "K08030204004",
+     "loai": "trac_nghiem",
+     "de": "Sau khi nuốt, thức ăn được đẩy qua thực quản xuống dạ dày chủ yếu nhờ hoạt động nào?",
+     "lua_chon": [
+      "Enzyme tiêu hoá của thực quản",
+      "Lực hút của dạ dày",
+      "Nhung mao của thực quản",
+      "Nhu động của thực quản"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Thực quản co bóp theo nhu động, đẩy thức ăn xuống dạ dày."
+    },
+    {
+     "ma_cau": "K08030204006",
+     "loai": "trac_nghiem",
+     "de": "Vì sao dịch vị có tính acid mạnh nhưng không làm tổn thương thành dạ dày?",
+     "lua_chon": [
+      "Vì dạ dày không tiếp xúc trực tiếp với dịch vị",
+      "Vì acid \\mathrm{HCl} trong dịch vị thực chất không có tính acid",
+      "Vì enzyme pepsin trung hoà hoàn toàn acid \\mathrm{HCl}",
+      "Vì thành dạ dày có lớp chất nhầy bảo vệ"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Lớp chất nhầy ở thành dạ dày bảo vệ niêm mạc khỏi tác động ăn mòn của acid \\mathrm{HCl} trong dịch vị."
+    },
+    {
+     "ma_cau": "K08030204008",
+     "loai": "trac_nghiem",
+     "de": "Acid \\mathrm{HCl} trong dịch vị có vai trò nào sau đây?",
+     "lua_chon": [
+      "Hấp thụ chất dinh dưỡng",
+      "Hoạt hoá enzyme pepsin và có tác dụng diệt khuẩn",
+      "Trung hoà dịch mật",
+      "Tiêu hoá trực tiếp lipid"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Acid \\mathrm{HCl} hoạt hoá pepsinogen thành pepsin và có tác dụng diệt một số vi khuẩn trong thức ăn."
+    },
+    {
+     "ma_cau": "K08030204001",
+     "loai": "trac_nghiem",
+     "de": "Ở khoang miệng, thức ăn được biến đổi về mặt cơ học nhờ hoạt động nào?",
+     "lua_chon": [
+      "Nhu động nhờ thực quản",
+      "Co bóp nhờ cơ dạ dày",
+      "Nhai, nghiền nhờ răng và đảo trộn nhờ lưỡi",
+      "Hấp thụ nhờ nhung mao"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ở khoang miệng, răng nghiền nhỏ thức ăn, lưỡi đảo trộn thức ăn với nước bọt."
+    },
+    {
+     "ma_cau": "K08030204003",
+     "loai": "trac_nghiem",
+     "de": "Enzyme amylase trong nước bọt biến đổi một phần tinh bột chín thành chất nào?",
+     "lua_chon": [
+      "Glucose hoàn toàn",
+      "Amino acid",
+      "Glycerol và acid béo",
+      "Đường đôi (maltose)"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Amylase biến đổi một phần tinh bột chín thành đường đôi (maltose), chưa thành glucose hoàn toàn."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00953",
+   "nhom_id": "KNB00403",
+   "thu_tu": 2,
+   "dang": "Tiêu hoá ở ruột non",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030204018",
+     "loai": "trac_nghiem",
+     "de": "Vì sao thức ăn cần được biến đổi hoàn toàn thành các đơn phân (đường đơn, amino acid, glycerol, acid béo) trước khi được hấp thụ?",
+     "lua_chon": [
+      "Vì cơ thể không cần đến các đơn phân",
+      "Vì chỉ các đơn phân mới có thể đi qua thành ruột để vào máu và bạch huyết",
+      "Vì các phân tử lớn dễ hấp thụ hơn",
+      "Vì các đơn phân có kích thước lớn hơn các phân tử ban đầu"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Chỉ các đơn phân có kích thước đủ nhỏ mới qua được thành ruột non để vào máu và bạch huyết."
+    },
+    {
+     "ma_cau": "K08030204016",
+     "loai": "trac_nghiem",
+     "de": "Vì sao lipid cần được nhũ tương hoá trước khi enzyme lipase phân giải?",
+     "lua_chon": [
+      "Vì nhũ tương hoá giúp lipid chuyển hoá trực tiếp thành glucose",
+      "Vì lipid không tan trong nước, cần được chia thành các hạt nhỏ để tăng diện tích tiếp xúc với enzyme",
+      "Vì enzyme lipase chỉ hoạt động khi không có lipid",
+      "Vì lipid tan tốt trong nước nên cần cô đặc lại trước khi tiêu hoá"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Lipid không tan trong nước; nhũ tương hoá chia lipid thành các hạt nhỏ, tăng diện tích tiếp xúc để enzyme lipase hoạt động hiệu quả."
+    },
+    {
+     "ma_cau": "K08030204017",
+     "loai": "trac_nghiem",
+     "de": "Enzyme nào trong dịch tuỵ và dịch ruột tham gia biến đổi lipid thành glycerol và acid béo?",
+     "lua_chon": [
+      "Pepsin",
+      "Trypsin (tiêu hoá protein)",
+      "Amylase",
+      "Lipase"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Lipase là enzyme phân giải lipid thành glycerol và acid béo."
+    },
+    {
+     "ma_cau": "K08030204011",
+     "loai": "trac_nghiem",
+     "de": "Ruột non nhận những loại dịch tiêu hoá nào để hỗ trợ tiêu hoá thức ăn?",
+     "lua_chon": [
+      "Chỉ nước bọt",
+      "Dịch tụy, dịch mật và dịch ruột",
+      "Chỉ dịch mật",
+      "Chỉ dịch vị"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ruột non nhận đồng thời dịch tụy, dịch mật và dịch ruột để tiêu hoá thức ăn triệt để."
+    },
+    {
+     "ma_cau": "K08030204014",
+     "loai": "trac_nghiem",
+     "de": "Ở ruột non, protein được biến đổi hoàn toàn thành chất nào?",
+     "lua_chon": [
+      "Amino acid",
+      "Đường đôi",
+      "Đường đơn",
+      "Glycerol và acid béo"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Các enzyme phân giải protein trong dịch tụy và dịch ruột biến đổi protein hoàn toàn thành amino acid."
+    },
+    {
+     "ma_cau": "K08030204020",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây đúng về tiêu hoá ở ruột non?",
+     "lua_chon": [
+      "Ruột non là nơi cả ba nhóm chất carbohydrate, protein, lipid đều được biến đổi hoàn toàn thành các đơn phân",
+      "Ruột non không tiêu hoá lipid",
+      "Ruột non chỉ tiêu hoá carbohydrate",
+      "Ruột non không nhận dịch tiêu hoá nào"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nhờ các enzyme từ dịch tụy, dịch mật, dịch ruột, cả ba nhóm chất đều được biến đổi hoàn toàn ở ruột non."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00954",
+   "nhom_id": "KNB00403",
+   "thu_tu": 3,
+   "dang": "Hấp thụ chất dinh dưỡng ở ruột non và vai trò của ruột già",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030204028",
+     "loai": "trac_nghiem",
+     "de": "Vì sao ăn uống thiếu chất xơ có thể ảnh hưởng xấu đến hoạt động của ruột già?",
+     "lua_chon": [
+      "Vì chất xơ thay thế hoàn toàn vai trò của nước",
+      "Vì chất xơ được hấp thụ trực tiếp vào máu",
+      "Vì chất xơ hỗ trợ hoạt động tiêu hoá và tạo khối cho phân ở ruột già",
+      "Vì chất xơ là nguồn cung cấp năng lượng chính của cơ thể"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Chất xơ tạo khối cho phân và hỗ trợ nhu động ruột già; thiếu chất xơ dễ gây rối loạn tiêu hoá."
+    },
+    {
+     "ma_cau": "K08030204025",
+     "loai": "trac_nghiem",
+     "de": "Chức năng chính của ruột già trong quá trình tiêu hoá là gì?",
+     "lua_chon": [
+      "Hấp thụ nước và một số chất còn lại, hình thành phân",
+      "Tiêu hoá hoá học mạnh nhất",
+      "Tiết enzyme tiêu hoá protein",
+      "Hấp thụ hầu hết chất dinh dưỡng"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ruột già hấp thụ nước và một số chất còn lại từ phần thức ăn chưa tiêu hoá, hình thành phân."
+    },
+    {
+     "ma_cau": "K08030204030",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây KHÔNG đúng về hấp thụ chất dinh dưỡng?",
+     "lua_chon": [
+      "Glycerol và acid béo được hấp thụ phần lớn qua đường bạch huyết",
+      "Ruột già chủ yếu hấp thụ nước, không phải chất dinh dưỡng chính",
+      "Toàn bộ chất dinh dưỡng được hấp thụ ở dạ dày trước khi xuống ruột non",
+      "Đường đơn và amino acid được hấp thụ chủ yếu qua đường máu"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Chất dinh dưỡng được hấp thụ chủ yếu ở ruột non, không phải dạ dày."
+    },
+    {
+     "ma_cau": "K08030204022",
+     "loai": "trac_nghiem",
+     "de": "Đường đơn (glucose) và amino acid sau khi hấp thụ ở ruột non chủ yếu đi vào đâu?",
+     "lua_chon": [
+      "Mạch bạch huyết",
+      "Dịch mật",
+      "Máu (qua mao mạch máu ở nhung mao)",
+      "Ống tiêu hoá"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đường đơn và amino acid được hấp thụ chủ yếu qua mao mạch máu ở nhung mao ruột non."
+    },
+    {
+     "ma_cau": "K08030204026",
+     "loai": "trac_nghiem",
+     "de": "Ở ruột già có chứa nhiều vi khuẩn có lợi, các vi khuẩn này có vai trò gì?",
+     "lua_chon": [
+      "Lên men chất xơ và tổng hợp một số vitamin",
+      "Phân giải lipid thành glycerol",
+      "Hấp thụ toàn bộ glucose",
+      "Tiêu hoá hoàn toàn protein"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Vi khuẩn có lợi ở ruột già lên men chất xơ còn sót lại và tổng hợp một số vitamin."
+    },
+    {
+     "ma_cau": "K08030204029",
+     "loai": "trac_nghiem",
+     "de": "Nếu chức năng hấp thụ của ruột non bị suy giảm, cơ thể dễ gặp phải tình trạng nào?",
+     "lua_chon": [
+      "Không ảnh hưởng đến sức khỏe",
+      "Tăng cường hấp thụ nước ở dạ dày",
+      "Dư thừa năng lượng nghiêm trọng",
+      "Thiếu hụt chất dinh dưỡng dù ăn uống đầy đủ"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ruột non suy giảm hấp thụ khiến chất dinh dưỡng dù có trong thức ăn cũng không vào được cơ thể, gây thiếu hụt dinh dưỡng."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00955",
+   "nhom_id": "KNB00404",
+   "thu_tu": 1,
+   "dang": "Các bệnh về tiêu hoá thường gặp và nguyên nhân",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030205007",
+     "loai": "trac_nghiem",
+     "de": "Biểu hiện thường gặp khi bị ngộ độc thực phẩm là gì?",
+     "lua_chon": [
+      "Chỉ đau răng",
+      "Đau bụng, buồn nôn, tiêu chảy",
+      "Chỉ sốt cao, không có triệu chứng khác",
+      "Chỉ chóng mặt, không đau bụng"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ngộ độc thực phẩm thường gây đau bụng, buồn nôn và tiêu chảy."
+    },
+    {
+     "ma_cau": "K08030205003",
+     "loai": "trac_nghiem",
+     "de": "Tiêu chảy thường do nguyên nhân nào gây ra?",
+     "lua_chon": [
+      "Uống đủ nước lọc mỗi ngày",
+      "Nhiễm vi khuẩn, virus hoặc kí sinh trùng qua thức ăn, nước uống không hợp vệ sinh",
+      "Vận động thể thao thường xuyên",
+      "Ăn quá nhiều chất xơ"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tiêu chảy thường do vi khuẩn, virus hoặc kí sinh trùng xâm nhập qua thức ăn, nước uống không hợp vệ sinh."
+    },
+    {
+     "ma_cau": "K08030205009",
+     "loai": "trac_nghiem",
+     "de": "Vì sao ăn uống không đúng giờ giấc dễ gây hại cho dạ dày?",
+     "lua_chon": [
+      "Vì dạ dày tiết dịch vị theo thói quen; ăn không đúng giờ khiến dịch vị tiết ra khi không có thức ăn, gây tổn thương niêm mạc",
+      "Vì dạ dày ngừng hoạt động hoàn toàn khi đói",
+      "Vì ăn không đúng giờ làm dạ dày ngừng tiết dịch vị",
+      "Vì dạ dày chỉ hoạt động vào buổi sáng"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Dạ dày tiết dịch vị theo nhịp sinh học; ăn không đúng giờ khiến dịch vị tiết ra không đúng lúc, dễ gây tổn thương niêm mạc dạ dày."
+    },
+    {
+     "ma_cau": "K08030205006",
+     "loai": "trac_nghiem",
+     "de": "Ngộ độc thực phẩm thường xảy ra do nguyên nhân nào?",
+     "lua_chon": [
+      "Ăn chín uống sôi",
+      "Ăn thực phẩm tươi, rõ nguồn gốc",
+      "Ăn thức ăn ôi thiu hoặc nhiễm độc tố vi khuẩn",
+      "Bảo quản thực phẩm đúng cách"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Thức ăn ôi thiu hoặc nhiễm độc tố vi khuẩn là nguyên nhân chính gây ngộ độc thực phẩm."
+    },
+    {
+     "ma_cau": "K08030205008",
+     "loai": "trac_nghiem",
+     "de": "Ăn quá nhiều đồ cay nóng, nhiều dầu mỡ trong thời gian dài dễ gây ảnh hưởng xấu đến cơ quan nào?",
+     "lua_chon": [
+      "Hệ hô hấp",
+      "Dạ dày",
+      "Ruột già (không bị ảnh hưởng)",
+      "Gan mật (hoàn toàn không ảnh hưởng)"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đồ cay nóng, nhiều dầu mỡ dùng thường xuyên dễ gây tổn thương niêm mạc dạ dày."
+    },
+    {
+     "ma_cau": "K08030205001",
+     "loai": "trac_nghiem",
+     "de": "Viêm loét dạ dày thường có liên quan đến loại vi khuẩn nào?",
+     "lua_chon": [
+      "Vi khuẩn uốn ván",
+      "Vi khuẩn E. coli",
+      "Vi khuẩn lao",
+      "Helicobacter pylori"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Vi khuẩn Helicobacter pylori là nguyên nhân phổ biến gây viêm loét dạ dày."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00956",
+   "nhom_id": "KNB00404",
+   "thu_tu": 2,
+   "dang": "Biện pháp bảo vệ hệ tiêu hoá, vệ sinh ăn uống",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030205017",
+     "loai": "trac_nghiem",
+     "de": "Vì sao cần hạn chế sử dụng rượu, bia để bảo vệ hệ tiêu hoá?",
+     "lua_chon": [
+      "Vì rượu, bia bổ sung chất dinh dưỡng thiết yếu cho cơ thể",
+      "Vì rượu, bia không ảnh hưởng đến hệ tiêu hoá",
+      "Vì rượu, bia giúp tiêu hoá thức ăn nhanh hơn",
+      "Vì rượu, bia gây tổn thương niêm mạc dạ dày và ảnh hưởng xấu đến gan"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Rượu, bia dùng nhiều gây tổn thương niêm mạc dạ dày và ảnh hưởng xấu đến chức năng gan."
+    },
+    {
+     "ma_cau": "K08030205020",
+     "loai": "trac_nghiem",
+     "de": "Chế độ luyện tập thể dục thể thao hợp lý có ảnh hưởng như thế nào đến hệ tiêu hoá?",
+     "lua_chon": [
+      "Luôn gây hại cho dạ dày",
+      "Làm ngừng hoạt động tiêu hoá",
+      "Không có ảnh hưởng gì đến hệ tiêu hoá",
+      "Hỗ trợ hoạt động tiêu hoá, giảm nguy cơ táo bón"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Luyện tập hợp lý hỗ trợ nhu động ruột, giảm nguy cơ táo bón."
+    },
+    {
+     "ma_cau": "K08030205011",
+     "loai": "trac_nghiem",
+     "de": "Biện pháp nào giúp phòng tránh viêm loét dạ dày?",
+     "lua_chon": [
+      "Ăn uống thất thường, không đúng giờ",
+      "Ăn uống điều độ, đúng giờ, hạn chế căng thẳng",
+      "Thường xuyên căng thẳng, lo âu",
+      "Nhịn ăn kéo dài"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ăn uống điều độ, đúng giờ và giữ tinh thần thoải mái giúp phòng tránh viêm loét dạ dày."
+    },
+    {
+     "ma_cau": "K08030205016",
+     "loai": "trac_nghiem",
+     "de": "Biện pháp nào giúp phòng tránh nhiễm giun sán qua đường tiêu hoá?",
+     "lua_chon": [
+      "Không cần tẩy giun định kỳ",
+      "Không rửa tay trước khi ăn",
+      "Ăn thức ăn sống thường xuyên",
+      "Ăn chín uống sôi, tẩy giun định kỳ"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ăn chín uống sôi và tẩy giun định kì là biện pháp hiệu quả phòng tránh nhiễm giun sán."
+    },
+    {
+     "ma_cau": "K08030205015",
+     "loai": "trac_nghiem",
+     "de": "Biện pháp nào giúp phòng tránh táo bón?",
+     "lua_chon": [
+      "Ăn ít rau xanh, hạn chế uống nước",
+      "Hạn chế vận động thể chất",
+      "Nhịn đại tiện thường xuyên",
+      "Ăn đủ chất xơ, uống đủ nước, vận động hợp lý"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Chế độ ăn đủ chất xơ, uống đủ nước và vận động hợp lý giúp phòng tránh táo bón."
+    },
+    {
+     "ma_cau": "K08030205014",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tắc 'ăn chín, uống sôi' có vai trò gì đối với hệ tiêu hoá?",
+     "lua_chon": [
+      "Không có vai trò rõ rệt với sức khoẻ",
+      "Hạn chế vi khuẩn, kí sinh trùng xâm nhập qua đường tiêu hoá",
+      "Giúp thức ăn giữ nguyên hình dạng ban đầu",
+      "Giúp tiết kiệm thời gian chế biến"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ăn chín, uống sôi tiêu diệt phần lớn vi khuẩn, kí sinh trùng có hại trong thức ăn, nước uống."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00957",
+   "nhom_id": "KNB00404",
+   "thu_tu": 3,
+   "dang": "An toàn thực phẩm",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030205022",
+     "loai": "trac_nghiem",
+     "de": "Thực phẩm có dấu hiệu nào sau đây thì KHÔNG nên sử dụng?",
+     "lua_chon": [
+      "Có mùi ôi thiu hoặc dấu hiệu nấm mốc",
+      "Còn tươi, màu sắc tự nhiên",
+      "Được bảo quản lạnh đúng cách",
+      "Còn hạn sử dụng, bao bì nguyên vẹn"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thực phẩm có mùi ôi thiu hoặc nấm mốc cần loại bỏ, không sử dụng."
+    },
+    {
+     "ma_cau": "K08030205023",
+     "loai": "trac_nghiem",
+     "de": "Vì sao cần bảo quản thực phẩm sống và thực phẩm chín riêng biệt?",
+     "lua_chon": [
+      "Để tránh vi khuẩn từ thực phẩm sống lây nhiễm chéo sang thực phẩm chín",
+      "Để thực phẩm sống nhanh chín hơn",
+      "Để tiết kiệm diện tích bảo quản",
+      "Để thực phẩm chín giữ màu sắc đẹp hơn"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Bảo quản riêng biệt tránh vi khuẩn từ thực phẩm sống lây nhiễm chéo sang thực phẩm đã nấu chín."
+    },
+    {
+     "ma_cau": "K08030205024",
+     "loai": "trac_nghiem",
+     "de": "Biện pháp nào giúp hạn chế nguy cơ ngộ độc thực phẩm khi chế biến?",
+     "lua_chon": [
+      "Sử dụng thực phẩm còn sống hoàn toàn",
+      "Nấu chín kĩ thức ăn trước khi sử dụng",
+      "Chế biến ở nơi không hợp vệ sinh",
+      "Không cần rửa sạch nguyên liệu trước khi nấu"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Nấu chín kĩ thức ăn giúp tiêu diệt phần lớn vi khuẩn có hại, hạn chế ngộ độc thực phẩm."
+    },
+    {
+     "ma_cau": "K08030205021",
+     "loai": "trac_nghiem",
+     "de": "Khi lựa chọn thực phẩm, cần ưu tiên tiêu điều gì để đảm bảo an toàn?",
+     "lua_chon": [
+      "Thực phẩm tươi, rõ nguồn gốc, còn hạn sử dụng",
+      "Thực phẩm không có nhãn mác, hạn sử dụng",
+      "Thực phẩm giá rẻ nhất, không rõ nguồn gốc",
+      "Thực phẩm đã có dấu hiệu ôi thiu nhưng giá rẻ"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nên chọn thực phẩm tươi, rõ nguồn gốc và còn hạn sử dụng để đảm bảo an toàn."
+    },
+    {
+     "ma_cau": "K08030205030",
+     "loai": "trac_nghiem",
+     "de": "Biện pháp nào sau đây KHÔNG giúp đảm bảo an toàn thực phẩm?",
+     "lua_chon": [
+      "Bảo quản thực phẩm đúng cách",
+      "Lựa chọn thực phẩm rõ nguồn gốc",
+      "Sử dụng thực phẩm đã có dấu hiệu ôi thiu vì tiếc, không muốn bỏ đi",
+      "Nấu chín kĩ thức ăn trước khi sử dụng"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Sử dụng thực phẩm đã ôi thiu tiềm ẩn nguy cơ ngộ độc, không phải biện pháp đảm bảo an toàn thực phẩm."
+    },
+    {
+     "ma_cau": "K08030205028",
+     "loai": "trac_nghiem",
+     "de": "Thực phẩm đóng hộp, đóng gói cần được kiểm tra thông tin nào trước khi sử dụng?",
+     "lua_chon": [
+      "Chỉ cần kiểm tra giá thành sản phẩm",
+      "Chỉ cần kiểm tra màu sắc bao bì",
+      "Hạn sử dụng và tình trạng bao bì (có bị phồng, rách, hư hỏng hay không)",
+      "Không cần kiểm tra thông tin gì"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Cần kiểm tra hạn sử dụng và tình trạng bao bì trước khi sử dụng thực phẩm đóng hộp, đóng gói."
+    }
+   ]
+  }
+ ]
+}

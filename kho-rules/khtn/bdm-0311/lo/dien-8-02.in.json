@@ -1,0 +1,2560 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00379",
+   "khoi": "8",
+   "chu_de": "Khối lượng riêng và Áp suất",
+   "chuyen_de": "Khối lượng riêng",
+   "nhom": "KHÁI NIỆM, ĐƠN VỊ KHỐI LƯỢNG RIÊNG",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nKhối lượng riêng của một chất là khối lượng của một đơn vị thể tích chất đó.\nMỗi chất có một khối lượng riêng xác định. Khối lượng riêng của vật đặc phụ thuộc vào chất làm nên vật, không phụ thuộc vào kích thước hay hình dạng của vật.\nNói 'chất A nặng hơn chất B' nghĩa là khối lượng riêng của chất A lớn hơn khối lượng riêng của chất B, tức là cùng một thể tích thì chất A có khối lượng lớn hơn.\n\n##TC 2. Công thức\n$$D = \\dfrac{m}{V}$$\nTrong đó: D là khối lượng riêng ($\\mathrm{kg/m^3}$); m là khối lượng ($\\mathrm{kg}$); V là thể tích ($\\mathrm{m^3}$). \nĐơn vị thường dùng: $\\mathrm{kg/m^3}$ và $\\mathrm{g/cm^3}$ (hoặc $\\mathrm{g/mL}$).\n$1 \\mathrm{\\ g/cm^3} = 1 \\mathrm{\\ g/mL} = 1 \\mathrm{\\ kg/dm^3} = 1\\ 000 \\mathrm{\\ kg/m^3}$\n\n##PP 3. Các bước làm bài\nBước 1. Với câu hỏi về khái niệm: đối chiếu với định nghĩa 'khối lượng của một đơn vị thể tích'.\nBước 2. Với câu hỏi đổi đơn vị: đổi riêng khối lượng và thể tích, rồi lập lại phân số. Từ $\\mathrm{g/cm^3}$ sang $\\mathrm{kg/m^3}$ thì nhân với $1\\ 000$; chiều ngược lại thì chia cho $1\\ 000$.\nBước 3. Với câu hỏi đọc bảng: tìm đúng dòng của chất cần tra, so sánh các giá trị cùng đơn vị.\n\n##CY 4. Lưu ý\nKhối lượng riêng ($\\mathrm{kg/m^3}$) khác trọng lượng riêng ($\\mathrm{N/m^3}$).\n$1 \\mathrm{\\ m^3} = 1\\ 000\\ 000 \\mathrm{\\ cm^3}$, không phải $1\\ 000 \\mathrm{\\ cm^3}$.\nKhi một vật nóng lên, khối lượng không đổi nhưng thể tích tăng nên khối lượng riêng giảm.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00380",
+   "khoi": "8",
+   "chu_de": "Khối lượng riêng và Áp suất",
+   "chuyen_de": "Khối lượng riêng",
+   "nhom": "Tính D, m, V theo công thức D = m/V",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC1. Kiến thức cần nhớ\nKhối lượng riêng của một chất là khối lượng của một đơn vị thể tích chất đó.\nMỗi chất có một khối lượng riêng xác định. Các vật làm từ cùng một chất thì có cùng khối lượng riêng, không phụ thuộc vào kích thước hay hình dạng của vật.\nDung tích của một bình bằng thể tích chất lỏng đựng đầy bình đó.\n\n##TC2. Công thức\n$$D = \\dfrac{m}{V}$$\nTrong đó:\n- D là khối lượng riêng (kg/m$^3$);\n- m là khối lượng (kg);\n- V là thể tích (m$^3$).\nCác công thức suy ra:\n$m = D \\cdot V$ và $V = \\dfrac{m}{D}$\nThể tích vật hình hộp chữ nhật có ba kích thước a, b, c: $V = a \\cdot b \\cdot c$; vật hình lập phương cạnh a: $V = a \\cdot a \\cdot a$.\nĐổi đơn vị:\n$1 \\mathrm{~g/cm^3} = 1 \\mathrm{~000~kg/m^3}$\n$1 \\text{ tấn} = 1 \\text{ 000 kg}; 1 \\text{ kg} = 1 \\text{ 000 g}$\n$1 \\mathrm{~m^3} = 1 \\mathrm{~000~dm^3} = 1 \\mathrm{~000~000~cm^3}$\n$1 \\mathrm{~dm^3} = 1 \\mathrm{~L}; 1 \\mathrm{~cm^3} = 1 \\mathrm{~mL}$.\nKhối lượng riêng của một số chất (tham khảo):\n$\\begin{array}{|c|c|c|c|}\n\\hline\n\\text{Chất} & \\mathrm{D~ (kg/m^3)} & \\text{Chất} & \\mathrm{D~ (kg/m^3)} \\\\\n\\hline\n\\text{Nước} & 1 \\text{ 000} & \\text{Nhôm} & 2 \\text{ 700} \\\\\n\\hline\n\\text{Nước biển} & 1 \\text{ 030} & \\text{Sắt} & 7 \\text{ 800} \\\\\n\\hline\n\\text{Dầu hoả} & 800 & \\text{Đồng} & 8 \\text{ 900} \\\\\n\\hline\n\\text{Xăng} & 700 & \\text{Chì} & 11 \\text{ 300} \\\\\n\\hline\n\\text{Thuỷ ngân} & 13 \\text{ 600} & \\text{Vàng} & 19 \\text{ 300} \\\\\n\\hline\n\\end{array}$\n\n##PP3. Các bước làm bài\nBước 1. Xác định đại lượng cần tìm và các đại lượng đã cho.\nBước 2. Thống nhất đơn vị: dùng bộ $\\mathrm{g}$, $\\mathrm{m^3}$, $\\mathrm{kg/m^3}$ hoặc bộ $\\mathrm{g}$, $\\mathrm{cm^3}$, $\\mathrm{g/cm^3}$, không dùng lẫn hai bộ.\nBước 3. Nếu đề cho kích thước của vật hình hộp thì tính thể tích từ các kích thước. Nếu đề cho hai vật có cùng thể tích (hoặc cùng khối lượng) thì tính đại lượng chung đó từ vật đã biết đủ dữ kiện.\nBước 4. Áp dụng công thức $\\mathrm{D = \\dfrac{m}{V}}$ hoặc công thức suy ra để tính.\nBước 5. Đổi kết quả sang đơn vị đề yêu cầu.\n\n##CY4. Lưu ý\nKhi dùng $\\mathrm{D}$ theo $\\mathrm{kg/m^3}$ thì khối lượng phải tính bằng $\\mathrm{kg}$ và thể tích phải tính bằng $\\mathrm{m^3}$.\nKhông nhầm phép chia $\\mathrm{\\dfrac{m}{V}}$ với phép chia $\\mathrm{\\dfrac{V}{m}}$ hoặc phép nhân $\\mathrm{m \\cdot V}$.\nKhi đổi thể tích, $\\mathrm{1~m^3}$ bằng $\\mathrm{1000~dm^3}$ và bằng $\\mathrm{1~000~000~cm^3}$, không phải $\\mathrm{1000~cm^3}$.\nĐọc kĩ đơn vị của đáp số mà đề yêu cầu ($\\mathrm{kg}$, $\\mathrm{g}$, tấn, $\\mathrm{m^3}$, $\\mathrm{L}$, $\\mathrm{cm^3}$).",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00381",
+   "khoi": "8",
+   "chu_de": "Khối lượng riêng và Áp suất",
+   "chuyen_de": "Khối lượng riêng",
+   "nhom": "Xác định khối lượng riêng D bằng thực nghiệm",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nĐể xác định khối lượng riêng của một chất, cần đo khối lượng m (bằng cân) và thể tích V (bằng bình chia độ hoặc bình tràn) của một lượng chất đó, rồi tính $D = \\dfrac{m}{V}$.\nThể tích vật rắn không thấm nước, bỏ lọt bình chia độ: thả chìm vật vào bình chia độ có nước, thể tích vật bằng thể tích nước dâng lên.\nThể tích vật rắn không bỏ lọt bình chia độ: thả chìm vật vào bình tràn đựng đầy nước, thể tích vật bằng thể tích nước tràn ra.\nKhối lượng chất lỏng: cân cốc rỗng, cân cốc có chất lỏng, lấy hiệu hai lần cân.\nMỗi phép đo nên làm nhiều lần và lấy giá trị trung bình để kết quả tin cậy hơn.\n\n##TC 2. Công thức\nThể tích vật đo bằng bình chia độ: $V = V_2 - V_1$\nThể tích vật đo bằng bình tràn: $V = V_{\\text{tràn}}$ hoặc $V = \\dfrac{m_{\\text{tràn}}}{D_{\\text{nước}}}$\nKhối lượng chất lỏng trong cốc: $m = m_2 - m_1$\nGiá trị trung bình của n lần đo: $D_{\\text{tb}} = \\dfrac{D_1+D_2+...+D_n}{n}$\nDùng một lọ đựng đầy lần lượt nước và chất lỏng cần đo: dung tích lọ $V = \\dfrac{m_{\\text{nước}}}{D_{\\text{nước}}}$, rồi $D = \\dfrac{m_{\\text{chất lỏng}}}{V}$.\nĐổi đơn vị: $1 \\mathrm{~mL} = 1 \\mathrm{~cm^3}$; $1 \\mathrm{~g/cm^3} = 1 \\mathrm{~000~kg/m^3}$.\n\n##PP 3. Các bước làm bài\nBước 1. Xác định khối lượng của vật hoặc của lượng chất lỏng (đọc trực tiếp hoặc lấy hiệu hai lần cân).\nBước 2. Xác định thể tích (lấy hiệu hai vạch trên bình chia độ, đọc thể tích nước tràn, hoặc tính từ khối lượng nước tràn).\nBước 3. Nếu có nhiều lần đo, tính giá trị trung bình trước khi dùng.\nBước 4. Tính $D = \\dfrac{m}{V}$, đổi kết quả sang đơn vị đề yêu cầu.\n\n##CY 4. Lưu ý\nThể tích vật là phần nước dâng lên $V_2 - V_1$, không phải số đọc $V_2$ sau khi thả vật.\nKhối lượng chất lỏng là hiệu hai lần cân, không phải số đọc khi cân cốc có chất lỏng.\nGiá trị trung bình là tổng chia cho số lần đo, không lấy kết quả của một lần đo bất kì.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00382",
+   "khoi": "8",
+   "chu_de": "Khối lượng riêng và Áp suất",
+   "chuyen_de": "Khối lượng riêng",
+   "nhom": "VẬN DỤNG KHỐI LƯỢNG RIÊNG ĐỂ SO SÁNH VÀ NHẬN BIẾT CHẤT",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC1. Kiến thức cần nhớ\nMỗi chất có một khối lượng riêng xác định, nên có thể dựa vào khối lượng riêng để nhận biết chất làm nên vật.\nCác vật có cùng thể tích: vật làm bằng chất có khối lượng riêng lớn hơn thì có khối lượng lớn hơn.\nCác vật có cùng khối lượng: vật làm bằng chất có khối lượng riêng lớn hơn thì có thể tích nhỏ hơn.\nVật có phần rỗng bên trong: thể tích bên ngoài của vật bằng thể tích phần chất đặc cộng thể tích phần rỗng.\nHợp kim hoặc hỗn hợp hai chất: khối lượng bằng tổng khối lượng hai chất; khi coi thể tích không thay đổi lúc trộn thì thể tích bằng tổng thể tích hai chất.\n\n##TC2. Công thức\n$D = \\dfrac{m}{V}$; $m = D \\cdot V$; $V = \\dfrac{m}{D}$\nHai vật cùng thể tích: $\\dfrac{m_1}{m_2} = \\dfrac{D_1}{D_2}$. Hai vật cùng khối lượng: $\\dfrac{V_1}{V_2} = \\dfrac{D_2}{D_1}$.\nVật rỗng: $V_{đặc} = \\dfrac{m}{D}$; $V_{rỗng} = V_{ngoài} - V_{đặc}$\nHợp kim, hỗn hợp: $D = \\dfrac{m_1+m_2}{V_1+V_2}$\n\n##PP3. Các bước làm bài\nBước 1. Nhận biết chất: tính khối lượng riêng của vật (đổi về cùng đơn vị với bảng), rồi đối chiếu với bảng khối lượng riêng.\nBước 2. So sánh các vật: xác định đại lượng giống nhau (cùng thể tích hay cùng khối lượng), rồi so sánh theo khối lượng riêng.\nBước 3. Vật rỗng: tính thể tích phần chất đặc từ khối lượng, lấy thể tích bên ngoài trừ đi.\nBước 4. Hợp kim, hỗn hợp: tính khối lượng và thể tích của từng thành phần, cộng lại rồi chia.\n\n##CY4. Lưu ý\nKhối lượng riêng của hợp kim không bằng trung bình cộng khối lượng riêng của hai chất thành phần.\nThể tích bên ngoài của vật rỗng lấy từ kích thước bên ngoài hoặc từ thể tích nước bị vật chiếm chỗ.\nCâu nói 'chất A nặng hơn chất B' chỉ so sánh khối lượng riêng, không có nghĩa mọi vật bằng A đều nặng hơn mọi vật bằng B.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00383",
+   "khoi": "8",
+   "chu_de": "Khối lượng riêng và Áp suất",
+   "chuyen_de": "Áp suất",
+   "nhom": "Khái niệm áp lực, Áp suất và đơn vị",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nÁp lực là lực ép có phương vuông góc với mặt bị ép. Áp lực có điểm đặt trên mặt bị ép.\nVật đặt trên mặt nằm ngang thì áp lực lên mặt đó có độ lớn bằng trọng lượng của vật (và của các vật đặt chồng lên nó). Áp lực và trọng lực khác nhau về điểm đặt: trọng lực đặt tại vật, áp lực đặt trên mặt bị ép.\nLực có phương song song với mặt tiếp xúc (lực kéo, lực ma sát) không phải là áp lực.\nDiện tích bị ép là diện tích phần mặt tiếp xúc giữa vật gây áp lực và mặt bị ép.\nÁp suất là độ lớn của áp lực trên một đơn vị diện tích bị ép. Tác dụng của áp lực càng lớn khi áp lực càng lớn và diện tích bị ép càng nhỏ.\n\n##TC2. Công thức\n$$p = \\dfrac{F}{S}$$\nTrong đó: p là áp suất (Pa); F là áp lực (N); S là diện tích bị ép (m$^2$).\nĐơn vị:\n$1 \\mathrm{Pa} = 1 \\mathrm{N/m^2}$\n$1 \\mathrm{kPa} = 1000 \\mathrm{Pa}$\n$1 \\mathrm{cm^2} = 0.0001 \\mathrm{m^2}$ nên $1 \\mathrm{N/cm^2} = 10000 \\mathrm{Pa}$\n\n##PP3. Các bước làm bài\nBước 1. Xác định mặt bị ép.\nBước 2. Chọn lực có điểm đặt trên mặt bị ép, phương vuông góc với mặt bị ép, chiều hướng vào mặt bị ép: đó là áp lực.\nBước 3. Với câu hỏi đổi đơn vị: đưa về Pa (hoặc N/m$^2$) rồi đổi sang đơn vị đề yêu cầu.\n\n##CY 4. Lưu ý\nÁp lực không phải lúc nào cũng có phương thẳng đứng; chỉ khi mặt bị ép nằm ngang thì áp lực mới có phương thẳng đứng.\nKhông nhầm áp lực (đơn vị N) với áp suất (đơn vị Pa).\n$1 \\mathrm{m^2} = 10000 \\mathrm{cm^2}$, không phải $100 \\mathrm{cm^2}$.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00384",
+   "khoi": "8",
+   "chu_de": "Khối lượng riêng và Áp suất",
+   "chuyen_de": "Áp suất",
+   "nhom": "Tính áp suất p khi biết áp lực F và diện tích bị ép S",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC1. Kiến thức cần nhớ\nÁp suất là độ lớn của áp lực trên một đơn vị diện tích bị ép.\nVật đặt trên mặt nằm ngang thì áp lực bằng trọng lượng của vật: $F = P = 10m$ (m tính bằng kg, P tính bằng N).\nCùng một vật đặt trên mặt nằm ngang theo các mặt khác nhau thì áp lực không đổi; mặt tiếp xúc càng nhỏ thì áp suất càng lớn.\nMỗi mặt đỡ (nền đất, mặt đường, sàn) chỉ chịu được một áp suất tối đa. Áp lực tối đa mặt đỡ chịu được là\n$F_{\\text{max}} = p_{\\text{max}} \\cdot S$.\n\n##TC2. Công thức\n$p = \\dfrac{F}{S}$\nTrong đó: $p$ là áp suất (Pa); $F$ là áp lực (N); $S$ là diện tích bị ép (m$^2$).\nCác công thức suy ra:\n$F = p \\cdot S$ và $S = \\dfrac{F}{p}$\nĐổi đơn vị:\n$1 \\text{ dm}^2 = 0,01 \\text{ m}^2$; $1 \\text{ cm}^2 = 0,0001 \\text{ m}^2$; $1 \\text{ mm}^2 = 0,000001 \\text{ m}^2$\n$1 \\text{ kPa} = 1\\ 000 \\text{ Pa}$; $1 \\text{ Pa} = 1 \\text{ N/m}^2$\n\n##PP3. Các bước làm bài\nBước 1. Xác định áp lực $F$ (nếu đề cho khối lượng thì tính $F = P = 10m$).\nBước 2. Xác định diện tích bị ép $S$ (nếu đề cho kích thước mặt tiếp xúc thì tính diện tích), đổi $S$ về $\\text{m}^2$.\nBước 3. Áp dụng $p = \\dfrac{F}{S}$ hoặc công thức suy ra.\nBước 4. Với bài khối lượng hàng tối đa: tính $F_{\\text{max}} = p_{\\text{max}} \\cdot S$, trừ trọng lượng của vật đỡ (xe, kệ, tấm ván) để được trọng lượng hàng tối đa, rồi chia cho $10$ để được khối lượng.\nBước 5. Đổi kết quả sang đơn vị đề yêu cầu.\n\n##CY4. Lưu ý\n$1 \\text{ m}^2 = 10\\ 000 \\text{ cm}^2$, không phải $100 \\text{ cm}^2$.\nKhi đặt vật theo các mặt khác nhau, chỉ diện tích bị ép thay đổi, áp lực vẫn bằng trọng lượng của vật.\nKhông nhầm áp lực (N) với áp suất (Pa); không lấy tích $F \\cdot S$ thay cho thương $\\dfrac{F}{S}$.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00385",
+   "khoi": "8",
+   "chu_de": "Khối lượng riêng và Áp suất",
+   "chuyen_de": "Áp suất",
+   "nhom": "Tính áp lực F hoặc diện tích bị ép S khi biết áp suất p",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "I. LÝ THUYẾT\n• Từ công thức p = F/S, ta suy ra hai công thức biến đổi: F = p × S (tính áp lực khi biết áp suất và diện tích bị ép) và S = F/p (tính diện tích bị ép khi biết áp suất và áp lực).\n• Dạng bài này thường gặp trong các tình huống thực tế: biết áp suất gió, áp suất khí nén, áp suất giới hạn an toàn của nền đất,... để tính lực tác dụng lên một diện tích cho trước, hoặc tính diện tích tối thiểu cần thiết để áp suất không vượt quá giới hạn cho phép.\nII. CÁC BƯỚC GIẢI\nBước 1: Xác định đại lượng đề bài yêu cầu tìm (F hay S) và các đại lượng đã cho (p và S, hoặc p và F).\nBước 2: Đổi các đại lượng về cùng hệ đơn vị chuẩn (F: N; S: m²; p: Pa).\nBước 3: Áp dụng công thức phù hợp: F = p × S hoặc S = F/p.\nBước 4: Tính toán, ghi kết quả kèm đơn vị; đối chiếu thực tế nếu đề yêu cầu (ví dụ so sánh với giới hạn an toàn).\nIII. VÍ DỤ MINH HOẠ\nĐề bài: Gió gây ra áp suất 2000 Pa lên một cánh cửa có diện tích 3,5 m². Tính áp lực của gió tác dụng lên cánh cửa.\nLời giải:\n– Áp dụng công thức F = p × S.\n– F = 2000 × 3,5 = 7000 N.\n– Vậy áp lực của gió tác dụng lên cánh cửa là 7000 N.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00386",
+   "khoi": "8",
+   "chu_de": "Khối lượng riêng và Áp suất",
+   "chuyen_de": "Áp suất",
+   "nhom": "VẬN DỤNG TĂNG, GIẢM ÁP SUẤT TRONG THỰC TẾ",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nTheo công thức $p = \\dfrac{F}{S}$, áp suất phụ thuộc vào áp lực F và diện tích bị ép S.\nMuốn tăng áp suất: tăng áp lực, hoặc giảm diện tích bị ép, hoặc làm đồng thời cả hai. Ví dụ: mài sắc lưỡi dao, làm nhọn mũi đinh, đầu kim, mũi khoan, vót nhọn đầu cọc.\nMuốn giảm áp suất: giảm áp lực, hoặc tăng diện tích bị ép, hoặc làm đồng thời cả hai. Ví dụ: xây móng nhà rộng, xe tăng dùng bánh xích, ván trượt tuyết rộng, đặt tà vẹt dưới đường ray, quai ba lô bản rộng.\nKhi người hoặc vật đứng trên nền bằng nhiều chân (bánh xe), diện tích bị ép là tổng diện tích tiếp xúc của các chân (bánh xe).\n\n##TC 2. Công thức\n$p = \\dfrac{F}{S}$, với vật trên mặt nằm ngang $F = P = 10m$\nVật có n chân (bánh xe) giống nhau, mỗi chân tiếp xúc với nền một diện tích $S_1$: $S = n \\cdot S_1$\n\n##PP3. Các bước làm bài\nBước 1. Với câu hỏi giải thích: xác định trong tình huống đại lượng nào thay đổi (áp lực hay diện tích bị ép) và mục đích là tăng hay giảm áp suất.\nBước 2. Với bài tính: tính áp lực bằng tổng trọng lượng các vật đè lên nền.\nBước 3. Tính tổng diện tích bị ép, đổi về $\\mathrm{m^2}$.\nBước 4. Tính áp suất, đổi sang đơn vị đề yêu cầu.\n\n##CY 4. Lưu ý\nLàm nhọn, mài sắc dụng cụ không làm thay đổi áp lực mà chỉ làm giảm diện tích bị ép.\nNgười đứng một chân gây áp suất lớn gấp đôi khi đứng hai chân vì diện tích bị ép giảm một nửa.\nKhi người ngồi trên ghế (hoặc trên xe) mà chân không chạm sàn, áp lực lên sàn bằng tổng trọng lượng của người và ghế (xe).",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00391",
+   "khoi": "8",
+   "chu_de": "Khối lượng riêng và Áp suất",
+   "chuyen_de": "Áp suất chất lỏng - Áp suất khí quyển",
+   "nhom": "Tổng hợp áp suất chất lỏng và áp suất khí quyển",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "•  Khi mặt thoáng chất lỏng hở, tiếp xúc trực tiếp với khí quyển, một điểm ở độ sâu h trong lòng chất lỏng chịu đồng thời áp suất khí quyển p0 và áp suất do cột chất lỏng phía trên.\n•  Công thức tổng hợp: p = p0 + d.h.\n•  Nếu áp suất khí quyển cho theo mmHg, phải đổi ra Pa (1 mmHg = 136 Pa) trước khi cộng với d.h.\n•  Từ công thức trên có thể tính ngược h, d hoặc p0 khi biết ba đại lượng còn lại.\n•  Nếu bài yêu cầu tính áp lực: tính p theo công thức trên trước, sau đó áp dụng F = p.S.\nVí dụ minh hoạ 1:\nMột điểm ở độ sâu 2 m dưới mặt thoáng của nước (d = 10000 N/m³, mặt thoáng hở, tiếp xúc trực tiếp với khí quyển). Biết áp suất khí quyển tại đó là 100000 Pa. Tính áp suất tổng cộng tác dụng lên điểm đó.\nBài giải:\n– p = p0 + d.h = 100000 + 10000 × 2 = 120000 Pa.\nVí dụ minh hoạ 2:\nÁp suất khí quyển tại một địa điểm đo được là 750 mmHg. Một điểm nằm ở độ sâu 1,5 m dưới mặt thoáng hở của dầu hoả (d = 8000 N/m³) tại địa điểm đó. Tính áp suất tổng cộng tác dụng lên điểm này.\nBài giải:\n– Đổi áp suất khí quyển ra Pa: p0 = 750 × 136 = 102000 Pa.\n– Áp suất tổng cộng: p = p0 + d.h = 102000 + 8000 × 1,5 = 102000 + 12000 = 114000 Pa.",
+   "can_dien_ly_thuyet_nhom": false
+  }
+ ],
+ "dang_bai": [
+  {
+   "dang_id": "KDB00852",
+   "nhom_id": "KNB00379",
+   "thu_tu": 1,
+   "dang": "ĐỊNH NGHĨA VÀ Ý NGHĨA KHỐI LƯỢNG RIÊNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020101050",
+     "loai": "trac_nghiem",
+     "de": "Khi đun nóng một khối kim loại, khối lượng của khối kim loại không đổi nhưng thể tích của nó tăng lên. Khối lượng riêng của khối kim loại",
+     "lua_chon": [
+      "tăng",
+      "không đổi",
+      "giảm",
+      "lúc đầu tăng sau đó giảm"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Theo công thức $D = \\dfrac{m}{V}$, m không đổi, V tăng nên D giảm."
+    },
+    {
+     "ma_cau": "K08020101047",
+     "loai": "trac_nghiem",
+     "de": "Khối lượng riêng của một vật đặc phụ thuộc vào",
+     "lua_chon": [
+      "chất làm nên vật",
+      "khối lượng của vật",
+      "thể tích của vật",
+      "hình dạng của vật"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Mỗi chất có một khối lượng riêng xác định, nên khối lượng riêng của vật đặc chỉ phụ thuộc vào chất làm nên vật."
+    },
+    {
+     "ma_cau": "K08020101044",
+     "loai": "trac_nghiem",
+     "de": "Trong hệ đơn vị đo lường chính thức, đơn vị của khối lượng riêng là",
+     "lua_chon": [
+      "kg/m$^3$",
+      "N/m$^3$",
+      "kg/m$^2$",
+      "m$^3$/kg"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng riêng bằng khối lượng (kg) chia cho thể tích (m$^3$) nên có đơn vị là kg/m$^3$."
+    },
+    {
+     "ma_cau": "K08020101042",
+     "loai": "trac_nghiem",
+     "de": "Công thức tính khối lượng riêng D của một chất theo khối lượng m và thể tích V là",
+     "lua_chon": [
+      "$D = m \\cdot V$",
+      "$D = \\dfrac{V}{m}$",
+      "$D = m + V$",
+      "$D = \\dfrac{m}{V}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khối lượng riêng bằng khối lượng chia cho thể tích:\n$D = \\dfrac{m}{V}$"
+    },
+    {
+     "ma_cau": "K08020101045",
+     "loai": "trac_nghiem",
+     "de": "Muốn xác định khối lượng riêng của một vật đặc làm bằng một chất, cần đo",
+     "lua_chon": [
+      "khối lượng và chiều dài của vật",
+      "trọng lượng và diện tích mặt đáy của vật",
+      "thể tích và nhiệt độ của vật",
+      "khối lượng và thể tích của vật"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Theo công thức D = $\\dfrac{\\mathrm{m}}{\\mathrm{v}}$, cần biết khối lượng m và thể tích V của vật."
+    },
+    {
+     "ma_cau": "K08020101049",
+     "loai": "trac_nghiem",
+     "de": "Người ta thường nói 'sắt nặng hơn nhôm'. Câu nói này cần được hiểu là",
+     "lua_chon": [
+      "mọi vật bằng sắt đều có khối lượng lớn hơn mọi vật bằng nhôm",
+      "khối lượng riêng của sắt lớn hơn khối lượng riêng của nhôm",
+      "thể tích của sắt lớn hơn thể tích của nhôm",
+      "vật bằng sắt luôn có thể tích nhỏ hơn vật bằng nhôm"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Câu nói so sánh khối lượng của cùng một đơn vị thể tích hai chất, tức là so sánh khối lượng riêng. Một vật bằng nhôm có thể tích lớn vẫn có thể có khối lượng lớn hơn một vật nhỏ bằng sắt."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00853",
+   "nhom_id": "KNB00379",
+   "thu_tu": 2,
+   "dang": "Đơn vị và đổi đơn vị",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020101052",
+     "loai": "trac_nghiem",
+     "de": "Đổi khối lượng riêng của sắt $7,8 \\mathrm{\\ g/cm^3}$ sang đơn vị $\\mathrm{kg/m^3}$, ta được",
+     "lua_chon": [
+      "$0,0078 \\mathrm{\\ kg/m^3}$",
+      "$780 \\mathrm{\\ kg/m^3}$",
+      "$7\\ 800 \\mathrm{\\ kg/m^3}$",
+      "$7\\ 800\\ 000 \\mathrm{\\ kg/m^3}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$1 \\mathrm{\\ g} = 0,001 \\mathrm{\\ kg}$; $1 \\mathrm{\\ cm^3} = 0,000001 \\mathrm{\\ m^3}$\n$1 \\mathrm{g/cm^3} = \\dfrac{0,001 \\mathrm{\\ kg}}{0,000001 \\mathrm{\\ m^3}} = 1\\ 000 \\mathrm{\\ kg/m^3}$\nDo đó:\n$7,8 \\mathrm{g/cm^3} = 7,8 \\cdot 1\\ 000 = 7\\ 800 \\mathrm{\\ (kg/m^3)}$"
+    },
+    {
+     "ma_cau": "K08020101053",
+     "loai": "trac_nghiem",
+     "de": "Đổi khối lượng riêng của nhôm $2\\ 700 \\mathrm{\\ kg/m^3}$ sang đơn vị $\\mathrm{g/cm^3}$, ta được",
+     "lua_chon": [
+      "$0,0027 \\mathrm{\\ g/cm^3}$",
+      "$2,7 \\mathrm{\\ g/cm^3}$",
+      "$27 \\mathrm{\\ g/cm^3}$",
+      "$2\\ 700\\ 000 \\mathrm{\\ g/cm^3}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$1 \\mathrm{g/cm^3} = 1\\ 000 \\mathrm{\\ kg/m^3}$ nên $1 \\mathrm{kg/m^3} = 0,001 \\mathrm{\\ g/cm^3}$.\nDo đó:\n$2\\ 700 \\mathrm{kg/m^3} = 2\\ 700 \\cdot 0,001 = 2,7 \\mathrm{\\ (g/cm^3)}$"
+    },
+    {
+     "ma_cau": "K08020101058",
+     "loai": "trac_nghiem",
+     "de": "Đổi khối lượng riêng của vàng $19\\ 300\\ \\mathrm{kg/m^3}$ sang đơn vị $\\mathrm{g/cm^3}$, ta được",
+     "lua_chon": [
+      "$0,0193\\ \\mathrm{g/cm^3}$",
+      "$1,93\\ \\mathrm{g/cm^3}$",
+      "$19,3\\ \\mathrm{g/cm^3}$",
+      "$19\\ 300\\ 000\\ \\mathrm{g/cm^3}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$1\\ \\mathrm{g/cm^3} = 1\\ 000\\ \\mathrm{kg/m^3}$ nên $1\\ \\mathrm{kg/m^3} = 0,001\\ \\mathrm{g/cm^3}$.\nDo đó:\n$19\\ 300\\ \\mathrm{kg/m^3} = 19\\ 300 \\cdot 0,001 = 19,3\\ \\mathrm{(g/cm^3)}$"
+    },
+    {
+     "ma_cau": "K08020101054",
+     "loai": "trac_nghiem",
+     "de": "Đổi khối lượng riêng của dầu hoả $800\\ \\mathrm{kg/m^3}$ sang đơn vị $\\mathrm{g/cm^3}$, ta được",
+     "lua_chon": [
+      "$0,8\\ \\mathrm{g/cm^3}$",
+      "$8\\ \\mathrm{g/cm^3}$",
+      "$80\\ \\mathrm{g/cm^3}$",
+      "$800\\ 000\\ \\mathrm{g/cm^3}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$1\\ \\mathrm{g/cm^3} = 1\\ 000\\ \\mathrm{kg/m^3}$ nên $1\\ \\mathrm{kg/m^3} = 0,001\\ \\mathrm{g/cm^3}$.\nDo đó:\n$800\\ \\mathrm{kg/m^3} = 800\\ \\cdot\\ 0,001 = 0,8\\ \\mathrm{(g/cm^3)}$"
+    },
+    {
+     "ma_cau": "K08020101057",
+     "loai": "trac_nghiem",
+     "de": "Đổi khối lượng riêng của nước biển $1,03\\ \\mathrm{g/cm^3}$ sang đơn vị $\\mathrm{kg/m^3}$, ta được",
+     "lua_chon": [
+      "$0,00103\\ \\mathrm{kg/m^3}$",
+      "$10,3\\ \\mathrm{kg/m^3}$",
+      "$103\\ \\mathrm{kg/m^3}$",
+      "$1\\ 030\\ \\mathrm{kg/m^3}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$1\\ \\mathrm{g/cm^3} = \\dfrac{0,001\\ \\mathrm{kg}}{0,000001\\ \\mathrm{m^3}} = 1\\ 000\\ \\mathrm{kg/m^3}$\nDo đó:\n$1,03\\ \\mathrm{g/cm^3} = 1,03 \\cdot 1\\ 000 = 1\\ 030\\ \\mathrm{(kg/m^3)}$"
+    },
+    {
+     "ma_cau": "K08020101060",
+     "loai": "trac_nghiem",
+     "de": "Trên nhãn một lọ mật ong ghi khối lượng riêng là $1,4 \\text{ g/mL}$. Đổi giá trị này sang đơn vị $\\text{kg/m}^3$, ta được",
+     "lua_chon": [
+      "$0,0014 \\text{ kg/m}^3$",
+      "$\\text{140 kg/m}^3$",
+      "$\\text{1 400 kg/m}^3$",
+      "$\\text{1 400 000 kg/m}^3"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$1 \\text{ mL} = 1 \\text{ cm}^3$ nên $1,4 \\text{ g/mL} = 1,4 \\text{ g/cm}^3$.\n$1,4 \\text{ g/cm}^3 = 1,4 \\cdot 1000 = 1400 \\text{ (kg/m}^3)$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00854",
+   "nhom_id": "KNB00380",
+   "thu_tu": 1,
+   "dang": "Tính D khi biết m và V",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020102045",
+     "loai": "trac_nghiem",
+     "de": "Một bể chứa $3 \\mathrm{\\ m^3}$ xăng. Khối lượng của lượng xăng này là $2100 \\mathrm{\\ kg}$. Khối lượng riêng của xăng là",
+     "lua_chon": [
+      "$0.7 \\mathrm{\\ kg/m^3}$",
+      "$7 \\mathrm{\\ kg/m^3}$",
+      "$70 \\mathrm{\\ kg/m^3}$",
+      "$700 \\mathrm{\\ kg/m^3}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khối lượng riêng của xăng:\n$$D = \\dfrac{m}{V} = \\dfrac{2100}{3} = 700 \\mathrm{\\ (kg/m^3)}$$"
+    },
+    {
+     "ma_cau": "K08020102044",
+     "loai": "trac_nghiem",
+     "de": "Một chiếc thìa bạc có khối lượng $31.5 \\mathrm{\\ g}$ và thể tích $3 \\mathrm{\\ cm^3}$. Khối lượng riêng của bạc là",
+     "lua_chon": [
+      "$0.105 \\mathrm{\\ g/cm^3}$",
+      "$1.05 \\mathrm{\\ g/cm^3}$",
+      "$10.5 \\mathrm{\\ g/cm^3}$",
+      "$94.5 \\mathrm{\\ g/cm^3}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khối lượng riêng của bạc:\n$$D = \\dfrac{m}{V} = \\dfrac{31.5}{3} = 10.5 \\mathrm{\\ (g/cm^3)}$$"
+    },
+    {
+     "ma_cau": "K08020102042",
+     "loai": "trac_nghiem",
+     "de": "Một khối nước đá có khối lượng $1800 \\text{ kg}$ và thể tích $2 \\text{ m}^3$. Khối lượng riêng của nước đá là",
+     "lua_chon": [
+      "$90 \\text{ kg/m}^3$",
+      "$900 \\text{ kg/m}^3$",
+      "$3600 \\text{ kg/m}^3$",
+      "$9000 \\text{ kg/m}^3$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khối lượng riêng của nước đá:\n$$D = \\dfrac{m}{V} = \\dfrac{1800}{2} = 900 \\text{ (kg/m}^3$$"
+    },
+    {
+     "ma_cau": "K08020102046",
+     "loai": "trac_nghiem",
+     "de": "Một lọ thủy tinh chứa $50 \\mathrm{\\ cm^3}$ thủy ngân. Khối lượng của lượng thủy ngân này là $680 \\mathrm{\\ g}$. Khối lượng riêng của thủy ngân là",
+     "lua_chon": [
+      "$13.6 \\mathrm{\\ g/cm^3}$",
+      "$136 \\mathrm{\\ g/cm^3}$",
+      "$1 \\ 360 \\mathrm{\\ g/cm^3}$",
+      "$34 \\ 000 \\mathrm{\\ g/cm^3}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng riêng của thủy ngân:\n$$D = \\dfrac{m}{V} = \\dfrac{680}{50} = 13.6 \\mathrm{\\ (g/cm^3)}$$"
+    },
+    {
+     "ma_cau": "K08020102048",
+     "loai": "trac_nghiem",
+     "de": "Một miếng gỗ thông có khối lượng $2.4 \\mathrm{\\ kg}$ và thể tích $0.004 \\mathrm{\\ m^3}$. Khối lượng riêng của gỗ thông là",
+     "lua_chon": [
+      "$0.0096 \\mathrm{\\ kg/m^3}$",
+      "$6 \\mathrm{\\ kg/m^3}$",
+      "$60 \\mathrm{\\ kg/m^3}$",
+      "$600 \\mathrm{\\ kg/m^3}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khối lượng riêng của gỗ thông:\n$$D = \\dfrac{m}{V} = \\dfrac{2.4}{0.004} = 600 \\mathrm{\\ (kg/m^3)}$$"
+    },
+    {
+     "ma_cau": "K08020102043",
+     "loai": "trac_nghiem",
+     "de": "Một thỏi vàng có khối lượng $386 \\text{ g}$ và thể tích $20 \\text{ cm}^3$. Khối lượng riêng của vàng là",
+     "lua_chon": [
+      "$19,3 \\text{ g/cm}^3$",
+      "$193 \\text{ g/cm}^3$",
+      "$1930 \\text{ g/cm}^3$",
+      "$7720 \\text{ g/cm}^3$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng riêng của vàng:\n$$D = \\dfrac{m}{V} = \\dfrac{386}{20} = 19,3 \\text{ (g/cm}^3$$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00855",
+   "nhom_id": "KNB00380",
+   "thu_tu": 2,
+   "dang": "Tính m khi biết D và V",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020102054",
+     "loai": "trac_nghiem",
+     "de": "Một tảng đá có thể tích $2 \\ \\mathrm{m^3}$. Biết khối lượng riêng của đá là $2\\ 600 \\ \\mathrm{kg/m^3}$. Khối lượng của tảng đá là",
+     "lua_chon": [
+      "52 kg",
+      "520 kg",
+      "1\\ 300 kg",
+      "5\\ 200 kg"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khối lượng của tảng đá:\n$m = D \\cdot V = 2\\ 600 \\cdot 2 = 5\\ 200 \\ \\mathrm{(kg)}$"
+    },
+    {
+     "ma_cau": "K08020102052",
+     "loai": "trac_nghiem",
+     "de": "Một khối nhôm có thể tích $0,05 \\ \\mathrm{m^3}$. Biết khối lượng riêng của nhôm là $2\\ 700 \\ \\mathrm{kg/m^3}$. Khối lượng của khối nhôm là",
+     "lua_chon": [
+      "13,5 kg",
+      "135 kg",
+      "1\\ 350 kg",
+      "54\\ 000 kg"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khối lượng của khối nhôm:\n$m = D \\cdot V = 2\\ 700 \\cdot 0,05 = 135 \\ \\mathrm{(kg)}$"
+    },
+    {
+     "ma_cau": "K08020102049",
+     "loai": "trac_nghiem",
+     "de": "Một thùng chứa $0,2 \\mathrm{~m^3}$ dầu ăn. Biết khối lượng riêng của dầu ăn là $800 \\mathrm{~kg/m^3}$. Khối lượng của lượng dầu ăn trong thùng là",
+     "lua_chon": [
+      "$1,6 \\text{ kg}$",
+      "$16 \\text{ kg}$",
+      "$160 \\text{ kg}$",
+      "$1\\ 600 \\text{ kg}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khối lượng của lượng dầu ăn trong thùng:\n$m = D \\cdot V = 800 \\cdot 0,2 = 160 \\text{ (kg)}$"
+    },
+    {
+     "ma_cau": "K08020102056",
+     "loai": "trac_nghiem",
+     "de": "Một thỏi đồng có thể tích $40\\ \\mathrm{cm^3}$. Biết khối lượng riêng của đồng là $8,9\\ \\mathrm{g/cm^3}$. Khối lượng của thỏi đồng là",
+     "lua_chon": [
+      "356 g",
+      "3 560 g",
+      "35 600 g",
+      "356 000 g"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng của thỏi đồng:\n$$m = D \\cdot V = 8,9 \\cdot 40 = 356\\ (g)$$"
+    },
+    {
+     "ma_cau": "K08020102050",
+     "loai": "trac_nghiem",
+     "de": "Một thanh sắt có thể tích $0,002 \\mathrm{~m^3}$. Biết khối lượng riêng của sắt là $7\\ 800 \\mathrm{~kg/m^3}$. Khối lượng của thanh sắt là",
+     "lua_chon": [
+      "$15,6 \\text{ kg}$",
+      "$156 \\text{ kg}$",
+      "$1\\ 560 \\text{ kg}$",
+      "$3\\ 900\\ 000 \\text{ kg}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng của thanh sắt:\n$m = D \\cdot V = 7\\ 800 \\cdot 0,002 = 15,6 \\text{ (kg)}$"
+    },
+    {
+     "ma_cau": "K08020102055",
+     "loai": "trac_nghiem",
+     "de": "Một bình chứa $300\\ \\mathrm{cm^3}$ mật ong. Biết khối lượng riêng của mật ong là $1,4\\ \\mathrm{g/cm^3}$. Khối lượng của lượng mật ong trong bình là",
+     "lua_chon": [
+      "42 g",
+      "420 g",
+      "4 200 g",
+      "420 000 g"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khối lượng của lượng mật ong trong bình:\n$$m = D \\cdot V = 1,4 \\cdot 300 = 420\\ (g)$$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00856",
+   "nhom_id": "KNB00380",
+   "thu_tu": 3,
+   "dang": "Tính V khi biết m và D",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020102058",
+     "loai": "trac_nghiem",
+     "de": "Một quả tạ bằng sắt có khối lượng 46,8 kg. Biết khối lượng riêng của sắt là 7 800 kg/m³. Thể tích của quả tạ là",
+     "lua_chon": [
+      "0,0006 m³",
+      "0,006 m³",
+      "0,06 m³",
+      "0,6 m³"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Thể tích của quả tạ:\n$$V = \\dfrac{m}{D} = \\dfrac{46,8}{7800} = 0,006 (m^3)$$"
+    },
+    {
+     "ma_cau": "K08020102061",
+     "loai": "trac_nghiem",
+     "de": "Một chiếc vòng bạc có khối lượng 52,5 g. Biết khối lượng riêng của bạc là 10,5 g/cm³. Thể tích của chiếc vòng là",
+     "lua_chon": [
+      "0,2 cm³",
+      "0,5 cm³",
+      "5 cm³",
+      "551,25 cm³"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Thể tích của chiếc vòng:\n$$V = \\dfrac{m}{D} = \\dfrac{52,5}{10,5} = 5 \\ \\mathrm{(cm^3)}$$"
+    },
+    {
+     "ma_cau": "K08020102060",
+     "loai": "trac_nghiem",
+     "de": "Một bồn inox chứa 4 500 kg nước. Biết khối lượng riêng của nước là 1 000 kg/m³. Thể tích của lượng nước trong bồn là",
+     "lua_chon": [
+      "4,5 m³",
+      "45 m³",
+      "450 m³",
+      "4 500 m³"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thể tích của lượng nước trong bồn:\n$$V = \\dfrac{m}{D} = \\dfrac{4 \\ 500}{1 \\ 000} = 4,5 \\ \\mathrm{(m^3)}$$"
+    },
+    {
+     "ma_cau": "K08020102057",
+     "loai": "trac_nghiem",
+     "de": "Một bồn chứa 1 600 kg dầu hoả. Biết khối lượng riêng của dầu hoả là 800 kg/m³. Thể tích của lượng dầu hoả trong bồn là",
+     "lua_chon": [
+      "0,02 m³",
+      "0,2 m³",
+      "0,5 m³",
+      "2 m³"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Thể tích của lượng dầu hoả trong bồn:\n$$V = \\dfrac{m}{D} = \\dfrac{1600}{800} = 2 (m^3)$$"
+    },
+    {
+     "ma_cau": "K08020102062",
+     "loai": "trac_nghiem",
+     "de": "Một xe bồn chở 3 500 kg xăng. Biết khối lượng riêng của xăng là 700 kg/m³. Thể tích của lượng xăng trên xe là",
+     "lua_chon": [
+      "0,05 m³",
+      "0,2 m³",
+      "0,5 m³",
+      "5 m³"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Thể tích của lượng xăng trên xe:\n$$V = \\dfrac{m}{D} = \\dfrac{3 \\ 500}{700} = 5 \\ \\mathrm{(m^3)}$$"
+    },
+    {
+     "ma_cau": "K08020102063",
+     "loai": "trac_nghiem",
+     "de": "Một chiếc thìa nhôm có khối lượng 108 g. Biết khối lượng riêng của nhôm là 2,7 g/cm$^3$. Thể tích của chiếc thìa là",
+     "lua_chon": [
+      "0,025 cm$^3$",
+      "40 cm$^3$",
+      "291,6 cm$^3$",
+      "400 cm$^3$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Thể tích của chiếc thìa:\n$$V = \\dfrac{m}{D} = \\dfrac{108}{2,7} = 40 (\\mathrm{cm^3})$$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00857",
+   "nhom_id": "KNB00380",
+   "thu_tu": 4,
+   "dang": "Đổi đơn vị trước khi tính",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020102064",
+     "loai": "trac_nghiem",
+     "de": "Một chai chứa 1,5 L dầu ăn. Khối lượng của lượng dầu ăn này là 1,2 kg. Khối lượng riêng của dầu ăn tính theo đơn vị $\\mathrm{kg/m^3}$ là",
+     "lua_chon": [
+      "0,0008 kg/m$^3$",
+      "0,8 kg/m$^3$",
+      "800 kg/m$^3$",
+      "8 000 kg/m$^3$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi thể tích:\n$V = 1,5 \\mathrm{~L} = 1,5 \\mathrm{~dm^3} = 0,0015 \\mathrm{~m^3}$\nKhối lượng riêng của dầu ăn:\n$D = \\dfrac{m}{V} = \\dfrac{1,2}{0,0015} = 800 \\mathrm{~(kg/m^3)}$"
+    },
+    {
+     "ma_cau": "K08020102070",
+     "loai": "trac_nghiem",
+     "de": "Một bồn chứa $12 \\ \\mathrm{m^3}$ xăng. Biết khối lượng riêng của xăng là $700 \\ \\mathrm{kg/m^3}$. Khối lượng của lượng xăng trong bồn tính theo đơn vị tấn là",
+     "lua_chon": [
+      "0,84 tấn",
+      "8,4 tấn",
+      "84 tấn",
+      "8\\ 400 tấn"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khối lượng của lượng xăng:\n$m = D \\cdot V = 700 \\cdot 12 = 8\\ 400 \\ \\mathrm{(kg)}$\nĐổi đơn vị:\n$m = 8\\ 400 \\ \\mathrm{kg} = 8,4 \\ \\mathrm{tấn}$"
+    },
+    {
+     "ma_cau": "K08020102067",
+     "loai": "trac_nghiem",
+     "de": "Một hộp chứa 250 mL sữa. Biết khối lượng riêng của sữa là 1 030 kg/m³. Khối lượng của lượng sữa trong hộp tính theo đơn vị gam là",
+     "lua_chon": [
+      "0,2575 g",
+      "257,5 g",
+      "2 575 g",
+      "257 500 g"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi thể tích:\n$$\\mathrm{V = 250\\ mL = 250\\ cm^3 = 0,00025\\ m^3}$$\nKhối lượng của lượng sữa:\n$$\\mathrm{m = D \\cdot V = 1\\ 030 \\cdot 0,00025 = 0,2575\\ (kg)}$$\nĐổi đơn vị:\n$$\\mathrm{m = 0,2575\\ kg = 257,5\\ g}$$"
+    },
+    {
+     "ma_cau": "K08020102069",
+     "loai": "trac_nghiem",
+     "de": "Một can chứa 5 L nước biển. Khối lượng của lượng nước biển này là 5,15 kg. Khối lượng riêng của nước biển tính theo đơn vị $\\mathrm{kg/m^3}$ là",
+     "lua_chon": [
+      "1.03 kg/m^3",
+      "103 kg/m^3",
+      "1 030 kg/m^3",
+      "1 030 000 kg/m^3"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi thể tích:\n$V = 5\\,\\mathrm{L} = 5\\,\\mathrm{dm^3} = 0.005\\,\\mathrm{m^3}$\nKhối lượng riêng của nước biển:\n$D = \\dfrac{m}{V} = \\dfrac{5.15}{0.005} = 1030\\,\\mathrm{(kg/m^3)}$"
+    },
+    {
+     "ma_cau": "K08020102065",
+     "loai": "trac_nghiem",
+     "de": "Một tấm nhôm có thể tích $500 \\mathrm{~cm^3}$. Biết khối lượng riêng của nhôm là $2\\ 700 \\mathrm{~kg/m^3}$. Khối lượng của tấm nhôm tính theo đơn vị kilôgam là",
+     "lua_chon": [
+      "1,35 kg",
+      "13,5 kg",
+      "1 350 kg",
+      "1 350 000 kg"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi thể tích:\n$V = 500 \\mathrm{~cm^3} = 0,0005 \\mathrm{~m^3}$\nKhối lượng của tấm nhôm:\n$m = D \\cdot V = 2\\ 700 \\cdot 0,0005 = 1,35 \\mathrm{~(kg)}$"
+    },
+    {
+     "ma_cau": "K08020102066",
+     "loai": "trac_nghiem",
+     "de": "Một can nhựa chứa 3,16 kg cồn. Biết khối lượng riêng của cồn là 790 kg/m³. Thể tích của lượng cồn trong can tính theo đơn vị lít là",
+     "lua_chon": [
+      "4 L",
+      "250 L",
+      "2 496,4 L",
+      "4 000 L"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thể tích của lượng cồn:\n$$V = \\dfrac{m}{D} = \\dfrac{3,16}{790} = 0,004 (\\mathrm{m^3})$$\nĐổi đơn vị:\n$$V = 0,004 \\mathrm{m^3} = 4 \\mathrm{dm^3} = 4 \\mathrm{L}$$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00858",
+   "nhom_id": "KNB00380",
+   "thu_tu": 5,
+   "dang": "TÍNH KHỐI LƯỢNG VẬT HÌNH HỘP TỪ KÍCH THƯỚC",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020102072",
+     "loai": "tu_luan",
+     "de": "Một bể nước hình hộp chữ nhật có lòng bể dài $2 \\mathrm{~m}$, rộng $1,5 \\mathrm{~m}$, cao $1,2 \\mathrm{~m}$. Bể đang chứa đầy nước. Biết khối lượng riêng của nước là $1000 \\mathrm{~kg} / \\mathrm{m}^{3}$. Tính khối lượng nước trong bể theo đơn vị kilôgam (kg).",
+     "dap_an": "3600",
+     "loi_giai": "Thể tích nước trong bể bằng thể tích lòng bể:\n$$ V = 2 \\cdot 1,5 \\cdot 1,2 = 3,6 \\left(\\mathrm{m}^{3}\\right) $$\nKhối lượng nước trong bể:\n$$ m = D \\cdot V = 1000 \\cdot 3,6 = 3600 \\mathrm{~(kg)} $$"
+    },
+    {
+     "ma_cau": "K08020102075",
+     "loai": "tu_luan",
+     "de": "Một viên gạch đặc hình hộp chữ nhật có kích thước $22$ cm $\\times$ $10,5$ cm $\\times$ $6$ cm. Biết khối lượng riêng của gạch là $1\\,800$ kg/$\\mathrm{m^3}$. Tính khối lượng của viên gạch theo đơn vị kilôgam (kg), làm tròn kết quả đến hàng phần trăm.",
+     "dap_an": "2.49",
+     "loi_giai": "Thể tích viên gạch:\n$\\mathrm{V} = 22 \\cdot 10,5 \\cdot 6 = 1\\,386$ ($\\mathrm{cm^3}$)\nĐổi đơn vị:\n$\\mathrm{V} = 1\\,386\\ \\mathrm{cm^3} = 0,001386\\ \\mathrm{m^3}$\nKhối lượng của viên gạch:\n$\\mathrm{m} = \\mathrm{D} \\cdot \\mathrm{V} = 1\\,800 \\cdot 0,001386 = 2,4948 \\approx 2,49$ (kg)"
+    },
+    {
+     "ma_cau": "K08020102079",
+     "loai": "tu_luan",
+     "de": "Một bể cá kính hình hộp chữ nhật có đáy trong lòng bể dài 60 cm, rộng 30 cm. Mực nước trong bể cao 40 cm. Biết khối lượng riêng của nước là 1 000 $\\mathrm{kg/m^3}$. Tính khối lượng nước trong bể theo đơn vị kilôgam (kg).",
+     "dap_an": "72",
+     "loi_giai": "Thể tích nước trong bể:\n$V = 60 \\cdot 30 \\cdot 40 = 72\\,000$ (cm$^3$)\nĐổi đơn vị:\n$V = 72\\,000\\,\\mathrm{cm^3} = 0,072\\,\\mathrm{m^3}$\nKhối lượng nước trong bể:\n$m = D \\cdot V = 1\\,000 \\cdot 0,072 = 72$ (kg)"
+    },
+    {
+     "ma_cau": "K08020102071",
+     "loai": "tu_luan",
+     "de": "Một khối bê tông hình hộp chữ nhật có kích thước $1 \\mathrm{~m} \\times 0,5 \\mathrm{~m} \\times 0,4 \\mathrm{~m}$. Biết khối lượng riêng của bê tông là $2400 \\mathrm{~kg} / \\mathrm{m}^{3}$. Tính khối lượng của khối bê tông theo đơn vị kilôgam (kg).",
+     "dap_an": "480",
+     "loi_giai": "Thể tích khối bê tông:\n$$ V = 1 \\cdot 0,5 \\cdot 0,4 = 0,2 \\left(\\mathrm{m}^{3}\\right) $$\nKhối lượng của khối bê tông:\n$$ m = D \\cdot V = 2400 \\cdot 0,2 = 480 \\mathrm{~(kg)} $$"
+    },
+    {
+     "ma_cau": "K08020102074",
+     "loai": "tu_luan",
+     "de": "Một thanh sắt hình hộp chữ nhật dài $2$ m, tiết diện là hình chữ nhật $5$ cm $\\times$ $4$ cm. Biết khối lượng riêng của sắt là $7\\,800$ kg/$\\mathrm{m^3}$. Tính khối lượng của thanh sắt theo đơn vị kilôgam (kg).",
+     "dap_an": "31.2",
+     "loi_giai": "Đổi đơn vị:\n$5$ cm $= 0,05$ m; $4$ cm $= 0,04$ m\nThể tích thanh sắt:\n$\\mathrm{V} = 2 \\cdot 0,05 \\cdot 0,04 = 0,004$ ($\\mathrm{m^3}$)\nKhối lượng của thanh sắt:\n$\\mathrm{m} = \\mathrm{D} \\cdot \\mathrm{V} = 7\\,800 \\cdot 0,004 = 31,2$ (kg)"
+    },
+    {
+     "ma_cau": "K08020102078",
+     "loai": "tu_luan",
+     "de": "Một tấm nhôm mỏng hình hộp chữ nhật có kích thước $45 \\mathrm{~cm} \\times 20 \\mathrm{~cm} \\times 2 \\mathrm{~mm}$. Biết khối lượng riêng của nhôm là $2 \\,700 \\mathrm{~kg} / \\mathrm{m}^{3}$. Tính khối lượng của tấm nhôm theo đơn vị kilôgam (kg).",
+     "dap_an": "0,486",
+     "loi_giai": "Đổi đơn vị:\n$2 \\mathrm{~mm} = 0,2 \\mathrm{~cm}$\nThể tích tấm nhôm:\n$\\mathrm{V} = 45 \\cdot 20 \\cdot 0,2 = 180 \\left(\\mathrm{cm}^{3}\\right)$\nĐổi đơn vị:\n$\\mathrm{V} = 180 \\mathrm{~cm}^{3} = 0,00018 \\mathrm{~m}^{3}$\nKhối lượng của tấm nhôm:\n$\\mathrm{m} = \\mathrm{D} \\cdot \\mathrm{V} = 2 \\,700 \\cdot 0,00018 = 0,486 \\mathrm{~(kg)}$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00859",
+   "nhom_id": "KNB00380",
+   "thu_tu": 6,
+   "dang": "HAI VẬT CÙNG THỂ TÍCH HOẶC CÙNG KHỐI LƯỢNG, LÀM TỪ HAI CHẤT KHÁC NHAU",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020102085",
+     "loai": "tu_luan",
+     "de": "Một khối gỗ có thể tích $0,02 \\mathrm{\\ m^3}$ và một khối nước đá có cùng khối lượng với khối gỗ. Biết khối lượng riêng của gỗ là $720 \\mathrm{\\ kg/m^3}$, của nước đá là $900 \\mathrm{\\ kg/m^3}$. Tính thể tích của khối nước đá theo đơn vị $\\mathrm{\\ dm^3}$.",
+     "dap_an": "16",
+     "loi_giai": "Khối lượng của khối gỗ:\n$m = D \\cdot V = 720 \\cdot 0,02 = 14,4 \\mathrm{\\ (kg)}$\nKhối nước đá có cùng khối lượng. Thể tích khối nước đá:\n$V = \\dfrac{m}{D} = \\dfrac{14,4}{900} = 0,016 \\mathrm{\\ (m^3)}$\nĐổi đơn vị:\n$V = 0,016 \\mathrm{\\ m^3} = 16 \\mathrm{\\ dm^3}$"
+    },
+    {
+     "ma_cau": "K08020102083",
+     "loai": "tu_luan",
+     "de": "Hai quả cầu đặc có cùng thể tích, một quả bằng đồng và một quả bằng chì. Quả cầu đồng có khối lượng $445 \\mathrm{~g}$. Biết khối lượng riêng của đồng là $8\\ 900 \\mathrm{~kg} / \\mathrm{m}^3$, của chì là $11\\ 300 \\mathrm{~kg} / \\mathrm{m}^3$. Tính khối lượng của quả cầu chì theo đơn vị gam (g).",
+     "dap_an": "565",
+     "loi_giai": "Đổi khối lượng:\n$m_1 = 445 \\mathrm{~g} = 0,445 \\mathrm{~kg}$\nThể tích quả cầu đồng:\n$V = \\dfrac{m}{D} = \\dfrac{0,445}{8\\ 900} = 0,00005\\ (\\mathrm{m}^3)$\nQuả cầu chì có cùng thể tích. Khối lượng quả cầu chì:\n$m = D \\cdot V = 11\\ 300 \\cdot 0,00005 = 0,565\\ (\\mathrm{kg})$\nĐổi đơn vị:\n$m = 0,565 \\mathrm{~kg} = 565 \\mathrm{~g}$"
+    },
+    {
+     "ma_cau": "K08020102087",
+     "loai": "tu_luan",
+     "de": "Một bức tượng nhỏ bằng sáp có khối lượng $270$ g. Người ta dùng khuôn đúc một bức tượng bằng đồng giống hệt bức tượng sáp (cùng thể tích). Biết khối lượng riêng của sáp là $900 \\ \\mathrm{kg/m^3}$, của đồng là $8 \\ 900 \\ \\mathrm{kg/m^3}$. Tính khối lượng của bức tượng đồng theo đơn vị kilôgam (kg).",
+     "dap_an": "2.67",
+     "loi_giai": "Đổi khối lượng:\n$m_1 = 270 \\ \\mathrm{g} = 0,27 \\ \\mathrm{kg}$\nThể tích bức tượng sáp:\n$V = \\dfrac{m}{D} = \\dfrac{0,27}{900} = 0,0003 \\ \\mathrm{(m^3)}$\nTượng đồng có cùng thể tích. Khối lượng tượng đồng:\n$m = D \\cdot V = 8 \\ 900 \\cdot 0,0003 = 2,67 \\ \\mathrm{(kg)}$"
+    },
+    {
+     "ma_cau": "K08020102088",
+     "loai": "tu_luan",
+     "de": "Một thỏi vàng có thể tích $2 \\ \\mathrm{cm^3}$ và một thỏi bạc có cùng khối lượng với thỏi vàng. Biết khối lượng riêng của vàng là $19 \\ 300 \\ \\mathrm{kg/m^3}$, của bạc là $10 \\ 500 \\ \\mathrm{kg/m^3}$. Tính thể tích của thỏi bạc theo đơn vị $\\mathrm{cm^3}$, làm tròn kết quả đến hàng phần trăm.",
+     "dap_an": "3.68",
+     "loi_giai": "Đổi thể tích:\n$V_1 = 2 \\ \\mathrm{cm^3} = 0,000002 \\ \\mathrm{m^3}$\nKhối lượng của thỏi vàng:\n$m = D \\cdot V = 19 \\ 300 \\cdot 0,000002 = 0,0386 \\ \\mathrm{(kg)}$\nThỏi bạc có cùng khối lượng. Thể tích thỏi bạc:\n$V = \\dfrac{m}{D} = \\dfrac{0,0386}{10 \\ 500} \\approx 0,00000368 \\ \\mathrm{(m^3)}$\nĐổi đơn vị:\n$V \\approx 3,68 \\ \\mathrm{cm^3}$"
+    },
+    {
+     "ma_cau": "K08020102081",
+     "loai": "tu_luan",
+     "de": "Một khối nhôm và một khối sắt có cùng thể tích. Khối nhôm có khối lượng 8,1 kg. Biết khối lượng riêng của nhôm là 2 700 kg/m$^3$, của sắt là 7 800 kg/m$^3$. Tính khối lượng của khối sắt theo đơn vị kilôgam (kg).",
+     "dap_an": "23.4",
+     "loi_giai": "Thể tích khối nhôm:\n$$V = \\dfrac{m}{D} = \\dfrac{8,1}{2 700} = 0,003 \\ (m^3)$$\nKhối sắt có cùng thể tích. Khối lượng khối sắt:\n$$m = D \\cdot V = 7 800 \\cdot 0,003 = 23,4 \\ (kg)$$"
+    },
+    {
+     "ma_cau": "K08020102082",
+     "loai": "tu_luan",
+     "de": "Một can nhựa khi đựng đầy nước thì chứa được 4 kg nước. Nếu dùng can này đựng đầy xăng thì khối lượng xăng trong can là bao nhiêu kilôgam (kg)? Biết khối lượng riêng của nước là 1 000 kg/m$^3$, của xăng là 700 kg/m$^3$.",
+     "dap_an": "2.8",
+     "loi_giai": "Dung tích của can bằng thể tích lượng nước đựng đầy can:\n$$V = \\dfrac{m}{D} = \\dfrac{4}{1 000} = 0,004 \\ (m^3)$$\nXăng đựng đầy can cũng có thể tích bằng dung tích can. Khối lượng xăng:\n$$m = D \\cdot V = 700 \\cdot 0,004 = 2,8 \\ (kg)$$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00860",
+   "nhom_id": "KNB00381",
+   "thu_tu": 1,
+   "dang": "ĐO THỂ TÍCH VẬT RẮN BẰNG BÌNH CHIA ĐỘ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020103039",
+     "loai": "trac_nghiem",
+     "de": "Để xác định khối lượng riêng của thỏi kim loại, một học sinh dùng cân đo được khối lượng của thỏi kim loại là $54 \\mathrm{~g}$. Đổ nước vào bình chia độ, mực nước ở vạch $70 \\mathrm{~mL}$; thả thỏi kim loại chìm hoàn toàn vào nước thì mực nước dâng lên đến vạch $90 \\mathrm{~mL}$. Khối lượng riêng của thỏi kim loại là",
+     "lua_chon": [
+      "$0,027 \\mathrm{~g} / \\mathrm{cm}^3$",
+      "$0,27 \\mathrm{~g} / \\mathrm{cm}^3$",
+      "$0,6 \\mathrm{~g} / \\mathrm{cm}^3$",
+      "$2,7 \\mathrm{~g} / \\mathrm{cm}^3$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Thể tích của thỏi kim loại bằng thể tích nước dâng lên:\n$$V=V_2-V_1=90-70=20 \\quad\\left(\\mathrm{~cm}^3\\right)$$\nKhối lượng riêng của thỏi kim loại:\n$$D=\\dfrac{m}{V}=\\dfrac{54}{20}=2,7 \\quad\\left(\\mathrm{~g} / \\mathrm{cm}^3\\right)$$"
+    },
+    {
+     "ma_cau": "K08020103045",
+     "loai": "trac_nghiem",
+     "de": "Để xác định khối lượng riêng của chiếc vòng bạc, một học sinh dùng cân đo được khối lượng của chiếc vòng bạc là 42 g. Đổ nước vào bình chia độ, mực nước ở vạch 20 mL; thả chiếc vòng bạc chìm hoàn toàn vào nước thì mực nước dâng lên đến vạch 24 mL. Khối lượng riêng của chiếc vòng bạc là",
+     "lua_chon": [
+      "1,05 g/cm$^3$",
+      "1,75 g/cm$^3$",
+      "2,1 g/cm$^3$",
+      "10,5 g/cm$^3$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Thể tích của chiếc vòng bạc bằng thể tích nước dâng lên:\n$V = V_2 - V_1 = 24 - 20 = 4$ (cm$^3$)\nKhối lượng riêng của chiếc vòng bạc:\n$D = \\dfrac{m}{V} = \\dfrac{42}{4} = 10,5$ (g/cm$^3$)"
+    },
+    {
+     "ma_cau": "K08020103040",
+     "loai": "trac_nghiem",
+     "de": "Để xác định khối lượng riêng của quả cân nhỏ, một học sinh dùng cân đo được khối lượng của quả cân nhỏ là $44,5 \\mathrm{~g}$. Đổ nước vào bình chia độ, mực nước ở vạch $45 \\mathrm{~mL}$; thả quả cân nhỏ chìm hoàn toàn vào nước thì mực nước dâng lên đến vạch $50 \\mathrm{~mL}$. Khối lượng riêng của quả cân nhỏ là",
+     "lua_chon": [
+      "$0,089 \\mathrm{~g} / \\mathrm{cm}^3$",
+      "$0,89 \\mathrm{~g} / \\mathrm{cm}^3$",
+      "$8,9 \\mathrm{~g} / \\mathrm{cm}^3$",
+      "$89 \\mathrm{~g} / \\mathrm{cm}^3$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Thể tích của quả cân nhỏ bằng thể tích nước dâng lên:\n$$V=V_2-V_1=50-45=5 \\quad\\left(\\mathrm{~cm}^3\\right)$$\nKhối lượng riêng của quả cân nhỏ:\n$$D=\\dfrac{m}{V}=\\dfrac{44,5}{5}=8,9 \\quad\\left(\\mathrm{~g} / \\mathrm{cm}^3\\right)$$"
+    },
+    {
+     "ma_cau": "K08020103041",
+     "loai": "trac_nghiem",
+     "de": "Để xác định khối lượng riêng của chiếc bu lông, một học sinh dùng cân đo được khối lượng của chiếc bu lông là $39$ g. Đổ nước vào bình chia độ, mực nước ở vạch $60$ mL; thả chiếc bu lông chìm hoàn toàn vào nước thì mực nước dâng lên đến vạch $65$ mL. Khối lượng riêng của chiếc bu lông là",
+     "lua_chon": [
+      "0,6 g/cm$^3$",
+      "7,8 g/cm$^3$",
+      "78 g/cm$^3$",
+      "195 g/cm$^3$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Thể tích của chiếc bu lông bằng thể tích nước dâng lên:\n$V = V_2 - V_1 = 65 - 60 = 5$ ($\\mathrm{cm^3}$)\nKhối lượng riêng của chiếc bu lông:\n$D = \\dfrac{m}{V} = \\dfrac{39}{5} = 7,8$ ($\\mathrm{g/cm^3}$)"
+    },
+    {
+     "ma_cau": "K08020103042",
+     "loai": "trac_nghiem",
+     "de": "Để xác định khối lượng riêng của hòn đá, một học sinh dùng cân đo được khối lượng của hòn đá là $65$ g. Đổ nước vào bình chia độ, mực nước ở vạch $150$ mL; thả hòn đá chìm hoàn toàn vào nước thì mực nước dâng lên đến vạch $175$ mL. Khối lượng riêng của hòn đá tính theo đơn vị $\\mathrm{kg/m^3}$ là",
+     "lua_chon": [
+      "0,0026 kg/m$^3$",
+      "2,6 kg/m$^3$",
+      "260 kg/m$^3$",
+      "2 600 kg/m$^3$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Thể tích của hòn đá bằng thể tích nước dâng lên:\n$V = V_2 - V_1 = 175 - 150 = 25$ ($\\mathrm{cm^3}$)\nKhối lượng riêng của hòn đá:\n$D = \\dfrac{m}{V} = \\dfrac{65}{25} = 2,6$ ($\\mathrm{g/cm^3}$)\nĐổi đơn vị:\n$2,6 \\mathrm{g/cm^3} = 2600 \\mathrm{kg/m^3}$"
+    },
+    {
+     "ma_cau": "K08020103043",
+     "loai": "trac_nghiem",
+     "de": "Để xác định khối lượng riêng của quả nặng, một học sinh dùng cân đo được khối lượng của quả nặng là $113\\ \\mathrm{g}$. Đổ nước vào bình chia độ, mực nước ở vạch $216\\ \\mathrm{mL}$; thả quả nặng chìm hoàn toàn vào nước thì mực nước dâng lên đến vạch $226\\ \\mathrm{mL}$. Khối lượng riêng của quả nặng là",
+     "lua_chon": [
+      "$0,5\\ \\mathrm{g/cm^3}$",
+      "$1,13\\ \\mathrm{g/cm^3}$",
+      "$11,3\\ \\mathrm{g/cm^3}$",
+      "$113\\ \\mathrm{g/cm^3}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Thể tích của quả nặng bằng thể tích nước dâng lên:\nV = $V_2 - V_1 = 226 - 216 = 10\\ \\mathrm{(cm^3)}$\nKhối lượng riêng của quả nặng:\nD = $\\dfrac{\\mathrm{m}}{V} = \\dfrac{113}{10} = 11,3\\ \\mathrm{(g/cm^3)}$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00861",
+   "nhom_id": "KNB00381",
+   "thu_tu": 2,
+   "dang": "ĐO KHỐI LƯỢNG RIÊNG CHẤT LỎNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 9,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020103049",
+     "loai": "trac_nghiem",
+     "de": "Để xác định khối lượng riêng của sữa tươi, một học sinh cân cốc rỗng được 45 g. Dùng bình chia độ đong 200 mL sữa tươi đổ vào cốc rồi cân lại, được 251 g. Khối lượng riêng của sữa tươi là",
+     "lua_chon": [
+      "0,103 g/cm$^3$",
+      "0,225 g/cm$^3$",
+      "1,03 g/cm$^3$",
+      "1,255 g/cm$^3$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khối lượng của lượng sữa tươi:\n$m = m_2 - m_1 = 251 - 45 = 206\\ (\\mathrm{g})$\nThể tích sữa tươi: $200\\ \\mathrm{mL} = 200\\ \\mathrm{cm}^3$.\nKhối lượng riêng của sữa tươi:\n$D = \\dfrac{m}{V} = \\dfrac{206}{200} = 1,03\\ (\\mathrm{g}/\\mathrm{cm}^3)$"
+    },
+    {
+     "ma_cau": "K08020103050",
+     "loai": "trac_nghiem",
+     "de": "Để xác định khối lượng riêng của cồn, một học sinh cân cốc rỗng được 70 g. Dùng bình chia độ đong 100 mL cồn đổ vào cốc rồi cân lại, được 149 g. Khối lượng riêng của cồn là",
+     "lua_chon": [
+      "0,79 g/cm$^3$",
+      "1,49 g/cm$^3$",
+      "7,9 g/cm$^3$",
+      "79 g/cm$^3$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng của lượng cồn:\nm = m$_2$ – m$_1$ = 149 – 70 = 79 (g)\nThể tích cồn: 100 mL = 100 cm$^3$.\nKhối lượng riêng của cồn:\nD = $\\dfrac{m}{V}$ = $\\dfrac{79}{100}$ = 0,79 (g/cm$^3$)"
+    },
+    {
+     "ma_cau": "K08020103055",
+     "loai": "trac_nghiem",
+     "de": "Để xác định khối lượng riêng của nước, một học sinh cân cốc rỗng được 150 g. Dùng bình chia độ đong 250 mL nước đổ vào cốc rồi cân lại, được 400 g. Khối lượng riêng của nước là",
+     "lua_chon": [
+      "0.6 g/cm$^3$",
+      "1 g/cm$^3$",
+      "1.6 g/cm$^3$",
+      "10 g/cm$^3$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khối lượng của lượng nước:\n$m = m_2 - m_1 = 400 - 150 = 250$ (g)\nThể tích nước: $250\\ \\mathrm{mL} = 250\\ \\mathrm{cm^3}$.\nKhối lượng riêng của nước:\n$D = \\dfrac{m}{V} = \\dfrac{250}{250} = 1\\ (\\mathrm{g/cm^3})$"
+    },
+    {
+     "ma_cau": "K08020103047",
+     "loai": "trac_nghiem",
+     "de": "Để xác định khối lượng riêng của dầu ăn, một học sinh cân cốc rỗng được 60 g. Dùng bình chia độ đong 100 mL dầu ăn đổ vào cốc rồi cân lại, được 152 g. Khối lượng riêng của dầu ăn là",
+     "lua_chon": [
+      "0,0092 g/cm$^3$",
+      "0,092 g/cm$^3$",
+      "0,6 g/cm$^3$",
+      "0,92 g/cm$^3$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khối lượng của lượng dầu ăn:\n$m = m_2 - m_1 = 152 - 60 = 92\\ (g)$\nThể tích dầu ăn: $100\\ \\mathrm{mL} = 100\\ \\mathrm{cm^3}$.\nKhối lượng riêng của dầu ăn:\n$D = \\dfrac{m}{V} = \\dfrac{92}{100} = 0,92\\ (g/\\mathrm{cm^3})$"
+    },
+    {
+     "ma_cau": "K08020103053",
+     "loai": "trac_nghiem",
+     "de": "Để xác định khối lượng riêng của nước biển, một học sinh cân cốc rỗng được 0,1 kg. Dùng bình chia độ đong 0,5 L nước biển đổ vào cốc rồi cân lại, được 0,615 kg. Khối lượng riêng của nước biển tính theo đơn vị $\\mathrm{kg/m^3}$ là",
+     "lua_chon": [
+      "1,03 kg/m^3",
+      "200 kg/m^3",
+      "1 030 kg/m^3",
+      "1 230 kg/m^3"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khối lượng của lượng nước biển:\n$$m = m_2 - m_1 = 0,615 - 0,1 = 0,515 \\ (kg)$$\nThể tích nước biển: $0,5 \\ \\mathrm{L} = 0,0005 \\ \\mathrm{m^3}$.\nKhối lượng riêng của nước biển:\n$$D = \\frac{m}{V} = \\frac{0,515}{0,0005} = 1 \\ 030 \\ (kg/m^3)$$"
+    },
+    {
+     "ma_cau": "K08020103052",
+     "loai": "trac_nghiem",
+     "de": "Để xác định khối lượng riêng của mật ong, một học sinh cân cốc rỗng được 50 g. Dùng bình chia độ đong 100 mL mật ong đổ vào cốc rồi cân lại, được 190 g. Khối lượng riêng của mật ong tính theo đơn vị $\\mathrm{kg/m^3}$ là",
+     "lua_chon": [
+      "1,4 kg/m^3",
+      "1 400 kg/m^3",
+      "1 900 kg/m^3",
+      "14 000 kg/m^3"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khối lượng của lượng mật ong:\n$$m = m_2 - m_1 = 190 - 50 = 140 \\ (g)$$\nThể tích mật ong: $100 \\ \\mathrm{mL} = 100 \\ \\mathrm{cm^3}$.\nKhối lượng riêng của mật ong:\n$$D = \\frac{m}{V} = \\frac{140}{100} = 1,4 \\ (g/cm^3)$$\nĐổi đơn vị:\n$1,4 \\ \\mathrm{g/cm^3} = 1 \\ 400 \\ \\mathrm{kg/m^3}$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00862",
+   "nhom_id": "KNB00381",
+   "thu_tu": 3,
+   "dang": "ĐO THỂ TÍCH VẬT BẰNG BÌNH TRÀN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020103061",
+     "loai": "tra_loi_ngan",
+     "de": "Một thỏi kim loại có khối lượng 0,632 kg, không bỏ lọt vào bình chia độ. Thả thỏi kim loại chìm hoàn toàn vào một bình tràn đựng đầy nước, nước tràn ra được hứng vào một cốc và cân được khối lượng 80 g. Biết khối lượng riêng của nước là 1 000 kg/m³. Tính khối lượng riêng của chất làm thỏi kim loại theo đơn vị kg/m³.",
+     "dap_an": "7900",
+     "loi_giai": "Đổi khối lượng nước tràn ra:\n$\\mathrm{m_n = 80 g = 0,08 kg}$\nThể tích của thỏi kim loại bằng thể tích nước tràn ra:\n$\\mathrm{V = \\dfrac{m_n}{D_n} = \\dfrac{0,08}{1000} = 0,00008 (m^3)}$\nKhối lượng riêng của chất làm thỏi kim loại:\n$\\mathrm{D = \\dfrac{m}{V} = \\dfrac{0,632}{0,00008} = 7900 (kg/m^3)}$"
+    },
+    {
+     "ma_cau": "K08020103063",
+     "loai": "tra_loi_ngan",
+     "de": "Một mẫu kim loại có khối lượng $54 \\mathrm{~g}$, không bỏ lọt vào bình chia độ. Thả mẫu kim loại chìm hoàn toàn vào một bình tràn đựng đầy dầu hoả, dầu hoả tràn ra được hứng vào một cốc và cân được khối lượng $16 \\mathrm{~g}$. Biết khối lượng riêng của dầu hoả là $0.8 \\mathrm{~g} / \\mathrm{cm}^{3}$. Tính khối lượng riêng của chất làm mẫu kim loại theo đơn vị $\\mathrm{g} / \\mathrm{cm}^{3}$.",
+     "dap_an": "2.7",
+     "loi_giai": "Thể tích của mẫu kim loại bằng thể tích dầu hoả tràn ra:\n$$ V=\\dfrac{m_d}{D_d}=\\dfrac{16}{0,8}=20 \\quad\\left(\\mathrm{cm}^3\\right) $$\nKhối lượng riêng của chất làm mẫu kim loại:\n$$ D=\\dfrac{m}{V}=\\dfrac{54}{20}=2,7 \\quad\\left(\\mathrm{g} / \\mathrm{cm}^3\\right) $$"
+    },
+    {
+     "ma_cau": "K08020103062",
+     "loai": "tra_loi_ngan",
+     "de": "Một cục đá vôi có khối lượng 1,1 kg, không bỏ lọt vào bình chia độ. Thả cục đá vôi chìm hoàn toàn vào một bình tràn đựng đầy nước, nước tràn ra được hứng vào một cốc và cân được khối lượng 400 g. Biết khối lượng riêng của nước là 1 000 kg/m³. Tính khối lượng riêng của chất làm cục đá vôi theo đơn vị kg/m³.",
+     "dap_an": "2750",
+     "loi_giai": "Đổi khối lượng nước tràn ra:\n$\\mathrm{m_n = 400 g = 0,4 kg}$\nThể tích của cục đá vôi bằng thể tích nước tràn ra:\n$\\mathrm{V = \\dfrac{m_n}{D_n} = \\dfrac{0,4}{1000} = 0,0004 (m^3)}$\nKhối lượng riêng của đá vôi:\n$\\mathrm{D = \\dfrac{m}{V} = \\dfrac{1,1}{0,0004} = 2750 (kg/m^3)}$"
+    },
+    {
+     "ma_cau": "K08020103057",
+     "loai": "tra_loi_ngan",
+     "de": "Một hòn đá có khối lượng $520 \\mathrm{~g}$, không bỏ lọt vào bình chia độ. Thả hòn đá chìm hoàn toàn vào một bình tràn đựng đầy nước, nước tràn ra được hứng vào bình chia độ, đo được thể tích $200 \\mathrm{~mL}$. Tính khối lượng riêng của chất làm hòn đá theo đơn vị $\\mathrm{g/cm^3}$.",
+     "dap_an": "2.6",
+     "loi_giai": "Thể tích của hòn đá bằng thể tích nước tràn ra:\n$$V = 200 \\mathrm{~mL} = 200 \\mathrm{~cm^3}$$\nKhối lượng riêng của chất làm hòn đá:\n$$D = \\dfrac{m}{V} = \\dfrac{520}{200} = 2,6 \\mathrm{~(g/cm^3)}$$"
+    },
+    {
+     "ma_cau": "K08020103065",
+     "loai": "tra_loi_ngan",
+     "de": "Một quả cầu thủy tinh có khối lượng $75 \\mathrm{~g}$, không bỏ lọt vào bình chia độ. Thả quả cầu thủy tinh chìm hoàn toàn vào một bình tràn đựng đầy nước, nước tràn ra được hứng vào một cốc và cân được khối lượng $30 \\mathrm{~g}$. Biết khối lượng riêng của nước là $1 \\,000 \\mathrm{~kg} / \\mathrm{m}^3$. Tính khối lượng riêng của chất làm quả cầu thủy tinh theo đơn vị $\\mathrm{kg} / \\mathrm{m}^3$.",
+     "dap_an": "2500",
+     "loi_giai": "Đổi đơn vị:\n$m = 75 \\mathrm{~g} = 0,075 \\mathrm{~kg} ; \\mathrm{m_n} = 30 \\mathrm{~g} = 0,03 \\mathrm{~kg}$\nThể tích của quả cầu bằng thể tích nước tràn ra:\n$V = \\dfrac{m_n}{D_n} = \\dfrac{0,03}{1 \\,000} = 0,00003 \\mathrm{~(m^3)}$\nKhối lượng riêng của thủy tinh:\n$D = \\dfrac{m}{V} = \\dfrac{0,075}{0,00003} = 2 \\,500 \\mathrm{~(kg} / \\mathrm{m^3)}$"
+    },
+    {
+     "ma_cau": "K08020103060",
+     "loai": "tra_loi_ngan",
+     "de": "Một chiếc chìa khoá có khối lượng $34 \\text{ g}$, không bỏ lọt vào bình chia độ. Thả chiếc chìa khoá chìm hoàn toàn vào một bình tràn đựng đầy nước, nước tràn ra được hứng vào một cốc và cân được khối lượng $4 \\text{ g}$. Biết khối lượng riêng của nước là $1 \\text{ g/cm}^3$. Tính khối lượng riêng của chất làm chiếc chìa khoá theo đơn vị $\\text{g/cm}^3$.",
+     "dap_an": "8,5",
+     "loi_giai": "Thể tích của chiếc chìa khoá bằng thể tích nước tràn ra:\n$V = \\dfrac{m_n}{D_n} = \\dfrac{4}{1} = 4 \\text{ (cm}^3$)\nKhối lượng riêng của chất làm chìa khoá:\n$D = \\dfrac{m}{V} = \\dfrac{34}{4} = 8,5 \\text{ (g/cm}^3$)"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00863",
+   "nhom_id": "KNB00382",
+   "thu_tu": 1,
+   "dang": "Xác định chất từ khối lượng riêng",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020104036",
+     "loai": "trac_nghiem",
+     "de": "Một chiếc nhẫn đặc có khối lượng 4,2 g và thể tích 0,4 $\\mathrm{cm^3}$. Biết khối lượng riêng của vàng, bạc, đồng, sắt lần lượt là $19\\ 300\\ \\mathrm{kg/m^3}$; $10\\ 500\\ \\mathrm{kg/m^3}$; $8\\ 900\\ \\mathrm{kg/m^3}$; $7\\ 800\\ \\mathrm{kg/m^3}$. Chiếc nhẫn được làm bằng",
+     "lua_chon": [
+      "vàng",
+      "đồng",
+      "sắt",
+      "bạc"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khối lượng riêng của chất làm nhẫn:\n$\\mathrm{D} = \\dfrac{\\mathrm{m}}{\\mathrm{V}} = \\dfrac{4,2}{0,4} = 10,5\\ (\\mathrm{g/cm^3})$\nĐổi đơn vị:\n$10,5\\ \\mathrm{g/cm^3} = 10\\ 500\\ \\mathrm{kg/m^3}$\nĐối chiếu với các giá trị đã cho, $10\\ 500\\ \\mathrm{kg/m^3}$ là khối lượng riêng của bạc."
+    },
+    {
+     "ma_cau": "K08020104032",
+     "loai": "trac_nghiem",
+     "de": "Một can chứa 2 L chất lỏng, khối lượng của lượng chất lỏng này là 1,6 kg. Biết khối lượng riêng của xăng, dầu hoả, nước, nước biển lần lượt là $700\\ \\mathrm{kg/m^3}$; $800\\ \\mathrm{kg/m^3}$; $1000\\ \\mathrm{kg/m^3}$; $1030\\ \\mathrm{kg/m^3}$. Chất lỏng trong can là",
+     "lua_chon": [
+      "dầu hoả",
+      "xăng",
+      "nước",
+      "nước biển"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi thể tích:\n$V = 2\\ \\mathrm{L} = 0,002\\ \\mathrm{m^3}$\nKhối lượng riêng của chất lỏng:\n$D = \\dfrac{m}{V} = \\dfrac{1,6}{0,002} = 800\\ (\\mathrm{kg/m^3})$\nĐối chiếu với các giá trị đã cho, $800\\ \\mathrm{kg/m^3}$ là khối lượng riêng của dầu hoả."
+    },
+    {
+     "ma_cau": "K08020104033",
+     "loai": "trac_nghiem",
+     "de": "Một quả tạ đặc có khối lượng $9,04\\ \\mathrm{kg}$ và thể tích $0,0008\\ \\mathrm{m^3}$. Biết khối lượng riêng của sắt, đồng, bạc, chì lần lượt là $7800\\ \\mathrm{kg/m^3}$; $8900\\ \\mathrm{kg/m^3}$; $10\\ 500\\ \\mathrm{kg/m^3}$; $11\\ 300\\ \\mathrm{kg/m^3}$. Quả tạ được làm bằng",
+     "lua_chon": [
+      "sắt",
+      "đồng",
+      "chì",
+      "bạc"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khối lượng riêng của chất làm quả tạ:\n$D = \\dfrac{m}{V} = \\dfrac{9,04}{0,0008} = 11\\ 300\\ (\\mathrm{kg/m^3})$\nĐối chiếu với các giá trị đã cho, $11\\ 300\\ \\mathrm{kg/m^3}$ là khối lượng riêng của chì."
+    },
+    {
+     "ma_cau": "K08020104030",
+     "loai": "trac_nghiem",
+     "de": "Một thỏi kim loại đặc có khối lượng 2,16 kg và thể tích 0,0008 $\\mathrm{m^3}$. Biết khối lượng riêng của nhôm, kẽm, sắt, đồng lần lượt là 2 700 $\\mathrm{kg/m^3}$; 7 100 $\\mathrm{kg/m^3}$; 7 800 $\\mathrm{kg/m^3}$; 8 900 $\\mathrm{kg/m^3}$. Thỏi kim loại đó được làm bằng",
+     "lua_chon": [
+      "kẽm",
+      "nhôm",
+      "sắt",
+      "đồng"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khối lượng riêng của kim loại:\n$\\mathrm{D} = \\dfrac{\\mathrm{m}}{\\mathrm{V}} = \\dfrac{2,16}{0,0008} = 2\\ 700\\ \\mathrm{(kg/m^3)}$\nĐối chiếu với các giá trị đã cho, 2 700 $\\mathrm{kg/m^3}$ là khối lượng riêng của nhôm."
+    },
+    {
+     "ma_cau": "K08020104031",
+     "loai": "trac_nghiem",
+     "de": "Một khối kim loại đặc có khối lượng 6,24 kg và thể tích 0,0008 $\\mathrm{m^3}$. Biết khối lượng riêng của nhôm, sắt, đồng, chì lần lượt là 2 700 $\\mathrm{kg/m^3}$; 7 800 $\\mathrm{kg/m^3}$; 8 900 $\\mathrm{kg/m^3}$; 11 300 $\\mathrm{kg/m^3}$. Khối kim loại đó được làm bằng",
+     "lua_chon": [
+      "nhôm",
+      "đồng",
+      "chì",
+      "sắt"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khối lượng riêng của kim loại:\n$\\mathrm{D} = \\dfrac{\\mathrm{m}}{\\mathrm{V}} = \\dfrac{6,24}{0,0008} = 7\\ 800\\ \\mathrm{(kg/m^3)}$\nĐối chiếu với các giá trị đã cho, 7 800 $\\mathrm{kg/m^3}$ là khối lượng riêng của sắt."
+    },
+    {
+     "ma_cau": "K08020104037",
+     "loai": "trac_nghiem",
+     "de": "Một chai chứa $500\\ \\mathrm{cm^3}$ chất lỏng, khối lượng của lượng chất lỏng này là 0,35 kg. Biết khối lượng riêng của xăng, cồn, dầu hoả, nước lần lượt là $700\\ \\mathrm{kg/m^3}$; $790\\ \\mathrm{kg/m^3}$; $800\\ \\mathrm{kg/m^3}$; $1\\ 000\\ \\mathrm{kg/m^3}$. Chất lỏng trong chai là",
+     "lua_chon": [
+      "cồn",
+      "dầu hoả",
+      "xăng",
+      "nước"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi thể tích:\n$\\mathrm{V} = 500\\ \\mathrm{cm^3} = 0,0005\\ \\mathrm{m^3}$\nKhối lượng riêng của chất lỏng:\n$\\mathrm{D} = \\dfrac{\\mathrm{m}}{\\mathrm{V}} = \\dfrac{0,35}{0,0005} = 700\\ (\\mathrm{kg/m^3})$\nĐối chiếu với các giá trị đã cho, $700\\ \\mathrm{kg/m^3}$ là khối lượng riêng của xăng."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00864",
+   "nhom_id": "KNB00382",
+   "thu_tu": 2,
+   "dang": "Vật rỗng - Tính thể tích phần rỗng",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020104049",
+     "loai": "tra_loi_ngan",
+     "de": "Một quả cầu bằng bạc có thể tích bên ngoài là $12 \\ \\mathrm{cm^3}$ và khối lượng $84 \\ \\mathrm{g}$. Bên trong quả cầu có một phần rỗng. Biết khối lượng riêng của bạc là $10,5 \\ \\mathrm{g/cm^3}$. Tính thể tích phần rỗng bên trong quả cầu theo đơn vị $\\mathrm{cm^3}$.",
+     "dap_an": "4",
+     "loi_giai": "Thể tích phần bạc đặc:\n$$V_{đặc} = \\dfrac{m}{D} = \\dfrac{84}{10,5} = 8 \\ (\\mathrm{cm^3})$$\nThể tích phần rỗng:\n$$V_{rỗng} = V_{ngoài} - V_{đặc} = 12 - 8 = 4 \\ (\\mathrm{cm^3})$$"
+    },
+    {
+     "ma_cau": "K08020104054",
+     "loai": "tra_loi_ngan",
+     "de": "Một quả cầu bằng đồng có thể tích bên ngoài là $30 \\ \\mathrm{cm^3}$ và khối lượng $160.2 \\ \\mathrm{g}$. Bên trong quả cầu có một phần rỗng. Biết khối lượng riêng của đồng là $8.9 \\ \\mathrm{g/cm^3}$. Tính thể tích phần rỗng bên trong quả cầu theo đơn vị $\\mathrm{cm^3}$.",
+     "dap_an": "12",
+     "loi_giai": "Thể tích phần đồng đặc:\n$V_{\\text{đặc}} = \\dfrac{m}{D} = \\dfrac{160.2}{8.9} = 18 \\ (\\mathrm{cm^3})$\nThể tích phần rỗng:\n$V_{\\text{rỗng}} = V_{\\text{ngoài}} - V_{\\text{đặc}} = 30 - 18 = 12 \\ (\\mathrm{cm^3})$"
+    },
+    {
+     "ma_cau": "K08020104045",
+     "loai": "tra_loi_ngan",
+     "de": "Một bức tượng nhỏ bằng đồng, bên trong có phần rỗng kín, có khối lượng $890 \\mathrm{\\ g}$. Thả bức tượng chìm hoàn toàn vào bình chia độ đang chứa nước ở vạch $200 \\mathrm{\\ mL}$ thì mực nước dâng lên đến vạch $350 \\mathrm{\\ mL}$. Biết khối lượng riêng của đồng là $8\\ 900 \\mathrm{\\ kg/m^3}$. Tính thể tích phần rỗng bên trong bức tượng theo đơn vị $\\mathrm{cm^3}$.",
+     "dap_an": "50",
+     "loi_giai": "Thể tích bên ngoài của bức tượng bằng thể tích nước dâng lên:$$V_{\\text{ngoài}} = 350 - 200 = 150 \\ \\mathrm{(cm^3)}$$Đổi khối lượng riêng:$$D = 8\\ 900 \\ \\mathrm{kg/m^3} = 8,9 \\ \\mathrm{g/cm^3}$$Thể tích phần đồng:$$V_{\\text{đặc}} = \\dfrac{m}{D} = \\dfrac{890}{8,9} = 100 \\ \\mathrm{(cm^3)}$$Thể tích phần rỗng:$$V_{\\text{rỗng}} = V_{\\text{ngoài}} - V_{\\text{đặc}} = 150 - 100 = 50 \\ \\mathrm{(cm^3)}$$"
+    },
+    {
+     "ma_cau": "K08020104046",
+     "loai": "tra_loi_ngan",
+     "de": "Một viên gạch có lỗ (gạch rỗng) hình hộp chữ nhật, kích thước ngoài $22 \\ \\mathrm{cm} \\times 10,5 \\ \\mathrm{cm} \\times 6 \\ \\mathrm{cm}$, khối lượng $1,8 \\ \\mathrm{kg}$. Biết khối lượng riêng của chất làm gạch là $2\\ 000 \\ \\mathrm{kg/m^3}$. Tính tổng thể tích các lỗ rỗng của viên gạch theo đơn vị $\\mathrm{cm^3}$.",
+     "dap_an": "486",
+     "loi_giai": "Thể tích bên ngoài của viên gạch:$$V_{\\text{ngoài}} = 22 \\cdot 10,5 \\cdot 6 = 1\\ 386 \\ \\mathrm{(cm^3)}$$Thể tích phần đất nung:$$V_{\\text{đặc}} = \\dfrac{m}{D} = \\dfrac{1,8}{2\\ 000} = 0,0009 \\ \\mathrm{(m^3)}$$Đổi đơn vị:$$V_{\\text{đặc}} = 0,0009 \\ \\mathrm{m^3} = 900 \\ \\mathrm{cm^3}$$Tổng thể tích các lỗ rỗng:$$V_{\\text{rỗng}} = V_{\\text{ngoài}} - V_{\\text{đặc}} = 1\\ 386 - 900 = 486 \\ \\mathrm{(cm^3)}$$"
+    },
+    {
+     "ma_cau": "K08020104043",
+     "loai": "tra_loi_ngan",
+     "de": "Một chiếc hộp kín bằng nhôm có dạng hình hộp chữ nhật, kích thước ngoài $10\\ \\mathrm{cm}\\ \\times\\ 8\\ \\mathrm{cm}\\ \\times\\ 5\\ \\mathrm{cm}$, khối lượng $540\\ \\mathrm{g}$. Biết khối lượng riêng của nhôm là $2,7\\ \\mathrm{g/cm^3}$. Tính thể tích phần rỗng bên trong hộp theo đơn vị $\\mathrm{cm^3}$.",
+     "dap_an": "200",
+     "loi_giai": "Thể tích bên ngoài của hộp:\n$V_{\\text{ngoài}} = 10\\ \\cdot\\ 8\\ \\cdot\\ 5 = 400\\ \\left(\\mathrm{cm^3}\\right)$\nThể tích phần nhôm:\n$V_{\\text{đặc}} = \\dfrac{\\mathrm{m}}{\\mathrm{D}} = \\dfrac{540}{2,7} = 200\\ \\left(\\mathrm{cm^3}\\right)$\nThể tích phần rỗng:\n$V_{\\text{rỗng}} = V_{\\text{ngoài}} - V_{\\text{đặc}} = 400 - 200 = 200\\ \\left(\\mathrm{cm^3}\\right)$"
+    },
+    {
+     "ma_cau": "K08020104053",
+     "loai": "tra_loi_ngan",
+     "de": "Một thùng kín bằng thép có thể tích bên ngoài là $0.2 \\ \\mathrm{m^3}$ và khối lượng $78 \\ \\mathrm{kg}$. Biết khối lượng riêng của thép là $7\\ 800 \\ \\mathrm{kg/m^3}$. Tính thể tích phần rỗng bên trong thùng theo đơn vị $\\mathrm{m^3}$.",
+     "dap_an": "0.19",
+     "loi_giai": "Thể tích phần thép:\n$V_{\\text{đặc}} = \\dfrac{m}{D} = \\dfrac{78}{7\\ 800} = 0.01 \\ (\\mathrm{m^3})$\nThể tích phần rỗng:\n$V_{\\text{rỗng}} = V_{\\text{ngoài}} - V_{\\text{đặc}} = 0.2 - 0.01 = 0.19 \\ (\\mathrm{m^3})$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00865",
+   "nhom_id": "KNB00382",
+   "thu_tu": 3,
+   "dang": "SO SÁNH KHỐI LƯỢNG HOẶC THỂ TÍCH CÁC VẬT LÀM TỪ CHẤT KHÁC NHAU",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020104062",
+     "loai": "trac_nghiem",
+     "de": "Hai quả cầu đặc có cùng thể tích, một quả bằng đồng và một quả bằng nhôm. Biết khối lượng riêng của đồng là $8\\,900\\,\\mathrm{kg/m^3}$, của nhôm là $2\\,700\\,\\mathrm{kg/m^3}$. Khối lượng quả cầu đồng lớn gấp khoảng bao nhiêu lần khối lượng quả cầu nhôm (làm tròn đến hàng phần mười)?",
+     "lua_chon": [
+      "3.3",
+      "6.2",
+      "11.6",
+      "33"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Hai quả cầu cùng thể tích nên tỉ số khối lượng bằng tỉ số khối lượng riêng:\n$$\\dfrac{m_1}{m_2} = \\dfrac{D_1}{D_2} = \\dfrac{8\\,900}{2\\,700} \\approx 3.3$$"
+    },
+    {
+     "ma_cau": "K08020104056",
+     "loai": "trac_nghiem",
+     "de": "Bốn khối kim loại đặc bằng bạc, đồng, sắt, kẽm có cùng khối lượng. Biết khối lượng riêng của bạc, đồng, sắt, kẽm lần lượt là $10\\ 500\\ \\mathrm{kg/m^3}$; $8\\ 900\\ \\mathrm{kg/m^3}$; $7\\ 800\\ \\mathrm{kg/m^3}$; $7\\ 100\\ \\mathrm{kg/m^3}$. Khối có thể tích lớn nhất là khối bằng",
+     "lua_chon": [
+      "kẽm",
+      "bạc",
+      "đồng",
+      "sắt"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Các khối có cùng khối lượng, theo $V = \\dfrac{m}{D}$, chất có khối lượng riêng càng nhỏ thì thể tích càng lớn.\nKẽm có khối lượng riêng nhỏ nhất nên khối bằng kẽm có thể tích lớn nhất."
+    },
+    {
+     "ma_cau": "K08020104061",
+     "loai": "trac_nghiem",
+     "de": "Khi một lượng nước đông đặc thành nước đá thì khối lượng không đổi. Biết khối lượng riêng của nước là $1\\,000\\,\\mathrm{kg/m^3}$, của nước đá là $900\\,\\mathrm{kg/m^3}$. Thể tích nước đá thu được lớn gấp khoảng bao nhiêu lần thể tích lượng nước ban đầu?",
+     "lua_chon": [
+      "0.9",
+      "1.11",
+      "1.9",
+      "9"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khối lượng không đổi nên tỉ số thể tích bằng nghịch đảo tỉ số khối lượng riêng:\n$$\\dfrac{V_{\\text{đá}}}{V_{\\text{nước}}} = \\dfrac{D_{\\text{nước}}}{D_{\\text{đá}}} = \\dfrac{1\\,000}{900} \\approx 1.11$$"
+    },
+    {
+     "ma_cau": "K08020104064",
+     "loai": "trac_nghiem",
+     "de": "Một học sinh phát biểu: 'Vật làm bằng chì luôn có khối lượng lớn hơn vật làm bằng sắt'. Nhận xét đúng về phát biểu này là",
+     "lua_chon": [
+      "phát biểu đúng vì khối lượng riêng của chì lớn hơn của sắt",
+      "phát biểu đúng với mọi vật đặc làm bằng chì và sắt",
+      "phát biểu chưa đúng, chỉ đúng khi hai vật có cùng thể tích",
+      "phát biểu chưa đúng, chỉ đúng khi hai vật có cùng khối lượng"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Theo $m = D \\cdot V$, khối lượng phụ thuộc cả khối lượng riêng và thể tích. Một vật nhỏ bằng chì có thể nhẹ hơn một vật lớn bằng sắt. Phát biểu chỉ đúng khi hai vật có cùng thể tích."
+    },
+    {
+     "ma_cau": "K08020104063",
+     "loai": "trac_nghiem",
+     "de": "Ba khối lập phương đặc có cùng khối lượng, lần lượt làm bằng nhôm, sắt, chì. Biết khối lượng riêng của nhôm, sắt, chì lần lượt là $2\\ 700\\ \\mathrm{kg/m^3}$; $7\\ 800\\ \\mathrm{kg/m^3}$; $11\\ 300\\ \\mathrm{kg/m^3}$. Thứ tự sắp xếp các khối theo độ dài cạnh tăng dần là",
+     "lua_chon": [
+      "nhôm, sắt, chì",
+      "sắt, chì, nhôm",
+      "chì, nhôm, sắt",
+      "chì, sắt, nhôm"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cùng khối lượng thì chất có khối lượng riêng lớn hơn có thể tích nhỏ hơn, do đó cạnh khối lập phương ngắn hơn.\nThứ tự khối lượng riêng giảm dần: chì, sắt, nhôm, nên cạnh tăng dần theo thứ tự chì, sắt, nhôm."
+    },
+    {
+     "ma_cau": "K08020104055",
+     "loai": "trac_nghiem",
+     "de": "Bốn khối lập phương đặc có cùng kích thước, lần lượt làm bằng nhôm, sắt, đồng, chì. Biết khối lượng riêng của nhôm, sắt, đồng, chì lần lượt là $2\\ 700\\ \\mathrm{kg/m^3}$; $7\\ 800\\ \\mathrm{kg/m^3}$; $8\\ 900\\ \\mathrm{kg/m^3}$; $11\\ 300\\ \\mathrm{kg/m^3}$. Khối có khối lượng lớn nhất là khối bằng",
+     "lua_chon": [
+      "nhôm",
+      "sắt",
+      "chì",
+      "đồng"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Các khối có cùng thể tích, theo $m = D \\cdot V$, chất có khối lượng riêng càng lớn thì khối lượng càng lớn.\nChì có khối lượng riêng lớn nhất nên khối bằng chì nặng nhất."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00866",
+   "nhom_id": "KNB00382",
+   "thu_tu": 4,
+   "dang": "HỢP KIM, HỖN HỢP – TÍNH KHỐI LƯỢNG RIÊNG HỖN HỢP",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020104068",
+     "loai": "tu_luan",
+     "de": "Một hợp kim được tạo thành từ $565$ g chì và $365$ g thiếc. Biết khối lượng riêng của chì là $11,3\\text{ g/cm}^3$, của thiếc là $7,3\\text{ g/cm}^3$. Coi thể tích của hợp kim bằng tổng thể tích các chất thành phần. Tính khối lượng riêng của hợp kim theo đơn vị $\\text{g/cm}^3$.",
+     "dap_an": "9.3",
+     "loi_giai": "Thể tích chì:\n$V_1 = \\dfrac{m_1}{D_1} = \\dfrac{565}{11,3} = 50\\text{ (cm}^3)$\nThể tích thiếc:\n$V_2 = \\dfrac{m_2}{D_2} = \\dfrac{365}{7,3} = 50\\text{ (cm}^3)$\nKhối lượng riêng của hợp kim:\n$D = \\dfrac{m_1 + m_2}{V_1 + V_2} = \\dfrac{565 + 365}{50 + 50} = 9,3\\text{ (g/cm}^3)$"
+    },
+    {
+     "ma_cau": "K08020104070",
+     "loai": "tu_luan",
+     "de": "Trộn $3\\ \\mathrm{L}$ xăng với $1\\ \\mathrm{L}$ dầu hoả thu được một hỗn hợp. Biết khối lượng riêng của xăng là $700\\ \\mathrm{kg/m^3}$, của dầu hoả là $800\\ \\mathrm{kg/m^3}$. Coi thể tích của hỗn hợp bằng tổng thể tích các chất thành phần. Tính khối lượng riêng của hỗn hợp theo đơn vị $\\mathrm{kg/m^3}$.",
+     "dap_an": "725",
+     "loi_giai": "Đổi thể tích:\n$V_1 = 3\\ \\mathrm{L} = 0,003\\ \\mathrm{m^3}$; $V_2 = 1\\ \\mathrm{L} = 0,001\\ \\mathrm{m^3}$\nKhối lượng xăng:\n$m_1 = D_1 \\cdot V_1 = 700 \\cdot 0,003 = 2,1\\ (kg)$\nKhối lượng dầu hoả:\n$m_2 = D_2 \\cdot V_2 = 800 \\cdot 0,001 = 0,8\\ (kg)$\nKhối lượng riêng của hỗn hợp:\n$D = \\dfrac{m_1 + m_2}{V_1 + V_2} = \\dfrac{2,1 + 0,8}{0,003 + 0,001} = 725\\ (kg/m^3)$"
+    },
+    {
+     "ma_cau": "K08020104078",
+     "loai": "tu_luan",
+     "de": "Một hợp kim được tạo thành từ $7,8\\ \\mathrm{kg}$ sắt và $2,7\\ \\mathrm{kg}$ nhôm. Biết khối lượng riêng của sắt là $7\\ 800\\ \\mathrm{kg/m^3}$, của nhôm là $2\\ 700\\ \\mathrm{kg/m^3}$. Coi thể tích của hợp kim bằng tổng thể tích các chất thành phần. Tính khối lượng riêng của hợp kim theo đơn vị $\\mathrm{kg/m^3}$.",
+     "dap_an": "5250",
+     "loi_giai": "Thể tích sắt:\n$\\mathrm{V_1} = \\dfrac{\\mathrm{m_1}}{\\mathrm{D_1}} = \\dfrac{7,8}{7\\ 800} = 0,001\\ \\mathrm{(m^3)}$\nThể tích nhôm:\n$\\mathrm{V_2} = \\dfrac{\\mathrm{m_2}}{\\mathrm{D_2}} = \\dfrac{2,7}{2\\ 700} = 0,001\\ \\mathrm{(m^3)}$\nKhối lượng riêng của hợp kim:\n$\\mathrm{D} = \\dfrac{\\mathrm{m_1} + \\mathrm{m_2}}{\\mathrm{V_1} + \\mathrm{V_2}} = \\dfrac{7,8 + 2,7}{0,001 + 0,001} = 5\\ 250\\ \\mathrm{(kg/m^3)}$"
+    },
+    {
+     "ma_cau": "K08020104076",
+     "loai": "tu_luan",
+     "de": "Một hợp kim được tạo thành từ $210\\ \\mathrm{g}$ bạc và $178\\ \\mathrm{g}$ đồng. Biết khối lượng riêng của bạc là $10,5\\ \\mathrm{g/cm^3}$, của đồng là $8,9\\ \\mathrm{g/cm^3}$. Coi thể tích của hợp kim bằng tổng thể tích các chất thành phần. Tính khối lượng riêng của hợp kim theo đơn vị $\\mathrm{g/cm^3}$.",
+     "dap_an": "9.7",
+     "loi_giai": "Thể tích bạc:\n$V_1 = \\dfrac{m_1}{D_1} = \\dfrac{210}{10,5} = 20\\ (\\mathrm{cm^3})$\nThể tích đồng:\n$V_2 = \\dfrac{m_2}{D_2} = \\dfrac{178}{8,9} = 20\\ (\\mathrm{cm^3})$\nKhối lượng riêng của hợp kim:\n$D = \\dfrac{m_1 + m_2}{V_1 + V_2} = \\dfrac{210 + 178}{20 + 20} = 9,7\\ (\\mathrm{g/cm^3})$"
+    },
+    {
+     "ma_cau": "K08020104067",
+     "loai": "tu_luan",
+     "de": "Một hợp kim được tạo thành từ $193$ g vàng và $105$ g bạc. Biết khối lượng riêng của vàng là $19,3\\text{ g/cm}^3$, của bạc là $10,5\\text{ g/cm}^3$. Coi thể tích của hợp kim bằng tổng thể tích các chất thành phần. Tính khối lượng riêng của hợp kim theo đơn vị $\\text{g/cm}^3$.",
+     "dap_an": "14.9",
+     "loi_giai": "Thể tích vàng:\n$V_1 = \\dfrac{m_1}{D_1} = \\dfrac{193}{19,3} = 10\\text{ (cm}^3)$\nThể tích bạc:\n$V_2 = \\dfrac{m_2}{D_2} = \\dfrac{105}{10,5} = 10\\text{ (cm}^3)$\nKhối lượng riêng của hợp kim:\n$D = \\dfrac{m_1 + m_2}{V_1 + V_2} = \\dfrac{193 + 105}{10 + 10} = 14,9\\text{ (g/cm}^3)$"
+    },
+    {
+     "ma_cau": "K08020104069",
+     "loai": "tu_luan",
+     "de": "Một hợp kim kim được tạo thành từ $20\\ \\mathrm{cm^3}$ đồng và $30\\ \\mathrm{cm^3}$ nhôm. Biết khối lượng riêng của đồng là $8,9\\ \\mathrm{g/cm^3}$, của nhôm là $2,7\\ \\mathrm{g/cm^3}$. Coi thể tích của hợp kim bằng tổng thể tích các chất thành phần. Tính khối lượng riêng của hợp kim theo đơn vị $\\mathrm{g/cm^3}$.",
+     "dap_an": "5.18",
+     "loi_giai": "Khối lượng đồng:\n$m_1 = D_1 \\cdot V_1 = 8,9 \\cdot 20 = 178\\ (g)$\nKhối lượng nhôm:\n$m_2 = D_2 \\cdot V_2 = 2,7 \\cdot 30 = 81\\ (g)$\nKhối lượng riêng của hợp kim:\n$D = \\dfrac{m_1 + m_2}{V_1 + V_2} = \\dfrac{178 + 81}{20 + 30} = 5,18\\ (g/cm^3)$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00867",
+   "nhom_id": "KNB00383",
+   "thu_tu": 1,
+   "dang": "Phân biệt áp lực và trọng lượng",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020201049",
+     "loai": "trac_nghiem",
+     "de": "Một bạn học sinh dùng tay ấn vào bức tường thẳng đứng theo phương nằm ngang. Áp lực tác dụng lên bức tường là",
+     "lua_chon": [
+      "trọng lượng của bạn học sinh",
+      "trọng lượng của bức tường",
+      "lực ấn của bàn tay lên tường",
+      "không có, vì bức tường đặt thẳng đứng"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Lực ấn của tay có phương nằm ngang, vuông góc với mặt tường thẳng đứng nên là áp lực lên tường. Trọng lượng của bạn học sinh có phương thẳng đứng, song song với mặt tường."
+    },
+    {
+     "ma_cau": "K08020201042",
+     "loai": "trac_nghiem",
+     "de": "Trường hợp nào sau đây lực tác dụng lên mặt được nói đến là áp lực?",
+     "lua_chon": [
+      "lực kéo của đầu tàu tác dụng lên toa tàu chạy trên đường ray nằm ngang",
+      "lực do người đứng trên sàn ép lên sàn nhà",
+      "lực ma sát giữa lốp xe và mặt đường",
+      "lực căng của dây treo tác dụng lên bóng đèn"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Người đứng trên sàn ép lên sàn một lực có phương thẳng đứng, vuông góc với mặt sàn nằm ngang, nên đó là áp lực."
+    },
+    {
+     "ma_cau": "K08020201041",
+     "loai": "trac_nghiem",
+     "de": "Áp lực là",
+     "lua_chon": [
+      "lực kéo có phương vuông góc với mặt bị kéo",
+      "lực ép có phương song song với mặt bị ép",
+      "trọng lực tác dụng lên vật",
+      "lực ép có phương vuông góc với mặt bị ép"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Áp lực là lực ép có phương vuông góc với mặt bị ép."
+    },
+    {
+     "ma_cau": "K08020201050",
+     "loai": "trac_nghiem",
+     "de": "Một quyển sách nằm yên trên mặt bàn nằm ngang. Áp lực do quyển sách tác dụng lên mặt bàn và trọng lực tác dụng lên quyển sách khác nhau ở",
+     "lua_chon": [
+      "điểm đặt",
+      "phương",
+      "chiều",
+      "độ lớn"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Hai lực cùng phương thẳng đứng, cùng chiều từ trên xuống và có cùng độ lớn. Trọng lực đặt tại quyển sách, còn áp lực đặt trên mặt bàn (mặt bị ép)."
+    },
+    {
+     "ma_cau": "K08020201044",
+     "loai": "trac_nghiem",
+     "de": "Một vật nằm yên trên mặt bàn nằm ngang. Áp lực do vật tác dụng lên mặt bàn có độ lớn bằng",
+     "lua_chon": [
+      "khối lượng của vật",
+      "diện tích mặt tiếp xúc",
+      "áp suất của vật lên mặt bàn",
+      "trọng lượng của vật"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Vật nằm trên mặt nằm ngang ép lên mặt bàn một lực vuông góc với mặt bàn, có độ lớn bằng trọng lượng của vật."
+    },
+    {
+     "ma_cau": "K08020201045",
+     "loai": "trac_nghiem",
+     "de": "Công thức tính áp suất p theo áp lực F và diện tích bị ép S là",
+     "lua_chon": [
+      "p = F . S",
+      "p = \\dfrac{S}{F}",
+      "p = \\dfrac{F}{S}",
+      "p = F + S"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Áp suất bằng áp lực chia cho diện tích bị ép:\n$$p = \\dfrac{F}{S}$$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00868",
+   "nhom_id": "KNB00383",
+   "thu_tu": 2,
+   "dang": "Đơn vị áp suất",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020201052",
+     "loai": "trac_nghiem",
+     "de": "Đơn vị 1 Pa bằng",
+     "lua_chon": [
+      "1 N/cm$^2$",
+      "1 N \\cdot m$^2$",
+      "1 N/m$^2$",
+      "1 kg/m$^2$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Theo $p = \\dfrac{F}{s}$, F tính bằng N, S tính bằng m$^2$ thì p tính bằng N/m$^2$. Ta có $1\\ Pa = 1\\ N/m^2$."
+    },
+    {
+     "ma_cau": "K08020201051",
+     "loai": "trac_nghiem",
+     "de": "Trong hệ đơn vị đo lường chính thức, đơn vị của áp suất là",
+     "lua_chon": [
+      "pascal (Pa)",
+      "newton (N)",
+      "kilôgam trên mét khối (kg/m$^3$)",
+      "newton nhân mét vuông (N \\cdot m$^2$)"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đơn vị của áp suất là pascal (Pa)."
+    },
+    {
+     "ma_cau": "K08020201054",
+     "loai": "trac_nghiem",
+     "de": "Đổi 12 000 Pa sang đơn vị kPa, ta được",
+     "lua_chon": [
+      "0,012 kPa",
+      "12 kPa",
+      "1 200 kPa",
+      "12 000 000 kPa"
+     ],
+     "dap_an": "B",
+     "loi_giai": "1 Pa = 0,001 kPa\n12 000 Pa = $12 000 \\cdot 0,001 = 12$ (kPa)"
+    },
+    {
+     "ma_cau": "K08020201060",
+     "loai": "trac_nghiem",
+     "de": "Đổi $5\\ \\mathrm{N/cm^2}$ sang đơn vị $\\mathrm{Pa}$, ta được",
+     "lua_chon": [
+      "500 Pa",
+      "50 000 Pa",
+      "500 000 Pa",
+      "5 000 000 Pa"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$1\\ \\mathrm{cm^2} = 0,0001\\ \\mathrm{m^2}$ nên $1\\ \\mathrm{N/cm^2} = 10\\ 000\\ \\mathrm{Pa}$.\n$5\\ \\mathrm{N/cm^2} = 5 \\cdot 10\\ 000 = 50\\ 000\\ (\\mathrm{Pa})$"
+    },
+    {
+     "ma_cau": "K08020201058",
+     "loai": "trac_nghiem",
+     "de": "Đổi $1,2\\ \\mathrm{kPa}$ sang đơn vị $\\mathrm{N/m^2}$, ta được",
+     "lua_chon": [
+      "$0,0012\\ \\mathrm{N/m^2}$",
+      "$120\\ \\mathrm{N/m^2}$",
+      "$1\\ 200\\ \\mathrm{N/m^2}$",
+      "$12\\ 000\\ \\mathrm{N/m^2}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$1\\ \\mathrm{kPa} = 1\\ 000\\ \\mathrm{Pa} = 1\\ 000\\ \\mathrm{N/m^2}$\n$1,2\\ \\mathrm{kPa} = 1,2 \\cdot 1\\ 000 = 1\\ 200\\ (\\mathrm{N/m^2})$"
+    },
+    {
+     "ma_cau": "K08020201053",
+     "loai": "trac_nghiem",
+     "de": "Đổi 2,5 kPa sang đơn vị Pa, ta được",
+     "lua_chon": [
+      "0,0025 Pa",
+      "25 Pa",
+      "250 Pa",
+      "2 500 Pa"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$1\\ kPa = 1\\ 000\\ Pa$\n$2,5\\ kPa = 2,5 \\cdot 1\\ 000 = 2\\ 500\\ (Pa)$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00869",
+   "nhom_id": "KNB00383",
+   "thu_tu": 3,
+   "dang": "NHẬN BIẾT ÁP LỰC VÀ DIỆN TÍCH BỊ ÉP TRÊN HÌNH",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020201069",
+     "loai": "trac_nghiem",
+     "de": "Hình bên mô tả một vật nằm yên trên mặt phẳng nghiêng và ba lực $\\mathrm{F_1, F_2, F_3}$. Lực biểu diễn áp lực do vật tác dụng lên mặt phẳng nghiêng là",
+     "lua_chon": [
+      "$\\mathrm{F_2}$",
+      "$\\mathrm{F_1}$",
+      "$\\mathrm{F_3}$",
+      "cả $\\mathrm{F_2}$ và $\\mathrm{F_3}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Áp lực có phương vuông góc với mặt bị ép. Lực $\\mathrm{F_1}$ đặt trên mặt phẳng nghiêng, vuông góc với mặt phẳng nghiêng và hướng vào mặt đó. Lực $\\mathrm{F_2}$ là trọng lực, không vuông góc với mặt nghiêng.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K08020201062",
+     "loai": "trac_nghiem",
+     "de": "Hình bên mô tả bàn tay ấn vào bức tường thẳng đứng và ba lực $\\mathrm{F_1}$, $\\mathrm{F_2}$, $\\mathrm{F_3}$. Lực biểu diễn áp lực do bàn tay tác dụng lên tường là",
+     "lua_chon": [
+      "$\\mathrm{F_2}$",
+      "$\\mathrm{F_1}$",
+      "$\\mathrm{F_3}$",
+      "cả $\\mathrm{F_2}$ và $\\mathrm{F_3}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Áp lực lên tường có điểm đặt trên mặt tường, phương vuông góc với mặt tường (phương nằm ngang), chiều hướng vào tường. Đó là lực $\\mathrm{F_1}$.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K08020201070",
+     "loai": "trac_nghiem",
+     "de": "Một quả cân được đặt trên một tấm ván, tấm ván đặt trên sàn nằm ngang như hình bên. Áp lực do tấm ván tác dụng lên sàn có độ lớn bằng",
+     "lua_chon": [
+      "trọng lượng của tấm ván",
+      "trọng lượng của quả cân",
+      "hiệu trọng lượng của tấm ván và quả cân",
+      "tổng trọng lượng của quả cân và tấm ván"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tấm ván chịu thêm áp lực của quả cân nên ép lên sàn một lực bằng tổng trọng lượng của tấm ván và quả cân.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K08020201067",
+     "loai": "trac_nghiem",
+     "de": "Hình bên mô tả một ô tô đang chạy trên mặt đường nằm ngang và ba lực $F_1$, $F_2$, $F_3$. Lực biểu diễn áp lực do bánh xe tác dụng lên mặt đường là",
+     "lua_chon": [
+      "$F_1$",
+      "F_3",
+      "cả $F_1$ và $F_3$",
+      "F_2"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Áp lực của bánh xe lên mặt đường có điểm đặt trên mặt đường, phương vuông góc với mặt đường, chiều hướng xuống. Đó là lực $F_2$. Lực $F_3$ do mặt đường tác dụng lên bánh xe.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K08020201061",
+     "loai": "trac_nghiem",
+     "de": "Hình bên mô tả một khối hộp nằm yên trên sàn nằm ngang và ba lực $\\mathrm{F_1}$, $\\mathrm{F_2}$, $\\mathrm{F_3}$. Lực biểu diễn áp lực do khối hộp tác dụng lên sàn là",
+     "lua_chon": [
+      "$\\mathrm{F_2}$",
+      "$\\mathrm{F_3}$",
+      "$\\mathrm{F_1}$",
+      "cả $\\mathrm{F_2}$ và $\\mathrm{F_3}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Áp lực do khối hộp tác dụng lên sàn có điểm đặt trên mặt sàn (mặt bị ép), phương vuông góc với mặt sàn, chiều hướng vào mặt sàn. Đó là lực $\\mathrm{F_1}$.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K08020201066",
+     "loai": "trac_nghiem",
+     "de": "Hình bên mô tả một người đứng trên sàn nằm ngang, các điểm M, N, Q, K được đánh dấu trên hình.\nĐiểm đặt của áp lực do người tác dụng lên sàn là điểm",
+     "lua_chon": [
+      "M",
+      "Q",
+      "N",
+      "K"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Áp lực do người tác dụng lên sàn đặt trên mặt sàn, tại chỗ bàn chân tiếp xúc với sàn, tức là điểm N.",
+     "co_hinh": true
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00870",
+   "nhom_id": "KNB00384",
+   "thu_tu": 1,
+   "dang": "Tính p khi biết F và S",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 12,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020202046",
+     "loai": "trac_nghiem",
+     "de": "Một chiếc xe lu ép lên mặt đường một áp lực $120\\ 000\\ \\mathrm{N}$. Diện tích tiếp xúc giữa bánh lu và mặt đường là $0,4\\ \\mathrm{m^2}$. Áp suất tác dụng lên mặt bị ép là",
+     "lua_chon": [
+      "30\\ 000\\ \\mathrm{Pa}",
+      "300\\ 000\\ \\mathrm{Pa}",
+      "3\\ 000\\ 000\\ \\mathrm{Pa}",
+      "30\\ 000\\ 000\\ \\mathrm{Pa}"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Áp suất tác dụng lên mặt bị ép:\n$$p = \\dfrac{F}{S} = \\dfrac{120\\ 000}{0,4} = 300\\ 000\\ (\\mathrm{Pa})$$"
+    },
+    {
+     "ma_cau": "K08020202041",
+     "loai": "trac_nghiem",
+     "de": "Một chiếc bàn ép lên sàn nhà một áp lực 600 N. Diện tích bị ép là 0,3 m$^2$. Áp suất tác dụng lên mặt bị ép là",
+     "lua_chon": [
+      "20 Pa",
+      "180 Pa",
+      "200 Pa",
+      "2 000 Pa"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Áp suất tác dụng lên mặt bị ép:\n$$p = \\dfrac{F}{S} = \\dfrac{600}{0,3} = 2 \\,000 \\text{ (Pa)}$$"
+    },
+    {
+     "ma_cau": "K08020202042",
+     "loai": "trac_nghiem",
+     "de": "Một chồng sách ép lên mặt bàn một áp lực 50 N. Diện tích bị ép là 0,25 m$^2$. Áp suất tác dụng lên mặt bị ép là",
+     "lua_chon": [
+      "200 Pa",
+      "2 000 Pa",
+      "20 000 Pa",
+      "200 000 Pa"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Áp suất tác dụng lên mặt bị ép:\n$$p = \\dfrac{F}{S} = \\dfrac{50}{0,25} = 200 \\text{ (Pa)}$$"
+    },
+    {
+     "ma_cau": "K08020202044",
+     "loai": "trac_nghiem",
+     "de": "Một thùng nước ép lên mặt sân thượng một áp lực $1\\ 500\\ \\mathrm{N}$. Diện tích đáy thùng tiếp xúc với sân là $0,6\\ \\mathrm{m^2}$. Áp suất tác dụng lên mặt bị ép là",
+     "lua_chon": [
+      "2\\ 500\\ \\mathrm{Pa}",
+      "25\\ 000\\ \\mathrm{Pa}",
+      "250\\ 000\\ \\mathrm{Pa}",
+      "2\\ 500\\ 000\\ \\mathrm{Pa}"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Áp suất tác dụng lên mặt bị ép:\n$$p = \\dfrac{F}{S} = \\dfrac{1\\ 500}{0,6} = 2\\ 500\\ (\\mathrm{Pa})$$"
+    },
+    {
+     "ma_cau": "K08020202047",
+     "loai": "trac_nghiem",
+     "de": "Một cột bê tông ép lên móng nhà một áp lực 24 000 N. Diện tích đáy cột là 0,16 m\b. Áp suất tác dụng lên mặt bị ép là",
+     "lua_chon": [
+      "1 500 Pa",
+      "3 840 Pa",
+      "15 000 Pa",
+      "150 000 Pa"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Áp suất tác dụng lên mặt bị ép:\n$$p=\\dfrac{F}{S}=\\dfrac{24000}{0,16}=150000\\ (Pa)$$"
+    },
+    {
+     "ma_cau": "K08020202043",
+     "loai": "trac_nghiem",
+     "de": "Một chiếc tủ lạnh ép lên sàn bếp một áp lực 800 N. Diện tích bị ép là 0,5 m$^2$. Áp suất tác dụng lên mặt bị ép là",
+     "lua_chon": [
+      "160 Pa",
+      "400 Pa",
+      "1 600 Pa",
+      "16 000 Pa"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Áp suất tác dụng lên mặt bị ép:\n$$p = \\dfrac{F}{S} = \\dfrac{800}{0,5} = 1 \\,600 \\text{ (Pa)}$$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00871",
+   "nhom_id": "KNB00384",
+   "thu_tu": 2,
+   "dang": "Tính F khi biết p và S",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020202050",
+     "loai": "trac_nghiem",
+     "de": "Một chiếc ghế sofa gây ra áp suất 1 500 Pa lên sàn nhà. Tổng diện tích bị ép là 0,2 m$^2$. Áp lực tác dụng lên mặt bị ép là",
+     "lua_chon": [
+      "30 N",
+      "300 N",
+      "3 000 N",
+      "7 500 N"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Áp lực tác dụng lên mặt bị ép:\n$F = p \\cdot S = 1 500 \\cdot 0,2 = 300$ (N)"
+    },
+    {
+     "ma_cau": "K08020202054",
+     "loai": "trac_nghiem",
+     "de": "Một chiếc két sắt gây ra áp suất $650\\ 000\\ \\mathrm{Pa}$ lên sàn nhà. Tổng diện tích bị ép là $0,004\\ \\mathrm{m^2}$. Áp lực tác dụng lên mặt bị ép là",
+     "lua_chon": [
+      "$260\\ \\mathrm{N}$",
+      "$2\\ 600\\ \\mathrm{N}$",
+      "$26\\ 000\\ \\mathrm{N}$",
+      "$162\\ 500\\ 000\\ \\mathrm{N}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Áp lực tác dụng lên mặt bị ép:\n$\\mathrm{F = p \\cdot S = 650\\ 000 \\cdot 0,004 = 2\\ 600\\ (N)}$"
+    },
+    {
+     "ma_cau": "K08020202055",
+     "loai": "trac_nghiem",
+     "de": "Một bể cá đặt trên kệ gỗ gây ra áp suất $25\\ 000\\ \\mathrm{Pa}$ lên mặt kệ. Diện tích bị ép là $0,12\\ \\mathrm{m^2}$. Áp lực tác dụng lên mặt bị ép là",
+     "lua_chon": [
+      "$3\\ 000\\ N$",
+      "$30\\ 000\\ N$",
+      "$300\\ 000\\ N$",
+      "$3\\ 000\\ 000\\ N$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Áp lực tác dụng lên mặt bị ép:\n$F = p \\cdot S = 25\\ 000 \\cdot 0,12 = 3\\ 000\\ (N)$"
+    },
+    {
+     "ma_cau": "K08020202053",
+     "loai": "trac_nghiem",
+     "de": "Một tấm đá lát đặt trên lớp cát gây ra áp suất $3\\ 200\\ \\mathrm{Pa}$. Diện tích bị ép là $1,5\\ \\mathrm{m^2}$. Áp lực tác dụng lên mặt bị ép là",
+     "lua_chon": [
+      "$48\\ \\mathrm{N}$",
+      "$480\\ \\mathrm{N}$",
+      "$4\\ 800\\ \\mathrm{N}$",
+      "$48\\ 000\\ \\mathrm{N}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Áp lực tác dụng lên mặt bị ép:\n$\\mathrm{F = p \\cdot S = 3\\ 200 \\cdot 1,5 = 4\\ 800\\ (N)}$"
+    },
+    {
+     "ma_cau": "K08020202051",
+     "loai": "trac_nghiem",
+     "de": "Một bao xi măng nằm trên nền kho gây ra áp suất 12 000 Pa. Diện tích bị ép là 0,05 m$^2$. Áp lực tác dụng lên mặt bị ép là",
+     "lua_chon": [
+      "0,6 N",
+      "6 N",
+      "60 N",
+      "600 N"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Áp lực tác dụng lên mặt bị ép:\n$F = p \\cdot S = 12 000 \\cdot 0,05 = 600$ (N)"
+    },
+    {
+     "ma_cau": "K08020202052",
+     "loai": "trac_nghiem",
+     "de": "Một chiếc máy tiện đặt trên bệ bê tông gây ra áp suất $200\\ 000\\ \\mathrm{Pa}$ lên bệ. Diện tích bị ép là $0,02\\ \\mathrm{m^2}$. Áp lực tác dụng lên mặt bị ép là",
+     "lua_chon": [
+      "$4\\ 000\\ \\mathrm{N}$",
+      "$40\\ 000\\ \\mathrm{N}$",
+      "$400\\ 000\\ \\mathrm{N}$",
+      "$10\\ 000\\ 000\\ \\mathrm{N}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Áp lực tác dụng lên mặt bị ép:\n$\\mathrm{F = p \\cdot S = 200\\ 000 \\cdot 0,02 = 4\\ 000\\ (N)}$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00872",
+   "nhom_id": "KNB00384",
+   "thu_tu": 3,
+   "dang": "Tính S khi biết F và p",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020202057",
+     "loai": "trac_nghiem",
+     "de": "Một thùng sơn ép lên sàn một áp lực $500 \\mathrm{\\,N}$ và gây ra áp suất $2\\,500 \\mathrm{\\,Pa}$. Diện tích bị ép là",
+     "lua_chon": [
+      "$0.02 \\mathrm{\\,m^2}$",
+      "$0.2 \\mathrm{\\,m^2}$",
+      "$2 \\mathrm{\\,m^2}$",
+      "$5 \\mathrm{\\,m^2}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Diện tích bị ép:\n$\\mathrm{S} = \\dfrac{\\mathrm{F}}{\\mathrm{p}} = \\dfrac{500}{2\\,500} = 0.2 \\mathrm{\\,(m^2)}$"
+    },
+    {
+     "ma_cau": "K08020202062",
+     "loai": "trac_nghiem",
+     "de": "Một chiếc máy ủi ép lên mặt đất một áp lực $50\\ 000\\ \\mathrm{N}$ và gây ra áp suất $2\\ 000\\ 000\\ \\mathrm{Pa}$. Diện tích bị ép là",
+     "lua_chon": [
+      "$0.00025\\ \\mathrm{m^2}$",
+      "$0.0025\\ \\mathrm{m^2}$",
+      "$0.025\\ \\mathrm{m^2}$",
+      "$0.25\\ \\mathrm{m^2}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Diện tích bị ép:\n$$S = \\dfrac{F}{p} = \\dfrac{50\\ 000}{2\\ 000\\ 000} = 0.025\\ (\\mathrm{m^2})$$"
+    },
+    {
+     "ma_cau": "K08020202059",
+     "loai": "trac_nghiem",
+     "de": "Một bồn cây cảnh ép lên mặt sàn một áp lực $2\\,400 \\mathrm{\\,N}$ và gây ra áp suất $30\\,000 \\mathrm{\\,Pa}$. Diện tích bị ép là",
+     "lua_chon": [
+      "$0.08 \\mathrm{\\,m^2}$",
+      "$0.8 \\mathrm{\\,m^2}$",
+      "$8 \\mathrm{\\,m^2}$",
+      "$12.5 \\mathrm{\\,m^2}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Diện tích bị ép:\n$\\mathrm{S} = \\dfrac{\\mathrm{F}}{\\mathrm{p}} = \\dfrac{2\\,400}{30\\,000} = 0.08 \\mathrm{\\,(m^2)}$"
+    },
+    {
+     "ma_cau": "K08020202061",
+     "loai": "trac_nghiem",
+     "de": "Một chiếc bàn bida ép lên sàn một áp lực $9\\ 000\\ \\mathrm{N}$ và gây ra áp suất $150\\ 000\\ \\mathrm{Pa}$. Diện tích bị ép là",
+     "lua_chon": [
+      "$0.006\\ \\mathrm{m^2}$",
+      "$0.06\\ \\mathrm{m^2}$",
+      "$0.6\\ \\mathrm{m^2}$",
+      "$6\\ \\mathrm{m^2}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Diện tích bị ép:\n$$S = \\dfrac{F}{p} = \\dfrac{9\\ 000}{150\\ 000} = 0.06\\ (\\mathrm{m^2})$$"
+    },
+    {
+     "ma_cau": "K08020202063",
+     "loai": "trac_nghiem",
+     "de": "Một chiếc piano ép lên sàn nhà một áp lực $7\\,200\\,\\mathrm{N}$ và gây ra áp suất $48\\,000\\,\\mathrm{Pa}$. Diện tích bị ép là",
+     "lua_chon": [
+      "$0.15\\,\\mathrm{m}^2$",
+      "$1.5\\,\\mathrm{m}^2$",
+      "$15\\,\\mathrm{m}^2$",
+      "$150\\,\\mathrm{m}^2"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Diện tích bị ép:\n$S = \\dfrac{F}{p} = \\dfrac{7\\,200}{48\\,000} = 0.15 \\left(\\mathrm{m}^2\\right)$"
+    },
+    {
+     "ma_cau": "K08020202060",
+     "loai": "trac_nghiem",
+     "de": "Một xe ô tô con ép lên mặt đường một áp lực $45\\ 000\\ \\mathrm{N}$ và gây ra áp suất $180\\ 000\\ \\mathrm{Pa}$. Diện tích bị ép là",
+     "lua_chon": [
+      "$0.00025\\ \\mathrm{m^2}$",
+      "$0.0025\\ \\mathrm{m^2}$",
+      "$0.025\\ \\mathrm{m^2}$",
+      "$0.25\\ \\mathrm{m^2}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Diện tích bị ép:\n$$S = \\dfrac{F}{p} = \\dfrac{45\\ 000}{180\\ 000} = 0.25\\ (\\mathrm{m^2})$$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00873",
+   "nhom_id": "KNB00384",
+   "thu_tu": 4,
+   "dang": "ĐỔI ĐƠN VỊ DIỆN TÍCH TRƯỚC KHI TÍNH",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020202068",
+     "loai": "trac_nghiem",
+     "de": "Một chiếc ghế ép lên sàn một áp lực $450 \\mathrm{N}$. Tổng diện tích bị ép là $15 \\mathrm{dm}^2$. Áp suất do ghế tác dụng lên sàn là",
+     "lua_chon": [
+      "$300 \\mathrm{Pa}$",
+      "$\\mathrm{3} \\ 000 \\mathrm{Pa}$",
+      "$\\mathrm{30} \\ 000 \\mathrm{Pa}$",
+      "$\\mathrm{300} \\ 000 \\mathrm{Pa}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi diện tích:\n$S = 15 \\mathrm{dm}^2 = 0,15 \\mathrm{m}^2$\nÁp suất do ghế tác dụng lên sàn:\n$p = \\dfrac{\\mathrm{F}}{\\mathrm{S}} = \\dfrac{450}{0,15} = 3 \\ 000 \\ (\\mathrm{Pa})$"
+    },
+    {
+     "ma_cau": "K08020202067",
+     "loai": "trac_nghiem",
+     "de": "Một chiếc nồi cơm điện gây ra áp suất $5\\ 000\\ \\mathrm{Pa}$ lên mặt bàn. Diện tích đáy nồi tiếp xúc với mặt bàn là $200\\ \\mathrm{cm^2}$. Áp lực do nồi tác dụng lên mặt bàn là",
+     "lua_chon": [
+      "$10\\ \\mathrm{N}$",
+      "$100\\ \\mathrm{N}$",
+      "$1\\ 000\\ \\mathrm{N}$",
+      "$1\\ 000\\ 000\\ \\mathrm{N}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi diện tích:\n$S = 200\\ \\mathrm{cm^2} = 0,02\\ \\mathrm{m^2}$\nÁp lực do nồi tác dụng lên mặt bàn:\n$F = p \\cdot S = 5\\ 000 \\cdot 0,02 = 100\\ (\\mathrm{N})$"
+    },
+    {
+     "ma_cau": "K08020202064",
+     "loai": "trac_nghiem",
+     "de": "Một chiếc đèn bàn ép lên mặt bàn một áp lực $24\\ \\mathrm{N}$. Diện tích đế đèn là $40\\ \\mathrm{cm^2}$. Áp suất do đèn tác dụng lên mặt bàn là",
+     "lua_chon": [
+      "$0.6\\ \\mathrm{Pa}$",
+      "$600\\ \\mathrm{Pa}$",
+      "$6\\ 000\\ \\mathrm{Pa}$",
+      "$60\\ 000\\ \\mathrm{Pa}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi diện tích:\n$S = 40\\ \\mathrm{cm^2} = 0.004\\ \\mathrm{m^2}$\nÁp suất do đèn tác dụng lên mặt bàn:\n$p = \\dfrac{F}{S} = \\dfrac{24}{0.004} = 6\\ 000\\ (\\mathrm{Pa})$"
+    },
+    {
+     "ma_cau": "K08020202066",
+     "loai": "trac_nghiem",
+     "de": "Một chậu cây ép lên sàn một áp lực $300\\ \\mathrm{N}$ và gây ra áp suất $20\\ 000\\ \\mathrm{Pa}$. Diện tích đáy chậu tiếp xúc với sàn tính theo đơn vị $\\mathrm{cm^2}$ là",
+     "lua_chon": [
+      "$0,015\\ \\mathrm{cm^2}$",
+      "$1,5\\ \\mathrm{cm^2}$",
+      "$15\\ \\mathrm{cm^2}$",
+      "$150\\ \\mathrm{cm^2}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Diện tích bị ép:\n$S = \\dfrac{F}{p} = \\dfrac{300}{20\\ 000} = 0,015\\ (\\mathrm{m^2})$\nĐổi đơn vị:\n$S = 0,015\\ \\mathrm{m^2} = 150\\ \\mathrm{cm^2}$"
+    },
+    {
+     "ma_cau": "K08020202070",
+     "loai": "trac_nghiem",
+     "de": "Một bình nước ép lên mặt kệ một áp lực $1200 \\mathrm{N}$ và gây ra áp suất $40 \\mathrm{kPa}$. Diện tích bị ép tính theo đơn vị $\\mathrm{cm^2}$ là",
+     "lua_chon": [
+      "$0,03 \\mathrm{cm^2}$",
+      "$30 \\mathrm{cm^2}$",
+      "$300 \\mathrm{cm^2}$",
+      "$30\\ 000 \\mathrm{cm^2}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi áp suất:\n$p = 40 \\mathrm{kPa} = 40 000 \\mathrm{Pa}$\nDiện tích bị ép:\n$S = \\dfrac{F}{p} = \\dfrac{1\\ 200}{40\\ 000} = 0,03\\ (\\mathrm{m^2})$\nĐổi đơn vị:\n$S = 0,03 \\mathrm{m^2} = 300 \\mathrm{cm^2}$"
+    },
+    {
+     "ma_cau": "K08020202065",
+     "loai": "trac_nghiem",
+     "de": "Khi khoan tường, mũi khoan ép lên tường một áp lực $50\\ \\mathrm{N}$. Diện tích đầu mũi khoan tiếp xúc với tường là $2\\ \\mathrm{mm^2}$. Áp suất do mũi khoan tác dụng lên tường là",
+     "lua_chon": [
+      "$25\\ \\mathrm{Pa}$",
+      "$25\\ 000\\ \\mathrm{Pa}$",
+      "$250\\ 000\\ \\mathrm{Pa}$",
+      "$25\\ 000\\ 000\\ \\mathrm{Pa}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi diện tích:\n$S = 2\\ \\mathrm{mm^2} = 0.000002\\ \\mathrm{m^2}$\nÁp suất do mũi khoan tác dụng lên tường:\n$p = \\dfrac{F}{S} = \\dfrac{50}{0.000002} = 25\\ 000\\ 000\\ (\\mathrm{Pa})$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00874",
+   "nhom_id": "KNB00384",
+   "thu_tu": 5,
+   "dang": "ÁP SUẤT CỦA KHỐI HỘP ĐẶT THEO CÁC MẶT KHÁC NHAU",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020202074",
+     "loai": "tra_loi_ngan",
+     "de": "Một khối sắt hình hộp chữ nhật có kích thước $20 \\text{ cm} \\times 10 \\text{ cm} \\times 5 \\text{ cm}$, khối lượng $7,8 \\text{ kg}$. Lấy trọng lượng $P = 10m$ ($m$ tính bằng kg, $P$ tính bằng N). Đặt khối sắt lên sàn nằm ngang theo các mặt khác nhau. Tính áp suất lớn nhất mà khối sắt tác dụng lên sàn theo đơn vị Pa.",
+     "dap_an": "15600",
+     "loi_giai": "Áp lực bằng trọng lượng của khối sắt:\n$F = P = 10m = 10 \\cdot 7,8 = 78 \\text{ (N)}$\nÁp suất lớn nhất khi diện tích bị ép nhỏ nhất, tức là khi đặt mặt có kích thước $10 \\text{ cm} \\times 5 \\text{ cm}$ xuống sàn.\nDiện tích bị ép:\n$S = 10 \\cdot 5 = 50 \\text{ (cm}^2) = 0,005 \\text{ (m}^2)$\nÁp suất:\n$p = \\dfrac{F}{S} = \\dfrac{78}{0,005} = 15\\,600 \\text{ (Pa)}$"
+    },
+    {
+     "ma_cau": "K08020202076",
+     "loai": "tra_loi_ngan",
+     "de": "Một thùng carton hình lập phương cạnh $40 \\text{ cm}$, khối lượng $64 \\text{ kg}$. Lấy trọng lượng $P = 10m$ ($m$ tính bằng $kg$, $P$ tính bằng $N$). Đặt thùng carton lên sàn nằm ngang theo các mặt khác nhau. Tính áp suất lớn nhất mà thùng carton tác dụng lên sàn theo đơn vị $Pa$.",
+     "dap_an": "4000",
+     "loi_giai": "Áp lực bằng trọng lượng của thùng carton:\n$F = P = 10m = 10 \\cdot 64 = 640 \\text{ (N)}$\nCác mặt của hình lập phương có diện tích bằng nhau nên áp suất như nhau khi đặt theo mặt bất kì.\nDiện tích bị ép:\n$S = 40 \\cdot 40 = 1\\,600 \\text{ (cm}^2) = 0.16 \\text{ (m}^2)$\nÁp suất:\n$p = \\dfrac{F}{S} = \\dfrac{640}{0.16} = 4\\,000 \\text{ (Pa)}$"
+    },
+    {
+     "ma_cau": "K08020202072",
+     "loai": "tra_loi_ngan",
+     "de": "Một thùng gỗ hình hộp chữ nhật có kích thước $60 \\mathrm{~cm} \\times 40 \\mathrm{~cm} \\times 50 \\mathrm{~cm}$, khối lượng $36 \\mathrm{~kg}$. Lấy trọng lượng $P = 10 \\mathrm{~m}$ ($m$ tính bằng $\\mathrm{kg}$, $P$ tính bằng $\\mathrm{N}$). Thùng gỗ được đặt trên sàn nằm ngang sao cho mặt có kích thước $60 \\mathrm{~cm} \\times 40 \\mathrm{~cm}$ tiếp xúc với sàn. Tính áp suất do thùng gỗ tác dụng lên sàn theo đơn vị $\\mathrm{Pa}$.",
+     "dap_an": "1500",
+     "loi_giai": "Áp lực bằng trọng lượng của thùng gỗ:\n$$F = P = 10m = 10 \\cdot 36 = 360 \\text{ (N)}$$\nDiện tích bị ép:\n$$S = 60 \\cdot 40 = 2400 \\text{ (cm}^2) = 0,24 \\text{ (m}^2)$$\nÁp suất:\n$$p = \\dfrac{F}{S} = \\dfrac{360}{0,24} = 1500 \\text{ (Pa)}$$"
+    },
+    {
+     "ma_cau": "K08020202075",
+     "loai": "tra_loi_ngan",
+     "de": "Một khối đá hình hộp chữ nhật có kích thước $50 \\text{ cm} \\times 30 \\text{ cm} \\times 20 \\text{ cm}$, khối lượng $78 \\text{ kg}$. Lấy trọng lượng $P = 10m$ ($m$ tính bằng $kg$, $P$ tính bằng $N$). Đặt khối đá lên sàn nằm ngang theo các mặt khác nhau. Tính áp suất nhỏ nhất mà khối đá tác dụng lên sàn theo đơn vị $Pa$.",
+     "dap_an": "5200",
+     "loi_giai": "Áp lực bằng trọng lượng của khối đá:\n$F = P = 10m = 10 \\cdot 78 = 780 \\text{ (N)}$\nÁp suất nhỏ nhất khi diện tích bị ép lớn nhất, tức là khi đặt mặt có kích thước $50 \\text{ cm} \\times 30 \\text{ cm}$ xuống sàn.\nDiện tích bị ép:\n$S = 50 \\cdot 30 = 1\\,500 \\text{ (cm}^2) = 0.15 \\text{ (m}^2)$\nÁp suất:\n$p = \\dfrac{F}{S} = \\dfrac{780}{0.15} = 5\\,200 \\text{ (Pa)}$"
+    },
+    {
+     "ma_cau": "K08020202073",
+     "loai": "tra_loi_ngan",
+     "de": "Một khối bê tông hình hộp chữ nhật có kích thước $100 \\text{ cm} \\times 50 \\text{ cm} \\times 40 \\text{ cm}$, khối lượng $500 \\text{ kg}$. Lấy trọng lượng $P = 10m$ ($m$ tính bằng kg, $P$ tính bằng N). Khối bê tông được đặt trên sàn nằm ngang sao cho mặt có kích thước $100 \\text{ cm} \\times 50 \\text{ cm}$ tiếp xúc với sàn. Tính áp suất do khối bê tông tác dụng lên sàn theo đơn vị Pa.",
+     "dap_an": "10000",
+     "loi_giai": "Áp lực bằng trọng lượng của khối bê tông:\n$F = P = 10m = 10 \\cdot 500 = 5000 \\text{ (N)}$\nDiện tích bị ép:\n$S = 100 \\cdot 50 = 5000 \\text{ (cm}^2) = 0,5 \\text{ (m}^2)$\nÁp suất:\n$p = \\dfrac{F}{S} = \\dfrac{5000}{0,5} = 10\\,000 \\text{ (Pa)}$"
+    },
+    {
+     "ma_cau": "K08020202071",
+     "loai": "tra_loi_ngan",
+     "de": "Một viên gạch hình hộp chữ nhật có kích thước $20 \\mathrm{~cm} \\times 10 \\mathrm{~cm} \\times 5 \\mathrm{~cm}$, khối lượng $2 \\mathrm{~kg}$. Lấy trọng lượng $P = 10 \\mathrm{~m}$ ($m$ tính bằng $\\mathrm{kg}$, $P$ tính bằng $\\mathrm{N}$). Viên gạch được đặt trên sàn nằm ngang sao cho mặt có kích thước $20 \\mathrm{~cm} \\times 10 \\mathrm{~cm}$ tiếp xúc với sàn. Tính áp suất do viên gạch tác dụng lên sàn theo đơn vị $\\mathrm{Pa}$.",
+     "dap_an": "1000",
+     "loi_giai": "Áp lực bằng trọng lượng của viên gạch:\n$$F = P = 10m = 10 \\cdot 2 = 20 \\text{ (N)}$$\nDiện tích bị ép:\n$$S = 20 \\cdot 10 = 200 \\text{ (cm}^2) = 0,02 \\text{ (m}^2)$$\nÁp suất:\n$$p = \\dfrac{F}{S} = \\dfrac{20}{0,02} = 1000 \\text{ (Pa)}$$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00875",
+   "nhom_id": "KNB00384",
+   "thu_tu": 6,
+   "dang": "KHỐI LƯỢNG HÀNG TỐI ĐA ĐỂ KHÔNG VƯỢT ÁP SUẤT NỀN CHỊU ĐƯỢC",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020202089",
+     "loai": "tu_luan",
+     "de": "Một kệ sách có khối lượng 30 kg, tổng diện tích tiếp xúc của các chân kệ với sàn là 50 $\\mathrm{cm^2}$. Sàn chịu được áp suất tối đa 400 000 Pa. Người ta xếp hàng lên kệ. Lấy trọng lượng $\\mathrm{P = 10m}$ (m tính bằng kg, P tính bằng N). Tính khối lượng tối đa của hàng theo đơn vị kilôgam (kg).",
+     "dap_an": "170",
+     "loi_giai": "Đổi đơn vị:\n$\\mathrm{S = 50\\ cm^2 = 0,005\\ m^2}$\nÁp lực tối đa mà mặt đỡ chịu được:\n$\\mathrm{F_{max} = p_{max}\\cdot S = 400\\ 000\\cdot 0,005 = 2\\ 000\\ (N)}$\nTrọng lượng của kệ sách:\n$\\mathrm{P_0 = 10\\cdot 30 = 300\\ (N)}$\nTrọng lượng tối đa có thể thêm:\n$\\mathrm{P = F_{max} - P_0 = 2\\ 000 - 300 = 1\\ 700\\ (N)}$\nKhối lượng tối đa:\n$\\mathrm{m = \\dfrac{P}{10} = \\dfrac{1\\ 700}{10} = 170\\ (kg)}$"
+    },
+    {
+     "ma_cau": "K08020202090",
+     "loai": "tu_luan",
+     "de": "Một bệ bê tông có khối lượng $800\\ \\mathrm{kg}$, mặt đáy là hình chữ nhật $1,2\\ \\mathrm{m} \\times 0,8\\ \\mathrm{m}$ đặt trên nền đất. Nền đất chịu được áp suất tối đa $50\\ 000\\ \\mathrm{Pa}$. Người ta đặt hàng lên bệ. Lấy trọng lượng $P = 10\\mathrm{m}$ ($m$ tính bằng $\\mathrm{kg}$, $P$ tính bằng $\\mathrm{N}$). Tính khối lượng tối đa của hàng theo đơn vị tấn.",
+     "dap_an": "4",
+     "loi_giai": "Diện tích mặt đáy bệ:\n$S = 1,2 \\cdot 0,8 = 0,96\\ \\mathrm{(m^2)}$\nÁp lực tối đa mà mặt đỡ chịu được:\n$F_{\\mathrm{max}} = p_{\\mathrm{max}} \\cdot S = 50\\ 000 \\cdot 0,96 = 48\\ 000\\ \\mathrm{(N)}$\nTrọng lượng của bệ bê tông:\n$P_0 = 10 \\cdot 800 = 8\\ 000\\ \\mathrm{(N)}$\nTrọng lượng tối đa có thể thêm:\n$P = F_{\\mathrm{max}} - P_0 = 48\\ 000 - 8\\ 000 = 40\\ 000\\ \\mathrm{(N)}$\nKhối lượng tối đa:\n$m = \\dfrac{P}{10} = \\dfrac{40\\ 000}{10} = 4\\ 000\\ \\mathrm{(kg)}$\nĐổi đơn vị:\n$m = 4\\ 000\\ \\mathrm{kg} = 4\\ \\mathrm{tấn}$"
+    },
+    {
+     "ma_cau": "K08020202084",
+     "loai": "tu_luan",
+     "de": "Một thùng gỗ có khối lượng 3 kg được đặt trên một tấm xốp, diện tích đáy thùng tiếp xúc với tấm xốp là 2 000 cm$^2$. Tấm xốp chịu được áp suất tối đa 4 000 Pa mà không bị lún. Người ta cho hàng vào thùng. Lấy trọng lượng P = 10m (m tính bằng kg, P tính bằng N). Tính khối lượng tối đa của hàng theo đơn vị kilôgam (kg).",
+     "dap_an": "77",
+     "loi_giai": "Đổi đơn vị:\n$S = 2\\ 000\\ \\mathrm{cm^2} = 0,2\\ \\mathrm{m^2}$\nÁp lực tối đa mà mặt độ chịu được:\n$F_{\\text{max}} = P_{\\text{max}} \\cdot S = 4\\ 000 \\cdot 0,2 = 800$ (N)\nTrọng lượng của thùng gỗ:\n$P_0 = 10 \\cdot 3 = 30$ (N)\nTrọng lượng tối đa có thể thêm:\n$P = F_{\\text{max}} - P_0 = 800 - 30 = 770$ (N)\nKhối lượng tối đa:\n$m = \\dfrac{P}{10} = \\dfrac{770}{10} = 77$ (kg)"
+    },
+    {
+     "ma_cau": "K08020202085",
+     "loai": "tu_luan",
+     "de": "Một xe cẩu bánh xích có khối lượng $12$ tấn, tổng diện tích tiếp xúc của hai dải xích với mặt đất là $3 \\mathrm{m}^2$. Mặt đất chịu được áp suất tối đa $50 \\ 000 \\mathrm{Pa}$. Xe cẩu nâng thêm hàng. Lấy trọng lượng $\\mathrm{P}=10 \\mathrm{m}$ ($\\mathrm{m}$ tính bằng $\\mathrm{kg}$, $\\mathrm{P}$ tính bằng $\\mathrm{N}$). Tính khối lượng tối đa của hàng theo đơn vị kilôgam ($\\mathrm{kg}$).",
+     "dap_an": "3000",
+     "loi_giai": "Áp lực tối đa mà mặt đất chịu được:\\ $\\mathrm{F_{max}} = \\mathrm{p_{max}} \\cdot \\mathrm{S} = 50 \\ 000 \\cdot 3 = 150 \\ 000 \\ (\\mathrm{N})$\nTrọng lượng của xe cẩu:\\ $\\mathrm{P_0} = 10 \\cdot 12 \\ 000 = 120 \\ 000 \\ (\\mathrm{N})$\nTrọng lượng tối đa có thể thêm:\\ $\\mathrm{P} = \\mathrm{F_{max}} - \\mathrm{P_0} = 150 \\ 000 - 120 \\ 000 = 30 \\ 000 \\ (\\mathrm{N})$\nKhối lượng tối đa:\\ $\\mathrm{m} = \\dfrac{\\mathrm{P}}{10} = \\dfrac{30 \\ 000}{10} = 3 \\ 000 \\ (\\mathrm{kg})$"
+    },
+    {
+     "ma_cau": "K08020202088",
+     "loai": "tu_luan",
+     "de": "Một xe nâng có khối lượng $3$ tấn, tổng diện tích tiếp xúc của các bánh xe với nền xưởng là $0,08\\ \\mathrm{m^2}$. Nền xưởng chịu được áp suất tối đa $1\\ 000\\ 000\\ \\mathrm{Pa}$. Xe nâng thêm hàng. Lấy trọng lượng $\\mathrm{P}=10\\mathrm{m}$ ($\\mathrm{m}$ tính bằng $\\mathrm{kg}$, $\\mathrm{P}$ tính bằng $\\mathrm{N}$). Tính khối lượng tối đa của hàng theo đơn vị kilôgam ($\\mathrm{kg}$).",
+     "dap_an": "5000",
+     "loi_giai": "Áp lực tối đa mà mặt đỡ chịu được:\n$$\\mathrm{F_{max} = p_{max} \\cdot S = 1\\ 000\\ 000 \\cdot 0,08 = 80\\ 000\\ (N)}$$\nTrọng lượng của xe nâng:\n$$\\mathrm{P_0 = 10 \\cdot 3\\ 000 = 30\\ 000\\ (N)}$$\nTrọng lượng tối đa có thể thêm:\n$$\\mathrm{P = F_{max} - P_0 = 80\\ 000 - 30\\ 000 = 50\\ 000\\ (N)}$$\nKhối lượng tối đa:\n$$\\mathrm{m = \\dfrac{P}{10} = \\dfrac{50\\ 000}{10} = 5\\ 000\\ (kg)}$$"
+    },
+    {
+     "ma_cau": "K08020202081",
+     "loai": "tu_luan",
+     "de": "Để đi trên bãi bùn, người ta đặt một tấm ván có khối lượng $5 \\text{ kg}$ lên mặt bùn, diện tích tiếp xúc giữa tấm ván và mặt bùn là $0.5 \\text{ m}^2$. Mặt bùn chịu được áp suất tối đa $2000 \\text{ Pa}$. Một người đứng lên tấm ván. Lấy trọng lượng $P = 10m$ ($m$ tính bằng kg, $P$ tính bằng N). Tính khối lượng tối đa của người đó theo đơn vị kilôgam ($\\text{kg}$).",
+     "dap_an": "95",
+     "loi_giai": "Áp lực tối đa mà mặt đỡ chịu được:\n$$F_{\\text{max}} = p_{\\text{max}} \\cdot S = 2000 \\cdot 0,5 = 1000 \\text{ (N)}$$\nTrọng lượng của tấm ván:\n$$P_0 = 10 \\cdot 5 = 50 \\text{ (N)}$$\nTrọng lượng tối đa có thể thêm:\n$$P = F_{\\text{max}} - P_0 = 1000 - 50 = 950 \\text{ (N)}$$\nKhối lượng tối đa:\n$$m = \\dfrac{P}{10} = \\dfrac{950}{10} = 95 \\text{ (kg)}$$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00876",
+   "nhom_id": "KNB00385",
+   "thu_tu": 1,
+   "dang": "Tính F (cơ bản)",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 25,
+   "cau_mau": []
+  },
+  {
+   "dang_id": "KDB00877",
+   "nhom_id": "KNB00385",
+   "thu_tu": 2,
+   "dang": "Tính S",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 9,
+   "cau_mau": []
+  },
+  {
+   "dang_id": "KDB00878",
+   "nhom_id": "KNB00386",
+   "thu_tu": 1,
+   "dang": "TĂNG ÁP SUẤT BẰNG CÁCH GIẢM DIỆN TÍCH",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 22,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020204048",
+     "loai": "trac_nghiem",
+     "de": "Để đóng một chiếc cọc tre xuống đất được dễ dàng, người ta nên",
+     "lua_chon": [
+      "Vót nhọn đầu cọc phía trên chịu lực đóng",
+      "Vót nhọn đầu cọc cắm xuống đất",
+      "buộc thêm một tấm ván vào đầu cọc phía dưới",
+      "dùng cọc có tiết diện lớn hơn"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Vót nhọn đầu cọc cắm xuống đất làm giảm diện tích bị ép, áp suất lên đất tăng nên cọc dễ đi xuống."
+    },
+    {
+     "ma_cau": "K08020204043",
+     "loai": "trac_nghiem",
+     "de": "Một bạn học sinh dùng kéo cắt tấm bìa cứng nhưng cắt mãi không đứt. Theo kiến thức về áp suất, cách làm phù hợp là",
+     "lua_chon": [
+      "thay bằng kéo có lưỡi dày, bản rộng hơn",
+      "bôi dầu ăn lên lưỡi kéo",
+      "mài sắc lưỡi kéo",
+      "lót thêm một lớp vải lên tấm bìa"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Mài sắc lưỡi kéo làm giảm diện tích bị ép. Với cùng lực bóp, áp suất lên tấm bìa tăng nên dễ cắt đứt."
+    },
+    {
+     "ma_cau": "K08020204041",
+     "loai": "trac_nghiem",
+     "de": "Mũi đinh được làm nhọn nhằm mục đích",
+     "lua_chon": [
+      "giảm áp suất lên vật khi đóng đinh",
+      "tăng áp lực của búa lên đinh",
+      "giảm trọng lượng của chiếc đinh",
+      "tăng áp suất lên vật khi đóng đinh"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Mũi đinh nhọn có diện tích bị ép nhỏ nên với cùng lực đóng, áp suất lên vật lớn, đinh dễ đi vào vật."
+    },
+    {
+     "ma_cau": "K08020204044",
+     "loai": "trac_nghiem",
+     "de": "Hai con dao giống nhau, dao A được mài sắc, dao B bị cùn. Ấn hai con dao với cùng một lực lên hai quả cà chua giống nhau. Nhận xét đúng là",
+     "lua_chon": [
+      "dao A gây áp suất lớn hơn vì diện tích bị ép nhỏ hơn",
+      "dao B gây áp suất lớn hơn vì diện tích bị ép lớn hơn",
+      "hai dao gây áp suất bằng nhau vì cùng lực ấn",
+      "dao A gây áp lực lớn hơn vì lưỡi sắc hơn"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Hai dao chịu cùng lực ấn nên áp lực bằng nhau. Dao A sắc hơn nên diện tích bị ép nhỏ hơn; theo $p=\\dfrac{F}{S}$, áp suất do dao A gây ra lớn hơn."
+    },
+    {
+     "ma_cau": "K08020204040",
+     "loai": "trac_nghiem",
+     "de": "Lưỡi dao thường được mài sắc nhằm mục đích",
+     "lua_chon": [
+      "tăng áp lực của lưỡi dao lên vật cần cắt",
+      "giảm diện tích bị ép để tăng áp suất, giúp cắt dễ hơn",
+      "giảm áp suất để lưỡi dao bền hơn",
+      "tăng diện tích bị ép để cắt được nhiều hơn"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Mài sắc lưỡi dao làm diện tích bị ép giảm. Với cùng áp lực, theo $p = \\dfrac{F}{s}$, áp suất tăng nên dao cắt dễ hơn."
+    },
+    {
+     "ma_cau": "K08020204045",
+     "loai": "trac_nghiem",
+     "de": "Cùng một người khi đi giày cao gót mũi nhọn để lại vết hằn trên sàn gỗ rõ hơn khi đi giày đế bằng. Nguyên nhân là",
+     "lua_chon": [
+      "giày cao gót làm trọng lượng người tăng lên",
+      "diện tích tiếp xúc của gót nhọn nhỏ nên áp suất lên sàn lớn",
+      "giày cao gót làm áp lực lên sàn lớn hơn",
+      "giày đế bằng có diện tích tiếp xúc nhỏ hơn"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Trọng lượng người không đổi nên áp lực không đổi. Gót nhọn có diện tích tiếp xúc nhỏ nên áp suất lên sàn lớn, để lại vết hằn rõ hơn."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00879",
+   "nhom_id": "KNB00386",
+   "thu_tu": 2,
+   "dang": "GIẢM ÁP SUẤT BẰNG CÁCH TĂNG DIỆN TÍCH",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020204051",
+     "loai": "trac_nghiem",
+     "de": "Móng nhà phải xây rộng hơn tường nhà nhằm",
+     "lua_chon": [
+      "giảm áp suất của nhà lên mặt đất",
+      "tăng áp suất của nhà lên mặt đất",
+      "giảm trọng lượng của ngôi nhà",
+      "tăng áp lực của nhà lên mặt đất"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Móng rộng làm tăng diện tích bị ép, áp suất lên mặt đất giảm nên nhà không bị lún."
+    },
+    {
+     "ma_cau": "K08020204058",
+     "loai": "trac_nghiem",
+     "de": "Một người cần đi qua lớp băng mỏng trên mặt hồ để cứu người bị nạn. Để giảm nguy cơ làm vỡ băng, người đó nên",
+     "lua_chon": [
+      "đứng thẳng và chạy thật nhanh",
+      "nhón gót chân khi bước",
+      "nằm sấp và bò trên mặt băng",
+      "nhảy từng bước dài trên mặt băng"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khi nằm sấp, diện tích tiếp xúc với mặt băng lớn nhất. Trọng lượng không đổi nên áp suất lên mặt băng nhỏ nhất, băng khó vỡ."
+    },
+    {
+     "ma_cau": "K08020204056",
+     "loai": "trac_nghiem",
+     "de": "Quai đeo của ba lô đựng sách thường được làm bản rộng. Điều này giúp",
+     "lua_chon": [
+      "giảm áp suất lên vai người đeo",
+      "tăng áp suất lên vai người đeo",
+      "giảm trọng lượng của ba lô",
+      "tăng áp lực của ba lô lên vai"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Quai bản rộng làm tăng diện tích bị ép trên vai, áp lực không đổi nên áp suất lên vai giảm, đỡ đau vai."
+    },
+    {
+     "ma_cau": "K08020204054",
+     "loai": "trac_nghiem",
+     "de": "Khi đi qua một vùng bùn lầy, người ta thường đặt một tấm ván rộng lên mặt bùn rồi bước lên tấm ván. Làm như vậy nhằm",
+     "lua_chon": [
+      "tăng áp suất lên mặt bùn để bước vững hơn",
+      "giảm trọng lượng của người",
+      "tăng áp lực của người lên mặt bùn",
+      "giảm áp suất lên mặt bùn để không bị lún"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tấm ván rộng làm tăng diện tích bị ép, áp suất lên mặt bùn giảm nên người không bị lún."
+    },
+    {
+     "ma_cau": "K08020204050",
+     "loai": "trac_nghiem",
+     "de": "Xe tăng chạy bằng bánh xích thay cho bánh xe thông thường nhằm",
+     "lua_chon": [
+      "tăng áp suất để bám đường tốt hơn",
+      "giảm trọng lượng của xe tăng",
+      "tăng diện tích bị ép để giảm áp suất lên mặt đất",
+      "tăng áp lực của xe lên mặt đất"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Bánh xích có diện tích tiếp xúc với mặt đất lớn. Với cùng áp lực, áp suất lên mặt đất nhỏ nên xe không bị lún."
+    },
+    {
+     "ma_cau": "K08020204052",
+     "loai": "trac_nghiem",
+     "de": "Ván trượt tuyết được làm dài và bản rộng giúp người trượt",
+     "lua_chon": [
+      "trượt nhanh hơn vì áp suất lên tuyết lớn",
+      "nhẹ hơn khi đứng trên tuyết",
+      "tăng áp lực lên mặt tuyết",
+      "không bị lún vì áp suất lên mặt tuyết nhỏ"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ván dài và rộng làm tăng diện tích bị ép, áp suất lên tuyết nhỏ nên người không bị lún."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00880",
+   "nhom_id": "KNB00386",
+   "thu_tu": 3,
+   "dang": "BÀI TOÁN NGƯỜI, VẬT ĐỨNG TRÊN NỀN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020204065",
+     "loai": "tu_luan",
+     "de": "Một xe tải tính cả hàng có khối lượng 9 tấn đứng yên trên mặt đường nằm ngang. Xe có sáu bánh, diện tích tiếp xúc của mỗi bánh xe với mặt đường là $0,05\\ \\mathrm{m^2}$. Lấy trọng lượng $P=10m$ ($m$ tính bằng kg, $P$ tính bằng N). Tính áp suất do xe tải tác dụng lên mặt đường theo đơn vị Pa.",
+     "dap_an": "300000",
+     "loi_giai": "Đổi khối lượng:\n$9\\ \\text{tấn} = 9\\ 000\\ \\text{kg}$\nÁp lực bằng tổng trọng lượng:\n$F = 10\\ \\cdot\\ 9\\ 000 = 90\\ 000\\ \\text{(N)}$\nTổng diện tích bị ép:\n$S = 6\\ \\cdot\\ 0,05 = 0,3\\ \\text{(m}^2)$\nÁp suất:\n$p = \\dfrac{F}{S} = \\dfrac{90\\ 000}{0,3} = 300\\ 000\\ \\text{(Pa)}$"
+    },
+    {
+     "ma_cau": "K08020204064",
+     "loai": "tu_luan",
+     "de": "Một ô tô con có khối lượng 1,2 tấn đứng yên trên mặt đường nằm ngang. Diện tích tiếp xúc của mỗi bánh xe với mặt đường là $150\\ \\mathrm{cm^2}$. Xe có bốn bánh. Lấy trọng lượng $P=10m$ ($m$ tính bằng kg, $P$ tính bằng N). Tính áp suất do ô tô tác dụng lên mặt đường theo đơn vị Pa.",
+     "dap_an": "200000",
+     "loi_giai": "Đổi khối lượng:\n$1,2\\ \\text{tấn} = 1\\ 200\\ \\text{kg}$\nÁp lực bằng tổng trọng lượng:\n$F = 10\\ \\cdot\\ 1\\ 200 = 12\\ 000\\ \\text{(N)}$\nTổng diện tích bị ép:\n$S = 4\\ \\cdot\\ 150 = 600\\ \\text{(cm}^2) = 0,06\\ \\text{(m}^2)$\nÁp suất:\n$p = \\dfrac{F}{S} = \\dfrac{12\\ 000}{0,06} = 200\\ 000\\ \\text{(Pa)}$"
+    },
+    {
+     "ma_cau": "K08020204060",
+     "loai": "tu_luan",
+     "de": "Một người có khối lượng 48 kg đứng thẳng bằng hai chân trên sàn nằm ngang. Diện tích tiếp xúc của mỗi bàn chân với sàn là 160 $\\mathrm{cm^2}$. Lấy trọng lượng $\\mathrm{P} = 10\\mathrm{m}$ ($\\mathrm{m}$ tính bằng $\\mathrm{kg}$, $\\mathrm{P}$ tính bằng $\\mathrm{N}$). Tính áp suất do người tác dụng lên sàn theo đơn vị $\\mathrm{Pa}$.",
+     "dap_an": "15000",
+     "loi_giai": "Áp lực bằng tổng trọng lượng:\n$\\mathrm{F} = 10 \\cdot 48 = 480$ (N)\nTổng diện tích bị ép:\n$\\mathrm{S} = 2 \\cdot 160 = 320$ ($\\mathrm{cm^2}$) = 0,032 ($\\mathrm{m^2}$)\nÁp suất:\n$\\mathrm{p} = \\dfrac{\\mathrm{F}}{\\mathrm{S}} = \\dfrac{480}{0,032} = 15\\ 000$ (Pa)"
+    },
+    {
+     "ma_cau": "K08020204068",
+     "loai": "tu_luan",
+     "de": "Một chiếc tủ có khối lượng $80 \\text{ kg}$ đặt trên sàn nằm ngang bằng bốn chân. Mỗi chân tủ có mặt tiếp xúc với sàn là hình vuông cạnh $2 \\text{ cm}$. Lấy trọng lượng $P = 10m$ ($m$ tính bằng kg, $P$ tính bằng N). Tính áp suất do tủ tác dụng lên sàn theo đơn vị kPa.",
+     "dap_an": "500",
+     "loi_giai": "Áp lực bằng tổng trọng lượng:\n$F = 10 \\cdot 80 = 800 \\text{ (N)}$\nDiện tích tiếp xúc của mỗi chân tủ:\n$S_1 = 2 \\cdot 2 = 4 \\text{ (cm}^2)$\nTổng diện tích bị ép:\n$S = 4 \\cdot 4 = 16 \\text{ (cm}^2) = 0,0016 \\text{ (m}^2)$\nÁp suất:\n$p = \\dfrac{F}{S} = \\dfrac{800}{0,0016} = 500\\,000 \\text{ (Pa)}$\nĐổi đơn vị:\n$p = 500\\,000 \\text{ Pa} = 500 \\text{ kPa}$"
+    },
+    {
+     "ma_cau": "K08020204063",
+     "loai": "tu_luan",
+     "de": "Một chiếc ghế có khối lượng $4\\ \\mathrm{kg}$ đặt trên sàn nằm ngang bằng bốn chân, một người có khối lượng $50\\ \\mathrm{kg}$ ngồi trên ghế (chân người không chạm sàn). Diện tích tiếp xúc của mỗi chân ghế với sàn là $4\\ \\mathrm{cm^2}$. Lấy trọng lượng $P = 10m$ ($m$ tính bằng $\\mathrm{kg}$, $P$ tính bằng $\\mathrm{N}$). Tính áp suất do các chân ghế tác dụng lên sàn theo đơn vị $\\mathrm{Pa}$.",
+     "dap_an": "337500",
+     "loi_giai": "Áp lực bằng tổng trọng lượng:\n$F = 10 \\cdot (4 + 50) = 540\\ \\mathrm{(N)}$\nTổng diện tích bị ép:\n$S = 4 \\cdot 4 = 16\\ \\mathrm{(cm^2)} = 0,0016\\ \\mathrm{(m^2)}$\nÁp suất:\n$p = \\dfrac{F}{S} = \\dfrac{540}{0,0016} = 337\\ 500\\ \\mathrm{(Pa)}$"
+    },
+    {
+     "ma_cau": "K08020204061",
+     "loai": "tu_luan",
+     "de": "Một người có khối lượng 54 $\\mathrm{kg}$ đứng co một chân, chân còn lại tiếp xúc với sàn nằm ngang. Diện tích tiếp xúc của bàn chân với sàn là 180 $\\mathrm{cm^2}$. Lấy trọng lượng $\\mathrm{P} = 10\\mathrm{m}$ ($\\mathrm{m}$ tính bằng $\\mathrm{kg}$, $\\mathrm{P}$ tính bằng $\\mathrm{N}$). Tính áp suất do người tác dụng lên sàn theo đơn vị $\\mathrm{Pa}$.",
+     "dap_an": "30000",
+     "loi_giai": "Áp lực bằng tổng trọng lượng:\n$\\mathrm{F} = 10 \\cdot 54 = 540$ (N)\nTổng diện tích bị ép:\n$\\mathrm{S} = 1 \\cdot 180 = 180$ ($\\mathrm{cm^2}$) = 0,018 ($\\mathrm{m^2}$)\nÁp suất:\n$\\mathrm{p} = \\dfrac{\\mathrm{F}}{\\mathrm{S}} = \\dfrac{540}{0,018} = 30\\ 000$ (Pa)"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00906",
+   "nhom_id": "KNB00391",
+   "thu_tu": 1,
+   "dang": "Vận dụng công thức tổng hợp p = p0 + d.h",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 20,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020305010",
+     "loai": "trac_nghiem",
+     "de": "Một điểm ở độ sâu $1,4 \\text{ m}$ dưới mặt thoáng của nước (trọng lượng riêng $10000 \\text{ N/m}^3$, mặt thoáng hở, tiếp xúc trực tiếp với khí quyển). Biết áp suất khí quyển tại đó là $103000 \\text{ Pa}$. Tính áp suất tổng cộng tác dụng lên điểm đó.",
+     "lua_chon": [
+      "113000 Pa",
+      "117000 Pa",
+      "89000 Pa",
+      "14000 Pa"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Áp suất tổng cộng tại điểm ở độ sâu $h$ chịu cả áp suất khí quyển: $p = p_0 + d.h = 103000 + 10000 \\times 1,4$\n$= 103000 + 14000 = 117000 \\text{ Pa}$."
+    },
+    {
+     "ma_cau": "K08020305013",
+     "loai": "trac_nghiem",
+     "de": "Một điểm nằm dưới mặt thoáng của dầu hoả (trọng lượng riêng $8000\\ \\mathrm{N/m^3}$, mặt thoáng hở, tiếp xúc trực tiếp với khí quyển) chịu áp suất tổng cộng là $110400\\ \\mathrm{Pa}$. Biết áp suất khí quyển tại đó là $96000\\ \\mathrm{Pa}$. Tính độ sâu của điểm đó so với mặt thoáng.",
+     "lua_chon": [
+      "13,8 m",
+      "25,8 m",
+      "1,8 m",
+      "115200000 m"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Từ $p = p_0 + d.h \\implies h = (p - p_0)/d = (110400 - 96000)/8000 = 14400/8000 = 1.8\\ \\mathrm{m}$."
+    },
+    {
+     "ma_cau": "K08020305002",
+     "loai": "trac_nghiem",
+     "de": "Một điểm ở độ sâu 2 m dưới mặt thoáng của nước (trọng lượng riêng 10000 N/m$^3$, mặt thoáng hở, tiếp xúc trực tiếp với khí quyển). Biết áp suất khí quyển tại đó là 100000 Pa. Tính áp suất tổng cộng tác dụng lên điểm đó.",
+     "lua_chon": [
+      "120000 Pa",
+      "20000 Pa",
+      "80000 Pa",
+      "110000 Pa"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Áp suất tổng cộng tại điểm ở độ sâu h chịu cả áp suất khí quyển: $p = p_0 + d.h = 100000 + 10000 \\times 2 = 100000 + 20000 = 120000$ Pa."
+    },
+    {
+     "ma_cau": "K08020305018",
+     "loai": "trac_nghiem",
+     "de": "Một điểm ở độ sâu 2,4 m dưới mặt thoáng của nước (trọng lượng riêng $10000\\ \\mathrm{N/m^3}$, mặt thoáng hở, tiếp xúc trực tiếp với khí quyển) chịu áp suất tổng cộng là $128000\\ \\mathrm{Pa}$. Tính áp suất khí quyển tại đó.",
+     "lua_chon": [
+      "127997,6 Pa",
+      "152000 Pa",
+      "123833,333333 Pa",
+      "104000 Pa"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Từ $\\mathrm{p = p_0 + d.h \\Rightarrow p_0 = p - d.h = 128000 - 10000 \\times 2,4 = 128000 - 24000 = 104000\\ Pa.}$"
+    },
+    {
+     "ma_cau": "K08020305009",
+     "loai": "trac_nghiem",
+     "de": "Một điểm ở độ sâu 2,2 m dưới mặt thoáng của nước (trọng lượng riêng 10000 $\\mathrm{N/m^3}$, mặt thoáng hở, tiếp xúc trực tiếp với khí quyển). Biết áp suất khí quyển tại đó là 94000 Pa. Tính áp suất tổng cộng tác dụng lên điểm đó.",
+     "lua_chon": [
+      "104000 Pa",
+      "22000 Pa",
+      "116000 Pa",
+      "72000 Pa"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Áp suất tổng cộng tại điểm ở độ sâu h chịu cả áp suất khí quyển: $\\mathrm{p = p_0 + d.h = 94000 + 10000 \\times 2,2 = 94000 + 22000 = 116000 Pa.}$"
+    },
+    {
+     "ma_cau": "K08020305011",
+     "loai": "trac_nghiem",
+     "de": "Một điểm nằm dưới mặt thoáng của nước (trọng lượng riêng $10000 \\text{ N/m}^3$, mặt thoáng hở, tiếp xúc trực tiếp với khí quyển) chịu áp suất tổng cộng là $125000 \\text{ Pa}$. Biết áp suất khí quyển tại đó là $100000 \\text{ Pa}$. Tính độ sâu của điểm đó so với mặt thoáng.",
+     "lua_chon": [
+      "12,5 m",
+      "25000000 m",
+      "2,5 m",
+      "22,5 m"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Từ $p = p_0 + d.h \\rightarrow h = (p - p_0)/d = (125000 - 100000)/10000 = 25000/10000 = 2,5 \\text{ m}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00907",
+   "nhom_id": "KNB00391",
+   "thu_tu": 2,
+   "dang": "Quy đổi áp suất khí quyển từ mmHg sang Pa rồi tính áp suất tổng cộng p = p0 + d.h",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020305021",
+     "loai": "tra_loi_ngan",
+     "de": "Tại một địa điểm, áp suất khí quyển đo được qua ống Tô-ri-xe-li là $750 \\text{ mmHg}$ ($1 \\text{ mmHg}$ tương ứng với $136 \\text{ Pa}$). Một điểm nằm ở độ sâu $1,2 \\text{ m}$ dưới mặt thoáng hở của nước (trọng lượng riêng $10000 \\text{ N/m}^3$) tại địa điểm đó. Tính áp suất tổng cộng tác dụng lên điểm này (theo đơn vị Pa).",
+     "dap_an": "114000",
+     "loi_giai": "Đổi áp suất khí quyển ra Pa: $p_0 = 750 \\times 136 = 102000 \\text{ Pa}$.\nÁp suất tổng cộng tại điểm ở độ sâu h: $p = p_0 + \\mathrm{d.h} = 102000 + 10000 \\times 1,2 = 102000 + 12000 = 114000 \\text{ Pa}."
+    },
+    {
+     "ma_cau": "K08020305030",
+     "loai": "tra_loi_ngan",
+     "de": "Tại một địa điểm, áp suất khí quyển đo được qua ống Tô-ri-xe-li là 758 mmHg (1 mmHg tương ứng với 136 Pa). Một điểm nằm ở độ sâu 1,05 m dưới mặt thoáng hở của nước (trọng lượng riêng 10000 N/m³) tại địa điểm đó. Tính áp suất tổng cộng tác dụng lên điểm này (theo đơn vị Pa).",
+     "dap_an": "113588",
+     "loi_giai": "Đổi áp suất khí quyển ra Pa: $p_0 = 758 \\times 136 = 103088$ Pa.\nÁp suất tổng cộng tại điểm ở độ sâu h: $p = p_0 + d.h = 103088 + 10000 \\times 1,05 = 103088 + 10500 = 113588$ Pa."
+    },
+    {
+     "ma_cau": "K08020305022",
+     "loai": "tra_loi_ngan",
+     "de": "Tại một địa điểm, áp suất khí quyển đo được qua ống Tô-ri-xe-li là $760 \\text{ mmHg}$ ($1 \\text{ mmHg}$ tương ứng với $136 \\text{ Pa}$). Một điểm nằm ở độ sâu $0,9 \\text{ m}$ dưới mặt thoáng hở của nước (trọng lượng riêng $10000 \\text{ N/m}^3$) tại địa điểm đó. Tính áp suất tổng cộng tác dụng lên điểm này (theo đơn vị Pa).",
+     "dap_an": "112360",
+     "loi_giai": "Đổi áp suất khí quyển ra Pa: $p_0 = 760 \\times 136 = 103360 \\text{ Pa}$.\nÁp suất tổng cộng tại điểm ở độ sâu h: $p = p_0 + \\mathrm{d.h} = 103360 + 10000 \\times 0,9 = 103360 + 9000 = 112360 \\text{ Pa}."
+    },
+    {
+     "ma_cau": "K08020305023",
+     "loai": "tra_loi_ngan",
+     "de": "Tại một địa điểm, áp suất khí quyển đo được qua ống Tô-ri-xe-li là $740 \\text{ mmHg}$ ($1 \\text{ mmHg}$ tương ứng với $136 \\text{ Pa}$). Một điểm nằm ở độ sâu $1,5 \\text{ m}$ dưới mặt thoáng hở của dầu hoả (trọng lượng riêng $8000 \\text{ N/m}^3$) tại địa điểm đó. Tính áp suất tổng cộng tác dụng lên điểm này (theo đơn vị Pa).",
+     "dap_an": "112640",
+     "loi_giai": "Đổi áp suất khí quyển ra Pa: $p_0 = 740 \\times 136 = 100640 \\text{ Pa}$.\nÁp suất tổng cộng tại điểm ở độ sâu h: $p = p_0 + \\mathrm{d.h} = 100640 + 8000 \\times 1,5 = 100640 + 12000 = 112640 \\text{ Pa}."
+    },
+    {
+     "ma_cau": "K08020305027",
+     "loai": "tra_loi_ngan",
+     "de": "Tại một địa điểm, áp suất khí quyển đo được qua ống Tô-ri-xe-li là 745 mmHg (1 mmHg tương ứng với 136 Pa). Một điểm nằm ở độ sâu 0,7 m dưới mặt thoáng hở của nước (trọng lượng riêng 10000 N/m³) tại địa điểm đó. Tính áp suất tổng cộng tác dụng lên điểm này (theo đơn vị Pa).",
+     "dap_an": "108320",
+     "loi_giai": "Đổi áp suất khí quyển ra Pa: $p_0 = 745 \\times 136 = 101320$ Pa.\nÁp suất tổng cộng tại điểm ở độ sâu h: $p = p_0 + d.h = 101320 + 10000 \\times 0,7 = 101320 + 7000 = 108320$ Pa."
+    },
+    {
+     "ma_cau": "K08020305025",
+     "loai": "tra_loi_ngan",
+     "de": "Tại một địa điểm, áp suất khí quyển đo được qua ống Tô-ri-xe-li là $730 \\text{ mmHg}$ ($1 \\text{ mmHg}$ tương ứng với $136 \\text{ Pa}$). Một điểm nằm ở độ sâu $1,6 \\text{ m}$ dưới mặt thoáng hở của nước (trọng lượng riêng $10000 \\text{ N/m}^3$) tại địa điểm đó. Tính áp suất tổng cộng tác dụng lên điểm này (theo đơn vị Pa).",
+     "dap_an": "115280",
+     "loi_giai": "Đổi áp suất khí quyển ra Pa: $p_0 = 730 \\times 136 = 99280 \\text{ Pa}$.\nÁp suất tổng cộng tại điểm ở độ sâu h: $p = p_0 + \\mathrm{d.h} = 99280 + 10000 \\times 1,6 = 99280 + 16000 = 115280 \\text{ Pa}."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00908",
+   "nhom_id": "KNB00391",
+   "thu_tu": 3,
+   "dang": "Quy đổi áp suất khí quyển, tính áp suất tổng cộng rồi tính áp lực F = p.S",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020305033",
+     "loai": "tu_luan",
+     "de": "Tại một địa điểm, áp suất khí quyển đo được qua ống Tô-ri-xe-li là 762 mmHg (1 mmHg tương ứng với 136 Pa).\nMột tấm phẳng diện tích 35 cm² được đặt nằm ngang, cố định ở độ sâu 1,8 m dưới mặt thoáng hở của dầu hoả (trọng lượng riêng 8000 N/m³) tại địa điểm đó.\nTính áp lực tác dụng lên tấm phẳng.",
+     "dap_an": "413,11",
+     "loi_giai": "Đổi áp suất khí quyển ra Pa: $p_0 = 762 \\times 136 = 103632$ Pa.\nÁp suất tổng cộng tại tấm phẳng: $p = p_0 + d.h = 103632 + 8000 \\times 1,8 = 118032$ Pa.\nĐổi $35 \\text{ cm}^2 = 0,0035 \\text{ m}^2$.\nÁp lực: $F = p.S = 118032 \\times 0,0035 = 413,11 \\text{ N}$."
+    },
+    {
+     "ma_cau": "K08020305034",
+     "loai": "tu_luan",
+     "de": "Tại một địa điểm, áp suất khí quyển đo được qua ống Tô-ri-xe-li là $744\\ \\mathrm{mmHg}$ ($1\\ \\mathrm{mmHg}$ tương ứng với $136\\ \\mathrm{Pa}$). Một tấm phẳng diện tích $60\\ \\mathrm{cm^2}$ được đặt nằm ngang, cố định ở độ sâu $2\\ \\mathrm{m}$ dưới mặt thoáng hở của nước (trọng lượng riêng $10000\\ \\mathrm{N/m^3}$) tại địa điểm đó. Tính áp lực tác dụng lên tấm phẳng.",
+     "dap_an": "727.10",
+     "loi_giai": "Đổi áp suất khí quyển ra Pa: $p_0 = 744 \\times 136 = 101184\\ \\mathrm{Pa}$.\nÁp suất tổng cộng tại tấm phẳng: $p = p_0 + d.h = 101184 + 10000 \\times 2 = 121184\\ \\mathrm{Pa}$.\nĐổi $60\\ \\mathrm{cm^2} = 0.006\\ \\mathrm{m^2}$.\nÁp lực: $F = p.S = 121184 \\times 0.006 = 727.10\\ \\mathrm{N}$."
+    },
+    {
+     "ma_cau": "K08020305036",
+     "loai": "tu_luan",
+     "de": "Tại một địa điểm, áp suất khí quyển đo được qua ống Tô-ri-xe-li là $768\\ \\mathrm{mmHg}$ ($1\\ \\mathrm{mmHg}$ tương ứng với $136\\ \\mathrm{Pa}$). Một tấm phẳng diện tích $25\\ \\mathrm{cm^2}$ được đặt nằm ngang, cố định ở độ sâu $1.4\\ \\mathrm{m}$ dưới mặt thoáng hở của dầu hoả (trọng lượng riêng $8000\\ \\mathrm{N/m^3}$) tại địa điểm đó. Tính áp lực tác dụng lên tấm phẳng.",
+     "dap_an": "289.12",
+     "loi_giai": "Đổi áp suất khí quyển ra Pa: $p_0 = 768 \\times 136 = 104448\\ \\mathrm{Pa}$.\nÁp suất tổng cộng tại tấm phẳng: $p = p_0 + d.h = 104448 + 8000 \\times 1.4 = 115648\\ \\mathrm{Pa}$.\nĐổi $25\\ \\mathrm{cm^2} = 0.0025\\ \\mathrm{m^2}$.\nÁp lực: $F = p.S = 115648 \\times 0.0025 = 289.12\\ \\mathrm{N}$."
+    },
+    {
+     "ma_cau": "K08020305038",
+     "loai": "tu_luan",
+     "de": "Tại một địa điểm, áp suất khí quyển đo được qua ống Tô-ri-xe-li là $760 \\ \\mathrm{mmHg}$ ($1 \\ \\mathrm{mmHg}$ tương ứng với $136 \\ \\mathrm{Pa}$). Một tấm phẳng diện tích $55 \\ \\mathrm{cm^2}$ được đặt nằm ngang, cố định ở độ sâu $1 \\ \\mathrm{m}$ dưới mặt thoáng hở của nước (trọng lượng riêng $10000 \\ \\mathrm{N/m^3}$) tại địa điểm đó. Tính áp lực tác dụng lên tấm phẳng.",
+     "dap_an": "623.48",
+     "loi_giai": "Đổi áp suất khí quyển ra Pa: $p_0 = 760 \\times 136 = 103360 \\ \\mathrm{Pa}$.\nÁp suất tổng cộng tại tấm phẳng: $p = p_0 + \\mathrm{d.h} = 103360 + 10000 \\times 1 = 113360 \\ \\mathrm{Pa}$.\nĐổi $55 \\ \\mathrm{cm^2} = 0,0055 \\ \\mathrm{m^2}$.\nÁp lực: $F = p.S = 113360 \\times 0,0055 = 623,48 \\ \\mathrm{N}$."
+    },
+    {
+     "ma_cau": "K08020305040",
+     "loai": "tu_luan",
+     "de": "Tại một địa điểm, áp suất khí quyển đo được qua ống Tô-ri-xe-li là 766 mmHg ($1$ mmHg tương ứng với $136$ Pa). Một tấm phẳng diện tích $42 \\ \\mathrm{cm^2}$ được đặt nằm ngang, cố định ở độ sâu $2,2 \\ \\mathrm{m}$ dưới mặt thoáng hở của nước (trọng lượng riêng $10000 \\ \\mathrm{N/m^3}$) tại địa điểm đó. Tính áp lực tác dụng lên tấm phẳng.",
+     "dap_an": "529.94",
+     "loi_giai": "Đổi áp suất khí quyển ra Pa: $p_0 = 766 \\times 136 = 104176$ Pa.\nÁp suất tổng cộng tại tấm phẳng: $p = p_0 + d.h = 104176 + 10000 \\times 2,2 = 126176$ Pa.\nĐổi $42 \\ \\mathrm{cm^2} = 0,0042 \\ \\mathrm{m^2}$.\nÁp lực: $F = p.S = 126176 \\times 0,0042 = 529,94$ N."
+    },
+    {
+     "ma_cau": "K08020305032",
+     "loai": "tu_luan",
+     "de": "Tại một địa điểm, áp suất khí quyển đo được qua ống Tô-ri-xe-li là 748 mmHg (1 mmHg tương ứng với 136 Pa).\nMột tấm phẳng diện tích 50 cm² được đặt nằm ngang, cố định ở độ sâu 1,2 m dưới mặt thoáng hở của nước (trọng lượng riêng 10000 N/m³) tại địa điểm đó.\nTính áp lực tác dụng lên tấm phẳng.",
+     "dap_an": "568,64",
+     "loi_giai": "Đổi áp suất khí quyển ra Pa: $p_0 = 748 \\times 136 = 101728$ Pa.\nÁp suất tổng cộng tại tấm phẳng: $p = p_0 + d.h = 101728 + 10000 \\times 1,2 = 113728$ Pa.\nĐổi $50 \\text{ cm}^2 = 0,005 \\text{ m}^2$.\nÁp lực: $F = p.S = 113728 \\times 0,005 = 568,64 \\text{ N}$."
+    }
+   ]
+  }
+ ]
+}

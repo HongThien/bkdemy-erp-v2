@@ -1,0 +1,122 @@
+[
+ {
+  "ma_cau": "K09000000044",
+  "dang_bai_id": "KDB01192",
+  "chac": "cao",
+  "ly_do": "Ý sai hỏi tia tím lệch ít hơn đỏ: quy luật tán sắc"
+ },
+ {
+  "ma_cau": "K09000000045",
+  "dang_bai_id": "KDB01192",
+  "chac": "cao",
+  "ly_do": "Ý sai hỏi tia đỏ lệch nhiều hơn tím: quy luật tán sắc"
+ },
+ {
+  "ma_cau": "K09000000046",
+  "dang_bai_id": "KDB01192",
+  "chac": "cao",
+  "ly_do": "Ý sai: ánh sáng đơn sắc bị tách màu; đơn sắc không tán sắc"
+ },
+ {
+  "ma_cau": "K09000000047",
+  "dang_bai_id": "KDB01192",
+  "chac": "cao",
+  "ly_do": "Ý sai về vị trí đỏ/tím trong cầu vồng, theo quy luật lệch tán sắc"
+ },
+ {
+  "ma_cau": "K09000000048",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "lạc nhóm: màu sắc vật dưới ánh sáng màu (hấp thụ/phản xạ), không phải tán sắc"
+ },
+ {
+  "ma_cau": "K09000000049",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "lạc nhóm: ý sai về vật đen hấp thụ/phản xạ ánh sáng, thuộc màu sắc vật"
+ },
+ {
+  "ma_cau": "K09000000050",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: đường truyền/hướng lệch của tia sáng qua lăng kính (lệch về đáy)"
+ },
+ {
+  "ma_cau": "K09000000051",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: vật ở d=2f, tính khoảng cách ảnh (công thức/dựng ảnh)"
+ },
+ {
+  "ma_cau": "K09000000052",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: vật ở d=2f, tính khoảng cách ảnh (công thức/dựng ảnh)"
+ },
+ {
+  "ma_cau": "K09000000053",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: vật ở d=2f, tính khoảng cách ảnh (công thức/dựng ảnh)"
+ },
+ {
+  "ma_cau": "K09000000054",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: vật ở d=2f, tính khoảng cách ảnh (công thức/dựng ảnh)"
+ },
+ {
+  "ma_cau": "K09000000055",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: ảnh bằng vật d=d′=2f, tính tiêu cự"
+ },
+ {
+  "ma_cau": "K09000000056",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: ảnh bằng vật d=d′=2f, tính tiêu cự"
+ },
+ {
+  "ma_cau": "K09000000057",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: ảnh bằng vật d=d′=2f, tính tiêu cự"
+ },
+ {
+  "ma_cau": "K09000000058",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: ảnh bằng vật d=d′=2f, tính tiêu cự"
+ },
+ {
+  "ma_cau": "K09000000059",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: ảnh bằng vật d=d′=2f, tính tiêu cự"
+ },
+ {
+  "ma_cau": "K09000000060",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: đo tiêu cự bằng L=d+d′=4f"
+ },
+ {
+  "ma_cau": "K09000000061",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: đo tiêu cự bằng L=d+d′=4f"
+ },
+ {
+  "ma_cau": "K09000000062",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: đo tiêu cự bằng L=d+d′=4f"
+ },
+ {
+  "ma_cau": "K09000000063",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: đo tiêu cự bằng L=d+d′=4f"
+ }
+]

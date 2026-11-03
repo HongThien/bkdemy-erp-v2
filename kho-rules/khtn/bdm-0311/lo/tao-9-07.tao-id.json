@@ -1,0 +1,257 @@
+{
+ "KDB01502": {
+  "nhom_id": "KNB00510",
+  "ten": "Nhận biết alkane qua cấu tạo hoặc công thức chung",
+  "cau": [
+   "K09070201001",
+   "K09070201002",
+   "K09070201003"
+  ]
+ },
+ "KDB01503": {
+  "nhom_id": "KNB00510",
+  "ten": "Gọi tên alkane từ công thức phân tử",
+  "cau": [
+   "K09070201004",
+   "K09070201005",
+   "K09070201006"
+  ]
+ },
+ "KDB01504": {
+  "nhom_id": "KNB00510",
+  "ten": "Tính chất vật lí của alkane và alkene có ít carbon",
+  "cau": [
+   "K09070201007",
+   "K09070201008",
+   "K09070201009",
+   "K09070201010"
+  ]
+ },
+ "KDB01505": {
+  "nhom_id": "KNB00511",
+  "ten": "Chọn phương trình đốt cháy hoàn toàn alkane đã cân bằng đúng",
+  "cau": [
+   "K09070202001",
+   "K09070202002",
+   "K09070202003",
+   "K09070202004"
+  ]
+ },
+ "KDB01506": {
+  "nhom_id": "KNB00511",
+  "ten": "Viết phương trình và sản phẩm của phản ứng thế alkane với chlorine",
+  "cau": [
+   "K09070202005",
+   "K09070202007",
+   "K09070202010"
+  ]
+ },
+ "KDB01507": {
+  "nhom_id": "KNB00511",
+  "ten": "Điều kiện và đặc điểm của phản ứng thế ở alkane",
+  "cau": [
+   "K09070202006",
+   "K09070202008",
+   "K09070202009"
+  ]
+ },
+ "KDB01508": {
+  "nhom_id": "KNB00513",
+  "ten": "Tính thể tích oxygen cần dùng khi đốt cháy alkane khí ở đkc",
+  "cau": [
+   "K09070204001",
+   "K09070204002"
+  ]
+ },
+ "KDB01509": {
+  "nhom_id": "KNB00513",
+  "ten": "Tính khối lượng CO₂ sinh ra khi đốt cháy alkane theo phương trình",
+  "cau": [
+   "K09070204003",
+   "K09070204004",
+   "K09070204005",
+   "K09070204006"
+  ]
+ },
+ "KDB01510": {
+  "nhom_id": "KNB00515",
+  "ten": "Nhận biết alkene qua cấu tạo hoặc công thức chung",
+  "cau": [
+   "K09070301001",
+   "K09070301002"
+  ]
+ },
+ "KDB01511": {
+  "nhom_id": "KNB00515",
+  "ten": "Gọi tên alkene từ công thức phân tử",
+  "cau": [
+   "K09070301003",
+   "K09070301004"
+  ]
+ },
+ "KDB01512": {
+  "nhom_id": "KNB00515",
+  "ten": "Tính chất vật lí của ethylene",
+  "cau": [
+   "K09070301005"
+  ]
+ },
+ "KDB01513": {
+  "nhom_id": "KNB00516",
+  "ten": "Chọn phương trình đốt cháy hoàn toàn alkene đúng",
+  "cau": [
+   "K09070302001",
+   "K09070302002"
+  ]
+ },
+ "KDB01514": {
+  "nhom_id": "KNB00516",
+  "ten": "Viết phương trình phản ứng cộng bromine của alkene",
+  "cau": [
+   "K09070302003",
+   "K09070302005",
+   "K09070302006"
+  ]
+ },
+ "KDB01515": {
+  "nhom_id": "KNB00516",
+  "ten": "Viết phương trình phản ứng cộng hydrogen của alkene",
+  "cau": [
+   "K09070302004",
+   "K09070302007"
+  ]
+ },
+ "KDB01516": {
+  "nhom_id": "KNB00518",
+  "ten": "Tính khối lượng sản phẩm cháy khi đốt cháy alkene ở đkc",
+  "cau": [
+   "K09070304001",
+   "K09070304002"
+  ]
+ },
+ "KDB01517": {
+  "nhom_id": "KNB00519",
+  "ten": "Phân loại nhiên liệu theo trạng thái rắn, lỏng, khí",
+  "cau": [
+   "K09070401001",
+   "K09070401002",
+   "K09070401003",
+   "K09070401004",
+   "K09070401005",
+   "K09070401006",
+   "K09070401007",
+   "K09070401008"
+  ]
+ },
+ "KDB01518": {
+  "nhom_id": "KNB00519",
+  "ten": "Sản phẩm chưng cất dầu mỏ và ứng dụng",
+  "cau": [
+   "K09070401009",
+   "K09070401013",
+   "K09070401014"
+  ]
+ },
+ "KDB01519": {
+  "nhom_id": "KNB00519",
+  "ten": "Thành phần và nguồn gốc của các nhiên liệu khí",
+  "cau": [
+   "K09070401010",
+   "K09070401011",
+   "K09070401012",
+   "K09070401015"
+  ]
+ },
+ "KDB01520": {
+  "nhom_id": "KNB00520",
+  "ten": "Nhận biết cháy hoàn toàn và cháy không hoàn toàn",
+  "cau": [
+   "K09070402001",
+   "K09070402004",
+   "K09070402007",
+   "K09070402009",
+   "K09070402013"
+  ]
+ },
+ "KDB01521": {
+  "nhom_id": "KNB00520",
+  "ten": "Giải thích biện pháp tăng diện tích tiếp xúc với oxygen",
+  "cau": [
+   "K09070402002",
+   "K09070402005",
+   "K09070402006",
+   "K09070402008",
+   "K09070402011",
+   "K09070402012",
+   "K09070402016",
+   "K09070402017"
+  ]
+ },
+ "KDB01522": {
+  "nhom_id": "KNB00520",
+  "ten": "Giải thích biện pháp cấp đủ oxygen cho phản ứng cháy",
+  "cau": [
+   "K09070402003",
+   "K09070402010",
+   "K09070402014",
+   "K09070402015",
+   "K09070402018"
+  ]
+ },
+ "KDB01523": {
+  "nhom_id": "KNB00520",
+  "ten": "Phòng cháy nổ khi bảo quản và sử dụng nhiên liệu",
+  "cau": [
+   "K09070402019",
+   "K09070402020",
+   "K09070402024",
+   "K09070402025",
+   "K09070402028",
+   "K09070402029",
+   "K09070402033",
+   "K09070402034",
+   "K09070402044",
+   "K09070402045",
+   "K09070402049"
+  ]
+ },
+ "KDB01524": {
+  "nhom_id": "KNB00520",
+  "ten": "Phòng tránh ngộ độc khí CO",
+  "cau": [
+   "K09070402023",
+   "K09070402026",
+   "K09070402032",
+   "K09070402048"
+  ]
+ },
+ "KDB01525": {
+  "nhom_id": "KNB00520",
+  "ten": "Tác động của nhiên liệu đến môi trường và biện pháp giảm khí thải",
+  "cau": [
+   "K09070402021",
+   "K09070402022",
+   "K09070402027",
+   "K09070402030",
+   "K09070402031",
+   "K09070402035",
+   "K09070402046",
+   "K09070402047",
+   "K09070402050"
+  ]
+ },
+ "KDB01526": {
+  "nhom_id": "KNB00520",
+  "ten": "Tìm nguyên nhân và cách khắc phục khi nhiên liệu cháy không hoàn toàn",
+  "cau": [
+   "K09070402036",
+   "K09070402037",
+   "K09070402038",
+   "K09070402039",
+   "K09070402040",
+   "K09070402041",
+   "K09070402042",
+   "K09070402043"
+  ]
+ }
+}

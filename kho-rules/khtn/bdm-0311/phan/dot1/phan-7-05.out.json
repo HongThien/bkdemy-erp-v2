@@ -1,0 +1,686 @@
+[
+ {
+  "ma_cau": "K07050201001",
+  "dang_bai_id": "KDB01679",
+  "chac": "cao",
+  "ly_do": "gọi tên loại phản xạ"
+ },
+ {
+  "ma_cau": "K07050201002",
+  "dang_bai_id": "KDB01680",
+  "chac": "cao",
+  "ly_do": "vì sao nhìn thấy trang sách từ nhiều hướng"
+ },
+ {
+  "ma_cau": "K07050201003",
+  "dang_bai_id": "KDB01679",
+  "chac": "cao",
+  "ly_do": "chọn bề mặt cho phản xạ khuếch tán"
+ },
+ {
+  "ma_cau": "K07050201004",
+  "dang_bai_id": "KDB01680",
+  "chac": "vua",
+  "ly_do": "tình huống mặt hồ, hỏi hiện tượng; có thể là nhận biết"
+ },
+ {
+  "ma_cau": "K07050201005",
+  "dang_bai_id": "KDB01680",
+  "chac": "cao",
+  "ly_do": "tình huống đời sống hỏi nguyên nhân"
+ },
+ {
+  "ma_cau": "K07050201006",
+  "dang_bai_id": "KDB01680",
+  "chac": "cao",
+  "ly_do": "tình huống đời sống hỏi nguyên nhân"
+ },
+ {
+  "ma_cau": "K07050201007",
+  "dang_bai_id": "KDB01680",
+  "chac": "cao",
+  "ly_do": "tình huống đời sống hỏi nguyên nhân"
+ },
+ {
+  "ma_cau": "K07050201008",
+  "dang_bai_id": "KDB01680",
+  "chac": "cao",
+  "ly_do": "tình huống đời sống hỏi nguyên nhân"
+ },
+ {
+  "ma_cau": "K07050201009",
+  "dang_bai_id": "KDB01680",
+  "chac": "cao",
+  "ly_do": "tình huống đời sống hỏi nguyên nhân"
+ },
+ {
+  "ma_cau": "K07050301001",
+  "dang_bai_id": "KDB01689",
+  "chac": "cao",
+  "ly_do": "đặc điểm ảnh qua gương phẳng"
+ },
+ {
+  "ma_cau": "K07050301002",
+  "dang_bai_id": "KDB01689",
+  "chac": "cao",
+  "ly_do": "đặc điểm ảnh qua gương phẳng"
+ },
+ {
+  "ma_cau": "K07050301003",
+  "dang_bai_id": "KDB01689",
+  "chac": "cao",
+  "ly_do": "đặc điểm ảnh qua gương phẳng"
+ },
+ {
+  "ma_cau": "K07050301004",
+  "dang_bai_id": "KDB01689",
+  "chac": "cao",
+  "ly_do": "đặc điểm ảnh qua gương phẳng"
+ },
+ {
+  "ma_cau": "K07050301005",
+  "dang_bai_id": "KDB01689",
+  "chac": "cao",
+  "ly_do": "đặc điểm ảnh qua gương phẳng"
+ },
+ {
+  "ma_cau": "K07050301006",
+  "dang_bai_id": "KDB01689",
+  "chac": "cao",
+  "ly_do": "đặc điểm ảnh qua gương phẳng"
+ },
+ {
+  "ma_cau": "K07050301007",
+  "dang_bai_id": "KDB01689",
+  "chac": "cao",
+  "ly_do": "đặc điểm ảnh qua gương phẳng"
+ },
+ {
+  "ma_cau": "K07050301008",
+  "dang_bai_id": "KDB01690",
+  "chac": "cao",
+  "ly_do": "phân biệt ảnh ảo/thật, hứng được màn"
+ },
+ {
+  "ma_cau": "K07050301009",
+  "dang_bai_id": "KDB01690",
+  "chac": "cao",
+  "ly_do": "phân biệt ảnh ảo/thật, hứng được màn"
+ },
+ {
+  "ma_cau": "K07050301010",
+  "dang_bai_id": "KDB01690",
+  "chac": "cao",
+  "ly_do": "phân biệt ảnh ảo/thật, hứng được màn"
+ },
+ {
+  "ma_cau": "K07050301011",
+  "dang_bai_id": "KDB01690",
+  "chac": "cao",
+  "ly_do": "phân biệt ảnh ảo/thật, hứng được màn"
+ },
+ {
+  "ma_cau": "K07050301012",
+  "dang_bai_id": "KDB01690",
+  "chac": "cao",
+  "ly_do": "phân biệt ảnh ảo/thật, hứng được màn"
+ },
+ {
+  "ma_cau": "K07050301013",
+  "dang_bai_id": "KDB01690",
+  "chac": "cao",
+  "ly_do": "phân biệt ảnh ảo/thật, hứng được màn"
+ },
+ {
+  "ma_cau": "K07050301014",
+  "dang_bai_id": "KDB01691",
+  "chac": "cao",
+  "ly_do": "khoảng cách vật-ảnh-gương, đứng yên"
+ },
+ {
+  "ma_cau": "K07050301015",
+  "dang_bai_id": "KDB01691",
+  "chac": "cao",
+  "ly_do": "khoảng cách vật-ảnh-gương, đứng yên"
+ },
+ {
+  "ma_cau": "K07050301016",
+  "dang_bai_id": "KDB01691",
+  "chac": "cao",
+  "ly_do": "khoảng cách vật-ảnh-gương, đứng yên"
+ },
+ {
+  "ma_cau": "K07050301017",
+  "dang_bai_id": "KDB01691",
+  "chac": "cao",
+  "ly_do": "khoảng cách vật-ảnh-gương, đứng yên"
+ },
+ {
+  "ma_cau": "K07050301018",
+  "dang_bai_id": "KDB01691",
+  "chac": "cao",
+  "ly_do": "khoảng cách vật-ảnh-gương, đứng yên"
+ },
+ {
+  "ma_cau": "K07050301019",
+  "dang_bai_id": "KDB01691",
+  "chac": "cao",
+  "ly_do": "khoảng cách vật-ảnh-gương, đứng yên"
+ },
+ {
+  "ma_cau": "K07050301020",
+  "dang_bai_id": "KDB01691",
+  "chac": "cao",
+  "ly_do": "khoảng cách vật-ảnh-gương, đứng yên"
+ },
+ {
+  "ma_cau": "K07050301021",
+  "dang_bai_id": "KDB01693",
+  "chac": "cao",
+  "ly_do": "vật dịch gần/xa gương, tính khoảng cách sau"
+ },
+ {
+  "ma_cau": "K07050301022",
+  "dang_bai_id": "KDB01693",
+  "chac": "cao",
+  "ly_do": "vật dịch gần/xa gương, tính khoảng cách sau"
+ },
+ {
+  "ma_cau": "K07050301023",
+  "dang_bai_id": "KDB01693",
+  "chac": "cao",
+  "ly_do": "vật dịch gần/xa gương, tính khoảng cách sau"
+ },
+ {
+  "ma_cau": "K07050301024",
+  "dang_bai_id": "KDB01693",
+  "chac": "cao",
+  "ly_do": "vật dịch gần/xa gương, tính khoảng cách sau"
+ },
+ {
+  "ma_cau": "K07050301025",
+  "dang_bai_id": "KDB01693",
+  "chac": "cao",
+  "ly_do": "vật dịch gần/xa gương, tính khoảng cách sau"
+ },
+ {
+  "ma_cau": "K07050301026",
+  "dang_bai_id": "KDB01693",
+  "chac": "cao",
+  "ly_do": "vật dịch gần/xa gương, tính khoảng cách sau"
+ },
+ {
+  "ma_cau": "K07050301027",
+  "dang_bai_id": "KDB01693",
+  "chac": "cao",
+  "ly_do": "vật dịch gần/xa gương, tính khoảng cách sau"
+ },
+ {
+  "ma_cau": "K07050301028",
+  "dang_bai_id": "KDB01693",
+  "chac": "cao",
+  "ly_do": "vật dịch gần/xa gương, tính khoảng cách sau"
+ },
+ {
+  "ma_cau": "K07050301029",
+  "dang_bai_id": "KDB01692",
+  "chac": "cao",
+  "ly_do": "đọc khoảng cách trên lưới ô vuông"
+ },
+ {
+  "ma_cau": "K07050301030",
+  "dang_bai_id": "KDB01692",
+  "chac": "cao",
+  "ly_do": "đọc khoảng cách trên lưới ô vuông"
+ },
+ {
+  "ma_cau": "K07050301031",
+  "dang_bai_id": "KDB01692",
+  "chac": "cao",
+  "ly_do": "đọc khoảng cách trên lưới ô vuông"
+ },
+ {
+  "ma_cau": "K07050301032",
+  "dang_bai_id": "KDB01692",
+  "chac": "cao",
+  "ly_do": "đọc khoảng cách trên lưới ô vuông"
+ },
+ {
+  "ma_cau": "K07050301033",
+  "dang_bai_id": "KDB01689",
+  "chac": "vua",
+  "ly_do": "so sánh độ dài A′B′ với AB, phụ thuộc hình"
+ },
+ {
+  "ma_cau": "K07050301034",
+  "dang_bai_id": "KDB01696",
+  "chac": "cao",
+  "ly_do": "ứng dụng ảnh đối xứng trái-phải"
+ },
+ {
+  "ma_cau": "K07050301035",
+  "dang_bai_id": "KDB01696",
+  "chac": "cao",
+  "ly_do": "ứng dụng ảnh đối xứng trái-phải"
+ },
+ {
+  "ma_cau": "K07050301036",
+  "dang_bai_id": "KDB01696",
+  "chac": "cao",
+  "ly_do": "ứng dụng ảnh đối xứng trái-phải"
+ },
+ {
+  "ma_cau": "K07050301037",
+  "dang_bai_id": "KDB01696",
+  "chac": "cao",
+  "ly_do": "ứng dụng ảnh đối xứng trái-phải"
+ },
+ {
+  "ma_cau": "K07050301038",
+  "dang_bai_id": "KDB01694",
+  "chac": "cao",
+  "ly_do": "vật chuyển động với tốc độ, tính tốc độ/quãng đường"
+ },
+ {
+  "ma_cau": "K07050301039",
+  "dang_bai_id": "KDB01694",
+  "chac": "cao",
+  "ly_do": "vật chuyển động với tốc độ, tính tốc độ/quãng đường"
+ },
+ {
+  "ma_cau": "K07050301040",
+  "dang_bai_id": "KDB01694",
+  "chac": "cao",
+  "ly_do": "vật chuyển động với tốc độ, tính tốc độ/quãng đường"
+ },
+ {
+  "ma_cau": "K07050301041",
+  "dang_bai_id": "KDB01694",
+  "chac": "cao",
+  "ly_do": "vật chuyển động với tốc độ, tính tốc độ/quãng đường"
+ },
+ {
+  "ma_cau": "K07050301042",
+  "dang_bai_id": "KDB01695",
+  "chac": "cao",
+  "ly_do": "dịch gương, vật đứng yên"
+ },
+ {
+  "ma_cau": "K07050301043",
+  "dang_bai_id": "KDB01695",
+  "chac": "cao",
+  "ly_do": "dịch gương, vật đứng yên"
+ },
+ {
+  "ma_cau": "K07050301044",
+  "dang_bai_id": "KDB01695",
+  "chac": "cao",
+  "ly_do": "dịch gương, vật đứng yên"
+ },
+ {
+  "ma_cau": "K07050301045",
+  "dang_bai_id": "KDB01695",
+  "chac": "cao",
+  "ly_do": "dịch gương, vật đứng yên"
+ },
+ {
+  "ma_cau": "K07050301046",
+  "dang_bai_id": "KDB01695",
+  "chac": "cao",
+  "ly_do": "dịch gương, vật đứng yên"
+ },
+ {
+  "ma_cau": "K07050102001",
+  "dang_bai_id": "KDB01672",
+  "chac": "cao",
+  "ly_do": "nhận biết vùng tối/nửa tối trên màn"
+ },
+ {
+  "ma_cau": "K07050102002",
+  "dang_bai_id": "KDB01672",
+  "chac": "cao",
+  "ly_do": "nhận biết vùng tối/nửa tối trên màn"
+ },
+ {
+  "ma_cau": "K07050102003",
+  "dang_bai_id": "KDB01672",
+  "chac": "cao",
+  "ly_do": "nhận biết vùng tối/nửa tối trên màn"
+ },
+ {
+  "ma_cau": "K07050102004",
+  "dang_bai_id": "KDB01672",
+  "chac": "cao",
+  "ly_do": "nhận biết vùng tối/nửa tối trên màn"
+ },
+ {
+  "ma_cau": "K07050102005",
+  "dang_bai_id": "KDB01672",
+  "chac": "cao",
+  "ly_do": "nhận biết vùng tối/nửa tối trên màn"
+ },
+ {
+  "ma_cau": "K07050102006",
+  "dang_bai_id": "KDB01672",
+  "chac": "cao",
+  "ly_do": "nhận biết vùng tối/nửa tối trên màn"
+ },
+ {
+  "ma_cau": "K07050102007",
+  "dang_bai_id": "KDB01672",
+  "chac": "cao",
+  "ly_do": "nhận biết vùng tối/nửa tối trên màn"
+ },
+ {
+  "ma_cau": "K07050102008",
+  "dang_bai_id": "KDB01673",
+  "chac": "cao",
+  "ly_do": "gọi vai trò nguồn sáng/vật cản/màn chắn"
+ },
+ {
+  "ma_cau": "K07050102009",
+  "dang_bai_id": "KDB01673",
+  "chac": "cao",
+  "ly_do": "gọi vai trò nguồn sáng/vật cản/màn chắn"
+ },
+ {
+  "ma_cau": "K07050102010",
+  "dang_bai_id": "KDB01673",
+  "chac": "cao",
+  "ly_do": "gọi vai trò nguồn sáng/vật cản/màn chắn"
+ },
+ {
+  "ma_cau": "K07050102011",
+  "dang_bai_id": "KDB01673",
+  "chac": "cao",
+  "ly_do": "gọi vai trò nguồn sáng/vật cản/màn chắn"
+ },
+ {
+  "ma_cau": "K07050102012",
+  "dang_bai_id": "KDB01676",
+  "chac": "cao",
+  "ly_do": "hiện tượng quan sát tại vùng bóng / vì sao nhật thực một số nơi"
+ },
+ {
+  "ma_cau": "K07050102013",
+  "dang_bai_id": "KDB01676",
+  "chac": "cao",
+  "ly_do": "hiện tượng quan sát tại vùng bóng / vì sao nhật thực một số nơi"
+ },
+ {
+  "ma_cau": "K07050102014",
+  "dang_bai_id": "KDB01674",
+  "chac": "cao",
+  "ly_do": "dời nguồn nhỏ, vùng tối"
+ },
+ {
+  "ma_cau": "K07050102015",
+  "dang_bai_id": "KDB01675",
+  "chac": "cao",
+  "ly_do": "thay nguồn rộng bằng nhỏ, vùng nửa tối"
+ },
+ {
+  "ma_cau": "K07050102016",
+  "dang_bai_id": "KDB01674",
+  "chac": "cao",
+  "ly_do": "nguồn nhỏ, dời màn/vật cản, vùng tối"
+ },
+ {
+  "ma_cau": "K07050102017",
+  "dang_bai_id": "KDB01674",
+  "chac": "cao",
+  "ly_do": "nguồn nhỏ, dời màn/vật cản, vùng tối"
+ },
+ {
+  "ma_cau": "K07050102018",
+  "dang_bai_id": "KDB01674",
+  "chac": "cao",
+  "ly_do": "nguồn nhỏ, dời màn/vật cản, vùng tối"
+ },
+ {
+  "ma_cau": "K07050102019",
+  "dang_bai_id": "KDB01674",
+  "chac": "cao",
+  "ly_do": "nguồn nhỏ, dời màn/vật cản, vùng tối"
+ },
+ {
+  "ma_cau": "K07050102020",
+  "dang_bai_id": "KDB01676",
+  "chac": "cao",
+  "ly_do": "nhật/nguyệt thực tại một vùng bóng"
+ },
+ {
+  "ma_cau": "K07050102021",
+  "dang_bai_id": "KDB01676",
+  "chac": "cao",
+  "ly_do": "nhật/nguyệt thực tại một vùng bóng"
+ },
+ {
+  "ma_cau": "K07050102022",
+  "dang_bai_id": "KDB01676",
+  "chac": "cao",
+  "ly_do": "nhật/nguyệt thực tại một vùng bóng"
+ },
+ {
+  "ma_cau": "K07050102023",
+  "dang_bai_id": "KDB01676",
+  "chac": "cao",
+  "ly_do": "nhật/nguyệt thực tại một vùng bóng"
+ },
+ {
+  "ma_cau": "K07050102024",
+  "dang_bai_id": "KDB01676",
+  "chac": "cao",
+  "ly_do": "nhật/nguyệt thực tại một vùng bóng"
+ },
+ {
+  "ma_cau": "K07050102025",
+  "dang_bai_id": "KDB01676",
+  "chac": "cao",
+  "ly_do": "nhật/nguyệt thực tại một vùng bóng"
+ },
+ {
+  "ma_cau": "K07050102026",
+  "dang_bai_id": "KDB01678",
+  "chac": "cao",
+  "ly_do": "tình huống đời sống giảm vùng tối"
+ },
+ {
+  "ma_cau": "K07050102027",
+  "dang_bai_id": "KDB01678",
+  "chac": "cao",
+  "ly_do": "tình huống đời sống giảm vùng tối"
+ },
+ {
+  "ma_cau": "K07050102028",
+  "dang_bai_id": "KDB01678",
+  "chac": "cao",
+  "ly_do": "tình huống đời sống giảm vùng tối"
+ },
+ {
+  "ma_cau": "K07050102029",
+  "dang_bai_id": "KDB01678",
+  "chac": "cao",
+  "ly_do": "tình huống đời sống giảm vùng tối"
+ },
+ {
+  "ma_cau": "K07050102030",
+  "dang_bai_id": "KDB01678",
+  "chac": "cao",
+  "ly_do": "tình huống đời sống giảm vùng tối"
+ },
+ {
+  "ma_cau": "K07050102031",
+  "dang_bai_id": "KDB01678",
+  "chac": "cao",
+  "ly_do": "tình huống đời sống giảm vùng tối"
+ },
+ {
+  "ma_cau": "K07050102032",
+  "dang_bai_id": "KDB01674",
+  "chac": "cao",
+  "ly_do": "nguồn nhỏ dời nguồn/màn, vùng tối"
+ },
+ {
+  "ma_cau": "K07050102033",
+  "dang_bai_id": "KDB01674",
+  "chac": "cao",
+  "ly_do": "nguồn nhỏ dời nguồn/màn, vùng tối"
+ },
+ {
+  "ma_cau": "K07050102034",
+  "dang_bai_id": "KDB01674",
+  "chac": "cao",
+  "ly_do": "nguồn nhỏ dời nguồn/màn, vùng tối"
+ },
+ {
+  "ma_cau": "K07050102035",
+  "dang_bai_id": "KDB01675",
+  "chac": "cao",
+  "ly_do": "nguồn rộng đổi kích thước, tối và nửa tối"
+ },
+ {
+  "ma_cau": "K07050102036",
+  "dang_bai_id": "KDB01675",
+  "chac": "cao",
+  "ly_do": "nguồn rộng đổi kích thước, tối và nửa tối"
+ },
+ {
+  "ma_cau": "K07050102037",
+  "dang_bai_id": "KDB01674",
+  "chac": "cao",
+  "ly_do": "nguồn nhỏ dời màn/kết hợp, vùng tối"
+ },
+ {
+  "ma_cau": "K07050102038",
+  "dang_bai_id": "KDB01674",
+  "chac": "cao",
+  "ly_do": "nguồn nhỏ dời màn/kết hợp, vùng tối"
+ },
+ {
+  "ma_cau": "K07050102039",
+  "dang_bai_id": "KDB01675",
+  "chac": "cao",
+  "ly_do": "nguồn rộng, vùng nửa tối kết hợp thay đổi"
+ },
+ {
+  "ma_cau": "K07050102040",
+  "dang_bai_id": "KDB01677",
+  "chac": "cao",
+  "ly_do": "ghép hiện tượng cho ba người ở ba vùng"
+ },
+ {
+  "ma_cau": "K07050102041",
+  "dang_bai_id": "KDB01677",
+  "chac": "cao",
+  "ly_do": "ghép hiện tượng cho ba người ở ba vùng"
+ },
+ {
+  "ma_cau": "K07050102042",
+  "dang_bai_id": "KDB01677",
+  "chac": "cao",
+  "ly_do": "ghép hiện tượng cho ba người ở ba vùng"
+ },
+ {
+  "ma_cau": "K07050102043",
+  "dang_bai_id": "KDB01677",
+  "chac": "cao",
+  "ly_do": "ghép hiện tượng cho ba người ở ba vùng"
+ },
+ {
+  "ma_cau": "K07050102044",
+  "dang_bai_id": "KDB01677",
+  "chac": "cao",
+  "ly_do": "ghép hiện tượng cho ba người ở ba vùng"
+ },
+ {
+  "ma_cau": "K07050102045",
+  "dang_bai_id": "KDB01677",
+  "chac": "cao",
+  "ly_do": "ghép hiện tượng cho ba người ở ba vùng"
+ },
+ {
+  "ma_cau": "K07050102046",
+  "dang_bai_id": "KDB01677",
+  "chac": "cao",
+  "ly_do": "ghép hiện tượng cho ba người ở ba vùng"
+ },
+ {
+  "ma_cau": "K07050302001",
+  "dang_bai_id": "KDB01697",
+  "chac": "cao",
+  "ly_do": "chọn hình ảnh A′B′ đúng"
+ },
+ {
+  "ma_cau": "K07050302002",
+  "dang_bai_id": "KDB01697",
+  "chac": "cao",
+  "ly_do": "chọn hình ảnh A′B′ đúng"
+ },
+ {
+  "ma_cau": "K07050302003",
+  "dang_bai_id": "KDB01697",
+  "chac": "cao",
+  "ly_do": "chọn hình ảnh A′B′ đúng"
+ },
+ {
+  "ma_cau": "K07050302004",
+  "dang_bai_id": "KDB01697",
+  "chac": "cao",
+  "ly_do": "chọn hình ảnh A′B′ đúng"
+ },
+ {
+  "ma_cau": "K07050302005",
+  "dang_bai_id": "KDB01697",
+  "chac": "cao",
+  "ly_do": "chọn hình ảnh A′B′ đúng"
+ },
+ {
+  "ma_cau": "K07050302006",
+  "dang_bai_id": "KDB01698",
+  "chac": "cao",
+  "ly_do": "chọn hình tia sáng tới mắt"
+ },
+ {
+  "ma_cau": "K07050302007",
+  "dang_bai_id": "KDB01698",
+  "chac": "cao",
+  "ly_do": "chọn hình tia sáng tới mắt"
+ },
+ {
+  "ma_cau": "K07050302008",
+  "dang_bai_id": "KDB01698",
+  "chac": "cao",
+  "ly_do": "chọn hình tia sáng tới mắt"
+ },
+ {
+  "ma_cau": "K07050302009",
+  "dang_bai_id": "KDB01698",
+  "chac": "cao",
+  "ly_do": "chọn hình tia sáng tới mắt"
+ },
+ {
+  "ma_cau": "K07050203001",
+  "dang_bai_id": "KDB01687",
+  "chac": "cao",
+  "ly_do": "quay gương, tính góc tia phản xạ/góc SIR"
+ },
+ {
+  "ma_cau": "K07050203002",
+  "dang_bai_id": "KDB01687",
+  "chac": "cao",
+  "ly_do": "quay gương, tính góc tia phản xạ/góc SIR"
+ },
+ {
+  "ma_cau": "K07050203003",
+  "dang_bai_id": "KDB01688",
+  "chac": "cao",
+  "ly_do": "biết góc quay tia phản xạ, tính góc quay gương"
+ },
+ {
+  "ma_cau": "K07050203004",
+  "dang_bai_id": "KDB01688",
+  "chac": "cao",
+  "ly_do": "biết góc quay tia phản xạ, tính góc quay gương"
+ }
+]

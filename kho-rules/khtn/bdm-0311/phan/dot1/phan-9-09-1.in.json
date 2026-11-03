@@ -1,0 +1,464 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00542",
+   "chu_de": "Lipid, Carbohydrate, Protein & Polymer",
+   "chuyen_de": "Polymer",
+   "nhom": "Ứng dụng thực tế và tác hại của polymer",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nChất dẻo (PE, PVC...) nhẹ, bền, dễ tạo hình, cách điện và cách nhiệt tốt, khó bị phân huỷ trong tự nhiên.\nPE dùng làm túi nilon, màng bọc; PVC dùng làm ống dẫn nước, vỏ bọc dây điện.\nCao su có tính đàn hồi đặc trưng; nylon là tơ tổng hợp được sản xuất bằng cách tổng hợp hoá học từ các monomer.\nRác thải nhựa phân huỷ rất chậm, gây ô nhiễm đất, nước, biển và hại sinh vật; đốt nhựa ngoài trời sinh khí độc.\nThứ tự ưu tiên xử lí rác thải nhựa: giảm dùng $\\rightarrow$ tái sử dụng $\\rightarrow$ tái chế $\\rightarrow$ xử lí cuối.\n\n##CY 2. Lưu ý\nChất dẻo dẫn nhiệt kém; ở nhiệt độ cao có thể mềm, biến dạng và thôi chất độc vào thức ăn.\nBiện pháp chỉ mang tính hình thức (như in khẩu hiệu) không làm giảm lượng nhựa thải ra.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01587",
+     "thu_tu": 1,
+     "ten": "Tính chất và ứng dụng của chất dẻo, cao su, tơ",
+     "mo_ta": "Đề hỏi vật liệu nào là chất dẻo, đặc điểm chung của chất dẻo, ứng dụng của PE, PVC, tính đàn hồi của cao su, cách sản xuất nylon.\nLàm bằng cách nhớ tính chất và ứng dụng của từng loại vật liệu polymer.\nLưu ý: câu hỏi tác hại, an toàn khi dùng nhựa hoặc biện pháp giảm rác thải ⇒ thuộc dạng \"Tác hại của chất dẻo và biện pháp giảm rác thải nhựa\".",
+     "ly_thuyet": "##TC Vật liệu polymer\nPE: túi nilon, màng bọc thực phẩm. PVC: ống dẫn nước, vỏ bọc dây điện (nhẹ, bền, cách điện, chống ăn mòn).\nCao su có tính đàn hồi: kéo giãn hoặc nén rồi thả ra thì trở lại gần như hình dạng ban đầu.\nNylon là tơ tổng hợp, sản xuất bằng cách tổng hợp hoá học từ các monomer.\n\n##CY Lỗi hay mắc\nNhầm vật liệu xây dựng chịu lực (thép, bê tông) với chất dẻo.\nCho rằng cao su dẫn điện tốt; thực tế cao su là vật liệu cách điện.",
+     "vi_du": "##VD\nPVC (polyvinyl chloride) là chất dẻo thường được dùng làm vật liệu nào trong xây dựng?\nA. Ống dẫn nước, vỏ bọc dây điện\nB. Khung nhà chịu lực chính\nC. Nền móng công trình\nD. Cốt thép bê tông\n\nBài giải:\nPVC nhẹ, bền, cách điện tốt, chống ăn mòn nên dùng làm ống dẫn nước và vỏ bọc dây điện.\nKhung chịu lực, nền móng và cốt thép cần thép hoặc bê tông chịu lực lớn, không dùng chất dẻo.\nChọn A.\n\n##VD\nCao su tự nhiên có tính chất đặc trưng nào giúp phân biệt với chất dẻo thông thường?\nA. Không tạo hình được theo khuôn\nB. Dẫn điện tốt như kim loại\nC. Tan tốt trong nước\nD. Tính đàn hồi\n\nBài giải:\nCao su có tính đàn hồi đặc trưng: kéo giãn hoặc nén rồi thả ra thì trở lại gần như hình dạng ban đầu.\nCao su và chất dẻo đều tạo hình được theo khuôn; cao su cách điện chứ không dẫn điện; cao su không tan trong nước.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01588",
+     "thu_tu": 2,
+     "ten": "Tác hại của chất dẻo và biện pháp giảm rác thải nhựa",
+     "mo_ta": "Đề hỏi vì sao không nên đựng thức ăn nóng trong hộp nhựa, biện pháp nào không giảm rác thải nhựa, vì sao tái chế hoặc giảm dùng được ưu tiên.\nLàm bằng cách giải thích dựa vào tác hại của nhựa và thứ tự ưu tiên giảm, tái sử dụng, tái chế.\nLưu ý: câu nêu một đề xuất của một nhóm người rồi hỏi nhận xét đúng ⇒ thuộc dạng \"Đánh giá đề xuất xử lí rác thải nhựa\".",
+     "ly_thuyet": "##TC Tác hại và biện pháp\nThức ăn nóng trong hộp chất dẻo thông thường có thể làm hộp mềm, biến dạng, thôi chất độc vào thức ăn.\nTái chế chai nhựa PET thành sợi vải giúp tận dụng nhựa cũ, giảm khai thác nguyên liệu mới và giảm rác thải.\nƯu tiên: giảm dùng $\\rightarrow$ tái sử dụng $\\rightarrow$ tái chế $\\rightarrow$ xử lí cuối; giảm dùng ngăn rác từ gốc.\n\n##CY Lỗi hay mắc\nCho rằng chất dẻo dẫn nhiệt tốt; thực tế chất dẻo dẫn nhiệt kém.\nCho rằng tái chế loại bỏ được mọi rác thải nhựa; tái chế chỉ giảm bớt rác thải.\nChọn biện pháp làm tăng rác thải (vứt chai nhựa sau một lần dùng) là biện pháp giảm rác.",
+     "vi_du": "##VD\nVì sao không nên đựng thức ăn nóng (trên 100°C) trong hộp làm từ chất dẻo thông thường như PE?\nA. Vì chất dẻo dẫn nhiệt quá tốt\nB. Vì chất dẻo có thể mềm, biến dạng, thôi chất độc\nC. Vì chất dẻo tạo khí độc ngay ở nhiệt độ thường\nD. Vì chất dẻo chỉ đổi màu, không ảnh hưởng gì\n\nBài giải:\nỞ nhiệt độ cao, chất dẻo có thể mềm, biến dạng hoặc giải phóng chất phụ gia có hại vào thức ăn.\nChất dẻo dẫn nhiệt kém; ở nhiệt độ thường hộp chất dẻo vẫn dùng an toàn.\nChọn B.\n\n##VD\nVì sao việc tái chế chai nhựa PET thành sợi vải may quần áo được coi là biện pháp giảm rác thải nhựa hiệu quả?\nA. Vì sợi vải tái chế không còn là chất dẻo\nB. Vì tái chế biến nhựa thành chất dễ phân huỷ\nC. Vì tận dụng nhựa cũ, giảm khai thác mới và rác thải\nD. Vì tái chế loại bỏ được mọi rác thải nhựa\n\nBài giải:\nTái chế tận dụng nhựa đã qua sử dụng thay vì thải bỏ.\nNhờ vậy giảm nhu cầu khai thác nguyên liệu mới và giảm lượng rác thải nhựa tồn đọng.\nSợi PET tái chế vẫn là chất dẻo, vẫn khó phân huỷ, và tái chế chỉ giảm bớt chứ không loại bỏ mọi rác thải nhựa.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01589",
+     "thu_tu": 3,
+     "ten": "Đánh giá đề xuất xử lí rác thải nhựa",
+     "mo_ta": "Đề nêu đề xuất của một gia đình, trường học, địa phương, nhà máy, công ty về cách xử lí hoặc giảm rác thải nhựa rồi hỏi nhận xét đúng.\nLàm bằng cách xét đề xuất có thực sự giảm rác thải, có gây hại môi trường không, rồi chọn kết luận kèm lí do đúng.\nLưu ý: câu hỏi trực tiếp không có đề xuất ⇒ thuộc dạng \"Tác hại của chất dẻo và biện pháp giảm rác thải nhựa\".",
+     "ly_thuyet": "##TC Cơ sở đánh giá\nĐốt nhựa ngoài trời sinh nhiều khí độc, gây ô nhiễm không khí.\nNhựa phân huỷ rất chậm, xả xuống biển gây hại sinh vật biển.\nThay nhựa dùng một lần bằng giấy, tre (phân huỷ nhanh hơn), thu phí túi nilon, thu gom và phân loại rác tái chế là các biện pháp hợp lí.\nChỉ in khẩu hiệu mà không giảm sản xuất hay đổi vật liệu thì lượng rác thải nhựa không giảm.\n\n##PP Cách làm\nXác định đề xuất tác động thế nào đến lượng rác thải và môi trường\nĐối chiếu với tác hại của nhựa và thứ tự ưu tiên giảm dùng, tái sử dụng, tái chế\nChọn phương án có kết luận đúng kèm lí do đúng\n\n##CY Lỗi hay mắc\nChọn đúng kết luận nhưng lí do sai.\nTưởng đốt rác nhựa hoặc xả xuống biển là cách giải quyết nhanh và an toàn.",
+     "vi_du": "##VD\nMột gia đình đề xuất: đốt túi nhựa trong vườn nhà để giảm rác thải nhanh chóng, tiết kiệm chi phí thu gom. Nhận xét đúng về đề xuất này là\nA. Đúng, vì đốt giúp rác nhựa biến mất nhanh, an toàn\nB. Sai, vì đốt làm mất khả năng tái chế, không sinh khí độc\nC. Đúng, vì khói nhựa bay lên cao rồi tan hết\nD. Sai, vì đốt nhựa ngoài trời sinh ra nhiều khí độc\n\nBài giải:\nĐốt nhựa ngoài trời ở nhiệt độ không đủ cao sinh ra nhiều khí độc.\nKhí độc gây ô nhiễm không khí nên đề xuất này sai.\nA và C sai vì đốt không an toàn và khói độc vẫn ở trong không khí; B sai vì đốt nhựa vẫn sinh khí độc.\nChọn D.\n\n##VD\nMột trường học đề xuất: thay ống hút nhựa dùng một lần bằng ống hút giấy hoặc ống hút tre, vì các vật liệu này phân huỷ nhanh hơn và giảm rác thải nhựa. Nhận xét đúng về đề xuất này là\nA. Sai, vì ống hút giấy, tre cũng là một loại nhựa\nB. Đúng, vì giấy, tre phân huỷ nhanh hơn nhựa nhiều\nC. Sai, vì ống hút giấy, tre đắt nên không nên dùng\nD. Đúng, vì giấy, tre không bao giờ trở thành rác\n\nBài giải:\nỐng hút giấy, tre có nguồn gốc tự nhiên, phân huỷ nhanh hơn nhựa nhiều.\nThay ống hút nhựa dùng một lần bằng chúng giúp giảm rác thải nhựa nên đề xuất đúng.\nA sai vì giấy, tre không phải nhựa; C sai vì tiêu chí đánh giá là tác động môi trường; D sai vì chúng vẫn thành rác sau khi dùng, chỉ là phân huỷ nhanh hơn.\nChọn B."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00536",
+   "chu_de": "Lipid, Carbohydrate, Protein & Polymer",
+   "chuyen_de": "Carbohydrate",
+   "nhom": "Bài toán Chuỗi phản ứng lên men Glucose (đa hiệu suất)",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nHai giai đoạn: thuỷ phân tinh bột $\\mathrm{(C_6H_{10}O_5)_n + nH_2O \\rightarrow nC_6H_{12}O_6}$, rồi lên men glucose $\\mathrm{C_6H_{12}O_6 \\rightarrow 2C_2H_5OH + 2CO_2}$.\nSơ đồ khối lượng: 162 g tinh bột $\\rightarrow$ 180 g glucose $\\rightarrow$ 92 g $\\mathrm{C_2H_5OH}$ và 88 g $\\mathrm{CO_2}$ (hiệu suất 100%).\nHiệu suất chung bằng tích các hiệu suất từng giai đoạn: $H = H_1 \\times H_2$.\nNguyên liệu có tạp chất: $m(\\text{tinh bột}) = m(\\text{nguyên liệu}) \\times \\%\\text{tinh bột}$.\n\n##PP 2. Các bước làm bài\nTính khối lượng tinh bột nguyên chất\nĐổi sang số mol mắt xích (chia cho 162) hoặc dùng sơ đồ khối lượng\nNhân lần lượt hiệu suất từng giai đoạn, rồi tính khối lượng hoặc thể tích sản phẩm\n\n##CY 3. Lưu ý\nPhải nhân đủ cả hai hiệu suất; quên một giai đoạn là sai.\nDùng khối lượng tinh bột nguyên chất, không dùng khối lượng nguyên liệu thô.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01580",
+     "thu_tu": 1,
+     "ten": "Tính xuôi từ tinh bột nguyên chất qua hai giai đoạn có hiệu suất",
+     "mo_ta": "Đề cho khối lượng tinh bột nguyên chất (gam hoặc tấn), hiệu suất thuỷ phân và hiệu suất lên men; hỏi khối lượng ethylic alcohol, khối lượng hoặc thể tích $\\mathrm{CO_2}$.\nLàm bằng cách tính số mol mắt xích, nhân tỉ lệ rồi nhân lần lượt hai hiệu suất.\nLưu ý: nguyên liệu cho theo khối lượng thô có phần trăm tinh bột ⇒ thuộc dạng \"Tính xuôi từ nguyên liệu chứa tạp chất qua hai giai đoạn\".",
+     "ly_thuyet": "##TC Tính theo sơ đồ\n$n(\\text{mắt xích}) = \\dfrac{m(\\text{tinh bột})}{162}$.\n$n(\\text{glucose}) = n(\\text{mắt xích}) \\times H_1$; $n(\\mathrm{C_2H_5OH}) = 2\\,n(\\text{glucose}) \\times H_2$; $n(\\mathrm{CO_2}) = 2\\,n(\\text{glucose}) \\times H_2$.\nKhối lượng mol: $\\mathrm{C_2H_5OH}$ = 46; $\\mathrm{CO_2}$ = 44; thể tích khí ở đkc dùng 24,79 L/mol.\n\n##PP Cách làm\nTính số mol mắt xích tinh bột\nNhân $H_1$ để có số mol glucose thực tế\nNhân 2 và nhân $H_2$ để có số mol sản phẩm thực tế\nĐổi ra khối lượng hoặc thể tích\n\n##CY Lỗi hay mắc\nQuên nhân hiệu suất một giai đoạn.\nQuên hệ số 2 trước $\\mathrm{C_2H_5OH}$ hoặc $\\mathrm{CO_2}$.\nDùng 22,4 L/mol thay cho 24,79 L/mol ở đkc.",
+     "vi_du": "##VD\nThuỷ phân 3240 g tinh bột với hiệu suất 90%, sau đó lên men toàn bộ glucose thu được với hiệu suất 50%. Tính khối lượng ethylic alcohol tạo thành.\nA. 1656 g\nB. 920 g\nC. 828 g\nD. 414 g\n\nBài giải:\n$n(\\text{mắt xích}) = \\dfrac{3240}{162} = 20$ mol.\n$n(\\text{glucose})$ thực tế $= 20 \\times 90\\% = 18$ mol.\n$n(\\mathrm{C_2H_5OH})$ lí thuyết $= 2 \\times 18 = 36$ mol; thực tế $= 36 \\times 50\\% = 18$ mol.\n$m(\\mathrm{C_2H_5OH}) = 18 \\times 46 = 828$ g.\nChọn C.\n\n##VD\nNguyên liệu sắn khối lượng 6,48 tấn tinh bột nguyên chất được thuỷ phân với hiệu suất 75%, sau đó lên men toàn bộ glucose thu được với hiệu suất 75%. Tính khối lượng ethylic alcohol thu được.\nA. 2,59 tấn\nB. 2,76 tấn\nC. 1,04 tấn\nD. 2,07 tấn\n\nBài giải:\nTheo sơ đồ: 162 tấn tinh bột $\\rightarrow$ 92 tấn $\\mathrm{C_2H_5OH}$ (hiệu suất 100%).\nLí thuyết: $6{,}48 \\times \\dfrac{92}{162} = 3{,}68$ tấn.\nThực tế: $3{,}68 \\times 75\\% \\times 75\\% = 2{,}07$ tấn.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01581",
+     "thu_tu": 2,
+     "ten": "Tính xuôi từ nguyên liệu chứa tạp chất qua hai giai đoạn",
+     "mo_ta": "Đề cho khối lượng nguyên liệu (gạo, sắn, khoai) chứa phần trăm tinh bột, còn lại là tạp chất trơ; kèm hiệu suất thuỷ phân và lên men; hỏi ethylic alcohol hoặc $\\mathrm{CO_2}$.\nLàm bằng cách tính tinh bột nguyên chất từ phần trăm rồi tính như bài hai giai đoạn.\nLưu ý: đề cho khối lượng tinh bột nguyên chất ngay từ đầu ⇒ thuộc dạng \"Tính xuôi từ tinh bột nguyên chất qua hai giai đoạn có hiệu suất\".",
+     "ly_thuyet": "##TC Nguyên liệu có tạp chất\n$m(\\text{tinh bột}) = m(\\text{nguyên liệu}) \\times \\%\\text{tinh bột}$.\nSau đó tính theo sơ đồ: 162 g tinh bột $\\rightarrow$ 92 g $\\mathrm{C_2H_5OH}$ và 88 g $\\mathrm{CO_2}$, nhân $H_1 \\times H_2$.\n\n##PP Cách làm\nTính khối lượng tinh bột nguyên chất bằng phần trăm\nTính lượng sản phẩm lí thuyết theo sơ đồ khối lượng\nNhân hiệu suất hai giai đoạn\n\n##CY Lỗi hay mắc\nDùng khối lượng nguyên liệu thô thay cho tinh bột nguyên chất.\nQuên nhân hiệu suất lên men hoặc quên hệ số 2.",
+     "vi_du": "##VD\nNguyên liệu gạo khối lượng 18 tấn chứa 90% tinh bột (còn lại là tạp chất trơ) được thuỷ phân với hiệu suất 80%, sau đó lên men toàn bộ glucose thu được với hiệu suất 75%. Tính khối lượng $\\mathrm{CO_2}$ thải ra.\nA. 5,28 tấn\nB. 5,87 tấn\nC. 7,04 tấn\nD. 2,64 tấn\n\nBài giải:\n$m(\\text{tinh bột}) = 18 \\times 90\\% = 16{,}2$ tấn.\nTheo sơ đồ: 162 tấn tinh bột $\\rightarrow$ 88 tấn $\\mathrm{CO_2}$ (hiệu suất 100%).\nLí thuyết: $16{,}2 \\times \\dfrac{88}{162} = 8{,}8$ tấn.\nThực tế: $8{,}8 \\times 80\\% \\times 75\\% = 5{,}28$ tấn.\nChọn A.\n\n##VD\nNguyên liệu khoai mì (sắn) khối lượng 30 tấn chứa 54% tinh bột (còn lại là tạp chất trơ) được thuỷ phân với hiệu suất 75%, sau đó lên men toàn bộ glucose thu được với hiệu suất 80%. Tính khối lượng ethylic alcohol thu được.\nA. 5,52 tấn\nB. 10,22 tấn\nC. 6,9 tấn\nD. 2,76 tấn\n\nBài giải:\n$m(\\text{tinh bột}) = 30 \\times 54\\% = 16{,}2$ tấn.\nTheo sơ đồ: 162 tấn tinh bột $\\rightarrow$ 92 tấn $\\mathrm{C_2H_5OH}$.\nLí thuyết: $16{,}2 \\times \\dfrac{92}{162} = 9{,}2$ tấn.\nThực tế: $9{,}2 \\times 75\\% \\times 80\\% = 5{,}52$ tấn.\nChọn A."
+    },
+    {
+     "dang_id": "KDB01582",
+     "thu_tu": 3,
+     "ten": "Tính ngược khối lượng tinh bột từ lượng sản phẩm thu được",
+     "mo_ta": "Đề cho khối lượng ethylic alcohol thực tế thu được cùng hiệu suất hai giai đoạn, hỏi khối lượng tinh bột đã dùng.\nLàm bằng cách đi ngược: chia cho từng hiệu suất rồi dùng sơ đồ khối lượng.\nLưu ý: đề cho tinh bột và hỏi sản phẩm ⇒ thuộc hai dạng tính xuôi.",
+     "ly_thuyet": "##TC Tính ngược\n$m(\\mathrm{C_2H_5OH})_{\\text{lí thuyết}} = m_{\\text{thực tế}} : H_2$.\nTheo sơ đồ: 92 g $\\mathrm{C_2H_5OH}$ $\\leftarrow$ 180 g glucose $\\leftarrow$ 162 g tinh bột.\n$m(\\text{tinh bột}) = m(\\mathrm{C_2H_5OH})_{\\text{lí thuyết}} \\times \\dfrac{162}{92} : H_1$.\n\n##PP Cách làm\nChia lượng ethylic alcohol thực tế cho $H_2$ để có lí thuyết\nDùng sơ đồ khối lượng để suy ra tinh bột lí thuyết\nChia cho $H_1$ để có khối lượng tinh bột cần dùng\n\n##CY Lỗi hay mắc\nQuên chia cho một trong hai hiệu suất.\nNhân với hiệu suất thay vì chia khi tính ngược.",
+     "vi_du": "##VD\nTừ tinh bột, qua hai giai đoạn thuỷ phân (hiệu suất 80%) rồi lên men rượu (hiệu suất 75%), người ta thu được 138 g ethylic alcohol. Khối lượng tinh bột đã dùng là\nA. 405 g\nB. 324 g\nC. 450 g\nD. 337,5 g\n\nBài giải:\nEthylic alcohol lí thuyết: $138 : 75\\% = 184$ g.\nGlucose cần có: $184 \\times \\dfrac{180}{92} = 360$ g.\nTinh bột lí thuyết: $360 \\times \\dfrac{162}{180} = 324$ g.\nTinh bột đã dùng: $324 : 80\\% = 405$ g.\nChọn A."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K09090403001",
+   "nhom_id": "KNB00542",
+   "loai": "trac_nghiem",
+   "de": "Vật liệu nào sau đây thuộc loại chất dẻo?",
+   "lua_chon": [
+    "Sắt",
+    "Đá vôi",
+    "Polyethylene (PE)",
+    "Thuỷ tinh"
+   ],
+   "dap_an": "C",
+   "loi_giai": "PE là polymer tổng hợp thuộc nhóm chất dẻo, nhẹ, dẻo, không dẫn điện.\n\nVì sao các phương án khác sai:\n- A: Sắt là kim loại, không thuộc loại chất dẻo.\n- B: Đá vôi là khoáng vật CaCO₃, không phải chất dẻo.\n- D: Thuỷ tinh là vật liệu silicate, không phải chất dẻo."
+  },
+  {
+   "ma_cau": "K09090403002",
+   "nhom_id": "KNB00542",
+   "loai": "trac_nghiem",
+   "de": "Đặc điểm nào sau đây KHÔNG đúng với chất dẻo như PE, PVC?",
+   "lua_chon": [
+    "Nhẹ, dễ tạo hình theo nhiều khuôn khác nhau",
+    "Không dẫn điện, không dẫn nhiệt tốt",
+    "Khó bị phân huỷ trong tự nhiên",
+    "Dẫn điện tốt như kim loại"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Chất dẻo là chất cách điện, KHÔNG dẫn điện tốt như kim loại; đây là đặc điểm không đúng với chất dẻo.\n\nVì sao các phương án khác sai:\n- A: Đây là đặc điểm đúng của chất dẻo, không phải đáp án cần chọn.\n- B: Đây cũng là đặc điểm đúng của chất dẻo, không phải đáp án cần chọn.\n- C: Đây là đặc điểm đúng, chất dẻo khó phân huỷ trong tự nhiên."
+  },
+  {
+   "ma_cau": "K09090403003",
+   "nhom_id": "KNB00542",
+   "loai": "trac_nghiem",
+   "de": "Túi nhựa dùng đóng gói thực phẩm thường được làm chủ yếu từ chất dẻo nào?",
+   "lua_chon": [
+    "Polyethylene (PE)",
+    "Cao su tự nhiên",
+    "Protein",
+    "Cellulose"
+   ],
+   "dap_an": "A",
+   "loi_giai": "PE nhẹ, dẻo, không thấm nước, giá rẻ nên được dùng phổ biến làm túi nhựa.\n\nVì sao các phương án khác sai:\n- B: Cao su tự nhiên có tính đàn hồi, dùng làm lốp xe, đệm, không làm túi nhựa mỏng.\n- C: Protein không phải vật liệu polymer dùng làm túi nhựa.\n- D: Cellulose không phải chất dẻo, không dùng làm túi nhựa."
+  },
+  {
+   "ma_cau": "K09090403004",
+   "nhom_id": "KNB00542",
+   "loai": "trac_nghiem",
+   "de": "PVC (polyvinyl chloride) là chất dẻo thường được dùng làm vật liệu nào trong xây dựng?",
+   "lua_chon": [
+    "Ống dẫn nước, vỏ bọc dây điện",
+    "Khung nhà chịu lực chính",
+    "Nền móng công trình",
+    "Cốt thép bê tông"
+   ],
+   "dap_an": "A",
+   "loi_giai": "PVC nhẹ, bền, cách điện tốt, chống ăn mòn nên thường được dùng làm ống dẫn nước, vỏ bọc cách điện cho dây điện trong xây dựng.\n\nVì sao các phương án khác sai:\n- B: Khung nhà chịu lực chính thường làm bằng thép, bê tông, không phải PVC.\n- C: Nền móng công trình cần vật liệu chịu lực rất lớn như bê tông, không phải chất dẻo PVC.\n- D: Cốt thép bê tông làm bằng thép, không phải chất dẻo."
+  },
+  {
+   "ma_cau": "K09090403005",
+   "nhom_id": "KNB00542",
+   "loai": "trac_nghiem",
+   "de": "Vì sao không nên đựng thức ăn nóng (trên 100°C) trong hộp làm từ chất dẻo thông thường như PE?",
+   "lua_chon": [
+    "Vì chất dẻo dẫn nhiệt quá tốt",
+    "Vì chất dẻo có thể mềm, biến dạng, thôi chất độc",
+    "Vì chất dẻo tạo khí độc ngay ở nhiệt độ thường",
+    "Vì chất dẻo chỉ đổi màu, không ảnh hưởng gì"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Ở nhiệt độ cao, một số loại chất dẻo có thể mềm, biến dạng hoặc giải phóng các chất phụ gia có hại vào thức ăn, ảnh hưởng đến sức khoẻ, nên cần dùng loại hộp chuyên dụng chịu nhiệt khi đựng thức ăn nóng.\n\nVì sao các phương án khác sai:\n- A: Chất dẻo dẫn nhiệt kém.\n- C: Ở nhiệt độ thường hộp chất dẻo dùng an toàn.\n- D: Chất dẻo có thể thôi chất độc vào thức ăn nóng."
+  },
+  {
+   "ma_cau": "K09090403006",
+   "nhom_id": "KNB00542",
+   "loai": "trac_nghiem",
+   "de": "Cao su tự nhiên có tính chất đặc trưng nào giúp phân biệt với chất dẻo thông thường?",
+   "lua_chon": [
+    "Không tạo hình được theo khuôn",
+    "Dẫn điện tốt như kim loại",
+    "Tan tốt trong nước",
+    "Tính đàn hồi"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Cao su có tính đàn hồi đặc trưng: khi kéo giãn hoặc nén rồi thả ra, cao su trở lại gần như hình dạng ban đầu, khác với nhiều loại chất dẻo thông thường ít đàn hồi hơn.\n\nVì sao các phương án khác sai:\n- A: Cả cao su và chất dẻo đều có thể tạo hình theo khuôn khi sản xuất.\n- B: Cao su tự nhiên không dẫn điện tốt như kim loại; đây là vật liệu cách điện.\n- C: Cao su không tan trong nước; đây không phải tính chất phân biệt với chất dẻo."
+  },
+  {
+   "ma_cau": "K09090403007",
+   "nhom_id": "KNB00542",
+   "loai": "trac_nghiem",
+   "de": "Nylon là loại tơ được sản xuất bằng cách nào?",
+   "lua_chon": [
+    "Tổng hợp hoá học từ các monomer",
+    "Thu hoạch trực tiếp từ kén tằm",
+    "Thu hoạch từ mủ cây cao su",
+    "Kéo sợi trực tiếp từ quả bông"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Nylon là tơ tổng hợp, được sản xuất bằng phản ứng hoá học từ các monomer nhân tạo, khác với tơ tự nhiên (tơ tằm, sợi bông) có sẵn trong tự nhiên.\n\nVì sao các phương án khác sai:\n- B: Thu hoạch từ kén tằm là cách tạo ra tơ tằm (tơ tự nhiên), không phải nylon.\n- C: Thu hoạch từ mủ cây cao su tạo ra cao su tự nhiên, không phải nylon.\n- D: Kéo sợi từ quả bông tạo ra sợi bông (cellulose tự nhiên), không phải nylon."
+  },
+  {
+   "ma_cau": "K09090403008",
+   "nhom_id": "KNB00542",
+   "loai": "trac_nghiem",
+   "de": "Biện pháp nào sau đây KHÔNG góp phần giảm rác thải nhựa hiệu quả?",
+   "lua_chon": [
+    "Mang theo túi vải khi đi mua sắm",
+    "Vứt chai nhựa ngay sau một lần dùng",
+    "Phân loại rác nhựa để tái chế",
+    "Hạn chế mua đồ dùng một lần bằng nhựa"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Vứt bỏ chai nhựa ngay sau một lần dùng thay vì rửa để dùng lại làm tăng lượng rác thải nhựa, không góp phần giảm thiểu; nên tái sử dụng để giảm nhu cầu sản xuất mới.\n\nVì sao các phương án khác sai:\n- A: Mang túi vải là biện pháp giảm dùng túi nhựa hiệu quả.\n- C: Phân loại rác nhựa giúp việc tái chế thuận lợi hơn, là biện pháp tích cực.\n- D: Hạn chế mua đồ nhựa dùng một lần trực tiếp làm giảm lượng rác thải nhựa phát sinh."
+  },
+  {
+   "ma_cau": "K09090403009",
+   "nhom_id": "KNB00542",
+   "loai": "trac_nghiem",
+   "de": "Vì sao việc tái chế chai nhựa PET thành sợi vải may quần áo được coi là biện pháp giảm rác thải nhựa hiệu quả?",
+   "lua_chon": [
+    "Vì sợi vải tái chế không còn là chất dẻo",
+    "Vì tái chế biến nhựa thành chất dễ phân huỷ",
+    "Vì tận dụng nhựa cũ, giảm khai thác mới và rác thải",
+    "Vì tái chế loại bỏ được mọi rác thải nhựa"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Tái chế chai nhựa PET thành sợi vải giúp tận dụng lại nhựa đã qua sử dụng thay vì thải bỏ, giảm nhu cầu khai thác nguyên liệu mới và giảm lượng rác thải nhựa tồn đọng trong môi trường.\n\nVì sao các phương án khác sai:\n- A: Sợi PET tái chế vẫn là chất dẻo.\n- B: Nhựa tái chế vẫn khó phân huỷ.\n- D: Tái chế chỉ giảm bớt rác thải nhựa."
+  },
+  {
+   "ma_cau": "K09090403010",
+   "nhom_id": "KNB00542",
+   "loai": "trac_nghiem",
+   "de": "Trong các cấp độ ưu tiên xử lí rác thải nhựa (giảm dùng > tái sử dụng > tái chế > xử lí cuối), vì sao \"giảm dùng\" thường được ưu tiên hàng đầu?",
+   "lua_chon": [
+    "Vì giảm dùng là biện pháp duy nhất có tác dụng",
+    "Vì tái chế luôn gây ô nhiễm nhiều hơn",
+    "Vì giảm dùng không tốn bất kì chi phí nào",
+    "Vì giảm dùng ngăn rác phát sinh ngay từ đầu"
+   ],
+   "dap_an": "D",
+   "loi_giai": "\"Giảm dùng\" ngăn rác thải nhựa phát sinh ngay từ đầu, tránh được cả chi phí và tác động môi trường của các bước xử lí sau (tái sử dụng, tái chế, xử lí cuối), nên được ưu tiên hàng đầu trong quản lí rác thải nhựa.\n\nVì sao các phương án khác sai:\n- A: Tái sử dụng, tái chế cũng có tác dụng.\n- B: Lí do là giảm dùng ngăn rác phát sinh.\n- C: Lí do chính là ngăn rác phát sinh từ đầu."
+  },
+  {
+   "ma_cau": "K09090403011",
+   "nhom_id": "KNB00542",
+   "loai": "trac_nghiem",
+   "de": "Một gia đình đề xuất: đốt túi nhựa trong vườn nhà để giảm rác thải nhanh chóng, tiết kiệm chi phí thu gom. Nhận xét đúng về đề xuất này là",
+   "lua_chon": [
+    "Đúng, vì đốt giúp rác nhựa biến mất nhanh, an toàn",
+    "Sai, vì đốt làm mất khả năng tái chế, không sinh khí độc",
+    "Đúng, vì khói nhựa bay lên cao rồi tan hết",
+    "Sai, vì đốt nhựa ngoài trời sinh ra nhiều khí độc"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Đốt nhựa ngoài trời ở nhiệt độ không đủ cao sinh ra nhiều khí độc, gây ô nhiễm không khí nghiêm trọng hơn là giải quyết được vấn đề rác thải.\n\nVì sao các phương án khác sai:\n- A: Đốt nhựa ngoài trời sinh khí độc, không an toàn.\n- B: Đốt nhựa ở nhiệt độ thấp sinh ra nhiều khí độc.\n- C: Khói độc vẫn tồn tại trong không khí, gây ô nhiễm."
+  },
+  {
+   "ma_cau": "K09090403012",
+   "nhom_id": "KNB00542",
+   "loai": "trac_nghiem",
+   "de": "Một khu dân cư đề xuất: xả túi nhựa và chai nhựa xuống biển vì nhựa sẽ tự phân huỷ nhanh trong nước biển, không gây hại lâu dài. Nhận xét đúng về đề xuất này là",
+   "lua_chon": [
+    "Sai, vì nhựa phân huỷ rất chậm, gây hại sinh vật biển",
+    "Đúng, vì nhựa phân huỷ sinh học nhanh như giấy",
+    "Đúng, vì nước biển mặn làm nhựa tan dần",
+    "Đúng với túi mỏng, vì túi mỏng tan nhanh trong nước"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Nhựa phân huỷ rất chậm trong môi trường tự nhiên (có thể mất hàng trăm năm), tồn tại lâu dài dưới dạng mảnh vụn/vi nhựa, gây hại cho sinh vật biển.\n\nVì sao các phương án khác sai:\n- B: Nhựa phân huỷ rất chậm, có thể hàng trăm năm.\n- C: Nhựa không tan trong nước biển, chỉ vỡ thành vi nhựa.\n- D: Túi nhựa mỏng cũng không tan trong nước, tồn tại rất lâu."
+  },
+  {
+   "ma_cau": "K09090403013",
+   "nhom_id": "KNB00542",
+   "loai": "trac_nghiem",
+   "de": "Một nhà máy đề xuất: tiếp tục sản xuất đồ nhựa dùng một lần với số lượng lớn, vì nhu cầu người dùng cao nên không cần thay đổi. Nhận xét đúng về đề xuất này là",
+   "lua_chon": [
+    "Đúng, vì nhu cầu cao thì cứ sản xuất theo nhu cầu",
+    "Đúng, vì đồ nhựa dùng một lần sẽ được đốt hết",
+    "Sai, vì cần giảm nhựa dùng một lần, tăng tái sử dụng",
+    "Sai, vì đồ nhựa dùng một lần đắt hơn đồ tái sử dụng"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Cần giảm sản xuất và sử dụng đồ nhựa dùng một lần, thay thế bằng vật liệu khác dễ phân huỷ hơn hoặc khuyến khích tái sử dụng, để giảm lượng rác thải nhựa tồn lưu lâu dài.\n\nVì sao các phương án khác sai:\n- A: Sản xuất nhiều đồ nhựa dùng một lần làm tăng rác thải nhựa tồn lưu lâu dài.\n- B: Đốt nhựa sinh khí độc; phần lớn rác nhựa không được xử lí hết.\n- D: Lí do cần giảm là rác thải nhựa, không phải giá thành."
+  },
+  {
+   "ma_cau": "K09090403014",
+   "nhom_id": "KNB00542",
+   "loai": "trac_nghiem",
+   "de": "Một trường học đề xuất: thay ống hút nhựa dùng một lần bằng ống hút giấy hoặc ống hút tre, vì các vật liệu này phân huỷ nhanh hơn và giảm rác thải nhựa. Nhận xét đúng về đề xuất này là",
+   "lua_chon": [
+    "Sai, vì ống hút giấy, tre cũng là một loại nhựa",
+    "Đúng, vì giấy, tre phân huỷ nhanh hơn nhựa nhiều",
+    "Sai, vì ống hút giấy, tre đắt nên không nên dùng",
+    "Đúng, vì giấy, tre không bao giờ trở thành rác"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Ống hút giấy hoặc tre có nguồn gốc tự nhiên, phân huỷ nhanh hơn nhựa nhiều, là biện pháp hợp lí để giảm rác thải nhựa dùng một lần.\n\nVì sao các phương án khác sai:\n- A: Giấy, tre là vật liệu tự nhiên, không phải nhựa.\n- C: Lí do đánh giá là tác động môi trường, không phải giá tiền.\n- D: Giấy, tre vẫn là rác sau khi dùng, nhưng phân huỷ nhanh."
+  },
+  {
+   "ma_cau": "K09090403015",
+   "nhom_id": "KNB00542",
+   "loai": "trac_nghiem",
+   "de": "Một địa phương đề xuất: ban hành quy định thu phí đối với túi nilon dùng một lần tại siêu thị, nhằm khuyến khích người dân dùng túi vải nhiều lần. Nhận xét đúng về đề xuất này là",
+   "lua_chon": [
+    "Đúng, vì giúp giảm dùng túi nilon, chuyển sang túi vải",
+    "Sai, vì thu phí không làm thay đổi thói quen người dân",
+    "Sai, vì túi vải gây ô nhiễm giống hệt túi nilon",
+    "Đúng, vì tiền thu được đủ để đốt hết túi nilon"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Thu phí túi nilon là biện pháp kinh tế khuyến khích người dân thay đổi thói quen, giảm sử dụng túi nilon dùng một lần, chuyển sang dùng túi vải nhiều lần, giúp giảm rác thải nhựa.\n\nVì sao các phương án khác sai:\n- B: Thu phí là biện pháp kinh tế giúp người dân giảm dùng túi nilon.\n- C: Túi vải dùng được nhiều lần, giảm rác thải nhựa.\n- D: Đốt túi nilon sinh khí độc; mục đích là giảm dùng túi nilon."
+  },
+  {
+   "ma_cau": "K09090403016",
+   "nhom_id": "KNB00542",
+   "loai": "trac_nghiem",
+   "de": "Một trường học đề xuất: tổ chức ngày hội đổi chai nhựa, vỏ lon lấy cây xanh hoặc đồ dùng học tập, nhằm khuyến khích học sinh thu gom, phân loại rác tái chế. Nhận xét đúng về đề xuất này là",
+   "lua_chon": [
+    "Sai, vì chai nhựa không thể tái chế được",
+    "Sai, vì đổi quà làm học sinh lãng phí",
+    "Đúng, nhưng chỉ nên áp dụng cho vỏ lon",
+    "Đúng, vì khuyến khích thu gom, phân loại rác"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Ngày hội đổi chai nhựa, vỏ lon lấy quà tạo động lực để học sinh chủ động thu gom, phân loại rác tái chế, giúp giảm lượng rác thải nhựa ra môi trường và nâng cao ý thức bảo vệ môi trường.\n\nVì sao các phương án khác sai:\n- A: Chai nhựa tái chế được.\n- B: Hoạt động giúp học sinh thu gom, phân loại rác.\n- C: Chai nhựa cũng cần thu gom, tái chế."
+  },
+  {
+   "ma_cau": "K09090403017",
+   "nhom_id": "KNB00542",
+   "loai": "trac_nghiem",
+   "de": "Một công ty đề xuất: chỉ cần in thêm khẩu hiệu 'Bảo vệ môi trường' lên bao bì nhựa dùng một lần, không cần thay đổi vật liệu hay giảm sản xuất, là đã góp phần giảm rác thải nhựa. Nhận xét đúng về đề xuất này là",
+   "lua_chon": [
+    "Sai, vì in khẩu hiệu không làm giảm lượng nhựa thải ra",
+    "Đúng, vì khẩu hiệu giúp người dùng vứt rác đúng nơi",
+    "Đúng, vì in khẩu hiệu làm bao bì dễ phân huỷ",
+    "Sai, vì khẩu hiệu môi trường là không cần thiết"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Chỉ in khẩu hiệu mà không giảm sản xuất, không thay đổi vật liệu hay tăng tái sử dụng thì lượng rác thải nhựa phát sinh thực tế không giảm; cần kết hợp các biện pháp thực chất như giảm dùng, tái sử dụng, tái chế.\n\nVì sao các phương án khác sai:\n- B: Lượng nhựa thải ra vẫn không giảm.\n- C: In chữ không làm nhựa dễ phân huỷ.\n- D: Khẩu hiệu có ích nhưng không thay được việc giảm nhựa."
+  },
+  {
+   "ma_cau": "K09090204001",
+   "nhom_id": "KNB00536",
+   "loai": "trac_nghiem",
+   "de": "Thuỷ phân 3240 g tinh bột với hiệu suất 90%, sau đó lên men toàn bộ glucose thu được với hiệu suất 50%. Tính khối lượng ethylic alcohol tạo thành.",
+   "lua_chon": [
+    "1656 g",
+    "920 g",
+    "828 g",
+    "414 g"
+   ],
+   "dap_an": "C",
+   "loi_giai": "n(đơn vị tinh bột) = 3240 : 162 = 20 mol. n(glucose) thực tế = 20×90% = 18 mol. n(ethanol) lí thuyết = 2×18 = 36 mol. Thực tế = 36×50% = 18 mol. m = 18×46 = 828 g.\n\nVì sao các phương án khác sai:\n- A: Kết quả của việc quên nhân hiệu suất giai đoạn lên men.\n- B: Kết quả của việc quên nhân hiệu suất giai đoạn thuỷ phân.\n- D: Kết quả của việc quên hệ số 2 trước C₂H₅OH trong phương trình lên men."
+  },
+  {
+   "ma_cau": "K09090204002",
+   "nhom_id": "KNB00536",
+   "loai": "trac_nghiem",
+   "de": "Thuỷ phân 810 g tinh bột với hiệu suất 80%, sau đó lên men toàn bộ glucose thu được với hiệu suất 75%. Tính khối lượng CO₂ sinh ra.",
+   "lua_chon": [
+    "352 g",
+    "330 g",
+    "276 g",
+    "264 g"
+   ],
+   "dap_an": "D",
+   "loi_giai": "n(đơn vị tinh bột) = 810 : 162 = 5 mol. n(glucose) thực tế = 5×80% = 4 mol. n(CO₂) lí thuyết = 2×4 = 8 mol. Thực tế = 8×75% = 6 mol. m = 6×44 = 264 g.\n\nVì sao các phương án khác sai:\n- A: Kết quả của việc quên nhân hiệu suất giai đoạn lên men.\n- B: Kết quả của việc quên nhân hiệu suất giai đoạn thuỷ phân.\n- C: Kết quả của việc nhầm khối lượng mol CO₂ là 46 g/mol (nhầm với ethanol)."
+  },
+  {
+   "ma_cau": "K09090204003",
+   "nhom_id": "KNB00536",
+   "loai": "trac_nghiem",
+   "de": "Thuỷ phân 2430 g tinh bột với hiệu suất 80%, sau đó lên men toàn bộ glucose thu được với hiệu suất 75%. Tính thể tích khí CO₂ sinh ra (đkc).",
+   "lua_chon": [
+    "594,96 L",
+    "557,78 L",
+    "446,22 L",
+    "403,2 L"
+   ],
+   "dap_an": "C",
+   "loi_giai": "n(đơn vị tinh bột) = 2430 : 162 = 15 mol. n(glucose) thực tế = 15×80% = 12 mol. n(CO₂) lí thuyết = 2×12 = 24 mol. Thực tế = 24×75% = 18 mol. V = 18×24,79 = 446,22 L.\n\nVì sao các phương án khác sai:\n- A: Kết quả của việc quên nhân hiệu suất giai đoạn lên men.\n- B: Kết quả của việc quên nhân hiệu suất giai đoạn thuỷ phân.\n- D: Kết quả của việc dùng nhầm 22,4 L/mol thay cho 24,79 L/mol ở đkc."
+  },
+  {
+   "ma_cau": "K09090204004",
+   "nhom_id": "KNB00536",
+   "loai": "trac_nghiem",
+   "de": "Thuỷ phân 1000 g tinh bột với hiệu suất 81%, sau đó lên men toàn bộ glucose thu được với hiệu suất 80%. Tính khối lượng ethylic alcohol tạo thành.",
+   "lua_chon": [
+    "368 g",
+    "460 g",
+    "900 g",
+    "294,4 g"
+   ],
+   "dap_an": "A",
+   "loi_giai": "m<sub>g</sub>lucose lí thuyết=1000×180/162=1111,11g; thực tế (81%)=900g. mₑthanol lí thuyết từ 900g glucose=900×92/180=460g; thực tế (80%)=460×0,8=368g.\n\nVì sao các phương án khác sai:\n- B: Quên áp dụng hiệu suất của giai đoạn lên men (80%), dừng ở khối lượng lí thuyết.\n- C: Nhầm khối lượng glucose thực tế là đáp số cuối, quên chuyển sang ethanol.\n- D: Áp dụng nhầm hiệu suất giai đoạn hai hai lần (0,8×0,8) thay vì một lần."
+  },
+  {
+   "ma_cau": "K09090204005",
+   "nhom_id": "KNB00536",
+   "loai": "trac_nghiem",
+   "de": "Từ tinh bột, qua hai giai đoạn thuỷ phân (hiệu suất 80%) rồi lên men rượu (hiệu suất 75%), người ta thu được 138 g ethylic alcohol. Khối lượng tinh bột đã dùng là",
+   "lua_chon": [
+    "405 g",
+    "324 g",
+    "450 g",
+    "337,5 g"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Ethanol thực tế 138 g → ethanol lí thuyết = 138/0,75 = 184 g → glucose thực tế cần có = 184×180/92 = 360 g → tinh bột lí thuyết = 360×162/180 : 0,8 = 405 g.\n\nVì sao các phương án khác sai:\n- B: Quên chia cho hiệu suất giai đoạn thuỷ phân (80%) khi tính ngược khối lượng tinh bột.\n- C: Tính sai khi giải ngược qua hai hiệu suất liên tiếp, làm tròn không đúng bước.\n- D: Quên chia cho hiệu suất giai đoạn lên men (75%) khi tính ngược, dẫn tới thiếu."
+  },
+  {
+   "ma_cau": "K09090204006",
+   "nhom_id": "KNB00536",
+   "loai": "trac_nghiem",
+   "de": "Nguyên liệu sắn khối lượng 6,48 tấn tinh bột nguyên chất được thuỷ phân với hiệu suất 75%, sau đó lên men toàn bộ glucose thu được với hiệu suất 75%. Tính khối lượng ethylic alcohol thu được.",
+   "lua_chon": [
+    "2,59 tấn",
+    "2,76 tấn",
+    "1,04 tấn",
+    "2,07 tấn"
+   ],
+   "dap_an": "D",
+   "loi_giai": "n(đơn vị tinh bột) = 6,48 : 162 = 0,04 tấn-mol. n(glucose) thực tế = 0,04×75% = 0,03. n(ethanol) lí thuyết = 2×0,03 = 0,06. Thực tế = 0,06×75% = 0,045. m = 0,045×46 = 2,07 tấn.\n\nVì sao các phương án khác sai:\n- A: Kết quả của việc dùng nhầm khối lượng nguyên liệu thô 8,1 tấn thay cho 6,48 tấn tinh bột nguyên chất.\n- B: Kết quả của việc quên nhân hiệu suất giai đoạn lên men.\n- C: Kết quả của việc quên hệ số 2 trước C₂H₅OH trong phương trình lên men."
+  },
+  {
+   "ma_cau": "K09090204007",
+   "nhom_id": "KNB00536",
+   "loai": "trac_nghiem",
+   "de": "Nguyên liệu gạo khối lượng 18 tấn chứa 90% tinh bột (còn lại là tạp chất trơ) được thuỷ phân với hiệu suất 80%, sau đó lên men toàn bộ glucose thu được với hiệu suất 75%. Tính khối lượng CO₂ thải ra.",
+   "lua_chon": [
+    "5,28 tấn",
+    "5,87 tấn",
+    "7,04 tấn",
+    "2,64 tấn"
+   ],
+   "dap_an": "A",
+   "loi_giai": "m(tinh bột nguyên chất) = 18×90% = 16,2 tấn. n(đơn vị) = 16,2 : 162 = 0,1 tấn-mol. n(glucose) thực tế = 0,1×80% = 0,08. n(CO₂) lí thuyết = 2×0,08 = 0,16. Thực tế = 0,16×75% = 0,12. m = 0,12×44 = 5,28 tấn.\n\nVì sao các phương án khác sai:\n- B: Kết quả của việc dùng nhầm khối lượng nguyên liệu thô 18 tấn thay cho 16,2 tấn tinh bột nguyên chất.\n- C: Kết quả của việc quên nhân hiệu suất giai đoạn lên men.\n- D: Kết quả của việc quên hệ số 2 trước CO₂ trong phương trình lên men."
+  },
+  {
+   "ma_cau": "K09090204008",
+   "nhom_id": "KNB00536",
+   "loai": "trac_nghiem",
+   "de": "Nguyên liệu sắn khối lượng 9 tấn chứa 90% tinh bột (còn lại là tạp chất trơ) được thuỷ phân với hiệu suất 80%, sau đó lên men toàn bộ glucose thu được với hiệu suất 75%. Tính khối lượng ethylic alcohol thu được.",
+   "lua_chon": [
+    "3,07 tấn",
+    "3,68 tấn",
+    "1,38 tấn",
+    "2,76 tấn"
+   ],
+   "dap_an": "D",
+   "loi_giai": "m(tinh bột nguyên chất) = 9×90% = 8,1 tấn. n(đơn vị) = 8,1 : 162 = 0,05 tấn-mol. n(glucose) thực tế = 0,05×80% = 0,04. n(ethanol) lí thuyết = 2×0,04 = 0,08. Thực tế = 0,08×75% = 0,06. m = 0,06×46 = 2,76 tấn.\n\nVì sao các phương án khác sai:\n- A: Kết quả của việc dùng nhầm khối lượng nguyên liệu thô 9 tấn thay cho 8,1 tấn tinh bột nguyên chất.\n- B: Kết quả của việc quên nhân hiệu suất giai đoạn lên men.\n- C: Kết quả của việc quên hệ số 2 trước C₂H₅OH trong phương trình lên men."
+  },
+  {
+   "ma_cau": "K09090204009",
+   "nhom_id": "KNB00536",
+   "loai": "trac_nghiem",
+   "de": "Nguyên liệu khoai khối lượng 20,25 tấn chứa 80% tinh bột (còn lại là tạp chất trơ) được thuỷ phân với hiệu suất 90%, sau đó lên men toàn bộ glucose thu được với hiệu suất 75%. Tính khối lượng CO₂ thải ra.",
+   "lua_chon": [
+    "5,94 tấn",
+    "7,43 tấn",
+    "7,92 tấn",
+    "2,97 tấn"
+   ],
+   "dap_an": "A",
+   "loi_giai": "m(tinh bột nguyên chất) = 20,25×80% = 16,2 tấn. n(đơn vị) = 16,2 : 162 = 0,1 tấn-mol. n(glucose) thực tế = 0,1×90% = 0,09. n(CO₂) lí thuyết = 2×0,09 = 0,18. Thực tế = 0,18×75% = 0,135. m = 0,135×44 = 5,94 tấn.\n\nVì sao các phương án khác sai:\n- B: Kết quả của việc dùng nhầm khối lượng nguyên liệu thô 20,25 tấn thay cho 16,2 tấn tinh bột nguyên chất.\n- C: Kết quả của việc quên nhân hiệu suất giai đoạn lên men.\n- D: Kết quả của việc quên hệ số 2 trước CO₂ trong phương trình lên men."
+  },
+  {
+   "ma_cau": "K09090204010",
+   "nhom_id": "KNB00536",
+   "loai": "trac_nghiem",
+   "de": "Nguyên liệu khoai mì (sắn) khối lượng 30 tấn chứa 54% tinh bột (còn lại là tạp chất trơ) được thuỷ phân với hiệu suất 75%, sau đó lên men toàn bộ glucose thu được với hiệu suất 80%. Tính khối lượng ethylic alcohol thu được.",
+   "lua_chon": [
+    "5,52 tấn",
+    "10,22 tấn",
+    "6,9 tấn",
+    "2,76 tấn"
+   ],
+   "dap_an": "A",
+   "loi_giai": "m(tinh bột) = 30 × 54% = 16,2 tấn. Cứ 162 tấn tinh bột → 180 tấn glucose → 92 tấn ethylic alcohol. m(ethylic alcohol) = 16,2 × 92 : 162 × 75% × 80% = 5,52 tấn.\n\nVì sao các phương án khác sai:\n- B: Đã dùng nhầm khối lượng nguyên liệu thô 30 tấn thay cho 16,2 tấn tinh bột nguyên chất.\n- C: Đã quên nhân hiệu suất giai đoạn lên men (chỉ dừng ở khối lượng ethanol lí thuyết).\n- D: Đã quên hệ số 2 trước C₂H₅OH trong phương trình lên men."
+  },
+  {
+   "ma_cau": "K09090204011",
+   "nhom_id": "KNB00536",
+   "loai": "trac_nghiem",
+   "de": "Nguyên liệu ngô khối lượng 16,2 tấn tinh bột nguyên chất (đã tinh chế, không có tạp chất) được thuỷ phân với hiệu suất 80%, sau đó lên men toàn bộ glucose thu được với hiệu suất 90%. Tính khối lượng CO₂ thải ra.",
+   "lua_chon": [
+    "7,04 tấn",
+    "6,336 tấn",
+    "7,92 tấn",
+    "3,168 tấn"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Cứ 162 tấn tinh bột → 180 tấn glucose → 88 tấn CO₂ (C₆H₁₂O₆ → 2C₂H₅OH + 2CO₂). m(CO₂) = 16,2 × 88 : 162 × 80% × 90% = 6,336 tấn.\n\nVì sao các phương án khác sai:\n- A: Đã quên nhân hiệu suất giai đoạn lên men (90%), dừng lại ở kết quả sau giai đoạn thuỷ phân.\n- C: Đã quên nhân hiệu suất giai đoạn thuỷ phân (80%), chỉ nhân hiệu suất giai đoạn lên men.\n- D: Đã quên hệ số 2 trước CO₂ trong phương trình lên men."
+  }
+ ]
+}

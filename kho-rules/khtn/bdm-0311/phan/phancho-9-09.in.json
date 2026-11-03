@@ -1,0 +1,514 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00533",
+   "chu_de": "Lipid, Carbohydrate, Protein & Polymer",
+   "chuyen_de": "Carbohydrate",
+   "nhom": "Các dạng bài tập cơ bản về carbohydrate",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nCarbohydrate gồm đường đơn (monosaccharide) như glucose $\\mathrm{C_6H_{12}O_6}$; đường đôi (disaccharide) như saccharose $\\mathrm{C_{12}H_{22}O_{11}}$; đường đa (polysaccharide) như tinh bột và cellulose, công thức chung $\\mathrm{(C_6H_{10}O_5)_n}$.\nGlucose có nhiều trong quả chín, mật ong, dùng pha dịch truyền; saccharose có nhiều trong mía, củ cải đường; tinh bột có nhiều trong gạo, ngô, khoai, sắn; cellulose là thành phần chính của sợi bông, gỗ, thành tế bào thực vật, dùng làm giấy.\nTinh bột và cellulose có cùng công thức chung nhưng khác nhau về cấu trúc mạch phân tử nên là hai chất khác nhau.\n\n##CY 2. Lưu ý\nKhối lượng mol: glucose 180; saccharose 342; một mắt xích $\\mathrm{C_6H_{10}O_5}$ là 162.\nĐừng nhầm saccharose (đường đôi) với đường đơn hay đường đa.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01573",
+     "thu_tu": 1,
+     "ten": "Phân loại, công thức và phân tử khối của carbohydrate",
+     "mo_ta": "Đề hỏi công thức phân tử của glucose, saccharose, tinh bột, cellulose; phân loại đường đơn, đường đôi, đường đa.\nCó thể hỏi tính phân tử khối từ công thức hoặc giải thích vì sao tinh bột và cellulose khác nhau dù cùng công thức chung.\nLưu ý: câu hỏi nguồn gốc, thành phần chính của thực phẩm hoặc ứng dụng ⇒ thuộc dạng \"Nguồn gốc và ứng dụng của các carbohydrate\".",
+     "ly_thuyet": "##TC Phân loại và công thức\nĐường đơn: glucose $\\mathrm{C_6H_{12}O_6}$ ($M = 180$).\nĐường đôi: saccharose $\\mathrm{C_{12}H_{22}O_{11}}$ ($M = 342$).\nĐường đa: tinh bột, cellulose $\\mathrm{(C_6H_{10}O_5)_n}$; một mắt xích có $M = 162$.\nTinh bột và cellulose khác nhau do số mắt xích và cách liên kết, cấu trúc mạch khác nhau.\n\n##PP Tính phân tử khối\nĐếm số nguyên tử mỗi nguyên tố trong công thức\nNhân số nguyên tử với nguyên tử khối rồi cộng lại\n\n##CY Lỗi hay mắc\nNhầm phân tử khối glucose (180) với saccharose (342) hoặc với một mắt xích (162).\nCho rằng cùng công thức chung thì cùng tính chất.",
+     "vi_du": "##VD\nPhân tử khối của saccharose ($\\mathrm{C_{12}H_{22}O_{11}}$, biết C = 12, H = 1, O = 16) là bao nhiêu?\nA. 180\nB. 342\nC. 162\nD. 324\n\nBài giải:\n$M(\\mathrm{C_{12}H_{22}O_{11}}) = 12 \\times 12 + 22 \\times 1 + 11 \\times 16$\n$= 144 + 22 + 176 = 342$.\n180 là phân tử khối glucose, 162 là khối lượng một mắt xích $\\mathrm{C_6H_{10}O_5}$.\nChọn B.\n\n##VD\nVì sao tinh bột và cellulose đều có công thức chung $\\mathrm{(C_6H_{10}O_5)_n}$ nhưng lại là hai chất khác nhau về tính chất?\nA. Vì cấu trúc mạch phân tử khác nhau\nB. Vì hai chất có phân tử khối bằng nhau\nC. Vì một chất có nguồn gốc động vật\nD. Vì tinh bột có thêm nguyên tố nitrogen\n\nBài giải:\nHai chất cùng công thức chung nhưng khác nhau về cách các mắt xích glucose liên kết và cấu trúc mạch.\nDo đó tính chất khác nhau.\nCả hai đều có nguồn gốc thực vật và chỉ chứa C, H, O; phân tử khối của chúng cũng không bằng nhau.\nChọn A."
+    },
+    {
+     "dang_id": "KDB01574",
+     "thu_tu": 2,
+     "ten": "Nguồn gốc và ứng dụng của các carbohydrate",
+     "mo_ta": "Đề hỏi carbohydrate nào có nhiều trong một loại thực phẩm, nguyên liệu (mía, gạo, bông, mật ong) hoặc được dùng vào mục đích nào (dịch truyền, làm giấy).\nLàm bằng cách ghi nhớ nguồn gốc và vai trò của glucose, saccharose, tinh bột, cellulose.\nLưu ý: câu hỏi công thức, phân loại, phân tử khối ⇒ thuộc dạng \"Phân loại, công thức và phân tử khối của carbohydrate\".",
+     "ly_thuyet": "##TC Nguồn gốc và ứng dụng\nGlucose: quả chín, mật ong; pha dịch truyền cho người bệnh.\nSaccharose: cây mía, củ cải đường; làm đường ăn.\nTinh bột: hạt gạo, ngô, củ khoai, sắn; là nguồn cung cấp năng lượng.\nCellulose: sợi bông, gỗ, thành tế bào thực vật; sản xuất giấy, vải sợi.\n\n##CY Lỗi hay mắc\nNhầm saccharose (mía) với glucose (quả chín).\nNhầm tinh bột (thực phẩm) với cellulose (sợi, giấy).",
+     "vi_du": "##VD\nCarbohydrate nào có nhiều trong cây mía, củ cải đường?\nA. Glucose\nB. Saccharose\nC. Tinh bột\nD. Cellulose\n\nBài giải:\nMía và củ cải đường là nguyên liệu chính để sản xuất saccharose.\nGlucose có nhiều trong quả chín, tinh bột có nhiều trong gạo và khoai, cellulose có nhiều trong bông và gỗ.\nChọn B.\n\n##VD\nCarbohydrate nào được dùng pha chế dịch truyền cho người bệnh trong y tế?\nA. Glucose\nB. Saccharose\nC. Tinh bột\nD. Cellulose\n\nBài giải:\nGlucose tan tốt trong nước và dễ hấp thu nên được dùng pha dịch truyền tĩnh mạch.\nSaccharose là đường ăn, tinh bột và cellulose không tan tốt trong nước nên không dùng pha dịch truyền.\nChọn A."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00537",
+   "chu_de": "Lipid, Carbohydrate, Protein & Polymer",
+   "chuyen_de": "Protein",
+   "nhom": "Các dạng bài tập cơ bản về Protein",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nProtein là hợp chất hữu cơ có phân tử khối rất lớn, chứa các nguyên tố C, H, O, N (có thể có thêm S...).\nProtein được tạo từ rất nhiều amino acid nối tiếp nhau thành một chuỗi dài, liên kết giữa các amino acid là liên kết peptide.\nProtein là thành phần chính cấu tạo nên tế bào, mô, cơ bắp; có nhiều trong thịt, cá, trứng, sữa, đậu.\n\n##CY 2. Lưu ý\nAmino acid là đơn vị cấu tạo của protein, không phải glucose hay glycerol.\nDầu ăn chủ yếu là chất béo, đường và tinh bột là carbohydrate, đều không giàu protein.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01583",
+     "thu_tu": 1,
+     "ten": "Thành phần, cấu tạo và liên kết trong phân tử protein",
+     "mo_ta": "Đề hỏi nguyên tố có trong protein, đơn vị cấu tạo (amino acid), cách các amino acid nối với nhau, loại liên kết, kích thước phân tử.\nLàm bằng cách nhớ định nghĩa và cấu tạo của protein.\nLưu ý: câu hỏi nguồn thực phẩm giàu protein và vai trò dinh dưỡng ⇒ thuộc dạng \"Nguồn thực phẩm và vai trò của protein\".",
+     "ly_thuyet": "##TC Cấu tạo protein\nProtein chứa C, H, O, N; phân tử khối rất lớn.\nĐơn vị cấu tạo là amino acid; rất nhiều amino acid nối tiếp thành chuỗi dài.\nCác amino acid liên kết bằng liên kết peptide (giữa nhóm $\\mathrm{-COOH}$ của amino acid này với nhóm $\\mathrm{-NH_2}$ của amino acid kia).\n\n##CY Lỗi hay mắc\nNhầm đơn vị cấu tạo protein với glucose hoặc glycerol.\nNhầm liên kết peptide với liên kết ion hoặc liên kết kim loại.\nQuên nguyên tố nitrogen, nguyên tố luôn có trong protein.",
+     "vi_du": "##VD\nNguyên tố nào sau đây LUÔN có trong thành phần của protein?\nA. Carbon, hydrogen, oxygen, nitrogen\nB. Carbon, hydrogen, oxygen, chlorine\nC. Carbon, hydrogen, sulfur, sodium\nD. Carbon, oxygen, nitrogen, potassium\n\nBài giải:\nProtein luôn gồm bốn nguyên tố C, H, O, N.\nB chứa chlorine, C chứa sodium và thiếu oxygen, D thiếu hydrogen nên đều sai.\nChọn A.\n\n##VD\nTrong các amino acid nối tiếp nhau tạo thành phân tử protein, các amino acid liên kết với nhau bằng loại liên kết nào?\nA. Liên kết ion\nB. Liên kết peptide\nC. Liên kết hydrogen giữa các phân tử nước\nD. Liên kết kim loại\n\nBài giải:\nCác amino acid nối nhau bằng liên kết peptide, hình thành giữa nhóm $\\mathrm{-COOH}$ của amino acid này với nhóm $\\mathrm{-NH_2}$ của amino acid kia.\nLiên kết ion đặc trưng cho muối, liên kết kim loại đặc trưng cho kim loại, liên kết hydrogen giữa các phân tử nước không nối các amino acid thành chuỗi.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01584",
+     "thu_tu": 2,
+     "ten": "Nguồn thực phẩm và vai trò của protein",
+     "mo_ta": "Đề hỏi loại thực phẩm giàu protein hoặc vai trò của protein đối với cơ thể (xây dựng tế bào, mô).\nCó thể hỏi giải thích hệ quả của việc thiếu protein trong khẩu phần ăn.\nLàm bằng cách vận dụng vai trò sinh học của protein.\nLưu ý: câu hỏi nguyên tố, amino acid, liên kết peptide ⇒ thuộc dạng \"Thành phần, cấu tạo và liên kết trong phân tử protein\".",
+     "ly_thuyet": "##TC Vai trò và nguồn protein\nProtein là nguyên liệu chính xây dựng và sửa chữa tế bào, mô, cơ bắp.\nThực phẩm giàu protein: thịt, cá, trứng, sữa, đậu.\nThiếu protein kéo dài làm cơ thể suy dinh dưỡng, chậm phát triển.\n\n##CY Lỗi hay mắc\nCho rằng protein là nguồn năng lượng duy nhất; chất béo và carbohydrate cũng cung cấp năng lượng.\nNhầm dầu ăn (chất béo), đường và tinh bột (carbohydrate) là thực phẩm giàu protein.",
+     "vi_du": "##VD\nLoại thực phẩm nào sau đây giàu protein nhất?\nA. Thịt, cá, trứng\nB. Dầu ăn\nC. Đường trắng\nD. Tinh bột gạo\n\nBài giải:\nThịt, cá, trứng chứa nhiều protein.\nDầu ăn chủ yếu là chất béo, đường trắng và tinh bột gạo là carbohydrate nên ít hoặc không có protein.\nChọn A.\n\n##VD\nVì sao khi thiếu protein trong khẩu phần ăn kéo dài, cơ thể dễ bị suy dinh dưỡng, chậm phát triển?\nA. Vì protein là nguyên liệu xây dựng tế bào, mô\nB. Vì protein là nguồn năng lượng duy nhất\nC. Vì thiếu protein làm mất hết vitamin\nD. Vì protein giúp tiêu hoá tinh bột nhanh hơn\n\nBài giải:\nProtein là thành phần chính cấu tạo nên tế bào, mô, cơ bắp.\nThiếu protein kéo dài khiến cơ thể không đủ nguyên liệu xây dựng và sửa chữa các mô, dẫn đến suy dinh dưỡng và chậm phát triển.\nChất béo và carbohydrate cũng cung cấp năng lượng, protein và vitamin là hai nhóm chất khác nhau.\nChọn A."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00540",
+   "chu_de": "Lipid, Carbohydrate, Protein & Polymer",
+   "chuyen_de": "Polymer",
+   "nhom": "Các dạng bài tập cơ bản về Polymer",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nPolymer là những hợp chất có phân tử khối rất lớn, do nhiều đơn vị nhỏ gọi là mắt xích liên kết với nhau tạo nên.\nMonomer là phân tử nhỏ ban đầu tạo ra mắt xích; phân tử khối của polymer lớn hơn rất nhiều lần so với monomer.\nPhản ứng trùng hợp: nhiều phân tử monomer (như ethylene) kết hợp với nhau tạo thành polymer (như polyethylene, PE).\nTheo nguồn gốc, polymer chia thành polymer thiên nhiên (tinh bột, cellulose, protein, cao su tự nhiên) và polymer tổng hợp (PE, PVC, nylon).\n\n##CY 2. Lưu ý\nMắt xích không phải nguyên tử, ion hay phân tử nước.\nPolymer không phân loại chính theo màu sắc hay khối lượng phân tử mà theo nguồn gốc.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01585",
+     "thu_tu": 1,
+     "ten": "Khái niệm polymer, mắt xích và đặc điểm phân tử khối",
+     "mo_ta": "Đề hỏi định nghĩa polymer, tên gọi đơn vị lặp lại (mắt xích), so sánh phân tử khối polymer với monomer, nhận ra chất thuộc nhóm polymer.\nLàm bằng cách nhớ khái niệm, không tính toán.\nLưu ý: câu hỏi monomer của một polymer cụ thể, phản ứng trùng hợp, phân loại theo nguồn gốc ⇒ thuộc dạng \"Monomer, phản ứng trùng hợp và phân loại polymer\".",
+     "ly_thuyet": "##TC Khái niệm\nPolymer có phân tử khối rất lớn, gồm rất nhiều mắt xích giống nhau liên kết thành mạch.\nMắt xích là đơn vị nhỏ lặp lại nhiều lần trong mạch polymer.\nPhân tử khối polymer xấp xỉ số mắt xích nhân phân tử khối monomer, nên lớn hơn monomer rất nhiều lần.\nTinh bột, cellulose, protein đều là polymer thiên nhiên.\n\n##CY Lỗi hay mắc\nNhầm mắt xích với nguyên tử, ion hay phân tử nước.\nCho rằng phân tử khối polymer nhỏ hơn hoặc bằng monomer.",
+     "vi_du": "##VD\nĐơn vị nhỏ, lặp lại nhiều lần trong mạch polymer được gọi là gì?\nA. Nguyên tử\nB. Phân tử nước\nC. Ion\nD. Mắt xích\n\nBài giải:\nMạch polymer gồm nhiều đơn vị nhỏ giống nhau nối tiếp, gọi là mắt xích.\nNguyên tử, phân tử nước và ion không phải đơn vị lặp lại đặc trưng của mạch polymer.\nChọn D.\n\n##VD\nPhân tử khối của một polymer so với phân tử khối của monomer tạo thành nó là\nA. nhỏ hơn nhiều lần\nB. lớn hơn rất nhiều lần\nC. luôn bằng nhau\nD. không xác định được\n\nBài giải:\nPolymer gồm rất nhiều mắt xích monomer liên kết lặp lại.\nPhân tử khối polymer xấp xỉ số mắt xích nhân phân tử khối monomer nên lớn hơn rất nhiều lần.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01586",
+     "thu_tu": 2,
+     "ten": "Monomer, phản ứng trùng hợp và phân loại polymer",
+     "mo_ta": "Đề hỏi monomer tạo thành một polymer cụ thể (như PE), loại phản ứng tạo ra polymer (trùng hợp), phân loại polymer theo nguồn gốc.\nLàm bằng cách nhớ monomer của polymer thường gặp và cách phân loại.\nLưu ý: câu hỏi định nghĩa polymer, mắt xích, so sánh phân tử khối ⇒ thuộc dạng \"Khái niệm polymer, mắt xích và đặc điểm phân tử khối\".",
+     "ly_thuyet": "##TC Monomer và trùng hợp\nPolyethylene (PE) được tạo từ ethylene qua phản ứng trùng hợp.\nPhản ứng trùng hợp là sự kết hợp nhiều phân tử monomer giống nhau thành polymer.\nPhân loại theo nguồn gốc: polymer thiên nhiên và polymer tổng hợp.\n\n##CY Lỗi hay mắc\nNhầm monomer của PE với ethylic alcohol, acetic acid hay glucose.\nNhầm trùng hợp với phản ứng cháy, trung hoà hoặc thuỷ phân.\nCho rằng polymer được phân loại chính theo màu sắc hoặc khối lượng phân tử.",
+     "vi_du": "##VD\nChất nào sau đây là monomer tạo thành polyethylene (PE)?\nA. Ethylene\nB. Ethylic alcohol\nC. Acetic acid\nD. Glucose\n\nBài giải:\nPE được tạo thành từ phản ứng trùng hợp nhiều phân tử ethylene.\nEthylic alcohol và acetic acid không có liên kết đôi để trùng hợp tạo PE; glucose là đơn vị cấu tạo của tinh bột.\nChọn A.\n\n##VD\nPolymer được chia thành mấy loại chính theo nguồn gốc?\nA. 1 loại duy nhất\nB. 4 loại theo màu sắc\nC. 3 loại theo khối lượng phân tử\nD. 2 loại: thiên nhiên và tổng hợp\n\nBài giải:\nTheo nguồn gốc, polymer gồm 2 loại.\nPolymer thiên nhiên có sẵn trong tự nhiên như tinh bột, cellulose, protein, cao su tự nhiên.\nPolymer tổng hợp do con người tạo ra như PE, PVC, nylon.\nChọn D."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00534",
+   "chu_de": "Lipid, Carbohydrate, Protein & Polymer",
+   "chuyen_de": "Carbohydrate",
+   "nhom": "Viết phương trình hóa học mô tả tính chất của carbohydrate",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nGlucose lên men rượu: $\\mathrm{C_6H_{12}O_6 \\xrightarrow{enzyme} 2C_2H_5OH + 2CO_2}$.\nGlucose có nhóm $\\mathrm{-CHO}$ nên tham gia phản ứng tráng bạc (dạng đơn giản): $\\mathrm{C_6H_{12}O_6 + Ag_2O \\xrightarrow{NH_3} C_6H_{12}O_7 + 2Ag}$.\nThuỷ phân (xúc tác acid, đun nóng): saccharose $\\rightarrow$ glucose và fructose; tinh bột và cellulose $\\rightarrow$ glucose: $\\mathrm{(C_6H_{10}O_5)_n + nH_2O \\xrightarrow{H^+, t^\\circ} nC_6H_{12}O_6}$.\nHồ tinh bột tác dụng với dung dịch iodine tạo màu xanh tím; đun nóng thì màu mất, để nguội màu xuất hiện lại.\n\n##CY 2. Lưu ý\nPhải cân bằng phương trình; phản ứng lên men rượu không cần oxygen.\nPhản ứng màu với iodine chỉ dùng nhận biết tinh bột, không dùng cho glucose, saccharose, cellulose.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01575",
+     "thu_tu": 1,
+     "ten": "Phản ứng của glucose: lên men rượu và tráng bạc",
+     "mo_ta": "Đề hỏi sản phẩm, phương trình hoặc hiện tượng của phản ứng lên men rượu glucose và phản ứng tráng bạc.\nCó thể hỏi nhóm chức gây ra phản ứng tráng bạc hoặc ứng dụng (tráng gương, ruột phích).\nLàm bằng cách nhớ phản ứng và cân bằng phương trình, không tính toán lượng chất.\nLưu ý: câu hỏi thuỷ phân saccharose, tinh bột, cellulose ⇒ thuộc dạng \"Phản ứng thuỷ phân saccharose, tinh bột, cellulose\".",
+     "ly_thuyet": "##TC Hai phản ứng của glucose\nLên men rượu: $\\mathrm{C_6H_{12}O_6 \\xrightarrow{enzyme} 2C_2H_5OH + 2CO_2}$.\nTráng bạc: glucose có nhóm $\\mathrm{-CHO}$ bị oxi hoá thành nhóm $\\mathrm{-COOH}$, giải phóng bạc kim loại bám thành lớp sáng trên thành ống nghiệm.\nỨng dụng tráng bạc: tráng gương, tráng ruột phích.\n\n##PP Cân bằng phương trình lên men\nĐếm nguyên tử C, H, O hai vế\nĐặt hệ số 2 cho $\\mathrm{C_2H_5OH}$ và 2 cho $\\mathrm{CO_2}$\n\n##CY Lỗi hay mắc\nThiếu hệ số khiến phương trình không cân bằng.\nThêm $\\mathrm{O_2}$ vào vế trái của phản ứng lên men; thực tế không cần.\nGiữ nguyên công thức $\\mathrm{C_6H_{12}O_6}$ ở sản phẩm tráng bạc; sản phẩm hữu cơ phải là $\\mathrm{C_6H_{12}O_7}$.",
+     "vi_du": "##VD\nPhương trình hoá học nào biểu diễn đúng phản ứng lên men rượu của glucose?\nA. $\\mathrm{C_6H_{12}O_6 \\rightarrow C_2H_5OH + CO_2}$\nB. $\\mathrm{C_6H_{12}O_6 \\rightarrow 2C_2H_5OH + CO_2}$\nC. $\\mathrm{C_6H_{12}O_6 \\rightarrow 2C_2H_5OH + 2CO_2}$\nD. $\\mathrm{C_6H_{12}O_6 + O_2 \\rightarrow 2C_2H_5OH + 2CO_2}$\n\nBài giải:\nVế trái có 6C, 12H, 6O.\nVế phải với hệ số 2 và 2: C là $2 \\times 2 + 2 = 6$, H là $2 \\times 6 = 12$, O là $2 \\times 1 + 2 \\times 2 = 6$.\nPhương trình cân bằng và không cần $\\mathrm{O_2}$.\nChọn C.\n\n##VD\nPhương trình hoá học nào sau đây viết đúng khi glucose tráng bạc (dạng đơn giản hoá)?\nA. $\\mathrm{C_6H_{12}O_6 + 2AgNO_3 \\rightarrow C_6H_{12}O_7 + 2Ag}$\nB. $\\mathrm{C_6H_{12}O_6 + Ag_2O \\xrightarrow{NH_3} C_6H_{12}O_7 + 2Ag}$\nC. $\\mathrm{C_6H_{12}O_6 + Ag_2O \\rightarrow C_6H_{12}O_6 + 2Ag}$\nD. $\\mathrm{2C_6H_{12}O_6 + Ag_2O \\rightarrow 2C_6H_{12}O_7 + Ag}$\n\nBài giải:\nNhóm $\\mathrm{-CHO}$ của glucose bị $\\mathrm{Ag_2O}$ (môi trường $\\mathrm{NH_3}$) oxi hoá thành nhóm $\\mathrm{-COOH}$.\nSản phẩm hữu cơ là $\\mathrm{C_6H_{12}O_7}$ và giải phóng $\\mathrm{2Ag}$.\nA dùng $\\mathrm{AgNO_3}$ thiếu điều kiện đúng của dạng đơn giản hoá, C giữ nguyên $\\mathrm{C_6H_{12}O_6}$, D sai hệ số Ag.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01576",
+     "thu_tu": 2,
+     "ten": "Phản ứng thuỷ phân saccharose, tinh bột, cellulose",
+     "mo_ta": "Đề hỏi sản phẩm, phương trình, điều kiện của phản ứng thuỷ phân saccharose, tinh bột, cellulose.\nCó thể hỏi giải thích hiện tượng đời sống (nhai cơm kĩ thấy ngọt) nhờ thuỷ phân tinh bột.\nLàm bằng cách nhớ sản phẩm thuỷ phân và cân bằng phương trình.\nLưu ý: câu hỏi phản ứng với iodine ⇒ thuộc dạng \"Phản ứng màu của tinh bột với dung dịch iodine\".",
+     "ly_thuyet": "##TC Thuỷ phân carbohydrate\nĐiều kiện: có xúc tác acid và đun nóng (trong cơ thể là enzyme).\nSaccharose $\\rightarrow$ glucose và fructose.\nTinh bột, cellulose $\\rightarrow$ glucose: $\\mathrm{(C_6H_{10}O_5)_n + nH_2O \\xrightarrow{H^+, t^\\circ} nC_6H_{12}O_6}$.\nEnzyme amylase trong nước bọt thuỷ phân một phần tinh bột thành đường, nên nhai kĩ cơm thấy vị ngọt.\n\n##PP Viết phương trình thuỷ phân tinh bột\nGhi tinh bột và nước ở vế trái, ghi glucose ở vế phải\nCân bằng theo số mắt xích: hệ số $n$ cho nước và glucose\n\n##CY Lỗi hay mắc\nQuên nước ở vế trái của phản ứng thuỷ phân.\nNhầm sản phẩm thuỷ phân tinh bột là saccharose; sản phẩm đúng là glucose.",
+     "vi_du": "##VD\nPhương trình nào biểu diễn đúng phản ứng thuỷ phân tinh bột?\nA. $\\mathrm{(C_6H_{10}O_5)_n + H_2O \\rightarrow C_6H_{12}O_6}$\nB. $\\mathrm{(C_6H_{10}O_5)_n \\rightarrow nC_6H_{12}O_6}$\nC. $\\mathrm{(C_6H_{10}O_5)_n + nH_2O \\rightarrow nC_{12}H_{22}O_{11}}$\nD. $\\mathrm{(C_6H_{10}O_5)_n + nH_2O \\rightarrow nC_6H_{12}O_6}$\n\nBài giải:\nMỗi mắt xích: $\\mathrm{C_6H_{10}O_5 + H_2O \\rightarrow C_6H_{12}O_6}$.\nNhân hệ số $n$ cho cả dãy được $\\mathrm{(C_6H_{10}O_5)_n + nH_2O \\rightarrow nC_6H_{12}O_6}$.\nA thiếu hệ số $n$ trước nước, B thiếu nước, C sai sản phẩm (thuỷ phân tinh bột cho glucose chứ không phải saccharose).\nChọn D.\n\n##VD\nVì sao khi nhai kĩ cơm (chứa tinh bột) trong miệng một lúc lâu, ta cảm nhận được vị ngọt?\nA. Vì tinh bột tự chuyển thành muối ngọt\nB. Vì nước bọt có sẵn vị ngọt\nC. Vì enzyme nước bọt thuỷ phân tinh bột thành đường\nD. Vì nhai kĩ làm tinh bột cháy nhẹ tạo vị ngọt\n\nBài giải:\nNước bọt chứa enzyme amylase thuỷ phân một phần tinh bột thành các đường mạch ngắn hơn như glucose.\nChính đường tạo thành gây cảm giác vị ngọt.\nTinh bột không chuyển thành muối, nước bọt không có vị ngọt và trong miệng không có sự cháy.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01577",
+     "thu_tu": 3,
+     "ten": "Phản ứng màu của tinh bột với dung dịch iodine",
+     "mo_ta": "Đề hỏi hiện tượng khi nhỏ iodine vào hồ tinh bột, hạt cơm, khoai tây; chất nào được nhận biết bằng iodine; hiện tượng khi đun nóng rồi để nguội.\nLàm bằng cách nhớ phản ứng màu đặc trưng và áp dụng vào tình huống thực tế.\nLưu ý: câu hỏi thuỷ phân tinh bột ⇒ thuộc dạng \"Phản ứng thuỷ phân saccharose, tinh bột, cellulose\".",
+     "ly_thuyet": "##TC Phản ứng màu với iodine\nTinh bột tác dụng với dung dịch iodine tạo phức màu xanh tím đặc trưng.\nĐun nóng thì màu xanh tím biến mất; để nguội màu xuất hiện lại.\nIodine chỉ nhận biết tinh bột; không dùng để nhận biết glucose, saccharose, cellulose.\nPhản ứng không sinh khí và không tạo màu đỏ.\n\n##CY Lỗi hay mắc\nNhầm màu xanh tím với màu đỏ hoặc màu vàng.\nCho rằng glucose cũng cho màu xanh tím với iodine.\nNhầm màu xanh tím do iodine với hiện tượng khoai tây thâm do bị oxi hoá (màu nâu).",
+     "vi_du": "##VD\nNhỏ dung dịch iodine vào hồ tinh bột, hiện tượng quan sát được là gì?\nA. Không đổi màu\nB. Xuất hiện màu xanh tím\nC. Xuất hiện màu đỏ\nD. Có khí thoát ra\n\nBài giải:\nTinh bột kết hợp với iodine tạo phức màu xanh tím đặc trưng.\nPhản ứng này có đổi màu và không sinh khí.\nChọn B.\n\n##VD\nVì sao khi bôi cồn iodine (thuốc sát trùng) lên bề mặt khoai tây sống bị cắt đôi, ta thấy xuất hiện màu xanh tím?\nA. Vì khoai tây chứa glucose, phản ứng với iodine tạo màu xanh tím\nB. Vì khoai tây chứa nhiều tinh bột, phản ứng với iodine tạo phức màu xanh tím\nC. Vì cồn iodine phản ứng với nước trong khoai tây\nD. Vì khoai tây bị oxi hoá bởi không khí tạo màu xanh tím\n\nBài giải:\nKhoai tây chứa nhiều tinh bột.\nTinh bột phản ứng với iodine trong cồn iodine tạo phức màu xanh tím.\nGlucose không có phản ứng màu với iodine; khoai tây bị oxi hoá không khí cho màu nâu chứ không phải xanh tím.\nChọn B."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00535",
+   "chu_de": "Lipid, Carbohydrate, Protein & Polymer",
+   "chuyen_de": "Carbohydrate",
+   "nhom": "Bài toán Lên men rượu từ Glucose",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nPhương trình lên men rượu: $\\mathrm{C_6H_{12}O_6 \\xrightarrow{enzyme} 2C_2H_5OH + 2CO_2}$.\nTỉ lệ mol: glucose : ethylic alcohol : $\\mathrm{CO_2}$ = $1 : 2 : 2$.\nKhối lượng mol: glucose 180; $\\mathrm{C_2H_5OH}$ 46; $\\mathrm{CO_2}$ 44 (g/mol).\nHiệu suất: lượng thực tế = lượng lí thuyết $\\times H$.\nThể tích khí ở điều kiện chuẩn (đkc): $V = n \\times 24{,}79$ (L).\n\n##PP 2. Các bước làm bài\nTính số mol glucose: $n = \\dfrac{m}{180}$\nTính số mol sản phẩm theo lí thuyết bằng tỉ lệ mol\nNhân hiệu suất, rồi đổi ra khối lượng hoặc thể tích\n\n##CY 3. Lưu ý\nNhớ hệ số 2 của $\\mathrm{C_2H_5OH}$ và $\\mathrm{CO_2}$.\nỞ đkc dùng 24,79 L/mol, không dùng 22,4 L/mol.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01578",
+     "thu_tu": 1,
+     "ten": "Tính khối lượng ethylic alcohol thu được khi lên men glucose có hiệu suất",
+     "mo_ta": "Đề cho khối lượng glucose lên men rượu với hiệu suất cho trước, hỏi khối lượng ethylic alcohol thu được.\nLàm bằng cách tính số mol glucose, nhân tỉ lệ 1 : 2, nhân hiệu suất rồi đổi ra gam.\nLưu ý: đề hỏi thể tích khí $\\mathrm{CO_2}$ ⇒ thuộc dạng \"Tính thể tích khí CO₂ sinh ra khi lên men glucose\".",
+     "ly_thuyet": "##TC Công thức\n$n(\\mathrm{C_2H_5OH})_{\\text{lí thuyết}} = 2\\,n(\\text{glucose})$.\n$m(\\mathrm{C_2H_5OH}) = n_{\\text{thực tế}} \\times 46$, với $n_{\\text{thực tế}} = n_{\\text{lí thuyết}} \\times H$.\n\n##PP Cách làm\nTính $n(\\text{glucose}) = \\dfrac{m}{180}$\nTính $n(\\mathrm{C_2H_5OH})$ lí thuyết rồi nhân hiệu suất\nTính khối lượng ethylic alcohol bằng $n \\times 46$\n\n##CY Lỗi hay mắc\nQuên nhân hiệu suất.\nQuên hệ số 2 trước $\\mathrm{C_2H_5OH}$.\nDùng nhầm $M = 44$ (của $\\mathrm{CO_2}$) thay cho 46.",
+     "vi_du": "##VD\nCho 360 g glucose lên men rượu với hiệu suất 75%. Tính khối lượng ethylic alcohol thu được.\nA. 184 g\nB. 69 g\nC. 138 g\nD. 132 g\n\nBài giải:\n$n(\\text{glucose}) = \\dfrac{360}{180} = 2$ mol.\nTheo phương trình $\\mathrm{C_6H_{12}O_6 \\rightarrow 2C_2H_5OH + 2CO_2}$: $n(\\mathrm{C_2H_5OH})$ lí thuyết $= 2 \\times 2 = 4$ mol.\nThực tế: $4 \\times 75\\% = 3$ mol.\n$m(\\mathrm{C_2H_5OH}) = 3 \\times 46 = 138$ g.\nChọn C.\n\n##VD\nCho 270 g glucose lên men rượu với hiệu suất 90%. Tính khối lượng ethylic alcohol thu được.\nA. 138 g\nB. 69 g\nC. 132 g\nD. 124,2 g\n\nBài giải:\n$n(\\text{glucose}) = \\dfrac{270}{180} = 1{,}5$ mol.\n$n(\\mathrm{C_2H_5OH})$ lí thuyết $= 2 \\times 1{,}5 = 3$ mol.\nThực tế: $3 \\times 90\\% = 2{,}7$ mol.\n$m(\\mathrm{C_2H_5OH}) = 2{,}7 \\times 46 = 124{,}2$ g.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01579",
+     "thu_tu": 2,
+     "ten": "Tính thể tích khí CO₂ sinh ra khi lên men glucose",
+     "mo_ta": "Đề cho khối lượng glucose lên men rượu với hiệu suất, hỏi thể tích khí $\\mathrm{CO_2}$ sinh ra ở đkc.\nLàm bằng cách tính số mol glucose, nhân tỉ lệ 1 : 2, nhân hiệu suất rồi nhân 24,79.\nLưu ý: đề hỏi khối lượng ethylic alcohol ⇒ thuộc dạng \"Tính khối lượng ethylic alcohol thu được khi lên men glucose có hiệu suất\".",
+     "ly_thuyet": "##TC Thể tích khí ở đkc\n$n(\\mathrm{CO_2})_{\\text{lí thuyết}} = 2\\,n(\\text{glucose})$.\n$V(\\mathrm{CO_2}) = n_{\\text{thực tế}} \\times 24{,}79$ (L), với $n_{\\text{thực tế}} = n_{\\text{lí thuyết}} \\times H$.\n\n##PP Cách làm\nTính $n(\\text{glucose})$\nTính $n(\\mathrm{CO_2})$ lí thuyết, nhân hiệu suất\nNhân với 24,79 L/mol\n\n##CY Lỗi hay mắc\nQuên nhân hiệu suất.\nDùng 22,4 L/mol thay cho 24,79 L/mol ở đkc.\nQuên hệ số 2 trước $\\mathrm{CO_2}$.",
+     "vi_du": "##VD\nCho 180 g glucose lên men rượu với hiệu suất 50%. Tính thể tích khí $\\mathrm{CO_2}$ sinh ra (đkc).\nA. 24,79 L\nB. 49,58 L\nC. 22,4 L\nD. 12,4 L\n\nBài giải:\n$n(\\text{glucose}) = \\dfrac{180}{180} = 1$ mol.\n$n(\\mathrm{CO_2})$ lí thuyết $= 2 \\times 1 = 2$ mol.\nThực tế: $2 \\times 50\\% = 1$ mol.\n$V = 1 \\times 24{,}79 = 24{,}79$ L.\nChọn A.\n\n##VD\nCho 360 g glucose lên men rượu với hiệu suất 75%. Tính thể tích khí $\\mathrm{CO_2}$ sinh ra (đkc).\nA. 99,16 L\nB. 74,37 L\nC. 67,2 L\nD. 37,19 L\n\nBài giải:\n$n(\\text{glucose}) = \\dfrac{360}{180} = 2$ mol.\n$n(\\mathrm{CO_2})$ lí thuyết $= 2 \\times 2 = 4$ mol.\nThực tế: $4 \\times 75\\% = 3$ mol.\n$V = 3 \\times 24{,}79 = 74{,}37$ L.\nChọn B."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K09000000223",
+   "nhom_id": "KNB00533",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Nhỏ dung dịch iodine vào hai dung dịch mất nhãn là hồ tinh bột và saccharose, dấu hiệu nhận ra hồ tinh bột là gì?",
+   "lua_chon": [
+    "Xuất hiện kết tủa trắng",
+    "Có khí thoát ra",
+    "Xuất hiện màu xanh tím",
+    "Không có hiện tượng gì"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Hồ tinh bột phản ứng với iodine tạo màu xanh tím đặc trưng, còn saccharose không đổi màu.\n\nVì sao các phương án khác sai:\n- A: Phản ứng màu của tinh bột với iodine không tạo kết tủa.\n- B: Phản ứng này không sinh khí.\n- D: Phải có hiện tượng đổi màu ở dung dịch chứa tinh bột."
+  },
+  {
+   "ma_cau": "K09000000224",
+   "nhom_id": "KNB00533",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Có ba dung dịch mất nhãn là hồ tinh bột, glucose, saccharose. Nhỏ dung dịch iodine vào cả ba, có thể nhận ra chất nào?",
+   "lua_chon": [
+    "Nhận ra được cả ba chất",
+    "Không nhận ra chất nào",
+    "Chỉ nhận ra glucose",
+    "Chỉ nhận ra được tinh bột"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Iodine chỉ giúp nhận ra hồ tinh bột qua màu xanh tím; glucose và saccharose đều không đổi màu.\n\nVì sao các phương án khác sai:\n- A: Iodine chỉ tạo dấu hiệu riêng với tinh bột, không đủ phân biệt glucose và saccharose.\n- B: Tinh bột vẫn có dấu hiệu riêng là màu xanh tím nên vẫn nhận ra được.\n- C: Glucose không có phản ứng màu đặc trưng với iodine."
+  },
+  {
+   "ma_cau": "K09000000225",
+   "nhom_id": "KNB00533",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Đun nóng tinh bột và cellulose (dạng bột trắng) với nước, dấu hiệu phân biệt hai chất là gì?",
+   "lua_chon": [
+    "Tinh bột tạo hồ, cellulose không tan",
+    "Cả hai đều tan tốt trong nước nóng",
+    "Cellulose tan, tinh bột không tan",
+    "Cả hai đều không đổi"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Đun nóng với nước, tinh bột tạo dung dịch hồ (dạng keo), còn cellulose không tan.\n\nVì sao các phương án khác sai:\n- B: Thực ra chỉ tinh bột tạo dung dịch hồ (dạng keo); cellulose không tan trong nước nóng.\n- C: Ngược lại, tinh bột tạo hồ trong nước nóng, cellulose không tan.\n- D: Tinh bột có đổi trạng thái tạo hồ, không phải cả hai đều không đổi."
+  },
+  {
+   "ma_cau": "K09000000226",
+   "nhom_id": "KNB00533",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Sau khi đun nóng với nước, muốn khẳng định chắc chắn mẫu tạo hồ là tinh bột thì nhỏ thêm thuốc thử nào?",
+   "lua_chon": [
+    "Dung dịch NaOH, không đổi màu",
+    "Dung dịch iodine, xuất hiện màu xanh tím",
+    "Quỳ tím, hoá đỏ",
+    "Nước cất, không đổi màu"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Nhỏ thêm iodine vào phần đã tạo hồ, xuất hiện màu xanh tím thì khẳng định đó là tinh bột.\n\nVì sao các phương án khác sai:\n- A: NaOH không tạo màu đặc trưng để khẳng định có tinh bột.\n- C: Hồ tinh bột không làm quỳ tím đổi màu vì không có tính acid.\n- D: Nước cất không phải thuốc thử, không tạo phản ứng khẳng định."
+  },
+  {
+   "ma_cau": "K09000000233",
+   "nhom_id": "KNB00537",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Đốt một sợi tơ, thấy có mùi khét giống mùi tóc cháy. Vật liệu đó có khả năng chứa thành phần nào?",
+   "lua_chon": [
+    "Cellulose",
+    "Polyethylene",
+    "Tinh bột",
+    "Protein"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Khi đốt, protein cháy tạo mùi khét đặc trưng giống mùi tóc, lông cháy.\n\nVì sao các phương án khác sai:\n- A: Cellulose khi cháy có mùi giấy cháy, không mùi khét như protein.\n- B: Polyethylene khi cháy chảy dẻo, mùi nhựa cháy, không mùi khét đặc trưng.\n- C: Tinh bột không phải vật liệu dệt, không tạo mùi khét như protein."
+  },
+  {
+   "ma_cau": "K09000000234",
+   "nhom_id": "KNB00537",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Lông cừu (chứa protein) khi bị đốt có hiện tượng đặc trưng gì?",
+   "lua_chon": [
+    "Cháy không có mùi, tan chảy thành giọt lỏng trong suốt",
+    "Cháy có mùi khét, để lại tàn tro dễ vụn",
+    "Không bắt cháy dù ở nhiệt độ cao",
+    "Chuyển sang màu xanh khi cháy"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Lông cừu chứa protein, khi đốt cháy có mùi khét đặc trưng và để lại tàn tro dễ vụn.\n\nVì sao các phương án khác sai:\n- A: Đây là hiện tượng của polymer tổng hợp khi cháy, không phải của protein.\n- C: Lông cừu vẫn bắt cháy được ở nhiệt độ cao.\n- D: Đốt protein tạo mùi khét, không đổi màu ngọn lửa thành xanh."
+  },
+  {
+   "ma_cau": "K09000000235",
+   "nhom_id": "KNB00537",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Để nhận biết một mẫu vải có phải làm từ tơ tằm (protein) hay không, cách đơn giản nhất là gì?",
+   "lua_chon": [
+    "Ngâm vải vào nước lạnh rồi quan sát màu",
+    "Đo độ dày của sợi vải bằng thước",
+    "Đốt một sợi vải và ngửi mùi, quan sát tro",
+    "Nếm thử vị của sợi vải"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Đốt một sợi vải rồi ngửi mùi và quan sát tro: nếu có mùi khét giống tóc cháy và tro dễ vỡ vụn thì vải có chứa protein (như tơ tằm, len), khác với chất dẻo tổng hợp.\n\nVì sao các phương án khác sai:\n- A: Ngâm nước lạnh không tạo dấu hiệu đặc trưng để nhận biết protein.\n- B: Độ dày sợi vải không phải dấu hiệu đặc trưng của thành phần hoá học.\n- D: Không được nếm thử vật liệu để nhận biết hoá chất, đây không phải cách làm an toàn, khoa học."
+  },
+  {
+   "ma_cau": "K09000000236",
+   "nhom_id": "KNB00537",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Đốt một sợi vải, thấy có mùi khét giống mùi tóc cháy và tro dễ vỡ vụn. Vải này có khả năng được dệt từ loại sợi nào?",
+   "lua_chon": [
+    "Sợi nylon, vì polymer tổng hợp cháy có mùi khét",
+    "Tơ tằm hoặc len, vì mùi khét đặc trưng của protein",
+    "Sợi cotton, vì cellulose cháy cũng có mùi tóc cháy",
+    "Không xác định được, vì mọi vải cháy đều khét như nhau"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Mùi khét giống mùi tóc cháy là dấu hiệu đặc trưng của protein (chứa nguyên tố N) khi bị đốt cháy; vải này có khả năng dệt từ sợi protein tự nhiên như tơ tằm hoặc len.\n\nVì sao các phương án khác sai:\n- A: Nylon cháy chảy vón cục, không có mùi khét như tóc cháy.\n- C: Cotton cháy có mùi giấy cháy, không có mùi khét như tóc cháy.\n- D: Mùi khét như tóc cháy là dấu hiệu riêng của protein."
+  },
+  {
+   "ma_cau": "K09000000237",
+   "nhom_id": "KNB00537",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Đốt một mẩu dây thừng, có mùi khét giống mùi tóc cháy, tro dễ vỡ vụn thành bột mịn màu đen. Dây thừng này có khả năng làm từ vật liệu nào?",
+   "lua_chon": [
+    "Sợi polyester, vì polymer tổng hợp cháy có mùi khét",
+    "Sợi đay, vì cellulose cháy cũng có mùi tóc cháy",
+    "Sợi nylon, vì tro đen dễ vụn là dấu hiệu của nylon",
+    "Len hoặc tơ, vì mùi khét đặc trưng của protein"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Mùi khét giống mùi tóc cháy là dấu hiệu đặc trưng của protein; dây thừng này có khả năng làm từ sợi protein tự nhiên như len hoặc tơ.\n\nVì sao các phương án khác sai:\n- A: Polyester cháy chảy vón cục, không có mùi khét như tóc cháy.\n- B: Đay (cellulose) cháy có mùi giấy cháy.\n- C: Nylon cháy chảy thành cục cứng, không vụn."
+  },
+  {
+   "ma_cau": "K09000000240",
+   "nhom_id": "KNB00537",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "So sánh khi đốt: sợi tơ tằm có mùi khét giống tóc cháy; sợi nylon cháy vón cục, không có mùi khét đó. Nhận xét đúng là",
+   "lua_chon": [
+    "Cả hai chứa protein, nhưng nylon cháy quá nhanh",
+    "Tơ tằm chứa protein, nylon là polymer tổng hợp",
+    "Tơ tằm không chứa protein, mùi khét do phẩm nhuộm",
+    "Nylon chứa nhiều protein hơn nên cháy vón cục"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Tơ tằm là protein tự nhiên (chứa N trong các amino acid) nên khi cháy có mùi khét đặc trưng; nylon là polymer tổng hợp, không có cấu trúc amino acid nên không tạo mùi khét đó.\n\nVì sao các phương án khác sai:\n- A: Nylon là polymer tổng hợp, không chứa protein.\n- C: Tơ tằm là protein tự nhiên; mùi khét là của protein.\n- D: Nylon không chứa protein."
+  },
+  {
+   "ma_cau": "K09000000242",
+   "nhom_id": "KNB00537",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Đốt một mẩu lông vịt, có mùi khét giống mùi tóc cháy, tro dễ vỡ vụn. Lông vịt này có khả năng chứa thành phần chính nào?",
+   "lua_chon": [
+    "Cellulose, vì lông vịt nhẹ và xốp",
+    "Protein, vì cháy có mùi khét như tóc cháy",
+    "Polyethylene, vì tro dễ vỡ vụn",
+    "Tinh bột, vì lông vịt mềm mại"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Mùi khét giống mùi tóc cháy khi đốt là dấu hiệu đặc trưng của protein (chứa nguyên tố nitrogen); lông vũ động vật (như lông vịt) có thành phần chính là protein.\n\nVì sao các phương án khác sai:\n- A: Cellulose cháy có mùi giấy cháy, không khét như tóc.\n- C: PE cháy chảy dẻo thành giọt, không có mùi khét.\n- D: Lông vịt không chứa tinh bột; mùi khét là của protein."
+  },
+  {
+   "ma_cau": "K09000000243",
+   "nhom_id": "KNB00537",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "So sánh khi đốt: một mẫu vật liệu A cháy có mùi khét, tro dễ vỡ vụn; mẫu vật liệu B cháy chảy dẻo thành giọt, có mùi nhựa. Nhận xét đúng là",
+   "lua_chon": [
+    "Cả hai mẫu đều chứa protein, chỉ khác tốc độ cháy",
+    "A là polymer tổng hợp, B chứa protein",
+    "A chứa protein, B là polymer tổng hợp (chất dẻo)",
+    "Không thể phân biệt được hai mẫu bằng cách đốt"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Mẫu A có mùi khét, tro dễ vỡ vụn là dấu hiệu đặc trưng của protein; mẫu B chảy dẻo, có mùi nhựa là dấu hiệu đặc trưng của polymer tổng hợp (chất dẻo).\n\nVì sao các phương án khác sai:\n- A: Chỉ mẫu A có dấu hiệu đặc trưng (mùi khét) của protein; mẫu B là polymer tổng hợp.\n- B: Ngược lại với dữ kiện: A có mùi khét (dấu hiệu protein), B chảy dẻo có mùi nhựa (dấu hiệu polymer tổng hợp).\n- D: Đốt là cách đơn giản, hiệu quả để phân biệt vật liệu chứa protein với polymer tổng hợp dựa vào mùi và hiện tượng cháy."
+  },
+  {
+   "ma_cau": "K09000000238",
+   "nhom_id": "KNB00540",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Đốt một mẩu áo mưa, KHÔNG có mùi khét mà chảy dẻo thành giọt, có mùi nhựa cháy. Áo mưa này có khả năng làm từ vật liệu nào?",
+   "lua_chon": [
+    "Chất dẻo PE/PVC, vì không có mùi khét của protein",
+    "Tơ tằm, vì chảy dẻo là dấu hiệu của protein",
+    "Len, vì vật liệu mềm dẻo đều chứa protein",
+    "Không xác định được, vì chất dẻo và protein cháy giống nhau"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Chất dẻo (polymer tổng hợp như PE, PVC) khi đốt không có mùi khét đặc trưng của protein mà chảy dẻo, có mùi nhựa cháy; đây là dấu hiệu của polymer tổng hợp, không phải protein.\n\nVì sao các phương án khác sai:\n- B: Protein cháy có mùi khét, tro vụn; chảy dẻo là dấu hiệu của chất dẻo.\n- C: Mềm dẻo không phải dấu hiệu của protein.\n- D: Protein cháy có mùi khét như tóc cháy, chất dẻo thì không."
+  },
+  {
+   "ma_cau": "K09000000239",
+   "nhom_id": "KNB00540",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Đốt một mẩu ống nhựa PVC, KHÔNG có mùi khét, chảy dẻo và có mùi hắc đặc trưng. Đây có phải là vật liệu chứa protein không?",
+   "lua_chon": [
+    "Có, vì PVC là vật liệu mềm dẻo nên chứa protein",
+    "Có, vì mọi vật liệu tổng hợp đều có nguồn gốc từ protein",
+    "Không, vì không có mùi khét đặc trưng của protein khi cháy",
+    "Không xác định được nếu không thử thêm bằng quỳ tím"
+   ],
+   "dap_an": "C",
+   "loi_giai": "PVC khi đốt không có mùi khét như tóc cháy (dấu hiệu đặc trưng của protein), mà chảy dẻo có mùi hắc riêng của polymer tổng hợp; vậy PVC không chứa protein.\n\nVì sao các phương án khác sai:\n- A: Độ mềm dẻo không phải dấu hiệu của protein; dấu hiệu đặc trưng của protein là mùi khét khi đốt.\n- B: Vật liệu tổng hợp (polymer) được tạo ra từ các monomer nhân tạo, không có nguồn gốc từ protein.\n- D: Quỳ tím dùng để thử acid/base, không phải phương pháp phân biệt protein; dấu hiệu mùi khi đốt đã đủ để kết luận."
+  },
+  {
+   "ma_cau": "K09000000241",
+   "nhom_id": "KNB00540",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Đốt một mẩu dây câu cá, chảy dẻo thành giọt, không có mùi khét, có mùi nhựa cháy đặc trưng. Dây câu này có khả năng làm từ vật liệu nào?",
+   "lua_chon": [
+    "Polymer tổng hợp như nylon, vì không có mùi khét",
+    "Sợi protein tự nhiên, vì mềm dẻo dễ uốn",
+    "Tơ tằm, vì chảy dẻo là dấu hiệu của tơ tằm",
+    "Không xác định được nếu không đốt lửa mạnh hơn"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Chảy dẻo thành giọt, không có mùi khét mà có mùi nhựa cháy là dấu hiệu đặc trưng của polymer tổng hợp (chất dẻo, tơ tổng hợp như nylon), khác với protein luôn có mùi khét khi cháy.\n\nVì sao các phương án khác sai:\n- B: Protein cháy có mùi khét như tóc cháy.\n- C: Tơ tằm là protein, cháy có mùi khét.\n- D: Mùi và cách cháy đã đủ để nhận biết."
+  },
+  {
+   "ma_cau": "K09000000227",
+   "nhom_id": "KNB00534",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Cho 18 g glucose tác dụng hoàn toàn với dung dịch AgNO₃ trong NH₃ (phản ứng tráng bạc). Tính khối lượng Ag sinh ra.",
+   "lua_chon": [
+    "21,6 g",
+    "10,8 g",
+    "43,2 g",
+    "18 g"
+   ],
+   "dap_an": "A",
+   "loi_giai": "n(glucose)=18:180=0,1mol. Mỗi phân tử glucose (nhóm –CHO) khử được 2 ion Ag+ thành Ag: n(Ag)=2×0,1=0,2mol. m(Ag)=0,2×108=21,6g.\n\nVì sao các phương án khác sai:\n- B: Quên hệ số 2 trước Ag trong phương trình, lấy n(Ag)=n(glucose).\n- C: Nhân đôi nhầm kết quả đúng do nhầm hệ số phản ứng.\n- D: Lấy luôn khối lượng glucose ban đầu làm đáp số, quên đổi sang khối lượng Ag."
+  },
+  {
+   "ma_cau": "K09000000228",
+   "nhom_id": "KNB00534",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Cho m gam glucose tác dụng hoàn toàn với dung dịch AgNO₃ trong NH₃, thu được 5,4 g Ag. Tính giá trị của m.",
+   "lua_chon": [
+    "9 g",
+    "4,5 g",
+    "2,25 g",
+    "5,4 g"
+   ],
+   "dap_an": "B",
+   "loi_giai": "n(Ag)=5,4:108=0,05mol. Vì n(Ag)=2×n(glucose) nên n(glucose)=0,025mol. m(glucose)=0,025×180=4,5g.\n\nVì sao các phương án khác sai:\n- A: Nhân đôi nhầm kết quả đúng do nhầm hệ số phản ứng (coi tỉ lệ Ag:glucose là 1:1 thay vì 2:1).\n- C: Chia đôi nhầm kết quả đúng.\n- D: Lấy luôn khối lượng Ag làm đáp số, quên đổi sang khối lượng glucose."
+  },
+  {
+   "ma_cau": "K09000000229",
+   "nhom_id": "KNB00534",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Thuỷ phân 342 g saccharose với hiệu suất 80%. Tính khối lượng glucose thu được (không tính fructose).",
+   "lua_chon": [
+    "180 g",
+    "288 g",
+    "144 g",
+    "129,6 g"
+   ],
+   "dap_an": "C",
+   "loi_giai": "n(saccharose) = 342 : 342 = 1 mol. Theo PTHH C₁₂H₂₂O₁₁ + H₂O → C₆H₁₂O₆ + C₆H₁₂O₆, n(glucose) lí thuyết = 1 mol. Thực tế = 1×80% = 0,8 mol. m(glucose) = 0,8×180 = 144 g.\n\nVì sao các phương án khác sai:\n- A: Kết quả của việc quên nhân hiệu suất.\n- B: Kết quả của việc nhầm tưởng tạo ra 2 mol glucose, quên rằng sản phẩm còn có fructose.\n- D: Kết quả của việc nhầm khối lượng mol glucose là 162 g/mol (nhầm với đơn vị tinh bột)."
+  },
+  {
+   "ma_cau": "K09000000230",
+   "nhom_id": "KNB00534",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Thuỷ phân 1620 g tinh bột với hiệu suất 80%. Tính khối lượng glucose thu được.",
+   "lua_chon": [
+    "1800 g",
+    "1296 g",
+    "2250 g",
+    "1440 g"
+   ],
+   "dap_an": "D",
+   "loi_giai": "n(đơn vị tinh bột) = 1620 : 162 = 10 mol. Theo PTHH (C₆H₁₀O₅)n + nH₂O → nC₆H₁₂O₆, m(glucose) lí thuyết = 10×180 = 1800 g. Thực tế = 1800×80% = 1440 g.\n\nVì sao các phương án khác sai:\n- A: Kết quả của việc quên nhân hiệu suất.\n- B: Kết quả của việc coi khối lượng được bảo toàn, quên cộng thêm khối lượng nước phản ứng.\n- C: Kết quả của việc chia cho hiệu suất thay vì nhân với hiệu suất."
+  },
+  {
+   "ma_cau": "K09000000231",
+   "nhom_id": "KNB00534",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Thuỷ phân 171 g saccharose với hiệu suất 90%. Tính khối lượng fructose thu được (không tính glucose).",
+   "lua_chon": [
+    "90 g",
+    "45 g",
+    "81 g",
+    "72,9 g"
+   ],
+   "dap_an": "C",
+   "loi_giai": "n(saccharose)=171:342=0,5mol. Theo PTHH C₁₂H₂₂O₁₁+H₂O→C₆H₁₂O₆+C₆H₁₂O₆, n(fructose) lí thuyết=0,5mol. Thực tế=0,5×90%=0,45mol. m(fructose)=0,45×180=81g.\n\nVì sao các phương án khác sai:\n- A: Kết quả của việc quên nhân hiệu suất.\n- B: Kết quả của việc nhầm tưởng chỉ tạo 0,5 mol chung cho cả glucose và fructose (chia đôi sai).\n- D: Kết quả của việc nhầm khối lượng mol fructose là 162 g/mol (nhầm với đơn vị tinh bột)."
+  },
+  {
+   "ma_cau": "K09000000232",
+   "nhom_id": "KNB00534",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Thuỷ phân 810 g tinh bột với hiệu suất 90%. Tính khối lượng glucose thu được.",
+   "lua_chon": [
+    "900 g",
+    "648 g",
+    "1000 g",
+    "810 g"
+   ],
+   "dap_an": "D",
+   "loi_giai": "n(đơn vị tinh bột)=810:162=5mol. m(glucose) lí thuyết=5×180=900g. Thực tế=900×90%=810g.\n\nVì sao các phương án khác sai:\n- A: Kết quả của việc quên nhân hiệu suất.\n- B: Kết quả của việc nhầm hiệu suất là phần hao hụt: 900×(1-0,9)=90, rồi tính sai thêm.\n- C: Kết quả của việc chia cho hiệu suất thay vì nhân với hiệu suất: 900:0,9=1000."
+  },
+  {
+   "ma_cau": "K09000000186",
+   "nhom_id": "KNB00535",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Lên men 180 gam glucose với hiệu suất phản ứng 80%. Khối lượng ethylic alcohol thu được là bao nhiêu?",
+   "lua_chon": [
+    "92 g",
+    "36,8 g",
+    "115 g",
+    "73,6 g"
+   ],
+   "dap_an": "D",
+   "loi_giai": "n(glucose) = 180 : 180 = 1 mol. C₆H₁₂O₆ → 2C₂H₅OH + 2CO₂ nên n(ethanol) lí thuyết = 2 mol, m lí thuyết = 92 g. Với hiệu suất 80%: m thực tế = 92 × 0,8 = 73,6 g.\n\nVì sao các phương án khác sai:\n- A: Đã quên nhân với hiệu suất 80%, lấy luôn khối lượng ethylic alcohol theo lí thuyết.\n- B: Đã quên hệ số 2 trước ethylic alcohol trong phương trình lên men, lấy tỉ lệ mol 1 : 1.\n- C: Đã nhầm chia cho hiệu suất 80% thay vì nhân với hiệu suất."
+  },
+  {
+   "ma_cau": "K09000000187",
+   "nhom_id": "KNB00535",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Cần lên men bao nhiêu gam glucose (hiệu suất phản ứng 75%) để thu được 69 gam ethylic alcohol?",
+   "lua_chon": [
+    "135 g",
+    "180 g",
+    "360 g",
+    "92 g"
+   ],
+   "dap_an": "B",
+   "loi_giai": "n(ethanol thực tế) = 69 : 46 = 1,5 mol. Vì hiệu suất 75%: n(ethanol) lí thuyết = 1,5 : 0,75 = 2 mol. Theo PTHH, n(glucose) = 2 : 2 = 1 mol. m(glucose) = 1 × 180 = 180 g.\n\nVì sao các phương án khác sai:\n- A: Đã quên chia cho hiệu suất 75%, coi như hiệu suất đạt 100%.\n- C: Đã quên hệ số 2 trong phương trình, lấy tỉ lệ mol glucose : ethylic alcohol là 1 : 1.\n- D: Đã lấy khối lượng ethylic alcohol chia hiệu suất, không đổi qua số mol và khối lượng mol glucose."
+  },
+  {
+   "ma_cau": "K09000000188",
+   "nhom_id": "KNB00535",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Lên men 360 gam glucose với hiệu suất phản ứng 90%. Khối lượng ethylic alcohol thu được là bao nhiêu?",
+   "lua_chon": [
+    "184 g",
+    "82,8 g",
+    "165,6 g",
+    "204,4 g"
+   ],
+   "dap_an": "C",
+   "loi_giai": "n(glucose)=360:180=2mol. C₆H₁₂O₆→2C₂H₅OH+2CO₂ nên n(ethanol) lí thuyết=4mol, m lí thuyết=184g. Với hiệu suất 90%: m thực tế=184×0,9=165,6g.\n\nVì sao các phương án khác sai:\n- A: Đã quên nhân với hiệu suất 90%, lấy luôn khối lượng ethylic alcohol theo lí thuyết.\n- B: Đã quên hệ số 2 trước ethylic alcohol trong phương trình lên men, lấy tỉ lệ mol 1:1 rồi mới nhân hiệu suất.\n- D: Đã nhầm chia cho hiệu suất 90% thay vì nhân với hiệu suất."
+  },
+  {
+   "ma_cau": "K09000000189",
+   "nhom_id": "KNB00535",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Cần lên men bao nhiêu gam glucose (hiệu suất phản ứng 60%) để thu được 55,2 gam ethylic alcohol?",
+   "lua_chon": [
+    "108 g",
+    "300 g",
+    "92 g",
+    "180 g"
+   ],
+   "dap_an": "D",
+   "loi_giai": "n(ethanol thực tế)=55,2:46=1,2mol. Vì hiệu suất 60%: n(ethanol) lí thuyết=1,2:0,6=2mol. Theo PTHH, n(glucose)=2:2=1mol. m(glucose)=1×180=180g.\n\nVì sao các phương án khác sai:\n- A: Đã quên chia cho hiệu suất 60%, coi như hiệu suất đạt 100%, tính sai theo tỉ lệ ngược.\n- B: Đã lấy khối lượng ethylic alcohol chia hiệu suất, không đổi qua số mol và khối lượng mol glucose đúng cách.\n- C: Đã quên hệ số 2 trong phương trình, lấy tỉ lệ mol glucose:ethylic alcohol là 1:1 mà không nhân đúng khối lượng mol glucose."
+  }
+ ]
+}

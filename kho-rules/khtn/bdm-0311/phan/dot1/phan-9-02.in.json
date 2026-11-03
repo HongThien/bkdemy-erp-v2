@@ -1,0 +1,1964 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00460",
+   "chu_de": "Quang học",
+   "chuyen_de": "Thấu kính",
+   "nhom": "Các dạng bài tập cơ bản của thấu kính",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nThấu kính hội tụ có phần rìa mỏng hơn phần giữa; chùm tia tới song song với trục chính cho chùm tia ló hội tụ tại một điểm (tiêu điểm).\nThấu kính phân kì có phần rìa dày hơn phần giữa; chùm tia tới song song với trục chính cho chùm tia ló loe rộng ra.\nQuang tâm O là điểm mà tia sáng đi qua truyền thẳng, không đổi hướng. Trục chính là đường thẳng đi qua O và vuông góc với mặt thấu kính.\nTiêu điểm F nằm trên trục chính; tiêu cự $f$ là khoảng cách từ quang tâm O đến tiêu điểm F, chỉ phụ thuộc vào thấu kính, không phụ thuộc vị trí vật.\n\n##PP 2. Các bước làm bài\nXác định đề hỏi loại thấu kính, tên gọi của một yếu tố hay đường truyền của tia sáng.\nVới ba tia đặc biệt: tia qua quang tâm truyền thẳng; tia song song trục chính cho tia ló qua tiêu điểm ảnh (hội tụ) hoặc có đường kéo dài qua tiêu điểm (phân kì); tia qua tiêu điểm vật cho tia ló song song trục chính (hội tụ).\n\n##CY 3. Lưu ý\nĐừng nhầm thấu kính với gương cầu: thấu kính cho ánh sáng đi xuyên qua, gương cầu phản xạ ánh sáng.\nĐừng nhầm tiêu điểm (một điểm) với tiêu cự (một độ dài).",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01456",
+     "thu_tu": 1,
+     "ten": "Nhận biết loại thấu kính hội tụ hay phân kì",
+     "mo_ta": "Đề cho đặc điểm của thấu kính (rìa mỏng hay dày hơn phần giữa, chùm tia ló hội tụ hay loe ra, hình vẽ kí hiệu) và hỏi đó là thấu kính gì.\nHọc sinh đối chiếu đặc điểm với định nghĩa thấu kính hội tụ và phân kì.\nLưu ý: đề hỏi tên một điểm, một đường hoặc một độ dài trên hình (quang tâm, trục chính, tiêu điểm, tiêu cự) ⇒ thuộc dạng \"Gọi tên các yếu tố của thấu kính\".",
+     "ly_thuyet": "##TC Phân biệt hai loại thấu kính\nThấu kính hội tụ: rìa mỏng hơn phần giữa, chùm tia tới song song trục chính cho chùm tia ló hội tụ tại một điểm.\nThấu kính phân kì: rìa dày hơn phần giữa, chùm tia tới song song trục chính cho chùm tia ló loe rộng ra.\n\n##CY Lưu ý\nGương cầu lồi, gương cầu lõm và gương phẳng không phải thấu kính; chúng phản xạ ánh sáng chứ không cho ánh sáng đi xuyên qua.",
+     "vi_du": "##VD\nThấu kính có phần rìa mỏng hơn phần giữa là loại thấu kính nào?\nA. Thấu kính phân kì\nB. Gương cầu lồi\nC. Gương cầu lõm\nD. Thấu kính hội tụ\n\nBài giải:\nThấu kính có rìa mỏng hơn phần giữa là thấu kính lồi, tức thấu kính hội tụ.\nGương cầu lồi và gương cầu lõm là gương, không phải thấu kính.\nChọn D.\n\n##VD\nChiếu một chùm sáng song song trục chính vào một thấu kính. Sau khi qua thấu kính, chùm tia ló loe rộng ra. Đó là thấu kính gì?\nA. Thấu kính phân kì\nB. Thấu kính hội tụ\nC. Gương cầu lõm\nD. Gương phẳng\n\nBài giải:\nChùm tia tới song song nhưng chùm tia ló loe rộng ra, tức là thấu kính làm các tia tách xa nhau.\nĐó là tính chất của thấu kính phân kì.\nThấu kính hội tụ làm chùm tia ló hội tụ, còn gương cầu lõm và gương phẳng không phải thấu kính.\nChọn A."
+    },
+    {
+     "dang_id": "KDB01457",
+     "thu_tu": 2,
+     "ten": "Gọi tên các yếu tố của thấu kính",
+     "mo_ta": "Đề mô tả một điểm, một đường hoặc một khoảng cách trên hình vẽ thấu kính và hỏi tên gọi của nó (quang tâm, trục chính, tiêu điểm, tiêu cự).\nCó câu hỏi tiêu cự có thay đổi khi dịch chuyển vật hay không.\nHọc sinh dùng đúng định nghĩa các thuật ngữ.\nLưu ý: đề hỏi tia sáng đi tiếp theo hướng nào sau khi qua thấu kính ⇒ thuộc dạng \"Xác định đường truyền của các tia sáng đặc biệt\".",
+     "ly_thuyet": "##TC Các yếu tố của thấu kính\nQuang tâm O: điểm trong thấu kính mà mọi tia sáng đi qua đều truyền thẳng.\nTrục chính: đường thẳng đi qua quang tâm O và vuông góc với mặt thấu kính.\nTiêu điểm F: điểm trên trục chính mà chùm tia tới song song trục chính hội tụ tại đó (hoặc đường kéo dài của các tia ló đi qua đó).\nTiêu cự $f$: khoảng cách từ quang tâm O đến tiêu điểm F; là đặc trưng riêng của thấu kính, không đổi khi dịch chuyển vật.\n\n##CY Lưu ý\nTiêu điểm là một điểm, còn tiêu cự là một khoảng cách.\nTrục chính là cả một đường thẳng, không phải một điểm.",
+     "vi_du": "##VD\nTrên hình vẽ thấu kính hội tụ, điểm F trên trục chính là nơi các tia song song trục chính hội tụ lại. Điểm F được gọi là gì?\nA. Quang tâm\nB. Tiêu cự\nC. Tiêu điểm\nD. Ảnh của vật\n\nBài giải:\nĐiểm hội tụ của chùm tia song song trục chính sau khi qua thấu kính gọi là tiêu điểm.\nQuang tâm là điểm O mà tia sáng qua đó truyền thẳng; tiêu cự là một khoảng cách, không phải một điểm.\nChọn C.\n\n##VD\nTrên hình vẽ thấu kính hội tụ, khoảng cách từ quang tâm O đến tiêu điểm F được gọi là gì?\nA. Tiêu cự\nB. Trục chính\nC. Khoảng cách ảnh\nD. Chiều cao vật\n\nBài giải:\nKhoảng cách từ quang tâm O đến tiêu điểm F gọi là tiêu cự, kí hiệu $f$.\nTrục chính là đường thẳng đi qua O và vuông góc với thấu kính; khoảng cách ảnh và chiều cao vật là những đại lượng khác.\nChọn A."
+    },
+    {
+     "dang_id": "KDB01458",
+     "thu_tu": 3,
+     "ten": "Xác định đường truyền của các tia sáng đặc biệt",
+     "mo_ta": "Đề cho một tia sáng đặc biệt (qua quang tâm, song song trục chính, qua tiêu điểm vật) tới thấu kính hội tụ hoặc phân kì và hỏi tia ló đi theo hướng nào.\nHọc sinh nhớ quy tắc ba tia đặc biệt cho từng loại thấu kính.\nLưu ý: đề hỏi tên điểm hay đường trên hình ⇒ thuộc dạng \"Gọi tên các yếu tố của thấu kính\".",
+     "ly_thuyet": "##TC Ba tia sáng đặc biệt\nTia tới qua quang tâm O: tia ló truyền thẳng, không đổi hướng (cả thấu kính hội tụ và phân kì).\nThấu kính hội tụ: tia tới song song trục chính cho tia ló đi qua tiêu điểm ảnh F′; tia tới đi qua tiêu điểm vật F cho tia ló song song trục chính.\nThấu kính phân kì: tia tới song song trục chính cho tia ló có đường kéo dài đi qua tiêu điểm nằm cùng phía với tia tới.\n\n##PP Xác định tia ló\nNhận ra tia tới là tia nào trong ba tia đặc biệt.\nXác định thấu kính là hội tụ hay phân kì.\nÁp dụng quy tắc tương ứng để kết luận hướng tia ló.\n\n##CY Lưu ý\nMọi tia qua quang tâm đều truyền thẳng; đừng nhầm với tia qua tiêu điểm.\nVới thấu kính phân kì, tia ló không đi qua tiêu điểm mà chỉ có đường kéo dài đi qua tiêu điểm.",
+     "vi_du": "##VD\nTia sáng đi qua quang tâm O của thấu kính hội tụ thì tiếp tục truyền theo hướng nào?\nA. Đổi hướng, đi qua tiêu điểm\nB. Đổi hướng, song song trục chính\nC. Bị phản xạ ngược trở lại\nD. Truyền thẳng, không đổi hướng\n\nBài giải:\nTia sáng đi qua quang tâm của thấu kính (hội tụ hay phân kì) đều truyền thẳng, không đổi hướng.\nHai phương án đầu là đường đi của tia song song trục chính và tia qua tiêu điểm, không phải tia qua quang tâm.\nChọn D.\n\n##VD\nTia sáng đi qua tiêu điểm vật F (nằm trước thấu kính), sau khi qua thấu kính hội tụ thì truyền theo hướng nào?\nA. Tiếp tục truyền thẳng, không đổi hướng\nB. Đi qua tiêu điểm ảnh F′\nC. Ló ra song song với trục chính\nD. Loe ra xa trục chính\n\nBài giải:\nTia tới đi qua tiêu điểm vật F của thấu kính hội tụ.\nSau khi khúc xạ, tia ló song song với trục chính.\nTia truyền thẳng là tia qua quang tâm, tia qua F′ là tia ló của tia song song trục chính.\nChọn C."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00461",
+   "chu_de": "Quang học",
+   "chuyen_de": "Thấu kính",
+   "nhom": "Biện luận trạng thái ảnh dựa vào d và f",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nThấu kính hội tụ (tiêu cự $f$, vật cách thấu kính $d$):\n$d > 2f$: ảnh thật, ngược chiều, nhỏ hơn vật.\n$d = 2f$: ảnh thật, ngược chiều, bằng vật.\n$f < d < 2f$: ảnh thật, ngược chiều, lớn hơn vật.\n$d < f$: ảnh ảo, cùng chiều, lớn hơn vật.\nThấu kính phân kì: với mọi vị trí của vật luôn cho ảnh ảo, cùng chiều, nhỏ hơn vật và nằm trong khoảng tiêu cự.\nẢnh thật ngược chiều với vật; ảnh ảo cùng chiều với vật.\n\n##PP 2. Các bước làm bài\nXác định loại thấu kính, đọc $d$ và $f$.\nVới thấu kính hội tụ, so sánh $d$ với $f$ và $2f$ để chọn khoảng vị trí của vật.\nKết luận tính chất ảnh theo khoảng đó.\n\n##CY 3. Lưu ý\nĐổi các khoảng $d$, $f$ về cùng đơn vị trước khi so sánh.\nẢnh ảo nhỏ hơn vật chỉ có ở thấu kính phân kì; ảnh ảo lớn hơn vật chỉ có ở thấu kính hội tụ.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01459",
+     "thu_tu": 1,
+     "ten": "Xác định tính chất ảnh qua thấu kính hội tụ theo d và f",
+     "mo_ta": "Đề cho thấu kính hội tụ với $f$ và khoảng cách $d$ từ vật tới thấu kính, hỏi ảnh thật hay ảo, cùng hay ngược chiều, lớn hay nhỏ hơn vật.\nHọc sinh so sánh $d$ với $f$ và $2f$ để suy ra tính chất ảnh.\nCó câu hỏi ngược: muốn có ảnh với tính chất cho trước thì vật phải đặt ở khoảng nào.\nLưu ý: đề cho thấu kính phân kì ⇒ thuộc dạng \"Xác định tính chất ảnh qua thấu kính phân kì\".",
+     "ly_thuyet": "##TC Ảnh qua thấu kính hội tụ\n$d > 2f$: ảnh thật, ngược chiều, nhỏ hơn vật.\n$d = 2f$: ảnh thật, ngược chiều, bằng vật.\n$f < d < 2f$: ảnh thật, ngược chiều, lớn hơn vật.\n$d < f$: ảnh ảo, cùng chiều, lớn hơn vật.\n\n##PP Xác định tính chất ảnh\nĐọc $d$ và $f$, tính $2f$.\nSo sánh $d$ với $f$ và $2f$ để xác định khoảng vị trí của vật.\nĐối chiếu với bảng trên để kết luận.\n\n##CY Lưu ý\nẢnh ảo chỉ xuất hiện khi vật ở trong khoảng tiêu cự ($d < f$).\nKhi $d = 2f$ ảnh bằng vật; đừng nhầm với trường hợp $f < d < 2f$ (ảnh lớn hơn vật).",
+     "vi_du": "##VD\nVật sáng AB cách thấu kính hội tụ tiêu cự $f = 10$ cm một khoảng $d = 25$ cm. Ảnh của vật qua thấu kính là ảnh gì?\nA. Ảnh thật, ngược chiều, nhỏ hơn vật\nB. Ảnh thật, ngược chiều, lớn hơn vật\nC. Ảnh ảo, cùng chiều, lớn hơn vật\nD. Ảnh thật, cùng chiều, nhỏ hơn vật\n\nBài giải:\nTa có $2f = 20$ cm.\nVì $d = 25$ cm $> 2f$ nên vật nằm ngoài khoảng $2f$.\nThấu kính hội tụ cho ảnh thật, ngược chiều, nhỏ hơn vật.\nChọn A.\n\n##VD\nVật sáng AB cách thấu kính hội tụ tiêu cự $f = 15$ cm một khoảng $d = 9$ cm. Ảnh của vật qua thấu kính là ảnh gì?\nA. Ảnh thật, ngược chiều, nhỏ hơn vật\nB. Ảnh ảo, cùng chiều, lớn hơn vật\nC. Ảnh thật, ngược chiều, lớn hơn vật\nD. Ảnh ảo, cùng chiều, nhỏ hơn vật\n\nBài giải:\nVì $d = 9$ cm $< f = 15$ cm nên vật nằm trong khoảng tiêu cự.\nThấu kính hội tụ khi đó cho ảnh ảo, cùng chiều, lớn hơn vật.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01460",
+     "thu_tu": 2,
+     "ten": "Xác định tính chất ảnh qua thấu kính phân kì",
+     "mo_ta": "Đề cho thấu kính phân kì (có thể kèm $f$, $d$ hoặc vật ở khoảng bất kì) và hỏi tính chất hoặc vị trí của ảnh.\nHọc sinh nhớ thấu kính phân kì luôn cho ảnh ảo, cùng chiều, nhỏ hơn vật, không phụ thuộc $d$.\nLưu ý: đề cho thấu kính hội tụ ⇒ thuộc dạng \"Xác định tính chất ảnh qua thấu kính hội tụ theo d và f\".",
+     "ly_thuyet": "##TC Ảnh qua thấu kính phân kì\nVới mọi vị trí của vật, thấu kính phân kì luôn cho ảnh ảo, cùng chiều, nhỏ hơn vật.\nẢnh luôn nằm trong khoảng tiêu cự, gần thấu kính hơn tiêu điểm.\nThấu kính phân kì không bao giờ cho ảnh thật.\n\n##CY Lưu ý\nKhông cần so sánh $d$ với $f$ hay $2f$ khi đề cho thấu kính phân kì, kể cả khi $d = 2f$ hay $d < f$.\nẢnh ảo lớn hơn vật chỉ có ở thấu kính hội tụ.",
+     "vi_du": "##VD\nVật sáng AB cách thấu kính phân kì tiêu cự $f = 12$ cm một khoảng $d = 8$ cm. Ảnh của vật qua thấu kính là ảnh gì?\nA. Ảnh ảo, cùng chiều, lớn hơn vật\nB. Ảnh thật, ngược chiều, nhỏ hơn vật\nC. Ảnh ảo, cùng chiều, nhỏ hơn vật\nD. Ảnh thật, ngược chiều, bằng vật\n\nBài giải:\nĐề cho thấu kính phân kì nên ảnh không phụ thuộc vị trí vật.\nDù vật ở trong hay ngoài tiêu cự, thấu kính phân kì luôn cho ảnh ảo, cùng chiều, nhỏ hơn vật.\nChọn C.\n\n##VD\nẢnh tạo bởi thấu kính phân kì luôn nằm trong khoảng nào tính từ thấu kính?\nA. Ngoài khoảng hai lần tiêu cự\nB. Đúng bằng hai lần tiêu cự\nC. Trong khoảng tiêu cự\nD. Đúng bằng tiêu cự\n\nBài giải:\nẢnh của thấu kính phân kì là ảnh ảo, nằm cùng phía với vật.\nẢnh này luôn gần thấu kính hơn tiêu điểm, tức nằm trong khoảng tiêu cự.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01461",
+     "thu_tu": 3,
+     "ten": "Suy ra loại thấu kính từ tính chất của ảnh",
+     "mo_ta": "Đề cho tính chất ảnh quan sát được (cùng hay ngược chiều, lớn hay nhỏ hơn vật) và hỏi đó là thấu kính hội tụ hay phân kì.\nHọc sinh dùng tính chất ảnh để loại trừ loại thấu kính không thể tạo ra ảnh đó.\nLưu ý: đề cho sẵn loại thấu kính cùng $d$, $f$ rồi hỏi tính chất ảnh ⇒ thuộc hai dạng \"Xác định tính chất ảnh qua thấu kính ...\".",
+     "ly_thuyet": "##TC Dấu hiệu nhận ra loại thấu kính\nẢnh ngược chiều với vật là ảnh thật, chỉ có ở thấu kính hội tụ.\nẢnh ảo cùng chiều, lớn hơn vật chỉ có ở thấu kính hội tụ (vật trong khoảng tiêu cự).\nẢnh ảo cùng chiều, nhỏ hơn vật chỉ có ở thấu kính phân kì.\n\n##PP Suy ra loại thấu kính\nXác định ảnh là thật hay ảo dựa vào chiều của ảnh.\nXét thêm ảnh lớn hơn hay nhỏ hơn vật.\nĐối chiếu với tính chất ảnh của từng loại thấu kính để loại trừ.\n\n##CY Lưu ý\nKhông được kết luận chỉ từ \"ảnh cùng chiều\" vì cả hai loại thấu kính đều có thể cho ảnh ảo cùng chiều; phải xét thêm ảnh lớn hơn hay nhỏ hơn vật.",
+     "vi_du": "##VD\nMột vật đặt trước một thấu kính, ảnh tạo bởi thấu kính ngược chiều với vật. Thấu kính đó thuộc loại nào?\nA. Thấu kính phân kì\nB. Thấu kính hội tụ\nC. Có thể là thấu kính hội tụ hoặc phân kì\nD. Không xác định được loại thấu kính\n\nBài giải:\nẢnh ngược chiều với vật là ảnh thật.\nThấu kính phân kì chỉ cho ảnh ảo cùng chiều với vật nên không thể tạo ảnh này.\nVậy đó là thấu kính hội tụ.\nChọn B.\n\n##VD\nMột vật đặt trước một thấu kính, ảnh tạo bởi thấu kính cùng chiều với vật và nhỏ hơn vật. Thấu kính đó thuộc loại nào?\nA. Thấu kính hội tụ\nB. Thấu kính phân kì\nC. Có thể là thấu kính hội tụ hoặc phân kì\nD. Không xác định được loại thấu kính\n\nBài giải:\nẢnh cùng chiều với vật là ảnh ảo.\nThấu kính hội tụ khi cho ảnh ảo thì ảnh luôn lớn hơn vật.\nẢnh ảo nhỏ hơn vật chỉ có ở thấu kính phân kì.\nChọn B."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00458",
+   "chu_de": "Quang học",
+   "chuyen_de": "Lăng kính",
+   "nhom": "Ứng dụng thực tế của lăng kính",
+   "nhom_ly_thuyet": "Mục tiêu: Dùng hiện tượng tán sắc ánh sáng để giải thích hiện tượng trong tự nhiên như cầu vồng\nCơ sở lý thuyết & Giải thích:\nSau cơn mưa, trong không khí có vô số các giọt nước lơ lửng. Mỗi giọt nước nhỏ xíu này đóng vai trò như một lăng kính siêu nhỏ.\nKhi ánh sáng Mặt Trời (ánh sáng trắng) chiếu vào các giọt nước này, nó bị khúc xạ và tán sắc thành dải màu từ Đỏ đến Tím.\nÁnh sáng tiếp tục bị phản xạ toàn phần ở mặt trong của giọt nước rồi ló ra ngoài, truyền vào mắt người quan sát, tạo nên dải màu cầu vồng rực rỡ trên bầu trời.\nVí dụ minh họa: Tại sao ta thường chỉ nhìn thấy cầu vồng sau những cơn mưa khi có ánh nắng Mặt Trời chiếu vào?\nHướng dẫn giải\nVì để tạo ra cầu vồng cần 2 yếu tố: Ánh sáng trắng (từ Mặt Trời) và Lăng kính (chính là các giọt nước mưa còn đọng lại trong không khí). Nếu không có mưa (không có giọt nước làm lăng kính) hoặc không có nắng (không có nguồn sáng trắng) thì sẽ không có hiện tượng tán sắc tạo ra cầu vồng.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01454",
+     "thu_tu": 1,
+     "ten": "Giải thích hiện tượng cầu vồng",
+     "mo_ta": "Đề hỏi về cầu vồng: điều kiện xuất hiện, thứ tự các dải màu, vì sao màu đỏ ở ngoài và màu tím ở trong.\nHọc sinh trả lời bằng cách nhớ giọt nước mưa đóng vai trò lăng kính tán sắc ánh sáng trắng của Mặt Trời.\nLưu ý: đề hỏi hiện tượng khác (kim cương, giọt sương, mép kính, laser, thí nghiệm lăng kính) ⇒ thuộc dạng \"Nhận ra hiện tượng tán sắc trong đời sống và thí nghiệm\".",
+     "ly_thuyet": "##TC Cầu vồng và tán sắc ánh sáng\nCầu vồng xuất hiện khi ánh sáng trắng của Mặt Trời chiếu vào các giọt nước nhỏ lơ lửng trong không khí sau cơn mưa.\nMỗi giọt nước đóng vai trò như một lăng kính nhỏ: ánh sáng trắng bị khúc xạ, tán sắc thành dải màu từ đỏ đến tím rồi truyền tới mắt người quan sát.\nTia đỏ bị lệch ít nhất, tia tím bị lệch nhiều nhất nên các màu luôn xếp theo thứ tự cố định: đỏ, cam, vàng, lục, lam, chàm, tím.\n\n##CY Lưu ý\nCần đủ hai yếu tố: ánh sáng trắng (Mặt Trời) và giọt nước trong không khí; thiếu một trong hai thì không có cầu vồng.\nThứ tự màu do góc lệch quyết định, không do độ nặng của màu hay khả năng nhìn của mắt.",
+     "vi_du": "##VD\nMuốn quan sát được cầu vồng, cần có đồng thời những điều kiện nào?\nA. Chỉ cần trời có mây đen\nB. Nhiệt độ không khí phải rất thấp\nC. Chỉ cần trời tối và có ánh trăng\nD. Ánh sáng mặt trời và giọt nước trong không khí\n\nBài giải:\nCầu vồng là kết quả của sự tán sắc ánh sáng trắng.\nCần ánh sáng trắng của Mặt Trời và các giọt nước trong không khí đóng vai trò lăng kính.\nMây đen, nhiệt độ thấp hay ánh trăng không cung cấp đủ hai yếu tố này.\nChọn D.\n\n##VD\nVì sao cầu vồng luôn có màu đỏ ở phía trên (ngoài) và màu tím ở phía dưới (trong) của dải màu?\nA. Vì tia tím bị giọt nước hấp thụ một phần\nB. Vì tia đỏ nặng hơn nên rơi xuống chậm hơn\nC. Vì mắt người nhìn màu đỏ rõ hơn màu tím\nD. Tia đỏ lệch ít nhất, tia tím lệch nhiều nhất\n\nBài giải:\nKhi tán sắc qua giọt nước, mỗi màu bị lệch một góc khác nhau.\nTia đỏ có góc lệch nhỏ nhất, tia tím có góc lệch lớn nhất.\nVị trí các dải màu được sắp xếp đúng theo thứ tự góc lệch đó, không liên quan đến sự hấp thụ, khối lượng hay thị giác.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01455",
+     "thu_tu": 2,
+     "ten": "Nhận ra hiện tượng tán sắc trong đời sống và thí nghiệm",
+     "mo_ta": "Đề mô tả một hiện tượng hoặc thí nghiệm (chùm sáng qua lăng kính, kim cương, giọt sương, mép kính dày, chùm laser) và hỏi quan sát được gì hoặc hiện tượng nào cùng bản chất.\nHọc sinh nhận ra sự tán sắc của ánh sáng trắng qua vật trong suốt có mặt nghiêng, và phân biệt với ánh sáng đơn sắc.\nLưu ý: đề hỏi riêng về cầu vồng (điều kiện, thứ tự màu) ⇒ thuộc dạng \"Giải thích hiện tượng cầu vồng\".",
+     "ly_thuyet": "##TC Tán sắc ánh sáng\nChiếu chùm ánh sáng trắng hẹp qua lăng kính, chùm sáng ló bị tách thành dải màu liên tục từ đỏ đến tím; đó là sự tán sắc ánh sáng.\nCác vật trong suốt có mặt nghiêng (mặt cắt kim cương, giọt nước, mép dày của tấm kính) hoạt động như lăng kính nhỏ nên cũng gây ra tán sắc.\nÁnh sáng đơn sắc (như tia laser một màu) khi qua lăng kính chỉ bị lệch hướng mà không bị tách thành các màu khác.\n\n##PP Nhận ra hiện tượng\nXác định nguồn sáng là ánh sáng trắng hay đơn sắc.\nXác định vật mà ánh sáng đi qua có mặt nghiêng giống lăng kính hay không.\nNếu là ánh sáng trắng qua vật như lăng kính thì kết luận có tán sắc; nếu là ánh sáng đơn sắc thì chỉ bị lệch hướng.\n\n##CY Lưu ý\nPhản xạ ánh sáng, hấp thụ ánh sáng hay nhiễm điện không tạo ra dải nhiều màu.",
+     "vi_du": "##VD\nKhi chiếu một chùm ánh sáng trắng hẹp qua lăng kính trong phòng tối, ta quan sát được gì trên màn chắn phía sau?\nA. Một vệt sáng trắng duy nhất\nB. Nhiều vệt sáng trắng tách rời nhau\nC. Một vệt sáng đen\nD. Một dải màu liên tục từ đỏ đến tím\n\nBài giải:\nÁnh sáng trắng gồm nhiều ánh sáng màu khác nhau.\nQua lăng kính, mỗi màu bị lệch một góc khác nhau nên chùm sáng bị tách ra.\nTrên màn thu được một dải màu liên tục từ đỏ đến tím.\nChọn D.\n\n##VD\nTrong một buổi trình diễn ánh sáng, người ta chiếu một chùm laser đơn sắc (chỉ một màu) qua một lăng kính. Kết quả quan sát được trên màn là gì?\nA. Một dải bảy màu như tán sắc ánh sáng trắng\nB. Chùm tia bị hấp thụ hết trong lăng kính\nC. Chùm tia bị lệch hướng nhưng vẫn giữ nguyên một màu ban đầu\nD. Chùm tia tách thành hai tia cùng màu đối xứng nhau\n\nBài giải:\nLaser là ánh sáng đơn sắc, chỉ có một màu.\nQua lăng kính chùm tia chỉ bị khúc xạ nên lệch hướng, không có màu nào khác để tách ra.\nVì vậy không có dải bảy màu, chùm tia cũng không bị hấp thụ hết hay tách đôi.\nChọn C."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00445",
+   "chu_de": "Quang học",
+   "chuyen_de": "Khúc xạ ánh sáng",
+   "nhom": "Ứng dụng thực tế của hiện tượng khúc xạ ánh sáng",
+   "nhom_ly_thuyet": "Mục tiêu: Dùng hiện tượng khúc xạ để giải thích các ảo ảnh quang học trong tự nhiên.\nCác bước tư duy giải thích:\nBước 1: Khẳng định ánh sáng đi từ vật qua 2 môi trường trong suốt khác nhau (VD: Nước ra không khí) nên bị khúc xạ (gãy khúc).\nBước 2: Mắt người luôn có cảm giác ánh sáng truyền thẳng. Mắt nhìn thấy vật ở vị trí giao điểm của đường kéo dài tia khúc xạ.\nBước 3: Kết luận vị trí ta nhìn thấy (ảnh) bị lệch so với vị trí thực tế của vật.\nVí dụ minh họa: Giải thích hiện tượng \"Ảo ảnh sa mạc\" (thấy vũng nước trên mặt đường nhựa vào mùa hè nắng gắt).\nHướng dẫn giải\nVào mùa hè, lớp không khí sát mặt đường rất nóng (chiết suất nhỏ), lớp không khí trên cao lạnh hơn (chiết suất lớn). Ánh sáng từ bầu trời truyền xuống bị khúc xạ liên tục qua các lớp không khí này và cuối cùng bị phản xạ toàn phần hắt vào mắt ta. Mắt ta nhìn theo đường kéo dài của tia sáng nên thấy hình ảnh của bầu trời (màu xanh, lung linh) nằm ở dưới mặt đường, tạo ra ảo giác giống như một vũng nước.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01131",
+     "thu_tu": 1,
+     "ten": "GIẢI THÍCH CÁC HIỆN TƯỢNG QUAN SÁT ĐƯỢC",
+     "mo_ta": "Đề mô tả một hiện tượng quan sát được (đũa gãy khúc, đáy bể nông hơn, cá hay sỏi lệch vị trí, đồng xu hiện lên khi đổ nước…) và hỏi nguyên nhân hoặc nhận định đúng.\nĐáp án là lập luận định tính về khúc xạ ánh sáng qua mặt phân cách nước – không khí, không có phép tính số.\nLưu ý: đề cho độ sâu, chiết suất và yêu cầu tính ⇒ thuộc dạng \"TÍNH ĐỘ SÂU BIỂU KIẾN CỦA BỂ NƯỚC\".\nLưu ý: hiện tượng không phải khúc xạ qua mặt nước (cầu vồng, ảo ảnh, sao nhấp nháy, thấu kính, lăng kính, sợi quang) ⇒ thuộc dạng \"CÁC HIỆN TƯỢNG VÀ ỨNG DỤNG KHÁC CỦA KHÚC XẠ\".",
+     "ly_thuyet": "##TC Nguyên nhân của các hiện tượng\nÁnh sáng truyền từ vật qua mặt phân cách giữa hai môi trường trong suốt (nước và không khí) thì bị khúc xạ, tức bị gãy khúc tại mặt phân cách.\nTừ nước ra không khí, tia khúc xạ lệch xa pháp tuyến ($r>i$). Mắt luôn coi ánh sáng truyền thẳng nên nhìn theo phương tia ló và thấy ảnh của vật nằm cao hơn vật thật.\nHệ quả: vật ở dưới nước trông nông hơn, nằm cao hơn vị trí thật; chiếc đũa nghiêng trong nước trông bị gãy khúc tại mặt nước.\nNhìn theo phương vuông góc với mặt nước thì góc tới bằng $0^\\circ$, tia sáng truyền thẳng nên vật không bị lệch ngang, nhưng ảnh vẫn nằm nông hơn vật.\n\n##PP Cách giải thích\nChỉ ra ánh sáng đi từ vật qua hai môi trường trong suốt nào, nên bị khúc xạ tại mặt phân cách.\nXác định chiều lệch của tia khúc xạ (từ nước ra không khí lệch xa pháp tuyến, từ không khí vào nước lệch lại gần pháp tuyến).\nMắt nhìn theo phương tia sáng tới mắt nên thấy ảnh ở vị trí khác vật thật.\nKết luận vị trí ảnh so với vật (cao hơn, nông hơn, lệch phía nào).\n\n##CY Lưu ý\nNguyên nhân là khúc xạ ánh sáng, không phải phản xạ, hấp thụ ánh sáng, hay nước làm vật đổi hình dạng hoặc dịch chuyển.\nPhương án nhiễu hay gặp: nước đẩy vật lên, ánh sáng trong nước truyền chậm nên hình ảnh bị trễ, đũa bị nước bẻ cong.",
+     "vi_du": "##VD\nCắm một chiếc đũa nghiêng vào cốc nước, nhìn từ ngoài vào ta thấy chiếc đũa như bị gãy khúc ngay tại mặt nước. Nguyên nhân là\nA. nước làm chiếc đũa bị cong đi.\nB. ánh sáng từ phần đũa trong nước bị khúc xạ khi đi ra không khí, làm phần đũa đó được nhìn thấy ở vị trí lệch đi.\nC. ánh sáng bị nước hấp thu một phần nên hình ảnh bị đứt đoạn.\nD. mắt người không nhìn rõ vật ở dưới nước.\n\nBài giải:\nPhần đũa ở trên mặt nước cho ánh sáng truyền thẳng tới mắt qua không khí nên được nhìn thấy đúng vị trí.\nÁnh sáng từ phần đũa ngập trong nước đi ra không khí thì bị khúc xạ tại mặt nước, tia ló lệch xa pháp tuyến.\nMắt nhìn theo phương tia ló nên thấy phần đũa trong nước ở vị trí lệch so với vị trí thật, hai phần không nối liền nhau nên ta thấy đũa bị gãy khúc.\nChiếc đũa không hề đổi hình dạng nên A sai; hấp thụ ánh sáng và khả năng nhìn của mắt không giải thích được hiện tượng nên C, D sai.\nChọn B.\n\n##VD\nĐặt một đồng xu dưới đáy chậu, lùi ra xa đến khi vừa không nhìn thấy đồng xu nữa. Giữ nguyên vị trí mắt và đổ nước vào chậu thì lại nhìn thấy đồng xu. Nguyên nhân là\nA. Nước đẩy đồng xu dịch lại gần mắt.\nB. Nước phản xạ ánh sáng từ đồng xu tới mắt.\nC. Ánh sáng từ đồng xu khi đi ra không khí bị khúc xạ lệch xa pháp tuyến, nhờ đó lọt được tới mắt.\nD. Nước làm đồng xu phát sáng mạnh hơn.\n\nBài giải:\nKhi chưa có nước, ánh sáng từ đồng xu truyền thẳng nên bị thành chậu chắn lại, không tới được mắt.\nKhi có nước, ánh sáng từ đồng xu đi tới mặt nước rồi ra không khí thì bị khúc xạ, tia ló lệch xa pháp tuyến nên bị bẻ lên cao hơn.\nNhờ đó tia sáng vượt qua mép chậu và tới mắt; mắt nhìn theo phương tia ló nên thấy ảnh đồng xu nằm cao hơn đồng xu thật.\nNước không đẩy đồng xu, không phản xạ ánh sáng tới mắt và không làm đồng xu phát sáng (đồng xu không tự phát sáng).\nChọn C."
+    },
+    {
+     "dang_id": "KDB01132",
+     "thu_tu": 2,
+     "ten": "TÍNH ĐỘ SÂU BIỂU KIẾN CỦA BỂ NƯỚC",
+     "mo_ta": "Đề cho độ sâu thật của bể (hoặc chậu) chứa nước hay chất lỏng và chiết suất; hỏi độ sâu nhìn thấy của đáy khi nhìn gần vuông góc với mặt chất lỏng.\nLàm bằng một phép chia $h'=\\dfrac{h}{n}$ (với nước $n=\\dfrac43$ thì nhân $\\dfrac34$); đáp số luôn nhỏ hơn độ sâu thật.\nLưu ý: hỏi đáy được nâng lên bao nhiêu so với đáy thật ⇒ thuộc dạng \"TÍNH ĐỘ NÂNG CỦA ẢNH SO VỚI ĐÁY\"; cho độ sâu nhìn thấy, hỏi độ sâu thật ⇒ thuộc dạng \"TÍNH ĐỘ SÂU THẬT KHI BIẾT ĐỘ SÂU NHÌN THẤY\".",
+     "ly_thuyet": "##TC Độ sâu nhìn thấy (độ sâu biểu kiến)\nNhìn gần vuông góc với mặt nước, ảnh của đáy bể nằm cao hơn đáy thật; khoảng cách từ mặt nước đến ảnh đó gọi là độ sâu nhìn thấy $h'$.\nCông thức: $h'=\\dfrac{h}{n}$, trong đó $h$ là độ sâu thật (mực chất lỏng), $n$ là chiết suất của chất lỏng; $h$ và $h'$ cùng đơn vị.\nVì $n>1$ nên $h'<h$: đáy luôn trông nông hơn thực tế. Với nước $n=\\dfrac43$ nên $h'=\\dfrac34h$.\n\n##PP Cách tính\nXác định độ sâu thật $h$ và chiết suất $n$ của chất lỏng.\nTính $h'=\\dfrac{h}{n}$ (với nước: nhân $\\dfrac34$).\nKiểm tra $h'<h$ và ghi đúng đơn vị.\n\n##CY Lưu ý\nLỗi hay mắc: nhân với $n$ thay vì chia (cho $h'>h$, trái với hiện tượng); lấy độ nâng $h-h'$ hoặc độ sâu thật làm đáp số.\nCông thức chỉ dùng khi nhìn gần vuông góc với mặt chất lỏng.",
+     "vi_du": "##VD\nMột bể nước sâu 160 cm, chiết suất của nước bằng 4/3. Nhìn gần vuông góc với mặt nước, độ sâu nhìn thấy của bể bằng\nA. 160 cm.\nB. 213 cm.\nC. 40 cm.\nD. 120 cm.\n\nBài giải:\nĐộ sâu nhìn thấy: $h'=\\dfrac{h}{n}=\\dfrac{160}{4/3}=160\\cdot\\dfrac34=120$ cm.\nPhương án 213 cm là kết quả nhân với $n$ thay vì chia, cho độ sâu nhìn thấy lớn hơn độ sâu thật nên loại.\nChọn D.\n\n##VD\nMột bể nước sâu 180 cm, chiết suất của nước bằng 4/3. Nhìn gần vuông góc với mặt nước, độ sâu nhìn thấy của bể bằng\nA. 180 cm.\nB. 240 cm.\nC. 135 cm.\nD. 45 cm.\n\nBài giải:\nĐộ sâu thật $h=180$ cm, chiết suất $n=\\dfrac43$.\nĐộ sâu nhìn thấy: $h'=\\dfrac{h}{n}=180\\cdot\\dfrac34=135$ cm.\nPhương án 240 cm là $180\\cdot\\dfrac43$ (nhân thay vì chia); phương án 45 cm là $180\\cdot\\dfrac14$ (không có cơ sở).\nChọn C."
+    },
+    {
+     "dang_id": "KDB01133",
+     "thu_tu": 3,
+     "ten": "TÍNH ĐỘ NÂNG CỦA ẢNH SO VỚI ĐÁY",
+     "mo_ta": "Đề cho mực chất lỏng (độ sâu thật) và chiết suất; hỏi ảnh của đáy được nâng lên bao nhiêu so với đáy thật khi nhìn gần vuông góc.\nLàm bằng hai bước: tính độ sâu nhìn thấy $h'=\\dfrac{h}{n}$ rồi lấy $\\Delta h=h-h'$.\nLưu ý: đề chỉ hỏi độ sâu nhìn thấy ⇒ thuộc dạng \"TÍNH ĐỘ SÂU BIỂU KIẾN CỦA BỂ NƯỚC\"; hỏi độ sâu thật ⇒ thuộc dạng \"TÍNH ĐỘ SÂU THẬT KHI BIẾT ĐỘ SÂU NHÌN THẤY\".",
+     "ly_thuyet": "##TC Độ nâng của ảnh đáy\nĐộ nâng của ảnh so với đáy thật là khoảng cách giữa đáy thật và ảnh của đáy: $\\Delta h=h-h'$.\nVới $h'=\\dfrac{h}{n}$ ta có $\\Delta h=h-\\dfrac{h}{n}=h\\left(1-\\dfrac1n\\right)$; $h$, $h'$, $\\Delta h$ cùng đơn vị.\n\n##PP Cách tính\nXác định độ sâu thật $h$ và chiết suất $n$.\nTính độ sâu nhìn thấy $h'=\\dfrac{h}{n}$.\nTính độ nâng $\\Delta h=h-h'$ và ghi đơn vị.\n\n##CY Lưu ý\nLỗi hay mắc: dừng ở bước $h'$ (độ sâu nhìn thấy) mà quên trừ cho $h$; hoặc lấy $h'-h$ ra số âm.\nĐộ nâng luôn dương và nhỏ hơn $h$.",
+     "vi_du": "##VD\nMột chậu chứa chất lỏng chiết suất $1,5$, mực chất lỏng cao $90\\ \\mathrm{cm}$. Nhìn gần vuông góc với mặt chất lỏng, ảnh của đáy chậu được nâng lên so với đáy thật một đoạn bằng bao nhiêu cm?\n\nBài giải:\nĐộ sâu nhìn thấy: $h'=\\dfrac{h}{n}=\\dfrac{90}{1,5}=60\\ \\mathrm{cm}$.\nĐộ nâng của ảnh so với đáy thật: $\\Delta h=h-h'=90-60=30\\ \\mathrm{cm}$.\nChú ý $60\\ \\mathrm{cm}$ là độ sâu nhìn thấy, không phải độ nâng.\nĐáp án: 30 cm.\n\n##VD\nMột chậu chứa chất lỏng chiết suất $1,25$, mực chất lỏng cao $100\\ \\mathrm{cm}$. Nhìn gần vuông góc với mặt chất lỏng, ảnh của đáy chậu được nâng lên so với đáy thật một đoạn bằng bao nhiêu cm?\n\nBài giải:\nĐộ sâu nhìn thấy: $h'=\\dfrac{h}{n}=\\dfrac{100}{1,25}=80\\ \\mathrm{cm}$.\nĐộ nâng của ảnh so với đáy thật: $\\Delta h=h-h'=100-80=20\\ \\mathrm{cm}$.\nĐáp án: 20 cm."
+    },
+    {
+     "dang_id": "KDB01134",
+     "thu_tu": 4,
+     "ten": "CÁC HIỆN TƯỢNG VÀ ỨNG DỤNG KHÁC CỦA KHÚC XẠ",
+     "mo_ta": "Đề hỏi nguyên nhân hoặc hiện tượng nào dựa trên khúc xạ ánh sáng ngoài kiểu \"nhìn vật qua mặt nước\": ảo ảnh trên mặt đường nhựa, cầu vồng, sao nhấp nháy, tán sắc qua lăng kính, thấu kính hội tụ trong kính lúp, sợi quang.\nTrả lời bằng lập luận định tính: chỉ ra tia sáng qua các môi trường có chiết suất khác nhau (hoặc thay đổi liên tục) nên đổi hướng.\nLưu ý: hiện tượng vật dưới nước trông cao hơn, nông hơn, đũa gãy khúc ⇒ thuộc dạng \"GIẢI THÍCH CÁC HIỆN TƯỢNG QUAN SÁT ĐƯỢC\".",
+     "ly_thuyet": "##TC Các hiện tượng và ứng dụng của khúc xạ\nKhúc xạ xảy ra mỗi khi ánh sáng đi xiên góc qua mặt phân cách hai môi trường trong suốt, hoặc đi qua lớp môi trường có chiết suất thay đổi.\nẢo ảnh trên đường nhựa: lớp không khí sát mặt đường nóng, loãng hơn nên có chiết suất nhỏ hơn lớp phía trên; tia sáng bị bẻ cong dần về phía mắt, mắt thấy ảnh bầu trời như vũng nước.\nSao nhấp nháy: không khí trong khí quyển luôn chuyển động, chiết suất các lớp thay đổi liên tục nên hướng tia sáng từ sao tới mắt thay đổi liên tục.\nCầu vồng và lăng kính: chiết suất của môi trường phụ thuộc màu ánh sáng, ánh sáng tím bị lệch nhiều nhất, ánh sáng đỏ lệch ít nhất nên ánh sáng trắng bị tách thành dải màu.\nThấu kính hội tụ: tia sáng bị khúc xạ hai lần ở hai mặt cong nên chùm sáng song song hội tụ về một điểm.\nSợi quang: lõi có chiết suất lớn hơn vỏ; ánh sáng tới mặt phân cách lõi – vỏ với góc tới đủ lớn thì bị phản xạ trở lại lõi nên truyền được đi xa.\n\n##PP Cách làm\nXác định môi trường nào làm ánh sáng đổi hướng (mặt nước, lớp không khí nóng – lạnh, giọt nước, thủy tinh).\nChỉ ra ánh sáng khúc xạ vì chiết suất khác nhau hoặc thay đổi liên tục.\nChọn phương án nêu đúng cơ chế khúc xạ, loại phương án cho rằng vật tự phát sáng, bị hấp thụ hay đổi màu.\n\n##CY Lưu ý\nCác phương án nhiễu thường cho rằng mặt đường thực sự có nước, các giọt nước tự phát ra ánh sáng nhiều màu hay lăng kính tự phát ra màu; đều sai vì ánh sáng chỉ bị đổi hướng, không được tạo ra thêm.",
+     "vi_du": "##VD\nThấu kính hội tụ trong kính lúp làm chùm tia sáng song song hội tụ tại một điểm. Hoạt động này dựa trên hiện tượng\nA. phản xạ ánh sáng.\nB. tán xạ ánh sáng.\nC. hấp thu ánh sáng.\nD. khúc xạ ánh sáng.\n\nBài giải:\nTia sáng đi từ không khí vào thấu kính (thủy tinh) rồi lại ra không khí, nên bị khúc xạ hai lần: ở mặt vào và mặt ra.\nHai mặt thấu kính cong nên các tia ở vị trí khác nhau bị lệch khác nhau và cùng đi qua một điểm.\nVậy hoạt động của thấu kính dựa trên khúc xạ ánh sáng.\nChọn D.\n\n##VD\nTrên mặt đường nhựa vào ngày nắng gắt, người lái xe nhìn thấy phía xa như có vũng nước. Hiện tượng này xảy ra vì\nA. mặt đường nhựa thực sự đọng nước do hơi nóng.\nB. mặt đường nhựa phản xạ ánh sáng như một tấm gương.\nC. mắt người bị chói nắng nên nhìn nhầm.\nD. lớp không khí sát mặt đường bị nung nóng có chiết suất nhỏ hơn lớp phía trên, ánh sáng bị khúc xạ liên tục và uốn cong về phía mắt.\n\nBài giải:\nKhông khí nóng loãng hơn nên có chiết suất nhỏ hơn lớp không khí phía trên.\nTia sáng từ bầu trời đi qua các lớp không khí có chiết suất giảm dần nên bị bẻ cong dần, tới mắt theo hướng như đi lên từ mặt đường.\nMắt nhìn theo phương tia sáng tới mắt nên thấy hình ảnh bầu trời nằm trên mặt đường, giống một vũng nước phản chiếu.\nMặt đường không có nước thật và hiện tượng này không do mắt nhìn nhầm nên A, C sai; mặt đường nhựa không phản xạ như gương nên B sai.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01135",
+     "thu_tu": 5,
+     "ten": "TÍNH ĐỘ SÂU THẬT KHI BIẾT ĐỘ SÂU NHÌN THẤY",
+     "mo_ta": "Đề cho độ sâu nhìn thấy của đáy (khi nhìn gần vuông góc) và chiết suất; hỏi độ sâu thật của bể hoặc mực chất lỏng.\nLàm bằng một phép nhân $h=h'\\cdot n$; đáp số luôn lớn hơn độ sâu nhìn thấy.\nLưu ý: cho độ sâu thật, hỏi độ sâu nhìn thấy ⇒ thuộc dạng \"TÍNH ĐỘ SÂU BIỂU KIẾN CỦA BỂ NƯỚC\"; cho cả hai độ sâu, hỏi chiết suất ⇒ thuộc dạng \"XÁC ĐỊNH CHIẾT SUẤT TỪ ĐỘ SÂU THẬT VÀ ĐỘ SÂU NHÌN THẤY\".",
+     "ly_thuyet": "##TC Tìm độ sâu thật\nTừ $h'=\\dfrac{h}{n}$ suy ra độ sâu thật $h=h'\\cdot n$.\nVì $n>1$ nên độ sâu thật luôn lớn hơn độ sâu nhìn thấy.\n\n##PP Cách tính\nXác định độ sâu nhìn thấy $h'$ và chiết suất $n$ của chất lỏng (nước: $n=\\dfrac43$).\nTính $h=h'\\cdot n$ (với nước: nhân $\\dfrac43$).\nKiểm tra $h>h'$ và ghi đúng đơn vị.\n\n##CY Lưu ý\nLỗi hay mắc: chia cho $n$ như khi tính độ sâu nhìn thấy, cho $h<h'$ (trái hiện tượng).",
+     "vi_du": "##VD\nNhìn gần vuông góc với mặt nước một bể chứa, ta thấy đáy bể ở độ sâu 105 cm. Chiết suất của nước bằng $4/3$. Tính độ sâu thật của bể (đơn vị cm).\n\nBài giải:\nTừ $h'=\\dfrac{h}{n}$ suy ra $h=h'\\cdot n$.\nĐộ sâu thật: $h=105\\cdot\\dfrac43=140$ cm.\nĐộ sâu thật lớn hơn độ sâu nhìn thấy ($140>105$) nên kết quả hợp lí.\nĐáp án: 140 cm.\n\n##VD\nNhìn gần vuông góc với mặt một chất lỏng có chiết suất 1,2, ta thấy đáy chậu ở độ sâu 125 cm. Tính mực chất lỏng thật trong chậu (đơn vị cm).\n\nBài giải:\nTừ $h'=\\dfrac{h}{n}$ suy ra $h=h'\\cdot n$.\nMực chất lỏng thật: $h=125\\cdot1,2=150$ cm.\nKiểm tra: $150>125$, đúng với hiện tượng đáy trông nông hơn thực tế.\nĐáp án: 150 cm."
+    },
+    {
+     "dang_id": "KDB01136",
+     "thu_tu": 6,
+     "ten": "XÁC ĐỊNH CHIẾT SUẤT TỪ ĐỘ SÂU THẬT VÀ ĐỘ SÂU NHÌN THẤY",
+     "mo_ta": "Đề cho độ sâu thật và độ sâu nhìn thấy của đáy (nhìn gần vuông góc); hỏi chiết suất của chất lỏng.\nLàm bằng phép chia $n=\\dfrac{h}{h'}$, thường kèm yêu cầu làm tròn đến chữ số thập phân thứ hai.\nLưu ý: cho chiết suất, hỏi độ sâu ⇒ thuộc dạng \"TÍNH ĐỘ SÂU BIỂU KIẾN CỦA BỂ NƯỚC\" hoặc \"TÍNH ĐỘ SÂU THẬT KHI BIẾT ĐỘ SÂU NHÌN THẤY\"; chiết suất tính từ góc tới và góc khúc xạ ⇒ thuộc nhóm \"TÍNH TỐC ĐỘ ÁNH SÁNG KHI BIẾT CHIẾT SUẤT\".",
+     "ly_thuyet": "##TC Tìm chiết suất từ độ sâu\nTừ $h'=\\dfrac{h}{n}$ suy ra chiết suất $n=\\dfrac{h}{h'}$ (độ sâu thật chia độ sâu nhìn thấy).\nChiết suất không có đơn vị và luôn lớn hơn 1, vì $h>h'$.\n\n##PP Cách tính\nXác định độ sâu thật $h$ và độ sâu nhìn thấy $h'$ (cùng đơn vị).\nTính $n=\\dfrac{h}{h'}$.\nLàm tròn theo yêu cầu đề và kiểm tra $n>1$.\n\n##CY Lưu ý\nLỗi hay mắc: chia ngược $\\dfrac{h'}{h}$ cho $n<1$, vô lí vì chiết suất của môi trường vật chất luôn lớn hơn 1.",
+     "vi_du": "##VD\nMột chậu chứa chất lỏng sâu 100 cm. Nhìn gần vuông góc với mặt chất lỏng, ta thấy đáy chậu ở độ sâu 80 cm. Tính chiết suất của chất lỏng (làm tròn đến chữ số thập phân thứ hai).\n\nBài giải:\nĐộ sâu thật $h=100$ cm, độ sâu nhìn thấy $h'=80$ cm.\nTừ $h'=\\dfrac{h}{n}$ suy ra $n=\\dfrac{h}{h'}=\\dfrac{100}{80}=1,25$.\nĐáp án: 1,25.\n\n##VD\nMột bể chứa chất lỏng sâu 160 cm. Nhìn gần vuông góc với mặt chất lỏng, ta thấy đáy bể ở độ sâu 120 cm. Tính chiết suất của chất lỏng (làm tròn đến chữ số thập phân thứ hai).\n\nBài giải:\nĐộ sâu thật $h=160$ cm, độ sâu nhìn thấy $h'=120$ cm.\nChiết suất: $n=\\dfrac{h}{h'}=\\dfrac{160}{120}\\approx1,33$.\nGiá trị này gần bằng chiết suất của nước ($\\dfrac43$).\nĐáp án: 1,33."
+    },
+    {
+     "dang_id": "KDB01137",
+     "thu_tu": 7,
+     "ten": "ĐỘ SÂU NHÌN THẤY KHI MỰC NƯỚC THAY ĐỔI",
+     "mo_ta": "Đề cho mực nước ban đầu, lượng nước đổ thêm (hoặc rút bớt) làm mực thay đổi và chiết suất; hỏi độ sâu nhìn thấy của đáy sau khi mực nước thay đổi.\nLàm bằng hai bước: tính mực nước mới $h=h_0\\pm\\Delta h$ rồi tính $h'=\\dfrac{h}{n}$.\nLưu ý: đề cho sẵn độ sâu thật cuối cùng, không có bước thay đổi mực ⇒ thuộc dạng \"TÍNH ĐỘ SÂU BIỂU KIẾN CỦA BỂ NƯỚC\".",
+     "ly_thuyet": "##TC Mực nước thay đổi\nĐộ sâu thật của đáy chính là mực nước hiện tại: dâng thêm $\\Delta h$ thì $h=h_0+\\Delta h$, rút bớt thì $h=h_0-\\Delta h$.\nĐộ sâu nhìn thấy khi nhìn gần vuông góc: $h'=\\dfrac{h}{n}$, trong đó $h$ là mực nước sau khi thay đổi.\n\n##PP Cách tính\nTính mực nước mới $h=h_0\\pm\\Delta h$.\nTính độ sâu nhìn thấy $h'=\\dfrac{h}{n}$ với $h$ vừa tìm (nước: nhân $\\dfrac34$).\nGhi đúng đơn vị.\n\n##CY Lưu ý\nLỗi hay mắc: chỉ tính $h'$ cho mực nước ban đầu hoặc cho phần nước đổ thêm, quên cộng hai phần.",
+     "vi_du": "##VD\nMột bể đang chứa nước ở mực 52 cm. Người ta đổ thêm nước để mực nước dâng thêm 44 cm. Chiết suất của nước bằng $4/3$. Tính độ sâu nhìn thấy của đáy bể sau khi đổ thêm nước (đơn vị cm).\n\nBài giải:\nMực nước sau khi đổ thêm: $h=52+44=96$ cm.\nĐộ sâu nhìn thấy: $h'=\\dfrac{h}{n}=96\\cdot\\dfrac34=72$ cm.\nĐáp án: 72 cm.\n\n##VD\nMột bể đang chứa nước ở mực 40 cm. Người ta đổ thêm nước để mực nước dâng thêm 32 cm. Chiết suất của nước bằng $4/3$. Tính độ sâu nhìn thấy của đáy bể sau khi đổ thêm nước (đơn vị cm).\n\nBài giải:\nMực nước mới: $h=40+32=72$ cm.\nĐộ sâu nhìn thấy: $h'=\\dfrac{h}{n}=72\\cdot\\dfrac34=54$ cm.\nĐáp án: 54 cm."
+    },
+    {
+     "dang_id": "KDB01138",
+     "thu_tu": 8,
+     "ten": "SO SÁNH ĐỘ SÂU NHÌN THẤY TRONG HAI CHẤT LỎNG",
+     "mo_ta": "Đề cho hai chậu giống nhau cùng chứa chất lỏng đến một độ cao, chiết suất của hai chất lỏng khác nhau; hỏi hiệu giữa hai độ sâu nhìn thấy của đáy.\nLàm bằng cách tính $h'_1=\\dfrac{h}{n_1}$ và $h'_2=\\dfrac{h}{n_2}$ rồi lấy hiệu (số lớn trừ số nhỏ).\nLưu ý: chỉ một chất lỏng, hỏi độ sâu nhìn thấy ⇒ thuộc dạng \"TÍNH ĐỘ SÂU BIỂU KIẾN CỦA BỂ NƯỚC\".",
+     "ly_thuyet": "##TC So sánh hai chất lỏng\nCùng độ sâu thật $h$, độ sâu nhìn thấy của mỗi chất lỏng là $h'=\\dfrac{h}{n}$.\nChiết suất càng lớn thì độ sâu nhìn thấy càng nhỏ: đáy trông càng nông.\nHiệu hai độ sâu nhìn thấy: $|h'_1-h'_2|=h\\left|\\dfrac1{n_1}-\\dfrac1{n_2}\\right|$.\n\n##PP Cách tính\nTính độ sâu nhìn thấy của từng chậu: $h'_1=\\dfrac{h}{n_1}$, $h'_2=\\dfrac{h}{n_2}$ (nước: $n=\\dfrac43$).\nLấy hiệu hai giá trị, trừ số nhỏ khỏi số lớn để được đáp số dương.\nKiểm tra chất lỏng có chiết suất lớn hơn cho $h'$ nhỏ hơn.\n\n##CY Lưu ý\nLỗi hay mắc: lấy hiệu hai chiết suất nhân với độ sâu, hoặc tính hiệu độ nâng thay vì hiệu độ sâu nhìn thấy.",
+     "vi_du": "##VD\nHai chậu giống nhau cùng chứa chất lỏng đến độ cao 120 cm, một chậu chứa nước (chiết suất $4/3$), chậu kia chứa chất lỏng chiết suất 1,5. Tính hiệu giữa hai độ sâu nhìn thấy của đáy hai chậu (đơn vị cm).\n\nBài giải:\nVới nước: $h'_1=\\dfrac{120}{4/3}=120\\cdot\\dfrac34=90$ cm.\nVới chất lỏng chiết suất 1,5: $h'_2=\\dfrac{120}{1,5}=80$ cm.\nHiệu: $90-80=10$ cm. Chất lỏng chiết suất lớn hơn cho đáy trông nông hơn.\nĐáp án: 10 cm.\n\n##VD\nHai chậu giống nhau cùng chứa chất lỏng đến độ cao 150 cm, một chậu chứa chất lỏng chiết suất 1,25, chậu kia chứa chất lỏng chiết suất 1,5. Tính hiệu giữa hai độ sâu nhìn thấy của đáy hai chậu (đơn vị cm).\n\nBài giải:\nChậu thứ nhất: $h'_1=\\dfrac{150}{1,25}=120$ cm.\nChậu thứ hai: $h'_2=\\dfrac{150}{1,5}=100$ cm.\nHiệu: $120-100=20$ cm.\nĐáp án: 20 cm."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00464",
+   "chu_de": "Quang học",
+   "chuyen_de": "Thấu kính",
+   "nhom": "Tính toán d' và h' sử dụng tam giác đồng dạng",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nVật AB đặt cách thấu kính một khoảng $d$, ảnh A′B′ cách thấu kính $d'$. Vật cao $h$, ảnh cao $h'$.\nDùng hai tam giác đồng dạng (tam giác tạo bởi vật, quang tâm và tam giác tạo bởi ảnh, quang tâm) ta có hệ thức $\\dfrac{h'}{h} = \\dfrac{d'}{d}$.\nTỉ số $k = \\dfrac{h'}{h} = \\dfrac{d'}{d}$ cho biết ảnh cao gấp $k$ lần vật.\nẢnh thật nằm khác phía với vật so với thấu kính nên khoảng cách vật – ảnh là $L = d + d'$.\nKính lúp là thấu kính hội tụ có tiêu cự ngắn; vật đặt trong khoảng tiêu cự cho ảnh ảo, cùng chiều, lớn hơn vật; hệ thức $\\dfrac{h'}{h} = \\dfrac{d'}{d}$ vẫn dùng được.\n\n##PP 2. Các bước làm bài\nĐổi mọi đại lượng cùng loại về cùng đơn vị.\nViết hệ thức $\\dfrac{h'}{h} = \\dfrac{d'}{d}$ và xác định đại lượng cần tìm.\nThay số, giải ra kết quả.\nKiểm tra ảnh thật hay ảo để biết có dùng thêm $L = d + d'$ hay không.\n\n##CY 3. Lưu ý\nĐừng đảo ngược tỉ số $\\dfrac{d'}{d}$ thành $\\dfrac{d}{d'}$.\nĐừng lấy hiệu hai khoảng cách làm chiều cao ảnh.\nSố bội giác $G$ của kính lúp không cần dùng khi đề đã cho $d$ và $d'$.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01462",
+     "thu_tu": 1,
+     "ten": "Tính chiều cao ảnh thật khi biết h, d và d′",
+     "mo_ta": "Đề cho vật cao $h$, khoảng cách vật $d$ và khoảng cách ảnh thật $d'$ qua thấu kính hội tụ, hỏi chiều cao ảnh $h'$.\nHọc sinh áp dụng trực tiếp hệ thức $\\dfrac{h'}{h} = \\dfrac{d'}{d}$ cho ảnh thật.\nLưu ý: đề nói kính lúp, ảnh ảo ⇒ thuộc dạng \"Tính chiều cao ảnh ảo qua kính lúp\".",
+     "ly_thuyet": "##TC Hệ thức tam giác đồng dạng\nVới ảnh thật qua thấu kính hội tụ: $\\dfrac{h'}{h} = \\dfrac{d'}{d}$, suy ra $h' = h \\cdot \\dfrac{d'}{d}$.\n\n##PP Tính chiều cao ảnh\nTính tỉ số $k = \\dfrac{d'}{d}$.\nNhân chiều cao vật với $k$ để được $h'$.\n\n##CY Lưu ý\nĐừng đảo tỉ số thành $\\dfrac{d}{d'}$ và đừng quên nhân với $k$.\nĐừng lấy $d' - d$ làm chiều cao ảnh.",
+     "vi_du": "##VD\nMột vật sáng cao $h = 4$ cm đặt cách thấu kính hội tụ $d = 12$ cm, cho ảnh thật cách thấu kính $d' = 48$ cm. Áp dụng hệ thức $\\dfrac{h'}{h} = \\dfrac{d'}{d}$, chiều cao ảnh $h'$ bằng bao nhiêu?\nA. 1 cm\nB. 4 cm\nC. 16 cm\nD. 36 cm\n\nBài giải:\nTa có $\\dfrac{h'}{h} = \\dfrac{d'}{d} = \\dfrac{48}{12} = 4$.\nSuy ra $h' = 4h = 4 \\cdot 4 = 16$ cm.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01463",
+     "thu_tu": 2,
+     "ten": "Tính d khi biết khoảng cách vật – ảnh thật L và độ phóng đại k",
+     "mo_ta": "Đề cho khoảng cách giữa vật và ảnh thật trên màn $L$, và ảnh cao gấp $k$ lần vật (tức $d' = kd$); hỏi khoảng cách $d$ từ vật tới thấu kính.\nHọc sinh dùng $L = d + d'$ kết hợp $d' = kd$ rồi giải ra $d$.\nLưu ý: đề không cho $L$ mà cho trực tiếp $d'$ (kính lúp, ảnh ảo) ⇒ thuộc dạng \"Tính d hoặc d′ của kính lúp khi biết độ cao vật và ảnh\".",
+     "ly_thuyet": "##TC Vật và ảnh thật\nẢnh thật nằm khác phía với vật nên khoảng cách vật – ảnh là $L = d + d'$.\nẢnh cao gấp $k$ lần vật nên $d' = kd$.\nSuy ra $L = (k + 1)d$, tức $d = \\dfrac{L}{k + 1}$.\n\n##PP Tìm d\nViết $L = d + d'$ và $d' = kd$.\nThay vào được $L = (k + 1)d$.\nTính $d = \\dfrac{L}{k + 1}$.\n\n##CY Lưu ý\nĐừng chia $L$ cho $k$; mẫu số phải là $k + 1$.",
+     "vi_du": "##VD\nĐặt vật sáng trước thấu kính hội tụ sao cho khoảng cách giữa vật và ảnh thật trên màn là $L = 40$ cm, ảnh cao gấp $k = 3$ lần vật (tức $d' = 3d$). Khoảng cách $d$ từ vật đến thấu kính bằng bao nhiêu?\nA. 20 cm\nB. 30 cm\nC. 40 cm\nD. 10 cm\n\nBài giải:\nẢnh thật nên $L = d + d' = d + 3d = 4d$.\nSuy ra $d = \\dfrac{40}{4} = 10$ cm.\nChọn D.\n\n##VD\nĐặt vật sáng trước thấu kính hội tụ sao cho khoảng cách giữa vật và ảnh thật trên màn là $L = 63$ cm, ảnh cao gấp $k = 6$ lần vật (tức $d' = 6d$). Khoảng cách $d$ từ vật đến thấu kính bằng bao nhiêu?\nA. 9 cm\nB. 31,5 cm\nC. 54 cm\nD. 63 cm\n\nBài giải:\nẢnh thật nên $L = d + d' = d + 6d = 7d$.\nSuy ra $d = \\dfrac{63}{7} = 9$ cm.\nChọn A."
+    },
+    {
+     "dang_id": "KDB01464",
+     "thu_tu": 3,
+     "ten": "Tính chiều cao ảnh ảo qua kính lúp khi biết d và d′",
+     "mo_ta": "Đề cho vật cao $h$ đặt trong khoảng tiêu cự của kính lúp, cho biết $d$ và $d'$ (có thể thêm tiêu cự hay số bội giác $G$ làm dữ kiện nhiễu), hỏi chiều cao ảnh ảo.\nHọc sinh áp dụng $\\dfrac{h'}{h} = \\dfrac{d'}{d}$ cho ảnh ảo.\nLưu ý: đề cho ảnh cao bao nhiêu hoặc $k$ rồi hỏi $d$ hay $d'$ ⇒ thuộc dạng \"Tính d hoặc d′ của kính lúp khi biết độ cao vật và ảnh\".",
+     "ly_thuyet": "##TC Ảnh ảo qua kính lúp\nVật đặt trong khoảng tiêu cự cho ảnh ảo, cùng chiều, lớn hơn vật, nằm cùng phía với vật.\nHệ thức $\\dfrac{h'}{h} = \\dfrac{d'}{d}$ vẫn đúng cho ảnh ảo, nên $h' = h \\cdot \\dfrac{d'}{d}$.\n\n##PP Tính chiều cao ảnh ảo\nTính tỉ số $\\dfrac{d'}{d}$.\nNhân với chiều cao vật để được $h'$.\n\n##CY Lưu ý\nTiêu cự $f$ và số bội giác $G$ chỉ là dữ kiện thừa khi đề đã cho đủ $d$ và $d'$.",
+     "vi_du": "##VD\nVật cao 0,6 cm đặt cách kính lúp có tiêu cự 12 cm một khoảng 9 cm (trong khoảng tiêu cự). Ảnh ảo qua kính cách kính 36 cm. Chiều cao ảnh ảo là bao nhiêu?\nA. 2,4 cm\nB. 0,6 cm\nC. 0,15 cm\nD. 5,4 cm\n\nBài giải:\nTa có $\\dfrac{h'}{h} = \\dfrac{d'}{d} = \\dfrac{36}{9} = 4$.\nSuy ra $h' = 4 \\cdot 0{,}6 = 2{,}4$ cm.\nChọn A.\n\n##VD\nKính lúp có số bội giác $G = 5$. Vật cao 1 cm đặt cách kính 3 cm (trong khoảng tiêu cự). Ảnh ảo qua kính cách kính 7,5 cm. Tính chiều cao ảnh ảo.\nA. 2,5 cm\nB. 0,4 cm\nC. 1 cm\nD. 5 cm\n\nBài giải:\nSố bội giác $G$ không cần dùng vì đã biết $d$ và $d'$.\nTa có $\\dfrac{h'}{h} = \\dfrac{d'}{d} = \\dfrac{7{,}5}{3} = 2{,}5$.\nSuy ra $h' = 2{,}5 \\cdot 1 = 2{,}5$ cm.\nChọn A."
+    },
+    {
+     "dang_id": "KDB01465",
+     "thu_tu": 4,
+     "ten": "Tính d hoặc d′ của kính lúp khi biết độ cao vật và ảnh",
+     "mo_ta": "Đề cho kính lúp (ảnh ảo) với độ cao vật, độ cao ảnh hoặc $k$, cùng một trong hai khoảng cách; hỏi khoảng cách còn lại.\nHọc sinh dùng $\\dfrac{h'}{h} = \\dfrac{d'}{d}$ hoặc $d' = kd$ để tìm $d$ hay $d'$.\nLưu ý: đề cho $d$, $d'$ rồi hỏi chiều cao ảnh ⇒ thuộc dạng \"Tính chiều cao ảnh ảo qua kính lúp khi biết d và d′\".",
+     "ly_thuyet": "##TC Tìm khoảng cách từ tỉ số\nẢnh cao gấp $k$ lần vật: $k = \\dfrac{h'}{h} = \\dfrac{d'}{d}$.\nBiết $d$ thì $d' = kd$; biết $d'$ thì $d = \\dfrac{d'}{k}$.\n\n##PP Tìm d hoặc d′\nTính $k = \\dfrac{h'}{h}$ (hoặc lấy $k$ từ đề).\nChọn công thức $d' = kd$ hay $d = \\dfrac{d'}{k}$ tuỳ đại lượng đã biết.\nThay số và tính.\n\n##CY Lưu ý\nTiêu cự $f$ trong đề chỉ để kiểm tra điều kiện vật nằm trong khoảng tiêu cự; có thể kiểm tra bằng $\\dfrac{1}{f} = \\dfrac{1}{d} - \\dfrac{1}{d'}$ nhưng không cần dùng để tìm $d$.",
+     "vi_du": "##VD\nVật cao 1 cm đặt cách kính lúp có tiêu cự 10 cm một khoảng 7,5 cm, cho ảnh ảo cao 4 cm. Khoảng cách từ ảnh đến kính là bao nhiêu?\nA. 7,5 cm\nB. 10 cm\nC. 30 cm\nD. 4 cm\n\nBài giải:\nẢnh cao gấp $k = \\dfrac{h'}{h} = \\dfrac{4}{1} = 4$ lần vật.\nSuy ra $d' = kd = 4 \\cdot 7{,}5 = 30$ cm.\nChọn C.\n\n##VD\nKính lúp có tiêu cự $f = 15$ cm. Đặt vật trong khoảng tiêu cự, ảnh ảo qua kính cách kính $d' = 30$ cm và cao gấp $k = 3$ lần vật. Vật cách kính bao nhiêu?\nA. 30 cm\nB. 90 cm\nC. 10 cm\nD. 40 cm\n\nBài giải:\nTa có $\\dfrac{d'}{d} = k$ nên $d = \\dfrac{d'}{k} = \\dfrac{30}{3} = 10$ cm.\nKiểm tra: $d = 10$ cm $< f = 15$ cm nên vật nằm trong khoảng tiêu cự, phù hợp với ảnh ảo.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01466",
+     "thu_tu": 5,
+     "ten": "So sánh độ cao ảnh qua hai kính lúp với cùng một vật",
+     "mo_ta": "Đề cho một vật đặt cách hai kính lúp A và B cùng một khoảng, cho khoảng cách ảnh ảo qua mỗi kính, hỏi kính nào cho ảnh cao hơn.\nHọc sinh dùng tỉ lệ $h' = h \\cdot \\dfrac{d'}{d}$: cùng $h$ và $d$ nên ảnh cao hơn ứng với $d'$ lớn hơn; $d'$ bằng nhau thì ảnh cao bằng nhau.\nLưu ý: đề chỉ cho một kính và hỏi chiều cao ảnh ⇒ thuộc dạng \"Tính chiều cao ảnh ảo qua kính lúp khi biết d và d′\".",
+     "ly_thuyet": "##TC So sánh ảnh hai kính\nVới cùng vật ($h$ và $d$ như nhau) thì $h' = h \\cdot \\dfrac{d'}{d}$ tỉ lệ thuận với $d'$.\nKính cho ảnh ảo xa kính hơn thì ảnh cao hơn.\n\n##PP So sánh\nXác định $h$ và $d$ chung cho hai kính.\nSo sánh $d'$ của hai kính.\nKính có $d'$ lớn hơn cho ảnh cao hơn; $d'$ bằng nhau thì ảnh bằng nhau.\n\n##CY Lưu ý\nKhông cần tính ra số khi chỉ so sánh.\nChú ý trường hợp $d'$ của hai kính bằng nhau: ảnh cao bằng nhau.",
+     "vi_du": "##VD\nVật cao 1 cm đặt cách hai kính lúp A và B cùng một khoảng 4 cm (trong khoảng tiêu cự mỗi kính). Ảnh ảo qua kính A cách kính 12 cm; ảnh ảo qua kính B cách kính 20 cm. Kính nào cho ảnh cao hơn?\nA. Kính A\nB. Không so sánh được\nC. Kính B\nD. Hai kính cho ảnh cao bằng nhau\n\nBài giải:\nẢnh qua kính A cao $h'_A = 1 \\cdot \\dfrac{12}{4} = 3$ cm.\nẢnh qua kính B cao $h'_B = 1 \\cdot \\dfrac{20}{4} = 5$ cm.\nVì $5 > 3$ nên kính B cho ảnh cao hơn.\nChọn C.\n\n##VD\nVật cao 1 cm đặt cách hai kính lúp A và B cùng một khoảng 2 cm (trong khoảng tiêu cự mỗi kính). Ảnh ảo qua kính A cách kính 6 cm; ảnh ảo qua kính B cũng cách kính 6 cm. Kính nào cho ảnh cao hơn?\nA. Kính A\nB. Hai kính cho ảnh cao bằng nhau\nC. Kính B\nD. Không so sánh được\n\nBài giải:\nẢnh qua mỗi kính cao $h' = 1 \\cdot \\dfrac{6}{2} = 3$ cm.\nHai kính cho ảnh cao bằng nhau.\nChọn B."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00465",
+   "chu_de": "Quang học",
+   "chuyen_de": "Thấu kính",
+   "nhom": "Bài toán dời vật sáng",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nVật ở xa thấu kính hội tụ thì ảnh thật nhỏ và gần thấu kính; dịch vật lại gần thì ảnh thật lớn dần và xa thấu kính dần.\nKhi vật đi qua vị trí $d = f$ thì ảnh chuyển từ ảnh thật sang ảnh ảo; khi $d < f$ ảnh ảo, cùng chiều, lớn hơn vật.\nCác mốc cần nhớ: $d > 2f$ (ảnh thật nhỏ hơn vật), $d = 2f$ (ảnh bằng vật), $f < d < 2f$ (ảnh thật lớn hơn vật), $d < f$ (ảnh ảo lớn hơn vật).\n\n##PP 2. Các bước làm bài\nXác định khoảng vị trí ban đầu của vật so với $f$ và $2f$.\nXác định khoảng vị trí mới sau khi dịch.\nSo sánh tính chất ảnh (thật hay ảo, lớn hay nhỏ, xa hay gần thấu kính) của hai trạng thái.\n\n##CY 3. Lưu ý\nDịch vật hay dịch thấu kính đều làm đổi $d$; chỉ cần xem $d$ đổi từ khoảng nào sang khoảng nào.\nẢnh đổi từ thật sang ảo (hoặc ngược lại) khi vật đi qua vị trí $d = f$.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01467",
+     "thu_tu": 1,
+     "ten": "So sánh ảnh trước và sau khi dời vật hoặc thấu kính",
+     "mo_ta": "Đề cho vị trí ban đầu của vật so với $f$ và $2f$, nói vật (hoặc thấu kính) được dời lại gần hay ra xa đến khoảng mới, hỏi ảnh thay đổi thế nào (thật hay ảo, lớn hay nhỏ, gần hay xa thấu kính).\nHọc sinh xác định khoảng vị trí trước và sau rồi so sánh tính chất ảnh.",
+     "ly_thuyet": "##TC Ảnh khi dời vật\nTrong khoảng $d > f$: dịch vật lại gần thì ảnh thật lớn hơn và xa thấu kính hơn; dịch vật ra xa thì ảnh thật nhỏ hơn và gần thấu kính hơn.\nVật đi qua $d = f$ thì ảnh chuyển giữa thật và ảo; $d < f$ cho ảnh ảo, cùng chiều, lớn hơn vật.\n\n##PP So sánh ảnh\nXác định khoảng của $d$ lúc đầu và lúc sau.\nViết tính chất ảnh ở mỗi khoảng.\nSo sánh để nêu sự thay đổi.",
+     "vi_du": "##VD\nMột vật đặt trước thấu kính hội tụ ở vị trí $f < d < 2f$, cho ảnh thật lớn hơn vật. Nếu dịch vật ra xa thấu kính để $d$ tăng vượt qua $2f$, ảnh mới so với ảnh cũ thay đổi thế nào?\nA. Vẫn là ảnh thật nhưng lớn hơn và xa thấu kính hơn\nB. Đổi thành ảnh ảo, cùng chiều, lớn hơn vật\nC. Ảnh không đổi vì thấu kính không đổi tiêu cự\nD. Vẫn là ảnh thật nhưng nhỏ hơn và gần thấu kính hơn\n\nBài giải:\nLúc đầu $f < d < 2f$: ảnh thật, ngược chiều, lớn hơn vật.\nSau khi dịch ra xa, $d > 2f$: ảnh thật, ngược chiều, nhỏ hơn vật.\nVật ra xa thì ảnh thật tiến lại gần thấu kính.\nVậy ảnh vẫn là ảnh thật nhưng nhỏ hơn và gần thấu kính hơn.\nChọn D.\n\n##VD\nMột vật đặt trước thấu kính hội tụ ở vị trí $d > f$, cho ảnh thật. Nếu dịch vật lại gần thấu kính tới khi $d < f$, ảnh thay đổi thế nào so với trước?\nA. Vẫn là ảnh thật nhưng đổi chiều cao khác\nB. Đổi thành ảnh ảo, cùng chiều, nhỏ hơn vật\nC. Chuyển từ ảnh thật sang ảnh ảo, cùng chiều, lớn hơn vật\nD. Ảnh biến mất vì vật quá gần thấu kính\n\nBài giải:\nLúc đầu $d > f$: thấu kính hội tụ cho ảnh thật.\nSau khi dịch, $d < f$: vật nằm trong khoảng tiêu cự nên cho ảnh ảo, cùng chiều, lớn hơn vật.\nVậy ảnh chuyển từ ảnh thật sang ảnh ảo, cùng chiều, lớn hơn vật.\nChọn C."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00447",
+   "chu_de": "Quang học",
+   "chuyen_de": "Khúc xạ ánh sáng",
+   "nhom": "TÍNH GÓC KHÚC XẠ KHI BIẾT GÓC TỚI VÀ CHIẾT SUẤT",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nKhúc xạ ánh sáng là hiện tượng tia sáng truyền xiên góc từ môi trường trong suốt này sang môi trường trong suốt khác thì bị gãy khúc tại mặt phân cách.\nPháp tuyến là đường thẳng vuông góc với mặt phân cách tại điểm tới. Góc tới $i$ và góc khúc xạ $r$ đều đo so với pháp tuyến, không đo so với mặt phân cách.\nĐịnh luật khúc xạ: $n_1\\sin i=n_2\\sin r$, với $n_1$ là chiết suất của môi trường chứa tia tới, $n_2$ là chiết suất của môi trường chứa tia khúc xạ.\nTia sáng từ không khí ($n_1\\approx1$) vào môi trường chiết suất $n$: $\\sin r=\\dfrac{\\sin i}{n}$. Tia sáng từ môi trường chiết suất $n$ ra không khí: $\\sin r=n\\sin i$.\nVào môi trường có chiết suất lớn hơn thì $r<i$ (tia khúc xạ lại gần pháp tuyến); ra môi trường có chiết suất nhỏ hơn thì $r>i$ (tia khúc xạ xa pháp tuyến).\nMột số chiết suất thường gặp: nước $1,33$; rượu $1,36$; dầu $1,47$; thủy tinh $1,5$; kim cương $2,42$.\n\n##PP 2. Các bước làm bài\nXác định tia sáng đi từ môi trường nào sang môi trường nào và đọc chiết suất $n_1$, $n_2$.\nXác định góc tới $i$ so với pháp tuyến (đề cho góc hợp với mặt phân cách thì lấy $90^\\circ$ trừ đi; cho góc giữa tia tới và tia phản xạ thì chia đôi).\nViết định luật khúc xạ, tính $\\sin r$ rồi suy ra $r$ bằng máy tính (hàm $\\sin^{-1}$, chế độ độ).\nKiểm tra $\\sin r\\le1$ và chiều lệch: vào môi trường chiết suất lớn hơn thì $r<i$, ra môi trường chiết suất nhỏ hơn thì $r>i$.\n\n##CY 3. Lưu ý\nLỗi hay mắc: chia hoặc nhân số đo góc với chiết suất thay vì chia hoặc nhân sin của góc; nhân thay vì chia (hoặc ngược lại); lấy góc hợp với mặt phân cách làm góc tới; để máy tính ở chế độ rad.\nKhi tia sáng đi ra môi trường chiết suất nhỏ hơn, $\\sin r=n\\sin i$ có thể vượt 1 nếu $i$ quá lớn; khi đó không còn tia khúc xạ. Đề của nhóm này đã cho số liệu để $\\sin r\\le1$.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01143",
+     "thu_tu": 1,
+     "ten": "ÁNH SÁNG TRUYỀN TỪ KHÔNG KHÍ VÀO NƯỚC",
+     "mo_ta": "Đề cho tia sáng chiếu từ không khí vào nước (chiết suất 1,33) với góc tới cho trước; hỏi góc khúc xạ.\nLàm bằng một phép tính $\\sin r=\\dfrac{\\sin i}{1,33}$ rồi tìm $r$; thường là trắc nghiệm có các phương án nhiễu như $r=i$ hoặc dùng sai phép nhân.\nLưu ý: môi trường khác nước (thủy tinh, dầu, rượu, kim cương) ⇒ thuộc dạng \"ÁNH SÁNG TRUYỀN TỪ KHÔNG KHÍ VÀO CÁC MÔI TRƯỜNG KHÁC NHAU\"; tia đi từ nước ra không khí ⇒ thuộc dạng \"ÁNH SÁNG TRUYỀN TỪ MÔI TRƯỜNG TRONG SUỐT RA KHÔNG KHÍ\".",
+     "ly_thuyet": "##TC Không khí vào nước\nKhông khí $n_1=1$, nước $n_2=1,33$ nên $\\sin i=1,33\\sin r$, tức $\\sin r=\\dfrac{\\sin i}{1,33}$.\nVì $n_2>n_1$ nên $r<i$. Dù góc tới rất lớn, góc khúc xạ trong nước không vượt quá khoảng $49^\\circ$ (vì $\\sin r<\\dfrac1{1,33}\\approx0,75$).\n\n##PP Cách làm\nGhi $n_1=1$, $n_2=1,33$ và góc tới $i$ đề cho.\nTính $\\sin r=\\dfrac{\\sin i}{1,33}$.\nDùng $\\sin^{-1}$ tìm $r$, kiểm tra $r<i$.\n\n##CY Lưu ý\nPhương án $r=i$ sai vì tia bị lệch; phương án $r>i$ là do nhân với $1,33$ thay vì chia; phương án $90^\\circ-r$ là góc hợp với mặt nước, không phải góc khúc xạ.",
+     "vi_du": "##VD\nChiếu một tia sáng từ không khí vào nước (chiết suất 1,33) với góc tới $30^\\circ$. Góc khúc xạ xấp xỉ bằng\nA. $30^\\circ$\nB. $42^\\circ$\nC. $22^\\circ$\nD. $68^\\circ$\n\nBài giải:\nÁnh sáng đi từ không khí ($n_1=1$) vào nước ($n_2=1,33$) nên $1\\cdot\\sin30^\\circ=1,33\\cdot\\sin r$.\nSuy ra $\\sin r=\\dfrac{\\sin30^\\circ}{1,33}=\\dfrac{0,5}{1,33}\\approx0,376$.\nDùng máy tính: $r\\approx22^\\circ$.\nVào môi trường chiết suất lớn hơn nên $r<i$; phương án $42^\\circ$ lớn hơn góc tới nên loại (nhân thay vì chia).\nChọn C.\n\n##VD\nChiếu một tia sáng từ không khí vào nước (chiết suất 1,33) với góc tới $60^\\circ$. Góc khúc xạ xấp xỉ bằng\nA. $41^\\circ$.\nB. $60^\\circ$.\nC. $49^\\circ$.\nD. $45^\\circ$.\n\nBài giải:\nÁp dụng $\\sin i=1,33\\sin r$ với $i=60^\\circ$.\nSuy ra $\\sin r=\\dfrac{\\sin60^\\circ}{1,33}=\\dfrac{0,866}{1,33}\\approx0,651$.\nDo đó $r\\approx41^\\circ$.\nPhương án $49^\\circ$ là góc hợp bởi tia khúc xạ và mặt nước ($90^\\circ-41^\\circ$), không phải góc khúc xạ.\nChọn A."
+    },
+    {
+     "dang_id": "KDB01144",
+     "thu_tu": 2,
+     "ten": "ÁNH SÁNG TRUYỀN TỪ KHÔNG KHÍ VÀO CÁC MÔI TRƯỜNG KHÁC NHAU",
+     "mo_ta": "Đề cho tia sáng chiếu từ không khí vào một môi trường khác nước (thủy tinh, dầu, rượu, kim cương…) với chiết suất và góc tới cho trước; hỏi góc khúc xạ.\nLàm bằng $\\sin r=\\dfrac{\\sin i}{n}$ rồi tìm $r$; thường là trắc nghiệm, phương án nhiễu hay là chia số đo góc cho $n$.\nLưu ý: môi trường là nước ⇒ thuộc dạng \"ÁNH SÁNG TRUYỀN TỪ KHÔNG KHÍ VÀO NƯỚC\"; tia đi từ môi trường ra không khí ⇒ thuộc dạng \"ÁNH SÁNG TRUYỀN TỪ MÔI TRƯỜNG TRONG SUỐT RA KHÔNG KHÍ\".",
+     "ly_thuyet": "##TC Không khí vào môi trường chiết suất n\n$\\sin i=n\\sin r$, suy ra $\\sin r=\\dfrac{\\sin i}{n}$.\nChiết suất càng lớn thì tia khúc xạ càng bị kéo về phía pháp tuyến, góc khúc xạ càng nhỏ (với cùng góc tới).\n\n##PP Cách làm\nĐọc chiết suất $n$ của môi trường và góc tới $i$.\nTính $\\sin r=\\dfrac{\\sin i}{n}$ (chia sin của góc, không chia số đo góc).\nTìm $r$ bằng $\\sin^{-1}$ và kiểm tra $r<i$.\n\n##CY Lưu ý\nPhương án nhiễu thường là $\\dfrac{i}{n}$ (chia số đo góc cho chiết suất) hoặc $r\\ge i$; cả hai đều sai.",
+     "vi_du": "##VD\nChiếu một tia sáng từ không khí vào thuỷ tinh (chiết suất 1,50) với góc tới $60^\\circ$. Góc khúc xạ xấp xỉ bằng\nA. $60^\\circ$.\nB. $40^\\circ$.\nC. $35^\\circ$.\nD. $55^\\circ$.\n\nBài giải:\nÁnh sáng đi từ không khí vào thủy tinh nên $\\sin60^\\circ=1,50\\sin r$.\nSuy ra $\\sin r=\\dfrac{\\sin60^\\circ}{1,50}=\\dfrac{0,866}{1,50}\\approx0,577$.\nDo đó $r\\approx35^\\circ$.\nPhương án $40^\\circ$ là kết quả của việc lấy $60^\\circ:1,5$, tức chia số đo góc thay vì chia sin của góc.\nChọn C.\n\n##VD\nChiếu một tia sáng từ không khí vào kim cương (chiết suất 2,42) với góc tới $60^\\circ$. Góc khúc xạ xấp xỉ bằng\nA. $60^\\circ$.\nB. $25^\\circ$.\nC. $69^\\circ$.\nD. $21^\\circ$.\n\nBài giải:\nĐịnh luật khúc xạ: $n_1\\sin i=n_2\\sin r$ với $n_1=1$, $n_2=2,42$.\nSuy ra $\\sin r=\\dfrac{\\sin60^\\circ}{2,42}=\\dfrac{0,866}{2,42}\\approx0,358$.\nDo đó $r\\approx21^\\circ$.\nChiết suất rất lớn nên tia sáng bị kéo mạnh về phía pháp tuyến; phương án $25^\\circ$ là kết quả của việc lấy $60^\\circ:2,42$.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01145",
+     "thu_tu": 3,
+     "ten": "ÁNH SÁNG TRUYỀN TỪ MÔI TRƯỜNG TRONG SUỐT RA KHÔNG KHÍ",
+     "mo_ta": "Đề cho tia sáng đi từ môi trường trong suốt (nước, thủy tinh, rượu, dầu, kim cương…) ra không khí, với chiết suất và góc tới cho trước; hỏi góc khúc xạ.\nLàm bằng $\\sin r=n\\sin i$ rồi tìm $r$; góc khúc xạ lớn hơn góc tới, phương án nhiễu hay là chia thay vì nhân.\nLưu ý: tia đi từ không khí vào môi trường ⇒ thuộc dạng \"ÁNH SÁNG TRUYỀN TỪ KHÔNG KHÍ VÀO NƯỚC\" hoặc \"ÁNH SÁNG TRUYỀN TỪ KHÔNG KHÍ VÀO CÁC MÔI TRƯỜNG KHÁC NHAU\".",
+     "ly_thuyet": "##TC Môi trường ra không khí\nTia sáng đi từ môi trường chiết suất $n$ ra không khí: $n\\sin i=1\\cdot\\sin r$, tức $\\sin r=n\\sin i$.\nVì $n>1$ nên $r>i$: tia khúc xạ lệch xa pháp tuyến. Chiết suất càng lớn thì góc khúc xạ càng lớn hơn góc tới.\n\n##PP Cách làm\nXác định chiết suất $n$ của môi trường chứa tia tới và góc tới $i$.\nTính $\\sin r=n\\sin i$ và kiểm tra $\\sin r\\le1$.\nTìm $r$ bằng $\\sin^{-1}$ và kiểm tra $r>i$.\n\n##CY Lưu ý\nLỗi hay mắc: chia cho $n$ như khi ánh sáng đi vào môi trường (cho $r<i$, trái chiều lệch).",
+     "vi_du": "##VD\nChiếu một tia sáng từ nước (chiết suất 1,33) ra không khí với góc tới $30^\\circ$. Góc khúc xạ xấp xỉ bằng\nA. $30^\\circ$.\nB. $22^\\circ$.\nC. $48^\\circ$.\nD. $42^\\circ$.\n\nBài giải:\nTia sáng đi từ nước ($n_1=1,33$) ra không khí ($n_2=1$) nên $1,33\\sin30^\\circ=\\sin r$.\nSuy ra $\\sin r=1,33\\cdot0,5=0,665$.\nDo đó $r\\approx42^\\circ$, lớn hơn góc tới vì tia ra môi trường chiết suất nhỏ hơn.\nPhương án $22^\\circ$ là kết quả của việc chia thay vì nhân.\nChọn D.\n\n##VD\nChiếu một tia sáng từ kim cương (chiết suất 2,42) ra không khí với góc tới $15^\\circ$. Góc khúc xạ xấp xỉ bằng\nA. $15^\\circ$.\nB. $6^\\circ$.\nC. $51^\\circ$.\nD. $39^\\circ$.\n\nBài giải:\nTia sáng đi từ kim cương ra không khí nên $\\sin r=2,42\\sin15^\\circ$.\nTính được $\\sin r=2,42\\cdot0,259\\approx0,626$.\nDo đó $r\\approx39^\\circ$.\nKim cương có chiết suất lớn nên chỉ cần góc tới nhỏ đã cho góc khúc xạ khá lớn. Phương án $51^\\circ$ là $90^\\circ-39^\\circ$; phương án $6^\\circ$ là kết quả của việc chia thay vì nhân.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01146",
+     "thu_tu": 4,
+     "ten": "TÍNH GÓC KHÚC XẠ KHI ĐỀ CHO GÓC HỢP VỚI MẶT PHÂN CÁCH",
+     "mo_ta": "Đề cho góc hợp bởi tia tới và mặt phân cách (mặt nước, mặt thủy tinh…), chiết suất của môi trường; tia đi từ không khí vào môi trường; hỏi góc khúc xạ.\nLàm bằng hai bước: đổi $i=90^\\circ-$(góc hợp với mặt) rồi tính $\\sin r=\\dfrac{\\sin i}{n}$.\nLưu ý: đề cho thẳng góc tới ⇒ thuộc dạng \"ÁNH SÁNG TRUYỀN TỪ KHÔNG KHÍ VÀO NƯỚC\" hoặc \"…VÀO CÁC MÔI TRƯỜNG KHÁC NHAU\"; hỏi góc hợp bởi tia khúc xạ và mặt phân cách ⇒ thuộc dạng \"TÍNH GÓC HỢP BỞI TIA KHÚC XẠ VÀ MẶT PHÂN CÁCH\".",
+     "ly_thuyet": "##TC Góc hợp với mặt phân cách\nPháp tuyến vuông góc với mặt phân cách nên góc tới $i$ và góc $\\alpha$ hợp bởi tia tới với mặt phân cách phụ nhau: $i=90^\\circ-\\alpha$.\nSau đó dùng $\\sin r=\\dfrac{\\sin i}{n}$ với tia đi từ không khí vào môi trường.\n\n##PP Cách làm\nĐổi góc tới $i=90^\\circ-\\alpha$ ($\\alpha$ là góc đề cho hợp với mặt phân cách).\nTính $\\sin r=\\dfrac{\\sin i}{n}$.\nTìm $r$ bằng $\\sin^{-1}$ và kiểm tra $r<i$.\n\n##CY Lưu ý\nLỗi hay mắc: lấy luôn góc $\\alpha$ làm góc tới, dẫn đến đáp số sai (đây là phương án nhiễu thường gặp).",
+     "vi_du": "##VD\nChiếu một tia sáng từ không khí vào nước (chiết suất 1,33). Tia tới hợp với mặt nước một góc $32^\\circ$. Góc khúc xạ xấp xỉ bằng\nA. $32^\\circ$.\nB. $23^\\circ$.\nC. $40^\\circ$.\nD. $58^\\circ$.\n\nBài giải:\nGóc tới là góc hợp với pháp tuyến: $i=90^\\circ-32^\\circ=58^\\circ$.\nKhi đó $\\sin r=\\dfrac{\\sin58^\\circ}{1,33}=\\dfrac{0,848}{1,33}\\approx0,638$.\nSuy ra $r\\approx40^\\circ$.\nPhương án $23^\\circ$ là kết quả của việc lấy luôn $32^\\circ$ làm góc tới.\nChọn C.\n\n##VD\nChiếu một tia sáng từ không khí vào kim cương (chiết suất 2,42). Tia tới hợp với mặt kim cương một góc $35^\\circ$. Góc khúc xạ xấp xỉ bằng\nA. $20^\\circ$.\nB. $35^\\circ$.\nC. $14^\\circ$.\nD. $55^\\circ$.\n\nBài giải:\nGóc tới: $i=90^\\circ-35^\\circ=55^\\circ$.\nÁp dụng $\\sin r=\\dfrac{\\sin55^\\circ}{2,42}=\\dfrac{0,819}{2,42}\\approx0,339$.\nSuy ra $r\\approx20^\\circ$.\nPhương án $14^\\circ$ là kết quả của việc lấy luôn $35^\\circ$ làm góc tới.\nChọn A."
+    },
+    {
+     "dang_id": "KDB01147",
+     "thu_tu": 5,
+     "ten": "TÍNH GÓC HỢP BỞI TIA KHÚC XẠ VÀ MẶT PHÂN CÁCH",
+     "mo_ta": "Đề cho tia sáng chiếu từ không khí vào một môi trường với góc tới và chiết suất; hỏi góc hợp bởi tia khúc xạ và mặt phân cách (không hỏi thẳng góc khúc xạ).\nLàm bằng hai bước: tính góc khúc xạ $r$ rồi lấy $90^\\circ-r$; thường là câu trả lời ngắn, làm tròn đến hàng đơn vị.\nLưu ý: hỏi góc khúc xạ ⇒ thuộc dạng \"ÁNH SÁNG TRUYỀN TỪ KHÔNG KHÍ VÀO…\"; hỏi góc lệch giữa tia khúc xạ và phương tia tới ⇒ thuộc dạng \"TÍNH GÓC LỆCH GIỮA TIA KHÚC XẠ VÀ PHƯƠNG TIA TỚI\".",
+     "ly_thuyet": "##TC Góc hợp bởi tia khúc xạ và mặt phân cách\nGọi $\\beta$ là góc hợp bởi tia khúc xạ và mặt phân cách. Vì pháp tuyến vuông góc với mặt phân cách nên $\\beta=90^\\circ-r$.\n\n##PP Cách làm\nTính góc khúc xạ $r$ từ $\\sin r=\\dfrac{\\sin i}{n}$.\nTính $\\beta=90^\\circ-r$ và làm tròn theo yêu cầu đề.\n\n##CY Lưu ý\nLỗi hay mắc: dừng ở góc khúc xạ $r$, quên bước lấy $90^\\circ-r$.",
+     "vi_du": "##VD\nChiếu một tia sáng từ không khí vào rượu (chiết suất 1,36) với góc tới $60^\\circ$. Tính góc hợp bởi tia khúc xạ và mặt rượu (đơn vị độ, làm tròn đến hàng đơn vị).\n\nBài giải:\nGóc khúc xạ: $\\sin r=\\dfrac{\\sin60^\\circ}{1,36}=\\dfrac{0,866}{1,36}\\approx0,637$, suy ra $r\\approx40^\\circ$.\nGóc hợp bởi tia khúc xạ và mặt rượu: $90^\\circ-40^\\circ=50^\\circ$.\nĐáp án: $50^\\circ$.\n\n##VD\nChiếu một tia sáng từ không khí vào kim cương (chiết suất 2,42) với góc tới $70^\\circ$. Tính góc hợp bởi tia khúc xạ và mặt kim cương (đơn vị độ, làm tròn đến hàng đơn vị).\n\nBài giải:\nGóc khúc xạ: $\\sin r=\\dfrac{\\sin70^\\circ}{2,42}=\\dfrac{0,940}{2,42}\\approx0,388$, suy ra $r\\approx23^\\circ$.\nGóc hợp bởi tia khúc xạ và mặt kim cương: $90^\\circ-23^\\circ=67^\\circ$.\nĐáp án: $67^\\circ$."
+    },
+    {
+     "dang_id": "KDB01148",
+     "thu_tu": 6,
+     "ten": "TÍNH GÓC LỆCH GIỮA TIA KHÚC XẠ VÀ PHƯƠNG TIA TỚI",
+     "mo_ta": "Đề cho tia sáng chiếu từ không khí vào một môi trường với góc tới và chiết suất; hỏi góc lệch giữa tia khúc xạ và phương của tia tới.\nLàm bằng hai bước: tính góc khúc xạ $r$ rồi tính độ lệch $D=i-r$; thường là câu trả lời ngắn, làm tròn đến hàng đơn vị.\nLưu ý: hỏi góc khúc xạ ⇒ thuộc dạng \"ÁNH SÁNG TRUYỀN TỪ KHÔNG KHÍ VÀO…\"; hỏi góc hợp với mặt phân cách ⇒ thuộc dạng \"TÍNH GÓC HỢP BỞI TIA KHÚC XẠ VÀ MẶT PHÂN CÁCH\".",
+     "ly_thuyet": "##TC Góc lệch của tia sáng\nGóc lệch $D$ là góc giữa phương của tia khúc xạ và phương kéo dài của tia tới.\nKhi tia sáng đi từ không khí vào môi trường chiết suất lớn hơn, tia khúc xạ lệch về phía pháp tuyến nên $D=i-r$; ra môi trường chiết suất nhỏ hơn thì $D=r-i$.\n\n##PP Cách làm\nTính góc khúc xạ $r$ từ $\\sin r=\\dfrac{\\sin i}{n}$.\nTính góc lệch $D=i-r$ và làm tròn theo yêu cầu.\n\n##CY Lưu ý\nLỗi hay mắc: lấy $D=r$ hoặc $D=90^\\circ-r$; góc lệch luôn là hiệu hai góc so với pháp tuyến.\nChiết suất càng lớn, góc lệch càng lớn.",
+     "vi_du": "##VD\nChiếu một tia sáng từ không khí vào thuỷ tinh (chiết suất 1,50) với góc tới $40^\\circ$. Tính góc lệch giữa tia khúc xạ và phương của tia tới (đơn vị độ, làm tròn đến hàng đơn vị).\n\nBài giải:\nGóc khúc xạ: $\\sin r=\\dfrac{\\sin40^\\circ}{1,50}=\\dfrac{0,643}{1,50}\\approx0,429$, suy ra $r\\approx25^\\circ$.\nGóc lệch: $D=i-r=40^\\circ-25^\\circ=15^\\circ$.\nĐáp án: $15^\\circ$.\n\n##VD\nChiếu một tia sáng từ không khí vào kim cương (chiết suất 2,42) với góc tới $80^\\circ$. Tính góc lệch giữa tia khúc xạ và phương của tia tới (đơn vị độ, làm tròn đến hàng đơn vị).\n\nBài giải:\nGóc khúc xạ: $\\sin r=\\dfrac{\\sin80^\\circ}{2,42}=\\dfrac{0,985}{2,42}\\approx0,407$, suy ra $r\\approx24^\\circ$.\nGóc lệch: $D=i-r=80^\\circ-24^\\circ=56^\\circ$.\nĐây là độ lệch rất lớn, vì kim cương có chiết suất lớn.\nĐáp án: $56^\\circ$."
+    },
+    {
+     "dang_id": "KDB01149",
+     "thu_tu": 7,
+     "ten": "TÍNH GÓC KHÚC XẠ KHI ĐỀ CHO GÓC GIỮA TIA TỚI VÀ TIA PHẢN XẠ",
+     "mo_ta": "Đề cho góc hợp bởi tia tới và tia phản xạ tại mặt phân cách, chiết suất của môi trường (tia đi từ không khí vào); hỏi góc khúc xạ.\nLàm bằng ba bước: góc tới $i=\\dfrac{\\text{góc giữa tia tới và tia phản xạ}}{2}$, rồi $\\sin r=\\dfrac{\\sin i}{n}$, rồi tìm $r$.\nLưu ý: đề cho thẳng góc tới ⇒ thuộc dạng \"ÁNH SÁNG TRUYỀN TỪ KHÔNG KHÍ VÀO…\"; đề cho góc hợp với mặt phân cách ⇒ thuộc dạng \"TÍNH GÓC KHÚC XẠ KHI ĐỀ CHO GÓC HỢP VỚI MẶT PHÂN CÁCH\".",
+     "ly_thuyet": "##TC Định luật phản xạ ánh sáng\nTại mặt phân cách, tia phản xạ nằm cùng phía với tia tới so với pháp tuyến và góc phản xạ bằng góc tới: $i'=i$.\nDo đó góc giữa tia tới và tia phản xạ bằng $2i$, suy ra $i=\\dfrac{\\text{góc giữa tia tới và tia phản xạ}}{2}$.\n\n##PP Cách làm\nTính góc tới $i$ bằng nửa góc giữa tia tới và tia phản xạ.\nTính $\\sin r=\\dfrac{\\sin i}{n}$.\nTìm $r$ bằng $\\sin^{-1}$ và kiểm tra $r<i$.\n\n##CY Lưu ý\nLỗi hay mắc: lấy luôn góc giữa tia tới và tia phản xạ làm góc tới, quên chia đôi.",
+     "vi_du": "##VD\nChiếu một tia sáng từ không khí tới mặt dầu (chiết suất 1,47). Góc hợp bởi tia tới và tia phản xạ bằng $140^\\circ$. Tính góc khúc xạ (đơn vị độ, làm tròn đến hàng đơn vị).\n\nBài giải:\nGóc giữa tia tới và tia phản xạ bằng $2i$ nên $i=140^\\circ:2=70^\\circ$.\nÁp dụng $\\sin r=\\dfrac{\\sin70^\\circ}{1,47}=\\dfrac{0,940}{1,47}\\approx0,639$.\nSuy ra $r\\approx40^\\circ$.\nĐáp án: $40^\\circ$.\n\n##VD\nChiếu một tia sáng từ không khí tới mặt nước (chiết suất 1,33). Góc hợp bởi tia tới và tia phản xạ bằng $96^\\circ$. Tính góc khúc xạ (đơn vị độ, làm tròn đến hàng đơn vị).\n\nBài giải:\nGóc giữa tia tới và tia phản xạ bằng $2i$ nên $i=96^\\circ:2=48^\\circ$.\nÁp dụng $\\sin r=\\dfrac{\\sin48^\\circ}{1,33}=\\dfrac{0,743}{1,33}\\approx0,559$.\nSuy ra $r\\approx34^\\circ$.\nĐáp án: $34^\\circ$."
+    },
+    {
+     "dang_id": "KDB01150",
+     "thu_tu": 8,
+     "ten": "TÍNH GÓC KHÚC XẠ KHI ĐỀ CHO CHIẾT SUẤT TỈ ĐỐI NGHỊCH ĐẢO",
+     "mo_ta": "Đề cho tia sáng chiếu từ không khí vào một chất, góc tới, và chiết suất tỉ đối của không khí đối với chất đó (một số nhỏ hơn 1, vd 0,75); hỏi góc khúc xạ.\nLàm bằng hai bước: đổi chiết suất của chất $n=\\dfrac1{k}$ ($k$ là chiết suất tỉ đối đề cho), rồi $\\sin r=\\dfrac{\\sin i}{n}$.\nLưu ý: đề cho thẳng chiết suất của chất (số lớn hơn 1) ⇒ thuộc dạng \"ÁNH SÁNG TRUYỀN TỪ KHÔNG KHÍ VÀO CÁC MÔI TRƯỜNG KHÁC NHAU\".",
+     "ly_thuyet": "##TC Chiết suất tỉ đối nghịch đảo\nChiết suất tỉ đối của môi trường 1 đối với môi trường 2 là $n_{12}=\\dfrac{n_1}{n_2}$.\nChiết suất tỉ đối của không khí đối với chất có chiết suất $n$ là $k=\\dfrac{1}{n}$ (nhỏ hơn 1), nên $n=\\dfrac1k$.\n\n##PP Cách làm\nĐổi $n=\\dfrac1k$ với $k$ là chiết suất tỉ đối đề cho.\nTính $\\sin r=\\dfrac{\\sin i}{n}$.\nTìm $r$ bằng $\\sin^{-1}$ và kiểm tra $r<i$.\n\n##CY Lưu ý\nLỗi hay mắc: dùng luôn $k<1$ làm chiết suất (cho $r>i$, trái chiều lệch khi ánh sáng vào môi trường chiết quang hơn).",
+     "vi_du": "##VD\nChiếu một tia sáng từ không khí vào một chất lỏng trong suốt với góc tới $68^\\circ$. Biết chiết suất tỉ đối của không khí đối với chất lỏng đó bằng $0,75$. Tính góc khúc xạ (đơn vị độ, làm tròn đến hàng đơn vị).\n\nBài giải:\nChiết suất của chất lỏng: $n=\\dfrac1{0,75}\\approx1,33$.\nKhi đó $\\sin r=\\dfrac{\\sin68^\\circ}{1,33}=\\dfrac{0,927}{1,33}\\approx0,697$.\nSuy ra $r\\approx44^\\circ$.\nĐáp án: $44^\\circ$.\n\n##VD\nChiếu một tia sáng từ không khí vào một khối chất trong suốt với góc tới $45^\\circ$. Biết chiết suất tỉ đối của không khí đối với khối chất đó bằng $0,67$. Tính góc khúc xạ (đơn vị độ, làm tròn đến hàng đơn vị).\n\nBài giải:\nChiết suất của khối chất: $n=\\dfrac1{0,67}\\approx1,49$.\nKhi đó $\\sin r=\\dfrac{\\sin45^\\circ}{1,49}=\\dfrac{0,707}{1,49}\\approx0,474$.\nSuy ra $r\\approx28^\\circ$.\nĐáp án: $28^\\circ$."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00449",
+   "chu_de": "Quang học",
+   "chuyen_de": "Khúc xạ ánh sáng",
+   "nhom": "TÍNH TỐC ĐỘ ÁNH SÁNG KHI BIẾT CHIẾT SUẤT",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nTốc độ ánh sáng trong chân không là $c\\approx3\\cdot10^8\\ \\mathrm{m/s}$, là tốc độ lớn nhất; trong môi trường trong suốt ánh sáng truyền chậm hơn.\nChiết suất của một môi trường: $n=\\dfrac{c}{v}$, suy ra $v=\\dfrac{c}{n}$, trong đó $v$ là tốc độ ánh sáng trong môi trường đó.\nChiết suất $n\\ge1$ (chân không $n=1$, không khí $n\\approx1$); chiết suất càng lớn thì ánh sáng truyền càng chậm.\nTỉ số tốc độ ánh sáng trong hai môi trường tỉ lệ nghịch với chiết suất: $\\dfrac{v_1}{v_2}=\\dfrac{n_2}{n_1}$.\nTia sáng từ không khí vào môi trường chiết suất $n$: $n=\\dfrac{\\sin i}{\\sin r}$ (từ góc tới $i$ và góc khúc xạ $r$ tìm $n$, rồi suy ra $v$).\nChuyển động đều của ánh sáng: $s=vt$.\n\n##PP 2. Các bước làm bài\nXác định đề cho đại lượng nào (chiết suất, tốc độ, góc, quãng đường, thời gian) và hỏi đại lượng nào.\nNếu đề cho góc thì tính chiết suất $n=\\dfrac{\\sin i}{\\sin r}$ trước.\nDùng $n=\\dfrac{c}{v}$ (hoặc $v=\\dfrac{c}{n}$) cho từng môi trường, đổi đơn vị về $\\mathrm{m/s}$, $\\mathrm{m}$, $\\mathrm{s}$ nếu cần.\nKiểm tra: $n\\ge1$, $v<c$, môi trường chiết suất lớn hơn thì $v$ nhỏ hơn.\n\n##CY 3. Lưu ý\nLỗi hay mắc: nhân với $n$ thay vì chia để tìm $v$ (cho $v>c$, vô lí); chia ngược $\\dfrac{v}{c}$ để tìm $n$ (cho $n<1$); lập tỉ số cùng chiều $\\dfrac{n_1}{n_2}$ thay vì $\\dfrac{n_2}{n_1}$; chia số đo góc thay vì sin của góc; quên đổi $\\mu\\mathrm{s}$ ra giây ($1\\ \\mu\\mathrm{s}=10^{-6}\\ \\mathrm{s}$).",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01159",
+     "thu_tu": 1,
+     "ten": "TÍNH TỐC ĐỘ ÁNH SÁNG KHI BIẾT CHIẾT SUẤT",
+     "mo_ta": "Đề cho chiết suất của môi trường trong suốt và tốc độ ánh sáng trong chân không $c=3\\cdot10^8\\ \\mathrm{m/s}$; hỏi tốc độ truyền ánh sáng trong môi trường đó.\nLàm bằng một phép chia $v=\\dfrac{c}{n}$ (môi trường có thể là nước $\\dfrac43$ hay chất chung chung); thường là trắc nghiệm, phương án nhiễu hay là nhân thay vì chia.\nLưu ý: cho tốc độ, hỏi chiết suất ⇒ thuộc dạng \"TÍNH CHIẾT SUẤT KHI BIẾT TỐC ĐỘ ÁNH SÁNG\"; cho góc tới và góc khúc xạ ⇒ thuộc dạng \"TÍNH TỐC ĐỘ ÁNH SÁNG TỪ GÓC TỚI VÀ GÓC KHÚC XẠ\".",
+     "ly_thuyet": "##TC Tốc độ ánh sáng trong môi trường\n$v=\\dfrac{c}{n}$ với $c=3\\cdot10^8\\ \\mathrm{m/s}$; $v$ có cùng đơn vị với $c$.\nVì $n>1$ nên $v<c$. Với nước $n=\\dfrac43$ thì $v=\\dfrac34c=2,25\\cdot10^8\\ \\mathrm{m/s}$.\n\n##PP Cách tính\nĐọc chiết suất $n$ và $c=3\\cdot10^8\\ \\mathrm{m/s}$.\nTính $v=\\dfrac{c}{n}$.\nKiểm tra $v<c$ và ghi đúng đơn vị.\n\n##CY Lưu ý\nLỗi hay mắc: nhân $c$ với $n$ (cho tốc độ lớn hơn $c$, điều không thể xảy ra).",
+     "vi_du": "##VD\nChiết suất của một môi trường trong suốt bằng 1,5. Biết tốc độ ánh sáng trong chân không là $3\\cdot10^8\\ \\mathrm{m/s}$. Tốc độ truyền ánh sáng trong môi trường đó bằng\nA. $4,5\\cdot10^8\\ \\mathrm{m/s}$.\nB. $3\\cdot10^8\\ \\mathrm{m/s}$.\nC. $2\\cdot10^8\\ \\mathrm{m/s}$.\nD. $1,5\\cdot10^8\\ \\mathrm{m/s}$.\n\nBài giải:\nTốc độ ánh sáng trong môi trường: $v=\\dfrac{c}{n}=\\dfrac{3\\cdot10^8}{1,5}=2\\cdot10^8\\ \\mathrm{m/s}$.\nPhương án $4,5\\cdot10^8\\ \\mathrm{m/s}$ là kết quả của việc nhân thay vì chia, cho tốc độ lớn hơn tốc độ ánh sáng trong chân không nên loại.\nChọn C.\n\n##VD\nChiết suất của một môi trường trong suốt bằng $2,4$. Biết tốc độ ánh sáng trong chân không là $3\\cdot10^8\\ \\mathrm{m/s}$. Tốc độ truyền ánh sáng trong môi trường đó bằng\nA. $7,2\\cdot10^8\\ \\mathrm{m/s}$.\nB. $1,25\\cdot10^8\\ \\mathrm{m/s}$.\nC. $2,4\\cdot10^8\\ \\mathrm{m/s}$.\nD. $0,8\\cdot10^8\\ \\mathrm{m/s}$.\n\nBài giải:\nTốc độ ánh sáng trong môi trường: $v=\\dfrac{c}{n}=\\dfrac{3\\cdot10^8}{2,4}=1,25\\cdot10^8\\ \\mathrm{m/s}$.\nPhương án $7,2\\cdot10^8\\ \\mathrm{m/s}$ là $c\\cdot n$ (nhân thay vì chia), lớn hơn $c$ nên loại.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01160",
+     "thu_tu": 2,
+     "ten": "TÍNH CHIẾT SUẤT KHI BIẾT TỐC ĐỘ ÁNH SÁNG",
+     "mo_ta": "Đề cho tốc độ truyền ánh sáng trong một môi trường trong suốt và $c=3\\cdot10^8\\ \\mathrm{m/s}$; hỏi chiết suất của môi trường.\nLàm bằng phép chia $n=\\dfrac{c}{v}$; đáp số lớn hơn 1, thường làm tròn đến hai chữ số thập phân; thường là trắc nghiệm, phương án nhiễu hay là chia ngược $\\dfrac{v}{c}$.\nLưu ý: cho chiết suất, hỏi tốc độ ⇒ thuộc dạng \"TÍNH TỐC ĐỘ ÁNH SÁNG KHI BIẾT CHIẾT SUẤT\".",
+     "ly_thuyet": "##TC Chiết suất từ tốc độ ánh sáng\n$n=\\dfrac{c}{v}$, với $c=3\\cdot10^8\\ \\mathrm{m/s}$ và $v$ cùng đơn vị với $c$.\nVì $v<c$ nên $n>1$; chiết suất càng gần 1 thì môi trường làm ánh sáng chậm đi càng ít.\n\n##PP Cách tính\nĐọc tốc độ $v$ và $c$ (viết cùng lũy thừa của 10).\nTính $n=\\dfrac{c}{v}$ (rút gọn lũy thừa $10^8$).\nLàm tròn theo yêu cầu và kiểm tra $n>1$.\n\n##CY Lưu ý\nLỗi hay mắc: lập tỉ số ngược $\\dfrac{v}{c}$ cho $n<1$ (không thể xảy ra với mọi môi trường vật chất); nhân $c$ với $v$; lấy luôn $v$ làm $n$.",
+     "vi_du": "##VD\nTốc độ truyền ánh sáng trong một môi trường trong suốt là $2,6\\cdot10^8\\ \\mathrm{m/s}$. Biết tốc độ ánh sáng trong chân không là $3\\cdot10^8\\ \\mathrm{m/s}$. Chiết suất của môi trường đó bằng\nA. 0,87.\nB. 2,60.\nC. 7,80.\nD. 1,15.\n\nBài giải:\nChiết suất của môi trường: $n=\\dfrac{c}{v}=\\dfrac{3\\cdot10^8}{2,6\\cdot10^8}\\approx1,15$.\nChiết suất gần 1 cho thấy môi trường làm chậm ánh sáng rất ít.\nPhương án 0,87 là tỉ số ngược $\\dfrac vc$ (nhỏ hơn 1, không thể là chiết suất); phương án 7,80 là $c\\cdot v$.\nChọn D.\n\n##VD\nTốc độ truyền ánh sáng trong một môi trường trong suốt là $2,05\\cdot10^8\\ \\mathrm{m/s}$. Biết tốc độ ánh sáng trong chân không là $3\\cdot10^8\\ \\mathrm{m/s}$. Chiết suất của môi trường đó bằng\nA. 0,68.\nB. 2,05.\nC. 1,46.\nD. 6,15.\n\nBài giải:\nChiết suất của môi trường: $n=\\dfrac{c}{v}=\\dfrac{3\\cdot10^8}{2,05\\cdot10^8}\\approx1,46$.\nPhương án 0,68 là tỉ số ngược $\\dfrac vc$, nhỏ hơn 1 nên loại; phương án 2,05 là lấy luôn hệ số của $v$.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01161",
+     "thu_tu": 3,
+     "ten": "SO SÁNH TỐC ĐỘ ÁNH SÁNG TRONG HAI MÔI TRƯỜNG",
+     "mo_ta": "Đề cho chiết suất của hai môi trường trong suốt; hỏi tỉ số giữa tốc độ ánh sáng trong môi trường thứ nhất và môi trường thứ hai (hoặc ngược lại).\nLàm bằng $\\dfrac{v_1}{v_2}=\\dfrac{n_2}{n_1}$ (chiết suất của môi trường thứ hai đứng trên); không cần dùng giá trị của $c$.\nLưu ý: cần hiệu hai tốc độ, cho $c$ ⇒ thuộc dạng \"TÍNH HIỆU TỐC ĐỘ ÁNH SÁNG TRONG HAI MÔI TRƯỜNG\"; chỉ một môi trường, hỏi tốc độ ⇒ thuộc dạng \"TÍNH TỐC ĐỘ ÁNH SÁNG KHI BIẾT CHIẾT SUẤT\".",
+     "ly_thuyet": "##TC Tỉ số tốc độ\nTừ $v_1=\\dfrac{c}{n_1}$ và $v_2=\\dfrac{c}{n_2}$ suy ra $\\dfrac{v_1}{v_2}=\\dfrac{n_2}{n_1}$.\nTỉ số tốc độ nghịch đảo với tỉ số chiết suất: môi trường có chiết suất lớn hơn thì tốc độ nhỏ hơn.\n\n##PP Cách tính\nXác định môi trường nào là thứ nhất, môi trường nào là thứ hai theo đúng thứ tự đề hỏi.\nViết $\\dfrac{v_1}{v_2}=\\dfrac{n_2}{n_1}$ rồi thay số.\nKiểm tra: tỉ số lớn hơn 1 khi môi trường thứ nhất có chiết suất nhỏ hơn.\n\n##CY Lưu ý\nLỗi hay mắc: lập tỉ số cùng chiều $\\dfrac{n_1}{n_2}$ (đây là tỉ số $\\dfrac{v_2}{v_1}$, không phải $\\dfrac{v_1}{v_2}$).",
+     "vi_du": "##VD\nHai môi trường trong suốt có chiết suất lần lượt là $1,2$ và $1,8$. Tỉ số giữa tốc độ ánh sáng trong môi trường thứ nhất và tốc độ ánh sáng trong môi trường thứ hai bằng\nA. $0,67$.\nB. $2,16$.\nC. $3,00$.\nD. $1,50$.\n\nBài giải:\nTốc độ ánh sáng tỉ lệ nghịch với chiết suất nên $\\dfrac{v_1}{v_2}=\\dfrac{n_2}{n_1}=\\dfrac{1,8}{1,2}=1,50$.\nPhương án $0,67$ là tỉ số cùng chiều $\\dfrac{n_1}{n_2}$, tức là $\\dfrac{v_2}{v_1}$.\nChọn D.\n\n##VD\nNước có chiết suất 1,33, kim cương có chiết suất 2,42. Tỉ số giữa tốc độ ánh sáng trong nước và tốc độ ánh sáng trong kim cương bằng\nA. 0,55.\nB. 1,82.\nC. 2,42.\nD. 3,22.\n\nBài giải:\nTỉ số tốc độ: $\\dfrac{v_{\\text{nước}}}{v_{\\text{kim cương}}}=\\dfrac{n_{\\text{kim cương}}}{n_{\\text{nước}}}=\\dfrac{2,42}{1,33}\\approx1,82$.\nÁnh sáng truyền trong nước nhanh hơn trong kim cương nên tỉ số lớn hơn 1; phương án 0,55 là tỉ số ngược.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01162",
+     "thu_tu": 4,
+     "ten": "TÍNH TỐC ĐỘ ÁNH SÁNG TỪ GÓC TỚI VÀ GÓC KHÚC XẠ",
+     "mo_ta": "Đề cho tia sáng chiếu từ không khí vào một môi trường trong suốt với góc tới và góc khúc xạ đo được, kèm $c=3\\cdot10^8\\ \\mathrm{m/s}$; hỏi tốc độ ánh sáng trong môi trường đó.\nLàm bằng hai bước: $n=\\dfrac{\\sin i}{\\sin r}$ rồi $v=\\dfrac{c}{n}$; thường là trắc nghiệm.\nLưu ý: câu trả lời ngắn yêu cầu làm tròn đến chữ số thập phân thứ hai (đơn vị $10^8\\ \\mathrm{m/s}$) ⇒ thuộc dạng \"TÍNH TỐC ĐỘ ÁNH SÁNG TỪ SỐ LIỆU ĐO GÓC\"; đề cho thẳng chiết suất ⇒ thuộc dạng \"TÍNH TỐC ĐỘ ÁNH SÁNG KHI BIẾT CHIẾT SUẤT\".",
+     "ly_thuyet": "##TC Chiết suất từ góc tới và góc khúc xạ\nTia sáng từ không khí vào môi trường chiết suất $n$: $\\sin i=n\\sin r$, suy ra $n=\\dfrac{\\sin i}{\\sin r}$.\nSau đó $v=\\dfrac{c}{n}$, với $c=3\\cdot10^8\\ \\mathrm{m/s}$.\n\n##PP Cách tính\nTính $n=\\dfrac{\\sin i}{\\sin r}$ (tỉ số các sin, không phải tỉ số số đo góc).\nTính $v=\\dfrac{c}{n}$.\nKiểm tra $n>1$ và $v<c$.\n\n##CY Lưu ý\nLỗi hay mắc: lấy $\\dfrac{i}{r}$ (tỉ số số đo góc) làm chiết suất; nhân $c$ với $n$.",
+     "vi_du": "##VD\nChiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $60^\\circ$, đo được góc khúc xạ $30^\\circ$. Biết tốc độ ánh sáng trong chân không là $3\\cdot10^8\\ \\mathrm{m/s}$. Tốc độ truyền ánh sáng trong môi trường đó bằng\nA. $1,73\\cdot10^8\\ \\mathrm{m/s}$.\nB. $5,19\\cdot10^8\\ \\mathrm{m/s}$.\nC. $1,50\\cdot10^8\\ \\mathrm{m/s}$.\nD. $2,00\\cdot10^8\\ \\mathrm{m/s}$.\n\nBài giải:\nChiết suất của môi trường: $n=\\dfrac{\\sin60^\\circ}{\\sin30^\\circ}=\\dfrac{0,866}{0,5}\\approx1,73$.\nTốc độ ánh sáng: $v=\\dfrac{c}{n}=\\dfrac{3\\cdot10^8}{1,73}\\approx1,73\\cdot10^8\\ \\mathrm{m/s}$.\nPhương án $1,50\\cdot10^8\\ \\mathrm{m/s}$ ứng với việc lấy tỉ số hai góc $\\dfrac{60^\\circ}{30^\\circ}=2$ làm chiết suất.\nChọn A.\n\n##VD\nChiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $60^\\circ$, đo được góc khúc xạ $35^\\circ$. Biết tốc độ ánh sáng trong chân không là $3\\cdot10^8\\ \\mathrm{m/s}$. Tốc độ truyền ánh sáng trong môi trường đó bằng\nA. $1,51\\cdot10^8\\ \\mathrm{m/s}$.\nB. $1,99\\cdot10^8\\ \\mathrm{m/s}$.\nC. $4,53\\cdot10^8\\ \\mathrm{m/s}$.\nD. $2,25\\cdot10^8\\ \\mathrm{m/s}$.\n\nBài giải:\nChiết suất của môi trường: $n=\\dfrac{\\sin60^\\circ}{\\sin35^\\circ}=\\dfrac{0,866}{0,574}\\approx1,51$.\nTốc độ ánh sáng: $v=\\dfrac{c}{n}=\\dfrac{3\\cdot10^8}{1,51}\\approx1,99\\cdot10^8\\ \\mathrm{m/s}$.\nPhương án $1,51\\cdot10^8\\ \\mathrm{m/s}$ là lấy nhầm chiết suất làm tốc độ; phương án $4,53\\cdot10^8\\ \\mathrm{m/s}$ là $c\\cdot n$ (lớn hơn $c$).\nChọn B."
+    },
+    {
+     "dang_id": "KDB01163",
+     "thu_tu": 5,
+     "ten": "TÍNH QUÃNG ĐƯỜNG ÁNH SÁNG ĐI ĐƯỢC TRONG MỘT KHOẢNG THỜI GIAN",
+     "mo_ta": "Đề cho chiều dài quãng đường ánh sáng truyền thẳng trong một khối chất trong suốt, chiết suất của chất và $c=3\\cdot10^8\\ \\mathrm{m/s}$; hỏi thời gian ánh sáng đi hết quãng đường đó (đơn vị $\\mu\\mathrm{s}$).\nLàm bằng hai bước: $v=\\dfrac{c}{n}$ rồi $t=\\dfrac{s}{v}$, đổi giây ra $\\mu\\mathrm{s}$; là câu trả lời ngắn.\nLưu ý: cho thời gian, hỏi quãng đường ⇒ thuộc dạng đứng ngay sau có cùng tên (TÍNH QUÃNG ĐƯỜNG ÁNH SÁNG ĐI ĐƯỢC TRONG MỘT KHOẢNG THỜI GIAN, thứ tự 6); chỉ hỏi tốc độ ⇒ thuộc dạng \"TÍNH TỐC ĐỘ ÁNH SÁNG KHI BIẾT CHIẾT SUẤT\".",
+     "ly_thuyet": "##TC Thời gian truyền ánh sáng\nTốc độ ánh sáng trong môi trường: $v=\\dfrac{c}{n}$. Ánh sáng truyền thẳng đều nên $t=\\dfrac{s}{v}=\\dfrac{sn}{c}$.\nĐổi đơn vị: $1\\ \\mu\\mathrm{s}=10^{-6}\\ \\mathrm{s}$; $s$ tính bằng $\\mathrm{m}$, $v$ tính bằng $\\mathrm{m/s}$ thì $t$ tính bằng $\\mathrm{s}$.\n\n##PP Cách tính\nTính tốc độ $v=\\dfrac{c}{n}$ (đơn vị $\\mathrm{m/s}$).\nTính thời gian $t=\\dfrac{s}{v}$ bằng giây.\nĐổi $t$ ra $\\mu\\mathrm{s}$ theo yêu cầu đề (nhân $10^6$).\n\n##CY Lưu ý\nLỗi hay mắc: quên đổi giây ra $\\mu\\mathrm{s}$ (lệch $10^6$ lần); dùng $c$ thay cho $v$.",
+     "vi_du": "##VD\nÁnh sáng truyền thẳng qua một khối chất trong suốt dài $600\\ \\mathrm{m}$ có chiết suất $1,5$. Biết tốc độ ánh sáng trong chân không là $3\\cdot10^8\\ \\mathrm{m/s}$. Tính thời gian ánh sáng đi hết quãng đường đó (đơn vị $\\mu\\mathrm{s}$).\n\nBài giải:\nTốc độ ánh sáng trong khối chất: $v=\\dfrac{c}{n}=\\dfrac{3\\cdot10^8}{1,5}=2\\cdot10^8\\ \\mathrm{m/s}$.\nThời gian: $t=\\dfrac{s}{v}=\\dfrac{600}{2\\cdot10^8}=3\\cdot10^{-6}\\ \\mathrm{s}=3\\ \\mu\\mathrm{s}$.\nĐáp án: 3.\n\n##VD\nÁnh sáng truyền thẳng qua một khối chất trong suốt dài $1800\\ \\mathrm{m}$ có chiết suất $1,25$. Biết tốc độ ánh sáng trong chân không là $3\\cdot10^8\\ \\mathrm{m/s}$. Tính thời gian ánh sáng đi hết quãng đường đó (đơn vị $\\mu\\mathrm{s}$).\n\nBài giải:\nTốc độ ánh sáng trong khối chất: $v=\\dfrac{c}{n}=\\dfrac{3\\cdot10^8}{1,25}=2,4\\cdot10^8\\ \\mathrm{m/s}$.\nThời gian: $t=\\dfrac{s}{v}=\\dfrac{1800}{2,4\\cdot10^8}=7,5\\cdot10^{-6}\\ \\mathrm{s}=7,5\\ \\mu\\mathrm{s}$.\nĐáp án: 7,5."
+    },
+    {
+     "dang_id": "KDB01164",
+     "thu_tu": 6,
+     "ten": "TÍNH QUÃNG ĐƯỜNG ÁNH SÁNG ĐI ĐƯỢC TRONG MỘT KHOẢNG THỜI GIAN",
+     "mo_ta": "Đề cho chiết suất của môi trường trong suốt, thời gian ánh sáng truyền thẳng (đơn vị $\\mu\\mathrm{s}$) và $c=3\\cdot10^8\\ \\mathrm{m/s}$; hỏi quãng đường ánh sáng đi được (đơn vị mét).\nLàm bằng hai bước: $v=\\dfrac{c}{n}$ rồi $s=vt$, nhớ đổi $\\mu\\mathrm{s}$ ra giây; là câu trả lời ngắn.\nLưu ý: cho quãng đường, hỏi thời gian ⇒ thuộc dạng đứng ngay trước có cùng tên (thứ tự 5, câu mẫu thực tế tính thời gian).",
+     "ly_thuyet": "##TC Quãng đường ánh sáng đi được\nTốc độ ánh sáng trong môi trường: $v=\\dfrac{c}{n}$. Ánh sáng truyền thẳng đều nên $s=vt$.\nĐổi đơn vị: $1\\ \\mu\\mathrm{s}=10^{-6}\\ \\mathrm{s}$; $v$ tính bằng $\\mathrm{m/s}$, $t$ bằng $\\mathrm{s}$ thì $s$ tính bằng $\\mathrm{m}$.\n\n##PP Cách tính\nTính tốc độ $v=\\dfrac{c}{n}$.\nĐổi thời gian $t$ ra giây (nhân $10^{-6}$ khi đề cho $\\mu\\mathrm{s}$).\nTính $s=vt$ và ghi đơn vị mét.\n\n##CY Lưu ý\nLỗi hay mắc: quên đổi $\\mu\\mathrm{s}$ ra giây (lệch $10^6$ lần); dùng $c$ thay cho $v$.",
+     "vi_du": "##VD\nTrong một môi trường trong suốt có chiết suất 2, ánh sáng truyền thẳng trong $3\\ \\mu\\mathrm{s}$. Biết tốc độ ánh sáng trong chân không là $3\\cdot10^8\\ \\mathrm{m/s}$. Tính quãng đường ánh sáng đi được (đơn vị mét).\n\nBài giải:\nTốc độ ánh sáng trong môi trường: $v=\\dfrac{c}{n}=\\dfrac{3\\cdot10^8}{2}=1,5\\cdot10^8\\ \\mathrm{m/s}$.\nĐổi thời gian: $t=3\\ \\mu\\mathrm{s}=3\\cdot10^{-6}\\ \\mathrm{s}$.\nQuãng đường: $s=vt=1,5\\cdot10^8\\cdot3\\cdot10^{-6}=450\\ \\mathrm{m}$.\nĐáp án: 450.\n\n##VD\nTrong một môi trường trong suốt có chiết suất 1,25, ánh sáng truyền thẳng trong $4\\ \\mu\\mathrm{s}$. Biết tốc độ ánh sáng trong chân không là $3\\cdot10^8\\ \\mathrm{m/s}$. Tính quãng đường ánh sáng đi được (đơn vị mét).\n\nBài giải:\nTốc độ ánh sáng trong môi trường: $v=\\dfrac{c}{n}=\\dfrac{3\\cdot10^8}{1,25}=2,4\\cdot10^8\\ \\mathrm{m/s}$.\nĐổi thời gian: $t=4\\ \\mu\\mathrm{s}=4\\cdot10^{-6}\\ \\mathrm{s}$.\nQuãng đường: $s=vt=2,4\\cdot10^8\\cdot4\\cdot10^{-6}=960\\ \\mathrm{m}$.\nĐáp án: 960."
+    },
+    {
+     "dang_id": "KDB01165",
+     "thu_tu": 7,
+     "ten": "TÍNH TỐC ĐỘ ÁNH SÁNG TỪ SỐ LIỆU ĐO GÓC",
+     "mo_ta": "Đề cho tia sáng chiếu từ không khí vào một môi trường trong suốt với góc tới và góc khúc xạ đo được, kèm $c=3\\cdot10^8\\ \\mathrm{m/s}$; hỏi tốc độ ánh sáng trong môi trường (đơn vị $10^8\\ \\mathrm{m/s}$, làm tròn đến chữ số thập phân thứ hai).\nLàm bằng hai bước: $n=\\dfrac{\\sin i}{\\sin r}$ rồi $v=\\dfrac{c}{n}$; là câu trả lời ngắn có số làm tròn.\nLưu ý: cùng cách giải nhưng đề là trắc nghiệm 4 phương án ⇒ thuộc dạng \"TÍNH TỐC ĐỘ ÁNH SÁNG TỪ GÓC TỚI VÀ GÓC KHÚC XẠ\".",
+     "ly_thuyet": "##TC Tốc độ ánh sáng từ số liệu đo góc\nTia sáng từ không khí vào môi trường chiết suất $n$: $n=\\dfrac{\\sin i}{\\sin r}$.\nTốc độ ánh sáng trong môi trường: $v=\\dfrac{c}{n}$, với $c=3\\cdot10^8\\ \\mathrm{m/s}$; đề yêu cầu đơn vị $10^8\\ \\mathrm{m/s}$ nên chỉ cần tính $v=\\dfrac{3}{n}$.\n\n##PP Cách tính\nTính $n=\\dfrac{\\sin i}{\\sin r}$.\nTính $v=\\dfrac{3}{n}$ (đơn vị $10^8\\ \\mathrm{m/s}$).\nLàm tròn đến chữ số thập phân thứ hai và kiểm tra $v<3$.\n\n##CY Lưu ý\nChỉ làm tròn ở kết quả cuối; lỗi hay mắc: lấy $\\dfrac ir$ thay cho $\\dfrac{\\sin i}{\\sin r}$, hoặc nhân $c$ với $n$.",
+     "vi_du": "##VD\nChiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $48^\\circ$, đo được góc khúc xạ $30^\\circ$. Biết tốc độ ánh sáng trong chân không là $3\\cdot10^8\\ \\mathrm{m/s}$. Tính tốc độ truyền ánh sáng trong môi trường đó (đơn vị $10^8\\ \\mathrm{m/s}$, làm tròn đến chữ số thập phân thứ hai).\n\nBài giải:\nChiết suất của môi trường: $n=\\dfrac{\\sin i}{\\sin r}=\\dfrac{\\sin48^\\circ}{\\sin30^\\circ}=\\dfrac{0,743}{0,500}\\approx1,49$.\nTốc độ ánh sáng: $v=\\dfrac{c}{n}=\\dfrac{3\\cdot10^8}{1,49}\\approx2,02\\cdot10^8\\ \\mathrm{m/s}$.\nĐáp án: 2,02.\n\n##VD\nChiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $65^\\circ$, đo được góc khúc xạ $40^\\circ$. Biết tốc độ ánh sáng trong chân không là $3\\cdot10^8\\ \\mathrm{m/s}$. Tính tốc độ truyền ánh sáng trong môi trường đó (đơn vị $10^8\\ \\mathrm{m/s}$, làm tròn đến chữ số thập phân thứ hai).\n\nBài giải:\nChiết suất của môi trường: $n=\\dfrac{\\sin65^\\circ}{\\sin40^\\circ}=\\dfrac{0,906}{0,643}\\approx1,41$.\nTốc độ ánh sáng: $v=\\dfrac{c}{n}=\\dfrac{3\\cdot10^8}{1,41}\\approx2,13\\cdot10^8\\ \\mathrm{m/s}$.\nĐáp án: 2,13."
+    },
+    {
+     "dang_id": "KDB01166",
+     "thu_tu": 8,
+     "ten": "TÍNH HIỆU TỐC ĐỘ ÁNH SÁNG TRONG HAI MÔI TRƯỜNG",
+     "mo_ta": "Đề cho chiết suất của hai môi trường trong suốt và $c=3\\cdot10^8\\ \\mathrm{m/s}$; hỏi hiệu giữa tốc độ ánh sáng trong môi trường thứ nhất và môi trường thứ hai (đơn vị $10^8\\ \\mathrm{m/s}$).\nLàm bằng cách tính $v_1=\\dfrac{c}{n_1}$, $v_2=\\dfrac{c}{n_2}$ rồi lấy $v_1-v_2$; là câu trả lời ngắn.\nLưu ý: chỉ cần tỉ số hai tốc độ ⇒ thuộc dạng \"SO SÁNH TỐC ĐỘ ÁNH SÁNG TRONG HAI MÔI TRƯỜNG\".",
+     "ly_thuyet": "##TC Hiệu tốc độ ánh sáng\nTốc độ trong mỗi môi trường: $v_1=\\dfrac{c}{n_1}$, $v_2=\\dfrac{c}{n_2}$.\nHiệu tốc độ: $v_1-v_2=c\\left(\\dfrac1{n_1}-\\dfrac1{n_2}\\right)$; môi trường có chiết suất nhỏ hơn có tốc độ lớn hơn.\n\n##PP Cách tính\nTính $v_1=\\dfrac{c}{n_1}$ và $v_2=\\dfrac{c}{n_2}$ (đơn vị $10^8\\ \\mathrm{m/s}$ thì $v=\\dfrac{3}{n}$).\nLấy hiệu $v_1-v_2$ đúng thứ tự đề hỏi.\nKiểm tra dấu: môi trường thứ nhất chiết suất nhỏ hơn thì hiệu dương.\n\n##CY Lưu ý\nLỗi hay mắc: lấy hiệu hai chiết suất rồi chia $c$, thay vì hiệu hai tốc độ.",
+     "vi_du": "##VD\nHai môi trường trong suốt có chiết suất lần lượt là $1,25$ và $1,5$. Biết tốc độ ánh sáng trong chân không là $3\\cdot10^8\\ \\mathrm{m/s}$. Tính hiệu giữa tốc độ ánh sáng trong môi trường thứ nhất và trong môi trường thứ hai (đơn vị $10^8\\ \\mathrm{m/s}$).\n\nBài giải:\nTốc độ trong môi trường thứ nhất: $v_1=\\dfrac{3\\cdot10^8}{1,25}=2,4\\cdot10^8\\ \\mathrm{m/s}$.\nTốc độ trong môi trường thứ hai: $v_2=\\dfrac{3\\cdot10^8}{1,5}=2,0\\cdot10^8\\ \\mathrm{m/s}$.\nHiệu: $v_1-v_2=2,4\\cdot10^8-2,0\\cdot10^8=0,4\\cdot10^8\\ \\mathrm{m/s}$.\nĐáp án: 0,4.\n\n##VD\nHai môi trường trong suốt có chiết suất lần lượt là $1,25$ và $2,4$. Biết tốc độ ánh sáng trong chân không là $3\\cdot10^8\\ \\mathrm{m/s}$. Tính hiệu giữa tốc độ ánh sáng trong môi trường thứ nhất và trong môi trường thứ hai (đơn vị $10^8\\ \\mathrm{m/s}$).\n\nBài giải:\nTốc độ trong môi trường thứ nhất: $v_1=\\dfrac{3\\cdot10^8}{1,25}=2,4\\cdot10^8\\ \\mathrm{m/s}$.\nTốc độ trong môi trường thứ hai: $v_2=\\dfrac{3\\cdot10^8}{2,4}=1,25\\cdot10^8\\ \\mathrm{m/s}$.\nHiệu: $v_1-v_2=2,4\\cdot10^8-1,25\\cdot10^8=1,15\\cdot10^8\\ \\mathrm{m/s}$.\nĐáp án: 1,15."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K09020401001",
+   "nhom_id": "KNB00460",
+   "loai": "trac_nghiem",
+   "de": "Thấu kính có phần rìa mỏng hơn phần giữa là loại thấu kính nào?",
+   "lua_chon": [
+    "Thấu kính phân kì",
+    "Gương cầu lồi",
+    "Gương cầu lõm",
+    "Thấu kính hội tụ"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Thấu kính hội tụ có phần rìa mỏng hơn phần giữa (thấu kính lồi).\n\nVì sao các phương án khác sai:\n- A: Thấu kính phân kì có phần rìa dày hơn phần giữa, ngược với mô tả.\n- B: Gương cầu lồi là gương, không phải thấu kính.\n- C: Gương cầu lõm là gương, không phải thấu kính."
+  },
+  {
+   "ma_cau": "K09020401002",
+   "nhom_id": "KNB00460",
+   "loai": "trac_nghiem",
+   "de": "Thấu kính có phần rìa dày hơn phần giữa là loại thấu kính nào?",
+   "lua_chon": [
+    "Thấu kính hội tụ",
+    "Thấu kính phân kì",
+    "Gương phẳng",
+    "Gương cầu lõm"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Thấu kính phân kì có phần rìa dày hơn phần giữa (thấu kính lõm).\n\nVì sao các phương án khác sai:\n- A: Thấu kính hội tụ có phần rìa mỏng hơn phần giữa, ngược với mô tả.\n- C: Gương phẳng không có phần rìa dày hay mỏng khác nhau.\n- D: Gương cầu lõm là gương, không phải thấu kính."
+  },
+  {
+   "ma_cau": "K09020401003",
+   "nhom_id": "KNB00460",
+   "loai": "trac_nghiem",
+   "de": "Chiếu một chùm sáng song song trục chính vào một thấu kính. Sau khi qua thấu kính, chùm tia ló hội tụ tại một điểm. Đó là thấu kính gì?",
+   "lua_chon": [
+    "Thấu kính phân kì",
+    "Gương cầu lồi",
+    "Gương phẳng",
+    "Thấu kính hội tụ"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Thấu kính hội tụ làm chùm tia sáng song song hội tụ tại tiêu điểm sau khi ló ra.\n\nVì sao các phương án khác sai:\n- A: Thấu kính phân kì làm chùm tia ló loe rộng ra, không hội tụ.\n- B: Gương cầu lồi là gương, không phải thấu kính.\n- C: Gương phẳng không làm đổi hướng chùm tia song song."
+  },
+  {
+   "ma_cau": "K09020401004",
+   "nhom_id": "KNB00460",
+   "loai": "trac_nghiem",
+   "de": "Chiếu một chùm sáng song song trục chính vào một thấu kính. Sau khi qua thấu kính, chùm tia ló loe rộng ra. Đó là thấu kính gì?",
+   "lua_chon": [
+    "Thấu kính phân kì",
+    "Thấu kính hội tụ",
+    "Gương cầu lõm",
+    "Gương phẳng"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Thấu kính phân kì làm chùm tia sáng song song loe rộng ra sau khi ló.\n\nVì sao các phương án khác sai:\n- B: Thấu kính hội tụ làm chùm tia ló hội tụ tại một điểm, không loe ra.\n- C: Gương cầu lõm là gương, không phải thấu kính.\n- D: Gương phẳng không làm đổi hướng chùm tia song song."
+  },
+  {
+   "ma_cau": "K09020401005",
+   "nhom_id": "KNB00460",
+   "loai": "trac_nghiem",
+   "de": "Quan sát hình vẽ đường truyền chùm tia sáng qua một thấu kính. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020401-01-005-de.png) Đây là loại thấu kính nào?",
+   "lua_chon": [
+    "Thấu kính phân kì",
+    "Thấu kính hội tụ",
+    "Gương cầu lõm",
+    "Gương phẳng"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Hình vẽ thấu kính có kí hiệu mũi tên hướng ra ở hai đầu, đặc trưng cho thấu kính hội tụ (rìa mỏng hơn phần giữa).\n\nVì sao các phương án khác sai:\n- A: Thấu kính phân kì có kí hiệu mũi tên hướng vào, khác với hình vẽ trên.\n- C: Gương cầu lõm là gương, có kí hiệu mặt cong phản xạ, khác với thấu kính trong hình.\n- D: Gương phẳng không có kí hiệu mũi tên ở hai đầu như thấu kính."
+  },
+  {
+   "ma_cau": "K09020401006",
+   "nhom_id": "KNB00460",
+   "loai": "trac_nghiem",
+   "de": "Trên hình vẽ thấu kính hội tụ, điểm F trên trục chính là nơi các tia song song trục chính hội tụ lại. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020401-02-002-de.png) Điểm F được gọi là gì?",
+   "lua_chon": [
+    "Quang tâm",
+    "Tiêu cự",
+    "Tiêu điểm",
+    "Ảnh của vật"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Điểm hội tụ của chùm tia song song trục chính sau khi qua thấu kính gọi là tiêu điểm.\n\nVì sao các phương án khác sai:\n- A: Quang tâm là điểm O mà tia sáng qua đó truyền thẳng, khác điểm F.\n- B: Tiêu cự là khoảng cách từ quang tâm tới tiêu điểm, không phải điểm F.\n- D: Ảnh của vật là hình tạo bởi các tia ló, không phải điểm cố định trên trục."
+  },
+  {
+   "ma_cau": "K09020401007",
+   "nhom_id": "KNB00460",
+   "loai": "trac_nghiem",
+   "de": "Trên hình vẽ thấu kính phân kì, đường thẳng đi qua quang tâm O và vuông góc mặt thấu kính. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020401-02-003-de.png) Đường thẳng đó gọi là gì?",
+   "lua_chon": [
+    "Trục chính",
+    "Tiêu điểm",
+    "Tia tới",
+    "Tia ló"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Đường thẳng đi qua quang tâm O và vuông góc với mặt thấu kính gọi là trục chính.\n\nVì sao các phương án khác sai:\n- B: Tiêu điểm là một điểm trên trục chính, không phải cả đường thẳng.\n- C: Tia tới là tia sáng chiếu đến thấu kính, không phải trục chính.\n- D: Tia ló là tia sáng ra khỏi thấu kính, không phải trục chính."
+  },
+  {
+   "ma_cau": "K09020401008",
+   "nhom_id": "KNB00460",
+   "loai": "trac_nghiem",
+   "de": "Trên hình vẽ thấu kính hội tụ, khoảng cách từ quang tâm O đến tiêu điểm F. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020401-02-004-de.png) Khoảng cách đó được gọi là gì?",
+   "lua_chon": [
+    "Tiêu cự",
+    "Trục chính",
+    "Khoảng cách ảnh",
+    "Chiều cao vật"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Khoảng cách từ quang tâm O đến tiêu điểm F gọi là tiêu cự, kí hiệu f.\n\nVì sao các phương án khác sai:\n- B: Trục chính là đường thẳng qua O vuông góc thấu kính, không phải một khoảng cách.\n- C: Khoảng cách ảnh là khoảng cách từ ảnh tới thấu kính, không phải từ O đến F.\n- D: Chiều cao vật là kích thước của vật, không liên quan khoảng cách O đến F."
+  },
+  {
+   "ma_cau": "K09020401009",
+   "nhom_id": "KNB00460",
+   "loai": "trac_nghiem",
+   "de": "Tiêu cự của một thấu kính có thay đổi khi ta dịch chuyển vật ra xa hay lại gần thấu kính không?",
+   "lua_chon": [
+    "Không, vì tiêu cự là đặc trưng của thấu kính",
+    "Có, vì tiêu cự phụ thuộc khoảng cách vật",
+    "Có, nhưng chỉ với thấu kính phân kì",
+    "Có, nhưng chỉ với thấu kính hội tụ"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Tiêu cự f là khoảng cách cố định từ quang tâm đến tiêu điểm, chỉ phụ thuộc hình dạng và chất liệu của thấu kính, không phụ thuộc vị trí đặt vật.\n\nVì sao các phương án khác sai:\n- B: Tiêu cự không phụ thuộc khoảng cách vật, đó là đặc trưng riêng của thấu kính.\n- C: Tiêu cự của thấu kính phân kì cũng cố định, không đổi theo vị trí vật.\n- D: Tiêu cự của thấu kính hội tụ cũng cố định, không đổi theo vị trí vật."
+  },
+  {
+   "ma_cau": "K09020401010",
+   "nhom_id": "KNB00460",
+   "loai": "trac_nghiem",
+   "de": "Tia sáng đi qua quang tâm O của thấu kính hội tụ thì tiếp tục truyền theo hướng nào?",
+   "lua_chon": [
+    "Đổi hướng, đi qua tiêu điểm",
+    "Đổi hướng, song song trục chính",
+    "Bị phản xạ ngược trở lại",
+    "Truyền thẳng, không đổi hướng"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Tia sáng qua quang tâm của thấu kính (hội tụ hay phân kì) đều truyền thẳng, không đổi hướng.\n\nVì sao các phương án khác sai:\n- A: Đó là đường đi của tia song song trục chính, không phải tia qua quang tâm.\n- B: Đó là đường đi của tia qua tiêu điểm vật, không phải tia qua quang tâm.\n- C: Thấu kính là vật cho ánh sáng truyền qua, không phản xạ tia sáng."
+  },
+  {
+   "ma_cau": "K09020401011",
+   "nhom_id": "KNB00460",
+   "loai": "trac_nghiem",
+   "de": "Tia sáng song song trục chính, sau khi qua thấu kính hội tụ thì truyền theo hướng nào?",
+   "lua_chon": [
+    "Tiếp tục truyền thẳng, song song trục chính",
+    "Đi qua quang tâm O",
+    "Đi qua tiêu điểm vật F",
+    "Đi qua tiêu điểm ảnh F′"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Tia sáng song song trục chính, sau khi qua thấu kính hội tụ, ló ra đi qua tiêu điểm ảnh F′.\n\nVì sao các phương án khác sai:\n- A: Đó là tính chất của thấu kính phân kì, không phải hội tụ.\n- B: Tia đi qua quang tâm mới truyền thẳng không đổi hướng, khác tia này.\n- C: Tiêu điểm vật F ở phía trước thấu kính, dùng cho tia tới, không phải tia này."
+  },
+  {
+   "ma_cau": "K09020401012",
+   "nhom_id": "KNB00460",
+   "loai": "trac_nghiem",
+   "de": "Tia sáng đi qua quang tâm O của thấu kính phân kì thì tiếp tục truyền theo hướng nào?",
+   "lua_chon": [
+    "Đổi hướng, đi qua tiêu điểm",
+    "Truyền thẳng, không đổi hướng",
+    "Đổi hướng, loe ra xa trục chính",
+    "Bị chặn lại tại quang tâm"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Tia sáng qua quang tâm của thấu kính phân kì cũng truyền thẳng, không đổi hướng, giống thấu kính hội tụ.\n\nVì sao các phương án khác sai:\n- A: Đó là đường đi của tia song song trục chính khi ló ra khỏi thấu kính.\n- C: Đó là tia ló của chùm song song, không phải tia qua quang tâm.\n- D: Quang tâm là nơi ánh sáng truyền qua được, không chặn tia sáng lại."
+  },
+  {
+   "ma_cau": "K09020401013",
+   "nhom_id": "KNB00460",
+   "loai": "trac_nghiem",
+   "de": "Tia sáng đi qua tiêu điểm vật F (nằm trước thấu kính), sau khi qua thấu kính hội tụ thì truyền theo hướng nào?",
+   "lua_chon": [
+    "Tiếp tục truyền thẳng, không đổi hướng",
+    "Đi qua tiêu điểm ảnh F′",
+    "Ló ra song song với trục chính",
+    "Loe ra xa trục chính"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Tia sáng đi qua tiêu điểm vật F trước khi tới thấu kính hội tụ, sau khi khúc xạ sẽ ló ra song song với trục chính.\n\nVì sao các phương án khác sai:\n- A: Đó là đường đi của tia qua quang tâm, không phải tia qua tiêu điểm vật.\n- B: Đó là đường đi của tia tới song song trục chính, không phải tia đi qua tiêu điểm vật.\n- D: Đó là tính chất của thấu kính phân kì với tia tới song song trục chính, không phải trường hợp này."
+  },
+  {
+   "ma_cau": "K09020401014",
+   "nhom_id": "KNB00460",
+   "loai": "trac_nghiem",
+   "de": "Tia sáng song song trục chính, sau khi qua thấu kính phân kì thì tia ló (hoặc đường kéo dài của nó) đi qua đâu?",
+   "lua_chon": [
+    "Đi qua quang tâm O",
+    "Hội tụ tại một điểm sau thấu kính",
+    "Truyền thẳng không đổi hướng",
+    "Đường kéo dài đi qua tiêu điểm cùng phía tia tới"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Với thấu kính phân kì, tia tới song song trục chính cho tia ló loe ra, có đường kéo dài đi qua tiêu điểm nằm cùng phía với tia tới.\n\nVì sao các phương án khác sai:\n- A: Tia song song trục chính không đi qua quang tâm.\n- B: Thấu kính phân kì làm tia ló loe ra, không hội tụ.\n- C: Tia sáng bị khúc xạ, đổi hướng khi qua thấu kính."
+  },
+  {
+   "ma_cau": "K09020402001",
+   "nhom_id": "KNB00461",
+   "loai": "trac_nghiem",
+   "de": "Vật sáng AB cách thấu kính hội tụ tiêu cự f = 10 cm một khoảng d = 25 cm. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020402-01-001-de.png) Ảnh của vật qua thấu kính là ảnh gì?",
+   "lua_chon": [
+    "Ảnh thật, ngược chiều, nhỏ hơn vật",
+    "Ảnh thật, ngược chiều, lớn hơn vật",
+    "Ảnh ảo, cùng chiều, lớn hơn vật",
+    "Ảnh thật, cùng chiều, nhỏ hơn vật"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Vật ở ngoài khoảng 2f (d > 2f) qua thấu kính hội tụ cho ảnh thật, ngược chiều, nhỏ hơn vật.\n\nVì sao các phương án khác sai:\n- B: Đó là tính chất ảnh khi vật ở trong khoảng f và 2f, không phải d > 2f.\n- C: Đó là tính chất ảnh khi vật đặt trong khoảng tiêu cự, không phải d > 2f.\n- D: Ảnh thật của thấu kính hội tụ luôn ngược chiều với vật."
+  },
+  {
+   "ma_cau": "K09020402002",
+   "nhom_id": "KNB00461",
+   "loai": "trac_nghiem",
+   "de": "Vật sáng AB cách thấu kính hội tụ tiêu cự f = 10 cm một khoảng d = 15 cm. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020402-01-002-de.png) Ảnh của vật qua thấu kính là ảnh gì?",
+   "lua_chon": [
+    "Ảnh thật, ngược chiều, lớn hơn vật",
+    "Ảnh thật, ngược chiều, nhỏ hơn vật",
+    "Ảnh ảo, cùng chiều, lớn hơn vật",
+    "Ảnh thật, ngược chiều, bằng vật"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Vật ở trong khoảng f và 2f (f < d < 2f) qua thấu kính hội tụ cho ảnh thật, ngược chiều, lớn hơn vật.\n\nVì sao các phương án khác sai:\n- B: Đó là tính chất ảnh khi vật ở ngoài khoảng 2f, không phải f < d < 2f.\n- C: Đó là tính chất ảnh khi vật đặt trong khoảng tiêu cự, không phải f < d < 2f.\n- D: Ảnh bằng vật chỉ xảy ra khi d = 2f, ở đây d chưa bằng 2f."
+  },
+  {
+   "ma_cau": "K09020402003",
+   "nhom_id": "KNB00461",
+   "loai": "trac_nghiem",
+   "de": "Vật sáng AB cách thấu kính hội tụ tiêu cự f = 14 cm một khoảng d = 28 cm. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020402-01-003-de.png) Ảnh của vật qua thấu kính là ảnh gì?",
+   "lua_chon": [
+    "Ảnh thật, ngược chiều, lớn hơn vật",
+    "Ảnh thật, ngược chiều, bằng vật",
+    "Ảnh ảo, cùng chiều, lớn hơn vật",
+    "Ảnh thật, ngược chiều, nhỏ hơn vật"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Vì d = 28 cm = 2f = 28 cm, thấu kính hội tụ cho ảnh thật, ngược chiều, bằng vật.\n\nVì sao các phương án khác sai:\n- A: Ảnh lớn hơn vật xảy ra khi vật ở trong khoảng f và 2f, khác d = 2f.\n- C: Ảnh ảo chỉ xuất hiện khi vật đặt trong khoảng tiêu cự, không phải d = 2f.\n- D: Ảnh nhỏ hơn vật xảy ra khi vật ở ngoài khoảng 2f, khác d = 2f."
+  },
+  {
+   "ma_cau": "K09020402004",
+   "nhom_id": "KNB00461",
+   "loai": "trac_nghiem",
+   "de": "Vật sáng AB cách thấu kính phân kì tiêu cự f = 10 cm một khoảng d = 15 cm. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020402-02-001-de.png) Ảnh của vật qua thấu kính là ảnh gì?",
+   "lua_chon": [
+    "Ảnh thật, ngược chiều, nhỏ hơn vật",
+    "Ảnh ảo, cùng chiều, nhỏ hơn vật",
+    "Ảnh ảo, cùng chiều, lớn hơn vật",
+    "Ảnh thật, ngược chiều, lớn hơn vật"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Thấu kính phân kì luôn cho ảnh ảo, cùng chiều, nhỏ hơn vật, dù vật ở vị trí nào.\n\nVì sao các phương án khác sai:\n- A: Thấu kính phân kì không bao giờ cho ảnh thật, chỉ cho ảnh ảo.\n- C: Ảnh ảo của thấu kính phân kì luôn nhỏ hơn vật, không lớn hơn.\n- D: Thấu kính phân kì không cho ảnh thật và không cho ảnh lớn hơn vật."
+  },
+  {
+   "ma_cau": "K09020402005",
+   "nhom_id": "KNB00461",
+   "loai": "trac_nghiem",
+   "de": "Vật sáng AB cách thấu kính phân kì tiêu cự f = 12 cm một khoảng d = 8 cm. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020402-02-002-de.png) Ảnh của vật qua thấu kính là ảnh gì?",
+   "lua_chon": [
+    "Ảnh ảo, cùng chiều, lớn hơn vật",
+    "Ảnh thật, ngược chiều, nhỏ hơn vật",
+    "Ảnh ảo, cùng chiều, nhỏ hơn vật",
+    "Ảnh thật, ngược chiều, bằng vật"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Dù vật ở trong hay ngoài tiêu cự, thấu kính phân kì luôn cho ảnh ảo, cùng chiều, nhỏ hơn vật.\n\nVì sao các phương án khác sai:\n- A: Ảnh ảo lớn hơn vật chỉ xảy ra ở thấu kính hội tụ, không phải phân kì.\n- B: Thấu kính phân kì không tạo ảnh thật ở bất kì vị trí nào của vật.\n- D: Thấu kính phân kì không tạo ảnh thật, càng không có ảnh bằng vật."
+  },
+  {
+   "ma_cau": "K09020402006",
+   "nhom_id": "KNB00461",
+   "loai": "trac_nghiem",
+   "de": "Vật sáng AB cách thấu kính phân kì tiêu cự f = 20 cm một khoảng d = 30 cm. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020402-02-003-de.png) Ảnh của vật qua thấu kính là ảnh gì?",
+   "lua_chon": [
+    "Ảnh ảo, cùng chiều, nhỏ hơn vật",
+    "Ảnh ảo, cùng chiều, lớn hơn vật",
+    "Ảnh thật, ngược chiều, nhỏ hơn vật",
+    "Ảnh thật, ngược chiều, lớn hơn vật"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Thấu kính phân kì luôn cho ảnh ảo, cùng chiều, nhỏ hơn vật, dù vật ở vị trí nào.\n\nVì sao các phương án khác sai:\n- B: Ảnh ảo lớn hơn vật chỉ xảy ra ở thấu kính hội tụ, không phải phân kì.\n- C: Thấu kính phân kì không bao giờ tạo ảnh thật ở bất kì vị trí nào của vật.\n- D: Thấu kính phân kì không tạo ảnh thật, càng không có ảnh lớn hơn vật."
+  },
+  {
+   "ma_cau": "K09020402007",
+   "nhom_id": "KNB00461",
+   "loai": "trac_nghiem",
+   "de": "Một vật đặt trước một thấu kính, ảnh tạo bởi thấu kính cùng chiều với vật và nhỏ hơn vật. Thấu kính đó thuộc loại nào?",
+   "lua_chon": [
+    "Thấu kính hội tụ",
+    "Thấu kính phân kì",
+    "Có thể là thấu kính hội tụ hoặc phân kì",
+    "Không xác định được loại thấu kính"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Thấu kính hội tụ chỉ cho ảnh ảo cùng chiều LỚN hơn vật; ảnh ảo nhỏ hơn vật chỉ có ở thấu kính phân kì.\n\nVì sao các phương án khác sai:\n- A: Thấu kính hội tụ khi cho ảnh ảo thì ảnh luôn lớn hơn vật, không nhỏ hơn.\n- C: Chỉ thấu kính phân kì mới cho ảnh cùng chiều, nhỏ hơn vật.\n- D: Đặc điểm ảnh cùng chiều, nhỏ hơn vật xác định duy nhất thấu kính phân kì."
+  },
+  {
+   "ma_cau": "K09020402008",
+   "nhom_id": "KNB00461",
+   "loai": "trac_nghiem",
+   "de": "Một vật đặt trước một thấu kính, ảnh tạo bởi thấu kính ngược chiều với vật. Thấu kính đó thuộc loại nào?",
+   "lua_chon": [
+    "Thấu kính phân kì",
+    "Thấu kính hội tụ",
+    "Có thể là thấu kính hội tụ hoặc phân kì",
+    "Không xác định được loại thấu kính"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Thấu kính phân kì luôn cho ảnh ảo cùng chiều với vật; ảnh ngược chiều (ảnh thật) chỉ có ở thấu kính hội tụ.\n\nVì sao các phương án khác sai:\n- A: Thấu kính phân kì chỉ cho ảnh ảo, cùng chiều với vật, không bao giờ ngược chiều.\n- C: Chỉ thấu kính hội tụ mới cho ảnh ngược chiều với vật.\n- D: Đặc điểm ảnh ngược chiều xác định duy nhất thấu kính hội tụ."
+  },
+  {
+   "ma_cau": "K09020402009",
+   "nhom_id": "KNB00461",
+   "loai": "trac_nghiem",
+   "de": "Một vật đặt trước một thấu kính, ảnh tạo bởi thấu kính cùng chiều với vật và LỚN hơn vật. Thấu kính đó thuộc loại nào?",
+   "lua_chon": [
+    "Thấu kính phân kì",
+    "Không xác định được loại thấu kính",
+    "Có thể là thấu kính hội tụ hoặc phân kì",
+    "Thấu kính hội tụ"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Ảnh ảo cùng chiều và LỚN hơn vật chỉ có ở thấu kính hội tụ (khi vật đặt trong khoảng tiêu cự); thấu kính phân kì chỉ cho ảnh ảo nhỏ hơn vật.\n\nVì sao các phương án khác sai:\n- A: Thấu kính phân kì chỉ cho ảnh ảo cùng chiều nhưng luôn NHỎ hơn vật, không lớn hơn.\n- B: Đặc điểm ảnh cùng chiều, lớn hơn vật xác định duy nhất thấu kính hội tụ.\n- C: Chỉ thấu kính hội tụ mới cho ảnh cùng chiều, lớn hơn vật."
+  },
+  {
+   "ma_cau": "K09020402010",
+   "nhom_id": "KNB00461",
+   "loai": "trac_nghiem",
+   "de": "Đặt vật sáng trước thấu kính hội tụ tiêu cự f = 12 cm, cách thấu kính d = 24 cm. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020403-01-001-de.png) Ảnh của vật có đặc điểm gì?",
+   "lua_chon": [
+    "Ảnh thật, ngược chiều, lớn hơn vật",
+    "Ảnh thật, ngược chiều, nhỏ hơn vật",
+    "Ảnh thật, ngược chiều, bằng vật",
+    "Ảnh ảo, cùng chiều, lớn hơn vật"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Khi vật cách thấu kính hội tụ đúng d = 2f thì ảnh thật, ngược chiều và có độ lớn bằng vật.\n\nVì sao các phương án khác sai:\n- A: Ảnh lớn hơn vật xảy ra khi vật ở trong khoảng f và 2f, khác d = 2f.\n- B: Ảnh nhỏ hơn vật xảy ra khi vật ở ngoài khoảng 2f, khác d = 2f.\n- D: Ảnh ảo chỉ xuất hiện khi vật đặt trong khoảng tiêu cự, không phải d = 2f."
+  },
+  {
+   "ma_cau": "K09020402011",
+   "nhom_id": "KNB00461",
+   "loai": "trac_nghiem",
+   "de": "Đặt vật sáng trước thấu kính hội tụ tiêu cự f = 12 cm, cách thấu kính d = 18 cm. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020403-01-002-de.png) Ảnh của vật có đặc điểm gì?",
+   "lua_chon": [
+    "Ảnh thật, ngược chiều, lớn hơn vật",
+    "Ảnh thật, ngược chiều, bằng vật",
+    "Ảnh thật, ngược chiều, nhỏ hơn vật",
+    "Ảnh ảo, cùng chiều, lớn hơn vật"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Khi vật ở trong khoảng f và 2f (f < d < 2f), thấu kính hội tụ cho ảnh thật, ngược chiều, lớn hơn vật.\n\nVì sao các phương án khác sai:\n- B: Ảnh bằng vật chỉ xảy ra khi d = 2f, ở đây d = 18 cm nhỏ hơn 2f.\n- C: Ảnh nhỏ hơn vật xảy ra khi vật ở ngoài khoảng 2f, khác f < d < 2f.\n- D: Ảnh ảo chỉ xuất hiện khi vật đặt trong khoảng tiêu cự, ở đây d lớn hơn f."
+  },
+  {
+   "ma_cau": "K09020402012",
+   "nhom_id": "KNB00461",
+   "loai": "trac_nghiem",
+   "de": "Vật sáng AB cách thấu kính hội tụ tiêu cự f = 8 cm một khoảng d = 32 cm. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020403-01-003-de.png) Ảnh của vật có đặc điểm gì?",
+   "lua_chon": [
+    "Ảnh thật, ngược chiều, lớn hơn vật",
+    "Ảnh ảo, cùng chiều, lớn hơn vật",
+    "Ảnh thật, ngược chiều, nhỏ hơn vật",
+    "Ảnh thật, ngược chiều, bằng vật"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Vì d = 32 cm > 2f = 16 cm (vật ngoài khoảng 2f), thấu kính hội tụ cho ảnh thật, ngược chiều, nhỏ hơn vật.\n\nVì sao các phương án khác sai:\n- A: Ảnh lớn hơn vật xảy ra khi vật ở trong khoảng f và 2f, khác d > 2f.\n- B: Ảnh ảo chỉ xuất hiện khi vật đặt trong khoảng tiêu cự, không phải d > 2f.\n- D: Ảnh bằng vật chỉ xảy ra khi d = 2f, ở đây d = 32 cm lớn hơn 2f = 16 cm."
+  },
+  {
+   "ma_cau": "K09020402013",
+   "nhom_id": "KNB00461",
+   "loai": "trac_nghiem",
+   "de": "Đặt vật sáng trước thấu kính hội tụ tiêu cự f = 10 cm, cách thấu kính d = 6 cm. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020403-02-001-de.png) Ảnh của vật có đặc điểm gì?",
+   "lua_chon": [
+    "Ảnh ảo, cùng chiều, lớn hơn vật",
+    "Ảnh thật, ngược chiều, lớn hơn vật",
+    "Ảnh ảo, cùng chiều, nhỏ hơn vật",
+    "Ảnh thật, ngược chiều, bằng vật"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Khi vật đặt trong khoảng tiêu cự (d < f), thấu kính hội tụ cho ảnh ảo, cùng chiều, lớn hơn vật.\n\nVì sao các phương án khác sai:\n- B: Ảnh thật chỉ xuất hiện khi vật ở ngoài khoảng tiêu cự, không phải d < f.\n- C: Ảnh ảo của thấu kính hội tụ luôn lớn hơn vật, không nhỏ hơn.\n- D: Ảnh bằng vật chỉ xảy ra ở d = 2f và là ảnh thật, không phải trường hợp này."
+  },
+  {
+   "ma_cau": "K09020402014",
+   "nhom_id": "KNB00461",
+   "loai": "trac_nghiem",
+   "de": "Muốn thấu kính hội tụ tạo ảnh ảo, cùng chiều, lớn hơn vật thì phải đặt vật ở vị trí nào so với tiêu cự f?",
+   "lua_chon": [
+    "Cách thấu kính đúng bằng 2f",
+    "Trong khoảng tiêu cự, tức d nhỏ hơn f",
+    "Ở ngoài khoảng 2f, tức d lớn hơn 2f",
+    "Ở đúng vị trí tiêu điểm, tức d bằng f"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Ảnh ảo, cùng chiều, lớn hơn vật chỉ xuất hiện khi vật đặt trong khoảng tiêu cự, tức d < f.\n\nVì sao các phương án khác sai:\n- A: Khi d = 2f thì ảnh là ảnh thật, ngược chiều, bằng vật, không phải ảnh ảo.\n- C: Khi d > 2f thì ảnh là ảnh thật, ngược chiều, nhỏ hơn vật.\n- D: Khi d = f, các tia ló song song nhau, không tạo được ảnh xác định."
+  },
+  {
+   "ma_cau": "K09020402015",
+   "nhom_id": "KNB00461",
+   "loai": "trac_nghiem",
+   "de": "Vật sáng AB cách thấu kính hội tụ tiêu cự f = 15 cm một khoảng d = 9 cm. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020403-02-003-de.png) Ảnh của vật qua thấu kính là ảnh gì?",
+   "lua_chon": [
+    "Ảnh thật, ngược chiều, nhỏ hơn vật",
+    "Ảnh ảo, cùng chiều, lớn hơn vật",
+    "Ảnh thật, ngược chiều, lớn hơn vật",
+    "Ảnh ảo, cùng chiều, nhỏ hơn vật"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Vì d = 9 cm < f = 15 cm (vật trong khoảng tiêu cự), thấu kính hội tụ cho ảnh ảo, cùng chiều, lớn hơn vật.\n\nVì sao các phương án khác sai:\n- A: Ảnh thật chỉ xuất hiện khi vật ở ngoài khoảng tiêu cự, không phải d < f.\n- C: Ảnh thật chỉ xuất hiện khi vật ở ngoài khoảng tiêu cự (d > f), ở đây d < f.\n- D: Ảnh ảo của thấu kính hội tụ luôn lớn hơn vật, không nhỏ hơn."
+  },
+  {
+   "ma_cau": "K09020402016",
+   "nhom_id": "KNB00461",
+   "loai": "trac_nghiem",
+   "de": "Vật sáng đặt cách thấu kính phân kì tiêu cự f = 15 cm một khoảng bất kì. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020403-03-001-de.png) Ảnh tạo bởi thấu kính này luôn có đặc điểm gì?",
+   "lua_chon": [
+    "Ảnh thật, ngược chiều, nhỏ hơn vật",
+    "Ảnh ảo, cùng chiều, nhỏ hơn vật",
+    "Ảnh ảo, cùng chiều, lớn hơn vật",
+    "Tuỳ vị trí vật mà ảnh thật hoặc ảnh ảo"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Thấu kính phân kì luôn cho ảnh ảo, cùng chiều, nhỏ hơn vật, không phụ thuộc vị trí đặt vật.\n\nVì sao các phương án khác sai:\n- A: Thấu kính phân kì không bao giờ tạo ra ảnh thật.\n- C: Ảnh ảo của thấu kính phân kì luôn nhỏ hơn vật, không lớn hơn.\n- D: Thấu kính phân kì luôn cho một loại ảnh duy nhất, không đổi theo vị trí vật."
+  },
+  {
+   "ma_cau": "K09020402017",
+   "nhom_id": "KNB00461",
+   "loai": "trac_nghiem",
+   "de": "Ảnh tạo bởi thấu kính phân kì luôn nằm trong khoảng nào tính từ thấu kính?",
+   "lua_chon": [
+    "Ngoài khoảng hai lần tiêu cự",
+    "Đúng bằng hai lần tiêu cự",
+    "Trong khoảng tiêu cự",
+    "Đúng bằng tiêu cự"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Ảnh ảo của thấu kính phân kì luôn nằm trong khoảng tiêu cự, gần thấu kính hơn tiêu điểm.\n\nVì sao các phương án khác sai:\n- A: Đó là vị trí vật cho ảnh thật nhỏ hơn ở thấu kính hội tụ.\n- B: Vị trí đúng bằng hai lần tiêu cự là vị trí đặc biệt của vật, không phải ảnh.\n- D: Ảnh của thấu kính phân kì nằm trong khoảng tiêu cự, không nằm đúng tại tiêu điểm."
+  },
+  {
+   "ma_cau": "K09020402018",
+   "nhom_id": "KNB00461",
+   "loai": "trac_nghiem",
+   "de": "Vật sáng AB cách thấu kính phân kì tiêu cự f = 20 cm một khoảng d = 40 cm (d = 2f). ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020403-03-003-de.png) Ảnh của vật qua thấu kính là ảnh gì?",
+   "lua_chon": [
+    "Ảnh ảo, cùng chiều, nhỏ hơn vật",
+    "Ảnh thật, ngược chiều, nhỏ hơn vật",
+    "Ảnh ảo, cùng chiều, lớn hơn vật",
+    "Ảnh thật, ngược chiều, bằng vật"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Dù vật ở vị trí nào (kể cả d = 2f), thấu kính phân kì luôn cho ảnh ảo, cùng chiều, nhỏ hơn vật.\n\nVì sao các phương án khác sai:\n- B: Thấu kính phân kì không bao giờ cho ảnh thật, chỉ cho ảnh ảo.\n- C: Ảnh ảo của thấu kính phân kì luôn nhỏ hơn vật, không lớn hơn, dù ở vị trí d = 2f.\n- D: Thấu kính phân kì không cho ảnh thật và không cho ảnh bằng vật."
+  },
+  {
+   "ma_cau": "K09020304001",
+   "nhom_id": "KNB00458",
+   "loai": "trac_nghiem",
+   "de": "Trong cầu vồng, các dải màu được sắp xếp theo đúng thứ tự nào (từ trên xuống hoặc từ ngoài vào trong)?",
+   "lua_chon": [
+    "Đỏ, cam, vàng, lục, lam, chàm, tím",
+    "Tím, chàm, lam, lục, vàng, cam, đỏ",
+    "Đỏ, vàng, lục, tím, cam, lam, chàm",
+    "Thứ tự ngẫu nhiên, không cố định"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Do tia đỏ lệch ít nhất và tia tím lệch nhiều nhất qua giọt nước, dải màu cầu vồng luôn theo thứ tự đỏ, cam, vàng, lục, lam, chàm, tím.\n\nVì sao các phương án khác sai:\n- B: Đây là thứ tự ngược, không đúng với góc lệch tăng dần từ đỏ đến tím.\n- C: Thứ tự bị xáo trộn, không đúng quy luật góc lệch tăng dần.\n- D: Thứ tự màu trong cầu vồng luôn cố định theo góc lệch, không ngẫu nhiên."
+  },
+  {
+   "ma_cau": "K09020304002",
+   "nhom_id": "KNB00458",
+   "loai": "trac_nghiem",
+   "de": "Khi chiếu một chùm ánh sáng trắng hẹp qua lăng kính trong phòng tối, ta quan sát được gì trên màn chắn phía sau?",
+   "lua_chon": [
+    "Một vệt sáng trắng duy nhất",
+    "Nhiều vệt sáng trắng tách rời nhau",
+    "Một vệt sáng đen",
+    "Một dải màu liên tục từ đỏ đến tím"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Lăng kính tán sắc ánh sáng trắng thành dải màu liên tục từ đỏ đến tím do các màu có góc lệch khác nhau.\n\nVì sao các phương án khác sai:\n- A: Nếu vẫn là vệt trắng duy nhất thì không có hiện tượng tán sắc xảy ra.\n- B: Các màu tạo thành dải liên tục sát nhau, không tách thành các vệt trắng rời rạc.\n- C: Ánh sáng trắng qua lăng kính vẫn tạo ra ánh sáng có màu, không phải vệt tối."
+  },
+  {
+   "ma_cau": "K09020304003",
+   "nhom_id": "KNB00458",
+   "loai": "trac_nghiem",
+   "de": "Muốn quan sát được cầu vồng, cần có đồng thời những điều kiện nào?",
+   "lua_chon": [
+    "Chỉ cần trời có mây đen",
+    "Nhiệt độ không khí phải rất thấp",
+    "Chỉ cần trời tối và có ánh trăng",
+    "Ánh sáng mặt trời và giọt nước trong không khí"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Cầu vồng cần có ánh sáng trắng của Mặt Trời chiếu tới các giọt nước, đóng vai trò lăng kính để tán sắc ánh sáng.\n\nVì sao các phương án khác sai:\n- A: Mây đen chỉ gây mưa, không tạo tán sắc nếu không có ánh sáng mặt trời chiếu tới.\n- B: Nhiệt độ không khí không phải là điều kiện gây ra tán sắc ánh sáng.\n- C: Trời tối hoàn toàn thì không có ánh sáng mặt trời để tán sắc, không thể có cầu vồng."
+  },
+  {
+   "ma_cau": "K09020304004",
+   "nhom_id": "KNB00458",
+   "loai": "trac_nghiem",
+   "de": "Một viên kim cương cắt nhiều mặt phẳng lấp lánh nhiều màu sắc dưới ánh sáng trắng. Hiện tượng này liên quan chủ yếu đến quá trình nào?",
+   "lua_chon": [
+    "Kim cương chỉ phản chiếu lại đúng màu trắng",
+    "Kim cương tự phát ra ánh sáng màu",
+    "Tán sắc ánh sáng qua các mặt cắt như lăng kính nhỏ",
+    "Ánh sáng bị nhiễm điện khi qua kim cương"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Các mặt cắt của kim cương đóng vai trò như những lăng kính nhỏ, tán sắc ánh sáng trắng thành nhiều màu lấp lánh.\n\nVì sao các phương án khác sai:\n- A: Nếu chỉ phản chiếu màu trắng, kim cương sẽ không lấp lánh nhiều màu như quan sát được.\n- B: Kim cương không tự phát sáng, chỉ tán sắc ánh sáng chiếu vào nó.\n- D: Hiện tượng này là tán sắc ánh sáng, không liên quan đến nhiễm điện."
+  },
+  {
+   "ma_cau": "K09020304005",
+   "nhom_id": "KNB00458",
+   "loai": "trac_nghiem",
+   "de": "Vì sao cầu vồng luôn có màu đỏ ở phía trên (ngoài) và màu tím ở phía dưới (trong) của dải màu?",
+   "lua_chon": [
+    "Vì tia tím bị giọt nước hấp thụ một phần",
+    "Vì tia đỏ nặng hơn nên rơi xuống chậm hơn",
+    "Vì mắt người nhìn màu đỏ rõ hơn màu tím",
+    "Tia đỏ lệch ít nhất, tia tím lệch nhiều nhất"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Do góc lệch của tia đỏ nhỏ nhất và tia tím lớn nhất khi tán sắc qua giọt nước, vị trí các dải màu được sắp xếp theo đúng thứ tự đó.\n\nVì sao các phương án khác sai:\n- A: Vị trí các màu do góc lệch khác nhau quyết định, không phải do hấp thụ.\n- B: Ánh sáng không có khối lượng để \"rơi xuống\" chậm hay nhanh như vật thể.\n- C: Khả năng nhìn màu của mắt không quyết định vị trí các dải màu trong cầu vồng."
+  },
+  {
+   "ma_cau": "K09020304006",
+   "nhom_id": "KNB00458",
+   "loai": "trac_nghiem",
+   "de": "Khi nhìn xuyên qua cạnh dày của một tấm kính (như mép bàn kính) dưới ánh nắng, đôi khi ta thấy các viền màu sắc như cầu vồng nhỏ. Hiện tượng này có cùng bản chất với hiện tượng nào?",
+   "lua_chon": [
+    "Tán sắc ánh sáng như qua lăng kính",
+    "Phản xạ ánh sáng trên bề mặt kính",
+    "Sự hấp thụ ánh sáng của kính",
+    "Hiện tượng nhiễm điện do cọ xát"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Cạnh dày của tấm kính có hai mặt nghiêng như lăng kính nhỏ; ánh sáng trắng đi qua bị khúc xạ hai lần và tán sắc thành các viền màu, giống hệt nguyên lí tán sắc qua lăng kính.\n\nVì sao các phương án khác sai:\n- B: Phản xạ chỉ làm ánh sáng đổi hướng, không tách thành các màu khác nhau.\n- C: Hấp thụ làm giảm cường độ ánh sáng, không tạo ra các viền màu sắc.\n- D: Nhiễm điện do cọ xát không liên quan đến hiện tượng quang học tán sắc ánh sáng."
+  },
+  {
+   "ma_cau": "K09020304007",
+   "nhom_id": "KNB00458",
+   "loai": "trac_nghiem",
+   "de": "Buổi sáng, nhìn giọt sương đọng trên lá dưới ánh nắng, ta thấy giọt sương lấp lánh nhiều màu. Hiện tượng này cùng bản chất với hiện tượng nào?",
+   "lua_chon": [
+    "Phản xạ ánh sáng trên gương phẳng",
+    "Tán sắc ánh sáng qua lăng kính",
+    "Sự hấp thụ ánh sáng của lá cây",
+    "Sự truyền thẳng của ánh sáng"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Giọt sương làm ánh sáng Mặt Trời khúc xạ và bị tách thành nhiều màu giống như khi qua lăng kính (tán sắc ánh sáng).\n\nVì sao các phương án khác sai:\n- A: Gương phẳng không tách ánh sáng trắng thành nhiều màu.\n- C: Lá cây hấp thụ ánh sáng không tạo ra các màu lấp lánh.\n- D: Ánh sáng bị khúc xạ khi qua giọt sương, không truyền thẳng."
+  },
+  {
+   "ma_cau": "K09020304008",
+   "nhom_id": "KNB00458",
+   "loai": "trac_nghiem",
+   "de": "Trong một buổi trình diễn ánh sáng, người ta chiếu một chùm laser đơn sắc (chỉ một màu) qua một lăng kính. Kết quả quan sát được trên màn là gì?",
+   "lua_chon": [
+    "Một dải bảy màu như tán sắc ánh sáng trắng",
+    "Chùm tia bị hấp thụ hết trong lăng kính",
+    "Chùm tia bị lệch hướng nhưng vẫn giữ nguyên một màu ban đầu",
+    "Chùm tia tách thành hai tia cùng màu đối xứng nhau"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Ánh sáng laser là ánh sáng đơn sắc, chỉ có một màu nên khi qua lăng kính chỉ bị khúc xạ (lệch hướng), không có gì để tách thành các màu khác.\n\nVì sao các phương án khác sai:\n- A: Tán sắc thành bảy màu chỉ xảy ra với ánh sáng trắng (gồm nhiều màu), không xảy ra với ánh sáng đơn sắc.\n- B: Lăng kính làm ánh sáng khúc xạ (lệch hướng) và truyền qua, không làm ánh sáng biến mất.\n- D: Lăng kính chỉ tạo ra một tia ló, không tách thành hai tia đối xứng."
+  },
+  {
+   "ma_cau": "K09020106051",
+   "nhom_id": "KNB00445",
+   "loai": "trac_nghiem",
+   "de": "Vì sao khi cắm một chiếc đũa vào cốc nước rồi nhìn nghiêng, ta thấy đũa như bị gãy khúc tại mặt nước?",
+   "lua_chon": [
+    "Vì đũa thực sự bị cong do lực đẩy của nước",
+    "Vì ánh sáng từ đũa dưới nước lệch hướng khi ra ngoài",
+    "Vì nước phản xạ ánh sáng làm đũa như bị gãy",
+    "Vì nước hấp thụ ánh sáng không đều theo chiều dài đũa"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Ánh sáng từ phần đũa chìm trong nước bị khúc xạ khi truyền ra không khí tới mắt, làm ảnh phần đũa trong nước như bị lệch, tạo cảm giác đũa bị gãy khúc.\n\nVì sao các phương án khác sai:\n- A: Đũa vẫn thẳng, chỉ có đường truyền ánh sáng bị đổi hướng khiến mắt nhìn thấy như vậy.\n- C: Hiện tượng chính ở đây là khúc xạ tại mặt nước, không phải phản xạ.\n- D: Hấp thụ ánh sáng không đều không tạo ra ảnh gãy khúc như quan sát được."
+  },
+  {
+   "ma_cau": "K09020106052",
+   "nhom_id": "KNB00445",
+   "loai": "trac_nghiem",
+   "de": "Một con cá bơi dưới ao, người đứng trên bờ nhìn xiên xuống nước sẽ thấy vị trí của cá như thế nào so với vị trí thực?",
+   "lua_chon": [
+    "Cá có vẻ ở vị trí sâu hơn vị trí thực",
+    "Cá ở đúng vị trí thực, chỉ trông mờ hơn",
+    "Cá có vẻ dịch sang một bên so với vị trí thực",
+    "Cá có vẻ ở gần mặt nước hơn vị trí thực"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Ánh sáng từ cá truyền từ nước ra không khí bị khúc xạ, lệch xa pháp tuyến, khiến ảnh của cá như dịch lên gần mặt nước, tức là trông nông hơn vị trí thực.\n\nVì sao các phương án khác sai:\n- A: Khúc xạ làm ảnh dịch lên gần mặt nước hơn, tức là nông hơn, không phải sâu hơn.\n- B: Do khúc xạ tại mặt nước, vị trí nhìn thấy luôn khác vị trí thực khi nhìn xiên.\n- C: Ảnh bị dịch theo phương thẳng đứng (nông hơn), không phải lệch sang một bên."
+  },
+  {
+   "ma_cau": "K09020106053",
+   "nhom_id": "KNB00445",
+   "loai": "trac_nghiem",
+   "de": "Một đồng xu đặt ở đáy cốc rỗng bị thành cốc che khuất nên không nhìn thấy. Khi rót nước vào cốc, người quan sát bắt đầu nhìn thấy đồng xu. Vì sao?",
+   "lua_chon": [
+    "Vì nước phản xạ ánh sáng từ đồng xu tới mắt",
+    "Vì nước làm đồng xu sáng hơn nên dễ nhìn thấy",
+    "Vì ánh sáng từ đồng xu khúc xạ, đổi hướng tới mắt",
+    "Vì thành cốc trở nên trong suốt hơn khi có nước"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Khi có nước, ánh sáng từ đồng xu bị khúc xạ tại mặt nước, đổi hướng đủ để vượt qua mép thành cốc và lọt vào mắt người quan sát.\n\nVì sao các phương án khác sai:\n- A: Đây là hiện tượng khúc xạ tại mặt nước, không phải phản xạ ánh sáng từ đồng xu.\n- B: Nước không làm đồng xu phát sáng hơn, chỉ làm đổi hướng ánh sáng phản chiếu từ nó.\n- D: Thành cốc không đổi tính trong suốt; nguyên nhân là ánh sáng bị khúc xạ tại mặt nước."
+  },
+  {
+   "ma_cau": "K09020106054",
+   "nhom_id": "KNB00445",
+   "loai": "trac_nghiem",
+   "de": "Người đi xiên (lao) cá dưới nước thường phải nhắm mũi lao vào vị trí THẤP hơn vị trí nhìn thấy con cá. Vì sao?",
+   "lua_chon": [
+    "Vì cá luôn lặn sâu hơn khi bị phát hiện",
+    "Vì khúc xạ làm cá có vẻ nông hơn thực",
+    "Vì nước làm mũi lao lệch khi phóng",
+    "Vì mắt người luôn nhìn cao hơn thực"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Ánh sáng từ cá khúc xạ khi truyền từ nước ra không khí, lệch xa pháp tuyến, khiến mắt nhìn thấy cá ở vị trí nông hơn vị trí thực; do đó phải nhắm thấp hơn để trúng cá.\n\nVì sao các phương án khác sai:\n- A: Hành vi bơi trốn của cá không phải nguyên nhân vật lí của việc nhắm thấp hơn.\n- C: Mũi lao có thể bị lệch chút do lực cản nhưng đó không phải lí do chính khiến phải nhắm thấp hơn ngay từ đầu.\n- D: Mắt người không tự nhìn cao hơn; chính ánh sáng từ vật bị khúc xạ mới gây ra sai lệch vị trí quan sát."
+  },
+  {
+   "ma_cau": "K09020106055",
+   "nhom_id": "KNB00445",
+   "loai": "trac_nghiem",
+   "de": "Vì sao khi nhìn xuống một hồ nước theo phương xiên (góc lớn), ta ước lượng độ sâu sai lệch nhiều hơn so với khi nhìn gần như vuông góc từ trên xuống?",
+   "lua_chon": [
+    "Vì góc tới càng lớn, khúc xạ càng ít",
+    "Vì nhìn xiên, mắt nhận ít ánh sáng hơn",
+    "Vì góc tới càng lớn, độ lệch khúc xạ càng lớn",
+    "Vì nhìn xiên, nước có vẻ trong hơn"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Độ lệch góc giữa tia tới và tia khúc xạ tăng theo góc tới; góc tới càng lớn (nhìn càng xiên) thì độ lệch do khúc xạ càng lớn, khiến ước lượng độ sâu sai lệch nhiều hơn.\n\nVì sao các phương án khác sai:\n- A: Ngược lại, góc tới càng lớn thì độ lệch do khúc xạ càng lớn, không phải càng ít.\n- B: Lượng ánh sáng tới mắt không phải nguyên nhân gây sai lệch ước lượng độ sâu.\n- D: Độ trong của nước không thay đổi theo góc nhìn, đây không phải nguyên nhân của sai lệch độ sâu."
+  },
+  {
+   "ma_cau": "K09020106056",
+   "nhom_id": "KNB00445",
+   "loai": "trac_nghiem",
+   "de": "Một bể nước có độ sâu thực h = 1,2 m, chiết suất của nước n = 4/3. Người đứng trên bờ nhìn gần như vuông góc xuống đáy bể. Tính độ sâu biểu kiến (nhìn thấy) của bể, dùng công thức gần đúng h<sub>b</sub>k = h/n.",
+   "lua_chon": [
+    "h<sub>b</sub>k = 1,6 m",
+    "h<sub>b</sub>k = 0,4 m",
+    "h<sub>b</sub>k = 1,2 m",
+    "h<sub>b</sub>k = 0,9 m"
+   ],
+   "dap_an": "D",
+   "loi_giai": "h<sub>b</sub>k = h/n = 1,2 : (4/3) = 0,9 m.\n\nVì sao các phương án khác sai:\n- A: Đã nhân h với n thay vì chia, ra kết quả lớn hơn độ sâu thực (vô lí).\n- B: Đã tính độ chênh lệch h×(n−1)/n... (tính nhầm phần hụt) chứ không phải độ sâu biểu kiến.\n- C: Đây là độ sâu thực, quên chia cho chiết suất để ra độ sâu biểu kiến."
+  },
+  {
+   "ma_cau": "K09020106057",
+   "nhom_id": "KNB00445",
+   "loai": "trac_nghiem",
+   "de": "Một người quan sát từ trên bờ, nhìn gần như vuông góc, thấy độ sâu biểu kiến của một hồ nước là 1,5 m. Biết chiết suất của nước n = 4/3. Tính độ sâu thực của hồ, dùng công thức gần đúng h = h<sub>b</sub>k × n.",
+   "lua_chon": [
+    "h = 1,125 m",
+    "h = 1,5 m",
+    "h = 2 m",
+    "h = 0,5 m"
+   ],
+   "dap_an": "C",
+   "loi_giai": "h = h<sub>b</sub>k × n = 1,5 × 4/3 = 2 m.\n\nVì sao các phương án khác sai:\n- A: Đã chia h<sub>b</sub>k cho n thay vì nhân, ra kết quả nhỏ hơn độ sâu biểu kiến (vô lí vì độ sâu thực phải lớn hơn).\n- B: Đây là độ sâu biểu kiến, quên nhân với chiết suất để ra độ sâu thực.\n- D: Đã tính nhầm phần chênh lệch h<sub>b</sub>k×(n−1) rồi coi đó là độ sâu thực."
+  },
+  {
+   "ma_cau": "K09020106058",
+   "nhom_id": "KNB00445",
+   "loai": "trac_nghiem",
+   "de": "Một khối nước trong bể có độ sâu thực h = 1,6 m; khi nhìn gần như vuông góc từ trên xuống, độ sâu biểu kiến đo được là 1,2 m. Tính chiết suất của nước, dùng công thức gần đúng n = h/h<sub>b</sub>k.",
+   "lua_chon": [
+    "n = 0,75",
+    "n = 2,8",
+    "n = 0,4",
+    "n = 1,33"
+   ],
+   "dap_an": "D",
+   "loi_giai": "n = h/h<sub>b</sub>k = 1,6/1,2 ≈ 1,33 (bằng 4/3).\n\nVì sao các phương án khác sai:\n- A: Đã đảo tỉ số, tính h<sub>b</sub>k/h thay vì h/h<sub>b</sub>k.\n- B: Đã lấy tổng h + h<sub>b</sub>k = 2,8 rồi nhầm là chiết suất, không đúng công thức.\n- C: Đã lấy hiệu h − h<sub>b</sub>k = 0,4 rồi nhầm là chiết suất, không đúng công thức."
+  },
+  {
+   "ma_cau": "K09020106059",
+   "nhom_id": "KNB00445",
+   "loai": "trac_nghiem",
+   "de": "Một chiếc ly thuỷ tinh chứa nước sâu thực 24 cm, chiết suất nước n = 4/3. Nhìn gần như vuông góc từ trên xuống, độ sâu biểu kiến của đáy ly là bao nhiêu?",
+   "lua_chon": [
+    "h<sub>b</sub>k = 32 cm",
+    "h<sub>b</sub>k = 24 cm",
+    "h<sub>b</sub>k = 8 cm",
+    "h<sub>b</sub>k = 18 cm"
+   ],
+   "dap_an": "D",
+   "loi_giai": "h<sub>b</sub>k = h/n = 24 : (4/3) = 18 cm.\n\nVì sao các phương án khác sai:\n- A: Đã nhân h với n thay vì chia, ra kết quả lớn hơn độ sâu thực (vô lí).\n- B: Đây là độ sâu thực, quên chia cho chiết suất để ra độ sâu biểu kiến.\n- C: Đã tính phần chênh lệch h×(n−1)/n rồi nhầm là độ sâu biểu kiến, không phải kết quả cần tìm."
+  },
+  {
+   "ma_cau": "K09020106060",
+   "nhom_id": "KNB00445",
+   "loai": "trac_nghiem",
+   "de": "Một cây gậy cắm thẳng đứng, phần chìm trong nước dài thực 30 cm (đo được khi rút gậy lên), chiết suất nước n = 4/3. Người quan sát từ trên nhìn gần như vuông góc thấy phần đó dài bao nhiêu (biểu kiến)?",
+   "lua_chon": [
+    "h<sub>b</sub>k = 40 cm",
+    "h<sub>b</sub>k = 22,5 cm",
+    "h<sub>b</sub>k = 30 cm",
+    "h<sub>b</sub>k = 10 cm"
+   ],
+   "dap_an": "B",
+   "loi_giai": "h<sub>b</sub>k = h/n = 30 : (4/3) = 22,5 cm.\n\nVì sao các phương án khác sai:\n- A: Đã nhân h với n thay vì chia, ra kết quả lớn hơn độ dài thực (vô lí).\n- C: Đây là độ dài thực, quên chia cho chiết suất để ra độ dài biểu kiến.\n- D: Đã tính phần chênh lệch h×(n−1)/n rồi nhầm là độ dài biểu kiến, không phải kết quả cần tìm."
+  },
+  {
+   "ma_cau": "K09020106061",
+   "nhom_id": "KNB00445",
+   "loai": "trac_nghiem",
+   "de": "Một hồ cá cảnh có độ sâu thực h = 45 cm, chiết suất nước n = 4/3. Nhìn gần như vuông góc từ trên xuống, độ sâu biểu kiến của đáy hồ là bao nhiêu?",
+   "lua_chon": [
+    "60 cm",
+    "45 cm",
+    "11,25 cm",
+    "33,75 cm"
+   ],
+   "dap_an": "D",
+   "loi_giai": "h<sub>b</sub>k = h/n = 45 : (4/3) = 33,75 cm.\n\nVì sao các phương án khác sai:\n- A: Đã nhân h với n thay vì chia, ra kết quả lớn hơn độ sâu thực (vô lí).\n- B: Đây là độ sâu thực, quên chia cho chiết suất để ra độ sâu biểu kiến.\n- C: Đã tính phần chênh lệch h×(n−1)/n rồi nhầm là độ sâu biểu kiến, không phải kết quả cần tìm."
+  },
+  {
+   "ma_cau": "K09020106062",
+   "nhom_id": "KNB00445",
+   "loai": "trac_nghiem",
+   "de": "Một người quan sát từ trên bờ, nhìn gần như vuông góc, thấy độ sâu biểu kiến của một bể bơi là 1,2 m. Biết chiết suất của nước n = 4/3. Tính độ sâu thực của bể.",
+   "lua_chon": [
+    "1,6 m",
+    "0,9 m",
+    "1,2 m",
+    "0,4 m"
+   ],
+   "dap_an": "A",
+   "loi_giai": "h = h<sub>b</sub>k × n = 1,2 × 4/3 = 1,6 m.\n\nVì sao các phương án khác sai:\n- B: Đã chia h<sub>b</sub>k cho n thay vì nhân, ra kết quả nhỏ hơn độ sâu biểu kiến (vô lí vì độ sâu thực phải lớn hơn).\n- C: Đây là độ sâu biểu kiến, quên nhân với chiết suất để ra độ sâu thực.\n- D: Đã tính nhầm phần chênh lệch h<sub>b</sub>k×(n−1) rồi coi đó là độ sâu thực."
+  },
+  {
+   "ma_cau": "K09020106063",
+   "nhom_id": "KNB00445",
+   "loai": "trac_nghiem",
+   "de": "Một bể kính chứa chất lỏng có độ sâu thực h = 2,1 m; khi nhìn gần như vuông góc từ trên xuống, độ sâu biểu kiến đo được là 1,4 m. Tính chiết suất của chất lỏng.",
+   "lua_chon": [
+    "≈0,67",
+    "1,5",
+    "0,7",
+    "3,5"
+   ],
+   "dap_an": "B",
+   "loi_giai": "n = h/h<sub>b</sub>k = 2,1/1,4 = 1,5.\n\nVì sao các phương án khác sai:\n- A: Đã đảo tỉ số, tính h<sub>b</sub>k/h thay vì h/h<sub>b</sub>k.\n- C: Đã lấy hiệu h − h<sub>b</sub>k = 0,7 rồi nhầm là chiết suất, không đúng công thức.\n- D: Đã lấy tổng h + h<sub>b</sub>k = 3,5 rồi nhầm là chiết suất, không đúng công thức."
+  },
+  {
+   "ma_cau": "K09020405001",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Một vật sáng cao h = 3 cm đặt cách thấu kính hội tụ d = 20 cm, cho ảnh thật cách thấu kính d′ = 60 cm. Áp dụng hệ thức h′/h = d′/d, chiều cao ảnh h′ bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020404-02-001-de.png)",
+   "lua_chon": [
+    "1 cm",
+    "3 cm",
+    "40 cm",
+    "9 cm"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Theo tam giác đồng dạng, h′/h = d′/d = 3, nên h′ = h × 3 = 9 cm.\n\nVì sao các phương án khác sai:\n- A: Đã đảo ngược tỉ số d′/d thành d/d′ khi tính chiều cao ảnh.\n- B: Đã quên nhân với tỉ số d′/d, lấy chiều cao ảnh bằng chiều cao vật.\n- C: Đã lấy hiệu (d′ − d) làm chiều cao ảnh, nhầm khoảng cách với chiều cao."
+  },
+  {
+   "ma_cau": "K09020405002",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Một vật sáng cao h = 4 cm đặt cách thấu kính hội tụ d = 25 cm, cho ảnh thật cách thấu kính d′ = 50 cm. Áp dụng hệ thức h′/h = d′/d, chiều cao ảnh h′ bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020404-02-002-de.png)",
+   "lua_chon": [
+    "2 cm",
+    "8 cm",
+    "4 cm",
+    "25 cm"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Theo tam giác đồng dạng, h′/h = d′/d = 2, nên h′ = h × 2 = 8 cm.\n\nVì sao các phương án khác sai:\n- A: Đã đảo ngược tỉ số d′/d thành d/d′ khi tính chiều cao ảnh.\n- C: Đã quên nhân với tỉ số d′/d, lấy chiều cao ảnh bằng chiều cao vật.\n- D: Đã lấy hiệu (d′ − d) làm chiều cao ảnh, nhầm khoảng cách với chiều cao."
+  },
+  {
+   "ma_cau": "K09020405003",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Một vật sáng cao h = 4 cm đặt cách thấu kính hội tụ d = 12 cm, cho ảnh thật cách thấu kính d′ = 48 cm. Áp dụng hệ thức h′/h = d′/d, chiều cao ảnh h′ bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020404-02-003-de.png)",
+   "lua_chon": [
+    "1 cm",
+    "4 cm",
+    "16 cm",
+    "36 cm"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Theo tam giác đồng dạng, h′/h = d′/d = 4, nên h′ = h × 4 = 16 cm.\n\nVì sao các phương án khác sai:\n- A: Đã đảo ngược tỉ số d′/d thành d/d′ khi tính chiều cao ảnh.\n- B: Đã quên nhân với tỉ số d′/d, lấy chiều cao ảnh bằng chiều cao vật.\n- D: Đã lấy hiệu (d′ − d) làm chiều cao ảnh, nhầm khoảng cách với chiều cao."
+  },
+  {
+   "ma_cau": "K09020405004",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Một vật sáng cao h = 5 cm đặt cách thấu kính hội tụ d = 15 cm, cho ảnh thật cách thấu kính d′ = 45 cm. Áp dụng hệ thức h′/h = d′/d, chiều cao ảnh h′ bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020404-02-004-de.png)",
+   "lua_chon": [
+    "15 cm",
+    "≈1,67 cm",
+    "5 cm",
+    "30 cm"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Theo tam giác đồng dạng, h′/h = d′/d = 3, nên h′ = h × 3 = 15 cm.\n\nVì sao các phương án khác sai:\n- B: Đã đảo ngược tỉ số d′/d thành d/d′ khi tính chiều cao ảnh.\n- C: Đã quên nhân với tỉ số d′/d, lấy chiều cao ảnh bằng chiều cao vật.\n- D: Đã lấy hiệu (d′ − d) làm chiều cao ảnh, nhầm khoảng cách với chiều cao."
+  },
+  {
+   "ma_cau": "K09020405005",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Đặt vật sáng trước thấu kính hội tụ sao cho khoảng cách giữa vật và ảnh thật trên màn là L = 40 cm, ảnh cao gấp k = 3 lần vật (tức d′ = 3d). Khoảng cách d từ vật đến thấu kính bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020405-01-001-de.png)",
+   "lua_chon": [
+    "20 cm",
+    "30 cm",
+    "40 cm",
+    "10 cm"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Vì d′ = 3d và L = d + d′ = (4)d nên d = L/(4) = 40/4 = 10 cm.\n\nVì sao các phương án khác sai:\n- A: Đã chia L cho 2, không dùng đúng tỉ lệ k giữa d′ và d.\n- B: Đó là khoảng cách ảnh d′, không phải khoảng cách vật d cần tìm.\n- C: Đã lấy cả khoảng cách vật–ảnh L làm khoảng cách vật d."
+  },
+  {
+   "ma_cau": "K09020405006",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Đặt vật sáng trước thấu kính hội tụ sao cho khoảng cách giữa vật và ảnh thật trên màn là L = 60 cm, ảnh cao gấp k = 2 lần vật (tức d′ = 2d). Khoảng cách d từ vật đến thấu kính bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020405-01-002-de.png)",
+   "lua_chon": [
+    "30 cm",
+    "40 cm",
+    "60 cm",
+    "20 cm"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Vì d′ = 2d và L = d + d′ = (3)d nên d = L/(3) = 60/3 = 20 cm.\n\nVì sao các phương án khác sai:\n- A: Đã chia L cho 2, không dùng đúng tỉ lệ k giữa d′ và d.\n- B: Đó là khoảng cách ảnh d′, không phải khoảng cách vật d cần tìm.\n- C: Đã lấy cả khoảng cách vật–ảnh L làm khoảng cách vật d."
+  },
+  {
+   "ma_cau": "K09020405007",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Đặt vật sáng trước thấu kính hội tụ sao cho khoảng cách giữa vật và ảnh thật trên màn là L = 50 cm, ảnh cao gấp k = 4 lần vật (tức d′ = 4d). Khoảng cách d từ vật đến thấu kính bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020405-01-003-de.png)",
+   "lua_chon": [
+    "25 cm",
+    "40 cm",
+    "50 cm",
+    "10 cm"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Vì d′ = 4d và L = d + d′ = (5)d nên d = L/(5) = 50/5 = 10 cm.\n\nVì sao các phương án khác sai:\n- A: Đã chia L cho 2, không dùng đúng tỉ lệ k giữa d′ và d.\n- B: Đó là khoảng cách ảnh d′, không phải khoảng cách vật d cần tìm.\n- C: Đã lấy cả khoảng cách vật–ảnh L làm khoảng cách vật d."
+  },
+  {
+   "ma_cau": "K09020405008",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Đặt vật sáng trước thấu kính hội tụ sao cho khoảng cách giữa vật và ảnh thật trên màn là L = 42 cm, ảnh cao gấp k = 5 lần vật (tức d′ = 5d). Khoảng cách d từ vật đến thấu kính bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020405-01-004-de.png)",
+   "lua_chon": [
+    "21 cm",
+    "35 cm",
+    "42 cm",
+    "7 cm"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Vì d′ = 5d và L = d + d′ = (6)d nên d = L/(6) = 42/6 = 7 cm.\n\nVì sao các phương án khác sai:\n- A: Đã chia L cho 2, không dùng đúng tỉ lệ k giữa d′ và d.\n- B: Đó là khoảng cách ảnh d′, không phải khoảng cách vật d cần tìm.\n- C: Đã lấy cả khoảng cách vật–ảnh L làm khoảng cách vật d."
+  },
+  {
+   "ma_cau": "K09020405009",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Đặt vật sáng trước thấu kính hội tụ sao cho khoảng cách giữa vật và ảnh thật trên màn là L = 63 cm, ảnh cao gấp k = 6 lần vật (tức d′ = 6d). Khoảng cách d từ vật đến thấu kính bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020405-01-006-de.png)",
+   "lua_chon": [
+    "9 cm",
+    "31,5 cm",
+    "54 cm",
+    "63 cm"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Vì d′ = 6d và L = d + d′ = 7d nên d = L/7 = 63/7 = 9 cm.\n\nVì sao các phương án khác sai:\n- B: Đã chia L cho 2, không dùng đúng tỉ lệ k giữa d′ và d.\n- C: Đó là khoảng cách ảnh d′, không phải khoảng cách vật d cần tìm.\n- D: Đã lấy cả khoảng cách vật–ảnh L làm khoảng cách vật d."
+  },
+  {
+   "ma_cau": "K09020405010",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Đặt vật sáng trước thấu kính hội tụ sao cho khoảng cách giữa vật và ảnh thật trên màn là L = 54 cm, ảnh cao gấp k = 5 lần vật (tức d′ = 5d). Khoảng cách d từ vật đến thấu kính bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020405-01-007-de.png)",
+   "lua_chon": [
+    "9 cm",
+    "45 cm",
+    "27 cm",
+    "54 cm"
+   ],
+   "dap_an": "A",
+   "loi_giai": "d + d′ = L và d′ = 5d → 6d = 54 → d = 9 cm.\n\nVì sao các phương án khác sai:\n- B: Nhầm lấy d′ = 5d = 45 cm làm đáp số d.\n- C: Chia sai L cho 2 thay vì cho (k+1) = 6.\n- D: Nhầm lấy cả L làm khoảng cách d."
+  },
+  {
+   "ma_cau": "K09020405011",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Vật cao 1 cm đặt cách kính lúp có tiêu cự 12 cm một khoảng 6 cm (trong khoảng tiêu cự). Ảnh ảo qua kính cách kính 12 cm. Chiều cao ảnh ảo là bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020503-01-001-de.png)",
+   "lua_chon": [
+    "0,5 cm",
+    "2 cm",
+    "1 cm",
+    "7 cm"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Tam giác đồng dạng qua quang tâm cho h'/h = d'/d, nên h' = h×d'/d = 1×12/6 = 2 cm.\n\nVì sao các phương án khác sai:\n- A: Đã lấy tỉ số d/d' (đảo ngược) thay vì d'/d.\n- C: Quên nhân theo tỉ số d'/d, giữ nguyên chiều cao vật.\n- D: Đã lấy hiệu (d' − d) rồi cộng vào chiều cao vật, không đúng quan hệ tỉ lệ."
+  },
+  {
+   "ma_cau": "K09020405012",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Vật cao 2 cm đặt cách kính lúp có tiêu cự 12 cm một khoảng 8 cm (trong khoảng tiêu cự). Ảnh ảo qua kính cách kính 24 cm. Chiều cao ảnh ảo là bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020503-01-002-de.png)",
+   "lua_chon": [
+    "2 cm",
+    "4 cm",
+    "18 cm",
+    "6 cm"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Tam giác đồng dạng qua quang tâm cho h'/h = d'/d, nên h' = h×d'/d = 2×24/8 = 6 cm.\n\nVì sao các phương án khác sai:\n- A: Quên nhân theo tỉ số d'/d, giữ nguyên chiều cao vật.\n- B: Đã nhân chiều cao vật với hiệu (d'−d)/d thay vì d'/d.\n- C: Đã lấy hiệu (d' − d) rồi cộng vào chiều cao vật."
+  },
+  {
+   "ma_cau": "K09020405013",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Vật cao 0,6 cm đặt cách kính lúp có tiêu cự 12 cm một khoảng 9 cm (trong khoảng tiêu cự). Ảnh ảo qua kính cách kính 36 cm. Chiều cao ảnh ảo là bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020503-01-003-de.png)",
+   "lua_chon": [
+    "2,4 cm",
+    "0,6 cm",
+    "0,15 cm",
+    "5,4 cm"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Tam giác đồng dạng qua quang tâm cho h'/h = d'/d, nên h' = h×d'/d = 0,6×36/9 = 2,4 cm.\n\nVì sao các phương án khác sai:\n- B: Quên nhân theo tỉ số d'/d, giữ nguyên chiều cao vật.\n- C: Đã lấy tỉ số d/d' (đảo ngược) thay vì d'/d.\n- D: Đã nhân chiều cao vật với khoảng cách vật thay vì với tỉ số d'/d."
+  },
+  {
+   "ma_cau": "K09020405014",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Vật cao 1 cm đặt cách kính lúp có tiêu cự 10 cm một khoảng 7,5 cm, cho ảnh ảo cao 4 cm. Khoảng cách từ ảnh đến kính là bao nhiêu?",
+   "lua_chon": [
+    "7,5 cm",
+    "10 cm",
+    "30 cm",
+    "4 cm"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Tam giác đồng dạng cho h'/h = d'/d, nên d' = d×h'/h = 7,5×4/1 = 30 cm.\n\nVì sao các phương án khác sai:\n- A: 7,5 cm là khoảng cách từ vật đến kính, không phải từ ảnh.\n- B: 10 cm là tiêu cự của kính, không phải khoảng cách ảnh.\n- D: 4 cm là chiều cao ảnh, không phải khoảng cách."
+  },
+  {
+   "ma_cau": "K09020405015",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Vật đặt trong khoảng tiêu cự của kính lúp có tiêu cự 9 cm, cao 1 cm, cho ảnh ảo cao 3 cm và cách kính 18 cm. Vật cách kính bao nhiêu?",
+   "lua_chon": [
+    "54 cm",
+    "18 cm",
+    "9 cm",
+    "6 cm"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Tam giác đồng dạng cho h'/h = d'/d, nên d = d'×h/h' = 18×1/3 = 6 cm (nhỏ hơn f = 9 cm, đúng là vật trong khoảng tiêu cự).\n\nVì sao các phương án khác sai:\n- A: Đã nhân d' với 3 thay vì chia.\n- B: 18 cm là khoảng cách ảnh, không phải khoảng cách vật.\n- C: 9 cm là tiêu cự; vật phải ở gần kính hơn tiêu cự."
+  },
+  {
+   "ma_cau": "K09020405016",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Vật cao 2 cm đặt cách kính lúp có tiêu cự 8 cm một khoảng 4 cm (trong khoảng tiêu cự). Ảnh ảo qua kính cách kính 8 cm. Chiều cao ảnh ảo là bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020503-01-006-de.png)",
+   "lua_chon": [
+    "4 cm",
+    "1 cm",
+    "2 cm",
+    "6 cm"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Tam giác đồng dạng qua quang tâm cho h'/h = d'/d, nên h' = h×d'/d = 2×8/4 = 4 cm.\n\nVì sao các phương án khác sai:\n- B: Đã lấy tỉ số d/d' (đảo ngược) thay vì d'/d.\n- C: Quên nhân theo tỉ số d'/d, giữ nguyên chiều cao vật.\n- D: Đã lấy hiệu (d' − d) rồi cộng vào chiều cao vật."
+  },
+  {
+   "ma_cau": "K09020405017",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Vật cao 1 cm đặt cách kính lúp có tiêu cự 15 cm một khoảng 10 cm (trong khoảng tiêu cự). Ảnh ảo qua kính cách kính 30 cm. Chiều cao ảnh ảo là bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020503-01-007-de.png)",
+   "lua_chon": [
+    "3 cm",
+    "≈0,33 cm",
+    "1 cm",
+    "21 cm"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Tam giác đồng dạng qua quang tâm cho h'/h = d'/d, nên h' = h×d'/d = 1×30/10 = 3 cm.\n\nVì sao các phương án khác sai:\n- B: Đã lấy tỉ số d/d' (đảo ngược) thay vì d'/d.\n- C: Quên nhân theo tỉ số d'/d, giữ nguyên chiều cao vật.\n- D: Đã lấy hiệu (d' − d) rồi cộng vào chiều cao vật, không đúng quan hệ tỉ lệ."
+  },
+  {
+   "ma_cau": "K09020405018",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Vật cao 2 cm đặt cách kính lúp có tiêu cự 20 cm một khoảng 15 cm (trong khoảng tiêu cự). Ảnh ảo qua kính cách kính 60 cm. Chiều cao ảnh ảo là bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020503-01-008-de.png)",
+   "lua_chon": [
+    "2 cm",
+    "8 cm",
+    "6 cm",
+    "47 cm"
+   ],
+   "dap_an": "B",
+   "loi_giai": "h' = h×d'/d = 2×60/15 = 8 cm.\n\nVì sao các phương án khác sai:\n- A: Quên nhân theo tỉ số d'/d, giữ nguyên chiều cao vật.\n- C: Đã nhân chiều cao vật với hiệu (d'−d)/d thay vì d'/d.\n- D: Đã lấy hiệu (d' − d) rồi cộng vào chiều cao vật."
+  },
+  {
+   "ma_cau": "K09020405019",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Vật cao 1 cm đặt cách kính lúp có tiêu cự 10 cm một khoảng 8 cm, cho ảnh ảo cao 5 cm. Khoảng cách từ ảnh đến kính là bao nhiêu?",
+   "lua_chon": [
+    "8 cm",
+    "10 cm",
+    "40 cm",
+    "5 cm"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Tam giác đồng dạng cho h'/h = d'/d, nên d' = d×h'/h = 8×5/1 = 40 cm.\n\nVì sao các phương án khác sai:\n- A: 8 cm là khoảng cách từ vật đến kính, không phải từ ảnh.\n- B: 10 cm là tiêu cự của kính, không phải khoảng cách ảnh.\n- D: 5 cm là chiều cao ảnh, không phải khoảng cách."
+  },
+  {
+   "ma_cau": "K09020405020",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Kính lúp có tiêu cự f = 12 cm. Đặt vật trong khoảng tiêu cự, ảnh ảo qua kính cách kính d′ = 12 cm và cao gấp k = 2 lần vật. Vật cách kính bao nhiêu?",
+   "lua_chon": [
+    "6 cm",
+    "12 cm",
+    "24 cm",
+    "18 cm"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Theo tam giác đồng dạng, ảnh cao gấp k lần vật thì d′ = k·d, nên d = d′/k = 12/2 = 6 cm. Kiểm tra: d = 6 cm nhỏ hơn f = 12 cm, đúng là vật nằm trong khoảng tiêu cự.\n\nVì sao các phương án khác sai:\n- B: Đây là khoảng cách từ ảnh tới kính (d′), không phải khoảng cách vật.\n- C: Đã nhân d′ với k thay vì chia: d = d′/k.\n- D: Đã cộng khoảng cách vật và khoảng cách ảnh; cần dùng d = d′/k."
+  },
+  {
+   "ma_cau": "K09020405021",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Kính lúp có tiêu cự f = 15 cm. Đặt vật trong khoảng tiêu cự, ảnh ảo qua kính cách kính d′ = 30 cm và cao gấp k = 3 lần vật. Vật cách kính bao nhiêu?",
+   "lua_chon": [
+    "30 cm",
+    "90 cm",
+    "10 cm",
+    "40 cm"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Theo tam giác đồng dạng, ảnh cao gấp k lần vật thì d′ = k·d, nên d = d′/k = 30/3 = 10 cm. Kiểm tra: d = 10 cm nhỏ hơn f = 15 cm, đúng là vật nằm trong khoảng tiêu cự.\n\nVì sao các phương án khác sai:\n- A: Đây là khoảng cách từ ảnh tới kính (d′), không phải khoảng cách vật.\n- B: Đã nhân d′ với k thay vì chia: d = d′/k.\n- D: Đã cộng khoảng cách vật và khoảng cách ảnh; cần dùng d = d′/k."
+  },
+  {
+   "ma_cau": "K09020405022",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Kính lúp có tiêu cự f = 16 cm. Đặt vật trong khoảng tiêu cự, ảnh ảo qua kính cách kính d′ = 48 cm và cao gấp k = 4 lần vật. Vật cách kính bao nhiêu?",
+   "lua_chon": [
+    "48 cm",
+    "12 cm",
+    "192 cm",
+    "60 cm"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Theo tam giác đồng dạng, ảnh cao gấp k lần vật thì d′ = k·d, nên d = d′/k = 48/4 = 12 cm. Kiểm tra: d = 12 cm nhỏ hơn f = 16 cm, đúng là vật nằm trong khoảng tiêu cự.\n\nVì sao các phương án khác sai:\n- A: Đây là khoảng cách từ ảnh tới kính (d′), không phải khoảng cách vật.\n- C: Đã nhân d′ với k thay vì chia: d = d′/k.\n- D: Đã cộng khoảng cách vật và khoảng cách ảnh; cần dùng d = d′/k."
+  },
+  {
+   "ma_cau": "K09020405023",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Kính lúp có tiêu cự f = 10 cm. Đặt vật trong khoảng tiêu cự, ảnh ảo qua kính cách kính d′ = 10 cm và cao gấp k = 2 lần vật. Vật cách kính bao nhiêu?",
+   "lua_chon": [
+    "10 cm",
+    "20 cm",
+    "15 cm",
+    "5 cm"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Theo tam giác đồng dạng, ảnh cao gấp k lần vật thì d′ = k·d, nên d = d′/k = 10/2 = 5 cm. Kiểm tra: d = 5 cm nhỏ hơn f = 10 cm, đúng là vật nằm trong khoảng tiêu cự.\n\nVì sao các phương án khác sai:\n- A: Đây là khoảng cách từ ảnh tới kính (d′), không phải khoảng cách vật.\n- B: Đã nhân d′ với k thay vì chia: d = d′/k.\n- C: Đã cộng khoảng cách vật và khoảng cách ảnh; cần dùng d = d′/k."
+  },
+  {
+   "ma_cau": "K09020405024",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Kính lúp có tiêu cự f = 18 cm. Đặt vật trong khoảng tiêu cự, ảnh ảo qua kính cách kính d′ = 36 cm và cao gấp k = 3 lần vật. Vật cách kính bao nhiêu?",
+   "lua_chon": [
+    "12 cm",
+    "36 cm",
+    "108 cm",
+    "48 cm"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Theo tam giác đồng dạng, ảnh cao gấp k lần vật thì d′ = k·d, nên d = d′/k = 36/3 = 12 cm. Kiểm tra: d = 12 cm nhỏ hơn f = 18 cm, đúng là vật nằm trong khoảng tiêu cự.\n\nVì sao các phương án khác sai:\n- B: Đây là khoảng cách từ ảnh tới kính (d′), không phải khoảng cách vật.\n- C: Đã nhân d′ với k thay vì chia: d = d′/k.\n- D: Đã cộng khoảng cách vật và khoảng cách ảnh; cần dùng d = d′/k."
+  },
+  {
+   "ma_cau": "K09020405025",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Kính lúp có tiêu cự f = 12 cm. Đặt vật trong khoảng tiêu cự, ảnh ảo qua kính cách kính d′ = 24 cm và cao gấp k = 3 lần vật. Vật cách kính bao nhiêu?",
+   "lua_chon": [
+    "24 cm",
+    "8 cm",
+    "72 cm",
+    "32 cm"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Theo tam giác đồng dạng, ảnh cao gấp k lần vật thì d′ = k·d, nên d = d′/k = 24/3 = 8 cm. Kiểm tra: d = 8 cm nhỏ hơn f = 12 cm, đúng là vật nằm trong khoảng tiêu cự.\n\nVì sao các phương án khác sai:\n- A: Đây là khoảng cách từ ảnh tới kính (d′), không phải khoảng cách vật.\n- C: Đã nhân d′ với k thay vì chia: d = d′/k.\n- D: Đã cộng khoảng cách vật và khoảng cách ảnh; cần dùng d = d′/k."
+  },
+  {
+   "ma_cau": "K09020405026",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Kính lúp có tiêu cự f = 20 cm. Đặt vật trong khoảng tiêu cự, ảnh ảo qua kính cách kính d′ = 60 cm và cao gấp k = 4 lần vật. Vật cách kính bao nhiêu?",
+   "lua_chon": [
+    "60 cm",
+    "15 cm",
+    "240 cm",
+    "80 cm"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Ảnh cao gấp k lần vật nên d′ = k·d, suy ra d = d′ : k = 60 : 4 = 15 cm (nhỏ hơn f = 20 cm, đúng là trong khoảng tiêu cự).\n\nVì sao các phương án khác sai:\n- A: Đây là khoảng cách ảnh d′.\n- C: Đã nhân d′ với k thay vì chia.\n- D: Đã cộng d′ với f."
+  },
+  {
+   "ma_cau": "K09020405027",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Kính lúp có tiêu cự f = 12 cm. Đặt vật trong khoảng tiêu cự, ảnh ảo qua kính cách kính d′ = 60 cm và cao gấp k = 6 lần vật. Vật cách kính bao nhiêu?",
+   "lua_chon": [
+    "60 cm",
+    "360 cm",
+    "10 cm",
+    "72 cm"
+   ],
+   "dap_an": "C",
+   "loi_giai": "d = d′ : k = 60 : 6 = 10 cm (nhỏ hơn f = 12 cm, đúng là trong khoảng tiêu cự).\n\nVì sao các phương án khác sai:\n- A: Đây là khoảng cách ảnh d′.\n- B: Đã nhân d′ với k thay vì chia.\n- D: Đã cộng d′ với f."
+  },
+  {
+   "ma_cau": "K09020405028",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Kính lúp có tiêu cự f = 20 cm. Đặt vật trong khoảng tiêu cự, ảnh ảo qua kính cách kính d′ = 80 cm và cao gấp k = 5 lần vật. Vật cách kính bao nhiêu?",
+   "lua_chon": [
+    "80 cm",
+    "400 cm",
+    "100 cm",
+    "16 cm"
+   ],
+   "dap_an": "D",
+   "loi_giai": "d = d′ : k = 80 : 5 = 16 cm (nhỏ hơn f = 20 cm, đúng là trong khoảng tiêu cự).\n\nVì sao các phương án khác sai:\n- A: Đây là khoảng cách ảnh d′.\n- B: Đã nhân d′ với k thay vì chia.\n- C: Đã cộng d′ với f."
+  },
+  {
+   "ma_cau": "K09020405029",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Kính lúp có số bội giác G = 5. Vật cao 1 cm đặt cách kính 3 cm (trong khoảng tiêu cự). Ảnh ảo qua kính cách kính 7,5 cm. Tính chiều cao ảnh ảo.",
+   "lua_chon": [
+    "2,5 cm",
+    "0,4 cm",
+    "1 cm",
+    "5 cm"
+   ],
+   "dap_an": "A",
+   "loi_giai": "f=25:G=25:5=5 cm. Tỉ số phóng đại k=d′:d=7,5:3=2,5. Chiều cao ảnh h′=h×k=1×2,5=2,5 cm.\n\nVì sao các phương án khác sai:\n- B: Đã lấy nghịch đảo tỉ số (d:d′=3:7,5=0,4) thay vì d′:d=2,5.\n- C: 1 cm là chiều cao VẬT, chưa nhân với tỉ số phóng đại d′:d=2,5 để ra chiều cao ẢNH.\n- D: Đã nhân chiều cao vật với tiêu cự (1×5=5), trong khi phải nhân với tỉ số phóng đại d′:d=2,5."
+  },
+  {
+   "ma_cau": "K09020405030",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Kính lúp có số bội giác G = 2,5. Vật cao 2 cm đặt cách kính 5 cm (trong khoảng tiêu cự). Ảnh ảo qua kính cách kính 10 cm. Tính chiều cao ảnh ảo.",
+   "lua_chon": [
+    "0,8 cm",
+    "10 cm",
+    "4 cm",
+    "5 cm"
+   ],
+   "dap_an": "C",
+   "loi_giai": "f = 25 : G = 25 : 2,5 = 10 cm (vật 5 cm nằm trong khoảng tiêu cự). Tỉ số k = d′ : d = 10 : 5 = 2. Chiều cao ảnh h′ = h × k = 2 × 2 = 4 cm.\n\nVì sao các phương án khác sai:\n- A: Đã lấy h : k thay vì h × k; ảnh ảo qua kính lúp lớn hơn vật.\n- B: Đã lấy khoảng cách ảnh (10 cm) làm chiều cao ảnh.\n- D: Đã lấy h × G = 2 × 2,5; k phải tính bằng d′ : d."
+  },
+  {
+   "ma_cau": "K09020405031",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Kính lúp có số bội giác G = 4. Vật cao 0,5 cm đặt cách kính 5 cm (trong khoảng tiêu cự). Ảnh ảo qua kính cách kính 25 cm. Tính chiều cao ảnh ảo.",
+   "lua_chon": [
+    "0,1 cm",
+    "2,5 cm",
+    "0,5 cm",
+    "2 cm"
+   ],
+   "dap_an": "B",
+   "loi_giai": "f = 25 : G = 25 : 4 = 6,25 cm (vật 5 cm nằm trong khoảng tiêu cự). Tỉ số k = d′ : d = 25 : 5 = 5. Chiều cao ảnh h′ = h × k = 0,5 × 5 = 2,5 cm.\n\nVì sao các phương án khác sai:\n- A: Đã lấy h : k thay vì h × k.\n- C: Ảnh ảo qua kính lúp lớn hơn vật, không bằng vật.\n- D: Đã lấy h × G = 0,5 × 4; k phải tính bằng d′ : d."
+  },
+  {
+   "ma_cau": "K09020405032",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Kính lúp có số bội giác G = 10. Vật cao 1,5 cm đặt cách kính 2 cm (trong khoảng tiêu cự). Ảnh ảo qua kính cách kính 10 cm. Tính chiều cao ảnh ảo.",
+   "lua_chon": [
+    "0,3 cm",
+    "1,5 cm",
+    "3,75 cm",
+    "7,5 cm"
+   ],
+   "dap_an": "D",
+   "loi_giai": "f = 25 : G = 25 : 10 = 2,5 cm (vật 2 cm nằm trong khoảng tiêu cự). Tỉ số k = d′ : d = 10 : 2 = 5. Chiều cao ảnh h′ = h × k = 1,5 × 5 = 7,5 cm.\n\nVì sao các phương án khác sai:\n- A: Đã lấy nghịch đảo tỉ số (d:d′=1:5=0,2) rồi nhân với chiều cao vật (1,5×0,2=0,3), thay vì lấy d′:d=5.\n- B: 1,5 cm là chiều cao VẬT, chưa nhân với tỉ số phóng đại d′:d=5 để ra chiều cao ẢNH.\n- C: Đã nhân chiều cao vật với tiêu cự (1,5×2,5=3,75), trong khi phải nhân với tỉ số phóng đại d′:d=5."
+  },
+  {
+   "ma_cau": "K09020405033",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Kính lúp có số bội giác G = 2,5. Vật cao 3 cm đặt cách kính 7,5 cm (trong khoảng tiêu cự). Ảnh ảo qua kính cách kính 30 cm. Tính chiều cao ảnh ảo.",
+   "lua_chon": [
+    "0,75 cm",
+    "12 cm",
+    "3 cm",
+    "7,5 cm"
+   ],
+   "dap_an": "B",
+   "loi_giai": "f = 25 : G = 25 : 2,5 = 10 cm (vật 7,5 cm nằm trong khoảng tiêu cự). Tỉ số k = d′ : d = 30 : 7,5 = 4. Chiều cao ảnh h′ = h × k = 3 × 4 = 12 cm.\n\nVì sao các phương án khác sai:\n- A: Đã lấy h : k thay vì h × k.\n- C: Ảnh ảo qua kính lúp lớn hơn vật, không bằng vật.\n- D: Đã lấy h × G = 3 × 2,5; k phải tính bằng d′ : d."
+  },
+  {
+   "ma_cau": "K09020405034",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Kính lúp có số bội giác G = 5. Vật cao 1 cm đặt cách kính 4 cm (trong khoảng tiêu cự). Ảnh ảo qua kính cách kính 20 cm. Tính chiều cao ảnh ảo.",
+   "lua_chon": [
+    "0,2 cm",
+    "1 cm",
+    "20 cm",
+    "5 cm"
+   ],
+   "dap_an": "D",
+   "loi_giai": "f = 25 : G = 25 : 5 = 5 cm (vật 4 cm nằm trong khoảng tiêu cự). Tỉ số k = d′ : d = 20 : 4 = 5. Chiều cao ảnh h′ = h × k = 1 × 5 = 5 cm.\n\nVì sao các phương án khác sai:\n- A: Đã lấy h : k thay vì h × k.\n- B: Ảnh ảo qua kính lúp lớn hơn vật.\n- C: Đã lấy khoảng cách ảnh làm chiều cao ảnh."
+  },
+  {
+   "ma_cau": "K09020405035",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Kính lúp có số bội giác G = 4. Vật cao 2 cm đặt cách kính 5 cm (trong khoảng tiêu cự). Ảnh ảo qua kính cách kính 25 cm. Tính chiều cao ảnh ảo.",
+   "lua_chon": [
+    "10 cm",
+    "0,4 cm",
+    "2 cm",
+    "12,5 cm"
+   ],
+   "dap_an": "A",
+   "loi_giai": "f=25:G=25:4=6,25 cm (vật 5 cm nằm trong khoảng tiêu cự). Tỉ số k=d′:d=25:5=5. Chiều cao ảnh h′=h×k=2×5=10 cm.\n\nVì sao các phương án khác sai:\n- B: Đã lấy nghịch đảo tỉ số (d:d′=5:25=0,4) thay vì d′:d=5.\n- C: 2 cm là chiều cao VẬT, chưa nhân với tỉ số phóng đại d′:d=5 để ra chiều cao ẢNH.\n- D: Đã nhân chiều cao vật với tiêu cự (2×6,25=12,5), trong khi phải nhân với tỉ số phóng đại d′:d=5."
+  },
+  {
+   "ma_cau": "K09020405036",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Kính lúp có số bội giác G = 20. Vật cao 0,5 cm đặt cách kính 1 cm (trong khoảng tiêu cự). Ảnh ảo qua kính cách kính 5 cm. Tính chiều cao ảnh ảo.",
+   "lua_chon": [
+    "0,1 cm",
+    "2,5 cm",
+    "0,5 cm",
+    "0,625 cm"
+   ],
+   "dap_an": "B",
+   "loi_giai": "f=25:G=25:20=1,25 cm (vật 1 cm nằm trong khoảng tiêu cự). Tỉ số k=d′:d=5:1=5. Chiều cao ảnh h′=h×k=0,5×5=2,5 cm.\n\nVì sao các phương án khác sai:\n- A: Đã lấy nghịch đảo tỉ số (d:d′=1:5=0,2) rồi nhân với chiều cao vật (0,5×0,2=0,1), thay vì lấy d′:d=5.\n- C: 0,5 cm là chiều cao VẬT, chưa nhân với tỉ số phóng đại d′:d=5 để ra chiều cao ẢNH.\n- D: Đã nhân chiều cao vật với tiêu cự (0,5×1,25=0,625), trong khi phải nhân với tỉ số phóng đại d′:d=5."
+  },
+  {
+   "ma_cau": "K09020405037",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Vật cao 1 cm đặt cách hai kính lúp A và B cùng một khoảng 4 cm (trong khoảng tiêu cự mỗi kính). Ảnh ảo qua kính A cách kính 12 cm; ảnh ảo qua kính B cách kính 20 cm. Kính nào cho ảnh cao hơn?",
+   "lua_chon": [
+    "Kính A",
+    "Không so sánh được",
+    "Kính B",
+    "Hai kính cho ảnh cao bằng nhau"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Kính A: k=12:4=3, h′=1×3=3 cm. Kính B: k=20:4=5, h′=1×5=5 cm. Vì 5 cm>3 cm nên kính B cho ảnh cao hơn.\n\nVì sao các phương án khác sai:\n- A: Đã so sánh ngược: kính B mới cho ảnh cao hơn (5 cm>3 cm).\n- B: Có đủ dữ kiện để tính chiều cao ảnh của mỗi kính rồi so sánh, không phải không so sánh được.\n- D: 3 cm ≠ 5 cm, hai ảnh cao khác nhau, không bằng nhau."
+  },
+  {
+   "ma_cau": "K09020405038",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Vật cao 2 cm đặt cách hai kính lúp A và B cùng một khoảng 6 cm (trong khoảng tiêu cự mỗi kính). Ảnh ảo qua kính A cách kính 18 cm; ảnh ảo qua kính B cách kính 12 cm. Kính nào cho ảnh cao hơn?",
+   "lua_chon": [
+    "Kính B",
+    "Không so sánh được",
+    "Kính A",
+    "Hai kính cho ảnh cao bằng nhau"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Kính A: k=18:6=3, h′=2×3=6 cm. Kính B: k=12:6=2, h′=2×2=4 cm. Vì 6 cm>4 cm nên kính A cho ảnh cao hơn.\n\nVì sao các phương án khác sai:\n- A: Đã so sánh ngược: kính A mới cho ảnh cao hơn (6 cm>4 cm).\n- B: Có đủ dữ kiện để tính chiều cao ảnh của mỗi kính rồi so sánh, không phải không so sánh được.\n- D: 6 cm ≠ 4 cm, hai ảnh cao khác nhau, không bằng nhau."
+  },
+  {
+   "ma_cau": "K09020405039",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Vật cao 1,5 cm đặt cách hai kính lúp A và B cùng một khoảng 5 cm (trong khoảng tiêu cự mỗi kính). Ảnh ảo qua kính A cách kính 25 cm; ảnh ảo qua kính B cách kính 15 cm. Kính nào cho ảnh cao hơn?",
+   "lua_chon": [
+    "Kính B",
+    "Hai kính cho ảnh cao bằng nhau",
+    "Không so sánh được",
+    "Kính A"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Kính A: k=25:5=5, h′=1,5×5=7,5 cm. Kính B: k=15:5=3, h′=1,5×3=4,5 cm. Vì 7,5 cm>4,5 cm nên kính A cho ảnh cao hơn.\n\nVì sao các phương án khác sai:\n- A: Đã so sánh ngược: kính A mới cho ảnh cao hơn (7,5 cm>4,5 cm).\n- B: 7,5 cm ≠ 4,5 cm, hai ảnh cao khác nhau, không bằng nhau.\n- C: Có đủ dữ kiện để tính chiều cao ảnh của mỗi kính rồi so sánh, không phải không so sánh được."
+  },
+  {
+   "ma_cau": "K09020405040",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Vật cao 0,8 cm đặt cách hai kính lúp A và B cùng một khoảng 4 cm (trong khoảng tiêu cự mỗi kính). Ảnh ảo qua kính A cách kính 8 cm; ảnh ảo qua kính B cách kính 20 cm. Kính nào cho ảnh cao hơn?",
+   "lua_chon": [
+    "Kính B",
+    "Kính A",
+    "Hai kính cho ảnh cao bằng nhau",
+    "Không so sánh được"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Kính A: k=8:4=2, h′=0,8×2=1,6 cm. Kính B: k=20:4=5, h′=0,8×5=4 cm. Vì 4 cm>1,6 cm nên kính B cho ảnh cao hơn.\n\nVì sao các phương án khác sai:\n- B: Đã so sánh ngược: kính B mới cho ảnh cao hơn (4 cm>1,6 cm).\n- C: 1,6 cm ≠ 4 cm, hai ảnh cao khác nhau, không bằng nhau.\n- D: Có đủ dữ kiện để tính chiều cao ảnh của mỗi kính rồi so sánh, không phải không so sánh được."
+  },
+  {
+   "ma_cau": "K09020405041",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Vật cao 1 cm đặt cách hai kính lúp A và B cùng một khoảng 2 cm (trong khoảng tiêu cự mỗi kính). Ảnh ảo qua kính A cách kính 6 cm; ảnh ảo qua kính B cũng cách kính 6 cm. Kính nào cho ảnh cao hơn?",
+   "lua_chon": [
+    "Kính A",
+    "Hai kính cho ảnh cao bằng nhau",
+    "Kính B",
+    "Không so sánh được"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Kính A: k=6:2=3, h′=1×3=3 cm. Kính B: k=6:2=3, h′=1×3=3 cm. Hai giá trị bằng nhau nên hai kính cho ảnh cao bằng nhau.\n\nVì sao các phương án khác sai:\n- A: h′ của kính A và kính B đều bằng 3 cm, bằng nhau, không phải kính A cao hơn.\n- C: h′ của kính A và kính B đều bằng 3 cm, bằng nhau, không phải kính B cao hơn.\n- D: Có đủ dữ kiện để tính chiều cao ảnh của mỗi kính; kết quả là bằng nhau, không phải không so sánh được."
+  },
+  {
+   "ma_cau": "K09020405042",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Vật cao 1,2 cm đặt cách hai kính lúp A và B cùng một khoảng 3 cm (trong khoảng tiêu cự mỗi kính). Ảnh ảo qua kính A cách kính 9 cm; ảnh ảo qua kính B cách kính 15 cm. Kính nào cho ảnh cao hơn?",
+   "lua_chon": [
+    "Kính A",
+    "Hai kính cho ảnh cao bằng nhau",
+    "Kính B",
+    "Không so sánh được"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Kính A: k=9:3=3, h′=1,2×3=3,6 cm. Kính B: k=15:3=5, h′=1,2×5=6 cm. Vì 6 cm>3,6 cm nên kính B cho ảnh cao hơn.\n\nVì sao các phương án khác sai:\n- A: Đã so sánh ngược: kính B mới cho ảnh cao hơn (6 cm>3,6 cm).\n- B: 3,6 cm ≠ 6 cm, hai ảnh cao khác nhau, không bằng nhau.\n- D: Có đủ dữ kiện để tính chiều cao ảnh của mỗi kính rồi so sánh, không phải không so sánh được."
+  },
+  {
+   "ma_cau": "K09020405043",
+   "nhom_id": "KNB00464",
+   "loai": "trac_nghiem",
+   "de": "Vật cao 2 cm đặt cách hai kính lúp A và B cùng một khoảng 4 cm (trong khoảng tiêu cự mỗi kính). Ảnh ảo qua kính A cách kính 12 cm; ảnh ảo qua kính B cũng cách kính 12 cm. Kính nào cho ảnh cao hơn?",
+   "lua_chon": [
+    "Kính B",
+    "Không so sánh được",
+    "Kính A",
+    "Bằng nhau"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Kính A: k=12:4=3, h′=2×3=6 cm. Kính B: k=12:4=3, h′=2×3=6 cm. Hai giá trị bằng nhau nên hai kính cho ảnh cao bằng nhau.\n\nVì sao các phương án khác sai:\n- A: h′ của kính A và kính B đều bằng 6 cm, bằng nhau, không phải kính B cao hơn.\n- B: Có đủ dữ kiện để tính chiều cao ảnh của mỗi kính; kết quả là bằng nhau, không phải không so sánh được.\n- C: h′ của kính A và kính B đều bằng 6 cm, bằng nhau, không phải kính A cao hơn."
+  },
+  {
+   "ma_cau": "K09020406001",
+   "nhom_id": "KNB00465",
+   "loai": "trac_nghiem",
+   "de": "Một vật đặt trước thấu kính hội tụ ở vị trí f < d < 2f, cho ảnh thật lớn hơn vật. Nếu dịch vật ra xa thấu kính để d tăng vượt qua 2f, ảnh mới so với ảnh cũ thay đổi thế nào?",
+   "lua_chon": [
+    "Vẫn là ảnh thật nhưng lớn hơn và xa thấu kính hơn",
+    "Đổi thành ảnh ảo, cùng chiều, lớn hơn vật",
+    "Ảnh không đổi vì thấu kính không đổi tiêu cự",
+    "Vẫn là ảnh thật nhưng nhỏ hơn và gần thấu kính hơn"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Khi d tăng từ khoảng (f, 2f) vượt qua 2f, ảnh thật chuyển từ lớn hơn vật sang nhỏ hơn vật và cách thấu kính gần lại.\n\nVì sao các phương án khác sai:\n- A: Khi d tăng qua 2f thì ảnh thật nhỏ đi và gần lại, không lớn thêm.\n- B: Ảnh ảo chỉ xuất hiện khi d giảm vào trong tiêu cự, không phải khi d tăng.\n- C: Vị trí vật thay đổi vẫn làm ảnh thay đổi dù tiêu cự không đổi."
+  },
+  {
+   "ma_cau": "K09020406002",
+   "nhom_id": "KNB00465",
+   "loai": "trac_nghiem",
+   "de": "Một vật đặt trước thấu kính hội tụ ở vị trí d > 2f, cho ảnh thật nhỏ hơn vật. Nếu dịch vật lại gần thấu kính để d giảm vào khoảng f < d < 2f, ảnh mới so với ảnh cũ thay đổi thế nào?",
+   "lua_chon": [
+    "Vẫn là ảnh thật nhưng lớn hơn và xa thấu kính hơn",
+    "Vẫn là ảnh thật nhưng nhỏ hơn và gần thấu kính hơn",
+    "Đổi thành ảnh ảo, cùng chiều, lớn hơn vật",
+    "Ảnh không đổi vì tiêu cự thấu kính không đổi"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Khi d giảm từ ngoài 2f vào khoảng (f, 2f), ảnh thật chuyển từ nhỏ hơn vật sang lớn hơn vật và cách thấu kính xa hơn.\n\nVì sao các phương án khác sai:\n- B: Khi d giảm vào khoảng (f, 2f) thì ảnh thật lớn thêm và xa ra, không nhỏ đi.\n- C: Vật vẫn ở ngoài tiêu cự (d > f) nên ảnh vẫn là ảnh thật, chưa thành ảo.\n- D: Vị trí vật thay đổi vẫn làm ảnh thay đổi dù tiêu cự không đổi."
+  },
+  {
+   "ma_cau": "K09020406003",
+   "nhom_id": "KNB00465",
+   "loai": "trac_nghiem",
+   "de": "Một vật đặt trước thấu kính hội tụ ở vị trí d > f, cho ảnh thật. Nếu dịch vật lại gần thấu kính tới khi d < f, ảnh thay đổi thế nào so với trước?",
+   "lua_chon": [
+    "Vẫn là ảnh thật nhưng đổi chiều cao khác",
+    "Đổi thành ảnh ảo, cùng chiều, nhỏ hơn vật",
+    "Chuyển từ ảnh thật sang ảnh ảo, cùng chiều, lớn hơn vật",
+    "Ảnh biến mất vì vật quá gần thấu kính"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Khi d vượt qua tiêu điểm (d < f), ảnh chuyển từ ảnh thật, ngược chiều sang ảnh ảo, cùng chiều, lớn hơn vật.\n\nVì sao các phương án khác sai:\n- A: Khi vật vượt qua tiêu điểm vào trong tiêu cự, ảnh đổi hẳn từ thật sang ảo.\n- B: Ảnh ảo của thấu kính hội tụ luôn lớn hơn vật, không nhỏ hơn.\n- D: Khi d < f, thấu kính hội tụ vẫn cho ảnh, đó là ảnh ảo."
+  },
+  {
+   "ma_cau": "K09020406004",
+   "nhom_id": "KNB00465",
+   "loai": "trac_nghiem",
+   "de": "Một vật đặt trước thấu kính hội tụ ở vị trí d < f, cho ảnh ảo lớn hơn vật. Nếu dịch vật ra xa tới khi d > f (vẫn nhỏ hơn 2f), ảnh thay đổi thế nào so với trước?",
+   "lua_chon": [
+    "Vẫn là ảnh ảo nhưng nhỏ hơn trước",
+    "Chuyển từ ảnh ảo sang ảnh thật, ngược chiều, lớn hơn vật",
+    "Đổi thành ảnh thật, ngược chiều, nhỏ hơn vật",
+    "Ảnh không đổi vì vật chỉ dịch chuyển một đoạn nhỏ"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Khi d vượt qua tiêu điểm ra ngoài (f < d < 2f), ảnh chuyển từ ảnh ảo, cùng chiều sang ảnh thật, ngược chiều, lớn hơn vật.\n\nVì sao các phương án khác sai:\n- A: Khi vật vượt qua tiêu điểm ra ngoài tiêu cự, ảnh đổi hẳn từ ảo sang thật.\n- C: Ảnh thật nhỏ hơn vật chỉ xảy ra khi d > 2f, ở đây d chưa vượt 2f.\n- D: Việc vượt qua tiêu điểm làm đổi hẳn loại ảnh, dù đoạn dịch chuyển có thể nhỏ."
+  },
+  {
+   "ma_cau": "K09020406005",
+   "nhom_id": "KNB00465",
+   "loai": "trac_nghiem",
+   "de": "Vật đặt cố định trước thấu kính hội tụ ở khoảng cách d = 2f (ảnh thật, ngược chiều, bằng vật). Nếu dịch thấu kính lại gần vật để khoảng cách d giảm xuống dưới f, ảnh thay đổi thế nào?",
+   "lua_chon": [
+    "Vẫn là ảnh thật nhưng nhỏ hơn",
+    "Chuyển thành ảnh ảo, cùng chiều, lớn hơn vật",
+    "Ảnh không đổi vì tiêu cự thấu kính không đổi",
+    "Ảnh biến mất vì vật quá gần thấu kính"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Khi d < f, thấu kính hội tụ luôn cho ảnh ảo, cùng chiều và lớn hơn vật, khác hẳn ảnh thật ban đầu.\n\nVì sao các phương án khác sai:\n- A: Sai bản chất: d<f không còn cho ảnh thật nữa mà chuyển sang ảnh ảo.\n- C: Tiêu cự không đổi nhưng vị trí tương đối vật–thấu kính thay đổi nên ảnh vẫn thay đổi.\n- D: Ảnh không biến mất, chỉ chuyển từ ảnh thật sang ảnh ảo."
+  },
+  {
+   "ma_cau": "K09020108051",
+   "nhom_id": "KNB00447",
+   "loai": "trac_nghiem",
+   "de": "Ánh sáng truyền từ môi trường (1) chiết suất n₁ = 1,2 sang môi trường (2) chiết suất n₂ = 1,6, góc tới có sin i = 0,8. Tính sin góc khúc xạ r. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020103-01-001-de.png)",
+   "lua_chon": [
+    "sin r = 1,07",
+    "sin r = 0,6",
+    "sin r = 0,5",
+    "sin r = 0,75"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Từ n₁·sin i = n₂·sin r suy ra sin r = n₁·sin i / n₂ = 1,2×0,8/1,6 = 0,6.\n\nVì sao các phương án khác sai:\n- A: Đã đảo tỉ số, tính n₂·sin i/n₁ thay vì n₁·sin i/n₂.\n- C: Đã quên nhân với n₁, chỉ tính sin i/n₂ = 0,8/1,6.\n- D: Đã quên nhân với sin i, chỉ tính tỉ số chiết suất n₁/n₂."
+  },
+  {
+   "ma_cau": "K09020108052",
+   "nhom_id": "KNB00447",
+   "loai": "trac_nghiem",
+   "de": "Ánh sáng truyền từ môi trường (1) chiết suất n₁ = 1,6 sang môi trường (2) chiết suất n₂ = 1,2, góc tới có sin i = 0,3. Tính sin góc khúc xạ r. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020103-01-002-de.png)",
+   "lua_chon": [
+    "sin r = 0,25",
+    "sin r = 0,225",
+    "sin r = 0,4",
+    "sin r = 0,75"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Từ n₁·sin i = n₂·sin r suy ra sin r = n₁·sin i / n₂ = 1,6×0,3/1,2 = 0,4.\n\nVì sao các phương án khác sai:\n- A: Đã quên nhân với n₁, chỉ tính sin i/n₂ = 0,3/1,2.\n- B: Đã đảo tỉ số, tính n₂·sin i/n₁ thay vì n₁·sin i/n₂.\n- D: Đã quên nhân với sin i, chỉ tính tỉ số chiết suất n₂/n₁."
+  },
+  {
+   "ma_cau": "K09020108053",
+   "nhom_id": "KNB00447",
+   "loai": "trac_nghiem",
+   "de": "Ánh sáng truyền từ môi trường (1) chiết suất n₁ = 1,4 sang môi trường (2) chiết suất n₂ = 1,75, góc tới có sin i = 0,5. Tính sin góc khúc xạ r. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020103-01-003-de.png)",
+   "lua_chon": [
+    "0,625",
+    "≈0,286",
+    "0,4",
+    "0,8"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Từ n₁·sin i = n₂·sin r suy ra sin r = n₁·sin i/n₂ = 1,4×0,5/1,75 = 0,4.\n\nVì sao các phương án khác sai:\n- A: Đã đảo tỉ số, tính n₂·sin i/n₁ thay vì n₁·sin i/n₂.\n- B: Đã quên nhân với n₁, chỉ tính sin i/n₂ = 0,5/1,75.\n- D: Đã quên nhân với sin i, chỉ tính tỉ số chiết suất n₁/n₂."
+  },
+  {
+   "ma_cau": "K09020110051",
+   "nhom_id": "KNB00449",
+   "loai": "trac_nghiem",
+   "de": "Tốc độ ánh sáng trong một khối thuỷ tinh là v = 2×10⁸ m/s. Biết tốc độ ánh sáng trong chân không c = 3×10⁸ m/s. Chiết suất của thuỷ tinh là bao nhiêu?",
+   "lua_chon": [
+    "n = 0,67",
+    "n = 1,5",
+    "n = 1,33",
+    "n = 2"
+   ],
+   "dap_an": "B",
+   "loi_giai": "n = c/v = 3×10⁸ / 2×10⁸ = 1,5.\n\nVì sao các phương án khác sai:\n- A: Đã tính ngược thành v/c = 2/3 ≈ 0,67 thay vì c/v.\n- C: Đây là chiết suất quen thuộc của nước, không phải kết quả của phép tính này.\n- D: Tính sai phép chia c/v, ra kết quả gấp đôi giá trị đúng."
+  },
+  {
+   "ma_cau": "K09020110052",
+   "nhom_id": "KNB00449",
+   "loai": "trac_nghiem",
+   "de": "Tốc độ ánh sáng trong một khối nước là v = 2,25×10⁸ m/s. Biết c = 3×10⁸ m/s. Chiết suất của nước là bao nhiêu?",
+   "lua_chon": [
+    "n = 1,33",
+    "n = 0,75",
+    "n = 1,5",
+    "n = 1,25"
+   ],
+   "dap_an": "A",
+   "loi_giai": "n = c/v = 3×10⁸ / 2,25×10⁸ ≈ 1,33 (bằng 4/3).\n\nVì sao các phương án khác sai:\n- B: Đã tính ngược thành v/c = 2,25/3 = 0,75 thay vì c/v.\n- C: Đây là chiết suất của thuỷ tinh, không phải của nước trong bài này.\n- D: Tính sai phép chia c/v, ra kết quả thấp hơn giá trị đúng."
+  },
+  {
+   "ma_cau": "K09020110053",
+   "nhom_id": "KNB00449",
+   "loai": "trac_nghiem",
+   "de": "Tốc độ ánh sáng trong một khối nhựa là v = 2,4×10⁸ m/s. Biết c = 3×10⁸ m/s. Chiết suất của khối nhựa là bao nhiêu?",
+   "lua_chon": [
+    "0,8",
+    "1,25",
+    "1,5",
+    "2"
+   ],
+   "dap_an": "B",
+   "loi_giai": "n = c/v = 3×10⁸ / 2,4×10⁸ = 1,25.\n\nVì sao các phương án khác sai:\n- A: Đã tính ngược thành v/c = 2,4/3 = 0,8 thay vì c/v.\n- C: Đây là chiết suất quen thuộc của thuỷ tinh, không phải kết quả của phép tính này.\n- D: Tính sai phép chia c/v, ra kết quả gấp đôi giá trị đúng."
+  },
+  {
+   "ma_cau": "K09020110054",
+   "nhom_id": "KNB00449",
+   "loai": "trac_nghiem",
+   "de": "Một khối thuỷ tinh có chiết suất n = 1,5. Biết c = 3×10⁸ m/s. Tốc độ ánh sáng trong khối thuỷ tinh này là bao nhiêu?",
+   "lua_chon": [
+    "v = 4,5×10⁸ m/s",
+    "v = 3×10⁸ m/s",
+    "v = 2×10⁸ m/s",
+    "v = 1,5×10⁸ m/s"
+   ],
+   "dap_an": "C",
+   "loi_giai": "v = c/n = 3×10⁸ / 1,5 = 2×10⁸ m/s.\n\nVì sao các phương án khác sai:\n- A: Đã nhân c với n thay vì chia, ra kết quả lớn hơn tốc độ ánh sáng trong chân không (vô lí).\n- B: Đây là tốc độ trong chân không, quên chia cho chiết suất.\n- D: Tính sai phép chia c/n, ra kết quả nhỏ hơn giá trị đúng."
+  },
+  {
+   "ma_cau": "K09020110055",
+   "nhom_id": "KNB00449",
+   "loai": "trac_nghiem",
+   "de": "Một khối kim cương có chiết suất n = 2,4. Biết c = 3×10⁸ m/s. Tốc độ ánh sáng trong khối kim cương này là bao nhiêu?",
+   "lua_chon": [
+    "v = 1,25×10⁸ m/s",
+    "v = 7,2×10⁸ m/s",
+    "v = 2,4×10⁸ m/s",
+    "v = 1,5×10⁸ m/s"
+   ],
+   "dap_an": "A",
+   "loi_giai": "v = c/n = 3×10⁸ / 2,4 = 1,25×10⁸ m/s.\n\nVì sao các phương án khác sai:\n- B: Đã nhân c với n thay vì chia, ra kết quả lớn hơn tốc độ ánh sáng trong chân không (vô lí).\n- C: Đã lấy nhầm giá trị chiết suất làm tốc độ (đơn vị ×10⁸ m/s).\n- D: Tính sai phép chia c/n, ra kết quả khác giá trị đúng."
+  },
+  {
+   "ma_cau": "K09020110056",
+   "nhom_id": "KNB00449",
+   "loai": "trac_nghiem",
+   "de": "Một khối nhựa trong suốt có chiết suất n = 1,2. Biết c = 3×10⁸ m/s. Tốc độ ánh sáng trong khối nhựa này là bao nhiêu?",
+   "lua_chon": [
+    "2,5×10⁸ m/s",
+    "3,6×10⁸ m/s",
+    "3×10⁸ m/s",
+    "2,4×10⁸ m/s"
+   ],
+   "dap_an": "A",
+   "loi_giai": "v = c/n = 3×10⁸ / 1,2 = 2,5×10⁸ m/s.\n\nVì sao các phương án khác sai:\n- B: Đã nhân c với n thay vì chia, ra kết quả lớn hơn tốc độ ánh sáng trong chân không (vô lí).\n- C: Đây là tốc độ trong chân không, quên chia cho chiết suất.\n- D: Tính sai phép chia c/n, ra kết quả khác giá trị đúng."
+  },
+  {
+   "ma_cau": "K09020110057",
+   "nhom_id": "KNB00449",
+   "loai": "trac_nghiem",
+   "de": "Môi trường A có chiết suất n<sub>A</sub> = 1,2; môi trường B có chiết suất n<sub>B</sub> = 1,8. Tốc độ ánh sáng trong A gấp bao nhiêu lần tốc độ ánh sáng trong B?",
+   "lua_chon": [
+    "Bằng nhau",
+    "1,5 lần",
+    "0,67 lần",
+    "0,6 lần"
+   ],
+   "dap_an": "B",
+   "loi_giai": "v tỉ lệ nghịch với n nên v<sub>A</sub>/v<sub>B</sub> = n<sub>B</sub>/n<sub>A</sub> = 1,8/1,2 = 1,5 lần.\n\nVì sao các phương án khác sai:\n- A: Hai môi trường có chiết suất khác nhau nên tốc độ ánh sáng trong chúng khác nhau.\n- C: Đã lấy tỉ số ngược n<sub>A</sub>/n<sub>B</sub> = 1,2/1,8 ≈ 0,67 thay vì n<sub>B</sub>/n<sub>A</sub>.\n- D: Đã lấy hiệu n<sub>B</sub> − n<sub>A</sub> = 0,6 rồi coi là tỉ số, trong khi phải lập thương."
+  },
+  {
+   "ma_cau": "K09020110058",
+   "nhom_id": "KNB00449",
+   "loai": "trac_nghiem",
+   "de": "Môi trường C có chiết suất n<sub>C</sub> = 1,5; môi trường D có chiết suất n<sub>D</sub> = 3. Tốc độ ánh sáng trong C gấp bao nhiêu lần tốc độ ánh sáng trong D?",
+   "lua_chon": [
+    "2 lần",
+    "Bằng nhau",
+    "1,5 lần",
+    "0,5 lần"
+   ],
+   "dap_an": "A",
+   "loi_giai": "v<sub>C</sub>/v<sub>D</sub> = n<sub>D</sub>/n<sub>C</sub> = 3/1,5 = 2 lần.\n\nVì sao các phương án khác sai:\n- B: Hai môi trường có chiết suất khác nhau (1,5 và 3) nên tốc độ khác nhau.\n- C: Đã lấy hiệu n<sub>D</sub> − n<sub>C</sub> = 1,5 rồi coi là tỉ số, trong khi phải lập thương.\n- D: Đã lấy tỉ số ngược n<sub>C</sub>/n<sub>D</sub> = 1,5/3 = 0,5 thay vì n<sub>D</sub>/n<sub>C</sub>."
+  },
+  {
+   "ma_cau": "K09020110059",
+   "nhom_id": "KNB00449",
+   "loai": "trac_nghiem",
+   "de": "Môi trường E có chiết suất n<sub>E</sub> = 1,6; môi trường F có chiết suất n<sub>F</sub> = 2. Tốc độ ánh sáng trong E gấp bao nhiêu lần tốc độ ánh sáng trong F?",
+   "lua_chon": [
+    "Bằng nhau",
+    "0,8 lần",
+    "0,4 lần",
+    "1,25 lần"
+   ],
+   "dap_an": "D",
+   "loi_giai": "v tỉ lệ nghịch với n nên v<sub>E</sub>/v<sub>F</sub> = n<sub>F</sub>/n<sub>E</sub> = 2/1,6 = 1,25 lần.\n\nVì sao các phương án khác sai:\n- A: Hai môi trường có chiết suất khác nhau nên tốc độ ánh sáng trong chúng khác nhau.\n- B: Đã lấy tỉ số ngược n<sub>E</sub>/n<sub>F</sub> = 1,6/2 = 0,8 thay vì n<sub>F</sub>/n<sub>E</sub>.\n- C: Đã lấy hiệu n<sub>F</sub> − n<sub>E</sub> = 0,4 rồi coi là tỉ số, trong khi phải lập thương."
+  }
+ ]
+}

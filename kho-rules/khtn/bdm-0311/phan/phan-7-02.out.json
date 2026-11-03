@@ -1,0 +1,614 @@
+[
+ {
+  "ma_cau": "K07020101050",
+  "dang_bai_id": "KDB00682",
+  "chac": "vua",
+  "ly_do": "Định nghĩa đơn chất, không phải chọn chất cụ thể"
+ },
+ {
+  "ma_cau": "K07020101051",
+  "dang_bai_id": "KDB00682",
+  "chac": "cao",
+  "ly_do": "Chọn đơn chất trong 4 chất"
+ },
+ {
+  "ma_cau": "K07020101052",
+  "dang_bai_id": "KDB00682",
+  "chac": "vua",
+  "ly_do": "Phân loại O2 là đơn chất, dạng hỏi khái niệm"
+ },
+ {
+  "ma_cau": "K07020101053",
+  "dang_bai_id": "KDB00681",
+  "chac": "cao",
+  "ly_do": "Chọn hợp chất trong 4 chất"
+ },
+ {
+  "ma_cau": "K07020101054",
+  "dang_bai_id": "KDB00682",
+  "chac": "vua",
+  "ly_do": "Giải thích vì sao H2 đơn chất, H2O hợp chất; dạng lý thuyết"
+ },
+ {
+  "ma_cau": "K07020101055",
+  "dang_bai_id": "KDB00682",
+  "chac": "vua",
+  "ly_do": "Giải thích vì sao O3 là đơn chất"
+ },
+ {
+  "ma_cau": "K07020101056",
+  "dang_bai_id": "KDB00682",
+  "chac": "cao",
+  "ly_do": "Chọn dãy toàn đơn chất"
+ },
+ {
+  "ma_cau": "K07020101057",
+  "dang_bai_id": "KDB00681",
+  "chac": "cao",
+  "ly_do": "Chọn dãy toàn hợp chất"
+ },
+ {
+  "ma_cau": "K07020101058",
+  "dang_bai_id": "KDB00684",
+  "chac": "cao",
+  "ly_do": "Phân loại cả dãy chất, đếm số đơn chất và hợp chất"
+ },
+ {
+  "ma_cau": "K07020101059",
+  "dang_bai_id": "KDB00684",
+  "chac": "vua",
+  "ly_do": "Đếm số đơn chất trong dãy, hơi lệch khỏi liệt kê hai nhóm"
+ },
+ {
+  "ma_cau": "K07020201032",
+  "dang_bai_id": "KDB00690",
+  "chac": "cao",
+  "ly_do": "Số electron lớp ngoài cùng khí hiếm neon"
+ },
+ {
+  "ma_cau": "K07020201033",
+  "dang_bai_id": "KDB00690",
+  "chac": "cao",
+  "ly_do": "Helium có 2 electron lớp ngoài cùng"
+ },
+ {
+  "ma_cau": "K07020201034",
+  "dang_bai_id": "KDB00690",
+  "chac": "cao",
+  "ly_do": "Helium là ngoại lệ 2 electron"
+ },
+ {
+  "ma_cau": "K07020201035",
+  "dang_bai_id": "KDB00690",
+  "chac": "cao",
+  "ly_do": "Vì sao khí hiếm khó phản ứng"
+ },
+ {
+  "ma_cau": "K07020201036",
+  "dang_bai_id": "KDB00690",
+  "chac": "vua",
+  "ly_do": "Nhận khí hiếm qua mô hình hình ảnh, phụ thuộc hình"
+ },
+ {
+  "ma_cau": "K07020201037",
+  "dang_bai_id": "KDB00690",
+  "chac": "vua",
+  "ly_do": "Khí hiếm tồn tại dạng nguyên tử riêng rẽ, hệ quả của tính bền"
+ },
+ {
+  "ma_cau": "K07020201038",
+  "dang_bai_id": "KDB00690",
+  "chac": "cao",
+  "ly_do": "Vì sao neon khó phản ứng: lớp ngoài cùng bền"
+ },
+ {
+  "ma_cau": "K07020201039",
+  "dang_bai_id": "KDB00690",
+  "chac": "cao",
+  "ly_do": "Vì sao argon khó phản ứng: lớp ngoài cùng bền"
+ },
+ {
+  "ma_cau": "K07020201040",
+  "dang_bai_id": "KDB00690",
+  "chac": "vua",
+  "ly_do": "So sánh neon bền và fluorine dễ phản ứng, lệch sang octet"
+ },
+ {
+  "ma_cau": "K07020201041",
+  "dang_bai_id": "KDB00692",
+  "chac": "cao",
+  "ly_do": "Sodium nhường electron để đạt vỏ bền"
+ },
+ {
+  "ma_cau": "K07020201042",
+  "dang_bai_id": "KDB00692",
+  "chac": "cao",
+  "ly_do": "Chlorine nhận electron để đạt vỏ bền"
+ },
+ {
+  "ma_cau": "K07020201043",
+  "dang_bai_id": "KDB00692",
+  "chac": "cao",
+  "ly_do": "Kim loại có xu hướng nhường electron"
+ },
+ {
+  "ma_cau": "K07020201044",
+  "dang_bai_id": "KDB00692",
+  "chac": "cao",
+  "ly_do": "Phi kim có xu hướng nhận electron"
+ },
+ {
+  "ma_cau": "K07020201045",
+  "dang_bai_id": "KDB00692",
+  "chac": "cao",
+  "ly_do": "Oxygen nhận 2 electron"
+ },
+ {
+  "ma_cau": "K07020201046",
+  "dang_bai_id": "KDB00692",
+  "chac": "cao",
+  "ly_do": "Magnesium nhường 2 electron"
+ },
+ {
+  "ma_cau": "K07020201047",
+  "dang_bai_id": "KDB00692",
+  "chac": "cao",
+  "ly_do": "Giải thích vì sao sodium nhường 1 electron"
+ },
+ {
+  "ma_cau": "K07020201048",
+  "dang_bai_id": "KDB00692",
+  "chac": "cao",
+  "ly_do": "Giải thích vì sao potassium nhường 1 electron"
+ },
+ {
+  "ma_cau": "K07020201049",
+  "dang_bai_id": "KDB00692",
+  "chac": "cao",
+  "ly_do": "Giải thích vì sao fluorine nhận 1 electron"
+ },
+ {
+  "ma_cau": "K07020102054",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Hỏi nhớ khối lượng nguyên tử oxygen; nhóm thiếu dạng nhớ/tra khối lượng nguyên tử"
+ },
+ {
+  "ma_cau": "K07020102055",
+  "dang_bai_id": "KDB00685",
+  "chac": "vua",
+  "ly_do": "Hỏi cách tính khối lượng phân tử (lý thuyết), không tính số"
+ },
+ {
+  "ma_cau": "K07020102056",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Hỏi nhớ khối lượng nguyên tử carbon; nhóm thiếu dạng nhớ/tra khối lượng nguyên tử"
+ },
+ {
+  "ma_cau": "K07020102057",
+  "dang_bai_id": "KDB00685",
+  "chac": "cao",
+  "ly_do": "Tính khối lượng phân tử từ công thức và khối lượng nguyên tử cho trước"
+ },
+ {
+  "ma_cau": "K07020102058",
+  "dang_bai_id": "KDB00685",
+  "chac": "cao",
+  "ly_do": "Tính khối lượng phân tử từ công thức và khối lượng nguyên tử cho trước"
+ },
+ {
+  "ma_cau": "K07020102059",
+  "dang_bai_id": "KDB00685",
+  "chac": "cao",
+  "ly_do": "Tính khối lượng phân tử từ công thức và khối lượng nguyên tử cho trước"
+ },
+ {
+  "ma_cau": "K07020102060",
+  "dang_bai_id": "KDB00685",
+  "chac": "cao",
+  "ly_do": "Tính khối lượng phân tử từ công thức và khối lượng nguyên tử cho trước"
+ },
+ {
+  "ma_cau": "K07020102061",
+  "dang_bai_id": "KDB00685",
+  "chac": "cao",
+  "ly_do": "Tính khối lượng phân tử từ công thức và khối lượng nguyên tử cho trước"
+ },
+ {
+  "ma_cau": "K07020102062",
+  "dang_bai_id": "KDB00685",
+  "chac": "cao",
+  "ly_do": "Tính khối lượng phân tử từ công thức và khối lượng nguyên tử cho trước"
+ },
+ {
+  "ma_cau": "K07020102063",
+  "dang_bai_id": "KDB00685",
+  "chac": "cao",
+  "ly_do": "Tính khối lượng phân tử từ công thức và khối lượng nguyên tử cho trước"
+ },
+ {
+  "ma_cau": "K07020102064",
+  "dang_bai_id": "KDB00685",
+  "chac": "cao",
+  "ly_do": "Tính khối lượng phân tử từ công thức và khối lượng nguyên tử cho trước"
+ },
+ {
+  "ma_cau": "K07020102065",
+  "dang_bai_id": "KDB00685",
+  "chac": "cao",
+  "ly_do": "Tính khối lượng phân tử từ công thức và khối lượng nguyên tử cho trước"
+ },
+ {
+  "ma_cau": "K07020102066",
+  "dang_bai_id": "KDB00685",
+  "chac": "cao",
+  "ly_do": "Tính khối lượng phân tử từ công thức và khối lượng nguyên tử cho trước"
+ },
+ {
+  "ma_cau": "K07020102067",
+  "dang_bai_id": "KDB00685",
+  "chac": "cao",
+  "ly_do": "Tính khối lượng phân tử từ công thức và khối lượng nguyên tử cho trước"
+ },
+ {
+  "ma_cau": "K07020102068",
+  "dang_bai_id": "KDB00685",
+  "chac": "cao",
+  "ly_do": "Tính khối lượng phân tử từ công thức và khối lượng nguyên tử cho trước"
+ },
+ {
+  "ma_cau": "K07020102069",
+  "dang_bai_id": "KDB00685",
+  "chac": "cao",
+  "ly_do": "Tính khối lượng phân tử từ công thức và khối lượng nguyên tử cho trước"
+ },
+ {
+  "ma_cau": "K07020102070",
+  "dang_bai_id": "KDB00685",
+  "chac": "cao",
+  "ly_do": "Tính khối lượng phân tử từ công thức và khối lượng nguyên tử cho trước"
+ },
+ {
+  "ma_cau": "K07020102071",
+  "dang_bai_id": "KDB00685",
+  "chac": "cao",
+  "ly_do": "Tính khối lượng phân tử từ công thức và khối lượng nguyên tử cho trước"
+ },
+ {
+  "ma_cau": "K07020102072",
+  "dang_bai_id": "KDB00685",
+  "chac": "cao",
+  "ly_do": "Chọn biểu thức tính khối lượng phân tử Ca(OH)2"
+ },
+ {
+  "ma_cau": "K07020102073",
+  "dang_bai_id": "KDB00685",
+  "chac": "cao",
+  "ly_do": "Chọn biểu thức tính khối lượng phân tử Mg(NO3)2"
+ },
+ {
+  "ma_cau": "K07020102074",
+  "dang_bai_id": "KDB00685",
+  "chac": "cao",
+  "ly_do": "Tính khối lượng phân tử từ công thức và khối lượng nguyên tử cho trước"
+ },
+ {
+  "ma_cau": "K07020102075",
+  "dang_bai_id": "KDB00685",
+  "chac": "cao",
+  "ly_do": "Tính khối lượng phân tử từ công thức và khối lượng nguyên tử cho trước"
+ },
+ {
+  "ma_cau": "K07020102076",
+  "dang_bai_id": "KDB00685",
+  "chac": "cao",
+  "ly_do": "Tính khối lượng phân tử từ công thức và khối lượng nguyên tử cho trước"
+ },
+ {
+  "ma_cau": "K07020102077",
+  "dang_bai_id": "KDB00685",
+  "chac": "cao",
+  "ly_do": "Tính khối lượng phân tử từ công thức và khối lượng nguyên tử cho trước"
+ },
+ {
+  "ma_cau": "K07020102078",
+  "dang_bai_id": "KDB00685",
+  "chac": "cao",
+  "ly_do": "Tính khối lượng phân tử từ công thức và khối lượng nguyên tử cho trước"
+ },
+ {
+  "ma_cau": "K07020202031",
+  "dang_bai_id": "KDB00697",
+  "chac": "cao",
+  "ly_do": "Xác định loại liên kết trong HCl"
+ },
+ {
+  "ma_cau": "K07020202032",
+  "dang_bai_id": "KDB00697",
+  "chac": "cao",
+  "ly_do": "Xác định loại liên kết trong NaCl"
+ },
+ {
+  "ma_cau": "K07020202033",
+  "dang_bai_id": "KDB00697",
+  "chac": "cao",
+  "ly_do": "Xác định loại liên kết trong CO2"
+ },
+ {
+  "ma_cau": "K07020202034",
+  "dang_bai_id": "KDB00697",
+  "chac": "cao",
+  "ly_do": "Xác định loại liên kết trong MgO"
+ },
+ {
+  "ma_cau": "K07020202035",
+  "dang_bai_id": "KDB00697",
+  "chac": "cao",
+  "ly_do": "Chọn dãy toàn chất ion"
+ },
+ {
+  "ma_cau": "K07020202036",
+  "dang_bai_id": "KDB00697",
+  "chac": "cao",
+  "ly_do": "Chọn dãy toàn chất cộng hóa trị"
+ },
+ {
+  "ma_cau": "K07020202037",
+  "dang_bai_id": "KDB00696",
+  "chac": "cao",
+  "ly_do": "So sánh nhiệt độ nóng chảy giữa chất ion và cộng hóa trị"
+ },
+ {
+  "ma_cau": "K07020202038",
+  "dang_bai_id": "KDB00696",
+  "chac": "cao",
+  "ly_do": "Dẫn điện của dung dịch, chất ion và cộng hóa trị"
+ },
+ {
+  "ma_cau": "K07020202039",
+  "dang_bai_id": "KDB00697",
+  "chac": "cao",
+  "ly_do": "Xác định loại liên kết từ Z hai nguyên tố"
+ },
+ {
+  "ma_cau": "K07020202040",
+  "dang_bai_id": "KDB00697",
+  "chac": "cao",
+  "ly_do": "Xác định loại liên kết từ Z hai nguyên tố"
+ },
+ {
+  "ma_cau": "K07020103054",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng đọc công thức đếm số nguyên tử (ngược với viết công thức từ mô tả)"
+ },
+ {
+  "ma_cau": "K07020103055",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng đọc công thức đếm số nguyên tử (ngược với viết công thức từ mô tả)"
+ },
+ {
+  "ma_cau": "K07020103056",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng đọc công thức đếm số nguyên tử (ngược với viết công thức từ mô tả)"
+ },
+ {
+  "ma_cau": "K07020103057",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng đọc công thức đếm số nguyên tử (ngược với viết công thức từ mô tả)"
+ },
+ {
+  "ma_cau": "K07020103058",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng đọc công thức đếm số nguyên tử (ngược với viết công thức từ mô tả)"
+ },
+ {
+  "ma_cau": "K07020103059",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng đọc công thức đếm số nguyên tử (ngược với viết công thức từ mô tả)"
+ },
+ {
+  "ma_cau": "K07020103060",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng đọc công thức đếm số nguyên tử (ngược với viết công thức từ mô tả)"
+ },
+ {
+  "ma_cau": "K07020103061",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng đọc công thức đếm số nguyên tử (ngược với viết công thức từ mô tả)"
+ },
+ {
+  "ma_cau": "K07020103062",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng đọc công thức đếm số nguyên tử (ngược với viết công thức từ mô tả)"
+ },
+ {
+  "ma_cau": "K07020103063",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng đọc công thức đếm số nguyên tử (ngược với viết công thức từ mô tả)"
+ },
+ {
+  "ma_cau": "K07020103064",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng đọc công thức đếm số nguyên tử (ngược với viết công thức từ mô tả)"
+ },
+ {
+  "ma_cau": "K07020103065",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng đọc công thức đếm số nguyên tử (ngược với viết công thức từ mô tả)"
+ },
+ {
+  "ma_cau": "K07020203051",
+  "dang_bai_id": "KDB00698",
+  "chac": "cao",
+  "ly_do": "Liên kết ion do cho nhận electron, khái niệm"
+ },
+ {
+  "ma_cau": "K07020203052",
+  "dang_bai_id": "KDB00701",
+  "chac": "cao",
+  "ly_do": "Thể tồn tại của chất ion"
+ },
+ {
+  "ma_cau": "K07020203053",
+  "dang_bai_id": "KDB00699",
+  "chac": "cao",
+  "ly_do": "Kí hiệu ion sodium từ nhường electron"
+ },
+ {
+  "ma_cau": "K07020203054",
+  "dang_bai_id": "KDB00699",
+  "chac": "cao",
+  "ly_do": "Kí hiệu ion Mg cho cấu hình electron"
+ },
+ {
+  "ma_cau": "K07020203055",
+  "dang_bai_id": "KDB00699",
+  "chac": "cao",
+  "ly_do": "Kí hiệu ion O cho cấu hình electron"
+ },
+ {
+  "ma_cau": "K07020203056",
+  "dang_bai_id": "KDB00699",
+  "chac": "cao",
+  "ly_do": "Kí hiệu ion Cl cho cấu hình electron"
+ },
+ {
+  "ma_cau": "K07020203057",
+  "dang_bai_id": "KDB00699",
+  "chac": "cao",
+  "ly_do": "Kí hiệu ion Ca cho cấu hình electron"
+ },
+ {
+  "ma_cau": "K07020203058",
+  "dang_bai_id": "KDB00699",
+  "chac": "vua",
+  "ly_do": "Chọn mô hình ion K+, phụ thuộc hình"
+ },
+ {
+  "ma_cau": "K07020203059",
+  "dang_bai_id": "KDB00700",
+  "chac": "vua",
+  "ly_do": "Mg nhường 2 electron, hỏi cách Cl nhận; lệch khỏi chọn công thức"
+ },
+ {
+  "ma_cau": "K07020203060",
+  "dang_bai_id": "KDB00704",
+  "chac": "cao",
+  "ly_do": "Chỉ cho Z, phải suy nhường/nhận rồi viết công thức hợp chất ion"
+ },
+ {
+  "ma_cau": "K07020203061",
+  "dang_bai_id": "KDB00704",
+  "chac": "cao",
+  "ly_do": "Chỉ cho Z, phải suy nhường/nhận rồi viết công thức hợp chất ion"
+ },
+ {
+  "ma_cau": "K07020203062",
+  "dang_bai_id": "KDB00704",
+  "chac": "vua",
+  "ly_do": "Từ nhóm/chu kì suy công thức, kèm phát biểu tính chất"
+ },
+ {
+  "ma_cau": "K07020203063",
+  "dang_bai_id": "KDB00704",
+  "chac": "vua",
+  "ly_do": "Từ lớp electron suy công thức, kèm đặc điểm chất ion"
+ },
+ {
+  "ma_cau": "K07020204052",
+  "dang_bai_id": "KDB00705",
+  "chac": "vua",
+  "ly_do": "Cơ chế hình thành liên kết trong HCl, giữa khái niệm và phân tử cụ thể"
+ },
+ {
+  "ma_cau": "K07020204053",
+  "dang_bai_id": "KDB00705",
+  "chac": "vua",
+  "ly_do": "Cách C liên kết với H trong CH4, giữa khái niệm và phân tử cụ thể"
+ },
+ {
+  "ma_cau": "K07020204054",
+  "dang_bai_id": "KDB00705",
+  "chac": "vua",
+  "ly_do": "Cơ chế hình thành liên kết trong O2, giữa khái niệm và phân tử cụ thể"
+ },
+ {
+  "ma_cau": "K07020204055",
+  "dang_bai_id": "KDB00706",
+  "chac": "cao",
+  "ly_do": "Số cặp electron dùng chung của phân tử cho trước, trắc nghiệm"
+ },
+ {
+  "ma_cau": "K07020204056",
+  "dang_bai_id": "KDB00706",
+  "chac": "cao",
+  "ly_do": "Số cặp electron dùng chung của phân tử cho trước, trắc nghiệm"
+ },
+ {
+  "ma_cau": "K07020204057",
+  "dang_bai_id": "KDB00706",
+  "chac": "cao",
+  "ly_do": "Số cặp electron dùng chung của phân tử cho trước, trắc nghiệm"
+ },
+ {
+  "ma_cau": "K07020204058",
+  "dang_bai_id": "KDB00706",
+  "chac": "cao",
+  "ly_do": "Số cặp electron dùng chung của phân tử cho trước, trắc nghiệm"
+ },
+ {
+  "ma_cau": "K07020204059",
+  "dang_bai_id": "KDB00706",
+  "chac": "cao",
+  "ly_do": "Số cặp electron dùng chung của phân tử cho trước, trắc nghiệm"
+ },
+ {
+  "ma_cau": "K07020204060",
+  "dang_bai_id": "KDB00706",
+  "chac": "cao",
+  "ly_do": "Số cặp electron dùng chung của phân tử cho trước, trắc nghiệm"
+ },
+ {
+  "ma_cau": "K07020204061",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng suy công thức và kiểu liên kết của hợp chất từ số electron"
+ },
+ {
+  "ma_cau": "K07020106049",
+  "dang_bai_id": "KDB00689",
+  "chac": "vua",
+  "ly_do": "Tìm nguyên tố từ M phân tử, trắc nghiệm chọn tên nguyên tố, nằm giữa hai dạng"
+ },
+ {
+  "ma_cau": "K07020106050",
+  "dang_bai_id": "KDB00689",
+  "chac": "vua",
+  "ly_do": "Tìm nguyên tố từ M phân tử, trắc nghiệm chọn tên nguyên tố, nằm giữa hai dạng"
+ },
+ {
+  "ma_cau": "K07020106051",
+  "dang_bai_id": "KDB00689",
+  "chac": "vua",
+  "ly_do": "Tìm nguyên tố từ M phân tử, trắc nghiệm chọn tên nguyên tố, nằm giữa hai dạng"
+ },
+ {
+  "ma_cau": "K07020106052",
+  "dang_bai_id": "KDB00689",
+  "chac": "vua",
+  "ly_do": "Tìm nguyên tố từ M phân tử, trắc nghiệm chọn tên nguyên tố, nằm giữa hai dạng"
+ }
+]

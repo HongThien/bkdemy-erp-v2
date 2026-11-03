@@ -1,0 +1,626 @@
+[
+ {
+  "ma_cau": "K07030101051",
+  "dang_bai_id": "KDB00726",
+  "chac": "cao",
+  "ly_do": "Hỏi khái niệm/công thức tốc độ"
+ },
+ {
+  "ma_cau": "K07030101052",
+  "dang_bai_id": "KDB00726",
+  "chac": "cao",
+  "ly_do": "Hỏi khái niệm/công thức tốc độ"
+ },
+ {
+  "ma_cau": "K07030101053",
+  "dang_bai_id": "KDB00727",
+  "chac": "cao",
+  "ly_do": "So sánh nhanh chậm từ quãng đường, thời gian"
+ },
+ {
+  "ma_cau": "K07030101054",
+  "dang_bai_id": "KDB00727",
+  "chac": "cao",
+  "ly_do": "So sánh nhanh chậm từ quãng đường, thời gian"
+ },
+ {
+  "ma_cau": "K07030101055",
+  "dang_bai_id": "KDB00727",
+  "chac": "cao",
+  "ly_do": "So sánh nhanh chậm từ quãng đường, thời gian"
+ },
+ {
+  "ma_cau": "K07030101056",
+  "dang_bai_id": "KDB00727",
+  "chac": "cao",
+  "ly_do": "So sánh nhanh chậm từ quãng đường, thời gian"
+ },
+ {
+  "ma_cau": "K07030101057",
+  "dang_bai_id": "KDB00727",
+  "chac": "vua",
+  "ly_do": "Quan hệ định tính tốc độ-thời gian, gần Ý nghĩa tốc độ"
+ },
+ {
+  "ma_cau": "K07030101058",
+  "dang_bai_id": "KDB00727",
+  "chac": "vua",
+  "ly_do": "Quan hệ định tính tốc độ-thời gian, gần Ý nghĩa tốc độ"
+ },
+ {
+  "ma_cau": "K07030101059",
+  "dang_bai_id": "KDB00726",
+  "chac": "cao",
+  "ly_do": "Hỏi đơn vị đo tốc độ"
+ },
+ {
+  "ma_cau": "K07030101060",
+  "dang_bai_id": "KDB00726",
+  "chac": "cao",
+  "ly_do": "Hỏi đơn vị đo tốc độ"
+ },
+ {
+  "ma_cau": "K07030101061",
+  "dang_bai_id": "KDB00726",
+  "chac": "cao",
+  "ly_do": "Hỏi đơn vị đo tốc độ"
+ },
+ {
+  "ma_cau": "K07030101062",
+  "dang_bai_id": "KDB00726",
+  "chac": "cao",
+  "ly_do": "Hỏi đơn vị đo tốc độ"
+ },
+ {
+  "ma_cau": "K07030101063",
+  "dang_bai_id": "KDB00725",
+  "chac": "cao",
+  "ly_do": "Đổi km/h và m/s"
+ },
+ {
+  "ma_cau": "K07030101064",
+  "dang_bai_id": "KDB00725",
+  "chac": "cao",
+  "ly_do": "Đổi km/h và m/s"
+ },
+ {
+  "ma_cau": "K07030101065",
+  "dang_bai_id": "KDB00725",
+  "chac": "cao",
+  "ly_do": "Đổi km/h và m/s"
+ },
+ {
+  "ma_cau": "K07030101066",
+  "dang_bai_id": "KDB00727",
+  "chac": "cao",
+  "ly_do": "So sánh tốc độ ở đơn vị khác nhau"
+ },
+ {
+  "ma_cau": "K07030101067",
+  "dang_bai_id": "KDB00727",
+  "chac": "cao",
+  "ly_do": "So sánh tốc độ ở đơn vị khác nhau"
+ },
+ {
+  "ma_cau": "K07030201001",
+  "dang_bai_id": "KDB01404",
+  "chac": "cao",
+  "ly_do": "Chọn dụng cụ/thiết bị đo tốc độ"
+ },
+ {
+  "ma_cau": "K07030201002",
+  "dang_bai_id": "KDB01404",
+  "chac": "cao",
+  "ly_do": "Chọn dụng cụ/thiết bị đo tốc độ"
+ },
+ {
+  "ma_cau": "K07030201003",
+  "dang_bai_id": "KDB01404",
+  "chac": "cao",
+  "ly_do": "Chọn dụng cụ/thiết bị đo tốc độ"
+ },
+ {
+  "ma_cau": "K07030201004",
+  "dang_bai_id": "KDB01404",
+  "chac": "cao",
+  "ly_do": "Chọn dụng cụ/thiết bị đo tốc độ"
+ },
+ {
+  "ma_cau": "K07030201005",
+  "dang_bai_id": "KDB01405",
+  "chac": "cao",
+  "ly_do": "Giải thích sai số khi đo thời gian"
+ },
+ {
+  "ma_cau": "K07030201006",
+  "dang_bai_id": "KDB01405",
+  "chac": "cao",
+  "ly_do": "Giải thích sai số khi đo thời gian"
+ },
+ {
+  "ma_cau": "K07030201007",
+  "dang_bai_id": "KDB01405",
+  "chac": "cao",
+  "ly_do": "Giải thích sai số khi đo thời gian"
+ },
+ {
+  "ma_cau": "K07030102051",
+  "dang_bai_id": "KDB00728",
+  "chac": "cao",
+  "ly_do": "Cho s, t tính tốc độ"
+ },
+ {
+  "ma_cau": "K07030102052",
+  "dang_bai_id": "KDB00728",
+  "chac": "cao",
+  "ly_do": "Cho s, t tính tốc độ"
+ },
+ {
+  "ma_cau": "K07030102053",
+  "dang_bai_id": "KDB00728",
+  "chac": "cao",
+  "ly_do": "Cho s, t tính tốc độ"
+ },
+ {
+  "ma_cau": "K07030102054",
+  "dang_bai_id": "KDB00730",
+  "chac": "cao",
+  "ly_do": "Cho v, t tính quãng đường"
+ },
+ {
+  "ma_cau": "K07030102055",
+  "dang_bai_id": "KDB00730",
+  "chac": "cao",
+  "ly_do": "Cho v, t tính quãng đường"
+ },
+ {
+  "ma_cau": "K07030102056",
+  "dang_bai_id": "KDB00730",
+  "chac": "cao",
+  "ly_do": "Cho v, t tính quãng đường"
+ },
+ {
+  "ma_cau": "K07030102057",
+  "dang_bai_id": "KDB00729",
+  "chac": "cao",
+  "ly_do": "Cho v, s tính thời gian"
+ },
+ {
+  "ma_cau": "K07030102058",
+  "dang_bai_id": "KDB00729",
+  "chac": "cao",
+  "ly_do": "Cho v, s tính thời gian"
+ },
+ {
+  "ma_cau": "K07030102059",
+  "dang_bai_id": "KDB00730",
+  "chac": "cao",
+  "ly_do": "Quãng đường = v×t trong thời gian phản ứng"
+ },
+ {
+  "ma_cau": "K07030102060",
+  "dang_bai_id": "KDB00730",
+  "chac": "cao",
+  "ly_do": "Quãng đường = v×t trong thời gian phản ứng"
+ },
+ {
+  "ma_cau": "K07030102061",
+  "dang_bai_id": "KDB00730",
+  "chac": "cao",
+  "ly_do": "Quãng đường = v×t trong thời gian phản ứng"
+ },
+ {
+  "ma_cau": "K07030102062",
+  "dang_bai_id": "KDB00730",
+  "chac": "cao",
+  "ly_do": "Quãng đường = v×t trong thời gian phản ứng"
+ },
+ {
+  "ma_cau": "K07030102063",
+  "dang_bai_id": "KDB00730",
+  "chac": "cao",
+  "ly_do": "Quãng đường = v×t trong thời gian phản ứng"
+ },
+ {
+  "ma_cau": "K07030102064",
+  "dang_bai_id": "KDB00730",
+  "chac": "cao",
+  "ly_do": "Quãng đường = v×t trong thời gian phản ứng"
+ },
+ {
+  "ma_cau": "K07030102065",
+  "dang_bai_id": "KDB00730",
+  "chac": "cao",
+  "ly_do": "Quãng đường = v×t trong thời gian phản ứng"
+ },
+ {
+  "ma_cau": "K07030102066",
+  "dang_bai_id": "KDB00730",
+  "chac": "cao",
+  "ly_do": "Quãng đường = v×t trong thời gian phản ứng"
+ },
+ {
+  "ma_cau": "K07030102067",
+  "dang_bai_id": "KDB00730",
+  "chac": "cao",
+  "ly_do": "Quãng đường = v×t trong thời gian phản ứng"
+ },
+ {
+  "ma_cau": "K07030102068",
+  "dang_bai_id": "KDB00730",
+  "chac": "cao",
+  "ly_do": "Quãng đường = v×t trong thời gian phản ứng"
+ },
+ {
+  "ma_cau": "K07030102069",
+  "dang_bai_id": "KDB00730",
+  "chac": "cao",
+  "ly_do": "Quãng đường = v×t trong thời gian phản ứng"
+ },
+ {
+  "ma_cau": "K07030102070",
+  "dang_bai_id": "KDB00730",
+  "chac": "cao",
+  "ly_do": "Quãng đường = v×t trong thời gian phản ứng"
+ },
+ {
+  "ma_cau": "K07030102071",
+  "dang_bai_id": "KDB00730",
+  "chac": "cao",
+  "ly_do": "Quãng đường = v×t trong thời gian phản ứng"
+ },
+ {
+  "ma_cau": "K07030102072",
+  "dang_bai_id": "KDB00730",
+  "chac": "cao",
+  "ly_do": "Quãng đường = v×t trong thời gian phản ứng"
+ },
+ {
+  "ma_cau": "K07030103001",
+  "dang_bai_id": "KDB01398",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103002",
+  "dang_bai_id": "KDB01401",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103003",
+  "dang_bai_id": "KDB01398",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103004",
+  "dang_bai_id": "KDB01399",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103005",
+  "dang_bai_id": "KDB01398",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103006",
+  "dang_bai_id": "KDB01400",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103007",
+  "dang_bai_id": "KDB01399",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103008",
+  "dang_bai_id": "KDB01397",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103009",
+  "dang_bai_id": "KDB01398",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103010",
+  "dang_bai_id": "KDB01399",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103011",
+  "dang_bai_id": "KDB01401",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103012",
+  "dang_bai_id": "KDB01398",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103013",
+  "dang_bai_id": "KDB01400",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103014",
+  "dang_bai_id": "KDB01399",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103015",
+  "dang_bai_id": "KDB01399",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103016",
+  "dang_bai_id": "KDB01398",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103017",
+  "dang_bai_id": "KDB01398",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103018",
+  "dang_bai_id": "KDB01402",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103019",
+  "dang_bai_id": "KDB01402",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103020",
+  "dang_bai_id": "KDB01399",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103021",
+  "dang_bai_id": "KDB01398",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103022",
+  "dang_bai_id": "KDB01398",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103023",
+  "dang_bai_id": "KDB01401",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103024",
+  "dang_bai_id": "KDB01398",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103025",
+  "dang_bai_id": "KDB01399",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103026",
+  "dang_bai_id": "KDB01400",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103027",
+  "dang_bai_id": "KDB01399",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103028",
+  "dang_bai_id": "KDB01401",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103029",
+  "dang_bai_id": "KDB01398",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103030",
+  "dang_bai_id": "KDB01402",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103031",
+  "dang_bai_id": "KDB01398",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103032",
+  "dang_bai_id": "KDB01397",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103033",
+  "dang_bai_id": "KDB01398",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103034",
+  "dang_bai_id": "KDB01399",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103035",
+  "dang_bai_id": "KDB01401",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103036",
+  "dang_bai_id": "KDB01398",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103037",
+  "dang_bai_id": "KDB01400",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103038",
+  "dang_bai_id": "KDB01398",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103039",
+  "dang_bai_id": "KDB01398",
+  "chac": "vua",
+  "ly_do": "Cho tổng s, tổng t không nêu nghỉ; gần dạng 1401"
+ },
+ {
+  "ma_cau": "K07030103040",
+  "dang_bai_id": "KDB01402",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103041",
+  "dang_bai_id": "KDB01400",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103042",
+  "dang_bai_id": "KDB01398",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103043",
+  "dang_bai_id": "KDB01397",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103044",
+  "dang_bai_id": "KDB01399",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103045",
+  "dang_bai_id": "KDB01398",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103046",
+  "dang_bai_id": "KDB01402",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103047",
+  "dang_bai_id": "KDB01398",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103048",
+  "dang_bai_id": "KDB01398",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103049",
+  "dang_bai_id": "KDB01398",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103050",
+  "dang_bai_id": "KDB01398",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103051",
+  "dang_bai_id": "KDB01398",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103052",
+  "dang_bai_id": "KDB01403",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103053",
+  "dang_bai_id": "KDB01403",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103054",
+  "dang_bai_id": "KDB01403",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103055",
+  "dang_bai_id": "KDB01403",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103056",
+  "dang_bai_id": "KDB01403",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103057",
+  "dang_bai_id": "KDB01403",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K07030103058",
+  "dang_bai_id": "KDB01403",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ }
+]

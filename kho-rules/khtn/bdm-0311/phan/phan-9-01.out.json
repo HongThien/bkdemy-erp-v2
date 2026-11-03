@@ -1,0 +1,638 @@
+[
+ {
+  "ma_cau": "K09010201031",
+  "dang_bai_id": "KDB01012",
+  "chac": "cao",
+  "ly_do": "Hỏi thế năng phụ thuộc yếu tố nào."
+ },
+ {
+  "ma_cau": "K09010201032",
+  "dang_bai_id": "KDB01010",
+  "chac": "vua",
+  "ly_do": "Hỏi vì sao phải nêu mốc thế năng; gần định nghĩa mốc, cũng chạm đổi mốc đổi h."
+ },
+ {
+  "ma_cau": "K09010201033",
+  "dang_bai_id": "KDB01010",
+  "chac": "cao",
+  "ly_do": "Hỏi vật nào có thế năng khác 0 so với mốc mặt đất."
+ },
+ {
+  "ma_cau": "K09010201034",
+  "dang_bai_id": "KDB01010",
+  "chac": "cao",
+  "ly_do": "Mốc là mặt bàn, vật nằm đúng mốc nên thế năng bằng 0."
+ },
+ {
+  "ma_cau": "K09010201035",
+  "dang_bai_id": "KDB01012",
+  "chac": "cao",
+  "ly_do": "So sánh thế năng hai vật cùng khối lượng, khác độ cao."
+ },
+ {
+  "ma_cau": "K09010201036",
+  "dang_bai_id": "KDB01012",
+  "chac": "cao",
+  "ly_do": "So sánh thế năng hai vật cùng độ cao, khác khối lượng."
+ },
+ {
+  "ma_cau": "K09010201037",
+  "dang_bai_id": "KDB01010",
+  "chac": "vua",
+  "ly_do": "Diều ở độ cao khác mốc nên thế năng khác 0; có thể thuộc dạng nhận biết qua ví dụ."
+ },
+ {
+  "ma_cau": "K09010201038",
+  "dang_bai_id": "KDB01013",
+  "chac": "cao",
+  "ly_do": "Nhận biết vật nào đang mang thế năng đàn hồi qua ví dụ cụ thể."
+ },
+ {
+  "ma_cau": "K09010201039",
+  "dang_bai_id": "KDB01010",
+  "chac": "cao",
+  "ly_do": "Hỏi khái niệm thế năng đàn hồi xuất hiện khi nào."
+ },
+ {
+  "ma_cau": "K09010201040",
+  "dang_bai_id": "KDB01013",
+  "chac": "cao",
+  "ly_do": "Dây cung kéo căng, nhận biết dạng năng lượng (đúng ví dụ mô tả)."
+ },
+ {
+  "ma_cau": "K09010201041",
+  "dang_bai_id": "KDB01013",
+  "chac": "vua",
+  "ly_do": "Dây chun bắn giấy, hỏi chuyển hoá năng lượng; gần nhất dạng nhận biết qua hiện tượng."
+ },
+ {
+  "ma_cau": "K09010201042",
+  "dang_bai_id": "KDB01013",
+  "chac": "vua",
+  "ly_do": "Lò xo tự nhiên, thế năng đàn hồi bằng 0; hợp nhất dạng nhận biết qua ví dụ."
+ },
+ {
+  "ma_cau": "K09010201043",
+  "dang_bai_id": "KDB01013",
+  "chac": "cao",
+  "ly_do": "Bàn nhún uốn cong, nhận biết thế năng đàn hồi."
+ },
+ {
+  "ma_cau": "K09010201044",
+  "dang_bai_id": "KDB01013",
+  "chac": "cao",
+  "ly_do": "Lò xo bút bi bị nén, nhận biết thế năng đàn hồi."
+ },
+ {
+  "ma_cau": "K09010301031",
+  "dang_bai_id": "KDB01050",
+  "chac": "cao",
+  "ly_do": "Hỏi định nghĩa cơ năng."
+ },
+ {
+  "ma_cau": "K09010301032",
+  "dang_bai_id": "KDB01050",
+  "chac": "cao",
+  "ly_do": "Cơ năng gồm những dạng năng lượng nào."
+ },
+ {
+  "ma_cau": "K09010301033",
+  "dang_bai_id": "KDB01050",
+  "chac": "cao",
+  "ly_do": "Hỏi đơn vị của cơ năng."
+ },
+ {
+  "ma_cau": "K09010301034",
+  "dang_bai_id": "KDB01050",
+  "chac": "cao",
+  "ly_do": "Trường hợp đặc biệt cơ năng bằng 0 khi đứng yên tại mốc."
+ },
+ {
+  "ma_cau": "K09010301035",
+  "dang_bai_id": "KDB01050",
+  "chac": "cao",
+  "ly_do": "Cơ năng phụ thuộc/cần biết đại lượng nào, W=Wđ+Wt."
+ },
+ {
+  "ma_cau": "K09010301036",
+  "dang_bai_id": "KDB01050",
+  "chac": "cao",
+  "ly_do": "Chọn phát biểu đúng về định nghĩa cơ năng."
+ },
+ {
+  "ma_cau": "K09010301037",
+  "dang_bai_id": "KDB01050",
+  "chac": "cao",
+  "ly_do": "Vật chuyển động tại mốc, cơ năng chỉ gồm động năng."
+ },
+ {
+  "ma_cau": "K09010301038",
+  "dang_bai_id": "KDB01051",
+  "chac": "cao",
+  "ly_do": "Ném thẳng đứng đi lên, động năng thế năng biến đổi."
+ },
+ {
+  "ma_cau": "K09010301039",
+  "dang_bai_id": "KDB01051",
+  "chac": "cao",
+  "ly_do": "Con lắc đơn từ thấp lên cao, chuyển hoá động năng thành thế năng."
+ },
+ {
+  "ma_cau": "K09010301040",
+  "dang_bai_id": "KDB01051",
+  "chac": "vua",
+  "ly_do": "Trượt xuống máng không ma sát, chuyển hoá; có thể gần dạng ví dụ thực tế."
+ },
+ {
+  "ma_cau": "K09010301041",
+  "dang_bai_id": "KDB01051",
+  "chac": "cao",
+  "ly_do": "Vật rơi, độ cao giảm thì thế năng giảm, động năng tăng."
+ },
+ {
+  "ma_cau": "K09010301042",
+  "dang_bai_id": "KDB01051",
+  "chac": "cao",
+  "ly_do": "Vị trí cao nhất của vật ném lên, động năng bằng 0."
+ },
+ {
+  "ma_cau": "K09010301043",
+  "dang_bai_id": "KDB01051",
+  "chac": "vua",
+  "ly_do": "Trượt ván xuống đáy đường chữ U; gần cả dạng tình huống đời sống."
+ },
+ {
+  "ma_cau": "K09010301044",
+  "dang_bai_id": "KDB01052",
+  "chac": "cao",
+  "ly_do": "Rơi bỏ qua sức cản, cơ năng được bảo toàn."
+ },
+ {
+  "ma_cau": "K09010202051",
+  "dang_bai_id": "KDB01014",
+  "chac": "cao",
+  "ly_do": "Cho m (kg), h (m) trực tiếp, thay số Wt=10mh."
+ },
+ {
+  "ma_cau": "K09010202052",
+  "dang_bai_id": "KDB01014",
+  "chac": "cao",
+  "ly_do": "Cho m (kg), h (m) trực tiếp, thay số."
+ },
+ {
+  "ma_cau": "K09010202053",
+  "dang_bai_id": "KDB01014",
+  "chac": "cao",
+  "ly_do": "Cho m (kg), h (m) trực tiếp, thay số."
+ },
+ {
+  "ma_cau": "K09010202054",
+  "dang_bai_id": "KDB01014",
+  "chac": "cao",
+  "ly_do": "Cho m (kg), h (m) trực tiếp, thay số."
+ },
+ {
+  "ma_cau": "K09010202055",
+  "dang_bai_id": "KDB01014",
+  "chac": "cao",
+  "ly_do": "Cho m (kg), h (m) trực tiếp, thay số."
+ },
+ {
+  "ma_cau": "K09010202056",
+  "dang_bai_id": "KDB01014",
+  "chac": "cao",
+  "ly_do": "Cho m (kg), h (m) trực tiếp, thay số."
+ },
+ {
+  "ma_cau": "K09010202057",
+  "dang_bai_id": "KDB01014",
+  "chac": "cao",
+  "ly_do": "Độ cao so với mốc cho thẳng (0,5 m), thay số, không đổi đơn vị."
+ },
+ {
+  "ma_cau": "K09010202058",
+  "dang_bai_id": "KDB01014",
+  "chac": "cao",
+  "ly_do": "Độ cao so với mốc đã cho thẳng (2 m), thay số."
+ },
+ {
+  "ma_cau": "K09010202059",
+  "dang_bai_id": "KDB01014",
+  "chac": "cao",
+  "ly_do": "Độ cao so với mốc cho thẳng (2,5 m), thay số."
+ },
+ {
+  "ma_cau": "K09010202060",
+  "dang_bai_id": "KDB01014",
+  "chac": "vua",
+  "ly_do": "Phải trừ hai độ cao để có h so với mốc; nhóm không có dạng đổi mốc."
+ },
+ {
+  "ma_cau": "K09010202061",
+  "dang_bai_id": "KDB01014",
+  "chac": "cao",
+  "ly_do": "Độ cao so với mốc cho thẳng (4 m), thay số; dữ kiện 10 m là nhiễu."
+ },
+ {
+  "ma_cau": "K09010202062",
+  "dang_bai_id": "KDB01014",
+  "chac": "vua",
+  "ly_do": "Phải lấy 3 trừ 0,5 để có h so với sàn; nhóm không có dạng riêng."
+ },
+ {
+  "ma_cau": "K09010302051",
+  "dang_bai_id": "KDB01054",
+  "chac": "cao",
+  "ly_do": "Cho m, v, h ở đơn vị chuẩn, tính Wđ + Wt."
+ },
+ {
+  "ma_cau": "K09010302052",
+  "dang_bai_id": "KDB01054",
+  "chac": "cao",
+  "ly_do": "Cho m, v, h ở đơn vị chuẩn, tính Wđ + Wt."
+ },
+ {
+  "ma_cau": "K09010302053",
+  "dang_bai_id": "KDB01054",
+  "chac": "cao",
+  "ly_do": "Cho m, v, h ở đơn vị chuẩn, tính Wđ + Wt."
+ },
+ {
+  "ma_cau": "K09010302054",
+  "dang_bai_id": "KDB01054",
+  "chac": "cao",
+  "ly_do": "Cho m, v, h ở đơn vị chuẩn, tính Wđ + Wt."
+ },
+ {
+  "ma_cau": "K09010302055",
+  "dang_bai_id": "KDB01054",
+  "chac": "cao",
+  "ly_do": "Cho m, v, h ở đơn vị chuẩn, tính Wđ + Wt."
+ },
+ {
+  "ma_cau": "K09010302056",
+  "dang_bai_id": "KDB01054",
+  "chac": "cao",
+  "ly_do": "Cho m, v, h ở đơn vị chuẩn, tính Wđ + Wt."
+ },
+ {
+  "ma_cau": "K09010302057",
+  "dang_bai_id": "KDB01054",
+  "chac": "cao",
+  "ly_do": "Cho m, v, h ở đơn vị chuẩn, tính Wđ + Wt."
+ },
+ {
+  "ma_cau": "K09010302058",
+  "dang_bai_id": "KDB01054",
+  "chac": "cao",
+  "ly_do": "Cho m, v, h ở đơn vị chuẩn, tính Wđ + Wt."
+ },
+ {
+  "ma_cau": "K09010302059",
+  "dang_bai_id": "KDB01054",
+  "chac": "cao",
+  "ly_do": "Cho m, v, h ở đơn vị chuẩn, tính Wđ + Wt."
+ },
+ {
+  "ma_cau": "K09010203051",
+  "dang_bai_id": "KDB01023",
+  "chac": "cao",
+  "ly_do": "Cho Wt và m (kg), tính h (m)."
+ },
+ {
+  "ma_cau": "K09010203052",
+  "dang_bai_id": "KDB01022",
+  "chac": "cao",
+  "ly_do": "Cho Wt và h (m), tính khối lượng (kg)."
+ },
+ {
+  "ma_cau": "K09010203053",
+  "dang_bai_id": "KDB01023",
+  "chac": "cao",
+  "ly_do": "Cho Wt và m (kg), tính h (m)."
+ },
+ {
+  "ma_cau": "K09010203054",
+  "dang_bai_id": "KDB01022",
+  "chac": "cao",
+  "ly_do": "Cho Wt và h (m), tính khối lượng (kg)."
+ },
+ {
+  "ma_cau": "K09010203055",
+  "dang_bai_id": "KDB01023",
+  "chac": "cao",
+  "ly_do": "Cho Wt và m (kg), tính h (m)."
+ },
+ {
+  "ma_cau": "K09010203056",
+  "dang_bai_id": "KDB01022",
+  "chac": "cao",
+  "ly_do": "Cho Wt và h (m), tính khối lượng (kg)."
+ },
+ {
+  "ma_cau": "K09010303051",
+  "dang_bai_id": "KDB01064",
+  "chac": "cao",
+  "ly_do": "Rơi tự do từ độ cao (m), tính tốc độ khi chạm đất."
+ },
+ {
+  "ma_cau": "K09010303052",
+  "dang_bai_id": "KDB01064",
+  "chac": "cao",
+  "ly_do": "Rơi tự do từ độ cao (m), tính tốc độ khi chạm đất."
+ },
+ {
+  "ma_cau": "K09010303053",
+  "dang_bai_id": "KDB01064",
+  "chac": "cao",
+  "ly_do": "Rơi tự do từ độ cao (m), tính tốc độ khi chạm đất."
+ },
+ {
+  "ma_cau": "K09010303054",
+  "dang_bai_id": "KDB01065",
+  "chac": "cao",
+  "ly_do": "Ném thẳng đứng lên với v0 (m/s), tính độ cao cực đại."
+ },
+ {
+  "ma_cau": "K09010303055",
+  "dang_bai_id": "KDB01065",
+  "chac": "cao",
+  "ly_do": "Ném thẳng đứng lên với v0 (m/s), tính độ cao cực đại."
+ },
+ {
+  "ma_cau": "K09010303056",
+  "dang_bai_id": "KDB01065",
+  "chac": "cao",
+  "ly_do": "Ném thẳng đứng lên với v0 (m/s), tính độ cao cực đại."
+ },
+ {
+  "ma_cau": "K09010303057",
+  "dang_bai_id": "KDB01062",
+  "chac": "cao",
+  "ly_do": "Biết Wđ, Wt tại A và Wt tại B, tính Wđ tại B bằng cơ năng A trừ Wt B."
+ },
+ {
+  "ma_cau": "K09010303058",
+  "dang_bai_id": "KDB01062",
+  "chac": "vua",
+  "ly_do": "Cùng cách giải nhưng hỏi thế năng tại B khi biết động năng B."
+ },
+ {
+  "ma_cau": "K09010303059",
+  "dang_bai_id": "KDB01062",
+  "chac": "cao",
+  "ly_do": "Biết Wđ, Wt tại A và Wt tại B, tính Wđ tại B."
+ },
+ {
+  "ma_cau": "K09010303060",
+  "dang_bai_id": "KDB01067",
+  "chac": "vua",
+  "ly_do": "Biết tốc độ, lên thêm Δh, tính tốc độ; Δh như dạng này nhưng đề m/s, đi lên."
+ },
+ {
+  "ma_cau": "K09010303061",
+  "dang_bai_id": "KDB01067",
+  "chac": "vua",
+  "ly_do": "Biết tốc độ, lên thêm Δh, tính tốc độ; Δh như dạng này nhưng đề m/s, đi lên."
+ },
+ {
+  "ma_cau": "K09010303062",
+  "dang_bai_id": "KDB01067",
+  "chac": "vua",
+  "ly_do": "Biết tốc độ, lên thêm Δh, tính tốc độ; Δh như dạng này nhưng đề m/s, đi lên."
+ },
+ {
+  "ma_cau": "K09010303063",
+  "dang_bai_id": "KDB01065",
+  "chac": "cao",
+  "ly_do": "Ném thẳng đứng lên từ mặt đất với v=4 m/s, tính độ cao lớn nhất."
+ },
+ {
+  "ma_cau": "K09010303064",
+  "dang_bai_id": "KDB01063",
+  "chac": "cao",
+  "ly_do": "Cho v1 tại h1 và h2 so với mặt đất, tính v2; hình chỉ minh hoạ."
+ },
+ {
+  "ma_cau": "K09010303065",
+  "dang_bai_id": "KDB01063",
+  "chac": "cao",
+  "ly_do": "Cho v1 tại h1 và h2 so với mặt đất, tính v2; hình chỉ minh hoạ."
+ },
+ {
+  "ma_cau": "K09010303066",
+  "dang_bai_id": "KDB01063",
+  "chac": "vua",
+  "ly_do": "Ném xuống có v0 từ độ cao h, tính tốc độ chạm đất; hợp nhất dạng tốc độ hai độ cao."
+ },
+ {
+  "ma_cau": "K09010303067",
+  "dang_bai_id": "KDB01065",
+  "chac": "vua",
+  "ly_do": "Cho Wđ tại mặt đất và m, tính độ cao lớn nhất; dạng cho v0 nhưng đây cho Wđ."
+ },
+ {
+  "ma_cau": "K09010303068",
+  "dang_bai_id": "KDB01063",
+  "chac": "cao",
+  "ly_do": "Cho v1 tại h1 và h2 so với mặt đất, tính v2; hình chỉ minh hoạ."
+ },
+ {
+  "ma_cau": "K09010204051",
+  "dang_bai_id": "KDB01030",
+  "chac": "cao",
+  "ly_do": "Chỉ khối lượng đổi k lần, độ cao giữ nguyên, hỏi thế năng đổi thế nào."
+ },
+ {
+  "ma_cau": "K09010204052",
+  "dang_bai_id": "KDB01031",
+  "chac": "cao",
+  "ly_do": "Chỉ độ cao đổi k lần, khối lượng không đổi."
+ },
+ {
+  "ma_cau": "K09010204053",
+  "dang_bai_id": "KDB01031",
+  "chac": "cao",
+  "ly_do": "Chỉ độ cao giảm còn một nửa, khối lượng không đổi."
+ },
+ {
+  "ma_cau": "K09010204054",
+  "dang_bai_id": "KDB01030",
+  "chac": "cao",
+  "ly_do": "Chỉ khối lượng giảm 5 lần, độ cao giữ nguyên."
+ },
+ {
+  "ma_cau": "K09010204055",
+  "dang_bai_id": "KDB01032",
+  "chac": "cao",
+  "ly_do": "Một vật hai trạng thái, khối lượng và độ cao cùng đổi, nhân hai hệ số."
+ },
+ {
+  "ma_cau": "K09010204056",
+  "dang_bai_id": "KDB01032",
+  "chac": "cao",
+  "ly_do": "Hai trạng thái của vật, cả khối lượng và độ cao đổi, nhân hệ số."
+ },
+ {
+  "ma_cau": "K09010204057",
+  "dang_bai_id": "KDB01032",
+  "chac": "cao",
+  "ly_do": "Hai trạng thái, khối lượng gấp 3, độ cao bằng một phần ba; nhân hệ số."
+ },
+ {
+  "ma_cau": "K09010204058",
+  "dang_bai_id": "KDB01032",
+  "chac": "cao",
+  "ly_do": "Hai trạng thái, cả hai đại lượng giảm; nhân hai hệ số."
+ },
+ {
+  "ma_cau": "K09010304051",
+  "dang_bai_id": "KDB01071",
+  "chac": "vua",
+  "ly_do": "Ném lên từ mặt đất, tính thế năng tại vị trí biết tốc độ; nhóm thiếu dạng tính Wt/Wđ tại vị trí bất kỳ."
+ },
+ {
+  "ma_cau": "K09010304052",
+  "dang_bai_id": "KDB01070",
+  "chac": "vua",
+  "ly_do": "Rơi tự do, tính động năng sau khi rơi 0,8 m; dạng gần nhất hỏi tốc độ, nhóm thiếu dạng tính Wđ."
+ },
+ {
+  "ma_cau": "K09010206031",
+  "dang_bai_id": "KDB01039",
+  "chac": "cao",
+  "ly_do": "Nguyên lí tháp nước dùng thế năng, ứng dụng kĩ thuật."
+ },
+ {
+  "ma_cau": "K09010206032",
+  "dang_bai_id": "KDB01039",
+  "chac": "cao",
+  "ly_do": "Búa máy: thế năng chuyển thành động năng, ứng dụng kĩ thuật."
+ },
+ {
+  "ma_cau": "K09010206033",
+  "dang_bai_id": "KDB01039",
+  "chac": "cao",
+  "ly_do": "Đập thuỷ điện, mục đích giữ nước trên cao có thế năng lớn."
+ },
+ {
+  "ma_cau": "K09010206034",
+  "dang_bai_id": "KDB01038",
+  "chac": "cao",
+  "ly_do": "Vì sao cẩn thận dụng cụ khi làm việc trên cao, an toàn trên cao."
+ },
+ {
+  "ma_cau": "K09010206035",
+  "dang_bai_id": "KDB01038",
+  "chac": "cao",
+  "ly_do": "Nguy cơ vật rơi khi làm việc ở tầng cao, an toàn trên cao."
+ },
+ {
+  "ma_cau": "K09010206036",
+  "dang_bai_id": "KDB01038",
+  "chac": "cao",
+  "ly_do": "Quy định đội mũ bảo hộ dưới khu thi công trên cao."
+ },
+ {
+  "ma_cau": "K09010206037",
+  "dang_bai_id": "KDB01038",
+  "chac": "cao",
+  "ly_do": "Rào chắn dưới cần trục vì vật cao rơi nguy hiểm, an toàn."
+ },
+ {
+  "ma_cau": "K09010305031",
+  "dang_bai_id": "KDB01078",
+  "chac": "cao",
+  "ly_do": "Xích đu đi lên, động năng chuyển hoá thành thế năng."
+ },
+ {
+  "ma_cau": "K09010305032",
+  "dang_bai_id": "KDB01078",
+  "chac": "cao",
+  "ly_do": "Ném lên, ở điểm cao nhất động năng chuyển hết thành thế năng."
+ },
+ {
+  "ma_cau": "K09010305033",
+  "dang_bai_id": "KDB01078",
+  "chac": "cao",
+  "ly_do": "Nhảy sào, chuyển hoá động năng thành thế năng."
+ },
+ {
+  "ma_cau": "K09010305034",
+  "dang_bai_id": "KDB01078",
+  "chac": "cao",
+  "ly_do": "Nước chảy xuống ở thuỷ điện, thế năng thành động năng."
+ },
+ {
+  "ma_cau": "K09010305035",
+  "dang_bai_id": "KDB01078",
+  "chac": "cao",
+  "ly_do": "Quả lắc đồng hồ từ cao xuống thấp, thế năng thành động năng."
+ },
+ {
+  "ma_cau": "K09010305036",
+  "dang_bai_id": "KDB01078",
+  "chac": "vua",
+  "ly_do": "Búa máy rèn, chuyển hoá năng lượng; có thể gần dạng ứng dụng kĩ thuật."
+ },
+ {
+  "ma_cau": "K09010107051",
+  "dang_bai_id": "KDB01002",
+  "chac": "cao",
+  "ly_do": "Một vật hai tốc độ km/h, đổi đơn vị, hiệu hai động năng (giảm)."
+ },
+ {
+  "ma_cau": "K09010107052",
+  "dang_bai_id": "KDB01002",
+  "chac": "cao",
+  "ly_do": "Khối lượng tấn, tốc độ km/h hai thời điểm, độ tăng động năng."
+ },
+ {
+  "ma_cau": "K09010107053",
+  "dang_bai_id": "KDB01002",
+  "chac": "cao",
+  "ly_do": "Khối lượng tấn, tốc độ km/h hai thời điểm, độ tăng động năng."
+ },
+ {
+  "ma_cau": "K09010107054",
+  "dang_bai_id": "KDB01008",
+  "chac": "vua",
+  "ly_do": "Tỉ số động năng hai vật nhưng đề đã ở đơn vị chuẩn, không đổi đơn vị."
+ },
+ {
+  "ma_cau": "K09010107055",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: so sánh động năng hai vật đơn vị chuẩn (lạc nhóm, thuộc nhóm so sánh động năng)."
+ },
+ {
+  "ma_cau": "K09010107056",
+  "dang_bai_id": "KDB01008",
+  "chac": "vua",
+  "ly_do": "Tỉ số động năng hai vật nhưng đề đã ở đơn vị chuẩn, không đổi đơn vị."
+ },
+ {
+  "ma_cau": "K09010107057",
+  "dang_bai_id": "KDB01008",
+  "chac": "vua",
+  "ly_do": "Tỉ số động năng hai vật nhưng đề đã ở đơn vị chuẩn, không đổi đơn vị."
+ },
+ {
+  "ma_cau": "K09010107058",
+  "dang_bai_id": "KDB01008",
+  "chac": "vua",
+  "ly_do": "Tỉ số động năng hai vật nhưng đề đã ở đơn vị chuẩn, không đổi đơn vị."
+ },
+ {
+  "ma_cau": "K09010107059",
+  "dang_bai_id": "KDB01008",
+  "chac": "vua",
+  "ly_do": "Tỉ số động năng hai vật nhưng đề đã ở đơn vị chuẩn, không đổi đơn vị."
+ },
+ {
+  "ma_cau": "K09010107060",
+  "dang_bai_id": "KDB01008",
+  "chac": "vua",
+  "ly_do": "Tỉ số động năng hai vật nhưng đề đã ở đơn vị chuẩn, không đổi đơn vị."
+ }
+]

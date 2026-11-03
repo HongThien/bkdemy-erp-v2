@@ -1,0 +1,305 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00354",
+   "ly_thuyet": "",
+   "ghi_chu": "Nhóm có lý thuyết sẵn nên không soạn lại. 4 dạng.",
+   "dang_bai": [
+    {
+     "ten": "Nhận biết khái niệm, dấu hiệu và điều kiện của tự dưỡng, dị dưỡng",
+     "mo_ta": "Đề hỏi định nghĩa, dấu hiệu nhận biết, nguyên liệu, nguồn năng lượng hoặc điều kiện của sinh vật tự dưỡng / dị dưỡng.\nCâu so sánh điểm giống, điểm khác giữa hai nhóm cũng thuộc dạng này.\nLàm bằng cách nhớ khái niệm, không cần xét một sinh vật cụ thể.\nLưu ý: đề nêu tên sinh vật cụ thể rồi hỏi thuộc nhóm nào ⇒ thuộc dạng \"Xếp sinh vật quen thuộc vào nhóm tự dưỡng hoặc dị dưỡng\".",
+     "ly_thuyet": "##TC Hai nhóm sinh vật theo cách lấy chất hữu cơ\nSinh vật tự dưỡng: tự tổng hợp chất hữu cơ từ nước và carbon dioxide, nhờ năng lượng ánh sáng được diệp lục hấp thụ.\nSinh vật dị dưỡng: không tự tổng hợp được chất hữu cơ, phải lấy chất hữu cơ có sẵn từ sinh vật khác.\nDấu hiệu nhận biết nhanh: có diệp lục và quang hợp được thì tự dưỡng; không có diệp lục thì dị dưỡng.\nĐiều kiện để tự dưỡng theo kiểu quang hợp: có diệp lục và có ánh sáng.\n\n##CY Chú ý\nĐiểm khác cơ bản là cách lấy chất hữu cơ, không phải kích thước, nơi sống hay khả năng di chuyển.\nĐiểm giống: cả hai nhóm đều trao đổi chất với môi trường.",
+     "vi_du": "##VD\nDấu hiệu nào giúp nhận biết nhanh một sinh vật thuộc nhóm tự dưỡng?\nA. Cơ thể sống trên cạn.\nB. Cơ thể có diệp lục và quang hợp được.\nC. Cơ thể có kích thước lớn.\nD. Cơ thể có khả năng di chuyển.\n\nBài giải:\nSinh vật tự dưỡng tự tổng hợp chất hữu cơ nhờ diệp lục hấp thụ năng lượng ánh sáng.\nVì vậy dấu hiệu nhận biết là cơ thể có diệp lục và quang hợp được.\nNơi sống, kích thước và khả năng di chuyển không quyết định cách lấy chất hữu cơ nên các phương án A, C, D sai.\nChọn B.\n\n##VD\nYếu tố nào sau đây là điều kiện bắt buộc để một sinh vật sống tự dưỡng theo kiểu quang hợp?\nA. Sống ở nơi có nhiệt độ thấp.\nB. Có diệp lục và được chiếu sáng.\nC. Có khả năng di chuyển nhanh.\nD. Có bộ rễ phát triển.\n\nBài giải:\nQuang hợp cần ánh sáng làm nguồn năng lượng và diệp lục để hấp thụ ánh sáng đó.\nThiếu một trong hai điều kiện thì chất hữu cơ không được tổng hợp.\nNhiệt độ thấp, di chuyển nhanh hay bộ rễ không phải điều kiện bắt buộc.\nChọn B.",
+     "nguon_vi_du": "K07070103005, K07070103019",
+     "cau": [
+      "K07070103001",
+      "K07070103002",
+      "K07070103005",
+      "K07070103009",
+      "K07070103013",
+      "K07070103019",
+      "K07070103026",
+      "K07070103028",
+      "K07070103033",
+      "K07070103041",
+      "K07070103042",
+      "K07070103046",
+      "K07070103050"
+     ]
+    },
+    {
+     "ten": "Xếp sinh vật quen thuộc vào nhóm tự dưỡng hoặc dị dưỡng",
+     "mo_ta": "Đề nêu một hoặc nhiều sinh vật cụ thể (cây, tảo, động vật, người, nấm, vi khuẩn…) rồi hỏi thuộc nhóm nào hoặc chọn nhóm gồm toàn sinh vật cùng loại.\nGồm cả câu \"không thuộc nhóm tự dưỡng/dị dưỡng\" và câu hỏi sinh vật tự dưỡng trong một chuỗi thức ăn.\nLàm bằng cách xét sinh vật có diệp lục hay không.\nLưu ý: sinh vật gây nhầm lẫn (nấm sống bám, cây bắt mồi, cây tơ hồng, cây trồng thuỷ canh) ⇒ thuộc dạng \"Xét các trường hợp dễ nhầm về nhóm dinh dưỡng\".",
+     "ly_thuyet": "##TC Sinh vật thường gặp\nSinh vật tự dưỡng: thực vật (cây lúa, cây ngô, rêu, dương xỉ, bèo tấm…), tảo và một số vi khuẩn (vi khuẩn lam).\nSinh vật dị dưỡng: động vật, con người, nấm và phần lớn vi khuẩn.\nTrong chuỗi thức ăn, sinh vật tự dưỡng là mắt xích đầu tiên (cỏ, lá cây…).\n\n##PP Cách xếp loại\nXác định sinh vật có diệp lục và quang hợp được hay không.\nCó diệp lục, quang hợp được thì xếp vào nhóm tự dưỡng.\nKhông có diệp lục, phải ăn hoặc hút chất hữu cơ có sẵn thì xếp vào nhóm dị dưỡng.\nVới câu chọn nhóm, kiểm tra từng sinh vật trong phương án; chỉ cần một sinh vật sai nhóm là loại phương án đó.",
+     "vi_du": "##VD\nNhóm sinh vật nào sau đây gồm toàn sinh vật tự dưỡng?\nA. Cây lúa, tảo lục, cây ngô.\nB. Con thỏ, con cá, cây bắp cải.\nC. Nấm men, vi khuẩn lam, con gà.\nD. Cây lúa, con bò, nấm rơm.\n\nBài giải:\nCây lúa, tảo lục và cây ngô đều có diệp lục, tự tổng hợp được chất hữu cơ nên đều là sinh vật tự dưỡng.\nPhương án B có con thỏ, con cá là động vật nên dị dưỡng.\nPhương án C có nấm men, con gà không có diệp lục nên dị dưỡng.\nPhương án D có con bò, nấm rơm là sinh vật dị dưỡng.\nChọn A.\n\n##VD\nTrong chuỗi thức ăn cỏ – châu chấu – ếch, sinh vật nào là sinh vật tự dưỡng?\nA. Cỏ.\nB. Ếch.\nC. Cá ba.\nD. Châu chấu.\n\nBài giải:\nCỏ có diệp lục, tự tổng hợp được chất hữu cơ nên là sinh vật tự dưỡng.\nChâu chấu và ếch là động vật, phải ăn sinh vật khác nên là sinh vật dị dưỡng; cá ba không có trong chuỗi.\nChọn A.",
+     "nguon_vi_du": "K07070103003, K07070103030",
+     "cau": [
+      "K07070103003",
+      "K07070103004",
+      "K07070103011",
+      "K07070103012",
+      "K07070103014",
+      "K07070103017",
+      "K07070103018",
+      "K07070103024",
+      "K07070103029",
+      "K07070103030",
+      "K07070103036",
+      "K07070103037",
+      "K07070103038",
+      "K07070103040",
+      "K07070103043",
+      "K07070103044",
+      "K07070103045",
+      "K07070103047"
+     ]
+    },
+    {
+     "ten": "Xét các trường hợp dễ nhầm về nhóm dinh dưỡng",
+     "mo_ta": "Đề nêu sinh vật hoặc tình huống dễ gây nhầm: nấm, cây nắp ấm, cây gọng vó, cây tơ hồng, cây trồng trong dung dịch dinh dưỡng, giá thể trồng nấm.\nYêu cầu xác định nhóm dinh dưỡng và giải thích vì sao, hoặc nêu mục đích của việc bắt mồi, sống bám, ủ rơm rạ.\nLàm bằng cách bỏ qua dấu hiệu bề ngoài (sống bám, bắt mồi, không có đất) và chỉ xét có diệp lục, có quang hợp hay không.\nLưu ý: sinh vật quen thuộc, không có tình huống gây nhầm ⇒ thuộc dạng \"Xếp sinh vật quen thuộc vào nhóm tự dưỡng hoặc dị dưỡng\".",
+     "ly_thuyet": "##TC Ba trường hợp dễ nhầm\nCây bắt mồi (nắp ấm, gọng vó) vẫn có diệp lục và quang hợp nên là tự dưỡng; bắt côn trùng chỉ bổ sung chất khoáng ở nơi đất nghèo dinh dưỡng.\nCây tơ hồng, tơ xanh không có diệp lục, sống bám và lấy chất hữu cơ của cây chủ nên là dị dưỡng.\nNấm không có diệp lục nên là dị dưỡng dù sống bám hay sống trên gỗ mục; chất hữu cơ lấy từ xác sinh vật hoặc rơm rạ.\n\n##PP Cách làm bài\nBỏ qua cách sống (bám, bắt mồi, không có đất).\nKiểm tra sinh vật có diệp lục và quang hợp được không.\nKết luận nhóm dinh dưỡng và nêu lí do là có hay không có diệp lục.\n\n##CY Chú ý\nThuộc giới Thực vật chưa chắc là tự dưỡng (tơ hồng).\nTrồng cây trong dung dịch dinh dưỡng chỉ cung cấp nước và chất khoáng, chất hữu cơ vẫn do cây tự tổng hợp.",
+     "vi_du": "##VD\nNấm thuộc nhóm dinh dưỡng nào và vì sao?\nA. Dị dưỡng, vì nấm có kích thước nhỏ.\nB. Tự dưỡng, vì nấm sống bám vào cây xanh.\nC. Dị dưỡng, vì nấm không có diệp lục nên phải lấy chất hữu cơ có sẵn.\nD. Tự dưỡng, vì nấm có màu sắc.\n\nBài giải:\nNấm không có diệp lục nên không quang hợp được, phải lấy chất hữu cơ có sẵn nên là sinh vật dị dưỡng.\nKích thước nhỏ không phải lí do xếp nhóm nên A sai.\nSống bám không tạo ra chất hữu cơ nên B sai; màu sắc không liên quan nên D sai.\nChọn C.\n\n##VD\nMột cây được trồng trong dung dịch dinh dưỡng, không có đất, vẫn xanh tốt dưới ánh sáng. Cây đó thuộc nhóm nào?\nA. Tự dưỡng, vì cây vẫn quang hợp tạo chất hữu cơ.\nB. Dị dưỡng, vì cây không trồng trên đất.\nC. Không thuộc nhóm nào.\nD. Dị dưỡng, vì cây lấy chất từ dung dịch.\n\nBài giải:\nCây xanh tốt dưới ánh sáng nên có diệp lục và quang hợp được.\nDung dịch chỉ cung cấp nước và chất khoáng, còn chất hữu cơ vẫn do cây tự tổng hợp.\nVậy cây thuộc nhóm tự dưỡng.\nChọn A.",
+     "nguon_vi_du": "K07070103006, K07070103032",
+     "cau": [
+      "K07070103006",
+      "K07070103007",
+      "K07070103008",
+      "K07070103016",
+      "K07070103022",
+      "K07070103025",
+      "K07070103032",
+      "K07070103034",
+      "K07070103048"
+     ]
+    },
+    {
+     "ten": "Phân tích vai trò và mối quan hệ phụ thuộc giữa hai nhóm",
+     "mo_ta": "Đề hỏi vai trò của sinh vật tự dưỡng (tạo chất hữu cơ ban đầu, cung cấp oxygen) và sự phụ thuộc của sinh vật dị dưỡng.\nCó thể là giải thích \"vì sao\", dự đoán điều gì xảy ra nếu sinh vật tự dưỡng mất đi hoặc cây thiếu ánh sáng.\nLàm bằng cách suy luận từ nguồn chất hữu cơ và oxygen do quang hợp tạo ra.\nLưu ý: chỉ hỏi định nghĩa hay dấu hiệu của từng nhóm ⇒ thuộc dạng \"Nhận biết khái niệm, dấu hiệu và điều kiện của tự dưỡng, dị dưỡng\".",
+     "ly_thuyet": "##TC Quan hệ giữa hai nhóm\nSinh vật tự dưỡng tạo ra chất hữu cơ và khí oxygen nhờ quang hợp.\nSinh vật dị dưỡng lấy chất hữu cơ từ thức ăn (trực tiếp hoặc gián tiếp từ sinh vật tự dưỡng) và dùng oxygen để hô hấp.\nNếu không còn sinh vật tự dưỡng thì sinh vật dị dưỡng cũng không tồn tại được.\n\n##PP Cách làm bài\nXác định đề hỏi về nguồn chất hữu cơ hay nguồn oxygen.\nTruy ngược nguồn gốc đó về quá trình quang hợp của sinh vật tự dưỡng.\nKết luận về vai trò hoặc hệ quả đối với sinh vật dị dưỡng.",
+     "vi_du": "##VD\nVì sao nói sinh vật dị dưỡng phụ thuộc vào sinh vật tự dưỡng?\nA. Vì sinh vật tự dưỡng có kích thước lớn hơn.\nB. Vì chất hữu cơ mà sinh vật dị dưỡng sử dụng đều do sinh vật tự dưỡng tạo ra.\nC. Vì sinh vật tự dưỡng sống lâu hơn.\nD. Vì sinh vật dị dưỡng không cần năng lượng.\n\nBài giải:\nSinh vật dị dưỡng không tự tổng hợp được chất hữu cơ mà phải lấy từ sinh vật khác.\nNguồn chất hữu cơ ban đầu do sinh vật tự dưỡng tạo ra qua quang hợp.\nKích thước, tuổi thọ không tạo nên sự phụ thuộc; mọi sinh vật đều cần năng lượng nên A, C, D sai.\nChọn B.\n\n##VD\nNếu toàn bộ sinh vật tự dưỡng trên Trái Đất biến mất thì điều gì sẽ xảy ra với sinh vật dị dưỡng?\nA. Không bị ảnh hưởng gì.\nB. Sinh trưởng nhanh hơn do bớt cạnh tranh.\nC. Chuyển thành sinh vật tự dưỡng.\nD. Mất nguồn chất hữu cơ và khí oxygen nên không tồn tại được lâu.\n\nBài giải:\nChất hữu cơ và khí oxygen trên Trái Đất chủ yếu do sinh vật tự dưỡng tạo ra qua quang hợp.\nMất nhóm này, sinh vật dị dưỡng mất nguồn thức ăn và oxygen nên không tồn tại được lâu.\nSinh vật dị dưỡng không thể tự chuyển thành tự dưỡng.\nChọn D.",
+     "nguon_vi_du": "K07070103010, K07070103015",
+     "cau": [
+      "K07070103010",
+      "K07070103015",
+      "K07070103020",
+      "K07070103021",
+      "K07070103023",
+      "K07070103027",
+      "K07070103031",
+      "K07070103035",
+      "K07070103039",
+      "K07070103049"
+     ]
+    }
+   ],
+   "khong_hop": []
+  },
+  {
+   "nhom_id": "KNB00355",
+   "ly_thuyet": "",
+   "ghi_chu": "Nhóm có lý thuyết sẵn. 5 dạng.",
+   "dang_bai": [
+    {
+     "ten": "Nhận biết khái niệm, nguyên liệu, sản phẩm, điều kiện và phương trình quang hợp",
+     "mo_ta": "Đề hỏi định nghĩa quang hợp, nguyên liệu, sản phẩm, điều kiện, nguồn năng lượng, vị trí các chất trong phương trình chữ.\nCó cả câu kiểm tra phương trình viết sai hoặc nhận định đúng/sai về quang hợp.\nLàm bằng cách nhớ phương trình quang hợp và vai trò từng thành phần.\nLưu ý: hỏi quang hợp diễn ra ở đâu, chất đi vào lá bằng đường nào ⇒ thuộc dạng \"Xác định nơi diễn ra quang hợp và đường vận chuyển các chất\".",
+     "ly_thuyet": "##TC Phương trình quang hợp\nQuang hợp là quá trình lá cây dùng nước và carbon dioxide, nhờ năng lượng ánh sáng được diệp lục hấp thụ, tổng hợp chất hữu cơ và giải phóng oxygen.\nPhương trình chữ: Nước + Carbon dioxide → (ánh sáng, diệp lục) → Glucose + Oxygen.\nNguyên liệu ở vế trái: nước, carbon dioxide. Sản phẩm ở vế phải: glucose, oxygen.\nÁnh sáng và diệp lục là điều kiện, được ghi trên mũi tên, không phải chất tham gia hay chất tạo thành.\n\n##CY Chú ý\nDễ đảo nhầm oxygen và carbon dioxide giữa hai vế.\nThiếu ánh sáng hoặc thiếu diệp lục thì quang hợp không xảy ra.",
+     "vi_du": "##VD\nNguyên liệu của quá trình quang hợp gồm\nA. nước và khí carbon dioxide.\nB. chất khoáng và khí oxygen.\nC. nước và khí oxygen.\nD. glucose và khí oxygen.\n\nBài giải:\nPhương trình chữ của quang hợp: Nước + Carbon dioxide → (ánh sáng, diệp lục) → Glucose + Oxygen.\nNguyên liệu nằm ở vế trái gồm nước và carbon dioxide.\nOxygen và glucose là sản phẩm nên các phương án B, C, D sai.\nChọn A.\n\n##VD\nBạn Minh viết: Nước + Oxygen → (ánh sáng, diệp lục) Glucose + Carbon dioxide. Phương trình quang hợp này sai ở điểm nào?\nA. Đảo chỗ oxygen và carbon dioxide\nB. Glucose phải được thay bằng tinh bột\nC. Nước phải chuyển sang vế sản phẩm\nD. Thiếu muối khoáng ở vế nguyên liệu\n\nBài giải:\nKhi quang hợp, lá lấy carbon dioxide làm nguyên liệu và thải oxygen làm sản phẩm; bạn Minh đã đặt ngược hai khí này.\nSản phẩm trong phương trình chữ là glucose, tinh bột được tạo ra sau từ glucose nên B sai.\nNước là nguyên liệu, nằm ở vế trái nên C sai; muối khoáng không có trong phương trình chữ nên D sai.\nChọn A.",
+     "nguon_vi_du": "K07070201002, K07070201052",
+     "cau": [
+      "K07070201001",
+      "K07070201002",
+      "K07070201003",
+      "K07070201004",
+      "K07070201009",
+      "K07070201013",
+      "K07070201014",
+      "K07070201016",
+      "K07070201026",
+      "K07070201027",
+      "K07070201028",
+      "K07070201029",
+      "K07070201034",
+      "K07070201037",
+      "K07070201044",
+      "K07070201051",
+      "K07070201052"
+     ]
+    },
+    {
+     "ten": "Xác định nơi diễn ra quang hợp và đường vận chuyển các chất",
+     "mo_ta": "Đề hỏi quang hợp diễn ra ở cơ quan, tế bào, bào quan nào; nước, carbon dioxide, chất hữu cơ được lấy vào hoặc vận chuyển bằng con đường nào.\nGồm câu về lá, lục lạp, diệp lục, khí khổng, mạch gỗ, mạch rây, rễ.\nLàm bằng cách ghi nhớ vị trí và chức năng từng cấu trúc.\nLưu ý: hỏi sự thay đổi lượng khí trong môi trường ⇒ thuộc dạng \"Giải thích ý nghĩa và sự thay đổi lượng khí do quang hợp\".",
+     "ly_thuyet": "##TC Nơi diễn ra và đường đi của các chất\nQuang hợp diễn ra chủ yếu ở lá, trong lục lạp của tế bào thịt lá vì lục lạp chứa diệp lục.\nNước do rễ hút từ đất, đi lên lá theo mạch gỗ cùng chất khoáng.\nCarbon dioxide từ không khí đi vào lá qua khí khổng; oxygen thải ra cũng qua khí khổng.\nChất hữu cơ do lá tổng hợp được vận chuyển đi nuôi các bộ phận khác theo mạch rây.\n\n##CY Chú ý\nMạch gỗ đi lên mang nước và chất khoáng; mạch rây mang chất hữu cơ từ lá đi.\nLá có màu lục vì lục lạp chứa nhiều diệp lục.",
+     "vi_du": "##VD\nNước dùng cho quang hợp được cây lấy từ đâu?\nA. Từ không khí qua lá.\nB. Từ chất hữu cơ trong thân.\nC. Từ ánh sáng mặt trời.\nD. Từ đất nhờ rễ hút lên.\n\nBài giải:\nNước là nguyên liệu quang hợp do rễ hút từ đất.\nNước được vận chuyển theo mạch gỗ lên lá.\nKhông khí, chất hữu cơ và ánh sáng không phải nguồn nước của cây nên A, B, C sai.\nChọn D.\n\n##VD\nKhí carbon dioxide dùng cho quang hợp được lá lấy vào qua\nA. cuống lá.\nB. gân lá.\nC. khí khổng.\nD. lớp cutin.\n\nBài giải:\nKhí khổng là những lỗ nhỏ trên biểu bì lá, cho khí đi vào và đi ra.\nCarbon dioxide từ không khí đi vào lá qua khí khổng.\nCuống lá, gân lá và lớp cutin không phải đường lấy khí nên A, B, D sai.\nChọn C.",
+     "nguon_vi_du": "K07070201007, K07070201008",
+     "cau": [
+      "K07070201005",
+      "K07070201007",
+      "K07070201008",
+      "K07070201011",
+      "K07070201018",
+      "K07070201020",
+      "K07070201021",
+      "K07070201022",
+      "K07070201030",
+      "K07070201032",
+      "K07070201036",
+      "K07070201042",
+      "K07070201049",
+      "K07070201057",
+      "K07070201058"
+     ]
+    },
+    {
+     "ten": "Xác định số phận sản phẩm và sự chuyển hoá năng lượng trong quang hợp",
+     "mo_ta": "Đề hỏi chất hữu cơ tạo ra được dự trữ ở dạng nào, ở bộ phận nào.\nHỏi dạng năng lượng được chuyển hoá và nơi tích luỹ, hoặc truy nguồn gốc năng lượng trong thức ăn.\nLàm bằng cách theo dõi chuỗi ánh sáng → glucose → tinh bột.\nLưu ý: hỏi nơi diễn ra hay đường vận chuyển glucose bằng mạch rây ⇒ thuộc dạng \"Xác định nơi diễn ra quang hợp và đường vận chuyển các chất\".",
+     "ly_thuyet": "##TC Sản phẩm và năng lượng\nGlucose được vận chuyển đi nuôi các bộ phận của cây hoặc chuyển thành tinh bột dự trữ trong củ, quả, hạt.\nQuang hợp chuyển hoá quang năng (năng lượng ánh sáng) thành hoá năng tích luỹ trong chất hữu cơ.\nNăng lượng trong lương thực, thực phẩm có nguồn gốc ban đầu từ ánh sáng mặt trời qua quang hợp.\n\n##CY Chú ý\nOxygen là sản phẩm của quang hợp nhưng không phải nơi tích luỹ năng lượng.\nMuối khoáng và nhiệt của đất không cung cấp năng lượng để tạo tinh bột.",
+     "vi_du": "##VD\nChất hữu cơ tạo ra trong quang hợp được cây dự trữ chủ yếu dưới dạng\nA. chất khoáng.\nB. nước.\nC. khí oxygen.\nD. tinh bột.\n\nBài giải:\nGlucose tạo ra trong quang hợp được chuyển thành tinh bột.\nTinh bột được tích luỹ trong củ, quả, hạt.\nChất khoáng, nước, oxygen không phải chất hữu cơ dự trữ nên A, B, C sai.\nChọn D.\n\n##VD\nCủ khoai lang dự trữ nhiều tinh bột. Khi ăn khoai, cơ thể người nhận được năng lượng. Năng lượng này có nguồn gốc ban đầu từ đâu?\nA. Năng lượng ánh sáng do lá hấp thụ khi quang hợp\nB. Nhiệt năng của lớp đất bao quanh củ\nC. Muối khoáng do rễ cây hút từ đất\nD. Hoá năng có sẵn trong khí oxygen\n\nBài giải:\nLá hấp thụ quang năng và chuyển thành hoá năng tích luỹ trong glucose.\nGlucose được chuyển thành tinh bột dự trữ ở củ.\nVì vậy năng lượng trong khoai có nguồn gốc ban đầu từ ánh sáng.\nCủ không lấy nhiệt của đất (B), muối khoáng không cung cấp năng lượng (C), oxygen không phải nguồn năng lượng tạo tinh bột (D).\nChọn A.",
+     "nguon_vi_du": "K07070201012, K07070201056",
+     "cau": [
+      "K07070201006",
+      "K07070201010",
+      "K07070201012",
+      "K07070201038",
+      "K07070201046",
+      "K07070201055",
+      "K07070201056"
+     ]
+    },
+    {
+     "ten": "Giải thích ý nghĩa của quang hợp và sự thay đổi lượng khí",
+     "mo_ta": "Đề hỏi vai trò của quang hợp đối với cây, sinh vật và tự nhiên; quang hợp làm tăng hay giảm khí nào trong không khí.\nGồm câu \"ý nghĩa nào không phải\", \"vì sao quang hợp điều hoà không khí\", oxygen phục vụ hô hấp.\nLàm bằng cách gắn khí được lấy vào (carbon dioxide) và khí thải ra (oxygen) với ý nghĩa sinh thái.\nLưu ý: đề cho bố trí thí nghiệm (chuông kín, nước vôi trong) rồi dự đoán kết quả ⇒ thuộc dạng \"Dự đoán ảnh hưởng của điều kiện và thí nghiệm đến quang hợp\".",
+     "ly_thuyet": "##TC Ý nghĩa của quang hợp\nQuang hợp tạo chất hữu cơ nuôi sống cây và hầu hết sinh vật; chất hữu cơ vừa xây dựng cơ thể vừa là nguồn năng lượng cho hoạt động sống.\nQuang hợp lấy carbon dioxide và thải oxygen, nên làm giảm lượng carbon dioxide, tăng lượng oxygen và góp phần điều hoà không khí.\nOxygen do cây thải ra được sinh vật dùng cho hô hấp.\n\n##CY Chú ý\nQuang hợp không làm tăng nhiệt độ khí quyển.\nHầu hết chuỗi thức ăn và oxygen trong khí quyển bắt nguồn từ quang hợp.",
+     "vi_du": "##VD\nÝ nghĩa nào sau đây không phải của quang hợp đối với tự nhiên?\nA. Làm tăng nhiệt độ của khí quyển.\nB. Làm giảm lượng khí carbon dioxide trong không khí.\nC. Tạo ra nguồn chất hữu cơ nuôi sống sinh vật.\nD. Cung cấp khí oxygen cho khí quyển.\n\nBài giải:\nQuang hợp lấy carbon dioxide nên làm giảm lượng khí này trong không khí.\nQuang hợp tạo chất hữu cơ nuôi sinh vật và thải oxygen cho khí quyển.\nQuang hợp không có tác dụng làm tăng nhiệt độ khí quyển nên A là ý không đúng.\nChọn A.\n\n##VD\nVì sao nói quang hợp giúp điều hoà không khí?\nA. Vì quang hợp làm giảm nhiệt độ của nước.\nB. Vì quang hợp làm tăng lượng bụi trong không khí.\nC. Vì quang hợp lấy bớt khí carbon dioxide và thải khí oxygen.\nD. Vì quang hợp làm tăng độ ẩm của đất.\n\nBài giải:\nQuang hợp lấy carbon dioxide và thải oxygen.\nNhờ đó thành phần không khí được giữ ở mức phù hợp cho sự sống.\nCác phương án A, B, D không liên quan đến thành phần khí nên sai.\nChọn C.",
+     "nguon_vi_du": "K07070201017, K07070201035",
+     "cau": [
+      "K07070201017",
+      "K07070201024",
+      "K07070201025",
+      "K07070201031",
+      "K07070201033",
+      "K07070201035",
+      "K07070201039",
+      "K07070201040",
+      "K07070201047",
+      "K07070201050"
+     ]
+    },
+    {
+     "ten": "Dự đoán ảnh hưởng của điều kiện và thí nghiệm đến quang hợp",
+     "mo_ta": "Đề cho một tình huống hoặc thí nghiệm (cây ở chỗ tối, thiếu nước, che lá, chuông kín, nước vôi trong, cây không diệp lục) rồi hỏi quang hợp hoặc lượng chất thay đổi thế nào.\nLàm bằng cách xác định điều kiện hoặc nguyên liệu nào bị thay đổi rồi suy ra hệ quả theo phương trình quang hợp.\nGồm câu chọn đúng/sai về điều kiện quang hợp và câu hỏi cây nào không quang hợp được.\nLưu ý: chỉ hỏi lượng khí tăng hay giảm khi quang hợp mà không có thí nghiệm ⇒ thuộc dạng \"Giải thích ý nghĩa và sự thay đổi lượng khí do quang hợp\".",
+     "ly_thuyet": "##TC Điều kiện ảnh hưởng đến quang hợp\nQuang hợp cần ánh sáng, diệp lục, nước và carbon dioxide; thiếu một yếu tố thì quang hợp giảm hoặc ngừng.\nCây không có diệp lục (như cây tơ hồng) không quang hợp được.\nKhi có ánh sáng, quang hợp mạnh hơn hô hấp nên carbon dioxide giảm, oxygen tăng.\nNước vôi trong bị vẩn đục khi có nhiều carbon dioxide.\n\n##PP Cách làm bài\nXác định yếu tố bị thay đổi trong tình huống (ánh sáng, nước, khí…).\nXét yếu tố đó là nguyên liệu hay điều kiện của quang hợp.\nSuy ra quang hợp tăng, giảm hay ngừng.\nDùng phương trình quang hợp để suy ra chất tăng hoặc giảm.\n\n##CY Chú ý\nBan đêm không có ánh sáng nên quang hợp không diễn ra.\nKhông nhầm chiều: quang hợp lấy carbon dioxide chứ không thải carbon dioxide.",
+     "vi_du": "##VD\nĐặt một chậu cây xanh trong chuông thuỷ tinh kín, chiếu sáng liên tục vài giờ. Dựa vào phương trình quang hợp, so với lúc đầu, lượng khí trong chuông thay đổi thế nào?\nA. Carbon dioxide tăng, oxygen giảm\nB. Carbon dioxide giảm, oxygen tăng\nC. Carbon dioxide và oxygen đều tăng\nD. Carbon dioxide và oxygen đều không đổi\n\nBài giải:\nNgoài sáng cây quang hợp: lấy carbon dioxide làm nguyên liệu và thải oxygen là sản phẩm.\nTrong chuông kín, carbon dioxide giảm và oxygen tăng.\nCây cũng hô hấp nhưng ngoài sáng quang hợp mạnh hơn nhiều nên nhìn chung kết quả vẫn như vậy.\nChọn B.\n\n##VD\nĐặt chậu cây xanh và một cốc nước vôi trong vào chung một chuông thuỷ tinh kín, chiếu sáng liên tục nhiều giờ. So với trước khi chiếu sáng, nước vôi trong trong chuông sẽ\nA. Đục hơn vì hơi nước từ lá làm nước vôi bị vẩn\nB. Vẫn trong, ít vẩn đục vì CO₂ giảm do cây quang hợp\nC. Đục hơn vì carbon dioxide trong chuông tăng do cây thải ra\nD. Không đổi vì cây không trao đổi khí khi có ánh sáng\n\nBài giải:\nKhi có ánh sáng, cây quang hợp và lấy CO₂ làm nguyên liệu nên CO₂ trong chuông giảm dần.\nNước vôi trong chỉ bị đục khi có nhiều CO₂ nên vẫn trong, ít vẩn đục hơn trước.\nHơi nước không làm nước vôi trong đổi màu (A); quang hợp không thải CO₂ (C); khi có sáng cây vẫn trao đổi khí (D).\nChọn B.",
+     "nguon_vi_du": "K07070201053, K07070201054",
+     "cau": [
+      "K07070201015",
+      "K07070201019",
+      "K07070201023",
+      "K07070201041",
+      "K07070201043",
+      "K07070201045",
+      "K07070201048",
+      "K07070201053",
+      "K07070201054"
+     ]
+    }
+   ],
+   "khong_hop": []
+  },
+  {
+   "nhom_id": "KNB00356",
+   "ly_thuyet": "",
+   "ghi_chu": "Nhóm có lý thuyết sẵn. 4 dạng.",
+   "dang_bai": [
+    {
+     "ten": "Nhận biết cấu tạo và chức năng từng bộ phận của lá",
+     "mo_ta": "Đề hỏi tên và chức năng một bộ phận của lá: phiến, cuống, biểu bì, khí khổng, gân lá, mạch gỗ, mạch rây, tế bào thịt lá, lục lạp.\nĐề cho chức năng rồi hỏi tên bộ phận hoặc ngược lại; gồm câu nơi quang hợp diễn ra trực tiếp.\nLàm bằng cách ghi nhớ chức năng của từng cấu trúc.\nLưu ý: đề hỏi vì sao hình dạng, cách sắp xếp lá có lợi ⇒ thuộc dạng \"Giải thích đặc điểm hình dạng, sắp xếp lá với việc thu nhận ánh sáng\".",
+     "ly_thuyet": "##TC Cấu tạo và chức năng của lá\nPhiến lá là phần bản rộng, nơi quang hợp; cuống lá nối phiến lá với cành và chứa mạch dẫn.\nLớp biểu bì trong suốt, bảo vệ lá và cho ánh sáng đi qua; khí khổng là cửa ngõ trao đổi khí và thoát hơi nước.\nTế bào thịt lá chứa nhiều lục lạp mang diệp lục, là nơi trực tiếp diễn ra quang hợp.\nGân lá có mạch gỗ đưa nước và chất khoáng lên lá, mạch rây đưa chất hữu cơ đi khỏi lá; mạng gân phân nhánh giúp mọi vùng của lá được cấp nước.\n\n##CY Chú ý\nMàu sắc lá già sắp rụng là do diệp lục bị phân huỷ, không phải đặc điểm phục vụ quang hợp.",
+     "vi_du": "##VD\nBộ phận nào trên biểu bì lá là cửa ngõ trao đổi khí với môi trường?\nA. Cuống lá.\nB. Gân lá.\nC. Lông trên mặt lá.\nD. Khí khổng.\n\nBài giải:\nKhí khổng là những lỗ nhỏ trên biểu bì lá.\nKhí khổng đóng mở để carbon dioxide đi vào, oxygen và hơi nước đi ra.\nCuống lá, gân lá, lông trên mặt lá không làm nhiệm vụ trao đổi khí nên A, B, C sai.\nChọn D.\n\n##VD\nMạch gỗ trong gân lá vận chuyển chất gì tới lá?\nA. Diệp lục.\nB. Chất hữu cơ.\nC. Nước và chất khoáng.\nD. Khí oxygen.\n\nBài giải:\nMạch gỗ vận chuyển nước và chất khoáng do rễ hút từ đất lên lá.\nChất hữu cơ được mạch rây vận chuyển đi khỏi lá nên B sai.\nDiệp lục nằm trong lục lạp và oxygen là chất khí không đi theo mạch gỗ nên A, D sai.\nChọn C.",
+     "nguon_vi_du": "K07070202004, K07070202007",
+     "cau": [
+      "K07070202001",
+      "K07070202004",
+      "K07070202005",
+      "K07070202006",
+      "K07070202007",
+      "K07070202008",
+      "K07070202011",
+      "K07070202014",
+      "K07070202015",
+      "K07070202017",
+      "K07070202019",
+      "K07070202026",
+      "K07070202029",
+      "K07070202032",
+      "K07070202035",
+      "K07070202036",
+      "K07070202037",
+      "K07070202040",
+      "K07070202041",
+      "K07070202043",
+      "K07070202048",
+      "K07070202050",
+      "K07070202051",
+      "K07070202052"
+     ]
+    },
+    {
+     "ten": "Giải thích đặc điểm hình dạng, sắp xếp lá với việc thu nhận ánh sáng",
+     "mo_ta": "Đề hỏi tác dụng của phiến lá rộng, dẹt, mỏng; cách mọc so le, hướng về phía sáng; cây nhiều lá hơn cây ít lá.\nYêu cầu chọn đặc điểm phục vụ thu nhận ánh sáng hoặc nêu lí do lá có đặc điểm đó.\nLàm bằng cách gắn đặc điểm với lượng ánh sáng thu nhận hoặc sự trao đổi khí.\nLưu ý: đề nêu lá bị tổn thương, bị che hay điều kiện sống bất thường rồi hỏi hệ quả ⇒ thuộc dạng \"Dự đoán ảnh hưởng khi lá bị tổn thương hoặc điều kiện thay đổi\".",
+     "ly_thuyet": "##TC Đặc điểm lá phù hợp với quang hợp\nPhiến lá rộng và dẹt làm tăng diện tích tiếp xúc với ánh sáng nên lá thu nhận được nhiều năng lượng.\nPhiến lá mỏng làm quãng đường khuếch tán của khí ngắn, trao đổi khí dễ dàng.\nLá mọc so le và hướng về phía có ánh sáng giúp các lá không che khuất nhau, mọi lá đều nhận được ánh sáng.\nTổng diện tích lá càng lớn thì lượng ánh sáng thu nhận càng nhiều.\n\n##PP Cách làm bài\nXác định đặc điểm của lá được nêu.\nXét đặc điểm đó phục vụ thu nhận ánh sáng hay trao đổi khí.\nChọn vai trò tương ứng.",
+     "vi_du": "##VD\nPhiến lá có dạng bản rộng và dẹt có tác dụng gì đối với quang hợp?\nA. Giúp lá cứng cáp hơn.\nB. Tăng diện tích tiếp xúc với ánh sáng.\nC. Giúp lá giữ nước tốt hơn.\nD. Giúp lá hút chất khoáng.\n\nBài giải:\nPhiến lá bản rộng và dẹt có diện tích bề mặt lớn.\nNhờ đó lá hứng được nhiều ánh sáng hơn cho quang hợp.\nLá cứng cáp, giữ nước, hút chất khoáng không phải tác dụng của hình dạng này nên A, C, D sai.\nChọn B.\n\n##VD\nVì sao cây có nhiều lá thường quang hợp mạnh hơn cây cùng loại nhưng ít lá?\nA. Vì thân cây to hơn.\nB. Vì lá dày hơn.\nC. Vì tổng diện tích hấp thụ ánh sáng lớn hơn.\nD. Vì rễ hút được nhiều nước hơn.\n\nBài giải:\nDiện tích lá càng lớn thì lượng ánh sáng thu nhận được càng nhiều.\nCây nhiều lá có tổng diện tích hấp thụ ánh sáng lớn hơn nên quang hợp mạnh hơn.\nKích thước thân, độ dày lá hay lượng nước rễ hút không phải nguyên nhân trực tiếp nên A, B, D sai.\nChọn C.",
+     "nguon_vi_du": "K07070202002, K07070202016",
+     "cau": [
+      "K07070202002",
+      "K07070202003",
+      "K07070202010",
+      "K07070202013",
+      "K07070202016",
+      "K07070202021",
+      "K07070202028",
+      "K07070202034",
+      "K07070202042",
+      "K07070202044"
+     ]
+    },
+    {
+     "ten": "Dự đoán ảnh hưởng khi lá bị tổn thương hoặc điều kiện thay đổi",
+     "mo_ta": "Đề nêu một tình huống: bịt khí khổng, lá phủ bụi, sâu ăn khuyết, cắt bỏ lá, trồng quá dày, lá trong bóng tối.\nHỏi quang hợp thay đổi thế nào hoặc nguyên nhân giảm quang hợp.\nLàm bằng cách xác định yếu tố nào (ánh sáng, khí, lục lạp, nước) bị cản trở rồi suy ra hệ quả.\nLưu ý: đề hỏi tác dụng của một đặc điểm bình thường của lá, không có tình huống bất lợi ⇒ thuộc dạng \"Giải thích đặc điểm hình dạng, sắp xếp lá với việc thu nhận ánh sáng\".",
+     "ly_thuyet": "##TC Yếu tố cần cho quang hợp ở lá\nLá cần ánh sáng, carbon dioxide (qua khí khổng), nước (qua mạch gỗ) và lục lạp chứa diệp lục.\nLá bị che sáng, bịt khí khổng hay mất diện tích lá thì quang hợp giảm.\nKhông có ánh sáng, quá trình tạo diệp lục bị hạn chế nên lá vàng nhạt.\n\n##PP Cách làm bài\nXác định yếu tố bị cản trở trong tình huống.\nXét yếu tố đó là ánh sáng, khí, nước hay lục lạp.\nSuy ra quang hợp giảm bao nhiêu và vì sao.\n\n##CY Chú ý\nBịt khí khổng vẫn cho ánh sáng đi qua nhưng carbon dioxide không vào được lá nên quang hợp giảm mạnh.\nMất lá là mất cơ quan quang hợp chính và các tế bào chứa lục lạp.",
+     "vi_du": "##VD\nNếu bịt kín toàn bộ khí khổng ở hai mặt lá bằng lớp keo trong suốt thì quang hợp của lá sẽ\nA. tăng lên vì lá giữ được nhiều nước.\nB. không thay đổi vì ánh sáng vẫn chiếu tới.\nC. giảm mạnh vì lá không lấy được khí carbon dioxide.\nD. chỉ ngừng vào ban đêm.\n\nBài giải:\nLớp keo trong suốt vẫn cho ánh sáng đi qua nên B không đúng.\nKhí khổng bị bịt nên carbon dioxide, nguyên liệu quang hợp, không vào được lá.\nVì vậy quang hợp giảm mạnh; giữ nước không làm quang hợp tăng nên A sai.\nChọn C.\n\n##VD\nKhi lá bị phủ một lớp bụi dày, quang hợp của cây sẽ giảm chủ yếu vì\nA. lớp bụi cản ánh sáng và bịt bớt khí khổng.\nB. lớp bụi làm gân lá bị đứt.\nC. lớp bụi hút hết nước trong lá.\nD. lớp bụi làm lá nặng hơn.\n\nBài giải:\nLớp bụi dày làm giảm ánh sáng tới lá.\nBụi cũng bịt bớt khí khổng nên trao đổi khí bị cản trở.\nGân lá không đứt, bụi không hút hết nước, khối lượng lá không ảnh hưởng quang hợp nên B, C, D sai.\nChọn A.",
+     "nguon_vi_du": "K07070202012, K07070202018",
+     "cau": [
+      "K07070202012",
+      "K07070202018",
+      "K07070202020",
+      "K07070202025",
+      "K07070202027",
+      "K07070202030",
+      "K07070202038",
+      "K07070202039",
+      "K07070202045",
+      "K07070202049"
+     ]
+    },
+    {
+     "ten": "Giải thích sự thích nghi đặc biệt của lá với môi trường sống",
+     "mo_ta": "Đề nêu loài hoặc môi trường đặc biệt (xương rồng, cây thuỷ sinh, cây dưới tán rừng, mùa đông rụng lá, lớp cutin) rồi hỏi cấu tạo hoặc hoạt động của lá thay đổi ra sao và vì sao.\nGồm câu hỏi vị trí khí khổng ở cây trên cạn và cây thuỷ sinh, hạn chế mất nước.\nLàm bằng cách gắn đặc điểm với điều kiện môi trường (thiếu nước, thiếu sáng, ngập nước).\nLưu ý: đặc điểm chung của lá cây điển hình, không có điều kiện môi trường đặc biệt ⇒ thuộc dạng \"Nhận biết cấu tạo và chức năng từng bộ phận của lá\".",
+     "ly_thuyet": "##TC Thích nghi của lá với môi trường\nCây trên cạn: khí khổng tập trung nhiều ở mặt dưới lá, nơi ít bị nắng chiếu trực tiếp, vừa trao đổi khí vừa hạn chế thoát hơi nước.\nCây thuỷ sinh lá nổi: khí khổng tập trung ở mặt trên vì mặt dưới ngập nước.\nCây ở nơi khô hạn (xương rồng): lá biến thành gai để giảm mất nước, thân màu lục đảm nhận quang hợp.\nCây dưới tán rừng thiếu sáng: phiến lá rộng hơn để thu đủ ánh sáng.\nLớp cutin trong suốt giúp lá giữ nước mà vẫn cho ánh sáng đi qua.\n\n##CY Chú ý\nRụng lá vào mùa đông làm giảm thoát hơi nước.",
+     "vi_du": "##VD\nỞ phần lớn cây trên cạn, khí khổng tập trung nhiều ở\nA. mặt trên của lá.\nB. gân lá.\nC. mặt dưới của lá.\nD. cuống lá.\n\nBài giải:\nMặt dưới lá ít bị nắng chiếu trực tiếp hơn mặt trên.\nKhí khổng ở đó giúp trao đổi khí bình thường mà hạn chế thoát hơi nước.\nGân lá và cuống lá không phải nơi tập trung khí khổng nên B, D sai; mặt trên bị nắng nhiều nên A sai.\nChọn C.\n\n##VD\nỞ cây xương rồng sống nơi khô hạn, lá biến thành gai. Chức năng quang hợp lúc này chủ yếu do bộ phận nào đảm nhận?\nA. Thân.\nB. Gai.\nC. Rễ.\nD. Hoa.\n\nBài giải:\nLá biến thành gai để giảm mất nước nên không còn quang hợp là chính.\nThân xương rồng màu lục, chứa diệp lục nên thay lá thực hiện quang hợp.\nGai là lá biến đổi, rễ nằm trong đất và hoa không phải cơ quan quang hợp chính nên B, C, D sai.\nChọn A.",
+     "nguon_vi_du": "K07070202009, K07070202022",
+     "cau": [
+      "K07070202009",
+      "K07070202022",
+      "K07070202023",
+      "K07070202024",
+      "K07070202031",
+      "K07070202033",
+      "K07070202046",
+      "K07070202047"
+     ]
+    }
+   ],
+   "khong_hop": []
+  }
+ ]
+}

@@ -1,0 +1,811 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00481",
+   "chu_de": "Điện học",
+   "chuyen_de": "Công - Công suất",
+   "nhom": "Bài toán tính điện năng tiêu thụ và tiền điện",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nĐiện năng tiêu thụ $A=\\mathcal{P}\\cdot t$; dùng $\\mathcal{P}$ (kW), $t$ (h) thì $A$ tính bằng kWh.\n$1\\ \\mathrm{kW}=1000\\ \\mathrm{W}$. Số đếm công tơ điện = điện năng tiêu thụ (kWh) hiệu giữa số cuối và số đầu.\nTiền điện = số kWh $\\times$ giá mỗi kWh.\n\n##PP 2. Các bước làm bài\nĐổi công suất từ W sang kW.\nTính $A=\\mathcal{P}\\cdot t$ cho từng thiết bị rồi cộng (nếu có nhiều thiết bị).\nNhân với giá tiền một kWh (nếu hỏi tiền điện).\n\n##CY 3. Lưu ý\nQuên đổi W sang kW làm sai kết quả 1000 lần.\nThiết bị công suất nhỏ hơn, cùng thời gian dùng thì tiêu thụ ít điện năng hơn.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01664",
+     "thu_tu": 1,
+     "ten": "Tính điện năng một thiết bị từ công suất và thời gian",
+     "mo_ta": "Đề cho công suất (W) và thời gian hoạt động (giờ) của một thiết bị; hỏi điện năng ra kWh.\nLàm bằng cách đổi W sang kW rồi nhân với thời gian.\nLưu ý: nhiều thiết bị cùng tính tổng ⇒ thuộc dạng \"Tính tổng điện năng của nhiều thiết bị\".",
+     "ly_thuyet": "##TC Điện năng\n$A=\\mathcal{P}\\cdot t$ với $\\mathcal{P}$ (kW), $t$ (h) cho $A$ (kWh).\n\n##PP Cách làm\nĐổi $\\mathcal{P}$ từ W sang kW (chia 1000).\nNhân với $t$ để ra kWh.\n\n##CY Lỗi hay mắc\nQuên đổi W sang kW nên kết quả lớn gấp 1000 lần.",
+     "vi_du": "##VD\nBóng đèn có công suất 40W hoạt động liên tục trong 5 giờ. Tính năng lượng điện tiêu thụ ra đơn vị kWh.\nA. 200kWh\nB. 2kWh\nC. 0,2kWh\nD. 0,04kWh\n\nBài giải:\nĐổi $\\mathcal{P}=40\\ \\mathrm{W}=0{,}04\\ \\mathrm{kW}$.\nĐiện năng tiêu thụ: $A=\\mathcal{P}\\cdot t=0{,}04\\times5=0{,}2\\ \\mathrm{kWh}$.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01665",
+     "thu_tu": 2,
+     "ten": "Tính tổng điện năng của nhiều thiết bị",
+     "mo_ta": "Đề cho công suất và thời gian dùng trong tháng của hai thiết bị; hỏi tổng điện năng tiêu thụ.\nTính điện năng từng thiết bị rồi cộng lại.\nLưu ý: chỉ một thiết bị ⇒ thuộc dạng \"Tính điện năng một thiết bị từ công suất và thời gian\".",
+     "ly_thuyet": "##TC Tổng điện năng\n$A=A_1+A_2$ với $A_i=\\mathcal{P}_i\\cdot t_i$.\n\n##PP Cách làm\nĐổi mỗi công suất sang kW.\nTính $A_i$ cho từng thiết bị.\nCộng các giá trị.\n\n##CY Lỗi hay mắc\nCộng công suất rồi nhân với một thời gian chung dù thời gian khác nhau.",
+     "vi_du": "##VD\nTrong một tháng, đèn 40W dùng 60 giờ, quạt 60W dùng 100 giờ. Tính tổng năng lượng điện cả hai thiết bị tiêu thụ.\nA. 8400kWh\nB. 8,4kWh\nC. 6kWh\nD. 2,4kWh\n\nBài giải:\nĐèn: $A_1=0{,}04\\times60=2{,}4\\ \\mathrm{kWh}$.\nQuạt: $A_2=0{,}06\\times100=6\\ \\mathrm{kWh}$.\nTổng điện năng: $A=2{,}4+6=8{,}4\\ \\mathrm{kWh}$.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01666",
+     "thu_tu": 3,
+     "ten": "Tính tiền điện từ chỉ số công tơ và giá điện",
+     "mo_ta": "Đề cho chỉ số công tơ đầu và cuối tháng, giá tiền một kWh; hỏi số tiền điện phải trả.\nTính điện năng bằng hiệu hai chỉ số rồi nhân với giá điện.\nLưu ý: đề cho công suất và thời gian ⇒ thuộc hai dạng tính điện năng.",
+     "ly_thuyet": "##TC Tiền điện\nĐiện năng = chỉ số cuối $-$ chỉ số đầu (kWh).\nTiền điện = điện năng $\\times$ giá một kWh.\n\n##PP Cách làm\nTính hiệu chỉ số công tơ.\nNhân với giá điện, ghi đơn vị đồng.\n\n##CY Lỗi hay mắc\nNhân chỉ số cuối (không trừ chỉ số đầu) với giá điện.",
+     "vi_du": "##VD\nĐầu tháng công tơ điện nhà bạn An chỉ số 1250, cuối tháng chỉ số 1370. Biết giá điện 2000 đồng/kWh, tính tiền điện phải trả trong tháng.\nA. 2 740 000 đồng\nB. 5 240 000 đồng\nC. 240 000 đồng\nD. 120 đồng\n\nBài giải:\nĐiện năng tiêu thụ: $1370-1250=120\\ \\mathrm{kWh}$.\nTiền điện: $120\\times2000=240\\,000$ đồng.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01667",
+     "thu_tu": 4,
+     "ten": "So sánh, tính điện năng tiết kiệm khi dùng đèn tiết kiệm",
+     "mo_ta": "Đề cho hai loại đèn cùng độ sáng nhưng công suất khác nhau, cùng thời gian sử dụng.\nHỏi đèn nào tiêu thụ ít điện hơn, hoặc tính điện năng tiết kiệm được.\nLàm bằng cách tính $A$ của từng đèn rồi lấy hiệu.\nLưu ý: không so sánh hai đèn mà chỉ tính điện năng hoặc tiền điện ⇒ thuộc các dạng trên.",
+     "ly_thuyet": "##TC So sánh tiết kiệm\nCùng thời gian, thiết bị công suất nhỏ hơn thì điện năng tiêu thụ nhỏ hơn.\nĐiện năng tiết kiệm $=A_2-A_1$ ($A_2$ của đèn thường, $A_1$ của đèn tiết kiệm).\n\n##PP Cách làm\nĐổi công suất sang kW.\nTính $A$ cho mỗi đèn.\nLấy hiệu để tìm phần tiết kiệm.\n\n##CY Lỗi hay mắc\nCộng điện năng hai đèn thay vì lấy hiệu.",
+     "vi_du": "##VD\nĐèn LED 9W và đèn sợi đốt 60W cho độ sáng tương đương, cùng sử dụng 200 giờ mỗi tháng. Tính phần năng lượng điện tiết kiệm được khi dùng đèn LED thay đèn sợi đốt.\nA. 10200kWh\nB. 13,8kWh\nC. 12kWh\nD. 10,2kWh\n\nBài giải:\nĐèn LED: $A_1=0{,}009\\times200=1{,}8\\ \\mathrm{kWh}$.\nĐèn sợi đốt: $A_2=0{,}06\\times200=12\\ \\mathrm{kWh}$.\nĐiện năng tiết kiệm: $12-1{,}8=10{,}2\\ \\mathrm{kWh}$.\nChọn D."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00470",
+   "chu_de": "Điện học",
+   "chuyen_de": "Định luật Ohm",
+   "nhom": "Bài toán kết hợp 2 công thức R = U/I và R = ρl/s",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nĐiện trở $R$ đặc trưng cho mức độ cản trở dòng điện của vật dẫn, đơn vị ôm ($\\Omega$); $1\\ \\mathrm{k\\Omega}=10^3\\ \\Omega$, $1\\ \\mathrm{M\\Omega}=10^6\\ \\Omega$.\nĐịnh luật Ohm: cường độ dòng điện qua dây dẫn tỉ lệ thuận với hiệu điện thế hai đầu dây và tỉ lệ nghịch với điện trở: $I=\\dfrac{U}{R}$.\nĐiện trở dây dẫn: $R=\\rho\\dfrac{l}{S}$ ($l$ chiều dài, $S$ tiết diện, $\\rho$ điện trở suất của vật liệu): $R$ tỉ lệ thuận với $l$, tỉ lệ nghịch với $S$, phụ thuộc vật liệu.\nVới hai dây cùng vật liệu: cùng tiết diện thì $\\dfrac{R_1}{R_2}=\\dfrac{l_1}{l_2}$; cùng chiều dài thì $\\dfrac{R_1}{R_2}=\\dfrac{S_2}{S_1}$.\n\n##PP 2. Các bước làm bài\nTính điện trở từng dây: dây có đủ $\\rho$, $l$, $S$ dùng $R=\\rho\\dfrac{l}{S}$; dây có $U$, $I$ dùng $R=\\dfrac{U}{I}$.\nLập tỉ số điện trở rồi suy ra tỉ số $l$ hoặc $S$ theo yếu tố còn lại giống nhau.\n\n##CY 3. Lưu ý\nTỉ lệ thuận với $l$, tỉ lệ nghịch với $S$: dễ lấy ngược tỉ số.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01670",
+     "thu_tu": 1,
+     "ten": "Tìm chiều dài dây B khi biết U, I và dây A",
+     "mo_ta": "Đề cho dây A đủ $\\rho$, $l$, $S$ và dây B cùng vật liệu, cùng tiết diện nhưng khác chiều dài; với B biết $U$ và $I$.\nTính $R_A$ bằng công thức điện trở, tính $R_B$ bằng định luật Ohm, rồi suy ra $l_B$ nhờ $R$ tỉ lệ thuận với $l$.\nLưu ý: đề cho đồ thị $I$-$U$ và hỏi so sánh tiết diện ⇒ thuộc dạng \"So sánh tiết diện hai dây từ đồ thị I-U\".",
+     "ly_thuyet": "##TC Hai dây cùng vật liệu, cùng tiết diện\n$R_A=\\rho\\dfrac{l_A}{S}$ và $R_B=\\dfrac{U}{I}$.\nCùng vật liệu, cùng tiết diện: $\\dfrac{R_B}{R_A}=\\dfrac{l_B}{l_A}$, suy ra $l_B=l_A\\cdot\\dfrac{R_B}{R_A}$.\n\n##PP Cách làm\nTính $R_A=\\rho\\dfrac{l_A}{S}$.\nTính $R_B=\\dfrac{U}{I}$.\nÁp dụng $l_B=l_A\\cdot\\dfrac{R_B}{R_A}$.\n\n##CY Lỗi hay mắc\nLấy nghịch đảo tỉ số $\\dfrac{R_A}{R_B}$.\nDừng lại ở $l_A$, chưa nhân tỉ số điện trở.",
+     "vi_du": "##VD\nDây A (nikelin, ρ = 0,4 Ω·mm²/m) dài 5 m, tiết diện 0,5 mm². Dây B cùng vật liệu, cùng tiết diện nhưng khác chiều dài; khi mắc vào U = 12 V thì I = 1,5 A. Tính chiều dài dây B.\nA. 10 m\nB. 2,5 m\nC. 5 m\nD. 20 m\n\nBài giải:\nĐiện trở dây A: $R_A=\\rho\\dfrac{l_A}{S}=\\dfrac{0{,}4\\times5}{0{,}5}=4\\ \\Omega$.\nĐiện trở dây B: $R_B=\\dfrac{U}{I}=\\dfrac{12}{1{,}5}=8\\ \\Omega$.\nHai dây cùng vật liệu, cùng tiết diện nên $R$ tỉ lệ thuận với $l$: $l_B=l_A\\cdot\\dfrac{R_B}{R_A}=5\\times\\dfrac{8}{4}=10\\ \\mathrm{m}$.\nChọn A.\n\n##VD\nDây A (constantan, ρ = 0,5 Ω·mm²/m) dài 6 m, tiết diện 0,5 mm². Dây B cùng vật liệu, cùng tiết diện nhưng khác chiều dài; khi mắc vào U = 27 V thì I = 1,5 A. Tính chiều dài dây B.\nA. 2 m\nB. 18 m\nC. 6 m\nD. 54 m\n\nBài giải:\nĐiện trở dây A: $R_A=\\dfrac{0{,}5\\times6}{0{,}5}=6\\ \\Omega$.\nĐiện trở dây B: $R_B=\\dfrac{U}{I}=\\dfrac{27}{1{,}5}=18\\ \\Omega$.\nCùng vật liệu, cùng tiết diện nên $l_B=l_A\\cdot\\dfrac{R_B}{R_A}=6\\times\\dfrac{18}{6}=18\\ \\mathrm{m}$.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01671",
+     "thu_tu": 2,
+     "ten": "So sánh tiết diện hai dây từ đồ thị I-U",
+     "mo_ta": "Đề cho đồ thị $I$-$U$ của hai dây cùng chiều dài, cùng vật liệu, khác tiết diện.\nĐọc toạ độ để tính $R_A$, $R_B$ bằng $U/I$, rồi suy ra tỉ số tiết diện nhờ $R$ tỉ lệ nghịch với $S$.\nLưu ý: đề cho $\\rho$, $l$ và $U$, $I$ để tìm chiều dài ⇒ thuộc dạng \"Tìm chiều dài dây B khi biết U, I và dây A\".",
+     "ly_thuyet": "##TC Hai dây cùng chiều dài, cùng vật liệu\n$R=\\dfrac{U}{I}$ đọc từ đồ thị.\n$R$ tỉ lệ nghịch với $S$: $\\dfrac{S_A}{S_B}=\\dfrac{R_B}{R_A}$.\n\n##PP Cách làm\nChọn cùng một giá trị $U$ trên đồ thị, đọc $I_A$ và $I_B$.\nTính $R_A=\\dfrac{U}{I_A}$, $R_B=\\dfrac{U}{I_B}$.\nÁp dụng $\\dfrac{S_A}{S_B}=\\dfrac{R_B}{R_A}$ để so sánh.\n\n##CY Lỗi hay mắc\nĐảo tỉ lệ nghịch: điện trở nhỏ hơn ứng với tiết diện LỚN hơn.",
+     "vi_du": "##VD\nĐồ thị I-U của hai dây dẫn A, B cùng chiều dài, cùng vật liệu nhưng khác tiết diện:  So sánh tiết diện hai dây.\nA. $S_{A}$ gấp 2 lần $S_{B}$\nB. $S_{B}$ gấp 2 lần $S_{A}$\nC. $S_{A}$ = $S_{B}$\nD. Không xác định được\n\nBài giải:\nTừ đồ thị tại $U=6\\ \\mathrm{V}$: $R_A=\\dfrac{6}{6}=1\\ \\Omega$, $R_B=\\dfrac{6}{3}=2\\ \\Omega$.\nCùng chiều dài, cùng vật liệu nên $R$ tỉ lệ nghịch với $S$: $\\dfrac{S_A}{S_B}=\\dfrac{R_B}{R_A}=\\dfrac{2}{1}$.\nVậy $S_A$ gấp 2 lần $S_B$.\nChọn A."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00471",
+   "chu_de": "Điện học",
+   "chuyen_de": "Định luật Ohm",
+   "nhom": "Bài toán biện luận độ sáng bóng đèn khi dịch chuyển con chạy biến trở",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nĐèn mắc nối tiếp với biến trở: điện trở toàn mạch $R=R_b+R_{mathrm{d}}$, dòng điện $I=\\dfrac{U}{R_b+R_{mathrm{d}}}$ ($U$ không đổi).\nĐộ sáng của đèn phụ thuộc cường độ dòng điện (công suất) qua đèn: $I$ lớn thì đèn sáng mạnh.\nDịch con chạy làm $R_b$ tăng thì $I$ giảm; $R_b$ giảm thì $I$ tăng.\n\n##PP 2. Các bước làm bài\nXác định chiều thay đổi của $R_b$ khi dịch con chạy.\nSuy ra chiều thay đổi của điện trở toàn mạch rồi của $I$.\nKết luận độ sáng của đèn.\n\n##CY 3. Lưu ý\nNguồn có hiệu điện thế không đổi; điện trở đèn coi như không đổi.\nMạch vẫn kín nên đèn chỉ yếu đi chứ không tắt ngay.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01646",
+     "thu_tu": 1,
+     "ten": "Biện luận độ sáng đèn khi đổi biến trở nối tiếp",
+     "mo_ta": "Đề cho đèn mắc nối tiếp với biến trở vào nguồn không đổi.\nKhi tăng/giảm biến trở hoặc dịch con chạy, hỏi độ sáng của đèn (và dòng điện, hiệu điện thế) thay đổi thế nào.\nLàm bằng cách lập luận định tính: $R_b$ đổi ⇒ $R$ toàn mạch đổi ⇒ $I$ đổi ⇒ độ sáng đổi.\nLưu ý: đề cho số liệu để tính giá trị $I$ hoặc $R_b$ cụ thể ⇒ thuộc nhóm tính toán mạch tương ứng.",
+     "ly_thuyet": "##TC Độ sáng đèn và biến trở\n$I=\\dfrac{U}{R_b+R_{mathrm{d}}}$ với $U$ không đổi.\n$R_b$ tăng ⇒ $I$ giảm ⇒ đèn sáng yếu đi; $R_b$ giảm ⇒ $I$ tăng ⇒ đèn sáng mạnh hơn.\n\n##PP Cách làm\nXét chiều thay đổi của $R_b$.\nSuy ra $R$ toàn mạch và $I$.\nKết luận độ sáng đèn.",
+     "vi_du": "##VD\nĐèn mắc nối tiếp với một biến trở vào nguồn có hiệu điện thế không đổi. Khi tăng giá trị biến trở Rb, độ sáng của đèn thay đổi thế nào?\nA. Đèn sáng mạnh hơn\nB. Đèn sáng yếu hơn\nC. Đèn sáng không đổi\nD. Đèn tắt hẳn ngay lập tức\n\nBài giải:\nĐiện trở toàn mạch $R=R_b+R_{mathrm{d}}$.\nKhi $R_b$ tăng thì $R$ tăng, nên dòng điện $I=\\dfrac{U}{R_b+R_{mathrm{d}}}$ giảm (vì $U$ không đổi).\nDòng điện qua đèn giảm nên đèn sáng yếu hơn.\nChọn B."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00472",
+   "chu_de": "Điện học",
+   "chuyen_de": "Định luật Ohm",
+   "nhom": "Bài toán cắt - ghép dây dẫn",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nĐiện trở dây dẫn $R=\\rho\\dfrac{l}{S}$.\nGiữ nguyên tiết diện và vật liệu: $R$ tỉ lệ thuận với $l$.\nKéo dài hoặc gập dây mà thể tích không đổi: $V=l\\cdot S$ không đổi, nên $l$ đổi $n$ lần thì $S$ đổi $\\dfrac{1}{n}$ lần.\n\n##PP 2. Các bước làm bài\nXác định yếu tố nào được giữ nguyên (tiết diện hay thể tích).\nLập tỉ lệ thay đổi của $l$ và $S$.\nThay vào $R=\\rho\\dfrac{l}{S}$ để tìm $R_2$ theo $R_1$.\n\n##CY 3. Lưu ý\nKhi giữ nguyên thể tích, cả $l$ và $S$ đều đổi nên $R$ đổi theo bình phương hệ số.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01647",
+     "thu_tu": 1,
+     "ten": "Cắt ngắn dây (giữ nguyên tiết diện), tìm điện trở mới",
+     "mo_ta": "Đề cho dây có điện trở $R_1$, cắt còn một phần chiều dài ban đầu, giữ nguyên tiết diện.\nHỏi điện trở mới; làm bằng cách dùng $R$ tỉ lệ thuận với $l$.\nLưu ý: đề nói kéo dài hoặc gập dây, giữ nguyên thể tích ⇒ thuộc dạng \"Kéo dài hoặc gập dây giữ nguyên thể tích, tìm R mới\".",
+     "ly_thuyet": "##TC Điện trở và chiều dài\nGiữ nguyên $S$ và vật liệu: $\\dfrac{R_2}{R_1}=\\dfrac{l_2}{l_1}$.\n\n##PP Cách làm\nLập tỉ số $\\dfrac{l_2}{l_1}$ từ đề.\nÁp dụng $R_2=R_1\\cdot\\dfrac{l_2}{l_1}$.\n\n##CY Lỗi hay mắc\nNhân thay vì chia, đảo ngược tỉ lệ thuận.",
+     "vi_du": "##VD\nMột dây dẫn có điện trở R₁ = 15 Ω. Nếu cắt dây ngắn lại còn 1/3 chiều dài ban đầu (giữ nguyên tiết diện), điện trở mới R₂ là bao nhiêu?\nA. 45 Ω\nB. 15 Ω\nC. 5 Ω\nD. 12 Ω\n\nBài giải:\nGiữ nguyên tiết diện nên điện trở tỉ lệ thuận với chiều dài.\nChiều dài còn $\\dfrac{1}{3}$ nên $R_2=\\dfrac{R_1}{3}=\\dfrac{15}{3}=5\\ \\Omega$.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01648",
+     "thu_tu": 2,
+     "ten": "Kéo dài hoặc gập dây giữ nguyên thể tích, tìm R mới",
+     "mo_ta": "Đề cho dây có điện trở $R_1$, kéo dài gấp $n$ lần hoặc gập lại thành $n$ đoạn, giữ nguyên thể tích.\nPhải suy ra tiết diện đổi ngược lại với chiều dài, rồi tính $R_2$ theo $R_1$ (thay đổi $n^2$ lần).\nLưu ý: cắt ngắn mà giữ nguyên tiết diện ⇒ thuộc dạng \"Cắt ngắn dây (giữ nguyên tiết diện), tìm điện trở mới\".",
+     "ly_thuyet": "##TC Thể tích không đổi\n$V=l\\cdot S$ không đổi: chiều dài gấp $n$ lần thì tiết diện giảm còn $\\dfrac{1}{n}$.\nKéo dài $n$ lần: $R_2=n^2R_1$. Gập thành $n$ đoạn (chiều dài còn $\\dfrac{1}{n}$): $R_2=\\dfrac{R_1}{n^2}$.\n\n##PP Cách làm\nXác định hệ số đổi của $l$, suy ra hệ số đổi của $S$.\nThay vào $R=\\rho\\dfrac{l}{S}$ rồi so với $R_1$.\n\n##CY Lỗi hay mắc\nChỉ tính theo chiều dài mà quên tiết diện cũng đổi.\nNhầm hệ số $n^2$ thành $2n$ hoặc $n^3$.",
+     "vi_du": "##VD\nMột dây dẫn có điện trở R₁ = 6 Ω. Kéo dây dài gấp đôi (giữ nguyên thể tích, tức tiết diện giảm một nửa), điện trở mới R₂ là bao nhiêu?\nA. 12 Ω\nB. 24 Ω\nC. 3 Ω\nD. 48 Ω\n\nBài giải:\nGiữ nguyên thể tích: chiều dài gấp đôi thì tiết diện giảm một nửa.\n$R_2=\\rho\\dfrac{2l}{S/2}=4\\rho\\dfrac{l}{S}=4R_1$.\n$R_2=4\\times6=24\\ \\Omega$.\nChọn B.\n\n##VD\nMột dây dẫn có điện trở R₁ = 32 Ω. Gập dây lại làm đôi (giữ nguyên thể tích, tức tiết diện tăng gấp đôi), điện trở của dây gập đôi này là bao nhiêu?\nA. 16 Ω\nB. 128 Ω\nC. 8 Ω\nD. 64 Ω\n\nBài giải:\nGiữ nguyên thể tích: gập đôi thì chiều dài còn một nửa, tiết diện gấp đôi.\n$R_2=\\rho\\dfrac{l/2}{2S}=\\dfrac{1}{4}\\rho\\dfrac{l}{S}=\\dfrac{R_1}{4}$.\n$R_2=\\dfrac{32}{4}=8\\ \\Omega$.\nChọn C."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00484",
+   "chu_de": "Điện học",
+   "chuyen_de": "Công - Công suất",
+   "nhom": "Biện luận công suất trong mạch nối tiếp / song song",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nCông suất tiêu thụ thực tế $\\mathcal{P}=U\\cdot I$ ($U$, $I$ thực tế); đèn sáng hơn khi công suất thực tế lớn hơn.\nMạch nối tiếp: $I$ chung, $U=U_1+U_2$. Mạch song song: $U$ chung, $I=I_1+I_2$.\nĐèn sáng bình thường khi $U_{mathrm{d}}=U_{mathrm{dm}}$; nhỏ hơn thì sáng yếu; lớn hơn thì sáng mạnh, dễ hỏng.\n\n##PP 2. Các bước làm bài\nTìm hiệu điện thế (hoặc dòng điện) thực tế của đèn từ tính chất mạch.\nSo sánh với định mức, hoặc tính $\\mathcal{P}=U\\cdot I$ của từng đèn để so sánh.\n\n##CY 3. Lưu ý\nHai đèn có cùng công suất thực tế thì sáng như nhau.\nĐèn nối tiếp: hiệu điện thế thực tế khác nhau, không chia đều.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01668",
+     "thu_tu": 1,
+     "ten": "Đánh giá độ sáng đèn nối tiếp điện trở so với định mức",
+     "mo_ta": "Đề cho đèn ghi định mức mắc nối tiếp với biến trở hoặc điện trở, biết nguồn và hiệu điện thế trên điện trở.\nTính $U_{mathrm{d}}=U_{mathrm{ng}}-U_{R}$ rồi so với $U_{mathrm{dm}}$ để kết luận sáng yếu, bình thường hay mạnh hơn.\nLưu ý: đề cho hai đèn và số đo $U$, $I$ để so sánh độ sáng ⇒ thuộc dạng \"So sánh độ sáng hai đèn bằng công suất thực tế\".",
+     "ly_thuyet": "##TC Độ sáng so với định mức\nNối tiếp: $U_{mathrm{d}}=U_{mathrm{ng}}-U_{R}$.\n$U_{mathrm{d}}<U_{mathrm{dm}}$: sáng yếu; $U_{mathrm{d}}=U_{mathrm{dm}}$: sáng bình thường; $U_{mathrm{d}}>U_{mathrm{dm}}$: sáng mạnh, dễ hỏng.\n\n##PP Cách làm\nTính $U_{mathrm{d}}=U_{mathrm{ng}}-U_{R}$.\nSo sánh với $U_{mathrm{dm}}$ và kết luận.\n\n##CY Lỗi hay mắc\nLấy cả hiệu điện thế nguồn để so với $U_{mathrm{dm}}$.",
+     "vi_du": "##VD\nĐèn ghi \"220V – 0,5A\" mắc nối tiếp với một biến trở, cả hai mắc vào nguồn 230V. Biết hiệu điện thế trên biến trở là 20V. Đèn sáng thế nào?\nA. Sáng yếu hơn bình thường\nB. Sáng bình thường\nC. Sáng mạnh hơn bình thường, dễ hỏng\nD. Không xác định được vì thiếu dữ kiện\n\nBài giải:\nMạch nối tiếp: $U_{mathrm{ng}}=U_{b}+U_{mathrm{d}}$ nên $U_{mathrm{d}}=230-20=210\\ \\mathrm{V}$.\n$210\\ \\mathrm{V}<220\\ \\mathrm{V}$ (định mức) nên đèn sáng yếu hơn bình thường.\nChọn A."
+    },
+    {
+     "dang_id": "KDB01669",
+     "thu_tu": 2,
+     "ten": "So sánh độ sáng hai đèn bằng công suất thực tế",
+     "mo_ta": "Đề cho hai đèn mắc nối tiếp (biết $I$ chung và $U_1$, $U_2$) hoặc song song (biết $U$ chung và $I_1$, $I_2$).\nTính công suất thực tế $\\mathcal{P}=U\\cdot I$ của từng đèn, đèn công suất lớn hơn sáng hơn; bằng nhau thì sáng như nhau.\nLưu ý: đề cho đèn ghi định mức với biến trở/điện trở, hỏi sáng so với định mức ⇒ thuộc dạng \"Đánh giá độ sáng đèn nối tiếp điện trở so với định mức\".",
+     "ly_thuyet": "##TC Công suất thực tế\n$\\mathcal{P}=U\\cdot I$; đèn có $\\mathcal{P}$ thực tế lớn hơn thì sáng hơn.\nNối tiếp: $I$ chung nên $\\mathcal{P}$ tỉ lệ với $U$. Song song: $U$ chung nên $\\mathcal{P}$ tỉ lệ với $I$.\n\n##PP Cách làm\nXác định đại lượng chung của mạch.\nTính $\\mathcal{P}_1=U_1I_1$ và $\\mathcal{P}_2=U_2I_2$.\nSo sánh để kết luận.\n\n##CY Lỗi hay mắc\nCho rằng cùng dòng điện thì sáng bằng nhau, bỏ qua hiệu điện thế khác nhau.",
+     "vi_du": "##VD\nHai đèn Đ1 và Đ2 mắc nối tiếp, dòng điện qua mạch là I = 0,5A. Đèn Đ1 có U₁ = 100V, đèn Đ2 có U₂ = 120V đo được khi mạch hoạt động. Đèn nào sáng hơn?\nA. Đ1 sáng hơn vì U₁ đo được nhỏ hơn\nB. Hai đèn sáng bằng nhau vì dòng điện qua chúng bằng nhau\nC. Đ2 sáng hơn vì công suất tiêu thụ thực tế lớn hơn\nD. Không thể so sánh vì thiếu điện trở của đèn\n\nBài giải:\nMạch nối tiếp có dòng điện chung $I=0{,}5\\ \\mathrm{A}$.\n$\\mathcal{P}_1=U_1I=100\\times0{,}5=50\\ \\mathrm{W}$.\n$\\mathcal{P}_2=U_2I=120\\times0{,}5=60\\ \\mathrm{W}$.\n$\\mathcal{P}_2>\\mathcal{P}_1$ nên Đ2 sáng hơn.\nChọn C."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K09030304001",
+   "nhom_id": "KNB00481",
+   "loai": "trac_nghiem",
+   "de": "Bóng đèn có công suất 40W hoạt động liên tục trong 5 giờ. Tính năng lượng điện tiêu thụ ra đơn vị kWh.",
+   "lua_chon": [
+    "200kWh",
+    "2kWh",
+    "0,2kWh",
+    "0,04kWh"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Đổi P = 40W = 0,04kW. W = P·t = 0,04 × 5 = 0,2kWh.\n\nVì sao các phương án khác sai:\n- A: Quên đổi W sang kW (1000W = 1kW) trước khi tính.\n- B: Đổi sai bậc, 1kW = 1000W chứ không phải 100W.\n- D: Đã quên nhân với thời gian t, chỉ lấy giá trị P đã đổi đơn vị."
+  },
+  {
+   "ma_cau": "K09030304002",
+   "nhom_id": "KNB00481",
+   "loai": "trac_nghiem",
+   "de": "Quạt điện có công suất 60W hoạt động liên tục trong 10 giờ. Tính năng lượng điện tiêu thụ ra đơn vị kWh.",
+   "lua_chon": [
+    "0,6kWh",
+    "600kWh",
+    "6kWh",
+    "0,06kWh"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Đổi P = 60W = 0,06kW. W = P·t = 0,06 × 10 = 0,6kWh.\n\nVì sao các phương án khác sai:\n- B: Quên đổi W sang kW trước khi tính.\n- C: Đổi sai bậc, 1kW = 1000W chứ không phải 100W.\n- D: Đã quên nhân với thời gian t."
+  },
+  {
+   "ma_cau": "K09030304003",
+   "nhom_id": "KNB00481",
+   "loai": "trac_nghiem",
+   "de": "Tủ lạnh có công suất 120W hoạt động liên tục trong 24 giờ. Tính năng lượng điện tiêu thụ ra đơn vị kWh.",
+   "lua_chon": [
+    "2880kWh",
+    "28,8kWh",
+    "0,12kWh",
+    "2,88kWh"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Đổi P = 120W = 0,12kW. W = P·t = 0,12 × 24 = 2,88kWh.\n\nVì sao các phương án khác sai:\n- A: Quên đổi W sang kW trước khi tính.\n- B: Đổi sai bậc, 1kW = 1000W chứ không phải 100W.\n- C: Đã quên nhân với thời gian t."
+  },
+  {
+   "ma_cau": "K09030304004",
+   "nhom_id": "KNB00481",
+   "loai": "trac_nghiem",
+   "de": "Trong một tháng, đèn 40W dùng 60 giờ, quạt 60W dùng 100 giờ. Tính tổng năng lượng điện cả hai thiết bị tiêu thụ.",
+   "lua_chon": [
+    "8400kWh",
+    "8,4kWh",
+    "6kWh",
+    "2,4kWh"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Đèn: 0,04kW × 60h = 2,4kWh. Quạt: 0,06kW × 100h = 6kWh. Tổng = 2,4 + 6 = 8,4kWh.\n\nVì sao các phương án khác sai:\n- A: Quên đổi W sang kW cho cả hai thiết bị trước khi tính.\n- C: Đã quên cộng năng lượng của đèn, chỉ tính quạt.\n- D: Đã quên cộng năng lượng của quạt, chỉ tính đèn."
+  },
+  {
+   "ma_cau": "K09030304005",
+   "nhom_id": "KNB00481",
+   "loai": "trac_nghiem",
+   "de": "Trong một tháng, nồi cơm điện 700W dùng 20 giờ, ấm đun nước 1000W dùng 15 giờ. Tính tổng năng lượng điện cả hai thiết bị tiêu thụ.",
+   "lua_chon": [
+    "29000kWh",
+    "14kWh",
+    "15kWh",
+    "29kWh"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Nồi cơm điện: 0,7kW × 20h = 14kWh. Ấm đun nước: 1kW × 15h = 15kWh. Tổng = 14 + 15 = 29kWh.\n\nVì sao các phương án khác sai:\n- A: Quên đổi W sang kW cho cả hai thiết bị trước khi tính.\n- B: Đã quên cộng năng lượng của ấm đun nước, chỉ tính nồi cơm điện.\n- C: Đã quên cộng năng lượng của nồi cơm điện, chỉ tính ấm đun nước."
+  },
+  {
+   "ma_cau": "K09030304006",
+   "nhom_id": "KNB00481",
+   "loai": "trac_nghiem",
+   "de": "Trong một tháng, tivi 80W dùng 90 giờ, máy tính 200W dùng 60 giờ. Tính tổng năng lượng điện cả hai thiết bị tiêu thụ.",
+   "lua_chon": [
+    "19,2kWh",
+    "19200kWh",
+    "7,2kWh",
+    "12kWh"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Tivi: 0,08kW × 90h = 7,2kWh. Máy tính: 0,2kW × 60h = 12kWh. Tổng = 7,2 + 12 = 19,2kWh.\n\nVì sao các phương án khác sai:\n- B: Quên đổi W sang kW cho cả hai thiết bị trước khi tính.\n- C: Đã quên cộng năng lượng của máy tính, chỉ tính tivi.\n- D: Đã quên cộng năng lượng của tivi, chỉ tính máy tính."
+  },
+  {
+   "ma_cau": "K09030304007",
+   "nhom_id": "KNB00481",
+   "loai": "trac_nghiem",
+   "de": "Đầu tháng công tơ điện nhà bạn An chỉ số 1250, cuối tháng chỉ số 1370. Biết giá điện 2000 đồng/kWh, tính tiền điện phải trả trong tháng.",
+   "lua_chon": [
+    "2 740 000 đồng",
+    "5 240 000 đồng",
+    "240 000 đồng",
+    "120 đồng"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Điện năng tiêu thụ = 1370 − 1250 = 120kWh. Tiền điện = 120 × 2000 = 240 000 đồng.\n\nVì sao các phương án khác sai:\n- A: Đã lấy số chỉ cuối tháng làm điện năng tiêu thụ, quên trừ số chỉ đầu tháng.\n- B: Đã cộng hai số chỉ công tơ thay vì lấy hiệu.\n- D: Đã quên nhân số điện tiêu thụ với đơn giá."
+  },
+  {
+   "ma_cau": "K09030304008",
+   "nhom_id": "KNB00481",
+   "loai": "trac_nghiem",
+   "de": "Đầu tháng công tơ điện nhà bạn Bình chỉ số 840, cuối tháng chỉ số 920. Biết giá điện 2500 đồng/kWh, tính tiền điện phải trả trong tháng.",
+   "lua_chon": [
+    "2 300 000 đồng",
+    "200 000 đồng",
+    "4 400 000 đồng",
+    "80 đồng"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Điện năng tiêu thụ = 920 − 840 = 80kWh. Tiền điện = 80 × 2500 = 200 000 đồng.\n\nVì sao các phương án khác sai:\n- A: Đã lấy số chỉ cuối tháng làm điện năng tiêu thụ, quên trừ số chỉ đầu tháng.\n- C: Đã cộng hai số chỉ công tơ thay vì lấy hiệu.\n- D: Đã quên nhân số điện tiêu thụ với đơn giá."
+  },
+  {
+   "ma_cau": "K09030304009",
+   "nhom_id": "KNB00481",
+   "loai": "trac_nghiem",
+   "de": "Đầu tháng công tơ điện nhà bạn Chi chỉ số 2100, cuối tháng chỉ số 2280. Biết giá điện 2200 đồng/kWh, tính tiền điện phải trả trong tháng.",
+   "lua_chon": [
+    "5 016 000 đồng",
+    "396 000 đồng",
+    "9 636 000 đồng",
+    "180 đồng"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Điện năng tiêu thụ = 2280 − 2100 = 180kWh. Tiền điện = 180 × 2200 = 396 000 đồng.\n\nVì sao các phương án khác sai:\n- A: Đã lấy số chỉ cuối tháng làm điện năng tiêu thụ, quên trừ số chỉ đầu tháng.\n- C: Đã cộng hai số chỉ công tơ thay vì lấy hiệu.\n- D: Đã quên nhân số điện tiêu thụ với đơn giá."
+  },
+  {
+   "ma_cau": "K09030304010",
+   "nhom_id": "KNB00481",
+   "loai": "trac_nghiem",
+   "de": "Đầu tháng công tơ điện nhà bạn Dũng chỉ số 500, cuối tháng chỉ số 650. Biết giá điện 1800 đồng/kWh, tính tiền điện phải trả trong tháng.",
+   "lua_chon": [
+    "1 170 000 đồng",
+    "2 070 000 đồng",
+    "270 000 đồng",
+    "150 đồng"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Điện năng tiêu thụ = 650 − 500 = 150kWh. Tiền điện = 150 × 1800 = 270 000 đồng.\n\nVì sao các phương án khác sai:\n- A: Đã lấy số chỉ cuối tháng làm điện năng tiêu thụ, quên trừ số chỉ đầu tháng.\n- B: Đã cộng hai số chỉ công tơ thay vì lấy hiệu.\n- D: Đã quên nhân số điện tiêu thụ với đơn giá."
+  },
+  {
+   "ma_cau": "K09030304011",
+   "nhom_id": "KNB00481",
+   "loai": "trac_nghiem",
+   "de": "Đèn LED 9W và đèn sợi đốt 60W cho độ sáng tương đương nhau, cùng sử dụng 100 giờ. Đèn nào tiêu thụ ít năng lượng điện hơn?",
+   "lua_chon": [
+    "Đèn LED, vì công suất nhỏ hơn",
+    "Đèn sợi đốt, vì công suất lớn hơn thì sáng lâu hơn",
+    "Hai đèn tiêu thụ điện bằng nhau vì độ sáng như nhau",
+    "Không thể so sánh vì hai đèn khác loại"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Cùng thời gian sử dụng, đèn có công suất nhỏ hơn (đèn LED 9W) tiêu thụ năng lượng điện W = P·t ít hơn đèn sợi đốt 60W.\n\nVì sao các phương án khác sai:\n- B: Công suất lớn hơn không có nghĩa là sáng lâu hơn, mà tiêu thụ năng lượng nhiều hơn.\n- C: Độ sáng như nhau không có nghĩa năng lượng tiêu thụ bằng nhau, còn phụ thuộc công suất.\n- D: Có thể so sánh qua công thức W = P·t vì đã biết công suất và thời gian dùng."
+  },
+  {
+   "ma_cau": "K09030304012",
+   "nhom_id": "KNB00481",
+   "loai": "trac_nghiem",
+   "de": "Đèn LED 9W và đèn sợi đốt 60W cho độ sáng tương đương, cùng sử dụng 200 giờ mỗi tháng. Tính phần năng lượng điện tiết kiệm được khi dùng đèn LED thay đèn sợi đốt.",
+   "lua_chon": [
+    "10200kWh",
+    "13,8kWh",
+    "12kWh",
+    "10,2kWh"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Đèn LED: 0,009kW × 200h = 1,8kWh. Đèn sợi đốt: 0,06kW × 200h = 12kWh. Tiết kiệm = 12 − 1,8 = 10,2kWh.\n\nVì sao các phương án khác sai:\n- A: Quên đổi W sang kW trước khi tính năng lượng từng đèn.\n- B: Đã cộng năng lượng hai đèn thay vì lấy hiệu để tìm phần tiết kiệm.\n- C: Đó là năng lượng tiêu thụ của đèn sợi đốt, không phải phần tiết kiệm được."
+  },
+  {
+   "ma_cau": "K09030304013",
+   "nhom_id": "KNB00481",
+   "loai": "trac_nghiem",
+   "de": "Đèn LED 10W và đèn compact 20W cho độ sáng tương đương, cùng sử dụng 8 giờ mỗi ngày. Đèn nào tiêu thụ ít năng lượng điện hơn trong một ngày?",
+   "lua_chon": [
+    "Đèn compact, vì công suất lớn hơn thì bền hơn",
+    "Hai đèn tiêu thụ điện bằng nhau vì cùng thời gian sử dụng",
+    "Không thể so sánh vì hai đèn khác loại",
+    "Đèn LED, vì công suất nhỏ hơn"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Cùng thời gian sử dụng, đèn có công suất nhỏ hơn (đèn LED 10W) tiêu thụ năng lượng điện W = P·t ít hơn đèn compact 20W.\n\nVì sao các phương án khác sai:\n- A: Công suất lớn hơn không có nghĩa là bền hơn, mà tiêu thụ năng lượng nhiều hơn.\n- B: Cùng thời gian nhưng công suất khác nhau nên năng lượng tiêu thụ khác nhau.\n- C: Có thể so sánh qua công thức W = P·t vì đã biết công suất và thời gian dùng."
+  },
+  {
+   "ma_cau": "K09030304014",
+   "nhom_id": "KNB00481",
+   "loai": "trac_nghiem",
+   "de": "Đèn LED 8W và đèn sợi đốt 40W cho độ sáng tương đương, cùng sử dụng 150 giờ mỗi tháng. Tính phần năng lượng điện tiết kiệm được khi dùng đèn LED thay đèn sợi đốt.",
+   "lua_chon": [
+    "4,8 kWh",
+    "4800 kWh",
+    "7,2 kWh",
+    "6 kWh"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Đèn LED: 0,008kW × 150h = 1,2kWh. Đèn sợi đốt: 0,04kW × 150h = 6kWh. Tiết kiệm = 6 − 1,2 = 4,8kWh.\n\nVì sao các phương án khác sai:\n- B: Quên đổi W sang kW trước khi tính năng lượng từng đèn.\n- C: Đã cộng năng lượng hai đèn thay vì lấy hiệu để tìm phần tiết kiệm.\n- D: Đó là năng lượng tiêu thụ của đèn sợi đốt, không phải phần tiết kiệm được."
+  },
+  {
+   "ma_cau": "K09030105001",
+   "nhom_id": "KNB00470",
+   "loai": "trac_nghiem",
+   "de": "Dây A (nikelin, ρ = 0,4 Ω·mm²/m) dài 5 m, tiết diện 0,5 mm². Dây B cùng vật liệu, cùng tiết diện nhưng khác chiều dài; khi mắc vào U = 12 V thì I = 1,5 A. Tính chiều dài dây B.",
+   "lua_chon": [
+    "10 m",
+    "2,5 m",
+    "5 m",
+    "20 m"
+   ],
+   "dap_an": "A",
+   "loi_giai": "R<sub>A</sub>=ρl<sub>A</sub>:S=0,4×5:0,5=4 Ω. R<sub>B</sub>=U:I=12:1,5=8 Ω. Hai dây cùng vật liệu, cùng tiết diện nên R tỉ lệ thuận với l: l<sub>B</sub>=l<sub>A</sub>×(R<sub>B</sub>:R<sub>A</sub>)=5×(8:4)=10 m.\n\nVì sao các phương án khác sai:\n- B: Đã lấy nghịch đảo tỉ số điện trở (R<sub>A</sub>:R<sub>B</sub>=4:8=0,5) thay vì R<sub>B</sub>:R<sub>A</sub>=2.\n- C: 5 m là chiều dài dây A, chưa nhân với tỉ số điện trở R<sub>B</sub>:R<sub>A</sub>=2 để ra chiều dài dây B.\n- D: Đã nhân dư một lần tỉ số (nhân 4 thay vì 2)."
+  },
+  {
+   "ma_cau": "K09030105002",
+   "nhom_id": "KNB00470",
+   "loai": "trac_nghiem",
+   "de": "Dây A (constantan, ρ = 0,5 Ω·mm²/m) dài 8 m, tiết diện 0,4 mm². Dây B cùng vật liệu, cùng tiết diện nhưng khác chiều dài; khi mắc vào U = 15 V thì I = 0,5 A. Tính chiều dài dây B.",
+   "lua_chon": [
+    "2,67 m",
+    "24 m",
+    "8 m",
+    "72 m"
+   ],
+   "dap_an": "B",
+   "loi_giai": "R<sub>A</sub>=ρl<sub>A</sub>:S=0,5×8:0,4=10 Ω. R<sub>B</sub>=U:I=15:0,5=30 Ω. Hai dây cùng vật liệu, cùng tiết diện nên l<sub>B</sub>=l<sub>A</sub>×(R<sub>B</sub>:R<sub>A</sub>)=8×(30:10)=24 m.\n\nVì sao các phương án khác sai:\n- A: Đã lấy nghịch đảo tỉ số điện trở (R<sub>A</sub>:R<sub>B</sub>=10:30) thay vì R<sub>B</sub>:R<sub>A</sub>=3.\n- C: 8 m là chiều dài dây A, chưa nhân với tỉ số điện trở R<sub>B</sub>:R<sub>A</sub>=3 để ra chiều dài dây B.\n- D: Đã nhân dư một lần tỉ số (nhân bình phương tỉ số 3² thay vì 3)."
+  },
+  {
+   "ma_cau": "K09030105003",
+   "nhom_id": "KNB00470",
+   "loai": "trac_nghiem",
+   "de": "Dây A (nichrome, ρ = 1,1 Ω·mm²/m) dài 2 m, tiết diện 0,5 mm². Dây B cùng vật liệu, cùng tiết diện nhưng khác chiều dài; khi mắc vào U = 8,8 V thì I = 0,4 A. Tính chiều dài dây B.",
+   "lua_chon": [
+    "0,4 m",
+    "2 m",
+    "10 m",
+    "50 m"
+   ],
+   "dap_an": "C",
+   "loi_giai": "R<sub>A</sub>=ρl<sub>A</sub>:S=1,1×2:0,5=4,4 Ω. R<sub>B</sub>=U:I=8,8:0,4=22 Ω. Hai dây cùng vật liệu, cùng tiết diện nên l<sub>B</sub>=l<sub>A</sub>×(R<sub>B</sub>:R<sub>A</sub>)=2×(22:4,4)=10 m.\n\nVì sao các phương án khác sai:\n- A: Đã lấy nghịch đảo tỉ số điện trở (R<sub>A</sub>:R<sub>B</sub>=4,4:22) thay vì R<sub>B</sub>:R<sub>A</sub>=5.\n- B: 2 m là chiều dài dây A, chưa nhân với tỉ số điện trở R<sub>B</sub>:R<sub>A</sub>=5 để ra chiều dài dây B.\n- D: Đã nhân dư một lần tỉ số (nhân bình phương tỉ số 5² thay vì 5)."
+  },
+  {
+   "ma_cau": "K09030105004",
+   "nhom_id": "KNB00470",
+   "loai": "trac_nghiem",
+   "de": "Dây A (nikelin, ρ = 0,4 Ω·mm²/m) dài 10 m, tiết diện 1 mm². Dây B cùng vật liệu, cùng tiết diện nhưng khác chiều dài; khi mắc vào U = 20 V thì I = 1 A. Tính chiều dài dây B.",
+   "lua_chon": [
+    "2 m",
+    "10 m",
+    "250 m",
+    "50 m"
+   ],
+   "dap_an": "D",
+   "loi_giai": "R<sub>A</sub>=ρl<sub>A</sub>:S=0,4×10:1=4 Ω. R<sub>B</sub>=U:I=20:1=20 Ω. Hai dây cùng vật liệu, cùng tiết diện nên l<sub>B</sub>=l<sub>A</sub>×(R<sub>B</sub>:R<sub>A</sub>)=10×(20:4)=50 m.\n\nVì sao các phương án khác sai:\n- A: Đã lấy nghịch đảo tỉ số điện trở (R<sub>A</sub>:R<sub>B</sub>=4:20) thay vì R<sub>B</sub>:R<sub>A</sub>=5.\n- B: 10 m là chiều dài dây A, chưa nhân với tỉ số điện trở R<sub>B</sub>:R<sub>A</sub>=5 để ra chiều dài dây B.\n- C: Đã nhân dư một lần tỉ số (nhân bình phương tỉ số 5² thay vì 5)."
+  },
+  {
+   "ma_cau": "K09030105005",
+   "nhom_id": "KNB00470",
+   "loai": "trac_nghiem",
+   "de": "Dây A (constantan, ρ = 0,5 Ω·mm²/m) dài 6 m, tiết diện 0,5 mm². Dây B cùng vật liệu, cùng tiết diện nhưng khác chiều dài; khi mắc vào U = 27 V thì I = 1,5 A. Tính chiều dài dây B.",
+   "lua_chon": [
+    "2 m",
+    "18 m",
+    "6 m",
+    "54 m"
+   ],
+   "dap_an": "B",
+   "loi_giai": "R<sub>A</sub>=ρl<sub>A</sub>:S=0,5×6:0,5=6 Ω. R<sub>B</sub>=U:I=27:1,5=18 Ω. Hai dây cùng vật liệu, cùng tiết diện nên l<sub>B</sub>=l<sub>A</sub>×(R<sub>B</sub>:R<sub>A</sub>)=6×(18:6)=18 m.\n\nVì sao các phương án khác sai:\n- A: Đã lấy nghịch đảo tỉ số điện trở (R<sub>A</sub>:R<sub>B</sub>=6:18) thay vì R<sub>B</sub>:R<sub>A</sub>=3.\n- C: 6 m là chiều dài dây A, chưa nhân với tỉ số điện trở R<sub>B</sub>:R<sub>A</sub>=3 để ra chiều dài dây B.\n- D: Đã nhân dư một lần tỉ số (nhân bình phương tỉ số 3² thay vì 3)."
+  },
+  {
+   "ma_cau": "K09030105006",
+   "nhom_id": "KNB00470",
+   "loai": "trac_nghiem",
+   "de": "Dây A (nikelin, ρ = 0,4 Ω·mm²/m) dài 4 m, tiết diện 0,4 mm². Dây B cùng vật liệu, cùng tiết diện nhưng khác chiều dài; khi mắc vào U = 18 V thì I = 0,9 A. Tính chiều dài dây B.",
+   "lua_chon": [
+    "0,8 m",
+    "4 m",
+    "100 m",
+    "20 m"
+   ],
+   "dap_an": "D",
+   "loi_giai": "R<sub>A</sub>=ρl<sub>A</sub>/S=0,4×4/0,4=4 Ω. R<sub>B</sub>=U/I=18/0,9=20 Ω. Hai dây cùng vật liệu, cùng tiết diện nên R tỉ lệ thuận với l: l<sub>B</sub>=l<sub>A</sub>×(R<sub>B</sub>/R<sub>A</sub>)=4×(20/4)=20 m.\n\nVì sao các phương án khác sai:\n- A: Đã lấy nghịch đảo tỉ số điện trở (R<sub>A</sub>:R<sub>B</sub>=4:20=0,2) thay vì R<sub>B</sub>:R<sub>A</sub>=5.\n- B: 4 m là chiều dài dây A, chưa nhân với tỉ số điện trở R<sub>B</sub>:R<sub>A</sub>=5 để ra chiều dài dây B.\n- C: Đã nhân dư một lần tỉ số (nhân bình phương tỉ số 5² thay vì 5)."
+  },
+  {
+   "ma_cau": "K09030105007",
+   "nhom_id": "KNB00470",
+   "loai": "trac_nghiem",
+   "de": "Dây A (constantan, ρ = 0,5 Ω·mm²/m) dài 3 m, tiết diện 0,3 mm². Dây B cùng vật liệu, cùng tiết diện nhưng khác chiều dài; khi mắc vào U = 24 V thì I = 0,8 A. Tính chiều dài dây B.",
+   "lua_chon": [
+    "18 m",
+    "0,5 m",
+    "3 m",
+    "108 m"
+   ],
+   "dap_an": "A",
+   "loi_giai": "R<sub>A</sub>=ρl<sub>A</sub>/S=0,5×3/0,3=5 Ω. R<sub>B</sub>=U/I=24/0,8=30 Ω. l<sub>B</sub>=l<sub>A</sub>×(R<sub>B</sub>/R<sub>A</sub>)=3×(30/5)=18 m.\n\nVì sao các phương án khác sai:\n- B: Đã lấy nghịch đảo tỉ số điện trở (R<sub>A</sub>:R<sub>B</sub>=5:30) thay vì R<sub>B</sub>:R<sub>A</sub>=6.\n- C: 3 m là chiều dài dây A, chưa nhân với tỉ số điện trở R<sub>B</sub>:R<sub>A</sub>=6 để ra chiều dài dây B.\n- D: Đã nhân dư một lần tỉ số (nhân bình phương tỉ số 6² thay vì 6)."
+  },
+  {
+   "ma_cau": "K09030105008",
+   "nhom_id": "KNB00470",
+   "loai": "trac_nghiem",
+   "de": "Dây A (nichrome, ρ = 1,1 Ω·mm²/m) dài 5 m, tiết diện 1 mm². Dây B cùng vật liệu, cùng tiết diện nhưng khác chiều dài; khi mắc vào U = 33 V thì I = 1,5 A. Tính chiều dài dây B.",
+   "lua_chon": [
+    "1,25 m",
+    "20 m",
+    "5 m",
+    "80 m"
+   ],
+   "dap_an": "B",
+   "loi_giai": "R<sub>A</sub>=ρl<sub>A</sub>/S=1,1×5/1=5,5 Ω. R<sub>B</sub>=U/I=33/1,5=22 Ω. l<sub>B</sub>=l<sub>A</sub>×(R<sub>B</sub>/R<sub>A</sub>)=5×(22/5,5)=20 m.\n\nVì sao các phương án khác sai:\n- A: Đã lấy nghịch đảo tỉ số điện trở (R<sub>A</sub>:R<sub>B</sub>=5,5:22) thay vì R<sub>B</sub>:R<sub>A</sub>=4.\n- C: 5 m là chiều dài dây A, chưa nhân với tỉ số điện trở R<sub>B</sub>:R<sub>A</sub>=4 để ra chiều dài dây B.\n- D: Đã nhân dư một lần tỉ số (nhân bình phương tỉ số 4² thay vì 4)."
+  },
+  {
+   "ma_cau": "K09030105009",
+   "nhom_id": "KNB00470",
+   "loai": "trac_nghiem",
+   "de": "Đồ thị I-U của hai dây dẫn A, B cùng chiều dài, cùng vật liệu nhưng khác tiết diện: ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030106-02-001-de.png) So sánh tiết diện hai dây.",
+   "lua_chon": [
+    "S<sub>A</sub> gấp 2 lần S<sub>B</sub>",
+    "S<sub>B</sub> gấp 2 lần S<sub>A</sub>",
+    "S<sub>A</sub> = S<sub>B</sub>",
+    "Không xác định được"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Từ đồ thị: R<sub>A</sub>=U:I=6:6=1 Ω. R<sub>B</sub>=6:3=2 Ω. Cùng chiều dài, cùng vật liệu nên R tỉ lệ nghịch với S: S<sub>A</sub>:S<sub>B</sub>=R<sub>B</sub>:R<sub>A</sub>=2:1, tức S<sub>A</sub> gấp 2 lần S<sub>B</sub>.\n\nVì sao các phương án khác sai:\n- B: Đã đảo ngược tỉ lệ nghịch: R nhỏ hơn (R<sub>A</sub>=1 Ω<R<sub>B</sub>=2 Ω) ứng với tiết diện LỚN hơn, nên S<sub>A</sub> mới lớn hơn S<sub>B</sub>.\n- C: R<sub>A</sub>≠R<sub>B</sub> (1 Ω≠2 Ω) nên S<sub>A</sub>≠S<sub>B</sub>, hai tiết diện khác nhau.\n- D: Có đủ dữ kiện: đọc R từ đồ thị rồi dùng quan hệ R tỉ lệ nghịch với S để tính tỉ số tiết diện."
+  },
+  {
+   "ma_cau": "K09030105010",
+   "nhom_id": "KNB00470",
+   "loai": "trac_nghiem",
+   "de": "Đồ thị I-U của hai dây dẫn A, B cùng chiều dài, cùng vật liệu nhưng khác tiết diện: ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030106-02-002-de.png) So sánh tiết diện hai dây.",
+   "lua_chon": [
+    "S<sub>A</sub> gấp 4 lần S<sub>B</sub>",
+    "S<sub>B</sub> gấp 4 lần S<sub>A</sub>",
+    "S<sub>A</sub> = S<sub>B</sub>",
+    "Không xác định được"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Từ đồ thị: R<sub>A</sub>=U:I=8:2=4 Ω. R<sub>B</sub>=8:8=1 Ω. Cùng chiều dài, cùng vật liệu nên S<sub>A</sub>:S<sub>B</sub>=R<sub>B</sub>:R<sub>A</sub>=1:4, tức S<sub>B</sub> gấp 4 lần S<sub>A</sub>.\n\nVì sao các phương án khác sai:\n- A: Đã đảo ngược tỉ lệ nghịch: R lớn hơn (R<sub>A</sub>=4 Ω>R<sub>B</sub>=1 Ω) ứng với tiết diện NHỎ hơn, nên S<sub>B</sub> mới lớn hơn S<sub>A</sub>.\n- C: R<sub>A</sub>≠R<sub>B</sub> (4 Ω≠1 Ω) nên S<sub>A</sub>≠S<sub>B</sub>, hai tiết diện khác nhau.\n- D: Có đủ dữ kiện: đọc R từ đồ thị rồi dùng quan hệ R tỉ lệ nghịch với S để tính tỉ số tiết diện."
+  },
+  {
+   "ma_cau": "K09030105011",
+   "nhom_id": "KNB00470",
+   "loai": "trac_nghiem",
+   "de": "Đồ thị I-U của hai dây dẫn A, B cùng chiều dài, cùng vật liệu nhưng khác tiết diện: ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030106-02-003-de.png) So sánh tiết diện hai dây.",
+   "lua_chon": [
+    "S<sub>A</sub> gấp 2 lần S<sub>B</sub>",
+    "Không xác định được",
+    "S<sub>A</sub> = S<sub>B</sub>",
+    "S<sub>B</sub> gấp 2 lần S<sub>A</sub>"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Từ đồ thị: R<sub>A</sub>=U:I=10:5=2 Ω. R<sub>B</sub>=10:10=1 Ω. Cùng chiều dài, cùng vật liệu nên S<sub>A</sub>:S<sub>B</sub>=R<sub>B</sub>:R<sub>A</sub>=1:2, tức S<sub>B</sub> gấp 2 lần S<sub>A</sub>.\n\nVì sao các phương án khác sai:\n- A: Đã đảo ngược tỉ lệ nghịch: R lớn hơn (R<sub>A</sub>=2 Ω>R<sub>B</sub>=1 Ω) ứng với tiết diện NHỎ hơn, nên S<sub>B</sub> mới lớn hơn S<sub>A</sub>.\n- B: Có đủ dữ kiện: đọc R từ đồ thị rồi dùng quan hệ R tỉ lệ nghịch với S để tính tỉ số tiết diện.\n- C: R<sub>A</sub>≠R<sub>B</sub> (2 Ω≠1 Ω) nên S<sub>A</sub>≠S<sub>B</sub>, hai tiết diện khác nhau."
+  },
+  {
+   "ma_cau": "K09030105012",
+   "nhom_id": "KNB00470",
+   "loai": "trac_nghiem",
+   "de": "Đồ thị I-U của hai dây dẫn A, B cùng chiều dài, cùng vật liệu nhưng khác tiết diện: ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030106-02-004-de.png) So sánh tiết diện hai dây.",
+   "lua_chon": [
+    "S<sub>A</sub> = S<sub>B</sub>",
+    "S<sub>A</sub> gấp 3 lần S<sub>B</sub>",
+    "Không xác định được",
+    "S<sub>B</sub> gấp 3 lần S<sub>A</sub>"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Từ đồ thị: R<sub>A</sub>=U:I=9:3=3 Ω. R<sub>B</sub>=9:9=1 Ω. Cùng chiều dài, cùng vật liệu nên S<sub>A</sub>:S<sub>B</sub>=R<sub>B</sub>:R<sub>A</sub>=1:3, tức S<sub>B</sub> gấp 3 lần S<sub>A</sub>.\n\nVì sao các phương án khác sai:\n- A: R<sub>A</sub>≠R<sub>B</sub> (3 Ω≠1 Ω) nên S<sub>A</sub>≠S<sub>B</sub>, hai tiết diện khác nhau.\n- B: Đã đảo ngược tỉ lệ nghịch: R lớn hơn (R<sub>A</sub>=3 Ω>R<sub>B</sub>=1 Ω) ứng với tiết diện NHỎ hơn, nên S<sub>B</sub> mới lớn hơn S<sub>A</sub>.\n- C: Có đủ dữ kiện: đọc R từ đồ thị rồi dùng quan hệ R tỉ lệ nghịch với S để tính tỉ số tiết diện."
+  },
+  {
+   "ma_cau": "K09030105013",
+   "nhom_id": "KNB00470",
+   "loai": "trac_nghiem",
+   "de": "Đồ thị I-U của hai dây dẫn A, B cùng chiều dài, cùng vật liệu nhưng khác tiết diện: ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030106-02-005-de.png) So sánh tiết diện hai dây.",
+   "lua_chon": [
+    "Không xác định được",
+    "S<sub>A</sub> gấp 5 lần S<sub>B</sub>",
+    "S<sub>B</sub> gấp 5 lần S<sub>A</sub>",
+    "S<sub>A</sub> = S<sub>B</sub>"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Từ đồ thị: R<sub>A</sub>=U:I=15:3=5 Ω. R<sub>B</sub>=15:15=1 Ω. Cùng chiều dài, cùng vật liệu nên S<sub>A</sub>:S<sub>B</sub>=R<sub>B</sub>:R<sub>A</sub>=1:5, tức S<sub>B</sub> gấp 5 lần S<sub>A</sub>.\n\nVì sao các phương án khác sai:\n- A: Có đủ dữ kiện: đọc R từ đồ thị rồi dùng quan hệ R tỉ lệ nghịch với S để tính tỉ số tiết diện.\n- B: Đã đảo ngược tỉ lệ nghịch: R lớn hơn (R<sub>A</sub>=5 Ω>R<sub>B</sub>=1 Ω) ứng với tiết diện NHỎ hơn, nên S<sub>B</sub> mới lớn hơn S<sub>A</sub>.\n- D: R<sub>A</sub>≠R<sub>B</sub> (5 Ω≠1 Ω) nên S<sub>A</sub>≠S<sub>B</sub>, hai tiết diện khác nhau."
+  },
+  {
+   "ma_cau": "K09030105014",
+   "nhom_id": "KNB00470",
+   "loai": "trac_nghiem",
+   "de": "Đồ thị I-U của hai dây dẫn A, B cùng chiều dài, cùng vật liệu nhưng khác tiết diện: ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030106-02-006-de.png) So sánh tiết diện hai dây.",
+   "lua_chon": [
+    "S<sub>A</sub> gấp 3 lần S<sub>B</sub>",
+    "Không xác định được",
+    "S<sub>B</sub> gấp 3 lần S<sub>A</sub>",
+    "S<sub>A</sub> = S<sub>B</sub>"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Từ đồ thị: R<sub>A</sub>=U:I=12:4=3 Ω. R<sub>B</sub>=12:12=1 Ω. Cùng chiều dài, cùng vật liệu nên S<sub>A</sub>:S<sub>B</sub>=R<sub>B</sub>:R<sub>A</sub>=1:3, tức S<sub>B</sub> gấp 3 lần S<sub>A</sub>.\n\nVì sao các phương án khác sai:\n- A: Đã đảo ngược tỉ lệ nghịch: R lớn hơn (R<sub>A</sub>=3 Ω>R<sub>B</sub>=1 Ω) ứng với tiết diện NHỎ hơn, nên S<sub>B</sub> mới lớn hơn S<sub>A</sub>.\n- B: Có đủ dữ kiện: đọc R từ đồ thị rồi dùng quan hệ R tỉ lệ nghịch với S để tính tỉ số tiết diện.\n- D: R<sub>A</sub>≠R<sub>B</sub> (3 Ω≠1 Ω) nên S<sub>A</sub>≠S<sub>B</sub>, hai tiết diện khác nhau."
+  },
+  {
+   "ma_cau": "K09030105015",
+   "nhom_id": "KNB00470",
+   "loai": "trac_nghiem",
+   "de": "Đồ thị I-U của hai dây dẫn A, B cùng chiều dài, cùng vật liệu nhưng khác tiết diện: ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030106-02-007-de.png) So sánh tiết diện hai dây.",
+   "lua_chon": [
+    "Không xác định được",
+    "S<sub>A</sub> gấp 6 lần S<sub>B</sub>",
+    "S<sub>A</sub> = S<sub>B</sub>",
+    "S<sub>B</sub> gấp 6 lần S<sub>A</sub>"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Từ đồ thị: R<sub>A</sub>=U:I=18:3=6 Ω. R<sub>B</sub>=18:18=1 Ω. Cùng chiều dài, cùng vật liệu nên S<sub>A</sub>:S<sub>B</sub>=R<sub>B</sub>:R<sub>A</sub>=1:6, tức S<sub>B</sub> gấp 6 lần S<sub>A</sub>.\n\nVì sao các phương án khác sai:\n- A: Có đủ dữ kiện: đọc R từ đồ thị rồi dùng quan hệ R tỉ lệ nghịch với S để tính tỉ số tiết diện.\n- B: Đã đảo ngược tỉ lệ nghịch: R lớn hơn (R<sub>A</sub>=6 Ω>R<sub>B</sub>=1 Ω) ứng với tiết diện NHỎ hơn, nên S<sub>B</sub> mới lớn hơn S<sub>A</sub>.\n- C: R<sub>A</sub>≠R<sub>B</sub> (6 Ω≠1 Ω) nên S<sub>A</sub>≠S<sub>B</sub>, hai tiết diện khác nhau."
+  },
+  {
+   "ma_cau": "K09030106001",
+   "nhom_id": "KNB00471",
+   "loai": "trac_nghiem",
+   "de": "Đèn mắc nối tiếp với một biến trở vào nguồn có hiệu điện thế không đổi. Khi tăng giá trị biến trở Rb, độ sáng của đèn thay đổi thế nào?",
+   "lua_chon": [
+    "Đèn sáng mạnh hơn",
+    "Đèn sáng yếu hơn",
+    "Đèn sáng không đổi",
+    "Đèn tắt hẳn ngay lập tức"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Tăng Rb làm điện trở mạch tăng, dòng điện I = U/(Rb + Rđèn) giảm nên đèn sáng yếu hơn.\n\nVì sao các phương án khác sai:\n- A: Điện trở mạch tăng làm dòng điện giảm, đèn sáng yếu hơn chứ không mạnh hơn.\n- C: Điện trở mạch đã thay đổi nên dòng điện và độ sáng đèn phải thay đổi theo.\n- D: Dòng điện chỉ giảm dần theo Rb, mạch vẫn kín nên đèn chưa tắt hẳn."
+  },
+  {
+   "ma_cau": "K09030107001",
+   "nhom_id": "KNB00472",
+   "loai": "trac_nghiem",
+   "de": "Một dây dẫn có điện trở R₁ = 15 Ω. Nếu cắt dây ngắn lại còn 1/3 chiều dài ban đầu (giữ nguyên tiết diện), điện trở mới R₂ là bao nhiêu?",
+   "lua_chon": [
+    "45 Ω",
+    "15 Ω",
+    "5 Ω",
+    "12 Ω"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Điện trở tỉ lệ thuận với chiều dài: R₂ = R₁/3 = 15/3 = 5 Ω.\n\nVì sao các phương án khác sai:\n- A: Đã nhân R₁ với 3 thay vì chia, đảo ngược tỉ lệ.\n- B: Điện trở tỉ lệ thuận với chiều dài, dây ngắn hơn thì điện trở phải giảm.\n- D: Đã lấy R₁ trừ đi số lần rút ngắn, không đúng cách tính tỉ lệ thuận."
+  },
+  {
+   "ma_cau": "K09030107002",
+   "nhom_id": "KNB00472",
+   "loai": "trac_nghiem",
+   "de": "Một dây dẫn có điện trở R₁ = 20 Ω. Nếu cắt dây ngắn lại còn 1/4 chiều dài ban đầu (giữ nguyên tiết diện), điện trở mới R₂ là bao nhiêu?",
+   "lua_chon": [
+    "80 Ω",
+    "20 Ω",
+    "5 Ω",
+    "16 Ω"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Điện trở tỉ lệ thuận với chiều dài: R₂ = R₁/4 = 20/4 = 5 Ω.\n\nVì sao các phương án khác sai:\n- A: Đã nhân R₁ với 4 thay vì chia, đảo ngược tỉ lệ.\n- B: Điện trở tỉ lệ thuận với chiều dài, dây ngắn hơn thì điện trở phải giảm.\n- D: Đã lấy R₁ trừ đi số lần rút ngắn, không đúng cách tính tỉ lệ thuận."
+  },
+  {
+   "ma_cau": "K09030107003",
+   "nhom_id": "KNB00472",
+   "loai": "trac_nghiem",
+   "de": "Một dây dẫn có điện trở R₁ = 6 Ω. Kéo dây dài gấp đôi (giữ nguyên thể tích, tức tiết diện giảm một nửa), điện trở mới R₂ là bao nhiêu?",
+   "lua_chon": [
+    "12 Ω",
+    "24 Ω",
+    "3 Ω",
+    "48 Ω"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Giữ nguyên thể tích, chiều dài gấp đôi thì tiết diện giảm một nửa. R = ρl/S nên R₂ = ρ(2l)/(S/2) = 4×ρl/S = 4×R₁ = 4×6 = 24 Ω.\n\nVì sao các phương án khác sai:\n- A: Chỉ tính theo chiều dài gấp đôi mà quên tiết diện cũng giảm một nửa (làm điện trở tăng thêm).\n- C: Đã tính điện trở giảm đi thay vì tăng lên khi kéo dài dây.\n- D: Tính nhầm số lần tăng, đúng ra điện trở tăng 4 lần chứ không phải 8 lần."
+  },
+  {
+   "ma_cau": "K09030107004",
+   "nhom_id": "KNB00472",
+   "loai": "trac_nghiem",
+   "de": "Một dây dẫn có điện trở R₁ = 32 Ω. Gập dây lại làm đôi (giữ nguyên thể tích, tức tiết diện tăng gấp đôi), điện trở của dây gập đôi này là bao nhiêu?",
+   "lua_chon": [
+    "16 Ω",
+    "128 Ω",
+    "8 Ω",
+    "64 Ω"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Giữ nguyên thể tích, chiều dài giảm một nửa thì tiết diện tăng gấp đôi. R = ρl/S nên R₂ = ρ(l/2)/(2S) = ρl/(4S) = R₁/4 = 32/4 = 8 Ω.\n\nVì sao các phương án khác sai:\n- A: Chỉ tính theo chiều dài giảm một nửa mà quên tiết diện cũng tăng gấp đôi (làm điện trở giảm thêm).\n- B: Đã nhân R₁ lên thay vì chia, đảo ngược chiều thay đổi.\n- D: Đã tính điện trở tăng lên thay vì giảm khi gập đôi dây."
+  },
+  {
+   "ma_cau": "K09030107005",
+   "nhom_id": "KNB00472",
+   "loai": "trac_nghiem",
+   "de": "Một dây dẫn có điện trở R₁ = 4 Ω. Kéo dây dài gấp ba (giữ nguyên thể tích, tức tiết diện giảm còn 1/3), điện trở mới R₂ là bao nhiêu?",
+   "lua_chon": [
+    "12 Ω",
+    "36 Ω",
+    "≈0,44 Ω",
+    "24 Ω"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Giữ nguyên thể tích, chiều dài gấp ba thì tiết diện giảm còn 1/3. R = ρl/S nên R₂ = ρ(3l)/(S/3) = 9×ρl/S = 9×R₁ = 9×4 = 36 Ω.\n\nVì sao các phương án khác sai:\n- A: Chỉ tính theo chiều dài gấp ba mà quên tiết diện cũng giảm còn 1/3 (làm điện trở tăng thêm).\n- C: Đã tính điện trở giảm đi thay vì tăng lên khi kéo dài dây.\n- D: Tính nhầm số lần tăng, đúng ra điện trở tăng 9 lần chứ không phải 6 lần."
+  },
+  {
+   "ma_cau": "K09030107006",
+   "nhom_id": "KNB00472",
+   "loai": "trac_nghiem",
+   "de": "Một dây dẫn có điện trở R₁ = 45 Ω. Gập dây lại làm ba (giữ nguyên thể tích, tức tiết diện tăng gấp ba), điện trở của dây gập ba này là bao nhiêu?",
+   "lua_chon": [
+    "15 Ω",
+    "405 Ω",
+    "5 Ω",
+    "135 Ω"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Giữ nguyên thể tích, chiều dài giảm còn 1/3 thì tiết diện tăng gấp ba. R = ρl/S nên R₂ = ρ(l/3)/(3S) = ρl/(9S) = R₁/9 = 45/9 = 5 Ω.\n\nVì sao các phương án khác sai:\n- A: Chỉ tính theo chiều dài giảm còn 1/3 mà quên tiết diện cũng tăng gấp ba (làm điện trở giảm thêm).\n- B: Đã nhân R₁ lên thay vì chia, đảo ngược chiều thay đổi.\n- D: Đã tính điện trở tăng lên thay vì giảm khi gập ba dây."
+  },
+  {
+   "ma_cau": "K09030307001",
+   "nhom_id": "KNB00484",
+   "loai": "trac_nghiem",
+   "de": "Đèn ghi \"220V – 0,5A\" mắc nối tiếp với một biến trở, cả hai mắc vào nguồn 230V. Biết hiệu điện thế trên biến trở là 20V. Đèn sáng thế nào?",
+   "lua_chon": [
+    "Sáng yếu hơn bình thường",
+    "Sáng bình thường",
+    "Sáng mạnh hơn bình thường, dễ hỏng",
+    "Không xác định được vì thiếu dữ kiện"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Mạch nối tiếp: U nguồn = U biến trở + U đèn nên U đèn = 230 − 20 = 210V, nhỏ hơn 220V định mức, đèn sáng yếu hơn bình thường.\n\nVì sao các phương án khác sai:\n- B: 210V thực tế nhỏ hơn 220V định mức, đèn không hoạt động đúng định mức.\n- C: 210V nhỏ hơn 220V định mức, đèn không sáng mạnh hơn.\n- D: Đã tính được U đèn = 230 − 20 = 210V, đủ dữ kiện so sánh với định mức."
+  },
+  {
+   "ma_cau": "K09030307002",
+   "nhom_id": "KNB00484",
+   "loai": "trac_nghiem",
+   "de": "Đèn ghi \"12V – 0,3A\" mắc nối tiếp với một điện trở bảo vệ, cả hai mắc vào nguồn 15V. Biết hiệu điện thế trên điện trở là 3V. Đèn sáng thế nào?",
+   "lua_chon": [
+    "Sáng yếu hơn bình thường",
+    "Sáng mạnh hơn bình thường, dễ hỏng",
+    "Không xác định được vì thiếu dữ kiện",
+    "Sáng bình thường"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Mạch nối tiếp: U đèn = U nguồn − U điện trở = 15 − 3 = 12V, đúng bằng định mức nên đèn sáng bình thường.\n\nVì sao các phương án khác sai:\n- A: U thực tế trên đèn = 15 − 3 = 12V, đúng bằng định mức, không nhỏ hơn.\n- B: U thực tế bằng đúng định mức 12V, không lớn hơn.\n- C: Đã tính được U đèn = 15 − 3 = 12V, đủ dữ kiện so sánh với định mức."
+  },
+  {
+   "ma_cau": "K09030307003",
+   "nhom_id": "KNB00484",
+   "loai": "trac_nghiem",
+   "de": "Đèn ghi \"220V – 0,45A\" mắc nối tiếp với một điện trở, cả hai mắc vào nguồn 240V. Biết hiệu điện thế trên điện trở là 25V. Đèn sáng thế nào?",
+   "lua_chon": [
+    "Sáng mạnh hơn bình thường, dễ hỏng",
+    "Sáng bình thường",
+    "Sáng yếu hơn bình thường",
+    "Không xác định được vì thiếu dữ kiện"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Mạch nối tiếp: U đèn = U nguồn − U điện trở = 240 − 25 = 215V, nhỏ hơn 220V định mức, đèn sáng yếu hơn bình thường.\n\nVì sao các phương án khác sai:\n- A: 215V nhỏ hơn 220V định mức, đèn không sáng mạnh hơn.\n- B: 215V nhỏ hơn 220V định mức, không bằng nhau.\n- D: Đã tính được U đèn = 240 − 25 = 215V, đủ dữ kiện so sánh với định mức."
+  },
+  {
+   "ma_cau": "K09030307004",
+   "nhom_id": "KNB00484",
+   "loai": "trac_nghiem",
+   "de": "Đèn ghi \"6V – 0,3A\" mắc nối tiếp với một điện trở, cả hai mắc vào nguồn 9V. Biết hiệu điện thế trên điện trở là 2V. Đèn sáng thế nào?",
+   "lua_chon": [
+    "Sáng yếu hơn bình thường",
+    "Sáng mạnh hơn bình thường, dễ hỏng",
+    "Sáng bình thường",
+    "Không xác định được vì thiếu dữ kiện"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Mạch nối tiếp: U đèn = U nguồn − U điện trở = 9 − 2 = 7V, lớn hơn 6V định mức, đèn sáng mạnh hơn bình thường, dễ hỏng.\n\nVì sao các phương án khác sai:\n- A: U thực tế = 9 − 2 = 7V lớn hơn 6V định mức, không nhỏ hơn.\n- C: 7V lớn hơn 6V định mức, không bằng nhau.\n- D: Đã tính được U đèn = 9 − 2 = 7V, đủ dữ kiện so sánh với định mức."
+  },
+  {
+   "ma_cau": "K09030307005",
+   "nhom_id": "KNB00484",
+   "loai": "trac_nghiem",
+   "de": "Đèn ghi '24V – 0,8A' mắc nối tiếp với một điện trở bảo vệ, cả hai mắc vào nguồn 27V. Biết hiệu điện thế trên điện trở là 3V. Đèn sáng thế nào?",
+   "lua_chon": [
+    "Sáng yếu hơn bình thường",
+    "Sáng bình thường",
+    "Sáng mạnh hơn bình thường, dễ hỏng",
+    "Không xác định được vì thiếu dữ kiện"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Mạch nối tiếp: U đèn = U nguồn − U điện trở = 27 − 3 = 24V, đúng bằng định mức nên đèn sáng bình thường.\n\nVì sao các phương án khác sai:\n- A: U thực tế trên đèn = 27 − 3 = 24V, đúng bằng định mức, không nhỏ hơn.\n- C: U thực tế bằng đúng định mức 24V, không lớn hơn.\n- D: Đã tính được U đèn = 27 − 3 = 24V, đủ dữ kiện so sánh với định mức."
+  },
+  {
+   "ma_cau": "K09030307006",
+   "nhom_id": "KNB00484",
+   "loai": "trac_nghiem",
+   "de": "Đèn ghi \"110V – 0,4A\" mắc nối tiếp với một điện trở bảo vệ, cả hai mắc vào nguồn 130V. Biết hiệu điện thế trên điện trở là 20V. Đèn sáng thế nào?",
+   "lua_chon": [
+    "Sáng yếu hơn bình thường",
+    "Sáng bình thường",
+    "Sáng mạnh hơn bình thường, dễ hỏng",
+    "Không xác định được vì thiếu dữ kiện"
+   ],
+   "dap_an": "B",
+   "loi_giai": "U_đèn = Uₙguồn − U_điện trở = 130−20 = 110V, đúng bằng định mức → đèn sáng bình thường.\n\nVì sao các phương án khác sai:\n- A: Tính nhầm U_đèn nhỏ hơn định mức trong khi thực ra bằng đúng 110V.\n- C: Nhầm U_đèn lớn hơn định mức, trong khi 110V đúng bằng giá trị ghi trên đèn.\n- D: Đề đã đủ dữ kiện: U_đèn tính được trực tiếp bằng Uₙguồn trừ U_điện trở."
+  },
+  {
+   "ma_cau": "K09030307007",
+   "nhom_id": "KNB00484",
+   "loai": "trac_nghiem",
+   "de": "Hai đèn Đ1 và Đ2 mắc nối tiếp, dòng điện qua mạch là I = 0,5A. Đèn Đ1 có U₁ = 100V, đèn Đ2 có U₂ = 120V đo được khi mạch hoạt động. Đèn nào sáng hơn? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030305-02-001-de.png)",
+   "lua_chon": [
+    "Đ1 sáng hơn vì U₁ đo được nhỏ hơn",
+    "Hai đèn sáng bằng nhau vì dòng điện qua chúng bằng nhau",
+    "Đ2 sáng hơn vì công suất tiêu thụ thực tế lớn hơn",
+    "Không thể so sánh vì thiếu điện trở của đèn"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Mạch nối tiếp có I chung. P₁ = U₁·I = 100×0,5 = 50W; P₂ = U₂·I = 120×0,5 = 60W. P₂ > P₁ nên Đ2 sáng hơn.\n\nVì sao các phương án khác sai:\n- A: U₁ nhỏ hơn nên P₁ nhỏ hơn, Đ1 sáng kém hơn chứ không sáng hơn.\n- B: Dòng điện bằng nhau nhưng U khác nhau nên công suất tiêu thụ hai đèn khác nhau.\n- D: Đã tính được công suất từng đèn bằng P = UI, đủ dữ kiện so sánh mà không cần điện trở."
+  },
+  {
+   "ma_cau": "K09030307008",
+   "nhom_id": "KNB00484",
+   "loai": "trac_nghiem",
+   "de": "Hai đèn Đ1 và Đ2 mắc song song, hiệu điện thế hai đầu mạch là U = 220V. Đèn Đ1 có I₁ = 0,3A, đèn Đ2 có I₂ = 0,25A đo được khi mạch hoạt động. Đèn nào sáng hơn? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030305-02-002-de.png)",
+   "lua_chon": [
+    "Đ1 sáng hơn vì công suất tiêu thụ thực tế lớn hơn",
+    "Đ2 sáng hơn vì dòng điện qua nó nhỏ hơn",
+    "Hai đèn sáng bằng nhau vì cùng hiệu điện thế",
+    "Không thể so sánh vì thiếu điện trở của đèn"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Mạch song song có U chung. P₁ = U·I₁ = 220×0,3 = 66W; P₂ = U·I₂ = 220×0,25 = 55W. P₁ > P₂ nên Đ1 sáng hơn.\n\nVì sao các phương án khác sai:\n- B: Dòng điện qua Đ2 nhỏ hơn nên công suất Đ2 nhỏ hơn, Đ2 sáng kém hơn chứ không sáng hơn.\n- C: U bằng nhau nhưng I khác nhau nên công suất tiêu thụ hai đèn khác nhau.\n- D: Đã tính được công suất từng đèn bằng P = UI, đủ dữ kiện so sánh mà không cần điện trở."
+  },
+  {
+   "ma_cau": "K09030307009",
+   "nhom_id": "KNB00484",
+   "loai": "trac_nghiem",
+   "de": "Hai đèn Đ1 và Đ2 mắc nối tiếp, dòng điện qua mạch I = 0,6A. Đèn Đ1 có U₁ = 90V, đèn Đ2 có U₂ = 90V đo được khi mạch hoạt động. So sánh độ sáng hai đèn. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030305-02-004-de.png)",
+   "lua_chon": [
+    "Đ1 sáng hơn vì U₁ lớn hơn",
+    "Đ2 sáng hơn vì U₂ lớn hơn",
+    "Không thể so sánh vì thiếu điện trở",
+    "Hai đèn sáng như nhau vì công suất bằng nhau"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Mạch nối tiếp có I chung. P₁ = U₁·I = 90×0,6 = 54W; P₂ = U₂·I = 90×0,6 = 54W. Hai công suất bằng nhau nên hai đèn sáng như nhau.\n\nVì sao các phương án khác sai:\n- A: U₁ bằng U₂ (90V) nên không có đèn nào lớn hơn.\n- B: U₁ bằng U₂ (90V) nên không có đèn nào lớn hơn.\n- C: Đã tính được công suất mỗi đèn bằng P = UI, đủ dữ kiện so sánh."
+  },
+  {
+   "ma_cau": "K09030307010",
+   "nhom_id": "KNB00484",
+   "loai": "trac_nghiem",
+   "de": "Hai đèn Đ1 và Đ2 mắc song song vào U = 220V. Đèn Đ1 có I₁ = 0,2A, đèn Đ2 có I₂ = 0,2A đo được khi mạch hoạt động. So sánh độ sáng hai đèn. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030305-02-005-de.png)",
+   "lua_chon": [
+    "Đ1 sáng hơn vì mắc trước trong mạch",
+    "Hai đèn sáng như nhau vì công suất tiêu thụ bằng nhau",
+    "Đ2 sáng hơn vì dòng điện ổn định hơn",
+    "Không thể so sánh vì mắc song song"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Mạch song song có U chung. P₁ = U·I₁ = 220×0,2 = 44W; P₂ = U·I₂ = 220×0,2 = 44W. Hai công suất bằng nhau nên hai đèn sáng như nhau.\n\nVì sao các phương án khác sai:\n- A: Mạch song song không có khái niệm đèn mắc trước hay sau ảnh hưởng độ sáng.\n- C: Hai dòng điện bằng nhau (0,2A) nên không có đèn nào ổn định hơn hay sáng hơn.\n- D: Mạch song song vẫn so sánh được qua công suất tiêu thụ P = UI của từng đèn."
+  },
+  {
+   "ma_cau": "K09030307011",
+   "nhom_id": "KNB00484",
+   "loai": "trac_nghiem",
+   "de": "Hai đèn Đ1 và Đ2 mắc nối tiếp, dòng điện qua mạch là I = 0,4A. Đèn Đ1 có U₁ = 150V, đèn Đ2 có U₂ = 180V đo được khi mạch hoạt động. Đèn nào sáng hơn? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030305-02-006-de.png)",
+   "lua_chon": [
+    "Đ1 sáng hơn vì U₁ đo được nhỏ hơn",
+    "Hai đèn sáng bằng nhau vì dòng điện qua chúng bằng nhau",
+    "Không thể so sánh vì thiếu điện trở của đèn",
+    "Đ2 sáng hơn vì công suất tiêu thụ thực tế lớn hơn"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Mạch nối tiếp có I chung. P₁ = U₁·I = 150×0,4 = 60W; P₂ = U₂·I = 180×0,4 = 72W. P₂ > P₁ nên Đ2 sáng hơn.\n\nVì sao các phương án khác sai:\n- A: U₁ nhỏ hơn nên P₁ nhỏ hơn, Đ1 sáng kém hơn chứ không sáng hơn.\n- B: Dòng điện bằng nhau nhưng U khác nhau nên công suất tiêu thụ hai đèn khác nhau.\n- C: Đã tính được công suất từng đèn bằng P = UI, đủ dữ kiện so sánh mà không cần điện trở."
+  },
+  {
+   "ma_cau": "K09030307012",
+   "nhom_id": "KNB00484",
+   "loai": "trac_nghiem",
+   "de": "Hai đèn Đ1 và Đ2 mắc song song, hiệu điện thế hai đầu mạch là U = 220V. Đèn Đ1 có I₁ = 0,35A, đèn Đ2 có I₂ = 0,28A đo được khi mạch hoạt động. Đèn nào sáng hơn? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030305-02-007-de.png)",
+   "lua_chon": [
+    "Đ1 sáng hơn vì công suất tiêu thụ thực tế lớn hơn",
+    "Đ2 sáng hơn vì dòng điện qua nó nhỏ hơn",
+    "Hai đèn sáng bằng nhau vì cùng hiệu điện thế",
+    "Không thể so sánh vì thiếu điện trở của đèn"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Mạch song song có U chung. P₁ = U·I₁ = 220×0,35 = 77W; P₂ = U·I₂ = 220×0,28 = 61,6W. P₁ > P₂ nên Đ1 sáng hơn.\n\nVì sao các phương án khác sai:\n- B: Dòng điện qua Đ2 nhỏ hơn nên công suất Đ2 nhỏ hơn, Đ2 sáng kém hơn chứ không sáng hơn.\n- C: U bằng nhau nhưng I khác nhau nên công suất tiêu thụ hai đèn khác nhau.\n- D: Đã tính được công suất từng đèn bằng P = UI, đủ dữ kiện so sánh mà không cần điện trở."
+  }
+ ]
+}

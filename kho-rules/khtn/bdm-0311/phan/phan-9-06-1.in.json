@@ -1,0 +1,257 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00500",
+   "chu_de": "Kim loại & Hợp kim",
+   "chuyen_de": "Tính chất chung của kim loại",
+   "nhom": "TÍNH TOÁN THEO PHƯƠNG TRÌNH HOÁ HỌC KHI KIM LOẠI TÁC DỤNG VỚI DUNG DỊCH MUỐI",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nDãy hoạt động hoá học: K, Na, Ca, Mg, Al, Zn, Fe, Pb, (H), Cu, Ag, Au. Kim loại đứng trước đẩy được kim loại đứng sau ra khỏi dung dịch muối của nó.\nK, Na, Ca phản ứng với nước ở nhiệt độ thường nên không dùng để đẩy kim loại khỏi dung dịch muối.\nPhản ứng: kim loại mạnh $+$ muối của kim loại yếu $\\rightarrow$ muối mới $+$ kim loại yếu (kim loại yếu sinh ra bám vào kim loại mạnh).\nCác phương trình thường gặp: $\\mathrm{Mg + CuSO_4 \\rightarrow MgSO_4 + Cu}$; $\\mathrm{Fe + CuSO_4 \\rightarrow FeSO_4 + Cu}$; $\\mathrm{Zn + CuSO_4 \\rightarrow ZnSO_4 + Cu}$; $\\mathrm{Mg + 2AgNO_3 \\rightarrow Mg(NO_3)_2 + 2Ag}$.\nSố mol: $n = \\dfrac{m}{M}$; $n = C_M \\times V$ (V tính bằng lít). Khối lượng mol (g/mol): Mg 24; Fe 56; Zn 65; Cu 64; Ag 108; Pb 207.\nVới kim loại hoá trị II, cứ 1 mol kim loại tan ra thì có 1 mol Cu bám vào (hoặc 2 mol Ag bám vào khi dùng $\\mathrm{AgNO_3}$).\n\n##PP 2. Các bước làm bài\nViết và cân bằng PTHH, kiểm tra kim loại đã cho có đứng trước kim loại trong muối hay không\nĐổi dữ kiện đề bài về số mol\nDựa vào hệ số trong PTHH suy ra số mol chất cần tìm\nTính khối lượng theo yêu cầu; với bài thanh kim loại tăng hay giảm thì gọi x mol kim loại tan rồi lập phương trình theo độ thay đổi khối lượng\n\n##CY 3. Lưu ý\nKim loại mới sinh ra bám lên kim loại ban đầu nên khối lượng chất rắn thay đổi: tăng khi $M$ của kim loại mới lớn hơn $M$ của kim loại tan, giảm khi nhỏ hơn.\nĐề ghi muối dư thì kim loại phản ứng hết; đề ghi kim loại dư thì muối phản ứng hết, phải tính theo muối.\nChất rắn sau phản ứng gồm cả kim loại dư lẫn kim loại mới sinh ra.\nVới $\\mathrm{AgNO_3}$ tỉ lệ kim loại : Ag là $1:2$, dễ quên nhân đôi số mol Ag.\nCu, Ag đứng sau Mg, Fe, Zn nên không phản ứng với dung dịch $\\mathrm{CuSO_4}$, khối lượng của chúng không đổi.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01227",
+     "thu_tu": 1,
+     "ten": "TỪ KHỐI LƯỢNG KIM LOẠI TÍNH KHỐI LƯỢNG KIM LOẠI MỚI BÁM VÀO",
+     "mo_ta": "Đề cho khối lượng một kim loại (Mg, Fe, Zn) phản ứng hết với dung dịch muối dư (CuSO4 hoặc AgNO3), hỏi khối lượng kim loại mới (Cu, Ag) bám vào.\nLàm bằng cách đổi sang số mol kim loại tan, nhân hệ số PTHH rồi đổi ra khối lượng; không có kim loại dư, không có độ tăng giảm khối lượng.\nLưu ý: đề cho kim loại dư + nồng độ, thể tích muối và hỏi khối lượng chất rắn thu được ⇒ thuộc dạng \"KHỐI LƯỢNG CHẤT RẮN THU ĐƯỢC KHI KIM LOẠI DƯ PHẢN ỨNG VỚI DUNG DỊCH CuSO4\".\nLưu ý: đề cho thanh kim loại tăng hay giảm bao nhiêu gam ⇒ thuộc dạng \"KHỐI LƯỢNG THANH KIM LOẠI THAY ĐỔI KHI NHÚNG VÀO DUNG DỊCH CuSO4 DƯ\".",
+     "ly_thuyet": "##TC Công thức dùng trong dạng\nKim loại mạnh đẩy kim loại yếu khỏi muối; muối dư nên kim loại ban đầu phản ứng hết, tính theo kim loại.\n$n = \\dfrac{m}{M}$ và $m = n \\times M$; tỉ lệ mol lấy theo hệ số PTHH.\nMuối $\\mathrm{CuSO_4}$: 1 mol kim loại hoá trị II $\\rightarrow$ 1 mol Cu. Muối $\\mathrm{AgNO_3}$: 1 mol kim loại hoá trị II $\\rightarrow$ 2 mol Ag.\n\n##PP Cách làm\nViết PTHH và cân bằng\nTính số mol kim loại đã cho bằng $n = \\dfrac{m}{M}$\nDựa vào hệ số suy ra số mol kim loại bám vào (Cu hoặc Ag)\nTính khối lượng kim loại bám vào bằng $m = n \\times M$\n\n##CY Lưu ý\nVới $\\mathrm{AgNO_3}$ phải nhân đôi số mol để ra số mol Ag.\nKhối lượng kim loại bám vào là khối lượng Cu hoặc Ag sinh ra, không phải khối lượng kim loại đã tan.",
+     "vi_du": "##VD\nNhúng 3,6 gam magnesium ($\\mathrm{Mg}$) vào dung dịch copper(II) sulfate ($\\mathrm{CuSO_4}$) dư cho đến khi phản ứng xảy ra hoàn toàn. Tính khối lượng đồng ($\\mathrm{Cu}$) bám vào.\n\nBài giải:\n$\\mathrm{n(Mg) = 3,6 : 24 = 0,15\\ mol}$.\nPhương trình hoá học: $\\mathrm{Mg + CuSO_4 \\rightarrow MgSO_4 + Cu}$.\nTỉ lệ mol $\\mathrm{Mg : Cu = 1 : 1}$ nên $\\mathrm{n(Cu) = 0,15\\ mol}$.\n$\\mathrm{m(Cu) = 0,15 \\times 64 = 9,6\\ gam}$.\n\n##VD\nNhúng 7,2 gam magnesium ($\\mathrm{Mg}$) vào dung dịch silver nitrate ($\\mathrm{AgNO_3}$) dư cho đến khi phản ứng xảy ra hoàn toàn. Tính khối lượng bạc ($\\mathrm{Ag}$) bám vào.\n\nBài giải:\n$\\mathrm{n(Mg) = 7,2 : 24 = 0,3\\ mol}$.\nPhương trình hoá học: $\\mathrm{Mg + 2AgNO_3 \\rightarrow Mg(NO_3)_2 + 2Ag}$.\nTỉ lệ mol $\\mathrm{Mg : Ag = 1 : 2}$ nên $\\mathrm{n(Ag) = 0,3 \\times 2 = 0,6\\ mol}$.\n$\\mathrm{m(Ag) = 0,6 \\times 108 = 64,8\\ gam}$."
+    },
+    {
+     "dang_id": "KDB01228",
+     "thu_tu": 2,
+     "ten": "KHỐI LƯỢNG CHẤT RẮN THU ĐƯỢC KHI KIM LOẠI DƯ PHẢN ỨNG VỚI DUNG DỊCH CuSO4",
+     "mo_ta": "Đề cho khối lượng kim loại dư (Fe, Mg, Zn) và thể tích, nồng độ mol của dung dịch $\\mathrm{CuSO_4}$; muối phản ứng hết, kim loại còn dư.\nHỏi khối lượng chất rắn thu được sau phản ứng, gồm kim loại dư cộng Cu bám vào.\nLàm bằng cách tính số mol muối, suy ra số mol kim loại tan và Cu sinh ra rồi lấy khối lượng ban đầu cộng độ tăng (hoặc giảm).\nLưu ý: đề cho kim loại tan hết trong muối dư, hỏi khối lượng Cu bám vào ⇒ thuộc dạng \"TỪ KHỐI LƯỢNG KIM LOẠI TÍNH KHỐI LƯỢNG KIM LOẠI MỚI BÁM VÀO\".\nLưu ý: đề cho thanh kim loại tăng hay giảm bao nhiêu gam ⇒ thuộc dạng \"KHỐI LƯỢNG THANH KIM LOẠI THAY ĐỔI KHI NHÚNG VÀO DUNG DỊCH CuSO4 DƯ\".",
+     "ly_thuyet": "##TC Chất rắn sau phản ứng\nKim loại dư nên muối $\\mathrm{CuSO_4}$ phản ứng hết, tính theo muối: $n(\\mathrm{CuSO_4}) = C_M \\times V$ (V tính bằng lít).\nSố mol kim loại tan bằng số mol Cu sinh ra bằng số mol $\\mathrm{CuSO_4}$.\nChất rắn sau phản ứng gồm kim loại dư và Cu bám vào: $m_{rắn} = m_{ban\\ đầu} + n \\times (64 - M)$.\nĐộ tăng dương khi $M < 64$ (Mg, Fe); độ giảm khi $M > 64$ (Zn có $M = 65$).\n\n##PP Cách làm\nĐổi thể tích sang lít, tính $n(\\mathrm{CuSO_4}) = C_M \\times V$\nViết PTHH, suy ra số mol kim loại tan bằng số mol Cu sinh ra\nTính độ thay đổi khối lượng $n \\times (64 - M)$\nCộng vào khối lượng kim loại ban đầu (hoặc tính riêng kim loại dư rồi cộng khối lượng Cu)\n\n##CY Lưu ý\nPhải đổi mL sang lít trước khi nhân nồng độ.\nVới Zn khối lượng chất rắn giảm nhẹ vì $64 < 65$.\nTính theo muối, không tính theo kim loại dư.",
+     "vi_du": "##VD\nCho 20 gam sắt ($\\mathrm{Fe}$) (dư) vào 200 mL dung dịch copper(II) sulfate ($\\mathrm{CuSO_4}$) nồng độ 1 mol/L, để phản ứng xảy ra hoàn toàn ($\\mathrm{CuSO_4}$ phản ứng hết, $\\mathrm{Fe}$ còn dư). Tính khối lượng chất rắn thu được sau phản ứng (gồm $\\mathrm{Fe}$ dư và $\\mathrm{Cu}$ bám vào).\n\nBài giải:\nĐổi $\\mathrm{200\\ mL = 0,2\\ L}$. $\\mathrm{n(CuSO_4) = 1 \\times 0,2 = 0,2\\ mol}$.\nPhương trình hoá học: $\\mathrm{Fe + CuSO_4 \\rightarrow FeSO_4 + Cu}$, nên $\\mathrm{n(Fe)}$ phản ứng $= \\mathrm{n(Cu)} = 0,2$ mol.\n$\\mathrm{m(Fe)}$ phản ứng $= 0,2 \\times 56 = 11,2$ gam, nên $\\mathrm{m(Fe)}$ dư $= 20 - 11,2 = 8,8$ gam.\n$\\mathrm{m(Cu)} = 0,2 \\times 64 = 12,8$ gam.\nKhối lượng chất rắn $= 8,8 + 12,8 = 21,6$ gam.\n\n##VD\nCho 30 gam kẽm ($\\mathrm{Zn}$) (dư) vào 350 mL dung dịch copper(II) sulfate ($\\mathrm{CuSO_4}$) nồng độ 1,2 mol/L, để phản ứng xảy ra hoàn toàn ($\\mathrm{CuSO_4}$ phản ứng hết, $\\mathrm{Zn}$ còn dư). Tính khối lượng chất rắn thu được sau phản ứng (gồm $\\mathrm{Zn}$ dư và $\\mathrm{Cu}$ bám vào).\n\nBài giải:\nĐổi $\\mathrm{350\\ mL = 0,35\\ L}$. $\\mathrm{n(CuSO_4) = 1,2 \\times 0,35 = 0,42\\ mol}$.\nPhương trình hoá học: $\\mathrm{Zn + CuSO_4 \\rightarrow ZnSO_4 + Cu}$, nên $\\mathrm{n(Zn)}$ phản ứng $= \\mathrm{n(Cu)} = 0,42$ mol.\n$\\mathrm{m(Zn)}$ phản ứng $= 0,42 \\times 65 = 27,3$ gam, nên $\\mathrm{m(Zn)}$ dư $= 30 - 27,3 = 2,7$ gam.\n$\\mathrm{m(Cu)} = 0,42 \\times 64 = 26,88$ gam.\nKhối lượng chất rắn $= 2,7 + 26,88 = 29,58$ gam (nhỏ hơn 30 gam vì $64 < 65$)."
+    },
+    {
+     "dang_id": "KDB01229",
+     "thu_tu": 3,
+     "ten": "KHỐI LƯỢNG THANH KIM LOẠI THAY ĐỔI KHI NHÚNG VÀO DUNG DỊCH CuSO4 DƯ",
+     "mo_ta": "Nhúng một thanh kim loại (Mg, Fe, Pb) vào dung dịch $\\mathrm{CuSO_4}$ dư; sau phản ứng đề cho khối lượng thanh tăng hoặc giảm bao nhiêu gam so với ban đầu.\nHỏi khối lượng kim loại đã phản ứng (tan ra); làm bằng cách gọi x mol kim loại tan, lập phương trình theo độ tăng giảm khối lượng.\nLưu ý: đề cho khối lượng kim loại tan hết và hỏi khối lượng Cu bám vào ⇒ thuộc dạng \"TỪ KHỐI LƯỢNG KIM LOẠI TÍNH KHỐI LƯỢNG KIM LOẠI MỚI BÁM VÀO\".\nLưu ý: đề là hỗn hợp có kim loại không phản ứng và hỏi phần trăm khối lượng ⇒ thuộc dạng \"HỖN HỢP HAI KIM LOẠI TÁC DỤNG DUNG DỊCH CuSO4 DƯ, TÍNH % KHỐI LƯỢNG\".",
+     "ly_thuyet": "##TC Phương pháp tăng giảm khối lượng\nMỗi mol kim loại M (hoá trị II) tan ra thì có 1 mol Cu bám vào: khối lượng thanh thay đổi $|64 - M|$ gam cho mỗi mol phản ứng.\nThanh tăng khi $M < 64$: Mg tăng 40 gam/mol, Fe tăng 8 gam/mol. Thanh giảm khi $M > 64$: Pb giảm 143 gam/mol.\nGọi x là số mol kim loại phản ứng: độ thay đổi khối lượng $= x \\times |64 - M|$.\n\n##PP Cách làm\nViết PTHH, gọi x là số mol kim loại đã phản ứng\nTính độ thay đổi khối lượng của thanh theo x (lấy $|64 - M|$)\nCho độ thay đổi này bằng số gam đề cho, giải ra x\nTính khối lượng kim loại phản ứng $m = x \\times M$\n\n##CY Lưu ý\nKhối lượng kim loại đã phản ứng không phải là độ tăng hay giảm của thanh.\nPhải xác định đúng thanh tăng hay giảm bằng cách so $M$ kim loại tan với 64.",
+     "vi_du": "##VD\nNhúng một thanh sắt ($\\mathrm{Fe}$) vào dung dịch copper(II) sulfate ($\\mathrm{CuSO_4}$) dư, sau khi phản ứng xảy ra hoàn toàn thì lấy thanh kim loại ra, thấy khối lượng thanh tăng 0,4 gam so với ban đầu. Tính khối lượng $\\mathrm{Fe}$ đã phản ứng.\n\nBài giải:\nGọi x là số mol $\\mathrm{Fe}$ phản ứng. Phương trình hoá học: $\\mathrm{Fe + CuSO_4 \\rightarrow FeSO_4 + Cu}$.\nCứ 1 mol $\\mathrm{Fe}$ tan ra (56 gam) thì có 1 mol $\\mathrm{Cu}$ bám vào (64 gam), khối lượng thanh tăng $x \\times (64 - 56) = 8x$ gam.\nTheo đề, $8x = 0,4$ nên $x = 0,05$ mol.\n$\\mathrm{m(Fe)}$ đã phản ứng $= 0,05 \\times 56 = 2,8$ gam.\n\n##VD\nNhúng một thanh chì ($\\mathrm{Pb}$) vào dung dịch copper(II) sulfate ($\\mathrm{CuSO_4}$) dư, sau khi phản ứng xảy ra hoàn toàn thì lấy thanh kim loại ra, thấy khối lượng thanh giảm 2,86 gam so với ban đầu. Tính khối lượng $\\mathrm{Pb}$ đã phản ứng.\n\nBài giải:\nGọi x là số mol $\\mathrm{Pb}$ phản ứng. Phương trình hoá học: $\\mathrm{Pb + CuSO_4 \\rightarrow PbSO_4 + Cu}$.\nCứ 1 mol $\\mathrm{Pb}$ tan ra (207 gam) thì có 1 mol $\\mathrm{Cu}$ bám vào (64 gam), khối lượng thanh giảm $x \\times (207 - 64) = 143x$ gam.\nTheo đề, $143x = 2,86$ nên $x = 0,02$ mol.\n$\\mathrm{m(Pb)}$ đã phản ứng $= 0,02 \\times 207 = 4,14$ gam."
+    },
+    {
+     "dang_id": "KDB01230",
+     "thu_tu": 4,
+     "ten": "HỖN HỢP HAI KIM LOẠI TÁC DỤNG DUNG DỊCH CuSO4 DƯ, TÍNH % KHỐI LƯỢNG",
+     "mo_ta": "Đề cho khối lượng hỗn hợp gồm một kim loại phản ứng (Fe hoặc Mg) và một kim loại không phản ứng (Cu hoặc Ag), cho vào dung dịch $\\mathrm{CuSO_4}$ dư.\nĐề cho khối lượng chất rắn thu được tăng thêm bao nhiêu gam; hỏi phần trăm khối lượng kim loại phản ứng trong hỗn hợp ban đầu.\nLàm bằng cách gọi x mol kim loại phản ứng, lập phương trình tăng khối lượng, tính khối lượng kim loại rồi chia cho khối lượng hỗn hợp.\nLưu ý: đề chỉ có một thanh kim loại và hỏi khối lượng kim loại đã phản ứng ⇒ thuộc dạng \"KHỐI LƯỢNG THANH KIM LOẠI THAY ĐỔI KHI NHÚNG VÀO DUNG DỊCH CuSO4 DƯ\".",
+     "ly_thuyet": "##TC Hỗn hợp có kim loại không phản ứng\nChỉ kim loại đứng trước Cu (Mg, Fe) phản ứng với $\\mathrm{CuSO_4}$; Cu và Ag không phản ứng nên khối lượng không đổi.\nKhối lượng chất rắn tăng chỉ do phản ứng của kim loại hoạt động: tăng $x \\times (64 - M)$ gam, với Mg tăng $40x$, Fe tăng $8x$.\nPhần trăm khối lượng: $\\%m = \\dfrac{m_{kim\\ loại}}{m_{hỗn\\ hợp}} \\times 100\\%$.\n\n##PP Cách làm\nXác định kim loại nào phản ứng, kim loại nào không phản ứng\nGọi x là số mol kim loại phản ứng, lập phương trình độ tăng khối lượng và giải ra x\nTính khối lượng kim loại phản ứng $m = x \\times M$\nTính phần trăm khối lượng so với khối lượng hỗn hợp ban đầu\n\n##CY Lưu ý\nChia cho khối lượng hỗn hợp ban đầu, không chia cho khối lượng chất rắn sau phản ứng.\nĐộ tăng khối lượng chỉ tính cho kim loại tham gia phản ứng, không tính cho kim loại không phản ứng.",
+     "vi_du": "##VD\nCho 10 gam hỗn hợp bột gồm sắt ($\\mathrm{Fe}$) và đồng ($\\mathrm{Cu}$) vào dung dịch copper(II) sulfate ($\\mathrm{CuSO_4}$) dư, khuấy đều cho phản ứng xảy ra hoàn toàn rồi lọc lấy chất rắn, thấy khối lượng chất rắn tăng thêm 0,8 gam so với khối lượng hỗn hợp ban đầu. Tính phần trăm khối lượng $\\mathrm{Fe}$ trong hỗn hợp ban đầu.\n\nBài giải:\n$\\mathrm{Cu}$ không phản ứng với $\\mathrm{CuSO_4}$, chỉ $\\mathrm{Fe}$ phản ứng: $\\mathrm{Fe + CuSO_4 \\rightarrow FeSO_4 + Cu}$.\nGọi x là số mol $\\mathrm{Fe}$ phản ứng. Cứ 1 mol $\\mathrm{Fe}$ tan ra (56 gam) thì có 1 mol $\\mathrm{Cu}$ bám vào (64 gam), khối lượng chất rắn tăng $x \\times (64 - 56) = 8x$ gam.\nTheo đề, $8x = 0,8$ nên $x = 0,1$ mol.\n$\\mathrm{m(Fe)} = 0,1 \\times 56 = 5,6$ gam.\n$\\%\\mathrm{Fe} = 5,6 : 10 \\times 100\\% = 56\\%$.\n\n##VD\nCho 16 gam hỗn hợp bột gồm magnesium ($\\mathrm{Mg}$) và bạc ($\\mathrm{Ag}$) vào dung dịch copper(II) sulfate ($\\mathrm{CuSO_4}$) dư, khuấy đều cho phản ứng xảy ra hoàn toàn rồi lọc lấy chất rắn, thấy khối lượng chất rắn tăng thêm 14 gam so với khối lượng hỗn hợp ban đầu. Tính phần trăm khối lượng $\\mathrm{Mg}$ trong hỗn hợp ban đầu.\n\nBài giải:\n$\\mathrm{Ag}$ đứng sau $\\mathrm{Cu}$ nên không phản ứng, chỉ $\\mathrm{Mg}$ phản ứng: $\\mathrm{Mg + CuSO_4 \\rightarrow MgSO_4 + Cu}$.\nGọi x là số mol $\\mathrm{Mg}$ phản ứng. Cứ 1 mol $\\mathrm{Mg}$ tan ra (24 gam) thì có 1 mol $\\mathrm{Cu}$ bám vào (64 gam), khối lượng chất rắn tăng $x \\times (64 - 24) = 40x$ gam.\nTheo đề, $40x = 14$ nên $x = 0,35$ mol.\n$\\mathrm{m(Mg)} = 0,35 \\times 24 = 8,4$ gam.\n$\\%\\mathrm{Mg} = 8,4 : 16 \\times 100\\% = 52,5\\%$."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K09060109030",
+   "nhom_id": "KNB00500",
+   "loai": "trac_nghiem",
+   "de": "Nhúng một thanh kẽm (Zn) vào 200 mL dung dịch copper(II) sulfate (CuSO₄) 1 M cho đến khi phản ứng xảy ra hoàn toàn. Khối lượng đồng (Cu) bám vào thanh kẽm là",
+   "lua_chon": [
+    "6,4 g",
+    "25,6 g",
+    "13 g",
+    "12,8 g"
+   ],
+   "dap_an": "D",
+   "loi_giai": "n(CuSO₄) = 0,2 × 1 = 0,2 mol. PTHH: Zn + CuSO₄ → ZnSO₄ + Cu, n(Cu) = n(CuSO₄) = 0,2 mol. m(Cu) = 0,2 × 64 = 12,8 g.\n\nVì sao các phương án khác sai:\n- A: Chia đôi nhầm số mol Cu so với số mol CuSO₄ (coi hệ số phản ứng là 2).\n- B: Nhân đôi nhầm số mol Cu so với số mol CuSO₄ (coi hệ số phản ứng là 2).\n- C: Dùng nhầm khối lượng mol của Zn (65) thay cho khối lượng mol của Cu (64)."
+  },
+  {
+   "ma_cau": "K09060109031",
+   "nhom_id": "KNB00500",
+   "loai": "trac_nghiem",
+   "de": "Nhúng một thanh sắt (Fe) vào 150 mL dung dịch silver nitrate (AgNO₃) 2 M cho đến khi phản ứng xảy ra hoàn toàn. Khối lượng bạc (Ag) sinh ra bám vào thanh sắt là",
+   "lua_chon": [
+    "32,4 g",
+    "16,2 g",
+    "64,8 g",
+    "19,2 g"
+   ],
+   "dap_an": "A",
+   "loi_giai": "n(AgNO₃) = 0,15 × 2 = 0,3 mol. PTHH: Fe + 2AgNO₃ → Fe(NO₃)₂ + 2Ag, n(Ag) = n(AgNO₃) = 0,3 mol. m(Ag) = 0,3 × 108 = 32,4 g.\n\nVì sao các phương án khác sai:\n- B: Chia đôi nhầm số mol Ag so với số mol AgNO₃.\n- C: Nhân đôi nhầm số mol Ag so với số mol AgNO₃.\n- D: Dùng nhầm khối lượng mol của Cu (64) thay cho khối lượng mol của Ag (108)."
+  },
+  {
+   "ma_cau": "K09060109032",
+   "nhom_id": "KNB00500",
+   "loai": "trac_nghiem",
+   "de": "Nhúng một thanh magnesium (Mg) vào 100 mL dung dịch lead(II) nitrate Pb(NO₃)₂ 1,5 M cho đến khi phản ứng xảy ra hoàn toàn. Khối lượng lead (Pb) sinh ra là",
+   "lua_chon": [
+    "15,53 g",
+    "31,05 g",
+    "62,1 g",
+    "9,6 g"
+   ],
+   "dap_an": "B",
+   "loi_giai": "n(Pb(NO₃)₂) = 0,1 × 1,5 = 0,15 mol. PTHH: Mg + Pb(NO₃)₂ → Mg(NO₃)₂ + Pb, n(Pb) = n(Pb(NO₃)₂) = 0,15 mol. m(Pb) = 0,15 × 207 = 31,05 g.\n\nVì sao các phương án khác sai:\n- A: Chia đôi nhầm số mol Pb so với số mol Pb(NO₃)₂.\n- C: Nhân đôi nhầm số mol Pb so với số mol Pb(NO₃)₂.\n- D: Dùng nhầm khối lượng mol của Cu (64) thay cho khối lượng mol của Pb (207)."
+  },
+  {
+   "ma_cau": "K09060109033",
+   "nhom_id": "KNB00500",
+   "loai": "trac_nghiem",
+   "de": "Nhúng một thanh nhôm (Al) vào 250 mL dung dịch copper(II) sulfate (CuSO₄) 0,4 M cho đến khi phản ứng xảy ra hoàn toàn. Khối lượng đồng (Cu) sinh ra là",
+   "lua_chon": [
+    "4,27 g",
+    "9,6 g",
+    "6,4 g",
+    "6,5 g"
+   ],
+   "dap_an": "C",
+   "loi_giai": "n(CuSO₄) = 0,25 × 0,4 = 0,1 mol. PTHH: 2Al + 3CuSO₄ → Al₂(SO₄)₃ + 3Cu, n(Cu) = n(CuSO₄) = 0,1 mol (hệ số Cu và CuSO₄ đều là 3). m(Cu) = 0,1 × 64 = 6,4 g.\n\nVì sao các phương án khác sai:\n- A: Nhầm áp tỉ lệ hệ số Al : CuSO₄ = 2 : 3 vào giữa Cu và CuSO₄.\n- B: Nhân ngược tỉ lệ hệ số (dùng 3/2 thay vì 1/1) khi tính số mol Cu.\n- D: Dùng nhầm khối lượng mol của Zn (65) thay cho khối lượng mol của Cu (64)."
+  },
+  {
+   "ma_cau": "K09060109034",
+   "nhom_id": "KNB00500",
+   "loai": "trac_nghiem",
+   "de": "Nhúng một thanh kẽm (Zn) vào 200 mL dung dịch silver nitrate (AgNO₃) 1 M cho đến khi phản ứng xảy ra hoàn toàn. Khối lượng bạc (Ag) sinh ra bám vào thanh kẽm là",
+   "lua_chon": [
+    "10,8 g",
+    "13 g",
+    "21,6 g",
+    "43,2 g"
+   ],
+   "dap_an": "C",
+   "loi_giai": "n(AgNO₃)=0,2×1=0,2mol. PTHH: Zn+2AgNO₃→Zn(NO₃)₂+2Ag, n(Ag)=n(AgNO₃)=0,2mol. m(Ag)=0,2×108=21,6g.\n\nVì sao các phương án khác sai:\n- A: Chia đôi nhầm số mol Ag so với số mol AgNO₃.\n- B: Dùng nhầm khối lượng mol của Zn (65) thay cho khối lượng mol của Ag (108).\n- D: Nhân đôi nhầm số mol Ag so với số mol AgNO₃."
+  },
+  {
+   "ma_cau": "K09060109035",
+   "nhom_id": "KNB00500",
+   "loai": "trac_nghiem",
+   "de": "Nhúng một thanh sắt (Fe) vào dung dịch copper(II) sulfate (CuSO₄). Sau phản ứng, khối lượng thanh sắt tăng 1,6 g so với ban đầu. Số mol Fe đã phản ứng là",
+   "lua_chon": [
+    "0,025 mol",
+    "0,0133 mol",
+    "0,4 mol",
+    "0,2 mol"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Gọi x là số mol Fe phản ứng: Fe + CuSO₄ → FeSO₄ + Cu, n(Cu bám vào) = n(Fe tan ra) = x. Δm = 64x − 56x = 8x = 1,6 → x = 0,2 mol.\n\nVì sao các phương án khác sai:\n- A: Quên trừ khối lượng Fe tan ra, coi Δm chỉ là khối lượng Cu bám vào: x = 1,6 : 64.\n- B: Cộng nhầm khối lượng mol hai kim loại thay vì lấy hiệu: x = 1,6 : (64+56).\n- C: Nhân đôi kết quả đúng do nhầm hệ số phản ứng."
+  },
+  {
+   "ma_cau": "K09060109036",
+   "nhom_id": "KNB00500",
+   "loai": "trac_nghiem",
+   "de": "Nhúng một thanh đồng (Cu) vào dung dịch silver nitrate (AgNO₃). Sau phản ứng, khối lượng thanh đồng tăng 15,2 g so với ban đầu. Số mol Cu đã phản ứng là",
+   "lua_chon": [
+    "0,1 mol",
+    "0,3455 mol",
+    "0,0704 mol",
+    "0,2 mol"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Gọi x là số mol Cu phản ứng: Cu + 2AgNO₃ → Cu(NO₃)₂ + 2Ag, n(Ag bám vào) = 2x, n(Cu tan ra) = x. Δm = 108×2x − 64x = 152x = 15,2 → x = 0,1 mol.\n\nVì sao các phương án khác sai:\n- B: Quên hệ số 2 của Ag khi tính khối lượng bám vào: Δm = 108x − 64x = 44x.\n- C: Quên trừ khối lượng Cu tan ra, coi Δm chỉ là khối lượng Ag bám vào: x = 15,2 : 216.\n- D: Nhân đôi kết quả đúng do nhầm hệ số phản ứng."
+  },
+  {
+   "ma_cau": "K09060109037",
+   "nhom_id": "KNB00500",
+   "loai": "trac_nghiem",
+   "de": "Nhúng một thanh nhôm (Al) vào dung dịch silver nitrate (AgNO₃). Sau phản ứng, khối lượng thanh nhôm tăng 29,7 g so với ban đầu. Số mol Al đã phản ứng là",
+   "lua_chon": [
+    "0,3667 mol",
+    "0,1 mol",
+    "0,0917 mol",
+    "0,2 mol"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Gọi x là số mol Al phản ứng: Al + 3AgNO₃ → Al(NO₃)₃ + 3Ag, n(Ag bám vào) = 3x, n(Al tan ra) = x. Δm = 108×3x − 27x = 297x = 29,7 → x = 0,1 mol.\n\nVì sao các phương án khác sai:\n- A: Quên hệ số 3 của Ag khi tính khối lượng bám vào: Δm = 108x − 27x = 81x.\n- C: Quên trừ khối lượng Al tan ra, coi Δm chỉ là khối lượng Ag bám vào: x = 29,7 : 324.\n- D: Nhân đôi kết quả đúng do nhầm hệ số phản ứng."
+  },
+  {
+   "ma_cau": "K09060109038",
+   "nhom_id": "KNB00500",
+   "loai": "trac_nghiem",
+   "de": "Nhúng một thanh kẽm (Zn) vào dung dịch copper(II) sulfate (CuSO₄). Sau phản ứng, khối lượng thanh kẽm giảm 0,2 g so với ban đầu. Số mol Zn đã phản ứng là",
+   "lua_chon": [
+    "0,0031 mol",
+    "0,00155 mol",
+    "0,4 mol",
+    "0,2 mol"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Gọi x là số mol Zn phản ứng: Zn+CuSO₄→ZnSO₄+Cu, n(Cu bám vào)=n(Zn tan ra)=x. Δm=65x-64x=x=0,2 → x=0,2mol (khối lượng thanh giảm vì Zn tan ra nặng hơn Cu bám vào không đáng kể).\n\nVì sao các phương án khác sai:\n- A: Quên trừ khối lượng Zn tan ra, coi Δm chỉ là khối lượng Cu bám vào (0,2:64).\n- B: Cộng nhầm khối lượng mol hai kim loại thay vì lấy hiệu (0,2:(64+65)).\n- C: Nhân đôi kết quả đúng do nhầm hệ số phản ứng."
+  },
+  {
+   "ma_cau": "K09060109039",
+   "nhom_id": "KNB00500",
+   "loai": "trac_nghiem",
+   "de": "Nhúng một thanh magnesium (Mg) vào dung dịch copper(II) sulfate (CuSO₄). Sau phản ứng, khối lượng thanh magnesium tăng 4 g so với ban đầu. Số mol Mg đã phản ứng là",
+   "lua_chon": [
+    "0,1 mol",
+    "0,0625 mol",
+    "0,2 mol",
+    "0,0455 mol"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Gọi x là số mol Mg phản ứng: Mg+CuSO₄→MgSO₄+Cu, n(Cu bám)=n(Mg tan)=x. Δm=64x-24x=40x=4→x=0,1mol.\n\nVì sao các phương án khác sai:\n- B: Quên trừ khối lượng Mg tan ra, coi Δm chỉ là khối lượng Cu bám vào (4:64).\n- C: Nhân đôi kết quả đúng do nhầm hệ số phản ứng.\n- D: Cộng nhầm khối lượng mol hai kim loại thay vì lấy hiệu (4:(64+24))."
+  },
+  {
+   "ma_cau": "K09060109040",
+   "nhom_id": "KNB00500",
+   "loai": "trac_nghiem",
+   "de": "Nhúng thanh sắt (Fe) vào 200 mL dung dịch copper(II) sulfate (CuSO₄) 0,5 M cho đến khi phản ứng xảy ra hoàn toàn. Coi thể tích dung dịch không đổi, nồng độ mol của dung dịch FeSO₄ tạo thành là",
+   "lua_chon": [
+    "1 M",
+    "0,25 M",
+    "0,5 M",
+    "0,0005 M"
+   ],
+   "dap_an": "C",
+   "loi_giai": "n(CuSO₄) = 0,2 × 0,5 = 0,1 mol. Fe + CuSO₄ → FeSO₄ + Cu, n(FeSO₄) = n(CuSO₄) = 0,1 mol. Thể tích không đổi = 0,2 L. C(FeSO₄) = 0,1 : 0,2 = 0,5 M.\n\nVì sao các phương án khác sai:\n- A: Nhân đôi nhầm số mol FeSO₄ so với số mol CuSO₄.\n- B: Chia đôi nhầm số mol FeSO₄ so với số mol CuSO₄.\n- D: Quên đổi 200 mL thành 0,2 L, chia trực tiếp số mol cho 200."
+  },
+  {
+   "ma_cau": "K09060109041",
+   "nhom_id": "KNB00500",
+   "loai": "trac_nghiem",
+   "de": "Nhúng thanh nhôm (Al) vào 150 mL dung dịch copper(II) sulfate (CuSO₄) 1 M cho đến khi phản ứng xảy ra hoàn toàn. Coi thể tích dung dịch không đổi, nồng độ mol của dung dịch Al₂(SO₄)₃ tạo thành là",
+   "lua_chon": [
+    "1 M",
+    "0,67 M",
+    "0,0003 M",
+    "0,33 M"
+   ],
+   "dap_an": "D",
+   "loi_giai": "n(CuSO₄) = 0,15 × 1 = 0,15 mol. 2Al + 3CuSO₄ → Al₂(SO₄)₃ + 3Cu, n(Al₂(SO₄)₃) = n(CuSO₄) : 3 = 0,05 mol. Thể tích không đổi = 0,15 L. C = 0,05 : 0,15 = 0,33 M.\n\nVì sao các phương án khác sai:\n- A: Quên chia tỉ lệ hệ số 3, coi n(Al₂(SO₄)₃) = n(CuSO₄).\n- B: Nhầm tỉ lệ hệ số Al : CuSO₄ = 2 : 3 áp vào tính Al₂(SO₄)₃.\n- C: Quên đổi 150 mL thành 0,15 L, chia trực tiếp số mol cho 150."
+  },
+  {
+   "ma_cau": "K09060109042",
+   "nhom_id": "KNB00500",
+   "loai": "trac_nghiem",
+   "de": "Nhúng thanh magnesium (Mg) vào 100 mL dung dịch silver nitrate (AgNO₃) 2 M cho đến khi phản ứng xảy ra hoàn toàn. Coi thể tích dung dịch không đổi, nồng độ mol của dung dịch Mg(NO₃)₂ tạo thành là",
+   "lua_chon": [
+    "1 M",
+    "2 M",
+    "0,5 M",
+    "0,001 M"
+   ],
+   "dap_an": "A",
+   "loi_giai": "n(AgNO₃) = 0,1 × 2 = 0,2 mol. Mg + 2AgNO₃ → Mg(NO₃)₂ + 2Ag, n(Mg(NO₃)₂) = n(AgNO₃) : 2 = 0,1 mol. Thể tích không đổi = 0,1 L. C = 0,1 : 0,1 = 1 M.\n\nVì sao các phương án khác sai:\n- B: Quên chia hệ số 2, coi n(Mg(NO₃)₂) = n(AgNO₃).\n- C: Chia đôi nhầm thêm một lần nữa sau khi đã chia hệ số 2.\n- D: Quên đổi 100 mL thành 0,1 L, chia trực tiếp số mol cho 100."
+  },
+  {
+   "ma_cau": "K09060109043",
+   "nhom_id": "KNB00500",
+   "loai": "trac_nghiem",
+   "de": "Nhúng thanh kẽm (Zn) vào 200 mL dung dịch silver nitrate (AgNO₃) 1,5 M cho đến khi phản ứng xảy ra hoàn toàn. Coi thể tích dung dịch không đổi, nồng độ mol của dung dịch Zn(NO₃)₂ tạo thành là",
+   "lua_chon": [
+    "1,5 M",
+    "0,75 M",
+    "3 M",
+    "0,0075 M"
+   ],
+   "dap_an": "B",
+   "loi_giai": "n(AgNO₃)=0,2×1,5=0,3mol. Zn+2AgNO₃→Zn(NO₃)₂+2Ag, n(Zn(NO₃)₂)=n(AgNO₃):2=0,15mol. Thể tích không đổi=0,2L. C=0,15:0,2=0,75M.\n\nVì sao các phương án khác sai:\n- A: Quên chia hệ số 2, coi n(Zn(NO₃)₂)=n(AgNO₃).\n- C: Nhân đôi nhầm thêm một lần nữa sau khi đã chia hệ số 2.\n- D: Quên đổi 200 mL thành 0,2 L, chia trực tiếp số mol cho 200."
+  },
+  {
+   "ma_cau": "K09060109044",
+   "nhom_id": "KNB00500",
+   "loai": "trac_nghiem",
+   "de": "Nhúng thanh sắt (Fe) vào 300 mL dung dịch silver nitrate (AgNO₃) 1 M cho đến khi phản ứng xảy ra hoàn toàn. Coi thể tích dung dịch không đổi, nồng độ mol của dung dịch Fe(NO₃)₂ tạo thành là",
+   "lua_chon": [
+    "1 M",
+    "2 M",
+    "0,5 M",
+    "0,00167 M"
+   ],
+   "dap_an": "C",
+   "loi_giai": "n(AgNO₃)=0,3×1=0,3mol. Fe+2AgNO₃→Fe(NO₃)₂+2Ag, n(Fe(NO₃)₂)=n(AgNO₃):2=0,15mol. Thể tích không đổi=0,3L. C=0,15:0,3=0,5M.\n\nVì sao các phương án khác sai:\n- A: Quên chia hệ số 2, coi n(Fe(NO₃)₂)=n(AgNO₃).\n- B: Nhân đôi nhầm thêm một lần nữa sau khi đã chia hệ số 2.\n- D: Quên đổi 300 mL thành 0,3 L, chia trực tiếp số mol cho 300."
+  }
+ ]
+}

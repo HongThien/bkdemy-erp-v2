@@ -1,0 +1,176 @@
+[
+ {
+  "ma_cau": "K09110504051",
+  "dang_bai_id": "KDB01300",
+  "chac": "cao",
+  "ly_do": "Cho k, hỏi tổng số DNA con = 2^k"
+ },
+ {
+  "ma_cau": "K09110504052",
+  "dang_bai_id": "KDB01300",
+  "chac": "cao",
+  "ly_do": "Cho k, hỏi tổng số DNA con = 2^k"
+ },
+ {
+  "ma_cau": "K09110504053",
+  "dang_bai_id": "KDB01300",
+  "chac": "cao",
+  "ly_do": "Cho k, hỏi tổng số DNA con = 2^k"
+ },
+ {
+  "ma_cau": "K09110504054",
+  "dang_bai_id": "KDB01299",
+  "chac": "cao",
+  "ly_do": "Cho N và k, tính nucleotide môi trường N(2^k-1)"
+ },
+ {
+  "ma_cau": "K09110504055",
+  "dang_bai_id": "KDB01299",
+  "chac": "cao",
+  "ly_do": "Cho N và k, tính nucleotide môi trường N(2^k-1)"
+ },
+ {
+  "ma_cau": "K09110504056",
+  "dang_bai_id": "KDB01299",
+  "chac": "cao",
+  "ly_do": "Cho N và k, tính nucleotide môi trường N(2^k-1)"
+ },
+ {
+  "ma_cau": "K09110504057",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: cho số gene con (2^k), tính ngược số lần tái bản k"
+ },
+ {
+  "ma_cau": "K09110504058",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: cho số gene con (2^k), tính ngược số lần tái bản k"
+ },
+ {
+  "ma_cau": "K09110504059",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: cho số gene con (2^k), tính ngược số lần tái bản k"
+ },
+ {
+  "ma_cau": "K09110504060",
+  "dang_bai_id": "KDB01300",
+  "chac": "cao",
+  "ly_do": "Cho k, hỏi tổng số DNA con = 2^k"
+ },
+ {
+  "ma_cau": "K09110504061",
+  "dang_bai_id": "KDB01299",
+  "chac": "cao",
+  "ly_do": "Cho N và k, tính nucleotide môi trường N(2^k-1)"
+ },
+ {
+  "ma_cau": "K09110504062",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: cho số gene con (2^k), tính ngược số lần tái bản k"
+ },
+ {
+  "ma_cau": "K09110504063",
+  "dang_bai_id": "KDB01303",
+  "chac": "vua",
+  "ly_do": "Từ N, %A tính A rồi A môi trường (2^k-1); gần dạng A,G,k nhưng A phải suy ra"
+ },
+ {
+  "ma_cau": "K09110504064",
+  "dang_bai_id": "KDB01299",
+  "chac": "vua",
+  "ly_do": "Cho chiều dài L suy N rồi N(2^k-1); gần dạng N,k, thêm bước đổi L"
+ },
+ {
+  "ma_cau": "K09110504065",
+  "dang_bai_id": "KDB01301",
+  "chac": "cao",
+  "ly_do": "Cho k, hỏi số DNA con hoàn toàn mới = 2^k-2"
+ },
+ {
+  "ma_cau": "K09110505051",
+  "dang_bai_id": "KDB01307",
+  "chac": "cao",
+  "ly_do": "Cho N, tính rN = N/2"
+ },
+ {
+  "ma_cau": "K09110505052",
+  "dang_bai_id": "KDB01307",
+  "chac": "cao",
+  "ly_do": "Cho N, tính rN = N/2"
+ },
+ {
+  "ma_cau": "K09110505053",
+  "dang_bai_id": "KDB01307",
+  "chac": "cao",
+  "ly_do": "Cho N, tính rN = N/2"
+ },
+ {
+  "ma_cau": "K09110505054",
+  "dang_bai_id": "KDB01308",
+  "chac": "cao",
+  "ly_do": "Cho rN, tính N = 2rN"
+ },
+ {
+  "ma_cau": "K09110505055",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: cho mạch gốc (A,T,G,C), tính số ribonucleotide từng loại của mRNA"
+ },
+ {
+  "ma_cau": "K09110505056",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: cho mạch gốc (A,T,G,C), tính số ribonucleotide từng loại của mRNA"
+ },
+ {
+  "ma_cau": "K09110505057",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: cho mạch gốc (A,T,G,C), tính số ribonucleotide từng loại của mRNA"
+ },
+ {
+  "ma_cau": "K09110505058",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: gene phiên mã nhiều lần (số mRNA, nguyên liệu môi trường, số lần)"
+ },
+ {
+  "ma_cau": "K09110505059",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: gene phiên mã nhiều lần (số mRNA, nguyên liệu môi trường, số lần)"
+ },
+ {
+  "ma_cau": "K09110505060",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: gene phiên mã nhiều lần (số mRNA, nguyên liệu môi trường, số lần)"
+ },
+ {
+  "ma_cau": "K09110505061",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: gene phiên mã nhiều lần (số mRNA, nguyên liệu môi trường, số lần)"
+ },
+ {
+  "ma_cau": "K09110505062",
+  "dang_bai_id": "KDB01314",
+  "chac": "cao",
+  "ly_do": "Cho rN và %rA,%rU,%rG, tính số rC"
+ },
+ {
+  "ma_cau": "K09110505063",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: gene phiên mã nhiều lần (số mRNA, nguyên liệu môi trường, số lần)"
+ },
+ {
+  "ma_cau": "K09110505064",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: gene phiên mã nhiều lần (số mRNA, nguyên liệu môi trường, số lần)"
+ }
+]

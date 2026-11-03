@@ -1,0 +1,680 @@
+[
+ {
+  "ma_cau": "K09020401001",
+  "dang_bai_id": "KDB01456",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020401002",
+  "dang_bai_id": "KDB01456",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020401003",
+  "dang_bai_id": "KDB01456",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020401004",
+  "dang_bai_id": "KDB01456",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020401005",
+  "dang_bai_id": "KDB01456",
+  "chac": "vua",
+  "ly_do": "Phụ thuộc hình vẽ chùm tia"
+ },
+ {
+  "ma_cau": "K09020401006",
+  "dang_bai_id": "KDB01457",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020401007",
+  "dang_bai_id": "KDB01457",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020401008",
+  "dang_bai_id": "KDB01457",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020401009",
+  "dang_bai_id": "KDB01457",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020401010",
+  "dang_bai_id": "KDB01458",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020401011",
+  "dang_bai_id": "KDB01458",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020401012",
+  "dang_bai_id": "KDB01458",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020401013",
+  "dang_bai_id": "KDB01458",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020401014",
+  "dang_bai_id": "KDB01458",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020402001",
+  "dang_bai_id": "KDB01459",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020402002",
+  "dang_bai_id": "KDB01459",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020402003",
+  "dang_bai_id": "KDB01459",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020402004",
+  "dang_bai_id": "KDB01460",
+  "chac": "cao",
+  "ly_do": "Thấu kính phân kì cho d,f"
+ },
+ {
+  "ma_cau": "K09020402005",
+  "dang_bai_id": "KDB01460",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020402006",
+  "dang_bai_id": "KDB01460",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020402007",
+  "dang_bai_id": "KDB01461",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020402008",
+  "dang_bai_id": "KDB01461",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020402009",
+  "dang_bai_id": "KDB01461",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020402010",
+  "dang_bai_id": "KDB01459",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020402011",
+  "dang_bai_id": "KDB01459",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020402012",
+  "dang_bai_id": "KDB01459",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020402013",
+  "dang_bai_id": "KDB01459",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020402014",
+  "dang_bai_id": "KDB01459",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020402015",
+  "dang_bai_id": "KDB01459",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020402016",
+  "dang_bai_id": "KDB01460",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020402017",
+  "dang_bai_id": "KDB01460",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020402018",
+  "dang_bai_id": "KDB01460",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020304001",
+  "dang_bai_id": "KDB01454",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020304002",
+  "dang_bai_id": "KDB01455",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020304003",
+  "dang_bai_id": "KDB01454",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020304004",
+  "dang_bai_id": "KDB01455",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020304005",
+  "dang_bai_id": "KDB01454",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020304006",
+  "dang_bai_id": "KDB01455",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020304007",
+  "dang_bai_id": "KDB01455",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020304008",
+  "dang_bai_id": "KDB01455",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020106051",
+  "dang_bai_id": "KDB01131",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020106052",
+  "dang_bai_id": "KDB01131",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020106053",
+  "dang_bai_id": "KDB01131",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020106054",
+  "dang_bai_id": "KDB01131",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020106055",
+  "dang_bai_id": "KDB01131",
+  "chac": "vua",
+  "ly_do": "Giải thích định tính, hơi lệch sang nhìn xiên"
+ },
+ {
+  "ma_cau": "K09020106056",
+  "dang_bai_id": "KDB01132",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020106057",
+  "dang_bai_id": "KDB01135",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020106058",
+  "dang_bai_id": "KDB01136",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020106059",
+  "dang_bai_id": "KDB01132",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020106060",
+  "dang_bai_id": "KDB01132",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020106061",
+  "dang_bai_id": "KDB01132",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020106062",
+  "dang_bai_id": "KDB01135",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020106063",
+  "dang_bai_id": "KDB01136",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405001",
+  "dang_bai_id": "KDB01462",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405002",
+  "dang_bai_id": "KDB01462",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405003",
+  "dang_bai_id": "KDB01462",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405004",
+  "dang_bai_id": "KDB01462",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405005",
+  "dang_bai_id": "KDB01463",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405006",
+  "dang_bai_id": "KDB01463",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405007",
+  "dang_bai_id": "KDB01463",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405008",
+  "dang_bai_id": "KDB01463",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405009",
+  "dang_bai_id": "KDB01463",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405010",
+  "dang_bai_id": "KDB01463",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405011",
+  "dang_bai_id": "KDB01464",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405012",
+  "dang_bai_id": "KDB01464",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405013",
+  "dang_bai_id": "KDB01464",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405014",
+  "dang_bai_id": "KDB01465",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405015",
+  "dang_bai_id": "KDB01465",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405016",
+  "dang_bai_id": "KDB01464",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405017",
+  "dang_bai_id": "KDB01464",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405018",
+  "dang_bai_id": "KDB01464",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405019",
+  "dang_bai_id": "KDB01465",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405020",
+  "dang_bai_id": "KDB01465",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405021",
+  "dang_bai_id": "KDB01465",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405022",
+  "dang_bai_id": "KDB01465",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405023",
+  "dang_bai_id": "KDB01465",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405024",
+  "dang_bai_id": "KDB01465",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405025",
+  "dang_bai_id": "KDB01465",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405026",
+  "dang_bai_id": "KDB01465",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405027",
+  "dang_bai_id": "KDB01465",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405028",
+  "dang_bai_id": "KDB01465",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405029",
+  "dang_bai_id": "KDB01464",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405030",
+  "dang_bai_id": "KDB01464",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405031",
+  "dang_bai_id": "KDB01464",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405032",
+  "dang_bai_id": "KDB01464",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405033",
+  "dang_bai_id": "KDB01464",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405034",
+  "dang_bai_id": "KDB01464",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405035",
+  "dang_bai_id": "KDB01464",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405036",
+  "dang_bai_id": "KDB01464",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405037",
+  "dang_bai_id": "KDB01466",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405038",
+  "dang_bai_id": "KDB01466",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405039",
+  "dang_bai_id": "KDB01466",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405040",
+  "dang_bai_id": "KDB01466",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405041",
+  "dang_bai_id": "KDB01466",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405042",
+  "dang_bai_id": "KDB01466",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020405043",
+  "dang_bai_id": "KDB01466",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020406001",
+  "dang_bai_id": "KDB01467",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020406002",
+  "dang_bai_id": "KDB01467",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020406003",
+  "dang_bai_id": "KDB01467",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020406004",
+  "dang_bai_id": "KDB01467",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020406005",
+  "dang_bai_id": "KDB01467",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020108051",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: sin góc khúc xạ giữa hai môi trường bất kì (n1→n2)"
+ },
+ {
+  "ma_cau": "K09020108052",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: sin góc khúc xạ giữa hai môi trường bất kì (n1→n2)"
+ },
+ {
+  "ma_cau": "K09020108053",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: sin góc khúc xạ giữa hai môi trường bất kì (n1→n2)"
+ },
+ {
+  "ma_cau": "K09020110051",
+  "dang_bai_id": "KDB01160",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020110052",
+  "dang_bai_id": "KDB01160",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020110053",
+  "dang_bai_id": "KDB01160",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020110054",
+  "dang_bai_id": "KDB01159",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020110055",
+  "dang_bai_id": "KDB01159",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020110056",
+  "dang_bai_id": "KDB01159",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020110057",
+  "dang_bai_id": "KDB01161",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020110058",
+  "dang_bai_id": "KDB01161",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ },
+ {
+  "ma_cau": "K09020110059",
+  "dang_bai_id": "KDB01161",
+  "chac": "cao",
+  "ly_do": "Khớp mô tả dạng"
+ }
+]

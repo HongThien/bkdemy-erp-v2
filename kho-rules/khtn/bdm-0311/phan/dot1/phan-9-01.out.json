@@ -1,0 +1,326 @@
+[
+ {
+  "ma_cau": "K09010101041",
+  "dang_bai_id": "KDB00970",
+  "chac": "cao",
+  "ly_do": "Hỏi khái niệm/định nghĩa động năng"
+ },
+ {
+  "ma_cau": "K09010101042",
+  "dang_bai_id": "KDB00973",
+  "chac": "vua",
+  "ly_do": "Tình huống thực tế hỏi dạng năng lượng"
+ },
+ {
+  "ma_cau": "K09010101043",
+  "dang_bai_id": "KDB00970",
+  "chac": "cao",
+  "ly_do": "Hỏi khái niệm/định nghĩa động năng"
+ },
+ {
+  "ma_cau": "K09010101044",
+  "dang_bai_id": "KDB00970",
+  "chac": "cao",
+  "ly_do": "Hỏi khái niệm/định nghĩa động năng"
+ },
+ {
+  "ma_cau": "K09010101045",
+  "dang_bai_id": "KDB00973",
+  "chac": "vua",
+  "ly_do": "Tình huống thực tế hỏi dạng năng lượng"
+ },
+ {
+  "ma_cau": "K09010101046",
+  "dang_bai_id": "KDB00972",
+  "chac": "cao",
+  "ly_do": "Định tính yếu tố ảnh hưởng động năng"
+ },
+ {
+  "ma_cau": "K09010101047",
+  "dang_bai_id": "KDB00972",
+  "chac": "cao",
+  "ly_do": "Định tính yếu tố ảnh hưởng động năng"
+ },
+ {
+  "ma_cau": "K09010101048",
+  "dang_bai_id": "KDB00972",
+  "chac": "cao",
+  "ly_do": "Định tính yếu tố ảnh hưởng động năng"
+ },
+ {
+  "ma_cau": "K09010101049",
+  "dang_bai_id": "KDB00972",
+  "chac": "cao",
+  "ly_do": "Định tính yếu tố ảnh hưởng động năng"
+ },
+ {
+  "ma_cau": "K09010101050",
+  "dang_bai_id": "KDB00973",
+  "chac": "cao",
+  "ly_do": "So sánh xe cùng tốc độ khác khối lượng, tình huống thực tế"
+ },
+ {
+  "ma_cau": "K09010101051",
+  "dang_bai_id": "KDB00973",
+  "chac": "cao",
+  "ly_do": "Vật nào có/không có động năng qua ví dụ thực tế"
+ },
+ {
+  "ma_cau": "K09010101052",
+  "dang_bai_id": "KDB00973",
+  "chac": "cao",
+  "ly_do": "Vật nào có/không có động năng qua ví dụ thực tế"
+ },
+ {
+  "ma_cau": "K09010101053",
+  "dang_bai_id": "KDB00973",
+  "chac": "cao",
+  "ly_do": "Vật nào có/không có động năng qua ví dụ thực tế"
+ },
+ {
+  "ma_cau": "K09010101054",
+  "dang_bai_id": "KDB00973",
+  "chac": "cao",
+  "ly_do": "Vật nào có/không có động năng qua ví dụ thực tế"
+ },
+ {
+  "ma_cau": "K09010102063",
+  "dang_bai_id": "KDB00974",
+  "chac": "cao",
+  "ly_do": "m, v đúng đơn vị chuẩn, thay thẳng"
+ },
+ {
+  "ma_cau": "K09010102064",
+  "dang_bai_id": "KDB00974",
+  "chac": "cao",
+  "ly_do": "m, v đúng đơn vị chuẩn, thay thẳng"
+ },
+ {
+  "ma_cau": "K09010102065",
+  "dang_bai_id": "KDB00974",
+  "chac": "cao",
+  "ly_do": "m, v đúng đơn vị chuẩn, thay thẳng"
+ },
+ {
+  "ma_cau": "K09010102066",
+  "dang_bai_id": "KDB00974",
+  "chac": "cao",
+  "ly_do": "m, v đúng đơn vị chuẩn, thay thẳng"
+ },
+ {
+  "ma_cau": "K09010102067",
+  "dang_bai_id": "KDB00975",
+  "chac": "cao",
+  "ly_do": "Khối lượng gam cần đổi kg"
+ },
+ {
+  "ma_cau": "K09010102068",
+  "dang_bai_id": "KDB00976",
+  "chac": "cao",
+  "ly_do": "Tốc độ km/h cần đổi"
+ },
+ {
+  "ma_cau": "K09010102069",
+  "dang_bai_id": "KDB00974",
+  "chac": "vua",
+  "ly_do": "Đơn vị chuẩn nhưng kết quả yêu cầu kJ; không có dạng riêng"
+ },
+ {
+  "ma_cau": "K09010102070",
+  "dang_bai_id": "KDB00975",
+  "chac": "cao",
+  "ly_do": "Khối lượng gam cần đổi kg"
+ },
+ {
+  "ma_cau": "K09010102071",
+  "dang_bai_id": "KDB00976",
+  "chac": "vua",
+  "ly_do": "km/h cần đổi, kết quả kJ; không có dạng riêng"
+ },
+ {
+  "ma_cau": "K09010102072",
+  "dang_bai_id": "KDB00977",
+  "chac": "cao",
+  "ly_do": "Tấn và km/h đều đổi; kết quả kJ"
+ },
+ {
+  "ma_cau": "K09010102073",
+  "dang_bai_id": "KDB00977",
+  "chac": "cao",
+  "ly_do": "Tấn và km/h đều đổi; kết quả kJ"
+ },
+ {
+  "ma_cau": "K09010102074",
+  "dang_bai_id": "KDB00977",
+  "chac": "cao",
+  "ly_do": "Tấn và km/h đều đổi; kết quả kJ"
+ },
+ {
+  "ma_cau": "K09010102075",
+  "dang_bai_id": "KDB00977",
+  "chac": "cao",
+  "ly_do": "Tấn và km/h đều đổi; kết quả kJ"
+ },
+ {
+  "ma_cau": "K09010102076",
+  "dang_bai_id": "KDB00977",
+  "chac": "cao",
+  "ly_do": "Tấn và km/h đều đổi; kết quả kJ"
+ },
+ {
+  "ma_cau": "K09010103051",
+  "dang_bai_id": "KDB00982",
+  "chac": "cao",
+  "ly_do": "Cho Wđ và v, tính khối lượng"
+ },
+ {
+  "ma_cau": "K09010103052",
+  "dang_bai_id": "KDB00982",
+  "chac": "cao",
+  "ly_do": "Cho Wđ và v, tính khối lượng"
+ },
+ {
+  "ma_cau": "K09010103053",
+  "dang_bai_id": "KDB00982",
+  "chac": "cao",
+  "ly_do": "Cho Wđ và v, tính khối lượng"
+ },
+ {
+  "ma_cau": "K09010103054",
+  "dang_bai_id": "KDB00982",
+  "chac": "cao",
+  "ly_do": "Cho Wđ và v, tính khối lượng"
+ },
+ {
+  "ma_cau": "K09010103055",
+  "dang_bai_id": "KDB00983",
+  "chac": "cao",
+  "ly_do": "Cho Wđ và m, tính tốc độ m/s"
+ },
+ {
+  "ma_cau": "K09010103056",
+  "dang_bai_id": "KDB00983",
+  "chac": "cao",
+  "ly_do": "Cho Wđ và m, tính tốc độ m/s"
+ },
+ {
+  "ma_cau": "K09010103057",
+  "dang_bai_id": "KDB00983",
+  "chac": "cao",
+  "ly_do": "Cho Wđ và m, tính tốc độ m/s"
+ },
+ {
+  "ma_cau": "K09010103058",
+  "dang_bai_id": "KDB00983",
+  "chac": "cao",
+  "ly_do": "Cho Wđ và m, tính tốc độ m/s"
+ },
+ {
+  "ma_cau": "K09010103059",
+  "dang_bai_id": "KDB00983",
+  "chac": "cao",
+  "ly_do": "Cho Wđ và m, tính tốc độ m/s"
+ },
+ {
+  "ma_cau": "K09010104051",
+  "dang_bai_id": "KDB00990",
+  "chac": "cao",
+  "ly_do": "Khối lượng đổi k lần, v không đổi"
+ },
+ {
+  "ma_cau": "K09010104052",
+  "dang_bai_id": "KDB00990",
+  "chac": "cao",
+  "ly_do": "Khối lượng đổi k lần, v không đổi"
+ },
+ {
+  "ma_cau": "K09010104053",
+  "dang_bai_id": "KDB00990",
+  "chac": "cao",
+  "ly_do": "Khối lượng đổi k lần, v không đổi"
+ },
+ {
+  "ma_cau": "K09010104054",
+  "dang_bai_id": "KDB00991",
+  "chac": "cao",
+  "ly_do": "Tốc độ đổi k lần, m không đổi"
+ },
+ {
+  "ma_cau": "K09010104055",
+  "dang_bai_id": "KDB00991",
+  "chac": "cao",
+  "ly_do": "Tốc độ đổi k lần, m không đổi"
+ },
+ {
+  "ma_cau": "K09010104056",
+  "dang_bai_id": "KDB00991",
+  "chac": "cao",
+  "ly_do": "Tốc độ đổi k lần, m không đổi"
+ },
+ {
+  "ma_cau": "K09010104057",
+  "dang_bai_id": "KDB00993",
+  "chac": "cao",
+  "ly_do": "So sánh động năng hai vật qua tỉ số m, v"
+ },
+ {
+  "ma_cau": "K09010104058",
+  "dang_bai_id": "KDB00993",
+  "chac": "cao",
+  "ly_do": "So sánh động năng hai vật qua tỉ số m, v"
+ },
+ {
+  "ma_cau": "K09010104059",
+  "dang_bai_id": "KDB00992",
+  "chac": "cao",
+  "ly_do": "Một vật m và v cùng thay đổi"
+ },
+ {
+  "ma_cau": "K09010104060",
+  "dang_bai_id": "KDB00992",
+  "chac": "cao",
+  "ly_do": "Một vật m và v cùng thay đổi"
+ },
+ {
+  "ma_cau": "K09010106031",
+  "dang_bai_id": "KDB00998",
+  "chac": "cao",
+  "ly_do": "Tốc độ và nguy hiểm khi va chạm giao thông"
+ },
+ {
+  "ma_cau": "K09010106032",
+  "dang_bai_id": "KDB00998",
+  "chac": "cao",
+  "ly_do": "Tốc độ và nguy hiểm khi va chạm giao thông"
+ },
+ {
+  "ma_cau": "K09010106033",
+  "dang_bai_id": "KDB00998",
+  "chac": "cao",
+  "ly_do": "Tốc độ và nguy hiểm khi va chạm giao thông"
+ },
+ {
+  "ma_cau": "K09010106034",
+  "dang_bai_id": "KDB01001",
+  "chac": "cao",
+  "ly_do": "Búa máy ứng dụng động năng kỹ thuật"
+ },
+ {
+  "ma_cau": "K09010106035",
+  "dang_bai_id": "KDB00999",
+  "chac": "cao",
+  "ly_do": "Thiết bị/kết cấu hấp thụ động năng khi va chạm"
+ },
+ {
+  "ma_cau": "K09010106036",
+  "dang_bai_id": "KDB00999",
+  "chac": "cao",
+  "ly_do": "Thiết bị/kết cấu hấp thụ động năng khi va chạm"
+ },
+ {
+  "ma_cau": "K09010106037",
+  "dang_bai_id": "KDB00999",
+  "chac": "cao",
+  "ly_do": "Thiết bị/kết cấu hấp thụ động năng khi va chạm"
+ }
+]

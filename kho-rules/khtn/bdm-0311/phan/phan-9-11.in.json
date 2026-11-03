@@ -1,0 +1,1105 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00562",
+   "chu_de": "Di truyền học",
+   "chuyen_de": "Tái bản DNA và phiên mã tạo RNA",
+   "nhom": "Lý thuyết tái bản DNA",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nTái bản DNA (nhân đôi, sao chép DNA) là quá trình từ một phân tử DNA mẹ tạo ra hai phân tử DNA con giống hệt DNA mẹ và giống hệt nhau.\nThời điểm: kì trung gian của chu kì tế bào, trước khi tế bào phân chia. Vị trí: chủ yếu trong nhân tế bào.\nNguyên liệu: các nucleotide tự do (A, T, G, C) trong môi trường nội bào.\nDiễn biến: nhờ enzyme, DNA mẹ tháo xoắn, hai mạch đơn tách nhau ra; mỗi mạch làm khuôn, các nucleotide tự do liên kết với mạch khuôn theo nguyên tắc bổ sung (A–T, G–C) tạo mạch mới; mỗi mạch khuôn cùng mạch mới tạo thành một DNA con.\nNguyên tắc bán bảo toàn: mỗi DNA con gồm một mạch cũ của DNA mẹ và một mạch mới được tổng hợp.\nÝ nghĩa: truyền đạt thông tin di truyền ổn định, chính xác qua các thế hệ tế bào và cơ thể; là cơ sở của sự tự nhân đôi nhiễm sắc thể.\n\n##PP 2. Các bước làm bài\nXác định đề hỏi về khái niệm, diễn biến, nguyên tắc bán bảo toàn hay ý nghĩa của tái bản.\nNhớ trình tự: tháo xoắn và tách mạch, tổng hợp mạch mới trên khuôn theo nguyên tắc bổ sung, tạo hai DNA con.\nĐối chiếu từng phương án với các nguyên tắc bổ sung và bán bảo toàn, loại phương án sai về mạch cũ, mạch mới hoặc số DNA con.\n\n##CY 3. Lưu ý\nMỗi DNA con có một mạch cũ và một mạch mới, không phải hai mạch mới hay hai mạch cũ.\nCả hai mạch DNA mẹ đều làm khuôn; từ một DNA mẹ chỉ tạo hai DNA con sau một lần tái bản.\nTái bản tạo DNA, không tạo RNA; tái bản diễn ra ở kì trung gian, không phải trong các kì của phân bào.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01284",
+     "thu_tu": 1,
+     "ten": "KHÁI NIỆM, THỜI ĐIỂM, VỊ TRÍ",
+     "mo_ta": "Câu hỏi nhận biết (ghi nhớ một ý) về khái niệm tái bản DNA: tên gọi quá trình, thời điểm, vị trí, nguyên liệu, số phân tử DNA con tạo ra, đặc điểm DNA con so với DNA mẹ.\nMỗi câu chỉ hỏi một thông tin, không cần suy luận qua nhiều bước.\nLưu ý: hỏi mỗi DNA con có mạch cũ hay mạch mới, vì sao gọi là bán bảo toàn ⇒ thuộc dạng \"NGUYÊN TẮC BÁN BẢO TOÀN\".\nLưu ý: hỏi các bước diễn ra, vai trò của mạch khuôn, enzyme, nguyên tắc bổ sung ⇒ thuộc dạng \"DIỄN BIẾN CƠ BẢN CỦA QUÁ TRÌNH\".",
+     "ly_thuyet": "##TC Khái niệm, thời điểm, vị trí của tái bản DNA\nTái bản DNA (nhân đôi, sao chép DNA) là quá trình từ một phân tử DNA mẹ tạo ra hai phân tử DNA con giống hệt DNA mẹ và giống hệt nhau.\nThời điểm: kì trung gian của chu kì tế bào, trước khi tế bào phân chia. Vị trí: chủ yếu trong nhân tế bào.\nNguyên liệu tổng hợp mạch mới là các nucleotide tự do trong môi trường nội bào.\n\n##CY\nTái bản tạo DNA (không tạo RNA, không tạo protein); từ một DNA mẹ chỉ tạo hai DNA con sau một lần tái bản.\nTái bản diễn ra ở kì trung gian, không diễn ra ở các kì của phân bào như kì giữa, kì sau.",
+     "vi_du": "##VD\nQuá trình tái bản DNA diễn ra vào thời điểm nào của chu kì tế bào?\nA. Trong kì trung gian, trước khi tế bào phân chia.\nB. Trong kì giữa của phân bào.\nC. Trong kì sau của phân bào.\nD. Ngay sau khi tế bào phân chia xong.\n\nBài giải:\nDNA tự nhân đôi ở kì trung gian, hoàn tất trước khi tế bào bước vào quá trình phân chia, để mỗi tế bào con nhận đủ vật chất di truyền.\nB và C sai vì kì giữa và kì sau là các kì của quá trình phân bào, lúc đó DNA đã nhân đôi xong.\nD sai vì DNA phải nhân đôi trước khi tế bào phân chia chứ không phải sau.\nChọn A.\n\n##VD\nNguyên liệu để tổng hợp nên các mạch mới trong quá trình tái bản DNA là\nA. các axit amin tự do trong tế bào.\nB. các nucleotide tự do trong môi trường nội bào.\nC. các phân tử RNA có sẵn.\nD. các phân tử prôtein có sẵn.\n\nBài giải:\nMạch mới của DNA được tổng hợp từ các nucleotide tự do có trong môi trường nội bào.\nCác nucleotide này liên kết vào mạch khuôn theo nguyên tắc bổ sung.\nAxit amin là đơn phân của protein, RNA và protein không phải nguyên liệu tạo mạch DNA mới nên A, C, D sai.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01285",
+     "thu_tu": 2,
+     "ten": "DIỄN BIẾN CƠ BẢN CỦA QUÁ TRÌNH",
+     "mo_ta": "Câu hỏi về diễn biến của tái bản DNA: bước đầu tiên, vai trò của enzyme, vai trò của mạch khuôn, nguyên tắc ghép nucleotide, sản phẩm trên mỗi mạch khuôn.\nBiến thể: sắp xếp thứ tự các bước; chọn phát biểu đúng về một bước; hỏi sản phẩm hình thành từ mỗi mạch khuôn.\nLưu ý: hỏi mỗi DNA con gồm mạch cũ hay mạch mới, nguyên tắc bán bảo toàn ⇒ thuộc dạng \"NGUYÊN TẮC BÁN BẢO TOÀN\".\nLưu ý: hỏi thời điểm, vị trí, nguyên liệu, số DNA con ⇒ thuộc dạng \"KHÁI NIỆM, THỜI ĐIỂM, VỊ TRÍ\".",
+     "ly_thuyet": "##TC Diễn biến của tái bản DNA\nTrước hết, nhờ các enzyme, phân tử DNA mẹ tháo xoắn, hai mạch đơn tách nhau ra.\nTiếp theo, mỗi mạch đơn làm khuôn; các nucleotide tự do trong môi trường liên kết với nucleotide trên mạch khuôn theo nguyên tắc bổ sung (A–T, G–C), tạo thành mạch mới.\nCuối cùng, mỗi mạch khuôn cùng mạch mới vừa tổng hợp trên nó tạo thành một phân tử DNA con; từ một DNA mẹ tạo hai DNA con.\n\n##PP\nXác định đề hỏi về bước nào: tách mạch, tổng hợp mạch mới hay hình thành DNA con.\nNhớ trình tự: tháo xoắn và tách mạch, rồi tổng hợp mạch mới trên khuôn, rồi tạo DNA con.\nĐối chiếu từng phương án với nguyên tắc bổ sung và vai trò làm khuôn của mỗi mạch đơn.\n\n##CY\nMạch mới không tự tổng hợp nếu không có mạch khuôn; hai mạch đơn của DNA mẹ đều làm khuôn.\nSản phẩm trực tiếp trên mỗi mạch khuôn là một mạch DNA mới bổ sung với nó, không phải RNA hay chuỗi polypeptide.",
+     "vi_du": "##VD\nBước đầu tiên trong diễn biến của quá trình tái bản DNA là\nA. tổng hợp mạch mới hoàn chỉnh ngay lập tức.\nB. hai phân tử DNA con tách nhau ra.\nC. hai mạch đơn của DNA mẹ tách nhau ra (tháo xoắn).\nD. các nucleotide tự do liên kết với nhau tạo mạch mới hoàn toàn độc lập, không cần khuôn.\n\nBài giải:\nQuá trình bắt đầu bằng việc DNA mẹ tháo xoắn, hai mạch đơn tách nhau ra nhờ enzyme, sau đó mỗi mạch làm khuôn để tổng hợp mạch bổ sung.\nA sai vì mạch mới chỉ được tổng hợp khi đã có mạch khuôn, không thể có ngay.\nB sai vì hai DNA con chỉ hình thành ở cuối quá trình.\nD sai vì mạch mới luôn cần mạch khuôn và nguyên tắc bổ sung.\nChọn C.\n\n##VD\nHai mạch mới được tổng hợp trong quá trình tái bản DNA kết hợp với hai mạch khuôn tương ứng để tạo thành\nA. hai phân tử DNA con.\nB. một phân tử DNA duy nhất.\nC. một phân tử RNA.\nD. bốn phân tử DNA con.\n\nBài giải:\nMỗi mạch khuôn cùng với mạch mới vừa tổng hợp trên nó tạo thành một phân tử DNA con hoàn chỉnh.\nHai mạch khuôn nên tạo ra hai phân tử DNA con.\nB sai vì mỗi mạch khuôn tạo một DNA con riêng; C sai vì sản phẩm là DNA, không phải RNA; D sai vì từ một DNA mẹ chỉ tạo hai DNA con.\nChọn A."
+    },
+    {
+     "dang_id": "KDB01286",
+     "thu_tu": 3,
+     "ten": "NGUYÊN TẮC BÁN BẢO TOÀN",
+     "mo_ta": "Câu hỏi về nguyên tắc bán bảo toàn của tái bản DNA: ý nghĩa của \"bán bảo toàn\", mỗi DNA con có bao nhiêu mạch cũ, mạch mới, nhận định đúng hoặc sai về cấu tạo DNA con.\nBiến thể: chọn định nghĩa đúng; chọn nhận định sai; giải thích vì sao gọi là bán bảo toàn; hỏi số mạch cũ trong một DNA con; so sánh hai DNA con với nhau.\nLưu ý: hỏi các bước tháo xoắn, tổng hợp mạch mới nói chung ⇒ thuộc dạng \"DIỄN BIẾN CƠ BẢN CỦA QUÁ TRÌNH\".\nLưu ý: câu cho một tình huống giả định rồi hỏi hậu quả hoặc kết quả ⇒ thuộc dạng \"SUY LUẬN VỀ DIỄN BIẾN, KẾT QUẢ\".",
+     "ly_thuyet": "##TC Nguyên tắc bán bảo toàn\nMỗi phân tử DNA con gồm một mạch cũ (giữ lại từ DNA mẹ) và một mạch mới được tổng hợp trên mạch khuôn theo nguyên tắc bổ sung.\nHai DNA con có cấu tạo giống nhau về điểm này và giống hệt DNA mẹ về trình tự nucleotide.\nCơ sở của sự chính xác: mỗi mạch khuôn quy định chính xác loại nucleotide bổ sung ở từng vị trí.\n\n##CY\nBán bảo toàn nghĩa là giữ lại một nửa: mỗi DNA con có đúng một mạch cũ, không phải hai mạch cũ hay hai mạch mới.\nPhương án nói cả hai mạch của DNA con đều mới, hoặc đều cũ, hoặc chỉ một DNA con có mạch cũ là phương án nhiễu thường gặp.",
+     "vi_du": "##VD\nNguyên tắc bán bảo toàn trong tái bản DNA được hiểu là\nA. cả hai mạch của DNA con đều là mạch mới hoàn toàn.\nB. cả hai mạch của DNA con đều là mạch cũ của DNA mẹ.\nC. mỗi DNA con gồm một mạch cũ của DNA mẹ và một mạch mới được tổng hợp.\nD. DNA con không chứa mạch nào của DNA mẹ.\n\nBài giải:\n\"Bán bảo toàn\" nghĩa là giữ lại một nửa vật liệu cũ.\nMỗi phân tử DNA con gồm một mạch cũ (từ DNA mẹ) và một mạch mới vừa được tổng hợp.\nA và D sai vì DNA con có giữ lại một mạch của DNA mẹ; B sai vì chỉ một mạch là cũ, mạch còn lại là mạch mới.\nChọn C.\n\n##VD\nNhận định nào sau đây sai về nguyên tắc bán bảo toàn trong tái bản DNA?\nA. Mỗi DNA con có một mạch cũ và một mạch mới.\nB. Mạch cũ trong DNA con có nguồn gốc từ DNA mẹ.\nC. Mạch mới trong DNA con được tổng hợp dựa trên mạch khuôn theo nguyên tắc bổ sung.\nD. Cả hai mạch trong mỗi DNA con đều là mạch mới được tổng hợp lại hoàn toàn.\n\nBài giải:\nA đúng: mỗi DNA con gồm một mạch cũ và một mạch mới.\nB đúng: mạch cũ được giữ lại từ DNA mẹ.\nC đúng: mạch mới được tổng hợp trên mạch khuôn theo nguyên tắc bổ sung.\nD sai vì mỗi DNA con chỉ có một mạch mới, mạch còn lại là mạch cũ giữ lại từ DNA mẹ.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01287",
+     "thu_tu": 4,
+     "ten": "SUY LUẬN VỀ DIỄN BIẾN, KẾT QUẢ",
+     "mo_ta": "Câu hỏi vận dụng, suy luận từ kiến thức về tái bản DNA: xác định trạng thái của quá trình ở một giai đoạn cho trước, dự đoán hậu quả khi nguyên tắc bổ sung không được thực hiện chính xác, vai trò của hai DNA con đối với tế bào, nhận định sai về tái bản.\nĐề thường cho tình huống giả định hoặc yêu cầu loại trừ phát biểu sai trong 4 phương án.\nLưu ý: hỏi thẳng định nghĩa bán bảo toàn ⇒ thuộc dạng \"NGUYÊN TẮC BÁN BẢO TOÀN\".\nLưu ý: hỏi so sánh tái bản với phiên mã ⇒ thuộc nhóm \"So sánh DNA - RNA và tái bản - phiên mã\".",
+     "ly_thuyet": "##TC Cơ sở để suy luận về tái bản DNA\nGiai đoạn hai mạch đã tách: mỗi mạch làm khuôn và nucleotide tự do liên kết vào theo nguyên tắc bổ sung để hình thành mạch mới; quá trình chưa hoàn tất.\nNguyên tắc bổ sung bảo đảm DNA con giống hệt DNA mẹ; nếu sai ở một vị trí thì mạch mới tại vị trí đó không khớp với mạch khuôn.\nHai DNA con giống hệt nhau và giống DNA mẹ, gắn với protein tạo nhiễm sắc thể kép, được phân chia đều cho các tế bào con khi phân bào.\n\n##PP\nXác định giai đoạn hoặc điều kiện mà đề nêu (chưa tách mạch, đang tổng hợp, đã xong).\nVận dụng nguyên tắc bổ sung và nguyên tắc bán bảo toàn để suy ra kết quả ở giai đoạn đó.\nLoại các phương án trái với kiến thức nền (chẳng hạn nói mạch mới hoàn toàn mới, hoặc cả hai mạch tạo một DNA).\n\n##CY\nNguyên tắc bổ sung được dùng trong suốt quá trình tổng hợp mạch mới, không phải chỉ ở một giai đoạn.\nTái bản diễn ra ở kì trung gian trong nhân, dùng cả hai mạch DNA mẹ làm khuôn và giữ lại một mạch cũ ở mỗi DNA con.",
+     "vi_du": "##VD\nGiả sử một phân tử DNA đang trong quá trình tái bản, hai mạch đơn đã tách nhau và mỗi mạch đang được dùng làm khuôn. Nhận định nào sau đây về giai đoạn này là đúng?\nA. Quá trình đã hoàn tất, hai DNA con đã hình thành đầy đủ.\nB. Đây là giai đoạn duy nhất không cần nguyên tắc bổ sung.\nC. Cả hai mạch khuôn sẽ tạo ra một DNA con chung duy nhất.\nD. Mỗi mạch khuôn đang được các nucleotide tự do liên kết vào theo nguyên tắc bổ sung để hình thành mạch mới tương ứng.\n\nBài giải:\nỞ giai đoạn hai mạch đã tách và đang làm khuôn, quá trình đang tổng hợp mạch mới trên từng mạch khuôn riêng biệt theo nguyên tắc bổ sung.\nA sai vì quá trình chưa hoàn tất, chưa phải kết quả cuối cùng.\nB sai vì đây chính là giai đoạn dùng nguyên tắc bổ sung để ghép nucleotide.\nC sai vì mỗi mạch khuôn tạo một DNA con riêng, hai mạch khuôn tạo hai DNA con.\nChọn D.\n\n##VD\nKết thúc quá trình tái bản, hai phân tử DNA con được tạo ra có vai trò gì đối với tế bào?\nA. Được vận chuyển ra ngoài tế bào.\nB. Bị phân giải ngay sau khi hình thành.\nC. Là cơ sở vật chất để phân chia đều cho các tế bào con trong quá trình phân bào.\nD. Không có vai trò gì đặc biệt.\n\nBài giải:\nHai DNA con giống hệt nhau và giống hệt DNA mẹ, gắn với protein tạo thành nhiễm sắc thể kép.\nKhi tế bào phân bào, các nhiễm sắc thể này được phân chia đều cho các tế bào con, giúp mỗi tế bào con nhận đủ vật chất di truyền.\nA, B, D sai vì DNA con ở lại trong nhân và là vật chất di truyền, không bị đưa ra ngoài hay phân giải.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01288",
+     "thu_tu": 5,
+     "ten": "TỔNG HỢP, Ý NGHĨA CỦA TÁI BẢN DNA",
+     "mo_ta": "Câu hỏi tổng hợp về tái bản DNA: ý nghĩa của tái bản, mối liên hệ giữa tái bản với cấu trúc DNA, với nhiễm sắc thể tự nhân đôi và với sự truyền thông tin di truyền, hậu quả khi tế bào không tái bản.\nBiến thể: chọn ý nghĩa quan trọng nhất; chọn mối liên hệ đúng; đếm số phát biểu đúng trong một tập phát biểu về tái bản (diễn biến, nguyên tắc, kết quả).\nLưu ý: chỉ hỏi một chi tiết đơn lẻ (thời điểm, nguyên liệu, số DNA con) ⇒ thuộc dạng \"KHÁI NIỆM, THỜI ĐIỂM, VỊ TRÍ\".\nLưu ý: hỏi nguyên tắc bán bảo toàn ⇒ thuộc dạng \"NGUYÊN TẮC BÁN BẢO TOÀN\".",
+     "ly_thuyet": "##TC Ý nghĩa và mối liên hệ của tái bản DNA\nNhờ tái bản theo nguyên tắc bổ sung, thông tin di truyền được truyền đạt ổn định, chính xác qua các thế hệ tế bào (nguyên phân) và các thế hệ cơ thể (giảm phân, thụ tinh).\nCấu trúc hai mạch bổ sung của DNA là cơ sở để mỗi mạch làm khuôn, giúp tái bản diễn ra theo nguyên tắc bán bảo toàn.\nMỗi nhiễm sắc thể chứa một phân tử DNA; DNA tái bản tạo hai DNA giống hệt nhau thì nhiễm sắc thể trở thành nhiễm sắc thể kép gồm hai crômatit giống nhau.\nNếu tế bào không tái bản DNA trước khi phân chia thì các tế bào con không nhận đủ vật chất di truyền.\n\n##PP\nXác định đề hỏi về ý nghĩa, mối liên hệ hay hậu quả.\nVới câu đếm phát biểu đúng, đánh giá từng phát biểu về thời điểm, vật liệu làm khuôn, nguyên tắc ghép và kết quả của tái bản.\nChọn phương án nêu được mối quan hệ nguyên nhân, kết quả đầy đủ, không chọn phương án chỉ đúng một phần.\n\n##CY\nÝ nghĩa quan trọng nhất của tái bản là duy trì thông tin di truyền ổn định, không phải làm tăng kích thước tế bào hay thay đổi thông tin.\nNguyên tắc bổ sung vừa quy định cách hai mạch DNA khớp nhau, vừa là cơ sở tổng hợp chính xác mạch mới.",
+     "vi_du": "##VD\nÝ nghĩa quan trọng nhất của quá trình tái bản DNA đối với sinh vật là gì?\nA. Làm tăng kích thước của tế bào.\nB. Làm thay đổi thông tin di truyền qua mỗi thế hệ tế bào.\nC. Giúp tế bào tổng hợp được nhiều loại prôtêin hơn.\nD. Đảm bảo thông tin di truyền được truyền đạt ổn định, chính xác qua các thế hệ tế bào và cơ thể.\n\nBài giải:\nTái bản theo nguyên tắc bổ sung tạo ra các DNA con giống hệt DNA mẹ.\nNhờ đó thông tin di truyền chứa trong DNA được truyền nguyên vẹn qua các thế hệ tế bào (nhờ nguyên phân) và các thế hệ cơ thể (nhờ giảm phân, thụ tinh).\nA và C không phải ý nghĩa của tái bản; B sai vì tái bản giữ nguyên thông tin chứ không làm thay đổi.\nChọn D.\n\n##VD\nCho các phát biểu sau về tái bản DNA:\n(1) Diễn ra ở kì trung gian, trước khi phân bào.\n(2) Cả hai mạch DNA mẹ đều làm khuôn.\n(3) Mạch mới được tổng hợp theo nguyên tắc bổ sung.\n(4) Kết quả tạo ra hai DNA con, mỗi DNA con có một mạch cũ và một mạch mới.\nSố phát biểu đúng là\nA. 4 phát biểu.\nB. 1 phát biểu.\nC. 2 phát biểu.\nD. 3 phát biểu.\n\nBài giải:\n(1) đúng: tái bản diễn ra ở kì trung gian, trước khi tế bào phân chia.\n(2) đúng: cả hai mạch đơn của DNA mẹ đều làm khuôn tổng hợp mạch mới.\n(3) đúng: các nucleotide tự do liên kết vào mạch khuôn theo nguyên tắc bổ sung.\n(4) đúng: từ một DNA mẹ tạo hai DNA con, mỗi DNA con theo nguyên tắc bán bảo toàn có một mạch cũ và một mạch mới.\nCả 4 phát biểu đều đúng.\nChọn A."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00555",
+   "chu_de": "Di truyền học",
+   "chuyen_de": "Nucleic acid và gene",
+   "nhom": "Viết mạch bổ sung dựa vào nguyên tắc bổ sung (NTBS)",
+   "nhom_ly_thuyet": "I. Lý thuyết dạng bài\n–  Trong phân tử DNA, hai mạch đơn liên kết với nhau theo nguyên tắc bổ sung: A liên kết với T, G liên kết với C (và ngược lại).\n–  Hai mạch của DNA có chiều ngược nhau (đối song song): nếu một mạch có chiều 3'→5' thì mạch còn lại có chiều 5'→3'.\n–  Khi biết trình tự nucleotide trên một mạch, có thể suy ra trình tự nucleotide trên mạch còn lại: tại mỗi vị trí, thay nucleotide đã cho bằng nucleotide bổ sung tương ứng (A↔T, G↔C); hai mạch đối diện nhau theo đúng vị trí, chỉ đổi chiều ở hai đầu mút (đầu 3' của mạch này đối diện đầu 5' của mạch kia).\nCÁC BƯỚC GIẢI\nBước 1: Xác định trình tự và chiều (3'→5' hoặc 5'→3') của mạch đã cho trong đề bài.\nBước 2: Tại từng vị trí, thay nucleotide đã cho bằng nucleotide bổ sung: A↔T, G↔C.\nBước 3: Xác định chiều của mạch mới: ngược với chiều của mạch đã cho (đầu 3' đối diện đầu 5', và ngược lại).\nBước 4: Viết lại trình tự mạch bổ sung, ghi rõ chiều 3'→5' hoặc 5'→3' theo đúng yêu cầu đề bài.\nII. Ví dụ minh hoạ\nMột mạch của phân tử DNA có trình tự nucleotide như sau: 3'– A – T – G – G – C – T – A – C –5'. Viết trình tự nucleotide của mạch bổ sung (mạch còn lại) của phân tử DNA này, ghi rõ chiều 5'→3'.\nHướng dẫn giải:\nÁp dụng nguyên tắc bổ sung tại từng vị trí (A↔T, G↔C), giữ nguyên thứ tự vị trí (hai mạch đối diện nhau theo từng cặp base):\nMạch đã cho (3'→5'):   A – T – G – G – C – T – A – C\nMạch bổ sung (5'→3'):   T – A – C – C – G – A – T – G\nVậy mạch bổ sung là: 5'– T – A – C – C – G – A – T – G –3'.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01279",
+     "thu_tu": 1,
+     "ten": "Viết mạch bổ sung dựa vào NTBS",
+     "mo_ta": "Đề cho trình tự nucleotide (kèm chiều 3'→5' hoặc 5'→3') của một mạch gene hoặc DNA và yêu cầu viết trình tự cùng chiều của mạch bổ sung.\nLàm bằng cách thay từng nucleotide theo nguyên tắc bổ sung rồi đặt chiều ngược với mạch đã cho.\nBiến thể: mạch đã cho viết 3'→5' hoặc 5'→3'; yêu cầu viết mạch bổ sung theo chiều 3'→5' hoặc 5'→3'.\nLưu ý: đề chỉ hỏi số lượng một loại nucleotide trên mạch bổ sung ⇒ thuộc dạng \"Cụm 2\".",
+     "ly_thuyet": "##TC Mạch bổ sung theo nguyên tắc bổ sung\nHai mạch của DNA liên kết theo nguyên tắc bổ sung: A liên kết T, G liên kết C (và ngược lại); trong DNA không có base U.\nHai mạch có chiều ngược nhau (đối song song): mạch này chiều 3'→5' thì mạch kia chiều 5'→3'.\nBiết trình tự một mạch thì suy ra trình tự mạch kia bằng cách thay từng vị trí: A↔T, G↔C; đầu 3' của mạch này đối diện đầu 5' của mạch kia.\n\n##PP\nĐọc trình tự và chiều của mạch đã cho.\nThay từng nucleotide theo nguyên tắc bổ sung (A thành T, T thành A, G thành C, C thành G), giữ nguyên thứ tự vị trí.\nXác định chiều mạch mới ngược với chiều mạch đã cho rồi ghi rõ chiều khi viết kết quả.\n\n##CY\nMạch bổ sung của DNA dùng T, không dùng U; phương án có U là phương án nhiễu.\nChiều của mạch bổ sung luôn ngược với mạch đã cho; mạch cùng chiều với mạch đã cho là sai.\nĐếm số nucleotide trên mạch bổ sung có thể làm nhanh: số A của mạch bổ sung bằng số T của mạch đã cho (và ngược lại), số G bằng số C (và ngược lại).",
+     "vi_du": "##VD\nMột mạch của gene có trình tự 5'-A-T-G-C-C-G-T-A-3'. Viết trình tự mạch bổ sung của mạch này, ghi rõ chiều.\n\nBài giải:\nThay từng nucleotide theo nguyên tắc bổ sung: A thành T, T thành A, G thành C, C thành G, C thành G, G thành C, T thành A, A thành T.\nĐược trình tự: T-A-C-G-G-C-A-T.\nMạch đã cho có chiều 5'→3' nên mạch bổ sung có chiều 3'→5'.\nĐáp án: 3'-T-A-C-G-G-C-A-T-5'.\n\n##VD\nMột mạch của gene có trình tự 3'-A-G-C-T-T-A-G-5'. Viết trình tự mạch bổ sung của mạch này theo chiều 5'→3'.\n\nBài giải:\nThay từng nucleotide theo nguyên tắc bổ sung: A thành T, G thành C, C thành G, T thành A, T thành A, A thành T, G thành C.\nĐược trình tự: T-C-G-A-A-T-C.\nMạch đã cho có chiều 3'→5' nên mạch bổ sung có chiều 5'→3'.\nĐáp án: 5'-T-C-G-A-A-T-C-3'."
+    },
+    {
+     "dang_id": "KDB01280",
+     "thu_tu": 2,
+     "ten": "Cụm 1",
+     "mo_ta": "Đề cho trình tự một mạch của gene (kèm chiều) và yêu cầu chọn đúng mạch bổ sung trong 4 phương án (có kèm chiều).\nBiến thể: mạch đã cho viết 5'→3' hoặc 3'→5', phương án nhiễu sai chiều, dùng base U hoặc không đúng nguyên tắc bổ sung.\nLưu ý: đề yêu cầu tự viết trình tự mạch bổ sung (không có phương án) ⇒ thuộc dạng \"Viết mạch bổ sung dựa vào NTBS\".\nLưu ý: đề hỏi đếm số nucleotide loại nào đó trên mạch bổ sung ⇒ thuộc dạng \"Cụm 2\".",
+     "ly_thuyet": "##TC Mạch bổ sung theo nguyên tắc bổ sung\nHai mạch của DNA liên kết theo nguyên tắc bổ sung: A liên kết T, G liên kết C (và ngược lại); trong DNA không có base U.\nHai mạch có chiều ngược nhau (đối song song): mạch này chiều 3'→5' thì mạch kia chiều 5'→3'.\nBiết trình tự một mạch thì suy ra trình tự mạch kia bằng cách thay từng vị trí: A↔T, G↔C; đầu 3' của mạch này đối diện đầu 5' của mạch kia.\n\n##PP\nĐọc trình tự và chiều của mạch đã cho.\nThay từng nucleotide theo nguyên tắc bổ sung (A thành T, T thành A, G thành C, C thành G), giữ nguyên thứ tự vị trí.\nXác định chiều mạch mới ngược với chiều mạch đã cho rồi ghi rõ chiều khi viết kết quả.\n\n##CY\nMạch bổ sung của DNA dùng T, không dùng U; phương án có U là phương án nhiễu.\nChiều của mạch bổ sung luôn ngược với mạch đã cho; mạch cùng chiều với mạch đã cho là sai.\nĐếm số nucleotide trên mạch bổ sung có thể làm nhanh: số A của mạch bổ sung bằng số T của mạch đã cho (và ngược lại), số G bằng số C (và ngược lại).",
+     "vi_du": "##VD\nMột mạch của gene có trình tự 5'-C-G-T-A-C-G-3'. Mạch bổ sung của mạch này là\nA. 3'-G-C-A-T-G-C-5'\nB. 5'-G-C-A-T-G-C-3'\nC. 3'-G-C-U-A-G-C-5'\nD. 3'-C-G-T-A-C-G-5'\n\nBài giải:\nThay từng vị trí theo nguyên tắc bổ sung: C thành G, G thành C, T thành A, A thành T, C thành G, G thành C, được G-C-A-T-G-C.\nMạch đã cho có chiều 5'→3' nên mạch bổ sung có chiều 3'→5'.\nB sai vì cùng chiều với mạch đã cho; C sai vì có base U của RNA; D sai vì chỉ chép lại mạch đã cho.\nChọn A.\n\n##VD\nMột mạch của gene có trình tự 3'-A-G-C-T-A-5'. Mạch bổ sung của mạch này, viết theo chiều 5'→3', là\nA. 5'-T-C-G-A-T-3'\nB. 5'-A-G-C-T-A-3'\nC. 5'-U-C-G-A-U-3'\nD. 5'-T-G-C-A-T-3'\n\nBài giải:\nThay từng vị trí theo nguyên tắc bổ sung: A thành T, G thành C, C thành G, T thành A, A thành T, được T-C-G-A-T.\nMạch đã cho có chiều 3'→5' nên mạch bổ sung có chiều 5'→3'.\nB sai vì giữ nguyên mạch đã cho; C sai vì dùng base U của RNA; D sai vì T-G-C-A-T không bổ sung với mạch đã cho.\nChọn A."
+    },
+    {
+     "dang_id": "KDB01281",
+     "thu_tu": 3,
+     "ten": "Cụm 2",
+     "mo_ta": "Đề cho trình tự một mạch của gene và hỏi số lượng nucleotide một loại (A, T, G hoặc C) hoặc tổng hai loại trên mạch bổ sung.\nLàm bằng cách viết mạch bổ sung rồi đếm, hoặc dùng cách nhanh: số A của mạch bổ sung bằng số T của mạch đã cho, số G bằng số C, và ngược lại.\nBiến thể: trắc nghiệm hoặc trả lời ngắn; đếm một loại; đếm tổng A và T.\nLưu ý: đề yêu cầu chọn hoặc viết trình tự mạch bổ sung ⇒ thuộc dạng \"Cụm 1\" hoặc \"Viết mạch bổ sung dựa vào NTBS\".",
+     "ly_thuyet": "##TC Đếm nucleotide trên mạch bổ sung\nTrên mạch bổ sung, mỗi nucleotide là bổ sung của nucleotide cùng vị trí trên mạch đã cho: số A bằng số T của mạch đã cho, số T bằng số A, số G bằng số C, số C bằng số G.\nTổng số nucleotide của mạch bổ sung bằng tổng số nucleotide của mạch đã cho.\nSố A + T của mạch bổ sung bằng số A + T của mạch đã cho; số G + C cũng vậy.\n\n##PP\nViết mạch bổ sung bằng cách thay từng nucleotide theo nguyên tắc bổ sung.\nĐếm số nucleotide loại cần tìm trên mạch vừa viết.\nKiểm tra lại bằng cách nhanh: đối chiếu với số nucleotide bổ sung của loại đó trên mạch đã cho.\n\n##CY\nĐề hỏi mạch bổ sung chứ không phải mạch đã cho; đếm nhầm mạch là lỗi thường gặp.\nKhi đếm loại này trên mạch bổ sung, phải đếm loại bổ sung với nó trên mạch đã cho (chẳng hạn đếm A bổ sung thì đếm T đã cho).",
+     "vi_du": "##VD\nMột mạch của gene có trình tự 5'-C-C-G-A-T-T-3'. Đếm số nucleotide loại A trên mạch bổ sung.\n\nBài giải:\nThay từng nucleotide theo nguyên tắc bổ sung: C thành G, C thành G, G thành C, A thành T, T thành A, T thành A.\nMạch bổ sung là G-G-C-T-A-A, có 2 nucleotide loại A.\nCách nhanh: số A của mạch bổ sung bằng số T của mạch đã cho, mạch đã cho có 2 nucleotide T.\nĐáp án: 2.\n\n##VD\nMột mạch của gene có trình tự 3'-G-A-T-T-C-G-A-5'. Trên mạch bổ sung, tổng số nucleotide loại A và T là\nA. 3\nB. 4\nC. 5\nD. 2\n\nBài giải:\nThay từng nucleotide theo nguyên tắc bổ sung: G thành C, A thành T, T thành A, T thành A, C thành G, G thành C, A thành T.\nMạch bổ sung là C-T-A-A-G-C-T, trong đó A = 2 và T = 2 nên tổng bằng 4.\nKiểm tra: mạch đã cho có A = 2 và T = 2, mạch bổ sung đổi A thành T và T thành A nên A = 2, T = 2, tổng vẫn là 4.\nChọn B."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00563",
+   "chu_de": "Di truyền học",
+   "chuyen_de": "Tái bản DNA và phiên mã tạo RNA",
+   "nhom": "Cấu trúc RNA và quá trình phiên mã",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nCấu tạo chung của RNA: RNA (ribonucleic acid) là đại phân tử sinh học, đơn phân là ribonucleotide; mỗi phân tử gồm hàng trăm hoặc hàng nghìn đơn phân liên kết với nhau bằng liên kết cộng hoá trị.\nCó 4 loại ribonucleotide mang bazơ nitơ A, U, G, C; RNA có uracil (U) thay cho thymine (T).\nRNA có cấu trúc một mạch, kích thước và khối lượng thường nhỏ hơn DNA; được tổng hợp trong nhân (hoặc vùng nhân), hầu hết thực hiện chức năng ở tế bào chất.\nBa loại RNA: mRNA truyền đạt thông tin di truyền và làm khuôn tổng hợp chuỗi polypeptide; tRNA vận chuyển amino acid; rRNA là thành phần chủ yếu của ribosome. Ở tRNA và rRNA, một số vùng tự bắt cặp bổ sung (A–U, G–C) tạo cấu trúc không gian ba chiều.\nPhiên mã là quá trình tổng hợp RNA dựa trên trình tự polynucleotide của gene, diễn ra trong nhân tế bào (hoặc vùng nhân). Chỉ một mạch của gene làm khuôn; nguyên liệu là các ribonucleotide tự do; nguyên tắc bổ sung giữa mạch khuôn và ribonucleotide là A–U, T–A, G–C, C–G.\nKết quả: một phân tử RNA có trình tự bổ sung với mạch khuôn của gene. Ý nghĩa: chuyển thông tin di truyền từ gene sang RNA, mRNA làm khuôn tổng hợp protein.\n\n##PP 2. Các bước làm bài\nXác định đề hỏi về cấu tạo chung, cấu trúc, loại RNA hay quá trình phiên mã.\nVới câu về loại RNA, ghép đúng chức năng: mRNA làm khuôn, tRNA vận chuyển amino acid, rRNA cấu tạo ribosome.\nVới câu về phiên mã, xác định mạch khuôn rồi ghép nucleotide với ribonucleotide theo A–U, T–A, G–C, C–G.\nLoại các phương án nhầm RNA với DNA (có T, hai mạch) hoặc nhầm phiên mã với tái bản, dịch mã.\n\n##CY 3. Lưu ý\nRNA không có T mà có U; trên mạch khuôn A ghép với U, còn T ghép với A.\nPhiên mã chỉ dùng một mạch của gene làm khuôn và tạo một phân tử RNA; tái bản dùng hai mạch.\nRNA nhỏ hơn DNA nhưng vẫn là đại phân tử; RNA tổng hợp ở nhân nhưng hoạt động ở tế bào chất.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01289",
+     "thu_tu": 1,
+     "ten": "THÀNH PHẦN VÀ CẤU TẠO CHUNG CỦA RNA",
+     "mo_ta": "Câu hỏi nhận biết về thành phần và cấu tạo chung của RNA: tên đầy đủ, đơn phân, các loại ribonucleotide, bazơ nitơ đặc trưng, loại liên kết giữa các đơn phân, số đơn phân.\nMỗi câu chỉ hỏi một ý ghi nhớ.\nLưu ý: hỏi số mạch, kích thước, nơi tổng hợp, nơi hoạt động của RNA ⇒ thuộc dạng \"ĐẶC ĐIỂM CẤU TRÚC RNA, NƠI TỔNG HỢP VÀ HOẠT ĐỘNG\".\nLưu ý: câu đặt RNA cạnh DNA để tìm điểm khác nhau về đơn phân ⇒ thuộc dạng \"SO SÁNH THÀNH PHẦN ĐƠN PHÂN DNA – RNA\".",
+     "ly_thuyet": "##TC Thành phần và cấu tạo chung của RNA\nRNA là ribonucleic acid, là đại phân tử sinh học cấu tạo theo nguyên tắc đa phân.\nĐơn phân của RNA là ribonucleotide; mỗi phân tử RNA gồm hàng trăm hoặc hàng nghìn đơn phân.\nCó 4 loại ribonucleotide mang các bazơ nitơ adenine (A), uracil (U), guanine (G), cytosine (C); RNA không có thymine (T).\nCác đơn phân liên kết với nhau bằng liên kết cộng hoá trị, tạo thành chuỗi polyribonucleotide.\n\n##CY\nBazơ nitơ đặc trưng của RNA là uracil (U), thay cho thymine (T) của DNA.\nĐơn phân của RNA là ribonucleotide, không phải deoxyribonucleotide (đơn phân của DNA) hay amino acid (đơn phân của protein).",
+     "vi_du": "##VD\nBốn loại ribonucleotide cấu tạo nên RNA là\nA. A, T, G, C.\nB. A, U, G, C.\nC. A, T, G, U.\nD. A, U, T, C.\n\nBài giải:\nRNA gồm 4 loại ribonucleotide mang các bazơ nitơ adenine (A), uracil (U), guanine (G) và cytosine (C).\nRNA không có thymine (T), thymine được thay bằng uracil (U).\nA, C, D đều có T nên sai.\nChọn B.\n\n##VD\nCác đơn phân trong một mạch RNA liên kết với nhau bằng loại liên kết nào?\nA. Liên kết hydrogen.\nB. Liên kết ion.\nC. Liên kết cộng hoá trị.\nD. Liên kết peptide.\n\nBài giải:\nCác ribonucleotide trong một mạch RNA liên kết với nhau bằng liên kết cộng hoá trị, tạo thành chuỗi polyribonucleotide.\nLiên kết hydrogen là liên kết giữa các cặp bazơ bổ sung, không phải liên kết nối các đơn phân trong một mạch.\nLiên kết peptide nối các amino acid trong chuỗi polypeptide của protein; liên kết ion không phải liên kết nối các đơn phân của RNA.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01290",
+     "thu_tu": 2,
+     "ten": "ĐẶC ĐIỂM CẤU TRÚC RNA, NƠI TỔNG HỢP VÀ HOẠT ĐỘNG",
+     "mo_ta": "Câu hỏi nhận biết về đặc điểm cấu trúc của RNA và nơi tổng hợp, nơi hoạt động: số mạch, kích thước và khối lượng so với DNA, có phải đại phân tử hay không, nơi RNA được tổng hợp, nơi RNA thực hiện chức năng.\nLưu ý: hỏi thành phần đơn phân, bazơ nitơ, liên kết giữa các đơn phân ⇒ thuộc dạng \"THÀNH PHẦN VÀ CẤU TẠO CHUNG CỦA RNA\".\nLưu ý: hỏi chức năng của từng loại mRNA, tRNA, rRNA ⇒ thuộc dạng \"BA LOẠI RNA: mRNA, tRNA, rRNA\".",
+     "ly_thuyet": "##TC Cấu trúc, nơi tổng hợp và hoạt động của RNA\nRNA trong tế bào có cấu trúc một mạch đơn, khác với DNA có hai mạch xoắn kép.\nRNA là đại phân tử sinh học nhưng kích thước và khối lượng thường nhỏ hơn DNA.\nRNA được tổng hợp trong nhân tế bào (hoặc vùng nhân ở sinh vật nhân sơ); hầu hết các RNA sau đó di chuyển ra tế bào chất để thực hiện chức năng.\nDựa vào cấu trúc và chức năng, RNA gồm ba loại chính là mRNA, tRNA và rRNA.\n\n##CY\nRNA nhỏ hơn DNA nhưng vẫn là đại phân tử vì được cấu tạo từ nhiều đơn phân.\nNơi tổng hợp RNA (nhân hoặc vùng nhân) khác nơi RNA thực hiện chức năng (tế bào chất).",
+     "vi_du": "##VD\nTrong tế bào, phân tử RNA có cấu trúc gồm\nA. hai mạch xoắn kép, giống DNA.\nB. một mạch đơn, khác với DNA hai mạch.\nC. ba mạch xoắn vào nhau.\nD. không có cấu trúc mạch xác định.\n\nBài giải:\nKhác với DNA có cấu trúc hai mạch xoắn kép, RNA trong tế bào có cấu trúc một mạch đơn.\nA sai vì đó là cấu trúc của DNA; C và D sai vì RNA là chuỗi polyribonucleotide một mạch có trình tự xác định.\nChọn B.\n\n##VD\nSau khi được tổng hợp, hầu hết các phân tử RNA thực hiện chức năng ở đâu trong tế bào?\nA. Tế bào chất.\nB. Nhân tế bào.\nC. Màng nhân.\nD. Thành tế bào.\n\nBài giải:\nRNA được tổng hợp trong nhân tế bào (hoặc vùng nhân ở sinh vật nhân sơ).\nSau đó hầu hết các RNA di chuyển ra tế bào chất, nơi diễn ra quá trình tổng hợp protein, để thực hiện chức năng.\nB sai vì nhân là nơi tổng hợp RNA; C và D không phải nơi RNA hoạt động.\nChọn A."
+    },
+    {
+     "dang_id": "KDB01291",
+     "thu_tu": 3,
+     "ten": "BA LOẠI RNA: mRNA, tRNA, rRNA",
+     "mo_ta": "Câu hỏi về ba loại RNA mRNA, tRNA, rRNA: chức năng của từng loại, loại RNA làm khuôn trực tiếp tổng hợp chuỗi polypeptide, thành phần cấu tạo ribosome, cấu trúc không gian của tRNA và rRNA.\nBiến thể: nhận biết chức năng một loại RNA; chọn loại RNA theo chức năng; nguyên tắc tự bắt cặp bổ sung ở tRNA và rRNA.\nLưu ý: hỏi quá trình phiên mã tạo ra RNA (khuôn, nguyên liệu, kết quả) ⇒ thuộc dạng \"QUÁ TRÌNH PHIÊN MÃ: KHÁI NIỆM, VỊ TRÍ, KHUÔN, NGUYÊN TẮC BỔ SUNG\" hoặc \"KẾT QUẢ VÀ Ý NGHĨA CỦA PHIÊN MÃ\".",
+     "ly_thuyet": "##TC Ba loại RNA\nmRNA (RNA thông tin): chuỗi polyribonucleotide dạng thẳng, mang thông tin di truyền từ gene và làm khuôn trực tiếp cho quá trình tổng hợp chuỗi polypeptide.\ntRNA (RNA vận chuyển): vận chuyển amino acid tương ứng đến nơi tổng hợp protein.\nrRNA (RNA ribosome): là thành phần chủ yếu cấu tạo nên ribosome, bào quan tổng hợp protein.\nỞ tRNA và rRNA, một số vùng tự bắt cặp bổ sung theo nguyên tắc A–U, G–C tạo cấu trúc không gian ba chiều đặc trưng cho từng loại.\n\n##PP\nNhớ cặp chức năng: mRNA truyền đạt thông tin và làm khuôn; tRNA vận chuyển amino acid; rRNA cấu tạo ribosome.\nĐọc đề để xem hỏi loại RNA hay hỏi chức năng, rồi ghép đúng cặp.\nVới câu về tự bắt cặp, dùng nguyên tắc bổ sung của RNA (A–U, G–C) giữa các ribonucleotide trong cùng một mạch.\n\n##CY\nChỉ mRNA làm khuôn trực tiếp cho quá trình dịch mã; tRNA và rRNA có vai trò khác trong tổng hợp protein.\nRNA tự bắt cặp dùng A–U (không dùng A–T) và vẫn là một mạch, không trở thành mạch kép hoàn chỉnh như DNA.",
+     "vi_du": "##VD\nRNA thông tin (mRNA) có chức năng gì?\nA. Vận chuyển amino acid đến nơi tổng hợp protein.\nB. Cấu tạo nên ribosome.\nC. Dự trữ năng lượng cho tế bào.\nD. Truyền đạt thông tin di truyền, làm khuôn trực tiếp cho quá trình tổng hợp chuỗi polypeptide.\n\nBài giải:\nmRNA là chuỗi polyribonucleotide dạng thẳng, mang thông tin di truyền từ gene.\nmRNA làm khuôn trực tiếp cho quá trình dịch mã tổng hợp chuỗi polypeptide.\nA là chức năng của tRNA; B là vai trò của rRNA; C không phải chức năng của RNA thông tin.\nChọn D.\n\n##VD\nỞ tRNA và rRNA, một số vùng trên phân tử tự bắt cặp bổ sung theo nguyên tắc nào?\nA. A liên kết với U, G liên kết với C.\nB. A liên kết với T, G liên kết với C.\nC. A liên kết với G, U liên kết với C.\nD. Không theo nguyên tắc bổ sung nào.\n\nBài giải:\nMột số vùng trên tRNA và rRNA tự bắt cặp bổ sung giữa các ribonucleotide trong cùng một mạch.\nNguyên tắc bổ sung của RNA là A liên kết U, G liên kết C, giúp phân tử cuộn lại thành cấu trúc không gian ba chiều đặc trưng.\nB sai vì RNA không có T; C ghép sai cặp; D sai vì có bắt cặp bổ sung.\nChọn A."
+    },
+    {
+     "dang_id": "KDB01292",
+     "thu_tu": 4,
+     "ten": "QUÁ TRÌNH PHIÊN MÃ: KHÁI NIỆM, VỊ TRÍ, KHUÔN, NGUYÊN TẮC BỔ SUNG",
+     "mo_ta": "Câu hỏi về quá trình phiên mã ở mức khái niệm và nguyên tắc: phiên mã là gì, diễn ra ở đâu, nguyên liệu, khuôn, nucleotide nào của mạch khuôn liên kết với ribonucleotide nào.\nBiến thể: chọn khái niệm đúng (phân biệt với tái bản, dịch mã); chọn nơi diễn ra; chọn nguyên liệu; chọn cặp bổ sung giữa mạch khuôn và ribonucleotide môi trường; số mạch dùng làm khuôn.\nLưu ý: hỏi sản phẩm, ý nghĩa, mRNA làm gì sau phiên mã ⇒ thuộc dạng \"KẾT QUẢ VÀ Ý NGHĨA CỦA PHIÊN MÃ\".\nLưu ý: đề so sánh trực tiếp phiên mã với tái bản ⇒ thuộc nhóm \"So sánh DNA - RNA và tái bản - phiên mã\".",
+     "ly_thuyet": "##TC Quá trình phiên mã\nPhiên mã là quá trình tổng hợp RNA dựa trên trình tự polynucleotide của gene (DNA).\nPhiên mã diễn ra trong nhân tế bào (sinh vật nhân thực) hoặc vùng nhân (sinh vật nhân sơ).\nChỉ một mạch của gene làm khuôn; nguyên liệu là các ribonucleotide tự do A, U, G, C trong môi trường nội bào.\nNguyên tắc bổ sung giữa mạch khuôn và ribonucleotide: A–U, T–A, G–C, C–G.\n\n##PP\nXác định đề hỏi khái niệm, vị trí, nguyên liệu hay cặp bổ sung.\nVới cặp bổ sung, xác định nucleotide trên mạch khuôn rồi ghép với ribonucleotide tương ứng, nhớ RNA không có T.\nLoại các phương án mô tả tái bản (hai mạch làm khuôn, tạo DNA) hoặc dịch mã (tạo chuỗi polypeptide).\n\n##CY\nTrên mạch khuôn A ghép với U (không phải T), còn T ghép với A.\nPhiên mã tạo RNA, không tạo DNA hay protein; tổng hợp chuỗi polypeptide từ mRNA là dịch mã.",
+     "vi_du": "##VD\nPhiên mã là quá trình\nA. tổng hợp các phân tử RNA dựa trên trình tự polynucleotide của gene (DNA).\nB. tổng hợp DNA dựa trên khuôn RNA.\nC. tổng hợp chuỗi polypeptide dựa trên khuôn mRNA.\nD. nhân đôi DNA tạo ra hai phân tử DNA con.\n\nBài giải:\nPhiên mã là quá trình tổng hợp RNA dựa trên trình tự polynucleotide của gene (DNA), nên A đúng.\nB sai vì phiên mã không tạo DNA từ khuôn RNA.\nC mô tả quá trình dịch mã (tổng hợp chuỗi polypeptide từ mRNA).\nD mô tả quá trình tái bản DNA.\nChọn A.\n\n##VD\nTrong quá trình phiên mã, nucleotide loại A trên mạch khuôn liên kết với ribonucleotide loại nào của môi trường?\nA. A.\nB. T.\nC. G.\nD. U.\n\nBài giải:\nNguyên liệu của phiên mã là các ribonucleotide A, U, G, C; RNA không có T.\nTheo nguyên tắc bổ sung, A trên mạch khuôn liên kết với U của môi trường.\nA sai vì A không bổ sung với A; B sai vì môi trường phiên mã không có T; C sai vì G bổ sung với C.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01293",
+     "thu_tu": 5,
+     "ten": "KẾT QUẢ VÀ Ý NGHĨA CỦA PHIÊN MÃ",
+     "mo_ta": "Câu hỏi về kết quả và ý nghĩa của phiên mã: sản phẩm trực tiếp, mối quan hệ gene, phiên mã và RNA, vai trò của mRNA sau phiên mã, ý nghĩa đối với tế bào, nhận định đúng hoặc sai về phiên mã.\nBiến thể: chọn sản phẩm; chọn ý nghĩa; chọn nhận định sai; đếm số phát biểu đúng về phiên mã.\nLưu ý: hỏi khái niệm, nơi diễn ra, nguyên liệu, cặp ghép nucleotide ⇒ thuộc dạng \"QUÁ TRÌNH PHIÊN MÃ: KHÁI NIỆM, VỊ TRÍ, KHUÔN, NGUYÊN TẮC BỔ SUNG\".\nLưu ý: hỏi chức năng của ba loại RNA ⇒ thuộc dạng \"BA LOẠI RNA: mRNA, tRNA, rRNA\".",
+     "ly_thuyet": "##TC Kết quả và ý nghĩa của phiên mã\nSản phẩm của phiên mã là một phân tử RNA có trình tự ribonucleotide bổ sung với mạch khuôn của gene.\nTrình tự ribonucleotide trên RNA được quy định bởi trình tự nucleotide trên mạch khuôn; gene không bị thay đổi sau phiên mã.\nÝ nghĩa: chuyển thông tin di truyền từ gene (DNA) sang RNA; mRNA sau đó làm khuôn tổng hợp protein quy định tính trạng.\nPhiên mã cần enzyme xúc tác cho việc tháo xoắn và tổng hợp RNA.\n\n##PP\nXác định phát biểu nói về khuôn, nguyên tắc, sản phẩm hay ý nghĩa.\nĐối chiếu từng phát biểu với kiến thức: một mạch khuôn, A–U và G–C, sản phẩm là RNA một mạch, cần enzyme.\nVới câu đếm hoặc chọn sai, loại trừ lần lượt các phát biểu đúng.\n\n##CY\nPhiên mã chỉ dùng một mạch của gene làm khuôn, khác với tái bản dùng cả hai mạch.\nSản phẩm của phiên mã là RNA (một mạch), không phải DNA hay chuỗi polypeptide.",
+     "vi_du": "##VD\nKết quả của quá trình phiên mã là tạo ra\nA. một phân tử RNA có trình tự ribonucleotide bổ sung với mạch khuôn của gene.\nB. hai phân tử DNA giống hệt gene ban đầu.\nC. một chuỗi polypeptide hoàn chỉnh.\nD. bốn loại protein khác nhau.\n\nBài giải:\nPhiên mã dùng một mạch của gene làm khuôn, các ribonucleotide tự do liên kết vào theo nguyên tắc bổ sung.\nSản phẩm trực tiếp là một phân tử RNA có trình tự ribonucleotide bổ sung với mạch khuôn.\nB là kết quả của tái bản; C là kết quả của dịch mã; D không phải sản phẩm của phiên mã.\nChọn A.\n\n##VD\nCho các phát biểu sau về phiên mã:\n(1) Diễn ra trong nhân tế bào hoặc vùng nhân.\n(2) Chỉ một mạch của gene được dùng làm khuôn.\n(3) Nguyên tắc bổ sung: A khuôn với U môi trường, G khuôn với C môi trường.\n(4) Sản phẩm là một phân tử RNA.\n(5) Enzyme không tham gia vào quá trình phiên mã.\nSố phát biểu đúng là\nA. 5 phát biểu.\nB. 3 phát biểu.\nC. 2 phát biểu.\nD. 4 phát biểu.\n\nBài giải:\n(1) đúng: phiên mã diễn ra trong nhân tế bào hoặc vùng nhân.\n(2) đúng: chỉ một mạch của gene làm khuôn.\n(3) đúng: A khuôn ghép với U môi trường, G khuôn ghép với C môi trường.\n(4) đúng: sản phẩm là một phân tử RNA.\n(5) sai vì phiên mã cần enzyme xúc tác cho việc tháo xoắn và tổng hợp RNA.\nCó 4 phát biểu đúng.\nChọn D."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00564",
+   "chu_de": "Di truyền học",
+   "chuyen_de": "Tái bản DNA và phiên mã tạo RNA",
+   "nhom": "So sánh DNA - RNA và tái bản - phiên mã",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nSo sánh đơn phân: DNA gồm deoxyribonucleotide, có đường deoxyribose và bazơ A, T, G, C; RNA gồm ribonucleotide, có đường ribose và bazơ A, U, G, C. Cả hai đều gồm ba thành phần là đường, nhóm phosphate và một bazơ nitơ.\nSo sánh cấu trúc: DNA có hai mạch xoắn kép, kích thước và khối lượng thường lớn hơn, hoạt động chủ yếu trong nhân; RNA có một mạch, thường nhỏ hơn, mRNA ra tế bào chất hoạt động. Hai mạch DNA bắt cặp bổ sung với nhau; một số vùng của tRNA, rRNA tự bắt cặp bổ sung (A–U, G–C) trong cùng một mạch.\nSo sánh chức năng: DNA lưu giữ, bảo quản, truyền đạt thông tin di truyền; mRNA truyền đạt thông tin và làm khuôn tổng hợp polypeptide; tRNA vận chuyển amino acid; rRNA cấu tạo ribosome.\nSo sánh tái bản và phiên mã: khuôn là hai mạch (tái bản) và một mạch (phiên mã); nguyên liệu là deoxyribonucleotide (A, T, G, C) và ribonucleotide (A, U, G, C); mạch khuôn A ghép T (tái bản) và A ghép U (phiên mã), G đều ghép C; sản phẩm là hai DNA con và một RNA.\nĐiểm giống của tái bản và phiên mã: đều diễn ra trong nhân (hoặc vùng nhân) và theo nguyên tắc bổ sung giữa các bazơ nitơ.\n\n##PP 2. Các bước làm bài\nXác định đối tượng so sánh (DNA với RNA hay tái bản với phiên mã) và tiêu chí được hỏi.\nNhớ đặc điểm của từng vế theo tiêu chí đó rồi đối chiếu với từng phương án.\nLoại các phương án nêu điểm khác nhau là điểm giống, hoặc đảo ngược đặc điểm của hai vế.\n\n##CY 3. Lưu ý\nThymine chỉ có ở DNA, uracil chỉ có ở RNA; deoxyribose ở DNA, ribose ở RNA.\nTái bản dùng cả hai mạch khuôn và tạo hai DNA con; phiên mã dùng một mạch khuôn và tạo một RNA.\nTái bản và phiên mã đều tuân theo nguyên tắc bổ sung; sản phẩm của chúng khác nhau về bản chất hoá học (DNA và RNA).",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01294",
+     "thu_tu": 1,
+     "ten": "SO SÁNH THÀNH PHẦN ĐƠN PHÂN DNA – RNA",
+     "mo_ta": "Câu hỏi so sánh đơn phân của DNA và RNA: loại đơn phân và tên gọi, loại đường, các bazơ nitơ giống và khác nhau, thành phần chung của một đơn phân.\nBiến thể: tìm bazơ có ở DNA mà không có ở RNA (hoặc ngược lại); điểm giống nhau, điểm khác nhau về đơn phân; gọi tên đơn phân của RNA khi biết đơn phân của DNA.\nLưu ý: câu hỏi so sánh số mạch, kích thước, nơi hoạt động ⇒ thuộc dạng \"SO SÁNH CẤU TRÚC KHÔNG GIAN DNA – RNA\".\nLưu ý: câu chỉ hỏi về RNA (không so sánh với DNA) ⇒ thuộc dạng \"THÀNH PHẦN VÀ CẤU TẠO CHUNG CỦA RNA\".",
+     "ly_thuyet": "##TC So sánh đơn phân của DNA và RNA\nĐiểm giống: đơn phân đều là nucleotide gồm ba thành phần là đường, nhóm phosphate và một bazơ nitơ; cùng có ba bazơ adenine (A), guanine (G), cytosine (C).\nĐiểm khác: đơn phân của DNA là deoxyribonucleotide, có đường deoxyribose và bazơ thymine (T); đơn phân của RNA là ribonucleotide, có đường ribose và bazơ uracil (U).\n\n##PP\nXác định đề hỏi điểm giống hay điểm khác, về đường, bazơ hay thành phần đơn phân.\nĐối chiếu từng phương án với bảng so sánh: đường deoxyribose hay ribose, T hay U.\nLoại các phương án nói sai bản chất đơn phân (amino acid, glucose) hoặc thiếu nhóm phosphate hay bazơ nitơ.\n\n##CY\nBazơ có ở DNA mà không có ở RNA là thymine; bazơ có ở RNA mà không có ở DNA là uracil.\nCả hai loại đơn phân đều có nhóm phosphate và bazơ nitơ; chỉ khác loại đường và một loại bazơ.",
+     "vi_du": "##VD\nTrong bốn loại bazơ nitơ, loại nào có ở DNA nhưng không có ở RNA?\nA. Thymine.\nB. Adenine.\nC. Guanine.\nD. Cytosine.\n\nBài giải:\nDNA có bốn loại bazơ là A, T, G, C; RNA có bốn loại bazơ là A, U, G, C.\nThymine có ở DNA, RNA thay thymine bằng uracil.\nAdenine, guanine, cytosine có ở cả hai loại nucleic acid nên B, C, D sai.\nChọn A.\n\n##VD\nĐiểm khác nhau về đơn phân giữa DNA và RNA là gì?\nA. DNA có đơn phân là amino acid, RNA có đơn phân là nucleotide.\nB. DNA không có nhóm phosphate, RNA có nhóm phosphate.\nC. Đơn phân DNA có đường deoxyribose, đơn phân RNA có đường ribose.\nD. DNA không có bazơ nitơ, RNA có bazơ nitơ.\n\nBài giải:\nĐơn phân của DNA là deoxyribonucleotide chứa đường deoxyribose; đơn phân của RNA là ribonucleotide chứa đường ribose.\nA sai vì đơn phân của cả hai đều là nucleotide, amino acid là đơn phân của protein.\nB và D sai vì đơn phân của cả DNA và RNA đều có nhóm phosphate và bazơ nitơ.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01295",
+     "thu_tu": 2,
+     "ten": "SO SÁNH CẤU TRÚC KHÔNG GIAN DNA – RNA",
+     "mo_ta": "Câu hỏi so sánh cấu trúc không gian của DNA và RNA: số mạch, kích thước và khối lượng, nơi hoạt động, cách bắt cặp bổ sung tạo cấu trúc, lí do DNA bền vững hơn RNA.\nBiến thể: chọn nhận định đúng về số mạch; so sánh kích thước; so sánh bắt cặp bổ sung giữa hai mạch DNA với tự bắt cặp trong một mạch của tRNA, rRNA; giải thích vì sao DNA lưu trữ lâu dài.\nLưu ý: hỏi so sánh bazơ, đường, tên đơn phân ⇒ thuộc dạng \"SO SÁNH THÀNH PHẦN ĐƠN PHÂN DNA – RNA\".\nLưu ý: hỏi so sánh chức năng ⇒ thuộc dạng \"SO SÁNH KHUÔN VÀ NGUYÊN TẮC BỔ SUNG GIỮA TÁI BẢN VÀ PHIÊN MÃ\" (dạng thứ 3 trong nhóm, nội dung chức năng).",
+     "ly_thuyet": "##TC So sánh cấu trúc DNA và RNA\nDNA có cấu trúc hai mạch xoắn kép, kích thước và khối lượng thường lớn hơn, hoạt động chủ yếu trong nhân tế bào.\nRNA có cấu trúc một mạch, kích thước và khối lượng thường nhỏ hơn; mRNA sau khi tổng hợp di chuyển ra tế bào chất để hoạt động.\nHai mạch của DNA liên kết với nhau theo nguyên tắc bổ sung bằng liên kết hydrogen; một số vùng của tRNA và rRNA tự bắt cặp bổ sung (A–U, G–C) trong cùng một mạch để tạo cấu trúc không gian.\nCấu trúc hai mạch bổ sung giúp DNA bền vững, phù hợp lưu trữ thông tin di truyền lâu dài; RNA một mạch kém bền hơn, phù hợp vai trò trung gian tạm thời.\n\n##PP\nXác định tiêu chí so sánh được hỏi: số mạch, kích thước, vị trí hay độ bền.\nGắn mỗi tiêu chí với đặc điểm của DNA và của RNA ở phần kiến thức.\nChọn phương án nêu đúng cả hai vế của phép so sánh.\n\n##CY\nDNA hai mạch, RNA một mạch; DNA thường lớn hơn RNA, không ngược lại.\nCả DNA và RNA (một số vùng của tRNA, rRNA) đều dựa trên nguyên tắc bổ sung, khác ở chỗ bắt cặp giữa hai mạch hay trong cùng một mạch.",
+     "vi_du": "##VD\nVề số mạch, DNA và RNA khác nhau như thế nào?\nA. DNA có một mạch, RNA có hai mạch.\nB. DNA có hai mạch, RNA có một mạch.\nC. Cả hai đều có một mạch.\nD. Cả hai đều có hai mạch.\n\nBài giải:\nDNA có cấu trúc hai mạch xoắn kép.\nRNA trong tế bào có cấu trúc một mạch.\nA đảo ngược đặc điểm; C và D sai vì số mạch của hai loại phân tử khác nhau.\nChọn B.\n\n##VD\nDNA có cấu trúc xoắn kép, còn một số vùng của tRNA, rRNA có thể tự bắt cặp bổ sung. Điểm giống nhau giữa hai hiện tượng này là gì?\nA. Đều không tuân theo nguyên tắc bổ sung.\nB. Đều dựa trên nguyên tắc bổ sung giữa các bazơ nitơ để hình thành cấu trúc không gian.\nC. Đều hình thành cấu trúc hai mạch hoàn chỉnh.\nD. Đều không cần liên kết hydrogen.\n\nBài giải:\nỞ DNA, hai mạch bắt cặp bổ sung với nhau; ở tRNA và rRNA, một số vùng tự bắt cặp bổ sung trong cùng một mạch.\nCả hai đều dựa trên nguyên tắc bổ sung giữa các bazơ nitơ, liên kết bằng liên kết hydrogen, để hình thành cấu trúc không gian.\nA và D sai vì cả hai đều theo nguyên tắc bổ sung và có liên kết hydrogen; C sai vì tRNA, rRNA chỉ có một số vùng bắt cặp trong một mạch, không thành mạch kép hoàn chỉnh.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01296",
+     "thu_tu": 3,
+     "ten": "SO SÁNH KHUÔN VÀ NGUYÊN TẮC BỔ SUNG GIỮA TÁI BẢN VÀ PHIÊN MÃ",
+     "mo_ta": "Câu hỏi so sánh chức năng của DNA và các loại RNA: chức năng chính của DNA, chức năng của mRNA, tRNA, rRNA, vì sao DNA tự nhân đôi còn RNA thì không, vai trò của DNA và RNA trong việc biểu hiện thông tin di truyền thành tính trạng.\nBiến thể: chọn chức năng đúng; chọn nhận định sai về chức năng; tìm chức năng chung của tRNA và rRNA.\nLưu ý: câu hỏi so sánh khuôn, số mạch khuôn, nguyên liệu, nguyên tắc bổ sung giữa tái bản và phiên mã ⇒ thuộc dạng \"SO SÁNH KHUÔN VÀ NGUYÊN TẮC BỔ SUNG GIỮA TÁI BẢN VÀ PHIÊN MÃ\" (dạng thứ 4 trong nhóm, nội dung khuôn và nguyên tắc bổ sung).\nLưu ý: câu hỏi so sánh đơn phân, cấu trúc ⇒ thuộc dạng \"SO SÁNH THÀNH PHẦN ĐƠN PHÂN DNA – RNA\" hoặc \"SO SÁNH CẤU TRÚC KHÔNG GIAN DNA – RNA\".",
+     "ly_thuyet": "##TC So sánh chức năng của DNA và RNA\nDNA lưu giữ, bảo quản và truyền đạt thông tin di truyền qua các thế hệ tế bào và cơ thể nhờ khả năng tái bản.\nmRNA truyền đạt thông tin di truyền từ gene và làm khuôn trực tiếp tổng hợp chuỗi polypeptide; tRNA vận chuyển amino acid; rRNA cấu tạo nên ribosome. tRNA và rRNA đều tham gia dịch mã.\nRNA là bản sao trung gian, được tổng hợp lại từ DNA khi tế bào cần và không tự nhân đôi; DNA lưu trữ lâu dài nên cần tái bản.\n\n##PP\nXác định đề hỏi chức năng của DNA, của một loại RNA hay so sánh hai bên.\nGhép đúng chức năng với phân tử: lưu giữ, truyền đạt qua thế hệ là DNA; truyền đạt tới protein là mRNA; vận chuyển amino acid là tRNA; cấu tạo ribosome là rRNA.\nLoại các phương án gán cho RNA chức năng lưu giữ thông tin lâu dài hoặc cho DNA chức năng làm khuôn trực tiếp tổng hợp protein.\n\n##CY\nDNA không trực tiếp làm khuôn tổng hợp protein; mRNA mới làm khuôn trực tiếp cho dịch mã.\nChức năng lưu giữ thông tin di truyền lâu dài qua các thế hệ là của DNA; RNA chỉ là trung gian tạm thời.",
+     "vi_du": "##VD\nChức năng chính của DNA trong tế bào là gì?\nA. Vận chuyển amino acid.\nB. Trực tiếp làm khuôn tổng hợp protein.\nC. Cấu tạo nên ribosome.\nD. Lưu giữ, bảo quản và truyền đạt thông tin di truyền qua các thế hệ.\n\nBài giải:\nDNA là nơi lưu giữ, bảo quản thông tin di truyền và truyền đạt thông tin đó qua các thế hệ tế bào, cơ thể nhờ khả năng tái bản.\nA là chức năng của tRNA; B là chức năng của mRNA; C là vai trò của rRNA.\nChọn D.\n\n##VD\nNhận định nào sau đây sai khi so sánh chức năng của DNA và RNA?\nA. DNA có chức năng lưu giữ và truyền đạt thông tin di truyền.\nB. mRNA có chức năng truyền đạt thông tin di truyền từ gene.\nC. tRNA có chức năng vận chuyển amino acid.\nD. RNA có chức năng lưu giữ thông tin di truyền lâu dài qua các thế hệ, giống hệt DNA.\n\nBài giải:\nA đúng: DNA lưu giữ và truyền đạt thông tin di truyền.\nB đúng: mRNA mang thông tin từ gene để tổng hợp protein.\nC đúng: tRNA vận chuyển amino acid.\nD sai vì chức năng lưu giữ, truyền đạt thông tin di truyền qua các thế hệ là của DNA; RNA chỉ đóng vai trò trung gian, truyền đạt thông tin trong thời gian ngắn.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01297",
+     "thu_tu": 4,
+     "ten": "SO SÁNH KHUÔN VÀ NGUYÊN TẮC BỔ SUNG GIỮA TÁI BẢN VÀ PHIÊN MÃ",
+     "mo_ta": "Câu hỏi so sánh tái bản DNA và phiên mã về khuôn và nguyên tắc bổ sung: số mạch dùng làm khuôn, nucleotide của mạch khuôn liên kết với loại nào của môi trường, nguyên liệu, điểm giống nhau về nguyên tắc bổ sung.\nBiến thể: so sánh số mạch khuôn; so sánh cặp bổ sung trong tái bản (A–T) và phiên mã (A–U); so sánh nguyên liệu (deoxyribonucleotide hay ribonucleotide); nhận ra nguyên tắc bổ sung là điểm chung.\nLưu ý: câu hỏi so sánh sản phẩm, vị trí, mối quan hệ tổng thể giữa hai quá trình ⇒ thuộc dạng \"SO SÁNH TỔNG THỂ TÁI BẢN – PHIÊN MÃ, TỔNG HỢP\".\nLưu ý: câu hỏi chức năng của DNA và RNA ⇒ thuộc dạng \"SO SÁNH KHUÔN VÀ NGUYÊN TẮC BỔ SUNG GIỮA TÁI BẢN VÀ PHIÊN MÃ\" (dạng thứ 3 trong nhóm, nội dung chức năng).",
+     "ly_thuyet": "##TC So sánh khuôn và nguyên tắc bổ sung của tái bản và phiên mã\nKhuôn: tái bản dùng cả hai mạch của DNA mẹ làm khuôn; phiên mã chỉ dùng một mạch của gene làm khuôn.\nNguyên liệu: tái bản dùng các deoxyribonucleotide tự do (A, T, G, C); phiên mã dùng các ribonucleotide tự do (A, U, G, C).\nNguyên tắc bổ sung: tái bản A–T, G–C; phiên mã A (khuôn)–U, T (khuôn)–A, G–C, C–G. G trên mạch khuôn luôn ghép với C ở cả hai quá trình.\nĐiểm giống: cả hai đều dựa trên nguyên tắc bổ sung giữa các bazơ nitơ để mạch mới được tổng hợp chính xác theo mạch khuôn.\n\n##PP\nXác định tiêu chí so sánh: số mạch khuôn, nguyên liệu hay cặp bổ sung.\nVới cặp bổ sung, xác định quá trình tổng hợp DNA hay RNA để biết dùng T hay U.\nĐối chiếu từng phương án và loại các phương án cho rằng hai quá trình không cần mạch khuôn hoặc không theo nguyên tắc bổ sung.\n\n##CY\nNucleotide A trên mạch khuôn ghép với T khi tái bản nhưng ghép với U khi phiên mã.\nG trên mạch khuôn đều ghép với C ở cả tái bản và phiên mã.\nTái bản dùng hai mạch khuôn tạo hai DNA con, phiên mã dùng một mạch khuôn tạo một RNA; không đảo ngược hai quá trình.",
+     "vi_du": "##VD\nVề số mạch khuôn được sử dụng, tái bản DNA và phiên mã khác nhau như thế nào?\nA. Tái bản dùng cả hai mạch của DNA làm khuôn, phiên mã chỉ dùng một mạch của gene làm khuôn.\nB. Tái bản dùng một mạch làm khuôn, phiên mã dùng cả hai mạch làm khuôn.\nC. Cả hai đều dùng cả hai mạch làm khuôn.\nD. Cả hai đều không cần mạch khuôn.\n\nBài giải:\nTrong tái bản, cả hai mạch DNA mẹ đều làm khuôn để tạo ra hai DNA con.\nTrong phiên mã, chỉ một mạch của gene làm khuôn để tổng hợp một phân tử RNA.\nB đảo ngược hai quá trình; C sai vì phiên mã chỉ dùng một mạch; D sai vì cả hai quá trình đều cần mạch khuôn.\nChọn A.\n\n##VD\nTrong tái bản DNA, nucleotide loại A trên mạch khuôn liên kết với loại nào của môi trường?\nTrong phiên mã, nucleotide loại A trên mạch khuôn liên kết với loại ribonucleotide nào của môi trường?\nA. Tái bản: A với G; phiên mã: A với C.\nB. Tái bản: A với U; phiên mã: A với T.\nC. Tái bản: A với T; phiên mã: A với U.\nD. Cả hai trường hợp A đều liên kết với A.\n\nBài giải:\nTrong tái bản (tổng hợp DNA), A trên mạch khuôn liên kết với T của môi trường.\nTrong phiên mã (tổng hợp RNA), A trên mạch khuôn liên kết với U của môi trường vì RNA không có T.\nA sai vì A không ghép với G hay C; B đảo ngược U và T; D sai vì A không bổ sung với A.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01298",
+     "thu_tu": 5,
+     "ten": "SO SÁNH TỔNG THỂ TÁI BẢN – PHIÊN MÃ, TỔNG HỢP",
+     "mo_ta": "Câu hỏi so sánh tổng thể tái bản DNA và phiên mã: sản phẩm tạo thành, vị trí diễn ra, tiêu chí so sánh, nhận định đúng hoặc sai, đếm số phát biểu đúng, mối quan hệ giữa hai quá trình trong duy trì và biểu hiện thông tin di truyền.\nBiến thể: chọn điểm khác nhau về sản phẩm; chọn điểm chung về vị trí; chọn nhận định sai; đếm phát biểu đúng; chọn nhận định khái quát về mối quan hệ.\nLưu ý: câu hỏi chỉ về số mạch khuôn, cặp bổ sung hoặc nguyên liệu ⇒ thuộc dạng \"SO SÁNH KHUÔN VÀ NGUYÊN TẮC BỔ SUNG GIỮA TÁI BẢN VÀ PHIÊN MÃ\" (dạng thứ 4 trong nhóm, nội dung khuôn và nguyên tắc bổ sung).",
+     "ly_thuyet": "##TC So sánh tổng thể tái bản DNA và phiên mã\nSản phẩm: tái bản tạo hai phân tử DNA con giống hệt DNA mẹ; phiên mã tạo một phân tử RNA bổ sung với mạch khuôn.\nVị trí: cả hai đều diễn ra trong nhân tế bào (hoặc vùng nhân ở sinh vật nhân sơ).\nKhuôn: tái bản dùng hai mạch, phiên mã dùng một mạch; cả hai đều theo nguyên tắc bổ sung giữa các bazơ nitơ.\nVai trò: tái bản bảo đảm thông tin di truyền truyền đạt ổn định qua các thế hệ tế bào và cơ thể; phiên mã chuyển thông tin từ gene sang RNA để tổng hợp protein, biểu hiện thành tính trạng.\n\n##PP\nLiệt kê tiêu chí so sánh (khuôn, nguyên tắc, sản phẩm, vị trí, vai trò) mà đề nêu.\nVới mỗi tiêu chí, nhớ kết quả của tái bản và của phiên mã rồi đối chiếu với phát biểu.\nVới câu đếm phát biểu đúng, đánh giá từng phát biểu độc lập rồi cộng số phát biểu đúng.\n\n##CY\nSản phẩm của hai quá trình khác nhau về bản chất hoá học: tái bản tạo DNA, phiên mã tạo RNA.\nTái bản cũng theo nguyên tắc bổ sung; không cho rằng chỉ phiên mã mới cần nguyên tắc bổ sung.\nHai quá trình bổ trợ nhau, không thay thế nhau.",
+     "vi_du": "##VD\nVề sản phẩm tạo thành, tái bản DNA và phiên mã khác nhau như thế nào?\nA. Tái bản tạo ra hai phân tử DNA con; phiên mã tạo ra một phân tử RNA.\nB. Tái bản tạo ra RNA; phiên mã tạo ra DNA.\nC. Cả hai đều tạo ra DNA.\nD. Cả hai đều tạo ra RNA.\n\nBài giải:\nSản phẩm của tái bản là hai phân tử DNA con giống DNA mẹ.\nSản phẩm của phiên mã là một phân tử RNA có trình tự bổ sung với mạch khuôn.\nB đảo ngược hai sản phẩm; C và D sai vì sản phẩm của hai quá trình khác nhau về bản chất hoá học.\nChọn A.\n\n##VD\nCho các phát biểu sau khi so sánh tái bản DNA và phiên mã:\n(1) Tái bản dùng hai mạch DNA làm khuôn, phiên mã dùng một mạch.\n(2) Tái bản tạo hai DNA con, phiên mã tạo một RNA.\n(3) Tái bản không cần tuân theo nguyên tắc bổ sung, chỉ phiên mã mới cần.\n(4) Sản phẩm của tái bản và phiên mã giống hệt nhau về bản chất hoá học.\nSố phát biểu đúng là\nA. 4 phát biểu.\nB. 1 phát biểu.\nC. 3 phát biểu.\nD. 2 phát biểu.\n\nBài giải:\n(1) đúng: tái bản dùng hai mạch khuôn, phiên mã dùng một mạch khuôn.\n(2) đúng: tái bản tạo hai DNA con, phiên mã tạo một RNA.\n(3) sai vì cả hai quá trình đều tuân theo nguyên tắc bổ sung.\n(4) sai vì sản phẩm của tái bản là DNA còn sản phẩm của phiên mã là RNA, khác nhau về bản chất hoá học.\nVậy có 2 phát biểu đúng.\nChọn D."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K09110501031",
+   "nhom_id": "KNB00562",
+   "loai": "trac_nghiem",
+   "de": "Bước đầu tiên trong quá trình tái bản DNA là gì?",
+   "lua_chon": [
+    "Hai mạch của DNA tách nhau (tháo xoắn)",
+    "Ribosome trượt dọc theo mạch DNA",
+    "mRNA tách khỏi mạch khuôn",
+    "Hai mạch DNA con dính liền vào nhau"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Tái bản DNA bắt đầu bằng việc hai mạch của DNA tách nhau, tạo mạch khuôn để tổng hợp mạch mới.\n\nVì sao các phương án khác sai:\n- B: Ribosome trượt trên mRNA là bước của dịch mã, không phải bước đầu của tái bản.\n- C: mRNA tách khỏi mạch khuôn là bước của phiên mã, không phải tái bản.\n- D: Tái bản kết thúc bằng hai DNA con tách biệt, không dính liền vào nhau."
+  },
+  {
+   "ma_cau": "K09110501032",
+   "nhom_id": "KNB00562",
+   "loai": "trac_nghiem",
+   "de": "Trong tái bản DNA, mạch DNA mới được tổng hợp dựa vào khuôn nào?",
+   "lua_chon": [
+    "Một phân tử protein làm khuôn",
+    "Bộ ba đối mã trên tRNA",
+    "Mạch DNA cũ của phân tử mẹ",
+    "Ribosome di chuyển tự do trong nhân"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Mỗi mạch của DNA mẹ đóng vai trò làm khuôn để nucleotide tự do liên kết vào, tổng hợp nên mạch mới.\n\nVì sao các phương án khác sai:\n- A: Protein không phải là khuôn để tổng hợp mạch DNA mới.\n- B: Bộ ba đối mã trên tRNA chỉ xuất hiện trong dịch mã, không liên quan tái bản.\n- D: Ribosome tham gia dịch mã tổng hợp protein, không tham gia tái bản DNA."
+  },
+  {
+   "ma_cau": "K09110501033",
+   "nhom_id": "KNB00562",
+   "loai": "trac_nghiem",
+   "de": "Kết quả của một lần tái bản một phân tử DNA là gì?",
+   "lua_chon": [
+    "Một phân tử mRNA mới được tạo thành",
+    "Hai phân tử protein giống nhau",
+    "Một phân tử DNA duy nhất, không tăng số lượng",
+    "Hai phân tử DNA con giống hệt DNA mẹ"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Sau một lần tái bản, từ một DNA mẹ tạo ra hai phân tử DNA con có trình tự giống hệt DNA mẹ.\n\nVì sao các phương án khác sai:\n- A: Tạo mRNA là kết quả của phiên mã, không phải tái bản.\n- B: Tái bản tạo ra DNA, không trực tiếp tạo ra protein.\n- C: Tái bản làm tăng gấp đôi số phân tử DNA, không giữ nguyên một phân tử."
+  },
+  {
+   "ma_cau": "K09110501034",
+   "nhom_id": "KNB00562",
+   "loai": "trac_nghiem",
+   "de": "Nucleotide tự do trong môi trường liên kết vào mạch khuôn theo nguyên tắc nào để tạo mạch mới?",
+   "lua_chon": [
+    "A liên kết U, G liên kết C",
+    "A liên kết T, G liên kết C",
+    "G liên kết T, A liên kết C",
+    "T liên kết C, A liên kết G"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Trong tái bản DNA, nucleotide tự do bắt cặp theo nguyên tắc bổ sung: A với T, G với C.\n\nVì sao các phương án khác sai:\n- A: A liên kết U chỉ đúng khi tổng hợp RNA (phiên mã), không phải tái bản DNA.\n- C: A không liên kết với C trong nguyên tắc bổ sung của DNA.\n- D: A không liên kết với G; T mới liên kết với A."
+  },
+  {
+   "ma_cau": "K09110501035",
+   "nhom_id": "KNB00562",
+   "loai": "trac_nghiem",
+   "de": "Sau khi hai mạch DNA tách nhau, mỗi mạch đơn có vai trò gì trong tái bản?",
+   "lua_chon": [
+    "Làm khuôn để tổng hợp một mạch mới",
+    "Bị phân hủy ngay để lấy nguyên liệu",
+    "Di chuyển ra tế bào chất",
+    "Kết hợp với mạch còn lại tạo mRNA"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Mỗi mạch đơn của DNA mẹ làm khuôn, nucleotide tự do bám vào theo nguyên tắc bổ sung để tổng hợp mạch mới.\n\nVì sao các phương án khác sai:\n- B: Mạch khuôn được giữ lại để tổng hợp mạch mới, không bị phân hủy.\n- C: Tái bản DNA diễn ra trong nhân; mạch khuôn không di chuyển ra tế bào chất.\n- D: Tạo mRNA là kết quả của phiên mã, không phải tái bản DNA."
+  },
+  {
+   "ma_cau": "K09110501036",
+   "nhom_id": "KNB00562",
+   "loai": "trac_nghiem",
+   "de": "Quá trình tái bản DNA diễn ra ở đâu và vào thời điểm nào của chu kì tế bào?",
+   "lua_chon": [
+    "Trong tế bào chất, ở kì trung gian",
+    "Trong nhân, ở kì trung gian",
+    "Trong nhân, ở kì giữa của nguyên phân",
+    "Trong nhân, ở kì đầu của giảm phân"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Tái bản DNA diễn ra trong nhân tế bào, ở kì trung gian trước khi tế bào bước vào phân bào.\n\nVì sao các phương án khác sai:\n- A: Tái bản DNA diễn ra trong nhân tế bào (nơi chứa DNA), không phải trong tế bào chất.\n- C: Tái bản DNA hoàn tất trước khi bước vào nguyên phân, không diễn ra ở kì giữa.\n- D: Tái bản DNA diễn ra ở kì trung gian trước khi phân bào, không phải ở kì đầu giảm phân."
+  },
+  {
+   "ma_cau": "K09110501037",
+   "nhom_id": "KNB00562",
+   "loai": "trac_nghiem",
+   "de": "Trong mỗi phân tử DNA con tạo thành sau một lần tái bản, có bao nhiêu mạch polynucleotide được tổng hợp mới?",
+   "lua_chon": [
+    "2 mạch",
+    "0 mạch (giữ nguyên cả hai mạch cũ)",
+    "1 mạch",
+    "4 mạch"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Theo nguyên tắc bán bảo toàn, mỗi DNA con gồm 1 mạch cũ của DNA mẹ và 1 mạch mới được tổng hợp.\n\nVì sao các phương án khác sai:\n- A: Mỗi DNA con chỉ có 1 mạch mới, mạch còn lại là mạch cũ của DNA mẹ (nguyên tắc bán bảo toàn).\n- B: Mỗi DNA con phải có ít nhất 1 mạch mới được tổng hợp, không giữ nguyên cả hai mạch cũ.\n- D: Mỗi phân tử DNA chỉ có 2 mạch, không thể có 4 mạch."
+  },
+  {
+   "ma_cau": "K09110501038",
+   "nhom_id": "KNB00562",
+   "loai": "trac_nghiem",
+   "de": "Theo nguyên tắc bán bảo toàn, mỗi phân tử DNA con sau tái bản có đặc điểm gì?",
+   "lua_chon": [
+    "Cả hai mạch đều là mạch mới, không giữ mạch cũ",
+    "Cả hai mạch đều là mạch cũ của DNA mẹ",
+    "Một mạch cũ của DNA mẹ, một mạch mới tổng hợp",
+    "Mỗi mạch có nửa đoạn cũ, nửa đoạn mới xen kẽ"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Theo nguyên tắc bán bảo toàn, mỗi DNA con giữ lại một mạch cũ của DNA mẹ và có thêm một mạch mới được tổng hợp.\n\nVì sao các phương án khác sai:\n- A: Nếu cả hai mạch đều mới thì không còn giữ lại mạch nào của DNA mẹ, trái nguyên tắc bán bảo toàn.\n- B: Nếu cả hai mạch đều cũ thì không có mạch nào được tổng hợp mới, không đúng với tái bản.\n- D: Trong bán bảo toàn, mỗi mạch nguyên vẹn là cũ hoặc mới, không xen kẽ trong cùng một mạch."
+  },
+  {
+   "ma_cau": "K09110501039",
+   "nhom_id": "KNB00562",
+   "loai": "trac_nghiem",
+   "de": "Nhờ đâu hai phân tử DNA con có trình tự nucleotide giống hệt DNA mẹ?",
+   "lua_chon": [
+    "Ribosome kiểm tra lại trình tự sau khi tổng hợp mạch mới",
+    "Mạch mới được sao chép một cách ngẫu nhiên, không theo khuôn",
+    "Hai mạch DNA mẹ trao đổi vị trí cho nhau khi tái bản",
+    "Nucleotide mới ghép đúng nguyên tắc bổ sung với mạch khuôn"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Nucleotide tự do liên kết đúng theo nguyên tắc bổ sung (A–T, G–C) với mạch khuôn nên mạch mới có trình tự khớp với mạch cũ.\n\nVì sao các phương án khác sai:\n- A: Ribosome tham gia dịch mã tổng hợp protein, không kiểm tra trình tự DNA.\n- B: Nếu ghép ngẫu nhiên, trình tự DNA con sẽ không giống DNA mẹ.\n- C: Hai mạch DNA mẹ tách nhau làm khuôn, không trao đổi vị trí cho nhau."
+  },
+  {
+   "ma_cau": "K09110501040",
+   "nhom_id": "KNB00562",
+   "loai": "trac_nghiem",
+   "de": "Hai phân tử DNA con tạo ra sau tái bản có quan hệ như thế nào với DNA mẹ?",
+   "lua_chon": [
+    "Khác hẳn DNA mẹ về trình tự nucleotide",
+    "Một trong hai DNA con giống DNA mẹ, còn lại thì khác",
+    "Có số nucleotide bằng một nửa DNA mẹ",
+    "Cả hai đều giống hệt DNA mẹ và giống nhau"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Nhờ tổng hợp theo nguyên tắc bổ sung, cả hai DNA con đều có trình tự nucleotide giống hệt DNA mẹ và giống nhau.\n\nVì sao các phương án khác sai:\n- A: Nguyên tắc bổ sung đảm bảo trình tự DNA con giống DNA mẹ, không khác hẳn.\n- B: Cả hai DNA con đều giống DNA mẹ, không chỉ một phân tử.\n- C: Mỗi DNA con có đủ số nucleotide như DNA mẹ, không phải một nửa."
+  },
+  {
+   "ma_cau": "K09110501041",
+   "nhom_id": "KNB00562",
+   "loai": "trac_nghiem",
+   "de": "Câu nào mô tả đúng nguyên tắc bổ sung trong tái bản DNA?",
+   "lua_chon": [
+    "A liên kết với G, T liên kết với C",
+    "A liên kết với T, G liên kết với C",
+    "A liên kết với C, T liên kết với G",
+    "Các loại nucleotide liên kết ngẫu nhiên với nhau"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Nguyên tắc bổ sung quy định A luôn liên kết với T, G luôn liên kết với C khi tổng hợp mạch mới.\n\nVì sao các phương án khác sai:\n- A: A không liên kết với G; A chỉ liên kết với T.\n- C: A không liên kết với C; cặp bổ sung đúng là A–T, G–C.\n- D: Liên kết nucleotide tuân theo nguyên tắc bổ sung cố định, không ngẫu nhiên."
+  },
+  {
+   "ma_cau": "K09110501042",
+   "nhom_id": "KNB00562",
+   "loai": "trac_nghiem",
+   "de": "Tái bản DNA diễn ra đúng nguyên tắc có ý nghĩa gì đối với các thế hệ tế bào?",
+   "lua_chon": [
+    "Số lượng tế bào được giữ nguyên không đổi",
+    "Kích thước tế bào tăng dần đều hơn",
+    "Giúp thông tin di truyền được truyền đạt ổn định",
+    "Nồng độ protein trong tế bào tăng dần"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Nhờ tái bản chính xác theo nguyên tắc bổ sung và bán bảo toàn, thông tin di truyền được truyền đạt ổn định qua các thế hệ tế bào.\n\nVì sao các phương án khác sai:\n- A: Tái bản DNA không quyết định việc tế bào giữ nguyên số lượng.\n- B: Kích thước tế bào không phải là ý nghĩa của việc tái bản DNA chính xác.\n- D: Tái bản DNA liên quan tới thông tin di truyền, không trực tiếp làm tăng nồng độ protein."
+  },
+  {
+   "ma_cau": "K09110501043",
+   "nhom_id": "KNB00562",
+   "loai": "trac_nghiem",
+   "de": "Quá trình tái bản DNA tuân theo mấy nguyên tắc cơ bản? Đó là những nguyên tắc nào?",
+   "lua_chon": [
+    "2 nguyên tắc: khuôn mẫu, bổ sung",
+    "2 nguyên tắc: bổ sung, bán bảo toàn",
+    "4 nguyên tắc: khuôn mẫu, bổ sung, bán bảo toàn, đột biến",
+    "3 nguyên tắc: khuôn mẫu, bổ sung, bán bảo toàn"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Tái bản DNA tuân theo 3 nguyên tắc: khuôn mẫu (dựa trên mạch khuôn), bổ sung (A–T, G–C) và bán bảo toàn (mỗi DNA con giữ 1 mạch cũ).\n\nVì sao các phương án khác sai:\n- A: Thiếu nguyên tắc bán bảo toàn — mỗi DNA con giữ lại một mạch của DNA mẹ.\n- B: Thiếu nguyên tắc khuôn mẫu — mạch mới được tổng hợp dựa trên mạch khuôn có sẵn.\n- C: Đột biến không phải là một nguyên tắc của tái bản, mà là sai sót ngẫu nhiên có thể xảy ra."
+  },
+  {
+   "ma_cau": "K09110501044",
+   "nhom_id": "KNB00562",
+   "loai": "trac_nghiem",
+   "de": "Trong tái bản DNA, nguyên tắc khuôn mẫu thể hiện ở điểm nào?",
+   "lua_chon": [
+    "Mạch DNA mới được tổng hợp dựa theo trình tự của mạch DNA cũ làm khuôn",
+    "Mạch DNA mới có trình tự giống hệt mạch mới còn lại",
+    "Hai mạch DNA con được tổng hợp đồng thời, không cần mạch cũ",
+    "Nucleotide tự do tự sắp xếp ngẫu nhiên, không theo mạch nào"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Nguyên tắc khuôn mẫu: mạch DNA mới được tổng hợp dựa theo trình tự nucleotide của mạch DNA cũ (mạch khuôn).\n\nVì sao các phương án khác sai:\n- B: Mạch mới được tổng hợp bổ sung với mạch khuôn, không giống hệt mạch mới còn lại.\n- C: Mỗi mạch mới bắt buộc phải dựa trên một mạch khuôn có sẵn, không thể tổng hợp mà không cần khuôn.\n- D: Nucleotide tự do liên kết theo nguyên tắc bổ sung với mạch khuôn, không sắp xếp ngẫu nhiên."
+  },
+  {
+   "ma_cau": "K09110501045",
+   "nhom_id": "KNB00562",
+   "loai": "trac_nghiem",
+   "de": "Sau nhiều lần tái bản liên tiếp từ một DNA ban đầu, tất cả các phân tử DNA con tạo ra có đặc điểm gì so với DNA mẹ ban đầu?",
+   "lua_chon": [
+    "Trình tự nucleotide khác hẳn DNA mẹ",
+    "Trình tự nucleotide giống hệt DNA mẹ",
+    "Một nửa số DNA con giống mẹ, nửa còn lại khác",
+    "Mỗi DNA con gồm hai mạch đều là mạch mới"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Nhờ nguyên tắc khuôn mẫu (mỗi mạch của DNA mẹ làm khuôn để tổng hợp mạch mới) và nguyên tắc bổ sung (A liên kết T, G liên kết C), tất cả các phân tử DNA con được tạo ra qua tái bản đều có trình tự nucleotide giống hệt DNA mẹ ban đầu.\n\nVì sao các phương án khác sai:\n- A: Nhờ nguyên tắc khuôn mẫu và bổ sung, DNA con giống DNA mẹ.\n- C: Mọi DNA con đều giống DNA mẹ.\n- D: Mỗi DNA con có một mạch cũ của mẹ, một mạch mới (bán bảo toàn)."
+  },
+  {
+   "ma_cau": "K09110202007",
+   "nhom_id": "KNB00555",
+   "loai": "trac_nghiem",
+   "de": "Một mạch của DNA có trình tự $5'-\\mathrm{G}-\\mathrm{G}-\\mathrm{A}-\\mathrm{T}-\\mathrm{C}-3'$. Mạch bổ sung có chiều $3'\\rightarrow5'$ là",
+   "lua_chon": [
+    "$3'-\\mathrm{C}-\\mathrm{C}-\\mathrm{T}-\\mathrm{A}-\\mathrm{G}-5'$",
+    "B. $3'-\\mathrm{G}-\\mathrm{G}-\\mathrm{A}-\\mathrm{T}-\\mathrm{C}-5'$",
+    "C. $3'-\\mathrm{C}-\\mathrm{C}-\\mathrm{U}-\\mathrm{A}-\\mathrm{G}-5'$",
+    "D. $3'-\\mathrm{G}-\\mathrm{C}-\\mathrm{T}-\\mathrm{A}-\\mathrm{C}-5'$"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Thay theo nguyên tắc bổ sung: $\\mathrm{G}\\rightarrow\\mathrm{C}$, $\\mathrm{G}\\rightarrow\\mathrm{C}$, $\\mathrm{A}\\rightarrow\\mathrm{T}$, $\\mathrm{T}\\rightarrow\\mathrm{A}$, $\\mathrm{C}\\rightarrow\\mathrm{G}$, được $\\mathrm{C}-\\mathrm{C}-\\mathrm{T}-\\mathrm{A}-\\mathrm{G}$. Mạch đã cho chiều $5'\\rightarrow3'$ nên mạch bổ sung có chiều $3'\\rightarrow5'$."
+  },
+  {
+   "ma_cau": "K09110202008",
+   "nhom_id": "KNB00555",
+   "loai": "trac_nghiem",
+   "de": "Một mạch của gene có 5 nucleotide loại $\\mathrm{A}$ và 3 loại $\\mathrm{T}$. Trên mạch bổ sung, số nucleotide loại $\\mathrm{A}$ là",
+   "lua_chon": [
+    "A. 5",
+    "B. 3",
+    "C. 8",
+    "D. 2"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Áp dụng mẹo hoán đổi: số $\\mathrm{A}$ của mạch bổ sung bằng số $\\mathrm{T}$ của mạch đã cho. Mạch đã cho có $\\mathrm{T}=3$ nên mạch bổ sung có $\\mathrm{A}=3$."
+  },
+  {
+   "ma_cau": "K09110202009",
+   "nhom_id": "KNB00555",
+   "loai": "trac_nghiem",
+   "de": "Một mạch của DNA có trình tự $3'-T-T-G-C-A-A-5'$. Số nucleotide loại G trên mạch bổ sung là",
+   "lua_chon": [
+    "0",
+    "1",
+    "2",
+    "3"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Mạch bổ sung là $\\mathrm{A-A-C-G-T-T}$, trong đó chỉ có $1$ nucleotide loại G. Cách nhanh hơn: số G của mạch bổ sung bằng số C của mạch đã cho, mà mạch đã cho chỉ có $1$ nucleotide loại C."
+  },
+  {
+   "ma_cau": "K09110202011",
+   "nhom_id": "KNB00555",
+   "loai": "trac_nghiem",
+   "de": "Một mạch của DNA có trình tự $3'-A-A-T-T-C-C-5'$. Số nucleotide loại T trên mạch bổ sung là",
+   "lua_chon": [
+    "1",
+    "2",
+    "3",
+    "4"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Mạch bổ sung là $\\mathrm{T-T-A-A-G-G}$, có $2$ nucleotide loại T. Kiểm tra bằng mẹo hoán đổi: số T của mạch bổ sung bằng số A của mạch đã cho, mà mạch đã cho chỉ có $2$ nucleotide loại A."
+  },
+  {
+   "ma_cau": "K09110202012",
+   "nhom_id": "KNB00555",
+   "loai": "trac_nghiem",
+   "de": "Mạch bổ sung của một gene có trình tự $5'-\\mathrm{T-T-A-G-C-C-3'}$. Trình tự của mạch còn lại là",
+   "lua_chon": [
+    "$3'-\\mathrm{A-A-T-C-G-G-5'}$",
+    "$5'-\\mathrm{A-A-T-C-G-G-3'}$",
+    "$3'-\\mathrm{U-U-A-G-C-C-5'}$",
+    "$3'-\\mathrm{A-A-U-C-G-G-5'}$"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Bài toán ngược nhưng cách làm hoàn toàn tương tự: thay $\\mathrm{T \\to A}$, $\\mathrm{T \\to A}$, $\\mathrm{A \\to T}$, $\\mathrm{G \\to C}$, $\\mathrm{C \\to G}$, $\\mathrm{C \\to G}$, được $\\mathrm{A-A-T-C-G-G}$. Mạch đã cho chiều $5'\\to 3'$ nên mạch kia có chiều $3'\\to 5'$."
+  },
+  {
+   "ma_cau": "K09110202013",
+   "nhom_id": "KNB00555",
+   "loai": "trac_nghiem",
+   "de": "Phát biểu nào sau đây là ĐÚNG về quan hệ giữa hai mạch của một gene?",
+   "lua_chon": [
+    "$\\mathrm{A_1 = A_2}$",
+    "$\\mathrm{A_1 = T_2}$",
+    "$\\mathrm{A_1 = G_2}$",
+    "$\\mathrm{A_1 = C_2}$"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Theo nguyên tắc bổ sung, $\\mathrm{A}$ của mạch 1 luôn bắt cặp với $\\mathrm{T}$ của mạch 2, nên $\\mathrm{A_1 = T_2}$. Đây là điểm học sinh rất hay nhầm thành $\\mathrm{A_1 = A_2}$."
+  },
+  {
+   "ma_cau": "K09110202014",
+   "nhom_id": "KNB00555",
+   "loai": "trac_nghiem",
+   "de": "Trong khi viết mạch bổ sung của một đoạn $\\mathrm{DNA}$, một học sinh dùng base $\\mathrm{U}$ để bắt cặp với $\\mathrm{A}$. Lỗi sai này là do",
+   "lua_chon": [
+    "nhầm nguyên tắc bổ sung của $\\mathrm{DNA}$ với của $\\mathrm{RNA}$.",
+    "viết sai chiều của mạch.",
+    "quên rằng $\\mathrm{G}$ bắt cặp với $\\mathrm{C}$.",
+    "nhầm số liên kết hydrogen."
+   ],
+   "dap_an": "A",
+   "loi_giai": "Trong phân tử $\\mathrm{DNA}$, base bắt cặp với $\\mathrm{A}$ luôn là $\\mathrm{T}$. Base $\\mathrm{U}$ chỉ xuất hiện ở $\\mathrm{RNA}$. Trước khi viết, luôn tự hỏi sản phẩm cần tạo ra là $\\mathrm{DNA}$ hay $\\mathrm{RNA}$."
+  },
+  {
+   "ma_cau": "K09110202015",
+   "nhom_id": "KNB00555",
+   "loai": "trac_nghiem",
+   "de": "Một mạch của gene có trình tự $5'-\\mathrm{A}-\\mathrm{A}-\\mathrm{A}-\\mathrm{G}-\\mathrm{G}-3'$. Mạch bổ sung của nó có bao nhiêu nucleotide loại $\\mathrm{C}$?",
+   "lua_chon": [
+    "0",
+    "1",
+    "2",
+    "3"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Mạch bổ sung là $\\mathrm{T}-\\mathrm{T}-\\mathrm{T}-\\mathrm{C}-\\mathrm{C}$, có 2 nucleotide loại $\\mathrm{C}$. Số $\\mathrm{C}$ của mạch bổ sung bằng số $\\mathrm{G}$ của mạch đã cho, tức là 2."
+  },
+  {
+   "ma_cau": "K09110202016",
+   "nhom_id": "KNB00555",
+   "loai": "trac_nghiem",
+   "de": "Mạch bổ sung của một gene có trình tự $3'-\\mathrm{C}-\\mathrm{A}-\\mathrm{T}-\\mathrm{G}-\\mathrm{C}-5'$. Trình tự của mạch còn lại, viết theo chiều $5'\\to3'$, là",
+   "lua_chon": [
+    "$5'-\\mathrm{G}-\\mathrm{T}-\\mathrm{A}-\\mathrm{C}-\\mathrm{G}-3'$",
+    "$5'-\\mathrm{C}-\\mathrm{A}-\\mathrm{T}-\\mathrm{G}-\\mathrm{C}-3'$",
+    "$5'-\\mathrm{G}-\\mathrm{U}-\\mathrm{A}-\\mathrm{C}-\\mathrm{G}-3'$",
+    "$5'-\\mathrm{C}-\\mathrm{T}-\\mathrm{A}-\\mathrm{G}-\\mathrm{C}-3'$"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Thay từng vị trí: $\\mathrm{C}\\to\\mathrm{G}$, $\\mathrm{A}\\to\\mathrm{T}$, $\\mathrm{T}\\to\\mathrm{A}$, $\\mathrm{G}\\to\\mathrm{C}$, $\\mathrm{C}\\to\\mathrm{G}$, được $\\mathrm{G}-\\mathrm{T}-\\mathrm{A}-\\mathrm{C}-\\mathrm{G}$, viết theo chiều $5'\\to3'$."
+  },
+  {
+   "ma_cau": "K09110202017",
+   "nhom_id": "KNB00555",
+   "loai": "trac_nghiem",
+   "de": "Một mạch của $\\mathrm{DNA}$ có trình tự $5'-\\mathrm{A}-\\mathrm{T}-\\mathrm{A}-\\mathrm{T}-\\mathrm{A}-\\mathrm{T}-3'$. Nhận xét nào sau đây về đoạn $\\mathrm{DNA}$ này là ĐÚNG?",
+   "lua_chon": [
+    "Mạch bổ sung là $3'-\\mathrm{T}-\\mathrm{A}-\\mathrm{T}-\\mathrm{A}-\\mathrm{T}-\\mathrm{A}-5'$ và đoạn này chỉ chứa các cặp $\\mathrm{A}-\\mathrm{T}$.",
+    "Mạch bổ sung là $5'-\\mathrm{T}-\\mathrm{A}-\\mathrm{T}-\\mathrm{A}-\\mathrm{T}-\\mathrm{A}-3'$.",
+    "Đoạn này chứa cả cặp $\\mathrm{A}-\\mathrm{T}$ và cặp $\\mathrm{G}-\\mathrm{C}$.",
+    "Mạch bổ sung giống hệt mạch đã cho."
+   ],
+   "dap_an": "A",
+   "loi_giai": "Thay theo nguyên tắc bổ sung được $\\mathrm{T}-\\mathrm{A}-\\mathrm{T}-\\mathrm{A}-\\mathrm{T}-\\mathrm{A}$, chiều $3'\\to5'$. Vì mạch chỉ gồm $\\mathrm{A}$ và $\\mathrm{T}$ nên toàn bộ 6 cặp base đều là cặp $\\mathrm{A}-\\mathrm{T}$, không có cặp $\\mathrm{G}-\\mathrm{C}$ nào."
+  },
+  {
+   "ma_cau": "K09110202018",
+   "nhom_id": "KNB00555",
+   "loai": "trac_nghiem",
+   "de": "Nhận định nào sau đây là SAI?",
+   "lua_chon": [
+    "Trên một mạch đơn của $\\mathrm{DNA}$, số $\\mathrm{A}$ không nhất thiết bằng số $\\mathrm{T}$.",
+    "Trong cả phân tử $\\mathrm{DNA}$, số $\\mathrm{A}$ luôn bằng số $\\mathrm{T}$.",
+    "Trên một mạch đơn của $\\mathrm{DNA}$, số $\\mathrm{A}$ luôn bằng số $\\mathrm{T}$.",
+    "Trong cả phân tử $\\mathrm{DNA}$, số $\\mathrm{G}$ luôn bằng số $\\mathrm{C}$."
+   ],
+   "dap_an": "C",
+   "loi_giai": "Quan hệ $\\mathrm{A}=\\mathrm{T}$ và $\\mathrm{G}=\\mathrm{C}$ chỉ đúng khi xét CẢ PHÂN TỬ $\\mathrm{DNA}$ (hai mạch), do nguyên tắc bổ sung. Trên một mạch đơn riêng lẻ, số $\\mathrm{A}$ và số $\\mathrm{T}$ hoàn toàn có thể khác nhau."
+  },
+  {
+   "ma_cau": "K09110202020",
+   "nhom_id": "KNB00555",
+   "loai": "trac_nghiem",
+   "de": "Nếu biết trình tự đầy đủ của một mạch trong phân tử $\\mathrm{DNA}$ thì có thể suy ra điều gì?",
+   "lua_chon": [
+    "Chỉ suy ra được số lượng nucleotide của mạch kia.",
+    "Suy ra được toàn bộ trình tự của mạch còn lại nhờ nguyên tắc bổ sung.",
+    "Không suy ra được gì thêm.",
+    "Chỉ suy ra được chiều của mạch kia."
+   ],
+   "dap_an": "B",
+   "loi_giai": "Nhờ nguyên tắc bổ sung chặt chẽ ($\\mathrm{A - T, G - C}$), mỗi nucleotide trên mạch đã biết quy định duy nhất một nucleotide đối diện. Đây cũng là cơ sở để $\\mathrm{DNA}$ nhân đôi chính xác."
+  },
+  {
+   "ma_cau": "K09110202022",
+   "nhom_id": "KNB00555",
+   "loai": "trac_nghiem",
+   "de": "Cho đoạn mạch $5'-\\mathrm{T}-\\mathrm{G}-\\mathrm{C}-\\mathrm{A}-\\mathrm{A}-3'$. Nhận xét nào sau đây về mạch bổ sung là ĐÚNG?",
+   "lua_chon": [
+    "Mạch bổ sung là $3'-\\mathrm{A}-\\mathrm{C}-\\mathrm{G}-\\mathrm{T}-\\mathrm{T}-5'$.",
+    "Mạch bổ sung là $5'-\\mathrm{A}-\\mathrm{C}-\\mathrm{G}-\\mathrm{T}-\\mathrm{T}-3'$.",
+    "Mạch bổ sung là $3'-\\mathrm{U}-\\mathrm{C}-\\mathrm{G}-\\mathrm{A}-\\mathrm{A}-5'$.",
+    "Mạch bổ sung giống hệt mạch đã cho."
+   ],
+   "dap_an": "A",
+   "loi_giai": "Thay theo nguyên tắc bổ sung: $\\mathrm{T} \\to \\mathrm{A}$, $\\mathrm{G} \\to \\mathrm{C}$, $\\mathrm{C} \\to \\mathrm{G}$, $\\mathrm{A} \\to \\mathrm{T}$, được $\\mathrm{A}-\\mathrm{C}-\\mathrm{G}-\\mathrm{T}-\\mathrm{T}$. Mạch đã cho chiều $5'\\to 3'$ nên mạch bổ sung có chiều $3'\\to 5'$. Phương án $\\mathrm{B}$ sai chiều, phương án $\\mathrm{C}$ sai vì dùng base $\\mathrm{U}$."
+  },
+  {
+   "ma_cau": "K09110202023",
+   "nhom_id": "KNB00555",
+   "loai": "trac_nghiem",
+   "de": "Cặp trình tự nào sau đây thể hiện ĐÚNG hai mạch của một đoạn $\\mathrm{DNA}$?",
+   "lua_chon": [
+    "$5'-\\mathrm{A}-\\mathrm{G}-\\mathrm{T}-\\mathrm{T}-3'$ và $3'-\\mathrm{T}-\\mathrm{C}-\\mathrm{A}-\\mathrm{A}-5'$",
+    "$5'-\\mathrm{A}-\\mathrm{G}-\\mathrm{T}-\\mathrm{T}-3'$ và $3'-\\mathrm{A}-\\mathrm{G}-\\mathrm{T}-\\mathrm{T}-5'$",
+    "$5'-\\mathrm{A}-\\mathrm{G}-\\mathrm{T}-\\mathrm{T}-3'$ và $5'-\\mathrm{T}-\\mathrm{C}-\\mathrm{A}-\\mathrm{A}-3'$",
+    "$5'-\\mathrm{A}-\\mathrm{G}-\\mathrm{T}-\\mathrm{T}-3'$ và $3'-\\mathrm{U}-\\mathrm{C}-\\mathrm{A}-\\mathrm{A}-5'$"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Mạch bổ sung của $5'-\\mathrm{A}-\\mathrm{G}-\\mathrm{T}-\\mathrm{T}-3'$ phải là $\\mathrm{T}-\\mathrm{C}-\\mathrm{A}-\\mathrm{A}$ với chiều $3'\\to 5'$. Phương án $\\mathrm{B}$ sai base, phương án $\\mathrm{C}$ sai chiều, phương án $\\mathrm{D}$ sai vì dùng base $\\mathrm{U}$ trong $\\mathrm{DNA}$."
+  },
+  {
+   "ma_cau": "K09110202024",
+   "nhom_id": "KNB00555",
+   "loai": "trac_nghiem",
+   "de": "Vì sao khi viết mạch bổ sung, ta KHÔNG cần đảo ngược thứ tự các nucleotide?",
+   "lua_chon": [
+    "Vì hai mạch có chiều giống nhau.",
+    "Vì hai mạch được vẽ thẳng hàng, mỗi nucleotide đối diện đúng nucleotide bổ sung của nó, chỉ nhân hai đầu $3'/5'$ là đổi chỗ.",
+    "Vì thứ tự nucleotide không quan trọng.",
+    "Vì mạch bổ sung luôn ngắn hơn mạch đã cho."
+   ],
+   "dap_an": "B",
+   "loi_giai": "Khi hai mạch được biểu diễn thẳng hàng theo từng cặp base, vị trí thứ i của mạch này đối diện đúng vị trí thứ i của mạch kia. Việc ngược chiều chỉ thể hiện qua nhân $3'/5'$ ở hai đầu."
+  },
+  {
+   "ma_cau": "K09110202025",
+   "nhom_id": "KNB00555",
+   "loai": "trac_nghiem",
+   "de": "Một mạch của gene có trình tự $5'\\mathrm{-A-G-G-C-T-A-A-3'}$. Số nucleotide loại $\\mathrm{A}$ trên mạch bổ sung là",
+   "lua_chon": [
+    "1",
+    "2",
+    "3",
+    "0"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Mạch bổ sung là $\\mathrm{T-C-C-G-A-T}$, chỉ có 1 nucleotide loại $\\mathrm{A}$. Kiểm tra bằng mẹo: số $\\mathrm{A}$ của mạch bổ sung bằng số $\\mathrm{T}$ của mạch đã cho, mà mạch đã cho chỉ có 1 nucleotide loại $\\mathrm{T}$."
+  },
+  {
+   "ma_cau": "K09110202026",
+   "nhom_id": "KNB00555",
+   "loai": "trac_nghiem",
+   "de": "Một mạch của gene có trình tự $3'\\mathrm{-C-C-G-G-A-A-T-T-5'}$. Mạch bổ sung viết theo chiều $5'\\to 3'$ là",
+   "lua_chon": [
+    "$5'\\mathrm{-G-G-C-C-T-T-A-A-3'}$",
+    "$5'\\mathrm{-C-C-G-G-A-A-T-T-3'}$",
+    "$5'\\mathrm{-G-G-C-C-U-U-A-A-3'}$",
+    "$3'\\mathrm{-G-G-C-C-T-T-A-A-5'}$"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Thay theo nguyên tắc bổ sung: $\\mathrm{C\\to G}$, $\\mathrm{C\\to G}$, $\\mathrm{G\\to C}$, $\\mathrm{G\\to C}$, $\\mathrm{A\\to T}$, $\\mathrm{A\\to T}$, $\\mathrm{T\\to A}$, $\\mathrm{T\\to A}$, được $\\mathrm{G-G-C-C-T-T-A-A}$. Mạch đã cho chiều $3'\\to 5'$ nên mạch bổ sung có chiều $5'\\to 3'$."
+  },
+  {
+   "ma_cau": "K09110202027",
+   "nhom_id": "KNB00555",
+   "loai": "trac_nghiem",
+   "de": "Ý nghĩa sinh học quan trọng nhất của nguyên tắc bổ sung là",
+   "lua_chon": [
+    "làm cho phân tử DNA có màu sắc đặc trưng.",
+    "giúp DNA nhân đôi chính xác, nhờ đó thông tin di truyền được truyền đạt nguyên vẹn.",
+    "làm tăng khối lượng phân tử DNA.",
+    "giúp DNA hoà tan tốt trong nước."
+   ],
+   "dap_an": "B",
+   "loi_giai": "Vì mỗi base chỉ bắt cặp được với một base xác định, khi hai mạch tách ra thì mỗi mạch đều đủ thông tin để tổng hợp lại mạch kia y hệt bản gốc."
+  },
+  {
+   "ma_cau": "K09110202028",
+   "nhom_id": "KNB00555",
+   "loai": "trac_nghiem",
+   "de": "Cho đoạn mạch $3'-\\mathrm{T-A-C-G-G-T-A-C-5'}$. Số cặp $\\mathrm{A-T}$ có trong đoạn $\\mathrm{DNA}$ này là",
+   "lua_chon": [
+    "2",
+    "3",
+    "4",
+    "8"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Mỗi vị trí trên mạch đã cho ứng với một cặp base. Vị trí mang $\\mathrm{A}$ hoặc $\\mathrm{T}$ sẽ tạo cặp $\\mathrm{A-T}$: $\\mathrm{A}$ ở vị trí 2, 7 và $\\mathrm{T}$ ở vị trí 1, 6, tổng cộng 4 vị trí. Vậy có 4 cặp $\\mathrm{A-T}$ (và 4 cặp $\\mathrm{G-C}$)."
+  },
+  {
+   "ma_cau": "K09110202029",
+   "nhom_id": "KNB00555",
+   "loai": "trac_nghiem",
+   "de": "Một đoạn $\\mathrm{DNA}$ có mạch 1 là $5'-\\mathrm{A-T-G-C-3'}$. Nếu viết cả hai mạch chồng lên nhau thì cách trình bày ĐÚNG là",
+   "lua_chon": [
+    "$5'-\\mathrm{A-T-G-C-3'}/5'-\\mathrm{T-A-C-G-3'}$",
+    "$5'-\\mathrm{A-T-G-C-3'}/3'-\\mathrm{T-A-C-G-5'}$",
+    "$3'-\\mathrm{A-T-G-C-5'}/3'-\\mathrm{T-A-C-G-5'}$",
+    "$5'-\\mathrm{A-T-G-C-3'}/3'-\\mathrm{A-T-G-C-5'}$"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Mạch bổ sung phải vừa đúng base ($\\mathrm{T-A-C-G}$) vừa đúng chiều ngược lại ($\\mathrm{3'\\to 5'}$ khi mạch trên là $\\mathrm{5'\\to 3'}$). Chỉ phương án $\\mathrm{B}$ thoả mãn cả hai điều kiện."
+  },
+  {
+   "ma_cau": "K09110202030",
+   "nhom_id": "KNB00555",
+   "loai": "tra_loi_ngan",
+   "de": "Một mạch của gene có trình tự $3'\\text{—}A\\text{—}G\\text{—}T\\text{—}C\\text{—}A\\text{—}5'$. Viết trình tự mạch bổ sung (ghi rõ chiều $5'\\text{—}3'$).",
+   "dap_an": "5'—T—C—A—G—T—3'",
+   "loi_giai": "Thay từng vị trí theo nguyên tắc bổ sung: $A\\rightarrow T$, $G\\rightarrow C$, $T\\rightarrow A$, $C\\rightarrow G$, $A\\rightarrow T$, được $T\\text{—}C\\text{—}A\\text{—}G\\text{—}T$. Mạch đã cho có chiều $3'\\rightarrow 5'$ nên mạch bổ sung có chiều $5'\\rightarrow 3'$."
+  },
+  {
+   "ma_cau": "K09110202031",
+   "nhom_id": "KNB00555",
+   "loai": "tra_loi_ngan",
+   "de": "Một mạch của gene có trình tự $3'\\text{—}C\\text{—}C\\text{—}A\\text{—}T\\text{—}G\\text{—}G\\text{—}5'$. Viết trình tự mạch bổ sung (ghi rõ chiều $5'\\text{—}3'$).",
+   "dap_an": "5'—G—G—T—A—C—C—3'",
+   "loi_giai": "Thay theo nguyên tắc bổ sung: $C\\rightarrow G$, $C\\rightarrow G$, $A\\rightarrow T$, $T\\rightarrow A$, $G\\rightarrow C$, $G\\rightarrow C$, được $G\\text{—}G\\text{—}T\\text{—}A\\text{—}C\\text{—}C$, viết theo chiều $5'\\rightarrow 3'$."
+  },
+  {
+   "ma_cau": "K09110202032",
+   "nhom_id": "KNB00555",
+   "loai": "tra_loi_ngan",
+   "de": "Mạch bổ sung của một gene có trình tự $5'\\text{—}G\\text{—}C\\text{—}T\\text{—}A\\text{—}G\\text{—}C\\text{—}3'$. Viết trình tự mạch còn lại (ghi rõ chiều $3'\\text{—}5'$).",
+   "dap_an": "3'—C—G—A—T—C—G—5'",
+   "loi_giai": "Thay theo nguyên tắc bổ sung: $G\\rightarrow C$, $C\\rightarrow G$, $T\\rightarrow A$, $A\\rightarrow T$, $G\\rightarrow C$, $C\\rightarrow G$, được $C\\text{—}G\\text{—}A\\text{—}T\\text{—}C\\text{—}G$. Mạch đã cho chiều $5'\\rightarrow 3'$ nên mạch kia có chiều $3'\\rightarrow 5'$."
+  },
+  {
+   "ma_cau": "K09110202033",
+   "nhom_id": "KNB00555",
+   "loai": "tra_loi_ngan",
+   "de": "Một mạch của DNA có 12 nucleotide loại A và 8 loại T. Trên mạch bổ sung có bao nhiêu nucleotide loại T?",
+   "dap_an": "12",
+   "loi_giai": "Áp dụng mẹo hoán đổi: số T của mạch bổ sung bằng số A của mạch đã cho, tức là 12."
+  },
+  {
+   "ma_cau": "K09110202036",
+   "nhom_id": "KNB00555",
+   "loai": "tra_loi_ngan",
+   "de": "Cho đoạn mạch $3' - \\mathrm{A} - \\mathrm{G} - \\mathrm{C} - \\mathrm{T} - \\mathrm{A} - \\mathrm{G} - \\mathrm{C} - \\mathrm{T} - 5'$. Đếm số cặp $\\mathrm{G} - \\mathrm{C}$ có trong đoạn $\\mathrm{DNA}$ này.",
+   "dap_an": "4",
+   "loi_giai": "Mỗi vị trí trên mạch ứng với một cặp base. Vị trí mang $\\mathrm{G}$ hoặc $\\mathrm{C}$ tạo cặp $\\mathrm{G} - \\mathrm{C}$: $\\mathrm{G}$ ở vị trí $2$, $6$ và $\\mathrm{C}$ ở vị trí $3$, $7$, tổng cộng $4$ vị trí. Vậy có $4$ cặp $\\mathrm{G} - \\mathrm{C}$."
+  },
+  {
+   "ma_cau": "K09110202037",
+   "nhom_id": "KNB00555",
+   "loai": "tra_loi_ngan",
+   "de": "Một mạch của gene có $7$ nucleotide loại $\\mathrm{G}$. Trên mạch bổ sung có bao nhiêu nucleotide loại $\\mathrm{C}$?",
+   "dap_an": "7",
+   "loi_giai": "Theo nguyên tắc bổ sung, mỗi $\\mathrm{G}$ của mạch này bắt cặp với một $\\mathrm{C}$ của mạch kia, nên số $\\mathrm{C}$ của mạch bổ sung bằng đúng số $\\mathrm{G}$ của mạch đã cho, tức là $7$."
+  },
+  {
+   "ma_cau": "K09110202038",
+   "nhom_id": "KNB00555",
+   "loai": "tu_luan",
+   "de": "Một mạch của gene có trình tự: $3' - \\mathrm{A} - \\mathrm{A} - \\mathrm{G} - \\mathrm{T} - \\mathrm{C} - \\mathrm{A} - \\mathrm{T} - \\mathrm{G} - \\mathrm{G} - 5'$.\na) Viết trình tự mạch bổ sung, ghi rõ chiều.\nb) Đếm số nucleotide mỗi loại trên mạch đã cho.\nc) Xác định số cặp $\\mathrm{A} - \\mathrm{T}$ và số cặp $\\mathrm{G} - \\mathrm{C}$ trong đoạn DNA này.",
+   "dap_an": "5'-T-T-C-A-G-T-A-C-C-3'",
+   "loi_giai": "Đáp án chi tiết:\na) Thay từng vị trí theo nguyên tắc bổ sung ($\\mathrm{A} \\to \\mathrm{T}$, $\\mathrm{T} \\to \\mathrm{A}$, $\\mathrm{G} \\to \\mathrm{C}$, $\\mathrm{C} \\to \\mathrm{G}$):\nMạch bổ sung: $5' - \\mathrm{T} - \\mathrm{T} - \\mathrm{C} - \\mathrm{A} - \\mathrm{G} - \\mathrm{T} - \\mathrm{A} - \\mathrm{C} - \\mathrm{C} - 3'$.\nb) Đếm trên mạch đã cho ($\\mathrm{A} - \\mathrm{A} - \\mathrm{G} - \\mathrm{T} - \\mathrm{C} - \\mathrm{A} - \\mathrm{T} - \\mathrm{G} - \\mathrm{G}$): $\\mathrm{A} = 3$ (vị trí $1, 2, 7$); $\\mathrm{T} = 2$ (vị trí $4, 8$); $\\mathrm{G} = 3$ (vị trí $3, 9, 10$); $\\mathrm{C} = 2$ (vị trí $5, 6$).\nKiểm tra: $3 + 2 + 3 + 2 = 10$, đúng bằng số nucleotide của mạch.\nc) Mỗi vị trí trên mạch ứng với một cặp base:\n$-$ Số cặp $\\mathrm{A} - \\mathrm{T}$ = số vị trí mang $\\mathrm{A}$ hoặc $\\mathrm …"
+  },
+  {
+   "ma_cau": "K09110202039",
+   "nhom_id": "KNB00555",
+   "loai": "tu_luan",
+   "de": "Một mạch của gene có trình tự: $3' - \\mathrm{T} - \\mathrm{A} - \\mathrm{C} - \\mathrm{G} - \\mathrm{G} - \\mathrm{A} - \\mathrm{T} - \\mathrm{C} - \\mathrm{C} - \\mathrm{A} - 5'$.\na) Viết trình tự mạch bổ sung, ghi rõ chiều.\nb) Đếm số nucleotide mỗi loại trên mạch bổ sung.\nc) Kiểm tra kết quả câu b bằng mẹo hoán đổi.",
+   "dap_an": "5'-A-T-G-C-C-T-A-G-G-T-3'",
+   "loi_giai": "Đáp án chi tiết:\na) Thay từng vị trí theo nguyên tắc bổ sung ($\\mathrm{T} \\to \\mathrm{A}$, $\\mathrm{A} \\to \\mathrm{T}$, $\\mathrm{C} \\to \\mathrm{G}$, $\\mathrm{G} \\to \\mathrm{C}$):\nMạch bổ sung: $5' - \\mathrm{A} - \\mathrm{T} - \\mathrm{G} - \\mathrm{C} - \\mathrm{C} - \\mathrm{T} - \\mathrm{A} - \\mathrm{G} - \\mathrm{G} - \\mathrm{T} - 3'$.\nb) Đếm trên mạch bổ sung ($\\mathrm{A} - \\mathrm{T} - \\mathrm{G} - \\mathrm{C} - \\mathrm{C} - \\mathrm{T} - \\mathrm{A} - \\mathrm{G} - \\mathrm{G} - \\mathrm{T}$): $\\mathrm{A} = 2$ (vị trí $1, 7$); $\\mathrm{T} = 3$ (vị trí $2, 6, 10$); $\\mathrm{G} = 3$ (vị trí $3, 8, 9$); $\\mathrm{C} = 2$ (vị trí $4, 5$).\nKiểm tra: $2 + 3 + 3 + 2 = 10$ (đúng).\nc) Kiểm tra bằng mẹo hoán đổi. Đếm trên mạch đã cho ($\\mathrm{T} - \\mathrm{A} - \\mathrm{C} - \\mathrm{G} - \\mathrm{G} - \\mathrm …"
+  },
+  {
+   "ma_cau": "K09110202040",
+   "nhom_id": "KNB00555",
+   "loai": "tu_luan",
+   "de": "Giải thích vì sao trên một mạch đơn của ADN thì số nucleotide loại A không nhất thiết bằng số loại T, nhưng khi xét cả phân tử ADN thì luôn có $\\mathrm{A=T}$. Lấy ví dụ minh hoạ bằng một trình tự cụ thể.",
+   "loi_giai": "Đáp án chi tiết:\nĐiểm mấu chốt: nguyên tắc bổ sung là quan hệ GIỮA HAI MẠCH, không phải quan hệ trong nội bộ một mạch.\n— Trên một mạch đơn: các nucleotide xếp nối tiếp tự do, không có ràng buộc nào bắt số $\\mathrm{A}$ phải bằng số $\\mathrm{T}$. Vì vậy một mạch có thể có rất nhiều $\\mathrm{A}$ mà rất ít $\\mathrm{T}$.\n— Khi xét cả hai mạch: mỗi $\\mathrm{A}$ của mạch này bắt buộc đối diện một $\\mathrm{T}$ của mạch kia, nên mỗi $\\mathrm{A}$ luôn kéo theo đúng một $\\mathrm{T}$ ở mạch đối diện. Kết quả là tổng số $\\mathrm{A}$ và tổng số $\\mathrm{T}$ của cả phân tử luôn bằng nhau.\nVí dụ minh hoạ — xét đoạn $\\mathrm{DNA}$ có mạch 1 là $5'-\\mathrm{A}-\\mathrm{A}-\\mathrm{A}-\\mathrm{T}-3'$:\nMạch 2 bổ sung sẽ là $3'-\\mathrm{T}-\\mathrm{T}-\\mathrm{T}-\\mathrm{A}-5'$.\n— Trên mạch 1: $\\mathrm{A_1=3}$, $\\mat …"
+  },
+  {
+   "ma_cau": "K09110202041",
+   "nhom_id": "KNB00555",
+   "loai": "tu_luan",
+   "de": "Một học sinh viết mạch bổ sung của đoạn $5'-\\mathrm{G}-\\mathrm{A}-\\mathrm{A}-\\mathrm{T}-\\mathrm{C}-3'$ thành $5'-\\mathrm{C}-\\mathrm{T}-\\mathrm{T}-\\mathrm{A}-\\mathrm{G}-3'$. Hãy chỉ ra lỗi sai, giải thích và viết lại cho đúng.",
+   "loi_giai": "Đáp án chi tiết:\nKiểm tra phân base: $\\mathrm{G\\to C}$, $\\mathrm{A\\to T}$, $\\mathrm{A\\to T}$, $\\mathrm{T\\to A}$, $\\mathrm{C\\to G}$, được $\\mathrm{C-T-T-A-G}$. Như vậy các base học sinh viết hoàn toàn ĐÚNG.\nLỗi sai nằm ở CHIỀU của mạch: học sinh ghi mạch bổ sung cũng có chiều $5'\\to 3'$, giống hệt mạch đã cho.\nGiải thích: hai mạch của phân tử $\\mathrm{DNA}$ có cấu trúc đối song song, nghĩa là đầu $3'$ của mạch này luôn nằm đối diện đầu $5'$ của mạch kia. Vì mạch đề cho có chiều $5'\\to 3'$ nên mạch bổ sung bắt buộc phải có chiều $3'\\to 5'$.\nViết lại đúng: $3'-\\mathrm{C}-\\mathrm{T}-\\mathrm{T}-\\mathrm{A}-\\mathrm{G}-5'$.\nKinh nghiệm: sau khi viết xong base, hãy kiểm tra lại nhãn hai đầu — đây là lỗi bị trừ điểm nhiều nhất ở dạng bài này dù phần base làm đúng."
+  },
+  {
+   "ma_cau": "K09110202042",
+   "nhom_id": "KNB00555",
+   "loai": "tu_luan",
+   "de": "Một học sinh viết mạch bổ sung của đoạn $5'-\\mathrm{A-T-G-C}-3'$ thành $3'-\\mathrm{G-C-A-T}-5'$. Hãy chỉ ra lỗi sai, phân tích nguyên nhân và viết lại cho đúng.",
+   "dap_an": "3'-T-A-C-G-5'",
+   "loi_giai": "Đáp án chi tiết:\nViết mạch bổ sung đúng: $\\mathrm{A\\to T}$, $\\mathrm{T\\to A}$, $\\mathrm{G\\to C}$, $\\mathrm{C\\to G}$, tức $3'-\\mathrm{T-A-C-G}-5'$.\nSo sánh với bài làm của học sinh ($\\mathrm{G-C-A-T}$), ta nhận ra đây chính là trình tự đúng $\\mathrm{T-A-C-G}$ nhưng bị ĐẢO NGƯỢC thứ tự cuối về đầu.\nPhân tích nguyên nhân: học sinh suy luận rằng vì hai mạch ngược chiều nhau nên phải viết ngược trình tự. Đây là hiểu nhầm về ý nghĩa của tính đối song song.\nThực tế: khi hai mạch được biểu diễn thẳng hàng theo từng cặp base (cách trình bày chuẩn trong sách giáo khoa), nucleotide ở vị trí thứ nhất của mạch này đối diện đúng nucleotide ở vị trí thứ nhất của mạch kia.\nTính đối song song chỉ thể hiện qua nhãn $3'/5'$ ở hai đầu, hoàn toàn không liên quan tới thứ tự viết các base.\nViết lại đúng: $3'-\\ma …"
+  },
+  {
+   "ma_cau": "K09110202043",
+   "nhom_id": "KNB00555",
+   "loai": "tu_luan",
+   "de": "Cho đoạn mạch của một gene: $5'-\\mathrm{G-A-T-T-A-C-A}-3'$. Hãy viết cả hai mạch của đoạn DNA này chồng lên nhau đúng quy cách, ghi rõ nhãn hai đầu, và giải thích vì sao phải ghi nhãn như vậy.",
+   "loi_giai": "Đáp án chi tiết:\nTrước hết viết mạch bổ sung: $\\mathrm{G\\to C}$, $\\mathrm{A\\to T}$, $\\mathrm{T\\to A}$, $\\mathrm{T\\to A}$, $\\mathrm{A\\to T}$, $\\mathrm{C\\to G}$, $\\mathrm{A\\to T}$, được $\\mathrm{C-T-A-A-T-G-T}$.\nTrình bày hai mạch chồng lên nhau đúng quy cách:\nMạch 1: $5'-\\mathrm{G-A-T-T-A-C-A}-3'$\nMạch 2: $3'-\\mathrm{C-T-A-A-T-G-T}-5'$\nGiải thích cách ghi nhãn:\nHai mạch của DNA có cấu trúc đối song song, nghĩa là đầu $3'$ của mạch này luôn nằm đối diện đầu $5'$ của mạch kia. Vì mạch 1 bắt đầu bằng đầu $5'$ nên vị trí đối diện trên mạch 2 phải là đầu $3'$.\nCách viết thẳng hàng giúp nhìn thấy rõ từng cặp base bắt cặp với nhau: $\\mathrm{G-C}$, $\\mathrm{A-T}$, $\\mathrm{T-A}$, $\\mathrm{T-A}$, $\\mathrm{A-T}$, $\\mathrm{C-G}$, $\\mathrm{A-T}$.\nKiểm tra: đoạn này có 7 cặp base, trong đó 5 cặp $\\mathr …"
+  },
+  {
+   "ma_cau": "K09110202044",
+   "nhom_id": "KNB00555",
+   "loai": "tu_luan",
+   "de": "Trình bày cách viết mạch bổ sung của một đoạn ADN. Vì sao chỉ cần biết trình tự của một mạch là có thể suy ra được mạch còn lại? Điều này có ý nghĩa gì đối với chức năng của ADN?",
+   "loi_giai": "Cách viết mạch bổ sung gồm ba bước:\n1. Xác định trình tự và chiều của mạch đã cho.\n2. Thay từng nucleotide tại đúng vị trí theo nguyên tắc bổ sung: $\\mathrm{A\\leftrightarrow T}$ , $\\mathrm{G\\leftrightarrow C}$. Không đảo ngược thứ tự viết.\n3. Ghi nhân chiều cho mạch mới ngược với mạch đã cho ($3' \\to 5'$ nếu mạch cho là $5' \\to 3'$, và ngược lại).\nVì sao chỉ cần biết một mạch: nguyên tắc bổ sung là quy luật một-một hết sức chặt chẽ. Mỗi base chỉ có duy nhất một base bắt cặp được với nó (A chỉ với T, G chỉ với C), không có lựa chọn thứ hai. Do đó mỗi nucleotide trên mạch đã biết quy định duy nhất một nucleotide đối diện, và toàn bộ mạch kia được xác định hoàn toàn.\nÝ nghĩa đối với chức năng của ADN:\n— Đây chính là cơ sở của quá trình nhân đôi ADN: khi hai mạch tách ra, mỗi mạch đều mang đủ  …"
+  },
+  {
+   "ma_cau": "K09110202045",
+   "nhom_id": "KNB00555",
+   "loai": "tu_luan",
+   "de": "So sánh nguyên tắc bổ sung khi viết mạch bổ sung của DNA với nguyên tắc bổ sung trong quá trình tổng hợp RNA. Vì sao học sinh hay nhầm lẫn hai trường hợp này?",
+   "loi_giai": "Đáp án chi tiết:\nĐiểm giống nhau: cả hai đều dựa trên quy luật bắt cặp base một–một, trong đó $\\mathrm{G}$ luôn bắt cặp với $\\mathrm{C}$.\nĐiểm khác nhau nằm ở base bắt cặp với $\\mathrm{A}$:\n— Khi viết mạch bổ sung của $\\mathrm{DNA}$ ($\\mathrm{DNA}$ – $\\mathrm{DNA}$): $\\mathrm{A}$ của mạch này bắt cặp với $\\mathrm{T}$ của mạch kia. Sản phẩm là một mạch $\\mathrm{DNA}$, chỉ chứa $\\mathrm{A}$, $\\mathrm{T}$, $\\mathrm{G}$, $\\mathrm{C}$.\n— Khi tổng hợp $\\mathrm{RNA}$ từ khuôn $\\mathrm{DNA}$ ($\\mathrm{DNA}$ – $\\mathrm{RNA}$): $\\mathrm{A}$ của mạch khuôn bắt cặp với $\\mathrm{U}$ của $\\mathrm{RNA}$, vì $\\mathrm{RNA}$ không có base $\\mathrm{T}$. Sản phẩm là một mạch $\\mathrm{RNA}$ chứa $\\mathrm{A}$, $\\mathrm{U}$, $\\mathrm{G}$, $\\mathrm{C}$.\nVì sao hay nhầm: hai quá trình dùng chung tên gọi nguyên tắc …"
+  },
+  {
+   "ma_cau": "K09110202046",
+   "nhom_id": "KNB00555",
+   "loai": "trac_nghiem",
+   "de": "Một mạch của gene có trình tự: –A–T–G–C–G–A–. Theo nguyên tắc bổ sung, trình tự mạch còn lại là gì?",
+   "lua_chon": [
+    "–T–A–C–G–C–T–",
+    "–T–T–G–C–G–T–",
+    "–A–T–G–C–G–A–",
+    "–U–A–C–G–C–U–"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Ghép bổ sung từng vị trí: A–T, T–A, G–C, C–G, G–C, A–T, được mạch còn lại –T–A–C–G–C–T–.\n\nVì sao các phương án khác sai:\n- B: Chỉ đổi đúng nucleotide A thành T, các vị trí T, G, C còn lại chưa đổi đúng theo nguyên tắc bổ sung.\n- C: Đây là chép nguyên mạch gốc, không phải mạch bổ sung; mạch bổ sung phải đổi A↔T, G↔C.\n- D: Đây là kết quả nếu dùng nguyên tắc bổ sung của RNA (có U); mạch còn lại của DNA vẫn dùng T, không có U."
+  },
+  {
+   "ma_cau": "K09110202047",
+   "nhom_id": "KNB00555",
+   "loai": "trac_nghiem",
+   "de": "Một mạch của gene có trình tự: –T–G–C–A–T–C–. Theo nguyên tắc bổ sung, trình tự mạch còn lại là gì?",
+   "lua_chon": [
+    "–T–G–C–A–T–C–",
+    "–A–C–G–T–A–G–",
+    "–A–G–C–A–T–C–",
+    "–A–C–G–U–A–G–"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Ghép bổ sung từng vị trí: T–A, G–C, C–G, A–T, T–A, C–G, được mạch còn lại –A–C–G–T–A–G–.\n\nVì sao các phương án khác sai:\n- A: Đây là chép nguyên mạch gốc, không phải mạch bổ sung; mạch bổ sung phải đổi A↔T, G↔C.\n- C: Chỉ đổi đúng nucleotide đầu tiên (T thành A), các vị trí còn lại chưa đổi đúng theo nguyên tắc bổ sung.\n- D: Đây là kết quả nếu dùng nguyên tắc bổ sung của RNA (có U); mạch còn lại của DNA vẫn dùng T, không có U."
+  },
+  {
+   "ma_cau": "K09110202048",
+   "nhom_id": "KNB00555",
+   "loai": "trac_nghiem",
+   "de": "Một mạch của gene có trình tự: –G–G–T–A–C–T–. Theo nguyên tắc bổ sung, trình tự mạch còn lại là gì?",
+   "lua_chon": [
+    "–C–C–A–T–G–A–",
+    "–G–G–T–A–C–T–",
+    "–C–C–T–A–G–A–",
+    "–A–G–T–A–C–C–"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Áp dụng A–T, G–C bổ sung theo từng vị trí: G G T A C T → C C A T G A.\n\nVì sao các phương án khác sai:\n- B: Đây là mạch gốc, chưa áp dụng nguyên tắc bổ sung (A–T, G–C) để tìm mạch còn lại.\n- C: Sai ở vị trí thứ 3: T phải bổ sung với A, không giữ nguyên T.\n- D: Mạch bổ sung phải giữ đúng thứ tự vị trí tương ứng, không đảo ngược thứ tự các nucleotide."
+  },
+  {
+   "ma_cau": "K09110202049",
+   "nhom_id": "KNB00555",
+   "loai": "trac_nghiem",
+   "de": "Một mạch của gene có trình tự: –A–A–G–T–C–G–. Theo nguyên tắc bổ sung, trình tự mạch còn lại là gì?",
+   "lua_chon": [
+    "–A–A–G–T–C–G–",
+    "–T–T–C–A–G–C–",
+    "–T–T–C–T–G–C–",
+    "–C–G–A–C–T–T–"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Áp dụng A–T, G–C bổ sung theo từng vị trí: A A G T C G → T T C A G C.\n\nVì sao các phương án khác sai:\n- A: Đây là mạch gốc, chưa áp dụng nguyên tắc bổ sung để tìm mạch còn lại.\n- C: Sai ở vị trí thứ 4: T trên mạch gốc phải bổ sung với A, không giữ nguyên T.\n- D: Mạch bổ sung giữ đúng thứ tự vị trí tương ứng, không đảo ngược."
+  },
+  {
+   "ma_cau": "K09110502031",
+   "nhom_id": "KNB00563",
+   "loai": "trac_nghiem",
+   "de": "Phân tử RNA có cấu trúc gồm mấy mạch polynucleotide?",
+   "lua_chon": [
+    "Một mạch (mạch đơn)",
+    "Hai mạch xoắn kép, giống cấu trúc của DNA",
+    "Ba mạch xoắn với nhau",
+    "Số mạch thay đổi tuỳ theo loại RNA (mRNA, tRNA, rRNA)"
+   ],
+   "dap_an": "A",
+   "loi_giai": "RNA thường chỉ gồm một mạch polynucleotide, khác với DNA có cấu trúc hai mạch xoắn kép.\n\nVì sao các phương án khác sai:\n- B: Cấu trúc hai mạch xoắn kép là đặc điểm của DNA, không phải RNA.\n- C: RNA không có cấu trúc ba mạch xoắn với nhau.\n- D: Mọi loại RNA (mRNA, tRNA, rRNA) đều có cấu trúc một mạch đơn, không thay đổi theo loại RNA."
+  },
+  {
+   "ma_cau": "K09110502032",
+   "nhom_id": "KNB00563",
+   "loai": "trac_nghiem",
+   "de": "Phân tử RNA được cấu tạo từ bao nhiêu loại nucleotide và gồm những loại nào?",
+   "lua_chon": [
+    "4 loại: A, T, G, C giống DNA",
+    "4 loại: A, U, G, C",
+    "5 loại: A, T, U, G, C",
+    "3 loại: A, G, C (không có U)"
+   ],
+   "dap_an": "B",
+   "loi_giai": "RNA gồm 4 loại nucleotide: adenine (A), uracil (U), guanine (G), cytosine (C); U thay cho T ở DNA.\n\nVì sao các phương án khác sai:\n- A: RNA chứa U thay vì T; T là đặc điểm riêng của DNA.\n- C: RNA chỉ có 4 loại nucleotide, không chứa cả T và U cùng lúc.\n- D: RNA có đủ 4 loại nucleotide, trong đó có U; thiếu U là chưa đúng."
+  },
+  {
+   "ma_cau": "K09110502033",
+   "nhom_id": "KNB00563",
+   "loai": "trac_nghiem",
+   "de": "Loại RNA nào có chức năng vận chuyển amino acid tới ribosome trong quá trình tổng hợp protein?",
+   "lua_chon": [
+    "mRNA",
+    "rRNA",
+    "tRNA",
+    "DNA"
+   ],
+   "dap_an": "C",
+   "loi_giai": "tRNA (RNA vận chuyển) mang amino acid tới ribosome để lắp ráp thành chuỗi protein.\n\nVì sao các phương án khác sai:\n- A: mRNA có chức năng mang thông tin di truyền từ gene tới ribosome, không vận chuyển amino acid.\n- B: rRNA là thành phần cấu tạo nên ribosome, không làm nhiệm vụ vận chuyển amino acid.\n- D: DNA không phải là RNA và không trực tiếp vận chuyển amino acid."
+  },
+  {
+   "ma_cau": "K09110502034",
+   "nhom_id": "KNB00563",
+   "loai": "trac_nghiem",
+   "de": "Loại RNA nào mang thông tin di truyền từ gene tới ribosome để tổng hợp protein?",
+   "lua_chon": [
+    "tRNA",
+    "rRNA",
+    "Gene",
+    "mRNA"
+   ],
+   "dap_an": "D",
+   "loi_giai": "mRNA (RNA thông tin) được tổng hợp từ gene, mang thông tin di truyền tới ribosome để tổng hợp protein.\n\nVì sao các phương án khác sai:\n- A: tRNA có chức năng vận chuyển amino acid, không mang thông tin di truyền từ gene.\n- B: rRNA là thành phần cấu tạo ribosome, không làm nhiệm vụ mang thông tin di truyền.\n- C: Gene là đoạn DNA nằm trong nhân, không trực tiếp di chuyển tới ribosome."
+  },
+  {
+   "ma_cau": "K09110502035",
+   "nhom_id": "KNB00563",
+   "loai": "trac_nghiem",
+   "de": "Loại RNA nào là thành phần cấu tạo nên ribosome, nơi diễn ra quá trình tổng hợp protein?",
+   "lua_chon": [
+    "rRNA",
+    "mRNA",
+    "tRNA",
+    "DNA"
+   ],
+   "dap_an": "A",
+   "loi_giai": "rRNA (RNA ribosome) là thành phần cấu tạo nên ribosome — nơi diễn ra quá trình tổng hợp protein.\n\nVì sao các phương án khác sai:\n- B: mRNA mang thông tin di truyền đến ribosome, không phải thành phần cấu tạo ribosome.\n- C: tRNA vận chuyển amino acid tới ribosome, không phải thành phần cấu tạo ribosome.\n- D: DNA là vật chất di truyền trong nhân, không tham gia cấu tạo ribosome."
+  },
+  {
+   "ma_cau": "K09110502036",
+   "nhom_id": "KNB00563",
+   "loai": "trac_nghiem",
+   "de": "Khi DNA làm khuôn để tổng hợp RNA, nucleotide loại A trên mạch khuôn sẽ bắt cặp với loại ribonucleotide nào của RNA?",
+   "lua_chon": [
+    "T",
+    "G",
+    "U",
+    "C"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Trong RNA không có T; theo nguyên tắc bổ sung khi phiên mã, A trên mạch khuôn DNA bắt cặp với U của RNA.\n\nVì sao các phương án khác sai:\n- A: Nucleotide loại T chỉ có ở DNA, không xuất hiện trong phân tử RNA.\n- B: A không bắt cặp với G khi tổng hợp RNA.\n- D: A không bắt cặp với C khi tổng hợp RNA; C bắt cặp với G."
+  },
+  {
+   "ma_cau": "K09110502037",
+   "nhom_id": "KNB00563",
+   "loai": "trac_nghiem",
+   "de": "Trong phiên mã, có mấy mạch của gene được dùng làm khuôn để tổng hợp RNA?",
+   "lua_chon": [
+    "Cả hai mạch cùng lúc",
+    "Hai mạch thay phiên nhau trong cùng một lần phiên mã",
+    "Không mạch nào, RNA tự lắp ráp",
+    "Chỉ một mạch (mạch khuôn)"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Khác với tái bản DNA dùng cả hai mạch, phiên mã chỉ dùng một mạch của gene làm khuôn để tổng hợp RNA.\n\nVì sao các phương án khác sai:\n- A: Nếu dùng cả hai mạch làm khuôn cùng lúc sẽ tạo ra hai RNA khác nhau, không đúng với phiên mã.\n- B: Trong một lần phiên mã, chỉ một mạch cố định được dùng làm khuôn, hai mạch không thay phiên nhau.\n- C: RNA được tổng hợp dựa trên mạch khuôn, không tự lắp ráp mà không cần khuôn."
+  },
+  {
+   "ma_cau": "K09110502038",
+   "nhom_id": "KNB00563",
+   "loai": "trac_nghiem",
+   "de": "Ở tế bào nhân thực, quá trình phiên mã diễn ra chủ yếu ở đâu?",
+   "lua_chon": [
+    "Trong nhân tế bào",
+    "Trong ti thể",
+    "Tại ribosome ở tế bào chất",
+    "Trên màng tế bào"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Phiên mã tổng hợp RNA từ khuôn là gene nằm trên NST trong nhân, nên diễn ra chủ yếu trong nhân tế bào.\n\nVì sao các phương án khác sai:\n- B: Ti thể là nơi tạo năng lượng cho tế bào, không phải nơi diễn ra phiên mã.\n- C: Ribosome ở tế bào chất là nơi diễn ra dịch mã, không phải phiên mã.\n- D: Màng tế bào không phải nơi tổng hợp RNA."
+  },
+  {
+   "ma_cau": "K09110502039",
+   "nhom_id": "KNB00563",
+   "loai": "trac_nghiem",
+   "de": "Ribonucleotide tự do liên kết vào mạch khuôn khi phiên mã theo nguyên tắc nào?",
+   "lua_chon": [
+    "Mạch khuôn có A thì RNA có T; mạch khuôn có G thì RNA có C",
+    "Mạch khuôn có A thì RNA có U; mạch khuôn có T thì RNA có A; G–C, C–G",
+    "Mạch khuôn có A thì RNA cũng có A",
+    "Nucleotide loại G là loại duy nhất liên kết được với mạch khuôn"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Trong phiên mã, ribonucleotide tự do bắt cặp bổ sung với mạch khuôn: A–U, T–A, G–C, C–G.\n\nVì sao các phương án khác sai:\n- A: RNA không chứa T; A trên mạch khuôn phải bắt cặp với U, không phải T.\n- C: Ribonucleotide không giữ nguyên loại base giống mạch khuôn mà bắt cặp bổ sung.\n- D: Cả bốn loại ribonucleotide đều liên kết được với mạch khuôn theo đúng vị trí bổ sung."
+  },
+  {
+   "ma_cau": "K09110502040",
+   "nhom_id": "KNB00563",
+   "loai": "trac_nghiem",
+   "de": "Sản phẩm được tạo thành sau một lần phiên mã là gì?",
+   "lua_chon": [
+    "Một phân tử DNA mới",
+    "Một chuỗi polypeptide",
+    "Một phân tử RNA",
+    "Hai phân tử gene giống nhau"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Phiên mã tổng hợp nên phân tử RNA (thường là mRNA) dựa trên mạch khuôn của gene.\n\nVì sao các phương án khác sai:\n- A: Tạo DNA mới là kết quả của tái bản, không phải phiên mã.\n- B: Chuỗi polypeptide được tạo ra ở bước dịch mã, sau phiên mã.\n- D: Phiên mã không nhân đôi gene, chỉ tổng hợp RNA từ gene có sẵn."
+  },
+  {
+   "ma_cau": "K09110502041",
+   "nhom_id": "KNB00563",
+   "loai": "trac_nghiem",
+   "de": "Trong phiên mã, mạch nào của gene được dùng làm khuôn để tổng hợp RNA?",
+   "lua_chon": [
+    "Mạch mã hoá (mạch bổ sung với mạch khuôn)",
+    "Mạch gốc, có trình tự bổ sung với RNA tạo thành",
+    "Cả hai mạch của gene đồng thời",
+    "Mạch nào có nhiều nucleotide loại G hơn"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Mạch gốc (mạch khuôn) của gene có trình tự bổ sung với RNA được tổng hợp, đây là mạch được dùng làm khuôn phiên mã.\n\nVì sao các phương án khác sai:\n- A: Mạch mã hoá có trình tự giống RNA (trừ T thay bằng U), không phải mạch làm khuôn.\n- C: Chỉ một trong hai mạch của gene được dùng làm khuôn, không phải cả hai.\n- D: Mạch khuôn được xác định bởi vị trí gene quy định, không phụ thuộc số lượng nucleotide loại G."
+  },
+  {
+   "ma_cau": "K09110502042",
+   "nhom_id": "KNB00563",
+   "loai": "trac_nghiem",
+   "de": "Phiên mã kết thúc khi nào?",
+   "lua_chon": [
+    "Khi ribosome trượt hết chiều dài mRNA",
+    "Khi tất cả nucleotide tự do trong tế bào đã được sử dụng hết",
+    "Khi bộ máy tổng hợp RNA gặp tín hiệu dừng trên mạch khuôn",
+    "Khi mạch mRNA vừa tổng hợp tự động rời khỏi nhân tế bào"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Quá trình phiên mã kết thúc khi bộ máy phiên mã di chuyển đến vị trí mang tín hiệu kết thúc trên mạch khuôn của gene.\n\nVì sao các phương án khác sai:\n- A: Ribosome tham gia dịch mã, không tham gia điều khiển kết thúc phiên mã.\n- B: Phiên mã kết thúc do tín hiệu trên gene, không phụ thuộc việc dùng hết nucleotide trong tế bào.\n- D: mRNA rời nhân là bước sau phiên mã (ở tế bào nhân thực), không phải dấu hiệu phiên mã kết thúc."
+  },
+  {
+   "ma_cau": "K09110503031",
+   "nhom_id": "KNB00564",
+   "loai": "trac_nghiem",
+   "de": "Điểm khác nhau cơ bản giữa DNA và RNA về loại nucleotide đặc trưng là gì?",
+   "lua_chon": [
+    "DNA có U, không có T; RNA có T, không có U",
+    "DNA và RNA đều có cả T và U",
+    "DNA có T, không có U; RNA có U, không có T",
+    "DNA không có nucleotide loại T"
+   ],
+   "dap_an": "C",
+   "loi_giai": "DNA chứa thymine (T) và không có uracil (U); RNA chứa uracil (U) thay cho thymine.\n\nVì sao các phương án khác sai:\n- A: Ngược lại: DNA có T (không có U), RNA có U (không có T).\n- B: Mỗi phân tử chỉ có một trong hai loại: DNA có T, RNA có U, không có phân tử nào chứa cả hai.\n- D: DNA có nucleotide loại T; đây là loại nucleotide đặc trưng của DNA."
+  },
+  {
+   "ma_cau": "K09110503032",
+   "nhom_id": "KNB00564",
+   "loai": "trac_nghiem",
+   "de": "Xét về số mạch polynucleotide, DNA và RNA khác nhau như thế nào?",
+   "lua_chon": [
+    "DNA có một mạch đơn; RNA có hai mạch xoắn kép",
+    "Cả DNA và RNA đều có hai mạch xoắn kép",
+    "Cả DNA và RNA đều có một mạch đơn",
+    "DNA có hai mạch xoắn kép; RNA thường chỉ có một mạch đơn"
+   ],
+   "dap_an": "D",
+   "loi_giai": "DNA có cấu trúc hai mạch xoắn kép, còn RNA thường chỉ gồm một mạch polynucleotide đơn.\n\nVì sao các phương án khác sai:\n- A: Ngược lại: DNA hai mạch, RNA một mạch, không phải RNA hai mạch.\n- B: Chỉ DNA có hai mạch xoắn kép; RNA là một mạch đơn.\n- C: Chỉ RNA là một mạch đơn; DNA có hai mạch xoắn kép."
+  },
+  {
+   "ma_cau": "K09110503033",
+   "nhom_id": "KNB00564",
+   "loai": "trac_nghiem",
+   "de": "Điểm giống nhau giữa tái bản DNA và phiên mã là gì?",
+   "lua_chon": [
+    "Cả hai đều tạo ra hai phân tử giống hệt phân tử ban đầu",
+    "Hai quá trình đều chỉ dùng một mạch làm khuôn",
+    "Cả hai đều tuân theo nguyên tắc bổ sung khi ghép nucleotide",
+    "Quá trình nào cũng diễn ra ở tế bào chất"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Dù khác về mạch khuôn và sản phẩm, cả tái bản và phiên mã đều tuân theo nguyên tắc bổ sung khi ghép nucleotide tự do vào mạch khuôn.\n\nVì sao các phương án khác sai:\n- A: Chỉ tái bản tạo ra hai phân tử giống DNA mẹ; phiên mã tạo RNA khác về bản chất.\n- B: Chỉ phiên mã dùng một mạch làm khuôn; tái bản dùng cả hai mạch.\n- D: Cả hai quá trình đều diễn ra chủ yếu trong nhân, không phải tế bào chất."
+  },
+  {
+   "ma_cau": "K09110503034",
+   "nhom_id": "KNB00564",
+   "loai": "trac_nghiem",
+   "de": "Trong tái bản, cặp bổ sung là A–T, G–C. Trong phiên mã, cặp bổ sung khác ở điểm nào?",
+   "lua_chon": [
+    "G không còn liên kết được với C",
+    "A trên mạch khuôn liên kết với U thay vì T",
+    "Không còn nguyên tắc bổ sung nào được áp dụng",
+    "C liên kết với A thay vì liên kết với G"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Trong phiên mã, RNA không có T nên A trên mạch khuôn phải liên kết với U; các cặp G–C vẫn giữ nguyên.\n\nVì sao các phương án khác sai:\n- A: Cặp G–C vẫn được giữ nguyên trong phiên mã, không mất đi.\n- C: Phiên mã vẫn tuân theo nguyên tắc bổ sung, chỉ khác ở cặp A–U thay vì A–T.\n- D: C vẫn liên kết với G như trong tái bản, không đổi sang liên kết với A."
+  },
+  {
+   "ma_cau": "K09110503035",
+   "nhom_id": "KNB00564",
+   "loai": "trac_nghiem",
+   "de": "Vì sao có thể coi tái bản DNA và phiên mã đều là quá trình tổng hợp dựa trên khuôn?",
+   "lua_chon": [
+    "Vì cả hai đều ghép nucleotide bổ sung vào mạch khuôn có sẵn",
+    "Do sản phẩm tạo thành ở cả hai đều là phân tử DNA",
+    "Bởi vì cả hai đều không cần mạch làm khuôn",
+    "Địa điểm diễn ra của cả hai đều là tế bào chất"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Cả hai quá trình đều dùng một mạch có sẵn làm khuôn, nucleotide tự do bắt cặp bổ sung để tổng hợp mạch mới, chỉ khác sản phẩm là DNA hay RNA.\n\nVì sao các phương án khác sai:\n- B: Chỉ tái bản tạo ra DNA; phiên mã tạo ra RNA, không phải DNA.\n- C: Cả hai đều cần mạch khuôn có sẵn để tổng hợp mạch mới.\n- D: Cả hai quá trình đều diễn ra chủ yếu trong nhân, không phải tế bào chất."
+  },
+  {
+   "ma_cau": "K09110503036",
+   "nhom_id": "KNB00564",
+   "loai": "trac_nghiem",
+   "de": "Điểm khác nhau giữa tái bản DNA và phiên mã về số mạch của gene được dùng làm khuôn là gì?",
+   "lua_chon": [
+    "Tái bản dùng một mạch làm khuôn; phiên mã dùng cả hai mạch",
+    "Tái bản dùng cả hai mạch làm khuôn; phiên mã chỉ dùng một mạch làm khuôn",
+    "Cả hai quá trình đều dùng cả hai mạch làm khuôn",
+    "Cả hai quá trình đều chỉ dùng một mạch làm khuôn"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Tái bản DNA dùng cả hai mạch của DNA mẹ làm khuôn (mỗi mạch tổng hợp một DNA con); phiên mã chỉ dùng một mạch gốc của gene làm khuôn để tổng hợp RNA.\n\nVì sao các phương án khác sai:\n- A: Ngược lại: tái bản dùng cả hai mạch làm khuôn (mỗi mạch cho một DNA con), phiên mã chỉ dùng một mạch.\n- C: Phiên mã chỉ dùng một mạch gốc làm khuôn, không dùng cả hai mạch.\n- D: Tái bản dùng cả hai mạch của DNA mẹ làm khuôn, không phải chỉ một mạch."
+  },
+  {
+   "ma_cau": "K09110503037",
+   "nhom_id": "KNB00564",
+   "loai": "trac_nghiem",
+   "de": "Thời điểm diễn ra của tái bản DNA và phiên mã khác nhau như thế nào?",
+   "lua_chon": [
+    "Tái bản diễn ra nhiều lần liên tục; phiên mã chỉ diễn ra một lần duy nhất trong đời tế bào",
+    "Cả hai quá trình đều chỉ diễn ra một lần duy nhất, vào cùng thời điểm",
+    "Tái bản chỉ diễn ra một lần ở kì trung gian trước phân bào; phiên mã diễn ra nhiều lần khi tế bào cần tổng hợp protein",
+    "Cả hai quá trình đều diễn ra liên tục suốt vòng đời tế bào, không có thời điểm cố định"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Tái bản DNA chỉ diễn ra một lần ở kì trung gian trước khi tế bào phân chia; phiên mã có thể diễn ra nhiều lần, bất cứ khi nào tế bào cần tổng hợp protein.\n\nVì sao các phương án khác sai:\n- A: Ngược lại: tái bản chỉ diễn ra 1 lần trước phân bào, còn phiên mã có thể diễn ra nhiều lần.\n- B: Hai quá trình có thời điểm và tần suất diễn ra khác nhau, không trùng nhau.\n- D: Tái bản DNA có thời điểm cố định (kì trung gian), không diễn ra liên tục tuỳ ý."
+  }
+ ]
+}

@@ -1,0 +1,152 @@
+[
+ {
+  "ma_cau": "K09000000223",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "lạc nhóm: nhận biết tinh bột bằng iodine thuộc nhóm phản ứng carbohydrate (dạng iodine KDB01577)"
+ },
+ {
+  "ma_cau": "K09000000224",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "lạc nhóm: nhận biết tinh bột bằng iodine thuộc nhóm KNB00534, dạng iodine"
+ },
+ {
+  "ma_cau": "K09000000225",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng phân biệt tinh bột/cellulose bằng tính chất vật lí (tạo hồ)"
+ },
+ {
+  "ma_cau": "K09000000226",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "lạc nhóm: dùng iodine nhận tinh bột, thuộc nhóm KNB00534 dạng iodine"
+ },
+ {
+  "ma_cau": "K09000000233",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng nhận biết protein/polymer tổng hợp bằng cách đốt"
+ },
+ {
+  "ma_cau": "K09000000234",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng nhận biết protein/polymer tổng hợp bằng cách đốt"
+ },
+ {
+  "ma_cau": "K09000000235",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng nhận biết protein/polymer tổng hợp bằng cách đốt"
+ },
+ {
+  "ma_cau": "K09000000236",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng nhận biết protein/polymer tổng hợp bằng cách đốt"
+ },
+ {
+  "ma_cau": "K09000000237",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng nhận biết protein/polymer tổng hợp bằng cách đốt"
+ },
+ {
+  "ma_cau": "K09000000240",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng nhận biết protein/polymer tổng hợp bằng cách đốt"
+ },
+ {
+  "ma_cau": "K09000000242",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng nhận biết protein/polymer tổng hợp bằng cách đốt"
+ },
+ {
+  "ma_cau": "K09000000243",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng nhận biết protein/polymer tổng hợp bằng cách đốt"
+ },
+ {
+  "ma_cau": "K09000000238",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng nhận biết chất dẻo/polymer tổng hợp và protein bằng cách đốt"
+ },
+ {
+  "ma_cau": "K09000000239",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng nhận biết chất dẻo/polymer tổng hợp và protein bằng cách đốt"
+ },
+ {
+  "ma_cau": "K09000000241",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng nhận biết chất dẻo/polymer tổng hợp và protein bằng cách đốt"
+ },
+ {
+  "ma_cau": "K09000000227",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "lạc nhóm: bài toán tráng bạc glucose, thiếu dạng tính toán tráng bạc"
+ },
+ {
+  "ma_cau": "K09000000228",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "lạc nhóm: bài toán tráng bạc glucose, thiếu dạng tính toán tráng bạc"
+ },
+ {
+  "ma_cau": "K09000000229",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng bài toán thuỷ phân saccharose/tinh bột có hiệu suất"
+ },
+ {
+  "ma_cau": "K09000000230",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng bài toán thuỷ phân saccharose/tinh bột có hiệu suất"
+ },
+ {
+  "ma_cau": "K09000000231",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng bài toán thuỷ phân saccharose/tinh bột có hiệu suất"
+ },
+ {
+  "ma_cau": "K09000000232",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng bài toán thuỷ phân saccharose/tinh bột có hiệu suất"
+ },
+ {
+  "ma_cau": "K09000000186",
+  "dang_bai_id": "KDB01578",
+  "chac": "cao",
+  "ly_do": "Cho m glucose, hiệu suất, hỏi khối lượng ethylic alcohol thu được: đúng dạng."
+ },
+ {
+  "ma_cau": "K09000000187",
+  "dang_bai_id": "KDB01578",
+  "chac": "vua",
+  "ly_do": "Bài ngược: tìm glucose cần dùng từ khối lượng ethanol; nhóm thiếu dạng \"tính glucose cần lên men\"."
+ },
+ {
+  "ma_cau": "K09000000188",
+  "dang_bai_id": "KDB01578",
+  "chac": "cao",
+  "ly_do": "Cho m glucose, hiệu suất, hỏi khối lượng ethylic alcohol thu được: đúng dạng."
+ },
+ {
+  "ma_cau": "K09000000189",
+  "dang_bai_id": "KDB01578",
+  "chac": "vua",
+  "ly_do": "Bài ngược: tìm glucose cần dùng từ khối lượng ethanol; nhóm thiếu dạng \"tính glucose cần lên men\"."
+ }
+]

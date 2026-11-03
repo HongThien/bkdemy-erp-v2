@@ -1,0 +1,1968 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00466",
+   "chu_de": "Điện học",
+   "chuyen_de": "Định luật Ohm",
+   "nhom": "Các dạng bài tập cơ bản của điện trở & định luật Ohm",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nĐiện trở $R$ đặc trưng cho mức độ cản trở dòng điện của dây dẫn; đơn vị ôm ($\\Omega$), $1\\ \\mathrm{k\\Omega}=10^3\\ \\Omega$, $1\\ \\mathrm{M\\Omega}=10^6\\ \\Omega$.\nVới cùng hiệu điện thế, điện trở càng lớn thì cường độ dòng điện càng nhỏ: $I=\\dfrac{U}{R}$.\nĐiện trở dây dẫn $R=\\rho\\dfrac{l}{S}$: tỉ lệ thuận với chiều dài $l$ và điện trở suất $\\rho$, tỉ lệ nghịch với tiết diện $S$.\n\n##PP 2. Các bước làm bài\nXác định đề hỏi khái niệm, đơn vị hay so sánh định tính.\nVới so sánh: giữ nguyên các yếu tố không nhắc tới, chỉ xét yếu tố thay đổi trong công thức $R=\\rho\\dfrac{l}{S}$.\nVới đổi đơn vị: nhân (hoặc chia) đúng bậc $10^3$, $10^6$.\n\n##CY 3. Lưu ý\nĐiện trở của dây không phụ thuộc khối lượng dây; chỉ phụ thuộc $l$, $S$, vật liệu.\nDễ nhầm bậc khi đổi k$\\Omega$ sang $\\Omega$ (phải nhân 1000).",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01637",
+     "thu_tu": 1,
+     "ten": "Nhận biết khái niệm, đơn vị và đổi đơn vị điện trở",
+     "mo_ta": "Đề hỏi ý nghĩa của điện trở, đơn vị đo điện trở hoặc ý nghĩa số ghi trên điện trở.\nHoặc cho giá trị điện trở ở đơn vị kΩ, MΩ và yêu cầu đổi sang Ω.\nChỉ nhận biết, đổi đơn vị, không có số liệu để tính dòng điện hay hiệu điện thế.\nLưu ý: so sánh điện trở của các dây theo chiều dài, tiết diện, vật liệu ⇒ thuộc dạng \"So sánh định tính điện trở, dòng điện theo l, S, ρ\".",
+     "ly_thuyet": "##TC Điện trở và đơn vị\nĐiện trở đặc trưng cho mức độ cản trở dòng điện của dây dẫn.\nĐơn vị của điện trở là ôm, kí hiệu $\\Omega$.\n$1\\ \\mathrm{k\\Omega}=1000\\ \\Omega$; $1\\ \\mathrm{M\\Omega}=1\\,000\\,000\\ \\Omega$.\n\n##PP Đổi đơn vị\nXác định tiền tố của đơn vị đã cho (k hay M).\nNhân giá trị với $10^3$ (k) hoặc $10^6$ (M) để ra $\\Omega$.",
+     "vi_du": "##VD\nĐiện trở của dây dẫn đặc trưng cho điều gì?\nA. Mức độ cản trở dòng điện chạy qua dây dẫn\nB. Khả năng sinh ra dòng điện trong mạch\nC. Độ sáng của bóng đèn mắc trong mạch\nD. Khối lượng của dây dẫn\n\nBài giải:\nĐiện trở là đại lượng đặc trưng cho mức độ cản trở dòng điện của dây dẫn.\nHiệu điện thế là vai trò của nguồn điện, khối lượng dây hay độ sáng đèn không phải đặc trưng của điện trở.\nChọn A.\n\n##VD\nDây dẫn X có điện trở 3,5 kΩ. Giá trị này bằng bao nhiêu Ω?\nA. 350 Ω\nB. 35 000 Ω\nC. 0,35 Ω\nD. 3500 Ω\n\nBài giải:\nĐổi đơn vị: $1\\ \\mathrm{k\\Omega}=1000\\ \\Omega$.\n$3{,}5\\ \\mathrm{k\\Omega}=3{,}5\\times1000=3500\\ \\Omega$.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01638",
+     "thu_tu": 2,
+     "ten": "So sánh định tính điện trở, dòng điện theo l, S, ρ",
+     "mo_ta": "Đề cho hai dây (hoặc một dây thay đổi) và hỏi điện trở, hoặc dòng điện, thay đổi/so sánh thế nào.\nGiữ nguyên một số yếu tố (cùng hiệu điện thế, cùng vật liệu, cùng tiết diện, cùng chiều dài…), chỉ một hai yếu tố khác nhau.\nKhông có số liệu để tính, chỉ lập luận bằng công thức $R=\\rho l/S$ hoặc $I=U/R$.\nLưu ý: đề hỏi ý nghĩa, đơn vị hay đổi đơn vị ⇒ thuộc dạng \"Nhận biết khái niệm, đơn vị và đổi đơn vị điện trở\".",
+     "ly_thuyet": "##TC Điện trở phụ thuộc yếu tố nào\n$R=\\rho\\dfrac{l}{S}$: $R$ tỉ lệ thuận với $l$ và $\\rho$, tỉ lệ nghịch với $S$.\nVới cùng hiệu điện thế $U$: $I=\\dfrac{U}{R}$, $R$ lớn thì $I$ nhỏ.\n\n##PP Cách so sánh\nXác định yếu tố nào thay đổi, yếu tố nào giữ nguyên.\nDựa vào công thức để xét chiều thay đổi của $R$ (hoặc $I$).\nKết luận tăng, giảm hay bằng nhau.\n\n##CY Lỗi hay mắc\nNhầm tỉ lệ nghịch với $S$ thành tỉ lệ thuận.\nQuên rằng khi hai yếu tố cùng thay đổi phải xét tác động của cả hai.",
+     "vi_du": "##VD\nHai dây dẫn cùng tiết diện, cùng vật liệu. Dây dài hơn có điện trở thế nào so với dây ngắn hơn?\nA. Nhỏ hơn\nB. Không đổi\nC. Bằng 0\nD. Lớn hơn\n\nBài giải:\nHai dây cùng vật liệu, cùng tiết diện nên chỉ khác chiều dài.\nĐiện trở tỉ lệ thuận với chiều dài: $R=\\rho\\dfrac{l}{S}$.\nDây dài hơn thì điện trở lớn hơn.\nChọn D.\n\n##VD\nDây dẫn được kéo dài ra và đồng thời tiết diện của nó nhỏ đi. Điện trở của dây thay đổi thế nào?\nA. Giảm xuống\nB. Không đổi\nC. Bằng 0\nD. Tăng lên\n\nBài giải:\nĐiện trở $R=\\rho\\dfrac{l}{S}$.\nChiều dài $l$ tăng làm $R$ tăng; tiết diện $S$ giảm cũng làm $R$ tăng.\nCả hai thay đổi cùng chiều nên điện trở của dây tăng lên.\nChọn D."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00473",
+   "chu_de": "Điện học",
+   "chuyen_de": "Mạch điện nối tiếp - Mạch điện song song",
+   "nhom": "Các dạng bài tập cơ bản của mạch điện nối tiếp, song song",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nMạch nối tiếp: $I=I_1=I_2$; $U=U_1+U_2$; $R=R_1+R_2$; $\\dfrac{U_1}{U_2}=\\dfrac{R_1}{R_2}$.\nMạch song song: $U=U_1=U_2$; $I=I_1+I_2$; $\\dfrac{1}{R}=\\dfrac{1}{R_1}+\\dfrac{1}{R_2}$; $\\dfrac{I_1}{I_2}=\\dfrac{R_2}{R_1}$.\n$n$ điện trở giống nhau $R_0$: nối tiếp $R=nR_0$; song song $R=\\dfrac{R_0}{n}$.\n\n##PP 2. Các bước làm bài\nNhận ra cách mắc (cùng một nhánh là nối tiếp, các nhánh chung hai đầu là song song).\nChọn công thức đúng của cách mắc đó.\nLập luận hoặc thay số.\n\n##CY 3. Lưu ý\nĐiện trở tương đương mạch song song luôn nhỏ hơn mọi điện trở thành phần.\nMạch nối tiếp đứt một chỗ thì cả mạch ngừng; mạch song song đứt một nhánh thì nhánh kia vẫn hoạt động.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01649",
+     "thu_tu": 1,
+     "ten": "Nhận biết đặc điểm của đoạn mạch nối tiếp",
+     "mo_ta": "Đề hỏi đại lượng nào như nhau, công thức $U$, $R_{mathrm{td}}$ của mạch nối tiếp, ý nghĩa số chỉ ampe kế.\nHoặc hỏi tác dụng khi mắc thêm điện trở nối tiếp, khi một điện trở bị đứt.\nKhông có số liệu để tính, chỉ dùng tính chất.\nLưu ý: đề nói mắc song song ⇒ thuộc dạng \"Nhận biết đặc điểm của đoạn mạch song song\".",
+     "ly_thuyet": "##TC Mạch nối tiếp\n$I=I_1=I_2$; $U=U_1+U_2$; $R=R_1+R_2$.\nMắc thêm điện trở nối tiếp thì $R$ tăng.\nĐứt một điện trở thì toàn mạch hở, không còn dòng điện.\n\n##CY Lỗi hay mắc\nNhầm $U$ như nhau với $I$ như nhau.\nDùng công thức của mạch song song cho mạch nối tiếp.",
+     "vi_du": "##VD\nTrong đoạn mạch nối tiếp gồm hai điện trở, điện trở tương đương R tính theo công thức nào?\nA. R = R₁·R₂/(R₁+R₂)\nB. R = R₁ − R₂\nC. R = R₁ + R₂\nD. R luôn nhỏ hơn cả R₁ và R₂\n\nBài giải:\nTrong mạch nối tiếp, điện trở tương đương bằng tổng các điện trở thành phần.\nVậy $R=R_1+R_2$.\nChọn C.\n\n##VD\nTrong đoạn mạch gồm ba điện trở mắc nối tiếp, nếu một trong ba điện trở bị đứt (hở mạch), điều gì xảy ra?\nA. Toàn mạch bị hở, không có dòng điện qua bất kỳ điện trở nào\nB. Hai điện trở còn lại vẫn hoạt động bình thường\nC. Chỉ điện trở bị đứt ngừng hoạt động, còn lại vẫn có dòng điện\nD. Dòng điện tăng lên ở hai điện trở còn lại\n\nBài giải:\nTrong mạch nối tiếp các điện trở nằm trên cùng một nhánh duy nhất.\nMột điện trở bị đứt làm hở toàn mạch nên không còn dòng điện ở điện trở nào.\nChọn A."
+    },
+    {
+     "dang_id": "KDB01650",
+     "thu_tu": 2,
+     "ten": "Nhận biết đặc điểm của đoạn mạch song song",
+     "mo_ta": "Đề hỏi đại lượng nào như nhau ở các nhánh, công thức $I$, $R_{mathrm{td}}$ của mạch song song.\nHoặc hỏi tác dụng khi tháo bớt hoặc mắc thêm nhánh, khi một nhánh bị đứt.\nKhông có số liệu để tính, chỉ dùng tính chất.\nLưu ý: đề nói mắc nối tiếp ⇒ thuộc dạng \"Nhận biết đặc điểm của đoạn mạch nối tiếp\".",
+     "ly_thuyet": "##TC Mạch song song\n$U=U_1=U_2$; $I=I_1+I_2$; $\\dfrac{1}{R}=\\dfrac{1}{R_1}+\\dfrac{1}{R_2}$.\n$R$ nhỏ hơn mọi điện trở thành phần; mắc thêm nhánh thì $R$ giảm.\nĐứt một nhánh thì nhánh còn lại vẫn hoạt động.\n\n##CY Lỗi hay mắc\nCộng trực tiếp các điện trở như mạch nối tiếp.\nCho rằng đứt một nhánh thì cả mạch ngừng.",
+     "vi_du": "##VD\nCông thức tính điện trở tương đương của hai điện trở mắc song song là gì?\nA. 1/R = 1/R₁ + 1/R₂\nB. R = R₁ + R₂\nC. R = R₁ − R₂\nD. R luôn lớn hơn cả R₁ và R₂\n\nBài giải:\nMạch song song cộng nghịch đảo các điện trở thành phần.\nVậy $\\dfrac{1}{R}=\\dfrac{1}{R_1}+\\dfrac{1}{R_2}$.\nChọn A.\n\n##VD\nTrong đoạn mạch gồm hai điện trở mắc song song, nếu một nhánh bị đứt (hở mạch) thì điều gì xảy ra?\nA. Toàn mạch bị hở, không còn dòng điện ở nhánh nào\nB. Nhánh còn lại vẫn có dòng điện chạy qua bình thường\nC. Dòng điện ở nhánh còn lại giảm về 0\nD. Hiệu điện thế ở nhánh còn lại tăng vọt không giới hạn\n\nBài giải:\nMạch song song có nhiều nhánh độc lập.\nĐứt một nhánh không ảnh hưởng đường đi của dòng điện ở nhánh còn lại, nhánh đó vẫn có dòng điện bình thường.\nChọn B."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00478",
+   "chu_de": "Điện học",
+   "chuyen_de": "Công - Công suất",
+   "nhom": "Các dạng bài tập cơ bản của công & công suất điện",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nSố ghi trên thiết bị điện (ví dụ 220V - 60W): 220V là hiệu điện thế định mức, 60W là công suất định mức (công suất khi hoạt động đúng hiệu điện thế định mức).\nCông suất điện $\\mathcal{P}=U\\cdot I$; điện năng tiêu thụ $A=\\mathcal{P}\\cdot t$.\nĐơn vị điện năng: jun (J) và kilôoát giờ (kWh); $1\\ \\mathrm{kWh}=3\\,600\\,000\\ \\mathrm{J}$. Mỗi số trên công tơ điện là 1 kWh.\n\n##PP 2. Các bước làm bài\nNhận biết số nào là hiệu điện thế, số nào là công suất qua đơn vị V, W.\nVới đổi đơn vị năng lượng: nhân hoặc chia $3\\,600\\,000$.\n\n##CY 3. Lưu ý\nHiệu điện thế thực tế nhỏ hơn định mức thì công suất thực tế nhỏ hơn định mức.\nKhông dùng dây điện cũ nứt vỏ cách điện; ưu tiên thiết bị tiết kiệm điện, tắt thiết bị khi không dùng.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01659",
+     "thu_tu": 1,
+     "ten": "Nhận biết ý nghĩa các số ghi trên thiết bị điện",
+     "mo_ta": "Đề cho nhãn thiết bị dạng \"220V - 60W\" và hỏi một số ghi có ý nghĩa gì, hiệu điện thế hay công suất định mức.\nHoặc hỏi công suất tiêu thụ khi dùng đúng/sai hiệu điện thế định mức.\nChỉ nhận biết, không tính số.\nLưu ý: hỏi đơn vị năng lượng, kWh, J ⇒ thuộc dạng \"Nhận biết và đổi đơn vị điện năng kWh, J\".",
+     "ly_thuyet": "##TC Số ghi định mức\nSố kèm đơn vị V là hiệu điện thế định mức.\nSố kèm đơn vị W là công suất định mức: công suất tiêu thụ khi dùng đúng hiệu điện thế định mức.\nDùng hiệu điện thế thấp hơn định mức thì công suất thực tế nhỏ hơn định mức.\n\n##CY Lỗi hay mắc\nNhầm công suất định mức với cường độ dòng điện hoặc với năng lượng tiêu thụ trong một giờ.",
+     "vi_du": "##VD\nTrên bóng đèn có ghi \"220V – 60W\". Số 60W cho biết điều gì?\nA. Công suất điện định mức của đèn\nB. Cường độ dòng điện định mức qua đèn\nC. Hiệu điện thế định mức để đèn sáng bình thường\nD. Năng lượng điện đèn tiêu thụ trong một giờ\n\nBài giải:\nSố ghi kèm đơn vị W là công suất điện định mức, tức công suất tiêu thụ khi đèn hoạt động đúng hiệu điện thế định mức.\nVậy số 60W là công suất điện định mức của đèn.\nChọn A.\n\n##VD\nTrên máy bơm nước có ghi '220V – 370W'. Nếu chỉ mắc máy bơm vào hiệu điện thế 200V (thấp hơn định mức), công suất tiêu thụ thực tế sẽ thế nào so với 370W?\nA. Nhỏ hơn 370W\nB. Lớn hơn 370W\nC. Đúng bằng 370W\nD. Bằng 0\n\nBài giải:\n370W là công suất định mức, chỉ đạt khi hiệu điện thế đặt vào đúng bằng 220V.\nHiệu điện thế 200V thấp hơn định mức nên công suất thực tế nhỏ hơn 370W.\nChọn A."
+    },
+    {
+     "dang_id": "KDB01660",
+     "thu_tu": 2,
+     "ten": "Nhận biết và đổi đơn vị điện năng kWh, J",
+     "mo_ta": "Đề hỏi đơn vị đo điện năng trên hoá đơn tiền điện, ý nghĩa số đếm công tơ.\nHoặc yêu cầu đổi giữa kWh và J ($1\\ \\mathrm{kWh}=3{,}6\\times10^6\\ \\mathrm{J}$).\nLưu ý: yêu cầu tính điện năng từ công suất và thời gian ⇒ thuộc nhóm tính điện năng và tiền điện.",
+     "ly_thuyet": "##TC Đơn vị điện năng\n$1\\ \\mathrm{kWh}=1000\\ \\mathrm{W}\\times3600\\ \\mathrm{s}=3\\,600\\,000\\ \\mathrm{J}$.\nHoá đơn tiền điện tính theo kWh; mỗi số đếm công tơ ứng với 1 kWh.\n\n##PP Cách làm\nĐổi kWh sang J: nhân $3\\,600\\,000$.\nĐổi J sang kWh: chia $3\\,600\\,000$.\n\n##CY Lỗi hay mắc\nQuên đổi giờ sang giây (3600) hoặc quên đổi kW sang W.",
+     "vi_du": "##VD\n1 kWh bằng bao nhiêu jun (J)?\nA. 3 600 J\nB. 60 000 J\nC. 3 600 000 J\nD. 360 000 J\n\nBài giải:\nĐổi: $1\\ \\mathrm{kWh}=1000\\ \\mathrm{W}\\times3600\\ \\mathrm{s}=3\\,600\\,000\\ \\mathrm{J}$.\nChọn C.\n\n##VD\nẤm điện tiêu thụ năng lượng 900 000 J. Giá trị đó bằng bao nhiêu kWh?\nA. 0,9 kWh\nB. 900 kWh\nC. 0,25 kWh\nD. 2,5 kWh\n\nBài giải:\nĐổi J sang kWh: $900\\,000\\ \\mathrm{J}=\\dfrac{900\\,000}{3\\,600\\,000}=0{,}25\\ \\mathrm{kWh}$.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01661",
+     "thu_tu": 3,
+     "ten": "An toàn điện và tiết kiệm điện trong gia đình",
+     "mo_ta": "Đề hỏi vì sao không nên dùng dây điện cũ nứt vỏ cách điện.\nHoặc hỏi biện pháp tiết kiệm điện năng trong gia đình.\nChỉ nhận biết kiến thức thực tế, không tính số.\nLưu ý: so sánh điện năng đèn tiết kiệm với đèn thường có số liệu ⇒ thuộc nhóm tính điện năng và tiền điện.",
+     "ly_thuyet": "##TC An toàn và tiết kiệm\nVỏ cách điện nứt nẻ dễ gây rò điện, chạm chập, cháy nổ, điện giật.\nTiết kiệm điện: chọn thiết bị tiết kiệm năng lượng, công suất phù hợp, tắt thiết bị khi không dùng.",
+     "vi_du": "##VD\nBiện pháp nào sau đây giúp tiết kiệm điện năng hiệu quả trong gia đình?\nA. Bật tất cả đèn trong nhà kể cả phòng không có người\nB. Để điều hoà hoạt động cả ngày dù không có ai ở nhà\nC. Chọn thiết bị tiết kiệm năng lượng, công suất phù hợp\nD. Cắm sạc điện thoại qua đêm dù đã đầy pin\n\nBài giải:\nThiết bị tiết kiệm năng lượng, công suất phù hợp nhu cầu giúp giảm điện năng tiêu thụ mà vẫn đáp ứng nhu cầu.\nCác phương án còn lại đều là cách dùng điện lãng phí.\nChọn C."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00467",
+   "chu_de": "Điện học",
+   "chuyen_de": "Định luật Ohm",
+   "nhom": "Tính toán U, I, R dựa vào biểu thức định luật Ohm",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nĐịnh luật Ohm: $I=\\dfrac{U}{R}$, suy ra $U=I\\cdot R$ và $R=\\dfrac{U}{I}$.\nĐơn vị: $U$ (V), $I$ (A), $R$ ($\\Omega$). $1\\ \\mathrm{mA}=10^{-3}\\ \\mathrm{A}$; $1\\ \\mathrm{k\\Omega}=10^3\\ \\Omega$.\n\n##PP 2. Các bước làm bài\nLiệt kê hai đại lượng đã biết và đại lượng cần tìm.\nĐổi các đại lượng về đơn vị chuẩn (V, A, $\\Omega$).\nChọn công thức biến đổi từ $I=\\dfrac{U}{R}$ rồi thay số.\n\n##CY 3. Lưu ý\n$R=\\dfrac{U}{I}$ chỉ là cách tính; điện trở của dây không đổi theo $U$, $I$.\nQuên đổi mA, k$\\Omega$ là lỗi sai số bậc phổ biến.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01639",
+     "thu_tu": 1,
+     "ten": "Tính I, U hoặc R từ định luật Ohm (đơn vị chuẩn)",
+     "mo_ta": "Đề cho hai trong ba đại lượng $U$, $I$, $R$ (đều đã ở V, A, Ω) và hỏi đại lượng còn lại.\nLàm bằng cách thay số trực tiếp vào $I=U/R$, $U=I\\cdot R$ hoặc $R=U/I$.\nLưu ý: đề cho kΩ, mA cần đổi trước khi tính ⇒ thuộc dạng \"Tính I, U, R khi phải đổi đơn vị kΩ, mA\".",
+     "ly_thuyet": "##TC Biểu thức định luật Ohm\n$I=\\dfrac{U}{R}$; $U=I\\cdot R$; $R=\\dfrac{U}{I}$.\nĐơn vị: $U$ (V), $I$ (A), $R$ ($\\Omega$).\n\n##PP Cách làm\nXác định đại lượng cần tìm.\nChọn công thức có đại lượng đó ở vế trái.\nThay số, ghi kết quả kèm đơn vị.\n\n##CY Lỗi hay mắc\nNhân thay vì chia (hoặc ngược lại), đảo ngược tỉ số $\\dfrac{R}{U}$.\nCộng hoặc trừ các đại lượng thay vì dùng công thức.",
+     "vi_du": "##VD\nMột dây dẫn có điện trở 4 Ω được mắc vào hiệu điện thế 12 V. Cường độ dòng điện chạy qua dây dẫn là bao nhiêu?\nA. 48 A\nB. 0,33 A\nC. 3 A\nD. 8 A\n\nBài giải:\nÁp dụng định luật Ohm: $I=\\dfrac{U}{R}=\\dfrac{12}{4}=3\\ \\mathrm{A}$.\nChọn C.\n\n##VD\nHiệu điện thế giữa hai đầu một điện trở là 9 V, cường độ dòng điện qua nó là 3 A. Điện trở này có giá trị bao nhiêu?\nA. 27 Ω\nB. 6 Ω\nC. 3 Ω\nD. 0,33 Ω\n\nBài giải:\nÁp dụng $R=\\dfrac{U}{I}=\\dfrac{9}{3}=3\\ \\Omega$.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01640",
+     "thu_tu": 2,
+     "ten": "Tính I, U, R khi phải đổi đơn vị kΩ, mA",
+     "mo_ta": "Đề cho điện trở ở kΩ hoặc dòng điện ở mA, và hỏi đại lượng còn lại (kết quả có thể yêu cầu ở mA).\nPhải đổi về Ω, A trước khi áp dụng định luật Ohm, rồi đổi kết quả về đơn vị đề yêu cầu.\nLưu ý: số liệu đã ở đơn vị chuẩn không cần đổi ⇒ thuộc dạng \"Tính I, U hoặc R từ định luật Ohm (đơn vị chuẩn)\".",
+     "ly_thuyet": "##TC Đổi đơn vị\n$1\\ \\mathrm{k\\Omega}=10^3\\ \\Omega$; $1\\ \\mathrm{A}=1000\\ \\mathrm{mA}$.\n\n##PP Cách làm\nĐổi $R$ về $\\Omega$, $I$ về A.\nÁp dụng $I=\\dfrac{U}{R}$ hoặc $R=\\dfrac{U}{I}$.\nĐổi kết quả về đơn vị đề yêu cầu (nhân 1000 khi đổi A sang mA).\n\n##CY Lỗi hay mắc\nQuên đổi kΩ nên sai cả trị số lẫn đơn vị.\nTính đúng theo A nhưng quên đổi sang mA.",
+     "vi_du": "##VD\nMột dây dẫn có điện trở 2 kΩ được mắc vào hiệu điện thế 12 V. Cường độ dòng điện qua dây dẫn (tính ra mA) là bao nhiêu?\nA. 6 A\nB. 0,006 mA\nC. 0,6 mA\nD. 6 mA\n\nBài giải:\nĐổi $2\\ \\mathrm{k\\Omega}=2000\\ \\Omega$.\nÁp dụng $I=\\dfrac{U}{R}=\\dfrac{12}{2000}=0{,}006\\ \\mathrm{A}$.\nĐổi sang mA: $0{,}006\\ \\mathrm{A}=6\\ \\mathrm{mA}$.\nChọn D."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00468",
+   "chu_de": "Điện học",
+   "chuyen_de": "Định luật Ohm",
+   "nhom": "Tính toán các đại lượng R, ρ, l, s",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nĐiện trở dây dẫn: $R=\\rho\\dfrac{l}{S}$; suy ra $l=\\dfrac{R\\cdot S}{\\rho}$ và $S=\\dfrac{\\rho\\cdot l}{R}$.\nĐiện trở suất $\\rho$ đặc trưng cho vật liệu, đơn vị $\\Omega\\cdot\\mathrm{m}$ (hoặc $\\Omega\\cdot\\mathrm{mm^2/m}$); $1\\ \\mathrm{mm^2}=10^{-6}\\ \\mathrm{m^2}$.\nTiết diện dây tròn: $S=\\dfrac{\\pi d^2}{4}$.\n\n##PP 2. Các bước làm bài\nĐưa các đại lượng về cùng hệ đơn vị (đồng bộ $\\rho$ với $l$, $S$).\nChọn công thức cho đại lượng cần tìm rồi thay số.\n\n##CY 3. Lưu ý\nDùng $\\rho$ theo $\\Omega\\cdot\\mathrm{mm^2/m}$ thì $S$ phải tính bằng $\\mathrm{mm^2}$, $l$ bằng m.\nDùng $\\rho$ theo $\\Omega\\cdot\\mathrm{m}$ thì phải đổi $S$ sang $\\mathrm{m^2}$.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01641",
+     "thu_tu": 1,
+     "ten": "Tính điện trở dây khi biết ρ, chiều dài, tiết diện",
+     "mo_ta": "Đề cho vật liệu (kèm $\\rho$ theo Ω·mm²/m), chiều dài và tiết diện (mm²) và hỏi điện trở của dây.\nLàm bằng cách thay số trực tiếp vào $R=\\rho l/S$.\nLưu ý: đề cho $\\rho$ theo Ω·m hoặc cho đường kính dây cần đổi đơn vị/tính tiết diện ⇒ thuộc dạng \"Tính điện trở dây khi đổi mm² hoặc tính S từ đường kính\".",
+     "ly_thuyet": "##TC Công thức điện trở dây dẫn\n$R=\\rho\\dfrac{l}{S}$, với $\\rho$ ($\\Omega\\cdot\\mathrm{mm^2/m}$), $l$ (m), $S$ ($\\mathrm{mm^2}$).\n\n##PP Cách làm\nGhi $\\rho$, $l$, $S$ từ đề.\nThay vào $R=\\rho\\dfrac{l}{S}$ và tính.\n\n##CY Lỗi hay mắc\nQuên nhân $\\rho$, chỉ tính $\\dfrac{l}{S}$.\nĐảo vị trí $l$ và $S$ trong công thức.",
+     "vi_du": "##VD\nDây nikelin có điện trở suất ρ = 0,4 Ω·mm²/m, chiều dài l = 5 m, tiết diện S = 0,5 mm². Điện trở của dây là bao nhiêu?\nA. 10 Ω\nB. 4 Ω\nC. 0,04 Ω\nD. 1 Ω\n\nBài giải:\nÁp dụng $R=\\rho\\dfrac{l}{S}=\\dfrac{0{,}4\\times5}{0{,}5}=4\\ \\Omega$.\nChọn B.\n\n##VD\nDây constantan có điện trở suất ρ = 0,5 Ω·mm²/m, chiều dài l = 8 m, tiết diện S = 0,4 mm². Điện trở của dây là bao nhiêu?\nA. 20 Ω\nB. 0,025 Ω\nC. 10 Ω\nD. 1,6 Ω\n\nBài giải:\nÁp dụng $R=\\rho\\dfrac{l}{S}=\\dfrac{0{,}5\\times8}{0{,}4}=10\\ \\Omega$.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01642",
+     "thu_tu": 2,
+     "ten": "Tìm chiều dài hoặc tiết diện dây khi biết điện trở",
+     "mo_ta": "Đề cho điện trở suất, điện trở $R$ và một trong hai đại lượng $l$, $S$; hỏi đại lượng còn lại.\nPhải biến đổi công thức $R=\\rho l/S$ để tìm $l$ hoặc $S$ rồi thay số.\nLưu ý: hỏi điện trở $R$ ⇒ thuộc dạng \"Tính điện trở dây khi biết ρ, chiều dài, tiết diện\".",
+     "ly_thuyet": "##TC Biến đổi công thức\nTừ $R=\\rho\\dfrac{l}{S}$ suy ra $l=\\dfrac{R\\cdot S}{\\rho}$ và $S=\\dfrac{\\rho\\cdot l}{R}$.\n\n##PP Cách làm\nXác định đại lượng cần tìm là $l$ hay $S$.\nViết công thức đã biến đổi tương ứng.\nThay số và tính, ghi đơn vị (m hoặc $\\mathrm{mm^2}$).\n\n##CY Lỗi hay mắc\nQuên nhân với $S$ khi tìm $l$ (chỉ tính $\\dfrac{R}{\\rho}$).\nĐảo ngược công thức hoàn toàn.",
+     "vi_du": "##VD\nDây nikelin có điện trở suất ρ = 0,4 Ω·mm²/m, tiết diện S = 0,5 mm², điện trở R = 8 Ω. Chiều dài của dây là bao nhiêu?\nA. 20 m\nB. 0,025 m\nC. 1,6 m\nD. 10 m\n\nBài giải:\nTừ $R=\\rho\\dfrac{l}{S}$ suy ra $l=\\dfrac{R\\cdot S}{\\rho}$.\n$l=\\dfrac{8\\times0{,}5}{0{,}4}=10\\ \\mathrm{m}$.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01643",
+     "thu_tu": 3,
+     "ten": "Tính điện trở dây khi đổi mm² hoặc tính S từ đường kính",
+     "mo_ta": "Đề cho $\\rho$ theo Ω·m và tiết diện theo mm² nên phải đổi mm² sang m² trước khi tính.\nHoặc đề cho đường kính dây tròn, cần tính $S=\\pi d^2/4$ rồi mới tính $R$.\nLưu ý: số liệu đã đồng bộ đơn vị (Ω·mm²/m với mm²) ⇒ thuộc dạng \"Tính điện trở dây khi biết ρ, chiều dài, tiết diện\".",
+     "ly_thuyet": "##TC Đổi đơn vị và tiết diện\n$1\\ \\mathrm{mm^2}=10^{-6}\\ \\mathrm{m^2}$.\nTiết diện dây tròn: $S=\\dfrac{\\pi d^2}{4}$ ($d$ là đường kính).\n\n##PP Cách làm\nĐổi tiết diện về $\\mathrm{m^2}$ nếu $\\rho$ tính theo $\\Omega\\cdot\\mathrm{m}$; hoặc tính $S$ từ đường kính $d$.\nThay $\\rho$, $l$, $S$ vào $R=\\rho\\dfrac{l}{S}$.\n\n##CY Lỗi hay mắc\nDùng hệ số $10^{-4}$ (cm² sang m²) thay vì $10^{-6}$.\nQuên chia 4 khi tính $S=\\dfrac{\\pi d^2}{4}$.",
+     "vi_du": "##VD\nMột dây dẫn làm bằng nichrome có điện trở suất ρ = 1,1×10⁻⁶ Ω·m, chiều dài 2 m, tiết diện 0,5 mm². Điện trở của dây là bao nhiêu?\nA. 0,044 Ω\nB. 4,4×10⁻⁶ Ω\nC. 4,4 Ω\nD. 0,44 Ω\n\nBài giải:\nĐổi $0{,}5\\ \\mathrm{mm^2}=0{,}5\\times10^{-6}\\ \\mathrm{m^2}$.\n$R=\\rho\\dfrac{l}{S}=\\dfrac{1{,}1\\times10^{-6}\\times2}{0{,}5\\times10^{-6}}=4{,}4\\ \\Omega$.\nChọn C."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00475",
+   "chu_de": "Điện học",
+   "chuyen_de": "Mạch điện nối tiếp - Mạch điện song song",
+   "nhom": "Tính toán U, I, Rtđ khi biết R thành phần (BT xuôi)",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nMạch nối tiếp: $I=I_1=I_2$; $U=U_1+U_2$; $R=R_1+R_2$; $\\dfrac{U_1}{U_2}=\\dfrac{R_1}{R_2}$.\nMạch song song: $U=U_1=U_2$; $I=I_1+I_2$; $\\dfrac{1}{R}=\\dfrac{1}{R_1}+\\dfrac{1}{R_2}$; $\\dfrac{I_1}{I_2}=\\dfrac{R_2}{R_1}$.\n$n$ điện trở giống nhau $R_0$: nối tiếp $R=nR_0$; song song $R=\\dfrac{R_0}{n}$.\n\n##PP 2. Các bước làm bài\nXác định cách mắc, tính $R_{mathrm{td}}$ trước.\nDùng $I=\\dfrac{U}{R}$ để tìm dòng điện, rồi suy ra hiệu điện thế hoặc dòng điện từng điện trở.\n\n##CY 3. Lưu ý\nMạch nối tiếp: $I$ chung; mạch song song: $U$ chung.\nĐèn có số ghi ($U_{mathrm{dm}}$, $I_{mathrm{dm}}$) thì điện trở đèn $R_{mathrm{d}}=\\dfrac{U_{mathrm{dm}}}{I_{mathrm{dm}}}$.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01651",
+     "thu_tu": 1,
+     "ten": "Tính điện trở tương đương của mạch nối tiếp",
+     "mo_ta": "Đề cho hai, ba hoặc $n$ điện trở mắc nối tiếp, hỏi điện trở tương đương.\nLàm bằng cách cộng các điện trở ($R=R_1+R_2+\\dots$ hoặc $nR_0$ khi giống nhau).\nLưu ý: các điện trở mắc song song ⇒ thuộc dạng \"Tính điện trở tương đương của mạch song song\".",
+     "ly_thuyet": "##TC Điện trở tương đương nối tiếp\n$R=R_1+R_2+R_3+\\dots$\n$n$ điện trở giống nhau $R_0$: $R=nR_0$.\n\n##PP Cách làm\nXác định các điện trở nối tiếp.\nCộng các giá trị (hoặc lấy $n\\cdot R_0$).\n\n##CY Lỗi hay mắc\nDùng công thức mạch song song hoặc quên một điện trở.",
+     "vi_du": "##VD\nHai điện trở R₁ = 2 Ω, R₂ = 18 Ω mắc nối tiếp. Tính điện trở tương đương R của đoạn mạch.\nA. 1,8 Ω\nB. 36 Ω\nC. 20 Ω\nD. 18 Ω\n\nBài giải:\nMạch nối tiếp nên $R=R_1+R_2=2+18=20\\ \\Omega$.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01652",
+     "thu_tu": 2,
+     "ten": "Tính điện trở tương đương của mạch song song",
+     "mo_ta": "Đề cho hai hoặc $n$ điện trở mắc song song, hỏi điện trở tương đương.\nLàm bằng công thức $R=\\dfrac{R_1R_2}{R_1+R_2}$ (hai điện trở) hoặc $R=\\dfrac{R_0}{n}$ khi giống nhau.\nLưu ý: các điện trở mắc nối tiếp ⇒ thuộc dạng \"Tính điện trở tương đương của mạch nối tiếp\".",
+     "ly_thuyet": "##TC Điện trở tương đương song song\nHai điện trở: $R=\\dfrac{R_1R_2}{R_1+R_2}$.\n$n$ điện trở giống nhau $R_0$: $R=\\dfrac{R_0}{n}$.\n$R$ nhỏ hơn điện trở nhỏ nhất.\n\n##PP Cách làm\nChọn công thức tích trên tổng (hai điện trở) hoặc chia $n$ (giống nhau).\nThay số và kiểm tra kết quả nhỏ hơn mọi $R$ thành phần.\n\n##CY Lỗi hay mắc\nCộng hai điện trở thay vì dùng công thức song song.",
+     "vi_du": "##VD\nHai điện trở R₁ = 4 Ω, R₂ = 12 Ω mắc song song. Tính điện trở tương đương R của đoạn mạch.\nA. 3 Ω\nB. 16 Ω\nC. 48 Ω\nD. 1/3 Ω\n\nBài giải:\nMạch song song: $R=\\dfrac{R_1R_2}{R_1+R_2}=\\dfrac{4\\times12}{4+12}=\\dfrac{48}{16}=3\\ \\Omega$.\nChọn A.\n\n##VD\nBốn điện trở giống nhau, mỗi cái 5 Ω, mắc song song với nhau. Tính điện trở tương đương R của đoạn mạch.\nA. 1,25 Ω\nB. 20 Ω\nC. 5 Ω\nD. 1,67 Ω\n\nBài giải:\nBốn điện trở giống nhau mắc song song: $R=\\dfrac{R_0}{n}=\\dfrac{5}{4}=1{,}25\\ \\Omega$.\nChọn A."
+    },
+    {
+     "dang_id": "KDB01653",
+     "thu_tu": 3,
+     "ten": "Tính I hoặc U khi biết các điện trở thành phần",
+     "mo_ta": "Đề cho các điện trở của mạch nối tiếp hoặc song song và một số liệu về $U$ hoặc $I$; hỏi $I$ hoặc $U$ của mạch hay của từng điện trở.\nLàm bằng cách tính $R_{mathrm{td}}$ (nếu cần), dùng định luật Ohm, và tính chất $I$ chung (nối tiếp) / $U$ chung (song song).\nCó cả bài đèn ghi định mức mắc nối tiếp biến trở.\nLưu ý: đề chỉ hỏi điện trở tương đương ⇒ thuộc hai dạng tính $R_{mathrm{td}}$ phía trên.",
+     "ly_thuyet": "##TC Tính I, U từng phần\nNối tiếp: $I$ chung, $U_i=I\\cdot R_i$.\nSong song: $U$ chung, $I_i=\\dfrac{U}{R_i}$; $I=I_1+I_2$.\nĐèn: $R_{mathrm{d}}=\\dfrac{U_{mathrm{dm}}}{I_{mathrm{dm}}}$.\n\n##PP Cách làm\nTính $R_{mathrm{td}}$ hoặc dòng/hiệu điện thế đã biết để suy ra đại lượng chung.\nTừ đại lượng chung tính $I$ hoặc $U$ của từng điện trở.\n\n##CY Lỗi hay mắc\nLấy nhầm $U$ của cả mạch làm $U$ của một điện trở trong mạch nối tiếp.\nChỉ lấy dòng một nhánh làm dòng mạch chính.",
+     "vi_du": "##VD\nMạch nối tiếp gồm R₁ = 5 Ω, R₂ = 8 Ω. Biết hiệu điện thế U₁ ở hai đầu R₁ là 15 V. Tính hiệu điện thế U₂ ở hai đầu R₂.\nA. 15 V\nB. 24 V\nC. 8 V\nD. 11 V\n\nBài giải:\nMạch nối tiếp nên dòng điện chung: $I=\\dfrac{U_1}{R_1}=\\dfrac{15}{5}=3\\ \\mathrm{A}$.\nHiệu điện thế hai đầu $R_2$: $U_2=I\\cdot R_2=3\\times8=24\\ \\mathrm{V}$.\nChọn B.\n\n##VD\nĐèn ghi (4 V − 0,5 A, coi điện trở đèn không đổi) mắc nối tiếp với biến trở đang chỉnh ở giá trị Rb = 12 Ω, vào nguồn U = 15 V không đổi. Tính cường độ dòng điện qua đèn lúc này.\nA. 1,25 A\nB. 1,88 A\nC. 0,75 A\nD. 0,5 A\n\nBài giải:\nĐiện trở đèn: $R_{mathrm{d}}=\\dfrac{U_{mathrm{dm}}}{I_{mathrm{dm}}}=\\dfrac{4}{0{,}5}=8\\ \\Omega$.\nĐèn nối tiếp biến trở: $I=\\dfrac{U}{R_b+R_{mathrm{d}}}=\\dfrac{15}{12+8}=0{,}75\\ \\mathrm{A}$.\nChọn C."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00480",
+   "chu_de": "Điện học",
+   "chuyen_de": "Công - Công suất",
+   "nhom": "Tính toán R và I từ các thông số định mức trên thiết bị điện",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nCông suất $\\mathcal{P}=U\\cdot I$ nên cường độ dòng điện định mức $I_{mathrm{dm}}=\\dfrac{\\mathcal{P}_{mathrm{dm}}}{U_{mathrm{dm}}}$.\nĐiện trở định mức $R=\\dfrac{U_{mathrm{dm}}}{I_{mathrm{dm}}}=\\dfrac{U_{mathrm{dm}}^2}{\\mathcal{P}_{mathrm{dm}}}$.\n\n##PP 2. Các bước làm bài\nĐọc $U_{mathrm{dm}}$ và $\\mathcal{P}_{mathrm{dm}}$ từ nhãn thiết bị.\nTính $I_{mathrm{dm}}$ hoặc $R$ theo công thức tương ứng.\n\n##CY 3. Lưu ý\nKhông nhân $\\mathcal{P}$ với $U$ khi tìm $I$.\nKhi tính $R=\\dfrac{U^2}{\\mathcal{P}}$, nhớ bình phương $U$ rồi mới chia cho $\\mathcal{P}$.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01662",
+     "thu_tu": 1,
+     "ten": "Tính dòng điện định mức từ số ghi trên thiết bị",
+     "mo_ta": "Đề cho nhãn thiết bị dạng \"220V - P W\" và hỏi cường độ dòng điện định mức.\nLàm bằng $I=\\mathcal{P}/U$.\nLưu ý: yêu cầu điện trở định mức ⇒ thuộc dạng \"Tính điện trở định mức từ số ghi trên thiết bị\".",
+     "ly_thuyet": "##TC Dòng điện định mức\n$I_{mathrm{dm}}=\\dfrac{\\mathcal{P}_{mathrm{dm}}}{U_{mathrm{dm}}}$.\n\n##PP Cách làm\nĐọc $U_{mathrm{dm}}$, $\\mathcal{P}_{mathrm{dm}}$ từ nhãn.\nChia $\\mathcal{P}_{mathrm{dm}}$ cho $U_{mathrm{dm}}$ và ghi đơn vị A.\n\n##CY Lỗi hay mắc\nNhân $\\mathcal{P}$ với $U$ thay vì chia.",
+     "vi_du": "##VD\nBóng đèn ghi \"220V – 44W\". Tính cường độ dòng điện định mức qua đèn.\nA. 9680A\nB. 5A\nC. 44A\nD. 0,2A\n\nBài giải:\nCường độ dòng điện định mức: $I=\\dfrac{\\mathcal{P}}{U}=\\dfrac{44}{220}=0{,}2\\ \\mathrm{A}$.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01663",
+     "thu_tu": 2,
+     "ten": "Tính điện trở định mức từ số ghi trên thiết bị",
+     "mo_ta": "Đề cho nhãn thiết bị và hỏi điện trở định mức (thường nhắc công thức $R=U^2/\\mathcal{P}$).\nLàm bằng cách bình phương hiệu điện thế định mức rồi chia cho công suất định mức.\nLưu ý: yêu cầu cường độ dòng điện định mức ⇒ thuộc dạng \"Tính dòng điện định mức từ số ghi trên thiết bị\".",
+     "ly_thuyet": "##TC Điện trở định mức\n$R=\\dfrac{U_{mathrm{dm}}^2}{\\mathcal{P}_{mathrm{dm}}}$ (suy từ $R=\\dfrac{U}{I}$ và $\\mathcal{P}=UI$).\n\n##PP Cách làm\nTính $U_{mathrm{dm}}^2$.\nChia cho $\\mathcal{P}_{mathrm{dm}}$ và ghi đơn vị $\\Omega$.\n\n##CY Lỗi hay mắc\nQuên bình phương $U$ hoặc chỉ lấy $U\\cdot\\mathcal{P}$.",
+     "vi_du": "##VD\nNồi cơm điện ghi \"220V – 484W\". Tính điện trở định mức của nồi bằng công thức R = U²/P.\nA. 100Ω\nB. 0,45Ω\nC. 48400Ω\nD. 0,01Ω\n\nBài giải:\nĐiện trở định mức: $R=\\dfrac{U^2}{\\mathcal{P}}=\\dfrac{220^2}{484}=\\dfrac{48\\,400}{484}=100\\ \\Omega$.\nChọn A."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00469",
+   "chu_de": "Điện học",
+   "chuyen_de": "Định luật Ohm",
+   "nhom": "Đọc hiểu đồ thị U-I và bài toán tỉ lệ thuận khi thay đổi U/I",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nĐồ thị $I$ theo $U$ của một điện trở là đường thẳng đi qua gốc toạ độ: $I$ tỉ lệ thuận với $U$.\nĐiện trở $R=\\dfrac{U}{I}$ không đổi, đọc từ một điểm bất kì trên đồ thị.\nĐường dốc hơn (cùng $U$ cho $I$ lớn hơn) ứng với điện trở nhỏ hơn.\n\n##PP 2. Các bước làm bài\nChọn điểm có toạ độ đọc rõ trên đồ thị.\nTính $R=\\dfrac{U}{I}$ hoặc so sánh $I$ của hai đường tại cùng $U$.\n\n##CY 3. Lưu ý\nĐồ thị có trục hoành là $U$, trục tung là $I$: đọc đúng trục để không đảo tỉ số.\nĐường dốc hơn là điện trở NHỎ hơn.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01644",
+     "thu_tu": 1,
+     "ten": "Đọc đồ thị I-U để tính điện trở",
+     "mo_ta": "Đề cho đồ thị $I$ theo $U$ của một vật dẫn và hỏi giá trị điện trở.\nLàm bằng cách đọc toạ độ một điểm trên đường thẳng rồi tính $R=U/I$.\nLưu ý: đề cho hai đường và hỏi so sánh điện trở/dòng điện ⇒ thuộc dạng \"So sánh điện trở hai vật dẫn qua độ dốc đồ thị\".",
+     "ly_thuyet": "##TC Điện trở từ đồ thị\nĐồ thị $I(U)$ là đường thẳng qua gốc toạ độ; tại mọi điểm trên đường đó $R=\\dfrac{U}{I}$ có cùng giá trị.\n\n##PP Cách làm\nChọn một điểm trên đường có toạ độ $(U,I)$ đọc rõ.\nTính $R=\\dfrac{U}{I}$ rồi ghi đơn vị $\\Omega$.\n\n##CY Lỗi hay mắc\nTính $\\dfrac{I}{U}$ thay vì $\\dfrac{U}{I}$.\nĐọc nhầm toạ độ điểm không nằm trên đường biểu diễn.",
+     "vi_du": "##VD\nĐồ thị biểu diễn sự phụ thuộc của I vào U của một điện trở.  Dựa vào đồ thị, điện trở có giá trị bao nhiêu?\nA. 0,5 Ω\nB. 3 Ω\nC. 9 Ω\nD. 2 Ω\n\nBài giải:\nChọn điểm trên đồ thị có $U=6\\ \\mathrm{V}$, $I=3\\ \\mathrm{A}$.\nĐiện trở $R=\\dfrac{U}{I}=\\dfrac{6}{3}=2\\ \\Omega$.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01645",
+     "thu_tu": 2,
+     "ten": "So sánh điện trở hai vật dẫn qua độ dốc đồ thị",
+     "mo_ta": "Đề cho hai đường biểu diễn $I$ theo $U$ của hai vật dẫn A và B.\nHỏi vật dẫn nào có điện trở lớn/nhỏ hơn, hoặc vật nào cho dòng điện lớn hơn khi cùng hiệu điện thế.\nLàm bằng cách so sánh độ dốc hai đường, không cần tính số.\nLưu ý: chỉ một đường và hỏi giá trị điện trở ⇒ thuộc dạng \"Đọc đồ thị I-U để tính điện trở\".",
+     "ly_thuyet": "##TC Độ dốc và điện trở\nVới cùng hiệu điện thế $U$, đường nào cho $I$ lớn hơn thì dốc hơn.\nVì $R=\\dfrac{U}{I}$ nên đường dốc hơn ứng với điện trở nhỏ hơn.\n\n##PP Cách làm\nKẻ một đường thẳng đứng tại một giá trị $U$ chung.\nSo sánh giá trị $I$ của hai đường tại $U$ đó.\n$I$ lớn hơn ⇒ $R$ nhỏ hơn.\n\n##CY Lỗi hay mắc\nNhầm đường dốc hơn là điện trở lớn hơn.",
+     "vi_du": "##VD\nĐồ thị biểu diễn I theo U của hai vật dẫn A và B.  Vật dẫn nào có điện trở nhỏ hơn?\nA. Vật dẫn B\nB. Hai vật dẫn có điện trở bằng nhau\nC. Không thể xác định được\nD. Vật dẫn A\n\nBài giải:\nĐường A dốc hơn đường B: tại cùng một giá trị $U$, dòng điện $I_A$ lớn hơn $I_B$.\nVì $R=\\dfrac{U}{I}$ nên $R_A<R_B$.\nVậy vật dẫn A có điện trở nhỏ hơn.\nChọn D."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00476",
+   "chu_de": "Điện học",
+   "chuyen_de": "Mạch điện nối tiếp - Mạch điện song song",
+   "nhom": "Tìm điện trở R thành phần chưa biết khi biết U, I, Rtđ (BT ngược)",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nMạch nối tiếp: $I=I_1=I_2$; $U=U_1+U_2$; $R=R_1+R_2$; $\\dfrac{U_1}{U_2}=\\dfrac{R_1}{R_2}$.\nMạch song song: $U=U_1=U_2$; $I=I_1+I_2$; $\\dfrac{1}{R}=\\dfrac{1}{R_1}+\\dfrac{1}{R_2}$; $\\dfrac{I_1}{I_2}=\\dfrac{R_2}{R_1}$.\n$n$ điện trở giống nhau $R_0$: nối tiếp $R=nR_0$; song song $R=\\dfrac{R_0}{n}$.\n\n##PP 2. Các bước làm bài\nTính $R_{mathrm{td}}=\\dfrac{U}{I}$ (hoặc dòng/hiệu điện thế từng nhánh) từ số liệu đo.\nDùng quan hệ nối tiếp/song song để suy ra điện trở chưa biết.\n\n##CY 3. Lưu ý\nNối tiếp: $R_2=R-R_1$. Song song: tìm $I_2=I-I_1$ rồi $R_2=\\dfrac{U}{I_2}$.\nĐèn sáng đúng định mức khi $I=I_{mathrm{dm}}$ và $U_{mathrm{d}}=U_{mathrm{dm}}$.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01654",
+     "thu_tu": 1,
+     "ten": "Tìm điện trở chưa biết từ số chỉ ampe kế, vôn kế",
+     "mo_ta": "Đề cho một điện trở $R_1$ biết, điện trở $R_2$ chưa biết, kèm số chỉ vôn kế ($U$) và ampe kế ($I$).\nTính $R_{mathrm{td}}$ hoặc dòng nhánh rồi suy ra $R_2$ (nối tiếp: $R-R_1$; song song: $U/I_2$).\nLưu ý: bài có đèn ghi định mức mắc nối tiếp biến trở ⇒ thuộc dạng \"Tìm giá trị biến trở để đèn sáng đúng định mức\".",
+     "ly_thuyet": "##TC Tìm $R_2$\nNối tiếp: $R=\\dfrac{U}{I}$, $R_2=R-R_1$.\nSong song: $I_1=\\dfrac{U}{R_1}$, $I_2=I-I_1$, $R_2=\\dfrac{U}{I_2}$.\n\n##PP Cách làm\nXác định kiểu mắc.\nNối tiếp: tính $R_{mathrm{td}}$ rồi trừ $R_1$.\nSong song: tính $I_1$, suy ra $I_2$ rồi tính $R_2$.\n\n##CY Lỗi hay mắc\nLấy $R_{mathrm{td}}=\\dfrac{U}{I}$ rồi gán luôn là $R_2$.",
+     "vi_du": "##VD\nMạch song song gồm R₁ = 20 Ω và R₂ chưa biết. Vôn kế đo U = 10 V, ampe kế mạch chính chỉ I = 1,5 A. Tính R₂.\nA. 20 Ω\nB. 6,67 Ω\nC. 10 Ω\nD. 5 Ω\n\nBài giải:\nĐiện trở $R_1$ và $R_2$ song song, $U$ chung: $I_1=\\dfrac{U}{R_1}=\\dfrac{10}{20}=0{,}5\\ \\mathrm{A}$.\nDòng qua $R_2$: $I_2=I-I_1=1{,}5-0{,}5=1\\ \\mathrm{A}$.\nĐiện trở $R_2=\\dfrac{U}{I_2}=\\dfrac{10}{1}=10\\ \\Omega$.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01655",
+     "thu_tu": 2,
+     "ten": "Tìm giá trị biến trở để đèn sáng đúng định mức",
+     "mo_ta": "Đề cho đèn ghi ($U_{mathrm{dm}}$ - $I_{mathrm{dm}}$) mắc nối tiếp với biến trở vào nguồn không đổi $U$.\nHỏi giá trị biến trở để đèn sáng đúng định mức.\nLàm bằng $R_b=\\dfrac{U-U_{mathrm{dm}}}{I_{mathrm{dm}}}$.\nLưu ý: đề cho hai điện trở với số chỉ vôn kế, ampe kế ⇒ thuộc dạng \"Tìm điện trở chưa biết từ số chỉ ampe kế, vôn kế\".",
+     "ly_thuyet": "##TC Đèn sáng đúng định mức\nĐèn sáng đúng định mức khi $U_{mathrm{d}}=U_{mathrm{dm}}$ và dòng điện qua mạch là $I_{mathrm{dm}}$.\nNối tiếp: $U_b=U-U_{mathrm{dm}}$ nên $R_b=\\dfrac{U-U_{mathrm{dm}}}{I_{mathrm{dm}}}$.\n\n##PP Cách làm\nXác định $U_{mathrm{dm}}$, $I_{mathrm{dm}}$ của đèn.\nTính hiệu điện thế trên biến trở $U_b=U-U_{mathrm{dm}}$.\nTính $R_b=\\dfrac{U_b}{I_{mathrm{dm}}}$.\n\n##CY Lỗi hay mắc\nDùng cả $U$ nguồn chia cho $I_{mathrm{dm}}$ (quên trừ phần hiệu điện thế của đèn).",
+     "vi_du": "##VD\nĐèn ghi (6 V − 0,5 A) mắc nối tiếp với một biến trở vào nguồn U = 9 V không đổi. Tính giá trị biến trở Rb để đèn sáng đúng định mức.\nA. 12 Ω\nB. 18 Ω\nC. 1,5 Ω\nD. 6 Ω\n\nBài giải:\nĐèn sáng đúng định mức: $U_{mathrm{d}}=6\\ \\mathrm{V}$ và $I=0{,}5\\ \\mathrm{A}$.\nHiệu điện thế trên biến trở: $U_b=U-U_{mathrm{dm}}=9-6=3\\ \\mathrm{V}$.\nGiá trị biến trở: $R_b=\\dfrac{U_b}{I}=\\dfrac{3}{0{,}5}=6\\ \\Omega$.\nChọn D."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00477",
+   "chu_de": "Điện học",
+   "chuyen_de": "Mạch điện nối tiếp - Mạch điện song song",
+   "nhom": "Bài toán mạch điện hỗn hợp (kết hợp nối tiếp - song song)",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nMạch nối tiếp: $I=I_1=I_2$; $U=U_1+U_2$; $R=R_1+R_2$; $\\dfrac{U_1}{U_2}=\\dfrac{R_1}{R_2}$.\nMạch song song: $U=U_1=U_2$; $I=I_1+I_2$; $\\dfrac{1}{R}=\\dfrac{1}{R_1}+\\dfrac{1}{R_2}$; $\\dfrac{I_1}{I_2}=\\dfrac{R_2}{R_1}$.\n$n$ điện trở giống nhau $R_0$: nối tiếp $R=nR_0$; song song $R=\\dfrac{R_0}{n}$.\n\n##PP 2. Các bước làm bài\nNhận ra cụm điện trở nào mắc nối tiếp, cụm nào mắc song song; thu gọn từng cụm trước.\nTính $R_{mathrm{td}}$ của cả mạch từ trong ra ngoài.\nDùng định luật Ohm tìm dòng điện mạch chính; suy ra dòng, hiệu điện thế từng phần.\n\n##CY 3. Lưu ý\nCụm song song hai điện trở bằng nhau: $R_{23}=\\dfrac{R_0}{2}$.\nKhoá K mở thì nhánh chứa K bị ngắt, mạch thay đổi cách mắc.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01656",
+     "thu_tu": 1,
+     "ten": "Tính R tương đương khi R nối tiếp với cụm song song",
+     "mo_ta": "Đề cho $R_1$ nối tiếp với cụm hai điện trở $R_2$, $R_3$ mắc song song.\nTính $R_{23}$ bằng công thức song song rồi cộng với $R_1$.\nLưu ý: cụm nối tiếp mắc song song với $R_3$ ⇒ thuộc dạng \"Tính R tương đương khi cụm nối tiếp song song với R\".",
+     "ly_thuyet": "##TC Cấu trúc $R_1$ nt ($R_2$ // $R_3$)\n$R_{23}=\\dfrac{R_2R_3}{R_2+R_3}$ (hoặc $\\dfrac{R_0}{2}$ nếu giống nhau).\n$R=R_1+R_{23}$.\n\n##PP Cách làm\nTính điện trở của cụm song song $R_{23}$.\nCộng với $R_1$ vì $R_1$ nối tiếp với cụm.\n\n##CY Lỗi hay mắc\nCộng cả ba điện trở, hoặc quên cộng $R_1$ vào cuối.",
+     "vi_du": "##VD\nMạch điện gồm R₁ = 4 Ω nối tiếp với cụm hai điện trở R₂ = 6 Ω và R₃ = 12 Ω mắc song song. Tính điện trở tương đương R của cả mạch.\nA. 22 Ω\nB. 4 Ω\nC. 2 Ω\nD. 8 Ω\n\nBài giải:\nCụm song song: $R_{23}=\\dfrac{R_2R_3}{R_2+R_3}=\\dfrac{6\\times12}{6+12}=4\\ \\Omega$.\n$R_1$ nối tiếp với cụm đó nên $R=R_1+R_{23}=4+4=8\\ \\Omega$.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01657",
+     "thu_tu": 2,
+     "ten": "Tính R tương đương khi cụm nối tiếp song song với R",
+     "mo_ta": "Đề cho hai điện trở $R_1$, $R_2$ mắc nối tiếp tạo thành cụm, cụm này mắc song song với $R_3$.\nTính $R_{12}=R_1+R_2$ rồi tính điện trở tương đương của $R_{12}$ song song $R_3$.\nLưu ý: $R_1$ nối tiếp cụm song song ⇒ thuộc dạng \"Tính R tương đương khi R nối tiếp với cụm song song\".",
+     "ly_thuyet": "##TC Cấu trúc ($R_1$ nt $R_2$) // $R_3$\n$R_{12}=R_1+R_2$.\n$R=\\dfrac{R_{12}R_3}{R_{12}+R_3}$.\n\n##PP Cách làm\nTính điện trở của cụm nối tiếp $R_{12}$.\nÁp dụng công thức song song với $R_3$.\n\n##CY Lỗi hay mắc\nDùng công thức song song cho $R_1$, $R_2$ hoặc nối tiếp cho $R_{12}$ và $R_3$.",
+     "vi_du": "##VD\nMạch điện gồm cụm hai điện trở R₁ = 6 Ω, R₂ = 4 Ω mắc nối tiếp, cụm này mắc song song với R₃ = 10 Ω. Tính điện trở tương đương R của cả mạch.\nA. 20 Ω\nB. 5 Ω\nC. 10 Ω\nD. 100 Ω\n\nBài giải:\nCụm nối tiếp: $R_{12}=R_1+R_2=6+4=10\\ \\Omega$.\nCụm này song song với $R_3$: $R=\\dfrac{R_{12}R_3}{R_{12}+R_3}=\\dfrac{10\\times10}{10+10}=5\\ \\Omega$.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01658",
+     "thu_tu": 3,
+     "ten": "Mạch hỗn hợp có khoá K: dòng điện, độ sáng khi đóng/mở",
+     "mo_ta": "Đề cho mạch có $R_1$ nối tiếp cụm song song, trong đó một nhánh nối tiếp với khoá K.\nHỏi $R_{mathrm{td}}$, dòng điện mạch chính khi K đóng, khi K mở (nhánh bị ngắt), hoặc so sánh độ sáng đèn ở $R_1$.\nLàm bằng cách vẽ lại mạch theo trạng thái K rồi dùng định luật Ohm.\nLưu ý: không có khoá K, chỉ tính $R_{mathrm{td}}$ ⇒ thuộc hai dạng tính điện trở tương đương ở trên.",
+     "ly_thuyet": "##TC Khoá K\nK đóng: nhánh chứa K tham gia mạch.\nK mở: nhánh chứa K bị ngắt, mạch chỉ còn các điện trở còn lại.\nĐộ sáng đèn phụ thuộc dòng điện qua nó: $I$ lớn thì đèn sáng hơn.\n\n##PP Cách làm\nXét trạng thái K, vẽ lại mạch.\nTính $R_{mathrm{td}}$ trong trạng thái đó.\nTính $I=\\dfrac{U}{R}$ rồi so sánh với trạng thái kia.\n\n##CY Lỗi hay mắc\nVẫn tính cả nhánh đã bị ngắt khi K mở.",
+     "vi_du": "##VD\nMạch gồm điện trở R₁ = 6 Ω nối tiếp với cụm hai điện trở giống nhau R₂ = R₃ = 18 Ω mắc song song, có khoá K nối tiếp với R₃, nguồn U = 30 V. Khi khoá K đóng, tính cường độ dòng điện mạch chính I.\nA. 2 A\nB. 5 A\nC. 1,67 A\nD. 3,33 A\n\nBài giải:\nKhoá K đóng, cụm song song hai điện trở bằng nhau: $R_{23}=\\dfrac{18}{2}=9\\ \\Omega$.\nĐiện trở tương đương: $R=R_1+R_{23}=6+9=15\\ \\Omega$.\nDòng điện mạch chính: $I=\\dfrac{U}{R}=\\dfrac{30}{15}=2\\ \\mathrm{A}$.\nChọn A."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K09030101001",
+   "nhom_id": "KNB00466",
+   "loai": "trac_nghiem",
+   "de": "Điện trở của dây dẫn đặc trưng cho điều gì?",
+   "lua_chon": [
+    "Mức độ cản trở dòng điện chạy qua dây dẫn",
+    "Khả năng sinh ra dòng điện trong mạch",
+    "Độ sáng của bóng đèn mắc trong mạch",
+    "Khối lượng của dây dẫn"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Điện trở là đại lượng đặc trưng cho mức độ cản trở dòng điện của dây dẫn.\n\nVì sao các phương án khác sai:\n- B: Đó là vai trò của hiệu điện thế (nguồn điện), không phải điện trở.\n- C: Độ sáng của đèn là hệ quả của dòng điện, không phải định nghĩa điện trở.\n- D: Điện trở không đặc trưng cho khối lượng dây dẫn."
+  },
+  {
+   "ma_cau": "K09030101002",
+   "nhom_id": "KNB00466",
+   "loai": "trac_nghiem",
+   "de": "Đơn vị đo điện trở trong hệ SI là gì?",
+   "lua_chon": [
+    "Ampe (A)",
+    "Ohm (Ω)",
+    "Volt (V)",
+    "Watt (W)"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Đơn vị điện trở trong hệ SI là Ohm, kí hiệu Ω.\n\nVì sao các phương án khác sai:\n- A: Ampe là đơn vị đo cường độ dòng điện, không phải điện trở.\n- C: Volt là đơn vị đo hiệu điện thế, không phải điện trở.\n- D: Watt là đơn vị đo công suất, không phải điện trở."
+  },
+  {
+   "ma_cau": "K09030101003",
+   "nhom_id": "KNB00466",
+   "loai": "trac_nghiem",
+   "de": "1 kΩ bằng bao nhiêu Ω?",
+   "lua_chon": [
+    "100 Ω",
+    "10 Ω",
+    "1000 Ω",
+    "10 000 Ω"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Đổi đơn vị: 1 kΩ = 1000 Ω.\n\nVì sao các phương án khác sai:\n- A: Sai bậc, phải nhân 1000 lần, không phải 100 lần.\n- B: Sai bậc, 1 kΩ bằng 1000 Ω, không phải 10 Ω.\n- D: Sai bậc, 1 kΩ chỉ bằng 1000 Ω, không phải 10 000 Ω."
+  },
+  {
+   "ma_cau": "K09030101004",
+   "nhom_id": "KNB00466",
+   "loai": "trac_nghiem",
+   "de": "Dây dẫn X có điện trở 3,5 kΩ. Giá trị này bằng bao nhiêu Ω?",
+   "lua_chon": [
+    "350 Ω",
+    "35 000 Ω",
+    "0,35 Ω",
+    "3500 Ω"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Đổi 3,5 kΩ = 3,5 × 1000 = 3500 Ω.\n\nVì sao các phương án khác sai:\n- A: Sai bậc, thiếu một lần nhân 10.\n- B: Sai bậc, thừa một lần nhân 10.\n- C: Đặt sai vị trí dấu phẩy khi đổi đơn vị."
+  },
+  {
+   "ma_cau": "K09030101005",
+   "nhom_id": "KNB00466",
+   "loai": "trac_nghiem",
+   "de": "Điện trở càng lớn thì dòng điện qua dây dẫn (với cùng hiệu điện thế) thay đổi như thế nào?",
+   "lua_chon": [
+    "Càng lớn",
+    "Càng nhỏ",
+    "Không đổi",
+    "Bằng 0"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Điện trở càng lớn thì càng cản trở dòng điện nhiều, nên dòng điện càng nhỏ.\n\nVì sao các phương án khác sai:\n- A: Điện trở lớn cản trở dòng điện nhiều hơn nên dòng điện nhỏ hơn, không lớn hơn.\n- C: Điện trở thay đổi thì dòng điện qua dây cũng thay đổi theo.\n- D: Dây dẫn vẫn có dòng điện chạy qua, không phải bằng 0."
+  },
+  {
+   "ma_cau": "K09030101006",
+   "nhom_id": "KNB00466",
+   "loai": "trac_nghiem",
+   "de": "Trên một điện trở có ghi 470 Ω. Con số này cho biết điều gì?",
+   "lua_chon": [
+    "Mức độ cản trở dòng điện của điện trở",
+    "Cường độ dòng điện tối đa qua điện trở",
+    "Hiệu điện thế định mức của điện trở",
+    "Công suất tiêu thụ của điện trở"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Số ghi kèm đơn vị Ω trên điện trở là giá trị điện trở, cho biết mức độ cản trở dòng điện.\n\nVì sao các phương án khác sai:\n- B: Đơn vị Ω là của điện trở, không phải cường độ dòng điện (đơn vị A).\n- C: Đơn vị Ω là của điện trở, không phải hiệu điện thế (đơn vị V).\n- D: Đơn vị Ω là của điện trở, không phải công suất (đơn vị W)."
+  },
+  {
+   "ma_cau": "K09030101007",
+   "nhom_id": "KNB00466",
+   "loai": "trac_nghiem",
+   "de": "1 MΩ (mêgaôm) bằng bao nhiêu Ω?",
+   "lua_chon": [
+    "1 000 000 Ω",
+    "100 Ω",
+    "1000 Ω",
+    "10 000 Ω"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Tiền tố 'mêga' ứng với 1 000 000 lần nên 1 MΩ = 1 000 000 Ω.\n\nVì sao các phương án khác sai:\n- B: Sai bậc, phải nhân 1 000 000 lần, không phải 100 lần.\n- C: Đó là giá trị của 1 kΩ, không phải 1 MΩ.\n- D: Sai bậc, 1 MΩ bằng 1 000 000 Ω, không phải 10 000 Ω."
+  },
+  {
+   "ma_cau": "K09030101008",
+   "nhom_id": "KNB00466",
+   "loai": "trac_nghiem",
+   "de": "Hai dây dẫn được mắc lần lượt vào cùng một hiệu điện thế U. Dây nào có điện trở lớn hơn thì dòng điện qua nó thế nào?",
+   "lua_chon": [
+    "Lớn hơn",
+    "Nhỏ hơn",
+    "Không đổi",
+    "Bằng 0"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Theo định luật Ohm I = U/R, với U không đổi, điện trở lớn hơn thì dòng điện nhỏ hơn.\n\nVì sao các phương án khác sai:\n- A: Điện trở lớn hơn cản trở dòng điện nhiều hơn nên dòng điện nhỏ hơn, không lớn hơn.\n- C: Điện trở thay đổi thì dòng điện qua dây cũng thay đổi theo, không giữ nguyên.\n- D: Dây vẫn có dòng điện chạy qua (miễn R hữu hạn), không phải bằng 0."
+  },
+  {
+   "ma_cau": "K09030101009",
+   "nhom_id": "KNB00466",
+   "loai": "trac_nghiem",
+   "de": "Hai dây dẫn cùng tiết diện, cùng vật liệu. Dây dài hơn có điện trở thế nào so với dây ngắn hơn?",
+   "lua_chon": [
+    "Nhỏ hơn",
+    "Không đổi",
+    "Bằng 0",
+    "Lớn hơn"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Điện trở tỉ lệ thuận với chiều dài dây dẫn, dây dài hơn có điện trở lớn hơn.\n\nVì sao các phương án khác sai:\n- A: Dây dài hơn có điện trở lớn hơn, không nhỏ hơn.\n- B: Chiều dài thay đổi thì điện trở cũng thay đổi theo.\n- C: Dây dẫn vẫn có điện trở, không thể bằng 0."
+  },
+  {
+   "ma_cau": "K09030101010",
+   "nhom_id": "KNB00466",
+   "loai": "trac_nghiem",
+   "de": "Hai dây dẫn cùng chiều dài, cùng vật liệu. Dây có tiết diện lớn hơn có điện trở thế nào so với dây tiết diện nhỏ hơn?",
+   "lua_chon": [
+    "Lớn hơn",
+    "Không đổi",
+    "Nhỏ hơn",
+    "Bằng 0"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Điện trở tỉ lệ nghịch với tiết diện dây dẫn, tiết diện lớn hơn thì điện trở nhỏ hơn.\n\nVì sao các phương án khác sai:\n- A: Tiết diện lớn hơn thì điện trở NHỎ hơn, không lớn hơn.\n- B: Tiết diện thay đổi thì điện trở cũng thay đổi theo.\n- D: Dây dẫn vẫn có điện trở, không thể bằng 0."
+  },
+  {
+   "ma_cau": "K09030101011",
+   "nhom_id": "KNB00466",
+   "loai": "trac_nghiem",
+   "de": "Hai dây dẫn cùng chiều dài, cùng tiết diện nhưng làm từ hai vật liệu khác nhau. Điện trở của hai dây phụ thuộc vào yếu tố nào?",
+   "lua_chon": [
+    "Điện trở suất của vật liệu",
+    "Khối lượng của dây dẫn",
+    "Màu sắc của dây dẫn",
+    "Nhiệt độ phòng thí nghiệm"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Với cùng chiều dài và tiết diện, điện trở phụ thuộc vào điện trở suất (đặc trưng cho vật liệu).\n\nVì sao các phương án khác sai:\n- B: Khối lượng dây dẫn không quyết định điện trở.\n- C: Màu sắc không ảnh hưởng tới điện trở của dây dẫn.\n- D: Đề bài không xét tới ảnh hưởng của nhiệt độ."
+  },
+  {
+   "ma_cau": "K09030101012",
+   "nhom_id": "KNB00466",
+   "loai": "trac_nghiem",
+   "de": "Dây dẫn làm bằng vật liệu có điện trở suất lớn hơn, các yếu tố khác giữ nguyên, thì điện trở của dây thế nào?",
+   "lua_chon": [
+    "Nhỏ hơn",
+    "Lớn hơn",
+    "Không đổi",
+    "Bằng 0"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Điện trở tỉ lệ thuận với điện trở suất của vật liệu, điện trở suất lớn hơn thì điện trở lớn hơn.\n\nVì sao các phương án khác sai:\n- A: Điện trở suất lớn hơn thì điện trở LỚN hơn, không nhỏ hơn.\n- C: Điện trở suất thay đổi thì điện trở cũng thay đổi theo, không giữ nguyên.\n- D: Dây dẫn vẫn có điện trở, không thể bằng 0."
+  },
+  {
+   "ma_cau": "K09030101013",
+   "nhom_id": "KNB00466",
+   "loai": "trac_nghiem",
+   "de": "Dây dẫn được kéo dài ra và đồng thời tiết diện của nó nhỏ đi. Điện trở của dây thay đổi thế nào?",
+   "lua_chon": [
+    "Giảm xuống",
+    "Không đổi",
+    "Bằng 0",
+    "Tăng lên"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Chiều dài tăng và tiết diện giảm đều làm điện trở tăng theo công thức R = ρl/S.\n\nVì sao các phương án khác sai:\n- A: Cả hai thay đổi đều làm điện trở TĂNG, không giảm.\n- B: Cả chiều dài và tiết diện đều đổi nên điện trở phải thay đổi.\n- C: Dây dẫn vẫn có điện trở, không thể bằng 0."
+  },
+  {
+   "ma_cau": "K09030101014",
+   "nhom_id": "KNB00466",
+   "loai": "trac_nghiem",
+   "de": "Hai dây dẫn A và B làm từ hai vật liệu khác nhau, có cùng chiều dài và tiết diện. Dây A có điện trở suất lớn hơn dây B. Dây nào có điện trở lớn hơn?",
+   "lua_chon": [
+    "Dây B",
+    "Hai dây bằng nhau",
+    "Dây A",
+    "Không xác định được"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Với cùng chiều dài và tiết diện, điện trở tỉ lệ thuận với điện trở suất; dây A có điện trở suất lớn hơn nên điện trở lớn hơn.\n\nVì sao các phương án khác sai:\n- A: Dây B có điện trở suất nhỏ hơn nên điện trở nhỏ hơn, không lớn hơn.\n- B: Điện trở suất khác nhau nên điện trở hai dây khác nhau.\n- D: Có đủ dữ kiện để so sánh nhờ công thức R = ρl/S."
+  },
+  {
+   "ma_cau": "K09030201001",
+   "nhom_id": "KNB00473",
+   "loai": "trac_nghiem",
+   "de": "Trong đoạn mạch có hai điện trở mắc nối tiếp, đại lượng nào NHƯ NHAU tại mọi điểm của mạch?",
+   "lua_chon": [
+    "Cường độ dòng điện",
+    "Hiệu điện thế",
+    "Điện trở",
+    "Công suất tiêu thụ"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Mạch nối tiếp có cường độ dòng điện như nhau tại mọi điểm (I = I₁ = I₂); còn U và R thì cộng lại, không bằng nhau.\n\nVì sao các phương án khác sai:\n- B: Hiệu điện thế mắc nối tiếp thì cộng lại (U = U₁ + U₂), không giống nhau.\n- C: Điện trở mắc nối tiếp thì cộng lại (R = R₁ + R₂), không giống nhau.\n- D: Công suất từng điện trở khác nhau nếu hai điện trở khác giá trị."
+  },
+  {
+   "ma_cau": "K09030201002",
+   "nhom_id": "KNB00473",
+   "loai": "trac_nghiem",
+   "de": "Hai điện trở R₁, R₂ mắc nối tiếp. Hiệu điện thế U của cả đoạn mạch bằng gì?",
+   "lua_chon": [
+    "Chỉ bằng U₁",
+    "U₁ cộng U₂",
+    "Chỉ bằng U₂",
+    "Hiệu của U₁ và U₂"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Mạch nối tiếp có U = U₁ + U₂.\n\nVì sao các phương án khác sai:\n- A: Đã quên cộng thêm U₂, chỉ lấy U₁.\n- C: Đã quên cộng thêm U₁, chỉ lấy U₂.\n- D: Mạch nối tiếp phải cộng U₁ với U₂, không lấy hiệu."
+  },
+  {
+   "ma_cau": "K09030201003",
+   "nhom_id": "KNB00473",
+   "loai": "trac_nghiem",
+   "de": "Trong đoạn mạch nối tiếp gồm hai điện trở, điện trở tương đương R tính theo công thức nào?",
+   "lua_chon": [
+    "R = R₁·R₂/(R₁+R₂)",
+    "R = R₁ − R₂",
+    "R = R₁ + R₂",
+    "R luôn nhỏ hơn cả R₁ và R₂"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Mạch nối tiếp có điện trở tương đương bằng tổng các điện trở thành phần: R = R₁ + R₂.\n\nVì sao các phương án khác sai:\n- A: Đó là công thức tính R tương đương của mạch song song, không phải nối tiếp.\n- B: Điện trở nối tiếp phải cộng lại, không phải trừ đi.\n- D: Mạch nối tiếp có R tương đương LỚN hơn từng điện trở thành phần."
+  },
+  {
+   "ma_cau": "K09030201004",
+   "nhom_id": "KNB00473",
+   "loai": "trac_nghiem",
+   "de": "Quan sát sơ đồ ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030201-01-004-de.png) : hai điện trở R₁, R₂ mắc nối tiếp, ampe kế đo dòng mạch chính. Số chỉ ampe kế cho biết đại lượng nào?",
+   "lua_chon": [
+    "Hiệu điện thế giữa hai đầu R₁",
+    "Điện trở tương đương của mạch",
+    "Tổng hiệu điện thế hai điện trở",
+    "Cường độ dòng điện qua cả hai điện trở"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Mạch nối tiếp có dòng điện như nhau tại mọi điểm nên số chỉ ampe kế mạch chính đúng bằng dòng qua từng điện trở.\n\nVì sao các phương án khác sai:\n- A: Ampe kế đo cường độ dòng điện, không đo hiệu điện thế.\n- B: Ampe kế không đo được điện trở của mạch.\n- C: Ampe kế đo dòng điện, không đo tổng hiệu điện thế."
+  },
+  {
+   "ma_cau": "K09030201005",
+   "nhom_id": "KNB00473",
+   "loai": "trac_nghiem",
+   "de": "Muốn tăng điện trở tương đương của một đoạn mạch, nên mắc thêm điện trở mới theo cách nào?",
+   "lua_chon": [
+    "Mắc nối tiếp thêm điện trở",
+    "Mắc song song thêm điện trở",
+    "Mắc thêm vôn kế song song",
+    "Bớt số điện trở trong mạch"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Mắc nối tiếp thì điện trở tương đương cộng thêm giá trị điện trở mới nên tăng lên.\n\nVì sao các phương án khác sai:\n- B: Mắc song song làm điện trở tương đương giảm xuống, không tăng.\n- C: Vôn kế không phải là điện trở cần mắc thêm để đổi R mạch.\n- D: Bớt điện trở làm giảm R tương đương của mạch nối tiếp, không tăng."
+  },
+  {
+   "ma_cau": "K09030201006",
+   "nhom_id": "KNB00473",
+   "loai": "trac_nghiem",
+   "de": "Hai điện trở R₁ = R₂ mắc nối tiếp trong mạch. So sánh hiệu điện thế U₁ và U₂ ở hai điện trở?",
+   "lua_chon": [
+    "U₁ = 2U₂",
+    "U₁ = U₂",
+    "U₁ = 0",
+    "Không thể so sánh được"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Mạch nối tiếp có I như nhau; U = I·R nên R₁ = R₂ thì U₁ = U₂.\n\nVì sao các phương án khác sai:\n- A: Nếu R₁ = R₂ thì U₁ phải bằng U₂, không gấp đôi.\n- C: Mạch có dòng điện chạy qua nên U₁ không thể bằng 0.\n- D: Từ U = I·R và R₁ = R₂, I như nhau, hoàn toàn so sánh được U₁, U₂."
+  },
+  {
+   "ma_cau": "K09030201007",
+   "nhom_id": "KNB00473",
+   "loai": "trac_nghiem",
+   "de": "Trong đoạn mạch gồm ba điện trở mắc nối tiếp, nếu một trong ba điện trở bị đứt (hở mạch), điều gì xảy ra?",
+   "lua_chon": [
+    "Toàn mạch bị hở, không có dòng điện qua bất kỳ điện trở nào",
+    "Hai điện trở còn lại vẫn hoạt động bình thường",
+    "Chỉ điện trở bị đứt ngừng hoạt động, còn lại vẫn có dòng điện",
+    "Dòng điện tăng lên ở hai điện trở còn lại"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Trong mạch nối tiếp, các điện trở nằm trên cùng một nhánh duy nhất; một điện trở bị đứt sẽ làm hở toàn bộ mạch, không còn dòng điện ở bất kỳ đâu trong mạch đó.\n\nVì sao các phương án khác sai:\n- B: Mạch nối tiếp chỉ có một nhánh duy nhất, đứt một chỗ là hở toàn mạch, không điện trở nào còn dòng điện.\n- C: Không chỉ điện trở bị đứt mà cả mạch đều mất dòng điện vì chỉ có một nhánh duy nhất.\n- D: Mạch bị hở hoàn toàn nên dòng điện bằng 0 ở mọi nơi, không thể tăng lên."
+  },
+  {
+   "ma_cau": "K09030201008",
+   "nhom_id": "KNB00473",
+   "loai": "trac_nghiem",
+   "de": "Trong đoạn mạch có hai điện trở mắc song song, đại lượng nào NHƯ NHAU ở hai nhánh?",
+   "lua_chon": [
+    "Cường độ dòng điện",
+    "Điện trở",
+    "Hiệu điện thế",
+    "Công suất tiêu thụ"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Mạch song song có hiệu điện thế như nhau ở hai nhánh (U = U₁ = U₂); còn I và R khác nhau nếu R₁ khác R₂.\n\nVì sao các phương án khác sai:\n- A: Cường độ dòng điện ở hai nhánh khác nhau nếu điện trở hai nhánh khác nhau.\n- B: Điện trở hai nhánh là hai giá trị cho trước, không nhất thiết bằng nhau.\n- D: Công suất từng nhánh khác nhau nếu hai điện trở khác giá trị."
+  },
+  {
+   "ma_cau": "K09030201009",
+   "nhom_id": "KNB00473",
+   "loai": "trac_nghiem",
+   "de": "Hai điện trở R₁, R₂ mắc song song. Cường độ dòng điện mạch chính I bằng gì?",
+   "lua_chon": [
+    "Chỉ bằng I₁",
+    "Chỉ bằng I₂",
+    "Hiệu của I₁ và I₂",
+    "I₁ cộng I₂"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Mạch song song có I = I₁ + I₂.\n\nVì sao các phương án khác sai:\n- A: Đã quên cộng thêm I₂, chỉ lấy I₁.\n- B: Đã quên cộng thêm I₁, chỉ lấy I₂.\n- C: Mạch song song phải cộng I₁ với I₂, không lấy hiệu."
+  },
+  {
+   "ma_cau": "K09030201010",
+   "nhom_id": "KNB00473",
+   "loai": "trac_nghiem",
+   "de": "Công thức tính điện trở tương đương của hai điện trở mắc song song là gì?",
+   "lua_chon": [
+    "1/R = 1/R₁ + 1/R₂",
+    "R = R₁ + R₂",
+    "R = R₁ − R₂",
+    "R luôn lớn hơn cả R₁ và R₂"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Mạch song song cộng nghịch đảo các điện trở: 1/R = 1/R₁ + 1/R₂.\n\nVì sao các phương án khác sai:\n- B: Đó là công thức tính R tương đương của mạch nối tiếp, không phải song song.\n- C: Điện trở song song không được trừ đi nhau.\n- D: Mạch song song có R tương đương NHỎ hơn mỗi điện trở thành phần."
+  },
+  {
+   "ma_cau": "K09030201011",
+   "nhom_id": "KNB00473",
+   "loai": "trac_nghiem",
+   "de": "Quan sát sơ đồ ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030201-02-004-de.png) : R₁, R₂ mắc song song, ampe kế đo dòng mạch chính. Tháo bớt R₂, số chỉ ampe kế đổi thế nào?",
+   "lua_chon": [
+    "Tăng lên",
+    "Giảm xuống",
+    "Không đổi",
+    "Bằng 0"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Tháo bớt một nhánh song song thì mạch mất bớt một dòng nhánh, dòng điện mạch chính giảm xuống.\n\nVì sao các phương án khác sai:\n- A: Mất bớt một nhánh làm tổng dòng điện giảm, không tăng.\n- C: Số nhánh mạch thay đổi nên dòng điện mạch chính phải thay đổi theo.\n- D: Nhánh R₁ vẫn còn nên vẫn có dòng điện, không thể bằng 0."
+  },
+  {
+   "ma_cau": "K09030201012",
+   "nhom_id": "KNB00473",
+   "loai": "trac_nghiem",
+   "de": "Điện trở tương đương của đoạn mạch song song so với từng điện trở thành phần như thế nào?",
+   "lua_chon": [
+    "Luôn lớn hơn mỗi điện trở thành phần",
+    "Bằng tổng hai điện trở",
+    "Luôn nhỏ hơn mỗi điện trở thành phần",
+    "Bằng trung bình cộng hai điện trở"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Mạch song song luôn có điện trở tương đương nhỏ hơn giá trị nhỏ nhất trong các điện trở thành phần.\n\nVì sao các phương án khác sai:\n- A: Mắc song song luôn làm giảm điện trở tương đương, không tăng.\n- B: Đó là công thức cộng của mạch nối tiếp, không phải song song.\n- D: Công thức song song là cộng nghịch đảo, không phải trung bình cộng."
+  },
+  {
+   "ma_cau": "K09030201013",
+   "nhom_id": "KNB00473",
+   "loai": "trac_nghiem",
+   "de": "Trong đoạn mạch gồm hai điện trở mắc song song, nếu một nhánh bị đứt (hở mạch) thì điều gì xảy ra?",
+   "lua_chon": [
+    "Toàn mạch bị hở, không còn dòng điện ở nhánh nào",
+    "Nhánh còn lại vẫn có dòng điện chạy qua bình thường",
+    "Dòng điện ở nhánh còn lại giảm về 0",
+    "Hiệu điện thế ở nhánh còn lại tăng vọt không giới hạn"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Mạch song song có nhiều nhánh độc lập; đứt một nhánh không ảnh hưởng tới đường đi của dòng điện ở nhánh còn lại, nhánh đó vẫn hoạt động bình thường.\n\nVì sao các phương án khác sai:\n- A: Chỉ nhánh bị đứt mất dòng điện, nhánh còn lại vẫn là một mạch kín riêng, không bị ảnh hưởng.\n- C: Nhánh còn lại vẫn nối đủ với nguồn nên dòng điện không giảm về 0.\n- D: Hiệu điện thế ở nhánh còn lại vẫn bằng hiệu điện thế nguồn như trước, không tăng vọt."
+  },
+  {
+   "ma_cau": "K09030201014",
+   "nhom_id": "KNB00473",
+   "loai": "trac_nghiem",
+   "de": "Nếu mắc thêm một điện trở song song vào một đoạn mạch đã có sẵn, điện trở tương đương của mạch thay đổi thế nào?",
+   "lua_chon": [
+    "Luôn tăng lên",
+    "Không đổi",
+    "Luôn giảm xuống",
+    "Có thể tăng hoặc giảm tuỳ trường hợp"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Mắc thêm điện trở song song luôn tạo thêm một đường dẫn dòng điện, làm điện trở tương đương của mạch giảm xuống.\n\nVì sao các phương án khác sai:\n- A: Mắc song song thêm điện trở luôn làm giảm, không phải tăng, điện trở tương đương.\n- B: Thêm một nhánh dẫn điện chắc chắn làm thay đổi (giảm) điện trở tương đương.\n- D: Mắc song song luôn có cùng một chiều thay đổi là giảm điện trở tương đương, không tuỳ trường hợp."
+  },
+  {
+   "ma_cau": "K09030301001",
+   "nhom_id": "KNB00478",
+   "loai": "trac_nghiem",
+   "de": "Trên bóng đèn có ghi \"220V – 60W\". Số 60W cho biết điều gì?",
+   "lua_chon": [
+    "Công suất điện định mức của đèn",
+    "Cường độ dòng điện định mức qua đèn",
+    "Hiệu điện thế định mức để đèn sáng bình thường",
+    "Năng lượng điện đèn tiêu thụ trong một giờ"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Số ghi kèm đơn vị W là công suất điện định mức, tức công suất tiêu thụ khi đèn hoạt động đúng hiệu điện thế định mức.\n\nVì sao các phương án khác sai:\n- B: Đơn vị W là công suất, không phải cường độ dòng điện (đơn vị A).\n- C: Số 220V mới là hiệu điện thế định mức, không phải 60W.\n- D: Công suất định mức khác năng lượng tiêu thụ theo thời gian."
+  },
+  {
+   "ma_cau": "K09030301002",
+   "nhom_id": "KNB00478",
+   "loai": "trac_nghiem",
+   "de": "Trên nồi cơm điện có ghi \"220V – 700W\". Số 220V cho biết điều gì?",
+   "lua_chon": [
+    "Công suất điện định mức của nồi cơm điện",
+    "Hiệu điện thế định mức để nồi hoạt động bình thường",
+    "Cường độ dòng điện định mức qua nồi",
+    "Năng lượng điện nồi tiêu thụ trong một giờ"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Số ghi kèm đơn vị V là hiệu điện thế định mức để thiết bị hoạt động bình thường.\n\nVì sao các phương án khác sai:\n- A: Đơn vị W (700W) mới là công suất, không phải 220V.\n- C: Đơn vị cường độ dòng điện là A, không phải V.\n- D: Số ghi trên nồi là hiệu điện thế định mức, không phải năng lượng tiêu thụ."
+  },
+  {
+   "ma_cau": "K09030301003",
+   "nhom_id": "KNB00478",
+   "loai": "trac_nghiem",
+   "de": "Trên quạt điện có ghi \"220V – 45W\". Nếu mắc quạt đúng vào hiệu điện thế định mức thì quạt tiêu thụ công suất bao nhiêu?",
+   "lua_chon": [
+    "Lớn hơn 45W",
+    "Nhỏ hơn 45W",
+    "Đúng bằng 45W",
+    "Không xác định được"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Khi hiệu điện thế đặt vào đúng bằng định mức, thiết bị tiêu thụ đúng công suất định mức ghi trên nhãn, ở đây là 45W.\n\nVì sao các phương án khác sai:\n- A: Ở đúng hiệu điện thế định mức, quạt chỉ tiêu thụ đúng công suất định mức, không lớn hơn.\n- B: Ở đúng hiệu điện thế định mức, quạt tiêu thụ đúng công suất định mức, không nhỏ hơn.\n- D: Công suất tiêu thụ ở hiệu điện thế định mức chính là công suất định mức 45W ghi trên nhãn."
+  },
+  {
+   "ma_cau": "K09030301004",
+   "nhom_id": "KNB00478",
+   "loai": "trac_nghiem",
+   "de": "Trên ấm đun nước có ghi \"220V – 1500W\". Số 1500W có ý nghĩa gì?",
+   "lua_chon": [
+    "Cường độ dòng điện định mức qua ấm",
+    "Công suất điện định mức của ấm",
+    "Hiệu điện thế định mức của ấm",
+    "Điện trở của dây đốt trong ấm"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Số ghi kèm đơn vị W là công suất điện định mức của ấm khi hoạt động ở hiệu điện thế 220V.\n\nVì sao các phương án khác sai:\n- A: Đơn vị cường độ dòng điện là A, không phải W.\n- C: Đơn vị hiệu điện thế là V, không phải W.\n- D: Đơn vị điện trở là Ω, không phải W."
+  },
+  {
+   "ma_cau": "K09030301005",
+   "nhom_id": "KNB00478",
+   "loai": "trac_nghiem",
+   "de": "Trên máy sấy tóc có ghi \"220V – 1200W\". Đâu là hiệu điện thế định mức của máy?",
+   "lua_chon": [
+    "220V",
+    "1200V",
+    "1200W",
+    "Không xác định được từ số ghi trên máy"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Số ghi kèm đơn vị V (220V) là hiệu điện thế định mức của máy.\n\nVì sao các phương án khác sai:\n- B: 1200 đi kèm đơn vị W, không phải V.\n- C: 1200W là công suất định mức, không phải hiệu điện thế.\n- D: Hiệu điện thế định mức được ghi rõ là 220V trên nhãn máy."
+  },
+  {
+   "ma_cau": "K09030301006",
+   "nhom_id": "KNB00478",
+   "loai": "trac_nghiem",
+   "de": "Trên bếp điện có ghi \"220V – 2000W\". Đâu là công suất điện định mức của bếp?",
+   "lua_chon": [
+    "220W",
+    "220V",
+    "2000V",
+    "2000W"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Số ghi kèm đơn vị W (2000W) là công suất điện định mức của bếp.\n\nVì sao các phương án khác sai:\n- A: 220 đi kèm đơn vị V, không phải W.\n- B: Đó là hiệu điện thế định mức, không phải công suất.\n- C: 2000 đi kèm đơn vị W (đơn vị công suất), không phải V."
+  },
+  {
+   "ma_cau": "K09030301007",
+   "nhom_id": "KNB00478",
+   "loai": "trac_nghiem",
+   "de": "Trên máy bơm nước có ghi '220V – 370W'. Nếu chỉ mắc máy bơm vào hiệu điện thế 200V (thấp hơn định mức), công suất tiêu thụ thực tế sẽ thế nào so với 370W?",
+   "lua_chon": [
+    "Nhỏ hơn 370W",
+    "Lớn hơn 370W",
+    "Đúng bằng 370W",
+    "Bằng 0"
+   ],
+   "dap_an": "A",
+   "loi_giai": "370W là công suất định mức, chỉ đạt được khi hiệu điện thế đặt vào đúng bằng định mức (220V); khi hiệu điện thế thấp hơn, công suất tiêu thụ thực tế nhỏ hơn công suất định mức.\n\nVì sao các phương án khác sai:\n- B: Hiệu điện thế thấp hơn định mức làm công suất tiêu thụ giảm, không tăng.\n- C: Chỉ khi đúng hiệu điện thế định mức mới đạt đúng công suất định mức.\n- D: Máy vẫn hoạt động (dù yếu hơn) khi có hiệu điện thế đặt vào, không phải bằng 0."
+  },
+  {
+   "ma_cau": "K09030301008",
+   "nhom_id": "KNB00478",
+   "loai": "trac_nghiem",
+   "de": "Đơn vị nào dùng để đo năng lượng điện tiêu thụ, được ghi trên hoá đơn tiền điện?",
+   "lua_chon": [
+    "Ampe (A)",
+    "Kilôoát giờ (kWh)",
+    "Vôn (V)",
+    "Ôm (Ω)"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Hoá đơn tiền điện tính theo số kWh tiêu thụ, đơn vị năng lượng điện thông dụng.\n\nVì sao các phương án khác sai:\n- A: A là đơn vị cường độ dòng điện, không phải năng lượng.\n- C: V là đơn vị hiệu điện thế, không phải năng lượng.\n- D: Ω là đơn vị điện trở, không phải năng lượng."
+  },
+  {
+   "ma_cau": "K09030301009",
+   "nhom_id": "KNB00478",
+   "loai": "trac_nghiem",
+   "de": "1 kWh bằng bao nhiêu jun (J)?",
+   "lua_chon": [
+    "3 600 J",
+    "60 000 J",
+    "3 600 000 J",
+    "360 000 J"
+   ],
+   "dap_an": "C",
+   "loi_giai": "1 kWh = 1000 W × 3600 s = 3 600 000 J.\n\nVì sao các phương án khác sai:\n- A: Quên đổi W sang kW (1 kW = 1000 W) trước khi tính.\n- B: Nhầm 1 giờ bằng 60 giây, phải là 3600 giây.\n- D: Sai bậc mười khi tính 1000 × 3600, thiếu một chữ số 0."
+  },
+  {
+   "ma_cau": "K09030301010",
+   "nhom_id": "KNB00478",
+   "loai": "trac_nghiem",
+   "de": "Số đếm công tơ điện tăng thêm 1 đơn vị tương ứng với năng lượng điện tiêu thụ là bao nhiêu?",
+   "lua_chon": [
+    "1 kWh",
+    "1 J",
+    "1 W",
+    "1 A"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Mỗi số đếm trên công tơ điện gia đình tương ứng với 1 kWh năng lượng điện tiêu thụ.\n\nVì sao các phương án khác sai:\n- B: J là đơn vị năng lượng nhưng công tơ đếm theo kWh, không phải từng J.\n- C: W là đơn vị công suất, không phải năng lượng tiêu thụ.\n- D: A là đơn vị cường độ dòng điện, không phải năng lượng."
+  },
+  {
+   "ma_cau": "K09030301011",
+   "nhom_id": "KNB00478",
+   "loai": "trac_nghiem",
+   "de": "Ấm điện tiêu thụ năng lượng 900 000 J. Giá trị đó bằng bao nhiêu kWh?",
+   "lua_chon": [
+    "0,9 kWh",
+    "900 kWh",
+    "0,25 kWh",
+    "2,5 kWh"
+   ],
+   "dap_an": "C",
+   "loi_giai": "900 000 J = 900 000 / 3 600 000 = 0,25 kWh.\n\nVì sao các phương án khác sai:\n- A: Nhầm 1 kWh = 1 000 000 J, thiếu hệ số 3,6.\n- B: Nhầm đơn vị kWh với kJ (chia cho 1000).\n- D: Đặt sai vị trí dấu phẩy, kết quả phải là 0,25 kWh."
+  },
+  {
+   "ma_cau": "K09030301012",
+   "nhom_id": "KNB00478",
+   "loai": "trac_nghiem",
+   "de": "Số oát (W) ghi trên quạt điện cho biết đại lượng nào?",
+   "lua_chon": [
+    "Năng lượng điện quạt tiêu thụ trong một giờ",
+    "Công suất điện định mức của quạt",
+    "Hiệu điện thế định mức của quạt",
+    "Cường độ dòng điện định mức qua quạt"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Số ghi kèm đơn vị W là công suất điện định mức của quạt.\n\nVì sao các phương án khác sai:\n- A: Đó là ý nghĩa của kWh (năng lượng), không phải W (công suất).\n- C: Đơn vị hiệu điện thế là V, không phải W.\n- D: Đơn vị cường độ dòng điện là A, không phải W."
+  },
+  {
+   "ma_cau": "K09030301013",
+   "nhom_id": "KNB00478",
+   "loai": "trac_nghiem",
+   "de": "0,5 kWh bằng bao nhiêu jun (J)?",
+   "lua_chon": [
+    "1 800 J",
+    "1 800 000 J",
+    "180 000 J",
+    "18 000 000 J"
+   ],
+   "dap_an": "B",
+   "loi_giai": "1 kWh = 3 600 000 J nên 0,5 kWh = 0,5 × 3 600 000 = 1 800 000 J.\n\nVì sao các phương án khác sai:\n- A: Sai bậc rất nhiều, thiếu nhiều lần nhân 10.\n- C: Sai bậc, thiếu một lần nhân 10.\n- D: Sai bậc, thừa một lần nhân 10."
+  },
+  {
+   "ma_cau": "K09030301014",
+   "nhom_id": "KNB00478",
+   "loai": "trac_nghiem",
+   "de": "Máy giặt tiêu thụ năng lượng 1 800 000 J trong một lần giặt. Giá trị đó bằng bao nhiêu kWh?",
+   "lua_chon": [
+    "1,8 kWh",
+    "1800 kWh",
+    "0,5 kWh",
+    "5 kWh"
+   ],
+   "dap_an": "C",
+   "loi_giai": "1 800 000 J = 1 800 000 / 3 600 000 = 0,5 kWh.\n\nVì sao các phương án khác sai:\n- A: Nhầm 1 kWh = 1 000 000 J, thiếu hệ số 3,6.\n- B: Nhầm đơn vị kWh với kJ (chia cho 1000).\n- D: Đặt sai vị trí dấu phẩy, kết quả phải là 0,5 kWh."
+  },
+  {
+   "ma_cau": "K09030301015",
+   "nhom_id": "KNB00478",
+   "loai": "trac_nghiem",
+   "de": "Vì sao không nên dùng dây điện đã cũ, vỏ cách điện bị nứt nẻ trong nhà?",
+   "lua_chon": [
+    "Vì dây cũ dẫn điện kém hơn, làm thiết bị chạy yếu",
+    "Vì vỏ cách điện bị nứt dễ gây rò điện, chạm chập, nguy hiểm",
+    "Vì dây cũ làm tăng hoá đơn tiền điện hàng tháng",
+    "Vì dây cũ có màu sắc không đẹp mắt"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Vỏ cách điện bị nứt nẻ không còn ngăn được dòng điện rò ra ngoài, dễ gây chạm chập, cháy nổ hoặc điện giật khi chạm phải.\n\nVì sao các phương án khác sai:\n- A: Dây dẫn điện, dù cũ, không thay đổi bản chất dẫn điện của lõi kim loại bên trong.\n- C: Hoá đơn tiền điện phụ thuộc vào công suất và thời gian sử dụng, không phải tuổi của dây điện.\n- D: Màu sắc không phải lí do an toàn quan trọng ở đây."
+  },
+  {
+   "ma_cau": "K09030301016",
+   "nhom_id": "KNB00478",
+   "loai": "trac_nghiem",
+   "de": "Biện pháp nào sau đây giúp tiết kiệm điện năng hiệu quả trong gia đình?",
+   "lua_chon": [
+    "Bật tất cả đèn trong nhà kể cả phòng không có người",
+    "Để điều hoà hoạt động cả ngày dù không có ai ở nhà",
+    "Chọn thiết bị tiết kiệm năng lượng, công suất phù hợp",
+    "Cắm sạc điện thoại qua đêm dù đã đầy pin"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Chọn thiết bị có nhãn tiết kiệm năng lượng, công suất phù hợp nhu cầu sử dụng giúp giảm điện năng tiêu thụ mà vẫn đáp ứng nhu cầu.\n\nVì sao các phương án khác sai:\n- A: Bật đèn ở phòng không người là lãng phí điện năng không cần thiết.\n- B: Để điều hoà chạy khi không có người là lãng phí điện năng rất lớn.\n- D: Sạc điện thoại qua đêm khi đã đầy pin vẫn tiêu thụ điện năng không cần thiết."
+  },
+  {
+   "ma_cau": "K09030102001",
+   "nhom_id": "KNB00467",
+   "loai": "trac_nghiem",
+   "de": "Một dây dẫn có điện trở 4 Ω được mắc vào hiệu điện thế 12 V. Cường độ dòng điện chạy qua dây dẫn là bao nhiêu?",
+   "lua_chon": [
+    "48 A",
+    "0,33 A",
+    "3 A",
+    "8 A"
+   ],
+   "dap_an": "C",
+   "loi_giai": "I = U/R = 12/4 = 3 A.\n\nVì sao các phương án khác sai:\n- A: Đã nhân U với R thay vì chia, sai phép tính.\n- B: Đã tính R/U thay vì U/R, đảo ngược tỉ số.\n- D: Đã lấy U trừ R thay vì U chia R."
+  },
+  {
+   "ma_cau": "K09030102002",
+   "nhom_id": "KNB00467",
+   "loai": "trac_nghiem",
+   "de": "Một bóng đèn có điện trở 6 Ω được mắc vào hiệu điện thế 24 V. Cường độ dòng điện qua đèn là bao nhiêu?",
+   "lua_chon": [
+    "144 A",
+    "4 A",
+    "0,25 A",
+    "18 A"
+   ],
+   "dap_an": "B",
+   "loi_giai": "I = U/R = 24/6 = 4 A.\n\nVì sao các phương án khác sai:\n- A: Đã nhân U với R thay vì chia, sai phép tính.\n- C: Đã tính R/U thay vì U/R, đảo ngược tỉ số.\n- D: Đã lấy U trừ R thay vì U chia R."
+  },
+  {
+   "ma_cau": "K09030102003",
+   "nhom_id": "KNB00467",
+   "loai": "trac_nghiem",
+   "de": "Một dây dẫn có điện trở 8 Ω được mắc vào hiệu điện thế 20 V. Cường độ dòng điện chạy qua dây dẫn là bao nhiêu?",
+   "lua_chon": [
+    "2,5 A",
+    "160 A",
+    "0,4 A",
+    "12 A"
+   ],
+   "dap_an": "A",
+   "loi_giai": "I = U/R = 20/8 = 2,5 A.\n\nVì sao các phương án khác sai:\n- B: Đã nhân U với R thay vì chia, sai phép tính.\n- C: Đã tính R/U thay vì U/R, đảo ngược tỉ số.\n- D: Đã lấy U trừ R thay vì U chia R."
+  },
+  {
+   "ma_cau": "K09030102004",
+   "nhom_id": "KNB00467",
+   "loai": "trac_nghiem",
+   "de": "Một dây dẫn có điện trở 5 Ω, cường độ dòng điện chạy qua là 2 A. Hiệu điện thế giữa hai đầu dây dẫn là bao nhiêu?",
+   "lua_chon": [
+    "10 V",
+    "2,5 V",
+    "7 V",
+    "3 V"
+   ],
+   "dap_an": "A",
+   "loi_giai": "U = I×R = 2×5 = 10 V.\n\nVì sao các phương án khác sai:\n- B: Đã tính R/I thay vì I×R, đảo ngược tỉ số.\n- C: Đã lấy tổng I với R thay vì nhân, sai phép tính.\n- D: Đã lấy hiệu R trừ I thay vì nhân, sai phép tính."
+  },
+  {
+   "ma_cau": "K09030102005",
+   "nhom_id": "KNB00467",
+   "loai": "trac_nghiem",
+   "de": "Hiệu điện thế giữa hai đầu một điện trở là 9 V, cường độ dòng điện qua nó là 3 A. Điện trở này có giá trị bao nhiêu?",
+   "lua_chon": [
+    "27 Ω",
+    "6 Ω",
+    "3 Ω",
+    "0,33 Ω"
+   ],
+   "dap_an": "C",
+   "loi_giai": "R = U/I = 9/3 = 3 Ω.\n\nVì sao các phương án khác sai:\n- A: Đã nhân U với I thay vì chia, sai phép tính.\n- B: Đã lấy U trừ I thay vì U chia I.\n- D: Đã tính I/U thay vì U/I, đảo ngược tỉ số."
+  },
+  {
+   "ma_cau": "K09030102006",
+   "nhom_id": "KNB00467",
+   "loai": "trac_nghiem",
+   "de": "Hiệu điện thế giữa hai đầu một điện trở là 15 V, cường độ dòng điện qua nó là 2,5 A. Điện trở này có giá trị bao nhiêu?",
+   "lua_chon": [
+    "37,5 Ω",
+    "12,5 Ω",
+    "≈0,167 Ω",
+    "6 Ω"
+   ],
+   "dap_an": "D",
+   "loi_giai": "R = U/I = 15/2,5 = 6 Ω.\n\nVì sao các phương án khác sai:\n- A: Đã nhân U với I thay vì chia, sai phép tính.\n- B: Đã lấy U trừ I thay vì U chia I.\n- C: Đã tính I/U thay vì U/I, đảo ngược tỉ số."
+  },
+  {
+   "ma_cau": "K09030102007",
+   "nhom_id": "KNB00467",
+   "loai": "trac_nghiem",
+   "de": "Một dây dẫn có điện trở 2 kΩ được mắc vào hiệu điện thế 12 V. Cường độ dòng điện qua dây dẫn (tính ra mA) là bao nhiêu?",
+   "lua_chon": [
+    "6 A",
+    "0,006 mA",
+    "0,6 mA",
+    "6 mA"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Đổi 2 kΩ = 2 000 Ω. I = U/R = 12/2 000 = 0,006 A = 6 mA.\n\nVì sao các phương án khác sai:\n- A: Quên đổi 2 kΩ = 2 000 Ω nên tính sai điện trở, sai cả trị số lẫn đơn vị.\n- B: Tính đúng ra dòng điện theo A nhưng quên đổi sang mA (nhân 1000).\n- C: Sai bậc khi đổi A sang mA, phải nhân 1000 lần chứ không phải 100 lần."
+  },
+  {
+   "ma_cau": "K09030102008",
+   "nhom_id": "KNB00467",
+   "loai": "trac_nghiem",
+   "de": "Một bóng đèn có hiệu điện thế 6 V, cường độ dòng điện qua đèn là 250 mA. Điện trở của đèn là bao nhiêu?",
+   "lua_chon": [
+    "24 Ω",
+    "0,024 Ω",
+    "1 500 Ω",
+    "2,4 Ω"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Đổi 250 mA = 0,25 A. R = U/I = 6/0,25 = 24 Ω.\n\nVì sao các phương án khác sai:\n- B: Quên đổi 250 mA = 0,25 A nên tính sai điện trở.\n- C: Đã nhân U với I (chưa đổi đơn vị) thay vì chia, sai phép tính.\n- D: Sai bậc khi đổi mA sang A, phải chia 1000 lần chứ không phải 100 lần."
+  },
+  {
+   "ma_cau": "K09030102009",
+   "nhom_id": "KNB00467",
+   "loai": "trac_nghiem",
+   "de": "Một dây dẫn có điện trở 5 kΩ được mắc vào hiệu điện thế 15 V. Cường độ dòng điện qua dây dẫn (tính ra mA) là bao nhiêu?",
+   "lua_chon": [
+    "3 A",
+    "0,003 mA",
+    "3 mA",
+    "0,3 mA"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Đổi 5 kΩ = 5 000 Ω. I = U/R = 15/5 000 = 0,003 A = 3 mA.\n\nVì sao các phương án khác sai:\n- A: Quên đổi 5 kΩ = 5 000 Ω nên tính sai điện trở, sai cả trị số lẫn đơn vị.\n- B: Tính đúng ra dòng điện theo A nhưng quên đổi sang mA (nhân 1000).\n- D: Sai bậc khi đổi A sang mA, phải nhân 1000 lần chứ không phải 100 lần."
+  },
+  {
+   "ma_cau": "K09030103001",
+   "nhom_id": "KNB00468",
+   "loai": "trac_nghiem",
+   "de": "Dây nikelin có điện trở suất ρ = 0,4 Ω·mm²/m, chiều dài l = 5 m, tiết diện S = 0,5 mm². Điện trở của dây là bao nhiêu?",
+   "lua_chon": [
+    "10 Ω",
+    "4 Ω",
+    "0,04 Ω",
+    "1 Ω"
+   ],
+   "dap_an": "B",
+   "loi_giai": "R = ρl/S = 0,4×5/0,5 = 4 Ω.\n\nVì sao các phương án khác sai:\n- A: Đã quên nhân với điện trở suất ρ, chỉ tính l/S.\n- C: Đã tính ρS/l, đảo ngược vị trí của l và S trong công thức.\n- D: Đã nhân cả ba đại lượng ρ, l, S thay vì chia cho S."
+  },
+  {
+   "ma_cau": "K09030103002",
+   "nhom_id": "KNB00468",
+   "loai": "trac_nghiem",
+   "de": "Dây constantan có điện trở suất ρ = 0,5 Ω·mm²/m, chiều dài l = 8 m, tiết diện S = 0,4 mm². Điện trở của dây là bao nhiêu?",
+   "lua_chon": [
+    "20 Ω",
+    "0,025 Ω",
+    "10 Ω",
+    "1,6 Ω"
+   ],
+   "dap_an": "C",
+   "loi_giai": "R = ρl/S = 0,5×8/0,4 = 10 Ω.\n\nVì sao các phương án khác sai:\n- A: Đã quên nhân với điện trở suất ρ, chỉ tính l/S.\n- B: Đã tính ρS/l, đảo ngược vị trí của l và S trong công thức.\n- D: Đã nhân cả ba đại lượng ρ, l, S thay vì chia cho S."
+  },
+  {
+   "ma_cau": "K09030103003",
+   "nhom_id": "KNB00468",
+   "loai": "trac_nghiem",
+   "de": "Dây manganin có điện trở suất ρ = 0,43 Ω·mm²/m, chiều dài l = 10 m, tiết diện S = 0,5 mm². Điện trở của dây là bao nhiêu?",
+   "lua_chon": [
+    "20 Ω",
+    "8,6 Ω",
+    "0,0215 Ω",
+    "2,15 Ω"
+   ],
+   "dap_an": "B",
+   "loi_giai": "R = ρl/S = 0,43×10/0,5 = 8,6 Ω.\n\nVì sao các phương án khác sai:\n- A: Đã quên nhân với điện trở suất ρ, chỉ tính l/S.\n- C: Đã tính ρS/l, đảo ngược vị trí của l và S trong công thức.\n- D: Đã nhân cả ba đại lượng ρ, l, S thay vì chia cho S."
+  },
+  {
+   "ma_cau": "K09030103004",
+   "nhom_id": "KNB00468",
+   "loai": "trac_nghiem",
+   "de": "Dây nikelin có điện trở suất ρ = 0,4 Ω·mm²/m, tiết diện S = 0,5 mm², điện trở R = 8 Ω. Chiều dài của dây là bao nhiêu?",
+   "lua_chon": [
+    "20 m",
+    "0,025 m",
+    "1,6 m",
+    "10 m"
+   ],
+   "dap_an": "D",
+   "loi_giai": "l = RS/ρ = 8×0,5/0,4 = 10 m.\n\nVì sao các phương án khác sai:\n- A: Đã quên nhân với tiết diện S, chỉ tính R/ρ.\n- B: Đã tính ρS/R, đảo ngược công thức tính chiều dài.\n- C: Đã nhân cả ba đại lượng thay vì áp dụng đúng công thức l = RS/ρ."
+  },
+  {
+   "ma_cau": "K09030103005",
+   "nhom_id": "KNB00468",
+   "loai": "trac_nghiem",
+   "de": "Dây constantan có điện trở suất ρ = 0,5 Ω·mm²/m, chiều dài l = 6 m, điện trở R = 15 Ω. Tiết diện của dây là bao nhiêu?",
+   "lua_chon": [
+    "0,2 mm²",
+    "3 mm²",
+    "5 mm²",
+    "2 mm²"
+   ],
+   "dap_an": "A",
+   "loi_giai": "S = ρl/R = 0,5×6/15 = 0,2 mm².\n\nVì sao các phương án khác sai:\n- B: Đã quên chia cho R, chỉ tính ρ×l.\n- C: Đã tính R/(ρl), đảo ngược hoàn toàn công thức tính tiết diện.\n- D: Sai bậc, thừa một lần nhân 10 khi tính toán."
+  },
+  {
+   "ma_cau": "K09030103006",
+   "nhom_id": "KNB00468",
+   "loai": "trac_nghiem",
+   "de": "Dây nichrome có điện trở suất ρ = 1,1 Ω·mm²/m, tiết diện S = 0,2 mm², điện trở R = 11 Ω. Chiều dài của dây là bao nhiêu?",
+   "lua_chon": [
+    "2 m",
+    "10 m",
+    "0,02 m",
+    "2,42 m"
+   ],
+   "dap_an": "A",
+   "loi_giai": "l = RS/ρ = 11×0,2/1,1 = 2 m.\n\nVì sao các phương án khác sai:\n- B: Đã quên nhân với tiết diện S, chỉ tính R/ρ.\n- C: Đã tính ρS/R, đảo ngược công thức tính chiều dài.\n- D: Đã nhân cả ba đại lượng thay vì áp dụng đúng công thức l = RS/ρ."
+  },
+  {
+   "ma_cau": "K09030103007",
+   "nhom_id": "KNB00468",
+   "loai": "trac_nghiem",
+   "de": "Một dây dẫn làm bằng nichrome có điện trở suất ρ = 1,1×10⁻⁶ Ω·m, chiều dài 2 m, tiết diện 0,5 mm². Điện trở của dây là bao nhiêu?",
+   "lua_chon": [
+    "0,044 Ω",
+    "4,4×10⁻⁶ Ω",
+    "4,4 Ω",
+    "0,44 Ω"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Đổi 0,5 mm² = 0,5×10⁻⁶ m². R = ρl/S = (1,1×10⁻⁶×2) / (0,5×10⁻⁶) = 4,4 Ω.\n\nVì sao các phương án khác sai:\n- A: Nhầm hệ số đổi cm² sang m² (10⁻⁴) với hệ số đổi mm² sang m² (10⁻⁶).\n- B: Quên đổi 0,5 mm² sang m², dùng thẳng số 0,5 nên kết quả sai hẳn về độ lớn.\n- D: Sai bậc, thiếu một lần nhân 10 khi tính toán."
+  },
+  {
+   "ma_cau": "K09030103008",
+   "nhom_id": "KNB00468",
+   "loai": "trac_nghiem",
+   "de": "Dây dẫn hình trụ đường kính d = 2 mm, điện trở suất ρ = 0,5 Ω·mm²/m, chiều dài 4 m, lấy π ≈ 3,14. Điện trở của dây là bao nhiêu?",
+   "lua_chon": [
+    "0,16 Ω",
+    "0,64 Ω",
+    "1,27 Ω",
+    "0,32 Ω"
+   ],
+   "dap_an": "B",
+   "loi_giai": "S = πd²/4 = 3,14×2²/4 = 3,14 mm². R = ρl/S = 0,5×4/3,14 ≈ 0,64 Ω.\n\nVì sao các phương án khác sai:\n- A: Quên chia cho 4 trong công thức S = πd²/4, tính thành S = πd².\n- C: Quên bình phương d, tính nhầm thành S = πd/4.\n- D: Dùng công thức chu vi πd thay vì diện tích hình tròn."
+  },
+  {
+   "ma_cau": "K09030103009",
+   "nhom_id": "KNB00468",
+   "loai": "trac_nghiem",
+   "de": "Một dây dẫn làm bằng constantan có điện trở suất ρ = 0,5×10⁻⁶ Ω·m, chiều dài 4 m, tiết diện 0,4 mm². Điện trở của dây là bao nhiêu?",
+   "lua_chon": [
+    "0,05 Ω",
+    "0,000005 Ω",
+    "0,5 Ω",
+    "5 Ω"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Đổi 0,4 mm² = 0,4×10⁻⁶ m². R = ρl/S = (0,5×10⁻⁶×4) / (0,4×10⁻⁶) = 5 Ω.\n\nVì sao các phương án khác sai:\n- A: Nhầm hệ số đổi cm² sang m² (10⁻⁴) với hệ số đổi mm² sang m² (10⁻⁶).\n- B: Quên đổi 0,4 mm² sang m², dùng thẳng số 0,4 nên kết quả sai hẳn về độ lớn.\n- C: Sai bậc, thiếu một lần nhân 10 khi tính toán."
+  },
+  {
+   "ma_cau": "K09030203001",
+   "nhom_id": "KNB00475",
+   "loai": "trac_nghiem",
+   "de": "Quan sát sơ đồ ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030202-01-001-de.png) : hai điện trở R₁ = 6 Ω, R₂ = 9 Ω mắc nối tiếp. Tính điện trở tương đương R của đoạn mạch.",
+   "lua_chon": [
+    "3,6 Ω",
+    "54 Ω",
+    "9 Ω",
+    "15 Ω"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Mạch nối tiếp có R = R₁ + R₂ = 6 + 9 = 15 Ω.\n\nVì sao các phương án khác sai:\n- A: Đó là kết quả nếu dùng nhầm công thức song song R₁R₂/(R₁+R₂), không phải nối tiếp.\n- B: Đã nhân hai điện trở thay vì cộng lại.\n- C: Đã chỉ lấy một điện trở, quên cộng thêm điện trở còn lại."
+  },
+  {
+   "ma_cau": "K09030203002",
+   "nhom_id": "KNB00475",
+   "loai": "trac_nghiem",
+   "de": "Ba điện trở R₁ = 4 Ω, R₂ = 6 Ω, R₃ = 8 Ω mắc nối tiếp. Tính điện trở tương đương R của đoạn mạch. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030202-01-002-de.png)",
+   "lua_chon": [
+    "18 Ω",
+    "10 Ω",
+    "192 Ω",
+    "2 Ω"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Mạch nối tiếp có R = R₁ + R₂ + R₃ = 4 + 6 + 8 = 18 Ω.\n\nVì sao các phương án khác sai:\n- B: Đã quên cộng R₃, chỉ cộng R₁ với R₂.\n- C: Đã nhân ba điện trở thay vì cộng lại.\n- D: Đã trừ R₃ thay vì cộng: 4 + 6 − 8, sai phép tính."
+  },
+  {
+   "ma_cau": "K09030203003",
+   "nhom_id": "KNB00475",
+   "loai": "trac_nghiem",
+   "de": "Ba điện trở R₁ = 3 Ω, R₂ = 5 Ω, R₃ = 7 Ω mắc nối tiếp. Tính điện trở tương đương R của đoạn mạch. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030202-01-003-de.png)",
+   "lua_chon": [
+    "12 Ω",
+    "15 Ω",
+    "105 Ω",
+    "7 Ω"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Mạch nối tiếp có R = R₁ + R₂ + R₃ = 3 + 5 + 7 = 15 Ω.\n\nVì sao các phương án khác sai:\n- A: Đã quên cộng R₁, chỉ cộng R₂ với R₃.\n- C: Đã nhân ba điện trở thay vì cộng lại.\n- D: Đã chỉ lấy điện trở lớn nhất, quên cộng hai điện trở còn lại."
+  },
+  {
+   "ma_cau": "K09030203004",
+   "nhom_id": "KNB00475",
+   "loai": "trac_nghiem",
+   "de": "Hai điện trở R₁ = 2 Ω, R₂ = 18 Ω mắc nối tiếp. Tính điện trở tương đương R của đoạn mạch. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030202-01-004-de.png)",
+   "lua_chon": [
+    "1,8 Ω",
+    "36 Ω",
+    "20 Ω",
+    "18 Ω"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Mạch nối tiếp có R = R₁ + R₂ = 2 + 18 = 20 Ω.\n\nVì sao các phương án khác sai:\n- A: Đó là kết quả nếu dùng nhầm công thức song song R₁R₂/(R₁+R₂), không phải nối tiếp.\n- B: Đã nhân hai điện trở thay vì cộng lại.\n- D: Đã chỉ lấy R₂, quên cộng thêm R₁."
+  },
+  {
+   "ma_cau": "K09030203005",
+   "nhom_id": "KNB00475",
+   "loai": "trac_nghiem",
+   "de": "Quan sát sơ đồ ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030202-01-005-de.png) : hai điện trở R₁ = 7 Ω, R₂ = 13 Ω mắc nối tiếp. Tính điện trở tương đương R của đoạn mạch.",
+   "lua_chon": [
+    "≈4,55 Ω",
+    "91 Ω",
+    "13 Ω",
+    "20 Ω"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Mạch nối tiếp có R = R₁ + R₂ = 7 + 13 = 20 Ω.\n\nVì sao các phương án khác sai:\n- A: Đó là kết quả nếu dùng nhầm công thức song song R₁R₂/(R₁+R₂), không phải nối tiếp.\n- B: Đã nhân hai điện trở thay vì cộng lại.\n- C: Đã chỉ lấy một điện trở, quên cộng thêm điện trở còn lại."
+  },
+  {
+   "ma_cau": "K09030203006",
+   "nhom_id": "KNB00475",
+   "loai": "trac_nghiem",
+   "de": "Ba điện trở R₁ = 5 Ω, R₂ = 9 Ω, R₃ = 11 Ω mắc nối tiếp. Tính điện trở tương đương R của đoạn mạch. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030202-01-006-de.png)",
+   "lua_chon": [
+    "25 Ω",
+    "14 Ω",
+    "495 Ω",
+    "3 Ω"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Mạch nối tiếp có R = R₁ + R₂ + R₃ = 5 + 9 + 11 = 25 Ω.\n\nVì sao các phương án khác sai:\n- B: Đã quên cộng R₃, chỉ cộng R₁ với R₂.\n- C: Đã nhân ba điện trở thay vì cộng lại.\n- D: Đã trừ R₃ thay vì cộng: 5 + 9 − 11, sai phép tính."
+  },
+  {
+   "ma_cau": "K09030203007",
+   "nhom_id": "KNB00475",
+   "loai": "trac_nghiem",
+   "de": "Quan sát sơ đồ ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030202-02-001-de.png) : hai điện trở R₁ = 6 Ω, R₂ = 3 Ω mắc song song. Tính điện trở tương đương R của đoạn mạch.",
+   "lua_chon": [
+    "9 Ω",
+    "18 Ω",
+    "1/2 Ω",
+    "2 Ω"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Mạch song song có R = R₁·R₂/(R₁+R₂) = 6×3/9 = 2 Ω.\n\nVì sao các phương án khác sai:\n- A: Đã cộng hai điện trở như mạch nối tiếp: 6 + 3 = 9.\n- B: Đã nhân hai điện trở mà không chia cho tổng.\n- C: Đã tính 1/R₁ + 1/R₂ = 1/2 rồi dừng lại, quên lấy nghịch đảo."
+  },
+  {
+   "ma_cau": "K09030203008",
+   "nhom_id": "KNB00475",
+   "loai": "trac_nghiem",
+   "de": "Hai điện trở R₁ = 4 Ω, R₂ = 12 Ω mắc song song. Tính điện trở tương đương R của đoạn mạch. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030202-02-002-de.png)",
+   "lua_chon": [
+    "3 Ω",
+    "16 Ω",
+    "48 Ω",
+    "1/3 Ω"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Mạch song song có R = R₁·R₂/(R₁+R₂) = 4×12/16 = 3 Ω.\n\nVì sao các phương án khác sai:\n- B: Đã cộng hai điện trở như mạch nối tiếp: 4 + 12 = 16.\n- C: Đã nhân hai điện trở mà không chia cho tổng.\n- D: Đã tính 1/R₁ + 1/R₂ = 1/3 rồi dừng lại, quên lấy nghịch đảo."
+  },
+  {
+   "ma_cau": "K09030203009",
+   "nhom_id": "KNB00475",
+   "loai": "trac_nghiem",
+   "de": "Hai điện trở giống nhau R₁ = R₂ = 10 Ω mắc song song. Tính điện trở tương đương R của đoạn mạch. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030202-02-003-de.png)",
+   "lua_chon": [
+    "20 Ω",
+    "5 Ω",
+    "100 Ω",
+    "10 Ω"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Mạch song song có R = R₁·R₂/(R₁+R₂) = 10×10/20 = 5 Ω.\n\nVì sao các phương án khác sai:\n- A: Đã cộng hai điện trở như mạch nối tiếp: 10 + 10 = 20.\n- C: Đã nhân hai điện trở mà không chia cho tổng.\n- D: Đã giữ nguyên giá trị một điện trở, quên chia đôi khi song song."
+  },
+  {
+   "ma_cau": "K09030203010",
+   "nhom_id": "KNB00475",
+   "loai": "trac_nghiem",
+   "de": "Hai điện trở R₁ = 9 Ω, R₂ = 18 Ω mắc song song. Tính điện trở tương đương R của đoạn mạch. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030202-02-004-de.png)",
+   "lua_chon": [
+    "27 Ω",
+    "162 Ω",
+    "6 Ω",
+    "1/6 Ω"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Mạch song song có R = R₁·R₂/(R₁+R₂) = 9×18/27 = 6 Ω.\n\nVì sao các phương án khác sai:\n- A: Đã cộng hai điện trở như mạch nối tiếp: 9 + 18 = 27.\n- B: Đã nhân hai điện trở mà không chia cho tổng.\n- D: Đã tính 1/R₁ + 1/R₂ = 1/6 rồi dừng lại, quên lấy nghịch đảo."
+  },
+  {
+   "ma_cau": "K09030203011",
+   "nhom_id": "KNB00475",
+   "loai": "trac_nghiem",
+   "de": "Hai điện trở R₁ = 6 Ω, R₂ = 12 Ω mắc song song. Tính điện trở tương đương R của đoạn mạch. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030202-02-005-de.png)",
+   "lua_chon": [
+    "18 Ω",
+    "4 Ω",
+    "72 Ω",
+    "1/4 Ω"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Mạch song song có R = R₁·R₂/(R₁+R₂) = 6×12/18 = 4 Ω.\n\nVì sao các phương án khác sai:\n- A: Đã cộng hai điện trở như mạch nối tiếp: 6 + 12 = 18.\n- C: Đã nhân hai điện trở mà không chia cho tổng.\n- D: Đã tính 1/R₁ + 1/R₂ = 1/4 rồi dừng lại, quên lấy nghịch đảo."
+  },
+  {
+   "ma_cau": "K09030203012",
+   "nhom_id": "KNB00475",
+   "loai": "trac_nghiem",
+   "de": "Hai điện trở R₁ = 15 Ω, R₂ = 10 Ω mắc song song. Tính điện trở tương đương R của đoạn mạch. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030202-02-006-de.png)",
+   "lua_chon": [
+    "25 Ω",
+    "150 Ω",
+    "6 Ω",
+    "1/6 Ω"
+   ],
+   "dap_an": "C",
+   "loi_giai": "R = R₁·R₂/(R₁+R₂) = 15×10/25 = 6 Ω.\n\nVì sao các phương án khác sai:\n- A: Đã cộng hai điện trở như mạch nối tiếp: 15 + 10 = 25.\n- B: Đã nhân hai điện trở mà không chia cho tổng.\n- D: Đã tính 1/R₁ + 1/R₂ = 1/6 rồi dừng lại, quên lấy nghịch đảo."
+  },
+  {
+   "ma_cau": "K09030203013",
+   "nhom_id": "KNB00475",
+   "loai": "trac_nghiem",
+   "de": "Ba điện trở giống nhau, mỗi cái 8 Ω, mắc nối tiếp với nhau. Tính điện trở tương đương R của đoạn mạch. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030202-03-001-de.png)",
+   "lua_chon": [
+    "8 Ω",
+    "16 Ω",
+    "2,67 Ω",
+    "24 Ω"
+   ],
+   "dap_an": "D",
+   "loi_giai": "n điện trở giống nhau R mắc nối tiếp cho R tương đương = n·R = 3×8 = 24 Ω.\n\nVì sao các phương án khác sai:\n- A: Đã giữ nguyên như chỉ có một điện trở, quên nhân với số điện trở.\n- B: Đã chỉ cộng hai lần thay vì ba lần, thiếu một điện trở.\n- C: Đó là kết quả nếu dùng nhầm công thức song song R/n, không phải nối tiếp."
+  },
+  {
+   "ma_cau": "K09030203014",
+   "nhom_id": "KNB00475",
+   "loai": "trac_nghiem",
+   "de": "Bốn điện trở giống nhau, mỗi cái 5 Ω, mắc song song với nhau. Tính điện trở tương đương R của đoạn mạch.",
+   "lua_chon": [
+    "1,25 Ω",
+    "20 Ω",
+    "5 Ω",
+    "1,67 Ω"
+   ],
+   "dap_an": "A",
+   "loi_giai": "n điện trở giống nhau R mắc song song cho R tương đương = R/n = 5/4 = 1,25 Ω.\n\nVì sao các phương án khác sai:\n- B: Đó là kết quả nếu dùng nhầm công thức nối tiếp n·R, không phải song song.\n- C: Đã giữ nguyên như chỉ có một điện trở, quên chia cho số điện trở.\n- D: Đã chia cho 3 (thiếu một điện trở) thay vì chia cho 4."
+  },
+  {
+   "ma_cau": "K09030203015",
+   "nhom_id": "KNB00475",
+   "loai": "trac_nghiem",
+   "de": "Hai điện trở giống nhau, mỗi cái 12 Ω, mắc song song với nhau. Tính điện trở tương đương R của đoạn mạch. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030202-03-003-de.png)",
+   "lua_chon": [
+    "12 Ω",
+    "6 Ω",
+    "24 Ω",
+    "3 Ω"
+   ],
+   "dap_an": "B",
+   "loi_giai": "n điện trở giống nhau R mắc song song cho R tương đương = R/n = 12/2 = 6 Ω.\n\nVì sao các phương án khác sai:\n- A: Đã giữ nguyên như chỉ có một điện trở, quên chia cho số điện trở.\n- C: Đó là kết quả nếu dùng nhầm công thức nối tiếp n·R, không phải song song.\n- D: Đã chia cho bình phương số điện trở (12/4) thay vì chia cho 2."
+  },
+  {
+   "ma_cau": "K09030203016",
+   "nhom_id": "KNB00475",
+   "loai": "trac_nghiem",
+   "de": "Năm điện trở giống nhau, mỗi cái 10 Ω, mắc nối tiếp với nhau. Tính điện trở tương đương R của đoạn mạch.",
+   "lua_chon": [
+    "10 Ω",
+    "2 Ω",
+    "50 Ω",
+    "40 Ω"
+   ],
+   "dap_an": "C",
+   "loi_giai": "n điện trở giống nhau R mắc nối tiếp cho R tương đương = n·R = 5×10 = 50 Ω.\n\nVì sao các phương án khác sai:\n- A: Đã giữ nguyên như chỉ có một điện trở, quên nhân với số điện trở.\n- B: Đó là kết quả nếu dùng nhầm công thức song song R/n, không phải nối tiếp.\n- D: Đã chỉ nhân với 4 (thiếu một điện trở) thay vì nhân với 5."
+  },
+  {
+   "ma_cau": "K09030203017",
+   "nhom_id": "KNB00475",
+   "loai": "trac_nghiem",
+   "de": "Sáu điện trở giống nhau, mỗi cái 4 Ω, mắc nối tiếp với nhau. Tính điện trở tương đương R của đoạn mạch.",
+   "lua_chon": [
+    "4 Ω",
+    "20 Ω",
+    "≈0,67 Ω",
+    "24 Ω"
+   ],
+   "dap_an": "D",
+   "loi_giai": "n điện trở giống nhau R mắc nối tiếp cho R tương đương = n·R = 6×4 = 24 Ω.\n\nVì sao các phương án khác sai:\n- A: Đã giữ nguyên như chỉ có một điện trở, quên nhân với số điện trở.\n- B: Đã chỉ nhân với 5 (thiếu một điện trở) thay vì nhân với 6.\n- C: Đó là kết quả nếu dùng nhầm công thức song song R/n, không phải nối tiếp."
+  },
+  {
+   "ma_cau": "K09030203018",
+   "nhom_id": "KNB00475",
+   "loai": "trac_nghiem",
+   "de": "Ba điện trở giống nhau, mỗi cái 15 Ω, mắc song song với nhau. Tính điện trở tương đương R của đoạn mạch. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030202-03-006-de.png)",
+   "lua_chon": [
+    "5 Ω",
+    "45 Ω",
+    "15 Ω",
+    "7,5 Ω"
+   ],
+   "dap_an": "A",
+   "loi_giai": "n điện trở giống nhau R mắc song song cho R tương đương = R/n = 15/3 = 5 Ω.\n\nVì sao các phương án khác sai:\n- B: Đó là kết quả nếu dùng nhầm công thức nối tiếp n·R, không phải song song.\n- C: Đã giữ nguyên như chỉ có một điện trở, quên chia cho số điện trở.\n- D: Đã chia cho 2 (thiếu một điện trở) thay vì chia cho 3."
+  },
+  {
+   "ma_cau": "K09030203019",
+   "nhom_id": "KNB00475",
+   "loai": "trac_nghiem",
+   "de": "Quan sát sơ đồ ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030203-01-001-de.png) : hai điện trở R₁ = 4 Ω, R₂ = 16 Ω mắc nối tiếp vào nguồn U = 20 V. Tính cường độ dòng điện I trong mạch.",
+   "lua_chon": [
+    "5 A",
+    "1,25 A",
+    "20 A",
+    "1 A"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Điện trở tương đương R = R₁ + R₂ = 20 Ω; I = U/R = 20/20 = 1 A.\n\nVì sao các phương án khác sai:\n- A: Đã chia U cho riêng R₁ (20/4), quên cộng thêm R₂.\n- B: Đã chia U cho riêng R₂ (20/16), quên cộng thêm R₁.\n- C: Đã quên chia U cho điện trở tương đương, giữ nguyên giá trị U."
+  },
+  {
+   "ma_cau": "K09030203020",
+   "nhom_id": "KNB00475",
+   "loai": "trac_nghiem",
+   "de": "Mạch nối tiếp gồm R₁ = 6 Ω, R₂ = 9 Ω, cường độ dòng điện trong mạch I = 2 A. Tính hiệu điện thế U₂ ở hai đầu R₂. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030203-01-002-de.png)",
+   "lua_chon": [
+    "18 V",
+    "12 V",
+    "30 V",
+    "0,22 V"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Mạch nối tiếp có I chung; U₂ = I·R₂ = 2×9 = 18 V.\n\nVì sao các phương án khác sai:\n- B: Đó là U₁ = I·R₁ = 12 V, không phải U₂ cần tìm.\n- C: Đó là hiệu điện thế cả mạch U = I·(R₁+R₂) = 30 V, không phải riêng U₂.\n- D: Đã lấy I chia cho R₂ thay vì nhân, tính ngược công thức."
+  },
+  {
+   "ma_cau": "K09030203021",
+   "nhom_id": "KNB00475",
+   "loai": "trac_nghiem",
+   "de": "Mạch nối tiếp gồm R₁ = 5 Ω, R₂ = 8 Ω. Biết hiệu điện thế U₁ ở hai đầu R₁ là 15 V. Tính hiệu điện thế U₂ ở hai đầu R₂. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030203-01-003-de.png)",
+   "lua_chon": [
+    "15 V",
+    "24 V",
+    "8 V",
+    "11 V"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Từ U₁ = I·R₁ suy ra I = 15/5 = 3 A; U₂ = I·R₂ = 3×8 = 24 V.\n\nVì sao các phương án khác sai:\n- A: Đó là giá trị U₁ đã cho, không phải U₂ cần tìm.\n- C: Đã ghi luôn giá trị điện trở R₂, quên nhân với cường độ dòng điện I.\n- D: Đã cộng I với R₂ (3+8) thay vì nhân, sai phép tính."
+  },
+  {
+   "ma_cau": "K09030203022",
+   "nhom_id": "KNB00475",
+   "loai": "trac_nghiem",
+   "de": "Quan sát sơ đồ ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030203-02-001-de.png) : hai điện trở R₁ = 4 Ω, R₂ = 12 Ω mắc song song vào nguồn U = 12 V. Tính cường độ dòng điện I₁ qua R₁.",
+   "lua_chon": [
+    "1 A",
+    "48 A",
+    "3 A",
+    "0,75 A"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Mạch song song có U chung; I₁ = U/R₁ = 12/4 = 3 A.\n\nVì sao các phương án khác sai:\n- A: Đó là I₂ = U/R₂ = 1 A, không phải I₁ cần tìm.\n- B: Đã nhân U với R₁ thay vì chia, sai phép tính.\n- D: Đã cộng R₁ với R₂ rồi chia như mạch nối tiếp, không đúng công thức song song."
+  },
+  {
+   "ma_cau": "K09030203023",
+   "nhom_id": "KNB00475",
+   "loai": "trac_nghiem",
+   "de": "Trong mạch trên (R₁ = 4 Ω, R₂ = 12 Ω, U = 12 V mắc song song), tính cường độ dòng điện I₂ qua R₂. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030203-02-002-de.png)",
+   "lua_chon": [
+    "3 A",
+    "144 A",
+    "4 A",
+    "1 A"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Mạch song song có U chung; I₂ = U/R₂ = 12/12 = 1 A.\n\nVì sao các phương án khác sai:\n- A: Đó là I₁ = U/R₁ = 3 A, không phải I₂ cần tìm.\n- B: Đã nhân U với R₂ thay vì chia, sai phép tính.\n- C: Đã dùng điện trở tương đương của cả mạch (3 Ω) thay vì R₂ riêng để chia."
+  },
+  {
+   "ma_cau": "K09030203024",
+   "nhom_id": "KNB00475",
+   "loai": "trac_nghiem",
+   "de": "Mạch song song gồm hai điện trở, hiệu điện thế U = 18 V. Biết cường độ dòng điện qua R₁ là I₁ = 3 A và qua R₂ là I₂ = 2 A. Tính cường độ dòng điện mạch chính I. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030203-02-003-de.png)",
+   "lua_chon": [
+    "5 A",
+    "3 A",
+    "2 A",
+    "6 A"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Mạch song song có I = I₁ + I₂ = 3 + 2 = 5 A.\n\nVì sao các phương án khác sai:\n- B: Đó chỉ là I₁, quên cộng thêm I₂.\n- C: Đó chỉ là I₂, quên cộng thêm I₁.\n- D: Đã nhân I₁ với I₂ thay vì cộng lại."
+  },
+  {
+   "ma_cau": "K09030203025",
+   "nhom_id": "KNB00475",
+   "loai": "trac_nghiem",
+   "de": "Đèn ghi (4 V − 0,5 A, coi điện trở đèn không đổi) mắc nối tiếp với biến trở đang chỉnh ở giá trị Rb = 12 Ω, vào nguồn U = 15 V không đổi. Tính cường độ dòng điện qua đèn lúc này.",
+   "lua_chon": [
+    "1,25 A",
+    "1,88 A",
+    "0,75 A",
+    "0,5 A"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Điện trở đèn Rđèn = Uđm/Iđm = 4/0,5 = 8 Ω; I = U/(Rb+Rđèn) = 15/(12+8) = 0,75 A.\n\nVì sao các phương án khác sai:\n- A: Đã chỉ chia U cho Rb của biến trở, quên cộng thêm điện trở đèn.\n- B: Đã chỉ chia U cho điện trở đèn, quên cộng thêm biến trở.\n- D: Đã nhầm tưởng đèn vẫn sáng đúng định mức dù giá trị biến trở đã đổi."
+  },
+  {
+   "ma_cau": "K09030203026",
+   "nhom_id": "KNB00475",
+   "loai": "trac_nghiem",
+   "de": "Đèn ghi (5 V − 0,5 A, coi điện trở đèn không đổi) mắc nối tiếp với biến trở đang chỉnh ở giá trị Rb = 15 Ω, vào nguồn U = 25 V không đổi. Tính cường độ dòng điện qua đèn lúc này.",
+   "lua_chon": [
+    "1,67 A",
+    "2,5 A",
+    "1 A",
+    "0,5 A"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Điện trở đèn Rđèn = Uđm/Iđm = 5/0,5 = 10 Ω; I = U/(Rb+Rđèn) = 25/(15+10) = 1 A.\n\nVì sao các phương án khác sai:\n- A: Đã chỉ chia U cho Rb của biến trở, quên cộng thêm điện trở đèn.\n- B: Đã chỉ chia U cho điện trở đèn, quên cộng thêm biến trở.\n- D: Đã nhầm tưởng đèn vẫn sáng đúng định mức dù giá trị biến trở đã đổi."
+  },
+  {
+   "ma_cau": "K09030303001",
+   "nhom_id": "KNB00480",
+   "loai": "trac_nghiem",
+   "de": "Bóng đèn ghi \"220V – 44W\". Tính cường độ dòng điện định mức qua đèn.",
+   "lua_chon": [
+    "9680A",
+    "5A",
+    "44A",
+    "0,2A"
+   ],
+   "dap_an": "D",
+   "loi_giai": "I = P/U = 44/220 = 0,2A.\n\nVì sao các phương án khác sai:\n- A: Đã nhân P với U thay vì chia.\n- B: Đã lấy U chia cho P (đảo ngược tỉ số) thay vì P chia cho U.\n- C: Đã lấy giá trị P làm đáp số, quên chia cho U."
+  },
+  {
+   "ma_cau": "K09030303002",
+   "nhom_id": "KNB00480",
+   "loai": "trac_nghiem",
+   "de": "Nồi cơm điện ghi \"220V – 484W\". Tính điện trở định mức của nồi bằng công thức R = U²/P.",
+   "lua_chon": [
+    "100Ω",
+    "0,45Ω",
+    "48400Ω",
+    "0,01Ω"
+   ],
+   "dap_an": "A",
+   "loi_giai": "R = U²/P = 220² / 484 = 48 400 / 484 = 100Ω.\n\nVì sao các phương án khác sai:\n- B: Đã quên bình phương U, chỉ lấy U chia cho P.\n- C: Đã quên chia cho P, chỉ tính U² mà không chia tiếp.\n- D: Đã lấy P chia cho U² (đảo ngược công thức) thay vì U² chia cho P."
+  },
+  {
+   "ma_cau": "K09030303003",
+   "nhom_id": "KNB00480",
+   "loai": "trac_nghiem",
+   "de": "Bếp điện ghi \"220V – 880W\". Tính cường độ dòng điện định mức qua bếp.",
+   "lua_chon": [
+    "193600A",
+    "4A",
+    "0,25A",
+    "880A"
+   ],
+   "dap_an": "B",
+   "loi_giai": "I = P/U = 880/220 = 4A.\n\nVì sao các phương án khác sai:\n- A: Đã nhân P với U thay vì chia.\n- C: Đã lấy U chia cho P (đảo ngược tỉ số) thay vì P chia cho U.\n- D: Đã lấy giá trị P làm đáp số, quên chia cho U."
+  },
+  {
+   "ma_cau": "K09030303004",
+   "nhom_id": "KNB00480",
+   "loai": "trac_nghiem",
+   "de": "Ấm đun nước ghi \"220V – 968W\". Tính điện trở định mức của ấm bằng công thức R = U²/P.",
+   "lua_chon": [
+    "0,23Ω",
+    "48400Ω",
+    "50Ω",
+    "0,02Ω"
+   ],
+   "dap_an": "C",
+   "loi_giai": "R = U²/P = 220² / 968 = 48 400 / 968 = 50Ω.\n\nVì sao các phương án khác sai:\n- A: Đã quên bình phương U, chỉ lấy U chia cho P.\n- B: Đã quên chia cho P, chỉ tính U² mà không chia tiếp.\n- D: Đã lấy P chia cho U² (đảo ngược công thức) thay vì U² chia cho P."
+  },
+  {
+   "ma_cau": "K09030303005",
+   "nhom_id": "KNB00480",
+   "loai": "trac_nghiem",
+   "de": "Quạt điện ghi '220V – 66W'. Tính cường độ dòng điện định mức qua quạt.",
+   "lua_chon": [
+    "14520A",
+    "3,33A",
+    "66A",
+    "0,3A"
+   ],
+   "dap_an": "D",
+   "loi_giai": "I = P/U = 66/220 = 0,3A.\n\nVì sao các phương án khác sai:\n- A: Đã nhân P với U thay vì chia.\n- B: Đã lấy U chia cho P (đảo ngược tỉ số) thay vì P chia cho U.\n- C: Đã lấy giá trị P làm đáp số, quên chia cho U."
+  },
+  {
+   "ma_cau": "K09030303006",
+   "nhom_id": "KNB00480",
+   "loai": "trac_nghiem",
+   "de": "Ấm siêu tốc ghi '220V – 1210W'. Tính điện trở định mức của ấm bằng công thức R = U²/P.",
+   "lua_chon": [
+    "40Ω",
+    "0,18Ω",
+    "48400Ω",
+    "0,025Ω"
+   ],
+   "dap_an": "A",
+   "loi_giai": "R = U²/P = 220² / 1210 = 48 400 / 1210 = 40Ω.\n\nVì sao các phương án khác sai:\n- B: Đã quên bình phương U, chỉ lấy U chia cho P.\n- C: Đã quên chia cho P, chỉ tính U² mà không chia tiếp.\n- D: Đã lấy P chia cho U² (đảo ngược công thức) thay vì U² chia cho P."
+  },
+  {
+   "ma_cau": "K09030104001",
+   "nhom_id": "KNB00469",
+   "loai": "trac_nghiem",
+   "de": "Đồ thị biểu diễn sự phụ thuộc của I vào U của một điện trở. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030104-01-001-de.png) Dựa vào đồ thị, điện trở có giá trị bao nhiêu?",
+   "lua_chon": [
+    "0,5 Ω",
+    "3 Ω",
+    "9 Ω",
+    "2 Ω"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Tại điểm (U = 6 V, I = 3 A) trên đồ thị: R = U/I = 6/3 = 2 Ω.\n\nVì sao các phương án khác sai:\n- A: Đã tính I/U thay vì U/I, đảo ngược tỉ số.\n- B: Đọc nhầm toạ độ điểm trên đồ thị, không khớp với đường biểu diễn.\n- C: Đã cộng U với I thay vì chia U cho I."
+  },
+  {
+   "ma_cau": "K09030104002",
+   "nhom_id": "KNB00469",
+   "loai": "trac_nghiem",
+   "de": "Đồ thị biểu diễn I theo U của một dây dẫn. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030104-01-002-de.png) Điện trở của dây dẫn có giá trị bao nhiêu?",
+   "lua_chon": [
+    "3 Ω",
+    "0,33 Ω",
+    "6 Ω",
+    "12 Ω"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Tại điểm (U = 9 V, I = 3 A): R = U/I = 9/3 = 3 Ω.\n\nVì sao các phương án khác sai:\n- B: Đã tính I/U thay vì U/I, đảo ngược tỉ số.\n- C: Đọc nhầm toạ độ điểm trên đồ thị, không khớp với đường biểu diễn.\n- D: Đã cộng U với I thay vì chia U cho I."
+  },
+  {
+   "ma_cau": "K09030104003",
+   "nhom_id": "KNB00469",
+   "loai": "trac_nghiem",
+   "de": "Đồ thị biểu diễn sự phụ thuộc I vào U của một vật dẫn. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030104-01-003-de.png) Điện trở của vật dẫn là bao nhiêu?",
+   "lua_chon": [
+    "4 Ω",
+    "2 Ω",
+    "0,5 Ω",
+    "18 Ω"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Tại điểm (U = 12 V, I = 6 A): R = U/I = 12/6 = 2 Ω.\n\nVì sao các phương án khác sai:\n- A: Đọc nhầm toạ độ điểm trên đồ thị, không khớp với đường biểu diễn.\n- C: Đã tính I/U thay vì U/I, đảo ngược tỉ số.\n- D: Đã cộng U với I thay vì chia U cho I."
+  },
+  {
+   "ma_cau": "K09030104004",
+   "nhom_id": "KNB00469",
+   "loai": "trac_nghiem",
+   "de": "Đồ thị biểu diễn I theo U của hai vật dẫn A và B. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030104-02-001-de.png) Vật dẫn nào có điện trở nhỏ hơn?",
+   "lua_chon": [
+    "Vật dẫn B",
+    "Hai vật dẫn có điện trở bằng nhau",
+    "Không thể xác định được",
+    "Vật dẫn A"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Đường A dốc hơn (I tăng nhanh hơn theo U) nên điện trở của A nhỏ hơn điện trở của B.\n\nVì sao các phương án khác sai:\n- A: Đường B thoải hơn nên điện trở của B LỚN hơn, không nhỏ hơn.\n- B: Hai đường có độ dốc khác nhau nên điện trở hai vật dẫn khác nhau.\n- C: Có thể xác định qua độ dốc của hai đường trên đồ thị."
+  },
+  {
+   "ma_cau": "K09030104005",
+   "nhom_id": "KNB00469",
+   "loai": "trac_nghiem",
+   "de": "Đồ thị biểu diễn I theo U của hai điện trở A và B. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030104-02-002-de.png) Điện trở nào có giá trị lớn hơn?",
+   "lua_chon": [
+    "Điện trở B",
+    "Hai điện trở bằng nhau",
+    "Điện trở A",
+    "Không đủ dữ kiện để so sánh"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Đường B dốc hơn đường A nên điện trở B nhỏ hơn; do đó điện trở A lớn hơn.\n\nVì sao các phương án khác sai:\n- A: Đường B dốc hơn nên điện trở B NHỎ hơn, không lớn hơn.\n- B: Độ dốc hai đường khác nhau nên hai điện trở khác nhau.\n- D: Có thể so sánh trực tiếp qua độ dốc của hai đường trên đồ thị."
+  },
+  {
+   "ma_cau": "K09030104006",
+   "nhom_id": "KNB00469",
+   "loai": "trac_nghiem",
+   "de": "Hai đường trên đồ thị biểu diễn I theo U của hai dây dẫn A và B. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030104-02-003-de.png) Dây dẫn nào cho dòng điện lớn hơn khi đặt cùng một hiệu điện thế?",
+   "lua_chon": [
+    "Dây dẫn A",
+    "Dây dẫn B",
+    "Hai dây cho dòng điện bằng nhau",
+    "Còn tuỳ vào giá trị U cụ thể"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Đường A dốc hơn nên với cùng một hiệu điện thế U, dây dẫn A cho dòng điện I lớn hơn.\n\nVì sao các phương án khác sai:\n- B: Đường B thoải hơn nên dòng điện qua B nhỏ hơn ở cùng hiệu điện thế.\n- C: Hai đường có độ dốc khác nhau nên dòng điện qua hai dây khác nhau.\n- D: Với đồ thị đường thẳng qua gốc, tỉ lệ I/U không đổi tại mọi giá trị U."
+  },
+  {
+   "ma_cau": "K09030204001",
+   "nhom_id": "KNB00476",
+   "loai": "trac_nghiem",
+   "de": "Mạch nối tiếp gồm R₁ = 10 Ω và R₂ chưa biết. Ampe kế chỉ I = 0,5 A, vôn kế đo hiệu điện thế cả mạch U = 8 V. Tính R₂. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030203-03-001-de.png)",
+   "lua_chon": [
+    "16 Ω",
+    "6 Ω",
+    "26 Ω",
+    "1,6 Ω"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Điện trở tương đương R = U/I = 8/0,5 = 16 Ω; R₂ = R − R₁ = 16 − 10 = 6 Ω.\n\nVì sao các phương án khác sai:\n- A: Đó là điện trở tương đương R, quên trừ đi R₁ để tìm R₂.\n- C: Đã cộng R₁ vào điện trở tương đương thay vì trừ đi.\n- D: Đã chia U cho tích I·R₁ thay vì tính đúng công thức R₂ = R − R₁."
+  },
+  {
+   "ma_cau": "K09030204002",
+   "nhom_id": "KNB00476",
+   "loai": "trac_nghiem",
+   "de": "Mạch song song gồm R₁ = 20 Ω và R₂ chưa biết. Vôn kế đo U = 10 V, ampe kế mạch chính chỉ I = 1,5 A. Tính R₂. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030203-03-002-de.png)",
+   "lua_chon": [
+    "20 Ω",
+    "6,67 Ω",
+    "10 Ω",
+    "5 Ω"
+   ],
+   "dap_an": "C",
+   "loi_giai": "I₁ = U/R₁ = 10/20 = 0,5 A; I₂ = I − I₁ = 1,5 − 0,5 = 1 A; R₂ = U/I₂ = 10/1 = 10 Ω.\n\nVì sao các phương án khác sai:\n- A: Đã ghi lại giá trị R₁, chưa tính đúng R₂.\n- B: Đã lấy U chia cho I mạch chính (10/1,5) coi như R₂, quên trừ dòng qua R₁.\n- D: Đã cộng nhầm I₁ vào I mạch chính (1,5+0,5) thay vì trừ để tìm I₂."
+  },
+  {
+   "ma_cau": "K09030204003",
+   "nhom_id": "KNB00476",
+   "loai": "trac_nghiem",
+   "de": "Mạch nối tiếp gồm R₁ = 15 Ω và R₂ chưa biết. Ampe kế chỉ I = 0,4 A, vôn kế đo hiệu điện thế cả mạch U = 10 V. Tính R₂. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030203-03-003-de.png)",
+   "lua_chon": [
+    "25 Ω",
+    "10 Ω",
+    "40 Ω",
+    "≈1,67 Ω"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Điện trở tương đương R = U/I = 10/0,4 = 25 Ω; R₂ = R − R₁ = 25 − 15 = 10 Ω.\n\nVì sao các phương án khác sai:\n- A: Đó là điện trở tương đương R, quên trừ đi R₁ để tìm R₂.\n- C: Đã cộng R₁ vào điện trở tương đương thay vì trừ đi.\n- D: Đã chia U cho tích I·R₁ thay vì tính đúng công thức R₂ = R − R₁."
+  },
+  {
+   "ma_cau": "K09030204004",
+   "nhom_id": "KNB00476",
+   "loai": "trac_nghiem",
+   "de": "Mạch song song gồm R₁ = 30 Ω và R₂ chưa biết. Vôn kế đo U = 12 V, ampe kế mạch chính chỉ I = 1 A. Tính R₂. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L030203-03-004-de.png)",
+   "lua_chon": [
+    "30 Ω",
+    "12 Ω",
+    "≈8,57 Ω",
+    "20 Ω"
+   ],
+   "dap_an": "D",
+   "loi_giai": "I₁ = U/R₁ = 12/30 = 0,4 A; I₂ = I − I₁ = 1 − 0,4 = 0,6 A; R₂ = U/I₂ = 12/0,6 = 20 Ω.\n\nVì sao các phương án khác sai:\n- A: Đã ghi lại giá trị R₁, chưa tính đúng R₂.\n- B: Đã lấy U chia cho I mạch chính (12/1) coi như R₂, quên trừ dòng qua R₁.\n- C: Đã cộng nhầm I₁ vào I mạch chính (1+0,4) thay vì trừ để tìm I₂."
+  },
+  {
+   "ma_cau": "K09030204005",
+   "nhom_id": "KNB00476",
+   "loai": "trac_nghiem",
+   "de": "Đèn ghi (6 V − 0,5 A) mắc nối tiếp với một biến trở vào nguồn U = 9 V không đổi. Tính giá trị biến trở Rb để đèn sáng đúng định mức.",
+   "lua_chon": [
+    "12 Ω",
+    "18 Ω",
+    "1,5 Ω",
+    "6 Ω"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Đèn sáng đúng định mức khi Iđm = 0,5 A qua mạch; Rb = (U − Uđm)/Iđm = (9 − 6)/0,5 = 6 Ω.\n\nVì sao các phương án khác sai:\n- A: Đó là điện trở của đèn (Uđm/Iđm = 12 Ω), không phải biến trở cần tìm.\n- B: Đã quên trừ Uđm của đèn, lấy cả U nguồn chia cho Iđm.\n- C: Đã nhân (U − Uđm) với Iđm thay vì chia, sai phép tính."
+  },
+  {
+   "ma_cau": "K09030204006",
+   "nhom_id": "KNB00476",
+   "loai": "trac_nghiem",
+   "de": "Đèn ghi (12 V − 0,6 A) mắc nối tiếp với một biến trở vào nguồn U = 15 V không đổi. Tính giá trị biến trở Rb để đèn sáng đúng định mức.",
+   "lua_chon": [
+    "5 Ω",
+    "20 Ω",
+    "25 Ω",
+    "1,8 Ω"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Rb = (U − Uđm)/Iđm = (15 − 12)/0,6 = 5 Ω.\n\nVì sao các phương án khác sai:\n- B: Đó là điện trở của đèn (Uđm/Iđm = 20 Ω), không phải biến trở cần tìm.\n- C: Đã quên trừ Uđm của đèn, lấy cả U nguồn chia cho Iđm.\n- D: Đã nhân (U − Uđm) với Iđm thay vì chia, sai phép tính."
+  },
+  {
+   "ma_cau": "K09030204007",
+   "nhom_id": "KNB00476",
+   "loai": "trac_nghiem",
+   "de": "Đèn ghi (9 V − 0,3 A) mắc nối tiếp với một biến trở vào nguồn U = 12 V không đổi. Tính giá trị biến trở Rb để đèn sáng đúng định mức.",
+   "lua_chon": [
+    "30 Ω",
+    "10 Ω",
+    "40 Ω",
+    "0,9 Ω"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Rb = (U − Uđm)/Iđm = (12 − 9)/0,3 = 10 Ω.\n\nVì sao các phương án khác sai:\n- A: Đó là điện trở của đèn (Uđm/Iđm = 30 Ω), không phải biến trở cần tìm.\n- C: Đã quên trừ Uđm của đèn, lấy cả U nguồn chia cho Iđm.\n- D: Đã nhân (U − Uđm) với Iđm thay vì chia, sai phép tính."
+  },
+  {
+   "ma_cau": "K09030205001",
+   "nhom_id": "KNB00477",
+   "loai": "trac_nghiem",
+   "de": "Mạch điện gồm R₁ = 4 Ω nối tiếp với cụm hai điện trở R₂ = 6 Ω và R₃ = 12 Ω mắc song song. Tính điện trở tương đương R của cả mạch.",
+   "lua_chon": [
+    "22 Ω",
+    "4 Ω",
+    "2 Ω",
+    "8 Ω"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Cụm song song: R₂₃ = 6×12/18 = 4 Ω; mạch nối tiếp R₁ với cụm đó nên R = R₁ + R₂₃ = 4 + 4 = 8 Ω.\n\nVì sao các phương án khác sai:\n- A: Đã cộng cả ba điện trở như mạch nối tiếp (4+6+12), không tính cụm song song trước.\n- B: Đó chỉ là điện trở của cụm song song R₂₃, còn thiếu R₁.\n- C: Đã coi cả ba điện trở đều mắc song song với nhau, sai cấu trúc mạch."
+  },
+  {
+   "ma_cau": "K09030205002",
+   "nhom_id": "KNB00477",
+   "loai": "trac_nghiem",
+   "de": "Mạch điện gồm R₁ = 10 Ω nối tiếp với cụm hai điện trở giống nhau R₂ = R₃ = 8 Ω mắc song song. Tính điện trở tương đương R của cả mạch.",
+   "lua_chon": [
+    "14 Ω",
+    "26 Ω",
+    "4 Ω",
+    "8 Ω"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Cụm song song hai điện trở giống nhau: R₂₃ = 8/2 = 4 Ω; R = R₁ + R₂₃ = 10 + 4 = 14 Ω.\n\nVì sao các phương án khác sai:\n- B: Đã cộng cả ba điện trở như mạch nối tiếp (10+8+8), không tính cụm song song trước.\n- C: Đó chỉ là điện trở của cụm song song R₂₃, còn thiếu R₁.\n- D: Đã chỉ lấy một trong hai điện trở của cụm song song, quên tính đúng R₂₃ rồi cộng R₁."
+  },
+  {
+   "ma_cau": "K09030205003",
+   "nhom_id": "KNB00477",
+   "loai": "trac_nghiem",
+   "de": "Mạch điện gồm R₁ = 5 Ω nối tiếp với cụm hai điện trở R₂ = 10 Ω và R₃ = 15 Ω mắc song song. Tính điện trở tương đương R của cả mạch.",
+   "lua_chon": [
+    "30 Ω",
+    "6 Ω",
+    "≈2,73 Ω",
+    "11 Ω"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Cụm song song: R₂₃ = 10×15/25 = 6 Ω; mạch nối tiếp R₁ với cụm đó nên R = R₁ + R₂₃ = 5 + 6 = 11 Ω.\n\nVì sao các phương án khác sai:\n- A: Đã cộng cả ba điện trở như mạch nối tiếp (5+10+15), không tính cụm song song trước.\n- B: Đó chỉ là điện trở của cụm song song R₂₃, còn thiếu R₁.\n- C: Đã coi cả ba điện trở đều mắc song song với nhau, sai cấu trúc mạch."
+  },
+  {
+   "ma_cau": "K09030205004",
+   "nhom_id": "KNB00477",
+   "loai": "trac_nghiem",
+   "de": "Mạch điện gồm R₁ = 6 Ω nối tiếp với cụm hai điện trở giống nhau R₂ = R₃ = 9 Ω mắc song song. Tính điện trở tương đương R của cả mạch.",
+   "lua_chon": [
+    "10,5 Ω",
+    "24 Ω",
+    "4,5 Ω",
+    "15 Ω"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Cụm song song hai điện trở giống nhau: R₂₃ = 9/2 = 4,5 Ω; R = R₁ + R₂₃ = 6 + 4,5 = 10,5 Ω.\n\nVì sao các phương án khác sai:\n- B: Đã cộng cả ba điện trở như mạch nối tiếp (6+9+9), không tính cụm song song trước.\n- C: Đó chỉ là điện trở của cụm song song R₂₃, còn thiếu R₁.\n- D: Đã chỉ lấy một trong hai điện trở của cụm song song, quên tính đúng R₂₃ rồi cộng R₁."
+  },
+  {
+   "ma_cau": "K09030205005",
+   "nhom_id": "KNB00477",
+   "loai": "trac_nghiem",
+   "de": "Mạch điện gồm cụm hai điện trở R₁ = 6 Ω, R₂ = 4 Ω mắc nối tiếp, cụm này mắc song song với R₃ = 10 Ω. Tính điện trở tương đương R của cả mạch.",
+   "lua_chon": [
+    "20 Ω",
+    "5 Ω",
+    "10 Ω",
+    "100 Ω"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Cụm nối tiếp: R₁₂ = 6+4 = 10 Ω; mắc song song với R₃ nên R = R₁₂·R₃/(R₁₂+R₃) = 10×10/20 = 5 Ω.\n\nVì sao các phương án khác sai:\n- A: Đã cộng cả ba điện trở như mạch nối tiếp (6+4+10), không tính đúng cấu trúc mạch.\n- C: Đó chỉ là điện trở của cụm nối tiếp R₁₂, quên hợp với R₃.\n- D: Đã nhân R₁₂ với R₃ mà không chia cho tổng, sai công thức song song."
+  },
+  {
+   "ma_cau": "K09030205006",
+   "nhom_id": "KNB00477",
+   "loai": "trac_nghiem",
+   "de": "Mạch điện gồm cụm hai điện trở R₁ = 8 Ω, R₂ = 12 Ω mắc nối tiếp, cụm này mắc song song với R₃ = 5 Ω. Tính điện trở tương đương R của cả mạch.",
+   "lua_chon": [
+    "25 Ω",
+    "20 Ω",
+    "4 Ω",
+    "100 Ω"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Cụm nối tiếp: R₁₂ = 8+12 = 20 Ω; mắc song song với R₃ nên R = R₁₂·R₃/(R₁₂+R₃) = 20×5/25 = 4 Ω.\n\nVì sao các phương án khác sai:\n- A: Đã cộng cả ba điện trở như mạch nối tiếp (8+12+5), không tính đúng cấu trúc mạch.\n- B: Đó chỉ là điện trở của cụm nối tiếp R₁₂, quên hợp với R₃.\n- D: Đã nhân R₁₂ với R₃ mà không chia cho tổng, sai công thức song song."
+  },
+  {
+   "ma_cau": "K09030205007",
+   "nhom_id": "KNB00477",
+   "loai": "trac_nghiem",
+   "de": "Mạch điện gồm cụm hai điện trở R₁ = 3 Ω, R₂ = 7 Ω mắc nối tiếp, cụm này mắc song song với R₃ = 15 Ω. Tính điện trở tương đương R của cả mạch.",
+   "lua_chon": [
+    "25 Ω",
+    "6 Ω",
+    "150 Ω",
+    "10 Ω"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Cụm nối tiếp: R₁₂ = 3+7 = 10 Ω; mắc song song với R₃ nên R = R₁₂·R₃/(R₁₂+R₃) = 10×15/25 = 6 Ω.\n\nVì sao các phương án khác sai:\n- A: Đã cộng cả ba điện trở như mạch nối tiếp (3+7+15), không tính đúng cấu trúc mạch.\n- C: Đã nhân R₁₂ với R₃ mà không chia cho tổng, sai công thức song song.\n- D: Đó chỉ là điện trở của cụm nối tiếp R₁₂, quên hợp với R₃."
+  },
+  {
+   "ma_cau": "K09030205008",
+   "nhom_id": "KNB00477",
+   "loai": "trac_nghiem",
+   "de": "Mạch điện gồm cụm hai điện trở R₁ = 4 Ω, R₂ = 8 Ω mắc nối tiếp, cụm này mắc song song với R₃ = 6 Ω. Tính điện trở tương đương R của cả mạch.",
+   "lua_chon": [
+    "18 Ω",
+    "72 Ω",
+    "4 Ω",
+    "12 Ω"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Cụm nối tiếp: R₁₂ = 4+8 = 12 Ω; mắc song song với R₃ nên R = R₁₂·R₃/(R₁₂+R₃) = 12×6/18 = 4 Ω.\n\nVì sao các phương án khác sai:\n- A: Đã cộng cả ba điện trở như mạch nối tiếp (4+8+6), không tính đúng cấu trúc mạch.\n- B: Đã nhân R₁₂ với R₃ mà không chia cho tổng, sai công thức song song.\n- D: Đó chỉ là điện trở của cụm nối tiếp R₁₂, quên hợp với R₃."
+  },
+  {
+   "ma_cau": "K09030205009",
+   "nhom_id": "KNB00477",
+   "loai": "trac_nghiem",
+   "de": "Mạch gồm điện trở R₁ = 4 Ω nối tiếp với cụm hai điện trở giống nhau R₂ = R₃ = 12 Ω mắc song song, có khoá K nối tiếp với R₃. Khi khoá K đóng, tính điện trở tương đương R₂₃ của cụm song song.",
+   "lua_chon": [
+    "24 Ω",
+    "12 Ω",
+    "144 Ω",
+    "6 Ω"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Hai điện trở giống nhau mắc song song: R₂₃ = 12/2 = 6 Ω.\n\nVì sao các phương án khác sai:\n- A: Đã cộng hai điện trở như mạch nối tiếp, không phải song song.\n- B: Đã giữ nguyên giá trị một điện trở, quên chia đôi khi song song.\n- C: Đã nhân hai điện trở mà không chia cho tổng."
+  },
+  {
+   "ma_cau": "K09030205010",
+   "nhom_id": "KNB00477",
+   "loai": "trac_nghiem",
+   "de": "Trong mạch trên (R₁ = 4 Ω nối tiếp cụm song song R₂₃ = 6 Ω, khoá K đóng), nguồn U = 20 V. Tính cường độ dòng điện mạch chính I.",
+   "lua_chon": [
+    "2 A",
+    "5 A",
+    "1,25 A",
+    "3,33 A"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Điện trở tương đương cả mạch R = R₁ + R₂₃ = 4 + 6 = 10 Ω; I = U/R = 20/10 = 2 A.\n\nVì sao các phương án khác sai:\n- B: Đã chia U cho riêng R₁ (20/4), quên cộng thêm R₂₃.\n- C: Đó là kết quả khi khoá K mở, không phải khi K đóng.\n- D: Đã chia U cho riêng R₂₃ (20/6), quên cộng thêm R₁."
+  },
+  {
+   "ma_cau": "K09030205011",
+   "nhom_id": "KNB00477",
+   "loai": "trac_nghiem",
+   "de": "Cũng mạch đó, khi mở khoá K, nhánh chứa R₃ bị ngắt, mạch chỉ còn R₁ = 4 Ω nối tiếp R₂ = 12 Ω với nguồn U = 20 V. Tính cường độ dòng điện mạch chính lúc này.",
+   "lua_chon": [
+    "2 A",
+    "1,25 A",
+    "5 A",
+    "0 A"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Mạch còn lại là R₁ nối tiếp R₂: R = 4 + 12 = 16 Ω; I = U/R = 20/16 = 1,25 A.\n\nVì sao các phương án khác sai:\n- A: Đó là cường độ dòng điện khi khoá K đóng, không phải khi K mở.\n- C: Đã chia U cho riêng R₁ (20/4), quên cộng thêm R₂.\n- D: Ngắt một nhánh của cụm song song không làm hở toàn mạch, mạch vẫn có dòng điện."
+  },
+  {
+   "ma_cau": "K09030205012",
+   "nhom_id": "KNB00477",
+   "loai": "trac_nghiem",
+   "de": "So sánh độ sáng của đèn mắc tại vị trí R₁ khi khoá K đóng (I = 2 A) và khi khoá K mở (I = 1,25 A) trong cùng mạch trên.",
+   "lua_chon": [
+    "Đèn sáng mạnh hơn khi mở khoá K",
+    "Đèn sáng như nhau ở cả hai trường hợp",
+    "Đèn sáng yếu hơn khi mở khoá K",
+    "Đèn tắt hẳn khi mở khoá K"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Dòng điện qua R₁ giảm từ 2 A xuống 1,25 A khi mở khoá K nên đèn sáng yếu hơn.\n\nVì sao các phương án khác sai:\n- A: Dòng điện giảm khi mở khoá K nên đèn sáng yếu hơn, không mạnh hơn.\n- B: Cường độ dòng điện đã thay đổi (2 A khác 1,25 A) nên độ sáng khác nhau.\n- D: Mạch qua R₁ vẫn còn dòng điện 1,25 A nên đèn vẫn sáng, không tắt hẳn."
+  },
+  {
+   "ma_cau": "K09030205013",
+   "nhom_id": "KNB00477",
+   "loai": "trac_nghiem",
+   "de": "Mạch gồm điện trở R₁ = 6 Ω nối tiếp với cụm hai điện trở giống nhau R₂ = R₃ = 18 Ω mắc song song, có khoá K nối tiếp với R₃, nguồn U = 30 V. Khi khoá K đóng, tính cường độ dòng điện mạch chính I.",
+   "lua_chon": [
+    "2 A",
+    "5 A",
+    "1,67 A",
+    "3,33 A"
+   ],
+   "dap_an": "A",
+   "loi_giai": "R₂₃ = 18/2 = 9 Ω (hai điện trở bằng nhau mắc song song). R = R₁+R₂₃ = 6+9 = 15 Ω. I = U/R = 30/15 = 2 A.\n\nVì sao các phương án khác sai:\n- B: Nhầm chia U cho R₁ thay vì cho R toàn mạch.\n- C: Tính sai điện trở tương đương của cụm song song.\n- D: Nhầm chia U cho R₂₃ thay vì cho R toàn mạch."
+  }
+ ]
+}

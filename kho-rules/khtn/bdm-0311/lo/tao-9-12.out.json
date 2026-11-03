@@ -1,0 +1,575 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00567",
+   "ly_thuyet": "##TC 1. Kiến thức cần nhớ\nNhiễm sắc thể (NST) là cấu trúc nằm trong nhân tế bào, mang gene, cấu tạo chủ yếu từ DNA liên kết với protein.\nNST dạng đơn chỉ gồm 1 chromatid. NST dạng kép gồm 2 chromatid giống hệt nhau, dính nhau ở tâm động.\nTâm động là nơi hai chromatid dính nhau, đồng thời là nơi NST bám vào thoi phân bào.\nNST nhân đôi ở kì trung gian (từ dạng đơn thành dạng kép); đóng xoắn cực đại, hình dạng rõ nhất ở kì giữa của phân bào.\nBộ NST lưỡng bội (2n) có trong tế bào sinh dưỡng, các NST tồn tại thành từng cặp tương đồng (một chiếc từ bố, một chiếc từ mẹ). Bộ NST đơn bội (n) có trong giao tử, mỗi cặp chỉ còn một chiếc.\n\n##PP 2. Các bước làm bài\nXác định đề hỏi về cấu tạo, hình thái NST hay hỏi về số lượng NST.\nVới bài đếm NST trong hình: đếm số NST (mỗi NST kép vẫn tính là 1 NST, đếm theo số tâm động) để được 2n.\nSố cặp NST tương đồng bằng $2n:2$ (chính là $n$).\n\n##CY 3. Lưu ý\nHai chromatid của một NST kép giống hệt nhau, không phải một cặp NST tương đồng.\nĐếm số NST theo số tâm động, không đếm theo số chromatid.",
+   "dang_bai": [
+    {
+     "ten": "Nhận biết cấu tạo NST: chromatid, tâm động, NST đơn, kép",
+     "mo_ta": "Đề hỏi về cấu tạo của NST: thành phần của chromatid, vai trò của tâm động, đặc điểm NST đơn và NST kép.\nGồm các câu nhận biết khái niệm và câu hỏi \"vì sao\" về hai chromatid giống nhau.\nLưu ý: câu hỏi về thời điểm hoặc kì mà NST thay đổi hình thái ⇒ thuộc dạng \"Hình thái NST thay đổi qua chu kì tế bào\".",
+     "ly_thuyet": "##TC Cấu tạo NST\nMỗi chromatid chứa một phân tử DNA liên kết với protein.\nNST đơn: 1 chromatid và 1 tâm động. NST kép: 2 chromatid giống hệt nhau (do nhân đôi từ NST đơn), dính nhau ở tâm động.\nTâm động là nơi hai chromatid dính nhau và là nơi gắn với thoi phân bào.\n\n##CY Chú ý\nHai chromatid của NST kép có trình tự DNA giống nhau vì được tạo ra do nhân đôi NST đơn, không phải do nhận từ bố và mẹ.",
+     "vi_du": "##VD\nNhiễm sắc thể ở dạng đơn có đặc điểm gì?\nA. Chỉ gồm một chromatid, có một tâm động\nB. Gồm hai chromatid dính nhau ở tâm động\nC. Không có tâm động\nD. Gồm hai phân tử DNA tách rời nhau\n\nBài giải:\nNST ở dạng đơn chỉ có 1 chromatid, gắn với 1 tâm động (phương án A đúng).\nNST gồm hai chromatid dính nhau ở tâm động là NST dạng kép (loại B).\nMọi NST đều có tâm động (loại C); hai chromatid của NST kép không tách rời nhau, chúng dính nhau ở tâm động (loại D).\nChọn A.\n\n##VD\nVì sao hai chromatid của một nhiễm sắc thể kép giống hệt nhau về trình tự DNA?\nA. Vì một chromatid nhận từ bố, một chromatid nhận từ mẹ\nB. Vì chúng mang các gene khác nhau\nC. Vì chúng được tạo ra từ nhân đôi NST đơn ban đầu\nD. Vì chúng được tạo ra ở hai lần phân bào khác nhau\n\nBài giải:\nNST kép được tạo ra khi NST đơn nhân đôi, nên hai chromatid có trình tự DNA giống hệt nhau (phương án C đúng).\nPhương án A sai vì chromatid không phải một chiếc từ bố, một chiếc từ mẹ (đó là cặp NST tương đồng).\nHai chromatid chứa cùng các gene (loại B) và được tạo ở cùng một lần nhân đôi (loại D).\nChọn C.",
+     "nguon_vi_du": "K09120101004, K09120101006",
+     "cau": [
+      "K09120101001",
+      "K09120101002",
+      "K09120101003",
+      "K09120101004",
+      "K09120101006"
+     ]
+    },
+    {
+     "ten": "Hình thái NST thay đổi qua chu kì tế bào",
+     "mo_ta": "Đề hỏi NST chuyển từ dạng đơn sang dạng kép khi nào, kì nào NST đóng xoắn cực đại, vì sao NST cần đóng xoắn.\nLàm bằng cách nhớ diễn biến NST theo kì trung gian và các kì phân bào.\nLưu ý: câu chỉ hỏi cấu tạo (chromatid, tâm động) ⇒ thuộc dạng \"Nhận biết cấu tạo NST: chromatid, tâm động, NST đơn, kép\".",
+     "ly_thuyet": "##TC Diễn biến hình thái NST\nỞ kì trung gian, DNA nhân đôi nên NST chuyển từ dạng đơn sang dạng kép.\nỞ kì giữa, NST đóng xoắn cực đại, co ngắn nên có hình dạng đặc trưng, dễ quan sát dưới kính hiển vi.\nĐóng xoắn giúp NST gọn, dễ di chuyển và phân li chính xác về hai cực tế bào ở kì sau.",
+     "vi_du": "##VD\nNhiễm sắc thể chuyển từ dạng đơn sang dạng kép vào thời điểm nào?\nA. Ngay sau khi tế bào vừa phân chia xong\nB. Sau khi DNA nhân đôi ở kì trung gian\nC. Khi hai NST tương đồng trao đổi đoạn cho nhau\nD. Khi tế bào bước vào kì sau của phân bào\n\nBài giải:\nNST nhân đôi (đơn thành kép) khi DNA nhân đôi, xảy ra ở kì trung gian, tức là sau khi DNA nhân đôi (phương án B).\nKhi tế bào vừa phân chia xong, NST ở dạng đơn (loại A); trao đổi đoạn giữa NST tương đồng không làm NST thành dạng kép (loại C); đến kì sau NST kép đã tách thành NST đơn (loại D).\nChọn B.\n\n##VD\nHình dạng đặc trưng của nhiễm sắc thể (đóng xoắn cực đại, dễ quan sát dưới kính hiển vi) thể hiện rõ nhất ở kì nào của quá trình phân bào?\nA. Kì giữa\nB. Kì đầu\nC. Kì sau\nD. Kì cuối\n\nBài giải:\nNST đóng xoắn cực đại, co ngắn nhất ở kì giữa nên hình dạng đặc trưng thể hiện rõ nhất ở kì này (phương án A).\nKì đầu NST mới bắt đầu đóng xoắn; kì sau NST đã tách và bắt đầu di chuyển; kì cuối NST tháo xoắn.\nChọn A.",
+     "nguon_vi_du": "K09120101005, K09120101007",
+     "cau": [
+      "K09120101005",
+      "K09120101007",
+      "K09120101008"
+     ]
+    },
+    {
+     "ten": "Xác định bộ NST lưỡng bội, NST tương đồng, số cặp",
+     "mo_ta": "Đề hỏi khái niệm NST tương đồng, bộ lưỡng bội (vì sao gọi là lưỡng bội), hoặc cho hình/đề để đếm NST.\nĐếm NST trong hình để suy ra 2n, rồi tính số cặp NST tương đồng (= 2n : 2).\nLưu ý: đề cho giao tử, hỏi bộ đơn bội n ⇒ thuộc nhóm \"Bài toán quy đổi tế bào sinh dưỡng và giao tử\".",
+     "ly_thuyet": "##TC Bộ NST lưỡng bội\nNST tương đồng là cặp NST giống nhau về hình dạng, kích thước, trình tự gene, một chiếc từ bố, một chiếc từ mẹ.\nBộ NST lưỡng bội (2n): NST tồn tại thành từng cặp tương đồng nên gọi là lưỡng bội.\nSố cặp NST tương đồng $=\\dfrac{2n}{2}=n$.\n\n##PP Cách làm\nĐếm số NST trong hình (đếm theo tâm động) để có $2n$.\nSố cặp tương đồng bằng $2n:2$.\n\n##CY Chú ý\nHai chromatid của một NST kép không tạo thành cặp NST tương đồng.",
+     "vi_du": "##VD\nNhiễm sắc thể tương đồng là gì?\nA. Hai chromatid giống hệt nhau của cùng một NST kép\nB. Cặp NST giống nhau, một chiếc từ bố, một chiếc từ mẹ\nC. Cặp NST giới tính XX ở nam giới\nD. Hai NST bất kì có kích thước bằng nhau\n\nBài giải:\nNST tương đồng là cặp NST giống nhau về hình dạng, kích thước và trình tự gene, một chiếc có nguồn gốc từ bố, một chiếc từ mẹ (phương án B).\nHai chromatid giống hệt nhau của cùng một NST kép (A) không phải NST tương đồng; cặp XX ở nam giới sai vì nam giới mang XY (C); hai NST bất kì có kích thước bằng nhau chưa chắc tương đồng (D).\nChọn B.\n\n##VD\nVì sao bộ nhiễm sắc thể 2n được gọi là bộ lưỡng bội?\nA. Vì mỗi NST trong tế bào đều ở dạng kép\nB. Vì tế bào có 2 nhân\nC. Vì các NST tồn tại thành từng cặp tương đồng\nD. Vì tế bào chỉ có 2 loại NST, thường và giới tính\n\nBài giải:\nBộ NST 2n gọi là lưỡng bội vì các NST tồn tại thành từng cặp tương đồng, mỗi cặp có 2 chiếc (phương án C).\nTế bào chỉ có 1 nhân (loại B); không phải NST nào cũng ở dạng kép (loại A); không chia thành 2 loại như phương án D.\nChọn C.",
+     "nguon_vi_du": "K09120101010, K09120101011",
+     "cau": [
+      "K09120101009",
+      "K09120101010",
+      "K09120101011",
+      "K09120101012",
+      "K09120101013"
+     ]
+    }
+   ],
+   "khong_hop": [],
+   "ghi_chu": "Nhóm 13 câu; 3 câu có hình đếm NST gộp chung vào dạng 3 vì cùng kiểu bài 2n/số cặp."
+  },
+  {
+   "nhom_id": "KNB00568",
+   "ly_thuyet": "##TC 1. Kiến thức cần nhớ\nTế bào sinh dưỡng mang bộ NST lưỡng bội $2n$; giao tử mang bộ NST đơn bội $n$ (giảm một nửa).\n$n=\\dfrac{2n}{2}$ và $2n=2\\cdot n$.\nGiao tử chỉ có một chiếc NST trong mỗi cặp tương đồng; số NST trong giao tử bằng số cặp NST của tế bào sinh dưỡng.\n\n##PP 2. Các bước làm bài\nXác định đề cho số NST của tế bào sinh dưỡng (2n) hay của giao tử (n).\nÁp dụng $n=2n:2$ hoặc $2n=2n$ nhân đôi, rồi đọc đáp án.\n\n##CY 3. Lưu ý\nGiao tử không có từng cặp NST tương đồng, mỗi NST trong giao tử chỉ là một chiếc.",
+   "dang_bai": [
+    {
+     "ten": "Xác định bộ NST đơn bội n từ 2n hoặc giao tử",
+     "mo_ta": "Đề cho bộ NST lưỡng bội 2n của loài (hoặc số NST của tế bào sinh dưỡng), hỏi bộ NST đơn bội n của giao tử.\nLàm bằng cách chia đôi 2n, hoặc suy ngược từ số NST trong giao tử.\nCâu có hình giao tử: đọc số NST của giao tử trong hình chính là n.",
+     "ly_thuyet": "##TC Quy đổi 2n và n\nGiao tử có bộ NST đơn bội $n=\\dfrac{2n}{2}$.\nKhi biết giao tử có $n$ NST thì tế bào sinh dưỡng của loài có $2n=2\\cdot n$ NST.\n\n##PP Cách làm\nXác định đề cho 2n hay n.\nChia đôi (từ 2n sang n) hoặc nhân đôi (từ n sang 2n).",
+     "vi_du": "##VD\nMột giao tử sinh ra từ loài có 2n = 12. Bộ NST đơn bội (n) của loài này bằng bao nhiêu?\nA. 3\nB. 6\nC. 12\nD. 24\n\nBài giải:\nGiao tử mang bộ NST đơn bội, giảm một nửa so với tế bào sinh dưỡng.\n$n=\\dfrac{2n}{2}=\\dfrac{12}{2}=6$.\nChọn B.\n\n##VD\nMột giao tử bình thường của một loài có 7 NST. Tế bào sinh dưỡng của loài này có bao nhiêu NST?\nA. 7\nB. 14\nC. 21\nD. 28\n\nBài giải:\nGiao tử bình thường mang bộ đơn bội nên $n=7$.\nTế bào sinh dưỡng mang bộ lưỡng bội: $2n=2\\cdot 7=14$.\nChọn B.",
+     "nguon_vi_du": "tu_soan",
+     "cau": [
+      "K09120102001",
+      "K09120102002"
+     ]
+    }
+   ],
+   "khong_hop": [],
+   "ghi_chu": "Ví dụ tự soạn vì 2 câu mẫu đều dựa vào hình giao tử."
+  },
+  {
+   "nhom_id": "KNB00570",
+   "ly_thuyet": "##TC 1. Kiến thức cần nhớ\nNguyên phân: một tế bào mẹ (2n) tạo 2 tế bào con có bộ NST 2n giống tế bào mẹ. NST nhân đôi 1 lần, tế bào phân chia 1 lần.\nCác kì của nguyên phân: kì đầu (NST kép đóng xoắn, thoi phân bào hình thành); kì giữa (các NST kép xếp thành một hàng ở mặt phẳng xích đạo); kì sau (mỗi NST kép tách thành 2 NST đơn, phân li về hai cực); kì cuối (NST tháo xoắn, màng nhân xuất hiện, tế bào chất phân chia).\nÝ nghĩa nguyên phân: giúp cơ thể đa bào lớn lên, thay thế tế bào bị tổn thương, và là cơ chế sinh sản của sinh vật sinh sản vô tính.\nGiảm phân: một tế bào mẹ (2n) tạo 4 tế bào con có bộ NST n. NST nhân đôi 1 lần nhưng tế bào phân chia 2 lần liên tiếp (giảm phân I và giảm phân II).\nGiảm phân I: kì giữa I các cặp NST kép tương đồng xếp thành hai hàng ở mặt phẳng xích đạo; kì sau I mỗi NST kép trong cặp tương đồng phân li về một cực (chưa tách chromatid), làm bộ NST giảm một nửa.\nGiảm phân II: kì giữa II các NST kép xếp thành một hàng; kì sau II mỗi NST kép tách thành 2 NST đơn phân li về hai cực.\nGiảm phân kết hợp thụ tinh giúp duy trì bộ NST đặc trưng của loài qua các thế hệ và tạo biến dị tổ hợp.\n\n##PP 2. Các bước làm bài\nXác định quá trình (nguyên phân hay giảm phân) và lần phân bào (I hay II).\nNhận dạng kì dựa vào ba dấu hiệu: NST đơn hay kép, xếp một hay hai hàng, tách cặp tương đồng hay tách chromatid.\nSo sánh bộ NST của tế bào con với tế bào mẹ để chọn đáp án.\n\n##CY 3. Lưu ý\nKì giữa nguyên phân và kì giữa II đều có NST kép xếp một hàng; kì giữa I xếp hai hàng.\nỞ kì sau I các chromatid chưa tách, chỉ đến kì sau II mới tách.",
+   "dang_bai": [
+    {
+     "ten": "Diễn biến NST ở từng kì của nguyên phân và giảm phân",
+     "mo_ta": "Đề hỏi NST có đặc điểm gì (xếp mấy hàng, đơn hay kép, di chuyển thế nào) ở một kì cụ thể của nguyên phân hoặc giảm phân I, II.\nLàm bằng cách nhớ diễn biến NST theo từng kì.\nLưu ý: đề cho hình rồi hỏi tên kì ⇒ thuộc dạng \"Nhận biết kì phân bào qua hình\".",
+     "ly_thuyet": "##TC Diễn biến NST theo kì\nNguyên phân: kì đầu NST kép đóng xoắn; kì giữa NST kép xếp một hàng; kì sau mỗi NST kép tách thành 2 NST đơn; kì cuối NST tháo xoắn.\nGiảm phân I: kì giữa I các cặp NST kép tương đồng xếp hai hàng; kì sau I mỗi NST kép trong cặp tương đồng đi về một cực, không tách chromatid.\nGiảm phân II: kì giữa II NST kép xếp một hàng; kì sau II mỗi NST kép tách thành 2 NST đơn.\n\n##CY Chú ý\nKì sau I chỉ phân li các NST kép trong cặp tương đồng, kì sau II mới tách chromatid.",
+     "vi_du": "##VD\nỞ kì sau của nguyên phân, mỗi NST kép biến đổi như thế nào?\nA. Xếp thành một hàng ở mặt phẳng xích đạo\nB. Tách thành 2 NST đơn, di chuyển về một cực tế bào\nC. Tách nhau trong cặp tương đồng nhưng vẫn ở dạng kép\nD. Bắt đầu đóng xoắn, co ngắn lại\n\nBài giải:\nỞ kì sau của nguyên phân, tâm động của mỗi NST kép tách ra, mỗi NST kép tách thành 2 NST đơn và các NST đơn phân li về hai cực của tế bào (phương án B).\nXếp thành một hàng ở mặt phẳng xích đạo là kì giữa (loại A); tách cặp tương đồng nhưng vẫn ở dạng kép là kì sau I (loại C); bắt đầu đóng xoắn là kì đầu (loại D).\nChọn B.\n\n##VD\nỞ kì sau I của giảm phân, mỗi NST kép trong cặp tương đồng di chuyển như thế nào?\nA. Mỗi NST kép phân li về một cực, không tách chromatid\nB. Mỗi NST kép tách thành 2 NST đơn rồi mới phân li\nC. Cả cặp NST tương đồng cùng di chuyển về một cực\nD. NST kép nhân đôi thêm một lần nữa\n\nBài giải:\nỞ kì sau I của giảm phân, các NST kép trong mỗi cặp tương đồng tách nhau ra, mỗi NST kép phân li về một cực và chromatid chưa tách (phương án A).\nPhương án B sai vì chromatid chỉ tách ở kì sau II; phương án C sai vì hai chiếc của cặp đi về hai cực khác nhau.\nChọn A.",
+     "nguon_vi_du": "K09120201002, K09120201005",
+     "cau": [
+      "K09120201001",
+      "K09120201002",
+      "K09120201003",
+      "K09120201004",
+      "K09120201005",
+      "K09120201006"
+     ]
+    },
+    {
+     "ten": "Nhận biết kì phân bào qua hình",
+     "mo_ta": "Đề cho hình (hoặc mô tả) một tế bào đang phân bào kèm bộ NST 2n, yêu cầu xác định đang ở kì nào của nguyên phân, giảm phân I hoặc giảm phân II.\nLàm bằng cách quan sát NST đơn hay kép, xếp hàng, tách cặp hay tách chromatid, rồi đối chiếu với diễn biến từng kì.\nLưu ý: câu chỉ hỏi chữ về đặc điểm của một kì (không có hình) ⇒ thuộc dạng \"Diễn biến NST ở từng kì\".",
+     "ly_thuyet": "##TC Dấu hiệu nhận dạng kì\nKì giữa nguyên phân và giữa II: NST kép xếp một hàng ở mặt phẳng xích đạo. Kì giữa I: NST kép tương đồng xếp hai hàng.\nKì sau nguyên phân và sau II: NST đơn phân li về hai cực. Kì sau I: NST kép phân li về hai cực.\nKì cuối: NST tháo xoắn, màng nhân xuất hiện, tế bào chia thành các tế bào con.\n\n##PP Cách làm\nXem NST đang ở dạng đơn hay kép.\nXem NST xếp thành một hàng, hai hàng hay đã phân li về hai cực.\nNếu có cặp tương đồng đang ghép đôi hoặc tách nhau, đó là giảm phân I; không có thì là nguyên phân hoặc giảm phân II.\nĐối chiếu để chọn kì.",
+     "vi_du": "##VD\nQuan sát một tế bào có 2n = 4 đang nguyên phân, thấy 4 NST kép xếp thành một hàng ở mặt phẳng xích đạo của tế bào. Đây là kì nào?\nA. Kì đầu\nB. Kì giữa\nC. Kì sau\nD. Kì cuối\n\nBài giải:\nCác NST kép xếp thành một hàng ở mặt phẳng xích đạo là dấu hiệu của kì giữa nguyên phân.\nKì đầu NST mới đóng xoắn, chưa xếp hàng; kì sau NST đã tách thành NST đơn; kì cuối NST tháo xoắn.\nChọn B.\n\n##VD\nQuan sát một tế bào có 2n = 6 đang giảm phân, thấy 3 cặp NST kép tương đồng xếp thành hai hàng ở mặt phẳng xích đạo. Đây là kì nào?\nA. Kì đầu I\nB. Kì giữa I\nC. Kì sau I\nD. Kì giữa II\n\nBài giải:\nCác cặp NST kép tương đồng xếp thành hai hàng ở mặt phẳng xích đạo là đặc điểm của kì giữa I.\nKì giữa II các NST kép chỉ xếp thành một hàng; kì sau I các NST kép đã phân li về hai cực.\nChọn B.",
+     "nguon_vi_du": "tu_soan",
+     "cau": [
+      "K09120201007",
+      "K09120201008",
+      "K09120201009",
+      "K09120201010"
+     ]
+    },
+    {
+     "ten": "So sánh bộ NST tế bào con với tế bào mẹ",
+     "mo_ta": "Đề hỏi bộ NST của tế bào con tạo ra từ nguyên phân hay giảm phân so với tế bào mẹ, hoặc số lần NST nhân đôi trong cả quá trình.\nLàm bằng cách nhớ kết quả: nguyên phân giữ nguyên 2n, giảm phân giảm còn n.\nLưu ý: câu hỏi về ý nghĩa sinh học của hai quá trình ⇒ thuộc dạng \"Ý nghĩa của nguyên phân, giảm phân và thụ tinh\".",
+     "ly_thuyet": "##TC So sánh kết quả\nNguyên phân: NST nhân đôi 1 lần, phân chia 1 lần; từ 1 tế bào 2n tạo 2 tế bào con 2n.\nGiảm phân: NST nhân đôi 1 lần, phân chia 2 lần; từ 1 tế bào 2n tạo 4 tế bào con n.",
+     "vi_du": "##VD\nTrong giảm phân, nhiễm sắc thể tái bản (nhân đôi) mấy lần cho cả hai lần phân bào (giảm phân I và giảm phân II)?\nA. 2 lần\nB. 4 lần\nC. 1 lần\nD. 0 lần, giảm phân không cần tái bản NST\n\nBài giải:\nTrong giảm phân, NST chỉ nhân đôi một lần ở kì trung gian trước giảm phân I; giữa giảm phân I và giảm phân II không có sự nhân đôi NST.\nVì vậy cả hai lần phân bào chỉ có 1 lần tái bản NST (phương án C).\nChọn C.\n\n##VD\nTế bào con tạo ra từ giảm phân có bộ NST như thế nào so với tế bào mẹ?\nA. Bộ NST giữ nguyên (2n), giống hệt tế bào mẹ\nB. Bộ NST tăng gấp đôi (4n) so với tế bào mẹ\nC. Bộ NST không xác định, tuỳ loại tế bào\nD. Bộ NST giảm đi một nửa (n) so với tế bào mẹ (2n)\n\nBài giải:\nGiảm phân gồm hai lần phân bào liên tiếp nhưng NST chỉ nhân đôi một lần, nên tế bào con có bộ NST giảm đi một nửa (n) so với tế bào mẹ (2n) (phương án D).\nBộ NST giữ nguyên 2n là kết quả của nguyên phân.\nChọn D.",
+     "nguon_vi_du": "K09120201012, K09120201013",
+     "cau": [
+      "K09120201011",
+      "K09120201012",
+      "K09120201013"
+     ]
+    },
+    {
+     "ten": "Ý nghĩa của nguyên phân, giảm phân và thụ tinh",
+     "mo_ta": "Đề hỏi vai trò sinh học của nguyên phân (lớn lên, thay thế tế bào), của giảm phân kết hợp thụ tinh (ổn định bộ NST, tạo biến dị tổ hợp).\nLàm bằng cách nhớ ý nghĩa của từng quá trình.",
+     "ly_thuyet": "##TC Ý nghĩa\nNguyên phân: giúp cơ thể đa bào lớn lên, thay thế tế bào già, bị tổn thương.\nGiảm phân tạo giao tử n; thụ tinh khôi phục bộ 2n nên bộ NST đặc trưng của loài ổn định qua các thế hệ.\nSự phân li độc lập, tổ hợp tự do của NST trong giảm phân cùng với thụ tinh tạo nhiều biến dị tổ hợp, làm đa dạng các cá thể trong loài.",
+     "vi_du": "##VD\nNhờ quá trình nào mà cơ thể đa bào lớn lên và các mô, cơ quan bị tổn thương có thể được thay thế?\nA. Giảm phân\nB. Nguyên phân\nC. Thụ tinh\nD. Sự nhân đôi DNA đơn lẻ, không kèm phân chia tế bào\n\nBài giải:\nNguyên phân giúp tế bào tăng số lượng, nhờ đó cơ thể đa bào lớn lên và các mô, cơ quan bị tổn thương được thay thế (phương án B).\nGiảm phân tạo giao tử, thụ tinh tạo hợp tử; nhân đôi DNA đơn lẻ không kèm phân chia thì không làm tăng số tế bào.\nChọn B.\n\n##VD\nGiảm phân kết hợp với thụ tinh có ý nghĩa gì đối với loài sinh sản hữu tính?\nA. Duy trì ổn định bộ NST đặc trưng của loài qua các thế hệ\nB. Làm tăng gấp đôi bộ NST của loài sau mỗi thế hệ\nC. Làm bộ NST của loài giảm dần qua các thế hệ\nD. Không ảnh hưởng gì đến bộ NST của loài qua các thế hệ\n\nBài giải:\nGiảm phân làm bộ NST giảm một nửa ở giao tử, thụ tinh khôi phục bộ 2n ở hợp tử, nên bộ NST đặc trưng của loài được duy trì ổn định qua các thế hệ (phương án A).\nCác phương án còn lại đều trái với thực tế: bộ NST không tăng gấp đôi hay giảm dần.\nChọn A.",
+     "nguon_vi_du": "K09120201014, K09120201015",
+     "cau": [
+      "K09120201014",
+      "K09120201015",
+      "K09120201016"
+     ]
+    }
+   ],
+   "khong_hop": [],
+   "ghi_chu": ""
+  },
+  {
+   "nhom_id": "KNB00571",
+   "ly_thuyet": "##TC 1. Kiến thức cần nhớ\nMột tế bào nguyên phân liên tiếp $k$ lần tạo ra $2^k$ tế bào con.\nTổng số NST đơn có trong các tế bào con: $2n\\cdot 2^k$.\nSố NST mà môi trường nội bào cung cấp cho $k$ lần nguyên phân: $2n\\cdot(2^k-1)$.\n\n##PP 2. Các bước làm bài\nXác định số tế bào ban đầu, số lần nguyên phân $k$ và bộ NST $2n$.\nTính số tế bào con $2^k$.\nTính số NST theo công thức tương ứng rồi đối chiếu đáp án.\n\n##CY 3. Lưu ý\nSố NST môi trường cung cấp là số NST mới được tạo ra, không tính các NST có sẵn trong tế bào ban đầu.",
+   "dang_bai": [
+    {
+     "ten": "Tính số tế bào con tạo ra sau k lần nguyên phân",
+     "mo_ta": "Đề cho một tế bào sinh dưỡng nguyên phân liên tiếp k lần, hỏi số tế bào con tạo thành.\nLàm bằng cách tính $2^k$.\nLưu ý: đề cho bộ NST 2n và hỏi NST môi trường cung cấp ⇒ thuộc dạng \"Tính số NST môi trường cung cấp cho nguyên phân\".",
+     "ly_thuyet": "##TC Công thức\nSau $k$ lần nguyên phân liên tiếp, 1 tế bào tạo $2^k$ tế bào con.\n\n##PP Cách làm\nXác định số lần nguyên phân $k$.\nTính $2^k$.",
+     "vi_du": "##VD\nMột tế bào sinh dưỡng thực hiện nguyên phân liên tiếp 3 lần. Số tế bào con được tạo thành là bao nhiêu?\nA. 6\nB. 4\nC. 8\nD. 9\n\nBài giải:\nSố tế bào con sau 3 lần nguyên phân là $2^3=8$ tế bào.\nChọn C.\n\n##VD\nMột tế bào sinh dưỡng thực hiện nguyên phân liên tiếp 7 lần. Số tế bào con được tạo thành là bao nhiêu?\nA. 14\nB. 128\nC. 49\nD. 64\n\nBài giải:\nSố tế bào con sau 7 lần nguyên phân là $2^7=128$ tế bào.\nChọn B.",
+     "nguon_vi_du": "K09120202001, K09120202004",
+     "cau": [
+      "K09120202001",
+      "K09120202002",
+      "K09120202003",
+      "K09120202004",
+      "K09120202005",
+      "K09120202006"
+     ]
+    },
+    {
+     "ten": "Tính số NST môi trường cung cấp cho nguyên phân",
+     "mo_ta": "Đề cho bộ NST 2n của tế bào và số lần nguyên phân k, hỏi số NST mới do môi trường nội bào cung cấp.\nLàm bằng cách áp dụng công thức $2n\\cdot(2^k-1)$.\nLưu ý: đề chỉ hỏi số tế bào con ⇒ thuộc dạng \"Tính số tế bào con tạo ra sau k lần nguyên phân\".",
+     "ly_thuyet": "##TC Công thức\nSau $k$ lần nguyên phân, các tế bào con có tất cả $2n\\cdot 2^k$ NST.\nSố NST môi trường cung cấp bằng tổng số NST đã có trừ đi số NST ban đầu: $2n\\cdot 2^k-2n=2n\\cdot(2^k-1)$.\n\n##PP Cách làm\nXác định $2n$ và $k$.\nTính $2^k-1$.\nNhân với $2n$.\n\n##CY Chú ý\nĐừng tính nhầm thành $2n\\cdot 2^k$ (đã bao gồm cả NST của tế bào ban đầu).",
+     "vi_du": "##VD\nMột tế bào có bộ NST 2n = 8 thực hiện nguyên phân liên tiếp 2 lần. Môi trường nội bào đã cung cấp nguyên liệu để tạo ra bao nhiêu NST mới?\nA. 32\nB. 12\nC. 24\nD. 8\n\nBài giải:\nSố NST môi trường cung cấp: $2n\\cdot(2^k-1)=8\\cdot(2^2-1)=8\\cdot3=24$ NST.\nChọn C.\n\n##VD\nMột tế bào có bộ NST 2n = 4 thực hiện nguyên phân liên tiếp 5 lần. Môi trường nội bào đã cung cấp nguyên liệu để tạo ra bao nhiêu NST mới?\nA. 128\nB. 124\nC. 20\nD. 4\n\nBài giải:\nSố NST môi trường cung cấp: $2n\\cdot(2^k-1)=4\\cdot(2^5-1)=4\\cdot31=124$ NST.\nPhương án 128 là tổng NST trong các tế bào con, chưa trừ NST có sẵn của tế bào ban đầu.\nChọn B.",
+     "nguon_vi_du": "K09120202007, K09120202012",
+     "cau": [
+      "K09120202007",
+      "K09120202008",
+      "K09120202009",
+      "K09120202010",
+      "K09120202011",
+      "K09120202012"
+     ]
+    }
+   ],
+   "khong_hop": [],
+   "ghi_chu": ""
+  },
+  {
+   "nhom_id": "KNB00572",
+   "ly_thuyet": "##TC 1. Kiến thức cần nhớ\nMột tế bào sinh dục sơ khai nguyên phân liên tiếp $k$ lần tạo $2^k$ tế bào sinh giao tử.\nMỗi tế bào sinh tinh giảm phân bình thường tạo 4 tinh trùng. Mỗi tế bào sinh trứng giảm phân bình thường tạo 1 trứng và 3 thể cực.\nHiệu suất thụ tinh: H = số giao tử được thụ tinh : tổng số giao tử; mỗi giao tử được thụ tinh tạo 1 hợp tử.\n\n##PP 2. Các bước làm bài\nTính số tế bào sinh giao tử $2^k$.\nTính số giao tử (tinh trùng, trứng hoặc thể cực) theo kết quả giảm phân.\nNếu có hiệu suất thụ tinh, nhân số giao tử với $H$ để được số hợp tử (hoặc chia cho $H$ để tìm số giao tử).\n\n##CY 3. Lưu ý\nThể cực không tham gia thụ tinh.\nPhải phân biệt giao tử đực (4 tinh trùng/tế bào) và giao tử cái (1 trứng/tế bào).",
+   "dang_bai": [
+    {
+     "ten": "Tính số giao tử từ tế bào sinh dục sơ khai",
+     "mo_ta": "Đề cho tế bào sinh dục sơ khai (đực hoặc cái) nguyên phân k lần rồi giảm phân bình thường, hỏi tổng số tinh trùng, trứng hoặc thể cực, hoặc so sánh số tinh trùng với số trứng.\nLàm bằng cách tính $2^k$ rồi nhân với số giao tử mỗi tế bào tạo ra.\nLưu ý: đề có hiệu suất thụ tinh, hỏi số hợp tử ⇒ thuộc dạng \"Tính số hợp tử, giao tử theo hiệu suất thụ tinh\".",
+     "ly_thuyet": "##TC Số giao tử\nTế bào sinh tinh: 1 tế bào tạo 4 tinh trùng. Tế bào sinh trứng: 1 tế bào tạo 1 trứng và 3 thể cực.\nTừ 1 tế bào sinh dục sơ khai nguyên phân $k$ lần: số tinh trùng $=2^k\\cdot4$, số trứng $=2^k$, số thể cực $=2^k\\cdot3$.\n\n##PP Cách làm\nTính số tế bào sinh giao tử $2^k$.\nNhân với số giao tử mỗi tế bào tạo ra.\nVới đề so sánh, tính riêng số tinh trùng và số trứng rồi trừ.",
+     "vi_du": "##VD\nMột tế bào sinh dục sơ khai của một cơ thể đực nguyên phân liên tiếp 4 lần tạo các tế bào sinh tinh, mỗi tế bào sinh tinh giảm phân bình thường. Tính tổng số tinh trùng tạo thành.\nA. 16\nB. 48\nC. 64\nD. 32\n\nBài giải:\nSố tế bào sinh tinh: $2^4=16$.\nMỗi tế bào sinh tinh giảm phân tạo 4 tinh trùng nên tổng số tinh trùng: $16\\cdot4=64$.\nChọn C.\n\n##VD\nMột tế bào sinh dục sơ khai của một cơ thể đực nguyên phân liên tiếp 3 lần tạo các tế bào sinh tinh; đồng thời một tế bào sinh dục sơ khai của cơ thể cái nguyên phân liên tiếp 2 lần tạo các tế bào sinh trứng (đều giảm phân bình thường). Số tinh trùng nhiều hơn số trứng bao nhiêu?\nA. 32\nB. 4\nC. 28\nD. 36\n\nBài giải:\nCơ thể đực: số tế bào sinh tinh $2^3=8$, số tinh trùng $8\\cdot4=32$.\nCơ thể cái: số tế bào sinh trứng $2^2=4$, số trứng $4\\cdot1=4$.\nSố tinh trùng nhiều hơn số trứng: $32-4=28$.\nChọn C.",
+     "nguon_vi_du": "K09120203001, K09120203006",
+     "cau": [
+      "K09120203001",
+      "K09120203002",
+      "K09120203003",
+      "K09120203004",
+      "K09120203005",
+      "K09120203006"
+     ]
+    },
+    {
+     "ten": "Tính số hợp tử, giao tử theo hiệu suất thụ tinh",
+     "mo_ta": "Đề cho số giao tử (hoặc tế bào sinh dục sơ khai) và hiệu suất thụ tinh, hỏi số hợp tử tạo thành; hoặc cho số hợp tử và hiệu suất, hỏi số giao tử tham gia thụ tinh.\nLàm bằng cách tính số giao tử, nhân hoặc chia cho hiệu suất.\nLưu ý: đề chỉ hỏi số giao tử, không có hiệu suất thụ tinh ⇒ thuộc dạng \"Tính số giao tử từ tế bào sinh dục sơ khai\".",
+     "ly_thuyet": "##TC Hiệu suất thụ tinh\nSố hợp tử = số giao tử tham gia $\\times H$.\nSố giao tử tham gia = số hợp tử : H.\nMỗi hợp tử do một giao tử đực kết hợp với một giao tử cái, nên số hợp tử bằng số giao tử được thụ tinh của loại giao tử đang xét.\n\n##PP Cách làm\nTính số tinh trùng hoặc trứng tạo ra (nếu đề chưa cho).\nĐổi hiệu suất phần trăm ra số thập phân.\nNhân hoặc chia để ra đáp án.",
+     "vi_du": "##VD\nMột tế bào sinh dục sơ khai của cơ thể đực nguyên phân liên tiếp 2 lần tạo tế bào sinh tinh, giảm phân bình thường tạo tinh trùng. Biết hiệu suất thụ tinh của tinh trùng là 25%. Tính số hợp tử tạo thành.\nA. 16\nB. 4\nC. 1\nD. 8\n\nBài giải:\nSố tế bào sinh tinh: $2^2=4$, số tinh trùng: $4\\cdot4=16$.\nSố hợp tử $=16\\cdot25\\%=4$.\nChọn B.\n\n##VD\nBiết hiệu suất thụ tinh của trứng ở một loài là 25% và có 3 hợp tử được tạo thành. Tính số trứng đã tham gia quá trình trên.\nA. 3\nB. 12\nC. 9\nD. 6\n\nBài giải:\nSố hợp tử bằng số trứng được thụ tinh $=3$.\nSố trứng tham gia: $\\dfrac{3}{25\\%}=\\dfrac{3}{0{,}25}=12$.\nChọn B.",
+     "nguon_vi_du": "K09120203007, K09120203009",
+     "cau": [
+      "K09120203007",
+      "K09120203008",
+      "K09120203009",
+      "K09120203010",
+      "K09120203011"
+     ]
+    }
+   ],
+   "khong_hop": [],
+   "ghi_chu": ""
+  },
+  {
+   "nhom_id": "KNB00573",
+   "ly_thuyet": "##TC 1. Kiến thức cần nhớ\nTrong tế bào lưỡng bội có các cặp NST thường và một cặp NST giới tính.\nNST thường: nhiều cặp, giống nhau ở cả hai giới. NST giới tính: chỉ một cặp, có thể giống nhau (XX) hoặc khác nhau (XY) về hình dạng, kích thước; mang gene quy định giới tính.\nSố cặp NST thường $=\\dfrac{2n}{2}-1$.\nỞ người $2n=46$: 22 cặp NST thường và 1 cặp NST giới tính; nữ là XX, nam là XY.\nỞ ruồi giấm $2n=8$: 3 cặp NST thường và 1 cặp NST giới tính; cái XX, đực XY.\nMẹ XX chỉ tạo một loại trứng mang X; bố XY tạo hai loại tinh trùng mang X hoặc Y. Giới tính của con do loại tinh trùng thụ tinh quyết định: X thì con gái (XX), Y thì con trai (XY).\nỨng dụng: tách tinh trùng mang X và tinh trùng mang Y (khác nhau về khối lượng, kích thước) để chủ động tạo giới tính vật nuôi.\n\n##PP 2. Các bước làm bài\nXác định số cặp NST của loài ($2n:2$).\nTrừ 1 cặp giới tính để được số cặp NST thường.\nVới câu về giới tính của con: xét loại giao tử mang NST giới tính của bố và mẹ.\n\n##CY 3. Lưu ý\nỞ người và ruồi giấm, con cái mang XX, con đực mang XY.\nGiới tính của con phụ thuộc loại tinh trùng, không phụ thuộc chế độ dinh dưỡng của mẹ khi mang thai.",
+   "dang_bai": [
+    {
+     "ten": "Tính số cặp NST thường và giới tính từ 2n",
+     "mo_ta": "Đề cho bộ NST 2n của một loài (hoặc hình bộ NST), hỏi số cặp NST thường, số cặp NST giới tính.\nLàm bằng cách lấy $2n:2$ rồi trừ đi 1 cặp NST giới tính.\nLưu ý: câu hỏi chỉ yêu cầu nêu đặc điểm, kí hiệu NST thường và NST giới tính ⇒ thuộc dạng \"Đặc điểm và kí hiệu của NST thường và NST giới tính\".",
+     "ly_thuyet": "##TC Công thức\nSố cặp NST của loài $=\\dfrac{2n}{2}$.\nMỗi tế bào lưỡng bội có đúng 1 cặp NST giới tính, nên số cặp NST thường $=\\dfrac{2n}{2}-1$.\n\n##PP Cách làm\nTính số cặp NST của loài.\nTrừ 1 cặp NST giới tính.\n\n##CY Chú ý\nCặp NST giới tính vẫn là một cặp (XX hoặc XY), không bị bỏ ra ngoài số cặp NST.",
+     "vi_du": "##VD\nMột loài động vật có bộ NST 2n = 4, cặp cuối kí hiệu XY. Loài này có bao nhiêu cặp NST thường?\nA. 2 cặp\nB. 0 cặp\nC. 1 cặp\nD. 3 cặp\n\nBài giải:\nLoài có $2n=4$ nên có $\\dfrac{4}{2}=2$ cặp NST, trong đó có 1 cặp NST giới tính (XY).\nSố cặp NST thường $=2-1=1$ cặp.\nChọn C.\n\n##VD\nBộ NST 2n = 46 ở người gồm bao nhiêu cặp NST thường và bao nhiêu cặp NST giới tính?\nA. 23 cặp NST thường, 1 cặp NST giới tính\nB. 22 cặp NST thường, 2 cặp NST giới tính\nC. 22 cặp NST thường, 1 cặp NST giới tính\nD. 21 cặp NST thường, 2 cặp NST giới tính\n\nBài giải:\n$2n=46$ nên có $\\dfrac{46}{2}=23$ cặp NST.\nCó 1 cặp NST giới tính nên số cặp NST thường $=23-1=22$ cặp.\nChọn C.",
+     "nguon_vi_du": "K09120301003, K09120301013",
+     "cau": [
+      "K09120301001",
+      "K09120301002",
+      "K09120301003",
+      "K09120301006",
+      "K09120301008",
+      "K09120301013"
+     ]
+    },
+    {
+     "ten": "Đặc điểm và kí hiệu của NST thường và NST giới tính",
+     "mo_ta": "Đề hỏi đặc điểm của NST thường, NST giới tính, kí hiệu cặp NST giới tính của nam, nữ, của ruồi giấm đực, cái, hoặc so sánh X và Y.\nLàm bằng cách nhớ khái niệm và kí hiệu.\nLưu ý: đề cho 2n và yêu cầu tính số cặp ⇒ thuộc dạng \"Tính số cặp NST thường và giới tính từ 2n\".",
+     "ly_thuyet": "##TC Phân biệt NST thường và NST giới tính\nNST thường giống nhau ở hai giới, có nhiều cặp. NST giới tính chỉ có một cặp, khác nhau ở hai giới.\nỞ người và ruồi giấm: cái là XX, đực là XY. Hai chiếc của cặp XY khác nhau về hình dạng, kích thước.\nCặp NST giới tính có mặt trong tế bào sinh dưỡng (không chỉ ở tế bào sinh dục).\n\n##CY Chú ý\nCặp XX gồm hai chiếc giống nhau; cặp XY gồm hai chiếc khác nhau.",
+     "vi_du": "##VD\nNST thường khác NST giới tính ở điểm nào?\nA. NST thường chỉ có ở con cái, NST giới tính chỉ có ở con đực\nB. NST thường giống nhau ở hai giới; NST giới tính có thể khác nhau\nC. NST thường quy định giới tính, NST giới tính quy định các tính trạng thường\nD. Mỗi tế bào chỉ có một NST thường nhưng có nhiều cặp NST giới tính\n\nBài giải:\nNST thường giống nhau ở hai giới, còn NST giới tính có thể khác nhau ở hai giới (phương án B).\nPhương án A sai vì cả hai loại đều có ở cả hai giới; phương án C đảo ngược vai trò; phương án D sai vì mỗi tế bào có nhiều cặp NST thường.\nChọn B.\n\n##VD\nTrong tế bào sinh dưỡng của nam giới, NST Y có đặc điểm gì so với NST X?\nA. Giống hệt NST X về kích thước và hình dạng\nB. Có kích thước, hình dạng khác NST X\nC. NST Y chỉ có ở giao tử, không có ở tế bào sinh dưỡng\nD. Có số lượng gene nhiều hơn hẳn NST X\n\nBài giải:\nTrong tế bào sinh dưỡng của nam giới có cặp XY, trong đó NST Y khác NST X về kích thước và hình dạng (phương án B).\nNST Y có ở tế bào sinh dưỡng của nam, không chỉ ở giao tử (loại C); NST Y nhỏ hơn X và chứa ít gene hơn X (loại D).\nChọn B.",
+     "nguon_vi_du": "K09120301007, K09120301012",
+     "cau": [
+      "K09120301004",
+      "K09120301005",
+      "K09120301007",
+      "K09120301009",
+      "K09120301010",
+      "K09120301012"
+     ]
+    },
+    {
+     "ten": "Xác định giới tính của người dựa vào NST giới tính",
+     "mo_ta": "Đề hỏi giới tính của người được xác định dựa vào yếu tố nào, trứng mang NST giới tính nào, con trai hay con gái phụ thuộc vào loại tinh trùng nào.\nLàm bằng cách nhớ cơ chế xác định giới tính ở người.\nLưu ý: đề hỏi ứng dụng chọn giới tính vật nuôi ⇒ thuộc dạng \"Ứng dụng NST giới tính trong chăn nuôi\".",
+     "ly_thuyet": "##TC Xác định giới tính ở người\nGiới tính do cặp NST giới tính XX hoặc XY quyết định.\nTrứng luôn mang NST X; tinh trùng mang X hoặc Y.\nTinh trùng mang X thụ tinh với trứng tạo hợp tử XX (con gái); tinh trùng mang Y thụ tinh với trứng tạo hợp tử XY (con trai).",
+     "vi_du": "##VD\nỞ người, trứng luôn mang NST giới tính nào?\nA. X\nB. Y\nC. X hoặc Y tuỳ trường hợp\nD. Không mang NST giới tính nào\n\nBài giải:\nMẹ có cặp XX nên giảm phân chỉ tạo một loại trứng, mang NST X (phương án A).\nChọn A.\n\n##VD\nCon sinh ra là trai hay gái phụ thuộc trực tiếp vào loại tinh trùng nào thụ tinh với trứng?\nA. Loại NST giới tính (X hoặc Y) trong tinh trùng\nB. Chỉ phụ thuộc vào loại trứng do mẹ tạo ra\nC. Phụ thuộc vào số lượng tinh trùng tham gia thụ tinh\nD. Phụ thuộc vào tuổi của bố mẹ khi sinh con\n\nBài giải:\nTrứng luôn mang X, nên giới tính của con phụ thuộc vào tinh trùng mang X hay Y thụ tinh với trứng (phương án A).\nCác yếu tố như số lượng tinh trùng hay tuổi bố mẹ không quyết định giới tính.\nChọn A.",
+     "nguon_vi_du": "K09120301014, K09120301015",
+     "cau": [
+      "K09120301011",
+      "K09120301014",
+      "K09120301015"
+     ]
+    },
+    {
+     "ten": "Ứng dụng NST giới tính trong chăn nuôi",
+     "mo_ta": "Đề cho tình huống chăn nuôi (bò sữa, vật nuôi) cần chủ động tạo con cái hoặc con đực, hỏi cơ sở khoa học hoặc biện pháp.\nLàm bằng cách vận dụng cơ chế XX/XY: chọn loại tinh trùng mang X hoặc Y để thụ tinh nhân tạo.\nLưu ý: đề hỏi thuần túy khái niệm giới tính ở người ⇒ thuộc dạng \"Xác định giới tính của người dựa vào NST giới tính\".",
+     "ly_thuyet": "##TC Cơ sở khoa học\nTinh trùng mang X và tinh trùng mang Y khác nhau về khối lượng, kích thước nên có thể tách riêng.\nỞ bò: cái XX, đực XY. Trứng thụ tinh với tinh trùng mang X cho con cái; với tinh trùng mang Y cho con đực.\n\n##PP Cách làm\nXác định mục tiêu (cần nhiều con cái hay con đực).\nChọn loại tinh trùng tương ứng (X cho con cái, Y cho con đực).\nDùng tinh trùng đã tách để thụ tinh nhân tạo.",
+     "vi_du": "##VD\nTrại bò sữa muốn có nhiều bê cái. Ở bò, con cái mang cặp NST giới tính XX, con đực mang XY. Muốn chủ động tăng tỉ lệ bê cái, có thể dựa trên nguyên lí nào?\nA. Cho bò cái đẻ nhiều lứa hơn để có thêm bê cái\nB. Nuôi bò mẹ ở nơi nhiệt độ cao khi mang thai\nC. Chọn bò bố mẹ to khoẻ để sinh nhiều bê cái\nD. Tách lọc tinh trùng mang X để thụ tinh nhân tạo\n\nBài giải:\nBò cái XX, bò đực XY nên muốn có bê cái (XX) cần cho trứng thụ tinh với tinh trùng mang X.\nVì vậy có thể tách lọc tinh trùng mang X để thụ tinh nhân tạo (phương án D).\nSố lứa đẻ, nhiệt độ hay kích thước bố mẹ không quyết định giới tính của bê.\nChọn D.\n\n##VD\nTrong chăn nuôi bò sữa, người ta lọc tinh trùng mang NST X để tăng tỉ lệ bê cái. Cơ sở khoa học của biện pháp này là gì?\nA. Trứng gặp tinh trùng mang X sẽ phát triển thành cá thể đực\nB. Tinh trùng mang X luôn phát triển nhanh hơn tinh trùng mang Y\nC. Trứng gặp tinh trùng mang X sẽ phát triển thành cá thể cái\nD. Lọc tinh trùng làm thay đổi bộ NST thường của con\n\nBài giải:\nTrứng bò luôn mang X; trứng gặp tinh trùng mang X tạo hợp tử XX nên phát triển thành bê cái (phương án C).\nTinh trùng mang X không phát triển nhanh hơn tinh trùng mang Y (loại B); lọc tinh trùng không làm đổi NST thường (loại D).\nChọn C.",
+     "nguon_vi_du": "K09120301018, K09120301016",
+     "cau": [
+      "K09120301016",
+      "K09120301017",
+      "K09120301018",
+      "K09120301019"
+     ]
+    }
+   ],
+   "khong_hop": [],
+   "ghi_chu": ""
+  },
+  {
+   "nhom_id": "KNB00574",
+   "ly_thuyet": "##TC 1. Kiến thức cần nhớ\nỞ người: mẹ XX giảm phân tạo một loại trứng (X); bố XY giảm phân tạo hai loại tinh trùng (X và Y) với số lượng ngang nhau (tỉ lệ 1 : 1).\nSơ đồ lai: P: XX (mẹ) × XY (bố); G: X; X, Y; F₁: 1 XX (gái) : 1 XY (trai).\nNST X của con trai nhận từ mẹ, NST Y nhận từ bố.\nTỉ lệ con trai : con gái xấp xỉ 1 : 1 vì hai loại tinh trùng X và Y được tạo ra ngang nhau và xác suất thụ tinh với trứng như nhau.\nMỗi lần sinh là một sự kiện độc lập, xác suất sinh con trai hay con gái luôn xấp xỉ 1/2.\n\n##PP 2. Các bước làm bài\nViết kiểu gene giới tính của bố mẹ (XX hoặc XY).\nViết các loại giao tử của bố mẹ.\nLập sơ đồ lai, đọc tỉ lệ kiểu gene giới tính ở con rồi suy ra giới tính.\n\n##CY 3. Lưu ý\nBố là người quyết định giới tính của con vì chỉ có bố tạo hai loại giao tử.\nTỉ lệ 1 : 1 là tỉ lệ xấp xỉ khi số lượng lớn, không áp dụng chính xác cho từng gia đình.",
+   "dang_bai": [
+    {
+     "ten": "Loại giao tử và vai trò của bố, mẹ",
+     "mo_ta": "Đề hỏi loại và tỉ lệ giao tử về NST giới tính của bố hoặc mẹ, nguồn gốc NST X và Y của con, bố hay mẹ quyết định giới tính của con.\nLàm bằng cách viết giao tử từ XX và XY rồi suy luận.\nLưu ý: đề yêu cầu viết sơ đồ lai, tính tỉ lệ đời con hay giải thích tỉ lệ 1 : 1 ⇒ thuộc dạng \"Sơ đồ lai xác định giới tính, tỉ lệ đời con\".",
+     "ly_thuyet": "##TC Giao tử và vai trò bố mẹ\nMẹ XX: một loại trứng X. Bố XY: hai loại tinh trùng, X và Y, tỉ lệ 1 : 1.\nCon trai (XY) nhận Y từ bố, X từ mẹ.\nBố quyết định giới tính con vì loại tinh trùng thụ tinh quyết định hợp tử là XX hay XY.",
+     "vi_du": "##VD\nỞ người, mẹ (mang cặp NST XX) khi giảm phân chỉ tạo ra một loại trứng mang NST giới tính nào?\nA. X\nB. X hoặc Y tuỳ theo lần rụng trứng\nC. Không mang NST giới tính\nD. Y\n\nBài giải:\nMẹ có cặp NST XX nên mọi tế bào trứng sau giảm phân đều mang một NST X.\nVậy mẹ chỉ tạo một loại trứng mang X (phương án A).\nChọn A.\n\n##VD\nỞ người, giới tính của con được quyết định bởi loại tinh trùng nào thụ tinh với trứng. Nhận định hợp lí nhất về vai trò của bố và mẹ trong việc quyết định giới tính con là\nA. Mẹ, vì trứng luôn mang NST X\nB. Bố, vì bố tạo hai loại tinh trùng X và Y\nC. Cả bố và mẹ, mỗi người quyết định một nửa\nD. Mẹ, vì chế độ ăn khi mang thai quyết định\n\nBài giải:\nTrứng của mẹ luôn mang X; con trai hay con gái do tinh trùng mang X hay Y thụ tinh quyết định.\nBố tạo hai loại tinh trùng X và Y nên bố quyết định giới tính con (phương án B).\nChế độ ăn của mẹ khi mang thai không quyết định giới tính (loại D).\nChọn B.",
+     "nguon_vi_du": "K09120302001, K09120302006",
+     "cau": [
+      "K09120302001",
+      "K09120302002",
+      "K09120302005",
+      "K09120302006"
+     ]
+    },
+    {
+     "ten": "Sơ đồ lai xác định giới tính, tỉ lệ đời con",
+     "mo_ta": "Đề cho sơ đồ lai P: XX × XY, hỏi tỉ lệ kiểu gene giới tính đời con; hoặc giải thích vì sao tỉ lệ trai : gái xấp xỉ 1 : 1, đối chiếu số liệu thống kê, tính xác suất sinh con trai hoặc con gái.\nLàm bằng cách viết giao tử, lập sơ đồ lai rồi đọc tỉ lệ.\nLưu ý: câu chỉ hỏi loại giao tử, không cần lập sơ đồ lai ⇒ thuộc dạng \"Loại giao tử và vai trò của bố, mẹ\".",
+     "ly_thuyet": "##TC Sơ đồ lai giới tính\nP: Mẹ XX × Bố XY.\nG: X; X, Y.\nF₁: 1 XX (gái) : 1 XY (trai).\nTỉ lệ trai : gái xấp xỉ 1 : 1.\n\n##PP Cách làm\nViết kiểu gene giới tính của bố mẹ.\nViết giao tử của bố và mẹ.\nKẻ bảng tổ hợp giao tử (hoặc nối các giao tử).\nĐọc tỉ lệ kiểu gene rồi suy ra tỉ lệ giới tính.\n\n##CY Chú ý\nMỗi lần sinh độc lập, đã sinh nhiều con gái liên tiếp thì lần sau xác suất con trai vẫn xấp xỉ 1/2.",
+     "vi_du": "##VD\nSơ đồ lai xác định giới tính ở người: P: Mẹ (XX) × Bố (XY). Tỉ lệ kiểu gene ở đời con (F₁) về cặp NST giới tính là bao nhiêu?\nA. 1 XX : 1 XY\nB. 1 XX : 3 XY\nC. 3 XX : 1 XY\nD. 100% XX\n\nBài giải:\nMẹ XX cho một loại trứng X; bố XY cho hai loại tinh trùng X và Y với tỉ lệ 1 : 1.\nTổ hợp: X + X = XX; X + Y = XY.\nF₁: 1 XX : 1 XY (phương án A).\nChọn A.\n\n##VD\nMột cặp vợ chồng đã sinh 4 con gái liên tiếp. Theo cơ chế xác định giới tính bằng NST, xác suất để lần sinh thứ 5 là con trai là bao nhiêu?\nA. Vẫn xấp xỉ 1/2, vì mỗi lần sinh độc lập với các lần trước\nB. Cao hơn 1/2, vì đã sinh 4 con gái nên lần này \"phải\" là con trai\nC. Thấp hơn 1/2, vì cơ thể mẹ đã quen sinh con gái\nD. Bằng 0, vì bố mẹ chỉ có khả năng sinh con gái\n\nBài giải:\nGiới tính của con được quyết định bởi loại tinh trùng (X hoặc Y) thụ tinh, xác suất mỗi loại là 1/2.\nMỗi lần sinh độc lập với các lần trước nên xác suất sinh con trai ở lần thứ 5 vẫn xấp xỉ 1/2 (phương án A).\nChọn A.",
+     "nguon_vi_du": "K09120302004, K09120302008",
+     "cau": [
+      "K09120302003",
+      "K09120302004",
+      "K09120302007",
+      "K09120302008"
+     ]
+    }
+   ],
+   "khong_hop": [],
+   "ghi_chu": ""
+  },
+  {
+   "nhom_id": "KNB00577",
+   "ly_thuyet": "##TC 1. Kiến thức cần nhớ\nDi truyền liên kết là hiện tượng các gene cùng nằm trên một NST cùng phân li và di truyền cùng nhau.\nCơ sở tế bào học: các gene nằm trên cùng một NST nên phân li cùng NST đó trong giảm phân.\nCác gene cùng nằm trên một NST tạo thành một nhóm gene liên kết. Số nhóm gene liên kết của loài bằng số NST trong bộ đơn bội ($n$).\nPhân li độc lập: các gene nằm trên các NST khác nhau, phân li độc lập, tổ hợp tự do nên cho nhiều tổ hợp mới. Di truyền liên kết: các gene thường đi cùng nhau, hạn chế biến dị tổ hợp.\nÝ nghĩa: duy trì sự ổn định của các nhóm tính trạng tốt, có lợi cho chọn giống.\nLai phân tích cơ thể dị hợp hai cặp gene: phân li độc lập cho tỉ lệ 1 : 1 : 1 : 1; liên kết hoàn toàn chỉ cho 2 loại kiểu hình với tỉ lệ 1 : 1.\n\n##PP 2. Các bước làm bài\nXác định các gene nằm trên cùng NST hay trên các NST khác nhau.\nNhớ đặc điểm của kiểu di truyền tương ứng (cùng đi hay tổ hợp tự do).\nVới bài nhận biết liên kết qua kết quả lai, so sánh tỉ lệ kiểu hình với 1 : 1 : 1 : 1.\n\n##CY 3. Lưu ý\nGene liên kết là gene cùng nằm trên một NST, không phải các gene có cùng chức năng.\nLiên kết hạn chế biến dị tổ hợp, không tạo nhiều tổ hợp mới hơn phân li độc lập.",
+   "dang_bai": [
+    {
+     "ten": "Khái niệm di truyền liên kết, nhóm gene liên kết",
+     "mo_ta": "Đề hỏi định nghĩa di truyền liên kết, nhóm gene liên kết, vì sao gene trên cùng NST di truyền cùng nhau, số nhóm gene liên kết của loài.\nLàm bằng cách nhớ khái niệm và cơ sở tế bào học.\nLưu ý: đề so sánh liên kết với phân li độc lập hoặc hỏi ý nghĩa ⇒ thuộc dạng \"So sánh liên kết với phân li độc lập, ý nghĩa\".",
+     "ly_thuyet": "##TC Khái niệm\nDi truyền liên kết: các gene cùng nằm trên một NST di truyền cùng nhau.\nNhóm gene liên kết gồm các gene cùng nằm trên một NST, cùng phân li trong giảm phân.\nSố nhóm gene liên kết bằng $n$ (số NST trong bộ đơn bội).\n\n##CY Chú ý\nGene liên kết có thể có chức năng khác nhau; điều kiện liên kết là cùng nằm trên một NST.",
+     "vi_du": "##VD\nNhóm gene liên kết là gì?\nA. Những gene có cùng chức năng trong cơ thể\nB. Tập hợp gene quy định các tính trạng giống nhau về màu sắc\nC. Các gene cùng nằm trên một NST, cùng phân li trong giảm phân\nD. Nhóm gene nằm trên các NST khác nhau nhưng cùng biểu hiện ra kiểu hình\n\nBài giải:\nNhóm gene liên kết gồm các gene cùng nằm trên một NST và cùng phân li trong giảm phân (phương án C).\nCùng chức năng hay cùng màu sắc không phải tiêu chí của nhóm gene liên kết; gene trên các NST khác nhau không liên kết.\nChọn C.\n\n##VD\nSố nhóm gene liên kết của một loài thường bằng với đại lượng nào?\nA. Tổng số gene có trong bộ NST của loài\nB. Số cặp NST giới tính của loài\nC. Số lượng NST trong bộ đơn bội (n) của loài\nD. Số lần nguyên phân của tế bào sinh dưỡng\n\nBài giải:\nMỗi NST trong bộ đơn bội mang một nhóm gene liên kết, nên số nhóm gene liên kết của loài bằng số NST trong bộ đơn bội $n$ (phương án C).\nChọn C.",
+     "nguon_vi_du": "K09120401003, K09120401005",
+     "cau": [
+      "K09120401001",
+      "K09120401002",
+      "K09120401003",
+      "K09120401004",
+      "K09120401005"
+     ]
+    },
+    {
+     "ten": "So sánh liên kết với phân li độc lập, ý nghĩa",
+     "mo_ta": "Đề hỏi điểm khác nhau giữa di truyền liên kết và phân li độc lập, ý nghĩa của di truyền liên kết trong chọn giống, hoặc suy ra liên kết từ kết quả lai phân tích.\nLàm bằng cách so sánh đặc điểm hai kiểu di truyền hoặc so tỉ lệ kiểu hình với 1 : 1 : 1 : 1.\nLưu ý: đề chỉ hỏi định nghĩa, cơ sở tế bào học ⇒ thuộc dạng \"Khái niệm di truyền liên kết\".",
+     "ly_thuyet": "##TC So sánh\nPhân li độc lập: gene trên các NST khác nhau; nhiều tổ hợp mới; lai phân tích dị hợp 2 cặp cho 1 : 1 : 1 : 1.\nDi truyền liên kết: gene cùng một NST; thường di truyền cùng nhau, ít tổ hợp mới; liên kết hoàn toàn khi lai phân tích dị hợp 2 cặp cho 1 : 1.\nÝ nghĩa: duy trì ổn định các nhóm gene (tính trạng) quý, dùng trong chọn giống.\n\n##CY Chú ý\nKết quả chỉ có hai loại kiểu hình với tỉ lệ 1 : 1 khi lai phân tích dị hợp hai cặp gene là dấu hiệu của liên kết hoàn toàn.",
+     "vi_du": "##VD\nTrong chọn giống, nếu muốn duy trì ổn định một tổ hợp các gene quý (ví dụ, gene kháng bệnh cùng với gene năng suất cao) qua nhiều thế hệ mà không bị tách rời do tổ hợp lại ngẫu nhiên, nhà chọn giống nên ưu tiên khai thác đặc điểm di truyền nào?\nA. Gene phân li độc lập, vì chúng tổ hợp tự do\nB. Không có cách nào duy trì tổ hợp gene quý\nC. Gene liên kết, vì chúng thường di truyền cùng nhau\nD. Phải tạo đột biến mới ở mỗi thế hệ\n\nBài giải:\nMuốn duy trì ổn định một tổ hợp gene quý cần các gene di truyền cùng nhau, tức là gene liên kết (phương án C).\nGene phân li độc lập tổ hợp lại ngẫu nhiên nên có thể tách rời nhóm gene quý.\nChọn C.\n\n##VD\nNếu tỉ lệ kiểu hình ở đời con của một phép lai phân tích cơ thể dị hợp hai cặp gene KHÔNG phải là 1:1:1:1 mà chỉ có hai loại kiểu hình với tỉ lệ 1:1, điều này gợi ý điều gì về hai cặp gene đó?\nA. Hai cặp gene này chắc chắn phân li độc lập với nhau\nB. Hai cặp gene này liên kết hoàn toàn với nhau trên cùng một nhiễm sắc thể\nC. Phép lai đã thực hiện sai, không có kết quả này trong thực tế\nD. Một trong hai cặp gene bị đột biến trong quá trình giảm phân\n\nBài giải:\nNếu hai cặp gene phân li độc lập, lai phân tích cho 4 loại kiểu hình tỉ lệ 1 : 1 : 1 : 1.\nKết quả chỉ có 2 loại kiểu hình với tỉ lệ 1 : 1 gợi ý hai cặp gene liên kết hoàn toàn trên cùng một NST (phương án B).\nChọn B.",
+     "nguon_vi_du": "K09120401008, K09120401009",
+     "cau": [
+      "K09120401006",
+      "K09120401007",
+      "K09120401008",
+      "K09120401009"
+     ]
+    }
+   ],
+   "khong_hop": [],
+   "ghi_chu": ""
+  },
+  {
+   "nhom_id": "KNB00578",
+   "ly_thuyet": "##TC 1. Kiến thức cần nhớ\nKiểu gene viết dạng $\\dfrac{AB}{ab}$ (hai gene trên cùng một NST, gạch ngang phân cách hai NST của một cặp tương đồng).\nLiên kết hoàn toàn: không xảy ra trao đổi đoạn, các gene trên cùng NST luôn đi cùng nhau vào giao tử.\nCơ thể dị hợp hai cặp gene liên kết hoàn toàn cho 2 loại giao tử, mỗi loại 50%: $\\dfrac{AB}{ab}\\rightarrow AB,\\ ab$; $\\dfrac{Ab}{aB}\\rightarrow Ab,\\ aB$.\nCơ thể dị hợp hai cặp gene phân li độc lập $AaBb$ cho 4 loại giao tử $AB, Ab, aB, ab$ (mỗi loại 25%).\nSố giao tử mỗi loại $=$ tổng số giao tử $\\times$ tỉ lệ loại đó.\n\n##PP 2. Các bước làm bài\nXác định các gene nằm cùng NST (liên kết) hay khác NST (phân li độc lập).\nXem mỗi NST của cặp mang tổ hợp gene nào (viết đúng dạng $\\dfrac{AB}{ab}$ hay $\\dfrac{Ab}{aB}$).\nMỗi NST cho một loại giao tử mang nguyên tổ hợp gene đó.\nTính tỉ lệ hoặc số lượng từng loại giao tử nếu đề yêu cầu.\n\n##CY 3. Lưu ý\nLiên kết hoàn toàn thì không cho các giao tử có tổ hợp mới (AB/ab không cho Ab hay aB).\nHai kiểu gene dị hợp $\\dfrac{AB}{ab}$ và $\\dfrac{Ab}{aB}$ cho giao tử khác nhau.",
+   "dang_bai": [
+    {
+     "ten": "Số loại giao tử: liên kết và phân li độc lập",
+     "mo_ta": "Đề cho cơ thể dị hợp hai cặp gene, hỏi số loại giao tử khi hai cặp gene liên kết hoàn toàn hoặc khi phân li độc lập.\nLàm bằng cách xem hai cặp gene cùng NST hay khác NST rồi đếm loại giao tử.\nLưu ý: đề hỏi tên cụ thể các loại giao tử ⇒ thuộc dạng \"Viết các loại giao tử của cơ thể liên kết hoàn toàn\".",
+     "ly_thuyet": "##TC Số loại giao tử\nDị hợp hai cặp gene liên kết hoàn toàn: 2 loại giao tử.\nDị hợp hai cặp gene phân li độc lập: 4 loại giao tử.\n\n##CY Chú ý\nCùng kiểu gene dị hợp hai cặp gene nhưng liên kết hay phân li độc lập thì số loại giao tử khác nhau.",
+     "vi_du": "##VD\nCơ thể dị hợp hai cặp gene (AaBb), nếu hai cặp gene này liên kết hoàn toàn trên một NST, giảm phân cho mấy loại giao tử?\nA. 4 loại\nB. 3 loại\nC. 1 loại\nD. 2 loại\n\nBài giải:\nHai cặp gene liên kết hoàn toàn trên một NST nên mỗi NST chuyển nguyên tổ hợp gene vào giao tử.\nCơ thể dị hợp có hai NST khác nhau nên cho 2 loại giao tử (phương án D).\nChọn D.\n\n##VD\nCơ thể dị hợp hai cặp gene AaBb, nếu hai cặp gene này phân li độc lập (nằm trên hai NST khác nhau), giảm phân cho mấy loại giao tử?\nA. 2 loại\nB. 4 loại\nC. 8 loại\nD. 1 loại\n\nBài giải:\nHai cặp gene phân li độc lập nên mỗi cặp gene phân li riêng rẽ, các giao tử tổ hợp tự do: $2\\cdot2=4$ loại giao tử (AB, Ab, aB, ab) (phương án B).\nChọn B.",
+     "nguon_vi_du": "K09120402001, K09120402002",
+     "cau": [
+      "K09120402001",
+      "K09120402002",
+      "K09120402006"
+     ]
+    },
+    {
+     "ten": "Viết các loại giao tử của cơ thể liên kết hoàn toàn",
+     "mo_ta": "Đề cho kiểu gene dạng AB/ab hoặc Ab/aB (liên kết hoàn toàn), hỏi các loại giao tử mà cơ thể tạo ra.\nLàm bằng cách mỗi NST của cặp cho một loại giao tử mang nguyên tổ hợp gene.\nLưu ý: đề chỉ hỏi số loại hoặc tính tỉ lệ, số lượng giao tử ⇒ thuộc dạng \"Số loại giao tử: liên kết và phân li độc lập\" hoặc \"Tính tỉ lệ và số lượng từng loại giao tử\".",
+     "ly_thuyet": "##TC Quy tắc viết giao tử\nCơ thể $\\dfrac{AB}{ab}$ cho giao tử $AB$ và $ab$.\nCơ thể $\\dfrac{Ab}{aB}$ cho giao tử $Ab$ và $aB$.\n\n##PP Cách làm\nXác định hai NST của cặp, ghi tổ hợp gene trên mỗi NST.\nMỗi NST cho một loại giao tử, không đổi tổ hợp.\n\n##CY Chú ý\nKhông viết thêm các tổ hợp mới như $Ab$ cho cơ thể $\\dfrac{AB}{ab}$ khi liên kết hoàn toàn.",
+     "vi_du": "##VD\nHai gene liên kết hoàn toàn trên một nhiễm sắc thể. Cơ thể có kiểu gene Ab/aB giảm phân cho các loại giao tử nào?\nA. AB và ab\nB. AB, Ab, aB và ab\nC. Ab và aB\nD. A, a, B và b\n\nBài giải:\nAb/aB liên kết hoàn toàn nên mỗi NST đi nguyên vào giao tử.\nNST thứ nhất mang Ab, NST thứ hai mang aB.\nVậy giao tử là Ab và aB (phương án C).\nChọn C.\n\n##VD\nỞ ruồi giấm đực, gene quy định màu thân và độ dài cánh liên kết hoàn toàn. Ruồi đực có kiểu gene BV/bv cho các loại giao tử nào?\nA. BV, Bv, bV và bv\nB. BV và bv\nC. Bv và bV\nD. Bb và Vv\n\nBài giải:\nRuồi đực BV/bv liên kết hoàn toàn: một NST mang BV, NST kia mang bv.\nCho hai loại giao tử BV và bv (phương án B).\nChọn B.",
+     "nguon_vi_du": "K09120402004, K09120402005",
+     "cau": [
+      "K09120402003",
+      "K09120402004",
+      "K09120402005",
+      "K09120402009",
+      "K09120402010",
+      "K09120402012"
+     ]
+    },
+    {
+     "ten": "Tính tỉ lệ và số lượng từng loại giao tử",
+     "mo_ta": "Đề cho kiểu gene liên kết hoàn toàn, hỏi tỉ lệ một loại giao tử cụ thể hoặc số giao tử mang tổ hợp gene nào đó khi tạo ra một số lượng giao tử.\nLàm bằng cách xác định các loại giao tử, tỉ lệ rồi nhân với tổng số giao tử.\nLưu ý: đề chỉ hỏi liệt kê loại giao tử ⇒ thuộc dạng \"Viết các loại giao tử của cơ thể liên kết hoàn toàn\".",
+     "ly_thuyet": "##TC Tỉ lệ giao tử\nCơ thể dị hợp hai cặp gene liên kết hoàn toàn cho 2 loại giao tử với tỉ lệ 1 : 1 (50% mỗi loại).\nLoại giao tử không có trong kết quả giảm phân có tỉ lệ 0%.\nSố giao tử loại X $=$ tổng giao tử $\\times$ tỉ lệ của X.\n\n##PP Cách làm\nViết các loại giao tử.\nXác định tỉ lệ của loại đề hỏi (0% nếu không có).\nNhân với tổng số giao tử nếu đề hỏi số lượng.",
+     "vi_du": "##VD\nHai gene liên kết hoàn toàn trên một nhiễm sắc thể. Cơ thể Ab/aB tạo giao tử AB với tỉ lệ bao nhiêu?\nA. 25%\nB. 50%\nC. 0%\nD. 100%\n\nBài giải:\nAb/aB liên kết hoàn toàn chỉ cho hai loại giao tử là Ab và aB, mỗi loại 50%.\nGiao tử AB không được tạo ra nên tỉ lệ bằng 0% (phương án C).\nChọn C.\n\n##VD\nMột cơ thể có kiểu gene AB/ab (hai gene liên kết hoàn toàn) giảm phân tạo ra 4000 giao tử. Số giao tử mang tổ hợp gene AB là bao nhiêu?\nA. 2000\nB. 4000\nC. 1000\nD. 0\n\nBài giải:\nAB/ab cho hai loại giao tử AB và ab với tỉ lệ 1 : 1, mỗi loại 50%.\nSố giao tử AB $=4000\\cdot50\\%=2000$ (phương án A).\nChọn A.",
+     "nguon_vi_du": "K09120402008, K09120402011",
+     "cau": [
+      "K09120402007",
+      "K09120402008",
+      "K09120402011"
+     ]
+    }
+   ],
+   "khong_hop": [],
+   "ghi_chu": ""
+  },
+  {
+   "nhom_id": "KNB00579",
+   "ly_thuyet": "##TC 1. Kiến thức cần nhớ\nCác bước viết sơ đồ lai liên kết hoàn toàn: P; G (giao tử); F₁ (kiểu gene, kiểu hình).\n$\\dfrac{AB}{ab}\\times\\dfrac{AB}{ab}$: G: $AB, ab$; F₁: $1\\dfrac{AB}{AB}:2\\dfrac{AB}{ab}:1\\dfrac{ab}{ab}$; kiểu hình 3 trội cả hai : 1 lặn cả hai.\n$\\dfrac{Ab}{aB}\\times\\dfrac{Ab}{aB}$: G: $Ab, aB$; F₁: $1\\dfrac{Ab}{Ab}:2\\dfrac{Ab}{aB}:1\\dfrac{aB}{aB}$; kiểu hình 1 (A-bb) : 2 (A-B-) : 1 (aaB-).\nLai phân tích: $\\dfrac{AB}{ab}\\times\\dfrac{ab}{ab}$ cho F₁ $1\\dfrac{AB}{ab}:1\\dfrac{ab}{ab}$, kiểu hình 1 : 1.\n$\\dfrac{Ab}{aB}\\times\\dfrac{ab}{ab}$ cho F₁ $1\\dfrac{Ab}{ab}:1\\dfrac{aB}{ab}$, kiểu hình 1 (trội A, lặn b) : 1 (lặn a, trội B).\n\n##PP 2. Các bước làm bài\nViết kiểu gene và kiểu hình của P, xác định gene liên kết hoàn toàn.\nViết các loại giao tử của mỗi bên.\nLập bảng tổ hợp giao tử, ghi tỉ lệ kiểu gene ở F₁.\nDựa vào quan hệ trội lặn để suy ra tỉ lệ kiểu hình, rồi tính số cá thể nếu đề yêu cầu.\n\n##CY 3. Lưu ý\nKiểu hình lặn aabb chỉ xuất hiện khi cả hai bên đều cho được giao tử ab.\nVới Ab/aB × Ab/aB không có kiểu hình lặn cả hai tính trạng.",
+   "dang_bai": [
+    {
+     "ten": "Tỉ lệ kiểu hình của phép lai hai cơ thể dị hợp",
+     "mo_ta": "Đề cho phép lai giữa hai cơ thể dị hợp hai cặp gene liên kết hoàn toàn (AB/ab × AB/ab hoặc Ab/aB × Ab/aB), hỏi tỉ lệ kiểu hình, tỉ lệ kiểu hình mang tính trạng nào đó hoặc số cá thể con.\nLàm bằng cách viết giao tử rồi lập bảng tổ hợp.\nLưu ý: một bên là cơ thể đồng hợp lặn (ab/ab) ⇒ thuộc dạng \"Sơ đồ lai phân tích di truyền liên kết\".",
+     "ly_thuyet": "##TC Hai bên cùng dị hợp\nMỗi bên cho 2 loại giao tử với tỉ lệ 1 : 1; F₁ có 3 tổ hợp: 1 : 2 : 1.\nAB/ab × AB/ab: kiểu hình 3 : 1. Ab/aB × Ab/aB: kiểu hình 1 : 2 : 1.\nSố cá thể kiểu hình $=$ tổng số cá thể $\\times$ tỉ lệ kiểu hình đó.\n\n##PP Cách làm\nViết giao tử của mỗi bên.\nLập bảng tổ hợp, tìm tỉ lệ kiểu gene.\nĐổi sang tỉ lệ kiểu hình rồi tính số lượng nếu cần.",
+     "vi_du": "##VD\nBiết A trội hoàn toàn so với a, B trội hoàn toàn so với b; hai gene liên kết hoàn toàn. Phép lai Ab/aB × Ab/aB cho đời con có tỉ lệ kiểu hình là\nA. 3 : 1\nB. 9 : 3 : 3 : 1\nC. 1 : 1\nD. 1 : 2 : 1\n\nBài giải:\nAb/aB cho giao tử Ab và aB.\nF₁: 1 Ab/Ab : 2 Ab/aB : 1 aB/aB.\nKiểu hình: 1 (A-bb) : 2 (A-B-) : 1 (aaB-), tức tỉ lệ kiểu hình 1 : 2 : 1 (phương án D).\nChọn D.\n\n##VD\nỞ một loài thực vật, hai tính trạng màu hoa và dạng quả do hai gene liên kết hoàn toàn quy định. Lai cây dị hợp AB/ab với cây dị hợp AB/ab, thu được 800 cây con. Số cây mang kiểu hình lặn cả hai tính trạng theo lí thuyết là bao nhiêu?\nA. 200\nB. 400\nC. 50\nD. 600\n\nBài giải:\nAB/ab × AB/ab: giao tử AB và ab ở cả hai bên.\nF₁: 1 AB/AB : 2 AB/ab : 1 ab/ab, kiểu hình lặn cả hai (ab/ab) chiếm $\\dfrac14$.\nSố cây lặn cả hai tính trạng $=800\\cdot\\dfrac14=200$ (phương án A).\nChọn A.",
+     "nguon_vi_du": "K09120403002, K09120403009",
+     "cau": [
+      "K09120403001",
+      "K09120403002",
+      "K09120403005",
+      "K09120403006",
+      "K09120403009"
+     ]
+    },
+    {
+     "ten": "Sơ đồ lai phân tích di truyền liên kết",
+     "mo_ta": "Đề cho phép lai cơ thể dị hợp hai cặp gene liên kết hoàn toàn với cơ thể đồng hợp lặn (ab/ab hoặc bv/bv), hỏi tỉ lệ kiểu gene, kiểu hình ở đời con.\nLàm bằng cách viết giao tử của cơ thể dị hợp (2 loại), cơ thể đồng hợp lặn chỉ 1 loại.\nLưu ý: cả hai bên đều dị hợp ⇒ thuộc dạng \"Tỉ lệ kiểu hình của phép lai hai cơ thể dị hợp\".",
+     "ly_thuyet": "##TC Lai phân tích\nCơ thể đồng hợp lặn chỉ cho một loại giao tử, nên kiểu hình đời con phản ánh trực tiếp giao tử của cơ thể dị hợp.\nAB/ab × ab/ab: F₁ 1 AB/ab : 1 ab/ab, kiểu hình 1 trội cả hai : 1 lặn cả hai.\nAb/aB × ab/ab: F₁ 1 Ab/ab : 1 aB/ab, kiểu hình 1 (trội A, lặn b) : 1 (lặn a, trội B).\n\n##PP Cách làm\nViết giao tử của cơ thể dị hợp (đúng dạng AB/ab hay Ab/aB).\nCơ thể đồng hợp lặn cho giao tử ab.\nGhép giao tử để được kiểu gene, rồi suy ra kiểu hình theo quan hệ trội lặn.",
+     "vi_du": "##VD\nỞ ruồi giấm, B (thân xám) trội hoàn toàn so với b (thân đen), V (cánh dài) trội hoàn toàn so với v (cánh cụt); hai gene liên kết hoàn toàn. Lai ruồi đực BV/bv với ruồi cái bv/bv, đời con có kiểu hình\nA. 1 xám, cụt : 1 đen, dài\nB. 1 xám, dài : 1 đen, cụt\nC. Bốn kiểu hình, mỗi loại 25%\nD. 3 xám, dài : 1 đen, cụt\n\nBài giải:\nRuồi đực BV/bv cho giao tử BV và bv; ruồi cái bv/bv cho giao tử bv.\nF₁: 1 BV/bv : 1 bv/bv.\nBV/bv: thân xám, cánh dài; bv/bv: thân đen, cánh cụt.\nKiểu hình: 1 xám, dài : 1 đen, cụt (phương án B).\nChọn B.\n\n##VD\nBiết A trội hoàn toàn so với a, B trội hoàn toàn so với b; hai gene liên kết hoàn toàn. Phép lai Ab/aB × ab/ab cho đời con có tỉ lệ kiểu hình là\nA. 1 (trội A, lặn b) : 1 (lặn a, trội B)\nB. 1 (trội cả hai) : 1 (lặn cả hai)\nC. 3 (trội cả hai) : 1 (lặn cả hai)\nD. 100% trội cả hai tính trạng\n\nBài giải:\nAb/aB cho giao tử Ab và aB; ab/ab cho giao tử ab.\nF₁: 1 Ab/ab : 1 aB/ab.\nAb/ab: trội A, lặn b; aB/ab: lặn a, trội B.\nKiểu hình: 1 (trội A, lặn b) : 1 (lặn a, trội B) (phương án A).\nChọn A.",
+     "nguon_vi_du": "K09120403003, K09120403004",
+     "cau": [
+      "K09120403003",
+      "K09120403004",
+      "K09120403007",
+      "K09120403008"
+     ]
+    }
+   ],
+   "khong_hop": [],
+   "ghi_chu": ""
+  },
+  {
+   "nhom_id": "KNB00581",
+   "ly_thuyet": "##TC 1. Kiến thức cần nhớ\nĐột biến NST là những biến đổi về cấu trúc hoặc số lượng NST.\nĐột biến cấu trúc NST có 4 dạng: mất đoạn (mất một đoạn NST), lặp đoạn (một đoạn NST lặp lại), đảo đoạn (một đoạn bị đứt rồi gắn lại ngược chiều), chuyển đoạn (một đoạn chuyển sang vị trí khác hoặc sang NST không tương đồng).\nĐảo đoạn chỉ làm thay đổi trật tự sắp xếp gene, không đổi số lượng gene.\nĐột biến số lượng NST có 2 dạng: lệch bội (thay đổi số lượng NST ở một hoặc một số cặp: thể ba $2n+1$, thể một $2n-1$, thể không $2n-2$) và đa bội (bộ NST tăng theo bội số của $n$: $3n$, $4n$,...).\nỞ người: hội chứng Down do thể ba ở NST số 21 (47 NST); hội chứng Turner do thể một ở cặp NST giới tính (XO, 45 NST); hội chứng Klinefelter do thể ba ở cặp NST giới tính (XXY, 47 NST). Nguyên nhân thường gặp: một cặp NST không phân li trong giảm phân khi tạo giao tử.\nThể đa bội ở thực vật thường có tế bào lớn, cơ quan sinh dưỡng (thân, lá, củ, quả) to hơn, tăng sức chống chịu. Dưa hấu tam bội ($3n$) không hạt vì bộ NST lẻ nên khó tạo giao tử bình thường. Thể tam bội thường tạo ra khi cho thể tứ bội ($4n$) lai với thể lưỡng bội ($2n$).\n\n##PP 2. Các bước làm bài\nXác định đột biến thuộc loại cấu trúc hay số lượng.\nVới đột biến cấu trúc, so sánh trình tự gene trước và sau đột biến (mất, thêm, đảo ngược hay chuyển đi).\nVới đột biến số lượng, so sánh số NST của tế bào với bộ lưỡng bội bình thường ($2n$) để biết thêm hay thiếu, ở một cặp hay toàn bộ các cặp.\n\n##CY 3. Lưu ý\nĐột biến cấu trúc làm thay đổi số lượng hoặc trật tự gene trên NST, không làm đổi số lượng NST.\nLệch bội chỉ thay đổi một hoặc vài cặp; đa bội thay đổi cả bộ NST.\nCác hội chứng do đột biến NST không phải bệnh truyền nhiễm và khó chữa khỏi hoàn toàn.",
+   "dang_bai": [
+    {
+     "ten": "Nhận biết các dạng đột biến cấu trúc NST theo khái niệm",
+     "mo_ta": "Đề mô tả bằng lời sự biến đổi của một đoạn NST (đứt mất, lặp lại, gắn ngược, chuyển chỗ) và hỏi tên dạng đột biến, hoặc hỏi các dạng đột biến cấu trúc và đặc điểm của chúng.\nLàm bằng cách đối chiếu mô tả với khái niệm của 4 dạng.\nLưu ý: đề cho hình hoặc trình tự gene trước và sau đột biến ⇒ thuộc dạng \"Xác định đột biến cấu trúc qua hình hoặc trình tự gene\".",
+     "ly_thuyet": "##TC Bốn dạng đột biến cấu trúc\nMất đoạn: một đoạn NST bị đứt và mất hẳn.\nLặp đoạn: một đoạn NST được nhân thêm, lặp lại trên cùng NST.\nĐảo đoạn: một đoạn NST đứt ra, quay ngược 180° rồi gắn lại.\nChuyển đoạn: một đoạn NST đứt ra và gắn vào vị trí khác trên cùng NST hoặc sang NST không tương đồng.\nĐảo đoạn không đổi số lượng gene, chỉ đổi trật tự gene.",
+     "vi_du": "##VD\nĐột biến làm một đoạn nhiễm sắc thể bị đứt ra rồi gắn lại theo chiều ngược với ban đầu được gọi là dạng nào?\nA. Mất đoạn\nB. Lặp đoạn\nC. Đảo đoạn\nD. Chuyển đoạn\n\nBài giải:\nĐoạn NST bị đứt ra rồi gắn lại theo chiều ngược với ban đầu là đảo đoạn (phương án C).\nChọn C.\n\n##VD\nTrong 4 dạng đột biến cấu trúc NST (mất đoạn, lặp đoạn, đảo đoạn, chuyển đoạn), dạng nào không làm thay đổi số lượng gene, chỉ làm thay đổi trật tự sắp xếp gene?\nA. Mất đoạn\nB. Lặp đoạn\nC. Chuyển đoạn (giữa hai NST không tương đồng)\nD. Đảo đoạn\n\nBài giải:\nMất đoạn làm giảm số lượng gene; lặp đoạn làm tăng số lượng gene; chuyển đoạn giữa hai NST không tương đồng làm gene chuyển sang NST khác.\nĐảo đoạn chỉ đổi chiều của đoạn NST nên số lượng gene không đổi, chỉ thay đổi trật tự gene (phương án D).\nChọn D.",
+     "nguon_vi_du": "K09120501003, K09120501008",
+     "cau": [
+      "K09120501001",
+      "K09120501002",
+      "K09120501003",
+      "K09120501004",
+      "K09120501005",
+      "K09120501006",
+      "K09120501007",
+      "K09120501008"
+     ]
+    },
+    {
+     "ten": "Xác định đột biến cấu trúc qua hình hoặc trình tự gene",
+     "mo_ta": "Đề cho sơ đồ đoạn NST hoặc trình tự gene trước và sau đột biến (ví dụ ABCDEFGH thành ABCFEDGH), hỏi đột biến thuộc dạng nào.\nLàm bằng cách so sánh hai trình tự: mất gene, có gene lặp lại, thứ tự đảo ngược hay gene ở vị trí khác.\nLưu ý: đề chỉ mô tả bằng lời khái niệm ⇒ thuộc dạng \"Nhận biết các dạng đột biến cấu trúc NST theo khái niệm\".",
+     "ly_thuyet": "##TC Dấu hiệu nhận biết\nMất đoạn: sau đột biến thiếu một số gene.\nLặp đoạn: một số gene xuất hiện hai lần.\nĐảo đoạn: số gene như cũ nhưng một đoạn có thứ tự ngược lại.\nChuyển đoạn: đoạn gene nằm ở vị trí khác hoặc ở NST khác.\n\n##PP Cách làm\nViết hai trình tự gene thẳng hàng để so sánh.\nĐếm số gene và xem gene nào mất, lặp hay đổi chỗ.\nKết luận dạng đột biến.",
+     "vi_du": "##VD\nMột đoạn nhiễm sắc thể bình thường có trình tự các gene là ABCDEFGH. Sau đột biến, trình tự trở thành ABCFEDGH. Đây là dạng đột biến cấu trúc NST nào?\nA. Mất đoạn\nB. Lặp đoạn\nC. Đảo đoạn\nD. Chuyển đoạn\n\nBài giải:\nTrước: A B C D E F G H. Sau: A B C F E D G H.\nSố gene không đổi; đoạn D E F bị đảo ngược thành F E D.\nĐây là đảo đoạn (phương án C).\nChọn C.\n\n##VD\nMột đoạn nhiễm sắc thể bình thường có trình tự các gene là MNPQRS. Sau đột biến, trình tự trở thành MNPQPQRS. Đây là dạng đột biến cấu trúc NST nào?\nA. Mất đoạn\nB. Đảo đoạn\nC. Chuyển đoạn\nD. Lặp đoạn\n\nBài giải:\nTrước: M N P Q R S. Sau: M N P Q P Q R S.\nĐoạn P Q xuất hiện hai lần nên có thêm gene.\nĐây là lặp đoạn (phương án D).\nChọn D.",
+     "nguon_vi_du": "K09120501037, K09120501038",
+     "cau": [
+      "K09120501016",
+      "K09120501017",
+      "K09120501018",
+      "K09120501019",
+      "K09120501037",
+      "K09120501038",
+      "K09120501039"
+     ]
+    },
+    {
+     "ten": "Phân loại đột biến số lượng NST và tên các thể",
+     "mo_ta": "Đề hỏi khái niệm lệch bội, đa bội, tên gọi các thể $2n+1$, $2n-1$, $2n-2$, $3n$, $4n$ và số dạng đột biến số lượng NST.\nLàm bằng cách nhớ khái niệm và quy ước tên gọi.\nLưu ý: đề cho số NST từng cặp của một tế bào để xác định dạng ⇒ thuộc dạng \"Xác định dạng lệch bội từ số NST ở từng cặp\".",
+     "ly_thuyet": "##TC Phân loại đột biến số lượng\nLệch bội: thay đổi số lượng NST ở một hoặc một số cặp tương đồng. Thể ba: $2n+1$; thể một: $2n-1$; thể không: $2n-2$.\nĐa bội: bộ NST tăng theo bội số của $n$ ở tất cả các cặp: tam bội $3n$, tứ bội $4n$.\nĐột biến số lượng gồm 2 dạng chính: lệch bội và đa bội.\n\n##CY Chú ý\nThể ba, thể một, thể không thuộc lệch bội; thể tam bội, tứ bội thuộc đa bội.",
+     "vi_du": "##VD\nTế bào có bộ nhiễm sắc thể dạng 2n + 1 (thừa một chiếc ở một cặp) được gọi là gì?\nA. Thể một\nB. Thể tam bội\nC. Thể tứ bội\nD. Thể ba\n\nBài giải:\nTế bào $2n+1$ là tế bào thừa một NST ở một cặp, gọi là thể ba (phương án D).\nThể một là $2n-1$; thể tam bội là $3n$; thể tứ bội là $4n$.\nChọn D.\n\n##VD\nĐột biến số lượng NST được chia thành mấy dạng chính? Đó là những dạng nào?\nA. 2 dạng: lệch bội và đa bội\nB. 3 dạng: thể ba, thể một và thể không\nC. 2 dạng: mất đoạn và lặp đoạn\nD. 4 dạng: lệch bội, đa bội, mất đoạn và đảo đoạn\n\nBài giải:\nĐột biến số lượng NST chia thành hai dạng chính: lệch bội và đa bội (phương án A).\nThể ba, thể một, thể không đều là các trường hợp của lệch bội; mất đoạn, lặp đoạn là đột biến cấu trúc.\nChọn A.",
+     "nguon_vi_du": "K09120501010, K09120501014",
+     "cau": [
+      "K09120501009",
+      "K09120501010",
+      "K09120501011",
+      "K09120501012",
+      "K09120501013",
+      "K09120501014",
+      "K09120501015"
+     ]
+    },
+    {
+     "ten": "Xác định dạng lệch bội từ số NST ở từng cặp",
+     "mo_ta": "Đề cho loài có 2n và số NST ở từng cặp của một tế bào, hỏi tế bào thuộc dạng đột biến nào (thể ba, thể một, thể không hoặc bình thường).\nLàm bằng cách so sánh số NST mỗi cặp với bình thường (mỗi cặp 2 chiếc).\nLưu ý: đề chỉ hỏi tên thể theo công thức $2n\\pm1$ ⇒ thuộc dạng \"Phân loại đột biến số lượng NST\".",
+     "ly_thuyet": "##TC Cách xác định\nMỗi cặp NST bình thường có 2 chiếc.\nCặp có 3 chiếc: thể ba ($2n+1$). Cặp có 1 chiếc: thể một ($2n-1$). Cặp có 0 chiếc: thể không ($2n-2$).\n\n##PP Cách làm\nXác định số cặp NST của loài.\nĐối chiếu số chiếc của từng cặp với 2 chiếc.\nCặp nào lệch thì xác định thể tương ứng.",
+     "vi_du": "##VD\nMột loài có 2n = 8. Một tế bào của loài này có số NST ở 4 cặp lần lượt là 2, 3, 2, 2. Đây là dạng đột biến nào?\nA. Thể một (2n − 1)\nB. Thể tam bội (3n)\nC. Thể ba (2n + 1)\nD. Bộ NST bình thường (2n)\n\nBài giải:\nLoài có $2n=8$ nên có 4 cặp, mỗi cặp bình thường có 2 chiếc.\nTế bào có số NST 2, 3, 2, 2: có một cặp có 3 chiếc nên là thể ba ($2n+1$) (phương án C).\nChọn C.\n\n##VD\nMột loài có 2n = 8. Một tế bào có số NST 4 cặp là 2, 2, 0, 2 (một cặp mất hẳn cả hai chiếc). Đây là dạng đột biến nào?\nA. Thể không\nB. Thể một\nC. Thể ba\nD. Thể tam bội\n\nBài giải:\nCặp thứ ba có 0 chiếc (mất hẳn cả hai chiếc), các cặp khác bình thường.\nĐây là thể không ($2n-2$) (phương án A).\nChọn A.",
+     "nguon_vi_du": "K09120501020, K09120501022",
+     "cau": [
+      "K09120501020",
+      "K09120501021",
+      "K09120501022"
+     ]
+    },
+    {
+     "ten": "Thể đa bội và ứng dụng trong chọn giống cây trồng",
+     "mo_ta": "Đề hỏi đặc điểm của thể đa bội (tế bào lớn, cơ quan sinh dưỡng to), vì sao dưa hấu tam bội không hạt, cách tạo thể tam bội, và nhận định về lợi ích của đột biến NST.\nLàm bằng cách vận dụng đặc điểm của thể đa bội vào thực tế chọn giống.\nLưu ý: đề hỏi về hội chứng ở người ⇒ thuộc dạng \"Hội chứng do đột biến số lượng NST ở người\".",
+     "ly_thuyet": "##TC Thể đa bội\nThể đa bội có lượng vật chất di truyền nhiều hơn nên tế bào lớn hơn, cơ quan sinh dưỡng (thân, lá, củ, quả) to hơn.\nThể đa bội thường có sức chống chịu tốt, năng suất hoặc chất lượng nông sản cao hơn.\nThể tam bội ($3n$) có bộ NST lẻ nên khó tạo giao tử bình thường, vì vậy thường không hạt (dưa hấu tam bội).\nThể tam bội tạo ra khi lai thể tứ bội ($4n$) với thể lưỡng bội ($2n$).\n\n##CY Chú ý\nĐột biến NST không phải lúc nào cũng có hại: đa bội được ứng dụng để tạo giống cây trồng.\nĐa bội không làm tăng khả năng sinh sản hữu tính.",
+     "vi_du": "##VD\nDưa hấu tam bội (3n) không có hạt vì lí do nào sau đây?\nA. Thể tam bội thường không tạo được giao tử bình thường trong giảm phân\nB. Người trồng đã cắt bỏ hạt trước khi thu hoạch\nC. Thể tam bội hấp thụ hết dinh dưỡng nên hạt không phát triển\nD. Cây tam bội không có hoa nên không thể tạo hạt\n\nBài giải:\nDưa hấu tam bội có bộ NST lẻ ($3n$), khi giảm phân các NST không phân li đều nên thường không tạo được giao tử bình thường (phương án A).\nHạt không tạo được là do vậy, chứ không phải do người trồng cắt bỏ hạt hay cây không có hoa.\nChọn A.\n\n##VD\nTrong chọn giống, thể tứ bội (4n) thường được lai với cây lưỡng bội (2n) để tạo ra dạng nào?\nA. Thể lưỡng bội (2n) bình thường như cây ban đầu\nB. Thể tam bội (3n) dùng làm giống cây trồng không hạt\nC. Thể một (2n − 1) mang một cặp thiếu nhiễm sắc thể\nD. Thể bát bội (8n) có bộ nhiễm sắc thể tăng gấp bốn lần thể tứ bội\n\nBài giải:\nThể tứ bội ($4n$) cho giao tử $2n$, thể lưỡng bội ($2n$) cho giao tử $n$.\nHợp tử: $2n+n=3n$ nên tạo ra thể tam bội, dùng làm giống cây trồng không hạt (phương án B).\nChọn B.",
+     "nguon_vi_du": "K09120501032, K09120501033",
+     "cau": [
+      "K09120501031",
+      "K09120501032",
+      "K09120501033",
+      "K09120501034",
+      "K09120501035",
+      "K09120501036",
+      "K09120501041",
+      "K09120501042"
+     ]
+    },
+    {
+     "ten": "Hội chứng do đột biến số lượng NST ở người",
+     "mo_ta": "Đề hỏi hội chứng Down, Turner, Klinefelter thuộc dạng đột biến nào, số NST của người mắc, nguyên nhân (không phân li), đặc điểm chung của các hội chứng, vận dụng xét nghiệm NST của thai nhi.\nLàm bằng cách nhớ kiểu NST của từng hội chứng và quy ước thể ba, thể một.\nLưu ý: đề cho 2n rồi yêu cầu tính tổng số NST ⇒ thuộc nhóm \"Các dạng bài tập tính toán cơ bản về đột biến NST\".",
+     "ly_thuyet": "##TC Các hội chứng thường gặp\nHội chứng Down: thể ba ở NST số 21, có 47 NST.\nHội chứng Turner: chỉ có một NST X (XO), thể một ở cặp NST giới tính, có 45 NST.\nHội chứng Klinefelter: kiểu XXY, thể ba ở cặp NST giới tính, có 47 NST.\nNguyên nhân thường gặp: một cặp NST không phân li trong giảm phân.\nCác hội chứng này ảnh hưởng đến hình thái, trí tuệ; không phải bệnh truyền nhiễm; khó chữa khỏi vì đột biến có ở mọi tế bào từ hợp tử.\n\n##CY Chú ý\nNgười bình thường có 46 NST; thể ba có 47 NST, thể một có 45 NST.",
+     "vi_du": "##VD\nHội chứng Down ở người là hậu quả của dạng đột biến nhiễm sắc thể nào?\nA. Thể một ở nhiễm sắc thể số 21\nB. Thể ba ở cặp nhiễm sắc thể giới tính\nC. Thể ba ở nhiễm sắc thể số 21\nD. Đột biến mất đoạn ở nhiễm sắc thể số 21\n\nBài giải:\nHội chứng Down do tế bào có 3 NST số 21 thay vì 2, tức thể ba ở NST số 21 (phương án C).\nChọn C.\n\n##VD\nNgười mắc hội chứng Down (thể ba NST số 21) và người mắc hội chứng Klinefelter (thể ba ở cặp NST giới tính, XXY) đều có tổng số NST trong tế bào sinh dưỡng là bao nhiêu?\nA. 47\nB. 45\nC. 46\nD. 94\n\nBài giải:\nNgười bình thường có 46 NST.\nHội chứng Down (thể ba NST số 21) thừa 1 NST: $46+1=47$.\nHội chứng Klinefelter (XXY) cũng thừa 1 NST giới tính: $46+1=47$.\nVậy cả hai đều có 47 NST (phương án A).\nChọn A.",
+     "nguon_vi_du": "K09120501023, K09120501029",
+     "cau": [
+      "K09120501023",
+      "K09120501024",
+      "K09120501025",
+      "K09120501026",
+      "K09120501027",
+      "K09120501028",
+      "K09120501029",
+      "K09120501030",
+      "K09120501040",
+      "K09120501043",
+      "K09120501044"
+     ]
+    }
+   ],
+   "khong_hop": [],
+   "ghi_chu": "Nhóm 44 câu, chia 6 dạng; dạng 6 (hội chứng ở người) 11 câu."
+  },
+  {
+   "nhom_id": "KNB00582",
+   "ly_thuyet": "##TC 1. Kiến thức cần nhớ\nSố NST của các thể đột biến số lượng, với bộ lưỡng bội bình thường $2n$ và bộ đơn bội $n=\\dfrac{2n}{2}$:\nThể ba: $2n+1$. Thể một: $2n-1$. Thể không: $2n-2$.\nThể tam bội: $3n$. Thể tứ bội: $4n$.\nHội chứng Down (thể ba): 47 NST. Hội chứng Turner (thể một): 45 NST.\n\n##PP 2. Các bước làm bài\nXác định đề cho $2n$ hay cho $n$ (nếu cho $n$ thì tính $2n=2\\cdot n$ khi cần).\nXác định tên thể đột biến.\nÁp dụng công thức tương ứng để tính tổng số NST.\nNếu đề so sánh hai thể, tính từng thể rồi trừ.\n\n##CY 3. Lưu ý\nThể lệch bội chỉ thêm hoặc bớt 1 NST (hoặc 2 NST với thể không); thể đa bội tăng nguyên cả bộ.\nThể tam bội $3n$ lớn hơn nhiều so với thể ba $2n+1$.",
+   "dang_bai": [
+    {
+     "ten": "Tính tổng số NST của thể lệch bội",
+     "mo_ta": "Đề cho bộ NST lưỡng bội 2n (của người hoặc của một loài), nêu thể đột biến (thể ba, thể một, thể không, hội chứng Down, Turner), hỏi tổng số NST trong tế bào.\nLàm bằng cách áp dụng $2n+1$, $2n-1$, $2n-2$.\nLưu ý: đề nói thể tam bội hoặc tứ bội ⇒ thuộc dạng \"Tính tổng số NST của thể đa bội\".",
+     "ly_thuyet": "##TC Công thức\nThể ba: $2n+1$. Thể một: $2n-1$. Thể không: $2n-2$.\nNgười mắc hội chứng Down có $46+1=47$ NST; người mắc hội chứng Turner có $46-1=45$ NST.\n\n##PP Cách làm\nXác định $2n$.\nXác định thể lệch bội và áp dụng công thức.\n\n##CY Chú ý\nThể không thiếu cả cặp, nên số NST giảm đi 2.",
+     "vi_du": "##VD\nỞ người, bộ nhiễm sắc thể lưỡng bội bình thường là 2n = 46. Người mắc hội chứng Down do thừa một NST số 21 có tổng số NST là bao nhiêu?\nA. 45\nB. 47\nC. 48\nD. 92\n\nBài giải:\nNgười có $2n=46$. Hội chứng Down là thể ba ở NST số 21, thừa 1 NST: $2n+1=46+1=47$.\nChọn B.\n\n##VD\nỞ người, 2n = 46. Người mắc hội chứng Turner (thể một ở cặp NST giới tính, chỉ có 1 NST X). Tổng số NST là bao nhiêu?\nA. 47\nB. 44\nC. 46\nD. 45\n\nBài giải:\nNgười có $2n=46$. Hội chứng Turner chỉ có 1 NST X, thiếu 1 NST giới tính (thể một): $2n-1=46-1=45$.\nChọn D.",
+     "nguon_vi_du": "K09120502002, K09120502005",
+     "cau": [
+      "K09120502001",
+      "K09120502002",
+      "K09120502003",
+      "K09120502004",
+      "K09120502005",
+      "K09120502011"
+     ]
+    },
+    {
+     "ten": "Tính tổng số NST của thể đa bội",
+     "mo_ta": "Đề cho bộ NST lưỡng bội 2n hoặc đơn bội n của một loài, hỏi tổng số NST của thể tam bội hoặc tứ bội.\nLàm bằng cách tính $3n$ hoặc $4n$ (nếu cho 2n thì chia đôi để được n).\nLưu ý: đề nói thể ba, thể một, thể không ⇒ thuộc dạng \"Tính tổng số NST của thể lệch bội\".",
+     "ly_thuyet": "##TC Công thức\nThể tam bội $=3n$ và thể tứ bội $=4n$, trong đó $n=\\dfrac{2n}{2}$.\nĐa bội tăng nguyên cả bộ NST, không chỉ một cặp.\n\n##PP Cách làm\nXác định $n$ (nếu đề cho $2n$ thì $n=2n:2$).\nNhân với 3 (tam bội) hoặc 4 (tứ bội).",
+     "vi_du": "##VD\nMột loài thực vật có bộ nhiễm sắc thể lưỡng bội bình thường 2n = 24. Thể tứ bội (4n) của loài này có tổng số NST là bao nhiêu?\nA. 48\nB. 36\nC. 25\nD. 23\n\nBài giải:\nThể tứ bội $4n=2\\cdot2n=2\\cdot24=48$ NST (phương án A).\nChọn A.\n\n##VD\nMột loài cây có bộ nhiễm sắc thể đơn bội n = 11. Thể tam bội (3n) của loài này có tổng số NST là bao nhiêu?\nA. 22\nB. 33\nC. 44\nD. 11\n\nBài giải:\nĐề cho $n=11$. Thể tam bội: $3n=3\\cdot11=33$ NST (phương án B).\nChọn B.",
+     "nguon_vi_du": "K09120502007, K09120502008",
+     "cau": [
+      "K09120502006",
+      "K09120502007",
+      "K09120502008",
+      "K09120502009",
+      "K09120502010",
+      "K09120502012"
+     ]
+    },
+    {
+     "ten": "So sánh số NST giữa các thể đột biến",
+     "mo_ta": "Đề cho một bộ NST rồi so sánh tổng số NST của hai thể đột biến (thể ba với thể tam bội, thể tứ bội với thể một), hỏi thể nào nhiều hơn và hơn bao nhiêu.\nLàm bằng cách tính số NST của từng thể rồi lấy hiệu.\nLưu ý: đề chỉ hỏi số NST của một thể ⇒ thuộc dạng \"Tính tổng số NST của thể lệch bội\" hoặc \"thể đa bội\".",
+     "ly_thuyet": "##TC Cách so sánh\nTính riêng số NST mỗi thể theo công thức của thể đó.\nHiệu số NST $=$ số NST thể lớn $-$ số NST thể bé.\n\n##PP Cách làm\nXác định $2n$ hoặc $n$ của loài.\nTính số NST của thể thứ nhất, thể thứ hai.\nLấy hiệu và kết luận thể nào lớn hơn.",
+     "vi_du": "##VD\nMột loài có bộ NST lưỡng bội 2n = 36. So sánh tổng số NST giữa một cá thể là thể ba (2n+1) và một cá thể là thể tam bội (3n) của loài này, cá thể nào có tổng số NST lớn hơn và lớn hơn bao nhiêu?\nA. Thể ba lớn hơn, hơn 17 NST\nB. Thể tam bội lớn hơn, hơn 1 NST\nC. Hai thể có tổng số NST bằng nhau\nD. Thể tam bội lớn hơn, hơn 17 NST\n\nBài giải:\nThể ba: $2n+1=36+1=37$ NST.\nThể tam bội: $3n=3\\cdot18=54$ NST.\nThể tam bội lớn hơn, hơn $54-37=17$ NST (phương án D).\nChọn D.\n\n##VD\nMột loài cây có bộ NST đơn bội n = 12. Số NST trong tế bào sinh dưỡng của thể tứ bội (4n) nhiều hơn của thể một (2n − 1) bao nhiêu?\nA. 25 NST\nB. 24 NST\nC. 23 NST\nD. 36 NST\n\nBài giải:\nĐề cho $n=12$ nên $2n=24$.\nThể tứ bội: $4n=48$ NST. Thể một: $2n-1=24-1=23$ NST.\nThể tứ bội nhiều hơn: $48-23=25$ NST (phương án A).\nChọn A.",
+     "nguon_vi_du": "K09120502013, K09120502014",
+     "cau": [
+      "K09120502013",
+      "K09120502014"
+     ]
+    }
+   ],
+   "khong_hop": [],
+   "ghi_chu": "Dạng 3 chỉ có 2 câu mẫu nhưng là kiểu bài rõ ràng."
+  }
+ ]
+}

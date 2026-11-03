@@ -1,0 +1,822 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00515",
+   "chu_de": "Giới thiệu về hợp chất hữu cơ, hydrocarbon & nguồn nhiên liệu",
+   "chuyen_de": "Alkene",
+   "nhom": "Các dạng bài tập cơ bản về Alkene",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nAlkene là hydrocarbon mạch hở có 1 liên kết đôi C=C; công thức chung $\\mathrm{C_{n}H_{2n}}$ (n ≥ 2).\nTên alkene đơn giản: $\\mathrm{C_{2}H_{4}}$ ethylene; $\\mathrm{C_{3}H_{6}}$ propylene.\nỞ điều kiện thường, alkene có ít carbon là chất khí, không màu, hầu như không tan trong nước.\n\n##PP 2. Các bước làm bài\nXác định phân tử có liên kết đôi C=C hay không\nĐối chiếu công thức với $\\mathrm{C_{n}H_{2n}}$ (alkene) và $\\mathrm{C_{n}H_{2n+2}}$ (alkane)\nNếu hỏi tên: đếm số carbon rồi chọn tên của alkene\n\n##CY 3. Lưu ý\nAlkene có ít hydrogen hơn alkane cùng số carbon.\nAlcohol có nhóm -OH, acid có nhóm -COOH nên có oxygen.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01510",
+     "thu_tu": 1,
+     "ten": "Nhận biết alkene qua cấu tạo hoặc công thức chung",
+     "mo_ta": "Đề cho công thức cấu tạo có liên kết đôi hoặc công thức chung của hydrocarbon · hỏi chất thuộc loại hợp chất nào · đối chiếu với alkene.\nLưu ý: đề hỏi tên gọi cụ thể ⇒ thuộc dạng \"Gọi tên alkene từ công thức phân tử\".",
+     "ly_thuyet": "##TC Nhận biết alkene\nAlkene có 1 liên kết đôi C=C, công thức chung $\\mathrm{C_{n}H_{2n}}$ (n ≥ 2).\nAlkane chỉ có liên kết đơn, công thức chung $\\mathrm{C_{n}H_{2n+2}}$.\n\n##PP Cách làm\nTìm liên kết đôi C=C trong công thức cấu tạo\nHoặc đối chiếu công thức chung $\\mathrm{C_{n}H_{2n}}$\nLoại alcohol, acid vì có oxygen\n\n##CY Chú ý\nPhương án alkane sai vì chỉ có liên kết đơn hoặc có nhiều hydrogen hơn.",
+     "vi_du": "##VD\nChất có công thức cấu tạo $\\mathrm{CH_{2}=CH_{2}}$ (có một liên kết đôi C=C) thuộc loại chất nào?\nA. Alkane\nB. Alkene\nC. Alcohol\nD. Acid\n\nBài giải:\nPhân tử có 1 liên kết đôi C=C nên thuộc loại alkene.\nAlkane chỉ có liên kết đơn.\nAlcohol và acid có chứa oxygen, phân tử này không có.\nChọn B.\n\n##VD\nHydrocarbon có công thức phân tử dạng $\\mathrm{C_{n}H_{2n}}$ (n từ 2 trở lên) thuộc loại chất nào?\nA. Alkane\nB. Alcohol\nC. Acid\nD. Alkene\n\nBài giải:\nCông thức chung $\\mathrm{C_{n}H_{2n}}$ ứng với alkene, có 1 liên kết đôi C=C trong mạch.\nAlkane có công thức chung $\\mathrm{C_{n}H_{2n+2}}$, nhiều hydrogen hơn.\nAlcohol, acid có oxygen nên không có dạng $\\mathrm{C_{n}H_{2n}}$.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01511",
+     "thu_tu": 2,
+     "ten": "Gọi tên alkene từ công thức phân tử",
+     "mo_ta": "Đề cho công thức phân tử $\\mathrm{C_{2}H_{4}}$ hoặc $\\mathrm{C_{3}H_{6}}$ · hỏi tên gọi · chọn tên alkene tương ứng.\nLưu ý: tên alkane (đuôi -ane) thuộc nhóm Alkane.",
+     "ly_thuyet": "##TC Tên alkene\n$\\mathrm{C_{2}H_{4}}$: ethylene; $\\mathrm{C_{3}H_{6}}$: propylene.\n\n##PP Cách làm\nĐếm số carbon\nChọn alkene có số carbon tương ứng (2 carbon: ethylene; 3 carbon: propylene)\n\n##CY Chú ý\nEthane và propane là alkane; ethanol, propanol là alcohol.",
+     "vi_du": "##VD\nChất có công thức hoá học $\\mathrm{C_{2}H_{4}}$ có tên gọi là\nA. Ethane\nB. Propylene\nC. Ethylene\nD. Ethanol\n\nBài giải:\n$\\mathrm{C_{2}H_{4}}$ có 1 liên kết đôi C=C, là alkene 2 carbon, tên ethylene.\nEthane là $\\mathrm{C_{2}H_{6}}$; propylene là $\\mathrm{C_{3}H_{6}}$; ethanol là $\\mathrm{C_{2}H_{5}OH}$.\nChọn C.\n\n##VD\nChất có công thức hoá học $\\mathrm{C_{3}H_{6}}$ có tên gọi là\nA. Propane\nB. Ethylene\nC. Propanol\nD. Propylene\n\nBài giải:\n$\\mathrm{C_{3}H_{6}}$ có 1 liên kết đôi C=C, là alkene 3 carbon, tên propylene.\nPropane là $\\mathrm{C_{3}H_{8}}$; ethylene là $\\mathrm{C_{2}H_{4}}$; propanol là alcohol có nhóm -OH.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01512",
+     "thu_tu": 3,
+     "ten": "Tính chất vật lí của ethylene",
+     "mo_ta": "Đề hỏi trạng thái, màu sắc, độ tan trong nước của ethylene ở điều kiện thường · chọn phát biểu đúng.\nLưu ý: đề nhắc chung alkane và alkene 1 đến 4 carbon ⇒ thuộc nhóm Alkane.",
+     "ly_thuyet": "##TC Tính chất vật lí của ethylene\nEthylene là chất khí, không màu, hầu như không tan trong nước.\n\n##CY Chú ý\nKhông nhầm với chất lỏng, chất rắn hay khí tan tốt trong nước.",
+     "vi_du": "##VD\nỞ điều kiện thường, khí ethylene có tính chất vật lí nào sau đây?\nA. Chất lỏng, tan tốt trong nước\nB. Chất rắn, không màu\nC. Chất khí, không tan trong nước\nD. Chất khí, tan tốt trong nước\n\nBài giải:\nEthylene là chất khí, không màu ở điều kiện thường.\nEthylene hầu như không tan trong nước.\nChọn C."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00516",
+   "chu_de": "Giới thiệu về hợp chất hữu cơ, hydrocarbon & nguồn nhiên liệu",
+   "chuyen_de": "Alkene",
+   "nhom": "Viết phương trình hóa học mô tả tính chất của Alkene",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nAlkene cháy hoàn toàn tạo $\\mathrm{CO_{2}}$ và $\\mathrm{H_{2}O}$, toả nhiều nhiệt.\nPhản ứng cộng: liên kết đôi C=C bị mở ra, mỗi nguyên tử carbon gắn thêm một nguyên tử hoặc nhóm nguyên tử.\nCộng bromine: $\\mathrm{C_{2}H_{4} + Br_{2} \\rightarrow  C_{2}H_{4}Br_{2}}$; alkene làm mất màu dung dịch bromine.\nCộng hydrogen (xúc tác Ni, nhiệt độ): $\\mathrm{C_{2}H_{4} + H_{2} \\rightarrow  C_{2}H_{6}}$, tạo alkane tương ứng.\n\n##PP 2. Các bước làm bài\nXác định phản ứng (cháy hay cộng) và chất phản ứng cùng alkene\nVới phản ứng cộng: giữ nguyên số carbon, thêm các nguyên tử vào hai carbon ở liên kết đôi\nVới phản ứng cháy: cân bằng C, H rồi O\nKiểm tra số nguyên tử mỗi nguyên tố hai vế\n\n##CY 3. Lưu ý\nPhản ứng cộng không tạo thêm sản phẩm như $\\mathrm{H_{2}}$; tỉ lệ mol alkene : $\\mathrm{Br_{2}}$ hoặc $\\mathrm{H_{2}}$ là 1 : 1.\nAlkene không phản ứng thế như alkane trong các phản ứng này.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01513",
+     "thu_tu": 1,
+     "ten": "Chọn phương trình đốt cháy hoàn toàn alkene đúng",
+     "mo_ta": "Đề nêu ethylene hoặc propylene cháy hoàn toàn · hỏi phương trình hoá học đúng · chọn phương án cân bằng chính xác.\nLưu ý: đề cho lượng chất rồi tính khối lượng sản phẩm ⇒ thuộc nhóm \"Bài toán đốt cháy alkene\".",
+     "ly_thuyet": "##TC Phản ứng cháy của alkene\nAlkene + oxygen → carbon dioxide + nước.\nSố $\\mathrm{CO_{2}}$ bằng số carbon, số $\\mathrm{H_{2}O}$ bằng nửa số hydrogen của alkene.\n\n##PP Cân bằng\nCân bằng C bằng hệ số $\\mathrm{CO_{2}}$\nCân bằng H bằng hệ số $\\mathrm{H_{2}O}$\nĐếm O ở vế phải, đặt hệ số $\\mathrm{O_{2}}$; nếu lẻ thì nhân đôi cả phương trình\n\n##CY Chú ý\nPhương án nhiễu thường sai số $\\mathrm{H_{2}O}$ hoặc số $\\mathrm{O_{2}}$, hoặc thiếu hệ số 2 của alkene khi $\\mathrm{O_{2}}$ lẻ.",
+     "vi_du": "##VD\nPhương trình hoá học nào sau đây viết đúng khi đốt cháy hoàn toàn khí ethylene?\nA. $\\mathrm{C_{2}H_{4} + 3O_{2} \\rightarrow  2CO_{2} + 2H_{2}O}$\nB. $\\mathrm{C_{2}H_{4} + 2O_{2} \\rightarrow  2CO_{2} + 2H_{2}O}$\nC. $\\mathrm{C_{2}H_{4} + 3O_{2} \\rightarrow  2CO_{2} + 3H_{2}O}$\nD. $\\mathrm{C_{2}H_{4} + 3O_{2} \\rightarrow  CO_{2} + 2H_{2}O}$\n\nBài giải:\n$\\mathrm{C_{2}H_{4}}$ có 2 carbon nên tạo 2 $\\mathrm{CO_{2}}$; có 4 hydrogen nên tạo 2 $\\mathrm{H_{2}O}$.\nSố O vế phải: 2 × 2 + 2 = 6, nên cần 3 $\\mathrm{O_{2}}$.\nChọn A.\n\n##VD\nPhương trình hoá học nào sau đây viết đúng khi đốt cháy hoàn toàn khí propylene ($\\mathrm{C_{3}H_{6}}$)?\nA. $\\mathrm{C_{3}H_{6} + 9O_{2} \\rightarrow  3CO_{2} + 3H_{2}O}$\nB. $\\mathrm{2C_{3}H_{6} + 9O_{2} \\rightarrow  6CO_{2} + 6H_{2}O}$\nC. $\\mathrm{2C_{3}H_{6} + 6O_{2} \\rightarrow  6CO_{2} + 6H_{2}O}$\nD. $\\mathrm{C_{3}H_{6} + 4O_{2} \\rightarrow  3CO_{2} + 3H_{2}O}$\n\nBài giải:\n$\\mathrm{C_{3}H_{6}}$ có 3 carbon, 6 hydrogen nên 1 phân tử tạo 3 $\\mathrm{CO_{2}}$ và 3 $\\mathrm{H_{2}O}$.\nSố O vế phải: 3 × 2 + 3 = 9, cần 4,5 $\\mathrm{O_{2}}$; nhân đôi cả phương trình để hệ số nguyên.\nPhương trình đúng: $\\mathrm{2C_{3}H_{6} + 9O_{2} \\rightarrow  6CO_{2} + 6H_{2}O}$.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01514",
+     "thu_tu": 2,
+     "ten": "Viết phương trình phản ứng cộng bromine của alkene",
+     "mo_ta": "Đề hỏi phương trình khi dẫn alkene (ethylene, propylene) qua dung dịch bromine, hoặc giải thích vì sao alkene làm mất màu nước bromine.\nLưu ý: đề nêu phản ứng với hydrogen có xúc tác Ni ⇒ thuộc dạng \"Viết phương trình phản ứng cộng hydrogen của alkene\".",
+     "ly_thuyet": "##TC Phản ứng cộng bromine\nAlkene có liên kết đôi C=C nên cộng $\\mathrm{Br_{2}}$ theo tỉ lệ 1 : 1, tạo dẫn xuất dibromo, làm mất màu dung dịch bromine.\nVí dụ: $\\mathrm{C_{2}H_{4} + Br_{2} \\rightarrow  C_{2}H_{4}Br_{2}}$; $\\mathrm{C_{3}H_{6} + Br_{2} \\rightarrow  C_{3}H_{6}Br_{2}}$.\n\n##PP Cách làm\nGiữ nguyên số carbon và số hydrogen của alkene\nThêm 2 nguyên tử Br vào hai carbon ở liên kết đôi\nKiểm tra tỉ lệ 1 : 1\n\n##CY Chú ý\nKhông tạo $\\mathrm{H_{2}}$; không có phản ứng thế; không cộng 2 phân tử $\\mathrm{Br_{2}}$ vào một liên kết đôi.",
+     "vi_du": "##VD\nPhương trình hoá học nào sau đây viết đúng khi dẫn khí ethylene qua dung dịch bromine?\nA. $\\mathrm{C_{2}H_{4} + Br_{2} \\rightarrow  C_{2}H_{4}Br_{2}}$\nB. $\\mathrm{C_{2}H_{4} + Br_{2} \\rightarrow  C_{2}H_{2}Br_{2} + H_{2}}$\nC. $\\mathrm{C_{2}H_{4} + 2Br_{2} \\rightarrow  C_{2}H_{4}Br_{4}}$\nD. $\\mathrm{C_{2}H_{4} + Br_{2} \\rightarrow  C_{2}H_{6}Br_{2}}$\n\nBài giải:\nEthylene có liên kết đôi C=C nên cộng với $\\mathrm{Br_{2}}$ theo tỉ lệ 1 : 1.\nPhương trình: $\\mathrm{C_{2}H_{4} + Br_{2} \\rightarrow  C_{2}H_{4}Br_{2}}$, làm mất màu dung dịch bromine.\nChọn A.\n\n##VD\nEthylene làm mất màu dung dịch nước bromine là do nguyên nhân nào?\nA. Ethylene tan tốt trong nước bromine\nB. Ethylene phản ứng thế với $\\mathrm{Br_{2}}$\nC. Ethylene có liên kết đôi C=C, cộng với $\\mathrm{Br_{2}}$\nD. Ethylene bị oxi hoá bởi $\\mathrm{Br_{2}}$ tạo $\\mathrm{CO_{2}}$\n\nBài giải:\nEthylene có liên kết đôi C=C nên cộng với $\\mathrm{Br_{2}}$ tạo $\\mathrm{C_{2}H_{4}Br_{2}}$ không màu.\nVì vậy dung dịch bromine bị mất màu.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01515",
+     "thu_tu": 3,
+     "ten": "Viết phương trình phản ứng cộng hydrogen của alkene",
+     "mo_ta": "Đề hỏi phương trình khi cho alkene (ethylene, propylene) tác dụng với hydrogen, xúc tác Ni, nhiệt độ · sản phẩm là alkane tương ứng.\nLưu ý: đề nêu bromine ⇒ thuộc dạng \"Viết phương trình phản ứng cộng bromine của alkene\".",
+     "ly_thuyet": "##TC Phản ứng cộng hydrogen\nAlkene cộng $\\mathrm{H_{2}}$ (xúc tác Ni, nhiệt độ) tạo alkane có cùng số carbon.\nVí dụ: $\\mathrm{C_{2}H_{4} + H_{2} \\rightarrow  C_{2}H_{6}}$; $\\mathrm{C_{3}H_{6} + H_{2} \\rightarrow  C_{3}H_{8}}$.\n\n##PP Cách làm\nGiữ nguyên số carbon\nThêm 2 nguyên tử H vào hai carbon ở liên kết đôi\nSản phẩm có công thức $\\mathrm{C_{n}H_{2n+2}}$\n\n##CY Chú ý\nTỉ lệ mol alkene : $\\mathrm{H_{2}}$ là 1 : 1; sản phẩm không phải alkene hay alkyne.",
+     "vi_du": "##VD\nPhương trình hoá học nào sau đây viết đúng khi cho ethylene phản ứng với khí hydrogen, xúc tác Ni, nhiệt độ?\nA. $\\mathrm{C_{2}H_{4} + H_{2} \\rightarrow  C_{2}H_{4}}$\nB. $\\mathrm{C_{2}H_{4} + H_{2} \\rightarrow  C_{2}H_{6}}$\nC. $\\mathrm{C_{2}H_{4} + 2H_{2} \\rightarrow  C_{2}H_{6}}$\nD. $\\mathrm{C_{2}H_{4} + H_{2} \\rightarrow  C_{2}H_{2}}$\n\nBài giải:\nEthylene cộng $\\mathrm{H_{2}}$ (xúc tác Ni, nhiệt độ) tạo ethane.\nPhương trình: $\\mathrm{C_{2}H_{4} + H_{2} \\rightarrow  C_{2}H_{6}}$, tỉ lệ mol 1 : 1.\nChọn B.\n\n##VD\nPhương trình hoá học nào sau đây viết đúng khi cho propylene ($\\mathrm{C_{3}H_{6}}$) phản ứng với khí hydrogen, xúc tác Ni, nhiệt độ?\nA. $\\mathrm{C_{3}H_{6} + 2H_{2} \\rightarrow  C_{3}H_{8}}$\nB. $\\mathrm{C_{3}H_{6} + H_{2} \\rightarrow  C_{3}H_{8}}$\nC. $\\mathrm{C_{3}H_{6} + H_{2} \\rightarrow  C_{3}H_{6}}$\nD. $\\mathrm{C_{3}H_{6} + H_{2} \\rightarrow  C_{3}H_{4}}$\n\nBài giải:\nPropylene cộng $\\mathrm{H_{2}}$ tạo propane, số carbon không đổi.\nPhương trình: $\\mathrm{C_{3}H_{6} + H_{2} \\rightarrow  C_{3}H_{8}}$, tỉ lệ mol 1 : 1.\nChọn B."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00509",
+   "chu_de": "Giới thiệu về hợp chất hữu cơ, hydrocarbon & nguồn nhiên liệu",
+   "chuyen_de": "Giới thiệu về hợp chất hữu cơ",
+   "nhom": "Lập Công thức phân tử dựa vào phần trăm khối lượng",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nKhối lượng nguyên tử (amu): $\\mathrm{C} = 12$; $\\mathrm{H} = 1$; $\\mathrm{O} = 16$; $\\mathrm{N} = 14$; $\\mathrm{Cl} = 35.5$.\nKhối lượng phân tử của hợp chất $\\mathrm{C_xH_yO_z}$ là $\\mathrm{M} = 12x + y + 16z$ (amu), khối lượng mol là $\\mathrm{M}$ (g/mol) với cùng giá trị số.\nPhần trăm khối lượng của nguyên tố trong hợp chất là tỉ lệ khối lượng nguyên tố đó so với khối lượng phân tử; tổng phần trăm các nguyên tố bằng $100\\%$.\n\n##TC 2. Công thức\nTính phần trăm khối lượng:\n$\\mathrm{\\%C} = \\dfrac{12x}{\\mathrm{M}} \\times 100\\%$    \n$\\mathrm{\\%H} = \\dfrac{y}{\\mathrm{M}} \\times 100\\%$   \n$\\mathrm{\\%O} = \\dfrac{16z}{\\mathrm{M}} \\times 100\\%$\nTìm chỉ số nguyên tử từ phần trăm khối lượng và khối lượng phân tử:\n$x = \\dfrac{\\%\\mathrm{C} \\times \\mathrm{M}}{12 \\times 100}$\n$y = \\dfrac{\\%\\mathrm{H} \\times \\mathrm{M}}{100}$\n$z = \\dfrac{\\%\\mathrm{O} \\times \\mathrm{M}}{16 \\times 100}$\nTìm chỉ số nguyên tử từ sản phẩm đốt cháy (mỗi phân tử $\\mathrm{CO_2}$ chứa 1 nguyên tử $\\mathrm{C}$, mỗi phân tử $\\mathrm{H_2O}$ chứa 2 nguyên tử $\\mathrm{H}$):\n$x = \\dfrac{\\mathrm{n_{CO_2}}}{\\mathrm{n_X}}$\n$y = \\dfrac{2\\mathrm{n_{H_2O}}}{\\mathrm{n_X}}$\n$z = \\dfrac{\\mathrm{M} - 12x - y}{16}$\n\n##TC 3. Các bước làm bài\nTính phần trăm nguyên tố.\nBước 1: tính khối lượng phân tử M từ công thức.\nBước 2: lấy khối lượng nguyên tố (tích của số nguyên tử và khối lượng nguyên tử) chia cho M, nhân 100%.\nLập công thức từ phần trăm và M.\nBước 1: tính khối lượng của từng nguyên tố trong 1 mol hợp chất (tích của %X và M, chia cho 100).\nBước 2: chia cho khối lượng nguyên tử để được chỉ số. \nBước 3: nguyên tố không cho phần trăm tính theo hiệu (100% trừ các phần trăm đã biết).\nLập công thức từ sản phẩm đốt cháy. \nBước 1: tính $n_X$ bằng khối lượng chia M. \nBước 2: tính $n_{\\mathrm{CO_2}}$ và $n_{\\mathrm{H_2O}}$. \nBước 3: tính chỉ số x, y. \nBước 4: nếu X chứa oxygen thì tính z theo hiệu khối lượng.\n\n\n##CY 4. Lưu ý\nChỉ số nguyên tử phải là số nguyên dương; kết quả tính ra số lẻ cho thấy có sai sót ở bước tính.\nPhần trăm khối lượng làm tròn đến một chữ số thập phân; khi tính ngược chỉ số, làm tròn đến số nguyên gần nhất.\nKhi xét số mol từ khối lượng, dùng $n = \\dfrac{m}{M}$ với M của chất đang xét.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01265",
+     "thu_tu": 1,
+     "ten": "Lập CTPT từ % và M",
+     "mo_ta": "Đề cho khối lượng phân tử $\\mathrm{M}$ và phần trăm khối lượng của các nguyên tố (C, H, có thể có O ghi \"còn lại\"); yêu cầu tìm công thức phân tử và có thể kèm loại hợp chất.\nLàm bằng cách tính khối lượng từng nguyên tố trong 1 mol rồi chia cho khối lượng nguyên tử để được chỉ số.\nNguyên tố không cho phần trăm thì tính theo hiệu.\nLưu ý: đề cho công thức, yêu cầu tính phần trăm ⇒ thuộc dạng \"TÍNH % KHỐI LƯỢNG NGUYÊN TỐ\"; đề cho khối lượng sản phẩm đốt cháy ⇒ thuộc dạng \"LẬP CÔNG THỨC TỪ SẢN PHẨM ĐỐT CHÁY\".",
+     "ly_thuyet": "##TC Lập công thức phân tử từ phần trăm khối lượng và M\nKhối lượng nguyên tố trong 1 mol hợp chất: $m_X=\\dfrac{\\%X\\times M}{100}$ (g).\nChỉ số nguyên tử: $x=\\dfrac{m_C}{12}$, $y=\\dfrac{m_H}{1}$, $z=\\dfrac{m_O}{16}$.\nTổng phần trăm các nguyên tố bằng $100\\%$; nguyên tố không cho phần trăm có phần trăm là hiệu của $100\\%$ với các phần trăm đã biết.\nSau khi có công thức, xét thành phần để phân loại: chỉ C, H là hydrocarbon; có O là dẫn xuất của hydrocarbon.\n\n##PP Phương pháp\nTính khối lượng của từng nguyên tố trong 1 mol bằng $\\dfrac{\\%X\\times M}{100}$.\nChia cho khối lượng nguyên tử để được chỉ số $x$, $y$, $z$.\nNếu đề không cho phần trăm oxygen, kiểm tra $\\%C+\\%H$ có bằng $100\\%$ không; nếu nhỏ hơn, phần còn lại là oxygen.\nViết công thức phân tử và xác định loại hợp chất nếu đề hỏi.\n\n##CY Chú ý\nChỉ số nguyên tử phải là số nguyên dương; ra số lẻ chứng tỏ tính sai.\nPhần trăm khối lượng đã làm tròn nên khối lượng nguyên tố tính ra gần số nguyên; làm tròn đến số nguyên gần nhất.\nCùng $M$ có thể nhầm công thức khác (vd $\\mathrm{C_2H_4O_2}$ và $\\mathrm{C_3H_8O}$ đều có $M=60$); phải tính đúng khối lượng từng nguyên tố.",
+     "vi_du": "##VD\nHợp chất hữu cơ X có khối lượng phân tử $M=30$ g/mol, $\\%C=80\\%$, $\\%H=20\\%$ (biết C = 12, H = 1). Công thức phân tử và loại hợp chất của X là\nA. $\\mathrm{C_2H_6}$ – hydrocarbon\nB. $\\mathrm{C_2H_6}$ – dẫn xuất của hydrocarbon\nC. $\\mathrm{CH_2O}$ – dẫn xuất của hydrocarbon\nD. $\\mathrm{C_3H_8}$ – hydrocarbon\n\nBài giải:\nKhối lượng C trong 1 mol X: $m_C=30\\times 80\\%=24$ (g), nên số nguyên tử C là $x=\\dfrac{24}{12}=2$.\nKhối lượng H trong 1 mol X: $m_H=30\\times 20\\%=6$ (g), nên số nguyên tử H là $y=\\dfrac{6}{1}=6$.\nVì $\\%C+\\%H=100\\%$ nên phân tử không có oxygen.\nCông thức phân tử của X là $\\mathrm{C_2H_6}$, chỉ gồm C và H nên là hydrocarbon.\nChọn A.\n\n##VD\nHợp chất hữu cơ Z có khối lượng phân tử $M=60$ g/mol, $\\%C=40\\%$, $\\%H=6,67\\%$, còn lại là oxygen (biết C = 12, H = 1, O = 16). Công thức phân tử và loại hợp chất của Z là\nA. $\\mathrm{C_2H_4O_2}$ – hydrocarbon\nB. $\\mathrm{C_2H_4}$ – hydrocarbon\nC. $\\mathrm{C_3H_8O}$ – dẫn xuất của hydrocarbon\nD. $\\mathrm{C_2H_4O_2}$ – dẫn xuất của hydrocarbon\n\nBài giải:\nKhối lượng C: $m_C=60\\times 40\\%=24$ (g), nên $x=\\dfrac{24}{12}=2$.\nKhối lượng H: $m_H=60\\times 6,67\\%\\approx 4$ (g), nên $y=\\dfrac{4}{1}=4$.\nKhối lượng O: $m_O=60-24-4=32$ (g), nên $z=\\dfrac{32}{16}=2$.\nCông thức phân tử của Z là $\\mathrm{C_2H_4O_2}$, có oxygen nên là dẫn xuất của hydrocarbon.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01266",
+     "thu_tu": 2,
+     "ten": "TÍNH % KHỐI LƯỢNG NGUYÊN TỐ",
+     "mo_ta": "Đề cho công thức phân tử (hoặc tên một chất kèm công thức) và khối lượng nguyên tử của các nguyên tố; hỏi phần trăm khối lượng của một nguyên tố trong chất.\nLàm bằng cách tính khối lượng phân tử rồi lấy khối lượng nguyên tố đó chia khối lượng phân tử, nhân $100\\%$.\nCó thể cho sẵn khối lượng phân tử; nguyên tố có thể là C, H hoặc Cl, O.\nLưu ý: đề cho phần trăm và M, hỏi công thức phân tử ⇒ thuộc dạng \"Lập CTPT từ % và M\"; đề cho khối lượng sản phẩm đốt cháy ⇒ thuộc dạng \"LẬP CÔNG THỨC TỪ SẢN PHẨM ĐỐT CHÁY\".",
+     "ly_thuyet": "##TC Phần trăm khối lượng của nguyên tố\nKhối lượng phân tử của hợp chất $\\mathrm{C_xH_yO_z}$: $M=12x+y+16z$ (amu); thêm Cl thì cộng $35,5$ cho mỗi nguyên tử.\nPhần trăm khối lượng nguyên tố X: $\\%X=\\dfrac{a\\cdot A_X}{M}\\times 100\\%$, trong đó $a$ là số nguyên tử X trong phân tử, $A_X$ là khối lượng nguyên tử X.\nTổng phần trăm khối lượng các nguyên tố trong hợp chất bằng $100\\%$.\n\n##PP Phương pháp\nTính khối lượng phân tử $M$ (nếu đề chưa cho).\nTính khối lượng của nguyên tố cần tìm: số nguyên tử nhân khối lượng nguyên tử.\nLấy khối lượng đó chia cho $M$ rồi nhân $100\\%$.\nLàm tròn kết quả đến một chữ số thập phân.\n\n##CY Chú ý\nPhải nhân số nguyên tử với khối lượng nguyên tử trước khi chia cho $M$.\nĐáp án nhiễu thường là phần trăm của nguyên tố còn lại (ví dụ ra $\\%C$ thay vì $\\%H$).",
+     "vi_du": "##VD\nButane ($\\mathrm{C_4H_{10}}$) có trong khí gas đun nấu. Phần trăm khối lượng của nguyên tố hydrogen trong chất này là bao nhiêu? (Cho khối lượng nguyên tử: C = 12, H = 1.)\nA. 1,7%\nB. 17,2%\nC. 71,4%\nD. 82,8%\n\nBài giải:\nKhối lượng phân tử của chất là: $M=12\\times 4+1\\times 10=58$ (amu)\nPhần trăm khối lượng của nguyên tố hydrogen là: $\\%H=\\dfrac{10\\times 1}{58}\\times 100\\%\\approx 17,2\\%$\nChọn B.\n\n##VD\nHợp chất $\\mathrm{CH_3Cl}$ được dùng làm chất làm lạnh. Phần trăm khối lượng của nguyên tố chlorine trong chất này là bao nhiêu? (Cho khối lượng nguyên tử: C = 12, H = 1, Cl = 35,5.)\nA. 20,0%\nB. 23,8%\nC. 29,7%\nD. 70,3%\n\nBài giải:\nKhối lượng phân tử của chất là: $M=12\\times 1+1\\times 3+35,5\\times 1=50,5$ (amu)\nPhần trăm khối lượng của nguyên tố chlorine là: $\\%Cl=\\dfrac{1\\times 35,5}{50,5}\\times 100\\%\\approx 70,3\\%$\nChọn D."
+    },
+    {
+     "dang_id": "KDB01267",
+     "thu_tu": 3,
+     "ten": "LẬP CÔNG THỨC TỪ SẢN PHẨM ĐỐT CHÁY",
+     "mo_ta": "Đề cho khối lượng chất hữu cơ X bị đốt cháy hoàn toàn, khối lượng phân tử của X và khối lượng $\\mathrm{CO_2}$, $\\mathrm{H_2O}$ thu được; yêu cầu xác định công thức phân tử của X.\nLàm bằng cách tính $n_X$, $n_{CO_2}$, $n_{H_2O}$ rồi suy ra chỉ số C, H; nếu X có oxygen thì tính chỉ số O theo hiệu khối lượng phân tử.\nHai biến thể: X là hydrocarbon (không có O) hoặc X chứa C, H, O.\nLưu ý: đề cho phần trăm khối lượng các nguyên tố ⇒ thuộc dạng \"Lập CTPT từ % và M\"; đề chỉ cho công thức và hỏi phần trăm ⇒ thuộc dạng \"TÍNH % KHỐI LƯỢNG NGUYÊN TỐ\".",
+     "ly_thuyet": "##TC Lập công thức phân tử từ sản phẩm đốt cháy\nKhối lượng mol: $M_{CO_2}=44$ g/mol; $M_{H_2O}=18$ g/mol. Số mol: $n=\\dfrac{m}{M}$.\nMỗi phân tử $\\mathrm{CO_2}$ chứa 1 nguyên tử C, mỗi phân tử $\\mathrm{H_2O}$ chứa 2 nguyên tử H.\nChỉ số nguyên tử trong phân tử X: $x=\\dfrac{n_{CO_2}}{n_X}$; $y=\\dfrac{2n_{H_2O}}{n_X}$; $z=\\dfrac{M-12x-y}{16}$ (khi X có oxygen).\n\n##PP Phương pháp\nTính $n_X=\\dfrac{m_X}{M_X}$, $n_{CO_2}$ và $n_{H_2O}$ từ khối lượng.\nTính $x=\\dfrac{n_{CO_2}}{n_X}$ và $y=\\dfrac{2n_{H_2O}}{n_X}$.\nNếu X là hydrocarbon, kiểm tra $12x+y=M$; nếu X có oxygen, tính $z=\\dfrac{M-12x-y}{16}$.\nViết công thức phân tử $\\mathrm{C_xH_yO_z}$.\n\n##CY Chú ý\nQuên nhân 2 khi tính số nguyên tử H từ $n_{H_2O}$ sẽ ra $y$ sai một nửa.\nHydrocarbon thì $12x+y=M$; nếu không bằng thì X còn có oxygen.\nChỉ số phải là số nguyên dương.",
+     "vi_du": "##VD\nĐốt cháy hoàn toàn 1,3 gam hydrocarbon X, khối lượng phân tử của X là 26 amu, thu được 4,4 gam $\\mathrm{CO_2}$ và 0,9 gam $\\mathrm{H_2O}$. Xác định công thức phân tử của X. (Cho khối lượng nguyên tử: C = 12, H = 1.)\n\nBài giải:\nKhối lượng mol của $\\mathrm{CO_2}$ là 44 g/mol, của $\\mathrm{H_2O}$ là 18 g/mol.\n$n_X=\\dfrac{1,3}{26}=0,05$ mol\n$n_{CO_2}=\\dfrac{4,4}{44}=0,1$ mol\n$n_{H_2O}=\\dfrac{0,9}{18}=0,05$ mol\n$x=\\dfrac{n_{CO_2}}{n_X}=\\dfrac{0,1}{0,05}=2$\n$y=\\dfrac{2n_{H_2O}}{n_X}=\\dfrac{2\\times 0,05}{0,05}=2$\nKiểm tra: $12\\times 2+2=26$, đúng bằng khối lượng phân tử của X nên X chỉ gồm C và H.\nVậy công thức phân tử của X là $\\mathrm{C_2H_2}$.\n\n##VD\nĐốt cháy hoàn toàn 5,8 gam hợp chất hữu cơ X chứa các nguyên tố C, H, O, khối lượng phân tử của X là 58 amu, thu được 13,2 gam $\\mathrm{CO_2}$ và 5,4 gam $\\mathrm{H_2O}$. Xác định công thức phân tử của X. (Cho khối lượng nguyên tử: C = 12, H = 1, O = 16.)\n\nBài giải:\nKhối lượng mol của $\\mathrm{CO_2}$ là 44 g/mol, của $\\mathrm{H_2O}$ là 18 g/mol.\n$n_X=\\dfrac{5,8}{58}=0,1$ mol\n$n_{CO_2}=\\dfrac{13,2}{44}=0,3$ mol\n$n_{H_2O}=\\dfrac{5,4}{18}=0,3$ mol\n$x=\\dfrac{n_{CO_2}}{n_X}=\\dfrac{0,3}{0,1}=3$\n$y=\\dfrac{2n_{H_2O}}{n_X}=\\dfrac{2\\times 0,3}{0,1}=6$\nPhần khối lượng còn lại của phân tử là oxygen, nên chỉ số của oxygen được tính theo hiệu:\n$z=\\dfrac{M-12x-y}{16}=\\dfrac{58-12\\times 3-6}{16}=1$\nVậy công thức phân tử của X là $\\mathrm{C_3H_6O}$."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00513",
+   "chu_de": "Giới thiệu về hợp chất hữu cơ, hydrocarbon & nguồn nhiên liệu",
+   "chuyen_de": "Alkane",
+   "nhom": "Bài toán đốt cháy alkane",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nSố mol: $\\mathrm{n = V : 24,79}$ (V đo ở đkc, đơn vị L); $\\mathrm{n = m : M}$ (m tính bằng g, M tính bằng g/mol).\nTỉ lệ mol các chất bằng tỉ lệ hệ số trong phương trình hoá học.\nPhân tử khối: $\\mathrm{CH_{4}}$ 16; $\\mathrm{C_{2}H_{6}}$ 30; $\\mathrm{C_{3}H_{8}}$ 44; $\\mathrm{C_{4}H_{10}}$ 58; $\\mathrm{CO_{2}}$ 44; $\\mathrm{H_{2}O}$ 18.\n\n##PP 2. Các bước làm bài\nViết và cân bằng phương trình đốt cháy alkane\nTính số mol chất đã cho\nDựa vào hệ số để suy ra số mol chất cần tìm\nĐổi số mol sang thể tích (nhân 24,79) hoặc khối lượng (nhân M)\n\n##CY 3. Lưu ý\nKhí thải cháy hoàn toàn là $\\mathrm{CO_{2}}$ (M = 44), không phải CO.\nPhải nhân hệ số mol của chất cần tìm rồi mới đổi sang khối lượng hoặc thể tích.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01508",
+     "thu_tu": 1,
+     "ten": "Tính thể tích oxygen cần dùng khi đốt cháy alkane khí ở đkc",
+     "mo_ta": "Đề cho thể tích alkane khí ở đkc · hỏi thể tích oxygen cần dùng · tính số mol alkane, nhân tỉ lệ hệ số $\\mathrm{O_{2}}$ rồi đổi ra thể tích.\nLưu ý: đề cho khối lượng alkane và hỏi khối lượng $\\mathrm{CO_{2}}$ ⇒ thuộc dạng \"Tính khối lượng $\\mathrm{CO_{2}}$ sinh ra khi đốt cháy alkane theo phương trình\".",
+     "ly_thuyet": "##TC Tính theo thể tích khí\nỞ đkc, 1 mol khí chiếm 24,79 L.\n$\\mathrm{n(O_{2})}$ = hệ số $\\mathrm{O_{2}}$ chia hệ số alkane, nhân $\\mathrm{n(alkane)}$.\n\n##PP Cách làm\nTính số mol alkane: $\\mathrm{n = V : 24,79}$\nLập tỉ lệ mol theo phương trình để tìm $\\mathrm{n(O_{2})}$\nTính $\\mathrm{V(O_{2}) = n(O_{2}) × 24,79}$\n\n##CY Chú ý\nPhương án nhiễu hay quên nhân hệ số của $\\mathrm{O_{2}}$, hoặc nhầm hệ số.",
+     "vi_du": "##VD\nĐốt cháy hoàn toàn 2,479 L khí methane (đkc). Thể tích khí oxygen (đkc) cần dùng là\nA. 2,479 L\nB. 4,958 L\nC. 9,916 L\nD. 7,437 L\n\nBài giải:\n$\\mathrm{n(CH_{4}) = 2,479 : 24,79 = 0,1}$ mol.\nPhương trình: $\\mathrm{CH_{4} + 2O_{2} \\rightarrow  CO_{2} + 2H_{2}O}$ nên $\\mathrm{n(O_{2}) = 0,1 × 2 = 0,2}$ mol.\n$\\mathrm{V(O_{2}) = 0,2 × 24,79 = 4,958}$ L.\nChọn B.\n\n##VD\nĐốt cháy hoàn toàn 1,2395 L khí propane (đkc). Thể tích khí oxygen (đkc) cần dùng là\nA. 1,2395 L\nB. 3,099 L\nC. 6,198 L\nD. 12,395 L\n\nBài giải:\n$\\mathrm{n(C_{3}H_{8}) = 1,2395 : 24,79 = 0,05}$ mol.\nPhương trình: $\\mathrm{C_{3}H_{8} + 5O_{2} \\rightarrow  3CO_{2} + 4H_{2}O}$ nên $\\mathrm{n(O_{2}) = 0,05 × 5 = 0,25}$ mol.\n$\\mathrm{V(O_{2}) = 0,25 × 24,79 ≈ 6,198}$ L.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01509",
+     "thu_tu": 2,
+     "ten": "Tính khối lượng CO₂ sinh ra khi đốt cháy alkane theo phương trình",
+     "mo_ta": "Đề cho khối lượng alkane (kèm hoặc không kèm phương trình) · hỏi khối lượng $\\mathrm{CO_{2}}$ sinh ra · tính số mol alkane, theo tỉ lệ hệ số suy ra số mol $\\mathrm{CO_{2}}$, đổi ra khối lượng.\nLưu ý: đề cho thể tích khí ở đkc và hỏi thể tích $\\mathrm{O_{2}}$ ⇒ thuộc dạng \"Tính thể tích oxygen cần dùng khi đốt cháy alkane khí ở đkc\".",
+     "ly_thuyet": "##TC Tính theo khối lượng\n$\\mathrm{n = m : M}$; $\\mathrm{m = n × M}$; $\\mathrm{M(CO_{2})}$ = 44 g/mol.\nTỉ lệ mol alkane : $\\mathrm{CO_{2}}$ bằng tỉ lệ hệ số trong phương trình.\n\n##PP Cách làm\nTính số mol alkane từ khối lượng\nDựa vào phương trình để tìm $\\mathrm{n(CO_{2})}$\nTính $\\mathrm{m(CO_{2}) = n × 44}$\n\n##CY Chú ý\nNhầm tỉ lệ mol alkane : $\\mathrm{CO_{2}}$, nhầm $\\mathrm{CO_{2}}$ với CO (M = 28), hoặc lấy luôn khối lượng alkane làm đáp số là các sai hay gặp.",
+     "vi_du": "##VD\nĐốt cháy hoàn toàn 8 g khí methane theo phương trình $\\mathrm{CH_{4} + 2O_{2} \\rightarrow  CO_{2} + 2H_{2}O}$. Khối lượng $\\mathrm{CO_{2}}$ sinh ra là bao nhiêu?\nA. 44 g\nB. 14 g\nC. 22 g\nD. 8 g\n\nBài giải:\n$\\mathrm{n(CH_{4}) = 8 : 16 = 0,5}$ mol.\nTỉ lệ mol $\\mathrm{CH_{4} : CO_{2} = 1 : 1}$ nên $\\mathrm{n(CO_{2}) = 0,5}$ mol.\n$\\mathrm{m(CO_{2}) = 0,5 × 44 = 22}$ g.\nChọn C.\n\n##VD\nĐốt cháy hoàn toàn 9 g khí ethane theo phương trình $\\mathrm{2C_{2}H_{6} + 7O_{2} \\rightarrow  4CO_{2} + 6H_{2}O}$. Khối lượng $\\mathrm{CO_{2}}$ sinh ra là bao nhiêu?\nA. 13,2 g\nB. 26,4 g\nC. 16,8 g\nD. 9 g\n\nBài giải:\n$\\mathrm{n(C_{2}H_{6}) = 9 : 30 = 0,3}$ mol.\nTỉ lệ mol $\\mathrm{C_{2}H_{6} : CO_{2} = 2 : 4 = 1 : 2}$ nên $\\mathrm{n(CO_{2}) = 0,6}$ mol.\n$\\mathrm{m(CO_{2}) = 0,6 × 44 = 26,4}$ g.\nChọn B."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00518",
+   "chu_de": "Giới thiệu về hợp chất hữu cơ, hydrocarbon & nguồn nhiên liệu",
+   "chuyen_de": "Alkene",
+   "nhom": "Bài toán đốt cháy alkene",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nAlkene cháy hoàn toàn: $\\mathrm{C_{2}H_{4} + 3O_{2} \\rightarrow  2CO_{2} + 2H_{2}O}$; $\\mathrm{2C_{3}H_{6} + 9O_{2} \\rightarrow  6CO_{2} + 6H_{2}O}$.\nSố mol: $\\mathrm{n = V : 24,79}$ (đkc, V tính bằng L); $\\mathrm{m = n × M}$.\nPhân tử khối: $\\mathrm{CO_{2}}$ 44; $\\mathrm{H_{2}O}$ 18.\n\n##PP 2. Các bước làm bài\nViết phương trình đốt cháy alkene\nTính số mol alkene từ thể tích khí (đkc)\nTheo hệ số suy ra số mol $\\mathrm{CO_{2}}$ hoặc $\\mathrm{H_{2}O}$\nNhân với phân tử khối để ra khối lượng\n\n##CY 3. Lưu ý\nChọn đúng sản phẩm (nước hay $\\mathrm{CO_{2}}$) theo đề; nhầm $\\mathrm{M(H_{2}O)}$ và $\\mathrm{M(CO_{2})}$ là lỗi hay gặp.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01516",
+     "thu_tu": 1,
+     "ten": "Tính khối lượng sản phẩm cháy khi đốt cháy alkene ở đkc",
+     "mo_ta": "Đề cho thể tích alkene khí ở đkc (ethylene, propylene) cháy hoàn toàn · hỏi khối lượng nước hoặc $\\mathrm{CO_{2}}$ tạo thành · tính số mol alkene, theo hệ số suy ra số mol sản phẩm, đổi ra khối lượng.",
+     "ly_thuyet": "##TC Tính theo sản phẩm cháy\nEthylene: 1 mol tạo 2 mol $\\mathrm{CO_{2}}$ và 2 mol $\\mathrm{H_{2}O}$.\nPropylene: 1 mol tạo 3 mol $\\mathrm{CO_{2}}$ và 3 mol $\\mathrm{H_{2}O}$.\n\n##PP Cách làm\nTính $\\mathrm{n(alkene) = V : 24,79}$\nDựa vào số carbon (cho $\\mathrm{CO_{2}}$) hoặc nửa số hydrogen (cho $\\mathrm{H_{2}O}$) để tìm số mol sản phẩm\nTính khối lượng bằng số mol nhân phân tử khối\n\n##CY Chú ý\nNhầm hệ số hoặc nhầm phân tử khối $\\mathrm{M(H_{2}O) = 18}$, $\\mathrm{M(CO_{2}) = 44}$ dẫn đến chọn sai đáp án.",
+     "vi_du": "##VD\nĐốt cháy hoàn toàn 4,958 L khí ethylene (đkc). Khối lượng nước tạo thành là\nA. 3,6 g\nB. 6,4 g\nC. 7,2 g\nD. 14,4 g\n\nBài giải:\n$\\mathrm{n(C_{2}H_{4}) = 4,958 : 24,79 = 0,2}$ mol.\nPhương trình: $\\mathrm{C_{2}H_{4} + 3O_{2} \\rightarrow  2CO_{2} + 2H_{2}O}$ nên $\\mathrm{n(H_{2}O) = 0,2 × 2 = 0,4}$ mol.\n$\\mathrm{m(H_{2}O) = 0,4 × 18 = 7,2}$ g.\nChọn C.\n\n##VD\nĐốt cháy hoàn toàn 2,479 L khí propylene ($\\mathrm{C_{3}H_{6}}$, đkc). Khối lượng $\\mathrm{CO_{2}}$ tạo thành là\nA. 4,4 g\nB. 8,8 g\nC. 26,4 g\nD. 13,2 g\n\nBài giải:\n$\\mathrm{n(C_{3}H_{6}) = 2,479 : 24,79 = 0,1}$ mol.\nMỗi phân tử $\\mathrm{C_{3}H_{6}}$ có 3 carbon nên $\\mathrm{n(CO_{2}) = 0,1 × 3 = 0,3}$ mol.\n$\\mathrm{m(CO_{2}) = 0,3 × 44 = 13,2}$ g.\nChọn D."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K09000000155",
+   "nhom_id": "KNB00515",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Có hai khí không màu đựng riêng biệt là methane và ethylene. Có thể dùng thuốc thử nào để phân biệt?",
+   "lua_chon": [
+    "Dung dịch nước bromine",
+    "Dung dịch NaOH",
+    "Quỳ tím",
+    "Nước cất"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Dẫn hai khí qua dung dịch nước bromine: khí làm mất màu là ethylene, khí không làm mất màu là methane.\n\nVì sao các phương án khác sai:\n- B: NaOH không phản ứng với ethylene hay methane, không tạo dấu hiệu phân biệt.\n- C: Quỳ tím không đổi màu với hai khí trung tính này.\n- D: Nước cất không phản ứng với cả hai khí, không tạo hiện tượng phân biệt."
+  },
+  {
+   "ma_cau": "K09000000156",
+   "nhom_id": "KNB00515",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Có hai khí không màu đựng riêng biệt là ethane và ethylene. Có thể dùng thuốc thử nào để phân biệt?",
+   "lua_chon": [
+    "Quỳ tím",
+    "Dung dịch nước bromine",
+    "Nước cất",
+    "Dung dịch NaOH"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Dẫn hai khí qua dung dịch nước bromine: khí làm mất màu là ethylene, khí không làm mất màu là ethane.\n\nVì sao các phương án khác sai:\n- A: Quỳ tím không đổi màu với hai khí trung tính này.\n- C: Nước cất không phản ứng với cả hai khí, không tạo hiện tượng phân biệt.\n- D: NaOH không phản ứng với ethylene hay ethane, không tạo dấu hiệu phân biệt."
+  },
+  {
+   "ma_cau": "K09000000157",
+   "nhom_id": "KNB00515",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Có hai khí không màu đựng riêng biệt là butane và ethylene. Có thể dùng thuốc thử nào để phân biệt?",
+   "lua_chon": [
+    "Quỳ tím",
+    "Nước cất",
+    "Dung dịch nước bromine",
+    "Dung dịch NaOH"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Dẫn hai khí qua dung dịch nước bromine: khí làm mất màu là ethylene, khí không làm mất màu là butane.\n\nVì sao các phương án khác sai:\n- A: Quỳ tím không đổi màu với hai khí trung tính này.\n- B: Nước cất không phản ứng với cả hai khí, không tạo hiện tượng phân biệt.\n- D: NaOH không phản ứng với ethylene hay butane, không tạo dấu hiệu phân biệt."
+  },
+  {
+   "ma_cau": "K09000000158",
+   "nhom_id": "KNB00515",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Khí methane có lẫn một ít tạp chất ethylene. Có thể dùng cách nào sau đây để thu được methane tinh khiết?",
+   "lua_chon": [
+    "Dẫn hỗn hợp qua dung dịch nước bromine dư",
+    "Dẫn hỗn hợp qua dung dịch NaOH dư",
+    "Đun nóng hỗn hợp",
+    "Dẫn hỗn hợp qua nước cất"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Dẫn hỗn hợp qua dung dịch bromine dư, ethylene bị giữ lại do phản ứng cộng, khí thoát ra là methane tinh khiết.\n\nVì sao các phương án khác sai:\n- B: NaOH không phản ứng với ethylene, không giữ lại được tạp chất.\n- C: Đun nóng không loại bỏ được ethylene lẫn trong khí.\n- D: Nước cất không phản ứng với ethylene, không giữ lại được tạp chất."
+  },
+  {
+   "ma_cau": "K09000000159",
+   "nhom_id": "KNB00515",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Khí butane có lẫn một ít tạp chất ethylene. Có thể dùng cách nào sau đây để thu được butane tinh khiết?",
+   "lua_chon": [
+    "Đun nóng hỗn hợp",
+    "Dẫn hỗn hợp qua dung dịch nước bromine dư",
+    "Dẫn hỗn hợp qua nước cất",
+    "Dẫn hỗn hợp qua dung dịch NaOH dư"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Dẫn hỗn hợp qua dung dịch bromine dư, ethylene bị giữ lại do phản ứng cộng, khí thoát ra là butane tinh khiết.\n\nVì sao các phương án khác sai:\n- A: Đun nóng không loại bỏ được ethylene lẫn trong khí.\n- C: Nước cất không phản ứng với ethylene, không giữ lại được tạp chất.\n- D: NaOH không phản ứng với ethylene, không giữ lại được tạp chất."
+  },
+  {
+   "ma_cau": "K09000000160",
+   "nhom_id": "KNB00516",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Dẫn 2,479 L khí ethylene (đkc) qua dung dịch bromine dư. Khối lượng bromine đã phản ứng là",
+   "lua_chon": [
+    "8 g",
+    "16 g",
+    "32 g",
+    "24 g"
+   ],
+   "dap_an": "B",
+   "loi_giai": "n(C₂H₄) = 2,479 : 24,79 = 0,1 mol. C₂H₄ + Br₂ → C₂H₄Br₂ nên n(Br₂) = 0,1 mol. m(Br₂) = 0,1 x 160 = 16 g.\n\nVì sao các phương án khác sai:\n- A: Dùng nhầm khối lượng mol Br₂ là 80 g/mol (khối lượng mol nguyên tử Br) thay vì 160 g/mol.\n- C: Nhân nhầm hệ số 2 vào số mol Br₂ trước khi tính khối lượng.\n- D: Cộng nhầm số mol Br₂ với số mol C₂H₄ rồi mới nhân khối lượng mol."
+  },
+  {
+   "ma_cau": "K09000000161",
+   "nhom_id": "KNB00516",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Dẫn 4,958 L khí ethylene (đkc) qua dung dịch bromine dư. Khối lượng sản phẩm cộng tạo thành là",
+   "lua_chon": [
+    "16 g",
+    "18,8 g",
+    "33,6 g",
+    "37,6 g"
+   ],
+   "dap_an": "D",
+   "loi_giai": "n(C₂H₄) = 4,958 : 24,79 = 0,2 mol. C₂H₄ + Br₂ → C₂H₄Br₂ nên n(sản phẩm) = 0,2 mol. M(C₂H₄Br₂) = 24 + 4 + 160 = 188 g/mol. m = 0,2 x 188 = 37,6 g.\n\nVì sao các phương án khác sai:\n- A: Dùng nhầm khối lượng mol 80 g/mol (khối lượng mol Br) thay vì tính đủ M(C₂H₄Br₂).\n- B: Tính nhầm số mol C₂H₄ là 0,1 mol, bằng một nửa giá trị đúng.\n- C: Tính sai khối lượng mol sản phẩm, thiếu khối lượng của một số nguyên tử."
+  },
+  {
+   "ma_cau": "K09000000162",
+   "nhom_id": "KNB00516",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Dẫn 2,479 L khí propylene (C₃H₆, đkc) qua dung dịch bromine dư. Khối lượng bromine đã phản ứng là",
+   "lua_chon": [
+    "16 g",
+    "8 g",
+    "32 g",
+    "24 g"
+   ],
+   "dap_an": "A",
+   "loi_giai": "n(C₃H₆)=2,479:24,79=0,1mol. C₃H₆+Br₂→C₃H₆Br₂ nên n(Br₂)=0,1mol. m(Br₂)=0,1×160=16g.\n\nVì sao các phương án khác sai:\n- B: Dùng nhầm khối lượng mol Br₂ là 80 g/mol (khối lượng mol nguyên tử Br) thay vì 160 g/mol.\n- C: Nhân nhầm hệ số 2 vào số mol Br₂ trước khi tính khối lượng.\n- D: Cộng nhầm số mol Br₂ với số mol C₃H₆ rồi mới nhân khối lượng mol."
+  },
+  {
+   "ma_cau": "K09000000163",
+   "nhom_id": "KNB00516",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Dẫn 4,958 L khí propylene (C₃H₆, đkc) qua dung dịch bromine dư. Khối lượng sản phẩm cộng tạo thành là",
+   "lua_chon": [
+    "16 g",
+    "40,4 g",
+    "20,2 g",
+    "32 g"
+   ],
+   "dap_an": "B",
+   "loi_giai": "n(C₃H₆)=4,958:24,79=0,2mol. C₃H₆+Br₂→C₃H₆Br₂, M(C₃H₆Br₂)=36+6+160=202g/mol. m=0,2×202=40,4g.\n\nVì sao các phương án khác sai:\n- A: Dùng nhầm khối lượng mol 80 g/mol (khối lượng mol Br) thay vì tính đủ M(C₃H₆Br₂).\n- C: Tính đúng khối lượng mol sản phẩm (202 g/mol) nhưng quên nhân với số mol 0,2, chỉ lấy đúng M.\n- D: Tính nhầm số mol C₃H₆ là 0,1 mol, bằng một nửa giá trị đúng, dẫn tới nhân sai."
+  },
+  {
+   "ma_cau": "K09000000135",
+   "nhom_id": "KNB00509",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Hợp chất hữu cơ X có công thức phân tử CH₄ (biết C = 12, H = 1). Phần trăm khối lượng của carbon trong X là",
+   "lua_chon": [
+    "75%",
+    "25%",
+    "60%",
+    "80%"
+   ],
+   "dap_an": "A",
+   "loi_giai": "M(CH₄) = 12 + 4×1 = 16 g/mol. %C = 12×100/16 = 75%.\n\nVì sao các phương án khác sai:\n- B: Đây là %H (4×100/16 = 25%), không phải %C.\n- C: Tính nhầm M(CH₄) = 12 + 4×2 = 20 (nhân đôi số nguyên tử H) nên ra 12×100/20 = 60%.\n- D: Tính nhầm M(CH₄) = 12 + 4 - 1 = 15 (bỏ bớt 1 nguyên tử H) nên ra 12×100/15 = 80%."
+  },
+  {
+   "ma_cau": "K09000000136",
+   "nhom_id": "KNB00509",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Hợp chất hữu cơ Y có công thức phân tử C₂H₆ (biết C = 12, H = 1). Phần trăm khối lượng của hydrogen trong Y là",
+   "lua_chon": [
+    "500%",
+    "80%",
+    "17,24%",
+    "20%"
+   ],
+   "dap_an": "D",
+   "loi_giai": "M(C₂H₆) = 2×12 + 6×1 = 30 g/mol. %H = 6×100/30 = 20%.\n\nVì sao các phương án khác sai:\n- A: Đảo tỉ số, lấy M chia cho khối lượng H rồi nhân 100 (30×100/6) thay vì lấy khối lượng H chia M.\n- B: Đây là %C (24×100/30 = 80%), không phải %H.\n- C: Đây là %H của C₄H₁₀ (10×100/58), nhầm sang hợp chất khác."
+  },
+  {
+   "ma_cau": "K09000000137",
+   "nhom_id": "KNB00509",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Hợp chất hữu cơ Z có công thức phân tử CH₃COOH (C₂H₄O₂, biết C = 12, H = 1, O = 16). Phần trăm khối lượng của carbon trong Z là",
+   "lua_chon": [
+    "6,67%",
+    "40%",
+    "20%",
+    "53,33%"
+   ],
+   "dap_an": "B",
+   "loi_giai": "M(CH₃COOH) = 2×12 + 4×1 + 2×16 = 60 g/mol. %C = 24×100/60 = 40%.\n\nVì sao các phương án khác sai:\n- A: Đây là %H (4×100/60 = 6,67%), không phải %C.\n- C: Tính nhầm M = 120 (nhân đôi khối lượng phân tử) nên ra 24×100/120 = 20%.\n- D: Đây là %O (32×100/60 = 53,33%), không phải %C."
+  },
+  {
+   "ma_cau": "K09000000138",
+   "nhom_id": "KNB00509",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Hợp chất hữu cơ T có công thức phân tử C₂H₅OH (C₂H₆O, biết C = 12, H = 1, O = 16). Phần trăm khối lượng của oxygen trong T là",
+   "lua_chon": [
+    "52,17%",
+    "13,04%",
+    "34,78%",
+    "40%"
+   ],
+   "dap_an": "C",
+   "loi_giai": "M(C₂H₅OH) = 2×12 + 6×1 + 16 = 46 g/mol. %O = 16×100/46 ≈ 34,78%.\n\nVì sao các phương án khác sai:\n- A: Đây là %C (24×100/46 ≈ 52,17%), không phải %O.\n- B: Đây là %H (6×100/46 ≈ 13,04%), không phải %O.\n- D: Tính nhầm M = 40 (bỏ hết 6 nguyên tử H) nên ra 16×100/40 = 40%."
+  },
+  {
+   "ma_cau": "K09000000139",
+   "nhom_id": "KNB00509",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Hợp chất hữu cơ G có công thức phân tử C₃H₈ (biết C = 12, H = 1). Phần trăm khối lượng của carbon trong G là",
+   "lua_chon": [
+    "18,18%",
+    "90%",
+    "81,82%",
+    "27,27%"
+   ],
+   "dap_an": "C",
+   "loi_giai": "M(C₃H₈) = 3×12 + 8×1 = 44 g/mol. %C = 36×100/44 ≈ 81,82%.\n\nVì sao các phương án khác sai:\n- A: Đây là %H (8×100/44≈18,18%), không phải %C.\n- B: Tính nhầm M(C₃H₈)=40 (bớt phần H) nên ra 36×100/40=90%.\n- D: Chỉ tính khối lượng 1 nguyên tử C (12) thay vì cả 3 nguyên tử C (36) trong phân tử: 12×100/44≈27,27%."
+  },
+  {
+   "ma_cau": "K09000000140",
+   "nhom_id": "KNB00509",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Hợp chất hữu cơ H có công thức phân tử CH₃COOH (C₂H₄O₂, biết C = 12, H = 1, O = 16). Phần trăm khối lượng của hydrogen trong H là",
+   "lua_chon": [
+    "40%",
+    "53,33%",
+    "13,33%",
+    "6,67%"
+   ],
+   "dap_an": "D",
+   "loi_giai": "M(CH₃COOH) = 2×12 + 4×1 + 2×16 = 60 g/mol. %H = 4×100/60 ≈ 6,67%.\n\nVì sao các phương án khác sai:\n- A: Đây là %C (24×100/60=40%), không phải %H.\n- B: Đây là %O (32×100/60=53,33%), không phải %H.\n- C: Tính nhầm M=30 (công thức đơn giản nhất CH₂O) thay vì M thật 60 nên ra 4×100/30≈13,33%."
+  },
+  {
+   "ma_cau": "K09000000141",
+   "nhom_id": "KNB00513",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn 0,1 mol hydrocarbon X thu được 0,2 mol CO₂ và 0,3 mol H₂O. Công thức phân tử của X là",
+   "lua_chon": [
+    "C₂H₆",
+    "C₂H₄",
+    "C₁H₆",
+    "C₂H₃"
+   ],
+   "dap_an": "A",
+   "loi_giai": "nC = nCO₂/nX = 0,2/0,1 = 2. nH = 2×nH₂O/nX = 2×0,3/0,1 = 6. Công thức phân tử: C₂H₆.\n\nVì sao các phương án khác sai:\n- B: Quên nhân 2 khi tính nH từ H₂O: đúng phải là 2×0,3/0,1 = 6, không phải 4.\n- C: Tính nC sai: đúng phải là 0,2/0,1 = 2, không phải 1.\n- D: nH tính đúng phải là 6 (số nguyên chẵn theo hoá trị), không phải 3."
+  },
+  {
+   "ma_cau": "K09000000142",
+   "nhom_id": "KNB00513",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn 0,2 mol hydrocarbon Y thu được 0,6 mol CO₂ và 0,8 mol H₂O. Công thức phân tử của Y là",
+   "lua_chon": [
+    "C₃H₄",
+    "C₃H₈",
+    "C₆H₈",
+    "C₃H₆"
+   ],
+   "dap_an": "B",
+   "loi_giai": "nC = nCO₂/nY = 0,6/0,2 = 3. nH = 2×nH₂O/nY = 2×0,8/0,2 = 8. Công thức phân tử: C₃H₈.\n\nVì sao các phương án khác sai:\n- A: Quên nhân 2 khi tính nH từ H₂O: đúng phải là 2×0,8/0,2 = 8, không phải 4.\n- C: Tính nC sai: nhân nhầm gấp đôi, đúng phải là 0,6/0,2 = 3, không phải 6.\n- D: nH tính đúng phải là 8 (2×0,8/0,2), không phải 6."
+  },
+  {
+   "ma_cau": "K09000000143",
+   "nhom_id": "KNB00513",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn 0,1 mol hydrocarbon Z thu được 0,4 mol CO₂ và 0,5 mol H₂O. Công thức phân tử của Z là",
+   "lua_chon": [
+    "C₄H₈",
+    "C₂H₁₀",
+    "C₄H₁₀",
+    "C₄H₅"
+   ],
+   "dap_an": "C",
+   "loi_giai": "nC = nCO₂/nZ = 0,4/0,1 = 4. nH = 2×nH₂O/nZ = 2×0,5/0,1 = 10. Công thức phân tử: C₄H₁₀.\n\nVì sao các phương án khác sai:\n- A: Quên nhân 2 khi tính nH từ H₂O: đúng phải là 2×0,5/0,1 = 10, không phải 8.\n- B: Tính nC sai: đúng phải là 0,4/0,1 = 4, không phải 2.\n- D: Quên nhân 2 khi tính nH: đúng phải là 10, không phải 5."
+  },
+  {
+   "ma_cau": "K09000000145",
+   "nhom_id": "KNB00513",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn 0,2 mol hydrocarbon M thu được 0,4 mol CO₂ và 0,6 mol H₂O. Công thức phân tử của M là",
+   "lua_chon": [
+    "C₂H₃",
+    "C₄H₁₂",
+    "C₂H₆",
+    "C₃H₈"
+   ],
+   "dap_an": "C",
+   "loi_giai": "nC=nCO₂/nM=0,4/0,2=2. nH=2×nH₂O/nM=2×0,6/0,2=6. Công thức phân tử: C₂H₆.\n\nVì sao các phương án khác sai:\n- A: Quên nhân 2 khi tính nH từ H₂O: đúng phải là 2×0,6/0,2=6, không phải 3.\n- B: Tính nC sai: nhân đôi nhầm, đúng phải là 0,4/0,2=2, không phải 4.\n- D: Số C = 0,4 : 0,2 = 2, không phải 3."
+  },
+  {
+   "ma_cau": "K09000000147",
+   "nhom_id": "KNB00513",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn 0,1 mol hydrocarbon X thu được 0,4 mol CO₂ và 0,5 mol H₂O. Biết X có mạch carbon KHÔNG phân nhánh. Công thức cấu tạo của X là",
+   "lua_chon": [
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070104-01-001-A.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070104-01-001-B.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070104-01-001-C.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070104-01-001-D.png)"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Số C = n(CO₂):n(X) = 0,4:0,1 = 4. Số H = 2×n(H₂O):n(X) = 2×0,5:0,1 = 10. CTPT: C₄H₁₀. Vì mạch KHÔNG phân nhánh nên công thức cấu tạo đúng là butane (mạch thẳng), không phải isobutane (mạch nhánh).\n\nVì sao các phương án khác sai:\n- A: Đây là CTPT C₄H₁₀ đúng nhưng cấu tạo mạch NHÁNH (isobutane), không khớp với dữ kiện 'mạch không phân nhánh'.\n- B: Đã tính thiếu 1 nguyên tử C; theo dữ kiện đốt cháy, X phải có 4 carbon (C₄H₁₀), không phải 3 (propane).\n- D: Đã tính thiếu 2 nguyên tử C; theo dữ kiện đốt cháy, X phải có 4 carbon (C₄H₁₀), không phải 2 (ethane)."
+  },
+  {
+   "ma_cau": "K09000000148",
+   "nhom_id": "KNB00513",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn 0,1 mol hydrocarbon X thu được 0,4 mol CO₂ và 0,5 mol H₂O. Biết X có mạch carbon PHÂN NHÁNH. Công thức cấu tạo của X là",
+   "lua_chon": [
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070104-01-002-A.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070104-01-002-B.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070104-01-002-C.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070104-01-002-D.png)"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Số C = 0,4:0,1 = 4. Số H = 2×0,5:0,1 = 10. CTPT: C₄H₁₀. Vì mạch PHÂN NHÁNH nên công thức cấu tạo đúng là isobutane, không phải butane (mạch thẳng).\n\nVì sao các phương án khác sai:\n- B: Đây là CTPT C₄H₁₀ đúng nhưng cấu tạo mạch THẲNG (butane), không khớp với dữ kiện 'mạch phân nhánh'.\n- C: Đã tính thiếu 1 nguyên tử C; theo dữ kiện đốt cháy, X phải có 4 carbon, không phải 3 (propane).\n- D: Đã tính thiếu 3 nguyên tử C; theo dữ kiện đốt cháy, X phải có 4 carbon, không phải 1 (methane)."
+  },
+  {
+   "ma_cau": "K09000000149",
+   "nhom_id": "KNB00513",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn 0,2 mol hydrocarbon X thu được 0,6 mol CO₂ và 0,8 mol H₂O. Công thức cấu tạo của X là",
+   "lua_chon": [
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070104-01-003-A.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070104-01-003-B.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070104-01-003-C.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070104-01-003-D.png)"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Số C = 0,6:0,2 = 3. Số H = 2×0,8:0,2 = 8. CTPT: C₃H₈, chỉ có một công thức cấu tạo là propane.\n\nVì sao các phương án khác sai:\n- A: Đã tính thiếu 1 nguyên tử C; theo dữ kiện đốt cháy, X phải có 3 carbon (C₃H₈), không phải 2 (ethane).\n- B: Đã tính thừa 1 nguyên tử C; theo dữ kiện đốt cháy, X phải có 3 carbon (C₃H₈), không phải 4 (butane).\n- C: Đã tính thiếu 2 nguyên tử C; theo dữ kiện đốt cháy, X phải có 3 carbon (C₃H₈), không phải 1 (methane)."
+  },
+  {
+   "ma_cau": "K09000000150",
+   "nhom_id": "KNB00513",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn 0,1 mol hydrocarbon X thu được 0,2 mol CO₂ và 0,3 mol H₂O. Công thức cấu tạo của X là",
+   "lua_chon": [
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070104-01-004-A.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070104-01-004-B.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070104-01-004-C.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070104-01-004-D.png)"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Số C = 0,2:0,1 = 2. Số H = 2×0,3:0,1 = 6. CTPT: C₂H₆, chỉ có một công thức cấu tạo là ethane.\n\nVì sao các phương án khác sai:\n- A: Đã tính thiếu 1 nguyên tử C; theo dữ kiện đốt cháy, X phải có 2 carbon (C₂H₆), không phải 1 (methane).\n- C: Đã tính thừa 1 nguyên tử C; theo dữ kiện đốt cháy, X phải có 2 carbon (C₂H₆), không phải 3 (propane).\n- D: Đã tính thừa 2 nguyên tử C; theo dữ kiện đốt cháy, X phải có 2 carbon (C₂H₆), không phải 4 (butane)."
+  },
+  {
+   "ma_cau": "K09000000152",
+   "nhom_id": "KNB00513",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn 0,2 mol hydrocarbon X thu được 0,8 mol CO₂ và 1,0 mol H₂O. Biết X có mạch carbon KHÔNG phân nhánh. Công thức cấu tạo của X là",
+   "lua_chon": [
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070104-01-006-A.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070104-01-006-B.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070104-01-006-C.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070104-01-006-D.png)"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Số C=0,8:0,2=4. Số H=2×1,0:0,2=10. CTPT: C₄H₁₀. Vì mạch KHÔNG phân nhánh nên công thức cấu tạo đúng là butane.\n\nVì sao các phương án khác sai:\n- B: Đã tính thiếu 1 nguyên tử C; theo dữ kiện đốt cháy, X phải có 4 carbon (C₄H₁₀), không phải 3 (propane).\n- C: Đây là CTPT C₄H₁₀ đúng nhưng cấu tạo mạch NHÁNH (isobutane), không khớp với dữ kiện \"mạch không phân nhánh\".\n- D: Đã tính sai cả số C và loại liên kết; theo dữ kiện đốt cháy, X phải có 4 carbon no (C₄H₁₀), không phải 2 carbon có liên kết đôi (ethylene, C₂H₄)."
+  },
+  {
+   "ma_cau": "K09000000153",
+   "nhom_id": "KNB00513",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn 0,05 mol hydrocarbon X thu được 0,2 mol CO₂ và 0,25 mol H₂O. Biết X có mạch carbon PHÂN NHÁNH. Công thức cấu tạo của X là",
+   "lua_chon": [
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070104-01-007-A.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070104-01-007-B.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070104-01-007-C.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070104-01-007-D.png)"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Số C=0,2:0,05=4. Số H=2×0,25:0,05=10. CTPT: C₄H₁₀. Vì mạch PHÂN NHÁNH nên công thức cấu tạo đúng là isobutane.\n\nVì sao các phương án khác sai:\n- A: Đây là CTPT C₄H₁₀ đúng nhưng cấu tạo mạch THẲNG (butane), không khớp với dữ kiện \"mạch phân nhánh\".\n- C: Đã tính thiếu 1 nguyên tử C; theo dữ kiện đốt cháy, X phải có 4 carbon, không phải 3 (propane).\n- D: Đã tính thiếu 3 nguyên tử C; theo dữ kiện đốt cháy, X phải có 4 carbon, không phải 1 (methane)."
+  },
+  {
+   "ma_cau": "K09000000177",
+   "nhom_id": "KNB00513",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Hỗn hợp M gồm khí CH₄ và C₃H₈ có khối lượng 7,6 g. Đốt cháy hoàn toàn M thu được 0,5 mol CO₂. Số mol CH₄ trong M là",
+   "lua_chon": [
+    "0,1 mol",
+    "0,2 mol",
+    "0,3 mol",
+    "0,15 mol"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Đặt n(CH₄) = a, n(C₃H₈) = b. Khối lượng: 16a + 44b = 7,6. Số mol CO₂: a + 3b = 0,5. Giải hệ: b = 0,1 mol; a = 0,2 mol.\n\nVì sao các phương án khác sai:\n- A: Đây là số mol C₃H₈ (b), không phải số mol CH₄ (a) cần tìm.\n- C: Giải sai hệ, ra kết quả không thoả phương trình khối lượng.\n- D: Chia đôi kết quả đúng do tính sai hệ số trong phương trình."
+  },
+  {
+   "ma_cau": "K09000000178",
+   "nhom_id": "KNB00513",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Hỗn hợp X gồm khí CH₄ và C₄H₁₀ có tổng số mol 0,3 mol. Đốt cháy hoàn toàn X thu được 0,9 mol CO₂. Số mol C₄H₁₀ trong X là",
+   "lua_chon": [
+    "0,2 mol",
+    "0,1 mol",
+    "0,15 mol",
+    "0,3 mol"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Đặt n(CH₄)=a, n(C₄H₁₀)=b. Ta có a+b=0,3 và a+4b=0,9 (theo số C trong CO₂). Giải hệ: b=0,2mol; a=0,1mol.\n\nVì sao các phương án khác sai:\n- B: Đây là số mol CH₄ (a), không phải số mol C₄H₁₀ (b) cần tìm.\n- C: Chia đều tổng số mol hỗn hợp cho 2 mà không giải hệ theo số mol CO₂.\n- D: Lấy nhầm tổng số mol hỗn hợp làm số mol C₄H₁₀."
+  },
+  {
+   "ma_cau": "K09000000179",
+   "nhom_id": "KNB00513",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Hỗn hợp Y gồm khí C₂H₆ và C₃H₈ có khối lượng 14,8 g. Đốt cháy hoàn toàn Y thu được 1,0 mol CO₂. Số mol C₃H₈ trong Y là",
+   "lua_chon": [
+    "0,3 mol",
+    "0,2 mol",
+    "0,4 mol",
+    "0,1 mol"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Đặt n(C₂H₆)=a, n(C₃H₈)=b. Khối lượng: 30a+44b=14,8. Số mol CO₂: 2a+3b=1,0. Giải hệ: a=0,2mol; b=0,2mol.\n\nVì sao các phương án khác sai:\n- A: Giải sai hệ, ra kết quả không thoả phương trình khối lượng.\n- C: Lấy nhầm tổng số mol CO₂ chia cho hệ số trung bình sai.\n- D: Đây là một nửa kết quả đúng, tính nhầm khi chia đôi không có căn cứ."
+  },
+  {
+   "ma_cau": "K09000000144",
+   "nhom_id": "KNB00518",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn 0,1 mol hydrocarbon T thu được 0,2 mol CO₂ và 0,2 mol H₂O. Công thức phân tử của T là",
+   "lua_chon": [
+    "C₂H₆",
+    "C₄H₈",
+    "C₄H₂",
+    "C₂H₄"
+   ],
+   "dap_an": "D",
+   "loi_giai": "nC = nCO₂/nT = 0,2/0,1 = 2. nH = 2×nH₂O/nT = 2×0,2/0,1 = 4. Công thức phân tử: C₂H₄.\n\nVì sao các phương án khác sai:\n- A: Quên nhân 2 khi tính nH từ H₂O: đúng phải là 2×0,2/0,1 = 4, không phải 6.\n- B: Tính nC sai: nhân nhầm gấp đôi, đúng phải là 0,2/0,1 = 2, không phải 4.\n- C: Đảo vai trò CO₂ và H₂O khi tính nC, nH."
+  },
+  {
+   "ma_cau": "K09000000146",
+   "nhom_id": "KNB00518",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn 0,05 mol hydrocarbon N thu được 0,2 mol CO₂ và 0,15 mol H₂O. Công thức phân tử của N là",
+   "lua_chon": [
+    "C₄H₃",
+    "C₂H₆",
+    "C₄H₁₂",
+    "C₄H₆"
+   ],
+   "dap_an": "D",
+   "loi_giai": "nC=nCO₂/nN=0,2/0,05=4. nH=2×nH₂O/nN=2×0,15/0,05=6. Công thức phân tử: C₄H₆.\n\nVì sao các phương án khác sai:\n- A: Quên nhân 2 khi tính nH từ H₂O: đúng phải là 2×0,15/0,05=6, không phải 3.\n- B: Tính nC sai: đúng phải là 0,2/0,05=4, không phải 2.\n- C: Nhân đôi nhầm nH thêm 1 lần nữa: đúng phải là 6, không phải 12."
+  },
+  {
+   "ma_cau": "K09000000151",
+   "nhom_id": "KNB00518",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn 0,1 mol hydrocarbon X thu được 0,2 mol CO₂ và 0,2 mol H₂O. Công thức cấu tạo của X là",
+   "lua_chon": [
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070104-01-005-A.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070104-01-005-B.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070104-01-005-C.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070104-01-005-D.png)"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Số C = 0,2:0,1 = 2. Số H = 2×0,2:0,1 = 4. CTPT: C₂H₄, công thức cấu tạo là ethylene (có 1 liên kết đôi C=C).\n\nVì sao các phương án khác sai:\n- A: Số H tính được là 4 (ứng với C₂H₄), không phải 6 (C₂H₆, ethane); cần nhân đúng 2×n(H₂O):n(X).\n- B: Đã tính thiếu 1 nguyên tử C; theo dữ kiện đốt cháy, X phải có 2 carbon (C₂H₄), không phải 1 (methane).\n- D: Đã tính thừa 1 nguyên tử C; theo dữ kiện đốt cháy, X phải có 2 carbon (C₂H₄), không phải 3 (propane)."
+  },
+  {
+   "ma_cau": "K09000000154",
+   "nhom_id": "KNB00518",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn 0,2 mol hydrocarbon X thu được 0,4 mol CO₂ và 0,4 mol H₂O. Công thức cấu tạo của X là",
+   "lua_chon": [
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070104-01-008-A.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070104-01-008-B.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070104-01-008-C.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09H070104-01-008-D.png)"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Số C=0,4:0,2=2. Số H=2×0,4:0,2=4. CTPT: C₂H₄, công thức cấu tạo là ethylene (có 1 liên kết đôi C=C).\n\nVì sao các phương án khác sai:\n- A: Số H tính được là 4 (ứng với C₂H₄), không phải 6 (C₂H₆, ethane); cần nhân đúng 2×n(H₂O):n(X).\n- B: Đã tính thiếu 1 nguyên tử C; theo dữ kiện đốt cháy, X phải có 2 carbon (C₂H₄), không phải 1 (methane).\n- D: Đã tính thừa 1 nguyên tử C; theo dữ kiện đốt cháy, X phải có 2 carbon (C₂H₄), không phải 3 (propane)."
+  },
+  {
+   "ma_cau": "K09000000164",
+   "nhom_id": "KNB00518",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn một hydrocarbon X thu được 0,3 mol CO₂ và 0,3 mol H₂O. X thuộc loại chất nào?",
+   "lua_chon": [
+    "Alkane",
+    "Alkene",
+    "Alcohol",
+    "Không xác định được"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Alkane CnH₂n+2 cháy cho n(H₂O) lớn hơn n(CO₂); alkene CnH₂n cháy cho n(H₂O) bằng n(CO₂). Vì n(CO₂) = n(H₂O) = 0,3 mol nên X là alkene.\n\nVì sao các phương án khác sai:\n- A: Alkane phải cho n(H₂O) lớn hơn n(CO₂), không bằng nhau như dữ kiện bài.\n- C: X chỉ chứa carbon và hydrogen (hydrocarbon), không có oxygen như alcohol.\n- D: Có thể xác định được nhờ so sánh n(CO₂) và n(H₂O) của phản ứng cháy."
+  },
+  {
+   "ma_cau": "K09000000165",
+   "nhom_id": "KNB00518",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn một hydrocarbon Y thu được 0,2 mol CO₂ và 0,3 mol H₂O. Y thuộc loại chất nào?",
+   "lua_chon": [
+    "Alkene",
+    "Alcohol",
+    "Alkane",
+    "Không xác định được"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Vì n(H₂O) = 0,3 mol lớn hơn n(CO₂) = 0,2 mol nên Y là alkane (CnH₂n+2), phù hợp đặc điểm cháy cho n(H₂O) lớn hơn n(CO₂).\n\nVì sao các phương án khác sai:\n- A: Alkene cháy cho n(H₂O) bằng n(CO₂), không lớn hơn như dữ kiện bài.\n- B: Y chỉ chứa carbon và hydrogen (hydrocarbon), không có oxygen như alcohol.\n- D: Có thể xác định được nhờ so sánh n(CO₂) và n(H₂O) của phản ứng cháy."
+  },
+  {
+   "ma_cau": "K09000000166",
+   "nhom_id": "KNB00518",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn một hydrocarbon Z thu được 0,4 mol CO₂ và 0,4 mol H₂O. Z thuộc loại chất nào?",
+   "lua_chon": [
+    "Alkane",
+    "Alcohol",
+    "Alkene",
+    "Không xác định được"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Alkane CnH₂n+2 cháy cho n(H₂O) lớn hơn n(CO₂); alkene CnH₂n cháy cho n(H₂O) bằng n(CO₂). Vì n(CO₂)=n(H₂O)=0,4mol nên Z là alkene.\n\nVì sao các phương án khác sai:\n- A: Alkane phải cho n(H₂O) lớn hơn n(CO₂), không bằng nhau như dữ kiện bài.\n- B: Z chỉ chứa carbon và hydrogen (hydrocarbon), không có oxygen như alcohol.\n- D: Có thể xác định được nhờ so sánh n(CO₂) và n(H₂O) của phản ứng cháy."
+  },
+  {
+   "ma_cau": "K09000000167",
+   "nhom_id": "KNB00518",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Đốt cháy hoàn toàn một hydrocarbon T thu được 0,3 mol CO₂ và 0,5 mol H₂O. T thuộc loại chất nào?",
+   "lua_chon": [
+    "Alkene",
+    "Alcohol",
+    "Không xác định được",
+    "Alkane"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Vì n(H₂O)=0,5mol lớn hơn n(CO₂)=0,3mol nên T là alkane (CnH₂n+2), phù hợp đặc điểm cháy cho n(H₂O) lớn hơn n(CO₂).\n\nVì sao các phương án khác sai:\n- A: Alkene cháy cho n(H₂O) bằng n(CO₂), không lớn hơn như dữ kiện bài.\n- B: T chỉ chứa carbon và hydrogen (hydrocarbon), không có oxygen như alcohol.\n- C: Có thể xác định được nhờ so sánh n(CO₂) và n(H₂O) của phản ứng cháy."
+  },
+  {
+   "ma_cau": "K09000000168",
+   "nhom_id": "KNB00518",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Hỗn hợp Y gồm khí C₂H₆ và C₂H₄ có tổng thể tích 12,395 L (đkc). Dẫn Y qua dung dịch bromine dư, khối lượng bình tăng thêm 5,6 g. Phần trăm thể tích C₂H₆ trong Y là",
+   "lua_chon": [
+    "40%",
+    "60%",
+    "50%",
+    "70%"
+   ],
+   "dap_an": "B",
+   "loi_giai": "n(Y) = 12,395 : 24,79 = 0,5 mol. n(C₂H₄) = 5,6 : 28 = 0,2 mol. n(C₂H₆) = 0,5 - 0,2 = 0,3 mol. %V(C₂H₆) = 0,3 : 0,5 x 100% = 60%.\n\nVì sao các phương án khác sai:\n- A: Tính nhầm %V(C₂H₄) bằng 0,2 : 0,5 x 100% = 40% rồi ghi thành %V(C₂H₆).\n- C: Chia đôi tổng số mol mà không trừ đúng số mol C₂H₄ đã giữ lại.\n- D: Cộng nhầm số mol C₂H₄ vào số mol C₂H₆ trước khi tính phần trăm."
+  },
+  {
+   "ma_cau": "K09000000169",
+   "nhom_id": "KNB00518",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Hỗn hợp Z gồm khí C₃H₈ và C₂H₄ có tổng thể tích 7,437 L (đkc). Dẫn Z qua dung dịch bromine dư, khí thoát ra khỏi bình có thể tích 4,958 L (đkc). Khối lượng bình bromine tăng thêm là",
+   "lua_chon": [
+    "2,8 g",
+    "5,6 g",
+    "1,4 g",
+    "8,4 g"
+   ],
+   "dap_an": "A",
+   "loi_giai": "n(Z) = 7,437 : 24,79 = 0,3 mol; n(C₃H₈) thoát ra = 4,958 : 24,79 = 0,2 mol nên n(C₂H₄) = 0,3 - 0,2 = 0,1 mol. Khối lượng bình tăng = m(C₂H₄) = 0,1 x 28 = 2,8 g.\n\nVì sao các phương án khác sai:\n- B: Nhân nhầm gấp đôi số mol C₂H₄ trước khi tính khối lượng.\n- C: Chia nhầm kết quả đúng cho 2.\n- D: Nhân nhầm khối lượng mol C₂H₄ với 84, gấp 3 lần giá trị đúng 28."
+  },
+  {
+   "ma_cau": "K09000000170",
+   "nhom_id": "KNB00518",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Hỗn hợp T gồm khí C₄H₁₀ và C₂H₄ có khối lượng 11,4 g. Dẫn T qua dung dịch bromine dư, khối lượng bình tăng thêm 5,6 g. Khối lượng C₄H₁₀ trong hỗn hợp T là",
+   "lua_chon": [
+    "5,8 g",
+    "4,6 g",
+    "8,6 g",
+    "3,6 g"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Khối lượng bình tăng bằng khối lượng C₂H₄ bị giữ lại: m(C₂H₄) = 5,6 g. Khối lượng C₄H₁₀ = 11,4 - 5,6 = 5,8 g.\n\nVì sao các phương án khác sai:\n- B: Lấy nhầm hiệu 11,4 - 5,6 rồi trừ thêm 1,2 g không có căn cứ.\n- C: Cộng nhầm khối lượng C₂H₄ vào tổng khối lượng hỗn hợp thay vì trừ.\n- D: Chia đôi khối lượng hỗn hợp ban đầu thay vì trừ đúng khối lượng C₂H₄."
+  },
+  {
+   "ma_cau": "K09000000171",
+   "nhom_id": "KNB00518",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Hỗn hợp M gồm khí CH₄ và C₂H₄ có tổng số mol 0,3 mol. Dẫn M qua dung dịch bromine dư, khối lượng bình tăng thêm 5,6 g. Thể tích khí thoát ra khỏi bình (đkc) là",
+   "lua_chon": [
+    "2,479 L",
+    "4,958 L",
+    "7,437 L",
+    "1,2395 L"
+   ],
+   "dap_an": "A",
+   "loi_giai": "n(C₂H₄) = 5,6 : 28 = 0,2 mol. n(CH₄) = 0,3 - 0,2 = 0,1 mol. V(CH₄) thoát ra = 0,1 x 24,79 = 2,479 L.\n\nVì sao các phương án khác sai:\n- B: Nhân nhầm số mol CH₄ lên gấp đôi (0,2 mol) rồi mới đổi thể tích.\n- C: Lấy nhầm tổng số mol hỗn hợp (0,3 mol) để tính thể tích khí thoát ra.\n- D: Chia đôi kết quả đúng do tính sai hệ số."
+  },
+  {
+   "ma_cau": "K09000000172",
+   "nhom_id": "KNB00518",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Hỗn hợp N gồm khí C₃H₈ và C₂H₄ có tổng số mol 0,4 mol. Dẫn N qua dung dịch bromine dư, khối lượng bình tăng thêm 8,4 g. Thể tích khí thoát ra khỏi bình (đkc) là",
+   "lua_chon": [
+    "4,958 L",
+    "9,916 L",
+    "2,479 L",
+    "7,437 L"
+   ],
+   "dap_an": "C",
+   "loi_giai": "n(C₂H₄)=8,4:28=0,3mol. n(C₃H₈)=0,4-0,3=0,1mol. V(C₃H₈) thoát ra=0,1×24,79=2,479L.\n\nVì sao các phương án khác sai:\n- A: Nhân nhầm số mol C₃H₈ lên gấp đôi (0,2 mol) rồi mới đổi thể tích.\n- B: Lấy nhầm tổng số mol hỗn hợp (0,4 mol) để tính thể tích khí thoát ra, quên trừ phần bị giữ lại.\n- D: Tính nhầm dựa trên tỉ lệ sai, dẫn tới kết quả lệch theo hệ số khác."
+  },
+  {
+   "ma_cau": "K09000000173",
+   "nhom_id": "KNB00518",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Hỗn hợp P gồm khí C₂H₆ và C₃H₆ có tổng thể tích 6,1975 L (đkc). Dẫn P qua dung dịch bromine dư, khối lượng bình tăng thêm 4,2 g do C₃H₆ bị giữ lại. Phần trăm thể tích C₃H₆ trong P là",
+   "lua_chon": [
+    "40%",
+    "60%",
+    "25%",
+    "50%"
+   ],
+   "dap_an": "A",
+   "loi_giai": "nₜotal=6,1975/24,79=0,25mol. n<sub>C</sub>₃H₆=4,2/42=0,1mol. %V(C₃H₆)=0,1/0,25×100=40%.\n\nVì sao các phương án khác sai:\n- B: Nhầm lấy phần trăm của khí còn lại (C₂H₆) thay vì C₃H₆.\n- C: Tính sai số mol C₃H₆.\n- D: Làm tròn không chính xác dẫn tới sai kết quả."
+  },
+  {
+   "ma_cau": "K09000000174",
+   "nhom_id": "KNB00518",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Hỗn hợp X gồm khí CH₄ và C₂H₄ có tổng số mol 0,3 mol. Đốt cháy hoàn toàn X thu được 0,5 mol CO₂. Số mol C₂H₄ trong X là",
+   "lua_chon": [
+    "0,1 mol",
+    "0,2 mol",
+    "0,15 mol",
+    "0,3 mol"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Đặt n(CH₄) = a, n(C₂H₄) = b. Ta có a + b = 0,3 và a + 2b = 0,5 (theo số C trong CO₂). Giải hệ: b = 0,2 mol; a = 0,1 mol.\n\nVì sao các phương án khác sai:\n- A: Đây là số mol CH₄ (a), không phải số mol C₂H₄ (b) cần tìm.\n- C: Chia đều tổng số mol hỗn hợp cho 2 mà không giải hệ theo số mol CO₂.\n- D: Lấy nhầm tổng số mol hỗn hợp làm số mol C₂H₄."
+  },
+  {
+   "ma_cau": "K09000000175",
+   "nhom_id": "KNB00518",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Hỗn hợp Y gồm khí C₂H₆ và C₂H₄ có tổng số mol 0,4 mol. Đốt cháy hoàn toàn Y thu được 1,0 mol H₂O. Số mol C₂H₆ trong Y là",
+   "lua_chon": [
+    "0,3 mol",
+    "0,1 mol",
+    "0,2 mol",
+    "0,4 mol"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Đặt n(C₂H₆) = a, n(C₂H₄) = b. Ta có a + b = 0,4 và 3a + 2b = 1,0 (C₂H₆ tạo 3H₂O, C₂H₄ tạo 2H₂O). Giải hệ: a = 0,2 mol.\n\nVì sao các phương án khác sai:\n- A: Giải sai hệ phương trình, ra kết quả không thoả cả hai phương trình.\n- B: Nhầm số mol C₂H₆ với số mol C₂H₄ tính sai.\n- D: Lấy nhầm tổng số mol hỗn hợp làm số mol C₂H₆."
+  },
+  {
+   "ma_cau": "K09000000176",
+   "nhom_id": "KNB00518",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Hỗn hợp T gồm khí C₄H₁₀ và C₂H₄ có khối lượng 14,2 g. Đốt cháy hoàn toàn T thu được 1,0 mol CO₂. Số mol C₂H₄ trong T là",
+   "lua_chon": [
+    "0,1 mol",
+    "0,2 mol",
+    "0,3 mol",
+    "0,4 mol"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Đặt n(C₄H₁₀) = a, n(C₂H₄) = b. Khối lượng: 58a + 28b = 14,2. Số mol CO₂: 4a + 2b = 1,0. Giải hệ: a = 0,1 mol; b = 0,3 mol.\n\nVì sao các phương án khác sai:\n- A: Đây là số mol C₄H₁₀ (a), không phải số mol C₂H₄ (b) cần tìm.\n- B: Giải sai hệ, ra kết quả không thoả phương trình khối lượng.\n- D: Lấy nhầm tổng số mol CO₂ chia cho hệ số trung bình sai."
+  }
+ ]
+}

@@ -1,0 +1,217 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00485",
+   "ly_thuyet": "##TC 1. Kiến thức cần nhớ\nHiện tượng cảm ứng điện từ: khi số đường sức từ xuyên qua tiết diện của cuộn dây dẫn kín biến thiên thì trong cuộn dây xuất hiện dòng điện, gọi là dòng điện cảm ứng.\nDòng điện cảm ứng xuất hiện không cần nguồn điện; chỉ có khi số đường sức từ còn đang thay đổi, nam châm hoặc cuộn dây đứng yên thì không có.\nDòng điện xoay chiều là dòng điện luân phiên đổi chiều theo thời gian; dòng điện một chiều (pin, acquy) chạy theo một chiều không đổi.\nMáy phát điện xoay chiều gồm hai bộ phận chính là nam châm và cuộn dây dẫn; một trong hai bộ phận quay thì số đường sức từ qua cuộn dây biến thiên và sinh ra dòng điện xoay chiều. Cơ năng được chuyển hoá thành điện năng.\nDòng điện xoay chiều có tác dụng nhiệt, tác dụng phát sáng, tác dụng từ và tác dụng sinh lí. Đo dòng điện xoay chiều phải dùng ampe kế, vôn kế xoay chiều (kí hiệu AC).\n\n##PP 2. Các bước làm bài\nĐọc đề, xác định bộ phận nào chuyển động (nam châm, cuộn dây hay dòng điện trong nam châm điện)\nKiểm tra số đường sức từ qua cuộn dây kín có biến thiên hay không\nKết luận có hiện tượng cảm ứng điện từ hay không; nếu hỏi về dòng điện, xét chiều dòng điện có luân phiên đổi hay không\nVới câu về tác dụng, đối chiếu dấu hiệu quan sát được (nóng lên, phát sáng, hút sắt, co giật cơ) với từng tác dụng\n\n##CY 3. Lưu ý\nCảm ứng điện từ khác nhiễm điện do cọ xát, nhiễm từ và đoản mạch: ở đây không có nguồn điện nhưng nam châm hoặc nam châm điện làm số đường sức từ qua cuộn dây biến thiên.\nNam châm đứng yên bên trong cuộn dây thì không có dòng điện cảm ứng.\nDòng điện xoay chiều vẫn có đủ các tác dụng như dòng một chiều, nhưng ampe kế, vôn kế một chiều không đo đúng được.",
+   "dang_bai": [
+    {
+     "ten": "Nhận biết hiện tượng cảm ứng điện từ qua thí nghiệm",
+     "mo_ta": "Đề mô tả một thí nghiệm có nam châm, nam châm điện hoặc máy phát (kim điện kế lệch, đèn LED loé sáng dù không có nguồn điện); hỏi đó là hiện tượng gì.\nChọn đáp án trong các phương án: cảm ứng điện từ, nhiễm điện do cọ xát, đoản mạch, nhiễm từ, phóng điện.\nLưu ý: hỏi điều kiện để có dòng điện cảm ứng ⇒ thuộc dạng \"Xác định điều kiện xuất hiện dòng điện cảm ứng\".",
+     "ly_thuyet": "##TC Dấu hiệu nhận biết cảm ứng điện từ\nCuộn dây dẫn kín không nối nguồn điện nhưng vẫn có dòng điện (kim điện kế lệch, đèn LED sáng) khi nam châm hoặc nam châm điện chuyển động, đóng ngắt khoá K lại gần cuộn dây.\nĐó là hiện tượng cảm ứng điện từ, dòng điện sinh ra gọi là dòng điện cảm ứng.\n\n##PP Cách làm\nTìm trong đề dấu hiệu: có dòng điện nhưng không có nguồn điện\nTìm nguyên nhân: nam châm hoặc nam châm điện chuyển động, thay đổi dòng điện\nLoại các phương án nhiễu điện cọ xát, đoản mạch, nhiễm từ\nChọn cảm ứng điện từ\n\n##CY Phương án nhiễu\nĐoản mạch là nối tắt hai cực nguồn điện, nhiễm từ là sắt bị nam châm hút nên không sinh dòng điện.",
+     "vi_du": "##VD\nCho một nam châm rơi xuyên qua một ống dây dẫn kín nối với điện kế. Trong lúc nam châm rơi qua ống dây, kim điện kế bị lệch. Đó là hiện tượng gì?\nA. Hiện tượng nhiễm từ của sắt\nB. Hiện tượng phóng điện trong không khí\nC. Hiện tượng từ hoá vĩnh viễn cuộn dây\nD. Hiện tượng cảm ứng điện từ\n\nBài giải:\nỐng dây kín không nối với nguồn điện nào nhưng kim điện kế vẫn lệch, tức có dòng điện.\nNam châm rơi qua ống dây làm số đường sức từ qua ống dây biến thiên nên sinh ra dòng điện cảm ứng.\nĐó là hiện tượng cảm ứng điện từ. Chọn D.\n\n##VD\nĐóng khoá K của một nam châm điện đặt cạnh một cuộn dây dẫn kín khác nối với điện kế, kim điện kế bị lệch trong chốc lát. Đó là hiện tượng gì?\nA. Hiện tượng từ hoá vĩnh viễn cuộn dây\nB. Hiện tượng quá tải dòng điện\nC. Hiện tượng cảm ứng điện từ\nD. Hiện tượng nhiễm điện do cọ xát\n\nBài giải:\nKhi đóng khoá K, dòng điện trong nam châm điện tăng từ 0 nên từ trường của nó mạnh dần.\nSố đường sức từ qua cuộn dây bên cạnh biến thiên nên trong cuộn dây có dòng điện cảm ứng làm kim điện kế lệch.\nĐó là hiện tượng cảm ứng điện từ. Chọn C.",
+     "nguon_vi_du": "K09040101003, K09040101005",
+     "cau": [
+      "K09040101001",
+      "K09040101002",
+      "K09040101003",
+      "K09040101004",
+      "K09040101005",
+      "K09040101006",
+      "K09040101007",
+      "K09040101008"
+     ]
+    },
+    {
+     "ten": "Xác định điều kiện xuất hiện dòng điện cảm ứng",
+     "mo_ta": "Đề hỏi điều kiện (hoặc trường hợp) làm cuộn dây dẫn kín có dòng điện cảm ứng, hoặc hỏi vì sao có / không có dòng điện cảm ứng.\nGồm: chọn điều kiện đúng, chọn trường hợp KHÔNG có dòng cảm ứng (nam châm đứng yên trong cuộn dây), giải thích khi lắc cuộn dây gần nam châm đứng yên.\nLưu ý: đề chỉ mô tả thí nghiệm rồi hỏi tên hiện tượng ⇒ thuộc dạng \"Nhận biết hiện tượng cảm ứng điện từ qua thí nghiệm\".",
+     "ly_thuyet": "##TC Điều kiện có dòng điện cảm ứng\nTrong cuộn dây dẫn kín xuất hiện dòng điện cảm ứng khi số đường sức từ qua tiết diện cuộn dây biến thiên.\nKhông cần nguồn điện; chỉ cần có chuyển động tương đối giữa nam châm và cuộn dây (vật nào chuyển động cũng được) làm số đường sức từ thay đổi.\nNam châm hoặc cuộn dây đứng yên thì số đường sức từ không đổi, không có dòng điện cảm ứng.\n\n##PP Cách làm\nXem số đường sức từ qua cuộn dây có thay đổi theo thời gian không\nCó biến thiên thì có dòng cảm ứng, không biến thiên thì không có\nLoại phương án nhắc tới nguồn điện, chất liệu dây hay khối lượng nam châm\n\n##CY Chú ý\nNam châm đặt yên trong lòng cuộn dây vẫn không có dòng cảm ứng vì từ trường xuyên qua cuộn dây không đổi.",
+     "vi_du": "##VD\nĐiều kiện nào sau đây làm cuộn dây dẫn kín xuất hiện dòng điện cảm ứng?\nA. Cuộn dây phải nối với một nguồn điện\nB. Số đường sức từ qua cuộn dây biến thiên\nC. Nam châm phải đặt cố định bên trong cuộn dây\nD. Cuộn dây phải được làm bằng kim loại quý\n\nBài giải:\nDòng điện cảm ứng xuất hiện khi số đường sức từ qua cuộn dây dẫn kín biến thiên.\nKhông cần nối nguồn điện (A sai), nam châm cố định thì số đường sức không đổi (C sai), chất liệu dây không quyết định (D sai).\nChọn B.\n\n##VD\nVì sao khi lắc nhẹ một cuộn dây dẫn kín qua lại gần một nam châm đứng yên, trong cuộn dây vẫn xuất hiện dòng điện cảm ứng?\nA. Vì cuộn dây tự phát sinh điện tích khi lắc\nB. Vì nam châm tự thay đổi từ tính khi có vật chuyển động gần nó\nC. Vì chuyển động của cuộn dây làm số đường sức từ qua nó biến thiên\nD. Vì không khí ma sát với cuộn dây sinh ra điện\n\nBài giải:\nNam châm đứng yên nhưng cuộn dây chuyển động nên có chuyển động tương đối giữa chúng.\nChuyển động đó làm số đường sức từ qua cuộn dây biến thiên nên sinh ra dòng điện cảm ứng.\nChọn C.",
+     "nguon_vi_du": "K09040101009, K09040101014",
+     "cau": [
+      "K09040101009",
+      "K09040101010",
+      "K09040101011",
+      "K09040101012",
+      "K09040101013",
+      "K09040101014"
+     ]
+    },
+    {
+     "ten": "Nhận biết dòng điện xoay chiều và đặc điểm về chiều dòng điện",
+     "mo_ta": "Đề hỏi đặc điểm của dòng điện xoay chiều, hoặc nguồn nào cho dòng xoay chiều / một chiều (pin, ắc quy, ổ điện, máy phát điện).\nGồm: định nghĩa dòng điện xoay chiều, vì sao gọi là xoay chiều, so sánh chiều dòng điện của pin, ắc quy với ổ điện, máy phát.\nLưu ý: hỏi dụng cụ đo dòng điện xoay chiều (ampe kế, vôn kế AC) ⇒ thuộc dạng \"Dụng cụ đo dòng điện và hiệu điện thế xoay chiều\".",
+     "ly_thuyet": "##TC Dòng điện xoay chiều và một chiều\nDòng điện xoay chiều có chiều luân phiên thay đổi theo thời gian; nguồn: máy phát điện xoay chiều, ổ điện trong nhà.\nDòng điện một chiều có chiều không đổi; nguồn: pin, ắc quy.\nBóng đèn sợi đốt vẫn sáng bình thường với dòng xoay chiều vì phát sáng nhờ nhiệt, không phụ thuộc chiều dòng điện.\n\n##PP Cách làm\nXác định nguồn điện nói tới trong đề\nNhớ pin, ắc quy cho dòng một chiều; ổ điện, máy phát xoay chiều cho dòng đổi chiều liên tục\nChọn phương án nói về chiều dòng điện luân phiên đổi hoặc không đổi cho đúng loại nguồn\n\n##CY Chú ý\nCường độ thay đổi không phải đặc điểm quyết định tên gọi xoay chiều; điều quyết định là chiều đổi luân phiên.",
+     "vi_du": "##VD\nDòng điện nào sau đây là dòng điện xoay chiều?\nA. Dòng điện chạy trong mạch nối với pin\nB. Dòng điện không đổi lấy từ acquy\nC. Dòng điện chỉ chạy từ cực dương sang cực âm\nD. Dòng điện của máy phát điện có chiều luân phiên đổi\n\nBài giải:\nDòng điện xoay chiều là dòng có chiều luân phiên thay đổi theo thời gian.\nPin và acquy cho dòng một chiều không đổi (A, B sai); chạy từ cực dương sang cực âm là dòng một chiều (C sai).\nChọn D.\n\n##VD\nMáy phát điện xoay chiều ở nhà máy điện cung cấp dòng điện có đặc điểm gì về chiều, khác với ắc quy?\nA. Chỉ chạy theo một chiều không đổi, giống ắc quy\nB. Không có chiều xác định\nC. Chỉ chạy khi trời có gió\nD. Đổi chiều liên tục theo thời gian, khác với ắc quy\n\nBài giải:\nẮc quy là nguồn một chiều, dòng điện luôn chạy theo một chiều.\nMáy phát điện xoay chiều cho dòng điện đổi chiều liên tục theo thời gian nên khác với ắc quy.\nChọn D.",
+     "nguon_vi_du": "K09040101016, K09040101035",
+     "cau": [
+      "K09040101015",
+      "K09040101016",
+      "K09040101017",
+      "K09040101018",
+      "K09040101030",
+      "K09040101031",
+      "K09040101034",
+      "K09040101035"
+     ]
+    },
+    {
+     "ten": "Dụng cụ đo dòng điện và hiệu điện thế xoay chiều",
+     "mo_ta": "Đề hỏi loại ampe kế, vôn kế dùng để đo dòng điện xoay chiều, kí hiệu AC, khác gì so với dụng cụ đo dòng một chiều.\nChọn phương án đúng về loại dòng điện mà dụng cụ AC đo được.\nLưu ý: đề hỏi chung về chiều dòng điện của nguồn (không nói tới dụng cụ đo) ⇒ thuộc dạng \"Nhận biết dòng điện xoay chiều và đặc điểm về chiều dòng điện\".",
+     "ly_thuyet": "##TC Dụng cụ đo xoay chiều\nDòng điện xoay chiều đổi chiều liên tục nên phải dùng ampe kế, vôn kế loại xoay chiều có kí hiệu AC.\nAmpe kế, vôn kế một chiều (DC) không cho số đo đúng với dòng xoay chiều.\nAmpe kế vẫn mắc nối tiếp, vôn kế mắc song song như khi đo dòng một chiều.\n\n##CY Chú ý\nKí hiệu AC trên dụng cụ cho biết dụng cụ dùng cho dòng xoay chiều, không phải chỉ đo dòng yếu hay dòng của pin.",
+     "vi_du": "##VD\nVôn kế xoay chiều, kí hiệu AC, dùng để đo hiệu điện thế của loại dòng điện nào?\nA. Dòng điện chỉ có trong pin\nB. Dòng điện chỉ có trong ắc quy\nC. Dòng điện chỉ chạy theo một chiều không đổi\nD. Dòng điện đổi chiều liên tục theo thời gian\n\nBài giải:\nKí hiệu AC chỉ vôn kế dùng cho dòng điện xoay chiều.\nDòng điện xoay chiều là dòng đổi chiều liên tục theo thời gian; pin, ắc quy cho dòng một chiều (A, B, C sai).\nChọn D.\n\n##VD\nVôn kế hoặc ampe kế dùng để đo dòng điện xoay chiều cần có đặc điểm gì khác so với đo dòng điện một chiều?\nA. Phải là loại chuyên dùng cho dòng xoay chiều\nB. Không cần đặc điểm gì khác, dùng chung loại với dòng một chiều\nC. Phải có kim chỉ quay liên tục không dừng\nD. Phải nối trực tiếp với hai cực của nguồn điện một chiều\n\nBài giải:\nDòng điện xoay chiều đổi chiều liên tục nên không đo đúng được bằng dụng cụ một chiều.\nCần dùng ampe kế, vôn kế chuyên dùng cho dòng xoay chiều (kí hiệu AC).\nChọn A.",
+     "nguon_vi_du": "K09040101033, K09040101019",
+     "cau": [
+      "K09040101019",
+      "K09040101032",
+      "K09040101033"
+     ]
+    },
+    {
+     "ten": "Cấu tạo và nguyên tắc hoạt động của máy phát điện xoay chiều",
+     "mo_ta": "Đề hỏi máy phát điện xoay chiều (đơn giản, dynamo xe đạp, nhà máy điện) gồm những bộ phận nào, bộ phận nào quay, vì sao có dòng điện, năng lượng nào chuyển hoá thành điện năng.\nDùng kiến thức: nam châm quay làm số đường sức từ qua cuộn dây biến thiên.\nLưu ý: hỏi vì sao dòng điện đổi chiều (đường sức tăng ⇒ giảm) ⇒ thuộc nhóm \"Giải thích hiện tượng đổi chiều dòng điện\".",
+     "ly_thuyet": "##TC Máy phát điện xoay chiều\nHai bộ phận chính: nam châm và cuộn dây dẫn; một trong hai bộ phận quay.\nKhi nam châm (hoặc cuộn dây) quay, số đường sức từ qua cuộn dây biến thiên nên có dòng điện cảm ứng xoay chiều.\nCơ năng của chuyển động quay (tua bin, bánh xe) được chuyển hoá thành điện năng.\n\n##PP Cách làm\nXác định bộ phận quay và bộ phận đứng yên trong thiết bị\nGiải thích bằng sự biến thiên số đường sức từ qua cuộn dây\nXác định dạng năng lượng ban đầu (cơ năng) chuyển hoá thành điện năng\n\n##CY Chú ý\nMáy phát điện không tự sinh điện tích hay dùng pin; điện năng có được nhờ cơ năng làm quay.",
+     "vi_du": "##VD\nTrong máy phát điện xoay chiều ở nhà máy điện, năng lượng nào được chuyển hoá thành điện năng nhờ hiện tượng cảm ứng điện từ?\nA. Năng lượng của tua bin quay (cơ năng)\nB. Năng lượng ánh sáng mặt trời chiếu trực tiếp vào máy phát\nC. Năng lượng hoá học dự trữ sẵn trong máy phát\nD. Năng lượng nhiệt toả ra từ cuộn dây\n\nBài giải:\nTua bin quay nhờ nước, hơi nước hoặc gió làm quay nam châm hoặc cuộn dây của máy phát.\nSố đường sức từ qua cuộn dây biến thiên nên có dòng điện cảm ứng; cơ năng được chuyển hoá thành điện năng.\nChọn A.\n\n##VD\nDynamo xe đạp là một máy phát điện xoay chiều nhỏ, tiếp xúc với bánh xe. Khi xe chuyển động, bộ phận nào của dynamo quay?\nA. Cuộn dây bên trong dynamo quay theo bánh xe\nB. Cả nam châm và cuộn dây cùng đứng yên\nC. Trục xe đạp tự phát sinh ra điện tích\nD. Nam châm bên trong dynamo quay theo bánh xe\n\nBài giải:\nBánh xe quay làm nam châm bên trong dynamo quay theo, còn cuộn dây đứng yên.\nSố đường sức từ qua cuộn dây biến thiên nên trong cuộn dây có dòng điện cảm ứng xoay chiều.\nChọn D.",
+     "nguon_vi_du": "K09040101023, K09040101021",
+     "cau": [
+      "K09040101020",
+      "K09040101021",
+      "K09040101022",
+      "K09040101023"
+     ]
+    },
+    {
+     "ten": "Nhận biết tác dụng của dòng điện xoay chiều qua hiện tượng",
+     "mo_ta": "Đề mô tả một hiện tượng quan sát được khi có dòng điện xoay chiều (đèn sáng, đinh sắt bị hút, cơ co giật, dây điện trở nóng lên); hỏi đó là tác dụng gì.\nGồm cả câu hỏi dòng xoay chiều có những tác dụng nào.\nLưu ý: đề nêu tên một thiết bị cụ thể trong đời sống (bếp điện, cần cẩu, quạt…) ⇒ thuộc nhóm \"Ứng dụng thực tế của dòng điện xoay chiều\".",
+     "ly_thuyet": "##TC Bốn tác dụng của dòng điện xoay chiều\nTác dụng nhiệt: dây dẫn, dây điện trở nóng lên.\nTác dụng phát sáng: bóng đèn huỳnh quang, đèn LED sáng.\nTác dụng từ: ống dây, nam châm điện hút được vật bằng sắt.\nTác dụng sinh lí: dòng điện đi qua cơ thể gây co giật cơ.\n\n##PP Cách làm\nTìm dấu hiệu quan sát được trong đề\nĐối chiếu dấu hiệu với bốn tác dụng\nLoại các phương án còn lại và chọn\n\n##CY Chú ý\nDòng điện xoay chiều có đủ bốn tác dụng nhiệt, phát sáng, từ và sinh lí.",
+     "vi_du": "##VD\nBóng đèn huỳnh quang sáng lên khi mắc vào nguồn điện xoay chiều của lưới điện. Đó là tác dụng gì của dòng điện xoay chiều?\nA. Tác dụng nhiệt\nB. Tác dụng phát sáng\nC. Tác dụng từ\nD. Tác dụng sinh lí\n\nBài giải:\nĐèn huỳnh quang phát ra ánh sáng khi có dòng điện xoay chiều chạy qua.\nĐó là tác dụng phát sáng. Chọn B.\n\n##VD\nKhi vô ý chạm tay vào dây điện xoay chiều bị hở lõi, cơ tay của người bị co giật mạnh không kiểm soát được. Đó là tác dụng gì của dòng điện xoay chiều?\nA. Tác dụng nhiệt\nB. Tác dụng phát sáng\nC. Tác dụng từ\nD. Tác dụng sinh lí\n\nBài giải:\nDòng điện chạy qua cơ thể gây co giật cơ.\nĐó là dấu hiệu của tác dụng sinh lí. Chọn D.",
+     "nguon_vi_du": "K09040101024, K09040101026",
+     "cau": [
+      "K09040101024",
+      "K09040101025",
+      "K09040101026",
+      "K09040101027",
+      "K09040101028",
+      "K09040101029"
+     ]
+    }
+   ],
+   "khong_hop": [],
+   "ghi_chu": "Tên nhóm \"bài tập cơ bản\" nhưng thực tế là câu lí thuyết trắc nghiệm (cảm ứng điện từ, xoay chiều, tác dụng); chủ đề \"Cảm ứng điện từ\" gộp luôn máy phát và tác dụng. Dạng 6 gần trùng kiểu bài với nhóm KNB00487 (nên xem lại ranh giới)."
+  },
+  {
+   "nhom_id": "KNB00486",
+   "ly_thuyet": "##TC 1. Kiến thức cần nhớ\nChiều của dòng điện cảm ứng phụ thuộc vào số đường sức từ qua cuộn dây đang tăng hay đang giảm: khi số đường sức từ tăng và khi giảm thì dòng cảm ứng có chiều ngược nhau.\nĐưa nam châm lại gần cuộn dây (số đường sức tăng) và rút nam châm ra xa (số đường sức giảm) cho dòng cảm ứng ngược chiều nhau. Đóng khoá K, tăng dòng điện trong nam châm điện làm số đường sức tăng; ngắt K, giảm dòng điện làm số đường sức giảm.\nNam châm đứng yên hoặc dòng trong nam châm điện không đổi thì số đường sức không biến thiên, không có dòng cảm ứng.\nDòng điện xoay chiều luân phiên đổi chiều. Kim nam châm đặt gần dây dẫn có dòng điện chịu lực từ: dòng một chiều làm kim lệch rồi đứng yên, dòng xoay chiều làm kim dao động liên tục. Dòng xoay chiều 50 Hz đổi chiều rất nhanh nên đèn sợi đốt vẫn sáng đều.\n\n##PP 2. Các bước làm bài\nXác định từng giai đoạn: số đường sức từ qua cuộn dây tăng, giảm hay không đổi\nTăng ⇒ dòng cảm ứng một chiều (ứng với màu đèn đề cho); giảm ⇒ chiều ngược lại (đèn kia); không đổi ⇒ không có dòng, đèn tắt\nĐối chiếu từng giai đoạn với các phương án và chọn đáp án phù hợp\n\n##CY 3. Lưu ý\nTiếp tục đưa nam châm lại gần là số đường sức vẫn đang tăng nên đèn vẫn giữ nguyên màu; giữ yên sát cuộn dây thì đèn tắt.\nChiều dòng cảm ứng không phụ thuộc vào cực nam châm cụ thể mà do số đường sức tăng hay giảm.",
+   "dang_bai": [
+    {
+     "ten": "Giải thích vì sao dòng cảm ứng đổi chiều",
+     "mo_ta": "Đề mô tả nam châm (hoặc cuộn dây) đưa vào rồi rút ra, dao động hoặc quay, hỏi dòng cảm ứng có đổi chiều không và vì sao.\nGồm: so sánh dòng cảm ứng lúc đưa vào / rút ra, nhận xét của hai bạn học sinh, máy phát điện xoay chiều liên tục đổi chiều, hiện tượng đèn sợi đốt vẫn sáng đều khi dòng đổi chiều.\nLưu ý: đề cho bốn giai đoạn liên tiếp và hỏi đèn LED nào sáng ở mỗi giai đoạn ⇒ thuộc dạng \"Xác định đèn LED sáng theo từng giai đoạn nam châm chuyển động\".",
+     "ly_thuyet": "##TC Chiều dòng cảm ứng\nĐưa nam châm vào: số đường sức qua cuộn dây tăng; rút ra: số đường sức giảm. Hai trường hợp này cho dòng cảm ứng ngược chiều nhau.\nNam châm hoặc cuộn dây dao động, quay đều thì số đường sức luân phiên tăng, giảm nên dòng điện luân phiên đổi chiều (dòng xoay chiều).\nDòng xoay chiều 50 Hz đổi chiều 100 lần mỗi giây, quá nhanh nên mắt không thấy đèn nhấp nháy.\n\n##PP Cách làm\nXét số đường sức từ qua cuộn dây ở từng pha chuyển động\nSố đường sức đổi từ tăng sang giảm thì dòng cảm ứng đổi chiều\nChọn phương án giải thích bằng sự biến thiên đường sức từ, loại các phương án nói nam châm tự đổi cực hay dòng không đổi chiều\n\n##CY Chú ý\nDòng cảm ứng đổi chiều vì số đường sức đổi từ tăng sang giảm, không phải vì nam châm đổi cực.",
+     "vi_du": "##VD\nKhi đưa cực Bắc của nam châm lại gần một cuộn dây dẫn kín, số đường sức từ qua cuộn dây tăng dần và dòng điện cảm ứng xuất hiện theo một chiều nhất định. Khi rút cực Bắc đó ra xa, dòng điện cảm ứng có đặc điểm gì so với lúc đưa vào?\nA. Giữ nguyên chiều, vì vẫn là cùng một nam châm\nB. Đổi chiều, vì số đường sức từ đang giảm\nC. Không còn dòng điện cảm ứng nào nữa\nD. Cường độ tăng gấp đôi nhưng chiều không đổi\n\nBài giải:\nKhi đưa vào, số đường sức từ qua cuộn dây tăng; khi rút ra, số đường sức giảm.\nChiều dòng cảm ứng phụ thuộc vào số đường sức đang tăng hay đang giảm nên dòng cảm ứng đổi chiều.\nSố đường sức vẫn biến thiên nên vẫn có dòng cảm ứng (C sai). Chọn B.\n\n##VD\nTrong máy phát điện xoay chiều, nam châm quay đều quanh một trục cố định trước cuộn dây. Vì sao dòng điện trong cuộn dây liên tục đổi chiều?\nA. Vì nam châm đổi cực từ sau mỗi vòng quay\nB. Vì cuộn dây tự quay ngược lại nam châm\nC. Vì tốc độ quay của nam châm không đều\nD. Vì đường sức từ đổi từ tăng sang giảm mỗi nửa vòng\n\nBài giải:\nKhi nam châm quay đều, cứ mỗi nửa vòng số đường sức từ qua cuộn dây đổi từ tăng sang giảm hoặc ngược lại.\nVì vậy dòng điện cảm ứng liên tục đổi chiều. Nam châm không tự đổi cực (A sai). Chọn D.",
+     "nguon_vi_du": "K09040102001, K09040102004",
+     "cau": [
+      "K09040102001",
+      "K09040102002",
+      "K09040102003",
+      "K09040102004",
+      "K09040102005",
+      "K09040102006",
+      "K09040102007",
+      "K09040102008",
+      "K09040102030"
+     ]
+    },
+    {
+     "ten": "Xác định đèn LED sáng theo từng giai đoạn nam châm chuyển động",
+     "mo_ta": "Đề cho cuộn dây kín nối hai đèn LED khác màu mắc ngược chiều, nam châm trải qua bốn giai đoạn (đưa lại gần, giữ yên, rút ra, tiếp tục…); hỏi đèn nào sáng ở mỗi giai đoạn.\nMỗi phương án là một bộ bốn kết quả (xanh, đỏ, tắt); biết trước đèn nào sáng khi đưa nam châm lại gần.\nLưu ý: nếu thay nam châm bằng nam châm điện đổi dòng điện ⇒ thuộc dạng \"Xác định đèn LED sáng khi dòng trong nam châm điện đổi\".",
+     "ly_thuyet": "##TC Quy tắc xác định đèn sáng\nSố đường sức tăng (đưa nam châm lại gần, kể cả khi tiếp tục đưa lại gần) ⇒ dòng cảm ứng chiều A ⇒ đèn theo đề cho.\nSố đường sức giảm (rút nam châm ra xa, kể cả tiếp tục rút) ⇒ dòng cảm ứng chiều ngược lại ⇒ đèn còn lại.\nGiữ yên ⇒ số đường sức không đổi ⇒ không có dòng cảm ứng ⇒ không đèn nào sáng.\n\n##PP Cách làm\nGạch ra từng giai đoạn trong đề\nXếp mỗi giai đoạn vào tăng, giảm hoặc không đổi\nGán màu đèn: tăng ⇒ màu đề cho, giảm ⇒ màu kia, không đổi ⇒ tắt\nSo sánh bộ bốn kết quả với từng phương án rồi chọn\n\n##CY Chú ý\nGiai đoạn \"tiếp tục đưa lại gần\" vẫn giữ màu như lúc đưa lại gần, không đổi sang màu khác.",
+     "vi_du": "##VD\nCuộn dây dẫn kín nối hai đèn LED khác màu mắc ngược chiều. Bốn giai đoạn liên tiếp: (1) đưa nam châm lại gần; (2) giữ yên; (3) tiếp tục giữ yên; (4) rút nam châm ra xa. Đèn nào sáng ở mỗi giai đoạn (theo đúng thứ tự)? Biết rằng khi đưa nam châm lại gần cuộn dây thì đèn XANH sáng.\nA. Xanh, Xanh, Tắt, Đỏ\nB. Xanh, Tắt, Tắt, Đỏ\nC. Xanh, Tắt, Xanh, Đỏ\nD. Xanh, Tắt, Tắt, Xanh\n\nBài giải:\n(1) Đưa lại gần: số đường sức tăng nên đèn XANH sáng.\n(2) và (3) Giữ yên: số đường sức không đổi nên không có dòng cảm ứng, không đèn nào sáng.\n(4) Rút ra xa: số đường sức giảm, dòng đổi chiều nên đèn ĐỎ sáng.\nThứ tự đúng: Xanh, Tắt, Tắt, Đỏ. Chọn B.\n\n##VD\nCuộn dây dẫn kín nối hai đèn LED khác màu mắc ngược chiều. Bốn giai đoạn liên tiếp: (1) rút nam châm ra xa; (2) đưa nam châm lại gần; (3) giữ yên sát cuộn dây; (4) rút ra xa lần nữa. Đèn nào sáng ở mỗi giai đoạn (theo đúng thứ tự)? Biết rằng khi đưa nam châm lại gần cuộn dây thì đèn XANH sáng.\nA. Xanh, Đỏ, Tắt, Xanh\nB. Đỏ, Xanh, Tắt, Đỏ\nC. Đỏ, Xanh, Xanh, Đỏ\nD. Tắt, Xanh, Đỏ, Tắt\n\nBài giải:\n(1) Rút ra xa: số đường sức giảm nên đèn ĐỎ sáng.\n(2) Đưa lại gần: số đường sức tăng nên đèn XANH sáng.\n(3) Giữ yên sát cuộn dây: không biến thiên nên không đèn nào sáng.\n(4) Rút ra xa: số đường sức giảm nên đèn ĐỎ sáng.\nThứ tự đúng: Đỏ, Xanh, Tắt, Đỏ. Chọn B.",
+     "nguon_vi_du": "K09040102017, K09040102011",
+     "cau": [
+      "K09040102009",
+      "K09040102010",
+      "K09040102011",
+      "K09040102012",
+      "K09040102013",
+      "K09040102014",
+      "K09040102015",
+      "K09040102016",
+      "K09040102017"
+     ]
+    },
+    {
+     "ten": "Xác định đèn LED sáng khi dòng trong nam châm điện đổi",
+     "mo_ta": "Đề cho nam châm điện (có khoá K, biến trở) đặt cạnh cuộn dây kín nối hai đèn LED khác màu; dòng điện trong nam châm điện trải qua bốn giai đoạn (đóng K, tăng dần, giữ không đổi, giảm dần, ngắt K); hỏi đèn nào sáng ở mỗi giai đoạn.\nBiết trước đèn nào sáng khi dòng điện trong nam châm điện tăng; mỗi phương án là bộ bốn kết quả.\nLưu ý: đề dùng nam châm thường đưa vào, rút ra ⇒ thuộc dạng \"Xác định đèn LED sáng theo từng giai đoạn nam châm chuyển động\".",
+     "ly_thuyet": "##TC Nam châm điện và cảm ứng\nDòng điện trong nam châm điện tăng (đóng K, tăng biến trở) ⇒ từ trường mạnh lên ⇒ số đường sức qua cuộn dây tăng.\nDòng điện trong nam châm điện giảm (ngắt K, giảm biến trở) ⇒ số đường sức giảm.\nDòng điện giữ không đổi (kể cả bằng 0 hay một giá trị lớn) ⇒ không có dòng cảm ứng ⇒ không đèn nào sáng.\n\n##PP Cách làm\nXét dòng điện trong nam châm điện ở từng giai đoạn: tăng, giảm hay không đổi\nDòng tăng ⇒ đèn theo đề cho; dòng giảm ⇒ đèn còn lại; không đổi ⇒ tắt\nGhép kết quả thành bộ bốn rồi chọn phương án đúng\n\n##CY Chú ý\nKhi vẫn đang tăng (hoặc giảm) dần thì đèn giữ nguyên màu của giai đoạn đó; khi giữ dòng không đổi thì đèn tắt.",
+     "vi_du": "##VD\nNam châm điện nối biến trở, đặt cạnh cuộn dây kín có hai đèn LED khác màu. Bốn giai đoạn: (1) đóng khoá K, dòng tăng đột ngột từ 0; (2) giữ dòng không đổi; (3) biến trở TĂNG DẦN dòng thêm; (4) biến trở GIẢM DẦN dòng về mức cũ. Đèn nào sáng ở mỗi giai đoạn? Biết rằng khi dòng điện trong nam châm điện tăng thì đèn XANH sáng.\nA. Xanh, Tắt, Xanh, Đỏ\nB. Xanh, Xanh, Tắt, Đỏ\nC. Tắt, Xanh, Đỏ, Xanh\nD. Xanh, Tắt, Đỏ, Xanh\n\nBài giải:\n(1) Đóng K, dòng tăng từ 0: số đường sức tăng nên đèn XANH sáng.\n(2) Giữ dòng không đổi: không biến thiên nên không đèn nào sáng.\n(3) Tăng dần thêm: số đường sức tiếp tục tăng nên đèn XANH sáng.\n(4) Giảm dần: số đường sức giảm nên đèn ĐỎ sáng.\nThứ tự đúng: Xanh, Tắt, Xanh, Đỏ. Chọn A.",
+     "nguon_vi_du": "K09040102018",
+     "cau": [
+      "K09040102018",
+      "K09040102019",
+      "K09040102020",
+      "K09040102021",
+      "K09040102022",
+      "K09040102023",
+      "K09040102024"
+     ]
+    },
+    {
+     "ten": "Phân biệt dòng điện một chiều và xoay chiều bằng kim nam châm",
+     "mo_ta": "Đề đặt kim nam châm (hoặc kim la bàn) gần ống dây hoặc dây dẫn thẳng có dòng điện chạy qua, mô tả kim lệch rồi đứng yên hoặc dao động liên tục; hỏi dòng điện là loại nào.\nCó thể có hai ống dây so sánh (một ống dao động, một ống đứng yên).\nLưu ý: đề hỏi vì sao đèn sáng đều dù dòng xoay chiều đổi chiều ⇒ thuộc dạng \"Giải thích vì sao dòng cảm ứng đổi chiều\".",
+     "ly_thuyet": "##TC Lực từ lên kim nam châm\nKim nam châm đặt gần dây dẫn có dòng điện chịu lực từ; chiều lực từ phụ thuộc chiều dòng điện.\nDòng điện một chiều (chiều không đổi): lực từ không đổi chiều, kim lệch một góc rồi đứng yên.\nDòng điện xoay chiều: dòng đổi chiều liên tục nên lực từ đổi chiều, kim dao động qua lại, không đứng yên.\n\n##PP Cách làm\nĐọc hiện tượng của kim: lệch rồi đứng yên hay dao động liên tục\nLệch rồi đứng yên ⇒ dòng một chiều; dao động liên tục ⇒ dòng xoay chiều\nLoại phương án nói không có dòng điện vì kim vẫn bị lệch\n\n##CY Chú ý\nKim bị lệch hoặc dao động chứng tỏ có dòng điện chạy qua; không thể có cường độ bằng 0.",
+     "vi_du": "##VD\nĐặt kim nam châm gần một ống dây có dòng điện chạy qua. Kim bị hút lệch rồi đứng yên tại đó. Dòng điện qua ống dây là dòng điện gì?\nA. Dòng điện một chiều\nB. Dòng điện xoay chiều\nC. Không có dòng điện\nD. Dòng điện có cường độ bằng 0\n\nBài giải:\nKim bị lệch nên có lực từ tác dụng, tức có dòng điện chạy qua ống dây.\nKim đứng yên một chỗ chứng tỏ lực từ không đổi chiều, nên dòng điện có chiều không đổi, là dòng một chiều.\nChọn A.\n\n##VD\nHai ống dây X, Y đặt cạnh hai kim nam châm riêng biệt. Kim gần X dao động liên tục; kim gần Y lệch rồi đứng yên. Dòng điện qua hai ống dây là gì?\nA. Cả hai ống đều có dòng điện xoay chiều\nB. Ống X có dòng xoay chiều, ống Y có dòng một chiều\nC. Ống X có dòng một chiều, ống Y có dòng xoay chiều\nD. Cả hai ống đều không có dòng điện chạy qua\n\nBài giải:\nKim gần X dao động liên tục nên lực từ đổi chiều liên tục, ống X có dòng xoay chiều.\nKim gần Y lệch rồi đứng yên nên lực từ không đổi chiều, ống Y có dòng một chiều.\nChọn B.",
+     "nguon_vi_du": "K09040102025, K09040102031",
+     "cau": [
+      "K09040102025",
+      "K09040102026",
+      "K09040102027",
+      "K09040102028",
+      "K09040102029",
+      "K09040102031"
+     ]
+    }
+   ],
+   "khong_hop": [],
+   "ghi_chu": "Câu 30 (đèn sợi đốt sáng đều dù dòng đổi chiều) chỉ có 1 câu, tạm xếp vào dạng 1 (giải thích đổi chiều). Dạng 2 và 3 đều theo mẫu biến thể \"cùng đề, đổi thứ tự giai đoạn\"."
+  },
+  {
+   "nhom_id": "KNB00487",
+   "ly_thuyet": "##TC 1. Kiến thức cần nhớ\nDòng điện xoay chiều có bốn tác dụng: nhiệt, phát sáng, từ, sinh lí.\nTác dụng nhiệt: bếp điện, ấm đun nước siêu tốc, bàn là. Tác dụng phát sáng: đèn huỳnh quang, đèn LED, bảng hiệu neon. Tác dụng từ: nam châm điện, chuông điện, quạt điện, cần cẩu điện từ. Tác dụng sinh lí: máy kích thích điện, dòng điện gây co giật cơ khi chạm vào dây điện.\nNam châm điện dùng dòng xoay chiều vẫn hút được vật bằng sắt khi còn dòng điện; việc đổi chiều của dòng không làm vật bị nhả ra.\n\n##PP 2. Các bước làm bài\nXác định thiết bị trong đề hoạt động dựa vào dấu hiệu gì (nóng lên, sáng, hút sắt, quay, kích thích cơ)\nGắn dấu hiệu đó với một trong bốn tác dụng\nVới câu tìm mô tả SAI, kiểm tra từng phương án và chọn phương án nói sai bản chất tác dụng\n\n##CY 3. Lưu ý\nĐộng cơ điện, nam châm điện (quạt, chuông, cần cẩu) dùng tác dụng từ, không phải tác dụng nhiệt.\nPhát biểu \"nam châm điện dùng dòng xoay chiều nhả vật sắt mỗi khi dòng đổi chiều\" là sai.",
+   "dang_bai": [
+    {
+     "ten": "Xác định tác dụng chính của dòng điện xoay chiều trong một thiết bị",
+     "mo_ta": "Đề nêu một thiết bị trong đời sống dùng dòng điện xoay chiều (bếp điện, đèn huỳnh quang, cần cẩu, máy kích thích điện, quạt điện…) và công dụng của nó; hỏi thiết bị ứng dụng chủ yếu tác dụng nào.\nChọn một trong bốn tác dụng: nhiệt, phát sáng, từ, sinh lí.\nLưu ý: đề đưa bốn mô tả và hỏi mô tả SAI ⇒ thuộc dạng \"Tìm phát biểu sai về ứng dụng của dòng điện xoay chiều\".",
+     "ly_thuyet": "##TC Tác dụng theo thiết bị\nDây đốt nóng (bếp điện, ấm siêu tốc, bàn là): tác dụng nhiệt.\nĐèn huỳnh quang, đèn LED, bảng hiệu: tác dụng phát sáng.\nNam châm điện, động cơ quạt, chuông điện, cần cẩu điện từ: tác dụng từ.\nMáy kích thích điện trị liệu: tác dụng sinh lí.\n\n##PP Cách làm\nTìm bộ phận chính tạo ra công dụng của thiết bị (dây đốt nóng, bóng đèn, nam châm điện, điện cực)\nGắn bộ phận đó với tác dụng tương ứng\nChọn phương án trùng khớp\n\n##CY Chú ý\nQuạt điện và cần cẩu dùng nam châm điện hoặc động cơ nên là tác dụng từ, dù ta thấy cánh quạt quay hoặc vật sắt bị nhấc lên.",
+     "vi_du": "##VD\nĐèn huỳnh quang mắc vào điện lưới xoay chiều để chiếu sáng phòng học. Đèn huỳnh quang ứng dụng chủ yếu tác dụng gì của dòng điện xoay chiều?\nA. Tác dụng nhiệt\nB. Tác dụng từ\nC. Tác dụng phát sáng\nD. Tác dụng sinh lí\n\nBài giải:\nĐèn huỳnh quang phát ra ánh sáng để chiếu sáng khi có dòng điện xoay chiều chạy qua.\nĐó là ứng dụng chủ yếu của tác dụng phát sáng. Chọn C.\n\n##VD\nCần cẩu ở bãi phế liệu dùng nam châm điện chạy bằng dòng điện xoay chiều để hút, nhả các vật bằng sắt. Cần cẩu ứng dụng chủ yếu tác dụng gì?\nA. Tác dụng nhiệt\nB. Tác dụng phát sáng\nC. Tác dụng sinh lí\nD. Tác dụng từ\n\nBài giải:\nCần cẩu dùng nam châm điện để hút và nhả vật bằng sắt.\nHút vật bằng sắt là dấu hiệu của tác dụng từ. Chọn D.",
+     "nguon_vi_du": "K09040103002, K09040103003",
+     "cau": [
+      "K09040103001",
+      "K09040103002",
+      "K09040103003",
+      "K09040103004",
+      "K09040103005",
+      "K09040103006",
+      "K09040103007"
+     ]
+    },
+    {
+     "ten": "Tìm phát biểu sai về ứng dụng của dòng điện xoay chiều",
+     "mo_ta": "Đề đưa bốn mô tả về tác dụng của dòng điện xoay chiều (bếp điện, đèn, nam châm điện, cần cẩu, chuông, rơ-le, khoá cửa điện từ…) và hỏi mô tả nào SAI.\nPhương án sai thường là: nam châm điện, cần cẩu, chuông, rơ-le, khoá điện từ dùng dòng xoay chiều bị nhả vật mỗi khi dòng đổi chiều.\nLưu ý: đề chỉ nêu một thiết bị và hỏi tác dụng ⇒ thuộc dạng \"Xác định tác dụng chính của dòng điện xoay chiều trong một thiết bị\".",
+     "ly_thuyet": "##TC Hoạt động của nam châm điện xoay chiều\nNam châm điện dùng dòng xoay chiều vẫn hút được vật bằng sắt liên tục khi còn dòng điện; sắt bị hút về cả hai cực nên đổi chiều dòng không làm vật bị nhả ra.\nChuông điện, cần cẩu điện từ, rơ-le, khoá cửa điện từ chạy bằng nam châm điện đều dùng tác dụng từ.\nBếp điện, ấm siêu tốc dùng tác dụng nhiệt; đèn huỳnh quang, đèn LED dùng tác dụng phát sáng; máy kích thích điện dùng tác dụng sinh lí.\n\n##PP Cách làm\nĐọc từng phương án và xác định thiết bị dùng tác dụng nào\nKiểm tra phương án đó có khớp với bốn tác dụng không\nChọn phương án nói thiết bị nhả vật hoặc mất tác dụng mỗi khi dòng đổi chiều\n\n##CY Chú ý\nChữ \"SAI\" trong đề nghĩa là chọn phát biểu không đúng, đừng chọn phát biểu đúng.",
+     "vi_du": "##VD\nBốn mô tả về tác dụng của dòng điện xoay chiều (xem các phương án). Mô tả nào SAI?\nA. Bếp điện dùng tác dụng nhiệt của dòng xoay chiều\nB. Nam châm điện AC vẫn hút được vật bằng sắt\nC. Đèn huỳnh quang dùng tác dụng phát sáng\nD. Cần cẩu AC nhả vật sắt mỗi khi dòng đổi chiều\n\nBài giải:\nBếp điện dùng tác dụng nhiệt, đèn huỳnh quang dùng tác dụng phát sáng nên A, C đúng.\nNam châm điện dùng dòng xoay chiều vẫn hút vật bằng sắt khi còn dòng điện nên B đúng.\nCần cẩu dùng nam châm điện, sắt bị hút về cả hai cực nên dòng đổi chiều không làm vật bị nhả ra, D sai.\nChọn D.\n\n##VD\nBốn mô tả về tác dụng của dòng điện xoay chiều (xem các phương án). Mô tả nào SAI?\nA. Chuông điện AC dùng nam châm điện hút thanh sắt để gõ chuông\nB. Ấm siêu tốc AC dùng tác dụng nhiệt để đun sôi nước\nC. Cần cẩu điện từ AC bỏ rơi vật sắt mỗi lần dòng điện đổi chiều\nD. Quạt điện AC dùng tác dụng từ để quay cánh quạt\n\nBài giải:\nChuông điện dùng nam châm điện hút thanh sắt (A đúng); ấm siêu tốc dùng tác dụng nhiệt (B đúng); quạt điện dùng tác dụng từ để quay (D đúng).\nNam châm điện dùng dòng xoay chiều vẫn hút vật bằng sắt khi còn dòng điện, nên cần cẩu không bỏ rơi vật khi dòng đổi chiều, C sai.\nChọn C.",
+     "nguon_vi_du": "K09040103008, K09040103014",
+     "cau": [
+      "K09040103008",
+      "K09040103009",
+      "K09040103010",
+      "K09040103011",
+      "K09040103012",
+      "K09040103013",
+      "K09040103014",
+      "K09040103015"
+     ]
+    }
+   ],
+   "khong_hop": [],
+   "ghi_chu": "Dạng 1 gần trùng kiểu bài với dạng 6 của KNB00485 (nhận biết tác dụng); chỉ khác là ở đây đề nêu thiết bị đời sống. Câu K09040103001 có chữ \"dây mayso\" (lỗi chính tả trong đề, có thể là \"dây maiso\")."
+  }
+ ]
+}

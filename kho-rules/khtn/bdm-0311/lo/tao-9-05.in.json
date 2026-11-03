@@ -1,0 +1,484 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00488",
+   "khoi": "9",
+   "chu_de": "Năng lượng với cuộc sống",
+   "chuyen_de": "Năng lượng với cuộc sống",
+   "nhom": "Các dạng bài tập cơ bản của năng lượng với cuộc sống",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K09050101001",
+     "loai": "trac_nghiem",
+     "de": "Năng lượng của nước chảy trong thuỷ điện có nguồn gốc từ đâu?",
+     "lua_chon": [
+      "Nhiệt trong lòng Trái Đất",
+      "Lực hấp dẫn của Mặt Trời và Mặt Trăng",
+      "Nhiệt Mặt Trời làm bốc hơi nước, tạo mưa trên núi cao",
+      "Phản ứng hạt nhân trong lõi Trái Đất"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Mặt Trời làm nước bốc hơi, ngưng tụ thành mưa rơi trên núi cao rồi chảy xuống, tạo ra thế năng cho thuỷ điện.\n\nVì sao các phương án khác sai:\n- A: Nhiệt lòng đất là nguồn của địa nhiệt, không tạo ra vòng tuần hoàn nước.\n- B: Lực hấp dẫn Mặt Trời và Mặt Trăng gây ra thuỷ triều, không phải dòng nước sông suối.\n- D: Phản ứng hạt nhân trong lõi Trái Đất là nguồn của địa nhiệt, không liên quan dòng nước."
+    },
+    {
+     "ma_cau": "K09050101002",
+     "loai": "trac_nghiem",
+     "de": "Năng lượng hoá học tích trữ trong than đá có nguồn gốc ban đầu từ đâu?",
+     "lua_chon": [
+      "Năng lượng Mặt Trời qua quang hợp xưa",
+      "Nhiệt trong lòng Trái Đất",
+      "Lực hấp dẫn của Mặt Trăng",
+      "Năng lượng gió cổ đại"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Than đá hình thành từ xác thực vật cổ đại; cây đã hấp thụ năng lượng Mặt Trời qua quang hợp rồi tích trữ dưới dạng hoá năng.\n\nVì sao các phương án khác sai:\n- B: Nhiệt lòng đất chỉ giúp nén chặt xác thực vật, không phải nguồn năng lượng tích trong than.\n- C: Lực hấp dẫn Mặt Trăng không liên quan đến quá trình quang hợp tạo than.\n- D: Gió không tích trữ được thành hoá năng trong xác thực vật."
+    },
+    {
+     "ma_cau": "K09050101003",
+     "loai": "trac_nghiem",
+     "de": "Năng lượng trong sinh khối (gỗ, rơm rạ) có nguồn gốc từ đâu?",
+     "lua_chon": [
+      "Nhiệt trong lòng Trái Đất",
+      "Lực hấp dẫn của Mặt Trăng",
+      "Năng lượng từ các nhà máy điện",
+      "Năng lượng Mặt Trời qua quang hợp cây xanh"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cây xanh hấp thụ năng lượng ánh sáng Mặt Trời qua quang hợp và tích trữ dưới dạng hoá năng trong thân, cành, rơm rạ.\n\nVì sao các phương án khác sai:\n- A: Nhiệt lòng đất là nguồn gốc của năng lượng địa nhiệt, không phải sinh khối.\n- B: Lực hấp dẫn Mặt Trăng không liên quan đến quang hợp của cây xanh.\n- C: Nhà máy điện tiêu thụ năng lượng chứ không phải nguồn gốc ban đầu của sinh khối."
+    },
+    {
+     "ma_cau": "K09050101004",
+     "loai": "trac_nghiem",
+     "de": "Năng lượng địa nhiệt (suối nước nóng, núi lửa) có nguồn gốc chủ yếu từ đâu?",
+     "lua_chon": [
+      "Năng lượng Mặt Trời",
+      "Quang hợp của cây xanh",
+      "Lực hấp dẫn của Mặt Trăng",
+      "Nhiệt trong lòng Trái Đất"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Địa nhiệt bắt nguồn từ nhiệt sinh ra trong lòng Trái Đất do phân rã phóng xạ và nhiệt còn sót từ khi hình thành Trái Đất, không phải từ Mặt Trời.\n\nVì sao các phương án khác sai:\n- A: Đa số dạng năng lượng khác bắt nguồn từ Mặt Trời nhưng địa nhiệt là ngoại lệ.\n- B: Quang hợp tạo ra sinh khối, không liên quan đến nhiệt trong lòng đất.\n- C: Lực hấp dẫn Mặt Trăng gây ra thuỷ triều, không liên quan đến nhiệt lòng đất."
+    },
+    {
+     "ma_cau": "K09050101005",
+     "loai": "trac_nghiem",
+     "de": "Năng lượng địa nhiệt bắt nguồn từ đâu?",
+     "lua_chon": [
+      "Nhiệt sinh ra từ bên trong lòng Trái Đất",
+      "Bức xạ nhiệt trực tiếp từ Mặt Trời",
+      "Lực hấp dẫn giữa Trái Đất và Mặt Trăng",
+      "Gió thổi trên bề mặt Trái Đất"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Năng lượng địa nhiệt bắt nguồn từ nhiệt trong lòng Trái Đất, khác với hầu hết các dạng năng lượng khác vốn bắt nguồn từ Mặt Trời.\n\nVì sao các phương án khác sai:\n- B: Sai: năng lượng địa nhiệt sinh ra từ trong lòng Trái Đất, không phải từ Mặt Trời.\n- C: Sai: đó là nguồn gốc của năng lượng thuỷ triều, không phải năng lượng địa nhiệt.\n- D: Sai: gió là nguồn gốc của năng lượng gió, không liên quan năng lượng địa nhiệt."
+    },
+    {
+     "ma_cau": "K09050101006",
+     "loai": "trac_nghiem",
+     "de": "Năng lượng thuỷ triều (nước biển lên xuống) có nguồn gốc chủ yếu từ đâu?",
+     "lua_chon": [
+      "Lực hấp dẫn của Mặt Trăng, Mặt Trời",
+      "Năng lượng Mặt Trời",
+      "Nhiệt trong lòng Trái Đất",
+      "Quang hợp của sinh vật biển"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thuỷ triều sinh ra chủ yếu do lực hấp dẫn của Mặt Trăng (và một phần của Mặt Trời) tác dụng lên nước biển, khác với hầu hết dạng năng lượng khác vốn bắt nguồn từ Mặt Trời.\n\nVì sao các phương án khác sai:\n- B: Đa số dạng năng lượng khác bắt nguồn từ Mặt Trời nhưng thuỷ triều là một ngoại lệ.\n- C: Nhiệt trong lòng Trái Đất là nguồn gốc của năng lượng địa nhiệt, không phải thuỷ triều.\n- D: Quang hợp tạo ra sinh khối, không liên quan đến hiện tượng thuỷ triều."
+    },
+    {
+     "ma_cau": "K09050101007",
+     "loai": "trac_nghiem",
+     "de": "Theo sơ đồ Nước bốc hơi → Mưa → Nước trên hồ cao → Qua tua bin thuỷ điện, khi đang ở hồ cao, nước mang dạng năng lượng nào? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L050101-02-002-de.png)",
+     "lua_chon": [
+      "Thế năng (do ở vị trí cao)",
+      "Hoá năng dự trữ trong nước",
+      "Quang năng từ ánh sáng",
+      "Điện năng đã được tạo ra"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nước ở hồ chứa trên cao có thế năng lớn; khi chảy qua tua bin, thế năng chuyển thành động năng rồi thành điện năng.\n\nVì sao các phương án khác sai:\n- B: Nước không dự trữ năng lượng dưới dạng hoá năng.\n- C: Quang năng chỉ tồn tại khi có ánh sáng chiếu trực tiếp, không phải dạng năng lượng của nước trên cao.\n- D: Điện năng chỉ xuất hiện sau khi nước đã qua tua bin và máy phát điện."
+    },
+    {
+     "ma_cau": "K09050101008",
+     "loai": "trac_nghiem",
+     "de": "Theo sơ đồ Gió thổi → Quay cánh quạt tua bin gió → Máy phát điện → Điện năng, bước nào chuyển động năng của gió thành điện năng? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L050101-02-003-de.png)",
+     "lua_chon": [
+      "Cánh quạt tua bin gió quay",
+      "Máy phát điện của tua bin gió",
+      "Gió thổi ban đầu",
+      "Đường dây tải điện"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Máy phát điện gắn với trục tua bin gió là bộ phận chuyển hoá trực tiếp cơ năng (động năng quay) thành điện năng.\n\nVì sao các phương án khác sai:\n- A: Cánh quạt quay chỉ chuyển động năng gió thành cơ năng quay trục, chưa thành điện năng.\n- C: Gió thổi là nguồn động năng ban đầu, chưa phải bước chuyển hoá thành điện.\n- D: Đường dây tải điện chỉ truyền điện năng đã có, không tạo ra điện năng."
+    },
+    {
+     "ma_cau": "K09050101009",
+     "loai": "trac_nghiem",
+     "de": "Theo sơ đồ Than đá → Đốt cháy trong nhà máy nhiệt điện → Hơi nước quay tua bin → Điện năng, đốt cháy than đá chuyển hoá năng lượng thành dạng nào trước tiên? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L050101-02-004-de.png)",
+     "lua_chon": [
+      "Điện năng",
+      "Cơ năng quay tua bin",
+      "Nhiệt năng",
+      "Hoá năng dự trữ thêm"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khi than đá cháy, hoá năng dự trữ trong than chuyển thành nhiệt năng làm nóng nước; hơi nước sinh ra mới làm quay tua bin.\n\nVì sao các phương án khác sai:\n- A: Điện năng chỉ xuất hiện sau khi tua bin quay máy phát điện, không phải ngay khi đốt than.\n- B: Cơ năng quay tua bin xuất hiện sau khi có hơi nước, chưa phải ngay khi đốt cháy.\n- D: Đốt cháy giải phóng năng lượng đã dự trữ, không làm tăng thêm hoá năng."
+    },
+    {
+     "ma_cau": "K09050101010",
+     "loai": "trac_nghiem",
+     "de": "Pin quang điện (pin mặt trời) chuyển hoá quang năng thành điện năng theo cách nào? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L050101-02-005-de.png)",
+     "lua_chon": [
+      "Phải qua bước trung gian là nhiệt năng",
+      "Chuyển hoá trực tiếp, không qua bước trung gian",
+      "Phải qua bước trung gian là hoá năng",
+      "Phải qua bước trung gian là cơ năng"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Pin quang điện (pin mặt trời) chuyển hoá trực tiếp quang năng thành điện năng, không qua bước trung gian nào.\n\nVì sao các phương án khác sai:\n- A: Sai: pin quang điện chuyển hoá trực tiếp quang năng thành điện năng, không qua nhiệt năng.\n- C: Sai: không có bước hoá năng trung gian trong pin quang điện.\n- D: Sai: không có bộ phận chuyển động cơ học trung gian trong pin quang điện."
+    },
+    {
+     "ma_cau": "K09050101011",
+     "loai": "trac_nghiem",
+     "de": "Quang năng được chuyển hoá thành dạng năng lượng nào ở bước cuối? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L050101-02-006-de.png)",
+     "lua_chon": [
+      "Nhiệt năng",
+      "Hoá năng",
+      "Cơ năng",
+      "Điện năng"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Qua quang hợp, cây xanh chuyển hoá quang năng của ánh sáng Mặt Trời thành hoá năng, dự trữ trong tinh bột và các hợp chất hữu cơ khác.\n\nVì sao các phương án khác sai:\n- A: Quang hợp không chủ yếu tạo ra nhiệt năng, mà dự trữ năng lượng dưới dạng hoá năng.\n- C: Quang hợp là quá trình hoá học trong tế bào, không tạo ra cơ năng.\n- D: Cây xanh không tự tạo ra điện năng qua quá trình quang hợp."
+    },
+    {
+     "ma_cau": "K09050101012",
+     "loai": "trac_nghiem",
+     "de": "Cách nào tạo ra điện mà bớt được bước đốt cháy nhiên liệu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L050101-02-007-de.png)",
+     "lua_chon": [
+      "Đốt nhiều nhiên liệu hơn để bù hao phí",
+      "Dùng thêm một lò đốt thứ hai",
+      "Dùng pin quang điện chuyển quang năng trực tiếp thành điện năng",
+      "Tăng số lượng tua bin trong nhà máy"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Pin quang điện chuyển hoá trực tiếp quang năng của ánh sáng Mặt Trời thành điện năng, không cần qua các bước đốt cháy, sinh nhiệt và quay tua bin trung gian.\n\nVì sao các phương án khác sai:\n- A: Đốt nhiều nhiên liệu hơn không giảm bớt bước trung gian, mà cần thêm hoá thạch, gây thêm ô nhiễm.\n- B: Thêm lò đốt vẫn giữ nguyên các bước trung gian đốt cháy, không giảm bớt.\n- D: Tăng số tua bin không thay đổi được các bước chuyển hoá trung gian đã có."
+    },
+    {
+     "ma_cau": "K09050101013",
+     "loai": "trac_nghiem",
+     "de": "Dầu mỏ khai thác lên được chưng cất để tạo ra những sản phẩm nào sau đây?",
+     "lua_chon": [
+      "Than đá và khí tự nhiên",
+      "Xăng, dầu diesel và nhựa đường",
+      "Gỗ và than củi",
+      "Khí biogas và phân bón"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Dầu mỏ thô được chưng cất phân đoạn để tạo ra xăng, dầu diesel, nhựa đường và nhiều sản phẩm khác.\n\nVì sao các phương án khác sai:\n- A: Than đá và khí tự nhiên là các nhiên liệu hoá thạch khác, không phải sản phẩm chưng cất từ dầu mỏ.\n- C: Gỗ và than củi là nhiên liệu từ sinh khối, không liên quan đến dầu mỏ.\n- D: Khí biogas và phân bón là sản phẩm từ chất thải hữu cơ, không phải từ dầu mỏ."
+    },
+    {
+     "ma_cau": "K09050101014",
+     "loai": "trac_nghiem",
+     "de": "Vì sao than đá, dầu mỏ, khí tự nhiên được gọi là nhiên liệu không tái tạo?",
+     "lua_chon": [
+      "Vì mất hàng triệu năm mới hình thành lại",
+      "Vì giá thành khai thác rất đắt",
+      "Vì chúng gây ô nhiễm môi trường",
+      "Vì chúng khó vận chuyển đi xa"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nhiên liệu hoá thạch cần hàng triệu năm để hình thành trong khi con người khai thác và sử dụng nhanh hơn rất nhiều, nên gọi là không tái tạo.\n\nVì sao các phương án khác sai:\n- B: Giá thành khai thác không phải lí do để gọi là \"không tái tạo\".\n- C: Gây ô nhiễm là một tác động khác, không liên quan đến khả năng tái tạo.\n- D: Khả năng vận chuyển không liên quan đến tốc độ hình thành của nhiên liệu."
+    },
+    {
+     "ma_cau": "K09050101015",
+     "loai": "trac_nghiem",
+     "de": "Khí thải nào sinh ra khi đốt nhiên liệu hoá thạch là nguyên nhân chính gây hiệu ứng nhà kính tăng cường?",
+     "lua_chon": [
+      "Khí oxygen (O₂)",
+      "Khí nitrogen (N₂)",
+      "Khí carbon dioxide (CO₂)",
+      "Hơi nước tinh khiết"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khí carbon dioxide (CO₂) sinh ra khi đốt nhiên liệu hoá thạch tích tụ trong khí quyển, giữ nhiệt và làm tăng cường hiệu ứng nhà kính.\n\nVì sao các phương án khác sai:\n- A: Khí oxygen cần cho sự cháy, không phải khí gây hiệu ứng nhà kính chính.\n- B: Khí nitrogen là khí trơ, không gây hiệu ứng nhà kính.\n- D: Hơi nước tinh khiết không phải là sản phẩm đốt cháy nhiên liệu hoá thạch gây hiệu ứng nhà kính chính."
+    },
+    {
+     "ma_cau": "K09050101016",
+     "loai": "trac_nghiem",
+     "de": "Khí sulfur dioxide (SO₂) thải ra khi đốt than có tác động môi trường nào?",
+     "lua_chon": [
+      "Là nguyên nhân chính gây hiệu ứng nhà kính",
+      "Gây ra mưa acid",
+      "Làm thủng tầng ozone",
+      "Không gây tác hại nào"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khí SO₂ kết hợp với hơi nước trong khí quyển tạo thành acid, rơi xuống gây ra mưa acid.\n\nVì sao các phương án khác sai:\n- A: CO₂ mới là khí chính gây hiệu ứng nhà kính, không phải SO₂.\n- C: Tầng ozone bị ảnh hưởng bởi các khí khác (như CFC), không phải SO₂.\n- D: SO₂ gây hại rõ rệt qua hiện tượng mưa acid, không phải vô hại."
+    },
+    {
+     "ma_cau": "K09050101017",
+     "loai": "trac_nghiem",
+     "de": "Pin quang điện (pin mặt trời) lắp trên mái nhà chuyển hoá trực tiếp dạng năng lượng nào thành điện năng?",
+     "lua_chon": [
+      "Nhiệt năng của không khí",
+      "Quang năng của tia sáng",
+      "Cơ năng của gió",
+      "Hoá năng dự trữ trong pin"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Pin quang điện chuyển hoá trực tiếp quang năng (năng lượng ánh sáng) thành điện năng nhờ hiệu ứng quang điện, không qua bước nhiệt.\n\nVì sao các phương án khác sai:\n- A: Pin quang điện hoạt động dựa trên ánh sáng, không phải nhiệt độ không khí.\n- C: Gió không tác động lên pin quang điện; đó là cơ chế của tua bin gió.\n- D: Pin quang điện không có sẵn hoá năng dự trữ để chuyển hoá."
+    },
+    {
+     "ma_cau": "K09050101018",
+     "loai": "trac_nghiem",
+     "de": "Trong nhà máy thuỷ điện, nước từ hồ chứa trên cao chảy xuống làm quay tua bin. Dạng năng lượng nào của nước được chuyển hoá thành điện năng?",
+     "lua_chon": [
+      "Hoá năng",
+      "Quang năng",
+      "Cơ năng",
+      "Nhiệt năng"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nước ở trên cao có thế năng; khi chảy xuống, thế năng chuyển thành động năng làm quay tua bin, tức cơ năng của nước được chuyển hoá thành điện năng.\n\nVì sao các phương án khác sai:\n- A: Nước không dự trữ năng lượng dưới dạng hoá năng để phát điện.\n- B: Quang năng chỉ xuất hiện khi có ánh sáng chiếu tới, không liên quan đến dòng nước chảy.\n- D: Nhiệt năng không phải là dạng năng lượng chính của nước chảy trong thuỷ điện."
+    },
+    {
+     "ma_cau": "K09050101019",
+     "loai": "trac_nghiem",
+     "de": "Tua bin điện gió hoạt động dựa trên nguyên tắc chuyển hoá năng lượng nào?",
+     "lua_chon": [
+      "Nhiệt năng của gió chuyển thành điện năng",
+      "Hoá năng dự trữ trong không khí chuyển thành điện năng",
+      "Quang năng của bầu trời chuyển thành điện năng",
+      "Cơ năng của gió chuyển thành điện năng"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Gió có động năng làm quay cánh quạt tua bin (cơ năng), trục quay nối với máy phát điện chuyển cơ năng thành điện năng.\n\nVì sao các phương án khác sai:\n- A: Gió không truyền nhiệt năng đáng kể để làm quay tua bin; đó là động năng (cơ năng) của luồng khí chuyển động.\n- B: Không khí không dự trữ hoá năng để chuyển hoá thành điện trong tua bin gió.\n- C: Tua bin gió không hoạt động dựa trên ánh sáng, đó là cơ chế của pin quang điện."
+    },
+    {
+     "ma_cau": "K09050101020",
+     "loai": "trac_nghiem",
+     "de": "Đập thuỷ điện tích trữ nước ở hồ chứa trên cao nhằm mục đích chính nào liên quan đến việc phát điện?",
+     "lua_chon": [
+      "Tạo thế năng lớn cho nước để phát điện",
+      "Giữ nước sạch để cấp cho sinh hoạt",
+      "Làm nước bốc hơi nhanh hơn",
+      "Giữ nước ở nhiệt độ thấp hơn"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nước ở độ cao lớn có thế năng lớn; khi cho chảy xuống qua tua bin, thế năng chuyển thành động năng rồi thành điện năng.\n\nVì sao các phương án khác sai:\n- B: Mục đích chính của hồ chứa trong thuỷ điện là tạo thế năng để phát điện, không phải cấp nước sinh hoạt.\n- C: Tốc độ bốc hơi không phải mục đích của việc xây hồ chứa để phát điện.\n- D: Nhiệt độ nước không phải yếu tố quyết định trong việc phát điện bằng thuỷ năng."
+    },
+    {
+     "ma_cau": "K09050101021",
+     "loai": "trac_nghiem",
+     "de": "Năng lượng sinh khối (biomass) như rơm rạ, trấu, chất thải chăn nuôi được khai thác chủ yếu bằng cách nào?",
+     "lua_chon": [
+      "Đốt cháy hoặc lên men để lấy nhiệt, khí đốt",
+      "Đặt tấm pin quang điện lên trên",
+      "Dẫn vào tua bin gió",
+      "Khoan sâu xuống lòng đất để lấy nhiệt"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Năng lượng sinh khối được khai thác bằng cách đốt cháy trực tiếp hoặc ủ lên men (tạo khí biogas) để lấy nhiệt hoặc khí đốt.\n\nVì sao các phương án khác sai:\n- B: Pin quang điện dùng để khai thác năng lượng Mặt Trời, không phải sinh khối.\n- C: Tua bin gió dùng để khai thác năng lượng gió, không liên quan đến chất hữu cơ.\n- D: Khoan sâu lấy nhiệt là cách khai thác năng lượng địa nhiệt, không phải sinh khối."
+    },
+    {
+     "ma_cau": "K09050101022",
+     "loai": "trac_nghiem",
+     "de": "Năng lượng địa nhiệt được khai thác thuận lợi nhất ở những vùng có điều kiện tự nhiên nào?",
+     "lua_chon": [
+      "Vùng có gió mạnh quanh năm",
+      "Vùng có nhiều nắng, ít mưa",
+      "Vùng có sóng biển lớn",
+      "Vùng có núi lửa, suối nước nóng"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Vùng có hoạt động núi lửa hoặc suối nước nóng có nhiệt độ lòng đất rất cao, thuận lợi để khai thác năng lượng địa nhiệt.\n\nVì sao các phương án khác sai:\n- A: Gió mạnh là điều kiện thuận lợi để khai thác năng lượng gió, không phải địa nhiệt.\n- B: Nhiều nắng, ít mưa là điều kiện thuận lợi cho điện Mặt Trời, không phải địa nhiệt.\n- C: Sóng biển lớn là điều kiện thuận lợi cho năng lượng sóng biển, không phải địa nhiệt."
+    },
+    {
+     "ma_cau": "K09050101023",
+     "loai": "trac_nghiem",
+     "de": "Nhà máy điện sóng biển chuyển hoá năng lượng nào của sóng thành điện năng?",
+     "lua_chon": [
+      "Nhiệt năng của nước biển",
+      "Cơ năng (dao động lên xuống) của sóng",
+      "Hoá năng dự trữ trong nước biển",
+      "Quang năng phản chiếu trên mặt biển"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Sóng biển có cơ năng do dao động lên xuống của mặt nước; các thiết bị chuyển đổi năng lượng sóng biến cơ năng này thành điện năng.\n\nVì sao các phương án khác sai:\n- A: Sóng biển không truyền nhiệt năng đáng kể để phát điện.\n- C: Nước biển không dự trữ hoá năng để chuyển hoá thành điện từ sóng.\n- D: Ánh sáng phản chiếu trên biển không liên quan tới cơ chế phát điện từ sóng."
+    },
+    {
+     "ma_cau": "K09050101024",
+     "loai": "trac_nghiem",
+     "de": "Nhà máy điện địa nhiệt sử dụng hơi nước nóng từ lòng đất để làm quay tua bin. Nguồn nhiệt này có đặc điểm gì so với nhiệt đốt nhiên liệu hoá thạch?",
+     "lua_chon": [
+      "Vẫn cần đốt than để tạo ra nhiệt như nhà máy nhiệt điện",
+      "Chỉ hoạt động được vào ban ngày khi có nắng",
+      "Là nguồn nhiệt có sẵn tự nhiên trong lòng đất, không cần đốt nhiên liệu",
+      "Cần đốt khí tự nhiên để bổ sung nhiệt liên tục"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nhiệt trong lòng đất là nguồn có sẵn tự nhiên (không cần đốt nhiên liệu), khai thác qua giếng khoan để lấy hơi nước nóng làm quay tua bin phát điện.\n\nVì sao các phương án khác sai:\n- A: Đặc điểm nổi bật của địa nhiệt là KHÔNG cần đốt nhiên liệu như nhiệt điện, khác với nhà máy nhiệt điện thông thường.\n- B: Địa nhiệt không phụ thuộc ánh nắng Mặt Trời, có thể khai thác cả ngày lẫn đêm.\n- D: Địa nhiệt không cần đốt thêm nhiên liệu để duy trì nguồn nhiệt, đó là ưu điểm chính của nó."
+    },
+    {
+     "ma_cau": "K09050101025",
+     "loai": "trac_nghiem",
+     "de": "So với năng lượng hoá thạch, năng lượng Mặt Trời và năng lượng gió có ưu điểm nổi bật nào?",
+     "lua_chon": [
+      "Cho công suất phát điện ổn định quanh năm",
+      "Không phát thải khí gây hiệu ứng nhà kính khi vận hành",
+      "Chi phí xây dựng ban đầu luôn thấp hơn",
+      "Không phụ thuộc vào điều kiện thời tiết"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khi vận hành, điện Mặt Trời và điện gió không đốt nhiên liệu nên không phát thải khí CO₂, SO₂ như nhà máy nhiệt điện dùng nhiên liệu hoá thạch.\n\nVì sao các phương án khác sai:\n- A: Công suất điện Mặt Trời và điện gió phụ thuộc thời tiết (nắng, gió), không ổn định quanh năm như nhiệt điện.\n- C: Chi phí xây dựng ban đầu của điện Mặt Trời, điện gió hiện vẫn thường cao hơn nhà máy nhiệt điện.\n- D: Ngược lại, điện Mặt Trời và điện gió phụ thuộc rất nhiều vào thời tiết, ánh nắng và tốc độ gió."
+    },
+    {
+     "ma_cau": "K09050101026",
+     "loai": "trac_nghiem",
+     "de": "Vì sao năng lượng tái tạo (Mặt Trời, gió, nước) được coi là bền vững hơn năng lượng hoá thạch về lâu dài?",
+     "lua_chon": [
+      "Vì luôn tạo ra công suất điện lớn hơn hẳn nhiệt điện",
+      "Vì chi phí xây dựng ban đầu luôn rẻ hơn",
+      "Vì hoạt động không phụ thuộc bất kỳ điều kiện thời tiết nào",
+      "Vì các nguồn này liên tục được bổ sung từ tự nhiên, không lo cạn kiệt"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Năng lượng Mặt Trời, gió, nước liên tục được thiên nhiên bổ sung, khác với nhiên liệu hoá thạch có trữ lượng hữu hạn, khai thác dần sẽ cạn kiệt.\n\nVì sao các phương án khác sai:\n- A: Công suất phát điện phụ thuộc quy mô nhà máy, không phải lí do năng lượng tái tạo bền vững hơn.\n- B: Chi phí xây dựng ban đầu của nhiều công trình năng lượng tái tạo hiện vẫn còn cao, không phải luôn rẻ hơn.\n- C: Ngược lại, năng lượng Mặt Trời và gió phụ thuộc khá nhiều vào điều kiện thời tiết."
+    },
+    {
+     "ma_cau": "K09050101027",
+     "loai": "trac_nghiem",
+     "de": "Nhược điểm chung của điện Mặt Trời và điện gió so với nhiệt điện truyền thống là gì?",
+     "lua_chon": [
+      "Công suất phát điện không ổn định, phụ thuộc thời tiết",
+      "Phát thải nhiều khí CO₂ hơn khi vận hành",
+      "Chỉ hoạt động được ở vùng núi cao",
+      "Không thể chuyển hoá thành điện năng"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Điện Mặt Trời phụ thuộc số giờ nắng, điện gió phụ thuộc tốc độ gió; cả hai đều không ổn định như nhiệt điện có thể chủ động đốt nhiên liệu để duy trì công suất.\n\nVì sao các phương án khác sai:\n- B: Ngược lại, điện Mặt Trời và điện gió phát thải rất ít hoặc không phát thải CO₂ khi vận hành, ít hơn nhiệt điện.\n- C: Điện Mặt Trời và điện gió có thể lắp đặt ở nhiều địa hình khác nhau, không chỉ vùng núi cao.\n- D: Cả hai đều chuyển hoá thành công thành điện năng, chỉ là công suất không ổn định."
+    },
+    {
+     "ma_cau": "K09050101028",
+     "loai": "trac_nghiem",
+     "de": "Vì sao nên ưu tiên đi cầu thang bộ thay vì thang máy cho quãng đường ngắn (1-2 tầng) trong toà nhà?",
+     "lua_chon": [
+      "Vì thang máy chỉ dùng được vào buổi sáng",
+      "Vì giúp tiết kiệm điện chạy thang máy",
+      "Vì thang máy không an toàn để sử dụng",
+      "Vì cầu thang bộ luôn nhanh hơn thang máy"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Thang máy tiêu thụ điện năng cho mỗi lượt vận hành; với quãng đường ngắn, đi cầu thang bộ giúp giảm số lượt sử dụng thang máy, tiết kiệm điện năng.\n\nVì sao các phương án khác sai:\n- A: Thang máy hoạt động cả ngày, không chỉ vào buổi sáng.\n- C: Thang máy vẫn an toàn khi sử dụng đúng cách; đây không phải lí do chính để đi cầu thang bộ.\n- D: Với quãng đường dài nhiều tầng, thang máy thường nhanh hơn cầu thang bộ."
+    },
+    {
+     "ma_cau": "K09050101029",
+     "loai": "trac_nghiem",
+     "de": "Việc lắp đặt đồng hồ đo điện riêng cho từng khu vực trong một xưởng sản xuất giúp ích gì cho việc tiết kiệm năng lượng?",
+     "lua_chon": [
+      "Làm giảm trực tiếp công suất tiêu thụ của máy móc",
+      "Tự động tắt hết điện toàn xưởng vào ban đêm",
+      "Giúp phát hiện khu vực tiêu thụ điện bất thường để kịp thời điều chỉnh",
+      "Làm tăng công suất của từng máy"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đo điện riêng từng khu vực giúp quản lí biết chính xác nơi nào tiêu thụ điện nhiều hoặc bất thường, từ đó có biện pháp điều chỉnh, sửa chữa kịp thời để tiết kiệm năng lượng.\n\nVì sao các phương án khác sai:\n- A: Đồng hồ đo điện chỉ ghi nhận mức tiêu thụ, không tự làm giảm công suất máy móc.\n- B: Đồng hồ đo điện không có chức năng tự động tắt điện, cần có hệ thống điều khiển riêng.\n- D: Việc theo dõi sát mức tiêu thụ chính là bước quan trọng để phát hiện và giảm lãng phí điện năng."
+    },
+    {
+     "ma_cau": "K09050101030",
+     "loai": "trac_nghiem",
+     "de": "Bốn phát biểu về nguồn gốc năng lượng (xem các phương án). Phát biểu nào SAI?",
+     "lua_chon": [
+      "Năng lượng gió có nguồn gốc từ năng lượng Mặt Trời",
+      "Năng lượng thuỷ điện có nguồn gốc từ năng lượng Mặt Trời",
+      "Năng lượng địa nhiệt có nguồn gốc từ năng lượng Mặt Trời",
+      "Năng lượng sinh khối có nguồn gốc từ năng lượng Mặt Trời"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Năng lượng địa nhiệt có nguồn gốc từ nhiệt bên trong lòng Trái Đất (do các nguyên tố phóng xạ phân rã và nhiệt còn sót lại từ khi Trái Đất hình thành), KHÔNG phải từ năng lượng Mặt Trời như gió, thuỷ điện hay sinh khối.\n\nVì sao các phương án khác sai:\n- A: Đây là phát biểu đúng, không phải câu sai.\n- B: Đây là phát biểu đúng, không phải câu sai.\n- D: Đây là phát biểu đúng, không phải câu sai."
+    },
+    {
+     "ma_cau": "K09050101031",
+     "loai": "trac_nghiem",
+     "de": "Bốn phát biểu về nguồn gốc năng lượng (xem các phương án). Phát biểu nào SAI?",
+     "lua_chon": [
+      "Năng lượng thuỷ triều có nguồn gốc chủ yếu từ năng lượng Mặt Trời",
+      "Năng lượng sóng biển có nguồn gốc từ gió, mà gió có nguồn gốc từ Mặt Trời",
+      "Năng lượng hoá thạch có nguồn gốc từ Mặt Trời qua quang hợp thời cổ đại",
+      "Pin quang điện chuyển hoá trực tiếp năng lượng Mặt Trời thành điện năng"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Năng lượng thuỷ triều có nguồn gốc chủ yếu từ lực hấp dẫn giữa Mặt Trăng, Mặt Trời và Trái Đất làm nước biển dâng hạ, KHÔNG có nguồn gốc từ năng lượng Mặt Trời như gió, sóng biển hay hoá thạch.\n\nVì sao các phương án khác sai:\n- B: Đây là phát biểu đúng, không phải câu sai.\n- C: Đây là phát biểu đúng, không phải câu sai.\n- D: Đây là phát biểu đúng, không phải câu sai."
+    },
+    {
+     "ma_cau": "K09050101032",
+     "loai": "trac_nghiem",
+     "de": "Bốn phát biểu về nguồn gốc năng lượng (xem các phương án). Phát biểu nào SAI?",
+     "lua_chon": [
+      "Năng lượng gió, nước, sinh khối, hoá thạch đều có nguồn gốc từ Mặt Trời",
+      "Mọi dạng năng lượng trên Trái Đất, kể cả địa nhiệt, đều bắt nguồn từ Mặt Trời",
+      "Năng lượng địa nhiệt và thuỷ triều KHÔNG có nguồn gốc từ Mặt Trời",
+      "Thuỷ điện có nguồn gốc từ Mặt Trời qua vòng tuần hoàn nước"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Địa nhiệt (từ nhiệt trong lòng Trái Đất) và thuỷ triều (từ lực hấp dẫn Mặt Trăng) là hai ngoại lệ KHÔNG bắt nguồn từ năng lượng Mặt Trời, khác với gió, nước, sinh khối, hoá thạch.\n\nVì sao các phương án khác sai:\n- A: Đây là phát biểu đúng, không phải câu sai.\n- C: Đây là phát biểu đúng, không phải câu sai.\n- D: Đây là phát biểu đúng, không phải câu sai."
+    },
+    {
+     "ma_cau": "K09050101033",
+     "loai": "trac_nghiem",
+     "de": "Bốn phát biểu về nguồn gốc năng lượng (xem các phương án). Phát biểu nào SAI?",
+     "lua_chon": [
+      "Năng lượng địa nhiệt bắt nguồn từ nhiệt trong lòng Trái Đất",
+      "Năng lượng gió bắt nguồn từ năng lượng Mặt Trời",
+      "Năng lượng sinh khối bắt nguồn từ Mặt Trời qua quang hợp",
+      "Năng lượng thuỷ triều bắt nguồn từ Mặt Trời giống như gió và thuỷ điện"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Năng lượng thuỷ triều bắt nguồn chủ yếu từ lực hấp dẫn giữa Mặt Trăng, Mặt Trời và Trái Đất, khác cơ chế với gió và thuỷ điện (vốn bắt nguồn từ nhiệt và ánh sáng Mặt Trời).\n\nVì sao các phương án khác sai:\n- A: Đây là phát biểu đúng, không phải câu sai.\n- B: Đây là phát biểu đúng, không phải câu sai.\n- C: Đây là phát biểu đúng, không phải câu sai."
+    },
+    {
+     "ma_cau": "K09050101034",
+     "loai": "trac_nghiem",
+     "de": "Bốn phát biểu về nguồn gốc năng lượng (xem các phương án). Phát biểu nào SAI?",
+     "lua_chon": [
+      "Than đá, dầu mỏ có nguồn gốc từ Mặt Trời qua quang hợp cổ đại",
+      "Sóng biển có nguồn gốc từ gió, gió có nguồn gốc từ Mặt Trời",
+      "Tất cả năng lượng tái tạo đều có chung nguồn gốc là Mặt Trời",
+      "Địa nhiệt có nguồn gốc từ nhiệt trong lòng Trái Đất"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Không phải TẤT CẢ năng lượng tái tạo đều bắt nguồn từ Mặt Trời: địa nhiệt (từ nhiệt trong lòng Trái Đất) và thuỷ triều (từ lực hấp dẫn Mặt Trăng) là hai ngoại lệ.\n\nVì sao các phương án khác sai:\n- A: Đây là phát biểu đúng, không phải câu sai.\n- B: Đây là phát biểu đúng, không phải câu sai.\n- D: Đây là phát biểu đúng, không phải câu sai."
+    },
+    {
+     "ma_cau": "K09050101035",
+     "loai": "trac_nghiem",
+     "de": "Bốn phát biểu về nguồn gốc năng lượng (xem các phương án). Phát biểu nào SAI?",
+     "lua_chon": [
+      "Năng lượng gió, sinh khối và thuỷ điện đều có chung nguồn gốc là năng lượng Mặt Trời",
+      "Năng lượng địa nhiệt bắt nguồn từ năng lượng Mặt Trời giống như năng lượng gió",
+      "Than đá, dầu mỏ, khí tự nhiên đều có nguồn gốc từ Mặt Trời qua quang hợp cổ đại",
+      "Năng lượng thuỷ triều bắt nguồn từ lực hấp dẫn của Mặt Trăng và Mặt Trời, không phải từ nhiệt Mặt Trời chiếu sáng"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Năng lượng địa nhiệt bắt nguồn từ nhiệt trong lòng Trái Đất, KHÔNG bắt nguồn từ năng lượng Mặt Trời như năng lượng gió.\n\nVì sao các phương án khác sai:\n- A: Đây là phát biểu đúng, không phải câu sai.\n- C: Đây là phát biểu đúng, không phải câu sai.\n- D: Đây là phát biểu đúng, không phải câu sai."
+    },
+    {
+     "ma_cau": "K09050101036",
+     "loai": "trac_nghiem",
+     "de": "Bốn phát biểu về nguồn gốc năng lượng (xem các phương án). Phát biểu nào SAI?",
+     "lua_chon": [
+      "Pin quang điện chuyển hoá trực tiếp năng lượng Mặt Trời thành điện năng, không qua bước nhiệt trung gian",
+      "Sóng biển có nguồn gốc năng lượng từ gió, mà gió lại có nguồn gốc từ Mặt Trời",
+      "Cả năng lượng địa nhiệt và năng lượng thuỷ triều đều có nguồn gốc từ năng lượng Mặt Trời",
+      "Năng lượng nước chảy trong thuỷ điện có nguồn gốc từ Mặt Trời qua vòng tuần hoàn nước"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Địa nhiệt bắt nguồn từ nhiệt trong lòng Trái Đất, còn thuỷ triều bắt nguồn từ lực hấp dẫn của Mặt Trăng và Mặt Trời; cả hai đều KHÔNG bắt nguồn từ năng lượng Mặt Trời như các dạng năng lượng tái tạo khác.\n\nVì sao các phương án khác sai:\n- A: Đây là phát biểu đúng, không phải câu sai.\n- B: Đây là phát biểu đúng, không phải câu sai.\n- D: Đây là phát biểu đúng, không phải câu sai."
+    }
+   ]
+  }
+ ]
+}

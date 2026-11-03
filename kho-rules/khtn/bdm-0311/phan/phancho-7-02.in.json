@@ -1,0 +1,276 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00318",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Hóa trị và công thức Hóa học",
+   "nhom": "TÍNH PHẦN TRĂM KHỐI LƯỢNG NGUYÊN TỐ TRONG HỢP CHẤT",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nPhần trăm khối lượng của một nguyên tố trong hợp chất cho biết nguyên tố đó chiếm bao nhiêu phần trăm khối lượng phân tử.\nTổng phần trăm khối lượng các nguyên tố trong hợp chất bằng $100\\%$.\n\n##TC 2. Công thức\nPhần trăm khối lượng của nguyên tố X trong hợp chất:\n$$\\%\\mathrm{X} = \\dfrac{\\mathrm{a} \\times \\mathrm{KLNT}}{\\mathrm{KLPT}} \\times 100\\%$$\nTrong đó a là số nguyên tử X trong một phân tử, KLNT là khối lượng nguyên tử của X, KLPT là khối lượng phân tử của hợp chất (đều tính theo amu).\n\n##PP 3. Các bước làm bài\nBước 1. Tính khối lượng phân tử của hợp chất.\nBước 2. Tính tổng khối lượng các nguyên tử của nguyên tố cần tìm trong một phân tử (nhân với chỉ số).\nBước 3. Áp dụng công thức, làm tròn theo yêu cầu.\nBước 4. Khi so sánh hai chất: tính phần trăm của nguyên tố trong từng chất rồi so sánh.\n\n##CY 4. Lưu ý\nVới nhóm nguyên tử trong ngoặc, nhân chỉ số trong ngoặc với chỉ số ngoài ngoặc để được số nguyên tử.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB00716",
+     "thu_tu": 1,
+     "ten": "TÍNH PHẦN TRĂM KHỐI LƯỢNG MỘT NGUYÊN TỐ",
+     "mo_ta": "Đề cho một hợp chất (công thức hoặc khối lượng phân tử và khối lượng nguyên tố), yêu cầu tính phần trăm khối lượng của một nguyên tố trong hợp chất, làm tròn theo yêu cầu.\nLàm bằng cách tính khối lượng phân tử rồi áp dụng $\\%\\mathrm{X} = \\dfrac{a \\times \\mathrm{KLNT}}{\\mathrm{KLPT}} \\times 100\\%$.\nLưu ý: đề so sánh phần trăm nguyên tố giữa hai hợp chất hoặc tính hiệu ⇒ thuộc dạng \"SO SÁNH HÀM LƯỢNG NGUYÊN TỐ GIỮA CÁC HỢP CHẤT\".",
+     "ly_thuyet": "##TC Phần trăm khối lượng nguyên tố\n$\\%\\mathrm{X} = \\dfrac{a \\times \\mathrm{KLNT}}{\\mathrm{KLPT}} \\times 100\\%$ (a là số nguyên tử X trong một phân tử; khối lượng tính theo amu).\nKhối lượng phân tử là tổng khối lượng các nguyên tử trong phân tử; với nhóm trong ngoặc, nhân chỉ số ngoài ngoặc cho từng nguyên tử trong nhóm.\nTổng phần trăm khối lượng các nguyên tố trong hợp chất bằng $100\\%$.\n\n##PP Các bước làm bài\nTính khối lượng phân tử của hợp chất.\nTìm số nguyên tử của nguyên tố cần tìm trong một phân tử, tính tổng khối lượng của chúng.\nThay vào công thức, nhân $100\\%$ và làm tròn theo yêu cầu đề.\n\n##CY Chú ý\nQuên nhân chỉ số: $\\mathrm{Ca_3(PO_4)_2}$ có 2 nguyên tử $\\mathrm{P}$ và 8 nguyên tử $\\mathrm{O}$, không phải 1 và 4.\nLàm tròn chỉ ở bước cuối cùng.",
+     "vi_du": "##VD\nSulfuric acid có công thức $\\mathrm{H_2SO_4}$. Cho khối lượng nguyên tử: $\\mathrm{H} = 1$ amu, $\\mathrm{S} = 32$ amu, $\\mathrm{O} = 16$ amu. Tính phần trăm khối lượng của nguyên tố $\\mathrm{S}$ trong hợp chất (làm tròn kết quả đến hàng phần mười).\n\nBài giải:\nKhối lượng phân tử của hợp chất: $2 \\times 1 + 32 + 4 \\times 16 = 98\\ (\\mathrm{amu})$.\nTrong một phân tử $\\mathrm{H_2SO_4}$ có $1$ nguyên tử $\\mathrm{S}$.\nPhần trăm khối lượng của $\\mathrm{S}$: $\\%\\mathrm{S} = \\dfrac{32}{98} \\times 100\\% \\approx 32,7\\%$.\nĐáp án: $32,7\\%$.\n\n##VD\nQuặng phosphorite có thành phần chính là calcium phosphate, công thức $\\mathrm{Ca_3(PO_4)_2}$. Cho khối lượng nguyên tử: $\\mathrm{Ca} = 40$ amu, $\\mathrm{P} = 31$ amu, $\\mathrm{O} = 16$ amu. Tính phần trăm khối lượng của nguyên tố $\\mathrm{P}$ trong hợp chất (làm tròn kết quả đến hàng phần mười).\n\nBài giải:\nKhối lượng phân tử của hợp chất: $3 \\times 40 + 2 \\times 31 + 8 \\times 16 = 310\\ (\\mathrm{amu})$.\nTrong một phân tử $\\mathrm{Ca_3(PO_4)_2}$ có $2$ nguyên tử $\\mathrm{P}$.\nPhần trăm khối lượng của $\\mathrm{P}$: $\\%\\mathrm{P} = \\dfrac{2 \\times 31}{310} \\times 100\\% = 20,0\\%$.\nĐáp án: $20,0\\%$."
+    },
+    {
+     "dang_id": "KDB00717",
+     "thu_tu": 2,
+     "ten": "SO SÁNH HÀM LƯỢNG NGUYÊN TỐ GIỮA CÁC HỢP CHẤT",
+     "mo_ta": "Đề cho hai hợp chất cùng chứa một nguyên tố, yêu cầu so sánh phần trăm khối lượng của nguyên tố đó hoặc tính hiệu hai phần trăm.\nLàm bằng cách tính phần trăm của nguyên tố trong từng chất rồi so sánh (hoặc trừ), hoặc lập luận theo khối lượng phân tử khi số nguyên tử như nhau.\nLưu ý: đề chỉ tính phần trăm trong một hợp chất ⇒ thuộc dạng \"TÍNH PHẦN TRĂM KHỐI LƯỢNG MỘT NGUYÊN TỐ\".",
+     "ly_thuyet": "##TC So sánh hàm lượng nguyên tố\nPhần trăm khối lượng nguyên tố X trong hợp chất: $\\%\\mathrm{X} = \\dfrac{a \\times \\mathrm{KLNT}}{\\mathrm{KLPT}} \\times 100\\%$.\nHai hợp chất có cùng số nguyên tử X trong một phân tử thì hợp chất có khối lượng phân tử nhỏ hơn có phần trăm X lớn hơn.\nHiệu hai phần trăm lấy giá trị lớn trừ giá trị nhỏ.\n\n##PP Các bước làm bài\nTính khối lượng phân tử của từng hợp chất.\nTính phần trăm khối lượng nguyên tố cần so sánh trong từng hợp chất, giữ nhiều chữ số thập phân ở bước trung gian.\nSo sánh hoặc lấy hiệu hai phần trăm rồi làm tròn kết quả cuối cùng theo yêu cầu.\n\n##CY Chú ý\nKhông làm tròn kết quả trung gian: lấy hai số đã làm tròn rồi trừ có thể lệch hàng phần mười.\nKết quả có thể rất nhỏ (như $0,2\\%$); phương án nhiễu thường là chính phần trăm của một chất hoặc tổng hai phần trăm.",
+     "vi_du": "##VD\nCho khối lượng nguyên tử: $\\mathrm{C} = 12$ amu, $\\mathrm{H} = 1$ amu. Phần trăm khối lượng của $\\mathrm{C}$ trong $\\mathrm{C_2H_6}$ lớn hơn trong $\\mathrm{CH_4}$ bao nhiêu (tính theo đơn vị %, làm tròn kết quả cuối cùng đến hàng phần mười)?\nA. $4,0\\%$\nB. $5,0\\%$\nC. $75,0\\%$\nD. $80,0\\%$\n\nBài giải:\nKhối lượng phân tử $\\mathrm{C_2H_6}$ là $2 \\times 12 + 6 \\times 1 = 30$ amu; khối lượng phân tử $\\mathrm{CH_4}$ là $12 + 4 \\times 1 = 16$ amu.\nPhần trăm khối lượng $\\mathrm{C}$ trong $\\mathrm{C_2H_6}$: $\\%\\mathrm{C} = \\dfrac{2 \\times 12}{30} \\times 100\\% = 80\\%$.\nPhần trăm khối lượng $\\mathrm{C}$ trong $\\mathrm{CH_4}$: $\\%\\mathrm{C} = \\dfrac{12}{16} \\times 100\\% = 75\\%$.\nHiệu hai phần trăm: $80 - 75 = 5,0\\ (\\%)$.\nChọn B.\n\n##VD\nCho khối lượng nguyên tử: $\\mathrm{N} = 14$ amu, $\\mathrm{H} = 1$ amu, $\\mathrm{O} = 16$ amu. Phần trăm khối lượng của $\\mathrm{H}$ trong $\\mathrm{NH_3}$ lớn hơn trong $\\mathrm{H_2O}$ bao nhiêu (tính theo đơn vị %, làm tròn kết quả cuối cùng đến hàng phần mười, không làm tròn các kết quả trung gian)?\nA. $0,3\\%$\nB. $5,9\\%$\nC. $6,5\\%$\nD. $12,1\\%$\n\nBài giải:\nPhần trăm khối lượng $\\mathrm{H}$ trong $\\mathrm{NH_3}$: $\\%\\mathrm{H} = \\dfrac{3 \\times 1}{17} \\times 100\\% \\approx 17,647\\%$.\nPhần trăm khối lượng $\\mathrm{H}$ trong $\\mathrm{H_2O}$: $\\%\\mathrm{H} = \\dfrac{2 \\times 1}{18} \\times 100\\% \\approx 11,111\\%$.\nHiệu hai phần trăm: $17,647 - 11,111 \\approx 6,5\\ (\\%)$.\nChọn C."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00310",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Phân tử - Đơn chất & Hợp chất",
+   "nhom": "So sánh và sắp xếp khối lượng phân tử của nhiều chất",
+   "nhom_ly_thuyet": "Không so sánh dựa vào số nguyên tử hoặc nhìn công thức dài - ngắn. Phải tính khối lượng phân tử của từng chất theo cùng một đơn vị rồi mới so sánh.\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/54b4fd09-8e4b-47dd-8309-40ac6bfcd454.png)\nCÁC BƯỚC GIẢI / 3 bước\nBƯỚC 1: Xác định công thức và khối lượng nguyên tử cần dùng.\nBƯỚC 2: Tính riêng khối lượng phân tử của từng chất.\nBƯỚC 3: So sánh các giá trị và sắp xếp theo yêu cầu tăng dần hoặc giảm dần.\nVÍ DỤ MINH HỌA\nĐề bài | So sánh khối lượng phân tử của $O_2$ và $N_2$, biết O = 16 amu, N = 14 amu.\nLời giải | Khối lượng phân tử $O_2 = 2 \\times 16 = 32$ amu; khối lượng phân tử $N_2 = 2 \\times 14 = 28$ amu.\nVì $32 > 28$ nên $O_2$ có khối lượng phân tử lớn hơn $N_2$.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01394",
+     "thu_tu": 1,
+     "ten": "So sánh, sắp xếp khối lượng phân tử khi đã biết giá trị từng chất",
+     "mo_ta": "Đề cho khối lượng phân tử (hoặc công thức kèm khối lượng nguyên tử) của nhiều chất, hỏi chất nào lớn nhất/nhỏ nhất hoặc yêu cầu sắp xếp tăng dần/giảm dần.\nBiến thể: sắp xếp cả dãy; chọn chất lớn nhất; chọn chất có khối lượng phân tử nằm trong một khoảng cho trước.\nLưu ý: chỉ cần so sánh các giá trị khối lượng phân tử, không so sánh theo số nguyên tử hay độ dài công thức.",
+     "ly_thuyet": "##TC Khối lượng phân tử\nKhối lượng phân tử của một chất là tổng khối lượng của các nguyên tử trong một phân tử chất đó, tính bằng amu.\nVí dụ cách tính: phân tử gồm các nguyên tử thì cộng khối lượng nguyên tử của từng nguyên tử có mặt.\nMuốn so sánh các chất phải dùng cùng một đơn vị (amu).\n\n##PP Cách làm bài\nXác định công thức và khối lượng nguyên tử cần dùng (nếu đề chưa cho sẵn khối lượng phân tử)\nTính riêng khối lượng phân tử của từng chất\nSo sánh các giá trị rồi sắp xếp theo yêu cầu tăng dần hoặc giảm dần\nVới câu hỏi \"nằm trong khoảng\", loại các chất có giá trị nhỏ hơn cận dưới hoặc lớn hơn cận trên\n\n##CY Lưu ý\nKhông kết luận theo số nguyên tử trong phân tử hay độ dài công thức; chất có ít nguyên tử vẫn có thể nặng hơn.\nĐọc kĩ yêu cầu tăng dần hay giảm dần.",
+     "vi_du": "##VD\nTrong các chất $O_2$, $O_3$, $CO_2$ ($O = 16$, $C = 12$), chất nào có khối lượng phân tử lớn nhất?\nA. $O_2$ (32 amu)\nB. $O_3$ (48 amu)\nC. $CO_2$ (44 amu)\nD. Cả ba bằng nhau\n\nBài giải:\nKhối lượng phân tử $O_2 = 2 \\times 16 = 32$ (amu).\nKhối lượng phân tử $O_3 = 3 \\times 16 = 48$ (amu).\nKhối lượng phân tử $CO_2 = 12 + 2 \\times 16 = 44$ (amu).\nSo sánh: $48 > 44 > 32$ nên $O_3$ có khối lượng phân tử lớn nhất.\nChọn B.\n\n##VD\nHợp chất X có khối lượng phân tử lớn hơn khối lượng phân tử của khí oxygen ($O_2 = 32$ amu) nhưng nhỏ hơn khối lượng phân tử của khí ozone ($O_3 = 48$ amu). X có thể là chất nào sau đây?\nA. $CH_4$ (16 amu)\nB. $CO_2$ (44 amu)\nC. $NH_3$ (17 amu)\nD. $N_2$ (28 amu)\n\nBài giải:\nX phải có khối lượng phân tử thoả mãn $32 < M_X < 48$ (amu).\n$CH_4$: 16 amu, nhỏ hơn 32 nên loại.\n$NH_3$: 17 amu, nhỏ hơn 32 nên loại.\n$N_2$: 28 amu, nhỏ hơn 32 nên loại.\n$CO_2$: 44 amu, thoả mãn $32 < 44 < 48$.\nChọn B."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00321",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Hóa trị và công thức Hóa học",
+   "nhom": "TÌM NGUYÊN TỐ, CÔNG THỨC TỪ DỮ KIỆN GIÁN TIẾP",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nLập công thức từ tỉ lệ khối lượng\nTỉ lệ số nguyên tử các nguyên tố bằng tỉ lệ giữa khối lượng mỗi nguyên tố và khối lượng nguyên tử của nó.\nTìm nguyên tố R\nĐặt khối lượng nguyên tử của R là $\\mathrm{M_R}$, lập phương trình theo phần trăm khối lượng hoặc khối lượng phân tử, giải ra $\\mathrm{M_R}$ rồi đối chiếu bằng khối lượng nguyên tử.\n\n##TC2. Công thức\n$$x:y = \\dfrac{m_A}{M_A} : \\dfrac{m_B}{M_B}$$\nVới hợp chất $\\mathrm{R_x B_y}$ có khối lượng phân tử $\\mathrm{M}$, phần trăm khối lượng của $\\mathrm{R}$ là $ \\%\\mathrm{R} = \\dfrac{x \\times \\mathrm{M_R}}{M} \\times 100 \\%$.\nKhi biết $\\mathrm{M}$:\n$$\\mathrm{M_R} = \\dfrac{M - y \\times M_B}{x}$$\n\n##PP 3. Các bước làm bài\nBước 1. Xác định dữ kiện: tỉ lệ khối lượng, phần trăm hoặc khối lượng phân tử.\nBước 2. Lập tỉ lệ hoặc phương trình với ẩn cần tìm.\nBước 3. Giải, đưa về tỉ lệ số nguyên tối giản hoặc tìm $\\mathrm{M_R}$.\nBước 4. Kết luận công thức hoặc tên nguyên tố.\n\n##CY 4. Lưu ý\nKhi dữ kiện là khối lượng các nguyên tố trong một mẫu chất, tỉ lệ khối lượng không phụ thuộc vào khối lượng mẫu.\nKiểm tra lại kết quả bằng cách tính ngược phần trăm hoặc khối lượng phân tử.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB00722",
+     "thu_tu": 1,
+     "ten": "LẬP CÔNG THỨC HOÁ HỌC TỪ TỈ LỆ KHỐI LƯỢNG CÁC NGUYÊN TỐ",
+     "mo_ta": "Đề cho khối lượng các nguyên tố trong một mẫu chất (hoặc tỉ lệ khối lượng các nguyên tố), yêu cầu xác định công thức hoá học của hợp chất.\nLàm bằng cách tính tỉ lệ số nguyên tử $x : y = \\dfrac{m_A}{M_A} : \\dfrac{m_B}{M_B}$ rồi rút gọn về số nguyên tối giản.\nLưu ý: đề cho phần trăm khối lượng và khối lượng phân tử ⇒ thuộc dạng \"HỢP CHẤT HAI NGUYÊN TỐ\" hoặc \"HỢP CHẤT BA NGUYÊN TỐ\".",
+     "ly_thuyet": "##TC Lập công thức từ tỉ lệ khối lượng\nTỉ lệ số nguyên tử các nguyên tố bằng tỉ lệ giữa khối lượng mỗi nguyên tố và khối lượng nguyên tử của nó: $x : y = \\dfrac{m_A}{M_A} : \\dfrac{m_B}{M_B}$.\nTỉ lệ khối lượng không phụ thuộc vào khối lượng mẫu chất.\n\n##PP Các bước làm bài\nXác định khối lượng mỗi nguyên tố trong mẫu (khối lượng nguyên tố còn lại bằng khối lượng mẫu trừ khối lượng nguyên tố đã biết).\nLập tỉ lệ $x : y = \\dfrac{m_A}{M_A} : \\dfrac{m_B}{M_B}$ và rút gọn về tỉ lệ số nguyên tối giản.\nViết công thức hoá học với x, y vừa tìm.\n\n##CY Chú ý\nChia khối lượng cho khối lượng nguyên tử, không chia ngược.\nKiểm tra lại: tính phần trăm khối lượng từ công thức vừa lập có khớp dữ kiện không.",
+     "vi_du": "##VD\nHợp chất X tạo bởi các nguyên tố nitrogen, oxygen được phân tích thấy: trong $9,2\\ \\mathrm{g}$ chất có $2,8\\ \\mathrm{g}$ nitrogen, còn lại là oxygen. Cho khối lượng nguyên tử: $\\mathrm{N} = 14$ amu, $\\mathrm{O} = 16$ amu. Xác định công thức hoá học của X, biết tỉ lệ số nguyên tử trong phân tử X là tỉ lệ tối giản.\n\nBài giải:\nKhối lượng oxygen trong mẫu: $9,2 - 2,8 = 6,4\\ (\\mathrm{g})$.\nTỉ lệ số nguyên tử bằng tỉ lệ khối lượng chia cho khối lượng nguyên tử:\n$n_\\mathrm{N} : n_\\mathrm{O} = \\dfrac{2,8}{14} : \\dfrac{6,4}{16} = 0,2 : 0,4 = 1 : 2$\nCông thức hoá học của X là $\\mathrm{NO_2}$.\nĐáp án: $\\mathrm{NO_2}$.\n\n##VD\nHợp chất X tạo bởi các nguyên tố aluminium, oxygen được phân tích thấy: trong $10,2\\ \\mathrm{g}$ chất có $5,4\\ \\mathrm{g}$ aluminium, còn lại là oxygen. Cho khối lượng nguyên tử: $\\mathrm{Al} = 27$ amu, $\\mathrm{O} = 16$ amu. Xác định công thức hoá học của X, biết tỉ lệ số nguyên tử trong phân tử X là tỉ lệ tối giản.\n\nBài giải:\nKhối lượng oxygen trong mẫu: $10,2 - 5,4 = 4,8\\ (\\mathrm{g})$.\nTỉ lệ số nguyên tử bằng tỉ lệ khối lượng chia cho khối lượng nguyên tử:\n$n_\\mathrm{Al} : n_\\mathrm{O} = \\dfrac{5,4}{27} : \\dfrac{4,8}{16} = 0,2 : 0,3 = 2 : 3$\nCông thức hoá học của X là $\\mathrm{Al_2O_3}$.\nĐáp án: $\\mathrm{Al_2O_3}$."
+    },
+    {
+     "dang_id": "KDB00723",
+     "thu_tu": 2,
+     "ten": "TÌM NGUYÊN TỐ R KHI BIẾT DẠNG CÔNG THỨC VÀ PHẦN TRĂM",
+     "mo_ta": "Đề cho hợp chất của nguyên tố R có công thức dạng (RO, $\\mathrm{R_2S}$, $\\mathrm{RCl_2}$,...) và phần trăm khối lượng của R hoặc của nguyên tố khác trong hợp chất, yêu cầu xác định nguyên tố R.\nLàm bằng cách lập phương trình theo phần trăm khối lượng, giải ra $M_R$ rồi đối chiếu bảng khối lượng nguyên tử.\nLưu ý: đề cho khối lượng phân tử thay vì phần trăm ⇒ thuộc dạng \"TÌM NGUYÊN TỐ R KHI BIẾT DẠNG CÔNG THỨC VÀ KHỐI LƯỢNG PHÂN TỬ\".",
+     "ly_thuyet": "##TC Tìm nguyên tố R từ phần trăm khối lượng\nVới hợp chất có R, phần còn lại (ngoài R) có tổng khối lượng cố định $m$ amu trong một phân tử; phần trăm của phần còn lại là $\\dfrac{m}{M_R + m} \\times 100\\%$ (hoặc với R: $\\%\\mathrm{R} = \\dfrac{x \\times M_R}{M} \\times 100\\%$).\nPhần trăm của R bằng $100\\%$ trừ phần trăm phần còn lại.\n\n##PP Các bước làm bài\nGọi khối lượng nguyên tử của R là $M_R$, viết khối lượng phân tử theo $M_R$.\nLập phương trình theo phần trăm khối lượng (chuyển về phần không chứa R cho dễ tính).\nGiải ra $M_R$ rồi đối chiếu bảng khối lượng nguyên tử để kết luận nguyên tố R.\n\n##CY Chú ý\nĐề cho phần trăm của R thì lấy $100\\%$ trừ để có phần trăm phần còn lại; đề cho phần trăm của Cl thì dùng luôn.\nPhần trăm trong đề đã làm tròn nên $M_R$ chỉ xấp xỉ; chọn nguyên tố có khối lượng nguyên tử gần nhất.",
+     "vi_du": "##VD\nHợp chất của nguyên tố R có công thức dạng $\\mathrm{RO}$; phần trăm khối lượng của R trong hợp chất là $71,43\\%$. Cho khối lượng nguyên tử: $\\mathrm{Na} = 23$, $\\mathrm{Mg} = 24$, $\\mathrm{Al} = 27$, $\\mathrm{K} = 39$, $\\mathrm{Ca} = 40$, $\\mathrm{Fe} = 56$, $\\mathrm{Cu} = 64$, $\\mathrm{Zn} = 65$, $\\mathrm{O} = 16$ (amu). Xác định nguyên tố R.\n\nBài giải:\nGọi khối lượng nguyên tử của R là $M_R$; khối lượng phân tử của hợp chất là $M_R + 16$.\nPhần trăm khối lượng của phần còn lại (ngoài R): $100\\% - 71,43\\% = 28,57\\%$.\nPhần còn lại có khối lượng $16$ amu nên $\\dfrac{16}{M_R + 16} \\times 100\\% = 28,57\\%$.\n$M_R + 16 = \\dfrac{16 \\times 100}{28,57} \\approx 56$, suy ra $M_R = 56 - 16 = 40$.\nĐối chiếu bảng khối lượng nguyên tử, R là calcium ($\\mathrm{Ca}$).\nĐáp án: $\\mathrm{Ca}$.\n\n##VD\nHợp chất của nguyên tố $\\mathrm{R}$ có công thức dạng $\\mathrm{RCl_2}$; phần trăm khối lượng của $\\mathrm{Cl}$ trong hợp chất là $74,74\\%$. Cho khối lượng nguyên tử: $\\mathrm{Na} = 23$, $\\mathrm{Mg} = 24$, $\\mathrm{Al} = 27$, $\\mathrm{K} = 39$, $\\mathrm{Ca} = 40$, $\\mathrm{Fe} = 56$, $\\mathrm{Cl} = 35,5$ (amu). Xác định nguyên tố $\\mathrm{R}$.\n\nBài giải:\nGọi khối lượng nguyên tử của $\\mathrm{R}$ là $M_R$; khối lượng phân tử của hợp chất là $M_R + 71$.\nTrong một phân tử, tổng khối lượng các nguyên tử $\\mathrm{Cl}$ là $71$ amu nên $\\dfrac{71}{M_R + 71} \\times 100\\% = 74,74\\%$.\n$M_R + 71 = \\dfrac{71 \\times 100}{74,74} \\approx 95$, suy ra $M_R = 95 - 71 = 24$.\nĐối chiếu bảng khối lượng nguyên tử, $\\mathrm{R}$ là magnesium ($\\mathrm{Mg}$).\nĐáp án: $\\mathrm{Mg}$."
+    },
+    {
+     "dang_id": "KDB00724",
+     "thu_tu": 3,
+     "ten": "TÌM NGUYÊN TỐ R KHI BIẾT DẠNG CÔNG THỨC VÀ KHỐI LƯỢNG PHÂN TỬ",
+     "mo_ta": "Đề cho hợp chất của nguyên tố R có công thức dạng (như $\\mathrm{RCl_2}$, $\\mathrm{R(OH)_3}$, $\\mathrm{R_2CO_3}$, $\\mathrm{RH_4}$) và khối lượng phân tử, yêu cầu xác định nguyên tố R (thường trắc nghiệm 4 nguyên tố).\nLàm bằng cách tính tổng khối lượng các nguyên tử khác R rồi $M_R = \\dfrac{M - m_k}{x}$ ($m_k$ là tổng khối lượng các nguyên tử khác R), đối chiếu bảng khối lượng nguyên tử.\nLưu ý: đề cho phần trăm khối lượng thay vì khối lượng phân tử ⇒ thuộc dạng \"TÌM NGUYÊN TỐ R KHI BIẾT DẠNG CÔNG THỨC VÀ PHẦN TRĂM\".",
+     "ly_thuyet": "##TC Tìm nguyên tố R từ khối lượng phân tử\nVới hợp chất $\\mathrm{R_xB_y}$ có khối lượng phân tử $M$: $M_R = \\dfrac{M - y \\times M_B}{x}$.\nVới nhóm nguyên tử, tổng khối lượng phần còn lại tính theo từng nguyên tử trong nhóm nhân chỉ số ngoài ngoặc.\n\n##PP Các bước làm bài\nTính tổng khối lượng các nguyên tử khác R trong một phân tử.\nTính $M_R = \\dfrac{M - m_k}{x}$ (x là số nguyên tử R).\nĐối chiếu bảng khối lượng nguyên tử để kết luận nguyên tố R.\n\n##CY Chú ý\nKhi R có chỉ số 2 (như $\\mathrm{R_2CO_3}$, $\\mathrm{R_2O_3}$) phải chia cho 2 sau khi trừ.\nKiểm tra lại bằng cách cộng khối lượng: tổng $x \\times M_R + m_k$ phải bằng $M$.",
+     "vi_du": "##VD\nHợp chất của nguyên tố R có công thức dạng $\\mathrm{RCl_2}$ và khối lượng phân tử là $127$ amu. Cho khối lượng nguyên tử: $\\mathrm{Ca} = 40$, $\\mathrm{Fe} = 56$, $\\mathrm{Cu} = 64$, $\\mathrm{Zn} = 65$, $\\mathrm{Cl} = 35,5$ (amu). Nguyên tố R là\nA. Calcium\nB. Iron\nC. Copper\nD. Zinc\n\nBài giải:\nTổng khối lượng các nguyên tử khác R trong một phân tử: $2 \\times 35,5 = 71\\ (\\mathrm{amu})$.\nKhối lượng nguyên tử của R: $M_R = 127 - 71 = 56$.\nR là iron ($\\mathrm{Fe}$).\nChọn B.\n\n##VD\nHợp chất của nguyên tố R có công thức dạng $\\mathrm{R_2CO_3}$ và khối lượng phân tử là $138$ amu. Cho khối lượng nguyên tử: $\\mathrm{C} = 12$, $\\mathrm{O} = 16$, $\\mathrm{Na} = 23$, $\\mathrm{K} = 39$, $\\mathrm{Ca} = 40$, $\\mathrm{Cu} = 64$ (amu). Nguyên tố R là\nA. Copper\nB. Potassium\nC. Calcium\nD. Sodium\n\nBài giải:\nTổng khối lượng các nguyên tử khác R trong một phân tử: $12 + 3 \\times 16 = 60\\ (\\mathrm{amu})$.\nCông thức có $2$ nguyên tử R nên $M_R = \\dfrac{138 - 60}{2} = 39$.\nR là potassium ($\\mathrm{K}$).\nChọn B."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K07000000013",
+   "nhom_id": "KNB00318",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Trong phân tử Na₂CO₃ (Na = 23, C = 12, O = 16), tỉ lệ khối lượng giữa sodium và oxygen là bao nhiêu?",
+   "lua_chon": [
+    "23 : 24",
+    "46 : 16",
+    "23 : 16",
+    "2 : 3"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Khối lượng Na = 2 × 23 = 46; khối lượng O = 3 × 16 = 48; tỉ lệ 46 : 48 = 23 : 24.\n\nVì sao các phương án khác sai:\n- B: Quên nhân chỉ số 3 của O; khối lượng O phải là 3 × 16 = 48.\n- C: Quên nhân cả chỉ số 2 của Na và chỉ số 3 của O.\n- D: Đó là tỉ lệ SỐ NGUYÊN TỬ (2 Na : 3 O), không phải tỉ lệ khối lượng."
+  },
+  {
+   "ma_cau": "K07000000014",
+   "nhom_id": "KNB00318",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Trong phân tử CaCO₃ (Ca = 40, C = 12, O = 16), khối lượng oxygen chiếm bao nhiêu phần trăm khối lượng phân tử?",
+   "lua_chon": [
+    "16%",
+    "12%",
+    "40%",
+    "48%"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Khối lượng phân tử CaCO₃ = 100 amu; khối lượng oxygen = 3 × 16 = 48 amu; tỉ lệ = 48/100 = 48%.\n\nVì sao các phương án khác sai:\n- A: 16 chỉ là khối lượng của 1 nguyên tử O; phải nhân 3 rồi mới chia cho khối lượng phân tử.\n- B: 12% là tỉ lệ của carbon, không phải oxygen.\n- C: 40% là tỉ lệ của calcium, không phải oxygen."
+  },
+  {
+   "ma_cau": "K07000000024",
+   "nhom_id": "KNB00318",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Calcium chloride CaCl₂ được dùng làm chất hút ẩm và làm tan băng trên đường. Phần trăm khối lượng của calcium trong CaCl₂ là",
+   "lua_chon": [
+    "53,0%",
+    "64,0%",
+    "36,0%",
+    "33,3%"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Khối lượng phân tử = 40 + 35,5 × 2 = 111 amu; %Ca = 40 × 100 : 111 ≈ 36,0%.\n\nVì sao các phương án khác sai:\n- A: Quên nhân khối lượng Cl với chỉ số 2: 40 : 75,5.\n- B: 64,0% là phần trăm khối lượng của Cl, KHÔNG phải của Ca.\n- D: Tính theo số nguyên tử (1 trên 3), KHÔNG theo khối lượng."
+  },
+  {
+   "ma_cau": "K07000000025",
+   "nhom_id": "KNB00318",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Khí methane CH₄ là thành phần chính của khí biogas. Carbon chiếm bao nhiêu phần trăm khối lượng phân tử methane?",
+   "lua_chon": [
+    "75%",
+    "20%",
+    "25%",
+    "92,3%"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Khối lượng phân tử = 12 + 1 × 4 = 16 amu; %C = 12 × 100 : 16 = 75%.\n\nVì sao các phương án khác sai:\n- B: Tính theo số nguyên tử (1 trên 5 nguyên tử), KHÔNG theo khối lượng.\n- C: 25% là phần trăm khối lượng của H.\n- D: Quên nhân khối lượng H với chỉ số 4: 12 : 13."
+  },
+  {
+   "ma_cau": "K07000000026",
+   "nhom_id": "KNB00318",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Quặng hematite chứa Fe₂O₃, quặng magnetite chứa Fe₃O₄. Phần trăm khối lượng iron trong Fe₂O₃ và trong Fe₃O₄ lần lượt là",
+   "lua_chon": [
+    "35% và 24,1%",
+    "30% và 27,6%",
+    "70% và 77,8%",
+    "70% và 72,4%"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Fe₂O₃: 112 × 100 : 160 = 70%. Fe₃O₄: khối lượng phân tử = 56 × 3 + 16 × 4 = 232 amu, %Fe = 168 × 100 : 232 ≈ 72,4%.\n\nVì sao các phương án khác sai:\n- A: Quên nhân 56 với chỉ số của Fe ở tử số.\n- B: Đây là phần trăm khối lượng của O trong hai chất.\n- C: Tính Fe₃O₄ như FeO (72 amu), bỏ qua các chỉ số."
+  },
+  {
+   "ma_cau": "K07000000027",
+   "nhom_id": "KNB00318",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Đá vôi có thành phần chính là calcium carbonate CaCO₃. Phần trăm khối lượng calcium trong CaCO₃ là",
+   "lua_chon": [
+    "40%",
+    "20%",
+    "58,8%",
+    "48%"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Khối lượng phân tử = 40 + 12 + 16 × 3 = 100 amu; %Ca = 40 × 100 : 100 = 40%.\n\nVì sao các phương án khác sai:\n- B: Tính theo số nguyên tử (1 trên 5), KHÔNG theo khối lượng.\n- C: Quên nhân khối lượng O với chỉ số 3: 40 : 68.\n- D: 48% là phần trăm khối lượng của O."
+  },
+  {
+   "ma_cau": "K07000000028",
+   "nhom_id": "KNB00318",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Sodium hydroxide NaOH (xút) được dùng để sản xuất xà phòng. Trong NaOH, sodium chiếm bao nhiêu phần trăm khối lượng?",
+   "lua_chon": [
+    "33,3%",
+    "40%",
+    "57,5%",
+    "2,5%"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Khối lượng phân tử = 23 + 16 + 1 = 40 amu; %Na = 23 × 100 : 40 = 57,5%.\n\nVì sao các phương án khác sai:\n- A: Tính theo số nguyên tử (1 trên 3), KHÔNG theo khối lượng.\n- B: 40% là phần trăm khối lượng của O.\n- D: 2,5% là phần trăm khối lượng của H."
+  },
+  {
+   "ma_cau": "K07000000010",
+   "nhom_id": "KNB00310",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử đồng (64 amu) nặng gấp bao nhiêu lần nguyên tử oxygen (16 amu)?",
+   "lua_chon": [
+    "4 lần",
+    "0,25 lần",
+    "48 lần",
+    "2 lần"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Lấy 64 : 16 = 4, nên nguyên tử đồng nặng gấp 4 lần nguyên tử oxygen.\n\nVì sao các phương án khác sai:\n- B: Em đã chia ngược; nguyên tử nặng hơn đặt ở trên: 64 : 16.\n- C: 48 là hiệu 64 − 16; so sánh gấp bao nhiêu lần phải dùng phép chia.\n- D: Em đã so với phân tử O₂ (32 amu), không phải nguyên tử O."
+  },
+  {
+   "ma_cau": "K07000000011",
+   "nhom_id": "KNB00310",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử sulfur (32 amu) nặng gấp bao nhiêu lần nguyên tử oxygen (16 amu)?",
+   "lua_chon": [
+    "0,5 lần",
+    "16 lần",
+    "2 lần",
+    "1 lần"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Lấy 32 : 16 = 2, nên nguyên tử sulfur nặng gấp 2 lần nguyên tử oxygen.\n\nVì sao các phương án khác sai:\n- A: Em đã chia ngược; nguyên tử nặng hơn đặt ở trên: 32 : 16.\n- B: 16 là hiệu 32 − 16; so sánh gấp bao nhiêu lần phải dùng phép chia.\n- D: Em đã so với phân tử O₂ (32 amu), không phải nguyên tử O."
+  },
+  {
+   "ma_cau": "K07000000012",
+   "nhom_id": "KNB00310",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử calcium (40 amu) nặng gấp bao nhiêu lần nguyên tử oxygen (16 amu)?",
+   "lua_chon": [
+    "0,4 lần",
+    "24 lần",
+    "2,5 lần",
+    "1,25 lần"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Lấy 40 : 16 = 2,5, nên nguyên tử calcium nặng gấp 2,5 lần nguyên tử oxygen.\n\nVì sao các phương án khác sai:\n- A: Em đã chia ngược; nguyên tử nặng hơn đặt ở trên: 40 : 16.\n- B: 24 là hiệu 40 − 16; so sánh gấp bao nhiêu lần phải dùng phép chia.\n- D: Em đã so với phân tử O₂ (32 amu), không phải nguyên tử O."
+  },
+  {
+   "ma_cau": "K07000000029",
+   "nhom_id": "KNB00321",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Kim loại M có hóa trị II tạo oxide, trong đó M chiếm 77,8% khối lượng. M là",
+   "lua_chon": [
+    "Calcium",
+    "Iron",
+    "Copper",
+    "Zinc"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Oxide hóa trị II có dạng MO. %M = M/(M+16) = 77,8% → M ≈ 56 → iron (FeO).\n\nVì sao các phương án khác sai:\n- A: Oxide của calcium (CaO) có %Ca ≈ 71,4%, không khớp đề.\n- C: Oxide của copper (CuO) có %Cu = 80%, không khớp đề.\n- D: Oxide của zinc (ZnO) có %Zn ≈ 80,2%, không khớp đề."
+  },
+  {
+   "ma_cau": "K07000000030",
+   "nhom_id": "KNB00321",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Kim loại M có hóa trị II tạo oxide, trong đó oxygen chiếm 40% khối lượng. M là",
+   "lua_chon": [
+    "magnesium",
+    "calcium",
+    "copper",
+    "iron"
+   ],
+   "dap_an": "A",
+   "loi_giai": "M hóa trị II nên oxide là MO; 16 amu ứng với 40% nên khối lượng phân tử = 16 × 100 : 40 = 40 amu; M = 40 − 16 = 24, là magnesium.\n\nVì sao các phương án khác sai:\n- B: 40 amu là khối lượng phân tử MO, chưa trừ 16 amu của O.\n- C: CuO có oxygen chiếm 20% khối lượng, KHÔNG phải 40%.\n- D: FeO có oxygen chiếm khoảng 22,2% khối lượng, KHÔNG phải 40%."
+  },
+  {
+   "ma_cau": "K07000000031",
+   "nhom_id": "KNB00321",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tố M có hóa trị II tạo hợp chất với chlorine (hóa trị I), trong đó chlorine chiếm 74,7% khối lượng. M là",
+   "lua_chon": [
+    "carbon",
+    "magnesium",
+    "calcium",
+    "zinc"
+   ],
+   "dap_an": "B",
+   "loi_giai": "M hóa trị II nên công thức MCl₂; 71 amu Cl ứng với 74,7% nên khối lượng phân tử = 71 × 100 : 74,7 ≈ 95 amu; M = 95 − 71 = 24, là magnesium.\n\nVì sao các phương án khác sai:\n- A: Viết nhầm công thức MCl (quên chỉ số 2 của Cl) nên tính ra 12 amu.\n- C: CaCl₂ có chlorine chiếm khoảng 64,0%, KHÔNG phải 74,7%.\n- D: ZnCl₂ có chlorine chiếm khoảng 52,2%, KHÔNG phải 74,7%."
+  }
+ ]
+}

@@ -1,0 +1,80 @@
+[
+ {
+  "ma_cau": "K07000000013",
+  "dang_bai_id": "KDB00716",
+  "chac": "vua",
+  "ly_do": "Tính tỉ lệ khối lượng Na:O trong Na2CO3, không phải phần trăm; gần dạng %khối lượng nhất."
+ },
+ {
+  "ma_cau": "K07000000014",
+  "dang_bai_id": "KDB00716",
+  "chac": "cao",
+  "ly_do": "Tính %khối lượng O trong CaCO3, đúng dạng."
+ },
+ {
+  "ma_cau": "K07000000024",
+  "dang_bai_id": "KDB00716",
+  "chac": "cao",
+  "ly_do": "Tính %khối lượng Ca trong CaCl2."
+ },
+ {
+  "ma_cau": "K07000000025",
+  "dang_bai_id": "KDB00716",
+  "chac": "cao",
+  "ly_do": "Tính %khối lượng C trong CH4."
+ },
+ {
+  "ma_cau": "K07000000026",
+  "dang_bai_id": "KDB00716",
+  "chac": "vua",
+  "ly_do": "Tính %Fe riêng trong hai hợp chất, không so sánh hay lấy hiệu; có thể xét dạng so sánh."
+ },
+ {
+  "ma_cau": "K07000000027",
+  "dang_bai_id": "KDB00716",
+  "chac": "cao",
+  "ly_do": "Tính %khối lượng Ca trong CaCO3."
+ },
+ {
+  "ma_cau": "K07000000028",
+  "dang_bai_id": "KDB00716",
+  "chac": "cao",
+  "ly_do": "Tính %khối lượng Na trong NaOH."
+ },
+ {
+  "ma_cau": "K07000000010",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: so sánh nguyên tử nặng gấp bao nhiêu lần (tỉ số khối lượng); dạng hiện có là xếp thứ tự/chọn lớn nhất."
+ },
+ {
+  "ma_cau": "K07000000011",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: so sánh nguyên tử nặng gấp bao nhiêu lần (tỉ số khối lượng)."
+ },
+ {
+  "ma_cau": "K07000000012",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: so sánh nguyên tử nặng gấp bao nhiêu lần (tỉ số khối lượng)."
+ },
+ {
+  "ma_cau": "K07000000029",
+  "dang_bai_id": "KDB00723",
+  "chac": "cao",
+  "ly_do": "Dạng RO, biết %R, lập phương trình tìm M_R."
+ },
+ {
+  "ma_cau": "K07000000030",
+  "dang_bai_id": "KDB00723",
+  "chac": "cao",
+  "ly_do": "Dạng MO, biết %O (nguyên tố khác R), tìm M_R."
+ },
+ {
+  "ma_cau": "K07000000031",
+  "dang_bai_id": "KDB00723",
+  "chac": "cao",
+  "ly_do": "Dạng MCl2, biết %Cl, tìm M_R."
+ }
+]

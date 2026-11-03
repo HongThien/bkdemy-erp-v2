@@ -1,0 +1,224 @@
+[
+ {
+  "ma_cau": "K09000000081",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "lạc nhóm: tính công suất P=U²/R, thuộc công và công suất điện"
+ },
+ {
+  "ma_cau": "K09000000082",
+  "dang_bai_id": "KDB01443",
+  "chac": "cao",
+  "ly_do": "Chọn trường hợp có dòng cảm ứng: điều kiện biến thiên đường sức từ"
+ },
+ {
+  "ma_cau": "K09000000083",
+  "dang_bai_id": "KDB01443",
+  "chac": "cao",
+  "ly_do": "Hỏi lúc nào có dòng cảm ứng khi nam châm rút rồi dừng"
+ },
+ {
+  "ma_cau": "K09000000084",
+  "dang_bai_id": "KDB01443",
+  "chac": "cao",
+  "ly_do": "Nam châm dừng trong cuộn dây: không còn dòng cảm ứng"
+ },
+ {
+  "ma_cau": "K09000000085",
+  "dang_bai_id": "KDB01443",
+  "chac": "cao",
+  "ly_do": "Nam châm dao động, cuộn dây yên: chuyển động tương đối"
+ },
+ {
+  "ma_cau": "K09000000086",
+  "dang_bai_id": "KDB01443",
+  "chac": "cao",
+  "ly_do": "Ngắt khoá K nam châm điện: đường sức biến thiên nên có dòng cảm ứng"
+ },
+ {
+  "ma_cau": "K09000000087",
+  "dang_bai_id": "KDB01443",
+  "chac": "cao",
+  "ly_do": "Dòng tăng dần có cảm ứng, dòng không đổi thì không"
+ },
+ {
+  "ma_cau": "K09000000088",
+  "dang_bai_id": "KDB01443",
+  "chac": "cao",
+  "ly_do": "Dòng không đổi: đường sức không biến thiên, không có dòng cảm ứng"
+ },
+ {
+  "ma_cau": "K09000000089",
+  "dang_bai_id": "KDB01443",
+  "chac": "cao",
+  "ly_do": "Đèn sáng khi nam châm đang chuyển động, tắt khi dừng"
+ },
+ {
+  "ma_cau": "K09000000090",
+  "dang_bai_id": "KDB01443",
+  "chac": "cao",
+  "ly_do": "Kim lệch chỉ khi rút nam châm, đường sức đang biến thiên"
+ },
+ {
+  "ma_cau": "K09000000091",
+  "dang_bai_id": "KDB01443",
+  "chac": "cao",
+  "ly_do": "Cuộn dây chuyển động trong nam châm yên vẫn có dòng cảm ứng"
+ },
+ {
+  "ma_cau": "K09000000092",
+  "dang_bai_id": "KDB01443",
+  "chac": "cao",
+  "ly_do": "Đèn loé khi đóng và ngắt K: lúc dòng điện biến thiên"
+ },
+ {
+  "ma_cau": "K09000000093",
+  "dang_bai_id": "KDB01443",
+  "chac": "cao",
+  "ly_do": "Nam châm quay: kim lệch khi đường sức biến thiên liên tục"
+ },
+ {
+  "ma_cau": "K09000000094",
+  "dang_bai_id": "KDB01443",
+  "chac": "vua",
+  "ly_do": "Đếm số lần loé sáng; vẫn xét điều kiện biến thiên đường sức từ"
+ },
+ {
+  "ma_cau": "K09000000095",
+  "dang_bai_id": "KDB01443",
+  "chac": "vua",
+  "ly_do": "Số chỉ vôn kế theo thời gian; xét lúc có/không có cảm ứng"
+ },
+ {
+  "ma_cau": "K09000000096",
+  "dang_bai_id": "KDB01443",
+  "chac": "vua",
+  "ly_do": "Nam châm rung nhẹ liên tục: biến thiên đường sức, nhưng hỏi nhấp nháy"
+ },
+ {
+  "ma_cau": "K09000000097",
+  "dang_bai_id": "KDB01443",
+  "chac": "cao",
+  "ly_do": "Nam châm đứng yên trong cuộn dây: không có dòng cảm ứng"
+ },
+ {
+  "ma_cau": "K09000000098",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: an toàn điện, phòng tránh và sơ cứu khi bị điện giật"
+ },
+ {
+  "ma_cau": "K09000000099",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: an toàn điện, phòng tránh và sơ cứu khi bị điện giật"
+ },
+ {
+  "ma_cau": "K09000000100",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: an toàn điện, phòng tránh và sơ cứu khi bị điện giật"
+ },
+ {
+  "ma_cau": "K09000000101",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: an toàn điện, phòng tránh và sơ cứu khi bị điện giật"
+ },
+ {
+  "ma_cau": "K09000000102",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: an toàn điện, phòng tránh và sơ cứu khi bị điện giật"
+ },
+ {
+  "ma_cau": "K09000000103",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: an toàn điện, phòng tránh và sơ cứu khi bị điện giật"
+ },
+ {
+  "ma_cau": "K09000000104",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: an toàn điện, phòng tránh và sơ cứu khi bị điện giật"
+ },
+ {
+  "ma_cau": "K09000000105",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: an toàn điện, phòng tránh và sơ cứu khi bị điện giật"
+ },
+ {
+  "ma_cau": "K09000000106",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: an toàn điện, phòng tránh và sơ cứu khi bị điện giật"
+ },
+ {
+  "ma_cau": "K09000000107",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: an toàn điện, phòng tránh và sơ cứu khi bị điện giật"
+ },
+ {
+  "ma_cau": "K09000000108",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: an toàn điện, phòng tránh và sơ cứu khi bị điện giật"
+ },
+ {
+  "ma_cau": "K09000000109",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: an toàn điện, phòng tránh và sơ cứu khi bị điện giật"
+ },
+ {
+  "ma_cau": "K09000000110",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: an toàn điện, phòng tránh và sơ cứu khi bị điện giật"
+ },
+ {
+  "ma_cau": "K09000000111",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: an toàn điện, phòng tránh và sơ cứu khi bị điện giật"
+ },
+ {
+  "ma_cau": "K09000000112",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: an toàn điện, phòng tránh và sơ cứu khi bị điện giật"
+ },
+ {
+  "ma_cau": "K09000000113",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: an toàn điện, phòng tránh và sơ cứu khi bị điện giật"
+ },
+ {
+  "ma_cau": "K09000000114",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: an toàn điện, phòng tránh và sơ cứu khi bị điện giật"
+ },
+ {
+  "ma_cau": "K09000000115",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: an toàn điện, phòng tránh và sơ cứu khi bị điện giật"
+ },
+ {
+  "ma_cau": "K09000000116",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: an toàn điện, phòng tránh và sơ cứu khi bị điện giật"
+ },
+ {
+  "ma_cau": "K09000000117",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "nhóm thiếu dạng: an toàn điện, phòng tránh và sơ cứu khi bị điện giật"
+ }
+]

@@ -1,0 +1,2544 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00549",
+   "khoi": "9",
+   "chu_de": "Di truyền học",
+   "chuyen_de": "Các quy luật di truyền của Mendel",
+   "nhom": "THUẬT NGỮ VÀ KÍ HIỆU DI TRUYỀN HỌC",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC1. Kiến thức cần nhớ\nTính trạng: đặc điểm về hình thái, cấu tạo, sinh lí của cơ thể. Ví dụ: chiều cao thân, màu hoa, hình dạng hạt.\nCặp tính trạng tương phản: hai trạng thái biểu hiện trái ngược nhau của cùng một tính trạng. Ví dụ: thân cao và thân thấp, hoa tím và hoa trắng.\nNhân tố di truyền: nhân tố quy định tính trạng của cơ thể theo cách gọi của Mendel; ngày nay gọi là gene.\nAllele: các trạng thái khác nhau của cùng một gene. \nVí dụ: allele $\\mathrm{A}$ quy định hoa tím và allele $\\mathrm{a}$ quy định hoa trắng là hai allele của gene quy định màu hoa.\nKiểu gene: tổ hợp các allele của cơ thể. Khi xét một vài tính trạng, kiểu gene chỉ ghi các cặp allele quy định các tính trạng đó. \nVí dụ: $\\mathrm{AA}$, $\\mathrm{Aa}$, $\\mathrm{aa}$, $\\mathrm{AaBb}$.\nKiểu hình: tổ hợp các tính trạng biểu hiện ra bên ngoài của cơ thể. \nVí dụ: hoa tím, hạt xanh, thân thấp.\nDòng thuần (giống thuần chủng): dòng có đặc tính di truyền đồng nhất, thế hệ sau giống thế hệ trước về các tính trạng đang xét.\nTính trạng trội: tính trạng biểu hiện ở $\\mathrm{F_1}$ khi lai hai bố mẹ thuần chủng khác nhau về một cặp tính trạng tương phản. Tính trạng không biểu hiện ở $\\mathrm{F_1}$ là tính trạng lặn. Allele trội viết bằng chữ in hoa, allele lặn viết bằng chữ thường cùng tên.\nĐồng hợp và dị hợp\nCặp allele đồng hợp: hai allele giống nhau ($\\mathrm{AA}$, $\\mathrm{aa}$). \nCặp allele dị hợp: hai allele khác nhau ($\\mathrm{Aa}$). \nCơ thể đồng hợp về tất cả các cặp gene đang xét là cơ thể thuần chủng ($\\mathrm{AABB}$, $\\mathrm{aabb}$, $\\mathrm{AABb}$). Cơ thể có ít nhất một cặp dị hợp là cơ thể không thuần chủng ($\\mathrm{Aabb}$, $\\mathrm{AaBb}$). \n\n##TC 2. Kí hiệu\n$\\mathrm{P}$: cặp bố mẹ xuất phát.\n$\\mathrm{X}$: phép lai.\n$\\mathrm{G}$: giao tử.\n$\\mathrm{F_1}$: thế hệ con thứ nhất, sinh ra từ $\\mathrm{P}$.\n$\\mathrm{F_2}$: thế hệ con thứ hai, sinh ra khi cho $\\mathrm{F_1}$ tự thụ phấn hoặc giao phối với nhau.\n♀: cá thể cái (cây mẹ); ♂: cá thể đực (cây bố). Trong sơ đồ lai, thường ghi ♀ trước, ♂ sau.\n\n##PP3. Các bước làm bài\nBước 1: xác định đề hỏi về thuật ngữ, về kiểu gene hay về kí hiệu.\nBước 2: với câu hỏi thuật ngữ, đối chiếu nội dung trong đề với định nghĩa ở mục 1.\nBước 3: với câu hỏi kiểu gene, xét từng cặp allele: hai chữ giống nhau là đồng hợp, một chữ in hoa và một chữ thường cùng tên là dị hợp.\nBước 4: với câu hỏi kí hiệu, xác định vị trí của dòng đó trong sơ đồ lai (bố mẹ, giao tử hay con lai).\n\n##CY4. Lưu ý\nKiểu gene viết bằng chữ cái (Aa), kiểu hình viết bằng lời (hoa tím).\nHai allele của cùng một gene dùng cùng một chữ cái (A và a). Hai chữ cái khác nhau (A và B) là allele của hai gene khác nhau.\nCơ thể mang tính trạng lặn luôn có kiểu gene đồng hợp lặn. Cơ thể mang tính trạng trội có thể đồng hợp\n(AA) hoặc dị hợp (Aa).\nMỗi giao tử chỉ mang một allele của mỗi gene, nên giao tử viết một chữ cái cho mỗi gene (A hoặc a),\nkhông viết hai chữ.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00550",
+   "khoi": "9",
+   "chu_de": "Di truyền học",
+   "chuyen_de": "Các quy luật di truyền của Mendel",
+   "nhom": "LAI MỘT CẶP TÍNH TRẠNG",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nMỗi tính trạng do một cặp nhân tố di truyền (cặp allele) quy định.\nKhi giảm phân tạo giao tử, hai allele của cặp phân li đồng đều về các giao tử; mỗi giao tử chỉ mang một allele.\nKhi thụ tinh, các giao tử kết hợp ngẫu nhiên, tạo lại cặp allele ở hợp tử.\nNội dung quy luật phân li: Mỗi tính trạng do một cặp nhân tố di truyền quy định. Trong quá trình phát sinh giao tử, mỗi nhân tố di truyền trong cặp phân li về một giao tử và giữ nguyên bản chất như ở cơ thể thuần chủng của $\\mathrm{P}$.\nLai phân tích\nLai phân tích là phép lai giữa cơ thể mang tính trạng trội cần xác định kiểu gene với cơ thể mang tính trạng lặn.\nCơ thể mang tính trạng lặn (aa) chỉ tạo một loại giao tử a, nên kiểu hình ở đời con phản ánh trực tiếp các loại giao tử của cơ thể mang tính trạng trội.\n\n##TC2. Công thức\nKết quả các phép lai một cặp tính trạng (A trội hoàn toàn so với a):\n$\\begin{array}{|l|l|l|}\\hline\\text{Phép lai} & \\text{Tỉ lệ kiểu gene ở đời con} & \\text{Tỉ lệ kiểu hình ở đời con} \\\\\\hline\\mathrm{AA} \\times \\mathrm{AA} & 100\\% \\mathrm{AA} & 100\\% \\text{ trội} \\\\\\mathrm{AA} \\times \\mathrm{Aa} & 1\\mathrm{AA} : 1\\mathrm{Aa} & 100\\% \\text{ trội} \\\\\\mathrm{AA} \\times \\mathrm{aa} & 100\\% \\mathrm{Aa} & 100\\% \\text{ trội} \\\\\\mathrm{Aa} \\times \\mathrm{Aa} & 1\\mathrm{AA} : 2\\mathrm{Aa} : 1\\mathrm{aa} & 3 \\text{ trội} : 1 \\text{ lặn} \\\\\\mathrm{Aa} \\times \\mathrm{aa} & 1\\mathrm{Aa} : 1\\mathrm{aa} & 1 \\text{ trội} : 1 \\text{ lặn} \\\\\\mathrm{aa} \\times \\mathrm{aa} & 100\\% \\mathrm{aa} & 100\\% \\text{ lặn} \\\\\\hline\\end{array}$\nSố tổ hợp giao tử ở đời con = số loại giao tử của bố $\\times$ số loại giao tử của mẹ.\n\n##PP3. Các bước làm bài\nBước 1: quy ước gene (allele trội chữ in hoa, allele lặn chữ thường). Nếu đề chưa cho tính trạng nào trội, dựa vào kiểu hình của $F_1$ khi lai $P$ thuần chủng để xác định.\nBước 2: xác định kiểu gene của $P$.\nBước 3: viết giao tử của $P$ (dòng $G$).\nBước 4: tổ hợp giao tử, viết kiểu gene của đời con.\nBước 5: thống kê tỉ lệ kiểu gene, sau đó suy ra tỉ lệ kiểu hình.\n\n##CY 4. Lưu ý\nTỉ lệ kiểu gene ($1\\mathrm{AA} : 2\\mathrm{Aa} : 1\\mathrm{aa}$) khác tỉ lệ kiểu hình ($3$ trội : $1$ lặn); đọc kĩ đề hỏi tỉ lệ nào.\nỞ $F_2$, trong số cây mang tính trạng trội có $\\dfrac{1}{3}$ là $\\mathrm{AA}$ và $\\dfrac{2}{3}$ là $\\mathrm{Aa}$.\nTỉ lệ $3 : 1$ và $1 : 1$ là tỉ lệ lí thuyết; số cá thể thực tế chỉ xấp xỉ tỉ lệ này khi số lượng đủ lớn.\nỞ thực vật, $F_2$ thường thu được bằng cách cho $F_1$ tự thụ phấn; ở động vật, cho các cá thể $F_1$ giao phối với nhau.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00551",
+   "khoi": "9",
+   "chu_de": "Di truyền học",
+   "chuyen_de": "Các quy luật di truyền của Mendel",
+   "nhom": "Bài toán ngược từ tỉ lệ đời con suy ra kiểu gene bố/mẹ",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC1. Kiến thức cần nhớ\nXác định tính trạng trội, lặn\nP thuần chủng khác nhau về một cặp tính trạng tương phản, tính trạng biểu hiện ở $\\mathrm{F_1}$ là tính trạng trội.\nBố mẹ cùng kiểu hình sinh ra con có kiểu hình khác bố mẹ, thì kiểu hình mới xuất hiện ở con là tính trạng lặn.\nĐời con phân li theo tỉ lệ $3:1$, thì tính trạng chiếm $3$ phần là tính trạng trội.\nTỉ lệ đặc trưng của một cặp tính trạng\n$\\begin{array}{|c|c|}\n\\hline\nTỉ \\text{ lệ kiểu hình đời con} & \\text{Kiểu gene P} \\\\\n\\hline\n3 \\text{ trội } : 1 \\text{ lặn} & \\mathrm{Aa \\times Aa} \\\\\n\\hline\n1 \\text{ trội } : 1 \\text{ lặn} & \\mathrm{Aa \\times aa} \\\\\n\\hline\n100 \\% \\text{ trội} & \\mathrm{AA \\times AA, AA \\times Aa} \\text{ hoặc } \\mathrm{AA \\times aa} \\\\\n\\hline\n100 \\% \\text{ lặn} & \\mathrm{aa \\times aa} \\\\\n\\hline\n\\end{array}$\nTỉ lệ đặc trưng của hai cặp tính trạng (phân li độc lập)\n$9 : 3 : 3 : 1 = (3 : 1) \\times (3 : 1)$, P là $\\mathrm{AaBb \\times AaBb}$.\n$1 : 1 : 1 : 1 = (1 : 1) \\times (1 : 1)$, P là $\\mathrm{Aabb \\times aabb}$ hoặc $\\mathrm{Aabb \\times aaBb}$.\n$3 : 3 : 1 : 1 = (3 : 1) \\times (1 : 1)$, P là $\\mathrm{Aabb \\times Aabb}$ hoặc $\\mathrm{AaBb \\times aaBb}$.\n\n##TC2. Công thức\nTổng số phần của tỉ lệ kiểu hình đời con $=$ số tổ hợp giao tử $=$ số loại giao tử của bố $\\times$ số loại giao tử của mẹ.\nTỉ lệ một kiểu gene ở đời con $=$ tỉ lệ giao tử tương ứng của bố $\\times$ tỉ lệ giao tử tương ứng của mẹ. Ví dụ: tỉ lệ $\\mathrm{aabb}$ $=$ tỉ lệ giao tử $\\mathrm{ab}$ của bố $\\times$ tỉ lệ giao tử $\\mathrm{ab}$ của mẹ.\n\n##PP 3. Các bước làm bài\nBước 1: xác định tính tính trạng trội, lặn (nếu đề chưa cho) và quy ước gene.\nBước 2: đổi số lượng cá thể ở đời con về tỉ lệ gần đúng (chia cho số nhỏ nhất).\nBước 3: xét riêng từng cặp tính trạng, so với tỉ lệ đặc trưng để suy ra kiểu gene của P về cặp đó.\nBước 4: ghép kiểu gene từng cặp, đối chiếu với kiểu hình của P để viết kiểu gene đầy đủ của P.\n\n##CY 4. Lưu ý\nSố liệu thực nghiệm chỉ xấp xỉ tỉ lệ lí thuyết; ví dụ $315 : 104$ xấp xỉ $3 : 1$.\nCơ thể mang tính trạng lặn luôn có kiểu gene đồng hợp lặn, viết ngay được kiểu gene.\nĐời con xuất hiện tính trạng lặn thì cả bố và mẹ đều mang allele lặn.\nVới $100\\%$ trội ở đời con, cần thêm dữ kiện (kiểu hình hoặc kiểu gene của một bên P) mới xác định được kiểu gene của bên còn lại.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00552",
+   "khoi": "9",
+   "chu_de": "Di truyền học",
+   "chuyen_de": "Các quy luật di truyền của Mendel",
+   "nhom": "LAI HAI CẶP TÍNH TRẠNG",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC1. Kiến thức cần nhớ\nNội dung quy luật phân li độc lập\nCác cặp nhân tố di truyền (cặp allele) quy định các tính trạng khác nhau phân li độc lập trong quá trình phát sinh giao tử.\nBiến dị tổ hợp: Sự tổ hợp lại các tính trạng của bố mẹ làm xuất hiện kiểu hình khác P, ví dụ hạt vàng, vỏ nhăn và hạt xanh, vỏ trơn ở $\\mathrm{F_2}$.\n\n##TC 2. Công thức\nCơ thể dị hợp n cặp gene phân li độc lập tạo ra $2^n$ loại giao tử với tỉ lệ bằng nhau. \nVí dụ: AaBb tạo 4 loại giao tử AB, Ab, aB, ab, mỗi loại chiếm $\\dfrac{1}{4}$.\nCặp gene đồng hợp chỉ cho một loại allele vào giao tử. \nVí dụ: AABB tạo 2 loại giao tử AB và aB.\nSố tổ hợp giao tử ở đời con = số loại giao tử của bố $\\times$ số loại giao tử của mẹ.\nTỉ lệ một kiểu gene (hoặc một kiểu hình) ở đời con = tích tỉ lệ của từng cặp gene (từng cặp tính trạng).\nTỉ lệ kiểu hình ở đời con = tích tỉ lệ kiểu hình của từng cặp tính trạng.\n\n##PP3. Các bước làm bài\nBước 1: quy ước gene cho từng cặp tính trạng.\nBước 2: tách phép lai thành từng cặp gene riêng. Ví dụ: AaBb $\\times$ Aabb tách thành Aa $\\times$ Aa và Bb $\\times$ bb.\nBước 3: tính tỉ lệ kiểu gene hoặc kiểu hình của từng cặp theo kết quả lai một cặp tính trạng (Dạng 2).\nBước 4: nhân các tỉ lệ của từng cặp để được tỉ lệ cần tìm.\n\n##CY 4. Lưu ý\nMỗi giao tử mang một allele của mỗi gene: viết AB, Ab, aB, ab; không viết Aa hay Bb trong giao tử.\nKí hiệu A$-$ chỉ kiểu gene AA hoặc Aa (mang tính trạng trội); aa chỉ mang tính trạng lặn.\nTỉ lệ kiểu hình $9:3:3:1$ chỉ xuất hiện ở phép lai AaBb $\\times$ AaBb. Các phép lai khác cho tỉ lệ khác, phải nhân tỉ lệ từng cặp để tìm.\nHai phép lai P khác nhau (AABB $\\times$ aabb hoặc AAbb $\\times$ aaBB) vẫn có thể cho cùng một $\\mathrm{F_1}$ (AaBb).",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00555",
+   "khoi": "9",
+   "chu_de": "Di truyền học",
+   "chuyen_de": "Nucleic acid và gene",
+   "nhom": "Viết mạch bổ sung dựa vào nguyên tắc bổ sung (NTBS)",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "I. Lý thuyết dạng bài\n–  Trong phân tử DNA, hai mạch đơn liên kết với nhau theo nguyên tắc bổ sung: A liên kết với T, G liên kết với C (và ngược lại).\n–  Hai mạch của DNA có chiều ngược nhau (đối song song): nếu một mạch có chiều 3'→5' thì mạch còn lại có chiều 5'→3'.\n–  Khi biết trình tự nucleotide trên một mạch, có thể suy ra trình tự nucleotide trên mạch còn lại: tại mỗi vị trí, thay nucleotide đã cho bằng nucleotide bổ sung tương ứng (A↔T, G↔C); hai mạch đối diện nhau theo đúng vị trí, chỉ đổi chiều ở hai đầu mút (đầu 3' của mạch này đối diện đầu 5' của mạch kia).\nCÁC BƯỚC GIẢI\nBước 1: Xác định trình tự và chiều (3'→5' hoặc 5'→3') của mạch đã cho trong đề bài.\nBước 2: Tại từng vị trí, thay nucleotide đã cho bằng nucleotide bổ sung: A↔T, G↔C.\nBước 3: Xác định chiều của mạch mới: ngược với chiều của mạch đã cho (đầu 3' đối diện đầu 5', và ngược lại).\nBước 4: Viết lại trình tự mạch bổ sung, ghi rõ chiều 3'→5' hoặc 5'→3' theo đúng yêu cầu đề bài.\nII. Ví dụ minh hoạ\nMột mạch của phân tử DNA có trình tự nucleotide như sau: 3'– A – T – G – G – C – T – A – C –5'. Viết trình tự nucleotide của mạch bổ sung (mạch còn lại) của phân tử DNA này, ghi rõ chiều 5'→3'.\nHướng dẫn giải:\nÁp dụng nguyên tắc bổ sung tại từng vị trí (A↔T, G↔C), giữ nguyên thứ tự vị trí (hai mạch đối diện nhau theo từng cặp base):\nMạch đã cho (3'→5'):   A – T – G – G – C – T – A – C\nMạch bổ sung (5'→3'):   T – A – C – C – G – A – T – G\nVậy mạch bổ sung là: 5'– T – A – C – C – G – A – T – G –3'.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00556",
+   "khoi": "9",
+   "chu_de": "Di truyền học",
+   "chuyen_de": "Nucleic acid và gene",
+   "nhom": "Các dạng bài tập tính toán cơ bản về nucleic acid và gene",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "I. Lý thuyết dạng bài\n–  Tổng số nucleotide của gene (tính trên cả hai mạch):\n$N = A + T + G + C = 2A + 2G = 2T + 2C$\n–  Theo tỉ lệ phần trăm (vì %A = %T, %G = %C và tổng bốn loại là 100%):\n$%A + %G = 50%$\n–  Số liên kết hydrogen của gene (A liên kết với T bằng 2 liên kết hydrogen, G liên kết với C bằng 3 liên kết hydrogen):\n$H = 2A + 3G$\n–  Số liên kết cộng hoá trị giữa các nucleotide trên một mạch đơn bằng N/2 − 1; trên cả hai mạch bằng N − 2:\nSố liên kết cộng hoá trị (2 mạch) = N − 2\nCÁC BƯỚC GIẢI\nBước 1: Xác định dữ kiện đã cho: tổng số nucleotide N, hoặc tỉ lệ phần trăm từng loại, hoặc số liên kết hydrogen...\nBước 2: Áp dụng hệ thức A = T, G = C và N = 2A + 2G để tìm số lượng từng loại nucleotide.\nBước 3: Áp dụng công thức phù hợp (H = 2A + 3G; số liên kết cộng hoá trị = N − 2...) để tính đại lượng được hỏi.\nBước 4: Kiểm tra lại kết quả bằng cách cộng tổng bốn loại nucleotide, phải đúng bằng N.\nII. Ví dụ minh hoạ\nMột gene có tổng số 2400 nucleotide, trong đó nucleotide loại G chiếm 30% tổng số nucleotide của gene. Tính số nucleotide mỗi loại của gene.\nHướng dẫn giải:\nVì %G = %C nên %C = 30%. Vì %A + %G = 50% nên %A = 50% − 30% = 20%; suy ra %T = %A = 20%.\n$A = T = 2400 × 20% = 480$\n$G = C = 2400 × 30% = 720$\nKiểm tra: 480 + 480 + 720 + 720 = 2400 (đúng bằng tổng số nucleotide của gene).",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00562",
+   "khoi": "9",
+   "chu_de": "Di truyền học",
+   "chuyen_de": "Tái bản DNA và phiên mã tạo RNA",
+   "nhom": "Lý thuyết tái bản DNA",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true
+  },
+  {
+   "nhom_id": "KNB00563",
+   "khoi": "9",
+   "chu_de": "Di truyền học",
+   "chuyen_de": "Tái bản DNA và phiên mã tạo RNA",
+   "nhom": "Cấu trúc RNA và quá trình phiên mã",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true
+  },
+  {
+   "nhom_id": "KNB00564",
+   "khoi": "9",
+   "chu_de": "Di truyền học",
+   "chuyen_de": "Tái bản DNA và phiên mã tạo RNA",
+   "nhom": "So sánh DNA - RNA và tái bản - phiên mã",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true
+  }
+ ],
+ "dang_bai": [
+  {
+   "dang_id": "KDB01268",
+   "nhom_id": "KNB00549",
+   "thu_tu": 1,
+   "dang": "CÁC THUẬT NGỮ CƠ BẢN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110101091",
+     "loai": "trac_nghiem",
+     "de": "Một cây cà chua có kiểu gene Aa và cho quả đỏ. Đặc điểm 'quả đỏ' của cây này là",
+     "lua_chon": [
+      "kiểu gene",
+      "allele trội",
+      "kiểu hình",
+      "nhân tố di truyền"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Quả đỏ là tính trạng biểu hiện ra bên ngoài, quan sát được.Vậy 'quả đỏ' là kiểu hình."
+    },
+    {
+     "ma_cau": "K09110101090",
+     "loai": "trac_nghiem",
+     "de": "Ở đậu Hà Lan, allele A quy định hạt vàng, allele a quy định hạt xanh. Quan hệ giữa A và a là",
+     "lua_chon": [
+      "hai gene khác nhau",
+      "hai allele của cùng một gene",
+      "hai kiểu gene của cùng một tính trạng",
+      "hai kiểu hình tương phản"
+     ],
+     "dap_an": "B",
+     "loi_giai": "A và a cùng quy định một tính trạng là màu hạt và được kí hiệu bằng cùng một chữ cái.\nVậy A và a là hai allele của cùng một gene."
+    },
+    {
+     "ma_cau": "K09110101095",
+     "loai": "trac_nghiem",
+     "de": "Lai cây đậu hà lan thân cao thuần chủng với cây thân thấp thuần chủng, $\\mathrm{F_1}$ thu được toàn cây thân cao. Thân cao được gọi là",
+     "lua_chon": [
+      "tính trạng lặn",
+      "tính trạng trội",
+      "tính trạng trung gian",
+      "kiểu gene đồng hợp"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khi lai hai bố mẹ thuần chủng khác nhau về một cặp tính trạng tương phản, tính trạng biểu hiện ở $\\mathrm{F_1}$ là tính trạng trội.\n$\\mathrm{F_1}$ toàn thân cao nên thân cao là tính trạng trội."
+    },
+    {
+     "ma_cau": "K09110101097",
+     "loai": "trac_nghiem",
+     "de": "Một học sinh viết: 'Ở đậu hà lan, gene quy định màu hạt có hai allele là A (hạt vàng) và B (hạt xanh)'. Cách viết này sai vì",
+     "lua_chon": [
+      "allele trội phải viết bằng chữ thường",
+      "mỗi gene chỉ có một allele",
+      "hai allele của cùng một gene phải dùng cùng một chữ cái",
+      "màu hạt không phải là một tính trạng"
+     ],
+     "dap_an": "C",
+     "loi_giai": "A và B là hai chữ cái khác nhau, dùng để kí hiệu allele của hai gene khác nhau.\nHai allele của cùng một gene phải dùng cùng một chữ cái: allele trội viết chữ in hoa (A), allele lặn viết chữ thường (a)."
+    },
+    {
+     "ma_cau": "K09110101094",
+     "loai": "trac_nghiem",
+     "de": "Mendel cho rằng màu hoa ở đậu hà lan do 'nhân tố di truyền' quy định. Trong di truyền học hiện nay, nhân tố di truyền tương ứng với",
+     "lua_chon": [
+      "tính trạng",
+      "kiểu hình",
+      "gene",
+      "giao tử"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nhân tố di truyền là yếu tố nằm trong tế bào, quy định tính trạng và được truyền qua giao tử. Ngày nay, nhân tố di truyền được gọi là gene."
+    },
+    {
+     "ma_cau": "K09110101093",
+     "loai": "trac_nghiem",
+     "de": "Kí hiệu AaBb dùng để biểu diễn",
+     "lua_chon": [
+      "kiểu hình của cơ thể",
+      "giao tử của cơ thể",
+      "cặp tính trạng tương phản",
+      "kiểu gene của cơ thể"
+     ],
+     "dap_an": "D",
+     "loi_giai": "AaBb gồm hai cặp allele (Aa và Bb) của hai gene.Tổ hợp các cặp allele của cơ thể là kiểu gene."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01269",
+   "nhom_id": "KNB00549",
+   "thu_tu": 2,
+   "dang": "ĐỒNG HỢP VÀ DỊ HỢP",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110101103",
+     "loai": "trac_nghiem",
+     "de": "Cơ thể có kiểu gene nào sau đây đồng hợp trội về cả hai cặp gene?",
+     "lua_chon": [
+      "AaBb",
+      "aabb",
+      "AAbb",
+      "AABB"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đồng hợp trội là cặp gồm hai allele trội giống nhau.\nAABB có cặp AA và cặp BB đều gồm hai allele trội, nên đồng hợp trội về cả hai cặp gene."
+    },
+    {
+     "ma_cau": "K09110101102",
+     "loai": "trac_nghiem",
+     "de": "Ở đậu hà lan, allele D quy định thân cao trội hoàn toàn so với allele d quy định thân thấp. Cây thân cao thuần chủng có kiểu gene là",
+     "lua_chon": [
+      "dd",
+      "Dd",
+      "DD",
+      "Dd hoặc dd"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Cây thuần chủng có kiểu gene đồng hợp.\nCây thân cao mang allele trội D, nên cây thân cao thuần chủng có kiểu gene đồng hợp trội DD."
+    },
+    {
+     "ma_cau": "K09110101100",
+     "loai": "trac_nghiem",
+     "de": "Cơ thể có kiểu gene AaBbdd dị hợp về bao nhiêu cặp gene?",
+     "lua_chon": [
+      "0",
+      "1",
+      "2",
+      "3"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Xét từng cặp allele:\nAa: dị hợp; Bb: dị hợp; dd: đồng hợp.\nVậy cơ thể AaBbdd dị hợp về 2 cặp gene."
+    },
+    {
+     "ma_cau": "K09110101104",
+     "loai": "trac_nghiem",
+     "de": "Trong các kiểu gene sau: AA, Aa, aa, BB, Bb, bb, có bao nhiêu kiểu gene dị hợp?",
+     "lua_chon": [
+      "1",
+      "2",
+      "3",
+      "4"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Kiểu gene dị hợp gồm hai allele khác nhau của cùng một gene.\nTrong 6 kiểu gene đã cho, có Aa và Bb là dị hợp.\nVậy có 2 kiểu gene dị hợp."
+    },
+    {
+     "ma_cau": "K09110101107",
+     "loai": "trac_nghiem",
+     "de": "Ở đậu hà lan, allele A quy định hoa tím trội hoàn toàn so với allele a quy định hoa trắng. Nhận xét nào sau đây đúng?",
+     "lua_chon": [
+      "Cây hoa trắng luôn thuần chủng.",
+      "Cây hoa tím luôn thuần chủng.",
+      "Cây hoa trắng có thể dị hợp.",
+      "Cây dị hợp có hoa trắng."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cây hoa trắng chỉ có kiểu gene aa, là kiểu gene đồng hợp, nên cây hoa trắng luôn thuần chủng."
+    },
+    {
+     "ma_cau": "K09110101098",
+     "loai": "trac_nghiem",
+     "de": "Cơ thể có kiểu gene nào sau đây đồng hợp về cả hai cặp gene?",
+     "lua_chon": [
+      "AaBB",
+      "aaBB",
+      "AABb",
+      "AaBb"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Xét từng cặp allele của aaBB:\naa gồm hai allele giống nhau nên là cặp đồng hợp.\nBB gồm hai allele giống nhau nên là cặp đồng hợp.\nVậy aaBB đồng hợp về cả hai cặp gene."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01270",
+   "nhom_id": "KNB00549",
+   "thu_tu": 3,
+   "dang": "KÍ HIỆU TRONG SƠ ĐỒ LAI",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110101115",
+     "loai": "trac_nghiem",
+     "de": "Trong sơ đồ lai gồm ba dòng '$\\mathrm{P}$: $\\mathrm{AA} \\times \\mathrm{aa}$', '$\\mathrm{G}$: $\\mathrm{A}$; $\\mathrm{a}$' và '$\\mathrm{F_1}$: $\\mathrm{Aa}$', kí hiệu nào sau đây chỉ một loại giao tử?",
+     "lua_chon": [
+      "$\\mathrm{AA}$",
+      "$\\mathrm{A}$",
+      "$\\mathrm{Aa}$",
+      "$\\mathrm{AA} \\times \\mathrm{aa}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Giao tử được ghi ở dòng G, mỗi giao tử chỉ mang một allele của mỗi gene.\nVậy A là kí hiệu của một loại giao tử."
+    },
+    {
+     "ma_cau": "K09110101108",
+     "loai": "trac_nghiem",
+     "de": "Một sơ đồ lai có dòng đầu tiên ghi: 'P: Hoa tím \\times Hoa trắng'. Kí hiệu P trong dòng này chỉ",
+     "lua_chon": [
+      "thế hệ con thứ nhất",
+      "cặp bố mẹ xuất phát",
+      "các loại giao tử",
+      "phép lai giữa hai cây con"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Trong sơ đồ lai, P là kí hiệu của cặp bố mẹ xuất phát.\nVậy 'P: Hoa tím \\times Hoa trắng' cho biết cặp bố mẹ đem lai gồm một cây hoa tím và một cây hoa trắng."
+    },
+    {
+     "ma_cau": "K09110101111",
+     "loai": "trac_nghiem",
+     "de": "Trong phép lai “♀ AA × ♂ aa”, cây có kiểu gen $\\mathrm{\\text{AA}}$ đóng vai trò",
+     "lua_chon": [
+      "cây bố",
+      "giao tử cái",
+      "cây mẹ",
+      "con lai F1"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Kí hiệu ♀ chỉ cá thể cái, kí hiệu ♂ chỉ cá thể đực.\nAA đứng sau kí hiệu ♀ nên cây AA là cây mẹ."
+    },
+    {
+     "ma_cau": "K09110101109",
+     "loai": "trac_nghiem",
+     "de": "Trong sơ đồ lai '$\\mathrm{AA \\times aa}$', dấu \\times biểu thị",
+     "lua_chon": [
+      "phép lai",
+      "giao tử",
+      "thế hệ con",
+      "kiểu gene"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Dấu \\times đặt giữa hai cơ thể đem lai.\nVậy dấu \\times biểu thị phép lai giữa cơ thể $\\mathrm{AA}$ và cơ thể $\\mathrm{aa}$."
+    },
+    {
+     "ma_cau": "K09110101110",
+     "loai": "trac_nghiem",
+     "de": "Trong sơ đồ lai, dòng ghi 'G: A ; a' cho biết",
+     "lua_chon": [
+      "kiểu gene của bố mẹ",
+      "kiểu hình của đời con",
+      "tỉ lệ kiểu gene ở đời con",
+      "các loại giao tử của bố mẹ"
+     ],
+     "dap_an": "D",
+     "loi_giai": "G là kí hiệu của giao tử.\nDòng 'G: A ; a' cho biết một bên bố mẹ tạo giao tử $\\mathrm{A}$, bên còn lại tạo giao tử $\\mathrm{a}$."
+    },
+    {
+     "ma_cau": "K09110101113",
+     "loai": "trac_nghiem",
+     "de": "Cho các cây $\\mathrm{F_1}$ tự thụ phấn. Thế hệ con sinh ra được kí hiệu là",
+     "lua_chon": [
+      "P",
+      "F1",
+      "F2",
+      "F3"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Thế hệ con sinh ra khi cho $\\mathrm{F_1}$ tự thụ phấn hoặc giao phối với nhau là thế hệ con thứ hai.\nVậy thế hệ này được kí hiệu là $\\mathrm{F_2}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01271",
+   "nhom_id": "KNB00550",
+   "thu_tu": 1,
+   "dang": "VIẾT SƠ ĐỒ LAI P THUẦN CHỦNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110102087",
+     "loai": "tu_luan",
+     "de": "Ở cà chua, allele A quy định quả đỏ trội hoàn toàn so với allele a quy định quả vàng. Cho cây quả đỏ có kiểu gene AA giao phấn với cây quả vàng có kiểu gene aa. Viết sơ đồ lai từ P đến $\\mathrm{F_1}$.",
+     "dap_an": "100%",
+     "loi_giai": "Kiểu gene P: quả đỏ thuần chủng là $\\mathrm{AA}$; quả vàng là $\\mathrm{aa}$.\nSơ đồ lai:\nP (thuần chủng): $\\mathrm{AA}$ (quả đỏ) $\\times$ $\\mathrm{aa}$ (quả vàng)\n$\\mathrm{G_P}$: $\\mathrm{A}$; $\\mathrm{a}$\n$\\mathrm{F_1}$: $\\mathrm{Aa}$ ($100\\%$ quả đỏ)"
+    },
+    {
+     "ma_cau": "K09110102090",
+     "loai": "tu_luan",
+     "de": "Ở ruồi giấm, allele B quy định thân xám trội hoàn toàn so với allele b quy định thân đen. Cho ruồi thân xám thuần chủng giao phối với ruồi thân đen, thu được $\\mathrm{F_1}$. Cho các con $\\mathrm{F_1}$ giao phối với nhau, thu được $\\mathrm{F_2}$. Viết sơ đồ lai từ $\\mathrm{P}$ đến $\\mathrm{F_2}$.",
+     "dap_an": "$1BB : 2Bb : 1bb$ ($3$ thân xám : $1$ thân đen)",
+     "loi_giai": "Kiểu gene $\\mathrm{P}$: thân xám thuần chủng là $\\mathrm{BB}$; thân đen là $\\mathrm{bb}$.\nSơ đồ lai:\n$\\mathrm{P}$ (thuần chủng): $\\mathrm{BB}$ (thân xám) $\\times$ $\\mathrm{bb}$ (thân đen)\n$\\mathrm{G_P}$: $\\mathrm{B}$ ; $\\mathrm{b}$\n$\\mathrm{F_1}$: $\\mathrm{Bb}$ ($100\\%$ thân xám)\n$\\mathrm{F_1 \\times F_1}$: $\\mathrm{Bb}$ (thân xám) $\\times$ $\\mathrm{Bb}$ (thân xám)\n$\\mathrm{G_{F_1}}$: $\\mathrm{B}$, $\\mathrm{b}$ ; $\\mathrm{B}$, $\\mathrm{b}$\n$\\mathrm{F_2}$: $\\mathrm{1BB}$ : $\\mathrm{2Bb}$ : $\\mathrm{1bb}$\nKiểu hình $\\mathrm{F_2}$: $3$ thân xám : $1$ thân đen"
+    },
+    {
+     "ma_cau": "K09110102092",
+     "loai": "tu_luan",
+     "de": "Ở ruồi giấm, chiều dài cánh do một gene có hai allele quy định. Cho ruồi cái cánh cụt thuần chủng giao phối với ruồi đực cánh dài thuần chủng, F$_1$ thu được toàn ruồi cánh dài. Cho các con F$_1$ giao phối với nhau, thu được F$_2$. Viết sơ đồ lai từ P đến F$_2$.",
+     "dap_an": "1DD : 2Dd : 1dd (3 cánh dài : 1 cánh cụt)",
+     "loi_giai": "P thuần chủng khác nhau về một cặp tính trạng tương phản, F$_1$ toàn cánh dài, nên cánh dài là tính trạng trội, cánh cụt là tính trạng lặn.\nQuy ước: allele D quy định cánh dài; allele d quy định cánh cụt.\nKiểu gene P: cánh dài thuần chủng là DD; cánh cụt là dd.\nSơ đồ lai:\nP (thuần chủng): ♀ dd (cánh cụt) $\\times$ ♂ DD (cánh dài)\nG$_P$: d ; D\nF$_1$: Dd (100% cánh dài)\nF$_1$ $\\times$ F$_1$: Dd (cánh dài) $\\times$ Dd (cánh dài)\nG$_{F1}$: D, d ; D, d\nF$_2$: 1DD : 2Dd : 1dd\nKiểu hình F$_2$: 3 cánh dài : 1 cánh cụt"
+    },
+    {
+     "ma_cau": "K09110102088",
+     "loai": "tu_luan",
+     "de": "Ở đậu hà lan, allele A quy định hạt vàng trội hoàn toàn so với allele a quy định hạt xanh. Cho cây hạt vàng thuần chủng giao phấn với cây hạt xanh, thu được $\\mathrm{F_1}$. Cho $\\mathrm{F_1}$ tự thụ phấn, thu được $\\mathrm{F_2}$. Viết sơ đồ lai từ P đến $\\mathrm{F_2}$.",
+     "dap_an": "1AA : 2Aa : 1aa",
+     "loi_giai": "Kiểu gene P: hạt vàng thuần chủng là $\\mathrm{AA}$; hạt xanh là $\\mathrm{aa}$.\nSơ đồ lai:\nP (thuần chủng): $\\mathrm{AA}$ (hạt vàng) $\\times$ $\\mathrm{aa}$ (hạt xanh)\n$\\mathrm{G_P}$: $\\mathrm{A}$ ; $\\mathrm{a}$\n$\\mathrm{F_1}$: $\\mathrm{Aa}$ ($100\\%$ hạt vàng)\n$\\mathrm{F_1}$ $\\times$ $\\mathrm{F_1}$: $\\mathrm{Aa}$ (hạt vàng) $\\times$ $\\mathrm{Aa}$ (hạt vàng)\n$\\mathrm{G_{F_1}}$: $\\mathrm{A, a}$ ; $\\mathrm{A, a}$\n$\\mathrm{F_2}$: $\\mathrm{1AA}$ : $\\mathrm{2Aa}$ : $\\mathrm{1aa}$\nKiểu hình $\\mathrm{F_2}$: $\\mathrm{3}$ hạt vàng : $\\mathrm{1}$ hạt xanh"
+    },
+    {
+     "ma_cau": "K09110102089",
+     "loai": "tu_luan",
+     "de": "Ở chuột, allele A quy định lông đen trội hoàn toàn so với allele a quy định lông trắng. Cho chuột lông đen thuần chủng giao phối với chuột lông trắng, thu được $\\mathrm{F_1}$. Cho các con $\\mathrm{F_1}$ giao phối với nhau, thu được $\\mathrm{F_2}$. Viết sơ đồ lai từ $\\mathrm{P}$ đến $\\mathrm{F_2}$.",
+     "dap_an": "$1AA : 2Aa : 1aa$ ($3$ lông đen : $1$ lông trắng)",
+     "loi_giai": "Kiểu gene P: lông đen thuần chủng là $\\mathrm{AA}$; lông trắng là $\\mathrm{aa}$.\nSơ đồ lai:\n$\\mathrm{P}$ (thuần chủng): $\\mathrm{AA}$ (lông đen) $\\times$ $\\mathrm{aa}$ (lông trắng)\n$\\mathrm{G_P}$: $\\mathrm{A}$ ; $\\mathrm{a}$\n$\\mathrm{F_1}$: $\\mathrm{Aa}$ ($100\\%$ lông đen)\n$\\mathrm{F_1 \\times F_1}$: $\\mathrm{Aa}$ (lông đen) $\\times$ $\\mathrm{Aa}$ (lông đen)\n$\\mathrm{G_{F_1}}$: $\\mathrm{A}$, $\\mathrm{a}$ ; $\\mathrm{A}$, $\\mathrm{a}$\n$\\mathrm{F_2}$: $\\mathrm{1AA}$ : $\\mathrm{2Aa}$ : $\\mathrm{1aa}$\nKiểu hình $\\mathrm{F_2}$: $3$ lông đen : $1$ lông trắng"
+    },
+    {
+     "ma_cau": "K09110102091",
+     "loai": "tu_luan",
+     "de": "Ở đậu hà lan, vị trí hoa trên thân do một gene có hai allele quy định. Cho cây hoa mọc ở nách lá thuần chủng giao phấn với cây hoa mọc ở đỉnh thân thuần chủng, $\\mathrm{F_1}$ thu được toàn cây hoa mọc ở nách lá. Cho $\\mathrm{F_1}$ tự thụ phấn, thu được $\\mathrm{F_2}$. Viết sơ đồ lai từ $\\mathrm{P}$ đến $\\mathrm{F_2}$.",
+     "dap_an": "$\\mathrm{F_2}$: 1BB : 2Bb : 1bb",
+     "loi_giai": "P thuần chủng khác nhau về một cặp tính trạng tương phản, $\\mathrm{F_1}$ toàn hoa ở nách lá, nên hoa ở nách lá là tính trạng trội, hoa ở đỉnh thân là tính trạng lặn.\nQuy ước: allele $\\mathrm{B}$ quy định hoa ở nách lá; allele $\\mathrm{b}$ quy định hoa ở đỉnh thân.\nKiểu gene P: hoa ở nách lá thuần chủng là $\\mathrm{BB}$; hoa ở đỉnh thân là $\\mathrm{bb}$.\nSơ đồ lai:\nP (thuần chủng): $\\mathrm{BB}$ (hoa ở nách lá) $\\times$ $\\mathrm{bb}$ (hoa ở đỉnh thân)\n$\\mathrm{G_P}$: $\\mathrm{B}$ ; $\\mathrm{b}$\n$\\mathrm{F_1}$: $\\mathrm{Bb}$ (100% hoa ở nách lá)\n$\\mathrm{F_1 \\times F_1}$: $\\mathrm{Bb}$ (hoa ở nách lá) $\\times$ $\\mathrm{Bb}$ (hoa ở nách lá)\n$\\mathrm{G_{F_1}}$: $\\mathrm{B}$, $\\mathrm{b}$ ; $\\mat …"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01272",
+   "nhom_id": "KNB00550",
+   "thu_tu": 2,
+   "dang": "XÁC ĐỊNH TỈ LỆ KIỂU GENE, KIỂU HÌNH",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110102098",
+     "loai": "trac_nghiem",
+     "de": "Ở đậu hà lan, cho cây có kiểu gene $\\mathrm{Dd}$ tự thụ phấn. Số tổ hợp giao tử tạo thành ở đời con là",
+     "lua_chon": [
+      "$2$",
+      "$3$",
+      "$4$",
+      "$16$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Cây $\\mathrm{Dd}$ tạo $2$ loại giao tử ($\\mathrm{D}$ và $\\mathrm{d}$) ở cả cây bố và cây mẹ.\nSố tổ hợp giao tử ở đời con là: $2 \\times 2 = 4$"
+    },
+    {
+     "ma_cau": "K09110102102",
+     "loai": "trac_nghiem",
+     "de": "Ở một loài thực vật, allele B quy định quả tròn trội hoàn toàn so với allele b quy định quả dài. Cho cây quả tròn thuần chủng giao phấn với cây quả dài, thu được $\\mathrm{F_1}$. Cho $\\mathrm{F_1}$ tự thụ phấn, thu được 2400 cây $\\mathrm{F_2}$. Theo lí thuyết, số cây $\\mathrm{F_2}$ có kiểu gene dị hợp là",
+     "lua_chon": [
+      "600",
+      "800",
+      "1200",
+      "1800"
+     ],
+     "dap_an": "C",
+     "loi_giai": "P: $\\mathrm{BB \\times bb}$, nên $\\mathrm{F_1}$ có kiểu gene $\\mathrm{Bb}$.\n$\\mathrm{F_1}$ tự thụ phấn, $\\mathrm{F_2}$ có tỉ lệ kiểu gene $\\mathrm{1BB : 2Bb : 1bb}$.\nCây dị hợp ($\\mathrm{Bb}$) chiếm $\\dfrac{2}{4} = \\dfrac{1}{2}$ số cây $\\mathrm{F_2}$.\nSố cây dị hợp là:\n$2400 \\times \\dfrac{1}{2} = 1200$ (cây)"
+    },
+    {
+     "ma_cau": "K09110102093",
+     "loai": "trac_nghiem",
+     "de": "Theo quy luật phân li, cơ thể có kiểu gene Aa giảm phân tạo ra các loại giao tử với tỉ lệ là",
+     "lua_chon": [
+      "100% A",
+      "100% a",
+      "1A : 1a",
+      "3A : 1a"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khi giảm phân, hai allele A và a của cặp phân li đồng đều về các giao tử.Vậy cơ thể Aa tạo hai loại giao tử với tỉ lệ 1A : 1a."
+    },
+    {
+     "ma_cau": "K09110102100",
+     "loai": "trac_nghiem",
+     "de": "Ở đậu hà lan, allele A quy định thân cao trội hoàn toàn so với allele a quy định thân thấp. Cho cây thân cao thuần chủng giao phấn với cây thân thấp, thu được $\\mathrm{F_1}$. Cho $\\mathrm{F_1}$ tự thụ phấn, thu được 1200 cây $\\mathrm{F_2}$. Theo lí thuyết, số cây thân thấp ở $\\mathrm{F_2}$ là",
+     "lua_chon": [
+      "300",
+      "400",
+      "600",
+      "900"
+     ],
+     "dap_an": "A",
+     "loi_giai": "P: $\\mathrm{AA \\times aa}$, nên $\\mathrm{F_1}$ có kiểu gene $\\mathrm{Aa}$.\n$\\mathrm{F_1}$ tự thụ phấn: $\\mathrm{Aa \\times Aa}$, $\\mathrm{F_2}$ có tỉ lệ kiểu gene $\\mathrm{1AA : 2Aa : 1aa}$.\nCây thân thấp ($\\mathrm{aa}$) chiếm $\\dfrac{1}{4}$ số cây $\\mathrm{F_2}$.\nSố cây thân thấp là:\n$1200 \\times \\dfrac{1}{4} = 300$ (cây)"
+    },
+    {
+     "ma_cau": "K09110102096",
+     "loai": "trac_nghiem",
+     "de": "Ở cà chua, allele A quy định quả đỏ trội hoàn toàn so với allele a quy định quả vàng. Theo lí thuyết, phép lai AA \\times Aa cho đời con có tỉ lệ kiểu hình là",
+     "lua_chon": [
+      "1 quả đỏ : 1 quả vàng",
+      "3 quả đỏ : 1 quả vàng",
+      "3 quả vàng : 1 quả đỏ",
+      "100% quả đỏ"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Sơ đồ lai:\nP: AA \\times Aa\nG: A ; A, a\nĐời con: 1AA : 1Aa\nCả AA và Aa đều mang allele trội A nên đều cho quả đỏ.\nTỉ lệ kiểu hình ở đời con là 100% quả đỏ."
+    },
+    {
+     "ma_cau": "K09110102094",
+     "loai": "trac_nghiem",
+     "de": "Ở đậu hà lan, allele A quy định hạt vàng trội hoàn toàn so với allele a quy định hạt xanh. Theo lí thuyết, phép lai Aa $\\times$ Aa cho đời con có tỉ lệ kiểu gene là",
+     "lua_chon": [
+      "1AA : 2Aa : 1aa",
+      "1AA : 1aa",
+      "3AA : 1aa",
+      "1AA : 1Aa"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Mỗi cơ thể Aa tạo hai loại giao tử: A và a.\nTổ hợp giao tử:A $\\times$ A $\\rightarrow$ AA; A $\\times$ a $\\rightarrow$ Aa; a $\\times$ A $\\rightarrow$ Aa; a $\\times$ a $\\rightarrow$ aa\nTỉ lệ kiểu gene ở đời con là 1AA : 2Aa : 1aa."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01273",
+   "nhom_id": "KNB00550",
+   "thu_tu": 3,
+   "dang": "LAI PHÂN TÍCH MỘT CẶP TÍNH TRẠNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110102104",
+     "loai": "trac_nghiem",
+     "de": "Ở cà chua, allele A quy định quả đỏ trội hoàn toàn so với allele a quy định quả vàng. Đem lai phân tích cây quả đỏ có kiểu gene Aa. Theo lí thuyết, tỉ lệ kiểu hình ở đời con là",
+     "lua_chon": [
+      "1 quả đỏ : 1 quả vàng",
+      "3 quả đỏ : 1 quả vàng",
+      "100% quả đỏ",
+      "100% quả vàng"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Sơ đồ lai:\nP: $\\mathrm{Aa \\times aa}$\nG: $\\mathrm{A, a ; a}$\nĐời con: $\\mathrm{1Aa : 1aa}$\nTỉ lệ kiểu hình ở đời con là 1 quả đỏ : 1 quả vàng."
+    },
+    {
+     "ma_cau": "K09110102107",
+     "loai": "trac_nghiem",
+     "de": "Trong phép lai phân tích, cơ thể mang tính trạng lặn được dùng để lai vì",
+     "lua_chon": [
+      "cơ thể lặn chỉ cho một loại giao tử mang allele lặn",
+      "cơ thể lặn luôn cho đời con mang tính trạng lặn",
+      "cơ thể lặn có sức sống cao hơn cơ thể trội",
+      "cơ thể lặn mang hai allele khác nhau"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cơ thể mang tính trạng lặn có kiểu gene đồng hợp lặn (aa) nên chỉ tạo một loại giao tử a.Giao tử a không che lấp allele nào, nên kiểu hình ở đời con phản ánh đúng các loại giao tử của cơ thể mang tính trạng trội."
+    },
+    {
+     "ma_cau": "K09110102108",
+     "loai": "trac_nghiem",
+     "de": "Ở ruồi giấm, allele D quy định cánh dài trội hoàn toàn so với allele d quy định cánh cụt. Đem lai phân tích ruồi cánh dài có kiểu gene DD. Theo lí thuyết, tỉ lệ kiểu gene ở đời con là",
+     "lua_chon": [
+      "$\\mathrm{100\\% DD}$",
+      "$\\mathrm{1Dd : 1dd}$",
+      "$\\mathrm{100\\% Dd}$",
+      "$\\mathrm{1DD : 1Dd}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ruồi cánh dài DD được lai với ruồi cánh cụt dd.\nSơ đồ lai:\nP: $\\mathrm{DD \\times dd}$\nG: $\\mathrm{D; d}$\nTỉ lệ kiểu gene ở đời con là $\\mathrm{100\\% Dd}$."
+    },
+    {
+     "ma_cau": "K09110102111",
+     "loai": "trac_nghiem",
+     "de": "Ở đậu hà lan, allele A quy định thân cao trội hoàn toàn so với allele a quy định thân thấp. Cho cây thân cao thuần chủng giao phấn với cây thân thấp, thu được $F_1$. Đem lai phân tích một cây $F_1$. Theo lí thuyết, tỉ lệ kiểu hình ở đời con là",
+     "lua_chon": [
+      "100% thân cao",
+      "3 thân cao : 1 thân thấp",
+      "1 thân cao : 3 thân thấp",
+      "1 thân cao : 1 thân thấp"
+     ],
+     "dap_an": "D",
+     "loi_giai": "P: $\\mathrm{AA \\times aa}$, nên $F_1$ có kiểu gene $\\mathrm{Aa}$.\nLai phân tích $F_1$: $\\mathrm{Aa \\times aa}$\nG: $\\mathrm{A}$, $\\mathrm{a}$ ; $\\mathrm{a}$\nĐời con: $\\mathrm{1Aa}$ : $\\mathrm{1aa}$\nTỉ lệ kiểu hình ở đời con là 1 thân cao : 1 thân thấp."
+    },
+    {
+     "ma_cau": "K09110102112",
+     "loai": "trac_nghiem",
+     "de": "Ở cà chua, allele A quy định quả đỏ trội hoàn toàn so với allele a quy định quả vàng. Đem lai phân tích một cây quả đỏ thuần chủng, thu được 240 cây con. Theo lí thuyết, số cây quả vàng ở đời con là",
+     "lua_chon": [
+      "0",
+      "60",
+      "120",
+      "240"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cây quả đỏ thuần chủng có kiểu gene $\\mathrm{AA}$.\nP: $\\mathrm{AA \\times aa}$\nG: $\\mathrm{A}$ ; $\\mathrm{a}$\nĐời con: $100\\%$ $\\mathrm{Aa}$, toàn bộ cho quả đỏ.\nVậy số cây quả vàng ở đời con là 0."
+    },
+    {
+     "ma_cau": "K09110102105",
+     "loai": "trac_nghiem",
+     "de": "Ở đậu hà lan, allele B quy định hạt trơn trội hoàn toàn so với allele b quy định hạt nhăn. Đem lai phân tích cây hạt trơn có kiểu gene BB. Theo lí thuyết, tỉ lệ kiểu hình ở đời con là",
+     "lua_chon": [
+      "1 hạt trơn : 1 hạt nhăn",
+      "3 hạt trơn : 1 hạt nhăn",
+      "100% hạt nhăn",
+      "100% hạt trơn"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Sơ đồ lai:\nP: $\\mathrm{BB \\times bb}$\nG: $\\mathrm{B ; b}$\nĐời con: $\\mathrm{100\\% Bb}$\nTỉ lệ kiểu hình ở đời con là $\\mathrm{100\\%}$ hạt trơn."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01274",
+   "nhom_id": "KNB00551",
+   "thu_tu": 1,
+   "dang": "BT ngược lai một cặp tính trạng",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110103105",
+     "loai": "trac_nghiem",
+     "de": "Ở đậu hà lan, allele A quy định hoa tím trội hoàn toàn so với allele a quy định hoa trắng. Cho một cây hoa tím tự thụ phấn, đời con thu được 152 cây hoa tím và 49 cây hoa trắng. Kiểu gene của cây hoa tím đem tự thụ phấn là",
+     "lua_chon": [
+      "AA",
+      "AA hoặc Aa",
+      "Aa",
+      "aa"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tỉ lệ đời con: $152 : 49$ xấp xỉ $3$ hoa tím : $1$ hoa trắng.Tỉ lệ $3 : 1$ là kết quả của phép lai $Aa \\times Aa$.Cây tự thụ phấn đóng vai trò cả cây bố và cây mẹ, nên cây hoa tím có kiểu gene $Aa$."
+    },
+    {
+     "ma_cau": "K09110103104",
+     "loai": "trac_nghiem",
+     "de": "Ở bò, allele A quy định không sừng trội hoàn toàn so với allele a quy định có sừng. Cho một con bò đực không sừng giao phối với một con bò cái có sừng, sinh ra một con bê có sừng. Kiểu gene của con bò đực không sừng là",
+     "lua_chon": [
+      "Aa",
+      "AA",
+      "aa",
+      "AA hoặc Aa"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Con bê có sừng có kiểu gene aa, nhận một allele a từ bò mẹ và một allele a từ bò bố.Bò bố không sừng nên mang allele A.Vậy bò đực không sừng có kiểu gene Aa."
+    },
+    {
+     "ma_cau": "K09110103102",
+     "loai": "trac_nghiem",
+     "de": "Ở một loài thực vật, màu hoa do một gene có hai allele quy định. Cho hai cây hoa đỏ giao phấn với nhau, đời con thu được 298 cây hoa đỏ và 101 cây hoa trắng. Nhận định nào sau đây đúng?",
+     "lua_chon": [
+      "Hoa đỏ là tính trạng trội.",
+      "Hoa trắng là tính trạng trội.",
+      "Hoa đỏ và hoa trắng trội ngang nhau.",
+      "Chưa đủ dữ kiện để xác định."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Hai cây P cùng hoa đỏ nhưng đời con xuất hiện cây hoa trắng, nên hoa trắng là tính trạng lặn.\nTỉ lệ $298 : 101$ xấp xỉ $3$ hoa đỏ : $1$ hoa trắng, phù hợp quy luật phân li với hoa đỏ là tính trạng trội.\nVậy hoa đỏ là tính trạng trội."
+    },
+    {
+     "ma_cau": "K09110103103",
+     "loai": "trac_nghiem",
+     "de": "Ở chuột, allele A quy định lông đen trội hoàn toàn so với allele a quy định lông trắng. Cho một con chuột lông đen giao phối với một con chuột lông trắng, đời con có cả chuột lông đen và chuột lông trắng. Kiểu gene của con chuột lông đen ở P là",
+     "lua_chon": [
+      "AA",
+      "aa",
+      "AA hoặc Aa",
+      "Aa"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Chuột lông trắng ở đời con có kiểu gene aa, nhận một allele a từ mỗi con P.\nVậy con chuột lông đen ở P mang allele a, có kiểu gene Aa."
+    },
+    {
+     "ma_cau": "K09110103106",
+     "loai": "trac_nghiem",
+     "de": "Ở đậu hà lan, allele D quy định thân cao trội hoàn toàn so với allele d quy định thân thấp. Cho một cây thân cao tự thụ phấn, đời con thu được 240 cây, tất cả đều thân cao. Kiểu gene của cây thân cao đem tự thụ phấn là",
+     "lua_chon": [
+      "DD",
+      "Dd",
+      "DD hoặc Dd",
+      "dd"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nếu cây thân cao có kiểu gene Dd thì khi tự thụ phấn sẽ cho đời con có cây thân thấp (dd).\nĐời con toàn thân cao nên cây thân cao chỉ tạo giao tử D.\nVậy cây thân cao có kiểu gene DD."
+    },
+    {
+     "ma_cau": "K09110103107",
+     "loai": "trac_nghiem",
+     "de": "Ở cà chua, allele A quy định quả đỏ trội hoàn toàn so với allele a quy định quả vàng. Cho hai cây quả đỏ giao phấn với nhau, đời con thu được 480 cây, trong đó có 120 cây quả vàng. Kiểu gene của P là",
+     "lua_chon": [
+      "$AA \\times Aa$",
+      "$Aa \\times aa$",
+      "$Aa \\times Aa$",
+      "$AA \\times AA$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tỉ lệ cây quả vàng ở đời con:\n$\\dfrac{120}{480}=\\dfrac{1}{4}$\nCây quả vàng (aa) chiếm $\\dfrac{1}{4}$, tức là đời con có tỉ lệ 3 quả đỏ : 1 quả vàng.\nVậy P: $Aa \\times Aa$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01275",
+   "nhom_id": "KNB00551",
+   "thu_tu": 2,
+   "dang": "BT ngược lai hai cặp tính trạng",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110103117",
+     "loai": "tu_luan",
+     "de": "Ở một loài thực vật, allele A quy định thân cao trội hoàn toàn so với allele a quy định thân thấp; allele B quy định hoa đỏ trội hoàn toàn so với allele b quy định hoa trắng. Hai cặp gene phân li độc lập. Đem lai phân tích một cây thân cao, hoa đỏ, đời con có tỉ lệ $1$ cao, đỏ : $1$ thấp, đỏ. Xác định kiểu gene của cây thân cao, hoa đỏ đem lai.",
+     "dap_an": "AaBB",
+     "loi_giai": "Cây dùng để lai phân tích có kiểu gene aabb, chỉ cho giao tử ab.\nThân cao : thân thấp = $1 : 1$, nên cây đem lai có cặp gene Aa.\nĐời con $100\\%$ hoa đỏ, nên cây đem lai chỉ cho allele B, có cặp gene BB.\nVậy cây thân cao, hoa đỏ đem lai có kiểu gene AaBB."
+    },
+    {
+     "ma_cau": "K09110103109",
+     "loai": "tu_luan",
+     "de": "Ở đậu hà lan, allele A quy định hạt vàng trội hoàn toàn so với allele a quy định hạt xanh; allele B quy định vỏ hạt trơn trội hoàn toàn so với allele b quy định vỏ hạt nhăn. Hai cặp gene phân li độc lập. Cho hai cây hạt vàng, vỏ trơn giao phấn với nhau, đời con có tỉ lệ 9 vàng, trơn : 3 vàng, nhăn : 3 xanh, trơn : 1 xanh, nhăn. Xác định kiểu gene của P.",
+     "dap_an": "AaBb \\times AaBb",
+     "loi_giai": "Xét riêng từng cặp tính trạng ở đời con:\nVàng : xanh = $(9 + 3) : (3 + 1) = 3 : 1$, nên P: $\\mathrm{Aa \\times Aa}$.\nTrơn : nhăn = $(9 + 3) : (3 + 1) = 3 : 1$, nên P: $\\mathrm{Bb \\times Bb}$.\nGhép hai cặp: P: $\\mathrm{AaBb \\times AaBb}$"
+    },
+    {
+     "ma_cau": "K09110103110",
+     "loai": "tu_luan",
+     "de": "Ở đậu hà lan, allele A quy định hạt vàng trội hoàn toàn so với allele a quy định hạt xanh; allele B quy định vỏ hạt trơn trội hoàn toàn so với allele b quy định vỏ hạt nhăn. Hai cặp gene phân li độc lập. Cho cây hạt vàng, vỏ trơn giao phấn với cây hạt xanh, vỏ nhăn, đời con có tỉ lệ 1 vàng, trơn : 1 vàng, nhăn : 1 xanh, trơn : 1 xanh, nhăn. Xác định kiểu gene của P.",
+     "dap_an": "AaBb \\times aabb",
+     "loi_giai": "Cây hạt xanh, vỏ nhăn có kiểu gene $\\mathrm{aabb}$.\nVàng : xanh = $1 : 1$, nên cây hạt vàng có kiểu gene $\\mathrm{Aa}$.\nTrơn : nhăn = $1 : 1$, nên cây vỏ trơn có kiểu gene $\\mathrm{Bb}$.\nVậy P: $\\mathrm{AaBb \\times aabb}$."
+    },
+    {
+     "ma_cau": "K09110103113",
+     "loai": "tu_luan",
+     "de": "Ở một loài thực vật, allele A quy định thân cao trội hoàn toàn so với allele a quy định thân thấp; allele B quy định hoa đỏ trội hoàn toàn so với allele b quy định hoa trắng. Hai cặp gene phân li độc lập. Cho cây thân cao, hoa đỏ giao phấn với cây thân thấp, hoa đỏ, đời con có tỉ lệ $3$ cao, đỏ : $1$ cao, trắng : $3$ thấp, đỏ : $1$ thấp, trắng. Xác định kiểu gene của P.",
+     "dap_an": "AaBb \\times aaBb",
+     "loi_giai": "Xét riêng từng cặp tính trạng ở đời con:\nThân cao : thân thấp = $(3 + 1) : (3 + 1) = 1 : 1$, nên P: $\\mathrm{Aa \\times aa}$.\nHoa đỏ : hoa trắng = $(3 + 3) : (1 + 1) = 3 : 1$, nên P: $\\mathrm{Bb \\times Bb}$.\nCây thân thấp có cặp gene $\\mathrm{aa}$, nên cây thân cao có cặp gene $\\mathrm{Aa}$.\nVậy P: $\\mathrm{AaBb}$ (cao, đỏ) $\\times \\mathrm{aaBb}$ (thấp, đỏ)."
+    },
+    {
+     "ma_cau": "K09110103123",
+     "loai": "tu_luan",
+     "de": "Ở đậu hà lan, allele A quy định hạt vàng trội hoàn toàn so với allele a quy định hạt xanh; allele B quy định vỏ hạt trơn trội hoàn toàn so với allele b quy định vỏ hạt nhăn. Hai cặp gene phân li độc lập. Cho cây hạt vàng, vỏ trơn giao phấn với cây hạt xanh, vỏ trơn, đời con có $12,5\\%$ cây hạt xanh, vỏ nhăn. Xác định kiểu gene của P.",
+     "dap_an": "AaBb \\times aaBb",
+     "loi_giai": "Cây hạt xanh, vỏ nhăn có kiểu gene aabb, chiếm $12,5\\% = \\dfrac{1}{8}$.\nCây hạt xanh, vỏ trơn (aaB--) tạo giao tử ab với tỉ lệ $\\dfrac{1}{2}$ (nếu là aaBb) hoặc 0 (nếu là aaBB). Vì đời con có cây aabb nên cây này là aaBb.\nTỉ lệ giao tử ab của cây hạt vàng, vỏ trơn là:$\\dfrac{1}{8} : \\dfrac{1}{2} = \\dfrac{1}{4}$\nTrong các kiểu gene hạt vàng, vỏ trơn (AABB, AABb, AaBB, AaBb), chỉ AaBb tạo giao tử ab với tỉ lệ $\\dfrac{1}{4}$.\nVậy P: AaBb \\times aaBb."
+    },
+    {
+     "ma_cau": "K09110103119",
+     "loai": "tu_luan",
+     "de": "Ở đậu hà lan, allele A quy định hạt vàng trội hoàn toàn so với allele a quy định hạt xanh; allele B quy định vỏ hạt trơn trội hoàn toàn so với allele b quy định vỏ hạt nhăn. Hai cặp gene phân li độc lập. Cho cây hạt vàng, vỏ nhăn giao phấn với cây hạt xanh, vỏ trơn, đời con thu được toàn cây hạt vàng, vỏ trơn. Xác định kiểu gene của P.",
+     "dap_an": "AAbb \\times aaBB",
+     "loi_giai": "Cây hạt vàng, vỏ nhăn có kiểu gene $\\mathrm{A-bb}$; cây hạt xanh, vỏ trơn có kiểu gene $\\mathrm{aaB-}$.\nĐời con $100\\%$ hạt vàng, nên cây hạt vàng chỉ cho allele $\\mathrm{A}$, có cặp gene $\\mathrm{AA}$.\nĐời con $100\\%$ vỏ trơn, nên cây vỏ trơn chỉ cho allele $\\mathrm{B}$, có cặp gene $\\mathrm{BB}$.\nVậy $\\mathrm{P}$: $\\mathrm{AAbb \\times aaBB}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01276",
+   "nhom_id": "KNB00552",
+   "thu_tu": 1,
+   "dang": "VIẾT GIAO TỬ CỦA CƠ THỂ DỊ HỢP HAI CẶP",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110104082",
+     "loai": "trac_nghiem",
+     "de": "Hai cặp gene A, a và B, b phân li độc lập. Cơ thể có kiểu gene aaBb giảm phân tạo ra các loại giao tử nào?",
+     "lua_chon": [
+      "aa, Bb",
+      "Ab, ab",
+      "aB",
+      "aB, ab"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cặp aa chỉ cho một loại allele a; cặp Bb cho hai loại allele B và b.\nTổ hợp: a với B cho aB; a với b cho ab.\nVậy cơ thể aaBb tạo hai loại giao tử aB và ab."
+    },
+    {
+     "ma_cau": "K09110104087",
+     "loai": "trac_nghiem",
+     "de": "Hai cặp gene A, a và B, b phân li độc lập. Theo lí thuyết, cơ thể có kiểu gene AaBB tạo giao tử AB với tỉ lệ",
+     "lua_chon": [
+      "$\\dfrac{1}{16}$",
+      "$\\dfrac{1}{8}$",
+      "$\\dfrac{1}{4}$",
+      "$\\dfrac{1}{2}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tỉ lệ allele A từ cặp Aa: $\\dfrac{1}{2}$.\nCặp BB chỉ cho allele B, tỉ lệ bằng 1.\nTỉ lệ giao tử AB là:\n$\\dfrac{1}{2} \\times 1 = \\dfrac{1}{2}$"
+    },
+    {
+     "ma_cau": "K09110104085",
+     "loai": "trac_nghiem",
+     "de": "Ba cặp gene A, a; B, b và D, d phân li độc lập. Cơ thể có kiểu gene AaBbDd tạo ra bao nhiêu loại giao tử?",
+     "lua_chon": [
+      "3",
+      "4",
+      "6",
+      "8"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Mỗi cặp dị hợp (Aa, Bb, Dd) cho 2 loại allele.\nSố loại giao tử là:\n$2 \\times 2 \\times 2 = 8$"
+    },
+    {
+     "ma_cau": "K09110104090",
+     "loai": "trac_nghiem",
+     "de": "Hai cặp gene $\\mathrm{A, a}$ và $\\mathrm{B, b}$ phân li độc lập. Cơ thể có kiểu gene nào sau đây tạo giao tử $\\mathrm{ab}$ với tỉ lệ $\\dfrac{1}{2}$?",
+     "lua_chon": [
+      "$\\mathrm{Aabb}$",
+      "$\\mathrm{AaBb}$",
+      "$\\mathrm{aaBB}$",
+      "$\\mathrm{AABb}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Với cơ thể $\\mathrm{Aabb}$: tỉ lệ allele $\\mathrm{a}$ là $\\dfrac{1}{2}$; cặp $\\mathrm{bb}$ chỉ cho allele $\\mathrm{b}$, tỉ lệ bằng 1.\nTỉ lệ giao tử $\\mathrm{ab}$ là:\n$$\\dfrac{1}{2} \\times 1 = \\dfrac{1}{2}$$"
+    },
+    {
+     "ma_cau": "K09110104089",
+     "loai": "trac_nghiem",
+     "de": "Ở đậu hà lan, allele A quy định hạt vàng trội hoàn toàn so với allele a quy định hạt xanh; allele B quy định vỏ hạt trơn trội hoàn toàn so với allele b quy định vỏ hạt nhăn. Hai cặp gene phân li độc lập. Cho cây hạt vàng, vỏ nhăn thuần chủng giao phấn với cây hạt xanh, vỏ trơn thuần chủng, thu được $\\mathrm{F_1}$. Theo lí thuyết, giao tử $\\mathrm{aB}$ của cây $\\mathrm{F_1}$ chiếm tỉ lệ",
+     "lua_chon": [
+      "0",
+      "$\\dfrac{1}{4}$",
+      "$\\dfrac{1}{2}$",
+      "1"
+     ],
+     "dap_an": "B",
+     "loi_giai": "P: $\\mathrm{AAbb \\times aaBB}$, giao tử của P là $\\mathrm{Ab}$ và $\\mathrm{aB}$.\n$\\mathrm{F_1}$ có kiểu gene $\\mathrm{AaBb}$.\nCây $\\mathrm{AaBb}$ tạo 4 loại giao tử $\\mathrm{AB, Ab, aB, ab}$ với tỉ lệ bằng nhau.\nVậy giao tử $\\mathrm{aB}$ chiếm tỉ lệ $\\dfrac{1}{4}$."
+    },
+    {
+     "ma_cau": "K09110104088",
+     "loai": "trac_nghiem",
+     "de": "Ba cặp gene A, a; B, b và D, d phân li độc lập. Cơ thể có kiểu gene nào sau đây tạo ra nhiều loại giao tử nhất?",
+     "lua_chon": [
+      "AaBbDd",
+      "AaBBdd",
+      "AABBDd",
+      "aaBBDd"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Mỗi cặp dị hợp cho 2 loại allele; mỗi cặp đồng hợp cho 1 loại allele.\nKiểu gene có nhiều cặp dị hợp nhất sẽ tạo nhiều loại giao tử nhất.\nAaBbDd có 3 cặp dị hợp, số loại giao tử là:\n$2 \\times 2 \\times 2 = 8$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01277",
+   "nhom_id": "KNB00552",
+   "thu_tu": 2,
+   "dang": "TỈ LỆ KIỂU HÌNH F2",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110104095",
+     "loai": "trac_nghiem",
+     "de": "Ở một loài thực vật, allele A quy định thân cao trội hoàn toàn so với allele a quy định thân thấp; allele B quy định hoa đỏ trội hoàn toàn so với allele b quy định hoa trắng. Hai cặp gene phân li độc lập. Theo lí thuyết, phép lai $\\mathrm{AaBB \\times Aabb}$ cho đời con có tỉ lệ kiểu hình là",
+     "lua_chon": [
+      "1 : 1",
+      "3 : 1",
+      "3 : 3 : 1 : 1",
+      "9 : 3 : 3 : 1"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tách từng cặp:\n$\\mathrm{Aa \\times Aa}$ cho 3 thân cao : 1 thân thấp.\n$\\mathrm{BB \\times bb}$ cho 100% $\\mathrm{Bb}$ (100% hoa đỏ).\nTỉ lệ kiểu hình đời con: $(3 : 1) \\times 1 = 3 : 1$."
+    },
+    {
+     "ma_cau": "K09110104098",
+     "loai": "trac_nghiem",
+     "de": "Ở đậu hà lan, allele A quy định hạt vàng trội hoàn toàn so với allele a quy định hạt xanh; allele B quy định vỏ hạt trơn trội hoàn toàn so với allele b quy định vỏ hạt nhăn. Hai cặp gene phân li độc lập. Cho cây hạt vàng, vỏ nhăn thuần chủng giao phấn với cây hạt xanh, vỏ trơn thuần chủng, thu được $F_1$. Cho $F_1$ tự thụ phấn, thu được $F_2$. Theo lí thuyết, tỉ lệ kiểu hình ở $F_2$ là",
+     "lua_chon": [
+      "3 : 3 : 1 : 1",
+      "1 : 1 : 1 : 1",
+      "3 : 1",
+      "9 : 3 : 3 : 1"
+     ],
+     "dap_an": "D",
+     "loi_giai": "P: $AAbb \\times aaBB$, $F_1$ có kiểu gene $AaBb$.\n$F_1$ tự thụ phấn: $AaBb \\times AaBb$.\nTách từng cặp:\n$Aa \\times Aa$ cho 3 vàng : 1 xanh.\n$Bb \\times Bb$ cho 3 trơn : 1 nhăn.\nTỉ lệ kiểu hình đời con: $(3 : 1) \\times (3 : 1) = 9 : 3 : 3 : 1$."
+    },
+    {
+     "ma_cau": "K09110104100",
+     "loai": "trac_nghiem",
+     "de": "Ở một loài thực vật, allele A quy định thân cao trội hoàn toàn so với allele a quy định thân thấp; allele B quy định hoa đỏ trội hoàn toàn so với allele b quy định hoa trắng. Hai cặp gene phân li độc lập. Cho cây thân cao, hoa đỏ dị hợp về cả hai cặp gene giao phấn với cây thân thấp, hoa đỏ có kiểu gene $\\mathrm{aaBb}$. Theo lí thuyết, tỉ lệ kiểu hình ở đời con là",
+     "lua_chon": [
+      "$3 : 3 : 1 : 1$",
+      "$9 : 3 : 3 : 1$",
+      "$1 : 1 : 1 : 1$",
+      "$3 : 1$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "P: $\\mathrm{AaBb \\times aaBb}$.\nTách từng cặp:\n$\\mathrm{Aa \\times aa}$ cho $1$ thân cao : $1$ thân thấp.\n$\\mathrm{Bb \\times Bb}$ cho $3$ hoa đỏ : $1$ hoa trắng.\nTỉ lệ kiểu hình đời con: $(1 : 1) \\times (3 : 1) = 3 : 3 : 1 : 1$."
+    },
+    {
+     "ma_cau": "K09110104096",
+     "loai": "trac_nghiem",
+     "de": "Ở một loài thực vật, allele A quy định thân cao trội hoàn toàn so với allele a quy định thân thấp; allele B quy định hoa đỏ trội hoàn toàn so với allele b quy định hoa trắng. Hai cặp gene phân li độc lập. Theo lí thuyết, phép lai $\\mathrm{AaBb \\times aaBB}$ cho đời con có tỉ lệ kiểu hình là",
+     "lua_chon": [
+      "1 : 1",
+      "3 : 1",
+      "1 : 1 : 1 : 1",
+      "1 : 2 : 1"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tách từng cặp:\n$\\mathrm{Aa \\times aa}$ cho 1 thân cao : 1 thân thấp.\n$\\mathrm{Bb \\times BB}$ cho 1BB : 1Bb (100% hoa đỏ).\nTỉ lệ kiểu hình đời con: $(1 : 1) \\times 1 = 1 : 1$."
+    },
+    {
+     "ma_cau": "K09110104093",
+     "loai": "trac_nghiem",
+     "de": "Ở đậu hà lan, allele A quy định hạt vàng trội hoàn toàn so với allele a quy định hạt xanh; allele B quy định vỏ hạt trơn trội hoàn toàn so với allele b quy định vỏ hạt nhăn. Hai cặp gene phân li độc lập. Cho cây đậu dị hợp về cả hai cặp gene giao phấn với cây hạt xanh, vỏ nhăn. Theo lí thuyết, tỉ lệ kiểu hình ở đời con là",
+     "lua_chon": [
+      "1 : 1 : 1 : 1",
+      "9 : 3 : 3 : 1",
+      "3 : 3 : 1 : 1",
+      "1 : 1"
+     ],
+     "dap_an": "A",
+     "loi_giai": "P: $\\mathrm{AaBb \\times aabb}$.\nTách từng cặp:\n$\\mathrm{Aa \\times aa}$ cho 1 vàng : 1 xanh.\n$\\mathrm{Bb \\times bb}$ cho 1 trơn : 1 nhăn.\nTỉ lệ kiểu hình đời con: $(1 : 1) \\times (1 : 1) = 1 : 1 : 1 : 1$."
+    },
+    {
+     "ma_cau": "K09110104099",
+     "loai": "trac_nghiem",
+     "de": "Ở một loài thực vật, allele A quy định thân cao trội hoàn toàn so với allele a quy định thân thấp; allele B quy định hoa đỏ trội hoàn toàn so với allele b quy định hoa trắng. Hai cặp gene phân li độc lập. Phép lai nào sau đây cho đời con có tỉ lệ kiểu hình $1 : 1 : 1 : 1$?",
+     "lua_chon": [
+      "$\\mathrm{AaBb \\times AaBb}$",
+      "$\\mathrm{AaBB \\times aaBb}$",
+      "$\\mathrm{Aabb \\times aaBb}$",
+      "$\\mathrm{AABb \\times Aabb}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tỉ lệ $1 : 1 : 1 : 1 = (1 : 1) \\times (1 : 1)$, nên mỗi cặp gene phải là phép lai dị hợp \\times đồng hợp lặn.\nPhép lai $\\mathrm{AaBb \\times aaBb}$ gồm $\\mathrm{Aa \\times aa}$ ($1 : 1$) và $\\mathrm{Bb \\times Bb}$ ($1 : 1$).\nTỉ lệ kiểu hình đời con: $(1 : 1) \\times (1 : 1) = 1 : 1 : 1 : 1$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01278",
+   "nhom_id": "KNB00552",
+   "thu_tu": 3,
+   "dang": "TÍNH TỈ LỆ MỘT KIỂU HÌNH HOẶC KIỂU GENE CỤ THỂ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110104108",
+     "loai": "tra_loi_ngan",
+     "de": "Ở một loài thực vật, allele A quy định thân cao trội hoàn toàn so với allele a quy định thân thấp; allele B quy định hoa đỏ trội hoàn toàn so với allele b quy định hoa trắng. Hai cặp gene phân li độc lập. Theo lí thuyết, phép lai $\\mathrm{AaBb \\times AaBb}$ cho đời con có cây thuần chủng về cả hai cặp gene chiếm tỉ lệ bao nhiêu? Viết kết quả dưới dạng phân số tối giản.",
+     "dap_an": "\\dfrac{1}{4}",
+     "loi_giai": "Ở mỗi cặp $\\mathrm{Aa \\times Aa}$, tỉ lệ đồng hợp ($\\mathrm{AA + aa}$) là:\n$\\dfrac{1}{4} + \\dfrac{1}{4} = \\dfrac{1}{2}$\nTương tự, ở cặp $\\mathrm{Bb \\times Bb}$, tỉ lệ đồng hợp là $\\dfrac{1}{2}$.\nTỉ lệ cây thuần chủng về cả hai cặp gene:\n$\\dfrac{1}{2} \\times \\dfrac{1}{2} = \\dfrac{1}{4}$"
+    },
+    {
+     "ma_cau": "K09110104107",
+     "loai": "tra_loi_ngan",
+     "de": "Ở đậu hà lan, allele A quy định hạt vàng trội hoàn toàn so với allele a quy định hạt xanh; allele B quy định vỏ hạt trơn trội hoàn toàn so với allele b quy định vỏ hạt nhăn. Hai cặp gene phân li độc lập. Cho cây hạt vàng, vỏ trơn thuần chủng giao phấn với cây hạt xanh, vỏ nhăn, thu được $\\mathrm{F_1}$. Cho $\\mathrm{F_1}$ tự thụ phấn, thu được 1600 cây $\\mathrm{F_2}$. Theo lí thuyết, ở $\\mathrm{F_2}$ có bao nhiêu cây hạt xanh, vỏ trơn?",
+     "dap_an": "300",
+     "loi_giai": "P: $\\mathrm{AABB \\times aabb}$, $\\mathrm{F_1}$ có kiểu gene $\\mathrm{AaBb}$.\n$\\mathrm{F_1}$ tự thụ phấn: $\\mathrm{AaBb \\times AaBb}$.\nTỉ lệ hạt xanh (aa): $\\dfrac{1}{4}$; tỉ lệ vỏ trơn (B-): $\\dfrac{3}{4}$.\nTỉ lệ cây hạt xanh, vỏ trơn:\n$\\dfrac{1}{4} \\times \\dfrac{3}{4} = \\dfrac{3}{16}$\nSố cây hạt xanh, vỏ trơn:\n$1600 \\times \\dfrac{3}{16} = 300$ (cây)"
+    },
+    {
+     "ma_cau": "K09110104104",
+     "loai": "tra_loi_ngan",
+     "de": "Ở một loài thực vật, allele $\\mathrm{A}$ quy định thân cao trội hoàn toàn so với allele $\\mathrm{a}$ quy định thân thấp; allele $\\mathrm{B}$ quy định hoa đỏ trội hoàn toàn so với allele $\\mathrm{b}$ quy định hoa trắng. Hai cặp gene phân li độc lập. Theo lí thuyết, phép lai $\\mathrm{AaBb \\times AaBB}$ cho đời con có kiểu gene $\\mathrm{AaBB}$ chiếm tỉ lệ bao nhiêu? Viết kết quả dưới dạng phân số tối giản.",
+     "dap_an": "\\dfrac{1}{8}",
+     "loi_giai": "Tách từng cặp:\n$\\mathrm{Aa \\times Aa}$ cho $\\mathrm{Aa}$ với tỉ lệ $\\dfrac{1}{2}$;\n$\\mathrm{Bb \\times BB}$ cho $\\mathrm{BB}$ với tỉ lệ $\\dfrac{1}{4}$;\nTỉ lệ kiểu gene $\\mathrm{AaBB}$: \n$\\dfrac{1}{2} \\times \\dfrac{1}{4} = \\dfrac{1}{8}$"
+    },
+    {
+     "ma_cau": "K09110104102",
+     "loai": "tra_loi_ngan",
+     "de": "Ở đậu hà lan, allele A quy định hạt vàng trội hoàn toàn so với allele a quy định hạt xanh; allele B quy định vỏ hạt trơn trội hoàn toàn so với allele b quy định vỏ hạt nhăn. Hai cặp gene phân li độc lập. Theo lí thuyết, phép lai $\\mathrm{AaBb \\times AaBb}$ cho đời con có kiểu gene aabb chiếm tỉ lệ bao nhiêu? Viết kết quả dưới dạng phân số tối giản.",
+     "dap_an": "\\dfrac{1}{16}",
+     "loi_giai": "Tách từng cặp:\n$\\mathrm{Aa \\times Aa}$ cho aa với tỉ lệ $\\dfrac{1}{4}$.\n$\\mathrm{Bb \\times Bb}$ cho bb với tỉ lệ $\\dfrac{1}{4}$.\nTỉ lệ kiểu gene aabb:\n$\\dfrac{1}{4} \\times \\dfrac{1}{4} = \\dfrac{1}{16}$"
+    },
+    {
+     "ma_cau": "K09110104103",
+     "loai": "tra_loi_ngan",
+     "de": "Ở một loài thực vật, allele $\\mathrm{A}$ quy định thân cao trội hoàn toàn so với allele $\\mathrm{a}$ quy định thân thấp; allele $\\mathrm{B}$ quy định hoa đỏ trội hoàn toàn so với allele $\\mathrm{b}$ quy định hoa trắng. Hai cặp gene phân li độc lập. Theo lí thuyết, phép lai $\\mathrm{AaBb \\times AaBb}$ cho đời con có kiểu gene $\\mathrm{AaBB}$ chiếm tỉ lệ bao nhiêu? Viết kết quả dưới dạng phân số tối giản.",
+     "dap_an": "\\dfrac{1}{4}",
+     "loi_giai": "Tách từng cặp:\n$\\mathrm{Aa \\times Aa}$ cho $\\mathrm{Aa}$ với tỉ lệ $\\dfrac{1}{2}$;\n$\\mathrm{Bb \\times Bb}$ cho $\\mathrm{BB}$ với tỉ lệ $\\dfrac{1}{2}$;\nTỉ lệ kiểu gene $\\mathrm{AaBB}$: \n$\\dfrac{1}{2} \\times \\dfrac{1}{2} = \\dfrac{1}{4}$"
+    },
+    {
+     "ma_cau": "K09110104105",
+     "loai": "tra_loi_ngan",
+     "de": "Ở một loài thực vật, allele A quy định thân cao trội hoàn toàn so với allele a quy định thân thấp; allele B quy định hoa đỏ trội hoàn toàn so với allele b quy định hoa trắng. Hai cặp gene phân li độc lập. Theo lí thuyết, phép lai $\\mathrm{AaBb} \\times \\mathrm{aaBb}$ cho đời con có kiểu gene $\\mathrm{aaBB}$ chiếm tỉ lệ bao nhiêu? Viết kết quả dưới dạng phân số tối giản.",
+     "dap_an": "\\dfrac{1}{8}",
+     "loi_giai": "Tách từng cặp:\n$\\mathrm{Aa} \\times \\mathrm{aa}$ cho $\\mathrm{aa}$ với tỉ lệ $\\dfrac{1}{2}$.\n$\\mathrm{Bb} \\times \\mathrm{Bb}$ cho $\\mathrm{BB}$ với tỉ lệ $\\dfrac{1}{4}$.\nTỉ lệ kiểu gene $\\mathrm{aaBB}$: $\\dfrac{1}{2} \\times \\dfrac{1}{4} = \\dfrac{1}{8}$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01279",
+   "nhom_id": "KNB00555",
+   "thu_tu": 1,
+   "dang": "Viết mạch bổ sung dựa vào NTBS",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 3,
+   "cau_mau": []
+  },
+  {
+   "dang_id": "KDB01280",
+   "nhom_id": "KNB00555",
+   "thu_tu": 2,
+   "dang": "Cụm 1",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 3,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110202010",
+     "loai": "trac_nghiem",
+     "de": "Một mạch của gene có trình tự $5'-C-G-T-A-C-G-3'$. Mạch bổ sung của mạch này là",
+     "lua_chon": [
+      "$3'-G-C-A-T-G-C-5'$",
+      "$5'-G-C-A-T-G-C-3'$",
+      "$3'-G-C-U-A-G-C-5'$",
+      "$3'-C-G-T-A-C-G-5'$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thay theo nguyên tắc bổ sung: $\\mathrm{C\\rightarrow G}$, $\\mathrm{G\\rightarrow C}$, $\\mathrm{T\\rightarrow A}$, $\\mathrm{A\\rightarrow T}$, $\\mathrm{C\\rightarrow G}$, $\\mathrm{G\\rightarrow C}$, được $\\mathrm{G-C-A-T-G-C}$. Mạch đã cho chiều $5'\\rightarrow 3'$ nên mạch bổ sung có chiều $3'\\rightarrow 5'$."
+    },
+    {
+     "ma_cau": "K09110202006",
+     "loai": "trac_nghiem",
+     "de": "Một mạch của gene có trình tự $3'-\\mathrm{A}-\\mathrm{G}-\\mathrm{C}-\\mathrm{T}-\\mathrm{A}-5'$. Mạch bổ sung của mạch này, viết theo chiều $5'\\rightarrow3'$, là",
+     "lua_chon": [
+      "$5'-\\mathrm{T}-\\mathrm{C}-\\mathrm{G}-\\mathrm{A}-\\mathrm{T}-3'$",
+      "N. $5'-\\mathrm{A}-\\mathrm{G}-\\mathrm{C}-\\mathrm{T}-\\mathrm{A}-3'$",
+      "L. $5'-\\mathrm{U}-\\mathrm{C}-\\mathrm{G}-\\mathrm{A}-\\mathrm{U}-3'$",
+      "D. $5'-\\mathrm{T}-\\mathrm{G}-\\mathrm{C}-\\mathrm{A}-\\mathrm{T}-3'$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thay từng vị trí theo nguyên tắc bổ sung: $\\mathrm{A}\\rightarrow\\mathrm{T}$, $\\mathrm{G}\\rightarrow\\mathrm{C}$, $\\mathrm{C}\\rightarrow\\mathrm{G}$, $\\mathrm{T}\\rightarrow\\mathrm{A}$, $\\mathrm{A}\\rightarrow\\mathrm{T}$, được $\\mathrm{T}-\\mathrm{C}-\\mathrm{G}-\\mathrm{A}-\\mathrm{T}$. Vì mạch đã cho có chiều $3'\\rightarrow5'$ nên mạch bổ sung có chiều $5'\\rightarrow3'$. Phương án $\\mathrm{C}$ sai vì dùng base $\\mathrm{U}$ của RNA."
+    },
+    {
+     "ma_cau": "K09110202019",
+     "loai": "trac_nghiem",
+     "de": "Một mạch của gene có trình tự $\\mathrm{3' - G - A - T - T - C - G - A - 5'}$. Trên mạch bổ sung, tổng số nucleotide loại $\\mathrm{A}$ và $\\mathrm{T}$ là",
+     "lua_chon": [
+      "3",
+      "4",
+      "5",
+      "2"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Mạch bổ sung là $\\mathrm{C - T - A - A - G - C - T}$, trong đó $\\mathrm{A = 2}$ và $\\mathrm{T = 2}$ nên tổng bằng $\\mathrm{4}$. Kiểm tra bằng mẹo hoán đổi: mạch đã cho có $\\mathrm{A = 2}$, $\\mathrm{T = 2}$ nên mạch bổ sung có $\\mathrm{A = 2}$, $\\mathrm{T = 2}$, tổng vẫn là $\\mathrm{4}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01281",
+   "nhom_id": "KNB00555",
+   "thu_tu": 3,
+   "dang": "Cụm 2",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 3,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110202021",
+     "loai": "trac_nghiem",
+     "de": "Một mạch của gene có trình tự $3'-\\mathrm{G}-\\mathrm{G}-\\mathrm{G}-\\mathrm{C}-\\mathrm{C}-\\mathrm{C}-\\mathrm{C}-5'$. Số nucleotide loại $\\mathrm{G}$ trên mạch bổ sung là",
+     "lua_chon": [
+      "0",
+      "2",
+      "3",
+      "6"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Mạch bổ sung là $\\mathrm{C}-\\mathrm{C}-\\mathrm{C}-\\mathrm{G}-\\mathrm{G}-\\mathrm{G}-\\mathrm{G}$, có 3 nucleotide loại $\\mathrm{G}$. Cách nhanh: số $\\mathrm{G}$ của mạch bổ sung bằng số $\\mathrm{C}$ của mạch đã cho, tức là 3."
+    },
+    {
+     "ma_cau": "K09110202034",
+     "loai": "tra_loi_ngan",
+     "de": "Một mạch của gene có trình tự $5'\\text{—}C\\text{—}C\\text{—}G\\text{—}A\\text{—}T\\text{—}T\\text{—}3'$. Đếm số nucleotide loại A trên mạch bổ sung.",
+     "dap_an": "2",
+     "loi_giai": "Mạch bổ sung là $G\\text{—}G\\text{—}C\\text{—}T\\text{—}A\\text{—}A$, có 2 nucleotide loại A, đúng bằng số T của mạch đã cho."
+    },
+    {
+     "ma_cau": "K09110202035",
+     "loai": "tra_loi_ngan",
+     "de": "Một mạch của gene có trình tự $5' - \\mathrm{T} - \\mathrm{T} - \\mathrm{T} - \\mathrm{A} - \\mathrm{A} - \\mathrm{A} - 3'$. Đếm số nucleotide loại $\\mathrm{T}$ trên mạch bổ sung.",
+     "dap_an": "3",
+     "loi_giai": "Mạch bổ sung là $\\mathrm{A} - \\mathrm{A} - \\mathrm{A} - \\mathrm{T} - \\mathrm{T} - \\mathrm{T}$, có $3$ nucleotide loại $\\mathrm{T}$, đúng bằng số $\\mathrm{A}$ của mạch đã cho."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01282",
+   "nhom_id": "KNB00556",
+   "thu_tu": 1,
+   "dang": "Cụm 1 - Tính toán cơ bản về nucleic acid và gene",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 3,
+   "cau_mau": []
+  },
+  {
+   "dang_id": "KDB01283",
+   "nhom_id": "KNB00556",
+   "thu_tu": 2,
+   "dang": "Cụm 2 - Tính toán cơ bản về nucleic acid và gene",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 3,
+   "cau_mau": []
+  },
+  {
+   "dang_id": "KDB01284",
+   "nhom_id": "KNB00562",
+   "thu_tu": 1,
+   "dang": "KHÁI NIỆM, THỜI ĐIỂM, VỊ TRÍ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110501003",
+     "loai": "trac_nghiem",
+     "de": "Quá trình tái bản DNA diễn ra vào thời điểm nào của chu kì tế bào?",
+     "lua_chon": [
+      "Trong kì trung gian, trước khi tế bào phân chia.",
+      "Trong kì giữa của phân bào.",
+      "Trong kì sau của phân bào.",
+      "Ngay sau khi tế bào phân chia xong."
+     ],
+     "dap_an": "A",
+     "loi_giai": "DNA tự nhân đôi ở kì trung gian, hoàn tất trước khi tế bào bước vào quá trình phân chia, để mỗi tế bào con nhận đủ vật chất di truyền."
+    },
+    {
+     "ma_cau": "K09110501002",
+     "loai": "trac_nghiem",
+     "de": "Quá trình tái bản DNA diễn ra chủ yếu ở đâu trong tế bào?",
+     "lua_chon": [
+      "Tế bào chất.",
+      "Nhân tế bào.",
+      "Màng tế bào.",
+      "Thành tế bào."
+     ],
+     "dap_an": "B",
+     "loi_giai": "DNA tập trung trong nhân tế bào nên quá trình tái bản DNA diễn ra chủ yếu trong nhân tế bào."
+    },
+    {
+     "ma_cau": "K09110501005",
+     "loai": "trac_nghiem",
+     "de": "So với phân tử \\mathrm{DNA} mẹ, hai phân tử \\mathrm{DNA} con tạo ra sau tái bản có đặc điểm gì?",
+     "lua_chon": [
+      "Khác hoàn toàn \\mathrm{DNA} mẹ.",
+      "Giống hệt \\mathrm{DNA} mẹ và giống hệt nhau.",
+      "Chỉ giống một nửa \\mathrm{DNA} mẹ.",
+      "Có số nucleotide ít hơn \\mathrm{DNA} mẹ."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Nhờ nguyên tắc bổ sung được thực hiện chính xác, hai \\mathrm{DNA} con tạo ra giống hệt \\mathrm{DNA} mẹ và giống hệt nhau."
+    },
+    {
+     "ma_cau": "K09110501004",
+     "loai": "trac_nghiem",
+     "de": "Từ một phân tử DNA mẹ, quá trình tái bản tạo ra bao nhiêu phân tử DNA con?",
+     "lua_chon": [
+      "Một.",
+      "Hai.",
+      "Ba.",
+      "Bốn."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Kết quả của một lần tái bản là từ 1 phân tử \\mathrm{DNA} mẹ tạo ra 2 phân tử \\mathrm{DNA} con."
+    },
+    {
+     "ma_cau": "K09110501006",
+     "loai": "trac_nghiem",
+     "de": "Nguyên liệu để tổng hợp nên các mạch mới trong quá trình tái bản \\mathrm{DNA} là",
+     "lua_chon": [
+      "các axit amin tự do trong tế bào.",
+      "các nucleotide tự do trong môi trường nội bào.",
+      "các phân tử \\mathrm{RNA} có sẵn.",
+      "các phân tử prôtein có sẵn."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Mạch mới được tổng hợp từ các nucleotide tự do có trong môi trường nội bào, liên kết vào mạch khuôn theo nguyên tắc bổ sung."
+    },
+    {
+     "ma_cau": "K09110501001",
+     "loai": "trac_nghiem",
+     "de": "Quá trình tạo ra hai phân tử DNA con giống hệt DNA mẹ được gọi là",
+     "lua_chon": [
+      "phiên mã.",
+      "dịch mã.",
+      "tái bản (nhân đôi) DNA.",
+      "đột biến gen."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Quá trình DNA tự nhân đôi tạo ra các phân tử DNA con giống DNA mẹ được gọi là tái bản, còn gọi là nhân đôi hoặc sao chép DNA."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01285",
+   "nhom_id": "KNB00562",
+   "thu_tu": 2,
+   "dang": "DIỄN BIẾN CƠ BẢN CỦA QUÁ TRÌNH",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110501009",
+     "loai": "trac_nghiem",
+     "de": "Mạch mới được tổng hợp trong quá trình tái bản DNA liên kết với mạch khuôn theo nguyên tắc nào?",
+     "lua_chon": [
+      "Nguyên tắc bổ sung.",
+      "Nguyên tắc ngẫu nhiên.",
+      "Nguyên tắc bảo toàn nguyên vẹn cả hai mạch cũ.",
+      "Nguyên tắc chỉ giữ lại các nucleotide loại A và G."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nucleotide tự do trong môi trường liên kết với nucleotide trên mạch khuôn theo đúng nguyên tắc bổ sung: A khuôn ghép T môi trường, T khuôn ghép A môi trường, G khuôn ghép X môi trường, X khuôn ghép G môi trường."
+    },
+    {
+     "ma_cau": "K09110501012",
+     "loai": "trac_nghiem",
+     "de": "Hai mạch mới được tổng hợp trong quá trình tái bản DNA kết hợp với hai mạch khuôn tương ứng để tạo thành",
+     "lua_chon": [
+      "hai phân tử DNA con.",
+      "một phân tử DNA duy nhất.",
+      "một phân tử RNA.",
+      "bốn phân tử DNA con."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Mỗi mạch khuôn cùng với mạch mới vừa tổng hợp trên nó tạo thành một phân tử DNA con hoàn chỉnh; hai mạch khuôn tạo ra hai DNA con."
+    },
+    {
+     "ma_cau": "K09110501011",
+     "loai": "trac_nghiem",
+     "de": "Trong quá trình tái bản, mỗi mạch khuôn kết hợp với các nucleotide tự do để tạo thành",
+     "lua_chon": [
+      "một phân tử RNA.",
+      "một mạch DNA mới bổ sung với nó.",
+      "một chuỗi pôlipeptit.",
+      "một phân tử prôtêin."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Kết quả trực tiếp trên mỗi mạch khuôn là hình thành một mạch DNA mới, có trình tự bổ sung với mạch khuôn đó."
+    },
+    {
+     "ma_cau": "K09110501010",
+     "loai": "trac_nghiem",
+     "de": "Việc hai mạch DNA mẹ tách nhau ra trong quá trình tái bản có sự tham gia của",
+     "lua_chon": [
+      "ánh sáng mặt trời.",
+      "các enzim.",
+      "nhiệt độ cao bất thường trong tế bào.",
+      "dòng điện sinh học."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Các enzim trong tế bào xúc tác cho việc tháo xoắn và tách hai mạch DNA mẹ, tạo điều kiện để quá trình tổng hợp mạch mới diễn ra."
+    },
+    {
+     "ma_cau": "K09110501007",
+     "loai": "trac_nghiem",
+     "de": "Bước đầu tiên trong diễn biến của quá trình tái bản DNA là",
+     "lua_chon": [
+      "tổng hợp mạch mới hoàn chỉnh ngay lập tức.",
+      "hai phân tử DNA con tách nhau ra.",
+      "hai mạch đơn của DNA mẹ tách nhau ra (tháo xoắn).",
+      "các nucleotide tự do liên kết với nhau tạo mạch mới hoàn toàn độc lập, không cần khuôn."
+     ],
+     "dap_an": "C",
+     "loi_giai": "DNA mẹ tháo xoắn, hai mạch đơn tách nhau ra trước, sau đó mỗi mạch mới làm khuôn để tổng hợp mạch bổ sung."
+    },
+    {
+     "ma_cau": "K09110501008",
+     "loai": "trac_nghiem",
+     "de": "Trong quá trình tái bản DNA, mỗi mạch đơn của DNA mẹ đóng vai trò là",
+     "lua_chon": [
+      "mạch khuôn để tổng hợp mạch mới.",
+      "sản phẩm cuối cùng của quá trình.",
+      "nguyên liệu bị phân giải hoàn toàn.",
+      "thành phần không tham gia vào quá trình."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Mỗi mạch đơn của DNA mẹ làm khuôn, các nucleotide tự do trong môi trường liên kết vào mạch khuôn theo nguyên tắc bổ sung để tạo mạch mới."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01286",
+   "nhom_id": "KNB00562",
+   "thu_tu": 3,
+   "dang": "NGUYÊN TẮC BÁN BẢO TOÀN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110501018",
+     "loai": "trac_nghiem",
+     "de": "Nhận định nào sau đây sai về nguyên tắc bán bảo toàn trong tái bản DNA?",
+     "lua_chon": [
+      "Mỗi DNA con có một mạch cũ và một mạch mới.",
+      "Mạch cũ trong DNA con có nguồn gốc từ DNA mẹ.",
+      "Mạch mới trong DNA con được tổng hợp dựa trên mạch khuôn theo nguyên tắc bổ sung.",
+      "Cả hai mạch trong mỗi DNA con đều là mạch mới được tổng hợp lại hoàn toàn."
+     ],
+     "dap_an": "D",
+     "loi_giai": "D sai vì theo nguyên tắc bán bảo toàn, mỗi DNA con chỉ có một mạch mới, mạch còn lại là mạch cũ giữ lại từ DNA mẹ, không phải cả hai mạch đều mới."
+    },
+    {
+     "ma_cau": "K09110501015",
+     "loai": "trac_nghiem",
+     "de": "Vì sao quá trình tự nhân đôi DNA được gọi là bán bảo toàn mà không phải bảo toàn hoàn toàn?",
+     "lua_chon": [
+      "Vì DNA con không giữ lại mạch nào của DNA mẹ.",
+      "Vì DNA con giữ lại toàn bộ hai mạch của DNA mẹ.",
+      "Vì mỗi DNA con chỉ giữ lại một nửa (một mạch) vật liệu cũ của DNA mẹ.",
+      "Vì chỉ có một trong hai DNA con được tạo ra."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Giải thích chi tiết: \"Bảo toàn hoàn toàn\" nghĩa là giữ nguyên cả hai mạch cũ; thực tế mỗi DNA con chỉ giữ một mạch cũ (một nửa), nên gọi là bán bảo toàn."
+    },
+    {
+     "ma_cau": "K09110501016",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây đúng khi so sánh hai phân tử DNA con với nhau về mạch cũ và mạch mới trong mỗi phân tử?",
+     "lua_chon": [
+      "Cả hai DNA con đều gồm hai mạch mới hoàn toàn.",
+      "Mỗi DNA con đều gồm một mạch cũ và một mạch mới, giống nhau về đặc điểm này.",
+      "Một DNA con gồm hai mạch cũ, DNA con còn lại gồm hai mạch mới.",
+      "Chỉ một DNA con có mạch cũ, DNA con kia hoàn toàn mới."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Cả hai DNA con đều có cùng đặc điểm: một mạch cũ (từ mẹ) và một mạch mới (mới tổng hợp), thể hiện đúng nguyên tắc bán bảo toàn áp dụng như nhau cho cả hai."
+    },
+    {
+     "ma_cau": "K09110501017",
+     "loai": "trac_nghiem",
+     "de": "Nhờ đâu mà quá trình tái bản DNA diễn ra chính xác, tạo ra các DNA con giống hệt DNA mẹ?",
+     "lua_chon": [
+      "Nhờ nguyên tắc bổ sung được thực hiện nghiêm ngặt khi tổng hợp mạch mới trên mạch khuôn.",
+      "Nhờ DNA mẹ tự sao chép mà không cần mạch khuôn.",
+      "Nhờ các nucleotide tự do sắp xếp ngẫu nhiên.",
+      "Nhờ nhiệt độ môi trường tế bào luôn ổn định."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Việc mỗi mạch khuôn quy định chính xác loại nucleotide bổ sung tại từng vị trí là cơ sở đảm bảo hai DNA con có trình tự giống hệt DNA mẹ."
+    },
+    {
+     "ma_cau": "K09110501014",
+     "loai": "trac_nghiem",
+     "de": "Trong hai mạch đơn của một phân tử DNA con vừa được tạo ra sau tái bản, có bao nhiêu mạch là mạch cũ được giữ lại từ DNA mẹ?",
+     "lua_chon": [
+      "Không mạch nào.",
+      "Một mạch.",
+      "Cả hai mạch.",
+      "Chỉ có ở DNA con thứ nhất, không có ở DNA con thứ hai."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Giải thích chi tiết: Theo nguyên tắc bán bảo toàn, mỗi DNA con chỉ giữ lại một mạch cũ, mạch còn lại là mạch mới; cả hai DNA con đều có cấu tạo như vậy."
+    },
+    {
+     "ma_cau": "K09110501013",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tắc bán bảo toàn trong tái bản DNA được hiểu là",
+     "lua_chon": [
+      "cả hai mạch của DNA con đều là mạch mới hoàn toàn.",
+      "cả hai mạch của DNA con đều là mạch cũ của DNA mẹ.",
+      "mỗi DNA con gồm một mạch cũ của DNA mẹ và một mạch mới được tổng hợp.",
+      "DNA con không chứa mạch nào của DNA mẹ."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Giải thích chi tiết: 'Bán bảo toàn' nghĩa là giữ lại một nửa: mỗi phân tử DNA con gồm một mạch cũ (từ DNA mẹ) và một mạch mới vừa được tổng hợp."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01287",
+   "nhom_id": "KNB00562",
+   "thu_tu": 4,
+   "dang": "SUY LUẬN VỀ DIỄN BIẾN, KẾT QUẢ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110501019",
+     "loai": "trac_nghiem",
+     "de": "Giả sử một phân tử DNA đang trong quá trình tái bản, hai mạch đơn đã tách nhau và mỗi mạch đang được dùng làm khuôn. Nhận định nào sau đây về giai đoạn này là đúng?",
+     "lua_chon": [
+      "Quá trình đã hoàn tất, hai DNA con đã hình thành đầy đủ.",
+      "Đây là giai đoạn duy nhất không cần nguyên tắc bổ sung.",
+      "Cả hai mạch khuôn sẽ tạo ra một DNA con chung duy nhất.",
+      "Mỗi mạch khuôn đang được các nucleotide tự do liên kết vào theo nguyên tắc bổ sung để hình thành mạch mới tương ứng."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ở giai đoạn hai mạch đã tách và đang làm khuôn, quá trình đang diễn ra tổng hợp mạch mới trên từng mạch khuôn riêng biệt theo nguyên tắc bổ sung, chưa phải là kết quả cuối cùng."
+    },
+    {
+     "ma_cau": "K09110501022",
+     "loai": "trac_nghiem",
+     "de": "Nếu trong quá trình tái bản, nguyên tắc bổ sung không được thực hiện chính xác ở một vị trí nào đó, hậu quả trực tiếp có thể là",
+     "lua_chon": [
+      "Mạch mới được tổng hợp tại vị trí đó không còn khớp chính xác với mạch khuôn, làm \\mathrm{DNA} con có thể khác \\mathrm{DNA} mẹ tại vị trí đó.",
+      "Toàn bộ quá trình tái bản sẽ dừng lại vĩnh viễn.",
+      "\\mathrm{DNA} mẹ sẽ tự động sửa chữa mà không để lại hậu quả nào.",
+      "Số lượng \\mathrm{DNA} con tạo ra sẽ tăng lên gấp đôi."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nguyên tắc bổ sung là cơ sở đảm bảo \\mathrm{DNA} con giống \\mathrm{DNA} mẹ; nếu bị vi phạm tại một vị trí, mạch mới không khớp chính xác với mạch khuôn tại vị trí đó."
+    },
+    {
+     "ma_cau": "K09110501021",
+     "loai": "trac_nghiem",
+     "de": "Kết thúc quá trình tái bản, hai phân tử DNA con được tạo ra có vai trò gì đối với tế bào?",
+     "lua_chon": [
+      "Được vận chuyển ra ngoài tế bào.",
+      "Bị phân giải ngay sau khi hình thành.",
+      "Là cơ sở vật chất để phân chia đều cho các tế bào con trong quá trình phân bào.",
+      "Không có vai trò gì đặc biệt."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Hai DNA con giống hệt nhau và giống DNA mẹ gắn với prôtein tạo thành nhiễm sắc thể kép, sau đó được phân chia đều cho các tế bào con khi tế bào phân bào."
+    },
+    {
+     "ma_cau": "K09110501024",
+     "loai": "trac_nghiem",
+     "de": "Nhận định nào sau đây sai khi nói về quá trình tái bản \\mathrm{DNA}?",
+     "lua_chon": [
+      "Diễn ra trong nhân tế bào, ở kì trung gian.",
+      "Cả hai mạch của \\mathrm{DNA} mẹ đều được dùng làm khuôn.",
+      "Kết quả tạo ra hai \\mathrm{DNA} con giống hệt \\mathrm{DNA} mẹ.",
+      "Toàn bộ hai mạch của mỗi \\mathrm{DNA} con đều là mạch mới, không giữ lại mạch nào của \\mathrm{DNA} mẹ."
+     ],
+     "dap_an": "D",
+     "loi_giai": "\\mathrm{D} sai vì theo nguyên tắc bán bảo toàn, mỗi \\mathrm{DNA} con giữ lại một mạch cũ của \\mathrm{DNA} mẹ, không phải toàn bộ hai mạch đều mới."
+    },
+    {
+     "ma_cau": "K09110501020",
+     "loai": "trac_nghiem",
+     "de": "Điểm khác nhau cơ bản giữa quá trình tái bản DNA và quá trình phiên mã tạo RNA là gì?",
+     "lua_chon": [
+      "Tái bản không cần nguyên tắc bổ sung, phiên mã thì cần.",
+      "Tái bản tạo ra RNA, phiên mã tạo ra DNA.",
+      "Tái bản chỉ sử dụng một mạch khuôn, phiên mã sử dụng cả hai mạch khuôn.",
+      "Tái bản sử dụng cả hai mạch DNA mẹ làm khuôn để tạo ra hai DNA con, còn phiên mã chỉ sử dụng một mạch làm khuôn để tạo ra phân tử RNA."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Trong tái bản, cả hai mạch DNA mẹ đều làm khuôn, kết quả là hai DNA con; trong phiên mã, chỉ một mạch của gen làm khuôn để tổng hợp nên một phân tử RNA."
+    },
+    {
+     "ma_cau": "K09110501023",
+     "loai": "trac_nghiem",
+     "de": "Việc quá trình tái bản \\mathrm{DNA} luôn diễn ra trước khi tế bào phân chia có ý nghĩa gì?",
+     "lua_chon": [
+      "Giúp tế bào mẹ có kích thước lớn hơn trước khi phân chia.",
+      "Giúp tiết kiệm năng lượng cho tế bào.",
+      "Không có ý nghĩa đặc biệt, chỉ là trình tự ngẫu nhiên.",
+      "Đảm bảo mỗi tế bào con sau khi phân chia đều nhận đủ vật chất di truyền giống tế bào mẹ."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Nếu \\mathrm{DNA} không nhân đôi trước, các tế bào con sau phân chia sẽ không đủ vật chất di truyền; tái bản trước phân chia đảm bảo mỗi tế bào con nhận được bộ \\mathrm{DNA} đầy đủ, giống tế bào mẹ."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01288",
+   "nhom_id": "KNB00562",
+   "thu_tu": 5,
+   "dang": "TỔNG HỢP, Ý NGHĨA CỦA TÁI BẢN DNA",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110501027",
+     "loai": "trac_nghiem",
+     "de": "Vì sao tái bản DNA được xem là cơ sở của hiện tượng nhiễm sắc thể tự nhân đôi trong phân bào?",
+     "lua_chon": [
+      "Vì nhiễm sắc thể không liên quan đến DNA.",
+      "Vì tái bản DNA chỉ xảy ra sau khi nhiễm sắc thể đã nhân đôi xong.",
+      "Vì mỗi nhiễm sắc thể chỉ chứa RNA, không chứa DNA.",
+      "Vì mỗi nhiễm sắc thể chứa một phân tử DNA; khi DNA tái bản tạo ra hai phân tử giống hệt nhau thì nhiễm sắc thể cũng trở thành nhiễm sắc thể kép gồm hai crômatit giống hệt nhau."
+     ],
+     "dap_an": "D",
+     "loi_giai": "DNA là thành phần chính cấu tạo nên nhiễm sắc thể; khi DNA nhân đôi tạo ra hai phân tử giống hệt nhau, nhiễm sắc thể tương ứng trở thành nhiễm sắc thể kép với hai crômatit chị em giống hệt nhau."
+    },
+    {
+     "ma_cau": "K09110501029",
+     "loai": "trac_nghiem",
+     "de": "So sánh vai trò của nguyên tắc bổ sung trong cấu trúc DNA và trong quá trình tái bản DNA, nhận định nào sau đây đúng?",
+     "lua_chon": [
+      "Trong cấu trúc, nguyên tắc bổ sung không được áp dụng, chỉ áp dụng khi tái bản.",
+      "Nguyên tắc bổ sung chỉ có vai trò trong tái bản, không liên quan đến cấu trúc DNA.",
+      "Nguyên tắc bổ sung vừa quy định sự khớp giữa hai mạch trong cấu trúc DNA, vừa là cơ sở để tổng hợp chính xác mạch mới khi tái bản.",
+      "Nguyên tắc bổ sung chỉ áp dụng cho RNA, không áp dụng cho DNA."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nguyên tắc bổ sung xuyên suốt cả hai khía cạnh: quy định cách hai mạch DNA khớp với nhau trong cấu trúc, đồng thời là cơ sở để mạch mới được tổng hợp chính xác trong tái bản."
+    },
+    {
+     "ma_cau": "K09110501028",
+     "loai": "trac_nghiem",
+     "de": "Trong trường hợp tế bào không thực hiện tái bản DNA trước khi phân chia, điều gì có thể xảy ra?",
+     "lua_chon": [
+      "Tế bào vẫn phân chia bình thường vì DNA không ảnh hưởng đến phân bào.",
+      "Các tế bào con sẽ có nhiều DNA hơn tế bào mẹ.",
+      "Các tế bào con sẽ không nhận đủ vật chất di truyền như tế bào mẹ.",
+      "Quá trình phiên mã sẽ thay thế hoàn toàn vai trò của tái bản."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nếu không tái bản, lượng DNA không đủ để chia đều cho các tế bào con, khiến tế bào con thiếu hụt vật chất di truyền so với tế bào mẹ."
+    },
+    {
+     "ma_cau": "K09110501025",
+     "loai": "trac_nghiem",
+     "de": "Ý nghĩa quan trọng nhất của quá trình tái bản DNA đối với sinh vật là gì?",
+     "lua_chon": [
+      "Làm tăng kích thước của tế bào.",
+      "Làm thay đổi thông tin di truyền qua mỗi thế hệ tế bào.",
+      "Giúp tế bào tổng hợp được nhiều loại prôtêin hơn.",
+      "Đảm bảo thông tin di truyền được truyền đạt ổn định, chính xác qua các thế hệ tế bào và cơ thể."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Nhờ tái bản chính xác theo nguyên tắc bổ sung, thông tin di truyền chứa trong DNA được truyền nguyên vẹn qua các thế hệ tế bào (nhờ nguyên phân) và các thế hệ cơ thể (nhờ giảm phân, thụ tinh)."
+    },
+    {
+     "ma_cau": "K09110501030",
+     "loai": "trac_nghiem",
+     "de": "Nhận định nào sau đây khái quát đúng nhất mối liên hệ giữa cấu trúc DNA và quá trình tái bản DNA?",
+     "lua_chon": [
+      "Cấu trúc DNA không liên quan đến cách thức tái bản diễn ra.",
+      "Tái bản DNA chỉ phụ thuộc vào enzim, không phụ thuộc cấu trúc DNA.",
+      "Hai mạch đơn của DNA chỉ có vai trò trong cấu trúc, không tham gia vào tái bản.",
+      "Chính cấu trúc hai mạch bổ sung của DNA là cơ sở để mỗi mạch có thể làm khuôn, giúp quá trình tái bản diễn ra theo nguyên tắc bán bảo toàn và tạo ra DNA con chính xác."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cấu trúc hai mạch bổ sung không chỉ đơn thuần là hình dạng của DNA mà chính là điều kiện để cơ chế tái bản (mỗi mạch làm khuôn, tổng hợp theo nguyên tắc bổ sung) có thể diễn ra chính xác."
+    },
+    {
+     "ma_cau": "K09110501026",
+     "loai": "trac_nghiem",
+     "de": "Cho các phát biểu sau về tái bản DNA:\n(1) Diễn ra ở kì trung gian, trước khi phân bào.\n(2) Cả hai mạch DNA mẹ đều làm khuôn.\n(3) Mạch mới được tổng hợp theo nguyên tắc bổ sung.\n(4) Kết quả tạo ra hai DNA con, mỗi DNA con có một mạch cũ và một mạch mới.\nSố phát biểu đúng là",
+     "lua_chon": [
+      "4 phát biểu.",
+      "1 phát biểu.",
+      "2 phát biểu.",
+      "3 phát biểu."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cả bốn phát biểu đều đúng, mô tả đầy đủ diễn biến, nguyên tắc và kết quả của quá trình tái bản DNA."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01289",
+   "nhom_id": "KNB00563",
+   "thu_tu": 1,
+   "dang": "THÀNH PHẦN VÀ CẤU TẠO CHUNG CỦA RNA",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110502006",
+     "loai": "trac_nghiem",
+     "de": "Mỗi phân tử RNA thường gồm khoảng bao nhiêu đơn phân?",
+     "lua_chon": [
+      "Vài chục đơn phân.",
+      "Hàng trăm hoặc hàng nghìn đơn phân.",
+      "Chỉ 4 đơn phân duy nhất.",
+      "Hàng triệu đơn phân."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Mỗi phân tử RNA gồm hàng trăm hoặc hàng nghìn đơn phân ribonucleotide liên kết với nhau."
+    },
+    {
+     "ma_cau": "K09110502005",
+     "loai": "trac_nghiem",
+     "de": "Các đơn phân trong một mạch RNA liên kết với nhau bằng loại liên kết nào?",
+     "lua_chon": [
+      "Liên kết hydrogen.",
+      "Liên kết ion.",
+      "Liên kết cộng hoá trị.",
+      "Liên kết peptide."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Các ribonucleotide liên kết với nhau bằng liên kết cộng hoá trị, tạo thành chuỗi polyribonucleotide."
+    },
+    {
+     "ma_cau": "K09110502004",
+     "loai": "trac_nghiem",
+     "de": "So với DNA, RNA có đơn phân khác biệt ở loại bazơ nitơ nào?",
+     "lua_chon": [
+      "RNA có uracil thay cho thymine.",
+      "RNA có cytosine thay cho guanine.",
+      "RNA có thymine thay cho adenine.",
+      "RNA có guanine thay cho cytosine."
+     ],
+     "dap_an": "A",
+     "loi_giai": "RNA không chứa thymine mà thay bằng uracil; ba loại còn lại (adenine, guanine, cytosine) giống DNA."
+    },
+    {
+     "ma_cau": "K09110502003",
+     "loai": "trac_nghiem",
+     "de": "Bốn loại ribonucleotide cấu tạo nên RNA là",
+     "lua_chon": [
+      "A, T, G, C.",
+      "A, U, G, C.",
+      "A, T, G, U.",
+      "A, U, T, C."
+     ],
+     "dap_an": "B",
+     "loi_giai": "RNA có 4 loại đơn phân là adenine (A), uracil (U), guanine (G), cytosine (C); RNA không có thymine (T), thay bằng uracil (U)."
+    },
+    {
+     "ma_cau": "K09110502002",
+     "loai": "trac_nghiem",
+     "de": "Đơn phân cấu tạo nên phân tử RNA là",
+     "lua_chon": [
+      "amino acid.",
+      "deoxyribonucleotide.",
+      "ribonucleotide.",
+      "glucose."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đơn phân của RNA là ribonucleotide; deoxyribonucleotide là đơn phân của DNA, amino acid là đơn phân của protein."
+    },
+    {
+     "ma_cau": "K09110502001",
+     "loai": "trac_nghiem",
+     "de": "RNA là tên viết tắt của",
+     "lua_chon": [
+      "deoxyribonucleic acid.",
+      "ribonucleic acid.",
+      "amino acid.",
+      "ribose acid."
+     ],
+     "dap_an": "B",
+     "loi_giai": "RNA là ribonucleic acid, khác với DNA (deoxyribonucleic acid). “Ribose acid” không phải tên gọi đúng của RNA."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01290",
+   "nhom_id": "KNB00563",
+   "thu_tu": 2,
+   "dang": "ĐẶC ĐIỂM CẤU TRÚC RNA, NƠI TỔNG HỢP VÀ HOẠT ĐỘNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110502007",
+     "loai": "trac_nghiem",
+     "de": "Trong tế bào, phân tử RNA có cấu trúc gồm",
+     "lua_chon": [
+      "hai mạch xoắn kép, giống DNA.",
+      "một mạch đơn, khác với DNA hai mạch.",
+      "ba mạch xoắn vào nhau.",
+      "không có cấu trúc mạch xác định."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khác với DNA có cấu trúc hai mạch xoắn kép, RNA trong tế bào có cấu trúc một mạch đơn."
+    },
+    {
+     "ma_cau": "K09110502009",
+     "loai": "trac_nghiem",
+     "de": "Trong tế bào, phân tử RNA được tổng hợp chủ yếu ở đâu?",
+     "lua_chon": [
+      "Tế bào chất.",
+      "Nhân tế bào (hoặc vùng nhân).",
+      "Màng tế bào.",
+      "Thành tế bào."
+     ],
+     "dap_an": "B",
+     "loi_giai": "RNA được tổng hợp ở nhân tế bào (ở sinh vật nhân thực) hoặc vùng nhân (ở sinh vật nhân sơ), sau đó phần lớn di chuyển ra ngoài để thực hiện chức năng."
+    },
+    {
+     "ma_cau": "K09110502008",
+     "loai": "trac_nghiem",
+     "de": "So với DNA, kích thước và khối lượng của phân tử RNA thường",
+     "lua_chon": [
+      "lớn hơn nhiều.",
+      "nhỏ hơn.",
+      "bằng nhau.",
+      "không thể so sánh được."
+     ],
+     "dap_an": "B",
+     "loi_giai": "RNA là đại phân tử nhưng kích thước, khối lượng thường nhỏ hơn DNA."
+    },
+    {
+     "ma_cau": "K09110502012",
+     "loai": "trac_nghiem",
+     "de": "Dựa vào cấu trúc và chức năng, RNA trong tế bào được chia thành mấy loại chính?",
+     "lua_chon": [
+      "Hai loại.",
+      "Ba loại.",
+      "Bốn loại.",
+      "Năm loại."
+     ],
+     "dap_an": "B",
+     "loi_giai": "RNA được chia thành ba loại chính: RNA thông tin (mRNA), RNA vận chuyển (tRNA) và RNA ribosome (rRNA)."
+    },
+    {
+     "ma_cau": "K09110502011",
+     "loai": "trac_nghiem",
+     "de": "RNA có phải là đại phân tử sinh học hay không?",
+     "lua_chon": [
+      "Không, vì kích thước RNA luôn rất nhỏ.",
+      "Không, vì RNA chỉ có một loại đơn phân.",
+      "Có, RNA vẫn là đại phân tử dù kích thước và khối lượng thường nhỏ hơn DNA.",
+      "Có, vì RNA luôn lớn hơn DNA."
+     ],
+     "dap_an": "C",
+     "loi_giai": "RNA là đại phân tử sinh học cấu tạo đa phân, chỉ có kích thước và khối lượng thường nhỏ hơn DNA chứ không phải là phân tử nhỏ."
+    },
+    {
+     "ma_cau": "K09110502010",
+     "loai": "trac_nghiem",
+     "de": "Sau khi được tổng hợp, hầu hết các phân tử RNA thực hiện chức năng ở đâu trong tế bào?",
+     "lua_chon": [
+      "Tế bào chất.",
+      "Nhân tế bào.",
+      "Màng nhân.",
+      "Thành tế bào."
+     ],
+     "dap_an": "A",
+     "loi_giai": "RNA được tổng hợp trong nhân (hoặc vùng nhân) nhưng hầu hết thực hiện chức năng ở tế bào chất, nơi diễn ra quá trình tổng hợp protein."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01291",
+   "nhom_id": "KNB00563",
+   "thu_tu": 3,
+   "dang": "BA LOẠI RNA: mRNA, tRNA, rRNA",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110502014",
+     "loai": "trac_nghiem",
+     "de": "RNA vận chuyển (tRNA) có chức năng gì?",
+     "lua_chon": [
+      "Vận chuyển amino acid đến nơi tổng hợp protein.",
+      "Truyền đạt thông tin di truyền từ gene.",
+      "Cấu tạo nên màng tế bào.",
+      "Dự trữ thông tin di truyền lâu dài."
+     ],
+     "dap_an": "A",
+     "loi_giai": "tRNA có chức năng vận chuyển amino acid tương ứng đến nơi tổng hợp protein."
+    },
+    {
+     "ma_cau": "K09110502013",
+     "loai": "trac_nghiem",
+     "de": "RNA thông tin (mRNA) có chức năng gì?",
+     "lua_chon": [
+      "Vận chuyển amino acid đến nơi tổng hợp protein.",
+      "Cấu tạo nên ribosome.",
+      "Dự trữ năng lượng cho tế bào.",
+      "Truyền đạt thông tin di truyền, làm khuôn trực tiếp cho quá trình tổng hợp chuỗi polypeptide."
+     ],
+     "dap_an": "D",
+     "loi_giai": "mRNA là chuỗi polyribonucleotide dạng thẳng, mang thông tin di truyền từ gene và làm khuôn trực tiếp cho quá trình dịch mã tổng hợp chuỗi polypeptide."
+    },
+    {
+     "ma_cau": "K09110502018",
+     "loai": "trac_nghiem",
+     "de": "Trong ba loại RNA, loại nào làm khuôn trực tiếp cho quá trình tổng hợp chuỗi polypeptide?",
+     "lua_chon": [
+      "tRNA.",
+      "rRNA.",
+      "Cả tRNA và rRNA.",
+      "mRNA."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Chỉ mRNA mang trình tự trực tiếp làm khuôn cho quá trình dịch mã tổng hợp chuỗi polypeptide; tRNA và rRNA có vai trò khác trong quá trình này."
+    },
+    {
+     "ma_cau": "K09110502017",
+     "loai": "trac_nghiem",
+     "de": "Việc một số vùng của tRNA và rRNA tự bắt cặp bổ sung tạo ra điều điều gì?",
+     "lua_chon": [
+      "Phân tử RNA trở thành mạch kép hoàn toàn giống DNA.",
+      "Phân tử RNA mất hoàn toàn khả năng thực hiện chức năng.",
+      "Cấu trúc không gian ba chiều đặc trưng, phù hợp với chức năng của từng loại RNA.",
+      "Phân tử RNA bị phân giải ngay sau khi hình thành."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Sự tự bắt cặp bổ sung ở một số vùng giúp tRNA, rRNA cuộn lại thành cấu trúc không gian ba chiều đặc trưng, phù hợp với chức năng vận chuyển amino acid hoặc cấu tạo ribosome."
+    },
+    {
+     "ma_cau": "K09110502016",
+     "loai": "trac_nghiem",
+     "de": "Ở tRNA và rRNA, một số vùng trên phân tử tự bắt cặp bổ sung theo nguyên tắc nào?",
+     "lua_chon": [
+      "A liên kết với U, G liên kết với C.",
+      "A liên kết với T, G liên kết với C.",
+      "A liên kết với G, U liên kết với C.",
+      "Không theo nguyên tắc bổ sung nào."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Một số vùng trên tRNA và rRNA tự bắt cặp bổ sung giữa các ribonucleotide trong cùng một mạch theo nguyên tắc A liên kết U, G liên kết C, tạo cấu trúc không gian ba chiều đặc trưng."
+    },
+    {
+     "ma_cau": "K09110502015",
+     "loai": "trac_nghiem",
+     "de": "RNA ribosome (rRNA) có vai trò gì?",
+     "lua_chon": [
+      "Làm khuôn trực tiếp cho quá trình tổng hợp chuỗi polypeptide.",
+      "Vận chuyển amino acid.",
+      "Lưu giữ thông tin di truyền của tế bào.",
+      "Là thành phần chủ yếu cấu tạo nên ribosome \\text{ — nơi tổng hợp protein."
+     ],
+     "dap_an": "D",
+     "loi_giai": "rRNA là thành phần chủ yếu cấu tạo nên ribosome, bào quan thực hiện quá trình tổng hợp protein."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01292",
+   "nhom_id": "KNB00563",
+   "thu_tu": 4,
+   "dang": "QUÁ TRÌNH PHIÊN MÃ: KHÁI NIỆM, VỊ TRÍ, KHUÔN, NGUYÊN TẮC BỔ SUNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110502024",
+     "loai": "trac_nghiem",
+     "de": "Nguyên liệu để tổng hợp phân tử RNA trong quá trình phiên mã là",
+     "lua_chon": [
+      "các nucleotide loại A, T, G, C tự do.",
+      "các amino acid tự do.",
+      "các ribonucleotide tự do trong môi trường nội bào.",
+      "các phân tử protein có sẵn."
+     ],
+     "dap_an": "C",
+     "loi_giai": "RNA được tổng hợp từ các ribonucleotide tự do (A, U, G, C) có trong môi trường nội bào, liên kết vào mạch khuôn theo nguyên tắc bổ sung."
+    },
+    {
+     "ma_cau": "K09110502023",
+     "loai": "trac_nghiem",
+     "de": "Trong quá trình phiên mã, nucleotide loại T trên mạch khuôn liên kết với ribonucleotide loại nào của môi trường?",
+     "lua_chon": [
+      "U.",
+      "A.",
+      "G.",
+      "C."
+     ],
+     "dap_an": "B",
+     "loi_giai": "T trên mạch khuôn liên kết với A của môi trường theo nguyên tắc bổ sung."
+    },
+    {
+     "ma_cau": "K09110502021",
+     "loai": "trac_nghiem",
+     "de": "Trong quá trình phiên mã, khuôn để tổng hợp phân tử RNA là",
+     "lua_chon": [
+      "cả hai mạch của gene.",
+      "toàn bộ phân tử RNA có sẵn trong tế bào.",
+      "một mạch của gene (DNA).",
+      "chuỗi polypeptide có sẵn."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khác với tái bản DNA (dùng cả hai mạch làm khuôn), phiên mã chỉ dùng một mạch của gene làm khuôn để tổng hợp RNA."
+    },
+    {
+     "ma_cau": "K09110502022",
+     "loai": "trac_nghiem",
+     "de": "Trong quá trình phiên mã, nucleotide loại A trên mạch khuôn liên kết với ribonucleotide loại nào của môi trường?",
+     "lua_chon": [
+      "A.",
+      "T.",
+      "G.",
+      "U."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Theo nguyên tắc bổ sung khi phiên mã, A trên mạch khuôn liên kết với U của môi trường vì RNA không có T."
+    },
+    {
+     "ma_cau": "K09110502020",
+     "loai": "trac_nghiem",
+     "de": "Quá trình phiên mã diễn ra chủ yếu ở đâu trong tế bào?",
+     "lua_chon": [
+      "Tế bào chất.",
+      "Màng tế bào.",
+      "Ribosome.",
+      "Nhân tế bào (hoặc vùng nhân ở sinh vật nhân sơ)."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Phiên mã diễn ra trong nhân tế bào ở sinh vật nhân thực, hoặc vùng nhân ở sinh vật nhân sơ."
+    },
+    {
+     "ma_cau": "K09110502019",
+     "loai": "trac_nghiem",
+     "de": "Phiên mã là quá trình",
+     "lua_chon": [
+      "tổng hợp các phân tử RNA dựa trên trình tự polynucleotide của gene (DNA).",
+      "tổng hợp DNA dựa trên khuôn RNA.",
+      "tổng hợp chuỗi polypeptide dựa trên khuôn mRNA.",
+      "nhân đôi DNA tạo ra hai phân tử DNA con."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Phiên mã là quá trình tổng hợp RNA dựa trên trình tự polynucleotide của gene; tổng hợp polypeptide từ mRNA là quá trình dịch mã, còn nhân đôi DNA là tái bản."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01293",
+   "nhom_id": "KNB00563",
+   "thu_tu": 5,
+   "dang": "KẾT QUẢ VÀ Ý NGHĨA CỦA PHIÊN MÃ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110502028",
+     "loai": "trac_nghiem",
+     "de": "Cho các phát biểu sau về phiên mã: (1) Diễn ra trong nhân tế bào hoặc vùng nhân. (2) Chỉ một mạch của gene được dùng làm khuôn. (3) Nguyên tắc bổ sung: A khuôn với U môi trường, G khuôn với C môi trường. (4) Sản phẩm là một phân tử RNA. (5) Enzyme không tham gia vào quá trình phiên mã. Số phát biểu đúng là",
+     "lua_chon": [
+      "5 phát biểu.",
+      "3 phát biểu.",
+      "2 phát biểu.",
+      "4 phát biểu."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đáp án chi tiết: (1), (2), (3), (4) đúng; (5) sai vì quá trình phiên mã cần enzyme xúc tác để thực hiện các bước tháo xoắn và tổng hợp RNA."
+    },
+    {
+     "ma_cau": "K09110502030",
+     "loai": "trac_nghiem",
+     "de": "Mối quan hệ giữa gene, phiên mã và RNA được thể hiện đúng nhất qua nhận định nào sau đây?",
+     "lua_chon": [
+      "RNA quy định trực tiếp trình tự nucleotide trên gene.",
+      "Gene và RNA không có mối liên hệ nào với nhau.",
+      "Phiên mã làm thay đổi vĩnh viễn trình tự nucleotide trên gene.",
+      "Trình tự ribonucleotide trên phân tử RNA được quy định bởi trình tự nucleotide trên mạch khuôn của gene, thông qua quá trình phiên mã."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Gene mang thông tin di truyền dưới dạng trình tự nucleotide; qua phiên mã, trình tự đó được sao chép sang phân tử RNA dưới dạng trình tự ribonucleotide bổ sung, gene không bị thay đổi sau quá trình này."
+    },
+    {
+     "ma_cau": "K09110502029",
+     "loai": "trac_nghiem",
+     "de": "Nhận định nào sau đây sai về quá trình phiên mã?",
+     "lua_chon": [
+      "Phiên mã sử dụng cả hai mạch của gene làm khuôn, giống như tái bản DNA.",
+      "Phiên mã tổng hợp nên phân tử RNA dựa trên trình tự của gene.",
+      "Nguyên tắc bổ sung được áp dụng trong suốt quá trình phiên mã.",
+      "Sản phẩm của phiên mã có cấu trúc một mạch."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đáp án chi tiết: A sai vì phiên mã chỉ dùng một mạch của gene làm khuôn, khác với tái bản DNA dùng cả hai mạch; ba phát biểu còn lại đều đúng."
+    },
+    {
+     "ma_cau": "K09110502027",
+     "loai": "trac_nghiem",
+     "de": "Ý nghĩa của quá trình phiên mã đối với tế bào là gì?",
+     "lua_chon": [
+      "Làm tăng số lượng DNA trong tế bào.",
+      "Làm giảm số lượng gene trong tế bào.",
+      "Chuyển thông tin di truyền từ gene (DNA) sang RNA, làm cơ sở cho việc tổng hợp protein quy định tính trạng.",
+      "Thay thế hoàn toàn chức năng của tái bản DNA."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Phiên mã chuyển thông tin di truyền từ gene sang các phân tử RNA, trong đó mRNA tiếp tục làm khuôn tổng hợp protein — cơ sở để gene biểu hiện thành tính trạng."
+    },
+    {
+     "ma_cau": "K09110502025",
+     "loai": "trac_nghiem",
+     "de": "Kết quả của quá trình phiên mã là tạo ra",
+     "lua_chon": [
+      "một phân tử RNA có trình tự ribonucleotide bổ sung với mạch khuôn của gene.",
+      "hai phân tử DNA giống hệt gene ban đầu.",
+      "một chuỗi polypeptide hoàn chỉnh.",
+      "bốn loại protein khác nhau."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Sản phẩm trực tiếp của phiên mã là một phân tử RNA có trình tự ribonucleotide bổ sung với trình tự nucleotide trên mạch khuôn của gene."
+    },
+    {
+     "ma_cau": "K09110502026",
+     "loai": "trac_nghiem",
+     "de": "Sau khi được tổng hợp trong quá trình phiên mã, phân tử mRNA có vai trò gì tiếp theo?",
+     "lua_chon": [
+      "Trở thành mạch khuôn cho một lần phiên mã khác duy nhất.",
+      "Bị phân giải ngay lập tức, không có vai trò gì thêm.",
+      "Kết hợp trực tiếp với DNA để tạo phân tử lai DNA-RNA bền vững.",
+      "Làm khuôn cho quá trình dịch mã, tổng hợp nên chuỗi polypeptide tương ứng."
+     ],
+     "dap_an": "D",
+     "loi_giai": "mRNA sau khi tổng hợp được dùng làm khuôn cho quá trình dịch mã (diễn ra ở giai đoạn tiếp theo) để tổng hợp chuỗi polypeptide tương ứng."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01294",
+   "nhom_id": "KNB00564",
+   "thu_tu": 1,
+   "dang": "SO SÁNH THÀNH PHẦN ĐƠN PHÂN DNA – RNA",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110503004",
+     "loai": "trac_nghiem",
+     "de": "Trong bốn loại bazơ nitơ, loại nào có ở DNA nhưng không có ở RNA?",
+     "lua_chon": [
+      "Thymine.",
+      "Adenine.",
+      "Guanine.",
+      "Cytosine."
+     ],
+     "dap_an": "A",
+     "loi_giai": "DNA có thymine, RNA thay thymine bằng uracil; ba loại còn lại giống nhau ở cả hai loại nucleic acid."
+    },
+    {
+     "ma_cau": "K09110503001",
+     "loai": "trac_nghiem",
+     "de": "Đơn phân cấu tạo nên DNA và RNA giống nhau ở điểm nào?",
+     "lua_chon": [
+      "Đều có 4 loại giống hệt nhau về bazơ nitơ.",
+      "Đều gồm ba thành phần: đường, nhóm phosphate và một bazơ nitơ.",
+      "Đều có đường ribose.",
+      "Đều không chứa nhóm phosphate."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Dù đường và một loại bazơ nitơ khác nhau, đơn phân của cả DNA (deoxyribonucleotide) và RNA (ribonucleotide) đều gồm ba thành phần: đường, nhóm phosphate và một bazơ nitơ."
+    },
+    {
+     "ma_cau": "K09110503005",
+     "loai": "trac_nghiem",
+     "de": "DNA và RNA giống nhau ở những loại bazơ nitơ nào?",
+     "lua_chon": [
+      "Chỉ giống nhau ở adenine.",
+      "Không có loại nào giống nhau.",
+      "Adenine, guanine, cytosine.",
+      "Chỉ giống nhau ở guanine và cytosine."
+     ],
+     "dap_an": "C",
+     "loi_giai": "DNA và RNA cũng có ba loại bazơ nitơ adenine, guanine, cytosine; khác nhau ở loại\nthứ tư (thymine ở DNA, uracil ở RNA)."
+    },
+    {
+     "ma_cau": "K09110503002",
+     "loai": "trac_nghiem",
+     "de": "Điểm khác nhau về đơn phân giữa DNA và RNA là gì?",
+     "lua_chon": [
+      "DNA có đơn phân là amino acid, RNA có đơn phân là nucleotide.",
+      "DNA không có nhóm phosphate, RNA có nhóm phosphate.",
+      "Đơn phân DNA có đường deoxyribose, đơn phân RNA có đường ribose.",
+      "DNA không có bazơ nitơ, RNA có bazơ nitơ."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đường trong đơn phân của DNA là deoxyribose, còn trong đơn phân của RNA là ribose; đây là một điểm khác biệt cơ bản."
+    },
+    {
+     "ma_cau": "K09110503003",
+     "loai": "trac_nghiem",
+     "de": "Trong bốn loại bazơ nitơ, loại nào có ở RNA nhưng không có ở DNA?",
+     "lua_chon": [
+      "Adenine.",
+      "Uracil.",
+      "Guanine.",
+      "Cytosine."
+     ],
+     "dap_an": "B",
+     "loi_giai": "RNA có uracil thay cho thymine của DNA; ba loại còn lại (adenine, guanine, cytosine) có ở cả hai loại nucleic acid."
+    },
+    {
+     "ma_cau": "K09110503006",
+     "loai": "trac_nghiem",
+     "de": "Đơn phân của DNA được gọi là deoxyribonucleotide, còn đơn phân của RNA được gọi là",
+     "lua_chon": [
+      "amino acid.",
+      "ribonucleotide.",
+      "polypeptide.",
+      "glucose."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tên gọi đơn phân phản ánh loại đường trong thành phần: deoxyribonucleotide (DNA)\nchứa đường deoxyribose, ribonucleotide (RNA) chứa đường ribose."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01295",
+   "nhom_id": "KNB00564",
+   "thu_tu": 2,
+   "dang": "SO SÁNH CẤU TRÚC KHÔNG GIAN DNA – RNA",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110503010",
+     "loai": "trac_nghiem",
+     "de": "DNA thường hoạt động chủ yếu ở đâu trong tế bào? Còn mRNA sau khi tổng hợp thường di chuyển tới đâu để hoạt động?",
+     "lua_chon": [
+      "DNA ở nhân tế bào; mRNA di chuyển ra tế bào chất để hoạt động.",
+      "DNA ở tế bào chất; mRNA ở nhân tế bào.",
+      "Cả hai đều chỉ hoạt động trong nhân tế bào.",
+      "Cả hai đều chỉ hoạt động ở tế bào chất."
+     ],
+     "dap_an": "A",
+     "loi_giai": "DNA nằm và hoạt động trong nhân tế bào; mRNA sau khi được tổng hợp trong nhân sẽ di chuyển ra tế bào chất để làm khuôn tổng hợp protein."
+    },
+    {
+     "ma_cau": "K09110503007",
+     "loai": "trac_nghiem",
+     "de": "Về số mạch, DNA và RNA khác nhau như thế nào?",
+     "lua_chon": [
+      "DNA có một mạch, RNA có hai mạch.",
+      "DNA có hai mạch, RNA có một mạch.",
+      "Cả hai đều có một mạch.",
+      "Cả hai đều có hai mạch."
+     ],
+     "dap_an": "B",
+     "loi_giai": "DNA có cấu trúc hai mạch xoắn kép, còn RNA trong tế bào có cấu trúc một mạch."
+    },
+    {
+     "ma_cau": "K09110503012",
+     "loai": "trac_nghiem",
+     "de": "Nhận định nào sau đây đúng khi so sánh cấu trúc DNA và RNA?",
+     "lua_chon": [
+      "DNA và RNA đều có cấu trúc hai mạch xoắn kép.",
+      "DNA có cấu trúc hai mạch, RNA có cấu trúc một mạch.",
+      "DNA có cấu trúc một mạch, RNA có cấu trúc hai mạch.",
+      "Cả DNA và RNA đều không có cấu trúc xác định."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đây là điểm khác biệt cấu trúc cơ bản nhất giữa DNA và RNA."
+    },
+    {
+     "ma_cau": "K09110503008",
+     "loai": "trac_nghiem",
+     "de": "Về kích thước và khối lượng phân tử, DNA so với RNA thường",
+     "lua_chon": [
+      "nhỏ hơn RNA.",
+      "lớn hơn RNA.",
+      "bằng RNA.",
+      "không thể so sánh."
+     ],
+     "dap_an": "B",
+     "loi_giai": "DNA thường có kích thước và khối lượng lớn hơn RNA."
+    },
+    {
+     "ma_cau": "K09110503009",
+     "loai": "trac_nghiem",
+     "de": "DNA có cấu trúc xoắn kép, còn một số vùng của tRNA, rRNA có thể tự bắt cặp bổ sung. Điểm giống nhau giữa hai hiện tượng này là gì?",
+     "lua_chon": [
+      "Đều không tuân theo nguyên tắc bổ sung.",
+      "Đều dựa trên nguyên tắc bổ sung giữa các bazơ nitơ để hình thành cấu trúc không gian.",
+      "Đều hình thành cấu trúc hai mạch hoàn chỉnh.",
+      "Đều không cần liên kết hydrogen."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Dù DNA bắt cặp bổ sung giữa hai mạch còn tRNA, rRNA tự bắt cặp trong cùng một mạch, cả hai đều dựa trên nguyên tắc bổ sung giữa các bazơ nitơ, liên kết bằng liên kết hydrogen."
+    },
+    {
+     "ma_cau": "K09110503011",
+     "loai": "trac_nghiem",
+     "de": "Vì sao DNA có cấu trúc phù hợp để lưu trữ thông tin di truyền lâu dài, còn RNA thường chỉ tồn tại trong thời gian ngắn?",
+     "lua_chon": [
+      "Vì RNA không có bazơ nitơ nên kém bền.",
+      "Vì DNA không có liên kết hoá học nào.",
+      "Vì DNA có cấu trúc hai mạch bổ sung bền vững, còn RNA có cấu trúc một mạch kém bền hơn, phù hợp với vai trò truyền đạt thông tin tạm thời.",
+      "Vì RNA có khối lượng lớn hơn DNA nên kém bền."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Cấu trúc hai mạch bổ sung giúp DNA bền vững, phù hợp với chức năng lưu trữ lâu dài; cấu trúc một mạch của RNA kém bền hơn nhưng phù hợp với vai trò trung gian, truyền đạt thông tin trong thời gian ngắn."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01296",
+   "nhom_id": "KNB00564",
+   "thu_tu": 3,
+   "dang": "SO SÁNH KHUÔN VÀ NGUYÊN TẮC BỔ SUNG GIỮA TÁI BẢN VÀ PHIÊN MÃ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110503014",
+     "loai": "trac_nghiem",
+     "de": "Chức năng của mRNA khác với chức năng của DNA ở điểm nào?",
+     "lua_chon": [
+      "mRNA trực tiếp làm khuôn cho quá trình dịch mã tổng hợp protein, còn DNA thì không.",
+      "mRNA lưu giữ thông tin di truyền vĩnh viễn, còn DNA thì không.",
+      "mRNA có khả năng tự nhân đôi, còn DNA thì không.",
+      "mRNA và DNA có chức năng hoàn toàn giống nhau."
+     ],
+     "dap_an": "A",
+     "loi_giai": "DNA lưu giữ thông tin di truyền, còn mRNA mang bản sao thông tin đó và trực tiếp làm khuôn cho quá trình dịch mã — chức năng mà DNA không đảm nhiệm trực tiếp."
+    },
+    {
+     "ma_cau": "K09110503013",
+     "loai": "trac_nghiem",
+     "de": "Chức năng chính của DNA trong tế bào là gì?",
+     "lua_chon": [
+      "Vận chuyển amino acid.",
+      "Trực tiếp làm khuôn tổng hợp protein.",
+      "Cấu tạo nên ribosome.",
+      "Lưu giữ, bảo quản và truyền đạt thông tin di truyền qua các thế hệ."
+     ],
+     "dap_an": "D",
+     "loi_giai": "DNA là nơi lưu giữ, bảo quản thông tin di truyền và truyền đạt thông tin đó qua các thế hệ tế bào, cơ thể nhờ khả năng tái bản."
+    },
+    {
+     "ma_cau": "K09110503017",
+     "loai": "trac_nghiem",
+     "de": "DNA có khả năng tự nhân đôi (tái bản), còn RNA thông thường không có khả năng này. Điều đó phù hợp với vai trò nào của mỗi loại phân tử?",
+     "lua_chon": [
+      "RNA cần nhân đôi để truyền đạt thông tin, DNA thì không.",
+      "Cả hai đều không cần nhân đôi để thực hiện chức năng.",
+      "DNA cần nhân đôi để truyền thông tin di truyền qua các thế hệ tế bào, còn RNA chỉ là bản sao trung gian, được tổng hợp lại từ DNA khi cần chứ không cần tự nhân đôi.",
+      "RNA nhân đôi nhanh hơn DNA nên không cần lưu giữ lâu dài."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Vì DNA giữ vai trò lưu trữ thông tin di truyền lâu dài nên cần tái bản để truyền qua các thế hệ; RNA chỉ là bản sao tạm thời, được tổng hợp lại (qua phiên mã) mỗi khi tế bào cần sử dụng thông tin."
+    },
+    {
+     "ma_cau": "K09110503015",
+     "loai": "trac_nghiem",
+     "de": "Vì sao nói DNA và RNA đều tham gia vào việc biểu hiện thông tin di truyền thành tính trạng, nhưng theo hai vai trò khác nhau?",
+     "lua_chon": [
+      "Vì DNA trực tiếp tổng hợp protein, RNA thì không.",
+      "Vì RNA lưu trữ thông tin di truyền, DNA truyền đạt thông tin.",
+      "Vì cả hai đều không liên quan đến tính trạng.",
+      "Vì DNA lưu giữ thông tin di truyền dưới dạng gene, còn RNA (đặc biệt là mRNA) truyền đạt thông tin đó để làm khuôn tổng hợp protein quy định tính trạng."
+     ],
+     "dap_an": "D",
+     "loi_giai": "DNA đóng vai trò lưu trữ, RNA đóng vai trò trung gian truyền đạt thông tin từ DNA đến protein — sản phẩm quy định tính trạng."
+    },
+    {
+     "ma_cau": "K09110503018",
+     "loai": "trac_nghiem",
+     "de": "Nhận định nào sau đây sai khi so sánh chức năng của DNA và RNA?",
+     "lua_chon": [
+      "DNA có chức năng lưu giữ và truyền đạt thông tin di truyền.",
+      "mRNA có chức năng truyền đạt thông tin di truyền từ gene.",
+      "tRNA có chức năng vận chuyển amino acid.",
+      "RNA có chức năng lưu giữ thông tin di truyền lâu dài qua các thế hệ, giống hệt DNA."
+     ],
+     "dap_an": "D",
+     "loi_giai": "D sai vì chức năng lưu giữ, truyền đạt thông tin di truyền qua các thế hệ là của DNA; RNA chỉ đóng vai trò trung gian, truyền đạt thông tin trong thời gian ngắn."
+    },
+    {
+     "ma_cau": "K09110503016",
+     "loai": "trac_nghiem",
+     "de": "tRNA và rRNA có chức năng chung nào liên quan đến quá trình tổng hợp protein?",
+     "lua_chon": [
+      "Đều tham gia vào quá trình dịch mã (tổng hợp chuỗi polypeptide).",
+      "Đều trực tiếp lưu giữ thông tin di truyền của tế bào.",
+      "Đều có khả năng tự nhân đôi như DNA.",
+      "Đều không liên quan đến tổng hợp protein."
+     ],
+     "dap_an": "A",
+     "loi_giai": "tRNA vận chuyển amino acid, rRNA cấu tạo nên ribosome; cả hai đều tham gia vào quá trình dịch mã để tổng hợp chuỗi polypeptide."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01297",
+   "nhom_id": "KNB00564",
+   "thu_tu": 4,
+   "dang": "SO SÁNH KHUÔN VÀ NGUYÊN TẮC BỔ SUNG GIỮA TÁI BẢN VÀ PHIÊN MÃ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110503019",
+     "loai": "trac_nghiem",
+     "de": "Về số mạch khuôn được sử dụng, tái bản DNA và phiên mã khác nhau như thế nào?",
+     "lua_chon": [
+      "Tái bản dùng cả hai mạch của \\mathrm{DNA} làm khuôn, phiên mã chỉ dùng một mạch của gene làm khuôn.",
+      "Tái bản dùng một mạch làm khuôn, phiên mã dùng cả hai mạch làm khuôn.",
+      "Cả hai đều dùng cả hai mạch làm khuôn.",
+      "Cả hai đều không cần mạch khuôn."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Trong tái bản, cả hai mạch \\mathrm{DNA} mẹ đều làm khuôn để tạo ra hai \\mathrm{DNA} con; trong phiên mã, chỉ một mạch của gene làm khuôn để tổng hợp một phân tử \\mathrm{RNA}."
+    },
+    {
+     "ma_cau": "K09110503021",
+     "loai": "trac_nghiem",
+     "de": "Trong tái bản \\mathrm{DNA}, nucleotide loại \\mathrm{A} trên mạch khuôn liên kết với loại nào của môi trường?\nTrong phiên mã, nucleotide loại \\mathrm{A} trên mạch khuôn liên kết với loại ribonucleotide nào của môi trường?",
+     "lua_chon": [
+      "Tái bản: \\mathrm{A} với \\mathrm{G}; phiên mã: \\mathrm{A} với \\mathrm{C}.",
+      "Tái bản: \\mathrm{A} với \\mathrm{U}; phiên mã: \\mathrm{A} với \\mathrm{T}.",
+      "Tái bản: \\mathrm{A} với \\mathrm{T}; phiên mã: \\mathrm{A} với \\mathrm{U}.",
+      "Cả hai trường hợp \\mathrm{A} đều liên kết với \\mathrm{A}."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Trong tái bản (tổng hợp \\mathrm{DNA}), \\mathrm{A} trên mạch khuôn liên kết với \\mathrm{T} của môi trường; trong phiên mã (tổng hợp \\mathrm{RNA}), \\mathrm{A} trên mạch khuôn liên kết với \\mathrm{U} của môi trường vì \\mathrm{RNA} không có \\mathrm{T}."
+    },
+    {
+     "ma_cau": "K09110503024",
+     "loai": "trac_nghiem",
+     "de": "Nhận định nào sau đây đúng khi so sánh khuôn của tái bản DNA và phiên mã?",
+     "lua_chon": [
+      "Cả hai đều không cần mạch khuôn.",
+      "Tái bản chỉ dùng một mạch làm khuôn, phiên mã dùng cả hai mạch.",
+      "Tái bản dùng cả hai mạch của DNA mẹ làm khuôn để tạo ra hai DNA con; phiên mã chỉ dùng một mạch của gene làm khuôn để tạo ra một phân tử RNA.",
+      "Khuôn của tái bản và phiên mã hoàn toàn giống nhau về bản chất và số lượng mạch sử dụng."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đây là điểm khác biệt cốt lõi giữa hai quá trình về số mạch khuôn được sử dụng và số sản phẩm tạo ra."
+    },
+    {
+     "ma_cau": "K09110503023",
+     "loai": "trac_nghiem",
+     "de": "Trong tái bản DNA, nucleotide loại G trên mạch khuôn liên kết với loại nào của môi trường?\nTrong phiên mã, nucleotide loại G trên mạch khuôn liên kết với loại ribonucleotide nào?",
+     "lua_chon": [
+      "Tái bản: G với A; phiên mã: G với U.",
+      "Cả hai trường hợp, G trên mạch khuôn đều liên kết với C của môi trường.",
+      "Tái bản: G với U; phiên mã: G với T.",
+      "Cả hai trường hợp G đều liên kết với G."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Vì G không đối bổ sung dù tổng hợp DNA hay RNA nên trong cả hai quá trình, G trên mạch khuôn đều liên kết với C của môi trường."
+    },
+    {
+     "ma_cau": "K09110503020",
+     "loai": "trac_nghiem",
+     "de": "Về nguyên liệu, tái bản \\mathrm{DNA} và phiên mã khác nhau như thế nào?",
+     "lua_chon": [
+      "Tái bản dùng amino acid tự do, phiên mã dùng nucleotide tự do.",
+      "Cả hai đều dùng amino acid tự do.",
+      "Tái bản không cần nguyên liệu từ môi trường.",
+      "Tái bản dùng các deoxyribonucleotide tự do (\\mathrm{A}, \\mathrm{T}, \\mathrm{G}, \\mathrm{C}), phiên mã dùng các ribonucleotide tự do (\\mathrm{A}, \\mathrm{U}, \\mathrm{G}, \\mathrm{C})."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tái bản tổng hợp mạch \\mathrm{DNA} mới nên dùng deoxyribonucleotide (có \\mathrm{T}); phiên mã tổng hợp \\mathrm{RNA} nên dùng ribonucleotide (có \\mathrm{U} thay \\mathrm{T})."
+    },
+    {
+     "ma_cau": "K09110503022",
+     "loai": "trac_nghiem",
+     "de": "Điểm giống nhau về nguyên tắc bổ sung giữa tái bản DNA và phiên mã là gì?",
+     "lua_chon": [
+      "Cả hai đều không tuân theo nguyên tắc bổ sung.",
+      "Cả hai đều chỉ áp dụng nguyên tắc bổ sung cho cặp G – C.",
+      "Cả hai đều bỏ qua nguyên tắc bổ sung đối với A và T/U.",
+      "Cả hai đều dựa trên nguyên tắc bổ sung giữa các bazơ nitơ để đảm bảo mạch mới được tổng hợp chính xác theo mạch khuôn."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Dù sản phẩm khác nhau (DNA hay RNA), cả tái bản và phiên mã đều tuân theo nguyên tắc bổ sung giữa các bazơ nitơ trên mạch khuôn và nguyên liệu tự do trong môi trường."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01298",
+   "nhom_id": "KNB00564",
+   "thu_tu": 5,
+   "dang": "SO SÁNH TỔNG THỂ TÁI BẢN – PHIÊN MÃ, TỔNG HỢP",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110503027",
+     "loai": "trac_nghiem",
+     "de": "Cho các tiêu chí chí sau: (1) Số mạch khuôn. (2) Loại nucleotide bổ sung với A trên mạch khuôn. (3) Số và loại sản phẩm tạo thành. Các tiêu chí này dùng để làm gì khi học về tái bản DNA và phiên mã?",
+     "lua_chon": [
+      "Chứng minh tái bản và phiên mã là một quá trình duy nhất.",
+      "Chứng minh phiên mã không liên quan đến DNA.",
+      "So sánh điểm giống và khác nhau giữa hai quá trình tái bản DNA và phiên mã.",
+      "Tính số lượng nucleotide của gene."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đây là ba tiêu chí cơ bản thường dùng để so sánh tái bản DNA và phiên mã: số mạch khuôn, loại nucleotide bổ sung, và sản phẩm tạo thành."
+    },
+    {
+     "ma_cau": "K09110503025",
+     "loai": "trac_nghiem",
+     "de": "Về sản phẩm tạo thành, tái bản DNA và phiên mã khác nhau như thế nào?",
+     "lua_chon": [
+      "Tái bản tạo ra hai phân tử DNA con; phiên mã tạo ra một phân tử RNA.",
+      "Tái bản tạo ra RNA; phiên mã tạo ra DNA.",
+      "Cả hai đều tạo ra DNA.",
+      "Cả hai đều tạo ra RNA."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Sản phẩm của tái bản là hai phân tử DNA con giống DNA mẹ; sản phẩm của phiên mã là một phân tử RNA có trình tự bổ sung với mạch khuôn."
+    },
+    {
+     "ma_cau": "K09110503026",
+     "loai": "trac_nghiem",
+     "de": "Về vị trí diễn ra trong tế bào, tái bản DNA và phiên mã có điểm gì chung?",
+     "lua_chon": [
+      "Cả hai đều diễn ra ở tế bào chất.",
+      "Cả hai đều diễn ra ở ribosome.",
+      "Cả hai đều diễn ra ở màng tế bào.",
+      "Cả hai đều diễn ra trong nhân tế bào ở sinh vật nhân thực (hoặc vùng nhân ở sinh vật nhân sơ)."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cả tái bản DNA và phiên mã đều diễn ra trong nhân tế bào (hoặc vùng nhân ở sinh vật nhân sơ), nơi DNA và gene tồn tại."
+    },
+    {
+     "ma_cau": "K09110503029",
+     "loai": "trac_nghiem",
+     "de": "Nhận định nào sau đây sai khi so sánh tái bản DNA và phiên mã?",
+     "lua_chon": [
+      "Cả hai quá trình đều tạo ra sản phẩm giống hệt về bản chất hoá học (đều là DNA).",
+      "Tái bản dùng hai mạch khuôn, phiên mã dùng một mạch khuôn.",
+      "Tái bản tạo hai phân tử DNA con, phiên mã tạo một phân tử RNA.",
+      "Cả hai đều tuân theo nguyên tắc bổ sung giữa các bazơ nitơ."
+     ],
+     "dap_an": "A",
+     "loi_giai": "A sai vì sản phẩm của tái bản là DNA còn sản phẩm của phiên mã là RNA, khác nhau về bản chất hoá học (loại đường và có/không có thymine)."
+    },
+    {
+     "ma_cau": "K09110503030",
+     "loai": "trac_nghiem",
+     "de": "Mối quan hệ giữa tái bản DNA và phiên mã trong việc duy trì và biểu hiện thông tin di truyền được thể hiện đúng nhất qua nhận định nào?",
+     "lua_chon": [
+      "Hai quá trình hoàn toàn độc lập, không liên quan đến nhau.",
+      "Phiên mã thay thế hoàn toàn vai trò của tái bản.",
+      "Tái bản thay thế hoàn toàn vai trò của phiên mã.",
+      "Tái bản đảm bảo thông tin di truyền được truyền đạt ổn định qua các thế hệ tế bào và cơ thể; phiên mã đảm bảo thông tin đó được sử dụng để tổng hợp protein, biểu hiện thành tính trạng."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tái bản duy trì tính ổn định của thông tin di truyền qua các thế hệ; phiên mã (cùng dịch mã) hiện thực hoá thông tin đó thành protein, quy định tính trạng của cơ thể. Hai quá trình bổ trợ nhau trong toàn bộ cơ chế di truyền."
+    },
+    {
+     "ma_cau": "K09110503028",
+     "loai": "trac_nghiem",
+     "de": "Cho các phát biểu sau khi so sánh tái bản DNA và phiên mã:\n(1) Tái bản dùng hai mạch DNA làm khuôn, phiên mã dùng một mạch.\n(2) Tái bản tạo hai DNA con, phiên mã tạo một RNA.\n(3) Tái bản không cần tuân theo nguyên tắc bổ sung, chỉ phiên mã mới cần.\n(4) Sản phẩm của tái bản và phiên mã giống hệt nhau về bản chất hoá học.\nSố phát biểu đúng là",
+     "lua_chon": [
+      "4 phát biểu.",
+      "1 phát biểu.",
+      "3 phát biểu.",
+      "2 phát biểu."
+     ],
+     "dap_an": "D",
+     "loi_giai": "(1) và (2) đúng;\n(3) sai vì cả hai quá trình đều tuân theo nguyên tắc bổ sung;\n(4) sai vì sản phẩm của tái bản là DNA còn sản phẩm của phiên mã là RNA, khác nhau về bản chất hoá học.\nVậy có $2$ phát biểu đúng."
+    }
+   ]
+  }
+ ]
+}

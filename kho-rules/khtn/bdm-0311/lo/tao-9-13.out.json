@@ -1,0 +1,164 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00583",
+   "ly_thuyet": "##TC 1. Kiến thức cần nhớ\nBệnh di truyền do đột biến gene (bạch tạng, máu khó đông, mù màu…) hoặc đột biến nhiễm sắc thể (hội chứng Down, Turner, Klinefelter…). Tật di truyền là dị dạng hình thái cơ thể (thừa ngón, khe hở môi - hàm…) do đột biến gene hoặc NST.\nBạch tạng: allele lặn trên NST thường. Máu khó đông, mù màu: allele lặn trên NST giới tính X, gặp ở nam nhiều hơn nữ vì nam chỉ có 1 NST X.\nHội chứng Down: thừa 1 NST số 21 (47 NST). Hội chứng Turner: nữ, chỉ có 1 NST X (45 NST). Hội chứng Klinefelter: nam, cặp giới tính XXY (47 NST).\nHôn nhân cận huyết làm tăng khả năng con nhận hai allele lặn giống nhau (đồng hợp lặn) nên dễ mắc bệnh di truyền; pháp luật cấm kết hôn giữa những người có quan hệ huyết thống gần.\nCông nghệ di truyền là các kĩ thuật tác động lên vật chất di truyền, trong đó cơ bản là kĩ thuật chuyển gene. Sinh vật biến đổi gene (GMO) là sinh vật có hệ gene được con người làm biến đổi. Ứng dụng: y học (sản xuất insulin, hormone, vaccine), nông nghiệp (giống cây trồng chuyển gene), pháp y (phân tích DNA xác định huyết thống, danh tính).\n\n##CY 2. Lưu ý\nPhân biệt đột biến gene (số NST không đổi) với đột biến NST (thay đổi cấu trúc hoặc số lượng NST).\nCông nghệ di truyền đem lại lợi ích nhưng cần đánh giá an toàn sinh học, an toàn thực phẩm và vấn đề đạo đức (chỉnh sửa gene, nhân bản ở người) trước khi ứng dụng rộng rãi.",
+   "ghi_chu": "Nhóm gồm 3 mảng: bệnh/tật/hội chứng di truyền ở người, hôn nhân cận huyết, công nghệ di truyền. Cân nhắc tách nhóm sau này.",
+   "dang_bai": [
+    {
+     "ten": "Nhận biết bệnh và tật di truyền ở người, nguyên nhân và kiểu di truyền",
+     "mo_ta": "Đề hỏi bệnh/tật di truyền ở người do dạng đột biến nào, gene trội hay lặn, nằm trên NST thường hay NST giới tính.\nGồm cả câu giải thích vì sao một bệnh gặp ở nam nhiều hơn nữ và câu phân biệt tật di truyền với bệnh di truyền.\nLưu ý: câu về hội chứng do thừa/thiếu NST (Down, Turner, Klinefelter) ⇒ thuộc dạng \"Hội chứng Down, Turner, Klinefelter: dạng đột biến và số lượng NST\".",
+     "ly_thuyet": "##TC Bệnh và tật di truyền ở người\nBạch tạng do đột biến gene lặn trên NST thường, làm cơ thể không tổng hợp được sắc tố melanin; nam và nữ mắc như nhau.\nMáu khó đông và mù màu do allele lặn nằm trên NST giới tính X. Nam chỉ có 1 NST X nên chỉ cần 1 allele lặn là biểu hiện bệnh, vì vậy gặp ở nam nhiều hơn nữ.\nTật di truyền là dị dạng về hình thái cơ thể (thừa ngón, khe hở môi - hàm) do đột biến gene hoặc NST.\n\n##CY Chú ý\nNST Y mang rất ít gene, không quy định bạch tạng, máu khó đông hay mù màu.\nBiến dị tổ hợp không tạo allele mới; thường biến không di truyền được nên không gây bệnh di truyền.",
+     "vi_du": "##VD\nGene gây bệnh bạch tạng ở người có đặc điểm di truyền như thế nào?\nA. Trội, nằm trên NST thường\nB. Lặn, nằm trên NST thường\nC. Lặn, nằm trên NST giới tính X\nD. Trội, nằm trên NST giới tính X\n\nBài giải:\nBạch tạng do allele lặn quy định, gene nằm trên NST thường nên cả nam và nữ đều có thể mắc.\nGene trội (A, D) sẽ luôn biểu hiện, không \"ẩn\" qua các thế hệ; gene trên NST X (C, D) làm bệnh gặp ở nam nhiều hơn nữ, không đúng với bạch tạng.\nChọn B.\n\n##VD\nVì sao bệnh mù màu gặp ở nam giới nhiều hơn ở nữ giới?\nA. Nam mang NST Y có gene gây bệnh mù màu\nB. Nữ giới không mang allele gây bệnh mù màu\nC. Mù màu là đột biến mới, chỉ phát sinh ở nam giới\nD. Nam chỉ có 1 NST X nên allele lặn biểu hiện ngay\n\nBài giải:\nNam có cặp NST giới tính XY, chỉ có 1 NST X.\nNếu NST X đó mang allele lặn gây mù màu thì bệnh biểu hiện ngay vì không có allele trội nào khác để át.\nNữ có 2 NST X nên cần cả hai mang allele lặn mới mắc bệnh, vì vậy bệnh gặp ở nam nhiều hơn.\nChọn D.",
+     "nguon_vi_du": "K09130101002, K09130101004",
+     "cau": [
+      "K09130101001",
+      "K09130101002",
+      "K09130101003",
+      "K09130101004",
+      "K09130101005"
+     ]
+    },
+    {
+     "ten": "Hội chứng Down, Turner, Klinefelter: dạng đột biến và số lượng NST",
+     "mo_ta": "Đề cho tên hội chứng hỏi dạng đột biến NST, số NST trong tế bào sinh dưỡng; hoặc cho số NST và cặp NST giới tính, hỏi người đó mắc hội chứng nào.\nGồm cả câu so sánh điểm giống/khác nhau giữa các hội chứng.\nLưu ý: câu hỏi bệnh do đột biến gene (bạch tạng, máu khó đông, mù màu) ⇒ thuộc dạng \"Nhận biết bệnh và tật di truyền ở người, nguyên nhân và kiểu di truyền\".",
+     "ly_thuyet": "##TC Các hội chứng do đột biến số lượng NST\nNgười bình thường có bộ NST 2n = 46 (22 cặp NST thường và 1 cặp NST giới tính: nữ XX, nam XY).\nHội chứng Down: thừa 1 NST ở cặp số 21 (3 NST số 21), tổng 47 NST.\nHội chứng Turner: nữ, chỉ có 1 NST giới tính X (kí hiệu XO), tổng 45 NST.\nHội chứng Klinefelter: nam, cặp NST giới tính XXY, tổng 47 NST.\n\n##PP Cách làm\nĐếm số NST trong tế bào rồi so với 46 để biết thừa hay thiếu.\nXác định NST bị thừa/thiếu thuộc cặp NST thường hay NST giới tính.\nĐối chiếu với đặc điểm từng hội chứng để kết luận.",
+     "vi_du": "##VD\nNgười mắc hội chứng Down có bao nhiêu nhiễm sắc thể trong mỗi tế bào sinh dưỡng?\nA. 46 NST\nB. 48 NST\nC. 47 NST\nD. 45 NST\n\nBài giải:\nNgười bình thường có 46 NST (2n).\nNgười mắc hội chứng Down thừa 1 NST ở cặp số 21 nên có 46 + 1 = 47 NST.\nChọn C.\n\n##VD\nMột người có 47 NST trong tế bào sinh dưỡng, cặp NST giới tính là XXY. Người này mắc hội chứng nào?\nA. Hội chứng Down\nB. Hội chứng Klinefelter\nC. Hội chứng Turner\nD. Bệnh máu khó đông\n\nBài giải:\nNgười này có 47 NST, nhiều hơn người bình thường 1 NST, cặp giới tính là XXY (thừa 1 NST X).\nĐó là đặc điểm của hội chứng Klinefelter; Down thừa NST số 21, Turner chỉ có 45 NST (XO).\nChọn B.",
+     "nguon_vi_du": "K09130101008, K09130101012",
+     "cau": [
+      "K09130101007",
+      "K09130101008",
+      "K09130101009",
+      "K09130101010",
+      "K09130101011",
+      "K09130101012",
+      "K09130101013"
+     ]
+    },
+    {
+     "ten": "Hôn nhân cận huyết và cơ sở di truyền của quy định cấm kết hôn gần",
+     "mo_ta": "Đề hỏi vì sao hôn nhân cận huyết làm tăng nguy cơ con mắc bệnh di truyền; vì sao pháp luật cấm kết hôn giữa những người có quan hệ huyết thống gần.\nGồm tình huống cụ thể (anh chị em họ kết hôn) và câu hỏi về tần số bệnh ở quần thể không cận huyết.\nLưu ý: câu chỉ hỏi tên bệnh hay hội chứng ⇒ thuộc dạng \"Nhận biết bệnh và tật di truyền ở người, nguyên nhân và kiểu di truyền\" hoặc dạng hội chứng NST.",
+     "ly_thuyet": "##TC Hôn nhân cận huyết\nHôn nhân cận huyết là hôn nhân giữa những người có quan hệ huyết thống gần (anh chị em ruột, anh chị em họ…).\nNhững người này thừa hưởng allele từ tổ tiên chung nên dễ cùng mang một số allele lặn giống nhau. Khi kết hôn, con dễ nhận hai allele lặn giống nhau (đồng hợp lặn) và biểu hiện bệnh.\nVì vậy pháp luật cấm kết hôn giữa những người có quan hệ huyết thống gần để hạn chế bệnh, tật di truyền.\n\n##CY Chú ý\nCận huyết không tạo đột biến gene mới và không làm thay đổi số lượng NST của con; nó chỉ làm bộc lộ allele lặn vốn có.",
+     "vi_du": "##VD\nMột cặp anh chị em họ (con của hai anh chị em ruột) dự định kết hôn. Vì sao đây được xem là hôn nhân cận huyết cần hạn chế?\nA. Cận huyết tạo đột biến gene mới ở con\nB. Cùng huyết thống có bộ NST khác thường\nC. Cận huyết làm giảm số lượng gene ở con\nD. Họ có thể cùng mang allele lặn từ ông bà chung\n\nBài giải:\nHai anh chị em họ có chung ông bà nên có thể cùng mang một số allele lặn giống nhau.\nNếu kết hôn, con dễ nhận hai allele lặn giống nhau (đồng hợp lặn) và mắc bệnh hơn so với người không cùng huyết thống.\nCận huyết không tạo đột biến mới (A sai), không làm bộ NST khác thường (B sai), không làm giảm số lượng gene (C sai).\nChọn D.\n\n##VD\nVì sao hôn nhân cận huyết làm tăng đáng kể tỉ lệ trẻ sinh ra mắc bệnh di truyền do gene lặn, so với hôn nhân giữa người không có quan hệ huyết thống?\nA. Người cùng huyết thống gần thường mang chung allele lặn, dễ tạo con đồng hợp lặn\nB. Hôn nhân cận huyết luôn tạo ra đột biến gene mới ở con ngay từ khi thụ tinh\nC. Người có quan hệ huyết thống gần luôn có nhóm máu giống hệt nhau, gây xung đột miễn dịch\nD. Hôn nhân cận huyết làm số lượng nhiễm sắc thể của con giảm đi một nửa\n\nBài giải:\nNgười có quan hệ huyết thống gần thừa hưởng allele từ tổ tiên chung nên thường mang chung allele lặn.\nKhi kết hôn, con dễ có kiểu gene đồng hợp lặn nên tỉ lệ mắc bệnh tăng đáng kể.\nChọn A.",
+     "nguon_vi_du": "K09130101015, K09130101016",
+     "cau": [
+      "K09130101006",
+      "K09130101014",
+      "K09130101015",
+      "K09130101016",
+      "K09130101039"
+     ]
+    },
+    {
+     "ten": "Khái niệm công nghệ di truyền, kĩ thuật chuyển gene và sinh vật biến đổi gene",
+     "mo_ta": "Đề hỏi định nghĩa công nghệ di truyền, kĩ thuật chuyển gene, sinh vật biến đổi gene (GMO).\nGồm mục đích của công nghệ di truyền, vì sao chọn vi khuẩn làm sinh vật nhận gene, điểm khác với lai giống truyền thống.\nLưu ý: câu cho một sản phẩm/tình huống cụ thể rồi hỏi thuộc lĩnh vực nào ⇒ thuộc dạng \"Ứng dụng công nghệ di truyền theo lĩnh vực: y học, nông nghiệp, pháp y\".",
+     "ly_thuyet": "##TC Công nghệ di truyền\nCông nghệ di truyền là kĩ thuật tác động lên vật chất di truyền của sinh vật để tạo ra sinh vật mang đặc điểm mới theo mục đích sử dụng của con người. Kĩ thuật cơ bản là kĩ thuật chuyển gene.\nSinh vật biến đổi gene (GMO) là sinh vật có hệ gene được con người làm biến đổi, thường bằng cách chuyển thêm gene từ loài khác.\nVi khuẩn sinh sản nhanh, dễ nuôi cấy nên thường được dùng làm sinh vật nhận gene để sản xuất insulin, hormone tăng trưởng với số lượng lớn.\nKhác với lai giống truyền thống, công nghệ di truyền thao tác trực tiếp trên gene (mức phân tử) và có thể chuyển gene giữa các loài xa nhau, kể cả loài không giao phối được.\n\n##CY Chú ý\nĐột biến ngẫu nhiên trong tự nhiên, lai hữu tính và nhân giống vô tính không phải là kĩ thuật chuyển gene.",
+     "vi_du": "##VD\nSinh vật biến đổi gene (GMO) là sinh vật như thế nào?\nA. Xuất hiện đột biến gene một cách ngẫu nhiên\nB. Lai giữa hai loài bằng phương pháp hữu tính\nC. Được nhân giống vô tính từ một cá thể gốc\nD. Có hệ gene được con người làm biến đổi\n\nBài giải:\nSinh vật biến đổi gene là sinh vật có hệ gene được con người chủ động làm biến đổi, thường bằng chuyển gene.\nĐột biến ngẫu nhiên (A), lai hữu tính (B), nhân giống vô tính (C) đều không phải là con người làm biến đổi hệ gene.\nChọn D.\n\n##VD\nĐiểm khác biệt nổi bật của công nghệ di truyền so với phương pháp lai giống truyền thống là gì?\nA. Không làm thay đổi hệ gene của sinh vật nhận gene chuyển\nB. Không cần dùng đến kĩ thuật ở mức phân tử\nC. Có thể chuyển gene giữa các loài không giao phối được\nD. Thường tạo giống có năng suất thấp hơn giống gốc\n\nBài giải:\nCông nghệ di truyền thao tác trên gene ở mức phân tử, cho phép chuyển gene giữa các loài xa nhau, kể cả loài không giao phối được.\nĐây là điểm khác nổi bật so với lai giống truyền thống.\nChọn C.",
+     "nguon_vi_du": "K09130101018, K09130101021",
+     "cau": [
+      "K09130101017",
+      "K09130101018",
+      "K09130101019",
+      "K09130101020",
+      "K09130101021",
+      "K09130101022",
+      "K09130101023",
+      "K09130101024"
+     ]
+    },
+    {
+     "ten": "Ứng dụng công nghệ di truyền theo lĩnh vực: y học, nông nghiệp, pháp y",
+     "mo_ta": "Đề mô tả một sản phẩm hoặc việc làm cụ thể (sản xuất insulin, giống cây chuyển gene, xét nghiệm DNA xác định huyết thống) rồi hỏi thuộc lĩnh vực ứng dụng nào.\nCó cả câu hỏi cơ sở khoa học của xét nghiệm DNA trong pháp y.\nLưu ý: câu hỏi về an toàn, đạo đức, lợi ích và rủi ro ⇒ thuộc dạng \"An toàn sinh học, đạo đức và thái độ đúng với công nghệ di truyền\".",
+     "ly_thuyet": "##TC Các lĩnh vực ứng dụng\nY học: sản xuất insulin, hormone tăng trưởng, vaccine nhờ vi sinh vật mang gene chuyển.\nNông nghiệp: tạo giống cây trồng, vật nuôi chuyển gene (kháng sâu bệnh, kháng thuốc diệt cỏ, bảo quản lâu).\nPháp y: phân tích DNA để xác định huyết thống, nhận dạng cá nhân; cơ sở là DNA mỗi người (trừ sinh đôi cùng trứng) có những đặc điểm riêng.\n\n##PP Cách làm\nXác định sản phẩm hoặc việc làm trong đề phục vụ mục đích gì (chữa bệnh, tăng năng suất, điều tra).\nĐối chiếu với lĩnh vực tương ứng.",
+     "vi_du": "##VD\nChuyển gene tổng hợp insulin người vào vi khuẩn để sản xuất insulin dùng chữa bệnh tiểu đường là ứng dụng công nghệ di truyền trong lĩnh vực nào?\nA. Y học\nB. Nông nghiệp\nC. Pháp y\nD. Công nghiệp thực phẩm\n\nBài giải:\nInsulin dùng chữa bệnh tiểu đường, được sản xuất nhờ vi khuẩn mang gene chuyển.\nSản xuất thuốc, hormone, vaccine bằng chuyển gene vào vi sinh vật là ứng dụng trong y học.\nChọn A.\n\n##VD\nPhân tích hệ gene (ADN) để xác định huyết thống hoặc nhận dạng cá nhân trong điều tra là ứng dụng công nghệ di truyền trong lĩnh vực nào?\nA. Chọn giống vật nuôi\nB. Pháp y\nC. Nông nghiệp\nD. Y học điều trị bệnh\n\nBài giải:\nPhân tích DNA để xác định huyết thống hoặc nhận dạng cá nhân trong điều tra là ứng dụng trong pháp y.\nChọn B.",
+     "nguon_vi_du": "K09130101026, K09130101027",
+     "cau": [
+      "K09130101025",
+      "K09130101026",
+      "K09130101027",
+      "K09130101028",
+      "K09130101029",
+      "K09130101030",
+      "K09130101031",
+      "K09130101032",
+      "K09130101037"
+     ]
+    },
+    {
+     "ten": "An toàn sinh học, đạo đức và thái độ đúng với công nghệ di truyền",
+     "mo_ta": "Đề đưa một tình huống (giống cây biến đổi gene, chỉnh sửa gene ở người, nhân bản vô tính, quảng cáo Non-GMO, tư vấn di truyền) và hỏi cách đánh giá, thái độ hợp lí.\nĐáp án thường là cân nhắc cả lợi ích và rủi ro, cần đánh giá an toàn và có kiểm soát pháp luật, đạo đức.\nLưu ý: câu chỉ hỏi sản phẩm thuộc lĩnh vực nào ⇒ thuộc dạng \"Ứng dụng công nghệ di truyền theo lĩnh vực: y học, nông nghiệp, pháp y\".",
+     "ly_thuyet": "##TC An toàn và đạo đức\nSinh vật biến đổi gene cần được đánh giá an toàn sinh học và an toàn thực phẩm trước khi sản xuất đại trà.\nChỉnh sửa gene, nhân bản vô tính ở người đặt ra vấn đề đạo đức, quyền con người nên cần cân nhắc kĩ và có quy định của pháp luật.\nTư vấn di truyền và sàng lọc trước sinh cung cấp thông tin về nguy cơ để gia đình chủ động quyết định, không mang tính áp đặt và không đảm bảo tuyệt đối.\n\n##CY Chú ý\nĐánh giá khoa học luôn xét cả lợi ích và rủi ro, tránh các nhận định tuyệt đối (\"chỉ có lợi\", \"chỉ có hại\", \"nguy hiểm tuyệt đối\").",
+     "vi_du": "##VD\nMột giống bông biến đổi gene mang thêm gene kháng sâu đục quả giúp giảm đáng kể lượng thuốc trừ sâu cần sử dụng, nhưng cũng cần được đánh giá về khả năng ảnh hưởng lâu dài đến hệ sinh thái và sức khoẻ trước khi đưa vào sản xuất rộng rãi. Cách đánh giá hợp lí nhất về công nghệ này là\nA. Chỉ có lợi, trồng đại trà ngay không cần đánh giá\nB. Chỉ có rủi ro, cần cấm hẳn công nghệ này\nC. Cân nhắc cả lợi ích và rủi ro, đánh giá kĩ trước\nD. Không thể đánh giá bằng phương pháp khoa học\n\nBài giải:\nGiống bông biến đổi gene có lợi (giảm thuốc trừ sâu, tăng năng suất) nhưng có rủi ro tiềm ẩn đối với hệ sinh thái và sức khoẻ.\nCách đánh giá khoa học hợp lí là cân nhắc cả lợi ích và rủi ro, đánh giá kĩ trước khi đưa vào sản xuất rộng rãi.\nChọn C.\n\n##VD\nMột cặp vợ chồng đã có một con mắc bệnh di truyền do gene lặn hiếm gặp. Trước khi sinh con tiếp theo, bác sĩ đề nghị tư vấn di truyền và xét nghiệm sàng lọc trước sinh. Mục đích chính của việc này là gì?\nA. Bắt buộc cặp vợ chồng phải chấm dứt thai kì nếu phát hiện nguy cơ mắc bệnh\nB. Đảm bảo rằng đứa con tiếp theo sẽ khoẻ mạnh\nC. Thay đổi kiểu gene của cặp vợ chồng để họ không còn mang allele gây bệnh\nD. Cung cấp thông tin để gia đình chủ động hiểu rõ nguy cơ và quyết định phù hợp\n\nBài giải:\nTư vấn di truyền và xét nghiệm trước sinh cung cấp thông tin khoa học về nguy cơ để gia đình chủ động hiểu rõ và quyết định phù hợp.\nNó không bắt buộc chấm dứt thai kì (A), không đảm bảo tuyệt đối (B), không thay đổi kiểu gene của bố mẹ (C).\nChọn D.",
+     "nguon_vi_du": "K09130101036, K09130101041",
+     "cau": [
+      "K09130101033",
+      "K09130101034",
+      "K09130101035",
+      "K09130101036",
+      "K09130101038",
+      "K09130101040",
+      "K09130101041"
+     ]
+    }
+   ],
+   "khong_hop": []
+  },
+  {
+   "nhom_id": "KNB00584",
+   "ly_thuyet": "##TC 1. Kiến thức cần nhớ\nPhả hệ: ô vuông là nam, vòng tròn là nữ, tô đậm là người mắc bệnh; thế hệ kí hiệu bằng số La Mã (I, II…), người trong thế hệ đánh số.\nBố mẹ đều bình thường nhưng sinh con bệnh ⇒ bệnh do gene lặn, bố mẹ đều dị hợp (Aa).\nNgười bệnh do allele lặn có kiểu gene aa; người bình thường có thể là AA hoặc Aa.\nAa × Aa → 1 AA : 2 Aa : 1 aa, xác suất con mắc bệnh là 1/4, xác suất con bình thường là 3/4; trong nhóm con bình thường, Aa chiếm 2/3.\n\n##PP 2. Các bước làm bài\nĐọc phả hệ để xác định ai bệnh, ai bình thường, quan hệ giữa các thế hệ.\nTừ cặp bố mẹ bình thường sinh con bệnh kết luận gene lặn.\nQuy ước allele, xác định kiểu gene từ người bệnh (aa) ngược lên bố mẹ.\nViết sơ đồ lai để tính xác suất.\n\n##CY 3. Lưu ý\nMỗi lần sinh con là một sự kiện độc lập: đã có con bệnh không làm đổi xác suất của lần sinh sau.\nKhi tính xác suất kiểu gene của người bình thường, chỉ xét trong nhóm không bệnh (1AA : 2Aa).",
+   "ghi_chu": "Tên nhóm có \"nhóm máu\" nhưng cả 13 câu chỉ là phả hệ và xác suất bệnh lặn NST thường; không có câu nhóm máu nào. Câu 102002-102004 chỉ làm được khi nhìn hình, ví dụ cho dạng này là tự soạn bằng chữ.",
+   "dang_bai": [
+    {
+     "ten": "Đọc phả hệ: nhận kí hiệu, đếm người bệnh, xác định quan hệ các thế hệ",
+     "mo_ta": "Đề cho sơ đồ phả hệ, hỏi trong một thế hệ có bao nhiêu người mắc bệnh, người nào là nam/nữ, ai là con của cặp vợ chồng nào.\nChỉ cần đọc kí hiệu và đường nối trên sơ đồ, không cần suy ra kiểu gene.\nLưu ý: câu yêu cầu kết luận gene trội hay lặn ⇒ thuộc dạng \"Xác định tính trạng bệnh do gene trội hay gene lặn từ phả hệ\".",
+     "ly_thuyet": "##TC Kí hiệu trong phả hệ\nÔ vuông là nam, vòng tròn là nữ; kí hiệu tô đậm là người mắc bệnh.\nHai người nối với nhau bằng đường ngang là vợ chồng; các con nối với cặp vợ chồng bằng đường dọc. Người không có đường nối xuống từ cặp vợ chồng không phải con của họ (có thể là người kết hôn vào gia đình).\nThế hệ ghi bằng số La Mã (I, II…), các thành viên trong thế hệ đánh số 1, 2, 3…\n\n##PP Cách làm\nXác định thế hệ và cặp vợ chồng đề hỏi.\nLần theo đường nối để tìm các con.\nĐếm kí hiệu tô đậm trong số các con và ghi đúng giới tính theo hình dạng.",
+     "vi_du": "##VD\nMột phả hệ gồm cặp bố mẹ I₁ (ô vuông) và I₂ (vòng tròn) đều không tô đậm, có hai người con: II₁ là vòng tròn tô đậm, II₂ là ô vuông không tô đậm. Có bao nhiêu người con biểu hiện bệnh, và người đó là nam hay nữ?\nA. 1 người, là nữ\nB. 1 người, là nam\nC. 2 người\nD. Không có ai bị bệnh\n\nBài giải:\nTô đậm là người mắc bệnh; ô vuông là nam, vòng tròn là nữ.\nTrong hai người con, chỉ II₁ được tô đậm, mà II₁ là vòng tròn nên là nữ.\nII₂ là ô vuông không tô đậm: nam, không bệnh.\nChọn A.",
+     "nguon_vi_du": "tu_soan",
+     "cau": [
+      "K09130102002",
+      "K09130102003",
+      "K09130102004"
+     ]
+    },
+    {
+     "ten": "Xác định tính trạng bệnh do gene trội hay gene lặn từ phả hệ",
+     "mo_ta": "Đề cho bố mẹ đều bình thường mà sinh con mắc bệnh, hỏi bệnh do gene trội hay gene lặn.\nKết luận dựa trên quy luật: bố mẹ bình thường sinh con bệnh thì bệnh do gene lặn.\nLưu ý: câu hỏi kiểu gene cụ thể của bố mẹ (AA, Aa, aa) ⇒ thuộc dạng \"Xác định kiểu gene của người trong phả hệ khi bệnh do gene lặn\".",
+     "ly_thuyet": "##TC Gene trội và gene lặn\nGene trội biểu hiện ngay khi có mặt; người mang gene trội gây bệnh luôn mắc bệnh, nên con bệnh thì ít nhất một trong hai bố mẹ phải bệnh.\nGene lặn chỉ biểu hiện khi ở trạng thái đồng hợp; người dị hợp mang allele lặn nhưng không biểu hiện bệnh.\nBố mẹ đều bình thường mà sinh con bệnh ⇒ bệnh do gene lặn.\n\n##PP Cách làm\nXét kiểu hình của bố mẹ và con trong phả hệ.\nNếu bố mẹ bình thường sinh con bệnh thì kết luận gene lặn.\nLoại các phương án cho rằng gene trội hoặc đột biến NST, thường biến vì không phù hợp.",
+     "vi_du": "##VD\nBố (I₁), mẹ (I₂) đều không mắc bệnh, con trai II₁ mắc bệnh. Bệnh này do gene trội hay gene lặn quy định?\nA. Gene trội\nB. Gene lặn\nC. Không đủ dữ kiện để kết luận\nD. Cả gene trội và gene lặn đều có thể đúng như nhau\n\nBài giải:\nBố mẹ đều không mắc bệnh nhưng con trai mắc bệnh.\nNếu là gene trội thì bố hoặc mẹ phải mang gene gây bệnh và biểu hiện bệnh; điều này trái đề.\nVậy bệnh do gene lặn, bố mẹ mang allele lặn ở trạng thái dị hợp nên không biểu hiện.\nChọn B.\n\n##VD\nPhả hệ dưới đây mô tả một gia đình, trong đó ô vuông là nam, vòng tròn là nữ, tô đậm là người mắc bệnh. Cả I₁ và I₂ đều không mắc bệnh nhưng con trai II₁ của họ mắc bệnh. Từ đó có thể kết luận gì về tính trạng bệnh này?\nA. Gene trội, vì bố mẹ không bệnh vẫn sinh con bệnh\nB. Gene lặn, vì bố mẹ không bệnh vẫn sinh con bệnh\nC. Không xác định được từ phả hệ này\nD. Do đột biến NST, không do gene\n\nBài giải:\nBố mẹ đều không mắc bệnh nhưng con trai mắc bệnh, nên bố mẹ mang gene gây bệnh ở trạng thái ẩn.\nĐó là đặc điểm của gene lặn.\nChọn B.",
+     "nguon_vi_du": "K09130102007, K09130102009",
+     "cau": [
+      "K09130102005",
+      "K09130102007",
+      "K09130102009"
+     ]
+    },
+    {
+     "ten": "Xác định kiểu gene của người trong phả hệ khi bệnh do gene lặn",
+     "mo_ta": "Đề cho bệnh do allele lặn a, bố mẹ bình thường sinh con bệnh (aa), hỏi kiểu gene của bố mẹ hoặc nhận định về kiểu gene các anh chị em bình thường.\nLập luận từ kiểu gene aa của con ngược lên bố mẹ (mỗi người truyền một allele a).\nLưu ý: câu hỏi tính xác suất bằng số ⇒ thuộc dạng \"Tính xác suất sinh con mắc bệnh hoặc mang kiểu gene nhất định\".",
+     "ly_thuyet": "##TC Kiểu gene và kiểu hình\nQuy ước A: bình thường, a: bệnh. Người bệnh có kiểu gene aa; người bình thường là AA hoặc Aa.\nCon aa nhận 1 allele a từ bố và 1 allele a từ mẹ. Nếu bố mẹ đều bình thường thì cả hai đều có allele a nên đều là Aa.\nBố hoặc mẹ AA không thể có con aa; bố hoặc mẹ aa đã mắc bệnh.\n\n##PP Cách làm\nQuy ước allele và kiểu gene của người bệnh (aa).\nXét allele con nhận từ bố và mẹ.\nKết hợp kiểu hình bình thường của bố mẹ để suy ra kiểu gene.\n\n##CY Chú ý\nNgười bình thường trong gia đình có con bệnh vẫn có thể mang allele a (Aa); kiểu hình bình thường không cho biết chắc kiểu gene.",
+     "vi_du": "##VD\nMột bệnh do gene lặn trên NST thường quy định. Bố mẹ đều không biểu hiện bệnh nhưng sinh con mắc bệnh. Điều này cho biết gì về kiểu gene của bố mẹ?\nA. Bố hoặc mẹ chắc chắn phải biểu hiện bệnh mới có thể truyền cho con\nB. Đây là hiện tượng đột biến mới phát sinh ở con, không phải do bố mẹ truyền lại\nC. Bố mẹ chắc chắn đều có kiểu gene đồng hợp lặn (aa)\nD. Cả bố và mẹ đều mang kiểu gene dị hợp (mang allele gây bệnh nhưng không biểu hiện)\n\nBài giải:\nBệnh do gene lặn trên NST thường; con mắc bệnh có kiểu gene aa, nhận một allele a từ bố và một allele a từ mẹ.\nBố mẹ không biểu hiện bệnh nên không phải aa, nhưng đều có allele a.\nVậy cả hai đều có kiểu gene dị hợp Aa.\nChọn D.\n\n##VD\nBiết bệnh do allele lặn a trên NST thường quy định (A: không bệnh). Bố, mẹ không bệnh nhưng con trai II₂ bị bệnh (aa). Kiểu gene của bố và mẹ là gì?\nA. Cả hai đều có kiểu gene đồng hợp AA\nB. Cả hai đều có kiểu gene dị hợp Aa\nC. Bố AA, mẹ Aa\nD. Bố Aa, mẹ đồng hợp aa\n\nBài giải:\nCon trai II₂ bị bệnh có kiểu gene aa nên nhận a từ cả bố và mẹ.\nBố mẹ không bệnh nên không phải aa; đều mang allele a nên đều là Aa.\nNếu bố hoặc mẹ là AA thì không thể truyền a cho con.\nChọn B.",
+     "nguon_vi_du": "K09130102001, K09130102006",
+     "cau": [
+      "K09130102001",
+      "K09130102006",
+      "K09130102010",
+      "K09130102012"
+     ]
+    },
+    {
+     "ten": "Tính xác suất sinh con mắc bệnh hoặc mang kiểu gene nhất định",
+     "mo_ta": "Đề cho cặp bố mẹ bình thường đã sinh con bệnh do gene lặn trên NST thường, hỏi xác suất con tiếp theo mắc bệnh hoặc xác suất các con bình thường mang kiểu gene dị hợp.\nCần viết sơ đồ lai Aa × Aa rồi tính xác suất, có thể nhân xác suất các sự kiện độc lập.\nLưu ý: câu chỉ hỏi kiểu gene của bố mẹ, không tính xác suất ⇒ thuộc dạng \"Xác định kiểu gene của người trong phả hệ khi bệnh do gene lặn\".",
+     "ly_thuyet": "##TC Xác suất trong di truyền\nAa × Aa → 1 AA : 2 Aa : 1 aa. Xác suất con mắc bệnh (aa) là $\\dfrac{1}{4}$, con bình thường là $\\dfrac{3}{4}$.\nTrong nhóm con bình thường, xác suất là Aa bằng $\\dfrac{2}{3}$, là AA bằng $\\dfrac{1}{3}$.\nCác lần sinh con độc lập nên xác suất của nhiều sự kiện độc lập bằng tích các xác suất.\n\n##PP Cách làm\nXác định kiểu gene bố mẹ từ dữ kiện (có con bệnh ⇒ bố mẹ bình thường đều Aa).\nViết sơ đồ lai, tìm tỉ lệ kiểu gene con.\nXác định đối tượng cần tính (con bệnh, hay con bình thường mang Aa), chú ý số lần sinh.\nNhân xác suất khi có nhiều con độc lập.\n\n##CY Chú ý\nĐã có con bệnh không làm giảm hay tăng xác suất con sau mắc bệnh, vẫn là 25%.\n50% là tỉ lệ Aa ở đời con, không phải tỉ lệ mắc bệnh; 75% là tỉ lệ con không bệnh.",
+     "vi_du": "##VD\nMột cặp vợ chồng đều không mắc một bệnh do allele lặn a quy định nhưng đã sinh một người con mắc bệnh. Xác suất đứa con tiếp theo của họ mắc bệnh này là\nA. 50%\nB. 0%\nC. 25%\nD. 75%\n\nBài giải:\nCon mắc bệnh (aa) nên bố mẹ đều có allele a; vì không bệnh nên cả hai là Aa.\nAa × Aa → 1 AA : 2 Aa : 1 aa.\nXác suất con mắc bệnh (aa) là 1/4 = 25%.\nChọn C.\n\n##VD\nBố mẹ đều không mắc bệnh do gene lặn trên NST thường (kiểu gene Aa). Họ đã sinh 2 người con đều không mắc bệnh. Xác suất để cả hai người con này đều có kiểu gene dị hợp (Aa) là bao nhiêu?\nA. 1/4\nB. 4/9\nC. 2/3\nD. 1/9\n\nBài giải:\nAa × Aa → 1 AA : 2 Aa : 1 aa. Trong nhóm con không mắc bệnh (1 AA : 2 Aa), xác suất một người là Aa bằng 2/3.\nHai người con độc lập nên xác suất cả hai đều Aa là (2/3)² = 4/9.\nChọn B.",
+     "nguon_vi_du": "K09130102011, K09130102013",
+     "cau": [
+      "K09130102008",
+      "K09130102011",
+      "K09130102013"
+     ]
+    }
+   ],
+   "khong_hop": []
+  }
+ ]
+}

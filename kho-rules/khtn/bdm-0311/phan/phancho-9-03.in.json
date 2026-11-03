@@ -1,0 +1,327 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00478",
+   "chu_de": "Điện học",
+   "chuyen_de": "Công - Công suất",
+   "nhom": "Các dạng bài tập cơ bản của công & công suất điện",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nSố ghi trên thiết bị điện (ví dụ 220V - 60W): 220V là hiệu điện thế định mức, 60W là công suất định mức (công suất khi hoạt động đúng hiệu điện thế định mức).\nCông suất điện $\\mathcal{P}=U\\cdot I$; điện năng tiêu thụ $A=\\mathcal{P}\\cdot t$.\nĐơn vị điện năng: jun (J) và kilôoát giờ (kWh); $1\\ \\mathrm{kWh}=3\\,600\\,000\\ \\mathrm{J}$. Mỗi số trên công tơ điện là 1 kWh.\n\n##PP 2. Các bước làm bài\nNhận biết số nào là hiệu điện thế, số nào là công suất qua đơn vị V, W.\nVới đổi đơn vị năng lượng: nhân hoặc chia $3\\,600\\,000$.\n\n##CY 3. Lưu ý\nHiệu điện thế thực tế nhỏ hơn định mức thì công suất thực tế nhỏ hơn định mức.\nKhông dùng dây điện cũ nứt vỏ cách điện; ưu tiên thiết bị tiết kiệm điện, tắt thiết bị khi không dùng.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01659",
+     "thu_tu": 1,
+     "ten": "Nhận biết ý nghĩa các số ghi trên thiết bị điện",
+     "mo_ta": "Đề cho nhãn thiết bị dạng \"220V - 60W\" và hỏi một số ghi có ý nghĩa gì, hiệu điện thế hay công suất định mức.\nHoặc hỏi công suất tiêu thụ khi dùng đúng/sai hiệu điện thế định mức.\nChỉ nhận biết, không tính số.\nLưu ý: hỏi đơn vị năng lượng, kWh, J ⇒ thuộc dạng \"Nhận biết và đổi đơn vị điện năng kWh, J\".",
+     "ly_thuyet": "##TC Số ghi định mức\nSố kèm đơn vị V là hiệu điện thế định mức.\nSố kèm đơn vị W là công suất định mức: công suất tiêu thụ khi dùng đúng hiệu điện thế định mức.\nDùng hiệu điện thế thấp hơn định mức thì công suất thực tế nhỏ hơn định mức.\n\n##CY Lỗi hay mắc\nNhầm công suất định mức với cường độ dòng điện hoặc với năng lượng tiêu thụ trong một giờ.",
+     "vi_du": "##VD\nTrên bóng đèn có ghi \"220V – 60W\". Số 60W cho biết điều gì?\nA. Công suất điện định mức của đèn\nB. Cường độ dòng điện định mức qua đèn\nC. Hiệu điện thế định mức để đèn sáng bình thường\nD. Năng lượng điện đèn tiêu thụ trong một giờ\n\nBài giải:\nSố ghi kèm đơn vị W là công suất điện định mức, tức công suất tiêu thụ khi đèn hoạt động đúng hiệu điện thế định mức.\nVậy số 60W là công suất điện định mức của đèn.\nChọn A.\n\n##VD\nTrên máy bơm nước có ghi '220V – 370W'. Nếu chỉ mắc máy bơm vào hiệu điện thế 200V (thấp hơn định mức), công suất tiêu thụ thực tế sẽ thế nào so với 370W?\nA. Nhỏ hơn 370W\nB. Lớn hơn 370W\nC. Đúng bằng 370W\nD. Bằng 0\n\nBài giải:\n370W là công suất định mức, chỉ đạt khi hiệu điện thế đặt vào đúng bằng 220V.\nHiệu điện thế 200V thấp hơn định mức nên công suất thực tế nhỏ hơn 370W.\nChọn A."
+    },
+    {
+     "dang_id": "KDB01660",
+     "thu_tu": 2,
+     "ten": "Nhận biết và đổi đơn vị điện năng kWh, J",
+     "mo_ta": "Đề hỏi đơn vị đo điện năng trên hoá đơn tiền điện, ý nghĩa số đếm công tơ.\nHoặc yêu cầu đổi giữa kWh và J ($1\\ \\mathrm{kWh}=3{,}6\\times10^6\\ \\mathrm{J}$).\nLưu ý: yêu cầu tính điện năng từ công suất và thời gian ⇒ thuộc nhóm tính điện năng và tiền điện.",
+     "ly_thuyet": "##TC Đơn vị điện năng\n$1\\ \\mathrm{kWh}=1000\\ \\mathrm{W}\\times3600\\ \\mathrm{s}=3\\,600\\,000\\ \\mathrm{J}$.\nHoá đơn tiền điện tính theo kWh; mỗi số đếm công tơ ứng với 1 kWh.\n\n##PP Cách làm\nĐổi kWh sang J: nhân $3\\,600\\,000$.\nĐổi J sang kWh: chia $3\\,600\\,000$.\n\n##CY Lỗi hay mắc\nQuên đổi giờ sang giây (3600) hoặc quên đổi kW sang W.",
+     "vi_du": "##VD\n1 kWh bằng bao nhiêu jun (J)?\nA. 3 600 J\nB. 60 000 J\nC. 3 600 000 J\nD. 360 000 J\n\nBài giải:\nĐổi: $1\\ \\mathrm{kWh}=1000\\ \\mathrm{W}\\times3600\\ \\mathrm{s}=3\\,600\\,000\\ \\mathrm{J}$.\nChọn C.\n\n##VD\nẤm điện tiêu thụ năng lượng 900 000 J. Giá trị đó bằng bao nhiêu kWh?\nA. 0,9 kWh\nB. 900 kWh\nC. 0,25 kWh\nD. 2,5 kWh\n\nBài giải:\nĐổi J sang kWh: $900\\,000\\ \\mathrm{J}=\\dfrac{900\\,000}{3\\,600\\,000}=0{,}25\\ \\mathrm{kWh}$.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01661",
+     "thu_tu": 3,
+     "ten": "An toàn điện và tiết kiệm điện trong gia đình",
+     "mo_ta": "Đề hỏi vì sao không nên dùng dây điện cũ nứt vỏ cách điện.\nHoặc hỏi biện pháp tiết kiệm điện năng trong gia đình.\nChỉ nhận biết kiến thức thực tế, không tính số.\nLưu ý: so sánh điện năng đèn tiết kiệm với đèn thường có số liệu ⇒ thuộc nhóm tính điện năng và tiền điện.",
+     "ly_thuyet": "##TC An toàn và tiết kiệm\nVỏ cách điện nứt nẻ dễ gây rò điện, chạm chập, cháy nổ, điện giật.\nTiết kiệm điện: chọn thiết bị tiết kiệm năng lượng, công suất phù hợp, tắt thiết bị khi không dùng.",
+     "vi_du": "##VD\nBiện pháp nào sau đây giúp tiết kiệm điện năng hiệu quả trong gia đình?\nA. Bật tất cả đèn trong nhà kể cả phòng không có người\nB. Để điều hoà hoạt động cả ngày dù không có ai ở nhà\nC. Chọn thiết bị tiết kiệm năng lượng, công suất phù hợp\nD. Cắm sạc điện thoại qua đêm dù đã đầy pin\n\nBài giải:\nThiết bị tiết kiệm năng lượng, công suất phù hợp nhu cầu giúp giảm điện năng tiêu thụ mà vẫn đáp ứng nhu cầu.\nCác phương án còn lại đều là cách dùng điện lãng phí.\nChọn C."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00468",
+   "chu_de": "Điện học",
+   "chuyen_de": "Định luật Ohm",
+   "nhom": "Tính toán các đại lượng R, ρ, l, s",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nĐiện trở dây dẫn: $R=\\rho\\dfrac{l}{S}$; suy ra $l=\\dfrac{R\\cdot S}{\\rho}$ và $S=\\dfrac{\\rho\\cdot l}{R}$.\nĐiện trở suất $\\rho$ đặc trưng cho vật liệu, đơn vị $\\Omega\\cdot\\mathrm{m}$ (hoặc $\\Omega\\cdot\\mathrm{mm^2/m}$); $1\\ \\mathrm{mm^2}=10^{-6}\\ \\mathrm{m^2}$.\nTiết diện dây tròn: $S=\\dfrac{\\pi d^2}{4}$.\n\n##PP 2. Các bước làm bài\nĐưa các đại lượng về cùng hệ đơn vị (đồng bộ $\\rho$ với $l$, $S$).\nChọn công thức cho đại lượng cần tìm rồi thay số.\n\n##CY 3. Lưu ý\nDùng $\\rho$ theo $\\Omega\\cdot\\mathrm{mm^2/m}$ thì $S$ phải tính bằng $\\mathrm{mm^2}$, $l$ bằng m.\nDùng $\\rho$ theo $\\Omega\\cdot\\mathrm{m}$ thì phải đổi $S$ sang $\\mathrm{m^2}$.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01641",
+     "thu_tu": 1,
+     "ten": "Tính điện trở dây khi biết ρ, chiều dài, tiết diện",
+     "mo_ta": "Đề cho vật liệu (kèm $\\rho$ theo Ω·mm²/m), chiều dài và tiết diện (mm²) và hỏi điện trở của dây.\nLàm bằng cách thay số trực tiếp vào $R=\\rho l/S$.\nLưu ý: đề cho $\\rho$ theo Ω·m hoặc cho đường kính dây cần đổi đơn vị/tính tiết diện ⇒ thuộc dạng \"Tính điện trở dây khi đổi mm² hoặc tính S từ đường kính\".",
+     "ly_thuyet": "##TC Công thức điện trở dây dẫn\n$R=\\rho\\dfrac{l}{S}$, với $\\rho$ ($\\Omega\\cdot\\mathrm{mm^2/m}$), $l$ (m), $S$ ($\\mathrm{mm^2}$).\n\n##PP Cách làm\nGhi $\\rho$, $l$, $S$ từ đề.\nThay vào $R=\\rho\\dfrac{l}{S}$ và tính.\n\n##CY Lỗi hay mắc\nQuên nhân $\\rho$, chỉ tính $\\dfrac{l}{S}$.\nĐảo vị trí $l$ và $S$ trong công thức.",
+     "vi_du": "##VD\nDây nikelin có điện trở suất ρ = 0,4 Ω·mm²/m, chiều dài l = 5 m, tiết diện S = 0,5 mm². Điện trở của dây là bao nhiêu?\nA. 10 Ω\nB. 4 Ω\nC. 0,04 Ω\nD. 1 Ω\n\nBài giải:\nÁp dụng $R=\\rho\\dfrac{l}{S}=\\dfrac{0{,}4\\times5}{0{,}5}=4\\ \\Omega$.\nChọn B.\n\n##VD\nDây constantan có điện trở suất ρ = 0,5 Ω·mm²/m, chiều dài l = 8 m, tiết diện S = 0,4 mm². Điện trở của dây là bao nhiêu?\nA. 20 Ω\nB. 0,025 Ω\nC. 10 Ω\nD. 1,6 Ω\n\nBài giải:\nÁp dụng $R=\\rho\\dfrac{l}{S}=\\dfrac{0{,}5\\times8}{0{,}4}=10\\ \\Omega$.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01642",
+     "thu_tu": 2,
+     "ten": "Tìm chiều dài hoặc tiết diện dây khi biết điện trở",
+     "mo_ta": "Đề cho điện trở suất, điện trở $R$ và một trong hai đại lượng $l$, $S$; hỏi đại lượng còn lại.\nPhải biến đổi công thức $R=\\rho l/S$ để tìm $l$ hoặc $S$ rồi thay số.\nLưu ý: hỏi điện trở $R$ ⇒ thuộc dạng \"Tính điện trở dây khi biết ρ, chiều dài, tiết diện\".",
+     "ly_thuyet": "##TC Biến đổi công thức\nTừ $R=\\rho\\dfrac{l}{S}$ suy ra $l=\\dfrac{R\\cdot S}{\\rho}$ và $S=\\dfrac{\\rho\\cdot l}{R}$.\n\n##PP Cách làm\nXác định đại lượng cần tìm là $l$ hay $S$.\nViết công thức đã biến đổi tương ứng.\nThay số và tính, ghi đơn vị (m hoặc $\\mathrm{mm^2}$).\n\n##CY Lỗi hay mắc\nQuên nhân với $S$ khi tìm $l$ (chỉ tính $\\dfrac{R}{\\rho}$).\nĐảo ngược công thức hoàn toàn.",
+     "vi_du": "##VD\nDây nikelin có điện trở suất ρ = 0,4 Ω·mm²/m, tiết diện S = 0,5 mm², điện trở R = 8 Ω. Chiều dài của dây là bao nhiêu?\nA. 20 m\nB. 0,025 m\nC. 1,6 m\nD. 10 m\n\nBài giải:\nTừ $R=\\rho\\dfrac{l}{S}$ suy ra $l=\\dfrac{R\\cdot S}{\\rho}$.\n$l=\\dfrac{8\\times0{,}5}{0{,}4}=10\\ \\mathrm{m}$.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01643",
+     "thu_tu": 3,
+     "ten": "Tính điện trở dây khi đổi mm² hoặc tính S từ đường kính",
+     "mo_ta": "Đề cho $\\rho$ theo Ω·m và tiết diện theo mm² nên phải đổi mm² sang m² trước khi tính.\nHoặc đề cho đường kính dây tròn, cần tính $S=\\pi d^2/4$ rồi mới tính $R$.\nLưu ý: số liệu đã đồng bộ đơn vị (Ω·mm²/m với mm²) ⇒ thuộc dạng \"Tính điện trở dây khi biết ρ, chiều dài, tiết diện\".",
+     "ly_thuyet": "##TC Đổi đơn vị và tiết diện\n$1\\ \\mathrm{mm^2}=10^{-6}\\ \\mathrm{m^2}$.\nTiết diện dây tròn: $S=\\dfrac{\\pi d^2}{4}$ ($d$ là đường kính).\n\n##PP Cách làm\nĐổi tiết diện về $\\mathrm{m^2}$ nếu $\\rho$ tính theo $\\Omega\\cdot\\mathrm{m}$; hoặc tính $S$ từ đường kính $d$.\nThay $\\rho$, $l$, $S$ vào $R=\\rho\\dfrac{l}{S}$.\n\n##CY Lỗi hay mắc\nDùng hệ số $10^{-4}$ (cm² sang m²) thay vì $10^{-6}$.\nQuên chia 4 khi tính $S=\\dfrac{\\pi d^2}{4}$.",
+     "vi_du": "##VD\nMột dây dẫn làm bằng nichrome có điện trở suất ρ = 1,1×10⁻⁶ Ω·m, chiều dài 2 m, tiết diện 0,5 mm². Điện trở của dây là bao nhiêu?\nA. 0,044 Ω\nB. 4,4×10⁻⁶ Ω\nC. 4,4 Ω\nD. 0,44 Ω\n\nBài giải:\nĐổi $0{,}5\\ \\mathrm{mm^2}=0{,}5\\times10^{-6}\\ \\mathrm{m^2}$.\n$R=\\rho\\dfrac{l}{S}=\\dfrac{1{,}1\\times10^{-6}\\times2}{0{,}5\\times10^{-6}}=4{,}4\\ \\Omega$.\nChọn C."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K09000000070",
+   "nhom_id": "KNB00478",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Bóng đèn có U = 220V, I = 0,5A. Tính công suất điện của đèn.",
+   "lua_chon": [
+    "110W",
+    "440W",
+    "220,5W",
+    "220W"
+   ],
+   "dap_an": "A",
+   "loi_giai": "P = U·I = 220 × 0,5 = 110W.\n\nVì sao các phương án khác sai:\n- B: Đã lấy U chia cho I thay vì nhân U với I.\n- C: Đã cộng U với I thay vì nhân.\n- D: Đã quên nhân với I, chỉ lấy giá trị U."
+  },
+  {
+   "ma_cau": "K09000000071",
+   "nhom_id": "KNB00478",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Bàn là có U = 220V, I = 4A. Tính công suất điện của bàn là.",
+   "lua_chon": [
+    "55W",
+    "880W",
+    "224W",
+    "4W"
+   ],
+   "dap_an": "B",
+   "loi_giai": "P = U·I = 220 × 4 = 880W.\n\nVì sao các phương án khác sai:\n- A: Đã lấy U chia cho I thay vì nhân.\n- C: Đã cộng U với I thay vì nhân.\n- D: Đã quên nhân với U, chỉ lấy giá trị I."
+  },
+  {
+   "ma_cau": "K09000000072",
+   "nhom_id": "KNB00478",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Nồi cơm điện có U = 220V, I = 2A. Tính công suất điện của nồi.",
+   "lua_chon": [
+    "110W",
+    "222W",
+    "440W",
+    "2W"
+   ],
+   "dap_an": "C",
+   "loi_giai": "P = U·I = 220 × 2 = 440W.\n\nVì sao các phương án khác sai:\n- A: Đã lấy U chia cho I thay vì nhân.\n- B: Đã cộng U với I thay vì nhân.\n- D: Đã quên nhân với U, chỉ lấy giá trị I."
+  },
+  {
+   "ma_cau": "K09000000073",
+   "nhom_id": "KNB00478",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Ấm đun nước có U = 220V, I = 6A. Tính công suất điện của ấm.",
+   "lua_chon": [
+    "36,7W",
+    "226W",
+    "6W",
+    "1320W"
+   ],
+   "dap_an": "D",
+   "loi_giai": "P = U·I = 220 × 6 = 1320W.\n\nVì sao các phương án khác sai:\n- A: Đã lấy U chia cho I thay vì nhân.\n- B: Đã cộng U với I thay vì nhân.\n- C: Đã quên nhân với U, chỉ lấy giá trị I."
+  },
+  {
+   "ma_cau": "K09000000074",
+   "nhom_id": "KNB00478",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Bóng đèn có U = 110V, I = 3A. Tính công suất điện của đèn.",
+   "lua_chon": [
+    "36,7W",
+    "330W",
+    "113W",
+    "110W"
+   ],
+   "dap_an": "B",
+   "loi_giai": "P = U·I = 110 × 3 = 330W.\n\nVì sao các phương án khác sai:\n- A: Đã lấy U chia cho I thay vì nhân U với I.\n- C: Đã cộng U với I thay vì nhân.\n- D: Đã quên nhân với I, chỉ lấy giá trị U."
+  },
+  {
+   "ma_cau": "K09000000075",
+   "nhom_id": "KNB00478",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Máy sấy tóc có U = 220V, I = 8A. Tính công suất điện của máy.",
+   "lua_chon": [
+    "1760W",
+    "27,5W",
+    "228W",
+    "8W"
+   ],
+   "dap_an": "A",
+   "loi_giai": "P = U·I = 220 × 8 = 1760W.\n\nVì sao các phương án khác sai:\n- B: Đã lấy U chia cho I thay vì nhân.\n- C: Đã cộng U với I thay vì nhân.\n- D: Đã quên nhân với U, chỉ lấy giá trị I."
+  },
+  {
+   "ma_cau": "K09000000076",
+   "nhom_id": "KNB00478",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Dây điện trở có R = 10Ω, I = 2A. Tính công suất toả nhiệt trên dây bằng công thức P = I²R.",
+   "lua_chon": [
+    "20W",
+    "40W",
+    "200W",
+    "2,5W"
+   ],
+   "dap_an": "B",
+   "loi_giai": "P = I²R = 2² × 10 = 4 × 10 = 40W.\n\nVì sao các phương án khác sai:\n- A: Quên bình phương I, chỉ nhân I với R.\n- C: Đã bình phương R thay vì bình phương I.\n- D: Đã lấy R chia cho I² thay vì nhân."
+  },
+  {
+   "ma_cau": "K09000000077",
+   "nhom_id": "KNB00478",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Bóng đèn có U = 220V mắc vào điện trở R = 484Ω. Tính công suất của đèn bằng công thức P = U²/R.",
+   "lua_chon": [
+    "0,45W",
+    "48400W",
+    "484W",
+    "100W"
+   ],
+   "dap_an": "D",
+   "loi_giai": "P = U²/R = 220² / 484 = 48 400 / 484 = 100W.\n\nVì sao các phương án khác sai:\n- A: Đã quên bình phương U, chỉ lấy U chia cho R.\n- B: Đã quên chia cho R, chỉ tính U² mà không chia tiếp.\n- C: Đã nhầm lấy giá trị điện trở R làm đáp số công suất."
+  },
+  {
+   "ma_cau": "K09000000078",
+   "nhom_id": "KNB00478",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Dây dẫn có R = 5Ω, I = 4A. Tính công suất toả nhiệt bằng công thức P = I²R.",
+   "lua_chon": [
+    "80W",
+    "20W",
+    "100W",
+    "0,31W"
+   ],
+   "dap_an": "A",
+   "loi_giai": "P = I²R = 4² × 5 = 16 × 5 = 80W.\n\nVì sao các phương án khác sai:\n- B: Quên bình phương I, chỉ nhân I với R.\n- C: Đã bình phương R thay vì bình phương I.\n- D: Đã lấy R chia cho I² thay vì nhân."
+  },
+  {
+   "ma_cau": "K09000000079",
+   "nhom_id": "KNB00478",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Bàn là có U = 110V mắc vào điện trở R = 55Ω. Tính công suất bằng công thức P = U²/R.",
+   "lua_chon": [
+    "2W",
+    "12100W",
+    "220W",
+    "55W"
+   ],
+   "dap_an": "C",
+   "loi_giai": "P = U²/R = 110² / 55 = 12 100 / 55 = 220W.\n\nVì sao các phương án khác sai:\n- A: Đã quên bình phương U, chỉ lấy U chia cho R.\n- B: Đã quên chia cho R, chỉ tính U² mà không chia tiếp.\n- D: Đã nhầm lấy giá trị điện trở R làm đáp số công suất."
+  },
+  {
+   "ma_cau": "K09000000080",
+   "nhom_id": "KNB00478",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Dây điện trở có R = 8Ω, I = 3A. Tính công suất toả nhiệt trên dây bằng công thức P = I²R.",
+   "lua_chon": [
+    "24W",
+    "72W",
+    "192W",
+    "≈0,89W"
+   ],
+   "dap_an": "B",
+   "loi_giai": "P = I²R = 3² × 8 = 9 × 8 = 72W.\n\nVì sao các phương án khác sai:\n- A: Quên bình phương I, chỉ nhân I với R.\n- C: Đã bình phương R thay vì bình phương I.\n- D: Đã lấy R chia cho I² thay vì nhân."
+  },
+  {
+   "ma_cau": "K09000000064",
+   "nhom_id": "KNB00468",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Dây dẫn có điện trở R₁ = 4 Ω. Nếu kéo dài dây thêm gấp 3 lần (giữ nguyên tiết diện), điện trở mới R₂ là bao nhiêu?",
+   "lua_chon": [
+    "1,33 Ω",
+    "12 Ω",
+    "4 Ω",
+    "7 Ω"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Điện trở tỉ lệ thuận với chiều dài: R₂ = 3×R₁ = 3×4 = 12 Ω.\n\nVì sao các phương án khác sai:\n- A: Đã chia R₁ cho 3 thay vì nhân, đảo ngược tỉ lệ.\n- C: Điện trở tỉ lệ thuận với chiều dài, dây dài hơn thì điện trở phải tăng.\n- D: Đã cộng số lần dài ra với điện trở ban đầu, không đúng cách tính tỉ lệ thuận."
+  },
+  {
+   "ma_cau": "K09000000065",
+   "nhom_id": "KNB00468",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Dây dẫn có điện trở R₁ = 6 Ω. Nếu kéo dài dây thêm gấp 5 lần (giữ nguyên tiết diện), điện trở mới R₂ là bao nhiêu?",
+   "lua_chon": [
+    "1,2 Ω",
+    "30 Ω",
+    "6 Ω",
+    "11 Ω"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Điện trở tỉ lệ thuận với chiều dài: R₂ = 5×R₁ = 5×6 = 30 Ω.\n\nVì sao các phương án khác sai:\n- A: Đã chia R₁ cho 5 thay vì nhân, đảo ngược tỉ lệ.\n- C: Điện trở tỉ lệ thuận với chiều dài, dây dài hơn thì điện trở phải tăng.\n- D: Đã cộng số lần dài ra với điện trở ban đầu, không đúng cách tính tỉ lệ thuận."
+  },
+  {
+   "ma_cau": "K09000000066",
+   "nhom_id": "KNB00468",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Dây dẫn có điện trở R₁ = 8 Ω. Nếu thay bằng dây cùng chiều dài, cùng vật liệu nhưng có tiết diện gấp 4 lần, điện trở mới R₂ là bao nhiêu?",
+   "lua_chon": [
+    "32 Ω",
+    "4 Ω",
+    "8 Ω",
+    "2 Ω"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Điện trở tỉ lệ nghịch với tiết diện: R₂ = R₁/4 = 8/4 = 2 Ω.\n\nVì sao các phương án khác sai:\n- A: Đã nhân R₁ với 4 thay vì chia, đảo ngược tỉ lệ nghịch.\n- B: Chia sai số lần, phải chia cho 4 chứ không phải 2.\n- C: Điện trở tỉ lệ nghịch với tiết diện, tiết diện tăng thì điện trở phải giảm."
+  },
+  {
+   "ma_cau": "K09000000067",
+   "nhom_id": "KNB00468",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Dây dẫn có điện trở R₁ = 20 Ω và đường kính d₁. Nếu thay bằng dây cùng chiều dài, cùng vật liệu nhưng có đường kính gấp 2 lần (d₂ = 2d₁), điện trở mới R₂ là bao nhiêu?",
+   "lua_chon": [
+    "5 Ω",
+    "10 Ω",
+    "80 Ω",
+    "40 Ω"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Tiết diện tỉ lệ với d², đường kính gấp 2 thì tiết diện gấp 4; điện trở tỉ lệ nghịch với tiết diện nên R₂ = R₁/4 = 20/4 = 5 Ω.\n\nVì sao các phương án khác sai:\n- B: Chỉ chia điện trở cho 2, quên rằng tiết diện tỉ lệ với BÌNH PHƯƠNG đường kính.\n- C: Đã nhân R₁ với 4 thay vì chia, đảo ngược tỉ lệ nghịch.\n- D: Chỉ nhân đường kính gấp đôi mà quên bình phương và quên tỉ lệ nghịch với tiết diện."
+  },
+  {
+   "ma_cau": "K09000000068",
+   "nhom_id": "KNB00468",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Dây dẫn có điện trở R₁ = 15 Ω. Nếu thay bằng dây cùng chiều dài, cùng vật liệu nhưng có tiết diện gấp 5 lần, điện trở mới R₂ là bao nhiêu?",
+   "lua_chon": [
+    "75 Ω",
+    "7,5 Ω",
+    "60 Ω",
+    "3 Ω"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Điện trở tỉ lệ nghịch với tiết diện: R₂ = R₁/5 = 15/5 = 3 Ω.\n\nVì sao các phương án khác sai:\n- A: Đã nhân R₁ với 5 thay vì chia, đảo ngược tỉ lệ nghịch.\n- B: Chia sai số lần, phải chia cho 5 chứ không phải 2.\n- C: Điện trở tỉ lệ nghịch với tiết diện, tiết diện tăng thì điện trở phải giảm, không tăng."
+  },
+  {
+   "ma_cau": "K09000000069",
+   "nhom_id": "KNB00468",
+   "nhom_chac": "cao",
+   "loai": "trac_nghiem",
+   "de": "Dây dẫn có điện trở R₁ = 36 Ω và đường kính d₁. Nếu thay bằng dây cùng chiều dài, cùng vật liệu nhưng có đường kính gấp 3 lần (d₂ = 3d₁), điện trở mới R₂ là bao nhiêu?",
+   "lua_chon": [
+    "4 Ω",
+    "12 Ω",
+    "324 Ω",
+    "108 Ω"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Tiết diện tỉ lệ với d², đường kính gấp 3 thì tiết diện gấp 9; điện trở tỉ lệ nghịch với tiết diện nên R₂ = R₁/9 = 36/9 = 4 Ω.\n\nVì sao các phương án khác sai:\n- B: Chỉ chia điện trở cho 3, quên rằng tiết diện tỉ lệ với BÌNH PHƯƠNG đường kính.\n- C: Đã nhân R₁ với 9 thay vì chia, đảo ngược tỉ lệ nghịch.\n- D: Chỉ nhân đường kính gấp 3 mà quên bình phương và quên tỉ lệ nghịch với tiết diện."
+  }
+ ]
+}

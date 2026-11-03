@@ -1,0 +1,735 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00507",
+   "khoi": "9",
+   "chu_de": "Giới thiệu về hợp chất hữu cơ, hydrocarbon & nguồn nhiên liệu",
+   "chuyen_de": "Giới thiệu về hợp chất hữu cơ",
+   "nhom": "Khái niệm và phân loại hợp chất hữu cơ",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nHợp chất hữu cơ là hợp chất của carbon, trừ $\\mathrm{CO}$, $\\mathrm{CO_2}$, $\\mathrm{H_2CO_3}$ và các muối carbonate (như $\\mathrm{CaCO_3}$, $\\mathrm{Na_2CO_3}$, $\\mathrm{NaHCO_3}$). \nHợp chất hữu cơ thường gặp: methane $\\mathrm{CH_4}$, ethylene $\\mathrm{C_2H_4}$, acetylene $\\mathrm{C_2H_2}$, benzene $\\mathrm{C_6H_6}$, ethylic alcohol $\\mathrm{C_2H_6O}$, acetic acid $\\mathrm{C_2H_4O_2}$, glucose $\\mathrm{C_6H_{12}O_6}$, saccharose $\\mathrm{C_{12}H_{22}O_{11}}$.\nThan chì, kim cương là đơn chất carbon, không phải hợp chất nên không phải hợp chất hữu cơ.\nHợp chất hữu cơ gồm hai loại:\nHydrocarbon: phân tử chỉ gồm hai nguyên tố carbon và hydrogen, ví dụ $\\mathrm{CH_4}$, $\\mathrm{C_2H_4}$, $\\mathrm{C_2H_2}$, $\\mathrm{C_6H_6}$.\nDẫn xuất của hydrocarbon: ngoài carbon và hydrogen, phân tử còn có nguyên tố khác như oxygen, nitrogen, chlorine, ví dụ $\\mathrm{C_2H_6O}$, $\\mathrm{C_2H_4O_2}$, $\\mathrm{C_6H_{12}O_6}$, $\\mathrm{CH_3Cl}$.\n\n##PP 2. Các bước làm bài\nBước 1. Kiểm tra chất có chứa carbon hay không.\nBước 2. Loại các chất thuộc nhóm trừ: $\\mathrm{CO}$, $\\mathrm{CO_2}$, $\\mathrm{H_2CO_3}$, muối carbonate. Chất còn lại là hợp chất hữu cơ.\nBước 3. Đếm các nguyên tố trong hợp chất hữu cơ: chỉ có $\\mathrm{C}$ và $\\mathrm{H}$ là hydrocarbon; có thêm nguyên tố khác là dẫn xuất của hydrocarbon.\n\n##CY 3. Lưu ý\nHợp chất chứa carbon chưa chắc là hợp chất hữu cơ; cần kiểm tra nhóm trừ.\nHydrocarbon và dẫn xuất của hydrocarbon đều là hợp chất hữu cơ.\nHợp chất hữu cơ có thể không chứa hydrogen trong thành phần, nhưng mọi hợp chất hữu cơ đều chứa carbon.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00508",
+   "khoi": "9",
+   "chu_de": "Giới thiệu về hợp chất hữu cơ, hydrocarbon & nguồn nhiên liệu",
+   "chuyen_de": "Giới thiệu về hợp chất hữu cơ",
+   "nhom": "CTPT và CTCT hợp chất hữu cơ",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nCông thức phân tử cho biết số nguyên tử của mỗi nguyên tố trong một phân tử, ví dụ $\\mathrm{C_2H_6O}$.\nCông thức cấu tạo cho biết thứ tự liên kết giữa các nguyên tử trong phân tử.\nHoá trị: carbon (C) hoá trị IV, hydrogen (H) hoá trị I, oxygen (O) hoá trị II, chlorine (Cl) hoá trị I.\nMỗi nguyên tử có số liên kết bằng hoá trị. Liên kết đơn là một gạch nối, liên kết đôi là hai gạch nối, liên kết ba là ba gạch nối. Liên kết đôi tính là 2 liên kết, liên kết ba tính là 3 liên kết.\n\n##ĐN Mạch carbon là dãy các nguyên tử carbon liên kết với nhau. Có ba loại mạch:\nMạch thẳng: các nguyên tử $\\mathrm{C}$ nối liên tiếp, không có nguyên tử $\\mathrm{C}$ nào liên kết với 3 nguyên tử $\\mathrm{C}$ khác.\nMạch nhánh: có ít nhất một nguyên tử $\\mathrm{C}$ liên kết với 3 hoặc 4 nguyên tử $\\mathrm{C}$ khác.\nMạch vòng: các nguyên tử $\\mathrm{C}$ nối thành một vòng khép kín.\nCông thức cấu tạo đầy đủ biểu diễn tất cả nguyên tử và tất cả liên kết. Công thức cấu tạo thu gọn không biểu diễn liên kết $\\mathrm{C–H}$, ví dụ $\\mathrm{CH_3} – \\mathrm{CH_2} – \\mathrm{OH}$.\n\n##TC 2. Các bước viết công thức cấu tạo\nBước 1. Viết mạch carbon theo dữ kiện của đề (mạch thẳng, nhánh hoặc vòng; liên kết đơn, đôi hoặc ba).\nBước 2. Gắn các nguyên tử hoặc nhóm nguyên tử khác ($\\mathrm{O}$, $\\mathrm{Cl}$, $\\mathrm{–OH}$, $\\mathrm{–COOH}$) vào mạch.\nBước 3. Điền nguyên tử $\\mathrm{H}$ vào các hoá trị còn thiếu của $\\mathrm{C}$ và $\\mathrm{O}$.\nBước 4. Đếm lại số nguyên tử từng loại để khớp công thức phân tử, kiểm tra hoá trị từng nguyên tử.\n\n##TC 3. Cách kiểm tra hoá trị và nhận dạng mạch carbon\nĐếm số liên kết quanh mỗi nguyên tử (liên kết đôi tính 2, liên kết ba tính 3): $\\mathrm{C}$ phải đủ 4, $\\mathrm{O}$ đủ 2, $\\mathrm{H}$ và $\\mathrm{Cl}$ đủ 1.\nNhận dạng mạch carbon: có vòng khép kín là mạch vòng; có nguyên tử $\\mathrm{C}$ liên kết với từ 3 nguyên tử $\\mathrm{C}$ khác trở lên là mạch nhánh; các trường hợp còn lại là mạch thẳng.\n\n##CY 4. Lưu ý\nMột công thức phân tử có thể ứng với nhiều công thức cấu tạo; để cho thêm dữ kiện về mạch hoặc nhóm nguyên tử để xác định một công thức.\nMạch carbon thẳng vẽ gấp khúc vẫn là mạch thẳng; chỗ gấp khúc chỉ do cách vẽ.\nNguyên tử $\\mathrm{O}$, $\\mathrm{Cl}$ không thuộc mạch carbon.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00509",
+   "khoi": "9",
+   "chu_de": "Giới thiệu về hợp chất hữu cơ, hydrocarbon & nguồn nhiên liệu",
+   "chuyen_de": "Giới thiệu về hợp chất hữu cơ",
+   "nhom": "Lập Công thức phân tử dựa vào phần trăm khối lượng",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nKhối lượng nguyên tử (amu): $\\mathrm{C} = 12$; $\\mathrm{H} = 1$; $\\mathrm{O} = 16$; $\\mathrm{N} = 14$; $\\mathrm{Cl} = 35.5$.\nKhối lượng phân tử của hợp chất $\\mathrm{C_xH_yO_z}$ là $\\mathrm{M} = 12x + y + 16z$ (amu), khối lượng mol là $\\mathrm{M}$ (g/mol) với cùng giá trị số.\nPhần trăm khối lượng của nguyên tố trong hợp chất là tỉ lệ khối lượng nguyên tố đó so với khối lượng phân tử; tổng phần trăm các nguyên tố bằng $100\\%$.\n\n##TC 2. Công thức\nTính phần trăm khối lượng:\n$\\mathrm{\\%C} = \\dfrac{12x}{\\mathrm{M}} \\times 100\\%$    \n$\\mathrm{\\%H} = \\dfrac{y}{\\mathrm{M}} \\times 100\\%$   \n$\\mathrm{\\%O} = \\dfrac{16z}{\\mathrm{M}} \\times 100\\%$\nTìm chỉ số nguyên tử từ phần trăm khối lượng và khối lượng phân tử:\n$x = \\dfrac{\\%\\mathrm{C} \\times \\mathrm{M}}{12 \\times 100}$\n$y = \\dfrac{\\%\\mathrm{H} \\times \\mathrm{M}}{100}$\n$z = \\dfrac{\\%\\mathrm{O} \\times \\mathrm{M}}{16 \\times 100}$\nTìm chỉ số nguyên tử từ sản phẩm đốt cháy (mỗi phân tử $\\mathrm{CO_2}$ chứa 1 nguyên tử $\\mathrm{C}$, mỗi phân tử $\\mathrm{H_2O}$ chứa 2 nguyên tử $\\mathrm{H}$):\n$x = \\dfrac{\\mathrm{n_{CO_2}}}{\\mathrm{n_X}}$\n$y = \\dfrac{2\\mathrm{n_{H_2O}}}{\\mathrm{n_X}}$\n$z = \\dfrac{\\mathrm{M} - 12x - y}{16}$\n\n##TC 3. Các bước làm bài\nTính phần trăm nguyên tố.\nBước 1: tính khối lượng phân tử M từ công thức.\nBước 2: lấy khối lượng nguyên tố (tích của số nguyên tử và khối lượng nguyên tử) chia cho M, nhân 100%.\nLập công thức từ phần trăm và M.\nBước 1: tính khối lượng của từng nguyên tố trong 1 mol hợp chất (tích của %X và M, chia cho 100).\nBước 2: chia cho khối lượng nguyên tử để được chỉ số. \nBước 3: nguyên tố không cho phần trăm tính theo hiệu (100% trừ các phần trăm đã biết).\nLập công thức từ sản phẩm đốt cháy. \nBước 1: tính $n_X$ bằng khối lượng chia M. \nBước 2: tính $n_{\\mathrm{CO_2}}$ và $n_{\\mathrm{H_2O}}$. \nBước 3: tính chỉ số x, y. \nBước 4: nếu X chứa oxygen thì tính z theo hiệu khối lượng.\n\n\n##CY 4. Lưu ý\nChỉ số nguyên tử phải là số nguyên dương; kết quả tính ra số lẻ cho thấy có sai sót ở bước tính.\nPhần trăm khối lượng làm tròn đến một chữ số thập phân; khi tính ngược chỉ số, làm tròn đến số nguyên gần nhất.\nKhi xét số mol từ khối lượng, dùng $n = \\dfrac{m}{M}$ với M của chất đang xét.",
+   "can_dien_ly_thuyet_nhom": false
+  }
+ ],
+ "dang_bai": [
+  {
+   "dang_id": "KDB01259",
+   "nhom_id": "KNB00507",
+   "thu_tu": 1,
+   "dang": "Nhận diện hợp chất hữu cơ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 23,
+   "cau_mau": [
+    {
+     "ma_cau": "K09070101018",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tố nào luôn có mặt trong thành phần của mọi hợp chất hữu cơ?",
+     "lua_chon": [
+      "Carbon",
+      "Oxygen",
+      "Hydrogen",
+      "Nitrogen"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Hợp chất hữu cơ là hợp chất của carbon.\nVậy nguyên tố luôn có mặt trong mọi hợp chất hữu cơ là carbon."
+    },
+    {
+     "ma_cau": "K09070101004",
+     "loai": "trac_nghiem",
+     "de": "Chất nào dưới đây là hợp chất hữu cơ?",
+     "lua_chon": [
+      "C₆H₁₂O₆",
+      "CaCO₃",
+      "CO",
+      "Na₂CO₃"
+     ],
+     "dap_an": "A",
+     "loi_giai": "C₆H₁₂O₆ là hợp chất của carbon và không thuộc các ngoại lệ CO, CO₂, muối carbonate nên là hợp chất hữu cơ."
+    },
+    {
+     "ma_cau": "K09070101016",
+     "loai": "trac_nghiem",
+     "de": "Hợp chất nào sau đây thuộc loại hợp chất hữu cơ?",
+     "lua_chon": [
+      "$\\mathrm{CaCO_3}$",
+      "$\\mathrm{C_2H_6O}$",
+      "$\\mathrm{CO_2}$",
+      "$\\mathrm{NaCl}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Hợp chất hữu cơ là hợp chất của carbon, trừ $\\mathrm{CO}$, $\\mathrm{CO_2}$, $\\mathrm{H_2CO_3}$ và các muối carbonate.\n$\\mathrm{C_2H_6O}$ chứa carbon và không thuộc nhóm trừ trên.\nVậy $\\mathrm{C_2H_6O}$ là hợp chất hữu cơ."
+    },
+    {
+     "ma_cau": "K09070101007",
+     "loai": "trac_nghiem",
+     "de": "Trong các chất sau: CO, CO₂, CH₃OH, NaHCO₃, số chất là hợp chất vô cơ là",
+     "lua_chon": [
+      "3",
+      "1",
+      "2",
+      "4"
+     ],
+     "dap_an": "A",
+     "loi_giai": "CO, CO₂ là oxide của carbon (ngoại lệ vô cơ); NaHCO₃ là muối hydrogencarbonate (ngoại lệ vô cơ); CH₃OH là hợp chất hữu cơ. Vậy có 3 chất vô cơ."
+    },
+    {
+     "ma_cau": "K09070101001",
+     "loai": "trac_nghiem",
+     "de": "Chất nào dưới đây là hợp chất hữu cơ?",
+     "lua_chon": [
+      "CH₄",
+      "CO₂",
+      "CaCO₃",
+      "K₂CO₃"
+     ],
+     "dap_an": "A",
+     "loi_giai": "CH₄ là hợp chất của carbon và không thuộc các ngoại lệ CO, CO₂, muối carbonate nên là hợp chất hữu cơ."
+    },
+    {
+     "ma_cau": "K09070101008",
+     "loai": "trac_nghiem",
+     "de": "Vì sao CO₂ được xếp vào hợp chất vô cơ dù phân tử có chứa carbon?",
+     "lua_chon": [
+      "Vì CO₂ là chất khí ở điều kiện thường",
+      "Vì CO₂ là oxide của carbon, được xếp vào vô cơ",
+      "Vì CO₂ không có nguyên tử hydrogen",
+      "Vì CO₂ tan được trong nước"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Theo quy ước, oxide của carbon (CO, CO₂) và muối carbonate là những ngoại lệ được xếp vào hợp chất vô cơ dù có chứa carbon."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01260",
+   "nhom_id": "KNB00507",
+   "thu_tu": 2,
+   "dang": "Phân loại hydrocarbon và dẫn xuất",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 22,
+   "cau_mau": [
+    {
+     "ma_cau": "K09070101039",
+     "loai": "trac_nghiem",
+     "de": "Chất $\\mathrm{CH_3Cl}$ có chứa nguyên tố chlorine trong phân tử. Chất này thuộc loại nào sau đây?",
+     "lua_chon": [
+      "Hydrocarbon",
+      "Hợp chất vô cơ",
+      "Dẫn xuất của hydrocarbon",
+      "Đơn chất"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{CH_3Cl}$ là hợp chất hữu cơ, ngoài carbon và hydrogen còn có chlorine.\nVậy $\\mathrm{CH_3Cl}$ là dẫn xuất của hydrocarbon."
+    },
+    {
+     "ma_cau": "K09070101045",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây đúng?",
+     "lua_chon": [
+      "Mọi hydrocarbon đều là hợp chất hữu cơ",
+      "Mọi hợp chất hữu cơ đều là hydrocarbon",
+      "Dẫn xuất của hydrocarbon không chứa carbon",
+      "Hydrocarbon có chứa nguyên tố oxygen"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Hợp chất hữu cơ gồm hai loại là hydrocarbon và dẫn xuất của hydrocarbon.\nVậy mọi hydrocarbon đều là hợp chất hữu cơ."
+    },
+    {
+     "ma_cau": "K09070101038",
+     "loai": "trac_nghiem",
+     "de": "Propane ($\\mathrm{C_3H_8}$) là thành phần của khí gas đun nấu. Propane thuộc loại hợp chất nào sau đây?",
+     "lua_chon": [
+      "Dẫn xuất của hydrocarbon có chứa oxygen",
+      "Hydrocarbon",
+      "Dẫn xuất của hydrocarbon có chứa halogen",
+      "Hợp chất vô cơ"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Propane có công thức $\\mathrm{C_3H_8}$, chỉ gồm carbon và hydrogen.\nVậy propane là hydrocarbon."
+    },
+    {
+     "ma_cau": "K09070101033",
+     "loai": "trac_nghiem",
+     "de": "Chất nào sau đây là dẫn xuất của hydrocarbon?",
+     "lua_chon": [
+      "$\\mathrm{CH_4}$",
+      "$\\mathrm{C_2H_2}$",
+      "$\\mathrm{C_2H_4O_2}$",
+      "$\\mathrm{C_6H_6}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Dẫn xuất của hydrocarbon ngoài carbon và hydrogen còn có nguyên tố khác.\n$\\mathrm{C_2H_4O_2}$ có thêm nguyên tố oxygen.\nVậy $\\mathrm{C_2H_4O_2}$ là dẫn xuất của hydrocarbon."
+    },
+    {
+     "ma_cau": "K09070101011",
+     "loai": "trac_nghiem",
+     "de": "Chất nào dưới đây là hydrocarbon?",
+     "lua_chon": [
+      "CH₃COOH",
+      "C₂H₄",
+      "C₁₂H₂₂O₁₁",
+      "C₂H₅OH"
+     ],
+     "dap_an": "B",
+     "loi_giai": "C₂H₄ chỉ gồm hai nguyên tố carbon và hydrogen nên là hydrocarbon."
+    },
+    {
+     "ma_cau": "K09070101042",
+     "loai": "trac_nghiem",
+     "de": "Phân tử của một hydrocarbon gồm bao nhiêu loại nguyên tố?",
+     "lua_chon": [
+      "1",
+      "2",
+      "3",
+      "4"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Hydrocarbon chỉ gồm hai nguyên tố là carbon và hydrogen.\nVậy phân tử hydrocarbon gồm 2 loại nguyên tố."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01261",
+   "nhom_id": "KNB00508",
+   "thu_tu": 1,
+   "dang": "Chọn CTCT đúng/sai",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 12,
+   "cau_mau": [
+    {
+     "ma_cau": "K09070102014",
+     "loai": "trac_nghiem",
+     "de": "Công thức cấu tạo nào dưới đây viết SAI vì vi phạm hoá trị?",
+     "lua_chon": [
+      "CH₃-CH₂-CH₃",
+      "CH₃-COOH",
+      "C₂H₅OH",
+      "CH₃-CH-CH₃"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ở CH₃-CH-CH₃, carbon giữa chỉ có 1 liên kết H và 2 liên kết C, tức 3 liên kết, chưa đủ hoá trị IV của carbon nên viết sai."
+    },
+    {
+     "ma_cau": "K09070102003",
+     "loai": "trac_nghiem",
+     "de": "Công thức cấu tạo (thu gọn) đúng của phân tử có công thức phân tử C₂H₅OH là",
+     "lua_chon": [
+      "CH₃-CH₂-O",
+      "CH₂-CH₂-OH",
+      "CH₃-CH-OH",
+      "CH₃-CH₂-OH"
+     ],
+     "dap_an": "D",
+     "loi_giai": "C hoá trị IV, O hoá trị II, H hoá trị I. Mỗi nguyên tử trong CH₃-CH₂-OH đều đủ liên kết, khớp công thức C₂H₅OH."
+    },
+    {
+     "ma_cau": "K09070102001",
+     "loai": "trac_nghiem",
+     "de": "Công thức cấu tạo (thu gọn) đúng của phân tử có công thức phân tử C₂H₆ là",
+     "lua_chon": [
+      "CH₂=CH₂",
+      "CH₃-CH₃",
+      "CH₃-CH₂",
+      "CH₂-CH₂"
+     ],
+     "dap_an": "B",
+     "loi_giai": "C hoá trị IV, H hoá trị I. Mỗi carbon trong CH₃-CH₃ có 3 liên kết H và 1 liên kết C, đủ 4 liên kết, khớp công thức C₂H₆."
+    },
+    {
+     "ma_cau": "K09070102016",
+     "loai": "trac_nghiem",
+     "de": "Công thức cấu tạo nào dưới đây viết ĐÚNG theo hoá trị các nguyên tử?",
+     "lua_chon": [
+      "CH₃-CH₂-O",
+      "CH₃-CH₂-OH",
+      "CH₂-CH₂-OH",
+      "CH₃-CH-OH"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ở CH₃-CH₂-OH, carbon và oxygen đều đủ liên kết theo hoá trị IV và II nên viết đúng."
+    },
+    {
+     "ma_cau": "K09070102006",
+     "loai": "trac_nghiem",
+     "de": "Công thức cấu tạo (thu gọn) đúng của phân tử có công thức phân tử CH₃Cl là",
+     "lua_chon": [
+      "CH₂-Cl",
+      "CH₃-Cl",
+      "CH₄-Cl",
+      "CH₃=Cl"
+     ],
+     "dap_an": "B",
+     "loi_giai": "C hoá trị IV, Cl hoá trị I. Trong CH₃-Cl, carbon có 3 liên kết H và 1 liên kết Cl, đủ 4 liên kết, khớp công thức CH₃Cl."
+    },
+    {
+     "ma_cau": "K09070102004",
+     "loai": "trac_nghiem",
+     "de": "Công thức cấu tạo (thu gọn) đúng của phân tử có công thức phân tử C₄H₁₀ là",
+     "lua_chon": [
+      "CH₃-CH₂-CH₂-CH₃",
+      "CH₃-CH₂-CH₂-CH₂",
+      "CH₂=CH-CH₂-CH₃",
+      "CH₃-CH₂-CH-CH₃"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Mỗi carbon trong CH₃-CH₂-CH₂-CH₃ đều đủ 4 liên kết, khớp công thức C₄H₁₀."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01262",
+   "nhom_id": "KNB00508",
+   "thu_tu": 2,
+   "dang": "Vẽ CTCT từ CTPT",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K09070102020",
+     "loai": "tu_luan",
+     "de": "Viết công thức cấu tạo đầy đủ của chất có công thức phân tử $\\mathrm{C_2H_6}$, biết hai nguyên tử carbon liên kết với nhau bằng một liên kết đơn.",
+     "loi_giai": "Hai nguyên tử $\\mathrm{C}$ nối với nhau bằng 1 liên kết đơn, mỗi nguyên tử $\\mathrm{C}$ còn 3 hoá trị.\nMỗi nguyên tử $\\mathrm{C}$ liên kết với 3 nguyên tử $\\mathrm{H}$.\nSố nguyên tử $\\mathrm{H}$ là $3 + 3 = 6$, phù hợp công thức $\\mathrm{C_2H_6}$."
+    },
+    {
+     "ma_cau": "K09070102027",
+     "loai": "tu_luan",
+     "de": "Viết công thức cấu tạo đầy đủ của chất có công thức phân tử $\\mathrm{C_2H_4O_2}$, biết phân tử có một nhóm $\\mathrm{-COOH}$ và một nhóm $\\mathrm{-CH_3}$.",
+     "loi_giai": "Trong nhóm $\\mathrm{-COOH}$, nguyên tử $\\mathrm{C}$ liên kết đôi với một nguyên tử $\\mathrm{O}$ và liên kết đơn với nguyên tử $\\mathrm{O}$ còn lại. Nguyên tử $\\mathrm{O}$ còn lại liên kết với $1$ nguyên tử $\\mathrm{H}$.\nNguyên tử $\\mathrm{C}$ của nhóm $\\mathrm{-CH_3}$ liên kết với nguyên tử $\\mathrm{C}$ của nhóm $\\mathrm{-COOH}$ và với $3$ nguyên tử $\\mathrm{H}$.\nPhân tử có $2$ nguyên tử $\\mathrm{C}$, $2$ nguyên tử $\\mathrm{O}$ và $3+1=4$ nguyên tử $\\mathrm{H}$, phù hợp công thức $\\mathrm{C_2H_4O_2}$."
+    },
+    {
+     "ma_cau": "K09070102022",
+     "loai": "tu_luan",
+     "de": "Viết công thức cấu tạo đầy đủ của chất có công thức phân tử $\\mathrm{C_2H_2}$, biết giữa hai nguyên tử carbon có một liên kết ba.",
+     "loi_giai": "Liên kết ba giữa hai nguyên tử $\\mathrm{C}$ chiếm 3 hoá trị của mỗi nguyên tử $\\mathrm{C}$, mỗi nguyên tử $\\mathrm{C}$ còn 1 hoá trị.\nMỗi nguyên tử $\\mathrm{C}$ liên kết với 1 nguyên tử $\\mathrm{H}$.\nSố nguyên tử $\\mathrm{H}$ là $1 + 1 = 2$, phù hợp công thức $\\mathrm{C_2H_2}$."
+    },
+    {
+     "ma_cau": "K09070102026",
+     "loai": "tu_luan",
+     "de": "Viết công thức cấu tạo đầy đủ của chất có công thức phân tử $\\mathrm{C_2H_6O}$, biết hai nguyên tử carbon liên kết đơn với nhau và phân tử có một nhóm $\\mathrm{-OH}$.",
+     "loi_giai": "Hai nguyên tử $\\mathrm{C}$ nối với nhau bằng 1 liên kết đơn, nhóm $\\mathrm{-OH}$ liên kết với một nguyên tử $\\mathrm{C}$.\nNguyên tử $\\mathrm{C}$ liên kết với nhóm $\\mathrm{-OH}$ có 2 liên kết (với $\\mathrm{C}$ và với $\\mathrm{O}$) nên liên kết với 2 nguyên tử $\\mathrm{H}$.\nNguyên tử $\\mathrm{C}$ còn lại có 1 liên kết $\\mathrm{C-C}$ nên liên kết với 3 nguyên tử $\\mathrm{H}$.\nSố nguyên tử $\\mathrm{H}$ là $2 + 3 + 1 = 6$ (gồm 1 nguyên tử $\\mathrm{H}$ của nhóm $\\mathrm{-OH}$), phù hợp công thức $\\mathrm{C_2H_6O}$."
+    },
+    {
+     "ma_cau": "K09070102023",
+     "loai": "tu_luan",
+     "de": "Viết công thức cấu tạo đầy đủ của chất có công thức phân tử $\\mathrm{C_3H_8}$, biết ba nguyên tử carbon tạo thành mạch thẳng và chỉ có liên kết đơn.",
+     "loi_giai": "Mạch carbon thẳng gồm 3 nguyên tử $\\mathrm{C}$ nối với nhau bằng 2 liên kết đơn.\nNguyên tử $\\mathrm{C}$ ở hai đầu mạch có 1 liên kết $\\mathrm{C-C}$ nên liên kết với 3 nguyên tử $\\mathrm{H}$.\nNguyên tử $\\mathrm{C}$ ở giữa mạch có 2 liên kết $\\mathrm{C-C}$ nên liên kết với 2 nguyên tử $\\mathrm{H}$.\nSố nguyên tử $\\mathrm{H}$ là $3 + 2 + 3 = 8$, phù hợp công thức $\\mathrm{C_3H_8}$."
+    },
+    {
+     "ma_cau": "K09070102025",
+     "loai": "tu_luan",
+     "de": "Viết công thức cấu tạo đầy đủ của chất có công thức phân tử $\\mathrm{CH_4O}$, biết phân tử có một nhóm $\\mathrm{-OH}$ liên kết với nguyên tử carbon.",
+     "loi_giai": "Nguyên tử $\\mathrm{C}$ liên kết với nhóm $\\mathrm{-OH}$ bằng 1 liên kết, còn 3 hoá trị nên liên kết với 3 nguyên tử $\\mathrm{H}$.\nNguyên tử $\\mathrm{O}$ hoá trị $\\mathrm{II}$: một liên kết với nguyên tử $\\mathrm{C}$, một liên kết với nguyên tử $\\mathrm{H}$.\nSố nguyên tử $\\mathrm{H}$ là $3 + 1 = 4$, phù hợp công thức $\\mathrm{CH_4O}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01263",
+   "nhom_id": "KNB00508",
+   "thu_tu": 3,
+   "dang": "Phân loại mạch thẳng, mạch nhánh, mạch vòng",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K09070102030",
+     "loai": "tra_loi_ngan",
+     "de": "Chất $\\mathrm{X}$ có công thức phân tử $\\mathrm{C_6H_{12}}$, công thức cấu tạo thu gọn như hình (mỗi đỉnh là một nhóm $\\mathrm{CH_2}$).\nMạch carbon của chất này thuộc loại nào (mạch thẳng, mạch nhánh hay mạch vòng)?",
+     "dap_an": "Mạch vòng",
+     "loi_giai": "Sáu nguyên tử $\\mathrm{C}$ nối với nhau thành một vòng khép kín.\nVậy mạch carbon là mạch vòng.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K09070102033",
+     "loai": "tra_loi_ngan",
+     "de": "Chất T có công thức phân tử $\\mathrm{C_4H_8}$, công thức cấu tạo đầy đủ như hình. Mạch carbon của chất này thuộc loại nào (mạch thẳng, mạch nhánh hay mạch vòng)?",
+     "dap_an": "Mạch nhánh",
+     "loi_giai": "Nguyên tử $\\mathrm{C}$ ở giữa liên kết với 3 nguyên tử $\\mathrm{C}$ khác.\nVậy mạch carbon là mạch nhánh.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K09070102038",
+     "loai": "tra_loi_ngan",
+     "de": "Benzen ($\\mathrm{C_6H_6}$) có công thức cấu tạo đầy đủ như hình.\nMạch carbon của chất này thuộc loại nào (mạch thẳng, mạch nhánh hay mạch vòng)?",
+     "dap_an": "Mạch vòng",
+     "loi_giai": "Sáu nguyên tử $\\mathrm{C}$ nối với nhau thành một vòng khép kín, các liên kết đơn và liên kết đôi xen kẽ nhau.\nVậy mạch carbon là mạch vòng.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K09070102032",
+     "loai": "tra_loi_ngan",
+     "de": "Chất Z có công thức phân tử $\\mathrm{C_3H_8O}$, công thức cấu tạo đầy đủ như hình. Mạch carbon của chất này thuộc loại nào (mạch thẳng, mạch nhánh hay mạch vòng)?",
+     "dap_an": "Mạch thẳng",
+     "loi_giai": "Ba nguyên tử $\\mathrm{C}$ nối liên tiếp thành một dãy; nguyên tử $\\mathrm{O}$ không thuộc mạch carbon.\nKhông có nhánh và không có vòng khép kín.\nVậy mạch carbon là mạch thẳng.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K09070102036",
+     "loai": "tra_loi_ngan",
+     "de": "Chất U có công thức phân tử $\\mathrm{C_5H_{12}}$, công thức cấu tạo đầy đủ như hình. Mạch carbon của chất này thuộc loại nào (mạch thẳng, mạch nhánh hay mạch vòng)?",
+     "dap_an": "Mạch nhánh",
+     "loi_giai": "Nguyên tử C ở giữa liên kết với 4 nguyên tử C khác.\nVậy mạch carbon là mạch nhánh.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K09070102031",
+     "loai": "tra_loi_ngan",
+     "de": "Chất Y có công thức phân tử $\\mathrm{C_5H_{12}}$, công thức cấu tạo đầy đủ như hình. Mạch carbon của chất này thuộc loại nào (mạch thẳng, mạch nhánh hay mạch vòng)?",
+     "dap_an": "Mạch nhánh",
+     "loi_giai": "Nguyên tử $\\mathrm{C}$ thứ hai tính từ bên trái liên kết với 3 nguyên tử $\\mathrm{C}$ khác, trong đó có một nguyên tử $\\mathrm{C}$ nằm phía trên.\nVậy mạch carbon là mạch nhánh.",
+     "co_hinh": true
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01264",
+   "nhom_id": "KNB00508",
+   "thu_tu": 4,
+   "dang": "Biện luận CTCT vẽ sai",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09070102045",
+     "loai": "tu_luan",
+     "de": "Bạn Nam vẽ công thức cấu tạo của một chất hữu cơ như hình, trong đó các nguyên tử $\\mathrm{C}$, $\\mathrm{O}$ được đánh số (số trong vòng tròn). Biết hoá trị của $\\mathrm{C}$ là $\\mathrm{IV}$, $\\mathrm{O}$ là $\\mathrm{II}$, $\\mathrm{H}$ là $\\mathrm{I}$ và chỉ có đúng một nguyên tử vẽ sai hoá trị. Nguyên tử mang số thứ tự nào đã vẽ sai hoá trị?",
+     "dap_an": "4",
+     "loi_giai": "Nguyên tử số 1 ($\\mathrm{C}$) có: 1 liên kết đơn với nguyên tử số 2, 3 liên kết đơn với 3 nguyên tử $\\mathrm{H}$.\nTổng số liên kết: $1 + 3 = 4$, phù hợp hoá trị $\\mathrm{IV}$.\nNguyên tử số 2 ($\\mathrm{C}$) có: 1 liên kết đơn với nguyên tử số 1, 1 liên kết đôi (tính là 2 liên kết) với nguyên tử số 3, 1 liên kết đơn với nguyên tử số 4.\nTổng số liên kết: $1 + 2 + 1 = 4$, phù hợp hoá trị $\\mathrm{IV}$.\nNguyên tử số 3 ($\\mathrm{O}$) có: 1 liên kết đôi (tính là 2 liên kết) với nguyên tử số 2.\nTổng số liên kết: $2$, phù hợp hoá trị $\\mathrm{II}$.\nNguyên tử số 4 ($\\mathrm{O}$) có: 1 liên kết đơn với nguyên tử số 2, 2 liên kết đơn với 2 nguyên tử $\\mathrm{H}$.\nTổng số liên kết: $1 + 2 = 3$, không phù …",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K09070102041",
+     "loai": "tu_luan",
+     "de": "Bạn Chi vẽ công thức cấu tạo của một chất hữu cơ như hình, trong đó các nguyên tử $\\mathrm{O}$, $\\mathrm{C}$ được đánh số (số trong vòng tròn). Biết hoá trị của $\\mathrm{O}$ là $\\mathrm{II}$, $\\mathrm{C}$ là $\\mathrm{IV}$, $\\mathrm{H}$ là $\\mathrm{I}$ và chỉ có đúng một nguyên tử vẽ sai hoá trị. Nguyên tử mang số thứ tự nào đã vẽ sai hoá trị?",
+     "dap_an": "1",
+     "loi_giai": "Nguyên tử số 1 ($\\mathrm{O}$) có: 1 liên kết đơn với nguyên tử số 2.\nTổng số liên kết: 1, không phù hợp hoá trị $\\mathrm{II}$.\nNguyên tử số 2 ($\\mathrm{C}$) có: 1 liên kết đơn với nguyên tử số 1, 3 liên kết đơn với 3 nguyên tử $\\mathrm{H}$.\nTổng số liên kết: $1 + 3 = 4$, phù hợp hoá trị $\\mathrm{IV}$.\nVậy nguyên tử số 1 đã vẽ sai hoá trị.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K09070102044",
+     "loai": "tu_luan",
+     "de": "Bạn Minh vẽ công thức cấu tạo của một chất hữu cơ như hình, trong đó các nguyên tử $\\mathrm{C}$ được đánh số (số trong vòng tròn). Biết hoá trị của $\\mathrm{C}$ là $\\mathrm{IV}$, $\\mathrm{H}$ là $\\mathrm{I}$ và chỉ có đúng một nguyên tử vẽ sai hoá trị. Nguyên tử mang số thứ tự nào đã vẽ sai hoá trị?",
+     "dap_an": "2",
+     "loi_giai": "Nguyên tử số 1 ($\\mathrm{C}$) có: 1 liên kết ba (tính là 3 liên kết) với nguyên tử số 2, 1 liên kết đơn với 1 nguyên tử $\\mathrm{H}$.\nTổng số liên kết: $3 + 1 = 4$, phù hợp hoá trị $\\mathrm{IV}$.\nNguyên tử số 2 ($\\mathrm{C}$) có: 1 liên kết ba (tính là 3 liên kết) với nguyên tử số 1.\nTổng số liên kết: $3$, không phù hợp hoá trị $\\mathrm{IV}$.\nVậy nguyên tử số 2 đã vẽ sai hoá trị.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K09070102042",
+     "loai": "tu_luan",
+     "de": "Bạn Dũng vẽ công thức cấu tạo của một chất hữu cơ như hình, trong đó các nguyên tử $\\mathrm{C}$ được đánh số (số trong vòng tròn). Biết hoá trị của $\\mathrm{C}$ là $\\mathrm{IV}$, $\\mathrm{H}$ là $\\mathrm{I}$ và chỉ có đúng một nguyên tử vẽ sai hoá trị. Nguyên tử mang số thứ tự nào đã vẽ sai hoá trị?",
+     "dap_an": "4",
+     "loi_giai": "Nguyên tử số 1 ($\\mathrm{C}$) có: 1 liên kết đơn với nguyên tử số 2, 3 liên kết đơn với 3 nguyên tử $\\mathrm{H}$.\nTổng số liên kết: $1 + 3 = 4$, phù hợp hoá trị $\\mathrm{IV}$.\nNguyên tử số 2 ($\\mathrm{C}$) có: 1 liên kết đơn với nguyên tử số 1, 1 liên kết đơn với nguyên tử số 3, 2 liên kết đơn với 2 nguyên tử $\\mathrm{H}$.\nTổng số liên kết: $1 + 1 + 2 = 4$, phù hợp hoá trị $\\mathrm{IV}$.\nNguyên tử số 3 ($\\mathrm{C}$) có: 1 liên kết đơn với nguyên tử số 2, 1 liên kết đơn với nguyên tử số 4, 2 liên kết đơn với 2 nguyên tử $\\mathrm{H}$.\nTổng số liên kết: $1 + 1 + 2 = 4$, phù hợp hoá trị $\\mathrm{IV}$.\nNguyên tử số 4 ($\\mathrm{C}$) có: 1 liên kết đơn với nguyên tử số 3, 2 liên kết đơn với 2 nguy …",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K09070102039",
+     "loai": "tu_luan",
+     "de": "Bạn An vẽ công thức cấu tạo của một chất hữu cơ như hình, trong đó các nguyên tử C được đánh số (số trong vòng tròn). Biết hoá trị của C là IV, H là I và chỉ có đúng một nguyên tử vẽ sai hoá trị. Nguyên tử mang số thứ tự nào đã vẽ sai hoá trị?",
+     "dap_an": "2",
+     "loi_giai": "Nguyên tử số 1 (C) có: 1 liên kết đơn với nguyên tử số 2, 3 liên kết đơn với 3 nguyên tử H. \nTổng số liên kết: $1 + 3 = 4$, phù hợp hoá trị IV.\nNguyên tử số 2 (C) có: 1 liên kết đơn với nguyên tử số 1, 2 liên kết đơn với 2 nguyên tử H.\nTổng số liên kết: $1 + 2 = 3$, không phù hợp hoá trị IV. \nVậy nguyên tử số 2 đã vẽ sai hoá trị.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K09070102043",
+     "loai": "tu_luan",
+     "de": "Bạn Lan vẽ công thức cấu tạo của một chất hữu cơ như hình, trong đó các nguyên tử $\\mathrm{C}$ được đánh số (số trong vòng tròn). Biết hoá trị của $\\mathrm{C}$ là $\\mathrm{IV}$, $\\mathrm{H}$ là $\\mathrm{I}$ và chỉ có đúng một nguyên tử vẽ sai hoá trị. Nguyên tử mang số thứ tự nào đã vẽ sai hoá trị?",
+     "dap_an": "3",
+     "loi_giai": "Nguyên tử số 1 ($\\mathrm{C}$) có: 1 liên kết đôi (tính là 2 liên kết) với nguyên tử số 2, 2 liên kết đơn với 2 nguyên tử $\\mathrm{H}$.\nTổng số liên kết: $2 + 2 = 4$, phù hợp hoá trị $\\mathrm{IV}$.\nNguyên tử số 2 ($\\mathrm{C}$) có: 1 liên kết đôi (tính là 2 liên kết) với nguyên tử số 1, 1 liên kết đơn với nguyên tử số 3, 1 liên kết đơn với 1 nguyên tử $\\mathrm{H}$.\nTổng số liên kết: $2 + 1 + 1 = 4$, phù hợp hoá trị $\\mathrm{IV}$.\nNguyên tử số 3 ($\\mathrm{C}$) có: 1 liên kết đơn với nguyên tử số 2, 2 liên kết đơn với 2 nguyên tử $\\mathrm{H}$.\nTổng số liên kết: $1 + 2 = 3$, không phù hợp hoá trị $\\mathrm{IV}$.\nVậy nguyên tử số 3 đã vẽ sai hoá trị.",
+     "co_hinh": true
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01265",
+   "nhom_id": "KNB00509",
+   "thu_tu": 1,
+   "dang": "Lập CTPT từ % và M",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 13,
+   "cau_mau": [
+    {
+     "ma_cau": "K09070103001",
+     "loai": "trac_nghiem",
+     "de": "Hợp chất hữu cơ A có khối lượng phân tử M = 30 g/mol, %C = 80%, %H = 20% (biết C = 12, H = 1). Công thức phân tử của A là",
+     "lua_chon": [
+      "C₂H₆",
+      "CH₄",
+      "C₂H₄",
+      "C₃H₈"
+     ],
+     "dap_an": "A",
+     "loi_giai": "mC = 80%×30 = 24 g → nC = 24/12 = 2. mH = 20%×30 = 6 g → nH = 6/1 = 6. Công thức phân tử: C₂H₆."
+    },
+    {
+     "ma_cau": "K09070103009",
+     "loai": "trac_nghiem",
+     "de": "Hợp chất hữu cơ Z có khối lượng phân tử M = 60 g/mol, %C = 40%, %H = 6,67%, còn lại là oxygen (biết C = 12, H = 1, O = 16). Công thức phân tử và loại hợp chất của Z là",
+     "lua_chon": [
+      "C₂H₄O₂ – hydrocarbon",
+      "C₂H₄ – hydrocarbon",
+      "C₃H₈O – dẫn xuất của hydrocarbon",
+      "C₂H₄O₂ – dẫn xuất của hydrocarbon"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khối lượng C = 60×40% = 24 g → 2 C. Khối lượng H = 60×6,67% = 4 g → 4 H. Khối lượng O = 60−24−4 = 32 g → 2 O. CTPT: C₂H₄O₂ — có oxygen nên là dẫn xuất của hydrocarbon."
+    },
+    {
+     "ma_cau": "K09070103008",
+     "loai": "trac_nghiem",
+     "de": "Hợp chất hữu cơ Y có khối lượng phân tử M = 46 g/mol, %C = 52,17%, %H = 13,04%, còn lại là oxygen (biết C = 12, H = 1, O = 16). Công thức phân tử và loại hợp chất của Y là",
+     "lua_chon": [
+      "C₂H₆O – hydrocarbon",
+      "C₂H₆O – dẫn xuất của hydrocarbon",
+      "C₂H₆ – hydrocarbon",
+      "CH₄O – dẫn xuất của hydrocarbon"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khối lượng C = 46×52,17% = 24 g → 2 C. Khối lượng H = 46×13,04% = 6 g → 6 H. Khối lượng O = 46−24−6 = 16 g → 1 O. CTPT: C₂H₆O — có thêm oxygen nên là dẫn xuất của hydrocarbon."
+    },
+    {
+     "ma_cau": "K09070103006",
+     "loai": "trac_nghiem",
+     "de": "Hợp chất hữu cơ L có khối lượng phân tử M = 32 g/mol, %C = 37,5%, %H = 12,5%, còn lại là oxygen (biết C = 12, H = 1, O = 16). Công thức phân tử của L là",
+     "lua_chon": [
+      "CH₂O",
+      "CH₄O",
+      "C₂H₈O",
+      "CH₄O₂"
+     ],
+     "dap_an": "B",
+     "loi_giai": "mC=37,5%×32=12g→nC=1. mH=12,5%×32=4g→nH=4. mO=32-12-4=16g→nO=1. Công thức phân tử: CH₄O."
+    },
+    {
+     "ma_cau": "K09070103013",
+     "loai": "trac_nghiem",
+     "de": "Hợp chất hữu cơ Y có khối lượng phân tử M = 62 g/mol, %C = 38,7%, %H = 9,7%, còn lại là oxygen (biết C = 12, H = 1, O = 16). Công thức phân tử và loại hợp chất của Y là",
+     "lua_chon": [
+      "C₂H₆O₂ – dẫn xuất của hydrocarbon",
+      "C₂H₆O – dẫn xuất của hydrocarbon",
+      "C₂H₆O₂ – hydrocarbon",
+      "CH₃O – dẫn xuất của hydrocarbon"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng C=62×38,7%≈24g→2C. Khối lượng H=62×9,7%≈6g→6H. Khối lượng O=62−24−6=32g→2O. CTPT: C₂H₆O₂ — có oxygen nên là dẫn xuất của hydrocarbon."
+    },
+    {
+     "ma_cau": "K09070103007",
+     "loai": "trac_nghiem",
+     "de": "Hợp chất hữu cơ X có khối lượng phân tử M = 30 g/mol, %C = 80%, %H = 20% (biết C = 12, H = 1). Công thức phân tử và loại hợp chất của X là",
+     "lua_chon": [
+      "C₂H₆ – hydrocarbon",
+      "C₂H₆ – dẫn xuất của hydrocarbon",
+      "CH₂O – dẫn xuất của hydrocarbon",
+      "C₃H₈ – hydrocarbon"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng C = 30×80% = 24 g → số C = 24:12 = 2. Khối lượng H = 30×20% = 6 g → số H = 6:1 = 6. %C+%H = 100% nên không có oxygen. CTPT: C₂H₆ — chỉ gồm C và H nên là hydrocarbon."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01266",
+   "nhom_id": "KNB00509",
+   "thu_tu": 2,
+   "dang": "TÍNH % KHỐI LƯỢNG NGUYÊN TỐ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 20,
+   "cau_mau": [
+    {
+     "ma_cau": "K09070103019",
+     "loai": "trac_nghiem",
+     "de": "Butane ($\\mathrm{C_4H_{10}}$) có trong khí gas đun nấu. Phần trăm khối lượng của nguyên tố hydrogen trong chất này là bao nhiêu? (Cho khối lượng nguyên tử: $\\mathrm{C} = 12$, $\\mathrm{H} = 1$.)",
+     "lua_chon": [
+      "1,7%",
+      "17,2%",
+      "71,4%",
+      "82,8%"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khối lượng phân tử của chất là:\n$\\mathrm{M} = 12 \\times 4 + 1 \\times 10 = 58$ (amu)\nPhần trăm khối lượng của nguyên tố hydrogen là:\n$\\mathrm{\\%H} = \\dfrac{10 \\times 1}{58} \\times 100\\% \\approx 17,2\\%$"
+    },
+    {
+     "ma_cau": "K09070103023",
+     "loai": "trac_nghiem",
+     "de": "Hợp chất $\\mathrm{CH_3Cl}$ được dùng làm chất làm lạnh. Phần trăm khối lượng của nguyên tố chlorine trong chất này là bao nhiêu? (Cho khối lượng nguyên tử: $\\mathrm{C=12}$, $\\mathrm{H=1}$, $\\mathrm{Cl=35,5}$.)",
+     "lua_chon": [
+      "20,0%",
+      "23,8%",
+      "29,7%",
+      "70,3%"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khối lượng phân tử của chất là:\n$\\mathrm{M = 12 \\times 1 + 1 \\times 3 + 35,5 \\times 1 = 50,5}$ (amu)\nPhần trăm khối lượng của nguyên tố chlorine là:\n$\\mathrm{\\%Cl = \\dfrac{1 \\times 35,5}{50,5} \\times 100\\% \\approx 70,3\\%}$"
+    },
+    {
+     "ma_cau": "K09070103022",
+     "loai": "trac_nghiem",
+     "de": "Acetic acid ($\\mathrm{C_2H_4O_2}$) là thành phần chính của giấm ăn. Phần trăm khối lượng của nguyên tố carbon trong chất này là bao nhiêu? (Cho khối lượng nguyên tử: $\\mathrm{C=12}$, $\\mathrm{H=1}$, $\\mathrm{O=16}$.)",
+     "lua_chon": [
+      "20,0%",
+      "25,0%",
+      "40,0%",
+      "60,0%"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khối lượng phân tử của chất là:\n$\\mathrm{M = 12 \\times 2 + 1 \\times 4 + 16 \\times 2 = 60}$ (amu)\nPhần trăm khối lượng của nguyên tố carbon là:\n$\\mathrm{\\%C = \\dfrac{2 \\times 12}{60} \\times 100\\% = 40,0\\%}$"
+    },
+    {
+     "ma_cau": "K09070103015",
+     "loai": "trac_nghiem",
+     "de": "Ethane ($\\mathrm{C_2H_6}$) có trong khí thiên nhiên. Phần trăm khối lượng của nguyên tố hydrogen trong chất này là bao nhiêu? Biết khối lượng phân tử của chất này là 30 amu. (Cho khối lượng nguyên tử: $\\mathrm{C} = 12$, $\\mathrm{H} = 1$.)",
+     "lua_chon": [
+      "20,0%",
+      "46,2%",
+      "75,0%",
+      "80,0%"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng phân tử của chất là 30 amu.\nPhần trăm khối lượng của nguyên tố hydrogen là:\n$\\mathrm{\\%H} = \\dfrac{6 \\times 1}{30} \\times 100\\% = 20,0\\%$"
+    },
+    {
+     "ma_cau": "K09070103027",
+     "loai": "trac_nghiem",
+     "de": "Hợp chất $\\mathrm{C_2H_5Cl}$ được dùng trong thuốc xịt giảm đau tạm thời. Phần trăm khối lượng của nguyên tố chlorine trong chất này là bao nhiêu? (Cho khối lượng nguyên tử: $\\mathrm{C} = 12$, $\\mathrm{H} = 1$, $\\mathrm{Cl} = 35.5$)",
+     "lua_chon": [
+      "12,5%",
+      "55,0%",
+      "59,7%",
+      "87,7%"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khối lượng phân tử của chất là:\n$\\mathrm{M} = 12 \\times 2 + 1 \\times 5 + 35.5 \\times 1 = 64.5$ (amu)\nPhần trăm khối lượng của nguyên tố chlorine là:\n$\\mathrm{\\%Cl} = \\dfrac{1 \\times 35.5}{64.5} \\times 100\\% \\approx 55.0\\%$"
+    },
+    {
+     "ma_cau": "K09070103029",
+     "loai": "trac_nghiem",
+     "de": "Pentane ($\\mathrm{C_5H_{12}}$) là một thành phần của xăng. Phần trăm khối lượng của nguyên tố carbon trong chất này là bao nhiêu? (Cho khối lượng nguyên tử: $\\mathrm{C} = 12$, $\\mathrm{H} = 1$.)",
+     "lua_chon": [
+      "16.7%",
+      "29.4%",
+      "83.3%",
+      "98.4%"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khối lượng phân tử của chất là:\n$\\mathrm{M} = 12 \\times 5 + 1 \\times 12 = 72$ (amu)\nPhần trăm khối lượng của nguyên tố carbon là:\n$\\mathrm{\\%C} = \\dfrac{5 \\times 12}{72} \\times 100\\% \\approx 83.3\\%"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01267",
+   "nhom_id": "KNB00509",
+   "thu_tu": 3,
+   "dang": "LẬP CÔNG THỨC TỪ SẢN PHẨM ĐỐT CHÁY",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K09070103045",
+     "loai": "tu_luan",
+     "de": "Đốt cháy hoàn toàn 5,8 gam hợp chất hữu cơ X chứa các nguyên tố $\\mathrm{C}$, $\\mathrm{H}$, $\\mathrm{O}$, khối lượng phân tử của $\\mathrm{X}$ là 58 amu, thu được 13,2 gam $\\mathrm{CO_2}$ và 5,4 gam $\\mathrm{H_2O}$. Xác định công thức phân tử của $\\mathrm{X}$. (Cho khối lượng nguyên tử: $\\mathrm{C} = 12$, $\\mathrm{H} = 1$, $\\mathrm{O} = 16$.)",
+     "dap_an": "$\\mathrm{X}$ là $\\mathrm{C_3H_6O}$",
+     "loi_giai": "Khối lượng mol của $\\mathrm{CO_2}$ là $44 \\text{ g/mol}$, của $\\mathrm{H_2O}$ là $18 \\text{ g/mol}$.\n$\\mathrm{n_X} = \\dfrac{5,8}{58} = 0,1 \\text{ mol}$\n$\\mathrm{n_{CO_2}} = \\dfrac{13,2}{44} = 0,3 \\text{ mol}$\n$\\mathrm{n_{H_2O}} = \\dfrac{5,4}{18} = 0,3 \\text{ mol}$\n$\\mathrm{x} = \\dfrac{\\mathrm{n_{CO_2}}}{\\mathrm{n_X}} = \\dfrac{0,3}{0,1} = 3$\n$\\mathrm{y} = \\dfrac{2\\mathrm{n_{H_2O}}}{\\mathrm{n_X}} = \\dfrac{2 \\times 0,3}{0,1} = 6$\nPhần khối lượng còn lại của phân tử là oxygen, nên chỉ số của oxygen được tính theo hiệu:\n$\\mathrm{z} = \\dfrac{\\mathrm{M} - 12\\mathrm{x} - \\mathrm{y}}{16} = \\dfrac{58 - 12 \\times 3 - 6}{16} = 1$\nVậy công thức phân tử của $\\mathrm{X}$ là $\\mathrm{C_3H_6O}$."
+    },
+    {
+     "ma_cau": "K09070103036",
+     "loai": "tu_luan",
+     "de": "Đốt cháy hoàn toàn 1,3 gam hydrocarbon X, khối lượng phân tử của X là 26 amu, thu được 4,4 gam $\\mathrm{CO_2}$ và 0,9 gam $\\mathrm{H_2O}$. Xác định công thức phân tử của X. (Cho khối lượng nguyên tử: $\\mathrm{C} = 12$, $\\mathrm{H} = 1$.)",
+     "dap_an": "$\\mathrm{C_2H_2}$",
+     "loi_giai": "Khối lượng mol của $\\mathrm{CO_2}$ là $44 \\mathrm{\\;g/mol}$, của $\\mathrm{H_2O}$ là $18 \\mathrm{\\;g/mol}$.\n$\\mathrm{n_X} = \\dfrac{1,3}{26} = 0,05 \\mathrm{\\;mol}$\n$\\mathrm{n_{CO_2}} = \\dfrac{4,4}{44} = 0,1 \\mathrm{\\;mol}$\n$\\mathrm{n_{H_2O}} = \\dfrac{0,9}{18} = 0,05 \\mathrm{\\;mol}$\n$\\mathrm{x} = \\dfrac{\\mathrm{n_{CO_2}}}{\\mathrm{n_X}} = \\dfrac{0,1}{0,05} = 2$\n$\\mathrm{y} = \\dfrac{2\\mathrm{n_{H_2O}}}{\\mathrm{n_X}} = \\dfrac{2 \\times 0,05}{0,05} = 2$\nKiểm tra: $12 \\times 2 + 2 = 26$, đúng bằng khối lượng phân tử của X nên X chỉ gồm $\\mathrm{C}$ và $\\mathrm{H}$.\nVậy công thức phân tử của X là $\\mathrm{C_2H_2}$."
+    },
+    {
+     "ma_cau": "K09070103046",
+     "loai": "tu_luan",
+     "de": "Đốt cháy hoàn toàn 9 gam hợp chất hữu cơ X chứa các nguyên tố C, H, O, khối lượng phân tử của X là 180 amu, thu được 13,2 gam CO2 và 5,4 gam H2O. Xác định công thức phân tử của X. (Cho khối lượng nguyên tử: C = 12, H = 1, O = 16.)",
+     "dap_an": "$\\mathrm{C_6H_{12}O_6}$",
+     "loi_giai": "Khối lượng mol của $\\mathrm{CO_2}$ là $44 \\mathrm{~g/mol}$, của $\\mathrm{H_2O}$ là $18 \\mathrm{~g/mol}$.\n$\\mathrm{n_X} = \\dfrac{9}{180} = 0,05 \\mathrm{~mol}$\n$\\mathrm{n_{CO_2}} = \\dfrac{13,2}{44} = 0,3 \\mathrm{~mol}$\n$\\mathrm{n_{H_2O}} = \\dfrac{5,4}{18} = 0,3 \\mathrm{~mol}$\n$\\mathrm{x} = \\dfrac{\\mathrm{n_{CO_2}}}{\\mathrm{n_X}} = \\dfrac{0,3}{0,05} = 6$\n$\\mathrm{y} = \\dfrac{2 \\mathrm{n_{H_2O}}}{\\mathrm{n_X}} = \\dfrac{2 \\times 0,3}{0,05} = 12$\nPhần khối lượng còn lại của phân tử là oxygen, nên chỉ số của oxygen được tính theo hiệu:\n$\\mathrm{z} = \\dfrac{\\mathrm{M} - 12\\mathrm{x} - \\mathrm{y}}{16} = \\dfrac{180 - 12 \\times 6 - 12}{16} = 6$\nVậy công thức phân tử của X là $\\mathrm{C_6H_{12}O_6}$."
+    },
+    {
+     "ma_cau": "K09070103044",
+     "loai": "tu_luan",
+     "de": "Đốt cháy hoàn toàn 4,6 gam hợp chất hữu cơ X chứa các nguyên tố $\\mathrm{C}$, $\\mathrm{H}$, $\\mathrm{O}$, khối lượng phân tử của X là 92 amu, thu được 6,6 gam $\\mathrm{CO_2}$ và 3,6 gam $\\mathrm{H_2O}$. Xác định công thức phân tử của X. (Cho khối lượng nguyên tử: $\\mathrm{C} = 12$, $\\mathrm{H} = 1$, $\\mathrm{O} = 16$.)",
+     "dap_an": "$\\mathrm{C_3H_8O_3}$",
+     "loi_giai": "Khối lượng mol của $\\mathrm{CO_2}$ là 44 g/mol, của $\\mathrm{H_2O}$ là 18 g/mol.\n$$\\mathrm{n_X} = \\dfrac{4,6}{92} = 0,05 \\text{ mol}$$ \n$$\\mathrm{n_{CO_2}} = \\dfrac{6,6}{44} = 0,15 \\text{ mol}$$ \n$$\\mathrm{n_{H_2O}} = \\dfrac{3,6}{18} = 0,2 \\text{ mol}$$ \n$$\\mathrm{x} = \\dfrac{\\mathrm{n_{CO_2}}}{\\mathrm{n_X}} = \\dfrac{0,15}{0,05} = 3$$ \n$$\\mathrm{y} = \\dfrac{2\\mathrm{n_{H_2O}}}{\\mathrm{n_X}} = \\dfrac{2 \\times 0,2}{0,05} = 8$$ \nPhần khối lượng còn lại của phân tử là oxygen, nên chỉ số của oxygen được tính theo hiệu:\n$$\\mathrm{z} = \\dfrac{\\mathrm{M} - 12\\mathrm{x} - \\mathrm{y}}{16} = \\dfrac{92 - 12 \\times 3 - 8}{16} = 3$$ \nVậy công thức phân tử của X là $\\mathrm{C_3H_8O_3}$."
+    },
+    {
+     "ma_cau": "K09070103034",
+     "loai": "tu_luan",
+     "de": "Đốt cháy hoàn toàn 1,6 gam hydrocarbon $\\mathrm{X}$, khối lượng phân tử của $\\mathrm{X}$ là 16 amu, thu được 4,4 gam $\\mathrm{CO_2}$ và 3,6 gam $\\mathrm{H_2O}$. Xác định công thức phân tử của $\\mathrm{X}$. (Cho khối lượng nguyên tử: $\\mathrm{C} = 12$, $\\mathrm{H} = 1$.)",
+     "dap_an": "$CH_4$",
+     "loi_giai": "Khối lượng mol của $\\mathrm{CO_2}$ là $44 \\mathrm{~g/mol}$, của $\\mathrm{H_2O}$ là $18 \\mathrm{~g/mol}$.\n$\\mathrm{n_X} = \\dfrac{1,6}{16} = 0,1 \\mathrm{~mol}$\n$\\mathrm{n_{CO_2}} = \\dfrac{4,4}{44} = 0,1 \\mathrm{~mol}$\n$\\mathrm{n_{H_2O}} = \\dfrac{3,6}{18} = 0,2 \\mathrm{~mol}$\n$\\mathrm{x} = \\dfrac{\\mathrm{n_{CO_2}}}{\\mathrm{n_X}} = \\dfrac{0,1}{0,1} = 1$\n$\\mathrm{y} = \\dfrac{2\\mathrm{n_{H_2O}}}{\\mathrm{n_X}} = \\dfrac{2 \\times 0,2}{0,1} = 4$\nKiểm tra: $12 \\times 1 + 4 = 16$, đúng bằng khối lượng phân tử của $\\mathrm{X}$ nên $\\mathrm{X}$ chỉ gồm $\\mathrm{C}$ và $\\mathrm{H}$.\nVậy công thức phân tử của $\\mathrm{X}$ là $\\mathrm{CH_4}$."
+    },
+    {
+     "ma_cau": "K09070103048",
+     "loai": "tu_luan",
+     "de": "Đốt cháy hoàn toàn 11,2 gam hydrocarbon X, khối lượng phân tử của X là 56 amu, thu được 35,2 gam $\\mathrm{CO_2}$ và 14,4 gam $\\mathrm{H_2O}$. Xác định công thức phân tử của X. (Cho khối lượng nguyên tử: $\\mathrm{C = 12, H = 1}$.)",
+     "dap_an": "$\\mathrm{C_4H_8}$",
+     "loi_giai": "Khối lượng mol của $\\mathrm{CO_2}$ là $44\\ \\mathrm{g/mol}$, của $\\mathrm{H_2O}$ là $18\\ \\mathrm{g/mol}$.\n$$\\mathrm{n_X = \\dfrac{11,2}{56} = 0,2\\ mol}$$\n$$\\mathrm{n_{CO_2} = \\dfrac{35,2}{44} = 0,8\\ mol}$$\n$$\\mathrm{n_{H_2O} = \\dfrac{14,4}{18} = 0,8\\ mol}$$\n$$\\mathrm{x = \\dfrac{n_{CO_2}}{n_X} = \\dfrac{0,8}{0,2} = 4}$$\n$$\\mathrm{y = \\dfrac{2n_{H_2O}}{n_X} = \\dfrac{2 \\times 0,8}{0,2} = 8}$$\nKiểm tra: $12 \\times 4 + 8 = 56$, đúng bằng khối lượng phân tử của X nên X chỉ gồm $\\mathrm{C}$ và $\\mathrm{H}$.\nVậy công thức phân tử của X là $\\mathrm{C_4H_8}$."
+    }
+   ]
+  }
+ ]
+}

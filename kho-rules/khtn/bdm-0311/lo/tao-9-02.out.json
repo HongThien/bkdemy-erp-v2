@@ -1,0 +1,258 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00458",
+   "ly_thuyet": "",
+   "dang_bai": [
+    {
+     "ten": "Giải thích hiện tượng cầu vồng",
+     "mo_ta": "Đề hỏi về cầu vồng: điều kiện xuất hiện, thứ tự các dải màu, vì sao màu đỏ ở ngoài và màu tím ở trong.\nHọc sinh trả lời bằng cách nhớ giọt nước mưa đóng vai trò lăng kính tán sắc ánh sáng trắng của Mặt Trời.\nLưu ý: đề hỏi hiện tượng khác (kim cương, giọt sương, mép kính, laser, thí nghiệm lăng kính) ⇒ thuộc dạng \"Nhận ra hiện tượng tán sắc trong đời sống và thí nghiệm\".",
+     "ly_thuyet": "##TC Cầu vồng và tán sắc ánh sáng\nCầu vồng xuất hiện khi ánh sáng trắng của Mặt Trời chiếu vào các giọt nước nhỏ lơ lửng trong không khí sau cơn mưa.\nMỗi giọt nước đóng vai trò như một lăng kính nhỏ: ánh sáng trắng bị khúc xạ, tán sắc thành dải màu từ đỏ đến tím rồi truyền tới mắt người quan sát.\nTia đỏ bị lệch ít nhất, tia tím bị lệch nhiều nhất nên các màu luôn xếp theo thứ tự cố định: đỏ, cam, vàng, lục, lam, chàm, tím.\n\n##CY Lưu ý\nCần đủ hai yếu tố: ánh sáng trắng (Mặt Trời) và giọt nước trong không khí; thiếu một trong hai thì không có cầu vồng.\nThứ tự màu do góc lệch quyết định, không do độ nặng của màu hay khả năng nhìn của mắt.",
+     "vi_du": "##VD\nMuốn quan sát được cầu vồng, cần có đồng thời những điều kiện nào?\nA. Chỉ cần trời có mây đen\nB. Nhiệt độ không khí phải rất thấp\nC. Chỉ cần trời tối và có ánh trăng\nD. Ánh sáng mặt trời và giọt nước trong không khí\n\nBài giải:\nCầu vồng là kết quả của sự tán sắc ánh sáng trắng.\nCần ánh sáng trắng của Mặt Trời và các giọt nước trong không khí đóng vai trò lăng kính.\nMây đen, nhiệt độ thấp hay ánh trăng không cung cấp đủ hai yếu tố này.\nChọn D.\n\n##VD\nVì sao cầu vồng luôn có màu đỏ ở phía trên (ngoài) và màu tím ở phía dưới (trong) của dải màu?\nA. Vì tia tím bị giọt nước hấp thụ một phần\nB. Vì tia đỏ nặng hơn nên rơi xuống chậm hơn\nC. Vì mắt người nhìn màu đỏ rõ hơn màu tím\nD. Tia đỏ lệch ít nhất, tia tím lệch nhiều nhất\n\nBài giải:\nKhi tán sắc qua giọt nước, mỗi màu bị lệch một góc khác nhau.\nTia đỏ có góc lệch nhỏ nhất, tia tím có góc lệch lớn nhất.\nVị trí các dải màu được sắp xếp đúng theo thứ tự góc lệch đó, không liên quan đến sự hấp thụ, khối lượng hay thị giác.\nChọn D.",
+     "nguon_vi_du": "K09020304003, K09020304005",
+     "cau": [
+      "K09020304001",
+      "K09020304003",
+      "K09020304005"
+     ]
+    },
+    {
+     "ten": "Nhận ra hiện tượng tán sắc trong đời sống và thí nghiệm",
+     "mo_ta": "Đề mô tả một hiện tượng hoặc thí nghiệm (chùm sáng qua lăng kính, kim cương, giọt sương, mép kính dày, chùm laser) và hỏi quan sát được gì hoặc hiện tượng nào cùng bản chất.\nHọc sinh nhận ra sự tán sắc của ánh sáng trắng qua vật trong suốt có mặt nghiêng, và phân biệt với ánh sáng đơn sắc.\nLưu ý: đề hỏi riêng về cầu vồng (điều kiện, thứ tự màu) ⇒ thuộc dạng \"Giải thích hiện tượng cầu vồng\".",
+     "ly_thuyet": "##TC Tán sắc ánh sáng\nChiếu chùm ánh sáng trắng hẹp qua lăng kính, chùm sáng ló bị tách thành dải màu liên tục từ đỏ đến tím; đó là sự tán sắc ánh sáng.\nCác vật trong suốt có mặt nghiêng (mặt cắt kim cương, giọt nước, mép dày của tấm kính) hoạt động như lăng kính nhỏ nên cũng gây ra tán sắc.\nÁnh sáng đơn sắc (như tia laser một màu) khi qua lăng kính chỉ bị lệch hướng mà không bị tách thành các màu khác.\n\n##PP Nhận ra hiện tượng\nXác định nguồn sáng là ánh sáng trắng hay đơn sắc.\nXác định vật mà ánh sáng đi qua có mặt nghiêng giống lăng kính hay không.\nNếu là ánh sáng trắng qua vật như lăng kính thì kết luận có tán sắc; nếu là ánh sáng đơn sắc thì chỉ bị lệch hướng.\n\n##CY Lưu ý\nPhản xạ ánh sáng, hấp thụ ánh sáng hay nhiễm điện không tạo ra dải nhiều màu.",
+     "vi_du": "##VD\nKhi chiếu một chùm ánh sáng trắng hẹp qua lăng kính trong phòng tối, ta quan sát được gì trên màn chắn phía sau?\nA. Một vệt sáng trắng duy nhất\nB. Nhiều vệt sáng trắng tách rời nhau\nC. Một vệt sáng đen\nD. Một dải màu liên tục từ đỏ đến tím\n\nBài giải:\nÁnh sáng trắng gồm nhiều ánh sáng màu khác nhau.\nQua lăng kính, mỗi màu bị lệch một góc khác nhau nên chùm sáng bị tách ra.\nTrên màn thu được một dải màu liên tục từ đỏ đến tím.\nChọn D.\n\n##VD\nTrong một buổi trình diễn ánh sáng, người ta chiếu một chùm laser đơn sắc (chỉ một màu) qua một lăng kính. Kết quả quan sát được trên màn là gì?\nA. Một dải bảy màu như tán sắc ánh sáng trắng\nB. Chùm tia bị hấp thụ hết trong lăng kính\nC. Chùm tia bị lệch hướng nhưng vẫn giữ nguyên một màu ban đầu\nD. Chùm tia tách thành hai tia cùng màu đối xứng nhau\n\nBài giải:\nLaser là ánh sáng đơn sắc, chỉ có một màu.\nQua lăng kính chùm tia chỉ bị khúc xạ nên lệch hướng, không có màu nào khác để tách ra.\nVì vậy không có dải bảy màu, chùm tia cũng không bị hấp thụ hết hay tách đôi.\nChọn C.",
+     "nguon_vi_du": "K09020304002, K09020304008",
+     "cau": [
+      "K09020304002",
+      "K09020304004",
+      "K09020304006",
+      "K09020304007",
+      "K09020304008"
+     ]
+    }
+   ],
+   "khong_hop": [],
+   "ghi_chu": "Nhóm 8 câu, chia 2 dạng; dạng 1 chỉ có 3 câu."
+  },
+  {
+   "nhom_id": "KNB00460",
+   "ly_thuyet": "##TC 1. Kiến thức cần nhớ\nThấu kính hội tụ có phần rìa mỏng hơn phần giữa; chùm tia tới song song với trục chính cho chùm tia ló hội tụ tại một điểm (tiêu điểm).\nThấu kính phân kì có phần rìa dày hơn phần giữa; chùm tia tới song song với trục chính cho chùm tia ló loe rộng ra.\nQuang tâm O là điểm mà tia sáng đi qua truyền thẳng, không đổi hướng. Trục chính là đường thẳng đi qua O và vuông góc với mặt thấu kính.\nTiêu điểm F nằm trên trục chính; tiêu cự $f$ là khoảng cách từ quang tâm O đến tiêu điểm F, chỉ phụ thuộc vào thấu kính, không phụ thuộc vị trí vật.\n\n##PP 2. Các bước làm bài\nXác định đề hỏi loại thấu kính, tên gọi của một yếu tố hay đường truyền của tia sáng.\nVới ba tia đặc biệt: tia qua quang tâm truyền thẳng; tia song song trục chính cho tia ló qua tiêu điểm ảnh (hội tụ) hoặc có đường kéo dài qua tiêu điểm (phân kì); tia qua tiêu điểm vật cho tia ló song song trục chính (hội tụ).\n\n##CY 3. Lưu ý\nĐừng nhầm thấu kính với gương cầu: thấu kính cho ánh sáng đi xuyên qua, gương cầu phản xạ ánh sáng.\nĐừng nhầm tiêu điểm (một điểm) với tiêu cự (một độ dài).",
+   "dang_bai": [
+    {
+     "ten": "Nhận biết loại thấu kính hội tụ hay phân kì",
+     "mo_ta": "Đề cho đặc điểm của thấu kính (rìa mỏng hay dày hơn phần giữa, chùm tia ló hội tụ hay loe ra, hình vẽ kí hiệu) và hỏi đó là thấu kính gì.\nHọc sinh đối chiếu đặc điểm với định nghĩa thấu kính hội tụ và phân kì.\nLưu ý: đề hỏi tên một điểm, một đường hoặc một độ dài trên hình (quang tâm, trục chính, tiêu điểm, tiêu cự) ⇒ thuộc dạng \"Gọi tên các yếu tố của thấu kính\".",
+     "ly_thuyet": "##TC Phân biệt hai loại thấu kính\nThấu kính hội tụ: rìa mỏng hơn phần giữa, chùm tia tới song song trục chính cho chùm tia ló hội tụ tại một điểm.\nThấu kính phân kì: rìa dày hơn phần giữa, chùm tia tới song song trục chính cho chùm tia ló loe rộng ra.\n\n##CY Lưu ý\nGương cầu lồi, gương cầu lõm và gương phẳng không phải thấu kính; chúng phản xạ ánh sáng chứ không cho ánh sáng đi xuyên qua.",
+     "vi_du": "##VD\nThấu kính có phần rìa mỏng hơn phần giữa là loại thấu kính nào?\nA. Thấu kính phân kì\nB. Gương cầu lồi\nC. Gương cầu lõm\nD. Thấu kính hội tụ\n\nBài giải:\nThấu kính có rìa mỏng hơn phần giữa là thấu kính lồi, tức thấu kính hội tụ.\nGương cầu lồi và gương cầu lõm là gương, không phải thấu kính.\nChọn D.\n\n##VD\nChiếu một chùm sáng song song trục chính vào một thấu kính. Sau khi qua thấu kính, chùm tia ló loe rộng ra. Đó là thấu kính gì?\nA. Thấu kính phân kì\nB. Thấu kính hội tụ\nC. Gương cầu lõm\nD. Gương phẳng\n\nBài giải:\nChùm tia tới song song nhưng chùm tia ló loe rộng ra, tức là thấu kính làm các tia tách xa nhau.\nĐó là tính chất của thấu kính phân kì.\nThấu kính hội tụ làm chùm tia ló hội tụ, còn gương cầu lõm và gương phẳng không phải thấu kính.\nChọn A.",
+     "nguon_vi_du": "K09020401001, K09020401004",
+     "cau": [
+      "K09020401001",
+      "K09020401002",
+      "K09020401003",
+      "K09020401004",
+      "K09020401005"
+     ]
+    },
+    {
+     "ten": "Gọi tên các yếu tố của thấu kính",
+     "mo_ta": "Đề mô tả một điểm, một đường hoặc một khoảng cách trên hình vẽ thấu kính và hỏi tên gọi của nó (quang tâm, trục chính, tiêu điểm, tiêu cự).\nCó câu hỏi tiêu cự có thay đổi khi dịch chuyển vật hay không.\nHọc sinh dùng đúng định nghĩa các thuật ngữ.\nLưu ý: đề hỏi tia sáng đi tiếp theo hướng nào sau khi qua thấu kính ⇒ thuộc dạng \"Xác định đường truyền của các tia sáng đặc biệt\".",
+     "ly_thuyet": "##TC Các yếu tố của thấu kính\nQuang tâm O: điểm trong thấu kính mà mọi tia sáng đi qua đều truyền thẳng.\nTrục chính: đường thẳng đi qua quang tâm O và vuông góc với mặt thấu kính.\nTiêu điểm F: điểm trên trục chính mà chùm tia tới song song trục chính hội tụ tại đó (hoặc đường kéo dài của các tia ló đi qua đó).\nTiêu cự $f$: khoảng cách từ quang tâm O đến tiêu điểm F; là đặc trưng riêng của thấu kính, không đổi khi dịch chuyển vật.\n\n##CY Lưu ý\nTiêu điểm là một điểm, còn tiêu cự là một khoảng cách.\nTrục chính là cả một đường thẳng, không phải một điểm.",
+     "vi_du": "##VD\nTrên hình vẽ thấu kính hội tụ, điểm F trên trục chính là nơi các tia song song trục chính hội tụ lại. Điểm F được gọi là gì?\nA. Quang tâm\nB. Tiêu cự\nC. Tiêu điểm\nD. Ảnh của vật\n\nBài giải:\nĐiểm hội tụ của chùm tia song song trục chính sau khi qua thấu kính gọi là tiêu điểm.\nQuang tâm là điểm O mà tia sáng qua đó truyền thẳng; tiêu cự là một khoảng cách, không phải một điểm.\nChọn C.\n\n##VD\nTrên hình vẽ thấu kính hội tụ, khoảng cách từ quang tâm O đến tiêu điểm F được gọi là gì?\nA. Tiêu cự\nB. Trục chính\nC. Khoảng cách ảnh\nD. Chiều cao vật\n\nBài giải:\nKhoảng cách từ quang tâm O đến tiêu điểm F gọi là tiêu cự, kí hiệu $f$.\nTrục chính là đường thẳng đi qua O và vuông góc với thấu kính; khoảng cách ảnh và chiều cao vật là những đại lượng khác.\nChọn A.",
+     "nguon_vi_du": "K09020401006, K09020401008",
+     "cau": [
+      "K09020401006",
+      "K09020401007",
+      "K09020401008",
+      "K09020401009"
+     ]
+    },
+    {
+     "ten": "Xác định đường truyền của các tia sáng đặc biệt",
+     "mo_ta": "Đề cho một tia sáng đặc biệt (qua quang tâm, song song trục chính, qua tiêu điểm vật) tới thấu kính hội tụ hoặc phân kì và hỏi tia ló đi theo hướng nào.\nHọc sinh nhớ quy tắc ba tia đặc biệt cho từng loại thấu kính.\nLưu ý: đề hỏi tên điểm hay đường trên hình ⇒ thuộc dạng \"Gọi tên các yếu tố của thấu kính\".",
+     "ly_thuyet": "##TC Ba tia sáng đặc biệt\nTia tới qua quang tâm O: tia ló truyền thẳng, không đổi hướng (cả thấu kính hội tụ và phân kì).\nThấu kính hội tụ: tia tới song song trục chính cho tia ló đi qua tiêu điểm ảnh F′; tia tới đi qua tiêu điểm vật F cho tia ló song song trục chính.\nThấu kính phân kì: tia tới song song trục chính cho tia ló có đường kéo dài đi qua tiêu điểm nằm cùng phía với tia tới.\n\n##PP Xác định tia ló\nNhận ra tia tới là tia nào trong ba tia đặc biệt.\nXác định thấu kính là hội tụ hay phân kì.\nÁp dụng quy tắc tương ứng để kết luận hướng tia ló.\n\n##CY Lưu ý\nMọi tia qua quang tâm đều truyền thẳng; đừng nhầm với tia qua tiêu điểm.\nVới thấu kính phân kì, tia ló không đi qua tiêu điểm mà chỉ có đường kéo dài đi qua tiêu điểm.",
+     "vi_du": "##VD\nTia sáng đi qua quang tâm O của thấu kính hội tụ thì tiếp tục truyền theo hướng nào?\nA. Đổi hướng, đi qua tiêu điểm\nB. Đổi hướng, song song trục chính\nC. Bị phản xạ ngược trở lại\nD. Truyền thẳng, không đổi hướng\n\nBài giải:\nTia sáng đi qua quang tâm của thấu kính (hội tụ hay phân kì) đều truyền thẳng, không đổi hướng.\nHai phương án đầu là đường đi của tia song song trục chính và tia qua tiêu điểm, không phải tia qua quang tâm.\nChọn D.\n\n##VD\nTia sáng đi qua tiêu điểm vật F (nằm trước thấu kính), sau khi qua thấu kính hội tụ thì truyền theo hướng nào?\nA. Tiếp tục truyền thẳng, không đổi hướng\nB. Đi qua tiêu điểm ảnh F′\nC. Ló ra song song với trục chính\nD. Loe ra xa trục chính\n\nBài giải:\nTia tới đi qua tiêu điểm vật F của thấu kính hội tụ.\nSau khi khúc xạ, tia ló song song với trục chính.\nTia truyền thẳng là tia qua quang tâm, tia qua F′ là tia ló của tia song song trục chính.\nChọn C.",
+     "nguon_vi_du": "K09020401010, K09020401013",
+     "cau": [
+      "K09020401010",
+      "K09020401011",
+      "K09020401012",
+      "K09020401013",
+      "K09020401014"
+     ]
+    }
+   ],
+   "khong_hop": [],
+   "ghi_chu": ""
+  },
+  {
+   "nhom_id": "KNB00461",
+   "ly_thuyet": "##TC 1. Kiến thức cần nhớ\nThấu kính hội tụ (tiêu cự $f$, vật cách thấu kính $d$):\n$d > 2f$: ảnh thật, ngược chiều, nhỏ hơn vật.\n$d = 2f$: ảnh thật, ngược chiều, bằng vật.\n$f < d < 2f$: ảnh thật, ngược chiều, lớn hơn vật.\n$d < f$: ảnh ảo, cùng chiều, lớn hơn vật.\nThấu kính phân kì: với mọi vị trí của vật luôn cho ảnh ảo, cùng chiều, nhỏ hơn vật và nằm trong khoảng tiêu cự.\nẢnh thật ngược chiều với vật; ảnh ảo cùng chiều với vật.\n\n##PP 2. Các bước làm bài\nXác định loại thấu kính, đọc $d$ và $f$.\nVới thấu kính hội tụ, so sánh $d$ với $f$ và $2f$ để chọn khoảng vị trí của vật.\nKết luận tính chất ảnh theo khoảng đó.\n\n##CY 3. Lưu ý\nĐổi các khoảng $d$, $f$ về cùng đơn vị trước khi so sánh.\nẢnh ảo nhỏ hơn vật chỉ có ở thấu kính phân kì; ảnh ảo lớn hơn vật chỉ có ở thấu kính hội tụ.",
+   "dang_bai": [
+    {
+     "ten": "Xác định tính chất ảnh qua thấu kính hội tụ theo d và f",
+     "mo_ta": "Đề cho thấu kính hội tụ với $f$ và khoảng cách $d$ từ vật tới thấu kính, hỏi ảnh thật hay ảo, cùng hay ngược chiều, lớn hay nhỏ hơn vật.\nHọc sinh so sánh $d$ với $f$ và $2f$ để suy ra tính chất ảnh.\nCó câu hỏi ngược: muốn có ảnh với tính chất cho trước thì vật phải đặt ở khoảng nào.\nLưu ý: đề cho thấu kính phân kì ⇒ thuộc dạng \"Xác định tính chất ảnh qua thấu kính phân kì\".",
+     "ly_thuyet": "##TC Ảnh qua thấu kính hội tụ\n$d > 2f$: ảnh thật, ngược chiều, nhỏ hơn vật.\n$d = 2f$: ảnh thật, ngược chiều, bằng vật.\n$f < d < 2f$: ảnh thật, ngược chiều, lớn hơn vật.\n$d < f$: ảnh ảo, cùng chiều, lớn hơn vật.\n\n##PP Xác định tính chất ảnh\nĐọc $d$ và $f$, tính $2f$.\nSo sánh $d$ với $f$ và $2f$ để xác định khoảng vị trí của vật.\nĐối chiếu với bảng trên để kết luận.\n\n##CY Lưu ý\nẢnh ảo chỉ xuất hiện khi vật ở trong khoảng tiêu cự ($d < f$).\nKhi $d = 2f$ ảnh bằng vật; đừng nhầm với trường hợp $f < d < 2f$ (ảnh lớn hơn vật).",
+     "vi_du": "##VD\nVật sáng AB cách thấu kính hội tụ tiêu cự $f = 10$ cm một khoảng $d = 25$ cm. Ảnh của vật qua thấu kính là ảnh gì?\nA. Ảnh thật, ngược chiều, nhỏ hơn vật\nB. Ảnh thật, ngược chiều, lớn hơn vật\nC. Ảnh ảo, cùng chiều, lớn hơn vật\nD. Ảnh thật, cùng chiều, nhỏ hơn vật\n\nBài giải:\nTa có $2f = 20$ cm.\nVì $d = 25$ cm $> 2f$ nên vật nằm ngoài khoảng $2f$.\nThấu kính hội tụ cho ảnh thật, ngược chiều, nhỏ hơn vật.\nChọn A.\n\n##VD\nVật sáng AB cách thấu kính hội tụ tiêu cự $f = 15$ cm một khoảng $d = 9$ cm. Ảnh của vật qua thấu kính là ảnh gì?\nA. Ảnh thật, ngược chiều, nhỏ hơn vật\nB. Ảnh ảo, cùng chiều, lớn hơn vật\nC. Ảnh thật, ngược chiều, lớn hơn vật\nD. Ảnh ảo, cùng chiều, nhỏ hơn vật\n\nBài giải:\nVì $d = 9$ cm $< f = 15$ cm nên vật nằm trong khoảng tiêu cự.\nThấu kính hội tụ khi đó cho ảnh ảo, cùng chiều, lớn hơn vật.\nChọn B.",
+     "nguon_vi_du": "K09020402001, K09020402015",
+     "cau": [
+      "K09020402001",
+      "K09020402002",
+      "K09020402003",
+      "K09020402010",
+      "K09020402011",
+      "K09020402012",
+      "K09020402013",
+      "K09020402014",
+      "K09020402015"
+     ]
+    },
+    {
+     "ten": "Xác định tính chất ảnh qua thấu kính phân kì",
+     "mo_ta": "Đề cho thấu kính phân kì (có thể kèm $f$, $d$ hoặc vật ở khoảng bất kì) và hỏi tính chất hoặc vị trí của ảnh.\nHọc sinh nhớ thấu kính phân kì luôn cho ảnh ảo, cùng chiều, nhỏ hơn vật, không phụ thuộc $d$.\nLưu ý: đề cho thấu kính hội tụ ⇒ thuộc dạng \"Xác định tính chất ảnh qua thấu kính hội tụ theo d và f\".",
+     "ly_thuyet": "##TC Ảnh qua thấu kính phân kì\nVới mọi vị trí của vật, thấu kính phân kì luôn cho ảnh ảo, cùng chiều, nhỏ hơn vật.\nẢnh luôn nằm trong khoảng tiêu cự, gần thấu kính hơn tiêu điểm.\nThấu kính phân kì không bao giờ cho ảnh thật.\n\n##CY Lưu ý\nKhông cần so sánh $d$ với $f$ hay $2f$ khi đề cho thấu kính phân kì, kể cả khi $d = 2f$ hay $d < f$.\nẢnh ảo lớn hơn vật chỉ có ở thấu kính hội tụ.",
+     "vi_du": "##VD\nVật sáng AB cách thấu kính phân kì tiêu cự $f = 12$ cm một khoảng $d = 8$ cm. Ảnh của vật qua thấu kính là ảnh gì?\nA. Ảnh ảo, cùng chiều, lớn hơn vật\nB. Ảnh thật, ngược chiều, nhỏ hơn vật\nC. Ảnh ảo, cùng chiều, nhỏ hơn vật\nD. Ảnh thật, ngược chiều, bằng vật\n\nBài giải:\nĐề cho thấu kính phân kì nên ảnh không phụ thuộc vị trí vật.\nDù vật ở trong hay ngoài tiêu cự, thấu kính phân kì luôn cho ảnh ảo, cùng chiều, nhỏ hơn vật.\nChọn C.\n\n##VD\nẢnh tạo bởi thấu kính phân kì luôn nằm trong khoảng nào tính từ thấu kính?\nA. Ngoài khoảng hai lần tiêu cự\nB. Đúng bằng hai lần tiêu cự\nC. Trong khoảng tiêu cự\nD. Đúng bằng tiêu cự\n\nBài giải:\nẢnh của thấu kính phân kì là ảnh ảo, nằm cùng phía với vật.\nẢnh này luôn gần thấu kính hơn tiêu điểm, tức nằm trong khoảng tiêu cự.\nChọn C.",
+     "nguon_vi_du": "K09020402005, K09020402017",
+     "cau": [
+      "K09020402004",
+      "K09020402005",
+      "K09020402006",
+      "K09020402016",
+      "K09020402017",
+      "K09020402018"
+     ]
+    },
+    {
+     "ten": "Suy ra loại thấu kính từ tính chất của ảnh",
+     "mo_ta": "Đề cho tính chất ảnh quan sát được (cùng hay ngược chiều, lớn hay nhỏ hơn vật) và hỏi đó là thấu kính hội tụ hay phân kì.\nHọc sinh dùng tính chất ảnh để loại trừ loại thấu kính không thể tạo ra ảnh đó.\nLưu ý: đề cho sẵn loại thấu kính cùng $d$, $f$ rồi hỏi tính chất ảnh ⇒ thuộc hai dạng \"Xác định tính chất ảnh qua thấu kính ...\".",
+     "ly_thuyet": "##TC Dấu hiệu nhận ra loại thấu kính\nẢnh ngược chiều với vật là ảnh thật, chỉ có ở thấu kính hội tụ.\nẢnh ảo cùng chiều, lớn hơn vật chỉ có ở thấu kính hội tụ (vật trong khoảng tiêu cự).\nẢnh ảo cùng chiều, nhỏ hơn vật chỉ có ở thấu kính phân kì.\n\n##PP Suy ra loại thấu kính\nXác định ảnh là thật hay ảo dựa vào chiều của ảnh.\nXét thêm ảnh lớn hơn hay nhỏ hơn vật.\nĐối chiếu với tính chất ảnh của từng loại thấu kính để loại trừ.\n\n##CY Lưu ý\nKhông được kết luận chỉ từ \"ảnh cùng chiều\" vì cả hai loại thấu kính đều có thể cho ảnh ảo cùng chiều; phải xét thêm ảnh lớn hơn hay nhỏ hơn vật.",
+     "vi_du": "##VD\nMột vật đặt trước một thấu kính, ảnh tạo bởi thấu kính ngược chiều với vật. Thấu kính đó thuộc loại nào?\nA. Thấu kính phân kì\nB. Thấu kính hội tụ\nC. Có thể là thấu kính hội tụ hoặc phân kì\nD. Không xác định được loại thấu kính\n\nBài giải:\nẢnh ngược chiều với vật là ảnh thật.\nThấu kính phân kì chỉ cho ảnh ảo cùng chiều với vật nên không thể tạo ảnh này.\nVậy đó là thấu kính hội tụ.\nChọn B.\n\n##VD\nMột vật đặt trước một thấu kính, ảnh tạo bởi thấu kính cùng chiều với vật và nhỏ hơn vật. Thấu kính đó thuộc loại nào?\nA. Thấu kính hội tụ\nB. Thấu kính phân kì\nC. Có thể là thấu kính hội tụ hoặc phân kì\nD. Không xác định được loại thấu kính\n\nBài giải:\nẢnh cùng chiều với vật là ảnh ảo.\nThấu kính hội tụ khi cho ảnh ảo thì ảnh luôn lớn hơn vật.\nẢnh ảo nhỏ hơn vật chỉ có ở thấu kính phân kì.\nChọn B.",
+     "nguon_vi_du": "K09020402008, K09020402007",
+     "cau": [
+      "K09020402007",
+      "K09020402008",
+      "K09020402009"
+     ]
+    }
+   ],
+   "khong_hop": [],
+   "ghi_chu": ""
+  },
+  {
+   "nhom_id": "KNB00464",
+   "ly_thuyet": "##TC 1. Kiến thức cần nhớ\nVật AB đặt cách thấu kính một khoảng $d$, ảnh A′B′ cách thấu kính $d'$. Vật cao $h$, ảnh cao $h'$.\nDùng hai tam giác đồng dạng (tam giác tạo bởi vật, quang tâm và tam giác tạo bởi ảnh, quang tâm) ta có hệ thức $\\dfrac{h'}{h} = \\dfrac{d'}{d}$.\nTỉ số $k = \\dfrac{h'}{h} = \\dfrac{d'}{d}$ cho biết ảnh cao gấp $k$ lần vật.\nẢnh thật nằm khác phía với vật so với thấu kính nên khoảng cách vật – ảnh là $L = d + d'$.\nKính lúp là thấu kính hội tụ có tiêu cự ngắn; vật đặt trong khoảng tiêu cự cho ảnh ảo, cùng chiều, lớn hơn vật; hệ thức $\\dfrac{h'}{h} = \\dfrac{d'}{d}$ vẫn dùng được.\n\n##PP 2. Các bước làm bài\nĐổi mọi đại lượng cùng loại về cùng đơn vị.\nViết hệ thức $\\dfrac{h'}{h} = \\dfrac{d'}{d}$ và xác định đại lượng cần tìm.\nThay số, giải ra kết quả.\nKiểm tra ảnh thật hay ảo để biết có dùng thêm $L = d + d'$ hay không.\n\n##CY 3. Lưu ý\nĐừng đảo ngược tỉ số $\\dfrac{d'}{d}$ thành $\\dfrac{d}{d'}$.\nĐừng lấy hiệu hai khoảng cách làm chiều cao ảnh.\nSố bội giác $G$ của kính lúp không cần dùng khi đề đã cho $d$ và $d'$.",
+   "dang_bai": [
+    {
+     "ten": "Tính chiều cao ảnh thật khi biết h, d và d′",
+     "mo_ta": "Đề cho vật cao $h$, khoảng cách vật $d$ và khoảng cách ảnh thật $d'$ qua thấu kính hội tụ, hỏi chiều cao ảnh $h'$.\nHọc sinh áp dụng trực tiếp hệ thức $\\dfrac{h'}{h} = \\dfrac{d'}{d}$ cho ảnh thật.\nLưu ý: đề nói kính lúp, ảnh ảo ⇒ thuộc dạng \"Tính chiều cao ảnh ảo qua kính lúp\".",
+     "ly_thuyet": "##TC Hệ thức tam giác đồng dạng\nVới ảnh thật qua thấu kính hội tụ: $\\dfrac{h'}{h} = \\dfrac{d'}{d}$, suy ra $h' = h \\cdot \\dfrac{d'}{d}$.\n\n##PP Tính chiều cao ảnh\nTính tỉ số $k = \\dfrac{d'}{d}$.\nNhân chiều cao vật với $k$ để được $h'$.\n\n##CY Lưu ý\nĐừng đảo tỉ số thành $\\dfrac{d}{d'}$ và đừng quên nhân với $k$.\nĐừng lấy $d' - d$ làm chiều cao ảnh.",
+     "vi_du": "##VD\nMột vật sáng cao $h = 4$ cm đặt cách thấu kính hội tụ $d = 12$ cm, cho ảnh thật cách thấu kính $d' = 48$ cm. Áp dụng hệ thức $\\dfrac{h'}{h} = \\dfrac{d'}{d}$, chiều cao ảnh $h'$ bằng bao nhiêu?\nA. 1 cm\nB. 4 cm\nC. 16 cm\nD. 36 cm\n\nBài giải:\nTa có $\\dfrac{h'}{h} = \\dfrac{d'}{d} = \\dfrac{48}{12} = 4$.\nSuy ra $h' = 4h = 4 \\cdot 4 = 16$ cm.\nChọn C.",
+     "nguon_vi_du": "K09020405003",
+     "cau": [
+      "K09020405001",
+      "K09020405002",
+      "K09020405003",
+      "K09020405004"
+     ]
+    },
+    {
+     "ten": "Tính d khi biết khoảng cách vật – ảnh thật L và độ phóng đại k",
+     "mo_ta": "Đề cho khoảng cách giữa vật và ảnh thật trên màn $L$, và ảnh cao gấp $k$ lần vật (tức $d' = kd$); hỏi khoảng cách $d$ từ vật tới thấu kính.\nHọc sinh dùng $L = d + d'$ kết hợp $d' = kd$ rồi giải ra $d$.\nLưu ý: đề không cho $L$ mà cho trực tiếp $d'$ (kính lúp, ảnh ảo) ⇒ thuộc dạng \"Tính d hoặc d′ của kính lúp khi biết độ cao vật và ảnh\".",
+     "ly_thuyet": "##TC Vật và ảnh thật\nẢnh thật nằm khác phía với vật nên khoảng cách vật – ảnh là $L = d + d'$.\nẢnh cao gấp $k$ lần vật nên $d' = kd$.\nSuy ra $L = (k + 1)d$, tức $d = \\dfrac{L}{k + 1}$.\n\n##PP Tìm d\nViết $L = d + d'$ và $d' = kd$.\nThay vào được $L = (k + 1)d$.\nTính $d = \\dfrac{L}{k + 1}$.\n\n##CY Lưu ý\nĐừng chia $L$ cho $k$; mẫu số phải là $k + 1$.",
+     "vi_du": "##VD\nĐặt vật sáng trước thấu kính hội tụ sao cho khoảng cách giữa vật và ảnh thật trên màn là $L = 40$ cm, ảnh cao gấp $k = 3$ lần vật (tức $d' = 3d$). Khoảng cách $d$ từ vật đến thấu kính bằng bao nhiêu?\nA. 20 cm\nB. 30 cm\nC. 40 cm\nD. 10 cm\n\nBài giải:\nẢnh thật nên $L = d + d' = d + 3d = 4d$.\nSuy ra $d = \\dfrac{40}{4} = 10$ cm.\nChọn D.\n\n##VD\nĐặt vật sáng trước thấu kính hội tụ sao cho khoảng cách giữa vật và ảnh thật trên màn là $L = 63$ cm, ảnh cao gấp $k = 6$ lần vật (tức $d' = 6d$). Khoảng cách $d$ từ vật đến thấu kính bằng bao nhiêu?\nA. 9 cm\nB. 31,5 cm\nC. 54 cm\nD. 63 cm\n\nBài giải:\nẢnh thật nên $L = d + d' = d + 6d = 7d$.\nSuy ra $d = \\dfrac{63}{7} = 9$ cm.\nChọn A.",
+     "nguon_vi_du": "K09020405005, K09020405009",
+     "cau": [
+      "K09020405005",
+      "K09020405006",
+      "K09020405007",
+      "K09020405008",
+      "K09020405009",
+      "K09020405010"
+     ]
+    },
+    {
+     "ten": "Tính chiều cao ảnh ảo qua kính lúp khi biết d và d′",
+     "mo_ta": "Đề cho vật cao $h$ đặt trong khoảng tiêu cự của kính lúp, cho biết $d$ và $d'$ (có thể thêm tiêu cự hay số bội giác $G$ làm dữ kiện nhiễu), hỏi chiều cao ảnh ảo.\nHọc sinh áp dụng $\\dfrac{h'}{h} = \\dfrac{d'}{d}$ cho ảnh ảo.\nLưu ý: đề cho ảnh cao bao nhiêu hoặc $k$ rồi hỏi $d$ hay $d'$ ⇒ thuộc dạng \"Tính d hoặc d′ của kính lúp khi biết độ cao vật và ảnh\".",
+     "ly_thuyet": "##TC Ảnh ảo qua kính lúp\nVật đặt trong khoảng tiêu cự cho ảnh ảo, cùng chiều, lớn hơn vật, nằm cùng phía với vật.\nHệ thức $\\dfrac{h'}{h} = \\dfrac{d'}{d}$ vẫn đúng cho ảnh ảo, nên $h' = h \\cdot \\dfrac{d'}{d}$.\n\n##PP Tính chiều cao ảnh ảo\nTính tỉ số $\\dfrac{d'}{d}$.\nNhân với chiều cao vật để được $h'$.\n\n##CY Lưu ý\nTiêu cự $f$ và số bội giác $G$ chỉ là dữ kiện thừa khi đề đã cho đủ $d$ và $d'$.",
+     "vi_du": "##VD\nVật cao 0,6 cm đặt cách kính lúp có tiêu cự 12 cm một khoảng 9 cm (trong khoảng tiêu cự). Ảnh ảo qua kính cách kính 36 cm. Chiều cao ảnh ảo là bao nhiêu?\nA. 2,4 cm\nB. 0,6 cm\nC. 0,15 cm\nD. 5,4 cm\n\nBài giải:\nTa có $\\dfrac{h'}{h} = \\dfrac{d'}{d} = \\dfrac{36}{9} = 4$.\nSuy ra $h' = 4 \\cdot 0{,}6 = 2{,}4$ cm.\nChọn A.\n\n##VD\nKính lúp có số bội giác $G = 5$. Vật cao 1 cm đặt cách kính 3 cm (trong khoảng tiêu cự). Ảnh ảo qua kính cách kính 7,5 cm. Tính chiều cao ảnh ảo.\nA. 2,5 cm\nB. 0,4 cm\nC. 1 cm\nD. 5 cm\n\nBài giải:\nSố bội giác $G$ không cần dùng vì đã biết $d$ và $d'$.\nTa có $\\dfrac{h'}{h} = \\dfrac{d'}{d} = \\dfrac{7{,}5}{3} = 2{,}5$.\nSuy ra $h' = 2{,}5 \\cdot 1 = 2{,}5$ cm.\nChọn A.",
+     "nguon_vi_du": "K09020405013, K09020405029",
+     "cau": [
+      "K09020405011",
+      "K09020405012",
+      "K09020405013",
+      "K09020405016",
+      "K09020405017",
+      "K09020405018",
+      "K09020405029",
+      "K09020405030",
+      "K09020405031",
+      "K09020405032",
+      "K09020405033",
+      "K09020405034",
+      "K09020405035",
+      "K09020405036"
+     ]
+    },
+    {
+     "ten": "Tính d hoặc d′ của kính lúp khi biết độ cao vật và ảnh",
+     "mo_ta": "Đề cho kính lúp (ảnh ảo) với độ cao vật, độ cao ảnh hoặc $k$, cùng một trong hai khoảng cách; hỏi khoảng cách còn lại.\nHọc sinh dùng $\\dfrac{h'}{h} = \\dfrac{d'}{d}$ hoặc $d' = kd$ để tìm $d$ hay $d'$.\nLưu ý: đề cho $d$, $d'$ rồi hỏi chiều cao ảnh ⇒ thuộc dạng \"Tính chiều cao ảnh ảo qua kính lúp khi biết d và d′\".",
+     "ly_thuyet": "##TC Tìm khoảng cách từ tỉ số\nẢnh cao gấp $k$ lần vật: $k = \\dfrac{h'}{h} = \\dfrac{d'}{d}$.\nBiết $d$ thì $d' = kd$; biết $d'$ thì $d = \\dfrac{d'}{k}$.\n\n##PP Tìm d hoặc d′\nTính $k = \\dfrac{h'}{h}$ (hoặc lấy $k$ từ đề).\nChọn công thức $d' = kd$ hay $d = \\dfrac{d'}{k}$ tuỳ đại lượng đã biết.\nThay số và tính.\n\n##CY Lưu ý\nTiêu cự $f$ trong đề chỉ để kiểm tra điều kiện vật nằm trong khoảng tiêu cự; có thể kiểm tra bằng $\\dfrac{1}{f} = \\dfrac{1}{d} - \\dfrac{1}{d'}$ nhưng không cần dùng để tìm $d$.",
+     "vi_du": "##VD\nVật cao 1 cm đặt cách kính lúp có tiêu cự 10 cm một khoảng 7,5 cm, cho ảnh ảo cao 4 cm. Khoảng cách từ ảnh đến kính là bao nhiêu?\nA. 7,5 cm\nB. 10 cm\nC. 30 cm\nD. 4 cm\n\nBài giải:\nẢnh cao gấp $k = \\dfrac{h'}{h} = \\dfrac{4}{1} = 4$ lần vật.\nSuy ra $d' = kd = 4 \\cdot 7{,}5 = 30$ cm.\nChọn C.\n\n##VD\nKính lúp có tiêu cự $f = 15$ cm. Đặt vật trong khoảng tiêu cự, ảnh ảo qua kính cách kính $d' = 30$ cm và cao gấp $k = 3$ lần vật. Vật cách kính bao nhiêu?\nA. 30 cm\nB. 90 cm\nC. 10 cm\nD. 40 cm\n\nBài giải:\nTa có $\\dfrac{d'}{d} = k$ nên $d = \\dfrac{d'}{k} = \\dfrac{30}{3} = 10$ cm.\nKiểm tra: $d = 10$ cm $< f = 15$ cm nên vật nằm trong khoảng tiêu cự, phù hợp với ảnh ảo.\nChọn C.",
+     "nguon_vi_du": "K09020405014, K09020405021",
+     "cau": [
+      "K09020405014",
+      "K09020405015",
+      "K09020405019",
+      "K09020405020",
+      "K09020405021",
+      "K09020405022",
+      "K09020405023",
+      "K09020405024",
+      "K09020405025",
+      "K09020405026",
+      "K09020405027",
+      "K09020405028"
+     ]
+    },
+    {
+     "ten": "So sánh độ cao ảnh qua hai kính lúp với cùng một vật",
+     "mo_ta": "Đề cho một vật đặt cách hai kính lúp A và B cùng một khoảng, cho khoảng cách ảnh ảo qua mỗi kính, hỏi kính nào cho ảnh cao hơn.\nHọc sinh dùng tỉ lệ $h' = h \\cdot \\dfrac{d'}{d}$: cùng $h$ và $d$ nên ảnh cao hơn ứng với $d'$ lớn hơn; $d'$ bằng nhau thì ảnh cao bằng nhau.\nLưu ý: đề chỉ cho một kính và hỏi chiều cao ảnh ⇒ thuộc dạng \"Tính chiều cao ảnh ảo qua kính lúp khi biết d và d′\".",
+     "ly_thuyet": "##TC So sánh ảnh hai kính\nVới cùng vật ($h$ và $d$ như nhau) thì $h' = h \\cdot \\dfrac{d'}{d}$ tỉ lệ thuận với $d'$.\nKính cho ảnh ảo xa kính hơn thì ảnh cao hơn.\n\n##PP So sánh\nXác định $h$ và $d$ chung cho hai kính.\nSo sánh $d'$ của hai kính.\nKính có $d'$ lớn hơn cho ảnh cao hơn; $d'$ bằng nhau thì ảnh bằng nhau.\n\n##CY Lưu ý\nKhông cần tính ra số khi chỉ so sánh.\nChú ý trường hợp $d'$ của hai kính bằng nhau: ảnh cao bằng nhau.",
+     "vi_du": "##VD\nVật cao 1 cm đặt cách hai kính lúp A và B cùng một khoảng 4 cm (trong khoảng tiêu cự mỗi kính). Ảnh ảo qua kính A cách kính 12 cm; ảnh ảo qua kính B cách kính 20 cm. Kính nào cho ảnh cao hơn?\nA. Kính A\nB. Không so sánh được\nC. Kính B\nD. Hai kính cho ảnh cao bằng nhau\n\nBài giải:\nẢnh qua kính A cao $h'_A = 1 \\cdot \\dfrac{12}{4} = 3$ cm.\nẢnh qua kính B cao $h'_B = 1 \\cdot \\dfrac{20}{4} = 5$ cm.\nVì $5 > 3$ nên kính B cho ảnh cao hơn.\nChọn C.\n\n##VD\nVật cao 1 cm đặt cách hai kính lúp A và B cùng một khoảng 2 cm (trong khoảng tiêu cự mỗi kính). Ảnh ảo qua kính A cách kính 6 cm; ảnh ảo qua kính B cũng cách kính 6 cm. Kính nào cho ảnh cao hơn?\nA. Kính A\nB. Hai kính cho ảnh cao bằng nhau\nC. Kính B\nD. Không so sánh được\n\nBài giải:\nẢnh qua mỗi kính cao $h' = 1 \\cdot \\dfrac{6}{2} = 3$ cm.\nHai kính cho ảnh cao bằng nhau.\nChọn B.",
+     "nguon_vi_du": "K09020405037, K09020405041",
+     "cau": [
+      "K09020405037",
+      "K09020405038",
+      "K09020405039",
+      "K09020405040",
+      "K09020405041",
+      "K09020405042",
+      "K09020405043"
+     ]
+    }
+   ],
+   "khong_hop": [],
+   "ghi_chu": "Nhóm 43 câu, chia 5 dạng; dạng ảnh thật chỉ 4 câu, dạng so sánh hai kính 7 câu."
+  },
+  {
+   "nhom_id": "KNB00465",
+   "ly_thuyet": "##TC 1. Kiến thức cần nhớ\nVật ở xa thấu kính hội tụ thì ảnh thật nhỏ và gần thấu kính; dịch vật lại gần thì ảnh thật lớn dần và xa thấu kính dần.\nKhi vật đi qua vị trí $d = f$ thì ảnh chuyển từ ảnh thật sang ảnh ảo; khi $d < f$ ảnh ảo, cùng chiều, lớn hơn vật.\nCác mốc cần nhớ: $d > 2f$ (ảnh thật nhỏ hơn vật), $d = 2f$ (ảnh bằng vật), $f < d < 2f$ (ảnh thật lớn hơn vật), $d < f$ (ảnh ảo lớn hơn vật).\n\n##PP 2. Các bước làm bài\nXác định khoảng vị trí ban đầu của vật so với $f$ và $2f$.\nXác định khoảng vị trí mới sau khi dịch.\nSo sánh tính chất ảnh (thật hay ảo, lớn hay nhỏ, xa hay gần thấu kính) của hai trạng thái.\n\n##CY 3. Lưu ý\nDịch vật hay dịch thấu kính đều làm đổi $d$; chỉ cần xem $d$ đổi từ khoảng nào sang khoảng nào.\nẢnh đổi từ thật sang ảo (hoặc ngược lại) khi vật đi qua vị trí $d = f$.",
+   "dang_bai": [
+    {
+     "ten": "So sánh ảnh trước và sau khi dời vật hoặc thấu kính",
+     "mo_ta": "Đề cho vị trí ban đầu của vật so với $f$ và $2f$, nói vật (hoặc thấu kính) được dời lại gần hay ra xa đến khoảng mới, hỏi ảnh thay đổi thế nào (thật hay ảo, lớn hay nhỏ, gần hay xa thấu kính).\nHọc sinh xác định khoảng vị trí trước và sau rồi so sánh tính chất ảnh.",
+     "ly_thuyet": "##TC Ảnh khi dời vật\nTrong khoảng $d > f$: dịch vật lại gần thì ảnh thật lớn hơn và xa thấu kính hơn; dịch vật ra xa thì ảnh thật nhỏ hơn và gần thấu kính hơn.\nVật đi qua $d = f$ thì ảnh chuyển giữa thật và ảo; $d < f$ cho ảnh ảo, cùng chiều, lớn hơn vật.\n\n##PP So sánh ảnh\nXác định khoảng của $d$ lúc đầu và lúc sau.\nViết tính chất ảnh ở mỗi khoảng.\nSo sánh để nêu sự thay đổi.",
+     "vi_du": "##VD\nMột vật đặt trước thấu kính hội tụ ở vị trí $f < d < 2f$, cho ảnh thật lớn hơn vật. Nếu dịch vật ra xa thấu kính để $d$ tăng vượt qua $2f$, ảnh mới so với ảnh cũ thay đổi thế nào?\nA. Vẫn là ảnh thật nhưng lớn hơn và xa thấu kính hơn\nB. Đổi thành ảnh ảo, cùng chiều, lớn hơn vật\nC. Ảnh không đổi vì thấu kính không đổi tiêu cự\nD. Vẫn là ảnh thật nhưng nhỏ hơn và gần thấu kính hơn\n\nBài giải:\nLúc đầu $f < d < 2f$: ảnh thật, ngược chiều, lớn hơn vật.\nSau khi dịch ra xa, $d > 2f$: ảnh thật, ngược chiều, nhỏ hơn vật.\nVật ra xa thì ảnh thật tiến lại gần thấu kính.\nVậy ảnh vẫn là ảnh thật nhưng nhỏ hơn và gần thấu kính hơn.\nChọn D.\n\n##VD\nMột vật đặt trước thấu kính hội tụ ở vị trí $d > f$, cho ảnh thật. Nếu dịch vật lại gần thấu kính tới khi $d < f$, ảnh thay đổi thế nào so với trước?\nA. Vẫn là ảnh thật nhưng đổi chiều cao khác\nB. Đổi thành ảnh ảo, cùng chiều, nhỏ hơn vật\nC. Chuyển từ ảnh thật sang ảnh ảo, cùng chiều, lớn hơn vật\nD. Ảnh biến mất vì vật quá gần thấu kính\n\nBài giải:\nLúc đầu $d > f$: thấu kính hội tụ cho ảnh thật.\nSau khi dịch, $d < f$: vật nằm trong khoảng tiêu cự nên cho ảnh ảo, cùng chiều, lớn hơn vật.\nVậy ảnh chuyển từ ảnh thật sang ảnh ảo, cùng chiều, lớn hơn vật.\nChọn C.",
+     "nguon_vi_du": "K09020406001, K09020406003",
+     "cau": [
+      "K09020406001",
+      "K09020406002",
+      "K09020406003",
+      "K09020406004",
+      "K09020406005"
+     ]
+    }
+   ],
+   "khong_hop": [],
+   "ghi_chu": "Nhóm chỉ 5 câu, một dạng."
+  }
+ ]
+}

@@ -1,0 +1,2541 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00414",
+   "khoi": "9",
+   "chu_de": "Cơ học",
+   "chuyen_de": "Động năng",
+   "nhom": "BÀI TOÁN TỔNG HỢP: ĐỔI ĐƠN VỊ, TÍNH VÀ SO SÁNH ĐỘNG NĂNG",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "$W_đ = \\dfrac{1}{2}mv^2$, với m tính bằng kilôgam (kg), v tính bằng mét trên giây (m/s).\nĐổi đơn vị trước khi thay số: khối lượng về kg (1 tấn = 1000 kg, 1 tạ = 100 kg, 1 yến = 10 kg, 1 g = 0,001 kg); tốc độ về m/s (1 km/h = $1:3,6$ m/s, 1 cm/s = 0,01 m/s).\nTrọng lượng và khối lượng liên hệ qua $P = 10m$.\nTrình tự làm bài\nLiệt kê mọi dữ kiện đề cho, kèm đơn vị gốc.\nĐổi tất cả về đơn vị chuẩn (kg, m/s, J) trước khi tính.\nÁp dụng công thức $W_đ = \\dfrac{1}{2}mv^2$ cho từng vật hoặc từng thời điểm.\nThực hiện phép so sánh, trừ, hoặc lập tỉ số theo đúng yêu cầu đề bài.\nVÍ DỤ 1. Một vật khối lượng 2 kg, tốc độ tăng từ 18 km/h lên 36 km/h. Tính độ tăng động năng của vật.\nHướng dẫn: Đổi $v_1 = 18$ km/h = 5 m/s, $v_2 = 36$ km/h = 10 m/s. $W_{đ1} = \\dfrac{1}{2} \\times 2 \\times 5^2 = 25$ J. $W_{đ2} = \\dfrac{1}{2} \\times 2 \\times 10^2 = 100$ J. Độ tăng: $\\Delta W_đ = 100 - 25 = 75$ J.\nVÍ DỤ 2. Vật A khối lượng 3 kg, tốc độ 36 km/h. Vật B khối lượng 2000 g, tốc độ 8 m/s. Động năng vật A lớn hơn động năng vật B bao nhiêu jun?\nHướng dẫn: Đổi $v_A = 36$ km/h = 10 m/s, $m_B = 2000$ g = 2 kg. $W_{đA} = \\dfrac{1}{2} \\times 3 \\times 10^2 = 150$ J. $W_{đB} = \\dfrac{1}{2} \\times 2 \\times 8^2 = 64$ J. Chênh lệch: $150 - 64 = 86$ J.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00415",
+   "khoi": "9",
+   "chu_de": "Cơ học",
+   "chuyen_de": "Thế năng",
+   "nhom": "KHÁI NIỆM VÀ ĐẶC ĐIỂM THẾ NĂNG",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Khái niệm\n•\tThế năng trọng trường là năng lượng một vật có được do vị trí của vật so với mốc thế năng, kí hiệu Wt, đơn vị jun (J).\n•\tThế năng đàn hồi là năng lượng một vật có được do bị biến dạng đàn hồi (lò xo, dây cung bị kéo giãn hoặc nén…). Chương trình không có công thức tính thế năng đàn hồi.\n•\tMốc thế năng là vị trí quy ước thế năng bằng 0, do người giải bài toán tự chọn.\nCông thức\n•\tWt = 10mh (thế năng trọng trường), trong đó m là khối lượng vật (kg), h là độ cao so với mốc (m).\n•\tThế năng trọng trường phụ thuộc hai yếu tố: khối lượng và độ cao so với mốc; đổi mốc khác thì giá trị thế năng cũng đổi.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00416",
+   "khoi": "9",
+   "chu_de": "Cơ học",
+   "chuyen_de": "Thế năng",
+   "nhom": "Tính thế năng trọng trường khi biết m và h",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Công thức\n•\tWt = 10mh, với m là khối lượng (kg), h là độ cao so với mốc thế năng (m), Wt tính ra jun (J).\n•\tĐổi khối lượng ra kilôgam: 1 g = 0,001 kg; 1 tấn = 1 000 kg; 1 tạ = 100 kg; 1 yến = 10 kg.\n•\tĐổi độ cao ra mét: 1 cm = 0,01 m; 1 km = 1 000 m.\n•\tNếu đề cho trọng lượng P (N) thay vì khối lượng, dùng P = 10m để suy ra m = P/10 (lấy g = 10 m/s2).\nTrình tự làm bài\n1.\tĐổi khối lượng về đơn vị kilôgam và độ cao về đơn vị mét (nếu đề cho ở đơn vị khác).\n2.\tNếu đề cho trọng lượng, đại lượng trung gian hoặc tỉ lệ phần trăm, tính khối lượng thực trước.\n3.\tThay số vào công thức Wt = 10mh để tính thế năng.\nVí dụ 1. Một vật có khối lượng 4 kg, ở độ cao 5 m so với mặt đất. Tính thế năng của vật.\nHướng dẫn: Wt = 10 × 4 × 5 = 200 J.\nVí dụ 2. Một vật có khối lượng 800 g, ở độ cao 250 cm so với mặt đất. Tính thế năng của vật.\nHướng dẫn: Đổi m = 800 g = 0,8 kg; h = 250 cm = 2,5 m. Wt = 10 × 0,8 × 2,5 = 20 J.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00417",
+   "khoi": "9",
+   "chu_de": "Cơ học",
+   "chuyen_de": "Thế năng",
+   "nhom": "Tìm m hoặc h khi biết thế năng Wt",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Công thức\n•\tTừ Wt = 10mh, suy ra: m = Wt : (10h) (khi biết Wt và h).\n•\tTừ Wt = 10mh, suy ra: h = Wt : (10m) (khi biết Wt và m).\n•\tNếu đề cho trọng lượng P (N) thay vì khối lượng, đổi m = P : 10 trước khi áp dụng công thức.\nTrình tự làm bài\n1.\tXác định đại lượng đề đã cho (Wt và h, hoặc Wt và m) và đại lượng cần tìm.\n2.\tĐổi toàn bộ dữ kiện về đúng đơn vị chuẩn (Wt ra jun, m ra kilôgam, h ra mét) trước khi biến đổi công thức.\n3.\tBiến đổi công thức Wt = 10mh để rút ra đại lượng cần tìm, thay số và tính kết quả.\nVí dụ 1. Một vật có thế năng 100 J, ở độ cao 5 m so với mặt đất. Tính khối lượng của vật.\nHướng dẫn: Từ Wt = 10mh, suy ra m = Wt : (10h) = 100 : (10 × 5) = 100 : 50 = 2 kg.\nVí dụ 2. Một vật có khối lượng 4 kg, thế năng 80 J. Tính độ cao của vật so với mặt đất.\nHướng dẫn: Từ Wt = 10mh, suy ra h = Wt : (10m) = 80 : (10 × 4) = 80 : 40 = 2 m.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00419",
+   "khoi": "9",
+   "chu_de": "Cơ học",
+   "chuyen_de": "Thế năng",
+   "nhom": "ỨNG DỤNG THỰC TẾ VÀ GIẢI THÍCH HIỆN TƯỢNG LIÊN QUAN ĐẾN THẾ NĂNG",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Công thức\n•\tWt = 10mh: thế năng trọng trường tỉ lệ thuận với khối lượng, tỉ lệ thuận với độ cao.\n•\tThế năng đàn hồi phụ thuộc vào độ biến dạng (nén hoặc giãn) của vật đàn hồi so với hình dạng tự nhiên.\n•\tKhi vật rơi, thế năng chuyển hóa dần thành động năng; độ cao ban đầu càng lớn thì động năng lúc chạm đất càng lớn.\nTrình tự làm bài\n1.\tXác định hiện tượng thực tế liên quan đến khối lượng, độ cao hoặc độ biến dạng của vật.\n2.\tXác định vật đang mang thế năng trọng trường (do độ cao) hay thế năng đàn hồi (do biến dạng).\n3.\tLiên hệ với công thức Wt = 10mh hoặc vai trò của thế năng đàn hồi để giải thích hiện tượng hoặc ứng dụng.\nVí dụ 1. Vì sao khi làm việc trên giàn giáo cao, công nhân xây dựng bắt buộc phải đeo dây an toàn?\nHướng dẫn: Người đứng trên giàn giáo cao mang thế năng Wt = 10mh. Nếu rơi, thế năng chuyển hóa thành động năng lớn khi chạm đất, gây chấn thương nặng; dây an toàn ngăn không cho người rơi xuống.\nVí dụ 2. Vì sao khi kéo căng dây cung rồi buông tay, mũi tên bay đi với tốc độ lớn?\nHướng dẫn: Dây cung bị kéo căng tích trữ thế năng đàn hồi. Khi buông tay, thế năng đàn hồi chuyển hóa thành động năng của mũi tên, làm mũi tên bay đi nhanh.",
+   "can_dien_ly_thuyet_nhom": false
+  }
+ ],
+ "dang_bai": [
+  {
+   "dang_id": "KDB01002",
+   "nhom_id": "KNB00414",
+   "thu_tu": 1,
+   "dang": "TỐC ĐỘ THAY ĐỔI QUA HAI THỜI ĐIỂM, TÍNH ĐỘ TĂNG ĐỘNG NĂNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010107005",
+     "loai": "trac_nghiem",
+     "de": "Một vật khối lượng $2\\ \\mathrm{kg}$, tốc độ tăng từ $36\\ \\mathrm{km/h}$ lên $90\\ \\mathrm{km/h}$. Tính độ tăng động năng của vật.",
+     "lua_chon": [
+      "-525 J.",
+      "6 804 J.",
+      "525 J.",
+      "625 J."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi $v_1 = 36\\ \\mathrm{km/h} = 10\\ \\mathrm{m/s}$, $v_2 = 90\\ \\mathrm{km/h} = 25\\ \\mathrm{m/s}$.\n$W_{d1} = \\dfrac{1}{2} \\times 2 \\times 10^2 = 100\\ \\mathrm{J}$.\n$W_{d2} = \\dfrac{1}{2} \\times 2 \\times 25^2 = 625\\ \\mathrm{J}$.\nĐộ tăng: $\\Delta W_d = 625 - 100 = 525\\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010107001",
+     "loai": "trac_nghiem",
+     "de": "Một vật khối lượng 2 kg, tốc độ tăng từ 18 km/h lên 54 km/h. Tính độ tăng động năng của vật.",
+     "lua_chon": [
+      "200 J.",
+      "200 J.",
+      "2 592 J.",
+      "225 J."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi $v_1 = 18 \\text{ km/h} = 5 \\text{ m/s}$, $v_2 = 54 \\text{ km/h} = 15 \\text{ m/s}$.\n$W_{d1} = \\dfrac{1}{2} \\times 2 \\times 5^2 = 25 \\text{ J}$.\n$W_{d2} = \\dfrac{1}{2} \\times 2 \\times 15^2 = 225 \\text{ J}$.\nĐộ tăng: $\\Delta W_d = 225 - 25 = 200 \\text{ J}$."
+    },
+    {
+     "ma_cau": "K09010107004",
+     "loai": "trac_nghiem",
+     "de": "Một vật khối lượng 5 kg, tốc độ tăng từ 54 km/h lên 108 km/h. Tính độ tăng động năng của vật.",
+     "lua_chon": [
+      "-1 687,5 J.",
+      "1 687,5 J.",
+      "21 870 J.",
+      "2 250 J."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi $v_1 = 54 \\text{ km/h} = 15 \\text{ m/s}$, $v_2 = 108 \\text{ km/h} = 30 \\text{ m/s}$.\n$W_{d1} = \\dfrac{1}{2} \\times 5 \\times 15^2 = 562,5 \\text{ J}$.\n$W_{d2} = \\dfrac{1}{2} \\times 5 \\times 30^2 = 2\\ 250 \\text{ J}$.\nĐộ tăng: $\\Delta W_d = 2\\ 250 - 562,5 = 1\\ 687,5 \\text{ J}$."
+    },
+    {
+     "ma_cau": "K09010107003",
+     "loai": "trac_nghiem",
+     "de": "Một vật khối lượng 4 kg, tốc độ tăng từ 18 km/h lên 90 km/h. Tính độ tăng động năng của vật.",
+     "lua_chon": [
+      "-1 200 J.",
+      "15 552 J.",
+      "1 250 J.",
+      "1 200 J."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi $v_1 = 18 \\text{ km/h} = 5 \\text{ m/s}$, $v_2 = 90 \\text{ km/h} = 25 \\text{ m/s}$.\n$W_{d1} = \\dfrac{1}{2} \\times 4 \\times 5^2 = 50 \\text{ J}$.\n$W_{d2} = \\dfrac{1}{2} \\times 4 \\times 25^2 = 1\\ 250 \\text{ J}$.\nĐộ tăng: $\\Delta W_d = 1\\ 250 - 50 = 1\\ 200 \\text{ J}$."
+    },
+    {
+     "ma_cau": "K09010107007",
+     "loai": "trac_nghiem",
+     "de": "Một vật khối lượng $3\\ \\mathrm{kg}$, tốc độ tăng từ $54\\ \\mathrm{km/h}$ lên $90\\ \\mathrm{km/h}$. Tính độ tăng động năng của vật.",
+     "lua_chon": [
+      "600 J.",
+      "-600 J.",
+      "7 776 J.",
+      "937,5 J."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi $v_1 = 54\\ \\mathrm{km/h} = 15\\ \\mathrm{m/s}$, $v_2 = 90\\ \\mathrm{km/h} = 25\\ \\mathrm{m/s}$.\n$W_{d1} = \\dfrac{1}{2} \\times 3 \\times 15^2 = 337,5\\ \\mathrm{J}$.\n$W_{d2} = \\dfrac{1}{2} \\times 3 \\times 25^2 = 937,5\\ \\mathrm{J}$.\nĐộ tăng: $\\Delta W_d = 937,5 - 337,5 = 600\\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010107006",
+     "loai": "trac_nghiem",
+     "de": "Một vật khối lượng $6\\ \\mathrm{kg}$, tốc độ tăng từ $18\\ \\mathrm{km/h}$ lên $36\\ \\mathrm{km/h}$. Tính độ tăng động năng của vật.",
+     "lua_chon": [
+      "-225 J.",
+      "225 J.",
+      "2 916 J.",
+      "300 J."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi $v_1 = 18\\ \\mathrm{km/h} = 5\\ \\mathrm{m/s}$, $v_2 = 36\\ \\mathrm{km/h} = 10\\ \\mathrm{m/s}$.\n$W_{d1} = \\dfrac{1}{2} \\times 6 \\times 5^2 = 75\\ \\mathrm{J}$.\n$W_{d2} = \\dfrac{1}{2} \\times 6 \\times 10^2 = 300\\ \\mathrm{J}$.\nĐộ tăng: $\\Delta W_d = 300 - 75 = 225\\ \\mathrm{J}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01003",
+   "nhom_id": "KNB00414",
+   "thu_tu": 2,
+   "dang": "HAI VẬT, ĐƠN VỊ KHÁC NHAU, TÍNH CHÊNH LỆCH ĐỘNG NĂNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010107011",
+     "loai": "trac_nghiem",
+     "de": "Vật A khối lượng 3 kg, tốc độ 72 km/h. Vật B khối lượng 500 g, tốc độ 15 m/s. Động năng vật A lớn hơn động năng vật B bao nhiêu jun?",
+     "lua_chon": [
+      "543,75 J.",
+      "7 719,75 J.",
+      "-55 650 J.",
+      "656,25 J."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi $v_A = 72\\ \\mathrm{km/h} = 20\\ \\mathrm{m/s}$, $m_B = 500\\ \\mathrm{g} = 0,5\\ \\mathrm{kg}$.\n$W_{dA} = \\dfrac{1}{2} \\times 3 \\times 20^2 = 600\\ \\mathrm{J}$.\n$W_{dB} = \\dfrac{1}{2} \\times 0,5 \\times 15^2 = 56,25\\ \\mathrm{J}$.\nChênh lệch: $600 - 56,25 = 543,75\\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010107016",
+     "loai": "trac_nghiem",
+     "de": "Vật A khối lượng $3 \\ \\mathrm{kg}$, tốc độ $90 \\ \\mathrm{km/h}$. Vật B khối lượng $600 \\ \\mathrm{g}$, tốc độ $16 \\ \\mathrm{m/s}$. Động năng vật A lớn hơn động năng vật B bao nhiêu jun?",
+     "lua_chon": [
+      "860,7 J.",
+      "12 073,2 J.",
+      "-75 862,5 J.",
+      "1 014,3 J."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi $v_A = 90 \\ \\mathrm{km/h} = 25 \\ \\mathrm{m/s}$, $m_B = 600 \\ \\mathrm{g} = 0,6 \\ \\mathrm{kg}$.\n$W_{dA} = \\frac{1}{2} \\times 3 \\times 25^2 = 937,5 \\ \\mathrm{J}$.\n$W_{dB} = \\frac{1}{2} \\times 0,6 \\times 16^2 = 76,8 \\ \\mathrm{J}$.\nChênh lệch: $937,5 - 76,8 = 860,7 \\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010107013",
+     "loai": "trac_nghiem",
+     "de": "Vật A khối lượng $2 \\ \\mathrm{kg}$, tốc độ $90 \\ \\mathrm{km/h}$. Vật B khối lượng $400 \\ \\mathrm{g}$, tốc độ $18 \\ \\mathrm{m/s}$. Động năng vật A lớn hơn động năng vật B bao nhiêu jun?",
+     "lua_chon": [
+      "8 035,2 J.",
+      "560,2 J.",
+      "-64 175 J.",
+      "689,8 J."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi $v_A = 90 \\ \\mathrm{km/h} = 25 \\ \\mathrm{m/s}$, $m_B = 400 \\ \\mathrm{g} = 0,4 \\ \\mathrm{kg}$.\n$W_{dA} = \\frac{1}{2} \\times 2 \\times 25^2 = 625 \\ \\mathrm{J}$.\n$W_{dB} = \\frac{1}{2} \\times 0,4 \\times 18^2 = 64,8 \\ \\mathrm{J}$.\nChênh lệch: $625 - 64,8 = 560,2 \\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010107014",
+     "loai": "trac_nghiem",
+     "de": "Vật A khối lượng $4 \\ \\mathrm{kg}$, tốc độ $54 \\ \\mathrm{km/h}$. Vật B khối lượng $900 \\ \\mathrm{g}$, tốc độ $14 \\ \\mathrm{m/s}$. Động năng vật A lớn hơn động năng vật B bao nhiêu jun?",
+     "lua_chon": [
+      "5 743,8 J.",
+      "361,8 J.",
+      "-87 750 J.",
+      "538,2 J."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi $v_A = 54 \\ \\mathrm{km/h} = 15 \\ \\mathrm{m/s}$, $m_B = 900 \\ \\mathrm{g} = 0,9 \\ \\mathrm{kg}$.\n$W_{dA} = \\frac{1}{2} \\times 4 \\times 15^2 = 450 \\ \\mathrm{J}$.\n$W_{dB} = \\frac{1}{2} \\times 0,9 \\times 14^2 = 88,2 \\ \\mathrm{J}$.\nChênh lệch: $450 - 88,2 = 361,8 \\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010107010",
+     "loai": "trac_nghiem",
+     "de": "Vật A khối lượng 5 kg, tốc độ 54 km/h. Vật B khối lượng 1 000 g, tốc độ 12 m/s. Động năng vật A lớn hơn động năng vật B bao nhiêu jun?",
+     "lua_chon": [
+      "7 218 J.",
+      "-71 437,5 J.",
+      "634,5 J.",
+      "490,5 J."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi $v_A = 54\\ \\mathrm{km/h} = 15\\ \\mathrm{m/s}$, $m_B = 1\\ 000\\ \\mathrm{g} = 1\\ \\mathrm{kg}$.\n$W_{dA} = \\dfrac{1}{2} \\times 5 \\times 15^2 = 562,5\\ \\mathrm{J}$.\n$W_{dB} = \\dfrac{1}{2} \\times 1 \\times 12^2 = 72\\ \\mathrm{J}$.\nChênh lệch: $562,5 - 72 = 490,5\\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010107009",
+     "loai": "trac_nghiem",
+     "de": "Vật A khối lượng 4 kg, tốc độ 36 km/h. Vật B khối lượng 800 g, tốc độ 10 m/s. Động năng vật A lớn hơn động năng vật B bao nhiêu jun?",
+     "lua_chon": [
+      "2 552 J.",
+      "-39 800 J.",
+      "240 J.",
+      "160 J."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi $v_A = 36\\ \\mathrm{km/h} = 10\\ \\mathrm{m/s}$, $m_B = 800\\ \\mathrm{g} = 0,8\\ \\mathrm{kg}$.\n$W_{dA} = \\dfrac{1}{2} \\times 4 \\times 10^2 = 200\\ \\mathrm{J}$.\n$W_{dB} = \\dfrac{1}{2} \\times 0,8 \\times 10^2 = 40\\ \\mathrm{J}$.\nChênh lệch: $200 - 40 = 160\\ \\mathrm{J}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01004",
+   "nhom_id": "KNB00414",
+   "thu_tu": 3,
+   "dang": "TỐC ĐỘ TĂNG THÊM P%, TÍNH ĐỘNG NĂNG SAU KHI TĂNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010107022",
+     "loai": "trac_nghiem",
+     "de": "Một vật khối lượng 4 kg, tốc độ 108 km/h, sau đó tăng thêm 15%. Tính động năng của vật sau khi tăng tốc.",
+     "lua_chon": [
+      "30 851,28 J.",
+      "2 380,5 J.",
+      "1 800 J.",
+      "2 070 J."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tốc độ sau: $v' = 108 \\times (1 + 15/100) = 124.2 \\text{ km/h} = 34.5 \\text{ m/s}$.\n$W_d = \\dfrac{1}{2} \\times 4 \\times 34.5^2 = 2380.5 \\text{ J}$."
+    },
+    {
+     "ma_cau": "K09010107018",
+     "loai": "trac_nghiem",
+     "de": "Một vật khối lượng 5 kg, tốc độ 54 km/h, sau đó tăng thêm 50%. Tính động năng của vật sau khi tăng tốc.",
+     "lua_chon": [
+      "16 402,5 J.",
+      "562,5 J.",
+      "843,75 J.",
+      "1 265,62 J."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tốc độ sau: $v' = 54 \\times (1 + 50/100) = 81 \\text{ km/h} = 22,5 \\text{ m/s}$.\nĐộng năng: $W_đ = \\dfrac{1}{2} \\times 5 \\times 22,5^2 = 1\\ 265,62 \\text{ J}$."
+    },
+    {
+     "ma_cau": "K09010107017",
+     "loai": "trac_nghiem",
+     "de": "Một vật khối lượng 4 kg, tốc độ 36 km/h, sau đó tăng thêm 20%. Tính động năng của vật sau khi tăng tốc.",
+     "lua_chon": [
+      "288 J.",
+      "3 732,48 J.",
+      "200 J.",
+      "240 J."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tốc độ sau: $v' = 36 \\times (1 + 20/100) = 43,2 \\text{ km/h} = 12 \\text{ m/s}$.\nĐộng năng: $W_đ = \\dfrac{1}{2} \\times 4 \\times 12^2 = 288 \\text{ J}$."
+    },
+    {
+     "ma_cau": "K09010107019",
+     "loai": "trac_nghiem",
+     "de": "Một vật khối lượng 3 kg, tốc độ 72 km/h, sau đó tăng thêm 25%. Tính động năng của vật sau khi tăng tốc.",
+     "lua_chon": [
+      "12 150 J.",
+      "937,5 J.",
+      "600 J.",
+      "750 J."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tốc độ sau: $v' = 72 \\times (1 + 25/100) = 90 \\text{ km/h} = 25 \\text{ m/s}$.\nĐộng năng: $W_đ = \\dfrac{1}{2} \\times 3 \\times 25^2 = 937,5 \\text{ J}$."
+    },
+    {
+     "ma_cau": "K09010107020",
+     "loai": "trac_nghiem",
+     "de": "Một vật khối lượng 6 kg, tốc độ 90 km/h, sau đó tăng thêm 10%. Tính động năng của vật sau khi tăng tốc.",
+     "lua_chon": [
+      "2 268,75 J.",
+      "29 403 J.",
+      "1 875 J.",
+      "2 062,5 J."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tốc độ sau: $v' = 90 \\times (1 + 10/100) = 99 \\text{ km/h} = 27,5 \\text{ m/s}$.\nĐộng năng: $W_đ = \\dfrac{1}{2} \\times 6 \\times 27,5^2 = 2\\ 268,75 \\text{ J}$."
+    },
+    {
+     "ma_cau": "K09010107021",
+     "loai": "trac_nghiem",
+     "de": "Một vật khối lượng 2 kg, tốc độ 36 km/h, sau đó tăng thêm 100%. Tính động năng của vật sau khi tăng tốc.",
+     "lua_chon": [
+      "400 J.",
+      "5 184 J.",
+      "100 J.",
+      "200 J."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tốc độ sau: $v' = 36 \\times (1 + 100/100) = 72 \\text{ km/h} = 20 \\text{ m/s}$.\n$W_d = \\dfrac{1}{2} \\times 2 \\times 20^2 = 400 \\text{ J}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01005",
+   "nhom_id": "KNB00414",
+   "thu_tu": 4,
+   "dang": "BA VẬT, ĐƠN VỊ HỖN HỢP, XÁC ĐỊNH VẬT CÓ ĐỘNG NĂNG LỚN NHẤT",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010107026",
+     "loai": "trac_nghiem",
+     "de": "Ba vật chuyển động: vật A khối lượng 1,5 tấn, tốc độ 5 m/s; vật B khối lượng 4 kg, tốc độ 72 km/h; vật C khối lượng 800 g, tốc độ 20 m/s. Vật nào có động năng lớn nhất?",
+     "lua_chon": [
+      "Vật A.",
+      "Vật B.",
+      "Vật C.",
+      "Ba vật có động năng bằng nhau."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi đơn vị rồi tính: $W_{dA} = 18 750 J$, $W_{dB} = 800 J$, $W_{dC} = 160 J$. Vật A có động năng lớn nhất."
+    },
+    {
+     "ma_cau": "K09010107027",
+     "loai": "trac_nghiem",
+     "de": "Ba vật chuyển động: vật A khối lượng 5 kg, tốc độ 36 km/h; vật B khối lượng 3 000 g, tốc độ 15 m/s; vật C khối lượng 0,8 tấn, tốc độ 6 m/s. Vật nào có động năng lớn nhất?",
+     "lua_chon": [
+      "Vật A.",
+      "Vật B.",
+      "Vật C.",
+      "Ba vật có động năng bằng nhau."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi đơn vị rồi tính: $W_{dA} = 250 J$, $W_{dB} = 337,5 J$, $W_{dC} = 14 400 J$. Vật C có động năng lớn nhất."
+    },
+    {
+     "ma_cau": "K09010107024",
+     "loai": "trac_nghiem",
+     "de": "Ba vật chuyển động: vật A khối lượng 2 kg, tốc độ 36 km/h; vật B khối lượng 1 500 g, tốc độ 12 m/s; vật C khối lượng 0,5 tấn, tốc độ 8 m/s. Vật nào có động năng lớn nhất?",
+     "lua_chon": [
+      "Vật A.",
+      "Vật B.",
+      "Vật C.",
+      "Ba vật có động năng bằng nhau."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi đơn vị rồi tính: $W_{dA} = 100 J$, $W_{dB} = 108 J$, $W_{dC} = 16 000 J$. Vật C có động năng lớn nhất."
+    },
+    {
+     "ma_cau": "K09010107025",
+     "loai": "trac_nghiem",
+     "de": "Ba vật chuyển động: vật A khối lượng 0,3 tấn, tốc độ 20 m/s; vật B khối lượng 2 000 g, tốc độ 10 m/s; vật C khối lượng 4 kg, tốc độ 15 m/s. Vật nào có động năng lớn nhất?",
+     "lua_chon": [
+      "Vật B.",
+      "Vật C.",
+      "Vật A.",
+      "Ba vật có động năng bằng nhau."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi đơn vị rồi tính: $W_{dA} = 60 000 J$, $W_{dB} = 100 J$, $W_{dC} = 450 J$. Vật A có động năng lớn nhất."
+    },
+    {
+     "ma_cau": "K09010107029",
+     "loai": "trac_nghiem",
+     "de": "Ba vật chuyển động: vật A khối lượng 6 kg, tốc độ 18 km/h; vật B khối lượng 1 500 g, tốc độ 40 m/s; vật C khối lượng 60 kg, tốc độ 4 m/s. Vật nào có động năng lớn nhất?",
+     "lua_chon": [
+      "Vật A.",
+      "Vật C.",
+      "Ba vật có động năng bằng nhau.",
+      "Vật B."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi đơn vị rồi tính: $W_{dA} = 75 J$, $W_{dB} = 1\\ 200 J$, $W_{dC} = 480 J$. Vật B có động năng lớn nhất."
+    },
+    {
+     "ma_cau": "K09010107030",
+     "loai": "trac_nghiem",
+     "de": "Ba vật chuyển động: vật A khối lượng 4 kg, tốc độ 90 km/h; vật B khối lượng 0,3 tấn, tốc độ 10 m/s; vật C khối lượng 5 000 g, tốc độ 12 m/s. Vật nào có động năng lớn nhất?",
+     "lua_chon": [
+      "Vật A.",
+      "Vật B.",
+      "Vật C.",
+      "Ba vật có động năng bằng nhau."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi đơn vị rồi tính: $W_{dA} = 1\\ 250 J$, $W_{dB} = 15\\ 000 J$, $W_{dC} = 360 J$. Vật B có động năng lớn nhất."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01006",
+   "nhom_id": "KNB00414",
+   "thu_tu": 5,
+   "dang": "KHỐI LƯỢNG (GAM), TỐC ĐỘ TĂNG THÊM P%, TÍNH ĐỘ TĂNG ĐỘNG NĂNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010107031",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật khối lượng $2000\\,g$, tốc độ $36\\,km/h$, sau đó tăng thêm $20\\%$. Tính độ tăng động năng, kết quả ra $J$.",
+     "dap_an": "44",
+     "loi_giai": "Đổi $m = 2000\\,g = 2\\,kg$, $v_1 = 36\\,km/h = 10\\,m/s$.\nTốc độ sau: $v_2 = 10 \\times (1 + 20/100) = 12\\,m/s$.\n$W_{d1} = 100\\,J$, $W_{d2} = 144\\,J$.\nĐộ tăng: $\\Delta W_d = 144 - 100 = 44\\,J$."
+    },
+    {
+     "ma_cau": "K09010107032",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật khối lượng $1500\\,g$, tốc độ $54\\,km/h$, sau đó tăng thêm $30\\%$. Tính độ tăng động năng, kết quả ra $J$.",
+     "dap_an": "116.44",
+     "loi_giai": "Đổi $m = 1500\\,g = 1,5\\,kg$, $v_1 = 54\\,km/h = 15\\,m/s$.\nTốc độ sau: $v_2 = 15 \\times (1 + 30/100) = 19,5\\,m/s$.\n$W_{d1} = 168,75\\,J$, $W_{d2} = 285,19\\,J$.\nĐộ tăng: $\\Delta W_d = 285,19 - 168,75 = 116,44\\,J$."
+    },
+    {
+     "ma_cau": "K09010107035",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật khối lượng $2500\\,g$, tốc độ $36\\,km/h$, sau đó tăng thêm $50\\%$. Tính độ tăng động năng, kết quả ra $J$.",
+     "dap_an": "156.25",
+     "loi_giai": "Đổi $m = 2500\\,g = 2,5\\,kg$, $v_1 = 36\\,km/h = 10\\,m/s$.\nTốc độ sau: $v_2 = 10 \\times (1 + 50/100) = 15\\,m/s$.\n$W_{d1} = 125\\,J$, $W_{d2} = 281,25\\,J$.\nĐộ tăng: $\\Delta W_d = 281,25 - 125 = 156,25\\,J$."
+    },
+    {
+     "ma_cau": "K09010107033",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật khối lượng $3000\\,g$, tốc độ $72\\,km/h$, sau đó tăng thêm $15\\%$. Tính độ tăng động năng, kết quả ra $J$.",
+     "dap_an": "193.5",
+     "loi_giai": "Đổi $m = 3000\\,g = 3\\,kg$, $v_1 = 72\\,km/h = 20\\,m/s$.\nTốc độ sau: $v_2 = 20 \\times (1 + 15/100) = 23\\,m/s$.\n$W_{d1} = 600\\,J$, $W_{d2} = 793,5\\,J$.\nĐộ tăng: $\\Delta W_d = 793,5 - 600 = 193,5\\,J$."
+    },
+    {
+     "ma_cau": "K09010107034",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật khối lượng $800\\,g$, tốc độ $90\\,km/h$, sau đó tăng thêm $40\\%$. Tính độ tăng động năng, kết quả ra $J$.",
+     "dap_an": "240",
+     "loi_giai": "Đổi $m = 800\\,g = 0,8\\,kg$, $v_1 = 90\\,km/h = 25\\,m/s$.\nTốc độ sau: $v_2 = 25 \\times (1 + 40/100) = 35\\,m/s$.\n$W_{d1} = 250\\,J$, $W_{d2} = 490\\,J$.\nĐộ tăng: $\\Delta W_d = 490 - 250 = 240\\,J$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01007",
+   "nhom_id": "KNB00414",
+   "thu_tu": 6,
+   "dang": "ĐỘNG NĂNG (KILÔJUN), TÍNH KHỐI LƯỢNG RA TẠ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010107039",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng $2\\ \\mathrm{kJ}$, chuyển động với tốc độ $18\\ \\mathrm{km/h}$. Tính khối lượng của vật, kết quả ra tạ.",
+     "dap_an": "1.6",
+     "loi_giai": "Đổi $W_đ = 2\\ \\mathrm{kJ} = 2\\ 000\\ \\mathrm{J}$, $v = 18\\ \\mathrm{km/h} = 5\\ \\mathrm{m/s}$.\n$m = 2W_đ : v^2 = 2 \\times 2\\ 000 : 5^2 = 160\\ \\mathrm{kg} = 1.6$ tạ."
+    },
+    {
+     "ma_cau": "K09010107040",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng $15\\ \\mathrm{kJ}$, chuyển động với tốc độ $90\\ \\mathrm{km/h}$. Tính khối lượng của vật, kết quả ra tạ.",
+     "dap_an": "0.48",
+     "loi_giai": "Đổi $W_đ = 15\\ \\mathrm{kJ} = 15\\ 000\\ \\mathrm{J}$, $v = 90\\ \\mathrm{km/h} = 25\\ \\mathrm{m/s}$.\n$m = 2W_đ : v^2 = 2 \\times 15\\ 000 : 25^2 = 48\\ \\mathrm{kg} = 0.48$ tạ."
+    },
+    {
+     "ma_cau": "K09010107037",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng $5\\ \\mathrm{kJ}$, chuyển động với tốc độ $54\\ \\mathrm{km/h}$. Tính khối lượng của vật, kết quả ra tạ.",
+     "dap_an": "0.44",
+     "loi_giai": "Đổi $W_đ = 5\\ \\mathrm{kJ} = 5\\ 000\\ \\mathrm{J}$, $v = 54\\ \\mathrm{km/h} = 15\\ \\mathrm{m/s}$.\n$m = 2W_đ : v^2 = 2 \\times 5\\ 000 : 15^2 = 44.44\\ \\mathrm{kg} = 0.44$ tạ."
+    },
+    {
+     "ma_cau": "K09010107038",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng $20\\ \\mathrm{kJ}$, chuyển động với tốc độ $72\\ \\mathrm{km/h}$. Tính khối lượng của vật, kết quả ra tạ.",
+     "dap_an": "1",
+     "loi_giai": "Đổi $W_đ = 20\\ \\mathrm{kJ} = 20\\ 000\\ \\mathrm{J}$, $v = 72\\ \\mathrm{km/h} = 20\\ \\mathrm{m/s}$.\n$m = 2W_đ : v^2 = 2 \\times 20\\ 000 : 20^2 = 100\\ \\mathrm{kg} = 1$ tạ."
+    },
+    {
+     "ma_cau": "K09010107036",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng $10\\ \\mathrm{kJ}$, chuyển động với tốc độ $36\\ \\mathrm{km/h}$. Tính khối lượng của vật, kết quả ra tạ.",
+     "dap_an": "2",
+     "loi_giai": "Đổi $W_đ = 10\\ \\mathrm{kJ} = 10\\ 000\\ \\mathrm{J}$, $v = 36\\ \\mathrm{km/h} = 10\\ \\mathrm{m/s}$.\n$m = 2W_đ : v^2 = 2 \\times 10\\ 000 : 10^2 = 200\\ \\mathrm{kg} = 2$ tạ."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01008",
+   "nhom_id": "KNB00414",
+   "thu_tu": 7,
+   "dang": "HAI VẬT, ĐƠN VỊ KHÁC NHAU, TÍNH TỈ SỐ ĐỘNG NĂNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010107042",
+     "loai": "trac_nghiem",
+     "de": "Vật A khối lượng $6\\ \\mathrm{kg}$, tốc độ $36\\ \\mathrm{km/h}$. Vật B khối lượng $0,8\\ \\mathrm{tấn}$, tốc độ $5\\ \\mathrm{m/s}$. Tính tỉ số $W_{đA}:W_{đB}$ (làm tròn 2 chữ số thập phân).",
+     "loi_giai": "Đổi $V_A = 36\\ \\mathrm{km/h} = 10\\ \\mathrm{m/s}$, $m_B = 0,8\\ \\mathrm{tấn} = 800\\ \\mathrm{kg}$. $W_{đA} = 300\\ \\mathrm{J}$, $W_{đB} = 10\\ 000\\ \\mathrm{J}$. Tỉ số:\n$W_{đA}:W_{đB} = 300:10\\ 000 = 0,03$."
+    },
+    {
+     "ma_cau": "K09010107045",
+     "loai": "trac_nghiem",
+     "de": "Vật A khối lượng $8\\ \\mathrm{kg}$, tốc độ $36\\ \\mathrm{km/h}$. Vật B khối lượng $0,6\\ \\mathrm{tấn}$, tốc độ $6\\ \\mathrm{m/s}$. Tính tỉ số $W_{đA}:W_{đB}$ (làm tròn 2 chữ số thập phân).",
+     "loi_giai": "Đổi $V_A = 36\\ \\mathrm{km/h} = 10\\ \\mathrm{m/s}$, $m_B = 0,6\\ \\mathrm{tấn} = 600\\ \\mathrm{kg}$. $W_{đA} = 400\\ \\mathrm{J}$, $W_{đB} = 10\\ 800\\ \\mathrm{J}$. Tỉ số:\n$W_{đA}:W_{đB} = 400:10\\ 800 = 0,04$."
+    },
+    {
+     "ma_cau": "K09010107044",
+     "loai": "trac_nghiem",
+     "de": "Vật A khối lượng $5\\ \\mathrm{kg}$, tốc độ $90\\ \\mathrm{km/h}$. Vật B khối lượng $1\\ \\mathrm{tấn}$, tốc độ $4\\ \\mathrm{m/s}$. Tính tỉ số $W_{đA}:W_{đB}$ (làm tròn 2 chữ số thập phân).",
+     "loi_giai": "Đổi $V_A = 90\\ \\mathrm{km/h} = 25\\ \\mathrm{m/s}$, $m_B = 1\\ \\mathrm{tấn} = 1\\ 000\\ \\mathrm{kg}$. $W_{đA} = 1\\ 562,5\\ \\mathrm{J}$, $W_{đB} = 8\\ 000\\ \\mathrm{J}$. Tỉ số:\n$W_{đA}:W_{đB} = 1\\ 562,5:8\\ 000 = 0,2$."
+    },
+    {
+     "ma_cau": "K09010107041",
+     "loai": "trac_nghiem",
+     "de": "Vật A khối lượng $4\\ \\mathrm{kg}$, tốc độ $54\\ \\mathrm{km/h}$. Vật B khối lượng $0,5\\ \\mathrm{tấn}$, tốc độ $6\\ \\mathrm{m/s}$. Tính tỉ số $W_{đA}:W_{đB}$ (làm tròn 2 chữ số thập phân).",
+     "loi_giai": "Đổi $V_A = 54\\ \\mathrm{km/h} = 15\\ \\mathrm{m/s}$, $m_B = 0,5\\ \\mathrm{tấn} = 500\\ \\mathrm{kg}$. $W_{đA} = 450\\ \\mathrm{J}$, $W_{đB} = 9\\ 000\\ \\mathrm{J}$. Tỉ số:\n$W_{đA}:W_{đB} = 450:9\\ 000 = 0,05$."
+    },
+    {
+     "ma_cau": "K09010107043",
+     "loai": "trac_nghiem",
+     "de": "Vật A khối lượng $3\\ \\mathrm{kg}$, tốc độ $72\\ \\mathrm{km/h}$. Vật B khối lượng $0,3\\ \\mathrm{tấn}$, tốc độ $8\\ \\mathrm{m/s}$. Tính tỉ số $W_{đA}:W_{đB}$ (làm tròn 2 chữ số thập phân).",
+     "loi_giai": "Đổi $V_A = 72\\ \\mathrm{km/h} = 20\\ \\mathrm{m/s}$, $m_B = 0,3\\ \\mathrm{tấn} = 300\\ \\mathrm{kg}$. $W_{đA} = 600\\ \\mathrm{J}$, $W_{đB} = 9\\ 600\\ \\mathrm{J}$. Tỉ số:\n$W_{đA}:W_{đB} = 600:9\\ 600 = 0,06$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01009",
+   "nhom_id": "KNB00414",
+   "thu_tu": 8,
+   "dang": "ĐỘNG NĂNG (KILÔJUN) VÀ TRỌNG LƯỢNG, TÍNH TỐC ĐỘ RA KM/H",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010107050",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng 4,5 kJ, trọng lượng 400 N. Tính tốc độ của vật, kết quả ra km/h.",
+     "dap_an": "54",
+     "loi_giai": "Đổi $W_đ = 4,5\\ \\mathrm{kJ} = 4\\ 500\\ \\mathrm{J}$.\nKhối lượng: $m = P : 10 = 400 : 10 = 40\\ \\mathrm{kg}$.\n$v^2 = 2W_đ : m = 2 \\times 4\\ 500 : 40 = 225$.\n$v = \\sqrt{225} = 15\\ \\mathrm{m/s}$.\nĐổi ra km/h: $v = 15 \\times 3,6 = 54\\ \\mathrm{km/h}$."
+    },
+    {
+     "ma_cau": "K09010107048",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng 1,5 kJ, trọng lượng 1 200 N. Tính tốc độ của vật, kết quả ra km/h.",
+     "dap_an": "18",
+     "loi_giai": "Đổi $W_đ = 1,5\\ \\mathrm{kJ} = 1\\ 500\\ \\mathrm{J}$.\nKhối lượng: $m = P : 10 = 1\\ 200 : 10 = 120\\ \\mathrm{kg}$.\n$v^2 = 2W_đ : m = 2 \\times 1\\ 500 : 120 = 25$.\n$v = \\sqrt{25} = 5\\ \\mathrm{m/s}$.\nĐổi ra km/h: $v = 5 \\times 3,6 = 18\\ \\mathrm{km/h}$."
+    },
+    {
+     "ma_cau": "K09010107046",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng 0,5 kJ, trọng lượng 100 N. Tính tốc độ của vật, kết quả ra km/h.",
+     "dap_an": "36",
+     "loi_giai": "Đổi $W_đ = 0,5\\ \\mathrm{kJ} = 500\\ \\mathrm{J}$.\nKhối lượng: $m = P : 10 = 100 : 10 = 10\\ \\mathrm{kg}$.\n$v^2 = 2W_đ : m = 2 \\times 500 : 10 = 100$.\n$v = \\sqrt{100} = 10\\ \\mathrm{m/s}$.\nĐổi ra km/h: $v = 10 \\times 3,6 = 36\\ \\mathrm{km/h}$."
+    },
+    {
+     "ma_cau": "K09010107047",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng 1 kJ, trọng lượng 50 N. Tính tốc độ của vật, kết quả ra km/h.",
+     "dap_an": "72",
+     "loi_giai": "Đổi $W_đ = 1\\ \\mathrm{kJ} = 1\\ 000\\ \\mathrm{J}$.\nKhối lượng: $m = P : 10 = 50 : 10 = 5\\ \\mathrm{kg}$.\n$v^2 = 2W_đ : m = 2 \\times 1\\ 000 : 5 = 400$.\n$v = \\sqrt{400} = 20\\ \\mathrm{m/s}$.\nĐổi ra km/h: $v = 20 \\times 3,6 = 72\\ \\mathrm{km/h}$."
+    },
+    {
+     "ma_cau": "K09010107049",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có động năng 4 kJ, trọng lượng 1 250 N. Tính tốc độ của vật, kết quả ra km/h.",
+     "dap_an": "28,8",
+     "loi_giai": "Đổi $W_đ = 4\\ \\mathrm{kJ} = 4\\ 000\\ \\mathrm{J}$.\nKhối lượng: $m = P : 10 = 1\\ 250 : 10 = 125\\ \\mathrm{kg}$.\n$v^2 = 2W_đ : m = 2 \\times 4\\ 000 : 125 = 64$.\n$v = \\sqrt{64} = 8\\ \\mathrm{m/s}$.\nĐổi ra km/h: $v = 8 \\times 3,6 = 28,8\\ \\mathrm{km/h}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01010",
+   "nhom_id": "KNB00415",
+   "thu_tu": 1,
+   "dang": "ĐỊNH NGHĨA VÀ ĐIỀU KIỆN VẬT CÓ THẾ NĂNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010201006",
+     "loai": "trac_nghiem",
+     "de": "Vật nào sau đây đang có thế năng đàn hồi?",
+     "lua_chon": [
+      "Một quả bóng đang bay trên không.",
+      "Một chiếc ô tô đang đứng yên trên đường bằng.",
+      "Một hòn đá đặt yên trên mặt đất.",
+      "Một lò xo đang bị nén lại."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Lò xo bị nén là vật bị biến dạng đàn hồi nên đang mang thế năng đàn hồi."
+    },
+    {
+     "ma_cau": "K09010201008",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây về thế năng trọng trường là đúng?",
+     "lua_chon": [
+      "Thế năng trọng trường phụ thuộc vào vị trí của vật so với mốc được chọn.",
+      "Thế năng trọng trường không phụ thuộc vào việc chọn mốc.",
+      "Thế năng trọng trường chỉ xuất hiện khi vật đang chuyển động.",
+      "Thế năng trọng trường luôn bằng động năng của vật."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thế năng trọng trường gắn với vị trí của vật; cùng một vật nhưng chọn mốc khác nhau sẽ cho giá trị thế năng khác nhau."
+    },
+    {
+     "ma_cau": "K09010201007",
+     "loai": "trac_nghiem",
+     "de": "Mốc thế năng trọng trường là",
+     "lua_chon": [
+      "Vị trí vật có thế năng lớn nhất.",
+      "Vị trí cố định duy nhất là mặt đất, không được chọn khác.",
+      "Vị trí vật có tốc độ bằng 0.",
+      "Vị trí được chọn để quy ước thế năng bằng 0."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Mốc thế năng là vị trí do người giải bài toán tự chọn, tại đó quy ước thế năng bằng 0; có thể chọn mặt đất hoặc một vị trí khác."
+    },
+    {
+     "ma_cau": "K09010201003",
+     "loai": "trac_nghiem",
+     "de": "Đơn vị đo thế năng trong hệ $\\mathrm{SI}$ là",
+     "lua_chon": [
+      "jun ($\\mathrm{J}$).",
+      "mét ($\\mathrm{m}$).",
+      "niuton ($\\mathrm{N}$).",
+      "kilôgam ($\\mathrm{kg}$)."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thế năng, giống động năng, có đơn vị đo là jun ($\\mathrm{J}$)."
+    },
+    {
+     "ma_cau": "K09010201001",
+     "loai": "trac_nghiem",
+     "de": "Thế năng trọng trường của một vật là năng lượng vật có được do",
+     "lua_chon": [
+      "vị trí của vật so với mốc được chọn.",
+      "chuyển động của vật.",
+      "biến dạng của vật.",
+      "khối lượng riêng của vật."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thế năng trọng trường là dạng năng lượng một vật có được nhờ vị trí của vật so với mốc thế năng."
+    },
+    {
+     "ma_cau": "K09010201005",
+     "loai": "trac_nghiem",
+     "de": "Vật nào sau đây đang có thế năng trọng trường khác 0, chọn mặt đất làm mốc?",
+     "lua_chon": [
+      "Một chiếc đèn treo trên trần nhà.",
+      "Một viên bi đang nằm trên mặt đất.",
+      "Một quyển sách đặt trên mặt đất.",
+      "Một chiếc hộp đặt ngay tại vị trí mốc."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Chiếc đèn treo trên trần nhà ở độ cao khác 0 so với mặt đất nên có thế năng trọng trường khác 0; các vật còn lại đều ở đúng mốc."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01011",
+   "nhom_id": "KNB00415",
+   "thu_tu": 2,
+   "dang": "KÍ HIỆU, ĐƠN VỊ VÀ CÁC ĐẠI LƯỢNG TRONG CÔNG THỨC",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010201016",
+     "loai": "trac_nghiem",
+     "de": "Nếu đề bài cho độ cao ở đơn vị centimét thì trước khi thay vào công thức tính thế năng trọng trường, cần",
+     "lua_chon": [
+      "giữ nguyên đơn vị centimét.",
+      "đổi độ cao ra mét.",
+      "đổi độ cao ra kilômét.",
+      "nhân độ cao với 100."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Công thức thế năng trọng trường chỉ đúng đơn vị jun khi độ cao tính bằng mét, nên phải đổi centimét sang mét trước khi thay số."
+    },
+    {
+     "ma_cau": "K09010201009",
+     "loai": "trac_nghiem",
+     "de": "Công thức tính thế năng trọng trường của vật khối lượng m ở độ cao h so với mốc là",
+     "lua_chon": [
+      "$W_t = 10mh$.",
+      "$W_t = mh$.",
+      "$W_t = \\dfrac{1}{2}mh$.",
+      "$W_t = 10m^2h$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Công thức tính thế năng trọng trường là $W_t = 10mh$, với m là khối lượng (kg), h là độ cao so với mốc (m)."
+    },
+    {
+     "ma_cau": "K09010201012",
+     "loai": "trac_nghiem",
+     "de": "Để thế năng trọng trường tính ra đơn vị jun (J), khối lượng trong công thức phải có đơn vị là",
+     "lua_chon": [
+      "gam (g).",
+      "tấn.",
+      "kilôgam (kg).",
+      "miligam (mg)."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Công thức $W_t = 10mh$ cho kết quả đơn vị jun chỉ khi $m$ tính bằng kilôgam và $h$ tính bằng mét."
+    },
+    {
+     "ma_cau": "K09010201013",
+     "loai": "trac_nghiem",
+     "de": "Để thế năng trọng trường tính ra đơn vị jun (J), độ cao trong công thức phải có đơn vị là",
+     "lua_chon": [
+      "mét (m).",
+      "centimét (cm).",
+      "kilômét (km).",
+      "milimét (mm)."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Công thức $W_t = 10mh$ cho kết quả đơn vị jun chỉ khi $h$ tính bằng mét và $m$ tính bằng kilôgam."
+    },
+    {
+     "ma_cau": "K09010201010",
+     "loai": "trac_nghiem",
+     "de": "Trong công thức $W_t = 10mh$, đại lượng m biểu thị",
+     "lua_chon": [
+      "trọng lượng của vật (N).",
+      "khối lượng riêng của vật (kg/m$^3$).",
+      "momen của vật.",
+      "khối lượng của vật (kg)."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Trong công thức thế năng trọng trường, m là khối lượng của vật, đơn vị kilôgam (kg)."
+    },
+    {
+     "ma_cau": "K09010201015",
+     "loai": "trac_nghiem",
+     "de": "Nếu đề bài cho khối lượng vật ở đơn vị gam thì trước khi thay vào công thức tính thế năng trọng trường, cần",
+     "lua_chon": [
+      "đổi khối lượng ra tấn.",
+      "giữ nguyên đơn vị gam.",
+      "đổi khối lượng ra kilôgam.",
+      "nhân khối lượng với 1000."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Công thức thế năng trọng trường chỉ đúng đơn vị jun khi khối lượng tính bằng kilôgam, nên phải đổi gam sang kilôgam trước khi thay số."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01012",
+   "nhom_id": "KNB00415",
+   "thu_tu": 3,
+   "dang": "YẾU TỐ ẢNH HƯỞNG ĐẾN ĐỘ LỚN THẾ NĂNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010201019",
+     "loai": "trac_nghiem",
+     "de": "Thế năng trọng trường của một vật phụ thuộc vào những yếu tố nào?",
+     "lua_chon": [
+      "Khối lượng của vật và độ cao của vật so với mốc.",
+      "Chỉ khối lượng của vật.",
+      "Chỉ độ cao của vật.",
+      "Khối lượng và tốc độ của vật."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Theo công thức $W_t = 10mh$, thế năng trọng trường phụ thuộc đồng thời vào khối lượng và độ cao so với mốc."
+    },
+    {
+     "ma_cau": "K09010201017",
+     "loai": "trac_nghiem",
+     "de": "Nếu giữ nguyên độ cao, khi khối lượng của vật tăng lên thì thế năng trọng trường của vật sẽ",
+     "lua_chon": [
+      "giảm xuống.",
+      "không đổi.",
+      "tăng lên.",
+      "bằng 0."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Trong $W_t = 10mh$, khi $h$ không đổi, $W_t$ tỉ lệ thuận với $m$ nên $m$ tăng thì $W_t$ tăng."
+    },
+    {
+     "ma_cau": "K09010201021",
+     "loai": "trac_nghiem",
+     "de": "Hai vật ở cùng độ cao so với một mốc nhưng khối lượng khác nhau. Vật có khối lượng lớn hơn thì",
+     "lua_chon": [
+      "có thế năng trọng trường nhỏ hơn.",
+      "có thế năng trọng trường bằng vật kia.",
+      "có thế năng trọng trường bằng 0.",
+      "có thế năng trọng trường lớn hơn."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khi độ cao bằng nhau, thế năng chỉ còn phụ thuộc khối lượng; vật có khối lượng lớn hơn có $W_t$ lớn hơn."
+    },
+    {
+     "ma_cau": "K09010201018",
+     "loai": "trac_nghiem",
+     "de": "Nếu giữ nguyên khối lượng, khi độ cao của vật tăng lên gấp đôi thì thế năng trọng trường của vật sẽ",
+     "lua_chon": [
+      "tăng lên gấp đôi.",
+      "tăng lên gấp bốn lần.",
+      "không đổi.",
+      "giảm đi một nửa."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Trong $W_t = 10mh$, khi $m$ không đổi, $W_t$ tỉ lệ thuận với $h$; $h$ tăng gấp đôi thì $W_t$ cũng tăng gấp đôi."
+    },
+    {
+     "ma_cau": "K09010201023",
+     "loai": "trac_nghiem",
+     "de": "Đại lượng nào sau đây KHÔNG ảnh hưởng đến độ lớn thế năng trọng trường của một vật?",
+     "lua_chon": [
+      "Khối lượng của vật.",
+      "Độ cao của vật so với mốc.",
+      "Tốc độ chuyển động của vật.",
+      "Vị trí mốc thế năng được chọn."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Công thức $W_t = 10mh$ chỉ phụ thuộc khối lượng và độ cao so với mốc, không chứa tốc độ."
+    },
+    {
+     "ma_cau": "K09010201020",
+     "loai": "trac_nghiem",
+     "de": "Hai vật có cùng khối lượng, ở hai độ cao khác nhau so với cùng một mốc. Vật ở độ cao lớn hơn thì",
+     "lua_chon": [
+      "có thế năng trọng trường nhỏ hơn.",
+      "có thế năng trọng trường bằng vật kia.",
+      "không xác định được thế năng lớn hơn nếu không biết thêm dữ kiện.",
+      "có thế năng trọng trường lớn hơn."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khi khối lượng bằng nhau, thế năng chỉ còn phụ thuộc độ cao; vật ở độ cao lớn hơn có $W_t$ lớn hơn."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01013",
+   "nhom_id": "KNB00415",
+   "thu_tu": 4,
+   "dang": "NHẬN BIẾT THẾ NĂNG QUA VÍ DỤ VÀ HIỆN TƯỢNG THỰC TẾ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010201030",
+     "loai": "trac_nghiem",
+     "de": "Một cánh cung được kéo căng dây trước khi bắn mũi tên đi. Ngay trước khi buông dây, cánh cung chủ yếu mang dạng năng lượng nào?",
+     "lua_chon": [
+      "Động năng.",
+      "Thế năng trọng trường.",
+      "Thế năng đàn hồi.",
+      "Không mang dạng năng lượng nào."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Cánh cung bị biến dạng đàn hồi khi kéo căng dây, nên mang thế năng đàn hồi; năng lượng này truyền cho mũi tên khi buông dây."
+    },
+    {
+     "ma_cau": "K09010201029",
+     "loai": "trac_nghiem",
+     "de": "Công nhân xây dựng làm việc trên giàn giáo ở độ cao lớn bắt buộc phải đeo dây an toàn. Cách giải thích đúng dựa trên thế năng là",
+     "lua_chon": [
+      "Ở độ cao lớn, người lao động không còn thế năng trọng trường.",
+      "Dây an toàn giúp tăng thêm thế năng trọng trường cho người lao động.",
+      "Ở độ cao lớn, người lao động có thể năng trọng trường lớn, nếu rơi xuống sẽ gây nguy hiểm.",
+      "Độ cao không ảnh hưởng đến mức độ nguy hiểm khi rơi."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ở độ cao lớn, thế năng trọng trường $W_t=mgh$ lớn; nếu rơi xuống, mức độ nguy hiểm tăng theo độ lớn thế năng này."
+    },
+    {
+     "ma_cau": "K09010201027",
+     "loai": "trac_nghiem",
+     "de": "Một lò xo bị kéo giãn ra rồi giữ yên. Lò xo đang mang dạng năng lượng nào?",
+     "lua_chon": [
+      "Động năng.",
+      "Thế năng đàn hồi.",
+      "Thế năng trọng trường.",
+      "Không mang dạng năng lượng nào."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Lò xo bị biến dạng (giãn ra) nên mang thế năng đàn hồi, dù đang đứng yên."
+    },
+    {
+     "ma_cau": "K09010201028",
+     "loai": "trac_nghiem",
+     "de": "Trong các vật sau, vật nào chắc chắn có thể năng trọng trường bằng 0, chọn mặt đất làm mốc?",
+     "lua_chon": [
+      "Chiếc đèn treo trên trần nhà.",
+      "Quyển sách đặt trên mặt đất.",
+      "Quả bóng đang bay trên không.",
+      "Chiếc diều đang bay trên bầu trời."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Quyển sách đặt trên mặt đất có độ cao $h=0$ so với mốc nên thế năng trọng trường bằng $0$; các vật còn lại đều ở độ cao khác $0$."
+    },
+    {
+     "ma_cau": "K09010201025",
+     "loai": "trac_nghiem",
+     "de": "Khi một vật rơi tự do từ trên cao xuống đất thì thế năng trọng trường của vật sẽ",
+     "lua_chon": [
+      "tăng dần.",
+      "không đổi.",
+      "đạt giá trị lớn nhất khi chạm đất.",
+      "giảm dần."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Độ cao của vật so với mặt đất giảm dần khi rơi, nên thế năng trọng trường cũng giảm dần và bằng 0 khi chạm đất."
+    },
+    {
+     "ma_cau": "K09010201024",
+     "loai": "trac_nghiem",
+     "de": "Khi một vật được nâng dần lên cao thì thế năng trọng trường của vật sẽ",
+     "lua_chon": [
+      "giảm dần.",
+      "tăng dần.",
+      "không đổi.",
+      "bằng 0 trong suốt quá trình."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Độ cao tăng dần trong khi khối lượng vật không đổi nên theo $W_t = 10mh$, thế năng trọng trường tăng dần."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01014",
+   "nhom_id": "KNB00416",
+   "thu_tu": 1,
+   "dang": "TÍNH THẾ NĂNG TỪ KHỐI LƯỢNG VÀ ĐỘ CAO CHO TRỰC TIẾP",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010202005",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng 6 kg, ở độ cao 3 m so với mặt đất. Tính thế năng của vật.",
+     "lua_chon": [
+      "180 J.",
+      "18 J.",
+      "30 J.",
+      "60 J."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$W_t = 10 \\times m \\times h = 10 \\times 6 \\times 3 = 180 J$."
+    },
+    {
+     "ma_cau": "K09010202002",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng 4 kg, ở độ cao 2 m so với mặt đất. Tính thế năng của vật.",
+     "lua_chon": [
+      "80 J.",
+      "8 J.",
+      "20 J.",
+      "40 J."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$W_t = 10 \\times m \\times h = 10 \\times 4 \\times 2 = 80 J$."
+    },
+    {
+     "ma_cau": "K09010202004",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng 3 kg, ở độ cao 5 m so với mặt đất. Tính thế năng của vật.",
+     "lua_chon": [
+      "15 J.",
+      "150 J.",
+      "50 J.",
+      "30 J."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$W_t = 10 \\times m \\times h = 10 \\times 3 \\times 5 = 150 J$."
+    },
+    {
+     "ma_cau": "K09010202003",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng 5 kg, ở độ cao 4 m so với mặt đất. Tính thế năng của vật.",
+     "lua_chon": [
+      "20 J.",
+      "40 J.",
+      "50 J.",
+      "200 J."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$W_t = 10 \\times m \\times h = 10 \\times 5 \\times 4 = 200 J$."
+    },
+    {
+     "ma_cau": "K09010202006",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng 2 kg, ở độ cao 7 m so với mặt đất. Tính thế năng của vật.",
+     "lua_chon": [
+      "14 J.",
+      "70 J.",
+      "140 J.",
+      "20 J."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$W_t = 10 \\times m \\times h = 10 \\times 2 \\times 7 = 140 J$."
+    },
+    {
+     "ma_cau": "K09010202008",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng 7 kg, ở độ cao 4 m so với mặt đất. Tính thế năng của vật.",
+     "lua_chon": [
+      "280 J.",
+      "28 J.",
+      "40 J.",
+      "70 J."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$W_t = 10 \\times m \\times h = 10 \\times 7 \\times 4 = 280 J$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01015",
+   "nhom_id": "KNB00416",
+   "thu_tu": 2,
+   "dang": "KHỐI LƯỢNG CHO Ở ĐƠN VỊ GAM, CẦN ĐỔI RA KILÔGAM",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010202010",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng 1 500 gam, ở độ cao 3 m so với mặt đất. Tính thế năng của vật.",
+     "lua_chon": [
+      "45 000 J.",
+      "450 J.",
+      "4,5 J.",
+      "45 J."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi $m = 1\\ 500\\ \\mathrm{g} = 1,5\\ \\mathrm{kg}$.\n$W_t = 10 \\times 1,5 \\times 3 = 45\\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010202013",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng 6 500 gam, ở độ cao 3 m so với mặt đất. Tính thế năng của vật.",
+     "lua_chon": [
+      "195 J.",
+      "195 000 J.",
+      "1 950 J.",
+      "19,5 J."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi $m = 6\\ 500\\ \\mathrm{g} = 6,5\\ \\mathrm{kg}$.\n$W_t = 10 \\times 6,5 \\times 3 = 195\\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010202014",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng 3 000 gam, ở độ cao 4 m so với mặt đất. Tính thế năng của vật.",
+     "lua_chon": [
+      "120 000 J.",
+      "1 200 J.",
+      "12 J.",
+      "120 J."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi $m = 3\\ 000\\ \\mathrm{g} = 3\\ \\mathrm{kg}$.\n$W_t = 10 \\times 3 \\times 4 = 120\\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010202011",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng 2 500 gam, ở độ cao 2 m so với mặt đất. Tính thế năng của vật.",
+     "lua_chon": [
+      "50 000 J.",
+      "500 J.",
+      "50 J.",
+      "5 J."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi $m = 2\\ 500\\ \\mathrm{g} = 2,5\\ \\mathrm{kg}$.\n$W_t = 10 \\times 2,5 \\times 2 = 50\\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010202015",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng 8 500 gam, ở độ cao 2 m so với mặt đất. Tính thế năng của vật.",
+     "lua_chon": [
+      "170 000 J.",
+      "170 J.",
+      "1 700 J.",
+      "17 J."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi $m = 8\\ 500\\ \\mathrm{g} = 8,5\\ \\mathrm{kg}$.\n$W_t = 10 \\times 8,5 \\times 2 = 170\\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010202009",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng 500 gam, ở độ cao 4 m so với mặt đất. Tính thế năng của vật.",
+     "lua_chon": [
+      "20 000 J.",
+      "20 J.",
+      "200 J.",
+      "2 J."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi $m = 500\\ \\mathrm{g} = 0,5\\ \\mathrm{kg}$.\n$W_t = 10 \\times 0,5 \\times 4 = 20\\ \\mathrm{J}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01016",
+   "nhom_id": "KNB00416",
+   "thu_tu": 3,
+   "dang": "ĐỘ CAO CHO Ở ĐƠN VỊ XENTIMÉT, CẦN ĐỔI RA MÉT",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010202020",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $4 \\text{ kg}$, ở độ cao $370 \\text{ cm}$ so với mặt đất. Tính thế năng của vật.",
+     "lua_chon": [
+      "$148 \\text{ J}$.",
+      "$14800 \\text{ J}$.",
+      "$1480 \\text{ J}$.",
+      "$14,8 \\text{ J}$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi $h = 370 \\text{ cm} = 3,7 \\text{ m}$.\n$W_t = 10 \\times 4 \\times 3,7 = 148 \\text{ J}$."
+    },
+    {
+     "ma_cau": "K09010202023",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $8$ kg, ở độ cao $60$ cm so với mặt đất. Tính thế năng của vật.",
+     "lua_chon": [
+      "4 800 J.",
+      "48 J.",
+      "480 J.",
+      "4,8 J."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi $h = 60$ cm $= 0,6$ m.\n$W_t = 10 \\times 8 \\times 0,6 = 48$ J."
+    },
+    {
+     "ma_cau": "K09010202017",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $3 \\text{ kg}$, ở độ cao $250 \\text{ cm}$ so với mặt đất. Tính thế năng của vật.",
+     "lua_chon": [
+      "$75 \\text{ J}$.",
+      "$7500 \\text{ J}$.",
+      "$750 \\text{ J}$.",
+      "$7,5 \\text{ J}$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi $h = 250 \\text{ cm} = 2,5 \\text{ m}$.\n$W_t = 10 \\times 3 \\times 2,5 = 75 \\text{ J}$."
+    },
+    {
+     "ma_cau": "K09010202018",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $5 \\text{ kg}$, ở độ cao $130 \\text{ cm}$ so với mặt đất. Tính thế năng của vật.",
+     "lua_chon": [
+      "$6500 \\text{ J}$.",
+      "$650 \\text{ J}$.",
+      "$6,5 \\text{ J}$.",
+      "$65 \\text{ J}$."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi $h = 130 \\text{ cm} = 1,3 \\text{ m}$.\n$W_t = 10 \\times 5 \\times 1,3 = 65 \\text{ J}$."
+    },
+    {
+     "ma_cau": "K09010202022",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $7$ kg, ở độ cao $80$ cm so với mặt đất. Tính thế năng của vật.",
+     "lua_chon": [
+      "5 600 J.",
+      "560 J.",
+      "5,6 J.",
+      "56 J."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi $h = 80$ cm $= 0,8$ m.\n$W_t = 10 \\times 7 \\times 0,8 = 56$ J."
+    },
+    {
+     "ma_cau": "K09010202021",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $6$ kg, ở độ cao $150$ cm so với mặt đất. Tính thế năng của vật.",
+     "lua_chon": [
+      "9 000 J.",
+      "900 J.",
+      "90 J.",
+      "9 J."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi $h = 150$ cm $= 1,5$ m.\n$W_t = 10 \\times 6 \\times 1,5 = 90$ J."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01017",
+   "nhom_id": "KNB00416",
+   "thu_tu": 4,
+   "dang": "CẢ KHỐI LƯỢNG VÀ ĐỘ CAO ĐỀU CẦN ĐỔI ĐƠN VỊ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010202028",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $2\\,800\\,\\mathrm{g}$, ở độ cao $120\\,\\mathrm{cm}$ so với mặt đất. Tính thế năng của vật.",
+     "lua_chon": [
+      "$33,6\\,\\mathrm{J}$.",
+      "$3\\,360\\,000\\,\\mathrm{J}$.",
+      "$3\\,360\\,\\mathrm{J}$.",
+      "$33\\,600\\,\\mathrm{J}$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi $m = 2\\,800\\,\\mathrm{g} = 2,8\\,\\mathrm{kg}$; $h = 120\\,\\mathrm{cm} = 1,2\\,\\mathrm{m}$. $W_t = 10 \\times 2,8 \\times 1,2 = 33,6\\,\\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010202024",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $2000\\,g$, ở độ cao $150\\,cm$ so với mặt đất. Tính thế năng của vật.",
+     "lua_chon": [
+      "$30\\,J$.",
+      "$3\\,000\\,000\\,J$.",
+      "$3\\,000\\,J$.",
+      "$30\\,000\\,J$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi $m = 2000\\,g = 2\\,kg$; $h = 150\\,cm = 1,5\\,m$. $W_t = 10 \\times 2 \\times 1,5 = 30\\,J$."
+    },
+    {
+     "ma_cau": "K09010202027",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $0,3\\,tấn$, ở độ cao $180\\,cm$ so với mặt đất. Tính thế năng của vật.",
+     "lua_chon": [
+      "$540\\,J$.",
+      "$5\\,400\\,J$.",
+      "$540\\,000\\,J$.",
+      "$5,4\\,J$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi $m = 0,3\\,tấn = 300\\,kg$; $h = 180\\,cm = 1,8\\,m$. $W_t = 10 \\times 300 \\times 1,8 = 5\\,400\\,J$."
+    },
+    {
+     "ma_cau": "K09010202029",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $0,6$ tấn, ở độ cao $220\\,\\mathrm{cm}$ so với mặt đất. Tính thế năng của vật.",
+     "lua_chon": [
+      "$1\\,320\\,\\mathrm{J}$.",
+      "$1\\,320\\,000\\,\\mathrm{J}$.",
+      "$13,2\\,\\mathrm{J}$.",
+      "$13\\,200\\,\\mathrm{J}$."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi $m = 0,6$ tấn $= 600\\,\\mathrm{kg}$; $h = 220\\,\\mathrm{cm} = 2,2\\,\\mathrm{m}$. $W_t = 10 \\times 600 \\times 2,2 = 13\\,200\\,\\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010202025",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $500\\,g$, ở độ cao $300\\,cm$ so với mặt đất. Tính thế năng của vật.",
+     "lua_chon": [
+      "$1\\,500\\,000\\,J$.",
+      "$1\\,500\\,J$.",
+      "$15\\,J$.",
+      "$15\\,000\\,J$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi $m = 500\\,g = 0,5\\,kg$; $h = 300\\,cm = 3\\,m$. $W_t = 10 \\times 0,5 \\times 3 = 15\\,J$."
+    },
+    {
+     "ma_cau": "K09010202030",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $3\\,500\\,\\mathrm{g}$, ở độ cao $90\\,\\mathrm{cm}$ so với mặt đất. Tính thế năng của vật.",
+     "lua_chon": [
+      "$3\\,150\\,000\\,\\mathrm{J}$.",
+      "$3\\,150\\,\\mathrm{J}$.",
+      "$31,5\\,\\mathrm{J}$.",
+      "$31\\,500\\,\\mathrm{J}$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi $m = 3\\,500\\,\\mathrm{g} = 3,5\\,\\mathrm{kg}$; $h = 90\\,\\mathrm{cm} = 0,9\\,\\mathrm{m}$. $W_t = 10 \\times 3,5 \\times 0,9 = 31,5\\,\\mathrm{J}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01018",
+   "nhom_id": "KNB00416",
+   "thu_tu": 5,
+   "dang": "KHỐI LƯỢNG CHO Ở ĐƠN VỊ TẠ HOẶC YẾN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010202032",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có khối lượng 5 yến, ở độ cao 6 m so với mặt đất. Tính thế năng của vật.",
+     "dap_an": "3000",
+     "loi_giai": "Đổi $m = 5$ yến $= 50$ kg ($1$ yến $= 10$ kg).\n$W_t = 10 \\times 50 \\times 6 = 3000$ J."
+    },
+    {
+     "ma_cau": "K09010202031",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có khối lượng 3 tạ, ở độ cao 4 m so với mặt đất. Tính thế năng của vật.",
+     "dap_an": "12000",
+     "loi_giai": "Đổi $m = 3$ tạ $= 300$ kg ($1$ tạ $= 100$ kg).\n$W_t = 10 \\times 300 \\times 4 = 12000$ J."
+    },
+    {
+     "ma_cau": "K09010202033",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có khối lượng 2 tạ, ở độ cao 3 m so với mặt đất. Tính thế năng của vật.",
+     "dap_an": "6000",
+     "loi_giai": "Đổi $m = 2$ tạ $= 200$ kg ($1$ tạ $= 100$ kg).\n$W_t = 10 \\times 200 \\times 3 = 6000$ J."
+    },
+    {
+     "ma_cau": "K09010202035",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có khối lượng 1 tạ, ở độ cao 5 m so với mặt đất. Tính thế năng của vật.",
+     "dap_an": "5000",
+     "loi_giai": "Đổi $m = 1$ tạ $= 100$ kg ($1$ tạ $= 100$ kg).\n$W_t = 10 \\times 100 \\times 5 = 5000$ J."
+    },
+    {
+     "ma_cau": "K09010202034",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có khối lượng 9 yến, ở độ cao 2 m so với mặt đất. Tính thế năng của vật.",
+     "dap_an": "1800",
+     "loi_giai": "Đổi $m = 9$ yến $= 90$ kg ($1$ yến $= 10$ kg).\n$W_t = 10 \\times 90 \\times 2 = 1800$ J."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01019",
+   "nhom_id": "KNB00416",
+   "thu_tu": 6,
+   "dang": "ĐỘ CAO CHO Ở ĐƠN VỊ KILÔMÉT",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010202038",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $30\\ \\mathrm{kg}$, ở độ cao $1,3\\ \\mathrm{km}$ so với mặt đất. Tính thế năng của vật.",
+     "lua_chon": [
+      "$300\\ 000\\ \\mathrm{J}$",
+      "$360\\ 000\\ \\mathrm{J}$",
+      "$390\\ 000\\ \\mathrm{J}$",
+      "$39\\ 000\\ \\mathrm{J}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi $h = 1,3\\ \\mathrm{km} = 1\\ 300\\ \\mathrm{m}$. $W_t = 10 \\times 30 \\times 1\\ 300 = 390\\ 000\\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010202040",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $25\\ \\mathrm{kg}$, ở độ cao $0,9\\ \\mathrm{km}$ so với mặt đất. Tính thế năng của vật.",
+     "lua_chon": [
+      "$225\\ 000\\ \\mathrm{J}$",
+      "$22\\ 500\\ \\mathrm{J}$",
+      "$2\\ 250\\ \\mathrm{J}$",
+      "$225\\ \\mathrm{J}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi $h = 0,9\\ \\mathrm{km} = 900\\ \\mathrm{m}$. $W_t = 10 \\times 25 \\times 900 = 225\\ 000\\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010202036",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $20\\ \\mathrm{kg}$, ở độ cao $1,5\\ \\mathrm{km}$ so với mặt đất. Tính thế năng của vật.",
+     "lua_chon": [
+      "$300\\ 000\\ \\mathrm{J}$",
+      "$30\\ 000\\ \\mathrm{J}$",
+      "$3\\ 000\\ \\mathrm{J}$",
+      "$300\\ \\mathrm{J}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi $h = 1,5\\ \\mathrm{km} = 1\\ 500\\ \\mathrm{m}$. $W_t = 10 \\times 20 \\times 1\\ 500 = 300\\ 000\\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010202037",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $15\\ \\mathrm{kg}$, ở độ cao $2,4\\ \\mathrm{km}$ so với mặt đất. Tính thế năng của vật.",
+     "lua_chon": [
+      "$300\\ 000\\ \\mathrm{J}$",
+      "$360\\ 000\\ \\mathrm{J}$",
+      "$36\\ 000\\ \\mathrm{J}$",
+      "$3\\ 600\\ \\mathrm{J}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi $h = 2,4\\ \\mathrm{km} = 2\\ 400\\ \\mathrm{m}$. $W_t = 10 \\times 15 \\times 2\\ 400 = 360\\ 000\\ \\mathrm{J}$."
+    },
+    {
+     "ma_cau": "K09010202039",
+     "loai": "trac_nghiem",
+     "de": "Một vật có khối lượng $8\\ \\mathrm{kg}$, ở độ cao $3,5\\ \\mathrm{km}$ so với mặt đất. Tính thế năng của vật.",
+     "lua_chon": [
+      "$28\\ 000\\ \\mathrm{J}$",
+      "$280\\ \\mathrm{J}$",
+      "$2\\ 800\\ \\mathrm{J}$",
+      "$280\\ 000\\ \\mathrm{J}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi $h = 3,5\\ \\mathrm{km} = 3\\ 500\\ \\mathrm{m}$. $W_t = 10 \\times 8 \\times 3\\ 500 = 280\\ 000\\ \\mathrm{J}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01020",
+   "nhom_id": "KNB00416",
+   "thu_tu": 7,
+   "dang": "CHO TRỌNG LƯỢNG THAY VÌ KHỐI LƯỢNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010202041",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có trọng lượng $220 \\mathrm{~N}$, ở độ cao $3 \\mathrm{~m}$ so với mặt đất. Lấy $\\mathrm{g}=10 \\mathrm{~m} / \\mathrm{s}^{2}$, tính thế năng của vật.",
+     "dap_an": "660",
+     "loi_giai": "Khối lượng $\\mathrm{m}=\\mathrm{P}: 10=220: 10=22 \\mathrm{~kg}$.\n$\\mathrm{W}_{t}=10 \\times 22 \\times 3=660 \\mathrm{~J}$"
+    },
+    {
+     "ma_cau": "K09010202045",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có trọng lượng $890 \\mathrm{~N}$, ở độ cao $2 \\mathrm{~m}$ so với mặt đất. Lấy $\\mathrm{g}=10 \\mathrm{~m} / \\mathrm{s}^{2}$, tính thế năng của vật.",
+     "dap_an": "1780",
+     "loi_giai": "Khối lượng $\\mathrm{m}=\\mathrm{P}: 10=890: 10=89 \\mathrm{~kg}$.\n$\\mathrm{W}_{t}=10 \\times 89 \\times 2=1780 \\mathrm{~J}$"
+    },
+    {
+     "ma_cau": "K09010202044",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có trọng lượng $370 \\mathrm{~N}$, ở độ cao $5 \\mathrm{~m}$ so với mặt đất. Lấy $\\mathrm{g}=10 \\mathrm{~m} / \\mathrm{s}^{2}$, tính thế năng của vật.",
+     "dap_an": "1850",
+     "loi_giai": "Khối lượng $\\mathrm{m}=\\mathrm{P}: 10=370: 10=37 \\mathrm{~kg}$.\n$\\mathrm{W}_{t}=10 \\times 37 \\times 5=1850 \\mathrm{~J}$"
+    },
+    {
+     "ma_cau": "K09010202043",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có trọng lượng $140 \\mathrm{~N}$, ở độ cao $6 \\mathrm{~m}$ so với mặt đất. Lấy $\\mathrm{g}=10 \\mathrm{~m} / \\mathrm{s}^{2}$, tính thế năng của vật.",
+     "dap_an": "840",
+     "loi_giai": "Khối lượng $\\mathrm{m}=\\mathrm{P}: 10=140: 10=14 \\mathrm{~kg}$.\n$\\mathrm{W}_{t}=10 \\times 14 \\times 6=840 \\mathrm{~J}$"
+    },
+    {
+     "ma_cau": "K09010202042",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có trọng lượng $560 \\mathrm{~N}$, ở độ cao $4 \\mathrm{~m}$ so với mặt đất. Lấy $\\mathrm{g}=10 \\mathrm{~m} / \\mathrm{s}^{2}$, tính thế năng của vật.",
+     "dap_an": "2240",
+     "loi_giai": "Khối lượng $\\mathrm{m}=\\mathrm{P}: 10=560: 10=56 \\mathrm{~kg}$.\n$\\mathrm{W}_{t}=10 \\times 56 \\times 4=2240 \\mathrm{~J}$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01021",
+   "nhom_id": "KNB00416",
+   "thu_tu": 8,
+   "dang": "KHỐI LƯỢNG CHO QUA TỈ LỆ PHẦN TRĂM CỦA MỘT KHỐI LƯỢNG CHUẨN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010202047",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có khối lượng bằng 72% khối lượng của một vật khác nặng 22 kg, ở độ cao 4 m so với mặt đất. Tính thế năng của vật.",
+     "dap_an": "633.6",
+     "loi_giai": "Khối lượng vật = $72\\% \\times 22 = 15.84$ kg.\n$W_t = 10 \\times 15.84 \\times 4 = 633.6$ J."
+    },
+    {
+     "ma_cau": "K09010202046",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có khối lượng bằng 65% khối lượng của một vật khác nặng 45 kg, ở độ cao 3 m so với mặt đất. Tính thế năng của vật.",
+     "dap_an": "877.5",
+     "loi_giai": "Khối lượng vật = $65\\% \\times 45 = 29.25$ kg.\n$W_t = 10 \\times 29.25 \\times 3 = 877.5$ J."
+    },
+    {
+     "ma_cau": "K09010202049",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có khối lượng bằng 85% khối lượng của một vật khác nặng 28 kg, ở độ cao 2 m so với mặt đất. Tính thế năng của vật.",
+     "dap_an": "476",
+     "loi_giai": "Khối lượng vật = $85\\% \\times 28 = 23.8$ kg.\n$W_t = 10 \\times 23.8 \\times 2 = 476$ J."
+    },
+    {
+     "ma_cau": "K09010202050",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có khối lượng bằng 35% khối lượng của một vật khác nặng 55 kg, ở độ cao 6 m so với mặt đất. Tính thế năng của vật.",
+     "dap_an": "1155",
+     "loi_giai": "Khối lượng vật = $35\\% \\times 55 = 19.25$ kg.\n$W_t = 10 \\times 19.25 \\times 6 = 1155$ J."
+    },
+    {
+     "ma_cau": "K09010202048",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có khối lượng bằng 55% khối lượng của một vật khác nặng 62 kg, ở độ cao 5 m so với mặt đất. Tính thế năng của vật.",
+     "dap_an": "1705",
+     "loi_giai": "Khối lượng vật = $55\\% \\times 62 = 34.1$ kg.\n$W_t = 10 \\times 34.1 \\times 5 = 1705$ J."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01022",
+   "nhom_id": "KNB00417",
+   "thu_tu": 1,
+   "dang": "CHO THẾ NĂNG VÀ ĐỘ CAO, TÍNH KHỐI LƯỢNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010203001",
+     "loai": "trac_nghiem",
+     "de": "Một vật có thể năng $180 \\mathrm{~J}$, ở độ cao $2 \\mathrm{~m}$ so với mặt đất. Tính khối lượng của vật.",
+     "lua_chon": [
+      "$90 \\mathrm{~kg}$.",
+      "$36 \\mathrm{~kg}$.",
+      "$900 \\mathrm{~kg}$.",
+      "$9 \\mathrm{~kg}$."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$m = W_t : (10h) = 180 : (10 \\times 2) = 9 \\mathrm{~kg}$."
+    },
+    {
+     "ma_cau": "K09010203005",
+     "loai": "trac_nghiem",
+     "de": "Một vật có thể năng $270\\ \\mathrm{J}$, ở độ cao $9\\ \\mathrm{m}$ so với mặt đất. Tính khối lượng của vật.",
+     "lua_chon": [
+      "$30\\ \\mathrm{kg}.",
+      "$3\\ \\mathrm{kg}.",
+      "$243\\ \\mathrm{kg}.",
+      "$300\\ \\mathrm{kg}."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$m = W_t : (10h) = 270 : (10 \\times 9) = 3\\ \\mathrm{kg}."
+    },
+    {
+     "ma_cau": "K09010203008",
+     "loai": "trac_nghiem",
+     "de": "Một vật có thể năng $720\\ \\mathrm{J}$, ở độ cao $9\\ \\mathrm{m}$ so với mặt đất. Tính khối lượng của vật.",
+     "lua_chon": [
+      "$80\\ \\mathrm{kg}.",
+      "$648\\ \\mathrm{kg}.",
+      "$8\\ \\mathrm{kg}.",
+      "$800\\ \\mathrm{kg}."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$m = W_t : (10h) = 720 : (10 \\times 9) = 8\\ \\mathrm{kg}."
+    },
+    {
+     "ma_cau": "K09010203004",
+     "loai": "trac_nghiem",
+     "de": "Một vật có thể năng $400 \\mathrm{~J}$, ở độ cao $4 \\mathrm{~m}$ so với mặt đất. Tính khối lượng của vật.",
+     "lua_chon": [
+      "$100 \\mathrm{~kg}$.",
+      "$160 \\mathrm{~kg}$.",
+      "$10 \\mathrm{~kg}$.",
+      "$1\\,000 \\mathrm{~kg}$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$m = W_t : (10h) = 400 : (10 \\times 4) = 10 \\mathrm{~kg}$."
+    },
+    {
+     "ma_cau": "K09010203006",
+     "loai": "trac_nghiem",
+     "de": "Một vật có thể năng $440\\ \\mathrm{J}$, ở độ cao $4\\ \\mathrm{m}$ so với mặt đất. Tính khối lượng của vật.",
+     "lua_chon": [
+      "$110\\ \\mathrm{kg}.",
+      "$176\\ \\mathrm{kg}.",
+      "$1\\ \\mathrm{100}\\ \\mathrm{kg}.",
+      "$11\\ \\mathrm{kg}."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$m = W_t : (10h) = 440 : (10 \\times 4) = 11\\ \\mathrm{kg}."
+    },
+    {
+     "ma_cau": "K09010203007",
+     "loai": "trac_nghiem",
+     "de": "Một vật có thể năng $350\\ \\mathrm{J}$, ở độ cao $7\\ \\mathrm{m}$ so với mặt đất. Tính khối lượng của vật.",
+     "lua_chon": [
+      "$5\\ \\mathrm{kg}.",
+      "$50\\ \\mathrm{kg}.",
+      "$245\\ \\mathrm{kg}.",
+      "$500\\ \\mathrm{kg}."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$m = W_t : (10h) = 350 : (10 \\times 7) = 5\\ \\mathrm{kg}."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01023",
+   "nhom_id": "KNB00417",
+   "thu_tu": 2,
+   "dang": "CHO THẾ NĂNG VÀ KHỐI LƯỢNG, TÍNH ĐỘ CAO",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010203013",
+     "loai": "trac_nghiem",
+     "de": "Một vật có thể năng 220 J, khối lượng 11 kg. Tính độ cao của vật so với mặt đất.",
+     "lua_chon": [
+      "2 m.",
+      "20 m.",
+      "242 m.",
+      "200 m."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{h} = \\mathrm{W_t} : (10\\mathrm{m}) = 220 : (10 \\times 11) = 2\\ \\mathrm{m}$."
+    },
+    {
+     "ma_cau": "K09010203011",
+     "loai": "trac_nghiem",
+     "de": "Một vật có thể năng $240 \\mathrm{~J}$, khối lượng $6 \\mathrm{~kg}$. Tính độ cao của vật so với mặt đất.",
+     "lua_chon": [
+      "$40 \\mathrm{~m}$.",
+      "$4 \\mathrm{~m}$.",
+      "$144 \\mathrm{~m}$.",
+      "$400 \\mathrm{~m}$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$h = W_t : (10m) = 240 : (10 \\times 6) = 4 \\mathrm{~m}$."
+    },
+    {
+     "ma_cau": "K09010203009",
+     "loai": "trac_nghiem",
+     "de": "Một vật có thể năng $210 \\mathrm{~J}$, khối lượng $7 \\mathrm{~kg}$. Tính độ cao của vật so với mặt đất.",
+     "lua_chon": [
+      "$30 \\mathrm{~m}$.",
+      "$147 \\mathrm{~m}$.",
+      "$300 \\mathrm{~m}$.",
+      "$3 \\mathrm{~m}$."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$h = W_t : (10m) = 210 : (10 \\times 7) = 3 \\mathrm{~m}$."
+    },
+    {
+     "ma_cau": "K09010203010",
+     "loai": "trac_nghiem",
+     "de": "Một vật có thể năng $360 \\mathrm{~J}$, khối lượng $4 \\mathrm{~kg}$. Tính độ cao của vật so với mặt đất.",
+     "lua_chon": [
+      "$9 \\mathrm{~m}$.",
+      "$90 \\mathrm{~m}$.",
+      "$144 \\mathrm{~m}$.",
+      "$900 \\mathrm{~m}$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$h = W_t : (10m) = 360 : (10 \\times 4) = 9 \\mathrm{~m}$."
+    },
+    {
+     "ma_cau": "K09010203015",
+     "loai": "trac_nghiem",
+     "de": "Một vật có thể năng 880 J, khối lượng 8 kg. Tính độ cao của vật so với mặt đất.",
+     "lua_chon": [
+      "110 m.",
+      "704 m.",
+      "11 m.",
+      "1 100 m."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{h} = \\mathrm{W_t} : (10\\mathrm{m}) = 880 : (10 \\times 8) = 11\\ \\mathrm{m}$."
+    },
+    {
+     "ma_cau": "K09010203016",
+     "loai": "trac_nghiem",
+     "de": "Một vật có thể năng 320 J, khối lượng 4 kg. Tính độ cao của vật so với mặt đất.",
+     "lua_chon": [
+      "80 m.",
+      "8 m.",
+      "128 m.",
+      "800 m."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{h} = \\mathrm{W_t} : (10\\mathrm{m}) = 320 : (10 \\times 4) = 8\\ \\mathrm{m}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01024",
+   "nhom_id": "KNB00417",
+   "thu_tu": 3,
+   "dang": "THẾ NĂNG CHO Ở ĐƠN VỊ KILÔJUN, TÍNH KHỐI LƯỢNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010203022",
+     "loai": "trac_nghiem",
+     "de": "Một vật có thể năng 0,6 kJ, ở độ cao 2 m so với mặt đất. Tính khối lượng của vật.",
+     "lua_chon": [
+      "0,3 kg.",
+      "0,12 kg.",
+      "3 kg.",
+      "30 kg."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi $W_t = 0,6 \\mathrm{kJ} = 600 \\mathrm{J}$.\n$m = W_t : (10h) = 600 : (10 \\times 2) = 30 \\mathrm{kg}$."
+    },
+    {
+     "ma_cau": "K09010203021",
+     "loai": "trac_nghiem",
+     "de": "Một vật có thể năng 0,75 kJ, ở độ cao 3 m so với mặt đất. Tính khối lượng của vật.",
+     "lua_chon": [
+      "25 kg.",
+      "0,25 kg.",
+      "0,23 kg.",
+      "2,5 kg."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi $W_t = 0,75 \\mathrm{kJ} = 750 \\mathrm{J}$.\n$m = W_t : (10h) = 750 : (10 \\times 3) = 25 \\mathrm{kg}$."
+    },
+    {
+     "ma_cau": "K09010203020",
+     "loai": "trac_nghiem",
+     "de": "Một vật có thể năng 0,9 kJ, ở độ cao 5 m so với mặt đất. Tính khối lượng của vật.",
+     "lua_chon": [
+      "0,18 kg.",
+      "0,45 kg.",
+      "18 kg.",
+      "1,8 kg."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi $W_t = 0,9 \\text{ kJ} = 900 \\text{ J}$.\n$m = W_t : (10h) = 900 : (10 \\times 5) = 18 \\text{ kg}$."
+    },
+    {
+     "ma_cau": "K09010203023",
+     "loai": "trac_nghiem",
+     "de": "Một vật có thể năng 0,96 kJ, ở độ cao 6 m so với mặt đất. Tính khối lượng của vật.",
+     "lua_chon": [
+      "0,16 kg.",
+      "16 kg.",
+      "0,58 kg.",
+      "1,6 kg."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi $W_t = 0,96 \\mathrm{kJ} = 960 \\mathrm{J}$.\n$m = W_t : (10h) = 960 : (10 \\times 6) = 16 \\mathrm{kg}$."
+    },
+    {
+     "ma_cau": "K09010203017",
+     "loai": "trac_nghiem",
+     "de": "Một vật có thể năng 0,48 kJ, ở độ cao 4 m so với mặt đất. Tính khối lượng của vật.",
+     "lua_chon": [
+      "0,12 kg.",
+      "0,19 kg.",
+      "1,2 kg.",
+      "12 kg."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi $W_t = 0,48 \\text{ kJ} = 480 \\text{ J}$.\n$m = W_t : (10h) = 480 : (10 \\times 4) = 12 \\text{ kg}$."
+    },
+    {
+     "ma_cau": "K09010203019",
+     "loai": "trac_nghiem",
+     "de": "Một vật có thể năng 0,4 kJ, ở độ cao 2 m so với mặt đất. Tính khối lượng của vật.",
+     "lua_chon": [
+      "0,2 kg.",
+      "20 kg.",
+      "0,08 kg.",
+      "2 kg."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi $W_t = 0,4 \\text{ kJ} = 400 \\text{ J}$.\n$m = W_t : (10h) = 400 : (10 \\times 2) = 20 \\text{ kg}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01025",
+   "nhom_id": "KNB00417",
+   "thu_tu": 4,
+   "dang": "CHO THẾ NĂNG VÀ KHỐI LƯỢNG, TÍNH ĐỘ CAO RA XENTIMÉT",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010203030",
+     "loai": "trac_nghiem",
+     "de": "Một vật có thể năng $31,5 \\mathrm{J}$, khối lượng $7 \\mathrm{kg}$. Tính độ cao của vật so với mặt đất, ra đơn vị xentimét.",
+     "lua_chon": [
+      "0,45 cm.",
+      "0,04 cm.",
+      "4,5 cm.",
+      "45 cm."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$h = W_t : (10m) = 31,5 : (10 \\times 7) = 0,45 \\mathrm{m}$. Đổi ra $\\mathrm{cm}: h = 0,45 \\times 100 = 45 \\mathrm{cm}$."
+    },
+    {
+     "ma_cau": "K09010203029",
+     "loai": "trac_nghiem",
+     "de": "Một vật có thể năng $28,5 \\mathrm{J}$, khối lượng $3 \\mathrm{kg}$. Tính độ cao của vật so với mặt đất, ra đơn vị xentimét.",
+     "lua_chon": [
+      "95 cm.",
+      "0,95 cm.",
+      "0,1 cm.",
+      "9,5 cm."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$h = W_t : (10m) = 28,5 : (10 \\times 3) = 0,95 \\mathrm{m}$. Đổi ra $\\mathrm{cm}: h = 0,95 \\times 100 = 95 \\mathrm{cm}$."
+    },
+    {
+     "ma_cau": "K09010203026",
+     "loai": "trac_nghiem",
+     "de": "Một vật có thế năng 27 J, khối lượng 9 kg. Tính độ cao của vật so với mặt đất, ra đơn vị xentimét.",
+     "lua_chon": [
+      "30 cm.",
+      "0,3 cm.",
+      "0,03 cm.",
+      "3 cm."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$h = W_t : (10m) = 27 : (10 \\times 9) = 0,3$ m. Đổi ra cm: $h = 0,3 \\times 100 = 30$ cm."
+    },
+    {
+     "ma_cau": "K09010203025",
+     "loai": "trac_nghiem",
+     "de": "Một vật có thế năng 32 J, khối lượng 4 kg. Tính độ cao của vật so với mặt đất, ra đơn vị xentimét.",
+     "lua_chon": [
+      "0,8 cm.",
+      "0,08 cm.",
+      "8 cm.",
+      "80 cm."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$h = W_t : (10m) = 32 : (10 \\times 4) = 0,8$ m. Đổi ra cm: $h = 0,8 \\times 100 = 80$ cm."
+    },
+    {
+     "ma_cau": "K09010203028",
+     "loai": "trac_nghiem",
+     "de": "Một vật có thể năng $27,5 \\mathrm{J}$, khối lượng $11 \\mathrm{kg}$. Tính độ cao của vật so với mặt đất, ra đơn vị xentimét.",
+     "lua_chon": [
+      "0,25 cm.",
+      "25 cm.",
+      "0,03 cm.",
+      "2,5 cm."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$h = W_t : (10m) = 27,5 : (10 \\times 11) = 0,25 \\mathrm{m}$. Đổi ra $\\mathrm{cm}: h = 0,25 \\times 100 = 25 \\mathrm{cm}$."
+    },
+    {
+     "ma_cau": "K09010203027",
+     "loai": "trac_nghiem",
+     "de": "Một vật có thế năng 35 J, khối lượng 5 kg. Tính độ cao của vật so với mặt đất, ra đơn vị xentimét.",
+     "lua_chon": [
+      "0,7 cm.",
+      "0,07 cm.",
+      "70 cm.",
+      "7 cm."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$h = W_t : (10m) = 35 : (10 \\times 5) = 0,7$ m. Đổi ra cm: $h = 0,7 \\times 100 = 70$ cm."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01026",
+   "nhom_id": "KNB00417",
+   "thu_tu": 5,
+   "dang": "TÍNH KHỐI LƯỢNG VÀ ĐỔI KẾT QUẢ RA GAM",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010203032",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có thể năng 24 J, ở độ cao 3 m so với mặt đất. Tính khối lượng của vật, kết quả đổi ra đơn vị gam.",
+     "dap_an": "800",
+     "loi_giai": "$m = W_t : (10h) = 24 : (10 \\times 3) = 0,8\\,kg = 800\\,g$."
+    },
+    {
+     "ma_cau": "K09010203031",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có thể năng 20 J, ở độ cao 5 m so với mặt đất. Tính khối lượng của vật, kết quả đổi ra đơn vị gam.",
+     "dap_an": "400",
+     "loi_giai": "$m = W_t : (10h) = 20 : (10 \\times 5) = 0,4\\,kg = 400\\,g$."
+    },
+    {
+     "ma_cau": "K09010203034",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có thể năng 42 J, ở độ cao 7 m so với mặt đất. Tính khối lượng của vật, kết quả đổi ra đơn vị gam.",
+     "dap_an": "600",
+     "loi_giai": "$m = W_t : (10h) = 42 : (10 \\times 7) = 0,6\\,kg = 600\\,g$."
+    },
+    {
+     "ma_cau": "K09010203035",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có thể năng 27 J, ở độ cao 9 m so với mặt đất. Tính khối lượng của vật, kết quả đổi ra đơn vị gam.",
+     "dap_an": "300",
+     "loi_giai": "$m = W_t : (10h) = 27 : (10 \\times 9) = 0,3\\,kg = 300\\,g$."
+    },
+    {
+     "ma_cau": "K09010203033",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có thể năng 48 J, ở độ cao 4 m so với mặt đất. Tính khối lượng của vật, kết quả đổi ra đơn vị gam.",
+     "dap_an": "1200",
+     "loi_giai": "$m = W_t : (10h) = 48 : (10 \\times 4) = 1,2\\,kg = 1\\,200\\,g$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01027",
+   "nhom_id": "KNB00417",
+   "thu_tu": 6,
+   "dang": "ĐỘ CAO CHO Ở ĐƠN VỊ XENTIMÉT, TÍNH KHỐI LƯỢNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010203037",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có thể năng $36 \\mathrm{~J}$, ở độ cao $120 \\mathrm{~cm}$ so với mặt đất. Tính khối lượng của vật.",
+     "dap_an": "3",
+     "loi_giai": "Đổi $h = 120 \\mathrm{~cm} = 1,2 \\mathrm{~m}$\n$m = W_t : (10h) = 36 : (10 \\times 1,2) = 3 \\mathrm{~kg}$."
+    },
+    {
+     "ma_cau": "K09010203038",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có thể năng $45,5 \\mathrm{~J}$, ở độ cao $65 \\mathrm{~cm}$ so với mặt đất. Tính khối lượng của vật.",
+     "dap_an": "7",
+     "loi_giai": "Đổi $h = 65 \\mathrm{~cm} = 0,65 \\mathrm{~m}$\n$m = W_t : (10h) = 45,5 : (10 \\times 0,65) = 7 \\mathrm{~kg}$."
+    },
+    {
+     "ma_cau": "K09010203040",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có thể năng $21 \\mathrm{~J}$, ở độ cao $35 \\mathrm{~cm}$ so với mặt đất. Tính khối lượng của vật.",
+     "dap_an": "6",
+     "loi_giai": "Đổi $h = 35 \\mathrm{~cm} = 0,35 \\mathrm{~m}$\n$m = W_t : (10h) = 21 : (10 \\times 0,35) = 6 \\mathrm{~kg}$."
+    },
+    {
+     "ma_cau": "K09010203039",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có thể năng $38 \\mathrm{~J}$, ở độ cao $95 \\mathrm{~cm}$ so với mặt đất. Tính khối lượng của vật.",
+     "dap_an": "4",
+     "loi_giai": "Đổi $h = 95 \\mathrm{~cm} = 0,95 \\mathrm{~m}$\n$m = W_t : (10h) = 38 : (10 \\times 0,95) = 4 \\mathrm{~kg}$."
+    },
+    {
+     "ma_cau": "K09010203036",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có thể năng $22,5 \\mathrm{~J}$, ở độ cao $45 \\mathrm{~cm}$ so với mặt đất. Tính khối lượng của vật.",
+     "dap_an": "5",
+     "loi_giai": "Đổi $h = 45 \\mathrm{~cm} = 0,45 \\mathrm{~m}$\n$m = W_t : (10h) = 22,5 : (10 \\times 0,45) = 5 \\mathrm{~kg}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01028",
+   "nhom_id": "KNB00417",
+   "thu_tu": 7,
+   "dang": "CHO TRỌNG LƯỢNG THAY VÌ KHỐI LƯỢNG, TÍNH ĐỘ CAO",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010203044",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có thế năng $400 \\mathrm{~J}$ và trọng lượng $200 \\mathrm{~N}$. Lấy $g=10 \\mathrm{~m} / \\mathrm{s}^{2}$, tính độ cao của vật so với mặt đất.",
+     "dap_an": "2",
+     "loi_giai": "Khối lượng $m=P: 10=200: 10=20 \\mathrm{~kg}$.\n$h=W_{t}:(10 m)=400:(10 \\times 20)=2 \\mathrm{~m}$."
+    },
+    {
+     "ma_cau": "K09010203041",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có thế năng $270 \\mathrm{~J}$ và trọng lượng $90 \\mathrm{~N}$. Lấy $g=10 \\mathrm{~m} / \\mathrm{s}^{2}$, tính độ cao của vật so với mặt đất.",
+     "dap_an": "3",
+     "loi_giai": "Khối lượng $m=P: 10=90: 10=9 \\mathrm{~kg}$.\n$h=W_{t}:(10 m)=270:(10 \\times 9)=3 \\mathrm{~m}$."
+    },
+    {
+     "ma_cau": "K09010203045",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có thế năng $660 \\mathrm{~J}$ và trọng lượng $110 \\mathrm{~N}$, Lấy $g=10 \\mathrm{~m} / \\mathrm{s}^{2}$, tính độ cao của vật so với mặt đất.",
+     "dap_an": "6",
+     "loi_giai": "Khối lượng $m=P: 10=110: 10=11 \\mathrm{~kg}$.\n$h=W_{t}:(10 m)=660:(10 \\times 11)=6 \\mathrm{~m}$."
+    },
+    {
+     "ma_cau": "K09010203042",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có thế năng $700 \\mathrm{~J}$ và trọng lượng $140 \\mathrm{~N}$. Lấy $g=10 \\mathrm{~m} / \\mathrm{s}^{2}$, tính độ cao của vật so với mặt đất.",
+     "dap_an": "5",
+     "loi_giai": "Khối lượng $m=P: 10=140: 10=14 \\mathrm{~kg}$.\n$h=W_{t}:(10 m)=700:(10 \\times 14)=5 \\mathrm{~m}$."
+    },
+    {
+     "ma_cau": "K09010203043",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có thế năng $240 \\mathrm{~J}$ và trọng lượng $60 \\mathrm{~N}$. Lấy $g=10 \\mathrm{~m} / \\mathrm{s}^{2}$, tính độ cao của vật so với mặt đất.",
+     "dap_an": "4",
+     "loi_giai": "Khối lượng $m=P: 10=60: 10=6 \\mathrm{~kg}$.\n$h=W_{t}:(10 m)=240:(10 \\times 6)=4 \\mathrm{~m}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01029",
+   "nhom_id": "KNB00417",
+   "thu_tu": 8,
+   "dang": "KHỐI LƯỢNG CHO Ở ĐƠN VỊ YẾN, TÍNH ĐỘ CAO",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010203046",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có thế năng $600\\ \\mathrm{J}$ và khối lượng $1,5$ yến. Tính độ cao của vật so với mặt đất.",
+     "dap_an": "4",
+     "loi_giai": "Đổi $m = 1,5\\ \\text{yến} = 15\\ \\mathrm{kg}\\ (1\\ \\text{yến} = 10\\ \\mathrm{kg})$.\n$h = W_t : (10m) = 600 : (10 \\times 15) = 4\\ \\mathrm{m}$."
+    },
+    {
+     "ma_cau": "K09010203049",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có thế năng $700\\ \\mathrm{J}$ và khối lượng $3,5$ yến. Tính độ cao của vật so với mặt đất.",
+     "dap_an": "2",
+     "loi_giai": "Đổi $m = 3,5\\ \\text{yến} = 35\\ \\mathrm{kg}\\ (1\\ \\text{yến} = 10\\ \\mathrm{kg})$.\n$h = W_t : (10m) = 700 : (10 \\times 35) = 2\\ \\mathrm{m}$."
+    },
+    {
+     "ma_cau": "K09010203048",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có thế năng $480\\ \\mathrm{J}$ và khối lượng $0,8$ yến. Tính độ cao của vật so với mặt đất.",
+     "dap_an": "6",
+     "loi_giai": "Đổi $m = 0,8\\ \\text{yến} = 8\\ \\mathrm{kg}\\ (1\\ \\text{yến} = 10\\ \\mathrm{kg})$.\n$h = W_t : (10m) = 480 : (10 \\times 8) = 6\\ \\mathrm{m}$."
+    },
+    {
+     "ma_cau": "K09010203047",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có thế năng $750\\ \\mathrm{J}$ và khối lượng $2,5$ yến. Tính độ cao của vật so với mặt đất.",
+     "dap_an": "3",
+     "loi_giai": "Đổi $m = 2,5\\ \\text{yến} = 25\\ \\mathrm{kg}\\ (1\\ \\text{yến} = 10\\ \\mathrm{kg})$.\n$h = W_t : (10m) = 750 : (10 \\times 25) = 3\\ \\mathrm{m}$."
+    },
+    {
+     "ma_cau": "K09010203050",
+     "loai": "tra_loi_ngan",
+     "de": "Một vật có thế năng $660\\ \\mathrm{J}$ và khối lượng $1,2$ yến. Tính độ cao của vật so với mặt đất.",
+     "dap_an": "5.5",
+     "loi_giai": "Đổi $m = 1,2\\ \\text{yến} = 12\\ \\mathrm{kg}\\ (1\\ \\text{yến} = 10\\ \\mathrm{kg})$.\n$h = W_t : (10m) = 660 : (10 \\times 12) = 5,5\\ \\mathrm{m}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01038",
+   "nhom_id": "KNB00419",
+   "thu_tu": 1,
+   "dang": "AN TOÀN KHI LÀM VIỆC, SINH HOẠT Ở TRÊN CAO",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010206007",
+     "loai": "trac_nghiem",
+     "de": "Vì sao khi có vật rơi từ tầng cao của một tòa nhà, mức độ nguy hiểm đối với người bên dưới thường lớn hơn nhiều so với vật rơi từ tầng thấp, dù cùng một vật?",
+     "lua_chon": [
+      "Vì vật rơi từ tầng cao luôn có khối lượng nhỏ hơn vật rơi từ tầng thấp.",
+      "Vì thế năng của vật chỉ phụ thuộc vào khối lượng, không phụ thuộc độ cao.",
+      "Vì cùng khối lượng, vật ở tầng cao hơn mang thế năng lớn hơn, nên động năng khi chạm đất cũng lớn hơn.",
+      "Vì vật rơi từ tầng thấp luôn nguy hiểm hơn vật rơi từ tầng cao."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Thế năng $W_t = 10mh$ tỉ lệ thuận với độ cao; cùng một vật (khối lượng không đổi) nhưng ở tầng cao hơn thì thế năng lớn hơn, khi rơi xuống động năng và mức độ nguy hiểm cũng lớn hơn."
+    },
+    {
+     "ma_cau": "K09010206004",
+     "loai": "trac_nghiem",
+     "de": "Vì sao khi cất đồ đạc trong nhà, người ta thường khuyên không để vật nặng ở kệ cao ngay phía trên chỗ trẻ nhỏ hay ngồi chơi?",
+     "lua_chon": [
+      "Vì để vật nặng ở kệ cao làm căn phòng nóng hơn.",
+      "Vì thế năng của vật không liên quan đến vị trí đặt vật.",
+      "Vì vật đặt càng cao thì khối lượng của vật càng giảm.",
+      "Vì vật nặng ở vị trí cao mang thế năng lớn, nếu rơi xuống sẽ gây nguy hiểm cho người ở phía dưới."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Thế năng $W_t = 10mh$ tăng theo cả khối lượng và độ cao; vật nặng đặt ở kệ cao mang thế năng lớn, nếu rơi xuống người ngồi phía dưới dễ bị va đập mạnh."
+    },
+    {
+     "ma_cau": "K09010206003",
+     "loai": "trac_nghiem",
+     "de": "Vì sao lan can ở ban công, cầu thang các tòa nhà cao tầng phải được thiết kế đủ chắc chắn và đủ cao?",
+     "lua_chon": [
+      "Vì lan can chỉ có tác dụng thẩm mỹ cho tòa nhà.",
+      "Vì càng lên cao thì thế năng của người càng nhỏ.",
+      "Để ngăn người hoặc vật rơi từ trên cao xuống, nơi thế năng lớn có thể chuyển hóa thành động năng gây nguy hiểm.",
+      "Vì lan can giúp giảm khối lượng của tòa nhà."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Người hoặc vật ở tầng cao mang thế năng $W_t = 10mh$ lớn; lan can chắc chắn ngăn rơi xuống, tránh việc thế năng chuyển thành động năng lớn khi chạm đất."
+    },
+    {
+     "ma_cau": "K09010206008",
+     "loai": "trac_nghiem",
+     "de": "Vì sao khi leo núi hoặc đi bộ đường dài lên dốc cao, người ta khuyến cáo mang vác vật nặng vừa phải, không mang quá tải?",
+     "lua_chon": [
+      "Vì lên cao thì khối lượng của người và vật mang theo sẽ tự động giảm.",
+      "Vì thế năng không liên quan gì đến việc leo lên độ cao lớn.",
+      "Vì mang vật nặng khi leo núi luôn giúp giữ thăng bằng tốt hơn.",
+      "Vì càng lên cao, thế năng của người và vật mang theo càng lớn, đòi hỏi tiêu tốn nhiều công sức hơn; mang quá nặng còn tăng nguy cơ mất thăng bằng, ngã từ trên cao xuống."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Thế năng $W_t = 10mh$ của người và vật mang theo tăng theo cả khối lượng và độ cao đạt được; mang quá nặng khi leo cao vừa tốn nhiều công sức, vừa tăng nguy cơ ngã, khiến thế năng đó chuyển thành động năng gây chấn thương."
+    },
+    {
+     "ma_cau": "K09010206006",
+     "loai": "trac_nghiem",
+     "de": "Vì sao khi sơn sửa nhà ở tầng cao, thợ sơn thường buộc chặt xô sơn, dụng cụ vào giàn giáo thay vì đặt tự do trên sàn thao tác?",
+     "lua_chon": [
+      "Vì buộc chặt giúp xô sơn và dụng cụ tăng thêm thế năng.",
+      "Để tránh dụng cụ rơi xuống từ độ cao, nơi thế năng lớn có thể chuyển thành động năng gây nguy hiểm cho người bên dưới.",
+      "Vì dụng cụ đặt trên cao thì không còn mang thế năng nữa.",
+      "Vì việc buộc dụng cụ chỉ giúp tiết kiệm sơn, không liên quan đến an toàn."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Dụng cụ đặt trên giàn giáo cao mang thế năng $W_t = 10mh$; nếu vô tình rơi, thế năng chuyển thành động năng khi rơi xuống, có thể gây thương tích cho người ở bên dưới."
+    },
+    {
+     "ma_cau": "K09010206005",
+     "loai": "trac_nghiem",
+     "de": "Trong các quy định an toàn lao động, vì sao độ cao được xem là một yếu tố quan trọng để đánh giá mức độ nguy hiểm của công việc làm trên cao?",
+     "lua_chon": [
+      "Vì độ cao càng lớn thì thế năng của người hoặc vật càng lớn, mức độ nguy hiểm nếu rơi xuống càng cao.",
+      "Vì độ cao chỉ ảnh hưởng đến thời gian di chuyển, không liên quan đến mức độ nguy hiểm.",
+      "Vì làm việc ở độ cao lớn luôn giúp giảm khối lượng cơ thể người lao động.",
+      "Vì thế năng của người lao động không phụ thuộc vào độ cao làm việc."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Theo $W_t = 10mh$, độ cao càng lớn thì thế năng càng lớn ở cùng khối lượng; nếu xảy ra sự cố rơi, động năng chuyển hóa từ thế năng đó càng lớn, mức độ nguy hiểm càng cao."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01039",
+   "nhom_id": "KNB00419",
+   "thu_tu": 2,
+   "dang": "ỨNG DỤNG THẾ NĂNG TRONG KỸ THUẬT, ĐỜI SỐNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010206013",
+     "loai": "trac_nghiem",
+     "de": "Thang máy dùng đối trọng (một khối nặng gắn ở đầu dây cáp bên kia so với cabin) để giảm bớt năng lượng động cơ cần tiêu tốn khi nâng cabin lên cao. Nguyên lí này tận dụng điều gì?",
+     "lua_chon": [
+      "Đối trọng giúp cabin thang máy giảm khối lượng khi di chuyển.",
+      "Thế năng của đối trọng không thay đổi khi thang máy hoạt động.",
+      "Khi cabin lên cao thì đối trọng hạ xuống, thế năng của đối trọng giảm được chuyển hóa hỗ trợ nâng cabin, giúp động cơ đỡ tốn năng lượng hơn.",
+      "Đối trọng chỉ có tác dụng trang trí, không liên quan đến năng lượng."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khi cabin đi lên, đối trọng đi xuống nên thế năng $W_t = 10mh$ của đối trọng giảm; phần năng lượng này hỗ trợ nâng cabin lên, giúp động cơ tiêu tốn ít năng lượng hơn so với khi không có đối trọng."
+    },
+    {
+     "ma_cau": "K09010206015",
+     "loai": "trac_nghiem",
+     "de": "Vì sao các nhà máy thủy điện thường được xây dựng ở nơi có thể tạo được chênh lệch độ cao lớn giữa hồ chứa nước và tuabin phát điện, thay vì ở địa hình bằng phẳng?",
+     "lua_chon": [
+      "Vì địa hình bằng phẳng luôn có lượng nước lớn hơn địa hình có chênh lệch độ cao.",
+      "Vì chênh lệch độ cao không ảnh hưởng đến lượng năng lượng thu được từ nước.",
+      "Vì địa hình có chênh lệch độ cao giúp giảm khối lượng nước cần tích trữ.",
+      "Vì chênh lệch độ cao càng lớn thì thế năng của nước tích trữ càng lớn, tạo ra nhiều năng lượng hơn khi nước chảy xuống làm quay tuabin."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Với cùng khối lượng nước, $W_t = 10mh$ cho thấy thế năng tỉ lệ thuận với độ cao; chênh lệch độ cao giữa hồ chứa và tuabin càng lớn thì thế năng của nước tích trữ càng lớn, sinh ra nhiều điện năng hơn khi nước chảy xuống."
+    },
+    {
+     "ma_cau": "K09010206012",
+     "loai": "trac_nghiem",
+     "de": "Đồng hồ quả lắc cơ học cổ điển thường có một quả nặng được kéo lên cao bằng dây xích, rồi từ từ hạ xuống trong nhiều ngày để duy trì chuyển động của bộ máy. Quả nặng ở vị trí cao mang dạng năng lượng nào để cung cấp cho đồng hồ hoạt động?",
+     "lua_chon": [
+      "Động năng, vì quả nặng luôn chuyển động nhanh khi treo trên cao.",
+      "Quang năng, do quả nặng hấp thụ ánh sáng.",
+      "Quả nặng không mang dạng năng lượng nào khi treo trên cao.",
+      "Thế năng, do quả nặng được treo ở độ cao lớn so với vị trí thấp nhất của nó."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Quả nặng được kéo lên cao mang thế năng $W_t = 10mh$; khi hạ xuống từ từ, thế năng chuyển hóa dần thành năng lượng làm quay các bánh răng, duy trì chuyển động của kim đồng hồ."
+    },
+    {
+     "ma_cau": "K09010206016",
+     "loai": "trac_nghiem",
+     "de": "Cần cẩu tháp trên công trường nâng vật liệu xây dựng lên các tầng cao của tòa nhà đang thi công. Công mà cần cẩu thực hiện để nâng vật liệu lên cao được chuyển hóa thành dạng năng lượng nào của vật liệu ở vị trí mới?",
+     "lua_chon": [
+      "Động năng, vì vật liệu luôn chuyển động nhanh khi được nâng lên cao.",
+      "Thế năng, vì vật liệu được đưa lên vị trí có độ cao lớn hơn so với ban đầu.",
+      "Nhiệt năng, do ma sát giữa dây cáp và ròng rọc của của cần cẩu.",
+      "Vật liệu ở vị trí mới không mang thêm dạng năng lượng nào."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khi cần cẩu nâng vật liệu lên độ cao lớn hơn, công thực hiện được chuyển hóa thành thế năng $W_t = 10mh$ của vật liệu ở vị trí mới, do độ cao $h$ tăng lên so với ban đầu."
+    },
+    {
+     "ma_cau": "K09010206014",
+     "loai": "trac_nghiem",
+     "de": "Trong các công viên nước, máng trượt thường được xây bắt đầu từ một vị trí cao rồi dốc dần xuống bể nước. Người chơi trượt xuống ngày càng nhanh là do dạng năng lượng nào đang chuyển hóa?",
+     "lua_chon": [
+      "Thế năng của người chơi ở vị trí cao chuyển hóa dần thành động năng khi trượt xuống thấp.",
+      "Động năng của người chơi chuyển hóa thành thế năng khi trượt xuống thấp.",
+      "Thế năng của người chơi không thay đổi trong suốt quá trình trượt.",
+      "Người chơi không mang dạng năng lượng nào khi ở đỉnh máng trượt."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ở đỉnh máng trượt, người chơi có độ cao lớn nên mang thế năng $W_t = 10mh$ lớn; khi trượt xuống, độ cao giảm dần nên thế năng giảm dần, chuyển hóa thành động năng khiến tốc độ tăng dần."
+    },
+    {
+     "ma_cau": "K09010206010",
+     "loai": "trac_nghiem",
+     "de": "Tháp nước trong nhiều khu dân cư được xây cao, chứa nước trên đỉnh tháp rồi dẫn nước xuống các hộ gia đình mà không cần dùng máy bơm liên tục. Nguyên lí hoạt động này dựa trên điều gì?",
+     "lua_chon": [
+      "Nước ở trên cao có khối lượng nhỏ hơn nước ở dưới thấp nên tự chảy xuống.",
+      "Thế năng của nước không thay đổi khi ở trên tháp cao.",
+      "Nước ở trên cao mang thế năng; khi chảy xuống theo đường ống, thế năng đó tạo ra áp lực đẩy nước đến các hộ gia đình.",
+      "Nước tự chảy xuống là do nhiệt độ trên cao thấp hơn dưới thấp."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nước được bơm lên bể chứa trên đỉnh tháp mang thế năng $W_t = 10mh$; khi mở van, nước tự chảy xuống theo đường ống nhờ thế năng chuyển hóa, không cần bơm liên tục."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01040",
+   "nhom_id": "KNB00419",
+   "thu_tu": 3,
+   "dang": "SO SÁNH MỨC ĐỘ NGUY HIỂM, TÁC ĐỘNG QUA TÌNH HUỐNG THỰC TẾ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010206020",
+     "loai": "trac_nghiem",
+     "de": "Trong xây dựng, quy định về việc đội mũ bảo hộ thường nghiêm ngặt hơn ở các công trình nhà cao tầng so với công trình nhà cấp bốn một tầng. Vì sao có sự khác biệt này?",
+     "lua_chon": [
+      "Vì công trình cao tầng luôn sử dụng vật liệu nhẹ hơn công trình một tầng.",
+      "Vì độ cao của công trình không liên quan đến mức độ nguy hiểm khi có vật rơi.",
+      "Vì ở công trình cao tầng, vật liệu hoặc dụng cụ rơi từ độ cao lớn hơn nên mang thế năng lớn hơn, gây nguy hiểm cao hơn nếu rơi trúng người.",
+      "Vì công trình một tầng không có nguy cơ vật liệu rơi từ trên cao."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ở công trình cao tầng, vật liệu hoặc dụng cụ có thể rơi từ độ cao lớn hơn; theo $W_t = 10mh$, độ cao càng lớn thì thế năng và động năng lúc rơi xuống càng lớn, nên yêu cầu an toàn càng nghiêm ngặt."
+    },
+    {
+     "ma_cau": "K09010206017",
+     "loai": "trac_nghiem",
+     "de": "Hai viên gạch giống hệt nhau được thả rơi từ hai độ cao khác nhau xuống một tấm ván. Viên gạch thả từ độ cao lớn hơn tác động lên tấm ván như thế nào so với viên gạch thả từ độ cao thấp hơn?",
+     "lua_chon": [
+      "Tác động yếu hơn, vì thả từ độ cao lớn hơn thì khối lượng viên gạch giảm đi.",
+      "Tác động như nhau, vì thế năng chỉ phụ thuộc vào khối lượng, không phụ thuộc độ cao.",
+      "Không thể so sánh được, vì hai viên gạch rơi ở hai thời điểm khác nhau.",
+      "Tác động mạnh hơn, vì ở cùng khối lượng, thế năng ban đầu lớn hơn nên động năng lúc chạm tấm ván cũng lớn hơn."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$W_t = 10mh$ tỉ lệ thuận với độ cao; cùng khối lượng, viên gạch thả từ độ cao lớn hơn có thế năng ban đầu lớn hơn, nên động năng và lực tác động lúc chạm tấm ván cũng lớn hơn."
+    },
+    {
+     "ma_cau": "K09010206019",
+     "loai": "trac_nghiem",
+     "de": "Một chậu cây cảnh đặt trên ban công tầng 2 và một chậu cây cảnh giống hệt đặt trên ban công tầng 10 của cùng tòa nhà. Nếu cả hai vô tình rơi xuống, chậu nào nguy hiểm hơn cho người đi bên dưới?",
+     "lua_chon": [
+      "Chậu cây ở tầng 10, vì ở độ cao lớn hơn, thế năng của chậu cây lớn hơn, dẫn đến động năng lúc chạm đất lớn hơn.",
+      "Chậu cây ở tầng 2, vì tầng thấp hơn thì chậu cây nặng hơn.",
+      "Cả hai chậu cây nguy hiểm như nhau, vì thế năng không phụ thuộc vào độ cao tầng.",
+      "Không chậu nào nguy hiểm, vì chậu cây trên ban công không mang thế năng."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Hai chậu cây giống hệt nhau (cùng khối lượng) nhưng ở độ cao khác nhau; theo $W_t = 10mh$, chậu ở tầng 10 (độ cao lớn hơn) mang thế năng lớn hơn, nên nguy hiểm hơn nếu rơi xuống."
+    },
+    {
+     "ma_cau": "K09010206018",
+     "loai": "trac_nghiem",
+     "de": "Hai vật có khối lượng khác nhau được đặt ở cùng một độ cao trên nóc một tòa nhà. Nếu cả hai cùng rơi xuống, vật nào có khả năng gây hư hại lớn hơn khi chạm đất?",
+     "lua_chon": [
+      "Vật có khối lượng nhỏ hơn, vì vật nhẹ luôn rơi nhanh hơn vật nặng.",
+      "Vật có khối lượng lớn hơn, vì ở cùng độ cao, thế năng tỉ lệ thuận với khối lượng.",
+      "Cả hai vật gây hư hại như nhau, vì khối lượng không ảnh hưởng đến thế năng.",
+      "Không thể xác định được, vì thế năng không phụ thuộc vào khối lượng vật."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ở cùng độ cao $h$, $W_t = 10mh$ tỉ lệ thuận với khối lượng $m$; vật có khối lượng lớn hơn mang thế năng lớn hơn, nên động năng và khả năng gây hư hại khi chạm đất cũng lớn hơn."
+    },
+    {
+     "ma_cau": "K09010206023",
+     "loai": "trac_nghiem",
+     "de": "Vì sao khi bốc dỡ hàng hóa tại các kho hàng nhiều tầng kệ, người ta thường quy định xếp các kiện hàng nặng ở tầng kệ thấp, kiện hàng nhẹ ở tầng kệ cao?",
+     "lua_chon": [
+      "Vì kiện hàng nặng đặt ở tầng thấp sẽ tự động giảm khối lượng.",
+      "Vì độ cao của tầng kệ không ảnh hưởng đến thế năng của kiện hàng.",
+      "Để giảm thế năng của các kiện hàng nặng, hạn chế mức độ nguy hiểm nếu chẳng may kiện hàng rơi xuống.",
+      "Vì kiện hàng nhẹ đặt ở tầng cao sẽ luôn ổn định hơn kiện hàng nặng."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Theo $W_t = 10mh$, ở cùng độ cao thì kiện hàng nặng mang thế năng lớn hơn; xếp kiện hàng nặng ở tầng thấp giúp giảm độ cao h, giảm thế năng, hạn chế hậu quả nếu kiện hàng rơi xuống."
+    },
+    {
+     "ma_cau": "K09010206022",
+     "loai": "trac_nghiem",
+     "de": "Một vật được thả rơi từ độ cao $2$ m và một vật giống hệt được thả rơi từ độ cao $8$ m. So với vật thả từ độ cao $2$ m, vật thả từ độ cao $8$ m có thế năng ban đầu lớn gấp bao nhiêu lần?",
+     "lua_chon": [
+      "Gấp $16$ lần, vì thế năng tỉ lệ với bình phương độ cao.",
+      "Gấp $2$ lần, vì độ cao chỉ ảnh hưởng một phần nhỏ đến thế năng.",
+      "Bằng nhau, vì hai vật có cùng khối lượng nên thế năng như nhau.",
+      "Gấp $4$ lần, vì thế năng tỉ lệ thuận với độ cao (h không bị bình phương như tốc độ trong công thức động năng)."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$W_t = 10mh$ tỉ lệ thuận bậc một với độ cao $h$. Độ cao tăng từ $2$ m lên $8$ m, tức tăng $4$ lần, nên thế năng cũng tăng đúng $4$ lần, không bị bình phương."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01041",
+   "nhom_id": "KNB00419",
+   "thu_tu": 4,
+   "dang": "THẾ NĂNG ĐÀN HỒI TRONG ĐỜI SỐNG, KỸ THUẬT",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010206030",
+     "loai": "trac_nghiem",
+     "de": "Trong công nghiệp, các bộ giảm chấn dùng lò xo hoặc cao su được lắp ở nhiều loại máy móc, cửa tự động để giảm va đập khi có chuyển động dừng đột ngột. Nguyên lí hoạt động chung của các bộ giảm chấn này là gì?",
+     "lua_chon": [
+      "Ngăn hoàn toàn không cho vật có động năng trước khi va chạm.",
+      "Làm tăng tốc độ va chạm để giảm thời gian tiếp xúc.",
+      "Hấp thụ động năng của vật đang chuyển động, chuyển hóa thành thế năng đàn hồi của lò xo hoặc cao su bị biến dạng, giảm lực va đập.",
+      "Lò xo và cao su trong bộ giảm chấn không tích trữ bất kỳ dạng năng lượng nào."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khi vật va vào bộ giảm chấn, lò xo hoặc cao su bị nén hoặc biến dạng, hấp thụ dần động năng của vật và chuyển hóa thành thế năng đàn hồi, giúp vật dừng lại từ từ thay vì va chạm đột ngột."
+    },
+    {
+     "ma_cau": "K09010206025",
+     "loai": "trac_nghiem",
+     "de": "Bút bi loại có nút bấm thường dùng một lò xo nhỏ bên trong. Khi ấn nút xuống để lò xo bị nén lại, lò xo lúc này chủ yếu mang dạng năng lượng nào?",
+     "lua_chon": [
+      "Thế năng đàn hồi, do lò xo bị nén lại so với hình dạng ban đầu.",
+      "Động năng, vì lò xo đang di chuyển nhanh khi bị nén.",
+      "Thế năng hấp dẫn, do lò xo được đặt ở một độ cao nhất định.",
+      "Lò xo bị nén không mang dạng năng lượng nào cả."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khi bị nén lại, lò xo biến dạng so với hình dạng tự nhiên nên tích trữ thế năng đàn hồi; năng lượng này giải phóng khi lò xo giãn ra trở lại, giúp đẩy ngòi bút."
+    },
+    {
+     "ma_cau": "K09010206027",
+     "loai": "trac_nghiem",
+     "de": "Giảm xóc (phuộc nhún) của xe máy, xe đạp thường chứa lò xo bên trong. Khi xe đi qua chỗ xóc, lò xo bị nén lại rồi giãn ra để giảm xóc. Vai trò của lò xo trong quá trình này liên quan đến dạng năng lượng nào?",
+     "lua_chon": [
+      "Động năng, vì lò xo trong giảm xóc luôn đứng yên không biến dạng.",
+      "Thế năng đàn hồi, do lò xo bị nén lại khi bánh xe gặp chỗ xóc.",
+      "Hóa năng, do phản ứng hóa học xảy ra bên trong lò xo.",
+      "Lò xo trong giảm xóc không liên quan đến bất kỳ dạng năng lượng nào."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khi bánh xe gặp chỗ xóc, lò xo trong giảm xóc bị nén lại, tích trữ thế năng đàn hồi; thế năng này giải phóng dần khi lò xo giãn ra, giúp giảm bớt lực tác động đột ngột truyền lên khung xe."
+    },
+    {
+     "ma_cau": "K09010206026",
+     "loai": "trac_nghiem",
+     "de": "Bàn nhún (bạt lò xo) trong sân chơi trẻ em có nhiều lò xo gắn dưới mặt bạt. Khi người nhảy lên làm mặt bạt lún xuống, các lò xo bị nén lại mang dạng năng lượng nào để đẩy người bật lên cao trở lại?",
+     "lua_chon": [
+      "Động năng, vì các lò xo luôn chuyển động nhanh khi bị nén.",
+      "Thế năng hấp dẫn, do các lò xo được đặt trên mặt đất.",
+      "Các lò xo bị nén không tích trữ dạng năng lượng nào.",
+      "Thế năng đàn hồi, do các lò xo bị nén lại khi mặt bạt lún xuống."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khi mặt bạt lún xuống, các lò xo bị nén lại nên tích trữ thế năng đàn hồi; khi lò xo giãn trở lại, thế năng này chuyển hóa thành động năng, đẩy người nhảy bật lên cao."
+    },
+    {
+     "ma_cau": "K09010206028",
+     "loai": "trac_nghiem",
+     "de": "Một chiếc lò xo được kéo giãn rồi giữ cố định ở trạng thái đó trong một thời gian dài. So với lúc chưa kéo giãn, thế năng đàn hồi của lò xo lúc này thay đổi như thế nào?",
+     "lua_chon": [
+      "Lớn hơn, vì lò xo đang bị biến dạng (giãn ra) so với hình dạng tự nhiên ban đầu.",
+      "Nhỏ hơn, vì kéo giãn làm lò xo nhẹ đi.",
+      "Không đổi, vì thế năng đàn hồi chỉ phụ thuộc vào độ cao của lò xo.",
+      "Bằng không, vì lò xo đang được giữ cố định, không chuyển động."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thế năng đàn hồi phụ thuộc vào độ biến dạng của vật đàn hồi. Lò xo bị kéo giãn so với hình dạng tự nhiên nên mang thế năng đàn hồi lớn hơn so với lúc chưa biến dạng, dù đang được giữ cố định (không chuyển động)."
+    },
+    {
+     "ma_cau": "K09010206029",
+     "loai": "trac_nghiem",
+     "de": "Vì sao khi thiết kế đồ chơi lò xo (kiểu 'lò xo cầu thang' tự lộn nhào xuống các bậc thang), người ta phải chọn lò xo có độ đàn hồi phù hợp, không quá cứng cũng không quá mềm?",
+     "lua_chon": [
+      "Vì lò xo quá cứng hoặc quá mềm sẽ tự động thay đổi khối lượng.",
+      "Vì độ đàn hồi của lò xo không ảnh hưởng đến khả năng lộn nhào.",
+      "Vì lò xo chỉ hoạt động dựa vào thế năng hấp dẫn, không liên quan đến độ đàn hồi.",
+      "Vì độ đàn hồi phù hợp giúp lò xo tích trữ và giải phóng thế năng đàn hồi vừa đủ để lò xo tự lộn nhào đều đặn qua từng bậc thang."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khi lò xo bị nén hoặc giãn khi lộn qua bậc thang, nó tích trữ thế năng đàn hồi; độ đàn hồi phù hợp giúp năng lượng này giải phóng đúng mức để lò xo tiếp tục lộn nhào đều đặn xuống các bậc tiếp theo."
+    }
+   ]
+  }
+ ]
+}

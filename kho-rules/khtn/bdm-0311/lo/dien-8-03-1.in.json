@@ -1,0 +1,1096 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00405",
+   "khoi": "8",
+   "chu_de": "Sinh học ở cơ thể người",
+   "chuyen_de": "Máu & Hệ tuần hoàn ở người",
+   "nhom": "Thành phần & chức năng của máu",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nMáu gồm huyết tương (khoảng 55% thể tích) và các tế bào máu (khoảng 45% thể tích).\nHuyết tương: chất lỏng màu vàng nhạt, khoảng 90% là nước, còn lại là các chất hoà tan (protein, muối khoáng, chất dinh dưỡng, hormone, kháng thể, chất thải). Huyết tương duy trì máu ở trạng thái lỏng và vận chuyển các chất.\nCác tế bào máu:\n- Hồng cầu: dạng đĩa lõm hai mặt, không có nhân, chứa hemoglobin; vận chuyển oxygen và carbon dioxide. Hemoglobin làm máu có màu đỏ.\n- Bạch cầu: bảo vệ cơ thể bằng cách thực bào, tạo kháng thể, phá huỷ tế bào bị nhiễm bệnh.\n- Tiểu cầu: tham gia quá trình đông máu, chống mất máu.\nMiễn dịch: khả năng cơ thể không bị mắc một bệnh nào đó dù sống ở môi trường có mầm bệnh.\nKháng nguyên: chất lạ có khả năng kích thích cơ thể tạo ra kháng thể. Kháng thể: protein do bạch cầu tạo ra, kết hợp đặc hiệu với kháng nguyên tương ứng.\nVaccine: chế phẩm chứa mầm bệnh đã chết hoặc đã làm yếu (hoặc thành phần của mầm bệnh), kích thích cơ thể chủ động tạo miễn dịch.\n\n##PP 2. Các bước làm bài\nBước 1. Xác định câu hỏi về thành phần, tỉ lệ, chức năng của tế bào máu hay về miễn dịch.\nBước 2. Ghép thành phần hoặc loại tế bào với chức năng tương ứng.\nBước 3. Với tình huống thực tế: xác định thành phần nào thay đổi (nhiều hay ít hơn bình thường) rồi suy ra chức năng bị ảnh hưởng.\n\n##CY 3. Lưu ý\nHuyết tương không phải là tế bào máu.\nMỗi loại kháng thể chỉ kết hợp với một loại kháng nguyên tương ứng, vì vậy vaccine phòng bệnh nào chỉ tạo miễn dịch với bệnh đó.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00406",
+   "khoi": "8",
+   "chu_de": "Sinh học ở cơ thể người",
+   "chuyen_de": "Máu & Hệ tuần hoàn ở người",
+   "nhom": "NHÓM MÁU VÀ NGUYÊN TẮC TRUYỀN MÁU",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC1. Kiến thức cần nhớ\nHệ nhóm máu ABO gồm 4 nhóm: A, B, AB, O, được phân loại dựa trên kháng nguyên A, B trên màng hồng cầu. Trong huyết tương có thể có kháng thể $\\alpha$ (chống A, gây kết dính hồng cầu mang kháng nguyên A) và kháng thể $\\beta$ (chống B, gây kết dính hồng cầu mang kháng nguyên B).\n$\\begin{array}{|c|c|c|}\n\\hline\n\\text{Nhóm máu} & \\text{Kháng nguyên trên hồng cầu} & \\text{Kháng thể trong huyết tương} \\\\\n\\hline\nA & A & \\beta \\\\\n\\hline\nB & B & \\alpha \\\\\n\\hline\nAB & \\text{A và B} & \\text{Không có} \\\\\n\\hline\nO & \\text{Không có} & \\alpha \\text{ và } \\beta \\\\\n\\hline\n\\end{array}$\nNguyên tắc truyền máu: kháng nguyên trên hồng cầu người cho không bị kháng thể trong huyết tương người nhận gây kết dính. Trước khi truyền phải xét nghiệm nhóm máu và kiểm tra mầm bệnh trong máu người cho.\nSơ đồ truyền máu (mũi tên chỉ chiều truyền được; mỗi nhóm truyền được cho chính nhóm đó):\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/f2e0d51e-acbd-4470-af97-4a42a55285fe.png)\n\n\n##PP2. Các bước làm bài\nBước 1. Xác định kháng nguyên trên hồng cầu người cho.\nBước 2. Xác định kháng thể trong huyết tương người nhận.\nBước 3. Nếu kháng thể của người nhận gây kết dính kháng nguyên của người cho thì không truyền được; ngược lại thì truyền được.\n\n##CY3. Lưu ý\nNhóm O truyền được cho mọi nhóm; nhóm AB nhận được của mọi nhóm. Khi truyền máu khác nhóm (ví dụ nhóm O cho nhóm khác) chỉ truyền lượng ít và chậm.\nKhi xét truyền máu chỉ xét kháng nguyên của người cho và kháng thể của người nhận.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00407",
+   "khoi": "8",
+   "chu_de": "Sinh học ở cơ thể người",
+   "chuyen_de": "Máu & Hệ tuần hoàn ở người",
+   "nhom": "Cấu tạo và hoạt động của hệ tuần hoàn",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nHệ tuần hoàn gồm tim và hệ mạch.\nTim có 4 ngăn: tâm nhĩ phải, tâm thất phải (nữa phải, chứa máu nghèo oxygen); tâm nhĩ trái, tâm thất trái (nửa trái, chứa máu giàu oxygen). Tâm nhĩ nhận máu về tim, tâm thất đẩy máu ra khỏi tim. Tâm thất trái có thành cơ dày nhất. Van tim giúp máu chảy theo một chiều.\nHệ mạch:\n- Động mạch: dẫn máu từ tim đến các cơ quan.\n- Tĩnh mạch: dẫn máu từ các cơ quan về tim.\n- Mao mạch: thành mỏng, nối động mạch với tĩnh mạch, là nơi trao đổi chất giữa máu và tế bào.\nHai vòng tuần hoàn:\n- Vòng tuần hoàn nhỏ: tâm thất phải $\\to$ động mạch phổi $\\to$ mao mạch phổi (máu nhận oxygen, thải carbon dioxide) $\\to$ tĩnh mạch phổi $\\to$ tâm nhĩ trái.\n- Vòng tuần hoàn lớn: tâm thất trái $\\to$ động mạch chủ $\\to$ mao mạch các cơ quan (máu nhường oxygen, chất dinh dưỡng; nhận carbon dioxide, chất thải) $\\to$ tĩnh mạch chủ $\\to$ tâm nhĩ phải.\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/245206df-10d2-4242-9648-cdd49440153f.png)\n\n\n##PP 2. Các bước làm bài\nBước 1. Xác định điểm xuất phát và điểm đến của máu (hoặc của chất được máu vận chuyển).\nBước 2. Viết lần theo đường đi của máu qua từng ngăn tim và từng đoạn mạch.\nBước 3. Xác định loại máu ở từng đoạn: sau mao mạch phổi là máu giàu oxygen (đỏ tươi); sau mao mạch các cơ quan là máu nghèo oxygen (đỏ thẫm).\n\n##CY 3. Lưu ý\nTên động mạch, tĩnh mạch đặt theo chiều máu chảy so với tim, không theo loại máu: động mạch phổi chứa máu nghèo oxygen, tĩnh mạch phổi chứa máu giàu oxygen.\nTrong mỗi vòng đi khắp cơ thể, máu đi qua tim 2 lần.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00408",
+   "khoi": "8",
+   "chu_de": "Sinh học ở cơ thể người",
+   "chuyen_de": "Máu & Hệ tuần hoàn ở người",
+   "nhom": "Bảo vệ hệ tuần hoàn và sơ cứu chảy máu",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nMột số bệnh tim mạch thường gặp: tăng huyết áp, xơ vữa động mạch, đột quỵ, nhồi máu cơ tim.\nYếu tố làm tăng nguy cơ bệnh tim mạch: ăn mặn, ăn nhiều mỡ động vật, hút thuốc lá, uống rượu bia, ít vận động, béo phì, căng thẳng kéo dài.\nBiện pháp bảo vệ hệ tuần hoàn: ăn uống hợp lí (giảm muối, giảm mỡ động vật, nhiều rau quả), luyện tập thể dục thể thao vừa sức và đều đặn, không hút thuốc lá, không lạm dụng rượu bia, ngủ đủ giấc, kiểm tra sức khoẻ định kì.\nHuyết áp được ghi dạng huyết áp tâm thu/huyết áp tâm trương, đơn vị $\\mathrm{mmHg}$ (ví dụ $120/80\\ \\mathrm{mmHg}$). Phân loại huyết áp hiện hành ở người trưởng thành:\n$$\\begin{array}{|c|c|c|c|}\\hline \\text{Phân loại} & \\text{Huyết áp tâm thu (}\\mathrm{mmHg}) & & \\text{Huyết áp tâm trương (}\\mathrm{mmHg}) \\\\ \\hline \\text{Tối ưu} & \\text{dưới } 120 & \\text{và} & \\text{dưới } 80 \\\\ \\hline \\text{Bình thường} & 120-129 & \\text{và/hoặc} & 80-84 \\\\ \\hline \\text{Bình thường cao} & 130-139 & \\text{và/hoặc} & 85-89 \\\\ \\hline \\text{Tăng huyết áp} & \\text{từ } 140 \\text{ trở lên} & \\text{và/hoặc} & \\text{từ } 90 \\text{ trở lên} \\\\ \\hline \\text{Huyết áp thấp} & \\text{dưới } 90 & \\text{và/hoặc} & \\text{dưới } 60 \\\\ \\hline \\end{array}$$\nNhịp tim tính bằng số lần/phút; nhịp tim lúc nghỉ của người trưởng thành bình thường từ $60$ đến $100$ lần/phút.\nCó thể đếm nhịp mạch ở cổ tay trong $15$ giây rồi nhân $4$.\nPhân biệt các dạng chảy máu và cách sơ cứu:\n$$\\begin{array}{|c|c|c|}\\hline \\text{Dạng chảy} & & \\\\ \\text{máu} & \\text{Biểu hiện} & \\text{Cách sơ cứu} \\\\ \\hline \\text{Mao mạch} & \\text{Máu chảy ít, rỉ ra chậm} & \\text{Rửa sạch, sát trùng, băng lại} \\\\ \\hline \\text{Tĩnh mạch} & \\text{Máu đỏ thẫm, chảy đều,} & \\text{Băng ép chặt vết thương, đưa đến cơ sở y tế} \\\\ & \\text{không thành tia} & \\\\ \\hline \\text{Động mạch} & \\text{Máu đỏ tươi, chảy mạnh} & \\text{Ấn động mạch phía trên vết thương, buộc garo, sát trùng và} \\\\ & \\text{thành tia} & \\text{băng, đưa ngay đến cơ sở y tế} \\\\ \\hline \\end{array}$$\n\n##PP 2. Các bước làm bài\nBước 1. Đọc dữ kiện: thói quen, chỉ số đo được hoặc biểu hiện của vết thương.\nBước 2. Đối chiếu với kiến thức: yếu tố nguy cơ, khoảng chỉ số bình thường đề cho, đặc điểm từng dạng chảy máu.\nBước 3. Kết luận và chọn biện pháp phù hợp.\n\n##CY 3. Lưu ý\nChỉ cần một trong hai chỉ số huyết áp vượt ngưỡng là đã kết luận tăng huyết áp (hoặc huyết áp thấp). Đề bài luôn ghi rõ ngưỡng phân loại được dùng.\nGaro chỉ dùng cho chảy máu động mạch ở tay, chân; buộc phía trên vết thương (gần tim hơn) và nới lỏng định kì. Người sơ cứu nên đeo găng tay để tránh lây bệnh qua máu.",
+   "can_dien_ly_thuyet_nhom": false
+  }
+ ],
+ "dang_bai": [
+  {
+   "dang_id": "KDB00958",
+   "nhom_id": "KNB00405",
+   "thu_tu": 1,
+   "dang": "HUYẾT TƯƠNG VÀ CÁC TẾ BÀO MÁU",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030301001",
+     "loai": "trac_nghiem",
+     "de": "Máu của người gồm hai thành phần chính là",
+     "lua_chon": [
+      "hồng cầu và bạch cầu.",
+      "huyết tương và các tế bào máu.",
+      "huyết tương và tiểu cầu.",
+      "nước và các muối khoáng."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Máu gồm huyết tương và các tế bào máu (hồng cầu, bạch cầu, tiểu cầu)."
+    },
+    {
+     "ma_cau": "K08030301007",
+     "loai": "trac_nghiem",
+     "de": "Trong máu người, loại tế bào máu có số lượng nhiều nhất là",
+     "lua_chon": [
+      "bạch cầu.",
+      "tiểu cầu.",
+      "hồng cầu.",
+      "tế bào lympho."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Hồng cầu là loại tế bào máu có số lượng nhiều nhất, chiếm gần như toàn bộ phần tế bào máu."
+    },
+    {
+     "ma_cau": "K08030301005",
+     "loai": "trac_nghiem",
+     "de": "Cho máu vào ống nghiệm có chất chống đông rồi để lắng. Lớp dưới đặc, màu đỏ thẫm trong ống nghiệm là",
+     "lua_chon": [
+      "các tế bào máu.",
+      "huyết tương.",
+      "nước và muối khoáng.",
+      "chất chống đông."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khi để lắng, các tế bào máu nặng hơn lắng xuống dưới tạo lớp đặc màu đỏ thẫm; lớp trên trong suốt, màu vàng nhạt là huyết tương."
+    },
+    {
+     "ma_cau": "K08030301009",
+     "loai": "trac_nghiem",
+     "de": "Một người bị sốt cao kéo dài và mất nhiều nước nhưng không được bù nước kịp thời. Máu của người này đặc hơn bình thường, khó lưu thông vì",
+     "lua_chon": [
+      "tỉ lệ huyết tương trong máu giảm.",
+      "số lượng tiểu cầu trong máu giảm.",
+      "số lượng hồng cầu bị phá huỷ tăng.",
+      "lượng kháng thể trong máu tăng."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Huyết tương chủ yếu là nước. Khi cơ thể mất nhiều nước, thể tích huyết tương giảm, tỉ lệ tế bào máu tăng nên máu đặc hơn."
+    },
+    {
+     "ma_cau": "K08030301010",
+     "loai": "trac_nghiem",
+     "de": "Một người trưởng thành có khoảng 5 lít máu. Biết huyết tương chiếm khoảng 55% thể tích máu.\nThể tích huyết tương trong máu của người này khoảng",
+     "lua_chon": [
+      "2,25 lít.",
+      "2,75 lít.",
+      "3,25 lít.",
+      "4,45 lít."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Thể tích huyết tương: $5 \\cdot 55\\% = 2,75$ (lít)"
+    },
+    {
+     "ma_cau": "K08030301004",
+     "loai": "trac_nghiem",
+     "de": "Thành phần chiếm tỉ lệ lớn nhất trong huyết tương là",
+     "lua_chon": [
+      "protein.",
+      "muối khoáng.",
+      "nước.",
+      "chất béo."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Huyết tương chứa khoảng 90% là nước, còn lại là các chất hoà tan như protein, muối khoáng, chất dinh dưỡng, chất thải."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00959",
+   "nhom_id": "KNB00405",
+   "thu_tu": 2,
+   "dang": "CHỨC NĂNG CỦA HỒNG CẦU, BẠCH CẦU, TIỂU CẦU",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030301014",
+     "loai": "trac_nghiem",
+     "de": "Hồng cầu vận chuyển được oxygen và carbon dioxide nhờ có",
+     "lua_chon": [
+      "hemoglobin.",
+      "kháng thể.",
+      "tiểu cầu.",
+      "huyết tương."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Hồng cầu chứa hemoglobin, chất có khả năng kết hợp với oxygen và carbon dioxide để vận chuyển."
+    },
+    {
+     "ma_cau": "K08030301020",
+     "loai": "trac_nghiem",
+     "de": "Một người bị thiếu máu do số lượng hồng cầu giảm thường có biểu hiện mệt mỏi, da xanh xao.\nNguyên nhân chủ yếu là",
+     "lua_chon": [
+      "cơ thể giảm khả năng chống bệnh.",
+      "máu chậm đông khi bị thương.",
+      "huyết tương bị mất nhiều nước.",
+      "các tế bào được cung cấp ít oxygen."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Hồng cầu giảm làm máu vận chuyển ít oxygen; các tế bào thiếu oxygen để tạo năng lượng nên cơ thể mệt mỏi."
+    },
+    {
+     "ma_cau": "K08030301011",
+     "loai": "trac_nghiem",
+     "de": "Chức năng chính của hồng cầu là",
+     "lua_chon": [
+      "tiêu diệt vi khuẩn xâm nhập cơ thể.",
+      "tham gia vào quá trình đông máu.",
+      "vận chuyển oxygen và carbon dioxide.",
+      "tạo ra kháng thể chống bệnh."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Hồng cầu chứa hemoglobin, có chức năng vận chuyển oxygen và carbon dioxide."
+    },
+    {
+     "ma_cau": "K08030301016",
+     "loai": "trac_nghiem",
+     "de": "Khi bị đứt tay, máu chảy một lúc rồi tự ngừng chảy. Tế bào máu tham gia trực tiếp vào hiện tượng này là",
+     "lua_chon": [
+      "hồng cầu.",
+      "tiểu cầu.",
+      "bạch cầu.",
+      "tế bào lympho."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tiểu cầu tham gia quá trình đông máu, tạo cục máu đông bịt vết thương nên máu ngừng chảy."
+    },
+    {
+     "ma_cau": "K08030301015",
+     "loai": "trac_nghiem",
+     "de": "Loại tế bào máu có khả năng thực bào, tức là bao lấy và tiêu hoá vi khuẩn, là",
+     "lua_chon": [
+      "hồng cầu.",
+      "tiểu cầu.",
+      "tế bào biểu bì.",
+      "bạch cầu."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Một số loại bạch cầu có khả năng thực bào: bao lấy vi khuẩn rồi tiêu hoá chúng."
+    },
+    {
+     "ma_cau": "K08030301017",
+     "loai": "trac_nghiem",
+     "de": "Máu có màu đỏ là do",
+     "lua_chon": [
+      "tiểu cầu trong huyết tương.",
+      "bạch cầu trong huyết tương.",
+      "hemoglobin trong hồng cầu.",
+      "muối khoáng trong huyết tương."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Hemoglobin trong hồng cầu có màu đỏ, làm cho máu có màu đỏ."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00960",
+   "nhom_id": "KNB00405",
+   "thu_tu": 3,
+   "dang": "MIỄN DỊCH VÀ VACCINE",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030301026",
+     "loai": "trac_nghiem",
+     "de": "Tiêm vaccine phòng một bệnh giúp cơ thể",
+     "lua_chon": [
+      "chủ động tạo kháng thể chống lại bệnh đó.",
+      "tiêu diệt ngay mầm bệnh đang có trong cơ thể.",
+      "tăng số lượng hồng cầu trong máu.",
+      "không bao giờ mắc bất kì bệnh nào khác."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Vaccine kích thích cơ thể chủ động tạo kháng thể, nhờ đó cơ thể có miễn dịch với bệnh tương ứng."
+    },
+    {
+     "ma_cau": "K08030301029",
+     "loai": "trac_nghiem",
+     "de": "Một người đã từng mắc bệnh thuỷ đậu thường không mắc lại bệnh này. Nguyên nhân là",
+     "lua_chon": [
+      "mầm bệnh thuỷ đậu không còn tồn tại trong môi trường.",
+      "số lượng hồng cầu của người đó đã tăng lên.",
+      "cơ thể đã có miễn dịch với mầm bệnh thuỷ đậu.",
+      "tiểu cầu đã tiêu diệt toàn bộ mầm bệnh."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Sau khi mắc bệnh, cơ thể đã tạo được miễn dịch với mầm bệnh thuỷ đậu nên khi mầm bệnh xâm nhập lại, cơ thể chống lại được và không mắc bệnh."
+    },
+    {
+     "ma_cau": "K08030301025",
+     "loai": "trac_nghiem",
+     "de": "Vaccine là",
+     "lua_chon": [
+      "thuốc kháng sinh dùng để tiêu diệt vi khuẩn gây bệnh.",
+      "dung dịch chứa hồng cầu dùng để truyền cho người bệnh.",
+      "chất dinh dưỡng giúp tăng số lượng tế bào máu.",
+      "chế phẩm chứa mầm bệnh đã chết hoặc đã làm yếu, giúp cơ thể tạo miễn dịch."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Vaccine là chế phẩm sinh học chứa mầm bệnh đã chết hoặc đã làm yếu (hoặc thành phần của chúng) có vai trò như kháng nguyên, kích thích cơ thể tạo miễn dịch."
+    },
+    {
+     "ma_cau": "K08030301027",
+     "loai": "trac_nghiem",
+     "de": "Kháng thể vô hiệu hoá kháng nguyên bằng cách",
+     "lua_chon": [
+      "bao lấy và tiêu hoá toàn bộ tế bào cơ thể.",
+      "kết hợp đặc hiệu với kháng nguyên tương ứng.",
+      "tạo cục máu đông bịt kín mầm bệnh.",
+      "vận chuyển kháng nguyên ra khỏi cơ thể qua phổi."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Mỗi loại kháng thể chỉ kết hợp với một loại kháng nguyên tương ứng (kết hợp đặc hiệu), làm kháng nguyên mất tác dụng gây bệnh."
+    },
+    {
+     "ma_cau": "K08030301021",
+     "loai": "trac_nghiem",
+     "de": "Miễn dịch là",
+     "lua_chon": [
+      "khả năng cơ thể tự đông máu khi bị thương.",
+      "khả năng hồng cầu vận chuyển oxygen đến các tế bào.",
+      "khả năng cơ thể tự điều hoà thân nhiệt.",
+      "khả năng cơ thể không mắc một bệnh nào đó dù sống ở môi trường có mầm bệnh."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Miễn dịch là khả năng cơ thể không bị mắc một bệnh nào đó dù sống ở môi trường có mầm bệnh."
+    },
+    {
+     "ma_cau": "K08030301024",
+     "loai": "trac_nghiem",
+     "de": "Kháng thể trong cơ thể người được tạo ra bởi",
+     "lua_chon": [
+      "hồng cầu.",
+      "bạch cầu.",
+      "tiểu cầu.",
+      "tế bào biểu bì."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Kháng thể do một loại bạch cầu (tế bào lympho B) tạo ra."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00961",
+   "nhom_id": "KNB00406",
+   "thu_tu": 1,
+   "dang": "BỐN NHÓM MÁU HỆ ABO",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030302003",
+     "loai": "trac_nghiem",
+     "de": "Trong huyết tương của người có nhóm máu A có loại kháng thể nào sau đây?",
+     "lua_chon": [
+      "Kháng thể $\\alpha$.",
+      "Kháng thể $\\beta$.",
+      "Cả kháng thể $\\alpha$ và $\\beta$.",
+      "Không có kháng thể $\\alpha$ và $\\beta$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Người nhóm máu A có kháng nguyên A trên hồng cầu nên huyết tương không có kháng thể $\\alpha$ (chống A), chỉ có kháng thể $\\beta$."
+    },
+    {
+     "ma_cau": "K08030302005",
+     "loai": "trac_nghiem",
+     "de": "Nhóm máu không có kháng nguyên A và kháng nguyên B trên màng hồng cầu là",
+     "lua_chon": [
+      "nhóm A.",
+      "nhóm O.",
+      "nhóm B.",
+      "nhóm AB."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Hồng cầu nhóm O không có kháng nguyên A và kháng nguyên B."
+    },
+    {
+     "ma_cau": "K08030302002",
+     "loai": "trac_nghiem",
+     "de": "Hệ nhóm máu ABO ở người gồm bao nhiêu nhóm máu?",
+     "lua_chon": [
+      "2 nhóm.",
+      "3 nhóm.",
+      "4 nhóm.",
+      "5 nhóm."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Hệ nhóm máu ABO gồm 4 nhóm: A, B, AB và O."
+    },
+    {
+     "ma_cau": "K08030302006",
+     "loai": "trac_nghiem",
+     "de": "Đặc điểm về kháng thể trong huyết tương của người có nhóm máu O là",
+     "lua_chon": [
+      "chỉ có kháng thể $\\alpha$.",
+      "chỉ có kháng thể $\\beta$.",
+      "có cả kháng thể $\\alpha$ và kháng thể $\\beta$.",
+      "không có kháng thể $\\alpha$ và $\\beta$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nhóm máu O không có kháng nguyên A, B trên hồng cầu nên huyết tương có cả kháng thể $\\alpha$ và kháng thể $\\beta$."
+    },
+    {
+     "ma_cau": "K08030302009",
+     "loai": "trac_nghiem",
+     "de": "Đặc điểm của nhóm máu B là",
+     "lua_chon": [
+      "hồng cầu có kháng nguyên B, huyết tương có kháng thể $\\alpha$.",
+      "hồng cầu có kháng nguyên B, huyết tương có kháng thể $\\beta$.",
+      "hồng cầu có kháng nguyên A, huyết tương có kháng thể $\\alpha$.",
+      "hồng cầu có kháng nguyên A, huyết tương có kháng thể $\\beta$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nhóm máu B có kháng nguyên B trên hồng cầu và kháng thể $\\alpha$ trong huyết tương."
+    },
+    {
+     "ma_cau": "K08030302007",
+     "loai": "trac_nghiem",
+     "de": "Đặc điểm về kháng thể trong huyết tương của người có nhóm máu AB là",
+     "lua_chon": [
+      "không có kháng thể $\\alpha$ và $\\beta$.",
+      "chỉ có kháng thể $\\alpha$.",
+      "chỉ có kháng thể $\\beta$.",
+      "có cả kháng thể $\\alpha$ và kháng thể $\\beta$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nhóm máu AB có cả kháng nguyên A và B trên hồng cầu nên huyết tương không có kháng thể $\\alpha$ và $\\beta$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00962",
+   "nhom_id": "KNB00406",
+   "thu_tu": 2,
+   "dang": "SƠ ĐỒ TRUYỀN MÁU",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030302015",
+     "loai": "trac_nghiem",
+     "de": "Hình bên là sơ đồ truyền máu giữa các nhóm máu hệ ABO (mũi tên chỉ chiều truyền máu được). Theo sơ đồ, máu nhóm AB truyền được cho",
+     "lua_chon": [
+      "nhóm AB và nhóm O.",
+      "nhóm A và nhóm B.",
+      "cả bốn nhóm máu.",
+      "chỉ nhóm AB."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Từ nhóm AB không có mũi tên nào đi ra.\nVậy nhóm AB chỉ truyền được cho chính nhóm AB.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K08030302018",
+     "loai": "trac_nghiem",
+     "de": "Hình bên là sơ đồ truyền máu giữa các nhóm máu hệ ABO (mũi tên chỉ chiều truyền máu được). Trên sơ đồ, nhóm O có mũi tên đi đến tất cả các nhóm khác vì",
+     "lua_chon": [
+      "huyết tương nhóm O không có kháng thể $\\alpha$ và $\\beta$.",
+      "hồng cầu nhóm O không có kháng nguyên A và B.",
+      "hồng cầu nhóm O có cả kháng nguyên A và B.",
+      "huyết tương nhóm O có nhiều tiểu cầu."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Hồng cầu nhóm O không có kháng nguyên A và B nên không bị kháng thể $\\alpha$, $\\beta$ trong huyết tương người\nnhận gây kết dính.\nVì vậy nhóm O truyền được cho các nhóm khác.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K08030302020",
+     "loai": "trac_nghiem",
+     "de": "Hình bên là sơ đồ truyền máu giữa bốn nhóm máu hệ ABO, các nhóm được kí hiệu bằng số 1, 2, 3, 4 (mũi tên chỉ chiều truyền máu được; nhóm nào cũng truyền được cho chính nhóm đó). Nhóm máu được kí hiệu bằng số 1 là",
+     "lua_chon": [
+      "A.",
+      "B.",
+      "AB.",
+      "O."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Nhóm số 1 truyền được cho tất cả các nhóm còn lại và không nhận được máu từ nhóm nào khác.\nNhóm có đặc điểm này là nhóm O.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K08030302014",
+     "loai": "trac_nghiem",
+     "de": "Hình bên là sơ đồ truyền máu giữa các nhóm máu hệ ABO (mũi tên chỉ chiều truyền máu được). Theo sơ đồ, người có nhóm máu B nhận được máu từ [hình]",
+     "lua_chon": [
+      "nhóm B và nhóm O.",
+      "nhóm B và nhóm AB.",
+      "nhóm A và nhóm B.",
+      "cả bốn nhóm máu."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Mũi tên đi đến nhóm B chỉ xuất phát từ nhóm O; nhóm B nhận được từ chính nhóm B.\nVậy nhóm B nhận được máu từ nhóm B và nhóm O.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K08030302012",
+     "loai": "trac_nghiem",
+     "de": "Hình bên là sơ đồ truyền máu giữa các nhóm máu hệ ABO (mũi tên chỉ chiều truyền máu được). Theo sơ đồ, người có nhóm máu AB nhận được máu từ",
+     "lua_chon": [
+      "chỉ nhóm AB.",
+      "cả bốn nhóm O, A, B và AB.",
+      "nhóm A và nhóm B.",
+      "nhóm O và nhóm AB."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Các mũi tên từ O, A, B đều đi đến AB; nhóm AB cũng nhận được từ chính nhóm AB.\nVậy nhóm AB nhận được máu từ cả bốn nhóm.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K08030302011",
+     "loai": "trac_nghiem",
+     "de": "Hình bên là sơ đồ truyền máu giữa các nhóm máu hệ ABO (mũi tên chỉ chiều truyền máu được). Theo sơ đồ, máu nhóm O truyền được cho",
+     "lua_chon": [
+      "chỉ nhóm O.",
+      "nhóm O và nhóm AB.",
+      "nhóm A và nhóm B.",
+      "cả bốn nhóm O, A, B và AB."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Từ nhóm O có mũi tên đi đến A, B và AB; nhóm O cũng truyền được cho chính nhóm O.\nVậy nhóm O truyền được cho cả bốn nhóm.",
+     "co_hinh": true
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00963",
+   "nhom_id": "KNB00406",
+   "thu_tu": 3,
+   "dang": "XÁC ĐỊNH NHÓM MÁU CHO VÀ NHẬN ĐƯỢC",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030302024",
+     "loai": "tra_loi_ngan",
+     "de": "Một người có nhóm máu A muốn hiến máu. Trong bốn nhóm máu A, B, AB và O, máu của người này truyền được cho bao nhiêu nhóm?",
+     "dap_an": "2",
+     "loi_giai": "Hồng cầu nhóm A mang kháng nguyên A, bị kháng thể $\\alpha$ gây kết dính.\nNhóm B và nhóm O có kháng thể $\\alpha$ nên không nhận được.\nNhóm A và nhóm AB không có kháng thể $\\alpha$ nên nhận được.\nVậy máu nhóm A truyền được cho 2 nhóm."
+    },
+    {
+     "ma_cau": "K08030302026",
+     "loai": "tra_loi_ngan",
+     "de": "Hồng cầu của một người cho máu có cả kháng nguyên A và kháng nguyên B. Máu của người này chỉ truyền được cho người có nhóm máu nào?",
+     "dap_an": "AB",
+     "loi_giai": "Hồng cầu mang cả kháng nguyên A và B sẽ bị kết dính nếu người nhận có kháng thể $\\alpha$ hoặc $\\beta$.\nChỉ huyết tương nhóm AB không có kháng thể $\\alpha$ và $\\beta$.\nVậy máu này chỉ truyền được cho người nhóm AB."
+    },
+    {
+     "ma_cau": "K08030302023",
+     "loai": "tra_loi_ngan",
+     "de": "Một người bệnh có nhóm máu O cần được truyền máu. Có bốn người cho có nhóm máu A, B, AB và O. Có bao nhiêu người cho có thể truyền máu cho người bệnh này?",
+     "dap_an": "1",
+     "loi_giai": "Huyết tương người nhóm O có cả kháng thể $\\alpha$ và $\\beta$, gây kết dính hồng cầu mang kháng nguyên A hoặc B.\nChỉ người cho nhóm O không có kháng nguyên A, B.\nVậy có 1 người cho phù hợp."
+    },
+    {
+     "ma_cau": "K08030302025",
+     "loai": "tra_loi_ngan",
+     "de": "Huyết tương của một người bệnh có cả kháng thể $\\alpha$ và kháng thể $\\beta$. Người bệnh này chỉ nhận được máu của người có nhóm máu nào?",
+     "dap_an": "O",
+     "loi_giai": "Kháng thể $\\alpha$ và $\\beta$ gây kết dính hồng cầu mang kháng nguyên A hoặc B.\nChỉ hồng cầu nhóm O không có kháng nguyên A và B.\nVậy người bệnh chỉ nhận được máu nhóm O."
+    },
+    {
+     "ma_cau": "K08030302027",
+     "loai": "tra_loi_ngan",
+     "de": "Một người có hồng cầu mang kháng nguyên B và huyết tương chứa kháng thể $\\alpha$. Trong bốn nhóm máu A, B, AB và O, máu của người này truyền được cho bao nhiêu nhóm?",
+     "dap_an": "2",
+     "loi_giai": "Người này có nhóm máu B.\nHồng cầu mang kháng nguyên B bị kháng thể $\\beta$ gây kết dính; nhóm A và nhóm O có kháng thể $\\beta$ nên không nhận được.\nNhóm B và nhóm AB nhận được.\nVậy truyền được cho 2 nhóm."
+    },
+    {
+     "ma_cau": "K08030302030",
+     "loai": "tra_loi_ngan",
+     "de": "Người M nhận được máu của một người nhóm A và cũng nhận được máu của một người nhóm B.\nNgười M có nhóm máu nào?",
+     "dap_an": "AB",
+     "loi_giai": "Nhận được máu nhóm A thì huyết tương M không có kháng thể $\\alpha$.\nNhận được máu nhóm B thì huyết tương M không có kháng thể $\\beta$.\nHuyết tương không có cả $\\alpha$ và $\\beta$ là đặc điểm của nhóm AB."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00964",
+   "nhom_id": "KNB00407",
+   "thu_tu": 1,
+   "dang": "CẤU TẠO TIM VÀ HỆ MẠCH",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030303010",
+     "loai": "trac_nghiem",
+     "de": "Thành cơ của tâm thất trái dày hơn thành cơ của tâm thất phải. Giải thích nào sau đây là đúng?",
+     "lua_chon": [
+      "Tâm thất trái đẩy máu đi khắp cơ thể, quãng đường dài hơn.",
+      "Tâm thất trái chứa máu nghèo oxygen nên cần thành dày hơn.",
+      "Tâm thất trái nhận máu trực tiếp từ các cơ quan trong cơ thể.",
+      "Tâm thất trái chỉ đẩy máu lên phổi nên cần lực co lớn hơn."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tâm thất trái đẩy máu vào động mạch chủ đi khắp cơ thể (vòng tuần hoàn lớn), quãng đường dài nên cần lực co bóp mạnh.\nTâm thất phải chỉ đẩy máu lên phổi, quãng đường ngắn hơn."
+    },
+    {
+     "ma_cau": "K08030303003",
+     "loai": "trac_nghiem",
+     "de": "Loại mạch máu dẫn máu từ các cơ quan trở về tim là",
+     "lua_chon": [
+      "tĩnh mạch.",
+      "động mạch.",
+      "mao mạch.",
+      "động mạch chủ."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tĩnh mạch dẫn máu từ các cơ quan trở về tim."
+    },
+    {
+     "ma_cau": "K08030303009",
+     "loai": "trac_nghiem",
+     "de": "Ngăn tim có thành cơ dày nhất là",
+     "lua_chon": [
+      "tâm thất phải.",
+      "tâm nhĩ trái.",
+      "tâm nhĩ phải.",
+      "tâm thất trái."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tâm thất trái có thành cơ dày nhất vì phải co bóp mạnh để đẩy máu đi khắp cơ thể."
+    },
+    {
+     "ma_cau": "K08030303001",
+     "loai": "trac_nghiem",
+     "de": "Tim người được chia thành bao nhiêu ngăn?",
+     "lua_chon": [
+      "2 ngăn.",
+      "3 ngăn.",
+      "4 ngăn.",
+      "5 ngăn."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tim người có 4 ngăn: tâm nhĩ phải, tâm nhĩ trái, tâm thất phải, tâm thất trái."
+    },
+    {
+     "ma_cau": "K08030303004",
+     "loai": "trac_nghiem",
+     "de": "Loại mạch máu có thành mỏng nhất, là nơi diễn ra trao đổi chất giữa máu và các tế bào là",
+     "lua_chon": [
+      "động mạch.",
+      "mao mạch.",
+      "tĩnh mạch.",
+      "động mạch phổi."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Mao mạch có thành mỏng (chỉ gồm một lớp tế bào), là nơi máu trao đổi chất với các tế bào."
+    },
+    {
+     "ma_cau": "K08030303005",
+     "loai": "trac_nghiem",
+     "de": "Các van tim có vai trò",
+     "lua_chon": [
+      "tạo ra lực đẩy máu đi khắp cơ thể.",
+      "trao đổi khí giữa máu và tế bào.",
+      "giữ cho máu không bị đông lại.",
+      "giúp máu chảy theo một chiều trong tim."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Van tim chỉ mở theo một chiều, giúp máu chảy theo một chiều nhất định trong tim, không chảy ngược."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00965",
+   "nhom_id": "KNB00407",
+   "thu_tu": 2,
+   "dang": "HAI VÒNG TUẦN HOÀN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030303020",
+     "loai": "trac_nghiem",
+     "de": "Khi máu chảy qua mao mạch phổi, máu thay đổi như thế nào?",
+     "lua_chon": [
+      "Từ đỏ tươi thành đỏ thẫm vì nhận carbon dioxide, thải oxygen.",
+      "Từ đỏ thẫm thành đỏ tươi vì nhận carbon dioxide, thải oxygen.",
+      "Từ đỏ thẫm thành đỏ tươi vì nhận oxygen, thải carbon dioxide.",
+      "Không thay đổi màu vì phổi chỉ là nơi máu chảy qua."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ở mao mạch phổi, máu nhận oxygen từ phế nang và thải carbon dioxide ra phế nang.Máu nghèo oxygen (đỏ thẫm) trở thành máu giàu oxygen (đỏ tươi)."
+    },
+    {
+     "ma_cau": "K08030303011",
+     "loai": "trac_nghiem",
+     "de": "Vòng tuần hoàn nhỏ đưa máu đi qua",
+     "lua_chon": [
+      "gan.",
+      "thận.",
+      "phổi.",
+      "ruột."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Vòng tuần hoàn nhỏ đưa máu từ tim lên phổi để trao đổi khí rồi trở về tim."
+    },
+    {
+     "ma_cau": "K08030303012",
+     "loai": "trac_nghiem",
+     "de": "Vòng tuần hoàn nhỏ bắt đầu từ",
+     "lua_chon": [
+      "tâm thất phải.",
+      "tâm thất trái.",
+      "tâm nhĩ phải.",
+      "tâm nhĩ trái."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Vòng tuần hoàn nhỏ bắt đầu từ tâm thất phải, máu được đẩy vào động mạch phổi lên phổi."
+    },
+    {
+     "ma_cau": "K08030303016",
+     "loai": "trac_nghiem",
+     "de": "Vai trò của vòng tuần hoàn lớn là",
+     "lua_chon": [
+      "đưa máu nghèo oxygen lên phổi để trao đổi khí.",
+      "đưa máu từ tâm nhĩ xuống tâm thất trong tim.",
+      "đưa máu giàu oxygen và chất dinh dưỡng đến các cơ quan.",
+      "đưa máu từ phổi trở về tâm nhĩ phải."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Vòng tuần hoàn lớn đưa máu giàu oxygen và chất dinh dưỡng đến các cơ quan, đồng thời nhận carbon dioxide và chất thải từ các cơ quan đưa về tim."
+    },
+    {
+     "ma_cau": "K08030303014",
+     "loai": "trac_nghiem",
+     "de": "Vòng tuần hoàn nhỏ kết thúc tại",
+     "lua_chon": [
+      "tâm nhĩ phải.",
+      "tâm thất trái.",
+      "tâm thất phải.",
+      "tâm nhĩ trái."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Máu từ phổi theo tĩnh mạch phổi trở về tâm nhĩ trái, kết thúc vòng tuần hoàn nhỏ."
+    },
+    {
+     "ma_cau": "K08030303015",
+     "loai": "trac_nghiem",
+     "de": "Vòng tuần hoàn lớn kết thúc tại",
+     "lua_chon": [
+      "tâm nhĩ trái.",
+      "tâm nhĩ phải.",
+      "tâm thất phải.",
+      "tâm thất trái."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Máu từ các cơ quan theo tĩnh mạch chủ trở về tâm nhĩ phải, kết thúc vòng tuần hoàn lớn."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00966",
+   "nhom_id": "KNB00407",
+   "thu_tu": 3,
+   "dang": "ĐƯỜNG ĐI CỦA MÁU VÀ SỰ ĐỔI LOẠI MÁU",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 9,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030303024",
+     "loai": "tra_loi_ngan",
+     "de": "Máu trong tĩnh mạch phổi là máu giàu oxygen hay nghèo oxygen?",
+     "dap_an": "giàu oxygen",
+     "loi_giai": "Tĩnh mạch phổi dẫn máu vừa nhận oxygen ở phổi về tim.Vậy máu trong tĩnh mạch phổi là máu giàu oxygen."
+    },
+    {
+     "ma_cau": "K08030303025",
+     "loai": "tra_loi_ngan",
+     "de": "Máu trong động mạch phổi là máu giàu oxygen hay nghèo oxygen?",
+     "dap_an": "nghèo oxygen",
+     "loi_giai": "Động mạch phổi dẫn máu từ tâm thất phải lên phổi.Máu ở tâm thất phải là máu từ các cơ quan trở về, đã nhường oxygen cho tế bào.Vậy máu trong động mạch phổi là máu nghèo oxygen."
+    },
+    {
+     "ma_cau": "K08030303021",
+     "loai": "tra_loi_ngan",
+     "de": "Máu từ tâm thất phải được đẩy vào mạch máu nào?",
+     "dap_an": "động mạch phổi",
+     "loi_giai": "Khi tâm thất phải co, máu được đẩy vào động mạch phổi để lên phổi (vòng tuần hoàn nhỏ)."
+    },
+    {
+     "ma_cau": "K08030303022",
+     "loai": "tra_loi_ngan",
+     "de": "Máu trong tĩnh mạch phổi đổ về ngăn tim nào?",
+     "dap_an": "tâm nhĩ trái",
+     "loi_giai": "Tĩnh mạch phổi đưa máu từ phổi về tâm nhĩ trái."
+    },
+    {
+     "ma_cau": "K08030303027",
+     "loai": "tra_loi_ngan",
+     "de": "Một phân tử carbon dioxide do tế bào gan tạo ra được máu đưa đến phổi để thải ra ngoài. Ngăn tim cuối cùng mà phân tử này đi qua trước khi đến phổi là ngăn nào?",
+     "dap_an": "tâm thất phải",
+     "loi_giai": "Đường đi: mao mạch ở gan \\rightarrow tĩnh mạch chủ \\rightarrow tâm nhĩ phải \\rightarrow tâm thất phải \\rightarrow động mạch phổi \\rightarrow mao mạch phổi.\nNgăn tim cuối cùng phân tử đi qua là tâm thất phải."
+    },
+    {
+     "ma_cau": "K08030303029",
+     "loai": "tra_loi_ngan",
+     "de": "Một tế bào hồng cầu xuất phát từ tâm thất trái, đi hết vòng tuần hoàn lớn rồi tiếp tục đi hết vòng tuần hoàn nhỏ. Trên quãng đường này, hồng cầu đi qua mao mạch phổi bao nhiêu lần?",
+     "dap_an": "1",
+     "loi_giai": "Vòng tuần hoàn lớn: tâm thất trái \\rightarrow các cơ quan \\rightarrow tâm nhĩ phải (không qua phổi).\nVòng tuần hoàn nhỏ: tâm thất phải \\rightarrow mao mạch phổi \\rightarrow tâm nhĩ trái.\nVậy hồng cầu đi qua mao mạch phổi 1 lần."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00967",
+   "nhom_id": "KNB00408",
+   "thu_tu": 1,
+   "dang": "BỆNH TIM MẠCH VÀ YẾU TỐ NGUY CƠ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030304009",
+     "loai": "trac_nghiem",
+     "de": "Người béo phì có nguy cơ mắc bệnh tim mạch cao hơn người có cân nặng hợp lí vì",
+     "lua_chon": [
+      "tim phải làm việc nhiều hơn và mỡ dễ tích tụ trong mạch.",
+      "cơ thể có nhiều hồng cầu hơn nên máu đặc lại.",
+      "cơ thể có ít bạch cầu nên dễ nhiễm khuẩn tim.",
+      "phổi lớn hơn nên tim phải co bóp chậm lại."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng cơ thể lớn khiến tim phải hoạt động nhiều hơn; lượng mỡ dư thừa dễ tích tụ trong thành mạch gây xơ vữa, tăng huyết áp."
+    },
+    {
+     "ma_cau": "K08030304008",
+     "loai": "trac_nghiem",
+     "de": "Tăng huyết áp kéo dài, không được điều trị có thể gây biến chứng nguy hiểm nào sau đây?",
+     "lua_chon": [
+      "Giảm số lượng bạch cầu trong máu.",
+      "Máu chậm đông khi bị thương.",
+      "Vỡ mạch máu não gây đột quỵ.",
+      "Tăng khả năng miễn dịch của cơ thể."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Huyết áp cao kéo dài làm thành mạch chịu áp lực lớn, có thể gây vỡ mạch máu não, dẫn đến đột quỵ."
+    },
+    {
+     "ma_cau": "K08030304010",
+     "loai": "trac_nghiem",
+     "de": "Trong bốn người sau, người nào có nguy cơ mắc bệnh tim mạch cao nhất?",
+     "lua_chon": [
+      "Người ăn nhạt, tập thể dục và ngủ đủ giấc.",
+      "Người hút thuốc lá, ăn mặn và ít vận động.",
+      "Người ăn nhiều rau, đi bộ hằng ngày.",
+      "Người không hút thuốc, cân nặng hợp lí."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Hút thuốc lá, ăn mặn và ít vận động đều là yếu tố nguy cơ bệnh tim mạch. Người có cả ba yếu tố này có nguy cơ cao nhất."
+    },
+    {
+     "ma_cau": "K08030304002",
+     "loai": "trac_nghiem",
+     "de": "Biện pháp nào sau đây giúp bảo vệ hệ tuần hoàn?",
+     "lua_chon": [
+      "Thường xuyên uống rượu, bia với lượng nhỏ.",
+      "Ăn nhiều thức ăn chiên rán nhiều dầu mỡ.",
+      "Thức khuya thường xuyên để học bài.",
+      "Luyện tập thể dục, thể thao vừa sức, đều đặn."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Luyện tập thể dục, thể thao vừa sức, đều đặn giúp tim khoẻ, mạch máu lưu thông tốt."
+    },
+    {
+     "ma_cau": "K08030304001",
+     "loai": "trac_nghiem",
+     "de": "Thói quen nào sau đây làm tăng nguy cơ mắc bệnh tim mạch?",
+     "lua_chon": [
+      "Thường xuyên ăn mặn và nhiều mỡ động vật.",
+      "Ăn nhiều rau xanh và trái cây.",
+      "Tập thể dục vừa sức, đều đặn.",
+      "Ngủ đủ giấc, tránh căng thẳng."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ăn mặn làm tăng huyết áp; ăn nhiều mỡ động vật dễ gây xơ vữa động mạch. Đây là các yếu tố làm tăng nguy cơ bệnh tim mạch."
+    },
+    {
+     "ma_cau": "K08030304006",
+     "loai": "trac_nghiem",
+     "de": "Không nên sử dụng thuốc lá và các chất kích thích vì các chất này có thể",
+     "lua_chon": [
+      "làm tăng số lượng tiểu cầu giúp máu đông nhanh.",
+      "làm thành mạch máu dày lên và đàn hồi tốt hơn.",
+      "làm giảm nhịp tim và huyết áp về mức an toàn.",
+      "làm tim đập nhanh, mạch co lại và tăng huyết áp."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Thuốc lá và các chất kích thích làm tim đập nhanh, mạch máu co lại, tăng huyết áp và gây tổn thương thành mạch."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00968",
+   "nhom_id": "KNB00408",
+   "thu_tu": 2,
+   "dang": "ĐO VÀ NHẬN XÉT HUYẾT ÁP, NHỊP TIM",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030304015",
+     "loai": "trac_nghiem",
+     "de": "Kết quả đo huyết áp của anh Minh lúc nghỉ ngơi là $118/76 \\ \\mathrm{mmHg}$. Theo phân loại hiện hành ở người trưởng thành: huyết áp ở mức bình thường (gồm các mức tối ưu, bình thường và bình thường cao) khi huyết áp tâm thu từ $90$ đến $139 \\ \\mathrm{mmHg}$ và huyết áp tâm trương từ $60$ đến $89 \\ \\mathrm{mmHg}$; tăng huyết áp khi huyết áp tâm thu từ $140 \\ \\mathrm{mmHg}$ trở lên hoặc huyết áp tâm trương từ $90 \\ \\mathrm{mmHg}$ trở lên; huyết áp thấp khi huyết áp tâm thu dưới $90 \\ \\mathrm{mmHg}$ hoặc huyết áp tâm trương dưới $60 \\ \\mathrm{mmHg}$. Nhận xét đúng là",
+     "lua_chon": [
+      "Người này bị tăng huyết áp.",
+      "Người này bị huyết áp thấp.",
+      "Chưa kết luận được vì thiếu nhịp tim.",
+      "Huyết áp của người này bình thường."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Huyết áp tâm thu: $118 \\ \\mathrm{mmHg}$; huyết áp tâm trương: $76 \\ \\mathrm{mmHg}$.\nCả hai chỉ số đều nằm trong khoảng bình thường nên huyết áp bình thường."
+    },
+    {
+     "ma_cau": "K08030304012",
+     "loai": "trac_nghiem",
+     "de": "Đơn vị thường dùng để ghi kết quả đo huyết áp là",
+     "lua_chon": [
+      "lần/phút.",
+      "mmHg.",
+      "kg.",
+      "N."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Huyết áp thường được ghi bằng đơn vị milimét thuỷ ngân (mmHg)."
+    },
+    {
+     "ma_cau": "K08030304011",
+     "loai": "trac_nghiem",
+     "de": "Kết quả đo huyết áp của một người được ghi là 120/80 mmHg. Số 120 cho biết",
+     "lua_chon": [
+      "huyết áp tâm trương (huyết áp tối thiểu).",
+      "số nhịp tim trong một phút.",
+      "huyết áp tâm thu (huyết áp tối đa).",
+      "số lần thở trong một phút."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Kết quả đo huyết áp ghi dạng huyết áp tâm thu/huyết áp tâm trương. Số 120 là huyết áp tâm thu (tối đa)."
+    },
+    {
+     "ma_cau": "K08030304016",
+     "loai": "trac_nghiem",
+     "de": "Một người trưởng thành đếm được nhịp tim lúc nghỉ ngơi là 110 lần/phút. Biết nhịp tim lúc nghỉ ngơi của người trưởng thành bình thường từ 60 đến 100 lần/phút. Nhận xét đúng là",
+     "lua_chon": [
+      "Nhịp tim thấp hơn bình thường.",
+      "Nhịp tim ở mức bình thường.",
+      "Nhịp tim cao hơn bình thường.",
+      "Người này bị huyết áp thấp."
+     ],
+     "dap_an": "C",
+     "loi_giai": "110 lần/phút lớn hơn 100 lần/phút nên nhịp tim lúc nghỉ cao hơn bình thường."
+    },
+    {
+     "ma_cau": "K08030304014",
+     "loai": "trac_nghiem",
+     "de": "Kết quả đo huyết áp của chị Lan lúc nghỉ ngơi là $85/55 \\ \\mathrm{mmHg}$. Theo phân loại hiện hành ở người trưởng thành: huyết áp ở mức bình thường (gồm các mức tối ưu, bình thường và bình thường cao) khi huyết áp tâm thu từ $90$ đến $139 \\ \\mathrm{mmHg}$ và huyết áp tâm trương từ $60$ đến $89 \\ \\mathrm{mmHg}$; tăng huyết áp khi huyết áp tâm thu từ $140 \\ \\mathrm{mmHg}$ trở lên hoặc huyết áp tâm trương từ $90 \\ \\mathrm{mmHg}$ trở lên; huyết áp thấp khi huyết áp tâm thu dưới $90 \\ \\mathrm{mmHg}$ hoặc huyết áp tâm trương dưới $60 \\ \\mathrm{mmHg}$. Nhận xét đúng là",
+     "lua_chon": [
+      "Người này bị huyết áp thấp.",
+      "Người này bị tăng huyết áp.",
+      "Huyết áp của người này bình thường.",
+      "Chưa kết luận được vì thiếu nhịp tim."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Huyết áp tâm thu: $85 \\ \\mathrm{mmHg}$; huyết áp tâm trương: $55 \\ \\mathrm{mmHg}$.\nCó huyết áp tâm thu dưới $90 \\ \\mathrm{mmHg}$ nên người này bị huyết áp thấp."
+    },
+    {
+     "ma_cau": "K08030304013",
+     "loai": "trac_nghiem",
+     "de": "Kết quả đo huyết áp của ông Ba lúc nghỉ ngơi là 150/95 mmHg. Theo phân loại hiện hành ở người trưởng thành: huyết áp ở mức bình thường (gồm các mức tối ưu, bình thường và bình thường cao) khi huyết áp tâm thu từ 90 đến 139 mmHg và huyết áp tâm trương từ 60 đến 89 mmHg; tăng huyết áp khi huyết áp tâm thu từ 140 mmHg trở lên hoặc huyết áp tâm trương từ 90 mmHg trở lên; huyết áp thấp khi huyết áp tâm thu dưới 90 mmHg hoặc huyết áp tâm trương dưới 60 mmHg. Nhận xét đúng là",
+     "lua_chon": [
+      "Người này bị huyết áp thấp.",
+      "Huyết áp của người này bình thường.",
+      "Chưa kết luận được vì thiếu nhịp tim.",
+      "Người này bị tăng huyết áp."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Huyết áp tâm thu: 150 mmHg; huyết áp tâm trương: 95 mmHg.\nCó huyết áp tâm thu từ 140 mmHg trở lên nên người này bị tăng huyết áp."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00969",
+   "nhom_id": "KNB00408",
+   "thu_tu": 3,
+   "dang": "SƠ CỨU CHẢY MÁU",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08030304026",
+     "loai": "trac_nghiem",
+     "de": "Khi sơ cứu chảy máu động mạch ở cẳng tay, vị trí buộc garo đúng là",
+     "lua_chon": [
+      "phía trên vết thương, gần tim hơn.",
+      "phía dưới vết thương, xa tim hơn.",
+      "ngay trên miệng vết thương.",
+      "ở cổ tay của bàn tay bị thương."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Máu động mạch chảy từ tim ra. Buộc garo phía trên vết thương (gần tim hơn) mới chặn được dòng máu chảy đến vết thương."
+    },
+    {
+     "ma_cau": "K08030304027",
+     "loai": "trac_nghiem",
+     "de": "Khi đã buộc garo để cầm máu, sau một thời gian phải nới lỏng garo rồi buộc lại. Mục đích của việc nới garo là",
+     "lua_chon": [
+      "giúp máu ở vết thương chảy ra nhiều hơn.",
+      "giúp người bị thương thấy dễ chịu hơn.",
+      "tránh các mô phía dưới garo bị thiếu oxygen, hoại tử.",
+      "giúp tiểu cầu tập trung đến vết thương."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Garo chặn dòng máu đến phần chi phía dưới. Buộc lâu, các tế bào ở đó thiếu oxygen và chất dinh dưỡng có thể bị hoại tử, vì vậy cần nới garo định kì."
+    },
+    {
+     "ma_cau": "K08030304028",
+     "loai": "trac_nghiem",
+     "de": "Trường hợp chảy máu nào sau đây không được dùng garo để cầm máu?",
+     "lua_chon": [
+      "Chảy máu động mạch ở cánh tay.",
+      "Chảy máu động mạch ở đùi.",
+      "Chảy máu động mạch ở cẳng tay.",
+      "Chảy máu động mạch ở vùng cổ."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Garo chỉ dùng cho vết thương chảy máu động mạch ở tay hoặc chân.\nKhông dùng garo ở vùng cổ vì sẽ chặn máu lên não và gây ngạt."
+    },
+    {
+     "ma_cau": "K08030304025",
+     "loai": "trac_nghiem",
+     "de": "Một người bị thương ở cánh tay, máu đỏ tươi phun thành tia theo nhịp tim. Cách sơ cứu phù hợp là",
+     "lua_chon": [
+      "chỉ dán băng cá nhân lên vết thương.",
+      "buộc garo phía trên vết thương rồi đưa đến cơ sở y tế.",
+      "buộc garo phía dưới vết thương, xa tim hơn.",
+      "rửa vết thương bằng nước rồi để khô tự nhiên."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Máu đỏ tươi phun thành tia là chảy máu động mạch.\nCần buộc garo phía trên vết thương (giữa vết thương và tim) để chặn dòng máu từ tim đến, rồi nhanh chóng đưa đến cơ sở y tế."
+    },
+    {
+     "ma_cau": "K08030304021",
+     "loai": "trac_nghiem",
+     "de": "Chảy máu động mạch có đặc điểm nào sau đây?",
+     "lua_chon": [
+      "Máu đỏ thẫm, chảy đều, không thành tia.",
+      "Máu đỏ tươi, chảy mạnh thành tia.",
+      "Máu chảy ít, rỉ ra chậm từ vết thương.",
+      "Máu đỏ thẫm, tự ngừng chảy nhanh."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Động mạch chứa máu từ tim đi ra với áp lực lớn, nên khi đứt động mạch máu đỏ tươi chảy mạnh, phun thành tia theo nhịp tim."
+    },
+    {
+     "ma_cau": "K08030304022",
+     "loai": "trac_nghiem",
+     "de": "Chảy máu mao mạch có đặc điểm nào sau đây?",
+     "lua_chon": [
+      "Máu chảy ít, rỉ ra chậm từ vết thương.",
+      "Máu đỏ tươi, chảy mạnh thành tia.",
+      "Máu đỏ thẫm, chảy nhiều và liên tục.",
+      "Máu phun theo nhịp đập của tim."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Mao mạch nhỏ, áp lực máu thấp nên khi chảy máu mao mạch, máu chảy ít và rỉ ra chậm."
+    }
+   ]
+  }
+ ]
+}

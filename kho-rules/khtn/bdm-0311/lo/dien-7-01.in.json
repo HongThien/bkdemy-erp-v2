@@ -1,0 +1,1999 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00296",
+   "khoi": "7",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Cấu tạo nguyên tử",
+   "nhom": "CẤU TẠO NGUYÊN TỬ VÀ MÔ HÌNH RUTHERFORD – BOHR",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Thành phần nguyên tử: Hạt nhân ở tâm, gồm proton (điện tích $+1$) và neutron (không mang điện).\nVỏ nguyên tử gồm các electron (điện tích $-1$) chuyển động quanh hạt nhân.\nMô hình Rutherford – Bohr: Electron sắp xếp thành từng lớp quanh hạt nhân.\nĐọc mô hình: đếm số vòng tròn (số lớp electron), đếm số chấm trên từng vòng (số electron mỗi lớp); số ghi trong hạt nhân là điện tích hạt nhân.\nNguyên tử trung hòa về điện: Số proton bằng số electron, nên tổng điện tích của nguyên tử bằng $0$.\nVÍ DỤ 1. Hạt nào trong nguyên tử không mang điện và nằm ở đâu?\nHướng dẫn: Neutron không mang điện, nằm trong hạt nhân.\nVÍ DỤ 2. Quan sát mô hình nguyên tử dưới đây, cho biết số lớp electron và số electron ở lớp ngoài cùng.\n\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/e42da3cb-5d13-4ef6-96be-e81f54b966e0.png)\n\nHướng dẫn: Mô hình có 2 vòng tròn nên có 2 lớp electron. Lớp ngoài cùng có 3 chấm nên có 3 electron.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00297",
+   "khoi": "7",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Cấu tạo nguyên tử",
+   "nhom": "Số hạt và khối lượng nguyên tử",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Hai quan hệ cần dùng:\n●\tNguyên tử trung hòa về điện: số proton = số electron (p = e).\n●\tKhối lượng nguyên tử xấp xỉ khối lượng hạt nhân: m ≈ p + n (amu), bỏ qua khối lượng electron.\nSuy ra:\n●\tBiết p thì biết e, và ngược lại.\n●\tn = m − p; p = m − n.\nVí dụ 1. Nguyên tử X có khối lượng xấp xỉ 30 amu và có 15 proton. Tính số neutron của X.\nHướng dẫn: n = m − p = 30 − 15 = 15.\nVí dụ 2. Hạt nhân nguyên tử Y có 19 proton và 19 neutron. Tính khối lượng nguyên tử Y.\nHướng dẫn: m ≈ p + n = 19 + 19 = 38 amu.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00298",
+   "khoi": "7",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Cấu tạo nguyên tử",
+   "nhom": "BÀI TOÁN TỔNG SỐ HẠT",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "●\tTổng số hạt: S = p + e + n = 2p + n (vì e = p).\n●\tSố hạt mang điện: 2p. Số hạt không mang điện: n.\n●\tHiệu số hạt mang điện và không mang điện: D = 2p − n.\nBiết S và p: n = S − 2p.\nBiết S và D: cộng hai phương trình được 4p = S + D, suy ra p = (S + D) : 4; n = S − 2p.\nVí dụ 1. Nguyên tử X có tổng số hạt là 39 và có 13 proton. Tính số neutron.\nHướng dẫn: n = S − 2p = 39 − 26 = 13.\nVí dụ 2. Nguyên tử Y có tổng số hạt là 33; số hạt mang điện nhiều hơn số hạt không mang điện là 11. Tính số proton.\nHướng dẫn: 2p + n = 33 và 2p − n = 11. Cộng lại: 4p = 44, p = 11.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00300",
+   "khoi": "7",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Cấu tạo nguyên tử",
+   "nhom": "XẾP ELECTRON VÀ VẼ MÔ HÌNH NGUYÊN TỬ",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Số proton = số electron (e = p).\nXếp electron từ trong ra ngoài: lớp 1 tối đa 2, lớp 2 tối đa 8, lớp 3 tối đa 8 (với nguyên tử có không quá 20 proton); lớp trong đủ mới xếp sang lớp ngoài.\nVẽ: hạt nhân ở tâm ghi điện tích (ví dụ +11), các vòng tròn đồng tâm là các lớp, đặt đủ số electron trên từng vòng.\nVí dụ 1. Xếp electron vào các lớp cho nguyên tử có 15 proton.\nHướng dẫn: e = 15. Lớp 1: 2; lớp 2: 8; lớp 3: 5.\nVí dụ 2. Vẽ mô hình Rutherford \tat Bohr của nguyên tử có 7 proton.\nHướng dẫn: e = 7, xếp 2, 5. Vẽ hạt nhân ghi +7, hai vòng tròn, vòng 1 có 2 electron, vòng 2 có 5 electron.\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/cbd78b39-2569-4b5c-93ad-d1b9420be0a1.png)",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00301",
+   "khoi": "7",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Nguyên tố Hóa học",
+   "nhom": "KHÁI NIỆM NGUYÊN TỐ VÀ KÍ HIỆU HÓA HỌC",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "1. Kiến thức cần nhớ\nKhái niệm nguyên tố hoá học\nNguyên tố hoá học là tập hợp những nguyên tử cùng loại, có cùng số proton trong hạt nhân.\nSố proton là số đặc trưng của một nguyên tố hoá học. Mỗi nguyên tố có một số proton riêng, không trùng với nguyên tố khác.\nCác nguyên tử của cùng một nguyên tố có cùng số proton nhưng có thể có số neutron khác nhau, do đó khối lượng có thể khác nhau.\nNguyên tử là một hạt cụ thể; nguyên tố hoá học là tập hợp các nguyên tử cùng loại.\nTên gọi và kí hiệu hoá học\nMỗi nguyên tố hoá học có một tên gọi và một kí hiệu hoá học riêng. Tên gọi dùng theo IUPAC.\nKí hiệu hoá học gồm một hoặc hai chữ cái. Chữ cái đầu viết in hoa, chữ cái thứ hai (nếu có) viết thường.\nTên và kí hiệu của 20 nguyên tố đầu\n$\\begin{array}{|l|l|l|l|l|l|}\n\\hline\n\\text{Số proton} & \\text{Tên} & \\text{Kí hiệu} & \\text{Số proton} & \\text{Tên} & \\text{Kí hiệu} \\\\\n\\hline\n1 & \\text{hydrogen} & \\mathrm{H} & 11 & \\text{sodium} & \\mathrm{Na} \\\\\n2 & \\text{helium} & \\mathrm{He} & 12 & \\text{magnesium} & \\mathrm{Mg} \\\\\n3 & \\text{lithium} & \\mathrm{Li} & 13 & \\text{aluminium} & \\mathrm{Al} \\\\\n4 & \\text{beryllium} & \\mathrm{Be} & 14 & \\text{silicon} & \\mathrm{Si} \\\\\n5 & \\text{boron} & \\mathrm{B} & 15 & \\text{phosphorus} & \\mathrm{P} \\\\\n6 & \\text{carbon} & \\mathrm{C} & 16 & \\text{sulfur} & \\mathrm{S} \\\\\n7 & \\text{nitrogen} & \\mathrm{N} & 17 & \\text{chlorine} & \\mathrm{Cl} \\\\\n8 & \\text{oxygen} & \\mathrm{O} & 18 & \\text{argon} & \\mathrm{Ar} \\\\\n9 & \\text{fluorine} & \\mathrm{F} & 19 & \\text{potassium} & \\mathrm{K} \\\\\n10 & \\text{neon} & \\mathrm{Ne} & 20 & \\text{calcium} & \\mathrm{Ca} \\\\\n\\hline\n\\end{array}$\n2. Các bước làm bài\nCâu hỏi về khái niệm nguyên tố\nBước 1. Xác định dữ kiện về số proton của các nguyên tử trong đề.\nBước 2. So sánh số proton: cùng số proton thì cùng nguyên tố; khác số proton thì khác nguyên tố.\nBước 3. Loại các phương án lấy số neutron hoặc khối lượng làm căn cứ.\n3. Lưu ý\nMột số kí hiệu không bắt đầu bằng chữ cái đầu của tên IUPAC: sodium có kí hiệu Na, potassium có kí hiệu K.\nViết sai chữ hoa, chữ thường làm thay đổi ý nghĩa: mỗi chữ cái in hoa là chữ cái đầu của một kí hiệu.\nPhân biệt các kí hiệu gần giống nhau: C, Ca, Cl; N, Ne, Na; S, Si; H, He; B, Be.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00302",
+   "khoi": "7",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Nguyên tố Hóa học",
+   "nhom": "XÁC ĐỊNH NGUYÊN TỐ TỪ SỐ HẠT",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "1. Kiến thức cần nhớ\nSố proton là căn cứ duy nhất để xác định nguyên tử thuộc nguyên tố hoá học nào.\nCác nguyên tử có cùng số proton thuộc cùng một nguyên tố hoá học, dù số neutron có thể khác nhau.\nCác nguyên tử có số proton khác nhau thuộc các nguyên tố hoá học khác nhau, dù số neutron hoặc khối lượng có thể bằng nhau.\nSố proton, tên và kí hiệu của 20 nguyên tố đầu\n$$\\begin{array}{l|l|l|l|l|l}\n\\text{Số proton} & \\text{Tên} & \\text{Kí hiệu} & \\text{Số proton} & \\text{Tên} & \\text{Kí hiệu} \\\\\n\\hline\n1 & \\text{hydrogen} & \\mathrm{H} & 11 & \\text{sodium} & \\mathrm{Na} \\\\\n2 & \\text{helium} & \\mathrm{He} & 12 & \\text{magnesium} & \\mathrm{Mg} \\\\\n3 & \\text{lithium} & \\mathrm{Li} & 13 & \\text{aluminium} & \\mathrm{Al} \\\\\n4 & \\text{beryllium} & \\mathrm{Be} & 14 & \\text{silicon} & \\mathrm{Si} \\\\\n5 & \\text{boron} & \\mathrm{B} & 15 & \\text{phosphorus} & \\mathrm{P} \\\\\n6 & \\text{carbon} & \\mathrm{C} & 16 & \\text{sulfur} & \\mathrm{S} \\\\\n7 & \\text{nitrogen} & \\mathrm{N} & 17 & \\text{chlorine} & \\mathrm{Cl} \\\\\n8 & \\text{oxygen} & \\mathrm{O} & 18 & \\text{argon} & \\mathrm{Ar} \\\\\n9 & \\text{fluorine} & \\mathrm{F} & 19 & \\text{potassium} & \\mathrm{K} \\\\\n10 & \\text{neon} & \\mathrm{Ne} & 20 & \\text{calcium} & \\mathrm{Ca} \\\\\n\\end{array}$$\n2. Công thức\nTrong nguyên tử trung hoà về điện, số proton bằng số electron: $$p = e$$\nTrong đó: p là số proton, e là số electron.\n3. Các bước làm bài\nGợi tên nguyên tố khi biết số hạt\nBước 1. Xác định số proton: đề cho trực tiếp, hoặc suy ra từ số electron của nguyên tử trung hoà về điện.\nBước 2. Đối chiếu số proton với bảng nguyên tố để viết tên hoặc kí hiệu hoá học.\nNhận ra các nguyên tử cùng nguyên tố\nBước 1. Ghi số proton của từng nguyên tử.\nBước 2. Xếp các nguyên tử có cùng số proton vào một nhóm; mỗi nhóm là một nguyên tố.\nBước 3. Số nguyên tố bằng số giá trị khác nhau của số proton.\n4. Lưu ý\nKhông xếp nhóm theo số neutron hoặc theo khối lượng nguyên tử.\nSố neutron trong đề (nếu có) không dùng để xác định nguyên tố.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00303",
+   "khoi": "7",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "nhom": "CẤU TẠO BẢNG TUẦN HOÀN: Ô, CHU KÌ, NHÓM",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Nguyên tắc sắp xếp\nCác nguyên tố được xếp theo chiều tăng dần số hiệu nguyên tử (bằng số proton trong hạt nhân).\nCác nguyên tố có cùng số lớp electron được xếp vào cùng một hàng; các nguyên tố có tính chất hoá học tương tự được xếp vào cùng một cột.\nÔ nguyên tố\nMỗi ô ứng với một nguyên tố hoá học, ghi: số hiệu nguyên tử, kí hiệu hoá học, tên nguyên tố, khối lượng nguyên tử (amu).\nSố thứ tự của ô bằng số hiệu nguyên tử.\nChu kì\nChu kì là dãy các nguyên tố xếp thành một hàng ngang. Bảng tuần hoàn có 7 chu kì.\nChu kì 1 có 2 nguyên tố (hydrogen, helium); chu kì 2 và chu kì 3 mỗi chu kì có 8 nguyên tố.\nNhóm\nNhóm là tập hợp các nguyên tố xếp thành một cột. Bảng tuần hoàn có 8 nhóm A (từ IA đến VIIIA) và các nhóm B.\nVùng kim loại, phi kim, khí hiếm\nKim loại nằm ở phía bên trái và khu vực giữa bảng; phi kim nằm ở phía bên phải; khí hiếm nằm ở nhóm VIIIA (cột cuối cùng).",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00304",
+   "khoi": "7",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "nhom": "LIÊN HỆ VỊ TRÍ TRONG BẢNG VỚI CẤU TẠO NGUYÊN TỬ",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Với các nguyên tố nhóm A, vị trí trong bảng tuần hoàn liên hệ với cấu tạo nguyên tử như sau:\nSố thứ tự ô = số hiệu nguyên tử = số proton = số electron.\nSố thứ tự chu kì = số lớp electron.\nSố thứ tự nhóm A = số electron lớp ngoài cùng (trừ helium: nhóm VIIIA, lớp ngoài cùng có 2 electron).\nVới 20 nguyên tố đầu: lớp 1 chứa tối đa 2 electron, lớp 2 chứa tối đa 8 electron, lớp 3 chứa tối đa 8 electron.\nsố ô=p=e\nTrong đó: p là số proton, e là số electron của nguyên tử.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00305",
+   "khoi": "7",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "nhom": "XÁC ĐỊNH NGUYÊN TỐ TỪ DỮ KIỆN VỊ TRÍ – CẤU TẠO",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Số thứ tự ô = số proton = số electron; số thứ tự chu kì = số lớp electron; số thứ tự nhóm A = số electron lớp ngoài cùng (trừ helium).\nHai nguyên tố đứng kế tiếp nhau trong cùng một chu kì có số proton hơn kém nhau 1.\nTrong 20 nguyên tố đầu, hai nguyên tố cùng nhóm A ở hai chu kì liên tiếp có số proton hơn kém nhau 8.\nSố hạt mang điện của một nguyên tử bằng tổng số proton và electron, bằng hai lần số proton.\nHai nguyên tố kế tiếp trong một chu kì: {\\mathrm{Z}}_{\\mathrm{B}}={\\mathrm{Z}}_{\\mathrm{A}}+1\nHai nguyên tố cùng nhóm, hai chu kì liên tiếp (20 nguyên tố đầu): {\\mathrm{Z}}_{\\mathrm{B}}={\\mathrm{Z}}_{\\mathrm{A}}+8\nSố hạt mang điện: p+e=2p\nTrong đó: Z là số proton (số hiệu nguyên tử) của nguyên tố.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00306",
+   "khoi": "7",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "nhom": "DỰ ĐOÁN TÍNH CHẤT TỪ VỊ TRÍ TRONG BẢNG",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true
+  }
+ ],
+ "dang_bai": [
+  {
+   "dang_id": "KDB00658",
+   "nhom_id": "KNB00296",
+   "thu_tu": 1,
+   "dang": "Các loại hạt, điện tích và vị trí",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K07010101054",
+     "loai": "trac_nghiem",
+     "de": "Theo quy ước, điện tích của một electron là",
+     "lua_chon": [
+      "+2.",
+      "0.",
+      "$-1$.",
+      "+1."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Electron có điện tích $-1$."
+    },
+    {
+     "ma_cau": "K07010101053",
+     "loai": "trac_nghiem",
+     "de": "Trong ba loại hạt proton, neutron, electron, hạt có khối lượng rất nhỏ so với hai hạt còn lại là",
+     "lua_chon": [
+      "electron.",
+      "neutron.",
+      "proton.",
+      "proton và neutron."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng electron rất nhỏ so với khối lượng proton và neutron."
+    },
+    {
+     "ma_cau": "K07010101047",
+     "loai": "trac_nghiem",
+     "de": "Hạt mang điện tích dương trong nguyên tử là",
+     "lua_chon": [
+      "hạt nhân và electron.",
+      "neutron.",
+      "proton.",
+      "electron."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Proton mang điện tích $+1$."
+    },
+    {
+     "ma_cau": "K07010101052",
+     "loai": "trac_nghiem",
+     "de": "Hạt nhân nguyên tử mang điện tích",
+     "lua_chon": [
+      "lúc dương, lúc âm.",
+      "âm.",
+      "dương.",
+      "không mang điện."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Hạt nhân chứa proton mang điện dương và neutron không mang điện nên hạt nhân mang điện dương."
+    },
+    {
+     "ma_cau": "K07010101055",
+     "loai": "trac_nghiem",
+     "de": "Theo mô hình Rutherford – Bohr, các electron trong nguyên tử",
+     "lua_chon": [
+      "được sắp xếp thành từng lớp quanh hạt nhân.",
+      "nằm lẫn với proton trong hạt nhân.",
+      "phân bố ngẫu nhiên, không theo lớp.",
+      "đứng yên ở tâm nguyên tử."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Electron được sắp xếp thành từng lớp quanh hạt nhân."
+    },
+    {
+     "ma_cau": "K07010101048",
+     "loai": "trac_nghiem",
+     "de": "Hạt không mang điện trong nguyên tử là",
+     "lua_chon": [
+      "neutron.",
+      "electron.",
+      "cả proton và electron.",
+      "proton."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Neutron không mang điện."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00659",
+   "nhom_id": "KNB00296",
+   "thu_tu": 2,
+   "dang": "Đọc mô hình Rutherford – Bohr",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K07010101072",
+     "loai": "trac_nghiem",
+     "de": "Quan sát mô hình nguyên tử dưới đây. Lớp electron ngoài cùng có bao nhiêu electron?",
+     "lua_chon": [
+      "1.",
+      "2.",
+      "3.",
+      "4."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Vòng ngoài cùng có 2 chấm nên có 2 electron.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07010101073",
+     "loai": "trac_nghiem",
+     "de": "Quan sát mô hình nguyên tử dưới đây. Tổng số electron ở các lớp bên trong (không kể lớp ngoài cùng) là",
+     "lua_chon": [
+      "2.",
+      "7.",
+      "10.",
+      "17."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Số electron các lớp bên trong $= 2 + 8 = 10$.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07010101069",
+     "loai": "trac_nghiem",
+     "de": "Quan sát mô hình nguyên tử dưới đây. Điện tích hạt nhân của nguyên tử này là",
+     "lua_chon": [
+      "+15.",
+      "+5.",
+      "-15.",
+      "+3."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Số ghi trong hạt nhân là $+15.$",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07010101070",
+     "loai": "trac_nghiem",
+     "de": "Quan sát mô hình nguyên tử dưới đây. Lớp electron thứ hai (tính từ hạt nhân) có bao nhiêu electron?",
+     "lua_chon": [
+      "2.",
+      "6.",
+      "7.",
+      "8."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Vòng thứ hai có 8 chấm.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07010101067",
+     "loai": "trac_nghiem",
+     "de": "Quan sát mô hình nguyên tử dưới đây. Lớp electron ngoài cùng có bao nhiêu electron?",
+     "lua_chon": [
+      "3.",
+      "4.",
+      "5.",
+      "13."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Vòng ngoài cùng có 3 chấm nên có 3 electron.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07010101068",
+     "loai": "trac_nghiem",
+     "de": "Quan sát mô hình nguyên tử dưới đây. Tổng số electron của nguyên tử này là",
+     "lua_chon": [
+      "7.",
+      "9.",
+      "10.",
+      "11."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tổng số electron $= 2 + 7 = 9.$",
+     "co_hinh": true
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00660",
+   "nhom_id": "KNB00296",
+   "thu_tu": 3,
+   "dang": "Nguyên tử trung hòa về điện",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K07010101079",
+     "loai": "trac_nghiem",
+     "de": "Trong một nguyên tử, hai loại hạt luôn có số lượng bằng nhau là",
+     "lua_chon": [
+      "neutron và electron.",
+      "cả ba loại hạt.",
+      "proton và neutron.",
+      "proton và electron."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Nguyên tử trung hòa về điện nên số proton bằng số electron."
+    },
+    {
+     "ma_cau": "K07010101080",
+     "loai": "trac_nghiem",
+     "de": "Số neutron trong hạt nhân ảnh hưởng thế nào đến điện tích của nguyên tử?",
+     "lua_chon": [
+      "Làm nguyên tử mang điện âm.",
+      "Không ảnh hưởng, vì neutron không mang điện.",
+      "Làm nguyên tử mang điện dương.",
+      "Làm điện tích hạt nhân tăng."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Neutron không mang điện nên không làm thay đổi điện tích."
+    },
+    {
+     "ma_cau": "K07010101076",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tử trung hòa về điện vì",
+     "lua_chon": [
+      "hạt nhân không mang điện.",
+      "số neutron bằng số electron.",
+      "số proton bằng số neutron.",
+      "số proton bằng số electron."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Proton $(+1)$ và electron $(-1)$ có số lượng bằng nhau nên điện tích triệt tiêu."
+    },
+    {
+     "ma_cau": "K07010101078",
+     "loai": "trac_nghiem",
+     "de": "Hạt nhân của một nguyên tử có điện tích $+a$. Tổng điện tích của các electron ở vỏ nguyên tử đó là",
+     "lua_chon": [
+      "$-2a$.",
+      "$-a$.",
+      "0.",
+      "$+a$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Nguyên tử trung hòa nên điện tích vỏ bằng và trái dấu với điện tích hạt nhân."
+    },
+    {
+     "ma_cau": "K07010101083",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây sai?",
+     "lua_chon": [
+      "Nguyên tử trung hòa về điện.",
+      "Trong nguyên tử, số proton bằng số electron.",
+      "Neutron không mang điện.",
+      "Trong nguyên tử, số neutron luôn bằng số electron."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Số neutron không nhất thiết bằng số electron; chỉ số proton luôn bằng số electron."
+    },
+    {
+     "ma_cau": "K07010101077",
+     "loai": "trac_nghiem",
+     "de": "Tổng điện tích của một nguyên tử bằng",
+     "lua_chon": [
+      "0.",
+      "điện tích hạt nhân.",
+      "-1.",
+      "+1."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nguyên tử trung hòa về điện nên tổng điện tích bằng $0$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00661",
+   "nhom_id": "KNB00297",
+   "thu_tu": 1,
+   "dang": "Tìm số hạt còn thiếu",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K07010102052",
+     "loai": "trac_nghiem",
+     "de": "Hạt nhân nguyên tử Z có điện tích $+9$ và chứa 10 neutron. Số electron ở vỏ nguyên tử Z là",
+     "lua_chon": [
+      "8.",
+      "9.",
+      "10.",
+      "19."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Điện tích hạt nhân $+9$ nên $p = 9$. $e = p = 9$."
+    },
+    {
+     "ma_cau": "K07010102054",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tử có khối lượng xấp xỉ 30 amu và có 14 proton. Số neutron của nguyên tử này là",
+     "lua_chon": [
+      "2.",
+      "14.",
+      "15.",
+      "16."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$n = m - p = 30 - 14 = 16$."
+    },
+    {
+     "ma_cau": "K07010102053",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tử có khối lượng xấp xỉ 44 amu và có 20 proton. Số neutron của nguyên tử này là",
+     "lua_chon": [
+      "4.",
+      "20.",
+      "24.",
+      "64."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$n = m - p = 44 - 20 = 24$."
+    },
+    {
+     "ma_cau": "K07010102047",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tử có khối lượng xấp xỉ 23 amu và có 11 proton. Số neutron của nguyên tử này là",
+     "lua_chon": [
+      "11.",
+      "12.",
+      "23.",
+      "34."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$n = m - p = 23 - 11 = 12$."
+    },
+    {
+     "ma_cau": "K07010102050",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tử có khối lượng xấp xỉ 34 amu và có 18 neutron. Số electron của nguyên tử này là",
+     "lua_chon": [
+      "13.",
+      "14.",
+      "15.",
+      "16."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$p = m - n = 34 - 18 = 16$.  $e = p = 16$."
+    },
+    {
+     "ma_cau": "K07010102056",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tử có khối lượng xấp xỉ 22 amu, hạt nhân chứa 12 neutron. Số proton của nguyên tử này là",
+     "lua_chon": [
+      "9.",
+      "10.",
+      "12.",
+      "34."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$p = m - n = 22 - 12 = 10$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00662",
+   "nhom_id": "KNB00297",
+   "thu_tu": 2,
+   "dang": "Tính khối lượng nguyên tử theo amu",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K07010102064",
+     "loai": "trac_nghiem",
+     "de": "Hạt nhân nguyên tử có điện tích $+15$ và chứa 17 neutron. Khối lượng nguyên tử xấp xỉ bằng",
+     "lua_chon": [
+      "15 amu.",
+      "17 amu.",
+      "32 amu.",
+      "47 amu."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Điện tích hạt nhân là $+15$ nên số proton là $p = 15$.\nKhối lượng nguyên tử xấp xỉ bằng tổng số proton và neutron:\n$m \\approx p + n = 15 + 17 = 32 amu$."
+    },
+    {
+     "ma_cau": "K07010102060",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tử $\\mathrm{X}$ có 6 proton và 8 neutron. Khối lượng nguyên tử $\\mathrm{X}$ xấp xỉ bằng",
+     "lua_chon": [
+      "6 amu.",
+      "8 amu.",
+      "13 amu.",
+      "14 amu."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$m \\approx p + n = 6 + 8 = 14 \\ \\mathrm{amu}$."
+    },
+    {
+     "ma_cau": "K07010102065",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tử X có 16 proton và 20 neutron. Khối lượng nguyên tử X xấp xỉ bằng",
+     "lua_chon": [
+      "16 amu.",
+      "36 amu.",
+      "37 amu.",
+      "52 amu."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khối lượng nguyên tử X xấp xỉ bằng tổng số proton và neutron:\n$m \\approx p + n = 16 + 20 = 36 amu$."
+    },
+    {
+     "ma_cau": "K07010102061",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tử $\\mathrm{X}$ có 8 proton và 9 neutron. Khối lượng nguyên tử $\\mathrm{X}$ xấp xỉ bằng",
+     "lua_chon": [
+      "8 amu.",
+      "9 amu.",
+      "16 amu.",
+      "17 amu."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$m \\approx p + n = 8 + 9 = 17 \\ \\mathrm{amu}$."
+    },
+    {
+     "ma_cau": "K07010102066",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tử Y có 18 electron và 20 neutron. Khối lượng nguyên tử Y xấp xỉ bằng",
+     "lua_chon": [
+      "38 amu.",
+      "39 amu.",
+      "40 amu.",
+      "56 amu."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Trong nguyên tử trung hòa về điện, số proton bằng số electron. \nVậy số proton là $p = e = 18$.\nKhối lượng nguyên tử Y xấp xỉ bằng tổng số proton và neutron:\n$m \\approx p + n = 18 + 20 = 38 amu$."
+    },
+    {
+     "ma_cau": "K07010102073",
+     "loai": "trac_nghiem",
+     "de": "Hạt nhân của một nguyên tử gồm $11$ proton và $14$ neutron. Khối lượng của nguyên tử đó xấp xỉ bằng",
+     "lua_chon": [
+      "$11 amu$.",
+      "$25 amu$.",
+      "$26 amu$.",
+      "$36 amu$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khối lượng electron rất nhỏ, bỏ qua.\n$m \\approx 11 + 14 = 25 amu$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00663",
+   "nhom_id": "KNB00298",
+   "thu_tu": 1,
+   "dang": "Biết tổng số hạt và số proton",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 33,
+   "cau_mau": [
+    {
+     "ma_cau": "K07010103052",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tử Y có tổng số hạt là 10, trong đó có 3 electron. Số hạt không mang điện của Y là",
+     "lua_chon": [
+      "1.",
+      "2.",
+      "3.",
+      "4."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$p = e = 3$.\n$n = S - 2p = 10 - 6 = 4$."
+    },
+    {
+     "ma_cau": "K07010103080",
+     "loai": "trac_nghiem",
+     "de": "Hạt nhân nguyên tử có điện tích +7; tổng số hạt trong nguyên tử là 21. Số neutron của nguyên tử là",
+     "lua_chon": [
+      "4.",
+      "5.",
+      "6.",
+      "7."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$p = e = 7.$\n$n = S - 2p = 21 - 14 = 7.$"
+    },
+    {
+     "ma_cau": "K07010103063",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tử $\\mathrm{X}$ có tổng số hạt proton, neutron, electron là $40$, trong đó có $13$ proton. Số neutron của $\\mathrm{X}$ là",
+     "lua_chon": [
+      "13.",
+      "14.",
+      "27.",
+      "66."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$S = 2p + n$.\n$n = S - 2p = 40 - 26 = 14$."
+    },
+    {
+     "ma_cau": "K07010103061",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tử Y có tổng số hạt là 35, trong đó có 11 electron. Số hạt không mang điện của Y là",
+     "lua_chon": [
+      "10.",
+      "11.",
+      "12.",
+      "13."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$p = e = 11.$\n$n = S - 2p = 35 - 22 = 13.$"
+    },
+    {
+     "ma_cau": "K07010103066",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tử $\\mathrm{X}$ có tổng số hạt proton, neutron, electron là $46$, trong đó có $15$ proton. Số neutron của $\\mathrm{X}$ là",
+     "lua_chon": [
+      "15.",
+      "16.",
+      "31.",
+      "76."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$S = 2p + n$.\n$n = S - 2p = 46 - 30 = 16$."
+    },
+    {
+     "ma_cau": "K07010103060",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tử X có tổng số hạt proton, neutron, electron là 32, trong đó có 10 proton. Số neutron của X là",
+     "lua_chon": [
+      "10.",
+      "12.",
+      "22.",
+      "52."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$S = 2p + n.$\n$n = S - 2p = 32 - 20 = 12.$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00664",
+   "nhom_id": "KNB00298",
+   "thu_tu": 2,
+   "dang": "Biết tổng số hạt và hiệu số hạt mang điện với không mang điện",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 19,
+   "cau_mau": [
+    {
+     "ma_cau": "K07010103082",
+     "loai": "tra_loi_ngan",
+     "de": "Nguyên tử có tổng số hạt là 26; số hạt mang điện nhiều hơn số hạt không mang điện là 6. Tính số neutron.",
+     "dap_an": "10",
+     "loi_giai": "$2p + n = 26$; $2p - n = 6$.\nTrừ vế theo vế:\n$2n = 20$.\n$n = 10$."
+    },
+    {
+     "ma_cau": "K07010103099",
+     "loai": "tra_loi_ngan",
+     "de": "Nguyên tử có tổng số hạt là 65; số hạt mang điện nhiều hơn số hạt không mang điện là 15. Tính số neutron.",
+     "dap_an": "25",
+     "loi_giai": "$2p + n = 65$; $2p - n = 15$.\nTrừ vế theo vế:\n$2n = 50$.\n$n = 25$."
+    },
+    {
+     "ma_cau": "K07010103090",
+     "loai": "tra_loi_ngan",
+     "de": "Nguyên tử có tổng số hạt là 45; số hạt mang điện nhiều hơn số hạt không mang điện là 11. Tính số neutron.",
+     "dap_an": "17",
+     "loi_giai": "$2p + n = 45$; $2p - n = 11$.\nTrừ vế theo vế:\n$2n = 34$.\n$n = 17$."
+    },
+    {
+     "ma_cau": "K07010103085",
+     "loai": "tra_loi_ngan",
+     "de": "Nguyên tử có tổng số hạt là 34; số hạt mang điện nhiều hơn số hạt không mang điện là 10. Tính số proton.",
+     "dap_an": "11",
+     "loi_giai": "$2p + n = 34$; $2p - n = 10$.\nCộng lại:\n$4p = 44$.\n$p = 11$."
+    },
+    {
+     "ma_cau": "K07010103088",
+     "loai": "tra_loi_ngan",
+     "de": "Nguyên tử có tổng số hạt là 41; số hạt mang điện nhiều hơn số hạt không mang điện là 11. Tính số neutron.",
+     "dap_an": "15",
+     "loi_giai": "$2p + n = 41$; $2p - n = 11$.\nTrừ vế theo vế:\n$2n = 30$.\n$n = 15$."
+    },
+    {
+     "ma_cau": "K07010103092",
+     "loai": "tra_loi_ngan",
+     "de": "Nguyên tử có tổng số hạt là 49; số hạt mang điện nhiều hơn số hạt không mang điện là 15. Tính số neutron.",
+     "dap_an": "17",
+     "loi_giai": "$2p + n = 49$; $2p - n = 15$.\nTrừ vế theo vế:\n$2n = 34$.\n$n = 17$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00665",
+   "nhom_id": "KNB00300",
+   "thu_tu": 1,
+   "dang": "Xếp electron vào các lớp",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 30,
+   "cau_mau": [
+    {
+     "ma_cau": "K07010105010",
+     "loai": "trac_nghiem",
+     "de": "Hạt nhân nguyên tử có điện tích $+16$. Số electron ở lớp ngoài cùng là",
+     "lua_chon": [
+      "5.",
+      "6.",
+      "8.",
+      "14."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$e = 16$, xếp electron lần lượt $2, 8, 6$. Lớp ngoài cùng có 6 electron."
+    },
+    {
+     "ma_cau": "K07010105024",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tử có 5 proton. Số lớp electron của nguyên tử này là",
+     "lua_chon": [
+      "2.",
+      "3.",
+      "4.",
+      "5."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$e = 5$, xếp electron lần lượt $2, 3$. Có 2 lớp."
+    },
+    {
+     "ma_cau": "K07010105005",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tử có 8 proton. Số electron ở lớp ngoài cùng là",
+     "lua_chon": [
+      "3.",
+      "4.",
+      "5.",
+      "6."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$e = 8$, xếp electron lần lượt 2, 6. Lớp ngoài cùng có 6 electron."
+    },
+    {
+     "ma_cau": "K07010105022",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tử có 13 proton. Số electron ở lớp ngoài cùng là",
+     "lua_chon": [
+      "1.",
+      "2.",
+      "3.",
+      "5."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$e = 13$, xếp electron lần lượt $2, 8, 3$. Lớp ngoài cùng có $3$ electron."
+    },
+    {
+     "ma_cau": "K07010105009",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tử có 3 proton. Số lớp electron của nguyên tử này là",
+     "lua_chon": [
+      "1.",
+      "2.",
+      "3.",
+      "4."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$e = 3$, xếp electron lần lượt $2, 1$. Có 2 lớp."
+    },
+    {
+     "ma_cau": "K07010105001",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tử có 11 proton. Số lớp electron của nguyên tử này là",
+     "lua_chon": [
+      "1.",
+      "2.",
+      "3.",
+      "4."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$e=11$, xếp electron lần lượt $2,8,1$. Có 3 lớp."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00666",
+   "nhom_id": "KNB00300",
+   "thu_tu": 2,
+   "dang": "Vẽ mô hình Rutherford - Bohr",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K07010105035",
+     "loai": "tu_luan",
+     "de": "Nguyên tử có 8 electron. Vẽ mô hình Rutherford – Bohr của nguyên tử này.",
+     "dap_an": "Hạt nhân +8; 2 lớp electron; số electron các lớp: 2, 6.",
+     "loi_giai": ""
+    },
+    {
+     "ma_cau": "K07010105038",
+     "loai": "tu_luan",
+     "de": "Nguyên tử có $14$ electron. Vẽ mô hình Rutherford – Bohr của nguyên tử này.",
+     "dap_an": "Hạt nhân +14; 3 lớp electron; số electron các lớp: 2, 8, 4.",
+     "loi_giai": ""
+    },
+    {
+     "ma_cau": "K07010105040",
+     "loai": "tu_luan",
+     "de": "Hạt nhân nguyên tử có điện tích $+18$. Vẽ mô hình Rutherford – Bohr của nguyên tử này.",
+     "dap_an": "+18; 3; 2, 8, 8",
+     "loi_giai": ""
+    },
+    {
+     "ma_cau": "K07010105033",
+     "loai": "tu_luan",
+     "de": "Hạt nhân nguyên tử có điện tích +4. Vẽ mô hình Rutherford – Bohr của nguyên tử này.",
+     "dap_an": "Hạt nhân +4; 2 lớp electron; số electron các lớp: 2, 2.",
+     "loi_giai": ""
+    },
+    {
+     "ma_cau": "K07010105036",
+     "loai": "tu_luan",
+     "de": "Nguyên tử có 10 proton. Vẽ mô hình Rutherford – Bohr của nguyên tử này.",
+     "dap_an": "Hạt nhân +10; 2 lớp electron; số electron các lớp: 2, 8.",
+     "loi_giai": ""
+    },
+    {
+     "ma_cau": "K07010105039",
+     "loai": "tu_luan",
+     "de": "Nguyên tử có $16$ proton. Vẽ mô hình Rutherford – Bohr của nguyên tử này.",
+     "dap_an": "Hạt nhân +16; 3 lớp electron; số electron các lớp: 2, 8, 6.",
+     "loi_giai": ""
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00667",
+   "nhom_id": "KNB00301",
+   "thu_tu": 1,
+   "dang": "KHÁI NIỆM NGUYÊN TỐ HOÁ HỌC",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K07010201053",
+     "loai": "trac_nghiem",
+     "de": "Hai nguyên tử có cùng số proton nhưng khác số neutron. Nhận định nào sau đây đúng?",
+     "lua_chon": [
+      "Hai nguyên tử có số electron khác nhau",
+      "Hai nguyên tử thuộc cùng một nguyên tố hoá học",
+      "Hai nguyên tử có khối lượng bằng nhau",
+      "Hai nguyên tử thuộc hai nguyên tố hoá học khác nhau"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Hai nguyên tử có cùng số proton nên thuộc cùng một nguyên tố hoá học.\nSố neutron khác nhau chỉ làm khối lượng của hai nguyên tử khác nhau."
+    },
+    {
+     "ma_cau": "K07010201055",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây về nguyên tố hoá học là đúng?",
+     "lua_chon": [
+      "Mọi nguyên tử của cùng một nguyên tố hoá học đều có cùng số neutron",
+      "Mọi nguyên tử của cùng một nguyên tố hoá học đều có cùng khối lượng",
+      "Trong nguyên tử của mọi nguyên tố, số proton bằng số neutron",
+      "Mọi nguyên tử của cùng một nguyên tố hoá học đều có cùng số proton"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Nguyên tố hoá học là tập hợp những nguyên tử cùng loại, có cùng số proton trong hạt nhân.\nCác nguyên tử của cùng một nguyên tố có thể khác nhau về số neutron nên có thể khác nhau về khối lượng."
+    },
+    {
+     "ma_cau": "K07010201054",
+     "loai": "trac_nghiem",
+     "de": "Hai nguyên tử có khối lượng xấp xỉ bằng nhau nhưng số proton khác nhau. Kết luận nào sau đây đúng?",
+     "lua_chon": [
+      "Hai nguyên tử thuộc cùng một nguyên tố hoá học",
+      "Hai nguyên tử có cùng số neutron",
+      "Hai nguyên tử thuộc hai nguyên tố hoá học khác nhau",
+      "Hai nguyên tử có cùng số electron"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nguyên tố hoá học được xác định bởi số proton, không xác định bởi khối lượng nguyên tử.\nHai nguyên tử có số proton khác nhau nên thuộc hai nguyên tố hoá học khác nhau."
+    },
+    {
+     "ma_cau": "K07010201057",
+     "loai": "trac_nghiem",
+     "de": "Bạn Hoa cho rằng: \"Nguyên tử oxygen trong khí oxygen và nguyên tử oxygen trong nước thuộc hai nguyên tố khác nhau vì chúng nằm trong hai chất khác nhau.\" Nhận xét nào sau đây đúng?",
+     "lua_chon": [
+      "Ý kiến của Hoa đúng, vì nguyên tử trong hai chất có khối lượng khác nhau",
+      "Ý kiến của Hoa sai, vì các nguyên tử này có cùng số proton nên thuộc cùng nguyên tố oxygen",
+      "Ý kiến của Hoa đúng, vì mỗi chất được tạo nên từ một nguyên tố riêng",
+      "Ý kiến của Hoa sai, vì nguyên tử oxygen trong hai chất có cùng số neutron"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Nguyên tố hoá học được xác định bởi số proton, không phụ thuộc nguyên tử nằm trong chất nào.\nNguyên tử oxygen trong khí oxygen và trong nước đều có 8 proton nên cùng thuộc nguyên tố oxygen."
+    },
+    {
+     "ma_cau": "K07010201058",
+     "loai": "trac_nghiem",
+     "de": "Tập hợp nào sau đây là một nguyên tố hoá học?",
+     "lua_chon": [
+      "Tất cả các nguyên tử có 3 lớp electron",
+      "Tất cả các nguyên tử có khối lượng 24 amu",
+      "Tất cả các nguyên tử có 11 proton trong hạt nhân",
+      "Tất cả các nguyên tử có 12 neutron trong hạt nhân"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nguyên tố hoá học là tập hợp những nguyên tử có cùng số proton.\nTập hợp tất cả các nguyên tử có 11 proton là một nguyên tố hoá học."
+    },
+    {
+     "ma_cau": "K07010201060",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây phân biệt đúng hai khái niệm nguyên tử và nguyên tố hoá học?",
+     "lua_chon": [
+      "Nguyên tử là hạt trung hoà về điện tạo nên chất; nguyên tố hoá học là tập hợp những nguyên tử có cùng khối lượng",
+      "Nguyên tố hoá học là một loại hạt; nguyên tử là tập hợp các nguyên tố cùng loại",
+      "Nguyên tử là hạt trung hoà về điện tạo nên chất; nguyên tố hoá học là tập hợp những nguyên tử cùng loại, có cùng số proton",
+      "Nguyên tử và nguyên tố hoá học là hai tên gọi của cùng một loại hạt"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nguyên tử là một hạt cụ thể, trung hoà về điện, tạo nên chất.Nguyên tố hoá học không phải là một hạt mà là tập hợp những nguyên tử cùng loại, có cùng số proton trong hạt nhân."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00668",
+   "nhom_id": "KNB00301",
+   "thu_tu": 2,
+   "dang": "VIẾT VÀ ĐỌC KÍ HIỆU 20 NGUYÊN TỐ ĐẦU",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K07010201065",
+     "loai": "trac_nghiem",
+     "de": "Chip điện tử trong máy tính được chế tạo chủ yếu từ nguyên tố có kí hiệu $\\mathrm{Si}$. Tên của nguyên tố này là",
+     "lua_chon": [
+      "sodium",
+      "sulfur",
+      "silicon",
+      "silver"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Kí hiệu $\\mathrm{Si}$ là của nguyên tố silicon."
+    },
+    {
+     "ma_cau": "K07010201061",
+     "loai": "trac_nghiem",
+     "de": "Muối ăn được tạo nên từ hai nguyên tố sodium và chlorine. Kí hiệu hoá học của hai nguyên tố này lần lượt là",
+     "lua_chon": [
+      "So, Cl",
+      "Na, C",
+      "S, Ch",
+      "Na, Cl"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Kí hiệu hoá học của sodium là Na, của chlorine là Cl."
+    },
+    {
+     "ma_cau": "K07010201066",
+     "loai": "trac_nghiem",
+     "de": "Đầu que diêm có chứa nguyên tố sulfur. Kí hiệu hoá học của nguyên tố này là",
+     "lua_chon": [
+      "S",
+      "Si",
+      "Su",
+      "Sn"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Kí hiệu hoá học của sulfur là $\\mathrm{S}$."
+    },
+    {
+     "ma_cau": "K07010201069",
+     "loai": "trac_nghiem",
+     "de": "Kem đánh răng thường chứa hợp chất của nguyên tố fluorine. Kí hiệu hoá học của nguyên tố này là",
+     "lua_chon": [
+      "Fr",
+      "Fe",
+      "Cl",
+      "F"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Kí hiệu hoá học của fluorine là F."
+    },
+    {
+     "ma_cau": "K07010201064",
+     "loai": "trac_nghiem",
+     "de": "Bóng bay trang trí trong các buổi lễ thường được bơm khí của nguyên tố có kí hiệu $\\mathrm{He}$. Tên của nguyên tố này là",
+     "lua_chon": [
+      "helium",
+      "hydrogen",
+      "argon",
+      "neon"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Kí hiệu $\\mathrm{He}$ là của nguyên tố helium."
+    },
+    {
+     "ma_cau": "K07010201070",
+     "loai": "trac_nghiem",
+     "de": "Pin của điện thoại di động thường chứa nguyên tố lithium. Kí hiệu hoá học của nguyên tố này là",
+     "lua_chon": [
+      "Ti",
+      "Lt",
+      "L",
+      "Li"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Kí hiệu hoá học của lithium là $\\mathrm{Li}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00669",
+   "nhom_id": "KNB00301",
+   "thu_tu": 3,
+   "dang": "NHẬN RA KÍ HIỆU VIẾT SAI",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K07010201080",
+     "loai": "trac_nghiem",
+     "de": "Bạn Minh viết kí hiệu của helium là HE. Bạn Hà cho rằng chỉ cần sửa chữ E thành chữ thường; bạn An cho rằng phải sửa thành H. Nhận xét nào sau đây đúng?",
+     "lua_chon": [
+      "Minh viết đúng, không cần sửa",
+      "An đúng, kí hiệu của helium là H",
+      "Hà đúng, kí hiệu của helium là He",
+      "Cả Hà và An đều đúng"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Kí hiệu của helium gồm hai chữ cái: chữ đầu in hoa, chữ thứ hai viết thường.\nKí hiệu đúng là $\\mathrm{He}$; $\\mathrm{H}$ là kí hiệu của hydrogen. Vậy ý kiến của Hà đúng."
+    },
+    {
+     "ma_cau": "K07010201079",
+     "loai": "trac_nghiem",
+     "de": "Nickel là nguyên tố có kí hiệu $\\mathrm{Ni}$. Nếu viết nhầm thành $\\mathrm{NI}$ (cả hai chữ cái đều in hoa) thì người đọc có thể hiểu là",
+     "lua_chon": [
+      "một nguyên tố là neon",
+      "một nguyên tố là nickel",
+      "hai nguyên tố nitrogen và neon",
+      "hai nguyên tố nitrogen và iodine"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Mỗi chữ cái in hoa là chữ cái đầu của một kí hiệu hoá học.\nCách viết $\\mathrm{NI}$ được hiểu là hai kí hiệu $\\mathrm{N}$ và $\\mathrm{I}$, tức hai nguyên tố nitrogen và iodine."
+    },
+    {
+     "ma_cau": "K07010201078",
+     "loai": "trac_nghiem",
+     "de": "Trên nhãn một chai nước khoáng, các kí hiệu được in như sau: $\\mathrm{CA}$, $\\mathrm{Mg}$, $\\mathrm{NA}$, $\\mathrm{K}$. Cách viết đúng của các kí hiệu bị in sai là",
+     "lua_chon": [
+      "$\\mathrm{Ca}$ và $\\mathrm{Na}$",
+      "$\\mathrm{C}$ và $\\mathrm{N}$",
+      "$\\mathrm{ca}$ và $\\mathrm{na}$",
+      "$\\mathrm{Ca}$, $\\mathrm{Mg}$ và $\\mathrm{Na}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Hai kí hiệu $\\mathrm{CA}$ và $\\mathrm{NA}$ in sai vì chữ cái thứ hai in hoa.\nCách viết đúng là $\\mathrm{Ca}$ và $\\mathrm{Na}$."
+    },
+    {
+     "ma_cau": "K07010201071",
+     "loai": "trac_nghiem",
+     "de": "Dãy nào sau đây gồm các kí hiệu hoá học đều viết đúng quy tắc?",
+     "lua_chon": [
+      "NA, Mg, Cl",
+      "Na, Mg, CL",
+      "Na, Mg, Cl",
+      "Na, mg, Cl"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Kí hiệu hoá học có chữ cái đầu viết in hoa, chữ cái thứ hai (nếu có) viết thường.\nCả ba kí hiệu $\\mathrm{Na}$, $\\mathrm{Mg}$, $\\mathrm{Cl}$ đều viết đúng quy tắc này."
+    },
+    {
+     "ma_cau": "K07010201074",
+     "loai": "trac_nghiem",
+     "de": "Bạn Lan viết kí hiệu của nguyên tố chlorine là CL. Nhận xét nào sau đây đúng?",
+     "lua_chon": [
+      "Lan viết đúng quy tắc",
+      "Lan viết sai; kí hiệu đúng là $\\mathrm{cl}$",
+      "Lan viết sai; kí hiệu đúng là $\\mathrm{C}$",
+      "Lan viết sai; chữ cái thứ hai phải viết thường, kí hiệu đúng là $\\mathrm{Cl}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Kí hiệu hai chữ cái có chữ cái đầu in hoa, chữ cái thứ hai viết thường.\nKí hiệu đúng của chlorine là $\\mathrm{Cl}$."
+    },
+    {
+     "ma_cau": "K07010201075",
+     "loai": "trac_nghiem",
+     "de": "Cobalt là nguyên tố có kí hiệu $\\mathrm{Co}$. Cách viết $\\mathrm{CO}$, trong đó cả hai chữ cái đều in hoa, biểu diễn",
+     "lua_chon": [
+      "một nguyên tố là calcium",
+      "một nguyên tố là copper",
+      "một nguyên tố là cobalt",
+      "hai nguyên tố carbon và oxygen"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Mỗi chữ cái in hoa là chữ cái đầu của một kí hiệu hoá học.\nCách viết $\\mathrm{CO}$ gồm hai kí hiệu $\\mathrm{C}$ và $\\mathrm{O}$, biểu diễn hai nguyên tố carbon và oxygen."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00670",
+   "nhom_id": "KNB00302",
+   "thu_tu": 1,
+   "dang": "GỌI TÊN NGUYÊN TỐ KHI BIẾT SỐ PROTON",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K07010202060",
+     "loai": "tra_loi_ngan",
+     "de": "Khí chiếm phần lớn thể tích không khí là khí của nguyên tố mà nguyên tử có 7 proton trong hạt nhân. Viết tên của nguyên tố này.",
+     "dap_an": "nitrogen",
+     "loi_giai": "Nguyên tố hoá học được xác định bởi số proton trong hạt nhân.\nNguyên tử có 7 proton thuộc nguyên tố nitrogen, kí hiệu hoá học là N."
+    },
+    {
+     "ma_cau": "K07010202051",
+     "loai": "tra_loi_ngan",
+     "de": "Thành phần chính của than củi là nguyên tố mà nguyên tử có 6 proton trong hạt nhân. Viết kí hiệu hoá học của nguyên tố này.",
+     "dap_an": "C",
+     "loi_giai": "Nguyên tố hoá học được xác định bởi số proton trong hạt nhân.\nNguyên tử có 6 proton thuộc nguyên tố carbon, kí hiệu hoá học là \\mathrm{C}."
+    },
+    {
+     "ma_cau": "K07010202058",
+     "loai": "tra_loi_ngan",
+     "de": "Nguyên tử Y có 2 proton và 2 neutron trong hạt nhân. Viết tên của nguyên tố Y.",
+     "dap_an": "helium",
+     "loi_giai": "Nguyên tố hoá học được xác định bởi số proton trong hạt nhân.\nNguyên tử có 2 proton thuộc nguyên tố helium, kí hiệu hoá học là He."
+    },
+    {
+     "ma_cau": "K07010202052",
+     "loai": "tra_loi_ngan",
+     "de": "Vỏ trứng và vỏ ốc có chứa một nguyên tố mà hạt nhân nguyên tử có 20 proton và 20 neutron.\nViết tên của nguyên tố này.",
+     "dap_an": "calcium",
+     "loi_giai": "Nguyên tố hoá học được xác định bởi số proton trong hạt nhân.\nNguyên tử có 20 proton thuộc nguyên tố calcium, kí hiệu hoá học là \\mathrm{Ca}."
+    },
+    {
+     "ma_cau": "K07010202064",
+     "loai": "tra_loi_ngan",
+     "de": "Nguyên tử T có 3 proton và 4 neutron trong hạt nhân. Viết kí hiệu hoá học của nguyên tố T.",
+     "dap_an": "Li",
+     "loi_giai": "Nguyên tố hoá học được xác định bởi số proton trong hạt nhân.\nNguyên tử có 3 proton thuộc nguyên tố lithium, kí hiệu hoá học là $\\mathrm{Li}$."
+    },
+    {
+     "ma_cau": "K07010202054",
+     "loai": "tra_loi_ngan",
+     "de": "Khung xe đạp thể thao thường làm bằng hợp kim chứa nhiều nguyên tố mà nguyên tử có 13 proton trong hạt nhân. Viết tên của nguyên tố này.",
+     "dap_an": "aluminium",
+     "loi_giai": "Nguyên tố hoá học được xác định bởi số proton trong hạt nhân.\nNguyên tử có 13 proton thuộc nguyên tố aluminium, kí hiệu hoá học là \\mathrm{Al}."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00671",
+   "nhom_id": "KNB00302",
+   "thu_tu": 2,
+   "dang": "NHẬN DIỆN CÁC NGUYÊN TỬ CÙNG NGUYÊN TỐ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K07010202077",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tử nào sau đây thuộc cùng nguyên tố hoá học với nguyên tử có 12 proton và 12 neutron?",
+     "lua_chon": [
+      "Nguyên tử có 11 proton và 12 neutron",
+      "Nguyên tử có 12 proton và 13 neutron",
+      "Nguyên tử có 10 proton và 12 neutron",
+      "Nguyên tử có 13 proton và 14 neutron"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Các nguyên tử thuộc cùng một nguyên tố hoá học có cùng số proton.\nNguyên tử có 12 proton và 13 neutron có số proton bằng 12, nên cùng thuộc nguyên tố magnesium với nguyên tử đã cho."
+    },
+    {
+     "ma_cau": "K07010202069",
+     "loai": "trac_nghiem",
+     "de": "Cho bốn nguyên tử với số hạt trong hạt nhân như sau: nguyên tử X (1 proton, 1 neutron); nguyên tử Y (2 proton, 1 neutron); nguyên tử Z (1 proton, 2 neutron); nguyên tử T (2 proton, 2 neutron). Cách ghép nào sau đây xếp đúng các nguyên tử cùng nguyên tố hoá học vào một nhóm?",
+     "lua_chon": [
+      "X và Z; Y và T",
+      "B. X và Y; Z và T",
+      "X và T; Y và Z",
+      "X, Y, Z và T"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Các nguyên tử thuộc cùng một nguyên tố hoá học có cùng số proton.\nNguyên tử X và Z đều có 1 proton nên thuộc cùng nguyên tố hydrogen.\nNguyên tử Y và T đều có 2 proton nên thuộc cùng nguyên tố helium."
+    },
+    {
+     "ma_cau": "K07010202071",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tử nào sau đây thuộc cùng nguyên tố hoá học với nguyên tử có 6 proton và 8 neutron?",
+     "lua_chon": [
+      "Nguyên tử có 7 proton và 8 neutron",
+      "Nguyên tử có 7 proton và 7 neutron",
+      "Nguyên tử có 6 proton và 6 neutron",
+      "Nguyên tử có 8 proton và 8 neutron"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Các nguyên tử thuộc cùng một nguyên tố hoá học có cùng số proton.\nNguyên tử có 6 proton và 6 neutron có số proton bằng 6, nên cùng thuộc nguyên tố carbon với nguyên tử đã cho."
+    },
+    {
+     "ma_cau": "K07010202075",
+     "loai": "trac_nghiem",
+     "de": "Ba nguyên tử X, Y, Z đều có khối lượng xấp xỉ 40 amu. Số hạt trong hạt nhân của bốn nguyên tử như sau: nguyên tử X (18 proton, 22 neutron); nguyên tử Y (19 proton, 21 neutron); nguyên tử Z (20 proton, 20 neutron); nguyên tử T (18 proton, 18 neutron). Hai nguyên tử nào thuộc cùng một nguyên tố hoá học?",
+     "lua_chon": [
+      "X và T",
+      "X và Z",
+      "Y và Z",
+      "X, Y và Z"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Các nguyên tử thuộc cùng một nguyên tố hoá học có cùng số proton.\nNguyên tử X và T đều có 18 proton nên thuộc cùng nguyên tố argon."
+    },
+    {
+     "ma_cau": "K07010202067",
+     "loai": "trac_nghiem",
+     "de": "Trong một mẫu khí, người ta xác định được bốn loại nguyên tử với số hạt trong hạt nhân như sau: nguyên tử X (8 proton, 8 neutron); nguyên tử Y (8 proton, 9 neutron); nguyên tử Z (8 proton, 10 neutron); nguyên tử T (7 proton, 8 neutron). Bốn loại nguyên tử trên thuộc bao nhiêu nguyên tố hoá học?",
+     "lua_chon": [
+      "1",
+      "2",
+      "3",
+      "4"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Các nguyên tử thuộc cùng một nguyên tố hoá học có cùng số proton.\nSố proton của các nguyên tử lần lượt là 8, 8, 8, 7.\nCó 2 giá trị số proton khác nhau là 8 và 7.\nVậy các nguyên tử trên thuộc 2 nguyên tố hoá học (oxygen và nitrogen)."
+    },
+    {
+     "ma_cau": "K07010202074",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tử nào sau đây thuộc cùng nguyên tố hoá học với nguyên tử có 16 proton và 16 neutron?",
+     "lua_chon": [
+      "Nguyên tử có 17 proton và 18 neutron",
+      "Nguyên tử có 16 proton và 18 neutron",
+      "Nguyên tử có 14 proton và 16 neutron",
+      "Nguyên tử có 15 proton và 16 neutron"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Các nguyên tử thuộc cùng một nguyên tố hoá học có cùng số proton.\nNguyên tử có 16 proton và 18 neutron có số proton bằng 16, nên cùng thuộc nguyên tố sulfur với nguyên tử đã cho."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00672",
+   "nhom_id": "KNB00303",
+   "thu_tu": 1,
+   "dang": "Thông tin trong một ô nguyên tố",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K07010301052",
+     "loai": "trac_nghiem",
+     "de": "Ô nguyên tố của potassium ghi các thông tin: 19; K; potassium; 39. Khối lượng nguyên tử của potassium là",
+     "lua_chon": [
+      "19 amu",
+      "20 amu",
+      "39 amu",
+      "58 amu"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Trong ô nguyên tố, số 19 là số hiệu nguyên tử, số 39 là khối lượng nguyên tử.\nKhối lượng nguyên tử của potassium là 39 amu."
+    },
+    {
+     "ma_cau": "K07010301054",
+     "loai": "trac_nghiem",
+     "de": "Thông tin nào sau đây không được ghi trong ô nguyên tố của bảng tuần hoàn?",
+     "lua_chon": [
+      "Số hiệu nguyên tử",
+      "Kí hiệu hoá học",
+      "Khối lượng nguyên tử",
+      "Số neutron trong hạt nhân"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ô nguyên tố ghi số hiệu nguyên tử, kí hiệu hoá học, tên nguyên tố và khối lượng nguyên tử. Số neutron không được ghi trong ô nguyên tố."
+    },
+    {
+     "ma_cau": "K07010301058",
+     "loai": "trac_nghiem",
+     "de": "Ô nguyên tố của calcium ghi các thông tin: 20; Ca; calcium; 40. Phát biểu nào sau đây đúng?",
+     "lua_chon": [
+      "Calcium có khối lượng nguyên tử là 60 amu",
+      "Calcium có số hiệu nguyên tử là 40, khối lượng nguyên tử là 20 amu",
+      "Calcium nằm ở ô số 40 trong bảng tuần hoàn",
+      "Calcium có số hiệu nguyên tử là 20, khối lượng nguyên tử là 40 amu"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Trong ô nguyên tố, số 20 là số hiệu nguyên tử, số 40 là khối lượng nguyên tử.\nVậy calcium có số hiệu nguyên tử 20, khối lượng nguyên tử 40 amu."
+    },
+    {
+     "ma_cau": "K07010301057",
+     "loai": "trac_nghiem",
+     "de": "Sodium có số hiệu nguyên tử là 11 và khối lượng nguyên tử là 23 amu. Sodium nằm ở ô số",
+     "lua_chon": [
+      "1",
+      "11",
+      "12",
+      "23"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Số thứ tự của ô nguyên tố bằng số hiệu nguyên tử.\nSodium có số hiệu nguyên tử 11 nên nằm ở ô số 11."
+    },
+    {
+     "ma_cau": "K07010301056",
+     "loai": "trac_nghiem",
+     "de": "Ô nguyên tố của chlorine ghi khối lượng nguyên tử là 35,5. Đơn vị của khối lượng nguyên tử này là",
+     "lua_chon": [
+      "miligam",
+      "gam",
+      "amu",
+      "kilogam"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khối lượng nguyên tử ghi trong ô nguyên tố có đơn vị là amu.\nKhối lượng nguyên tử của chlorine là 35,5 amu."
+    },
+    {
+     "ma_cau": "K07010301060",
+     "loai": "trac_nghiem",
+     "de": "Bạn An đọc ô nguyên tố ghi '6; C; carbon; 12' và kết luận: 'Nguyên tử carbon có 12 proton.'\nNhận xét nào sau đây đúng?",
+     "lua_chon": [
+      "An kết luận sai; nguyên tử carbon có 18 proton",
+      "An kết luận đúng; số lớn hơn trong ô là số proton",
+      "An kết luận sai; số 12 là số neutron, nguyên tử carbon có 12 neutron",
+      "An kết luận sai; số 12 là khối lượng nguyên tử, carbon có số hiệu nguyên tử là 6 nên có 6 proton"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Trong ô nguyên tố, số $6$ là số hiệu nguyên tử, số $12$ là khối lượng nguyên tử.\nSố hiệu nguyên tử bằng số proton nên nguyên tử carbon có $6$ proton; kết luận của An sai."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00673",
+   "nhom_id": "KNB00303",
+   "thu_tu": 2,
+   "dang": "CHU KÌ VÀ NHÓM CỦA NGUYÊN TỐ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K07010301064",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tố sodium thuộc chu kì 3, nhóm IA. Ô của sodium nằm ở",
+     "lua_chon": [
+      "hàng ngang thứ nhất, cột của nhóm IIIA",
+      "hàng ngang thứ ba, cột của nhóm IA",
+      "hàng ngang thứ nhất, cột của nhóm IA",
+      "hàng ngang thứ ba, cột của nhóm IIIA"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Số thứ tự chu kì cho biết hàng ngang; nhóm cho biết cột.Sodium thuộc chu kì 3, nhóm IA nên nằm ở hàng ngang thứ ba, cột của nhóm IA."
+    },
+    {
+     "ma_cau": "K07010301063",
+     "loai": "trac_nghiem",
+     "de": "Các nhóm A trong bảng tuần hoàn được đánh số",
+     "lua_chon": [
+      "từ IA đến VIIIA",
+      "từ IA đến XVIIIA",
+      "từ IA đến VIIA",
+      "từ IA đến XA"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Bảng tuần hoàn có 8 nhóm A, được đánh số từ IA đến VIIIA."
+    },
+    {
+     "ma_cau": "K07010301069",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tố X thuộc chu kì 2, nhóm \\text{IIA}; nguyên tố Y thuộc chu kì 3, nhóm \\text{IIA}. Nhận xét nào sau đây đúng về vị trí của X và Y?",
+     "lua_chon": [
+      "X và Y nằm cùng một hàng, Y ở ngay bên phải X",
+      "X và Y nằm cùng một chu kì nhưng khác nhóm",
+      "X và Y nằm cùng một cột, Y ở ngay dưới X",
+      "X và Y nằm cùng một cột, Y ở ngay trên X"
+     ],
+     "dap_an": "C",
+     "loi_giai": "X và Y cùng thuộc nhóm \\text{IIA} nên nằm cùng một cột.\\nY thuộc chu kì 3, lớn hơn chu kì 2 của X, nên Y ở ngay dưới X."
+    },
+    {
+     "ma_cau": "K07010301066",
+     "loai": "trac_nghiem",
+     "de": "Chu kì 2 của bảng tuần hoàn gồm bao nhiêu nguyên tố?",
+     "lua_chon": [
+      "2",
+      "8",
+      "10",
+      "18"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Chu kì 2 gồm 8 nguyên tố, từ lithium (ô số 3) đến neon (ô số 10)."
+    },
+    {
+     "ma_cau": "K07010301061",
+     "loai": "trac_nghiem",
+     "de": "Chu kì trong bảng tuần hoàn là",
+     "lua_chon": [
+      "dãy các nguyên tố được xếp thành một cột dọc",
+      "một ô chứa thông tin của một nguyên tố",
+      "dãy các nguyên tố được xếp thành một hàng ngang",
+      "tập hợp các nguyên tố có cùng khối lượng nguyên tử"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Chu kì là dãy các nguyên tố được xếp thành một hàng ngang theo chiều tăng dần số hiệu nguyên tử."
+    },
+    {
+     "ma_cau": "K07010301067",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tố nào sau đây thuộc chu kì 3?",
+     "lua_chon": [
+      "Helium",
+      "Magnesium",
+      "Potassium",
+      "Carbon"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Chu kì 3 gồm các nguyên tố từ sodium (ô số 11) đến argon (ô số 18).\nMagnesium ở ô số 12 nên thuộc chu kì 3."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00674",
+   "nhom_id": "KNB00303",
+   "thu_tu": 3,
+   "dang": "VÙNG KIM LOẠI, PHI KIM, KHÍ HIẾM",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K07010301077",
+     "loai": "trac_nghiem",
+     "de": "Trong bảng tuần hoàn, các nguyên tố phi kim chủ yếu nằm ở",
+     "lua_chon": [
+      "phía bên trái bảng",
+      "phía bên phải bảng, trước cột nhóm VIIIA",
+      "khu vực giữa bảng",
+      "cột nhóm VIIIA"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Các nguyên tố phi kim tập trung ở phía bên phải bảng tuần hoàn.\nCột nhóm VIIIA ở ngoài cùng bên phải là các khí hiếm."
+    },
+    {
+     "ma_cau": "K07010301079",
+     "loai": "trac_nghiem",
+     "de": "Trong chu kì 3, đi từ trái sang phải, các nguyên tố lần lượt thuộc các loại",
+     "lua_chon": [
+      "kim loại, khí hiếm, phi kim",
+      "khí hiếm, kim loại, phi kim",
+      "phi kim, kim loại, khí hiếm",
+      "kim loại, phi kim, khí hiếm"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Chu kì 3 mở đầu bằng các kim loại (sodium, magnesium, aluminium), tiếp theo là các phi kim. Chu kì 3 kết thúc bằng khí hiếm argon."
+    },
+    {
+     "ma_cau": "K07010301075",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tố nào sau đây là phi kim?",
+     "lua_chon": [
+      "Phosphorus",
+      "Aluminium",
+      "Helium",
+      "Potassium"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Phosphorus thuộc vùng phi kim của bảng tuần hoàn.\nAluminium, potassium là kim loại; helium là khí hiếm."
+    },
+    {
+     "ma_cau": "K07010301080",
+     "loai": "trac_nghiem",
+     "de": "Trong 20 nguyên tố đầu của bảng tuần hoàn, có bao nhiêu nguyên tố khí hiếm?",
+     "lua_chon": [
+      "2",
+      "3",
+      "4",
+      "8"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Trong 20 nguyên tố đầu, các khí hiếm là helium, neon và argon. Vậy có 3 nguyên tố khí hiếm."
+    },
+    {
+     "ma_cau": "K07010301074",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tố nào sau đây là kim loại?",
+     "lua_chon": [
+      "Carbon",
+      "Magnesium",
+      "Neon",
+      "Sulfur"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Magnesium thuộc vùng kim loại của bảng tuần hoàn.\nSulfur, carbon là phi kim; neon là khí hiếm."
+    },
+    {
+     "ma_cau": "K07010301078",
+     "loai": "trac_nghiem",
+     "de": "Hydrogen nằm ở nhóm IA cùng với lithium, sodium và potassium. Hydrogen là",
+     "lua_chon": [
+      "phi kim",
+      "kim loại giống sodium",
+      "kim loại",
+      "khí hiếm"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Hydrogen nằm ở nhóm IA nhưng không phải kim loại. Hydrogen là phi kim."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00675",
+   "nhom_id": "KNB00304",
+   "thu_tu": 1,
+   "dang": "TỪ VỊ TRÍ SUY RA CẤU TẠO NGUYÊN TỬ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K07010302061",
+     "loai": "tra_loi_ngan",
+     "de": "Nguyên tố sulfur nằm ở ô số 16, chu kì 3, nhóm VIA của bảng tuần hoàn. Nguyên tử sulfur có bao nhiêu lớp electron?",
+     "dap_an": "3",
+     "loi_giai": "Số lớp electron của nguyên tử bằng số thứ tự chu kì.\nSulfur thuộc chu kì 3 nên nguyên tử sulfur có 3 lớp electron."
+    },
+    {
+     "ma_cau": "K07010302064",
+     "loai": "tra_loi_ngan",
+     "de": "Nguyên tố $\\mathrm{X}$ nằm ở chu kì 4, nhóm IA của bảng tuần hoàn ($\\mathrm{X}$ thuộc 20 nguyên tố đầu). Hạt nhân nguyên tử $\\mathrm{X}$ có bao nhiêu proton?",
+     "dap_an": "19",
+     "loi_giai": "$\\mathrm{X}$ thuộc chu kì 4 nên nguyên tử $\\mathrm{X}$ có 4 lớp electron.\n$\\mathrm{X}$ thuộc nhóm IA nên lớp ngoài cùng có 1 electron.\nCác lớp bên trong đã có đủ electron: lớp 1 có 2, lớp 2 có 8, lớp 3 có 8.\nTổng số electron của $\\mathrm{X}$ là: $2 + 8 + 8 + 1 = 19$\nSố proton bằng số electron nên hạt nhân nguyên tử $\\mathrm{X}$ có 19 proton."
+    },
+    {
+     "ma_cau": "K07010302059",
+     "loai": "tra_loi_ngan",
+     "de": "Nguyên tố neon nằm ở ô số 10, chu kì 2, nhóm VIIIA của bảng tuần hoàn. Nguyên tử neon có bao nhiêu electron ở lớp ngoài cùng?",
+     "dap_an": "8",
+     "loi_giai": "Với nguyên tố nhóm A, số electron lớp ngoài cùng bằng số thứ tự nhóm.\nNeon thuộc nhóm VIIIA nên nguyên tử neon có 8 electron ở lớp ngoài cùng."
+    },
+    {
+     "ma_cau": "K07010302053",
+     "loai": "tra_loi_ngan",
+     "de": "Nguyên tố chlorine nằm ở ô số 17, chu kì 3, nhóm VIIA của bảng tuần hoàn. Nguyên tử chlorine có bao nhiêu electron ở lớp ngoài cùng?",
+     "dap_an": "7",
+     "loi_giai": "Với nguyên tố nhóm A, số electron lớp ngoài cùng bằng số thứ tự nhóm.\nChlorine thuộc nhóm VIIA nên nguyên tử chlorine có 7 electron ở lớp ngoài cùng."
+    },
+    {
+     "ma_cau": "K07010302057",
+     "loai": "tra_loi_ngan",
+     "de": "Nguyên tố oxygen nằm ở ô số 8, chu kì 2, nhóm VIA của bảng tuần hoàn. Nguyên tử oxygen có bao nhiêu electron ở lớp ngoài cùng?",
+     "dap_an": "6",
+     "loi_giai": "Với nguyên tố nhóm A, số electron lớp ngoài cùng bằng số thứ tự nhóm.\nOxygen thuộc nhóm VIA nên nguyên tử oxygen có 6 electron ở lớp ngoài cùng."
+    },
+    {
+     "ma_cau": "K07010302060",
+     "loai": "tra_loi_ngan",
+     "de": "Nguyên tố lithium nằm ở ô số 3, chu kì 2, nhóm IA của bảng tuần hoàn. Nguyên tử lithium có bao nhiêu electron ở lớp ngoài cùng?",
+     "dap_an": "1",
+     "loi_giai": "Với nguyên tố nhóm A, số electron lớp ngoài cùng bằng số thứ tự nhóm.\nLithium thuộc nhóm IA nên nguyên tử lithium có 1 electron ở lớp ngoài cùng."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00676",
+   "nhom_id": "KNB00304",
+   "thu_tu": 2,
+   "dang": "TỪ CẤU TẠO SUY RA VỊ TRÍ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K07010302078",
+     "loai": "trac_nghiem",
+     "de": "Mô hình Rutherford - Bohr của nguyên tử X gồm hạt nhân và 3 vòng electron; vòng ngoài cùng có 4 electron. Vị trí của X trong bảng tuần hoàn là",
+     "lua_chon": [
+      "Ô số 4, chu kì 3, nhóm IVA",
+      "Ô số 12, chu kì 3, nhóm IVA",
+      "Ô số 14, chu kì 3, nhóm IVA",
+      "Ô số 14, chu kì 4, nhóm IIIA"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tổng số electron của X là: $2 + 8 + 4 = 14$\nSố thứ tự ô bằng số proton nên X ở ô số 14.\nNguyên tử X có 3 lớp electron nên X thuộc chu kì 3.\nLớp ngoài cùng có 4 electron nên X thuộc nhóm IVA."
+    },
+    {
+     "ma_cau": "K07010302072",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tử của nguyên tố X có các electron được phân bố vào các lớp lần lượt là 2, 8, 5. Vị trí của X trong bảng tuần hoàn là",
+     "lua_chon": [
+      "Chu kì 2, nhóm VA",
+      "Chu kì 5, nhóm IIIA",
+      "Chu kì 3, nhóm VIIIA",
+      "Chu kì 3, nhóm VA"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Nguyên tử X có 3 lớp electron nên X thuộc chu kì 3.\nLớp ngoài cùng có 5 electron nên X thuộc nhóm VA."
+    },
+    {
+     "ma_cau": "K07010302067",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tử của nguyên tố X có các electron được phân bố vào các lớp lần lượt là 2, 8, 1. Vị trí của X trong bảng tuần hoàn là",
+     "lua_chon": [
+      "Chu kì 2, nhóm IA",
+      "Chu kì 3, nhóm IA",
+      "Chu kì 1, nhóm IIIA",
+      "Chu kì 3, nhóm VIIIA"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Nguyên tử X có 3 lớp electron nên X thuộc chu kì 3.Lớp ngoài cùng có 1 electron nên X thuộc nhóm IA."
+    },
+    {
+     "ma_cau": "K07010302070",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tử của nguyên tố $\\mathrm{X}$ có các electron được phân bố vào các lớp lần lượt là 2, 8, 8, 2. Vị trí của $\\mathrm{X}$ trong bảng tuần hoàn là",
+     "lua_chon": [
+      "Chu kì 4, nhóm $\\mathrm{VIIIA}$",
+      "Chu kì 4, nhóm $\\mathrm{IIA}$",
+      "Chu kì 3, nhóm $\\mathrm{IIA}$",
+      "Chu kì 2, nhóm $\\mathrm{IVA}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Nguyên tử $\\mathrm{X}$ có 4 lớp electron nên $\\mathrm{X}$ thuộc chu kì 4. Lớp ngoài cùng có 2 electron nên $\\mathrm{X}$ thuộc nhóm $\\mathrm{IIA}$."
+    },
+    {
+     "ma_cau": "K07010302075",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tử của nguyên tố X có các electron được phân bố vào các lớp lần lượt là 2, 8, 2. Vị trí của X trong bảng tuần hoàn là",
+     "lua_chon": [
+      "Chu kì 3, nhóm VIIIA",
+      "Chu kì 2, nhóm IIIA",
+      "Chu kì 3, nhóm IIA",
+      "Chu kì 2, nhóm IIA"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nguyên tử X có 3 lớp electron nên X thuộc chu kì 3.\nLớp ngoài cùng có 2 electron nên X thuộc nhóm IIA."
+    },
+    {
+     "ma_cau": "K07010302069",
+     "loai": "trac_nghiem",
+     "de": "Nguyên tử của nguyên tố $\\mathrm{X}$ có các electron được phân bố vào các lớp lần lượt là 2, 8, 7. Vị trí của $\\mathrm{X}$ trong bảng tuần hoàn là",
+     "lua_chon": [
+      "Chu kì 2, nhóm $\\mathrm{VIIA}$",
+      "Chu kì 3, nhóm $\\mathrm{VIIIA}$",
+      "Chu kì 7, nhóm $\\mathrm{IIIA}$",
+      "Chu kì 3, nhóm $\\mathrm{VIIA}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Nguyên tử $\\mathrm{X}$ có 3 lớp electron nên $\\mathrm{X}$ thuộc chu kì 3. Lớp ngoài cùng có 7 electron nên $\\mathrm{X}$ thuộc nhóm $\\mathrm{VIIA}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00677",
+   "nhom_id": "KNB00305",
+   "thu_tu": 1,
+   "dang": "GIẢI CÂU ĐỐ NGUYÊN TỐ TỪ NHIỀU MANH MỐI",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K07010303051",
+     "loai": "tra_loi_ngan",
+     "de": "Nguyên tố $\\mathrm{X}$ là kim loại thuộc chu kì 3. Nguyên tử $\\mathrm{X}$ có số electron lớp ngoài cùng bằng số lớp electron. Viết kí hiệu hoá học của $\\mathrm{X}$.",
+     "dap_an": "Al",
+     "loi_giai": "X thuộc chu kì 3 nên nguyên tử $\\mathrm{X}$ có 3 lớp electron.\nSố electron lớp ngoài cùng bằng số lớp electron nên lớp ngoài cùng có 3 electron; $\\mathrm{X}$ thuộc nhóm IIIA.\nNguyên tố thuộc chu kì 3, nhóm IIIA là aluminium, kí hiệu $\\mathrm{Al}$."
+    },
+    {
+     "ma_cau": "K07010303047",
+     "loai": "tra_loi_ngan",
+     "de": "Nguyên tố $\\mathrm{X}$ là kim loại thuộc chu kì 3. Nguyên tử $\\mathrm{X}$ có 1 electron ở lớp ngoài cùng. Viết kí hiệu hoá học của $\\mathrm{X}$.",
+     "dap_an": "Na",
+     "loi_giai": "$\\mathrm{X}$ có 1 electron lớp ngoài cùng nên $\\mathrm{X}$ thuộc nhóm IA.\nNguyên tố thuộc chu kì 3, nhóm IA là sodium, kí hiệu $\\mathrm{Na}$."
+    },
+    {
+     "ma_cau": "K07010303058",
+     "loai": "tra_loi_ngan",
+     "de": "Nguyên tố X là khí hiếm. Nguyên tử X có số lớp electron bằng số lớp electron của nguyên tử aluminium. Viết kí hiệu hóa học của X.",
+     "dap_an": "Ar",
+     "loi_giai": "Aluminium thuộc chu kì 3 nên nguyên tử aluminium có 3 lớp electron; X thuộc chu kì 3.\nKhí hiếm thuộc nhóm VIIIA; nguyên tố thuộc chu kì 3, nhóm VIIIA là argon, kí hiệu $\\mathrm{Ar}$."
+    },
+    {
+     "ma_cau": "K07010303048",
+     "loai": "tra_loi_ngan",
+     "de": "Nguyên tố $\\mathrm{X}$ là khí hiếm. Nguyên tử $\\mathrm{X}$ có 2 lớp electron. Viết kí hiệu hoá học của $\\mathrm{X}$.",
+     "dap_an": "Ne",
+     "loi_giai": "Nguyên tử $\\mathrm{X}$ có 2 lớp electron nên $\\mathrm{X}$ thuộc chu kì 2.\nKhí hiếm thuộc nhóm VIIIA; nguyên tố thuộc chu kì 2, nhóm VIIIA là neon, kí hiệu $\\mathrm{Ne}$."
+    },
+    {
+     "ma_cau": "K07010303061",
+     "loai": "tra_loi_ngan",
+     "de": "Nguyên tố X là khí hiếm. Số electron lớp ngoài cùng của nguyên tử X bằng số electron lớp ngoài cùng của nguyên tử magnesium. Viết kí hiệu hoá học của X.",
+     "dap_an": "He",
+     "loi_giai": "Magnesium thuộc nhóm IIA nên nguyên tử magnesium có 2 electron lớp ngoài cùng.\nKhí hiếm có lớp ngoài cùng đủ 8 electron, trừ helium chỉ có 2 electron.\nVậy X là helium, kí hiệu $\\mathrm{He}$."
+    },
+    {
+     "ma_cau": "K07010303049",
+     "loai": "tra_loi_ngan",
+     "de": "Nguyên tố $\\mathrm{X}$ là phi kim thuộc nhóm VIIA. Nguyên tử $\\mathrm{X}$ có 3 lớp electron. Viết kí hiệu hoá học của $\\mathrm{X}$.",
+     "dap_an": "Cl",
+     "loi_giai": "Nguyên tử $\\mathrm{X}$ có 3 lớp electron nên $\\mathrm{X}$ thuộc chu kì 3.\nNguyên tố thuộc chu kì 3, nhóm VIIA là chlorine, kí hiệu $\\mathrm{Cl}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00678",
+   "nhom_id": "KNB00305",
+   "thu_tu": 2,
+   "dang": "HAI NGUYÊN TỐ BIẾT TỔNG SỐ PROTON",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K07010303072",
+     "loai": "tu_luan",
+     "de": "A và B là hai nguyên tố thuộc cùng một nhóm A, ở hai chu kì liên tiếp của bảng tuần hoàn (A ở chu kì nhỏ hơn); cả hai đều nằm trong 20 nguyên tố đầu. Tổng số electron trong các nguyên tử A và B là 20. Xác định nguyên tố B.",
+     "dap_an": "Silicon (Si)",
+     "loi_giai": "Gọi số proton của A và B lần lượt là $Z_A$, $Z_B$.\nTrong mỗi nguyên tử, số electron bằng số proton nên:\n$Z_A + Z_B = 20$\nA và B thuộc cùng một nhóm, ở hai chu kì liên tiếp trong 20 nguyên tố đầu nên số proton hơn kém nhau 8:\n$Z_B = Z_A + 8$\nThay vào tổng số proton:\n$Z_A + Z_A + 8 = 20$\n$Z_A = \\dfrac{20 - 8}{2} = 6$\n$Z_B = 6 + 8 = 14$\nB có 14 proton nên B là silicon ($\\mathrm{Si}$)."
+    },
+    {
+     "ma_cau": "K07010303063",
+     "loai": "tu_luan",
+     "de": "A và B là hai nguyên tố đứng kế tiếp nhau trong cùng một chu kì của bảng tuần hoàn (A đứng trước B). Tổng số proton trong hạt nhân của các nguyên tử A và B là 15. Xác định nguyên tố B.",
+     "dap_an": "O",
+     "loi_giai": "Gọi số proton của A và B lần lượt là $Z_A$, $Z_B$.\n$Z_A + Z_B = 15$\nA và B đứng kế tiếp nhau trong cùng một chu kì nên:\n$Z_B = Z_A + 1$\nThay vào tổng số proton:\n$Z_A + Z_A + 1 = 15$\n$Z_A = \\dfrac{15 - 1}{2} = 7$\n$Z_B = 7 + 1 = 8$\nB có 8 proton nên B là oxygen (\\mathrm{O})."
+    },
+    {
+     "ma_cau": "K07010303067",
+     "loai": "tu_luan",
+     "de": "A và B là hai nguyên tố thuộc cùng một nhóm A, ở hai chu kì liên tiếp của bảng tuần hoàn (A ở chu kì nhỏ hơn); cả hai đều nằm trong 20 nguyên tố đầu. Tổng số proton trong hạt nhân của các nguyên tử A và B là 22. Xác định nguyên tố B.",
+     "dap_an": "P",
+     "loi_giai": "Gọi số proton của A và B lần lượt là $Z_A$, $Z_B$.\n$Z_A + Z_B = 22$\nA và B thuộc cùng một nhóm, ở hai chu kì liên tiếp trong 20 nguyên tố đầu nên số proton hơn kém nhau 8:\n$Z_B = Z_A + 8$\nThay vào tổng số proton:\n$Z_A + Z_A + 8 = 22$\n$2Z_A = 22 - 8$\n$2Z_A = 14$\n$Z_A = \\dfrac{14}{2} = 7$\n$Z_B = 7 + 8 = 15$\nB có 15 proton nên B là phosphorus (P)."
+    },
+    {
+     "ma_cau": "K07010303071",
+     "loai": "tu_luan",
+     "de": "A và B là hai nguyên tố đứng kế tiếp nhau trong cùng một chu kì của bảng tuần hoàn (A đứng trước B). Tổng số hạt mang điện trong các nguyên tử A và B là 46. Xác định nguyên tố B.",
+     "dap_an": "B là magnesium (Mg).",
+     "loi_giai": "Gọi số proton của A và B lần lượt là $Z_A$, $Z_B$.\nTrong mỗi nguyên tử, số proton bằng số electron nên số hạt mang điện bằng hai lần số proton:\n$2Z_A + 2Z_B = 46$\nSuy ra:\n$Z_A + Z_B = 46 : 2 = 23$\nA và B đứng kế tiếp nhau trong cùng một chu kì nên:\n$Z_B = Z_A + 1$\nThay vào tổng số proton:\n$Z_A + Z_A + 1 = 23$\n$Z_A = \\dfrac{23 - 1}{2} = 11$\n$Z_B = 11 + 1 = 12$\nB có 12 proton nên B là magnesium ($\\mathrm{Mg}$)."
+    },
+    {
+     "ma_cau": "K07010303070",
+     "loai": "tu_luan",
+     "de": "A và B là hai nguyên tố thuộc cùng một nhóm A, ở hai chu kì liên tiếp của bảng tuần hoàn (A ở chu kì nhỏ hơn); cả hai đều nằm trong 20 nguyên tố đầu. Tổng số proton trong hạt nhân của các nguyên tử A và B là 28. Xác định nguyên tố B.",
+     "dap_an": "B là argon (Ar).",
+     "loi_giai": "Gọi số proton của A và B lần lượt là $Z_A$, $Z_B$.\n$Z_A + Z_B = 28$\nA và B thuộc cùng một nhóm, ở hai chu kì liên tiếp trong 20 nguyên tố đầu nên số proton hơn kém nhau 8:\n$Z_B = Z_A + 8$\nThay vào tổng số proton:\n$Z_A + Z_A + 8 = 28$\n$Z_A = \\dfrac{28 - 8}{2} = 10$\n$Z_B = 10 + 8 = 18$\nB có 18 proton nên B là argon ($\\mathrm{Ar}$)."
+    },
+    {
+     "ma_cau": "K07010303073",
+     "loai": "tu_luan",
+     "de": "A và B là hai nguyên tố thuộc cùng một nhóm A, ở hai chu kì liên tiếp của bảng tuần hoàn (A ở chu kì nhỏ hơn); cả hai đều nằm trong 20 nguyên tố đầu. Tổng số hạt mang điện trong các nguyên tử A và B là 36. Xác định nguyên tố A.",
+     "dap_an": "5",
+     "loi_giai": "Gọi số proton của A và B lần lượt là $Z_A$, $Z_B$.\nTrong mỗi nguyên tử, số proton bằng số electron nên số hạt mang điện bằng hai lần số proton:\n$2Z_A + 2Z_B = 36$\nSuy ra:\n$Z_A + Z_B = 36:2 = 18$\nA và B thuộc cùng một nhóm, ở hai chu kì liên tiếp trong 20 nguyên tố đầu nên số proton hơn kém nhau 8:\n$Z_B = Z_A + 8$\nThay vào tổng số proton:\n$Z_A + Z_A + 8 = 18$\n$Z_A = \\dfrac{18 - 8}{2} = 5$\n$Z_B = 5 + 8 = 13$\nA có 5 proton nên A là boron ($\\mathrm{B}$)."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00679",
+   "nhom_id": "KNB00306",
+   "thu_tu": 1,
+   "dang": "XẾP LOẠI NGUYÊN TỐ THEO VỊ TRÍ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K07010304014",
+     "loai": "trac_nghiem",
+     "de": "Cho các nguyên tố: nguyên tố \\mathrm{X} có nguyên tử với các electron phân bố vào các lớp lần lượt là 2, 5; nguyên tố \\mathrm{Y} có nguyên tử với các electron phân bố vào các lớp lần lượt là 2, 8, 8, 1. Các nguyên tố \\mathrm{X} và \\mathrm{Y} lần lượt là",
+     "lua_chon": [
+      "phi kim, phi kim",
+      "kim loại, phi kim",
+      "phi kim, kim loại",
+      "khí hiếm, kim loại"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nguyên tố \\mathrm{X}: phân bố electron 2, 5 cho biết nguyên tố thuộc chu kì 2, nhóm \\mathrm{VA}; đó là \\mathrm{nitrogen}, thuộc loại phi kim.\nNguyên tố \\mathrm{Y}: phân bố electron 2, 8, 8, 1 cho biết nguyên tố thuộc chu kì 4, nhóm \\mathrm{IA}; đó là \\mathrm{potassium}, thuộc loại kim loại."
+    },
+    {
+     "ma_cau": "K07010304015",
+     "loai": "trac_nghiem",
+     "de": "Argon ở ô số 18 của bảng tuần hoàn. Nguyên tố X ở ô ngay trước argon, nguyên tố Y ở ô ngay sau argon. X và Y lần lượt là",
+     "lua_chon": [
+      "khí hiếm, kim loại",
+      "phi kim, khí hiếm",
+      "kim loại, phi kim",
+      "phi kim, kim loại"
+     ],
+     "dap_an": "D",
+     "loi_giai": "X ở ô số 17, là chlorine (chu kì 3, nhóm VIIA), thuộc loại phi kim.\nY ở ô số 19, là potassium (chu kì 4, nhóm IA), thuộc loại kim loại."
+    },
+    {
+     "ma_cau": "K07010304011",
+     "loai": "trac_nghiem",
+     "de": "Cho các nguyên tố: nguyên tố X có hạt nhân nguyên tử chứa 20 proton; nguyên tố Y có hạt nhân nguyên tử chứa 15 proton. Các nguyên tố X và Y lần lượt là",
+     "lua_chon": [
+      "kim loại, kim loại",
+      "phi kim, kim loại",
+      "khí hiếm, phi kim",
+      "kim loại, phi kim"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Nguyên tố X: nguyên tố ở ô số 20 là canxi (chu kì 4, nhóm IIA), thuộc loại kim loại.\nNguyên tố Y: nguyên tố ở ô số 15 là photpho (chu kì 3, nhóm VA), thuộc loại phi kim."
+    },
+    {
+     "ma_cau": "K07010304003",
+     "loai": "trac_nghiem",
+     "de": "Cho các nguyên tố: nguyên tố X thuộc chu kì 3, nhóm IIIA; nguyên tố Y thuộc chu kì 3, nhóm VIIIA. Các nguyên tố X và Y lần lượt là",
+     "lua_chon": [
+      "phi kim, khí hiếm",
+      "kim loại, kim loại",
+      "kim loại, khí hiếm",
+      "kim loại, phi kim"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nguyên tố X: nguyên tố thuộc chu kì 3, nhóm IIIA là aluminium, thuộc loại kim loại.\nNguyên tố Y: nguyên tố thuộc chu kì 3, nhóm VIIIA là argon, thuộc loại khí hiếm."
+    },
+    {
+     "ma_cau": "K07010304007",
+     "loai": "trac_nghiem",
+     "de": "Cho các nguyên tố: nguyên tố X có nguyên tử với các electron phân bố vào các lớp lần lượt là 2, 8; nguyên tố Y có nguyên tử với các electron phân bố vào các lớp lần lượt là 2, 1. Các nguyên tố X và Y lần lượt là",
+     "lua_chon": [
+      "khí hiếm, kim loại",
+      "khí hiếm, phi kim",
+      "kim loại, khí hiếm",
+      "phi kim, kim loại"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Nguyên tố X: phân bố electron 2, 8 cho biết nguyên tố thuộc chu kì 2, nhóm VIIIA; đó là neon, thuộc loại khí hiếm.\nNguyên tố Y: phân bố electron 2, 1 cho biết nguyên tố thuộc chu kì 2, nhóm IA; đó là lithium, thuộc loại kim loại."
+    },
+    {
+     "ma_cau": "K07010304001",
+     "loai": "trac_nghiem",
+     "de": "Cho các nguyên tố: nguyên tố X thuộc chu kì 3, nhóm IA; nguyên tố Y thuộc chu kì 3, nhóm VIIA. Các nguyên tố X và Y lần lượt là",
+     "lua_chon": [
+      "phi kim, kim loại",
+      "kim loại, khí hiếm",
+      "kim loại, phi kim",
+      "phi kim, phi kim"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nguyên tố X: nguyên tố thuộc chu kì 3, nhóm IA là sodium, thuộc loại kim loại.\nNguyên tố Y: nguyên tố thuộc chu kì 3, nhóm VIIA là chlorine, thuộc loại phi kim."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00680",
+   "nhom_id": "KNB00306",
+   "thu_tu": 2,
+   "dang": "DỰ ĐOÁN NGUYÊN TỐ CÓ TÍNH CHẤT TƯƠNG TỰ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K07010304026",
+     "loai": "tra_loi_ngan",
+     "de": "Nguyên tố X có hạt nhân nguyên tử chứa 20 proton. Trong chu kì 3, nguyên tố nào có tính chất hoá học tương tự X? Viết kí hiệu hoá học của nguyên tố đó.",
+     "dap_an": "Mg",
+     "loi_giai": "Nguyên tử X có 20 proton nên có 20 electron, phân bố vào các lớp: 2, 8, 8, 2.\nLớp ngoài cùng có 2 electron nên X thuộc nhóm IIA.\nCác nguyên tố trong cùng một nhóm có tính chất hoá học tương tự nhau.\nNguyên tố thuộc nhóm IIA, chu kì 3 là magnesium, kí hiệu Mg."
+    },
+    {
+     "ma_cau": "K07010304029",
+     "loai": "tra_loi_ngan",
+     "de": "Nguyên tố X có nguyên tử với các electron phân bố vào các lớp lần lượt là 2, 6. Trong chu kì 3, nguyên tố nào có tính chất hoá học tương tự X? Viết kí hiệu hoá học của nguyên tố đó.",
+     "dap_an": "S",
+     "loi_giai": "Lớp ngoài cùng có 6 electron nên X thuộc nhóm VIA.\nCác nguyên tố trong cùng một nhóm có tính chất hoá học tương tự nhau.\nNguyên tố thuộc nhóm VIA, chu kì 3 là sulfur, kí hiệu S."
+    },
+    {
+     "ma_cau": "K07010304027",
+     "loai": "tra_loi_ngan",
+     "de": "Nguyên tố X có nguyên tử chứa 15 electron. Trong chu kì 2, nguyên tố nào có tính chất hoá học tương tự X? Viết kí hiệu hoá học của nguyên tố đó.",
+     "dap_an": "N",
+     "loi_giai": "Nguyên tử X có 15 electron, phân bố vào các lớp: 2, 8, 5.\nLớp ngoài cùng có 5 electron nên X thuộc nhóm VA.\nCác nguyên tố trong cùng một nhóm có tính chất hoá học tương tự nhau.\nNguyên tố thuộc nhóm VA, chu kì 2 là nitrogen, kí hiệu N."
+    },
+    {
+     "ma_cau": "K07010304030",
+     "loai": "tra_loi_ngan",
+     "de": "Nguyên tố X có hạt nhân nguyên tử chứa 4 proton. Trong chu kì 3, nguyên tố nào có tính chất hoá học tương tự X? Viết kí hiệu hoá học của nguyên tố đó.",
+     "dap_an": "Mg",
+     "loi_giai": "Nguyên tử X có 4 proton nên có 4 electron, phân bố vào các lớp: 2, 2.\nLớp ngoài cùng có 2 electron nên X thuộc nhóm IIA.\nCác nguyên tố trong cùng một nhóm có tính chất hoá học tương tự nhau.\nNguyên tố thuộc nhóm IIA, chu kì 3 là magnesium, kí hiệu Mg."
+    },
+    {
+     "ma_cau": "K07010304016",
+     "loai": "tra_loi_ngan",
+     "de": "Nguyên tố magnesium thuộc nhóm $\\mathrm{IIA}$. Trong chu kì 4, nguyên tố nào có tính chất hoá học tương tự magnesium? Viết kí hiệu hoá học của nguyên tố đó.",
+     "dap_an": "Ca",
+     "loi_giai": "Các nguyên tố trong cùng một nhóm có tính chất hoá học tương tự nhau. Nguyên tố thuộc nhóm $\\mathrm{IIA}$, chu kì 4 là calcium, kí hiệu $\\mathrm{Ca}$."
+    },
+    {
+     "ma_cau": "K07010304018",
+     "loai": "tra_loi_ngan",
+     "de": "Nguyên tố neon thuộc nhóm $\\mathrm{VIIIA}$. Trong chu kì 3, nguyên tố nào có tính chất hoá học tương tự neon? Viết kí hiệu hoá học của nguyên tố đó.",
+     "dap_an": "Ar",
+     "loi_giai": "Các nguyên tố trong cùng một nhóm có tính chất hoá học tương tự nhau. Nguyên tố thuộc nhóm $\\mathrm{VIIIA}$, chu kì 3 là argon, kí hiệu $\\mathrm{Ar}$."
+    }
+   ]
+  }
+ ]
+}

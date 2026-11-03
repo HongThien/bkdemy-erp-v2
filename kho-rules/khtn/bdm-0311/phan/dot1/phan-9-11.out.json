@@ -1,0 +1,668 @@
+[
+ {
+  "ma_cau": "K09110201017",
+  "dang_bai_id": "KDB01546",
+  "chac": "cao",
+  "ly_do": "Vị trí DNA trong tế bào, khớp dạng nhận biết vị trí"
+ },
+ {
+  "ma_cau": "K09110201018",
+  "dang_bai_id": "KDB01546",
+  "chac": "cao",
+  "ly_do": "Thành phần nucleotide khác nhau ở base"
+ },
+ {
+  "ma_cau": "K09110201019",
+  "dang_bai_id": "KDB01546",
+  "chac": "cao",
+  "ly_do": "Loại liên kết cùng mạch, trùng ví dụ dạng 1"
+ },
+ {
+  "ma_cau": "K09110201020",
+  "dang_bai_id": "KDB01551",
+  "chac": "cao",
+  "ly_do": "Vì sao H yếu vẫn bền, trùng ví dụ dạng cấu trúc-chức năng"
+ },
+ {
+  "ma_cau": "K09110201021",
+  "dang_bai_id": "KDB01546",
+  "chac": "cao",
+  "ly_do": "Cấu trúc đối song song của hai mạch"
+ },
+ {
+  "ma_cau": "K09110201022",
+  "dang_bai_id": "KDB01546",
+  "chac": "vua",
+  "ly_do": "Lịch sử mô hình DNA, không dạng nào khớp hẳn"
+ },
+ {
+  "ma_cau": "K09110201023",
+  "dang_bai_id": "KDB01550",
+  "chac": "cao",
+  "ly_do": "Số trình tự 4^n"
+ },
+ {
+  "ma_cau": "K09110201024",
+  "dang_bai_id": "KDB01548",
+  "chac": "cao",
+  "ly_do": "Chức năng mRNA, trùng ví dụ"
+ },
+ {
+  "ma_cau": "K09110201025",
+  "dang_bai_id": "KDB01548",
+  "chac": "cao",
+  "ly_do": "Chức năng tRNA"
+ },
+ {
+  "ma_cau": "K09110201026",
+  "dang_bai_id": "KDB01548",
+  "chac": "cao",
+  "ly_do": "Điểm giống DNA và RNA"
+ },
+ {
+  "ma_cau": "K09110201027",
+  "dang_bai_id": "KDB01549",
+  "chac": "cao",
+  "ly_do": "Khái niệm gene"
+ },
+ {
+  "ma_cau": "K09110201028",
+  "dang_bai_id": "KDB01548",
+  "chac": "cao",
+  "ly_do": "Phát biểu đúng về RNA, trùng ví dụ"
+ },
+ {
+  "ma_cau": "K09110201029",
+  "dang_bai_id": "KDB01546",
+  "chac": "cao",
+  "ly_do": "Đếm phát biểu, trùng ví dụ 2 dạng 1"
+ },
+ {
+  "ma_cau": "K09110201030",
+  "dang_bai_id": "KDB01551",
+  "chac": "cao",
+  "ly_do": "Con giống bố mẹ nhờ DNA nhân đôi"
+ },
+ {
+  "ma_cau": "K09110201031",
+  "dang_bai_id": "KDB01550",
+  "chac": "cao",
+  "ly_do": "Trình tự DNA đặc thù mỗi người"
+ },
+ {
+  "ma_cau": "K09110201032",
+  "dang_bai_id": "KDB01546",
+  "chac": "cao",
+  "ly_do": "Vị trí base trong xoắn kép"
+ },
+ {
+  "ma_cau": "K09110201033",
+  "dang_bai_id": "KDB01547",
+  "chac": "cao",
+  "ly_do": "Phát biểu sai về nguyên tắc bổ sung"
+ },
+ {
+  "ma_cau": "K09110201034",
+  "dang_bai_id": "KDB01550",
+  "chac": "cao",
+  "ly_do": "Ứng dụng xét nghiệm DNA dựa tính đặc thù"
+ },
+ {
+  "ma_cau": "K09110201035",
+  "dang_bai_id": "KDB01549",
+  "chac": "cao",
+  "ly_do": "Quan hệ DNA và gene"
+ },
+ {
+  "ma_cau": "K09110201036",
+  "dang_bai_id": "KDB01551",
+  "chac": "cao",
+  "ly_do": "Chức năng truyền đạt thông tin của DNA"
+ },
+ {
+  "ma_cau": "K09110201037",
+  "dang_bai_id": "KDB01548",
+  "chac": "cao",
+  "ly_do": "Vật chất di truyền RNA ở virus"
+ },
+ {
+  "ma_cau": "K09110201038",
+  "dang_bai_id": "KDB01550",
+  "chac": "cao",
+  "ly_do": "Thông tin nằm ở trình tự, đa dạng DNA"
+ },
+ {
+  "ma_cau": "K09110201039",
+  "dang_bai_id": "KDB01551",
+  "chac": "cao",
+  "ly_do": "Đặc điểm giúp bảo quản, trùng ví dụ"
+ },
+ {
+  "ma_cau": "K09110201040",
+  "dang_bai_id": "KDB01546",
+  "chac": "cao",
+  "ly_do": "Thành phần quyết định tên nucleotide"
+ },
+ {
+  "ma_cau": "K09110201041",
+  "dang_bai_id": "KDB01546",
+  "chac": "cao",
+  "ly_do": "Liên kết cùng mạch DNA"
+ },
+ {
+  "ma_cau": "K09110201042",
+  "dang_bai_id": "KDB01550",
+  "chac": "cao",
+  "ly_do": "Tính số trình tự 4^5, trùng ví dụ"
+ },
+ {
+  "ma_cau": "K09110201043",
+  "dang_bai_id": "KDB01548",
+  "chac": "cao",
+  "ly_do": "rRNA cấu tạo ribosome"
+ },
+ {
+  "ma_cau": "K09110201044",
+  "dang_bai_id": "KDB01546",
+  "chac": "cao",
+  "ly_do": "Vị trí DNA ở bào quan"
+ },
+ {
+  "ma_cau": "K09110201045",
+  "dang_bai_id": "KDB01548",
+  "chac": "cao",
+  "ly_do": "Phát biểu về RNA"
+ },
+ {
+  "ma_cau": "K09110201046",
+  "dang_bai_id": "KDB01546",
+  "chac": "cao",
+  "ly_do": "Loại liên kết giữa hai mạch DNA"
+ },
+ {
+  "ma_cau": "K09110201047",
+  "dang_bai_id": "KDB01550",
+  "chac": "cao",
+  "ly_do": "Cấu tạo nucleotide + đa dạng DNA; dạng sau thắng"
+ },
+ {
+  "ma_cau": "K09110201048",
+  "dang_bai_id": "KDB01551",
+  "chac": "cao",
+  "ly_do": "So sánh hai liên kết và ý nghĩa sinh học; dạng sau thắng"
+ },
+ {
+  "ma_cau": "K09110201049",
+  "dang_bai_id": "KDB01550",
+  "chac": "cao",
+  "ly_do": "Giải thích 4 loại nucleotide vẫn đa dạng, 4^n"
+ },
+ {
+  "ma_cau": "K09110201050",
+  "dang_bai_id": "KDB01551",
+  "chac": "cao",
+  "ly_do": "So sánh DNA/RNA + vì sao DNA lưu giữ; dạng sau thắng"
+ },
+ {
+  "ma_cau": "K09110201051",
+  "dang_bai_id": "KDB01548",
+  "chac": "cao",
+  "ly_do": "Ba loại RNA và chức năng"
+ },
+ {
+  "ma_cau": "K09110201052",
+  "dang_bai_id": "KDB01550",
+  "chac": "cao",
+  "ly_do": "Xét nghiệm DNA dựa tính đặc thù"
+ },
+ {
+  "ma_cau": "K09110201053",
+  "dang_bai_id": "KDB01549",
+  "chac": "cao",
+  "ly_do": "Phân tích gene khác DNA"
+ },
+ {
+  "ma_cau": "K09110201054",
+  "dang_bai_id": "KDB01551",
+  "chac": "cao",
+  "ly_do": "Bền vững và tách mạch, cấu trúc-chức năng"
+ },
+ {
+  "ma_cau": "K09110201055",
+  "dang_bai_id": "KDB01546",
+  "chac": "vua",
+  "ly_do": "Đề có hình; hai chuỗi bắt cặp tạo DNA"
+ },
+ {
+  "ma_cau": "K09110201056",
+  "dang_bai_id": "KDB01546",
+  "chac": "cao",
+  "ly_do": "Số mạch và sắp xếp của DNA"
+ },
+ {
+  "ma_cau": "K09110201057",
+  "dang_bai_id": "KDB01546",
+  "chac": "cao",
+  "ly_do": "Đơn phân của DNA"
+ },
+ {
+  "ma_cau": "K09110201058",
+  "dang_bai_id": "KDB01546",
+  "chac": "cao",
+  "ly_do": "Số loại nucleotide của DNA"
+ },
+ {
+  "ma_cau": "K09110201059",
+  "dang_bai_id": "KDB01546",
+  "chac": "cao",
+  "ly_do": "Dạng cấu trúc không gian DNA"
+ },
+ {
+  "ma_cau": "K09110201060",
+  "dang_bai_id": "KDB01547",
+  "chac": "cao",
+  "ly_do": "A bắt cặp với T"
+ },
+ {
+  "ma_cau": "K09110201061",
+  "dang_bai_id": "KDB01547",
+  "chac": "cao",
+  "ly_do": "G bắt cặp với C"
+ },
+ {
+  "ma_cau": "K09110201062",
+  "dang_bai_id": "KDB01547",
+  "chac": "cao",
+  "ly_do": "Số liên kết H của A-T, trùng ví dụ"
+ },
+ {
+  "ma_cau": "K09110201063",
+  "dang_bai_id": "KDB01547",
+  "chac": "cao",
+  "ly_do": "Số A bằng số T"
+ },
+ {
+  "ma_cau": "K09110201064",
+  "dang_bai_id": "KDB01549",
+  "chac": "vua",
+  "ly_do": "Đề có hình; đáp án là gene"
+ },
+ {
+  "ma_cau": "K09110201065",
+  "dang_bai_id": "KDB01549",
+  "chac": "cao",
+  "ly_do": "Phát biểu đúng về gene, trùng ví dụ"
+ },
+ {
+  "ma_cau": "K09110201066",
+  "dang_bai_id": "KDB01549",
+  "chac": "cao",
+  "ly_do": "Gene quy định gì"
+ },
+ {
+  "ma_cau": "K09110401001",
+  "dang_bai_id": "KDB01554",
+  "chac": "cao",
+  "ly_do": "Định nghĩa đột biến gene"
+ },
+ {
+  "ma_cau": "K09110401002",
+  "dang_bai_id": "KDB01554",
+  "chac": "cao",
+  "ly_do": "Cấp độ xảy ra đột biến gene"
+ },
+ {
+  "ma_cau": "K09110401003",
+  "dang_bai_id": "KDB01554",
+  "chac": "cao",
+  "ly_do": "Khái niệm đột biến điểm"
+ },
+ {
+  "ma_cau": "K09110401004",
+  "dang_bai_id": "KDB01554",
+  "chac": "cao",
+  "ly_do": "Di truyền khi ở tế bào sinh dục"
+ },
+ {
+  "ma_cau": "K09110401005",
+  "dang_bai_id": "KDB01554",
+  "chac": "cao",
+  "ly_do": "Phân biệt biến dị tổ hợp"
+ },
+ {
+  "ma_cau": "K09110401006",
+  "dang_bai_id": "KDB01554",
+  "chac": "cao",
+  "ly_do": "Kết quả trực tiếp của đột biến"
+ },
+ {
+  "ma_cau": "K09110401007",
+  "dang_bai_id": "KDB01554",
+  "chac": "cao",
+  "ly_do": "Tần số đột biến tự nhiên"
+ },
+ {
+  "ma_cau": "K09110401008",
+  "dang_bai_id": "KDB01554",
+  "chac": "cao",
+  "ly_do": "Đột biến tế bào sinh dưỡng di truyền"
+ },
+ {
+  "ma_cau": "K09110401009",
+  "dang_bai_id": "KDB01555",
+  "chac": "cao",
+  "ly_do": "Khái niệm dạng mất"
+ },
+ {
+  "ma_cau": "K09110401010",
+  "dang_bai_id": "KDB01555",
+  "chac": "cao",
+  "ly_do": "Khái niệm dạng thêm, trùng ví dụ"
+ },
+ {
+  "ma_cau": "K09110401011",
+  "dang_bai_id": "KDB01555",
+  "chac": "cao",
+  "ly_do": "Khái niệm dạng thay thế"
+ },
+ {
+  "ma_cau": "K09110401012",
+  "dang_bai_id": "KDB01555",
+  "chac": "cao",
+  "ly_do": "Các dạng đột biến gene"
+ },
+ {
+  "ma_cau": "K09110401013",
+  "dang_bai_id": "KDB01555",
+  "chac": "cao",
+  "ly_do": "Dạng không đổi tổng số cặp, trùng ví dụ"
+ },
+ {
+  "ma_cau": "K09110401014",
+  "dang_bai_id": "KDB01555",
+  "chac": "cao",
+  "ly_do": "Dạng làm đổi tổng số cặp"
+ },
+ {
+  "ma_cau": "K09110401015",
+  "dang_bai_id": "KDB01555",
+  "chac": "cao",
+  "ly_do": "Vị trí đột biến điểm, có trong lý thuyết dạng"
+ },
+ {
+  "ma_cau": "K09110401016",
+  "dang_bai_id": "KDB01556",
+  "chac": "cao",
+  "ly_do": "Hậu quả đột biến điểm lên khung đọc/amino acid"
+ },
+ {
+  "ma_cau": "K09110401017",
+  "dang_bai_id": "KDB01556",
+  "chac": "cao",
+  "ly_do": "Hậu quả đột biến điểm lên khung đọc/amino acid"
+ },
+ {
+  "ma_cau": "K09110401018",
+  "dang_bai_id": "KDB01556",
+  "chac": "cao",
+  "ly_do": "Hậu quả đột biến điểm lên khung đọc/amino acid"
+ },
+ {
+  "ma_cau": "K09110401019",
+  "dang_bai_id": "KDB01556",
+  "chac": "cao",
+  "ly_do": "Hậu quả đột biến điểm lên khung đọc/amino acid"
+ },
+ {
+  "ma_cau": "K09110401020",
+  "dang_bai_id": "KDB01556",
+  "chac": "cao",
+  "ly_do": "Hậu quả đột biến điểm lên khung đọc/amino acid"
+ },
+ {
+  "ma_cau": "K09110401021",
+  "dang_bai_id": "KDB01556",
+  "chac": "cao",
+  "ly_do": "Hậu quả đột biến điểm lên khung đọc/amino acid"
+ },
+ {
+  "ma_cau": "K09110401022",
+  "dang_bai_id": "KDB01556",
+  "chac": "cao",
+  "ly_do": "Hậu quả đột biến điểm lên khung đọc/amino acid"
+ },
+ {
+  "ma_cau": "K09110401023",
+  "dang_bai_id": "KDB01556",
+  "chac": "cao",
+  "ly_do": "Hậu quả đột biến điểm lên khung đọc/amino acid"
+ },
+ {
+  "ma_cau": "K09110401024",
+  "dang_bai_id": "KDB01556",
+  "chac": "cao",
+  "ly_do": "Hậu quả đột biến điểm lên khung đọc/amino acid"
+ },
+ {
+  "ma_cau": "K09110401025",
+  "dang_bai_id": "KDB01557",
+  "chac": "cao",
+  "ly_do": "Tác nhân gây đột biến hoặc nguyên nhân phát sinh"
+ },
+ {
+  "ma_cau": "K09110401026",
+  "dang_bai_id": "KDB01557",
+  "chac": "cao",
+  "ly_do": "Tác nhân gây đột biến hoặc nguyên nhân phát sinh"
+ },
+ {
+  "ma_cau": "K09110401027",
+  "dang_bai_id": "KDB01557",
+  "chac": "cao",
+  "ly_do": "Tác nhân gây đột biến hoặc nguyên nhân phát sinh"
+ },
+ {
+  "ma_cau": "K09110401028",
+  "dang_bai_id": "KDB01557",
+  "chac": "cao",
+  "ly_do": "Tác nhân gây đột biến hoặc nguyên nhân phát sinh"
+ },
+ {
+  "ma_cau": "K09110401029",
+  "dang_bai_id": "KDB01557",
+  "chac": "cao",
+  "ly_do": "Tác nhân gây đột biến hoặc nguyên nhân phát sinh"
+ },
+ {
+  "ma_cau": "K09110401030",
+  "dang_bai_id": "KDB01557",
+  "chac": "cao",
+  "ly_do": "Tác nhân gây đột biến hoặc nguyên nhân phát sinh"
+ },
+ {
+  "ma_cau": "K09110401031",
+  "dang_bai_id": "KDB01557",
+  "chac": "cao",
+  "ly_do": "Tác nhân gây đột biến hoặc nguyên nhân phát sinh"
+ },
+ {
+  "ma_cau": "K09110401032",
+  "dang_bai_id": "KDB01557",
+  "chac": "cao",
+  "ly_do": "Tác nhân gây đột biến hoặc nguyên nhân phát sinh"
+ },
+ {
+  "ma_cau": "K09110401033",
+  "dang_bai_id": "KDB01558",
+  "chac": "cao",
+  "ly_do": "Vai trò, tính chất lợi hại của đột biến"
+ },
+ {
+  "ma_cau": "K09110401034",
+  "dang_bai_id": "KDB01558",
+  "chac": "cao",
+  "ly_do": "Vai trò, tính chất lợi hại của đột biến"
+ },
+ {
+  "ma_cau": "K09110401035",
+  "dang_bai_id": "KDB01558",
+  "chac": "cao",
+  "ly_do": "Vai trò, tính chất lợi hại của đột biến"
+ },
+ {
+  "ma_cau": "K09110401036",
+  "dang_bai_id": "KDB01558",
+  "chac": "cao",
+  "ly_do": "Vai trò, tính chất lợi hại của đột biến"
+ },
+ {
+  "ma_cau": "K09110401037",
+  "dang_bai_id": "KDB01558",
+  "chac": "cao",
+  "ly_do": "Vai trò, tính chất lợi hại của đột biến"
+ },
+ {
+  "ma_cau": "K09110401038",
+  "dang_bai_id": "KDB01558",
+  "chac": "cao",
+  "ly_do": "Vai trò, tính chất lợi hại của đột biến"
+ },
+ {
+  "ma_cau": "K09110401039",
+  "dang_bai_id": "KDB01558",
+  "chac": "cao",
+  "ly_do": "Vai trò, tính chất lợi hại của đột biến"
+ },
+ {
+  "ma_cau": "K09110402001",
+  "dang_bai_id": "KDB01559",
+  "chac": "cao",
+  "ly_do": "Cho số cặp nucleotide và H thay đổi, xác định dạng"
+ },
+ {
+  "ma_cau": "K09110402002",
+  "dang_bai_id": "KDB01559",
+  "chac": "cao",
+  "ly_do": "Cho số cặp nucleotide và H thay đổi, xác định dạng"
+ },
+ {
+  "ma_cau": "K09110402003",
+  "dang_bai_id": "KDB01559",
+  "chac": "cao",
+  "ly_do": "Cho số cặp nucleotide và H thay đổi, xác định dạng"
+ },
+ {
+  "ma_cau": "K09110402004",
+  "dang_bai_id": "KDB01559",
+  "chac": "cao",
+  "ly_do": "Cho số cặp nucleotide và H thay đổi, xác định dạng"
+ },
+ {
+  "ma_cau": "K09110402005",
+  "dang_bai_id": "KDB01559",
+  "chac": "cao",
+  "ly_do": "Cho số cặp nucleotide và H thay đổi, xác định dạng"
+ },
+ {
+  "ma_cau": "K09110402006",
+  "dang_bai_id": "KDB01560",
+  "chac": "cao",
+  "ly_do": "Cho chiều dài và H thay đổi, xác định dạng"
+ },
+ {
+  "ma_cau": "K09110402007",
+  "dang_bai_id": "KDB01560",
+  "chac": "cao",
+  "ly_do": "Cho chiều dài và H thay đổi, xác định dạng"
+ },
+ {
+  "ma_cau": "K09110403001",
+  "dang_bai_id": "KDB01561",
+  "chac": "cao",
+  "ly_do": "Cho H ban đầu, một đột biến điểm, tính H sau"
+ },
+ {
+  "ma_cau": "K09110403002",
+  "dang_bai_id": "KDB01561",
+  "chac": "cao",
+  "ly_do": "Cho H ban đầu, một đột biến điểm, tính H sau"
+ },
+ {
+  "ma_cau": "K09110403003",
+  "dang_bai_id": "KDB01561",
+  "chac": "cao",
+  "ly_do": "Cho H ban đầu, một đột biến điểm, tính H sau"
+ },
+ {
+  "ma_cau": "K09110403004",
+  "dang_bai_id": "KDB01561",
+  "chac": "cao",
+  "ly_do": "Cho H ban đầu, một đột biến điểm, tính H sau"
+ },
+ {
+  "ma_cau": "K09110403005",
+  "dang_bai_id": "KDB01561",
+  "chac": "cao",
+  "ly_do": "Cho H ban đầu, một đột biến điểm, tính H sau"
+ },
+ {
+  "ma_cau": "K09110403006",
+  "dang_bai_id": "KDB01561",
+  "chac": "cao",
+  "ly_do": "Cho H ban đầu, một đột biến điểm, tính H sau"
+ },
+ {
+  "ma_cau": "K09110403007",
+  "dang_bai_id": "KDB01562",
+  "chac": "cao",
+  "ly_do": "Hai đột biến liên tiếp"
+ },
+ {
+  "ma_cau": "K09110403008",
+  "dang_bai_id": "KDB01562",
+  "chac": "cao",
+  "ly_do": "Phải tìm H ban đầu từ N và %"
+ },
+ {
+  "ma_cau": "K09110209001",
+  "dang_bai_id": "KDB01552",
+  "chac": "cao",
+  "ly_do": "Cho % một loại và H, tìm N/đại lượng"
+ },
+ {
+  "ma_cau": "K09110209002",
+  "dang_bai_id": "KDB01552",
+  "chac": "cao",
+  "ly_do": "Cho % một loại và H, tìm N/đại lượng"
+ },
+ {
+  "ma_cau": "K09110209003",
+  "dang_bai_id": "KDB01552",
+  "chac": "cao",
+  "ly_do": "Cho % một loại và H, tìm N/đại lượng"
+ },
+ {
+  "ma_cau": "K09110209004",
+  "dang_bai_id": "KDB01552",
+  "chac": "cao",
+  "ly_do": "Cho % một loại và H, tìm N/đại lượng"
+ },
+ {
+  "ma_cau": "K09110209005",
+  "dang_bai_id": "KDB01553",
+  "chac": "cao",
+  "ly_do": "Cho chiều dài/khối lượng, tìm H hoặc số nucleotide"
+ },
+ {
+  "ma_cau": "K09110209006",
+  "dang_bai_id": "KDB01552",
+  "chac": "cao",
+  "ly_do": "Cho % một loại và H, tìm N/đại lượng"
+ },
+ {
+  "ma_cau": "K09110209007",
+  "dang_bai_id": "KDB01553",
+  "chac": "cao",
+  "ly_do": "Cho chiều dài/khối lượng, tìm H hoặc số nucleotide"
+ }
+]

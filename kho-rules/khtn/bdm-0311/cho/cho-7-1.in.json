@@ -1,0 +1,2325 @@
+{
+ "danh_muc": [
+  {
+   "nhom_id": "KNB00296",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Cấu tạo nguyên tử",
+   "nhom": "CẤU TẠO NGUYÊN TỬ VÀ MÔ HÌNH RUTHERFORD – BOHR",
+   "dang": [
+    {
+     "dang_id": "KDB00658",
+     "ten": "Các loại hạt, điện tích và vị trí",
+     "mo_ta": "Đề cho tên một hạt trong nguyên tử (proton, neutron, electron) hoặc một bộ phận (hạt nhân, vỏ nguyên tử); hỏi điện tích, vị trí hoặc khối lượng của hạt đó."
+    },
+    {
+     "dang_id": "KDB00659",
+     "ten": "Đọc mô hình Rutherford – Bohr",
+     "mo_ta": "Đề có hình mô hình Rutherford – Bohr (hạt nhân ghi điện tích, các vòng tròn quanh hạt nhân, mỗi chấm là một electron); hỏi đọc số liệu từ hình."
+    },
+    {
+     "dang_id": "KDB00660",
+     "ten": "Nguyên tử trung hòa về điện",
+     "mo_ta": "Đề hỏi vì sao nguyên tử trung hòa về điện, tổng điện tích của nguyên tử, hoặc quan hệ về số lượng giữa proton, neutron và electron."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00297",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Cấu tạo nguyên tử",
+   "nhom": "Số hạt và khối lượng nguyên tử",
+   "dang": [
+    {
+     "dang_id": "KDB00661",
+     "ten": "Tìm số hạt còn thiếu",
+     "mo_ta": "Đề cho vài số liệu (số proton, số neutron, số electron, điện tích hạt nhân, khối lượng xấp xỉ tính theo amu) và hỏi một số hạt chưa biết."
+    },
+    {
+     "dang_id": "KDB00662",
+     "ten": "Tính khối lượng nguyên tử theo amu",
+     "mo_ta": "Đề cho số proton và số neutron (hoặc điện tích hạt nhân, hoặc số electron thay cho số proton) và hỏi khối lượng nguyên tử xấp xỉ bằng bao nhiêu amu."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00298",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Cấu tạo nguyên tử",
+   "nhom": "BÀI TOÁN TỔNG SỐ HẠT",
+   "dang": [
+    {
+     "dang_id": "KDB00663",
+     "ten": "Biết tổng số hạt và số proton",
+     "mo_ta": "Đề cho tổng số hạt (proton, neutron và electron cộng lại) và biết số proton (hoặc số electron, hoặc điện tích hạt nhân); hỏi số neutron (số hạt không mang điện)."
+    },
+    {
+     "dang_id": "KDB00664",
+     "ten": "Biết tổng số hạt và hiệu số hạt mang điện với không mang điện",
+     "mo_ta": "Đề cho tổng số hạt (proton, neutron, electron) và hiệu số giữa số hạt mang điện với số hạt không mang điện; hỏi số proton hoặc số neutron."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00300",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Cấu tạo nguyên tử",
+   "nhom": "XẾP ELECTRON VÀ VẼ MÔ HÌNH NGUYÊN TỬ",
+   "dang": [
+    {
+     "dang_id": "KDB00665",
+     "ten": "Xếp electron vào các lớp",
+     "mo_ta": "Đề cho số proton, số electron hoặc điện tích hạt nhân của một nguyên tử (không kèm hình); hỏi kết quả của việc xếp electron vào các lớp."
+    },
+    {
+     "dang_id": "KDB00666",
+     "ten": "Vẽ mô hình Rutherford - Bohr",
+     "mo_ta": "Đề yêu cầu vẽ (hoặc biểu diễn) mô hình Rutherford – Bohr của nguyên tử khi biết số proton, số electron hoặc điện tích hạt nhân."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00301",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Nguyên tố Hóa học",
+   "nhom": "KHÁI NIỆM NGUYÊN TỐ VÀ KÍ HIỆU HÓA HỌC",
+   "dang": [
+    {
+     "dang_id": "KDB00667",
+     "ten": "KHÁI NIỆM NGUYÊN TỐ HOÁ HỌC",
+     "mo_ta": "Đề hỏi định nghĩa nguyên tố hoá học, tiêu chí để hai nguyên tử thuộc cùng một nguyên tố, hoặc phân biệt \"nguyên tử\" với \"nguyên tố hoá học\"; thường là chọn phát biểu hoặc nhận xét đúng."
+    },
+    {
+     "dang_id": "KDB00668",
+     "ten": "VIẾT VÀ ĐỌC KÍ HIỆU 20 NGUYÊN TỐ ĐẦU",
+     "mo_ta": "Đề cho tên nguyên tố (IUPAC) và hỏi kí hiệu hoá học, hoặc cho kí hiệu và hỏi tên; thường gắn với tình huống đời sống (muối ăn, que diêm, pin, bóng bay ...). Chỉ dùng 20 nguyên tố đầu."
+    },
+    {
+     "dang_id": "KDB00669",
+     "ten": "NHẬN RA KÍ HIỆU VIẾT SAI",
+     "mo_ta": "Đề đưa một cách viết kí hiệu (của một bạn, trên nhãn, hoặc một dãy kí hiệu) và hỏi có đúng quy tắc không, sửa lại thế nào, hoặc cách viết sai bị hiểu thành những nguyên tố nào."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00302",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Nguyên tố Hóa học",
+   "nhom": "XÁC ĐỊNH NGUYÊN TỐ TỪ SỐ HẠT",
+   "dang": [
+    {
+     "dang_id": "KDB00670",
+     "ten": "GỌI TÊN NGUYÊN TỐ KHI BIẾT SỐ PROTON",
+     "mo_ta": "Đề cho số proton của một nguyên tử (trực tiếp, hoặc qua số electron, điện tích hạt nhân) và hỏi tên hoặc kí hiệu hoá học của nguyên tố; có thể kèm số neutron (dữ kiện thừa) hoặc tình huống đời sống."
+    },
+    {
+     "dang_id": "KDB00671",
+     "ten": "NHẬN DIỆN CÁC NGUYÊN TỬ CÙNG NGUYÊN TỐ",
+     "mo_ta": "Đề cho số proton và số neutron của nhiều nguyên tử (X, Y, Z, T hoặc \"nguyên tử có ... proton và ... neutron\"); yêu cầu chọn nguyên tử cùng nguyên tố với một nguyên tử cho trước, ghép các nguyên tử cùng nguyên tố vào một nhóm, hoặc đếm số nguyên tố."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00303",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "nhom": "CẤU TẠO BẢNG TUẦN HOÀN: Ô, CHU KÌ, NHÓM",
+   "dang": [
+    {
+     "dang_id": "KDB00672",
+     "ten": "Thông tin trong một ô nguyên tố",
+     "mo_ta": "Đề cho hoặc hỏi các thông tin ghi trong một ô nguyên tố: số hiệu nguyên tử, kí hiệu hoá học, tên nguyên tố, khối lượng nguyên tử (amu)."
+    },
+    {
+     "dang_id": "KDB00673",
+     "ten": "CHU KÌ VÀ NHÓM CỦA NGUYÊN TỐ",
+     "mo_ta": "Đề hỏi khái niệm chu kì, nhóm; số nguyên tố trong một chu kì; số các nhóm A; nguyên tố thuộc chu kì nào; ô của nguyên tố nằm ở hàng ngang, cột nào; hoặc so sánh vị trí của hai nguyên tố khi biết chu kì và nhóm."
+    },
+    {
+     "dang_id": "KDB00674",
+     "ten": "VÙNG KIM LOẠI, PHI KIM, KHÍ HIẾM",
+     "mo_ta": "Đề hỏi vùng của bảng tuần hoàn mà các nguyên tố kim loại, phi kim, khí hiếm chiếm; xác định một nguyên tố là kim loại, phi kim hay khí hiếm; đếm số khí hiếm trong 20 nguyên tố đầu; hoặc mô tả thứ tự các loại nguyên tố trong một chu kì."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00304",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "nhom": "LIÊN HỆ VỊ TRÍ TRONG BẢNG VỚI CẤU TẠO NGUYÊN TỬ",
+   "dang": [
+    {
+     "dang_id": "KDB00675",
+     "ten": "TỪ VỊ TRÍ SUY RA CẤU TẠO NGUYÊN TỬ",
+     "mo_ta": "Đề cho vị trí của nguyên tố (ô, chu kì, nhóm) và hỏi cấu tạo nguyên tử: số lớp electron, số electron lớp ngoài cùng, số proton hoặc số electron."
+    },
+    {
+     "dang_id": "KDB00676",
+     "ten": "TỪ CẤU TẠO SUY RA VỊ TRÍ",
+     "mo_ta": "Đề cho cấu tạo nguyên tử (số electron ở từng lớp, hoặc số lớp và số electron lớp ngoài cùng, mô tả bằng lời) và hỏi vị trí của nguyên tố trong bảng tuần hoàn: ô, chu kì, nhóm."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00305",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "nhom": "XÁC ĐỊNH NGUYÊN TỐ TỪ DỮ KIỆN VỊ TRÍ – CẤU TẠO",
+   "dang": [
+    {
+     "dang_id": "KDB00677",
+     "ten": "GIẢI CÂU ĐỐ NGUYÊN TỐ TỪ NHIỀU MANH MỐI",
+     "mo_ta": "Đề cho nhiều manh mối về một nguyên tố chưa biết X: loại (kim loại, phi kim, khí hiếm), chu kì hoặc số lớp electron, nhóm hoặc số electron lớp ngoài cùng, hoặc so sánh với nguyên tố khác; hỏi kí hiệu hoá học của X."
+    },
+    {
+     "dang_id": "KDB00678",
+     "ten": "HAI NGUYÊN TỐ BIẾT TỔNG SỐ PROTON",
+     "mo_ta": "Đề cho hai nguyên tố A và B ở vị trí liên hệ nhau (đứng kế tiếp trong cùng một chu kì, hoặc cùng nhóm A ở hai chu kì liên tiếp trong 20 nguyên tố đầu) và biết tổng số proton (hoặc tổng số electron, tổng số hạt mang điện); hỏi xác định nguyên tố A hoặc B."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00306",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "nhom": "DỰ ĐOÁN TÍNH CHẤT TỪ VỊ TRÍ TRONG BẢNG",
+   "dang": [
+    {
+     "dang_id": "KDB00679",
+     "ten": "XẾP LOẠI NGUYÊN TỐ THEO VỊ TRÍ",
+     "mo_ta": "Đề cho vị trí (ô, chu kì và nhóm), số proton hoặc cách phân bố electron của một hoặc hai nguyên tố X, Y; hỏi mỗi nguyên tố là kim loại, phi kim hay khí hiếm."
+    },
+    {
+     "dang_id": "KDB00680",
+     "ten": "DỰ ĐOÁN NGUYÊN TỐ CÓ TÍNH CHẤT TƯƠNG TỰ",
+     "mo_ta": "Đề cho một nguyên tố X (tên, số proton, số electron hoặc cách phân bố electron theo lớp) và hỏi nguyên tố ở một chu kì khác có tính chất hoá học tương tự X, yêu cầu viết kí hiệu."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00307",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Phân tử - Đơn chất & Hợp chất",
+   "nhom": "Phân loại đơn chất và hợp chất",
+   "dang": [
+    {
+     "dang_id": "KDB00681",
+     "ten": "Hợp chất",
+     "mo_ta": "Đề cho một chất hoặc một dãy chất (công thức hoặc tên) và yêu cầu chọn chất là hợp chất, hoặc chọn dãy gồm toàn hợp chất."
+    },
+    {
+     "dang_id": "KDB00682",
+     "ten": "Đơn chất",
+     "mo_ta": "Đề cho một chất hoặc một dãy chất và yêu cầu chọn chất là đơn chất, hoặc chọn dãy gồm toàn đơn chất."
+    },
+    {
+     "dang_id": "KDB00683",
+     "ten": "Đơn chất kim loại - phi kim",
+     "mo_ta": "Đề hỏi chất nào là đơn chất kim loại hoặc đơn chất phi kim trong 4 chất cho sẵn."
+    },
+    {
+     "dang_id": "KDB00684",
+     "ten": "Phân biệt đơn chất - hợp chất",
+     "mo_ta": "Đề cho một nhóm chất (thường 3–4 công thức hoặc tên) và yêu cầu cho biết chất nào là đơn chất, chất nào là hợp chất."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00308",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Phân tử - Đơn chất & Hợp chất",
+   "nhom": "Tính khối lượng phân tử",
+   "dang": [
+    {
+     "dang_id": "KDB00685",
+     "ten": "Tính M phân tử",
+     "mo_ta": "Đề cho công thức hóa học của một chất kèm khối lượng nguyên tử các nguyên tố, yêu cầu tính khối lượng phân tử (amu)."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00309",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Phân tử - Đơn chất & Hợp chất",
+   "nhom": "Đọc mô hình phân tử để xác định công thức và tên gọi",
+   "dang": [
+    {
+     "dang_id": "KDB00686",
+     "ten": "Xác định CTPT",
+     "mo_ta": "Đề mô tả một phân tử gồm bao nhiêu nguyên tử của mỗi nguyên tố liên kết với nhau, yêu cầu viết hoặc chọn công thức hóa học đúng."
+    },
+    {
+     "dang_id": "KDB00687",
+     "ten": "Xác định CTPT, đơn/hợp chất",
+     "mo_ta": "Đề mô tả một phân tử gồm số nguyên tử của các nguyên tố, yêu cầu viết công thức hóa học và cho biết đây là đơn chất hay hợp chất."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00310",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Phân tử - Đơn chất & Hợp chất",
+   "nhom": "So sánh và sắp xếp khối lượng phân tử của nhiều chất",
+   "dang": [
+    {
+     "dang_id": "KDB01394",
+     "ten": "So sánh, sắp xếp khối lượng phân tử khi đã biết giá trị từng chất",
+     "mo_ta": "Đề cho khối lượng phân tử (hoặc công thức kèm khối lượng nguyên tử) của nhiều chất, hỏi chất nào lớn nhất/nhỏ nhất hoặc yêu cầu sắp xếp tăng dần/giảm dần."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00311",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Phân tử - Đơn chất & Hợp chất",
+   "nhom": "Giải thích tính chất và hiện tượng thực tế",
+   "dang": [
+    {
+     "dang_id": "KDB01395",
+     "ten": "Giải thích tính chất của chất dựa vào thành phần và cách sắp xếp nguyên tử",
+     "mo_ta": "Đề nêu một hiện tượng hoặc so sánh tính chất của các chất (độ cứng, khả năng dẫn điện, vì sao coi là cùng một chất…), hỏi nguyên nhân hoặc nhận định đúng."
+    },
+    {
+     "dang_id": "KDB01396",
+     "ten": "Nhận xét ý kiến và tính toán khối lượng nguyên tử, phân tử từ dữ kiện đề",
+     "mo_ta": "Đề cho một nhận định về khối lượng phân tử cần đánh giá đúng/sai có ví dụ minh hoạ, hoặc cho khối lượng phân tử của hợp chất và khối lượng các nguyên tử còn lại rồi tìm khối lượng một nguyên tử chưa biết."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00312",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Phân tử - Đơn chất & Hợp chất",
+   "nhom": "Tìm khối lượng nguyên tử chưa biết từ khối lượng phân tử",
+   "dang": [
+    {
+     "dang_id": "KDB00688",
+     "ten": "Tìm khối lượng nguyên tử từ M phân tử",
+     "mo_ta": "Đề cho công thức của một hợp chất có nguyên tố chưa biết (ví dụ $XO_2$, $\\mathrm{YCl_3}$, $\\mathrm{H_2X}$), cho khối lượng phân tử, yêu cầu chọn khối lượng nguyên tử của nguyên tố đó (trắc nghiệm)."
+    },
+    {
+     "dang_id": "KDB00689",
+     "ten": "Tìm nguyên tử dựa vào khối lượng phân tử",
+     "mo_ta": "Đề cho công thức hợp chất có nguyên tố chưa biết (như $RO$, $MCl_2$, $XH_4$), cho khối lượng phân tử, yêu cầu tính khối lượng nguyên tử và thường cho biết nguyên tố đó có thể là gì (tự luận)."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00313",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Liên kết Hóa học",
+   "nhom": "QUY TẮC OCTET VÀ XU HƯỚNG LIÊN KẾT HÓA HỌC",
+   "dang": [
+    {
+     "dang_id": "KDB00690",
+     "ten": "Nhận biết tính bền của nguyên tử khí hiếm",
+     "mo_ta": "Đề hỏi về khí hiếm và tính bền của lớp electron ngoài cùng: khí hiếm gồm nguyên tố nào, số electron lớp ngoài cùng bền (8, riêng helium là 2), vì sao khí hiếm rất khó liên kết."
+    },
+    {
+     "dang_id": "KDB00691",
+     "ten": "Phát biểu và áp dụng quy tắc octet",
+     "mo_ta": "Đề hỏi phát biểu quy tắc octet hoặc dùng quy tắc octet: số electron tối đa lớp ngoài cùng, cần thêm bao nhiêu electron để đạt cấu hình bền, quy tắc dùng để giải thích điều gì."
+    },
+    {
+     "dang_id": "KDB00692",
+     "ten": "Phân loại xu hướng nhường/nhận electron theo nhóm nguyên tố",
+     "mo_ta": "Đề hỏi số electron lớp ngoài cùng và xu hướng của nguyên tử kim loại (nhường electron) và phi kim (nhận electron), lí do và mục đích chung."
+    },
+    {
+     "dang_id": "KDB00693",
+     "ten": "Nhận biết xu hướng góp chung electron",
+     "mo_ta": "Đề hỏi về việc góp chung electron của các nguyên tử phi kim: loại liên kết tạo thành, cặp electron dùng chung hình thành thế nào, số nguyên tử tối thiểu, số cặp electron có thể dùng chung, mục đích."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00314",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Liên kết Hóa học",
+   "nhom": "SO SÁNH, PHÂN BIỆT LIÊN KẾT ION VÀ LIÊN KẾT CỘNG HÓA TRỊ",
+   "dang": [
+    {
+     "dang_id": "KDB00694",
+     "ten": "So sánh bản chất hình thành hai loại liên kết",
+     "mo_ta": "Đề so sánh cách hình thành liên kết ion và liên kết cộng hóa trị: nhường – nhận hay góp chung electron, sản phẩm tạo thành, lực hút tác dụng lên electron."
+    },
+    {
+     "dang_id": "KDB00695",
+     "ten": "So sánh loại nguyên tố tham gia",
+     "mo_ta": "Đề hỏi loại nguyên tố tham gia mỗi loại liên kết: kim loại điển hình với phi kim điển hình tạo liên kết ion, hai nguyên tử phi kim tạo liên kết cộng hóa trị, khí hiếm hầu như không liên kết."
+    },
+    {
+     "dang_id": "KDB00696",
+     "ten": "Phân biệt qua tính chất vật lí của hợp chất tạo thành",
+     "mo_ta": "Đề so sánh hoặc nhận biết hợp chất ion với chất cộng hóa trị qua tính chất vật lí: thể ở nhiệt độ thường, nhiệt độ nóng chảy, nhiệt độ sôi, khả năng dẫn điện."
+    },
+    {
+     "dang_id": "KDB00697",
+     "ten": "Vận dụng nhận diện loại liên kết trong hợp chất cho trước",
+     "mo_ta": "Đề cho một hợp chất hoặc phân tử cụ thể (tên, công thức, hoặc nguyên tố tạo thành), yêu cầu xác định loại liên kết: ion hay cộng hóa trị."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00315",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Liên kết Hóa học",
+   "nhom": "LIÊN KẾT ION",
+   "dang": [
+    {
+     "dang_id": "KDB00698",
+     "ten": "Khái niệm ion, cation, anion, liên kết ion",
+     "mo_ta": "Đề hỏi khái niệm về ion: ion, cation, anion là gì, điện tích ion do đâu mà có, vì sao cation và anion hút nhau tạo liên kết ion."
+    },
+    {
+     "dang_id": "KDB00699",
+     "ten": "Xác định electron nhường/nhận và điện tích ion của một nguyên tử cho trước",
+     "mo_ta": "Đề cho nguyên tử một nguyên tố và số electron lớp ngoài cùng, yêu cầu chọn xu hướng nhường hay nhận, số electron, kí hiệu và điện tích ion tạo thành (trắc nghiệm)."
+    },
+    {
+     "dang_id": "KDB00700",
+     "ten": "Mô tả quá trình hình thành hợp chất ion cụ thể",
+     "mo_ta": "Đề cho nguyên tử A nhường bao nhiêu electron, nguyên tử B nhận bao nhiêu electron, yêu cầu chọn công thức hợp chất ion tạo thành (trắc nghiệm)."
+    },
+    {
+     "dang_id": "KDB00701",
+     "ten": "Nhận biết tính chất vật lí của hợp chất ion",
+     "mo_ta": "Đề hỏi tính chất vật lí của hợp chất ion: thể ở nhiệt độ thường, nhiệt độ nóng chảy và sôi, tính tan và khả năng dẫn điện của dung dịch, lực hút giữa các ion."
+    },
+    {
+     "dang_id": "KDB00702",
+     "ten": "Xác định electron nhường/nhận và điện tích ion của một nguyên tử cho trước",
+     "mo_ta": "Đề cho nguyên tử một nguyên tố và số electron lớp ngoài cùng, yêu cầu điền ngắn gọn: điện tích ion, kí hiệu ion hoặc số electron cần nhường hay nhận."
+    },
+    {
+     "dang_id": "KDB00703",
+     "ten": "Mô tả quá trình hình thành hợp chất ion cụ thể",
+     "mo_ta": "Đề cho nguyên tử A nhường bao nhiêu electron, nguyên tử B nhận bao nhiêu electron, yêu cầu viết công thức hợp chất ion tạo thành (trả lời ngắn)."
+    },
+    {
+     "dang_id": "KDB00704",
+     "ten": "Trình bày quá trình hình thành hợp chất ion từ một cặp nguyên tử cho trước",
+     "mo_ta": "Đề cho số electron lớp ngoài cùng của hai nguyên tử (một kim loại, một phi kim), yêu cầu trình bày quá trình hình thành liên kết ion giữa chúng và viết công thức hợp chất ion tạo thành."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00316",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Liên kết Hóa học",
+   "nhom": "LIÊN KẾT CỘNG HÓA TRỊ",
+   "dang": [
+    {
+     "dang_id": "KDB00705",
+     "ten": "Khái niệm liên kết cộng hóa trị, cặp electron dùng chung",
+     "mo_ta": "Đề hỏi khái niệm về liên kết cộng hóa trị: cặp electron dùng chung, liên kết đơn, đôi, ba, loại nguyên tố tạo liên kết, phân tử đơn chất hay hợp chất."
+    },
+    {
+     "dang_id": "KDB00706",
+     "ten": "Xác định số cặp electron dùng chung trong phân tử cụ thể",
+     "mo_ta": "Đề cho tên và thành phần một phân tử (như $\\mathrm{NH_3}$, $\\mathrm{O_2}$, $\\mathrm{CO_2}$), yêu cầu chọn số cặp electron dùng chung (trắc nghiệm)."
+    },
+    {
+     "dang_id": "KDB00707",
+     "ten": "Công thức electron, công thức cấu tạo và liên kết đơn/đôi/ba",
+     "mo_ta": "Đề cho công thức cấu tạo hoặc công thức electron của một phân tử (hoặc cho biết các liên kết đều là liên kết đơn), yêu cầu chọn số liên kết đơn, ý nghĩa của gạch nối hoặc số cặp electron dùng chung (trắc nghiệm)."
+    },
+    {
+     "dang_id": "KDB00708",
+     "ten": "Nhận biết tính chất vật lí của chất cộng hóa trị",
+     "mo_ta": "Đề hỏi tính chất vật lí của chất cộng hóa trị: thể tồn tại ở nhiệt độ thường, nhiệt độ nóng chảy và sôi, khả năng dẫn điện, so sánh với hợp chất ion."
+    },
+    {
+     "dang_id": "KDB00709",
+     "ten": "Xác định số cặp electron dùng chung trong phân tử cụ thể",
+     "mo_ta": "Đề cho tên và thành phần một phân tử (như $\\mathrm{H_2S}$, $\\mathrm{F_2}$, $\\mathrm{CS_2}$, $\\mathrm{SiH_4}$), yêu cầu điền số cặp electron dùng chung (trả lời ngắn)."
+    },
+    {
+     "dang_id": "KDB00710",
+     "ten": "Công thức electron, công thức cấu tạo và liên kết đơn/đôi/ba",
+     "mo_ta": "Đề cho công thức cấu tạo hoặc công thức electron của một phân tử (hoặc cho biết các liên kết đều là liên kết đơn), yêu cầu điền số liên kết đơn hoặc số cặp electron dùng chung (trả lời ngắn)."
+    },
+    {
+     "dang_id": "KDB00711",
+     "ten": "Trình bày quá trình hình thành liên kết cộng hóa trị và biểu diễn công thức",
+     "mo_ta": "Đề cho thành phần một phân tử cộng hóa trị (thường có số electron ngoài cùng), yêu cầu trình bày quá trình hình thành liên kết cộng hóa trị và viết công thức cấu tạo (tự luận)."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00317",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Hóa trị và công thức Hóa học",
+   "nhom": "TÌM HOÁ TRỊ VÀ LẬP CÔNG THỨC HOÁ HỌC THEO QUY TẮC HOÁ TRỊ",
+   "dang": [
+    {
+     "dang_id": "KDB00712",
+     "ten": "TÌM HOÁ TRỊ TRONG HỢP CHẤT HAI NGUYÊN TỐ",
+     "mo_ta": "Đề cho công thức hợp chất gồm hai nguyên tố (A_xB_y) và hoá trị của một nguyên tố, hỏi hoá trị của nguyên tố còn lại."
+    },
+    {
+     "dang_id": "KDB00713",
+     "ten": "TÌM HOÁ TRỊ TRONG HỢP CHẤT CÓ NHÓM NGUYÊN TỬ",
+     "mo_ta": "Đề cho công thức hợp chất có nhóm nguyên tử (ví dụ $\\mathrm{Fe_2(SO_4)_3}$, $\\mathrm{Na_2CO_3}$) và hoá trị của các thành phần còn lại, hỏi hoá trị của một nguyên tố hoặc của chính nhóm nguyên tử."
+    },
+    {
+     "dang_id": "KDB00714",
+     "ten": "LẬP CÔNG THỨC HOÁ HỌC HỢP CHẤT HAI NGUYÊN TỐ",
+     "mo_ta": "Đề cho hai nguyên tố kèm hoá trị, yêu cầu chọn hoặc viết công thức hoá học của hợp chất tạo bởi hai nguyên tố đó."
+    },
+    {
+     "dang_id": "KDB00715",
+     "ten": "LẬP CÔNG THỨC HOÁ HỌC CÓ NHÓM NGUYÊN TỬ",
+     "mo_ta": "Đề cho một nguyên tố (kèm hoá trị) và một nhóm nguyên tử (kèm hoá trị), yêu cầu viết công thức hoá học của hợp chất tạo bởi hai thành phần đó."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00318",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Hóa trị và công thức Hóa học",
+   "nhom": "TÍNH PHẦN TRĂM KHỐI LƯỢNG NGUYÊN TỐ TRONG HỢP CHẤT",
+   "dang": [
+    {
+     "dang_id": "KDB00716",
+     "ten": "TÍNH PHẦN TRĂM KHỐI LƯỢNG MỘT NGUYÊN TỐ",
+     "mo_ta": "Đề cho một hợp chất (công thức hoặc khối lượng phân tử và khối lượng nguyên tố), yêu cầu tính phần trăm khối lượng của một nguyên tố trong hợp chất, làm tròn theo yêu cầu."
+    },
+    {
+     "dang_id": "KDB00717",
+     "ten": "SO SÁNH HÀM LƯỢNG NGUYÊN TỐ GIỮA CÁC HỢP CHẤT",
+     "mo_ta": "Đề cho hai hợp chất cùng chứa một nguyên tố, yêu cầu so sánh phần trăm khối lượng của nguyên tố đó hoặc tính hiệu hai phần trăm."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00319",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Hóa trị và công thức Hóa học",
+   "nhom": "XÁC ĐỊNH CÔNG THỨC HOÁ HỌC KHI BIẾT PHẦN TRĂM VÀ KHỐI LƯỢNG PHÂN TỬ",
+   "dang": [
+    {
+     "dang_id": "KDB00718",
+     "ten": "HỢP CHẤT HAI NGUYÊN TỐ",
+     "mo_ta": "Đề cho hợp chất tạo bởi hai nguyên tố, biết phần trăm khối lượng của một nguyên tố và khối lượng phân tử, hỏi số nguyên tử của một nguyên tố hoặc công thức hoá học."
+    },
+    {
+     "dang_id": "KDB00719",
+     "ten": "HỢP CHẤT BA NGUYÊN TỐ",
+     "mo_ta": "Đề cho chất X tạo bởi ba nguyên tố, biết phần trăm khối lượng của hai (hoặc cả ba) nguyên tố và khối lượng phân tử, yêu cầu xác định công thức hoá học của X."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00320",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Hóa trị và công thức Hóa học",
+   "nhom": "Ý nghĩa công thức hóa học và hóa trị",
+   "dang": [
+    {
+     "dang_id": "KDB00720",
+     "ten": "THÔNG TIN TỪ CÔNG THỨC HOÁ HỌC",
+     "mo_ta": "Câu hỏi nhận biết thông tin từ công thức hoá học: công thức cho biết gì, cách viết công thức đơn chất, ý nghĩa chỉ số và hệ số, chỉ số 1 không ghi."
+    },
+    {
+     "dang_id": "KDB00721",
+     "ten": "HOÁ TRỊ CỦA NGUYÊN TỐ VÀ NHÓM NGUYÊN TỬ THƯỜNG GẶP",
+     "mo_ta": "Câu hỏi nhận biết về hoá trị: khái niệm hoá trị, hoá trị thường gặp của nguyên tố và nhóm nguyên tử, nguyên tố có một hay nhiều hoá trị."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00321",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Hóa trị và công thức Hóa học",
+   "nhom": "TÌM NGUYÊN TỐ, CÔNG THỨC TỪ DỮ KIỆN GIÁN TIẾP",
+   "dang": [
+    {
+     "dang_id": "KDB00722",
+     "ten": "LẬP CÔNG THỨC HOÁ HỌC TỪ TỈ LỆ KHỐI LƯỢNG CÁC NGUYÊN TỐ",
+     "mo_ta": "Đề cho khối lượng các nguyên tố trong một mẫu chất (hoặc tỉ lệ khối lượng các nguyên tố), yêu cầu xác định công thức hoá học của hợp chất."
+    },
+    {
+     "dang_id": "KDB00723",
+     "ten": "TÌM NGUYÊN TỐ R KHI BIẾT DẠNG CÔNG THỨC VÀ PHẦN TRĂM",
+     "mo_ta": "Đề cho hợp chất của nguyên tố R có công thức dạng (RO, $\\mathrm{R_2S}$, $\\mathrm{RCl_2}$,...) và phần trăm khối lượng của R hoặc của nguyên tố khác trong hợp chất, yêu cầu xác định nguyên tố R."
+    },
+    {
+     "dang_id": "KDB00724",
+     "ten": "TÌM NGUYÊN TỐ R KHI BIẾT DẠNG CÔNG THỨC VÀ KHỐI LƯỢNG PHÂN TỬ",
+     "mo_ta": "Đề cho hợp chất của nguyên tố R có công thức dạng (như $\\mathrm{RCl_2}$, $\\mathrm{R(OH)_3}$, $\\mathrm{R_2CO_3}$, $\\mathrm{RH_4}$) và khối lượng phân tử, yêu cầu xác định nguyên tố R (thường trắc nghiệm 4 nguyên tố)."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00322",
+   "chu_de": "Tốc độ",
+   "chuyen_de": "Tốc độ chuyển động",
+   "nhom": "Nhận biết ý nghĩa vật lý và đơn vị của tốc độ",
+   "dang": [
+    {
+     "dang_id": "KDB00725",
+     "ten": "Đổi đơn vị tốc độ",
+     "mo_ta": "Đề cho một giá trị tốc độ (hoặc một đơn vị thời gian) ở đơn vị này, hỏi giá trị tương ứng ở đơn vị khác."
+    },
+    {
+     "dang_id": "KDB00726",
+     "ten": "Định nghĩa/Khái niệm",
+     "mo_ta": "Câu hỏi nhận biết thuần ghi nhớ khái niệm tốc độ: tốc độ là gì, đặc trưng cho điều gì, công thức, kí hiệu các đại lượng."
+    },
+    {
+     "dang_id": "KDB00727",
+     "ten": "Ý nghĩa tốc độ",
+     "mo_ta": "Đề hỏi hiểu con số tốc độ có nghĩa gì (mỗi giờ, mỗi giây đi được bao nhiêu), hoặc suy ra nhanh chậm từ quãng đường và thời gian."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00323",
+   "chu_de": "Tốc độ",
+   "chuyen_de": "Tốc độ chuyển động",
+   "nhom": "Bài toán tính tốc độ, quãng đường, thời gian cơ bản",
+   "dang": [
+    {
+     "dang_id": "KDB00728",
+     "ten": "Tính tốc độ",
+     "mo_ta": "Đề cho quãng đường và thời gian đi (có thể cần đổi phút sang giờ, giây), hỏi tốc độ của vật."
+    },
+    {
+     "dang_id": "KDB00729",
+     "ten": "Tính thời gian",
+     "mo_ta": "Đề cho tốc độ và quãng đường, hỏi thời gian chuyển động."
+    },
+    {
+     "dang_id": "KDB00730",
+     "ten": "Tính quãng đường",
+     "mo_ta": "Đề cho tốc độ và thời gian chuyển động (thời gian có thể cho bằng giờ, phút, giây), hỏi quãng đường vật đi được."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00324",
+   "chu_de": "Tốc độ",
+   "chuyen_de": "Tốc độ chuyển động",
+   "nhom": "Bài toán tốc độ trung bình trên nhiều đoạn đường",
+   "dang": [
+    {
+     "dang_id": "KDB01397",
+     "ten": "Nhận định về cách tính tốc độ trung bình bằng trung bình cộng",
+     "mo_ta": "Đề không cho số liệu cụ thể mà hỏi khi nào tốc độ trung bình bằng trung bình cộng các tốc độ thành phần, hoặc nhận xét cách làm của một học sinh."
+    },
+    {
+     "dang_id": "KDB01398",
+     "ten": "Tính tốc độ trung bình khi biết quãng đường và thời gian từng đoạn",
+     "mo_ta": "Đề cho quãng đường và thời gian đi của từng đoạn (hai hoặc ba đoạn), hỏi tốc độ trung bình trên cả hành trình."
+    },
+    {
+     "dang_id": "KDB01399",
+     "ten": "Tính tốc độ trung bình khi biết tốc độ và thời gian từng đoạn",
+     "mo_ta": "Đề cho tốc độ và thời gian chuyển động của từng đoạn (nửa thời gian đầu và sau, 30 giây đầu và 30 giây sau…), hỏi tốc độ trung bình cả hành trình."
+    },
+    {
+     "dang_id": "KDB01400",
+     "ten": "Tính tốc độ trung bình khi biết tốc độ và quãng đường từng đoạn",
+     "mo_ta": "Đề cho tốc độ và quãng đường của từng đoạn (kể cả nửa quãng đường đầu và nửa quãng đường sau), hỏi tốc độ trung bình cả hành trình."
+    },
+    {
+     "dang_id": "KDB01401",
+     "ten": "Tính tốc độ trung bình khi hành trình có thời gian nghỉ",
+     "mo_ta": "Đề nêu hành trình có dừng nghỉ giữa đường, hoặc cho tổng quãng đường và tổng thời gian kể cả thời gian nghỉ, hỏi tốc độ trung bình."
+    },
+    {
+     "dang_id": "KDB01402",
+     "ten": "Tính quãng đường hoặc thời gian từ tốc độ trung bình",
+     "mo_ta": "Đề cho tốc độ trung bình của cả hành trình cùng quãng đường hoặc thời gian, hỏi đại lượng còn lại; hoặc cho cả hành trình và một đoạn, hỏi đoạn còn lại."
+    },
+    {
+     "dang_id": "KDB01403",
+     "ten": "So sánh thời gian đến đích của hai phương tiện có thời gian nghỉ",
+     "mo_ta": "Đề cho hai người hoặc hai phương tiện đi cùng quãng đường, một bên đi liên tục và một bên chia đoạn có dừng nghỉ, hỏi ai đến đích trước và trước bao lâu."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00325",
+   "chu_de": "Tốc độ",
+   "chuyen_de": "Đo tốc độ",
+   "nhom": "Lựa chọn thiết bị đo tốc độ phù hợp",
+   "dang": [
+    {
+     "dang_id": "KDB01404",
+     "ten": "Chọn dụng cụ và thiết bị đo tốc độ phù hợp",
+     "mo_ta": "Đề hỏi cần những dụng cụ nào để đo tốc độ, dụng cụ nào đo thời gian chính xác hơn, thiết bị nào đo tốc độ phương tiện giao thông hoặc bộ phận nào của xe cho biết tốc độ."
+    },
+    {
+     "dang_id": "KDB01405",
+     "ten": "Giải thích sai số và độ chính xác khi đo thời gian",
+     "mo_ta": "Đề hỏi vì sao hai lần đo cho kết quả khác nhau, vì sao đo bằng cổng quang điện chính xác hơn, vì sao nên đo nhiều lần rồi lấy trung bình."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00327",
+   "chu_de": "Tốc độ",
+   "chuyen_de": "Đồ thị quãng đường - thời gian",
+   "nhom": "Đọc đồ thị Quãng đường - Thời gian",
+   "dang": [
+    {
+     "dang_id": "KDB00731",
+     "ten": "ĐỌC s TẠI THỜI ĐIỂM t VÀ NGƯỢC LẠI",
+     "mo_ta": "Đề cho đồ thị quãng đường – thời gian, hỏi đọc một giá trị: biết thời điểm $t$ tìm quãng đường $s$ hoặc biết $s$ tìm thời điểm $t$."
+    },
+    {
+     "dang_id": "KDB00732",
+     "ten": "NHẬN RA ĐOẠN VẬT ĐỨNG YÊN",
+     "mo_ta": "Đề hỏi nhận biết ý nghĩa các trục và các đoạn nằm ngang trên đồ thị quãng đường – thời gian: trục nào là thời gian, trục nào là quãng đường."
+    },
+    {
+     "dang_id": "KDB00733",
+     "ten": "TÍNH TỐC ĐỘ TỪ ĐỒ THỊ",
+     "mo_ta": "Đề cho đồ thị quãng đường – thời gian, hỏi tốc độ của vật trên một đoạn hoặc trên cả đồ thị."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00329",
+   "chu_de": "Tốc độ",
+   "chuyen_de": "Đồ thị quãng đường - thời gian",
+   "nhom": "SO SÁNH VÀ MÔ TẢ CHUYỂN ĐỘNG TRÊN ĐỒ THỊ",
+   "dang": [
+    {
+     "dang_id": "KDB00734",
+     "ten": "SO SÁNH HAI VẬT TRÊN CÙNG ĐỒ THỊ",
+     "mo_ta": "Đề cho đồ thị quãng đường – thời gian của hai vật trên cùng hệ trục, hỏi vật nào nhanh hơn, tốc độ gấp mấy lần."
+    },
+    {
+     "dang_id": "KDB00735",
+     "ten": "MÔ TẢ CHUYỂN ĐỘNG NHIỀU GIAI ĐOẠN",
+     "mo_ta": "Đề cho đồ thị quãng đường – thời gian của một vật gồm nhiều đoạn thẳng liên tiếp (đứng yên, chuyển động với tốc độ khác nhau), yêu cầu chọn mô tả đúng."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00330",
+   "chu_de": "Tốc độ",
+   "chuyen_de": "Đồ thị quãng đường - thời gian",
+   "nhom": "Vẽ đồ thị quãng đường - thời gian",
+   "dang": [
+    {
+     "dang_id": "KDB00736",
+     "ten": "VẼ ĐỒ THỊ TỪ BẢNG",
+     "mo_ta": "Đề cho bảng số liệu quãng đường theo thời gian (hoặc quãng đường từng khoảng thời gian liên tiếp), yêu cầu vẽ đồ thị quãng đường – thời gian theo tỉ lệ xích cho trước."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00331",
+   "chu_de": "Âm thanh",
+   "chuyen_de": "SÓNG ÂM",
+   "nhom": "NGUỒN ÂM, SÓNG ÂM VÀ MÔI TRƯỜNG TRUYỀN ÂM",
+   "dang": [
+    {
+     "dang_id": "KDB00737",
+     "ten": "Nhận ra nguồn âm và bộ phận dao động",
+     "mo_ta": "Đề cho một nhạc cụ, con vật hay đồ vật đang phát ra âm, hỏi vật nào là nguồn âm hoặc bộ phận nào dao động để phát ra âm."
+    },
+    {
+     "dang_id": "KDB00738",
+     "ten": "Môi trường truyền âm",
+     "mo_ta": "Đề hỏi âm truyền được hay không truyền được qua môi trường nào (chất rắn, chất lỏng, chất khí, chân không)."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00332",
+   "chu_de": "Âm thanh",
+   "chuyen_de": "SÓNG ÂM",
+   "nhom": "TỐC ĐỘ TRUYỀN ÂM",
+   "dang": [
+    {
+     "dang_id": "KDB00739",
+     "ten": "So sánh tốc độ âm trong chất rắn, lỏng, khí",
+     "mo_ta": "Đề so sánh tốc độ truyền âm giữa các môi trường rắn, lỏng, khí, không yêu cầu tính quãng đường hay thời gian."
+    },
+    {
+     "dang_id": "KDB00740",
+     "ten": "Tính khoảng cách, thời gian truyền âm",
+     "mo_ta": "Bài trắc nghiệm tính quãng đường (khoảng cách), thời gian hoặc tốc độ của âm truyền một chiều bằng $s = v \\times t$."
+    },
+    {
+     "dang_id": "KDB00741",
+     "ten": "Thấy chớp trước khi nghe tiếng sét",
+     "mo_ta": "Bài trắc nghiệm về hiện tượng thấy tia chớp trước khi nghe tiếng sét."
+    },
+    {
+     "dang_id": "KDB00742",
+     "ten": "Tính khoảng cách, thời gian truyền âm",
+     "mo_ta": "Bài tự luận tính toán nhiều bước về âm truyền một chiều, phải tính một đại lượng trung gian rồi mới ra đáp số."
+    },
+    {
+     "dang_id": "KDB00743",
+     "ten": "Thấy chớp trước khi nghe tiếng sét",
+     "mo_ta": "Bài trả lời ngắn về hiện tượng chớp và sét: tính khoảng cách tới chỗ sét đánh hoặc thời gian từ chớp đến sét."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00333",
+   "chu_de": "Âm thanh",
+   "chuyen_de": "Đặc trưng của âm",
+   "nhom": "TẦN SỐ, BIÊN ĐỘ VÀ MỐI LIÊN HỆ VỚI ĐỘ CAO, ĐỘ TO",
+   "dang": [
+    {
+     "dang_id": "KDB00744",
+     "ten": "TẦN SỐ VÀ ĐƠN VỊ HERTZ",
+     "mo_ta": "Đề hỏi khái niệm tần số dao động: tần số là gì, kí hiệu gì, đơn vị gì."
+    },
+    {
+     "dang_id": "KDB00745",
+     "ten": "ÂM CAO – THẤP, TO – NHỎ",
+     "mo_ta": "Đề hỏi mối liên hệ giữa độ cao của âm với tần số, giữa độ to của âm với biên độ (bằng lời, không tính số)."
+    },
+    {
+     "dang_id": "KDB00746",
+     "ten": "HẠ ÂM, SIÊU ÂM VÀ NGƯỠNG NGHE CỦA NGƯỜI",
+     "mo_ta": "Đề hỏi về giới hạn nghe của tai người, hạ âm và siêu âm."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00334",
+   "chu_de": "Âm thanh",
+   "chuyen_de": "Đặc trưng của âm",
+   "nhom": "Tính tần số dao động và so sánh độ cao của âm",
+   "dang": [
+    {
+     "dang_id": "KDB00747",
+     "ten": "TÍNH TẦN SỐ",
+     "mo_ta": "Bài trả lời ngắn tính tần số dao động từ số dao động $N$ và thời gian $t$ cho theo giây."
+    },
+    {
+     "dang_id": "KDB00748",
+     "ten": "ĐỔI THỜI GIAN SANG GIÂY TRƯỚC KHI TÍNH",
+     "mo_ta": "Bài trả lời ngắn tính tần số khi thời gian dao động cho theo phút."
+    },
+    {
+     "dang_id": "KDB00749",
+     "ten": "SO SÁNH ĐỘ CAO CỦA HAI ÂM",
+     "mo_ta": "Bài trắc nghiệm so sánh độ cao của hai hoặc ba âm từ số dao động và thời gian của từng nguồn."
+    },
+    {
+     "dang_id": "KDB00750",
+     "ten": "NGƯỜI CÓ NGHE ĐƯỢC ÂM HAY KHÔNG",
+     "mo_ta": "Bài trắc nghiệm xét một nguồn âm cụ thể có tai người nghe được hay không và âm đó thuộc loại nào (hạ âm, âm nghe được, siêu âm)."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00335",
+   "chu_de": "Âm thanh",
+   "chuyen_de": "Đặc trưng của âm",
+   "nhom": "Đọc đồ thị dao động âm",
+   "dang": [
+    {
+     "dang_id": "KDB00751",
+     "ten": "So sánh độ cao từ đồ thị",
+     "mo_ta": "Đề cho hình gồm hai hoặc ba đồ thị dao động âm, hỏi âm nào cao hơn, cao nhất hoặc trầm nhất."
+    },
+    {
+     "dang_id": "KDB00752",
+     "ten": "SO SÁNH ĐỘ TO TỪ ĐỒ THỊ",
+     "mo_ta": "Đề cho hình gồm hai hoặc ba đồ thị dao động âm vẽ cùng tỉ lệ trên trục thẳng đứng, hỏi âm nào to hơn, nhỏ hơn, to nhất hoặc nhỏ nhất."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00336",
+   "chu_de": "Âm thanh",
+   "chuyen_de": "Phản xạ âm và chống ô nhiễm tiếng ồn",
+   "nhom": "Phản xạ âm, tiếng vang và vật phản xạ âm",
+   "dang": [
+    {
+     "dang_id": "KDB00753",
+     "ten": "Vật phản xạ âm tốt và kém",
+     "mo_ta": "Đề hỏi vật nào phản xạ âm tốt, vật nào phản xạ âm kém hoặc hấp thụ âm nhiều."
+    },
+    {
+     "dang_id": "KDB00754",
+     "ten": "ĐIỀU KIỆN NGHE ĐƯỢC TIẾNG VANG",
+     "mo_ta": "Đề hỏi về tiếng vang: điều kiện để nghe được tiếng vang và nguyên nhân không nghe được hay cách giảm tiếng vang (bằng lời, không tính toán số)."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00337",
+   "chu_de": "Âm thanh",
+   "chuyen_de": "Phản xạ âm và chống ô nhiễm tiếng ồn",
+   "nhom": "TÍNH KHOẢNG CÁCH BẰNG ÂM PHẢN XẠ",
+   "dang": [
+    {
+     "dang_id": "KDB00755",
+     "ten": "ĐO ĐỘ SÂU ĐÁY BIỂN BẰNG SIÊU ÂM",
+     "mo_ta": "Bài trắc nghiệm tính độ sâu đáy biển (hoặc vực biển) bằng siêu âm phản xạ."
+    },
+    {
+     "dang_id": "KDB00756",
+     "ten": "KHOẢNG CÁCH TỚI VÁCH NÚI, BỨC TƯỜNG",
+     "mo_ta": "Bài trả lời ngắn tính khoảng cách từ người đứng tới vách núi, vách đá, bức tường hoặc toà nhà bằng tiếng vang trong không khí."
+    },
+    {
+     "dang_id": "KDB00757",
+     "ten": "KHOẢNG CÁCH TỐI THIỂU ĐỂ NGHE TIẾNG VANG",
+     "mo_ta": "Bài tự luận tính khoảng cách nhỏ nhất từ nguồn âm tới vật phản xạ để nghe được tiếng vang."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00338",
+   "chu_de": "Âm thanh",
+   "chuyen_de": "Phản xạ âm và chống ô nhiễm tiếng ồn",
+   "nhom": "Ô NHIỄM TIẾNG ỒN VÀ BIỆN PHÁP CHỐNG",
+   "dang": [
+    {
+     "dang_id": "KDB00758",
+     "ten": "Nhận biết ô nhiễm tiếng ồn",
+     "mo_ta": "Đề hỏi nhận biết khi nào một tiếng ồn gây ô nhiễm tiếng ồn và tác hại của nó."
+    },
+    {
+     "dang_id": "KDB00759",
+     "ten": "CHỌN BIỆN PHÁP CHỐNG ỒN",
+     "mo_ta": "Đề hỏi biện pháp chống ô nhiễm tiếng ồn: chọn biện pháp phù hợp hoặc phân loại biện pháp đã cho."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00340",
+   "chu_de": "Ánh sáng",
+   "chuyen_de": "Sự truyền ánh sáng",
+   "nhom": "Biện luận bóng tối và bóng nửa tối",
+   "dang": [
+    {
+     "dang_id": "KDB01672",
+     "ten": "Nhận biết vùng tối, vùng nửa tối trên màn",
+     "mo_ta": "Đề cho nguồn sáng (nhỏ hoặc rộng), vật cản, màn chắn và các vùng đánh số trên màn; hỏi vùng nào là vùng tối, vùng nửa tối hay vùng sáng."
+    },
+    {
+     "dang_id": "KDB01673",
+     "ten": "Chỉ ra nguồn sáng, vật cản sáng và màn chắn",
+     "mo_ta": "Đề mô tả một tình huống có bóng đổ (đèn và tường, Mặt Trời và cột đèn, nhật thực, nguyệt thực), hỏi vật nào đóng vai trò nguồn sáng, vật cản sáng hoặc màn chắn."
+    },
+    {
+     "dang_id": "KDB01674",
+     "ten": "Dự đoán vùng tối khi dời nguồn nhỏ, vật cản hoặc màn",
+     "mo_ta": "Đề cho nguồn sáng nhỏ chiếu vật cản lên màn tạo vùng tối; hỏi vùng tối rộng ra, hẹp lại hay không đổi khi dời nguồn, dời màn hoặc đổi kích thước vật cản."
+    },
+    {
+     "dang_id": "KDB01675",
+     "ten": "Dự đoán vùng tối, nửa tối khi nguồn sáng rộng thay đổi",
+     "mo_ta": "Đề cho nguồn sáng rộng tạo vùng tối và vùng nửa tối trên màn; hỏi hai vùng này thay đổi thế nào khi tăng hoặc giảm kích thước nguồn, dời nguồn lại gần vật cản, hoặc thay bằng nguồn nhỏ."
+    },
+    {
+     "dang_id": "KDB01676",
+     "ten": "Xác định hiện tượng quan sát được tại một vùng bóng",
+     "mo_ta": "Đề nêu nhật thực hoặc nguyệt thực và một vị trí (người đứng ở vùng tối, vùng nửa tối, ngoài bóng; hoặc Mặt Trăng ở vùng tối, nửa tối của Trái Đất); hỏi quan sát thấy gì."
+    },
+    {
+     "dang_id": "KDB01677",
+     "ten": "Ghép hiện tượng với nhiều người ở các vùng bóng",
+     "mo_ta": "Đề nêu ba người ở ba vị trí (vùng tối, vùng nửa tối, ngoài bóng) khi có nhật thực hoặc nguyệt thực; bốn phương án là bốn cách ghép hiện tượng cho từng người, chọn cách ghép đúng."
+    },
+    {
+     "dang_id": "KDB01678",
+     "ten": "Giải thích cách chiếu sáng để giảm vùng tối",
+     "mo_ta": "Đề nêu một tình huống đời sống (đèn mổ, đèn bàn, chụp ảnh, nhà xưởng, sân khấu) và hỏi mục đích hay cách bố trí đèn để giảm hoặc tránh vùng tối."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00341",
+   "chu_de": "Ánh sáng",
+   "chuyen_de": "Sự phản xạ ánh sáng",
+   "nhom": "Đặc điểm của phản xạ gương và phản xạ khuếch tán",
+   "dang": [
+    {
+     "dang_id": "KDB01679",
+     "ten": "Nhận biết loại phản xạ và loại bề mặt phản xạ",
+     "mo_ta": "Đề nêu một hiện tượng hoặc một bề mặt cụ thể, hỏi gọi tên đúng loại phản xạ (gương hay khuếch tán) hoặc chọn bề mặt cho loại phản xạ đó."
+    },
+    {
+     "dang_id": "KDB01680",
+     "ten": "Giải thích hiện tượng thực tế bằng loại phản xạ",
+     "mo_ta": "Đề nêu một hiện tượng đời sống (nhìn thấy trang sách từ nhiều hướng, màn chiếu phim, biển báo phản quang, mặt đường ướt, lau bóng kim loại) và hỏi nguyên nhân."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00342",
+   "chu_de": "Ánh sáng",
+   "chuyen_de": "Sự phản xạ ánh sáng",
+   "nhom": "Tính toán góc tới, góc phản xạ",
+   "dang": [
+    {
+     "dang_id": "KDB01681",
+     "ten": "Tính góc phản xạ hoặc góc tới từ góc với pháp tuyến",
+     "mo_ta": "Đề cho góc tới (hoặc góc phản xạ, hoặc góc NIR, SIN) đã đo với pháp tuyến; hỏi góc còn lại."
+    },
+    {
+     "dang_id": "KDB01682",
+     "ten": "Tính góc tới từ góc hợp với mặt gương",
+     "mo_ta": "Đề cho góc giữa tia tới (hoặc tia phản xạ) và mặt gương; hỏi góc tới hoặc góc phản xạ, hoặc ngược lại cho góc phản xạ và hỏi góc hợp với mặt gương."
+    },
+    {
+     "dang_id": "KDB01683",
+     "ten": "Tính góc giữa tia tới và tia phản xạ",
+     "mo_ta": "Đề cho góc tới hoặc góc hợp với mặt gương, hỏi góc SIR giữa tia tới và tia phản xạ; hoặc ngược lại cho góc SIR và hỏi góc tới."
+    },
+    {
+     "dang_id": "KDB01684",
+     "ten": "Chọn hình vẽ đúng tia phản xạ",
+     "mo_ta": "Đề cho góc tới, hoặc góc hợp với mặt gương, hoặc góc giữa tia tới và tia phản xạ; bốn phương án là bốn hình vẽ, chọn hình vẽ đúng tia phản xạ (có khi cả tia tới)."
+    },
+    {
+     "dang_id": "KDB01685",
+     "ten": "Tìm hình hoặc số đo vẽ sai định luật phản xạ",
+     "mo_ta": "Đề đưa bốn hình vẽ hoặc bốn bạn ghi lại số đo (góc tới, góc hợp với gương, góc phản xạ), hỏi hình nào hoặc bạn nào vẽ SAI."
+    },
+    {
+     "dang_id": "KDB01686",
+     "ten": "Đặt gương để tia phản xạ đi theo hướng cho trước",
+     "mo_ta": "Đề cho hướng tia tới và hướng tia phản xạ mong muốn (hợp với nhau một góc, hoặc cùng hợp với phương ngang, phương thẳng đứng); hỏi góc tới hoặc góc giữa mặt gương và tia tới."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00343",
+   "chu_de": "Ánh sáng",
+   "chuyen_de": "Sự phản xạ ánh sáng",
+   "nhom": "Bài toán quay gương phẳng",
+   "dang": [
+    {
+     "dang_id": "KDB01687",
+     "ten": "Tính góc quay của tia phản xạ khi quay gương",
+     "mo_ta": "Đề giữ nguyên tia tới, quay gương một góc cho trước quanh điểm tới; hỏi tia phản xạ quay bao nhiêu, hoặc góc SIR lúc sau."
+    },
+    {
+     "dang_id": "KDB01688",
+     "ten": "Tính góc quay của gương khi biết tia phản xạ quay",
+     "mo_ta": "Đề giữ nguyên tia tới, cho biết tia phản xạ quay một góc nào đó; hỏi phải quay gương quanh điểm tới một góc bao nhiêu."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00344",
+   "chu_de": "Ánh sáng",
+   "chuyen_de": "Ảnh tạo bởi gương phẳng",
+   "nhom": "Đặc điểm ảnh và bài toán khoảng cách",
+   "dang": [
+    {
+     "dang_id": "KDB01689",
+     "ten": "Nhận biết đặc điểm ảnh của vật tạo bởi gương phẳng",
+     "mo_ta": "Đề hỏi độ lớn, hình dạng, vị trí hay quan hệ đối xứng của ảnh qua gương phẳng; có thể kèm tình huống đi ra xa gương hoặc so sánh hai vật."
+    },
+    {
+     "dang_id": "KDB01690",
+     "ten": "Phân biệt ảnh ảo và ảnh thật",
+     "mo_ta": "Đề hỏi định nghĩa ảnh ảo hoặc ảnh thật, ảnh qua gương phẳng có hứng được trên màn không, hoặc chọn trường hợp là ảnh ảo hay ảnh thật."
+    },
+    {
+     "dang_id": "KDB01691",
+     "ten": "Tính khoảng cách ảnh – gương, vật – gương, vật – ảnh",
+     "mo_ta": "Đề cho khoảng cách từ vật (hoặc ảnh) đến gương, hỏi khoảng cách từ ảnh đến gương, từ vật đến gương hoặc giữa vật và ảnh; có thể cho khoảng cách vật – ảnh và hỏi vật cách gương."
+    },
+    {
+     "dang_id": "KDB01692",
+     "ten": "Đọc khoảng cách vật và ảnh trên hình vẽ có ô vuông",
+     "mo_ta": "Đề cho hình vẽ vật AB và ảnh A′B′ trên lưới ô vuông, mỗi ô có độ dài cho trước; hỏi ảnh cách gương bao nhiêu hoặc điểm A cách ảnh A′ bao nhiêu."
+    },
+    {
+     "dang_id": "KDB01693",
+     "ten": "Tính khoảng cách khi vật dịch lại gần hoặc ra xa gương",
+     "mo_ta": "Đề cho khoảng cách ban đầu từ vật (hoặc người) đến gương và quãng đường dịch lại gần hoặc ra xa gương (có thể phải đổi cm sang m); hỏi ảnh cách gương bao nhiêu hoặc khoảng cách giữa vật và ảnh lúc sau."
+    },
+    {
+     "dang_id": "KDB01694",
+     "ten": "Tính tốc độ dịch chuyển của vật và ảnh",
+     "mo_ta": "Đề cho vật (người, xe đồ chơi) chuyển động thẳng lại gần hoặc ra xa gương với tốc độ nào đó; hỏi tốc độ của ảnh, khoảng cách vật – ảnh sau một thời gian, hoặc khoảng cách vật – ảnh thay đổi nhanh thế nào."
+    },
+    {
+     "dang_id": "KDB01695",
+     "ten": "Tính khoảng cách vật – ảnh khi dịch chuyển gương",
+     "mo_ta": "Đề cho vật đứng yên, dịch gương ra xa hoặc lại gần vật một đoạn (hoặc với tốc độ trong một thời gian); hỏi khoảng cách vật – ảnh lúc sau, độ dịch của ảnh, hoặc độ dịch của gương."
+    },
+    {
+     "dang_id": "KDB01696",
+     "ten": "Vận dụng ảnh đối xứng: đồng hồ, chữ ngược, kính tiềm vọng",
+     "mo_ta": "Đề nêu một tình huống ứng dụng ảnh đối xứng trái – phải qua gương phẳng: đọc giờ đồng hồ qua gương, chữ in ngược trên xe cứu thương, dụng cụ nhìn qua vật che khuất (kính tiềm vọng)."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00345",
+   "chu_de": "Ánh sáng",
+   "chuyen_de": "Ảnh tạo bởi gương phẳng",
+   "nhom": "Dựng ảnh và xác định vùng nhìn thấy của gương",
+   "dang": [
+    {
+     "dang_id": "KDB01697",
+     "ten": "Chọn hình vẽ đúng ảnh của vật qua gương phẳng",
+     "mo_ta": "Đề cho vật AB đặt thẳng đứng trước gương, cách gương một số ô; bốn phương án là bốn hình vẽ ảnh A′B′, chọn hình vẽ đúng."
+    },
+    {
+     "dang_id": "KDB01698",
+     "ten": "Chọn hình đúng đường truyền tia sáng từ điểm sáng tới mắt",
+     "mo_ta": "Đề cho mắt M nhìn thấy ảnh A′ của điểm A qua gương, A cách gương một số ô; bốn phương án là bốn hình vẽ đường truyền tia sáng từ A phản xạ trên gương rồi tới mắt."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00346",
+   "chu_de": "Từ",
+   "chuyen_de": "Nam châm vĩnh cửu",
+   "nhom": "Lý thuyết cơ bản về nam châm vĩnh cửu",
+   "dang": [
+    {
+     "dang_id": "KDB01487",
+     "ten": "Nhận biết vật liệu từ — vật nào bị nam châm hút",
+     "mo_ta": "Đề hỏi vật nào, nhóm vật nào bị (hoặc không bị) nam châm hút; hoặc nam châm có hút được một kim loại cụ thể không."
+    },
+    {
+     "dang_id": "KDB01488",
+     "ten": "Xác định lực tương tác giữa hai nam châm theo tên cực",
+     "mo_ta": "Đề cho tên hai cực đưa lại gần nhau (hoặc cực của thanh nam châm với cực của kim nam châm) và hỏi hút hay đẩy; hoặc hỏi hiện tượng xảy ra với kim."
+    },
+    {
+     "dang_id": "KDB01489",
+     "ten": "Nhận biết các loại nam châm và vị trí các cực từ",
+     "mo_ta": "Đề hỏi về hình dạng, đặc điểm và công dụng của nam châm thẳng, nam châm chữ U, kim nam châm; vị trí hai cực của từng loại."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00347",
+   "chu_de": "Từ",
+   "chuyen_de": "Từ trường và Đường sức từ",
+   "nhom": "Lý thuyết cơ bản về từ trường & đường sức từ",
+   "dang": [
+    {
+     "dang_id": "KDB01490",
+     "ten": "Từ phổ và nhận xét độ mạnh của từ trường",
+     "mo_ta": "Đề mô tả thí nghiệm tạo từ phổ (rắc mạt sắt lên tấm nhựa đặt trên nam châm) và hỏi mạt sắt xếp thế nào, dày ở đâu, dùng vật liệu khác thì ra sao."
+    },
+    {
+     "dang_id": "KDB01491",
+     "ten": "Đường sức từ: kim nam châm thử và tính chất",
+     "mo_ta": "Đề hỏi kim nam châm nhỏ đặt trên một đường sức khi đứng yên nằm thế nào, cực nào chỉ theo chiều đường sức."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00348",
+   "chu_de": "Từ",
+   "chuyen_de": "Từ trường và Đường sức từ",
+   "nhom": "Xác định tên từ cực thông qua hình ảnh đường sức (hoặc kim nam châm thử)",
+   "dang": [
+    {
+     "dang_id": "KDB01492",
+     "ten": "Xác định tên cực thanh nam châm bằng kim nam châm thử",
+     "mo_ta": "Đề cho một đầu thanh nam châm chưa ghi tên cực và kim nam châm (kim la bàn) đưa lại gần đầu đó, cho biết cực nào của kim bị hút hay bị đẩy; hỏi tên cực của đầu thanh."
+    },
+    {
+     "dang_id": "KDB01493",
+     "ten": "Xác định tên cực từ qua chiều đường sức",
+     "mo_ta": "Đề cho chiều đường sức từ (bằng hình có mũi tên hoặc bằng lời) rồi hỏi tên cực hai đầu thanh; hoặc cho tên cực rồi hỏi chiều đường sức bên ngoài nam châm."
+    },
+    {
+     "dang_id": "KDB01494",
+     "ten": "Xác định cực của hai nam châm A–B khi cho kim la bàn và hiện tượng hút, đẩy",
+     "mo_ta": "Đề có hai thanh nam châm: kim la bàn đặt cạnh một đầu thanh thứ nhất cho biết cực nào của kim bị hút hay đẩy; rồi đầu còn lại của thanh thứ nhất đặt đối diện đầu của thanh thứ hai, cho biết hút hay đẩy; hỏi tên các cực của thanh thứ hai."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00349",
+   "chu_de": "Từ",
+   "chuyen_de": "Nam châm điện & Từ trường Trái Đất",
+   "nhom": "Lý thuyết cơ bản về Nam châm điện & Từ trường Trái Đất",
+   "dang": [
+    {
+     "dang_id": "KDB01495",
+     "ten": "La bàn, từ trường Trái Đất và nhiễm từ",
+     "mo_ta": "Đề hỏi vì sao kim la bàn chỉ hướng Bắc – Nam, ảnh hưởng của nam châm hay dòng điện đặt gần la bàn, nam châm treo tự do khi đứng yên."
+    },
+    {
+     "dang_id": "KDB01496",
+     "ten": "Cấu tạo và vật liệu các bộ phận của nam châm điện",
+     "mo_ta": "Đề hỏi nam châm điện gồm những bộ phận nào; vật liệu làm lõi, làm dây quấn; vai trò của công tắc, của nguồn điện."
+    },
+    {
+     "dang_id": "KDB01497",
+     "ten": "Điều kiện có từ tính và đặc điểm của nam châm điện",
+     "mo_ta": "Đề hỏi khi nào nam châm điện hút được vật sắt, khi ngắt điện hoặc mạch hở thì thế nào, cách làm mất từ tính."
+    },
+    {
+     "dang_id": "KDB01498",
+     "ten": "Vì sao dùng nam châm điện: cần cẩu, khóa điện từ, tách phế liệu",
+     "mo_ta": "Đề đưa một tình huống thực tế (cần cẩu ở bãi phế liệu, khóa điện từ, nhà máy tái chế) và hỏi vì sao dùng nam châm điện, vật nào được hút, hay điều gì xảy ra khi ngắt điện."
+    },
+    {
+     "dang_id": "KDB01499",
+     "ten": "Nguyên lí hoạt động của chuông điện và rơ-le điện từ",
+     "mo_ta": "Đề hỏi vai trò của nam châm điện trong chuông điện hoặc rơ-le điện từ; điều gì xảy ra khi cản búa chuông; lợi ích của rơ-le."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00351",
+   "chu_de": "Từ",
+   "chuyen_de": "Nam châm điện & Từ trường Trái Đất",
+   "nhom": "Bài toán định hướng la bàn và Từ trường Trái Đất",
+   "dang": [
+    {
+     "dang_id": "KDB01500",
+     "ten": "Xác định hướng đang nhìn từ vị trí cực Bắc của kim la bàn",
+     "mo_ta": "Đề cho cực Bắc của kim chỉ phía trước, sau lưng, bên trái hay bên phải người cầm la bàn đứng yên, rồi hỏi người đang nhìn hướng nào hoặc bên tay trái là hướng nào."
+    },
+    {
+     "dang_id": "KDB01501",
+     "ten": "Xác định hướng sau khi quay người theo nhiều lần",
+     "mo_ta": "Đề cho cực Bắc của kim chỉ phía nào so với người, rồi người quay sang phải hoặc trái 90° (một hoặc hai lần, có thể cả 180°), hỏi sau cùng nhìn hướng nào."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00352",
+   "chu_de": "Trao đổi chất & Chuyển hóa năng lượng ở sinh vật",
+   "chuyen_de": "Khái quát về trao đổi chất & chuyển hóa năng lượng",
+   "nhom": "Khái quát về trao đổi chất & chuyển hóa năng lượng",
+   "dang": [
+    {
+     "dang_id": "KDB00760",
+     "ten": "Trao đổi chất",
+     "mo_ta": "Đề hỏi khái niệm trao đổi chất ở sinh vật: định nghĩa, ba khâu, vai trò, ý nghĩa của việc lấy chất, thải chất."
+    },
+    {
+     "dang_id": "KDB00761",
+     "ten": "Chuyển hóa năng lượng",
+     "mo_ta": "Đề hỏi khái niệm chuyển hoá năng lượng ở sinh vật: định nghĩa, quan hệ với trao đổi chất, quá trình nào giải phóng hay tích luỹ năng lượng."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00353",
+   "chu_de": "Trao đổi chất & Chuyển hóa năng lượng ở sinh vật",
+   "chuyen_de": "Khái quát về trao đổi chất & chuyển hóa năng lượng",
+   "nhom": "Các khâu trong trao đổi chất và dạng chuyển hóa năng lượng",
+   "dang": [
+    {
+     "dang_id": "KDB00762",
+     "ten": "Trao đổi chất",
+     "mo_ta": "Đề nêu một hiện tượng ở sinh vật (rễ hút nước, cá lấy oxygen qua mang, thở ra khí carbon dioxide, tiêu hoá thức ăn...) rồi hỏi hiện tượng đó thuộc khâu nào: lấy chất, biến đổi chất hay thải chất."
+    },
+    {
+     "dang_id": "KDB00763",
+     "ten": "Chuyển hóa năng lượng",
+     "mo_ta": "Đề nêu hiện tượng hoặc hoạt động của một sinh vật cụ thể (ngựa phi, cây quang hợp, đom đóm phát sáng, hạt nảy mầm...) rồi hỏi dạng năng lượng nào được chuyển thành dạng nào."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00354",
+   "chu_de": "Trao đổi chất & Chuyển hóa năng lượng ở sinh vật",
+   "chuyen_de": "Khái quát về trao đổi chất & chuyển hóa năng lượng",
+   "nhom": "Phân biệt sinh vật tự dưỡng và sinh vật dị dưỡng",
+   "dang": [
+    {
+     "dang_id": "KDB01590",
+     "ten": "Nhận biết khái niệm, dấu hiệu và điều kiện của tự dưỡng, dị dưỡng",
+     "mo_ta": "Đề hỏi định nghĩa, dấu hiệu nhận biết, nguyên liệu, nguồn năng lượng hoặc điều kiện của sinh vật tự dưỡng / dị dưỡng."
+    },
+    {
+     "dang_id": "KDB01591",
+     "ten": "Xếp sinh vật quen thuộc vào nhóm tự dưỡng hoặc dị dưỡng",
+     "mo_ta": "Đề nêu một hoặc nhiều sinh vật cụ thể (cây, tảo, động vật, người, nấm, vi khuẩn…) rồi hỏi thuộc nhóm nào hoặc chọn nhóm gồm toàn sinh vật cùng loại."
+    },
+    {
+     "dang_id": "KDB01592",
+     "ten": "Xét các trường hợp dễ nhầm về nhóm dinh dưỡng",
+     "mo_ta": "Đề nêu sinh vật hoặc tình huống dễ gây nhầm: nấm, cây nắp ấm, cây gọng vó, cây tơ hồng, cây trồng trong dung dịch dinh dưỡng, giá thể trồng nấm."
+    },
+    {
+     "dang_id": "KDB01593",
+     "ten": "Phân tích vai trò và mối quan hệ phụ thuộc giữa hai nhóm",
+     "mo_ta": "Đề hỏi vai trò của sinh vật tự dưỡng (tạo chất hữu cơ ban đầu, cung cấp oxygen) và sự phụ thuộc của sinh vật dị dưỡng."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00355",
+   "chu_de": "Trao đổi chất & Chuyển hóa năng lượng ở sinh vật",
+   "chuyen_de": "Quang hợp ở thực vật",
+   "nhom": "Nhận biết khái niệm, nguyên liệu, sản phẩm và phương trình quang hợp",
+   "dang": [
+    {
+     "dang_id": "KDB01594",
+     "ten": "Nhận biết khái niệm, nguyên liệu, sản phẩm, điều kiện và phương trình quang hợp",
+     "mo_ta": "Đề hỏi định nghĩa quang hợp, nguyên liệu, sản phẩm, điều kiện, nguồn năng lượng, vị trí các chất trong phương trình chữ."
+    },
+    {
+     "dang_id": "KDB01595",
+     "ten": "Xác định nơi diễn ra quang hợp và đường vận chuyển các chất",
+     "mo_ta": "Đề hỏi quang hợp diễn ra ở cơ quan, tế bào, bào quan nào; nước, carbon dioxide, chất hữu cơ được lấy vào hoặc vận chuyển bằng con đường nào."
+    },
+    {
+     "dang_id": "KDB01596",
+     "ten": "Xác định số phận sản phẩm và sự chuyển hoá năng lượng trong quang hợp",
+     "mo_ta": "Đề hỏi chất hữu cơ tạo ra được dự trữ ở dạng nào, ở bộ phận nào."
+    },
+    {
+     "dang_id": "KDB01597",
+     "ten": "Giải thích ý nghĩa của quang hợp và sự thay đổi lượng khí",
+     "mo_ta": "Đề hỏi vai trò của quang hợp đối với cây, sinh vật và tự nhiên; quang hợp làm tăng hay giảm khí nào trong không khí."
+    },
+    {
+     "dang_id": "KDB01598",
+     "ten": "Dự đoán ảnh hưởng của điều kiện và thí nghiệm đến quang hợp",
+     "mo_ta": "Đề cho một tình huống hoặc thí nghiệm (cây ở chỗ tối, thiếu nước, che lá, chuông kín, nước vôi trong, cây không diệp lục) rồi hỏi quang hợp hoặc lượng chất thay đổi thế nào."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00356",
+   "chu_de": "Trao đổi chất & Chuyển hóa năng lượng ở sinh vật",
+   "chuyen_de": "Quang hợp ở thực vật",
+   "nhom": "Phân tích đặc điểm của lá thích nghi với chức năng quang hợp",
+   "dang": [
+    {
+     "dang_id": "KDB01599",
+     "ten": "Nhận biết cấu tạo và chức năng từng bộ phận của lá",
+     "mo_ta": "Đề hỏi tên và chức năng một bộ phận của lá: phiến, cuống, biểu bì, khí khổng, gân lá, mạch gỗ, mạch rây, tế bào thịt lá, lục lạp."
+    },
+    {
+     "dang_id": "KDB01600",
+     "ten": "Giải thích đặc điểm hình dạng, sắp xếp lá với việc thu nhận ánh sáng",
+     "mo_ta": "Đề hỏi tác dụng của phiến lá rộng, dẹt, mỏng; cách mọc so le, hướng về phía sáng; cây nhiều lá hơn cây ít lá."
+    },
+    {
+     "dang_id": "KDB01601",
+     "ten": "Dự đoán ảnh hưởng khi lá bị tổn thương hoặc điều kiện thay đổi",
+     "mo_ta": "Đề nêu một tình huống: bịt khí khổng, lá phủ bụi, sâu ăn khuyết, cắt bỏ lá, trồng quá dày, lá trong bóng tối."
+    },
+    {
+     "dang_id": "KDB01602",
+     "ten": "Giải thích sự thích nghi đặc biệt của lá với môi trường sống",
+     "mo_ta": "Đề nêu loài hoặc môi trường đặc biệt (xương rồng, cây thuỷ sinh, cây dưới tán rừng, mùa đông rụng lá, lớp cutin) rồi hỏi cấu tạo hoặc hoạt động của lá thay đổi ra sao và vì sao."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00357",
+   "chu_de": "Trao đổi chất & Chuyển hóa năng lượng ở sinh vật",
+   "chuyen_de": "Quang hợp ở thực vật",
+   "nhom": "Ảnh hưởng của các yếu tố đến quang hợp",
+   "dang": [
+    {
+     "dang_id": "KDB01406",
+     "ten": "Nhận biết các yếu tố chính ảnh hưởng đến quang hợp",
+     "mo_ta": "Đề hỏi tên các yếu tố môi trường ảnh hưởng đến quang hợp: yếu tố nào không thuộc nhóm, yếu tố thứ tư, yếu tố bắt buộc, yếu tố tác động qua hoạt động trong tế bào."
+    },
+    {
+     "dang_id": "KDB01407",
+     "ten": "Phân biệt cây ưa sáng và cây ưa bóng",
+     "mo_ta": "Đề cho tên một hoặc nhiều loài cây, hỏi thuộc nhóm ưa sáng hay ưa bóng, cây nào cần ánh sáng nhiều hơn hoặc quang hợp tốt hơn khi ánh sáng yếu."
+    },
+    {
+     "dang_id": "KDB01408",
+     "ten": "Ảnh hưởng của ánh sáng đến quang hợp và giải thích tình huống",
+     "mo_ta": "Đề hỏi quang hợp tăng, giảm hay ngừng khi cường độ ánh sáng thay đổi (rất yếu, tăng dần, quá mạnh, không có ánh sáng), hoặc giải thích tình huống thực tế về ánh sáng (trồng dày, cây gần cửa sổ, lưới che, cây thuỷ sinh khi trời âm u)."
+    },
+    {
+     "dang_id": "KDB01409",
+     "ten": "Ảnh hưởng của nước và khí khổng đến quang hợp",
+     "mo_ta": "Đề hỏi vai trò của nước với quang hợp, khi cây thiếu nước hoặc đủ nước thì quang hợp ra sao, độ mở của khí khổng thay đổi thế nào, giải thích hiện tượng cây héo, đất khô hạn, so sánh hai chậu cây tưới nước khác nhau."
+    },
+    {
+     "dang_id": "KDB01410",
+     "ten": "Ảnh hưởng của nồng độ khí carbon dioxide đến quang hợp",
+     "mo_ta": "Đề hỏi nồng độ carbon dioxide trong không khí, quang hợp thay đổi thế nào khi nồng độ tăng trong giới hạn hoặc quá cao, nhận định đúng về ảnh hưởng của carbon dioxide."
+    },
+    {
+     "dang_id": "KDB01411",
+     "ten": "Ảnh hưởng của nhiệt độ đến quang hợp",
+     "mo_ta": "Đề hỏi khoảng nhiệt độ thuận lợi nhất cho quang hợp, quang hợp thay đổi thế nào khi nhiệt độ tăng, giảm hoặc vượt ngưỡng, hoặc giải thích tình huống như mùa đông lạnh."
+    },
+    {
+     "dang_id": "KDB01412",
+     "ten": "Vận dụng điều chỉnh các yếu tố trong nhà kính và tình huống nhiều yếu tố",
+     "mo_ta": "Đề nêu tình huống thực tế mà nhiều yếu tố tác động cùng lúc (nắng gắt giữa trưa, nhà kính mùa hè, mùa đông) hoặc hỏi biện pháp điều chỉnh để tăng năng suất."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00358",
+   "chu_de": "Trao đổi chất & Chuyển hóa năng lượng ở sinh vật",
+   "chuyen_de": "Hô hấp tế bào",
+   "nhom": "KHÁI NIỆM VÀ VAI TRÒ HÔ HẤP TẾ BÀO",
+   "dang": [
+    {
+     "dang_id": "KDB00764",
+     "ten": "Phương trình chữ của hô hấp tế bào",
+     "mo_ta": "Đề cho hoặc hỏi về phương trình chữ của hô hấp tế bào: nguyên liệu, sản phẩm, viết đúng phương trình, tìm chất còn thiếu, chất không có mặt."
+    },
+    {
+     "dang_id": "KDB00765",
+     "ten": "Nơi diễn ra và vai trò của hô hấp tế bào",
+     "mo_ta": "Đề hỏi hô hấp tế bào diễn ra ở đâu (tế bào nào, bào quan nào) và có vai trò gì đối với tế bào, cơ thể."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00359",
+   "chu_de": "Trao đổi chất & Chuyển hóa năng lượng ở sinh vật",
+   "chuyen_de": "Hô hấp tế bào",
+   "nhom": "SO SÁNH QUANG HỢP VÀ HÔ HẤP TẾ BÀO",
+   "dang": [
+    {
+     "dang_id": "KDB00766",
+     "ten": "So sánh quang hợp và hô hấp tế bào theo tiêu chí",
+     "mo_ta": "Đề so sánh quang hợp và hô hấp tế bào theo từng tiêu chí: nguyên liệu, sản phẩm, nơi diễn ra, điều kiện, chuyển hoá năng lượng, chuyển hoá chất."
+    },
+    {
+     "dang_id": "KDB00767",
+     "ten": "Mối quan hệ giữa quang hợp và hô hấp tế bào",
+     "mo_ta": "Đề hỏi mối liên hệ giữa quang hợp và hô hấp tế bào: sản phẩm của quá trình này là nguyên liệu của quá trình kia, hai quá trình trái ngược nhưng phụ thuộc nhau."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00360",
+   "chu_de": "Trao đổi chất & Chuyển hóa năng lượng ở sinh vật",
+   "chuyen_de": "Hô hấp tế bào",
+   "nhom": "YẾU TỐ ẢNH HƯỞNG ĐẾN HÔ HẤP TẾ BÀO VÀ BẢO QUẢN NÔNG SẢN",
+   "dang": [
+    {
+     "dang_id": "KDB00768",
+     "ten": "Yếu tố ảnh hưởng đến hô hấp tế bào",
+     "mo_ta": "Đề hỏi ảnh hưởng của nhiệt độ, hàm lượng nước, nồng độ oxygen, nồng độ carbon dioxide đến cường độ hô hấp tế bào, kèm giải thích hiện tượng thực tế."
+    },
+    {
+     "dang_id": "KDB00769",
+     "ten": "Biện pháp bảo quản nông sản",
+     "mo_ta": "Đề hỏi biện pháp bảo quản nông sản (hạt, rau, củ, quả) và cơ sở khoa học: giảm cường độ hô hấp xuống mức tối thiểu nhưng không làm chết tế bào."
+    },
+    {
+     "dang_id": "KDB00770",
+     "ten": "Thí nghiệm hô hấp ở hạt nảy mầm",
+     "mo_ta": "Đề mô tả bố trí hoặc kết quả thí nghiệm chứng minh hô hấp ở hạt nảy mầm: nước vôi trong vẩn đục (thải carbon dioxide), bình giữ nhiệt tăng nhiệt độ (toả nhiệt)."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00361",
+   "chu_de": "Trao đổi chất & Chuyển hóa năng lượng ở sinh vật",
+   "chuyen_de": "Trao đổi khí ở sinh vật",
+   "nhom": "Khí khổng và trao đổi khí ở thực vật",
+   "dang": [
+    {
+     "dang_id": "KDB00771",
+     "ten": "Cấu tạo của khí khổng",
+     "mo_ta": "Đề hỏi cấu tạo và vị trí của khí khổng: tên gọi, hai tế bào hình hạt đậu, khe khí khổng, thành phần có hoặc không thuộc cấu tạo khí khổng."
+    },
+    {
+     "dang_id": "KDB00772",
+     "ten": "KHÍ ĐI VÀO, ĐI RA QUA KHÍ KHỔNG",
+     "mo_ta": "Đề hỏi chức năng của khí khổng và chiều đi của các khí (carbon dioxide, oxygen, hơi nước) qua khí khổng theo quá trình quang hợp, hô hấp, ban ngày, ban đêm."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00362",
+   "chu_de": "Trao đổi chất & Chuyển hóa năng lượng ở sinh vật",
+   "chuyen_de": "Trao đổi khí ở sinh vật",
+   "nhom": "Trao đổi khí ở động vật và người",
+   "dang": [
+    {
+     "dang_id": "KDB00773",
+     "ten": "CƠ QUAN TRAO ĐỔI KHÍ THEO NHÓM ĐỘNG VẬT",
+     "mo_ta": "Đề hỏi cơ quan trao đổi khí của một động vật hoặc một nhóm động vật (da, hệ thống ống khí, mang, phổi, phổi và da)."
+    },
+    {
+     "dang_id": "KDB00774",
+     "ten": "ĐƯỜNG ĐI CỦA KHÍ TRONG CƠ THỂ NGƯỜI",
+     "mo_ta": "Đề hỏi đường đi của khí trong cơ thể người: thứ tự các cơ quan dẫn khí khi hít vào, thở ra, cơ quan đứng ngay trước hoặc sau một cơ quan cho trước."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K07000000101",
+   "loai": "trac_nghiem",
+   "de": "Trên hình, đường thẳng IN vuông góc với mặt gương tại điểm tới I gọi là gì? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050201-01-002-de.png)",
+   "lua_chon": [
+    "Pháp tuyến",
+    "Tia tới",
+    "Tia phản xạ",
+    "Tia sáng song song"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Đường IN vuông góc với mặt gương tại điểm tới I gọi là pháp tuyến; các góc tới, góc phản xạ đều đo từ pháp tuyến.\n\nVì sao các phương án khác sai:\n- B: Tia tới là SI, chiếu từ nguồn sáng S tới gương.\n- C: Tia phản xạ là IR, hắt ra từ gương.\n- D: IN không phải tia sáng; nó là đường vuông góc với gương dùng để đo góc.",
+   "de_goc": "Hạt Mầm · K07L050201-01-002"
+  },
+  {
+   "ma_cau": "K07000000102",
+   "loai": "trac_nghiem",
+   "de": "Góc i trên hình là góc tạo bởi hai đường nào? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050201-01-003-de.png)",
+   "lua_chon": [
+    "Tia tới SI và mặt gương",
+    "Tia tới SI và tia phản xạ IR",
+    "Tia tới SI và pháp tuyến IN",
+    "Tia phản xạ IR và pháp tuyến IN"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Góc tới i là góc SIN, tạo bởi tia tới SI và pháp tuyến IN tại điểm tới.\n\nVì sao các phương án khác sai:\n- A: Góc tới đo với pháp tuyến, không đo với mặt gương.\n- B: Góc SIR là góc giữa hai tia, lớn gấp đôi góc tới.\n- D: Góc giữa IR và IN là góc phản xạ i′.",
+   "de_goc": "Hạt Mầm · K07L050201-01-003"
+  },
+  {
+   "ma_cau": "K07000000103",
+   "loai": "trac_nghiem",
+   "de": "Trên hình, góc phản xạ là góc nào? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050201-01-004-de.png)",
+   "lua_chon": [
+    "Góc SIN",
+    "Góc NIR",
+    "Góc SIR",
+    "Góc giữa IR và mặt gương"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Góc phản xạ i′ là góc NIR, tạo bởi tia phản xạ IR và pháp tuyến IN.\n\nVì sao các phương án khác sai:\n- A: Góc SIN tạo bởi tia tới và pháp tuyến, đó là góc tới.\n- C: Góc SIR là góc giữa tia tới và tia phản xạ, không phải góc phản xạ.\n- D: Góc phản xạ đo với pháp tuyến, không đo với mặt gương.",
+   "de_goc": "Hạt Mầm · K07L050201-01-004"
+  },
+  {
+   "ma_cau": "K07000000104",
+   "loai": "trac_nghiem",
+   "de": "Trên hình, tia SI (đi từ nguồn sáng tới gương) gọi là tia gì? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050201-01-005-de.png)",
+   "lua_chon": [
+    "Tia phản xạ",
+    "Tia tới",
+    "Pháp tuyến",
+    "Mặt gương"
+   ],
+   "dap_an": "B",
+   "loi_giai": "SI là tia sáng chiếu từ nguồn tới điểm tới I trên gương, gọi là tia tới.\n\nVì sao các phương án khác sai:\n- A: Tia phản xạ là tia hắt ra từ gương sau khi phản xạ (IR), không phải tia đi tới gương.\n- C: Pháp tuyến là đường vuông góc với mặt gương tại điểm tới (IN), không phải tia sáng chiếu tới.\n- D: Mặt gương là bề mặt phản xạ ánh sáng, không phải một tia sáng.",
+   "de_goc": "Hạt Mầm · K07L050201-01-005"
+  },
+  {
+   "ma_cau": "K07000000105",
+   "loai": "trac_nghiem",
+   "de": "Theo định luật phản xạ ánh sáng, góc phản xạ như thế nào so với góc tới?",
+   "lua_chon": [
+    "Lớn hơn góc tới",
+    "Nhỏ hơn góc tới",
+    "Gấp đôi góc tới",
+    "Bằng góc tới"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Định luật phản xạ ánh sáng: góc phản xạ bằng góc tới (i′ = i).\n\nVì sao các phương án khác sai:\n- A: Định luật khẳng định góc phản xạ bằng góc tới, không lớn hơn.\n- B: Định luật khẳng định góc phản xạ bằng góc tới, không nhỏ hơn.\n- C: Gấp đôi góc tới là góc giữa tia tới và tia phản xạ, không phải góc phản xạ.",
+   "de_goc": "Hạt Mầm · K07L050201-02-001"
+  },
+  {
+   "ma_cau": "K07000000106",
+   "loai": "trac_nghiem",
+   "de": "Theo định luật phản xạ ánh sáng, tia phản xạ nằm trong mặt phẳng chứa những đường nào?",
+   "lua_chon": [
+    "Mặt gương và tia tới",
+    "Tia tới và pháp tuyến tại điểm tới",
+    "Pháp tuyến và mặt gương",
+    "Tia tới và một đường song song với gương"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Định luật: tia phản xạ nằm trong mặt phẳng chứa tia tới và pháp tuyến tại điểm tới (mặt phẳng tới).\n\nVì sao các phương án khác sai:\n- A: Mặt phẳng tới chứa tia tới và pháp tuyến, không chứa mặt gương.\n- C: Định luật nói tới mặt phẳng chứa tia tới và pháp tuyến.\n- D: Đường dùng để xác định mặt phẳng tới là pháp tuyến tại điểm tới.",
+   "de_goc": "Hạt Mầm · K07L050201-02-002"
+  },
+  {
+   "ma_cau": "K07000000107",
+   "loai": "trac_nghiem",
+   "de": "Theo định luật phản xạ ánh sáng, góc phản xạ quan hệ với góc tới như thế nào?",
+   "lua_chon": [
+    "Góc phản xạ gấp đôi góc tới",
+    "Góc phản xạ bằng nửa góc tới",
+    "Góc phản xạ cộng góc tới bằng 90°",
+    "Góc phản xạ luôn bằng góc tới"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Theo định luật phản xạ ánh sáng, góc phản xạ luôn bằng góc tới (i' = i).\n\nVì sao các phương án khác sai:\n- A: Sai: gấp đôi góc tới là góc tạo bởi tia tới và tia phản xạ, không phải góc phản xạ.\n- B: Sai: định luật phản xạ nêu góc phản xạ bằng góc tới, không phải bằng nửa.\n- C: Sai: góc phản xạ bằng góc tới; công thức cộng bằng 90° áp dụng cho góc hợp bởi tia sáng và mặt gương.",
+   "de_goc": "Hạt Mầm · K07L050201-02-003"
+  },
+  {
+   "ma_cau": "K07000000108",
+   "loai": "trac_nghiem",
+   "de": "Phát biểu nào sau đây đúng với định luật phản xạ ánh sáng?",
+   "lua_chon": [
+    "Tia phản xạ nằm trong mặt phẳng chứa tia tới và pháp tuyến tại điểm tới, góc phản xạ bằng góc tới",
+    "Tia phản xạ luôn vuông góc với tia tới",
+    "Tia phản xạ nằm trong mặt phẳng chứa tia tới và mặt gương, góc phản xạ gấp đôi góc tới",
+    "Tia phản xạ và tia tới luôn tạo thành một đường thẳng"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Định luật phản xạ ánh sáng gồm hai nội dung: tia phản xạ nằm trong mặt phẳng chứa tia tới và pháp tuyến tại điểm tới; góc phản xạ bằng góc tới.\n\nVì sao các phương án khác sai:\n- B: Góc giữa tia tới và tia phản xạ phụ thuộc góc tới, không phải luôn luôn là 90°.\n- C: Mặt phẳng chứa tia phản xạ là mặt phẳng tới (chứa tia tới và PHÁP TUYẾN), không phải mặt gương; góc phản xạ bằng góc tới, không gấp đôi.\n- D: Tia tới và tia phản xạ tạo với nhau một góc (trừ khi góc tới bằng 0°), không tạo thành một đ …",
+   "de_goc": "Hạt Mầm · K07L050201-02-005"
+  },
+  {
+   "ma_cau": "K07000000109",
+   "loai": "trac_nghiem",
+   "de": "Cách nào sau đây làm nam châm điện hút được nhiều ghim sắt hơn?",
+   "lua_chon": [
+    "Thay lõi sắt bằng lõi đồng",
+    "Tăng số vòng dây quấn quanh lõi",
+    "Dùng dây có vỏ bọc dày hơn",
+    "Bớt số pin trong mạch"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Tăng số vòng dây, tăng số pin hoặc dùng lõi sắt đều làm nam châm điện mạnh hơn, hút được nhiều ghim hơn.\n\nVì sao các phương án khác sai:\n- A: Đồng không phải vật liệu từ; thay lõi đồng làm nam châm điện yếu đi nhiều.\n- C: Vỏ bọc chỉ để cách điện, không làm nam châm điện mạnh hơn.\n- D: Bớt pin làm dòng điện nhỏ đi nên nam châm điện yếu hơn.",
+   "de_goc": "Hạt Mầm · K07L060202-01-001"
+  },
+  {
+   "ma_cau": "K07000000110",
+   "loai": "trac_nghiem",
+   "de": "Nam châm điện dùng 1 pin 1,5 V hút được 5 ghim sắt. Lắp thêm 1 pin nữa, giữ nguyên ống dây và lõi sắt. Số ghim hút được sẽ thế nào?",
+   "lua_chon": [
+    "Ít hơn 5 ghim",
+    "Vẫn đúng 5 ghim",
+    "Không hút được ghim nào",
+    "Nhiều hơn 5 ghim"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Tăng số pin làm dòng điện qua ống dây mạnh hơn nên nam châm điện mạnh hơn, hút được nhiều hơn 5 ghim.\n\nVì sao các phương án khác sai:\n- A: Thêm pin làm nam châm điện mạnh hơn, không yếu đi.\n- B: Số pin có ảnh hưởng: thêm pin thì nam châm điện mạnh hơn.\n- C: Vẫn có dòng điện chạy qua ống dây nên nam châm điện vẫn hút, còn mạnh hơn.",
+   "de_goc": "Hạt Mầm · K07L060202-01-002"
+  },
+  {
+   "ma_cau": "K07000000111",
+   "loai": "trac_nghiem",
+   "de": "Bốn nam châm điện có lõi sắt và dây giống nhau. P: 50 vòng, 1 pin; Q: 50 vòng, 2 pin; R: 100 vòng, 1 pin; S: 100 vòng, 2 pin. Nam châm nào hút được nhiều ghim nhất?",
+   "lua_chon": [
+    "Nam châm P",
+    "Nam châm Q",
+    "Nam châm R",
+    "Nam châm S"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Nhiều vòng dây hơn và nhiều pin hơn đều làm nam châm mạnh hơn; S vừa có nhiều vòng nhất vừa có nhiều pin nhất nên mạnh nhất.\n\nVì sao các phương án khác sai:\n- A: P có ít vòng dây và ít pin nhất nên yếu nhất.\n- B: Q có 2 pin nhưng chỉ 50 vòng, ít vòng hơn S.\n- C: R có 100 vòng nhưng chỉ 1 pin, ít pin hơn S.",
+   "de_goc": "Hạt Mầm · K07L060202-01-005"
+  },
+  {
+   "ma_cau": "K07000000112",
+   "loai": "trac_nghiem",
+   "de": "Lan có: ống dây 100 vòng hoặc 200 vòng; 1 pin hoặc 2 pin; lõi sắt hoặc lõi đồng cùng cỡ. Lan muốn lắp nam châm điện hút được nhiều ghim nhất. Lan nên chọn cách lắp nào?",
+   "lua_chon": [
+    "200 vòng, 2 pin, lõi đồng",
+    "200 vòng, 2 pin, lõi sắt",
+    "100 vòng, 2 pin, lõi sắt",
+    "200 vòng, 1 pin, lõi sắt"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Xét từng yếu tố: nhiều vòng dây hơn (200 vòng), nhiều pin hơn (2 pin) và lõi sắt đều làm mạnh hơn, nên chọn 200 vòng, 2 pin, lõi sắt.\n\nVì sao các phương án khác sai:\n- A: Lõi đồng KHÔNG làm nam châm mạnh hơn; phải dùng lõi sắt.\n- C: Chọn 100 vòng thì ít vòng hơn, nam châm yếu hơn.\n- D: Chọn 1 pin thì dòng điện nhỏ hơn, nam châm yếu hơn.",
+   "de_goc": "Hạt Mầm · K07L060202-01-006"
+  },
+  {
+   "ma_cau": "K07000000113",
+   "loai": "trac_nghiem",
+   "de": "Nam châm điện X (100 vòng, 1 pin, lõi sắt) hút được 6 ghim. Nam châm Y chỉ khác X đúng một điểm và hút được 2 ghim. Điểm khác đó có thể là gì?",
+   "lua_chon": [
+    "Y có 200 vòng dây",
+    "Y dùng 2 pin",
+    "Y chỉ có 50 vòng dây",
+    "Y dùng dây có vỏ bọc màu khác"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Y hút ít ghim hơn nên yếu hơn X; trong các điểm khác, chỉ giảm số vòng dây (50 vòng) làm nam châm yếu đi.\n\nVì sao các phương án khác sai:\n- A: Nhiều vòng dây hơn thì Y phải mạnh hơn X, hút nhiều ghim hơn.\n- B: Nhiều pin hơn thì Y phải mạnh hơn X, hút nhiều ghim hơn.\n- D: Màu vỏ bọc KHÔNG ảnh hưởng độ mạnh của nam châm điện.",
+   "de_goc": "Hạt Mầm · K07L060202-01-007"
+  },
+  {
+   "ma_cau": "K07000000114",
+   "loai": "trac_nghiem",
+   "de": "Ba nam châm điện có lõi sắt và dây giống nhau. X: 80 vòng, 1 pin; Y: 160 vòng, 1 pin; Z: 80 vòng, 2 pin. Nam châm nào yếu nhất?",
+   "lua_chon": [
+    "Nam châm Y",
+    "Nam châm Z",
+    "Cả ba mạnh như nhau",
+    "Nam châm X"
+   ],
+   "dap_an": "D",
+   "loi_giai": "X có ít vòng dây nhất (80 vòng) và ít pin nhất (1 pin) so với Y (160 vòng) và Z (2 pin), nên X yếu nhất.\n\nVì sao các phương án khác sai:\n- A: Y có nhiều vòng dây hơn X (160 so với 80) nên mạnh hơn X, không phải yếu nhất.\n- B: Z có nhiều pin hơn X (2 so với 1) nên mạnh hơn X, không phải yếu nhất.\n- C: Ba nam châm có số vòng dây và số pin khác nhau nên độ mạnh khác nhau, không thể như nhau.",
+   "de_goc": "Hạt Mầm · K07L060202-01-009"
+  },
+  {
+   "ma_cau": "K07000000115",
+   "loai": "trac_nghiem",
+   "de": "Nam châm điện A (120 vòng, 1 pin, lõi sắt) hút được 7 ghim. Nam châm điện B chỉ khác A đúng một điểm và hút được nhiều ghim hơn (10 ghim). Điểm khác đó có thể là gì?",
+   "lua_chon": [
+    "B dùng 2 pin",
+    "B chỉ có 60 vòng dây",
+    "B dùng lõi nhôm thay lõi sắt",
+    "B dùng dây có màu vỏ bọc khác"
+   ],
+   "dap_an": "A",
+   "loi_giai": "B hút nhiều ghim hơn nên mạnh hơn A; trong các điểm khác, chỉ tăng số pin (2 pin) làm nam châm điện mạnh hơn.\n\nVì sao các phương án khác sai:\n- B: Giảm số vòng dây (60 vòng) sẽ làm nam châm YẾU đi, không hút được nhiều ghim hơn.\n- C: Lõi nhôm không phải vật liệu từ, sẽ làm nam châm gần như không hút được ghim, không mạnh hơn.\n- D: Màu vỏ bọc dây không ảnh hưởng đến độ mạnh của nam châm điện.",
+   "de_goc": "Hạt Mầm · K07L060202-01-010"
+  },
+  {
+   "ma_cau": "K07000000116",
+   "loai": "trac_nghiem",
+   "de": "Thí nghiệm (cùng lõi sắt, 1 pin): Lần 1: 50 vòng → 4 ghim; Lần 2: 100 vòng → 7 ghim; Lần 3: 150 vòng → 11 ghim. Yếu tố nào được thay đổi?",
+   "lua_chon": [
+    "Số vòng dây",
+    "Số pin",
+    "Loại lõi",
+    "Số ghim hút được"
+   ],
+   "dap_an": "A",
+   "loi_giai": "So sánh các lần đo: chỉ số vòng dây đổi từ 50 lên 150 vòng; số pin và lõi giữ nguyên; số ghim là kết quả.\n\nVì sao các phương án khác sai:\n- B: Cả ba lần đều dùng 1 pin, số pin được giữ nguyên.\n- C: Cả ba lần đều dùng cùng lõi sắt.\n- D: Số ghim là kết quả đo được, không phải yếu tố người làm thay đổi.",
+   "de_goc": "Hạt Mầm · K07L060202-03-001"
+  },
+  {
+   "ma_cau": "K07000000117",
+   "loai": "trac_nghiem",
+   "de": "Thí nghiệm (cùng lõi sắt): Lần 1: 100 vòng, 1 pin → 5 ghim; Lần 2: 100 vòng, 2 pin → 9 ghim. Ngoài lõi sắt, yếu tố nào được giữ nguyên?",
+   "lua_chon": [
+    "Số pin",
+    "Độ mạnh của nam châm điện",
+    "Số vòng dây",
+    "Số ghim hút được"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Hai lần đều 100 vòng nên số vòng dây được giữ nguyên; chỉ số pin thay đổi, số ghim là kết quả.\n\nVì sao các phương án khác sai:\n- A: Số pin thay đổi từ 1 lên 2 pin, đây là yếu tố được thay đổi.\n- B: Độ mạnh thay đổi, thể hiện qua số ghim từ 5 lên 9.\n- D: Số ghim là kết quả đo, thay đổi từ 5 lên 9 ghim.",
+   "de_goc": "Hạt Mầm · K07L060202-03-002"
+  },
+  {
+   "ma_cau": "K07000000118",
+   "loai": "trac_nghiem",
+   "de": "Thí nghiệm (cùng 100 vòng dây, cùng lõi sắt): Lần 1: 1 pin → 5 ghim; Lần 2: 2 pin → 9 ghim; Lần 3: 3 pin → 13 ghim. Yếu tố nào được thay đổi giữa các lần đo?",
+   "lua_chon": [
+    "Số pin",
+    "Số vòng dây",
+    "Loại lõi",
+    "Số ghim hút được"
+   ],
+   "dap_an": "A",
+   "loi_giai": "So sánh các lần đo: chỉ số pin đổi từ 1 lên 3; số vòng dây và loại lõi giữ nguyên; số ghim là kết quả đo được.\n\nVì sao các phương án khác sai:\n- B: Số vòng dây giữ nguyên (100 vòng) ở cả ba lần đo, không phải yếu tố thay đổi.\n- C: Loại lõi (lõi sắt) giữ nguyên ở cả ba lần đo.\n- D: Số ghim hút được là kết quả đo, không phải yếu tố người làm thí nghiệm chủ động thay đổi.",
+   "de_goc": "Hạt Mầm · K07L060202-03-007"
+  },
+  {
+   "ma_cau": "K07000000119",
+   "loai": "trac_nghiem",
+   "de": "Thí nghiệm (cùng 1 pin): Lần 1: 80 vòng, lõi sắt → 6 ghim; Lần 2: 80 vòng, lõi nhôm → 0 ghim. Ngoài số pin, yếu tố nào được giữ nguyên giữa hai lần đo?",
+   "lua_chon": [
+    "Loại lõi",
+    "Số vòng dây",
+    "Số ghim hút được",
+    "Độ mạnh của nam châm điện"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Hai lần đều dùng 80 vòng dây nên số vòng dây được giữ nguyên; loại lõi mới là yếu tố thay đổi (sắt và nhôm), số ghim là kết quả.\n\nVì sao các phương án khác sai:\n- A: Loại lõi chính là yếu tố THAY ĐỔI (từ sắt sang nhôm), không phải yếu tố giữ nguyên.\n- C: Số ghim hút được là kết quả đo được, thay đổi theo loại lõi, không phải yếu tố giữ nguyên chủ động.\n- D: Độ mạnh của nam châm điện là điều cần tìm hiểu (kết quả), không phải yếu tố được giữ nguyên khi làm thí nghiệm.",
+   "de_goc": "Hạt Mầm · K07L060202-03-008"
+  },
+  {
+   "ma_cau": "K07000000120",
+   "loai": "trac_nghiem",
+   "de": "Để kiểm tra RIÊNG ảnh hưởng của số vòng dây đến độ mạnh nam châm điện, hai lần đo cần thỏa mãn điều gì?",
+   "lua_chon": [
+    "Khác số vòng dây, khác luôn cả số pin và loại lõi",
+    "Giống nhau ở mọi yếu tố, kể cả số vòng dây",
+    "Khác số vòng dây, còn số pin và loại lõi phải giống nhau",
+    "Chỉ cần khác số pin, số vòng dây không quan trọng"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Muốn biết ảnh hưởng riêng của một yếu tố (số vòng dây), hai lần đo chỉ được khác nhau đúng yếu tố đó, còn các yếu tố khác (số pin, loại lõi) phải giữ nguyên để so sánh công bằng.\n\nVì sao các phương án khác sai:\n- A: Nếu khác luôn nhiều yếu tố cùng lúc, không thể biết chắc sự thay đổi kết quả là do yếu tố nào gây ra.\n- B: Nếu số vòng dây cũng giống nhau thì không có gì để so sánh ảnh hưởng của số vòng dây.\n- D: Câu hỏi là về ảnh hưởng của số vòng dây, nên số vòng dây mới là yếu tố cần thay đổi, k …",
+   "de_goc": "Hạt Mầm · K07L060202-03-009"
+  },
+  {
+   "ma_cau": "K07000000121",
+   "loai": "trac_nghiem",
+   "de": "Kết quả thí nghiệm với cùng lõi sắt: Lần 1: 60 vòng, 2 pin → 5 ghim; Lần 2: 120 vòng, 2 pin → 9 ghim; Lần 3: 180 vòng, 2 pin → 14 ghim. Kết luận nào rút ra được từ thí nghiệm này?",
+   "lua_chon": [
+    "Càng nhiều pin, nam châm điện càng mạnh",
+    "Càng nhiều vòng dây, nam châm điện càng mạnh",
+    "Số vòng dây KHÔNG ảnh hưởng độ mạnh",
+    "Càng nhiều vòng dây, nam châm điện càng yếu"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Chỉ số vòng dây thay đổi (60 → 180 vòng) và số ghim tăng (5 → 14), nên kết luận: số vòng dây càng nhiều, nam châm điện càng mạnh.\n\nVì sao các phương án khác sai:\n- A: Cả ba lần đều 2 pin nên thí nghiệm này KHÔNG cho kết luận về số pin.\n- C: Số ghim tăng từ 5 lên 14 khi tăng vòng dây, nên có ảnh hưởng.\n- D: Tăng vòng dây thì số ghim tăng, tức là nam châm mạnh hơn.",
+   "de_goc": "Hạt Mầm · K07L060202-03-003"
+  },
+  {
+   "ma_cau": "K07000000122",
+   "loai": "trac_nghiem",
+   "de": "Thí nghiệm với cùng ống dây 100 vòng, 1 pin, ba lõi cùng cỡ: Lần 1: lõi sắt → 6 ghim; Lần 2: lõi đồng → 0 ghim; Lần 3: lõi nhôm → 0 ghim. Kết luận nào rút ra được?",
+   "lua_chon": [
+    "Lõi đồng làm nam châm điện mạnh nhất",
+    "Lõi nhôm làm nam châm mạnh hơn lõi đồng",
+    "Loại lõi KHÔNG ảnh hưởng độ mạnh của nam châm",
+    "Lõi sắt làm nam châm mạnh hơn lõi đồng, lõi nhôm"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Chỉ loại lõi thay đổi: lõi sắt hút 6 ghim, lõi đồng và lõi nhôm đều không hút được ghim nào; vậy lõi sắt làm nam châm điện mạnh hơn hẳn.\n\nVì sao các phương án khác sai:\n- A: Lõi đồng hút 0 ghim, ít hơn lõi sắt 6 ghim.\n- B: Lõi nhôm và lõi đồng đều hút 0 ghim, không lõi nào mạnh hơn.\n- C: Lõi sắt hút 6 ghim, lõi đồng, nhôm hút 0 ghim, nên loại lõi có ảnh hưởng.",
+   "de_goc": "Hạt Mầm · K07L060202-03-004"
+  },
+  {
+   "ma_cau": "K07000000123",
+   "loai": "trac_nghiem",
+   "de": "Kết quả thí nghiệm với cùng lõi sắt, cùng 100 vòng dây: Lần 1: 1 pin → 6 ghim; Lần 2: 2 pin → 11 ghim; Lần 3: 3 pin → 15 ghim. Kết luận nào rút ra được từ thí nghiệm này?",
+   "lua_chon": [
+    "Càng nhiều vòng dây, nam châm điện càng mạnh",
+    "Số pin KHÔNG ảnh hưởng độ mạnh",
+    "Càng nhiều pin, nam châm điện càng yếu",
+    "Càng nhiều pin, nam châm điện càng mạnh"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Chỉ số pin thay đổi (1 → 3 pin) và số ghim tăng dần (6 → 15), nên kết luận: số pin càng nhiều, nam châm điện càng mạnh.\n\nVì sao các phương án khác sai:\n- A: Số vòng dây giữ nguyên (100 vòng) trong cả ba lần đo, không phải yếu tố thay đổi trong thí nghiệm này.\n- B: Số ghim tăng rõ rệt theo số pin, chứng tỏ số pin CÓ ảnh hưởng đến độ mạnh.\n- C: Số ghim tăng khi tăng số pin, tức nam châm mạnh hơn, không phải yếu hơn.",
+   "de_goc": "Hạt Mầm · K07L060202-03-010"
+  },
+  {
+   "ma_cau": "K07000000124",
+   "loai": "trac_nghiem",
+   "de": "Thí nghiệm với cùng ống dây 100 vòng, 2 pin, ba lõi cùng cỡ: Lần 1: lõi sắt → 9 ghim; Lần 2: lõi đồng → 0 ghim; Lần 3: không có lõi (chỉ ống dây rỗng) → 3 ghim. Kết luận nào rút ra được?",
+   "lua_chon": [
+    "Lõi đồng làm nam châm điện mạnh nhất",
+    "Ống dây không lõi mạnh hơn khi có lõi sắt",
+    "Lõi sắt làm nam châm điện mạnh hơn hẳn so với không lõi hoặc lõi đồng",
+    "Loại lõi không ảnh hưởng đến độ mạnh của nam châm điện"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Lõi sắt cho kết quả mạnh nhất (9 ghim), trong khi không có lõi chỉ được 3 ghim và lõi đồng gần như không hút được ghim nào (0 ghim); vậy lõi sắt làm nam châm điện mạnh hơn hẳn.\n\nVì sao các phương án khác sai:\n- A: Lõi đồng cho kết quả 0 ghim, là yếu nhất chứ không phải mạnh nhất.\n- B: Ống dây không lõi chỉ hút được 3 ghim, yếu hơn nhiều so với 9 ghim khi có lõi sắt.\n- D: Kết quả khác nhau rõ rệt giữa ba loại lõi (9, 0, 3 ghim) cho thấy loại lõi ảnh hưởng rất lớn đến độ mạnh.",
+   "de_goc": "Hạt Mầm · K07L060202-03-011"
+  },
+  {
+   "ma_cau": "K07000000125",
+   "loai": "trac_nghiem",
+   "de": "Một nam châm điện đang hoạt động bình thường. Bốn đề xuất để TĂNG độ mạnh của nó (xem các phương án). Đề xuất nào KHÔNG hợp lí?",
+   "lua_chon": [
+    "Tăng số vòng dây quấn quanh lõi",
+    "Tăng cường độ dòng điện qua ống dây",
+    "Thay lõi sắt bằng lõi gỗ cùng cỡ",
+    "Quấn dây sít nhau, nhiều lớp quanh lõi"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Gỗ không phải vật liệu từ, không bị nhiễm từ khi có dòng điện chạy qua ống dây, nên thay lõi sắt bằng lõi gỗ sẽ làm nam châm điện gần như KHÔNG còn hút được ghim sắt, chứ không phải mạnh hơn.\n\nVì sao các phương án khác sai:\n- A: Tăng số vòng dây là cách chuẩn để tăng độ mạnh nam châm điện, đây là đề xuất hợp lí.\n- B: Tăng cường độ dòng điện (thêm pin) làm nam châm điện mạnh hơn, đây là đề xuất hợp lí.\n- D: Quấn dây sít nhau nhiều lớp giúp tăng hiệu quả từ hoá lõi, đây là đề xuất hợp lí.",
+   "de_goc": "Hạt Mầm · K07L060203-01-001"
+  },
+  {
+   "ma_cau": "K07000000126",
+   "loai": "trac_nghiem",
+   "de": "Một chuông điện KHÔNG kêu khi nhấn nút. Bốn đề xuất kiểm tra, sửa chữa (xem các phương án). Đề xuất nào KHÔNG khắc phục được nguyên nhân MẠCH BỊ HỞ?",
+   "lua_chon": [
+    "Quấn thêm vòng dây quanh lõi sắt của chuông",
+    "Kiểm tra và nối lại dây bị đứt trong mạch",
+    "Kiểm tra tiếp điểm ở nút nhấn có bị bẩn không",
+    "Kiểm tra pin còn điện không, thay pin mới"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Nếu mạch đang bị HỞ (đứt dây, tiếp điểm bẩn, hết pin) thì dù quấn thêm bao nhiêu vòng dây, mạch vẫn không kín nên không có dòng điện chạy qua; quấn thêm vòng dây không khắc phục được mạch hở.\n\nVì sao các phương án khác sai:\n- B: Nối lại dây đứt trực tiếp khắc phục nguyên nhân mạch hở, đây là đề xuất hợp lí.\n- C: Tiếp điểm bẩn có thể làm mạch không kín; lau sạch trực tiếp khắc phục nguyên nhân mạch hở, đây là đề xuất hợp lí.\n- D: Hết pin làm mạch mất nguồn điện; thay pin mới trực tiếp khắc phục n …",
+   "de_goc": "Hạt Mầm · K07L060203-01-002"
+  },
+  {
+   "ma_cau": "K07000000127",
+   "loai": "trac_nghiem",
+   "de": "Cần cẩu điện ở bãi phế liệu KHÔNG thả vật ra dù đã ngắt điện. Bốn hướng kiểm tra (xem các phương án). Hướng nào KHÔNG liên quan đến việc thả vật ra?",
+   "lua_chon": [
+    "Kiểm tra công tắc đã thực sự ngắt hẳn dòng điện chưa",
+    "Kiểm tra và tăng thêm số vòng dây quấn quanh lõi",
+    "Kiểm tra xem vật sắt có bị kẹt cơ học vào móc cẩu không",
+    "Kiểm tra dây dẫn có bị nối tắt qua vỏ máy không"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Việc vật không được thả ra liên quan đến mạch có thực sự hết dòng điện hay có bị kẹt cơ học hay không; tăng số vòng dây chỉ làm nam châm mạnh hơn LÚC CÓ dòng điện, không liên quan đến việc thả vật ra khi ngắt điện.\n\nVì sao các phương án khác sai:\n- A: Công tắc chưa ngắt hẳn nghĩa là mạch vẫn còn dòng điện, đây là hướng kiểm tra hợp lí cho vấn đề đang gặp.\n- C: Vật bị kẹt cơ học vào móc cẩu cũng khiến vật không rơi ra được dù đã hết từ tính, đây là hướng kiểm tra hợp lí.\n- D: Nối tắt qua vỏ máy c …",
+   "de_goc": "Hạt Mầm · K07L060203-01-003"
+  },
+  {
+   "ma_cau": "K07000000128",
+   "loai": "trac_nghiem",
+   "de": "Rơ-le điện từ trong xe ô tô KHÔNG đóng mạch đèn tín hiệu dù đã bật công tắc. Bốn hướng kiểm tra (xem các phương án). Hướng nào KHÔNG khắc phục được nguyên nhân MẤT NGUỒN ĐIỆN?",
+   "lua_chon": [
+    "Kiểm tra và tăng số vòng dây quấn trong nam châm điện của rơ-le",
+    "Kiểm tra cầu chì, dây nối có bị đứt không",
+    "Kiểm tra tiếp điểm rơ-le có bị đóng cặn không",
+    "Kiểm tra ắc quy có đủ điện áp không"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Nếu nguyên nhân là MẤT NGUỒN ĐIỆN (cầu chì đứt, tiếp điểm bẩn, ắc quy yếu) thì mạch không kín hoặc không đủ dòng; tăng số vòng dây không tạo thêm nguồn điện nên không khắc phục được nguyên nhân này.\n\nVì sao các phương án khác sai:\n- B: Cầu chì hoặc dây nối đứt trực tiếp làm mất nguồn, kiểm tra và nối lại là hướng hợp lí.\n- C: Tiếp điểm đóng cặn có thể làm mạch không kín, đây là hướng kiểm tra hợp lí.\n- D: Ắc quy yếu làm mạch không đủ dòng điện, kiểm tra điện áp là hướng hợp lí.",
+   "de_goc": "Hạt Mầm · K07L060203-01-004"
+  },
+  {
+   "ma_cau": "K07000000129",
+   "loai": "trac_nghiem",
+   "de": "Khoá cửa điện từ KHÔNG giữ chặt cửa nữa dù vẫn có điện. Bốn hướng kiểm tra (xem các phương án). Hướng nào KHÔNG hợp lí?",
+   "lua_chon": [
+    "Kiểm tra dây nguồn cấp cho khoá có bị lỏng không",
+    "Kiểm tra bộ nguồn có đủ điện áp cấp cho khoá không",
+    "Kiểm tra tấm sắt gắn trên cánh cửa có tiếp xúc đúng vị trí không",
+    "Kiểm tra và giảm bớt số vòng dây quấn trong khoá"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Giảm số vòng dây làm nam châm điện YẾU đi, không giúp khoá giữ cửa chắc hơn; đây không phải hướng khắc phục hợp lí cho vấn đề khoá giữ cửa yếu.\n\nVì sao các phương án khác sai:\n- A: Dây nguồn lỏng có thể làm dòng điện chập chờn, đây là hướng kiểm tra hợp lí.\n- B: Điện áp không đủ làm nam châm điện yếu, đây là hướng kiểm tra hợp lí.\n- C: Tấm sắt lệch vị trí có thể không được hút chắc, đây là hướng kiểm tra hợp lí.",
+   "de_goc": "Hạt Mầm · K07L060203-01-005"
+  },
+  {
+   "ma_cau": "K07000000130",
+   "loai": "trac_nghiem",
+   "de": "Một nam châm điện đang hoạt động bình thường. Bốn đề xuất để TĂNG độ mạnh của nó (xem các phương án). Đề xuất nào KHÔNG hợp lí?",
+   "lua_chon": [
+    "Tăng số pin trong mạch",
+    "Thay lõi sắt bằng lõi nhựa cùng cỡ",
+    "Quấn dây thêm nhiều vòng quanh lõi",
+    "Thay pin đã yếu bằng pin mới"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Nhựa không phải vật liệu từ, không bị nhiễm từ khi có dòng điện chạy qua ống dây; thay lõi sắt bằng lõi nhựa sẽ làm nam châm điện gần như KHÔNG còn hút được ghim sắt, chứ không phải mạnh hơn.\n\nVì sao các phương án khác sai:\n- A: Tăng số pin làm dòng điện mạnh hơn, giúp nam châm điện mạnh hơn, là đề xuất hợp lí.\n- C: Tăng số vòng dây làm nam châm điện mạnh hơn, là đề xuất hợp lí.\n- D: Pin mới cho dòng điện mạnh hơn nên nam châm điện mạnh hơn — hợp lí.",
+   "de_goc": "Hạt Mầm · K07L060203-01-006"
+  },
+  {
+   "ma_cau": "K07000000131",
+   "loai": "trac_nghiem",
+   "de": "Một khóa cửa điện từ KHÔNG giữ chặt cửa dù đã cắm điện đầy đủ. Bốn hướng kiểm tra (xem các phương án). Hướng nào KHÔNG liên quan đến nguyên nhân MẠCH BỊ HỞ?",
+   "lua_chon": [
+    "Kiểm tra dây nguồn có bị đứt ngầm bên trong không",
+    "Kiểm tra các mối nối trong mạch có bị lỏng không",
+    "Kiểm tra và tăng thêm số vòng dây quấn trong khóa",
+    "Kiểm tra cầu chì bảo vệ mạch có bị đứt không"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Nếu mạch đang bị HỞ (dây đứt ngầm, mối nối lỏng, cầu chì đứt) thì dù có tăng thêm bao nhiêu vòng dây, mạch vẫn không kín nên không có dòng điện chạy qua; tăng vòng dây không khắc phục được nguyên nhân mạch hở.\n\nVì sao các phương án khác sai:\n- A: Dây nguồn đứt ngầm chính là một nguyên nhân gây mạch hở, cần kiểm tra.\n- B: Mối nối lỏng cũng có thể gây mạch hở, cần kiểm tra.\n- D: Cầu chì đứt làm mạch hở, cần kiểm tra.",
+   "de_goc": "Hạt Mầm · K07L060203-01-007"
+  },
+  {
+   "ma_cau": "K07000000132",
+   "loai": "trac_nghiem",
+   "de": "Cần cẩu điện nhấc một khối sắt nhưng bị RƠI khối sắt giữa chừng dù công tắc vẫn đóng (chưa ngắt điện). Bốn hướng kiểm tra (xem các phương án). Hướng nào KHÔNG liên quan đến nguyên nhân khối sắt bị rơi giữa chừng?",
+   "lua_chon": [
+    "Kiểm tra pin/nguồn điện có bị yếu, sụt áp giữa chừng không",
+    "Kiểm tra móc treo và dây cáp cơ khí có bị đứt, lỏng không",
+    "Kiểm tra khối sắt có nặng vượt quá khả năng của nam châm điện không",
+    "Kiểm tra và đổi chiều quấn dây của ống dây"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Đổi chiều quấn dây chỉ làm đổi cực từ (Bắc thành Nam hoặc ngược lại), không ảnh hưởng đến việc nam châm điện có đủ sức hút giữ vật hay không; đây không phải hướng kiểm tra liên quan đến việc khối sắt bị rơi.\n\nVì sao các phương án khác sai:\n- A: Nguồn điện yếu hoặc sụt áp giữa chừng làm nam châm điện yếu đi, có thể khiến vật bị rơi; cần kiểm tra.\n- B: Móc treo, dây cáp cơ khí lỏng hoặc đứt sẽ khiến khối sắt rơi dù nam châm vẫn hút tốt; cần kiểm tra.\n- C: Nếu khối sắt quá nặng so với khả năng hút  …",
+   "de_goc": "Hạt Mầm · K07L060203-01-008"
+  },
+  {
+   "ma_cau": "K07000000133",
+   "loai": "trac_nghiem",
+   "de": "Nhà máy tái chế cần lắp một nam châm điện hút được NHIỀU sắt nhất từ đống rác. Bốn cấu hình lõi giống cỡ (xem các phương án). Chọn cấu hình phù hợp nhất.",
+   "lua_chon": [
+    "100 vòng, 2 pin, lõi đồng",
+    "100 vòng, 1 pin, lõi sắt",
+    "200 vòng, 2 pin, lõi sắt",
+    "200 vòng, 1 pin, lõi sắt"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Lõi phải là SẮT (vật liệu từ); lõi đồng không phải vật liệu từ nên hầu như không hút được sắt. Trong các cấu hình dùng lõi sắt, cấu hình nhiều vòng dây và nhiều pin nhất (200 vòng, 2 pin) sẽ hút được nhiều sắt nhất.\n\nVì sao các phương án khác sai:\n- A: Đồng không phải vật liệu từ nên lõi đồng hầu như không tạo được nam châm điện mạnh, dù nhiều vòng dây và pin.\n- B: Đúng loại lõi sắt nhưng ít vòng dây và ít pin hơn nên hút được ít sắt hơn.\n- D: Đúng loại lõi sắt, nhiều vòng dây nhưng ít pin hơn n …",
+   "de_goc": "Hạt Mầm · K07L060203-02-001"
+  },
+  {
+   "ma_cau": "K07000000134",
+   "loai": "trac_nghiem",
+   "de": "Nhà máy tái chế cần lắp một nam châm điện hút được NHIỀU sắt nhất từ đống rác. Bốn cấu hình lõi giống cỡ (xem các phương án). Chọn cấu hình phù hợp nhất.",
+   "lua_chon": [
+    "50 vòng, 1 pin, lõi sắt",
+    "150 vòng, 2 pin, lõi nhôm",
+    "150 vòng, 1 pin, lõi sắt",
+    "150 vòng, 2 pin, lõi sắt"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Lõi phải là SẮT; lõi nhôm không phải vật liệu từ nên hầu như không hút được sắt. Trong các cấu hình dùng lõi sắt, cấu hình nhiều vòng dây và nhiều pin nhất (150 vòng, 2 pin) sẽ hút được nhiều sắt nhất.\n\nVì sao các phương án khác sai:\n- A: Đúng loại lõi sắt nhưng ít vòng dây và ít pin hơn nên hút được ít sắt hơn.\n- B: Nhôm không phải vật liệu từ nên lõi nhôm hầu như không tạo được nam châm điện mạnh, dù nhiều vòng dây và pin.\n- C: Đúng loại lõi sắt, nhiều vòng dây nhưng ít pin hơn nên hút được ít …",
+   "de_goc": "Hạt Mầm · K07L060203-02-002"
+  },
+  {
+   "ma_cau": "K07000000135",
+   "loai": "trac_nghiem",
+   "de": "Nhà máy tái chế cần lắp một nam châm điện hút được NHIỀU sắt nhất từ đống rác. Bốn cấu hình lõi giống cỡ (xem các phương án). Chọn cấu hình phù hợp nhất.",
+   "lua_chon": [
+    "80 vòng, 2 pin, lõi sắt",
+    "80 vòng, 2 pin, lõi nhựa",
+    "40 vòng, 2 pin, lõi sắt",
+    "80 vòng, 1 pin, lõi sắt"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Lõi phải là SẮT; lõi nhựa không phải vật liệu từ, hầu như không tạo được nam châm điện. Trong các cấu hình dùng lõi sắt, cấu hình nhiều vòng dây và nhiều pin nhất (80 vòng, 2 pin) sẽ hút được nhiều sắt nhất.\n\nVì sao các phương án khác sai:\n- B: Nhựa không phải vật liệu từ nên lõi nhựa hầu như không tạo được nam châm điện, dù cùng vòng dây và pin.\n- C: Đúng loại lõi sắt nhưng ít vòng dây hơn nên hút được ít sắt hơn.\n- D: Đúng loại lõi sắt nhưng ít pin hơn nên hút được ít sắt hơn.",
+   "de_goc": "Hạt Mầm · K07L060203-02-003"
+  },
+  {
+   "ma_cau": "K07000000136",
+   "loai": "trac_nghiem",
+   "de": "Nhà máy tái chế cần lắp một nam châm điện hút được NHIỀU sắt nhất từ đống rác. Bốn cấu hình lõi giống cỡ (xem các phương án). Chọn cấu hình phù hợp nhất.",
+   "lua_chon": [
+    "120 vòng, 1 pin, lõi sắt",
+    "120 vòng, 2 pin, lõi sắt",
+    "60 vòng, 2 pin, lõi sắt",
+    "120 vòng, 2 pin, lõi đồng"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Lõi phải là SẮT; lõi đồng không phải vật liệu từ nên hầu như không hút được sắt. Trong các cấu hình dùng lõi sắt, cấu hình nhiều vòng dây và nhiều pin nhất (120 vòng, 2 pin) sẽ hút được nhiều sắt nhất.\n\nVì sao các phương án khác sai:\n- A: Đúng loại lõi sắt nhưng ít pin hơn nên hút được ít sắt hơn.\n- C: Đúng loại lõi sắt nhưng ít vòng dây hơn nên hút được ít sắt hơn.\n- D: Đồng không phải vật liệu từ nên lõi đồng hầu như không tạo được nam châm điện mạnh, dù nhiều vòng dây và pin.",
+   "de_goc": "Hạt Mầm · K07L060203-02-004"
+  },
+  {
+   "ma_cau": "K07000000137",
+   "loai": "trac_nghiem",
+   "de": "Nhà máy tái chế cần lắp một nam châm điện hút được NHIỀU sắt nhất từ đống rác. Bốn cấu hình lõi giống cỡ (xem các phương án). Chọn cấu hình phù hợp nhất.",
+   "lua_chon": [
+    "90 vòng, 1 pin, lõi nhôm",
+    "45 vòng, 2 pin, lõi sắt",
+    "90 vòng, 2 pin, lõi sắt",
+    "90 vòng, 2 pin, lõi nhựa"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Lõi phải là SẮT; lõi nhôm và lõi nhựa đều không phải vật liệu từ nên hầu như không hút được sắt. Trong các cấu hình dùng lõi sắt, cấu hình nhiều vòng dây và nhiều pin nhất (90 vòng, 2 pin) sẽ hút được nhiều sắt nhất.\n\nVì sao các phương án khác sai:\n- A: Nhôm không phải vật liệu từ nên lõi nhôm hầu như không tạo được nam châm điện mạnh; số pin cũng ít hơn.\n- B: Đúng loại lõi sắt nhưng ít vòng dây hơn nên hút được ít sắt hơn.\n- D: Nhựa không phải vật liệu từ nên lõi nhựa hầu như không tạo được nam …",
+   "de_goc": "Hạt Mầm · K07L060203-02-005"
+  },
+  {
+   "ma_cau": "K07000000138",
+   "loai": "trac_nghiem",
+   "de": "Nhà máy tái chế cần lắp một nam châm điện hút được NHIỀU sắt nhất từ đống rác. Bốn cấu hình lõi giống cỡ (xem các phương án). Chọn cấu hình phù hợp nhất.",
+   "lua_chon": [
+    "140 vòng, 2 pin, lõi sắt",
+    "70 vòng, 2 pin, lõi sắt",
+    "140 vòng, 1 pin, lõi sắt",
+    "140 vòng, 2 pin, lõi nhôm"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Lõi phải là SẮT; lõi nhôm không phải vật liệu từ nên hầu như không hút được sắt. Trong các cấu hình dùng lõi sắt, cấu hình nhiều vòng dây và nhiều pin nhất (140 vòng, 2 pin) sẽ hút được nhiều sắt nhất.\n\nVì sao các phương án khác sai:\n- B: 70 vòng ít hơn 140 vòng, nên yếu hơn dù cùng số pin và cùng lõi sắt.\n- C: 1 pin ít hơn 2 pin, nên yếu hơn dù cùng số vòng và cùng lõi sắt.\n- D: Lõi nhôm không phải vật liệu từ, hầu như không tạo được nam châm điện dù có nhiều vòng dây và nhiều pin.",
+   "de_goc": "Hạt Mầm · K07L060203-02-006"
+  },
+  {
+   "ma_cau": "K07000000139",
+   "loai": "trac_nghiem",
+   "de": "Nhà máy tái chế cần lắp một nam châm điện hút được NHIỀU sắt nhất từ đống rác. Bốn cấu hình lõi giống cỡ (xem các phương án). Chọn cấu hình phù hợp nhất.",
+   "lua_chon": [
+    "60 vòng, 1 pin, lõi sắt",
+    "60 vòng, 3 pin, lõi sắt",
+    "30 vòng, 3 pin, lõi sắt",
+    "60 vòng, 3 pin, lõi nhựa"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Lõi phải là SẮT; lõi nhựa không phải vật liệu từ nên hầu như không hút được sắt. Trong các cấu hình dùng lõi sắt, cấu hình nhiều vòng dây và nhiều pin nhất (60 vòng, 3 pin) sẽ hút được nhiều sắt nhất.\n\nVì sao các phương án khác sai:\n- A: 1 pin ít hơn 3 pin, nên yếu hơn dù cùng số vòng và cùng lõi sắt.\n- C: 30 vòng ít hơn 60 vòng, nên yếu hơn dù cùng số pin và cùng lõi sắt.\n- D: Lõi nhựa không phải vật liệu từ, hầu như không tạo được nam châm điện dù có nhiều vòng dây và nhiều pin.",
+   "de_goc": "Hạt Mầm · K07L060203-02-007"
+  },
+  {
+   "ma_cau": "K07000000140",
+   "loai": "trac_nghiem",
+   "de": "Trong quang hợp, năng lượng được chuyển hoá theo chiều nào?",
+   "lua_chon": [
+    "Hoá năng → quang năng",
+    "Nhiệt năng → hoá năng",
+    "Quang năng → hoá năng",
+    "Hoá năng → nhiệt năng"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Diệp lục hấp thụ năng lượng ánh sáng (quang năng) rồi chuyển thành năng lượng hoá học (hoá năng) tích luỹ trong chất hữu cơ.\n\nVì sao các phương án khác sai:\n- A: Đảo chiều: lá hấp thụ ánh sáng rồi chuyển thành hoá năng.\n- B: Nguồn năng lượng cho quang hợp là ánh sáng, không phải nhiệt.\n- D: Đây là chiều chuyển hoá khi cơ thể phân giải chất hữu cơ, không phải quang hợp.",
+   "de_goc": "Hạt Mầm · K07S070102-03-001"
+  },
+  {
+   "ma_cau": "K07000000141",
+   "loai": "trac_nghiem",
+   "de": "Đồ thị cho biết cường độ quang hợp của một cây khi tăng cường độ ánh sáng: ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07S070103-02-001-de.png) Nhận xét nào đúng?",
+   "lua_chon": [
+    "Ánh sáng càng mạnh, quang hợp càng tăng mãi",
+    "Quang hợp tăng theo ánh sáng đến giới hạn rồi đi ngang",
+    "Quang hợp đạt lớn nhất khi ánh sáng bằng 2",
+    "Quang hợp giảm khi ánh sáng tăng từ 0 đến 4"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Từ 0 đến 6, đường đồ thị đi lên (quang hợp tăng theo ánh sáng); từ 6 đến 10, đường nằm ngang ở mức 9 (không tăng thêm).\n\nVì sao các phương án khác sai:\n- A: Từ 6 trở đi đường đồ thị nằm ngang, quang hợp không tăng nữa.\n- C: Ở ánh sáng 2, quang hợp mới là 4, chưa phải lớn nhất (9).\n- D: Từ 0 đến 4, quang hợp tăng từ 0 lên 7, không giảm.",
+   "de_goc": "Hạt Mầm · K07S070103-02-001"
+  },
+  {
+   "ma_cau": "K07000000142",
+   "loai": "trac_nghiem",
+   "de": "Đồ thị cho biết cường độ quang hợp của một loài cây ở các nhiệt độ khác nhau: ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07S070103-02-002-de.png) Nhận xét nào đúng?",
+   "lua_chon": [
+    "Nhiệt độ càng cao, quang hợp càng mạnh",
+    "Quang hợp mạnh nhất ở 50 °C",
+    "Quang hợp mạnh nhất ở 10 °C",
+    "Quang hợp mạnh nhất ở 30 °C, trên đó giảm dần"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Đỉnh đồ thị ở 30 °C (cường độ 9); từ 30 °C lên 50 °C đường đi xuống, quang hợp giảm dần đến 0.\n\nVì sao các phương án khác sai:\n- A: Trên 30 °C, nhiệt độ tăng thì quang hợp giảm.\n- B: Ở 50 °C, cường độ quang hợp bằng 0, cây gần như ngừng quang hợp.\n- C: Ở 10 °C, quang hợp chỉ là 2, thấp nhất trong khoảng 10–40 °C.",
+   "de_goc": "Hạt Mầm · K07S070103-02-002"
+  },
+  {
+   "ma_cau": "K07000000143",
+   "loai": "trac_nghiem",
+   "de": "Đồ thị cường độ quang hợp của hai loài cây A và B theo cường độ ánh sáng: ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07S070103-02-003-de.png) (Cây ưa bóng cần ít ánh sáng hơn cây ưa sáng.) Cây nào là cây ưa bóng?",
+   "lua_chon": [
+    "Cây A, vì quang hợp tăng mạnh khi ánh sáng mạnh",
+    "Cây A, vì quang hợp mạnh nhất khi ánh sáng yếu",
+    "Cây B, vì quang hợp đạt tối đa ở ánh sáng yếu",
+    "Cây B, vì quang hợp luôn tăng theo ánh sáng"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Cây ưa bóng cần ít ánh sáng: đường B đạt tối đa ngay ở ánh sáng yếu (khoảng 4) rồi đi ngang; đường A tiếp tục tăng đến ánh sáng mạnh là cây ưa sáng.\n\nVì sao các phương án khác sai:\n- A: Quang hợp tăng mạnh khi ánh sáng mạnh là đặc điểm của cây ưa sáng.\n- B: Ở ánh sáng yếu (2), cây A quang hợp kém hơn cây B (2 so với 3).\n- D: Đường B đi ngang từ ánh sáng 4, không tăng theo ánh sáng.",
+   "de_goc": "Hạt Mầm · K07S070103-02-003"
+  },
+  {
+   "ma_cau": "K07000000144",
+   "loai": "trac_nghiem",
+   "de": "Trong thí nghiệm bịt một phần lá bằng băng giấy đen rồi thử iodine, vì sao phần lá không bị bịt có màu xanh tím?",
+   "lua_chon": [
+    "Vì phần lá đó còn diệp lục chưa bị tẩy",
+    "Vì iodine làm mọi phần lá có màu xanh tím",
+    "Vì phần lá đó hút iodine nhiều hơn",
+    "Vì được chiếu sáng, phần lá đó quang hợp tạo tinh bột"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Phần lá không bị bịt nhận ánh sáng nên quang hợp tạo tinh bột; tinh bột gặp iodine chuyển màu xanh tím.\n\nVì sao các phương án khác sai:\n- A: Diệp lục đã được tẩy bằng cồn; màu xanh tím là do tinh bột gặp iodine.\n- B: Iodine chỉ làm tinh bột chuyển xanh tím; phần lá bị bịt không có màu này.\n- C: Màu xanh tím do tinh bột gặp iodine, không do lượng iodine hút vào.",
+   "de_goc": "Hạt Mầm · K07S070104-01-001"
+  },
+  {
+   "ma_cau": "K07000000145",
+   "loai": "trac_nghiem",
+   "de": "Một nhóm học sinh bỏ qua bước để cây trong tối 2 ngày. Khi thử iodine, cả phần lá bị bịt giấy đen cũng có màu xanh tím. Giải thích nào đúng?",
+   "lua_chon": [
+    "Lá còn tinh bột được tạo ra từ trước thí nghiệm",
+    "Phần lá bị bịt vẫn quang hợp trong tối",
+    "Cồn đã tạo ra tinh bột trong lá",
+    "Iodine làm mọi phần lá có màu xanh tím"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Để cây trong tối 2 ngày nhằm cho lá dùng hết tinh bột có sẵn; bỏ bước này thì tinh bột cũ còn lại ở cả phần lá bị bịt nên cũng hoá xanh tím.\n\nVì sao các phương án khác sai:\n- B: Không có ánh sáng thì lá không quang hợp được.\n- C: Cồn chỉ dùng để tẩy diệp lục, không tạo ra tinh bột.\n- D: Iodine chỉ làm tinh bột có màu xanh tím; màu này chứng tỏ lá còn tinh bột.",
+   "de_goc": "Hạt Mầm · K07S070104-01-003"
+  },
+  {
+   "ma_cau": "K07000000146",
+   "loai": "trac_nghiem",
+   "de": "Đặt cành rong đuôi chó trong ống nghiệm đầy nước ngoài sáng, thu được khí làm que đóm còn tàn đỏ bùng cháy. Khí đó là",
+   "lua_chon": [
+    "carbon dioxide",
+    "oxygen",
+    "hơi nước",
+    "nitrogen"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Oxygen duy trì sự cháy nên làm que đóm còn tàn đỏ bùng cháy; đây là khí rong thải ra khi quang hợp.\n\nVì sao các phương án khác sai:\n- A: Carbon dioxide không duy trì sự cháy, que đóm sẽ tắt.\n- C: Hơi nước không làm que đóm bùng cháy.\n- D: Nitrogen không duy trì sự cháy và không phải sản phẩm quang hợp.",
+   "de_goc": "Hạt Mầm · K07S070104-02-001"
+  },
+  {
+   "ma_cau": "K07000000147",
+   "loai": "trac_nghiem",
+   "de": "Hai ống nghiệm chứa cành rong như nhau: ống A đặt trong tối, ống B đặt ngoài sáng. Sau 6 giờ chỉ ống B có bọt khí. Đặt thêm ống A nhằm mục đích gì?",
+   "lua_chon": [
+    "Để thu được nhiều oxygen hơn ống B",
+    "Để rong trong ống A quang hợp mạnh hơn",
+    "Để so sánh, chứng tỏ cần ánh sáng mới thải oxygen",
+    "Để kiểm tra nước trong ống có đầy không"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Hai ống chỉ khác nhau về ánh sáng; so sánh hai ống cho thấy rong chỉ thải oxygen khi có ánh sáng.\n\nVì sao các phương án khác sai:\n- A: Ống A trong tối không có bọt khí, không thu được oxygen.\n- B: Trong tối rong không quang hợp được.\n- D: Ống A dùng để so sánh ảnh hưởng của ánh sáng, không phải kiểm tra nước.",
+   "de_goc": "Hạt Mầm · K07S070104-02-003"
+  },
+  {
+   "ma_cau": "K07000000148",
+   "loai": "trac_nghiem",
+   "de": "Đồ thị dưới đây cho cường độ quang hợp của một cây theo cường độ ánh sáng, khi nồng độ CO₂ và nhiệt độ được giữ không đổi. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07S070105-01-001-de.png) Từ mức ánh sáng 8 trở đi, cường độ quang hợp gần như không tăng thêm. Nguyên nhân hợp lí nhất là",
+   "lua_chon": [
+    "Yếu tố khác như CO₂ hoặc nhiệt độ đang giới hạn",
+    "Cây đã tích đủ tinh bột nên ngừng quang hợp thêm",
+    "Ánh sáng mạnh làm diệp lục bị phá huỷ dần",
+    "Cây chuyển sang hô hấp thay cho quang hợp"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Nhiều yếu tố (ánh sáng, CO₂, nhiệt độ, nước) cùng ảnh hưởng đến quang hợp. Khi ánh sáng đã đủ mạnh, cường độ quang hợp chỉ còn phụ thuộc yếu tố đang thiếu hụt trong số các yếu tố còn lại; tăng thêm ánh sáng không giúp ích vì ánh sáng không còn là yếu tố hạn chế.\n\nVì sao các phương án khác sai:\n- B: Cây vẫn quang hợp ở mức cao, không ngừng; đồ thị đi ngang chứ không giảm.\n- C: Nếu diệp lục bị phá huỷ, quang hợp phải giảm chứ không giữ ổn định.\n- D: Có ánh sáng cây vẫn quang hợp; hô hấp diễn ra so …",
+   "de_goc": "Hạt Mầm · K07S070105-01-001"
+  },
+  {
+   "ma_cau": "K07000000149",
+   "loai": "trac_nghiem",
+   "de": "Đồ thị dưới đây cho cường độ quang hợp của một loại rau trong nhà kính theo nồng độ CO₂, khi ánh sáng và nhiệt độ giữ không đổi. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07S070105-01-002-de.png) Để tăng năng suất, người trồng nên",
+   "lua_chon": [
+    "Bổ sung CO₂ càng nhiều càng tốt, không cần giới hạn",
+    "Giảm CO₂ xuống dưới 0,03% để tránh dư thừa",
+    "Tăng nhiệt độ thật cao thay vì bổ sung CO₂",
+    "Bổ sung CO₂ tới khoảng nồng độ quang hợp đạt cực đại"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Đồ thị cho thấy cường độ quang hợp tăng theo nồng độ CO₂ rồi đạt mức cao nhất và giữ ổn định từ khoảng 0,2–0,3%; bổ sung CO₂ tới khoảng nồng độ đó giúp tăng quang hợp, tăng thêm nữa không có tác dụng.\n\nVì sao các phương án khác sai:\n- A: Từ khoảng 0,2–0,3% đồ thị đi ngang, thêm CO₂ không tăng quang hợp.\n- B: Giảm CO₂ làm quang hợp giảm theo đồ thị.\n- C: Nhiệt độ quá cao làm quang hợp giảm; đồ thị cho thấy CO₂ đang là yếu tố thiếu.",
+   "de_goc": "Hạt Mầm · K07S070105-01-002"
+  },
+  {
+   "ma_cau": "K07000000150",
+   "loai": "trac_nghiem",
+   "de": "Đồ thị dưới đây cho cường độ quang hợp của một loài cây theo nhiệt độ, khi ánh sáng và CO₂ giữ không đổi. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07S070105-01-003-de.png) Nhận xét nào sau đây phù hợp với đồ thị?",
+   "lua_chon": [
+    "Nhiệt độ càng cao thì quang hợp càng mạnh",
+    "Cao nhất ở khoảng 30 °C, xa mức đó đều giảm",
+    "Nhiệt độ không ảnh hưởng đến quang hợp",
+    "Từ 30 °C đến 50 °C quang hợp tăng dần"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Đọc đồ thị: giá trị cường độ quang hợp cao nhất tại 30°C (điểm đỉnh của đường cong); hai bên điểm này quang hợp đều thấp hơn, chứng tỏ nhiệt độ có một khoảng phù hợp nhất cho quang hợp.\n\nVì sao các phương án khác sai:\n- A: Sau 30 °C đồ thị đi xuống.\n- C: Đồ thị thay đổi rõ theo nhiệt độ.\n- D: Từ 30 °C đến 50 °C đồ thị giảm từ 100 xuống 5.",
+   "de_goc": "Hạt Mầm · K07S070105-01-003"
+  },
+  {
+   "ma_cau": "K07000000151",
+   "loai": "trac_nghiem",
+   "de": "Đồ thị so sánh cường độ quang hợp theo ánh sáng ở nồng độ CO₂ thấp (đường A) và CO₂ cao (đường B), nhiệt độ giữ không đổi. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07S070105-01-006-de.png) Ở mức ánh sáng mạnh, đường B luôn cao hơn đường A. Điều này cho thấy",
+   "lua_chon": [
+    "Cây ở đường B được chiếu sáng mạnh hơn cây ở đường A",
+    "Nhiệt độ ở thí nghiệm đường B cao hơn đường A",
+    "CO₂ dồi dào giúp quang hợp mạnh hơn ở cùng mức ánh sáng",
+    "Ánh sáng mạnh tự làm tăng thêm nồng độ CO₂ trong chuông"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Hai đường dùng chung trục ánh sáng và nhiệt độ không đổi, chỉ khác nồng độ CO₂; chênh lệch chiều cao ở ánh sáng mạnh cho thấy CO₂ cao giúp quang hợp mạnh hơn.\n\nVì sao các phương án khác sai:\n- A: Trục hoành (ánh sáng) áp dụng chung cho cả hai đường, không phải hai mức ánh sáng khác nhau.\n- B: Đề đã nêu rõ nhiệt độ được giữ không đổi ở cả hai đường.\n- D: Ánh sáng không tự tạo ra CO₂; nồng độ CO₂ do người làm thí nghiệm đặt sẵn khác nhau ở hai chuông.",
+   "de_goc": "Hạt Mầm · K07S070105-01-006"
+  },
+  {
+   "ma_cau": "K07000000152",
+   "loai": "trac_nghiem",
+   "de": "Trước khi làm thí nghiệm chứng minh quang hợp tạo tinh bột, người ta để chậu cây vào chỗ tối khoảng 2 ngày. Mục đích của bước này là",
+   "lua_chon": [
+    "Để cây quen dần với điều kiện thiếu ánh sáng",
+    "Để khí khổng đóng lại, lá bớt mất nước",
+    "Để lá tiêu hết tinh bột có sẵn từ trước",
+    "Để diệp lục bị phân huỷ, dễ tẩy màu hơn"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Nếu không loại bỏ tinh bột có sẵn, không thể kết luận tinh bột phát hiện được ở phần lá chiếu sáng là do quang hợp mới sinh ra hay đã có từ trước; đây là bước tạo đối chứng chuẩn cho cả lá.\n\nVì sao các phương án khác sai:\n- A: Mục đích là loại tinh bột có sẵn, không phải tập cho cây quen tối.\n- B: Việc này không liên quan tới kiểm tra tinh bột mới tạo ra.\n- D: Diệp lục được tẩy bằng cồn nóng ở bước sau.",
+   "de_goc": "Hạt Mầm · K07S070105-02-001"
+  },
+  {
+   "ma_cau": "K07000000153",
+   "loai": "trac_nghiem",
+   "de": "Trong thí nghiệm chứng minh quang hợp tạo tinh bột, một phần lá được bịt kín bằng băng giấy đen ở cả hai mặt trước khi đưa cây ra ánh sáng. Vai trò của phần lá bị bịt kín là",
+   "lua_chon": [
+    "Bảo vệ phần lá khỏi tổn thương khi thao tác",
+    "Giữ ẩm cho phần lá để kết quả chính xác",
+    "Đánh dấu vị trí để dễ tìm lá khi ngắt",
+    "Làm đối chứng không được chiếu sáng để so sánh"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Băng giấy đen ngăn ánh sáng chiếu tới phần lá bị bịt, khiến phần này không quang hợp (không tạo tinh bột), trở thành đối chứng để so sánh với phần lá được chiếu sáng bình thường.\n\nVì sao các phương án khác sai:\n- A: Băng giấy đen dùng để che ánh sáng, không phải để bảo vệ.\n- B: Băng giấy đen dùng để che ánh sáng, không phải để giữ ẩm.\n- C: Băng giấy đen che kín hai mặt lá để ngăn ánh sáng, tạo đối chứng.",
+   "de_goc": "Hạt Mầm · K07S070105-02-002"
+  },
+  {
+   "ma_cau": "K07000000154",
+   "loai": "trac_nghiem",
+   "de": "Sau khi tẩy màu bằng cồn và nhỏ dung dịch iodine vào lá thí nghiệm (một phần bị che bằng giấy đen, phần còn lại được chiếu sáng), kết quả quan sát đúng là",
+   "lua_chon": [
+    "Cả hai phần lá đều chuyển màu xanh tím",
+    "Phần chiếu sáng chuyển xanh tím, phần bị che thì không",
+    "Phần bị che chuyển xanh tím, phần chiếu sáng thì không",
+    "Cả hai phần đều không đổi màu vì mất diệp lục"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Dung dịch iodine là thuốc thử tinh bột, chuyển xanh tím khi gặp tinh bột. Chỉ phần lá được chiếu sáng mới quang hợp tạo tinh bột nên chỉ phần đó đổi màu xanh tím; phần bị che không có tinh bột nên giữ màu vàng nhạt của iodine.\n\nVì sao các phương án khác sai:\n- A: Phần bị che không quang hợp nên không có tinh bột mới.\n- C: Nhầm ngược: chỉ phần được chiếu sáng mới tạo tinh bột.\n- D: Iodine nhận biết tinh bột, không cần diệp lục.",
+   "de_goc": "Hạt Mầm · K07S070105-02-003"
+  },
+  {
+   "ma_cau": "K07000000155",
+   "loai": "trac_nghiem",
+   "de": "Trong thí nghiệm dùng cành rong đuôi chó để chứng minh quang hợp thải khí oxygen, bọt khí thoát ra được thu vào đáy ống nghiệm úp ngược. Que đóm còn tàn đỏ được đưa vào miệng ống nghiệm nhằm mục đích",
+   "lua_chon": [
+    "Kiểm tra khí thu được có phải oxygen không",
+    "Đo nhiệt độ của khí trong ống nghiệm",
+    "Đốt hết khí để làm sạch ống nghiệm",
+    "Kiểm tra khí thu được có phải CO₂ không"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Oxygen là khí duy trì sự cháy nên làm que đóm còn tàn đỏ bùng cháy trở lại; đây là cách nhận biết khí thu được trong thí nghiệm chính là oxygen do quang hợp thải ra.\n\nVì sao các phương án khác sai:\n- B: Que đóm không dùng để đo nhiệt độ.\n- C: Que đóm tàn đỏ dùng để nhận biết oxygen.\n- D: Que đóm tàn đỏ bùng cháy là dấu hiệu của oxygen, không phải CO₂.",
+   "de_goc": "Hạt Mầm · K07S070105-02-004"
+  },
+  {
+   "ma_cau": "K07000000156",
+   "loai": "trac_nghiem",
+   "de": "Để chứng minh CO₂ cần thiết cho quang hợp, người ta đặt 2 chậu cây giống nhau vào 2 chuông kín: chuông 1 có thêm cốc dung dịch KOH hấp thụ CO₂, chuông 2 có thêm cốc nước. Sau khi chiếu sáng vài giờ, thử tinh bột ở lá cả hai chậu. Vai trò của chuông 2 (cốc nước) là",
+   "lua_chon": [
+    "Cung cấp thêm nước để quang hợp diễn ra mạnh hơn",
+    "Hấp thụ bớt CO₂ giống chuông 1 nhưng với tốc độ chậm hơn",
+    "Giữ ẩm không khí để lá không bị mất nước",
+    "Làm đối chứng, vẫn có CO₂ nên cây quang hợp bình thường"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Chuông 2 không có chất hấp thụ CO₂ nên là đối chứng, giúp so sánh với chuông 1 để khẳng định CO₂ là nguyên nhân gây khác biệt kết quả.\n\nVì sao các phương án khác sai:\n- A: Nước không phải yếu tố giới hạn quang hợp trong thí nghiệm này; nước đã có sẵn trong đất và không khí.\n- B: Nước không có tính hấp thụ CO₂ như dung dịch KOH.\n- C: Mục đích cốc nước là làm đối chứng về CO₂, không phải để giữ ẩm.",
+   "de_goc": "Hạt Mầm · K07S070105-02-006"
+  },
+  {
+   "ma_cau": "K07000000157",
+   "loai": "trac_nghiem",
+   "de": "Đặt 2 chậu cây giống nhau vào 2 chuông kín: chuông 1 có cốc dung dịch KOH (hấp thụ CO₂), chuông 2 có cốc nước; chiếu sáng vài giờ rồi thử tinh bột ở lá bằng iodine. Lá ở chuông 1 không chuyển màu xanh tím, lá ở chuông 2 chuyển màu xanh tím. Kết luận rút ra là",
+   "lua_chon": [
+    "CO₂ là nguyên liệu cần thiết cho quang hợp tạo tinh bột",
+    "Ánh sáng là nguyên liệu cần thiết cho quang hợp tạo tinh bột",
+    "Dung dịch KOH là nguyên liệu của quá trình quang hợp",
+    "Nước là yếu tố quyết định kết quả của thí nghiệm này"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Yếu tố khác nhau duy nhất giữa hai chuông là có hay không có CO₂ (do KOH hấp thụ); lá thiếu CO₂ không tạo được tinh bột nên CO₂ là nguyên liệu cần thiết.\n\nVì sao các phương án khác sai:\n- B: Ánh sáng giống nhau ở cả hai chuông, không phải biến số của thí nghiệm này.\n- C: KOH chỉ có vai trò hấp thụ CO₂, không tham gia làm nguyên liệu quang hợp.\n- D: Cả hai chuông đều có nước như nhau; nước không phải biến số khác nhau giữa hai chuông.",
+   "de_goc": "Hạt Mầm · K07S070105-02-007"
+  },
+  {
+   "ma_cau": "K07000000158",
+   "loai": "trac_nghiem",
+   "de": "Đặt cành rong đuôi chó vào cốc nước, để ngoài nắng, úp ống nghiệm đầy nước để hứng khí thoát ra. Đưa que đóm còn tàn đỏ vào miệng ống nghiệm vừa lấy ra, que đóm bùng cháy. Khí thu được chủ yếu là gì?",
+   "lua_chon": [
+    "carbon dioxide, do cây hô hấp thải ra",
+    "nitrogen có sẵn trong nước thoát ra",
+    "hơi nước do cây thoát hơi nước tạo thành",
+    "oxygen, do cây quang hợp thải ra"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Que đóm tàn đỏ bùng cháy khi gặp khí giàu oxygen; cây thuỷ sinh quang hợp ngoài sáng thải ra oxygen, khí này tích tụ trong ống nghiệm.\n\nVì sao các phương án khác sai:\n- A: Carbon dioxide không làm que đóm bùng cháy; đây là khí cây hô hấp thải ra, không phải khí thu được khi quang hợp ngoài sáng.\n- B: Nitrogen không làm que đóm bùng cháy và không phải khí cây thải ra khi quang hợp.\n- C: Hơi nước không làm que đóm bùng cháy; que đóm chỉ bùng cháy mạnh trong khí giàu oxygen.",
+   "de_goc": "Hạt Mầm · K07S070303-01-001"
+  },
+  {
+   "ma_cau": "K07000000159",
+   "loai": "trac_nghiem",
+   "de": "Cũng cành rong đuôi chó và cách bố trí như thí nghiệm trên, nhưng lần này để bình trong bóng tối một ngày. Đưa que đóm còn tàn đỏ vào khí thu được, que đóm KHÔNG bùng cháy. Nguyên nhân nào giải thích đúng hiện tượng này?",
+   "lua_chon": [
+    "Trong tối, cây quang hợp mạnh hơn, thải carbon dioxide",
+    "Trong tối, cây không quang hợp, chỉ hô hấp",
+    "Trong tối, cây ngừng mọi hoạt động sống",
+    "Que đóm đã cũ, không còn khả năng bùng cháy"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Quang hợp cần ánh sáng; trong bóng tối cây chỉ hô hấp, thải carbon dioxide và tiêu thụ oxygen nên khí thu được nghèo oxygen, que đóm không bùng cháy.\n\nVì sao các phương án khác sai:\n- A: Quang hợp cần ánh sáng để diễn ra; trong tối cây không quang hợp nên không thể mạnh hơn.\n- C: Cây vẫn hô hấp liên tục kể cả trong tối, không ngừng mọi hoạt động sống.\n- D: Que đóm còn tàn đỏ vẫn có khả năng bùng cháy khi gặp đủ oxygen; vấn đề là khí thu được thiếu oxygen.",
+   "de_goc": "Hạt Mầm · K07S070303-01-003"
+  },
+  {
+   "ma_cau": "K07000000160",
+   "loai": "trac_nghiem",
+   "de": "Đặt 2 cành rong đuôi chó giống nhau vào 2 cốc nước, úp ống nghiệm hứng khí: cốc 1 để ngoài nắng, cốc 2 để trong bóng tối, cùng thời gian. Lượng khí thu được ở cốc 1 nhiều hơn hẳn cốc 2. Kết quả này chứng tỏ",
+   "lua_chon": [
+    "Bóng tối làm cây ngừng hô hấp tế bào",
+    "Ánh sáng không ảnh hưởng đến lượng khí cây thải ra",
+    "Cốc 2 bị hỏng nên không thu được khí",
+    "Quang hợp thải khí nhiều hơn hô hấp khi đủ sáng"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Cốc 1 có ánh sáng nên cây vừa quang hợp vừa hô hấp, thải ra nhiều khí oxygen dư; cốc 2 không có ánh sáng, cây chỉ hô hấp tế bào nên lượng khí thải ra ít hơn nhiều.\n\nVì sao các phương án khác sai:\n- A: Cây vẫn hô hấp tế bào trong bóng tối, chỉ là không quang hợp.\n- B: Kết quả thí nghiệm cho thấy rõ ánh sáng ảnh hưởng lớn đến lượng khí thải ra.\n- C: Không có căn cứ để kết luận cốc 2 bị hỏng; đây là kết quả hợp lí theo thí nghiệm.",
+   "de_goc": "Hạt Mầm · K07S070303-01-005"
+  },
+  {
+   "ma_cau": "K07000000161",
+   "loai": "trac_nghiem",
+   "de": "Đồ thị cho cường độ quang hợp (A) và hô hấp (B) của một cây theo nhiệt độ (đơn vị tương đối). ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07S070405-02-002-de.png) Ở nhiệt độ nào dưới đây, lượng chất hữu cơ cây tích lũy (quang hợp trừ hô hấp) lớn nhất?",
+   "lua_chon": [
+    "30 °C",
+    "40 °C",
+    "20 °C",
+    "10 °C"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Chất hữu cơ tích lũy = quang hợp − hô hấp: 10 °C: 2 − 1 = 1; 20 °C: 8 − 2 = 6; 30 °C: 10 − 5 = 5; 40 °C: 5 − 7 < 0. Lớn nhất ở 20 °C, dù quang hợp mạnh nhất ở 30 °C.\n\nVì sao các phương án khác sai:\n- A: Ở 30 °C quang hợp mạnh nhất (10) nhưng hô hấp cũng lớn (5), hiệu chỉ là 5.\n- B: Ở 40 °C hô hấp (7) lớn hơn quang hợp (5), cây tiêu hao chất hữu cơ.\n- D: Ở 10 °C hiệu chỉ là 2 − 1 = 1.",
+   "de_goc": "Hạt Mầm · K07S070405-02-002"
+  },
+  {
+   "ma_cau": "K07000000162",
+   "loai": "trac_nghiem",
+   "de": "Đồ thị cường độ quang hợp (A) và hô hấp (B, không đổi) theo cường độ ánh sáng. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07S070405-02-005-de.png) Ở mức nào cây tích lũy chất hữu cơ nhiều nhất?",
+   "lua_chon": [
+    "0",
+    "4",
+    "8",
+    "12"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Chất hữu cơ tích lũy = quang hợp − hô hấp. Tại các mức: 0→−2, 4→6, 8→8, 12→5. Lớn nhất ở mức 8.\n\nVì sao các phương án khác sai:\n- A: Ở mức 0, quang hợp bằng 0 nên cây chỉ tiêu hao chất hữu cơ do hô hấp.\n- B: Ở mức 4, hiệu quang hợp trừ hô hấp là 6, nhỏ hơn mức 8.\n- D: Ở mức 12, quang hợp giảm còn 7 (ánh sáng quá mạnh), hiệu chỉ còn 5, nhỏ hơn mức 8.",
+   "de_goc": "Hạt Mầm · K07S070405-02-005"
+  }
+ ]
+}

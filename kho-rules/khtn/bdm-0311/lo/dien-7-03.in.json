@@ -1,0 +1,1011 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00322",
+   "khoi": "7",
+   "chu_de": "Tốc độ",
+   "chuyen_de": "Tốc độ chuyển động",
+   "nhom": "Nhận biết ý nghĩa vật lý và đơn vị của tốc độ",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "I. LÝ THUYẾT DẠNG BÀI\nTốc độ là đại lượng đặc trưng cho mức độ nhanh hay chậm của chuyển động, được xác định bằng quãng đường vật đi được trong một đơn vị thời gian.\nCông thức và kí hiệu:\n●\tv = s : t, trong đó v là tốc độ, s là quãng đường đi được, t là thời gian đi hết quãng đường đó.\n●\tTừ công thức trên suy ra s = v × t và t = s : v.\nĐơn vị đo:\n●\tĐơn vị của tốc độ trong hệ SI là mét trên giây, kí hiệu m/s; quãng đường đo bằng mét, thời gian đo bằng giây.\n●\tTrong đời sống còn dùng ki-lô-mét trên giờ (km/h) cho phương tiện giao thông và xăng-ti-mét trên giây (cm/s) cho chuyển động chậm.\n●\tCách đổi: đổi từ m/s sang km/h thì nhân với 3,6; đổi từ km/h sang m/s thì chia cho 3,6. Ghi nhớ 1 km = 1000 m và 1 h = 3600 s.\nCách hiểu con số tốc độ: nói tốc độ của một vật là 6 m/s nghĩa là mỗi giây vật đi được 6 mét; nói tốc độ của ô tô là 50 km/h nghĩa là mỗi giờ ô tô đi được 50 ki-lô-mét.\nSo sánh chuyển động: muốn so sánh hai vật chuyển động nhanh hay chậm, phải đưa tốc độ của chúng về cùng một đơn vị rồi mới so sánh; vật có tốc độ lớn hơn thì chuyển động nhanh hơn.\nDụng cụ đo: đồng hồ bấm giây và thước dùng để đo thời gian và quãng đường; trong phòng thực hành dùng đồng hồ đo thời gian hiện số kết hợp cổng quang điện; trên đường giao thông dùng thiết bị bắn tốc độ; trên xe có tốc kế chỉ tốc độ của xe.\nII. VÍ DỤ MINH HỌA\nVí dụ 1. Một biển báo ghi tốc độ tối đa cho phép là 60 km/h. Hãy cho biết con số này có ý nghĩa gì và đổi giá trị đó ra đơn vị m/s.\nHướng dẫn: Con số 60 km/h cho biết xe được phép đi với tốc độ lớn nhất là 60 ki-lô-mét trong mỗi giờ. Đổi đơn vị bằng cách chia cho 3,6: 60 : 3,6 ≈ 16,7 (m/s).\nVí dụ 2. Vật A chuyển động với tốc độ 5 m/s, vật B chuyển động với tốc độ 25,2 km/h. Vật nào chuyển động nhanh hơn?\nHướng dẫn: Đưa về cùng đơn vị: tốc độ của A là 5 × 3,6 = 18 (km/h), nhỏ hơn 25,2 km/h. Vậy vật B chuyển động nhanh hơn.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00323",
+   "khoi": "7",
+   "chu_de": "Tốc độ",
+   "chuyen_de": "Tốc độ chuyển động",
+   "nhom": "Bài toán tính tốc độ, quãng đường, thời gian cơ bản",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "I. LÝ THUYẾT DẠNG BÀI\nBa công thức dùng cho dạng này:\n●\tTính tốc độ: v = s : t.\n●\tTính quãng đường: s = v × t.\n●\tTính thời gian: t = s : v.\nQuy tắc về đơn vị: các đại lượng phải cùng một hệ đơn vị trước khi thay vào công thức.\n●\tNếu kết quả cần theo m/s thì đổi quãng đường ra mét và thời gian ra giây.\n●\tNếu kết quả cần theo km/h thì đổi quãng đường ra ki-lô-mét và thời gian ra giờ.\n●\tCác quan hệ hay dùng: 1 km = 1 000 m; 1 h = 60 phút = 3 600 s; 30 phút = 0,5 h; 15 phút = 0,25 h; 45 phút = 0,75 h; 20 phút = 1/3 h.\nTrình tự làm bài: xác định đại lượng cần tìm, đổi các dữ kiện về cùng hệ đơn vị, thay vào công thức tương ứng rồi ghi kết quả kèm đơn vị.\nII. VÍ DỤ MINH HỌA\nVí dụ 1. Một ô tô đi được quãng đường 120 km trong 2 giờ. Tính tốc độ của ô tô.\nHướng dẫn: Quãng đường và thời gian đã cùng hệ đơn vị km và h. Áp dụng v = s : t = 120 : 2 = 60 (km/h).\nVí dụ 2. Một người đi xe đạp với tốc độ 4 m/s trong 15 phút. Tính quãng đường người đó đi được.\nHướng dẫn: Đổi thời gian ra giây: 15 phút = 15 × 60 = 900 (s). Áp dụng s = v × t = 4 × 900 = 3 600 (m) = 3,6 km.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00327",
+   "khoi": "7",
+   "chu_de": "Tốc độ",
+   "chuyen_de": "Đồ thị quãng đường - thời gian",
+   "nhom": "Đọc đồ thị Quãng đường - Thời gian",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC1. Kiến thức cần nhớ\nĐồ thị quãng đường – thời gian\nĐồ thị quãng đường – thời gian biểu diễn sự thay đổi của quãng đường $s$ theo thời gian $t$. Trục nằm ngang biểu diễn thời gian $t$, trục thẳng đứng biểu diễn quãng đường $s$. Mỗi điểm trên đồ thị cho biết quãng đường vật đi được tại một thời điểm.\nDạng đoạn đồ thị\nĐoạn thẳng đi lên: quãng đường tăng theo thời gian, vật chuyển động. Đoạn thẳng nằm ngang: quãng đường không đổi theo thời gian, vật đứng yên. Đoạn thẳng đi lên càng dốc thì trong cùng một khoảng thời gian vật đi được quãng đường càng dài, tốc độ càng lớn.\nĐọc số liệu trên đồ thị\nĐọc quãng đường tại một thời điểm: từ điểm chia thời gian trên trục ngang đóng thẳng lên đến đồ thị, rồi đóng ngang sang trục đứng. Đọc thời điểm ứng với một quãng đường: từ điểm chia quãng đường trên trục đứng đóng ngang đến đồ thị, rồi đóng thẳng xuống trục ngang.\n\n##TC2. Công thức\nTốc độ trên một đoạn đồ thị:\n$$v = \\dfrac{\\Delta s}{\\Delta t}$$\nTrong đó $\\Delta s$ là quãng đường đi được và $\\Delta t$ là thời gian đi tương ứng, tính từ hai điểm đọc được trên đoạn đó:\n$$\\Delta s = s_2 - s_1$$\n$$\\Delta t = t_2 - t_1$$\n\n##PP3. Các bước làm bài\nBước 1. Xác định đại lượng và đơn vị trên mỗi trục, giá trị mỗi vạch chia.\nBước 2. Dóng từ giá trị đề cho sang trục còn lại, đọc giá trị cần tìm.\nBước 3. Với câu hỏi về khoảng thời gian hoặc quãng đường, đọc giá trị ở hai điểm rồi lấy hiệu.\nBước 4. Với câu hỏi về tốc độ, chọn hai điểm trên cùng một đoạn thẳng rồi tính $v = \\dfrac{\\Delta s}{\\Delta t}$.\n\n##CY4. Lưu ý\nĐường lưới đậm ứng với vạch chia có ghi số, đường lưới nhạt nằm giữa hai vạch chia gần nhau; giá trị của đường lưới nhạt bằng trung bình cộng hai vạch chia bên cạnh.\nKhi đổi đơn vị tốc độ: $1 \\mathrm{\\ m/s} = 3.6 \\mathrm{\\ km/h}$; $1 \\mathrm{\\ h} = 60 \\mathrm{\\ min}$.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00329",
+   "khoi": "7",
+   "chu_de": "Tốc độ",
+   "chuyen_de": "Đồ thị quãng đường - thời gian",
+   "nhom": "SO SÁNH VÀ MÔ TẢ CHUYỂN ĐỘNG TRÊN ĐỒ THỊ",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nSo sánh hai chuyển động trên cùng đồ thị\nTrong cùng một khoảng thời gian, vật nào đi được quãng đường dài hơn thì chuyển động nhanh hơn.\nTrên đồ thị, đường biểu diễn của vật chuyển động nhanh hơn dốc hơn. Giao điểm của hai đường biểu diễn cho biết thời điểm hai vật đi được quãng đường bằng nhau và quãng đường đó.\nMô tả chuyển động nhiều giai đoạn\nTách đồ thị thành các đoạn thẳng theo các điểm gấp khúc. Mỗi đoạn nằm ngang là một giai đoạn đứng yên. Mỗi đoạn đi lên là một giai đoạn chuyển động, có tốc độ tính bằng quãng đường đi được chia cho thời gian đi tương ứng của đoạn đó. Mô tả lần lượt từng giai đoạn theo thứ tự thời gian.\n\n##TC2. Công thức\nTốc độ trên một đoạn đồ thị: $$v = \\dfrac{\\Delta s}{\\Delta t}$$\nTrong đó $\\Delta s$ và $\\Delta t$ là hiệu toạ độ ở hai đầu của đoạn:\n$$\\Delta s = s_2 - s_1$$\n$$\\Delta t = t_2 - t_1$$\n\n##PP 3. Các bước làm bài\nBước 1. Xác định giá trị mỗi vạch chia và toạ độ các điểm cần dùng (điểm gấp khúc, giao điểm).\nBước 2. Với mỗi đoạn, tính $\\Delta s$ và $\\Delta t$ rồi tính tốc độ $v = \\dfrac{\\Delta s}{\\Delta t}$; đoạn nằm ngang có $\\Delta s = 0$ nên vật đứng yên.\nBước 3. So sánh các tốc độ hoặc ghép kết quả các đoạn thành mô tả theo thứ tự thời gian.\n\n##CY 4. Lưu ý\nTốc độ ở đoạn sau được tính từ hiệu các toạ độ của đoạn đó, không lấy toạ độ điểm cuối chia cho thời điểm cuối.\nĐoạn nằm ngang không có nghĩa là vật chuyển động chậm; đó là lúc vật đứng yên.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00330",
+   "khoi": "7",
+   "chu_de": "Tốc độ",
+   "chuyen_de": "Đồ thị quãng đường - thời gian",
+   "nhom": "Vẽ đồ thị quãng đường - thời gian",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC1. Kiến thức cần nhớ\nCách biểu diễn bảng số liệu bằng đồ thị\nMỗi cặp số liệu trong bảng ứng với một điểm trên mặt phẳng toạ độ có dạng $(t; s)$. Trục nằm ngang biểu diễn thời gian $t$, trục thẳng đứng biểu diễn quãng đường $s$. Nối các điểm theo thứ tự thời gian tăng dần bằng các đoạn thẳng thì được đồ thị quãng đường – thời gian.\nNhận dạng đồ thị theo chuyển động\nHai điểm liên tiếp có cùng quãng đường $s$ ứng với đoạn nằm ngang: vật đứng yên. Hai điểm liên tiếp có quãng đường tăng: vật chuyển động, đoạn thẳng càng dốc thì tốc độ càng lớn. Quãng đường đi được không giảm theo thời gian nên đồ thị không có đoạn đi xuống.\nBảng cho quãng đường của từng khoảng thời gian\nKhi bảng ghi quãng đường đi được trong từng khoảng thời gian liên tiếp, quãng đường tính từ lúc xuất phát là tổng quãng đường của các khoảng đã qua.\n\n##TC2. Công thức\nQuãng đường tính từ lúc xuất phát tại cuối khoảng thời gian thứ $n$:\n$$s_n = s_{n-1} + \\Delta s_n$$\nTrong đó $s_{n-1}$ là quãng đường tại cuối khoảng thời gian thứ $n - 1$ và $\\Delta s_n$ là quãng đường đi được trong khoảng thứ $n$.\n\n##PP3. Các bước làm bài\nBước 1. Xác định các điểm $(t; s)$ từ bảng; nếu bảng cho quãng đường từng khoảng thì cộng dồn để có $s$ tại mỗi thời điểm.\nBước 2. Vẽ hai trục vuông góc, ghi đại lượng và đơn vị ở đầu mỗi trục, chia vạch theo tỉ lệ xích để cho; điểm gốc $(0; 0)$ đặt tại giao điểm hai trục.\nBước 3. Chấm từng điểm $(t; s)$ lên hệ trục, đọc đúng vạch chia của cả hai trục.\nBước 4. Nối các điểm theo thứ tự thời gian tăng dần bằng các đoạn thẳng, đối chiếu dạng từng đoạn (nằm ngang hay đi lên) với số liệu trong bảng.\n\n##CY4. Lưu ý\nTrục ngang là thời gian $t$, trục đứng là quãng đường $s$; không đổi chỗ hai trục.\nMỗi điểm phải nằm đúng vị trí theo cả hai toạ độ; không bỏ sót điểm gốc và không bỏ qua dòng có quãng đường lặp lại.",
+   "can_dien_ly_thuyet_nhom": false
+  }
+ ],
+ "dang_bai": [
+  {
+   "dang_id": "KDB00725",
+   "nhom_id": "KNB00322",
+   "thu_tu": 1,
+   "dang": "Đổi đơn vị tốc độ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 17,
+   "cau_mau": [
+    {
+     "ma_cau": "K07030101008",
+     "loai": "trac_nghiem",
+     "de": "Tốc độ $36\\ \\mathrm{km/h}$ tương ứng với",
+     "lua_chon": [
+      "$6\\ \\mathrm{m/s}$",
+      "$10\\ \\mathrm{m/s}$",
+      "$36\\ \\mathrm{m/s}$",
+      "$129,6\\ \\mathrm{m/s}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi từ $\\mathrm{km/h}$ sang $\\mathrm{m/s}$ bằng cách chia cho $3,6: 36:3,6=10\\ (\\mathrm{m/s})$."
+    },
+    {
+     "ma_cau": "K07030101009",
+     "loai": "trac_nghiem",
+     "de": "Tốc độ $15 \\mathrm{m/s}$ tương ứng với",
+     "lua_chon": [
+      "$4,17 \\mathrm{km/h}$",
+      "$\\mathrm{15 \\; km/h}$",
+      "$\\mathrm{54 \\; km/h}$",
+      "$\\mathrm{90 \\; km/h}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nhân với $3,6$ để đổi sang $\\mathrm{km/h}$: $15 \\times 3,6 = 54 \\; (\\mathrm{km/h})$."
+    },
+    {
+     "ma_cau": "K07030101004",
+     "loai": "trac_nghiem",
+     "de": "Một vật chuyển động với tốc độ $1 \\mathrm{m/s}$ thì tốc độ đó bằng",
+     "lua_chon": [
+      "0,36 km/h",
+      "3,6 km/h",
+      "36 km/h",
+      "60 km/h"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi từ $\\mathrm{m/s}$ sang $\\mathrm{km/h}$ bằng cách nhân với 3,6 nên $1 \\mathrm{m/s} = 3,6 \\mathrm{km/h}$."
+    },
+    {
+     "ma_cau": "K07030101019",
+     "loai": "trac_nghiem",
+     "de": "Tốc độ $72 \\mathrm{ km/h}$ tương ứng với",
+     "lua_chon": [
+      "$7,2 \\mathrm{ m/s}$",
+      "$20 \\mathrm{ m/s}$",
+      "$36 \\mathrm{ m/s}$",
+      "$259,2 \\mathrm{ m/s}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$72 : 3,6 = 20 \\mathrm{ (m/s)}$."
+    },
+    {
+     "ma_cau": "K07030101028",
+     "loai": "trac_nghiem",
+     "de": "Tốc độ $54\\ \\mathrm{km/h}$ tương ứng với",
+     "lua_chon": [
+      "A. $5,4\\ \\mathrm{m/s}$",
+      "B. $15\\ \\mathrm{m/s}$",
+      "C. $27\\ \\mathrm{m/s}$",
+      "D. $194,4\\ \\mathrm{m/s}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$54:3,6=15\\ (\\mathrm{m/s})$."
+    },
+    {
+     "ma_cau": "K07030101022",
+     "loai": "trac_nghiem",
+     "de": "Một giờ bằng bao nhiêu giây?",
+     "lua_chon": [
+      "360",
+      "600",
+      "60",
+      "3 600"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$1\\ \\mathrm{h} = 60$ phút $= 60 \\times 60 = 3\\ 600$ giây."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00726",
+   "nhom_id": "KNB00322",
+   "thu_tu": 2,
+   "dang": "Định nghĩa/Khái niệm",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 21,
+   "cau_mau": [
+    {
+     "ma_cau": "K07030101031",
+     "loai": "trac_nghiem",
+     "de": "Đại lượng nào sau đây đặc trưng cho sự nhanh chậm của chuyển động?",
+     "lua_chon": [
+      "Quãng đường.",
+      "Thời gian.",
+      "Tốc độ.",
+      "Khối lượng."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Quãng đường và thời gian là hai đại lượng dùng để tính tốc độ, còn tốc độ mới là đại lượng đặc trưng cho sự nhanh chậm."
+    },
+    {
+     "ma_cau": "K07030101002",
+     "loai": "trac_nghiem",
+     "de": "Công thức tính tốc độ của chuyển động là",
+     "lua_chon": [
+      "$v = s \\times t$",
+      "$v = s + t$",
+      "$v = s : t$",
+      "$v = t : s$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tốc độ bằng quãng đường chia cho thời gian đi hết quãng đường đó."
+    },
+    {
+     "ma_cau": "K07030101001",
+     "loai": "trac_nghiem",
+     "de": "Tốc độ của một vật cho biết điều gì?",
+     "lua_chon": [
+      "Quãng đường vật đã đi được.",
+      "Thời gian vật chuyển động.",
+      "Hướng chuyển động của vật.",
+      "Mức độ nhanh hay chậm của chuyển động."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tốc độ là đại lượng đặc trưng cho mức độ nhanh hay chậm của chuyển động, được tính bằng quãng đường đi được trong một đơn vị thời gian."
+    },
+    {
+     "ma_cau": "K07030101011",
+     "loai": "trac_nghiem",
+     "de": "Trong hệ đơn vị SI, quãng đường được đo bằng đơn vị nào?",
+     "lua_chon": [
+      "Mét.",
+      "Xăng-ti-mét.",
+      "Ki-lô-mét.",
+      "Dặm."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Mét là đơn vị đo độ dài trong hệ SI, các đơn vị còn lại là đơn vị dẫn xuất hoặc đơn vị ngoài hệ."
+    },
+    {
+     "ma_cau": "K07030101013",
+     "loai": "trac_nghiem",
+     "de": "Trong công thức $v = s : t$, đại lượng $s$ là",
+     "lua_chon": [
+      "tốc độ.",
+      "khối lượng của vật.",
+      "quãng đường đi được.",
+      "thời gian chuyển động."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Kí hiệu $s$ chỉ quãng đường vật đi được, $t$ chỉ thời gian và $v$ chỉ tốc độ."
+    },
+    {
+     "ma_cau": "K07030101017",
+     "loai": "trac_nghiem",
+     "de": "Thiết bị bắn tốc độ đặt trên đường giao thông được dùng để",
+     "lua_chon": [
+      "đo khối lượng của xe.",
+      "kiểm tra tốc độ của các phương tiện.",
+      "đo quãng đường xe đã đi.",
+      "đếm số xe đi qua."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Thiết bị bắn tốc độ giúp lực lượng chức năng kiểm tra xem phương tiện có vượt quá tốc độ cho phép hay không."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00727",
+   "nhom_id": "KNB00322",
+   "thu_tu": 3,
+   "dang": "Ý nghĩa tốc độ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 9,
+   "cau_mau": [
+    {
+     "ma_cau": "K07030101026",
+     "loai": "trac_nghiem",
+     "de": "Trong cùng một khoảng thời gian, xe nào đi được quãng đường dài hơn thì",
+     "lua_chon": [
+      "mất nhiều thời gian hơn.",
+      "có tốc độ nhỏ hơn.",
+      "có tốc độ lớn hơn.",
+      "có tốc độ bằng nhau."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Với cùng thời gian, quãng đường càng dài thì thương số $s:t$ càng lớn nên tốc độ càng lớn."
+    },
+    {
+     "ma_cau": "K07030101020",
+     "loai": "trac_nghiem",
+     "de": "Trong phòng thực hành, cổng quang điện được dùng để",
+     "lua_chon": [
+      "giữ cho vật chuyển động đều.",
+      "đo quãng đường vật đi được.",
+      "đo khối lượng của vật.",
+      "tự động ghi lại thời gian vật chuyển động qua."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cổng quang điện kết hợp với đồng hồ đo thời gian hiện số cho phép ghi thời gian một cách tự động và chính xác hơn đồng hồ bấm giây."
+    },
+    {
+     "ma_cau": "K07030101014",
+     "loai": "trac_nghiem",
+     "de": "Nói tốc độ của một ô tô là $60\\ \\mathrm{km/h}$ có nghĩa là",
+     "lua_chon": [
+      "ô tô chuyển động trong $60$ giờ.",
+      "ô tô đi được tổng cộng $60\\ \\mathrm{km}$.",
+      "mỗi phút ô tô đi được $60\\ \\mathrm{km}$.",
+      "mỗi giờ ô tô đi được $60\\ \\mathrm{km}$."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đơn vị $\\mathrm{km/h}$ cho biết số $\\mathrm{ki-lô-mét}$ đi được trong mỗi giờ."
+    },
+    {
+     "ma_cau": "K07030101018",
+     "loai": "trac_nghiem",
+     "de": "Trong bốn chuyển động sau, chuyển động nào nhanh nhất?",
+     "lua_chon": [
+      "$500 \\mathrm{ cm/s}$",
+      "$10 \\mathrm{ m/s}$",
+      "$20 \\mathrm{ km/h}$",
+      "$30 \\mathrm{ km/h}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi tất cả về km/h: $10 \\mathrm{ m/s} = 36 \\mathrm{ km/h}$; $500 \\mathrm{ cm/s} = 5 \\mathrm{ m/s} = 18 \\mathrm{ km/h}$. Giá trị lớn nhất là $36 \\mathrm{ km/h}$, ứng với chuyển động có tốc độ $10 \\mathrm{ m/s}$."
+    },
+    {
+     "ma_cau": "K07030101015",
+     "loai": "trac_nghiem",
+     "de": "Nói tốc độ của một vận động viên là $8\\ \\mathrm{m/s}$ có nghĩa là",
+     "lua_chon": [
+      "mỗi giây vận động viên chạy được $8\\ \\mathrm{m}$.",
+      "vận động viên chạy được tổng cộng $8\\ \\mathrm{m}$.",
+      "mỗi phút vận động viên chạy được $8\\ \\mathrm{m}$.",
+      "mỗi mét vận động viên chạy hết $8$ giây."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đơn vị $\\mathrm{m/s}$ cho biết số mét đi được trong mỗi giây."
+    },
+    {
+     "ma_cau": "K07030101023",
+     "loai": "trac_nghiem",
+     "de": "Một con ốc sên bò với tốc độ $0,5\\ \\mathrm{cm/s}$. Điều đó có nghĩa là",
+     "lua_chon": [
+      "mỗi phút ốc sên bò được $0,5\\ \\mathrm{cm}$.",
+      "mỗi giây ốc sên bò được $0,5\\ \\mathrm{m}$.",
+      "ốc sên bò được tổng cộng $0,5\\ \\mathrm{cm}$.",
+      "mỗi giây ốc sên bò được $0,5\\ \\mathrm{cm}$."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đơn vị $\\mathrm{cm/s}$ cho biết số xăng-ti-mét đi được trong mỗi giây."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00728",
+   "nhom_id": "KNB00323",
+   "thu_tu": 1,
+   "dang": "Tính tốc độ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 22,
+   "cau_mau": [
+    {
+     "ma_cau": "K07030102004",
+     "loai": "trac_nghiem",
+     "de": "Một xe máy đi được 45 km trong 30 phút. Tốc độ của xe máy là",
+     "lua_chon": [
+      "1,5 km/h",
+      "15 km/h",
+      "45 km/h",
+      "90 km/h"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi 30 phút = 0,5 h, do đó $\\mathrm{v = 45 : 0,5 = 90 \\ (km/h)}$."
+    },
+    {
+     "ma_cau": "K07030102018",
+     "loai": "trac_nghiem",
+     "de": "Một vận động viên chạy $100$ m hết $10$ giây. Tốc độ của vận động viên là",
+     "lua_chon": [
+      "$1 \\ 000$ m/s",
+      "$0,1$ m/s",
+      "$10$ m/s",
+      "$90$ m/s"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Vận tốc của vận động viên là:\n$v = 100 : 10 = 10$ (m/s)."
+    },
+    {
+     "ma_cau": "K07030102022",
+     "loai": "trac_nghiem",
+     "de": "Một ô tô đi được 54 km trong 45 phút. Tốc độ của ô tô là",
+     "lua_chon": [
+      "1,2 km/h",
+      "24 km/h",
+      "40,5 km/h",
+      "72 km/h"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi 45 phút = $0,75$ h, do đó $v = 54 : 0,75 = 72$ (km/h)."
+    },
+    {
+     "ma_cau": "K07030102034",
+     "loai": "trac_nghiem",
+     "de": "Một người đi xe đạp được 4 km trong 20 phút. Tốc độ của người đó là",
+     "lua_chon": [
+      "0,2 km/h",
+      "5 km/h",
+      "12 km/h",
+      "80 km/h"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi 20 phút = $\\dfrac{1}{3}$ h, do đó $v = 4 \\times 3 = 12$ (km/h)."
+    },
+    {
+     "ma_cau": "K07030102011",
+     "loai": "trac_nghiem",
+     "de": "Một vận động viên chạy $100 \\mathrm{\\ m}$ hết $12,5$ giây. Tốc độ của vận động viên là",
+     "lua_chon": [
+      "$1\\ 250 \\mathrm{\\ m/s}$",
+      "$4 \\mathrm{\\ m/s}$",
+      "$8 \\mathrm{\\ m/s}$",
+      "$12,5 \\mathrm{\\ m/s}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$v = 100 : 12,5 = 8 \\mathrm{\\ (m/s)}$."
+    },
+    {
+     "ma_cau": "K07030102008",
+     "loai": "trac_nghiem",
+     "de": "Một người đi xe đạp được $6\\ \\mathrm{km}$ trong $15$ phút. Tốc độ của người đó là",
+     "lua_chon": [
+      "$0.4\\ \\mathrm{km/h}$",
+      "$4\\ \\mathrm{km/h}$",
+      "$24\\ \\mathrm{km/h}$",
+      "$90\\ \\mathrm{km/h}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi $15$ phút $= 0.25\\ \\mathrm{h}$, do đó $v = 6 : 0.25 = 24\\ \\mathrm{(km/h)}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00729",
+   "nhom_id": "KNB00323",
+   "thu_tu": 2,
+   "dang": "Tính thời gian",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 12,
+   "cau_mau": [
+    {
+     "ma_cau": "K07030102019",
+     "loai": "trac_nghiem",
+     "de": "Một ô tô chuyển động với tốc độ $60$ km/h trên quãng đường $150$ km. Thời gian ô tô đi hết quãng đường là",
+     "lua_chon": [
+      "$1,5$ h",
+      "$2$ h",
+      "$2,5$ h",
+      "$90$ h"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Thời gian ô tô đi hết quãng đường là:\n$t = 150 : 60 = 2,5$ (h)."
+    },
+    {
+     "ma_cau": "K07030102015",
+     "loai": "trac_nghiem",
+     "de": "Một vật chuyển động với tốc độ 25 m/s đi được quãng đường 1 000 m trong thời gian",
+     "lua_chon": [
+      "25 s",
+      "40 s",
+      "250 s",
+      "25 000 s"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đáp án chi tiết: $t = 1 000 : 25 = 40$ (s)."
+    },
+    {
+     "ma_cau": "K07030102007",
+     "loai": "trac_nghiem",
+     "de": "Một vật chuyển động với tốc độ $20\\ \\mathrm{m/s}$ đi hết quãng đường $800\\ \\mathrm{m}$ trong thời gian",
+     "lua_chon": [
+      "$16\\ 000\\ \\mathrm{s}$",
+      "$40\\ \\mathrm{s}$",
+      "$4\\ \\mathrm{s}$",
+      "$400\\ \\mathrm{s}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$t = s : v = 800 : 20 = 40\\ \\mathrm{(s)}$."
+    },
+    {
+     "ma_cau": "K07030102003",
+     "loai": "trac_nghiem",
+     "de": "Một vật đi được quãng đường 180 m với tốc độ 9 m/s. Thời gian chuyển động của vật là",
+     "lua_chon": [
+      "171 s",
+      "1 620 s",
+      "15 s",
+      "20 s"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{t = s : v = 180 : 9 = 20 \\ (s)}$."
+    },
+    {
+     "ma_cau": "K07030102023",
+     "loai": "trac_nghiem",
+     "de": "Một người đi bộ với tốc độ 4 km/h trên quãng đường 2,4 km. Thời gian người đó đi hết quãng đường là",
+     "lua_chon": [
+      "0,6 h",
+      "1,6 h",
+      "6 h",
+      "9,6 h"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$t = 2,4 : 4 = 0,6$ (h), tức 36 phút."
+    },
+    {
+     "ma_cau": "K07030102030",
+     "loai": "trac_nghiem",
+     "de": "Một vật chuyển động với tốc độ $12 \\mathrm{~m/s}$ đi được quãng đường $360 \\mathrm{~m}$ trong thời gian",
+     "lua_chon": [
+      "$4 \\ 320 \\mathrm{~s}$",
+      "300 s",
+      "30 s",
+      "3 s"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đặc án chi tiết: $t = 360 : 12 = 30 \\mathrm{~(s)}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00730",
+   "nhom_id": "KNB00323",
+   "thu_tu": 3,
+   "dang": "Tính quãng đường",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 16,
+   "cau_mau": [
+    {
+     "ma_cau": "K07030102005",
+     "loai": "trac_nghiem",
+     "de": "Một ô tô chạy với tốc độ $54\\ \\mathrm{km/h}$ trong $2$ giờ. Quãng đường ô tô đi được là",
+     "lua_chon": [
+      "$27\\ \\mathrm{km}$",
+      "$56\\ \\mathrm{km}$",
+      "$108\\ \\mathrm{km}$",
+      "$162\\ \\mathrm{km}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Quãng đường ô tô đi được là:\n$s = v \\times t = 54 \\times 2 = 108\\ \\mathrm{(km)}$."
+    },
+    {
+     "ma_cau": "K07030102021",
+     "loai": "trac_nghiem",
+     "de": "Một vật chuyển động với tốc độ $2$ m/s trong $10$ phút. Quãng đường vật đi được là",
+     "lua_chon": [
+      "$120$ m",
+      "$20$ m",
+      "$1 \\ 200$ m",
+      "$12 \\ 000$ m"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi $10$ phút $= 600$ s, do đó $s = 2 \\times 600 = 1 \\ 200$ (m)."
+    },
+    {
+     "ma_cau": "K07030102009",
+     "loai": "trac_nghiem",
+     "de": "Một ô tô chuyển động với tốc độ $72 \\mathrm{\\ km/h}$ trong $30$ giây. Quãng đường ô tô đi được là",
+     "lua_chon": [
+      "$240 \\mathrm{\\ m}$",
+      "$2\\ 160 \\mathrm{\\ m}$",
+      "$2\\ 400 \\mathrm{\\ m}$",
+      "$600 \\mathrm{\\ m}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi $72 \\mathrm{\\ km/h} = 20 \\mathrm{\\ m/s}$, do đó $s = 20 \\times 30 = 600 \\mathrm{\\ (m)}$."
+    },
+    {
+     "ma_cau": "K07030102013",
+     "loai": "trac_nghiem",
+     "de": "Một người đi xe đạp với tốc độ $12 \\mathrm{\\ km/h}$ trong $1,5$ giờ. Quãng đường đi được là",
+     "lua_chon": [
+      "$8 \\mathrm{\\ km}$",
+      "$13,5 \\mathrm{\\ km}$",
+      "$18 \\mathrm{\\ km}$",
+      "$24 \\mathrm{\\ km}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$s = v \\times t = 12 \\times 1,5 = 18 \\mathrm{\\ (km)}$."
+    },
+    {
+     "ma_cau": "K07030102028",
+     "loai": "trac_nghiem",
+     "de": "Một đoàn tàu chạy với tốc độ $60$ km/h trong $1$ giờ $30$ phút. Quãng đường đoàn tàu đi được là",
+     "lua_chon": [
+      "40 km",
+      "61,5 km",
+      "90 km",
+      "900 km"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi $1$ giờ $30$ phút $= 1,5$ h, do đó $s = 60 \\times 1,5 = 90$ (km)."
+    },
+    {
+     "ma_cau": "K07030102012",
+     "loai": "trac_nghiem",
+     "de": "Một vật chuyển động với tốc độ $5 \\mathrm{\\ m/s}$ trong $1$ phút. Quãng đường vật đi được là",
+     "lua_chon": [
+      "$5 \\mathrm{\\ m}$",
+      "$3\\ 000 \\mathrm{\\ m}$",
+      "$60 \\mathrm{\\ m}$",
+      "$300 \\mathrm{\\ m}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi $1$ phút $= 60 \\mathrm{\\ s}$, do đó $s = 5 \\times 60 = 300 \\mathrm{\\ (m)}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00731",
+   "nhom_id": "KNB00327",
+   "thu_tu": 1,
+   "dang": "ĐỌC s TẠI THỜI ĐIỂM t VÀ NGƯỢC LẠI",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K07030301073",
+     "loai": "tra_loi_ngan",
+     "de": "Hình dưới biểu diễn quãng đường theo thời gian của một xe máy chuyển động trên đường thẳng. Tại thời điểm $t = 10 \\text{ min}$, quãng đường xe máy đã đi được là bao nhiêu km?",
+     "dap_an": "4",
+     "loi_giai": "Từ điểm $t = 10 \\text{ min}$ trên trục ngang, đóng thẳng lên đến đồ thị rồi đóng ngang sang trục đứng.\nĐọc được quãng đường: $s = 4 \\text{ km}$"
+    },
+    {
+     "ma_cau": "K07030301077",
+     "loai": "tra_loi_ngan",
+     "de": "Đồ thị quãng đường - thời gian của một xe đồ chơi điều khiển từ xa chuyển động trên đường thẳng được cho ở hình dưới. Tại thời điểm $t = 45\\ \\mathrm{s}$, quãng đường xe đồ chơi đã đi được là bao nhiêu $\\mathrm{m}$?",
+     "dap_an": "60",
+     "loi_giai": "Từ điểm $t = 45\\ \\mathrm{s}$ trên trục ngang, dóng thẳng lên đến đồ thị rồi dóng ngang sang trục đứng.\nĐọc được quãng đường: $s = 60\\ \\mathrm{m}$",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07030301074",
+     "loai": "tra_loi_ngan",
+     "de": "Đồ thị quãng đường – thời gian của một ô tô chuyển động trên đường thẳng được cho ở hình dưới. Vào thời điểm nào ô tô đi được quãng đường $s = 14$ km?",
+     "dap_an": "20",
+     "loi_giai": "Từ điểm $s = 14$ km trên trục đứng, dóng ngang đến đồ thị rồi dóng thẳng xuống trục ngang.\nĐọc được thời điểm: $t = 20$ min",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07030301072",
+     "loai": "tra_loi_ngan",
+     "de": "Hình dưới là đồ thị quãng đường – thời gian của một xe đạp chuyển động trên đường thẳng. Vào thời điểm nào xe đạp đi được quãng đường $s = 20 \\text{ km}$?",
+     "dap_an": "1",
+     "loi_giai": "Từ điểm $s = 20 \\text{ km}$ trên trục đứng, đóng ngang đến đồ thị rồi đóng thẳng xuống trục ngang.\nĐọc được thời điểm: $t = 1 \\text{ h}$",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07030301071",
+     "loai": "tra_loi_ngan",
+     "de": "Đồ thị quãng đường – thời gian của một người đi bộ chuyển động trên đường thẳng được cho ở hình dưới. Tại thời điểm $t = 30$ s, quãng đường người đi bộ đã đi được là bao nhiêu m?",
+     "dap_an": "20",
+     "loi_giai": "Từ điểm $t = 30$ s trên trục ngang, dóng thẳng lên đến đồ thị rồi dóng ngang sang trục đứng.\nĐọc được quãng đường: $s = 20$ m",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07030301069",
+     "loai": "tra_loi_ngan",
+     "de": "Hình dưới là đồ thị quãng đường – thời gian của một xe máy chuyển động trên đường thẳng. Tại thời điểm $t = 3$ h, quãng đường xe máy đã đi được là bao nhiêu km?",
+     "dap_an": "100",
+     "loi_giai": "Từ điểm $t = 3$ h trên trục ngang, dóng thẳng lên đến đồ thị rồi dóng ngang sang trục đứng.\nĐọc được quãng đường: $s = 100$ km",
+     "co_hinh": true
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00732",
+   "nhom_id": "KNB00327",
+   "thu_tu": 2,
+   "dang": "NHẬN RA ĐOẠN VẬT ĐỨNG YÊN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K07030301078",
+     "loai": "tra_loi_ngan",
+     "de": "Trên đồ thị quãng đường – thời gian, trục nằm ngang biểu diễn đại lượng nào?",
+     "dap_an": "Thời gian",
+     "loi_giai": "Đồ thị quãng đường – thời gian có trục nằm ngang biểu diễn thời gian $t$, trục thẳng đứng biểu diễn quãng đường $s$. \nĐại lượng cần tìm là: thời gian."
+    },
+    {
+     "ma_cau": "K07030301079",
+     "loai": "tra_loi_ngan",
+     "de": "Trên đồ thị quãng đường – thời gian, trục thẳng đứng biểu diễn đại lượng nào?",
+     "dap_an": "Quãng đường",
+     "loi_giai": "Đồ thị quãng đường – thời gian có trục nằm ngang biểu diễn thời gian $t$, trục thẳng đứng biểu diễn quãng đường $s$. \nĐại lượng cần tìm là: quãng đường."
+    },
+    {
+     "ma_cau": "K07030301086",
+     "loai": "tra_loi_ngan",
+     "de": "Đồ thị quãng đường – thời gian của một xe đạp chuyển động trên đường thẳng được cho ở hình dưới. Xe đạp đứng yên trong bao nhiêu s?",
+     "dap_an": "20",
+     "loi_giai": "Đoạn nằm ngang trên đồ thị ứng với lúc quãng đường không đổi, tức là vật đứng yên.\nĐoạn nằm ngang bắt đầu và kết thúc tại các thời điểm: $t_1 = 10 \\mathrm{~s}$ , $t_2 = 30 \\mathrm{~s}$\nThời gian đứng yên: $\\Delta t = t_2 - t_1 = 30 - 10 = 20 \\mathrm{~s}$"
+    },
+    {
+     "ma_cau": "K07030301085",
+     "loai": "tra_loi_ngan",
+     "de": "Hình dưới biểu diễn quãng đường theo thời gian của một xe đạp chuyển động trên đường thẳng. Khi đứng yên, xe đạp cách nơi xuất phát bao nhiêu m?",
+     "dap_an": "40",
+     "loi_giai": "Đoạn nằm ngang trên đồ thị ứng với lúc quãng đường không đổi, tức là vật đứng yên.\nQuãng đường ứng với đoạn nằm ngang là: $s = 40 \\mathrm{~m}$"
+    },
+    {
+     "ma_cau": "K07030301081",
+     "loai": "tra_loi_ngan",
+     "de": "Hình dưới là đồ thị quãng đường – thời gian của một xe buýt chuyển động trên đường thẳng. Xe buýt bắt đầu đứng yên vào thời điểm nào?",
+     "dap_an": "2",
+     "loi_giai": "Đoạn nằm ngang trên đồ thị ứng với lúc quãng đường không đổi, tức là vật đứng yên.\nĐoạn nằm ngang bắt đầu tại thời điểm: $t = 2$ h",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07030301084",
+     "loai": "tra_loi_ngan",
+     "de": "Hình dưới là đồ thị quãng đường – thời gian của một ô tô chuyển động trên đường thẳng. Khi đứng yên, ô tô cách nơi xuất phát bao nhiêu km?",
+     "dap_an": "80",
+     "loi_giai": "Đoạn nằm ngang trên đồ thị ứng với lúc quãng đường không đổi, tức là vật đứng yên.\nQuãng đường ứng với đoạn nằm ngang là: $s = 80$ km",
+     "co_hinh": true
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00733",
+   "nhom_id": "KNB00327",
+   "thu_tu": 3,
+   "dang": "TÍNH TỐC ĐỘ TỪ ĐỒ THỊ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K07030301094",
+     "loai": "tra_loi_ngan",
+     "de": "Đồ thị quãng đường – thời gian của một xe đạp chuyển động trên đường thẳng được cho ở hình dưới. Tốc độ của xe đạp trong khoảng thời gian từ $0 \\ \\mathrm{h}$ đến $1 \\ \\mathrm{h}$ là bao nhiêu $\\mathrm{km/h}$?",
+     "dap_an": "20",
+     "loi_giai": "Tốc độ trên một đoạn đồ thị được tính theo công thức $v = \\dfrac{\\Delta s}{\\Delta t}$, với $\\Delta s$ là quãng đường đi được và $\\Delta t$ là\nthời gian đi tương ứng.\nĐọc quãng đường tại hai thời điểm trên đồ thị:\n$s_1 = 0 \\ \\mathrm{km}$ (tại $t = 0 \\ \\mathrm{h}$)\n$s_2 = 20 \\ \\mathrm{km}$ (tại $t = 1 \\ \\mathrm{h}$)\nQuãng đường và thời gian đi tương ứng:\n$\\Delta s = s_2 - s_1 = 20 - 0 = 20 \\ \\mathrm{km}$\n$\\Delta t = 1 - 0 = 1 \\ \\mathrm{h}$\nTốc độ của vật:\n$v = \\dfrac{\\Delta s}{\\Delta t} = \\dfrac{20}{1} = 20 \\ \\mathrm{km/h}$",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07030301092",
+     "loai": "tra_loi_ngan",
+     "de": "Hình dưới là đồ thị quãng đường - thời gian của một xe buýt chuyển động trên đường thẳng. Tốc độ của xe buýt trong khoảng thời gian từ $1$ h đến $2$ h là bao nhiêu km/h?",
+     "dap_an": "30",
+     "loi_giai": "Tốc độ trên một đoạn đồ thị được tính theo công thức $v = \\dfrac{\\Delta s}{\\Delta t}$, với $\\Delta s$ là quãng đường đi được và $\\Delta t$ là thời gian đi tương ứng.\nĐọc quãng đường tại hai thời điểm trên đồ thị:\n$s_1 = 30$ km (tại $t = 1$ h)\n$s_2 = 60$ km (tại $t = 2$ h)\nQuãng đường và thời gian đi tương ứng:\n$\\Delta s = s_2 - s_1 = 60 - 30 = 30$ km\n$\\Delta t = 2 - 1 = 1$ h\nTốc độ của vật:\n$v = \\dfrac{\\Delta s}{\\Delta t} = \\dfrac{30}{1} = 30$ km/h",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07030301088",
+     "loai": "tra_loi_ngan",
+     "de": "Đồ thị quãng đường – thời gian của một xe đồ chơi điều khiển từ xa chuyển động trên đường thẳng được cho ở hình dưới. Tốc độ của xe đồ chơi là bao nhiêu $\\mathrm{m/s}$?",
+     "dap_an": "2",
+     "loi_giai": "Tốc độ trên một đoạn đồ thị được tính theo công thức $\\mathrm{v = \\dfrac{\\Delta s}{\\Delta t}}$, với $\\mathrm{\\Delta s}$ là quãng đường đi được và $\\mathrm{\\Delta t}$ là thời gian đi tương ứng.\nĐọc một điểm trên đồ thị: $\\mathrm{t = 10\\ s}$ và $\\mathrm{s = 20\\ m}$\nĐồ thị là đoạn thẳng xuất phát từ gốc toạ độ, nên $\\mathrm{\\Delta s = 20\\ m}$ và $\\mathrm{\\Delta t = 10\\ s}$.\nTốc độ của vật: $\\mathrm{v = \\dfrac{\\Delta s}{\\Delta t} = \\dfrac{20}{10} = 2\\ m/s}$",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07030301090",
+     "loai": "tra_loi_ngan",
+     "de": "Hình dưới biểu diễn quãng đường theo thời gian của một ô tô chuyển động trên đường thẳng. Tốc độ của ô tô trong khoảng thời gian từ $0 \\mathrm{~h}$ đến $1 \\mathrm{~h}$ là bao nhiêu $\\mathrm{km/h}$?",
+     "dap_an": "40",
+     "loi_giai": "Tốc độ trên một đoạn đồ thị được tính theo công thức $v = \\dfrac{\\Delta s}{\\Delta t}$, với $\\Delta s$ là quãng đường đi được và $\\Delta t$ là thời gian đi tương ứng.\nĐọc quãng đường tại hai thời điểm trên đồ thị:\n$s_1 = 0 \\mathrm{~km}$ (tại $t = 0 \\mathrm{~h}$)\n$s_2 = 40 \\mathrm{~km}$ (tại $t = 1 \\mathrm{~h}$)\nQuãng đường và thời gian đi tương ứng:\n$\\Delta s = s_2 - s_1 = 40 - 0 = 40 \\mathrm{~km}$\n$\\Delta t = 1 - 0 = 1 \\mathrm{~h}$\nTốc độ của vật: $v = \\dfrac{\\Delta s}{\\Delta t} = \\dfrac{40}{1} = 40 \\mathrm{~km/h}$",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07030301097",
+     "loai": "tra_loi_ngan",
+     "de": "Đồ thị quãng đường – thời gian của một vận động viên chuyển động trên đường thẳng được cho ở hình dưới. Tốc độ của vận động viên trong khoảng thời gian từ $0 \\text{ s}$ đến $10 \\text{ s}$ là bao nhiêu $\\text{km/h}$?",
+     "dap_an": "10.8",
+     "loi_giai": "Tốc độ trên một đoạn đồ thị được tính theo công thức $v = \\dfrac{\\Delta s}{\\Delta t}$, với $\\Delta s$ là quãng đường đi được và $\\Delta t$ là thời gian đi tương ứng.\nĐọc quãng đường tại hai thời điểm trên đồ thị:\n$s_1 = 0 \\text{ m}$ (tại $t = 0 \\text{ s}$)\n$s_2 = 30 \\text{ m}$ (tại $t = 10 \\text{ s}$)\nQuãng đường và thời gian đi tương ứng:\n$\\Delta s = s_2 - s_1 = 30 - 0 = 30 \\text{ m}$\n$\\Delta t = 10 - 0 = 10 \\text{ s}$\nTốc độ của vật:\n$v = \\dfrac{\\Delta s}{\\Delta t} = \\dfrac{30}{10} = 3 \\text{ m/s}$\nĐổi sang $\\text{km/h}$:\n$3 \\text{ m/s} = 3 \\times 3.6 = 10.8 \\text{ km/h}$",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07030301093",
+     "loai": "tra_loi_ngan",
+     "de": "Hình dưới biểu diễn quãng đường theo thời gian của một vận động viên chuyển động trên đường thẳng. Tốc độ của vận động viên trong khoảng thời gian từ $0 \\mathrm{~s}$ đến $10 \\mathrm{~s}$ là bao nhiêu $\\mathrm{m/s}$?",
+     "dap_an": "5",
+     "loi_giai": "Tốc độ trên một đoạn đồ thị được tính theo công thức $v = \\dfrac{\\Delta s}{\\Delta t}$, với $\\Delta s$ là quãng đường đi được và $\\Delta t$ là thời gian đi tương ứng.\nĐọc quãng đường tại hai thời điểm trên đồ thị:\n$s_1 = 0 \\mathrm{~m}$ (tại $t = 0 \\mathrm{~s}$)\n$s_2 = 50 \\mathrm{~m}$ (tại $t = 10 \\mathrm{~s}$)\nQuãng đường và thời gian đi tương ứng:\n$\\Delta s = s_2 - s_1 = 50 - 0 = 50 \\mathrm{~m}$\n$\\Delta t = 10 - 0 = 10 \\mathrm{~s}$\nTốc độ của vật:\n$v = \\dfrac{\\Delta s}{\\Delta t} = \\dfrac{50}{10} = 5 \\mathrm{~m/s}$",
+     "co_hinh": true
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00734",
+   "nhom_id": "KNB00329",
+   "thu_tu": 1,
+   "dang": "SO SÁNH HAI VẬT TRÊN CÙNG ĐỒ THỊ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K07030303076",
+     "loai": "tra_loi_ngan",
+     "de": "Hình dưới là đồ thị quãng đường – thời gian của bạn Mai (nét liền) và bạn Lan (nét đứt) chuyển động trên cùng một đường thẳng. Ai chuyển động nhanh hơn?",
+     "dap_an": "Bạn Lan",
+     "loi_giai": "Trong cùng một khoảng thời gian, vật nào đi được quãng đường dài hơn thì chuyển động nhanh hơn.Tại thời điểm $t = 20$ s, đọc quãng đường của hai vật trên đồ thị:$s_1 = 60$ m (bạn Mai)$s_2 = 80$ m (bạn Lan)Ta có $s_1 < s_2$ nên bạn Lan chuyển động nhanh hơn.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07030303079",
+     "loai": "tra_loi_ngan",
+     "de": "Hình dưới là đồ thị quãng đường – thời gian của bạn Nam (nét liền) và bạn Hà (nét đứt) chuyển động trên cùng một đường thẳng. Tốc độ của bạn Nam gấp bao nhiêu lần tốc độ của bạn Hà?",
+     "dap_an": "4",
+     "loi_giai": "Tốc độ trên một đoạn đồ thị được tính theo công thức $v = \\dfrac{\\Delta s}{\\Delta t}$, với $\\Delta s$ là quãng đường đi được và $\\Delta t$ là thời gian đi tương ứng.\nHai đồ thị đều là đoạn thẳng xuất phát từ gốc toạ độ. Tại thời điểm $t = 20$ s, đọc quãng đường:\n$s_1 = 80$ m (bạn Nam)\n$s_2 = 20$ m (bạn Hà)\nTốc độ của bạn Nam:\n$v_1 = \\dfrac{80}{20} = 4$ m/s\nTốc độ của bạn Hà:\n$v_2 = \\dfrac{20}{20} = 1$ m/s\nTỉ số hai tốc độ:\n$\\dfrac{v_1}{v_2} = \\dfrac{4}{1} = 4$",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07030303075",
+     "loai": "tra_loi_ngan",
+     "de": "Hình dưới là đồ thị quãng đường – thời gian của xe B (nét liền) và xe A (nét đứt) chuyển động trên cùng một đường thẳng. Xe nào chuyển động nhanh hơn?",
+     "dap_an": "Xe B",
+     "loi_giai": "Trong cùng một khoảng thời gian, vật nào đi được quãng đường dài hơn thì chuyển động nhanh hơn. Tại thời điểm $t = 2$ h, đọc quãng đường của hai vật trên đồ thị:\n$s_1 = 100$ km (xe B)\n$s_2 = 60$ km (xe A)\nTa có $s_1 > s_2$ nên xe B chuyển động nhanh hơn.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07030303088",
+     "loai": "tra_loi_ngan",
+     "de": "Hai vật cùng xuất phát từ một địa điểm, xe tải xuất phát sau xe buýt. Hình dưới là đồ thị quãng đường – thời gian của hai vật. Ngoài lúc xuất phát, khi hai vật đi được quãng đường bằng nhau, quãng đường đó là bao nhiêu km?",
+     "dap_an": "120",
+     "loi_giai": "Hai vật đi được quãng đường bằng nhau tại giao điểm của hai đồ thị (sau lúc vật xuất phát muộn hơn bắt đầu chuyển động).\nTừ giao điểm, dóng ngang sang trục đứng, đọc được quãng đường: $s = 120$ km",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07030303080",
+     "loai": "tra_loi_ngan",
+     "de": "Hình dưới là đồ thị quãng đường – thời gian của xe buýt (nét liền) và xe tải (nét đứt) chuyển động trên cùng một đường thẳng. Tốc độ của xe buýt gấp bao nhiêu lần tốc độ của xe tải?",
+     "dap_an": "1.25",
+     "loi_giai": "Tốc độ trên một đoạn đồ thị được tính theo công thức $v = \\dfrac{\\Delta s}{\\Delta t}$ với $\\Delta s$ là quãng đường đi được và $\\Delta t$ là thời gian đi tương ứng.\nHai đồ thị đều là đoạn thẳng xuất phát từ gốc toạ độ. Tại thời điểm $t = 2$ h, đọc quãng đường:\n$s_1 = 100$ km (xe buýt)\n$s_2 = 80$ km (xe tải)\nTốc độ của xe buýt:\n$v_1 = \\dfrac{100}{2} = 50$ km/h\nTốc độ của xe tải:\n$v_2 = \\dfrac{80}{2} = 40$ km/h\nTỉ số hai tốc độ:\n$\\dfrac{v_1}{v_2} = \\dfrac{50}{40} = 1,25$",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07030303085",
+     "loai": "tra_loi_ngan",
+     "de": "Hai vật cùng xuất phát từ một địa điểm, xe khách xuất phát sau ô tô con. Hình dưới là đồ thị quãng đường – thời gian của hai vật. Ngoài lúc xuất phát, hai vật đi được quãng đường bằng nhau vào thời điểm nào (tính từ lúc ô tô con xuất phát)?",
+     "dap_an": "1.5",
+     "loi_giai": "Hai vật đi được quãng đường bằng nhau tại giao điểm của hai đồ thị (sau lúc vật xuất phát muộn hơn bắt đầu chuyển động).\nTừ giao điểm, dóng thẳng xuống trục ngang, đọc được thời điểm: t = 1,5 h",
+     "co_hinh": true
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00735",
+   "nhom_id": "KNB00329",
+   "thu_tu": 2,
+   "dang": "MÔ TẢ CHUYỂN ĐỘNG NHIỀU GIAI ĐOẠN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 14,
+   "cau_mau": [
+    {
+     "ma_cau": "K07030303091",
+     "loai": "trac_nghiem",
+     "de": "Hình dưới là đồ thị quãng đường – thời gian của một vận động viên chuyển động trên đường thẳng. Mô tả nào sau đây đúng với chuyển động của vận động viên?",
+     "lua_chon": [
+      "Từ $0$ s đến $20$ s, vận động viên đứng yên; từ $20$ s đến $50$ s, vận động viên chuyển động với tốc độ $3$ m/s.",
+      "Từ $0$ s đến $20$ s, vận động viên đứng yên; từ $20$ s đến $50$ s, vận động viên chuyển động với tốc độ $1,8$ m/s.",
+      "Từ $0$ s đến $10$ s, vận động viên đứng yên; từ $10$ s đến $50$ s, vận động viên chuyển động với tốc độ $3$ m/s.",
+      "Từ $0$ s đến $30$ s, vận động viên đứng yên; từ $30$ s đến $50$ s, vận động viên chuyển động với tốc độ $3$ m/s."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tốc độ trên một đoạn đồ thị được tính theo công thức $v = \\dfrac{\\Delta s}{\\Delta t}$, với $\\Delta s$ là quãng đường đi được và $\\Delta t$ là thời gian đi tương ứng.\nĐọc toạ độ các điểm gấp khúc trên đồ thị, dạng $(t; s)$:\n$(0; 0)$, $(20; 0)$, $(50; 90)$\nĐoạn 1 (từ $0$ s đến $20$ s) nằm ngang: quãng đường không đổi, vật đứng yên.\nĐoạn 2 (từ $20$ s đến $50$ s), tốc độ của vật:\n$v_1 = \\dfrac{90 - 0}{50 - 20} = \\dfrac{90}{30} = 3$ m/s\nMô tả đúng: từ $0$ s đến $20$ s, vận động viên đứng yên; từ $20$ s đến $50$ s, vận động viên chuyển động với tốc độ $3$ m/s.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07030303096",
+     "loai": "trac_nghiem",
+     "de": "Hình dưới là đồ thị quãng đường – thời gian của một ô tô chuyển động trên đường thẳng. Mô tả nào sau đây đúng với chuyển động của ô tô?",
+     "lua_chon": [
+      "Từ 0 h đến 1 h, ô tô đứng yên; từ 1 h đến 2 h, ô tô chuyển động với tốc độ 60 km/h; từ 2 h đến 4 h, ô tô chuyển động với tốc độ 80 km/h.",
+      "Từ 0 h đến 1 h, ô tô đứng yên; từ 1 h đến 2 h, ô tô chuyển động với tốc độ 60 km/h; từ 2 h đến 4 h, ô tô chuyển động với tốc độ 40 km/h.",
+      "Từ 0 h đến 1 h, ô tô đứng yên; từ 1 h đến 2 h, ô tô chuyển động với tốc độ 40 km/h; từ 2 h đến 4 h, ô tô chuyển động với tốc độ 60 km/h.",
+      "Từ 0 h đến 1 h, ô tô đứng yên; từ 1 h đến 2 h, ô tô chuyển động với tốc độ 30 km/h; từ 2 h đến 4 h, ô tô chuyển động với tốc độ 40 km/h."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tốc độ trên một đoạn đồ thị được tính theo công thức $v = \\dfrac{\\Delta s}{\\Delta t}$, với $\\Delta s$ là quãng đường đi được và $\\Delta t$ là thời gian đi tương ứng.\nĐọc toạ độ các điểm gấp khúc trên đồ thị, dạng $(t; s)$:\n$(0; 0)$, $(1; 0)$, $(2; 60)$, $(4; 140)$\nĐoạn 1 (từ 0 h đến 1 h) nằm ngang: quãng đường không đổi, vật đứng yên.\nĐoạn 2 (từ 1 h đến 2 h), tốc độ của vật:\n$v_1 = \\dfrac{60 - 0}{2 - 1} = \\dfrac{60}{1} = 60\\ \\mathrm{km/h}$\nĐoạn 3 (từ 2 h đến 4 h), tốc độ của vật:\n$v_2 = \\dfrac{140 - 60}{4 - 2} = \\dfrac{80}{2} = 40\\ \\mathrm{km/h}$\nMô tả đúng: từ 0 h đến 1 h, ô tô đứng yên; từ 1 h đến 2 h, ô tô chuyển động với tốc độ 60 km/h; từ 2 h đến 4 h, ô tô chuyển động với tốc độ 40 km/h …",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07030303093",
+     "loai": "trac_nghiem",
+     "de": "Hình dưới là đồ thị quãng đường – thời gian của một xe buýt chuyển động trên đường thẳng. Mô tả nào sau đây đúng với chuyển động của xe buýt?",
+     "lua_chon": [
+      "Từ 0 h đến 2 h, xe buýt chuyển động với tốc độ 60 km/h; từ 2 h đến 3 h, xe buýt đứng yên; từ 3 h đến 5 h, xe buýt chuyển động với tốc độ 50 km/h.",
+      "Từ 0 h đến 2 h, xe buýt chuyển động với tốc độ 50 km/h; từ 2 h đến 3 h, xe buýt đứng yên; từ 3 h đến 5 h, xe buýt chuyển động với tốc độ 30 km/h.",
+      "Từ 0 h đến 2 h, xe buýt chuyển động với tốc độ 30 km/h; từ 2 h đến 3 h, xe buýt đứng yên; từ 3 h đến 5 h, xe buýt chuyển động với tốc độ 50 km/h.",
+      "Từ 0 h đến 2 h, xe buýt chuyển động với tốc độ 30 km/h; từ 2 h đến 4 h, xe buýt đứng yên; từ 4 h đến 5 h, xe buýt chuyển động với tốc độ 50 km/h."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tốc độ trên một đoạn đồ thị được tính theo công thức $v = \\dfrac{\\Delta s}{\\Delta t}$, với $\\Delta s$ là quãng đường đi được và $\\Delta t$ là thời gian đi tương ứng.\nĐọc toạ độ các điểm gấp khúc trên đồ thị, dạng $(t; s)$:\n$(0; 0)$, $(2; 60)$, $(3; 60)$, $(5; 160)$\nĐoạn 1 (từ 0 h đến 2 h), tốc độ của vật:\n$v_1 = \\dfrac{60 - 0}{2 - 0} = \\dfrac{60}{2} = 30$ km/h\nĐoạn 2 (từ 2 h đến 3 h) nằm ngang: quãng đường không đổi, vật đứng yên.\nĐoạn 3 (từ 3 h đến 5 h), tốc độ của vật:\n$v_2 = \\dfrac{160 - 60}{5 - 3} = \\dfrac{100}{2} = 50$ km/h\nMô tả đúng: từ 0 h đến 2 h, xe buýt chuyển động với tốc độ 30 km/h; từ 2 h đến 3 h, xe buýt đứng yên;\ntừ 3 h đến 5 h, xe buýt chuyển động với tốc độ 50 km/h.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07030303094",
+     "loai": "trac_nghiem",
+     "de": "Hình dưới là đồ thị quãng đường – thời gian của một người đi bộ chuyển động trên đường thẳng. Mô tả nào sau đây đúng với chuyển động của người đi bộ?",
+     "lua_chon": [
+      "A. Từ 0 s đến 10 s, người đi bộ chuyển động với tốc độ 2 m/s; từ 10 s đến 20 s, người đi bộ chuyển động với tốc độ 1,5 m/s; từ 20 s đến 40 s, người đi bộ đứng yên.",
+      "B. Từ 0 s đến 10 s, người đi bộ chuyển động với tốc độ 2 m/s; từ 10 s đến 20 s, người đi bộ chuyển động với tốc độ 1 m/s; từ 20 s đến 40 s, người đi bộ đứng yên.",
+      "C. Từ 0 s đến 10 s, người đi bộ chuyển động với tốc độ 2 m/s; từ 10 s đến 20 s, người đi bộ chuyển động với tốc độ 10 m/s; từ 20 s đến 40 s, người đi bộ đứng yên.",
+      "D. Từ 0 s đến 10 s, người đi bộ chuyển động với tốc độ 1 m/s; từ 10 s đến 20 s, người đi bộ chuyển động với tốc độ 2 m/s; từ 20 s đến 40 s, người đi bộ đứng yên."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tốc độ trên một đoạn đồ thị được tính theo công thức $v = \\dfrac{\\Delta s}{\\Delta t}$, với $\\Delta s$ là quãng đường đi được và $\\Delta t$ là thời gian đi tương ứng.\nĐọc toạ độ các điểm gấp khúc trên đồ thị, dạng (t; s):\n(0; 0), (10; 20), (20; 30), (40; 30)\nĐoạn 1 (từ 0 s đến 10 s), tốc độ của vật:\n$v_1 = \\dfrac{20 - 0}{10 - 0} = \\dfrac{20}{10} = 2$ m/s\nĐoạn 2 (từ 10 s đến 20 s), tốc độ của vật:\n$v_2 = \\dfrac{30 - 20}{20 - 10} = \\dfrac{10}{10} = 1$ m/s\nĐoạn 3 (từ 20 s đến 40 s) nằm ngang: quãng đường không đổi, vật đứng yên.\nMô tả đúng: từ 0 s đến 10 s, người đi bộ chuyển động với tốc độ 2 m/s; từ 10 s đến 20 s, người đi bộ chuyển động với tốc độ 1 m/s; từ 20 s đến 40 s, người đi bộ đứng yên …",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07030303102",
+     "loai": "trac_nghiem",
+     "de": "Hình dưới là đồ thị quãng đường – thời gian của một người đi bộ chuyển động trên đường thẳng. Mô tả nào sau đây đúng với chuyển động của người đi bộ?",
+     "lua_chon": [
+      "Từ $0$ s đến $30$ s, người đi bộ chuyển động với tốc độ $1$ m/s; từ $30$ s đến $40$ s, người đi bộ chuyển động với tốc độ $2$ m/s; từ $40$ s đến $60$ s, người đi bộ đứng yên.",
+      "Từ $0$ s đến $30$ s, người đi bộ chuyển động với tốc độ $1$ m/s; từ $30$ s đến $40$ s, người đi bộ chuyển động với tốc độ $2$ m/s; từ $40$ s đến $60$ s, người đi bộ chuyển động với tốc độ $2$ m/s.",
+      "Từ $0$ s đến $20$ s, người đi bộ chuyển động với tốc độ $1$ m/s; từ $20$ s đến $40$ s, người đi bộ chuyển động với tốc độ $2$ m/s; từ $40$ s đến $60$ s, người đi bộ đứng yên.",
+      "Từ $0$ s đến $30$ s, người đi bộ chuyển động với tốc độ $2$ m/s; từ $30$ s đến $40$ s, người đi bộ chuyển động với tốc độ $1$ m/s; từ $40$ s đến $60$ s, người đi bộ đứng yên."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tốc độ trên một đoạn đồ thị được tính theo công thức $v = \\dfrac{\\Delta s}{\\Delta t}$, với $\\Delta s$ là quãng đường đi được và $\\Delta t$ là thời gian đi tương ứng.\nĐọc toạ độ các điểm gấp khúc trên đồ thị, dạng $(t; s)$: \n$(0; 0)$, $(30; 30)$, $(40; 50)$, $(60; 50)$\nĐoạn 1 (từ $0$ s đến $30$ s), tốc độ của vật:\n$v_1 = \\dfrac{30-0}{30-0} = \\dfrac{30}{30} = 1$ m/s\nĐoạn 2 (từ $30$ s đến $40$ s), tốc độ của vật:\n$v_2 = \\dfrac{50-30}{40-30} = \\dfrac{20}{10} = 2$ m/s\nĐoạn 3 (từ $40$ s đến $60$ s) nằm ngang: quãng đường không đổi, vật đứng yên.\nMô tả đúng: từ $0$ s đến $30$ s, người đi bộ chuyển động với tốc độ $1$ m/s; từ $30$ s đến $40$ s, người đi bộ chuyển động với tốc độ $2$ m/s; từ $40$ s đ …",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K07030303092",
+     "loai": "trac_nghiem",
+     "de": "Hình dưới là đồ thị quãng đường – thời gian của một xe đồ chơi điều khiển từ xa chuyển động trên đường thẳng. Mô tả nào sau đây đúng với chuyển động của xe đồ chơi?",
+     "lua_chon": [
+      "Từ 0 s đến 10 s, xe đồ chơi chuyển động với tốc độ 1 m/s; từ 10 s đến 30 s, xe đồ chơi đứng yên; từ 30 s đến 40 s, xe đồ chơi chuyển động với tốc độ 2 m/s.",
+      "Từ 0 s đến 10 s, xe đồ chơi chuyển động với tốc độ 1 m/s; từ 10 s đến 20 s, xe đồ chơi đứng yên; từ 20 s đến 40 s, xe đồ chơi chuyển động với tốc độ 1,25 m/s.",
+      "Từ 0 s đến 10 s, xe đồ chơi chuyển động với tốc độ 2 m/s; từ 10 s đến 20 s, xe đồ chơi đứng yên; từ 20 s đến 40 s, xe đồ chơi chuyển động với tốc độ 1 m/s.",
+      "Từ 0 s đến 10 s, xe đồ chơi chuyển động với tốc độ 1 m/s; từ 10 s đến 20 s, xe đồ chơi đứng yên; từ 20 s đến 40 s, xe đồ chơi chuyển động với tốc độ 2 m/s."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tốc độ trên một đoạn đồ thị được tính theo công thức $v = \\dfrac{\\Delta s}{\\Delta t}$, với $\\Delta s$ là quãng đường đi được và $\\Delta t$ là thời gian đi tương ứng.\nĐọc toạ độ các điểm gấp khúc trên đồ thị, dạng (t; s):\n(0; 0), (10; 10), (20; 10), (40; 50)\nĐoạn 1 (từ 0 s đến 10 s), tốc độ của vật:\n$v_1 = \\dfrac{10 - 0}{10 - 0} = \\dfrac{10}{10} = 1\\ \\mathrm{m/s}$\nĐoạn 2 (từ 10 s đến 20 s) nằm ngang: quãng đường không đổi, vật đứng yên.\nĐoạn 3 (từ 20 s đến 40 s), tốc độ của vật:\n$v_2 = \\dfrac{50 - 10}{40 - 20} = \\dfrac{40}{20} = 2\\ \\mathrm{m/s}$\nMô tả đúng: từ 0 s đến 10 s, xe đồ chơi chuyển động với tốc độ 1 m/s; từ 10 s đến 20 s, xe đồ chơi đứng yên; từ 20 s đến 40 s, xe đồ chơi chuyển động …",
+     "co_hinh": true
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00736",
+   "nhom_id": "KNB00330",
+   "thu_tu": 1,
+   "dang": "VẼ ĐỒ THỊ TỪ BẢNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 21,
+   "cau_mau": [
+    {
+     "ma_cau": "K07030304026",
+     "loai": "tu_luan",
+     "de": "Bảng sau ghi quãng đường vận động viên đi được tại các thời điểm kể từ lúc xuất phát. Vẽ đồ thị quãng đường – thời gian biểu diễn chuyển động của vận động viên. Chọn tỉ lệ xích: trên trục thời gian mỗi vạch chia ứng với $10\\ \\mathrm{s}$, trên trục quãng đường mỗi vạch chia ứng với $20\\ \\mathrm{m}$.\n$\\begin{array}{|l|l|l|l|l|}\n\\hline\nt\\ (\\mathrm{s}) & 0 & 20 & 50 \\\\\n\\hline\ns\\ (\\mathrm{m}) & 0 & 0 & 90 \\\\\n\\hline\n\\end{array}$",
+     "loi_giai": "Vẽ hai trục vuông góc: trục ngang biểu diễn thời gian $t$, trục đứng biểu diễn quãng đường $s$, gốc toạ độ $O$.\nChia vạch theo tỉ lệ xích: mỗi vạch chia trên trục thời gian ứng với $10\\ \\mathrm{s}$, mỗi vạch chia trên trục quãng đường ứng với $20\\ \\mathrm{m}$.\nCác điểm biểu diễn theo bảng, dạng $(t;\\ s)$:\n$(0;\\ 0)$, $(20;\\ 0)$, $(50;\\ 90)$\nChấm các điểm vừa tìm được lên hệ trục toạ độ.\nNối các điểm theo thứ tự thời gian tăng dần bằng các đoạn thẳng.\nTừ $0\\ \\mathrm{s}$ đến $20\\ \\mathrm{s}$, quãng đường không đổi bằng $0\\ \\mathrm{m}$, đồ thị là đoạn nằm ngang.\nĐồ thị vừa vẽ đi qua gốc toạ độ, các đoạn tăng ứng với lúc vật chuyển động."
+    },
+    {
+     "ma_cau": "K07030304035",
+     "loai": "tu_luan",
+     "de": "Bảng sau ghi quãng đường vận động viên đi được trong từng khoảng thời gian liên tiếp kể từ lúc xuất phát. Vẽ đồ thị quãng đường – thời gian biểu diễn chuyển động của vận động viên. Chọn tỉ lệ xích: trên trục thời gian mỗi vạch chia ứng với $10 \\mathrm{~s}$, trên trục quãng đường mỗi vạch chia ứng với $10 \\mathrm{~m}$.\nKhoảng thời gian, $\\mathrm{t}(\\mathrm{s})$\n$\\begin{array}{|c|c|c|c|c|}\\hline 0 \\rightarrow 10 & 10 \\rightarrow 20 & 20 \\rightarrow 30 & 30 \\rightarrow 40 \\\\ \\hline \\text {Quãng đường đi được}, \\Delta \\mathrm{s}(\\mathrm{m}) & 30 & 0 & 40 & 0 \\\\ \\hline \\end{array}$",
+     "loi_giai": "Vẽ hai trục vuông góc: trục ngang biểu diễn thời gian $\\mathrm{t}$, trục đứng biểu diễn quãng đường $\\mathrm{s}$, gốc tọa độ\n$\\mathrm{O}$.\nChia vạch theo tỉ lệ xích: mỗi vạch chia trên trục thời gian ứng với $10 \\mathrm{~s}$, mỗi vạch chia trên trục quãng đường ứng với $10 \\mathrm{~m}$.\nQuãng đường tính từ lúc xuất phát tại từng thời điểm (cộng dồn các khoảng):\n$\\mathrm{s}_1=30 \\mathrm{~m}$ (tại $\\mathrm{t}=10 \\mathrm{~s}$)\n$\\mathrm{s}_2=\\mathrm{s}_1+0=30+0=30 \\mathrm{~m}$ (tại $\\mathrm{t}=20 \\mathrm{~s}$)\n$\\mathrm{s}_3=\\mathrm{s}_2+40=30+40=70 \\mathrm{~m}$ (tại $\\mathrm{t}=30 \\mathrm{~s}$)\n$\\mathrm{s}_4=\\mathrm{s}_3+0=70+0=70 \\mathrm{~m}$ (tại $\\mathrm{t}=40 \\mathrm{~s}$)\nCác điểm biểu diễn …"
+    },
+    {
+     "ma_cau": "K07030304022",
+     "loai": "tu_luan",
+     "de": "Bảng sau ghi quãng đường xe máy đi được tại các thời điểm kể từ lúc xuất phát. Vẽ đồ thị quãng đường – thời gian biểu diễn chuyển động của xe máy. Chọn tỉ lệ xích: trên trục thời gian mỗi vạch chia ứng với $1 \\mathrm{~h}$, trên trục quãng đường mỗi vạch chia ứng với $20 \\mathrm{~km}$.\n$\\begin{array}{|c|c|c|c|c|c|}\\hline \\mathrm{t (h)} & 0 & 2 & 3 & 4 \\\\ \\hline \\mathrm{s (km)} & 0 & 80 & 80 & 140 \\\\ \\hline \\end{array}$",
+     "loi_giai": "Vẽ hai trục vuông góc: trục ngang biểu diễn thời gian $\\mathrm{t}$, trục đứng biểu diễn quãng đường $\\mathrm{s}$, gốc tọa độ $\\mathrm{O}$.\nChia vạch theo tỉ lệ xích: mỗi vạch chia trên trục thời gian ứng với $1 \\mathrm{~h}$, mỗi vạch chia trên trục quãng đường ứng với $20 \\mathrm{~km}$.\nCác điểm biểu diễn theo bảng, dạng $(\\mathrm{t} ; \\mathrm{s})$:\n$(0 ; 0), (2 ; 80), (3 ; 80), (4 ; 140)$\nChấm các điểm vừa tìm được lên hệ trục tọa độ.\nNối các điểm theo thứ tự thời gian tăng dần bằng các đoạn thẳng.\nTừ $2 \\mathrm{~h}$ đến $3 \\mathrm{~h}$, quãng đường không đổi bằng $80 \\mathrm{~km}$, đồ thị là đoạn nằm ngang.\nĐồ thị vừa vẽ đi qua gốc tọa độ, các đoạn thẳng ứng với lúc vật chuyển động."
+    },
+    {
+     "ma_cau": "K07030304034",
+     "loai": "tu_luan",
+     "de": "Bảng sau ghi quãng đường xe máy đi được tại các thời điểm kể từ lúc xuất phát. Vẽ đồ thị quãng đường – thời gian biểu diễn chuyển động của xe máy. Chọn tỉ lệ xích: trên trục thời gian mỗi vạch chia ứng với 1 h, trên trục quãng đường mỗi vạch chia ứng với 20 km.\n$$\\begin{array}{|c|c|c|c|}\n\\hline\nt \\text{ (h)} & 0 & 2 & 3 \\\\\n\\hline\ns \\text{ (km)} & 0 & 80 & 80 \\\\\n\\hline\n\\end{array}$$",
+     "loi_giai": "Vẽ hai trục vuông góc: trục ngang biểu diễn thời gian t, trục đứng biểu diễn quãng đường s, gốc toạ độ 0.\nChia vạch theo tỉ lệ xích: mỗi vạch chia trên trục thời gian ứng với 1 h, mỗi vạch chia trên trục quãng đường ứng với 20 km.\nCác điểm biểu diễn theo bảng, dạng $(t; s)$:\n$(0; 0)$, $(2; 80)$, $(3; 80)$\nChấm các điểm vừa tìm được lên hệ trục toạ độ.\nNối các điểm theo thứ tự thời gian tăng dần bằng các đoạn thẳng.\nTừ $2$ h đến $3$ h, quãng đường không đổi bằng $80$ km, đồ thị là đoạn nằm ngang.\nĐồ thị vừa vẽ đi qua gốc toạ độ, các đoạn thẳng ứng với lúc vật chuyển động."
+    },
+    {
+     "ma_cau": "K07030304018",
+     "loai": "tu_luan",
+     "de": "Bảng sau ghi quãng đường xe đồ chơi đi được tại các thời điểm kể từ lúc xuất phát. Vẽ đồ thị quãng đường – thời gian biểu diễn chuyển động của xe đồ chơi. \n$$\\begin{array}{c|ccc} t\\ (\\mathrm{s}) & 0 & 30 & 50 \\\\ \\hline s\\ (\\mathrm{m}) & 0 & 30 & 70 \\end{array}$$",
+     "loi_giai": "Vẽ hai trục vuông góc: trục ngang biểu diễn thời gian $t$, trục đứng biểu diễn quãng đường $s$, gốc toạ độ $O$.\nChia vạch theo tỉ lệ xích: mỗi vạch chia trên trục thời gian ứng với $10\\ \\mathrm{s}$, mỗi vạch chia trên trục quãng đường ứng với $10\\ \\mathrm{m}$.\nCác điểm biểu diễn theo bảng, dạng $(t; s)$:\n$(0; 0)$, $(30; 30)$, $(50; 70)$\nChấm các điểm vừa tìm được lên hệ trục toạ độ.\nNối các điểm theo thứ tự thời gian tăng dần bằng các đoạn thẳng.\nĐồ thị vừa vẽ đi qua gốc toạ độ, các đoạn thẳng ứng với lúc vật chuyển động."
+    },
+    {
+     "ma_cau": "K07030304027",
+     "loai": "tu_luan",
+     "de": "Bảng sau ghi quãng đường xe đạp điện đi được tại các thời điểm kể từ lúc xuất phát. Vẽ đồ thị quãng đường - thời gian biểu diễn chuyển động của xe đạp điện. Chọn tỉ lệ xích: trên trục thời gian mỗi vạch chia ứng với $10$ min, trên trục quãng đường mỗi vạch chia ứng với $2$ km.\n$\\begin{array}{|l|c|c|c|c|}\\hline \\text{t (min)} & 0 & 20 & 40 & 60 \\\\ \\hline \\text{s (km)} & 0 & 4 & 4 & 12 \\\\ \\hline \\end{array}$\n[hình]",
+     "loi_giai": "Vẽ hai trục vuông góc: trục ngang biểu diễn thời gian t, trục đứng biểu diễn quãng đường s, gốc tọa độ $O$.\nChia vạch theo tỉ lệ xích: mỗi vạch chia trên trục thời gian ứng với $10$ min, mỗi vạch chia trên trục quãng đường ứng với $2$ km.\nCác điểm biểu diễn theo bảng, dạng (t; s):\n$(0; 0)$, $(20; 4)$, $(40; 4)$, $(60; 12)$\nChấm các điểm vừa tìm được lên hệ trục tọa độ.\nNối các điểm theo thứ tự thời gian tăng dần bằng các đoạn thẳng.\nTừ $20$ min đến $40$ min, quãng đường không đổi bằng $4$ km, đồ thị là đoạn nằm ngang.\nĐồ thị vừa vẽ đi qua gốc tọa độ, các đoạn thẳng ứng với lúc vật chuyển động."
+    }
+   ]
+  }
+ ]
+}

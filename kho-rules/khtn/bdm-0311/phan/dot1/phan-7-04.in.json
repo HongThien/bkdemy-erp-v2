@@ -1,0 +1,948 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00331",
+   "chu_de": "Âm thanh",
+   "chuyen_de": "SÓNG ÂM",
+   "nhom": "NGUỒN ÂM, SÓNG ÂM VÀ MÔI TRƯỜNG TRUYỀN ÂM",
+   "nhom_ly_thuyet": "Nguồn âm:\n●\tVật phát ra âm gọi là nguồn âm. Mọi nguồn âm đều dao động.\n●\tDao động là chuyển động qua lại quanh một vị trí cân bằng.\n●\tVật ngừng dao động thì ngừng phát ra âm.\nSóng âm:\n●\tSóng âm là sự lan truyền dao động của nguồn âm trong môi trường.\n●\tCác hạt của môi trường chỉ dao động tại chỗ; dao động được truyền từ lớp hạt này sang lớp hạt khác.\nMôi trường truyền âm:\n●\tÂm truyền được qua chất rắn, chất lỏng, chất khí.\n●\tÂm không truyền được qua chân không vì chân không không có hạt vật chất.\nVí dụ 1. Khi kéo đàn nhị, bộ phận nào dao động phát ra âm?\nHướng dẫn: Dây đàn nhị dao động phát ra âm, nên dây đàn là nguồn âm.\nVí dụ 2. Ngư dân gõ vào mạn thuyền gỗ để lùa cá. Âm truyền tới cá qua những môi trường nào?\nHướng dẫn: Âm truyền qua mạn thuyền (chất rắn) rồi qua nước (chất lỏng) tới cá.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB00737",
+     "thu_tu": 1,
+     "ten": "Nhận ra nguồn âm và bộ phận dao động",
+     "mo_ta": "Đề cho một nhạc cụ, con vật hay đồ vật đang phát ra âm, hỏi vật nào là nguồn âm hoặc bộ phận nào dao động để phát ra âm.\nGồm: nhận biết khái niệm nguồn âm; chỉ ra bộ phận dao động (dây đàn, cánh côn trùng, mặt trống, cột không khí trong sáo…).\nGồm cả câu giải thích hiện tượng: vật dao động thì phát âm, vật ngừng dao động thì ngừng phát âm.\nLưu ý: đề hỏi âm truyền qua chất rắn, lỏng, khí hay chân không ⇒ thuộc dạng \"Môi trường truyền âm\".",
+     "ly_thuyet": "##TC Nguồn âm và dao động\nVật phát ra âm gọi là nguồn âm. Mọi nguồn âm đều dao động.\nDao động là chuyển động qua lại quanh một vị trí cân bằng.\nVật ngừng dao động thì ngừng phát ra âm.\n\n##PP Cách tìm bộ phận phát ra âm\nXác định vật đang phát ra âm trong đề.\nTìm bộ phận chuyển động qua lại liên tục khi vật phát âm.\nKết luận bộ phận đó dao động nên là nguồn âm.\n\n##CY Chú ý\nChỉ bộ phận dao động mới là nguồn âm, các bộ phận đứng yên (cần đàn, chân đàn, phím đàn…) không phát âm.\nVới sáo, kèn, ống: bộ phận dao động là cột không khí trong ống.\nÂm tắt khi vật bị giữ chặt vì vật ngừng dao động, không phải vì vật hỏng hay không khí ngừng truyền âm.",
+     "vi_du": "##VD\nKhi thổi sáo trúc, bộ phận nào dao động phát ra âm?\nA. Thân ống sáo bằng tre.\nB. Các lỗ bấm trên thân sáo.\nC. Ngón tay người thổi.\nD. Cột không khí trong ống sáo.\n\nBài giải:\nKhi thổi sáo, người thổi làm cột không khí trong ống sáo chuyển động qua lại liên tục.\nCột không khí dao động nên là nguồn phát ra âm.\nThân ống sáo, lỗ bấm và ngón tay không dao động để phát ra âm.\nChọn D.\n\n##VD\nRắc một ít hạt gạo lên mặt trống rồi gõ trống, thấy các hạt gạo nảy lên. Hiện tượng này chứng tỏ\nA. hạt gạo là nguồn âm.\nB. âm làm hạt gạo nóng lên.\nC. mặt trống đứng yên khi phát ra âm.\nD. mặt trống dao động khi phát ra âm.\n\nBài giải:\nKhi gõ trống, mặt trống phát ra âm.\nHạt gạo nảy lên chứng tỏ mặt trống đang chuyển động qua lại, tức là dao động.\nVậy mặt trống dao động khi phát ra âm.\nChọn D."
+    },
+    {
+     "dang_id": "KDB00738",
+     "thu_tu": 2,
+     "ten": "Môi trường truyền âm",
+     "mo_ta": "Đề hỏi âm truyền được hay không truyền được qua môi trường nào (chất rắn, chất lỏng, chất khí, chân không).\nGồm: nêu các môi trường truyền âm; chỉ ra môi trường mà âm đã truyền qua trong một tình huống cụ thể (nói chuyện, áp tai xuống đất, chạm mũ…).\nGồm cả giải thích hiện tượng không nghe thấy âm do thiếu môi trường truyền (không gian vũ trụ, bình hút khí).\nLưu ý: đề so sánh âm truyền nhanh hay chậm hơn giữa các môi trường ⇒ thuộc dạng \"So sánh tốc độ âm trong chất rắn, lỏng, khí\".",
+     "ly_thuyet": "##TC Môi trường truyền âm\nÂm truyền được qua chất rắn, chất lỏng, chất khí.\nÂm không truyền được qua chân không vì chân không không có hạt vật chất.\nMuốn nghe được âm cần có môi trường liên tục nối nguồn âm với tai.\n\n##PP Cách xác định môi trường truyền âm\nXác định nguồn âm và nơi nhận âm trong đề.\nTìm vật hoặc chất nằm giữa nguồn âm và tai người nghe.\nXác định vật hoặc chất đó là rắn, lỏng hay khí, hay là chân không rồi kết luận.\n\n##CY Chú ý\nNgoài không gian vũ trụ là chân không nên âm không truyền được, phải dùng máy vô tuyến để liên lạc.\nHai vật rắn chạm vào nhau tạo thành môi trường rắn liên tục nên âm truyền được ngay cả khi xung quanh là chân không.\nKhi hút hết không khí khỏi bình, chuông vẫn dao động nhưng không còn môi trường truyền âm nên không nghe thấy.",
+     "vi_du": "##VD\nÁp tai xuống mặt đất có thể nghe được tiếng bước chân người đi từ xa. Hiện tượng này chứng tỏ\nA. âm không truyền được qua chất rắn.\nB. âm truyền được qua đất (chất rắn).\nC. đất là nguồn âm.\nD. âm chỉ truyền được qua không khí.\n\nBài giải:\nTiếng bước chân là âm do chân người tạo ra, lan tới tai khi áp tai xuống đất.\nGiữa chân người và tai là đất, đất là chất rắn.\nVậy âm truyền được qua đất, tức là qua chất rắn.\nChọn B.\n\n##VD\nTrên Mặt Trăng không có không khí, hai nhà du hành chạm mũ bảo hiểm vào nhau thì nghe được tiếng nói của nhau. Âm đã truyền qua\nA. mũ bảo hiểm (chất rắn).\nB. chân không giữa hai người.\nC. ánh sáng phản chiếu từ Mặt Trăng.\nD. không khí giữa hai người.\n\nBài giải:\nTrên Mặt Trăng không có không khí, âm không truyền được qua chân không.\nKhi hai mũ chạm nhau, chúng tạo thành môi trường chất rắn liên tục từ người nói tới người nghe.\nVậy âm đã truyền qua mũ bảo hiểm, là chất rắn.\nChọn A."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00332",
+   "chu_de": "Âm thanh",
+   "chuyen_de": "SÓNG ÂM",
+   "nhom": "TỐC ĐỘ TRUYỀN ÂM",
+   "nhom_ly_thuyet": "Tốc độ truyền âm:\n●\tTốc độ âm trong chất rắn lớn hơn trong chất lỏng, trong chất lỏng lớn hơn trong chất khí.\n●\tSố liệu dùng trong dạng này: không khí 340 m/s; nước 1 500 m/s; thép 6 100 m/s.\nCông thức (âm truyền một chiều):\n●\ts = v × t; t = s : v; v = s : t.\n●\ts là quãng đường âm truyền (m), t là thời gian (s), v là tốc độ âm (m/s).\nBài toán tia chớp – tiếng sét:\n●\tÁnh sáng truyền rất nhanh (khoảng 300 000 km/s) nên coi như thấy tia chớp ngay lúc sét đánh.\n●\tKhoảng cách tới chỗ sét đánh: s = 340 × t, với t là thời gian từ lúc thấy chớp đến lúc nghe tiếng sét.\nTrình tự làm bài:\n●\tXác định môi trường truyền âm, chọn đúng tốc độ.\n●\tĐổi đơn vị về m, s, m/s.\n●\tÁp dụng công thức, tính kết quả.\nLỗi thường gặp:\n●\tLấy nhầm tốc độ âm của môi trường khác.\n●\tQuên đổi km sang m, ms sang s.\n●\tChia ngược: lấy v : t hoặc v : s.\nVí dụ 1. Âm truyền trong không khí mất 0,6 s. Tính quãng đường âm truyền được.\nHướng dẫn: s = v × t = 340 × 0,6 = 204 m.\nVí dụ 2. Một người thấy tia chớp, sau 12 s thì nghe tiếng sét. Tính khoảng cách từ người đó đến chỗ sét đánh.\nHướng dẫn: Coi ánh sáng tới ngay. s = 340 × 12 = 4 080 m = 4,08 km.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB00739",
+     "thu_tu": 1,
+     "ten": "So sánh tốc độ âm trong chất rắn, lỏng, khí",
+     "mo_ta": "Đề so sánh tốc độ truyền âm giữa các môi trường rắn, lỏng, khí, không yêu cầu tính quãng đường hay thời gian.\nGồm: sắp xếp thứ tự môi trường theo tốc độ; chọn môi trường âm truyền nhanh nhất hoặc chậm nhất; xét phát biểu đúng hoặc sai; âm truyền qua môi trường nào tới trước.\nGồm cả so sánh tỉ số giữa hai tốc độ bằng số liệu đã cho.\nLưu ý: đề cho quãng đường hoặc thời gian rồi hỏi đại lượng còn lại ⇒ thuộc dạng \"Tính khoảng cách, thời gian truyền âm\".",
+     "ly_thuyet": "##TC Tốc độ truyền âm\nTốc độ âm trong chất rắn lớn hơn trong chất lỏng, trong chất lỏng lớn hơn trong chất khí.\nSố liệu: không khí $340\\ \\mathrm{m/s}$; nước $1\\ 500\\ \\mathrm{m/s}$; thép $6\\ 100\\ \\mathrm{m/s}$.\n\n##PP Cách so sánh tốc độ truyền âm\nXác định mỗi môi trường là chất rắn, chất lỏng hay chất khí.\nSắp xếp theo quy tắc tốc độ rắn > lỏng > khí.\nNếu hỏi tỉ số thì lấy tốc độ lớn chia tốc độ nhỏ.\n\n##CY Chú ý\nTốc độ âm trong không khí nhỏ nhất, không phải lớn nhất.\nÂm truyền qua môi trường có tốc độ lớn hơn thì tới nơi nhận trước.",
+     "vi_du": "##VD\nMột tiếng nổ phát ra đồng thời trong nước và trong không khí ngay trên mặt hồ. Một thiết bị thu âm đặt ở bờ hồ bên kia có thể thu cả âm truyền qua nước và qua không khí. Âm tới thiết bị trước là âm truyền qua\nA. không khí.\nB. cả hai tới cùng lúc.\nC. không có âm nào tới.\nD. nước.\n\nBài giải:\nNước là chất lỏng, không khí là chất khí.\nTốc độ âm trong chất lỏng lớn hơn trong chất khí nên âm truyền qua nước nhanh hơn.\nHai âm đi cùng quãng đường nên âm qua nước tới thiết bị trước.\nChọn D.\n\n##VD\nTốc độ âm trong nước lớn gấp khoảng bao nhiêu lần tốc độ âm trong không khí?\nA. 0,23 lần.\nB. 4,1 lần.\nC. 4,4 lần.\nD. 18 lần.\n\nBài giải:\nTốc độ âm trong nước là $1\\ 500\\ \\mathrm{m/s}$, trong không khí là $340\\ \\mathrm{m/s}$.\nTỉ số hai tốc độ là $1\\ 500 : 340 \\approx 4,4$.\nVậy tốc độ âm trong nước lớn gấp khoảng $4,4$ lần tốc độ âm trong không khí.\nChọn C."
+    },
+    {
+     "dang_id": "KDB00740",
+     "thu_tu": 2,
+     "ten": "Tính khoảng cách, thời gian truyền âm",
+     "mo_ta": "Bài trắc nghiệm tính quãng đường (khoảng cách), thời gian hoặc tốc độ của âm truyền một chiều bằng $s = v \\times t$.\nĐề cho hai trong ba đại lượng s, t, v (hoặc cho môi trường để suy ra v) và hỏi đại lượng còn lại.\nCó thể phải đổi đơn vị (km sang m, ms sang s) hoặc đoán môi trường từ tốc độ tính được.\nLưu ý: bài hiện tượng tia chớp và tiếng sét ⇒ thuộc dạng \"Thấy chớp trước khi nghe tiếng sét\"; bài tự luận nhiều bước, so sánh hai môi trường ⇒ thuộc dạng \"Tính khoảng cách, thời gian truyền âm\" (tự luận).",
+     "ly_thuyet": "##TC Công thức âm truyền một chiều\n$s = v \\times t$; $t = s : v$; $v = s : t$ với $s$ (m), $t$ (s), $v$ (m/s).\nSố liệu: không khí $340\\ \\mathrm{m/s}$; nước $1\\ 500\\ \\mathrm{m/s}$; thép $6\\ 100\\ \\mathrm{m/s}$.\nĐổi đơn vị: $1\\ \\mathrm{km} = 1\\ 000\\ \\mathrm{m}$; $1\\ \\mathrm{s} = 1\\ 000\\ \\mathrm{ms}$.\n\n##PP Cách làm bài\nXác định môi trường truyền âm và chọn đúng tốc độ (nếu đề chưa cho).\nĐổi mọi đại lượng về m, s, m/s.\nChọn công thức phù hợp với đại lượng cần tìm.\nThay số, tính kết quả và đối chiếu với các phương án.\n\n##CY Chú ý\nLấy nhầm tốc độ âm của môi trường khác sẽ ra phương án nhiễu.\nQuên đổi km sang m hoặc ms sang s làm kết quả lệch $1\\ 000$ lần.\nChia ngược (lấy $v : t$ thay vì $s : v$) cho kết quả sai.\nTính được tốc độ thì so với bảng số liệu để suy ra môi trường.",
+     "vi_du": "##VD\nÂm truyền trong nước đi được quãng đường 3 km. Thời gian âm truyền là\nA. 0,002 s.\nB. 0,5 s.\nC. 2 s.\nD. 8,82 s.\n\nBài giải:\nÂm truyền trong nước nên $v = 1\\ 500\\ \\mathrm{m/s}$.\nĐổi $3\\ \\mathrm{km} = 3\\ 000\\ \\mathrm{m}$.\nThời gian âm truyền là $t = s : v = 3\\ 000 : 1\\ 500 = 2\\ \\mathrm{s}$.\nChọn C.\n\n##VD\nÂm truyền được $1\\ 830\\ \\mathrm{m}$ trong $0,3\\ \\mathrm{s}$. Âm đã truyền trong môi trường nào?\nA. Không khí.\nB. Chân không.\nC. Thép.\nD. Nước.\n\nBài giải:\nTốc độ truyền âm là $v = s : t = 1\\ 830 : 0,3 = 6\\ 100\\ \\mathrm{m/s}$.\nGiá trị này đúng bằng tốc độ âm trong thép.\nVậy âm đã truyền trong thép.\nChọn C."
+    },
+    {
+     "dang_id": "KDB00741",
+     "thu_tu": 3,
+     "ten": "Thấy chớp trước khi nghe tiếng sét",
+     "mo_ta": "Bài trắc nghiệm về hiện tượng thấy tia chớp trước khi nghe tiếng sét.\nGồm: giải thích vì sao thấy chớp trước; tính khoảng cách tới chỗ sét đánh từ thời gian giữa chớp và sét; tính thời gian nghe sét từ khoảng cách; ước lượng nhanh bằng thời gian đếm.\nLưu ý: bài tự luận hoặc trả lời ngắn cùng hiện tượng (đếm nhịp, so sánh hai lần sét) ⇒ thuộc dạng \"Thấy chớp trước khi nghe tiếng sét\" (trả lời ngắn); âm truyền trong môi trường khác không liên quan sét ⇒ thuộc dạng \"Tính khoảng cách, thời gian truyền âm\".",
+     "ly_thuyet": "##TC Tia chớp và tiếng sét\nChớp và sét xảy ra cùng lúc. Ánh sáng truyền rất nhanh (khoảng $300\\ 000\\ \\mathrm{km/s}$) nên coi như thấy chớp ngay lúc sét đánh; âm truyền trong không khí với $340\\ \\mathrm{m/s}$ nên tới tai chậm hơn.\nKhoảng cách tới chỗ sét đánh: $s = 340 \\times t$, với $t$ là thời gian từ lúc thấy chớp đến lúc nghe sét.\n\n##PP Cách làm bài\nCoi thời gian ánh sáng truyền bằng không, lấy $t$ là thời gian từ lúc thấy chớp đến lúc nghe sét.\nĐổi khoảng cách về mét nếu đề cho kilômét.\nÁp dụng $s = 340 \\times t$ hoặc $t = s : 340$.\nĐối chiếu kết quả với các phương án.\n\n##CY Chú ý\nLí do thấy chớp trước là tốc độ ánh sáng lớn hơn rất nhiều so với tốc độ âm, không phải do chớp xuất hiện trước sét.\nCứ khoảng $3\\ \\mathrm{s}$ giữa chớp và sét thì sét cách khoảng $1\\ \\mathrm{km}$.\nQuên đổi km sang m làm kết quả sai $1\\ 000$ lần.",
+     "vi_du": "##VD\nTa thấy tia chớp trước khi nghe tiếng sét vì\nA. tai người nhận biết âm chậm hơn mắt nhận biết ánh sáng.\nB. âm không truyền được trong không khí.\nC. tia chớp xuất hiện trước tiếng sét.\nD. tốc độ ánh sáng lớn hơn rất nhiều so với tốc độ âm trong không khí.\n\nBài giải:\nChớp và sét xảy ra cùng một lúc.\nÁnh sáng truyền với tốc độ khoảng $300\\ 000\\ \\mathrm{km/s}$ nên tới mắt gần như tức thời.\nÂm truyền trong không khí chỉ $340\\ \\mathrm{m/s}$ nên tới tai sau.\nChọn D.\n\n##VD\nSét đánh ở nơi cách một người $3,57$ km. Thời gian từ lúc người đó thấy tia chớp đến lúc nghe tiếng sét là\nA. $0,0105$ s.\nB. $0,095$ s.\nC. $2,38$ s.\nD. $10,5$ s.\n\nBài giải:\nĐổi $3,57\\ \\mathrm{km} = 3\\ 570\\ \\mathrm{m}$.\nCoi ánh sáng tới ngay, thời gian cần tìm là thời gian âm truyền.\n$t = s : v = 3\\ 570 : 340 = 10,5\\ \\mathrm{s}$.\nChọn D."
+    },
+    {
+     "dang_id": "KDB00742",
+     "thu_tu": 4,
+     "ten": "Tính khoảng cách, thời gian truyền âm",
+     "mo_ta": "Bài tự luận tính toán nhiều bước về âm truyền một chiều, phải tính một đại lượng trung gian rồi mới ra đáp số.\nGồm: tìm tốc độ từ dữ kiện rồi dùng tính quãng đường hoặc thời gian khác; cùng thời gian hoặc cùng quãng đường nhưng đổi môi trường; tính độ chênh thời gian giữa hai môi trường (không khí, nước, thép).\nCó đổi đơn vị và làm tròn theo yêu cầu.\nLưu ý: bài một bước trắc nghiệm áp dụng $s = v \\times t$ ⇒ thuộc dạng \"Tính khoảng cách, thời gian truyền âm\" (trắc nghiệm).",
+     "ly_thuyet": "##TC Công thức và quan hệ cần dùng\n$s = v \\times t$; $t = s : v$; $v = s : t$.\nCùng quãng đường: thời gian trong môi trường nào tính bằng $s : v$ của môi trường đó, độ chênh thời gian là $\\Delta t = t_1 - t_2$.\nCùng thời gian: quãng đường tỉ lệ với tốc độ truyền âm của môi trường.\nSố liệu: không khí $340\\ \\mathrm{m/s}$; nước $1\\ 500\\ \\mathrm{m/s}$; thép $6\\ 100\\ \\mathrm{m/s}$.\n\n##PP Cách làm bài\nĐọc đề, xác định đại lượng nào đã biết và đại lượng nào phải tìm trước.\nĐổi đơn vị về m, s, m/s.\nTính đại lượng trung gian (tốc độ, thời gian hoặc quãng đường) bằng công thức phù hợp.\nDùng đại lượng đó tính tiếp đại lượng đề hỏi, làm tròn theo yêu cầu.\n\n##CY Chú ý\nChỉ làm tròn ở bước cuối nếu có thể, tránh làm tròn sớm làm sai lệch kết quả.\nHiệu thời gian lấy thời gian lớn trừ thời gian nhỏ (âm truyền trong chất khí lâu hơn).\nKhi chưa biết quãng đường mà biết độ chênh thời gian, đặt ẩn $s$ và lập phương trình.",
+     "vi_du": "##VD\nTrong một môi trường, âm truyền được $4\\,200$ m trong $2,8$ s. Trong môi trường đó, âm truyền quãng đường $9$ km mất bao lâu?\n\nBài giải:\nTốc độ âm trong môi trường đó là $v = 4\\,200 : 2,8 = 1\\,500\\ \\mathrm{m/s}$.\nĐổi $9\\ \\mathrm{km} = 9\\,000\\ \\mathrm{m}$.\nThời gian âm truyền $9\\,000\\ \\mathrm{m}$ là $t = 9\\,000 : 1\\,500 = 6\\ \\mathrm{s}$.\nĐáp án: $6\\ \\mathrm{s}$.\n\n##VD\nGõ một lần vào đầu một thanh ray thép dài $854$ m. Người áp tai ở đầu kia nghe được hai tiếng: một tiếng truyền qua thép, một tiếng truyền qua không khí. Tính khoảng thời gian giữa hai tiếng (làm tròn đến hàng phần trăm).\n\nBài giải:\nThời gian âm truyền qua thép là $t_1 = 854 : 6\\ 100 = 0,14\\ \\mathrm{s}$.\nThời gian âm truyền qua không khí là $t_2 = 854 : 340 \\approx 2,51\\ \\mathrm{s}$.\nKhoảng thời gian giữa hai tiếng là $\\Delta t = t_2 - t_1 = 2,51 - 0,14 = 2,37\\ \\mathrm{s}$.\nĐáp án: $2,37\\ \\mathrm{s}$."
+    },
+    {
+     "dang_id": "KDB00743",
+     "thu_tu": 5,
+     "ten": "Thấy chớp trước khi nghe tiếng sét",
+     "mo_ta": "Bài trả lời ngắn về hiện tượng chớp và sét: tính khoảng cách tới chỗ sét đánh hoặc thời gian từ chớp đến sét.\nGồm: đổi cách đếm (số nhịp nhân thời gian mỗi nhịp) ra thời gian; so sánh hai lần sét ở hai khoảng thời gian khác nhau, tính chênh lệch khoảng cách.\nĐáp số là một số, kèm đơn vị đề yêu cầu.\nLưu ý: câu trắc nghiệm hoặc giải thích vì sao thấy chớp trước ⇒ thuộc dạng \"Thấy chớp trước khi nghe tiếng sét\" (trắc nghiệm).",
+     "ly_thuyet": "##TC Khoảng cách tới chỗ sét đánh\nCoi ánh sáng tới ngay lúc sét đánh; thời gian $t$ từ lúc thấy chớp đến lúc nghe sét là thời gian âm truyền trong không khí.\n$s = 340 \\times t$ và $t = s : 340$, với $s$ (m), $t$ (s).\nĐộ chênh khoảng cách giữa hai lần sét: $\\Delta s = 340 \\times (t_1 - t_2)$.\n\n##PP Cách làm bài\nTìm thời gian $t$ từ lúc thấy chớp đến lúc nghe sét (nếu đề cho số nhịp thì lấy số nhịp nhân thời gian mỗi nhịp).\nChọn công thức $s = 340 \\times t$ hoặc $t = s : 340$.\nTính kết quả, với bài hai lần sét thì tính từng khoảng cách rồi lấy hiệu.\nGhi đáp số kèm đơn vị.\n\n##CY Chú ý\nChỗ sét đánh gần hơn khi thời gian chớp đến sét ngắn hơn.\nĐáp số phải theo đơn vị đề yêu cầu (m hoặc s).",
+     "vi_du": "##VD\nMột bạn thấy tia chớp và bắt đầu đếm nhịp đều, mỗi nhịp $0,5$ s. Đếm được 17 nhịp thì nghe tiếng sét. Tính khoảng cách từ bạn đó tới chỗ sét đánh.\n\nBài giải:\nThời gian từ lúc thấy chớp đến lúc nghe sét là $t = 17 \\times 0,5 = 8,5\\ \\mathrm{s}$.\nKhoảng cách tới chỗ sét đánh là $s = 340 \\times 8,5 = 2\\ 890\\ \\mathrm{m}$.\nĐáp án: $2\\ 890\\ \\mathrm{m}$.\n\n##VD\nTrong một cơn dông, lần thứ nhất nghe tiếng sét sau khi thấy chớp 10 s, lần thứ hai sau 1 s. Chỗ sét đánh lần thứ hai gần người quan sát hơn lần thứ nhất bao nhiêu mét?\n\nBài giải:\nKhoảng cách tới chỗ sét đánh lần thứ nhất là $s_1 = 340 \\times 10 = 3\\ 400\\ \\mathrm{m}$.\nKhoảng cách tới chỗ sét đánh lần thứ hai là $s_2 = 340 \\times 1 = 340\\ \\mathrm{m}$.\nChỗ sét đánh lần thứ hai gần hơn: $\\Delta s = 3\\ 400 - 340 = 3\\ 060\\ \\mathrm{m}$.\nĐáp án: $3\\ 060\\ \\mathrm{m}$."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K07040101031",
+   "nhom_id": "KNB00331",
+   "loai": "trac_nghiem",
+   "de": "Các vật phát ra âm được gọi là gì?",
+   "lua_chon": [
+    "Nguồn âm",
+    "Sóng âm",
+    "Môi trường truyền âm",
+    "Vật cản âm"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Vật phát ra âm gọi là nguồn âm; khi phát ra âm, nguồn âm dao động.\n\nVì sao các phương án khác sai:\n- B: Sóng âm là dao động lan truyền trong môi trường, không phải vật phát ra âm.\n- C: Môi trường (rắn, lỏng, khí) chỉ truyền âm đi, không phải vật phát ra âm.\n- D: Vật cản âm làm âm yếu đi, không phải vật phát ra âm."
+  },
+  {
+   "ma_cau": "K07040101032",
+   "nhom_id": "KNB00331",
+   "loai": "trac_nghiem",
+   "de": "Khi gảy đàn guitar, bộ phận nào dao động phát ra âm?",
+   "lua_chon": [
+    "Ngón tay người gảy",
+    "Dây đàn",
+    "Các phím trên cần đàn",
+    "Không khí quanh đàn"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Gảy đàn làm dây đàn dao động; dây đàn dao động phát ra âm.\n\nVì sao các phương án khác sai:\n- A: Ngón tay chỉ tác động làm dây đàn dao động; dây đàn mới là bộ phận phát âm.\n- C: Phím đàn đứng yên, chỉ dùng để bấm thay đổi độ dài dây.\n- D: Không khí là môi trường truyền âm từ đàn tới tai, không phải bộ phận phát âm."
+  },
+  {
+   "ma_cau": "K07040101033",
+   "nhom_id": "KNB00331",
+   "loai": "trac_nghiem",
+   "de": "Khi thổi sáo, bộ phận nào dao động phát ra âm?",
+   "lua_chon": [
+    "Thân ống sáo bằng tre",
+    "Ngón tay bịt các lỗ sáo",
+    "Cột không khí trong ống sáo",
+    "Môi người thổi sáo"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Thổi sáo làm cột không khí trong ống sáo dao động và phát ra âm.\n\nVì sao các phương án khác sai:\n- A: Thân sáo gần như đứng yên; bộ phận dao động là cột không khí bên trong.\n- B: Ngón tay chỉ bịt lỗ để thay đổi cột không khí, không phát ra âm.\n- D: Môi chỉ thổi luồng hơi vào ống, làm cột không khí dao động."
+  },
+  {
+   "ma_cau": "K07040101034",
+   "nhom_id": "KNB00331",
+   "loai": "trac_nghiem",
+   "de": "Khi ta nói, bộ phận nào dao động phát ra âm?",
+   "lua_chon": [
+    "Lưỡi",
+    "Hai lá phổi",
+    "Răng",
+    "Dây thanh quản"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Khi nói, luồng không khí từ phổi làm dây thanh quản dao động và phát ra âm.\n\nVì sao các phương án khác sai:\n- A: Lưỡi giúp tạo tiếng rõ, không phải bộ phận dao động phát ra âm.\n- B: Phổi đẩy luồng không khí đi lên, làm dây thanh quản dao động.\n- C: Răng đứng yên, chỉ giúp phát âm rõ một số tiếng."
+  },
+  {
+   "ma_cau": "K07040101035",
+   "nhom_id": "KNB00331",
+   "loai": "trac_nghiem",
+   "de": "Khi một vật đang phát ra âm thanh, vật đó đang ở trạng thái nào?",
+   "lua_chon": [
+    "Đang đứng yên",
+    "Đang nóng lên",
+    "Đang đổi màu",
+    "Đang dao động"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Mọi nguồn âm khi phát ra âm đều dao động, ví dụ dây đàn rung, mặt trống rung.\n\nVì sao các phương án khác sai:\n- A: Sai: vật đứng yên thì không thể phát ra âm; muốn phát âm, vật phải dao động.\n- B: Sai: phát ra âm không nhất thiết làm vật nóng lên.\n- C: Sai: phát âm không làm vật thay đổi màu sắc."
+  },
+  {
+   "ma_cau": "K07040101036",
+   "nhom_id": "KNB00331",
+   "loai": "trac_nghiem",
+   "de": "Khi gõ vào mặt trống, bộ phận nào dao động phát ra âm?",
+   "lua_chon": [
+    "Mặt trống",
+    "Dùi trống",
+    "Thân trống bằng gỗ",
+    "Không khí bên trong thân trống"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Gõ dùi vào mặt trống làm mặt trống (da trống) dao động, phát ra âm; dùi chỉ là vật tác động, không phải nguồn âm.\n\nVì sao các phương án khác sai:\n- B: Dùi trống chỉ là vật gõ vào mặt trống, bản thân dùi không dao động phát ra âm chính.\n- C: Thân trống bằng gỗ chỉ đỡ mặt trống, không phải bộ phận trực tiếp dao động phát âm.\n- D: Không khí trong thân trống bị mặt trống làm rung theo, nhưng bộ phận dao động trực tiếp phát ra âm là mặt trống."
+  },
+  {
+   "ma_cau": "K07040101037",
+   "nhom_id": "KNB00331",
+   "loai": "trac_nghiem",
+   "de": "Trong các vật sau, vật nào đang là nguồn âm?",
+   "lua_chon": [
+    "Chiếc còi đang treo yên trên tường",
+    "Chiếc còi đang được thổi",
+    "Cái trống đang để trong kho, không ai chạm vào",
+    "Sợi dây đàn chưa được gảy"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Nguồn âm là vật đang phát ra âm, tức đang dao động; chỉ có chiếc còi đang được thổi mới đang dao động và phát ra âm.\n\nVì sao các phương án khác sai:\n- A: Còi treo yên, không được thổi thì không dao động, không phát ra âm.\n- C: Trống để yên trong kho, không bị tác động thì không dao động, không phát ra âm.\n- D: Dây đàn chưa được gảy thì chưa dao động, chưa phát ra âm."
+  },
+  {
+   "ma_cau": "K07040101038",
+   "nhom_id": "KNB00331",
+   "loai": "trac_nghiem",
+   "de": "Khi ve sầu kêu vào mùa hè, bộ phận nào của ve dao động để phát ra âm?",
+   "lua_chon": [
+    "Đôi cánh của ve",
+    "Đôi chân của ve",
+    "Màng rung ở bụng ve",
+    "Đầu của ve"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Ve sầu phát ra âm nhờ màng rung đặc biệt ở phần bụng dao động rất nhanh.\n\nVì sao các phương án khác sai:\n- A: Đôi cánh của ve dùng để bay, không phải bộ phận phát ra tiếng kêu.\n- B: Đôi chân không phải bộ phận tạo ra âm thanh ở ve sầu.\n- D: Đầu ve không phải bộ phận dao động phát ra âm."
+  },
+  {
+   "ma_cau": "K07040101039",
+   "nhom_id": "KNB00331",
+   "loai": "trac_nghiem",
+   "de": "Vì sao khi ta đặt tay lên mặt trống đang kêu thì trống ngừng phát ra âm?",
+   "lua_chon": [
+    "Vì tay hút hết âm thanh trong trống",
+    "Vì tay làm dùi trống ngừng gõ",
+    "Vì tay làm không khí trong trống biến mất",
+    "Vì tay làm mặt trống ngừng dao động"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Nguồn âm phát ra âm khi đang dao động; đặt tay lên mặt trống cản trở dao động của mặt trống nên âm tắt dần.\n\nVì sao các phương án khác sai:\n- A: Tay không hút âm thanh; âm tắt là do nguồn âm ngừng dao động.\n- B: Việc ngừng gõ dùi không liên quan đến hành động đặt tay lên mặt trống đang kêu.\n- C: Không khí trong trống không biến mất; chỉ có mặt trống ngừng dao động."
+  },
+  {
+   "ma_cau": "K07040101040",
+   "nhom_id": "KNB00331",
+   "loai": "trac_nghiem",
+   "de": "Đặt vài hạt gạo nhỏ lên mặt trống. Khi gõ trống, các hạt gạo nảy bật lên. Hiện tượng này chứng tỏ điều gì?",
+   "lua_chon": [
+    "Mặt trống đang dao động",
+    "Hạt gạo là nguồn âm",
+    "Mặt trống đã ngừng phát ra âm",
+    "Hạt gạo làm trống kêu to hơn"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Hạt gạo nảy lên vì mặt trống đang dao động rất nhanh, đẩy hạt gạo bật lên; đây là cách gián tiếp quan sát dao động của nguồn âm.\n\nVì sao các phương án khác sai:\n- B: Hạt gạo chỉ bị mặt trống làm nảy lên, bản thân hạt gạo không phát ra âm.\n- C: Nếu mặt trống ngừng dao động (ngừng phát âm) thì hạt gạo sẽ không còn nảy lên.\n- D: Hạt gạo không làm thay đổi độ to của tiếng trống, chỉ giúp quan sát được dao động."
+  },
+  {
+   "ma_cau": "K07040101041",
+   "nhom_id": "KNB00331",
+   "loai": "trac_nghiem",
+   "de": "Vì sao khi nói chuyện, nếu ta dùng tay bịt chặt cổ họng (thanh quản) thì giọng nói bị thay đổi hoặc khó phát ra?",
+   "lua_chon": [
+    "Vì tay làm phổi ngừng đẩy khí ra",
+    "Vì tay cản trở dây thanh quản dao động bình thường",
+    "Vì tay làm miệng không mở ra được",
+    "Vì tay làm tai không nghe được âm của mình"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Bịt chặt cổ họng cản trở dây thanh quản dao động tự nhiên, làm âm phát ra bị thay đổi hoặc khó phát ra.\n\nVì sao các phương án khác sai:\n- A: Tay bịt cổ họng không tác động trực tiếp đến hoạt động của phổi.\n- C: Bịt cổ họng không ảnh hưởng đến việc mở miệng.\n- D: Vấn đề là nguồn âm (dây thanh quản) bị cản trở dao động, không liên quan đến việc tai có nghe được hay không."
+  },
+  {
+   "ma_cau": "K07040101042",
+   "nhom_id": "KNB00331",
+   "loai": "trac_nghiem",
+   "de": "Âm KHÔNG truyền được trong môi trường nào sau đây?",
+   "lua_chon": [
+    "Chân không",
+    "Nước",
+    "Thép",
+    "Không khí"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Âm truyền được trong chất rắn, lỏng, khí; chân không không có chất để dao động nên âm không truyền được.\n\nVì sao các phương án khác sai:\n- B: Nước là chất lỏng, âm truyền được trong chất lỏng.\n- C: Thép là chất rắn, âm truyền được trong chất rắn.\n- D: Không khí là chất khí, âm truyền được trong chất khí."
+  },
+  {
+   "ma_cau": "K07040101043",
+   "nhom_id": "KNB00331",
+   "loai": "trac_nghiem",
+   "de": "Âm KHÔNG truyền được trong môi trường nào dưới đây?",
+   "lua_chon": [
+    "Chân không",
+    "Không khí",
+    "Nước",
+    "Thép"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Âm cần môi trường vật chất (rắn, lỏng, khí) để truyền đi; chân không không có hạt vật chất nên âm không truyền được.\n\nVì sao các phương án khác sai:\n- B: Sai: không khí là môi trường khí, âm truyền được bình thường.\n- C: Sai: nước là môi trường lỏng, âm truyền được, thậm chí nhanh hơn trong khí.\n- D: Sai: thép là môi trường rắn, âm truyền tốt qua chất rắn."
+  },
+  {
+   "ma_cau": "K07040101044",
+   "nhom_id": "KNB00331",
+   "loai": "trac_nghiem",
+   "de": "Âm truyền được trong những môi trường nào?",
+   "lua_chon": [
+    "Chỉ trong chất khí",
+    "Chất rắn, chất lỏng và chất khí",
+    "Chỉ trong chất lỏng và chất khí",
+    "Chất rắn, chất khí và chân không"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Môi trường truyền âm là chất rắn, chất lỏng và chất khí; chân không không truyền được âm.\n\nVì sao các phương án khác sai:\n- A: Âm còn truyền được trong chất rắn và chất lỏng (áp tai vào tường, lặn dưới nước).\n- C: Âm còn truyền được trong chất rắn, ví dụ áp tai vào tường vẫn nghe được.\n- D: Âm KHÔNG truyền được trong chân không."
+  },
+  {
+   "ma_cau": "K07040101045",
+   "nhom_id": "KNB00331",
+   "loai": "trac_nghiem",
+   "de": "Hiện tượng nào sau đây cho thấy âm truyền được trong chất lỏng?",
+   "lua_chon": [
+    "Áp tai vào tường nghe tiếng nhà bên",
+    "Nghe tiếng chim hót ngoài vườn",
+    "Thợ lặn dưới nước nghe tiếng chân vịt tàu",
+    "Áp tai xuống đất nghe tiếng vó ngựa"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Thợ lặn ở dưới nước nghe được tiếng chân vịt tàu, chứng tỏ âm truyền được trong nước (chất lỏng).\n\nVì sao các phương án khác sai:\n- A: Âm truyền qua bức tường là truyền trong chất rắn.\n- B: Âm truyền qua không khí là truyền trong chất khí.\n- D: Âm truyền qua mặt đất là truyền trong chất rắn."
+  },
+  {
+   "ma_cau": "K07040101046",
+   "nhom_id": "KNB00331",
+   "loai": "trac_nghiem",
+   "de": "Hiện tượng nào sau đây cho thấy âm truyền được trong chất rắn?",
+   "lua_chon": [
+    "Nghe tiếng sấm sau khi thấy chớp",
+    "Nghe tiếng nhạc phát ra từ loa trong phòng",
+    "Áp tai xuống đường ray nghe được tiếng tàu hỏa từ xa",
+    "Nghe tiếng nói chuyện của bạn ngồi cạnh"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Áp tai xuống đường ray (chất rắn) mà nghe được tiếng tàu hỏa từ xa chứng tỏ âm truyền được trong chất rắn.\n\nVì sao các phương án khác sai:\n- A: Nghe tiếng sấm là âm truyền trong không khí (chất khí), không thể hiện âm truyền trong chất rắn.\n- B: Nghe nhạc từ loa trong phòng là âm truyền qua không khí, không phải chất rắn.\n- D: Nghe bạn nói chuyện cũng là âm truyền qua không khí."
+  },
+  {
+   "ma_cau": "K07040101047",
+   "nhom_id": "KNB00331",
+   "loai": "trac_nghiem",
+   "de": "Trong ba môi trường rắn, lỏng, khí, môi trường nào truyền âm kém nhất?",
+   "lua_chon": [
+    "Chất lỏng",
+    "Chất rắn",
+    "Cả ba như nhau",
+    "Chất khí"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Trong ba môi trường rắn, lỏng, khí thì chất khí truyền âm kém nhất (chất rắn truyền âm tốt nhất).\n\nVì sao các phương án khác sai:\n- A: Chất lỏng truyền âm tốt hơn chất khí, không phải kém nhất.\n- B: Chất rắn truyền âm tốt nhất trong ba môi trường, không phải kém nhất.\n- C: Ba môi trường truyền âm khác nhau, không giống nhau."
+  },
+  {
+   "ma_cau": "K07040101048",
+   "nhom_id": "KNB00331",
+   "loai": "trac_nghiem",
+   "de": "Vì sao các nhà du hành vũ trụ ở ngoài không gian (chân không) phải liên lạc với nhau bằng bộ đàm vô tuyến thay vì nói chuyện trực tiếp?",
+   "lua_chon": [
+    "Vì âm thanh không truyền được trong chân không",
+    "Vì mũ bảo hiểm quá dày, cản âm hoàn toàn",
+    "Vì trong vũ trụ luôn có gió mạnh làm át tiếng nói",
+    "Vì du hành vũ trụ không được phép nói chuyện trực tiếp"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Ngoài không gian là môi trường chân không, không có vật chất để dao động truyền âm, nên âm thanh không truyền được; phải dùng sóng vô tuyến để liên lạc.\n\nVì sao các phương án khác sai:\n- B: Dù không đội mũ, âm vẫn không truyền được vì không có môi trường vật chất trong chân không.\n- C: Trong chân không không có không khí nên không có gió.\n- D: Đây không phải quy định, mà do đặc điểm vật lí: âm không truyền được trong chân không."
+  },
+  {
+   "ma_cau": "K07040101049",
+   "nhom_id": "KNB00331",
+   "loai": "trac_nghiem",
+   "de": "Hai bạn đứng cách xa nhau. Nếu môi trường không khí giữa hai bạn được thay bằng khí hydrogen (vẫn là chất khí, chỉ khác loại khí), âm có còn truyền được từ bạn này sang bạn kia không?",
+   "lua_chon": [
+    "Không, vì chỉ có không khí mới truyền được âm",
+    "Có, vì hydrogen vẫn là chất khí, âm vẫn truyền được",
+    "Không, vì chất khí không truyền được âm",
+    "Có, nhưng chỉ khi trộn thêm không khí vào"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Âm truyền được trong mọi chất khí, không riêng không khí; hydrogen vẫn là chất khí nên âm vẫn truyền được qua đó.\n\nVì sao các phương án khác sai:\n- A: Âm truyền được trong bất kì chất khí nào, không chỉ riêng không khí.\n- C: Chất khí nói chung truyền được âm, chỉ chân không mới không truyền được.\n- D: Không cần trộn thêm không khí; bản thân hydrogen (chất khí) đã đủ để truyền âm."
+  },
+  {
+   "ma_cau": "K07040101050",
+   "nhom_id": "KNB00331",
+   "loai": "trac_nghiem",
+   "de": "Vì sao khi lặn xuống hồ bơi, ta vẫn có thể nghe được tiếng còi báo hiệu phát ra từ trên bờ, dù nhỏ hơn so với khi ở trên mặt nước?",
+   "lua_chon": [
+    "Vì nước làm âm thanh tự sinh ra thêm",
+    "Vì tai người hoạt động khác nhau ở dưới nước",
+    "Vì âm truyền được cả trong nước lẫn không khí",
+    "Vì tiếng còi thực chất phát ra từ trong nước"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Âm từ còi truyền qua không khí rồi tiếp tục truyền qua nước (âm truyền được trong cả chất khí và chất lỏng) nên người lặn dưới nước vẫn nghe được, dù có thể nhỏ hơn.\n\nVì sao các phương án khác sai:\n- A: Nước không tự sinh thêm âm thanh, chỉ là môi trường cho âm truyền qua.\n- B: Tai người không hoạt động theo cách sinh ra âm; vấn đề là do âm có truyền tới tai được hay không.\n- D: Còi vẫn phát âm từ trên bờ; âm truyền qua không khí rồi qua nước tới người lặn."
+  },
+  {
+   "ma_cau": "K07040102051",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Âm truyền nhanh nhất trong môi trường nào sau đây?",
+   "lua_chon": [
+    "Không khí",
+    "Nước",
+    "Khí carbon dioxide",
+    "Thép"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Tốc độ âm: chất rắn > chất lỏng > chất khí. Thép là chất rắn nên âm truyền trong thép nhanh nhất.\n\nVì sao các phương án khác sai:\n- A: Không khí là chất khí; âm truyền trong chất khí chậm nhất.\n- B: Nước là chất lỏng; âm truyền trong chất rắn nhanh hơn chất lỏng.\n- C: Carbon dioxide là chất khí; âm truyền trong chất khí chậm nhất."
+  },
+  {
+   "ma_cau": "K07040102052",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Thứ tự nào sau đây xếp đúng tốc độ truyền âm từ lớn đến nhỏ?",
+   "lua_chon": [
+    "Nhôm, nước, không khí",
+    "Không khí, nước, nhôm",
+    "Nước, nhôm, không khí",
+    "Nhôm, không khí, nước"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Nhôm là chất rắn, nước là chất lỏng, không khí là chất khí; tốc độ âm: rắn > lỏng > khí.\n\nVì sao các phương án khác sai:\n- B: Đây là thứ tự từ nhỏ đến lớn, bị đảo ngược.\n- C: Nhôm là chất rắn nên âm truyền nhanh hơn trong nước.\n- D: Không khí là chất khí nên âm truyền chậm hơn trong nước."
+  },
+  {
+   "ma_cau": "K07040102053",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Âm truyền chậm nhất trong môi trường nào sau đây?",
+   "lua_chon": [
+    "Gỗ",
+    "Không khí",
+    "Nước",
+    "Sắt"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Tốc độ âm: chất rắn > chất lỏng > chất khí. Không khí là chất khí nên âm truyền chậm nhất.\n\nVì sao các phương án khác sai:\n- A: Gỗ là chất rắn; âm truyền trong chất rắn nhanh nhất.\n- C: Nước là chất lỏng; âm truyền trong chất lỏng nhanh hơn chất khí.\n- D: Sắt là chất rắn; âm truyền trong chất rắn nhanh nhất."
+  },
+  {
+   "ma_cau": "K07040102054",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Tùng áp tai xuống đường ray thép. Cách đó 2 040 m, một công nhân gõ mạnh vào ray. Lấy tốc độ âm trong thép là 5 100 m/s, trong không khí là 340 m/s. Tiếng gõ qua đường ray đến tai Tùng sớm hơn tiếng qua không khí bao lâu?",
+   "lua_chon": [
+    "6 s",
+    "0,4 s",
+    "5,6 s",
+    "6,4 s"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Qua không khí: t₁ = 2 040 : 340 = 6 s; qua ray: t₂ = 2 040 : 5 100 = 0,4 s. Tiếng qua ray đến sớm hơn 6 − 0,4 = 5,6 s.\n\nVì sao các phương án khác sai:\n- A: Đây mới là thời gian âm đi qua không khí; cần trừ đi thời gian âm đi qua ray.\n- B: Đây là thời gian âm đi qua ray, chưa phải khoảng chênh lệch.\n- D: Đã cộng hai thời gian; khoảng chênh lệch phải lấy hiệu."
+  },
+  {
+   "ma_cau": "K07040102055",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Mai áp tai xuống đường ray thép. Cách đó 1 020 m, một bạn dùng búa gõ mạnh vào ray. Lấy tốc độ âm trong thép là 5 100 m/s, trong không khí là 340 m/s. Tiếng gõ qua đường ray đến tai Mai sớm hơn tiếng qua không khí bao lâu?",
+   "lua_chon": [
+    "2,8 s",
+    "3,2 s",
+    "3 s",
+    "0,2 s"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Qua không khí: t₁ = 1 020 : 340 = 3 s; qua ray thép: t₂ = 1 020 : 5 100 = 0,2 s. Tiếng qua ray đến sớm hơn 3 − 0,2 = 2,8 s.\n\nVì sao các phương án khác sai:\n- B: 3,2 s là cộng nhầm hai thời gian (3 + 0,2) thay vì trừ.\n- C: 3 s chỉ là thời gian âm truyền qua không khí, chưa trừ thời gian truyền qua thép.\n- D: 0,2 s chỉ là thời gian âm truyền qua thép, chưa phải là khoảng thời gian đến sớm hơn."
+  },
+  {
+   "ma_cau": "K07040102056",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Một tàu phát tín hiệu âm đồng thời qua nước và qua không khí tới một trạm quan trắc cách đó 51 km. Lấy tốc độ âm trong nước là 1 500 m/s, trong không khí là 340 m/s. Tín hiệu truyền qua nước đến trạm sớm hơn qua không khí bao nhiêu giây?",
+   "lua_chon": [
+    "184 s",
+    "116 s",
+    "150 s",
+    "34 s"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Đổi 51 km = 51 000 m. Qua nước: t₁ = 51 000 : 1 500 = 34 s; qua không khí: t₂ = 51 000 : 340 = 150 s. Tín hiệu qua nước đến sớm hơn 150 − 34 = 116 s.\n\nVì sao các phương án khác sai:\n- A: 184 s là cộng nhầm hai thời gian thay vì trừ.\n- C: 150 s chỉ là thời gian tín hiệu truyền qua không khí, chưa trừ thời gian truyền qua nước.\n- D: 34 s chỉ là thời gian tín hiệu truyền qua nước, chưa phải là khoảng thời gian đến sớm hơn."
+  },
+  {
+   "ma_cau": "K07040102057",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Một kĩ sư áp tai vào đường ống dẫn dầu bằng thép dài 2 550 m. Ở đầu kia, một công nhân gõ mạnh vào ống. Lấy tốc độ âm trong thép là 5 100 m/s, trong không khí là 340 m/s. Tiếng gõ qua ống thép đến tai kĩ sư sớm hơn tiếng qua không khí bao lâu?",
+   "lua_chon": [
+    "8 s",
+    "7,5 s",
+    "7 s",
+    "0,5 s"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Qua không khí: t₁ = 2 550 : 340 = 7,5 s; qua thép: t₂ = 2 550 : 5 100 = 0,5 s. Tiếng qua ống thép đến sớm hơn 7,5 − 0,5 = 7 s.\n\nVì sao các phương án khác sai:\n- A: 8 s là cộng nhầm hai thời gian thay vì trừ.\n- B: 7,5 s chỉ là thời gian truyền qua không khí, chưa trừ thời gian truyền qua thép.\n- D: 0,5 s chỉ là thời gian truyền qua thép, chưa phải là khoảng thời gian đến sớm hơn."
+  },
+  {
+   "ma_cau": "K07040102058",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Tại một công trường, một tiếng nổ đồng thời được ba máy thu ghi lại: máy A gắn trên thanh sắt (v = 5 000 m/s), máy B đặt trong bể nước (v = 1 500 m/s), máy C đặt ngoài không khí (v = 340 m/s), cả ba đều cách nơi nổ 3 000 m. Máy nào ghi nhận được tiếng nổ SỚM NHẤT?",
+   "lua_chon": [
+    "Máy B",
+    "Máy C",
+    "Cả ba cùng lúc",
+    "Máy A"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Tính thời gian mỗi máy: máy A (sắt) 3 000:5 000=0,6 s; máy B (nước) 3 000:1 500=2 s; máy C (không khí) 3 000:340≈8,8 s. Thời gian nhỏ nhất là máy A nên máy A ghi nhận sớm nhất, đúng với tốc độ âm rắn > lỏng > khí.\n\nVì sao các phương án khác sai:\n- A: Máy B (qua nước) mất 2 s, chậm hơn máy A (qua sắt) mất 0,6 s.\n- B: Máy C (qua không khí) mất khoảng 8,8 s, là máy chậm nhất, không phải sớm nhất.\n- C: Ba môi trường có tốc độ âm khác nhau (rắn > lỏng > khí) nên ba máy ghi nhận vào ba thời điểm khác nhau, không cùng lúc."
+  },
+  {
+   "ma_cau": "K07040102059",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Một trạm quan trắc dưới biển và một trạm trên bờ đều cách vị trí nổ mìn thăm dò 10 200 m: trạm dưới biển nhận tín hiệu qua nước, trạm trên bờ nhận qua không khí. Lấy tốc độ âm trong nước là 1 500 m/s, trong không khí là 340 m/s. Trạm nào nhận được tín hiệu sớm hơn, sớm hơn bao lâu?",
+   "lua_chon": [
+    "Trạm dưới biển, sớm hơn 23,2 s",
+    "Trạm trên bờ, sớm hơn 23,2 s",
+    "Trạm dưới biển, sớm hơn 30 s",
+    "Trạm trên bờ, sớm hơn 6,8 s"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Qua nước: t₁ = 10 200 : 1 500 = 6,8 s; qua không khí: t₂ = 10 200 : 340 = 30 s. Trạm dưới biển (qua nước) nhận sớm hơn, sớm hơn 30 − 6,8 = 23,2 s.\n\nVì sao các phương án khác sai:\n- B: Trạm trên bờ (qua không khí) mất tới 30 s, nhiều hơn 6,8 s của trạm dưới biển, nên nhận tín hiệu sau, không phải trước.\n- C: 30 s là thời gian truyền qua không khí, không phải khoảng thời gian chênh lệch.\n- D: 6,8 s là thời gian truyền qua nước, không phải khoảng chênh lệch; và trạm trên bờ không phải bên nhận sớm hơn."
+  },
+  {
+   "ma_cau": "K07040102060",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Lấy tốc độ âm trong không khí là 340 m/s. Tiếng trống trường truyền đến tai Mai sau 0,5 s. Mai đứng cách trống bao xa?",
+   "lua_chon": [
+    "680 m",
+    "85 m",
+    "340 m",
+    "170 m"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Quãng đường âm đi: s = v · t = 340 · 0,5 = 170 m.\n\nVì sao các phương án khác sai:\n- A: Đã lấy 340 chia cho 0,5; quãng đường phải là s = v · t.\n- B: Âm chỉ đi một chiều từ trống tới tai, không chia 2.\n- C: Quên nhân với thời gian 0,5 s."
+  },
+  {
+   "ma_cau": "K07040102061",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Lấy tốc độ âm trong nước là 1 500 m/s. Tiếng động cơ tàu truyền trong nước tới người thợ lặn cách tàu 3 000 m. Âm tới thợ lặn sau bao lâu?",
+   "lua_chon": [
+    "2 s",
+    "0,5 s",
+    "1 s",
+    "4 s"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Thời gian âm truyền: t = s : v = 3 000 : 1 500 = 2 s.\n\nVì sao các phương án khác sai:\n- B: Đã lấy tốc độ chia quãng đường; thời gian phải là t = s : v.\n- C: Âm chỉ đi một chiều từ tàu tới thợ lặn, không chia 2.\n- D: Âm chỉ đi một chiều, không nhân 2 như âm đi – về."
+  },
+  {
+   "ma_cau": "K07040102062",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Lấy tốc độ âm trong thép là 5 100 m/s. Âm truyền dọc một đường ray thép trong 0,5 s thì đi được quãng đường bao nhiêu?",
+   "lua_chon": [
+    "10 200 m",
+    "2 550 m",
+    "5 100 m",
+    "1 275 m"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Quãng đường âm đi trong thép: s = v · t = 5 100 · 0,5 = 2 550 m.\n\nVì sao các phương án khác sai:\n- A: Đã lấy 5 100 chia cho 0,5; quãng đường phải là s = v · t.\n- C: Quên nhân với thời gian 0,5 s.\n- D: Âm chỉ đi một chiều dọc đường ray, không chia 2."
+  },
+  {
+   "ma_cau": "K07040102063",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Lấy tốc độ âm trong không khí là 340 m/s. Tiếng còi tàu truyền đến tai Bảo sau 5 s. Bảo đứng cách đoàn tàu bao nhiêu kilômét?",
+   "lua_chon": [
+    "17 km",
+    "1 700 km",
+    "1,7 km",
+    "0,85 km"
+   ],
+   "dap_an": "C",
+   "loi_giai": "s = v · t = 340 · 5 = 1 700 m; đổi 1 700 m = 1,7 km.\n\nVì sao các phương án khác sai:\n- A: Đổi sai: 1 700 m = 1,7 km (chia 1 000, không chia 100).\n- B: Quên đổi: 1 700 là số mét, cần chia 1 000 để ra kilômét.\n- D: Âm chỉ đi một chiều từ tàu tới tai, không chia 2."
+  },
+  {
+   "ma_cau": "K07040102064",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Lấy tốc độ âm trong nước là 1 500 m/s. Một tàu ngầm cách chiếc phao 4,5 km. Tiếng động từ phao truyền trong nước tới tàu ngầm sau bao lâu?",
+   "lua_chon": [
+    "0,003 s",
+    "6 s",
+    "333,3 s",
+    "3 s"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Đổi 4,5 km = 4 500 m; t = s : v = 4 500 : 1 500 = 3 s.\n\nVì sao các phương án khác sai:\n- A: Quên đổi 4,5 km ra 4 500 m trước khi chia cho tốc độ (m/s).\n- B: Âm chỉ đi một chiều từ phao tới tàu, không nhân 2.\n- C: Đã lấy tốc độ chia quãng đường; thời gian phải là t = s : v."
+  },
+  {
+   "ma_cau": "K07040102065",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Lấy tốc độ âm trong nước biển là 1 500 m/s. Tiếng kêu của một con cá voi truyền trong nước biển mất 0,5 phút mới tới một trạm thu âm đặt dưới nước. Cá voi cách trạm bao xa?",
+   "lua_chon": [
+    "45 000 m",
+    "750 m",
+    "75 000 m",
+    "22 500 m"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Đổi 0,5 phút = 30 s; s = v · t = 1 500 · 30 = 45 000 m.\n\nVì sao các phương án khác sai:\n- B: Quên đổi 0,5 phút ra 30 s trước khi nhân.\n- C: Đổi sai: 0,5 phút = 30 s, không phải 50 s.\n- D: Âm chỉ đi một chiều tới trạm, không chia 2."
+  },
+  {
+   "ma_cau": "K07040102066",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Lấy tốc độ âm trong không khí là 340 m/s. Linh đứng cách trạm phát còi báo 0,68 km. Sau bao lâu kể từ khi còi kêu thì Linh nghe thấy?",
+   "lua_chon": [
+    "0,002 s",
+    "2 s",
+    "4 s",
+    "500 s"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Đổi 0,68 km = 680 m; t = s : v = 680 : 340 = 2 s.\n\nVì sao các phương án khác sai:\n- A: Quên đổi 0,68 km ra 680 m trước khi chia cho tốc độ (m/s).\n- C: Âm chỉ đi một chiều từ còi tới tai, không nhân 2.\n- D: Đã lấy tốc độ chia quãng đường; thời gian phải là t = s : v."
+  },
+  {
+   "ma_cau": "K07040102067",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Lấy tốc độ âm trong thép là 5 100 m/s. Âm truyền hết một đoạn đường ray thép dài 1,02 km mất bao lâu?",
+   "lua_chon": [
+    "5 000 s",
+    "0,0002 s",
+    "0,2 s",
+    "5 202 s"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Đổi 1,02 km = 1 020 m; t = s : v = 1 020 : 5 100 = 0,2 s.\n\nVì sao các phương án khác sai:\n- A: Đã lấy tốc độ chia quãng đường; thời gian phải là t = s : v.\n- B: Quên đổi 1,02 km ra 1 020 m trước khi chia cho tốc độ (m/s).\n- D: Đã nhân tốc độ với quãng đường; thời gian phải là t = s : v."
+  },
+  {
+   "ma_cau": "K07040102068",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Lấy tốc độ âm trong không khí là 340 m/s. Một người thấy tia chớp, sau 6 s mới nghe tiếng sấm. Tia chớp cách người đó bao nhiêu kilômét?",
+   "lua_chon": [
+    "2 040 km",
+    "0,204 km",
+    "56,7 km",
+    "2,04 km"
+   ],
+   "dap_an": "D",
+   "loi_giai": "s = v × t = 340 × 6 = 2 040 m; đổi 2 040 m = 2,04 km.\n\nVì sao các phương án khác sai:\n- A: 2 040 km là quên đổi đơn vị mét sang kilômét (giữ nguyên số 2 040 nhưng gắn nhầm đơn vị km).\n- B: 0,204 km là đổi sai, chia 2 040 m cho 10 000 thay vì cho 1 000.\n- C: 56,7 km là chia nhầm tốc độ cho thời gian (340 : 6) thay vì nhân."
+  },
+  {
+   "ma_cau": "K07040102069",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Vì sao trong cơn giông, ta thấy tia chớp trước rồi mới nghe tiếng sét?",
+   "lua_chon": [
+    "Tia chớp xảy ra trước tiếng sét",
+    "Mắt nhận tín hiệu nhanh hơn tai",
+    "Tiếng sét bị mây giữ lại một lúc",
+    "Ánh sáng truyền nhanh hơn âm rất nhiều"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Chớp và sét xảy ra cùng lúc, nhưng ánh sáng truyền gần như tức thời còn âm truyền chậm (khoảng 340 m/s) nên tiếng sét đến sau.\n\nVì sao các phương án khác sai:\n- A: Chớp và sét sinh ra cùng lúc; chúng khác nhau ở tốc độ truyền tới ta.\n- B: Mắt và tai nhận tín hiệu gần như tức thì; chênh lệch do tốc độ truyền.\n- C: Mây không giữ âm lại; âm đến sau vì truyền chậm hơn ánh sáng."
+  },
+  {
+   "ma_cau": "K07040102070",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Quân nghe tiếng sét 3 s sau khi thấy chớp. Lấy tốc độ âm trong không khí là 340 m/s, coi ánh sáng đến tức thời. Chỗ sét đánh cách Quân bao xa?",
+   "lua_chon": [
+    "1 020 m",
+    "510 m",
+    "2 040 m",
+    "340 m"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Ánh sáng đến gần như tức thời nên 3 s là thời gian âm truyền; s = v · t = 340 · 3 = 1 020 m.\n\nVì sao các phương án khác sai:\n- B: Âm chỉ đi một chiều từ chỗ sét tới tai, không chia 2.\n- C: Âm chỉ đi một chiều, không nhân 2 như âm đi – về.\n- D: Quên nhân với thời gian 3 s."
+  },
+  {
+   "ma_cau": "K07040102071",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Sét đánh cách nhà Hoa 1 700 m. Lấy tốc độ âm trong không khí là 340 m/s, coi ánh sáng đến tức thời. Hoa nghe tiếng sét sau khi thấy chớp bao lâu?",
+   "lua_chon": [
+    "0,2 s",
+    "5 s",
+    "10 s",
+    "Gần như 0 s"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Thời gian chênh lệch là thời gian âm truyền: t = s : v = 1 700 : 340 = 5 s.\n\nVì sao các phương án khác sai:\n- A: Đã lấy tốc độ chia quãng đường; thời gian phải là t = s : v.\n- C: Âm chỉ đi một chiều từ chỗ sét tới tai, không nhân 2.\n- D: Đó là thời gian ánh sáng tới; tiếng sét đến sau vì âm truyền chậm."
+  },
+  {
+   "ma_cau": "K07040102072",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Thấy tia chớp, 10 s sau Khoa mới nghe tiếng sét. Lấy tốc độ âm trong không khí là 340 m/s, coi ánh sáng đến gần như tức thời. Chỗ sét đánh cách Khoa bao nhiêu kilômét?",
+   "lua_chon": [
+    "3 400 km",
+    "34 km",
+    "3,4 km",
+    "1,7 km"
+   ],
+   "dap_an": "C",
+   "loi_giai": "s = v · t = 340 · 10 = 3 400 m; đổi 3 400 m = 3,4 km.\n\nVì sao các phương án khác sai:\n- A: Quên đổi: 3 400 là số mét, cần chia 1 000 để ra kilômét.\n- B: Đổi sai: 3 400 m = 3,4 km (chia 1 000, không chia 100).\n- D: Âm chỉ đi một chiều từ chỗ sét tới tai, không chia 2."
+  },
+  {
+   "ma_cau": "K07040102073",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Sét đánh xuống đỉnh núi cách nhà Vy 2,04 km. Lấy tốc độ âm trong không khí là 340 m/s, coi ánh sáng đến gần như tức thời. Vy nghe tiếng sét sau khi thấy chớp bao lâu?",
+   "lua_chon": [
+    "0,006 s",
+    "3 s",
+    "Gần như 0 s",
+    "6 s"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Đổi 2,04 km = 2 040 m; t = s : v = 2 040 : 340 = 6 s.\n\nVì sao các phương án khác sai:\n- A: Quên đổi 2,04 km ra 2 040 m trước khi chia cho tốc độ (m/s).\n- B: Âm chỉ đi một chiều từ chỗ sét tới tai, không chia 2.\n- C: Đó là thời gian ánh sáng tới; tiếng sét đến sau vì âm truyền chậm."
+  },
+  {
+   "ma_cau": "K07040102074",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Trong cơn giông, lần đầu Lan nghe tiếng sét 6 s sau khi thấy chớp; lần sau chỉ 3 s. Lấy tốc độ âm trong không khí là 340 m/s, coi ánh sáng đến tức thời. Chỗ sét lần sau gần Lan hơn chỗ sét lần đầu bao nhiêu mét?",
+   "lua_chon": [
+    "1 020 m",
+    "3 060 m",
+    "2 040 m",
+    "510 m"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Lần đầu sét cách Lan 340 · 6 = 2 040 m; lần sau 340 · 3 = 1 020 m. Chỗ sét lần sau gần hơn 2 040 − 1 020 = 1 020 m.\n\nVì sao các phương án khác sai:\n- B: Đã cộng hai quãng đường; phải lấy hiệu 2 040 − 1 020.\n- C: Đây là khoảng cách lần đầu, chưa trừ khoảng cách lần sau.\n- D: Âm chỉ đi một chiều từ chỗ sét tới tai, không chia 2."
+  },
+  {
+   "ma_cau": "K07040102075",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Thấy tia chớp, 15 s sau Hùng mới nghe tiếng sét. Biết ánh sáng truyền với tốc độ khoảng 300 000 km/s, âm trong không khí 340 m/s. Chỗ sét đánh cách Hùng bao nhiêu kilômét?",
+   "lua_chon": [
+    "5 100 km",
+    "5,1 km",
+    "51 km",
+    "2,55 km"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Ánh sáng (300 000 km/s) tới gần như tức thời nên 15 s là thời gian âm truyền: s = 340 · 15 = 5 100 m = 5,1 km.\n\nVì sao các phương án khác sai:\n- A: Quên đổi: 5 100 là số mét, cần chia 1 000 để ra kilômét.\n- C: Đổi sai: 5 100 m = 5,1 km (chia 1 000, không chia 100).\n- D: Âm chỉ đi một chiều từ chỗ sét tới tai, không chia 2."
+  },
+  {
+   "ma_cau": "K07040102076",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Sét đánh cách nhà An 1,36 km, cách nhà Bình 2,04 km. Lấy tốc độ âm trong không khí là 340 m/s, coi ánh sáng đến tức thời nên hai bạn thấy chớp cùng lúc. Bình nghe tiếng sét muộn hơn An bao lâu?",
+   "lua_chon": [
+    "10 s",
+    "6 s",
+    "2 s",
+    "0,002 s"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Đổi ra mét: tới An t₁ = 1 360 : 340 = 4 s; tới Bình t₂ = 2 040 : 340 = 6 s. Bình nghe muộn hơn 6 − 4 = 2 s.\n\nVì sao các phương án khác sai:\n- A: Đã cộng hai thời gian 4 s và 6 s; phải lấy hiệu.\n- B: Đây chỉ là thời gian âm tới nhà Bình, chưa trừ thời gian tới nhà An.\n- D: Quên đổi km ra m: 0,68 km : 340 m/s cho số sai."
+  },
+  {
+   "ma_cau": "K07040102077",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Đài khí tượng xác định sét đánh tại nơi cách trường học 2,72 km. Lấy tốc độ âm trong không khí là 340 m/s, coi ánh sáng đến gần như tức thời. Ở trường nghe tiếng sét sau khi thấy chớp bao lâu?",
+   "lua_chon": [
+    "0,008 s",
+    "16 s",
+    "125 s",
+    "8 s"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Đổi 2,72 km = 2 720 m; t = s : v = 2 720 : 340 = 8 s.\n\nVì sao các phương án khác sai:\n- A: Quên đổi 2,72 km ra 2 720 m trước khi chia cho tốc độ (m/s).\n- B: Âm chỉ đi một chiều từ chỗ sét tới trường, không nhân 2.\n- C: Đã lấy tốc độ chia quãng đường; thời gian phải là t = s : v."
+  },
+  {
+   "ma_cau": "K07040102078",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Ba tiếng còi phát ra CÙNG một thời điểm từ ba vị trí cách người nghe lần lượt 340 m, 510 m và 680 m (âm truyền trong không khí, v = 340 m/s). Khoảng thời gian từ lúc nghe tiếng còi ĐẦU TIÊN đến lúc nghe tiếng còi CUỐI CÙNG là bao nhiêu?",
+   "lua_chon": [
+    "0,5 s",
+    "2 s",
+    "1 s",
+    "1,5 s"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Còi gần nhất (340 m) đến sau 340:340 = 1 s (nghe đầu tiên); còi xa nhất (680 m) đến sau 680:340 = 2 s (nghe cuối cùng). Khoảng cách thời gian = 2 − 1 = 1 s.\n\nVì sao các phương án khác sai:\n- A: 0,5 s là hiệu giữa còi xa nhất (2 s) và còi giữa (1,5 s), không phải giữa còi ĐẦU và còi CUỐI.\n- B: 2 s là thời gian truyền của còi xa nhất, chưa trừ đi 1 s của còi gần nhất (nghe đầu tiên).\n- D: 1,5 s là thời gian truyền của còi cách 510 m, không phải khoảng cách thời gian giữa âm nghe đầu và nghe cuối."
+  },
+  {
+   "ma_cau": "K07040102079",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Ba tiếng trống phát ra CÙNG một thời điểm từ ba vị trí cách người nghe lần lượt 170 m, 510 m và 850 m (âm truyền trong không khí, v = 340 m/s). Khoảng thời gian từ lúc nghe tiếng trống ĐẦU TIÊN đến lúc nghe tiếng trống CUỐI CÙNG là bao nhiêu?",
+   "lua_chon": [
+    "2 s",
+    "1 s",
+    "2,5 s",
+    "1,5 s"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Trống gần nhất (170 m) đến sau 170:340 = 0,5 s; trống xa nhất (850 m) đến sau 850:340 = 2,5 s. Khoảng cách thời gian = 2,5 − 0,5 = 2 s.\n\nVì sao các phương án khác sai:\n- B: 1 s là hiệu giữa hai trống gần nhất (170 m và 510 m), không phải giữa trống ĐẦU và trống CUỐI.\n- C: 2,5 s là thời gian truyền của trống xa nhất, chưa trừ đi 0,5 s của trống gần nhất (nghe đầu tiên).\n- D: 1,5 s là thời gian truyền của trống cách 510 m, không phải khoảng cách thời gian giữa âm nghe đầu và nghe cuối."
+  },
+  {
+   "ma_cau": "K07040102080",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Ba quả pháo hoa nổ CÙNG một thời điểm ở ba vị trí cách người xem lần lượt 680 m, 1 020 m và 1 360 m (âm truyền trong không khí, v = 340 m/s). Khoảng thời gian từ lúc nghe tiếng nổ ĐẦU TIÊN đến lúc nghe tiếng nổ CUỐI CÙNG là bao nhiêu?",
+   "lua_chon": [
+    "2 s",
+    "1 s",
+    "4 s",
+    "3 s"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Pháo gần nhất (680 m) đến sau 680:340 = 2 s; pháo xa nhất (1 360 m) đến sau 1 360:340 = 4 s. Khoảng cách thời gian = 4 − 2 = 2 s.\n\nVì sao các phương án khác sai:\n- B: 1 s là hiệu giữa hai quả gần nhau (680 m và 1 020 m, hoặc 1 020 m và 1 360 m), không phải giữa tiếng ĐẦU và CUỐI.\n- C: 4 s là thời gian truyền của pháo xa nhất, chưa trừ đi 2 s của pháo gần nhất (nghe đầu tiên).\n- D: 3 s là thời gian truyền của pháo cách 1 020 m, không phải khoảng cách thời gian giữa tiếng nghe đầu và nghe cuối."
+  },
+  {
+   "ma_cau": "K07040102081",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Ba chiếc chuông được gõ CÙNG một thời điểm ở ba vị trí cách người nghe lần lượt 850 m, 1 190 m và 1 700 m (âm truyền trong không khí, v = 340 m/s). Khoảng thời gian từ lúc nghe tiếng chuông ĐẦU TIÊN đến lúc nghe tiếng chuông CUỐI CÙNG là bao nhiêu?",
+   "lua_chon": [
+    "5 s",
+    "2,5 s",
+    "3,5 s",
+    "1 s"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Chuông gần nhất (850 m) đến sau 850:340 = 2,5 s; chuông xa nhất (1 700 m) đến sau 1 700:340 = 5 s. Khoảng cách thời gian = 5 − 2,5 = 2,5 s.\n\nVì sao các phương án khác sai:\n- A: 5 s là thời gian truyền của chuông xa nhất, chưa trừ đi 2,5 s của chuông gần nhất (nghe đầu tiên).\n- C: 3,5 s là thời gian truyền của chuông cách 1 190 m, không phải khoảng cách thời gian giữa tiếng nghe đầu và nghe cuối.\n- D: 1 s là hiệu giữa hai chuông gần nhau (850 m và 1 190 m), không phải giữa tiếng ĐẦU và CUỐI."
+  },
+  {
+   "ma_cau": "K07040102082",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Ba chiếc loa phát thanh phát CÙNG một thời điểm ở ba vị trí cách người nghe lần lượt 408 m, 612 m và 1 020 m (âm truyền trong không khí, v = 340 m/s). Khoảng thời gian từ lúc nghe tiếng loa ĐẦU TIÊN đến lúc nghe tiếng loa CUỐI CÙNG là bao nhiêu?",
+   "lua_chon": [
+    "0,6 s",
+    "3 s",
+    "1,8 s",
+    "1,2 s"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Loa gần nhất (408 m) đến sau 408:340 = 1,2 s; loa xa nhất (1 020 m) đến sau 1 020:340 = 3 s. Khoảng cách thời gian = 3 − 1,2 = 1,8 s.\n\nVì sao các phương án khác sai:\n- A: 0,6 s là hiệu giữa hai loa gần nhau (408 m và 612 m), không phải giữa tiếng ĐẦU và CUỐI.\n- B: 3 s là thời gian truyền của loa xa nhất, chưa trừ đi 1,2 s của loa gần nhất (nghe đầu tiên).\n- D: 1,2 s là thời gian truyền của riêng loa gần nhất, không phải khoảng cách thời gian giữa tiếng nghe đầu và nghe cuối."
+  },
+  {
+   "ma_cau": "K07040102083",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Ba tiếng chuông chùa vang lên CÙNG một thời điểm từ ba ngôi chùa cách người nghe lần lượt 170 m, 340 m và 1 020 m (âm truyền trong không khí, v = 340 m/s). Khoảng thời gian từ lúc nghe tiếng chuông ĐẦU TIÊN đến lúc nghe tiếng chuông CUỐI CÙNG là bao nhiêu?",
+   "lua_chon": [
+    "3 s",
+    "2,5 s",
+    "3,5 s",
+    "1 s"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Chuông gần nhất (170 m) đến sau 170:340 = 0,5 s; chuông xa nhất (1 020 m) đến sau 1 020:340 = 3 s. Khoảng cách thời gian = 3 − 0,5 = 2,5 s.\n\nVì sao các phương án khác sai:\n- A: 3 s là thời điểm nghe tiếng chuông cuối cùng, chưa trừ đi thời điểm nghe tiếng đầu tiên (0,5 s).\n- C: 3,5 s là cộng nhầm hai thời điểm thay vì trừ.\n- D: 1 s là thời điểm nghe tiếng chuông ở khoảng cách giữa (340 m), không phải là khoảng cách thời gian giữa tiếng đầu và tiếng cuối."
+  },
+  {
+   "ma_cau": "K07040102084",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Ba khẩu súng thần công bắn phát CÙNG một thời điểm trong một lễ hội, từ ba vị trí cách người xem lần lượt 510 m, 680 m và 1 190 m (âm truyền trong không khí, v = 340 m/s). Khoảng thời gian từ lúc nghe tiếng nổ ĐẦU TIÊN đến lúc nghe tiếng nổ CUỐI CÙNG là bao nhiêu?",
+   "lua_chon": [
+    "3,5 s",
+    "1,5 s",
+    "2 s",
+    "5 s"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Súng gần nhất (510 m) đến sau 510:340 = 1,5 s; súng xa nhất (1 190 m) đến sau 1 190:340 = 3,5 s. Khoảng cách thời gian = 3,5 − 1,5 = 2 s.\n\nVì sao các phương án khác sai:\n- A: 3,5 s là thời điểm nghe tiếng cuối cùng, chưa trừ đi thời điểm nghe tiếng đầu tiên.\n- B: 1,5 s là thời điểm nghe tiếng đầu tiên, chưa phải là khoảng cách giữa tiếng đầu và tiếng cuối.\n- D: 5 s là cộng nhầm hai thời điểm thay vì trừ."
+  },
+  {
+   "ma_cau": "K07040102085",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Ba chiếc tàu cùng kéo còi báo CÙNG một thời điểm từ ba vị trí trên sông, cách người đứng trên bờ lần lượt 204 m, 476 m và 816 m (âm truyền trong không khí, v = 340 m/s). Khoảng thời gian từ lúc nghe tiếng còi ĐẦU TIÊN đến lúc nghe tiếng còi CUỐI CÙNG là bao nhiêu?",
+   "lua_chon": [
+    "2,4 s",
+    "0,6 s",
+    "3 s",
+    "1,8 s"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Tàu gần nhất (204 m) đến sau 204:340 = 0,6 s; tàu xa nhất (816 m) đến sau 816:340 = 2,4 s. Khoảng cách thời gian = 2,4 − 0,6 = 1,8 s.\n\nVì sao các phương án khác sai:\n- A: 2,4 s là thời điểm nghe tiếng còi cuối cùng, chưa trừ đi thời điểm nghe tiếng đầu tiên.\n- B: 0,6 s là thời điểm nghe tiếng còi đầu tiên, chưa phải là khoảng cách giữa tiếng đầu và tiếng cuối.\n- C: 3 s là cộng nhầm hai thời điểm thay vì trừ."
+  },
+  {
+   "ma_cau": "K07040102086",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Tia sét thứ nhất đánh lúc 0 s, cách An 1 020 m. Tia sét thứ hai đánh lúc 4 s (sau tia thứ nhất), cách Bình 680 m. Coi ánh sáng đến tức thời, tốc độ âm trong không khí 340 m/s. Ai nghe tiếng sét ứng với mình trước, tính theo đồng hồ thực?",
+   "lua_chon": [
+    "Bình nghe trước, sớm hơn 3 s",
+    "An nghe trước, sớm hơn 3 s",
+    "An nghe trước, sớm hơn 1 s",
+    "Bình nghe trước, sớm hơn 1 s"
+   ],
+   "dap_an": "B",
+   "loi_giai": "An nghe lúc 0 + 1020:340 = 3 s. Bình nghe lúc 4 + 680:340 = 4 + 2 = 6 s. An nghe trước, sớm hơn 6 − 3 = 3 s.\n\nVì sao các phương án khác sai:\n- A: Đã tính đúng độ lệch nhưng xác định sai ai nghe trước; An nghe lúc 3 s, sớm hơn Bình (6 s).\n- C: Đã quên cộng thời điểm sét thứ hai đánh (4 s) vào thời gian truyền âm của Bình (2 s), tính nhầm Bình nghe lúc 2 s thay vì 6 s.\n- D: Sai cả hai ý: xác định nhầm ai nghe trước, đồng thời quên cộng mốc thời gian 4 s của sét thứ hai."
+  },
+  {
+   "ma_cau": "K07040102087",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Tia sét thứ nhất đánh lúc 0 s, cách Lan 680 m. Tia sét thứ hai đánh lúc 3 s (sau tia thứ nhất), cách Hùng 1 020 m. Coi ánh sáng đến tức thời, tốc độ âm trong không khí 340 m/s. Ai nghe tiếng sét ứng với mình trước, tính theo đồng hồ thực?",
+   "lua_chon": [
+    "Hùng nghe trước, sớm hơn 4 s",
+    "Lan nghe trước, sớm hơn 1 s",
+    "Hùng nghe trước, sớm hơn 1 s",
+    "Lan nghe trước, sớm hơn 4 s"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Lan nghe lúc 0 + 680:340 = 2 s. Hùng nghe lúc 3 + 1020:340 = 3 + 3 = 6 s. Lan nghe trước, sớm hơn 6 − 2 = 4 s.\n\nVì sao các phương án khác sai:\n- A: Đã tính đúng độ lệch nhưng xác định sai ai nghe trước; Lan nghe lúc 2 s, sớm hơn Hùng (6 s).\n- B: Đã quên cộng thời điểm sét thứ hai đánh (3 s) vào thời gian truyền âm của Hùng (3 s), tính nhầm Hùng nghe lúc 3 s thay vì 6 s.\n- C: Sai cả hai ý: xác định nhầm ai nghe trước, đồng thời quên cộng mốc thời gian 3 s của sét thứ hai."
+  },
+  {
+   "ma_cau": "K07040102088",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Tia sét thứ nhất đánh lúc 0 s, cách Nga 1 360 m. Tia sét thứ hai đánh lúc 2 s (sau tia thứ nhất), cách Tùng 340 m. Coi ánh sáng đến tức thời, tốc độ âm trong không khí 340 m/s. Ai nghe tiếng sét ứng với mình trước, tính theo đồng hồ thực?",
+   "lua_chon": [
+    "Tùng nghe trước, sớm hơn 1 s",
+    "Nga nghe trước, sớm hơn 1 s",
+    "Tùng nghe trước, sớm hơn 3 s",
+    "Nga nghe trước, sớm hơn 3 s"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Nga nghe lúc 0 + 1360:340 = 4 s. Tùng nghe lúc 2 + 340:340 = 2 + 1 = 3 s. Tùng nghe trước, sớm hơn 4 − 3 = 1 s.\n\nVì sao các phương án khác sai:\n- B: Đã tính đúng độ lệch nhưng xác định sai ai nghe trước; Tùng nghe lúc 3 s, sớm hơn Nga (4 s).\n- C: Đã quên cộng thời điểm sét thứ hai đánh (2 s) vào thời gian truyền âm của Tùng (1 s), tính nhầm Tùng nghe lúc 1 s thay vì 3 s.\n- D: Sai cả hai ý: xác định nhầm ai nghe trước, đồng thời quên cộng mốc thời gian 2 s của sét thứ hai."
+  },
+  {
+   "ma_cau": "K07040102089",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Tia sét thứ nhất đánh lúc 0 s, cách Chi 510 m. Tia sét thứ hai đánh lúc 5 s (sau tia thứ nhất), cách Duy 850 m. Coi ánh sáng đến tức thời, tốc độ âm trong không khí 340 m/s. Ai nghe tiếng sét ứng với mình trước, tính theo đồng hồ thực?",
+   "lua_chon": [
+    "Duy nghe trước, sớm hơn 6 s",
+    "Chi nghe trước, sớm hơn 2,5 s",
+    "Chi nghe trước, sớm hơn 6 s",
+    "Duy nghe trước, sớm hơn 2,5 s"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Chi nghe lúc 0 + 510:340 = 1,5 s. Duy nghe lúc 5 + 850:340 = 5 + 2,5 = 7,5 s. Chi nghe trước, sớm hơn 7,5 − 1,5 = 6 s.\n\nVì sao các phương án khác sai:\n- A: Đã tính đúng độ lệch nhưng xác định sai ai nghe trước; Chi nghe lúc 1,5 s, sớm hơn Duy (7,5 s).\n- B: 2,5 s là thời gian truyền âm riêng của Duy, không phải hiệu thời gian nghe giữa hai người (7,5 − 1,5 = 6 s).\n- D: Sai cả hai ý: xác định nhầm ai nghe trước, đồng thời lấy nhầm 2,5 s (thời gian truyền âm riêng của Duy) làm hiệu số."
+  },
+  {
+   "ma_cau": "K07040102090",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Tia sét thứ nhất đánh lúc 0 s, cách Vinh 1 700 m. Tia sét thứ hai đánh lúc 1 s (sau tia thứ nhất), cách Yến 170 m. Coi ánh sáng đến tức thời, tốc độ âm trong không khí 340 m/s. Ai nghe tiếng sét ứng với mình trước, tính theo đồng hồ thực?",
+   "lua_chon": [
+    "Vinh nghe trước, sớm hơn 3,5 s",
+    "Yến nghe trước, sớm hơn 3,5 s",
+    "Vinh nghe trước, sớm hơn 0,5 s",
+    "Yến nghe trước, sớm hơn 0,5 s"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Vinh nghe lúc 0 + 1700:340 = 5 s. Yến nghe lúc 1 + 170:340 = 1 + 0,5 = 1,5 s. Yến nghe trước, sớm hơn 5 − 1,5 = 3,5 s.\n\nVì sao các phương án khác sai:\n- A: Đã tính đúng độ lệch nhưng xác định sai ai nghe trước; Yến nghe lúc 1,5 s, sớm hơn Vinh (5 s).\n- C: 0,5 s là thời gian truyền âm riêng của Yến, không phải hiệu thời gian nghe giữa hai người (5 − 1,5 = 3,5 s).\n- D: Đã tính đúng ai nghe trước nhưng lấy nhầm 0,5 s (thời gian truyền âm riêng của Yến) làm hiệu số."
+  },
+  {
+   "ma_cau": "K07040102091",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Tia sét thứ nhất đánh lúc 0 s, cách Phương 850 m. Tia sét thứ hai đánh lúc 3 s (sau tia thứ nhất), cách Quang 340 m. Coi ánh sáng đến tức thời, tốc độ âm trong không khí 340 m/s. Ai nghe tiếng sét ứng với mình trước, tính theo đồng hồ thực?",
+   "lua_chon": [
+    "Phương nghe trước, sớm hơn 1,5 s",
+    "Quang nghe trước, sớm hơn 1,5 s",
+    "Phương nghe trước, sớm hơn 2,5 s",
+    "Quang nghe trước, sớm hơn 1 s"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Phương nghe lúc 0 + 850:340 = 2,5 s. Quang nghe lúc 3 + 340:340 = 3 + 1 = 4 s. Phương nghe trước, sớm hơn 4 − 2,5 = 1,5 s.\n\nVì sao các phương án khác sai:\n- B: Phương nghe lúc 2,5 s, sớm hơn Quang (4 s), nên Phương mới là người nghe trước, không phải Quang.\n- C: 2,5 s là thời điểm Phương nghe thấy, không phải khoảng chênh lệch giữa hai người.\n- D: 1 s là thời gian âm truyền tới Quang, không phải khoảng chênh lệch giữa hai người; và Phương mới là người nghe trước."
+  },
+  {
+   "ma_cau": "K07040102092",
+   "nhom_id": "KNB00332",
+   "loai": "trac_nghiem",
+   "de": "Tia sét thứ nhất đánh lúc 0 s, cách Hải 1 360 m. Tia sét thứ hai đánh lúc 1 s (sau tia thứ nhất), cách Yên 680 m. Coi ánh sáng đến tức thời, tốc độ âm trong không khí 340 m/s. Ai nghe tiếng sét ứng với mình trước, tính theo đồng hồ thực?",
+   "lua_chon": [
+    "Hải nghe trước, sớm hơn 1 s",
+    "Yên nghe trước, sớm hơn 1 s",
+    "Yên nghe trước, sớm hơn 4 s",
+    "Hải nghe trước, sớm hơn 4 s"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Hải nghe lúc 0 + 1 360:340 = 4 s. Yên nghe lúc 1 + 680:340 = 1 + 2 = 3 s. Yên nghe trước, sớm hơn 4 − 3 = 1 s.\n\nVì sao các phương án khác sai:\n- A: Yên mới là người nghe trước (3 s so với 4 s của Hải), không phải Hải.\n- C: Khoảng chênh lệch đúng là 4 − 3 = 1 s, không phải 4 s.\n- D: Hải nghe lúc 4 s, muộn hơn Yên (3 s), nên Hải không phải là người nghe trước."
+  }
+ ]
+}

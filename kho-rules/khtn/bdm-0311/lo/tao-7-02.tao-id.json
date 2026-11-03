@@ -1,0 +1,29 @@
+{
+ "KDB01394": {
+  "nhom_id": "KNB00310",
+  "ten": "So sánh, sắp xếp khối lượng phân tử khi đã biết giá trị từng chất",
+  "cau": [
+   "K07020104001",
+   "K07020104002",
+   "K07020104003"
+  ]
+ },
+ "KDB01395": {
+  "nhom_id": "KNB00311",
+  "ten": "Giải thích tính chất của chất dựa vào thành phần và cách sắp xếp nguyên tử",
+  "cau": [
+   "K07020105001",
+   "K07020105002",
+   "K07020105003",
+   "K07020105004"
+  ]
+ },
+ "KDB01396": {
+  "nhom_id": "KNB00311",
+  "ten": "Nhận xét ý kiến và tính toán khối lượng nguyên tử, phân tử từ dữ kiện đề",
+  "cau": [
+   "K07020105005",
+   "K07020105006"
+  ]
+ }
+}

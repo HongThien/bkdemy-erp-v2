@@ -1,0 +1,455 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00587",
+   "chu_de": "Tiến hóa",
+   "chuyen_de": "Cơ chế tiến hóa",
+   "nhom": "Lý thuyết cơ bản về cơ chế tiến hóa",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nTheo Darwin: sinh vật sinh sản nhiều nhưng điều kiện sống có giới hạn nên có đấu tranh sinh tồn; trong quần thể có các biến dị cá thể, cá thể mang biến dị có lợi sống sót, sinh sản nhiều hơn (chọn lọc tự nhiên); qua nhiều thế hệ đặc điểm có lợi được tích luỹ.\nTheo quan điểm hiện đại: biến dị di truyền (đột biến gene, đột biến nhiễm sắc thể, biến dị tổ hợp) là nguyên liệu; chọn lọc tự nhiên tác động lên kiểu hình, qua đó làm thay đổi tần số allele, kiểu gene trong quần thể.\n\n##PP 2. Các bước làm bài\nXác định đề hỏi theo quan điểm của Darwin, quan điểm hiện đại hay so sánh hai quan điểm\nNhớ lại chuỗi cơ chế: biến dị, đấu tranh sinh tồn, chọn lọc tự nhiên, tích luỹ đặc điểm có lợi\nĐối chiếu với từng phương án, loại phương án trái chuỗi cơ chế\n\n##CY 3. Lưu ý\nDarwin chưa giải thích được cơ chế di truyền của biến dị; quan điểm hiện đại bổ sung đột biến, biến dị tổ hợp và tần số allele.\nHai quan điểm đều coi chọn lọc tự nhiên là nhân tố quan trọng.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01475",
+     "thu_tu": 1,
+     "ten": "Nhận biết cơ chế tiến hoá theo quan điểm của Darwin",
+     "mo_ta": "Đề bắt đầu bằng \"Theo Darwin\" và hỏi một khâu của cơ chế: nguyên liệu, đấu tranh sinh tồn, chọn lọc, kết quả tích luỹ đặc điểm có lợi.\nCó thể cho sơ đồ các giai đoạn và hỏi ô còn thiếu.\nLưu ý: đề nêu thêm đột biến gene, tần số allele ⇒ thuộc dạng \"Nhận biết cơ chế tiến hoá theo quan điểm hiện đại\".",
+     "ly_thuyet": "##TC Cơ chế tiến hoá theo Darwin\nNguyên liệu: các biến dị cá thể có sẵn trong quần thể (Darwin chưa rõ cơ chế di truyền).\nĐấu tranh sinh tồn do điều kiện sống có giới hạn; cá thể mang biến dị có lợi sống sót, sinh sản nhiều hơn, để lại nhiều con cháu.\nQua nhiều thế hệ, đặc điểm có lợi được tích luỹ, tăng tỉ lệ trong quần thể.",
+     "vi_du": "##VD\nTheo Darwin, những cá thể có biến dị có lợi trong đấu tranh sinh tồn sẽ có xu hướng như thế nào so với các cá thể khác?\nA. Bị đào thải nhanh hơn các cá thể khác trong quần thể\nB. Có khả năng sống sót và sinh sản tốt hơn, để lại nhiều con cháu hơn\nC. Không có gì khác biệt so với các cá thể mang biến dị bất lợi\nD. Ngay lập tức biến đổi toàn bộ quần thể thành loài mới\n\nBài giải:\nTheo Darwin, cá thể mang biến dị có lợi trong đấu tranh sinh tồn sống sót và sinh sản tốt hơn.\nChúng để lại nhiều con cháu hơn, nên đặc điểm đó dần phổ biến trong quần thể.\nPhương án A, C, D trái với thuyết chọn lọc tự nhiên.\nChọn B.\n\n##VD\nTheo Darwin, kết quả cuối cùng của đấu tranh sinh tồn và chọn lọc tự nhiên qua nhiều thế hệ là gì?\nA. Mọi cá thể trong quần thể giống hệt nhau\nB. Đặc điểm có lợi tích luỹ, tăng tỉ lệ qua thế hệ\nC. Quần thể ngừng phát sinh biến dị mới\nD. Cá thể mang biến dị bất lợi chết ngay lập tức\n\nBài giải:\nQua nhiều thế hệ, cá thể mang đặc điểm có lợi sống sót, sinh sản nhiều hơn.\nDo đó đặc điểm có lợi được tích luỹ và tăng tỉ lệ qua các thế hệ.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01476",
+     "thu_tu": 2,
+     "ten": "Nhận biết cơ chế tiến hoá theo quan điểm hiện đại",
+     "mo_ta": "Đề hỏi \"theo quan điểm (tiến hoá) hiện đại\" về vai trò của đột biến gene, nguồn biến dị di truyền, hoặc chọn lọc tác động lên cấp độ nào.\nCó thể cho sơ đồ và hỏi nhân tố ở ô còn thiếu.\nLưu ý: đề đối chiếu hai quan điểm ⇒ thuộc dạng \"So sánh quan điểm của Darwin và quan điểm hiện đại\".",
+     "ly_thuyet": "##TC Quan điểm hiện đại\nBiến dị di truyền gồm đột biến gene, đột biến nhiễm sắc thể và biến dị tổ hợp; chúng cung cấp nguyên liệu cho chọn lọc tự nhiên.\nChọn lọc tự nhiên tác động trực tiếp lên kiểu hình, qua đó gián tiếp tác động lên kiểu gene, làm thay đổi tần số allele trong quần thể.",
+     "vi_du": "##VD\nTheo tiến hoá hiện đại, đột biến gene có vai trò gì trong quá trình hình thành đặc điểm thích nghi?\nA. Luôn trực tiếp tạo ra đặc điểm thích nghi hoàn hảo ngay lập tức\nB. Là một trong những nguồn tạo ra biến dị di truyền, cung cấp nguyên liệu cho chọn lọc tự nhiên\nC. Không có vai trò gì, chỉ có biến dị tổ hợp mới quan trọng\nD. Chỉ xảy ra khi sinh vật chủ động cần thích nghi với môi trường mới\n\nBài giải:\nĐột biến gene là một nguồn tạo ra biến dị di truyền, cùng với biến dị tổ hợp.\nBiến dị này cung cấp nguyên liệu để chọn lọc tự nhiên tác động, dần hình thành đặc điểm thích nghi qua nhiều thế hệ.\nPhương án A, C, D sai vì đột biến xảy ra vô hướng, không tạo ngay đặc điểm hoàn hảo và không phải chỉ có biến dị tổ hợp quan trọng.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01477",
+     "thu_tu": 3,
+     "ten": "So sánh quan điểm của Darwin và quan điểm hiện đại",
+     "mo_ta": "Đề hỏi điểm giống nhau hoặc điều quan điểm hiện đại bổ sung so với Darwin.\nLàm bằng cách đối chiếu nguồn gốc biến dị và vai trò chọn lọc ở hai quan điểm.\nLưu ý: đề chỉ hỏi theo một quan điểm ⇒ thuộc dạng nhận biết cơ chế của quan điểm đó.",
+     "ly_thuyet": "##TC So sánh hai quan điểm\nGiống nhau: đều xem chọn lọc tự nhiên là nhân tố quan trọng định hướng tiến hoá.\nKhác nhau: Darwin chưa rõ cơ chế di truyền của biến dị; quan điểm hiện đại bổ sung biến dị phát sinh do đột biến gene, đột biến nhiễm sắc thể và biến dị tổ hợp.",
+     "vi_du": "##VD\nSo với quan điểm của Darwin, quan điểm hiện đại bổ sung thêm điều gì về nguồn gốc biến dị?\nA. Là kết quả của việc con người lai tạo\nB. Không còn vai trò gì trong tiến hoá hiện đại\nC. Là đặc điểm riêng của thực vật, không của động vật\nD. Biến dị còn phát sinh do đột biến gene\n\nBài giải:\nQuan điểm hiện đại bổ sung: ngoài biến dị có sẵn, biến dị di truyền còn phát sinh do đột biến gene, đột biến nhiễm sắc thể.\nCác phương án A, B, C đều sai kiến thức.\nChọn D.\n\n##VD\nĐiểm giống nhau giữa quan điểm của Darwin và quan điểm hiện đại về tiến hoá là gì?\nA. Đều xem chọn lọc tự nhiên là nhân tố quan trọng\nB. Đều cho đột biến gene là nguyên nhân duy nhất\nC. Đều cho cá thể tự đổi đặc điểm để thích nghi\nD. Đều không thừa nhận vai trò của biến dị\n\nBài giải:\nCả hai quan điểm đều xem chọn lọc tự nhiên là nhân tố định hướng chính của tiến hoá.\nQuan điểm hiện đại chỉ bổ sung hiểu biết về nguồn gốc di truyền của biến dị.\nChọn A."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00589",
+   "chu_de": "Tiến hóa",
+   "chuyen_de": "Sự phát sinh và phát triển sự sống trên Trái Đất",
+   "nhom": "Lý thuyết phát sinh & phát triển sự sống trên Trái Đất",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nSự phát sinh sự sống gồm 3 giai đoạn: tiến hoá hoá học (chất vô cơ tạo chất hữu cơ đơn giản rồi phức tạp nhờ năng lượng tự nhiên), tiến hoá tiền sinh học (đại phân tử tập trung tạo tế bào sơ khai), tiến hoá sinh học (từ tế bào sơ khai, chịu chọn lọc tự nhiên, hình thành sinh giới đa dạng).\nLịch sử Trái Đất chia thành các đại địa chất; theo thứ tự từ xa đến gần: đại Cổ sinh, đại Trung sinh, đại Tân sinh. Tuổi của sinh vật được xác định qua hoá thạch trong các lớp đất đá.\nLoài người và vượn người ngày nay có chung tổ tiên là vượn người hoá thạch. Các dạng người từ sớm đến muộn: Người vượn phương Nam, Người tối cổ, Người cổ, Người hiện đại; thể tích não, công cụ lao động và tổ chức xã hội phát triển dần.\n\n##PP 2. Các bước làm bài\nXác định đề hỏi về giai đoạn phát sinh sự sống, đại địa chất hay dạng người\nNhớ đặc điểm chủ yếu và thứ tự xuất hiện của từng giai đoạn, đại, dạng người\nĐối chiếu từng phương án, loại phương án sai mốc thời gian hoặc sai đặc điểm\n\n##CY 3. Lưu ý\nTế bào sơ khai xuất hiện ở giai đoạn tiền sinh học, không phải hoá học.\nSố lượng nhiễm sắc thể của loài người không thay đổi qua các dạng người.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01478",
+     "thu_tu": 1,
+     "ten": "Nhận biết các giai đoạn phát sinh sự sống",
+     "mo_ta": "Đề hỏi đặc điểm, sản phẩm, nguồn gốc chất hoặc ranh giới của các giai đoạn tiến hoá hoá học, tiền sinh học, sinh học.\nLàm bằng cách ghi nhớ nội dung và thứ tự ba giai đoạn.\nLưu ý: đề cho bằng chứng thí nghiệm hoặc hoá thạch rồi hỏi bằng chứng ứng với giai đoạn nào ⇒ thuộc nhóm \"Biện luận và phản biện về phát sinh và phát triển sự sống trên Trái Đất\".",
+     "ly_thuyet": "##TC Ba giai đoạn\nTiến hoá hoá học: chất vô cơ ⇒ chất hữu cơ đơn giản (amino acid, nucleotide) ⇒ chất hữu cơ phức tạp, nhờ năng lượng tự nhiên.\nTiến hoá tiền sinh học: đại phân tử hữu cơ tập trung, có lớp màng bao bọc ⇒ tế bào sơ khai (trao đổi chất, tự nhân đôi).\nTiến hoá sinh học: từ tế bào sơ khai chịu chọn lọc tự nhiên, hình thành sinh vật đa dạng.",
+     "vi_du": "##VD\nGiai đoạn tiến hoá hoá học trong quá trình phát sinh sự sống là gì?\nA. Hình thành dần chất hữu cơ đơn giản rồi phức tạp\nB. Hình thành tế bào sơ khai có màng bao bọc đầu tiên\nC. Từ tế bào sơ khai tiến hoá thành sinh vật đa dạng\nD. Từ đơn bào tiến hoá thành sinh vật có xương sống\n\nBài giải:\nTiến hoá hoá học là giai đoạn các chất vô cơ đơn giản kết hợp thành chất hữu cơ đơn giản rồi phức tạp như amino acid, nucleotide nhờ năng lượng tự nhiên.\nPhương án B là tiền sinh học; C, D là tiến hoá sinh học.\nChọn A.\n\n##VD\nGiai đoạn tiến hoá tiền sinh học là giai đoạn nào sau đây?\nA. Hình thành chất vô cơ từ nguyên tố ban đầu Trái Đất\nB. Đại phân tử hữu cơ tập trung tạo tế bào sơ khai\nC. Tế bào sơ khai chịu chọn lọc tự nhiên tiến hoá\nD. Hình thành loài động vật có xương sống trên cạn\n\nBài giải:\nTiến hoá tiền sinh học là giai đoạn đại phân tử hữu cơ tập trung lại, hình thành lớp màng bao bọc.\nKết quả là tế bào sơ khai đầu tiên.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01479",
+     "thu_tu": 2,
+     "ten": "Xác định đại địa chất và sinh vật tiêu biểu",
+     "mo_ta": "Đề hỏi đặc điểm sinh vật của từng đại địa chất, thứ tự các đại, hoặc cách xác định thời điểm xuất hiện sinh vật bằng hoá thạch.\nLàm bằng cách ghi nhớ mốc: Cổ sinh (lên cạn, lưỡng cư), Trung sinh (khủng long, bò sát, chim), Tân sinh (hạt kín, thú, người).\nLưu ý: đề hỏi về các dạng người ⇒ thuộc dạng \"Nhận biết các dạng người trong phát sinh loài người\".",
+     "ly_thuyet": "##TC Các đại địa chất\nThứ tự từ xa đến gần: đại Cổ sinh, đại Trung sinh, đại Tân sinh.\nĐại Cổ sinh: sinh vật chuyển từ nước lên cạn, xuất hiện lưỡng cư. Đại Trung sinh: bò sát phát triển ưu thế, xuất hiện khủng long và chim. Đại Tân sinh: thực vật hạt kín và thú phát triển, loài người xuất hiện.\nHoá thạch trong lớp đất đá cho biết tuổi sinh vật; lớp đất càng sâu thường càng cổ.",
+     "vi_du": "##VD\nTrong lịch sử Trái Đất, đại nào bò sát phát triển ưu thế, xuất hiện các loài khủng long?\nA. Đại Cổ sinh\nB. Đại Tân sinh\nC. Giai đoạn tiến hoá hoá học\nD. Đại Trung sinh\n\nBài giải:\nĐại Trung sinh là thời kì bò sát phát triển ưu thế, xuất hiện nhiều loài khủng long.\nPhương án A là đại Cổ sinh, B là đại Tân sinh, C không phải đại địa chất.\nChọn D.\n\n##VD\nThứ tự nào sau đây đúng theo thang thời gian địa chất, từ xa xưa đến gần đây?\nA. Đại Cổ sinh → đại Trung sinh → đại Tân sinh\nB. Đại Trung sinh → đại Cổ sinh → đại Tân sinh\nC. Đại Tân sinh → đại Trung sinh → đại Cổ sinh\nD. Đại Cổ sinh → đại Tân sinh → đại Trung sinh\n\nBài giải:\nTheo thang thời gian địa chất, từ xa xưa đến gần đây: đại Cổ sinh, tiếp đến đại Trung sinh, rồi đại Tân sinh.\nChọn A."
+    },
+    {
+     "dang_id": "KDB01480",
+     "thu_tu": 3,
+     "ten": "Nhận biết các dạng người trong phát sinh loài người",
+     "mo_ta": "Đề hỏi mối quan hệ người và vượn người, thứ tự xuất hiện, hoặc cho đặc điểm (công cụ, lửa, não, tiếng nói) rồi hỏi là dạng người nào.\nLàm bằng cách đối chiếu đặc điểm với Người vượn phương Nam, Người tối cổ, Người cổ, Người hiện đại.\nLưu ý: đề so sánh hai dạng người hoặc hỏi xu hướng chung ⇒ thuộc dạng \"So sánh các dạng người và xu hướng tiến hoá\".",
+     "ly_thuyet": "##TC Các dạng người\nNgười vượn phương Nam: dạng chuyển tiếp xuất hiện sớm nhất. Người tối cổ: biết chế tạo công cụ đá thô sơ.\nNgười cổ: biết dùng lửa, công cụ tinh xảo hơn, sống bầy đàn có tổ chức.\nNgười hiện đại (Homo sapiens): xuất hiện sau cùng, não lớn, tiếng nói và văn hoá phát triển.",
+     "vi_du": "##VD\nĐặc điểm nào sau đây đúng với Người tối cổ trong quá trình phát sinh loài người?\nA. Thể tích não lớn nhất, có tiếng nói, chữ viết\nB. Sống dưới nước, chưa có khả năng di chuyển trên cạn\nC. Đã biết chế tạo công cụ lao động bằng đá thô sơ\nD. Là dạng vượn người ngày nay còn tồn tại phổ biến\n\nBài giải:\nNgười tối cổ là dạng người xuất hiện sớm, đã biết chế tạo công cụ lao động bằng đá thô sơ.\nPhương án A là Người hiện đại, B, D không đúng đặc điểm của một dạng người.\nChọn C.\n\n##VD\nMột dạng người đã biết dùng lửa để sưởi ấm và nướng thức ăn, chế tạo công cụ lao động tinh xảo hơn, sống thành bầy đàn có tổ chức hơn. Đây là dạng người nào?\nA. Người cổ\nB. Vượn người hoá thạch (tổ tiên chung)\nC. Người tối cổ\nD. Người hiện đại (Homo sapiens)\n\nBài giải:\nBiết dùng lửa, công cụ tinh xảo hơn Người tối cổ và tổ chức bầy đàn chặt chẽ hơn là đặc điểm của Người cổ.\nChọn A."
+    },
+    {
+     "dang_id": "KDB01481",
+     "thu_tu": 4,
+     "ten": "So sánh các dạng người và xu hướng tiến hoá",
+     "mo_ta": "Đề so sánh hai dạng người (cái nào tiến hoá hơn), hoặc hỏi xu hướng chung và đặc điểm không đổi qua các dạng người.\nLàm bằng cách đối chiếu đặc điểm thể tích não, công cụ, đời sống xã hội theo thứ tự từ sớm đến muộn.\nLưu ý: đề chỉ cho đặc điểm rồi hỏi tên dạng người ⇒ thuộc dạng \"Nhận biết các dạng người trong phát sinh loài người\".",
+     "ly_thuyet": "##TC Xu hướng tiến hoá của loài người\nTừ sớm đến muộn: thể tích não tăng dần, dáng đi thẳng hơn, công cụ lao động tinh xảo hơn, đời sống xã hội và văn hoá phức tạp hơn.\nSố lượng nhiễm sắc thể là đặc trưng ổn định của loài người, không tăng dần.\n\n##CY Lưu ý\nĐề có chữ KHÔNG đúng ⇒ chọn phương án sai với xu hướng chung.\nNgười cổ hơn Người tối cổ ở việc biết dùng lửa và công cụ tinh xảo hơn.",
+     "vi_du": "##VD\nSo với Người tối cổ, Người cổ có đặc điểm tiến hoá hơn nào sau đây?\nA. Không còn khả năng chế tạo công cụ lao động\nB. Có thể tích não nhỏ hơn Người tối cổ\nC. Biết dùng lửa, chế tạo công cụ lao động tinh xảo hơn\nD. Sống đơn lẻ, không thành bầy đàn\n\nBài giải:\nNgười cổ tiến hoá hơn Người tối cổ ở chỗ đã biết dùng lửa.\nCông cụ lao động của Người cổ tinh xảo hơn.\nPhương án A, B, D trái với xu hướng tiến hoá.\nChọn C.\n\n##VD\nTrong quá trình phát sinh loài người, xu hướng nào sau đây KHÔNG đúng khi so sánh các dạng người từ sớm đến muộn?\nA. Số lượng nhiễm sắc thể tăng dần theo từng giai đoạn tiến hoá\nB. Thể tích hộp sọ (não bộ) có xu hướng tăng dần\nC. Dáng đi ngày càng thẳng đứng hơn, hoàn thiện hơn\nD. Công cụ lao động ngày càng tinh xảo, phức tạp hơn\n\nBài giải:\nThể tích hộp sọ tăng, dáng đi thẳng hơn, công cụ tinh xảo hơn là các xu hướng đúng (B, C, D).\nSố lượng nhiễm sắc thể là đặc trưng ổn định của loài người, không tăng dần theo giai đoạn nên A không đúng.\nChọn A."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K09000000272",
+   "nhom_id": "KNB00587",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Ở một loài bọ que, cá thể có hình dạng giống cành cây khô ít bị chim phát hiện hơn. Qua nhiều thế hệ, tỉ lệ cá thể giống cành cây tăng dần. Đây là kết quả của quá trình nào?",
+   "lua_chon": [
+    "Chọn lọc nhân tạo, vì con người nhân giống cá thể đó",
+    "Chọn lọc tự nhiên, vì ít bị kẻ thù phát hiện hơn",
+    "Sự tự đổi hình dạng của từng cá thể khi lớn",
+    "Hiện tượng ngẫu nhiên, không do khả năng sống sót"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Cá thể bọ que giống cành cây ít bị chim phát hiện, sống sót và sinh sản nhiều hơn; qua nhiều thế hệ, chọn lọc tự nhiên làm tăng dần tỉ lệ cá thể ngụy trang này.\n\nVì sao các phương án khác sai:\n- A: Không có sự can thiệp của con người; đây là quá trình diễn ra trong tự nhiên.\n- C: Cá thể không tự biến đổi hình dạng; đây là biến dị đã có sẵn.\n- D: Tỉ lệ ngụy trang tốt tăng dần chính là do khả năng sống sót khác nhau."
+  },
+  {
+   "ma_cau": "K09000000273",
+   "nhom_id": "KNB00587",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Một quần thể ốc sên có cá thể vỏ nâu sẫm và vỏ vàng nhạt. Ở rừng rậm nhiều bóng tối, cá thể vỏ nâu sẫm ít bị chim phát hiện hơn. Qua nhiều thế hệ, điều gì có khả năng xảy ra nhất?",
+   "lua_chon": [
+    "Tất cả ốc vỏ vàng đổi màu ngay trong đời",
+    "Tỉ lệ hai loại màu vỏ giữ nguyên như ban đầu",
+    "Tỉ lệ cá thể vỏ nâu sẫm tăng dần qua thế hệ",
+    "Tỉ lệ cá thể vỏ vàng nhạt tăng dần vì dễ thấy"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Cá thể vỏ nâu sẫm khó bị chim phát hiện hơn nên sống sót, sinh sản nhiều hơn; qua nhiều thế hệ, tỉ lệ cá thể vỏ nâu sẫm tăng dần trong quần thể.\n\nVì sao các phương án khác sai:\n- A: Cá thể không tự đổi màu vỏ trong đời; chỉ tỉ lệ màu trong quần thể thay đổi dần.\n- B: Hai loại màu vỏ có khả năng sống sót khác nhau nên tỉ lệ có xu hướng thay đổi.\n- D: Cá thể dễ bị chim nhận ra thường bị ăn nhiều hơn, tỉ lệ có xu hướng giảm."
+  },
+  {
+   "ma_cau": "K09000000274",
+   "nhom_id": "KNB00587",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Vì sao nhiều loài côn trùng ăn lá cây có màu xanh lục giống màu lá cây mà chúng sống?",
+   "lua_chon": [
+    "Vì côn trùng hấp thụ chất diệp lục từ lá",
+    "Vì con người lai tạo, chọn giống côn trùng màu xanh",
+    "Vì mọi côn trùng ăn lá đều có màu xanh",
+    "Vì cá thể màu xanh ít bị kẻ thù phát hiện hơn"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Cá thể côn trùng màu xanh giống lá ít bị kẻ thù phát hiện, sống sót và sinh sản nhiều hơn; qua nhiều thế hệ, đặc điểm màu xanh phổ biến dần trong quần thể.\n\nVì sao các phương án khác sai:\n- A: Màu xanh là đặc điểm di truyền vốn có, không do hấp thụ diệp lục từ lá.\n- B: Đây là quá trình tự nhiên, không có sự chọn giống chủ động của con người.\n- C: Màu sắc côn trùng ăn lá khác nhau tuỳ loài và môi trường sống."
+  },
+  {
+   "ma_cau": "K09000000275",
+   "nhom_id": "KNB00587",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Đặc điểm ngụy trang về màu sắc, hình dạng của sinh vật được hình thành theo cơ chế nào?",
+   "lua_chon": [
+    "Biến dị có sẵn được chọn lọc tự nhiên giữ lại dần",
+    "Do từng cá thể tự luyện tập thay đổi màu sắc",
+    "Do con người tác động lên gene sinh vật hoang dã",
+    "Xuất hiện ngẫu nhiên ở mọi cá thể cùng một lúc"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Đặc điểm ngụy trang hình thành từ biến dị vốn có; chọn lọc tự nhiên giữ lại cá thể mang biến dị có lợi, qua nhiều thế hệ đặc điểm đó trở nên phổ biến.\n\nVì sao các phương án khác sai:\n- B: Cá thể không tự luyện tập để thay đổi màu sắc, hình dạng cơ thể.\n- C: Trong tự nhiên, không có sự can thiệp của con người lên gene sinh vật hoang dã.\n- D: Đặc điểm này tăng dần tỉ lệ qua nhiều thế hệ, không xuất hiện đồng loạt ngay."
+  },
+  {
+   "ma_cau": "K09000000276",
+   "nhom_id": "KNB00587",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Một quần thể cào cào có cá thể màu xanh và màu nâu. Khi đồng cỏ cháy, nền đất chuyển màu nâu sẫm. Dự đoán điều gì xảy ra với quần thể qua nhiều thế hệ sau đó?",
+   "lua_chon": [
+    "Toàn bộ cào cào xanh đổi ngay sang màu nâu",
+    "Tỉ lệ cào cào màu nâu tăng dần vì khó bị thấy",
+    "Tỉ lệ hai loại màu sắc không đổi qua thời gian",
+    "Tỉ lệ cào cào xanh vẫn tăng dù nền đất đổi màu"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Trên nền đất cháy màu nâu sẫm, cào cào màu nâu khó bị phát hiện hơn, sống sót nhiều hơn; qua nhiều thế hệ, tỉ lệ cào cào màu nâu tăng dần.\n\nVì sao các phương án khác sai:\n- A: Sự thay đổi màu sắc diễn ra qua nhiều thế hệ, không phải tự đổi ngay lập tức.\n- C: Trên nền đất màu nâu, cào cào màu xanh dễ bị phát hiện hơn.\n- D: Lợi thế màu sắc phụ thuộc môi trường; trên nền nâu, màu nâu mới có lợi hơn."
+  },
+  {
+   "ma_cau": "K09000000277",
+   "nhom_id": "KNB00587",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Một quần thể bướm đêm ở vùng vỏ cây sáng màu gồm cá thể sáng và sẫm màu. Chim dễ phát hiện cá thể sẫm màu hơn. Qua nhiều thế hệ, điều gì có khả năng xảy ra nhất?",
+   "lua_chon": [
+    "Tỉ lệ cá thể màu sẫm tăng dần vì chúng nổi bật hơn nên hấp dẫn bạn tình hơn",
+    "Tỉ lệ cá thể màu sáng tăng dần, tỉ lệ cá thể màu sẫm giảm dần",
+    "Tỉ lệ hai loại màu sắc không thay đổi qua các thế hệ",
+    "Toàn bộ quần thể chuyển hẳn sang màu đen chỉ sau một thế hệ"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Vì cá thể màu sẫm dễ bị chim phát hiện và ăn thịt hơn trên nền vỏ cây sáng màu, qua nhiều thế hệ, cá thể màu sáng có tỉ lệ sống sót cao hơn nên tỉ lệ màu sáng trong quần thể tăng dần.\n\nVì sao các phương án khác sai:\n- A: Cá thể màu sẫm dễ bị chim phát hiện và ăn thịt hơn, nên tỉ lệ sống sót và sinh sản của chúng giảm, không tăng.\n- C: Với áp lực chọn lọc rõ rệt (chim dễ phát hiện cá thể sẫm màu), tỉ lệ hai loại màu sắc chắc chắn sẽ thay đổi qua các thế hệ.\n- D: Tiến hoá là quá trình tích luỹ dần qua nhiều thế hệ, không xảy ra đột ngột chỉ sau một thế hệ."
+  },
+  {
+   "ma_cau": "K09000000278",
+   "nhom_id": "KNB00587",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Vì sao đặc điểm nguỵ trang (màu sắc, hình dạng giống môi trường) KHÔNG xuất hiện ngay khi môi trường thay đổi, mà cần trải qua nhiều thế hệ?",
+   "lua_chon": [
+    "Vì sinh vật cố ý thay đổi màu sắc cơ thể ngay khi nhận ra môi trường đã đổi",
+    "Vì gene nguỵ trang chỉ xuất hiện khi có yêu cầu từ cơ thể sinh vật",
+    "Vì cần thời gian để chọn lọc tự nhiên tích luỹ dần các biến dị có lợi đã có sẵn trong quần thể qua nhiều thế hệ",
+    "Vì đột biến luôn xảy ra tức thời và đồng loạt ở toàn bộ cá thể trong quần thể ngay khi môi trường đổi"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Đặc điểm nguỵ trang hình thành do chọn lọc tự nhiên tích luỹ dần các biến dị có lợi đã có sẵn (do đột biến ngẫu nhiên trước đó) qua nhiều thế hệ sinh sản, không phải là phản ứng tức thời của sinh vật.\n\nVì sao các phương án khác sai:\n- A: Sinh vật không chủ động thay đổi màu sắc cơ thể theo ý muốn; đây là quá trình chọn lọc tự nhiên qua nhiều thế hệ.\n- B: Gene không xuất hiện theo yêu cầu của cơ thể; đột biến xảy ra ngẫu nhiên, không có mục đích.\n- D: Đột biến xảy ra ngẫu nhiên ở từng cá thể riêng lẻ, không đồng loạt và tức thời ở toàn quần thể."
+  },
+  {
+   "ma_cau": "K09000000279",
+   "nhom_id": "KNB00587",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Một loài rắn không độc có cá thể mang màu sắc sặc sỡ giống loài rắn độc khác, giúp doạ được kẻ thù. Đặc điểm này được hình thành và duy trì qua cơ chế nào?",
+   "lua_chon": [
+    "Loài rắn này chủ động học tập màu sắc để giúp doạ được kẻ thù",
+    "Đây là hiện tượng ngẫu nhiên, không ảnh hưởng đến khả năng sống sót",
+    "Loài rắn này đã lai giống trực tiếp với loài rắn độc để có màu sắc tương tự",
+    "Đột biến ngẫu nhiên tạo màu sắc giống loài độc, được chọn lọc tự nhiên giữ lại vì giúp cá thể tránh bị săn bắt"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Đột biến ngẫu nhiên tạo ra màu sắc giống loài rắn độc; những cá thể mang đặc điểm này ít bị săn bắt hơn nên được chọn lọc tự nhiên giữ lại và phổ biến dần qua các thế hệ.\n\nVì sao các phương án khác sai:\n- A: Sinh vật không chủ động học tập và thay đổi màu sắc cơ thể theo ý muốn.\n- B: Đặc điểm này liên quan trực tiếp đến khả năng sống sót (tránh bị săn bắt), không phải ngẫu nhiên vô nghĩa.\n- C: Đây không phải do lai giống giữa hai loài khác nhau để có màu sắc giống nhau."
+  },
+  {
+   "ma_cau": "K09000000280",
+   "nhom_id": "KNB00587",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Quan sát đồ thị tỉ lệ sâu hại kháng thuốc trừ sâu qua các lần phun liên tục: ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S140104-02-001-de.png) . Xu hướng tăng dần này giải thích đúng nhất là do đâu?",
+   "lua_chon": [
+    "Thuốc làm sâu tự đổi để kháng thuốc ngay lập tức",
+    "Mỗi con sâu học cách kháng thuốc rồi truyền cho con",
+    "Thuốc loại dần sâu mẫn cảm, giữ lại sâu vốn kháng thuốc",
+    "Số liệu này là sai số đo đạc, không có ý nghĩa"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Trong quần thể sâu vốn có một số cá thể mang biến dị kháng thuốc từ trước; mỗi lần phun diệt phần lớn sâu mẫn cảm, cá thể kháng thuốc sống sót nên tỉ lệ tăng dần.\n\nVì sao các phương án khác sai:\n- A: Sâu không tự biến đổi ngay sau mỗi lần phun; khả năng kháng thuốc đã có sẵn từ trước.\n- B: Khả năng kháng thuốc là đặc điểm di truyền có sẵn, không phải kinh nghiệm học được.\n- D: Xu hướng tăng dần, lặp lại qua nhiều lần phun phản ánh đúng quá trình chọn lọc."
+  },
+  {
+   "ma_cau": "K09000000281",
+   "nhom_id": "KNB00587",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Vì sao lạm dụng một loại thuốc kháng sinh liên tục trong thời gian dài có thể dẫn đến vi khuẩn kháng thuốc đó?",
+   "lua_chon": [
+    "Vì thuốc làm gene vi khuẩn đổi ngay để chống thuốc",
+    "Vì vi khuẩn có trí nhớ, tự tạo khả năng kháng thuốc",
+    "Vì mọi vi khuẩn trong quần thể đều kháng thuốc từ đầu",
+    "Thuốc diệt vi khuẩn mẫn cảm, giữ lại cá thể kháng thuốc"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Trong quần thể vi khuẩn vốn có một số ít cá thể mang biến dị kháng thuốc; dùng kháng sinh liên tục diệt phần lớn vi khuẩn mẫn cảm, cá thể kháng thuốc sinh sản nhanh, dần chiếm ưu thế.\n\nVì sao các phương án khác sai:\n- A: Thuốc không làm gene vi khuẩn biến đổi ngay; biến dị kháng thuốc đã có sẵn trước đó.\n- B: Vi khuẩn không có khả năng ghi nhớ; đây là biến dị di truyền có sẵn được chọn lọc.\n- C: Ban đầu chỉ một số ít vi khuẩn mang biến dị kháng thuốc, không phải toàn bộ."
+  },
+  {
+   "ma_cau": "K09000000282",
+   "nhom_id": "KNB00587",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Trước khi con người dùng một loại thuốc trừ sâu mới, trong quần thể sâu hại đã tồn tại sẵn cá thể mang gene kháng thuốc đó chưa?",
+   "lua_chon": [
+    "Chưa hề tồn tại; chính thuốc trừ sâu đã tạo ra đột biến kháng thuốc ngay khi phun",
+    "Toàn bộ quần thể sâu đều đã kháng thuốc từ trước khi phun thuốc",
+    "Có thể đã tồn tại sẵn với tần số rất thấp, do đột biến ngẫu nhiên trước đó, không phải do thuốc tạo ra",
+    "Không thể xác định được vì đột biến chỉ xảy ra ngẫu nhiên, không có quy luật"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Theo cơ chế tiến hoá, gene kháng thuốc đã tồn tại sẵn trong quần thể với tần số rất thấp do đột biến ngẫu nhiên từ trước; thuốc trừ sâu chỉ đóng vai trò chọn lọc, làm tăng tần số cá thể mang gene này, không phải là nguyên nhân trực tiếp tạo ra đột biến đó.\n\nVì sao các phương án khác sai:\n- A: Thuốc trừ sâu không tạo ra đột biến kháng thuốc một cách có định hướng; nó chỉ chọn lọc những cá thể đã mang gene kháng có sẵn.\n- B: Ban đầu chỉ có một tỉ lệ rất nhỏ cá thể mang gene kháng, không phải toàn bộ quần thể.\n- D: Dù đột biến xảy ra ngẫu nhiên, ta vẫn có thể suy luận gene kháng đã tồn tại sẵn trước khi phun thuốc dựa trên cơ chế chọn lọc tự nhiên."
+  },
+  {
+   "ma_cau": "K09000000283",
+   "nhom_id": "KNB00587",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Một bạn cho rằng: \"Khi tiếp xúc với thuốc kháng sinh, vi khuẩn tự thay đổi để trở nên kháng thuốc nhằm thích nghi với môi trường có thuốc.\" Cách giải thích phù hợp hơn theo quan điểm tiến hoá hiện đại là",
+   "lua_chon": [
+    "Vi khuẩn chủ động biến đổi theo nhu cầu",
+    "Vi khuẩn không có khả năng kháng thuốc",
+    "Thuốc trực tiếp tạo ra biến dị kháng thuốc",
+    "Biến dị kháng thuốc có sẵn, thuốc chọn lọc giữ lại"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Theo quan điểm tiến hoá hiện đại, biến dị (đột biến) phát sinh một cách ngẫu nhiên, không định hướng, có trước khi môi trường thay đổi; khi thuốc kháng sinh xuất hiện, nó đóng vai trò là nhân tố CHỌN LỌC: những cá thể vi khuẩn đã sẵn có biến dị kháng thuốc sống sót, sinh sản nhiều hơn, dần dần làm tăng tỉ lệ cá thể kháng thuốc trong quần thể, chứ vi khuẩn không tự biến đổi theo nhu cầu thích nghi.\n\nVì sao các phương án khác sai:\n- A: Biến dị phát sinh ngẫu nhiên, không theo nhu cầu.\n- B: Vi khuẩn kháng thuốc là hiện tượng có thật.\n- C: Thuốc chỉ chọn lọc biến dị đã có sẵn, không tạo ra biến dị."
+  },
+  {
+   "ma_cau": "K09000000284",
+   "nhom_id": "KNB00587",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Ở một loài bướm đêm, trước thời kỳ công nghiệp hoá, hầu hết bướm có màu sáng (phù hợp với vỏ cây sáng màu, ít bị chim ăn thịt phát hiện); sau khi công nghiệp hoá làm vỏ cây bị bồ hóng phủ đen, tỉ lệ bướm màu sẫm tăng lên rõ rệt trong quần thể. Cách giải thích phù hợp theo quan điểm tiến hoá hiện đại là",
+   "lua_chon": [
+    "Bướm sáng tự đổi thành sẫm để nguỵ trang",
+    "Bướm sáng bị bồ hóng bám nên trông sẫm màu",
+    "Bướm sẫm có sẵn, sống sót nhiều hơn khi vỏ cây sẫm",
+    "Chim đổi khẩu vị, không ăn bướm sáng nữa"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Biến dị về màu sắc (sáng và sẫm) đã tồn tại sẵn trong quần thể bướm từ trước; khi môi trường thay đổi (vỏ cây chuyển màu đen do bồ hóng), bướm sẫm màu nguỵ trang tốt hơn, ít bị chim ăn thịt phát hiện, sống sót và sinh sản nhiều hơn bướm sáng màu, dần dần làm tăng tỉ lệ bướm sẫm màu trong quần thể qua các thế hệ — đây là một ví dụ điển hình của chọn lọc tự nhiên.\n\nVì sao các phương án khác sai:\n- A: Biến dị màu sẫm có sẵn, không phải bướm tự đổi màu.\n- B: Tỉ lệ bướm sẫm tăng do chọn lọc, không phải do bụi bám lên bướm.\n- D: Chim ăn bướm sáng nhiều hơn vì dễ thấy trên vỏ cây sẫm."
+  },
+  {
+   "ma_cau": "K09000000285",
+   "nhom_id": "KNB00589",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Cây sự sống (cây phát sinh chủng loại) thể hiện điều gì về các loài sinh vật?",
+   "lua_chon": [
+    "Số lượng cá thể hiện có của mỗi loài trên Trái Đất",
+    "Quan hệ họ hàng giữa các loài dựa trên nguồn gốc chung",
+    "Khối lượng cơ thể trung bình của từng loài sinh vật",
+    "Vùng phân bố địa lí hiện nay của từng loài sinh vật"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Cây sự sống biểu diễn quan hệ họ hàng giữa các loài sinh vật: những loài có chung tổ tiên gần thì nằm trên các nhánh gần nhau hơn.\n\nVì sao các phương án khác sai:\n- A: Cây sự sống thể hiện quan hệ họ hàng, không phải số lượng cá thể của loài.\n- C: Khối lượng cơ thể không phải nội dung mà cây sự sống biểu diễn.\n- D: Vùng phân bố địa lí là nội dung khác, không phải điều cây sự sống thể hiện."
+  },
+  {
+   "ma_cau": "K09000000286",
+   "nhom_id": "KNB00589",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Dựa vào cây sự sống trong hình, cặp nhóm sinh vật nào có quan hệ họ hàng gần nhau nhất? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S140202-01-002-de.png)",
+   "lua_chon": [
+    "Cá và lưỡng cư",
+    "Chim và cá",
+    "Thú và chim",
+    "Lưỡng cư và chim"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Thú và chim tách ra từ cùng một điểm rẽ gần hiện nay nhất, tức có tổ tiên chung gần nhất, nên họ hàng gần nhau nhất.\n\nVì sao các phương án khác sai:\n- A: Cá tách ra sớm nhất; cá và lưỡng cư có tổ tiên chung xa hơn so với cặp thú – chim.\n- B: Cá tách ra sớm nhất nên cá và chim có quan hệ họ hàng xa.\n- D: Lưỡng cư tách ra trước khi thú và chim tách nhau, nên lưỡng cư và chim xa hơn cặp thú – chim."
+  },
+  {
+   "ma_cau": "K09000000287",
+   "nhom_id": "KNB00589",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Dựa vào cây sự sống thực vật trong hình, cặp nào có quan hệ họ hàng gần nhau hơn? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S140202-01-003-de.png)",
+   "lua_chon": [
+    "Rêu và dương xỉ",
+    "Rêu và thực vật hạt trần",
+    "Cả ba nhóm có quan hệ họ hàng xa như nhau",
+    "Dương xỉ và thực vật hạt trần"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Nhánh dương xỉ và nhánh thực vật hạt trần tách ra muộn hơn, gần nhau hơn trên cây sự sống nên có quan hệ họ hàng gần nhau hơn so với nhánh rêu.\n\nVì sao các phương án khác sai:\n- A: Nhánh rêu đã tách ra sớm hơn nhiều so với nhánh dương xỉ, nên quan hệ không gần bằng cặp còn lại.\n- B: Rêu tách ra sớm hơn cả, xa hơn so với thực vật hạt trần trên cây sự sống.\n- C: Các nhánh tách ra ở thời điểm khác nhau nên mức độ họ hàng giữa các cặp nhóm không thể xa như nhau."
+  },
+  {
+   "ma_cau": "K09000000288",
+   "nhom_id": "KNB00589",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Dựa vào cây sự sống trong hình, nhóm nào có quan hệ họ hàng gần bò sát hơn? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S140202-01-004-de.png)",
+   "lua_chon": [
+    "Lưỡng cư",
+    "Cá",
+    "Cả cá và lưỡng cư gần bò sát như nhau",
+    "Không nhóm nào có quan hệ họ hàng với bò sát"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Nhánh lưỡng cư tách ra gần thời điểm với nhánh bò sát hơn so với nhánh cá (tách ra sớm nhất), nên lưỡng cư có quan hệ họ hàng gần với bò sát hơn cá.\n\nVì sao các phương án khác sai:\n- B: Nhánh cá tách ra sớm nhất trong ba nhóm, nên xa nhánh bò sát hơn nhánh lưỡng cư.\n- C: Thời điểm tách nhánh của cá và lưỡng cư khác nhau nên mức độ gần gũi với bò sát cũng khác nhau.\n- D: Cả ba nhóm đều nằm trên cùng cây sự sống nên đều có quan hệ họ hàng với nhau, chỉ khác mức độ gần xa."
+  },
+  {
+   "ma_cau": "K09000000289",
+   "nhom_id": "KNB00589",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Trên cây sự sống, một nhóm sinh vật nằm ở vị trí gần gốc cây (gần tổ tiên chung) thường có đặc điểm gì?",
+   "lua_chon": [
+    "Là nhóm có số lượng cá thể nhiều nhất hiện nay",
+    "Là nhóm xuất hiện sớm hơn trong lịch sử tiến hoá",
+    "Là nhóm tiến hoá hoàn thiện nhất, không đổi thêm",
+    "Là nhóm sinh vật sắp bị tuyệt chủng trong tương lai gần"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Trên cây sự sống, nhóm càng gần gốc (gần tổ tiên chung) thường là nhóm xuất hiện sớm hơn trong lịch sử tiến hoá của sự sống.\n\nVì sao các phương án khác sai:\n- A: Vị trí trên cây sự sống thể hiện thời điểm xuất hiện, không phản ánh số lượng cá thể hiện nay.\n- C: Không có nhóm sinh vật nào tiến hoá hoàn thiện tuyệt đối, tiến hoá vẫn luôn tiếp diễn.\n- D: Vị trí gần gốc cây không đồng nghĩa với nguy cơ tuyệt chủng trong tương lai."
+  },
+  {
+   "ma_cau": "K09000000290",
+   "nhom_id": "KNB00589",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Hai nhóm sinh vật có nhánh tách ra GẦN thời điểm hiện tại hơn trên cây sự sống thì mối quan hệ họ hàng giữa chúng như thế nào?",
+   "lua_chon": [
+    "Xa nhau hơn vì mới tách ra nên chưa kịp thích nghi",
+    "Không có quan hệ họ hàng vì đã tách nhánh riêng",
+    "Gần gũi hơn vì có tổ tiên chung gần đây hơn",
+    "Quan hệ họ hàng không phụ thuộc vào thời điểm tách nhánh"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Hai nhóm tách nhánh càng gần thời điểm hiện tại thì có tổ tiên chung càng gần đây, nên quan hệ họ hàng giữa chúng càng gần gũi.\n\nVì sao các phương án khác sai:\n- A: Thời điểm tách nhánh gần đây thể hiện quan hệ họ hàng gần, không liên quan đến khả năng thích nghi.\n- B: Hai nhóm đã tách nhánh vẫn có quan hệ họ hàng qua tổ tiên chung, không mất đi quan hệ đó.\n- D: Thời điểm tách nhánh trên cây sự sống chính là cơ sở để xác định mức độ quan hệ họ hàng."
+  },
+  {
+   "ma_cau": "K09000000291",
+   "nhom_id": "KNB00589",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Dựa vào cây sự sống trong hình, nhóm nào tách ra sớm nhất (có quan hệ họ hàng xa nhất với các nhóm còn lại)? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S140202-01-007-de.png)",
+   "lua_chon": [
+    "Nấm",
+    "Thực vật",
+    "Động vật",
+    "Không nhóm nào tách sớm hơn nhóm nào"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Theo cấu trúc cây, Nấm tách ra ở nhánh gốc, trong khi Thực vật và Động vật tách ra sau và có quan hệ họ hàng gần nhau hơn (chung một nhánh mới hơn) — vậy Nấm là nhóm tách ra sớm nhất, xa các nhóm còn lại nhất.\n\nVì sao các phương án khác sai:\n- B: Thực vật và Động vật là hai nhánh tách ra sau, có quan hệ gần nhau hơn so với Nấm.\n- C: Động vật thuộc nhánh tách sau, không phải nhóm tách sớm nhất.\n- D: Trên cây có cấu trúc phân nhánh rõ ràng, Nấm tách ra trước, không phải mọi nhóm ngang hàng nhau."
+  },
+  {
+   "ma_cau": "K09000000292",
+   "nhom_id": "KNB00589",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Dựa vào cây sự sống trong hình, cặp nhóm nào có quan hệ họ hàng gần nhau nhất? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S140202-01-008-de.png)",
+   "lua_chon": [
+    "Cá và Bò sát",
+    "Chim và Thú",
+    "Bò sát và Chim",
+    "Cá và Thú"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Trên cây, Chim và Thú tách ra từ nhánh chung gần nhất (mới nhất), nên có quan hệ họ hàng gần nhau nhất trong số các nhóm.\n\nVì sao các phương án khác sai:\n- A: Cá và Bò sát không nằm chung nhánh gần nhất trên cây, quan hệ họ hàng xa hơn.\n- C: Bò sát tách ra trước khi Chim và Thú tách nhau, nên Bò sát-Chim không phải cặp gần nhất.\n- D: Cá là nhóm tách ra sớm nhất, có quan hệ họ hàng xa với Thú, không phải cặp gần nhất."
+  },
+  {
+   "ma_cau": "K09000000293",
+   "nhom_id": "KNB00589",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Dựa vào cây sự sống trong hình, nhóm nào có quan hệ họ hàng gần với Lưỡng cư hơn: Cá hay Bò sát? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S140202-01-009-de.png)",
+   "lua_chon": [
+    "Cá",
+    "Cả hai gần như nhau",
+    "Bò sát",
+    "Không xác định được từ cây sự sống"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Trên cây, Lưỡng cư và Bò sát cùng nằm trong một nhánh tách ra sau khi Cá đã tách trước đó, nên Bò sát có quan hệ họ hàng gần với Lưỡng cư hơn so với Cá.\n\nVì sao các phương án khác sai:\n- A: Cá tách ra ở nhánh gốc, xa hơn so với Bò sát trong quan hệ với Lưỡng cư.\n- B: Trên cây, Lưỡng cư và Bò sát chung một nhánh gần hơn so với Cá, nên không thể coi là gần như nhau.\n- D: Cây sự sống thể hiện rõ cấu trúc phân nhánh, cho phép xác định được nhóm nào gần nhóm nào hơn."
+  },
+  {
+   "ma_cau": "K09000000294",
+   "nhom_id": "KNB00589",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Hình dưới là cây sự sống đơn giản thể hiện quan hệ họ hàng giữa một số nhóm động vật có xương sống. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S140204-01-001-de.png) Trong các nhóm trên, hai nhóm nào có quan hệ họ hàng GẦN NHAU NHẤT (có tổ tiên chung gần nhất)?",
+   "lua_chon": [
+    "Cá và Lưỡng cư",
+    "Lưỡng cư và Bò sát",
+    "Chim và Thú",
+    "Bò sát và Chim"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Theo cấu trúc ngoặc lồng nhau của cây sự sống (Cá,(Lưỡng cư,(Bò sát,(Chim,Thú)))), hai nhóm nằm trong cặp ngoặc trong cùng — Chim và Thú — có tổ tiên chung gần nhất, tức quan hệ họ hàng gần nhau nhất trong số các nhóm đã cho.\n\nVì sao các phương án khác sai:\n- A: Trên sơ đồ, Cá tách ra từ nhánh chung sớm nhất (xa gốc phân nhánh với các nhóm còn lại), không phải cặp có quan hệ gần nhất.\n- B: Lưỡng cư tách ra ở nhánh phân kỳ sớm thứ hai, trước khi Bò sát, Chim, Thú tách nhau; đây chưa phải cặp có tổ tiên chung gần nhất.\n- D: Theo sơ đồ, Chim và Thú mới là cặp có ngoặc lồng trong cùng (tổ tiên chung gần nhất), Bò sát tách ra trước đó, xa hơn."
+  },
+  {
+   "ma_cau": "K09000000295",
+   "nhom_id": "KNB00589",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Theo cây sự sống dưới đây ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S140204-01-002-de.png) , nhóm nào tách ra khỏi các nhóm còn lại sớm nhất trong lịch sử tiến hoá (có quan hệ họ hàng xa nhất với Thú)?",
+   "lua_chon": [
+    "Cá",
+    "Lưỡng cư",
+    "Bò sát",
+    "Chim"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Trong cấu trúc ngoặc lồng nhau, nhóm nằm ở ngoặc ngoài cùng (Cá) là nhóm tách ra khỏi nhánh chung dẫn đến các nhóm còn lại sớm nhất trong lịch sử tiến hoá, nên có quan hệ họ hàng xa nhất với Thú (nhóm nằm sâu nhất trong các ngoặc lồng).\n\nVì sao các phương án khác sai:\n- B: Lưỡng cư tách ra sau Cá (theo cấu trúc ngoặc, Lưỡng cư nằm trong ngoặc thứ hai từ ngoài vào, sau khi Cá đã tách trước đó).\n- C: Bò sát tách ra sau cả Cá và Lưỡng cư, gần với Chim, Thú hơn.\n- D: Chim có quan hệ họ hàng gần với Thú hơn nhiều so với Cá; Chim không phải nhóm tách ra sớm nhất."
+  },
+  {
+   "ma_cau": "K09000000296",
+   "nhom_id": "KNB00589",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Cây sự sống cho thấy Bò sát và Chim có quan hệ họ hàng gần hơn Bò sát và Lưỡng cư. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S140204-01-006-de.png) Dựa vào cấu trúc cây này, nhóm nào có khả năng đã tách ra sớm nhất?",
+   "lua_chon": [
+    "Bò sát",
+    "Lưỡng cư",
+    "Chim",
+    "Không xác định được"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Vì Bò sát và Chim chung một nhánh tách ra sau (quan hệ gần nhau), nên Lưỡng cư là nhóm tách ra sớm nhất trong ba nhóm này.\n\nVì sao các phương án khác sai:\n- A: Bò sát và Chim tách ra sau, có quan hệ gần nhau hơn Lưỡng cư.\n- C: Chim là nhóm tách ra muộn nhất trong ba nhóm này (cùng nhánh với Bò sát nhưng tách sau).\n- D: Cấu trúc cây sự sống cho phép xác định rõ nhóm nào tách ra trước."
+  }
+ ]
+}

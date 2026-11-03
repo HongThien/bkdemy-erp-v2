@@ -1,0 +1,2857 @@
+{
+ "danh_muc": [
+  {
+   "nhom_id": "KNB00296",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Cấu tạo nguyên tử",
+   "nhom": "CẤU TẠO NGUYÊN TỬ VÀ MÔ HÌNH RUTHERFORD – BOHR",
+   "dang": [
+    {
+     "dang_id": "KDB00658",
+     "ten": "Các loại hạt, điện tích và vị trí",
+     "mo_ta": "Đề cho tên một hạt trong nguyên tử (proton, neutron, electron) hoặc một bộ phận (hạt nhân, vỏ nguyên tử); hỏi điện tích, vị trí hoặc khối lượng của hạt đó."
+    },
+    {
+     "dang_id": "KDB00659",
+     "ten": "Đọc mô hình Rutherford – Bohr",
+     "mo_ta": "Đề có hình mô hình Rutherford – Bohr (hạt nhân ghi điện tích, các vòng tròn quanh hạt nhân, mỗi chấm là một electron); hỏi đọc số liệu từ hình."
+    },
+    {
+     "dang_id": "KDB00660",
+     "ten": "Nguyên tử trung hòa về điện",
+     "mo_ta": "Đề hỏi vì sao nguyên tử trung hòa về điện, tổng điện tích của nguyên tử, hoặc quan hệ về số lượng giữa proton, neutron và electron."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00297",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Cấu tạo nguyên tử",
+   "nhom": "Số hạt và khối lượng nguyên tử",
+   "dang": [
+    {
+     "dang_id": "KDB00661",
+     "ten": "Tìm số hạt còn thiếu",
+     "mo_ta": "Đề cho vài số liệu (số proton, số neutron, số electron, điện tích hạt nhân, khối lượng xấp xỉ tính theo amu) và hỏi một số hạt chưa biết."
+    },
+    {
+     "dang_id": "KDB00662",
+     "ten": "Tính khối lượng nguyên tử theo amu",
+     "mo_ta": "Đề cho số proton và số neutron (hoặc điện tích hạt nhân, hoặc số electron thay cho số proton) và hỏi khối lượng nguyên tử xấp xỉ bằng bao nhiêu amu."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00298",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Cấu tạo nguyên tử",
+   "nhom": "BÀI TOÁN TỔNG SỐ HẠT",
+   "dang": [
+    {
+     "dang_id": "KDB00663",
+     "ten": "Biết tổng số hạt và số proton",
+     "mo_ta": "Đề cho tổng số hạt (proton, neutron và electron cộng lại) và biết số proton (hoặc số electron, hoặc điện tích hạt nhân); hỏi số neutron (số hạt không mang điện)."
+    },
+    {
+     "dang_id": "KDB00664",
+     "ten": "Biết tổng số hạt và hiệu số hạt mang điện với không mang điện",
+     "mo_ta": "Đề cho tổng số hạt (proton, neutron, electron) và hiệu số giữa số hạt mang điện với số hạt không mang điện; hỏi số proton hoặc số neutron."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00300",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Cấu tạo nguyên tử",
+   "nhom": "XẾP ELECTRON VÀ VẼ MÔ HÌNH NGUYÊN TỬ",
+   "dang": [
+    {
+     "dang_id": "KDB00665",
+     "ten": "Xếp electron vào các lớp",
+     "mo_ta": "Đề cho số proton, số electron hoặc điện tích hạt nhân của một nguyên tử (không kèm hình); hỏi kết quả của việc xếp electron vào các lớp."
+    },
+    {
+     "dang_id": "KDB00666",
+     "ten": "Vẽ mô hình Rutherford - Bohr",
+     "mo_ta": "Đề yêu cầu vẽ (hoặc biểu diễn) mô hình Rutherford – Bohr của nguyên tử khi biết số proton, số electron hoặc điện tích hạt nhân."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00301",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Nguyên tố Hóa học",
+   "nhom": "KHÁI NIỆM NGUYÊN TỐ VÀ KÍ HIỆU HÓA HỌC",
+   "dang": [
+    {
+     "dang_id": "KDB00667",
+     "ten": "KHÁI NIỆM NGUYÊN TỐ HOÁ HỌC",
+     "mo_ta": "Đề hỏi định nghĩa nguyên tố hoá học, tiêu chí để hai nguyên tử thuộc cùng một nguyên tố, hoặc phân biệt \"nguyên tử\" với \"nguyên tố hoá học\"; thường là chọn phát biểu hoặc nhận xét đúng."
+    },
+    {
+     "dang_id": "KDB00668",
+     "ten": "VIẾT VÀ ĐỌC KÍ HIỆU 20 NGUYÊN TỐ ĐẦU",
+     "mo_ta": "Đề cho tên nguyên tố (IUPAC) và hỏi kí hiệu hoá học, hoặc cho kí hiệu và hỏi tên; thường gắn với tình huống đời sống (muối ăn, que diêm, pin, bóng bay ...). Chỉ dùng 20 nguyên tố đầu."
+    },
+    {
+     "dang_id": "KDB00669",
+     "ten": "NHẬN RA KÍ HIỆU VIẾT SAI",
+     "mo_ta": "Đề đưa một cách viết kí hiệu (của một bạn, trên nhãn, hoặc một dãy kí hiệu) và hỏi có đúng quy tắc không, sửa lại thế nào, hoặc cách viết sai bị hiểu thành những nguyên tố nào."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00302",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Nguyên tố Hóa học",
+   "nhom": "XÁC ĐỊNH NGUYÊN TỐ TỪ SỐ HẠT",
+   "dang": [
+    {
+     "dang_id": "KDB00670",
+     "ten": "GỌI TÊN NGUYÊN TỐ KHI BIẾT SỐ PROTON",
+     "mo_ta": "Đề cho số proton của một nguyên tử (trực tiếp, hoặc qua số electron, điện tích hạt nhân) và hỏi tên hoặc kí hiệu hoá học của nguyên tố; có thể kèm số neutron (dữ kiện thừa) hoặc tình huống đời sống."
+    },
+    {
+     "dang_id": "KDB00671",
+     "ten": "NHẬN DIỆN CÁC NGUYÊN TỬ CÙNG NGUYÊN TỐ",
+     "mo_ta": "Đề cho số proton và số neutron của nhiều nguyên tử (X, Y, Z, T hoặc \"nguyên tử có ... proton và ... neutron\"); yêu cầu chọn nguyên tử cùng nguyên tố với một nguyên tử cho trước, ghép các nguyên tử cùng nguyên tố vào một nhóm, hoặc đếm số nguyên tố."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00303",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "nhom": "CẤU TẠO BẢNG TUẦN HOÀN: Ô, CHU KÌ, NHÓM",
+   "dang": [
+    {
+     "dang_id": "KDB00672",
+     "ten": "Thông tin trong một ô nguyên tố",
+     "mo_ta": "Đề cho hoặc hỏi các thông tin ghi trong một ô nguyên tố: số hiệu nguyên tử, kí hiệu hoá học, tên nguyên tố, khối lượng nguyên tử (amu)."
+    },
+    {
+     "dang_id": "KDB00673",
+     "ten": "CHU KÌ VÀ NHÓM CỦA NGUYÊN TỐ",
+     "mo_ta": "Đề hỏi khái niệm chu kì, nhóm; số nguyên tố trong một chu kì; số các nhóm A; nguyên tố thuộc chu kì nào; ô của nguyên tố nằm ở hàng ngang, cột nào; hoặc so sánh vị trí của hai nguyên tố khi biết chu kì và nhóm."
+    },
+    {
+     "dang_id": "KDB00674",
+     "ten": "VÙNG KIM LOẠI, PHI KIM, KHÍ HIẾM",
+     "mo_ta": "Đề hỏi vùng của bảng tuần hoàn mà các nguyên tố kim loại, phi kim, khí hiếm chiếm; xác định một nguyên tố là kim loại, phi kim hay khí hiếm; đếm số khí hiếm trong 20 nguyên tố đầu; hoặc mô tả thứ tự các loại nguyên tố trong một chu kì."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00304",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "nhom": "LIÊN HỆ VỊ TRÍ TRONG BẢNG VỚI CẤU TẠO NGUYÊN TỬ",
+   "dang": [
+    {
+     "dang_id": "KDB00675",
+     "ten": "TỪ VỊ TRÍ SUY RA CẤU TẠO NGUYÊN TỬ",
+     "mo_ta": "Đề cho vị trí của nguyên tố (ô, chu kì, nhóm) và hỏi cấu tạo nguyên tử: số lớp electron, số electron lớp ngoài cùng, số proton hoặc số electron."
+    },
+    {
+     "dang_id": "KDB00676",
+     "ten": "TỪ CẤU TẠO SUY RA VỊ TRÍ",
+     "mo_ta": "Đề cho cấu tạo nguyên tử (số electron ở từng lớp, hoặc số lớp và số electron lớp ngoài cùng, mô tả bằng lời) và hỏi vị trí của nguyên tố trong bảng tuần hoàn: ô, chu kì, nhóm."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00305",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "nhom": "XÁC ĐỊNH NGUYÊN TỐ TỪ DỮ KIỆN VỊ TRÍ – CẤU TẠO",
+   "dang": [
+    {
+     "dang_id": "KDB00677",
+     "ten": "GIẢI CÂU ĐỐ NGUYÊN TỐ TỪ NHIỀU MANH MỐI",
+     "mo_ta": "Đề cho nhiều manh mối về một nguyên tố chưa biết X: loại (kim loại, phi kim, khí hiếm), chu kì hoặc số lớp electron, nhóm hoặc số electron lớp ngoài cùng, hoặc so sánh với nguyên tố khác; hỏi kí hiệu hoá học của X."
+    },
+    {
+     "dang_id": "KDB00678",
+     "ten": "HAI NGUYÊN TỐ BIẾT TỔNG SỐ PROTON",
+     "mo_ta": "Đề cho hai nguyên tố A và B ở vị trí liên hệ nhau (đứng kế tiếp trong cùng một chu kì, hoặc cùng nhóm A ở hai chu kì liên tiếp trong 20 nguyên tố đầu) và biết tổng số proton (hoặc tổng số electron, tổng số hạt mang điện); hỏi xác định nguyên tố A hoặc B."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00306",
+   "chu_de": "Nguyên tử - Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "chuyen_de": "Sơ lược Bảng tuần hoàn các nguyên tố Hóa học",
+   "nhom": "DỰ ĐOÁN TÍNH CHẤT TỪ VỊ TRÍ TRONG BẢNG",
+   "dang": [
+    {
+     "dang_id": "KDB00679",
+     "ten": "XẾP LOẠI NGUYÊN TỐ THEO VỊ TRÍ",
+     "mo_ta": "Đề cho vị trí (ô, chu kì và nhóm), số proton hoặc cách phân bố electron của một hoặc hai nguyên tố X, Y; hỏi mỗi nguyên tố là kim loại, phi kim hay khí hiếm."
+    },
+    {
+     "dang_id": "KDB00680",
+     "ten": "DỰ ĐOÁN NGUYÊN TỐ CÓ TÍNH CHẤT TƯƠNG TỰ",
+     "mo_ta": "Đề cho một nguyên tố X (tên, số proton, số electron hoặc cách phân bố electron theo lớp) và hỏi nguyên tố ở một chu kì khác có tính chất hoá học tương tự X, yêu cầu viết kí hiệu."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00307",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Phân tử - Đơn chất & Hợp chất",
+   "nhom": "Phân loại đơn chất và hợp chất",
+   "dang": [
+    {
+     "dang_id": "KDB00681",
+     "ten": "Hợp chất",
+     "mo_ta": "Đề cho một chất hoặc một dãy chất (công thức hoặc tên) và yêu cầu chọn chất là hợp chất, hoặc chọn dãy gồm toàn hợp chất."
+    },
+    {
+     "dang_id": "KDB00682",
+     "ten": "Đơn chất",
+     "mo_ta": "Đề cho một chất hoặc một dãy chất và yêu cầu chọn chất là đơn chất, hoặc chọn dãy gồm toàn đơn chất."
+    },
+    {
+     "dang_id": "KDB00683",
+     "ten": "Đơn chất kim loại - phi kim",
+     "mo_ta": "Đề hỏi chất nào là đơn chất kim loại hoặc đơn chất phi kim trong 4 chất cho sẵn."
+    },
+    {
+     "dang_id": "KDB00684",
+     "ten": "Phân biệt đơn chất - hợp chất",
+     "mo_ta": "Đề cho một nhóm chất (thường 3–4 công thức hoặc tên) và yêu cầu cho biết chất nào là đơn chất, chất nào là hợp chất."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00308",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Phân tử - Đơn chất & Hợp chất",
+   "nhom": "Tính khối lượng phân tử",
+   "dang": [
+    {
+     "dang_id": "KDB00685",
+     "ten": "Tính M phân tử",
+     "mo_ta": "Đề cho công thức hóa học của một chất kèm khối lượng nguyên tử các nguyên tố, yêu cầu tính khối lượng phân tử (amu)."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00309",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Phân tử - Đơn chất & Hợp chất",
+   "nhom": "Đọc mô hình phân tử để xác định công thức và tên gọi",
+   "dang": [
+    {
+     "dang_id": "KDB00686",
+     "ten": "Xác định CTPT",
+     "mo_ta": "Đề mô tả một phân tử gồm bao nhiêu nguyên tử của mỗi nguyên tố liên kết với nhau, yêu cầu viết hoặc chọn công thức hóa học đúng."
+    },
+    {
+     "dang_id": "KDB00687",
+     "ten": "Xác định CTPT, đơn/hợp chất",
+     "mo_ta": "Đề mô tả một phân tử gồm số nguyên tử của các nguyên tố, yêu cầu viết công thức hóa học và cho biết đây là đơn chất hay hợp chất."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00310",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Phân tử - Đơn chất & Hợp chất",
+   "nhom": "So sánh và sắp xếp khối lượng phân tử của nhiều chất",
+   "dang": [
+    {
+     "dang_id": "KDB01394",
+     "ten": "So sánh, sắp xếp khối lượng phân tử khi đã biết giá trị từng chất",
+     "mo_ta": "Đề cho khối lượng phân tử (hoặc công thức kèm khối lượng nguyên tử) của nhiều chất, hỏi chất nào lớn nhất/nhỏ nhất hoặc yêu cầu sắp xếp tăng dần/giảm dần."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00311",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Phân tử - Đơn chất & Hợp chất",
+   "nhom": "Giải thích tính chất và hiện tượng thực tế",
+   "dang": [
+    {
+     "dang_id": "KDB01395",
+     "ten": "Giải thích tính chất của chất dựa vào thành phần và cách sắp xếp nguyên tử",
+     "mo_ta": "Đề nêu một hiện tượng hoặc so sánh tính chất của các chất (độ cứng, khả năng dẫn điện, vì sao coi là cùng một chất…), hỏi nguyên nhân hoặc nhận định đúng."
+    },
+    {
+     "dang_id": "KDB01396",
+     "ten": "Nhận xét ý kiến và tính toán khối lượng nguyên tử, phân tử từ dữ kiện đề",
+     "mo_ta": "Đề cho một nhận định về khối lượng phân tử cần đánh giá đúng/sai có ví dụ minh hoạ, hoặc cho khối lượng phân tử của hợp chất và khối lượng các nguyên tử còn lại rồi tìm khối lượng một nguyên tử chưa biết."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00312",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Phân tử - Đơn chất & Hợp chất",
+   "nhom": "Tìm khối lượng nguyên tử chưa biết từ khối lượng phân tử",
+   "dang": [
+    {
+     "dang_id": "KDB00688",
+     "ten": "Tìm khối lượng nguyên tử từ M phân tử",
+     "mo_ta": "Đề cho công thức của một hợp chất có nguyên tố chưa biết (ví dụ $XO_2$, $\\mathrm{YCl_3}$, $\\mathrm{H_2X}$), cho khối lượng phân tử, yêu cầu chọn khối lượng nguyên tử của nguyên tố đó (trắc nghiệm)."
+    },
+    {
+     "dang_id": "KDB00689",
+     "ten": "Tìm nguyên tử dựa vào khối lượng phân tử",
+     "mo_ta": "Đề cho công thức hợp chất có nguyên tố chưa biết (như $RO$, $MCl_2$, $XH_4$), cho khối lượng phân tử, yêu cầu tính khối lượng nguyên tử và thường cho biết nguyên tố đó có thể là gì (tự luận)."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00313",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Liên kết Hóa học",
+   "nhom": "QUY TẮC OCTET VÀ XU HƯỚNG LIÊN KẾT HÓA HỌC",
+   "dang": [
+    {
+     "dang_id": "KDB00690",
+     "ten": "Nhận biết tính bền của nguyên tử khí hiếm",
+     "mo_ta": "Đề hỏi về khí hiếm và tính bền của lớp electron ngoài cùng: khí hiếm gồm nguyên tố nào, số electron lớp ngoài cùng bền (8, riêng helium là 2), vì sao khí hiếm rất khó liên kết."
+    },
+    {
+     "dang_id": "KDB00691",
+     "ten": "Phát biểu và áp dụng quy tắc octet",
+     "mo_ta": "Đề hỏi phát biểu quy tắc octet hoặc dùng quy tắc octet: số electron tối đa lớp ngoài cùng, cần thêm bao nhiêu electron để đạt cấu hình bền, quy tắc dùng để giải thích điều gì."
+    },
+    {
+     "dang_id": "KDB00692",
+     "ten": "Phân loại xu hướng nhường/nhận electron theo nhóm nguyên tố",
+     "mo_ta": "Đề hỏi số electron lớp ngoài cùng và xu hướng của nguyên tử kim loại (nhường electron) và phi kim (nhận electron), lí do và mục đích chung."
+    },
+    {
+     "dang_id": "KDB00693",
+     "ten": "Nhận biết xu hướng góp chung electron",
+     "mo_ta": "Đề hỏi về việc góp chung electron của các nguyên tử phi kim: loại liên kết tạo thành, cặp electron dùng chung hình thành thế nào, số nguyên tử tối thiểu, số cặp electron có thể dùng chung, mục đích."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00314",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Liên kết Hóa học",
+   "nhom": "SO SÁNH, PHÂN BIỆT LIÊN KẾT ION VÀ LIÊN KẾT CỘNG HÓA TRỊ",
+   "dang": [
+    {
+     "dang_id": "KDB00694",
+     "ten": "So sánh bản chất hình thành hai loại liên kết",
+     "mo_ta": "Đề so sánh cách hình thành liên kết ion và liên kết cộng hóa trị: nhường – nhận hay góp chung electron, sản phẩm tạo thành, lực hút tác dụng lên electron."
+    },
+    {
+     "dang_id": "KDB00695",
+     "ten": "So sánh loại nguyên tố tham gia",
+     "mo_ta": "Đề hỏi loại nguyên tố tham gia mỗi loại liên kết: kim loại điển hình với phi kim điển hình tạo liên kết ion, hai nguyên tử phi kim tạo liên kết cộng hóa trị, khí hiếm hầu như không liên kết."
+    },
+    {
+     "dang_id": "KDB00696",
+     "ten": "Phân biệt qua tính chất vật lí của hợp chất tạo thành",
+     "mo_ta": "Đề so sánh hoặc nhận biết hợp chất ion với chất cộng hóa trị qua tính chất vật lí: thể ở nhiệt độ thường, nhiệt độ nóng chảy, nhiệt độ sôi, khả năng dẫn điện."
+    },
+    {
+     "dang_id": "KDB00697",
+     "ten": "Vận dụng nhận diện loại liên kết trong hợp chất cho trước",
+     "mo_ta": "Đề cho một hợp chất hoặc phân tử cụ thể (tên, công thức, hoặc nguyên tố tạo thành), yêu cầu xác định loại liên kết: ion hay cộng hóa trị."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00315",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Liên kết Hóa học",
+   "nhom": "LIÊN KẾT ION",
+   "dang": [
+    {
+     "dang_id": "KDB00698",
+     "ten": "Khái niệm ion, cation, anion, liên kết ion",
+     "mo_ta": "Đề hỏi khái niệm về ion: ion, cation, anion là gì, điện tích ion do đâu mà có, vì sao cation và anion hút nhau tạo liên kết ion."
+    },
+    {
+     "dang_id": "KDB00699",
+     "ten": "Xác định electron nhường/nhận và điện tích ion của một nguyên tử cho trước",
+     "mo_ta": "Đề cho nguyên tử một nguyên tố và số electron lớp ngoài cùng, yêu cầu chọn xu hướng nhường hay nhận, số electron, kí hiệu và điện tích ion tạo thành (trắc nghiệm)."
+    },
+    {
+     "dang_id": "KDB00700",
+     "ten": "Mô tả quá trình hình thành hợp chất ion cụ thể",
+     "mo_ta": "Đề cho nguyên tử A nhường bao nhiêu electron, nguyên tử B nhận bao nhiêu electron, yêu cầu chọn công thức hợp chất ion tạo thành (trắc nghiệm)."
+    },
+    {
+     "dang_id": "KDB00701",
+     "ten": "Nhận biết tính chất vật lí của hợp chất ion",
+     "mo_ta": "Đề hỏi tính chất vật lí của hợp chất ion: thể ở nhiệt độ thường, nhiệt độ nóng chảy và sôi, tính tan và khả năng dẫn điện của dung dịch, lực hút giữa các ion."
+    },
+    {
+     "dang_id": "KDB00702",
+     "ten": "Xác định electron nhường/nhận và điện tích ion của một nguyên tử cho trước",
+     "mo_ta": "Đề cho nguyên tử một nguyên tố và số electron lớp ngoài cùng, yêu cầu điền ngắn gọn: điện tích ion, kí hiệu ion hoặc số electron cần nhường hay nhận."
+    },
+    {
+     "dang_id": "KDB00703",
+     "ten": "Mô tả quá trình hình thành hợp chất ion cụ thể",
+     "mo_ta": "Đề cho nguyên tử A nhường bao nhiêu electron, nguyên tử B nhận bao nhiêu electron, yêu cầu viết công thức hợp chất ion tạo thành (trả lời ngắn)."
+    },
+    {
+     "dang_id": "KDB00704",
+     "ten": "Trình bày quá trình hình thành hợp chất ion từ một cặp nguyên tử cho trước",
+     "mo_ta": "Đề cho số electron lớp ngoài cùng của hai nguyên tử (một kim loại, một phi kim), yêu cầu trình bày quá trình hình thành liên kết ion giữa chúng và viết công thức hợp chất ion tạo thành."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00316",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Liên kết Hóa học",
+   "nhom": "LIÊN KẾT CỘNG HÓA TRỊ",
+   "dang": [
+    {
+     "dang_id": "KDB00705",
+     "ten": "Khái niệm liên kết cộng hóa trị, cặp electron dùng chung",
+     "mo_ta": "Đề hỏi khái niệm về liên kết cộng hóa trị: cặp electron dùng chung, liên kết đơn, đôi, ba, loại nguyên tố tạo liên kết, phân tử đơn chất hay hợp chất."
+    },
+    {
+     "dang_id": "KDB00706",
+     "ten": "Xác định số cặp electron dùng chung trong phân tử cụ thể",
+     "mo_ta": "Đề cho tên và thành phần một phân tử (như $\\mathrm{NH_3}$, $\\mathrm{O_2}$, $\\mathrm{CO_2}$), yêu cầu chọn số cặp electron dùng chung (trắc nghiệm)."
+    },
+    {
+     "dang_id": "KDB00707",
+     "ten": "Công thức electron, công thức cấu tạo và liên kết đơn/đôi/ba",
+     "mo_ta": "Đề cho công thức cấu tạo hoặc công thức electron của một phân tử (hoặc cho biết các liên kết đều là liên kết đơn), yêu cầu chọn số liên kết đơn, ý nghĩa của gạch nối hoặc số cặp electron dùng chung (trắc nghiệm)."
+    },
+    {
+     "dang_id": "KDB00708",
+     "ten": "Nhận biết tính chất vật lí của chất cộng hóa trị",
+     "mo_ta": "Đề hỏi tính chất vật lí của chất cộng hóa trị: thể tồn tại ở nhiệt độ thường, nhiệt độ nóng chảy và sôi, khả năng dẫn điện, so sánh với hợp chất ion."
+    },
+    {
+     "dang_id": "KDB00709",
+     "ten": "Xác định số cặp electron dùng chung trong phân tử cụ thể",
+     "mo_ta": "Đề cho tên và thành phần một phân tử (như $\\mathrm{H_2S}$, $\\mathrm{F_2}$, $\\mathrm{CS_2}$, $\\mathrm{SiH_4}$), yêu cầu điền số cặp electron dùng chung (trả lời ngắn)."
+    },
+    {
+     "dang_id": "KDB00710",
+     "ten": "Công thức electron, công thức cấu tạo và liên kết đơn/đôi/ba",
+     "mo_ta": "Đề cho công thức cấu tạo hoặc công thức electron của một phân tử (hoặc cho biết các liên kết đều là liên kết đơn), yêu cầu điền số liên kết đơn hoặc số cặp electron dùng chung (trả lời ngắn)."
+    },
+    {
+     "dang_id": "KDB00711",
+     "ten": "Trình bày quá trình hình thành liên kết cộng hóa trị và biểu diễn công thức",
+     "mo_ta": "Đề cho thành phần một phân tử cộng hóa trị (thường có số electron ngoài cùng), yêu cầu trình bày quá trình hình thành liên kết cộng hóa trị và viết công thức cấu tạo (tự luận)."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00317",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Hóa trị và công thức Hóa học",
+   "nhom": "TÌM HOÁ TRỊ VÀ LẬP CÔNG THỨC HOÁ HỌC THEO QUY TẮC HOÁ TRỊ",
+   "dang": [
+    {
+     "dang_id": "KDB00712",
+     "ten": "TÌM HOÁ TRỊ TRONG HỢP CHẤT HAI NGUYÊN TỐ",
+     "mo_ta": "Đề cho công thức hợp chất gồm hai nguyên tố (A_xB_y) và hoá trị của một nguyên tố, hỏi hoá trị của nguyên tố còn lại."
+    },
+    {
+     "dang_id": "KDB00713",
+     "ten": "TÌM HOÁ TRỊ TRONG HỢP CHẤT CÓ NHÓM NGUYÊN TỬ",
+     "mo_ta": "Đề cho công thức hợp chất có nhóm nguyên tử (ví dụ $\\mathrm{Fe_2(SO_4)_3}$, $\\mathrm{Na_2CO_3}$) và hoá trị của các thành phần còn lại, hỏi hoá trị của một nguyên tố hoặc của chính nhóm nguyên tử."
+    },
+    {
+     "dang_id": "KDB00714",
+     "ten": "LẬP CÔNG THỨC HOÁ HỌC HỢP CHẤT HAI NGUYÊN TỐ",
+     "mo_ta": "Đề cho hai nguyên tố kèm hoá trị, yêu cầu chọn hoặc viết công thức hoá học của hợp chất tạo bởi hai nguyên tố đó."
+    },
+    {
+     "dang_id": "KDB00715",
+     "ten": "LẬP CÔNG THỨC HOÁ HỌC CÓ NHÓM NGUYÊN TỬ",
+     "mo_ta": "Đề cho một nguyên tố (kèm hoá trị) và một nhóm nguyên tử (kèm hoá trị), yêu cầu viết công thức hoá học của hợp chất tạo bởi hai thành phần đó."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00318",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Hóa trị và công thức Hóa học",
+   "nhom": "TÍNH PHẦN TRĂM KHỐI LƯỢNG NGUYÊN TỐ TRONG HỢP CHẤT",
+   "dang": [
+    {
+     "dang_id": "KDB00716",
+     "ten": "TÍNH PHẦN TRĂM KHỐI LƯỢNG MỘT NGUYÊN TỐ",
+     "mo_ta": "Đề cho một hợp chất (công thức hoặc khối lượng phân tử và khối lượng nguyên tố), yêu cầu tính phần trăm khối lượng của một nguyên tố trong hợp chất, làm tròn theo yêu cầu."
+    },
+    {
+     "dang_id": "KDB00717",
+     "ten": "SO SÁNH HÀM LƯỢNG NGUYÊN TỐ GIỮA CÁC HỢP CHẤT",
+     "mo_ta": "Đề cho hai hợp chất cùng chứa một nguyên tố, yêu cầu so sánh phần trăm khối lượng của nguyên tố đó hoặc tính hiệu hai phần trăm."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00319",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Hóa trị và công thức Hóa học",
+   "nhom": "XÁC ĐỊNH CÔNG THỨC HOÁ HỌC KHI BIẾT PHẦN TRĂM VÀ KHỐI LƯỢNG PHÂN TỬ",
+   "dang": [
+    {
+     "dang_id": "KDB00718",
+     "ten": "HỢP CHẤT HAI NGUYÊN TỐ",
+     "mo_ta": "Đề cho hợp chất tạo bởi hai nguyên tố, biết phần trăm khối lượng của một nguyên tố và khối lượng phân tử, hỏi số nguyên tử của một nguyên tố hoặc công thức hoá học."
+    },
+    {
+     "dang_id": "KDB00719",
+     "ten": "HỢP CHẤT BA NGUYÊN TỐ",
+     "mo_ta": "Đề cho chất X tạo bởi ba nguyên tố, biết phần trăm khối lượng của hai (hoặc cả ba) nguyên tố và khối lượng phân tử, yêu cầu xác định công thức hoá học của X."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00320",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Hóa trị và công thức Hóa học",
+   "nhom": "Ý nghĩa công thức hóa học và hóa trị",
+   "dang": [
+    {
+     "dang_id": "KDB00720",
+     "ten": "THÔNG TIN TỪ CÔNG THỨC HOÁ HỌC",
+     "mo_ta": "Câu hỏi nhận biết thông tin từ công thức hoá học: công thức cho biết gì, cách viết công thức đơn chất, ý nghĩa chỉ số và hệ số, chỉ số 1 không ghi."
+    },
+    {
+     "dang_id": "KDB00721",
+     "ten": "HOÁ TRỊ CỦA NGUYÊN TỐ VÀ NHÓM NGUYÊN TỬ THƯỜNG GẶP",
+     "mo_ta": "Câu hỏi nhận biết về hoá trị: khái niệm hoá trị, hoá trị thường gặp của nguyên tố và nhóm nguyên tử, nguyên tố có một hay nhiều hoá trị."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00321",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Hóa trị và công thức Hóa học",
+   "nhom": "TÌM NGUYÊN TỐ, CÔNG THỨC TỪ DỮ KIỆN GIÁN TIẾP",
+   "dang": [
+    {
+     "dang_id": "KDB00722",
+     "ten": "LẬP CÔNG THỨC HOÁ HỌC TỪ TỈ LỆ KHỐI LƯỢNG CÁC NGUYÊN TỐ",
+     "mo_ta": "Đề cho khối lượng các nguyên tố trong một mẫu chất (hoặc tỉ lệ khối lượng các nguyên tố), yêu cầu xác định công thức hoá học của hợp chất."
+    },
+    {
+     "dang_id": "KDB00723",
+     "ten": "TÌM NGUYÊN TỐ R KHI BIẾT DẠNG CÔNG THỨC VÀ PHẦN TRĂM",
+     "mo_ta": "Đề cho hợp chất của nguyên tố R có công thức dạng (RO, $\\mathrm{R_2S}$, $\\mathrm{RCl_2}$,...) và phần trăm khối lượng của R hoặc của nguyên tố khác trong hợp chất, yêu cầu xác định nguyên tố R."
+    },
+    {
+     "dang_id": "KDB00724",
+     "ten": "TÌM NGUYÊN TỐ R KHI BIẾT DẠNG CÔNG THỨC VÀ KHỐI LƯỢNG PHÂN TỬ",
+     "mo_ta": "Đề cho hợp chất của nguyên tố R có công thức dạng (như $\\mathrm{RCl_2}$, $\\mathrm{R(OH)_3}$, $\\mathrm{R_2CO_3}$, $\\mathrm{RH_4}$) và khối lượng phân tử, yêu cầu xác định nguyên tố R (thường trắc nghiệm 4 nguyên tố)."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00322",
+   "chu_de": "Tốc độ",
+   "chuyen_de": "Tốc độ chuyển động",
+   "nhom": "Nhận biết ý nghĩa vật lý và đơn vị của tốc độ",
+   "dang": [
+    {
+     "dang_id": "KDB00725",
+     "ten": "Đổi đơn vị tốc độ",
+     "mo_ta": "Đề cho một giá trị tốc độ (hoặc một đơn vị thời gian) ở đơn vị này, hỏi giá trị tương ứng ở đơn vị khác."
+    },
+    {
+     "dang_id": "KDB00726",
+     "ten": "Định nghĩa/Khái niệm",
+     "mo_ta": "Câu hỏi nhận biết thuần ghi nhớ khái niệm tốc độ: tốc độ là gì, đặc trưng cho điều gì, công thức, kí hiệu các đại lượng."
+    },
+    {
+     "dang_id": "KDB00727",
+     "ten": "Ý nghĩa tốc độ",
+     "mo_ta": "Đề hỏi hiểu con số tốc độ có nghĩa gì (mỗi giờ, mỗi giây đi được bao nhiêu), hoặc suy ra nhanh chậm từ quãng đường và thời gian."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00323",
+   "chu_de": "Tốc độ",
+   "chuyen_de": "Tốc độ chuyển động",
+   "nhom": "Bài toán tính tốc độ, quãng đường, thời gian cơ bản",
+   "dang": [
+    {
+     "dang_id": "KDB00728",
+     "ten": "Tính tốc độ",
+     "mo_ta": "Đề cho quãng đường và thời gian đi (có thể cần đổi phút sang giờ, giây), hỏi tốc độ của vật."
+    },
+    {
+     "dang_id": "KDB00729",
+     "ten": "Tính thời gian",
+     "mo_ta": "Đề cho tốc độ và quãng đường, hỏi thời gian chuyển động."
+    },
+    {
+     "dang_id": "KDB00730",
+     "ten": "Tính quãng đường",
+     "mo_ta": "Đề cho tốc độ và thời gian chuyển động (thời gian có thể cho bằng giờ, phút, giây), hỏi quãng đường vật đi được."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00324",
+   "chu_de": "Tốc độ",
+   "chuyen_de": "Tốc độ chuyển động",
+   "nhom": "Bài toán tốc độ trung bình trên nhiều đoạn đường",
+   "dang": [
+    {
+     "dang_id": "KDB01397",
+     "ten": "Nhận định về cách tính tốc độ trung bình bằng trung bình cộng",
+     "mo_ta": "Đề không cho số liệu cụ thể mà hỏi khi nào tốc độ trung bình bằng trung bình cộng các tốc độ thành phần, hoặc nhận xét cách làm của một học sinh."
+    },
+    {
+     "dang_id": "KDB01398",
+     "ten": "Tính tốc độ trung bình khi biết quãng đường và thời gian từng đoạn",
+     "mo_ta": "Đề cho quãng đường và thời gian đi của từng đoạn (hai hoặc ba đoạn), hỏi tốc độ trung bình trên cả hành trình."
+    },
+    {
+     "dang_id": "KDB01399",
+     "ten": "Tính tốc độ trung bình khi biết tốc độ và thời gian từng đoạn",
+     "mo_ta": "Đề cho tốc độ và thời gian chuyển động của từng đoạn (nửa thời gian đầu và sau, 30 giây đầu và 30 giây sau…), hỏi tốc độ trung bình cả hành trình."
+    },
+    {
+     "dang_id": "KDB01400",
+     "ten": "Tính tốc độ trung bình khi biết tốc độ và quãng đường từng đoạn",
+     "mo_ta": "Đề cho tốc độ và quãng đường của từng đoạn (kể cả nửa quãng đường đầu và nửa quãng đường sau), hỏi tốc độ trung bình cả hành trình."
+    },
+    {
+     "dang_id": "KDB01401",
+     "ten": "Tính tốc độ trung bình khi hành trình có thời gian nghỉ",
+     "mo_ta": "Đề nêu hành trình có dừng nghỉ giữa đường, hoặc cho tổng quãng đường và tổng thời gian kể cả thời gian nghỉ, hỏi tốc độ trung bình."
+    },
+    {
+     "dang_id": "KDB01402",
+     "ten": "Tính quãng đường hoặc thời gian từ tốc độ trung bình",
+     "mo_ta": "Đề cho tốc độ trung bình của cả hành trình cùng quãng đường hoặc thời gian, hỏi đại lượng còn lại; hoặc cho cả hành trình và một đoạn, hỏi đoạn còn lại."
+    },
+    {
+     "dang_id": "KDB01403",
+     "ten": "So sánh thời gian đến đích của hai phương tiện có thời gian nghỉ",
+     "mo_ta": "Đề cho hai người hoặc hai phương tiện đi cùng quãng đường, một bên đi liên tục và một bên chia đoạn có dừng nghỉ, hỏi ai đến đích trước và trước bao lâu."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00325",
+   "chu_de": "Tốc độ",
+   "chuyen_de": "Đo tốc độ",
+   "nhom": "Lựa chọn thiết bị đo tốc độ phù hợp",
+   "dang": [
+    {
+     "dang_id": "KDB01404",
+     "ten": "Chọn dụng cụ và thiết bị đo tốc độ phù hợp",
+     "mo_ta": "Đề hỏi cần những dụng cụ nào để đo tốc độ, dụng cụ nào đo thời gian chính xác hơn, thiết bị nào đo tốc độ phương tiện giao thông hoặc bộ phận nào của xe cho biết tốc độ."
+    },
+    {
+     "dang_id": "KDB01405",
+     "ten": "Giải thích sai số và độ chính xác khi đo thời gian",
+     "mo_ta": "Đề hỏi vì sao hai lần đo cho kết quả khác nhau, vì sao đo bằng cổng quang điện chính xác hơn, vì sao nên đo nhiều lần rồi lấy trung bình."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00327",
+   "chu_de": "Tốc độ",
+   "chuyen_de": "Đồ thị quãng đường - thời gian",
+   "nhom": "Đọc đồ thị Quãng đường - Thời gian",
+   "dang": [
+    {
+     "dang_id": "KDB00731",
+     "ten": "ĐỌC s TẠI THỜI ĐIỂM t VÀ NGƯỢC LẠI",
+     "mo_ta": "Đề cho đồ thị quãng đường – thời gian, hỏi đọc một giá trị: biết thời điểm $t$ tìm quãng đường $s$ hoặc biết $s$ tìm thời điểm $t$."
+    },
+    {
+     "dang_id": "KDB00732",
+     "ten": "NHẬN RA ĐOẠN VẬT ĐỨNG YÊN",
+     "mo_ta": "Đề hỏi nhận biết ý nghĩa các trục và các đoạn nằm ngang trên đồ thị quãng đường – thời gian: trục nào là thời gian, trục nào là quãng đường."
+    },
+    {
+     "dang_id": "KDB00733",
+     "ten": "TÍNH TỐC ĐỘ TỪ ĐỒ THỊ",
+     "mo_ta": "Đề cho đồ thị quãng đường – thời gian, hỏi tốc độ của vật trên một đoạn hoặc trên cả đồ thị."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00329",
+   "chu_de": "Tốc độ",
+   "chuyen_de": "Đồ thị quãng đường - thời gian",
+   "nhom": "SO SÁNH VÀ MÔ TẢ CHUYỂN ĐỘNG TRÊN ĐỒ THỊ",
+   "dang": [
+    {
+     "dang_id": "KDB00734",
+     "ten": "SO SÁNH HAI VẬT TRÊN CÙNG ĐỒ THỊ",
+     "mo_ta": "Đề cho đồ thị quãng đường – thời gian của hai vật trên cùng hệ trục, hỏi vật nào nhanh hơn, tốc độ gấp mấy lần."
+    },
+    {
+     "dang_id": "KDB00735",
+     "ten": "MÔ TẢ CHUYỂN ĐỘNG NHIỀU GIAI ĐOẠN",
+     "mo_ta": "Đề cho đồ thị quãng đường – thời gian của một vật gồm nhiều đoạn thẳng liên tiếp (đứng yên, chuyển động với tốc độ khác nhau), yêu cầu chọn mô tả đúng."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00330",
+   "chu_de": "Tốc độ",
+   "chuyen_de": "Đồ thị quãng đường - thời gian",
+   "nhom": "Vẽ đồ thị quãng đường - thời gian",
+   "dang": [
+    {
+     "dang_id": "KDB00736",
+     "ten": "VẼ ĐỒ THỊ TỪ BẢNG",
+     "mo_ta": "Đề cho bảng số liệu quãng đường theo thời gian (hoặc quãng đường từng khoảng thời gian liên tiếp), yêu cầu vẽ đồ thị quãng đường – thời gian theo tỉ lệ xích cho trước."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00331",
+   "chu_de": "Âm thanh",
+   "chuyen_de": "SÓNG ÂM",
+   "nhom": "NGUỒN ÂM, SÓNG ÂM VÀ MÔI TRƯỜNG TRUYỀN ÂM",
+   "dang": [
+    {
+     "dang_id": "KDB00737",
+     "ten": "Nhận ra nguồn âm và bộ phận dao động",
+     "mo_ta": "Đề cho một nhạc cụ, con vật hay đồ vật đang phát ra âm, hỏi vật nào là nguồn âm hoặc bộ phận nào dao động để phát ra âm."
+    },
+    {
+     "dang_id": "KDB00738",
+     "ten": "Môi trường truyền âm",
+     "mo_ta": "Đề hỏi âm truyền được hay không truyền được qua môi trường nào (chất rắn, chất lỏng, chất khí, chân không)."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00332",
+   "chu_de": "Âm thanh",
+   "chuyen_de": "SÓNG ÂM",
+   "nhom": "TỐC ĐỘ TRUYỀN ÂM",
+   "dang": [
+    {
+     "dang_id": "KDB00739",
+     "ten": "So sánh tốc độ âm trong chất rắn, lỏng, khí",
+     "mo_ta": "Đề so sánh tốc độ truyền âm giữa các môi trường rắn, lỏng, khí, không yêu cầu tính quãng đường hay thời gian."
+    },
+    {
+     "dang_id": "KDB00740",
+     "ten": "Tính khoảng cách, thời gian truyền âm",
+     "mo_ta": "Bài trắc nghiệm tính quãng đường (khoảng cách), thời gian hoặc tốc độ của âm truyền một chiều bằng $s = v \\times t$."
+    },
+    {
+     "dang_id": "KDB00741",
+     "ten": "Thấy chớp trước khi nghe tiếng sét",
+     "mo_ta": "Bài trắc nghiệm về hiện tượng thấy tia chớp trước khi nghe tiếng sét."
+    },
+    {
+     "dang_id": "KDB00742",
+     "ten": "Tính khoảng cách, thời gian truyền âm",
+     "mo_ta": "Bài tự luận tính toán nhiều bước về âm truyền một chiều, phải tính một đại lượng trung gian rồi mới ra đáp số."
+    },
+    {
+     "dang_id": "KDB00743",
+     "ten": "Thấy chớp trước khi nghe tiếng sét",
+     "mo_ta": "Bài trả lời ngắn về hiện tượng chớp và sét: tính khoảng cách tới chỗ sét đánh hoặc thời gian từ chớp đến sét."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00333",
+   "chu_de": "Âm thanh",
+   "chuyen_de": "Đặc trưng của âm",
+   "nhom": "TẦN SỐ, BIÊN ĐỘ VÀ MỐI LIÊN HỆ VỚI ĐỘ CAO, ĐỘ TO",
+   "dang": [
+    {
+     "dang_id": "KDB00744",
+     "ten": "TẦN SỐ VÀ ĐƠN VỊ HERTZ",
+     "mo_ta": "Đề hỏi khái niệm tần số dao động: tần số là gì, kí hiệu gì, đơn vị gì."
+    },
+    {
+     "dang_id": "KDB00745",
+     "ten": "ÂM CAO – THẤP, TO – NHỎ",
+     "mo_ta": "Đề hỏi mối liên hệ giữa độ cao của âm với tần số, giữa độ to của âm với biên độ (bằng lời, không tính số)."
+    },
+    {
+     "dang_id": "KDB00746",
+     "ten": "HẠ ÂM, SIÊU ÂM VÀ NGƯỠNG NGHE CỦA NGƯỜI",
+     "mo_ta": "Đề hỏi về giới hạn nghe của tai người, hạ âm và siêu âm."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00334",
+   "chu_de": "Âm thanh",
+   "chuyen_de": "Đặc trưng của âm",
+   "nhom": "Tính tần số dao động và so sánh độ cao của âm",
+   "dang": [
+    {
+     "dang_id": "KDB00747",
+     "ten": "TÍNH TẦN SỐ",
+     "mo_ta": "Bài trả lời ngắn tính tần số dao động từ số dao động $N$ và thời gian $t$ cho theo giây."
+    },
+    {
+     "dang_id": "KDB00748",
+     "ten": "ĐỔI THỜI GIAN SANG GIÂY TRƯỚC KHI TÍNH",
+     "mo_ta": "Bài trả lời ngắn tính tần số khi thời gian dao động cho theo phút."
+    },
+    {
+     "dang_id": "KDB00749",
+     "ten": "SO SÁNH ĐỘ CAO CỦA HAI ÂM",
+     "mo_ta": "Bài trắc nghiệm so sánh độ cao của hai hoặc ba âm từ số dao động và thời gian của từng nguồn."
+    },
+    {
+     "dang_id": "KDB00750",
+     "ten": "NGƯỜI CÓ NGHE ĐƯỢC ÂM HAY KHÔNG",
+     "mo_ta": "Bài trắc nghiệm xét một nguồn âm cụ thể có tai người nghe được hay không và âm đó thuộc loại nào (hạ âm, âm nghe được, siêu âm)."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00335",
+   "chu_de": "Âm thanh",
+   "chuyen_de": "Đặc trưng của âm",
+   "nhom": "Đọc đồ thị dao động âm",
+   "dang": [
+    {
+     "dang_id": "KDB00751",
+     "ten": "So sánh độ cao từ đồ thị",
+     "mo_ta": "Đề cho hình gồm hai hoặc ba đồ thị dao động âm, hỏi âm nào cao hơn, cao nhất hoặc trầm nhất."
+    },
+    {
+     "dang_id": "KDB00752",
+     "ten": "SO SÁNH ĐỘ TO TỪ ĐỒ THỊ",
+     "mo_ta": "Đề cho hình gồm hai hoặc ba đồ thị dao động âm vẽ cùng tỉ lệ trên trục thẳng đứng, hỏi âm nào to hơn, nhỏ hơn, to nhất hoặc nhỏ nhất."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00336",
+   "chu_de": "Âm thanh",
+   "chuyen_de": "Phản xạ âm và chống ô nhiễm tiếng ồn",
+   "nhom": "Phản xạ âm, tiếng vang và vật phản xạ âm",
+   "dang": [
+    {
+     "dang_id": "KDB00753",
+     "ten": "Vật phản xạ âm tốt và kém",
+     "mo_ta": "Đề hỏi vật nào phản xạ âm tốt, vật nào phản xạ âm kém hoặc hấp thụ âm nhiều."
+    },
+    {
+     "dang_id": "KDB00754",
+     "ten": "ĐIỀU KIỆN NGHE ĐƯỢC TIẾNG VANG",
+     "mo_ta": "Đề hỏi về tiếng vang: điều kiện để nghe được tiếng vang và nguyên nhân không nghe được hay cách giảm tiếng vang (bằng lời, không tính toán số)."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00337",
+   "chu_de": "Âm thanh",
+   "chuyen_de": "Phản xạ âm và chống ô nhiễm tiếng ồn",
+   "nhom": "TÍNH KHOẢNG CÁCH BẰNG ÂM PHẢN XẠ",
+   "dang": [
+    {
+     "dang_id": "KDB00755",
+     "ten": "ĐO ĐỘ SÂU ĐÁY BIỂN BẰNG SIÊU ÂM",
+     "mo_ta": "Bài trắc nghiệm tính độ sâu đáy biển (hoặc vực biển) bằng siêu âm phản xạ."
+    },
+    {
+     "dang_id": "KDB00756",
+     "ten": "KHOẢNG CÁCH TỚI VÁCH NÚI, BỨC TƯỜNG",
+     "mo_ta": "Bài trả lời ngắn tính khoảng cách từ người đứng tới vách núi, vách đá, bức tường hoặc toà nhà bằng tiếng vang trong không khí."
+    },
+    {
+     "dang_id": "KDB00757",
+     "ten": "KHOẢNG CÁCH TỐI THIỂU ĐỂ NGHE TIẾNG VANG",
+     "mo_ta": "Bài tự luận tính khoảng cách nhỏ nhất từ nguồn âm tới vật phản xạ để nghe được tiếng vang."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00338",
+   "chu_de": "Âm thanh",
+   "chuyen_de": "Phản xạ âm và chống ô nhiễm tiếng ồn",
+   "nhom": "Ô NHIỄM TIẾNG ỒN VÀ BIỆN PHÁP CHỐNG",
+   "dang": [
+    {
+     "dang_id": "KDB00758",
+     "ten": "Nhận biết ô nhiễm tiếng ồn",
+     "mo_ta": "Đề hỏi nhận biết khi nào một tiếng ồn gây ô nhiễm tiếng ồn và tác hại của nó."
+    },
+    {
+     "dang_id": "KDB00759",
+     "ten": "CHỌN BIỆN PHÁP CHỐNG ỒN",
+     "mo_ta": "Đề hỏi biện pháp chống ô nhiễm tiếng ồn: chọn biện pháp phù hợp hoặc phân loại biện pháp đã cho."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00340",
+   "chu_de": "Ánh sáng",
+   "chuyen_de": "Sự truyền ánh sáng",
+   "nhom": "Biện luận bóng tối và bóng nửa tối",
+   "dang": [
+    {
+     "dang_id": "KDB01672",
+     "ten": "Nhận biết vùng tối, vùng nửa tối trên màn",
+     "mo_ta": "Đề cho nguồn sáng (nhỏ hoặc rộng), vật cản, màn chắn và các vùng đánh số trên màn; hỏi vùng nào là vùng tối, vùng nửa tối hay vùng sáng."
+    },
+    {
+     "dang_id": "KDB01673",
+     "ten": "Chỉ ra nguồn sáng, vật cản sáng và màn chắn",
+     "mo_ta": "Đề mô tả một tình huống có bóng đổ (đèn và tường, Mặt Trời và cột đèn, nhật thực, nguyệt thực), hỏi vật nào đóng vai trò nguồn sáng, vật cản sáng hoặc màn chắn."
+    },
+    {
+     "dang_id": "KDB01674",
+     "ten": "Dự đoán vùng tối khi dời nguồn nhỏ, vật cản hoặc màn",
+     "mo_ta": "Đề cho nguồn sáng nhỏ chiếu vật cản lên màn tạo vùng tối; hỏi vùng tối rộng ra, hẹp lại hay không đổi khi dời nguồn, dời màn hoặc đổi kích thước vật cản."
+    },
+    {
+     "dang_id": "KDB01675",
+     "ten": "Dự đoán vùng tối, nửa tối khi nguồn sáng rộng thay đổi",
+     "mo_ta": "Đề cho nguồn sáng rộng tạo vùng tối và vùng nửa tối trên màn; hỏi hai vùng này thay đổi thế nào khi tăng hoặc giảm kích thước nguồn, dời nguồn lại gần vật cản, hoặc thay bằng nguồn nhỏ."
+    },
+    {
+     "dang_id": "KDB01676",
+     "ten": "Xác định hiện tượng quan sát được tại một vùng bóng",
+     "mo_ta": "Đề nêu nhật thực hoặc nguyệt thực và một vị trí (người đứng ở vùng tối, vùng nửa tối, ngoài bóng; hoặc Mặt Trăng ở vùng tối, nửa tối của Trái Đất); hỏi quan sát thấy gì."
+    },
+    {
+     "dang_id": "KDB01677",
+     "ten": "Ghép hiện tượng với nhiều người ở các vùng bóng",
+     "mo_ta": "Đề nêu ba người ở ba vị trí (vùng tối, vùng nửa tối, ngoài bóng) khi có nhật thực hoặc nguyệt thực; bốn phương án là bốn cách ghép hiện tượng cho từng người, chọn cách ghép đúng."
+    },
+    {
+     "dang_id": "KDB01678",
+     "ten": "Giải thích cách chiếu sáng để giảm vùng tối",
+     "mo_ta": "Đề nêu một tình huống đời sống (đèn mổ, đèn bàn, chụp ảnh, nhà xưởng, sân khấu) và hỏi mục đích hay cách bố trí đèn để giảm hoặc tránh vùng tối."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00341",
+   "chu_de": "Ánh sáng",
+   "chuyen_de": "Sự phản xạ ánh sáng",
+   "nhom": "Đặc điểm của phản xạ gương và phản xạ khuếch tán",
+   "dang": [
+    {
+     "dang_id": "KDB01679",
+     "ten": "Nhận biết loại phản xạ và loại bề mặt phản xạ",
+     "mo_ta": "Đề nêu một hiện tượng hoặc một bề mặt cụ thể, hỏi gọi tên đúng loại phản xạ (gương hay khuếch tán) hoặc chọn bề mặt cho loại phản xạ đó."
+    },
+    {
+     "dang_id": "KDB01680",
+     "ten": "Giải thích hiện tượng thực tế bằng loại phản xạ",
+     "mo_ta": "Đề nêu một hiện tượng đời sống (nhìn thấy trang sách từ nhiều hướng, màn chiếu phim, biển báo phản quang, mặt đường ướt, lau bóng kim loại) và hỏi nguyên nhân."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00342",
+   "chu_de": "Ánh sáng",
+   "chuyen_de": "Sự phản xạ ánh sáng",
+   "nhom": "Tính toán góc tới, góc phản xạ",
+   "dang": [
+    {
+     "dang_id": "KDB01681",
+     "ten": "Tính góc phản xạ hoặc góc tới từ góc với pháp tuyến",
+     "mo_ta": "Đề cho góc tới (hoặc góc phản xạ, hoặc góc NIR, SIN) đã đo với pháp tuyến; hỏi góc còn lại."
+    },
+    {
+     "dang_id": "KDB01682",
+     "ten": "Tính góc tới từ góc hợp với mặt gương",
+     "mo_ta": "Đề cho góc giữa tia tới (hoặc tia phản xạ) và mặt gương; hỏi góc tới hoặc góc phản xạ, hoặc ngược lại cho góc phản xạ và hỏi góc hợp với mặt gương."
+    },
+    {
+     "dang_id": "KDB01683",
+     "ten": "Tính góc giữa tia tới và tia phản xạ",
+     "mo_ta": "Đề cho góc tới hoặc góc hợp với mặt gương, hỏi góc SIR giữa tia tới và tia phản xạ; hoặc ngược lại cho góc SIR và hỏi góc tới."
+    },
+    {
+     "dang_id": "KDB01684",
+     "ten": "Chọn hình vẽ đúng tia phản xạ",
+     "mo_ta": "Đề cho góc tới, hoặc góc hợp với mặt gương, hoặc góc giữa tia tới và tia phản xạ; bốn phương án là bốn hình vẽ, chọn hình vẽ đúng tia phản xạ (có khi cả tia tới)."
+    },
+    {
+     "dang_id": "KDB01685",
+     "ten": "Tìm hình hoặc số đo vẽ sai định luật phản xạ",
+     "mo_ta": "Đề đưa bốn hình vẽ hoặc bốn bạn ghi lại số đo (góc tới, góc hợp với gương, góc phản xạ), hỏi hình nào hoặc bạn nào vẽ SAI."
+    },
+    {
+     "dang_id": "KDB01686",
+     "ten": "Đặt gương để tia phản xạ đi theo hướng cho trước",
+     "mo_ta": "Đề cho hướng tia tới và hướng tia phản xạ mong muốn (hợp với nhau một góc, hoặc cùng hợp với phương ngang, phương thẳng đứng); hỏi góc tới hoặc góc giữa mặt gương và tia tới."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00343",
+   "chu_de": "Ánh sáng",
+   "chuyen_de": "Sự phản xạ ánh sáng",
+   "nhom": "Bài toán quay gương phẳng",
+   "dang": [
+    {
+     "dang_id": "KDB01687",
+     "ten": "Tính góc quay của tia phản xạ khi quay gương",
+     "mo_ta": "Đề giữ nguyên tia tới, quay gương một góc cho trước quanh điểm tới; hỏi tia phản xạ quay bao nhiêu, hoặc góc SIR lúc sau."
+    },
+    {
+     "dang_id": "KDB01688",
+     "ten": "Tính góc quay của gương khi biết tia phản xạ quay",
+     "mo_ta": "Đề giữ nguyên tia tới, cho biết tia phản xạ quay một góc nào đó; hỏi phải quay gương quanh điểm tới một góc bao nhiêu."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00344",
+   "chu_de": "Ánh sáng",
+   "chuyen_de": "Ảnh tạo bởi gương phẳng",
+   "nhom": "Đặc điểm ảnh và bài toán khoảng cách",
+   "dang": [
+    {
+     "dang_id": "KDB01689",
+     "ten": "Nhận biết đặc điểm ảnh của vật tạo bởi gương phẳng",
+     "mo_ta": "Đề hỏi độ lớn, hình dạng, vị trí hay quan hệ đối xứng của ảnh qua gương phẳng; có thể kèm tình huống đi ra xa gương hoặc so sánh hai vật."
+    },
+    {
+     "dang_id": "KDB01690",
+     "ten": "Phân biệt ảnh ảo và ảnh thật",
+     "mo_ta": "Đề hỏi định nghĩa ảnh ảo hoặc ảnh thật, ảnh qua gương phẳng có hứng được trên màn không, hoặc chọn trường hợp là ảnh ảo hay ảnh thật."
+    },
+    {
+     "dang_id": "KDB01691",
+     "ten": "Tính khoảng cách ảnh – gương, vật – gương, vật – ảnh",
+     "mo_ta": "Đề cho khoảng cách từ vật (hoặc ảnh) đến gương, hỏi khoảng cách từ ảnh đến gương, từ vật đến gương hoặc giữa vật và ảnh; có thể cho khoảng cách vật – ảnh và hỏi vật cách gương."
+    },
+    {
+     "dang_id": "KDB01692",
+     "ten": "Đọc khoảng cách vật và ảnh trên hình vẽ có ô vuông",
+     "mo_ta": "Đề cho hình vẽ vật AB và ảnh A′B′ trên lưới ô vuông, mỗi ô có độ dài cho trước; hỏi ảnh cách gương bao nhiêu hoặc điểm A cách ảnh A′ bao nhiêu."
+    },
+    {
+     "dang_id": "KDB01693",
+     "ten": "Tính khoảng cách khi vật dịch lại gần hoặc ra xa gương",
+     "mo_ta": "Đề cho khoảng cách ban đầu từ vật (hoặc người) đến gương và quãng đường dịch lại gần hoặc ra xa gương (có thể phải đổi cm sang m); hỏi ảnh cách gương bao nhiêu hoặc khoảng cách giữa vật và ảnh lúc sau."
+    },
+    {
+     "dang_id": "KDB01694",
+     "ten": "Tính tốc độ dịch chuyển của vật và ảnh",
+     "mo_ta": "Đề cho vật (người, xe đồ chơi) chuyển động thẳng lại gần hoặc ra xa gương với tốc độ nào đó; hỏi tốc độ của ảnh, khoảng cách vật – ảnh sau một thời gian, hoặc khoảng cách vật – ảnh thay đổi nhanh thế nào."
+    },
+    {
+     "dang_id": "KDB01695",
+     "ten": "Tính khoảng cách vật – ảnh khi dịch chuyển gương",
+     "mo_ta": "Đề cho vật đứng yên, dịch gương ra xa hoặc lại gần vật một đoạn (hoặc với tốc độ trong một thời gian); hỏi khoảng cách vật – ảnh lúc sau, độ dịch của ảnh, hoặc độ dịch của gương."
+    },
+    {
+     "dang_id": "KDB01696",
+     "ten": "Vận dụng ảnh đối xứng: đồng hồ, chữ ngược, kính tiềm vọng",
+     "mo_ta": "Đề nêu một tình huống ứng dụng ảnh đối xứng trái – phải qua gương phẳng: đọc giờ đồng hồ qua gương, chữ in ngược trên xe cứu thương, dụng cụ nhìn qua vật che khuất (kính tiềm vọng)."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00345",
+   "chu_de": "Ánh sáng",
+   "chuyen_de": "Ảnh tạo bởi gương phẳng",
+   "nhom": "Dựng ảnh và xác định vùng nhìn thấy của gương",
+   "dang": [
+    {
+     "dang_id": "KDB01697",
+     "ten": "Chọn hình vẽ đúng ảnh của vật qua gương phẳng",
+     "mo_ta": "Đề cho vật AB đặt thẳng đứng trước gương, cách gương một số ô; bốn phương án là bốn hình vẽ ảnh A′B′, chọn hình vẽ đúng."
+    },
+    {
+     "dang_id": "KDB01698",
+     "ten": "Chọn hình đúng đường truyền tia sáng từ điểm sáng tới mắt",
+     "mo_ta": "Đề cho mắt M nhìn thấy ảnh A′ của điểm A qua gương, A cách gương một số ô; bốn phương án là bốn hình vẽ đường truyền tia sáng từ A phản xạ trên gương rồi tới mắt."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00346",
+   "chu_de": "Từ",
+   "chuyen_de": "Nam châm vĩnh cửu",
+   "nhom": "Lý thuyết cơ bản về nam châm vĩnh cửu",
+   "dang": [
+    {
+     "dang_id": "KDB01487",
+     "ten": "Nhận biết vật liệu từ — vật nào bị nam châm hút",
+     "mo_ta": "Đề hỏi vật nào, nhóm vật nào bị (hoặc không bị) nam châm hút; hoặc nam châm có hút được một kim loại cụ thể không."
+    },
+    {
+     "dang_id": "KDB01488",
+     "ten": "Xác định lực tương tác giữa hai nam châm theo tên cực",
+     "mo_ta": "Đề cho tên hai cực đưa lại gần nhau (hoặc cực của thanh nam châm với cực của kim nam châm) và hỏi hút hay đẩy; hoặc hỏi hiện tượng xảy ra với kim."
+    },
+    {
+     "dang_id": "KDB01489",
+     "ten": "Nhận biết các loại nam châm và vị trí các cực từ",
+     "mo_ta": "Đề hỏi về hình dạng, đặc điểm và công dụng của nam châm thẳng, nam châm chữ U, kim nam châm; vị trí hai cực của từng loại."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00347",
+   "chu_de": "Từ",
+   "chuyen_de": "Từ trường và Đường sức từ",
+   "nhom": "Lý thuyết cơ bản về từ trường & đường sức từ",
+   "dang": [
+    {
+     "dang_id": "KDB01490",
+     "ten": "Từ phổ và nhận xét độ mạnh của từ trường",
+     "mo_ta": "Đề mô tả thí nghiệm tạo từ phổ (rắc mạt sắt lên tấm nhựa đặt trên nam châm) và hỏi mạt sắt xếp thế nào, dày ở đâu, dùng vật liệu khác thì ra sao."
+    },
+    {
+     "dang_id": "KDB01491",
+     "ten": "Đường sức từ: kim nam châm thử và tính chất",
+     "mo_ta": "Đề hỏi kim nam châm nhỏ đặt trên một đường sức khi đứng yên nằm thế nào, cực nào chỉ theo chiều đường sức."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00348",
+   "chu_de": "Từ",
+   "chuyen_de": "Từ trường và Đường sức từ",
+   "nhom": "Xác định tên từ cực thông qua hình ảnh đường sức (hoặc kim nam châm thử)",
+   "dang": [
+    {
+     "dang_id": "KDB01492",
+     "ten": "Xác định tên cực thanh nam châm bằng kim nam châm thử",
+     "mo_ta": "Đề cho một đầu thanh nam châm chưa ghi tên cực và kim nam châm (kim la bàn) đưa lại gần đầu đó, cho biết cực nào của kim bị hút hay bị đẩy; hỏi tên cực của đầu thanh."
+    },
+    {
+     "dang_id": "KDB01493",
+     "ten": "Xác định tên cực từ qua chiều đường sức",
+     "mo_ta": "Đề cho chiều đường sức từ (bằng hình có mũi tên hoặc bằng lời) rồi hỏi tên cực hai đầu thanh; hoặc cho tên cực rồi hỏi chiều đường sức bên ngoài nam châm."
+    },
+    {
+     "dang_id": "KDB01494",
+     "ten": "Xác định cực của hai nam châm A–B khi cho kim la bàn và hiện tượng hút, đẩy",
+     "mo_ta": "Đề có hai thanh nam châm: kim la bàn đặt cạnh một đầu thanh thứ nhất cho biết cực nào của kim bị hút hay đẩy; rồi đầu còn lại của thanh thứ nhất đặt đối diện đầu của thanh thứ hai, cho biết hút hay đẩy; hỏi tên các cực của thanh thứ hai."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00349",
+   "chu_de": "Từ",
+   "chuyen_de": "Nam châm điện & Từ trường Trái Đất",
+   "nhom": "Lý thuyết cơ bản về Nam châm điện & Từ trường Trái Đất",
+   "dang": [
+    {
+     "dang_id": "KDB01495",
+     "ten": "La bàn, từ trường Trái Đất và nhiễm từ",
+     "mo_ta": "Đề hỏi vì sao kim la bàn chỉ hướng Bắc – Nam, ảnh hưởng của nam châm hay dòng điện đặt gần la bàn, nam châm treo tự do khi đứng yên."
+    },
+    {
+     "dang_id": "KDB01496",
+     "ten": "Cấu tạo và vật liệu các bộ phận của nam châm điện",
+     "mo_ta": "Đề hỏi nam châm điện gồm những bộ phận nào; vật liệu làm lõi, làm dây quấn; vai trò của công tắc, của nguồn điện."
+    },
+    {
+     "dang_id": "KDB01497",
+     "ten": "Điều kiện có từ tính và đặc điểm của nam châm điện",
+     "mo_ta": "Đề hỏi khi nào nam châm điện hút được vật sắt, khi ngắt điện hoặc mạch hở thì thế nào, cách làm mất từ tính."
+    },
+    {
+     "dang_id": "KDB01498",
+     "ten": "Vì sao dùng nam châm điện: cần cẩu, khóa điện từ, tách phế liệu",
+     "mo_ta": "Đề đưa một tình huống thực tế (cần cẩu ở bãi phế liệu, khóa điện từ, nhà máy tái chế) và hỏi vì sao dùng nam châm điện, vật nào được hút, hay điều gì xảy ra khi ngắt điện."
+    },
+    {
+     "dang_id": "KDB01499",
+     "ten": "Nguyên lí hoạt động của chuông điện và rơ-le điện từ",
+     "mo_ta": "Đề hỏi vai trò của nam châm điện trong chuông điện hoặc rơ-le điện từ; điều gì xảy ra khi cản búa chuông; lợi ích của rơ-le."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00351",
+   "chu_de": "Từ",
+   "chuyen_de": "Nam châm điện & Từ trường Trái Đất",
+   "nhom": "Bài toán định hướng la bàn và Từ trường Trái Đất",
+   "dang": [
+    {
+     "dang_id": "KDB01500",
+     "ten": "Xác định hướng đang nhìn từ vị trí cực Bắc của kim la bàn",
+     "mo_ta": "Đề cho cực Bắc của kim chỉ phía trước, sau lưng, bên trái hay bên phải người cầm la bàn đứng yên, rồi hỏi người đang nhìn hướng nào hoặc bên tay trái là hướng nào."
+    },
+    {
+     "dang_id": "KDB01501",
+     "ten": "Xác định hướng sau khi quay người theo nhiều lần",
+     "mo_ta": "Đề cho cực Bắc của kim chỉ phía nào so với người, rồi người quay sang phải hoặc trái 90° (một hoặc hai lần, có thể cả 180°), hỏi sau cùng nhìn hướng nào."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00352",
+   "chu_de": "Trao đổi chất & Chuyển hóa năng lượng ở sinh vật",
+   "chuyen_de": "Khái quát về trao đổi chất & chuyển hóa năng lượng",
+   "nhom": "Khái quát về trao đổi chất & chuyển hóa năng lượng",
+   "dang": [
+    {
+     "dang_id": "KDB00760",
+     "ten": "Trao đổi chất",
+     "mo_ta": "Đề hỏi khái niệm trao đổi chất ở sinh vật: định nghĩa, ba khâu, vai trò, ý nghĩa của việc lấy chất, thải chất."
+    },
+    {
+     "dang_id": "KDB00761",
+     "ten": "Chuyển hóa năng lượng",
+     "mo_ta": "Đề hỏi khái niệm chuyển hoá năng lượng ở sinh vật: định nghĩa, quan hệ với trao đổi chất, quá trình nào giải phóng hay tích luỹ năng lượng."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00353",
+   "chu_de": "Trao đổi chất & Chuyển hóa năng lượng ở sinh vật",
+   "chuyen_de": "Khái quát về trao đổi chất & chuyển hóa năng lượng",
+   "nhom": "Các khâu trong trao đổi chất và dạng chuyển hóa năng lượng",
+   "dang": [
+    {
+     "dang_id": "KDB00762",
+     "ten": "Trao đổi chất",
+     "mo_ta": "Đề nêu một hiện tượng ở sinh vật (rễ hút nước, cá lấy oxygen qua mang, thở ra khí carbon dioxide, tiêu hoá thức ăn...) rồi hỏi hiện tượng đó thuộc khâu nào: lấy chất, biến đổi chất hay thải chất."
+    },
+    {
+     "dang_id": "KDB00763",
+     "ten": "Chuyển hóa năng lượng",
+     "mo_ta": "Đề nêu hiện tượng hoặc hoạt động của một sinh vật cụ thể (ngựa phi, cây quang hợp, đom đóm phát sáng, hạt nảy mầm...) rồi hỏi dạng năng lượng nào được chuyển thành dạng nào."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00354",
+   "chu_de": "Trao đổi chất & Chuyển hóa năng lượng ở sinh vật",
+   "chuyen_de": "Khái quát về trao đổi chất & chuyển hóa năng lượng",
+   "nhom": "Phân biệt sinh vật tự dưỡng và sinh vật dị dưỡng",
+   "dang": [
+    {
+     "dang_id": "KDB01590",
+     "ten": "Nhận biết khái niệm, dấu hiệu và điều kiện của tự dưỡng, dị dưỡng",
+     "mo_ta": "Đề hỏi định nghĩa, dấu hiệu nhận biết, nguyên liệu, nguồn năng lượng hoặc điều kiện của sinh vật tự dưỡng / dị dưỡng."
+    },
+    {
+     "dang_id": "KDB01591",
+     "ten": "Xếp sinh vật quen thuộc vào nhóm tự dưỡng hoặc dị dưỡng",
+     "mo_ta": "Đề nêu một hoặc nhiều sinh vật cụ thể (cây, tảo, động vật, người, nấm, vi khuẩn…) rồi hỏi thuộc nhóm nào hoặc chọn nhóm gồm toàn sinh vật cùng loại."
+    },
+    {
+     "dang_id": "KDB01592",
+     "ten": "Xét các trường hợp dễ nhầm về nhóm dinh dưỡng",
+     "mo_ta": "Đề nêu sinh vật hoặc tình huống dễ gây nhầm: nấm, cây nắp ấm, cây gọng vó, cây tơ hồng, cây trồng trong dung dịch dinh dưỡng, giá thể trồng nấm."
+    },
+    {
+     "dang_id": "KDB01593",
+     "ten": "Phân tích vai trò và mối quan hệ phụ thuộc giữa hai nhóm",
+     "mo_ta": "Đề hỏi vai trò của sinh vật tự dưỡng (tạo chất hữu cơ ban đầu, cung cấp oxygen) và sự phụ thuộc của sinh vật dị dưỡng."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00355",
+   "chu_de": "Trao đổi chất & Chuyển hóa năng lượng ở sinh vật",
+   "chuyen_de": "Quang hợp ở thực vật",
+   "nhom": "Nhận biết khái niệm, nguyên liệu, sản phẩm và phương trình quang hợp",
+   "dang": [
+    {
+     "dang_id": "KDB01594",
+     "ten": "Nhận biết khái niệm, nguyên liệu, sản phẩm, điều kiện và phương trình quang hợp",
+     "mo_ta": "Đề hỏi định nghĩa quang hợp, nguyên liệu, sản phẩm, điều kiện, nguồn năng lượng, vị trí các chất trong phương trình chữ."
+    },
+    {
+     "dang_id": "KDB01595",
+     "ten": "Xác định nơi diễn ra quang hợp và đường vận chuyển các chất",
+     "mo_ta": "Đề hỏi quang hợp diễn ra ở cơ quan, tế bào, bào quan nào; nước, carbon dioxide, chất hữu cơ được lấy vào hoặc vận chuyển bằng con đường nào."
+    },
+    {
+     "dang_id": "KDB01596",
+     "ten": "Xác định số phận sản phẩm và sự chuyển hoá năng lượng trong quang hợp",
+     "mo_ta": "Đề hỏi chất hữu cơ tạo ra được dự trữ ở dạng nào, ở bộ phận nào."
+    },
+    {
+     "dang_id": "KDB01597",
+     "ten": "Giải thích ý nghĩa của quang hợp và sự thay đổi lượng khí",
+     "mo_ta": "Đề hỏi vai trò của quang hợp đối với cây, sinh vật và tự nhiên; quang hợp làm tăng hay giảm khí nào trong không khí."
+    },
+    {
+     "dang_id": "KDB01598",
+     "ten": "Dự đoán ảnh hưởng của điều kiện và thí nghiệm đến quang hợp",
+     "mo_ta": "Đề cho một tình huống hoặc thí nghiệm (cây ở chỗ tối, thiếu nước, che lá, chuông kín, nước vôi trong, cây không diệp lục) rồi hỏi quang hợp hoặc lượng chất thay đổi thế nào."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00356",
+   "chu_de": "Trao đổi chất & Chuyển hóa năng lượng ở sinh vật",
+   "chuyen_de": "Quang hợp ở thực vật",
+   "nhom": "Phân tích đặc điểm của lá thích nghi với chức năng quang hợp",
+   "dang": [
+    {
+     "dang_id": "KDB01599",
+     "ten": "Nhận biết cấu tạo và chức năng từng bộ phận của lá",
+     "mo_ta": "Đề hỏi tên và chức năng một bộ phận của lá: phiến, cuống, biểu bì, khí khổng, gân lá, mạch gỗ, mạch rây, tế bào thịt lá, lục lạp."
+    },
+    {
+     "dang_id": "KDB01600",
+     "ten": "Giải thích đặc điểm hình dạng, sắp xếp lá với việc thu nhận ánh sáng",
+     "mo_ta": "Đề hỏi tác dụng của phiến lá rộng, dẹt, mỏng; cách mọc so le, hướng về phía sáng; cây nhiều lá hơn cây ít lá."
+    },
+    {
+     "dang_id": "KDB01601",
+     "ten": "Dự đoán ảnh hưởng khi lá bị tổn thương hoặc điều kiện thay đổi",
+     "mo_ta": "Đề nêu một tình huống: bịt khí khổng, lá phủ bụi, sâu ăn khuyết, cắt bỏ lá, trồng quá dày, lá trong bóng tối."
+    },
+    {
+     "dang_id": "KDB01602",
+     "ten": "Giải thích sự thích nghi đặc biệt của lá với môi trường sống",
+     "mo_ta": "Đề nêu loài hoặc môi trường đặc biệt (xương rồng, cây thuỷ sinh, cây dưới tán rừng, mùa đông rụng lá, lớp cutin) rồi hỏi cấu tạo hoặc hoạt động của lá thay đổi ra sao và vì sao."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00357",
+   "chu_de": "Trao đổi chất & Chuyển hóa năng lượng ở sinh vật",
+   "chuyen_de": "Quang hợp ở thực vật",
+   "nhom": "Ảnh hưởng của các yếu tố đến quang hợp",
+   "dang": [
+    {
+     "dang_id": "KDB01406",
+     "ten": "Nhận biết các yếu tố chính ảnh hưởng đến quang hợp",
+     "mo_ta": "Đề hỏi tên các yếu tố môi trường ảnh hưởng đến quang hợp: yếu tố nào không thuộc nhóm, yếu tố thứ tư, yếu tố bắt buộc, yếu tố tác động qua hoạt động trong tế bào."
+    },
+    {
+     "dang_id": "KDB01407",
+     "ten": "Phân biệt cây ưa sáng và cây ưa bóng",
+     "mo_ta": "Đề cho tên một hoặc nhiều loài cây, hỏi thuộc nhóm ưa sáng hay ưa bóng, cây nào cần ánh sáng nhiều hơn hoặc quang hợp tốt hơn khi ánh sáng yếu."
+    },
+    {
+     "dang_id": "KDB01408",
+     "ten": "Ảnh hưởng của ánh sáng đến quang hợp và giải thích tình huống",
+     "mo_ta": "Đề hỏi quang hợp tăng, giảm hay ngừng khi cường độ ánh sáng thay đổi (rất yếu, tăng dần, quá mạnh, không có ánh sáng), hoặc giải thích tình huống thực tế về ánh sáng (trồng dày, cây gần cửa sổ, lưới che, cây thuỷ sinh khi trời âm u)."
+    },
+    {
+     "dang_id": "KDB01409",
+     "ten": "Ảnh hưởng của nước và khí khổng đến quang hợp",
+     "mo_ta": "Đề hỏi vai trò của nước với quang hợp, khi cây thiếu nước hoặc đủ nước thì quang hợp ra sao, độ mở của khí khổng thay đổi thế nào, giải thích hiện tượng cây héo, đất khô hạn, so sánh hai chậu cây tưới nước khác nhau."
+    },
+    {
+     "dang_id": "KDB01410",
+     "ten": "Ảnh hưởng của nồng độ khí carbon dioxide đến quang hợp",
+     "mo_ta": "Đề hỏi nồng độ carbon dioxide trong không khí, quang hợp thay đổi thế nào khi nồng độ tăng trong giới hạn hoặc quá cao, nhận định đúng về ảnh hưởng của carbon dioxide."
+    },
+    {
+     "dang_id": "KDB01411",
+     "ten": "Ảnh hưởng của nhiệt độ đến quang hợp",
+     "mo_ta": "Đề hỏi khoảng nhiệt độ thuận lợi nhất cho quang hợp, quang hợp thay đổi thế nào khi nhiệt độ tăng, giảm hoặc vượt ngưỡng, hoặc giải thích tình huống như mùa đông lạnh."
+    },
+    {
+     "dang_id": "KDB01412",
+     "ten": "Vận dụng điều chỉnh các yếu tố trong nhà kính và tình huống nhiều yếu tố",
+     "mo_ta": "Đề nêu tình huống thực tế mà nhiều yếu tố tác động cùng lúc (nắng gắt giữa trưa, nhà kính mùa hè, mùa đông) hoặc hỏi biện pháp điều chỉnh để tăng năng suất."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00358",
+   "chu_de": "Trao đổi chất & Chuyển hóa năng lượng ở sinh vật",
+   "chuyen_de": "Hô hấp tế bào",
+   "nhom": "KHÁI NIỆM VÀ VAI TRÒ HÔ HẤP TẾ BÀO",
+   "dang": [
+    {
+     "dang_id": "KDB00764",
+     "ten": "Phương trình chữ của hô hấp tế bào",
+     "mo_ta": "Đề cho hoặc hỏi về phương trình chữ của hô hấp tế bào: nguyên liệu, sản phẩm, viết đúng phương trình, tìm chất còn thiếu, chất không có mặt."
+    },
+    {
+     "dang_id": "KDB00765",
+     "ten": "Nơi diễn ra và vai trò của hô hấp tế bào",
+     "mo_ta": "Đề hỏi hô hấp tế bào diễn ra ở đâu (tế bào nào, bào quan nào) và có vai trò gì đối với tế bào, cơ thể."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00359",
+   "chu_de": "Trao đổi chất & Chuyển hóa năng lượng ở sinh vật",
+   "chuyen_de": "Hô hấp tế bào",
+   "nhom": "SO SÁNH QUANG HỢP VÀ HÔ HẤP TẾ BÀO",
+   "dang": [
+    {
+     "dang_id": "KDB00766",
+     "ten": "So sánh quang hợp và hô hấp tế bào theo tiêu chí",
+     "mo_ta": "Đề so sánh quang hợp và hô hấp tế bào theo từng tiêu chí: nguyên liệu, sản phẩm, nơi diễn ra, điều kiện, chuyển hoá năng lượng, chuyển hoá chất."
+    },
+    {
+     "dang_id": "KDB00767",
+     "ten": "Mối quan hệ giữa quang hợp và hô hấp tế bào",
+     "mo_ta": "Đề hỏi mối liên hệ giữa quang hợp và hô hấp tế bào: sản phẩm của quá trình này là nguyên liệu của quá trình kia, hai quá trình trái ngược nhưng phụ thuộc nhau."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00360",
+   "chu_de": "Trao đổi chất & Chuyển hóa năng lượng ở sinh vật",
+   "chuyen_de": "Hô hấp tế bào",
+   "nhom": "YẾU TỐ ẢNH HƯỞNG ĐẾN HÔ HẤP TẾ BÀO VÀ BẢO QUẢN NÔNG SẢN",
+   "dang": [
+    {
+     "dang_id": "KDB00768",
+     "ten": "Yếu tố ảnh hưởng đến hô hấp tế bào",
+     "mo_ta": "Đề hỏi ảnh hưởng của nhiệt độ, hàm lượng nước, nồng độ oxygen, nồng độ carbon dioxide đến cường độ hô hấp tế bào, kèm giải thích hiện tượng thực tế."
+    },
+    {
+     "dang_id": "KDB00769",
+     "ten": "Biện pháp bảo quản nông sản",
+     "mo_ta": "Đề hỏi biện pháp bảo quản nông sản (hạt, rau, củ, quả) và cơ sở khoa học: giảm cường độ hô hấp xuống mức tối thiểu nhưng không làm chết tế bào."
+    },
+    {
+     "dang_id": "KDB00770",
+     "ten": "Thí nghiệm hô hấp ở hạt nảy mầm",
+     "mo_ta": "Đề mô tả bố trí hoặc kết quả thí nghiệm chứng minh hô hấp ở hạt nảy mầm: nước vôi trong vẩn đục (thải carbon dioxide), bình giữ nhiệt tăng nhiệt độ (toả nhiệt)."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00361",
+   "chu_de": "Trao đổi chất & Chuyển hóa năng lượng ở sinh vật",
+   "chuyen_de": "Trao đổi khí ở sinh vật",
+   "nhom": "Khí khổng và trao đổi khí ở thực vật",
+   "dang": [
+    {
+     "dang_id": "KDB00771",
+     "ten": "Cấu tạo của khí khổng",
+     "mo_ta": "Đề hỏi cấu tạo và vị trí của khí khổng: tên gọi, hai tế bào hình hạt đậu, khe khí khổng, thành phần có hoặc không thuộc cấu tạo khí khổng."
+    },
+    {
+     "dang_id": "KDB00772",
+     "ten": "KHÍ ĐI VÀO, ĐI RA QUA KHÍ KHỔNG",
+     "mo_ta": "Đề hỏi chức năng của khí khổng và chiều đi của các khí (carbon dioxide, oxygen, hơi nước) qua khí khổng theo quá trình quang hợp, hô hấp, ban ngày, ban đêm."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00362",
+   "chu_de": "Trao đổi chất & Chuyển hóa năng lượng ở sinh vật",
+   "chuyen_de": "Trao đổi khí ở sinh vật",
+   "nhom": "Trao đổi khí ở động vật và người",
+   "dang": [
+    {
+     "dang_id": "KDB00773",
+     "ten": "CƠ QUAN TRAO ĐỔI KHÍ THEO NHÓM ĐỘNG VẬT",
+     "mo_ta": "Đề hỏi cơ quan trao đổi khí của một động vật hoặc một nhóm động vật (da, hệ thống ống khí, mang, phổi, phổi và da)."
+    },
+    {
+     "dang_id": "KDB00774",
+     "ten": "ĐƯỜNG ĐI CỦA KHÍ TRONG CƠ THỂ NGƯỜI",
+     "mo_ta": "Đề hỏi đường đi của khí trong cơ thể người: thứ tự các cơ quan dẫn khí khi hít vào, thở ra, cơ quan đứng ngay trước hoặc sau một cơ quan cho trước."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K07000000001",
+   "loai": "trac_nghiem",
+   "de": "Hàm lượng gần đúng của một số nguyên tố trong vỏ Trái Đất: oxygen khoảng 46%, silicon khoảng 28%, aluminium khoảng 8%, iron khoảng 5%. Tổng hàm lượng của oxygen và silicon khoảng bao nhiêu %?",
+   "lua_chon": [
+    "74%",
+    "46%",
+    "36%",
+    "87%"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Cộng hàm lượng oxygen và silicon: 46% + 28% = 74%.\n\nVì sao các phương án khác sai:\n- B: Đó chỉ là hàm lượng của oxygen, quên cộng thêm silicon.\n- C: Đã cộng nhầm silicon với aluminium (28% + 8%), không phải oxygen với silicon.\n- D: Đã cộng cả bốn nguyên tố (46+28+8+5), không phải chỉ oxygen và silicon.",
+   "de_goc": "Hạt Mầm · K07H010203-02-001"
+  },
+  {
+   "ma_cau": "K07000000002",
+   "loai": "trac_nghiem",
+   "de": "Hàm lượng gần đúng của một số nguyên tố trong cơ thể người: oxygen khoảng 65%, carbon khoảng 18%, hydrogen khoảng 10%, nitrogen khoảng 3%. Hai nguyên tố chiếm tỉ lệ cao nhất cộng lại khoảng bao nhiêu %?",
+   "lua_chon": [
+    "75%",
+    "28%",
+    "65%",
+    "83%"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Hai nguyên tố cao nhất là oxygen (65%) và carbon (18%); cộng lại 65% + 18% = 83%.\n\nVì sao các phương án khác sai:\n- A: Đã cộng nhầm oxygen với hydrogen (65% + 10%), không phải với carbon.\n- B: Đó là tổng của carbon và hydrogen (18% + 10%), không phải hai nguyên tố cao nhất.\n- C: Đó chỉ là hàm lượng của oxygen, quên cộng thêm carbon.",
+   "de_goc": "Hạt Mầm · K07H010203-02-002"
+  },
+  {
+   "ma_cau": "K07000000003",
+   "loai": "trac_nghiem",
+   "de": "Không khí có khí nitrogen chiếm khoảng 78% và khí oxygen chiếm khoảng 21% thể tích. Các khí khác chiếm khoảng bao nhiêu % thể tích không khí?",
+   "lua_chon": [
+    "99%",
+    "78%",
+    "1%",
+    "21%"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Lấy 100% trừ đi phần đã biết: 100% − 78% − 21% = 1%.\n\nVì sao các phương án khác sai:\n- A: Đã cộng nhầm 78% với 21% rồi coi là phần còn lại, thay vì lấy phần bù của 100%.\n- B: Đó là hàm lượng của khí nitrogen, không phải phần còn lại.\n- D: Đó là hàm lượng của khí oxygen, không phải phần còn lại.",
+   "de_goc": "Hạt Mầm · K07H010203-02-003"
+  },
+  {
+   "ma_cau": "K07000000004",
+   "loai": "trac_nghiem",
+   "de": "Hàm lượng gần đúng theo khối lượng trong nước biển: oxygen khoảng 86%, hydrogen khoảng 11%, chlorine khoảng 2%, sodium khoảng 1%. Tổng hàm lượng của oxygen và hydrogen khoảng bao nhiêu %?",
+   "lua_chon": [
+    "86%",
+    "97%",
+    "13%",
+    "100%"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Cộng hàm lượng oxygen và hydrogen: 86% + 11% = 97%.\n\nVì sao các phương án khác sai:\n- A: Đó chỉ là hàm lượng của oxygen, quên cộng thêm hydrogen.\n- C: Đã cộng nhầm hydrogen với chlorine (11% + 2%), không phải oxygen với hydrogen.\n- D: Đã cộng cả bốn thành phần (86+11+2+1), không phải chỉ oxygen và hydrogen.",
+   "de_goc": "Hạt Mầm · K07H010203-02-005"
+  },
+  {
+   "ma_cau": "K07000000005",
+   "loai": "trac_nghiem",
+   "de": "Hàm lượng gần đúng theo khối lượng trong nước biển: oxygen 85,8%, hydrogen 10,8%, chlorine 1,9%, sodium 1,1%, còn lại là các nguyên tố khác. Các nguyên tố khác chiếm khoảng bao nhiêu % khối lượng nước biển?",
+   "lua_chon": [
+    "99,6%",
+    "0,4%",
+    "4,0%",
+    "1,5%"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Tổng bốn nguyên tố: 85,8 + 10,8 + 1,9 + 1,1 = 99,6%. Các nguyên tố khác: 100% − 99,6% = 0,4%.\n\nVì sao các phương án khác sai:\n- A: Đây là tổng bốn nguyên tố đã cho, chưa lấy 100% trừ đi.\n- C: Đã cộng sai tổng bốn nguyên tố.\n- D: Đã chỉ trừ hai nguyên tố chlorine và sodium.",
+   "de_goc": "Hạt Mầm · K07H010203-02-006"
+  },
+  {
+   "ma_cau": "K07000000006",
+   "loai": "trac_nghiem",
+   "de": "Hàm lượng gần đúng trong vỏ Trái Đất: oxygen 46%, silicon 28%, aluminium 8%, iron 5%, các nguyên tố khác 13%. Một bạn kết luận: 'Bốn nguyên tố này chiếm hơn một nửa khối lượng vỏ Trái Đất.' Kết luận này",
+   "lua_chon": [
+    "Sai, vì tổng bốn nguyên tố chỉ là 13%, nhỏ hơn 50%",
+    "Sai, vì không thể cộng phần trăm của các nguyên tố khác nhau",
+    "Đúng, vì tổng bốn nguyên tố này là 87%, lớn hơn 50%",
+    "Đúng, nhưng chỉ vì riêng oxygen đã gần một nửa"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Cộng hàm lượng bốn nguyên tố đã cho: 46 + 28 + 8 + 5 = 87%, lớn hơn 50% nên kết luận đúng.\n\nVì sao các phương án khác sai:\n- A: 13% là hàm lượng của 'các nguyên tố khác', không phải tổng của bốn nguyên tố đã cho.\n- B: Phần trăm hàm lượng khối lượng của các nguyên tố khác nhau trong cùng một mẫu vật hoàn toàn cộng được với nhau.\n- D: Kết luận đúng nhưng lí do chưa đủ: riêng oxygen (46%) chưa tới một nửa, phải cộng thêm ba nguyên tố kia mới vượt 50%.",
+   "de_goc": "Hạt Mầm · K07H010204-02-003"
+  },
+  {
+   "ma_cau": "K07000000007",
+   "loai": "trac_nghiem",
+   "de": "Hàm lượng gần đúng trong cơ thể người: oxygen 65%, carbon 18%, hydrogen 10%, nitrogen 3%, các nguyên tố khác 4%. Một bạn kết luận: 'Ba nguyên tố oxygen, carbon, hydrogen chiếm hơn 9 phần 10 khối lượng cơ thể.' Kết luận này",
+   "lua_chon": [
+    "Sai, vì tổng ba nguyên tố chỉ là 4%, nhỏ hơn 90%",
+    "Sai, vì phải cộng cả bốn nguyên tố mới vượt 9 phần 10",
+    "Đúng, nhưng chỉ vì riêng oxygen đã hơn 9 phần 10",
+    "Đúng, vì tổng ba nguyên tố này là 93%, lớn hơn 90%"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Cộng hàm lượng ba nguyên tố đã cho: 65 + 18 + 10 = 93%, lớn hơn 90% (9 phần 10) nên kết luận đúng.\n\nVì sao các phương án khác sai:\n- A: 4% là hàm lượng của các nguyên tố khác, không phải tổng của ba nguyên tố đã cho.\n- B: Không cần cộng cả nitrogen; ba nguyên tố oxygen, carbon, hydrogen (93%) đã đủ vượt 90%.\n- C: Kết luận đúng nhưng lí do sai: riêng oxygen (65%) chưa tới 9 phần 10, phải cộng thêm carbon và hydrogen mới vượt.",
+   "de_goc": "Hạt Mầm · K07H010204-02-004"
+  },
+  {
+   "ma_cau": "K07000000008",
+   "loai": "trac_nghiem",
+   "de": "Không khí có nitrogen chiếm khoảng 78%, oxygen khoảng 21% thể tích, các khí khác khoảng 1%. Một bạn kết luận: 'Nitrogen và oxygen chiếm ít nhất 95% thể tích không khí.' Kết luận này",
+   "lua_chon": [
+    "Sai, vì các khí khác chỉ chiếm khoảng 1%, nhỏ hơn 95%",
+    "Đúng, vì tổng hai khí này là 99%, lớn hơn 95%",
+    "Sai, vì không thể cộng riêng phần trăm của hai khí khác nhau",
+    "Đúng, nhưng chỉ vì riêng nitrogen đã hơn 95%"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Cộng thể tích của nitrogen và oxygen: 78 + 21 = 99%, lớn hơn 95% nên kết luận đúng.\n\nVì sao các phương án khác sai:\n- A: 1% là phần các khí khác, không phải tổng của nitrogen và oxygen (phải cộng 78% và 21%).\n- C: Hoàn toàn cộng được phần trăm thể tích của hai khí khác nhau trong cùng một hỗn hợp.\n- D: Kết luận đúng nhưng lí do sai: riêng nitrogen (78%) chưa đạt 95%, phải cộng thêm oxygen mới đủ.",
+   "de_goc": "Hạt Mầm · K07H010204-02-005"
+  },
+  {
+   "ma_cau": "K07000000009",
+   "loai": "trac_nghiem",
+   "de": "Hàm lượng gần đúng trong khí quyển sao Hoả: carbon dioxide khoảng 95%, nitrogen khoảng 3%, argon khoảng 2%. Một bạn kết luận: 'Carbon dioxide và nitrogen chiếm ít nhất 97% khí quyển sao Hoả.'",
+   "lua_chon": [
+    "Sai, vì khí argon chỉ chiếm khoảng 2%, nhỏ hơn 97%",
+    "Đúng, vì tổng hai khí này là 98%, lớn hơn 97%",
+    "Sai, vì không thể cộng riêng phần trăm của hai khí khác nhau",
+    "Đúng, nhưng chỉ vì riêng carbon dioxide đã hơn 97%"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Cộng hàm lượng của carbon dioxide và nitrogen: 95% + 3% = 98%, lớn hơn 97% nên kết luận đúng.\n\nVì sao các phương án khác sai:\n- A: 2% là hàm lượng của argon, không phải tổng của carbon dioxide và nitrogen (phải cộng 95% và 3%).\n- C: Hoàn toàn cộng được phần trăm hàm lượng của hai khí khác nhau trong cùng một hỗn hợp.\n- D: Kết luận đúng nhưng lí do sai: riêng carbon dioxide (95%) chưa tới 97%, phải cộng thêm nitrogen mới đủ.",
+   "de_goc": "Hạt Mầm · K07H010204-02-007"
+  },
+  {
+   "ma_cau": "K07000000010",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử đồng (64 amu) nặng gấp bao nhiêu lần nguyên tử oxygen (16 amu)?",
+   "lua_chon": [
+    "4 lần",
+    "0,25 lần",
+    "48 lần",
+    "2 lần"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Lấy 64 : 16 = 4, nên nguyên tử đồng nặng gấp 4 lần nguyên tử oxygen.\n\nVì sao các phương án khác sai:\n- B: Em đã chia ngược; nguyên tử nặng hơn đặt ở trên: 64 : 16.\n- C: 48 là hiệu 64 − 16; so sánh gấp bao nhiêu lần phải dùng phép chia.\n- D: Em đã so với phân tử O₂ (32 amu), không phải nguyên tử O.",
+   "de_goc": "Hạt Mầm · K07H020102-01-003"
+  },
+  {
+   "ma_cau": "K07000000011",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử sulfur (32 amu) nặng gấp bao nhiêu lần nguyên tử oxygen (16 amu)?",
+   "lua_chon": [
+    "0,5 lần",
+    "16 lần",
+    "2 lần",
+    "1 lần"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Lấy 32 : 16 = 2, nên nguyên tử sulfur nặng gấp 2 lần nguyên tử oxygen.\n\nVì sao các phương án khác sai:\n- A: Em đã chia ngược; nguyên tử nặng hơn đặt ở trên: 32 : 16.\n- B: 16 là hiệu 32 − 16; so sánh gấp bao nhiêu lần phải dùng phép chia.\n- D: Em đã so với phân tử O₂ (32 amu), không phải nguyên tử O.",
+   "de_goc": "Hạt Mầm · K07H020102-01-004"
+  },
+  {
+   "ma_cau": "K07000000012",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử calcium (40 amu) nặng gấp bao nhiêu lần nguyên tử oxygen (16 amu)?",
+   "lua_chon": [
+    "0,4 lần",
+    "24 lần",
+    "2,5 lần",
+    "1,25 lần"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Lấy 40 : 16 = 2,5, nên nguyên tử calcium nặng gấp 2,5 lần nguyên tử oxygen.\n\nVì sao các phương án khác sai:\n- A: Em đã chia ngược; nguyên tử nặng hơn đặt ở trên: 40 : 16.\n- B: 24 là hiệu 40 − 16; so sánh gấp bao nhiêu lần phải dùng phép chia.\n- D: Em đã so với phân tử O₂ (32 amu), không phải nguyên tử O.",
+   "de_goc": "Hạt Mầm · K07H020102-01-005"
+  },
+  {
+   "ma_cau": "K07000000013",
+   "loai": "trac_nghiem",
+   "de": "Trong phân tử Na₂CO₃ (Na = 23, C = 12, O = 16), tỉ lệ khối lượng giữa sodium và oxygen là bao nhiêu?",
+   "lua_chon": [
+    "23 : 24",
+    "46 : 16",
+    "23 : 16",
+    "2 : 3"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Khối lượng Na = 2 × 23 = 46; khối lượng O = 3 × 16 = 48; tỉ lệ 46 : 48 = 23 : 24.\n\nVì sao các phương án khác sai:\n- B: Quên nhân chỉ số 3 của O; khối lượng O phải là 3 × 16 = 48.\n- C: Quên nhân cả chỉ số 2 của Na và chỉ số 3 của O.\n- D: Đó là tỉ lệ SỐ NGUYÊN TỬ (2 Na : 3 O), không phải tỉ lệ khối lượng.",
+   "de_goc": "Hạt Mầm · K07H020102-03-008"
+  },
+  {
+   "ma_cau": "K07000000014",
+   "loai": "trac_nghiem",
+   "de": "Trong phân tử CaCO₃ (Ca = 40, C = 12, O = 16), khối lượng oxygen chiếm bao nhiêu phần trăm khối lượng phân tử?",
+   "lua_chon": [
+    "16%",
+    "12%",
+    "40%",
+    "48%"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Khối lượng phân tử CaCO₃ = 100 amu; khối lượng oxygen = 3 × 16 = 48 amu; tỉ lệ = 48/100 = 48%.\n\nVì sao các phương án khác sai:\n- A: 16 chỉ là khối lượng của 1 nguyên tử O; phải nhân 3 rồi mới chia cho khối lượng phân tử.\n- B: 12% là tỉ lệ của carbon, không phải oxygen.\n- C: 40% là tỉ lệ của calcium, không phải oxygen.",
+   "de_goc": "Hạt Mầm · K07H020102-03-009"
+  },
+  {
+   "ma_cau": "K07000000015",
+   "loai": "trac_nghiem",
+   "de": "Phân tử XY có tổng số proton là 28; số proton của Y nhiều hơn của X là 6. Công thức của XY là",
+   "lua_chon": [
+    "CaO",
+    "NaCl",
+    "KF",
+    "MgS"
+   ],
+   "dap_an": "B",
+   "loi_giai": "pX + pY = 28 và pY − pX = 6 → pX = 11 (Na), pY = 17 (Cl) → NaCl.\n\nVì sao các phương án khác sai:\n- A: Tổng proton của CaO đúng 28 nhưng Ca nhiều hơn O tới 12 proton, không phải Y nhiều hơn X là 6.\n- C: Tổng proton của KF đúng 28 nhưng hiệu là 10 và K nhiều proton hơn F.\n- D: Tổng proton của MgS đúng 28 nhưng hiệu chỉ là 4.",
+   "de_goc": "Hạt Mầm · K07H020103-01-001"
+  },
+  {
+   "ma_cau": "K07000000016",
+   "loai": "trac_nghiem",
+   "de": "Phân tử XY có tổng số hạt mang điện là 40; số proton của X nhiều hơn của Y là 4. Công thức của XY là",
+   "lua_chon": [
+    "NaF",
+    "LiCl",
+    "CaO",
+    "MgO"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Hạt mang điện = 2 × số proton → pX + pY = 20; pX − pY = 4 → pX = 12 (Mg), pY = 8 (O) → MgO.\n\nVì sao các phương án khác sai:\n- A: Tổng proton của NaF đúng 20 nhưng hiệu chỉ là 2.\n- B: Tổng proton của LiCl đúng 20 nhưng Cl nhiều hơn Li tới 14 proton.\n- C: Tổng hạt mang điện của CaO là 2 × 28 = 56, không phải 40.",
+   "de_goc": "Hạt Mầm · K07H020103-01-002"
+  },
+  {
+   "ma_cau": "K07000000017",
+   "loai": "trac_nghiem",
+   "de": "Phân tử XY có tổng số hạt mang điện là 24; số proton của Y nhiều hơn của X là 6. Công thức của XY là",
+   "lua_chon": [
+    "LiF",
+    "BeO",
+    "NaF",
+    "LiCl"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Tổng mang điện 24 → tổng proton = 12. pY=pX+6 → 2pX+6=12 → pX=3 (Li), pY=9 (F) → LiF.\n\nVì sao các phương án khác sai:\n- B: Tổng proton đúng bằng 12 nhưng hiệu chỉ là 4, không khớp hiệu đề cho là 6.\n- C: Nhầm Li (Z=3) thành sodium (Z=11), không khớp tổng số proton.\n- D: Nhầm F (Z=9) thành chlorine (Z=17), không khớp tổng số proton.",
+   "de_goc": "Hạt Mầm · K07H020103-01-005"
+  },
+  {
+   "ma_cau": "K07000000018",
+   "loai": "trac_nghiem",
+   "de": "Phân tử XY₂ có tổng số proton là 22; số proton của Y nhiều hơn của X là 2. Số proton của X và Y lần lượt là",
+   "lua_chon": [
+    "10 và 12",
+    "8 và 6",
+    "6 và 16",
+    "6 và 8"
+   ],
+   "dap_an": "D",
+   "loi_giai": "pX + 2pY = 22 và pY = pX + 2 → 3pX + 4 = 22 → pX = 6 (C), pY = 8 (O); phân tử là CO₂.\n\nVì sao các phương án khác sai:\n- A: Em đã coi phân tử là XY (pX + pY = 22); phân tử có 2 nguyên tử Y nên pX + 2pY = 22.\n- B: Em đã đảo: Y nhiều proton hơn X.\n- C: 16 là tổng proton của 2 nguyên tử Y; mỗi nguyên tử Y chỉ có 8 proton.",
+   "de_goc": "Hạt Mầm · K07H020103-02-001"
+  },
+  {
+   "ma_cau": "K07000000019",
+   "loai": "trac_nghiem",
+   "de": "Phân tử XY₂ có tổng số proton là 46; số proton của Y nhiều hơn của X là 5. Công thức của XY₂ là",
+   "lua_chon": [
+    "CaCl₂",
+    "MgCl₂",
+    "MgF₂",
+    "CaF₂"
+   ],
+   "dap_an": "B",
+   "loi_giai": "pX + 2pY = 46 và pY = pX + 5 → 3pX + 10 = 46 → pX = 12 (Mg), pY = 17 (Cl) → MgCl₂.\n\nVì sao các phương án khác sai:\n- A: CaCl₂ có tổng proton 20 + 2 × 17 = 54, không phải 46.\n- C: MgF₂ có tổng proton 12 + 2 × 9 = 30, không phải 46.\n- D: CaF₂ có tổng proton 20 + 2 × 9 = 38 và F ít proton hơn Ca.",
+   "de_goc": "Hạt Mầm · K07H020103-02-002"
+  },
+  {
+   "ma_cau": "K07000000020",
+   "loai": "trac_nghiem",
+   "de": "Phân tử XY₂ có tổng số proton là 30; số proton của X nhiều hơn của Y là 3. Công thức của XY₂ là",
+   "lua_chon": [
+    "CaF₂",
+    "MgF₂",
+    "MgCl₂",
+    "CaCl₂"
+   ],
+   "dap_an": "B",
+   "loi_giai": "pX+2pY=30 và pX−pY=3 → pY=9 (F), pX=12 (Mg) → MgF₂.\n\nVì sao các phương án khác sai:\n- A: Nhầm X là calcium (Z=20), không khớp tổng số proton đề cho.\n- C: Nhầm Y là chlorine (Z=17) thay vì fluorine, không khớp tổng proton 30.\n- D: Nhầm cả hai nguyên tố sang calcium và chlorine, không khớp đề.",
+   "de_goc": "Hạt Mầm · K07H020103-02-005"
+  },
+  {
+   "ma_cau": "K07000000021",
+   "loai": "trac_nghiem",
+   "de": "Phân tử XY có tổng số hạt mang điện là 56; số hạt mang điện trong nguyên tử X nhiều hơn trong nguyên tử Y là 24. Công thức của XY là",
+   "lua_chon": [
+    "NaCl",
+    "KF",
+    "MgS",
+    "CaO"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Tổng proton = 56 : 2 = 28; hiệu proton = 24 : 2 = 12 → pX = 20 (Ca), pY = 8 (O) → CaO.\n\nVì sao các phương án khác sai:\n- A: NaCl có tổng hạt mang điện 56 nhưng Cl nhiều hạt mang điện hơn Na (hiệu 12).\n- B: KF có tổng hạt mang điện 56 nhưng hiệu hạt mang điện là 20.\n- C: MgS có tổng hạt mang điện 56 nhưng S nhiều hạt mang điện hơn Mg.",
+   "de_goc": "Hạt Mầm · K07H020103-03-001"
+  },
+  {
+   "ma_cau": "K07000000022",
+   "loai": "trac_nghiem",
+   "de": "Phân tử XY có tổng số hạt mang điện là 72; số hạt mang điện trong nguyên tử X nhiều hơn trong nguyên tử Y là 4. Công thức của XY là",
+   "lua_chon": [
+    "CaS",
+    "KCl",
+    "NaCl",
+    "KF"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Tổng proton = 72 : 2 = 36; hiệu proton = 4 : 2 = 2 → pX = 19 (K), pY = 17 (Cl) → KCl.\n\nVì sao các phương án khác sai:\n- A: Em đã coi 4 là hiệu số proton; hiệu hạt mang điện 4 ứng với hiệu proton chỉ là 2.\n- C: NaCl có tổng hạt mang điện 56, không phải 72.\n- D: KF có tổng hạt mang điện 56, không phải 72.",
+   "de_goc": "Hạt Mầm · K07H020103-03-002"
+  },
+  {
+   "ma_cau": "K07000000023",
+   "loai": "trac_nghiem",
+   "de": "Phân tử XY có tổng số hạt mang điện là 40; số hạt mang điện trong nguyên tử X nhiều hơn trong nguyên tử Y là 4. Công thức của XY là",
+   "lua_chon": [
+    "MgO",
+    "NaF",
+    "NaCl",
+    "CaO"
+   ],
+   "dap_an": "B",
+   "loi_giai": "2pX+2pY=40 → pX+pY=20; 2pX−2pY=4 → pX−pY=2. Giải hệ: pX=11 (Na), pY=9 (F) → NaF.\n\nVì sao các phương án khác sai:\n- A: Dùng trực tiếp hiệu số hạt mang điện (4) làm hiệu số proton, quên chia đôi.\n- C: Nhầm sang cặp nguyên tố quen thuộc, không giải hệ theo đúng số liệu đề.\n- D: Nhầm sang cặp nguyên tố quen thuộc khác, không khớp số liệu đề.",
+   "de_goc": "Hạt Mầm · K07H020103-03-005"
+  },
+  {
+   "ma_cau": "K07000000024",
+   "loai": "trac_nghiem",
+   "de": "Calcium chloride CaCl₂ được dùng làm chất hút ẩm và làm tan băng trên đường. Phần trăm khối lượng của calcium trong CaCl₂ là",
+   "lua_chon": [
+    "53,0%",
+    "64,0%",
+    "36,0%",
+    "33,3%"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Khối lượng phân tử = 40 + 35,5 × 2 = 111 amu; %Ca = 40 × 100 : 111 ≈ 36,0%.\n\nVì sao các phương án khác sai:\n- A: Quên nhân khối lượng Cl với chỉ số 2: 40 : 75,5.\n- B: 64,0% là phần trăm khối lượng của Cl, KHÔNG phải của Ca.\n- D: Tính theo số nguyên tử (1 trên 3), KHÔNG theo khối lượng.",
+   "de_goc": "Hạt Mầm · K07H020303-01-001"
+  },
+  {
+   "ma_cau": "K07000000025",
+   "loai": "trac_nghiem",
+   "de": "Khí methane CH₄ là thành phần chính của khí biogas. Carbon chiếm bao nhiêu phần trăm khối lượng phân tử methane?",
+   "lua_chon": [
+    "75%",
+    "20%",
+    "25%",
+    "92,3%"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Khối lượng phân tử = 12 + 1 × 4 = 16 amu; %C = 12 × 100 : 16 = 75%.\n\nVì sao các phương án khác sai:\n- B: Tính theo số nguyên tử (1 trên 5 nguyên tử), KHÔNG theo khối lượng.\n- C: 25% là phần trăm khối lượng của H.\n- D: Quên nhân khối lượng H với chỉ số 4: 12 : 13.",
+   "de_goc": "Hạt Mầm · K07H020303-01-003"
+  },
+  {
+   "ma_cau": "K07000000026",
+   "loai": "trac_nghiem",
+   "de": "Quặng hematite chứa Fe₂O₃, quặng magnetite chứa Fe₃O₄. Phần trăm khối lượng iron trong Fe₂O₃ và trong Fe₃O₄ lần lượt là",
+   "lua_chon": [
+    "35% và 24,1%",
+    "30% và 27,6%",
+    "70% và 77,8%",
+    "70% và 72,4%"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Fe₂O₃: 112 × 100 : 160 = 70%. Fe₃O₄: khối lượng phân tử = 56 × 3 + 16 × 4 = 232 amu, %Fe = 168 × 100 : 232 ≈ 72,4%.\n\nVì sao các phương án khác sai:\n- A: Quên nhân 56 với chỉ số của Fe ở tử số.\n- B: Đây là phần trăm khối lượng của O trong hai chất.\n- C: Tính Fe₃O₄ như FeO (72 amu), bỏ qua các chỉ số.",
+   "de_goc": "Hạt Mầm · K07H020303-01-005"
+  },
+  {
+   "ma_cau": "K07000000027",
+   "loai": "trac_nghiem",
+   "de": "Đá vôi có thành phần chính là calcium carbonate CaCO₃. Phần trăm khối lượng calcium trong CaCO₃ là",
+   "lua_chon": [
+    "40%",
+    "20%",
+    "58,8%",
+    "48%"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Khối lượng phân tử = 40 + 12 + 16 × 3 = 100 amu; %Ca = 40 × 100 : 100 = 40%.\n\nVì sao các phương án khác sai:\n- B: Tính theo số nguyên tử (1 trên 5), KHÔNG theo khối lượng.\n- C: Quên nhân khối lượng O với chỉ số 3: 40 : 68.\n- D: 48% là phần trăm khối lượng của O.",
+   "de_goc": "Hạt Mầm · K07H020303-02-001"
+  },
+  {
+   "ma_cau": "K07000000028",
+   "loai": "trac_nghiem",
+   "de": "Sodium hydroxide NaOH (xút) được dùng để sản xuất xà phòng. Trong NaOH, sodium chiếm bao nhiêu phần trăm khối lượng?",
+   "lua_chon": [
+    "33,3%",
+    "40%",
+    "57,5%",
+    "2,5%"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Khối lượng phân tử = 23 + 16 + 1 = 40 amu; %Na = 23 × 100 : 40 = 57,5%.\n\nVì sao các phương án khác sai:\n- A: Tính theo số nguyên tử (1 trên 3), KHÔNG theo khối lượng.\n- B: 40% là phần trăm khối lượng của O.\n- D: 2,5% là phần trăm khối lượng của H.",
+   "de_goc": "Hạt Mầm · K07H020303-02-003"
+  },
+  {
+   "ma_cau": "K07000000029",
+   "loai": "trac_nghiem",
+   "de": "Kim loại M có hóa trị II tạo oxide, trong đó M chiếm 77,8% khối lượng. M là",
+   "lua_chon": [
+    "Calcium",
+    "Iron",
+    "Copper",
+    "Zinc"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Oxide hóa trị II có dạng MO. %M = M/(M+16) = 77,8% → M ≈ 56 → iron (FeO).\n\nVì sao các phương án khác sai:\n- A: Oxide của calcium (CaO) có %Ca ≈ 71,4%, không khớp đề.\n- C: Oxide của copper (CuO) có %Cu = 80%, không khớp đề.\n- D: Oxide của zinc (ZnO) có %Zn ≈ 80,2%, không khớp đề.",
+   "de_goc": "Hạt Mầm · K07H020305-03-005"
+  },
+  {
+   "ma_cau": "K07000000030",
+   "loai": "trac_nghiem",
+   "de": "Kim loại M có hóa trị II tạo oxide, trong đó oxygen chiếm 40% khối lượng. M là",
+   "lua_chon": [
+    "magnesium",
+    "calcium",
+    "copper",
+    "iron"
+   ],
+   "dap_an": "A",
+   "loi_giai": "M hóa trị II nên oxide là MO; 16 amu ứng với 40% nên khối lượng phân tử = 16 × 100 : 40 = 40 amu; M = 40 − 16 = 24, là magnesium.\n\nVì sao các phương án khác sai:\n- B: 40 amu là khối lượng phân tử MO, chưa trừ 16 amu của O.\n- C: CuO có oxygen chiếm 20% khối lượng, KHÔNG phải 40%.\n- D: FeO có oxygen chiếm khoảng 22,2% khối lượng, KHÔNG phải 40%.",
+   "de_goc": "Hạt Mầm · K07H020305-03-001"
+  },
+  {
+   "ma_cau": "K07000000031",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tố M có hóa trị II tạo hợp chất với chlorine (hóa trị I), trong đó chlorine chiếm 74,7% khối lượng. M là",
+   "lua_chon": [
+    "carbon",
+    "magnesium",
+    "calcium",
+    "zinc"
+   ],
+   "dap_an": "B",
+   "loi_giai": "M hóa trị II nên công thức MCl₂; 71 amu Cl ứng với 74,7% nên khối lượng phân tử = 71 × 100 : 74,7 ≈ 95 amu; M = 95 − 71 = 24, là magnesium.\n\nVì sao các phương án khác sai:\n- A: Viết nhầm công thức MCl (quên chỉ số 2 của Cl) nên tính ra 12 amu.\n- C: CaCl₂ có chlorine chiếm khoảng 64,0%, KHÔNG phải 74,7%.\n- D: ZnCl₂ có chlorine chiếm khoảng 52,2%, KHÔNG phải 74,7%.",
+   "de_goc": "Hạt Mầm · K07H020305-03-004"
+  },
+  {
+   "ma_cau": "K07000000032",
+   "loai": "trac_nghiem",
+   "de": "Nhóm Hà đo thời gian xe lăn hết quãng đường 1,8 m. Ba lần đo được 2,9 s; 3,0 s; 3,1 s. Tốc độ của xe là",
+   "lua_chon": [
+    "0,2 m/s",
+    "0,6 m/s",
+    "5,4 m/s",
+    "0,6 km/h"
+   ],
+   "dap_an": "B",
+   "loi_giai": "t trung bình = (2,9 + 3,0 + 3,1) : 3 = 3,0 s; v = 1,8 : 3,0 = 0,6 m/s.\n\nVì sao các phương án khác sai:\n- A: Đã chia cho tổng thời gian 9 s; phải dùng thời gian trung bình 3,0 s.\n- C: Đã nhân s với t; phải lấy s chia t.\n- D: s tính bằng m, t tính bằng s nên đơn vị là m/s.",
+   "de_goc": "Hạt Mầm · K07L030103-03-001"
+  },
+  {
+   "ma_cau": "K07000000033",
+   "loai": "trac_nghiem",
+   "de": "Hai cổng quang điện đặt cách nhau 0,5 m. Ba lần đo thời gian viên bi đi giữa hai cổng được 0,26 s; 0,25 s; 0,24 s. Tốc độ của viên bi là",
+   "lua_chon": [
+    "0,125 m/s",
+    "0,5 m/s",
+    "2 km/h",
+    "2 m/s"
+   ],
+   "dap_an": "D",
+   "loi_giai": "t trung bình = (0,26 + 0,25 + 0,24) : 3 = 0,25 s; v = 0,5 : 0,25 = 2 m/s.\n\nVì sao các phương án khác sai:\n- A: Đã nhân s với t; phải lấy s chia t.\n- B: Đã lấy t chia s (0,25 : 0,5); phải lấy s chia t.\n- C: s tính bằng m, t tính bằng s nên đơn vị là m/s.",
+   "de_goc": "Hạt Mầm · K07L030103-03-002"
+  },
+  {
+   "ma_cau": "K07000000034",
+   "loai": "trac_nghiem",
+   "de": "Đo 4 lần thời gian xe lăn đi hết quãng đường 1,2 m được: 2,9 s; 3,0 s; 3,1 s; 5,0 s (lần đo bị bấm muộn). Tốc độ của xe (sau khi loại bỏ số liệu bất thường) là",
+   "lua_chon": [
+    "0,3 m/s",
+    "0,4 m/s",
+    "0,24 m/s",
+    "3,0 m/s"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Loại bỏ 5,0 s vì lệch hẳn so với ba lần đo còn lại; trung bình ba lần hợp lí (2,9+3,0+3,1):3 = 3,0 s; v = 1,2 : 3,0 = 0,4 m/s.\n\nVì sao các phương án khác sai:\n- A: 0,3 m/s là do lấy trung bình cả 4 lần đo, kể cả số liệu bất thường 5,0 s.\n- C: 0,24 m/s là do dùng luôn thời gian bị bấm muộn 5,0 s để tính tốc độ.\n- D: 3,0 m/s là do nhầm giá trị thời gian trung bình với giá trị tốc độ.",
+   "de_goc": "Hạt Mầm · K07L030103-03-004"
+  },
+  {
+   "ma_cau": "K07000000035",
+   "loai": "trac_nghiem",
+   "de": "Ba lần đo thời gian một viên bi lăn hết quãng đường 60 cm được 1,9 s; 2,0 s; 2,1 s. Tốc độ trung bình của viên bi (theo đơn vị m/s) là",
+   "lua_chon": [
+    "30 m/s",
+    "3 m/s",
+    "0,3 m/s",
+    "0,03 m/s"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Trung bình thời gian (1,9+2,0+2,1):3 = 2,0 s; đổi 60 cm = 0,6 m; v = 0,6 : 2,0 = 0,3 m/s.\n\nVì sao các phương án khác sai:\n- A: 30 m/s là do quên đổi 60 cm sang mét, lấy luôn 60 : 2,0.\n- B: 3 m/s là do đổi 60 cm thành 6 m rồi tính, sai quy tắc đổi đơn vị (1 m = 100 cm).\n- D: 0,03 m/s là do đổi sai đơn vị, coi 60 cm bằng 0,06 m.",
+   "de_goc": "Hạt Mầm · K07L030103-03-005"
+  },
+  {
+   "ma_cau": "K07000000036",
+   "loai": "trac_nghiem",
+   "de": "Hai xe xuất phát cùng lúc từ A và B cách nhau 120 km, chạy ngược chiều về phía nhau với tốc độ 40 km/h và 20 km/h. Sau bao lâu hai xe gặp nhau?",
+   "lua_chon": [
+    "6 h",
+    "4 h",
+    "2 h",
+    "3 h"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Mỗi giờ khoảng cách giảm 40 + 20 = 60 km, nên t = 120 : 60 = 2 h.\n\nVì sao các phương án khác sai:\n- A: Đã dùng hiệu tốc độ 40 − 20; ngược chiều phải dùng tổng tốc độ.\n- B: Đã dùng trung bình cộng hai tốc độ (30 km/h).\n- D: Chỉ tính cho xe 40 km/h; cả hai xe cùng rút ngắn khoảng cách.",
+   "de_goc": "Hạt Mầm · K07L030104-01-001"
+  },
+  {
+   "ma_cau": "K07000000037",
+   "loai": "trac_nghiem",
+   "de": "Hai xe khởi hành cùng lúc từ A và B cách nhau 180 km, đi ngược chiều về phía nhau. Xe từ A chạy 50 km/h, xe từ B chạy 40 km/h. Chỗ gặp nhau cách A bao xa?",
+   "lua_chon": [
+    "90 km",
+    "100 km",
+    "80 km",
+    "50 km"
+   ],
+   "dap_an": "B",
+   "loi_giai": "t = 180 : (50 + 40) = 2 h; chỗ gặp cách A: 50 × 2 = 100 km.\n\nVì sao các phương án khác sai:\n- A: Đã cho rằng hai xe gặp nhau ở chính giữa AB; xe từ A nhanh hơn nên đi xa hơn.\n- C: Đây là khoảng cách từ chỗ gặp đến B.\n- D: Đã lấy số đo tốc độ làm quãng đường, quên nhân với thời gian 2 h.",
+   "de_goc": "Hạt Mầm · K07L030104-01-002"
+  },
+  {
+   "ma_cau": "K07000000038",
+   "loai": "trac_nghiem",
+   "de": "Lúc 7 h, một xe máy đi từ A về B với tốc độ 30 km/h. Cùng lúc, một ô tô đi từ B về A với tốc độ 45 km/h. Biết AB = 150 km. Hai xe gặp nhau lúc mấy giờ?",
+   "lua_chon": [
+    "17 h",
+    "11 h",
+    "2 h",
+    "9 h"
+   ],
+   "dap_an": "D",
+   "loi_giai": "t = 150 : (30 + 45) = 2 h; hai xe gặp nhau lúc 7 h + 2 h = 9 h.\n\nVì sao các phương án khác sai:\n- A: Đã dùng hiệu tốc độ 15 km/h, được 10 h.\n- B: Đã dùng trung bình cộng 37,5 km/h, được 4 h.\n- C: Đây là thời gian đi đến lúc gặp, chưa cộng với 7 h.",
+   "de_goc": "Hạt Mầm · K07L030104-01-004"
+  },
+  {
+   "ma_cau": "K07000000039",
+   "loai": "trac_nghiem",
+   "de": "Hai xe xuất phát cùng lúc, chạy ngược chiều từ hai điểm cách nhau 210 km, tốc độ 35 km/h và 40 km/h. Chỗ gặp nhau cách điểm xuất phát của xe chạy 35 km/h bao xa?",
+   "lua_chon": [
+    "112 km",
+    "105 km",
+    "84 km",
+    "98 km"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Thời gian gặp nhau = 210/(35+40) = 2,8 h. Quãng đường xe 35 km/h đi được = 35×2,8 = 98 km.\n\nVì sao các phương án khác sai:\n- A: Nhầm lấy quãng đường của xe kia.\n- B: Chia đôi tổng quãng đường (giả sử gặp ở chính giữa).\n- C: Tính nhầm thời gian rồi nhân sai tốc độ.",
+   "de_goc": "Hạt Mầm · K07L030104-01-007"
+  },
+  {
+   "ma_cau": "K07000000040",
+   "loai": "trac_nghiem",
+   "de": "Cùng lúc, ô tô xuất phát từ A với tốc độ 60 km/h, xe máy xuất phát từ B với tốc độ 40 km/h; cả hai chạy cùng chiều theo hướng từ A đến B. Biết AB = 60 km. Sau bao lâu ô tô đuổi kịp xe máy?",
+   "lua_chon": [
+    "3 h",
+    "0,6 h",
+    "1 h",
+    "1,2 h"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Mỗi giờ ô tô rút ngắn khoảng cách 60 − 40 = 20 km, nên t = 60 : 20 = 3 h.\n\nVì sao các phương án khác sai:\n- B: Đã dùng tổng tốc độ 100 km/h; cùng chiều phải dùng hiệu.\n- C: Chỉ tính cho ô tô; xe máy cũng đang chạy ra xa.\n- D: Đã dùng trung bình cộng 50 km/h.",
+   "de_goc": "Hạt Mầm · K07L030104-02-001"
+  },
+  {
+   "ma_cau": "K07000000041",
+   "loai": "trac_nghiem",
+   "de": "Một xe đạp chạy với tốc độ 12 km/h. Cùng lúc, một xe máy ở phía sau, cách xe đạp 24 km, chạy cùng chiều với tốc độ 36 km/h. Chỗ xe máy đuổi kịp xe đạp cách vị trí ban đầu của xe máy bao xa?",
+   "lua_chon": [
+    "18 km",
+    "12 km",
+    "36 km",
+    "24 km"
+   ],
+   "dap_an": "C",
+   "loi_giai": "t = 24 : (36 − 12) = 1 h; xe máy đi được 36 × 1 = 36 km.\n\nVì sao các phương án khác sai:\n- A: Đã dùng tổng tốc độ 48 km/h, được 0,5 h.\n- B: Đây là quãng đường xe đạp đi được, chưa cộng 24 km.\n- D: Đây là khoảng cách ban đầu giữa hai xe.",
+   "de_goc": "Hạt Mầm · K07L030104-02-002"
+  },
+  {
+   "ma_cau": "K07000000042",
+   "loai": "trac_nghiem",
+   "de": "Lúc 6 h, một người đi bộ từ bến xe với tốc độ 5 km/h. Lúc 8 h, một người đi xe đạp từ bến xe đuổi theo cùng chiều với tốc độ 15 km/h. Người đi xe đạp đuổi kịp người đi bộ lúc mấy giờ?",
+   "lua_chon": [
+    "8 h 30 phút",
+    "7 h",
+    "10 h",
+    "9 h"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Lúc 8 h người đi bộ đã đi 5 × 2 = 10 km; t = 10 : (15 − 5) = 1 h; đuổi kịp lúc 9 h.\n\nVì sao các phương án khác sai:\n- A: Đã dùng tổng tốc độ 20 km/h; cùng chiều phải dùng hiệu.\n- B: Đã cộng 1 h vào 6 h thay vì vào 8 h.\n- C: Đã chia 10 km cho tốc độ người đi bộ 5 km/h.",
+   "de_goc": "Hạt Mầm · K07L030104-02-004"
+  },
+  {
+   "ma_cau": "K07000000043",
+   "loai": "trac_nghiem",
+   "de": "Ô tô A chạy với tốc độ 54 km/h. Cùng lúc, xe máy B ở phía trước A 3 km chạy cùng chiều với tốc độ 10 m/s. Sau bao lâu ô tô đuổi kịp xe máy?",
+   "lua_chon": [
+    "2 phút",
+    "10 phút",
+    "6 phút",
+    "4 phút"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Đổi 10 m/s = 36 km/h; mỗi giờ ô tô rút ngắn 54 − 36 = 18 km; t = 3 : 18 = 1/6 h = 10 phút.\n\nVì sao các phương án khác sai:\n- A: Đã dùng tổng tốc độ 90 km/h; cùng chiều phải dùng hiệu.\n- C: Đã hiểu nhầm 1/6 h là 6 phút; 1/6 h = 10 phút.\n- D: Đã chia 3 km cho trung bình cộng 45 km/h.",
+   "de_goc": "Hạt Mầm · K07L030104-02-006"
+  },
+  {
+   "ma_cau": "K07000000044",
+   "loai": "trac_nghiem",
+   "de": "Bạn Nam đạp xe từ nhà tới trường với tốc độ 15 km/h. Cùng lúc, bạn Hoa đi bộ cùng chiều trên đường đó, xuất phát trước Nam 3 km với tốc độ 5 km/h. Sau bao lâu Nam đuổi kịp Hoa?",
+   "lua_chon": [
+    "0,5 h",
+    "0,3 h",
+    "0,2 h",
+    "1,5 h"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Hiệu tốc độ = 15−5 = 10 km/h. Thời gian đuổi kịp = 3/10 = 0,3 h.\n\nVì sao các phương án khác sai:\n- A: Tính nhầm hiệu tốc độ (dùng 6 km/h thay vì 10 km/h).\n- C: Chia ngược, lấy hiệu tốc độ chia cho quãng đường.\n- D: Quên trừ tốc độ, lấy quãng đường chia tốc độ chậm hơn.",
+   "de_goc": "Hạt Mầm · K07L030104-02-007"
+  },
+  {
+   "ma_cau": "K07000000045",
+   "loai": "trac_nghiem",
+   "de": "Hai xe máy chạy cùng chiều trên một đường thẳng, xuất phát cùng lúc. Xe A chạy 45 km/h, xe B chạy 30 km/h và xuất phát trước xe A một đoạn. Biết sau 40 phút xe A đuổi kịp xe B. Khoảng cách ban đầu giữa hai xe là bao nhiêu?",
+   "lua_chon": [
+    "30 km",
+    "6,67 km",
+    "10 km",
+    "22,5 km"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Hiệu tốc độ = 45−30 = 15 km/h. Đổi 40 phút = 2/3 h. Khoảng cách ban đầu = 15×2/3 = 10 km.\n\nVì sao các phương án khác sai:\n- A: Nhầm lấy tốc độ xe B nhân với thời gian.\n- B: Tính ngược, lấy thời gian chia cho hiệu tốc độ.\n- D: Nhầm lấy tốc độ xe A nhân với thời gian.",
+   "de_goc": "Hạt Mầm · K07L030104-02-008"
+  },
+  {
+   "ma_cau": "K07000000046",
+   "loai": "trac_nghiem",
+   "de": "Trên đường có biển báo hình tròn, viền đỏ, nền trắng, ở giữa ghi số 60. Biển này cho biết điều gì?",
+   "lua_chon": [
+    "Tốc độ tối thiểu cho phép là 60 km/h",
+    "Tốc độ tối đa cho phép là 60 km/h",
+    "Khoảng cách tối thiểu giữa hai xe là 60 m",
+    "Còn 60 km nữa đến thành phố"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Biển tròn, viền đỏ, nền trắng, có số là biển tốc độ tối đa cho phép: xe chỉ được chạy không quá 60 km/h.\n\nVì sao các phương án khác sai:\n- A: Biển tròn viền đỏ nền trắng báo tốc độ tối đa; biển tốc độ tối thiểu có nền xanh.\n- C: Số trên biển tốc độ chỉ tốc độ (km/h), không chỉ khoảng cách giữa hai xe.\n- D: Biển tròn viền đỏ là biển hạn chế tốc độ, không phải biển chỉ dẫn quãng đường.",
+   "de_goc": "Hạt Mầm · K07L030301-01-001"
+  },
+  {
+   "ma_cau": "K07000000047",
+   "loai": "trac_nghiem",
+   "de": "Trên đường có biển báo hình tròn, nền xanh, ở giữa ghi số 30 màu trắng. Biển này cho biết điều gì?",
+   "lua_chon": [
+    "Tốc độ tối đa cho phép là 30 km/h",
+    "Khoảng cách tối thiểu giữa hai xe là 30 m",
+    "Tốc độ trung bình của xe là 30 km/h",
+    "Tốc độ tối thiểu cho phép là 30 km/h"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Biển tròn, nền xanh, có số màu trắng là biển tốc độ tối thiểu: xe phải chạy với tốc độ ít nhất 30 km/h.\n\nVì sao các phương án khác sai:\n- A: Biển tốc độ tối đa có viền đỏ, nền trắng; biển tròn nền xanh ghi số là tốc độ tối thiểu.\n- B: Số trên biển tốc độ chỉ tốc độ (km/h), không chỉ khoảng cách giữa hai xe.\n- C: Biển báo đặt giới hạn tốc độ, không cho biết tốc độ trung bình của xe.",
+   "de_goc": "Hạt Mầm · K07L030301-01-002"
+  },
+  {
+   "ma_cau": "K07000000048",
+   "loai": "trac_nghiem",
+   "de": "Muốn báo cho người lái xe biết tốc độ tối đa cho phép trên một đoạn đường, người ta đặt loại biển nào?",
+   "lua_chon": [
+    "Biển tròn, viền đỏ, nền trắng, ghi số",
+    "Biển tròn, nền xanh, ghi số màu trắng",
+    "Biển tam giác, viền đỏ, nền vàng",
+    "Biển chữ nhật, nền xanh, ghi tên địa danh"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Tốc độ tối đa cho phép được báo bằng biển tròn, viền đỏ, nền trắng, ở giữa ghi số tốc độ tính bằng km/h.\n\nVì sao các phương án khác sai:\n- B: Đây là biển tốc độ tối thiểu, không phải tốc độ tối đa.\n- C: Biển tam giác viền đỏ nền vàng là biển cảnh báo nguy hiểm.\n- D: Biển chữ nhật nền xanh là biển chỉ dẫn, không báo tốc độ tối đa.",
+   "de_goc": "Hạt Mầm · K07L030301-01-003"
+  },
+  {
+   "ma_cau": "K07000000049",
+   "loai": "trac_nghiem",
+   "de": "Biển báo hình tròn, nền xanh, ghi số 40 màu trắng có ý nghĩa gì?",
+   "lua_chon": [
+    "Tốc độ tối đa cho phép là 40 km/h",
+    "Tốc độ tối thiểu cho phép là 40 km/h",
+    "Khoảng cách an toàn tối thiểu là 40 m",
+    "Là gợi ý, không bắt buộc phải tuân theo"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Biển tròn nền xanh ghi số là biển hiệu lệnh tốc độ tối thiểu: xe phải chạy từ tốc độ ghi trên biển trở lên.\n\nVì sao các phương án khác sai:\n- A: Sai: biển tốc độ tối đa có viền đỏ, nền trắng, không phải nền xanh.\n- C: Sai: biển này quy định tốc độ, không quy định khoảng cách an toàn.\n- D: Sai: biển hiệu lệnh hình tròn nền xanh là bắt buộc phải tuân theo, không phải chỉ là gợi ý.",
+   "de_goc": "Hạt Mầm · K07L030301-01-004"
+  },
+  {
+   "ma_cau": "K07000000050",
+   "loai": "trac_nghiem",
+   "de": "Biển báo hình tròn, viền đỏ, nền trắng, ghi số 50 có ý nghĩa gì?",
+   "lua_chon": [
+    "Tốc độ tối thiểu cho phép là 50 km/h",
+    "Khoảng cách an toàn tối thiểu là 50 m",
+    "Tốc độ tối đa cho phép là 50 km/h",
+    "Là biển cảnh báo, tài xế tự quyết định tốc độ"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Biển tròn viền đỏ, nền trắng, ghi số là biển báo cấm: quy định tốc độ tối đa xe được phép chạy.\n\nVì sao các phương án khác sai:\n- A: Sai: biển tốc độ tối thiểu có nền xanh, không phải viền đỏ nền trắng.\n- B: Sai: biển này quy định tốc độ, không phải khoảng cách an toàn.\n- D: Sai: biển tròn viền đỏ nền trắng ghi số là biển báo cấm, bắt buộc tuân theo, không phải biển cảnh báo.",
+   "de_goc": "Hạt Mầm · K07L030301-01-005"
+  },
+  {
+   "ma_cau": "K07000000051",
+   "loai": "trac_nghiem",
+   "de": "Muốn quy định tốc độ TỐI THIỂU trên một đoạn đường cao tốc, người ta đặt loại biển nào?",
+   "lua_chon": [
+    "Biển tròn, nền xanh, ghi số màu trắng",
+    "Biển tròn, viền đỏ, nền trắng, ghi số",
+    "Biển tam giác, viền đỏ, nền vàng",
+    "Biển chữ nhật, nền xanh, ghi tên địa danh"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Tốc độ tối thiểu được báo bằng biển tròn, nền xanh, ghi số màu trắng; xe phải chạy từ tốc độ đó trở lên.\n\nVì sao các phương án khác sai:\n- B: Biển tròn viền đỏ, nền trắng dùng để báo tốc độ tối đa, không phải tối thiểu.\n- C: Biển tam giác viền đỏ, nền vàng là biển báo nguy hiểm, không dùng để quy định tốc độ.\n- D: Biển chữ nhật nền xanh ghi tên địa danh là biển chỉ dẫn, không quy định tốc độ.",
+   "de_goc": "Hạt Mầm · K07L030301-01-009"
+  },
+  {
+   "ma_cau": "K07000000052",
+   "loai": "trac_nghiem",
+   "de": "Con số ghi trên biển báo giới hạn tốc độ đường bộ ở Việt Nam tính theo đơn vị nào?",
+   "lua_chon": [
+    "m/s",
+    "km/h",
+    "dặm/giờ (mph)",
+    "km/phút"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Biển báo giới hạn tốc độ đường bộ ở Việt Nam ghi tốc độ theo đơn vị km/h (kilômét trên giờ).\n\nVì sao các phương án khác sai:\n- A: m/s là đơn vị thường dùng trong vật lí, không phải đơn vị ghi trên biển báo giao thông đường bộ.\n- C: Dặm/giờ (mph) là đơn vị dùng ở một số nước khác, không dùng ở Việt Nam.\n- D: km/phút không phải đơn vị tốc độ dùng trên biển báo giao thông.",
+   "de_goc": "Hạt Mầm · K07L030301-01-010"
+  },
+  {
+   "ma_cau": "K07000000053",
+   "loai": "trac_nghiem",
+   "de": "Đoạn đường có biển tròn, viền đỏ, nền trắng ghi số 60. Máy đo tốc độ ghi được tốc độ của bốn ô tô. Ô tô nào chạy quá tốc độ cho phép?",
+   "lua_chon": [
+    "Ô tô chạy 55 km/h",
+    "Ô tô chạy 60 km/h",
+    "Ô tô chạy 68 km/h",
+    "Ô tô chạy 40 km/h"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Biển tròn viền đỏ nền trắng ghi 60 là tốc độ tối đa 60 km/h; chỉ ô tô chạy 68 km/h vượt quá 60 km/h.\n\nVì sao các phương án khác sai:\n- A: 55 km/h nhỏ hơn 60 km/h nên đúng quy định.\n- B: Chạy đúng 60 km/h là chưa vượt tốc độ tối đa cho phép.\n- D: Biển này chỉ giới hạn tốc độ tối đa; chạy 40 km/h không vi phạm.",
+   "de_goc": "Hạt Mầm · K07L030301-01-007"
+  },
+  {
+   "ma_cau": "K07000000054",
+   "loai": "trac_nghiem",
+   "de": "Một đoạn cao tốc có biển tròn nền xanh ghi số 60 và biển tròn, viền đỏ, nền trắng ghi số 120. Ô tô nào sau đây vi phạm quy định tốc độ?",
+   "lua_chon": [
+    "Ô tô chạy 60 km/h",
+    "Ô tô chạy 120 km/h",
+    "Ô tô chạy 90 km/h",
+    "Ô tô chạy 55 km/h"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Trên đoạn này xe phải chạy từ 60 km/h đến 120 km/h. Ô tô chạy 55 km/h chậm hơn tốc độ tối thiểu nên vi phạm.\n\nVì sao các phương án khác sai:\n- A: Chạy đúng 60 km/h là đạt tốc độ tối thiểu nên đúng quy định.\n- B: Chạy đúng 120 km/h là chưa vượt tốc độ tối đa nên đúng quy định.\n- C: 90 km/h nằm trong khoảng từ 60 km/h đến 120 km/h nên đúng quy định.",
+   "de_goc": "Hạt Mầm · K07L030301-01-008"
+  },
+  {
+   "ma_cau": "K07000000055",
+   "loai": "trac_nghiem",
+   "de": "Nhìn thấy đồng thời hai biển tròn: một biển nền xanh ghi 50, một biển viền đỏ nền trắng ghi 90 trên cùng đoạn đường. Tốc độ hợp lệ của xe nằm trong khoảng nào?",
+   "lua_chon": [
+    "Trên 90 km/h",
+    "Dưới 50 km/h",
+    "Từ 50 km/h đến 90 km/h",
+    "Đúng bằng 50 km/h hoặc đúng bằng 90 km/h"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Biển nền xanh ghi tốc độ tối thiểu (50 km/h), biển viền đỏ nền trắng ghi tốc độ tối đa (90 km/h); xe phải chạy trong khoảng từ 50 km/h đến 90 km/h.\n\nVì sao các phương án khác sai:\n- A: Trên 90 km/h là vượt quá tốc độ tối đa cho phép, vi phạm biển viền đỏ.\n- B: Dưới 50 km/h là chưa đạt tốc độ tối thiểu, vi phạm biển nền xanh.\n- D: Tốc độ hợp lệ là cả một khoảng từ 50 đến 90 km/h, không chỉ đúng hai giá trị biên.",
+   "de_goc": "Hạt Mầm · K07L030301-01-011"
+  },
+  {
+   "ma_cau": "K07000000056",
+   "loai": "trac_nghiem",
+   "de": "Biển tròn, viền đỏ, nền trắng ghi số 50. Một ô tô chạy đúng 50 km/h. Ô tô này có vi phạm giới hạn tốc độ không?",
+   "lua_chon": [
+    "Có, vì đã đạt mức tối đa cho phép",
+    "Có, vì phải chạy chậm hơn mức ghi trên biển",
+    "Không, vì biển này không bắt buộc phải tuân theo",
+    "Không, vì tốc độ không vượt quá 50 km/h"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Biển ghi tốc độ tối đa cho phép là 50 km/h, nghĩa là xe được chạy đến 50 km/h; chạy đúng 50 km/h là không vượt quá nên không vi phạm.\n\nVì sao các phương án khác sai:\n- A: Đạt đúng mức tối đa cho phép vẫn là hợp lệ, không phải vi phạm.\n- B: Biển tốc độ tối đa cho phép chạy đến đúng mức ghi trên biển, không bắt buộc phải chậm hơn.\n- C: Biển báo hiệu lệnh tốc độ là biển bắt buộc phải tuân theo, không phải biển gợi ý.",
+   "de_goc": "Hạt Mầm · K07L030301-01-012"
+  },
+  {
+   "ma_cau": "K07000000057",
+   "loai": "trac_nghiem",
+   "de": "Người lái xe phải giữ khoảng cách an toàn với xe chạy liền trước. Khoảng cách này cần đủ để làm gì?",
+   "lua_chon": [
+    "Dễ dàng vượt lên xe phía trước",
+    "Đọc rõ biển số xe phía trước",
+    "Kịp phanh dừng khi xe trước dừng đột ngột",
+    "Tránh bụi và khói của xe phía trước"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Khoảng cách an toàn giúp người lái đủ thời gian và quãng đường để phản ứng, phanh dừng, không đâm vào xe trước khi xe đó dừng đột ngột.\n\nVì sao các phương án khác sai:\n- A: Giữ khoảng cách nhằm tránh đâm vào xe trước, không nhằm vượt xe.\n- B: Nhìn biển số không phải mục đích; khoảng cách để kịp dừng xe an toàn.\n- D: Mục đích của khoảng cách an toàn là kịp dừng, tránh va chạm, không phải tránh bụi.",
+   "de_goc": "Hạt Mầm · K07L030301-02-001"
+  },
+  {
+   "ma_cau": "K07000000058",
+   "loai": "trac_nghiem",
+   "de": "Bảng quy định khoảng cách an toàn tối thiểu giữa hai ô tô chia các mức khoảng cách theo đại lượng nào?",
+   "lua_chon": [
+    "Tốc độ của xe",
+    "Chiều dài của xe",
+    "Số người ngồi trên xe",
+    "Độ rộng của mặt đường"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Bảng quy định chia theo tốc độ xe chạy: tốc độ càng lớn thì khoảng cách an toàn tối thiểu càng lớn.\n\nVì sao các phương án khác sai:\n- B: Bảng ghi khoảng cách theo tốc độ xe chạy, không theo chiều dài xe.\n- C: Số người trên xe không phải căn cứ của bảng; bảng xếp theo tốc độ.\n- D: Bảng xếp theo tốc độ xe chạy, không theo độ rộng mặt đường.",
+   "de_goc": "Hạt Mầm · K07L030301-02-003"
+  },
+  {
+   "ma_cau": "K07000000059",
+   "loai": "trac_nghiem",
+   "de": "Các số trong bảng khoảng cách an toàn tối thiểu được dùng khi đường và thời tiết như thế nào?",
+   "lua_chon": [
+    "Trời mưa, mặt đường trơn trượt",
+    "Đường khô ráo, tầm nhìn tốt",
+    "Có sương mù dày đặc",
+    "Đường đèo dốc, quanh co"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Số trong bảng dùng khi đường khô ráo, tầm nhìn tốt; khi mưa, sương mù, đường trơn hoặc đèo dốc, người lái phải giữ khoảng cách lớn hơn số trong bảng.\n\nVì sao các phương án khác sai:\n- A: Khi mưa, đường trơn, xe khó dừng nên phải giữ khoảng cách lớn hơn số trong bảng.\n- C: Sương mù làm tầm nhìn hạn chế nên phải giữ khoảng cách lớn hơn số trong bảng.\n- D: Đường đèo dốc, quanh co khó xử lí nên phải giữ khoảng cách lớn hơn số trong bảng.",
+   "de_goc": "Hạt Mầm · K07L030301-02-004"
+  },
+  {
+   "ma_cau": "K07000000060",
+   "loai": "trac_nghiem",
+   "de": "Khi lái xe vào ban đêm hoặc lúc sương mù, người lái cần giữ khoảng cách với xe trước như thế nào so với bảng quy định?",
+   "lua_chon": [
+    "Lớn hơn số trong bảng",
+    "Nhỏ hơn số trong bảng",
+    "Đúng bằng số trong bảng",
+    "Không cần quan tâm đến bảng quy định"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Ban đêm, sương mù làm tầm nhìn hạn chế, người lái cần giữ khoảng cách lớn hơn số ghi trong bảng để có đủ thời gian và quãng đường xử lí tình huống.\n\nVì sao các phương án khác sai:\n- B: Giữ khoảng cách nhỏ hơn sẽ càng nguy hiểm khi tầm nhìn đã hạn chế.\n- C: Bảng quy định áp dụng cho điều kiện bình thường (đường khô, tầm nhìn tốt), không phù hợp khi tầm nhìn hạn chế.\n- D: Bảng quy định vẫn là mức tối thiểu cần biết, chỉ là trong điều kiện xấu cần giữ nhiều hơn mức đó.",
+   "de_goc": "Hạt Mầm · K07L030301-02-009"
+  },
+  {
+   "ma_cau": "K07000000061",
+   "loai": "trac_nghiem",
+   "de": "Khoảng cách an toàn tối thiểu cần đủ cho những quãng đường nào của xe sau?",
+   "lua_chon": [
+    "Quãng đường xe đi trong thời gian phản ứng",
+    "Quãng đường phản ứng cộng quãng đường phanh",
+    "Quãng đường xe đi từ lúc phanh đến khi dừng",
+    "Quãng đường xe đi trước khi thấy xe trước"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Khoảng cách an toàn phải đủ cho cả quãng đường xe đi trong thời gian phản ứng (trước khi phanh) và quãng đường phanh cho tới khi xe dừng hẳn.\n\nVì sao các phương án khác sai:\n- A: Chỉ tính quãng đường phản ứng là chưa đủ, còn thiếu quãng đường phanh của xe.\n- C: Chỉ tính quãng đường phanh là chưa đủ, còn thiếu quãng đường đi trong lúc phản ứng.\n- D: Khoảng cách an toàn liên quan đến lúc xe cần dừng lại, không phải trước khi nhìn thấy xe trước.",
+   "de_goc": "Hạt Mầm · K07L030301-02-010"
+  },
+  {
+   "ma_cau": "K07000000062",
+   "loai": "trac_nghiem",
+   "de": "Khoảng cách an toàn tối thiểu giữa hai ô tô được tính từ đâu đến đâu?",
+   "lua_chon": [
+    "Từ đầu xe trước đến đầu xe sau",
+    "Từ đuôi xe sau đến đầu xe trước",
+    "Từ đầu xe sau đến đuôi xe trước",
+    "Từ giữa xe sau đến giữa xe trước"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Khoảng cách an toàn là khoảng trống giữa đầu xe phía sau và đuôi xe phía trước, đủ để xe sau kịp dừng nếu xe trước dừng đột ngột.\n\nVì sao các phương án khác sai:\n- A: Tính từ đầu xe trước là sai vị trí; phải tính từ đầu xe SAU tới đuôi xe TRƯỚC.\n- B: Đuôi xe sau không phải là mốc đo; mốc đo phải là đầu xe sau (phần gần xe trước nhất).\n- D: Tính từ điểm giữa hai xe không phản ánh đúng khoảng trống thực tế giữa hai xe.",
+   "de_goc": "Hạt Mầm · K07L030301-02-011"
+  },
+  {
+   "ma_cau": "K07000000063",
+   "loai": "trac_nghiem",
+   "de": "Khoảng cách an toàn tối thiểu: 60 km/h: 35 m; trên 60 đến 80 km/h: 55 m; trên 80 đến 100 km/h: 70 m; trên 100 đến 120 km/h: 100 m. Ô tô chạy 75 km/h cần giữ khoảng cách tối thiểu bao nhiêu?",
+   "lua_chon": [
+    "35 m",
+    "70 m",
+    "75 m",
+    "55 m"
+   ],
+   "dap_an": "D",
+   "loi_giai": "75 km/h nằm trong khoảng trên 60 đến 80 km/h, nên khoảng cách an toàn tối thiểu là 55 m.\n\nVì sao các phương án khác sai:\n- A: 75 km/h lớn hơn 60 km/h nên KHÔNG dùng dòng 35 m.\n- B: Dòng 70 m dành cho tốc độ trên 80 đến 100 km/h.\n- C: Lấy số chỉ tốc độ làm khoảng cách; phải tra khoảng tốc độ trong bảng.",
+   "de_goc": "Hạt Mầm · K07L030301-02-005"
+  },
+  {
+   "ma_cau": "K07000000064",
+   "loai": "trac_nghiem",
+   "de": "Khoảng cách an toàn tối thiểu: 60 km/h: 35 m; trên 60 đến 80 km/h: 55 m; trên 80 đến 100 km/h: 70 m; trên 100 đến 120 km/h: 100 m. Ô tô chạy 90 km/h cần giữ khoảng cách tối thiểu bao nhiêu?",
+   "lua_chon": [
+    "55 m",
+    "100 m",
+    "70 m",
+    "90 m"
+   ],
+   "dap_an": "C",
+   "loi_giai": "90 km/h nằm trong khoảng trên 80 đến 100 km/h, nên khoảng cách an toàn tối thiểu là 70 m.\n\nVì sao các phương án khác sai:\n- A: Dòng 55 m dành cho tốc độ trên 60 đến 80 km/h.\n- B: Dòng 100 m dành cho tốc độ trên 100 đến 120 km/h.\n- D: Lấy số chỉ tốc độ làm khoảng cách; phải tra khoảng tốc độ trong bảng.",
+   "de_goc": "Hạt Mầm · K07L030301-02-006"
+  },
+  {
+   "ma_cau": "K07000000065",
+   "loai": "trac_nghiem",
+   "de": "Khoảng cách an toàn tối thiểu: 60 km/h: 35 m; trên 60 đến 80 km/h: 55 m; trên 80 đến 100 km/h: 70 m; trên 100 đến 120 km/h: 100 m. Ô tô nào sau đây đang giữ ĐỦ khoảng cách an toàn tối thiểu?",
+   "lua_chon": [
+    "Chạy 78 km/h, cách xe trước 58 m",
+    "Chạy 65 km/h, cách xe trước 40 m",
+    "Chạy 85 km/h, cách xe trước 60 m",
+    "Chạy 110 km/h, cách xe trước 90 m"
+   ],
+   "dap_an": "A",
+   "loi_giai": "78 km/h thuộc dòng trên 60 đến 80 km/h, cần tối thiểu 55 m; xe cách 58 m nên đủ. Ba xe còn lại đều cách gần hơn mức tối thiểu.\n\nVì sao các phương án khác sai:\n- B: 65 km/h cần tối thiểu 55 m; 40 m chưa đủ.\n- C: 85 km/h cần tối thiểu 70 m; 60 m chưa đủ.\n- D: 110 km/h cần tối thiểu 100 m; 90 m chưa đủ.",
+   "de_goc": "Hạt Mầm · K07L030301-02-008"
+  },
+  {
+   "ma_cau": "K07000000066",
+   "loai": "trac_nghiem",
+   "de": "Vì sao khi trời mưa, người lái xe cần giảm tốc độ và giữ khoảng cách lớn hơn bình thường?",
+   "lua_chon": [
+    "Mưa làm động cơ xe chạy yếu đi",
+    "Nước mưa làm xe nặng hơn nhiều",
+    "Đường trơn, xe cần quãng đường dài hơn để dừng",
+    "Chạy chậm để người lái không bị ướt"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Khi mưa, mặt đường trơn, bánh xe dễ trượt nên xe cần quãng đường dài hơn mới dừng được; vì vậy phải giảm tốc độ và giữ khoảng cách lớn hơn.\n\nVì sao các phương án khác sai:\n- A: Lí do chính là đường trơn làm xe khó dừng, không phải động cơ yếu.\n- B: Nước mưa bám trên xe không đáng kể; xe khó dừng vì mặt đường trơn.\n- D: Giảm tốc độ nhằm kịp dừng xe an toàn, không phải để tránh bị ướt.",
+   "de_goc": "Hạt Mầm · K07L030302-02-001"
+  },
+  {
+   "ma_cau": "K07000000067",
+   "loai": "trac_nghiem",
+   "de": "Vì sao khi đi vào ban đêm hoặc lúc có sương mù, người lái xe cần giảm tốc độ?",
+   "lua_chon": [
+    "Tầm nhìn hạn chế, phát hiện nguy hiểm muộn hơn",
+    "Ban đêm mặt đường trơn hơn ban ngày",
+    "Chạy nhanh làm đèn xe tốn điện hơn",
+    "Ban đêm trên đường có ít xe hơn"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Ban đêm, sương mù làm người lái nhìn không xa, phát hiện vật cản muộn; chạy chậm thì xe đi quãng ngắn hơn trước khi kịp phản ứng và dừng.\n\nVì sao các phương án khác sai:\n- B: Trời tối không làm đường trơn hơn; vấn đề là tầm nhìn bị hạn chế.\n- C: Lí do an toàn là tầm nhìn kém, không phải chuyện đèn tốn điện.\n- D: Ít xe không phải lí do giảm tốc; phải giảm tốc vì người lái nhìn kém.",
+   "de_goc": "Hạt Mầm · K07L030302-02-002"
+  },
+  {
+   "ma_cau": "K07000000068",
+   "loai": "trac_nghiem",
+   "de": "Vì sao người lái xe KHÔNG được dùng điện thoại khi đang lái xe?",
+   "lua_chon": [
+    "Dễ làm rơi, vỡ điện thoại",
+    "Điện thoại làm xe chạy nhanh hơn",
+    "Để tiết kiệm pin điện thoại",
+    "Mất tập trung, phản ứng chậm hơn"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Dùng điện thoại làm người lái rời mắt khỏi đường, mất tập trung, thời gian phản ứng tăng nên xe đi quãng dài hơn trước khi kịp phanh.\n\nVì sao các phương án khác sai:\n- A: Lí do chính là an toàn: người lái mất tập trung, phản ứng chậm.\n- B: Điện thoại không làm thay đổi tốc độ xe; nó làm người lái mất tập trung.\n- C: Tiết kiệm pin không phải lí do; lí do là người lái mất tập trung, phản ứng chậm.",
+   "de_goc": "Hạt Mầm · K07L030302-02-003"
+  },
+  {
+   "ma_cau": "K07000000069",
+   "loai": "trac_nghiem",
+   "de": "Vì sao khi chở quá nặng (quá tải), ô tô cần quãng đường dài hơn để dừng lại?",
+   "lua_chon": [
+    "Xe càng nặng càng khó dừng lại nhanh",
+    "Xe nặng làm động cơ yếu, chạy chậm hơn",
+    "Xe nặng làm lốp bám đường tốt hơn",
+    "Khối lượng xe không ảnh hưởng quãng đường phanh"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Xe chở càng nặng thì càng khó dừng lại nhanh khi phanh, nên cần quãng đường phanh dài hơn; vì vậy không được chở quá tải.\n\nVì sao các phương án khác sai:\n- B: Động cơ yếu đi không phải lí do chính khiến quãng đường phanh dài hơn; vấn đề là quán tính lớn hơn.\n- C: Chở nặng không làm lốp xe to ra hay bám đường tốt hơn.\n- D: Xe nặng hơn thực tế cần quãng đường phanh dài hơn, có ảnh hưởng rõ rệt.",
+   "de_goc": "Hạt Mầm · K07L030302-02-010"
+  },
+  {
+   "ma_cau": "K07000000070",
+   "loai": "trac_nghiem",
+   "de": "Vì sao trên đường cao tốc lại quy định cả tốc độ tối thiểu, không chỉ tốc độ tối đa?",
+   "lua_chon": [
+    "Để xe tiêu thụ nhiều nhiên liệu hơn",
+    "Để xe chạy quá chậm không cản trở, gây va chạm",
+    "Để tất cả xe bắt buộc phải chạy cùng một tốc độ",
+    "Để đường cao tốc trông đẹp mắt hơn"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Trên cao tốc, xe chạy quá chậm sẽ cản trở dòng xe phía sau đang chạy nhanh, dễ gây va chạm bất ngờ; vì vậy cần quy định tốc độ tối thiểu.\n\nVì sao các phương án khác sai:\n- A: Quy định tốc độ tối thiểu không nhằm mục đích tiêu thụ nhiên liệu.\n- C: Tốc độ tối thiểu chỉ là mức sàn; các xe vẫn có thể chạy khác nhau miễn không dưới mức đó, không bắt buộc bằng nhau.\n- D: Quy định tốc độ nhằm mục đích an toàn giao thông, không liên quan đến thẩm mĩ con đường.",
+   "de_goc": "Hạt Mầm · K07L030302-02-011"
+  },
+  {
+   "ma_cau": "K07000000071",
+   "loai": "trac_nghiem",
+   "de": "Hai ô tô cùng chạy trên cao tốc với tốc độ 90 km/h. Xe A có thời gian phản ứng bình thường; xe B chở quá tải nên quãng đường phanh dài hơn xe A 15 m (thời gian phản ứng như nhau). Nếu cả hai xe cùng gặp tình huống phải phanh gấp, nhận định nào đúng?",
+   "lua_chon": [
+    "Xe B dừng lại ở vị trí gần xe A hơn",
+    "Cả hai xe dừng lại ở cùng một vị trí vì tốc độ như nhau",
+    "Xe B cần tổng quãng đường dừng dài hơn xe A đúng 15 m",
+    "Xe A cần quãng đường dừng dài hơn xe B"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Vì tốc độ và thời gian phản ứng như nhau, quãng đường phản ứng của hai xe bằng nhau; xe B chỉ có quãng đường phanh dài hơn 15 m nên tổng quãng đường dừng của xe B dài hơn xe A đúng 15 m.\n\nVì sao các phương án khác sai:\n- A: Xe B cần quãng đường dừng dài hơn nên sẽ dừng ở vị trí xa hơn, không phải gần hơn.\n- B: Cùng tốc độ nhưng xe B chở quá tải nên quãng đường phanh dài hơn, hai xe không dừng cùng vị trí.\n- D: Xe B mới là xe cần quãng đường dừng dài hơn do chở quá tải, không phải xe A.",
+   "de_goc": "Hạt Mầm · K07L030302-02-014"
+  },
+  {
+   "ma_cau": "K07000000072",
+   "loai": "trac_nghiem",
+   "de": "Biển báo giới hạn tốc độ ghi 80 km/h. Máy đo ghi tốc độ ô tô là 85 km/h, đang cách xe trước 60 m. Bảng khoảng cách an toàn tối thiểu: ≤60 km/h: 35 m; >60–80: 55 m; >80–100: 70 m; >100–120: 100 m. Kết luận nào đúng?",
+   "lua_chon": [
+    "Không vi phạm tốc độ và đủ khoảng cách an toàn",
+    "Vi phạm tốc độ và đủ khoảng cách an toàn",
+    "Vi phạm tốc độ và không đủ khoảng cách an toàn",
+    "Không vi phạm tốc độ và không đủ khoảng cách an toàn"
+   ],
+   "dap_an": "C",
+   "loi_giai": "85 km/h > 80 km/h nên vi phạm giới hạn tốc độ. Với 85 km/h (>80–100), khoảng cách an toàn tối thiểu là 70 m, trong khi xe chỉ cách 60 m nên KHÔNG đủ.\n\nVì sao các phương án khác sai:\n- A: Sai cả hai ý: 85 km/h vượt biển báo 80 km/h nên có vi phạm; khoảng cách 60 m cũng chưa đủ 70 m yêu cầu.\n- B: Đã xác định đúng có vi phạm tốc độ nhưng tra nhầm mức khoảng cách (60 m chưa đủ 70 m).\n- D: Đã xác định đúng khoảng cách chưa đủ nhưng kết luận sai là không vi phạm (85 > 80 km/h).",
+   "de_goc": "Hạt Mầm · K07L030303-01-001"
+  },
+  {
+   "ma_cau": "K07000000073",
+   "loai": "trac_nghiem",
+   "de": "Biển báo giới hạn tốc độ ghi 60 km/h. Máy đo ghi tốc độ xe máy là 55 km/h, đang cách xe trước 40 m. Bảng khoảng cách an toàn tối thiểu: ≤60 km/h: 35 m; >60–80: 55 m; >80–100: 70 m; >100–120: 100 m. Kết luận nào đúng?",
+   "lua_chon": [
+    "Vi phạm tốc độ và đủ khoảng cách an toàn",
+    "Không vi phạm tốc độ và đủ khoảng cách an toàn",
+    "Vi phạm tốc độ và không đủ khoảng cách an toàn",
+    "Không vi phạm tốc độ và không đủ khoảng cách an toàn"
+   ],
+   "dap_an": "B",
+   "loi_giai": "55 km/h < 60 km/h nên KHÔNG vi phạm. Với 55 km/h (≤60), khoảng cách an toàn tối thiểu 35 m; xe cách 40 m ≥ 35 m nên ĐỦ.\n\nVì sao các phương án khác sai:\n- A: 55 km/h chưa vượt biển báo 60 km/h nên KHÔNG vi phạm, không phải có vi phạm.\n- C: Sai cả hai ý: 55 km/h chưa vượt 60 km/h (không vi phạm); khoảng cách 40 m cũng đã đủ 35 m yêu cầu.\n- D: Đã xác định đúng không vi phạm nhưng tra nhầm mức khoảng cách (40 m ≥ 35 m là đã đủ).",
+   "de_goc": "Hạt Mầm · K07L030303-01-002"
+  },
+  {
+   "ma_cau": "K07000000074",
+   "loai": "trac_nghiem",
+   "de": "Biển báo giới hạn tốc độ ghi 100 km/h. Ô tô chạy với tốc độ 95 km/h, đang cách xe trước 65 m. Bảng khoảng cách an toàn tối thiểu: ≤60 km/h: 35 m; >60–80: 55 m; >80–100: 70 m; >100–120: 100 m. Kết luận nào đúng?",
+   "lua_chon": [
+    "Không vi phạm tốc độ và không đủ khoảng cách an toàn",
+    "Vi phạm tốc độ và không đủ khoảng cách an toàn",
+    "Không vi phạm tốc độ và đủ khoảng cách an toàn",
+    "Vi phạm tốc độ và đủ khoảng cách an toàn"
+   ],
+   "dap_an": "A",
+   "loi_giai": "95 km/h < 100 km/h nên KHÔNG vi phạm. Với 95 km/h (>80–100), khoảng cách an toàn tối thiểu 70 m; xe chỉ cách 65 m nên CHƯA đủ.\n\nVì sao các phương án khác sai:\n- B: 95 km/h chưa vượt biển báo 100 km/h nên KHÔNG vi phạm, không phải có vi phạm.\n- C: Đã xác định đúng không vi phạm nhưng tra nhầm mức khoảng cách (65 m chưa đủ 70 m).\n- D: Sai cả hai ý: 95 km/h chưa vượt 100 km/h (không vi phạm); khoảng cách 65 m cũng chưa đủ 70 m.",
+   "de_goc": "Hạt Mầm · K07L030303-01-003"
+  },
+  {
+   "ma_cau": "K07000000075",
+   "loai": "trac_nghiem",
+   "de": "Biển báo giới hạn tốc độ ghi 60 km/h. Xe khách chạy với tốc độ 65 km/h, đang cách xe trước 55 m. Bảng khoảng cách an toàn tối thiểu: ≤60 km/h: 35 m; >60–80: 55 m; >80–100: 70 m; >100–120: 100 m. Kết luận nào đúng?",
+   "lua_chon": [
+    "Vi phạm tốc độ và đủ khoảng cách an toàn",
+    "Không vi phạm tốc độ và đủ khoảng cách an toàn",
+    "Vi phạm tốc độ và không đủ khoảng cách an toàn",
+    "Không vi phạm tốc độ và không đủ khoảng cách an toàn"
+   ],
+   "dap_an": "A",
+   "loi_giai": "65 km/h > 60 km/h nên vi phạm giới hạn tốc độ. Với 65 km/h (>60–80), khoảng cách an toàn tối thiểu 55 m; xe đang cách đúng 55 m nên ĐỦ.\n\nVì sao các phương án khác sai:\n- B: 65 km/h đã vượt biển báo 60 km/h nên CÓ vi phạm, không phải không vi phạm.\n- C: Đã xác định đúng có vi phạm nhưng tra nhầm mức khoảng cách (55 m đã đạt đúng mức tối thiểu, coi là đủ).\n- D: Sai cả hai ý: 65 km/h vượt 60 km/h (có vi phạm); khoảng cách 55 m cũng đã đủ mức tối thiểu.",
+   "de_goc": "Hạt Mầm · K07L030303-01-004"
+  },
+  {
+   "ma_cau": "K07000000076",
+   "loai": "trac_nghiem",
+   "de": "Biển báo giới hạn tốc độ trên cao tốc ghi 120 km/h. Ô tô chạy với tốc độ 115 km/h, đang cách xe trước 90 m. Bảng khoảng cách an toàn tối thiểu: ≤60 km/h: 35 m; >60–80: 55 m; >80–100: 70 m; >100–120: 100 m. Kết luận nào đúng?",
+   "lua_chon": [
+    "Vi phạm tốc độ và không đủ khoảng cách an toàn",
+    "Không vi phạm tốc độ và đủ khoảng cách an toàn",
+    "Vi phạm tốc độ và đủ khoảng cách an toàn",
+    "Không vi phạm tốc độ và không đủ khoảng cách an toàn"
+   ],
+   "dap_an": "D",
+   "loi_giai": "115 km/h < 120 km/h nên KHÔNG vi phạm. Với 115 km/h (>100–120), khoảng cách an toàn tối thiểu 100 m; xe chỉ cách 90 m nên CHƯA đủ.\n\nVì sao các phương án khác sai:\n- A: 115 km/h chưa vượt biển báo 120 km/h nên KHÔNG vi phạm, không phải có vi phạm.\n- B: Đã xác định đúng không vi phạm nhưng tra nhầm mức khoảng cách (90 m chưa đủ 100 m).\n- C: Sai cả hai ý: 115 km/h chưa vượt 120 km/h (không vi phạm); khoảng cách 90 m cũng chưa đủ 100 m.",
+   "de_goc": "Hạt Mầm · K07L030303-01-005"
+  },
+  {
+   "ma_cau": "K07000000077",
+   "loai": "trac_nghiem",
+   "de": "Biển báo giới hạn tốc độ ghi 100 km/h. Xe tải chạy với tốc độ 105 km/h, đang cách xe trước 75 m. Bảng khoảng cách an toàn tối thiểu: ≤60 km/h: 35 m; >60–80: 55 m; >80–100: 70 m; >100–120: 100 m. Kết luận nào đúng?",
+   "lua_chon": [
+    "Không vi phạm tốc độ và đủ khoảng cách an toàn",
+    "Vi phạm tốc độ và đủ khoảng cách an toàn",
+    "Không vi phạm tốc độ và không đủ khoảng cách an toàn",
+    "Vi phạm tốc độ và không đủ khoảng cách an toàn"
+   ],
+   "dap_an": "D",
+   "loi_giai": "105 km/h > 100 km/h nên vi phạm giới hạn tốc độ. Với 105 km/h (>100–120), khoảng cách an toàn tối thiểu là 100 m, trong khi xe chỉ cách 75 m nên KHÔNG đủ.\n\nVì sao các phương án khác sai:\n- A: Xe chạy 105 km/h đã vượt quá 100 km/h ghi trên biển nên vẫn là vi phạm, không phải không vi phạm.\n- B: Khoảng cách thực tế 75 m nhỏ hơn mức tối thiểu cần thiết 100 m nên chưa đủ, không phải đủ.\n- C: 105 km/h vượt quá 100 km/h ghi trên biển nên đây là vi phạm tốc độ, không phải không vi phạm.",
+   "de_goc": "Hạt Mầm · K07L030303-01-006"
+  },
+  {
+   "ma_cau": "K07000000078",
+   "loai": "trac_nghiem",
+   "de": "Biển báo giới hạn tốc độ ghi 80 km/h. Xe khách chạy với tốc độ 78 km/h, đang cách xe trước 60 m. Bảng khoảng cách an toàn tối thiểu: ≤60 km/h: 35 m; >60–80: 55 m; >80–100: 70 m; >100–120: 100 m. Kết luận nào đúng?",
+   "lua_chon": [
+    "Không vi phạm tốc độ và đủ khoảng cách an toàn",
+    "Vi phạm tốc độ và đủ khoảng cách an toàn",
+    "Vi phạm tốc độ và không đủ khoảng cách an toàn",
+    "Không vi phạm tốc độ và không đủ khoảng cách an toàn"
+   ],
+   "dap_an": "A",
+   "loi_giai": "78 km/h < 80 km/h nên KHÔNG vi phạm. Với 78 km/h (>60–80), khoảng cách an toàn tối thiểu là 55 m; xe cách 60 m ≥ 55 m nên ĐỦ.\n\nVì sao các phương án khác sai:\n- B: 78 km/h chưa vượt quá 80 km/h ghi trên biển nên đây là không vi phạm, không phải vi phạm.\n- C: Khoảng cách thực tế 60 m lớn hơn mức tối thiểu cần thiết 55 m nên đã đủ, không phải chưa đủ.\n- D: Khoảng cách 60 m đã đủ so với mức tối thiểu 55 m, không phải chưa đủ.",
+   "de_goc": "Hạt Mầm · K07L030303-01-007"
+  },
+  {
+   "ma_cau": "K07000000079",
+   "loai": "trac_nghiem",
+   "de": "Biển báo giới hạn tốc độ ghi 80 km/h. Xe máy chạy với tốc độ 82 km/h, đang cách xe trước 72 m. Bảng khoảng cách an toàn tối thiểu: ≤60 km/h: 35 m; >60–80: 55 m; >80–100: 70 m; >100–120: 100 m. Kết luận nào đúng?",
+   "lua_chon": [
+    "Không vi phạm tốc độ và đủ khoảng cách an toàn",
+    "Vi phạm tốc độ và đủ khoảng cách an toàn",
+    "Không vi phạm tốc độ và không đủ khoảng cách an toàn",
+    "Vi phạm tốc độ và không đủ khoảng cách an toàn"
+   ],
+   "dap_an": "B",
+   "loi_giai": "82 km/h > 80 km/h nên vi phạm giới hạn tốc độ. Với 82 km/h (>80–100), khoảng cách an toàn tối thiểu là 70 m; xe cách 72 m ≥ 70 m nên ĐỦ.\n\nVì sao các phương án khác sai:\n- A: 82 km/h đã vượt quá 80 km/h ghi trên biển nên đây là vi phạm, không phải không vi phạm.\n- C: 82 km/h vượt quá biển báo nên là vi phạm; đồng thời khoảng cách 72 m cũng đã đủ.\n- D: Khoảng cách thực tế 72 m lớn hơn mức tối thiểu cần thiết 70 m nên đã đủ, không phải chưa đủ.",
+   "de_goc": "Hạt Mầm · K07L030303-01-008"
+  },
+  {
+   "ma_cau": "K07000000080",
+   "loai": "trac_nghiem",
+   "de": "Ô tô chạy 72 km/h (20 m/s). Trời mưa nên thời gian phản ứng tăng lên 1,2 s; đường trơn nên sau khi phanh xe đi thêm 40 m mới dừng. Bảng khoảng cách an toàn tối thiểu ứng với 72 km/h là 55 m. Khoảng cách 55 m theo bảng có còn đủ an toàn trong tình huống này không?",
+   "lua_chon": [
+    "Đủ, vì 55 m đúng theo bảng",
+    "Không đủ, cần thêm ít nhất 24 m",
+    "Không đủ, cần thêm ít nhất 9 m",
+    "Không đủ, cần thêm ít nhất 40 m"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Quãng đường phản ứng: 20 × 1,2 = 24 m. Cộng quãng đường phanh 40 m: tổng quãng đường dừng thực tế là 64 m, vượt 55 m của bảng nên bảng KHÔNG đủ; cần giữ thêm ít nhất 64 − 55 = 9 m.\n\nVì sao các phương án khác sai:\n- A: Bảng ứng với điều kiện bình thường; ở đây quãng đường dừng thực tế đã tăng lên 64 m, vượt 55 m.\n- B: 24 m là quãng đường phản ứng, chưa cộng thêm 40 m quãng đường phanh để so với bảng.\n- D: 40 m là quãng đường phanh, chưa cộng thêm 24 m quãng đường phản ứng để so với bảng.",
+   "de_goc": "Hạt Mầm · K07L030303-02-001"
+  },
+  {
+   "ma_cau": "K07000000081",
+   "loai": "trac_nghiem",
+   "de": "Xe máy chạy 54 km/h (15 m/s). Trời mưa nên thời gian phản ứng tăng lên 1,5 s; đường trơn nên sau khi phanh xe đi thêm 20 m mới dừng. Bảng khoảng cách an toàn tối thiểu ứng với 54 km/h là 35 m. Khoảng cách 35 m theo bảng có còn đủ an toàn trong tình huống này không?",
+   "lua_chon": [
+    "Không đủ, cần thêm ít nhất 22,5 m",
+    "Không đủ, cần thêm ít nhất 7,5 m",
+    "Đủ, vì 35 m đúng theo bảng",
+    "Không đủ, cần thêm ít nhất 20 m"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Quãng đường phản ứng: 15 × 1,5 = 22,5 m. Cộng quãng đường phanh 20 m: tổng quãng đường dừng thực tế là 42,5 m, vượt 35 m của bảng; cần giữ thêm ít nhất 42,5 − 35 = 7,5 m.\n\nVì sao các phương án khác sai:\n- A: 22,5 m là quãng đường phản ứng, chưa cộng phần phanh 20 m để so với bảng.\n- C: Quãng đường dừng thực tế 42,5 m đã vượt 35 m của bảng, nên bảng KHÔNG còn đủ.\n- D: 20 m là quãng đường phanh, chưa cộng phần phản ứng 22,5 m để so với bảng.",
+   "de_goc": "Hạt Mầm · K07L030303-02-002"
+  },
+  {
+   "ma_cau": "K07000000082",
+   "loai": "trac_nghiem",
+   "de": "Ô tô chạy 90 km/h (25 m/s), thời gian phản ứng bình thường 1 s. Đường trơn nên sau khi phanh xe đi thêm 50 m mới dừng. Bảng khoảng cách an toàn tối thiểu ứng với 90 km/h là 70 m. Khoảng cách 70 m theo bảng có còn đủ an toàn trong tình huống này không?",
+   "lua_chon": [
+    "Không đủ, cần thêm ít nhất 5 m",
+    "Không đủ, cần thêm ít nhất 25 m",
+    "Đủ, vì 70 m đúng theo bảng",
+    "Không đủ, cần thêm ít nhất 50 m"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Quãng đường phản ứng: 25 × 1 = 25 m. Cộng quãng đường phanh 50 m: tổng quãng đường dừng thực tế là 75 m, vượt 70 m của bảng; cần giữ thêm ít nhất 75 − 70 = 5 m.\n\nVì sao các phương án khác sai:\n- B: 25 m là quãng đường phản ứng, chưa cộng phần phanh 50 m để so với bảng.\n- C: Quãng đường dừng thực tế 75 m đã vượt 70 m của bảng, nên bảng KHÔNG còn đủ.\n- D: 50 m là quãng đường phanh, chưa cộng phần phản ứng 25 m để so với bảng.",
+   "de_goc": "Hạt Mầm · K07L030303-02-003"
+  },
+  {
+   "ma_cau": "K07000000083",
+   "loai": "trac_nghiem",
+   "de": "Ô tô chạy 108 km/h (30 m/s), thời gian phản ứng bình thường 1 s. Đường trơn nên sau khi phanh xe đi thêm 75 m mới dừng. Bảng khoảng cách an toàn tối thiểu ứng với 108 km/h là 100 m. Khoảng cách 100 m theo bảng có còn đủ an toàn trong tình huống này không?",
+   "lua_chon": [
+    "Không đủ, cần thêm ít nhất 30 m",
+    "Đủ, vì 100 m đúng theo bảng",
+    "Không đủ, cần thêm ít nhất 5 m",
+    "Không đủ, cần thêm ít nhất 75 m"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Quãng đường phản ứng: 30 × 1 = 30 m. Cộng quãng đường phanh 75 m: tổng quãng đường dừng thực tế là 105 m, vượt 100 m của bảng; cần giữ thêm ít nhất 105 − 100 = 5 m.\n\nVì sao các phương án khác sai:\n- A: 30 m là quãng đường phản ứng, chưa cộng phần phanh 75 m để so với bảng.\n- B: Quãng đường dừng thực tế 105 m đã vượt 100 m của bảng, nên bảng KHÔNG còn đủ.\n- D: 75 m là quãng đường phanh, chưa cộng phần phản ứng 30 m để so với bảng.",
+   "de_goc": "Hạt Mầm · K07L030303-02-004"
+  },
+  {
+   "ma_cau": "K07000000084",
+   "loai": "trac_nghiem",
+   "de": "Xe máy chạy 54 km/h (15 m/s), thời gian phản ứng bình thường 0,8 s. Đường khô nên sau khi phanh xe chỉ đi thêm 15 m là dừng. Bảng khoảng cách an toàn tối thiểu ứng với 54 km/h là 35 m. Khoảng cách 35 m theo bảng có còn đủ an toàn trong tình huống này không?",
+   "lua_chon": [
+    "Đủ, còn dư 8 m",
+    "Đủ, còn dư 12 m",
+    "Không đủ, thiếu 8 m",
+    "Đủ, còn dư 15 m"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Quãng đường phản ứng: 15 × 0,8 = 12 m. Cộng quãng đường phanh 15 m: tổng quãng đường dừng thực tế là 27 m, nhỏ hơn 35 m của bảng nên vẫn ĐỦ, còn dư 35 − 27 = 8 m.\n\nVì sao các phương án khác sai:\n- B: 12 m là quãng đường phản ứng, chưa cộng phần phanh 15 m để so với bảng.\n- C: Quãng đường dừng thực tế 27 m còn nhỏ hơn 35 m của bảng nên vẫn ĐỦ, không phải thiếu.\n- D: 15 m là quãng đường phanh, chưa cộng phần phản ứng 12 m để so với bảng.",
+   "de_goc": "Hạt Mầm · K07L030303-02-005"
+  },
+  {
+   "ma_cau": "K07000000085",
+   "loai": "trac_nghiem",
+   "de": "Xe máy chạy 45 km/h (12,5 m/s). Trời sương mù nên thời gian phản ứng tăng lên 1,6 s; sau khi phanh xe đi thêm 12 m mới dừng. Bảng khoảng cách an toàn tối thiểu ứng với 45 km/h là 35 m. Khoảng cách 35 m theo bảng có còn đủ an toàn trong tình huống này không?",
+   "lua_chon": [
+    "Không đủ, thiếu 3 m",
+    "Đủ, còn dư 20 m",
+    "Đủ, còn dư 3 m",
+    "Không đủ, thiếu 12 m"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Quãng đường phản ứng: 12,5 × 1,6 = 20 m. Cộng quãng đường phanh 12 m: tổng quãng đường dừng thực tế là 32 m, nhỏ hơn 35 m của bảng nên vẫn ĐỦ, còn dư 35 − 32 = 3 m.\n\nVì sao các phương án khác sai:\n- A: 32 m (quãng đường dừng thực tế) nhỏ hơn 35 m của bảng, nghĩa là ĐỦ chứ không thiếu.\n- B: 20 m chỉ là quãng đường phản ứng, chưa cộng quãng đường phanh 12 m và chưa so với bảng.\n- D: 12 m chỉ là quãng đường phanh, chưa cộng quãng đường phản ứng 20 m để so với bảng.",
+   "de_goc": "Hạt Mầm · K07L030303-02-006"
+  },
+  {
+   "ma_cau": "K07000000086",
+   "loai": "trac_nghiem",
+   "de": "Ô tô chạy 63 km/h (17,5 m/s). Trời mưa nên thời gian phản ứng tăng lên 1 s; đường trơn nên sau khi phanh xe đi thêm 45 m mới dừng. Bảng khoảng cách an toàn tối thiểu ứng với 63 km/h là 55 m. Khoảng cách 55 m theo bảng có còn đủ an toàn trong tình huống này không?",
+   "lua_chon": [
+    "Đủ, vì 55 m đúng theo bảng",
+    "Không đủ, cần thêm ít nhất 17,5 m",
+    "Không đủ, cần thêm ít nhất 45 m",
+    "Không đủ, cần thêm ít nhất 7,5 m"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Quãng đường phản ứng: 17,5 × 1 = 17,5 m. Cộng quãng đường phanh 45 m: tổng quãng đường dừng thực tế là 62,5 m, vượt 55 m của bảng; cần giữ thêm ít nhất 62,5 − 55 = 7,5 m.\n\nVì sao các phương án khác sai:\n- A: Tổng quãng đường dừng thực tế (62,5 m) đã vượt quá 55 m của bảng nên KHÔNG còn đủ.\n- B: 17,5 m chỉ là quãng đường phản ứng, không phải phần còn thiếu so với bảng.\n- C: 45 m chỉ là quãng đường phanh, không phải phần còn thiếu so với bảng.",
+   "de_goc": "Hạt Mầm · K07L030303-02-007"
+  },
+  {
+   "ma_cau": "K07000000087",
+   "loai": "trac_nghiem",
+   "de": "Chiếu ánh sáng đèn vào tấm pin mặt trời nối với một quạt điện nhỏ thì quạt quay. Trong tấm pin, năng lượng ánh sáng chuyển hoá thành dạng năng lượng nào?",
+   "lua_chon": [
+    "Năng lượng hoá học",
+    "Năng lượng âm",
+    "Động năng",
+    "Năng lượng điện"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Pin mặt trời chuyển hoá năng lượng ánh sáng thành năng lượng điện; dòng điện này làm quạt quay.\n\nVì sao các phương án khác sai:\n- A: Ánh sáng chuyển thành năng lượng hoá học khi cây xanh quang hợp, không phải trong pin mặt trời.\n- B: Tấm pin không phát ra âm; nó tạo ra dòng điện chạy qua quạt.\n- C: Động năng là của cánh quạt đang quay; trong tấm pin, ánh sáng chuyển thành năng lượng điện rồi điện mới làm quạt quay.",
+   "de_goc": "Hạt Mầm · K07L050101-01-001"
+  },
+  {
+   "ma_cau": "K07000000088",
+   "loai": "trac_nghiem",
+   "de": "Khi cây xanh quang hợp, năng lượng ánh sáng được chuyển hoá thành dạng năng lượng nào?",
+   "lua_chon": [
+    "Năng lượng hoá học",
+    "Năng lượng điện",
+    "Năng lượng âm",
+    "Động năng"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Trong quang hợp, năng lượng ánh sáng chuyển hoá thành năng lượng hoá học, dự trữ trong chất hữu cơ (tinh bột, glucose).\n\nVì sao các phương án khác sai:\n- B: Ánh sáng chuyển thành năng lượng điện ở pin mặt trời; lá cây không tạo ra điện.\n- C: Quang hợp không phát ra âm thanh.\n- D: Lá cây không chuyển động nhờ quang hợp; năng lượng được dự trữ trong chất hữu cơ.",
+   "de_goc": "Hạt Mầm · K07L050101-01-002"
+  },
+  {
+   "ma_cau": "K07000000089",
+   "loai": "trac_nghiem",
+   "de": "Máy nước nóng năng lượng mặt trời có các ống hấp thụ ánh sáng để làm nước nóng lên. Ở đây, năng lượng ánh sáng chuyển hoá thành dạng năng lượng nào?",
+   "lua_chon": [
+    "Năng lượng điện",
+    "Năng lượng hoá học",
+    "Năng lượng nhiệt",
+    "Năng lượng âm"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Ống hấp thụ nhận ánh sáng Mặt Trời và nóng lên, làm nước nóng: năng lượng ánh sáng chuyển hoá thành năng lượng nhiệt.\n\nVì sao các phương án khác sai:\n- A: Máy nước nóng mặt trời làm nóng nước trực tiếp, không tạo ra điện như pin mặt trời.\n- B: Nước chỉ nóng lên, không tạo ra chất mới dự trữ năng lượng.\n- D: Máy không phát ra âm; ánh sáng làm nước nóng lên.",
+   "de_goc": "Hạt Mầm · K07L050101-01-003"
+  },
+  {
+   "ma_cau": "K07000000090",
+   "loai": "trac_nghiem",
+   "de": "Ánh sáng mang năng lượng, năng lượng này có thể chuyển hoá thành những dạng nào?",
+   "lua_chon": [
+    "Chuyển hoá thành nhiệt năng mà thôi",
+    "Chuyển hoá thành điện năng và nhiệt năng",
+    "Ánh sáng không mang năng lượng",
+    "Chuyển hoá thành điện năng mà thôi"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Ánh sáng là một dạng năng lượng: pin mặt trời chuyển thành điện năng, vật hấp thụ ánh sáng thì nóng lên (nhiệt năng).\n\nVì sao các phương án khác sai:\n- A: Chưa đủ: ánh sáng còn có thể chuyển hoá thành điện năng (như ở pin mặt trời), không chỉ nhiệt năng.\n- C: Sai: ánh sáng là một dạng năng lượng, có thể chuyển hoá thành dạng khác.\n- D: Chưa đủ: ánh sáng còn có thể chuyển hoá thành nhiệt năng (làm vật nóng lên), không chỉ điện năng.",
+   "de_goc": "Hạt Mầm · K07L050101-01-004"
+  },
+  {
+   "ma_cau": "K07000000091",
+   "loai": "trac_nghiem",
+   "de": "Đèn LED phát sáng khi có dòng điện chạy qua; đây là quá trình chuyển hoá năng lượng theo chiều nào?",
+   "lua_chon": [
+    "Năng lượng điện thành ánh sáng",
+    "Ánh sáng thành năng lượng điện",
+    "Năng lượng hoá học thành ánh sáng",
+    "Ánh sáng thành năng lượng nhiệt"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Đèn LED nhận năng lượng điện và phát ra ánh sáng: đây là quá trình chuyển hoá năng lượng điện thành năng lượng ánh sáng (ngược chiều với pin mặt trời).\n\nVì sao các phương án khác sai:\n- B: Đây là quá trình ngược lại: pin mặt trời mới chuyển ánh sáng thành điện, còn đèn LED chuyển điện thành ánh sáng.\n- C: Đèn LED hoạt động nhờ năng lượng điện, không phải năng lượng hoá học.\n- D: Đèn LED chủ yếu phát ra ánh sáng (kèm một ít nhiệt), không phải chuyển ánh sáng thành nhiệt.",
+   "de_goc": "Hạt Mầm · K07L050101-01-006"
+  },
+  {
+   "ma_cau": "K07000000092",
+   "loai": "trac_nghiem",
+   "de": "Mái nhà kính (nhà lồng trồng rau) hấp thụ ánh sáng Mặt Trời làm không khí bên trong ấm hơn bên ngoài. Ở đây, năng lượng ánh sáng chủ yếu chuyển hoá thành dạng năng lượng nào?",
+   "lua_chon": [
+    "Năng lượng điện",
+    "Năng lượng nhiệt",
+    "Năng lượng hoá học",
+    "Năng lượng âm"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Không khí và vật trong nhà kính hấp thụ ánh sáng Mặt Trời nên nóng lên: năng lượng ánh sáng chuyển hoá thành năng lượng nhiệt.\n\nVì sao các phương án khác sai:\n- A: Nhà kính không có bộ phận chuyển ánh sáng thành điện như pin mặt trời.\n- C: Đây không phải quá trình quang hợp tạo chất hữu cơ, mà là hấp thụ nhiệt đơn thuần.\n- D: Hấp thụ ánh sáng không tạo ra âm thanh.",
+   "de_goc": "Hạt Mầm · K07L050101-01-007"
+  },
+  {
+   "ma_cau": "K07000000093",
+   "loai": "trac_nghiem",
+   "de": "Tấm pin mặt trời trên nóc nhà tạo ra điện để sạc pin xe đạp điện. Thứ tự chuyển hoá năng lượng trong quá trình này là",
+   "lua_chon": [
+    "Ánh sáng → hoá học → điện",
+    "Điện → ánh sáng → hoá học",
+    "Ánh sáng → điện → hoá học",
+    "Ánh sáng → nhiệt → điện"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Tấm pin mặt trời chuyển ánh sáng thành điện; dòng điện này sạc vào pin (ắc quy) xe đạp điện, dự trữ dưới dạng năng lượng hoá học.\n\nVì sao các phương án khác sai:\n- A: Pin mặt trời chuyển trực tiếp ánh sáng thành điện, không qua bước hoá học trung gian.\n- B: Quá trình bắt đầu từ ánh sáng Mặt Trời, không phải từ điện.\n- D: Pin mặt trời chuyển ánh sáng thành điện trực tiếp, không qua bước nhiệt trung gian.",
+   "de_goc": "Hạt Mầm · K07L050101-01-008"
+  },
+  {
+   "ma_cau": "K07000000094",
+   "loai": "trac_nghiem",
+   "de": "Chùm sáng song song gồm các tia sáng như thế nào trên đường truyền?",
+   "lua_chon": [
+    "Giao nhau tại một điểm",
+    "Không giao nhau trên đường truyền",
+    "Loe rộng ra trên đường truyền",
+    "Truyền theo các đường cong"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Chùm sáng song song gồm các tia sáng không giao nhau trên đường truyền của chúng.\n\nVì sao các phương án khác sai:\n- A: Các tia giao nhau tại một điểm là chùm sáng hội tụ.\n- C: Các tia loe rộng ra là chùm sáng phân kì.\n- D: Trong không khí, ánh sáng truyền theo đường thẳng, tia sáng không cong.",
+   "de_goc": "Hạt Mầm · K07L050101-02-001"
+  },
+  {
+   "ma_cau": "K07000000095",
+   "loai": "trac_nghiem",
+   "de": "Chiếu ánh sáng Mặt Trời qua một kính lúp, sau kính các tia sáng gặp nhau tại một điểm nhỏ rất sáng. Chùm sáng sau kính lúp là chùm sáng nào?",
+   "lua_chon": [
+    "Phân kì, vì các tia gặp nhau tại một điểm",
+    "Song song, vì các tia gặp nhau tại một điểm",
+    "Hội tụ, vì các tia gặp nhau tại một điểm",
+    "Phân kì, vì các tia loe rộng ra"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Các tia sáng giao nhau tại một điểm trên đường truyền thì đó là chùm sáng hội tụ.\n\nVì sao các phương án khác sai:\n- A: Chùm phân kì có các tia loe rộng ra, không gặp nhau tại một điểm.\n- B: Chùm song song có các tia không giao nhau.\n- D: Sau kính lúp các tia gặp nhau, không loe rộng ra.",
+   "de_goc": "Hạt Mầm · K07L050101-02-002"
+  },
+  {
+   "ma_cau": "K07000000096",
+   "loai": "trac_nghiem",
+   "de": "Ánh sáng từ một bóng đèn nhỏ toả ra xung quanh, các tia sáng càng đi xa càng tách xa nhau. Đó là chùm sáng nào?",
+   "lua_chon": [
+    "Phân kì, vì các tia loe rộng ra",
+    "Hội tụ, vì các tia loe rộng ra",
+    "Song song, vì các tia không giao nhau",
+    "Hội tụ, vì các tia gặp nhau tại một điểm"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Các tia sáng loe rộng ra trên đường truyền (càng xa càng tách nhau) thì đó là chùm sáng phân kì.\n\nVì sao các phương án khác sai:\n- B: Chùm hội tụ có các tia gặp nhau tại một điểm, không loe rộng ra.\n- C: Các tia càng đi càng tách xa nhau, không phải luôn cách đều như chùm song song.\n- D: Các tia từ bóng đèn tách xa nhau dần, không gặp nhau.",
+   "de_goc": "Hạt Mầm · K07L050101-02-003"
+  },
+  {
+   "ma_cau": "K07000000097",
+   "loai": "trac_nghiem",
+   "de": "Trong chùm sáng hội tụ, các tia sáng có đặc điểm gì trên đường truyền?",
+   "lua_chon": [
+    "Loe rộng ra trên đường truyền",
+    "Song song với nhau trên đường truyền",
+    "Giao nhau tại một điểm",
+    "Uốn cong dần về một hướng"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Chùm sáng hội tụ gồm các tia sáng giao nhau tại một điểm trên đường truyền của chúng.\n\nVì sao các phương án khác sai:\n- A: Sai: các tia loe rộng ra là đặc điểm của chùm sáng phân kì, không phải hội tụ.\n- B: Sai: các tia song song là đặc điểm của chùm sáng song song.\n- D: Sai: các tia sáng trong chùm hội tụ là đường thẳng, chỉ giao nhau tại một điểm, không uốn cong.",
+   "de_goc": "Hạt Mầm · K07L050101-02-004"
+  },
+  {
+   "ma_cau": "K07000000098",
+   "loai": "trac_nghiem",
+   "de": "Ánh sáng Mặt Trời chiếu tới Trái Đất (do khoảng cách rất xa) được coi gần đúng là chùm sáng loại nào?",
+   "lua_chon": [
+    "Chùm sáng hội tụ",
+    "Chùm sáng phân kì",
+    "Không thuộc loại nào trong ba loại",
+    "Chùm sáng song song"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Vì Mặt Trời ở rất xa Trái Đất, các tia sáng tới Trái Đất gần như không giao nhau, được coi là chùm sáng song song.\n\nVì sao các phương án khác sai:\n- A: Chùm hội tụ có các tia giao nhau tại một điểm, không đúng với ánh sáng Mặt Trời tới Trái Đất.\n- B: Chùm phân kì loe rộng ra từ một điểm gần, không đúng khi nguồn ở rất xa như Mặt Trời.\n- C: Ánh sáng Mặt Trời tới Trái Đất vẫn thuộc một trong ba loại chùm sáng, cụ thể là chùm song song.",
+   "de_goc": "Hạt Mầm · K07L050101-02-006"
+  },
+  {
+   "ma_cau": "K07000000099",
+   "loai": "trac_nghiem",
+   "de": "Đèn pin khi bật thường tạo ra một chùm sáng loe rộng dần từ bóng đèn ra ngoài. Đó là loại chùm sáng nào?",
+   "lua_chon": [
+    "Chùm sáng phân kì",
+    "Chùm sáng song song",
+    "Chùm sáng hội tụ",
+    "Kết hợp cả ba loại chùm sáng"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Ánh sáng từ đèn pin loe rộng dần ra, các tia càng xa càng tách nhau: đó là chùm sáng phân kì.\n\nVì sao các phương án khác sai:\n- B: Chùm song song có các tia không giao nhau và không loe rộng, khác với ánh sáng đèn pin loe ra.\n- C: Chùm hội tụ có các tia giao nhau tại một điểm, ngược với việc loe rộng ra của đèn pin.\n- D: Ánh sáng đèn pin đơn giản chỉ thuộc một loại chùm sáng (phân kì), không phải kết hợp cả ba.",
+   "de_goc": "Hạt Mầm · K07L050101-02-007"
+  },
+  {
+   "ma_cau": "K07000000100",
+   "loai": "trac_nghiem",
+   "de": "Trên hình, tia IR là tia gì? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07L050201-01-001-de.png)",
+   "lua_chon": [
+    "Tia tới",
+    "Pháp tuyến",
+    "Tia phản xạ",
+    "Mặt gương"
+   ],
+   "dap_an": "C",
+   "loi_giai": "IR là tia sáng hắt ra từ gương tại điểm tới I, gọi là tia phản xạ; SI là tia tới, IN là pháp tuyến.\n\nVì sao các phương án khác sai:\n- A: Tia tới là SI, đi từ nguồn sáng tới gương.\n- B: Pháp tuyến là đường IN vuông góc với mặt gương tại I.\n- D: Mặt gương là đường nằm ngang có gạch chéo phía sau.",
+   "de_goc": "Hạt Mầm · K07L050201-01-001"
+  }
+ ]
+}

@@ -1,0 +1,668 @@
+[
+ {
+  "ma_cau": "K07010101086",
+  "dang_bai_id": "KDB00658",
+  "chac": "cao",
+  "ly_do": "Hỏi điện tích, vị trí hạt/bộ phận nguyên tử"
+ },
+ {
+  "ma_cau": "K07010101087",
+  "dang_bai_id": "KDB00658",
+  "chac": "cao",
+  "ly_do": "Hỏi điện tích, vị trí hạt/bộ phận nguyên tử"
+ },
+ {
+  "ma_cau": "K07010101088",
+  "dang_bai_id": "KDB00658",
+  "chac": "cao",
+  "ly_do": "Hỏi điện tích, vị trí hạt/bộ phận nguyên tử"
+ },
+ {
+  "ma_cau": "K07010101089",
+  "dang_bai_id": "KDB00660",
+  "chac": "cao",
+  "ly_do": "Hỏi vì sao nguyên tử trung hòa về điện"
+ },
+ {
+  "ma_cau": "K07010101090",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Lạc nhóm: thuộc khái niệm nguyên tố (số proton xác định nguyên tố)"
+ },
+ {
+  "ma_cau": "K07010101091",
+  "dang_bai_id": "KDB00659",
+  "chac": "vua",
+  "ly_do": "Đọc mô hình nhưng nội dung phụ thuộc hình, không thấy được"
+ },
+ {
+  "ma_cau": "K07010101092",
+  "dang_bai_id": "KDB00659",
+  "chac": "vua",
+  "ly_do": "Đọc mô hình nhưng nội dung phụ thuộc hình, không thấy được"
+ },
+ {
+  "ma_cau": "K07010101093",
+  "dang_bai_id": "KDB00659",
+  "chac": "vua",
+  "ly_do": "Đọc mô hình nhưng nội dung phụ thuộc hình, không thấy được"
+ },
+ {
+  "ma_cau": "K07010101094",
+  "dang_bai_id": "KDB00659",
+  "chac": "vua",
+  "ly_do": "Đọc mô hình nhưng nội dung phụ thuộc hình, không thấy được"
+ },
+ {
+  "ma_cau": "K07010101095",
+  "dang_bai_id": "KDB00659",
+  "chac": "vua",
+  "ly_do": "Đọc mô hình nhưng nội dung phụ thuộc hình, không thấy được"
+ },
+ {
+  "ma_cau": "K07010101096",
+  "dang_bai_id": "KDB00659",
+  "chac": "vua",
+  "ly_do": "Đọc mô hình nhưng nội dung phụ thuộc hình, không thấy được"
+ },
+ {
+  "ma_cau": "K07010201081",
+  "dang_bai_id": "KDB00669",
+  "chac": "cao",
+  "ly_do": "Chọn cách viết đúng quy tắc hoa-thường"
+ },
+ {
+  "ma_cau": "K07010201082",
+  "dang_bai_id": "KDB00669",
+  "chac": "cao",
+  "ly_do": "Chọn cách viết đúng quy tắc hoa-thường"
+ },
+ {
+  "ma_cau": "K07010201083",
+  "dang_bai_id": "KDB00668",
+  "chac": "cao",
+  "ly_do": "Chọn kí hiệu đúng từ tên nguyên tố"
+ },
+ {
+  "ma_cau": "K07010201084",
+  "dang_bai_id": "KDB00669",
+  "chac": "vua",
+  "ly_do": "Phương án khác hoa-thường và bỏ chữ thứ hai; hợp cả hai dạng"
+ },
+ {
+  "ma_cau": "K07010201085",
+  "dang_bai_id": "KDB00667",
+  "chac": "cao",
+  "ly_do": "Cùng nguyên tố vì cùng số proton, khái niệm"
+ },
+ {
+  "ma_cau": "K07010201086",
+  "dang_bai_id": "KDB00667",
+  "chac": "cao",
+  "ly_do": "Cùng nguyên tố vì cùng số proton, khái niệm"
+ },
+ {
+  "ma_cau": "K07010201087",
+  "dang_bai_id": "KDB00667",
+  "chac": "cao",
+  "ly_do": "Cùng nguyên tố vì cùng số proton, khái niệm"
+ },
+ {
+  "ma_cau": "K07010201088",
+  "dang_bai_id": "KDB00668",
+  "chac": "cao",
+  "ly_do": "Chọn kí hiệu đúng từ tên nguyên tố"
+ },
+ {
+  "ma_cau": "K07010201089",
+  "dang_bai_id": "KDB00668",
+  "chac": "cao",
+  "ly_do": "Chọn kí hiệu đúng từ tên nguyên tố"
+ },
+ {
+  "ma_cau": "K07010201090",
+  "dang_bai_id": "KDB00668",
+  "chac": "cao",
+  "ly_do": "Cho kí hiệu/tên, hỏi phần còn lại, trong 20 nguyên tố đầu"
+ },
+ {
+  "ma_cau": "K07010201091",
+  "dang_bai_id": "KDB00668",
+  "chac": "cao",
+  "ly_do": "Cho kí hiệu/tên, hỏi phần còn lại, trong 20 nguyên tố đầu"
+ },
+ {
+  "ma_cau": "K07010201092",
+  "dang_bai_id": "KDB00668",
+  "chac": "cao",
+  "ly_do": "Cho kí hiệu/tên, hỏi phần còn lại, trong 20 nguyên tố đầu"
+ },
+ {
+  "ma_cau": "K07010201093",
+  "dang_bai_id": "KDB00668",
+  "chac": "vua",
+  "ly_do": "Giải thích vì sao kí hiệu hai chữ cái, gần dạng kí hiệu"
+ },
+ {
+  "ma_cau": "K07010201094",
+  "dang_bai_id": "KDB00668",
+  "chac": "vua",
+  "ly_do": "Giải thích vì sao kí hiệu hai chữ cái, gần dạng kí hiệu"
+ },
+ {
+  "ma_cau": "K07010201095",
+  "dang_bai_id": "KDB00668",
+  "chac": "vua",
+  "ly_do": "Giải thích vì sao kí hiệu hai chữ cái, gần dạng kí hiệu"
+ },
+ {
+  "ma_cau": "K07010201096",
+  "dang_bai_id": "KDB00668",
+  "chac": "vua",
+  "ly_do": "Nguyên tố ngoài 20 nguyên tố đầu; kiểu hỏi kí hiệu khớp"
+ },
+ {
+  "ma_cau": "K07010201097",
+  "dang_bai_id": "KDB00668",
+  "chac": "vua",
+  "ly_do": "Nguyên tố ngoài 20 nguyên tố đầu; kiểu hỏi kí hiệu khớp"
+ },
+ {
+  "ma_cau": "K07010201098",
+  "dang_bai_id": "KDB00668",
+  "chac": "vua",
+  "ly_do": "Nguyên tố ngoài 20 nguyên tố đầu; kiểu hỏi kí hiệu khớp"
+ },
+ {
+  "ma_cau": "K07010201099",
+  "dang_bai_id": "KDB00668",
+  "chac": "vua",
+  "ly_do": "Nguyên tố ngoài 20 nguyên tố đầu; kiểu hỏi kí hiệu khớp"
+ },
+ {
+  "ma_cau": "K07010201100",
+  "dang_bai_id": "KDB00668",
+  "chac": "vua",
+  "ly_do": "Nguyên tố ngoài 20 nguyên tố đầu; kiểu hỏi kí hiệu khớp"
+ },
+ {
+  "ma_cau": "K07010201101",
+  "dang_bai_id": "KDB00668",
+  "chac": "vua",
+  "ly_do": "Nguyên tố ngoài 20 nguyên tố đầu; kiểu hỏi kí hiệu khớp"
+ },
+ {
+  "ma_cau": "K07010201102",
+  "dang_bai_id": "KDB00668",
+  "chac": "vua",
+  "ly_do": "Nguyên tố ngoài 20 nguyên tố đầu; kiểu hỏi kí hiệu khớp"
+ },
+ {
+  "ma_cau": "K07010201103",
+  "dang_bai_id": "KDB00667",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm giống/khác của nguyên tử cùng nguyên tố"
+ },
+ {
+  "ma_cau": "K07010201104",
+  "dang_bai_id": "KDB00667",
+  "chac": "cao",
+  "ly_do": "Hỏi điểm giống/khác của nguyên tử cùng nguyên tố"
+ },
+ {
+  "ma_cau": "K07010201105",
+  "dang_bai_id": "KDB00668",
+  "chac": "vua",
+  "ly_do": "Cho kí hiệu hỏi tên, cobalt ngoài 20 nguyên tố đầu"
+ },
+ {
+  "ma_cau": "K07010201106",
+  "dang_bai_id": "KDB00669",
+  "chac": "cao",
+  "ly_do": "Xét cách viết hoa-thường sai, bị hiểu thành nguyên tố khác"
+ },
+ {
+  "ma_cau": "K07010201107",
+  "dang_bai_id": "KDB00669",
+  "chac": "cao",
+  "ly_do": "Xét cách viết hoa-thường sai, bị hiểu thành nguyên tố khác"
+ },
+ {
+  "ma_cau": "K07010201108",
+  "dang_bai_id": "KDB00669",
+  "chac": "cao",
+  "ly_do": "Xét cách viết hoa-thường sai, bị hiểu thành nguyên tố khác"
+ },
+ {
+  "ma_cau": "K07010201109",
+  "dang_bai_id": "KDB00669",
+  "chac": "cao",
+  "ly_do": "Xét cách viết hoa-thường sai, bị hiểu thành nguyên tố khác"
+ },
+ {
+  "ma_cau": "K07010201110",
+  "dang_bai_id": "KDB00669",
+  "chac": "cao",
+  "ly_do": "Xét cách viết hoa-thường sai, bị hiểu thành nguyên tố khác"
+ },
+ {
+  "ma_cau": "K07010301081",
+  "dang_bai_id": "KDB00672",
+  "chac": "cao",
+  "ly_do": "Đọc thông tin trong ô nguyên tố"
+ },
+ {
+  "ma_cau": "K07010301082",
+  "dang_bai_id": "KDB00672",
+  "chac": "cao",
+  "ly_do": "Đọc thông tin trong ô nguyên tố"
+ },
+ {
+  "ma_cau": "K07010301083",
+  "dang_bai_id": "KDB00672",
+  "chac": "cao",
+  "ly_do": "Đọc thông tin trong ô nguyên tố"
+ },
+ {
+  "ma_cau": "K07010301084",
+  "dang_bai_id": "KDB00672",
+  "chac": "cao",
+  "ly_do": "Đọc thông tin trong ô nguyên tố"
+ },
+ {
+  "ma_cau": "K07010301085",
+  "dang_bai_id": "KDB00672",
+  "chac": "cao",
+  "ly_do": "Đọc thông tin trong ô nguyên tố"
+ },
+ {
+  "ma_cau": "K07010301086",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: nguyên tắc sắp xếp bảng tuần hoàn theo điện tích hạt nhân"
+ },
+ {
+  "ma_cau": "K07010301087",
+  "dang_bai_id": "KDB00673",
+  "chac": "cao",
+  "ly_do": "Khái niệm chu kì, nhóm"
+ },
+ {
+  "ma_cau": "K07010301088",
+  "dang_bai_id": "KDB00673",
+  "chac": "cao",
+  "ly_do": "Khái niệm chu kì, nhóm"
+ },
+ {
+  "ma_cau": "K07010301089",
+  "dang_bai_id": "KDB00673",
+  "chac": "vua",
+  "ly_do": "Đặc điểm chung cùng chu kì, dữ kiện số lớp electron"
+ },
+ {
+  "ma_cau": "K07010301090",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: nguyên tắc sắp xếp theo số hiệu nguyên tử (argon-potassium)"
+ },
+ {
+  "ma_cau": "K07010301091",
+  "dang_bai_id": "KDB00673",
+  "chac": "vua",
+  "ly_do": "So vị trí hai nguyên tố từ cấu tạo electron, thiếu dạng suy vị trí"
+ },
+ {
+  "ma_cau": "K07010301092",
+  "dang_bai_id": "KDB00674",
+  "chac": "cao",
+  "ly_do": "Phân loại kim loại, phi kim, khí hiếm"
+ },
+ {
+  "ma_cau": "K07010301093",
+  "dang_bai_id": "KDB00674",
+  "chac": "cao",
+  "ly_do": "Phân loại kim loại, phi kim, khí hiếm"
+ },
+ {
+  "ma_cau": "K07010301094",
+  "dang_bai_id": "KDB00674",
+  "chac": "cao",
+  "ly_do": "Phân loại kim loại, phi kim, khí hiếm"
+ },
+ {
+  "ma_cau": "K07010301095",
+  "dang_bai_id": "KDB00674",
+  "chac": "cao",
+  "ly_do": "Phân loại kim loại, phi kim, khí hiếm"
+ },
+ {
+  "ma_cau": "K07010301096",
+  "dang_bai_id": "KDB00674",
+  "chac": "cao",
+  "ly_do": "Phân loại kim loại, phi kim, khí hiếm"
+ },
+ {
+  "ma_cau": "K07010301097",
+  "dang_bai_id": "KDB00674",
+  "chac": "cao",
+  "ly_do": "Phân loại kim loại, phi kim, khí hiếm"
+ },
+ {
+  "ma_cau": "K07010102075",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: lý thuyết khối lượng nguyên tử tập trung ở hạt nhân, khối lượng các hạt"
+ },
+ {
+  "ma_cau": "K07010102076",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: lý thuyết khối lượng nguyên tử tập trung ở hạt nhân, khối lượng các hạt"
+ },
+ {
+  "ma_cau": "K07010102077",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: lý thuyết khối lượng nguyên tử tập trung ở hạt nhân, khối lượng các hạt"
+ },
+ {
+  "ma_cau": "K07010102078",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: lý thuyết khối lượng nguyên tử tập trung ở hạt nhân, khối lượng các hạt"
+ },
+ {
+  "ma_cau": "K07010102079",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: lý thuyết khối lượng nguyên tử tập trung ở hạt nhân, khối lượng các hạt"
+ },
+ {
+  "ma_cau": "K07010102080",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: lý thuyết khối lượng nguyên tử tập trung ở hạt nhân, khối lượng các hạt"
+ },
+ {
+  "ma_cau": "K07010102081",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Lạc nhóm: thuộc Nguyên tử trung hòa về điện (KNB00296)"
+ },
+ {
+  "ma_cau": "K07010102082",
+  "dang_bai_id": "KDB00661",
+  "chac": "cao",
+  "ly_do": "Suy số hạt còn thiếu từ số hiệu/khối lượng"
+ },
+ {
+  "ma_cau": "K07010102083",
+  "dang_bai_id": "KDB00661",
+  "chac": "cao",
+  "ly_do": "Suy số hạt còn thiếu từ số hiệu/khối lượng"
+ },
+ {
+  "ma_cau": "K07010102084",
+  "dang_bai_id": "KDB00661",
+  "chac": "cao",
+  "ly_do": "Suy số hạt còn thiếu từ số hiệu/khối lượng"
+ },
+ {
+  "ma_cau": "K07010102085",
+  "dang_bai_id": "KDB00661",
+  "chac": "cao",
+  "ly_do": "Suy số hạt còn thiếu từ số hiệu/khối lượng"
+ },
+ {
+  "ma_cau": "K07010102086",
+  "dang_bai_id": "KDB00661",
+  "chac": "vua",
+  "ly_do": "Cho tổng hạt mang điện, tìm proton; không đúng biến thể mô tả"
+ },
+ {
+  "ma_cau": "K07010102087",
+  "dang_bai_id": "KDB00661",
+  "chac": "vua",
+  "ly_do": "Cho tổng hạt mang điện, tìm proton; không đúng biến thể mô tả"
+ },
+ {
+  "ma_cau": "K07010102088",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: công thức khối lượng nguyên tử xấp xỉ p + n, lý thuyết"
+ },
+ {
+  "ma_cau": "K07010102089",
+  "dang_bai_id": "KDB00662",
+  "chac": "vua",
+  "ly_do": "Giải thích khối lượng nguyên tử từ p và n, dạng lý thuyết"
+ },
+ {
+  "ma_cau": "K07010102090",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: so sánh nguyên tử cùng proton khác neutron (khái niệm)"
+ },
+ {
+  "ma_cau": "K07010102091",
+  "dang_bai_id": "KDB00661",
+  "chac": "cao",
+  "ly_do": "Biết khối lượng và proton, tìm neutron"
+ },
+ {
+  "ma_cau": "K07010102092",
+  "dang_bai_id": "KDB00661",
+  "chac": "cao",
+  "ly_do": "Biết khối lượng và proton, tìm neutron"
+ },
+ {
+  "ma_cau": "K07010102093",
+  "dang_bai_id": "KDB00662",
+  "chac": "cao",
+  "ly_do": "Cho proton và neutron, tính khối lượng nguyên tử"
+ },
+ {
+  "ma_cau": "K07010202081",
+  "dang_bai_id": "KDB00670",
+  "chac": "cao",
+  "ly_do": "Từ số proton hoặc electron xác định nguyên tố"
+ },
+ {
+  "ma_cau": "K07010202082",
+  "dang_bai_id": "KDB00670",
+  "chac": "cao",
+  "ly_do": "Từ số proton hoặc electron xác định nguyên tố"
+ },
+ {
+  "ma_cau": "K07010202083",
+  "dang_bai_id": "KDB00670",
+  "chac": "cao",
+  "ly_do": "Từ số proton hoặc electron xác định nguyên tố"
+ },
+ {
+  "ma_cau": "K07010202084",
+  "dang_bai_id": "KDB00670",
+  "chac": "cao",
+  "ly_do": "Từ số proton hoặc electron xác định nguyên tố"
+ },
+ {
+  "ma_cau": "K07010202085",
+  "dang_bai_id": "KDB00671",
+  "chac": "cao",
+  "ly_do": "Tìm nguyên tử cùng nguyên tố theo số proton"
+ },
+ {
+  "ma_cau": "K07010202086",
+  "dang_bai_id": "KDB00671",
+  "chac": "cao",
+  "ly_do": "Tìm nguyên tử cùng nguyên tố theo số proton"
+ },
+ {
+  "ma_cau": "K07010202087",
+  "dang_bai_id": "KDB00671",
+  "chac": "cao",
+  "ly_do": "Tìm nguyên tử cùng nguyên tố theo số proton"
+ },
+ {
+  "ma_cau": "K07010202088",
+  "dang_bai_id": "KDB00671",
+  "chac": "cao",
+  "ly_do": "Tìm nguyên tử cùng nguyên tố theo số proton"
+ },
+ {
+  "ma_cau": "K07010202089",
+  "dang_bai_id": "KDB00671",
+  "chac": "cao",
+  "ly_do": "Tìm nguyên tử cùng nguyên tố theo số proton"
+ },
+ {
+  "ma_cau": "K07010202090",
+  "dang_bai_id": "KDB00671",
+  "chac": "cao",
+  "ly_do": "Tìm nguyên tử cùng nguyên tố theo số proton"
+ },
+ {
+  "ma_cau": "K07010202091",
+  "dang_bai_id": "KDB00671",
+  "chac": "cao",
+  "ly_do": "Tìm nguyên tử cùng nguyên tố theo số proton"
+ },
+ {
+  "ma_cau": "K07010202092",
+  "dang_bai_id": "KDB00671",
+  "chac": "cao",
+  "ly_do": "Tìm nguyên tử cùng nguyên tố theo số proton"
+ },
+ {
+  "ma_cau": "K07010202093",
+  "dang_bai_id": "KDB00671",
+  "chac": "cao",
+  "ly_do": "Tìm nguyên tử cùng nguyên tố theo số proton"
+ },
+ {
+  "ma_cau": "K07010202094",
+  "dang_bai_id": "KDB00670",
+  "chac": "cao",
+  "ly_do": "Từ số electron suy proton, chọn tên và kí hiệu đúng"
+ },
+ {
+  "ma_cau": "K07010202095",
+  "dang_bai_id": "KDB00670",
+  "chac": "cao",
+  "ly_do": "Từ số electron suy proton, chọn tên và kí hiệu đúng"
+ },
+ {
+  "ma_cau": "K07010202096",
+  "dang_bai_id": "KDB00670",
+  "chac": "cao",
+  "ly_do": "Từ số electron suy proton, chọn tên và kí hiệu đúng"
+ },
+ {
+  "ma_cau": "K07010202097",
+  "dang_bai_id": "KDB00670",
+  "chac": "cao",
+  "ly_do": "Từ số electron suy proton, chọn tên và kí hiệu đúng"
+ },
+ {
+  "ma_cau": "K07010202098",
+  "dang_bai_id": "KDB00670",
+  "chac": "cao",
+  "ly_do": "Từ số electron suy proton, chọn tên và kí hiệu đúng"
+ },
+ {
+  "ma_cau": "K07010202099",
+  "dang_bai_id": "KDB00670",
+  "chac": "cao",
+  "ly_do": "Từ số electron suy proton, chọn tên và kí hiệu đúng"
+ },
+ {
+  "ma_cau": "K07010202100",
+  "dang_bai_id": "KDB00670",
+  "chac": "cao",
+  "ly_do": "Từ số electron suy proton, chọn tên và kí hiệu đúng"
+ },
+ {
+  "ma_cau": "K07010202101",
+  "dang_bai_id": "KDB00670",
+  "chac": "cao",
+  "ly_do": "Từ số electron suy proton, chọn tên và kí hiệu đúng"
+ },
+ {
+  "ma_cau": "K07010202102",
+  "dang_bai_id": "KDB00671",
+  "chac": "cao",
+  "ly_do": "Xét cùng nguyên tố theo proton, neutron nhiễu"
+ },
+ {
+  "ma_cau": "K07010202103",
+  "dang_bai_id": "KDB00671",
+  "chac": "cao",
+  "ly_do": "Xét cùng nguyên tố theo proton, neutron nhiễu"
+ },
+ {
+  "ma_cau": "K07010202104",
+  "dang_bai_id": "KDB00671",
+  "chac": "cao",
+  "ly_do": "Xét cùng nguyên tố theo proton, neutron nhiễu"
+ },
+ {
+  "ma_cau": "K07010103100",
+  "dang_bai_id": "KDB00664",
+  "chac": "cao",
+  "ly_do": "Cho tổng hạt và hiệu hạt mang điện với không mang điện"
+ },
+ {
+  "ma_cau": "K07010103101",
+  "dang_bai_id": "KDB00664",
+  "chac": "cao",
+  "ly_do": "Cho tổng hạt và hiệu hạt mang điện với không mang điện"
+ },
+ {
+  "ma_cau": "K07010103102",
+  "dang_bai_id": "KDB00664",
+  "chac": "cao",
+  "ly_do": "Cho tổng hạt và hiệu hạt mang điện với không mang điện"
+ },
+ {
+  "ma_cau": "K07010103103",
+  "dang_bai_id": "KDB00664",
+  "chac": "cao",
+  "ly_do": "Cho tổng hạt và hiệu hạt mang điện với không mang điện"
+ },
+ {
+  "ma_cau": "K07010103104",
+  "dang_bai_id": "KDB00664",
+  "chac": "cao",
+  "ly_do": "Cho tổng hạt và hiệu hạt mang điện với không mang điện"
+ },
+ {
+  "ma_cau": "K07010103105",
+  "dang_bai_id": "KDB00663",
+  "chac": "vua",
+  "ly_do": "Cho tổng hạt và neutron (hoặc ngược lại), gần dạng tổng số hạt một bước"
+ },
+ {
+  "ma_cau": "K07010103106",
+  "dang_bai_id": "KDB00663",
+  "chac": "vua",
+  "ly_do": "Cho tổng hạt và neutron (hoặc ngược lại), gần dạng tổng số hạt một bước"
+ },
+ {
+  "ma_cau": "K07010103107",
+  "dang_bai_id": "KDB00663",
+  "chac": "vua",
+  "ly_do": "Cho tổng hạt và neutron (hoặc ngược lại), gần dạng tổng số hạt một bước"
+ },
+ {
+  "ma_cau": "K07010103108",
+  "dang_bai_id": "KDB00663",
+  "chac": "vua",
+  "ly_do": "Cho tổng hạt và neutron (hoặc ngược lại), gần dạng tổng số hạt một bước"
+ },
+ {
+  "ma_cau": "K07010103109",
+  "dang_bai_id": "KDB00663",
+  "chac": "vua",
+  "ly_do": "Cho tổng hạt và neutron (hoặc ngược lại), gần dạng tổng số hạt một bước"
+ }
+]

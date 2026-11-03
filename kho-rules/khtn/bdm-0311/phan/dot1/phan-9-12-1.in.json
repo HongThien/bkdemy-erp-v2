@@ -1,0 +1,903 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00574",
+   "chu_de": "Di truyền Nhiễm sắc thể",
+   "chuyen_de": "Nhiễm sắc thể giới tính & cơ chế xác định giới tính",
+   "nhom": "Viết sơ đồ cơ chế xác định giới tính",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nỞ người: mẹ XX giảm phân tạo một loại trứng (X); bố XY giảm phân tạo hai loại tinh trùng (X và Y) với số lượng ngang nhau (tỉ lệ 1 : 1).\nSơ đồ lai: P: XX (mẹ) × XY (bố); G: X; X, Y; F₁: 1 XX (gái) : 1 XY (trai).\nNST X của con trai nhận từ mẹ, NST Y nhận từ bố.\nTỉ lệ con trai : con gái xấp xỉ 1 : 1 vì hai loại tinh trùng X và Y được tạo ra ngang nhau và xác suất thụ tinh với trứng như nhau.\nMỗi lần sinh là một sự kiện độc lập, xác suất sinh con trai hay con gái luôn xấp xỉ 1/2.\n\n##PP 2. Các bước làm bài\nViết kiểu gene giới tính của bố mẹ (XX hoặc XY).\nViết các loại giao tử của bố mẹ.\nLập sơ đồ lai, đọc tỉ lệ kiểu gene giới tính ở con rồi suy ra giới tính.\n\n##CY 3. Lưu ý\nBố là người quyết định giới tính của con vì chỉ có bố tạo hai loại giao tử.\nTỉ lệ 1 : 1 là tỉ lệ xấp xỉ khi số lượng lớn, không áp dụng chính xác cho từng gia đình.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01619",
+     "thu_tu": 1,
+     "ten": "Loại giao tử và vai trò của bố, mẹ",
+     "mo_ta": "Đề hỏi loại và tỉ lệ giao tử về NST giới tính của bố hoặc mẹ, nguồn gốc NST X và Y của con, bố hay mẹ quyết định giới tính của con.\nLàm bằng cách viết giao tử từ XX và XY rồi suy luận.\nLưu ý: đề yêu cầu viết sơ đồ lai, tính tỉ lệ đời con hay giải thích tỉ lệ 1 : 1 ⇒ thuộc dạng \"Sơ đồ lai xác định giới tính, tỉ lệ đời con\".",
+     "ly_thuyet": "##TC Giao tử và vai trò bố mẹ\nMẹ XX: một loại trứng X. Bố XY: hai loại tinh trùng, X và Y, tỉ lệ 1 : 1.\nCon trai (XY) nhận Y từ bố, X từ mẹ.\nBố quyết định giới tính con vì loại tinh trùng thụ tinh quyết định hợp tử là XX hay XY.",
+     "vi_du": "##VD\nỞ người, mẹ (mang cặp NST XX) khi giảm phân chỉ tạo ra một loại trứng mang NST giới tính nào?\nA. X\nB. X hoặc Y tuỳ theo lần rụng trứng\nC. Không mang NST giới tính\nD. Y\n\nBài giải:\nMẹ có cặp NST XX nên mọi tế bào trứng sau giảm phân đều mang một NST X.\nVậy mẹ chỉ tạo một loại trứng mang X (phương án A).\nChọn A.\n\n##VD\nỞ người, giới tính của con được quyết định bởi loại tinh trùng nào thụ tinh với trứng. Nhận định hợp lí nhất về vai trò của bố và mẹ trong việc quyết định giới tính con là\nA. Mẹ, vì trứng luôn mang NST X\nB. Bố, vì bố tạo hai loại tinh trùng X và Y\nC. Cả bố và mẹ, mỗi người quyết định một nửa\nD. Mẹ, vì chế độ ăn khi mang thai quyết định\n\nBài giải:\nTrứng của mẹ luôn mang X; con trai hay con gái do tinh trùng mang X hay Y thụ tinh quyết định.\nBố tạo hai loại tinh trùng X và Y nên bố quyết định giới tính con (phương án B).\nChế độ ăn của mẹ khi mang thai không quyết định giới tính (loại D).\nChọn B."
+    },
+    {
+     "dang_id": "KDB01620",
+     "thu_tu": 2,
+     "ten": "Sơ đồ lai xác định giới tính, tỉ lệ đời con",
+     "mo_ta": "Đề cho sơ đồ lai P: XX × XY, hỏi tỉ lệ kiểu gene giới tính đời con; hoặc giải thích vì sao tỉ lệ trai : gái xấp xỉ 1 : 1, đối chiếu số liệu thống kê, tính xác suất sinh con trai hoặc con gái.\nLàm bằng cách viết giao tử, lập sơ đồ lai rồi đọc tỉ lệ.\nLưu ý: câu chỉ hỏi loại giao tử, không cần lập sơ đồ lai ⇒ thuộc dạng \"Loại giao tử và vai trò của bố, mẹ\".",
+     "ly_thuyet": "##TC Sơ đồ lai giới tính\nP: Mẹ XX × Bố XY.\nG: X; X, Y.\nF₁: 1 XX (gái) : 1 XY (trai).\nTỉ lệ trai : gái xấp xỉ 1 : 1.\n\n##PP Cách làm\nViết kiểu gene giới tính của bố mẹ.\nViết giao tử của bố và mẹ.\nKẻ bảng tổ hợp giao tử (hoặc nối các giao tử).\nĐọc tỉ lệ kiểu gene rồi suy ra tỉ lệ giới tính.\n\n##CY Chú ý\nMỗi lần sinh độc lập, đã sinh nhiều con gái liên tiếp thì lần sau xác suất con trai vẫn xấp xỉ 1/2.",
+     "vi_du": "##VD\nSơ đồ lai xác định giới tính ở người: P: Mẹ (XX) × Bố (XY). Tỉ lệ kiểu gene ở đời con (F₁) về cặp NST giới tính là bao nhiêu?\nA. 1 XX : 1 XY\nB. 1 XX : 3 XY\nC. 3 XX : 1 XY\nD. 100% XX\n\nBài giải:\nMẹ XX cho một loại trứng X; bố XY cho hai loại tinh trùng X và Y với tỉ lệ 1 : 1.\nTổ hợp: X + X = XX; X + Y = XY.\nF₁: 1 XX : 1 XY (phương án A).\nChọn A.\n\n##VD\nMột cặp vợ chồng đã sinh 4 con gái liên tiếp. Theo cơ chế xác định giới tính bằng NST, xác suất để lần sinh thứ 5 là con trai là bao nhiêu?\nA. Vẫn xấp xỉ 1/2, vì mỗi lần sinh độc lập với các lần trước\nB. Cao hơn 1/2, vì đã sinh 4 con gái nên lần này \"phải\" là con trai\nC. Thấp hơn 1/2, vì cơ thể mẹ đã quen sinh con gái\nD. Bằng 0, vì bố mẹ chỉ có khả năng sinh con gái\n\nBài giải:\nGiới tính của con được quyết định bởi loại tinh trùng (X hoặc Y) thụ tinh, xác suất mỗi loại là 1/2.\nMỗi lần sinh độc lập với các lần trước nên xác suất sinh con trai ở lần thứ 5 vẫn xấp xỉ 1/2 (phương án A).\nChọn A."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00578",
+   "chu_de": "Di truyền Nhiễm sắc thể",
+   "chuyen_de": "Di truyền liên kết",
+   "nhom": "Viết giao tử và Ý nghĩa của viết giao tử",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nKiểu gene viết dạng $\\dfrac{AB}{ab}$ (hai gene trên cùng một NST, gạch ngang phân cách hai NST của một cặp tương đồng).\nLiên kết hoàn toàn: không xảy ra trao đổi đoạn, các gene trên cùng NST luôn đi cùng nhau vào giao tử.\nCơ thể dị hợp hai cặp gene liên kết hoàn toàn cho 2 loại giao tử, mỗi loại 50%: $\\dfrac{AB}{ab}\\rightarrow AB,\\ ab$; $\\dfrac{Ab}{aB}\\rightarrow Ab,\\ aB$.\nCơ thể dị hợp hai cặp gene phân li độc lập $AaBb$ cho 4 loại giao tử $AB, Ab, aB, ab$ (mỗi loại 25%).\nSố giao tử mỗi loại $=$ tổng số giao tử $\\times$ tỉ lệ loại đó.\n\n##PP 2. Các bước làm bài\nXác định các gene nằm cùng NST (liên kết) hay khác NST (phân li độc lập).\nXem mỗi NST của cặp mang tổ hợp gene nào (viết đúng dạng $\\dfrac{AB}{ab}$ hay $\\dfrac{Ab}{aB}$).\nMỗi NST cho một loại giao tử mang nguyên tổ hợp gene đó.\nTính tỉ lệ hoặc số lượng từng loại giao tử nếu đề yêu cầu.\n\n##CY 3. Lưu ý\nLiên kết hoàn toàn thì không cho các giao tử có tổ hợp mới (AB/ab không cho Ab hay aB).\nHai kiểu gene dị hợp $\\dfrac{AB}{ab}$ và $\\dfrac{Ab}{aB}$ cho giao tử khác nhau.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01623",
+     "thu_tu": 1,
+     "ten": "Số loại giao tử: liên kết và phân li độc lập",
+     "mo_ta": "Đề cho cơ thể dị hợp hai cặp gene, hỏi số loại giao tử khi hai cặp gene liên kết hoàn toàn hoặc khi phân li độc lập.\nLàm bằng cách xem hai cặp gene cùng NST hay khác NST rồi đếm loại giao tử.\nLưu ý: đề hỏi tên cụ thể các loại giao tử ⇒ thuộc dạng \"Viết các loại giao tử của cơ thể liên kết hoàn toàn\".",
+     "ly_thuyet": "##TC Số loại giao tử\nDị hợp hai cặp gene liên kết hoàn toàn: 2 loại giao tử.\nDị hợp hai cặp gene phân li độc lập: 4 loại giao tử.\n\n##CY Chú ý\nCùng kiểu gene dị hợp hai cặp gene nhưng liên kết hay phân li độc lập thì số loại giao tử khác nhau.",
+     "vi_du": "##VD\nCơ thể dị hợp hai cặp gene (AaBb), nếu hai cặp gene này liên kết hoàn toàn trên một NST, giảm phân cho mấy loại giao tử?\nA. 4 loại\nB. 3 loại\nC. 1 loại\nD. 2 loại\n\nBài giải:\nHai cặp gene liên kết hoàn toàn trên một NST nên mỗi NST chuyển nguyên tổ hợp gene vào giao tử.\nCơ thể dị hợp có hai NST khác nhau nên cho 2 loại giao tử (phương án D).\nChọn D.\n\n##VD\nCơ thể dị hợp hai cặp gene AaBb, nếu hai cặp gene này phân li độc lập (nằm trên hai NST khác nhau), giảm phân cho mấy loại giao tử?\nA. 2 loại\nB. 4 loại\nC. 8 loại\nD. 1 loại\n\nBài giải:\nHai cặp gene phân li độc lập nên mỗi cặp gene phân li riêng rẽ, các giao tử tổ hợp tự do: $2\\cdot2=4$ loại giao tử (AB, Ab, aB, ab) (phương án B).\nChọn B."
+    },
+    {
+     "dang_id": "KDB01624",
+     "thu_tu": 2,
+     "ten": "Viết các loại giao tử của cơ thể liên kết hoàn toàn",
+     "mo_ta": "Đề cho kiểu gene dạng AB/ab hoặc Ab/aB (liên kết hoàn toàn), hỏi các loại giao tử mà cơ thể tạo ra.\nLàm bằng cách mỗi NST của cặp cho một loại giao tử mang nguyên tổ hợp gene.\nLưu ý: đề chỉ hỏi số loại hoặc tính tỉ lệ, số lượng giao tử ⇒ thuộc dạng \"Số loại giao tử: liên kết và phân li độc lập\" hoặc \"Tính tỉ lệ và số lượng từng loại giao tử\".",
+     "ly_thuyet": "##TC Quy tắc viết giao tử\nCơ thể $\\dfrac{AB}{ab}$ cho giao tử $AB$ và $ab$.\nCơ thể $\\dfrac{Ab}{aB}$ cho giao tử $Ab$ và $aB$.\n\n##PP Cách làm\nXác định hai NST của cặp, ghi tổ hợp gene trên mỗi NST.\nMỗi NST cho một loại giao tử, không đổi tổ hợp.\n\n##CY Chú ý\nKhông viết thêm các tổ hợp mới như $Ab$ cho cơ thể $\\dfrac{AB}{ab}$ khi liên kết hoàn toàn.",
+     "vi_du": "##VD\nHai gene liên kết hoàn toàn trên một nhiễm sắc thể. Cơ thể có kiểu gene Ab/aB giảm phân cho các loại giao tử nào?\nA. AB và ab\nB. AB, Ab, aB và ab\nC. Ab và aB\nD. A, a, B và b\n\nBài giải:\nAb/aB liên kết hoàn toàn nên mỗi NST đi nguyên vào giao tử.\nNST thứ nhất mang Ab, NST thứ hai mang aB.\nVậy giao tử là Ab và aB (phương án C).\nChọn C.\n\n##VD\nỞ ruồi giấm đực, gene quy định màu thân và độ dài cánh liên kết hoàn toàn. Ruồi đực có kiểu gene BV/bv cho các loại giao tử nào?\nA. BV, Bv, bV và bv\nB. BV và bv\nC. Bv và bV\nD. Bb và Vv\n\nBài giải:\nRuồi đực BV/bv liên kết hoàn toàn: một NST mang BV, NST kia mang bv.\nCho hai loại giao tử BV và bv (phương án B).\nChọn B."
+    },
+    {
+     "dang_id": "KDB01625",
+     "thu_tu": 3,
+     "ten": "Tính tỉ lệ và số lượng từng loại giao tử",
+     "mo_ta": "Đề cho kiểu gene liên kết hoàn toàn, hỏi tỉ lệ một loại giao tử cụ thể hoặc số giao tử mang tổ hợp gene nào đó khi tạo ra một số lượng giao tử.\nLàm bằng cách xác định các loại giao tử, tỉ lệ rồi nhân với tổng số giao tử.\nLưu ý: đề chỉ hỏi liệt kê loại giao tử ⇒ thuộc dạng \"Viết các loại giao tử của cơ thể liên kết hoàn toàn\".",
+     "ly_thuyet": "##TC Tỉ lệ giao tử\nCơ thể dị hợp hai cặp gene liên kết hoàn toàn cho 2 loại giao tử với tỉ lệ 1 : 1 (50% mỗi loại).\nLoại giao tử không có trong kết quả giảm phân có tỉ lệ 0%.\nSố giao tử loại X $=$ tổng giao tử $\\times$ tỉ lệ của X.\n\n##PP Cách làm\nViết các loại giao tử.\nXác định tỉ lệ của loại đề hỏi (0% nếu không có).\nNhân với tổng số giao tử nếu đề hỏi số lượng.",
+     "vi_du": "##VD\nHai gene liên kết hoàn toàn trên một nhiễm sắc thể. Cơ thể Ab/aB tạo giao tử AB với tỉ lệ bao nhiêu?\nA. 25%\nB. 50%\nC. 0%\nD. 100%\n\nBài giải:\nAb/aB liên kết hoàn toàn chỉ cho hai loại giao tử là Ab và aB, mỗi loại 50%.\nGiao tử AB không được tạo ra nên tỉ lệ bằng 0% (phương án C).\nChọn C.\n\n##VD\nMột cơ thể có kiểu gene AB/ab (hai gene liên kết hoàn toàn) giảm phân tạo ra 4000 giao tử. Số giao tử mang tổ hợp gene AB là bao nhiêu?\nA. 2000\nB. 4000\nC. 1000\nD. 0\n\nBài giải:\nAB/ab cho hai loại giao tử AB và ab với tỉ lệ 1 : 1, mỗi loại 50%.\nSố giao tử AB $=4000\\cdot50\\%=2000$ (phương án A).\nChọn A."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00582",
+   "chu_de": "Di truyền Nhiễm sắc thể",
+   "chuyen_de": "Đột biến NST",
+   "nhom": "Các dạng bài tập tính toán cơ bản về đột biến NST",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nSố NST của các thể đột biến số lượng, với bộ lưỡng bội bình thường $2n$ và bộ đơn bội $n=\\dfrac{2n}{2}$:\nThể ba: $2n+1$. Thể một: $2n-1$. Thể không: $2n-2$.\nThể tam bội: $3n$. Thể tứ bội: $4n$.\nHội chứng Down (thể ba): 47 NST. Hội chứng Turner (thể một): 45 NST.\n\n##PP 2. Các bước làm bài\nXác định đề cho $2n$ hay cho $n$ (nếu cho $n$ thì tính $2n=2\\cdot n$ khi cần).\nXác định tên thể đột biến.\nÁp dụng công thức tương ứng để tính tổng số NST.\nNếu đề so sánh hai thể, tính từng thể rồi trừ.\n\n##CY 3. Lưu ý\nThể lệch bội chỉ thêm hoặc bớt 1 NST (hoặc 2 NST với thể không); thể đa bội tăng nguyên cả bộ.\nThể tam bội $3n$ lớn hơn nhiều so với thể ba $2n+1$.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01634",
+     "thu_tu": 1,
+     "ten": "Tính tổng số NST của thể lệch bội",
+     "mo_ta": "Đề cho bộ NST lưỡng bội 2n (của người hoặc của một loài), nêu thể đột biến (thể ba, thể một, thể không, hội chứng Down, Turner), hỏi tổng số NST trong tế bào.\nLàm bằng cách áp dụng $2n+1$, $2n-1$, $2n-2$.\nLưu ý: đề nói thể tam bội hoặc tứ bội ⇒ thuộc dạng \"Tính tổng số NST của thể đa bội\".",
+     "ly_thuyet": "##TC Công thức\nThể ba: $2n+1$. Thể một: $2n-1$. Thể không: $2n-2$.\nNgười mắc hội chứng Down có $46+1=47$ NST; người mắc hội chứng Turner có $46-1=45$ NST.\n\n##PP Cách làm\nXác định $2n$.\nXác định thể lệch bội và áp dụng công thức.\n\n##CY Chú ý\nThể không thiếu cả cặp, nên số NST giảm đi 2.",
+     "vi_du": "##VD\nỞ người, bộ nhiễm sắc thể lưỡng bội bình thường là 2n = 46. Người mắc hội chứng Down do thừa một NST số 21 có tổng số NST là bao nhiêu?\nA. 45\nB. 47\nC. 48\nD. 92\n\nBài giải:\nNgười có $2n=46$. Hội chứng Down là thể ba ở NST số 21, thừa 1 NST: $2n+1=46+1=47$.\nChọn B.\n\n##VD\nỞ người, 2n = 46. Người mắc hội chứng Turner (thể một ở cặp NST giới tính, chỉ có 1 NST X). Tổng số NST là bao nhiêu?\nA. 47\nB. 44\nC. 46\nD. 45\n\nBài giải:\nNgười có $2n=46$. Hội chứng Turner chỉ có 1 NST X, thiếu 1 NST giới tính (thể một): $2n-1=46-1=45$.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01635",
+     "thu_tu": 2,
+     "ten": "Tính tổng số NST của thể đa bội",
+     "mo_ta": "Đề cho bộ NST lưỡng bội 2n hoặc đơn bội n của một loài, hỏi tổng số NST của thể tam bội hoặc tứ bội.\nLàm bằng cách tính $3n$ hoặc $4n$ (nếu cho 2n thì chia đôi để được n).\nLưu ý: đề nói thể ba, thể một, thể không ⇒ thuộc dạng \"Tính tổng số NST của thể lệch bội\".",
+     "ly_thuyet": "##TC Công thức\nThể tam bội $=3n$ và thể tứ bội $=4n$, trong đó $n=\\dfrac{2n}{2}$.\nĐa bội tăng nguyên cả bộ NST, không chỉ một cặp.\n\n##PP Cách làm\nXác định $n$ (nếu đề cho $2n$ thì $n=2n:2$).\nNhân với 3 (tam bội) hoặc 4 (tứ bội).",
+     "vi_du": "##VD\nMột loài thực vật có bộ nhiễm sắc thể lưỡng bội bình thường 2n = 24. Thể tứ bội (4n) của loài này có tổng số NST là bao nhiêu?\nA. 48\nB. 36\nC. 25\nD. 23\n\nBài giải:\nThể tứ bội $4n=2\\cdot2n=2\\cdot24=48$ NST (phương án A).\nChọn A.\n\n##VD\nMột loài cây có bộ nhiễm sắc thể đơn bội n = 11. Thể tam bội (3n) của loài này có tổng số NST là bao nhiêu?\nA. 22\nB. 33\nC. 44\nD. 11\n\nBài giải:\nĐề cho $n=11$. Thể tam bội: $3n=3\\cdot11=33$ NST (phương án B).\nChọn B."
+    },
+    {
+     "dang_id": "KDB01636",
+     "thu_tu": 3,
+     "ten": "So sánh số NST giữa các thể đột biến",
+     "mo_ta": "Đề cho một bộ NST rồi so sánh tổng số NST của hai thể đột biến (thể ba với thể tam bội, thể tứ bội với thể một), hỏi thể nào nhiều hơn và hơn bao nhiêu.\nLàm bằng cách tính số NST của từng thể rồi lấy hiệu.\nLưu ý: đề chỉ hỏi số NST của một thể ⇒ thuộc dạng \"Tính tổng số NST của thể lệch bội\" hoặc \"thể đa bội\".",
+     "ly_thuyet": "##TC Cách so sánh\nTính riêng số NST mỗi thể theo công thức của thể đó.\nHiệu số NST $=$ số NST thể lớn $-$ số NST thể bé.\n\n##PP Cách làm\nXác định $2n$ hoặc $n$ của loài.\nTính số NST của thể thứ nhất, thể thứ hai.\nLấy hiệu và kết luận thể nào lớn hơn.",
+     "vi_du": "##VD\nMột loài có bộ NST lưỡng bội 2n = 36. So sánh tổng số NST giữa một cá thể là thể ba (2n+1) và một cá thể là thể tam bội (3n) của loài này, cá thể nào có tổng số NST lớn hơn và lớn hơn bao nhiêu?\nA. Thể ba lớn hơn, hơn 17 NST\nB. Thể tam bội lớn hơn, hơn 1 NST\nC. Hai thể có tổng số NST bằng nhau\nD. Thể tam bội lớn hơn, hơn 17 NST\n\nBài giải:\nThể ba: $2n+1=36+1=37$ NST.\nThể tam bội: $3n=3\\cdot18=54$ NST.\nThể tam bội lớn hơn, hơn $54-37=17$ NST (phương án D).\nChọn D.\n\n##VD\nMột loài cây có bộ NST đơn bội n = 12. Số NST trong tế bào sinh dưỡng của thể tứ bội (4n) nhiều hơn của thể một (2n − 1) bao nhiêu?\nA. 25 NST\nB. 24 NST\nC. 23 NST\nD. 36 NST\n\nBài giải:\nĐề cho $n=12$ nên $2n=24$.\nThể tứ bội: $4n=48$ NST. Thể một: $2n-1=24-1=23$ NST.\nThể tứ bội nhiều hơn: $48-23=25$ NST (phương án A).\nChọn A."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00572",
+   "chu_de": "Di truyền Nhiễm sắc thể",
+   "chuyen_de": "Nguyên phân và giảm phân",
+   "nhom": "Các dạng bài tập tính toán nâng cao về Nguyên phân và giảm phân",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nMột tế bào sinh dục sơ khai nguyên phân liên tiếp $k$ lần tạo $2^k$ tế bào sinh giao tử.\nMỗi tế bào sinh tinh giảm phân bình thường tạo 4 tinh trùng. Mỗi tế bào sinh trứng giảm phân bình thường tạo 1 trứng và 3 thể cực.\nHiệu suất thụ tinh: H = số giao tử được thụ tinh : tổng số giao tử; mỗi giao tử được thụ tinh tạo 1 hợp tử.\n\n##PP 2. Các bước làm bài\nTính số tế bào sinh giao tử $2^k$.\nTính số giao tử (tinh trùng, trứng hoặc thể cực) theo kết quả giảm phân.\nNếu có hiệu suất thụ tinh, nhân số giao tử với $H$ để được số hợp tử (hoặc chia cho $H$ để tìm số giao tử).\n\n##CY 3. Lưu ý\nThể cực không tham gia thụ tinh.\nPhải phân biệt giao tử đực (4 tinh trùng/tế bào) và giao tử cái (1 trứng/tế bào).",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01613",
+     "thu_tu": 1,
+     "ten": "Tính số giao tử từ tế bào sinh dục sơ khai",
+     "mo_ta": "Đề cho tế bào sinh dục sơ khai (đực hoặc cái) nguyên phân k lần rồi giảm phân bình thường, hỏi tổng số tinh trùng, trứng hoặc thể cực, hoặc so sánh số tinh trùng với số trứng.\nLàm bằng cách tính $2^k$ rồi nhân với số giao tử mỗi tế bào tạo ra.\nLưu ý: đề có hiệu suất thụ tinh, hỏi số hợp tử ⇒ thuộc dạng \"Tính số hợp tử, giao tử theo hiệu suất thụ tinh\".",
+     "ly_thuyet": "##TC Số giao tử\nTế bào sinh tinh: 1 tế bào tạo 4 tinh trùng. Tế bào sinh trứng: 1 tế bào tạo 1 trứng và 3 thể cực.\nTừ 1 tế bào sinh dục sơ khai nguyên phân $k$ lần: số tinh trùng $=2^k\\cdot4$, số trứng $=2^k$, số thể cực $=2^k\\cdot3$.\n\n##PP Cách làm\nTính số tế bào sinh giao tử $2^k$.\nNhân với số giao tử mỗi tế bào tạo ra.\nVới đề so sánh, tính riêng số tinh trùng và số trứng rồi trừ.",
+     "vi_du": "##VD\nMột tế bào sinh dục sơ khai của một cơ thể đực nguyên phân liên tiếp 4 lần tạo các tế bào sinh tinh, mỗi tế bào sinh tinh giảm phân bình thường. Tính tổng số tinh trùng tạo thành.\nA. 16\nB. 48\nC. 64\nD. 32\n\nBài giải:\nSố tế bào sinh tinh: $2^4=16$.\nMỗi tế bào sinh tinh giảm phân tạo 4 tinh trùng nên tổng số tinh trùng: $16\\cdot4=64$.\nChọn C.\n\n##VD\nMột tế bào sinh dục sơ khai của một cơ thể đực nguyên phân liên tiếp 3 lần tạo các tế bào sinh tinh; đồng thời một tế bào sinh dục sơ khai của cơ thể cái nguyên phân liên tiếp 2 lần tạo các tế bào sinh trứng (đều giảm phân bình thường). Số tinh trùng nhiều hơn số trứng bao nhiêu?\nA. 32\nB. 4\nC. 28\nD. 36\n\nBài giải:\nCơ thể đực: số tế bào sinh tinh $2^3=8$, số tinh trùng $8\\cdot4=32$.\nCơ thể cái: số tế bào sinh trứng $2^2=4$, số trứng $4\\cdot1=4$.\nSố tinh trùng nhiều hơn số trứng: $32-4=28$.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01614",
+     "thu_tu": 2,
+     "ten": "Tính số hợp tử, giao tử theo hiệu suất thụ tinh",
+     "mo_ta": "Đề cho số giao tử (hoặc tế bào sinh dục sơ khai) và hiệu suất thụ tinh, hỏi số hợp tử tạo thành; hoặc cho số hợp tử và hiệu suất, hỏi số giao tử tham gia thụ tinh.\nLàm bằng cách tính số giao tử, nhân hoặc chia cho hiệu suất.\nLưu ý: đề chỉ hỏi số giao tử, không có hiệu suất thụ tinh ⇒ thuộc dạng \"Tính số giao tử từ tế bào sinh dục sơ khai\".",
+     "ly_thuyet": "##TC Hiệu suất thụ tinh\nSố hợp tử = số giao tử tham gia $\\times H$.\nSố giao tử tham gia = số hợp tử : H.\nMỗi hợp tử do một giao tử đực kết hợp với một giao tử cái, nên số hợp tử bằng số giao tử được thụ tinh của loại giao tử đang xét.\n\n##PP Cách làm\nTính số tinh trùng hoặc trứng tạo ra (nếu đề chưa cho).\nĐổi hiệu suất phần trăm ra số thập phân.\nNhân hoặc chia để ra đáp án.",
+     "vi_du": "##VD\nMột tế bào sinh dục sơ khai của cơ thể đực nguyên phân liên tiếp 2 lần tạo tế bào sinh tinh, giảm phân bình thường tạo tinh trùng. Biết hiệu suất thụ tinh của tinh trùng là 25%. Tính số hợp tử tạo thành.\nA. 16\nB. 4\nC. 1\nD. 8\n\nBài giải:\nSố tế bào sinh tinh: $2^2=4$, số tinh trùng: $4\\cdot4=16$.\nSố hợp tử $=16\\cdot25\\%=4$.\nChọn B.\n\n##VD\nBiết hiệu suất thụ tinh của trứng ở một loài là 25% và có 3 hợp tử được tạo thành. Tính số trứng đã tham gia quá trình trên.\nA. 3\nB. 12\nC. 9\nD. 6\n\nBài giải:\nSố hợp tử bằng số trứng được thụ tinh $=3$.\nSố trứng tham gia: $\\dfrac{3}{25\\%}=\\dfrac{3}{0{,}25}=12$.\nChọn B."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00579",
+   "chu_de": "Di truyền Nhiễm sắc thể",
+   "chuyen_de": "Di truyền liên kết",
+   "nhom": "Vẽ sơ đồ lai di truyền liên kết",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nCác bước viết sơ đồ lai liên kết hoàn toàn: P; G (giao tử); F₁ (kiểu gene, kiểu hình).\n$\\dfrac{AB}{ab}\\times\\dfrac{AB}{ab}$: G: $AB, ab$; F₁: $1\\dfrac{AB}{AB}:2\\dfrac{AB}{ab}:1\\dfrac{ab}{ab}$; kiểu hình 3 trội cả hai : 1 lặn cả hai.\n$\\dfrac{Ab}{aB}\\times\\dfrac{Ab}{aB}$: G: $Ab, aB$; F₁: $1\\dfrac{Ab}{Ab}:2\\dfrac{Ab}{aB}:1\\dfrac{aB}{aB}$; kiểu hình 1 (A-bb) : 2 (A-B-) : 1 (aaB-).\nLai phân tích: $\\dfrac{AB}{ab}\\times\\dfrac{ab}{ab}$ cho F₁ $1\\dfrac{AB}{ab}:1\\dfrac{ab}{ab}$, kiểu hình 1 : 1.\n$\\dfrac{Ab}{aB}\\times\\dfrac{ab}{ab}$ cho F₁ $1\\dfrac{Ab}{ab}:1\\dfrac{aB}{ab}$, kiểu hình 1 (trội A, lặn b) : 1 (lặn a, trội B).\n\n##PP 2. Các bước làm bài\nViết kiểu gene và kiểu hình của P, xác định gene liên kết hoàn toàn.\nViết các loại giao tử của mỗi bên.\nLập bảng tổ hợp giao tử, ghi tỉ lệ kiểu gene ở F₁.\nDựa vào quan hệ trội lặn để suy ra tỉ lệ kiểu hình, rồi tính số cá thể nếu đề yêu cầu.\n\n##CY 3. Lưu ý\nKiểu hình lặn aabb chỉ xuất hiện khi cả hai bên đều cho được giao tử ab.\nVới Ab/aB × Ab/aB không có kiểu hình lặn cả hai tính trạng.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01626",
+     "thu_tu": 1,
+     "ten": "Tỉ lệ kiểu hình của phép lai hai cơ thể dị hợp",
+     "mo_ta": "Đề cho phép lai giữa hai cơ thể dị hợp hai cặp gene liên kết hoàn toàn (AB/ab × AB/ab hoặc Ab/aB × Ab/aB), hỏi tỉ lệ kiểu hình, tỉ lệ kiểu hình mang tính trạng nào đó hoặc số cá thể con.\nLàm bằng cách viết giao tử rồi lập bảng tổ hợp.\nLưu ý: một bên là cơ thể đồng hợp lặn (ab/ab) ⇒ thuộc dạng \"Sơ đồ lai phân tích di truyền liên kết\".",
+     "ly_thuyet": "##TC Hai bên cùng dị hợp\nMỗi bên cho 2 loại giao tử với tỉ lệ 1 : 1; F₁ có 3 tổ hợp: 1 : 2 : 1.\nAB/ab × AB/ab: kiểu hình 3 : 1. Ab/aB × Ab/aB: kiểu hình 1 : 2 : 1.\nSố cá thể kiểu hình $=$ tổng số cá thể $\\times$ tỉ lệ kiểu hình đó.\n\n##PP Cách làm\nViết giao tử của mỗi bên.\nLập bảng tổ hợp, tìm tỉ lệ kiểu gene.\nĐổi sang tỉ lệ kiểu hình rồi tính số lượng nếu cần.",
+     "vi_du": "##VD\nBiết A trội hoàn toàn so với a, B trội hoàn toàn so với b; hai gene liên kết hoàn toàn. Phép lai Ab/aB × Ab/aB cho đời con có tỉ lệ kiểu hình là\nA. 3 : 1\nB. 9 : 3 : 3 : 1\nC. 1 : 1\nD. 1 : 2 : 1\n\nBài giải:\nAb/aB cho giao tử Ab và aB.\nF₁: 1 Ab/Ab : 2 Ab/aB : 1 aB/aB.\nKiểu hình: 1 (A-bb) : 2 (A-B-) : 1 (aaB-), tức tỉ lệ kiểu hình 1 : 2 : 1 (phương án D).\nChọn D.\n\n##VD\nỞ một loài thực vật, hai tính trạng màu hoa và dạng quả do hai gene liên kết hoàn toàn quy định. Lai cây dị hợp AB/ab với cây dị hợp AB/ab, thu được 800 cây con. Số cây mang kiểu hình lặn cả hai tính trạng theo lí thuyết là bao nhiêu?\nA. 200\nB. 400\nC. 50\nD. 600\n\nBài giải:\nAB/ab × AB/ab: giao tử AB và ab ở cả hai bên.\nF₁: 1 AB/AB : 2 AB/ab : 1 ab/ab, kiểu hình lặn cả hai (ab/ab) chiếm $\\dfrac14$.\nSố cây lặn cả hai tính trạng $=800\\cdot\\dfrac14=200$ (phương án A).\nChọn A."
+    },
+    {
+     "dang_id": "KDB01627",
+     "thu_tu": 2,
+     "ten": "Sơ đồ lai phân tích di truyền liên kết",
+     "mo_ta": "Đề cho phép lai cơ thể dị hợp hai cặp gene liên kết hoàn toàn với cơ thể đồng hợp lặn (ab/ab hoặc bv/bv), hỏi tỉ lệ kiểu gene, kiểu hình ở đời con.\nLàm bằng cách viết giao tử của cơ thể dị hợp (2 loại), cơ thể đồng hợp lặn chỉ 1 loại.\nLưu ý: cả hai bên đều dị hợp ⇒ thuộc dạng \"Tỉ lệ kiểu hình của phép lai hai cơ thể dị hợp\".",
+     "ly_thuyet": "##TC Lai phân tích\nCơ thể đồng hợp lặn chỉ cho một loại giao tử, nên kiểu hình đời con phản ánh trực tiếp giao tử của cơ thể dị hợp.\nAB/ab × ab/ab: F₁ 1 AB/ab : 1 ab/ab, kiểu hình 1 trội cả hai : 1 lặn cả hai.\nAb/aB × ab/ab: F₁ 1 Ab/ab : 1 aB/ab, kiểu hình 1 (trội A, lặn b) : 1 (lặn a, trội B).\n\n##PP Cách làm\nViết giao tử của cơ thể dị hợp (đúng dạng AB/ab hay Ab/aB).\nCơ thể đồng hợp lặn cho giao tử ab.\nGhép giao tử để được kiểu gene, rồi suy ra kiểu hình theo quan hệ trội lặn.",
+     "vi_du": "##VD\nỞ ruồi giấm, B (thân xám) trội hoàn toàn so với b (thân đen), V (cánh dài) trội hoàn toàn so với v (cánh cụt); hai gene liên kết hoàn toàn. Lai ruồi đực BV/bv với ruồi cái bv/bv, đời con có kiểu hình\nA. 1 xám, cụt : 1 đen, dài\nB. 1 xám, dài : 1 đen, cụt\nC. Bốn kiểu hình, mỗi loại 25%\nD. 3 xám, dài : 1 đen, cụt\n\nBài giải:\nRuồi đực BV/bv cho giao tử BV và bv; ruồi cái bv/bv cho giao tử bv.\nF₁: 1 BV/bv : 1 bv/bv.\nBV/bv: thân xám, cánh dài; bv/bv: thân đen, cánh cụt.\nKiểu hình: 1 xám, dài : 1 đen, cụt (phương án B).\nChọn B.\n\n##VD\nBiết A trội hoàn toàn so với a, B trội hoàn toàn so với b; hai gene liên kết hoàn toàn. Phép lai Ab/aB × ab/ab cho đời con có tỉ lệ kiểu hình là\nA. 1 (trội A, lặn b) : 1 (lặn a, trội B)\nB. 1 (trội cả hai) : 1 (lặn cả hai)\nC. 3 (trội cả hai) : 1 (lặn cả hai)\nD. 100% trội cả hai tính trạng\n\nBài giải:\nAb/aB cho giao tử Ab và aB; ab/ab cho giao tử ab.\nF₁: 1 Ab/ab : 1 aB/ab.\nAb/ab: trội A, lặn b; aB/ab: lặn a, trội B.\nKiểu hình: 1 (trội A, lặn b) : 1 (lặn a, trội B) (phương án A).\nChọn A."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K09120302001",
+   "nhom_id": "KNB00574",
+   "loai": "trac_nghiem",
+   "de": "Ở người, mẹ (mang cặp NST XX) khi giảm phân chỉ tạo ra một loại trứng mang NST giới tính nào?",
+   "lua_chon": [
+    "X",
+    "X hoặc Y tuỳ theo lần rụng trứng",
+    "Không mang NST giới tính",
+    "Y"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Mẹ có cặp NST giới tính XX (hai NST X giống nhau) nên giảm phân chỉ tạo một loại giao tử mang NST X.\n\nVì sao các phương án khác sai:\n- B: Vì cặp NST giới tính của mẹ chỉ gồm hai NST X giống nhau nên trứng luôn mang X, không thay đổi.\n- C: Trứng vẫn là giao tử bình thường, mang bộ NST đơn bội gồm cả NST giới tính.\n- D: Giao tử mang Y chỉ được tạo ra từ người mang cặp XY (nam giới), không phải từ mẹ."
+  },
+  {
+   "ma_cau": "K09120302002",
+   "nhom_id": "KNB00574",
+   "loai": "trac_nghiem",
+   "de": "Ở người, bố (mang cặp NST XY) tạo ra mấy loại tinh trùng xét theo NST giới tính, tỉ lệ mỗi loại là bao nhiêu?",
+   "lua_chon": [
+    "Hai loại, mang X hoặc mang Y, tỉ lệ 1:1",
+    "Hai loại, tỉ lệ 3 mang X : 1 mang Y",
+    "Ba loại: mang X, mang Y và không mang NST giới tính",
+    "Một loại duy nhất mang cả X và Y"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Bố có cặp NST giới tính XY; giảm phân tạo hai loại tinh trùng với số lượng bằng nhau: một loại mang X, một loại mang Y (tỉ lệ 1:1).\n\nVì sao các phương án khác sai:\n- B: Hai loại tinh trùng X và Y được tạo ra với số lượng bằng nhau (1:1), không phải 3:1.\n- C: Mọi tinh trùng đều mang đủ bộ NST đơn bội, không có loại thiếu NST giới tính.\n- D: Một tinh trùng chỉ mang một NST giới tính (X hoặc Y), không mang cả hai."
+  },
+  {
+   "ma_cau": "K09120302003",
+   "nhom_id": "KNB00574",
+   "loai": "trac_nghiem",
+   "de": "Giải thích nào đúng cho việc tỉ lệ con trai và con gái ở người xấp xỉ 1 : 1?",
+   "lua_chon": [
+    "Do người mẹ quyết định giới tính của con",
+    "Do hai loại tinh trùng mang X và mang Y được tạo ra với số lượng ngang nhau",
+    "Do hai loại trứng mang X và mang Y được tạo ra với số lượng ngang nhau",
+    "Do mỗi gia đình thường sinh đủ con trai và con gái"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Bố tạo hai loại tinh trùng (mang X, mang Y) với số lượng ngang nhau; xác suất trứng gặp mỗi loại tinh trùng như nhau nên tỉ lệ con trai : con gái xấp xỉ 1:1.\n\nVì sao các phương án khác sai:\n- A: Giới tính con do loại tinh trùng của bố (mang X hay Y), không phải do mẹ quyết định.\n- C: Trứng của mẹ chỉ có một loại, luôn mang X, không có loại mang Y.\n- D: Tỉ lệ 1 : 1 là tỉ lệ chung khi số lượng lớn, không đảm bảo trong từng gia đình."
+  },
+  {
+   "ma_cau": "K09120302004",
+   "nhom_id": "KNB00574",
+   "loai": "trac_nghiem",
+   "de": "Sơ đồ lai xác định giới tính ở người: P: Mẹ (XX) × Bố (XY). Tỉ lệ kiểu gene ở đời con (F₁) về cặp NST giới tính là bao nhiêu?",
+   "lua_chon": [
+    "1 XX : 1 XY",
+    "1 XX : 3 XY",
+    "3 XX : 1 XY",
+    "100% XX"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Mẹ (XX) chỉ cho 1 loại trứng mang X; bố (XY) cho 2 loại tinh trùng X và Y tỉ lệ 1:1 → đời con có tỉ lệ 1 XX (gái) : 1 XY (trai).\n\nVì sao các phương án khác sai:\n- B: Tỉ lệ đúng phải là 1:1, không phải 1:3, vì mẹ chỉ cho 1 loại trứng còn bố cho 2 loại tinh trùng tỉ lệ bằng nhau.\n- C: Tỉ lệ đúng phải là 1:1, không phải 3:1.\n- D: Bố tạo hai loại tinh trùng X và Y với tỉ lệ ngang nhau, nên đời con không thể toàn bộ là XX."
+  },
+  {
+   "ma_cau": "K09120302005",
+   "nhom_id": "KNB00574",
+   "loai": "trac_nghiem",
+   "de": "Hình dưới mô tả bộ nhiễm sắc thể lưỡng bội của một con ruồi giấm đực (2n = 8). ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S120205-01-001-de.png) Cặp nhiễm sắc thể giới tính XY của con ruồi này có nguồn gốc từ đâu?",
+   "lua_chon": [
+    "NST X nhận từ mẹ, NST Y nhận từ bố",
+    "NST X nhận từ bố, NST Y nhận từ mẹ",
+    "Cả NST X và Y đều nhận từ mẹ",
+    "Cả NST X và Y đều nhận từ bố"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Ruồi giấm cái có cặp NST giới tính XX nên chỉ tạo giao tử mang X; ruồi đực XY tạo giao tử mang X hoặc mang Y. Con đực (XY) nhận X từ mẹ và Y từ bố.\n\nVì sao các phương án khác sai:\n- B: Mẹ (XX) chỉ có thể cho giao tử mang X, không có NST Y để truyền cho con; NST Y chỉ có thể nhận từ bố (XY).\n- C: Mẹ chỉ có NST X (không có Y) nên không thể truyền cả X và Y cho con.\n- D: Con nhận một NST giới tính từ mẹ và một từ bố (mỗi bên truyền một NST của cặp tương đồng), không thể nhận cả hai từ cùng một người."
+  },
+  {
+   "ma_cau": "K09120302006",
+   "nhom_id": "KNB00574",
+   "loai": "trac_nghiem",
+   "de": "Ở người, giới tính của con được quyết định bởi loại tinh trùng nào thụ tinh với trứng. Nhận định hợp lí nhất về vai trò của bố và mẹ trong việc quyết định giới tính con là",
+   "lua_chon": [
+    "Mẹ, vì trứng luôn mang NST X",
+    "Bố, vì bố tạo hai loại tinh trùng X và Y",
+    "Cả bố và mẹ, mỗi người quyết định một nửa",
+    "Mẹ, vì chế độ ăn khi mang thai quyết định"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Mẹ chỉ tạo một loại trứng (luôn mang NST X); bố tạo hai loại tinh trùng (mang X hoặc mang Y) với tỉ lệ ngang nhau. Loại tinh trùng nào thụ tinh với trứng sẽ quyết định giới tính con: tinh trùng X tạo hợp tử XX (con gái), tinh trùng Y tạo hợp tử XY (con trai). Vì vậy, bố là người quyết định giới tính con.\n\nVì sao các phương án khác sai:\n- A: Mọi trứng đều mang X nên trứng không quyết định giới tính.\n- C: Trứng luôn mang X; chỉ tinh trùng (X hoặc Y) quyết định giới tính.\n- D: Giới tính được quyết định lúc thụ tinh bởi loại tinh trùng."
+  },
+  {
+   "ma_cau": "K09120302007",
+   "nhom_id": "KNB00574",
+   "loai": "trac_nghiem",
+   "de": "Thống kê tại một bệnh viện trong một năm cho thấy trong 2000 trẻ sơ sinh có 1030 bé trai và 970 bé gái. Nhận xét hợp lí nhất, đối chiếu với cơ chế xác định giới tính đã học, là",
+   "lua_chon": [
+    "Trai nhiều hơn hẳn, cơ chế đã học là sai",
+    "Chứng tỏ mẹ quyết định giới tính con",
+    "Xấp xỉ 1 : 1, phù hợp hai loại tinh trùng ngang nhau",
+    "Xấp xỉ 1 : 1 vì trứng có hai loại X và Y"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Vì bố tạo ra hai loại tinh trùng (mang X hoặc mang Y) với số lượng gần như ngang nhau, xác suất mỗi loại tinh trùng thụ tinh là xấp xỉ 50%, nên tỉ lệ con trai : con gái trong một quần thể lớn thường xấp xỉ 1:1, đúng như số liệu 1030:970 gần bằng nhau.\n\nVì sao các phương án khác sai:\n- A: 1030 : 970 xấp xỉ 1 : 1, phù hợp cơ chế đã học.\n- B: Bố tạo hai loại tinh trùng mới quyết định giới tính con.\n- D: Trứng chỉ mang X; tinh trùng mới có hai loại."
+  },
+  {
+   "ma_cau": "K09120302008",
+   "nhom_id": "KNB00574",
+   "loai": "trac_nghiem",
+   "de": "Một cặp vợ chồng đã sinh 4 con gái liên tiếp. Theo cơ chế xác định giới tính bằng NST, xác suất để lần sinh thứ 5 là con trai là bao nhiêu?",
+   "lua_chon": [
+    "Vẫn xấp xỉ 1/2, vì mỗi lần sinh độc lập với các lần trước",
+    "Cao hơn 1/2, vì đã sinh 4 con gái nên lần này \"phải\" là con trai",
+    "Thấp hơn 1/2, vì cơ thể mẹ đã quen sinh con gái",
+    "Bằng 0, vì bố mẹ chỉ có khả năng sinh con gái"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Mỗi lần thụ tinh là một sự kiện độc lập: tinh trùng mang X hay mang Y có xác suất thụ tinh xấp xỉ bằng nhau ở MỌI lần sinh, không phụ thuộc kết quả các lần sinh trước. Vì vậy xác suất sinh con trai ở lần thứ 5 vẫn xấp xỉ 1/2.\n\nVì sao các phương án khác sai:\n- B: Xác suất mỗi lần thụ tinh là độc lập; kết quả các lần sinh trước không ảnh hưởng đến lần sau.\n- C: Không có cơ chế sinh học nào khiến cơ thể mẹ \"quen\" sinh một giới tính nhất định.\n- D: Bố vẫn tạo hai loại tinh trùng mang X và mang Y, nên vẫn có khả năng sinh con trai."
+  },
+  {
+   "ma_cau": "K09120402001",
+   "nhom_id": "KNB00578",
+   "loai": "trac_nghiem",
+   "de": "Cơ thể dị hợp hai cặp gene (AaBb), nếu hai cặp gene này liên kết hoàn toàn trên một NST, giảm phân cho mấy loại giao tử?",
+   "lua_chon": [
+    "4 loại",
+    "3 loại",
+    "1 loại",
+    "2 loại"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Khi hai cặp gene liên kết hoàn toàn trên một NST, giảm phân chỉ tạo 2 loại giao tử theo đúng tổ hợp gene ban đầu, ít hơn so với phân li độc lập (4 loại).\n\nVì sao các phương án khác sai:\n- A: 4 loại giao tử là kết quả của phân li độc lập, không phải liên kết gene.\n- B: Số loại giao tử của liên kết hoàn toàn chỉ có 2, không phải 3.\n- C: Cơ thể dị hợp hai cặp gene liên kết vẫn tạo ra 2 loại giao tử, không chỉ 1 loại."
+  },
+  {
+   "ma_cau": "K09120402002",
+   "nhom_id": "KNB00578",
+   "loai": "trac_nghiem",
+   "de": "Cơ thể dị hợp hai cặp gene AaBb, nếu hai cặp gene này phân li độc lập (nằm trên hai NST khác nhau), giảm phân cho mấy loại giao tử?",
+   "lua_chon": [
+    "2 loại",
+    "4 loại",
+    "8 loại",
+    "1 loại"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Hai cặp gene phân li độc lập (nằm trên 2 NST khác nhau) tạo 2² = 4 loại giao tử: AB, Ab, aB, ab.\n\nVì sao các phương án khác sai:\n- A: 2 loại giao tử là kết quả của di truyền liên kết hoàn toàn, không phải phân li độc lập.\n- C: 8 loại xuất hiện khi có từ 3 cặp gene phân li độc lập trở lên, không đúng với 2 cặp gene ở đây.\n- D: Cơ thể dị hợp hai cặp gene luôn tạo nhiều hơn 1 loại giao tử khi giảm phân bình thường."
+  },
+  {
+   "ma_cau": "K09120402003",
+   "nhom_id": "KNB00578",
+   "loai": "trac_nghiem",
+   "de": "Hai gene liên kết hoàn toàn trên một nhiễm sắc thể. Cơ thể có kiểu gene AB/ab giảm phân cho các loại giao tử nào?",
+   "lua_chon": [
+    "AB và ab",
+    "Ab và aB",
+    "AB, Ab, aB và ab",
+    "Aa và Bb"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Liên kết hoàn toàn: các gene trên cùng một nhiễm sắc thể đi cùng nhau, AB/ab cho 2 loại giao tử AB và ab.\n\nVì sao các phương án khác sai:\n- B: Đây là giao tử của cơ thể Ab/aB; AB/ab cho giao tử AB và ab.\n- C: Bốn loại giao tử chỉ có khi hai gene phân li độc lập.\n- D: Mỗi giao tử chỉ mang một allele của mỗi gene."
+  },
+  {
+   "ma_cau": "K09120402004",
+   "nhom_id": "KNB00578",
+   "loai": "trac_nghiem",
+   "de": "Hai gene liên kết hoàn toàn trên một nhiễm sắc thể. Cơ thể có kiểu gene Ab/aB giảm phân cho các loại giao tử nào?",
+   "lua_chon": [
+    "AB và ab",
+    "AB, Ab, aB và ab",
+    "Ab và aB",
+    "A, a, B và b"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Ab/aB: một nhiễm sắc thể mang Ab, chiếc kia mang aB nên cho 2 loại giao tử Ab và aB.\n\nVì sao các phương án khác sai:\n- A: Đây là giao tử của cơ thể AB/ab.\n- B: Bốn loại giao tử chỉ có khi hai gene phân li độc lập.\n- D: Mỗi giao tử mang một allele của cả hai gene."
+  },
+  {
+   "ma_cau": "K09120402005",
+   "nhom_id": "KNB00578",
+   "loai": "trac_nghiem",
+   "de": "Ở ruồi giấm đực, gene quy định màu thân và độ dài cánh liên kết hoàn toàn. Ruồi đực có kiểu gene BV/bv cho các loại giao tử nào?",
+   "lua_chon": [
+    "BV, Bv, bV và bv",
+    "BV và bv",
+    "Bv và bV",
+    "Bb và Vv"
+   ],
+   "dap_an": "B",
+   "loi_giai": "BV/bv liên kết hoàn toàn cho 2 loại giao tử BV và bv với tỉ lệ bằng nhau.\n\nVì sao các phương án khác sai:\n- A: Bốn loại giao tử chỉ có khi hai gene phân li độc lập.\n- C: Đây là giao tử của cơ thể Bv/bV.\n- D: Mỗi giao tử chỉ mang một allele của mỗi gene."
+  },
+  {
+   "ma_cau": "K09120402006",
+   "nhom_id": "KNB00578",
+   "loai": "trac_nghiem",
+   "de": "Hai gene liên kết hoàn toàn trên một nhiễm sắc thể. Cơ thể AB/ab giảm phân cho bao nhiêu loại giao tử?",
+   "lua_chon": [
+    "4 loại",
+    "1 loại",
+    "3 loại",
+    "2 loại"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Liên kết hoàn toàn: cơ thể dị hợp hai cặp gene cho 2 loại giao tử (AB và ab).\n\nVì sao các phương án khác sai:\n- A: Bốn loại chỉ có khi hai gene phân li độc lập.\n- B: Cơ thể dị hợp nên có 2 nhiễm sắc thể khác nhau, cho 2 loại giao tử.\n- C: Không có trường hợp 3 loại với hai gene liên kết hoàn toàn."
+  },
+  {
+   "ma_cau": "K09120402007",
+   "nhom_id": "KNB00578",
+   "loai": "trac_nghiem",
+   "de": "Hai gene liên kết hoàn toàn trên một nhiễm sắc thể. Cơ thể AB/ab tạo giao tử ab với tỉ lệ bao nhiêu?",
+   "lua_chon": [
+    "25%",
+    "50%",
+    "100%",
+    "0%"
+   ],
+   "dap_an": "B",
+   "loi_giai": "AB/ab cho 2 loại giao tử AB và ab với tỉ lệ bằng nhau: mỗi loại 50%.\n\nVì sao các phương án khác sai:\n- A: Đây là tỉ lệ khi hai gene phân li độc lập (4 loại giao tử).\n- C: Cơ thể còn tạo giao tử AB, nên ab chỉ chiếm một nửa.\n- D: Giao tử ab có tạo ra, chiếm 50%."
+  },
+  {
+   "ma_cau": "K09120402008",
+   "nhom_id": "KNB00578",
+   "loai": "trac_nghiem",
+   "de": "Hai gene liên kết hoàn toàn trên một nhiễm sắc thể. Cơ thể Ab/aB tạo giao tử AB với tỉ lệ bao nhiêu?",
+   "lua_chon": [
+    "25%",
+    "50%",
+    "0%",
+    "100%"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Ab/aB liên kết hoàn toàn chỉ cho giao tử Ab và aB, không tạo giao tử AB (0%).\n\nVì sao các phương án khác sai:\n- A: Đây là tỉ lệ khi hai gene phân li độc lập.\n- B: Giao tử chiếm 50% là Ab và aB, không phải AB.\n- D: Cơ thể Ab/aB không mang nhiễm sắc thể AB."
+  },
+  {
+   "ma_cau": "K09120402009",
+   "nhom_id": "KNB00578",
+   "loai": "trac_nghiem",
+   "de": "Ở một loài thực vật, hai gene quy định màu hoa và dạng lá liên kết hoàn toàn trên một nhiễm sắc thể. Cây có kiểu gene DE/de giảm phân cho các loại giao tử nào?",
+   "lua_chon": [
+    "De và dE",
+    "DE, De, dE và de",
+    "DE và de",
+    "Chỉ một loại giao tử DEde"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Hai gene liên kết hoàn toàn trên một NST, cơ thể DE/de tạo 2 loại giao tử tương ứng với 2 NST ban đầu: DE và de.\n\nVì sao các phương án khác sai:\n- A: De và dE là giao tử của kiểu gene chéo (De/dE), không phải của kiểu gene DE/de trong đề.\n- B: Liên kết hoàn toàn chỉ tạo 2 loại giao tử tương ứng với 2 loại NST ban đầu, không tạo đủ 4 loại như phân li độc lập.\n- D: Giảm phân luôn tạo giao tử đơn bội, không thể có kiểu gene DEde (lưỡng bội) trong giao tử."
+  },
+  {
+   "ma_cau": "K09120402010",
+   "nhom_id": "KNB00578",
+   "loai": "trac_nghiem",
+   "de": "Ở một loài động vật, hai gene quy định màu lông và độ dài đuôi liên kết hoàn toàn. Cơ thể có kiểu gene Mn/mN giảm phân cho các loại giao tử nào?",
+   "lua_chon": [
+    "MN và mn",
+    "Mn, mN, MN và mn",
+    "M, n, m và N riêng lẻ",
+    "Mn và mN"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Hai gene liên kết hoàn toàn, cơ thể Mn/mN tạo 2 loại giao tử tương ứng với 2 NST ban đầu: Mn và mN.\n\nVì sao các phương án khác sai:\n- A: MN và mn là giao tử của kiểu gene MN/mn, không phải của kiểu gene chéo Mn/mN trong đề.\n- B: Liên kết hoàn toàn chỉ tạo 2 loại giao tử tương ứng với 2 loại NST ban đầu, không tạo đủ 4 loại.\n- C: Mỗi giao tử phải mang đủ tổ hợp gene trên NST đó (2 gene liên kết), không tách riêng từng allele."
+  },
+  {
+   "ma_cau": "K09120402011",
+   "nhom_id": "KNB00578",
+   "loai": "trac_nghiem",
+   "de": "Một cơ thể có kiểu gene AB/ab (hai gene liên kết hoàn toàn) giảm phân tạo ra 4000 giao tử. Số giao tử mang tổ hợp gene AB là bao nhiêu?",
+   "lua_chon": [
+    "2000",
+    "4000",
+    "1000",
+    "0"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Cơ thể AB/ab liên kết hoàn toàn tạo 2 loại giao tử AB và ab với tỉ lệ 1:1 → số giao tử AB = 4000 × 1/2 = 2000.\n\nVì sao các phương án khác sai:\n- B: 4000 là tổng số giao tử, chưa chia cho 2 loại giao tử tạo thành (AB và ab tỉ lệ 1:1).\n- C: 1000 tính nhầm khi chia cho 4 thay vì chia cho 2.\n- D: Liên kết hoàn toàn vẫn tạo giao tử AB (một trong hai loại giao tử), không phải bằng 0."
+  },
+  {
+   "ma_cau": "K09120402012",
+   "nhom_id": "KNB00578",
+   "loai": "trac_nghiem",
+   "de": "Ở một loài, hai gene quy định hai tính trạng cùng nằm trên một nhiễm sắc thể (di truyền liên kết hoàn toàn). Một cơ thể có kiểu gene AB/ab (dị hợp hai cặp gene, liên kết). Các loại giao tử mà cơ thể này có thể tạo ra là",
+   "lua_chon": [
+    "Bốn loại AB, Ab, aB, ab, tỉ lệ ngang nhau",
+    "Hai loại AB và ab, tỉ lệ ngang nhau",
+    "Một loại duy nhất là AB",
+    "Hai loại Ab và aB, tỉ lệ ngang nhau"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Vì hai gene A, B cùng nằm trên một NST (liên kết với nhau thành nhóm AB), còn a, b cùng nằm trên NST tương đồng còn lại (nhóm ab); khi giảm phân, mỗi NST đi về một giao tử nguyên vẹn, nên cơ thể AB/ab chỉ tạo ra hai loại giao tử AB và ab với tỉ lệ ngang nhau, không tạo ra các tổ hợp mới như Ab hay aB.\n\nVì sao các phương án khác sai:\n- A: Liên kết hoàn toàn nên A đi cùng B, a đi cùng b; không tạo Ab, aB.\n- C: Hai NST tương đồng phân li nên tạo cả giao tử ab.\n- D: Trên mỗi NST có AB hoặc ab, không có Ab, aB."
+  },
+  {
+   "ma_cau": "K09120502001",
+   "nhom_id": "KNB00582",
+   "loai": "trac_nghiem",
+   "de": "Hình vẽ mô tả bộ NST lưỡng bội bình thường của một loài (2n = 6). Nếu xảy ra đột biến thể ba, tổng số NST của tế bào là bao nhiêu?\n![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S120303-01-001-hinh.png)",
+   "lua_chon": [
+    "7",
+    "5",
+    "9",
+    "12"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Thể ba có công thức 2n + 1; với 2n = 6, tổng số NST là 6 + 1 = 7.\n\nVì sao các phương án khác sai:\n- B: 5 = 2n − 1 là công thức của thể một, không phải thể ba.\n- C: 9 = 3n là công thức của thể tam bội, không phải thể ba (chỉ thừa 1 NST ở một cặp).\n- D: 12 = 2 × 2n, tương ứng thể tứ bội (4n), không phải thể ba."
+  },
+  {
+   "ma_cau": "K09120502002",
+   "nhom_id": "KNB00582",
+   "loai": "trac_nghiem",
+   "de": "Ở người, bộ nhiễm sắc thể lưỡng bội bình thường là 2n = 46. Người mắc hội chứng Down do thừa một NST số 21 có tổng số NST là bao nhiêu?",
+   "lua_chon": [
+    "45",
+    "47",
+    "48",
+    "92"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Hội chứng Down là thể ba (2n + 1); với 2n = 46, tổng số NST là 46 + 1 = 47.\n\nVì sao các phương án khác sai:\n- A: 45 = 2n − 1, tương ứng thể một (như hội chứng Turner), không phải Down.\n- C: 48 = 2n + 2, tính thừa 2 NST là sai; thể ba chỉ thừa đúng 1 NST.\n- D: 92 = 2 × 2n = 4n, tương ứng thể tứ bội, không phải thể ba."
+  },
+  {
+   "ma_cau": "K09120502003",
+   "nhom_id": "KNB00582",
+   "loai": "trac_nghiem",
+   "de": "Đậu Hà Lan có bộ nhiễm sắc thể lưỡng bội bình thường là 2n = 14. Một cây bị đột biến thể một có tổng số NST là bao nhiêu?",
+   "lua_chon": [
+    "15",
+    "21",
+    "13",
+    "28"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Thể một có công thức 2n − 1; với 2n = 14, tổng số NST là 14 − 1 = 13.\n\nVì sao các phương án khác sai:\n- A: 15 = 2n + 1 là công thức của thể ba, không phải thể một.\n- B: 21 = 1,5n, không phải công thức đột biến số lượng NST đã học.\n- D: 28 = 2 × 2n = 4n, tương ứng thể tứ bội, không phải thể một."
+  },
+  {
+   "ma_cau": "K09120502004",
+   "nhom_id": "KNB00582",
+   "loai": "trac_nghiem",
+   "de": "Ở một loài, 2n = 20. Một cá thể bị đột biến thể không (thiếu hẳn một cặp NST tương đồng). Tổng số NST của cá thể này là bao nhiêu?",
+   "lua_chon": [
+    "19",
+    "21",
+    "18",
+    "10"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Thể không thiếu hẳn một cặp NST tương đồng (2 chiếc): tổng số NST = 2n − 2 = 20 − 2 = 18.\n\nVì sao các phương án khác sai:\n- A: 19 là tổng số NST của thể một (2n−1), không phải thể không (2n−2).\n- B: 21 là tổng số NST của thể ba (2n+1), không phải thể không.\n- D: 10 là bộ đơn bội (n), không liên quan đến thể không."
+  },
+  {
+   "ma_cau": "K09120502005",
+   "nhom_id": "KNB00582",
+   "loai": "trac_nghiem",
+   "de": "Ở người, 2n = 46. Người mắc hội chứng Turner (thể một ở cặp NST giới tính, chỉ có 1 NST X). Tổng số NST là bao nhiêu?",
+   "lua_chon": [
+    "47",
+    "44",
+    "46",
+    "45"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Hội chứng Turner là thể một (2n−1) ở cặp NST giới tính: tổng số NST = 46 − 1 = 45.\n\nVì sao các phương án khác sai:\n- A: 47 là tổng số NST của thể ba (2n+1), không phải thể một.\n- B: 44 là tổng số NST của thể không (2n−2), không phải thể một (chỉ thiếu 1 NST).\n- C: 46 là bộ NST bình thường; người mắc hội chứng Turner thiếu 1 NST nên chỉ còn 45."
+  },
+  {
+   "ma_cau": "K09120502006",
+   "nhom_id": "KNB00582",
+   "loai": "trac_nghiem",
+   "de": "Hình vẽ mô tả bộ nhiễm sắc thể lưỡng bội bình thường của một loài (2n = 4). Thể tam bội (3n) của loài này có tổng số NST là bao nhiêu?\n![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S120303-02-001-hinh.png)",
+   "lua_chon": [
+    "8",
+    "5",
+    "3",
+    "6"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Với 2n = 4 thì n = 2; thể tam bội có 3n = 3 × 2 = 6 NST.\n\nVì sao các phương án khác sai:\n- A: 8 = 4n (thể tứ bội), không phải 3n.\n- B: 5 = 2n + 1 (thể ba), không phải 3n.\n- C: 3 chỉ bằng n, chưa nhân ba lần để ra bộ NST tam bội."
+  },
+  {
+   "ma_cau": "K09120502007",
+   "nhom_id": "KNB00582",
+   "loai": "trac_nghiem",
+   "de": "Một loài thực vật có bộ nhiễm sắc thể lưỡng bội bình thường 2n = 24. Thể tứ bội (4n) của loài này có tổng số NST là bao nhiêu?",
+   "lua_chon": [
+    "48",
+    "36",
+    "25",
+    "23"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Với 2n = 24 thì n = 12; thể tứ bội có 4n = 4 × 12 = 48 NST.\n\nVì sao các phương án khác sai:\n- B: 36 = 3n = 3 × 12, tương ứng thể tam bội, không phải tứ bội.\n- C: 25 = 2n + 1 (thể ba), không phải 4n.\n- D: 23 = 2n − 1 (thể một), không phải 4n."
+  },
+  {
+   "ma_cau": "K09120502008",
+   "nhom_id": "KNB00582",
+   "loai": "trac_nghiem",
+   "de": "Một loài cây có bộ nhiễm sắc thể đơn bội n = 11. Thể tam bội (3n) của loài này có tổng số NST là bao nhiêu?",
+   "lua_chon": [
+    "22",
+    "33",
+    "44",
+    "11"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Thể tam bội có công thức 3n; với n = 11, tổng số NST là 3 × 11 = 33.\n\nVì sao các phương án khác sai:\n- A: 22 = 2n, tương ứng bộ NST lưỡng bội bình thường, không phải thể tam bội.\n- C: 44 = 4n = 4 × 11, tương ứng thể tứ bội, không phải thể tam bội.\n- D: 11 chỉ bằng n (bộ NST đơn bội), chưa nhân ba để ra bộ NST tam bội."
+  },
+  {
+   "ma_cau": "K09120502009",
+   "nhom_id": "KNB00582",
+   "loai": "trac_nghiem",
+   "de": "Một loài có bộ nhiễm sắc thể đơn bội n = 9. Thể tứ bội (4n) của loài này có tổng số NST là bao nhiêu?",
+   "lua_chon": [
+    "27",
+    "18",
+    "36",
+    "13"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Thể tứ bội có bộ NST = 4n = 4 × 9 = 36.\n\nVì sao các phương án khác sai:\n- A: 27 = 3n, là thể tam bội, không phải thể tứ bội (4n) như đề yêu cầu.\n- B: 18 = 2n, là bộ lưỡng bội bình thường, không phải thể tứ bội.\n- D: 13 tính nhầm khi cộng 4 với n thay vì nhân 4 với n."
+  },
+  {
+   "ma_cau": "K09120502010",
+   "nhom_id": "KNB00582",
+   "loai": "trac_nghiem",
+   "de": "Một loài thực vật có bộ nhiễm sắc thể lưỡng bội bình thường 2n = 18. Thể tam bội (3n) của loài này có tổng số NST là bao nhiêu?",
+   "lua_chon": [
+    "36",
+    "9",
+    "21",
+    "27"
+   ],
+   "dap_an": "D",
+   "loi_giai": "n = 2n : 2 = 9. Thể tam bội có bộ NST = 3n = 3 × 9 = 27.\n\nVì sao các phương án khác sai:\n- A: 36 = 4n, là thể tứ bội, không phải thể tam bội (3n).\n- B: 9 = n, là bộ đơn bội, không phải thể tam bội.\n- C: 21 tính nhầm khi cộng 2n với 3 thay vì nhân n với 3."
+  },
+  {
+   "ma_cau": "K09120502011",
+   "nhom_id": "KNB00582",
+   "loai": "trac_nghiem",
+   "de": "Một loài có bộ NST lưỡng bội 2n = 24. Một cá thể của loài này bị đột biến lệch bội dạng thể ba (thừa 1 NST ở một cặp). Tổng số NST trong tế bào sinh dưỡng của cá thể này là",
+   "lua_chon": [
+    "25",
+    "23",
+    "48",
+    "12"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Thể ba (kí hiệu 2n + 1) là dạng lệch bội có thừa 1 NST ở một cặp so với bộ lưỡng bội bình thường. Với 2n = 24, tổng số NST của thể ba = 24 + 1 = 25.\n\nVì sao các phương án khác sai:\n- B: 23 là số NST của thể một (2n − 1), không phải thể ba (2n + 1).\n- C: 48 = 2 × 24 là số NST nếu bộ NST tăng gấp đôi hoàn toàn (thể tứ bội), không phải chỉ thừa 1 NST ở một cặp (thể ba).\n- D: 12 = 2n/2 là bộ NST đơn bội (n), không liên quan đến thể lệch bội thừa 1 NST."
+  },
+  {
+   "ma_cau": "K09120502012",
+   "nhom_id": "KNB00582",
+   "loai": "trac_nghiem",
+   "de": "Một loài cây có bộ NST lưỡng bội 2n = 18. Một cá thể của loài này là thể tứ bội (4n). Tổng số NST trong tế bào sinh dưỡng của cá thể này là",
+   "lua_chon": [
+    "22",
+    "36",
+    "72",
+    "9"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Thể tứ bội (4n) có bộ NST gấp 4 lần bộ đơn bội (n). Với 2n = 18, suy ra n = 9; thể tứ bội có tổng số NST = 4n = 4 × 9 = 36.\n\nVì sao các phương án khác sai:\n- A: 22 = 18 + 4, đây là phép cộng không đúng với công thức thể đa bội; thể tứ bội phải nhân bộ NST đơn bội với 4, không phải cộng thêm 4 vào 2n.\n- C: 72 = 4 × 18 = 4 × 2n, đây là kết quả nếu nhầm nhân 4 với 2n (bộ lưỡng bội) thay vì nhân 4 với n (bộ đơn bội).\n- D: 9 = 2n/2 = n là bộ NST đơn bội, không phải thể tứ bội."
+  },
+  {
+   "ma_cau": "K09120502013",
+   "nhom_id": "KNB00582",
+   "loai": "trac_nghiem",
+   "de": "Một loài có bộ NST lưỡng bội 2n = 36. So sánh tổng số NST giữa một cá thể là thể ba (2n+1) và một cá thể là thể tam bội (3n) của loài này, cá thể nào có tổng số NST lớn hơn và lớn hơn bao nhiêu?",
+   "lua_chon": [
+    "Thể ba lớn hơn, hơn 17 NST",
+    "Thể tam bội lớn hơn, hơn 1 NST",
+    "Hai thể có tổng số NST bằng nhau",
+    "Thể tam bội lớn hơn, hơn 17 NST"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Thể ba = 2n+1 = 37. Thể tam bội = 3n = 3×18 = 54. Thể tam bội lớn hơn thể ba: 54 − 37 = 17 NST.\n\nVì sao các phương án khác sai:\n- A: Thể tam bội (54 NST) lớn hơn thể ba (37 NST), không phải ngược lại.\n- B: Chênh lệch đúng là 54 − 37 = 17 NST, không phải chỉ 1 NST.\n- C: Hai thể có tổng số NST khác nhau rõ rệt (37 và 54), không bằng nhau."
+  },
+  {
+   "ma_cau": "K09120502014",
+   "nhom_id": "KNB00582",
+   "loai": "trac_nghiem",
+   "de": "Một loài cây có bộ NST đơn bội n = 12. Số NST trong tế bào sinh dưỡng của thể tứ bội (4n) nhiều hơn của thể một (2n − 1) bao nhiêu?",
+   "lua_chon": [
+    "25 NST",
+    "24 NST",
+    "23 NST",
+    "36 NST"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Thể tứ bội: 4n = 48. Thể một: 2n − 1 = 24 − 1 = 23. Hiệu: 48 − 23 = 25 NST.\n\nVì sao các phương án khác sai:\n- B: Lấy nhầm 2n = 24 cho thể một (quên trừ 1).\n- C: Đây là số NST của thể một, chưa lấy hiệu.\n- D: Lấy nhầm 4n − n."
+  },
+  {
+   "ma_cau": "K09120203001",
+   "nhom_id": "KNB00572",
+   "loai": "trac_nghiem",
+   "de": "Một tế bào sinh dục sơ khai của một cơ thể đực nguyên phân liên tiếp 4 lần tạo các tế bào sinh tinh, mỗi tế bào sinh tinh giảm phân bình thường. Tính tổng số tinh trùng tạo thành.",
+   "lua_chon": [
+    "16",
+    "48",
+    "64",
+    "32"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Số tế bào sinh tinh = 2⁴ = 16; mỗi tế bào tạo 4 tinh trùng nên tổng số tinh trùng = 16 × 4 = 64.\n\nVì sao các phương án khác sai:\n- A: 16 là số tế bào sinh tinh, chưa nhân với 4 tinh trùng mỗi tế bào.\n- B: 48 = 16 × 3, nhân sai số tinh trùng mỗi tế bào tạo ra.\n- D: 32 = 16 × 2, chưa tính đủ số tinh trùng mỗi tế bào sinh tinh tạo ra."
+  },
+  {
+   "ma_cau": "K09120203002",
+   "nhom_id": "KNB00572",
+   "loai": "trac_nghiem",
+   "de": "Một tế bào sinh dục sơ khai của một cơ thể cái nguyên phân liên tiếp 5 lần tạo các tế bào sinh trứng, mỗi tế bào giảm phân bình thường. Tính tổng số trứng tạo thành.",
+   "lua_chon": [
+    "128",
+    "96",
+    "64",
+    "32"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Số tế bào sinh trứng = 2⁵ = 32; mỗi tế bào chỉ tạo 1 trứng nên tổng số trứng = 32 × 1 = 32.\n\nVì sao các phương án khác sai:\n- A: 128 = 32 × 4, nhầm công thức tính số tinh trùng, không áp dụng cho trứng.\n- B: 96 = 32 × 3, nhầm đếm cả thể cực vào số trứng.\n- C: 64 = 32 × 2, nhân sai số trứng mỗi tế bào sinh trứng tạo ra."
+  },
+  {
+   "ma_cau": "K09120203003",
+   "nhom_id": "KNB00572",
+   "loai": "trac_nghiem",
+   "de": "Một tế bào sinh dục sơ khai của một cơ thể cái nguyên phân liên tiếp 3 lần tạo các tế bào sinh trứng, mỗi tế bào giảm phân bình thường tạo 1 trứng và 3 thể cực. Tính tổng số thể cực tạo thành.",
+   "lua_chon": [
+    "24",
+    "8",
+    "32",
+    "16"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Số tế bào sinh trứng = 2³ = 8; mỗi tế bào tạo 3 thể cực nên tổng số thể cực = 8 × 3 = 24.\n\nVì sao các phương án khác sai:\n- B: 8 là số tế bào sinh trứng, chưa nhân với 3 thể cực mỗi tế bào.\n- C: 32 = 8 × 4, nhầm công thức tính số tinh trùng, không áp dụng cho thể cực.\n- D: 16 = 8 × 2, nhân sai số thể cực mỗi tế bào tạo ra."
+  },
+  {
+   "ma_cau": "K09120203004",
+   "nhom_id": "KNB00572",
+   "loai": "trac_nghiem",
+   "de": "Một tế bào sinh dục sơ khai của một cơ thể đực nguyên phân liên tiếp 5 lần tạo các tế bào sinh tinh, mỗi tế bào sinh tinh giảm phân bình thường. Tính tổng số tinh trùng tạo thành.",
+   "lua_chon": [
+    "128",
+    "32",
+    "64",
+    "256"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Số tế bào sinh tinh = 2⁵ = 32. Mỗi tế bào sinh tinh giảm phân tạo 4 tinh trùng → tổng số tinh trùng = 32 × 4 = 128.\n\nVì sao các phương án khác sai:\n- B: 32 mới là số tế bào sinh tinh, chưa nhân với 4 tinh trùng mỗi tế bào tạo ra.\n- C: 64 tính nhầm khi nhân với 2 thay vì 4 tinh trùng mỗi tế bào sinh tinh.\n- D: 256 tính nhầm khi nhân đôi kết quả đúng một cách không cần thiết."
+  },
+  {
+   "ma_cau": "K09120203005",
+   "nhom_id": "KNB00572",
+   "loai": "trac_nghiem",
+   "de": "Một tế bào sinh dục sơ khai của một cơ thể cái nguyên phân liên tiếp 4 lần tạo các tế bào sinh trứng, mỗi tế bào giảm phân bình thường tạo 1 trứng và 3 thể cực. Tính tổng số thể cực tạo thành.",
+   "lua_chon": [
+    "16",
+    "48",
+    "64",
+    "12"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Số tế bào sinh trứng = 2⁴ = 16. Mỗi tế bào giảm phân tạo 1 trứng và 3 thể cực → tổng số thể cực = 16 × 3 = 48.\n\nVì sao các phương án khác sai:\n- A: 16 mới là số tế bào sinh trứng, chưa nhân với 3 thể cực mỗi tế bào tạo ra.\n- C: 64 tính nhầm khi nhân với 4 thay vì 3 thể cực mỗi tế bào sinh trứng.\n- D: 12 tính nhầm khi chia thay vì nhân số tế bào sinh trứng với 3."
+  },
+  {
+   "ma_cau": "K09120203006",
+   "nhom_id": "KNB00572",
+   "loai": "trac_nghiem",
+   "de": "Một tế bào sinh dục sơ khai của một cơ thể đực nguyên phân liên tiếp 3 lần tạo các tế bào sinh tinh; đồng thời một tế bào sinh dục sơ khai của cơ thể cái nguyên phân liên tiếp 2 lần tạo các tế bào sinh trứng (đều giảm phân bình thường). Số tinh trùng nhiều hơn số trứng bao nhiêu?",
+   "lua_chon": [
+    "32",
+    "4",
+    "28",
+    "36"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Số tinh trùng = 2³ × 4 = 32. Số trứng = 2² × 1 = 4. Chênh lệch = 32 − 4 = 28.\n\nVì sao các phương án khác sai:\n- A: 32 là tổng số tinh trùng, chưa trừ đi số trứng để ra phần chênh lệch.\n- B: 4 là số trứng, không phải phần chênh lệch giữa số tinh trùng và số trứng.\n- D: 36 tính nhầm khi cộng hai số lại thay vì lấy hiệu (tinh trùng trừ trứng)."
+  },
+  {
+   "ma_cau": "K09120203007",
+   "nhom_id": "KNB00572",
+   "loai": "trac_nghiem",
+   "de": "Một tế bào sinh dục sơ khai của cơ thể đực nguyên phân liên tiếp 2 lần tạo tế bào sinh tinh, giảm phân bình thường tạo tinh trùng. Biết hiệu suất thụ tinh của tinh trùng là 25%. Tính số hợp tử tạo thành.",
+   "lua_chon": [
+    "16",
+    "4",
+    "1",
+    "8"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Số tế bào sinh tinh = 2² = 4, số tinh trùng = 4 × 4 = 16; số hợp tử = 16 × 25% = 4.\n\nVì sao các phương án khác sai:\n- A: 16 là tổng số tinh trùng tạo ra, chưa nhân với hiệu suất thụ tinh.\n- C: 1 tính sai vì chia nhầm thay vì nhân với 25%.\n- D: 8 tương ứng với hiệu suất 50%, không phải 25% như đề cho."
+  },
+  {
+   "ma_cau": "K09120203008",
+   "nhom_id": "KNB00572",
+   "loai": "trac_nghiem",
+   "de": "Một tế bào sinh dục sơ khai của cơ thể cái nguyên phân liên tiếp 3 lần tạo tế bào sinh trứng, mỗi tế bào giảm phân tạo 1 trứng. Biết hiệu suất thụ tinh của trứng là 50%. Tính số hợp tử tạo thành.",
+   "lua_chon": [
+    "8",
+    "2",
+    "4",
+    "16"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Số tế bào sinh trứng = 2³ = 8, số trứng = 8 × 1 = 8; số hợp tử = 8 × 50% = 4.\n\nVì sao các phương án khác sai:\n- A: 8 là tổng số trứng tạo ra, chưa nhân với hiệu suất thụ tinh.\n- B: 2 tương ứng với hiệu suất 25%, không phải 50% như đề cho.\n- D: 16 nhầm công thức tính số tinh trùng, áp dụng sai cho trứng."
+  },
+  {
+   "ma_cau": "K09120203009",
+   "nhom_id": "KNB00572",
+   "loai": "trac_nghiem",
+   "de": "Biết hiệu suất thụ tinh của trứng ở một loài là 25% và có 3 hợp tử được tạo thành. Tính số trứng đã tham gia quá trình trên.",
+   "lua_chon": [
+    "3",
+    "12",
+    "9",
+    "6"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Số hợp tử = số trứng × hiệu suất thụ tinh, suy ra số trứng = số hợp tử : hiệu suất = 3 : 25% = 12.\n\nVì sao các phương án khác sai:\n- A: 3 chính là số hợp tử, chưa chia cho hiệu suất thụ tinh để tìm số trứng.\n- C: 9 tính sai do lấy hiệu số thay vì phép chia theo hiệu suất.\n- D: 6 tương ứng với hiệu suất 50%, không phải 25% như đề cho."
+  },
+  {
+   "ma_cau": "K09120203010",
+   "nhom_id": "KNB00572",
+   "loai": "trac_nghiem",
+   "de": "Một tế bào sinh dục sơ khai của cơ thể đực nguyên phân liên tiếp 4 lần tạo tế bào sinh tinh, giảm phân bình thường tạo tinh trùng. Biết hiệu suất thụ tinh của tinh trùng là 6,25%. Tính số hợp tử tạo thành.",
+   "lua_chon": [
+    "64",
+    "16",
+    "8",
+    "4"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Số tế bào sinh tinh = 2⁴ = 16 → tinh trùng = 16×4 = 64. Số hợp tử = 64 × 6,25% = 4.\n\nVì sao các phương án khác sai:\n- A: 64 là tổng số tinh trùng, chưa nhân với hiệu suất thụ tinh 6,25%.\n- B: 16 là số tế bào sinh tinh, không phải số hợp tử tạo thành.\n- C: 8 tính nhầm khi chia đôi kết quả đúng một cách không cần thiết."
+  },
+  {
+   "ma_cau": "K09120203011",
+   "nhom_id": "KNB00572",
+   "loai": "trac_nghiem",
+   "de": "Biết hiệu suất thụ tinh của tinh trùng ở một loài là 10% và có 8 hợp tử được tạo thành. Tính số tinh trùng đã tham gia quá trình trên.",
+   "lua_chon": [
+    "80",
+    "8",
+    "800",
+    "0,8"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Số tinh trùng tham gia = số hợp tử : hiệu suất = 8 : 10% = 80.\n\nVì sao các phương án khác sai:\n- B: 8 là số hợp tử, không phải số tinh trùng tham gia.\n- C: 800 tính nhầm khi nhân với 100 thay vì chia cho tỉ lệ phần trăm (10%).\n- D: 0,8 tính nhầm khi nhân hợp tử với tỉ lệ % thay vì chia."
+  },
+  {
+   "ma_cau": "K09120403001",
+   "nhom_id": "KNB00579",
+   "loai": "trac_nghiem",
+   "de": "Biết A trội hoàn toàn so với a, B trội hoàn toàn so với b; hai gene liên kết hoàn toàn. Phép lai AB/ab × AB/ab cho đời con có tỉ lệ kiểu hình là",
+   "lua_chon": [
+    "3 : 1",
+    "9 : 3 : 3 : 1",
+    "1 : 2 : 1",
+    "1 : 1"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Giao tử: AB, ab (mỗi bên). Đời con 1 AB/AB : 2 AB/ab : 1 ab/ab → 3 trội cả hai : 1 lặn cả hai.\n\nVì sao các phương án khác sai:\n- B: Tỉ lệ của hai gene phân li độc lập.\n- C: Tỉ lệ kiểu hình của phép lai Ab/aB × Ab/aB.\n- D: Tỉ lệ của lai phân tích AB/ab × ab/ab."
+  },
+  {
+   "ma_cau": "K09120403002",
+   "nhom_id": "KNB00579",
+   "loai": "trac_nghiem",
+   "de": "Biết A trội hoàn toàn so với a, B trội hoàn toàn so với b; hai gene liên kết hoàn toàn. Phép lai Ab/aB × Ab/aB cho đời con có tỉ lệ kiểu hình là",
+   "lua_chon": [
+    "3 : 1",
+    "9 : 3 : 3 : 1",
+    "1 : 1",
+    "1 : 2 : 1"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Giao tử Ab, aB. Đời con 1 Ab/Ab (trội A, lặn b) : 2 Ab/aB (trội cả hai) : 1 aB/aB (lặn a, trội B) = 1 : 2 : 1.\n\nVì sao các phương án khác sai:\n- A: Tỉ lệ của phép lai AB/ab × AB/ab.\n- B: Tỉ lệ của hai gene phân li độc lập.\n- C: Tỉ lệ của lai phân tích."
+  },
+  {
+   "ma_cau": "K09120403003",
+   "nhom_id": "KNB00579",
+   "loai": "trac_nghiem",
+   "de": "Ở ruồi giấm, B (thân xám) trội hoàn toàn so với b (thân đen), V (cánh dài) trội hoàn toàn so với v (cánh cụt); hai gene liên kết hoàn toàn. Lai ruồi đực BV/bv với ruồi cái bv/bv, đời con có kiểu hình",
+   "lua_chon": [
+    "1 xám, cụt : 1 đen, dài",
+    "1 xám, dài : 1 đen, cụt",
+    "Bốn kiểu hình, mỗi loại 25%",
+    "3 xám, dài : 1 đen, cụt"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Ruồi đực BV/bv cho giao tử BV, bv; ruồi cái chỉ cho bv. Đời con 1 BV/bv (xám, dài) : 1 bv/bv (đen, cụt).\n\nVì sao các phương án khác sai:\n- A: Đây là kết quả khi ruồi đực có kiểu gene Bv/bV.\n- C: Bốn kiểu hình chỉ có khi hai gene phân li độc lập.\n- D: Tỉ lệ 3 : 1 của phép lai BV/bv × BV/bv."
+  },
+  {
+   "ma_cau": "K09120403004",
+   "nhom_id": "KNB00579",
+   "loai": "trac_nghiem",
+   "de": "Biết A trội hoàn toàn so với a, B trội hoàn toàn so với b; hai gene liên kết hoàn toàn. Phép lai Ab/aB × ab/ab cho đời con có tỉ lệ kiểu hình là",
+   "lua_chon": [
+    "1 (trội A, lặn b) : 1 (lặn a, trội B)",
+    "1 (trội cả hai) : 1 (lặn cả hai)",
+    "3 (trội cả hai) : 1 (lặn cả hai)",
+    "100% trội cả hai tính trạng"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Ab/aB cho giao tử Ab, aB; ab/ab cho ab. Đời con 1 Ab/ab : 1 aB/ab → 1 (trội A, lặn b) : 1 (lặn a, trội B).\n\nVì sao các phương án khác sai:\n- B: Đây là kết quả của AB/ab × ab/ab.\n- C: Tỉ lệ của phép lai AB/ab × AB/ab.\n- D: Đời con có hai loại kiểu gene Ab/ab và aB/ab."
+  },
+  {
+   "ma_cau": "K09120403005",
+   "nhom_id": "KNB00579",
+   "loai": "trac_nghiem",
+   "de": "Biết A trội hoàn toàn so với a, B trội hoàn toàn so với b; hai gene liên kết hoàn toàn. Phép lai AB/ab × AB/ab cho đời con, tỉ lệ kiểu hình trội cả hai tính trạng là bao nhiêu?",
+   "lua_chon": [
+    "1/2",
+    "1/4",
+    "9/16",
+    "3/4"
+   ],
+   "dap_an": "D",
+   "loi_giai": "AB/ab × AB/ab (liên kết hoàn toàn) cho đời con 1 AB/AB : 2 AB/ab : 1 ab/ab → tỉ lệ kiểu hình 3 trội cả hai : 1 lặn cả hai → trội cả hai = 3/4.\n\nVì sao các phương án khác sai:\n- A: 1/2 không đúng với tỉ lệ 3:1 của liên kết gene hoàn toàn ở phép lai này.\n- B: 1/4 là tỉ lệ kiểu hình lặn cả hai tính trạng, không phải trội cả hai.\n- C: 9/16 là công thức của hai cặp gene phân li độc lập, không áp dụng cho gene liên kết hoàn toàn."
+  },
+  {
+   "ma_cau": "K09120403006",
+   "nhom_id": "KNB00579",
+   "loai": "trac_nghiem",
+   "de": "Biết A trội hoàn toàn so với a, B trội hoàn toàn so với b; hai gene liên kết hoàn toàn. Phép lai Ab/aB × Ab/aB cho đời con, tỉ lệ kiểu hình mang cả hai tính trạng lặn (aabb) là bao nhiêu?",
+   "lua_chon": [
+    "0",
+    "1/4",
+    "1/16",
+    "1/2"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Cơ thể Ab/aB chỉ tạo hai loại giao tử Ab và aB (liên kết hoàn toàn), không bao giờ tạo giao tử ab hay AB, nên không thể có kiểu gene aabb ở đời con → tỉ lệ = 0.\n\nVì sao các phương án khác sai:\n- B: 1/4 sẽ đúng nếu các gene phân li độc lập; nhưng liên kết hoàn toàn Ab/aB không bao giờ tạo giao tử ab để có kiểu gene aabb.\n- C: 1/16 là công thức cho hai cặp gene phân li độc lập với xác suất riêng lẻ nhân nhau, không áp dụng ở đây.\n- D: 1/2 không phù hợp; các giao tử tạo ra chỉ là Ab và aB, không tổ hợp được thành aabb."
+  },
+  {
+   "ma_cau": "K09120403007",
+   "nhom_id": "KNB00579",
+   "loai": "trac_nghiem",
+   "de": "Ở ruồi giấm, B (thân xám) trội hoàn toàn so với b (thân đen), V (cánh dài) trội hoàn toàn so với v (cánh cụt); hai gene liên kết hoàn toàn. Lai ruồi đực Bv/bV với ruồi cái bv/bv, tỉ lệ kiểu hình đời con là bao nhiêu?",
+   "lua_chon": [
+    "1 xám, dài : 1 đen, cụt",
+    "1 xám, cụt : 1 đen, dài",
+    "3 xám, dài : 1 đen, cụt",
+    "9:3:3:1"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Ruồi đực Bv/bV (liên kết hoàn toàn) tạo giao tử Bv và bV tỉ lệ 1:1; lai với bv/bv (chỉ cho giao tử bv) cho đời con 1 Bv/bv (xám, cụt) : 1 bV/bv (đen, dài).\n\nVì sao các phương án khác sai:\n- A: Đây là tỉ lệ nếu B và V liên kết cùng trên một giao tử gốc (BV/bv), không phù hợp với kiểu gene Bv/bV trong đề.\n- C: Tỉ lệ 3:1 không xuất hiện trong phép lai phân tích với gene liên kết hoàn toàn.\n- D: 9:3:3:1 chỉ áp dụng cho hai cặp gene phân li độc lập, không áp dụng cho gene liên kết."
+  },
+  {
+   "ma_cau": "K09120403008",
+   "nhom_id": "KNB00579",
+   "loai": "trac_nghiem",
+   "de": "Lai cơ thể dị hợp hai cặp gene liên kết hoàn toàn AB/ab với cơ thể đồng hợp lặn ab/ab (lai phân tích). Tỉ lệ kiểu gene ở đời con là",
+   "lua_chon": [
+    "1 AB/ab : 1 ab/ab",
+    "1 AB/ab : 1 Ab/ab : 1 aB/ab : 1 ab/ab",
+    "100% AB/ab",
+    "3 AB/ab : 1 ab/ab"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Cơ thể AB/ab tạo hai loại giao tử AB và ab (tỉ lệ 1:1) do liên kết hoàn toàn; cơ thể ab/ab chỉ tạo một loại giao tử ab. Tổ hợp giao tử cho đời con: AB × ab → AB/ab; ab × ab → ab/ab, với tỉ lệ 1 AB/ab : 1 ab/ab.\n\nVì sao các phương án khác sai:\n- B: Đây là kết quả khi phân li độc lập; liên kết hoàn toàn chỉ có 2 loại giao tử.\n- C: Cơ thể AB/ab còn tạo giao tử ab nên có con ab/ab.\n- D: Hai loại giao tử AB, ab có tỉ lệ ngang nhau nên đời con 1 : 1."
+  },
+  {
+   "ma_cau": "K09120403009",
+   "nhom_id": "KNB00579",
+   "loai": "trac_nghiem",
+   "de": "Ở một loài thực vật, hai tính trạng màu hoa và dạng quả do hai gene liên kết hoàn toàn quy định. Lai cây dị hợp AB/ab với cây dị hợp AB/ab, thu được 800 cây con. Số cây mang kiểu hình lặn cả hai tính trạng theo lí thuyết là bao nhiêu?",
+   "lua_chon": [
+    "200",
+    "400",
+    "50",
+    "600"
+   ],
+   "dap_an": "A",
+   "loi_giai": "AB/ab × AB/ab (liên kết hoàn toàn) cho tỉ lệ kiểu hình 3 trội cả hai : 1 lặn cả hai → số cây lặn cả hai = 800 × 1/4 = 200.\n\nVì sao các phương án khác sai:\n- B: 1/2 không đúng; tỉ lệ lặn cả hai tính trạng ở liên kết hoàn toàn AB/ab×AB/ab là 1/4.\n- C: 1/16 là công thức cho hai cặp gene phân li độc lập, không áp dụng cho gene liên kết hoàn toàn.\n- D: 600 ứng với tỉ lệ 3/4 (kiểu hình trội cả hai), không phải lặn cả hai."
+  }
+ ]
+}

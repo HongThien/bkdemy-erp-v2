@@ -1,0 +1,2911 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00492",
+   "khoi": "9",
+   "chu_de": "Kim loại & Hợp kim",
+   "chuyen_de": "Tính chất chung của kim loại",
+   "nhom": "Tính chất vật lí của kim loại",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Tính chất vật lí chung\nKim loại có bốn tính chất vật lí chung, do các electron tự do trong mạng tinh thể kim loại gây ra:\n•\tTính dẻo: dễ rèn, kéo thành sợi, dát thành lá mỏng.\n•\tTính dẫn điện: cho dòng điện đi qua.\n•\tTính dẫn nhiệt: truyền nhiệt tốt.\n•\tÁnh kim: bề mặt sáng, phản xạ tốt ánh sáng chiếu tới.\nMức độ khác nhau giữa các kim loại\nBốn tính chất trên có ở mọi kim loại nhưng mức độ khác nhau:\n•\tDẫn điện, dẫn nhiệt tốt nhất: Ag, sau đó đến Cu, Au, Al.\n•\tDẻo nhất: Au.\n•\tNhiệt độ nóng chảy cao nhất: W (tungsten, khoảng 3 422 °C); thấp nhất: Hg (ở thể lỏng tại nhiệt độ thường).\n•\tKhối lượng riêng: Al thuộc nhóm kim loại nhẹ, nhỏ hơn rõ rệt so với Fe, Cu, Ag, Au.\nỨng dụng theo tính chất\nTính chất\tỨng dụng\nDẫn điện\tDây dẫn điện (Cu, Al)\nDẫn nhiệt\tDụng cụ nấu ăn (Al, thép)\nDẻo\tĐồ trang sức, giấy gói thực phẩm (Au, Ag, Al)\nÁnh kim\tĐồ trang sức, vật trang trí\nNhiệt độ nóng chảy cao\tDây tóc bóng đèn (W)",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00493",
+   "khoi": "9",
+   "chu_de": "Kim loại & Hợp kim",
+   "chuyen_de": "Tính chất chung của kim loại",
+   "nhom": "TCHH của kim loại: Tác dụng với phi kim & nước",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "•\tKim loại + oxygen (đun nóng) → oxide kim loại. Hầu hết kim loại phản ứng được, trừ Au, Ag, Pt hầu như không phản ứng.\n•\tKim loại + phi kim khác (Cl₂, S…, đun nóng) → muối. Hoá trị của kim loại trong sản phẩm phụ thuộc phi kim đối tác: với Cl₂ (oxi hoá mạnh), Fe lên hoá trị III (FeCl₃); với S (oxi hoá yếu hơn), Fe chỉ lên hoá trị II (FeS).\n•\tKim loại hoạt động hoá học mạnh (K, Na, Ca…) + nước ở nhiệt độ thường → hydroxide + khí hydrogen.\n•\tKim loại hoạt động hoá học trung bình (Zn, Fe…) + hơi nước ở nhiệt độ cao → oxide + khí hydrogen.\n•\tKim loại hoạt động hoá học yếu (Cu, Ag, Au) hầu như không phản ứng với nước, kể cả dạng hơi nước ở nhiệt độ cao.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00494",
+   "khoi": "9",
+   "chu_de": "Kim loại & Hợp kim",
+   "chuyen_de": "Tính chất chung của kim loại",
+   "nhom": "TCHH của kim loại: tác dụng với dd acid và dd muối",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Công thức\n•\tKim loại đứng trước hydrogen trong dãy hoạt động hoá học (K, Na, Ca, Mg, Al, Zn, Fe, Pb, (H), Cu, Ag, Au) + dung dịch acid (HCl, H2SO4 loãng) → muối + khí hydrogen. Kim loại đứng sau H không phản ứng.\n•\tKim loại đứng trước (mạnh hơn) trong dãy hoạt động + dung dịch muối của kim loại đứng sau (yếu hơn) → muối mới + kim loại mới. Kim loại đứng sau không đẩy được kim loại đứng trước ra khỏi dung dịch muối.\n•\tRiêng các kim loại hoạt động rất mạnh (K, Na, Ca…) phản ứng ngay với nước có trong dung dịch muối nên không dùng để đẩy kim loại khác ra khỏi dung dịch muối theo cách thông thường.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00495",
+   "khoi": "9",
+   "chu_de": "Kim loại & Hợp kim",
+   "chuyen_de": "Tính chất chung của kim loại",
+   "nhom": "Dãy hoạt động hóa học của kim loại",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "•\tDãy hoạt động hoá học (từ mạnh đến yếu): K, Na, Ca, Mg, Al, Zn, Fe, Pb, (H), Cu, Ag, Au.\n•\tMức độ hoạt động hoá học giảm dần từ trái sang phải trong dãy.\n•\tKim loại đứng trước Mg (K, Na, Ca) phản ứng được với nước ở nhiệt độ thường, tạo hydroxide và khí hydrogen.\n•\tKim loại đứng trước H phản ứng được với dung dịch acid (HCl, H2SO4 loãng), giải phóng khí hydrogen; kim loại đứng sau H thì không.\n•\tKim loại đứng trước (trừ K, Na, Ca) đẩy được kim loại đứng sau ra khỏi dung dịch muối của kim loại đó.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00496",
+   "khoi": "9",
+   "chu_de": "Kim loại & Hợp kim",
+   "chuyen_de": "Tính chất chung của kim loại",
+   "nhom": "Vận dụng dãy HĐHH xác định kim loại qua chuỗi thí nghiệm",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "•\tKhi một kim loại tham gia đồng thời nhiều phản ứng (với nước, dung dịch acid, dung dịch muối), xét từng điều kiện riêng biệt theo đúng vị trí của kim loại đó trong dãy hoạt động hoá học so với Mg, H, và kim loại trong muối.\n•\tKhi cho một kim loại vào nhiều dung dịch muối khác nhau, kim loại đó chỉ phản ứng, đẩy được kim loại khác ra khỏi dung dịch muối của kim loại đứng SAU nó trong dãy hoạt động.\n•\tTrong thực tế, việc chọn kim loại để bảo vệ, thu hồi hay tránh ăn mòn một kim loại khác đều dựa vào vị trí tương đối của các kim loại trong dãy hoạt động hoá học.\nVí dụ 1. Ba thí nghiệm: (1) Ca phản ứng với nước ở nhiệt độ thường, Zn thì không; (2) Zn phản ứng với dung dịch hydrochloric acid, Cu thì không; (3) Cu đẩy được Ag ra khỏi dung dịch silver nitrate. Sắp xếp Ca, Zn, Cu, Ag theo chiều giảm dần mức độ hoạt động hoá học.\nHướng dẫn: Từ (1): Ca mạnh hơn Zn. Từ (2): Zn mạnh hơn Cu. Từ (3): Cu mạnh hơn Ag. Ghép lại: Ca, Zn, Cu, Ag.\nVí dụ 2. Giải thích vì sao khi cho một dây kẽm vào dung dịch chứa đồng thời ion Cu²⁺ và ion Mg²⁺ (dưới dạng hai muối tan), kẽm chỉ phản ứng với một trong hai ion đó.\nHướng dẫn: Zn đứng trước Cu trong dãy hoạt động hoá học nên đẩy được Cu ra khỏi dung dịch muối (phản ứng với ion Cu²⁺); Zn đứng sau Mg nên không đẩy được Mg ra khỏi dung dịch muối (không phản ứng với ion Mg²⁺).",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00497",
+   "khoi": "9",
+   "chu_de": "Kim loại & Hợp kim",
+   "chuyen_de": "Tính chất chung của kim loại",
+   "nhom": "TỔNG HỢP TÍNH CHẤT VẬT LÍ, TÍNH CHẤT HOÁ HỌC VÀ DÃY HOẠT ĐỘNG HOÁ HỌC CỦA KIM LOẠI",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "•\tTính chất vật lí chung: tính dẻo, tính dẫn điện, tính dẫn nhiệt, ánh kim. Dẫn điện, dẫn nhiệt tốt nhất: Ag, sau đó đến Cu, Au, Al. Dẻo nhất: Au. Nhiệt độ nóng chảy cao nhất: W; thấp nhất: Hg (thể lỏng ở nhiệt độ thường). Al thuộc nhóm kim loại nhẹ.\n•\tDãy hoạt động hoá học (từ mạnh đến yếu): K, Na, Ca, Mg, Al, Zn, Fe, Pb, (H), Cu, Ag, Au.\n•\tKim loại đứng trước Mg phản ứng với nước ở nhiệt độ thường; đứng trước H phản ứng với dung dịch acid; đứng trước (trừ K, Na, Ca) đẩy được kim loại đứng sau ra khỏi dung dịch muối.\nVí dụ 1. Nhận định sau đúng hay sai: “Nhôm (Al) nhẹ hơn sắt (Fe) và đồng thời hoạt động hoá học mạnh hơn sắt.” Giải thích.\nHướng dẫn: Đúng. Al thuộc nhóm kim loại nhẹ, khối lượng riêng nhỏ hơn Fe rõ rệt (vế vật lí); đồng thời Al đứng trước Fe trong dãy hoạt động hoá học nên hoạt động mạnh hơn (vế hoá học). Cả hai vế đều đúng nên nhận định đúng.\nVí dụ 2. Cần chọn kim loại làm dây dẫn điện, vừa dẫn điện tốt, vừa có giá thành hợp lí hơn bạc. Nên chọn kim loại nào trong số Ag, Cu, Fe?\nHướng dẫn: Cu dẫn điện tốt, chỉ kém Ag, nhưng có giá thành hợp lí hơn Ag nhiều nên được dùng phổ biến làm dây dẫn điện. Fe dẫn điện kém hơn hẳn Cu nên không phù hợp.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00498",
+   "khoi": "9",
+   "chu_de": "Kim loại & Hợp kim",
+   "chuyen_de": "Tính chất chung của kim loại",
+   "nhom": "ỨNG DỤNG THỰC TẾ VÀ GIẢI THÍCH HIỆN TƯỢNG LIÊN QUAN ĐẾN TÍNH CHẤT KIM LOẠI",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "•\tỨng dụng theo tính chất vật lí: dẫn điện tốt (Cu, Al làm dây dẫn điện), dẫn nhiệt tốt (Al, thép làm dụng cụ nấu ăn), dẻo (Au, Ag làm trang sức, Al làm giấy gói thực phẩm), ánh kim (trang sức, vật trang trí), nhiệt độ nóng chảy cao (W làm dây tóc bóng đèn).\n•\tKim loại hoạt động hoá học yếu (Au, Ag, Cu) ít bị oxi hoá, ăn mòn theo thời gian nên phù hợp với ứng dụng cần độ bền lâu dài (trang sức, tiếp điểm điện tử).\n•\tKim loại hoạt động mạnh hơn có thể dùng để bảo vệ kim loại yếu hơn khỏi bị ăn mòn: kim loại mạnh hơn bị ăn mòn (phản ứng, hao mòn) thay cho kim loại yếu hơn cần bảo vệ.\nVí dụ 1. Giải thích vì sao dây dẫn điện trong nhà thường làm bằng đồng (Cu) mà không làm bằng sắt (Fe), dù Fe rẻ hơn.\nHướng dẫn: Cu dẫn điện tốt hơn Fe rất nhiều (chỉ kém Ag), nên dùng Cu làm dây dẫn điện hiệu quả hơn dù giá thành cao hơn Fe.\nVí dụ 2. Giải thích cơ sở khoa học của việc gắn các tấm kẽm (Zn) vào vỏ tàu biển bằng thép ở phần ngâm dưới nước.\nHướng dẫn: Zn đứng trước Fe trong dãy hoạt động hoá học nên hoạt động mạnh hơn, bị ăn mòn (phản ứng, hao mòn dần) thay cho vỏ tàu bằng thép, giúp bảo vệ thép khỏi bị ăn mòn.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00499",
+   "khoi": "9",
+   "chu_de": "Kim loại & Hợp kim",
+   "chuyen_de": "Tính chất chung của kim loại",
+   "nhom": "TÍNH TOÁN THEO PHƯƠNG TRÌNH HOÁ HỌC KHI KIM LOẠI TÁC DỤNG VỚI DUNG DỊCH ACID",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true
+  }
+ ],
+ "dang_bai": [
+  {
+   "dang_id": "KDB01195",
+   "nhom_id": "KNB00492",
+   "thu_tu": 1,
+   "dang": "XÁC ĐỊNH TÍNH CHẤT VẬT LÍ QUA HIỆN TƯỢNG MÔ TẢ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060101045",
+     "loai": "trac_nghiem",
+     "de": "Người ta có thể dát vàng thành lá mỏng đến mức gần như trong suốt để dùng trong trang trí mà lá vàng không bị vỡ vụn. Hiện tượng này thể hiện tính chất vật lí nào của kim loại?",
+     "lua_chon": [
+      "Ánh kim",
+      "Tính dẫn điện",
+      "Tính dẫn nhiệt",
+      "Tính dẻo"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đáp án chi tiết: Dát mỏng thành lá mà không vỡ là biểu hiện của tính dẻo. A sai vì ánh kim chỉ liên quan đến độ sáng bề mặt. B và C sai vì không liên quan đến dòng điện hay nhiệt."
+    },
+    {
+     "ma_cau": "K09060101046",
+     "loai": "trac_nghiem",
+     "de": "Cán của một chiếc chảo bằng thép nóng lên rõ rệt sau vài phút đun trên bếp, dù cán không tiếp xúc trực tiếp với ngọn lửa. Hiện tượng này thể hiện tính chất vật lí nào của kim loại?",
+     "lua_chon": [
+      "Tính dẻo",
+      "Ánh kim",
+      "Tính dẫn nhiệt",
+      "Tính dẫn điện"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đáp án chi tiết: Nhiệt truyền từ đáy chảo lên cán dù không tiếp xúc lửa trực tiếp là biểu hiện của tính dẫn nhiệt. A sai vì không có sự biến dạng cơ học ở đây. B sai vì ánh kim liên quan đến ánh sáng. D sai vì không liên quan đến dòng điện."
+    },
+    {
+     "ma_cau": "K09060101042",
+     "loai": "trac_nghiem",
+     "de": "Đáy nồi nhôm nóng lên nhanh chóng khi đặt trên bếp đang cháy. Hiện tượng này thể hiện tính chất vật lí nào của kim loại?",
+     "lua_chon": [
+      "Tính dẫn nhiệt",
+      "Tính dẻo",
+      "Ánh kim",
+      "Tính dẫn điện"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Truyền nhiệt nhanh từ đáy nồi lên phần chứa thức ăn là biểu hiện của tính dẫn nhiệt. B sai vì tính dẻo liên quan đến khả năng biến dạng cơ học. C sai vì ánh kim liên quan đến phản xạ ánh sáng. D sai vì tính dẫn điện liên quan đến dòng điện, không phải nhiệt."
+    },
+    {
+     "ma_cau": "K09060101043",
+     "loai": "trac_nghiem",
+     "de": "Dây bạc trong một số mạch điện tử có độ nhạy cao được dùng để truyền tín hiệu dòng điện rất nhỏ. Hiện tượng này thể hiện tính chất vật lí nào của kim loại?",
+     "lua_chon": [
+      "Tính dẫn điện",
+      "Ánh kim",
+      "Tính dẻo",
+      "Tính dẫn nhiệt"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Truyền được dòng điện là biểu hiện của tính dẫn điện. B sai vì ánh kim là khả năng phản xạ ánh sáng trên bề mặt. C sai vì tính dẻo là khả năng biến dạng cơ học. D sai vì tính dẫn nhiệt liên quan đến truyền nhiệt, không phải dòng điện."
+    },
+    {
+     "ma_cau": "K09060101048",
+     "loai": "trac_nghiem",
+     "de": "Một huy chương bằng bạc có bề mặt sáng lấp lánh, dễ nhận ra dưới ánh đèn sân khấu. Hiện tượng này thể hiện tính chất vật lí nào của kim loại?",
+     "lua_chon": [
+      "Tính dẫn nhiệt",
+      "Tính dẻo",
+      "Tính dẫn điện",
+      "Ánh kim"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Bề mặt sáng lấp lánh dưới ánh đèn là biểu hiện của ánh kim. A sai vì không liên quan đến nhiệt. B sai vì không có sự biến dạng cơ học. C sai vì không liên quan đến dòng điện."
+    },
+    {
+     "ma_cau": "K09060101047",
+     "loai": "trac_nghiem",
+     "de": "Lõi đồng bên trong một sợi dây điện cho dòng điện đi qua dễ dàng, trong khi lớp vỏ nhựa bọc bên ngoài thì không. Tính chất giúp lõi đồng thực hiện được chức năng này là gì?",
+     "lua_chon": [
+      "Tính dẫn điện",
+      "Tính dẻo",
+      "Ánh kim",
+      "Tính dẫn nhiệt"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cho dòng điện đi qua dễ dàng là biểu hiện của tính dẫn điện. B sai vì tính dẻo không liên quan đến dòng điện. C sai vì ánh kim là tính chất về ánh sáng. D sai vì tính dẫn nhiệt liên quan đến nhiệt, không phải dòng điện."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01196",
+   "nhom_id": "KNB00492",
+   "thu_tu": 2,
+   "dang": "NHẬN ĐỊNH ĐÚNG/SAI VỀ TÍNH CHẤT VẬT LÍ CHUNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060101051",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau về tính dẻo và ánh kim của kim loại, phát biểu nào đúng?",
+     "lua_chon": [
+      "Tính dẻo của các kim loại là như nhau.",
+      "Vàng là kim loại có tính dẻo cao nhất trong số các kim loại thông dụng.",
+      "Kim loại không dẫn nhiệt.",
+      "Chỉ một số ít kim loại có ánh kim."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Vàng là kim loại dẻo nhất, đây là phát biểu đúng. A sai vì mức độ dẻo giữa các kim loại khác nhau. C sai vì kim loại dẫn nhiệt tốt. D sai vì ánh kim là tính chất chung của mọi kim loại, không phải chỉ một số ít."
+    },
+    {
+     "ma_cau": "K09060101056",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau về ánh kim và cơ chế dẫn điện của kim loại, phát biểu nào sai?",
+     "lua_chon": [
+      "Mọi kim loại đều có ánh kim, dù mức độ sáng khác nhau.",
+      "Thuỷ ngân ở thể lỏng tại nhiệt độ thường.",
+      "Kim loại dẫn điện là do ion dương trong mạng tinh thể di chuyển tự do.",
+      "Vàng có tính dẻo cao, dễ dát thành lá mỏng."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Kim loại dẫn điện là do các electron tự do di chuyển, không phải ion dương (ion dương chỉ dao động tại vị trí trong mạng tinh thể, không di chuyển tự do), nên phát biểu C sai. A, B, D đều đúng."
+    },
+    {
+     "ma_cau": "K09060101053",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau về ánh kim và tính dẫn nhiệt của kim loại, phát biểu nào đúng?",
+     "lua_chon": [
+      "Kim loại có ánh kim vì bề mặt phản xạ tốt ánh sáng chiếu tới.",
+      "Kim loại không có khả năng dát mỏng.",
+      "Nhiệt độ nóng chảy của các kim loại đều bằng nhau.",
+      "Kim loại không dẫn điện khi ở thể rắn."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ánh kim do bề mặt phản xạ tốt ánh sáng, đây là phát biểu đúng. $\\mathrm{B}$ sai vì kim loại có tính dẻo nên dát mỏng được. $\\mathrm{C}$ sai vì nhiệt độ nóng chảy giữa các kim loại chênh lệch lớn. $\\mathrm{D}$ sai vì kim loại dẫn điện tốt ngay cả ở thể rắn."
+    },
+    {
+     "ma_cau": "K09060101052",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau về tính dẻo và nhiệt độ nóng chảy của kim loại, phát biểu nào sai?",
+     "lua_chon": [
+      "Kim loại có tính dẻo, tính dẫn điện, tính dẫn nhiệt và ánh kim.",
+      "Thủy ngân là kim loại duy nhất ở thể lỏng tại nhiệt độ thường.",
+      "Mọi kim loại dẫn điện tốt bằng nhau, không có sự khác biệt.",
+      "Bạc là kim loại dẫn điện tốt nhất trong số các kim loại."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Mức độ dẫn điện giữa các kim loại khác nhau rõ rệt, ví dụ $\\mathrm{Ag}$ dẫn điện tốt hơn $\\mathrm{Fe}$, nên phát biểu $\\mathrm{C}$ sai. $\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{D}$ đều đúng."
+    },
+    {
+     "ma_cau": "K09060101049",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây về tính chất vật lí chung của kim loại là đúng?",
+     "lua_chon": [
+      "Mọi kim loại đều ở thể rắn tại nhiệt độ thường.",
+      "Kim loại dẫn điện được là do có các electron tự do di chuyển trong mạng tinh thể.",
+      "Mọi kim loại dẫn điện tốt như nhau.",
+      "Ánh kim là do kim loại tự phát ra ánh sáng."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Electron tự do di chuyển là nguyên nhân của tính dẫn điện, đây là phát biểu đúng. A sai vì $\\mathrm{Hg}$ ở thể lỏng tại nhiệt độ thường. C sai vì mức độ dẫn điện giữa các kim loại khác nhau. D sai vì ánh kim là do phản xạ ánh sáng, không phải tự phát sáng."
+    },
+    {
+     "ma_cau": "K09060101050",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây về tính chất vật lí chung của kim loại là sai?",
+     "lua_chon": [
+      "Kim loại có tính dẻo nên có thể kéo thành sợi, dát thành lá mỏng.",
+      "Các kim loại khác nhau có mức độ dẫn nhiệt khác nhau.",
+      "Tất cả kim loại đều có nhiệt độ nóng chảy xấp xỉ như nhau.",
+      "Kim loại có ánh kim do bề mặt phản xạ tốt phần lớn ánh sáng chiếu tới."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nhiệt độ nóng chảy giữa các kim loại chênh lệch rất lớn, ví dụ $\\mathrm{Hg}$ khoảng $-39$ $\\mathrm{^oC}$ còn $\\mathrm{W}$ khoảng $3\\ 422$ $\\mathrm{^oC}$, nên phát biểu C sai. A, B, D đều là phát biểu đúng về tính chất vật lí chung."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01197",
+   "nhom_id": "KNB00492",
+   "thu_tu": 3,
+   "dang": "SO SÁNH MỨC ĐỘ TÍNH CHẤT VẬT LÍ GIỮA CÁC KIM LOẠI CỤ THỂ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060101060",
+     "loai": "trac_nghiem",
+     "de": "Cho bốn kim loại $\\mathrm{Hg}$, $\\mathrm{Fe}$, $\\mathrm{Cu}$, $\\mathrm{Au}$. Trong bốn kim loại này, kim loại nào ở thể lỏng tại nhiệt độ thường?",
+     "lua_chon": [
+      "Cu",
+      "Hg",
+      "Fe",
+      "Au"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Thủy ngân ($\\mathrm{Hg}$) là kim loại duy nhất trong nhóm ở thể lỏng tại nhiệt độ thường, do có nhiệt độ nóng chảy rất thấp (khoảng $-39 \\ \\mathrm{^oC}$). $\\mathrm{A}$, $\\mathrm{C}$, $\\mathrm{D}$ đều là kim loại ở thể rắn tại nhiệt độ thường."
+    },
+    {
+     "ma_cau": "K09060101059",
+     "loai": "trac_nghiem",
+     "de": "Cho bốn kim loại $\\mathrm{W}$, $\\mathrm{Fe}$, $\\mathrm{Al}$, $\\mathrm{Hg}$. Trong bốn kim loại này, kim loại nào có nhiệt độ nóng chảy cao nhất?",
+     "lua_chon": [
+      "Hg",
+      "Al",
+      "W",
+      "Fe"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Vonfram ($\\mathrm{W}$) có nhiệt độ nóng chảy cao nhất trong số các kim loại, khoảng $3 \\ 422$ °$\\mathrm{C}$. $\\mathrm{A}$ là kết quả của việc chọn nhầm kim loại có nhiệt độ nóng chảy thấp nhất ($\\mathrm{Hg}$) thay vì cao nhất. $\\mathrm{B}$, $\\mathrm{D}$ là kết quả của việc chọn các kim loại có nhiệt độ nóng chảy thấp hơn $\\mathrm{W}$."
+    },
+    {
+     "ma_cau": "K09060101058",
+     "loai": "trac_nghiem",
+     "de": "Cho bốn kim loại $\\mathrm{Au}$, $\\mathrm{Ag}$, $\\mathrm{Fe}$, $\\mathrm{Al}$. Trong bốn kim loại này, kim loại nào có tính dẻo cao nhất (dễ dát mỏng nhất)?",
+     "lua_chon": [
+      "Au",
+      "Fe",
+      "Al",
+      "Ag"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Vàng ($\\mathrm{Au}$) là kim loại có tính dẻo cao nhất trong số các kim loại thông dụng. $\\mathrm{D}$ là kết quả của việc chọn kim loại dẻo thứ hai ($\\mathrm{Ag}$) thay vì thứ nhất. $\\mathrm{B}$, $\\mathrm{C}$ là kết quả của việc chọn các kim loại kém dẻo hơn trong nhóm ($\\mathrm{Fe}$, $\\mathrm{Al}$)."
+    },
+    {
+     "ma_cau": "K09060101061",
+     "loai": "trac_nghiem",
+     "de": "Cho bốn kim loại $\\mathrm{Cu}$, $\\mathrm{Al}$, $\\mathrm{Fe}$, $\\mathrm{Ag}$. Trong bốn kim loại này, kim loại nào dẫn nhiệt kém nhất?",
+     "lua_chon": [
+      "Ag",
+      "Cu",
+      "Al",
+      "Fe"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Trong bốn kim loại trên, $\\mathrm{Fe}$ dẫn nhiệt kém nhất, còn $\\mathrm{Ag}$ dẫn nhiệt tốt nhất, sau đó đến $\\mathrm{Cu}$, $\\mathrm{Al}$. $\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{C}$ là kết quả của việc chọn nhầm các kim loại dẫn nhiệt tốt trong nhóm thay vì kim loại dẫn nhiệt kém nhất."
+    },
+    {
+     "ma_cau": "K09060101063",
+     "loai": "trac_nghiem",
+     "de": "Cho bốn kim loại $\\mathrm{Al}$, $\\mathrm{Cu}$, $\\mathrm{Fe}$, $\\mathrm{Ag}$. Trong bốn kim loại này, kim loại nào có khối lượng riêng nhỏ nhất (nhẹ nhất)?",
+     "lua_chon": [
+      "Fe",
+      "Cu",
+      "Ag",
+      "Al"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Nhôm ($\\mathrm{Al}$) có khối lượng riêng khoảng $2,7 \\ \\mathrm{g/cm^3}$, nhỏ hơn rõ rệt so với $\\mathrm{Fe}$ (khoảng $7,9 \\ \\mathrm{g/cm^3}$), $\\mathrm{Cu}$ (khoảng $9,0 \\ \\mathrm{g/cm^3}$) và $\\mathrm{Ag}$ (khoảng $10,5 \\ \\mathrm{g/cm^3}$). $\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{C}$ là kết quả của việc chọn nhầm các kim loại có khối lượng riêng lớn hơn trong nhóm."
+    },
+    {
+     "ma_cau": "K09060101057",
+     "loai": "trac_nghiem",
+     "de": "Cho bốn kim loại $\\mathrm{Ag}$, $\\mathrm{Cu}$, $\\mathrm{Al}$, $\\mathrm{Fe}$. Trong bốn kim loại này, kim loại nào dẫn điện tốt nhất?",
+     "lua_chon": [
+      "Fe",
+      "Al",
+      "Cu",
+      "Ag"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Trong bốn kim loại trên, $\\mathrm{Ag}$ dẫn điện tốt nhất, sau đó đến $\\mathrm{Cu}$, $\\mathrm{Al}$, $\\mathrm{Fe}$. $\\mathrm{A}$ và $\\mathrm{B}$ là kết quả của việc chọn nhầm kim loại dẫn điện kém nhất hoặc gần kém nhất trong nhóm. $\\mathrm{C}$ là kết quả của việc chọn kim loại đứng thứ hai thay vì thứ nhất."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01198",
+   "nhom_id": "KNB00492",
+   "thu_tu": 4,
+   "dang": "LIÊN HỆ TÍNH CHẤT VẬT LÍ VỚI ỨNG DỤNG THỰC TẾ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060101065",
+     "loai": "trac_nghiem",
+     "de": "Đường dây tải điện cao thế trên không thường được làm bằng nhôm thay vì đồng, dù nhôm dẫn điện kém hơn đồng. Lí do chính là gì?",
+     "lua_chon": [
+      "Nhôm nhẹ hơn đồng nên giảm tải trọng cho cột điện.",
+      "Nhôm có ánh kim tốt hơn đồng.",
+      "Nhôm dẫn điện tốt hơn đồng.",
+      "Nhôm có nhiệt độ nóng chảy thấp hơn đồng nên dễ gia công hơn."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng riêng của nhôm nhỏ hơn đồng nhiều, giúp giảm tải trọng treo trên cột điện dù phải dùng dây to hơn để bù lại độ dẫn điện kém hơn. C sai vì thực tế đồng dẫn điện tốt hơn nhôm. B, D không phải lí do chính trong ứng dụng này."
+    },
+    {
+     "ma_cau": "K09060101069",
+     "loai": "trac_nghiem",
+     "de": "Giấy nhôm dùng để gói thực phẩm được sản xuất bằng cách cán, dát nhôm thành lá rất mỏng. Việc sản xuất này chủ yếu dựa vào tính chất vật lí nào của nhôm?",
+     "lua_chon": [
+      "Tính dẫn điện",
+      "Ánh kim",
+      "Tính dẫn nhiệt",
+      "Tính dẻo"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tính dẻo cho phép nhôm được dát thành lá rất mỏng mà không bị gãy vụn, đây là tính chất chính được khai thác. $\\mathrm{A}$ , $\\mathrm{B}$ , $\\mathrm{C}$ không phải lí do chính trong ứng dụng này."
+    },
+    {
+     "ma_cau": "K09060101070",
+     "loai": "trac_nghiem",
+     "de": "Nhiệt kế thủy ngân trước đây sử dụng thủy ngân ($\\mathrm{Hg}$) để đo nhiệt độ. Lựa chọn này chủ yếu dựa vào đặc điểm vật lí nào?",
+     "lua_chon": [
+      "Thủy ngân dẫn điện tốt nhất trong số các kim loại.",
+      "Thủy ngân có ánh kim đặc biệt sáng.",
+      "Thủy ngân ở thể lỏng trong khoảng nhiệt độ thường gặp, dễ quan sát sự dãn nở.",
+      "Thủy ngân có tính dẻo cao, dễ chế tạo ống nhiệt kế."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Thủy ngân ở thể lỏng trong khoảng nhiệt độ thường gặp trong đời sống nên dễ quan sát sự dãn nở thể tích theo nhiệt độ, đây là lí do chính. A sai vì thủy ngân không dẫn điện tốt nhất. B, D không phải lí do chính trong ứng dụng này."
+    },
+    {
+     "ma_cau": "K09060101067",
+     "loai": "trac_nghiem",
+     "de": "Dụng cụ nấu ăn như nồi, chảo thường được làm bằng nhôm hoặc thép. Lựa chọn này chủ yếu dựa vào tính chất vật lí nào?",
+     "lua_chon": [
+      "Tính dẫn nhiệt tốt",
+      "Ánh kim",
+      "Tính dẻo",
+      "Tính dẫn điện tốt"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tính dẫn nhiệt tốt giúp truyền nhiệt nhanh từ bếp vào thức ăn, đây là tính chất chính được khai thác ở dụng cụ nấu ăn. $\\mathrm{B}$ , $\\mathrm{C}$ , $\\mathrm{D}$ không phải lí do chính trong ứng dụng này."
+    },
+    {
+     "ma_cau": "K09060101068",
+     "loai": "trac_nghiem",
+     "de": "Dây tóc bóng đèn sợi đốt trước đây được làm bằng vonfram ($\\mathrm{W}$). Lựa chọn này chủ yếu dựa vào tính chất vật lí nào?",
+     "lua_chon": [
+      "Tính dẫn điện tốt nhất trong số các kim loại.",
+      "Nhiệt độ nóng chảy rất cao, chịu được nhiệt độ lớn khi phát sáng.",
+      "Ánh kim đẹp.",
+      "Tính dẻo cao, dễ kéo sợi."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Vonfram có nhiệt độ nóng chảy rất cao nên chịu được nhiệt độ lớn khi dây tóc phát sáng mà không bị chảy đứt, đây là lí do chính. $\\mathrm{A}$ sai vì vonfram không dẫn điện tốt nhất, bạc mới là kim loại dẫn điện tốt nhất. $\\mathrm{C}$ , $\\mathrm{D}$ không phải lí do chính trong ứng dụng này."
+    },
+    {
+     "ma_cau": "K09060101066",
+     "loai": "trac_nghiem",
+     "de": "Đồ trang sức như nhẫn, dây chuyền thường được làm bằng vàng, bạc. Lựa chọn này chủ yếu dựa vào những tính chất vật lí nào?",
+     "lua_chon": [
+      "Tính dẫn điện và tính dẫn nhiệt.",
+      "Ánh kim và tính dẻo.",
+      "Nhiệt độ nóng chảy cao và khối lượng riêng lớn.",
+      "Tính dẫn nhiệt và khối lượng riêng lớn."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ánh kim tạo vẻ sáng đẹp, tính dẻo giúp dễ tạo hình hoa văn tinh xảo, đây là hai tính chất chính được khai thác ở đồ trang sức. A, C, D không phải các tính chất được khai thác chủ yếu trong ứng dụng này."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01199",
+   "nhom_id": "KNB00493",
+   "thu_tu": 1,
+   "dang": "XÁC ĐỊNH PHƯƠNG TRÌNH HOÁ HỌC ĐÚNG KHI KIM LOẠI TÁC DỤNG VỚI OXYGEN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060102037",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi đốt calcium (Ca) trong khí oxygen?",
+     "lua_chon": [
+      "$\\mathrm{Ca} + \\mathrm{O_2} \\xrightarrow{t^\\circ} \\mathrm{CaO}$",
+      "$2\\mathrm{Ca} + \\mathrm{O_2} \\xrightarrow{t^\\circ} 2\\mathrm{CaO_2}$",
+      "$4\\mathrm{Ca} + \\mathrm{O_2} \\xrightarrow{t^\\circ} 2\\mathrm{CaO}$",
+      "$2\\mathrm{Ca} + \\mathrm{O_2} \\xrightarrow{t^\\circ} 2\\mathrm{CaO}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đáp án chi tiết: $2\\mathrm{Ca} + \\mathrm{O_2} \\xrightarrow{t^\\circ} 2\\mathrm{CaO}$ là phương trình đúng và đã cân bằng ($\\mathrm{Ca}: 2 = 2; \\mathrm{O}: 2 = 2$).\n$\\mathrm{A}$ thiếu hệ số cân bằng, khiến $\\mathrm{O}$ lệch ($2 \\neq 1$).\n$\\mathrm{B}$ là kết quả của việc gán sai hoá trị calcium (calcium chỉ có hoá trị $\\mathrm{II}$, không tạo $\\mathrm{CaO_2}$). \n$\\mathrm{C}$ là kết quả của việc dùng sai hệ số kim loại, khiến $\\mathrm{Ca}$ lệch ($4 \\neq 2$)."
+    },
+    {
+     "ma_cau": "K09060102033",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi đốt đồng (Cu) trong khí oxygen?",
+     "lua_chon": [
+      "$\\mathrm{2Cu + O_2 \\xrightarrow{t^o} Cu_2O}$",
+      "$\\mathrm{Cu + O_2 \\xrightarrow{t^o} CuO_2}$",
+      "$\\mathrm{2Cu + O_2 \\xrightarrow{t^o} 2CuO}$",
+      "$\\mathrm{2Cu + O_2 \\xrightarrow{t^o} CuO}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{2Cu + O_2 \\xrightarrow{t^o} 2CuO}$ là phương trình đúng và đã cân bằng (Cu: $2 = 2$; O: $2 = 2$).\nA là kết quả của việc nhầm hoá trị I thay vì hoá trị II của đồng trong điều kiện đun nóng với oxygen dư.\nB là kết quả của việc viết sai công thức oxide.\nD là kết quả của việc quên hệ số $2$ trước $\\mathrm{CuO}$, khiến O không cân bằng ($2 \\ne 1$)."
+    },
+    {
+     "ma_cau": "K09060102039",
+     "loai": "trac_nghiem",
+     "de": "Kim loại nào sau đây hầu như không phản ứng với khí oxygen, kể cả khi đun nóng?",
+     "lua_chon": [
+      "$\\mathrm{Fe}$",
+      "$\\mathrm{Au}$",
+      "$\\mathrm{Al}$",
+      "$\\mathrm{Zn}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{Au}$ là kim loại có hoạt động hoá học rất yếu, hầu như không tác dụng với oxygen kể cả khi đun nóng. \n$\\mathrm{A}$, $\\mathrm{C}$, $\\mathrm{D}$ đều là kim loại phản ứng được với oxygen khi đun nóng, tạo oxide tương ứng."
+    },
+    {
+     "ma_cau": "K09060102034",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi đốt nhôm (Al) trong khí oxygen?",
+     "lua_chon": [
+      "$\\mathrm{4Al + 3O_2 \\xrightarrow{t^o} 4Al_2O_3}$",
+      "$\\mathrm{4Al + 3O_2 \\xrightarrow{t^o} 2Al_2O_3}$",
+      "$\\mathrm{2Al + O_2 \\xrightarrow{t^o} 2AlO}$",
+      "$\\mathrm{2Al + 3O_2 \\xrightarrow{t^o} Al_2O_3}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{4Al + 3O_2 \\xrightarrow{t^o} 2Al_2O_3}$ là phương trình đúng và đã cân bằng (Al: $4 = 4$; O: $6 = 6$).\nA là kết quả của việc quên chia lại hệ số sản phẩm, khiến O lệch ($6 \\ne 12$).\nC là kết quả của việc gán sai hoá trị nhôm (nhôm chỉ có hoá trị III, không tạo $\\mathrm{AlO}$). \nD là kết quả của việc quên nhân hệ số $2$ cho $\\mathrm{Al_2O_3}$, khiến O lệch ($6 \\ne 3$)."
+    },
+    {
+     "ma_cau": "K09060102038",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi đốt kẽm ($\\mathrm{Zn}$) trong khí oxygen?",
+     "lua_chon": [
+      "$\\mathrm{Zn + O_2 \\xrightarrow{t^o} ZnO}$",
+      "$\\mathrm{2Zn + O_2 \\xrightarrow{t^o} 2ZnO_2}$",
+      "$\\mathrm{2Zn + O_2 \\xrightarrow{t^o} 2ZnO}$",
+      "$\\mathrm{4Zn + O_2 \\xrightarrow{t^o} 2ZnO}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{2Zn + O_2 \\xrightarrow{t^o} 2ZnO}$ là phương trình đúng và đã cân bằng ($\\mathrm{Zn}$: $2 = 2$; $\\mathrm{O}$: $2 = 2$).\n$\\mathrm{A}$ thiếu hệ số cân bằng, khiến $\\mathrm{O}$ lệch ($\\mathrm{2 \\neq 1}$). \n$\\mathrm{B}$ là kết quả của việc gán sai hoá trị kẽm (kẽm chỉ có hoá trị $\\mathrm{II}$, không tạo $\\mathrm{ZnO_2}$). \n$\\mathrm{D}$ là kết quả của việc dùng sai hệ số kim loại, khiến $\\mathrm{Zn}$ lệch ($\\mathrm{4 \\neq 2}$)."
+    },
+    {
+     "ma_cau": "K09060102036",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi đốt magnesium (Mg) trong khí oxygen?",
+     "lua_chon": [
+      "$2\\mathrm{Mg} + \\mathrm{O_2} \\xrightarrow{t^\\circ} 2\\mathrm{MgO}$",
+      "$\\mathrm{Mg} + \\mathrm{O_2} \\xrightarrow{t^\\circ} \\mathrm{MgO}$",
+      "$2\\mathrm{Mg} + \\mathrm{O_2} \\xrightarrow{t^\\circ} 2\\mathrm{MgO_2}$",
+      "$4\\mathrm{Mg} + \\mathrm{O_2} \\xrightarrow{t^\\circ} 2\\mathrm{MgO}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đáp án chi tiết: $2\\mathrm{Mg} + \\mathrm{O_2} \\xrightarrow{t^\\circ} 2\\mathrm{MgO}$ là phương trình đúng và đã cân bằng ($\\mathrm{Mg}: 2 = 2; \\mathrm{O}: 2 = 2$).\n$\\mathrm{B}$ thiếu hệ số cân bằng, khiến $\\mathrm{O}$ lệch ($2 \\neq 1$).\n$\\mathrm{C}$ là kết quả của việc gán sai hoá trị magnesium (magnesium chỉ có hoá trị $\\mathrm{II}$, không tạo $\\mathrm{MgO_2}$). \n$\\mathrm{D}$ là kết quả của việc dùng sai hệ số kim loại, khiến $\\mathrm{Mg}$ lệch ($4 \\neq 2$)."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01200",
+   "nhom_id": "KNB00493",
+   "thu_tu": 2,
+   "dang": "XÁC ĐỊNH PHƯƠNG TRÌNH HOÁ HỌC ĐÚNG KHI KIM LOẠI TÁC DỤNG VỚI CHLORINE, SULFUR",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060102044",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi đốt nhôm ($\\mathrm{Al}$) trong khí chlorine?",
+     "lua_chon": [
+      "$\\mathrm{Al} + \\mathrm{Cl_2} \\xrightarrow{\\mathrm{t^o}} \\mathrm{AlCl_3}$",
+      "$\\mathrm{2Al} + \\mathrm{3Cl_2} \\xrightarrow{\\mathrm{t^o}} \\mathrm{2AlCl_2}$",
+      "$\\mathrm{2Al} + \\mathrm{3Cl_2} \\xrightarrow{\\mathrm{t^o}} \\mathrm{2AlCl_3}$",
+      "$\\mathrm{2Al} + \\mathrm{Cl_2} \\xrightarrow{\\mathrm{t^o}} \\mathrm{2AlCl_3}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{2Al} + \\mathrm{3Cl_2} \\xrightarrow{\\mathrm{t^o}} \\mathrm{2AlCl_3}$ là phương trình đúng và đã cân bằng ($\\mathrm{Al}: 2 = 2$; $\\mathrm{Cl}: 6 = 6$).\nA có công thức đúng nhưng chưa cân bằng, khiến $\\mathrm{Cl}$ lệch ($\\mathrm{2 \\neq 3}$). B là kết quả của việc gán sai hoá trị nhôm (nhôm chỉ có hoá trị $\\mathrm{III}$, không tạo $\\mathrm{AlCl_2}$). D dùng sai hệ số $\\mathrm{Cl_2}$, khiến $\\mathrm{Cl}$ lệch ($\\mathrm{2 \\neq 6}$)."
+    },
+    {
+     "ma_cau": "K09060102042",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi đốt sodium (Na) trong khí chlorine?",
+     "lua_chon": [
+      "$\\mathrm{Na + Cl_2 \\xrightarrow{t^o} NaCl}$",
+      "$\\mathrm{2Na + Cl_2 \\xrightarrow{t^o} 2NaCl_2}$",
+      "$\\mathrm{2Na + Cl_2 \\xrightarrow{t^o} 2NaCl}$",
+      "$\\mathrm{4Na + Cl_2 \\xrightarrow{t^o} 4NaCl}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đáp án chi tiết: $\\mathrm{2Na + Cl_2 \\xrightarrow{t^o} 2NaCl}$ là phương trình đúng và đã cân bằng (Na: $2=2$; Cl: $2=2$). A thiếu hệ số cân bằng, khiến $\\mathrm{Cl}$ lệch ($2 \\neq 1$). B là kết quả của việc gán sai hoá trị sodium (sodium chỉ có hoá trị I, không tạo $\\mathrm{NaCl_2}$). D dùng sai hệ số, khiến $\\mathrm{Cl}$ lệch ($2 \\neq 4$)."
+    },
+    {
+     "ma_cau": "K09060102047",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi đun nóng hỗn hợp bột đồng ($\\mathrm{Cu}$) và bột sulfur ($\\mathrm{S}$)?",
+     "lua_chon": [
+      "$\\mathrm{2Cu} + \\mathrm{S} \\xrightarrow{\\text{t\\textdegree}} \\mathrm{2CuS}$",
+      "$\\mathrm{Cu} + \\mathrm{S} \\xrightarrow{\\text{t\\textdegree}} \\mathrm{CuS}$",
+      "$\\mathrm{Cu} + \\mathrm{S} \\xrightarrow{\\text{t\\textdegree}} \\mathrm{Cu_2S}$",
+      "$\\mathrm{Cu} + \\mathrm{2S} \\xrightarrow{\\text{t\\textdegree}} \\mathrm{CuS_2}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{Cu} + \\mathrm{S} \\xrightarrow{\\text{t\\textdegree}} \\mathrm{CuS}$ là phương trình đúng và đã cân bằng ($\\mathrm{Cu}: 1 = 1; \\mathrm{S}: 1 = 1$).\n$\\mathrm{A}$ thừa hệ số 2 không cần thiết, khiến $\\mathrm{S}$ lệch ($1 \\neq 2$).\n$\\mathrm{C}$ là kết quả của việc gán sai hoá trị đồng (đồng lên hoá trị $\\mathrm{II}$ khi tác dụng $\\mathrm{S}$, không phải hoá trị $\\mathrm{I}$). \n$\\mathrm{D}$ là kết quả của việc viết sai công thức, gắn sai chỉ số nguyên tử sulfur."
+    },
+    {
+     "ma_cau": "K09060102040",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi đốt sắt (Fe) trong khí chlorine dư?",
+     "lua_chon": [
+      "$\\mathrm{Fe + Cl_2 \\xrightarrow{t^o} FeCl_2}$",
+      "$\\mathrm{2Fe + 3Cl_2 \\xrightarrow{t^o} 2FeCl_2}$",
+      "$\\mathrm{Fe + Cl_2 \\xrightarrow{t^o} FeCl_3}$",
+      "$\\mathrm{2Fe + 3Cl_2 \\xrightarrow{t^o} 2FeCl_3}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đáp án chi tiết: $\\mathrm{2Fe + 3Cl_2 \\xrightarrow{t^o} 2FeCl_3}$ là phương trình đúng và đã cân bằng (Fe: $2=2$; Cl: $6=6$). A là kết quả của việc nhầm hoá trị II của sắt (chỉ đúng khi Fe tác dụng với dung dịch $\\mathrm{HCl}$, không đúng khi tác dụng trực tiếp với khí $\\mathrm{Cl_2}$). B kết hợp cả hoá trị sai và hệ số sai, khiến $\\mathrm{Cl}$ lệch ($6 \\neq 4$). C có công thức đúng nhưng chưa cân bằng, khiến $\\mathrm{Cl}$ lệch ($2 \\neq 3$)."
+    },
+    {
+     "ma_cau": "K09060102046",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi đun nóng hỗn hợp bột sắt ($\\mathrm{Fe}$) và bột sulfur ($\\mathrm{S}$)?",
+     "lua_chon": [
+      "$\\mathrm{2Fe} + \\mathrm{3S} \\xrightarrow{\\text{t\\textdegree}} \\mathrm{Fe_2S_3}$",
+      "$\\mathrm{Fe} + \\mathrm{S} \\xrightarrow{\\text{t\\textdegree}} \\mathrm{FeS_2}$",
+      "$\\mathrm{2Fe} + \\mathrm{S} \\xrightarrow{\\text{t\\textdegree}} \\mathrm{Fe_2S}$",
+      "$\\mathrm{Fe} + \\mathrm{S} \\xrightarrow{\\text{t\\textdegree}} \\mathrm{FeS}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{Fe} + \\mathrm{S} \\xrightarrow{\\text{t\\textdegree}} \\mathrm{FeS}$ là phương trình đúng và đã cân bằng ($\\mathrm{Fe}: 1 = 1; \\mathrm{S}: 1 = 1$).\n$\\mathrm{A}$ là kết quả của việc nhầm mức hoá trị $\\mathrm{III}$ như khi $\\mathrm{Fe}$ tác dụng với $\\mathrm{Cl_2}$, trong khi sulfur có tính oxi hoá yếu hơn chlorine nên chỉ đưa sắt lên hoá trị $\\mathrm{II}$.\n$\\mathrm{B}$ là kết quả của việc viết sai công thức, gắn sai chỉ số nguyên tử sulfur.\n$\\mathrm{C}$ dùng sai hệ số, khiến $\\mathrm{Fe}$ và $\\mathrm{S}$ đều lệch so với tỉ lệ $1 : 1$ đúng của $\\mathrm{FeS}$."
+    },
+    {
+     "ma_cau": "K09060102045",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi đốt kẽm ($\\mathrm{Zn}$) trong khí chlorine?",
+     "lua_chon": [
+      "$\\mathrm{Zn} + \\mathrm{Cl_2} \\xrightarrow{\\mathrm{t^o}} \\mathrm{ZnCl_2}$",
+      "$\\mathrm{2Zn} + \\mathrm{Cl_2} \\xrightarrow{\\mathrm{t^o}} \\mathrm{2ZnCl_2}$",
+      "$\\mathrm{Zn} + \\mathrm{Cl_2} \\xrightarrow{\\mathrm{t^o}} \\mathrm{ZnCl}$",
+      "$\\mathrm{Zn} + \\mathrm{2Cl_2} \\xrightarrow{\\mathrm{t^o}} \\mathrm{ZnCl_4}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{Zn} + \\mathrm{Cl_2} \\xrightarrow{\\mathrm{t^o}} \\mathrm{ZnCl_2}$ là phương trình đúng và đã cân bằng ($\\mathrm{Zn}: 1 = 1$; $\\mathrm{Cl}: 2 = 2$).\nB thừa hệ số 2 không cần thiết, khiến $\\mathrm{Cl}$ lệch ($\\mathrm{2 \\neq 4}$). C là kết quả của việc gán sai hoá trị kẽm (kẽm chỉ có hoá trị $\\mathrm{II}$, không tạo $\\mathrm{ZnCl}$). D là kết quả của việc viết sai công thức, kẽm không có hoá trị $\\mathrm{IV}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01201",
+   "nhom_id": "KNB00493",
+   "thu_tu": 3,
+   "dang": "XÁC ĐỊNH SẢN PHẨM KHI KIM LOẠI TÁC DỤNG VỚI NƯỚC Ở NHIỆT ĐỘ THƯỜNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060102050",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi cho calcium (Ca) tác dụng với nước?",
+     "lua_chon": [
+      "$\\mathrm{Ca + 2H_2O \\to Ca(OH)_2 + H_2}$",
+      "$\\mathrm{Ca + H_2O \\to Ca(OH)_2 + H_2}$",
+      "$\\mathrm{Ca + 2H_2O \\to CaOH + H_2}$",
+      "$\\mathrm{Ca + 2H_2O \\to Ca(OH)_2 + O_2}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{Ca + 2H_2O \\to Ca(OH)_2 + H_2}$ là phương trình đúng và đã cân bằng ($\\mathrm{Ca}$: $1 = 1$; $\\mathrm{H}$: $4 = 4$; $\\mathrm{O}$: $2 = 2$).\nB chưa cân bằng, khiến $\\mathrm{H}$ và $\\mathrm{O}$ đều lệch.\nC là kết quả của việc viết sai công thức, thiếu chỉ số 2 trong $\\mathrm{Ca(OH)_2}$.\nD là kết quả của việc nhầm khí sinh ra là oxygen thay vì hydrogen."
+    },
+    {
+     "ma_cau": "K09060102051",
+     "loai": "trac_nghiem",
+     "de": "Khí thoát ra khi cho một mẫu sodium vào cốc nước là khí nào?",
+     "lua_chon": [
+      "Khí oxygen",
+      "Khí chlorine",
+      "Khí hydrogen",
+      "Khí carbon dioxide"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Theo phương trình $2\\mathrm{Na} + 2\\mathrm{H_2O} \\to 2\\mathrm{NaOH} + \\mathrm{H_2}$, khí thoát ra là hydrogen. A là kết quả của việc nhầm lẫn vì nước có chứa nguyên tố oxygen trong thành phần. B, D là các khí không liên quan, không sinh ra từ phản ứng này."
+    },
+    {
+     "ma_cau": "K09060102054",
+     "loai": "trac_nghiem",
+     "de": "Khi cho một mẩu potassium vào cốc nước, hiện tượng nào sau đây KHÔNG được quan sát thấy?",
+     "lua_chon": [
+      "Mẩu kim loại nóng chảy thành giọt tròn, chạy trên mặt nước",
+      "Có khí thoát ra",
+      "Xuất hiện kết tủa trắng lắng xuống đáy cốc",
+      "Phản ứng toả nhiều nhiệt"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Sản phẩm $\\mathrm{KOH}$ tan tốt trong nước, không tạo kết tủa, nên hiện tượng ở C không xảy ra — đây là đáp án đúng cho câu hỏi tìm hiện tượng KHÔNG xảy ra. A, B, D đều là hiện tượng thực tế: phản ứng toả nhiều nhiệt làm kim loại nóng chảy, khí hydrogen thoát ra."
+    },
+    {
+     "ma_cau": "K09060102052",
+     "loai": "trac_nghiem",
+     "de": "Nhỏ vài giọt dung dịch thu được sau khi cho potassium tác dụng hết với nước vào giấy quỳ tím. Hiện tượng quan sát được là gì?",
+     "lua_chon": [
+      "Quỳ tím không đổi màu",
+      "Quỳ tím chuyển sang màu đỏ",
+      "Quỳ tím mất màu",
+      "Quỳ tím chuyển sang màu xanh"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Sản phẩm $\\mathrm{KOH}$ là một base mạnh, làm quỳ tím chuyển xanh. B là kết quả của việc nhầm với môi trường acid. C là kết quả của việc nhầm với chất có tính tẩy màu như nước chlorine. A sai vì dung dịch $\\mathrm{KOH}$ có tính base rõ rệt, quỳ tím phải đổi màu."
+    },
+    {
+     "ma_cau": "K09060102048",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi cho sodium (Na) tác dụng với nước?",
+     "lua_chon": [
+      "$\\mathrm{Na + H_2O \\to NaOH + H_2}$",
+      "$\\mathrm{2Na + 2H_2O \\to 2NaOH + H_2}$",
+      "$\\mathrm{2Na + 2H_2O \\to 2NaOH + O_2}$",
+      "$\\mathrm{2Na + H_2O \\to Na_2O + H_2}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{2Na + 2H_2O \\to 2NaOH + H_2}$ là phương trình đúng và đã cân bằng ($\\mathrm{Na}$: $2 = 2$; $\\mathrm{H}$: $4 = 4$; $\\mathrm{O}$: $2 = 2$).\nA chưa cân bằng, khiến $\\mathrm{H}$ lệch ($2 \\neq 3$).\nC là kết quả của việc nhầm khí sinh ra là oxygen thay vì hydrogen.\nD là kết quả của việc nhầm sản phẩm rắn là oxide thay vì hydroxide."
+    },
+    {
+     "ma_cau": "K09060102053",
+     "loai": "trac_nghiem",
+     "de": "Trong bốn kim loại $\\mathrm{Na}$, $\\mathrm{Mg}$, $\\mathrm{Al}$, $\\mathrm{Cu}$, kim loại nào phản ứng được với nước ngay ở nhiệt độ thường?",
+     "lua_chon": [
+      "$\\mathrm{Na}$",
+      "$\\mathrm{Mg}$",
+      "$\\mathrm{Al}$",
+      "$\\mathrm{Cu}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{Na}$ là kim loại hoạt động hoá học mạnh, phản ứng được với nước ngay ở nhiệt độ thường, tạo $\\mathrm{NaOH}$ và khí hydrogen. B, C là kim loại hoạt động hoá học trung bình, chỉ phản ứng với hơi nước ở nhiệt độ cao, không phản ứng ở nhiệt độ thường. D hầu như không phản ứng với nước."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01202",
+   "nhom_id": "KNB00493",
+   "thu_tu": 4,
+   "dang": "PHÂN BIỆT KIM LOẠI TÁC DỤNG ĐƯỢC, KHÔNG TÁC DỤNG ĐƯỢC VỚI NƯỚC, HƠI NƯỚC, OXYGEN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060102055",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi cho kẽm ($\\mathrm{Zn}$) tác dụng với hơi nước ở nhiệt độ cao?",
+     "lua_chon": [
+      "$\\mathrm{Zn + H_2O \\xrightarrow{t^o} Zn(OH)_2}$",
+      "$\\mathrm{Zn + 2H_2O \\xrightarrow{t^o} ZnO + H_2}$",
+      "$\\mathrm{Zn + H_2O \\xrightarrow{t^o} ZnO + H_2}$",
+      "$\\mathrm{Zn + H_2O \\xrightarrow{t^o} ZnO + O_2}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{Zn + H_2O \\xrightarrow{t^o} ZnO + H_2}$ là phương trình đúng và đã cân bằng. A là kết quả của việc nhầm với phản ứng của kim loại mạnh ở nhiệt độ thường (tạo hydroxide), trong khi hơi nước ở nhiệt độ cao tạo oxide. B chưa cân bằng, khiến H và O đều lệch. D là kết quả của việc nhầm khí sinh ra là oxygen thay vì hydrogen."
+    },
+    {
+     "ma_cau": "K09060102060",
+     "loai": "trac_nghiem",
+     "de": "Trong các kim loại $\\mathrm{Ag}$, $\\mathrm{Na}$, $\\mathrm{Ca}$, $\\mathrm{K}$, kim loại nào KHÔNG phản ứng với oxygen ngay cả khi đun nóng?",
+     "lua_chon": [
+      "Na",
+      "Ca",
+      "Ag",
+      "K"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{Ag}$ là kim loại hoạt động hoá học rất yếu, hầu như không phản ứng với oxygen dù đun nóng.\n$\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{D}$ đều là kim loại mạnh, phản ứng dễ dàng với oxygen."
+    },
+    {
+     "ma_cau": "K09060102061",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây về khả năng phản ứng của kim loại với nước và oxygen là SAI?",
+     "lua_chon": [
+      "Vàng (Au) phản ứng dễ dàng với cả nước và oxygen ở điều kiện thường.",
+      "Kẽm (Zn) không phản ứng với nước ở nhiệt độ thường.",
+      "Sodium (Na) phản ứng mạnh với nước ngay ở nhiệt độ thường.",
+      "Đồng (Cu) hầu như không phản ứng với oxygen ở nhiệt độ thường."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{Au}$ là kim loại có hoạt động hoá học rất yếu, hầu như không phản ứng với cả nước và oxygen, nên phát biểu A sai — đây là đáp án đúng cho câu hỏi tìm phát biểu sai. B, C, D đều là phát biểu đúng."
+    },
+    {
+     "ma_cau": "K09060102057",
+     "loai": "trac_nghiem",
+     "de": "Kim loại nào sau đây hầu như không phản ứng với nước, dù ở nhiệt độ thường hay dạng hơi nước ở nhiệt độ cao?",
+     "lua_chon": [
+      "$\\mathrm{Na}$",
+      "$\\mathrm{Ca}$",
+      "$\\mathrm{Zn}$",
+      "$\\mathrm{Cu}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{Cu}$ là kim loại hoạt động hoá học yếu, không phản ứng với nước ở cả hai điều kiện. A, B phản ứng mạnh với nước ngay ở nhiệt độ thường. C phản ứng với hơi nước ở nhiệt độ cao."
+    },
+    {
+     "ma_cau": "K09060102059",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây về phản ứng của kim loại với nước là đúng?",
+     "lua_chon": [
+      "Mọi kim loại đều phản ứng được với nước ở nhiệt độ thường.",
+      "Một số kim loại như $\\mathrm{Zn}$, $\\mathrm{Fe}$ chỉ phản ứng với hơi nước ở nhiệt độ cao, không phản ứng ở nhiệt độ thường.",
+      "Đồng phản ứng mạnh với nước ở nhiệt độ thường.",
+      "Kim loại càng hoạt động hoá học yếu thì càng dễ phản ứng với nước."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{B}$ đúng theo tính chất đã học.\n$\\mathrm{A}$ sai vì $\\mathrm{Cu}$, $\\mathrm{Ag}$, $\\mathrm{Au}$ hầu như không phản ứng với nước.\n$\\mathrm{C}$ sai vì đồng không phản ứng với nước.\n$\\mathrm{D}$ sai vì ngược lại, kim loại hoạt động hoá học càng mạnh mới càng dễ phản ứng với nước."
+    },
+    {
+     "ma_cau": "K09060102058",
+     "loai": "trac_nghiem",
+     "de": "Trong các kim loại $\\mathrm{Zn}$, $\\mathrm{Ca}$, $\\mathrm{Cu}$, $\\mathrm{Na}$, kim loại nào phản ứng được với hơi nước ở nhiệt độ cao nhưng KHÔNG phản ứng với nước ở nhiệt độ thường?",
+     "lua_chon": [
+      "Zn",
+      "Ca",
+      "Cu",
+      "Na"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{Zn}$ không phản ứng với nước ở nhiệt độ thường, nhưng phản ứng với hơi nước ở nhiệt độ cao tạo $\\mathrm{ZnO}$ và khí hydrogen.\n$\\mathrm{B}$, $\\mathrm{D}$ phản ứng mạnh ngay ở nhiệt độ thường.\n$\\mathrm{C}$ không phản ứng ở cả hai điều kiện."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01203",
+   "nhom_id": "KNB00494",
+   "thu_tu": 1,
+   "dang": "XÁC ĐỊNH PHƯƠNG TRÌNH HOÁ HỌC ĐÚNG KHI KIM LOẠI TÁC DỤNG VỚI DUNG DỊCH ACID",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060103043",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi cho magnesium ($\\mathrm{Mg}$) tác dụng với dung dịch hydrochloric acid?",
+     "lua_chon": [
+      "$\\mathrm{Mg} + 2\\mathrm{HCl} \\rightarrow \\mathrm{MgCl_2} + \\mathrm{Cl_2}$",
+      "$\\mathrm{Mg} + \\mathrm{HCl} \\rightarrow \\mathrm{MgCl_2} + \\mathrm{H_2}$",
+      "$\\mathrm{Mg} + 2\\mathrm{HCl} \\rightarrow \\mathrm{MgCl} + \\mathrm{H_2}$",
+      "$\\mathrm{Mg} + 2\\mathrm{HCl} \\rightarrow \\mathrm{MgCl_2} + \\mathrm{H_2}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{Mg} + 2\\mathrm{HCl} \\rightarrow \\mathrm{MgCl_2} + \\mathrm{H_2}$ là phương trình đúng và đã cân bằng ($\\mathrm{Mg}$: $1 = 1$; $\\mathrm{H}$: $2 = 2$; $\\mathrm{Cl}$: $2 = 2$)."
+    },
+    {
+     "ma_cau": "K09060103044",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi cho kẽm ($\\mathrm{Zn}$) tác dụng với dung dịch hydrochloric acid?",
+     "lua_chon": [
+      "$\\mathrm{Zn} + \\mathrm{2HCl} \\to \\mathrm{ZnCl_2} + \\mathrm{O_2}$",
+      "$\\mathrm{2Zn} + \\mathrm{4HCl} \\to \\mathrm{2ZnCl_2} + \\mathrm{H_2}$",
+      "$\\mathrm{Zn} + \\mathrm{HCl} \\to \\mathrm{ZnCl_2} + \\mathrm{H_2}$",
+      "$\\mathrm{Zn} + \\mathrm{2HCl} \\to \\mathrm{ZnCl_2} + \\mathrm{H_2}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{Zn} + \\mathrm{2HCl} \\to \\mathrm{ZnCl_2} + \\mathrm{H_2}$ là phương trình đúng và đã cân bằng ($\\mathrm{Zn}: 1 = 1$; $\\mathrm{H}: 2 = 2$; $\\mathrm{Cl}: 2 = 2$)."
+    },
+    {
+     "ma_cau": "K09060103047",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi cho magnesium ($\\mathrm{Mg}$) tác dụng với dung dịch sulfuric acid loãng?",
+     "lua_chon": [
+      "$\\mathrm{Mg} + \\mathrm{H_2SO_4} \\to \\mathrm{MgSO_4} + \\mathrm{H_2}$",
+      "$\\mathrm{Mg} + \\mathrm{H_2SO_4} \\to \\mathrm{MgSO_4} + \\mathrm{O_2}$",
+      "$2\\mathrm{Mg} + \\mathrm{H_2SO_4} \\to 2\\mathrm{MgSO_4} + \\mathrm{H_2}$",
+      "$\\mathrm{Mg} + \\mathrm{H_2SO_4} \\to \\mathrm{Mg_2SO_4} + \\mathrm{H_2}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{Mg} + \\mathrm{H_2SO_4} \\to \\mathrm{MgSO_4} + \\mathrm{H_2}$ là phương trình đúng và đã cân bằng ($\\mathrm{Mg}$: $1 = 1$; $\\mathrm{H}$: $2 = 2$; $\\mathrm{S}$: $1 = 1$; $\\mathrm{O}$: $4 = 4$)."
+    },
+    {
+     "ma_cau": "K09060103042",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi cho nhôm ($\\mathrm{Al}$) tác dụng với dung dịch hydrochloric acid?",
+     "lua_chon": [
+      "$\\mathrm{Al} + 3\\mathrm{HCl} \\rightarrow \\mathrm{AlCl_3} + \\mathrm{H_2}$",
+      "$2\\mathrm{Al} + 6\\mathrm{HCl} \\rightarrow 2\\mathrm{AlCl_2} + 3\\mathrm{H_2}$",
+      "$2\\mathrm{Al} + 6\\mathrm{HCl} \\rightarrow 2\\mathrm{AlCl_3} + 3\\mathrm{H_2}$",
+      "$2\\mathrm{Al} + 6\\mathrm{HCl} \\rightarrow \\mathrm{Al_2Cl_6} + 3\\mathrm{H_2}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$2\\mathrm{Al} + 6\\mathrm{HCl} \\rightarrow 2\\mathrm{AlCl_3} + 3\\mathrm{H_2}$ là phương trình đúng và đã cân bằng ($\\mathrm{Al}$: $2 = 2$; $\\mathrm{Cl}$: $6 = 6$; $\\mathrm{H}$: $6 = 6$)."
+    },
+    {
+     "ma_cau": "K09060103048",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi cho kẽm ($\\mathrm{Zn}$) tác dụng với dung dịch sulfuric acid loãng?",
+     "lua_chon": [
+      "$\\mathrm{Zn} + \\mathrm{H_2SO_4} \\to \\mathrm{ZnSO_4} + \\mathrm{H_2}$",
+      "$\\mathrm{Zn} + \\mathrm{H_2SO_4} \\to \\mathrm{ZnSO_4} + \\mathrm{O_2}$",
+      "$\\mathrm{Zn} + \\mathrm{H_2SO_4} \\to \\mathrm{Zn_2SO_4} + \\mathrm{H_2}$",
+      "$2\\mathrm{Zn} + \\mathrm{H_2SO_4} \\to 2\\mathrm{ZnSO_4} + \\mathrm{H_2}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{Zn} + \\mathrm{H_2SO_4} \\to \\mathrm{ZnSO_4} + \\mathrm{H_2}$ là phương trình đúng và đã cân bằng ($\\mathrm{Zn}$: $1 = 1$; $\\mathrm{H}$: $2 = 2$; $\\mathrm{S}$: $1 = 1$; $\\mathrm{O}$: $4 = 4$)."
+    },
+    {
+     "ma_cau": "K09060103045",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi cho sắt ($\\mathrm{Fe}$) tác dụng với dung dịch sulfuric acid loãng?",
+     "lua_chon": [
+      "$\\mathrm{2Fe} + \\mathrm{3H_2SO_4} \\to \\mathrm{Fe_2(SO_4)_3} + \\mathrm{3H_2}$",
+      "$\\mathrm{Fe} + \\mathrm{H_2SO_4} \\to \\mathrm{FeSO_4} + \\mathrm{H_2}$",
+      "$\\mathrm{Fe} + \\mathrm{H_2SO_4} \\to \\mathrm{FeSO_4} + \\mathrm{O_2}$",
+      "$\\mathrm{Fe} + \\mathrm{H_2SO_4} \\to \\mathrm{Fe_2SO_4} + \\mathrm{H_2}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{Fe} + \\mathrm{H_2SO_4} \\to \\mathrm{FeSO_4} + \\mathrm{H_2}$ là phương trình đúng và đã cân bằng ($\\mathrm{Fe}: 1 = 1$; $\\mathrm{H}: 2 = 2$; $\\mathrm{S}: 1 = 1$; $\\mathrm{O}: 4 = 4$), sắt chỉ lên hoá trị $\\mathrm{II}$ khi tác dụng với dung dịch $\\mathrm{H_2SO_4}$ loãng."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01204",
+   "nhom_id": "KNB00494",
+   "thu_tu": 2,
+   "dang": "PHÂN BIỆT KIM LOẠI CÓ, KHÔNG PHẢN ỨNG ĐƯỢC VỚI DUNG DỊCH ACID DỰA VÀO DÃY HOẠT ĐỘNG HOÁ HỌC",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060103055",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau về phản ứng giữa kim loại và dung dịch acid, phát biểu nào SAI?",
+     "lua_chon": [
+      "Kim loại đứng trước hydrogen trong dãy hoạt động hoá học phản ứng được với dung dịch $\\mathrm{HCl}$ loãng.",
+      "Khí sinh ra khi kim loại phản ứng với dung dịch acid là hydrogen.",
+      "Kim loại đứng sau hydrogen trong dãy hoạt động hoá học vẫn phản ứng được với dung dịch acid, chỉ là chậm hơn.",
+      "$\\mathrm{Cu}$ không phản ứng với dung dịch hydrochloric acid loãng."
+     ],
+     "dap_an": "C",
+     "loi_giai": "C sai vì kim loại đứng sau $\\mathrm{H}$ hoàn toàn không phản ứng với dung dịch acid loãng, không phải 'phản ứng chậm hơn'. A, B, D đều đúng."
+    },
+    {
+     "ma_cau": "K09060103049",
+     "loai": "trac_nghiem",
+     "de": "Kim loại nào sau đây KHÔNG phản ứng với dung dịch hydrochloric acid loãng?",
+     "lua_chon": [
+      "Zn",
+      "Cu",
+      "Fe",
+      "Mg"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{Cu}$ đứng sau hydrogen trong dãy hoạt động hoá học nên không đẩy được hydrogen ra khỏi dung dịch acid, không phản ứng. $\\mathrm{A, C, D}$ ($\\mathrm{Zn, Fe, Mg}$) đều đứng trước $\\mathrm{H}$ nên phản ứng được, giải phóng khí hydrogen."
+    },
+    {
+     "ma_cau": "K09060103056",
+     "loai": "trac_nghiem",
+     "de": "Trong bốn kim loại $\\mathrm{Ag}$, $\\mathrm{Au}$, $\\mathrm{Al}$, $\\mathrm{Cu}$, kim loại nào phản ứng được với dung dịch sulfuric acid loãng, giải phóng khí hydrogen?",
+     "lua_chon": [
+      "$\\mathrm{Al}$",
+      "$\\mathrm{Ag}$",
+      "$\\mathrm{Au}$",
+      "$\\mathrm{Cu}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{Al}$ đứng trước $\\mathrm{H}$ trong dãy hoạt động hoá học nên phản ứng được, giải phóng khí hydrogen. $\\mathrm{B}$, $\\mathrm{C}$, $\\mathrm{D}$ ($\\mathrm{Ag}$, $\\mathrm{Au}$, $\\mathrm{Cu}$) đều đứng sau $\\mathrm{H}$ nên không phản ứng."
+    },
+    {
+     "ma_cau": "K09060103050",
+     "loai": "trac_nghiem",
+     "de": "Cho các kim loại $\\mathrm{Al, Ag, Mg, Fe}$ vào bốn ống nghiệm riêng biệt, mỗi ống chứa một lượng dung dịch sulfuric acid loãng như nhau. Ống nghiệm nào KHÔNG xuất hiện bọt khí?",
+     "lua_chon": [
+      "Al",
+      "Mg",
+      "Fe",
+      "Ag"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{Ag}$ đứng sau hydrogen trong dãy hoạt động hoá học nên không phản ứng với dung dịch acid, không có khí thoát ra. $\\mathrm{A, B, C}$ ($\\mathrm{Al, Mg, Fe}$) đều đứng trước $\\mathrm{H}$ nên phản ứng, giải phóng khí hydrogen gây sủi bọt."
+    },
+    {
+     "ma_cau": "K09060103052",
+     "loai": "trac_nghiem",
+     "de": "Trong bốn kim loại $\\mathrm{Fe}$, $\\mathrm{Cu}$, $\\mathrm{Au}$, $\\mathrm{Ag}$, kim loại nào phản ứng được với dung dịch hydrochloric acid loãng, giải phóng khí hydrogen?",
+     "lua_chon": [
+      "$\\mathrm{Fe}$",
+      "$\\mathrm{Cu}$",
+      "$\\mathrm{Au}$",
+      "$\\mathrm{Ag}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{Fe}$ đứng trước $\\mathrm{H}$ trong dãy hoạt động hoá học nên phản ứng được với dung dịch $\\mathrm{HCl}$ loãng, giải phóng khí hydrogen. $\\mathrm{B}$, $\\mathrm{C}$, $\\mathrm{D}$ ($\\mathrm{Cu}$, $\\mathrm{Au}$, $\\mathrm{Ag}$) đều đứng sau $\\mathrm{H}$ nên không phản ứng."
+    },
+    {
+     "ma_cau": "K09060103054",
+     "loai": "trac_nghiem",
+     "de": "Cho các kim loại $\\mathrm{Pb}$, $\\mathrm{Au}$, $\\mathrm{Zn}$, $\\mathrm{Fe}$ vào bốn ống nghiệm riêng biệt, mỗi ống chứa một lượng dung dịch hydrochloric acid loãng như nhau. Ống nghiệm nào KHÔNG có hiện tượng sủi bọt khí?",
+     "lua_chon": [
+      "$\\mathrm{Pb}$",
+      "$\\mathrm{Zn}$",
+      "$\\mathrm{Fe}$",
+      "$\\mathrm{Au}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{Au}$ đứng sau hydrogen trong dãy hoạt động hoá học nên không phản ứng, không có khí thoát ra. $\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{C}$ ($\\mathrm{Pb}$, $\\mathrm{Zn}$, $\\mathrm{Fe}$) đều đứng trước $\\mathrm{H}$ nên phản ứng, giải phóng khí hydrogen gây sủi bọt."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01205",
+   "nhom_id": "KNB00494",
+   "thu_tu": 3,
+   "dang": "XÁC ĐỊNH PHƯƠNG TRÌNH HOÁ HỌC ĐÚNG KHI KIM LOẠI TÁC DỤNG VỚI DUNG DỊCH MUỐI",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060103063",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi cho kẽm ($\\mathrm{Zn}$) tác dụng với dung dịch silver nitrate?",
+     "lua_chon": [
+      "$\\mathrm{Zn + 2AgNO_3 \\to Zn(NO_3)_2 + 2Ag}$",
+      "$\\mathrm{Zn + AgNO_3 \\to ZnNO_3 + Ag}$",
+      "$\\mathrm{2Zn + 2AgNO_3 \\to Zn_2(NO_3)_2 + 2Ag}$",
+      "$\\mathrm{Ag + Zn(NO_3)_2 \\to AgNO_3 + Zn}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{Zn + 2AgNO_3 \\to Zn(NO_3)_2 + 2Ag}$ là phương trình đúng và đã cân bằng ($\\mathrm{Zn: 1 = 1}$;\n$\\mathrm{Ag: 2 = 2}$; $\\mathrm{N: 2 = 2}$; $\\mathrm{O: 6 = 6}$)."
+    },
+    {
+     "ma_cau": "K09060103061",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi cho sắt ($\\mathrm{Fe}$) tác dụng với dung dịch silver nitrate?",
+     "lua_chon": [
+      "$\\mathrm{Fe} + 3\\mathrm{AgNO_3} \\rightarrow \\mathrm{Fe(NO_3)_3} + 3\\mathrm{Ag}$",
+      "$\\mathrm{Fe} + \\mathrm{AgNO_3} \\rightarrow \\mathrm{FeNO_3} + \\mathrm{Ag}$",
+      "$\\mathrm{Ag} + \\mathrm{Fe(NO_3)_2} \\rightarrow \\mathrm{AgNO_3} + \\mathrm{Fe}$",
+      "$\\mathrm{Fe} + 2\\mathrm{AgNO_3} \\rightarrow \\mathrm{Fe(NO_3)_2} + 2\\mathrm{Ag}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{Fe} + 2\\mathrm{AgNO_3} \\rightarrow \\mathrm{Fe(NO_3)_2} + 2\\mathrm{Ag}$ là phương trình đúng và đã cân bằng ($\\mathrm{Fe}$: $1 = 1$;\n$\\mathrm{Ag}$: $2 = 2$; $\\mathrm{N}$: $2 = 2$; $\\mathrm{O}$: $6 = 6$), sắt lên hoá trị II khi đẩy bạc ra khỏi dung dịch muối."
+    },
+    {
+     "ma_cau": "K09060103057",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi cho sắt ($\\mathrm{Fe}$) tác dụng với dung dịch copper(II) sulfate?",
+     "lua_chon": [
+      "$\\mathrm{Fe + CuSO_4 \\to Fe_2(SO_4)_3 + Cu}$",
+      "$\\mathrm{Fe + CuSO_4 \\to FeSO_4 + Cu_2}$",
+      "$\\mathrm{Fe + CuSO_4 \\to FeSO_4 + Cu}$",
+      "$\\mathrm{2Fe + CuSO_4 \\to FeSO_4 + Cu}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đáp án chi tiết: $\\mathrm{Fe + CuSO_4 \\to FeSO_4 + Cu}$ là phương trình đúng và đã cân bằng ($\\mathrm{Fe}$: $1 = 1$; $\\mathrm{Cu}$: $1 = 1$; $\\mathrm{S}$: $1 = 1$; $\\mathrm{O}$: $4 = 4$), sắt lên hoá trị $\\mathrm{II}$ khi đẩy đồng ra khỏi dung dịch muối."
+    },
+    {
+     "ma_cau": "K09060103059",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi cho kẽm ($\\mathrm{Zn}$) tác dụng với dung dịch copper(II) sulfate?",
+     "lua_chon": [
+      "$\\mathrm{Zn + CuSO_4 \\to ZnSO_4 + Cu_2}$",
+      "$\\mathrm{Cu + ZnSO_4 \\to CuSO_4 + Zn}$",
+      "$\\mathrm{Zn + CuSO_4 \\to ZnSO_4 + Cu}$",
+      "$\\mathrm{2Zn + CuSO_4 \\to 2ZnSO_4 + Cu}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đáp án chi tiết: $\\mathrm{Zn + CuSO_4 \\to ZnSO_4 + Cu}$ là phương trình đúng và đã cân bằng ($\\mathrm{Zn}$: $1 = 1$; $\\mathrm{Cu}$: $1 = 1$; $\\mathrm{S}$: $1 = 1$; $\\mathrm{O}$: $4 = 4$)."
+    },
+    {
+     "ma_cau": "K09060103058",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi cho đồng ($\\mathrm{Cu}$) tác dụng với dung dịch silver nitrate?",
+     "lua_chon": [
+      "$\\mathrm{Cu + AgNO_3 \\to CuNO_3 + Ag}$",
+      "$\\mathrm{Cu + 2AgNO_3 \\to Cu(NO_3)_2 + 2Ag}$",
+      "$\\mathrm{Cu + 2AgNO_3 \\to Cu(NO_3)_2 + Ag_2}$",
+      "$\\mathrm{Ag + Cu(NO_3)_2 \\to AgNO_3 + Cu}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đáp án chi tiết: $\\mathrm{Cu + 2AgNO_3 \\to Cu(NO_3)_2 + 2Ag}$ là phương trình đúng và đã cân bằng ($\\mathrm{Cu}$: $1 = 1$; $\\mathrm{Ag}$: $2 = 2$; $\\mathrm{N}$: $2 = 2$; $\\mathrm{O}$: $6 = 6$)."
+    },
+    {
+     "ma_cau": "K09060103060",
+     "loai": "trac_nghiem",
+     "de": "Phương trình hoá học nào sau đây đúng khi cho nhôm ($\\mathrm{Al}$) tác dụng với dung dịch copper(II) sulfate?",
+     "lua_chon": [
+      "$2\\mathrm{Al} + 3\\mathrm{CuSO_4} \\rightarrow \\mathrm{Al_2(SO_4)_3} + 3\\mathrm{Cu}$",
+      "$\\mathrm{Al} + \\mathrm{CuSO_4} \\rightarrow \\mathrm{AlSO_4} + \\mathrm{Cu}$",
+      "$2\\mathrm{Al} + 3\\mathrm{CuSO_4} \\rightarrow \\mathrm{Al_2(SO_4)_3} + 3\\mathrm{Cu_2}$",
+      "$\\mathrm{Al} + 3\\mathrm{CuSO_4} \\rightarrow \\mathrm{Al_2(SO_4)_3} + 3\\mathrm{Cu}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$2\\mathrm{Al} + 3\\mathrm{CuSO_4} \\rightarrow \\mathrm{Al_2(SO_4)_3} + 3\\mathrm{Cu}$ là phương trình đúng và đã cân bằng ($\\mathrm{Al}$: $2 = 2$;\n$\\mathrm{Cu}$: $3 = 3$; $\\mathrm{S}$: $3 = 3$; $\\mathrm{O}$: $12 = 12$)."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01206",
+   "nhom_id": "KNB00494",
+   "thu_tu": 4,
+   "dang": "PHÂN BIỆT KIM LOẠI CÓ, KHÔNG PHẢN ỨNG ĐƯỢC VỚI DUNG DỊCH MUỐI THEO DÃY HOẠT ĐỘNG HOÁ HỌC",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060103068",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau về kim loại potassium, sodium, calcium khi cho vào dung dịch muối,\nphát biểu nào đúng?",
+     "lua_chon": [
+      "K, Na, Ca đẩy được kim loại yếu hơn ra khỏi dung dịch muối theo đúng cách thông thường như Zn, Fe.",
+      "K, Na, Ca không có khả năng phản ứng với bất kì chất nào trong dung dịch muối.",
+      "K, Na, Ca chỉ phản ứng được với dung dịch muối ở nhiệt độ cao.",
+      "K, Na, Ca phản ứng mạnh với nước có trong dung dịch trước, nên không dùng để đẩy kim loại khác ra khỏi dung dịch muối theo cách thông thường."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{D}$ đúng: các kim loại hoạt động hoá học rất mạnh phản ứng ngay với nước có trong dung dịch nên không áp dụng quy tắc đẩy kim loại ra khỏi muối như các kim loại khác. $\\mathrm{A}$ sai vì ngược lại với $\\mathrm{D}$. $\\mathrm{B}$ sai vì chúng vẫn phản ứng, chỉ là với nước chứ không đẩy kim loại theo cách thông thường. $\\mathrm{C}$ sai vì không cần điều kiện nhiệt độ cao."
+    },
+    {
+     "ma_cau": "K09060103065",
+     "loai": "trac_nghiem",
+     "de": "Kim loại nào sau đây KHÔNG phản ứng được với dung dịch silver nitrate?",
+     "lua_chon": [
+      "Cu",
+      "Fe",
+      "Au",
+      "Zn"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{Au}$ đứng sau $\\mathrm{Ag}$ trong dãy hoạt động hoá học nên không đẩy được $\\mathrm{Ag}$ ra khỏi dung dịch muối, không phản ứng.\n$\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{D}$ ($\\mathrm{Cu}$, $\\mathrm{Fe}$, $\\mathrm{Zn}$) đều đứng trước $\\mathrm{Ag}$ nên phản ứng được."
+    },
+    {
+     "ma_cau": "K09060103067",
+     "loai": "trac_nghiem",
+     "de": "Cho bốn kim loại $\\mathrm{Zn}$, $\\mathrm{Ag}$, $\\mathrm{Cu}$, $\\mathrm{Au}$ vào dung dịch $\\mathrm{iron(II)}$ sulfate. Kim loại nào phản ứng, đẩy được sắt ra khỏi dung dịch muối?",
+     "lua_chon": [
+      "Ag",
+      "Zn",
+      "Cu",
+      "Au"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{Zn}$ đứng trước $\\mathrm{Fe}$ trong dãy hoạt động hoá học nên đẩy được $\\mathrm{Fe}$ ra khỏi dung dịch muối.\n$\\mathrm{A}$, $\\mathrm{C}$, $\\mathrm{D}$ ($\\mathrm{Ag}$, $\\mathrm{Cu}$, $\\mathrm{Au}$) đều đứng sau $\\mathrm{Fe}$ nên không phản ứng."
+    },
+    {
+     "ma_cau": "K09060103070",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau về phản ứng giữa kim loại và dung dịch muối, phát biểu nào SAI?",
+     "lua_chon": [
+      "$\\mathrm{Cu}$ đẩy được $\\mathrm{Ag}$ ra khỏi dung dịch silver nitrate vì $\\mathrm{Cu}$ đứng trước $\\mathrm{Ag}$ trong dãy hoạt động.",
+      "$\\mathrm{Fe}$ đẩy được $\\mathrm{Cu}$ ra khỏi dung dịch $\\mathrm{copper(II)}$ sulfate vì $\\mathrm{Fe}$ đứng trước $\\mathrm{Cu}$ trong dãy hoạt động.",
+      "$\\mathrm{Ag}$ đẩy được $\\mathrm{Cu}$ ra khỏi dung dịch $\\mathrm{copper(II)}$ sulfate vì $\\mathrm{Ag}$ hoạt động hoá học mạnh hơn $\\mathrm{Cu}$.",
+      "$\\mathrm{Zn}$ đẩy được $\\mathrm{Fe}$ ra khỏi dung dịch $\\mathrm{iron(II)}$ sulfate vì $\\mathrm{Zn}$ đứng trước $\\mathrm{Fe}$ trong dãy hoạt động."
+     ],
+     "dap_an": "C",
+     "loi_giai": "C sai vì $\\mathrm{Ag}$ đứng SAU $\\mathrm{Cu}$ trong dãy hoạt động hoá học (hoạt động yếu hơn $\\mathrm{Cu}$), nên không đẩy được $\\mathrm{Cu}$ ra khỏi dung dịch muối. $\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{D}$ đều đúng."
+    },
+    {
+     "ma_cau": "K09060103069",
+     "loai": "trac_nghiem",
+     "de": "Kim loại nào sau đây phản ứng được với dung dịch $\\mathrm{lead(II)}$ nitrate, đẩy được chì ra khỏi dung\ndịch muối?",
+     "lua_chon": [
+      "Zn",
+      "Cu",
+      "Ag",
+      "Au"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{Zn}$ đứng trước $\\mathrm{Pb}$ trong dãy hoạt động hoá học nên đẩy được $\\mathrm{Pb}$ ra khỏi dung dịch muối.\n$\\mathrm{B}$, $\\mathrm{C}$, $\\mathrm{D}$ ($\\mathrm{Cu}$, $\\mathrm{Ag}$, $\\mathrm{Au}$) đều đứng sau $\\mathrm{Pb}$ nên không phản ứng."
+    },
+    {
+     "ma_cau": "K09060103066",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây về phản ứng giữa kim loại và dung dịch muối là đúng?",
+     "lua_chon": [
+      "Kim loại đứng trước trong dãy hoạt động hoá học đẩy được kim loại đứng sau ra khỏi dung dịch muối của kim loại đó.",
+      "Mọi kim loại đều đẩy được nhau ra khỏi dung dịch muối, không phân biệt vị trí trong dãy hoạt động.",
+      "Kim loại đứng sau luôn đẩy được kim loại đứng trước ra khỏi dung dịch muối.",
+      "Phản ứng giữa kim loại và dung dịch muối không liên quan đến dãy hoạt động hoá học."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{A}$ đúng theo quy tắc dãy hoạt động hoá học.\n$\\mathrm{B}$, $\\mathrm{C}$, $\\mathrm{D}$ đều sai vì đảo ngược hoặc phủ nhận quy tắc: chiều đẩy chỉ đi từ kim loại mạnh hơn sang kim loại yếu hơn, và điều này phụ thuộc trực tiếp vào vị trí trong dãy hoạt động."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01207",
+   "nhom_id": "KNB00495",
+   "thu_tu": 1,
+   "dang": "GHI NHỚ ĐÚNG THỨ TỰ DÃY HOẠT ĐỘNG HOÁ HỌC",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060104007",
+     "loai": "trac_nghiem",
+     "de": "Sắp xếp các kim loại $\\mathrm{Al}$, $\\mathrm{Ca}$, $\\mathrm{Fe}$ theo chiều giảm dần mức độ hoạt động hoá học.",
+     "lua_chon": [
+      "Ca, Al, Fe",
+      "Al, Ca, Fe",
+      "Fe, Al, Ca",
+      "Al, Fe, Ca"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Theo đúng thứ tự dãy hoạt động hoá học, $\\mathrm{Ca}$ đứng trước $\\mathrm{Al}$, $\\mathrm{Al}$ đứng trước $\\mathrm{Fe}$, nên chiều giảm dần là $\\mathrm{Ca}$, $\\mathrm{Al}$, $\\mathrm{Fe}$."
+    },
+    {
+     "ma_cau": "K09060104002",
+     "loai": "trac_nghiem",
+     "de": "Trong dãy hoạt động hóa học, kim loại nào sau đây hoạt động hóa học yếu nhất?",
+     "lua_chon": [
+      "Na",
+      "Mg",
+      "Zn",
+      "Au"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{Au}$ đứng cuối dãy hoạt động hóa học nên hoạt động yếu nhất trong bốn kim loại trên."
+    },
+    {
+     "ma_cau": "K09060104004",
+     "loai": "trac_nghiem",
+     "de": "Trong dãy hoạt động hóa học, kim loại nào đứng ngay trước hydrogen ($\\mathrm{H}$)?",
+     "lua_chon": [
+      "Cu",
+      "Fe",
+      "Pb",
+      "Zn"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Theo đúng thứ tự dãy hoạt động hóa học, $\\mathrm{Pb}$ đứng ngay trước $\\mathrm{H}$."
+    },
+    {
+     "ma_cau": "K09060104005",
+     "loai": "trac_nghiem",
+     "de": "Trong bốn kim loại $\\mathrm{Fe}$, $\\mathrm{Cu}$, $\\mathrm{Ag}$, $\\mathrm{Au}$, kim loại nào hoạt động hoá học mạnh nhất?",
+     "lua_chon": [
+      "Fe",
+      "Cu",
+      "Ag",
+      "Au"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Trong dãy hoạt động hoá học, $\\mathrm{Fe}$ đứng trước $\\mathrm{Cu}$, $\\mathrm{Ag}$, $\\mathrm{Au}$ nên hoạt động mạnh nhất trong bốn kim loại này."
+    },
+    {
+     "ma_cau": "K09060104001",
+     "loai": "trac_nghiem",
+     "de": "Trong dãy hoạt động hóa học, kim loại nào sau đây hoạt động hóa học mạnh nhất?",
+     "lua_chon": [
+      "Fe",
+      "Cu",
+      "Ag",
+      "K"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{K}$ đứng đầu dãy hoạt động hóa học nên hoạt động mạnh nhất trong bốn kim loại trên."
+    },
+    {
+     "ma_cau": "K09060104003",
+     "loai": "trac_nghiem",
+     "de": "Trong dãy hoạt động hóa học $\\mathrm{K}$, $\\mathrm{Na}$, $\\mathrm{Ca}$, $\\mathrm{Mg}$, $\\mathrm{Al}$, $\\mathrm{Zn}$, $\\mathrm{Fe}$, $\\mathrm{Pb}$, $\\mathrm{(H)}$, $\\mathrm{Cu}$, $\\mathrm{Ag}$, $\\mathrm{Au}$, kim loại nào đứng ngay sau nhôm ($\\mathrm{Al}$)?",
+     "lua_chon": [
+      "Mg",
+      "Zn",
+      "Fe",
+      "Ca"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Theo đúng thứ tự dãy hoạt động hóa học, $\\mathrm{Zn}$ đứng ngay sau $\\mathrm{Al}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01208",
+   "nhom_id": "KNB00495",
+   "thu_tu": 2,
+   "dang": "XÁC ĐỊNH KẾT LUẬN TỪ THÍ NGHIỆM SO SÁNH HAI KIM LOẠI",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060104011",
+     "loai": "trac_nghiem",
+     "de": "Nhúng một dây đồng (Cu) đã cuộn thành lò xo vào dung dịch silver nitrate ($\\mathrm{AgNO_3}$). Sau một thời gian, quan sát thấy có lớp kim loại màu xám bám vào dây đồng, dung dịch dần chuyển sang màu xanh. Từ thí nghiệm trên, có thể kết luận gì?",
+     "lua_chon": [
+      "Ag hoạt động hoá học mạnh hơn Cu.",
+      "Cu và Ag hoạt động hoá học như nhau.",
+      "Cu không phản ứng với dung dịch $\\mathrm{AgNO_3}$.",
+      "Cu hoạt động hoá học mạnh hơn Ag, Cu đã đẩy Ag ra khỏi dung dịch muối."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cu đẩy được Ag ra khỏi dung dịch $\\mathrm{AgNO_3}$ (lớp kim loại bám vào là Ag, dung dịch chuyển xanh do tạo thành $\\mathrm{Cu(NO_3)_2}$), chứng tỏ Cu hoạt động hoá học mạnh hơn Ag, nên D đúng."
+    },
+    {
+     "ma_cau": "K09060104016",
+     "loai": "trac_nghiem",
+     "de": "Nhúng một dây bạc ($\\mathrm{Ag}$) vào dung dịch copper(II) sulfate ($\\mathrm{CuSO_4}$). Sau một thời gian, không quan sát thấy hiện tượng gì xảy ra. Từ thí nghiệm trên, có thể kết luận gì?",
+     "lua_chon": [
+      "Ag hoạt động hoá học mạnh hơn Cu.",
+      "Ag đã đẩy được Cu ra khỏi dung dịch muối nhưng phản ứng diễn ra quá chậm để quan sát.",
+      "Ag hoạt động hoá học yếu hơn Cu nên không đẩy được Cu ra khỏi dung dịch muối.",
+      "Dung dịch $\\mathrm{CuSO_4}$ không phản ứng được với bất kì kim loại nào."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{Ag}$ đứng sau $\\mathrm{Cu}$ trong dãy hoạt động hoá học nên không đẩy được $\\mathrm{Cu}$ ra khỏi dung dịch muối, phù hợp với việc không quan sát thấy hiện tượng gì. $\\mathrm{C}$ đúng."
+    },
+    {
+     "ma_cau": "K09060104014",
+     "loai": "trac_nghiem",
+     "de": "Nhúng một đinh sắt ($\\mathrm{Fe}$) vào dung dịch copper(II) sulfate ($\\mathrm{CuSO_4}$). Sau một thời gian, quan sát thấy có lớp kim loại màu đỏ bám vào đinh sắt, màu xanh của dung dịch nhạt dần. Từ thí nghiệm trên, có thể kết luận gì?",
+     "lua_chon": [
+      "$\\mathrm{Fe}$ hoạt động hoá học mạnh hơn $\\mathrm{Cu}$, $\\mathrm{Fe}$ đã đẩy $\\mathrm{Cu}$ ra khỏi dung dịch muối.",
+      "$\\mathrm{Cu}$ hoạt động hoá học mạnh hơn $\\mathrm{Fe}$.",
+      "$\\mathrm{Fe}$ không phản ứng với dung dịch $\\mathrm{CuSO_4}$.",
+      "$\\mathrm{Fe}$ và $\\mathrm{Cu}$ hoạt động hoá học như nhau."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{Fe}$ đẩy được $\\mathrm{Cu}$ ra khỏi dung dịch $\\mathrm{CuSO_4}$ (lớp kim loại đỏ bám vào là $\\mathrm{Cu}$), chứng tỏ $\\mathrm{Fe}$ hoạt động hoá học mạnh hơn $\\mathrm{Cu}$, nên $\\mathrm{A}$ đúng."
+    },
+    {
+     "ma_cau": "K09060104013",
+     "loai": "trac_nghiem",
+     "de": "Cho một mẩu calcium ($\\mathrm{Ca}$) vào cốc nước, mẩu kim loại tan dần, có bọt khí thoát ra. Cho một mẩu kẽm ($\\mathrm{Zn}$) vào cốc nước khác, không thấy hiện tượng gì ở nhiệt độ thường. Từ hai thí nghiệm trên, có thể kết luận gì?",
+     "lua_chon": [
+      "$\\mathrm{Zn}$ hoạt động hoá học mạnh hơn $\\mathrm{Ca}$.",
+      "$\\mathrm{Ca}$ và $\\mathrm{Zn}$ hoạt động hoá học như nhau.",
+      "$\\mathrm{Zn}$ không có khả năng phản ứng với bất kì dung dịch nào.",
+      "$\\mathrm{Ca}$ hoạt động hoá học mạnh hơn $\\mathrm{Zn}$."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{Ca}$ phản ứng mạnh với nước ở nhiệt độ thường trong khi $\\mathrm{Zn}$ không phản ứng, chứng tỏ $\\mathrm{Ca}$ hoạt động hoá học mạnh hơn $\\mathrm{Zn}$, nên $\\mathrm{D}$ đúng."
+    },
+    {
+     "ma_cau": "K09060104010",
+     "loai": "trac_nghiem",
+     "de": "Cho đinh sắt (Fe) và dây đồng (Cu) vào hai ống nghiệm riêng biệt chứa cùng một lượng dung dịch hydrochloric acid. Ống nghiệm chứa Fe có bọt khí thoát ra, ống nghiệm chứa Cu không có hiện tượng gì. Từ thí nghiệm trên, có thể kết luận gì?",
+     "lua_chon": [
+      "Cu hoạt động hoá học mạnh hơn Fe.",
+      "Fe hoạt động hoá học mạnh hơn Cu, Fe đứng trước H còn Cu đứng sau H.",
+      "Fe và Cu đều không phản ứng được với dung dịch acid.",
+      "Không thể so sánh mức độ hoạt động của Fe và Cu qua thí nghiệm này."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Fe phản ứng với dung dịch $\\mathrm{HCl}$, giải phóng khí hydrogen, chứng tỏ $\\mathrm{Fe}$ đứng trước $\\mathrm{H}$; $\\mathrm{Cu}$ không phản ứng, chứng tỏ $\\mathrm{Cu}$ đứng sau $\\mathrm{H}$. Vậy $\\mathrm{Fe}$ hoạt động hoá học mạnh hơn $\\mathrm{Cu}$, $\\mathrm{B}$ đúng."
+    },
+    {
+     "ma_cau": "K09060104012",
+     "loai": "trac_nghiem",
+     "de": "Cho hai mẩu kim loại magnesium ($\\mathrm{Mg}$) và bạc ($\\mathrm{Ag}$) vào hai ống nghiệm riêng biệt chứa cùng một lượng dung dịch sulfuric acid loãng. Ống nghiệm chứa $\\mathrm{Mg}$ có bọt khí thoát ra mạnh, ống nghiệm chứa $\\mathrm{Ag}$ không có hiện tượng gì. Từ thí nghiệm trên, có thể kết luận gì?",
+     "lua_chon": [
+      "$\\mathrm{Mg}$ đứng trước $\\mathrm{H}$, $\\mathrm{Ag}$ đứng sau $\\mathrm{H}$ trong dãy hoạt động hoá học.",
+      "$\\mathrm{Mg}$ và $\\mathrm{Ag}$ đều đứng sau $\\mathrm{H}$ trong dãy hoạt động hoá học.",
+      "$\\mathrm{Ag}$ hoạt động hoá học mạnh hơn $\\mathrm{Mg}$.",
+      "Không thể xác định vị trí của $\\mathrm{Mg}$ và $\\mathrm{Ag}$ so với $\\mathrm{H}$ qua thí nghiệm này."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{Mg}$ phản ứng với dung dịch acid, giải phóng khí hydrogen nên đứng trước $\\mathrm{H}$; $\\mathrm{Ag}$ không phản ứng nên đứng sau $\\mathrm{H}$. Vậy $\\mathrm{A}$ đúng."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01209",
+   "nhom_id": "KNB00495",
+   "thu_tu": 3,
+   "dang": "Ý NGHĨA DÃY HOẠT ĐỘNG HOÁ HỌC: ÁP DỤNG VỚI NƯỚC VÀ VỚI DUNG DỊCH ACID",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060104019",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau về ý nghĩa dãy hoạt động hoá học, phát biểu nào SAI?",
+     "lua_chon": [
+      "Kim loại đứng trước $\\mathrm{H}$ phản ứng được với dung dịch acid, giải phóng khí hydrogen.",
+      "Kim loại đứng sau $\\mathrm{H}$ không phản ứng với dung dịch acid loãng.",
+      "Mọi kim loại đứng trước $\\mathrm{Mg}$ đều không phản ứng được với dung dịch acid.",
+      "Sản phẩm khí sinh ra khi kim loại đứng trước $\\mathrm{H}$ tác dụng với dung dịch acid là hydrogen."
+     ],
+     "dap_an": "C",
+     "loi_giai": "C sai vì các kim loại đứng trước $\\mathrm{Mg}$ ($\\mathrm{K}$, $\\mathrm{Na}$, $\\mathrm{Ca}$) vẫn đứng trước $\\mathrm{H}$ nên vẫn phản ứng được với dung dịch acid. $\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{D}$ đều đúng."
+    },
+    {
+     "ma_cau": "K09060104020",
+     "loai": "trac_nghiem",
+     "de": "Cho bốn kim loại $\\mathrm{Ca}$, $\\mathrm{Al}$, $\\mathrm{Cu}$, $\\mathrm{Ag}$ vào bốn ống nghiệm riêng biệt chứa nước ở nhiệt độ thường.\nKim loại nào phản ứng, tạo thành dung dịch base và khí hydrogen?",
+     "lua_chon": [
+      "Ca",
+      "Al",
+      "Cu",
+      "Ag"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{Ca}$ đứng trước $\\mathrm{Mg}$ trong dãy hoạt động hoá học nên phản ứng được với nước ở nhiệt độ thường, tạo hydroxide (base) và khí hydrogen. $\\mathrm{Al}$, $\\mathrm{Cu}$, $\\mathrm{Ag}$ đều không phản ứng được với nước ở nhiệt độ thường."
+    },
+    {
+     "ma_cau": "K09060104023",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây thể hiện đúng ý nghĩa của dãy hoạt động hoá học liên quan đến dung dịch acid?",
+     "lua_chon": [
+      "Tất cả kim loại đều phản ứng được với dung dịch acid, không phân biệt vị trí trong dãy.",
+      "Chỉ kim loại đứng trước hydrogen trong dãy hoạt động hoá học mới phản ứng được với dung dịch acid, giải phóng khí hydrogen.",
+      "Kim loại đứng sau hydrogen phản ứng với dung dịch acid nhưng không sinh khí.",
+      "Vị trí của kim loại trong dãy hoạt động không liên quan đến khả năng phản ứng với dung dịch acid."
+     ],
+     "dap_an": "B",
+     "loi_giai": "B đúng theo ý nghĩa dãy hoạt động hoá học. A, D sai vì phủ nhận vai trò của vị trí trong dãy. C sai vì kim loại đứng sau \\mathrm{H} hoàn toàn không phản ứng với dung dịch acid loãng."
+    },
+    {
+     "ma_cau": "K09060104022",
+     "loai": "trac_nghiem",
+     "de": "Trong bốn kim loại $\\mathrm{Mg}$, $\\mathrm{Zn}$, $\\mathrm{Pb}$, $\\mathrm{Cu}$, kim loại nào KHÔNG phản ứng được với dung dịch hydrochloric acid loãng?",
+     "lua_chon": [
+      "Mg",
+      "Zn",
+      "Pb",
+      "Cu"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{Cu}$ đứng sau $\\mathrm{H}$ trong dãy hoạt động hoá học nên không phản ứng với dung dịch $\\mathrm{HCl}$ loãng. $\\mathrm{Mg}$, $\\mathrm{Zn}$, $\\mathrm{Pb}$ đều đứng trước $\\mathrm{H}$ nên phản ứng được."
+    },
+    {
+     "ma_cau": "K09060104018",
+     "loai": "trac_nghiem",
+     "de": "Kim loại nào sau đây phản ứng được với nước ở nhiệt độ thường?",
+     "lua_chon": [
+      "$\\mathrm{Fe}$",
+      "$\\mathrm{Zn}$",
+      "$\\mathrm{Cu}$",
+      "$\\mathrm{Na}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{Na}$ đứng trước $\\mathrm{Mg}$ trong dãy hoạt động hoá học nên phản ứng được với nước ở nhiệt độ thường. $\\mathrm{Fe}$, $\\mathrm{Zn}$, $\\mathrm{Cu}$ đều đứng sau $\\mathrm{Mg}$ nên không phản ứng với nước ở nhiệt độ thường."
+    },
+    {
+     "ma_cau": "K09060104021",
+     "loai": "trac_nghiem",
+     "de": "Kim loại potassium ($\\mathrm{K}$) phản ứng với nước ở nhiệt độ thường tạo thành sản phẩm nào?",
+     "lua_chon": [
+      "Potassium hydroxide và khí hydrogen.",
+      "Potassium oxide và khí hydrogen.",
+      "Potassium hydroxide và khí oxygen.",
+      "Potassium chỉ tan trong nước mà không có phản ứng hoá học."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{K}$ là kim loại hoạt động rất mạnh, đứng đầu dãy hoạt động hoá học, phản ứng với nước ở nhiệt độ thường tạo hydroxide và khí hydrogen, tương tự $\\mathrm{Na}$, $\\mathrm{Ca}$. $\\mathrm{A}$ đúng."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01210",
+   "nhom_id": "KNB00495",
+   "thu_tu": 4,
+   "dang": "Ý NGHĨA DÃY HOẠT ĐỘNG HOÁ HỌC: ÁP DỤNG VỚI DUNG DỊCH MUỐI",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060104030",
+     "loai": "trac_nghiem",
+     "de": "Kim loại nào sau đây đẩy được cả ba kim loại $\\mathrm{Fe}$, $\\mathrm{Cu}$, $\\mathrm{Ag}$ ra khỏi dung dịch muối tương ứng của chúng?",
+     "lua_chon": [
+      "$\\mathrm{Zn}$",
+      "$\\mathrm{Pb}$",
+      "$\\mathrm{Cu}$",
+      "$\\mathrm{Ag}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{Zn}$ đứng trước cả $\\mathrm{Fe}$, $\\mathrm{Cu}$, $\\mathrm{Ag}$ trong dãy hoạt động hoá học nên đẩy được cả ba kim loại này ra khỏi dung dịch muối tương ứng.\n$\\mathrm{B}$ ($\\mathrm{Pb}$) đứng sau $\\mathrm{Fe}$ nên không đẩy được $\\mathrm{Fe}$.\n$\\mathrm{C}$ ($\\mathrm{Cu}$) đứng sau $\\mathrm{Fe}$ và trùng với chính kim loại cần xét nên không đẩy được $\\mathrm{Fe}$ lẫn $\\mathrm{Cu}$.\n$\\mathrm{D}$ ($\\mathrm{Ag}$) đứng sau cả $\\mathrm{Fe}$, $\\mathrm{Cu}$ nên không đẩy được kim loại nào trong ba kim loại trên."
+    },
+    {
+     "ma_cau": "K09060104025",
+     "loai": "trac_nghiem",
+     "de": "Kim loại nào sau đây KHÔNG đẩy được kim loại đồng ($\\mathrm{Cu}$) ra khỏi dung dịch copper(II) sulfate?",
+     "lua_chon": [
+      "$\\mathrm{Fe}$",
+      "$\\mathrm{Zn}$",
+      "$\\mathrm{Mg}$",
+      "$\\mathrm{Ag}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{Ag}$ đứng sau $\\mathrm{Cu}$ trong dãy hoạt động hoá học nên không đẩy được $\\mathrm{Cu}$ ra khỏi dung dịch muối.\n$\\mathrm{Fe}$, $\\mathrm{Zn}$, $\\mathrm{Mg}$ đều đứng trước $\\mathrm{Cu}$ nên đẩy được."
+    },
+    {
+     "ma_cau": "K09060104029",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây về phản ứng giữa kim loại và dung dịch muối là SAI?",
+     "lua_chon": [
+      "$\\mathrm{Al}$ đẩy được $\\mathrm{Cu}$ ra khỏi dung dịch $\\mathrm{copper(II)}$ sulfate vì $\\mathrm{Al}$ đứng trước $\\mathrm{Cu}$ trong dãy hoạt động.",
+      "$\\mathrm{Zn}$ đẩy được $\\mathrm{Ag}$ ra khỏi dung dịch $\\mathrm{silver}$ $\\mathrm{nitrate}$ vì $\\mathrm{Zn}$ đứng trước $\\mathrm{Ag}$ trong dãy hoạt động.",
+      "$\\mathrm{Cu}$ đẩy được $\\mathrm{Fe}$ ra khỏi dung dịch $\\mathrm{iron(II)}$ sulfate vì $\\mathrm{Cu}$ đứng trước $\\mathrm{Fe}$ trong dãy hoạt động.",
+      "$\\mathrm{Fe}$ đẩy được $\\mathrm{Cu}$ ra khỏi dung dịch $\\mathrm{copper(II)}$ sulfate vì $\\mathrm{Fe}$ đứng trước $\\mathrm{Cu}$ trong dãy hoạt động."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{C}$ sai vì $\\mathrm{Cu}$ đứng SAU $\\mathrm{Fe}$ trong dãy hoạt động hoá học, không thể đẩy được $\\mathrm{Fe}$ ra khỏi dung dịch muối. $\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{D}$ đều đúng."
+    },
+    {
+     "ma_cau": "K09060104024",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây về ý nghĩa dãy hoạt động hoá học liên quan đến dung dịch muối là đúng?",
+     "lua_chon": [
+      "Kim loại đứng sau luôn đẩy được kim loại đứng trước ra khỏi dung dịch muối.",
+      "Mọi kim loại đều đẩy được nhau ra khỏi dung dịch muối bất kể vị trí trong dãy.",
+      "Kim loại đứng trước (trừ $\\mathrm{K}$, $\\mathrm{Na}$, $\\mathrm{Ca}$) đẩy được kim loại đứng sau ra khỏi dung dịch muối của kim loại đó.",
+      "Dãy hoạt động hoá học không liên quan đến phản ứng giữa kim loại và dung dịch muối."
+     ],
+     "dap_an": "C",
+     "loi_giai": "C đúng theo ý nghĩa dãy hoạt động hoá học.\nA. D sai vì đảo ngược hoặc phủ nhận quy tắc.\nB sai vì việc đẩy nhau phụ thuộc chặt vào vị trí trong dãy."
+    },
+    {
+     "ma_cau": "K09060104028",
+     "loai": "trac_nghiem",
+     "de": "Trong bốn kim loại $\\mathrm{Ag}$, $\\mathrm{Au}$, $\\mathrm{Fe}$, $\\mathrm{Cu}$, kim loại nào KHÔNG đẩy được kim loại nào trong ba kim loại còn lại ra khỏi dung dịch muối của chúng?",
+     "lua_chon": [
+      "Fe",
+      "Cu",
+      "Ag",
+      "Au"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Trong bốn kim loại này, theo đúng thứ tự dãy hoạt động $\\mathrm{Fe}$, $\\mathrm{Cu}$, $\\mathrm{Ag}$, $\\mathrm{Au}$ giảm dần, $\\mathrm{Au}$ đứng cuối nên không đẩy được kim loại nào trong ba kim loại còn lại ra khỏi dung dịch muối."
+    },
+    {
+     "ma_cau": "K09060104027",
+     "loai": "trac_nghiem",
+     "de": "Cho kim loại $\\mathrm{Zn}$ vào dung dịch $\\mathrm{iron(II)}$ sulfate ($\\mathrm{FeSO_4}$). Hiện tượng nào sau đây mô tả đúng?",
+     "lua_chon": [
+      "Không có hiện tượng gì vì $\\mathrm{Zn}$ không phản ứng được với dung dịch muối.",
+      "Có kim loại $\\mathrm{Fe}$ bám vào dây kẽm, màu dung dịch nhạt dần do $\\mathrm{Zn}$ đẩy được $\\mathrm{Fe}$ ra khỏi dung dịch muối.",
+      "Có khí thoát ra do $\\mathrm{Zn}$ phản ứng với nước trong dung dịch.",
+      "Dung dịch chuyển sang màu xanh đậm hơn."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{Zn}$ đứng trước $\\mathrm{Fe}$ trong dãy hoạt động hoá học nên đẩy được $\\mathrm{Fe}$ ra khỏi dung dịch muối:\ncó lớp $\\mathrm{Fe}$ bám vào kẽm, màu dung dịch nhạt dần. $\\mathrm{B}$ đúng."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01211",
+   "nhom_id": "KNB00496",
+   "thu_tu": 1,
+   "dang": "XÁC ĐỊNH THỨ TỰ HOẠT ĐỘNG HOÁ HỌC TỪ NHIỀU DỮ KIỆN THỰC NGHIỆM",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060105040",
+     "loai": "trac_nghiem",
+     "de": "Tiến hành ba thí nghiệm:\n(1) $\\mathrm{Ca}$ phản ứng với nước ở nhiệt độ thường, $\\mathrm{Fe}$ thì không;\n(2) $\\mathrm{Fe}$ phản ứng với dung dịch hydrochloric acid, $\\mathrm{Cu}$ thì không;\n(3) Theo dãy hoạt động hoá học đã học, $\\mathrm{Cu}$ đứng trước $\\mathrm{Au}$.\nSắp xếp $\\mathrm{Ca}$, $\\mathrm{Fe}$, $\\mathrm{Cu}$, $\\mathrm{Au}$ theo chiều giảm dần mức độ hoạt động hoá học.",
+     "lua_chon": [
+      "$\\mathrm{Ca}$, $\\mathrm{Fe}$, $\\mathrm{Cu}$, $\\mathrm{Au}$",
+      "$\\mathrm{Fe}$, $\\mathrm{Ca}$, $\\mathrm{Cu}$, $\\mathrm{Au}$",
+      "$\\mathrm{Ca}$, $\\mathrm{Cu}$, $\\mathrm{Fe}$, $\\mathrm{Au}$",
+      "$\\mathrm{Ca}$, $\\mathrm{Fe}$, $\\mathrm{Au}$, $\\mathrm{Cu}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Từ (1): $\\mathrm{Ca}$ mạnh hơn $\\mathrm{Fe}$. Từ (2): $\\mathrm{Fe}$ mạnh hơn $\\mathrm{Cu}$. Từ (3): $\\mathrm{Cu}$ mạnh hơn $\\mathrm{Au}$. Ghép lại: $\\mathrm{Ca}$, $\\mathrm{Fe}$, $\\mathrm{Cu}$, $\\mathrm{Au}$."
+    },
+    {
+     "ma_cau": "K09060105035",
+     "loai": "trac_nghiem",
+     "de": "Tiến hành ba thí nghiệm: (1) $\\mathrm{K}$ phản ứng rất mạnh với nước ở nhiệt độ thường, $\\mathrm{Zn}$ thì không; (2) $\\mathrm{Zn}$ phản ứng với dung dịch sulfuric acid loãng, $\\mathrm{Cu}$ thì không; (3) $\\mathrm{Cu}$ đẩy được $\\mathrm{Ag}$ ra khỏi dung dịch silver nitrate. Sắp xếp $\\mathrm{K}$, $\\mathrm{Zn}$, $\\mathrm{Cu}$, $\\mathrm{Ag}$ theo chiều giảm dần mức độ hoạt động hoá học.",
+     "lua_chon": [
+      "$\\mathrm{K}$, $\\mathrm{Cu}$, $\\mathrm{Zn}$, $\\mathrm{Ag}$",
+      "$\\mathrm{K}$, $\\mathrm{Zn}$, $\\mathrm{Cu}$, $\\mathrm{Ag}$",
+      "$\\mathrm{Zn}$, $\\mathrm{K}$, $\\mathrm{Cu}$, $\\mathrm{Ag}$",
+      "$\\mathrm{D. K}$, $\\mathrm{Zn}$, $\\mathrm{Ag}$, $\\mathrm{Cu}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Từ (1): $\\mathrm{K}$ mạnh hơn $\\mathrm{Zn}$. Từ (2): $\\mathrm{Zn}$ mạnh hơn $\\mathrm{Cu}$. Từ (3): $\\mathrm{Cu}$ mạnh hơn $\\mathrm{Ag}$. Ghép lại: $\\mathrm{K}$, $\\mathrm{Zn}$, $\\mathrm{Cu}$, $\\mathrm{Ag}$."
+    },
+    {
+     "ma_cau": "K09060105033",
+     "loai": "trac_nghiem",
+     "de": "Tiến hành ba thí nghiệm: (1) $\\mathrm{Na}$ phản ứng mạnh với nước ở nhiệt độ thường, $\\mathrm{Mg}$ thì không; (2) $\\mathrm{Mg}$ phản ứng với dung dịch hydrochloric acid, $\\mathrm{Cu}$ thì không; (3) $\\mathrm{Cu}$ đẩy được $\\mathrm{Ag}$ ra khỏi dung dịch silver nitrate. Sắp xếp $\\mathrm{Na}$, $\\mathrm{Mg}$, $\\mathrm{Cu}$, $\\mathrm{Ag}$ theo chiều giảm dần mức độ hoạt động hoá học.",
+     "lua_chon": [
+      "$\\mathrm{Na}$, $\\mathrm{Cu}$, $\\mathrm{Mg}$, $\\mathrm{Ag}$",
+      "$\\mathrm{Mg}$, $\\mathrm{Na}$, $\\mathrm{Cu}$, $\\mathrm{Ag}$",
+      "$\\mathrm{Na}$, $\\mathrm{Mg}$, $\\mathrm{Cu}$, $\\mathrm{Ag}$",
+      "$\\mathrm{Na}$, $\\mathrm{Mg}$, $\\mathrm{Ag}$, $\\mathrm{Cu}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Từ (1): $\\mathrm{Na}$ mạnh hơn $\\mathrm{Mg}$. Từ (2): $\\mathrm{Mg}$ mạnh hơn $\\mathrm{Cu}$. Từ (3): $\\mathrm{Cu}$ mạnh hơn $\\mathrm{Ag}$. Ghép lại: $\\mathrm{Na}$, $\\mathrm{Mg}$, $\\mathrm{Cu}$, $\\mathrm{Ag}$."
+    },
+    {
+     "ma_cau": "K09060105037",
+     "loai": "trac_nghiem",
+     "de": "Tiến hành ba thí nghiệm: (1) Ca phản ứng với nước ở nhiệt độ thường, Zn thì không; (2) Zn phản ứng được với dung dịch hydrochloric acid, Ag thì không; (3) Theo dãy hoạt động hoá học đã học, Ag đứng trước Au. Sắp xếp $\\mathrm{Ca}$, $\\mathrm{Zn}$, $\\mathrm{Ag}$, $\\mathrm{Au}$ theo chiều giảm dần mức độ hoạt động hoá học.",
+     "lua_chon": [
+      "Zn, Ca, Ag, Au",
+      "Ca, Ag, Zn, Au",
+      "C. Ca, Zn, Au, Ag",
+      "Ca, Zn, Ag, Au"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Từ (1): $\\mathrm{Ca}$ mạnh hơn $\\mathrm{Zn}$. Từ (2): $\\mathrm{Zn}$ mạnh hơn $\\mathrm{Ag}$. Từ (3): $\\mathrm{Ag}$ mạnh hơn $\\mathrm{Au}$. Ghép lại: $\\mathrm{Ca}$, $\\mathrm{Zn}$, $\\mathrm{Ag}$, $\\mathrm{Au}$."
+    },
+    {
+     "ma_cau": "K09060105034",
+     "loai": "trac_nghiem",
+     "de": "Tiến hành ba thí nghiệm: (1) $\\mathrm{Ca}$ phản ứng với nước ở nhiệt độ thường, $\\mathrm{Al}$ thì không; (2) $\\mathrm{Al}$ phản ứng với dung dịch hydrochloric acid mạnh hơn $\\mathrm{Fe}$ rò rệt; (3) $\\mathrm{Fe}$ đẩy được $\\mathrm{Pb}$ ra khỏi dung dịch lead(II) nitrate. Sắp xếp $\\mathrm{Ca}$, $\\mathrm{Al}$, $\\mathrm{Fe}$, $\\mathrm{Pb}$ theo chiều giảm dần mức độ hoạt động hoá học.",
+     "lua_chon": [
+      "$\\mathrm{Ca}$, $\\mathrm{Fe}$, $\\mathrm{Al}$, $\\mathrm{Pb}$",
+      "$\\mathrm{Ca}$, $\\mathrm{Al}$, $\\mathrm{Fe}$, $\\mathrm{Pb}$",
+      "$\\mathrm{Al}$, $\\mathrm{Ca}$, $\\mathrm{Fe}$, $\\mathrm{Pb}$",
+      "$\\mathrm{Ca}$, $\\mathrm{Al}$, $\\mathrm{Pb}$, $\\mathrm{Fe}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Từ (1): $\\mathrm{Ca}$ mạnh hơn $\\mathrm{Al}$. Từ (2): $\\mathrm{Al}$ mạnh hơn $\\mathrm{Fe}$. Từ (3): $\\mathrm{Fe}$ mạnh hơn $\\mathrm{Pb}$. Ghép lại: $\\mathrm{Ca}$, $\\mathrm{Al}$, $\\mathrm{Fe}$, $\\mathrm{Pb}$."
+    },
+    {
+     "ma_cau": "K09060105038",
+     "loai": "trac_nghiem",
+     "de": "Tiến hành ba thí nghiệm: (1) Na phản ứng mạnh với nước ở nhiệt độ thường, Al thì không; (2) Al phản ứng với dung dịch sulfuric acid loãng mạnh hơn Zn rõ rệt; (3) Zn đẩy được Fe ra khỏi dung dịch iron(II) sulfate. Sắp xếp $\\mathrm{Na}$, $\\mathrm{Al}$, $\\mathrm{Zn}$, $\\mathrm{Fe}$ theo chiều giảm dần mức độ hoạt động hoá học.",
+     "lua_chon": [
+      "Na, Zn, Al, Fe",
+      "Al, Na, Zn, Fe",
+      "Na, Al, Zn, Fe",
+      "Na, Al, Fe, Zn"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Từ (1): $\\mathrm{Na}$ mạnh hơn $\\mathrm{Al}$. Từ (2): $\\mathrm{Al}$ mạnh hơn $\\mathrm{Zn}$. Từ (3): $\\mathrm{Zn}$ mạnh hơn $\\mathrm{Fe}$. Ghép lại: $\\mathrm{Na}$, $\\mathrm{Al}$, $\\mathrm{Zn}$, $\\mathrm{Fe}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01212",
+   "nhom_id": "KNB00496",
+   "thu_tu": 2,
+   "dang": "XÁC ĐỊNH KIM LOẠI THOẢ MÃN ĐỒNG THỜI NHIỀU ĐIỀU KIỆN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060105043",
+     "loai": "trac_nghiem",
+     "de": "Kim loại nào sau đây KHÔNG phản ứng với dung dịch hydrochloric acid nhưng đẩy được bạc ($\\mathrm{Ag}$) ra khỏi dung dịch $\\mathrm{silver}$ nitrate?",
+     "lua_chon": [
+      "Cu",
+      "Fe",
+      "Zn",
+      "Mg"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{Cu}$ đứng sau $\\mathrm{H}$ nên không phản ứng với dung dịch acid, đồng thời đứng trước $\\mathrm{Ag}$ nên đẩy được $\\mathrm{Ag}$ ra khỏi dung dịch muối, thoả cả hai điều kiện."
+    },
+    {
+     "ma_cau": "K09060105046",
+     "loai": "trac_nghiem",
+     "de": "Kim loại nào sau đây phản ứng được với cả dung dịch hydrochloric acid và dung dịch copper(II) sulfate?",
+     "lua_chon": [
+      "Zn",
+      "Cu",
+      "Ag",
+      "Au"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{Zn}$ đứng trước $\\mathrm{H}$ nên phản ứng được với dung dịch acid, đồng thời đứng trước $\\mathrm{Cu}$ nên đẩy được $\\mathrm{Cu}$ ra khỏi dung dịch muối, thoả cả hai điều kiện."
+    },
+    {
+     "ma_cau": "K09060105044",
+     "loai": "trac_nghiem",
+     "de": "Kim loại nào sau đây vừa phản ứng được với nước ở nhiệt độ thường, vừa đẩy được kẽm (Zn) ra khỏi dung dịch muối kẽm?",
+     "lua_chon": [
+      "Al",
+      "Ca",
+      "Fe",
+      "Cu"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{Ca}$ đứng trước $\\mathrm{Mg}$ nên phản ứng được với nước ở nhiệt độ thường, đồng thời đứng trước $\\mathrm{Zn}$ nên đẩy được $\\mathrm{Zn}$ ra khỏi dung dịch muối, thoả cả hai điều kiện."
+    },
+    {
+     "ma_cau": "K09060105041",
+     "loai": "trac_nghiem",
+     "de": "Kim loại nào sau đây vừa phản ứng được với dung dịch hydrochloric acid, vừa KHÔNG phản ứng được với nước ở nhiệt độ thường?",
+     "lua_chon": [
+      "Na",
+      "Fe",
+      "Cu",
+      "K"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{Fe}$ đứng sau $\\mathrm{Mg}$ nên không phản ứng với nước ở nhiệt độ thường, đồng thời đứng trước $\\mathrm{H}$ nên phản ứng được với dung dịch acid, thoả cả hai điều kiện."
+    },
+    {
+     "ma_cau": "K09060105045",
+     "loai": "trac_nghiem",
+     "de": "Kim loại nào sau đây KHÔNG đẩy được sắt (Fe) ra khỏi dung dịch iron(II) sulfate, đồng thời cũng KHÔNG phản ứng được với dung dịch hydrochloric acid?",
+     "lua_chon": [
+      "Zn",
+      "Al",
+      "Pb",
+      "Ag"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{Ag}$ đứng sau $\\mathrm{Fe}$ nên không đẩy được $\\mathrm{Fe}$ ra khỏi dung dịch muối, đồng thời đứng sau $\\mathrm{H}$ nên không phản ứng với dung dịch acid, thoả cả hai điều kiện."
+    },
+    {
+     "ma_cau": "K09060105042",
+     "loai": "trac_nghiem",
+     "de": "Kim loại nào sau đây vừa đẩy được đồng ($\\mathrm{Cu}$) ra khỏi dung dịch $\\mathrm{copper(II)}$ sulfate, vừa KHÔNG phản ứng được với nước ở nhiệt độ thường?",
+     "lua_chon": [
+      "Na",
+      "Ca",
+      "Zn",
+      "Ag"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{Zn}$ đứng trước $\\mathrm{Cu}$ nên đẩy được $\\mathrm{Cu}$ ra khỏi dung dịch muối, đồng thời đứng sau $\\mathrm{Mg}$ nên không phản ứng với nước ở nhiệt độ thường, thoả cả hai điều kiện."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01213",
+   "nhom_id": "KNB00496",
+   "thu_tu": 3,
+   "dang": "DỰ ĐOÁN HIỆN TƯỢNG KHI CHO MỘT KIM LOẠI VÀO NHIỀU DUNG DỊCH MUỐI KHÁC NHAU",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060105054",
+     "loai": "trac_nghiem",
+     "de": "Cho một mẩu chì (Pb) lần lượt vào hai dung dịch riêng biệt: dung dịch silver nitrate và dung dịch zinc sulfate. Hiện tượng nào sau đây đúng?",
+     "lua_chon": [
+      "Pb phản ứng với cả hai dung dịch.",
+      "Pb phản ứng với dung dịch silver nitrate, không phản ứng với dung dịch zinc sulfate.",
+      "Pb không phản ứng với cả hai dung dịch.",
+      "Pb phản ứng với dung dịch zinc sulfate, không phản ứng với dung dịch silver nitrate."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Pb đứng trước Ag nên đẩy được Ag ra khỏi dung dịch $\\mathrm{AgNO_3}$, nhưng Pb đứng sau Zn nên không đẩy được Zn ra khỏi dung dịch muối kẽm."
+    },
+    {
+     "ma_cau": "K09060105049",
+     "loai": "trac_nghiem",
+     "de": "Cho một dây kẽm ($\\mathrm{Zn}$) lần lượt vào hai dung dịch riêng biệt: dung dịch copper(II) sulfate và dung dịch magnesium sulfate. Hiện tượng nào sau đây đúng?",
+     "lua_chon": [
+      "$\\mathrm{Zn}$ phản ứng với cả hai dung dịch.",
+      "$\\mathrm{Zn}$ không phản ứng với cả hai dung dịch.",
+      "$\\mathrm{Zn}$ phản ứng với dung dịch magnesium sulfate, không phản ứng với dung dịch copper(II) sulfate.",
+      "$\\mathrm{Zn}$ phản ứng với dung dịch copper(II) sulfate, không phản ứng với dung dịch magnesium sulfate."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{Zn}$ đứng trước $\\mathrm{Cu}$ nên đẩy được $\\mathrm{Cu}$ ra khỏi dung dịch $\\mathrm{CuSO_4}$, nhưng $\\mathrm{Zn}$ đứng sau $\\mathrm{Mg}$ nên không đẩy được $\\mathrm{Mg}$ ra khỏi dung dịch $\\mathrm{MgSO_4}$."
+    },
+    {
+     "ma_cau": "K09060105050",
+     "loai": "trac_nghiem",
+     "de": "Cho một đinh sắt ($\\mathrm{Fe}$) lần lượt vào hai dung dịch riêng biệt: dung dịch silver nitrate và dung dịch aluminium sulfate. Hiện tượng nào sau đây đúng?",
+     "lua_chon": [
+      "$\\mathrm{Fe}$ phản ứng với cả hai dung dịch.",
+      "$\\mathrm{Fe}$ không phản ứng với cả hai dung dịch.",
+      "$\\mathrm{Fe}$ phản ứng với dung dịch silver nitrate, không phản ứng với dung dịch aluminium sulfate.",
+      "$\\mathrm{Fe}$ phản ứng với dung dịch aluminium sulfate, không phản ứng với dung dịch silver nitrate."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{Fe}$ đứng trước $\\mathrm{Ag}$ nên đẩy được $\\mathrm{Ag}$ ra khỏi dung dịch $\\mathrm{AgNO_3}$, nhưng $\\mathrm{Fe}$ đứng sau $\\mathrm{Al}$ nên không đẩy được $\\mathrm{Al}$ ra khỏi dung dịch muối nhôm."
+    },
+    {
+     "ma_cau": "K09060105053",
+     "loai": "trac_nghiem",
+     "de": "Cho một mẩu magnesium (Mg) lần lượt vào hai dung dịch riêng biệt: dung dịch iron(II) sulfate và dung dịch potassium chloride. Hiện tượng nào sau đây đúng?",
+     "lua_chon": [
+      "Mg phản ứng với cả hai dung dịch.",
+      "Mg không phản ứng với cả hai dung dịch.",
+      "Mg phản ứng với dung dịch potassium chloride, không phản ứng với dung dịch iron(II) sulfate.",
+      "Mg phản ứng với dung dịch iron(II) sulfate, không phản ứng với dung dịch potassium chloride."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Mg đứng trước Fe nên đẩy được Fe ra khỏi dung dịch $\\mathrm{FeSO_4}$, nhưng Mg đứng sau K nên không đẩy được K ra khỏi dung dịch muối potassium."
+    },
+    {
+     "ma_cau": "K09060105051",
+     "loai": "trac_nghiem",
+     "de": "Cho một mẩu nhôm ($\\mathrm{Al}$) lần lượt vào hai dung dịch riêng biệt: dung dịch copper(II) sulfate và dung dịch calcium chloride. Hiện tượng nào sau đây đúng?",
+     "lua_chon": [
+      "$\\mathrm{Al}$ phản ứng với dung dịch copper(II) sulfate, không phản ứng với dung dịch calcium chloride.",
+      "$\\mathrm{Al}$ phản ứng với cả hai dung dịch.",
+      "$\\mathrm{Al}$ không phản ứng với cả hai dung dịch.",
+      "$\\mathrm{Al}$ phản ứng với dung dịch calcium chloride, không phản ứng với dung dịch copper(II) sulfate."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{Al}$ đứng trước $\\mathrm{Cu}$ nên đẩy được $\\mathrm{Cu}$ ra khỏi dung dịch $\\mathrm{CuSO_4}$, nhưng $\\mathrm{Al}$ đứng sau $\\mathrm{Ca}$ nên không đẩy được $\\mathrm{Ca}$ ra khỏi dung dịch muối calcium."
+    },
+    {
+     "ma_cau": "K09060105055",
+     "loai": "trac_nghiem",
+     "de": "Cho một dây kẽm ($\\mathrm{Zn}$) lần lượt vào hai dung dịch riêng biệt: dung dịch lead(II) nitrate và dung dịch aluminium sulfate. Hiện tượng nào sau đây đúng?",
+     "lua_chon": [
+      "$\\mathrm{Zn}$ phản ứng với cả hai dung dịch.",
+      "$\\mathrm{Zn}$ phản ứng với dung dịch lead(II) nitrate, không phản ứng với dung dịch aluminium sulfate.",
+      "$\\mathrm{Zn}$ không phản ứng với cả hai dung dịch.",
+      "$\\mathrm{Zn}$ phản ứng với dung dịch aluminium sulfate, không phản ứng với dung dịch lead(II) nitrate."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{Zn}$ đứng trước $\\mathrm{Pb}$ nên đẩy được $\\mathrm{Pb}$ ra khỏi dung dịch $\\mathrm{Pb(NO_3)_2}$, nhưng $\\mathrm{Zn}$ đứng sau $\\mathrm{Al}$ nên không đẩy được $\\mathrm{Al}$ ra khỏi dung dịch muối nhôm."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01214",
+   "nhom_id": "KNB00496",
+   "thu_tu": 4,
+   "dang": "PHÂN TÍCH TÌNH HUỐNG THỰC TẾ LIÊN QUAN ĐẾN DÃY HOẠT ĐỘNG HOÁ HỌC",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060105060",
+     "loai": "trac_nghiem",
+     "de": "Trong các kim loại $\\mathrm{Pb}$, $\\mathrm{Cu}$, $\\mathrm{Ag}$, $\\mathrm{Au}$, kim loại nào có thể dùng để đẩy đồng ($\\mathrm{Cu}$) ra khỏi dung dịch copper($\\mathrm{II}$) sulfate, thu hồi $\\mathrm{Cu}$ kim loại?",
+     "lua_chon": [
+      "Cu",
+      "Ag",
+      "Au",
+      "Pb"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{Pb}$ đứng trước $\\mathrm{Cu}$ trong dãy hoạt động hoá học nên đẩy được $\\mathrm{Cu}$ ra khỏi dung dịch muối; $\\mathrm{Ag}$, $\\mathrm{Au}$ đều đứng sau $\\mathrm{Cu}$ nên không đẩy được."
+    },
+    {
+     "ma_cau": "K09060105059",
+     "loai": "trac_nghiem",
+     "de": "Vì sao các đồ trang sức bằng vàng (Au), bạc (Ag) ít bị biến đổi theo thời gian dù tiếp xúc với không khí và một số hoá chất trong đời sống?",
+     "lua_chon": [
+      "Vì vàng và bạc có khối lượng riêng lớn.",
+      "Vì vàng và bạc là những kim loại hoạt động hoá học rất yếu, đứng cuối dãy hoạt động hoá học.",
+      "Vì vàng và bạc luôn được phủ một lớp sơn bảo vệ.",
+      "Vì vàng và bạc không dẫn điện, dẫn nhiệt."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{Au}$, $\\mathrm{Ag}$ đứng cuối dãy hoạt động hoá học, hoạt động hoá học rất yếu nên khó phản ứng với các chất trong môi trường, ít bị biến đổi theo thời gian."
+    },
+    {
+     "ma_cau": "K09060105062",
+     "loai": "trac_nghiem",
+     "de": "Một xưởng cơ khí cần chọn vật liệu làm ống dẫn dung dịch acid loãng trong dây chuyền sản xuất, sao cho vật liệu không bị ăn mòn bởi acid. Nên chọn kim loại nào trong số $\\mathrm{Fe}$, $\\mathrm{Zn}$, $\\mathrm{Cu}$, $\\mathrm{Al}$?",
+     "lua_chon": [
+      "Cu",
+      "Fe",
+      "Zn",
+      "Al"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{Cu}$ đứng sau $\\mathrm{H}$ trong dãy hoạt động hoá học nên không phản ứng với dung dịch acid loãng, phù hợp làm vật liệu không bị ăn mòn trong trường hợp này."
+    },
+    {
+     "ma_cau": "K09060105061",
+     "loai": "trac_nghiem",
+     "de": "Vì sao không thể dùng kim loại potassium ($\\mathrm{K}$) để thu hồi kim loại đồng ($\\mathrm{Cu}$) từ dung dịch copper($\\mathrm{II}$) sulfate bằng phương pháp đẩy kim loại thông thường, dù $\\mathrm{K}$ hoạt động hoá học mạnh hơn $\\mathrm{Cu}$ rất nhiều?",
+     "lua_chon": [
+      "Vì K không tồn tại ở dạng đơn chất.",
+      "Vì K phản ứng quá chậm với dung dịch.",
+      "Vì K phản ứng ngay với nước có trong dung dịch trước khi kịp đẩy Cu ra khỏi dung dịch muối.",
+      "Vì Cu đứng trước K trong dãy hoạt động hoá học."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{K}$ là kim loại hoạt động rất mạnh, phản ứng ngay với nước có trong dung dịch trước khi kịp thực hiện phản ứng đẩy $\\mathrm{Cu}$ ra khỏi dung dịch muối theo cách thông thường."
+    },
+    {
+     "ma_cau": "K09060105057",
+     "loai": "trac_nghiem",
+     "de": "Vì sao không dùng vật dụng bằng sắt để chứa hoặc khuấy dung dịch $\\mathrm{copper(II)}$ sulfate trong phòng thí nghiệm lâu ngày?",
+     "lua_chon": [
+      "Vì dung dịch $\\mathrm{CuSO_4}$ làm sắt bị nóng chảy.",
+      "Vì $\\mathrm{Fe}$ đứng trước $\\mathrm{Cu}$ trong dãy hoạt động hoá học nên bị ăn mòn dần do phản ứng đẩy $\\mathrm{Cu}$ ra khỏi dung dịch muối.",
+      "Vì $\\mathrm{Fe}$ phản ứng với nước trong dung dịch, sinh khí làm hỏng vật dụng.",
+      "Vì $\\mathrm{CuSO_4}$ là chất có tính acid mạnh, ăn mòn mọi kim loại."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{Fe}$ đứng trước $\\mathrm{Cu}$ trong dãy hoạt động hoá học nên phản ứng dần với $\\mathrm{CuSO_4}$, bị ăn mòn theo thời gian, không phù hợp để chứa dung dịch này lâu dài."
+    },
+    {
+     "ma_cau": "K09060105056",
+     "loai": "trac_nghiem",
+     "de": "Người ta dùng bột kẽm (Zn) để thu hồi bạc (Ag) từ dung dịch nước thải chứa ion $\\mathrm{Ag^+}$ trong công nghiệp tráng gương. Cơ sở của phương pháp này là gì?",
+     "lua_chon": [
+      "$\\mathrm{Zn}$ phản ứng với nước tạo ra dung dịch kiềm hoà tan bạc.",
+      "$\\mathrm{Ag}$ phản ứng với $\\mathrm{Zn}$ tạo hợp kim.",
+      "$\\mathrm{Zn}$ đứng trước $\\mathrm{Ag}$ trong dãy hoạt động hoá học nên đẩy được $\\mathrm{Ag}$ ra khỏi dung dịch muối, thu được $\\mathrm{Ag}$ kim loại.",
+      "$\\mathrm{Zn}$ là chất xúc tác giúp $\\mathrm{Ag}$ kết tủa nhanh hơn."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{Zn}$ hoạt động hoá học mạnh hơn $\\mathrm{Ag}$ (đứng trước trong dãy) nên đẩy được $\\mathrm{Ag}$ ra khỏi dung dịch muối bạc, thu hồi được $\\mathrm{Ag}$ ở dạng kim loại."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01215",
+   "nhom_id": "KNB00497",
+   "thu_tu": 1,
+   "dang": "PHÁT BIỂU TỔNG HỢP TÍNH CHẤT VẬT LÍ VÀ HOÁ HỌC CỦA MỘT KIM LOẠI CỤ THỂ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060106004",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây về đồng ($\\mathrm{Cu}$) là đúng?",
+     "lua_chon": [
+      "$\\mathrm{Cu}$ phản ứng được với dung dịch hydrochloric acid, giải phóng khí hydrogen.",
+      "$\\mathrm{Cu}$ đẩy được bạc ($\\mathrm{Ag}$) ra khỏi dung dịch silver nitrate.",
+      "$\\mathrm{Cu}$ là kim loại dẫn điện tốt nhất trong số các kim loại.",
+      "$\\mathrm{Cu}$ phản ứng với nước ở nhiệt độ thường."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{Cu}$ đứng trước $\\mathrm{Ag}$ trong dãy hoạt động hoá học nên đẩy được $\\mathrm{Ag}$ ra khỏi dung dịch muối."
+    },
+    {
+     "ma_cau": "K09060106005",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây về sodium ($\\mathrm{Na}$) là đúng?",
+     "lua_chon": [
+      "$\\mathrm{Na}$ là kim loại có nhiệt độ nóng chảy cao nhất trong số các kim loại.",
+      "$\\mathrm{Na}$ không phản ứng với nước ở nhiệt độ thường.",
+      "$\\mathrm{Na}$ phản ứng mạnh với nước ở nhiệt độ thường, tạo dung dịch base và khí hydrogen.",
+      "$\\mathrm{Na}$ được dùng để đẩy kim loại khác ra khỏi dung dịch muối theo cách thông thường."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{Na}$ đứng trước $\\mathrm{Mg}$ trong dãy hoạt động hoá học nên phản ứng mạnh với nước ở nhiệt độ thường, tạo hydroxide và khí hydrogen."
+    },
+    {
+     "ma_cau": "K09060106001",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây về sắt (Fe) là đúng?",
+     "lua_chon": [
+      "$\\mathrm{Fe}$ dẫn điện tốt hơn $\\mathrm{Ag}$.",
+      "$\\mathrm{Fe}$ không phản ứng với dung dịch hydrochloric acid.",
+      "$\\mathrm{Fe}$ là kim loại dẻo nhất trong số các kim loại.",
+      "$\\mathrm{Fe}$ phản ứng với dung dịch copper(II) sulfate, đẩy được $\\mathrm{Cu}$ ra khỏi dung dịch muối."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{Fe}$ đứng trước $\\mathrm{Cu}$ trong dãy hoạt động hoá học nên đẩy được $\\mathrm{Cu}$ ra khỏi dung dịch muối."
+    },
+    {
+     "ma_cau": "K09060106002",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây về nhôm ($\\mathrm{Al}$) là đúng?",
+     "lua_chon": [
+      "$\\mathrm{Al}$ là kim loại nặng, có khối lượng riêng lớn hơn $\\mathrm{Fe}$.",
+      "$\\mathrm{Al}$ phản ứng được với dung dịch hydrochloric acid, giải phóng khí hydrogen.",
+      "$\\mathrm{Al}$ không phản ứng với khí oxygen.",
+      "$\\mathrm{Al}$ dẫn điện kém hơn $\\mathrm{Fe}$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{Al}$ đứng trước $\\mathrm{H}$ trong dãy hoạt động hoá học nên phản ứng được với dung dịch acid, giải phóng khí hydrogen."
+    },
+    {
+     "ma_cau": "K09060106003",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây về bạc ($\\mathrm{Ag}$) là đúng?",
+     "lua_chon": [
+      "$\\mathrm{Ag}$ dẫn điện, dẫn nhiệt tốt nhất trong số các kim loại.",
+      "$\\mathrm{Ag}$ phản ứng được với dung dịch hydrochloric acid.",
+      "$\\mathrm{Ag}$ đứng trước $\\mathrm{Cu}$ trong dãy hoạt động hoá học.",
+      "$\\mathrm{Ag}$ là kim loại dẻo nhất."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{Ag}$ dẫn điện, dẫn nhiệt tốt nhất trong số các kim loại."
+    },
+    {
+     "ma_cau": "K09060106007",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây về tungsten ($\\mathrm{W}$) là đúng?",
+     "lua_chon": [
+      "$\\mathrm{W}$ là kim loại có nhiệt độ nóng chảy thấp nhất trong số các kim loại.",
+      "$\\mathrm{W}$ ở thể lỏng tại nhiệt độ thường.",
+      "$\\mathrm{W}$ dẫn điện tốt nhất trong số các kim loại.",
+      "$\\mathrm{W}$ có nhiệt độ nóng chảy cao nhất trong số các kim loại, được dùng làm dây tóc bóng đèn."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{W}$ có nhiệt độ nóng chảy cao nhất trong số các kim loại (khoảng $3\\ 422\\ ^\\circ\\mathrm{C}$), được dùng làm dây tóc bóng đèn."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01216",
+   "nhom_id": "KNB00497",
+   "thu_tu": 2,
+   "dang": "SO SÁNH HAI KIM LOẠI QUA NHIỀU TIÊU CHÍ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060106012",
+     "loai": "trac_nghiem",
+     "de": "So sánh magnesium ($\\mathrm{Mg}$) và chì ($\\mathrm{Pb}$), phát biểu nào sau đây đúng?",
+     "lua_chon": [
+      "Pb hoạt động hoá học mạnh hơn Mg.",
+      "Mg phản ứng với dung dịch hydrochloric acid mạnh hơn Pb rõ rệt.",
+      "Pb phản ứng được với nước ở nhiệt độ thường còn Mg thì không.",
+      "Mg và Pb có cùng mức độ hoạt động hoá học."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{Mg}$ đứng trước $\\mathrm{Pb}$ trong dãy hoạt động hoá học, hoạt động mạnh hơn nên phản ứng với dung dịch acid mạnh hơn rõ rệt."
+    },
+    {
+     "ma_cau": "K09060106011",
+     "loai": "trac_nghiem",
+     "de": "So sánh vàng ($\\mathrm{Au}$) và sắt ($\\mathrm{Fe}$), phát biểu nào sau đây đúng?",
+     "lua_chon": [
+      "Au hoạt động hoá học mạnh hơn Fe.",
+      "Au dẫn điện tốt hơn Ag và Cu.",
+      "Fe phản ứng được với dung dịch hydrochloric acid còn Au thì không.",
+      "Fe dẻo hơn Au."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{Fe}$ đứng trước $\\mathrm{H}$ nên phản ứng được với dung dịch acid; $\\mathrm{Au}$ đứng sau $\\mathrm{H}$ nên không phản ứng."
+    },
+    {
+     "ma_cau": "K09060106016",
+     "loai": "trac_nghiem",
+     "de": "So sánh thủy ngân (Hg) và tungsten (W), phát biểu nào sau đây đúng?",
+     "lua_chon": [
+      "Hg có nhiệt độ nóng chảy cao hơn W.",
+      "W ở thể lỏng tại nhiệt độ thường còn Hg thì không.",
+      "Hg ở thể lỏng tại nhiệt độ thường, còn W có nhiệt độ nóng chảy cao nhất trong số các kim loại.",
+      "Hg và W có nhiệt độ nóng chảy xấp xỉ nhau."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Hg là kim loại duy nhất ở thể lỏng tại nhiệt độ thường; W có nhiệt độ nóng chảy cao nhất trong số các kim loại."
+    },
+    {
+     "ma_cau": "K09060106015",
+     "loai": "trac_nghiem",
+     "de": "So sánh nhôm (Al) và sắt (Fe), phát biểu nào sau đây đúng?",
+     "lua_chon": [
+      "Al có khối lượng riêng nhỏ hơn Fe rõ rệt, đồng thời hoạt động hoá học mạnh hơn Fe.",
+      "Fe có khối lượng riêng nhỏ hơn Al.",
+      "Fe hoạt động hoá học mạnh hơn Al.",
+      "Al và Fe có khối lượng riêng bằng nhau."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Al thuộc nhóm kim loại nhẹ, khối lượng riêng nhỏ hơn Fe; đồng thời Al đứng trước Fe trong dãy hoạt động hoá học nên hoạt động mạnh hơn."
+    },
+    {
+     "ma_cau": "K09060106014",
+     "loai": "trac_nghiem",
+     "de": "So sánh đồng (Cu) và bạc (Ag), phát biểu nào sau đây đúng?",
+     "lua_chon": [
+      "Cu dẫn điện tốt hơn Ag.",
+      "Ag hoạt động hoá học mạnh hơn Cu.",
+      "Ag đẩy được Cu ra khỏi dung dịch copper(II) sulfate.",
+      "Cu hoạt động hoá học mạnh hơn Ag, đẩy được Ag ra khỏi dung dịch muối bạc."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cu đứng trước Ag trong dãy hoạt động hoá học nên đẩy được Ag ra khỏi dung dịch muối."
+    },
+    {
+     "ma_cau": "K09060106013",
+     "loai": "trac_nghiem",
+     "de": "So sánh calcium (Ca) và kẽm (Zn), phát biểu nào sau đây đúng?",
+     "lua_chon": [
+      "Zn hoạt động hoá học mạnh hơn Ca.",
+      "Zn phản ứng được với nước ở nhiệt độ thường còn Ca thì không.",
+      "Ca và Zn có cùng mức độ hoạt động hoá học.",
+      "Ca phản ứng được với nước ở nhiệt độ thường còn Zn thì không."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ca đứng trước Mg nên phản ứng được với nước ở nhiệt độ thường; Zn đứng sau Mg nên không phản ứng."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01217",
+   "nhom_id": "KNB00497",
+   "thu_tu": 3,
+   "dang": "XÁC ĐỊNH KIM LOẠI PHÙ HỢP VỚI MỤC ĐÍCH SỬ DỤNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060106019",
+     "loai": "trac_nghiem",
+     "de": "Cần chọn kim loại làm dây tóc bóng đèn sợi đốt, chịu được nhiệt độ rất cao mà không nóng chảy. Nên chọn kim loại nào trong số $\\mathrm{Al}$, $\\mathrm{Cu}$, $\\mathrm{Fe}$, $\\mathrm{W}$?",
+     "lua_chon": [
+      "$\\mathrm{Al}$",
+      "$\\mathrm{Cu}$",
+      "$\\mathrm{Fe}$",
+      "$\\mathrm{W}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{W}$ có nhiệt độ nóng chảy cao nhất trong số các kim loại (khoảng $3\\ 422\\ ^\\circ\\mathrm{C}$), chịu được nhiệt độ rất cao khi phát sáng."
+    },
+    {
+     "ma_cau": "K09060106023",
+     "loai": "trac_nghiem",
+     "de": "Cần chọn kim loại làm dụng cụ nấu ăn, vừa dẫn nhiệt tốt, vừa nhẹ hơn sắt để dễ sử dụng. Nên chọn kim loại nào trong số $\\mathrm{Al}$, $\\mathrm{Pb}$, $\\mathrm{Au}$, $\\mathrm{Ag}$?",
+     "lua_chon": [
+      "$\\mathrm{Al}$",
+      "$\\mathrm{Pb}$",
+      "$\\mathrm{Au}$",
+      "$\\mathrm{Ag}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{Al}$ dẫn nhiệt khá tốt, nhẹ hơn $\\mathrm{Fe}$ rõ rệt, giá thành hợp lí nên được dùng phổ biến làm dụng cụ nấu ăn."
+    },
+    {
+     "ma_cau": "K09060106017",
+     "loai": "trac_nghiem",
+     "de": "Cần chọn kim loại làm dây dẫn điện trong nhà, vừa dẫn điện tốt, vừa có giá thành hợp lí hơn bạc. Nên chọn kim loại nào trong số $\\mathrm{Ag}$, $\\mathrm{Cu}$, $\\mathrm{Fe}$, $\\mathrm{Pb}$?",
+     "lua_chon": [
+      "$\\mathrm{Ag}$",
+      "$\\mathrm{Fe}$",
+      "$\\mathrm{Pb}$",
+      "$\\mathrm{Cu}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{Cu}$ dẫn điện tốt (chỉ kém $\\mathrm{Ag}$), giá thành hợp lí hơn $\\mathrm{Ag}$ nên được dùng phổ biến làm dây dẫn điện."
+    },
+    {
+     "ma_cau": "K09060106018",
+     "loai": "trac_nghiem",
+     "de": "Cần chọn kim loại làm vỏ dây dẫn điện đặt ngoài trời, vừa dẫn điện khá tốt, vừa nhẹ hơn $\\mathrm{Fe}$. Nên chọn kim loại nào trong số $\\mathrm{Fe}$, $\\mathrm{Al}$, $\\mathrm{Au}$, $\\mathrm{Pb}$?",
+     "lua_chon": [
+      "$\\mathrm{Fe}$",
+      "$\\mathrm{Al}$",
+      "$\\mathrm{Au}$",
+      "$\\mathrm{Pb}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{Al}$ dẫn điện khá tốt, nhẹ hơn $\\mathrm{Fe}$ rõ rệt, phù hợp làm dây dẫn điện ngoài trời."
+    },
+    {
+     "ma_cau": "K09060106022",
+     "loai": "trac_nghiem",
+     "de": "Cần chọn kim loại để thu hồi bạc ($\\mathrm{Ag}$) từ dung dịch nước thải chứa ion $\\mathrm{Ag^+}$, với yêu cầu kim loại đó không phản ứng với nước ở nhiệt độ thường để tránh lãng phí. Nên chọn kim loại nào trong số $\\mathrm{Na}$, $\\mathrm{Ca}$, $\\mathrm{Cu}$, $\\mathrm{Au}$?",
+     "lua_chon": [
+      "Na",
+      "Ca",
+      "Cu",
+      "Au"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{Cu}$ đứng trước $\\mathrm{Ag}$ nên đẩy được $\\mathrm{Ag}$ ra khỏi dung dịch muối, đồng thời đứng sau $\\mathrm{Mg}$ nên không phản ứng với nước ở nhiệt độ thường, phù hợp yêu cầu."
+    },
+    {
+     "ma_cau": "K09060106020",
+     "loai": "trac_nghiem",
+     "de": "Cần chọn kim loại làm ống dẫn dung dịch hydrochloric acid loãng trong phòng thí nghiệm, không bị ăn mòn bởi acid. Nên chọn kim loại nào trong số $\\mathrm{Cu}$, $\\mathrm{Zn}$, $\\mathrm{Fe}$, $\\mathrm{Al}$?",
+     "lua_chon": [
+      "Cu",
+      "Zn",
+      "Fe",
+      "Al"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{Cu}$ đứng sau $\\mathrm{H}$ trong dãy hoạt động hoá học nên không phản ứng với dung dịch acid, phù hợp làm vật liệu chứa acid."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01218",
+   "nhom_id": "KNB00497",
+   "thu_tu": 4,
+   "dang": "NHẬN ĐỊNH ĐÚNG/SAI TỔNG HỢP TOÀN CHUYÊN ĐỀ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060106029",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau về phản ứng của kim loại với nước, phát biểu nào đúng?",
+     "lua_chon": [
+      "Mọi kim loại đều dẻo như nhau.",
+      "Kim loại đứng trước $\\mathrm{Mg}$ trong dãy hoạt động hoá học không phản ứng được với nước ở nhiệt độ thường.",
+      "$\\mathrm{Zn}$ phản ứng với hơi nước ở nhiệt độ cao tạo oxide, khác với kim loại mạnh phản ứng với nước ở nhiệt độ thường tạo hydroxide.",
+      "$\\mathrm{Cu}$, $\\mathrm{Ag}$, $\\mathrm{Au}$ đều phản ứng được với hơi nước ở nhiệt độ cao."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{Zn}$ hoạt động hoá học trung bình nên chỉ phản ứng với hơi nước ở nhiệt độ cao, sản phẩm là oxide, khác với nhóm kim loại mạnh ($\\mathrm{K}$, $\\mathrm{Na}$, $\\mathrm{Ca}$) phản ứng ngay ở nhiệt độ thường tạo hydroxide."
+    },
+    {
+     "ma_cau": "K09060106026",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau về tính chất vật lí và hoá học của kim loại, phát biểu nào đúng?",
+     "lua_chon": [
+      "Kim loại đứng sau $\\mathrm{H}$ trong dãy hoạt động hoá học vẫn phản ứng được với dung dịch acid.",
+      "$\\mathrm{Al}$ thuộc nhóm kim loại nhẹ, có khối lượng riêng nhỏ hơn rõ rệt so với $\\mathrm{Fe}$, $\\mathrm{Cu}$.",
+      "Mọi kim loại dẫn điện, dẫn nhiệt như nhau.",
+      "Kim loại đứng sau luôn đẩy được kim loại đứng trước ra khỏi dung dịch muối."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{Al}$ thuộc nhóm kim loại nhẹ, khối lượng riêng nhỏ hơn rõ rệt so với $\\mathrm{Fe}$, $\\mathrm{Cu}$ theo đúng tính chất vật lí đã học."
+    },
+    {
+     "ma_cau": "K09060106027",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau về ý nghĩa dãy hoạt động hoá học, phát biểu nào đúng?",
+     "lua_chon": [
+      "$\\mathrm{K}$, $\\mathrm{Na}$, $\\mathrm{Ca}$ phản ứng ngay với nước có trong dung dịch muối nên không dùng để đẩy kim loại khác theo cách thông thường.",
+      "Mọi kim loại đều đẩy được nhau ra khỏi dung dịch muối.",
+      "Kim loại càng về cuối dãy hoạt động càng dễ phản ứng với dung dịch acid.",
+      "$\\mathrm{Cu}$ phản ứng được với dung dịch hydrochloric acid loãng."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{K}$, $\\mathrm{Na}$, $\\mathrm{Ca}$ hoạt động hoá học rất mạnh, phản ứng ngay với nước của dung dịch nên không dùng để đẩy kim loại khác theo cách thông thường."
+    },
+    {
+     "ma_cau": "K09060106025",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau về tính chất vật lí của các kim loại cụ thể, phát biểu nào SAI?",
+     "lua_chon": [
+      "$\\mathrm{Ag}$ dẫn điện, dẫn nhiệt tốt nhất trong số các kim loại.",
+      "Mọi kim loại đều ở thể rắn tại nhiệt độ thường.",
+      "$\\mathrm{Au}$ là kim loại dẻo nhất trong số các kim loại.",
+      "$\\mathrm{W}$ có nhiệt độ nóng chảy cao nhất trong số các kim loại."
+     ],
+     "dap_an": "B",
+     "loi_giai": "B sai vì $\\mathrm{Hg}$ ở thể lỏng tại nhiệt độ thường, không phải mọi kim loại đều ở thể rắn."
+    },
+    {
+     "ma_cau": "K09060106030",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau về dãy hoạt động hoá học và phản ứng của kim loại, phát biểu nào SAI?",
+     "lua_chon": [
+      "$\\mathrm{Ag}$ đứng sau $\\mathrm{Cu}$ trong dãy hoạt động hoá học.",
+      "$\\mathrm{Zn}$ đẩy được $\\mathrm{Pb}$ ra khỏi dung dịch $\\mathrm{lead(II)}$ nitrate.",
+      "$\\mathrm{Al}$ phản ứng với dung dịch sulfuric acid loãng tạo $\\mathrm{Al_2(SO_4)_3}$ và khí hydrogen.",
+      "$\\mathrm{Cu}$ đẩy được $\\mathrm{Fe}$ ra khỏi dung dịch $\\mathrm{iron(II)}$ sulfate."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{D}$ sai vì $\\mathrm{Cu}$ đứng sau $\\mathrm{Fe}$ trong dãy hoạt động hoá học, không đẩy được $\\mathrm{Fe}$ ra khỏi dung dịch muối."
+    },
+    {
+     "ma_cau": "K09060106028",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau về tính chất hoá học của sắt ($\\mathrm{Fe}$), phát biểu nào SAI?",
+     "lua_chon": [
+      "$\\mathrm{Fe}$ phản ứng với khí chlorine tạo $\\mathrm{FeCl_3}$, hoá trị $\\mathrm{III}$.",
+      "$\\mathrm{Fe}$ phản ứng với dung dịch hydrochloric acid tạo $\\mathrm{FeCl_2}$, hoá trị $\\mathrm{II}$.",
+      "$\\mathrm{Fe}$ phản ứng với khí oxygen khi đun nóng tạo $\\mathrm{Fe_3O_4}$.",
+      "$\\mathrm{Fe}$ không phản ứng với dung dịch $\\mathrm{copper(II)}$ sulfate."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{D}$ sai vì $\\mathrm{Fe}$ đứng trước $\\mathrm{Cu}$ trong dãy hoạt động hoá học nên đẩy được $\\mathrm{Cu}$ ra khỏi dung dịch muối, có phản ứng xảy ra."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01219",
+   "nhom_id": "KNB00498",
+   "thu_tu": 1,
+   "dang": "GIẢI THÍCH HIỆN TƯỢNG TRONG ĐỜI SỐNG LIÊN QUAN ĐẾN TÍNH CHẤT VẬT LÍ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060107006",
+     "loai": "trac_nghiem",
+     "de": "Vì sao bóng đèn sợi đốt dùng dây tóc làm từ tungsten ($\\mathrm{W}$) mà không dùng các kim loại phổ biến như sắt hay đồng?",
+     "lua_chon": [
+      "Vì $\\mathrm{W}$ dẫn điện tốt hơn $\\mathrm{Cu}$.",
+      "Vì $\\mathrm{W}$ rẻ hơn $\\mathrm{Fe}$ và $\\mathrm{Cu}$.",
+      "Vì $\\mathrm{W}$ có nhiệt độ nóng chảy cao nhất trong số các kim loại, chịu được nhiệt độ rất cao khi phát sáng mà không bị nóng chảy.",
+      "Vì $\\mathrm{W}$ có ánh kim đẹp hơn $\\mathrm{Fe}$ và $\\mathrm{Cu}$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{W}$ có nhiệt độ nóng chảy cao nhất trong số các kim loại (khoảng $3 \\ 422 \\ ^\\circ\\mathrm{C}$) nên chịu được nhiệt độ rất cao khi dây tóc phát sáng mà không bị nóng chảy hay đứt."
+    },
+    {
+     "ma_cau": "K09060107005",
+     "loai": "trac_nghiem",
+     "de": "Vì sao lá vàng ($\\mathrm{Au}$) có thể được dát mỏng tới mức gần như trong suốt, dùng để dát tượng, trang trí?",
+     "lua_chon": [
+      "Vì $\\mathrm{Au}$ có nhiệt độ nóng chảy rất thấp.",
+      "Vì $\\mathrm{Au}$ dẫn điện tốt nhất trong số các kim loại.",
+      "Vì $\\mathrm{Au}$ là kim loại có tính dẻo cao nhất, dễ dát mỏng hơn mọi kim loại khác.",
+      "Vì $\\mathrm{Au}$ có ánh kim yếu nên dễ tạo hình."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{Au}$ có tính dẻo cao nhất trong số các kim loại nên có thể dát thành lá cực mỏng mà không bị đứt gãy."
+    },
+    {
+     "ma_cau": "K09060107008",
+     "loai": "trac_nghiem",
+     "de": "Vì sao các tiếp điểm trong một số thiết bị điện tử cao cấp, yêu cầu độ tin cậy cao, thường được\nmạ một lớp vàng ($\\mathrm{Au}$) mỏng?",
+     "lua_chon": [
+      "Vì $\\mathrm{Au}$ dẫn điện tốt và hầu như không bị oxi hoá hay ăn mòn theo thời gian, đảm bảo tiếp xúc điện\nổn định lâu dài.",
+      "Vì $\\mathrm{Au}$ là kim loại rẻ, dễ khai thác.",
+      "Vì $\\mathrm{Au}$ có nhiệt độ nóng chảy thấp nên dễ mạ.",
+      "Vì $\\mathrm{Au}$ không dẫn điện nên tránh được đoản mạch."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{Au}$ dẫn điện khá tốt và hoạt động hoá học rất yếu nên hầu như không bị oxi hoá, ăn\nmòn theo thời gian, đảm bảo độ tin cậy cho tiếp điểm điện tử."
+    },
+    {
+     "ma_cau": "K09060107003",
+     "loai": "trac_nghiem",
+     "de": "Vì sao các vật dụng bằng bạc ($\\mathrm{Ag}$) như thìa, đĩa thường có giá thành cao hơn nhiều so với vật dụng bằng nhôm cùng kích thước?",
+     "lua_chon": [
+      "Vì $\\mathrm{Ag}$ khan hiếm hơn và có nhiều tính chất vật lí vượt trội (dẫn điện, dẫn nhiệt tốt nhất, ánh kim đẹp).",
+      "Vì $\\mathrm{Ag}$ nặng hơn $\\mathrm{Al}$ nên tốn nhiều nguyên liệu hơn.",
+      "Vì $\\mathrm{Ag}$ khó gia công hơn $\\mathrm{Al}$ rất nhiều.",
+      "Vì $\\mathrm{Ag}$ không có tính dẻo nên phải dùng nhiều công đoạn sản xuất phức tạp hơn."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{Ag}$ khan hiếm trong tự nhiên hơn $\\mathrm{Al}$, đồng thời có các tính chất vật lí vượt trội như dẫn điện, dẫn nhiệt tốt nhất và ánh kim đẹp, nên giá thành cao hơn."
+    },
+    {
+     "ma_cau": "K09060107007",
+     "loai": "trac_nghiem",
+     "de": "Vì sao giấy gói thực phẩm hoặc gói kẹo đôi khi dùng lớp nhôm mỏng (giấy bạc, giấy nhôm)?",
+     "lua_chon": [
+      "Vì $\\mathrm{Al}$ có nhiệt độ nóng chảy thấp nhất trong số các kim loại.",
+      "Vì $\\mathrm{Al}$ có tính dẻo, dễ dát mỏng thành lá và tương đối nhẹ, giá thành hợp lí.",
+      "Vì $\\mathrm{Al}$ là kim loại duy nhất không bị oxi hoá trong không khí.",
+      "Vì $\\mathrm{Al}$ dẫn điện kém nên an toàn khi tiếp xúc thực phẩm."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{Al}$ có tính dẻo, dễ dát mỏng thành lá, đồng thời nhẹ và có giá thành hợp lí nên được\ndùng phổ biến làm giấy gói thực phẩm."
+    },
+    {
+     "ma_cau": "K09060107002",
+     "loai": "trac_nghiem",
+     "de": "Vì sao xoong, nồi nấu ăn thường được làm bằng nhôm hoặc thép mà không làm bằng chì ($\\mathrm{Pb}$)?",
+     "lua_chon": [
+      "Vì $\\mathrm{Pb}$ có màu sắc không đẹp.",
+      "Vì $\\mathrm{Pb}$ quá cứng, khó gia công thành xoong nồi.",
+      "Vì $\\mathrm{Pb}$ không tồn tại ở dạng đơn chất kim loại.",
+      "Vì $\\mathrm{Pb}$ là kim loại độc hại và dẫn nhiệt kém hơn nhôm, không phù hợp làm dụng cụ nấu ăn."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{Pb}$ có tính độc, không an toàn cho sức khoẻ khi tiếp xúc với thực phẩm, đồng thời dẫn nhiệt kém hơn nhôm, không phù hợp làm dụng cụ nấu ăn."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01220",
+   "nhom_id": "KNB00498",
+   "thu_tu": 2,
+   "dang": "GIẢI THÍCH HIỆN TƯỢNG TRONG ĐỜI SỐNG LIÊN QUAN ĐẾN TÍNH CHẤT HOÁ HỌC",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060107010",
+     "loai": "trac_nghiem",
+     "de": "Vì sao các vật dụng bằng bạc ($\\mathrm{Ag}$) như thìa, đĩa sau một thời gian tiếp xúc với thực phẩm chứa hợp chất sulfur thường bị xỉn màu đen?",
+     "lua_chon": [
+      "Vì $\\mathrm{Ag}$ phản ứng với nước trong thực phẩm.",
+      "Vì $\\mathrm{Ag}$ phản ứng với oxygen trong không khí, tạo oxide màu đen.",
+      "Vì $\\mathrm{Ag}$ nóng chảy một phần khi tiếp xúc thực phẩm nóng.",
+      "Vì $\\mathrm{Ag}$ phản ứng với hợp chất chứa sulfur, tạo silver sulfide màu đen bám trên bề mặt."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{Ag}$ phản ứng với các hợp chất chứa sulfur có trong một số thực phẩm, tạo lớp silver sulfide màu đen bám trên bề mặt, khiến đồ vật bị xỉn màu."
+    },
+    {
+     "ma_cau": "K09060107014",
+     "loai": "trac_nghiem",
+     "de": "Vì sao trong phòng thí nghiệm, hoá chất potassium ($\\mathrm{K}$) hoặc sodium ($\\mathrm{Na}$) thường được bảo quản trong dầu hoả, không cho tiếp xúc trực tiếp với không khí hoặc nước?",
+     "lua_chon": [
+      "Vì $\\mathrm{K}$, $\\mathrm{Na}$ hoạt động hoá học rất mạnh, dễ phản ứng với hơi nước và oxygen trong không khí nếu để tiếp xúc trực tiếp.",
+      "Vì dầu hoả giúp $\\mathrm{K}$, $\\mathrm{Na}$ dẫn điện tốt hơn.",
+      "Vì $\\mathrm{K}$, $\\mathrm{Na}$ cần được làm lạnh liên tục bằng dầu hoả.",
+      "Vì dầu hoả làm tăng độ dẻo của $\\mathrm{K}$, $\\mathrm{Na}$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{K}$, $\\mathrm{Na}$ là những kim loại hoạt động hoá học rất mạnh, dễ phản ứng với hơi nước và oxygen có trong không khí nếu tiếp xúc trực tiếp, nên phải bảo quản trong dầu hoả để cách li."
+    },
+    {
+     "ma_cau": "K09060107013",
+     "loai": "trac_nghiem",
+     "de": "Vì sao khi sản xuất pin, ắc quy, người ta chọn kim loại chì (Pb) làm điện cực thay vì các kim loại đứng đầu dãy hoạt động như $\\mathrm{K}$, $\\mathrm{Na}$?",
+     "lua_chon": [
+      "Vì $\\mathrm{Pb}$ dẫn điện tốt hơn $\\mathrm{K}$, $\\mathrm{Na}$.",
+      "Vì $\\mathrm{Pb}$ nhẹ hơn $\\mathrm{K}$, $\\mathrm{Na}$ nên dễ vận chuyển.",
+      "Vì $\\mathrm{K}$, $\\mathrm{Na}$ hoạt động hoá học quá mạnh, phản ứng dữ dội với nước và nhiều chất khác, không an toàn và khó kiểm soát khi sử dụng làm điện cực.",
+      "Vì $\\mathrm{K}$, $\\mathrm{Na}$ không dẫn điện."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{K}$, $\\mathrm{Na}$ là những kim loại hoạt động hoá học rất mạnh, phản ứng dữ dội với nước và nhiều chất khác nên không an toàn, khó kiểm soát khi dùng làm điện cực trong pin, ắc quy."
+    },
+    {
+     "ma_cau": "K09060107016",
+     "loai": "trac_nghiem",
+     "de": "Vì sao bề mặt kim loại vàng ($\\mathrm{Au}$) để ngoài không khí một thời gian dài vẫn giữ được ánh kim sáng bóng, không bị xỉn màu như sắt?",
+     "lua_chon": [
+      "Vì $\\mathrm{Au}$ được phủ sẵn một lớp sơn bảo vệ trong tự nhiên.",
+      "Vì $\\mathrm{Au}$ không có ánh kim nên không thể xỉn màu.",
+      "Vì $\\mathrm{Au}$ dẫn nhiệt kém nên không bị ảnh hưởng bởi không khí.",
+      "Vì $\\mathrm{Au}$ đứng cuối dãy hoạt động hoá học, hoạt động hoá học rất yếu nên hầu như không phản ứng với oxygen và hơi nước trong không khí."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{Au}$ đứng cuối dãy hoạt động hoá học, hoạt động hoá học rất yếu nên hầu như không phản ứng với các chất trong không khí, giữ được ánh kim sáng bóng lâu dài."
+    },
+    {
+     "ma_cau": "K09060107011",
+     "loai": "trac_nghiem",
+     "de": "Vì sao vỏ tàu biển bằng thép thường được gắn thêm các tấm kẽm ($\\mathrm{Zn}$) ở phần ngâm dưới nước?",
+     "lua_chon": [
+      "Vì $\\mathrm{Zn}$ hoạt động hoá học mạnh hơn $\\mathrm{Fe}$, bị ăn mòn thay cho vỏ tàu, bảo vệ thép bên trong.",
+      "Vì $\\mathrm{Zn}$ giúp vỏ tàu nhẹ hơn, nổi tốt hơn.",
+      "Vì $\\mathrm{Zn}$ có ánh kim đẹp, tăng tính thẩm mỹ cho tàu.",
+      "Vì $\\mathrm{Zn}$ dẫn điện tốt hơn thép, giúp chống sét cho tàu."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{Zn}$ đứng trước $\\mathrm{Fe}$ trong dãy hoạt động hoá học nên hoạt động mạnh hơn, bị ăn mòn thay cho vỏ tàu bằng thép, giúp bảo vệ thép khỏi bị ăn mòn."
+    },
+    {
+     "ma_cau": "K09060107009",
+     "loai": "trac_nghiem",
+     "de": "Vì sao không nên dùng vật dụng bằng sắt ($\\mathrm{Fe}$) để đựng dung dịch giấm ăn (chứa acetic acid) trong thời gian dài?",
+     "lua_chon": [
+      "Vì giấm ăn làm sắt nóng chảy.",
+      "Vì $\\mathrm{Fe}$ đứng trước $\\mathrm{H}$ trong dãy hoạt động hoá học nên phản ứng dần với acid có trong giấm ăn, bị ăn mòn.",
+      "Vì giấm ăn là chất xúc tác làm sắt gỉ nhanh hơn dù không phản ứng hoá học.",
+      "Vì sắt phản ứng với nước trong giấm, không liên quan đến tính acid."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{Fe}$ đứng trước $\\mathrm{H}$ trong dãy hoạt động hoá học nên phản ứng dần với acid có trong giấm ăn, bị ăn mòn theo thời gian nếu để lâu."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01221",
+   "nhom_id": "KNB00498",
+   "thu_tu": 3,
+   "dang": "GIẢI THÍCH HIỆN TƯỢNG THÍ NGHIỆM LIÊN QUAN ĐẾN DÃY HOẠT ĐỘNG HOÁ HỌC",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060107021",
+     "loai": "trac_nghiem",
+     "de": "Trong thí nghiệm cho mẫu calcium ($\\mathrm{Ca}$) vào cốc nước, vì sao dung dịch thu được làm quỳ tím chuyển sang màu xanh?",
+     "lua_chon": [
+      "Vì $\\mathrm{Ca}$ phản ứng với nước tạo thành calcium hydroxide, một base làm quỳ tím hoá xanh.",
+      "Vì $\\mathrm{Ca}$ hoà tan trực tiếp vào nước mà không phản ứng hoá học.",
+      "Vì nước có sẵn tính base trước khi cho $\\mathrm{Ca}$ vào.",
+      "Vì $\\mathrm{Ca}$ phản ứng với quỳ tím, không liên quan đến nước."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{Ca}$ đứng trước $\\mathrm{Mg}$ trong dãy hoạt động hoá học nên phản ứng với nước ở nhiệt độ thường, tạo thành calcium hydroxide — một base, làm quỳ tím chuyển sang màu xanh."
+    },
+    {
+     "ma_cau": "K09060107020",
+     "loai": "trac_nghiem",
+     "de": "Trong thí nghiệm cho một chiếc đinh sắt ($\\mathrm{Fe}$) và một mẩu đồng ($\\mathrm{Cu}$) vào hai ống nghiệm chứa cùng dung dịch hydrochloric acid, vì sao chỉ ống nghiệm chứa $\\mathrm{Fe}$ có hiện tượng sủi bọt khí?",
+     "lua_chon": [
+      "Vì $\\mathrm{Cu}$ có khối lượng riêng lớn hơn $\\mathrm{Fe}$.",
+      "Vì $\\mathrm{Cu}$ dẫn điện tốt hơn $\\mathrm{Fe}$ nên không phản ứng.",
+      "Vì $\\mathrm{Fe}$ đứng trước $\\mathrm{H}$ còn $\\mathrm{Cu}$ đứng sau $\\mathrm{H}$ trong dãy hoạt động hoá học, nên chỉ $\\mathrm{Fe}$ phản ứng giải phóng khí hydrogen.",
+      "Vì $\\mathrm{Cu}$ có ánh kim mạnh hơn $\\mathrm{Fe}$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{Fe}$ đứng trước $\\mathrm{H}$ trong dãy hoạt động hoá học nên phản ứng với dung dịch acid, giải phóng khí hydrogen; $\\mathrm{Cu}$ đứng sau $\\mathrm{H}$ nên không phản ứng, không có hiện tượng sủi bọt."
+    },
+    {
+     "ma_cau": "K09060107022",
+     "loai": "trac_nghiem",
+     "de": "Trong thí nghiệm cho mẫu nhôm ($\\mathrm{Al}$) vào dung dịch sulfuric acid loãng, vì sao lượng khí hydrogen sinh ra trên cùng một khối lượng kim loại thường nhiều hơn so với khi dùng cùng khối lượng sắt ($\\mathrm{Fe}$)?",
+     "lua_chon": [
+      "Vì $\\mathrm{Al}$ có khối lượng riêng lớn hơn $\\mathrm{Fe}$.",
+      "Vì $\\mathrm{Al}$ hoạt động hoá học mạnh hơn $\\mathrm{Fe}$, đồng thời khối lượng mol của $\\mathrm{Al}$ nhỏ hơn $\\mathrm{Fe}$ nên cùng khối lượng có nhiều nguyên tử $\\mathrm{Al}$ hơn để phản ứng.",
+      "Vì $\\mathrm{Fe}$ không phản ứng được với dung dịch sulfuric acid loãng.",
+      "Vì $\\mathrm{Al}$ dẫn nhiệt tốt hơn nên phản ứng toả nhiệt nhanh hơn."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{Al}$ hoạt động hoá học mạnh hơn $\\mathrm{Fe}$ (đứng trước trong dãy hoạt động), đồng thời khối lượng mol của $\\mathrm{Al}$ nhỏ hơn $\\mathrm{Fe}$ nên cùng một khối lượng kim loại, số nguyên tử $\\mathrm{Al}$ tham gia phản ứng nhiều hơn, sinh ra nhiều khí hydrogen hơn."
+    },
+    {
+     "ma_cau": "K09060107019",
+     "loai": "trac_nghiem",
+     "de": "Trong thí nghiệm cho mẫu kẽm (Zn) vào dung dịch hydrochloric acid, vì sao có bọt khí thoát ra liên tục cho đến khi kẽm tan hết (nếu acid dư)?",
+     "lua_chon": [
+      "Vì Zn phản ứng với nước có trong dung dịch acid.",
+      "Vì Zn phản ứng với acid, liên tục giải phóng khí hydrogen cho đến khi hết kim loại hoặc hết acid.",
+      "Vì Zn bị nóng chảy do phản ứng toả nhiệt.",
+      "Vì khí thoát ra là oxygen sinh ra từ acid."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Zn đứng trước H trong dãy hoạt động hoá học nên phản ứng với dung dịch acid, liên tục giải phóng khí hydrogen cho đến khi phản ứng hết kim loại hoặc hết acid."
+    },
+    {
+     "ma_cau": "K09060107018",
+     "loai": "trac_nghiem",
+     "de": "Trong thí nghiệm nhúng dây đồng (Cu) vào dung dịch silver nitrate không màu, vì sao sau một thời gian dung dịch dần chuyển sang màu xanh?",
+     "lua_chon": [
+      "Vì Ag tan vào dung dịch tạo màu xanh.",
+      "Vì dây đồng bị nóng chảy một phần.",
+      "Vì dung dịch $\\mathrm{AgNO_3}$ tự đổi màu theo thời gian.",
+      "Vì Cu đẩy Ag ra khỏi dung dịch, đồng thời tạo thành ion $\\mathrm{Cu^{2+}}$ có màu xanh trong dung dịch."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cu đứng trước Ag trong dãy hoạt động hoá học nên đẩy được Ag ra khỏi dung dịch muối, đồng thời Cu chuyển thành ion $\\mathrm{Cu^{2+}}$ có màu xanh đặc trưng, làm dung dịch chuyển màu."
+    },
+    {
+     "ma_cau": "K09060107017",
+     "loai": "trac_nghiem",
+     "de": "Trong thí nghiệm cho mẫu sắt (Fe) vào dung dịch copper(II) sulfate màu xanh, sau một thời gian, vì sao màu xanh của dung dịch nhạt dần?",
+     "lua_chon": [
+      "Vì Fe hấp thụ màu xanh của dung dịch.",
+      "Vì nước trong dung dịch bay hơi làm loãng màu.",
+      "Vì Fe đẩy $\\mathrm{Cu^{2+}}$ ra khỏi dung dịch dưới dạng Cu kim loại, làm giảm nồng độ ion $\\mathrm{Cu^{2+}}$ gây màu xanh.",
+      "Vì dung dịch $\\mathrm{CuSO_4}$ tự phân huỷ theo thời gian."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Fe đứng trước Cu trong dãy hoạt động hoá học nên đẩy được Cu ra khỏi dung dịch dưới dạng kim loại, làm giảm nồng độ ion $\\mathrm{Cu^{2+}}$ (chất gây màu xanh) trong dung dịch."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01222",
+   "nhom_id": "KNB00498",
+   "thu_tu": 4,
+   "dang": "TỔNG KẾT TOÀN CHUYÊN ĐỀ: NHẬN ĐỊNH ĐÚNG, SAI",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060107029",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau về sự khác biệt giữa các nhóm kim loại hoạt động mạnh, trung bình và yếu, phát biểu nào SAI?",
+     "lua_chon": [
+      "$\\mathrm{K}$, $\\mathrm{Na}$, $\\mathrm{Ca}$ thuộc nhóm kim loại hoạt động mạnh, phản ứng được với nước ở nhiệt độ thường.",
+      "$\\mathrm{Zn}$, $\\mathrm{Fe}$ thuộc nhóm kim loại hoạt động trung bình, chỉ phản ứng với hơi nước ở nhiệt độ cao.",
+      "$\\mathrm{Cu}$, $\\mathrm{Ag}$, $\\mathrm{Au}$ thuộc nhóm kim loại hoạt động yếu, hầu như không phản ứng với nước dù ở dạng hơi nước.",
+      "Cả ba nhóm kim loại trên đều có khả năng phản ứng với dung dịch acid như nhau."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{D}$ sai vì chỉ nhóm kim loại đứng trước $\\mathrm{H}$ mới phản ứng được với dung dịch acid; nhóm hoạt động yếu ($\\mathrm{Cu}$, $\\mathrm{Ag}$, $\\mathrm{Au}$) hoàn toàn không phản ứng."
+    },
+    {
+     "ma_cau": "K09060107026",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau về phản ứng của kim loại với dung dịch acid và dung dịch muối, phát biểu nào đúng?",
+     "lua_chon": [
+      "Kim loại đứng trước $\\mathrm{H}$ phản ứng được với dung dịch acid; kim loại đứng trước (trừ $\\mathrm{K}$, $\\mathrm{Na}$, $\\mathrm{Ca}$) đẩy được kim loại đứng sau ra khỏi dung dịch muối.",
+      "Mọi kim loại đều phản ứng được với dung dịch acid.",
+      "Kim loại đứng sau luôn đẩy được kim loại đứng trước ra khỏi dung dịch muối.",
+      "Dung dịch muối không phản ứng được với bất kì kim loại nào."
+     ],
+     "dap_an": "A",
+     "loi_giai": "A đúng, tổng hợp đúng hai ý nghĩa cơ bản của dãy hoạt động hoá học đã học trong chuyên đề."
+    },
+    {
+     "ma_cau": "K09060107030",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau tổng kết toàn chuyên đề, phát biểu nào SAI?",
+     "lua_chon": [
+      "Tính chất vật lí chung của kim loại gồm tính dẻo, dẫn điện, dẫn nhiệt và ánh kim.",
+      "Kim loại đứng trước trong dãy hoạt động hoá học nhìn chung hoạt động mạnh hơn kim loại đứng sau.",
+      "Vị trí của một kim loại trong dãy hoạt động hoá học quyết định khả năng phản ứng của nó với nước, dung dịch acid và dung dịch muối.",
+      "Tính chất hoá học của kim loại hoàn toàn không liên quan đến tính chất vật lí của kim loại đó."
+     ],
+     "dap_an": "D",
+     "loi_giai": "D sai vì việc lựa chọn kim loại cho một ứng dụng thực tế thường phải xét đồng thời cả tính chất vật lí và tính chất hoá học, hai loại tính chất không tách rời khi áp dụng vào thực tế."
+    },
+    {
+     "ma_cau": "K09060107025",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau về phản ứng của kim loại với phi kim, phát biểu nào đúng?",
+     "lua_chon": [
+      "Mọi kim loại đều phản ứng với oxygen khi đun nóng, không có ngoại lệ.",
+      "Hoá trị của sắt trong sản phẩm phụ thuộc vào phi kim phản ứng cùng: với chlorine tạo $\\mathrm{FeCl_3}$, với sulfur tạo $\\mathrm{FeS}$.",
+      "Kim loại phản ứng với phi kim luôn tạo ra khí hydrogen.",
+      "$\\mathrm{Au}$, $\\mathrm{Ag}$, $\\mathrm{Pt}$ phản ứng dễ dàng với oxygen khi đun nóng."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Chlorine có tính oxi hoá mạnh hơn sulfur nên đưa $\\mathrm{Fe}$ lên hoá trị $\\mathrm{III}$ ($\\mathrm{FeCl_3}$), trong khi sulfur chỉ đưa $\\mathrm{Fe}$ lên hoá trị $\\mathrm{II}$ ($\\mathrm{FeS}$)."
+    },
+    {
+     "ma_cau": "K09060107027",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau về dãy hoạt động hoá học, phát biểu nào SAI?",
+     "lua_chon": [
+      "Dãy hoạt động hoá học được xây dựng dựa trên các thí nghiệm so sánh khả năng phản ứng của kim loại với nước, dung dịch acid, dung dịch muối.",
+      "Mức độ hoạt động hoá học của kim loại tăng dần từ trái sang phải trong dãy hoạt động.",
+      "$\\mathrm{K}$ là kim loại hoạt động hoá học mạnh nhất trong dãy đã học.",
+      "$\\mathrm{Au}$ là kim loại hoạt động hoá học yếu nhất trong dãy đã học."
+     ],
+     "dap_an": "B",
+     "loi_giai": "B sai vì mức độ hoạt động hoá học giảm dần, không phải tăng dần, từ trái sang phải trong dãy hoạt động hoá học."
+    },
+    {
+     "ma_cau": "K09060107024",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau về tính chất vật lí chung của kim loại, phát biểu nào SAI?",
+     "lua_chon": [
+      "Kim loại có tính dẻo, tính dẫn điện, tính dẫn nhiệt và ánh kim, do các electron tự do gây ra.",
+      "$\\mathrm{Ag}$ dẫn điện, dẫn nhiệt tốt nhất trong số các kim loại.",
+      "Mọi kim loại đều dẫn điện, dẫn nhiệt như nhau, không có sự khác biệt.",
+      "$\\mathrm{Au}$ là kim loại có tính dẻo cao nhất."
+     ],
+     "dap_an": "C",
+     "loi_giai": "C sai vì mức độ dẫn điện, dẫn nhiệt giữa các kim loại khác nhau rõ rệt, ví dụ $\\mathrm{Ag}$ dẫn điện tốt hơn $\\mathrm{Fe}$ nhiều lần."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01223",
+   "nhom_id": "KNB00499",
+   "thu_tu": 1,
+   "dang": "TỪ KHỐI LƯỢNG KIM LOẠI TÍNH THỂ TÍCH KHÍ H2 SINH RA",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060108004",
+     "loai": "tra_loi_ngan",
+     "de": "Cho 13 gam kẽm ($\\mathrm{Zn}$) tác dụng hết với dung dịch sulfuric acid loãng dư. Tính thể tích khí hydrogen ($\\mathrm{H_2}$) sinh ra, đo ở điều kiện chuẩn (1 mol khí chiếm 24,79 lít).",
+     "dap_an": "4.96",
+     "loi_giai": "$\\mathrm{n(Zn) = 13 : 65 = 0,2 \\ mol}$. Theo PTHH, tỉ lệ mol $\\mathrm{Zn : H_2 = 1 : 1}$ nên $\\mathrm{n(H_2) = 0,2 \\ mol}$.\n$\\mathrm{V(H_2) = 0,2 \\times 24,79 = 4,96 \\ lít}$."
+    },
+    {
+     "ma_cau": "K09060108005",
+     "loai": "tra_loi_ngan",
+     "de": "Cho 14 gam sắt ($\\mathrm{Fe}$) tác dụng hết với dung dịch hydrochloric acid dư. Tính thể tích khí hydrogen ($\\mathrm{H_2}$) sinh ra, đo ở điều kiện chuẩn (1 mol khí chiếm 24,79 lít).",
+     "dap_an": "6.2",
+     "loi_giai": "$\\mathrm{n(Fe) = 14 : 56 = 0,25 \\ mol}$. Theo PTHH, tỉ lệ mol $\\mathrm{Fe : H_2 = 1 : 1}$ nên $\\mathrm{n(H_2) = 0,25 \\ mol}$.\n$\\mathrm{V(H_2) = 0,25 \\times 24,79 = 6,2 \\ lít}$."
+    },
+    {
+     "ma_cau": "K09060108008",
+     "loai": "tra_loi_ngan",
+     "de": "Cho 13,5 gam nhôm (Al) tác dụng hết với dung dịch sulfuric acid loãng dư. Tính thể tích khí hydrogen (H2) sinh ra, đo ở điều kiện chuẩn (1 mol khí chiếm 24,79 lit).",
+     "dap_an": "18.59",
+     "loi_giai": "Đáp án chi tiết: $\\mathrm{n(Al) = 13,5 : 27 = 0,5 \\ mol}$. Theo PTHH, tỉ lệ mol $\\mathrm{Al : H_2 = 2 : 3}$ nên $\\mathrm{n(H_2) = 0,5 \\times 3/2 = 0,75 \\ mol}$.\n$\\mathrm{V(H_2) = 0,75 \\times 24,79 = 18,59 \\ lit}$."
+    },
+    {
+     "ma_cau": "K09060108006",
+     "loai": "tra_loi_ngan",
+     "de": "Cho 7,2 gam magnesium ($\\mathrm{Mg}$) tác dụng hết với dung dịch sulfuric acid loãng dư. Tính thể tích khí hydrogen ($\\mathrm{H_2}$) sinh ra, đo ở điều kiện chuẩn (1 mol khí chiếm 24,79 lít).",
+     "dap_an": "7.44",
+     "loi_giai": "$\\mathrm{n(Mg) = 7,2 : 24 = 0,3 \\ mol}$. Theo PTHH, tỉ lệ mol $\\mathrm{Mg : H_2 = 1 : 1}$ nên $\\mathrm{n(H_2) = 0,3 \\ mol}$.\n$\\mathrm{V(H_2) = 0,3 \\times 24,79 = 7,44 \\ lít}$."
+    },
+    {
+     "ma_cau": "K09060108003",
+     "loai": "tra_loi_ngan",
+     "de": "Cho 3,6 gam magnesium ($\\mathrm{Mg}$) tác dụng hết với dung dịch hydrochloric acid dư. Tính thể tích khí hydrogen ($\\mathrm{H_2}$) sinh ra, đo ở điều kiện chuẩn (1 mol khí chiếm 24,79 lít).",
+     "dap_an": "3.72",
+     "loi_giai": "$\\mathrm{n(Mg) = 3,6 : 24 = 0,15 \\ mol}$. Theo PTHH, tỉ lệ mol $\\mathrm{Mg : H_2 = 1 : 1}$ nên $\\mathrm{n(H_2) = 0,15 \\ mol}$.\n$\\mathrm{V(H_2) = 0,15 \\times 24,79 = 3,72 \\ lít}$."
+    },
+    {
+     "ma_cau": "K09060108007",
+     "loai": "tra_loi_ngan",
+     "de": "Cho 8,1 gam nhôm (Al) tác dụng hết với dung dịch hydrochloric acid dư. Tính thể tích khí hydrogen (H2) sinh ra, đo ở điều kiện chuẩn (1 mol khí chiếm 24,79 lit).",
+     "dap_an": "11.16",
+     "loi_giai": "Đáp án chi tiết: $\\mathrm{n(Al) = 8,1 : 27 = 0,3 \\ mol}$. Theo PTHH, tỉ lệ mol $\\mathrm{Al : H_2 = 2 : 3}$ nên $\\mathrm{n(H_2) = 0,3 \\times 3/2 = 0,45 \\ mol}$.\n$\\mathrm{V(H_2) = 0,45 \\times 24,79 = 11,16 \\ lit}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01224",
+   "nhom_id": "KNB00499",
+   "thu_tu": 2,
+   "dang": "TỪ KHỐI LƯỢNG KIM LOẠI TÍNH KHỐI LƯỢNG MUỐI KHAN THU ĐƯỢC",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060108016",
+     "loai": "tra_loi_ngan",
+     "de": "Cho 10,8 gam nhôm (Al) tác dụng hết với dung dịch sulfuric acid loãng dư, sau phản ứng cô cạn dung dịch. Tính khối lượng muối aluminium sulfate ($\\mathrm{Al_2(SO_4)_3}$) khan thu được.",
+     "dap_an": "68.4",
+     "loi_giai": "$\\mathrm{n(Al)} = 10,8 : 27 = 0,4 \\mathrm{~mol}$. Theo $\\mathrm{PTHH}$, tỉ lệ mol $\\mathrm{Al}$: $\\mathrm{Al_2(SO_4)_3} = 2:1$ nên $\\mathrm{n(muối)} = 0,4 : 2 = 0,2 \\mathrm{~mol}$.\n$\\mathrm{m(muối)} = 0,2 \\times 342 = 68,4 \\mathrm{~gam}$."
+    },
+    {
+     "ma_cau": "K09060108010",
+     "loai": "tra_loi_ngan",
+     "de": "Cho 2,4 gam magnesium ($\\mathrm{Mg}$) tác dụng hết với dung dịch hydrochloric acid dư, sau phản ứng cô cạn dung dịch. Tính khối lượng muối magnesium chloride ($\\mathrm{MgCl_2}$) khan thu được.",
+     "dap_an": "9.5",
+     "loi_giai": "$\\mathrm{n(Mg)} = 2,4 : 24 = 0,1 \\ \\mathrm{mol}$. Theo PTHH, tỉ lệ mol $\\mathrm{Mg} :$ muối $= 1 : 1$ nên $\\mathrm{n(muối)} = 0,1 \\ \\mathrm{mol}$.\n$\\mathrm{m(muối)} = 0,1 \\times 95 = 9,5 \\ \\mathrm{gam}$."
+    },
+    {
+     "ma_cau": "K09060108014",
+     "loai": "tra_loi_ngan",
+     "de": "Cho 19,5 gam kẽm (Zn) tác dụng hết với dung dịch hydrochloric acid dư, sau phản ứng cô cạn dung dịch. Tính khối lượng muối zinc chloride ($\\mathrm{ZnCl_2}$) khan thu được.",
+     "dap_an": "40.8",
+     "loi_giai": "$\\mathrm{n(Zn)} = 19,5 : 65 = 0,3 \\mathrm{~mol}$. Theo $\\mathrm{PTHH}$, tỉ lệ mol $\\mathrm{Zn}$: muối $= 1:1$ nên $\\mathrm{n(muối)} = 0,3 \\mathrm{~mol}$.\n$\\mathrm{m(muối)} = 0,3 \\times 136 = 40,8 \\mathrm{~gam}$."
+    },
+    {
+     "ma_cau": "K09060108012",
+     "loai": "tra_loi_ngan",
+     "de": "Cho 11,2 gam sắt ($\\mathrm{Fe}$) tác dụng hết với dung dịch hydrochloric acid dư, sau phản ứng cô cạn dung dịch. Tính khối lượng muối iron(II) chloride ($\\mathrm{FeCl_2}$) khan thu được.",
+     "dap_an": "25.4",
+     "loi_giai": "$\\mathrm{n(Fe)} = 11,2 : 56 = 0,2 \\ \\mathrm{mol}$. Theo PTHH, tỉ lệ mol $\\mathrm{Fe} :$ muối $= 1 : 1$ nên $\\mathrm{n(muối)} = 0,2 \\ \\mathrm{mol}$.\n$\\mathrm{m(muối)} = 0,2 \\times 127 = 25,4 \\ \\mathrm{gam}$."
+    },
+    {
+     "ma_cau": "K09060108015",
+     "loai": "tra_loi_ngan",
+     "de": "Cho 5,4 gam nhôm (Al) tác dụng hết với dung dịch hydrochloric acid dư, sau phản ứng cô cạn dung dịch. Tính khối lượng muối aluminium chloride ($\\mathrm{AlCl_3}$) khan thu được.",
+     "dap_an": "26.7",
+     "loi_giai": "$\\mathrm{n(Al)} = 5,4 : 27 = 0,2 \\mathrm{~mol}$. Theo $\\mathrm{PTHH}$, tỉ lệ mol $\\mathrm{Al}$: $\\mathrm{AlCl_3} = 1:1$ nên $\\mathrm{n(muối)} = 0,2 \\mathrm{~mol}$.\n$\\mathrm{m(muối)} = 0,2 \\times 133,5 = 26,7 \\mathrm{~gam}$."
+    },
+    {
+     "ma_cau": "K09060108009",
+     "loai": "tra_loi_ngan",
+     "de": "Cho 2,8 gam sắt ($\\mathrm{Fe}$) tác dụng hết với dung dịch sulfuric acid loãng dư, sau phản ứng cô cạn dung dịch. Tính khối lượng muối iron(II) sulfate ($\\mathrm{FeSO_4}$) khan thu được.",
+     "dap_an": "7.6",
+     "loi_giai": "$\\mathrm{n(Fe)} = 2,8 : 56 = 0,05 \\ \\mathrm{mol}$. Theo PTHH, tỉ lệ mol $\\mathrm{Fe} :$ muối $= 1 : 1$ nên $\\mathrm{n(muối)} = 0,05 \\ \\mathrm{mol}$.\n$\\mathrm{m(muối)} = 0,05 \\times 152 = 7,6 \\ \\mathrm{gam}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01225",
+   "nhom_id": "KNB00499",
+   "thu_tu": 3,
+   "dang": "TỪ THỂ TÍCH KHÍ H2 TÍNH NGƯỢC KHỐI LƯỢNG KIM LOẠI ĐÃ DÙNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060108022",
+     "loai": "tra_loi_ngan",
+     "de": "Cho một lượng sắt (Fe) tác dụng hết với dung dịch sulfuric acid loãng dư, thu được 9,92 lít khí hydrogen (H$_{2}$), đo ở điều kiện chuẩn (1 mol khí chiếm 24,79 lit). Tính khối lượng Fe đã dùng.",
+     "dap_an": "22.4",
+     "loi_giai": "$n(\\mathrm{H_2}) = 9,92 : 24,79 = 0,4\\ mol$. Theo PTHH, tỉ lệ mol $\\mathrm{Fe} : \\mathrm{H_2} = 1 : 1$ nên $n(\\mathrm{Fe}) = 0,4\\ mol$. $m(\\mathrm{Fe}) = 0,4 \\times 56 = 22,4\\ gam$."
+    },
+    {
+     "ma_cau": "K09060108019",
+     "loai": "tra_loi_ngan",
+     "de": "Cho một lượng sắt (Fe) tác dụng hết với dung dịch hydrochloric acid dư, thu được 4,96 lít khí hydrogen (H$_2$), đo ở điều kiện chuẩn (1 mol khí chiếm 24,79 lít). Tính khối lượng Fe đã dùng.",
+     "dap_an": "11.2",
+     "loi_giai": "$n(\\mathrm{H_2}) = 4,96 : 24,79 = 0,2 \\mathrm{\\ mol}$. Theo PTHH, tỉ lệ mol $\\mathrm{Fe} : \\mathrm{H_2} = 1 : 1$ nên $n(\\mathrm{Fe}) = 0,2 \\mathrm{\\ mol}$.\n$m(\\mathrm{Fe}) = 0,2 \\times 56 = 11,2 \\mathrm{\\ gam}$."
+    },
+    {
+     "ma_cau": "K09060108023",
+     "loai": "tra_loi_ngan",
+     "de": "Cho một lượng nhôm (Al) tác dụng hết với dung dịch hydrochloric acid dư, thu được 14,87 lít khí hydrogen (H$_{2}$), đo ở điều kiện chuẩn (1 mol khí chiếm 24,79 lit). Tính khối lượng Al đã dùng.",
+     "dap_an": "10.8",
+     "loi_giai": "$n(\\mathrm{H_2}) = 14,87 : 24,79 = 0,6\\ mol$. Theo PTHH, tỉ lệ mol $\\mathrm{Al} : \\mathrm{H_2} = 2 : 3$ nên $n(\\mathrm{Al}) = 0,6 \\times 2/3 = 0,4\\ mol$. $m(\\mathrm{Al}) = 0,4 \\times 27 = 10,8\\ gam$."
+    },
+    {
+     "ma_cau": "K09060108018",
+     "loai": "tra_loi_ngan",
+     "de": "Cho một lượng kẽm (Zn) tác dụng hết với dung dịch sulfuric acid loãng dư, thu được 2,48 lít khí hydrogen (H$_2$), đo ở điều kiện chuẩn (1 mol khí chiếm 24,79 lít). Tính khối lượng Zn đã dùng.",
+     "dap_an": "6.5",
+     "loi_giai": "$n(\\mathrm{H_2}) = 2,48 : 24,79 = 0,1 \\mathrm{\\ mol}$. Theo PTHH, tỉ lệ mol $\\mathrm{Zn} : \\mathrm{H_2} = 1 : 1$ nên $n(\\mathrm{Zn}) = 0,1 \\mathrm{\\ mol}$.\n$m(\\mathrm{Zn}) = 0,1 \\times 65 = 6,5 \\mathrm{\\ gam}$."
+    },
+    {
+     "ma_cau": "K09060108021",
+     "loai": "tra_loi_ngan",
+     "de": "Cho một lượng kẽm (Zn) tác dụng hết với dung dịch hydrochloric acid dư, thu được 7,44 lít khí hydrogen (H$_2$), đo ở điều kiện chuẩn (1 mol khí chiếm 24,79 lít). Tính khối lượng Zn đã dùng.",
+     "dap_an": "19.5",
+     "loi_giai": "$n(\\mathrm{H_2}) = 7,44 : 24,79 = 0,3 \\mathrm{\\ mol}$. Theo PTHH, tỉ lệ mol $\\mathrm{Zn} : \\mathrm{H_2} = 1 : 1$ nên $n(\\mathrm{Zn}) = 0,3 \\mathrm{\\ mol}$.\n$m(\\mathrm{Zn}) = 0,3 \\times 65 = 19,5 \\mathrm{\\ gam}$."
+    },
+    {
+     "ma_cau": "K09060108020",
+     "loai": "tra_loi_ngan",
+     "de": "Cho một lượng magnesium (Mg) tác dụng hết với dung dịch sulfuric acid loãng dư, thu được 6,2 lít khí hydrogen (H$_2$), đo ở điều kiện chuẩn (1 mol khí chiếm 24,79 lít). Tính khối lượng Mg đã dùng.",
+     "dap_an": "6",
+     "loi_giai": "$n(\\mathrm{H_2}) = 6,2 : 24,79 = 0,25 \\mathrm{\\ mol}$. Theo PTHH, tỉ lệ mol $\\mathrm{Mg} : \\mathrm{H_2} = 1 : 1$ nên $n(\\mathrm{Mg}) = 0,25 \\mathrm{\\ mol}$.\n$m(\\mathrm{Mg}) = 0,25 \\times 24 = 6 \\mathrm{\\ gam}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01226",
+   "nhom_id": "KNB00499",
+   "thu_tu": 4,
+   "dang": "HỖN HỢP HAI KIM LOẠI TÁC DỤNG DUNG DỊCH ACID, TÍNH % KHỐI LƯỢNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09060108028",
+     "loai": "tra_loi_ngan",
+     "de": "Cho 33 gam hỗn hợp bột gồm sắt ($\\mathrm{Fe}$) và đồng ($\\mathrm{Cu}$) tác dụng với dung dịch hydrochloric acid dư, thu được 7,44 lít khí hydrogen ($\\mathrm{H_2}$), đo ở điều kiện chuẩn (1 mol khí chiếm 24,79 lít). Tính phần trăm khối lượng $\\mathrm{Fe}$ trong hỗn hợp ban đầu.",
+     "dap_an": "50.93",
+     "loi_giai": "$\\mathrm{n(H_2) = 7,44 : 24,79 \\approx 0,300121}$ mol. \nTheo PTHH, $\\mathrm{n(Fe) = n(H_2)}$, $\\mathrm{m(Fe) = 0,300121 \\times 56 \\approx 16,8068}$ gam.\n$\\mathrm{\\%Fe = 16,8068 : 33 \\times 100 \\approx 50,93\\%}$."
+    },
+    {
+     "ma_cau": "K09060108027",
+     "loai": "tra_loi_ngan",
+     "de": "Cho 28 gam hỗn hợp bột gồm kẽm ($\\mathrm{Zn}$) và bạc ($\\mathrm{Ag}$) tác dụng với dung dịch hydrochloric acid dư, thu được 6,2 lít khí hydrogen ($\\mathrm{H_2}$), đo ở điều kiện chuẩn (1 mol khí chiếm 24,79 lít). Tính phần trăm khối lượng $\\mathrm{Zn}$ trong hỗn hợp ban đầu.",
+     "dap_an": "58.06",
+     "loi_giai": "$\\mathrm{n(H_2) = 6,2 : 24,79 \\approx 0,250101}$ mol. \nTheo PTHH, $\\mathrm{n(Zn) = n(H_2)}$, $\\mathrm{m(Zn) = 0,250101 \\times 65 \\approx 16,2566}$ gam.\n$\\mathrm{\\%Zn = 16,2566 : 28 \\times 100 \\approx 58,06\\%}$."
+    },
+    {
+     "ma_cau": "K09060108024",
+     "loai": "tra_loi_ngan",
+     "de": "Cho 10 gam hỗn hợp bột gồm kẽm ($\\mathrm{Zn}$) và đồng ($\\mathrm{Cu}$) tác dụng với dung dịch hydrochloric acid dư, thu được 2,48 lít khí hydrogen ($\\mathrm{H_2}$), đo ở điều kiện chuẩn (1 mol khí chiếm 24,79 lít). Tính phần trăm khối lượng $\\mathrm{Zn}$ trong hỗn hợp ban đầu.",
+     "dap_an": "65.03",
+     "loi_giai": "$\\mathrm{n(H_2) = 2,48 : 24,79 \\approx 0,10004}$ mol. \nTheo PTHH, $\\mathrm{n(Zn) = n(H_2)}$, $\\mathrm{m(Zn) = 0,10004 \\times 65 \\approx 6,5026}$ gam.\n$\\mathrm{\\%Zn = 6,5026 : 10 \\times 100 \\approx 65,03\\%}$."
+    },
+    {
+     "ma_cau": "K09060108025",
+     "loai": "tra_loi_ngan",
+     "de": "Cho 18 gam hỗn hợp bột gồm sắt ($\\mathrm{Fe}$) và đồng ($\\mathrm{Cu}$) tác dụng với dung dịch hydrochloric acid dư, thu được 3,72 lít khí hydrogen ($\\mathrm{H_2}$), đo ở điều kiện chuẩn (1 mol khí chiếm 24,79 lít). Tính phần trăm khối lượng $\\mathrm{Fe}$ trong hỗn hợp ban đầu.",
+     "dap_an": "46.69",
+     "loi_giai": "$\\mathrm{n(H_2) = 3,72 : 24,79 \\approx 0,150061}$ mol. \nTheo PTHH, $\\mathrm{n(Fe) = n(H_2)}$, $\\mathrm{m(Fe) = 0,150061 \\times 56 \\approx 8,4034}$ gam.\n$\\mathrm{\\%Fe = 8,4034 : 18 \\times 100 \\approx 46,69\\%}$."
+    },
+    {
+     "ma_cau": "K09060108026",
+     "loai": "tra_loi_ngan",
+     "de": "Cho 12 gam hỗn hợp bột gồm magnesium ($\\mathrm{Mg}$) và bạc ($\\mathrm{Ag}$) tác dụng với dung dịch hydrochloric acid dư, thu được 4,96 lít khí hydrogen ($\\mathrm{H_2}$), đo ở điều kiện chuẩn (1 mol khí chiếm 24,79 lít). Tính phần trăm khối lượng $\\mathrm{Mg}$ trong hỗn hợp ban đầu.",
+     "dap_an": "40.02",
+     "loi_giai": "$\\mathrm{n(H_2) = 4,96 : 24,79 \\approx 0,200081}$ mol. \nTheo PTHH, $\\mathrm{n(Mg) = n(H_2)}$, $\\mathrm{m(Mg) = 0,200081 \\times 24 \\approx 4,8019}$ gam.\n$\\mathrm{\\%Mg = 4,8019 : 12 \\times 100 \\approx 40,02\\%}$."
+    }
+   ]
+  }
+ ]
+}

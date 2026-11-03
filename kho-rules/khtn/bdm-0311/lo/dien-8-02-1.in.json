@@ -1,0 +1,2507 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00387",
+   "khoi": "8",
+   "chu_de": "Khối lượng riêng và Áp suất",
+   "chuyen_de": "Áp suất chất lỏng - Áp suất khí quyển",
+   "nhom": "Lý thuyết chung áp suất chất lỏng",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "•  Áp suất là độ lớn của áp lực trên một đơn vị diện tích bị ép: p = F/S (đơn vị Pa = N/m²).\n•  Chất lỏng đứng yên gây áp suất theo mọi phương lên đáy bình, thành bình và các vật đặt trong lòng nó.\n•  Tại cùng một độ sâu trong một chất lỏng đứng yên, áp suất tại mọi điểm bằng nhau, không phụ thuộc hình dạng bình.\n•  Công thức tính áp suất chất lỏng: p = d.h; d là trọng lượng riêng chất lỏng (N/m³), h là độ sâu tính từ mặt thoáng đến điểm tính áp suất (m).\n•  Áp suất chất lỏng tăng khi độ sâu tăng, không phụ thuộc hình dạng hay tiết diện bình chứa.\n•  Bình thông nhau chứa cùng một chất lỏng đứng yên: mặt thoáng ở các nhánh luôn ở cùng một độ cao, không phụ thuộc hình dạng, tiết diện từng nhánh.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00388",
+   "khoi": "8",
+   "chu_de": "Khối lượng riêng và Áp suất",
+   "chuyen_de": "Áp suất chất lỏng - Áp suất khí quyển",
+   "nhom": "Tính toán áp suất - áp lực chất lỏng",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "•  Công thức chính: p = d.h; nếu đề cho khối lượng riêng D (kg/m³) thì đổi d = 10.D (N/m³).\n•  Áp lực của chất lỏng lên một diện tích S: F = p.S (S tính bằng m²).\n•  Áp suất chỉ phụ thuộc d và h, không phụ thuộc diện tích đáy bình; áp lực phụ thuộc cả diện tích đáy.\n•  Hai lớp chất lỏng không hoà tan (lớp nhẹ ở trên, lớp nặng ở dưới): áp suất tại đáy bình bằng tổng áp suất từng lớp: p = d1.h1 + d2.h2.\n•  Khi làm bài: đổi mọi độ dài về mét (m), diện tích về mét vuông (m²) trước khi thay vào công thức.\nVí dụ minh hoạ 1:\nMột bình hình trụ chứa dầu hoả (d = 8000 N/m³), cột dầu cao 0,5 m, diện tích đáy bình 200 cm². Tính áp suất và áp lực của dầu tác dụng lên đáy bình.\nBài giải:\n– Áp suất: p = d.h = 8000 × 0,5 = 4000 Pa.\n– Đổi diện tích đáy: 200 cm² = 0,02 m².\n– Áp lực: F = p.S = 4000 × 0,02 = 80 N.\nVí dụ minh hoạ 2:\nMột bình chứa hai lớp chất lỏng không hoà tan: lớp dầu hoả (d = 8000 N/m³) ở trên, cao 0,3 m; lớp nước (d = 10000 N/m³) ở dưới, cao 0,4 m. Tính áp suất tại đáy bình.\nBài giải:\n– Áp suất tại đáy bằng tổng áp suất do từng lớp gây ra: p = d1.h1 + d2.h2.\n– p = 8000 × 0,3 + 10000 × 0,4 = 2400 + 4000 = 6400 Pa.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00389",
+   "khoi": "8",
+   "chu_de": "Khối lượng riêng và Áp suất",
+   "chuyen_de": "Áp suất chất lỏng - Áp suất khí quyển",
+   "nhom": "Lý thuyết chung áp suất khí quyển",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "•  Trái Đất được bao bọc bởi một lớp không khí dày gọi là khí quyển; lớp không khí này có trọng lượng nên gây áp suất lên mọi vật trên Trái Đất, gọi là áp suất khí quyển.\n•  Áp suất khí quyển (và áp suất chất khí nói chung) tác dụng theo mọi phương lên vật đặt trong nó.\n•  Áp suất khí quyển thay đổi theo độ cao: càng lên cao, lớp không khí phía trên càng mỏng nên áp suất khí quyển càng giảm.\n•  Càng xuống sâu dưới mặt đất (hầm, giếng), áp suất khí quyển càng tăng.\n•  Nhiều hiện tượng thực tế (ống hút, giác mút, bình hút chân không...) xảy ra do chênh lệch giữa áp suất khí quyển bên ngoài và áp suất bên trong vật.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00390",
+   "khoi": "8",
+   "chu_de": "Khối lượng riêng và Áp suất",
+   "chuyen_de": "Áp suất chất lỏng - Áp suất khí quyển",
+   "nhom": "Đơn vị áp suất khí quyển và Tính toán áp suất khí quyển",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "•  Thí nghiệm Tô-ri-xe-li: đổ đầy thuỷ ngân vào ống thuỷ tinh dài khoảng 1 m, một đầu kín; úp ngược miệng ống đã bịt kín vào chậu thuỷ ngân rồi mở bịt. Thuỷ ngân trong ống tụt xuống, còn lại cột cao khoảng 76 cm so với mặt thoáng thuỷ ngân trong chậu; phía trên cột thuỷ ngân là khoảng chân không.\n•  Áp suất khí quyển tại mặt thoáng bằng áp suất do cột thuỷ ngân trong ống gây ra: p = d(Hg).h, với d(Hg) = 136000 N/m³.\n•  Đơn vị mmHg (cmHg): 1 mmHg là áp suất do cột thuỷ ngân cao 1 mm gây ra, bằng 136 Pa; 1 cmHg = 1360 Pa.\n•  Áp suất khí quyển chuẩn ở mực nước biển: 760 mmHg = 76 cmHg = 103360 Pa.\n•  Khi làm bài: xác định đơn vị đề cho (mmHg, cmHg hay Pa) rồi quy đổi về cùng một đơn vị theo hệ số trên trước khi tính.\nVí dụ minh hoạ 1:\nThí nghiệm Tô-ri-xe-li tại một địa điểm cho cột thuỷ ngân cao 72 cm. Tính áp suất khí quyển tại đó ra Pa.\nBài giải:\n– Áp dụng 1 cmHg = 1360 Pa: p = 72 × 1360 = 97920 Pa.\nVí dụ minh hoạ 2:\nÁp suất khí quyển đo được tại một địa điểm là 108800 Pa. Tính chiều cao cột thuỷ ngân tương ứng trong ống Tô-ri-xe-li theo đơn vị cmHg.\nBài giải:\n– h = p/1360 = 108800/1360 = 80 cmHg.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00392",
+   "khoi": "8",
+   "chu_de": "Khối lượng riêng và Áp suất",
+   "chuyen_de": "Lực đẩy Archimedes",
+   "nhom": "Khái niệm và đặc điểm lực đẩy Archimedes",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC1. Kiến thức cần nhớ\nMọi vật nhúng trong chất lỏng đều bị chất lỏng tác dụng một lực đẩy, gọi là lực đẩy Archimedes.\nĐặc điểm của lực đẩy Archimedes:\n- Điểm đặt: trên vật nhúng trong chất lỏng.\n- Phương: thẳng đứng.\n- Chiều: từ dưới lên trên.\n- Độ lớn: bằng trọng lượng của phần chất lỏng bị vật chiếm chỗ.\nNguyên nhân: chất lỏng gây áp suất theo mọi phương và áp suất tăng theo độ sâu. Mặt dưới của vật ở sâu hơn mặt trên nên chịu áp lực hướng lên lớn hơn áp lực hướng xuống ở mặt trên; áp lực lên các mặt bên cân bằng nhau. Hợp của các áp lực này là lực đẩy Archimedes hướng thẳng đứng lên trên.\n\n##TC2. Công thức\n$F_A = d \\cdot V$\nTrong đó $d$ là trọng lượng riêng của chất lỏng ($\\mathrm{N/m^3}$), $V$ là thể tích phần vật chìm trong chất lỏng ($\\mathrm{m^3}$).\n\n##PP3. Các bước làm bài\nBước 1. Xác định câu hỏi về phương, chiều, điểm đặt, nguyên nhân hay độ lớn của lực đẩy.\nBước 2. Với câu hỏi về độ lớn: chỉ xét hai yếu tố là trọng lượng riêng của chất lỏng và thể tích phần vật chìm.\nBước 3. So sánh hai trường hợp: yếu tố nào thay đổi thì lực đẩy thay đổi theo yếu tố đó; nếu cả hai yếu tố không đổi thì lực đẩy không đổi.\n\n##CY4. Lưu ý\nLực đẩy Archimedes không phụ thuộc vào chất làm vật, khối lượng vật, hình dạng vật, lượng chất lỏng trong bình và độ sâu của vật khi vật đã chìm hoàn toàn.\nHai vật cùng khối lượng nhưng khác chất thì có thể tích khác nhau, nên lực đẩy khác nhau khi chìm hoàn toàn.\nVật nổi, vật chìm hay vật nằm ở đáy bình đều chịu lực đẩy Archimedes nếu có phần nằm trong chất lỏng.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00394",
+   "khoi": "8",
+   "chu_de": "Khối lượng riêng và Áp suất",
+   "chuyen_de": "Lực đẩy Archimedes",
+   "nhom": "Điều kiện vật nổi, chìm, lơ lửng",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nMột vật nhúng chìm hoàn toàn trong chất lỏng chịu hai lực: trọng lực P hướng xuống và lực đẩy Archimedes $\\mathrm{F_A}$ hướng lên. Khi thả vật ra:\n- Vật nổi lên khi $\\mathrm{F_A > P}$.\n- Vật chìm xuống khi $\\mathrm{F_A < P}$.\n- Vật lơ lửng trong chất lỏng khi $\\mathrm{F_A = P}$.\nKhi vật đã nổi đứng yên trên mặt chất lỏng thì $\\mathrm{F_A = P}$.\nVới vật đặc, có thể so sánh khối lượng riêng (hoặc trọng lượng riêng) của vật với chất lỏng:\n- Vật nổi lên khi $\\mathrm{D_{vật} < D_{lỏng}}$.\n- Vật chìm xuống khi $\\mathrm{D_{vật} > D_{lỏng}}$.\n- Vật lơ lửng khi $\\mathrm{D_{vật} = D_{lỏng}}$.\n\n##TC 2. Công thức\n$\\mathrm{P = 10m}$\n$\\mathrm{D = \\dfrac{m}{V}}$\n$\\mathrm{d = 10D}$\n\n##PP 3. Các bước làm bài\nBước 1. Xác định đề cho sẵn $\\mathrm{F_A}$ và P, cho sẵn khối lượng riêng, hay cho khối lượng và thể tích của vật.\nBước 2. Nếu đề cho khối lượng thì tính $\\mathrm{P = 10m}$; nếu đề cho khối lượng và thể tích thì tính $\\mathrm{D_{vật} = \\dfrac{m}{V}}$ (đổi $\\mathrm{m}$ ra $\\mathrm{kg}$, $\\mathrm{V}$ ra $\\mathrm{m^3}$). \nBước 3. So sánh $\\mathrm{F_A}$ với P, hoặc $\\mathrm{D_{vật}}$ với $\\mathrm{D_{lỏng}}$, rồi kết luận vật nổi, chìm hay lơ lửng.\n\n##CY 4. Lưu ý\nKhi so sánh, hai đại lượng phải cùng loại và cùng đơn vị: khối lượng riêng so với khối lượng riêng, trọng lượng riêng so với trọng lượng riêng.\nLực đẩy dùng để so sánh với P là lực đẩy khi vật chìm hoàn toàn.\nĐiều kiện so sánh khối lượng riêng chỉ áp dụng cho vật đặc. Vật rỗng (thuyền, phao, bóng) phải so sánh $\\mathrm{F_A}$ với P.\nKhối lượng riêng của một số chất lỏng thường gặp (tham khảo): nước 1 000 $\\mathrm{kg/m^3}$; nước biển 1 030 $\\mathrm{kg/m^3}$; dầu hoả 800 $\\mathrm{kg/m^3}$; xăng 700 $\\mathrm{kg/m^3}$.",
+   "can_dien_ly_thuyet_nhom": false
+  }
+ ],
+ "dang_bai": [
+  {
+   "dang_id": "KDB00881",
+   "nhom_id": "KNB00387",
+   "thu_tu": 1,
+   "dang": "Đặc điểm chất lỏng gây áp suất lên đáy bình, thành bình, vật trong lòng chất lỏng, theo mọi phương",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020301004",
+     "loai": "trac_nghiem",
+     "de": "Thành bên của một bình hình trụ đang chứa nước đứng yên có chịu áp suất do nước gây ra hay không?",
+     "lua_chon": [
+      "Không, vì áp suất chất lỏng chỉ tác dụng theo phương thẳng đứng xuống đáy.",
+      "Không, vì thành bình không tiếp xúc trực tiếp với đáy bình.",
+      "Có, vì chất lỏng gây áp suất theo mọi phương, kể cả lên thành bình.",
+      "Chỉ phần thành bình gần đáy mới chịu áp suất, phần gần mặt thoáng thì không."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Áp suất chất lỏng tác dụng theo mọi phương nên toàn bộ thành bình tiếp xúc với chất lỏng đều chịu áp suất, không riêng phần nào."
+    },
+    {
+     "ma_cau": "K08020301003",
+     "loai": "trac_nghiem",
+     "de": "Một vật đặc được nhúng chìm hoàn toàn trong một chất lỏng đứng yên. Phát biểu nào sau đây đúng về áp suất chất lỏng tác dụng lên vật?",
+     "lua_chon": [
+      "Chất lỏng tác dụng áp suất lên mọi mặt của vật, theo mọi phương.",
+      "Chất lỏng chỉ tác dụng áp suất lên mặt trên của vật.",
+      "Chất lỏng không tác dụng áp suất lên vật vì vật là chất rắn.",
+      "Chất lỏng chỉ tác dụng áp suất lên mặt dưới của vật."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Chất lỏng bao quanh vật nhúng chìm nên gây áp suất lên tất cả các mặt của vật, theo mọi phương, không riêng mặt nào."
+    },
+    {
+     "ma_cau": "K08020301002",
+     "loai": "trac_nghiem",
+     "de": "Áp suất do chất lỏng đứng yên gây ra tại một điểm trong lòng nó tác dụng theo phương nào?",
+     "lua_chon": [
+      "Theo mọi phương.",
+      "Chỉ theo phương nằm ngang.",
+      "Chỉ theo phương thẳng đứng, hướng xuống dưới.",
+      "Chỉ theo phương vuông góc với đáy bình."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đây là đặc điểm cơ bản của áp suất chất lỏng: tác dụng theo mọi phương, khác với áp lực của vật rắn chỉ theo một phương xác định."
+    },
+    {
+     "ma_cau": "K08020301005",
+     "loai": "trac_nghiem",
+     "de": "Một bể cá hình hộp chữ nhật chứa đầy nước, dưới đáy bể có một hòn đá nằm yên. Nước trong bể tác dụng áp suất lên những bộ phận nào sau đây?",
+     "lua_chon": [
+      "Đáy bể, thành bể và hòn đá nằm trong lòng nước.",
+      "Đáy bể và thành bể, không tác dụng lên hòn đá vì hòn đá là vật rắn.",
+      "Chỉ thành bể.",
+      "Chỉ đáy bể."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Hòn đá nằm trong lòng nước cũng là một vật chịu áp suất chất lỏng như đáy và thành bể, vì nước tác dụng áp suất theo mọi phương lên mọi vật tiếp xúc với nó."
+    },
+    {
+     "ma_cau": "K08020301006",
+     "loai": "trac_nghiem",
+     "de": "Trong các chất sau, chất nào khi đứng yên trong bình chứa sẽ gây áp suất theo mọi phương lên đáy bình, thành bình và vật nhúng trong nó?",
+     "lua_chon": [
+      "Chất lỏng.",
+      "Chỉ chất khí, không phải chất lỏng.",
+      "Chỉ chất rắn.",
+      "Không chất nào gây áp suất theo mọi phương."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đây là đặc điểm riêng của chất lỏng (và cả chất khí, sẽ học ở phần áp suất khí quyển): gây áp suất theo mọi phương, khác hẳn chất rắn."
+    },
+    {
+     "ma_cau": "K08020301001",
+     "loai": "trac_nghiem",
+     "de": "Một bình chứa chất lỏng đứng yên. Chất lỏng trong bình gây ra áp suất lên những bộ phận nào?",
+     "lua_chon": [
+      "Chỉ thành bình chứa.",
+      "Chỉ các vật được nhúng trong lòng chất lỏng, không tác dụng lên đáy và thành bình.",
+      "Đáy bình, thành bình và các vật ở trong lòng nó.",
+      "Chỉ đáy bình chứa."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Chất lỏng đứng yên gây áp suất theo mọi phương nên tác dụng lên mọi bề mặt tiếp xúc với nó: đáy bình, thành bình và vật nhúng trong lòng nó."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00882",
+   "nhom_id": "KNB00387",
+   "thu_tu": 2,
+   "dang": "So sánh, suy luận định tính áp suất chất lỏng theo độ sâu",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020301014",
+     "loai": "trac_nghiem",
+     "de": "Tàu ngầm khi lặn xuống đáy biển sâu phải có vỏ bằng thép rất dày và chắc chắn hơn nhiều so với vỏ tàu đi trên mặt biển. Điều này được giải thích bằng đặc điểm nào của áp suất chất lỏng?",
+     "lua_chon": [
+      "Áp suất nước biển chỉ tác dụng lên đáy tàu, không tác dụng lên vỏ tàu.",
+      "Nước biển ở càng sâu càng nhẹ nên áp suất giảm.",
+      "Áp suất chất lỏng không phụ thuộc vào độ sâu.",
+      "Càng xuống sâu, áp suất do nước biển tác dụng lên vỏ tàu càng lớn."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ở đáy biển sâu, áp suất nước rất lớn do độ sâu lớn, nên vỏ tàu ngầm phải đủ dày và chắc chắn để chịu được áp suất đó."
+    },
+    {
+     "ma_cau": "K08020301007",
+     "loai": "trac_nghiem",
+     "de": "Trong một chất lỏng đứng yên, nếu độ sâu tính từ mặt thoáng đến một điểm càng lớn thì áp suất chất lỏng tại điểm đó thay đổi như thế nào?",
+     "lua_chon": [
+      "Không đổi.",
+      "Càng nhỏ.",
+      "Không xác định được vì còn phụ thuộc hình dạng bình.",
+      "Càng lớn."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Áp suất chất lỏng tỉ lệ thuận với độ sâu h (theo công thức $p = d.h$): độ sâu càng lớn, áp suất càng lớn."
+    },
+    {
+     "ma_cau": "K08020301008",
+     "loai": "trac_nghiem",
+     "de": "Hai điểm M và N nằm trong cùng một khối chất lỏng đứng yên, ở cùng một độ sâu so với mặt thoáng nhưng lệch nhau theo phương ngang. So sánh áp suất tại M và N.",
+     "lua_chon": [
+      "Áp suất tại M bằng áp suất tại N.",
+      "Không so sánh được vì thiếu dữ kiện về hình dạng bình.",
+      "Áp suất tại N lớn hơn tại M.",
+      "Áp suất tại M lớn hơn tại N."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Áp suất chất lỏng tại một điểm chỉ phụ thuộc vào độ sâu h, không phụ thuộc vị trí theo phương ngang. M và N cùng độ sâu nên có áp suất bằng nhau."
+    },
+    {
+     "ma_cau": "K08020301012",
+     "loai": "trac_nghiem",
+     "de": "Người thợ lặn khi lặn xuống càng sâu thì càng cảm thấy tức ngực, khó thở hơn. Nguyên nhân của hiện tượng này là gì?",
+     "lua_chon": [
+      "Vì càng xuống sâu, khối lượng riêng của nước càng giảm.",
+      "Vì càng xuống sâu, áp suất do nước tác dụng lên cơ thể càng lớn.",
+      "Vì càng xuống sâu, nhiệt độ nước càng giảm.",
+      "Vì càng xuống sâu, lượng oxygen hoà tan trong nước càng giảm."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Áp suất nước tăng theo độ sâu; khi lặn sâu, áp suất lớn tác dụng lên lồng ngực gây cảm giác tức ngực, khó thở."
+    },
+    {
+     "ma_cau": "K08020301009",
+     "loai": "trac_nghiem",
+     "de": "Ba áp kế được đặt tại ba điểm 1, 2, 3 nằm trên cùng một mặt phẳng nằm ngang, ở trong lòng một chất lỏng đứng yên (hình vẽ). Kết quả cả ba áp kế đều chỉ cùng một giá trị. Kết quả này thể hiện đặc điểm nào của áp suất chất lỏng?",
+     "lua_chon": [
+      "Tại những điểm có cùng độ sâu trong một chất lỏng đứng yên, áp suất bằng nhau.",
+      "Áp suất chất lỏng không phụ thuộc vào độ sâu.",
+      "Ba áp kế bị hỏng nên chỉ cùng một giá trị.",
+      "Áp suất chất lỏng chỉ phụ thuộc vào vị trí theo phương ngang."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ba điểm cùng nằm trên một mặt phẳng ngang tức là cùng độ sâu; áp kế chỉ cùng giá trị minh hoạ đúng đặc điểm: cùng độ sâu thì áp suất bằng nhau.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K08020301010",
+     "loai": "trac_nghiem",
+     "de": "Một bình chứa nước có ba lỗ nhỏ ở thành bình, tại các độ cao khác nhau so với đáy: lỗ (1) gần mặt nước, lỗ (2) ở giữa, lỗ (3) gần đáy bình (hình vẽ).\nKhi mở đồng thời cả ba lỗ, tia nước phun ra tại lỗ nào mạnh nhất?",
+     "lua_chon": [
+      "Cả ba lỗ phun mạnh như nhau.",
+      "Lỗ (2).",
+      "Lỗ (3).",
+      "Lỗ (1)."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Lỗ (3) có độ sâu tính từ mặt thoáng lớn nhất nên áp suất nước tại đó lớn nhất, khiến tia nước phun ra mạnh nhất.",
+     "co_hinh": true
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00883",
+   "nhom_id": "KNB00387",
+   "thu_tu": 3,
+   "dang": "Đọc hiểu công thức p = d.h (= 10D.h)",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020301020",
+     "loai": "trac_nghiem",
+     "de": "Tại điểm nằm ngay trên mặt thoáng của một chất lỏng đứng yên ($h = 0$), áp suất do chính cột chất lỏng đó gây ra có giá trị bằng bao nhiêu?",
+     "lua_chon": [
+      "Bằng trọng lượng riêng $d$ của chất lỏng.",
+      "Không xác định được.",
+      "Bằng $0$.",
+      "Bằng áp suất khí quyển."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Thay $h = 0$ vào $p = d.h$ ta được $p = 0$. (Đây chỉ là áp suất riêng do cột chất lỏng gây ra, chưa kể áp suất khí quyển tác dụng thêm lên mặt thoáng.)"
+    },
+    {
+     "ma_cau": "K08020301016",
+     "loai": "trac_nghiem",
+     "de": "Trong công thức $p = d.h$, đại lượng $d$ được gọi là gì và có đơn vị nào?",
+     "lua_chon": [
+      "Khối lượng của chất lỏng, đơn vị $\\mathrm{kg}$.",
+      "Khối lượng riêng của chất lỏng, đơn vị $\\mathrm{kg/m^3}$.",
+      "Trọng lượng của chất lỏng, đơn vị $\\mathrm{N}$.",
+      "Trọng lượng riêng của chất lỏng, đơn vị $\\mathrm{N/m^3}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$d$ là trọng lượng riêng của chất lỏng, có đơn vị $\\mathrm{N/m^3}$ — khác với khối lượng riêng $\\mathrm{D}$ ($\\mathrm{kg/m^3}$)."
+    },
+    {
+     "ma_cau": "K08020301015",
+     "loai": "trac_nghiem",
+     "de": "Công thức tính áp suất chất lỏng tại một điểm trong lòng chất lỏng đứng yên là $p = d.h$. Đại lượng $h$ trong công thức được hiểu là gì?",
+     "lua_chon": [
+      "Chiều cao cột chất lỏng tính từ đáy bình lên đến điểm cao nhất của bình.",
+      "Chiều cao của bình chứa chất lỏng.",
+      "Độ sâu tính từ mặt thoáng chất lỏng đến điểm tính áp suất.",
+      "Khoảng cách từ điểm tính áp suất đến đáy bình."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Theo định nghĩa trong công thức $p = d.h$, $h$ là độ sâu tính từ mặt thoáng (bề mặt tự do) của chất lỏng đến điểm đang xét."
+    },
+    {
+     "ma_cau": "K08020301018",
+     "loai": "trac_nghiem",
+     "de": "Biết trọng lượng riêng $d$ của một chất lỏng liên hệ với khối lượng riêng $\\mathrm{D}$ của nó theo công thức $d = 10\\mathrm{D}$. Công thức $p = d.h$ có thể viết lại theo $\\mathrm{D}$ và $h$ như thế nào?",
+     "lua_chon": [
+      "$p = \\mathrm{D}.h/10$",
+      "$p = 10\\mathrm{D}.h$",
+      "$p = \\mathrm{D} + h$",
+      "$p = \\mathrm{D}.h"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Thay $d = 10\\mathrm{D}$ vào công thức $p = d.h$ ta được $p = 10\\mathrm{D}.h$."
+    },
+    {
+     "ma_cau": "K08020301019",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây đúng khi nói về công thức $p = d.h$?",
+     "lua_chon": [
+      "Áp suất $p$ tỉ lệ nghịch với độ sâu $h$.",
+      "Áp suất $p$ chỉ phụ thuộc vào độ sâu $h$, không phụ thuộc vào loại chất lỏng.",
+      "Với cùng một độ sâu $h$, chất lỏng có trọng lượng riêng $d$ càng lớn thì áp suất càng lớn.",
+      "Áp suất $p$ không phụ thuộc vào loại chất lỏng."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Từ $p = d.h$, với $h$ không đổi, $p$ tỉ lệ thuận với $d$ — chất lỏng có trọng lượng riêng lớn hơn thì áp suất tại cùng độ sâu cũng lớn hơn."
+    },
+    {
+     "ma_cau": "K08020301017",
+     "loai": "trac_nghiem",
+     "de": "Đơn vị của áp suất chất lỏng trong hệ đo lường chính thức là gì?",
+     "lua_chon": [
+      "$\\mathrm{N/m^3}$.",
+      "$\\mathrm{kg/m^3}$.",
+      "$\\mathrm{N}$.",
+      "$\\mathrm{N/m^2}$ (Pa)."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Áp suất có đơn vị Pascal (Pa), tương đương $\\mathrm{N/m^2}$. Đơn vị $\\mathrm{N/m^3}$ là của trọng lượng riêng $d$, không phải của áp suất."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00884",
+   "nhom_id": "KNB00387",
+   "thu_tu": 4,
+   "dang": "Bình thông nhau",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020301025",
+     "loai": "trac_nghiem",
+     "de": "Bình thông nhau là bình có đặc điểm gì, và khi chứa cùng một chất lỏng đứng yên thì các mặt thoáng trong các nhánh có đặc điểm gì?",
+     "lua_chon": [
+      "Là bình có từ hai nhánh trở lên nối thông với nhau ở phần đáy; khi chứa cùng một chất lỏng đứng yên, các mặt thoáng ở các nhánh đều ở cùng một độ cao.",
+      "Là bình có các nhánh nối thông ở phần trên gần miệng bình; mặt thoáng luôn bằng miệng bình.",
+      "Là bình chỉ có một nhánh duy nhất; mặt thoáng luôn ở đáy bình.",
+      "Là bình có các nhánh không nối với nhau; mỗi nhánh có mực chất lỏng độc lập."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đây là định nghĩa và tính chất cơ bản của bình thông nhau đã nêu trong các câu trên: các nhánh nối thông ở đáy, mặt thoáng cùng một chất lỏng đứng yên luôn ngang bằng nhau."
+    },
+    {
+     "ma_cau": "K08020301021",
+     "loai": "trac_nghiem",
+     "de": "Bình thông nhau có hai nhánh với tiết diện khác nhau (một nhánh rộng, một nhánh hẹp), chứa cùng một chất lỏng đứng yên (hình vẽ). So sánh độ cao mặt thoáng chất lỏng ở hai nhánh.",
+     "lua_chon": [
+      "Không so sánh được nếu chưa biết tiết diện từng nhánh.",
+      "Mặt thoáng ở nhánh hẹp cao hơn.",
+      "Mặt thoáng ở nhánh rộng cao hơn.",
+      "Hai mặt thoáng ở cùng một độ cao."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Trong bình thông nhau chứa cùng một chất lỏng đứng yên, các mặt thoáng luôn ở cùng một độ cao, không phụ thuộc tiết diện của nhánh.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K08020301023",
+     "loai": "trac_nghiem",
+     "de": "Ở một chiếc ấm trà, thân ấm và vòi ấm thông với nhau ở phần đáy, hoạt động như một bình thông nhau (hình vẽ). Khi ấm chứa nước và đứng yên, mực nước trong vòi ấm so với mực nước trong thân ấm như thế nào?",
+     "lua_chon": [
+      "Mực nước trong vòi luôn thấp hơn mực nước trong thân ấm.",
+      "Không xác định được vì vòi ấm có tiết diện nhỏ hơn thân ấm.",
+      "Mực nước trong vòi luôn cao hơn mực nước trong thân ấm.",
+      "Mực nước trong vòi ngang bằng với mực nước trong thân ấm."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Thân ấm và vòi ấm thông nhau ở đáy, cùng chứa một loại nước đứng yên nên mực nước ở hai nơi luôn ngang bằng nhau — đây là nguyên tắc để quan sát mực nước trong ấm qua vòi.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K08020301024",
+     "loai": "trac_nghiem",
+     "de": "Một bình thông nhau có hai nhánh hình trụ giống hệt nhau, ban đầu chứa nước ở cùng một độ cao (hình vẽ). Nếu đổ thêm một lượng nước vào riêng nhánh bên trái, sau khi nước đứng yên trở lại thì:",
+     "lua_chon": [
+      "Mực nước ở hai nhánh lại ngang bằng nhau như cũ do nước chảy từ nhánh trái sang nhánh phải qua phần đáy thông nhau.",
+      "Chỉ mực nước bên trái thay đổi, mực nước bên phải giữ nguyên.",
+      "Mực nước bên phải sẽ cao hơn mực nước bên trái.",
+      "Mực nước bên trái vẫn cao hơn mực nước bên phải mãi mãi vì nước không thể tự chảy sang."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Vì hai nhánh thông với nhau ở đáy và chứa cùng một chất lỏng, nước sẽ tự chảy qua phần đáy chung cho đến khi mặt thoáng hai nhánh lại ngang bằng nhau.",
+     "co_hinh": true
+    },
+    {
+     "ma_cau": "K08020301022",
+     "loai": "trac_nghiem",
+     "de": "Một bình thông nhau gồm ba nhánh có hình dạng khác nhau (một nhánh hình trụ, một nhánh hình nón, một nhánh có thành cong), chứa cùng một chất lỏng đứng yên [hình]. Nhận xét nào sau đây đúng?",
+     "lua_chon": [
+      "Mặt thoáng ở mỗi nhánh cao hay thấp tuỳ thuộc vào hình dạng của nhánh đó.",
+      "Mặt thoáng ở nhánh hình nón luôn thấp nhất.",
+      "Mặt thoáng ở nhánh hình trụ luôn cao nhất.",
+      "Mặt thoáng ở cả ba nhánh đều ở cùng một độ cao, không phụ thuộc hình dạng nhánh."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Độ cao mặt thoáng trong bình thông nhau chỉ phụ thuộc việc các nhánh có thông với nhau và chứa cùng một chất lỏng, không phụ thuộc hình dạng từng nhánh.",
+     "co_hinh": true
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00885",
+   "nhom_id": "KNB00387",
+   "thu_tu": 5,
+   "dang": "Nhận định đúng/sai tổng hợp",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020301026",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau về áp suất chất lỏng, phát biểu nào SAI?\nA. Áp suất chất lỏng tác dụng lên đáy bình, thành bình và các vật ở trong lòng nó.\nB. Vật nhúng càng sâu trong chất lỏng thì áp suất do chất lỏng tác dụng lên vật càng lớn.\nC. Đơn vị đo áp suất chất lỏng là $\\mathrm{N/m^3}$.\nD. Đơn vị đo áp suất chất lỏng là Pa.\nChọn phương án đúng:",
+     "lua_chon": [
+      "Phát biểu D sai.",
+      "Phát biểu C sai.",
+      "Phát biểu A sai.",
+      "Phát biểu B sai."
+     ],
+     "dap_an": "B",
+     "loi_giai": "A, B, D đều đúng. C sai vì $\\mathrm{N/m^3}$ là đơn vị của trọng lượng riêng d, không phải đơn vị của áp suất (áp suất có đơn vị Pa = $\\mathrm{N/m^2}$)."
+    },
+    {
+     "ma_cau": "K08020301028",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau, phát biểu nào SAI?\nA. Trong bình thông nhau chứa cùng một chất lỏng đứng yên, mặt thoáng ở các nhánh luôn ở cùng một độ cao, không phụ thuộc hình dạng nhánh.\nB. Áp suất chất lỏng tại một điểm chỉ phụ thuộc vào hình dạng của bình chứa, không phụ thuộc độ sâu.\nC. Trong công thức $p = d.h$, $d$ là trọng lượng riêng của chất lỏng.\nD. Chất lỏng đứng yên gây áp suất theo mọi phương lên đáy bình, thành bình và vật trong lòng nó.",
+     "lua_chon": [
+      "Phát biểu A sai.",
+      "Phát biểu B sai.",
+      "Phát biểu D sai.",
+      "Phát biểu C sai."
+     ],
+     "dap_an": "B",
+     "loi_giai": "A, C, D đều đúng. B sai vì áp suất chất lỏng phụ thuộc vào độ sâu $h$ và loại chất lỏng (qua $d$), không phụ thuộc hình dạng bình chứa."
+    },
+    {
+     "ma_cau": "K08020301029",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau về áp suất chất lỏng, phát biểu nào ĐÚNG?\nA. Hai điểm ở cùng độ sâu trong một chất lỏng đứng yên thì luôn có áp suất bằng nhau, dù nằm lệch nhau theo phương ngang.\nB. Đơn vị của áp suất chất lỏng là $\\mathrm{N/m^3}$, giống đơn vị của trọng lượng riêng.\nC. Áp suất chất lỏng tại một điểm chỉ tác dụng theo phương thẳng đứng, hướng từ trên xuống.\nD. Trong bình thông nhau, chất lỏng ở nhánh có tiết diện lớn hơn sẽ có mặt thoáng cao hơn.",
+     "lua_chon": [
+      "Phát biểu B đúng.",
+      "Phát biểu A đúng.",
+      "Phát biểu D đúng.",
+      "Phát biểu C đúng."
+     ],
+     "dap_an": "B",
+     "loi_giai": "B, C, D đều sai (đơn vị áp suất là Pa chứ không phải $\\mathrm{N/m^3}$; áp suất chất lỏng tác dụng theo mọi phương chứ không riêng phương thẳng đứng; mặt thoáng bình thông nhau luôn ngang bằng nhau bất kể tiết diện). Chỉ A đúng."
+    },
+    {
+     "ma_cau": "K08020301027",
+     "loai": "trac_nghiem",
+     "de": "Phát biểu nào sau đây về áp suất chất lỏng là KHÔNG đúng?\nA. Áp suất chất lỏng gây ra tại điểm trên mặt thoáng (do chính cột chất lỏng đó) bằng 0.\nB. Chất lỏng chỉ gây ra áp suất ở đáy bình chứa.\nC. Chất lỏng gây ra áp suất theo mọi phương.\nD. Áp suất chất lỏng tại một điểm phụ thuộc vào loại chất lỏng và độ sâu.\nChọn phương án đúng:",
+     "lua_chon": [
+      "Phát biểu C không đúng.",
+      "Phát biểu B không đúng.",
+      "Phát biểu A không đúng.",
+      "Phát biểu D không đúng."
+     ],
+     "dap_an": "B",
+     "loi_giai": "A, C, D đều đúng. B sai vì chất lỏng gây áp suất lên cả đáy bình, thành bình và vật trong lòng nó, không chỉ riêng đáy bình."
+    },
+    {
+     "ma_cau": "K08020301030",
+     "loai": "trac_nghiem",
+     "de": "Trong các nhận định sau về áp suất chất lỏng, nhận định nào KHÔNG chính xác?\nA. Công thức tính áp suất chất lỏng là p = d.h, với h là độ sâu tính từ mặt thoáng.\nB. Áp suất tại điểm nằm trên mặt thoáng chất lỏng (do chính chất lỏng đó gây ra) bằng 0.\nC. Càng xuống sâu trong lòng chất lỏng, áp suất càng giảm.\nD. Chất lỏng đứng yên gây áp suất lên cả các vật được nhúng chìm trong lòng nó.",
+     "lua_chon": [
+      "Nhận định B không chính xác.",
+      "Nhận định C không chính xác.",
+      "Nhận định A không chính xác.",
+      "Nhận định D không chính xác."
+     ],
+     "dap_an": "B",
+     "loi_giai": "A, B, D đều đúng. C sai vì càng xuống sâu, áp suất chất lỏng càng TĂNG (theo p = d.h), không phải giảm."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00886",
+   "nhom_id": "KNB00388",
+   "thu_tu": 1,
+   "dang": "Tính áp suất p khi biết d (hoặc D) và h",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020302001",
+     "loai": "trac_nghiem",
+     "de": "Một điểm trong lòng nước ở độ sâu $0,8\\ \\mathrm{m}$ so với mặt thoáng. Biết trọng lượng riêng của nước là $10000\\ \\mathrm{N/m^3}$. Tính áp suất do nước gây ra tại điểm đó.",
+     "lua_chon": [
+      "80000 Pa",
+      "800 Pa",
+      "12500 Pa",
+      "8000 Pa"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{p = d.h = 10000 \\times 0,8 = 8000\\ \\mathrm{Pa}.}$"
+    },
+    {
+     "ma_cau": "K08020302002",
+     "loai": "trac_nghiem",
+     "de": "Một điểm trong lòng nước ở độ sâu $1,5\\ \\mathrm{m}$ so với mặt thoáng. Biết trọng lượng riêng của nước là $10000\\ \\mathrm{N/m^3}$. Tính áp suất do nước gây ra tại điểm đó.",
+     "lua_chon": [
+      "1500 Pa",
+      "15000 Pa",
+      "150000 Pa",
+      "6667 Pa"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{p = d.h = 10000 \\times 1,5 = 15000\\ \\mathrm{Pa}.}$"
+    },
+    {
+     "ma_cau": "K08020302005",
+     "loai": "trac_nghiem",
+     "de": "Một điểm trong lòng xăng (trọng lượng riêng 7000 $\\mathrm{N/m^3}$) ở độ sâu 2 $\\mathrm{m}$ so với mặt thoáng. Tính áp suất do xăng gây ra tại điểm đó.",
+     "lua_chon": [
+      "3500 Pa",
+      "1400 Pa",
+      "140000 Pa",
+      "14000 Pa"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{p = d.h = 7000 \\times 2 = 14000 Pa.}$"
+    },
+    {
+     "ma_cau": "K08020302004",
+     "loai": "trac_nghiem",
+     "de": "Một điểm trong lòng thuỷ ngân (trọng lượng riêng $136000\\ \\mathrm{N/m^3}$) ở độ sâu $0,1\\ \\mathrm{m}$ so với mặt thoáng. Tính áp suất do thuỷ ngân gây ra tại điểm đó.",
+     "lua_chon": [
+      "13,6 Pa",
+      "13600 Pa",
+      "1360 Pa",
+      "136000 Pa"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{p = d.h = 136000 \\times 0,1 = 13600\\ \\mathrm{Pa}.}$"
+    },
+    {
+     "ma_cau": "K08020302003",
+     "loai": "trac_nghiem",
+     "de": "Một điểm trong lòng dầu hoả (trọng lượng riêng $8000\\ \\mathrm{N/m^3}$) ở độ sâu $1,2\\ \\mathrm{m}$ so với mặt thoáng. Tính áp suất do dầu hoả gây ra tại điểm đó.",
+     "lua_chon": [
+      "6667 Pa",
+      "960 Pa",
+      "9600 Pa",
+      "96000 Pa"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{p = d.h = 8000 \\times 1,2 = 9600\\ \\mathrm{Pa}.}$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00887",
+   "nhom_id": "KNB00388",
+   "thu_tu": 2,
+   "dang": "Tính độ sâu h khi biết p và d (hoặc D)",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020302006",
+     "loai": "trac_nghiem",
+     "de": "Áp suất do nước gây ra tại một điểm trong lòng nước là $12000$ Pa. Biết trọng lượng riêng của nước là $10000$ N/m$^3$. Tính độ sâu của điểm đó so với mặt thoáng.",
+     "lua_chon": [
+      "1,2 m",
+      "1,5 m",
+      "12 m",
+      "0,12 m"
+     ],
+     "dap_an": "A",
+     "loi_giai": "h = p/d = $12000/10000 = 1,2$ m."
+    },
+    {
+     "ma_cau": "K08020302007",
+     "loai": "trac_nghiem",
+     "de": "Áp suất do dầu hoả gây ra tại một điểm là $6000$ Pa. Biết trọng lượng riêng của dầu hoả là $8000$ N/m$^3$. Tính độ sâu của điểm đó so với mặt thoáng.",
+     "lua_chon": [
+      "7,5 m",
+      "0,075 m",
+      "1,33 m",
+      "0,75 m"
+     ],
+     "dap_an": "D",
+     "loi_giai": "h = p/d = $6000/8000 = 0,75$ m."
+    },
+    {
+     "ma_cau": "K08020302008",
+     "loai": "trac_nghiem",
+     "de": "Áp suất do thuỷ ngân gây ra tại một điểm là $27200$ Pa. Biết trọng lượng riêng của thuỷ ngân là $136000$ N/m$^3$. Tính độ sâu của điểm đó so với mặt thoáng.",
+     "lua_chon": [
+      "0,5 m",
+      "0,02 m",
+      "0,2 m",
+      "2 m"
+     ],
+     "dap_an": "C",
+     "loi_giai": "h = p/d = $27200/136000 = 0,2$ m."
+    },
+    {
+     "ma_cau": "K08020302009",
+     "loai": "trac_nghiem",
+     "de": "Áp suất do xăng gây ra tại một điểm là $21000$ Pa. Biết trọng lượng riêng của xăng là $7000$ N/m$^3$. Tính độ sâu của điểm đó so với mặt thoáng.",
+     "lua_chon": [
+      "30 m",
+      "1,5 m",
+      "3 m",
+      "0,3 m"
+     ],
+     "dap_an": "C",
+     "loi_giai": "h = p/d = $21000/7000 = 3$ m."
+    },
+    {
+     "ma_cau": "K08020302010",
+     "loai": "trac_nghiem",
+     "de": "Áp suất do nước gây ra tại một điểm là 5000 Pa. Biết trọng lượng riêng của nước là 10000 N/m$^3$. Tính độ sâu của điểm đó so với mặt thoáng.",
+     "lua_chon": [
+      "0,05 m",
+      "2 m",
+      "5 m",
+      "0,5 m"
+     ],
+     "dap_an": "D",
+     "loi_giai": "h = p/d = 5000/10000 = 0,5 m."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00888",
+   "nhom_id": "KNB00388",
+   "thu_tu": 3,
+   "dang": "Tính trọng lượng riêng d (hoặc khối lượng riêng D) khi biết p và h",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020302011",
+     "loai": "trac_nghiem",
+     "de": "Tại điểm cách mặt thoáng một chất lỏng 0,9 m, áp suất đo được là 9000 Pa. Tính trọng lượng riêng d của chất lỏng đó.",
+     "lua_chon": [
+      "10000 N/m³",
+      "1000 N/m³",
+      "9900 N/m³",
+      "8100 N/m³"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$$d = p/h = 9000/0,9 = 10000\\ \\mathrm{N/m^3}$$ (đây chính là nước)."
+    },
+    {
+     "ma_cau": "K08020302012",
+     "loai": "trac_nghiem",
+     "de": "Tại điểm cách mặt thoáng một chất lỏng 0,5 m, áp suất đo được là 4000 Pa. Tính khối lượng riêng D của chất lỏng đó (biết d = 10D).",
+     "lua_chon": [
+      "8000 kg/m³",
+      "800 kg/m³",
+      "80 kg/m³",
+      "4500 kg/m³"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$$d = p/h = 4000/0,5 = 8000\\ \\mathrm{N/m^3} \\rightarrow D = d/10 = 800\\ \\mathrm{kg/m^3}$$ (đây chính là dầu hoả)."
+    },
+    {
+     "ma_cau": "K08020302014",
+     "loai": "trac_nghiem",
+     "de": "Tại điểm cách mặt thoáng một chất lỏng 1,5 m, áp suất đo được là 10500 Pa. Tính khối lượng riêng D của chất lỏng đó (biết d = 10D).",
+     "lua_chon": [
+      "700 kg/m³",
+      "70 kg/m³",
+      "1050 kg/m³",
+      "7000 kg/m³"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$$d = p/h = 10500/1,5 = 7000\\ \\mathrm{N/m^3} \\rightarrow D = d/10 = 700\\ \\mathrm{kg/m^3}$$ (đây chính là xăng)."
+    },
+    {
+     "ma_cau": "K08020302015",
+     "loai": "trac_nghiem",
+     "de": "Tại điểm cách mặt thoáng một chất lỏng 0.6 m, áp suất đo được là 6000 Pa. Tính trọng lượng riêng d của chất lỏng đó.",
+     "lua_chon": [
+      "$10000\\, \\mathrm{N/m^3}$",
+      "$6600\\, \\mathrm{N/m^3}$",
+      "$1000\\, \\mathrm{N/m^3}$",
+      "$3600\\, \\mathrm{N/m^3}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$d = p/h = 6000/0.6 = 10000\\, \\mathrm{N/m^3}$ (đây chính là nước)."
+    },
+    {
+     "ma_cau": "K08020302013",
+     "loai": "trac_nghiem",
+     "de": "Tại điểm cách mặt thoáng một chất lỏng 0,05 m, áp suất đo được là 6800 Pa. Tính trọng lượng riêng d của chất lỏng đó.",
+     "lua_chon": [
+      "1700 N/m³",
+      "6800 N/m³",
+      "680 N/m³",
+      "136000 N/m³"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$$d = p/h = 6800/0,05 = 136000\\ \\mathrm{N/m^3}$$ (đây chính là thuỷ ngân)."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00889",
+   "nhom_id": "KNB00388",
+   "thu_tu": 4,
+   "dang": "Tính và so sánh áp lực F = p.S ở đáy bình",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020302020",
+     "loai": "trac_nghiem",
+     "de": "Nước trong một bình hình trụ tác dụng lên đáy bình một áp lực $270\\ \\mathrm{N}$. Biết diện tích đáy bình là $300\\ \\mathrm{cm^2}$ và trọng lượng riêng của nước là $10000\\ \\mathrm{N/m^3}$. Tính chiều cao cột nước trong bình.",
+     "lua_chon": [
+      "$9\\ \\mathrm{m}$",
+      "$0,09\\ \\mathrm{m}$",
+      "$0,9\\ \\mathrm{m}$",
+      "$0,27\\ \\mathrm{m}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi $300\\ \\mathrm{cm^2} = 0,03\\ \\mathrm{m^2}$.\nÁp suất $\\mathrm{p = F/S = 270/0,03 = 9000\\ Pa}$.\nChiều cao cột nước $\\mathrm{h = p/d = 9000/10000 = 0,9\\ m}$."
+    },
+    {
+     "ma_cau": "K08020302018",
+     "loai": "trac_nghiem",
+     "de": "Chất lỏng trong một bình tác dụng lên đáy bình một áp lực $450\\ \\mathrm{N}$. Biết diện tích đáy bình là $0,03\\ \\mathrm{m^2}$. Tính áp suất của chất lỏng tại đáy bình.",
+     "lua_chon": [
+      "$150000\\ \\mathrm{Pa}$",
+      "$1500\\ \\mathrm{Pa}$",
+      "$15000\\ \\mathrm{Pa}$",
+      "$13,5\\ \\mathrm{Pa}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$p = F/S = 450/0,03 = 15000\\ \\mathrm{Pa}$."
+    },
+    {
+     "ma_cau": "K08020302016",
+     "loai": "trac_nghiem",
+     "de": "Một bình hình trụ chứa nước, đáy bình có diện tích $200\\ \\mathrm{cm^2}$, cột nước cao $1\\ \\mathrm{m}$. Biết trọng lượng riêng của nước là $10000\\ \\mathrm{N/m^3}$. Tính áp lực của nước tác dụng lên đáy bình.",
+     "lua_chon": [
+      "$20000\\ \\mathrm{N}$",
+      "$200\\ \\mathrm{N}$",
+      "$100\\ \\mathrm{N}$",
+      "$500\\ \\mathrm{N}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi $200\\ \\mathrm{cm^2} = 0,02\\ \\mathrm{m^2}$.\nÁp suất $p = d.h = 10000 \\times 1 = 10000\\ \\mathrm{Pa}$.\nÁp lực $F = p.S = 10000 \\times 0,02 = 200\\ \\mathrm{N}$."
+    },
+    {
+     "ma_cau": "K08020302019",
+     "loai": "trac_nghiem",
+     "de": "Chất lỏng trong một bình tác dụng lên đáy bình một áp lực $800\\ \\mathrm{N}$, gây ra áp suất $20000\\ \\mathrm{Pa}$ tại đáy. Tính diện tích đáy bình (theo $\\mathrm{cm^2}$).",
+     "lua_chon": [
+      "$400\\ \\mathrm{cm^2}$",
+      "$40\\ \\mathrm{cm^2}$",
+      "$4000\\ \\mathrm{cm^2}$",
+      "$160\\ \\mathrm{cm^2}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{S = F/p = 800/20000 = 0,04\\ m^2 = 400\\ cm^2}$."
+    },
+    {
+     "ma_cau": "K08020302017",
+     "loai": "trac_nghiem",
+     "de": "Hai bình A và B đều chứa dầu hoả (trọng lượng riêng $8000\\ \\mathrm{N/m^3}$), cùng chiều cao cột dầu $1,25\\ \\mathrm{m}$ nhưng diện tích đáy khác nhau: bình A có đáy $150\\ \\mathrm{cm^2}$, bình B có đáy $300\\ \\mathrm{cm^2}$. So sánh áp suất và áp lực của dầu tác dụng lên đáy hai bình.",
+     "lua_chon": [
+      "Cả áp suất và áp lực ở bình B đều lớn gấp đôi ở bình A.",
+      "Áp suất ở hai bình bằng nhau; áp lực ở bình B lớn gấp đôi áp lực ở bình A.",
+      "Áp suất ở bình B lớn gấp đôi áp suất ở bình A; áp lực bằng nhau.",
+      "Áp suất và áp lực ở hai bình đều bằng nhau vì cùng một loại dầu."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Áp suất chỉ phụ thuộc $d$ và $h$, không phụ thuộc diện tích đáy nên $p\\left(A\\right) = p\\left(B\\right) = 8000 \\times 1,25 = 10000\\ \\mathrm{Pa}$.\nÁp lực $F = p.S$ nên $F\\left(A\\right) = 10000 \\times 0,015 = 150\\ \\mathrm{N}$, $F\\left(B\\right) = 10000 \\times 0,03 = 300\\ \\mathrm{N}$ — bình B gấp đôi bình A vì diện tích đáy gấp đôi."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00890",
+   "nhom_id": "KNB00388",
+   "thu_tu": 5,
+   "dang": "Hai lớp chất lỏng không hoà tan chồng lên nhau — tính áp suất tại đáy",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020302021",
+     "loai": "tra_loi_ngan",
+     "de": "Một bình chứa hai lớp chất lỏng không hoà tan vào nhau: lớp dầu hoả (trọng lượng riêng 8000 $\\mathrm{N/m^3}$) ở trên, cao 0,4 m; lớp nước (trọng lượng riêng 10000 $\\mathrm{N/m^3}$) ở dưới, cao 0,6 m. Tính áp suất tại đáy bình.",
+     "dap_an": "9200",
+     "loi_giai": "Áp suất tại đáy bằng tổng áp suất do từng lớp gây ra: $\\mathrm{p = d_1.h_1 + d_2.h_2 = 8000 \\times 0,4 + 10000 \\times 0,6 =}\r\n$\\mathrm{3200 + 6000 = 9200 Pa.}$"
+    },
+    {
+     "ma_cau": "K08020302023",
+     "loai": "tra_loi_ngan",
+     "de": "Một bình chứa hai lớp chất lỏng không hoà tan vào nhau: lớp dầu hoả (trọng lượng riêng 8000 $\\mathrm{N/m^3}$) ở trên, cao 0,25 m; lớp thuỷ ngân (trọng lượng riêng 136000 $\\mathrm{N/m^3}$) ở dưới, cao 0,05 m. Tính áp suất tại đáy bình.",
+     "dap_an": "8800",
+     "loi_giai": "Áp suất tại đáy bằng tổng áp suất do từng lớp gây ra: $\\mathrm{p = d_1.h_1 + d_2.h_2 = 8000 \\times 0,25 + 136000 \\times 0,05}\n$\\mathrm{= 2000 + 6800 = 8800 Pa.}"
+    },
+    {
+     "ma_cau": "K08020302024",
+     "loai": "tra_loi_ngan",
+     "de": "Một bình chứa hai lớp chất lỏng không hoà tan vào nhau: lớp xăng (trọng lượng riêng 7000 $\\mathrm{N/m^3}$) ở trên, cao 0,2 m; lớp dầu hoả (trọng lượng riêng 8000 $\\mathrm{N/m^3}$) ở dưới, cao 0,5 m. Tính áp suất tại đáy bình.",
+     "dap_an": "5400",
+     "loi_giai": "Áp suất tại đáy bằng tổng áp suất do từng lớp gây ra: $\\mathrm{p = d_1.h_1 + d_2.h_2 = 7000 \\times 0,2 + 8000 \\times 0,5 =}\n$\\mathrm{1400 + 4000 = 5400 Pa.}"
+    },
+    {
+     "ma_cau": "K08020302022",
+     "loai": "tra_loi_ngan",
+     "de": "Một bình chứa hai lớp chất lỏng không hoà tan vào nhau: lớp xăng (trọng lượng riêng 7000 $\\mathrm{N/m^3}$) ở trên, cao 0,3 m; lớp nước (trọng lượng riêng 10000 $\\mathrm{N/m^3}$) ở dưới, cao 0,5 m. Tính áp suất tại đáy bình.",
+     "dap_an": "7100",
+     "loi_giai": "Áp suất tại đáy bằng tổng áp suất do từng lớp gây ra: $\\mathrm{p = d_1.h_1 + d_2.h_2 = 7000 \\times 0,3 + 10000 \\times 0,5 =}\n$\\mathrm{2100 + 5000 = 7100 Pa.}"
+    },
+    {
+     "ma_cau": "K08020302025",
+     "loai": "tra_loi_ngan",
+     "de": "Một bình chứa hai lớp chất lỏng không hoà tan vào nhau: lớp nước (trọng lượng riêng 10000 $\\mathrm{N/m^3}$) ở trên, cao 0,3 m; lớp thuỷ ngân (trọng lượng riêng 136000 $\\mathrm{N/m^3}$) ở dưới, cao 0,05 m. Tính áp suất tại đáy bình.",
+     "dap_an": "9800",
+     "loi_giai": "Áp suất tại đáy bằng tổng áp suất do từng lớp gây ra: $\\mathrm{p = d_1.h_1 + d_2.h_2 = 10000 \\times 0,3 + 136000 \\times 0,05}\n$\\mathrm{= 3000 + 6800 = 9800 Pa.}"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00891",
+   "nhom_id": "KNB00388",
+   "thu_tu": 6,
+   "dang": "Biết áp suất tổng và một lớp — tính ngược chiều cao lớp còn lại",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020302027",
+     "loai": "tra_loi_ngan",
+     "de": "Một bình chứa hai lớp chất lỏng không hoà tan: lớp xăng (trọng lượng riêng $7000\\ \\mathrm{N/m^3}$) ở trên, cao $0,3\\ \\mathrm{m}$; lớp nước (trọng lượng riêng $10000\\ \\mathrm{N/m^3}$) ở dưới. Áp suất đo được tại đáy bình là $12100\\ \\mathrm{Pa}$. Tính chiều cao lớp nước.",
+     "dap_an": "1",
+     "loi_giai": "Áp suất do lớp xăng gây ra: $p_1 = 7000 \\times 0,3 = 2100\\ \\mathrm{Pa}$.\nÁp suất do lớp nước gây ra: $p_2 = p - p_1 = 12100 - 2100 = 10000\\ \\mathrm{Pa}$.\nChiều cao lớp nước: $h_2 = p_2/d_2 = 10000/10000 = 1\\ \\mathrm{m}$."
+    },
+    {
+     "ma_cau": "K08020302030",
+     "loai": "tra_loi_ngan",
+     "de": "Một bình chứa hai lớp chất lỏng không hoà tan: lớp nước (trọng lượng riêng $10000\\ \\mathrm{N/m^3}$) ở trên, cao $0,2\\ \\mathrm{m}$; lớp thuỷ ngân (trọng lượng riêng $136000\\ \\mathrm{N/m^3}$) ở dưới. Áp suất đo được tại đáy bình là $10160\\ \\mathrm{Pa}$. Tính chiều cao lớp thuỷ ngân.",
+     "dap_an": "0.06",
+     "loi_giai": "Áp suất do lớp nước gây ra: $p_1 = 10000 \\times 0,2 = 2000\\ \\mathrm{Pa}$.\nÁp suất do lớp thuỷ ngân gây ra: $p_2 = p - p_1 = 10160 - 2000 = 8160\\ \\mathrm{Pa}$.\nChiều cao lớp thuỷ ngân: $h_2 = p_2/d_2 = 8160/136000 = 0,06\\ \\mathrm{m}$."
+    },
+    {
+     "ma_cau": "K08020302029",
+     "loai": "tra_loi_ngan",
+     "de": "Một bình chứa hai lớp chất lỏng không hoà tan: lớp dầu hoả (trọng lượng riêng $8000\\ \\mathrm{N/m^3}$) ở trên, cao $0,3\\ \\mathrm{m}$; lớp nước (trọng lượng riêng $10000\\ \\mathrm{N/m^3}$) ở dưới. Áp suất đo được tại đáy bình là $9400\\ \\mathrm{Pa}$. Tính chiều cao lớp nước.",
+     "dap_an": "0.7",
+     "loi_giai": "Áp suất do lớp dầu hoả gây ra: $p_1 = 8000 \\times 0,3 = 2400\\ \\mathrm{Pa}$.\nÁp suất do lớp nước gây ra: $p_2 = p - p_1 = 9400 - 2400 = 7000\\ \\mathrm{Pa}$.\nChiều cao lớp nước: $h_2 = p_2/d_2 = 7000/10000 = 0,7\\ \\mathrm{m}$."
+    },
+    {
+     "ma_cau": "K08020302028",
+     "loai": "tra_loi_ngan",
+     "de": "Một bình chứa hai lớp chất lỏng không hoà tan: lớp xăng (trọng lượng riêng $7000\\ \\mathrm{N/m^3}$) ở trên, cao $0,4\\ \\mathrm{m}$; lớp dầu hoả (trọng lượng riêng $8000\\ \\mathrm{N/m^3}$) ở dưới. Áp suất đo được tại đáy bình là $6800\\ \\mathrm{Pa}$. Tính chiều cao lớp dầu hoả.",
+     "dap_an": "0.5",
+     "loi_giai": "Áp suất do lớp xăng gây ra: $p_1 = 7000 \\times 0,4 = 2800\\ \\mathrm{Pa}$.\nÁp suất do lớp dầu hoả gây ra: $p_2 = p - p_1 = 6800 - 2800 = 4000\\ \\mathrm{Pa}$.\nChiều cao lớp dầu hoả: $h_2 = p_2/d_2 = 4000/8000 = 0,5\\ \\mathrm{m}$."
+    },
+    {
+     "ma_cau": "K08020302026",
+     "loai": "tra_loi_ngan",
+     "de": "Một bình chứa hai lớp chất lỏng không hoà tan: lớp dầu hoả (trọng lượng riêng $8000\\ \\mathrm{N/m^3}$) ở trên, cao $0,2\\ \\mathrm{m}$; lớp thuỷ ngân (trọng lượng riêng $136000\\ \\mathrm{N/m^3}$) ở dưới. Áp suất đo được tại đáy bình là $15200\\ \\mathrm{Pa}$. Tính chiều cao lớp thuỷ ngân.",
+     "dap_an": "0.1",
+     "loi_giai": "Áp suất do lớp dầu hoả gây ra: $p_1 = 8000 \\times 0,2 = 1600\\ \\mathrm{Pa}$.\nÁp suất do lớp thuỷ ngân gây ra: $p_2 = p - p_1 = 15200 - 1600 = 13600\\ \\mathrm{Pa}$.\nChiều cao lớp thuỷ ngân: $h_2 = p_2/d_2 = 13600/136000 = 0,1\\ \\mathrm{m}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00892",
+   "nhom_id": "KNB00388",
+   "thu_tu": 7,
+   "dang": "Rót chất lỏng sang bình có tiết diện khác — thể tích không đổi, tính áp suất mới",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020302031",
+     "loai": "tu_luan",
+     "de": "Một bình hình trụ tiết diện đáy $300 \\ \\mathrm{cm^2}$ đang chứa nước với chiều cao cột chất lỏng $40 \\ \\mathrm{cm}$. Rót toàn bộ lượng nước này sang một bình hình trụ khác có tiết diện đáy $150 \\ \\mathrm{cm^2}$. Biết trọng lượng riêng của nước là $10000 \\ \\mathrm{N/m^3}$. Tính áp suất của nước tại đáy bình mới.",
+     "dap_an": "8000",
+     "loi_giai": "Thể tích chất lỏng không đổi khi rót sang bình khác: $\\mathrm{S_1.h_1 = S_2.h_2 \\Rightarrow h_2 = S_1.h_1/S_2 = (300 \\times 40)/150 = 80 \\ \\mathrm{cm} = 0,8 \\ \\mathrm{m}}$.\nÁp suất tại đáy bình mới: $\\mathrm{p = d.h_2 = 10000 \\times 0,8 = 8000 \\ Pa}$."
+    },
+    {
+     "ma_cau": "K08020302035",
+     "loai": "tu_luan",
+     "de": "Một bình hình trụ tiết diện đáy $400 \\ \\mathrm{cm^2}$ đang chứa dầu hoả với chiều cao cột chất lỏng $27 \\ \\mathrm{cm}$. Rót toàn bộ lượng dầu hoả này sang một bình hình trụ khác có tiết diện đáy $180 \\ \\mathrm{cm^2}$. Biết trọng lượng riêng của dầu hoả là $8000 \\ \\mathrm{N/m^3}$. Tính áp suất của dầu hoả tại đáy bình mới.",
+     "dap_an": "4800",
+     "loi_giai": "Thể tích chất lỏng không đổi khi rót sang bình khác: $\\mathrm{S_1.h_1 = S_2.h_2 \\Rightarrow h_2 = S_1.h_1/S_2 = (400 \\times 27)/180 = 60 \\ \\mathrm{cm} = 0,6 \\ \\mathrm{m}}$.\nÁp suất tại đáy bình mới: $\\mathrm{p = d.h_2 = 8000 \\times 0,6 = 4800 \\ Pa}$."
+    },
+    {
+     "ma_cau": "K08020302034",
+     "loai": "tu_luan",
+     "de": "Một bình hình trụ tiết diện đáy $180 \\ \\mathrm{cm^2}$ đang chứa xăng với chiều cao cột chất lỏng $50 \\ \\mathrm{cm}$. Rót toàn bộ lượng xăng này sang một bình hình trụ khác có tiết diện đáy $300 \\ \\mathrm{cm^2}$. Biết trọng lượng riêng của xăng là $7000 \\ \\mathrm{N/m^3}$. Tính áp suất của xăng tại đáy bình mới.",
+     "dap_an": "2100",
+     "loi_giai": "Thể tích chất lỏng không đổi khi rót sang bình khác: $\\mathrm{S_1.h_1 = S_2.h_2 \\Rightarrow h_2 = S_1.h_1/S_2 = (180 \\times 50)/300 = 30 \\ \\mathrm{cm} = 0,3 \\ \\mathrm{m}}$.\nÁp suất tại đáy bình mới: $\\mathrm{p = d.h_2 = 7000 \\times 0,3 = 2100 \\ Pa}$."
+    },
+    {
+     "ma_cau": "K08020302033",
+     "loai": "tu_luan",
+     "de": "Một bình hình trụ tiết diện đáy $250 \\ \\mathrm{cm^2}$ đang chứa nước với chiều cao cột chất lỏng $48 \\ \\mathrm{cm}$. Rót toàn bộ lượng nước này sang một bình hình trụ khác có tiết diện đáy $200 \\ \\mathrm{cm^2}$. Biết trọng lượng riêng của nước là $10000 \\ \\mathrm{N/m^3}$. Tính áp suất của nước tại đáy bình mới.",
+     "dap_an": "6000",
+     "loi_giai": "Thể tích chất lỏng không đổi khi rót sang bình khác: $\\mathrm{S_1.h_1 = S_2.h_2 \\Rightarrow h_2 = S_1.h_1/S_2 = (250 \\times 48)/200 = 60 \\ \\mathrm{cm} = 0,6 \\ \\mathrm{m}}$.\nÁp suất tại đáy bình mới: $\\mathrm{p = d.h_2 = 10000 \\times 0,6 = 6000 \\ Pa}$."
+    },
+    {
+     "ma_cau": "K08020302032",
+     "loai": "tu_luan",
+     "de": "Một bình hình trụ tiết diện đáy $200 \\ \\mathrm{cm^2}$ đang chứa dầu hoả với chiều cao cột chất lỏng $60 \\ \\mathrm{cm}$. Rót toàn bộ lượng dầu hoả này sang một bình hình trụ khác có tiết diện đáy $400 \\ \\mathrm{cm^2}$. Biết trọng lượng riêng của dầu hoả là $8000 \\ \\mathrm{N/m^3}$. Tính áp suất của dầu hoả tại đáy bình mới.",
+     "dap_an": "2400",
+     "loi_giai": "Thể tích chất lỏng không đổi khi rót sang bình khác: $\\mathrm{S_1.h_1 = S_2.h_2 \\Rightarrow h_2 = S_1.h_1/S_2 = (200 \\times 60)/400 = 30 \\ \\mathrm{cm} = 0,3 \\ \\mathrm{m}}$.\nÁp suất tại đáy bình mới: $\\mathrm{p = d.h_2 = 8000 \\times 0,3 = 2400 \\ Pa}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00893",
+   "nhom_id": "KNB00388",
+   "thu_tu": 8,
+   "dang": "Hai lớp chất lỏng kết hợp áp lực — tính áp lực tại đáy bình",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020302037",
+     "loai": "tu_luan",
+     "de": "Một bình hình trụ tiết diện đáy $200\\ \\mathrm{cm^2}$ chứa hai lớp chất lỏng không hoà tan: lớp xăng (trọng lượng riêng $7000\\ \\mathrm{N/m^3}$) ở trên, cao $0,2\\ \\mathrm{m}$; lớp dầu hoả (trọng lượng riêng $8000\\ \\mathrm{N/m^3}$) ở dưới, cao $0,4\\ \\mathrm{m}$. Tính áp lực của chất lỏng tác dụng lên đáy bình.",
+     "dap_an": "92",
+     "loi_giai": "Áp suất tại đáy: $p = d_1h_1 + d_2h_2 = 7000 \\times 0,2 + 8000 \\times 0,4 = 1400 + 3200 = 4600\\ \\mathrm{Pa}$.\nÁp lực tại đáy:\n$F = p.S = 4600 \\times 0,02 = 92\\ \\mathrm{N}$."
+    },
+    {
+     "ma_cau": "K08020302036",
+     "loai": "tu_luan",
+     "de": "Một bình hình trụ tiết diện đáy $250\\ \\mathrm{cm^2}$ chứa hai lớp chất lỏng không hoà tan: lớp dầu hoả (trọng lượng riêng $8000\\ \\mathrm{N/m^3}$) ở trên, cao $0,3\\ \\mathrm{m}$; lớp nước (trọng lượng riêng $10000\\ \\mathrm{N/m^3}$) ở dưới, cao $0,5\\ \\mathrm{m}$. Tính áp lực của chất lỏng tác dụng lên đáy bình.",
+     "dap_an": "185",
+     "loi_giai": "Áp suất tại đáy: $p = d_1h_1 + d_2h_2 = 8000 \\times 0,3 + 10000 \\times 0,5 = 2400 + 5000 = 7400\\ \\mathrm{Pa}$.\nÁp lực tại đáy:\n$F = p.S = 7400 \\times 0,025 = 185\\ \\mathrm{N}$."
+    },
+    {
+     "ma_cau": "K08020302040",
+     "loai": "tu_luan",
+     "de": "Một bình hình trụ tiết diện đáy $300\\ \\mathrm{cm^2}$ chứa hai lớp chất lỏng không hoà tan: lớp xăng (trọng lượng riêng $7000\\ \\mathrm{N/m^3}$) ở trên, cao $0,3\\ \\mathrm{m}$; lớp nước (trọng lượng riêng $10000\\ \\mathrm{N/m^3}$) ở dưới, cao $0,6\\ \\mathrm{m}$. Tính áp lực của chất lỏng tác dụng lên đáy bình.",
+     "dap_an": "243",
+     "loi_giai": "Áp suất tại đáy: $p = d_1h_1 + d_2h_2 = 7000 \\times 0,3 + 10000 \\times 0,6 = 2100 + 6000 = 8100\\ \\mathrm{Pa}$.\nÁp lực tại đáy:\n$F = p.S = 8100 \\times 0,03 = 243\\ \\mathrm{N}$."
+    },
+    {
+     "ma_cau": "K08020302038",
+     "loai": "tu_luan",
+     "de": "Một bình hình trụ tiết diện đáy $100\\ \\mathrm{cm^2}$ chứa hai lớp chất lỏng không hoà tan: lớp nước (trọng lượng riêng $10000\\ \\mathrm{N/m^3}$) ở trên, cao $0,25\\ \\mathrm{m}$; lớp thuỷ ngân (trọng lượng riêng $136000\\ \\mathrm{N/m^3}$) ở dưới, cao $0,05\\ \\mathrm{m}$. Tính áp lực của chất lỏng tác dụng lên đáy bình.",
+     "dap_an": "93",
+     "loi_giai": "Áp suất tại đáy: $p = d_1h_1 + d_2h_2 = 10000 \\times 0,25 + 136000 \\times 0,05 = 2500 + 6800 = 9300\\ \\mathrm{Pa}$.\nÁp lực tại đáy:\n$F = p.S = 9300 \\times 0,01 = 93\\ \\mathrm{N}$."
+    },
+    {
+     "ma_cau": "K08020302039",
+     "loai": "tu_luan",
+     "de": "Một bình hình trụ tiết diện đáy $200\\ \\mathrm{cm^2}$ chứa hai lớp chất lỏng không hoà tan: lớp dầu hoả (trọng lượng riêng $8000\\ \\mathrm{N/m^3}$) ở trên, cao $0,4\\ \\mathrm{m}$; lớp thuỷ ngân (trọng lượng riêng $136000\\ \\mathrm{N/m^3}$) ở dưới, cao $0,025\\ \\mathrm{m}$. Tính áp lực của chất lỏng tác dụng lên đáy bình.",
+     "dap_an": "132",
+     "loi_giai": "Áp suất tại đáy: $p = d_1h_1 + d_2h_2 = 8000 \\times 0,4 + 136000 \\times 0,025 = 3200 + 3400 = 6600\\ \\mathrm{Pa}$.\nÁp lực tại đáy:\n$F = p.S = 6600 \\times 0,02 = 132\\ \\mathrm{N}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00894",
+   "nhom_id": "KNB00389",
+   "thu_tu": 1,
+   "dang": "Nguyên nhân tồn tại áp suất khí quyển",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020303006",
+     "loai": "trac_nghiem",
+     "de": "Nguyên nhân sinh ra áp suất khí quyển có điểm gì tương đồng với nguyên nhân sinh ra áp suất chất lỏng?",
+     "lua_chon": [
+      "Cả hai đều do trọng lượng của chất (không khí hoặc chất lỏng) bao quanh/tại vị trí đang xét gây ra.",
+      "Cả hai đều chỉ xuất hiện khi có sự chuyển động của chất.",
+      "Không có điểm tương đồng nào vì không khí và chất lỏng là hai loại chất hoàn toàn khác nhau.",
+      "Cả hai đều do nhiệt độ môi trường quyết định, không liên quan đến trọng lượng."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Áp suất chất lỏng do trọng lượng cột chất lỏng gây ra; áp suất khí quyển cũng do trọng lượng của lớp không khí gây ra — cùng chung nguyên lý."
+    },
+    {
+     "ma_cau": "K08020303005",
+     "loai": "trac_nghiem",
+     "de": "Áp suất khí quyển tồn tại ở đâu?",
+     "lua_chon": [
+      "Chỉ tồn tại ở những nơi có gió mạnh.",
+      "Chỉ tồn tại ở các vùng biển và đại dương.",
+      "Ở khắp mọi nơi trên Trái Đất, tại mọi vị trí có không khí bao quanh.",
+      "Chỉ tồn tại vào ban ngày khi có ánh nắng Mặt Trời."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Vì khí quyển bao phủ toàn bộ Trái Đất nên áp suất khí quyển tồn tại ở khắp mọi nơi có không khí, không phân biệt vị trí hay thời điểm."
+    },
+    {
+     "ma_cau": "K08020303003",
+     "loai": "trac_nghiem",
+     "de": "Không khí có trọng lượng hay không, và điều này liên quan thế nào đến áp suất khí quyển?",
+     "lua_chon": [
+      "Không khí có trọng lượng nhưng không không liên quan đến áp suất khí quyển.",
+      "Không khí không có trọng lượng nên áp suất khí quyển chỉ là một khái niệm quy ước.",
+      "Không khí chỉ có trọng lượng ở gần mặt đất nên chỉ gây áp suất ở đó.",
+      "Không khí có trọng lượng; chính trọng lượng của lớp không khí bao quanh Trái Đất là nguyên nhân gây ra áp suất khí quyển."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Không khí có trọng lượng (dù nhỏ hơn nhiều so với chất lỏng, chất rắn); trọng lượng của toàn bộ lớp khí quyển chính là nguyên nhân gây áp suất khí quyển."
+    },
+    {
+     "ma_cau": "K08020303001",
+     "loai": "trac_nghiem",
+     "de": "Vì sao Trái Đất và mọi vật trên đó luôn chịu tác dụng của áp suất khí quyển?",
+     "lua_chon": [
+      "Vì Trái Đất tự quay quanh trục nên sinh ra ra áp suất khí quyển.",
+      "Vì nhiệt độ khí quyển luôn cao hơn nhiệt độ mặt đất nên sinh ra ra áp suất.",
+      "Vì không khí chuyển động thành gió nên tạo ra áp suất.",
+      "Vì Trái Đất được bao bọc bởi một lớp không khí dày (khí quyển), lớp không khí này có trọng lượng nên gây áp suất lên mọi vật."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Áp suất khí quyển sinh ra vì không khí có trọng lượng; lớp không khí bao quanh Trái Đất đè lên mọi vật trên bề mặt Trái Đất."
+    },
+    {
+     "ma_cau": "K08020303002",
+     "loai": "trac_nghiem",
+     "de": "Áp suất khí quyển được định nghĩa như thế nào?",
+     "lua_chon": [
+      "Là áp suất chỉ xuất hiện ở những nơi có gió.",
+      "Là áp suất do lớp không khí bao quanh Trái Đất tác dụng lên mọi vật trên Trái Đất.",
+      "Là áp suất do Mặt Trời tác dụng lên khí quyển.",
+      "Là áp suất do chất lỏng trong khí quyển gây ra."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đây là định nghĩa cơ bản: áp suất khí quyển là áp suất của lớp không khí bao quanh Trái Đất, tác dụng lên mọi vật."
+    },
+    {
+     "ma_cau": "K08020303004",
+     "loai": "trac_nghiem",
+     "de": "Nếu giả sử Trái Đất không có khí quyển bao quanh thì áp suất khí quyển tại mặt đất sẽ như thế nào?",
+     "lua_chon": [
+      "Vẫn giữ nguyên như hiện tại.",
+      "Sẽ bằng 0 vì không còn lớp không khí nào gây áp suất.",
+      "Sẽ chuyển thành áp suất chất lỏng.",
+      "Sẽ tăng lên rất lớn."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Áp suất khí quyển do lớp không khí gây ra; nếu không có khí quyển thì không còn nguyên nhân sinh ra áp suất này, áp suất khí quyển bằng 0."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00895",
+   "nhom_id": "KNB00389",
+   "thu_tu": 2,
+   "dang": "Đặc điểm áp suất khí quyển (và chất khí nói chung) tác dụng theo mọi phương",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020303011",
+     "loai": "trac_nghiem",
+     "de": "Con người sống trong khí quyển chịu áp suất khí quyển tác dụng lên cơ thể như thế nào?",
+     "lua_chon": [
+      "Chỉ tác dụng lên phần đầu, nơi tiếp xúc cao nhất với khí quyển.",
+      "Chỉ tác dụng theo phương thẳng đứng, từ trên xuống.",
+      "Chỉ tác dụng lên bàn chân, nơi tiếp xúc với mặt đất.",
+      "Theo mọi phương, từ mọi phía của cơ thể."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cơ thể con người chìm trong khí quyển nên chịu áp suất khí quyển tác dụng đều từ mọi phía, không riêng bộ phận nào."
+    },
+    {
+     "ma_cau": "K08020303012",
+     "loai": "trac_nghiem",
+     "de": "Đặc điểm 'tác dụng theo mọi phương' của áp suất khí quyển giống với đặc điểm nào đã học của áp suất chất lỏng?",
+     "lua_chon": [
+      "Đây là đặc điểm riêng của khí quyển, không giống bất kỳ đặc điểm nào của chất lỏng.",
+      "Giống đặc điểm áp suất chất lỏng chỉ tác dụng lên đáy bình.",
+      "Giống đặc điểm áp suất chất rắn truyền theo một phương xác định.",
+      "Giống đặc điểm chất lỏng đứng yên gây áp suất lên đáy bình, thành bình và vật trong lòng nó, theo mọi phương."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cả chất khí và chất lỏng đều gây áp suất theo mọi phương lên vật tiếp xúc \n— đây là đặc điểm chung của các chất ở trạng thái lỏng và khí, khác với chất rắn."
+    },
+    {
+     "ma_cau": "K08020303007",
+     "loai": "trac_nghiem",
+     "de": "Áp suất khí quyển tác dụng lên một vật theo phương nào?",
+     "lua_chon": [
+      "Theo mọi phương.",
+      "Chỉ tác dụng lên mặt trên của vật.",
+      "Chỉ theo phương thẳng đứng, từ trên xuống.",
+      "Chỉ theo phương nằm ngang."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Giống áp suất chất lỏng, áp suất khí quyển (và áp suất chất khí nói chung) tác dụng theo mọi phương lên vật."
+    },
+    {
+     "ma_cau": "K08020303014",
+     "loai": "trac_nghiem",
+     "de": "Vì sao khi bơm hơi vào một quả bóng bàn bị móp (chưa bị thủng), quả bóng có thể phồng trở lại hình cầu ban đầu?",
+     "lua_chon": [
+      "Vì áp suất khí quyển bên ngoài đẩy quả bóng phồng lên.",
+      "Vì nhiệt độ không khí bên trong quả bóng luôn cao hơn bên ngoài.",
+      "Vì áp suất không khí bên trong quả bóng tác dụng đều theo mọi phương lên thành bóng, đẩy phần bị móp trở về hình dạng ban đầu.",
+      "Vì thành quả bóng tự co giãn, không liên quan đến áp suất không khí bên trong."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Không khí bên trong quả bóng tác dụng áp suất đều mọi phương lên thành bóng từ bên trong, đẩy phần bị móp phồng trở lại."
+    },
+    {
+     "ma_cau": "K08020303009",
+     "loai": "trac_nghiem",
+     "de": "Các bọt bong bóng xà phòng thường có dạng gần như hình cầu. Đặc điểm nào của áp suất chất khí giải thích hiện tượng này?",
+     "lua_chon": [
+      "Không khí bị giữ bên trong bọt tác dụng áp suất như nhau theo mọi hướng.",
+      "Áp suất bên trong bọt luôn thấp hơn áp suất khí quyển bên ngoài.",
+      "Không khí bên trong bọt không tác dụng áp suất lên màng bong bóng.",
+      "Hình cầu là hình duy nhất mà xà phòng có thể tạo thành, không liên quan đến áp suất."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Vì áp suất khí bên trong tác dụng đều mọi hướng lên màng bọt, màng bọt căng đều ra mọi phía nên bọt có dạng gần như hình cầu."
+    },
+    {
+     "ma_cau": "K08020303013",
+     "loai": "trac_nghiem",
+     "de": "Lốp xe đạp sau khi được bơm căng, không khí bên trong lốp tác dụng áp suất lên thành lốp như thế nào?",
+     "lua_chon": [
+      "Chỉ tác dụng ở phần tiếp xúc với mặt đường.",
+      "Tác dụng đều lên khắp thành lốp, theo mọi phương, giúp lốp căng tròn đều.",
+      "Không tác dụng áp suất vì lốp là vật bao kín bằng cao su.",
+      "Chỉ tác dụng ở phần van bơm hơi."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Không khí nén trong lốp tác dụng áp suất đều theo mọi phương lên thành lốp, giữ cho lốp căng đều khắp mọi phía."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00896",
+   "nhom_id": "KNB00389",
+   "thu_tu": 3,
+   "dang": "Sự thay đổi áp suất khí quyển theo độ cao, độ sâu địa lý",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020303018",
+     "loai": "trac_nghiem",
+     "de": "Tại đỉnh núi cao, áp suất khí quyển so với ở chân núi như thế nào?",
+     "lua_chon": [
+      "Nhỏ hơn áp suất khí quyển ở chân núi.",
+      "Không thể so sánh vì áp suất khí quyển ở mọi nơi trên Trái Đất đều như nhau.",
+      "Bằng áp suất khí quyển ở chân núi.",
+      "Lớn hơn áp suất khí quyển ở chân núi."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đỉnh núi ở độ cao lớn hơn chân núi nên áp suất khí quyển tại đỉnh núi nhỏ hơn."
+    },
+    {
+     "ma_cau": "K08020303015",
+     "loai": "trac_nghiem",
+     "de": "Càng lên cao, áp suất khí quyển thay đổi như thế nào?",
+     "lua_chon": [
+      "Không đổi.",
+      "Tăng rồi giảm tuỳ theo độ cao.",
+      "Càng giảm.",
+      "Càng tăng."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đây là đặc điểm quan trọng: áp suất khí quyển giảm dần khi độ cao tăng."
+    },
+    {
+     "ma_cau": "K08020303017",
+     "loai": "trac_nghiem",
+     "de": "Khi máy bay vừa cất cánh lên cao, hành khách thường cảm thấy ù tai, khó chịu. Hiện tượng này liên quan đến điều gì?",
+     "lua_chon": [
+      "Do nhiệt độ trong khoang máy bay quá thấp.",
+      "Sự chênh lệch giữa áp suất khí quyển bên ngoài (đang giảm nhanh khi lên cao) và áp suất không khí bên trong cơ thể.",
+      "Do máy bay bay quá nhanh làm tai bị ảnh hưởng bởi tốc độ di chuyển.",
+      "Do độ ẩm không khí trong khoang máy bay quá cao."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khi lên cao nhanh, áp suất khí quyển bên ngoài giảm nhanh trong khi áp suất trong tai chưa kịp cân bằng, gây cảm giác ù tai, khó chịu."
+    },
+    {
+     "ma_cau": "K08020303016",
+     "loai": "trac_nghiem",
+     "de": "Vì sao càng lên cao thì áp suất khí quyển càng giảm?",
+     "lua_chon": [
+      "Vì càng lên cao, lực hút của Trái Đất lên không khí càng mạnh hơn.",
+      "Vì càng lên cao, không khí càng đặc hơn nên áp suất giảm.",
+      "Vì càng lên cao, lớp không khí còn lại phía trên điểm đang xét càng mỏng hơn, nên trọng lượng cột không khí đè lên điểm đó càng nhỏ.",
+      "Vì càng lên cao, nhiệt độ càng giảm nên áp suất tự động giảm theo, không liên quan đến lớp không khí."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Áp suất khí quyển tại một điểm do trọng lượng cột không khí phía trên điểm đó gây ra; càng lên cao, cột không khí phía trên càng ngắn nên áp suất càng giảm."
+    },
+    {
+     "ma_cau": "K08020303020",
+     "loai": "trac_nghiem",
+     "de": "Nhà du hành vũ trụ khi ra ngoài khoảng không vũ trụ (nơi gần như không có không khí) phải mặc bộ trang phục đặc biệt có tạo áp suất bên trong. Điều này nhằm mục đích gì?",
+     "lua_chon": [
+      "Chỉ để chống bức xạ từ Mặt Trời, không liên quan đến áp suất.",
+      "Vì ngoài vũ trụ áp suất khí quyển lớn hơn nhiều so với Trái Đất nên cần bộ đồ bảo vệ.",
+      "Chỉ để giữ ấm cho cơ thể trong môi trường lạnh, không liên quan đến áp suất.",
+      "Bù lại sự thiếu hụt áp suất khí quyển bên ngoài (gần bằng $0$), giữ cho áp suất tác dụng lên cơ thể không bị mất cân bằng đột ngột."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ngoài vũ trụ gần như không có khí quyển nên áp suất bên ngoài gần bằng $0$; bộ trang phục phải tự tạo áp suất bên trong để cơ thể không bị mất cân bằng áp suất."
+    },
+    {
+     "ma_cau": "K08020303019",
+     "loai": "trac_nghiem",
+     "de": "Tại sao khi xuống những hang sâu dưới lòng đất (dù không có nước), một số người vẫn cảm thấy tức ngực, khó thở?",
+     "lua_chon": [
+      "Vì càng xuống sâu dưới mặt đất, áp suất khí quyển tại đó càng lớn hơn so với ở mặt đất.",
+      "Vì nhiệt độ trong hang sâu luôn cao hơn mặt đất nên gây khó thở.",
+      "Vì áp suất khí quyển trong hang sâu luôn nhỏ hơn ở mặt đất.",
+      "Vì trong hang sâu không có đủ ánh sáng nên cơ thể phản ứng khó chịu."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ngược với lên cao (áp suất giảm), càng xuống sâu dưới mặt đất áp suất khí quyển càng lớn, có thể gây cảm giác tức ngực tương tự như lặn sâu trong nước."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00897",
+   "nhom_id": "KNB00389",
+   "thu_tu": 4,
+   "dang": "Giải thích, phân biệt hiện tượng thực tế liên quan áp suất khí quyển",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020303024",
+     "loai": "trac_nghiem",
+     "de": "Một chiếc giác mút (dùng để treo đồ) được ấn chặt vào tường sau khi đã ép hết không khí bên trong ra ngoài. Giác mút dính chặt vào tường là do nguyên nhân nào?",
+     "lua_chon": [
+      "Do lực hút tĩnh điện giữa giác mút và tường.",
+      "Áp suất khí quyển bên ngoài tác dụng vào mặt ngoài của giác mút, ép nó sát vào tường vì bên trong giác mút gần như không còn không khí.",
+      "Do không khí còn sót lại bên trong giác mút tạo áp suất lớn đẩy giác mút dính vào tường.",
+      "Do lớp cao su của giác mút có chất kết dính đặc biệt."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khi ép hết không khí bên trong giác mút ra, áp suất bên trong gần bằng 0; áp suất khí quyển bên ngoài (lớn hơn nhiều) ép giác mút sát chặt vào tường."
+    },
+    {
+     "ma_cau": "K08020303022",
+     "loai": "trac_nghiem",
+     "de": "Một ống thủy tinh nhỏ, hở hai đầu, được nhúng ngập trong nước rồi dùng ngón tay bịt kín đầu phía trên và kéo ống ra khỏi nước: nước không chảy ra khỏi ống. Hiện tượng này được giải thích bằng nguyên nhân nào?",
+     "lua_chon": [
+      "Do nước dính chặt vào thành ống thủy tinh.",
+      "Áp suất khí quyển tác dụng từ phía dưới lên giữ nước lại, vì không có không khí lọt vào để thế chỗ nước ở đầu dưới.",
+      "Do trong ống không còn không khí nên nước không có chỗ để chảy ra.",
+      "Do lực hút của ngón tay bịt đầu ống giữ nước lại."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đầu dưới hở nhưng áp suất khí quyển tác dụng từ dưới lên đúng bằng (hoặc lớn hơn) áp suất của cột nước cộng phần chân không nhỏ phía trên, nên giữ nước không rơi xuống \t\t\t\t\t\t\t— đây là cách giải thích tương tự thí nghiệm Tô-ri-xe-li thu nhỏ."
+    },
+    {
+     "ma_cau": "K08020303025",
+     "loai": "trac_nghiem",
+     "de": "Hiện tượng nào sau đây là do áp suất KHÔNG KHÍ BÊN TRONG một vật kín gây ra (không phải do áp suất khí quyển bên ngoài)?",
+     "lua_chon": [
+      "Hút nước từ chai vào miệng qua một ống hút nhỏ.",
+      "Nước không chảy ra khỏi ống thuỷ tinh khi bịt kín đầu trên và nhấc ra khỏi nước.",
+      "Giác mút dính chặt vào bề mặt kính sau khi ép hết không khí bên trong ra.",
+      "Lốp xe đạp phồng căng lên sau khi được bơm hơi."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Lốp xe phồng căng là do áp suất của lượng không khí được bơm vào BÊN TRONG lốp tăng lên, khác với ba trường hợp còn lại là do áp suất khí quyển bên ngoài tác dụng."
+    },
+    {
+     "ma_cau": "K08020303023",
+     "loai": "trac_nghiem",
+     "de": "Trường hợp nào sau đây KHÔNG do áp suất khí quyển gây ra?",
+     "lua_chon": [
+      "Quả bóng bàn bị bẹp khi thả vào nước nóng sẽ phồng trở lại.",
+      "Dùng giác mút gắn chặt vào tường sau khi ép hết không khí bên trong ra ngoài.",
+      "Hút sữa từ cốc vào miệng bằng một ống hút nhỏ.",
+      "Trên nắp ấm trà có một lỗ hở nhỏ để nước chảy ra liên tục từ vòi."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Quả bóng bàn bị bẹp phồng trở lại trong nước nóng là do áp suất KHÔNG KHÍ BÊN TRONG quả bóng tăng lên khi nhiệt độ tăng, không phải do áp suất khí quyển bên ngoài tác dụng."
+    },
+    {
+     "ma_cau": "K08020303021",
+     "loai": "trac_nghiem",
+     "de": "Khi hút bớt không khí trong một ống hút cắm vào cốc nước, nước dâng lên trong ống. Hiện tượng này được giải thích bằng nguyên nhân nào?",
+     "lua_chon": [
+      "Áp suất khí quyển tác dụng lên mặt nước trong cốc lớn hơn áp suất trong ống (đã bị hút bớt không khí), đẩy nước dâng lên trong ống.",
+      "Do áp suất trong ống lớn hơn áp suất khí quyển bên ngoài.",
+      "Do lực hút của miệng người tạo ra, không liên quan đến áp suất khí quyển.",
+      "Do nước tự có xu hướng dâng lên trong các ống có tiết diện nhỏ."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Hút bớt không khí làm áp suất trong ống giảm; áp suất khí quyển bên ngoài (lớn hơn) tác dụng lên mặt nước, đẩy nước dâng lên bù vào phần áp suất bị giảm."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00898",
+   "nhom_id": "KNB00389",
+   "thu_tu": 5,
+   "dang": "Nhận định đúng/sai tổng hợp",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020303030",
+     "loai": "trac_nghiem",
+     "de": "Trong các nhận định sau về áp suất khí quyển, nhận định nào KHÔNG chính xác?\nA. Áp suất khí quyển do trọng lượng của lớp không khí bao quanh Trái Đất gây ra.\nB. Áp suất khí quyển tác dụng theo mọi phương lên mọi vật trên Trái Đất.\nC. Càng lên cao, áp suất khí quyển càng giảm.\nD. Ngoài khoảng không vũ trụ, áp suất khí quyển lớn hơn nhiều so với trên mặt đất.",
+     "lua_chon": [
+      "Nhận định A không chính xác.",
+      "Nhận định B không chính xác.",
+      "Nhận định D không chính xác.",
+      "Nhận định C không chính xác."
+     ],
+     "dap_an": "C",
+     "loi_giai": "A, B, C đều đúng. D sai vì ngoài khoảng không vũ trụ gần như không có không khí nên áp suất khí quyển gần bằng $0$, NHỎ hơn nhiều so với trên mặt đất, không phải lớn hơn."
+    },
+    {
+     "ma_cau": "K08020303026",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau về áp suất khí quyển, phát biểu nào SAI?",
+     "lua_chon": [
+      "Áp suất khí quyển là áp suất do lớp không khí bao quanh Trái Đất tác dụng lên mọi vật.",
+      "Áp suất khí quyển tác dụng theo mọi phương.",
+      "Càng lên cao, áp suất khí quyển càng tăng.",
+      "Đơn vị đo áp suất khí quyển là Pa hoặc mmHg."
+     ],
+     "dap_an": "C",
+     "loi_giai": "A, B, D đều đúng. C sai vì càng lên cao, áp suất khí quyển càng GIẢM, không phải tăng."
+    },
+    {
+     "ma_cau": "K08020303029",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau, phát biểu nào ĐÚNG?\nA. Áp suất khí quyển càng lên cao càng tăng.\nB. Mọi hiện tượng liên quan đến không khí trong vật kín (như bóng bay, lốp xe) đều do áp suất khí quyển bên ngoài gây ra.\nC. Càng xuống sâu dưới lòng đất, áp suất khí quyển càng lớn.\nD. Áp suất khí quyển chỉ tác dụng theo phương thẳng đứng.",
+     "lua_chon": [
+      "Phát biểu B đúng.",
+      "Phát biểu D đúng.",
+      "Phát biểu C đúng.",
+      "Phát biểu A đúng."
+     ],
+     "dap_an": "C",
+     "loi_giai": "A, B, D đều sai (áp suất khí quyển giảm khi lên cao; hiện tượng như bóng bay/lốp xe là do áp suất khí BÊN TRONG, không phải khí quyển; áp suất khí quyển tác dụng mọi phương). Chỉ C đúng."
+    },
+    {
+     "ma_cau": "K08020303028",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau về áp suất khí quyển, phát biểu nào SAI?\nA. Áp suất khí quyển ở cùng một độ cao thì xấp xỉ bằng nhau.\nB. Áp suất khí quyển ở đỉnh núi nhỏ hơn ở chân núi.\nC. Áp suất khí quyển không tồn tại nếu không có gió.\nD. Nguyên nhân gây ra áp suất khí quyển là trọng lượng của lớp không khí bao quanh Trái Đất.",
+     "lua_chon": [
+      "Phát biểu B sai.",
+      "Phát biểu C sai.",
+      "Phát biểu A sai.",
+      "Phát biểu D sai."
+     ],
+     "dap_an": "B",
+     "loi_giai": "A, B, D đều đúng. C sai vì áp suất khí quyển tồn tại bất kể có gió hay không, chỉ cần có lớp không khí bao quanh."
+    },
+    {
+     "ma_cau": "K08020303027",
+     "loai": "trac_nghiem",
+     "de": "Trong các phát biểu sau, phát biểu nào KHÔNG đúng?",
+     "lua_chon": [
+      "Con người và vạn vật trên Trái Đất đều chịu áp suất khí quyển theo mọi phương.",
+      "Con người và vạn vật trên Trái Đất chỉ chịu áp suất khí quyển theo phương thẳng đứng.",
+      "Áp suất khí quyển tồn tại ở khắp mọi nơi có không khí bao quanh.",
+      "Áp suất khí quyển do trọng lượng của lớp không khí bao quanh Trái Đất gây ra."
+     ],
+     "dap_an": "D",
+     "loi_giai": "A, C, D đều đúng. B sai vì áp suất khí quyển tác dụng theo mọi phương, không riêng phương thẳng đứng."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00899",
+   "nhom_id": "KNB00390",
+   "thu_tu": 1,
+   "dang": "Quy đổi đơn vị áp suất mmHg, cmHg ↔ Pa",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020304001",
+     "loai": "trac_nghiem",
+     "de": "Kết quả thí nghiệm Tô-ri-xe-li tại một địa điểm cho thấy cột thuỷ ngân trong ống cao 760 mm. Biết trọng lượng riêng của thuỷ ngân là 136000 N/m$^3$ (1 mmHg tương ứng với áp suất 136 Pa). Tính áp suất khí quyển tại địa điểm đó theo đơn vị Pa.",
+     "lua_chon": [
+      "103360000 Pa",
+      "5,59 Pa",
+      "101080 Pa",
+      "103360 Pa"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi 1 mmHg = 136 Pa (vì d(Hg) $\\times$ 0,001 m = 136000 $\\times$ 0,001 = 136 Pa).\nÁp suất khí quyển: p = 760 $\\times$ 136 = 103360 Pa."
+    },
+    {
+     "ma_cau": "K08020304006",
+     "loai": "trac_nghiem",
+     "de": "Áp suất khí quyển đo được tại một địa điểm là 81600 Pa. Biết trọng lượng riêng của thuỷ ngân là 136000 N/m$^3$ (1 mmHg tương ứng với áp suất 136 Pa). Tính chiều cao cột thuỷ ngân trong ống Tô-ri-xe-li tại địa điểm đó theo đơn vị mmHg.",
+     "lua_chon": [
+      "600 mmHg",
+      "613,53 mmHg",
+      "11097600 mmHg",
+      "0,6 mmHg"
+     ],
+     "dap_an": "A",
+     "loi_giai": "h = p/136 = 81600/136 = 600 mmHg."
+    },
+    {
+     "ma_cau": "K08020304005",
+     "loai": "trac_nghiem",
+     "de": "Áp suất khí quyển đo được tại một địa điểm là 68000 Pa. Biết trọng lượng riêng của thuỷ ngân là 136000 N/m$^3$ (1 mmHg tương ứng với áp suất 136 Pa). Tính chiều cao cột thuỷ ngân trong ống Tô-ri-xe-li tại địa điểm đó theo đơn vị mmHg.",
+     "lua_chon": [
+      "9248000 mmHg",
+      "0,5 mmHg",
+      "500 mmHg",
+      "511,28 mmHg"
+     ],
+     "dap_an": "C",
+     "loi_giai": "h = p/136 = 68000/136 = 500 mmHg."
+    },
+    {
+     "ma_cau": "K08020304002",
+     "loai": "trac_nghiem",
+     "de": "Kết quả thí nghiệm Tô-ri-xe-li tại một địa điểm cho thấy cột thuỷ ngân trong ống cao 750 mm. Biết trọng lượng riêng của thuỷ ngân là 136000 N/m$^3$ (1 mmHg tương ứng với áp suất 136 Pa). Tính áp suất khí quyển tại địa điểm đó theo đơn vị Pa.",
+     "lua_chon": [
+      "102000 Pa",
+      "99750 Pa",
+      "102000000 Pa",
+      "5,51 Pa"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi 1 mmHg = 136 Pa (vì d(Hg) $\\times$ 0,001 m = 136000 $\\times$ 0,001 = 136 Pa).\nÁp suất khí quyển: p = 750 $\\times$ 136 = 102000 Pa."
+    },
+    {
+     "ma_cau": "K08020304007",
+     "loai": "trac_nghiem",
+     "de": "Áp suất khí quyển đo được tại một địa điểm là $54400\\ \\mathrm{Pa}$. Biết trọng lượng riêng của thủy ngân là $136000\\ \\mathrm{N/m^3}$ ($1\\ \\mathrm{cmHg}$ tương ứng với áp suất $1360\\ \\mathrm{Pa}$). Tính chiều cao cột thuỷ ngân trong ống Tô-ri-xe-li tại địa điểm đó theo đơn vị $\\mathrm{cmHg}$.",
+     "lua_chon": [
+      "40,9 cmHg",
+      "400 cmHg",
+      "40 cmHg",
+      "73984000 cmHg"
+     ],
+     "dap_an": "C",
+     "loi_giai": "h = p/1360 = 54400/1360 = 40 cmHg."
+    },
+    {
+     "ma_cau": "K08020304003",
+     "loai": "trac_nghiem",
+     "de": "Kết quả thí nghiệm Tô-ri-xe-li tại một địa điểm cho thấy cột thuỷ ngân trong ống cao 700 mm. Biết trọng lượng riêng của thuỷ ngân là 136000 N/m$^3$ (1 mmHg tương ứng với áp suất 136 Pa). Tính áp suất khí quyển tại địa điểm đó theo đơn vị Pa.",
+     "lua_chon": [
+      "95200000 Pa",
+      "5,15 Pa",
+      "93100 Pa",
+      "95200 Pa"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi 1 mmHg = 136 Pa (vì d(Hg) $\\times$ 0,001 m = 136000 $\\times$ 0,001 = 136 Pa).\nÁp suất khí quyển: p = 700 $\\times$ 136 = 95200 Pa."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00900",
+   "nhom_id": "KNB00390",
+   "thu_tu": 2,
+   "dang": "Tính áp suất khí quyển từ chiều cao cột thuỷ ngân trong thí nghiệm Tô-ri-xe-li",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020304008",
+     "loai": "trac_nghiem",
+     "de": "Tại một địa điểm, thí nghiệm Tô-ri-xe-li đo được chiều cao cột thuỷ ngân còn lại trong ống là 65 cm. Biết trọng lượng riêng của thuỷ ngân là $136000 \\mathrm{N/m^3}$. Tính áp suất khí quyển tại địa điểm đó.",
+     "lua_chon": [
+      "8840 Pa",
+      "88400 Pa",
+      "8840000 Pa",
+      "0,04779 Pa"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi $65 \\mathrm{\\ cm} = 0,65 \\mathrm{\\ m}$. Áp suất khí quyển: $p = d.h = 136000 \\times 0,65 = 88400 \\mathrm{\\ Pa}$."
+    },
+    {
+     "ma_cau": "K08020304012",
+     "loai": "trac_nghiem",
+     "de": "Tại một địa điểm, thí nghiệm Tô-ri-xe-li đo được chiều cao cột thuỷ ngân còn lại trong ống là 62 cm. Biết trọng lượng riêng của thuỷ ngân là $136000 \\mathrm{\\ N/m^3}$. Tính áp suất khí quyển tại địa điểm đó.",
+     "lua_chon": [
+      "0,04559 Pa",
+      "84320 Pa",
+      "8432000 Pa",
+      "8432 Pa"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi $62\\text{ cm} = 0,62\\text{ m}$.\nÁp suất khí quyển: $\\mathrm{p = d.h = 136000 \\times 0,62 = 84320\\text{ Pa}}$."
+    },
+    {
+     "ma_cau": "K08020304009",
+     "loai": "trac_nghiem",
+     "de": "Tại một địa điểm, thí nghiệm Tô-ri-xe-li đo được chiều cao cột thuỷ ngân còn lại trong ống là 68 cm. Biết trọng lượng riêng của thuỷ ngân là $136000 \\mathrm{N/m^3}$. Tính áp suất khí quyển tại địa điểm đó.",
+     "lua_chon": [
+      "9248000 Pa",
+      "0,05 Pa",
+      "9248 Pa",
+      "92480 Pa"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi $68 \\mathrm{\\ cm} = 0,68 \\mathrm{\\ m}$. Áp suất khí quyển: $p = d.h = 136000 \\times 0,68 = 92480 \\mathrm{\\ Pa}$."
+    },
+    {
+     "ma_cau": "K08020304013",
+     "loai": "trac_nghiem",
+     "de": "Tại một địa điểm, thí nghiệm Tô-ri-xe-li đo được chiều cao cột thuỷ ngân còn lại trong ống là 48 cm. Biết trọng lượng riêng của thuỷ ngân là $136000 \\mathrm{\\ N/m^3}$. Tính áp suất khí quyển tại địa điểm đó.",
+     "lua_chon": [
+      "0,03529 Pa",
+      "65280 Pa",
+      "6528 Pa",
+      "6528000 Pa"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi $48\\text{ cm} = 0,48\\text{ m}$.\nÁp suất khí quyển: $\\mathrm{p = d.h = 136000 \\times 0,48 = 65280\\text{ Pa}}$."
+    },
+    {
+     "ma_cau": "K08020304011",
+     "loai": "trac_nghiem",
+     "de": "Tại một địa điểm, thí nghiệm Tô-ri-xe-li đo được chiều cao cột thuỷ ngân còn lại trong ống là 55 cm. Biết trọng lượng riêng của thuỷ ngân là $136000 \\mathrm{N/m^3}$. Tính áp suất khí quyển tại địa điểm đó.",
+     "lua_chon": [
+      "0,04044 Pa",
+      "7480 Pa",
+      "74800 Pa",
+      "7480000 Pa"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi $55 \\mathrm{\\ cm} = 0,55 \\mathrm{\\ m}$. Áp suất khí quyển: $p = d.h = 136000 \\times 0,55 = 74800 \\mathrm{\\ Pa}$."
+    },
+    {
+     "ma_cau": "K08020304014",
+     "loai": "trac_nghiem",
+     "de": "Tại một địa điểm, thí nghiệm Tô-ri-xe-li đo được chiều cao cột thuỷ ngân còn lại trong ống là 45 cm. Biết trọng lượng riêng của thuỷ ngân là $136000 \\mathrm{\\ N/m^3}$. Tính áp suất khí quyển tại địa điểm đó.",
+     "lua_chon": [
+      "6120 Pa",
+      "0,03309 Pa",
+      "6120000 Pa",
+      "61200 Pa"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi $45\\text{ cm} = 0,45\\text{ m}$.\nÁp suất khí quyển: $\\mathrm{p = d.h = 136000 \\times 0,45 = 61200\\text{ Pa}}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00901",
+   "nhom_id": "KNB00390",
+   "thu_tu": 3,
+   "dang": "So sánh áp suất khí quyển giữa hai địa điểm qua chiều cao cột thuỷ ngân",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 6,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020304015",
+     "loai": "trac_nghiem",
+     "de": "Tại địa điểm A, thí nghiệm Tô-ri-xe-li đo được chiều cao cột thuỷ ngân là 74 cm; tại địa điểm B là 69 cm. Biết 1 cmHg tương ứng với áp suất 1360 Pa. Tính độ chênh lệch áp suất khí quyển giữa hai địa điểm A và B.",
+     "lua_chon": [
+      "194480 Pa",
+      "93840 Pa",
+      "100640 Pa",
+      "6800 Pa"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Áp suất tại A: $p_A = 1360 \\times 74 = 100640$ Pa. \nÁp suất tại B: $p_B = 1360 \\times 69 = 93840$ Pa. \nĐộ chênh lệch: $ \\Delta p = p_A - p_B = 100640 - 93840 = 6800$ Pa."
+    },
+    {
+     "ma_cau": "K08020304018",
+     "loai": "trac_nghiem",
+     "de": "Tại địa điểm A, thí nghiệm Tô-ri-xe-li đo được chiều cao cột thuỷ ngân là 78 cm; tại địa điểm B là 64 cm. Biết $1 \\mathrm{cmHg}$ tương ứng với áp suất $1360 \\mathrm{Pa}$. Tính độ chênh lệch áp suất khí quyển giữa hai địa điểm A và B.",
+     "lua_chon": [
+      "87040 Pa",
+      "193120 Pa",
+      "19040 Pa",
+      "106080 Pa"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Áp suất tại A: $\\mathrm{p_A} = 1360 \\times 78 = 106080 \\mathrm{Pa}$. \nÁp suất tại B: $\\mathrm{p_B} = 1360 \\times 64 = 87040 \\mathrm{Pa}$. \nĐộ chênh lệch: $\\Delta \\mathrm{p} = \\mathrm{p_A} - \\mathrm{p_B} = 106080 - 87040 = 19040 \\mathrm{Pa}$."
+    },
+    {
+     "ma_cau": "K08020304019",
+     "loai": "trac_nghiem",
+     "de": "Tại địa điểm A, thí nghiệm Tô-ri-xe-li đo được chiều cao cột thuỷ ngân là 67 cm; tại địa điểm B là 59 cm. Biết $1 \\mathrm{cmHg}$ tương ứng với áp suất $1360 \\mathrm{Pa}$. Tính độ chênh lệch áp suất khí quyển giữa hai địa điểm A và B.",
+     "lua_chon": [
+      "10880 Pa",
+      "80240 Pa",
+      "91120 Pa",
+      "171360 Pa"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Áp suất tại A: $\\mathrm{p_A} = 1360 \\times 67 = 91120 \\mathrm{Pa}$. \nÁp suất tại B: $\\mathrm{p_B} = 1360 \\times 59 = 80240 \\mathrm{Pa}$. \nĐộ chênh lệch: $\\Delta \\mathrm{p} = \\mathrm{p_A} - \\mathrm{p_B} = 91120 - 80240 = 10880 \\mathrm{Pa}$."
+    },
+    {
+     "ma_cau": "K08020304016",
+     "loai": "trac_nghiem",
+     "de": "Tại địa điểm A, thí nghiệm Tô-ri-xe-li đo được chiều cao cột thuỷ ngân là 77 cm; tại địa điểm B là 71 cm. Biết 1 cmHg tương ứng với áp suất 1360 Pa. Tính độ chênh lệch áp suất khí quyển giữa hai địa điểm A và B.",
+     "lua_chon": [
+      "8160 Pa",
+      "104720 Pa",
+      "201280 Pa",
+      "96560 Pa"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Áp suất tại A: $p_A = 1360 \\times 77 = 104720$ Pa. \nÁp suất tại B: $p_B = 1360 \\times 71 = 96560$ Pa. \nĐộ chênh lệch: $ \\Delta p = p_A - p_B = 104720 - 96560 = 8160$ Pa."
+    },
+    {
+     "ma_cau": "K08020304017",
+     "loai": "trac_nghiem",
+     "de": "Tại địa điểm A, thí nghiệm Tô-ri-xe-li đo được chiều cao cột thuỷ ngân là 73 cm; tại địa điểm B là 66 cm. Biết 1 cmHg tương ứng với áp suất 1360 Pa. Tính độ chênh lệch áp suất khí quyển giữa hai địa điểm A và B.",
+     "lua_chon": [
+      "9520 Pa",
+      "99280 Pa",
+      "189040 Pa",
+      "89760 Pa"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Áp suất tại A: $p_A = 1360 \\times 73 = 99280$ Pa. \nÁp suất tại B: $p_B = 1360 \\times 66 = 89760$ Pa. \nĐộ chênh lệch: $ \\Delta p = p_A - p_B = 99280 - 89760 = 9520$ Pa."
+    },
+    {
+     "ma_cau": "K08020304020",
+     "loai": "trac_nghiem",
+     "de": "Tại địa điểm A, thí nghiệm Tô-ri-xe-li đo được chiều cao cột thuỷ ngân là 63 cm; tại địa điểm B là 57 cm. Biết $1 \\mathrm{cmHg}$ tương ứng với áp suất $1360 \\mathrm{Pa}$. Tính độ chênh lệch áp suất khí quyển giữa hai địa điểm A và B.",
+     "lua_chon": [
+      "163200 Pa",
+      "77520 Pa",
+      "8160 Pa",
+      "85680 Pa"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Áp suất tại A: $\\mathrm{p_A} = 1360 \\times 63 = 85680 \\mathrm{Pa}$. \nÁp suất tại B: $\\mathrm{p_B} = 1360 \\times 57 = 77520 \\mathrm{Pa}$. \nĐộ chênh lệch: $\\Delta \\mathrm{p} = \\mathrm{p_A} - \\mathrm{p_B} = 85680 - 77520 = 8160 \\mathrm{Pa}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00902",
+   "nhom_id": "KNB00390",
+   "thu_tu": 4,
+   "dang": "Thay thuỷ ngân bằng chất lỏng khác trong ống Tô-ri-xe-li — tính chiều cao cột chất lỏng mới",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020304029",
+     "loai": "tra_loi_ngan",
+     "de": "Trong thí nghiệm Tô-ri-xe-li tại một địa điểm, cột thuỷ ngân (trọng lượng riêng $136000 \\mathrm{N/m^3}$) trong ống cao $55 \\mathrm{cm}$. Nếu thay thuỷ ngân bằng dầu hoả (trọng lượng riêng $8000 \\mathrm{N/m^3}$) thì cột dầu hoả trong ống phải cao bao nhiêu để tạo ra cùng áp suất khí quyển đó?",
+     "dap_an": "9.35",
+     "loi_giai": "Hai cột chất lỏng cùng tạo ra một áp suất khí quyển nên: $\\mathrm{d(Hg).h(Hg) = d_2.h_2 \\rightarrow h_2 = d(Hg).h(Hg)/d_2 = 136000 \\times 0.55/8000 = 9,35 \\mathrm{m}.}$"
+    },
+    {
+     "ma_cau": "K08020304026",
+     "loai": "tra_loi_ngan",
+     "de": "Trong thí nghiệm Tô-ri-xe-li tại một địa điểm, cột thuỷ ngân (trọng lượng riêng $136000 \\mathrm{N/m^3}$) trong ống cao $75 \\mathrm{cm}$. Nếu thay thuỷ ngân bằng nước (trọng lượng riêng $10000 \\mathrm{N/m^3}$) thì cột nước trong ống phải cao bao nhiêu để tạo ra cùng áp suất khí quyển đó?",
+     "dap_an": "10.2",
+     "loi_giai": "Hai cột chất lỏng cùng tạo ra một áp suất khí quyển nên: $\\mathrm{d(Hg).h(Hg) = d_2.h_2 \\rightarrow h_2 = d(Hg).h(Hg)/d_2 = 136000 \\times 0.75/10000 = 10,2 \\mathrm{m}.}$"
+    },
+    {
+     "ma_cau": "K08020304028",
+     "loai": "tra_loi_ngan",
+     "de": "Trong thí nghiệm Tô-ri-xe-li tại một địa điểm, cột thuỷ ngân (trọng lượng riêng $136000 \\mathrm{N/m^3}$) trong ống cao $65 \\mathrm{cm}$. Nếu thay thuỷ ngân bằng nước (trọng lượng riêng $10000 \\mathrm{N/m^3}$) thì cột nước trong ống phải cao bao nhiêu để tạo ra cùng áp suất khí quyển đó?",
+     "dap_an": "8.84",
+     "loi_giai": "Hai cột chất lỏng cùng tạo ra một áp suất khí quyển nên: $\\mathrm{d(Hg).h(Hg) = d_2.h_2 \\rightarrow h_2 = d(Hg).h(Hg)/d_2 = 136000 \\times 0.65/10000 = 8,84 \\mathrm{m}.}$"
+    },
+    {
+     "ma_cau": "K08020304027",
+     "loai": "tra_loi_ngan",
+     "de": "Trong thí nghiệm Tô-ri-xe-li tại một địa điểm, cột thuỷ ngân (trọng lượng riêng $136000 \\mathrm{N/m^3}$) trong ống cao $70 \\mathrm{cm}$. Nếu thay thuỷ ngân bằng dầu hoả (trọng lượng riêng $8000 \\mathrm{N/m^3}$) thì cột dầu hoả trong ống phải cao bao nhiêu để tạo ra cùng áp suất khí quyển đó?",
+     "dap_an": "11.9",
+     "loi_giai": "Hai cột chất lỏng cùng tạo ra một áp suất khí quyển nên: $\\mathrm{d(Hg).h(Hg) = d_2.h_2 \\rightarrow h_2 = d(Hg).h(Hg)/d_2 = 136000 \\times 0.7/8000 = 11,9 \\mathrm{m}.}$"
+    },
+    {
+     "ma_cau": "K08020304030",
+     "loai": "tra_loi_ngan",
+     "de": "Trong thí nghiệm Tô-ri-xe-li tại một địa điểm, cột thuỷ ngân (trọng lượng riêng $136000 \\mathrm{N/m^3}$) trong ống cao $80 \\mathrm{cm}$. Nếu thay thuỷ ngân bằng nước (trọng lượng riêng $10000 \\mathrm{N/m^3}$) thì cột nước trong ống phải cao bao nhiêu để tạo ra cùng áp suất khí quyển đó?",
+     "dap_an": "10.88",
+     "loi_giai": "Hai cột chất lỏng cùng tạo ra một áp suất khí quyển nên: $\\mathrm{d(Hg).h(Hg) = d_2.h_2 \\rightarrow h_2 = d(Hg).h(Hg)/d_2 = 136000 \\times 0.8/10000 = 10,88 \\mathrm{m}.}$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00903",
+   "nhom_id": "KNB00390",
+   "thu_tu": 5,
+   "dang": "Đổi áp suất khí quyển ra chiều cao cột thuỷ ngân — so sánh với mốc chuẩn 76 cmHg",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020304032",
+     "loai": "tra_loi_ngan",
+     "de": "Tại một địa điểm, áp suất khí quyển đo được là 85680 Pa. Biết trọng lượng riêng của thuỷ ngân là $136000\\ \\mathrm{N/m^3}$ và mốc chuẩn ở mực nước biển tương ứng với cột thuỷ ngân cao 76 cmHg. So với mốc chuẩn này, chiều cao cột thuỷ ngân trong ống Tô-ri-xe-li tại địa điểm đó cao hơn hay thấp hơn bao nhiêu cm?",
+     "dap_an": "thấp hơn 13",
+     "loi_giai": "Chiều cao cột thuỷ ngân tại địa điểm đó: $\\mathrm{h = p/1360 = 85680/1360 = 63\\ cm}$. \nSo với mốc chuẩn 76 cm: $63 - 76 = -13\\ \\mathrm{cm}$, tức là thấp hơn mốc chuẩn 13 cm."
+    },
+    {
+     "ma_cau": "K08020304033",
+     "loai": "tra_loi_ngan",
+     "de": "Tại một địa điểm, áp suất khí quyển đo được là 108800 Pa. Biết trọng lượng riêng của thuỷ ngân là $136000\\ \\mathrm{N/m^3}$ và mốc chuẩn ở mực nước biển tương ứng với cột thuỷ ngân cao 76 cmHg. So với mốc chuẩn này, chiều cao cột thuỷ ngân trong ống Tô-ri-xe-li tại địa điểm đó cao hơn hay thấp hơn bao nhiêu cm?",
+     "dap_an": "cao hơn 4",
+     "loi_giai": "Chiều cao cột thuỷ ngân tại địa điểm đó: $\\mathrm{h = p/1360 = 108800/1360 = 80\\ cm}$. \nSo với mốc chuẩn 76 cm: $80 - 76 = 4\\ \\mathrm{cm}$, tức là cao hơn mốc chuẩn 4 cm."
+    },
+    {
+     "ma_cau": "K08020304035",
+     "loai": "tra_loi_ngan",
+     "de": "Tại một địa điểm, áp suất khí quyển đo được là 114240 Pa. Biết trọng lượng riêng của thuỷ ngân là 136000 N/m³ và mốc chuẩn ở mực nước biển tương ứng với cột thuỷ ngân cao 76 cmHg. So với mốc chuẩn này, chiều cao cột thuỷ ngân trong ống Tô-ri-xe-li tại địa điểm đó cao hơn hay thấp hơn bao nhiêu cm?",
+     "dap_an": "cao hơn 8",
+     "loi_giai": "Chiều cao cột thuỷ ngân tại địa điểm đó: $h = p/1360 = 114240/1360 = 84$ cm. \nSo với mốc chuẩn 76 cm: $84 - 76 = 8$ cm, tức là cao hơn mốc chuẩn 8 cm."
+    },
+    {
+     "ma_cau": "K08020304034",
+     "loai": "tra_loi_ngan",
+     "de": "Tại một địa điểm, áp suất khí quyển đo được là 77520 Pa. Biết trọng lượng riêng của thuỷ ngân là $136000\\ \\mathrm{N/m^3}$ và mốc chuẩn ở mực nước biển tương ứng với cột thuỷ ngân cao 76 cmHg. So với mốc chuẩn này, chiều cao cột thuỷ ngân trong ống Tô-ri-xe-li tại địa điểm đó cao hơn hay thấp hơn bao nhiêu cm?",
+     "dap_an": "thấp hơn 19",
+     "loi_giai": "Chiều cao cột thuỷ ngân tại địa điểm đó: $\\mathrm{h = p/1360 = 77520/1360 = 57\\ cm}$. \nSo với mốc chuẩn 76 cm: $57 - 76 = -19\\ \\mathrm{cm}$, tức là thấp hơn mốc chuẩn 19 cm."
+    },
+    {
+     "ma_cau": "K08020304031",
+     "loai": "tra_loi_ngan",
+     "de": "Tại một địa điểm, áp suất khí quyển đo được là 96560 Pa. Biết trọng lượng riêng của thuỷ ngân là $136000\\ \\mathrm{N/m^3}$ và mốc chuẩn ở mực nước biển tương ứng với cột thuỷ ngân cao 76 cmHg. So với mốc chuẩn này, chiều cao cột thuỷ ngân trong ống Tô-ri-xe-li tại địa điểm đó cao hơn hay thấp hơn bao nhiêu cm?",
+     "dap_an": "thấp hơn 5",
+     "loi_giai": "Chiều cao cột thuỷ ngân tại địa điểm đó: $\\mathrm{h = p/1360 = 96560/1360 = 71\\ cm}$.  \nSo với mốc chuẩn 76 cm: $71 - 76 = -5\\ \\mathrm{cm}$, tức là thấp hơn mốc chuẩn 5 cm."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00904",
+   "nhom_id": "KNB00390",
+   "thu_tu": 6,
+   "dang": "Áp suất khí quyển biến đổi theo phần trăm so với mốc chuẩn 760 mmHg — tính áp suất mới ra Pa",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020304036",
+     "loai": "tu_luan",
+     "de": "Áp suất khí quyển chuẩn ở mực nước biển là $760 \\ \\mathrm{mmHg}$, tương ứng $103360 \\ \\mathrm{Pa}$ (với trọng lượng riêng thủy ngân $136000 \\ \\mathrm{N/m^3}$). Do ảnh hưởng của thời tiết, áp suất khí quyển tại một địa điểm giảm $5\\%$ so với áp suất chuẩn này. Tính áp suất khí quyển tại địa điểm đó theo đơn vị Pa.",
+     "dap_an": "98192",
+     "loi_giai": "Áp suất mới: $\\mathrm{p = 103360 \\times (1 - 5/100) = 103360 \\times 0,95 = 98192 \\ Pa}$."
+    },
+    {
+     "ma_cau": "K08020304037",
+     "loai": "tu_luan",
+     "de": "Áp suất khí quyển chuẩn ở mực nước biển là $760 \\ \\mathrm{mmHg}$, tương ứng $103360 \\ \\mathrm{Pa}$ (với trọng lượng riêng thủy ngân $136000 \\ \\mathrm{N/m^3}$). Do ảnh hưởng của thời tiết, áp suất khí quyển tại một địa điểm tăng $5\\%$ so với áp suất chuẩn này. Tính áp suất khí quyển tại địa điểm đó theo đơn vị Pa.",
+     "dap_an": "105828",
+     "loi_giai": "Áp suất mới: $\\mathrm{p = 103360 \\times (1 + 5/100) = 103360 \\times 1,05 = 105828 \\ Pa}$."
+    },
+    {
+     "ma_cau": "K08020304040",
+     "loai": "tu_luan",
+     "de": "Áp suất khí quyển chuẩn ở mực nước biển là $760 \\ \\mathrm{mmHg}$, tương ứng $103360 \\ \\mathrm{Pa}$ (với trọng lượng riêng thủy ngân $136000 \\ \\mathrm{N/m^3}$). Do ảnh hưởng của thời tiết, áp suất khí quyển tại một địa điểm giảm $15\\%$ so với áp suất chuẩn này. Tính áp suất khí quyển tại địa điểm đó theo đơn vị Pa.",
+     "dap_an": "87856",
+     "loi_giai": "Áp suất mới: $\\mathrm{p = 103360 \\times (1 - 15/100) = 103360 \\times 0,85 = 87856 \\ Pa}$."
+    },
+    {
+     "ma_cau": "K08020304039",
+     "loai": "tu_luan",
+     "de": "Áp suất khí quyển chuẩn ở mực nước biển là $760 \\ \\mathrm{mmHg}$, tương ứng $103360 \\ \\mathrm{Pa}$ (với trọng lượng riêng thủy ngân $136000 \\ \\mathrm{N/m^3}$). Do ảnh hưởng của thời tiết, áp suất khí quyển tại một địa điểm tăng $10\\%$ so với áp suất chuẩn này. Tính áp suất khí quyển tại địa điểm đó theo đơn vị Pa.",
+     "dap_an": "113696",
+     "loi_giai": "Áp suất mới: $\\mathrm{p = 103360 \\times (1 + 10/100) = 103360 \\times 1,1 = 113696 \\ Pa}$."
+    },
+    {
+     "ma_cau": "K08020304038",
+     "loai": "tu_luan",
+     "de": "Áp suất khí quyển chuẩn ở mực nước biển là $760 \\ \\mathrm{mmHg}$, tương ứng $103360 \\ \\mathrm{Pa}$ (với trọng lượng riêng thủy ngân $136000 \\ \\mathrm{N/m^3}$). Do ảnh hưởng của thời tiết, áp suất khí quyển tại một địa điểm giảm $10\\%$ so với áp suất chuẩn này. Tính áp suất khí quyển tại địa điểm đó theo đơn vị Pa.",
+     "dap_an": "93024",
+     "loi_giai": "Áp suất mới: $\\mathrm{p = 103360 \\times (1 - 10/100) = 103360 \\times 0,9 = 93024 \\ Pa}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00905",
+   "nhom_id": "KNB00390",
+   "thu_tu": 7,
+   "dang": "Từ chiều cao cột thuỷ ngân, tính lực do áp suất khí quyển tác dụng lên một diện tích (F = p.S)",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020304041",
+     "loai": "tu_luan",
+     "de": "Tại một địa điểm, thí nghiệm Tô-ri-xe-li đo được chiều cao cột thuỷ ngân là 52 cm. Biết trọng lượng riêng của thuỷ ngân là $136000 \\mathrm{N/m^3}$. Tính lực do áp suất khí quyển tại địa điểm đó tác dụng lên một tấm phẳng có điện tích $40 \\mathrm{cm^2}$ đặt vuông góc với phương của áp lực.",
+     "dap_an": "282.88",
+     "loi_giai": "Áp suất khí quyển: $\\mathrm{p = 1360 \\times 52 = 70720 \\ Pa}$. \nĐổi $\\mathrm{40 \\ cm^2 = 0,004 \\ m^2}$. \nLực do áp suất khí quyển tác dụng lên tấm phẳng: $\\mathrm{F = p.S = 70720 \\times 0,004 = 282,88 \\ N}$."
+    },
+    {
+     "ma_cau": "K08020304042",
+     "loai": "tu_luan",
+     "de": "Tại một địa điểm, thí nghiệm Tô-ri-xe-li đo được chiều cao cột thuỷ ngân là 54 cm. Biết trọng lượng riêng của thuỷ ngân là $136000 \\mathrm{N/m^3}$. Tính lực do áp suất khí quyển tại địa điểm đó tác dụng lên một tấm phẳng có điện tích $60 \\mathrm{cm^2}$ đặt vuông góc với phương của áp lực.",
+     "dap_an": "440.64",
+     "loi_giai": "Áp suất khí quyển: $\\mathrm{p = 1360 \\times 54 = 73440 \\ Pa}$. \nĐổi $\\mathrm{60 \\ cm^2 = 0,006 \\ m^2}$. \nLực do áp suất khí quyển tác dụng lên tấm phẳng: $\\mathrm{F = p.S = 73440 \\times 0,006 = 440,64 \\ N}$."
+    },
+    {
+     "ma_cau": "K08020304044",
+     "loai": "tu_luan",
+     "de": "Tại một địa điểm, thí nghiệm Tô-ri-xe-li đo được chiều cao cột thuỷ ngân là 61 cm. Biết trọng lượng riêng của thuỷ ngân là $136000 \\mathrm{N/m^3}$. Tính lực do áp suất khí quyển tại địa điểm đó tác dụng lên một tấm phẳng có điện tích $45 \\mathrm{cm^2}$ đặt vuông góc với phương của áp lực.",
+     "dap_an": "373.32",
+     "loi_giai": "Áp suất khí quyển: $\\mathrm{p = 1360 \\times 61 = 82960 \\ Pa}$. \nĐổi $\\mathrm{45 \\ cm^2 = 0,0045 \\ m^2}$. \nLực do áp suất khí quyển tác dụng lên tấm phẳng: $\\mathrm{F = p.S = 82960 \\times 0,0045 = 373,32 \\ N}$."
+    },
+    {
+     "ma_cau": "K08020304043",
+     "loai": "tu_luan",
+     "de": "Tại một địa điểm, thí nghiệm Tô-ri-xe-li đo được chiều cao cột thuỷ ngân là 56 cm. Biết trọng lượng riêng của thuỷ ngân là $136000 \\mathrm{N/m^3}$. Tính lực do áp suất khí quyển tại địa điểm đó tác dụng lên một tấm phẳng có điện tích $25 \\mathrm{cm^2}$ đặt vuông góc với phương của áp lực.",
+     "dap_an": "190.40",
+     "loi_giai": "Áp suất khí quyển: $\\mathrm{p = 1360 \\times 56 = 76160 \\ Pa}$. \nĐổi $\\mathrm{25 \\ cm^2 = 0,0025 \\ m^2}$. \nLực do áp suất khí quyển tác dụng lên tấm phẳng: $\\mathrm{F = p.S = 76160 \\times 0,0025 = 190,40 \\ N}$."
+    },
+    {
+     "ma_cau": "K08020304045",
+     "loai": "tu_luan",
+     "de": "Tại một địa điểm, thí nghiệm Tô-ri-xe-li đo được chiều cao cột thuỷ ngân là 83 cm. Biết trọng lượng riêng của thuỷ ngân là $136000 \\mathrm{N/m^3}$. Tính lực do áp suất khí quyển tại địa điểm đó tác dụng lên một tấm phẳng có điện tích $20 \\mathrm{cm^2}$ đặt vuông góc với phương của áp lực.",
+     "dap_an": "225.76",
+     "loi_giai": "Áp suất khí quyển: $\\mathrm{p = 1360 \\times 83 = 112880 \\ Pa}$. \nĐổi $\\mathrm{20 \\ cm^2 = 0,002 \\ m^2}$. \nLực do áp suất khí quyển tác dụng lên tấm phẳng: $\\mathrm{F = p.S = 112880 \\times 0,002 = 225,76 \\ N}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00909",
+   "nhom_id": "KNB00392",
+   "thu_tu": 1,
+   "dang": "PHƯƠNG, CHIỀU VÀ ĐIỂM ĐẶT CỦA LỰC ĐẨY ARCHIMEDES",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020401007",
+     "loai": "trac_nghiem",
+     "de": "Một miếng sắt được nhúng chìm trong một cốc nước. Lực đẩy Archimedes do nước tác dụng có điểm đặt trên",
+     "lua_chon": [
+      "đáy cốc.",
+      "thành cốc.",
+      "mặt thoáng của nước.",
+      "miếng sắt."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Lực đẩy Archimedes là lực do chất lỏng tác dụng lên vật nên có điểm đặt trên vật, tức là trên miếng sắt."
+    },
+    {
+     "ma_cau": "K08020401010",
+     "loai": "trac_nghiem",
+     "de": "Khi kéo một gàu nước từ dưới giếng lên, lúc gàu còn ngập trong nước ta thấy nhẹ hơn lúc gàu đã lên khỏi mặt nước. Nguyên nhân là",
+     "lua_chon": [
+      "nước tác dụng lên gàu lực kéo hướng xuống.",
+      "nước tác dụng lên gàu lực đẩy hướng lên.",
+      "khối lượng nước trong gàu giảm khi ở dưới nước.",
+      "trọng lực tác dụng lên gàu bằng 0 khi ở dưới nước."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khi gàu còn ngập trong nước, nước tác dụng lên gàu lực đẩy Archimedes hướng thẳng đứng từ dưới lên.Lực này đỡ một phần trọng lượng của gàu nên ta thấy nhẹ hơn."
+    },
+    {
+     "ma_cau": "K08020401009",
+     "loai": "trac_nghiem",
+     "de": "Một vật được nhúng trong chất lỏng. So với trọng lực tác dụng lên vật, lực đẩy Archimedes có",
+     "lua_chon": [
+      "cùng phương, ngược chiều.",
+      "cùng phương, cùng chiều.",
+      "phương vuông góc với trọng lực.",
+      "phương xiên góc với trọng lực."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Trọng lực có phương thẳng đứng, chiều từ trên xuống.Lực đẩy Archimedes có phương thẳng đứng, chiều từ dưới lên.Vậy hai lực cùng phương, ngược chiều."
+    },
+    {
+     "ma_cau": "K08020401008",
+     "loai": "trac_nghiem",
+     "de": "Một hòn đá nằm chìm dưới đáy một hồ nước. Phát biểu nào sau đây về lực đẩy Archimedes tác dụng lên hòn đá là đúng?",
+     "lua_chon": [
+      "Lực đẩy có hướng thẳng đứng từ trên xuống.",
+      "Lực đẩy bằng 0 vì hòn đá đã chạm đáy hồ.",
+      "Lực đẩy có hướng thẳng đứng từ dưới lên.",
+      "Lực đẩy có hướng nằm ngang theo dòng nước."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Hòn đá vẫn nằm trong nước nên vẫn chịu lực đẩy Archimedes, có hướng thẳng đứng từ dưới lên."
+    },
+    {
+     "ma_cau": "K08020401001",
+     "loai": "trac_nghiem",
+     "de": "Lực đẩy Archimedes tác dụng lên một vật nhúng trong chất lỏng có phương",
+     "lua_chon": [
+      "thẳng đứng.",
+      "nằm ngang.",
+      "xiên góc với mặt chất lỏng.",
+      "song song với thành bình."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Lực đẩy Archimedes có phương thẳng đứng, chiều từ dưới lên trên."
+    },
+    {
+     "ma_cau": "K08020401002",
+     "loai": "trac_nghiem",
+     "de": "Lực đẩy Archimedes tác dụng lên một vật nhúng trong chất lỏng có chiều",
+     "lua_chon": [
+      "từ trên xuống dưới.",
+      "từ trái sang phải.",
+      "từ dưới lên trên.",
+      "từ phải sang trái."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Lực đẩy Archimedes có chiều từ dưới lên trên."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00910",
+   "nhom_id": "KNB00392",
+   "thu_tu": 2,
+   "dang": "NGUYÊN NHÂN SINH RA LỰC ĐẨY ARCHIMEDES",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020401017",
+     "loai": "trac_nghiem",
+     "de": "Áp lực của nước tác dụng lên mặt dưới của một vật nhúng chìm có hướng",
+     "lua_chon": [
+      "thẳng đứng từ trên xuống.",
+      "nằm ngang hướng vào vật.",
+      "thẳng đứng từ dưới lên.",
+      "nằm ngang hướng ra ngoài."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Áp lực của chất lỏng luôn vuông góc với bề mặt và ép vào vật.\nVới mặt dưới nằm ngang, áp lực có hướng thẳng đứng từ dưới lên."
+    },
+    {
+     "ma_cau": "K08020401018",
+     "loai": "trac_nghiem",
+     "de": "Hợp lực của tất cả các áp lực do chất lỏng tác dụng lên các mặt của một vật nhúng chìm có hướng",
+     "lua_chon": [
+      "thẳng đứng từ dưới lên.",
+      "thẳng đứng từ trên xuống.",
+      "nằm ngang theo mọi phía.",
+      "xiên góc về phía đáy bình."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Áp lực lên các mặt bên cân bằng nhau; áp lực lên mặt dưới lớn hơn áp lực lên mặt trên.\nVì vậy hợp lực của các áp lực có hướng thẳng đứng từ dưới lên, đó là lực đẩy Archimedes."
+    },
+    {
+     "ma_cau": "K08020401013",
+     "loai": "trac_nghiem",
+     "de": "Áp suất chất lỏng tác dụng lên mặt dưới của một vật nhúng chìm lớn hơn áp suất tác dụng lên mặt trên của vật vì",
+     "lua_chon": [
+      "mặt dưới ở sâu hơn mặt trên.",
+      "mặt dưới có diện tích lớn hơn.",
+      "mặt dưới gần tâm Trái Đất hơn.",
+      "mặt dưới chịu thêm trọng lượng vật."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Áp suất chất lỏng tăng theo độ sâu, mặt dưới của vật ở sâu hơn mặt trên nên chịu áp suất lớn hơn."
+    },
+    {
+     "ma_cau": "K08020401011",
+     "loai": "trac_nghiem",
+     "de": "Áp suất do chất lỏng gây ra tác dụng lên một vật nhúng trong chất lỏng theo",
+     "lua_chon": [
+      "phương thẳng đứng.",
+      "phương nằm ngang.",
+      "phương xiên.",
+      "mọi phương."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Chất lỏng gây áp suất theo mọi phương lên mọi điểm trên bề mặt vật nhúng trong nó."
+    },
+    {
+     "ma_cau": "K08020401016",
+     "loai": "trac_nghiem",
+     "de": "Một khối lập phương được nhúng chìm hoàn toàn trong nước. Áp lực của nước tác dụng lên hai mặt bên đối diện của khối lập phương",
+     "lua_chon": [
+      "hướng cùng chiều nhau.",
+      "có mặt bên trái lớn hơn.",
+      "có mặt bên phải lớn hơn.",
+      "cân bằng nhau."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Hai mặt bên đối diện ở cùng độ sâu, có diện tích bằng nhau nên chịu áp lực bằng nhau và ngược chiều. Các áp lực này cân bằng nhau nên lực đẩy Archimedes không có thành phần nằm ngang."
+    },
+    {
+     "ma_cau": "K08020401020",
+     "loai": "trac_nghiem",
+     "de": "Một khối gỗ nổi trên mặt nước, mặt trên của khối gỗ ở ngoài không khí. Lực đẩy Archimedes tác dụng lên khối gỗ do",
+     "lua_chon": [
+      "áp lực của nước lên mặt trên khối gỗ gây ra.",
+      "áp lực của nước lên mặt dưới khối gỗ gây ra.",
+      "áp lực của không khí lên mặt dưới gây ra.",
+      "trọng lượng của chính khối gỗ gây ra."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Mặt trên của khối gỗ không tiếp xúc với nước nên chỉ mặt dưới chịu áp lực của nước hướng lên.\nÁp lực này chính là lực đẩy Archimedes tác dụng lên khối gỗ."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00911",
+   "nhom_id": "KNB00392",
+   "thu_tu": 3,
+   "dang": "YẾU TỐ QUYẾT ĐỊNH ĐỘ LỚN LỰC ĐẨY ARCHIMEDES",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020401029",
+     "loai": "trac_nghiem",
+     "de": "Hai vật có cùng khối lượng, một vật bằng chì và một vật bằng nhôm, được nhúng chìm hoàn toàn trong nước. Biết khối lượng riêng của chì lớn hơn của nhôm. Lực đẩy Archimedes tác dụng lên",
+     "lua_chon": [
+      "vật bằng chì lớn hơn.",
+      "hai vật bằng nhau.",
+      "hai vật đều bằng 0.",
+      "vật bằng nhôm lớn hơn."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Hai vật cùng khối lượng, chì có khối lượng riêng lớn hơn nên vật bằng chì có thể tích nhỏ hơn.Vật bằng nhôm có thể tích lớn hơn nên chịu lực đẩy Archimedes lớn hơn."
+    },
+    {
+     "ma_cau": "K08020401023",
+     "loai": "trac_nghiem",
+     "de": "Hai quả cầu có cùng thể tích, một quả bằng sắt và một quả bằng nhôm, được nhúng chìm hoàn toàn trong nước. Lực đẩy Archimedes tác dụng lên hai quả cầu",
+     "lua_chon": [
+      "lớn hơn ở quả cầu sắt.",
+      "lớn hơn ở quả cầu nhôm.",
+      "bằng trọng lượng mỗi quả.",
+      "bằng nhau."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Hai quả cầu cùng thể tích, cùng chìm hoàn toàn trong nước nên d và V như nhau.Lực đẩy Archimedes không phụ thuộc chất làm vật, vì vậy hai lực đẩy bằng nhau."
+    },
+    {
+     "ma_cau": "K08020401030",
+     "loai": "trac_nghiem",
+     "de": "Một quả cầu được nhúng chìm một nửa thể tích trong nước, sau đó được nhúng chìm hoàn toàn.\nSo với lúc chìm một nửa, lực đẩy Archimedes khi quả cầu chìm hoàn toàn",
+     "lua_chon": [
+      "tăng gấp đôi.",
+      "giảm một nửa.",
+      "không thay đổi.",
+      "tăng gấp bốn."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Lực đẩy Archimedes tỉ lệ với thể tích phần vật chìm.\nThể tích phần chìm tăng gấp đôi nên lực đẩy tăng gấp đôi."
+    },
+    {
+     "ma_cau": "K08020401021",
+     "loai": "trac_nghiem",
+     "de": "Độ lớn của lực đẩy Archimedes tác dụng lên một vật nhúng trong chất lỏng phụ thuộc vào",
+     "lua_chon": [
+      "khối lượng của vật và độ sâu của vật.",
+      "chất làm vật và hình dạng của vật.",
+      "trọng lượng riêng của chất lỏng và thể tích phần vật chìm.",
+      "khối lượng riêng của vật và thể tích của bình."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Độ lớn lực đẩy Archimedes được tính bằng công thức $F_A = d \\cdot V$, trong đó $d$ là trọng lượng riêng của chất lỏng, $V$ là thể tích phần vật chìm."
+    },
+    {
+     "ma_cau": "K08020401024",
+     "loai": "trac_nghiem",
+     "de": "Ba vật có cùng thể tích nhưng khác hình dạng: một khối lập phương, một quả cầu và một khối trụ, cùng được nhúng chìm hoàn toàn trong nước. Lực đẩy Archimedes tác dụng lên ba vật",
+     "lua_chon": [
+      "lớn nhất ở khối lập phương.",
+      "bằng nhau.",
+      "lớn nhất ở quả cầu.",
+      "lớn nhất ở khối trụ."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ba vật cùng thể tích, cùng chìm hoàn toàn trong nước nên $d$ và $V$ như nhau.\nLực đẩy Archimedes không phụ thuộc hình dạng vật, vì vậy ba lực đẩy bằng nhau."
+    },
+    {
+     "ma_cau": "K08020401028",
+     "loai": "trac_nghiem",
+     "de": "Một quả cầu được nhúng chìm hoàn toàn trong một cốc nước. Sau đó, nhúng chìm hoàn toàn quả cầu ấy trong một bể lớn chứa nhiều nước hơn. Lực đẩy Archimedes tác dụng lên quả cầu trong bể lớn",
+     "lua_chon": [
+      "lớn hơn trong cốc nước.",
+      "nhỏ hơn trong cốc nước.",
+      "bằng trong cốc nước.",
+      "gấp đôi trong cốc nước."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Lực đẩy Archimedes chỉ phụ thuộc trọng lượng riêng của chất lỏng và thể tích phần vật chìm, không phụ thuộc lượng chất lỏng trong bình.Cả hai trường hợp quả cầu đều chìm hoàn toàn trong nước nên lực đẩy bằng nhau."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00918",
+   "nhom_id": "KNB00394",
+   "thu_tu": 1,
+   "dang": "SO SÁNH Fa VỚI TRỌNG LƯỢNG P",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020403005",
+     "loai": "trac_nghiem",
+     "de": "Một tàu ngầm đồ chơi có trọng lượng 6 N. Khi chìm hoàn toàn trong bể nước, tàu chịu lực đẩy Archimedes có độ lớn 6 N. Khi thả tay ra, hiện tượng xảy ra là",
+     "lua_chon": [
+      "Vật lơ lửng trong chất lỏng, vì $\\mathrm{F_A} > \\mathrm{P}$.",
+      "Vật nổi lên, vì $\\mathrm{F_A} > \\mathrm{P}$.",
+      "Vật chìm xuống, vì $\\mathrm{F_A} < \\mathrm{P}$.",
+      "Vật lơ lửng trong chất lỏng, vì $\\mathrm{F_A} = \\mathrm{P}$."
+     ],
+     "dap_an": "D",
+     "loi_giai": "So sánh lực đẩy Archimedes khi vật chìm hoàn toàn với trọng lượng của vật:\n$$\\mathrm{F_A} = 6 \\mathrm{N} = \\mathrm{P} = 6 \\mathrm{N}$$\nVì vậy vật lơ lửng trong chất lỏng."
+    },
+    {
+     "ma_cau": "K08020403009",
+     "loai": "trac_nghiem",
+     "de": "Bốn vật được nhúng chìm hoàn toàn trong nước. Trọng lượng của mỗi vật và lực đẩy Archimedes tác dụng lên mỗi vật khi chìm hoàn toàn cho trong bảng.\n$\\begin{array}{|c|c|c|}\\hline \\text{Vật} & \\text{Trọng lượng P (N)} & \\text{Lực đẩy Archimedes khi chìm hoàn toàn (N)} \\\\ \\hline 1 & 6 & 9 \\\\ \\hline 2 & 10 & 10 \\\\ \\hline 3 & 4 & 7 \\\\ \\hline 4 & 8 & 5 \\\\ \\hline \\end{array}$\nKhi thả tay ra, vật nào chìm xuống đáy?",
+     "lua_chon": [
+      "Vật 1.",
+      "Vật 2.",
+      "Vật 3.",
+      "Vật 4."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Vật chìm xuống khi $F_A < P$.\nChỉ vật 4 có $F_A = 5 \\mathrm{\\ N} < P = 8 \\mathrm{\\ N}$ nên vật 4 chìm xuống đáy."
+    },
+    {
+     "ma_cau": "K08020403002",
+     "loai": "trac_nghiem",
+     "de": "Một quả bóng nhựa có trọng lượng 5 N. Khi được nhúng chìm hoàn toàn trong nước, vật chịu lực đẩy Archimedes có độ lớn 8 N. Khi thả tay ra, hiện tượng xảy ra là",
+     "lua_chon": [
+      "Vật nổi lên, vì $\\mathrm{F_A}$ < P.",
+      "Vật nổi lên, vì $\\mathrm{F_A}$ > P.",
+      "Vật chìm xuống, vì $\\mathrm{F_A}$ < P.",
+      "Vật lơ lửng trong chất lỏng, vì $\\mathrm{F_A}$ = P."
+     ],
+     "dap_an": "B",
+     "loi_giai": "So sánh lực đẩy Archimedes khi vật chìm hoàn toàn với trọng lượng của vật:\n$\\mathrm{F_A}$ = 8 N > P = 5 N\nVì vậy vật nổi lên."
+    },
+    {
+     "ma_cau": "K08020403001",
+     "loai": "trac_nghiem",
+     "de": "Một vật được nhúng chìm hoàn toàn trong chất lỏng rồi thả ra. Gọi P là trọng lượng của vật, $\\mathrm{F_A}$ là lực đẩy Archimedes tác dụng lên vật. Vật nổi lên khi",
+     "lua_chon": [
+      "$\\mathrm{F_A}$ < P.",
+      "$\\mathrm{F_A}$ = P.",
+      "$\\mathrm{F_A}$ > P.",
+      "$\\mathrm{F_A}$ = 0."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Vật nổi lên khi lực đẩy Archimedes lớn hơn trọng lượng của vật: $\\mathrm{F_A}$ > P."
+    },
+    {
+     "ma_cau": "K08020403007",
+     "loai": "trac_nghiem",
+     "de": "Một chiếc thìa inox có khối lượng $0.05 \\mathrm{kg}$. Khi chìm hoàn toàn trong bát nước, thìa chịu lực đẩy Archimedes có độ lớn $0.07 \\mathrm{N}$. Biết $P = 10m$. Khi thả tay ra, hiện tượng xảy ra là",
+     "lua_chon": [
+      "Vật chìm xuống, vì $\\mathrm{F_A} < P$.",
+      "Vật chìm xuống, vì $\\mathrm{F_A} > P$.",
+      "Vật nổi lên, vì $\\mathrm{F_A} > P$.",
+      "Vật lơ lửng trong chất lỏng, vì $\\mathrm{F_A} = P$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Trọng lượng chiếc thìa:\n$P = 10m = 10 \\cdot 0.05 = 0.5 \\mathrm{(N)}$\nSo sánh lực đẩy Archimedes khi vật chìm hoàn toàn với trọng lượng của vật:\n$\\mathrm{F_A} = 0.07 \\mathrm{N} < P = 0.5 \\mathrm{N}$\nVì vậy vật chìm xuống."
+    },
+    {
+     "ma_cau": "K08020403006",
+     "loai": "trac_nghiem",
+     "de": "Một quả cam có khối lượng 0,2 kg. Khi được ấn chìm hoàn toàn trong nước, quả cam chịu lực đẩy Archimedes có độ lớn 2,3 N. Biết $\\mathrm{P} = 10 \\mathrm{m}$. Khi thả tay ra, hiện tượng xảy ra là",
+     "lua_chon": [
+      "Vật nổi lên, vì $\\mathrm{F_A} < \\mathrm{P}$.",
+      "Vật nổi lên, vì $\\mathrm{F_A} > \\mathrm{P}$.",
+      "Vật chìm xuống, vì $\\mathrm{F_A} < \\mathrm{P}$.",
+      "Vật lơ lửng trong chất lỏng, vì $\\mathrm{F_A} = \\mathrm{P}$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Trọng lượng quả cam:\n$$\\mathrm{P} = 10 \\mathrm{m} = 10 \\cdot 0.2 = 2 \\mathrm{(N)}$$\nSo sánh lực đẩy Archimedes khi vật chìm hoàn toàn với trọng lượng của vật:\n$$\\mathrm{F_A} = 2.3 \\mathrm{N} > \\mathrm{P} = 2 \\mathrm{N}$$\nVì vậy vật nổi lên."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00919",
+   "nhom_id": "KNB00394",
+   "thu_tu": 2,
+   "dang": "SO SÁNH KHỐI LƯỢNG RIÊNG VẬT VÀ CHẤT LỎNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020403013",
+     "loai": "trac_nghiem",
+     "de": "Thả một khối nhôm đặc có khối lượng riêng $2700\\ \\mathrm{kg/m^3}$ vào nước có khối lượng riêng $1000\\ \\mathrm{kg/m^3}$. Hiện tượng xảy ra là",
+     "lua_chon": [
+      "Vật chìm xuống, vì $\\mathrm{D_{vật} < D_{lỏng}}$.",
+      "Vật nổi lên, vì $\\mathrm{D_{vật} < D_{lỏng}}$.",
+      "Vật chìm xuống, vì $\\mathrm{D_{vật} > D_{lỏng}}$.",
+      "Vật lơ lửng trong chất lỏng, vì $\\mathrm{D_{vật} = D_{lỏng}}$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "So sánh khối lượng riêng của vật với khối lượng riêng của chất lỏng:\n$\\mathrm{D_{nhôm} = 2700\\ \\mathrm{kg/m^3} > D_{nước} = 1000\\ \\mathrm{kg/m^3}}$\nVì vậy vật chìm xuống."
+    },
+    {
+     "ma_cau": "K08020403020",
+     "loai": "trac_nghiem",
+     "de": "Một khối đặc có khối lượng riêng $800\\ \\mathrm{kg/m^3}$. Biết khối lượng riêng của xăng là $700\\ \\mathrm{kg/m^3}$, của dầu ăn là $920\\ \\mathrm{kg/m^3}$, của nước là $1\\ 000\\ \\mathrm{kg/m^3}$, của nước biển là $1\\ 030\\ \\mathrm{kg/m^3}$. Thả khối này vào chất lỏng nào thì khối chìm xuống đáy?",
+     "lua_chon": [
+      "Dầu ăn.",
+      "Nước.",
+      "Xăng.",
+      "Nước biển."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Vật đặc chìm xuống khi khối lượng riêng của vật lớn hơn khối lượng riêng của chất lỏng.\nTrong bốn chất lỏng, chỉ xăng có $D = 700\\ \\mathrm{kg/m^3} < 800\\ \\mathrm{kg/m^3}$, nên khối chìm xuống đáy khi thả vào xăng."
+    },
+    {
+     "ma_cau": "K08020403019",
+     "loai": "trac_nghiem",
+     "de": "Một khối đặc có trọng lượng riêng $8\\,500\\ \\mathrm{N/m^3}$ được thả vào nước biển có khối lượng riêng $1\\,030\\ \\mathrm{kg/m^3}$. Biết $\\mathrm{d} = 10\\mathrm{D}$. Hiện tượng xảy ra là",
+     "lua_chon": [
+      "Vật chìm xuống, vì $\\mathrm{d_{vat}} > \\mathrm{d_{long}}$.",
+      "Vật nổi lên, vì $\\mathrm{d_{vat}} < \\mathrm{d_{long}}$.",
+      "Vật nổi lên, vì $\\mathrm{d_{vat}} > \\mathrm{d_{long}}$.",
+      "Vật lơ lửng trong chất lỏng, vì $\\mathrm{d_{vat}} = \\mathrm{d_{long}}$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Trọng lượng riêng của nước biển:\n$\\mathrm{d_{long}} = 10\\mathrm{D} = 10 \\cdot 1\\,030 = 10\\,300\\ \\mathrm{(N/m^3)}$\nSo sánh: $\\mathrm{d_{vat}} = 8\\,500\\ \\mathrm{N/m^3} < \\mathrm{d_{long}} = 10\\,300\\ \\mathrm{N/m^3}$\nVì vậy vật nổi lên."
+    },
+    {
+     "ma_cau": "K08020403011",
+     "loai": "trac_nghiem",
+     "de": "Thả một vật đặc vào một chất lỏng. Vật nổi lên khi",
+     "lua_chon": [
+      "khối lượng riêng của vật nhỏ hơn khối lượng riêng của chất lỏng.",
+      "khối lượng riêng của vật lớn hơn khối lượng riêng của chất lỏng.",
+      "khối lượng riêng của vật bằng khối lượng riêng của chất lỏng.",
+      "khối lượng riêng của vật nhỏ hơn khối lượng của chất lỏng."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Vật đặc nổi lên khi khối lượng riêng của vật nhỏ hơn khối lượng riêng của chất lỏng."
+    },
+    {
+     "ma_cau": "K08020403016",
+     "loai": "trac_nghiem",
+     "de": "Thả một khối nhựa đặc có khối lượng riêng $950\\ \\mathrm{kg/m^3}$ vào một bình dầu ăn có khối lượng riêng $920\\ \\mathrm{kg/m^3}$. Hiện tượng xảy ra là",
+     "lua_chon": [
+      "Vật chìm xuống, vì $\\mathrm{D_{vật}} < \\mathrm{D_{lỏng}}$.",
+      "Vật nổi lên, vì $\\mathrm{D_{vật}} < \\mathrm{D_{lỏng}}$.",
+      "Vật chìm xuống, vì $\\mathrm{D_{vật}} > \\mathrm{D_{lỏng}}$.",
+      "Vật lơ lửng trong chất lỏng, vì $\\mathrm{D_{vật}} = \\mathrm{D_{lỏng}}$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "So sánh khối lượng riêng của vật với khối lượng riêng của chất lỏng:\n$\\mathrm{D_{nhựa}} = 950\\ \\mathrm{kg/m^3} > \\mathrm{D_{dầu\\ ăn}} = 920\\ \\mathrm{kg/m^3}$\nVì vậy vật chìm xuống."
+    },
+    {
+     "ma_cau": "K08020403015",
+     "loai": "trac_nghiem",
+     "de": "Thả một viên bi sắt có khối lượng riêng $7800 \\text{ kg/m}^3$ vào một cốc thuỷ ngân có khối lượng riêng $13600 \\text{ kg/m}^3$. Hiện tượng xảy ra là",
+     "lua_chon": [
+      "Vật nổi lên, vì $\\text{D}_{vật} > \\text{D}_{lỏng}$.",
+      "Vật nổi lên, vì $\\text{D}_{vật} < \\text{D}_{lỏng}$.",
+      "Vật chìm xuống, vì $\\text{D}_{vật} > \\text{D}_{lỏng}$.",
+      "Vật lơ lửng trong chất lỏng, vì $\\text{D}_{vật} = \\text{D}_{lỏng}$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "So sánh khối lượng riêng của vật với khối lượng riêng của chất lỏng:\n$\\text{D}_{sắt} = 7800 \\text{ kg/m}^3 < \\text{D}_{thuỷ ngân} = 13600 \\text{ kg/m}^3$\nVì vậy vật nổi lên."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB00920",
+   "nhom_id": "KNB00394",
+   "thu_tu": 3,
+   "dang": "XÁC ĐỊNH TRẠNG THÁI CỦA VẬT",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 10,
+   "cau_mau": [
+    {
+     "ma_cau": "K08020403029",
+     "loai": "trac_nghiem",
+     "de": "Một vật đặc có khối lượng $520\\ \\mathrm{g}$ và thể tích $0.5\\ \\mathrm{dm^3}$. Thả vật vào nước biển có khối lượng riêng $1\\ 030\\ \\mathrm{kg/m^3}$. Hiện tượng xảy ra là",
+     "lua_chon": [
+      "Vật chìm xuống, vì $\\mathrm{D_{vật}} = 1\\ 040\\ \\mathrm{kg/m^3}$.",
+      "Vật nổi lên, vì $\\mathrm{D_{vật}} = 104\\ \\mathrm{kg/m^3}$.",
+      "Vật nổi lên, vì $\\mathrm{D_{vật}} = 1\\ 040\\ \\mathrm{kg/m^3}$.",
+      "Vật lơ lửng trong chất lỏng, vì $\\mathrm{D_{vật}} = 1\\ 040\\ \\mathrm{kg/m^3}$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi đơn vị:\n$\\mathrm{m} = 520\\ \\mathrm{g} = 0.52\\ \\mathrm{kg}$; $\\mathrm{V} = 0.5\\ \\mathrm{dm^3} = 0.0005\\ \\mathrm{m^3}$\nKhối lượng riêng của vật:\n$\\mathrm{D} = \\dfrac{\\mathrm{m}}{\\mathrm{V}} = \\dfrac{0.52}{0.0005} = 1\\ 040\\ \\mathrm{(kg/m^3)}$\nSo sánh với khối lượng riêng của nước biển:\n$\\mathrm{D_{vật}} = 1\\ 040\\ \\mathrm{kg/m^3} > \\mathrm{D_{lỏng}} = 1\\ 030\\ \\mathrm{kg/m^3}$\nVì vậy vật chìm xuống."
+    },
+    {
+     "ma_cau": "K08020403022",
+     "loai": "trac_nghiem",
+     "de": "Một khối kim loại đặc có khối lượng $2,7\\text{ kg}$ và thể tích $0,001\\text{ m}^3$. Thả vật vào nước có khối lượng riêng $1\\ 000\\text{ kg/m}^3$. Hiện tượng xảy ra là",
+     "lua_chon": [
+      "Vật chìm xuống, vì $D_{\\text{vật}} = 2\\ 700\\text{ kg/m}^3$.",
+      "Vật nổi lên, vì $D_{\\text{vật}} = 270\\text{ kg/m}^3$.",
+      "Vật nổi lên, vì $D_{\\text{vật}} = 2\\ 700\\text{ kg/m}^3$.",
+      "Vật lơ lửng trong chất lỏng, vì $D_{\\text{vật}} = 2\\ 700\\text{ kg/m}^3$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng riêng của vật:\n$D = \\dfrac{m}{V} = \\dfrac{2,7}{0,001} = 2\\ 700\\text{ (kg/m}^3$)\nSo sánh với khối lượng riêng của nước:\n$D_{\\text{vật}} = 2\\ 700\\text{ kg/m}^3 > D_{\\text{lỏng}} = 1\\ 000\\text{ kg/m}^3$\nVì vậy vật chìm xuống."
+    },
+    {
+     "ma_cau": "K08020403026",
+     "loai": "trac_nghiem",
+     "de": "Một vật đặc có khối lượng $270 \\mathrm{\\ g}$ và thể tích $300 \\mathrm{\\ cm^3}$. Thả vật vào nước có khối lượng riêng $1000 \\mathrm{\\ kg/m^3}$. Hiện tượng xảy ra là",
+     "lua_chon": [
+      "Vật chìm xuống, vì $\\mathrm{D_{vật}} = 9000 \\mathrm{\\ kg/m^3}$.",
+      "Vật chìm xuống, vì $\\mathrm{D_{vật}} = 900 \\mathrm{\\ kg/m^3}$.",
+      "Vật nổi lên, vì $\\mathrm{D_{vật}} = 900 \\mathrm{\\ kg/m^3}$.",
+      "Vật lơ lửng trong chất lỏng, vì $\\mathrm{D_{vật}} = 900 \\mathrm{\\ kg/m^3}$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi đơn vị:\n$$\\mathrm{m} = 270 \\mathrm{\\ g} = 0,27 \\mathrm{\\ kg}; \\mathrm{V} = 300 \\mathrm{\\ cm^3} = 0,0003 \\mathrm{\\ m^3}$$\nKhối lượng riêng của vật:\n$$D = \\dfrac{m}{V} = \\dfrac{0,27}{0,0003} = 900 \\mathrm{\\ (kg/m^3)}$$\nSo sánh với khối lượng riêng của nước:\n$$\\mathrm{D_{vật}} = 900 \\mathrm{\\ kg/m^3} < \\mathrm{D_{lỏng}} = 1000 \\mathrm{\\ kg/m^3}$$\nVì vậy vật nổi lên."
+    },
+    {
+     "ma_cau": "K08020403021",
+     "loai": "trac_nghiem",
+     "de": "Một khối gỗ đặc có khối lượng $0,6\\text{ kg}$ và thể tích $0,001\\text{ m}^3$. Thả vật vào nước có khối lượng riêng $1\\ 000\\text{ kg/m}^3$. Hiện tượng xảy ra là",
+     "lua_chon": [
+      "Vật chìm xuống, vì $D_{\\text{vật}} = 6\\ 000\\text{ kg/m}^3$.",
+      "Vật chìm xuống, vì $D_{\\text{vật}} = 600\\text{ kg/m}^3$.",
+      "Vật lơ lửng trong chất lỏng, vì $D_{\\text{vật}} = 600\\text{ kg/m}^3$.",
+      "Vật nổi lên, vì $D_{\\text{vật}} = 600\\text{ kg/m}^3$."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khối lượng riêng của vật:\n$D = \\dfrac{m}{V} = \\dfrac{0,6}{0,001} = 600\\text{ (kg/m}^3$)\nSo sánh với khối lượng riêng của nước:\n$D_{\\text{vật}} = 600\\text{ kg/m}^3 < D_{\\text{lỏng}} = 1\\ 000\\text{ kg/m}^3$\nVì vậy vật nổi lên."
+    },
+    {
+     "ma_cau": "K08020403024",
+     "loai": "trac_nghiem",
+     "de": "Một khối nhựa đặc có khối lượng $0,46$ kg và thể tích $0,0005$ m$^3$. Thả vật vào xăng có khối lượng riêng $700$ kg/m$^3$. Hiện tượng xảy ra là",
+     "lua_chon": [
+      "Vật nổi lên, vì $\\mathrm{D_{vật}}=92\\ \\mathrm{kg}/\\mathrm{m}^3$.",
+      "Vật chìm xuống, vì $\\mathrm{D_{vật}}=920\\ \\mathrm{kg}/\\mathrm{m}^3$.",
+      "Vật nổi lên, vì $\\mathrm{D_{vật}}=920\\ \\mathrm{kg}/\\mathrm{m}^3$.",
+      "Vật lơ lửng trong chất lỏng, vì $\\mathrm{D_{vật}}=920\\ \\mathrm{kg}/\\mathrm{m}^3$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khối lượng riêng của vật:\n$$D=\\dfrac{m}{V}=\\dfrac{0,46}{0,0005}=920\\left(\\mathrm{kg}/\\mathrm{m}^3\\right)$$\nSo sánh với khối lượng riêng của xăng:\n$$\\mathrm{D_{vật}}=920\\ \\mathrm{kg}/\\mathrm{m}^3>\\mathrm{D_{lỏng}}=700\\ \\mathrm{kg}/\\mathrm{m}^3$$\nVì vậy vật chìm xuống."
+    },
+    {
+     "ma_cau": "K08020403025",
+     "loai": "trac_nghiem",
+     "de": "Một khối xốp cứng có khối lượng $4,5 \\mathrm{\\ kg}$ và thể tích $0,005 \\mathrm{\\ m^3}$. Thả vật vào nước biển có khối lượng riêng $1030 \\mathrm{\\ kg/m^3}$. Hiện tượng xảy ra là",
+     "lua_chon": [
+      "Vật nổi lên, vì $\\mathrm{D_{vật}} = 900 \\mathrm{\\ kg/m^3}$.",
+      "Vật chìm xuống, vì $\\mathrm{D_{vật}} = 9000 \\mathrm{\\ kg/m^3}$.",
+      "Vật chìm xuống, vì $\\mathrm{D_{vật}} = 900 \\mathrm{\\ kg/m^3}$.",
+      "Vật lơ lửng trong chất lỏng, vì $\\mathrm{D_{vật}} = 900 \\mathrm{\\ kg/m^3}$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng riêng của vật:\n$$D = \\dfrac{m}{V} = \\dfrac{4,5}{0,005} = 900 \\mathrm{\\ (kg/m^3)}$$\nSo sánh với khối lượng riêng của nước biển:\n$$\\mathrm{D_{vật}} = 900 \\mathrm{\\ kg/m^3} < \\mathrm{D_{lỏng}} = 1030 \\mathrm{\\ kg/m^3}$$\nVì vậy vật nổi lên."
+    }
+   ]
+  }
+ ]
+}

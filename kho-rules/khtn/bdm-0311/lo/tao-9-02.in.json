@@ -1,0 +1,1208 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00458",
+   "khoi": "9",
+   "chu_de": "Quang học",
+   "chuyen_de": "Lăng kính",
+   "nhom": "Ứng dụng thực tế của lăng kính",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Mục tiêu: Dùng hiện tượng tán sắc ánh sáng để giải thích hiện tượng trong tự nhiên như cầu vồng\nCơ sở lý thuyết & Giải thích:\nSau cơn mưa, trong không khí có vô số các giọt nước lơ lửng. Mỗi giọt nước nhỏ xíu này đóng vai trò như một lăng kính siêu nhỏ.\nKhi ánh sáng Mặt Trời (ánh sáng trắng) chiếu vào các giọt nước này, nó bị khúc xạ và tán sắc thành dải màu từ Đỏ đến Tím.\nÁnh sáng tiếp tục bị phản xạ toàn phần ở mặt trong của giọt nước rồi ló ra ngoài, truyền vào mắt người quan sát, tạo nên dải màu cầu vồng rực rỡ trên bầu trời.\nVí dụ minh họa: Tại sao ta thường chỉ nhìn thấy cầu vồng sau những cơn mưa khi có ánh nắng Mặt Trời chiếu vào?\nHướng dẫn giải\nVì để tạo ra cầu vồng cần 2 yếu tố: Ánh sáng trắng (từ Mặt Trời) và Lăng kính (chính là các giọt nước mưa còn đọng lại trong không khí). Nếu không có mưa (không có giọt nước làm lăng kính) hoặc không có nắng (không có nguồn sáng trắng) thì sẽ không có hiện tượng tán sắc tạo ra cầu vồng.",
+   "can_dien_ly_thuyet_nhom": false,
+   "cau": [
+    {
+     "ma_cau": "K09020304001",
+     "loai": "trac_nghiem",
+     "de": "Trong cầu vồng, các dải màu được sắp xếp theo đúng thứ tự nào (từ trên xuống hoặc từ ngoài vào trong)?",
+     "lua_chon": [
+      "Đỏ, cam, vàng, lục, lam, chàm, tím",
+      "Tím, chàm, lam, lục, vàng, cam, đỏ",
+      "Đỏ, vàng, lục, tím, cam, lam, chàm",
+      "Thứ tự ngẫu nhiên, không cố định"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Do tia đỏ lệch ít nhất và tia tím lệch nhiều nhất qua giọt nước, dải màu cầu vồng luôn theo thứ tự đỏ, cam, vàng, lục, lam, chàm, tím.\n\nVì sao các phương án khác sai:\n- B: Đây là thứ tự ngược, không đúng với góc lệch tăng dần từ đỏ đến tím.\n- C: Thứ tự bị xáo trộn, không đúng quy luật góc lệch tăng dần.\n- D: Thứ tự màu trong cầu vồng luôn cố định theo góc lệch, không ngẫu nhiên."
+    },
+    {
+     "ma_cau": "K09020304002",
+     "loai": "trac_nghiem",
+     "de": "Khi chiếu một chùm ánh sáng trắng hẹp qua lăng kính trong phòng tối, ta quan sát được gì trên màn chắn phía sau?",
+     "lua_chon": [
+      "Một vệt sáng trắng duy nhất",
+      "Nhiều vệt sáng trắng tách rời nhau",
+      "Một vệt sáng đen",
+      "Một dải màu liên tục từ đỏ đến tím"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Lăng kính tán sắc ánh sáng trắng thành dải màu liên tục từ đỏ đến tím do các màu có góc lệch khác nhau.\n\nVì sao các phương án khác sai:\n- A: Nếu vẫn là vệt trắng duy nhất thì không có hiện tượng tán sắc xảy ra.\n- B: Các màu tạo thành dải liên tục sát nhau, không tách thành các vệt trắng rời rạc.\n- C: Ánh sáng trắng qua lăng kính vẫn tạo ra ánh sáng có màu, không phải vệt tối."
+    },
+    {
+     "ma_cau": "K09020304003",
+     "loai": "trac_nghiem",
+     "de": "Muốn quan sát được cầu vồng, cần có đồng thời những điều kiện nào?",
+     "lua_chon": [
+      "Chỉ cần trời có mây đen",
+      "Nhiệt độ không khí phải rất thấp",
+      "Chỉ cần trời tối và có ánh trăng",
+      "Ánh sáng mặt trời và giọt nước trong không khí"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Cầu vồng cần có ánh sáng trắng của Mặt Trời chiếu tới các giọt nước, đóng vai trò lăng kính để tán sắc ánh sáng.\n\nVì sao các phương án khác sai:\n- A: Mây đen chỉ gây mưa, không tạo tán sắc nếu không có ánh sáng mặt trời chiếu tới.\n- B: Nhiệt độ không khí không phải là điều kiện gây ra tán sắc ánh sáng.\n- C: Trời tối hoàn toàn thì không có ánh sáng mặt trời để tán sắc, không thể có cầu vồng."
+    },
+    {
+     "ma_cau": "K09020304004",
+     "loai": "trac_nghiem",
+     "de": "Một viên kim cương cắt nhiều mặt phẳng lấp lánh nhiều màu sắc dưới ánh sáng trắng. Hiện tượng này liên quan chủ yếu đến quá trình nào?",
+     "lua_chon": [
+      "Kim cương chỉ phản chiếu lại đúng màu trắng",
+      "Kim cương tự phát ra ánh sáng màu",
+      "Tán sắc ánh sáng qua các mặt cắt như lăng kính nhỏ",
+      "Ánh sáng bị nhiễm điện khi qua kim cương"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Các mặt cắt của kim cương đóng vai trò như những lăng kính nhỏ, tán sắc ánh sáng trắng thành nhiều màu lấp lánh.\n\nVì sao các phương án khác sai:\n- A: Nếu chỉ phản chiếu màu trắng, kim cương sẽ không lấp lánh nhiều màu như quan sát được.\n- B: Kim cương không tự phát sáng, chỉ tán sắc ánh sáng chiếu vào nó.\n- D: Hiện tượng này là tán sắc ánh sáng, không liên quan đến nhiễm điện."
+    },
+    {
+     "ma_cau": "K09020304005",
+     "loai": "trac_nghiem",
+     "de": "Vì sao cầu vồng luôn có màu đỏ ở phía trên (ngoài) và màu tím ở phía dưới (trong) của dải màu?",
+     "lua_chon": [
+      "Vì tia tím bị giọt nước hấp thụ một phần",
+      "Vì tia đỏ nặng hơn nên rơi xuống chậm hơn",
+      "Vì mắt người nhìn màu đỏ rõ hơn màu tím",
+      "Tia đỏ lệch ít nhất, tia tím lệch nhiều nhất"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Do góc lệch của tia đỏ nhỏ nhất và tia tím lớn nhất khi tán sắc qua giọt nước, vị trí các dải màu được sắp xếp theo đúng thứ tự đó.\n\nVì sao các phương án khác sai:\n- A: Vị trí các màu do góc lệch khác nhau quyết định, không phải do hấp thụ.\n- B: Ánh sáng không có khối lượng để \"rơi xuống\" chậm hay nhanh như vật thể.\n- C: Khả năng nhìn màu của mắt không quyết định vị trí các dải màu trong cầu vồng."
+    },
+    {
+     "ma_cau": "K09020304006",
+     "loai": "trac_nghiem",
+     "de": "Khi nhìn xuyên qua cạnh dày của một tấm kính (như mép bàn kính) dưới ánh nắng, đôi khi ta thấy các viền màu sắc như cầu vồng nhỏ. Hiện tượng này có cùng bản chất với hiện tượng nào?",
+     "lua_chon": [
+      "Tán sắc ánh sáng như qua lăng kính",
+      "Phản xạ ánh sáng trên bề mặt kính",
+      "Sự hấp thụ ánh sáng của kính",
+      "Hiện tượng nhiễm điện do cọ xát"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Cạnh dày của tấm kính có hai mặt nghiêng như lăng kính nhỏ; ánh sáng trắng đi qua bị khúc xạ hai lần và tán sắc thành các viền màu, giống hệt nguyên lí tán sắc qua lăng kính.\n\nVì sao các phương án khác sai:\n- B: Phản xạ chỉ làm ánh sáng đổi hướng, không tách thành các màu khác nhau.\n- C: Hấp thụ làm giảm cường độ ánh sáng, không tạo ra các viền màu sắc.\n- D: Nhiễm điện do cọ xát không liên quan đến hiện tượng quang học tán sắc ánh sáng."
+    },
+    {
+     "ma_cau": "K09020304007",
+     "loai": "trac_nghiem",
+     "de": "Buổi sáng, nhìn giọt sương đọng trên lá dưới ánh nắng, ta thấy giọt sương lấp lánh nhiều màu. Hiện tượng này cùng bản chất với hiện tượng nào?",
+     "lua_chon": [
+      "Phản xạ ánh sáng trên gương phẳng",
+      "Tán sắc ánh sáng qua lăng kính",
+      "Sự hấp thụ ánh sáng của lá cây",
+      "Sự truyền thẳng của ánh sáng"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Giọt sương làm ánh sáng Mặt Trời khúc xạ và bị tách thành nhiều màu giống như khi qua lăng kính (tán sắc ánh sáng).\n\nVì sao các phương án khác sai:\n- A: Gương phẳng không tách ánh sáng trắng thành nhiều màu.\n- C: Lá cây hấp thụ ánh sáng không tạo ra các màu lấp lánh.\n- D: Ánh sáng bị khúc xạ khi qua giọt sương, không truyền thẳng."
+    },
+    {
+     "ma_cau": "K09020304008",
+     "loai": "trac_nghiem",
+     "de": "Trong một buổi trình diễn ánh sáng, người ta chiếu một chùm laser đơn sắc (chỉ một màu) qua một lăng kính. Kết quả quan sát được trên màn là gì?",
+     "lua_chon": [
+      "Một dải bảy màu như tán sắc ánh sáng trắng",
+      "Chùm tia bị hấp thụ hết trong lăng kính",
+      "Chùm tia bị lệch hướng nhưng vẫn giữ nguyên một màu ban đầu",
+      "Chùm tia tách thành hai tia cùng màu đối xứng nhau"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ánh sáng laser là ánh sáng đơn sắc, chỉ có một màu nên khi qua lăng kính chỉ bị khúc xạ (lệch hướng), không có gì để tách thành các màu khác.\n\nVì sao các phương án khác sai:\n- A: Tán sắc thành bảy màu chỉ xảy ra với ánh sáng trắng (gồm nhiều màu), không xảy ra với ánh sáng đơn sắc.\n- B: Lăng kính làm ánh sáng khúc xạ (lệch hướng) và truyền qua, không làm ánh sáng biến mất.\n- D: Lăng kính chỉ tạo ra một tia ló, không tách thành hai tia đối xứng."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00460",
+   "khoi": "9",
+   "chu_de": "Quang học",
+   "chuyen_de": "Thấu kính",
+   "nhom": "Các dạng bài tập cơ bản của thấu kính",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K09020401001",
+     "loai": "trac_nghiem",
+     "de": "Thấu kính có phần rìa mỏng hơn phần giữa là loại thấu kính nào?",
+     "lua_chon": [
+      "Thấu kính phân kì",
+      "Gương cầu lồi",
+      "Gương cầu lõm",
+      "Thấu kính hội tụ"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Thấu kính hội tụ có phần rìa mỏng hơn phần giữa (thấu kính lồi).\n\nVì sao các phương án khác sai:\n- A: Thấu kính phân kì có phần rìa dày hơn phần giữa, ngược với mô tả.\n- B: Gương cầu lồi là gương, không phải thấu kính.\n- C: Gương cầu lõm là gương, không phải thấu kính."
+    },
+    {
+     "ma_cau": "K09020401002",
+     "loai": "trac_nghiem",
+     "de": "Thấu kính có phần rìa dày hơn phần giữa là loại thấu kính nào?",
+     "lua_chon": [
+      "Thấu kính hội tụ",
+      "Thấu kính phân kì",
+      "Gương phẳng",
+      "Gương cầu lõm"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Thấu kính phân kì có phần rìa dày hơn phần giữa (thấu kính lõm).\n\nVì sao các phương án khác sai:\n- A: Thấu kính hội tụ có phần rìa mỏng hơn phần giữa, ngược với mô tả.\n- C: Gương phẳng không có phần rìa dày hay mỏng khác nhau.\n- D: Gương cầu lõm là gương, không phải thấu kính."
+    },
+    {
+     "ma_cau": "K09020401003",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một chùm sáng song song trục chính vào một thấu kính. Sau khi qua thấu kính, chùm tia ló hội tụ tại một điểm. Đó là thấu kính gì?",
+     "lua_chon": [
+      "Thấu kính phân kì",
+      "Gương cầu lồi",
+      "Gương phẳng",
+      "Thấu kính hội tụ"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Thấu kính hội tụ làm chùm tia sáng song song hội tụ tại tiêu điểm sau khi ló ra.\n\nVì sao các phương án khác sai:\n- A: Thấu kính phân kì làm chùm tia ló loe rộng ra, không hội tụ.\n- B: Gương cầu lồi là gương, không phải thấu kính.\n- C: Gương phẳng không làm đổi hướng chùm tia song song."
+    },
+    {
+     "ma_cau": "K09020401004",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một chùm sáng song song trục chính vào một thấu kính. Sau khi qua thấu kính, chùm tia ló loe rộng ra. Đó là thấu kính gì?",
+     "lua_chon": [
+      "Thấu kính phân kì",
+      "Thấu kính hội tụ",
+      "Gương cầu lõm",
+      "Gương phẳng"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thấu kính phân kì làm chùm tia sáng song song loe rộng ra sau khi ló.\n\nVì sao các phương án khác sai:\n- B: Thấu kính hội tụ làm chùm tia ló hội tụ tại một điểm, không loe ra.\n- C: Gương cầu lõm là gương, không phải thấu kính.\n- D: Gương phẳng không làm đổi hướng chùm tia song song."
+    },
+    {
+     "ma_cau": "K09020401005",
+     "loai": "trac_nghiem",
+     "de": "Quan sát hình vẽ đường truyền chùm tia sáng qua một thấu kính. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020401-01-005-de.png) Đây là loại thấu kính nào?",
+     "lua_chon": [
+      "Thấu kính phân kì",
+      "Thấu kính hội tụ",
+      "Gương cầu lõm",
+      "Gương phẳng"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Hình vẽ thấu kính có kí hiệu mũi tên hướng ra ở hai đầu, đặc trưng cho thấu kính hội tụ (rìa mỏng hơn phần giữa).\n\nVì sao các phương án khác sai:\n- A: Thấu kính phân kì có kí hiệu mũi tên hướng vào, khác với hình vẽ trên.\n- C: Gương cầu lõm là gương, có kí hiệu mặt cong phản xạ, khác với thấu kính trong hình.\n- D: Gương phẳng không có kí hiệu mũi tên ở hai đầu như thấu kính."
+    },
+    {
+     "ma_cau": "K09020401006",
+     "loai": "trac_nghiem",
+     "de": "Trên hình vẽ thấu kính hội tụ, điểm F trên trục chính là nơi các tia song song trục chính hội tụ lại. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020401-02-002-de.png) Điểm F được gọi là gì?",
+     "lua_chon": [
+      "Quang tâm",
+      "Tiêu cự",
+      "Tiêu điểm",
+      "Ảnh của vật"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Điểm hội tụ của chùm tia song song trục chính sau khi qua thấu kính gọi là tiêu điểm.\n\nVì sao các phương án khác sai:\n- A: Quang tâm là điểm O mà tia sáng qua đó truyền thẳng, khác điểm F.\n- B: Tiêu cự là khoảng cách từ quang tâm tới tiêu điểm, không phải điểm F.\n- D: Ảnh của vật là hình tạo bởi các tia ló, không phải điểm cố định trên trục."
+    },
+    {
+     "ma_cau": "K09020401007",
+     "loai": "trac_nghiem",
+     "de": "Trên hình vẽ thấu kính phân kì, đường thẳng đi qua quang tâm O và vuông góc mặt thấu kính. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020401-02-003-de.png) Đường thẳng đó gọi là gì?",
+     "lua_chon": [
+      "Trục chính",
+      "Tiêu điểm",
+      "Tia tới",
+      "Tia ló"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đường thẳng đi qua quang tâm O và vuông góc với mặt thấu kính gọi là trục chính.\n\nVì sao các phương án khác sai:\n- B: Tiêu điểm là một điểm trên trục chính, không phải cả đường thẳng.\n- C: Tia tới là tia sáng chiếu đến thấu kính, không phải trục chính.\n- D: Tia ló là tia sáng ra khỏi thấu kính, không phải trục chính."
+    },
+    {
+     "ma_cau": "K09020401008",
+     "loai": "trac_nghiem",
+     "de": "Trên hình vẽ thấu kính hội tụ, khoảng cách từ quang tâm O đến tiêu điểm F. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020401-02-004-de.png) Khoảng cách đó được gọi là gì?",
+     "lua_chon": [
+      "Tiêu cự",
+      "Trục chính",
+      "Khoảng cách ảnh",
+      "Chiều cao vật"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khoảng cách từ quang tâm O đến tiêu điểm F gọi là tiêu cự, kí hiệu f.\n\nVì sao các phương án khác sai:\n- B: Trục chính là đường thẳng qua O vuông góc thấu kính, không phải một khoảng cách.\n- C: Khoảng cách ảnh là khoảng cách từ ảnh tới thấu kính, không phải từ O đến F.\n- D: Chiều cao vật là kích thước của vật, không liên quan khoảng cách O đến F."
+    },
+    {
+     "ma_cau": "K09020401009",
+     "loai": "trac_nghiem",
+     "de": "Tiêu cự của một thấu kính có thay đổi khi ta dịch chuyển vật ra xa hay lại gần thấu kính không?",
+     "lua_chon": [
+      "Không, vì tiêu cự là đặc trưng của thấu kính",
+      "Có, vì tiêu cự phụ thuộc khoảng cách vật",
+      "Có, nhưng chỉ với thấu kính phân kì",
+      "Có, nhưng chỉ với thấu kính hội tụ"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tiêu cự f là khoảng cách cố định từ quang tâm đến tiêu điểm, chỉ phụ thuộc hình dạng và chất liệu của thấu kính, không phụ thuộc vị trí đặt vật.\n\nVì sao các phương án khác sai:\n- B: Tiêu cự không phụ thuộc khoảng cách vật, đó là đặc trưng riêng của thấu kính.\n- C: Tiêu cự của thấu kính phân kì cũng cố định, không đổi theo vị trí vật.\n- D: Tiêu cự của thấu kính hội tụ cũng cố định, không đổi theo vị trí vật."
+    },
+    {
+     "ma_cau": "K09020401010",
+     "loai": "trac_nghiem",
+     "de": "Tia sáng đi qua quang tâm O của thấu kính hội tụ thì tiếp tục truyền theo hướng nào?",
+     "lua_chon": [
+      "Đổi hướng, đi qua tiêu điểm",
+      "Đổi hướng, song song trục chính",
+      "Bị phản xạ ngược trở lại",
+      "Truyền thẳng, không đổi hướng"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tia sáng qua quang tâm của thấu kính (hội tụ hay phân kì) đều truyền thẳng, không đổi hướng.\n\nVì sao các phương án khác sai:\n- A: Đó là đường đi của tia song song trục chính, không phải tia qua quang tâm.\n- B: Đó là đường đi của tia qua tiêu điểm vật, không phải tia qua quang tâm.\n- C: Thấu kính là vật cho ánh sáng truyền qua, không phản xạ tia sáng."
+    },
+    {
+     "ma_cau": "K09020401011",
+     "loai": "trac_nghiem",
+     "de": "Tia sáng song song trục chính, sau khi qua thấu kính hội tụ thì truyền theo hướng nào?",
+     "lua_chon": [
+      "Tiếp tục truyền thẳng, song song trục chính",
+      "Đi qua quang tâm O",
+      "Đi qua tiêu điểm vật F",
+      "Đi qua tiêu điểm ảnh F′"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tia sáng song song trục chính, sau khi qua thấu kính hội tụ, ló ra đi qua tiêu điểm ảnh F′.\n\nVì sao các phương án khác sai:\n- A: Đó là tính chất của thấu kính phân kì, không phải hội tụ.\n- B: Tia đi qua quang tâm mới truyền thẳng không đổi hướng, khác tia này.\n- C: Tiêu điểm vật F ở phía trước thấu kính, dùng cho tia tới, không phải tia này."
+    },
+    {
+     "ma_cau": "K09020401012",
+     "loai": "trac_nghiem",
+     "de": "Tia sáng đi qua quang tâm O của thấu kính phân kì thì tiếp tục truyền theo hướng nào?",
+     "lua_chon": [
+      "Đổi hướng, đi qua tiêu điểm",
+      "Truyền thẳng, không đổi hướng",
+      "Đổi hướng, loe ra xa trục chính",
+      "Bị chặn lại tại quang tâm"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tia sáng qua quang tâm của thấu kính phân kì cũng truyền thẳng, không đổi hướng, giống thấu kính hội tụ.\n\nVì sao các phương án khác sai:\n- A: Đó là đường đi của tia song song trục chính khi ló ra khỏi thấu kính.\n- C: Đó là tia ló của chùm song song, không phải tia qua quang tâm.\n- D: Quang tâm là nơi ánh sáng truyền qua được, không chặn tia sáng lại."
+    },
+    {
+     "ma_cau": "K09020401013",
+     "loai": "trac_nghiem",
+     "de": "Tia sáng đi qua tiêu điểm vật F (nằm trước thấu kính), sau khi qua thấu kính hội tụ thì truyền theo hướng nào?",
+     "lua_chon": [
+      "Tiếp tục truyền thẳng, không đổi hướng",
+      "Đi qua tiêu điểm ảnh F′",
+      "Ló ra song song với trục chính",
+      "Loe ra xa trục chính"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tia sáng đi qua tiêu điểm vật F trước khi tới thấu kính hội tụ, sau khi khúc xạ sẽ ló ra song song với trục chính.\n\nVì sao các phương án khác sai:\n- A: Đó là đường đi của tia qua quang tâm, không phải tia qua tiêu điểm vật.\n- B: Đó là đường đi của tia tới song song trục chính, không phải tia đi qua tiêu điểm vật.\n- D: Đó là tính chất của thấu kính phân kì với tia tới song song trục chính, không phải trường hợp này."
+    },
+    {
+     "ma_cau": "K09020401014",
+     "loai": "trac_nghiem",
+     "de": "Tia sáng song song trục chính, sau khi qua thấu kính phân kì thì tia ló (hoặc đường kéo dài của nó) đi qua đâu?",
+     "lua_chon": [
+      "Đi qua quang tâm O",
+      "Hội tụ tại một điểm sau thấu kính",
+      "Truyền thẳng không đổi hướng",
+      "Đường kéo dài đi qua tiêu điểm cùng phía tia tới"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Với thấu kính phân kì, tia tới song song trục chính cho tia ló loe ra, có đường kéo dài đi qua tiêu điểm nằm cùng phía với tia tới.\n\nVì sao các phương án khác sai:\n- A: Tia song song trục chính không đi qua quang tâm.\n- B: Thấu kính phân kì làm tia ló loe ra, không hội tụ.\n- C: Tia sáng bị khúc xạ, đổi hướng khi qua thấu kính."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00461",
+   "khoi": "9",
+   "chu_de": "Quang học",
+   "chuyen_de": "Thấu kính",
+   "nhom": "Biện luận trạng thái ảnh dựa vào d và f",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K09020402001",
+     "loai": "trac_nghiem",
+     "de": "Vật sáng AB cách thấu kính hội tụ tiêu cự f = 10 cm một khoảng d = 25 cm. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020402-01-001-de.png) Ảnh của vật qua thấu kính là ảnh gì?",
+     "lua_chon": [
+      "Ảnh thật, ngược chiều, nhỏ hơn vật",
+      "Ảnh thật, ngược chiều, lớn hơn vật",
+      "Ảnh ảo, cùng chiều, lớn hơn vật",
+      "Ảnh thật, cùng chiều, nhỏ hơn vật"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Vật ở ngoài khoảng 2f (d > 2f) qua thấu kính hội tụ cho ảnh thật, ngược chiều, nhỏ hơn vật.\n\nVì sao các phương án khác sai:\n- B: Đó là tính chất ảnh khi vật ở trong khoảng f và 2f, không phải d > 2f.\n- C: Đó là tính chất ảnh khi vật đặt trong khoảng tiêu cự, không phải d > 2f.\n- D: Ảnh thật của thấu kính hội tụ luôn ngược chiều với vật."
+    },
+    {
+     "ma_cau": "K09020402002",
+     "loai": "trac_nghiem",
+     "de": "Vật sáng AB cách thấu kính hội tụ tiêu cự f = 10 cm một khoảng d = 15 cm. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020402-01-002-de.png) Ảnh của vật qua thấu kính là ảnh gì?",
+     "lua_chon": [
+      "Ảnh thật, ngược chiều, lớn hơn vật",
+      "Ảnh thật, ngược chiều, nhỏ hơn vật",
+      "Ảnh ảo, cùng chiều, lớn hơn vật",
+      "Ảnh thật, ngược chiều, bằng vật"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Vật ở trong khoảng f và 2f (f < d < 2f) qua thấu kính hội tụ cho ảnh thật, ngược chiều, lớn hơn vật.\n\nVì sao các phương án khác sai:\n- B: Đó là tính chất ảnh khi vật ở ngoài khoảng 2f, không phải f < d < 2f.\n- C: Đó là tính chất ảnh khi vật đặt trong khoảng tiêu cự, không phải f < d < 2f.\n- D: Ảnh bằng vật chỉ xảy ra khi d = 2f, ở đây d chưa bằng 2f."
+    },
+    {
+     "ma_cau": "K09020402003",
+     "loai": "trac_nghiem",
+     "de": "Vật sáng AB cách thấu kính hội tụ tiêu cự f = 14 cm một khoảng d = 28 cm. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020402-01-003-de.png) Ảnh của vật qua thấu kính là ảnh gì?",
+     "lua_chon": [
+      "Ảnh thật, ngược chiều, lớn hơn vật",
+      "Ảnh thật, ngược chiều, bằng vật",
+      "Ảnh ảo, cùng chiều, lớn hơn vật",
+      "Ảnh thật, ngược chiều, nhỏ hơn vật"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Vì d = 28 cm = 2f = 28 cm, thấu kính hội tụ cho ảnh thật, ngược chiều, bằng vật.\n\nVì sao các phương án khác sai:\n- A: Ảnh lớn hơn vật xảy ra khi vật ở trong khoảng f và 2f, khác d = 2f.\n- C: Ảnh ảo chỉ xuất hiện khi vật đặt trong khoảng tiêu cự, không phải d = 2f.\n- D: Ảnh nhỏ hơn vật xảy ra khi vật ở ngoài khoảng 2f, khác d = 2f."
+    },
+    {
+     "ma_cau": "K09020402004",
+     "loai": "trac_nghiem",
+     "de": "Vật sáng AB cách thấu kính phân kì tiêu cự f = 10 cm một khoảng d = 15 cm. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020402-02-001-de.png) Ảnh của vật qua thấu kính là ảnh gì?",
+     "lua_chon": [
+      "Ảnh thật, ngược chiều, nhỏ hơn vật",
+      "Ảnh ảo, cùng chiều, nhỏ hơn vật",
+      "Ảnh ảo, cùng chiều, lớn hơn vật",
+      "Ảnh thật, ngược chiều, lớn hơn vật"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Thấu kính phân kì luôn cho ảnh ảo, cùng chiều, nhỏ hơn vật, dù vật ở vị trí nào.\n\nVì sao các phương án khác sai:\n- A: Thấu kính phân kì không bao giờ cho ảnh thật, chỉ cho ảnh ảo.\n- C: Ảnh ảo của thấu kính phân kì luôn nhỏ hơn vật, không lớn hơn.\n- D: Thấu kính phân kì không cho ảnh thật và không cho ảnh lớn hơn vật."
+    },
+    {
+     "ma_cau": "K09020402005",
+     "loai": "trac_nghiem",
+     "de": "Vật sáng AB cách thấu kính phân kì tiêu cự f = 12 cm một khoảng d = 8 cm. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020402-02-002-de.png) Ảnh của vật qua thấu kính là ảnh gì?",
+     "lua_chon": [
+      "Ảnh ảo, cùng chiều, lớn hơn vật",
+      "Ảnh thật, ngược chiều, nhỏ hơn vật",
+      "Ảnh ảo, cùng chiều, nhỏ hơn vật",
+      "Ảnh thật, ngược chiều, bằng vật"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Dù vật ở trong hay ngoài tiêu cự, thấu kính phân kì luôn cho ảnh ảo, cùng chiều, nhỏ hơn vật.\n\nVì sao các phương án khác sai:\n- A: Ảnh ảo lớn hơn vật chỉ xảy ra ở thấu kính hội tụ, không phải phân kì.\n- B: Thấu kính phân kì không tạo ảnh thật ở bất kì vị trí nào của vật.\n- D: Thấu kính phân kì không tạo ảnh thật, càng không có ảnh bằng vật."
+    },
+    {
+     "ma_cau": "K09020402006",
+     "loai": "trac_nghiem",
+     "de": "Vật sáng AB cách thấu kính phân kì tiêu cự f = 20 cm một khoảng d = 30 cm. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020402-02-003-de.png) Ảnh của vật qua thấu kính là ảnh gì?",
+     "lua_chon": [
+      "Ảnh ảo, cùng chiều, nhỏ hơn vật",
+      "Ảnh ảo, cùng chiều, lớn hơn vật",
+      "Ảnh thật, ngược chiều, nhỏ hơn vật",
+      "Ảnh thật, ngược chiều, lớn hơn vật"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Thấu kính phân kì luôn cho ảnh ảo, cùng chiều, nhỏ hơn vật, dù vật ở vị trí nào.\n\nVì sao các phương án khác sai:\n- B: Ảnh ảo lớn hơn vật chỉ xảy ra ở thấu kính hội tụ, không phải phân kì.\n- C: Thấu kính phân kì không bao giờ tạo ảnh thật ở bất kì vị trí nào của vật.\n- D: Thấu kính phân kì không tạo ảnh thật, càng không có ảnh lớn hơn vật."
+    },
+    {
+     "ma_cau": "K09020402007",
+     "loai": "trac_nghiem",
+     "de": "Một vật đặt trước một thấu kính, ảnh tạo bởi thấu kính cùng chiều với vật và nhỏ hơn vật. Thấu kính đó thuộc loại nào?",
+     "lua_chon": [
+      "Thấu kính hội tụ",
+      "Thấu kính phân kì",
+      "Có thể là thấu kính hội tụ hoặc phân kì",
+      "Không xác định được loại thấu kính"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Thấu kính hội tụ chỉ cho ảnh ảo cùng chiều LỚN hơn vật; ảnh ảo nhỏ hơn vật chỉ có ở thấu kính phân kì.\n\nVì sao các phương án khác sai:\n- A: Thấu kính hội tụ khi cho ảnh ảo thì ảnh luôn lớn hơn vật, không nhỏ hơn.\n- C: Chỉ thấu kính phân kì mới cho ảnh cùng chiều, nhỏ hơn vật.\n- D: Đặc điểm ảnh cùng chiều, nhỏ hơn vật xác định duy nhất thấu kính phân kì."
+    },
+    {
+     "ma_cau": "K09020402008",
+     "loai": "trac_nghiem",
+     "de": "Một vật đặt trước một thấu kính, ảnh tạo bởi thấu kính ngược chiều với vật. Thấu kính đó thuộc loại nào?",
+     "lua_chon": [
+      "Thấu kính phân kì",
+      "Thấu kính hội tụ",
+      "Có thể là thấu kính hội tụ hoặc phân kì",
+      "Không xác định được loại thấu kính"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Thấu kính phân kì luôn cho ảnh ảo cùng chiều với vật; ảnh ngược chiều (ảnh thật) chỉ có ở thấu kính hội tụ.\n\nVì sao các phương án khác sai:\n- A: Thấu kính phân kì chỉ cho ảnh ảo, cùng chiều với vật, không bao giờ ngược chiều.\n- C: Chỉ thấu kính hội tụ mới cho ảnh ngược chiều với vật.\n- D: Đặc điểm ảnh ngược chiều xác định duy nhất thấu kính hội tụ."
+    },
+    {
+     "ma_cau": "K09020402009",
+     "loai": "trac_nghiem",
+     "de": "Một vật đặt trước một thấu kính, ảnh tạo bởi thấu kính cùng chiều với vật và LỚN hơn vật. Thấu kính đó thuộc loại nào?",
+     "lua_chon": [
+      "Thấu kính phân kì",
+      "Không xác định được loại thấu kính",
+      "Có thể là thấu kính hội tụ hoặc phân kì",
+      "Thấu kính hội tụ"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ảnh ảo cùng chiều và LỚN hơn vật chỉ có ở thấu kính hội tụ (khi vật đặt trong khoảng tiêu cự); thấu kính phân kì chỉ cho ảnh ảo nhỏ hơn vật.\n\nVì sao các phương án khác sai:\n- A: Thấu kính phân kì chỉ cho ảnh ảo cùng chiều nhưng luôn NHỎ hơn vật, không lớn hơn.\n- B: Đặc điểm ảnh cùng chiều, lớn hơn vật xác định duy nhất thấu kính hội tụ.\n- C: Chỉ thấu kính hội tụ mới cho ảnh cùng chiều, lớn hơn vật."
+    },
+    {
+     "ma_cau": "K09020402010",
+     "loai": "trac_nghiem",
+     "de": "Đặt vật sáng trước thấu kính hội tụ tiêu cự f = 12 cm, cách thấu kính d = 24 cm. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020403-01-001-de.png) Ảnh của vật có đặc điểm gì?",
+     "lua_chon": [
+      "Ảnh thật, ngược chiều, lớn hơn vật",
+      "Ảnh thật, ngược chiều, nhỏ hơn vật",
+      "Ảnh thật, ngược chiều, bằng vật",
+      "Ảnh ảo, cùng chiều, lớn hơn vật"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khi vật cách thấu kính hội tụ đúng d = 2f thì ảnh thật, ngược chiều và có độ lớn bằng vật.\n\nVì sao các phương án khác sai:\n- A: Ảnh lớn hơn vật xảy ra khi vật ở trong khoảng f và 2f, khác d = 2f.\n- B: Ảnh nhỏ hơn vật xảy ra khi vật ở ngoài khoảng 2f, khác d = 2f.\n- D: Ảnh ảo chỉ xuất hiện khi vật đặt trong khoảng tiêu cự, không phải d = 2f."
+    },
+    {
+     "ma_cau": "K09020402011",
+     "loai": "trac_nghiem",
+     "de": "Đặt vật sáng trước thấu kính hội tụ tiêu cự f = 12 cm, cách thấu kính d = 18 cm. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020403-01-002-de.png) Ảnh của vật có đặc điểm gì?",
+     "lua_chon": [
+      "Ảnh thật, ngược chiều, lớn hơn vật",
+      "Ảnh thật, ngược chiều, bằng vật",
+      "Ảnh thật, ngược chiều, nhỏ hơn vật",
+      "Ảnh ảo, cùng chiều, lớn hơn vật"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khi vật ở trong khoảng f và 2f (f < d < 2f), thấu kính hội tụ cho ảnh thật, ngược chiều, lớn hơn vật.\n\nVì sao các phương án khác sai:\n- B: Ảnh bằng vật chỉ xảy ra khi d = 2f, ở đây d = 18 cm nhỏ hơn 2f.\n- C: Ảnh nhỏ hơn vật xảy ra khi vật ở ngoài khoảng 2f, khác f < d < 2f.\n- D: Ảnh ảo chỉ xuất hiện khi vật đặt trong khoảng tiêu cự, ở đây d lớn hơn f."
+    },
+    {
+     "ma_cau": "K09020402012",
+     "loai": "trac_nghiem",
+     "de": "Vật sáng AB cách thấu kính hội tụ tiêu cự f = 8 cm một khoảng d = 32 cm. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020403-01-003-de.png) Ảnh của vật có đặc điểm gì?",
+     "lua_chon": [
+      "Ảnh thật, ngược chiều, lớn hơn vật",
+      "Ảnh ảo, cùng chiều, lớn hơn vật",
+      "Ảnh thật, ngược chiều, nhỏ hơn vật",
+      "Ảnh thật, ngược chiều, bằng vật"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Vì d = 32 cm > 2f = 16 cm (vật ngoài khoảng 2f), thấu kính hội tụ cho ảnh thật, ngược chiều, nhỏ hơn vật.\n\nVì sao các phương án khác sai:\n- A: Ảnh lớn hơn vật xảy ra khi vật ở trong khoảng f và 2f, khác d > 2f.\n- B: Ảnh ảo chỉ xuất hiện khi vật đặt trong khoảng tiêu cự, không phải d > 2f.\n- D: Ảnh bằng vật chỉ xảy ra khi d = 2f, ở đây d = 32 cm lớn hơn 2f = 16 cm."
+    },
+    {
+     "ma_cau": "K09020402013",
+     "loai": "trac_nghiem",
+     "de": "Đặt vật sáng trước thấu kính hội tụ tiêu cự f = 10 cm, cách thấu kính d = 6 cm. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020403-02-001-de.png) Ảnh của vật có đặc điểm gì?",
+     "lua_chon": [
+      "Ảnh ảo, cùng chiều, lớn hơn vật",
+      "Ảnh thật, ngược chiều, lớn hơn vật",
+      "Ảnh ảo, cùng chiều, nhỏ hơn vật",
+      "Ảnh thật, ngược chiều, bằng vật"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khi vật đặt trong khoảng tiêu cự (d < f), thấu kính hội tụ cho ảnh ảo, cùng chiều, lớn hơn vật.\n\nVì sao các phương án khác sai:\n- B: Ảnh thật chỉ xuất hiện khi vật ở ngoài khoảng tiêu cự, không phải d < f.\n- C: Ảnh ảo của thấu kính hội tụ luôn lớn hơn vật, không nhỏ hơn.\n- D: Ảnh bằng vật chỉ xảy ra ở d = 2f và là ảnh thật, không phải trường hợp này."
+    },
+    {
+     "ma_cau": "K09020402014",
+     "loai": "trac_nghiem",
+     "de": "Muốn thấu kính hội tụ tạo ảnh ảo, cùng chiều, lớn hơn vật thì phải đặt vật ở vị trí nào so với tiêu cự f?",
+     "lua_chon": [
+      "Cách thấu kính đúng bằng 2f",
+      "Trong khoảng tiêu cự, tức d nhỏ hơn f",
+      "Ở ngoài khoảng 2f, tức d lớn hơn 2f",
+      "Ở đúng vị trí tiêu điểm, tức d bằng f"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ảnh ảo, cùng chiều, lớn hơn vật chỉ xuất hiện khi vật đặt trong khoảng tiêu cự, tức d < f.\n\nVì sao các phương án khác sai:\n- A: Khi d = 2f thì ảnh là ảnh thật, ngược chiều, bằng vật, không phải ảnh ảo.\n- C: Khi d > 2f thì ảnh là ảnh thật, ngược chiều, nhỏ hơn vật.\n- D: Khi d = f, các tia ló song song nhau, không tạo được ảnh xác định."
+    },
+    {
+     "ma_cau": "K09020402015",
+     "loai": "trac_nghiem",
+     "de": "Vật sáng AB cách thấu kính hội tụ tiêu cự f = 15 cm một khoảng d = 9 cm. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020403-02-003-de.png) Ảnh của vật qua thấu kính là ảnh gì?",
+     "lua_chon": [
+      "Ảnh thật, ngược chiều, nhỏ hơn vật",
+      "Ảnh ảo, cùng chiều, lớn hơn vật",
+      "Ảnh thật, ngược chiều, lớn hơn vật",
+      "Ảnh ảo, cùng chiều, nhỏ hơn vật"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Vì d = 9 cm < f = 15 cm (vật trong khoảng tiêu cự), thấu kính hội tụ cho ảnh ảo, cùng chiều, lớn hơn vật.\n\nVì sao các phương án khác sai:\n- A: Ảnh thật chỉ xuất hiện khi vật ở ngoài khoảng tiêu cự, không phải d < f.\n- C: Ảnh thật chỉ xuất hiện khi vật ở ngoài khoảng tiêu cự (d > f), ở đây d < f.\n- D: Ảnh ảo của thấu kính hội tụ luôn lớn hơn vật, không nhỏ hơn."
+    },
+    {
+     "ma_cau": "K09020402016",
+     "loai": "trac_nghiem",
+     "de": "Vật sáng đặt cách thấu kính phân kì tiêu cự f = 15 cm một khoảng bất kì. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020403-03-001-de.png) Ảnh tạo bởi thấu kính này luôn có đặc điểm gì?",
+     "lua_chon": [
+      "Ảnh thật, ngược chiều, nhỏ hơn vật",
+      "Ảnh ảo, cùng chiều, nhỏ hơn vật",
+      "Ảnh ảo, cùng chiều, lớn hơn vật",
+      "Tuỳ vị trí vật mà ảnh thật hoặc ảnh ảo"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Thấu kính phân kì luôn cho ảnh ảo, cùng chiều, nhỏ hơn vật, không phụ thuộc vị trí đặt vật.\n\nVì sao các phương án khác sai:\n- A: Thấu kính phân kì không bao giờ tạo ra ảnh thật.\n- C: Ảnh ảo của thấu kính phân kì luôn nhỏ hơn vật, không lớn hơn.\n- D: Thấu kính phân kì luôn cho một loại ảnh duy nhất, không đổi theo vị trí vật."
+    },
+    {
+     "ma_cau": "K09020402017",
+     "loai": "trac_nghiem",
+     "de": "Ảnh tạo bởi thấu kính phân kì luôn nằm trong khoảng nào tính từ thấu kính?",
+     "lua_chon": [
+      "Ngoài khoảng hai lần tiêu cự",
+      "Đúng bằng hai lần tiêu cự",
+      "Trong khoảng tiêu cự",
+      "Đúng bằng tiêu cự"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ảnh ảo của thấu kính phân kì luôn nằm trong khoảng tiêu cự, gần thấu kính hơn tiêu điểm.\n\nVì sao các phương án khác sai:\n- A: Đó là vị trí vật cho ảnh thật nhỏ hơn ở thấu kính hội tụ.\n- B: Vị trí đúng bằng hai lần tiêu cự là vị trí đặc biệt của vật, không phải ảnh.\n- D: Ảnh của thấu kính phân kì nằm trong khoảng tiêu cự, không nằm đúng tại tiêu điểm."
+    },
+    {
+     "ma_cau": "K09020402018",
+     "loai": "trac_nghiem",
+     "de": "Vật sáng AB cách thấu kính phân kì tiêu cự f = 20 cm một khoảng d = 40 cm (d = 2f). ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020403-03-003-de.png) Ảnh của vật qua thấu kính là ảnh gì?",
+     "lua_chon": [
+      "Ảnh ảo, cùng chiều, nhỏ hơn vật",
+      "Ảnh thật, ngược chiều, nhỏ hơn vật",
+      "Ảnh ảo, cùng chiều, lớn hơn vật",
+      "Ảnh thật, ngược chiều, bằng vật"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Dù vật ở vị trí nào (kể cả d = 2f), thấu kính phân kì luôn cho ảnh ảo, cùng chiều, nhỏ hơn vật.\n\nVì sao các phương án khác sai:\n- B: Thấu kính phân kì không bao giờ cho ảnh thật, chỉ cho ảnh ảo.\n- C: Ảnh ảo của thấu kính phân kì luôn nhỏ hơn vật, không lớn hơn, dù ở vị trí d = 2f.\n- D: Thấu kính phân kì không cho ảnh thật và không cho ảnh bằng vật."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00464",
+   "khoi": "9",
+   "chu_de": "Quang học",
+   "chuyen_de": "Thấu kính",
+   "nhom": "Tính toán d' và h' sử dụng tam giác đồng dạng",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K09020405001",
+     "loai": "trac_nghiem",
+     "de": "Một vật sáng cao h = 3 cm đặt cách thấu kính hội tụ d = 20 cm, cho ảnh thật cách thấu kính d′ = 60 cm. Áp dụng hệ thức h′/h = d′/d, chiều cao ảnh h′ bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020404-02-001-de.png)",
+     "lua_chon": [
+      "1 cm",
+      "3 cm",
+      "40 cm",
+      "9 cm"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Theo tam giác đồng dạng, h′/h = d′/d = 3, nên h′ = h × 3 = 9 cm.\n\nVì sao các phương án khác sai:\n- A: Đã đảo ngược tỉ số d′/d thành d/d′ khi tính chiều cao ảnh.\n- B: Đã quên nhân với tỉ số d′/d, lấy chiều cao ảnh bằng chiều cao vật.\n- C: Đã lấy hiệu (d′ − d) làm chiều cao ảnh, nhầm khoảng cách với chiều cao."
+    },
+    {
+     "ma_cau": "K09020405002",
+     "loai": "trac_nghiem",
+     "de": "Một vật sáng cao h = 4 cm đặt cách thấu kính hội tụ d = 25 cm, cho ảnh thật cách thấu kính d′ = 50 cm. Áp dụng hệ thức h′/h = d′/d, chiều cao ảnh h′ bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020404-02-002-de.png)",
+     "lua_chon": [
+      "2 cm",
+      "8 cm",
+      "4 cm",
+      "25 cm"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Theo tam giác đồng dạng, h′/h = d′/d = 2, nên h′ = h × 2 = 8 cm.\n\nVì sao các phương án khác sai:\n- A: Đã đảo ngược tỉ số d′/d thành d/d′ khi tính chiều cao ảnh.\n- C: Đã quên nhân với tỉ số d′/d, lấy chiều cao ảnh bằng chiều cao vật.\n- D: Đã lấy hiệu (d′ − d) làm chiều cao ảnh, nhầm khoảng cách với chiều cao."
+    },
+    {
+     "ma_cau": "K09020405003",
+     "loai": "trac_nghiem",
+     "de": "Một vật sáng cao h = 4 cm đặt cách thấu kính hội tụ d = 12 cm, cho ảnh thật cách thấu kính d′ = 48 cm. Áp dụng hệ thức h′/h = d′/d, chiều cao ảnh h′ bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020404-02-003-de.png)",
+     "lua_chon": [
+      "1 cm",
+      "4 cm",
+      "16 cm",
+      "36 cm"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Theo tam giác đồng dạng, h′/h = d′/d = 4, nên h′ = h × 4 = 16 cm.\n\nVì sao các phương án khác sai:\n- A: Đã đảo ngược tỉ số d′/d thành d/d′ khi tính chiều cao ảnh.\n- B: Đã quên nhân với tỉ số d′/d, lấy chiều cao ảnh bằng chiều cao vật.\n- D: Đã lấy hiệu (d′ − d) làm chiều cao ảnh, nhầm khoảng cách với chiều cao."
+    },
+    {
+     "ma_cau": "K09020405004",
+     "loai": "trac_nghiem",
+     "de": "Một vật sáng cao h = 5 cm đặt cách thấu kính hội tụ d = 15 cm, cho ảnh thật cách thấu kính d′ = 45 cm. Áp dụng hệ thức h′/h = d′/d, chiều cao ảnh h′ bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020404-02-004-de.png)",
+     "lua_chon": [
+      "15 cm",
+      "≈1,67 cm",
+      "5 cm",
+      "30 cm"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Theo tam giác đồng dạng, h′/h = d′/d = 3, nên h′ = h × 3 = 15 cm.\n\nVì sao các phương án khác sai:\n- B: Đã đảo ngược tỉ số d′/d thành d/d′ khi tính chiều cao ảnh.\n- C: Đã quên nhân với tỉ số d′/d, lấy chiều cao ảnh bằng chiều cao vật.\n- D: Đã lấy hiệu (d′ − d) làm chiều cao ảnh, nhầm khoảng cách với chiều cao."
+    },
+    {
+     "ma_cau": "K09020405005",
+     "loai": "trac_nghiem",
+     "de": "Đặt vật sáng trước thấu kính hội tụ sao cho khoảng cách giữa vật và ảnh thật trên màn là L = 40 cm, ảnh cao gấp k = 3 lần vật (tức d′ = 3d). Khoảng cách d từ vật đến thấu kính bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020405-01-001-de.png)",
+     "lua_chon": [
+      "20 cm",
+      "30 cm",
+      "40 cm",
+      "10 cm"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Vì d′ = 3d và L = d + d′ = (4)d nên d = L/(4) = 40/4 = 10 cm.\n\nVì sao các phương án khác sai:\n- A: Đã chia L cho 2, không dùng đúng tỉ lệ k giữa d′ và d.\n- B: Đó là khoảng cách ảnh d′, không phải khoảng cách vật d cần tìm.\n- C: Đã lấy cả khoảng cách vật–ảnh L làm khoảng cách vật d."
+    },
+    {
+     "ma_cau": "K09020405006",
+     "loai": "trac_nghiem",
+     "de": "Đặt vật sáng trước thấu kính hội tụ sao cho khoảng cách giữa vật và ảnh thật trên màn là L = 60 cm, ảnh cao gấp k = 2 lần vật (tức d′ = 2d). Khoảng cách d từ vật đến thấu kính bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020405-01-002-de.png)",
+     "lua_chon": [
+      "30 cm",
+      "40 cm",
+      "60 cm",
+      "20 cm"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Vì d′ = 2d và L = d + d′ = (3)d nên d = L/(3) = 60/3 = 20 cm.\n\nVì sao các phương án khác sai:\n- A: Đã chia L cho 2, không dùng đúng tỉ lệ k giữa d′ và d.\n- B: Đó là khoảng cách ảnh d′, không phải khoảng cách vật d cần tìm.\n- C: Đã lấy cả khoảng cách vật–ảnh L làm khoảng cách vật d."
+    },
+    {
+     "ma_cau": "K09020405007",
+     "loai": "trac_nghiem",
+     "de": "Đặt vật sáng trước thấu kính hội tụ sao cho khoảng cách giữa vật và ảnh thật trên màn là L = 50 cm, ảnh cao gấp k = 4 lần vật (tức d′ = 4d). Khoảng cách d từ vật đến thấu kính bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020405-01-003-de.png)",
+     "lua_chon": [
+      "25 cm",
+      "40 cm",
+      "50 cm",
+      "10 cm"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Vì d′ = 4d và L = d + d′ = (5)d nên d = L/(5) = 50/5 = 10 cm.\n\nVì sao các phương án khác sai:\n- A: Đã chia L cho 2, không dùng đúng tỉ lệ k giữa d′ và d.\n- B: Đó là khoảng cách ảnh d′, không phải khoảng cách vật d cần tìm.\n- C: Đã lấy cả khoảng cách vật–ảnh L làm khoảng cách vật d."
+    },
+    {
+     "ma_cau": "K09020405008",
+     "loai": "trac_nghiem",
+     "de": "Đặt vật sáng trước thấu kính hội tụ sao cho khoảng cách giữa vật và ảnh thật trên màn là L = 42 cm, ảnh cao gấp k = 5 lần vật (tức d′ = 5d). Khoảng cách d từ vật đến thấu kính bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020405-01-004-de.png)",
+     "lua_chon": [
+      "21 cm",
+      "35 cm",
+      "42 cm",
+      "7 cm"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Vì d′ = 5d và L = d + d′ = (6)d nên d = L/(6) = 42/6 = 7 cm.\n\nVì sao các phương án khác sai:\n- A: Đã chia L cho 2, không dùng đúng tỉ lệ k giữa d′ và d.\n- B: Đó là khoảng cách ảnh d′, không phải khoảng cách vật d cần tìm.\n- C: Đã lấy cả khoảng cách vật–ảnh L làm khoảng cách vật d."
+    },
+    {
+     "ma_cau": "K09020405009",
+     "loai": "trac_nghiem",
+     "de": "Đặt vật sáng trước thấu kính hội tụ sao cho khoảng cách giữa vật và ảnh thật trên màn là L = 63 cm, ảnh cao gấp k = 6 lần vật (tức d′ = 6d). Khoảng cách d từ vật đến thấu kính bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020405-01-006-de.png)",
+     "lua_chon": [
+      "9 cm",
+      "31,5 cm",
+      "54 cm",
+      "63 cm"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Vì d′ = 6d và L = d + d′ = 7d nên d = L/7 = 63/7 = 9 cm.\n\nVì sao các phương án khác sai:\n- B: Đã chia L cho 2, không dùng đúng tỉ lệ k giữa d′ và d.\n- C: Đó là khoảng cách ảnh d′, không phải khoảng cách vật d cần tìm.\n- D: Đã lấy cả khoảng cách vật–ảnh L làm khoảng cách vật d."
+    },
+    {
+     "ma_cau": "K09020405010",
+     "loai": "trac_nghiem",
+     "de": "Đặt vật sáng trước thấu kính hội tụ sao cho khoảng cách giữa vật và ảnh thật trên màn là L = 54 cm, ảnh cao gấp k = 5 lần vật (tức d′ = 5d). Khoảng cách d từ vật đến thấu kính bằng bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020405-01-007-de.png)",
+     "lua_chon": [
+      "9 cm",
+      "45 cm",
+      "27 cm",
+      "54 cm"
+     ],
+     "dap_an": "A",
+     "loi_giai": "d + d′ = L và d′ = 5d → 6d = 54 → d = 9 cm.\n\nVì sao các phương án khác sai:\n- B: Nhầm lấy d′ = 5d = 45 cm làm đáp số d.\n- C: Chia sai L cho 2 thay vì cho (k+1) = 6.\n- D: Nhầm lấy cả L làm khoảng cách d."
+    },
+    {
+     "ma_cau": "K09020405011",
+     "loai": "trac_nghiem",
+     "de": "Vật cao 1 cm đặt cách kính lúp có tiêu cự 12 cm một khoảng 6 cm (trong khoảng tiêu cự). Ảnh ảo qua kính cách kính 12 cm. Chiều cao ảnh ảo là bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020503-01-001-de.png)",
+     "lua_chon": [
+      "0,5 cm",
+      "2 cm",
+      "1 cm",
+      "7 cm"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Tam giác đồng dạng qua quang tâm cho h'/h = d'/d, nên h' = h×d'/d = 1×12/6 = 2 cm.\n\nVì sao các phương án khác sai:\n- A: Đã lấy tỉ số d/d' (đảo ngược) thay vì d'/d.\n- C: Quên nhân theo tỉ số d'/d, giữ nguyên chiều cao vật.\n- D: Đã lấy hiệu (d' − d) rồi cộng vào chiều cao vật, không đúng quan hệ tỉ lệ."
+    },
+    {
+     "ma_cau": "K09020405012",
+     "loai": "trac_nghiem",
+     "de": "Vật cao 2 cm đặt cách kính lúp có tiêu cự 12 cm một khoảng 8 cm (trong khoảng tiêu cự). Ảnh ảo qua kính cách kính 24 cm. Chiều cao ảnh ảo là bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020503-01-002-de.png)",
+     "lua_chon": [
+      "2 cm",
+      "4 cm",
+      "18 cm",
+      "6 cm"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tam giác đồng dạng qua quang tâm cho h'/h = d'/d, nên h' = h×d'/d = 2×24/8 = 6 cm.\n\nVì sao các phương án khác sai:\n- A: Quên nhân theo tỉ số d'/d, giữ nguyên chiều cao vật.\n- B: Đã nhân chiều cao vật với hiệu (d'−d)/d thay vì d'/d.\n- C: Đã lấy hiệu (d' − d) rồi cộng vào chiều cao vật."
+    },
+    {
+     "ma_cau": "K09020405013",
+     "loai": "trac_nghiem",
+     "de": "Vật cao 0,6 cm đặt cách kính lúp có tiêu cự 12 cm một khoảng 9 cm (trong khoảng tiêu cự). Ảnh ảo qua kính cách kính 36 cm. Chiều cao ảnh ảo là bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020503-01-003-de.png)",
+     "lua_chon": [
+      "2,4 cm",
+      "0,6 cm",
+      "0,15 cm",
+      "5,4 cm"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tam giác đồng dạng qua quang tâm cho h'/h = d'/d, nên h' = h×d'/d = 0,6×36/9 = 2,4 cm.\n\nVì sao các phương án khác sai:\n- B: Quên nhân theo tỉ số d'/d, giữ nguyên chiều cao vật.\n- C: Đã lấy tỉ số d/d' (đảo ngược) thay vì d'/d.\n- D: Đã nhân chiều cao vật với khoảng cách vật thay vì với tỉ số d'/d."
+    },
+    {
+     "ma_cau": "K09020405014",
+     "loai": "trac_nghiem",
+     "de": "Vật cao 1 cm đặt cách kính lúp có tiêu cự 10 cm một khoảng 7,5 cm, cho ảnh ảo cao 4 cm. Khoảng cách từ ảnh đến kính là bao nhiêu?",
+     "lua_chon": [
+      "7,5 cm",
+      "10 cm",
+      "30 cm",
+      "4 cm"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tam giác đồng dạng cho h'/h = d'/d, nên d' = d×h'/h = 7,5×4/1 = 30 cm.\n\nVì sao các phương án khác sai:\n- A: 7,5 cm là khoảng cách từ vật đến kính, không phải từ ảnh.\n- B: 10 cm là tiêu cự của kính, không phải khoảng cách ảnh.\n- D: 4 cm là chiều cao ảnh, không phải khoảng cách."
+    },
+    {
+     "ma_cau": "K09020405015",
+     "loai": "trac_nghiem",
+     "de": "Vật đặt trong khoảng tiêu cự của kính lúp có tiêu cự 9 cm, cao 1 cm, cho ảnh ảo cao 3 cm và cách kính 18 cm. Vật cách kính bao nhiêu?",
+     "lua_chon": [
+      "54 cm",
+      "18 cm",
+      "9 cm",
+      "6 cm"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tam giác đồng dạng cho h'/h = d'/d, nên d = d'×h/h' = 18×1/3 = 6 cm (nhỏ hơn f = 9 cm, đúng là vật trong khoảng tiêu cự).\n\nVì sao các phương án khác sai:\n- A: Đã nhân d' với 3 thay vì chia.\n- B: 18 cm là khoảng cách ảnh, không phải khoảng cách vật.\n- C: 9 cm là tiêu cự; vật phải ở gần kính hơn tiêu cự."
+    },
+    {
+     "ma_cau": "K09020405016",
+     "loai": "trac_nghiem",
+     "de": "Vật cao 2 cm đặt cách kính lúp có tiêu cự 8 cm một khoảng 4 cm (trong khoảng tiêu cự). Ảnh ảo qua kính cách kính 8 cm. Chiều cao ảnh ảo là bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020503-01-006-de.png)",
+     "lua_chon": [
+      "4 cm",
+      "1 cm",
+      "2 cm",
+      "6 cm"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tam giác đồng dạng qua quang tâm cho h'/h = d'/d, nên h' = h×d'/d = 2×8/4 = 4 cm.\n\nVì sao các phương án khác sai:\n- B: Đã lấy tỉ số d/d' (đảo ngược) thay vì d'/d.\n- C: Quên nhân theo tỉ số d'/d, giữ nguyên chiều cao vật.\n- D: Đã lấy hiệu (d' − d) rồi cộng vào chiều cao vật."
+    },
+    {
+     "ma_cau": "K09020405017",
+     "loai": "trac_nghiem",
+     "de": "Vật cao 1 cm đặt cách kính lúp có tiêu cự 15 cm một khoảng 10 cm (trong khoảng tiêu cự). Ảnh ảo qua kính cách kính 30 cm. Chiều cao ảnh ảo là bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020503-01-007-de.png)",
+     "lua_chon": [
+      "3 cm",
+      "≈0,33 cm",
+      "1 cm",
+      "21 cm"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tam giác đồng dạng qua quang tâm cho h'/h = d'/d, nên h' = h×d'/d = 1×30/10 = 3 cm.\n\nVì sao các phương án khác sai:\n- B: Đã lấy tỉ số d/d' (đảo ngược) thay vì d'/d.\n- C: Quên nhân theo tỉ số d'/d, giữ nguyên chiều cao vật.\n- D: Đã lấy hiệu (d' − d) rồi cộng vào chiều cao vật, không đúng quan hệ tỉ lệ."
+    },
+    {
+     "ma_cau": "K09020405018",
+     "loai": "trac_nghiem",
+     "de": "Vật cao 2 cm đặt cách kính lúp có tiêu cự 20 cm một khoảng 15 cm (trong khoảng tiêu cự). Ảnh ảo qua kính cách kính 60 cm. Chiều cao ảnh ảo là bao nhiêu? ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09L020503-01-008-de.png)",
+     "lua_chon": [
+      "2 cm",
+      "8 cm",
+      "6 cm",
+      "47 cm"
+     ],
+     "dap_an": "B",
+     "loi_giai": "h' = h×d'/d = 2×60/15 = 8 cm.\n\nVì sao các phương án khác sai:\n- A: Quên nhân theo tỉ số d'/d, giữ nguyên chiều cao vật.\n- C: Đã nhân chiều cao vật với hiệu (d'−d)/d thay vì d'/d.\n- D: Đã lấy hiệu (d' − d) rồi cộng vào chiều cao vật."
+    },
+    {
+     "ma_cau": "K09020405019",
+     "loai": "trac_nghiem",
+     "de": "Vật cao 1 cm đặt cách kính lúp có tiêu cự 10 cm một khoảng 8 cm, cho ảnh ảo cao 5 cm. Khoảng cách từ ảnh đến kính là bao nhiêu?",
+     "lua_chon": [
+      "8 cm",
+      "10 cm",
+      "40 cm",
+      "5 cm"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tam giác đồng dạng cho h'/h = d'/d, nên d' = d×h'/h = 8×5/1 = 40 cm.\n\nVì sao các phương án khác sai:\n- A: 8 cm là khoảng cách từ vật đến kính, không phải từ ảnh.\n- B: 10 cm là tiêu cự của kính, không phải khoảng cách ảnh.\n- D: 5 cm là chiều cao ảnh, không phải khoảng cách."
+    },
+    {
+     "ma_cau": "K09020405020",
+     "loai": "trac_nghiem",
+     "de": "Kính lúp có tiêu cự f = 12 cm. Đặt vật trong khoảng tiêu cự, ảnh ảo qua kính cách kính d′ = 12 cm và cao gấp k = 2 lần vật. Vật cách kính bao nhiêu?",
+     "lua_chon": [
+      "6 cm",
+      "12 cm",
+      "24 cm",
+      "18 cm"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Theo tam giác đồng dạng, ảnh cao gấp k lần vật thì d′ = k·d, nên d = d′/k = 12/2 = 6 cm. Kiểm tra: d = 6 cm nhỏ hơn f = 12 cm, đúng là vật nằm trong khoảng tiêu cự.\n\nVì sao các phương án khác sai:\n- B: Đây là khoảng cách từ ảnh tới kính (d′), không phải khoảng cách vật.\n- C: Đã nhân d′ với k thay vì chia: d = d′/k.\n- D: Đã cộng khoảng cách vật và khoảng cách ảnh; cần dùng d = d′/k."
+    },
+    {
+     "ma_cau": "K09020405021",
+     "loai": "trac_nghiem",
+     "de": "Kính lúp có tiêu cự f = 15 cm. Đặt vật trong khoảng tiêu cự, ảnh ảo qua kính cách kính d′ = 30 cm và cao gấp k = 3 lần vật. Vật cách kính bao nhiêu?",
+     "lua_chon": [
+      "30 cm",
+      "90 cm",
+      "10 cm",
+      "40 cm"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Theo tam giác đồng dạng, ảnh cao gấp k lần vật thì d′ = k·d, nên d = d′/k = 30/3 = 10 cm. Kiểm tra: d = 10 cm nhỏ hơn f = 15 cm, đúng là vật nằm trong khoảng tiêu cự.\n\nVì sao các phương án khác sai:\n- A: Đây là khoảng cách từ ảnh tới kính (d′), không phải khoảng cách vật.\n- B: Đã nhân d′ với k thay vì chia: d = d′/k.\n- D: Đã cộng khoảng cách vật và khoảng cách ảnh; cần dùng d = d′/k."
+    },
+    {
+     "ma_cau": "K09020405022",
+     "loai": "trac_nghiem",
+     "de": "Kính lúp có tiêu cự f = 16 cm. Đặt vật trong khoảng tiêu cự, ảnh ảo qua kính cách kính d′ = 48 cm và cao gấp k = 4 lần vật. Vật cách kính bao nhiêu?",
+     "lua_chon": [
+      "48 cm",
+      "12 cm",
+      "192 cm",
+      "60 cm"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Theo tam giác đồng dạng, ảnh cao gấp k lần vật thì d′ = k·d, nên d = d′/k = 48/4 = 12 cm. Kiểm tra: d = 12 cm nhỏ hơn f = 16 cm, đúng là vật nằm trong khoảng tiêu cự.\n\nVì sao các phương án khác sai:\n- A: Đây là khoảng cách từ ảnh tới kính (d′), không phải khoảng cách vật.\n- C: Đã nhân d′ với k thay vì chia: d = d′/k.\n- D: Đã cộng khoảng cách vật và khoảng cách ảnh; cần dùng d = d′/k."
+    },
+    {
+     "ma_cau": "K09020405023",
+     "loai": "trac_nghiem",
+     "de": "Kính lúp có tiêu cự f = 10 cm. Đặt vật trong khoảng tiêu cự, ảnh ảo qua kính cách kính d′ = 10 cm và cao gấp k = 2 lần vật. Vật cách kính bao nhiêu?",
+     "lua_chon": [
+      "10 cm",
+      "20 cm",
+      "15 cm",
+      "5 cm"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Theo tam giác đồng dạng, ảnh cao gấp k lần vật thì d′ = k·d, nên d = d′/k = 10/2 = 5 cm. Kiểm tra: d = 5 cm nhỏ hơn f = 10 cm, đúng là vật nằm trong khoảng tiêu cự.\n\nVì sao các phương án khác sai:\n- A: Đây là khoảng cách từ ảnh tới kính (d′), không phải khoảng cách vật.\n- B: Đã nhân d′ với k thay vì chia: d = d′/k.\n- C: Đã cộng khoảng cách vật và khoảng cách ảnh; cần dùng d = d′/k."
+    },
+    {
+     "ma_cau": "K09020405024",
+     "loai": "trac_nghiem",
+     "de": "Kính lúp có tiêu cự f = 18 cm. Đặt vật trong khoảng tiêu cự, ảnh ảo qua kính cách kính d′ = 36 cm và cao gấp k = 3 lần vật. Vật cách kính bao nhiêu?",
+     "lua_chon": [
+      "12 cm",
+      "36 cm",
+      "108 cm",
+      "48 cm"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Theo tam giác đồng dạng, ảnh cao gấp k lần vật thì d′ = k·d, nên d = d′/k = 36/3 = 12 cm. Kiểm tra: d = 12 cm nhỏ hơn f = 18 cm, đúng là vật nằm trong khoảng tiêu cự.\n\nVì sao các phương án khác sai:\n- B: Đây là khoảng cách từ ảnh tới kính (d′), không phải khoảng cách vật.\n- C: Đã nhân d′ với k thay vì chia: d = d′/k.\n- D: Đã cộng khoảng cách vật và khoảng cách ảnh; cần dùng d = d′/k."
+    },
+    {
+     "ma_cau": "K09020405025",
+     "loai": "trac_nghiem",
+     "de": "Kính lúp có tiêu cự f = 12 cm. Đặt vật trong khoảng tiêu cự, ảnh ảo qua kính cách kính d′ = 24 cm và cao gấp k = 3 lần vật. Vật cách kính bao nhiêu?",
+     "lua_chon": [
+      "24 cm",
+      "8 cm",
+      "72 cm",
+      "32 cm"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Theo tam giác đồng dạng, ảnh cao gấp k lần vật thì d′ = k·d, nên d = d′/k = 24/3 = 8 cm. Kiểm tra: d = 8 cm nhỏ hơn f = 12 cm, đúng là vật nằm trong khoảng tiêu cự.\n\nVì sao các phương án khác sai:\n- A: Đây là khoảng cách từ ảnh tới kính (d′), không phải khoảng cách vật.\n- C: Đã nhân d′ với k thay vì chia: d = d′/k.\n- D: Đã cộng khoảng cách vật và khoảng cách ảnh; cần dùng d = d′/k."
+    },
+    {
+     "ma_cau": "K09020405026",
+     "loai": "trac_nghiem",
+     "de": "Kính lúp có tiêu cự f = 20 cm. Đặt vật trong khoảng tiêu cự, ảnh ảo qua kính cách kính d′ = 60 cm và cao gấp k = 4 lần vật. Vật cách kính bao nhiêu?",
+     "lua_chon": [
+      "60 cm",
+      "15 cm",
+      "240 cm",
+      "80 cm"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ảnh cao gấp k lần vật nên d′ = k·d, suy ra d = d′ : k = 60 : 4 = 15 cm (nhỏ hơn f = 20 cm, đúng là trong khoảng tiêu cự).\n\nVì sao các phương án khác sai:\n- A: Đây là khoảng cách ảnh d′.\n- C: Đã nhân d′ với k thay vì chia.\n- D: Đã cộng d′ với f."
+    },
+    {
+     "ma_cau": "K09020405027",
+     "loai": "trac_nghiem",
+     "de": "Kính lúp có tiêu cự f = 12 cm. Đặt vật trong khoảng tiêu cự, ảnh ảo qua kính cách kính d′ = 60 cm và cao gấp k = 6 lần vật. Vật cách kính bao nhiêu?",
+     "lua_chon": [
+      "60 cm",
+      "360 cm",
+      "10 cm",
+      "72 cm"
+     ],
+     "dap_an": "C",
+     "loi_giai": "d = d′ : k = 60 : 6 = 10 cm (nhỏ hơn f = 12 cm, đúng là trong khoảng tiêu cự).\n\nVì sao các phương án khác sai:\n- A: Đây là khoảng cách ảnh d′.\n- B: Đã nhân d′ với k thay vì chia.\n- D: Đã cộng d′ với f."
+    },
+    {
+     "ma_cau": "K09020405028",
+     "loai": "trac_nghiem",
+     "de": "Kính lúp có tiêu cự f = 20 cm. Đặt vật trong khoảng tiêu cự, ảnh ảo qua kính cách kính d′ = 80 cm và cao gấp k = 5 lần vật. Vật cách kính bao nhiêu?",
+     "lua_chon": [
+      "80 cm",
+      "400 cm",
+      "100 cm",
+      "16 cm"
+     ],
+     "dap_an": "D",
+     "loi_giai": "d = d′ : k = 80 : 5 = 16 cm (nhỏ hơn f = 20 cm, đúng là trong khoảng tiêu cự).\n\nVì sao các phương án khác sai:\n- A: Đây là khoảng cách ảnh d′.\n- B: Đã nhân d′ với k thay vì chia.\n- C: Đã cộng d′ với f."
+    },
+    {
+     "ma_cau": "K09020405029",
+     "loai": "trac_nghiem",
+     "de": "Kính lúp có số bội giác G = 5. Vật cao 1 cm đặt cách kính 3 cm (trong khoảng tiêu cự). Ảnh ảo qua kính cách kính 7,5 cm. Tính chiều cao ảnh ảo.",
+     "lua_chon": [
+      "2,5 cm",
+      "0,4 cm",
+      "1 cm",
+      "5 cm"
+     ],
+     "dap_an": "A",
+     "loi_giai": "f=25:G=25:5=5 cm. Tỉ số phóng đại k=d′:d=7,5:3=2,5. Chiều cao ảnh h′=h×k=1×2,5=2,5 cm.\n\nVì sao các phương án khác sai:\n- B: Đã lấy nghịch đảo tỉ số (d:d′=3:7,5=0,4) thay vì d′:d=2,5.\n- C: 1 cm là chiều cao VẬT, chưa nhân với tỉ số phóng đại d′:d=2,5 để ra chiều cao ẢNH.\n- D: Đã nhân chiều cao vật với tiêu cự (1×5=5), trong khi phải nhân với tỉ số phóng đại d′:d=2,5."
+    },
+    {
+     "ma_cau": "K09020405030",
+     "loai": "trac_nghiem",
+     "de": "Kính lúp có số bội giác G = 2,5. Vật cao 2 cm đặt cách kính 5 cm (trong khoảng tiêu cự). Ảnh ảo qua kính cách kính 10 cm. Tính chiều cao ảnh ảo.",
+     "lua_chon": [
+      "0,8 cm",
+      "10 cm",
+      "4 cm",
+      "5 cm"
+     ],
+     "dap_an": "C",
+     "loi_giai": "f = 25 : G = 25 : 2,5 = 10 cm (vật 5 cm nằm trong khoảng tiêu cự). Tỉ số k = d′ : d = 10 : 5 = 2. Chiều cao ảnh h′ = h × k = 2 × 2 = 4 cm.\n\nVì sao các phương án khác sai:\n- A: Đã lấy h : k thay vì h × k; ảnh ảo qua kính lúp lớn hơn vật.\n- B: Đã lấy khoảng cách ảnh (10 cm) làm chiều cao ảnh.\n- D: Đã lấy h × G = 2 × 2,5; k phải tính bằng d′ : d."
+    },
+    {
+     "ma_cau": "K09020405031",
+     "loai": "trac_nghiem",
+     "de": "Kính lúp có số bội giác G = 4. Vật cao 0,5 cm đặt cách kính 5 cm (trong khoảng tiêu cự). Ảnh ảo qua kính cách kính 25 cm. Tính chiều cao ảnh ảo.",
+     "lua_chon": [
+      "0,1 cm",
+      "2,5 cm",
+      "0,5 cm",
+      "2 cm"
+     ],
+     "dap_an": "B",
+     "loi_giai": "f = 25 : G = 25 : 4 = 6,25 cm (vật 5 cm nằm trong khoảng tiêu cự). Tỉ số k = d′ : d = 25 : 5 = 5. Chiều cao ảnh h′ = h × k = 0,5 × 5 = 2,5 cm.\n\nVì sao các phương án khác sai:\n- A: Đã lấy h : k thay vì h × k.\n- C: Ảnh ảo qua kính lúp lớn hơn vật, không bằng vật.\n- D: Đã lấy h × G = 0,5 × 4; k phải tính bằng d′ : d."
+    },
+    {
+     "ma_cau": "K09020405032",
+     "loai": "trac_nghiem",
+     "de": "Kính lúp có số bội giác G = 10. Vật cao 1,5 cm đặt cách kính 2 cm (trong khoảng tiêu cự). Ảnh ảo qua kính cách kính 10 cm. Tính chiều cao ảnh ảo.",
+     "lua_chon": [
+      "0,3 cm",
+      "1,5 cm",
+      "3,75 cm",
+      "7,5 cm"
+     ],
+     "dap_an": "D",
+     "loi_giai": "f = 25 : G = 25 : 10 = 2,5 cm (vật 2 cm nằm trong khoảng tiêu cự). Tỉ số k = d′ : d = 10 : 2 = 5. Chiều cao ảnh h′ = h × k = 1,5 × 5 = 7,5 cm.\n\nVì sao các phương án khác sai:\n- A: Đã lấy nghịch đảo tỉ số (d:d′=1:5=0,2) rồi nhân với chiều cao vật (1,5×0,2=0,3), thay vì lấy d′:d=5.\n- B: 1,5 cm là chiều cao VẬT, chưa nhân với tỉ số phóng đại d′:d=5 để ra chiều cao ẢNH.\n- C: Đã nhân chiều cao vật với tiêu cự (1,5×2,5=3,75), trong khi phải nhân với tỉ số phóng đại d′:d=5."
+    },
+    {
+     "ma_cau": "K09020405033",
+     "loai": "trac_nghiem",
+     "de": "Kính lúp có số bội giác G = 2,5. Vật cao 3 cm đặt cách kính 7,5 cm (trong khoảng tiêu cự). Ảnh ảo qua kính cách kính 30 cm. Tính chiều cao ảnh ảo.",
+     "lua_chon": [
+      "0,75 cm",
+      "12 cm",
+      "3 cm",
+      "7,5 cm"
+     ],
+     "dap_an": "B",
+     "loi_giai": "f = 25 : G = 25 : 2,5 = 10 cm (vật 7,5 cm nằm trong khoảng tiêu cự). Tỉ số k = d′ : d = 30 : 7,5 = 4. Chiều cao ảnh h′ = h × k = 3 × 4 = 12 cm.\n\nVì sao các phương án khác sai:\n- A: Đã lấy h : k thay vì h × k.\n- C: Ảnh ảo qua kính lúp lớn hơn vật, không bằng vật.\n- D: Đã lấy h × G = 3 × 2,5; k phải tính bằng d′ : d."
+    },
+    {
+     "ma_cau": "K09020405034",
+     "loai": "trac_nghiem",
+     "de": "Kính lúp có số bội giác G = 5. Vật cao 1 cm đặt cách kính 4 cm (trong khoảng tiêu cự). Ảnh ảo qua kính cách kính 20 cm. Tính chiều cao ảnh ảo.",
+     "lua_chon": [
+      "0,2 cm",
+      "1 cm",
+      "20 cm",
+      "5 cm"
+     ],
+     "dap_an": "D",
+     "loi_giai": "f = 25 : G = 25 : 5 = 5 cm (vật 4 cm nằm trong khoảng tiêu cự). Tỉ số k = d′ : d = 20 : 4 = 5. Chiều cao ảnh h′ = h × k = 1 × 5 = 5 cm.\n\nVì sao các phương án khác sai:\n- A: Đã lấy h : k thay vì h × k.\n- B: Ảnh ảo qua kính lúp lớn hơn vật.\n- C: Đã lấy khoảng cách ảnh làm chiều cao ảnh."
+    },
+    {
+     "ma_cau": "K09020405035",
+     "loai": "trac_nghiem",
+     "de": "Kính lúp có số bội giác G = 4. Vật cao 2 cm đặt cách kính 5 cm (trong khoảng tiêu cự). Ảnh ảo qua kính cách kính 25 cm. Tính chiều cao ảnh ảo.",
+     "lua_chon": [
+      "10 cm",
+      "0,4 cm",
+      "2 cm",
+      "12,5 cm"
+     ],
+     "dap_an": "A",
+     "loi_giai": "f=25:G=25:4=6,25 cm (vật 5 cm nằm trong khoảng tiêu cự). Tỉ số k=d′:d=25:5=5. Chiều cao ảnh h′=h×k=2×5=10 cm.\n\nVì sao các phương án khác sai:\n- B: Đã lấy nghịch đảo tỉ số (d:d′=5:25=0,4) thay vì d′:d=5.\n- C: 2 cm là chiều cao VẬT, chưa nhân với tỉ số phóng đại d′:d=5 để ra chiều cao ẢNH.\n- D: Đã nhân chiều cao vật với tiêu cự (2×6,25=12,5), trong khi phải nhân với tỉ số phóng đại d′:d=5."
+    },
+    {
+     "ma_cau": "K09020405036",
+     "loai": "trac_nghiem",
+     "de": "Kính lúp có số bội giác G = 20. Vật cao 0,5 cm đặt cách kính 1 cm (trong khoảng tiêu cự). Ảnh ảo qua kính cách kính 5 cm. Tính chiều cao ảnh ảo.",
+     "lua_chon": [
+      "0,1 cm",
+      "2,5 cm",
+      "0,5 cm",
+      "0,625 cm"
+     ],
+     "dap_an": "B",
+     "loi_giai": "f=25:G=25:20=1,25 cm (vật 1 cm nằm trong khoảng tiêu cự). Tỉ số k=d′:d=5:1=5. Chiều cao ảnh h′=h×k=0,5×5=2,5 cm.\n\nVì sao các phương án khác sai:\n- A: Đã lấy nghịch đảo tỉ số (d:d′=1:5=0,2) rồi nhân với chiều cao vật (0,5×0,2=0,1), thay vì lấy d′:d=5.\n- C: 0,5 cm là chiều cao VẬT, chưa nhân với tỉ số phóng đại d′:d=5 để ra chiều cao ẢNH.\n- D: Đã nhân chiều cao vật với tiêu cự (0,5×1,25=0,625), trong khi phải nhân với tỉ số phóng đại d′:d=5."
+    },
+    {
+     "ma_cau": "K09020405037",
+     "loai": "trac_nghiem",
+     "de": "Vật cao 1 cm đặt cách hai kính lúp A và B cùng một khoảng 4 cm (trong khoảng tiêu cự mỗi kính). Ảnh ảo qua kính A cách kính 12 cm; ảnh ảo qua kính B cách kính 20 cm. Kính nào cho ảnh cao hơn?",
+     "lua_chon": [
+      "Kính A",
+      "Không so sánh được",
+      "Kính B",
+      "Hai kính cho ảnh cao bằng nhau"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Kính A: k=12:4=3, h′=1×3=3 cm. Kính B: k=20:4=5, h′=1×5=5 cm. Vì 5 cm>3 cm nên kính B cho ảnh cao hơn.\n\nVì sao các phương án khác sai:\n- A: Đã so sánh ngược: kính B mới cho ảnh cao hơn (5 cm>3 cm).\n- B: Có đủ dữ kiện để tính chiều cao ảnh của mỗi kính rồi so sánh, không phải không so sánh được.\n- D: 3 cm ≠ 5 cm, hai ảnh cao khác nhau, không bằng nhau."
+    },
+    {
+     "ma_cau": "K09020405038",
+     "loai": "trac_nghiem",
+     "de": "Vật cao 2 cm đặt cách hai kính lúp A và B cùng một khoảng 6 cm (trong khoảng tiêu cự mỗi kính). Ảnh ảo qua kính A cách kính 18 cm; ảnh ảo qua kính B cách kính 12 cm. Kính nào cho ảnh cao hơn?",
+     "lua_chon": [
+      "Kính B",
+      "Không so sánh được",
+      "Kính A",
+      "Hai kính cho ảnh cao bằng nhau"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Kính A: k=18:6=3, h′=2×3=6 cm. Kính B: k=12:6=2, h′=2×2=4 cm. Vì 6 cm>4 cm nên kính A cho ảnh cao hơn.\n\nVì sao các phương án khác sai:\n- A: Đã so sánh ngược: kính A mới cho ảnh cao hơn (6 cm>4 cm).\n- B: Có đủ dữ kiện để tính chiều cao ảnh của mỗi kính rồi so sánh, không phải không so sánh được.\n- D: 6 cm ≠ 4 cm, hai ảnh cao khác nhau, không bằng nhau."
+    },
+    {
+     "ma_cau": "K09020405039",
+     "loai": "trac_nghiem",
+     "de": "Vật cao 1,5 cm đặt cách hai kính lúp A và B cùng một khoảng 5 cm (trong khoảng tiêu cự mỗi kính). Ảnh ảo qua kính A cách kính 25 cm; ảnh ảo qua kính B cách kính 15 cm. Kính nào cho ảnh cao hơn?",
+     "lua_chon": [
+      "Kính B",
+      "Hai kính cho ảnh cao bằng nhau",
+      "Không so sánh được",
+      "Kính A"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Kính A: k=25:5=5, h′=1,5×5=7,5 cm. Kính B: k=15:5=3, h′=1,5×3=4,5 cm. Vì 7,5 cm>4,5 cm nên kính A cho ảnh cao hơn.\n\nVì sao các phương án khác sai:\n- A: Đã so sánh ngược: kính A mới cho ảnh cao hơn (7,5 cm>4,5 cm).\n- B: 7,5 cm ≠ 4,5 cm, hai ảnh cao khác nhau, không bằng nhau.\n- C: Có đủ dữ kiện để tính chiều cao ảnh của mỗi kính rồi so sánh, không phải không so sánh được."
+    },
+    {
+     "ma_cau": "K09020405040",
+     "loai": "trac_nghiem",
+     "de": "Vật cao 0,8 cm đặt cách hai kính lúp A và B cùng một khoảng 4 cm (trong khoảng tiêu cự mỗi kính). Ảnh ảo qua kính A cách kính 8 cm; ảnh ảo qua kính B cách kính 20 cm. Kính nào cho ảnh cao hơn?",
+     "lua_chon": [
+      "Kính B",
+      "Kính A",
+      "Hai kính cho ảnh cao bằng nhau",
+      "Không so sánh được"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Kính A: k=8:4=2, h′=0,8×2=1,6 cm. Kính B: k=20:4=5, h′=0,8×5=4 cm. Vì 4 cm>1,6 cm nên kính B cho ảnh cao hơn.\n\nVì sao các phương án khác sai:\n- B: Đã so sánh ngược: kính B mới cho ảnh cao hơn (4 cm>1,6 cm).\n- C: 1,6 cm ≠ 4 cm, hai ảnh cao khác nhau, không bằng nhau.\n- D: Có đủ dữ kiện để tính chiều cao ảnh của mỗi kính rồi so sánh, không phải không so sánh được."
+    },
+    {
+     "ma_cau": "K09020405041",
+     "loai": "trac_nghiem",
+     "de": "Vật cao 1 cm đặt cách hai kính lúp A và B cùng một khoảng 2 cm (trong khoảng tiêu cự mỗi kính). Ảnh ảo qua kính A cách kính 6 cm; ảnh ảo qua kính B cũng cách kính 6 cm. Kính nào cho ảnh cao hơn?",
+     "lua_chon": [
+      "Kính A",
+      "Hai kính cho ảnh cao bằng nhau",
+      "Kính B",
+      "Không so sánh được"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Kính A: k=6:2=3, h′=1×3=3 cm. Kính B: k=6:2=3, h′=1×3=3 cm. Hai giá trị bằng nhau nên hai kính cho ảnh cao bằng nhau.\n\nVì sao các phương án khác sai:\n- A: h′ của kính A và kính B đều bằng 3 cm, bằng nhau, không phải kính A cao hơn.\n- C: h′ của kính A và kính B đều bằng 3 cm, bằng nhau, không phải kính B cao hơn.\n- D: Có đủ dữ kiện để tính chiều cao ảnh của mỗi kính; kết quả là bằng nhau, không phải không so sánh được."
+    },
+    {
+     "ma_cau": "K09020405042",
+     "loai": "trac_nghiem",
+     "de": "Vật cao 1,2 cm đặt cách hai kính lúp A và B cùng một khoảng 3 cm (trong khoảng tiêu cự mỗi kính). Ảnh ảo qua kính A cách kính 9 cm; ảnh ảo qua kính B cách kính 15 cm. Kính nào cho ảnh cao hơn?",
+     "lua_chon": [
+      "Kính A",
+      "Hai kính cho ảnh cao bằng nhau",
+      "Kính B",
+      "Không so sánh được"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Kính A: k=9:3=3, h′=1,2×3=3,6 cm. Kính B: k=15:3=5, h′=1,2×5=6 cm. Vì 6 cm>3,6 cm nên kính B cho ảnh cao hơn.\n\nVì sao các phương án khác sai:\n- A: Đã so sánh ngược: kính B mới cho ảnh cao hơn (6 cm>3,6 cm).\n- B: 3,6 cm ≠ 6 cm, hai ảnh cao khác nhau, không bằng nhau.\n- D: Có đủ dữ kiện để tính chiều cao ảnh của mỗi kính rồi so sánh, không phải không so sánh được."
+    },
+    {
+     "ma_cau": "K09020405043",
+     "loai": "trac_nghiem",
+     "de": "Vật cao 2 cm đặt cách hai kính lúp A và B cùng một khoảng 4 cm (trong khoảng tiêu cự mỗi kính). Ảnh ảo qua kính A cách kính 12 cm; ảnh ảo qua kính B cũng cách kính 12 cm. Kính nào cho ảnh cao hơn?",
+     "lua_chon": [
+      "Kính B",
+      "Không so sánh được",
+      "Kính A",
+      "Bằng nhau"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Kính A: k=12:4=3, h′=2×3=6 cm. Kính B: k=12:4=3, h′=2×3=6 cm. Hai giá trị bằng nhau nên hai kính cho ảnh cao bằng nhau.\n\nVì sao các phương án khác sai:\n- A: h′ của kính A và kính B đều bằng 6 cm, bằng nhau, không phải kính B cao hơn.\n- B: Có đủ dữ kiện để tính chiều cao ảnh của mỗi kính; kết quả là bằng nhau, không phải không so sánh được.\n- C: h′ của kính A và kính B đều bằng 6 cm, bằng nhau, không phải kính A cao hơn."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00465",
+   "khoi": "9",
+   "chu_de": "Quang học",
+   "chuyen_de": "Thấu kính",
+   "nhom": "Bài toán dời vật sáng",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K09020406001",
+     "loai": "trac_nghiem",
+     "de": "Một vật đặt trước thấu kính hội tụ ở vị trí f < d < 2f, cho ảnh thật lớn hơn vật. Nếu dịch vật ra xa thấu kính để d tăng vượt qua 2f, ảnh mới so với ảnh cũ thay đổi thế nào?",
+     "lua_chon": [
+      "Vẫn là ảnh thật nhưng lớn hơn và xa thấu kính hơn",
+      "Đổi thành ảnh ảo, cùng chiều, lớn hơn vật",
+      "Ảnh không đổi vì thấu kính không đổi tiêu cự",
+      "Vẫn là ảnh thật nhưng nhỏ hơn và gần thấu kính hơn"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Khi d tăng từ khoảng (f, 2f) vượt qua 2f, ảnh thật chuyển từ lớn hơn vật sang nhỏ hơn vật và cách thấu kính gần lại.\n\nVì sao các phương án khác sai:\n- A: Khi d tăng qua 2f thì ảnh thật nhỏ đi và gần lại, không lớn thêm.\n- B: Ảnh ảo chỉ xuất hiện khi d giảm vào trong tiêu cự, không phải khi d tăng.\n- C: Vị trí vật thay đổi vẫn làm ảnh thay đổi dù tiêu cự không đổi."
+    },
+    {
+     "ma_cau": "K09020406002",
+     "loai": "trac_nghiem",
+     "de": "Một vật đặt trước thấu kính hội tụ ở vị trí d > 2f, cho ảnh thật nhỏ hơn vật. Nếu dịch vật lại gần thấu kính để d giảm vào khoảng f < d < 2f, ảnh mới so với ảnh cũ thay đổi thế nào?",
+     "lua_chon": [
+      "Vẫn là ảnh thật nhưng lớn hơn và xa thấu kính hơn",
+      "Vẫn là ảnh thật nhưng nhỏ hơn và gần thấu kính hơn",
+      "Đổi thành ảnh ảo, cùng chiều, lớn hơn vật",
+      "Ảnh không đổi vì tiêu cự thấu kính không đổi"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khi d giảm từ ngoài 2f vào khoảng (f, 2f), ảnh thật chuyển từ nhỏ hơn vật sang lớn hơn vật và cách thấu kính xa hơn.\n\nVì sao các phương án khác sai:\n- B: Khi d giảm vào khoảng (f, 2f) thì ảnh thật lớn thêm và xa ra, không nhỏ đi.\n- C: Vật vẫn ở ngoài tiêu cự (d > f) nên ảnh vẫn là ảnh thật, chưa thành ảo.\n- D: Vị trí vật thay đổi vẫn làm ảnh thay đổi dù tiêu cự không đổi."
+    },
+    {
+     "ma_cau": "K09020406003",
+     "loai": "trac_nghiem",
+     "de": "Một vật đặt trước thấu kính hội tụ ở vị trí d > f, cho ảnh thật. Nếu dịch vật lại gần thấu kính tới khi d < f, ảnh thay đổi thế nào so với trước?",
+     "lua_chon": [
+      "Vẫn là ảnh thật nhưng đổi chiều cao khác",
+      "Đổi thành ảnh ảo, cùng chiều, nhỏ hơn vật",
+      "Chuyển từ ảnh thật sang ảnh ảo, cùng chiều, lớn hơn vật",
+      "Ảnh biến mất vì vật quá gần thấu kính"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khi d vượt qua tiêu điểm (d < f), ảnh chuyển từ ảnh thật, ngược chiều sang ảnh ảo, cùng chiều, lớn hơn vật.\n\nVì sao các phương án khác sai:\n- A: Khi vật vượt qua tiêu điểm vào trong tiêu cự, ảnh đổi hẳn từ thật sang ảo.\n- B: Ảnh ảo của thấu kính hội tụ luôn lớn hơn vật, không nhỏ hơn.\n- D: Khi d < f, thấu kính hội tụ vẫn cho ảnh, đó là ảnh ảo."
+    },
+    {
+     "ma_cau": "K09020406004",
+     "loai": "trac_nghiem",
+     "de": "Một vật đặt trước thấu kính hội tụ ở vị trí d < f, cho ảnh ảo lớn hơn vật. Nếu dịch vật ra xa tới khi d > f (vẫn nhỏ hơn 2f), ảnh thay đổi thế nào so với trước?",
+     "lua_chon": [
+      "Vẫn là ảnh ảo nhưng nhỏ hơn trước",
+      "Chuyển từ ảnh ảo sang ảnh thật, ngược chiều, lớn hơn vật",
+      "Đổi thành ảnh thật, ngược chiều, nhỏ hơn vật",
+      "Ảnh không đổi vì vật chỉ dịch chuyển một đoạn nhỏ"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khi d vượt qua tiêu điểm ra ngoài (f < d < 2f), ảnh chuyển từ ảnh ảo, cùng chiều sang ảnh thật, ngược chiều, lớn hơn vật.\n\nVì sao các phương án khác sai:\n- A: Khi vật vượt qua tiêu điểm ra ngoài tiêu cự, ảnh đổi hẳn từ ảo sang thật.\n- C: Ảnh thật nhỏ hơn vật chỉ xảy ra khi d > 2f, ở đây d chưa vượt 2f.\n- D: Việc vượt qua tiêu điểm làm đổi hẳn loại ảnh, dù đoạn dịch chuyển có thể nhỏ."
+    },
+    {
+     "ma_cau": "K09020406005",
+     "loai": "trac_nghiem",
+     "de": "Vật đặt cố định trước thấu kính hội tụ ở khoảng cách d = 2f (ảnh thật, ngược chiều, bằng vật). Nếu dịch thấu kính lại gần vật để khoảng cách d giảm xuống dưới f, ảnh thay đổi thế nào?",
+     "lua_chon": [
+      "Vẫn là ảnh thật nhưng nhỏ hơn",
+      "Chuyển thành ảnh ảo, cùng chiều, lớn hơn vật",
+      "Ảnh không đổi vì tiêu cự thấu kính không đổi",
+      "Ảnh biến mất vì vật quá gần thấu kính"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Khi d < f, thấu kính hội tụ luôn cho ảnh ảo, cùng chiều và lớn hơn vật, khác hẳn ảnh thật ban đầu.\n\nVì sao các phương án khác sai:\n- A: Sai bản chất: d<f không còn cho ảnh thật nữa mà chuyển sang ảnh ảo.\n- C: Tiêu cự không đổi nhưng vị trí tương đối vật–thấu kính thay đổi nên ảnh vẫn thay đổi.\n- D: Ảnh không biến mất, chỉ chuyển từ ảnh thật sang ảnh ảo."
+    }
+   ]
+  }
+ ]
+}

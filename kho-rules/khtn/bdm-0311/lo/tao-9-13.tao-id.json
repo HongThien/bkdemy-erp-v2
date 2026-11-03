@@ -1,0 +1,116 @@
+{
+ "KDB01432": {
+  "nhom_id": "KNB00583",
+  "ten": "Nhận biết bệnh và tật di truyền ở người, nguyên nhân và kiểu di truyền",
+  "cau": [
+   "K09130101001",
+   "K09130101002",
+   "K09130101003",
+   "K09130101004",
+   "K09130101005"
+  ]
+ },
+ "KDB01433": {
+  "nhom_id": "KNB00583",
+  "ten": "Hội chứng Down, Turner, Klinefelter: dạng đột biến và số lượng NST",
+  "cau": [
+   "K09130101007",
+   "K09130101008",
+   "K09130101009",
+   "K09130101010",
+   "K09130101011",
+   "K09130101012",
+   "K09130101013"
+  ]
+ },
+ "KDB01434": {
+  "nhom_id": "KNB00583",
+  "ten": "Hôn nhân cận huyết và cơ sở di truyền của quy định cấm kết hôn gần",
+  "cau": [
+   "K09130101006",
+   "K09130101014",
+   "K09130101015",
+   "K09130101016",
+   "K09130101039"
+  ]
+ },
+ "KDB01435": {
+  "nhom_id": "KNB00583",
+  "ten": "Khái niệm công nghệ di truyền, kĩ thuật chuyển gene và sinh vật biến đổi gene",
+  "cau": [
+   "K09130101017",
+   "K09130101018",
+   "K09130101019",
+   "K09130101020",
+   "K09130101021",
+   "K09130101022",
+   "K09130101023",
+   "K09130101024"
+  ]
+ },
+ "KDB01436": {
+  "nhom_id": "KNB00583",
+  "ten": "Ứng dụng công nghệ di truyền theo lĩnh vực: y học, nông nghiệp, pháp y",
+  "cau": [
+   "K09130101025",
+   "K09130101026",
+   "K09130101027",
+   "K09130101028",
+   "K09130101029",
+   "K09130101030",
+   "K09130101031",
+   "K09130101032",
+   "K09130101037"
+  ]
+ },
+ "KDB01437": {
+  "nhom_id": "KNB00583",
+  "ten": "An toàn sinh học, đạo đức và thái độ đúng với công nghệ di truyền",
+  "cau": [
+   "K09130101033",
+   "K09130101034",
+   "K09130101035",
+   "K09130101036",
+   "K09130101038",
+   "K09130101040",
+   "K09130101041"
+  ]
+ },
+ "KDB01438": {
+  "nhom_id": "KNB00584",
+  "ten": "Đọc phả hệ: nhận kí hiệu, đếm người bệnh, xác định quan hệ các thế hệ",
+  "cau": [
+   "K09130102002",
+   "K09130102003",
+   "K09130102004"
+  ]
+ },
+ "KDB01439": {
+  "nhom_id": "KNB00584",
+  "ten": "Xác định tính trạng bệnh do gene trội hay gene lặn từ phả hệ",
+  "cau": [
+   "K09130102005",
+   "K09130102007",
+   "K09130102009"
+  ]
+ },
+ "KDB01440": {
+  "nhom_id": "KNB00584",
+  "ten": "Xác định kiểu gene của người trong phả hệ khi bệnh do gene lặn",
+  "cau": [
+   "K09130102001",
+   "K09130102006",
+   "K09130102010",
+   "K09130102012"
+  ]
+ },
+ "KDB01441": {
+  "nhom_id": "KNB00584",
+  "ten": "Tính xác suất sinh con mắc bệnh hoặc mang kiểu gene nhất định",
+  "cau": [
+   "K09130102008",
+   "K09130102011",
+   "K09130102013"
+  ]
+ }
+}

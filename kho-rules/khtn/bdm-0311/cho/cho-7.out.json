@@ -1,0 +1,602 @@
+[
+ {
+  "ma_cau": "K07000000001",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Tổng phần trăm hàm lượng nguyên tố/khí: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000002",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Tổng phần trăm hàm lượng nguyên tố/khí: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000003",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Tổng phần trăm hàm lượng nguyên tố/khí: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000004",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Tổng phần trăm hàm lượng nguyên tố/khí: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000005",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Tổng phần trăm hàm lượng nguyên tố/khí: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000006",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Tổng phần trăm hàm lượng nguyên tố/khí: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000007",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Tổng phần trăm hàm lượng nguyên tố/khí: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000008",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Tổng phần trăm hàm lượng nguyên tố/khí: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000009",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Tổng phần trăm hàm lượng nguyên tố/khí: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000010",
+  "nhom_id": "KNB00310",
+  "chac": "vua",
+  "ly_do": "So sánh khối lượng nguyên tử gấp mấy lần; nhóm gần nhất, chưa khớp hẳn"
+ },
+ {
+  "ma_cau": "K07000000011",
+  "nhom_id": "KNB00310",
+  "chac": "vua",
+  "ly_do": "So sánh khối lượng nguyên tử gấp mấy lần; nhóm gần nhất, chưa khớp hẳn"
+ },
+ {
+  "ma_cau": "K07000000012",
+  "nhom_id": "KNB00310",
+  "chac": "vua",
+  "ly_do": "So sánh khối lượng nguyên tử gấp mấy lần; nhóm gần nhất, chưa khớp hẳn"
+ },
+ {
+  "ma_cau": "K07000000013",
+  "nhom_id": "KNB00318",
+  "chac": "vua",
+  "ly_do": "Tỉ lệ khối lượng nguyên tố trong hợp chất, gần dạng phần trăm"
+ },
+ {
+  "ma_cau": "K07000000014",
+  "nhom_id": "KNB00318",
+  "chac": "cao",
+  "ly_do": "Tính phần trăm khối lượng oxygen trong CaCO3"
+ },
+ {
+  "ma_cau": "K07000000015",
+  "nhom_id": "KNB00305",
+  "chac": "cao",
+  "ly_do": "Hai nguyên tố XY biết tổng proton/hạt mang điện và hiệu"
+ },
+ {
+  "ma_cau": "K07000000016",
+  "nhom_id": "KNB00305",
+  "chac": "cao",
+  "ly_do": "Hai nguyên tố XY biết tổng proton/hạt mang điện và hiệu"
+ },
+ {
+  "ma_cau": "K07000000017",
+  "nhom_id": "KNB00305",
+  "chac": "cao",
+  "ly_do": "Hai nguyên tố XY biết tổng proton/hạt mang điện và hiệu"
+ },
+ {
+  "ma_cau": "K07000000018",
+  "nhom_id": "KNB00305",
+  "chac": "cao",
+  "ly_do": "Hai nguyên tố XY biết tổng proton/hạt mang điện và hiệu"
+ },
+ {
+  "ma_cau": "K07000000019",
+  "nhom_id": "KNB00305",
+  "chac": "cao",
+  "ly_do": "Hai nguyên tố XY biết tổng proton/hạt mang điện và hiệu"
+ },
+ {
+  "ma_cau": "K07000000020",
+  "nhom_id": "KNB00305",
+  "chac": "cao",
+  "ly_do": "Hai nguyên tố XY biết tổng proton/hạt mang điện và hiệu"
+ },
+ {
+  "ma_cau": "K07000000021",
+  "nhom_id": "KNB00305",
+  "chac": "cao",
+  "ly_do": "Hai nguyên tố XY biết tổng proton/hạt mang điện và hiệu"
+ },
+ {
+  "ma_cau": "K07000000022",
+  "nhom_id": "KNB00305",
+  "chac": "cao",
+  "ly_do": "Hai nguyên tố XY biết tổng proton/hạt mang điện và hiệu"
+ },
+ {
+  "ma_cau": "K07000000023",
+  "nhom_id": "KNB00305",
+  "chac": "cao",
+  "ly_do": "Hai nguyên tố XY biết tổng proton/hạt mang điện và hiệu"
+ },
+ {
+  "ma_cau": "K07000000024",
+  "nhom_id": "KNB00318",
+  "chac": "cao",
+  "ly_do": "Tính phần trăm khối lượng nguyên tố trong hợp chất"
+ },
+ {
+  "ma_cau": "K07000000025",
+  "nhom_id": "KNB00318",
+  "chac": "cao",
+  "ly_do": "Tính phần trăm khối lượng nguyên tố trong hợp chất"
+ },
+ {
+  "ma_cau": "K07000000026",
+  "nhom_id": "KNB00318",
+  "chac": "cao",
+  "ly_do": "Tính phần trăm khối lượng nguyên tố trong hợp chất"
+ },
+ {
+  "ma_cau": "K07000000027",
+  "nhom_id": "KNB00318",
+  "chac": "cao",
+  "ly_do": "Tính phần trăm khối lượng nguyên tố trong hợp chất"
+ },
+ {
+  "ma_cau": "K07000000028",
+  "nhom_id": "KNB00318",
+  "chac": "cao",
+  "ly_do": "Tính phần trăm khối lượng nguyên tố trong hợp chất"
+ },
+ {
+  "ma_cau": "K07000000029",
+  "nhom_id": "KNB00321",
+  "chac": "cao",
+  "ly_do": "Tìm kim loại M từ phần trăm khối lượng trong hợp chất"
+ },
+ {
+  "ma_cau": "K07000000030",
+  "nhom_id": "KNB00321",
+  "chac": "cao",
+  "ly_do": "Tìm kim loại M từ phần trăm khối lượng trong hợp chất"
+ },
+ {
+  "ma_cau": "K07000000031",
+  "nhom_id": "KNB00321",
+  "chac": "cao",
+  "ly_do": "Tìm kim loại M từ phần trăm khối lượng trong hợp chất"
+ },
+ {
+  "ma_cau": "K07000000032",
+  "nhom_id": "KNB00323",
+  "chac": "vua",
+  "ly_do": "Tính tốc độ từ nhiều lần đo thời gian; nhóm đo tốc độ chưa có dạng"
+ },
+ {
+  "ma_cau": "K07000000033",
+  "nhom_id": "KNB00323",
+  "chac": "vua",
+  "ly_do": "Tính tốc độ từ nhiều lần đo thời gian; nhóm đo tốc độ chưa có dạng"
+ },
+ {
+  "ma_cau": "K07000000034",
+  "nhom_id": "KNB00323",
+  "chac": "vua",
+  "ly_do": "Tính tốc độ từ nhiều lần đo thời gian; nhóm đo tốc độ chưa có dạng"
+ },
+ {
+  "ma_cau": "K07000000035",
+  "nhom_id": "KNB00323",
+  "chac": "vua",
+  "ly_do": "Tính tốc độ từ nhiều lần đo thời gian; nhóm đo tốc độ chưa có dạng"
+ },
+ {
+  "ma_cau": "K07000000036",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Hai xe gặp nhau/đuổi kịp: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000037",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Hai xe gặp nhau/đuổi kịp: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000038",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Hai xe gặp nhau/đuổi kịp: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000039",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Hai xe gặp nhau/đuổi kịp: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000040",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Hai xe gặp nhau/đuổi kịp: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000041",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Hai xe gặp nhau/đuổi kịp: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000042",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Hai xe gặp nhau/đuổi kịp: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000043",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Hai xe gặp nhau/đuổi kịp: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000044",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Hai xe gặp nhau/đuổi kịp: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000045",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Hai xe gặp nhau/đuổi kịp: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000046",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Biển báo giới hạn tốc độ: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000047",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Biển báo giới hạn tốc độ: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000048",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Biển báo giới hạn tốc độ: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000049",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Biển báo giới hạn tốc độ: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000050",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Biển báo giới hạn tốc độ: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000051",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Biển báo giới hạn tốc độ: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000052",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Biển báo giới hạn tốc độ: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000053",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Biển báo giới hạn tốc độ: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000054",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Biển báo giới hạn tốc độ: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000055",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Biển báo giới hạn tốc độ: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000056",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Biển báo giới hạn tốc độ: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000057",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "An toàn giao thông, khoảng cách an toàn: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000058",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "An toàn giao thông, khoảng cách an toàn: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000059",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "An toàn giao thông, khoảng cách an toàn: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000060",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "An toàn giao thông, khoảng cách an toàn: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000061",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "An toàn giao thông, khoảng cách an toàn: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000062",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "An toàn giao thông, khoảng cách an toàn: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000063",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "An toàn giao thông, khoảng cách an toàn: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000064",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "An toàn giao thông, khoảng cách an toàn: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000065",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "An toàn giao thông, khoảng cách an toàn: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000066",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "An toàn giao thông, khoảng cách an toàn: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000067",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "An toàn giao thông, khoảng cách an toàn: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000068",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "An toàn giao thông, khoảng cách an toàn: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000069",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "An toàn giao thông, khoảng cách an toàn: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000070",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "An toàn giao thông, khoảng cách an toàn: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000071",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "An toàn giao thông, khoảng cách an toàn: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000072",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "An toàn giao thông, khoảng cách an toàn: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000073",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "An toàn giao thông, khoảng cách an toàn: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000074",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "An toàn giao thông, khoảng cách an toàn: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000075",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "An toàn giao thông, khoảng cách an toàn: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000076",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "An toàn giao thông, khoảng cách an toàn: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000077",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "An toàn giao thông, khoảng cách an toàn: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000078",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "An toàn giao thông, khoảng cách an toàn: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000079",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "An toàn giao thông, khoảng cách an toàn: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000080",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "An toàn giao thông, khoảng cách an toàn: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000081",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "An toàn giao thông, khoảng cách an toàn: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000082",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "An toàn giao thông, khoảng cách an toàn: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000083",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "An toàn giao thông, khoảng cách an toàn: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000084",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "An toàn giao thông, khoảng cách an toàn: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000085",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "An toàn giao thông, khoảng cách an toàn: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000086",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "An toàn giao thông, khoảng cách an toàn: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000087",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Chuyển hóa năng lượng ánh sáng vật lí: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000088",
+  "nhom_id": "KNB00355",
+  "chac": "vua",
+  "ly_do": "Quang hợp chuyển hóa năng lượng ánh sáng; nhóm trùng 00353"
+ },
+ {
+  "ma_cau": "K07000000089",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Chuyển hóa năng lượng ánh sáng vật lí: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000090",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Chuyển hóa năng lượng ánh sáng vật lí: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000091",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Chuyển hóa năng lượng ánh sáng vật lí: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000092",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Chuyển hóa năng lượng ánh sáng vật lí: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000093",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Chuyển hóa năng lượng ánh sáng vật lí: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000094",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Chùm sáng song song/hội tụ/phân kì: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000095",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Chùm sáng song song/hội tụ/phân kì: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000096",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Chùm sáng song song/hội tụ/phân kì: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000097",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Chùm sáng song song/hội tụ/phân kì: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000098",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Chùm sáng song song/hội tụ/phân kì: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000099",
+  "nhom_id": null,
+  "chac": null,
+  "ly_do": "Chùm sáng song song/hội tụ/phân kì: chưa có nhóm trên bản đồ"
+ },
+ {
+  "ma_cau": "K07000000100",
+  "nhom_id": "KNB00342",
+  "chac": "vua",
+  "ly_do": "Nhận biết tia phản xạ trên hình; phụ thuộc hình"
+ }
+]

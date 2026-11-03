@@ -1,0 +1,644 @@
+[
+ {
+  "ma_cau": "K09060101071",
+  "dang_bai_id": "KDB01198",
+  "chac": "cao",
+  "ly_do": "Nêu ứng dụng/mục đích dùng kim loại, hỏi tính chất vật lí làm cơ sở lựa chọn"
+ },
+ {
+  "ma_cau": "K09060101072",
+  "dang_bai_id": "KDB01198",
+  "chac": "cao",
+  "ly_do": "Nêu ứng dụng/mục đích dùng kim loại, hỏi tính chất vật lí làm cơ sở lựa chọn"
+ },
+ {
+  "ma_cau": "K09060101073",
+  "dang_bai_id": "KDB01198",
+  "chac": "cao",
+  "ly_do": "Nêu ứng dụng/mục đích dùng kim loại, hỏi tính chất vật lí làm cơ sở lựa chọn"
+ },
+ {
+  "ma_cau": "K09060101074",
+  "dang_bai_id": "KDB01198",
+  "chac": "vua",
+  "ly_do": "Lí do không dùng Ag làm dây điện (giá), gần dạng liên hệ ứng dụng nhưng lệch"
+ },
+ {
+  "ma_cau": "K09060101075",
+  "dang_bai_id": "KDB01195",
+  "chac": "cao",
+  "ly_do": "Mô tả hiện tượng thìa nóng lên, không nêu mục đích; hỏi tính chất vật lí"
+ },
+ {
+  "ma_cau": "K09060101076",
+  "dang_bai_id": "KDB01198",
+  "chac": "cao",
+  "ly_do": "Nêu ứng dụng/mục đích dùng kim loại, hỏi tính chất vật lí làm cơ sở lựa chọn"
+ },
+ {
+  "ma_cau": "K09060101077",
+  "dang_bai_id": "KDB01198",
+  "chac": "cao",
+  "ly_do": "Nêu ứng dụng/mục đích dùng kim loại, hỏi tính chất vật lí làm cơ sở lựa chọn"
+ },
+ {
+  "ma_cau": "K09060201071",
+  "dang_bai_id": "KDB01231",
+  "chac": "cao",
+  "ly_do": "Cho tên kim loại, hỏi phương pháp tách phù hợp theo mức hoạt động"
+ },
+ {
+  "ma_cau": "K09060201072",
+  "dang_bai_id": "KDB01231",
+  "chac": "cao",
+  "ly_do": "Cho tên kim loại, hỏi phương pháp tách phù hợp theo mức hoạt động"
+ },
+ {
+  "ma_cau": "K09060201073",
+  "dang_bai_id": "KDB01231",
+  "chac": "cao",
+  "ly_do": "Cho tên kim loại, hỏi phương pháp tách phù hợp theo mức hoạt động"
+ },
+ {
+  "ma_cau": "K09060102062",
+  "dang_bai_id": "KDB01200",
+  "chac": "cao",
+  "ly_do": "Kim loại + Cl2/S, chọn PTHH đúng theo hoá trị và cân bằng"
+ },
+ {
+  "ma_cau": "K09060102063",
+  "dang_bai_id": "KDB01199",
+  "chac": "cao",
+  "ly_do": "Kim loại + O2, chọn PTHH đúng"
+ },
+ {
+  "ma_cau": "K09060102064",
+  "dang_bai_id": "KDB01200",
+  "chac": "cao",
+  "ly_do": "Kim loại + Cl2/S, chọn PTHH đúng theo hoá trị và cân bằng"
+ },
+ {
+  "ma_cau": "K09060102065",
+  "dang_bai_id": "KDB01201",
+  "chac": "cao",
+  "ly_do": "K/Na/Ca + nước nhiệt độ thường, chọn PTHH đúng"
+ },
+ {
+  "ma_cau": "K09060102066",
+  "dang_bai_id": "KDB01201",
+  "chac": "cao",
+  "ly_do": "K/Na/Ca + nước nhiệt độ thường, chọn PTHH đúng"
+ },
+ {
+  "ma_cau": "K09060102067",
+  "dang_bai_id": "KDB01201",
+  "chac": "cao",
+  "ly_do": "K/Na/Ca + nước nhiệt độ thường, chọn PTHH đúng"
+ },
+ {
+  "ma_cau": "K09060202071",
+  "dang_bai_id": "KDB01235",
+  "chac": "cao",
+  "ly_do": "Chọn PTHH đúng điện phân nóng chảy để tách kim loại mạnh"
+ },
+ {
+  "ma_cau": "K09060202072",
+  "dang_bai_id": "KDB01236",
+  "chac": "cao",
+  "ly_do": "Chọn PTHH đúng nhiệt luyện oxide bằng CO/H2"
+ },
+ {
+  "ma_cau": "K09060202073",
+  "dang_bai_id": "KDB01236",
+  "chac": "cao",
+  "ly_do": "Chọn PTHH đúng nhiệt luyện oxide bằng CO/H2"
+ },
+ {
+  "ma_cau": "K09060202074",
+  "dang_bai_id": "KDB01235",
+  "chac": "cao",
+  "ly_do": "Chọn PTHH đúng điện phân nóng chảy để tách kim loại mạnh"
+ },
+ {
+  "ma_cau": "K09060103071",
+  "dang_bai_id": "KDB01203",
+  "chac": "cao",
+  "ly_do": "Kim loại + dd acid, chọn PTHH đúng"
+ },
+ {
+  "ma_cau": "K09060103072",
+  "dang_bai_id": "KDB01203",
+  "chac": "cao",
+  "ly_do": "Kim loại + dd acid, chọn PTHH đúng"
+ },
+ {
+  "ma_cau": "K09060103073",
+  "dang_bai_id": "KDB01205",
+  "chac": "cao",
+  "ly_do": "Kim loại + dd muối, chọn PTHH đúng"
+ },
+ {
+  "ma_cau": "K09060103074",
+  "dang_bai_id": "KDB01205",
+  "chac": "cao",
+  "ly_do": "Kim loại + dd muối, chọn PTHH đúng"
+ },
+ {
+  "ma_cau": "K09060103075",
+  "dang_bai_id": "KDB01205",
+  "chac": "cao",
+  "ly_do": "Kim loại + dd muối, chọn PTHH đúng"
+ },
+ {
+  "ma_cau": "K09060103076",
+  "dang_bai_id": "KDB01204",
+  "chac": "cao",
+  "ly_do": "Hỏi kim loại nào phản ứng với dd acid loãng theo dãy hoạt động"
+ },
+ {
+  "ma_cau": "K09060203071",
+  "dang_bai_id": "KDB01239",
+  "chac": "cao",
+  "ly_do": "Định nghĩa/thành phần hợp kim, nhận biết hợp kim ở mức khái niệm"
+ },
+ {
+  "ma_cau": "K09060203072",
+  "dang_bai_id": "KDB01239",
+  "chac": "vua",
+  "ly_do": "Cách tạo hợp kim, sát khái niệm nhưng dạng không nói rõ về cách điều chế"
+ },
+ {
+  "ma_cau": "K09060203073",
+  "dang_bai_id": "KDB01240",
+  "chac": "cao",
+  "ly_do": "So sánh hợp kim với kim loại nguyên chất, ưu điểm tính chất"
+ },
+ {
+  "ma_cau": "K09060203074",
+  "dang_bai_id": "KDB01239",
+  "chac": "cao",
+  "ly_do": "Định nghĩa/thành phần hợp kim, nhận biết hợp kim ở mức khái niệm"
+ },
+ {
+  "ma_cau": "K09060203075",
+  "dang_bai_id": "KDB01240",
+  "chac": "cao",
+  "ly_do": "So sánh hợp kim với kim loại nguyên chất, ưu điểm tính chất"
+ },
+ {
+  "ma_cau": "K09060203076",
+  "dang_bai_id": "KDB01239",
+  "chac": "cao",
+  "ly_do": "Định nghĩa/thành phần hợp kim, nhận biết hợp kim ở mức khái niệm"
+ },
+ {
+  "ma_cau": "K09060203077",
+  "dang_bai_id": "KDB01239",
+  "chac": "cao",
+  "ly_do": "Định nghĩa/thành phần hợp kim, nhận biết hợp kim ở mức khái niệm"
+ },
+ {
+  "ma_cau": "K09060203078",
+  "dang_bai_id": "KDB01242",
+  "chac": "cao",
+  "ly_do": "Chọn thép thay sắt làm dầm cầu, ứng dụng theo tính chất; dạng sau thắng"
+ },
+ {
+  "ma_cau": "K09060203079",
+  "dang_bai_id": "KDB01241",
+  "chac": "cao",
+  "ly_do": "Hàm lượng carbon / nguyên tố thêm vào của gang, thép, inox"
+ },
+ {
+  "ma_cau": "K09060203080",
+  "dang_bai_id": "KDB01241",
+  "chac": "cao",
+  "ly_do": "Hàm lượng carbon / nguyên tố thêm vào của gang, thép, inox"
+ },
+ {
+  "ma_cau": "K09060203081",
+  "dang_bai_id": "KDB01239",
+  "chac": "vua",
+  "ly_do": "Thành phần duralumin; gần khái niệm hợp kim nhưng dạng chỉ nêu kim loại cơ bản"
+ },
+ {
+  "ma_cau": "K09060203082",
+  "dang_bai_id": "KDB01242",
+  "chac": "cao",
+  "ly_do": "Chọn ứng dụng phù hợp của inox/gang/duralumin theo tính chất đặc trưng"
+ },
+ {
+  "ma_cau": "K09060203083",
+  "dang_bai_id": "KDB01242",
+  "chac": "cao",
+  "ly_do": "Chọn ứng dụng phù hợp của inox/gang/duralumin theo tính chất đặc trưng"
+ },
+ {
+  "ma_cau": "K09060203084",
+  "dang_bai_id": "KDB01242",
+  "chac": "cao",
+  "ly_do": "Chọn ứng dụng phù hợp của inox/gang/duralumin theo tính chất đặc trưng"
+ },
+ {
+  "ma_cau": "K09060104031",
+  "dang_bai_id": "KDB01210",
+  "chac": "cao",
+  "ly_do": "Kim loại nào đẩy/không đẩy được kim loại khỏi dd muối theo dãy hoạt động"
+ },
+ {
+  "ma_cau": "K09060104032",
+  "dang_bai_id": "KDB01210",
+  "chac": "cao",
+  "ly_do": "Kim loại nào đẩy/không đẩy được kim loại khỏi dd muối theo dãy hoạt động"
+ },
+ {
+  "ma_cau": "K09060204071",
+  "dang_bai_id": "KDB01245",
+  "chac": "cao",
+  "ly_do": "Vai trò đá vôi/CO trong lò cao; dạng sau thắng"
+ },
+ {
+  "ma_cau": "K09060204072",
+  "dang_bai_id": "KDB01244",
+  "chac": "cao",
+  "ly_do": "Chọn phản ứng tạo CO trong lò cao: C + CO2"
+ },
+ {
+  "ma_cau": "K09060204073",
+  "dang_bai_id": "KDB01243",
+  "chac": "cao",
+  "ly_do": "Nguyên liệu chính cung cấp sắt để luyện gang"
+ },
+ {
+  "ma_cau": "K09060204074",
+  "dang_bai_id": "KDB01245",
+  "chac": "cao",
+  "ly_do": "Vai trò đá vôi/CO trong lò cao; dạng sau thắng"
+ },
+ {
+  "ma_cau": "K09060204075",
+  "dang_bai_id": "KDB01246",
+  "chac": "cao",
+  "ly_do": "Luyện thép từ gang: thổi oxygen, nguyên liệu, xử lí tạp chất"
+ },
+ {
+  "ma_cau": "K09060204076",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Lạc nhóm: thuộc KNB00503 hợp kim, dạng thành phần/tính chất gang thép"
+ },
+ {
+  "ma_cau": "K09060204077",
+  "dang_bai_id": "KDB01246",
+  "chac": "cao",
+  "ly_do": "Luyện thép từ gang: thổi oxygen, nguyên liệu, xử lí tạp chất"
+ },
+ {
+  "ma_cau": "K09060204078",
+  "dang_bai_id": "KDB01246",
+  "chac": "cao",
+  "ly_do": "Luyện thép từ gang: thổi oxygen, nguyên liệu, xử lí tạp chất"
+ },
+ {
+  "ma_cau": "K09060105063",
+  "dang_bai_id": "KDB01211",
+  "chac": "cao",
+  "ly_do": "Dữ kiện thí nghiệm đẩy kim loại, sắp xếp thứ tự hoạt động"
+ },
+ {
+  "ma_cau": "K09060105064",
+  "dang_bai_id": "KDB01211",
+  "chac": "cao",
+  "ly_do": "Dữ kiện thí nghiệm đẩy kim loại, sắp xếp thứ tự hoạt động"
+ },
+ {
+  "ma_cau": "K09060105065",
+  "dang_bai_id": "KDB01211",
+  "chac": "cao",
+  "ly_do": "Dữ kiện thí nghiệm đẩy kim loại, sắp xếp thứ tự hoạt động"
+ },
+ {
+  "ma_cau": "K09060105066",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: hỗn hợp kim loại + dung dịch, xác định chất rắn còn lại"
+ },
+ {
+  "ma_cau": "K09060105067",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: hỗn hợp kim loại + dung dịch, xác định chất rắn còn lại"
+ },
+ {
+  "ma_cau": "K09060105068",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: hỗn hợp kim loại + dung dịch, xác định chất rắn còn lại"
+ },
+ {
+  "ma_cau": "K09060205091",
+  "dang_bai_id": "KDB01248",
+  "chac": "cao",
+  "ly_do": "Cho khối lượng oxide, nhiệt luyện hoàn toàn, tính khối lượng kim loại"
+ },
+ {
+  "ma_cau": "K09060205092",
+  "dang_bai_id": "KDB01248",
+  "chac": "cao",
+  "ly_do": "Cho khối lượng oxide, nhiệt luyện hoàn toàn, tính khối lượng kim loại"
+ },
+ {
+  "ma_cau": "K09060205093",
+  "dang_bai_id": "KDB01248",
+  "chac": "cao",
+  "ly_do": "Cho khối lượng oxide, nhiệt luyện hoàn toàn, tính khối lượng kim loại"
+ },
+ {
+  "ma_cau": "K09060205094",
+  "dang_bai_id": "KDB01248",
+  "chac": "cao",
+  "ly_do": "Cho khối lượng oxide, nhiệt luyện hoàn toàn, tính khối lượng kim loại"
+ },
+ {
+  "ma_cau": "K09060205095",
+  "dang_bai_id": "KDB01248",
+  "chac": "cao",
+  "ly_do": "Cho khối lượng oxide, nhiệt luyện hoàn toàn, tính khối lượng kim loại"
+ },
+ {
+  "ma_cau": "K09060205096",
+  "dang_bai_id": "KDB01248",
+  "chac": "cao",
+  "ly_do": "Cho khối lượng oxide, nhiệt luyện hoàn toàn, tính khối lượng kim loại"
+ },
+ {
+  "ma_cau": "K09060205097",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: quặng chứa x% oxide, nhiệt luyện, tính khối lượng kim loại (tạp chất)"
+ },
+ {
+  "ma_cau": "K09060205098",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: quặng chứa x% oxide, nhiệt luyện, tính khối lượng kim loại (tạp chất)"
+ },
+ {
+  "ma_cau": "K09060205099",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: quặng chứa x% oxide, nhiệt luyện, tính khối lượng kim loại (tạp chất)"
+ },
+ {
+  "ma_cau": "K09060205100",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: quặng chứa x% oxide, nhiệt luyện, tính khối lượng kim loại (tạp chất)"
+ },
+ {
+  "ma_cau": "K09060205101",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: quặng chứa x% oxide, nhiệt luyện, tính khối lượng kim loại (tạp chất)"
+ },
+ {
+  "ma_cau": "K09060205102",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: quặng chứa x% oxide, nhiệt luyện, tính khối lượng kim loại (tạp chất)"
+ },
+ {
+  "ma_cau": "K09060205103",
+  "dang_bai_id": "KDB01251",
+  "chac": "cao",
+  "ly_do": "Fe2O3 nhiệt luyện kèm hiệu suất, hỏi khối lượng Fe thực tế; dạng sau thắng"
+ },
+ {
+  "ma_cau": "K09060205104",
+  "dang_bai_id": "KDB01250",
+  "chac": "cao",
+  "ly_do": "Từ hiệu suất tính khối lượng kim loại thực tế"
+ },
+ {
+  "ma_cau": "K09060205105",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: tính ngược khối lượng oxide từ kim loại thực tế và hiệu suất"
+ },
+ {
+  "ma_cau": "K09060205106",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: tính ngược khối lượng oxide từ kim loại thực tế và hiệu suất"
+ },
+ {
+  "ma_cau": "K09060205107",
+  "dang_bai_id": "KDB01250",
+  "chac": "cao",
+  "ly_do": "Từ hiệu suất tính khối lượng kim loại thực tế"
+ },
+ {
+  "ma_cau": "K09060205108",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: tính ngược khối lượng oxide từ kim loại thực tế và hiệu suất"
+ },
+ {
+  "ma_cau": "K09060205109",
+  "dang_bai_id": "KDB01251",
+  "chac": "vua",
+  "ly_do": "Quặng hematite có tạp chất kèm hiệu suất; dạng nhóm thiếu bước quặng %"
+ },
+ {
+  "ma_cau": "K09060205110",
+  "dang_bai_id": "KDB01250",
+  "chac": "vua",
+  "ly_do": "Quặng chứa % oxide kèm hiệu suất; gần dạng hiệu suất nhưng thêm bước tạp chất"
+ },
+ {
+  "ma_cau": "K09060205111",
+  "dang_bai_id": "KDB01250",
+  "chac": "vua",
+  "ly_do": "Quặng chứa % oxide kèm hiệu suất; gần dạng hiệu suất nhưng thêm bước tạp chất"
+ },
+ {
+  "ma_cau": "K09060205112",
+  "dang_bai_id": "KDB01250",
+  "chac": "vua",
+  "ly_do": "Quặng chứa % oxide kèm hiệu suất; gần dạng hiệu suất nhưng thêm bước tạp chất"
+ },
+ {
+  "ma_cau": "K09060205113",
+  "dang_bai_id": "KDB01251",
+  "chac": "vua",
+  "ly_do": "Quặng hematite có tạp chất kèm hiệu suất; dạng nhóm thiếu bước quặng %"
+ },
+ {
+  "ma_cau": "K09060205114",
+  "dang_bai_id": "KDB01250",
+  "chac": "vua",
+  "ly_do": "Quặng chứa % oxide kèm hiệu suất; gần dạng hiệu suất nhưng thêm bước tạp chất"
+ },
+ {
+  "ma_cau": "K09060205115",
+  "dang_bai_id": "KDB01250",
+  "chac": "vua",
+  "ly_do": "Quặng chứa % oxide kèm hiệu suất; gần dạng hiệu suất nhưng thêm bước tạp chất"
+ },
+ {
+  "ma_cau": "K09060205116",
+  "dang_bai_id": "KDB01250",
+  "chac": "vua",
+  "ly_do": "Quặng chứa % oxide kèm hiệu suất; gần dạng hiệu suất nhưng thêm bước tạp chất"
+ },
+ {
+  "ma_cau": "K09060206031",
+  "dang_bai_id": "KDB01255",
+  "chac": "vua",
+  "ly_do": "Đánh giá cách tách theo vị trí dãy hoạt động; dạng 1 còn nhắc hợp kim"
+ },
+ {
+  "ma_cau": "K09060206032",
+  "dang_bai_id": "KDB01255",
+  "chac": "vua",
+  "ly_do": "Đánh giá cách tách theo vị trí dãy hoạt động; dạng 1 còn nhắc hợp kim"
+ },
+ {
+  "ma_cau": "K09060206033",
+  "dang_bai_id": "KDB01255",
+  "chac": "vua",
+  "ly_do": "Đánh giá cách tách theo vị trí dãy hoạt động; dạng 1 còn nhắc hợp kim"
+ },
+ {
+  "ma_cau": "K09060206034",
+  "dang_bai_id": "KDB01255",
+  "chac": "vua",
+  "ly_do": "Đánh giá cách tách theo vị trí dãy hoạt động; dạng 1 còn nhắc hợp kim"
+ },
+ {
+  "ma_cau": "K09060206035",
+  "dang_bai_id": "KDB01255",
+  "chac": "vua",
+  "ly_do": "Đánh giá cách tách theo vị trí dãy hoạt động; dạng 1 còn nhắc hợp kim"
+ },
+ {
+  "ma_cau": "K09060206036",
+  "dang_bai_id": "KDB01255",
+  "chac": "vua",
+  "ly_do": "Đánh giá cách tách theo vị trí dãy hoạt động; dạng 1 còn nhắc hợp kim"
+ },
+ {
+  "ma_cau": "K09060206037",
+  "dang_bai_id": "KDB01255",
+  "chac": "vua",
+  "ly_do": "Đánh giá cách tách theo vị trí dãy hoạt động; dạng 1 còn nhắc hợp kim"
+ },
+ {
+  "ma_cau": "K09060107031",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: xác định kim loại phù hợp với mục đích sử dụng"
+ },
+ {
+  "ma_cau": "K09060107032",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: xác định kim loại phù hợp với mục đích sử dụng"
+ },
+ {
+  "ma_cau": "K09060107033",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: xác định kim loại phù hợp với mục đích sử dụng"
+ },
+ {
+  "ma_cau": "K09060107034",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: xác định kim loại phù hợp với mục đích sử dụng"
+ },
+ {
+  "ma_cau": "K09060107035",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: xác định kim loại phù hợp với mục đích sử dụng"
+ },
+ {
+  "ma_cau": "K09060107036",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: xác định kim loại phù hợp với mục đích sử dụng"
+ },
+ {
+  "ma_cau": "K09060108029",
+  "dang_bai_id": "KDB01223",
+  "chac": "cao",
+  "ly_do": "Từ khối lượng kim loại tính thể tích H2 với acid"
+ },
+ {
+  "ma_cau": "K09060108030",
+  "dang_bai_id": "KDB01223",
+  "chac": "cao",
+  "ly_do": "Từ khối lượng kim loại tính thể tích H2 với acid"
+ },
+ {
+  "ma_cau": "K09060108031",
+  "dang_bai_id": "KDB01223",
+  "chac": "cao",
+  "ly_do": "Từ khối lượng kim loại tính thể tích H2 với acid"
+ },
+ {
+  "ma_cau": "K09060108032",
+  "dang_bai_id": "KDB01223",
+  "chac": "cao",
+  "ly_do": "Từ khối lượng kim loại tính thể tích H2 với acid"
+ },
+ {
+  "ma_cau": "K09060108033",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: tính nồng độ mol dd acid từ khối lượng kim loại"
+ },
+ {
+  "ma_cau": "K09060108034",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: tính nồng độ mol dd acid từ khối lượng kim loại"
+ },
+ {
+  "ma_cau": "K09060108035",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: tính nồng độ mol dd acid từ khối lượng kim loại"
+ },
+ {
+  "ma_cau": "K09060108036",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Nhóm thiếu dạng: tính nồng độ mol dd acid từ khối lượng kim loại"
+ },
+ {
+  "ma_cau": "K09060108037",
+  "dang_bai_id": "KDB01226",
+  "chac": "vua",
+  "ly_do": "Hỗn hợp có kim loại không phản ứng, từ H2 tính khối lượng kim loại (không phải %)"
+ },
+ {
+  "ma_cau": "K09060108038",
+  "dang_bai_id": "KDB01226",
+  "chac": "vua",
+  "ly_do": "Hỗn hợp có kim loại không phản ứng, từ H2 tính khối lượng kim loại (không phải %)"
+ },
+ {
+  "ma_cau": "K09060108039",
+  "dang_bai_id": "KDB01226",
+  "chac": "vua",
+  "ly_do": "Hỗn hợp có kim loại không phản ứng, từ H2 tính khối lượng kim loại (không phải %)"
+ },
+ {
+  "ma_cau": "K09060108040",
+  "dang_bai_id": "KDB01226",
+  "chac": "vua",
+  "ly_do": "Hỗn hợp có kim loại không phản ứng, từ H2 tính khối lượng kim loại (không phải %)"
+ }
+]

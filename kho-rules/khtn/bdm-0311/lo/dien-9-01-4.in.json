@@ -1,0 +1,569 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00429",
+   "khoi": "9",
+   "chu_de": "Cơ học",
+   "chuyen_de": "Công & Công suất",
+   "nhom": "So sánh công suất và ứng dụng thực tế",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nSo sánh công suất\nMuốn biết người hay máy nào làm việc nhanh hơn, phải tính công suất của từng đối tượng rồi so sánh.\nKhông so sánh riêng công hoặc riêng thời gian.\nĐối tượng có công suất lớn hơn thì thực hiện cùng một công trong thời gian ngắn hơn.\nCông suất khi vật chuyển động đều\nKhi lực kéo $\\mathrm{F}$ làm vật chuyển động đều với tốc độ $\\mathrm{v}$ theo phương của lực, công suất của lực kéo tính bằng tích $\\mathrm{F} \\cdot \\mathrm{v}$.\nChọn máy phù hợp\nMáy đáp ứng được yêu cầu khi công suất của máy không nhỏ hơn công suất cần thiết của công việc.\n\n##TC 2. Công thức\nCông và công suất của từng đối tượng:\n$\\mathrm{A}=\\mathrm{F} \\cdot \\mathrm{s}$ hoặc $\\mathrm{A}=10 \\mathrm{m} \\cdot \\mathrm{h}$; $\\mathrm{P}=\\dfrac{\\mathrm{A}}{\\mathrm{t}}$\nTỉ số và hiệu công suất của hai đối tượng:\n$\\dfrac{\\mathrm{P}_1}{\\mathrm{P}_2}$, $\\mathrm{P}_1-\\mathrm{P}_2$\nCông suất khi vật chuyển động đều:\n$$\\mathrm{P}=\\dfrac{\\mathrm{A}}{\\mathrm{t}}=\\dfrac{\\mathrm{F} \\cdot \\mathrm{s}}{\\mathrm{t}}=\\mathrm{F} \\cdot \\mathrm{v}$$\nTrong đó: $\\mathrm{F}$ là lực kéo (N); $\\mathrm{v}$ là tốc độ (m/s); $\\mathrm{P}$ là công suất (W).\nĐổi tốc độ:\n$1\\ \\mathrm{m} / \\mathrm{s}=3,6\\ \\mathrm{km} / \\mathrm{h}$; $\\mathrm{v}\\ (\\mathrm{m} / \\mathrm{s})=\\dfrac{\\mathrm{v}\\ (\\mathrm{km} / \\mathrm{h})}{3,6}$\n\n##PP 3. Các bước làm bài\nBước 1. Đổi đơn vị: khối lượng về $\\mathrm{kg}$, quãng đường về $\\mathrm{m}$, thời gian về $\\mathrm{s}$, tốc độ về $\\mathrm{m} / \\mathrm{s}$, công suất về $\\mathrm{W}$.\nBước 2. Tính công của từng đối tượng: $\\mathrm{A}=\\mathrm{F} \\cdot \\mathrm{s}$ hoặc $\\mathrm{A}=10 \\mathrm{m} \\cdot \\mathrm{h}$.\nBước 3. Tính công suất của từng đối tượng: $\\mathrm{P}=\\dfrac{\\mathrm{A}}{\\mathrm{t}}$, hoặc $\\mathrm{P}=\\mathrm{F} \\cdot \\mathrm{v}$ khi vật chuyển động đều.\nBước 4. So sánh theo yêu cầu: lập tỉ số, tính hiệu, hoặc đối chiếu với công suất của các máy để chọn máy.\n\n##CY 4. Lưu ý\nĐối tượng thực hiện công lớn hơn chưa chắc có công suất lớn hơn, vì còn phụ thuộc thời gian.\nKhi lập tỉ số $\\dfrac{\\mathrm{P}_1}{\\mathrm{P}_2}$, đặt đúng thứ tự đối tượng mà đề hỏi.\nKhi chọn máy, chọn máy có công suất nhỏ nhất nhưng không nhỏ hơn công suất cần thiết.\nCông thức $\\mathrm{P}=\\mathrm{F} \\cdot \\mathrm{v}$ chỉ dùng khi vật chuyển động đều theo phương của lực kéo.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00431",
+   "khoi": "9",
+   "chu_de": "Cơ học",
+   "chuyen_de": "Công & Công suất",
+   "nhom": "Tính toán công suất P",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "##TC 1. Kiến thức cần nhớ\nCông suất\nCông suất là công thực hiện được trong một đơn vị thời gian. Công suất cho biết máy hoặc người thực hiện công nhanh hay chậm.\nCông thức công suất có ba đại lượng P, A, t. Biết hai đại lượng thì tính được đại lượng còn lại.\nĐơn vị\nKhi dùng công thức, công tính bằng jun (J), thời gian tính bằng giây (s) thì công suất tính bằng oát (W).\n\n##TC 2. Công thức\nCông suất:\n$$P = \\dfrac{A}{t}$$\nTính công hoặc thời gian khi biết công suất:\n$A = P \\cdot t$; $t = \\dfrac{A}{P}$\nTrong đó: P là công suất (W); A là công (J); t là thời gian (s).\nĐổi đơn vị thường gặp:\n$$\\begin{array}{|l|l|}\n\\hline\n\\text{Đại lượng} & \\text{Đổi đơn vị} \\\\\n\\hline\n\\text{Thời gian} & \\text{1 phút} = 60 \\text{ s; 1 giờ} = 60 \\text{ phút} = 3600 \\text{ s} \\\\\n\\hline\n\\text{Công suất} & 1 \\text{ kW} = 1000 \\text{ W} \\\\\n\\hline\n\\text{Công} & 1 \\text{ kJ} = 1000 \\text{ J} \\\\\n\\hline\n\\end{array}$$\n\n##PP3. Các bước làm bài\nBước 1. Tóm tắt đề, xác định đại lượng đã biết và đại lượng cần tìm.\nBước 2. Đổi thời gian về giây, công về jun, công suất về oát.\nBước 3. Áp dụng $P = \\dfrac{A}{t}$ hoặc công thức biến đổi $A = P \\cdot t$, $t = \\dfrac{A}{P}$.\nBước 4. Đổi kết quả sang đơn vị đề yêu cầu.\n\n##CY 4. Lưu ý\nCông suất bằng công chia cho thời gian, không nhân công với thời gian.\nNếu thời gian cho bằng phút hoặc giờ mà không đổi ra giây, kết quả công suất sẽ sai 60 lần hoặc 3600 lần.\nKhi đề hỏi kết quả bằng kW, kJ hoặc phút, phải đổi kết quả sau khi tính.",
+   "can_dien_ly_thuyet_nhom": false
+  }
+ ],
+ "dang_bai": [
+  {
+   "dang_id": "KDB01096",
+   "nhom_id": "KNB00429",
+   "thu_tu": 1,
+   "dang": "So sánh công suất 2 người, 2 máy",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 20,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010403069",
+     "loai": "trac_nghiem",
+     "de": "Bạn An dùng ròng rọc cố định kéo 10 viên gạch lên cao 4 m trong 50 s. Bạn Bình kéo 12 viên gạch lên cùng độ cao đó trong 2,5 phút. Mỗi viên gạch có khối lượng 2,5 kg. Coi lực kéo bằng trọng lượng của gạch; trọng lượng bằng 10 lần khối lượng. Công suất của bạn An gấp bao nhiêu lần công suất của bạn Bình?",
+     "lua_chon": [
+      "2,5 lần",
+      "3 lần",
+      "5 lần",
+      "25 lần"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng gạch bạn An kéo:\n$\\mathrm{m_1 = 10 \\cdot 2,5 = 25 (kg)}$\nCông của bạn An:\n$\\mathrm{A_1 = 10m_1 \\cdot h_1 = 10 \\cdot 25 \\cdot 4 = 1000 (J)}$\nCông suất của bạn An:\n$\\mathrm{P_1 = \\dfrac{A_1}{t_1} = \\dfrac{1000}{50} = 20 (W)}$\nKhối lượng gạch bạn Bình kéo:\n$\\mathrm{m_2 = 12 \\cdot 2,5 = 30 (kg)}$\nCông của bạn Bình:\n$\\mathrm{A_2 = 10m_2 \\cdot h_2 = 10 \\cdot 30 \\cdot 4 = 1200 (J)}$\nĐổi thời gian: $\\mathrm{t_2 = 2,5}$ phút = 150 s\nCông suất của bạn Bình:\n$\\mathrm{P_2 = \\dfrac{A_2}{t_2} = \\dfrac{1200}{150} = 8 (W)}$\nTỉ số công suất:\n$\\mathrm{\\dfrac{P_1}{P_2} = \\dfrac{20}{8} = 2,5}$\nVậy công suất của bạn An gấp 2,5 lần công suất của bạn Bình."
+    },
+    {
+     "ma_cau": "K09010403071",
+     "loai": "trac_nghiem",
+     "de": "Thang máy thứ nhất đưa 600 kg hàng lên cao 30 m trong 36 s. Thang máy thứ hai đưa 720 kg hàng lên cao 25 m trong 45 s. Coi lực nâng bằng trọng lượng của hàng; trọng lượng bằng 10 lần khối lượng. Công suất của thang máy thứ nhất gấp bao nhiêu lần công suất của thang máy thứ hai?",
+     "lua_chon": [
+      "0,8 lần",
+      "1 lần",
+      "1,2 lần",
+      "1,25 lần"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Công của thang máy thứ nhất:\n$A_1 = 10m_1 \\cdot h_1 = 10 \\cdot 600 \\cdot 30 = 180\\ 000$ (J)\nCông suất của thang máy thứ nhất:\n$P_1 = \\dfrac{A_1}{t_1} = \\dfrac{180\\ 000}{36} = 5000$ (W)\nCông của thang máy thứ hai:\n$A_2 = 10m_2 \\cdot h_2 = 10 \\cdot 720 \\cdot 25 = 180\\ 000$ (J)\nCông suất của thang máy thứ hai:\n$P_2 = \\dfrac{A_2}{t_2} = \\dfrac{180\\ 000}{45} = 4000$ (W)\nTỉ số công suất:\n$\\dfrac{P_1}{P_2} = \\dfrac{5000}{4000} = 1,25$\nVậy công suất của thang máy thứ nhất gấp 1,25 lần công suất của thang máy thứ hai."
+    },
+    {
+     "ma_cau": "K09010403072",
+     "loai": "trac_nghiem",
+     "de": "Máy cày kéo với lực $3000\\,N$, đi được $500\\,m$ trong $2,5$ phút. Con trâu kéo cày với lực $800\\,N$, đi được $250\\,m$ trong $8$ phút $20$ giây. Lực kéo luôn cùng phương chuyển động. Công suất của máy cày gấp bao nhiêu lần công suất của con trâu?",
+     "lua_chon": [
+      "0,04 lần",
+      "3,75 lần",
+      "7,5 lần",
+      "25 lần"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Công của máy cày:\nA. $A_1 = F_1 \\cdot s_1 = 3000 \\cdot 500 = 1\\,500\\,000\\,(J)$\nĐổi thời gian: $t_1 = 2,5$ phút $= 150\\,s$\nCông suất của máy cày:\n$P_1 = \\dfrac{A_1}{t_1} = \\dfrac{1\\,500\\,000}{150} = 10\\,000\\,(W)$\nCông của con trâu:\n$A_2 = F_2 \\cdot s_2 = 800 \\cdot 250 = 200\\,000\\,(J)$\nĐổi thời gian: $t_2 = 8$ phút $20$ giây $= 500\\,s$\nCông suất của con trâu:\n$P_2 = \\dfrac{A_2}{t_2} = \\dfrac{200\\,000}{500} = 400\\,(W)$\nTỉ số công suất:\n$\\dfrac{P_1}{P_2} = \\dfrac{10\\,000}{400} = 25$\nVậy công suất của máy cày gấp $25$ lần công suất của con trâu."
+    },
+    {
+     "ma_cau": "K09010403062",
+     "loai": "trac_nghiem",
+     "de": "Máy thứ nhất thực hiện công $12000 \\mathrm{\\ J}$ trong $20 \\mathrm{\\ s}$. Máy thứ hai thực hiện công $8000 \\mathrm{\\ J}$ trong $40 \\mathrm{\\ s}$. Công suất của máy thứ nhất gấp bao nhiêu lần công suất của máy thứ hai?",
+     "lua_chon": [
+      "$0,5$ lần",
+      "$1,5$ lần",
+      "$2$ lần",
+      "$3$ lần"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Công suất của máy thứ nhất:\n$\\mathrm{P_1} = \\dfrac{\\mathrm{A_1}}{\\mathrm{t_1}} = \\dfrac{12000}{20} = 600 \\mathrm{\\ (W)}$\nCông suất của máy thứ hai:\n$\\mathrm{P_2} = \\dfrac{\\mathrm{A_2}}{\\mathrm{t_2}} = \\dfrac{8000}{40} = 200 \\mathrm{\\ (W)}$\nTỉ số công suất:\n$\\dfrac{\\mathrm{P_1}}{\\mathrm{P_2}} = \\dfrac{600}{200} = 3$\nVậy công suất của máy thứ nhất gấp $3$ lần công suất của máy thứ hai."
+    },
+    {
+     "ma_cau": "K09010403066",
+     "loai": "trac_nghiem",
+     "de": "Cần cẩu X nâng kiện hàng 1,5 tấn lên cao 12 m trong 30 s. Cần cẩu Y nâng kiện hàng 800 kg lên cao 15 m trong 40 s. Coi lực nâng bằng trọng lượng của kiện hàng; trọng lượng bằng 10 lần khối lượng. Công suất của cần cẩu X gấp bao nhiêu lần công suất của cần cẩu Y?",
+     "lua_chon": [
+      "0,5 lần",
+      "1,5 lần",
+      "2 lần",
+      "20 lần"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đổi khối lượng: $\\mathrm{m_1} = 1,5$ tấn $= 1500$ kg\nCông của cần cẩu X:\n$\\mathrm{A_1} = \\mathrm{10m_1 \\cdot h_1} = 10 \\cdot 1500 \\cdot 12 = 180 \\ 000$ (J)\nCông suất của cần cẩu X:\n$\\mathrm{P_1} = \\dfrac{\\mathrm{A_1}}{\\mathrm{t_1}} = \\dfrac{180 \\ 000}{30} = 6000$ (W)\nCông của cần cẩu Y:\n$\\mathrm{A_2} = \\mathrm{10m_2 \\cdot h_2} = 10 \\cdot 800 \\cdot 15 = 120 \\ 000$ (J)\nCông suất của cần cẩu Y:\n$\\mathrm{P_2} = \\dfrac{\\mathrm{A_2}}{\\mathrm{t_2}} = \\dfrac{120 \\ 000}{40} = 3000$ (W)\nTỉ số công suất:\n$\\dfrac{\\mathrm{P_1}}{\\mathrm{P_2}} = \\dfrac{6000}{3000} = 2$\nVậy công suất của cần cẩu X gấp 2 lần công suất của cần cẩu Y."
+    },
+    {
+     "ma_cau": "K09010403080",
+     "loai": "trac_nghiem",
+     "de": "Con ngựa thứ nhất kéo xe với lực $350 \\mathrm{N}$, đi được $600 \\mathrm{m}$ trong $5$ phút. Con ngựa thứ hai kéo xe với lực $300 \\mathrm{N}$, đi được $500 \\mathrm{m}$ trong $5$ phút. Lực kéo luôn cùng phương chuyển động. Công suất của con ngựa thứ nhất lớn hơn công suất của con ngựa thứ hai bao nhiêu oát?",
+     "lua_chon": [
+      "$200 \\ \\mathrm{W}$",
+      "$500 \\ \\mathrm{W}$",
+      "$700 \\ \\mathrm{W}$",
+      "$1200 \\ \\mathrm{W}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Công của con ngựa thứ nhất:\n$A_1 = F_1 \\cdot s_1 = 350 \\cdot 600 = 210 \\ 000 \\ (\\mathrm{J})$\nĐổi thời gian: $t_1 = 5$ phút $= 300 \\ \\mathrm{s}$\nCông suất của con ngựa thứ nhất:\n$P_1 = \\dfrac{A_1}{t_1} = \\dfrac{210 \\ 000}{300} = 700 \\ (\\mathrm{W})$\nCông của con ngựa thứ hai:\n$A_2 = F_2 \\cdot s_2 = 300 \\cdot 500 = 150 \\ 000 \\ (\\mathrm{J})$\nĐổi thời gian: $t_2 = 5$ phút $= 300 \\ \\mathrm{s}$\nCông suất của con ngựa thứ hai:\n$P_2 = \\dfrac{A_2}{t_2} = \\dfrac{150 \\ 000}{300} = 500 \\ (\\mathrm{W})$\nCông suất của con ngựa thứ nhất lớn hơn:\n$P_1 - P_2 = 700 - 500 = 200 \\ (\\mathrm{W})$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01097",
+   "nhom_id": "KNB00429",
+   "thu_tu": 2,
+   "dang": "CÔNG SUẤT KHI VẬT CHUYỂN ĐỘNG ĐỀU",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010403095",
+     "loai": "tra_loi_ngan",
+     "de": "Động cơ một ca nô có công suất $10$ kW, ca nô chuyển động đều với tốc độ $28,8$ km/h. Tính lực đẩy của động cơ (đơn vị: N).",
+     "dap_an": "1250",
+     "loi_giai": "Đổi đơn vị: $P = 10$ kW $= 10\\ 000$ W\n$v = 28,8\\ \\mathrm{km/h} = \\dfrac{28,8}{3,6} = 8\\ \\mathrm{(m/s)}$\nLực đẩy của động cơ:\n$F = \\dfrac{P}{v} = \\dfrac{10\\ 000}{8} = 1250$ (N)"
+    },
+    {
+     "ma_cau": "K09010403091",
+     "loai": "tra_loi_ngan",
+     "de": "Động cơ một ô tô có công suất 45 kW, lực kéo 1800 N, ô tô chuyển động đều. Tính tốc độ của ô tô (đơn vị: km/h).",
+     "dap_an": "90",
+     "loi_giai": "Đổi công suất: $P = 45\\ \\mathrm{kW} = 45\\ 000\\ \\mathrm{W}$\nTừ $P = F \\cdot v$, tốc độ của ô tô:\n$v = \\dfrac{P}{F} = \\dfrac{45\\ 000}{1800} = 25\\ \\mathrm{(m/s)} = 25 \\cdot 3,6 = 90\\ \\mathrm{(km/h)}$"
+    },
+    {
+     "ma_cau": "K09010403082",
+     "loai": "tra_loi_ngan",
+     "de": "Một xe máy chuyển động đều với tốc độ 12 m/s, lực kéo của động cơ là 250 N. Tính công suất của động cơ (đơn vị: W).",
+     "dap_an": "3000",
+     "loi_giai": "Công suất của động cơ:\nP = F \\cdot v = 250 \\cdot 12 = 3000 (W)"
+    },
+    {
+     "ma_cau": "K09010403093",
+     "loai": "tra_loi_ngan",
+     "de": "Một thang máy cùng người có tổng khối lượng $800$ kg, đi lên đều với tốc độ $1,5$ m/s. Coi lực kéo của động cơ bằng trọng lượng của thang và người; trọng lượng bằng $10$ lần khối lượng. Tính công suất của động cơ (đơn vị: kW).",
+     "dap_an": "12",
+     "loi_giai": "Lực kéo của động cơ:\n$F = 10m = 10 \\cdot 800 = 8000$ (N)\nCông suất của động cơ:\n$P = F \\cdot v = 8000 \\cdot 1,5 = 12\\ 000$ (W) $= 12$ (kW)"
+    },
+    {
+     "ma_cau": "K09010403088",
+     "loai": "tra_loi_ngan",
+     "de": "Một người đạp xe chuyển động đều với tốc độ 18 km/h, lực đẩy xe về phía trước là 30 N. Tính công suất của người đó (đơn vị: W).",
+     "dap_an": "150",
+     "loi_giai": "Đổi tốc độ:\nv = 18 km/h = \\dfrac{18}{3,6} = 5 (m/s)\nCông suất của người đạp xe:\nP = F \\cdot v = 30 \\cdot 5 = 150 (W)"
+    },
+    {
+     "ma_cau": "K09010403087",
+     "loai": "tra_loi_ngan",
+     "de": "Một đoàn tàu chuyển động đều với tốc độ 72 km/h, lực kéo của đầu máy là 25 000 N. Tính công suất của đầu máy (đơn vị: kW).",
+     "dap_an": "500",
+     "loi_giai": "Đổi tốc độ:\nv = 72 km/h = \\dfrac{72}{3,6} = 20 (m/s)\nCông suất của đầu máy:\nP = F \\cdot v = 25 000 \\cdot 20 = 500 000 (W) = 500 (kW)"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01098",
+   "nhom_id": "KNB00429",
+   "thu_tu": 3,
+   "dang": "CHỌN MÁY PHÙ HỢP VỚI CÔNG VIỆC",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010403098",
+     "loai": "tu_luan",
+     "de": "Một băng chuyền cần thực hiện công 45 000 J trong 30 s. Có ba máy: máy số 1 có công suất 1,2 kW; máy số 2 có công suất 1,6 kW; máy số 3 có công suất 2 kW. Bỏ qua hao phí. Chọn máy có công suất nhỏ nhất vẫn đáp ứng được yêu cầu.",
+     "dap_an": "1.6",
+     "loi_giai": "Công suất tối thiểu của máy cần dùng:\n$$P = \\dfrac{A}{t} = \\dfrac{45 \\ 000}{30} = 1500 \\ (W) = 1,5 \\ (kW)$$\nMáy có công suất nhỏ hơn 1,5 kW không đáp ứng được yêu cầu.\nVậy chọn máy số 2 (1,6 kW)."
+    },
+    {
+     "ma_cau": "K09010403099",
+     "loai": "tu_luan",
+     "de": "Một máy tời cần thực hiện công 54 000 J trong 120 s. Có ba máy: máy số 1 có công suất 500 W; máy số 2 có công suất 750 W; máy số 3 có công suất 1000 W. Bỏ qua hao phí. Chọn máy có công suất nhỏ nhất vẫn đáp ứng được yêu cầu.",
+     "dap_an": "500",
+     "loi_giai": "Công suất tối thiểu của máy cần dùng:\n$$P = \\dfrac{A}{t} = \\dfrac{54 \\ 000}{120} = 450 \\ (W)$$\nVậy chọn máy số 1 (500 W)."
+    },
+    {
+     "ma_cau": "K09010403107",
+     "loai": "tu_luan",
+     "de": "Cần bơm 6000 L nước lên bể cao 8 m trong 10 phút. Biết 1 L nước có khối lượng 1 kg; coi lực nâng nước bằng trọng lượng của nước, trọng lượng bằng 10 lần khối lượng. Có ba máy: máy số 1 có công suất 0,5 kW; máy số 2 có công suất 0,75 kW; máy số 3 có công suất 1,1 kW. Bỏ qua hao phí. Chọn máy có công suất nhỏ nhất vẫn đáp ứng được yêu cầu.",
+     "dap_an": "1.1",
+     "loi_giai": "Khối lượng nước: m = 6000 kg\nCông cần thực hiện để nâng nước:\nA = 10m . h = 10 . 6000 . 8 = 480 000 (J)\nĐổi thời gian: t = 10 phút = 600 s\nCông suất tối thiểu của máy cần dùng:\nP = $\\dfrac{A}{t}$ = $\\dfrac{480000}{600}$ = 800 (W) = 0,8 (kW)\nMáy có công suất nhỏ hơn 0,8 kW không đáp ứng được yêu cầu.\nVậy chọn máy số 3 (1,1 kW)."
+    },
+    {
+     "ma_cau": "K09010403101",
+     "loai": "tu_luan",
+     "de": "Cần nâng kiện hàng 2 tấn lên cao 15 m trong 20 s. Coi lực nâng bằng trọng lượng; trọng lượng bằng 10 lần khối lượng. Có ba máy: máy số 1 có công suất 10 kW; máy số 2 có công suất 18 kW; máy số 3 có công suất 25 kW. Bỏ qua hao phí. Chọn máy có công suất nhỏ nhất vẫn đáp ứng được yêu cầu.",
+     "dap_an": "18",
+     "loi_giai": "Đổi khối lượng: $\\mathrm{m = 2}$ tấn $\\mathrm{= 2000\\ kg}$\nCông cần thực hiện để nâng kiện hàng:\n$\\mathrm{A = 10m \\cdot h = 10 \\cdot 2000 \\cdot 15 = 300\\ 000\\ (J)}$\nCông suất tối thiểu của máy cần dùng:\n$\\mathrm{P = \\dfrac{A}{t} = \\dfrac{300\\ 000}{20} = 15\\ 000\\ (W) = 15\\ (kW)}$\nMáy có công suất nhỏ hơn $\\mathrm{15\\ kW}$ không đáp ứng được yêu cầu.\nVậy chọn máy số $\\mathrm{2\\ (18\\ kW)}$."
+    },
+    {
+     "ma_cau": "K09010403105",
+     "loai": "tu_luan",
+     "de": "Cần kéo một xe goòng chở than với lực 1500 N, cùng phương chuyển động, đi hết quãng đường 240 m trong 2 phút. Có ba máy: máy số 1 có công suất 3,5 kW; máy số 2 có công suất 4 kW; máy số 3 có công suất 5,5 kW. Bỏ qua hao phí. Chọn máy có công suất nhỏ nhất vẫn đáp ứng được yêu cầu.",
+     "dap_an": "3,5",
+     "loi_giai": "Công cần thực hiện:\n$\\mathrm{A = F \\cdot s = 1500 \\cdot 240 = 360\\ 000\\ (J)}$\nĐổi thời gian: $\\mathrm{t = 2\\ phút = 120\\ s}$\nCông suất tối thiểu của máy cần dùng:\n$\\mathrm{P = \\dfrac{A}{t} = \\dfrac{360\\ 000}{120} = 3000\\ (W) = 3\\ (kW)}$\nMáy có công suất nhỏ hơn $\\mathrm{3\\ kW}$ không đáp ứng được yêu cầu.\nVậy chọn máy số $\\mathrm{1\\ (3,5\\ kW)}$."
+    },
+    {
+     "ma_cau": "K09010403103",
+     "loai": "tu_luan",
+     "de": "Cần kéo 40 bao xi măng, mỗi bao 50 kg, lên sàn cao 12 m trong 2 phút. Coi lực nâng bằng trọng lượng; trọng lượng bằng 10 lần khối lượng. Có ba máy: máy số 1 có công suất 1,5 kW; máy số 2 có công suất 1,8 kW; máy số 3 có công suất 2,2 kW. Bỏ qua hao phí. Chọn máy có công suất nhỏ nhất vẫn đáp ứng được yêu cầu.",
+     "dap_an": "2.2",
+     "loi_giai": "Tổng khối lượng 40 bao xi măng:\nm = $40 \\cdot 50 = 2000$ (kg)\nCông cần thực hiện để nâng 40 bao xi măng:\nA = $10\\mathrm{m} \\cdot \\mathrm{h} = 10 \\cdot 2000 \\cdot 12 = 240\\ 000$ (J)\nĐổi thời gian: t = 2 phút = 120 s\nCông suất tối thiểu của máy cần dùng:\n$P = \\dfrac{A}{\\mathrm{t}} = \\dfrac{240\\ 000}{120} = 2000\\ (W) = 2\\ (kW)$\nMáy có công suất nhỏ hơn 2 kW không đáp ứng được yêu cầu.\nVậy chọn máy số 3 (2,2 kW)."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01099",
+   "nhom_id": "KNB00431",
+   "thu_tu": 1,
+   "dang": "Tính P khi biết A và t",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 14,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010405068",
+     "loai": "trac_nghiem",
+     "de": "Một người kéo gàu nước từ giếng lên, thực hiện công $900 \\mathrm{J}$ trong $15 \\mathrm{s}$. Công suất của người đó là bao nhiêu?",
+     "lua_chon": [
+      "$6 \\; \\mathrm{W}$",
+      "$60 \\; \\mathrm{W}$",
+      "$600 \\; \\mathrm{W}$",
+      "$900 \\; \\mathrm{W}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Công suất của người đó là:\n$$P = \\dfrac{A}{t} = \\dfrac{900}{15} = 60 \\; (\\mathrm{W})$$"
+    },
+    {
+     "ma_cau": "K09010405076",
+     "loai": "trac_nghiem",
+     "de": "Một cần cẩu thực hiện công $1200\\ \\mathrm{kJ}$ trong $40\\ \\mathrm{s}$. Công suất của cần cẩu là bao nhiêu oát?",
+     "lua_chon": [
+      "$30\\ \\mathrm{W}$",
+      "$300\\ \\mathrm{W}$",
+      "$3000\\ \\mathrm{W}$",
+      "$30\\ 000\\ \\mathrm{W}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi đơn vị:\n$\\mathrm{A} = 1200\\ \\mathrm{kJ} = 1\\ 200\\ 000\\ \\mathrm{J}$\nCông suất của cần cẩu là:\n$\\mathrm{P} = \\dfrac{\\mathrm{A}}{\\mathrm{t}} = \\dfrac{1\\ 200\\ 000}{40} = 30\\ 000\\ (\\mathrm{W})$"
+    },
+    {
+     "ma_cau": "K09010405078",
+     "loai": "trac_nghiem",
+     "de": "Mỗi lần nâng búa, máy đóng cọc thực hiện công $45 \\mathrm{~kJ}$ trong $3 \\mathrm{~s}$. Công suất của máy khi nâng búa là bao nhiêu oát?",
+     "lua_chon": [
+      "$15 \\mathrm{~W}$",
+      "$135 \\mathrm{~W}$",
+      "$1500 \\mathrm{~W}$",
+      "$15000 \\mathrm{~W}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi đơn vị:\n$A = 45 \\mathrm{~kJ} = 45000 \\mathrm{~J}$\nCông suất của máy là:\n$P = \\dfrac{A}{t} = \\dfrac{45000}{3} = 15000 (\\mathrm{~W})$"
+    },
+    {
+     "ma_cau": "K09010405073",
+     "loai": "trac_nghiem",
+     "de": "Một con ngựa kéo xe, thực hiện công $24\\ 000 \\ \\mathrm{J}$ trong $60 \\ \\mathrm{s}$. Công suất của con ngựa là bao nhiêu?",
+     "lua_chon": [
+      "$4 \\ \\mathrm{W}$",
+      "$40 \\ \\mathrm{W}$",
+      "$400 \\ \\mathrm{W}$",
+      "$24\\ 000 \\ \\mathrm{W}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Công suất của con ngựa là:\n$$P = \\dfrac{A}{t} = \\dfrac{24\\ 000}{60} = 400 \\ (\\mathrm{W})$$"
+    },
+    {
+     "ma_cau": "K09010405075",
+     "loai": "trac_nghiem",
+     "de": "Động cơ của một ô tô thực hiện công $1050\\thinspace\\mathrm{kJ}$ trong $30\\thinspace\\mathrm{s}$. Công suất của động cơ bằng bao nhiêu kilôoát?",
+     "lua_chon": [
+      "$3.5\\thinspace\\mathrm{kW}$",
+      "$35\\thinspace\\mathrm{kW}$",
+      "$31\\thinspace500\\thinspace\\mathrm{kW}$",
+      "$35\\thinspace000\\thinspace\\mathrm{kW}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đổi đơn vị:\n$$A=1050\\thinspace\\mathrm{kJ}=1\\thinspace050\\thinspace000\\thinspace\\mathrm{J}$$\nCông suất của động cơ là:\n$$P=\\frac{A}{t}=\\frac{1\\thinspace050\\thinspace000}{30}=35\\thinspace000\\thinspace(\\mathrm{W})=35\\thinspace(\\mathrm{kW})$$"
+    },
+    {
+     "ma_cau": "K09010405071",
+     "loai": "trac_nghiem",
+     "de": "Một công nhân đẩy xe chở vật liệu, thực hiện công $7200 \\mathrm{\\ J}$ trong $90 \\mathrm{\\ s}$. Công suất của công nhân là bao nhiêu?",
+     "lua_chon": [
+      "$80 \\ \\mathrm{W}$",
+      "$800 \\ \\mathrm{W}$",
+      "$7200 \\ \\mathrm{W}$",
+      "$648\\ 000 \\ \\mathrm{W}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Công suất của công nhân là:\n$$P = \\dfrac{A}{t} = \\dfrac{7200}{90} = 80 \\ (\\mathrm{W})$$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01100",
+   "nhom_id": "KNB00431",
+   "thu_tu": 2,
+   "dang": "Tính A hoặc t khi biết P",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010405080",
+     "loai": "trac_nghiem",
+     "de": "Một máy có công suất $200 \\mathrm{~W}$ cần thực hiện công $1000 \\mathrm{~J}$. Thời gian máy thực hiện công đó là bao nhiêu?",
+     "lua_chon": [
+      "$0,2 \\mathrm{~s}$",
+      "$5 \\mathrm{~s}$",
+      "$50 \\mathrm{~s}$",
+      "$300 \\mathrm{~s}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Từ công thức $\\mathrm{P}=\\dfrac{\\mathrm{A}}{\\mathrm{t}}$, thời gian thực hiện công là:\n$$\\mathrm{t}=\\dfrac{\\mathrm{A}}{\\mathrm{P}}=\\dfrac{1000}{200}=5(\\mathrm{~s})$$"
+    },
+    {
+     "ma_cau": "K09010405082",
+     "loai": "trac_nghiem",
+     "de": "Một máy bơm có công suất $750 \\mathrm{~W}$ cần thực hiện công $22\\ 500 \\mathrm{~J}$ để đưa nước lên bể. Thời gian bơm là bao nhiêu?",
+     "lua_chon": [
+      "$30 \\mathrm{~s}$",
+      "$300 \\mathrm{~s}$",
+      "$1800 \\mathrm{~s}$",
+      "$3000 \\mathrm{~s}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Từ công thức $\\mathrm{P} = \\dfrac{\\mathrm{A}}{\\mathrm{t}}$, thời gian thực hiện công là:\n$$\\mathrm{t} = \\dfrac{\\mathrm{A}}{\\mathrm{P}} = \\dfrac{22\\ 500}{750} = 30 \\mathrm{~(s)}$$"
+    },
+    {
+     "ma_cau": "K09010405086",
+     "loai": "trac_nghiem",
+     "de": "Động cơ thang máy có công suất $6000\\ \\mathrm{W}$ thực hiện công $90\\ 000\\ \\mathrm{J}$ để đưa buồng thang lên. Thời gian buồng thang đi lên là bao nhiêu?",
+     "lua_chon": [
+      "$15\\ \\mathrm{s}$",
+      "$150\\ \\mathrm{s}$",
+      "$900\\ \\mathrm{s}$",
+      "$1500\\ \\mathrm{s}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Từ công thức $\\mathrm{P}=\\dfrac{\\mathrm{A}}{\\mathrm{t}}$, thời gian thực hiện công là:\n$$\\mathrm{t}=\\dfrac{\\mathrm{A}}{\\mathrm{P}}=\\dfrac{90\\ 000}{6000}=15\\ (\\mathrm{s})$$"
+    },
+    {
+     "ma_cau": "K09010405079",
+     "loai": "trac_nghiem",
+     "de": "Một máy có công suất $50 \\mathrm{~W}$ hoạt động trong $30 \\mathrm{~s}$. Công máy thực hiện được là bao nhiêu?",
+     "lua_chon": [
+      "$0,6 \\mathrm{~J}$",
+      "$50 \\mathrm{~J}$",
+      "$150 \\mathrm{~J}$",
+      "$1500 \\mathrm{~J}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Từ công thức $\\mathrm{P}=\\dfrac{\\mathrm{A}}{\\mathrm{t}}$, công thực hiện được là:\n$$\\mathrm{A}=\\mathrm{P} \\cdot \\mathrm{t}=50 \\cdot 30=1500(\\mathrm{~J})$$"
+    },
+    {
+     "ma_cau": "K09010405087",
+     "loai": "trac_nghiem",
+     "de": "Một học sinh chạy lên cầu thang với công suất $300\\ \\mathrm{W}$ trong $8\\ \\mathrm{s}$. Công học sinh thực hiện được là bao nhiêu?",
+     "lua_chon": [
+      "$37.5\\ \\mathrm{J}$",
+      "$300\\ \\mathrm{J}$",
+      "$2400\\ \\mathrm{J}$",
+      "$24\\ 000\\ \\mathrm{J}$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Từ công thức $\\mathrm{P}=\\dfrac{\\mathrm{A}}{\\mathrm{t}}$, công thực hiện được là:\n$$\\mathrm{A}=\\mathrm{P} \\cdot \\mathrm{t}=300 \\cdot 8=2400\\ (\\mathrm{J})$$"
+    },
+    {
+     "ma_cau": "K09010405091",
+     "loai": "trac_nghiem",
+     "de": "Một máy bơm có công suất $1,5 \\mathrm{~kW}$ cần thực hiện công $90 \\mathrm{~kJ}$. Thời gian máy bơm hoạt động là bao nhiêu giây?",
+     "lua_chon": [
+      "60 s",
+      "135 s",
+      "600 s",
+      "60 000 s"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đổi đơn vị:\n$P = 1,5 \\mathrm{~kW} = 1500 \\mathrm{~W}$; $A = 90 \\mathrm{~kJ} = 90\\ 000 \\mathrm{~J}$\nThời gian máy bơm hoạt động là:\n$t = \\dfrac{A}{P} = \\dfrac{90\\ 000}{1500} = 60 \\ (\\mathrm{s})$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01101",
+   "nhom_id": "KNB00431",
+   "thu_tu": 3,
+   "dang": "Đổi đơn vị thời gian và công suất",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 20,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010405094",
+     "loai": "tra_loi_ngan",
+     "de": "Một máy thực hiện công 6000 J trong 2 phút. Tính công suất của máy (đơn vị: W).",
+     "dap_an": "50",
+     "loi_giai": "Đổi đơn vị:\n$t = 2$ phút $= 120$ s\nCông suất của máy:\n$P = \\dfrac{A}{t} = \\dfrac{6000}{120} = 50$ (W)"
+    },
+    {
+     "ma_cau": "K09010405099",
+     "loai": "tra_loi_ngan",
+     "de": "Một máy có công suất $250 \\mathrm{\\ W}$ cần thực hiện công $45000 \\mathrm{\\ J}$. Tính thời gian máy hoạt động (đơn vị: phút).",
+     "dap_an": "3",
+     "loi_giai": "Thời gian máy hoạt động:\n$t = \\dfrac{A}{P} = \\dfrac{45000}{250} = 180 (\\mathrm{s}) = 3$ (phút)"
+    },
+    {
+     "ma_cau": "K09010405102",
+     "loai": "tra_loi_ngan",
+     "de": "Động cơ thang máy có công suất $4\\ \\mathrm{kW}$ thực hiện công $480\\ 000\\ \\mathrm{J}$. Tính thời gian động cơ hoạt động (đơn vị: phút).",
+     "dap_an": "2",
+     "loi_giai": "Đổi đơn vị:\n$P = 4\\ \\mathrm{kW} = 4000\\ \\mathrm{W}$\nThời gian động cơ hoạt động:\n$t = \\dfrac{A}{P} = \\dfrac{480\\ 000}{4000} = 120\\ (\\mathrm{s}) = 2\\ (\\text{phút})$"
+    },
+    {
+     "ma_cau": "K09010405106",
+     "loai": "tra_loi_ngan",
+     "de": "Một máy có công suất $500\\text{ W}$ hoạt động trong $2$ giờ. Tính công máy thực hiện được (đơn vị: $\\mathrm{kJ}$).",
+     "dap_an": "3600",
+     "loi_giai": "Đổi đơn vị:\n$t = 2\\text{ giờ} = 7200\\text{ s}$\nCông máy thực hiện được:\n$A = P \\cdot t = 500 \\cdot 7200 = 3\\text{ }600\\text{ }000\\text{ (J)} = 3600\\text{ (kJ)}$"
+    },
+    {
+     "ma_cau": "K09010405110",
+     "loai": "tra_loi_ngan",
+     "de": "Động cơ một tàu kéo thực hiện công 54 000 kJ trong 1,5 giờ. Tính công suất của động cơ (đơn vị: kW).",
+     "dap_an": "10",
+     "loi_giai": "Đổi đơn vị:\nA = 54 000 kJ = 54 000 000 J; t = 1,5 giờ = 5400 s\nCông suất của động cơ:\nP = $\\dfrac{A}{t} = \\dfrac{54000000}{5400} = 10 000$ (W) = 10 (kW)"
+    },
+    {
+     "ma_cau": "K09010405111",
+     "loai": "tra_loi_ngan",
+     "de": "Một máy cày thực hiện công 21 600 kJ trong 40 phút. Tính công suất của máy cày (đơn vị: kW).",
+     "dap_an": "9",
+     "loi_giai": "Đổi đơn vị:\nA = 21 600 kJ = 21 600 000 J; t = 40 phút = 2400 s\nCông suất của máy cày:\nP = $\\dfrac{A}{t} = \\dfrac{21600000}{2400} = 9000$ (W) = 9 (kW)"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01102",
+   "nhom_id": "KNB00431",
+   "thu_tu": 4,
+   "dang": "TÍNH P KHI BIẾT LỰC, QUÃNG ĐƯỜNG VÀ THỜI GIAN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 15,
+   "cau_mau": [
+    {
+     "ma_cau": "K09010405114",
+     "loai": "trac_nghiem",
+     "de": "Một người kéo xe hàng bằng lực $200\\ \\mathrm{N}$ theo phương chuyển động, xe đi được $30\\ \\mathrm{m}$ trong $20\\ \\mathrm{s}$.\nCông suất của người đó là bao nhiêu?",
+     "lua_chon": [
+      "$10\\ \\mathrm{W}$",
+      "$300\\ \\mathrm{W}$",
+      "$3000\\ \\mathrm{W}$",
+      "$6000\\ \\mathrm{W}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Công của lực:\n$\\mathrm{A}=\\mathrm{F} \\cdot \\mathrm{s}=200 \\cdot 30=6000\\ (\\mathrm{J})$\nCông suất của người đó:\n$\\mathrm{P}=\\dfrac{\\mathrm{A}}{\\mathrm{t}}=\\dfrac{6000}{20}=300\\ (\\mathrm{W})$"
+    },
+    {
+     "ma_cau": "K09010405122",
+     "loai": "trac_nghiem",
+     "de": "Một con ngựa kéo xe với công suất $450\\ \\mathrm{W}$, trong $40\\ \\mathrm{s}$ xe đi được $50\\ \\mathrm{m}$ theo phương của lực kéo. Lực kéo của con ngựa có độ lớn bao nhiêu?",
+     "lua_chon": [
+      "$360\\ \\mathrm{N}$",
+      "$562,5\\ \\mathrm{N}$",
+      "$3600\\ \\mathrm{N}$",
+      "$18\\ 000\\ \\mathrm{N}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Công của lực kéo:\n$\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\mathrm{A}=\\mathrm{P}\\ \\cdot \\ \\mathrm{t}=450\\ \\cdot \\ 40=18\\ 000\\ \\left(\\mathrm{~J}\\right)$\nLực kéo của con ngựa:\n$\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\mathrm{F}=\\dfrac{\\mathrm{A}}{\\mathrm{s}}=\\dfrac{18\\ 000}{50}=360\\ \\left(\\mathrm{~N}\\right)$"
+    },
+    {
+     "ma_cau": "K09010405128",
+     "loai": "trac_nghiem",
+     "de": "Một xe máy có lực kéo $250\\ \\mathrm{N}$ cùng phương chuyển động, động cơ có công suất $2,5\\ \\mathrm{kW}$. Xe chạy trong $2\\ \\text{phút}$. Quãng đường xe đi được là bao nhiêu?",
+     "lua_chon": [
+      "$1,2\\ \\mathrm{m}$",
+      "$20\\ \\mathrm{m}$",
+      "$120\\ \\mathrm{m}$",
+      "$1200\\ \\mathrm{m}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi đơn vị: $P = 2,5\\ \\mathrm{kW} = 2500\\ \\mathrm{W}$; $t = 2\\ \\text{phút} = 120\\ \\mathrm{s}$\nCông của lực kéo:\n$A = P \\cdot t = 2500 \\cdot 120 = 300\\ 000\\ \\mathrm{(J)}$\nQuãng đường xe đi được:\n$s = \\dfrac{A}{F} = \\dfrac{300\\ 000}{250} = 1200\\ \\mathrm{(m)}$"
+    },
+    {
+     "ma_cau": "K09010405116",
+     "loai": "trac_nghiem",
+     "de": "Một công nhân đẩy xe cút kít bằng lực $120\\ \\mathrm{N}$ cùng phương chuyển động, xe đi được $45\\ \\mathrm{m}$ trong $60\\ \\mathrm{s}$. Công suất của công nhân là bao nhiêu?",
+     "lua_chon": [
+      "$90\\ \\mathrm{W}$",
+      "$900\\ \\mathrm{W}$",
+      "$5400\\ \\mathrm{W}$",
+      "$324\\ 000\\ \\mathrm{W}$"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Công của lực:\n$$\\mathrm{A}=\\mathrm{F} \\cdot \\mathrm{s}=120 \\cdot 45=5400\\ (\\mathrm{J})$$\nCông suất của công nhân:\n$$\\mathrm{P}=\\dfrac{\\mathrm{A}}{\\mathrm{t}}=\\dfrac{5400}{60}=90\\ (\\mathrm{W})$$"
+    },
+    {
+     "ma_cau": "K09010405124",
+     "loai": "trac_nghiem",
+     "de": "Một cần cẩu nâng đều kiện hàng $1.2$ tấn lên cao $15$ m trong $0.5$ phút. Công suất của cần cẩu là bao nhiêu? (Coi lực đưa vật lên có độ lớn bằng trọng lượng của vật; trọng lượng bằng $10$ lần khối lượng.)",
+     "lua_chon": [
+      "$6$ W",
+      "$400$ W",
+      "$600$ W",
+      "$6000$ W"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đổi đơn vị:\n$\\mathrm{m} = 1,2\\text{ tấn} = 1200\\text{ kg}; \\mathrm{t} = 0,5\\text{ phút} = 30\\text{ s}$\nLực đưa vật lên có độ lớn bằng trọng lượng:\n$\\mathrm{F} = 10\\mathrm{m} = 10 \\cdot 1200 = 12\\ 000\\text{ (N)}$\nCông của lực:\n$\\mathrm{A} = \\mathrm{F} \\cdot \\mathrm{h} = 12\\ 000 \\cdot 15 = 180\\ 000\\text{ (J)}$\nCông suất của cần cẩu:\n$\\mathrm{P} = \\dfrac{\\mathrm{A}}{\\mathrm{t}} = \\dfrac{180\\ 000}{30} = 6000\\text{ (W)}$"
+    },
+    {
+     "ma_cau": "K09010405125",
+     "loai": "trac_nghiem",
+     "de": "Một máy bơm đưa $900$ L nước lên bể cao $10$ m trong $2$ phút. Công suất của máy bơm là bao nhiêu? (Biết $1$ L nước có khối lượng $1$ kg; coi lực nâng nước bằng trọng lượng của nước, trọng lượng bằng $10$ lần khối lượng.)",
+     "lua_chon": [
+      "$750$ W",
+      "$7500$ W",
+      "$45\\ 000$ W",
+      "$90\\ 000$ W"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khối lượng nước: $\\mathrm{m} = 900\\text{ kg}$\nĐổi thời gian: $\\mathrm{t} = 2\\text{ phút} = 120\\text{ s}$\nLực đưa vật lên có độ lớn bằng trọng lượng:\n$\\mathrm{F} = 10\\mathrm{m} = 10 \\cdot 900 = 9000\\text{ (N)}$\nCông của lực:\n$\\mathrm{A} = \\mathrm{F} \\cdot \\mathrm{h} = 9000 \\cdot 10 = 90\\ 000\\text{ (J)}$\nCông suất của máy bơm:\n$\\mathrm{P} = \\dfrac{\\mathrm{A}}{\\mathrm{t}} = \\dfrac{90\\ 000}{120} = 750\\text{ (W)}$"
+    }
+   ]
+  }
+ ]
+}

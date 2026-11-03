@@ -1,0 +1,716 @@
+[
+ {
+  "ma_cau": "K07070101051",
+  "dang_bai_id": "KDB00760",
+  "chac": "cao",
+  "ly_do": "Hỏi khái niệm/khâu/vai trò trao đổi chất"
+ },
+ {
+  "ma_cau": "K07070101052",
+  "dang_bai_id": "KDB00761",
+  "chac": "cao",
+  "ly_do": "Hỏi chuyển hoá năng lượng, quan hệ/vai trò/dạng năng lượng"
+ },
+ {
+  "ma_cau": "K07070101053",
+  "dang_bai_id": "KDB00760",
+  "chac": "cao",
+  "ly_do": "Hỏi khái niệm/khâu/vai trò trao đổi chất"
+ },
+ {
+  "ma_cau": "K07070101054",
+  "dang_bai_id": "KDB00760",
+  "chac": "cao",
+  "ly_do": "Hỏi khái niệm/khâu/vai trò trao đổi chất"
+ },
+ {
+  "ma_cau": "K07070101055",
+  "dang_bai_id": "KDB00761",
+  "chac": "cao",
+  "ly_do": "Hỏi chuyển hoá năng lượng, quan hệ/vai trò/dạng năng lượng"
+ },
+ {
+  "ma_cau": "K07070101056",
+  "dang_bai_id": "KDB00761",
+  "chac": "cao",
+  "ly_do": "Hỏi chuyển hoá năng lượng, quan hệ/vai trò/dạng năng lượng"
+ },
+ {
+  "ma_cau": "K07070101057",
+  "dang_bai_id": "KDB00760",
+  "chac": "cao",
+  "ly_do": "Hỏi khái niệm/khâu/vai trò trao đổi chất"
+ },
+ {
+  "ma_cau": "K07070101058",
+  "dang_bai_id": "KDB00761",
+  "chac": "cao",
+  "ly_do": "Hỏi chuyển hoá năng lượng, quan hệ/vai trò/dạng năng lượng"
+ },
+ {
+  "ma_cau": "K07070101059",
+  "dang_bai_id": "KDB00761",
+  "chac": "cao",
+  "ly_do": "Hỏi chuyển hoá năng lượng, quan hệ/vai trò/dạng năng lượng"
+ },
+ {
+  "ma_cau": "K07070101060",
+  "dang_bai_id": "KDB00761",
+  "chac": "cao",
+  "ly_do": "Hỏi chuyển hoá năng lượng, quan hệ/vai trò/dạng năng lượng"
+ },
+ {
+  "ma_cau": "K07070201001",
+  "dang_bai_id": "KDB01594",
+  "chac": "cao",
+  "ly_do": "Khái niệm, nguyên liệu, sản phẩm, điều kiện, phương trình quang hợp"
+ },
+ {
+  "ma_cau": "K07070201002",
+  "dang_bai_id": "KDB01594",
+  "chac": "cao",
+  "ly_do": "Khái niệm, nguyên liệu, sản phẩm, điều kiện, phương trình quang hợp"
+ },
+ {
+  "ma_cau": "K07070201003",
+  "dang_bai_id": "KDB01594",
+  "chac": "cao",
+  "ly_do": "Khái niệm, nguyên liệu, sản phẩm, điều kiện, phương trình quang hợp"
+ },
+ {
+  "ma_cau": "K07070201004",
+  "dang_bai_id": "KDB01594",
+  "chac": "cao",
+  "ly_do": "Khái niệm, nguyên liệu, sản phẩm, điều kiện, phương trình quang hợp"
+ },
+ {
+  "ma_cau": "K07070201005",
+  "dang_bai_id": "KDB01595",
+  "chac": "cao",
+  "ly_do": "Nơi diễn ra/đường vận chuyển các chất trong quang hợp"
+ },
+ {
+  "ma_cau": "K07070201006",
+  "dang_bai_id": "KDB01594",
+  "chac": "cao",
+  "ly_do": "Khái niệm, nguyên liệu, sản phẩm, điều kiện, phương trình quang hợp"
+ },
+ {
+  "ma_cau": "K07070201007",
+  "dang_bai_id": "KDB01595",
+  "chac": "cao",
+  "ly_do": "Nơi diễn ra/đường vận chuyển các chất trong quang hợp"
+ },
+ {
+  "ma_cau": "K07070201008",
+  "dang_bai_id": "KDB01595",
+  "chac": "cao",
+  "ly_do": "Nơi diễn ra/đường vận chuyển các chất trong quang hợp"
+ },
+ {
+  "ma_cau": "K07070201009",
+  "dang_bai_id": "KDB01594",
+  "chac": "cao",
+  "ly_do": "Khái niệm, nguyên liệu, sản phẩm, điều kiện, phương trình quang hợp"
+ },
+ {
+  "ma_cau": "K07070201010",
+  "dang_bai_id": "KDB01596",
+  "chac": "cao",
+  "ly_do": "Số phận sản phẩm, chuyển hoá năng lượng trong quang hợp"
+ },
+ {
+  "ma_cau": "K07070201011",
+  "dang_bai_id": "KDB01595",
+  "chac": "cao",
+  "ly_do": "Nơi diễn ra/đường vận chuyển các chất trong quang hợp"
+ },
+ {
+  "ma_cau": "K07070201012",
+  "dang_bai_id": "KDB01596",
+  "chac": "cao",
+  "ly_do": "Số phận sản phẩm, chuyển hoá năng lượng trong quang hợp"
+ },
+ {
+  "ma_cau": "K07070201013",
+  "dang_bai_id": "KDB01594",
+  "chac": "cao",
+  "ly_do": "Diệp lục là điều kiện/thành phần quang hợp"
+ },
+ {
+  "ma_cau": "K07070201014",
+  "dang_bai_id": "KDB01594",
+  "chac": "cao",
+  "ly_do": "Khái niệm, nguyên liệu, sản phẩm, điều kiện, phương trình quang hợp"
+ },
+ {
+  "ma_cau": "K07070201015",
+  "dang_bai_id": "KDB01598",
+  "chac": "vua",
+  "ly_do": "Nhận định sai về điều kiện (ban đêm); có thể thuộc dạng nhận biết"
+ },
+ {
+  "ma_cau": "K07070201016",
+  "dang_bai_id": "KDB01594",
+  "chac": "cao",
+  "ly_do": "Khái niệm, nguyên liệu, sản phẩm, điều kiện, phương trình quang hợp"
+ },
+ {
+  "ma_cau": "K07070201017",
+  "dang_bai_id": "KDB01597",
+  "chac": "cao",
+  "ly_do": "Ý nghĩa quang hợp, thay đổi lượng khí"
+ },
+ {
+  "ma_cau": "K07070201018",
+  "dang_bai_id": "KDB01595",
+  "chac": "cao",
+  "ly_do": "Nơi diễn ra/đường vận chuyển các chất trong quang hợp"
+ },
+ {
+  "ma_cau": "K07070201019",
+  "dang_bai_id": "KDB01598",
+  "chac": "cao",
+  "ly_do": "Điều kiện/thí nghiệm ảnh hưởng đến quang hợp"
+ },
+ {
+  "ma_cau": "K07070201020",
+  "dang_bai_id": "KDB01595",
+  "chac": "cao",
+  "ly_do": "Nơi diễn ra/đường vận chuyển các chất trong quang hợp"
+ },
+ {
+  "ma_cau": "K07070201021",
+  "dang_bai_id": "KDB01595",
+  "chac": "cao",
+  "ly_do": "Nơi diễn ra/đường vận chuyển các chất trong quang hợp"
+ },
+ {
+  "ma_cau": "K07070201022",
+  "dang_bai_id": "KDB01595",
+  "chac": "vua",
+  "ly_do": "Màu lục do diệp lục trong lục lạp; ranh giới với dạng nhận biết"
+ },
+ {
+  "ma_cau": "K07070201023",
+  "dang_bai_id": "KDB01598",
+  "chac": "cao",
+  "ly_do": "Điều kiện/thí nghiệm ảnh hưởng đến quang hợp"
+ },
+ {
+  "ma_cau": "K07070201024",
+  "dang_bai_id": "KDB01597",
+  "chac": "cao",
+  "ly_do": "Ý nghĩa quang hợp, thay đổi lượng khí"
+ },
+ {
+  "ma_cau": "K07070201025",
+  "dang_bai_id": "KDB01597",
+  "chac": "cao",
+  "ly_do": "Ý nghĩa quang hợp, thay đổi lượng khí"
+ },
+ {
+  "ma_cau": "K07070201026",
+  "dang_bai_id": "KDB01598",
+  "chac": "cao",
+  "ly_do": "Điều kiện/thí nghiệm ảnh hưởng đến quang hợp"
+ },
+ {
+  "ma_cau": "K07070201027",
+  "dang_bai_id": "KDB01595",
+  "chac": "cao",
+  "ly_do": "Nơi diễn ra/đường vận chuyển các chất trong quang hợp"
+ },
+ {
+  "ma_cau": "K07070201028",
+  "dang_bai_id": "KDB01594",
+  "chac": "cao",
+  "ly_do": "Khái niệm, nguyên liệu, sản phẩm, điều kiện, phương trình quang hợp"
+ },
+ {
+  "ma_cau": "K07070201029",
+  "dang_bai_id": "KDB01594",
+  "chac": "cao",
+  "ly_do": "Khái niệm, nguyên liệu, sản phẩm, điều kiện, phương trình quang hợp"
+ },
+ {
+  "ma_cau": "K07070201030",
+  "dang_bai_id": "KDB01595",
+  "chac": "cao",
+  "ly_do": "Nơi diễn ra/đường vận chuyển các chất trong quang hợp"
+ },
+ {
+  "ma_cau": "K07070201031",
+  "dang_bai_id": "KDB01597",
+  "chac": "cao",
+  "ly_do": "Ý nghĩa quang hợp, thay đổi lượng khí"
+ },
+ {
+  "ma_cau": "K07070201032",
+  "dang_bai_id": "KDB01595",
+  "chac": "cao",
+  "ly_do": "Nơi diễn ra/đường vận chuyển các chất trong quang hợp"
+ },
+ {
+  "ma_cau": "K07070201033",
+  "dang_bai_id": "KDB01597",
+  "chac": "cao",
+  "ly_do": "Ý nghĩa quang hợp, thay đổi lượng khí"
+ },
+ {
+  "ma_cau": "K07070201034",
+  "dang_bai_id": "KDB01594",
+  "chac": "cao",
+  "ly_do": "Khái niệm, nguyên liệu, sản phẩm, điều kiện, phương trình quang hợp"
+ },
+ {
+  "ma_cau": "K07070201035",
+  "dang_bai_id": "KDB01597",
+  "chac": "cao",
+  "ly_do": "Ý nghĩa quang hợp, thay đổi lượng khí"
+ },
+ {
+  "ma_cau": "K07070201036",
+  "dang_bai_id": "KDB01595",
+  "chac": "cao",
+  "ly_do": "Nơi diễn ra/đường vận chuyển các chất trong quang hợp"
+ },
+ {
+  "ma_cau": "K07070201037",
+  "dang_bai_id": "KDB01594",
+  "chac": "cao",
+  "ly_do": "Khái niệm, nguyên liệu, sản phẩm, điều kiện, phương trình quang hợp"
+ },
+ {
+  "ma_cau": "K07070201038",
+  "dang_bai_id": "KDB01596",
+  "chac": "cao",
+  "ly_do": "Số phận sản phẩm, chuyển hoá năng lượng trong quang hợp"
+ },
+ {
+  "ma_cau": "K07070201039",
+  "dang_bai_id": "KDB01597",
+  "chac": "cao",
+  "ly_do": "Ý nghĩa quang hợp, thay đổi lượng khí"
+ },
+ {
+  "ma_cau": "K07070201040",
+  "dang_bai_id": "KDB01597",
+  "chac": "cao",
+  "ly_do": "Ý nghĩa quang hợp, thay đổi lượng khí"
+ },
+ {
+  "ma_cau": "K07070201041",
+  "dang_bai_id": "KDB01598",
+  "chac": "cao",
+  "ly_do": "Điều kiện/thí nghiệm ảnh hưởng đến quang hợp"
+ },
+ {
+  "ma_cau": "K07070201042",
+  "dang_bai_id": "KDB01595",
+  "chac": "vua",
+  "ly_do": "Bào quan chứa diệp lục; ranh giới với dạng nhận biết"
+ },
+ {
+  "ma_cau": "K07070201043",
+  "dang_bai_id": "KDB01598",
+  "chac": "cao",
+  "ly_do": "Điều kiện/thí nghiệm ảnh hưởng đến quang hợp"
+ },
+ {
+  "ma_cau": "K07070201044",
+  "dang_bai_id": "KDB01594",
+  "chac": "cao",
+  "ly_do": "Khái niệm, nguyên liệu, sản phẩm, điều kiện, phương trình quang hợp"
+ },
+ {
+  "ma_cau": "K07070201045",
+  "dang_bai_id": "KDB01598",
+  "chac": "cao",
+  "ly_do": "Điều kiện/thí nghiệm ảnh hưởng đến quang hợp"
+ },
+ {
+  "ma_cau": "K07070201046",
+  "dang_bai_id": "KDB01596",
+  "chac": "cao",
+  "ly_do": "Số phận sản phẩm, chuyển hoá năng lượng trong quang hợp"
+ },
+ {
+  "ma_cau": "K07070201047",
+  "dang_bai_id": "KDB01597",
+  "chac": "cao",
+  "ly_do": "Ý nghĩa quang hợp, thay đổi lượng khí"
+ },
+ {
+  "ma_cau": "K07070201048",
+  "dang_bai_id": "KDB01598",
+  "chac": "cao",
+  "ly_do": "Điều kiện/thí nghiệm ảnh hưởng đến quang hợp"
+ },
+ {
+  "ma_cau": "K07070201049",
+  "dang_bai_id": "KDB01595",
+  "chac": "cao",
+  "ly_do": "Nơi diễn ra/đường vận chuyển các chất trong quang hợp"
+ },
+ {
+  "ma_cau": "K07070201050",
+  "dang_bai_id": "KDB01597",
+  "chac": "vua",
+  "ly_do": "Vai trò khí oxygen với hô hấp sinh vật; ý nghĩa sinh thái"
+ },
+ {
+  "ma_cau": "K07070201051",
+  "dang_bai_id": "KDB01594",
+  "chac": "cao",
+  "ly_do": "Khái niệm, nguyên liệu, sản phẩm, điều kiện, phương trình quang hợp"
+ },
+ {
+  "ma_cau": "K07070201052",
+  "dang_bai_id": "KDB01594",
+  "chac": "cao",
+  "ly_do": "Khái niệm, nguyên liệu, sản phẩm, điều kiện, phương trình quang hợp"
+ },
+ {
+  "ma_cau": "K07070201053",
+  "dang_bai_id": "KDB01598",
+  "chac": "cao",
+  "ly_do": "Điều kiện/thí nghiệm ảnh hưởng đến quang hợp"
+ },
+ {
+  "ma_cau": "K07070201054",
+  "dang_bai_id": "KDB01598",
+  "chac": "cao",
+  "ly_do": "Điều kiện/thí nghiệm ảnh hưởng đến quang hợp"
+ },
+ {
+  "ma_cau": "K07070201055",
+  "dang_bai_id": "KDB01596",
+  "chac": "cao",
+  "ly_do": "Số phận sản phẩm, chuyển hoá năng lượng trong quang hợp"
+ },
+ {
+  "ma_cau": "K07070201056",
+  "dang_bai_id": "KDB01596",
+  "chac": "cao",
+  "ly_do": "Số phận sản phẩm, chuyển hoá năng lượng trong quang hợp"
+ },
+ {
+  "ma_cau": "K07070201057",
+  "dang_bai_id": "KDB01595",
+  "chac": "cao",
+  "ly_do": "Nơi diễn ra/đường vận chuyển các chất trong quang hợp"
+ },
+ {
+  "ma_cau": "K07070201058",
+  "dang_bai_id": "KDB01595",
+  "chac": "cao",
+  "ly_do": "Nơi diễn ra/đường vận chuyển các chất trong quang hợp"
+ },
+ {
+  "ma_cau": "K07070301031",
+  "dang_bai_id": "KDB00764",
+  "chac": "cao",
+  "ly_do": "Dựa vào phương trình chữ hô hấp tế bào"
+ },
+ {
+  "ma_cau": "K07070301032",
+  "dang_bai_id": "KDB00764",
+  "chac": "cao",
+  "ly_do": "Dựa vào phương trình chữ hô hấp tế bào"
+ },
+ {
+  "ma_cau": "K07070301033",
+  "dang_bai_id": "KDB00765",
+  "chac": "cao",
+  "ly_do": "Nơi diễn ra/vai trò hô hấp tế bào (ti thể, năng lượng)"
+ },
+ {
+  "ma_cau": "K07070301034",
+  "dang_bai_id": "KDB00765",
+  "chac": "cao",
+  "ly_do": "Nơi diễn ra/vai trò hô hấp tế bào (ti thể, năng lượng)"
+ },
+ {
+  "ma_cau": "K07070301035",
+  "dang_bai_id": "KDB00765",
+  "chac": "cao",
+  "ly_do": "Nơi diễn ra/vai trò hô hấp tế bào (ti thể, năng lượng)"
+ },
+ {
+  "ma_cau": "K07070301036",
+  "dang_bai_id": "KDB00765",
+  "chac": "cao",
+  "ly_do": "Nơi diễn ra/vai trò hô hấp tế bào (ti thể, năng lượng)"
+ },
+ {
+  "ma_cau": "K07070301037",
+  "dang_bai_id": "KDB00764",
+  "chac": "vua",
+  "ly_do": "Nhận biết quá trình hô hấp; gần khái niệm/phương trình"
+ },
+ {
+  "ma_cau": "K07070301038",
+  "dang_bai_id": "KDB00765",
+  "chac": "cao",
+  "ly_do": "Nơi diễn ra/vai trò hô hấp tế bào (ti thể, năng lượng)"
+ },
+ {
+  "ma_cau": "K07070301039",
+  "dang_bai_id": "KDB00765",
+  "chac": "cao",
+  "ly_do": "Nơi diễn ra/vai trò hô hấp tế bào (ti thể, năng lượng)"
+ },
+ {
+  "ma_cau": "K07070301040",
+  "dang_bai_id": "KDB00765",
+  "chac": "cao",
+  "ly_do": "Nơi diễn ra/vai trò hô hấp tế bào (ti thể, năng lượng)"
+ },
+ {
+  "ma_cau": "K07070301041",
+  "dang_bai_id": "KDB00764",
+  "chac": "vua",
+  "ly_do": "Thí nghiệm hạt nảy mầm gắn phương trình; đề thiếu hình, hợp nhóm yếu tố hơn"
+ },
+ {
+  "ma_cau": "K07070302030",
+  "dang_bai_id": "KDB00767",
+  "chac": "cao",
+  "ly_do": "Sản phẩm của quá trình này là nguyên liệu của quá trình kia"
+ },
+ {
+  "ma_cau": "K07070302031",
+  "dang_bai_id": "KDB00767",
+  "chac": "cao",
+  "ly_do": "Sản phẩm của quá trình này là nguyên liệu của quá trình kia"
+ },
+ {
+  "ma_cau": "K07070302032",
+  "dang_bai_id": "KDB00767",
+  "chac": "cao",
+  "ly_do": "Sản phẩm của quá trình này là nguyên liệu của quá trình kia"
+ },
+ {
+  "ma_cau": "K07070302033",
+  "dang_bai_id": "KDB00767",
+  "chac": "cao",
+  "ly_do": "Sản phẩm của quá trình này là nguyên liệu của quá trình kia"
+ },
+ {
+  "ma_cau": "K07070302034",
+  "dang_bai_id": "KDB00767",
+  "chac": "cao",
+  "ly_do": "Sản phẩm của quá trình này là nguyên liệu của quá trình kia"
+ },
+ {
+  "ma_cau": "K07070302035",
+  "dang_bai_id": "KDB00767",
+  "chac": "cao",
+  "ly_do": "Sản phẩm của quá trình này là nguyên liệu của quá trình kia"
+ },
+ {
+  "ma_cau": "K07070302036",
+  "dang_bai_id": "KDB00767",
+  "chac": "vua",
+  "ly_do": "Ban đêm chỉ hô hấp, khí tăng; liên hệ hai quá trình"
+ },
+ {
+  "ma_cau": "K07070302037",
+  "dang_bai_id": "KDB00767",
+  "chac": "vua",
+  "ly_do": "Lục lạp và ti thể cùng hoạt động; liên hệ hai quá trình"
+ },
+ {
+  "ma_cau": "K07070302038",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "lạc nhóm: thuộc nhóm Khí khổng và trao đổi khí ở thực vật"
+ },
+ {
+  "ma_cau": "K07070302039",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "lạc nhóm: thuộc nhóm Khí khổng và trao đổi khí ở thực vật"
+ },
+ {
+  "ma_cau": "K07070302040",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "lạc nhóm: thuộc nhóm Khí khổng và trao đổi khí ở thực vật"
+ },
+ {
+  "ma_cau": "K07070302041",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "lạc nhóm: thuộc nhóm Khí khổng và trao đổi khí ở thực vật"
+ },
+ {
+  "ma_cau": "K07070302042",
+  "dang_bai_id": "KDB00767",
+  "chac": "vua",
+  "ly_do": "Ứng dụng quang hợp–hô hấp ngày đêm; gần nhóm khí khổng/trao đổi khí"
+ },
+ {
+  "ma_cau": "K07070302043",
+  "dang_bai_id": "KDB00767",
+  "chac": "vua",
+  "ly_do": "Ứng dụng quang hợp–hô hấp ngày đêm; gần nhóm khí khổng/trao đổi khí"
+ },
+ {
+  "ma_cau": "K07070302044",
+  "dang_bai_id": "KDB00767",
+  "chac": "vua",
+  "ly_do": "Ứng dụng quang hợp–hô hấp ngày đêm; gần nhóm khí khổng/trao đổi khí"
+ },
+ {
+  "ma_cau": "K07070302045",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "lạc nhóm: thuộc nhóm Khí khổng và trao đổi khí ở thực vật"
+ },
+ {
+  "ma_cau": "K07070302046",
+  "dang_bai_id": "KDB00767",
+  "chac": "vua",
+  "ly_do": "Ứng dụng quang hợp–hô hấp ngày đêm; gần nhóm khí khổng/trao đổi khí"
+ },
+ {
+  "ma_cau": "K07070302047",
+  "dang_bai_id": "KDB00767",
+  "chac": "vua",
+  "ly_do": "Ứng dụng quang hợp–hô hấp ngày đêm; gần nhóm khí khổng/trao đổi khí"
+ },
+ {
+  "ma_cau": "K07070302048",
+  "dang_bai_id": "KDB00767",
+  "chac": "vua",
+  "ly_do": "Ứng dụng quang hợp–hô hấp ngày đêm; gần nhóm khí khổng/trao đổi khí"
+ },
+ {
+  "ma_cau": "K07070302049",
+  "dang_bai_id": "KDB00767",
+  "chac": "vua",
+  "ly_do": "Ứng dụng quang hợp–hô hấp ngày đêm; gần nhóm khí khổng/trao đổi khí"
+ },
+ {
+  "ma_cau": "K07070302050",
+  "dang_bai_id": "KDB00767",
+  "chac": "vua",
+  "ly_do": "Ứng dụng quang hợp–hô hấp ngày đêm; gần nhóm khí khổng/trao đổi khí"
+ },
+ {
+  "ma_cau": "K07070303031",
+  "dang_bai_id": "KDB00768",
+  "chac": "cao",
+  "ly_do": "Ảnh hưởng của nước/oxygen đến hô hấp, giải thích hiện tượng"
+ },
+ {
+  "ma_cau": "K07070303032",
+  "dang_bai_id": "KDB00768",
+  "chac": "cao",
+  "ly_do": "Ảnh hưởng của nước/oxygen đến hô hấp, giải thích hiện tượng"
+ },
+ {
+  "ma_cau": "K07070303033",
+  "dang_bai_id": "KDB00768",
+  "chac": "cao",
+  "ly_do": "Ảnh hưởng của nước/oxygen đến hô hấp, giải thích hiện tượng"
+ },
+ {
+  "ma_cau": "K07070303034",
+  "dang_bai_id": "KDB00769",
+  "chac": "cao",
+  "ly_do": "Biện pháp bảo quản và cơ sở giảm hô hấp"
+ },
+ {
+  "ma_cau": "K07070303035",
+  "dang_bai_id": "KDB00770",
+  "chac": "cao",
+  "ly_do": "Thí nghiệm hô hấp ở hạt nảy mầm"
+ },
+ {
+  "ma_cau": "K07070303036",
+  "dang_bai_id": "KDB00770",
+  "chac": "cao",
+  "ly_do": "Thí nghiệm hô hấp ở hạt nảy mầm"
+ },
+ {
+  "ma_cau": "K07070303037",
+  "dang_bai_id": "KDB00770",
+  "chac": "cao",
+  "ly_do": "Thí nghiệm hô hấp ở hạt nảy mầm"
+ },
+ {
+  "ma_cau": "K07070303038",
+  "dang_bai_id": "KDB00770",
+  "chac": "cao",
+  "ly_do": "Thí nghiệm hô hấp ở hạt nảy mầm"
+ },
+ {
+  "ma_cau": "K07070303039",
+  "dang_bai_id": "KDB00770",
+  "chac": "cao",
+  "ly_do": "Thí nghiệm hô hấp ở hạt nảy mầm"
+ },
+ {
+  "ma_cau": "K07070303040",
+  "dang_bai_id": "KDB00770",
+  "chac": "cao",
+  "ly_do": "Thí nghiệm hô hấp ở hạt nảy mầm"
+ },
+ {
+  "ma_cau": "K07070303041",
+  "dang_bai_id": "KDB00770",
+  "chac": "cao",
+  "ly_do": "Thí nghiệm hô hấp ở hạt nảy mầm"
+ },
+ {
+  "ma_cau": "K07070303042",
+  "dang_bai_id": "KDB00770",
+  "chac": "cao",
+  "ly_do": "Thí nghiệm hô hấp ở hạt nảy mầm"
+ },
+ {
+  "ma_cau": "K07070303043",
+  "dang_bai_id": "KDB00769",
+  "chac": "cao",
+  "ly_do": "Biện pháp bảo quản và cơ sở giảm hô hấp"
+ },
+ {
+  "ma_cau": "K07070303044",
+  "dang_bai_id": "KDB00769",
+  "chac": "cao",
+  "ly_do": "Biện pháp bảo quản và cơ sở giảm hô hấp"
+ },
+ {
+  "ma_cau": "K07070303045",
+  "dang_bai_id": "KDB00769",
+  "chac": "cao",
+  "ly_do": "Biện pháp bảo quản và cơ sở giảm hô hấp"
+ },
+ {
+  "ma_cau": "K07070303046",
+  "dang_bai_id": "KDB00769",
+  "chac": "cao",
+  "ly_do": "Biện pháp bảo quản và cơ sở giảm hô hấp"
+ },
+ {
+  "ma_cau": "K07070303047",
+  "dang_bai_id": "KDB00769",
+  "chac": "cao",
+  "ly_do": "Biện pháp bảo quản và cơ sở giảm hô hấp"
+ },
+ {
+  "ma_cau": "K07070303048",
+  "dang_bai_id": "KDB00770",
+  "chac": "cao",
+  "ly_do": "Thí nghiệm hô hấp ở hạt nảy mầm"
+ },
+ {
+  "ma_cau": "K07070303049",
+  "dang_bai_id": "KDB00768",
+  "chac": "cao",
+  "ly_do": "Thiếu oxygen khi ngập úng làm giảm hô hấp rễ"
+ }
+]

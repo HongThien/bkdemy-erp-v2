@@ -1,0 +1,99 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00323",
+   "chu_de": "Tốc độ",
+   "chuyen_de": "Tốc độ chuyển động",
+   "nhom": "Bài toán tính tốc độ, quãng đường, thời gian cơ bản",
+   "nhom_ly_thuyet": "I. LÝ THUYẾT DẠNG BÀI\nBa công thức dùng cho dạng này:\n●\tTính tốc độ: v = s : t.\n●\tTính quãng đường: s = v × t.\n●\tTính thời gian: t = s : v.\nQuy tắc về đơn vị: các đại lượng phải cùng một hệ đơn vị trước khi thay vào công thức.\n●\tNếu kết quả cần theo m/s thì đổi quãng đường ra mét và thời gian ra giây.\n●\tNếu kết quả cần theo km/h thì đổi quãng đường ra ki-lô-mét và thời gian ra giờ.\n●\tCác quan hệ hay dùng: 1 km = 1 000 m; 1 h = 60 phút = 3 600 s; 30 phút = 0,5 h; 15 phút = 0,25 h; 45 phút = 0,75 h; 20 phút = 1/3 h.\nTrình tự làm bài: xác định đại lượng cần tìm, đổi các dữ kiện về cùng hệ đơn vị, thay vào công thức tương ứng rồi ghi kết quả kèm đơn vị.\nII. VÍ DỤ MINH HỌA\nVí dụ 1. Một ô tô đi được quãng đường 120 km trong 2 giờ. Tính tốc độ của ô tô.\nHướng dẫn: Quãng đường và thời gian đã cùng hệ đơn vị km và h. Áp dụng v = s : t = 120 : 2 = 60 (km/h).\nVí dụ 2. Một người đi xe đạp với tốc độ 4 m/s trong 15 phút. Tính quãng đường người đó đi được.\nHướng dẫn: Đổi thời gian ra giây: 15 phút = 15 × 60 = 900 (s). Áp dụng s = v × t = 4 × 900 = 3 600 (m) = 3,6 km.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB00728",
+     "thu_tu": 1,
+     "ten": "Tính tốc độ",
+     "mo_ta": "Đề cho quãng đường và thời gian đi (có thể cần đổi phút sang giờ, giây), hỏi tốc độ của vật.\nLàm bằng cách áp dụng $v = s : t$ sau khi đưa các dữ kiện về cùng hệ đơn vị.\nLưu ý: đề cho tốc độ và một trong hai đại lượng còn lại, hỏi thời gian ⇒ thuộc dạng \"Tính thời gian\"; hỏi quãng đường ⇒ thuộc dạng \"Tính quãng đường\".",
+     "ly_thuyet": "##TC Công thức tính tốc độ\n$v = \\dfrac{s}{t}$ ($v$: tốc độ; $s$: quãng đường; $t$: thời gian).\nQuãng đường tính bằng $\\mathrm{km}$, thời gian bằng $\\mathrm{h}$ thì tốc độ có đơn vị $\\mathrm{km/h}$; quãng đường tính bằng $\\mathrm{m}$, thời gian bằng $\\mathrm{s}$ thì tốc độ có đơn vị $\\mathrm{m/s}$.\nĐổi thường gặp: $15$ phút $= 0,25\\ \\mathrm{h}$; $20$ phút $= \\dfrac{1}{3}\\ \\mathrm{h}$; $30$ phút $= 0,5\\ \\mathrm{h}$; $45$ phút $= 0,75\\ \\mathrm{h}$.\n\n##PP Phương pháp\nXác định quãng đường $s$ và thời gian $t$ từ đề, đổi về cùng hệ đơn vị.\nThay vào công thức $v = s : t$.\nGhi kết quả kèm đơn vị và đối chiếu với các phương án.\n\n##CY Chú ý\nQuên đổi phút sang giờ là lỗi hay gặp: $45\\ \\mathrm{km}$ trong $30$ phút mà lấy $45 : 30 = 1,5$ là sai.\nPhương án nhiễu còn là kết quả nhân $s \\times t$ hoặc chia ngược $t : s$.",
+     "vi_du": "##VD\nMột vận động viên chạy $100\\ \\mathrm{m}$ hết $12,5$ giây. Tốc độ của vận động viên là\nA. $1\\ 250\\ \\mathrm{m/s}$\nB. $4\\ \\mathrm{m/s}$\nC. $8\\ \\mathrm{m/s}$\nD. $12,5\\ \\mathrm{m/s}$\n\nBài giải:\nQuãng đường $s = 100\\ \\mathrm{m}$, thời gian $t = 12,5\\ \\mathrm{s}$ đã cùng hệ đơn vị.\nTốc độ của vận động viên: $v = s : t = 100 : 12,5 = 8\\ (\\mathrm{m/s})$.\nChọn C.\n\n##VD\nMột người đi xe đạp được $4\\ \\mathrm{km}$ trong $20$ phút. Tốc độ của người đó là\nA. $0,2\\ \\mathrm{km/h}$\nB. $5\\ \\mathrm{km/h}$\nC. $12\\ \\mathrm{km/h}$\nD. $80\\ \\mathrm{km/h}$\n\nBài giải:\nĐổi $20$ phút $= \\dfrac{1}{3}\\ \\mathrm{h}$.\nTốc độ của người đó: $v = 4 : \\dfrac{1}{3} = 4 \\times 3 = 12\\ (\\mathrm{km/h})$.\nChọn C."
+    },
+    {
+     "dang_id": "KDB00729",
+     "thu_tu": 2,
+     "ten": "Tính thời gian",
+     "mo_ta": "Đề cho tốc độ và quãng đường, hỏi thời gian chuyển động.\nLàm bằng cách áp dụng $t = s : v$ sau khi đưa các dữ kiện về cùng hệ đơn vị; kết quả có thể ra giờ hoặc giây.\nLưu ý: đề cho quãng đường và thời gian, hỏi tốc độ ⇒ thuộc dạng \"Tính tốc độ\"; đề cho tốc độ và thời gian, hỏi quãng đường ⇒ thuộc dạng \"Tính quãng đường\".",
+     "ly_thuyet": "##TC Công thức tính thời gian\nTừ $v = \\dfrac{s}{t}$ suy ra $t = \\dfrac{s}{v}$.\nTốc độ $\\mathrm{km/h}$ và quãng đường $\\mathrm{km}$ thì thời gian ra $\\mathrm{h}$; tốc độ $\\mathrm{m/s}$ và quãng đường $\\mathrm{m}$ thì thời gian ra $\\mathrm{s}$.\nĐổi giờ ra phút: $1\\ \\mathrm{h} = 60$ phút, ví dụ $0,6\\ \\mathrm{h} = 36$ phút.\n\n##PP Phương pháp\nXác định tốc độ $v$ và quãng đường $s$, đổi về cùng hệ đơn vị nếu cần.\nThay vào công thức $t = s : v$.\nGhi kết quả kèm đơn vị và đối chiếu với các phương án.\n\n##CY Chú ý\nChia ngược $v : s$ hoặc nhân $v \\times s$ là hai lỗi hay gặp, thường cho phương án nhiễu rất lớn hoặc rất nhỏ.\nKiểm tra độ lớn hợp lí: tốc độ lớn mà quãng đường nhỏ thì thời gian phải ngắn.",
+     "vi_du": "##VD\nMột vật đi được quãng đường $180\\ \\mathrm{m}$ với tốc độ $9\\ \\mathrm{m/s}$. Thời gian chuyển động của vật là\nA. $171\\ \\mathrm{s}$\nB. $1\\ 620\\ \\mathrm{s}$\nC. $15\\ \\mathrm{s}$\nD. $20\\ \\mathrm{s}$\n\nBài giải:\nQuãng đường và tốc độ đã cùng hệ đơn vị $\\mathrm{m}$ và $\\mathrm{m/s}$.\nThời gian chuyển động: $t = s : v = 180 : 9 = 20\\ (\\mathrm{s})$.\nChọn D.\n\n##VD\nMột người đi bộ với tốc độ $4\\ \\mathrm{km/h}$ trên quãng đường $2,4\\ \\mathrm{km}$. Thời gian người đó đi hết quãng đường là\nA. $0,6\\ \\mathrm{h}$\nB. $1,6\\ \\mathrm{h}$\nC. $6\\ \\mathrm{h}$\nD. $9,6\\ \\mathrm{h}$\n\nBài giải:\nQuãng đường và tốc độ đã cùng hệ đơn vị $\\mathrm{km}$ và $\\mathrm{km/h}$.\nThời gian đi: $t = s : v = 2,4 : 4 = 0,6\\ (\\mathrm{h})$, tức $36$ phút.\nChọn A."
+    },
+    {
+     "dang_id": "KDB00730",
+     "thu_tu": 3,
+     "ten": "Tính quãng đường",
+     "mo_ta": "Đề cho tốc độ và thời gian chuyển động (thời gian có thể cho bằng giờ, phút, giây), hỏi quãng đường vật đi được.\nLàm bằng cách áp dụng $s = v \\times t$ sau khi đưa các dữ kiện về cùng hệ đơn vị.\nLưu ý: đề cho quãng đường và thời gian, hỏi tốc độ ⇒ thuộc dạng \"Tính tốc độ\"; hỏi thời gian ⇒ thuộc dạng \"Tính thời gian\".",
+     "ly_thuyet": "##TC Công thức tính quãng đường\nTừ $v = \\dfrac{s}{t}$ suy ra $s = v \\times t$.\nTốc độ $\\mathrm{km/h}$ và thời gian $\\mathrm{h}$ thì quãng đường ra $\\mathrm{km}$; tốc độ $\\mathrm{m/s}$ và thời gian $\\mathrm{s}$ thì quãng đường ra $\\mathrm{m}$.\nĐổi thường gặp: $1$ phút $= 60\\ \\mathrm{s}$; $1$ giờ $30$ phút $= 1,5\\ \\mathrm{h}$; $1\\ \\mathrm{km/h} = \\dfrac{1}{3,6}\\ \\mathrm{m/s}$.\n\n##PP Phương pháp\nXác định tốc độ $v$ và thời gian $t$ từ đề.\nĐổi về cùng hệ đơn vị: nếu thời gian cho bằng giây mà tốc độ cho bằng $\\mathrm{km/h}$ thì đổi tốc độ sang $\\mathrm{m/s}$.\nThay vào công thức $s = v \\times t$ và ghi kết quả kèm đơn vị.\n\n##CY Chú ý\nQuên đổi đơn vị trước khi nhân sẽ cho kết quả sai hàng chục lần: $72\\ \\mathrm{km/h}$ trong $30\\ \\mathrm{s}$ mà lấy $72 \\times 30 = 2\\ 160$ là sai.\nĐổi $1$ giờ $30$ phút phải ra $1,5\\ \\mathrm{h}$, không phải $1,30$.",
+     "vi_du": "##VD\nMột ô tô chạy với tốc độ $54\\ \\mathrm{km/h}$ trong $2$ giờ. Quãng đường ô tô đi được là\nA. $27\\ \\mathrm{km}$\nB. $56\\ \\mathrm{km}$\nC. $108\\ \\mathrm{km}$\nD. $162\\ \\mathrm{km}$\n\nBài giải:\nTốc độ tính bằng $\\mathrm{km/h}$, thời gian tính bằng $\\mathrm{h}$ nên quãng đường ra $\\mathrm{km}$.\nQuãng đường ô tô đi được: $s = v \\times t = 54 \\times 2 = 108\\ (\\mathrm{km})$.\nChọn C.\n\n##VD\nMột ô tô chuyển động với tốc độ $72\\ \\mathrm{km/h}$ trong $30$ giây. Quãng đường ô tô đi được là\nA. $240\\ \\mathrm{m}$\nB. $2\\ 160\\ \\mathrm{m}$\nC. $2\\ 400\\ \\mathrm{m}$\nD. $600\\ \\mathrm{m}$\n\nBài giải:\nThời gian cho bằng giây nên đổi tốc độ sang $\\mathrm{m/s}$.\n$72\\ \\mathrm{km/h} = 72 : 3,6 = 20\\ \\mathrm{m/s}$.\nQuãng đường ô tô đi được: $s = v \\times t = 20 \\times 30 = 600\\ (\\mathrm{m})$.\nChọn D."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K07000000032",
+   "nhom_id": "KNB00323",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Nhóm Hà đo thời gian xe lăn hết quãng đường 1,8 m. Ba lần đo được 2,9 s; 3,0 s; 3,1 s. Tốc độ của xe là",
+   "lua_chon": [
+    "0,2 m/s",
+    "0,6 m/s",
+    "5,4 m/s",
+    "0,6 km/h"
+   ],
+   "dap_an": "B",
+   "loi_giai": "t trung bình = (2,9 + 3,0 + 3,1) : 3 = 3,0 s; v = 1,8 : 3,0 = 0,6 m/s.\n\nVì sao các phương án khác sai:\n- A: Đã chia cho tổng thời gian 9 s; phải dùng thời gian trung bình 3,0 s.\n- C: Đã nhân s với t; phải lấy s chia t.\n- D: s tính bằng m, t tính bằng s nên đơn vị là m/s."
+  },
+  {
+   "ma_cau": "K07000000033",
+   "nhom_id": "KNB00323",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Hai cổng quang điện đặt cách nhau 0,5 m. Ba lần đo thời gian viên bi đi giữa hai cổng được 0,26 s; 0,25 s; 0,24 s. Tốc độ của viên bi là",
+   "lua_chon": [
+    "0,125 m/s",
+    "0,5 m/s",
+    "2 km/h",
+    "2 m/s"
+   ],
+   "dap_an": "D",
+   "loi_giai": "t trung bình = (0,26 + 0,25 + 0,24) : 3 = 0,25 s; v = 0,5 : 0,25 = 2 m/s.\n\nVì sao các phương án khác sai:\n- A: Đã nhân s với t; phải lấy s chia t.\n- B: Đã lấy t chia s (0,25 : 0,5); phải lấy s chia t.\n- C: s tính bằng m, t tính bằng s nên đơn vị là m/s."
+  },
+  {
+   "ma_cau": "K07000000034",
+   "nhom_id": "KNB00323",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Đo 4 lần thời gian xe lăn đi hết quãng đường 1,2 m được: 2,9 s; 3,0 s; 3,1 s; 5,0 s (lần đo bị bấm muộn). Tốc độ của xe (sau khi loại bỏ số liệu bất thường) là",
+   "lua_chon": [
+    "0,3 m/s",
+    "0,4 m/s",
+    "0,24 m/s",
+    "3,0 m/s"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Loại bỏ 5,0 s vì lệch hẳn so với ba lần đo còn lại; trung bình ba lần hợp lí (2,9+3,0+3,1):3 = 3,0 s; v = 1,2 : 3,0 = 0,4 m/s.\n\nVì sao các phương án khác sai:\n- A: 0,3 m/s là do lấy trung bình cả 4 lần đo, kể cả số liệu bất thường 5,0 s.\n- C: 0,24 m/s là do dùng luôn thời gian bị bấm muộn 5,0 s để tính tốc độ.\n- D: 3,0 m/s là do nhầm giá trị thời gian trung bình với giá trị tốc độ."
+  },
+  {
+   "ma_cau": "K07000000035",
+   "nhom_id": "KNB00323",
+   "nhom_chac": "vua",
+   "loai": "trac_nghiem",
+   "de": "Ba lần đo thời gian một viên bi lăn hết quãng đường 60 cm được 1,9 s; 2,0 s; 2,1 s. Tốc độ trung bình của viên bi (theo đơn vị m/s) là",
+   "lua_chon": [
+    "30 m/s",
+    "3 m/s",
+    "0,3 m/s",
+    "0,03 m/s"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Trung bình thời gian (1,9+2,0+2,1):3 = 2,0 s; đổi 60 cm = 0,6 m; v = 0,6 : 2,0 = 0,3 m/s.\n\nVì sao các phương án khác sai:\n- A: 30 m/s là do quên đổi 60 cm sang mét, lấy luôn 60 : 2,0.\n- B: 3 m/s là do đổi 60 cm thành 6 m rồi tính, sai quy tắc đổi đơn vị (1 m = 100 cm).\n- D: 0,03 m/s là do đổi sai đơn vị, coi 60 cm bằng 0,06 m."
+  }
+ ]
+}

@@ -1,0 +1,1200 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00565",
+   "khoi": "9",
+   "chu_de": "Di truyền học",
+   "chuyen_de": "Tái bản DNA và phiên mã tạo RNA",
+   "nhom": "TÍNH SỐ LIỆU GENE CON SAU K LẦN TÁI BẢN",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true
+  },
+  {
+   "nhom_id": "KNB00566",
+   "khoi": "9",
+   "chu_de": "Di truyền học",
+   "chuyen_de": "Tái bản DNA và phiên mã tạo RNA",
+   "nhom": "TÍNH SỐ RIBONUCLEOTIDE VÀ CHIỀU DÀI mRNA KHI PHIÊN MÃ",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true
+  }
+ ],
+ "dang_bai": [
+  {
+   "dang_id": "KDB01299",
+   "nhom_id": "KNB00565",
+   "thu_tu": 1,
+   "dang": "CHO N, K, TÍNH TỔNG NUCLEOTIDE MÔI TRƯỜNG CUNG CẤP",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110504004",
+     "loai": "trac_nghiem",
+     "de": "Một gene có N = 1.600 nucleotide, tái bản (nhân đôi) liên tiếp 4 lần. Tổng số nucleotide môi trường nội bào cung cấp cho quá trình tái bản này là bao nhiêu?",
+     "lua_chon": [
+      "25.600 nucleotide.",
+      "11.200 nucleotide.",
+      "22.400 nucleotide.",
+      "24.000 nucleotide."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Qua 4 lần tái bản, tổng số gene con là $2^4$, trong đó gene mẹ ban đầu không được môi trường cung cấp nguyên liệu. Tổng số nucleotide môi trường cung cấp = $N \\times (2^4 - 1) = 1.600 \\times (16 - 1) = 1.600 \\times 15 = 24.000$ nucleotide."
+    },
+    {
+     "ma_cau": "K09110504001",
+     "loai": "trac_nghiem",
+     "de": "Một gene có $\\mathrm{N = 1.200}$ nucleotide, tái bản (nhân đôi) liên tiếp 3 lần. Tổng số nucleotide môi trường nội bào cung cấp cho quá trình tái bản này là bao nhiêu?",
+     "lua_chon": [
+      "8.400 nucleotide.",
+      "9.600 nucleotide.",
+      "3.600 nucleotide.",
+      "7.200 nucleotide."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Qua 3 lần tái bản, tổng số gene con là $2^3$, trong đó gene mẹ ban đầu không được môi trường cung cấp nguyên liệu. Tổng số nucleotide môi trường cung cấp = $\\mathrm{N \\times (2^3 - 1) = 1.200 \\times (8 - 1) = 1.200 \\times 7 = 8.400}$ nucleotide."
+    },
+    {
+     "ma_cau": "K09110504002",
+     "loai": "trac_nghiem",
+     "de": "Một gene có $\\mathrm{N = 1.800}$ nucleotide, tái bản (nhân đôi) liên tiếp 2 lần. Tổng số nucleotide môi trường nội bào cung cấp cho quá trình tái bản này là bao nhiêu?",
+     "lua_chon": [
+      "7.200 nucleotide.",
+      "1.800 nucleotide.",
+      "5.400 nucleotide.",
+      "3.600 nucleotide."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Qua 2 lần tái bản, tổng số gene con là $2^2$, trong đó gene mẹ ban đầu không được môi trường cung cấp nguyên liệu. Tổng số nucleotide môi trường cung cấp = $\\mathrm{N \\times (2^2 - 1) = 1.800 \\times (4 - 1) = 1.800 \\times 3 = 5.400}$ nucleotide."
+    },
+    {
+     "ma_cau": "K09110504005",
+     "loai": "trac_nghiem",
+     "de": "Một gene có N = 2.000 nucleotide, tái bản (nhân đôi) liên tiếp 2 lần. Tổng số nucleotide môi trường nội bào cung cấp cho quá trình tái bản này là bao nhiêu?",
+     "lua_chon": [
+      "8.000 nucleotide.",
+      "2.000 nucleotide.",
+      "6.000 nucleotide.",
+      "4.000 nucleotide."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Qua 2 lần tái bản, tổng số gene con là $2^2$, trong đó gene mẹ ban đầu không được môi trường cung cấp nguyên liệu. Tổng số nucleotide môi trường cung cấp = $N \\times (2^2 - 1) = 2.000 \\times (4 - 1) = 2.000 \\times 3 = 6.000$ nucleotide."
+    },
+    {
+     "ma_cau": "K09110504003",
+     "loai": "trac_nghiem",
+     "de": "Một gene có $\\mathrm{N = 2.400}$ nucleotide, tái bản (nhân đôi) liên tiếp 3 lần. Tổng số nucleotide môi trường nội bào cung cấp cho quá trình tái bản này là bao nhiêu?",
+     "lua_chon": [
+      "19.200 nucleotide.",
+      "16.800 nucleotide.",
+      "7.200 nucleotide.",
+      "14.400 nucleotide."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Qua 3 lần tái bản, tổng số gene con là $2^3$, trong đó gene mẹ ban đầu không được môi trường cung cấp nguyên liệu. Tổng số nucleotide môi trường cung cấp = $\\mathrm{N \\times (2^3 - 1) = 2.400 \\times (8 - 1) = 2.400 \\times 7 = 16.800}$ nucleotide."
+    },
+    {
+     "ma_cau": "K09110504006",
+     "loai": "trac_nghiem",
+     "de": "Một gene có N = 3.000 nucleotide, tái bản (nhân đôi) liên tiếp 3 lần. Tổng số nucleotide môi trường nội bào cung cấp cho quá trình tái bản này là bao nhiêu?",
+     "lua_chon": [
+      "21.000 nucleotide.",
+      "24.000 nucleotide.",
+      "9.000 nucleotide.",
+      "18.000 nucleotide."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Qua 3 lần tái bản, tổng số gene con là $2^3$, trong đó gene mẹ ban đầu không được môi trường cung cấp nguyên liệu. Tổng số nucleotide môi trường cung cấp = $N \\times (2^3 - 1) = 3.000 \\times (8 - 1) = 3.000 \\times 7 = 21.000$ nucleotide."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01300",
+   "nhom_id": "KNB00565",
+   "thu_tu": 2,
+   "dang": "CHO K, TÍNH SỐ GENE CON",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110504013",
+     "loai": "trac_nghiem",
+     "de": "Một gene tái bản (nhân đôi) liên tiếp 4 lần. Số gene con được tạo thành là bao nhiêu?",
+     "lua_chon": [
+      "12 gene con.",
+      "16 gene con.",
+      "14 gene con.",
+      "32 gene con."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Mỗi lần tái bản, số gene tăng gấp đôi. Qua 4 lần tái bản liên tiếp, số gene con = $2^4 = 16$ gene con."
+    },
+    {
+     "ma_cau": "K09110504010",
+     "loai": "trac_nghiem",
+     "de": "Một gene tái bản (nhân đôi) liên tiếp 5 lần. Số gene con được tạo thành là bao nhiêu?",
+     "lua_chon": [
+      "15 gene con.",
+      "32 gene con.",
+      "30 gene con.",
+      "64 gene con."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Mỗi lần tái bản, số gene tăng gấp đôi. Qua 5 lần tái bản liên tiếp, số gene con = $2^5$ = 32 gene con."
+    },
+    {
+     "ma_cau": "K09110504012",
+     "loai": "trac_nghiem",
+     "de": "Một gene tái bản (nhân đôi) liên tiếp 7 lần. Số gene con được tạo thành là bao nhiêu?",
+     "lua_chon": [
+      "21 gene con.",
+      "126 gene con.",
+      "128 gene con.",
+      "256 gene con."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Mỗi lần tái bản, số gene tăng gấp đôi. Qua 7 lần tái bản liên tiếp, số gene con = $2^7$ = 128 gene con."
+    },
+    {
+     "ma_cau": "K09110504009",
+     "loai": "trac_nghiem",
+     "de": "Một gene tái bản (nhân đôi) liên tiếp 3 lần. Số gene con được tạo thành là bao nhiêu?",
+     "lua_chon": [
+      "9 gene con.",
+      "6 gene con.",
+      "16 gene con.",
+      "8 gene con."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Mỗi lần tái bản, số gene tăng gấp đôi. Qua 3 lần tái bản liên tiếp, số gene con = $2^3$ = 8 gene con."
+    },
+    {
+     "ma_cau": "K09110504016",
+     "loai": "trac_nghiem",
+     "de": "Một gene tái bản (nhân đôi) liên tiếp 9 lần. Số gene con được tạo thành là bao nhiêu?",
+     "lua_chon": [
+      "512 gene con.",
+      "27 gene con.",
+      "510 gene con.",
+      "1.024 gene con."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Mỗi lần tái bản, số gene tăng gấp đôi. Qua 9 lần tái bản liên tiếp, số gene con = $2^9 = 512$ gene con."
+    },
+    {
+     "ma_cau": "K09110504011",
+     "loai": "trac_nghiem",
+     "de": "Một gene tái bản (nhân đôi) liên tiếp 2 lần. Số gene con được tạo thành là bao nhiêu?",
+     "lua_chon": [
+      "4 gene con.",
+      "6 gene con.",
+      "2 gene con.",
+      "8 gene con."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Mỗi lần tái bản, số gene tăng gấp đôi. Qua 2 lần tái bản liên tiếp, số gene con = $2^2$ = 4 gene con."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01301",
+   "nhom_id": "KNB00565",
+   "thu_tu": 3,
+   "dang": "CHO K, TÍNH SỐ GENE CON NGUYÊN LIỆU HOÀN TOÀN MỚI",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110504018",
+     "loai": "trac_nghiem",
+     "de": "Một gene tái bản (nhân đôi) liên tiếp 4 lần. Số gene con mang nguyên liệu hoàn toàn mới (không chứa mạch khuôn nào của gene ban đầu) là bao nhiêu?",
+     "lua_chon": [
+      "16 gene con.",
+      "15 gene con.",
+      "6 gene con.",
+      "14 gene con."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Theo nguyên tắc bán bảo toàn, luôn có đúng 2 gene con mang một mạch khuôn cũ của gene ban đầu, dù tái bản bao nhiêu lần. Số gene con mang nguyên liệu hoàn toàn mới = $2^4 - 2 = 16 - 2 = 14$ gene con."
+    },
+    {
+     "ma_cau": "K09110504019",
+     "loai": "trac_nghiem",
+     "de": "Một gene tái bản (nhân đôi) liên tiếp 3 lần. Số gene con mang nguyên liệu hoàn toàn mới (không chứa mạch khuôn nào của gene ban đầu) là bao nhiêu?",
+     "lua_chon": [
+      "8 gene con.",
+      "6 gene con.",
+      "7 gene con.",
+      "2 gene con."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Theo nguyên tắc bán bảo toàn, luôn có đúng 2 gene con mang một mạch khuôn cũ của gene ban đầu, dù tái bản bao nhiêu lần. Số gene con mang nguyên liệu hoàn toàn mới = $2^3 - 2 = 8 - 2 = 6$ gene con."
+    },
+    {
+     "ma_cau": "K09110504023",
+     "loai": "trac_nghiem",
+     "de": "Một gene tái bản (nhân đôi) liên tiếp 7 lần. Số gene con mang nguyên liệu hoàn toàn mới (không chứa mạch khuôn nào của gene ban đầu) là bao nhiêu?",
+     "lua_chon": [
+      "128 gene con.",
+      "126 gene con.",
+      "127 gene con.",
+      "62 gene con."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Theo nguyên tắc bán bảo toàn, luôn có đúng 2 gene con mang một mạch khuôn cũ của gene ban đầu, dù tái bản bao nhiêu lần. Số gene con mang nguyên liệu hoàn toàn mới = $2^7 - 2 = 128 - 2 = 126$ gene con."
+    },
+    {
+     "ma_cau": "K09110504017",
+     "loai": "trac_nghiem",
+     "de": "Một gene tái bản (nhân đôi) liên tiếp 2 lần. Số gene con mang nguyên liệu hoàn toàn mới (không chứa mạch khuôn nào của gene ban đầu) là bao nhiêu?",
+     "lua_chon": [
+      "4 gene con.",
+      "3 gene con.",
+      "2 gene con.",
+      "0 gene con."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Theo nguyên tắc bán bảo toàn, luôn có đúng 2 gene con mang một mạch khuôn cũ của gene ban đầu, dù tái bản bao nhiêu lần. Số gene con mang nguyên liệu hoàn toàn mới = $2^2 - 2 = 4 - 2 = 2$ gene con."
+    },
+    {
+     "ma_cau": "K09110504022",
+     "loai": "trac_nghiem",
+     "de": "Một gene tái bản (nhân đôi) liên tiếp 8 lần. Số gene con mang nguyên liệu hoàn toàn mới (không chứa mạch khuôn nào của gene ban đầu) là bao nhiêu?",
+     "lua_chon": [
+      "256 gene con.",
+      "255 gene con.",
+      "254 gene con.",
+      "126 gene con."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Theo nguyên tắc bán bảo toàn, luôn có đúng 2 gene con mang một mạch khuôn cũ của gene ban đầu, dù tái bản bao nhiêu lần. Số gene con mang nguyên liệu hoàn toàn mới = $2^8 - 2 = 256 - 2 = 254$ gene con."
+    },
+    {
+     "ma_cau": "K09110504021",
+     "loai": "trac_nghiem",
+     "de": "Một gene tái bản (nhân đôi) liên tiếp 5 lần. Số gene con mang nguyên liệu hoàn toàn mới (không chứa mạch khuôn nào của gene ban đầu) là bao nhiêu?",
+     "lua_chon": [
+      "32 gene con.",
+      "31 gene con.",
+      "14 gene con.",
+      "30 gene con."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Theo nguyên tắc bán bảo toàn, luôn có đúng 2 gene con mang một mạch khuôn cũ của gene ban đầu, dù tái bản bao nhiêu lần. Số gene con mang nguyên liệu hoàn toàn mới = $2^5 - 2 = 32 - 2 = 30$ gene con."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01302",
+   "nhom_id": "KNB00565",
+   "thu_tu": 4,
+   "dang": "CHO H, K, TÍNH TỔNG LIÊN KẾT HYDROGEN BỊ PHÁ VỠ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110504030",
+     "loai": "trac_nghiem",
+     "de": "Một gene có H = 2.900 liên kết hydrogen, tái bản (nhân đôi) liên tiếp 2 lần. Tổng số liên kết hydrogen bị phá vỡ qua cả quá trình là bao nhiêu?",
+     "lua_chon": [
+      "11.600 liên kết.",
+      "8.700 liên kết.",
+      "2.900 liên kết.",
+      "5.800 liên kết."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Mỗi lần tái bản, tất cả các gene đang có tại thời điểm đó đều bị phá vỡ liên kết hydrogen để tách mạch.\nTổng số liên kết hydrogen bị phá vỡ qua 2 lần = $H \\times (2^2 - 1) = 2.900 \\times 3 = 8.700$ liên kết."
+    },
+    {
+     "ma_cau": "K09110504029",
+     "loai": "trac_nghiem",
+     "de": "Một gene có $\\mathrm{H} = 1.700$ liên kết hydrogen, tái bản (nhân đôi) liên tiếp 4 lần. Tổng số liên kết hydrogen bị phá vỡ qua cả quá trình là bao nhiêu?",
+     "lua_chon": [
+      "27.200 liên kết.",
+      "11.900 liên kết.",
+      "23.800 liên kết.",
+      "25.500 liên kết."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Mỗi lần tái bản, tất cả các gene đang có tại thời điểm đó đều bị phá vỡ liên kết hydrogen để tách mạch. Tổng số liên kết hydrogen bị phá vỡ qua 4 lần = $\\mathrm{H} \\times (2^4 - 1) = 1.700 \\times 15 = 25.500$ liên kết."
+    },
+    {
+     "ma_cau": "K09110504024",
+     "loai": "trac_nghiem",
+     "de": "Một gene có $\\mathrm{H} = 2.100$ liên kết hydrogen, tái bản (nhân đôi) liên tiếp 2 lần. Tổng số liên kết hydrogen bị phá vỡ qua cả quá trình là bao nhiêu?",
+     "lua_chon": [
+      "8.400 liên kết.",
+      "6.300 liên kết.",
+      "2.100 liên kết.",
+      "4.200 liên kết."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Mỗi lần tái bản, tất cả các gene đang có tại thời điểm đó đều bị phá vỡ liên kết hydrogen để tách mạch. Tổng số liên kết hydrogen bị phá vỡ qua 2 lần = $\\mathrm{H} \\times (2^2 - 1) = 2.100 \\times 3 = 6.300$ liên kết."
+    },
+    {
+     "ma_cau": "K09110504028",
+     "loai": "trac_nghiem",
+     "de": "Một gene có $\\mathrm{H} = 2.500$ liên kết hydrogen, tái bản (nhân đôi) liên tiếp 3 lần. Tổng số liên kết hydrogen bị phá vỡ qua cả quá trình là bao nhiêu?",
+     "lua_chon": [
+      "17.500 liên kết.",
+      "20.000 liên kết.",
+      "7.500 liên kết.",
+      "15.000 liên kết."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Mỗi lần tái bản, tất cả các gene đang có tại thời điểm đó đều bị phá vỡ liên kết hydrogen để tách mạch. Tổng số liên kết hydrogen bị phá vỡ qua 3 lần = $\\mathrm{H} \\times (2^3 - 1) = 2.500 \\times 7 = 17.500$ liên kết."
+    },
+    {
+     "ma_cau": "K09110504027",
+     "loai": "trac_nghiem",
+     "de": "Một gene có $\\mathrm{H} = 3.200$ liên kết hydrogen, tái bản (nhân đôi) liên tiếp 2 lần. Tổng số liên kết hydrogen bị phá vỡ qua cả quá trình là bao nhiêu?",
+     "lua_chon": [
+      "12.800 liên kết.",
+      "3.200 liên kết.",
+      "9.600 liên kết.",
+      "6.400 liên kết."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Mỗi lần tái bản, tất cả các gene đang có tại thời điểm đó đều bị phá vỡ liên kết hydrogen để tách mạch. Tổng số liên kết hydrogen bị phá vỡ qua 2 lần = $\\mathrm{H} \\times (2^2 - 1) = 3.200 \\times 3 = 9.600$ liên kết."
+    },
+    {
+     "ma_cau": "K09110504025",
+     "loai": "trac_nghiem",
+     "de": "Một gene có $\\mathrm{H} = 2.600$ liên kết hydrogen, tái bản (nhân đôi) liên tiếp 3 lần. Tổng số liên kết hydrogen bị phá vỡ qua cả quá trình là bao nhiêu?",
+     "lua_chon": [
+      "18.200 liên kết.",
+      "20.800 liên kết.",
+      "7.800 liên kết.",
+      "15.600 liên kết."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Mỗi lần tái bản, tất cả các gene đang có tại thời điểm đó đều bị phá vỡ liên kết hydrogen để tách mạch. Tổng số liên kết hydrogen bị phá vỡ qua 3 lần = $\\mathrm{H} \\times (2^3 - 1) = 2.600 \\times 7 = 18.200$ liên kết."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01303",
+   "nhom_id": "KNB00565",
+   "thu_tu": 5,
+   "dang": "CHO A, G, K, TÍNH NGUYÊN LIỆU MÔI TRƯỜNG TỪNG LOẠI",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110504031",
+     "loai": "tra_loi_ngan",
+     "de": "Một gene có $\\mathrm{A} = 300$ nucleotide, $\\mathrm{G} = 450$ nucleotide, tái bản (nhân đôi) liên tiếp 3 lần. Xác định số nucleotide mỗi loại ($\\mathrm{A}$, $\\mathrm{G}$) và tổng số nucleotide ($\\mathrm{N}$) mà môi trường nội bào cung cấp cho cả quá trình.",
+     "dap_an": "2100; 3150; 10500",
+     "loi_giai": "Qua 3 lần tái bản, hệ số nguyên liệu môi trường cung cấp là $(2^3 - 1) = 7$. $\\mathrm{A}$ môi trường = $\\mathrm{A} \\times 7 = 300 \\times 7 = 2.100$. $\\mathrm{G}$ môi trường = $\\mathrm{G} \\times 7 = 450 \\times 7 = 3.150$. $\\mathrm{N}$ môi trường = $2(\\mathrm{A} + \\mathrm{G}) \\times 7 = 10.500$ nucleotide."
+    },
+    {
+     "ma_cau": "K09110504032",
+     "loai": "tra_loi_ngan",
+     "de": "Một gene có $\\mathrm{A} = 420$ nucleotide, $\\mathrm{G} = 380$ nucleotide, tái bản (nhân đôi) liên tiếp 2 lần. Xác định số nucleotide mỗi loại ($\\mathrm{A}$, $\\mathrm{G}$) và tổng số nucleotide ($\\mathrm{N}$) mà môi trường nội bào cung cấp cho cả quá trình.",
+     "dap_an": "1260; 1140; 4800",
+     "loi_giai": "Qua 2 lần tái bản, hệ số nguyên liệu môi trường cung cấp là $(2^2 - 1) = 3$. $\\mathrm{A}$ môi trường = $\\mathrm{A} \\times 3 = 420 \\times 3 = 1.260$. $\\mathrm{G}$ môi trường = $\\mathrm{G} \\times 3 = 380 \\times 3 = 1.140$. $\\mathrm{N}$ môi trường = $2(\\mathrm{A} + \\mathrm{G}) \\times 3 = 4.800$ nucleotide."
+    },
+    {
+     "ma_cau": "K09110504035",
+     "loai": "tra_loi_ngan",
+     "de": "Một gene có A = 350 nucleotide, G = 600 nucleotide, tái bản (nhân đôi) liên tiếp 3 lần. Xác định số nucleotide mỗi loại (A, G) và tổng số nucleotide (N) mà môi trường nội bào cung cấp cho cả quá trình.",
+     "dap_an": "2450; 4200; 13300",
+     "loi_giai": "Qua 3 lần tái bản, hệ số nguyên liệu môi trường cung cấp là $(2^3 - 1) = 7$. A môi trường $= A \\times 7 = 350 \\times 7 = 2.450$. G môi trường $= G \\times 7 = 600 \\times 7 = 4.200$. N môi trường $= 2(A + G) \\times 7 = 13.300$ nucleotide."
+    },
+    {
+     "ma_cau": "K09110504033",
+     "loai": "tra_loi_ngan",
+     "de": "Một gene có $\\mathrm{A} = 260$ nucleotide, $\\mathrm{G} = 540$ nucleotide, tái bản (nhân đôi) liên tiếp 4 lần. Xác định số nucleotide mỗi loại ($\\mathrm{A}$, $\\mathrm{G}$) và tổng số nucleotide ($\\mathrm{N}$) mà môi trường nội bào cung cấp cho cả quá trình.",
+     "dap_an": "3900; 8100; 24000",
+     "loi_giai": "Qua 4 lần tái bản, hệ số nguyên liệu môi trường cung cấp là $(2^4 - 1) = 15$. $\\mathrm{A}$ môi trường = $\\mathrm{A} \\times 15 = 260 \\times 15 = 3.900$. $\\mathrm{G}$ môi trường = $\\mathrm{G} \\times 15 = 540 \\times 15 = 8.100$. $\\mathrm{N}$ môi trường = $2(\\mathrm{A} + \\mathrm{G}) \\times 15 = 24.000$ nucleotide."
+    },
+    {
+     "ma_cau": "K09110504034",
+     "loai": "tra_loi_ngan",
+     "de": "Một gene có $\\mathrm{A} = 500$ nucleotide, $\\mathrm{G} = 300$ nucleotide, tái bản (nhân đôi) liên tiếp 2 lần. Xác định số nucleotide mỗi loại ($\\mathrm{A}$, $\\mathrm{G}$) và tổng số nucleotide ($\\mathrm{N}$) mà môi trường nội bào cung cấp cho cả quá trình.",
+     "dap_an": "1500; 900; 4800",
+     "loi_giai": "Qua 2 lần tái bản, hệ số nguyên liệu môi trường cung cấp là $(2^2 - 1) = 3$. $\\mathrm{A}$ môi trường = $\\mathrm{A} \\times 3 = 500 \\times 3 = 1.500$. $\\mathrm{G}$ môi trường = $\\mathrm{G} \\times 3 = 300 \\times 3 = 900$. $\\mathrm{N}$ môi trường = $2(\\mathrm{A} + \\mathrm{G}) \\times 3 = 4.800$ nucleotide."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01304",
+   "nhom_id": "KNB00565",
+   "thu_tu": 6,
+   "dang": "CHO N, H, K, TÍNH NGUYÊN LIỆU MÔI TRƯỜNG VÀ LIÊN KẾT HYDROGEN BỊ PHÁ VỠ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110504039",
+     "loai": "tra_loi_ngan",
+     "de": "Một gene có $N = 1.200$ nucleotide, $H = 1.560$ liên kết hydrogen, tái bản (nhân đôi) liên tiếp 3 lần. Xác định tổng số nucleotide môi trường cung cấp và tổng số liên kết hydrogen bị phá vỡ qua cả quá trình.",
+     "dap_an": "8400; 10920",
+     "loi_giai": "Hệ số $(2^3 - 1) = 7$.\n$N$ môi trường $= N \\times 7 = 1.200 \\times 7 = 8.400$.\nTổng liên kết hydrogen bị phá vỡ $= H \\times 7 = 1.560 \\times 7 = 10.920$."
+    },
+    {
+     "ma_cau": "K09110504037",
+     "loai": "tra_loi_ngan",
+     "de": "Một gene có $N = 1.600$ nucleotide, $H = 2.050$ liên kết hydrogen, tái bản (nhân đôi) liên tiếp 2 lần. Xác định tổng số nucleotide môi trường cung cấp và tổng số liên kết hydrogen bị phá vỡ qua cả quá trình.",
+     "dap_an": "4800; 6150",
+     "loi_giai": "Hệ số $(2^2 - 1) = 3$.\n$N$ môi trường $= N \\times 3 = 1.600 \\times 3 = 4.800$.\nTổng liên kết hydrogen bị phá vỡ $= H \\times 3 = 2.050 \\times 3 = 6.150$."
+    },
+    {
+     "ma_cau": "K09110504040",
+     "loai": "tra_loi_ngan",
+     "de": "Một gene có $N = 2.400$ nucleotide, $H = 3.120$ liên kết hydrogen, tái bản (nhân đôi) liên tiếp 2 lần. Xác định tổng số nucleotide môi trường cung cấp và tổng số liên kết hydrogen bị phá vỡ qua cả quá trình.",
+     "dap_an": "7200; 9360",
+     "loi_giai": "Hệ số $(2^2 - 1) = 3$.\n$N$ môi trường $= N \\times 3 = 2.400 \\times 3 = 7.200$.\nTổng liên kết hydrogen bị phá vỡ $= H \\times 3 = 3.120 \\times 3 = 9.360$."
+    },
+    {
+     "ma_cau": "K09110504038",
+     "loai": "tra_loi_ngan",
+     "de": "Một gene có $N = 2.800$ nucleotide, $H = 3.640$ liên kết hydrogen, tái bản (nhân đôi) liên tiếp 4 lần. Xác định tổng số nucleotide môi trường cung cấp và tổng số liên kết hydrogen bị phá vỡ qua cả quá trình.",
+     "dap_an": "42000; 54600",
+     "loi_giai": "Hệ số $(2^4 - 1) = 15$.\n$N$ môi trường $= N \\times 15 = 2.800 \\times 15 = 42.000$.\nTổng liên kết hydrogen bị phá vỡ $= H \\times 15 = 3.640 \\times 15 = 54.600$."
+    },
+    {
+     "ma_cau": "K09110504036",
+     "loai": "tra_loi_ngan",
+     "de": "Một gene có $N = 2.000$ nucleotide, $H = 2.600$ liên kết hydrogen, tái bản (nhân đôi) liên tiếp 3 lần. Xác định tổng số nucleotide môi trường cung cấp và tổng số liên kết hydrogen bị phá vỡ qua cả quá trình.",
+     "dap_an": "14000; 18200",
+     "loi_giai": "Hệ số $(2^3 - 1) = 7$.\n$N$ môi trường $= N \\times 7 = 2.000 \\times 7 = 14.000$.\nTổng liên kết hydrogen bị phá vỡ $= H \\times 7 = 2.600 \\times 7 = 18.200$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01305",
+   "nhom_id": "KNB00565",
+   "thu_tu": 7,
+   "dang": "CHO NGUYÊN LIỆU MÔI TRƯỜNG VÀ K, TÍNH NGƯỢC N BAN ĐẦU",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110504045",
+     "loai": "tra_loi_ngan",
+     "de": "Một gene tái bản (nhân đôi) liên tiếp 3 lần, môi trường nội bào đã cung cấp tổng cộng 22.400 nucleotide. Xác định tổng số nucleotide (N) của gene ban đầu.",
+     "dap_an": "3200",
+     "loi_giai": "N môi trường $= \\mathrm{N} \\times (2^3 - 1) = \\mathrm{N} \\times 7$, suy ra $\\mathrm{N} = 22.400/7 = 3.200$ nucleotide."
+    },
+    {
+     "ma_cau": "K09110504043",
+     "loai": "tra_loi_ngan",
+     "de": "Một gene tái bản (nhân đôi) liên tiếp 4 lần, môi trường nội bào đã cung cấp tổng cộng 37.200 nucleotide. Xác định tổng số nucleotide (N) của gene ban đầu.",
+     "dap_an": "2480",
+     "loi_giai": "N môi trường $= \\mathrm{N} \\times (2^4 - 1) = \\mathrm{N} \\times 15$, suy ra $\\mathrm{N} = 37.200/15 = 2.480$ nucleotide."
+    },
+    {
+     "ma_cau": "K09110504042",
+     "loai": "tra_loi_ngan",
+     "de": "Một gene tái bản (nhân đôi) liên tiếp 2 lần, môi trường nội bào đã cung cấp tổng cộng 9.000 nucleotide. Xác định tổng số nucleotide (N) của gene ban đầu.",
+     "dap_an": "3000",
+     "loi_giai": "N môi trường $= \\mathrm{N} \\times (2^2 - 1) = \\mathrm{N} \\times 3$, suy ra $\\mathrm{N} = 9.000/3 = 3.000$ nucleotide."
+    },
+    {
+     "ma_cau": "K09110504041",
+     "loai": "tra_loi_ngan",
+     "de": "Một gene tái bản (nhân đôi) liên tiếp 3 lần, môi trường nội bào đã cung cấp tổng cộng 16.800 nucleotide. Xác định tổng số nucleotide (N) của gene ban đầu.",
+     "dap_an": "2400",
+     "loi_giai": "N môi trường $= \\mathrm{N} \\times (2^3 - 1) = \\mathrm{N} \\times 7$, suy ra $\\mathrm{N} = 16.800/7 = 2.400$ nucleotide."
+    },
+    {
+     "ma_cau": "K09110504044",
+     "loai": "tra_loi_ngan",
+     "de": "Một gene tái bản (nhân đôi) liên tiếp 2 lần, môi trường nội bào đã cung cấp tổng cộng 11.400 nucleotide. Xác định tổng số nucleotide (N) của gene ban đầu.",
+     "dap_an": "3800",
+     "loi_giai": "N môi trường $= \\mathrm{N} \\times (2^2 - 1) = \\mathrm{N} \\times 3$, suy ra $\\mathrm{N} = 11.400/3 = 3.800$ nucleotide."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01306",
+   "nhom_id": "KNB00565",
+   "thu_tu": 8,
+   "dang": "CHO SỐ GENE CON NGUYÊN LIỆU MỚI VÀ N, TÍNH K VÀ NGUYÊN LIỆU MÔI TRƯỜNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110504047",
+     "loai": "tra_loi_ngan",
+     "de": "Một gene có $N = 2.200$ nucleotide, tái bản (nhân đôi) liên tiếp một số lần, tạo ra $14$ gene con mang nguyên liệu hoàn toàn mới. Xác định số lần tái bản ($k$) và tổng số nucleotide môi trường đã cung cấp.",
+     "dap_an": "4; 33000",
+     "loi_giai": "Số gene con mang nguyên liệu hoàn toàn mới $= 2^k - 2 = 14$, suy ra $2^k = 16 = 2^4$, vậy $k = 4$. Tông số nucleotide môi trường đã cung cấp là $N \\times (2^k - 1) = 2.200 \\times 15 = 33.000$ nucleotide."
+    },
+    {
+     "ma_cau": "K09110504046",
+     "loai": "tra_loi_ngan",
+     "de": "Một gene có $N = 1.600$ nucleotide, tái bản (nhân đôi) liên tiếp một số lần, tạo ra $6$ gene con mang nguyên liệu hoàn toàn mới. Xác định số lần tái bản ($k$) và tổng số nucleotide môi trường đã cung cấp.",
+     "dap_an": "3; 11200",
+     "loi_giai": "Số gene con mang nguyên liệu hoàn toàn mới $= 2^k - 2 = 6$, suy ra $2^k = 8 = 2^3$, vậy $k = 3$. Tông số nucleotide môi trường đã cung cấp là $N \\times (2^k - 1) = 1.600 \\times 7 = 11.200$ nucleotide."
+    },
+    {
+     "ma_cau": "K09110504048",
+     "loai": "tra_loi_ngan",
+     "de": "Một gene có $N = 1.800$ nucleotide, tái bản (nhân đôi) liên tiếp một số lần, tạo ra $30$ gene con mang nguyên liệu hoàn toàn mới. Xác định số lần tái bản ($k$) và tổng số nucleotide môi trường đã cung cấp.",
+     "dap_an": "5; 55800",
+     "loi_giai": "Số gene con mang nguyên liệu hoàn toàn mới $= 2^k - 2 = 30$, suy ra $2^k = 32 = 2^5$, vậy $k = 5$. Tông số nucleotide môi trường đã cung cấp là $N \\times (2^k - 1) = 1.800 \\times 31 = 55.800$ nucleotide."
+    },
+    {
+     "ma_cau": "K09110504050",
+     "loai": "tra_loi_ngan",
+     "de": "Một gene có $N = 1.400$ nucleotide, tái bản (nhân đôi) liên tiếp một số lần, tạo ra $126$ gene con mang nguyên liệu hoàn toàn mới. Xác định số lần tái bản ($k$) và tổng số nucleotide môi trường đã cung cấp.",
+     "dap_an": "7; 177800",
+     "loi_giai": "Số gene con mang nguyên liệu hoàn toàn mới $= 2^k - 2 = 126$, suy ra $2^k = 128 = 2^7$, vậy $k = 7$. Tông số nucleotide môi trường đã cung cấp là $N \\times (2^k - 1) = 1.400 \\times 127 = 177.800$ nucleotide."
+    },
+    {
+     "ma_cau": "K09110504049",
+     "loai": "tra_loi_ngan",
+     "de": "Một gene có $N = 2.000$ nucleotide, tái bản (nhân đôi) liên tiếp một số lần, tạo ra $62$ gene con mang nguyên liệu hoàn toàn mới. Xác định số lần tái bản ($k$) và tổng số nucleotide môi trường đã cung cấp.",
+     "dap_an": "6; 126000",
+     "loi_giai": "Số gene con mang nguyên liệu hoàn toàn mới $= 2^k - 2 = 62$, suy ra $2^k = 64 = 2^6$, vậy $k = 6$. Tông số nucleotide môi trường đã cung cấp là $N \\times (2^k - 1) = 2.000 \\times 63 = 126.000$ nucleotide."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01307",
+   "nhom_id": "KNB00566",
+   "thu_tu": 1,
+   "dang": "CHO N, TÍNH SỐ RIBONUCLEOTIDE mRNA",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110505005",
+     "loai": "trac_nghiem",
+     "de": "Một gene có $\\mathrm{N} = 3.200$ nucleotide, thực hiện phiên mã tạo $\\mathrm{mRNA}$. Số ribonucleotide của phân tử $\\mathrm{mRNA}$ này là bao nhiêu?",
+     "lua_chon": [
+      "3.200 ribonucleotide.",
+      "800 ribonucleotide.",
+      "1.600 ribonucleotide.",
+      "6.400 ribonucleotide."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{mRNA}$ được tổng hợp từ một mạch khuôn của gene, có số ribonucleotide bằng số nucleotide của mạch khuôn. Số ribonucleotide của $\\mathrm{mRNA}$ = $\\mathrm{N}/2 = 3.200/2 = 1.600$."
+    },
+    {
+     "ma_cau": "K09110505006",
+     "loai": "trac_nghiem",
+     "de": "Một gene có $\\mathrm{N} = 2.400$ nucleotide, thực hiện phiên mã tạo $\\mathrm{mRNA}$. Số ribonucleotide của phân tử $\\mathrm{mRNA}$ này là bao nhiêu?",
+     "lua_chon": [
+      "1.200 ribonucleotide.",
+      "2.400 ribonucleotide.",
+      "600 ribonucleotide.",
+      "4.800 ribonucleotide."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{mRNA}$ được tổng hợp từ một mạch khuôn của gene, có số ribonucleotide bằng số nucleotide của mạch khuôn. Số ribonucleotide của $\\mathrm{mRNA}$ = $\\mathrm{N}/2 = 2.400/2 = 1.200$."
+    },
+    {
+     "ma_cau": "K09110505001",
+     "loai": "trac_nghiem",
+     "de": "Một gene có $\\mathrm{N} = 1.200$ nucleotide, thực hiện phiên mã tạo $\\mathrm{mRNA}$. Số ribonucleotide của phân tử $\\mathrm{mRNA}$ này là bao nhiêu?",
+     "lua_chon": [
+      "600 ribonucleotide.",
+      "1.200 ribonucleotide.",
+      "300 ribonucleotide.",
+      "2.400 ribonucleotide."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\mathrm{mRNA}$ được tổng hợp từ một mạch khuôn của gene, có số ribonucleotide bằng số nucleotide của mạch khuôn. Số ribonucleotide của $\\mathrm{mRNA} = \\mathrm{N}/2 = 1.200/2 = 600$."
+    },
+    {
+     "ma_cau": "K09110505002",
+     "loai": "trac_nghiem",
+     "de": "Một gene có $\\mathrm{N} = 2.000$ nucleotide, thực hiện phiên mã tạo $\\mathrm{mRNA}$. Số ribonucleotide của phân tử $\\mathrm{mRNA}$ này là bao nhiêu?",
+     "lua_chon": [
+      "2.000 ribonucleotide.",
+      "500 ribonucleotide.",
+      "1.000 ribonucleotide.",
+      "4.000 ribonucleotide."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\mathrm{mRNA}$ được tổng hợp từ một mạch khuôn của gene, có số ribonucleotide bằng số nucleotide của mạch khuôn. Số ribonucleotide của $\\mathrm{mRNA} = \\mathrm{N}/2 = 2.000/2 = 1.000$."
+    },
+    {
+     "ma_cau": "K09110505004",
+     "loai": "trac_nghiem",
+     "de": "Một gene có $\\mathrm{N} = 1.600$ nucleotide, thực hiện phiên mã tạo $\\mathrm{mRNA}$. Số ribonucleotide của phân tử $\\mathrm{mRNA}$ này là bao nhiêu?",
+     "lua_chon": [
+      "1.600 ribonucleotide.",
+      "400 ribonucleotide.",
+      "3.200 ribonucleotide.",
+      "800 ribonucleotide."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\mathrm{mRNA}$ được tổng hợp từ một mạch khuôn của gene, có số ribonucleotide bằng số nucleotide của mạch khuôn. Số ribonucleotide của $\\mathrm{mRNA}$ = $\\mathrm{N}/2 = 1.600/2 = 800$."
+    },
+    {
+     "ma_cau": "K09110505008",
+     "loai": "trac_nghiem",
+     "de": "Một gene có $\\mathrm{N} = 3.600$ nucleotide, thực hiện phiên mã tạo $\\mathrm{mRNA}$. Số ribonucleotide của phân tử $\\mathrm{mRNA}$ này là bao nhiêu?",
+     "lua_chon": [
+      "$3.600$ ribonucleotide.",
+      "$1.800$ ribonucleotide.",
+      "$900$ ribonucleotide.",
+      "$7.200$ ribonucleotide."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\mathrm{mRNA}$ được tổng hợp từ một mạch khuôn của gene, có số ribonucleotide bằng số nucleotide của mạch khuôn. Số ribonucleotide của $\\mathrm{mRNA} = \\mathrm{N}/2 = 3.600/2 = 1.800$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01308",
+   "nhom_id": "KNB00566",
+   "thu_tu": 2,
+   "dang": "CHO rN, TÍNH TỔNG SỐ NUCLEOTIDE N CỦA GENE",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110505012",
+     "loai": "trac_nghiem",
+     "de": "Một phân tử mRNA có 1.500 ribonucleotide, được phiên mã từ một gene. Tổng số nucleotide (N) của gene này là bao nhiêu?",
+     "lua_chon": [
+      "1.500 nucleotide.",
+      "6.000 nucleotide.",
+      "3.000 nucleotide.",
+      "750 nucleotide."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đáp án chi tiết: Số ribonucleotide của mRNA bằng số nucleotide của mạch khuôn, tức N/2. Vậy $N = 2 \\times 1.500 = 3.000$ nucleotide."
+    },
+    {
+     "ma_cau": "K09110505015",
+     "loai": "trac_nghiem",
+     "de": "Một phân tử mRNA có 2.100 ribonucleotide, được phiên mã từ một gene. Tổng số nucleotide (N) của gene này là bao nhiêu?",
+     "lua_chon": [
+      "2.100 nucleotide.",
+      "8.400 nucleotide.",
+      "4.200 nucleotide.",
+      "1.050 nucleotide."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Số ribonucleotide của mRNA bằng số nucleotide của mạch khuôn, tức N/2. Vậy N = $2 \\times 2.100 = 4.200$ nucleotide."
+    },
+    {
+     "ma_cau": "K09110505009",
+     "loai": "trac_nghiem",
+     "de": "Một phân tử $\\mathrm{mRNA}$ có 900 ribonucleotide, được phiên mã từ một gene. Tổng số nucleotide (N) của gene này là bao nhiêu?",
+     "lua_chon": [
+      "900 nucleotide.",
+      "3.600 nucleotide.",
+      "450 nucleotide.",
+      "1.800 nucleotide."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Số ribonucleotide của $\\mathrm{mRNA}$ bằng số nucleotide của mạch khuôn, tức $\\mathrm{N}/2$. Vậy $\\mathrm{N} = 2 \\times 900 = 1.800$ nucleotide."
+    },
+    {
+     "ma_cau": "K09110505014",
+     "loai": "trac_nghiem",
+     "de": "Một phân tử mRNA có 1.900 ribonucleotide, được phiên mã từ một gene. Tổng số nucleotide (N) của gene này là bao nhiêu?",
+     "lua_chon": [
+      "1.900 nucleotide.",
+      "7.600 nucleotide.",
+      "950 nucleotide.",
+      "3.800 nucleotide."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Số ribonucleotide của mRNA bằng số nucleotide của mạch khuôn, tức N/2. Vậy $N = 2 \\times 1.900 = 3.800$ nucleotide."
+    },
+    {
+     "ma_cau": "K09110505011",
+     "loai": "trac_nghiem",
+     "de": "Một phân tử $\\mathrm{mRNA}$ có 1.300 ribonucleotide, được phiên mã từ một gene. Tổng số nucleotide (N) của gene này là bao nhiêu?",
+     "lua_chon": [
+      "2.600 nucleotide.",
+      "1.300 nucleotide.",
+      "5.200 nucleotide.",
+      "650 nucleotide."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Số ribonucleotide của $\\mathrm{mRNA}$ bằng số nucleotide của mạch khuôn, tức $\\mathrm{N}/2$. Vậy $\\mathrm{N} = 2 \\times 1.300 = 2.600$ nucleotide."
+    },
+    {
+     "ma_cau": "K09110505016",
+     "loai": "trac_nghiem",
+     "de": "Một phân tử mRNA có 2.300 ribonucleotide, được phiên mã từ một gene. Tổng số nucleotide (N) của gene này là bao nhiêu?",
+     "lua_chon": [
+      "4.600 nucleotide.",
+      "2.300 nucleotide.",
+      "9.200 nucleotide.",
+      "1.150 nucleotide."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Số ribonucleotide của mRNA bằng số nucleotide của mạch khuôn, tức N/2. Vậy N = $2 \\times 2.300 = 4.600$ nucleotide."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01309",
+   "nhom_id": "KNB00566",
+   "thu_tu": 3,
+   "dang": "CHO rA, rU, TÍNH SỐ NUCLEOTIDE LOẠI A CỦA GENE",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110505017",
+     "loai": "trac_nghiem",
+     "de": "Một phân tử $\\mathrm{mRNA}$ có $300$ ribonucleotide loại $\\mathrm{A}$ và $250$ ribonucleotide loại $\\mathrm{U}$. Số nucleotide loại $\\mathrm{A}$ của gene tổng hợp ra $\\mathrm{mRNA}$ này là bao nhiêu?",
+     "lua_chon": [
+      "50 nucleotide.",
+      "600 nucleotide.",
+      "550 nucleotide.",
+      "250 nucleotide."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ribonucleotide $\\mathrm{A}$ của $\\mathrm{mRNA}$ bắt cặp với $\\mathrm{T}$ trên mạch khuôn, ribonucleotide $\\mathrm{U}$ bắt cặp với $\\mathrm{A}$ trên mạch khuôn. Vì vậy $\\mathrm{A(gene)} = \\mathrm{T(gene)} = \\mathrm{rA} + \\mathrm{rU} = 300 + 250 = 550$ nucleotide."
+    },
+    {
+     "ma_cau": "K09110505018",
+     "loai": "trac_nghiem",
+     "de": "Một phân tử $\\mathrm{mRNA}$ có $180$ ribonucleotide loại $\\mathrm{A}$ và $420$ ribonucleotide loại $\\mathrm{U}$. Số nucleotide loại $\\mathrm{A}$ của gene tổng hợp ra $\\mathrm{mRNA}$ này là bao nhiêu?",
+     "lua_chon": [
+      "240 nucleotide.",
+      "360 nucleotide.",
+      "420 nucleotide.",
+      "600 nucleotide."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ribonucleotide $\\mathrm{A}$ của $\\mathrm{mRNA}$ bắt cặp với $\\mathrm{T}$ trên mạch khuôn, ribonucleotide $\\mathrm{U}$ bắt cặp với $\\mathrm{A}$ trên mạch khuôn. Vì vậy $\\mathrm{A(gene)} = \\mathrm{T(gene)} = \\mathrm{rA} + \\mathrm{rU} = 180 + 420 = 600$ nucleotide."
+    },
+    {
+     "ma_cau": "K09110505020",
+     "loai": "trac_nghiem",
+     "de": "Một phân tử $\\mathrm{mRNA}$ có $220$ ribonucleotide loại $\\mathrm{A}$ và $340$ ribonucleotide loại $\\mathrm{U}$. Số nucleotide loại $\\mathrm{A}$ của gene tổng hợp ra $\\mathrm{mRNA}$ này là bao nhiêu?",
+     "lua_chon": [
+      "560 nucleotide.",
+      "120 nucleotide.",
+      "440 nucleotide.",
+      "340 nucleotide."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ribonucleotide $\\mathrm{A}$ của $\\mathrm{mRNA}$ bắt cặp với $\\mathrm{T}$ trên mạch khuôn, ribonucleotide $\\mathrm{U}$ bắt cặp với $\\mathrm{A}$ trên mạch khuôn. Vì vậy $\\mathrm{A}$ (gene) = $\\mathrm{T}$ (gene) = $\\mathrm{rA}$ + $\\mathrm{rU}$ = $220$ + $340$ = $560$ nucleotide."
+    },
+    {
+     "ma_cau": "K09110505023",
+     "loai": "trac_nghiem",
+     "de": "Một phân tử mRNA có 280 ribonucleotide loại A và 470 ribonucleotide loại U. Số nucleotide loại A của gene tổng hợp ra mRNA này là bao nhiêu?",
+     "lua_chon": [
+      "190 nucleotide.",
+      "750 nucleotide.",
+      "560 nucleotide.",
+      "470 nucleotide."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ribonucleotide A của mRNA bắt cặp với T trên mạch khuôn, ribonucleotide U bắt cặp với A trên mạch khuôn. Vì vậy $\\mathrm{A(gene)} = \\mathrm{T(gene)} = \\mathrm{rA} + \\mathrm{rU} = 280 + 470 = 750$"
+    },
+    {
+     "ma_cau": "K09110505021",
+     "loai": "trac_nghiem",
+     "de": "Một phân tử $\\mathrm{mRNA}$ có $410$ ribonucleotide loại $\\mathrm{A}$ và $170$ ribonucleotide loại $\\mathrm{U}$. Số nucleotide loại $\\mathrm{A}$ của gene tổng hợp ra $\\mathrm{mRNA}$ này là bao nhiêu?",
+     "lua_chon": [
+      "240 nucleotide.",
+      "820 nucleotide.",
+      "170 nucleotide.",
+      "580 nucleotide."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ribonucleotide $\\mathrm{A}$ của $\\mathrm{mRNA}$ bắt cặp với $\\mathrm{T}$ trên mạch khuôn, ribonucleotide $\\mathrm{U}$ bắt cặp với $\\mathrm{A}$ trên mạch khuôn. Vì vậy $\\mathrm{A}$ (gene) = $\\mathrm{T}$ (gene) = $\\mathrm{rA}$ + $\\mathrm{rU}$ = $410$ + $170$ = $580$ nucleotide."
+    },
+    {
+     "ma_cau": "K09110505019",
+     "loai": "trac_nghiem",
+     "de": "Một phân tử $\\mathrm{mRNA}$ có $350$ ribonucleotide loại $\\mathrm{A}$ và $150$ ribonucleotide loại $\\mathrm{U}$. Số nucleotide loại $\\mathrm{A}$ của gene tổng hợp ra $\\mathrm{mRNA}$ này là bao nhiêu?",
+     "lua_chon": [
+      "200 nucleotide.",
+      "500 nucleotide.",
+      "700 nucleotide.",
+      "150 nucleotide."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ribonucleotide $\\mathrm{A}$ của $\\mathrm{mRNA}$ bắt cặp với $\\mathrm{T}$ trên mạch khuôn, ribonucleotide $\\mathrm{U}$ bắt cặp với $\\mathrm{A}$ trên mạch khuôn. Vì vậy $\\mathrm{A(gene)} = \\mathrm{T(gene)} = \\mathrm{rA} + \\mathrm{rU} = 350 + 150 = 500$ nucleotide."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01310",
+   "nhom_id": "KNB00566",
+   "thu_tu": 4,
+   "dang": "CHO rG, rC, TÍNH SỐ NUCLEOTIDE LOẠI G CỦA GENE",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110505027",
+     "loai": "trac_nghiem",
+     "de": "Một phân tử mRNA có 370 ribonucleotide loại G và 240 ribonucleotide loại C. Số nucleotide loại G của gene tổng hợp ra mRNA này là bao nhiêu?",
+     "lua_chon": [
+      "130 nucleotide.",
+      "740 nucleotide.",
+      "610 nucleotide.",
+      "240 nucleotide."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Ribonucleotide G của mRNA bắt cặp với C trên mạch khuôn, ribonucleotide C bắt cặp với G trên mạch khuôn. Vì vậy $\\mathrm{G(gene) = C(gene) = rG + rC = 370 + 240 = 610}$ nucleotide."
+    },
+    {
+     "ma_cau": "K09110505025",
+     "loai": "trac_nghiem",
+     "de": "Một phân tử $\\mathrm{mRNA}$ có 400 ribonucleotide loại $\\mathrm{G}$ và 180 ribonucleotide loại $\\mathrm{C}$. Số nucleotide loại $\\mathrm{G}$ của gene tổng hợp ra $\\mathrm{mRNA}$ này là bao nhiêu?",
+     "lua_chon": [
+      "580 nucleotide.",
+      "220 nucleotide.",
+      "800 nucleotide.",
+      "180 nucleotide."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ribonucleotide $\\mathrm{G}$ của $\\mathrm{mRNA}$ bắt cặp với $\\mathrm{C}$ trên mạch khuôn, ribonucleotide $\\mathrm{C}$ bắt cặp với $\\mathrm{G}$ trên mạch khuôn. Vì vậy $\\mathrm{G(gene) = C(gene) = rG + rC = 400 + 180 = 580}$ nucleotide."
+    },
+    {
+     "ma_cau": "K09110505030",
+     "loai": "trac_nghiem",
+     "de": "Một phân tử $\\mathrm{mRNA}$ có $440$ ribonucleotide loại $\\mathrm{G}$ và $270$ ribonucleotide loại $\\mathrm{C}$. Số nucleotide loại $\\mathrm{G}$ của gene tổng hợp ra $\\mathrm{mRNA}$ này là bao nhiêu?",
+     "lua_chon": [
+      "$170$ nucleotide.",
+      "$710$ nucleotide.",
+      "$880$ nucleotide.",
+      "$270$ nucleotide."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ribonucleotide $\\mathrm{G}$ của $\\mathrm{mRNA}$ bắt cặp với $\\mathrm{C}$ trên mạch khuôn, ribonucleotide $\\mathrm{C}$ bắt cặp với $\\mathrm{G}$ trên mạch khuôn. Vì vậy $\\mathrm{G(gene) = C(gene) = rG + rC = 440 + 270 = 710}$ nucleotide."
+    },
+    {
+     "ma_cau": "K09110505028",
+     "loai": "trac_nghiem",
+     "de": "Một phân tử mRNA có 200 ribonucleotide loại G và 460 ribonucleotide loại C. Số nucleotide loại G của gene tổng hợp ra mRNA này là bao nhiêu?",
+     "lua_chon": [
+      "660 nucleotide.",
+      "260 nucleotide.",
+      "400 nucleotide.",
+      "460 nucleotide."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Ribonucleotide G của mRNA bắt cặp với C trên mạch khuôn, ribonucleotide C bắt cặp với G trên mạch khuôn. Vì vậy $\\mathrm{G(gene) = C(gene) = rG + rC = 200 + 460 = 660}$ nucleotide."
+    },
+    {
+     "ma_cau": "K09110505029",
+     "loai": "trac_nghiem",
+     "de": "Một phân tử mRNA có 320 ribonucleotide loại G và 140 ribonucleotide loại C. Số nucleotide loại G của gene tổng hợp ra mRNA này là bao nhiêu?",
+     "lua_chon": [
+      "180 nucleotide.",
+      "640 nucleotide.",
+      "140 nucleotide.",
+      "460 nucleotide."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ribonucleotide G của mRNA bắt cặp với C trên mạch khuôn, ribonucleotide C bắt cặp với G trên mạch khuôn. Vì vậy $\\mathrm{G(gene) = C(gene) = rG + rC = 320 + 140 = 460}$ nucleotide."
+    },
+    {
+     "ma_cau": "K09110505024",
+     "loai": "trac_nghiem",
+     "de": "Một phân tử $\\mathrm{mRNA}$ có 260 ribonucleotide loại $\\mathrm{G}$ và 510 ribonucleotide loại $\\mathrm{C}$. Số nucleotide loại $\\mathrm{G}$ của gene tổng hợp ra $\\mathrm{mRNA}$ này là bao nhiêu?",
+     "lua_chon": [
+      "250 nucleotide.",
+      "770 nucleotide.",
+      "520 nucleotide.",
+      "510 nucleotide."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ribonucleotide $\\mathrm{G}$ của $\\mathrm{mRNA}$ bắt cặp với $\\mathrm{C}$ trên mạch khuôn, ribonucleotide $\\mathrm{C}$ bắt cặp với $\\mathrm{G}$ trên mạch khuôn. Vì vậy $\\mathrm{G(gene) = C(gene) = rG + rC = 260 + 510 = 770}$ nucleotide."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01311",
+   "nhom_id": "KNB00566",
+   "thu_tu": 5,
+   "dang": "CHO ĐẦY ĐỦ rA, rU, rG, rC, TÍNH rN, N, L",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110505033",
+     "loai": "tra_loi_ngan",
+     "de": "Một phân tử $\\mathrm{mRNA}$ có 150 ribonucleotide loại A, 390 ribonucleotide loại U, 220 ribonucleotide loại G và 340 ribonucleotide loại C. Xác định tổng số ribonucleotide của $\\mathrm{mRNA}$ ($\\mathrm{rN}$), tổng số nucleotide ($\\mathrm{N}$) và chiều dài (L) của gene đã phiên mã ra $\\mathrm{mRNA}$ này.",
+     "dap_an": "rN = 1.100; N = 2.200; L = 3.740.0",
+     "loi_giai": "$\\mathrm{rN} = \\mathrm{rA} + \\mathrm{rU} + \\mathrm{rG} + \\mathrm{rC} = 150 + 390 + 220 + 340 = 1.100$. Vì $\\mathrm{mRNA}$ có số ribonucleotide bằng số nucleotide của mạch khuôn nên $\\mathrm{N} = 2 \\times \\mathrm{rN} = 2.200$. $\\mathrm{L} = (\\mathrm{N}/2) \\times 3,4 = 1.100 \\times 3,4 = 3.740.0 \\mathring{A}$."
+    },
+    {
+     "ma_cau": "K09110505032",
+     "loai": "tra_loi_ngan",
+     "de": "Một phân tử $\\mathrm{mRNA}$ có 340 ribonucleotide loại A, 180 ribonucleotide loại U, 260 ribonucleotide loại G và 270 ribonucleotide loại C. Xác định tổng số ribonucleotide của $\\mathrm{mRNA}$ ($\\mathrm{rN}$), tổng số nucleotide ($\\mathrm{N}$) và chiều dài (L) của gene đã phiên mã ra $\\mathrm{mRNA}$ này.",
+     "dap_an": "rN = 1.050; N = 2.100; L = 3.570.0",
+     "loi_giai": "$\\mathrm{rN} = \\mathrm{rA} + \\mathrm{rU} + \\mathrm{rG} + \\mathrm{rC} = 340 + 180 + 260 + 270 = 1.050$. Vì $\\mathrm{mRNA}$ có số ribonucleotide bằng số nucleotide của mạch khuôn nên $\\mathrm{N} = 2 \\times \\mathrm{rN} = 2.100$. $\\mathrm{L} = (\\mathrm{N}/2) \\times 3,4 = 1.050 \\times 3,4 = 3.570.0 \\mathring{A}$."
+    },
+    {
+     "ma_cau": "K09110505035",
+     "loai": "tra_loi_ngan",
+     "de": "Một phân tử $\\mathrm{mRNA}$ có 230 ribonucleotide loại A, 270 ribonucleotide loại U, 310 ribonucleotide loại G và 200 ribonucleotide loại C. Xác định tổng số ribonucleotide của $\\mathrm{mRNA}$ ($\\mathrm{rN}$), tổng số nucleotide ($\\mathrm{N}$) và chiều dài (L) của gene đã phiên mã ra $\\mathrm{mRNA}$ này.",
+     "dap_an": "rN = 1.010; N = 2.020; L = 3.434.0",
+     "loi_giai": "$\\mathrm{rN} = \\mathrm{rA} + \\mathrm{rU} + \\mathrm{rG} + \\mathrm{rC} = 230 + 270 + 310 + 200 = 1.010$. Vì $\\mathrm{mRNA}$ có số ribonucleotide bằng số nucleotide của mạch khuôn nên $\\mathrm{N} = 2 \\times \\mathrm{rN} = 2.020$. $\\mathrm{L} = (\\mathrm{N}/2) \\times 3,4 = 1.010 \\times 3,4 = 3.434.0 \\mathring{A}$."
+    },
+    {
+     "ma_cau": "K09110505031",
+     "loai": "tra_loi_ngan",
+     "de": "Một phân tử $\\mathrm{mRNA}$ có 280 ribonucleotide loại A, 220 ribonucleotide loại U, 190 ribonucleotide loại G và 310 ribonucleotide loại C. Xác định tổng số ribonucleotide của $\\mathrm{mRNA}$ ($\\mathrm{rN}$), tổng số nucleotide ($\\mathrm{N}$) và chiều dài (L) của gene đã phiên mã ra $\\mathrm{mRNA}$ này.",
+     "dap_an": "rN = 1.000; N = 2.000; L = 3.400.0",
+     "loi_giai": "$\\mathrm{rN} = \\mathrm{rA} + \\mathrm{rU} + \\mathrm{rG} + \\mathrm{rC} = 280 + 220 + 190 + 310 = 1.000$. Vì $\\mathrm{mRNA}$ có số ribonucleotide bằng số nucleotide của mạch khuôn nên $\\mathrm{N} = 2 \\times \\mathrm{rN} = 2.000$. $\\mathrm{L} = (\\mathrm{N}/2) \\times 3,4 = 1.000 \\times 3,4 = 3.400.0 \\mathring{A}$."
+    },
+    {
+     "ma_cau": "K09110505034",
+     "loai": "tra_loi_ngan",
+     "de": "Một phân tử $\\mathrm{mRNA}$ có 410 ribonucleotide loại A, 160 ribonucleotide loại U, 180 ribonucleotide loại G và 270 ribonucleotide loại C. Xác định tổng số ribonucleotide của $\\mathrm{mRNA}$ ($\\mathrm{rN}$), tổng số nucleotide ($\\mathrm{N}$) và chiều dài (L) của gene đã phiên mã ra $\\mathrm{mRNA}$ này.",
+     "dap_an": "rN = 1.020; N = 2.040; L = 3.468.0",
+     "loi_giai": "$\\mathrm{rN} = \\mathrm{rA} + \\mathrm{rU} + \\mathrm{rG} + \\mathrm{rC} = 410 + 160 + 180 + 270 = 1.020$. Vì $\\mathrm{mRNA}$ có số ribonucleotide bằng số nucleotide của mạch khuôn nên $\\mathrm{N} = 2 \\times \\mathrm{rN} = 2.040$. $\\mathrm{L} = (\\mathrm{N}/2) \\times 3,4 = 1.020 \\times 3,4 = 3.468.0 \\mathring{A}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01312",
+   "nhom_id": "KNB00566",
+   "thu_tu": 6,
+   "dang": "CHO CHIỀU DÀI mRNA, TÍNH NGƯỢC rN VÀ N",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110505040",
+     "loai": "tra_loi_ngan",
+     "de": "Một gene có $N = 3.000$ nucleotide, trong đó A chiếm $9\\%$ tổng số nucleotide, phiên mã tạo ra mRNA có $150$ ribonucleotide loại A. Xác định số nucleotide loại A, loại G của gene và số ribonucleotide loại U của mRNA.",
+     "dap_an": "270; 1230; 120",
+     "loi_giai": "$A(gene) = N \\times \\%A = 3.000 \\times 9\\% = 270$. $G(gene) = N/2 - A = 3.000/2 - 270 = 1.230$. Và $A(gene) = rA + rU$ nên $rU = A(gene) - rA = 270 - 150 = 120$ ribonucleotide."
+    },
+    {
+     "ma_cau": "K09110505036",
+     "loai": "tra_loi_ngan",
+     "de": "Một gene có $N = 2.000$ nucleotide, trong đó A chiếm $15\\%$ tổng số nucleotide, phiên mã tạo ra mRNA có $180$ ribonucleotide loại A. Xác định số nucleotide loại A, loại G của gene và số ribonucleotide loại U của mRNA.",
+     "dap_an": "300; 700; 120",
+     "loi_giai": "$A(gene) = N \\times \\%A = 2.000 \\times 15\\% = 300$. $G(gene) = N/2 - A = 2.000/2 - 300 = 700$.\nVà $A(gene) = rA + rU$ nên $rU = A(gene) - rA = 300 - 180 = 120$ ribonucleotide."
+    },
+    {
+     "ma_cau": "K09110505038",
+     "loai": "tra_loi_ngan",
+     "de": "Một gene có $N = 2.400$ nucleotide, trong đó A chiếm $17\\%$ tổng số nucleotide, phiên mã tạo ra mRNA có $200$ ribonucleotide loại A. Xác định số nucleotide loại A, loại G của gene và số ribonucleotide loại U của mRNA.",
+     "dap_an": "408; 792; 208",
+     "loi_giai": "$A(gene) = N \\times \\%A = 2.400 \\times 17\\% = 408$. $G(gene) = N/2 - A = 2.400/2 - 408 = 792$.\nVà $A(gene) = rA + rU$ nên $rU = A(gene) - rA = 408 - 200 = 208$ ribonucleotide."
+    },
+    {
+     "ma_cau": "K09110505037",
+     "loai": "tra_loi_ngan",
+     "de": "Một gene có $N = 1.800$ nucleotide, trong đó A chiếm $22\\%$ tổng số nucleotide, phiên mã tạo ra mRNA có $250$ ribonucleotide loại A. Xác định số nucleotide loại A, loại G của gene và số ribonucleotide loại U của mRNA.",
+     "dap_an": "396; 504; 146",
+     "loi_giai": "Đáp án chi tiết: $A(gene) = N \\times \\%A = 1.800 \\times 22\\% = 396$. $G(gene) = N/2 - A = 1.800/2 - 396 = 504$.\nVà $A(gene) = rA + rU$ nên $rU = A(gene) - rA = 396 - 250 = 146$ ribonucleotide."
+    },
+    {
+     "ma_cau": "K09110505039",
+     "loai": "tra_loi_ngan",
+     "de": "Một gene có $N = 1.600$ nucleotide, trong đó A chiếm $31\\%$ tổng số nucleotide, phiên mã tạo ra mRNA có $300$ ribonucleotide loại A. Xác định số nucleotide loại A, loại G của gene và số ribonucleotide loại U của mRNA.",
+     "dap_an": "496; 304; 196",
+     "loi_giai": "$A(gene) = N \\times \\%A = 1.600 \\times 31\\% = 496$. $G(gene) = N/2 - A = 1.600/2 - 496 = 304$.\nVà $A(gene) = rA + rU$ nên $rU = A(gene) - rA = 496 - 300 = 196$ ribonucleotide."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01313",
+   "nhom_id": "KNB00566",
+   "thu_tu": 7,
+   "dang": "CHO CHIỀU DÀI mRNA, TÍNH NGƯỢC rN VÀ N",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110505042",
+     "loai": "trac_nghiem",
+     "de": "Một phân tử $\\mathrm{mRNA}$ có chiều dài $\\mathrm{L} = 4.590$ $\\mathring{A}$. Xác định số ribonucleotide (rN) của $\\mathrm{mRNA}$ và tổng số nucleotide (N) của gene đã phiên mã ra $\\mathrm{mRNA}$ này.",
+     "lua_chon": [
+      "rN = 1.000; N = 2.000",
+      "rN = 1.350; N = 2.700",
+      "rN = 800; N = 1.600",
+      "rN = 1.500; N = 3.000"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Vì $\\mathrm{mRNA}$ có chiều dài bằng chiều dài gene nên $\\mathrm{rN} = \\mathrm{L}/3,4 = 4.590/3,4 = 1.350$. $\\mathrm{N} = 2 \\times \\mathrm{rN} = 2 \\times 1.350 = 2.700$."
+    },
+    {
+     "ma_cau": "K09110505043",
+     "loai": "trac_nghiem",
+     "de": "Một phân tử $\\mathrm{mRNA}$ có chiều dài $\\mathrm{L} = 2.720$ $\\mathring{A}$. Xác định số ribonucleotide (rN) của $\\mathrm{mRNA}$ và tổng số nucleotide (N) của gene đã phiên mã ra $\\mathrm{mRNA}$ này.",
+     "lua_chon": [
+      "rN = 1.000; N = 2.000",
+      "rN = 1.350; N = 2.700",
+      "rN = 800; N = 1.600",
+      "rN = 1.500; N = 3.000"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Vì $\\mathrm{mRNA}$ có chiều dài bằng chiều dài gene nên $\\mathrm{rN} = \\mathrm{L}/3,4 = 2.720/3,4 = 800$. $\\mathrm{N} = 2 \\times \\mathrm{rN} = 2 \\times 800 = 1.600$."
+    },
+    {
+     "ma_cau": "K09110505041",
+     "loai": "trac_nghiem",
+     "de": "Một phân tử $\\mathrm{mRNA}$ có chiều dài $\\mathrm{L} = 3.400$ $\\mathring{A}$. Xác định số ribonucleotide (rN) của $\\mathrm{mRNA}$ và tổng số nucleotide (N) của gene đã phiên mã ra $\\mathrm{mRNA}$ này.",
+     "lua_chon": [
+      "rN = 1.000; N = 2.000",
+      "rN = 1.350; N = 2.700",
+      "rN = 800; N = 1.600",
+      "rN = 1.500; N = 3.000"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Vì $\\mathrm{mRNA}$ có chiều dài bằng chiều dài gene nên $\\mathrm{rN} = \\mathrm{L}/3,4 = 3.400/3,4 = 1.000$. $\\mathrm{N} = 2 \\times \\mathrm{rN} = 2 \\times 1.000 = 2.000$."
+    },
+    {
+     "ma_cau": "K09110505045",
+     "loai": "trac_nghiem",
+     "de": "Một phân tử $\\mathrm{mRNA}$ có chiều dài $\\mathrm{L} = 3.910$ $\\mathring{A}$. Xác định số ribonucleotide (rN) của $\\mathrm{mRNA}$ và tổng số nucleotide (N) của gene đã phiên mã ra $\\mathrm{mRNA}$ này.",
+     "lua_chon": [
+      "rN = 1.150; N = 2.300",
+      "rN = 1.000; N = 2.000",
+      "rN = 1.350; N = 2.700",
+      "rN = 800; N = 1.600"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Vì $\\mathrm{mRNA}$ có chiều dài bằng chiều dài gene nên $\\mathrm{rN} = \\mathrm{L}/3,4 = 3.910/3,4 = 1.150$. $\\mathrm{N} = 2 \\times \\mathrm{rN} = 2 \\times 1.150 = 2.300$."
+    },
+    {
+     "ma_cau": "K09110505044",
+     "loai": "trac_nghiem",
+     "de": "Một phân tử $\\mathrm{mRNA}$ có chiều dài $\\mathrm{L} = 5.100$ $\\mathring{A}$. Xác định số ribonucleotide (rN) của $\\mathrm{mRNA}$ và tổng số nucleotide (N) của gene đã phiên mã ra $\\mathrm{mRNA}$ này.",
+     "lua_chon": [
+      "rN = 1.000; N = 2.000",
+      "rN = 1.350; N = 2.700",
+      "rN = 800; N = 1.600",
+      "rN = 1.500; N = 3.000"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Vì $\\mathrm{mRNA}$ có chiều dài bằng chiều dài gene nên $\\mathrm{rN} = \\mathrm{L}/3,4 = 5.100/3,4 = 1.500$. $\\mathrm{N} = 2 \\times \\mathrm{rN} = 2 \\times 1.500 = 3.000$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01314",
+   "nhom_id": "KNB00566",
+   "thu_tu": 8,
+   "dang": "CHO rN VÀ BA TỈ LỆ %rA, %rU, %rG, TÍNH CẢ BỐN LOẠI RIBONUCLEOTIDE",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09110505049",
+     "loai": "tra_loi_ngan",
+     "de": "Một phân tử mRNA có $1.800$ ribonucleotide, trong đó ribonucleotide loại A chiếm $25\\%$, loại U chiếm $15\\%$, loại G chiếm $35\\%$ tổng số ribonucleotide. Xác định số ribonucleotide mỗi loại (A, U, G, C) của mRNA này.",
+     "dap_an": "rA = 450; rU = 270; rG = 630; rC = 450",
+     "loi_giai": "$rA = rN \\times 25\\% = 450$. $rU = rN \\times 15\\% = 270$. $rG = rN \\times 35\\% = 630$. Vì bốn loại ribonucleotide của mRNA không tuân theo nguyên tắc bổ sung nội tại như ADN (mRNA chỉ có một mạch), nên $rC = rN - rA - rU - rG = 1.800 - 450 - 270 - 630 = 450$ ribonucleotide (tỉ lệ $25\\%$)."
+    },
+    {
+     "ma_cau": "K09110505048",
+     "loai": "tra_loi_ngan",
+     "de": "Một phân tử mRNA có $2.400$ ribonucleotide, trong đó ribonucleotide loại A chiếm $10\\%$, loại U chiếm $35\\%$, loại G chiếm $25\\%$ tổng số ribonucleotide. Xác định số ribonucleotide mỗi loại (A, U, G, C) của mRNA này.",
+     "dap_an": "rA = 240; rU = 840; rG = 600; rC = 720",
+     "loi_giai": "$rA = rN \\times 10\\% = 240$. $rU = rN \\times 35\\% = 840$. $rG = rN \\times 25\\% = 600$. Vì bốn loại ribonucleotide của mRNA không tuân theo nguyên tắc bổ sung nội tại như ADN (mRNA chỉ có một mạch), nên $rC = rN - rA - rU - rG = 2.400 - 240 - 840 - 600 = 720$ ribonucleotide (tỉ lệ $30\\%$)."
+    },
+    {
+     "ma_cau": "K09110505050",
+     "loai": "tra_loi_ngan",
+     "de": "Một phân tử mRNA có $2.200$ ribonucleotide, trong đó ribonucleotide loại A chiếm $20\\%$, loại U chiếm $20\\%$, loại G chiếm $40\\%$ tổng số ribonucleotide. Xác định số ribonucleotide mỗi loại (A, U, G, C) của mRNA này.",
+     "dap_an": "rA = 440; rU = 440; rG = 880; rC = 440",
+     "loi_giai": "$rA = rN \\times 20\\% = 440$. $rU = rN \\times 20\\% = 440$. $rG = rN \\times 40\\% = 880$. Vì bốn loại ribonucleotide của mRNA không tuân theo nguyên tắc bổ sung nội tại như ADN (mRNA chỉ có một mạch), nên $rC = rN - rA - rU - rG = 2.200 - 440 - 440 - 880 = 440$ ribonucleotide (tỉ lệ $20\\%$)."
+    },
+    {
+     "ma_cau": "K09110505047",
+     "loai": "tra_loi_ngan",
+     "de": "Một phân tử mRNA có $1.600$ ribonucleotide, trong đó ribonucleotide loại A chiếm $20\\%$, loại U chiếm $30\\%$, loại G chiếm $20\\%$ tổng số ribonucleotide. Xác định số ribonucleotide mỗi loại (A, U, G, C) của mRNA này.",
+     "dap_an": "rA = 320; rU = 480; rG = 320; rC = 480",
+     "loi_giai": "$rA = rN \\times 20\\% = 320$. $rU = rN \\times 30\\% = 480$. $rG = rN \\times 20\\% = 320$. Vì bốn loại ribonucleotide của mRNA không tuân theo nguyên tắc bổ sung nội tại như ADN (mRNA chỉ có một mạch), nên $rC = rN - rA - rU - rG = 1.600 - 320 - 480 - 320 = 480$ ribonucleotide (tỉ lệ $30\\%$)."
+    },
+    {
+     "ma_cau": "K09110505046",
+     "loai": "tra_loi_ngan",
+     "de": "Một phân tử mRNA có $2.000$ ribonucleotide, trong đó ribonucleotide loại A chiếm $15\\%$, loại U chiếm $25\\%$, loại G chiếm $30\\%$ tổng số ribonucleotide. Xác định số ribonucleotide mỗi loại (A, U, G, C) của mRNA này.",
+     "dap_an": "rA = 300; rU = 500; rG = 600; rC = 600",
+     "loi_giai": "$rA = rN \\times 15\\% = 300$. $rU = rN \\times 25\\% = 500$. $rG = rN \\times 30\\% = 600$. Vì bốn loại ribonucleotide của mRNA không tuân theo nguyên tắc bổ sung nội tại như ADN (mRNA chỉ có một mạch), nên $rC = rN - rA - rU - rG = 2.000 - 300 - 500 - 600 = 600$ ribonucleotide (tỉ lệ $30\\%$)."
+    }
+   ]
+  }
+ ]
+}

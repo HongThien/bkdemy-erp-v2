@@ -1,0 +1,2334 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00445",
+   "khoi": "9",
+   "chu_de": "Quang học",
+   "chuyen_de": "Khúc xạ ánh sáng",
+   "nhom": "Ứng dụng thực tế của hiện tượng khúc xạ ánh sáng",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "Mục tiêu: Dùng hiện tượng khúc xạ để giải thích các ảo ảnh quang học trong tự nhiên.\nCác bước tư duy giải thích:\nBước 1: Khẳng định ánh sáng đi từ vật qua 2 môi trường trong suốt khác nhau (VD: Nước ra không khí) nên bị khúc xạ (gãy khúc).\nBước 2: Mắt người luôn có cảm giác ánh sáng truyền thẳng. Mắt nhìn thấy vật ở vị trí giao điểm của đường kéo dài tia khúc xạ.\nBước 3: Kết luận vị trí ta nhìn thấy (ảnh) bị lệch so với vị trí thực tế của vật.\nVí dụ minh họa: Giải thích hiện tượng \"Ảo ảnh sa mạc\" (thấy vũng nước trên mặt đường nhựa vào mùa hè nắng gắt).\nHướng dẫn giải\nVào mùa hè, lớp không khí sát mặt đường rất nóng (chiết suất nhỏ), lớp không khí trên cao lạnh hơn (chiết suất lớn). Ánh sáng từ bầu trời truyền xuống bị khúc xạ liên tục qua các lớp không khí này và cuối cùng bị phản xạ toàn phần hắt vào mắt ta. Mắt ta nhìn theo đường kéo dài của tia sáng nên thấy hình ảnh của bầu trời (màu xanh, lung linh) nằm ở dưới mặt đường, tạo ra ảo giác giống như một vũng nước.",
+   "can_dien_ly_thuyet_nhom": false
+  },
+  {
+   "nhom_id": "KNB00447",
+   "khoi": "9",
+   "chu_de": "Quang học",
+   "chuyen_de": "Khúc xạ ánh sáng",
+   "nhom": "TÍNH GÓC KHÚC XẠ KHI BIẾT GÓC TỚI VÀ CHIẾT SUẤT",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true
+  },
+  {
+   "nhom_id": "KNB00448",
+   "khoi": "9",
+   "chu_de": "Quang học",
+   "chuyen_de": "Khúc xạ ánh sáng",
+   "nhom": "TÍNH GÓC TỚI KHI BIẾT GÓC KHÚC XẠ VÀ CHIẾT SUẤT",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true
+  },
+  {
+   "nhom_id": "KNB00449",
+   "khoi": "9",
+   "chu_de": "Quang học",
+   "chuyen_de": "Khúc xạ ánh sáng",
+   "nhom": "TÍNH TỐC ĐỘ ÁNH SÁNG KHI BIẾT CHIẾT SUẤT",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true
+  }
+ ],
+ "dang_bai": [
+  {
+   "dang_id": "KDB01131",
+   "nhom_id": "KNB00445",
+   "thu_tu": 1,
+   "dang": "GIẢI THÍCH CÁC HIỆN TƯỢNG QUAN SÁT ĐƯỢC",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020106007",
+     "loai": "trac_nghiem",
+     "de": "Nhìn thẳng theo phương vuông góc với mặt nước xuống một viên sỏi nằm dưới đáy bể. Nhận định đúng là",
+     "lua_chon": [
+      "viên sỏi được nhìn thấy đúng phương thẳng đứng nhưng ở độ sâu nhỏ hơn độ sâu thật.",
+      "viên sỏi được nhìn thấy lệch ngang so với vị trí thật.",
+      "viên sỏi được nhìn thấy đúng vị trí thật cả về phương lẫn độ sâu.",
+      "không nhìn thấy viên sỏi vì tia sáng không khúc xạ được."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Khi nhìn vuông góc, góc tới bằng $0^\\circ$ nên tia sáng truyền thẳng, không bị dịch ngang. Tuy vậy các tia sáng lân cận vẫn khúc xạ, khiến độ sâu nhìn thấy nhỏ hơn độ sâu thật."
+    },
+    {
+     "ma_cau": "K09020106008",
+     "loai": "trac_nghiem",
+     "de": "Khi đâm cá dưới nước bằng lao, người có kinh nghiệm thường nhắm vào vị trí thấp hơn chỗ nhìn thấy con cá. Lí do là",
+     "lua_chon": [
+      "con cá luôn bơi xuống khi thấy lao.",
+      "lao bị nước làm chệch hướng khi đâm xuống.",
+      "do khúc xạ ánh sáng, con cá được nhìn thấy ở vị trí cao hơn vị trí thật.",
+      "ánh sáng trong nước truyền chậm nên hình ảnh bị trễ."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Vị trí nhìn thấy là ảnh của con cá, luôn nằm cao hơn con cá thật. Muốn trúng, phải nhắm xuống dưới ảnh đó."
+    },
+    {
+     "ma_cau": "K09020106004",
+     "loai": "trac_nghiem",
+     "de": "Đặt một đồng xu dưới đáy chậu, lùi ra xa đến khi vừa không nhìn thấy đồng xu nữa. Giữ nguyên vị trí mắt và đổ nước vào chậu thì lại nhìn thấy đồng xu. Nguyên nhân là",
+     "lua_chon": [
+      "Nước đẩy đồng xu dịch lại gần mắt.",
+      "Nước phản xạ ánh sáng từ đồng xu tới mắt.",
+      "Ánh sáng từ đồng xu khi đi ra không khí bị khúc xạ lệch xa pháp tuyến, nhờ đó lọt được tới mắt.",
+      "Nước làm đồng xu phát sáng mạnh hơn."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Khi chưa có nước, tia sáng từ đồng xu bị thành chậu chắn lại. Khi có nước, tia sáng khúc xạ tại mặt nước, đổi hướng và vượt qua được mép chậu để tới mắt."
+    },
+    {
+     "ma_cau": "K09020106006",
+     "loai": "trac_nghiem",
+     "de": "Một người lặn dưới nước nhìn lên phía trên. So với vị trí thật, người trên bờ mà người lặn nhìn thấy sẽ ở vị trí",
+     "lua_chon": [
+      "thấp hơn vị trí thật.",
+      "trùng với vị trí thật.",
+      "lệch sang phải vị trí thật.",
+      "cao hơn vị trí thật."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ánh sáng từ người trên bờ đi từ không khí vào nước bị khúc xạ lệch lại gần pháp tuyến. Người lặn nhìn theo phương tia khúc xạ nên thấy người trên bờ ở vị trí cao hơn thực tế."
+    },
+    {
+     "ma_cau": "K09020106002",
+     "loai": "trac_nghiem",
+     "de": "Đứng trên bờ nhìn xuống một bể bơi, ta thấy đáy bể nông hơn độ sâu thật. Nguyên nhân là",
+     "lua_chon": [
+      "nước làm đáy bể nổi lên cao.",
+      "lớp nước phía trên che khuất một phần đáy bể.",
+      "ánh sáng truyền trong nước chậm hơn nên đến mắt muộn hơn.",
+      "ánh sáng từ đáy bể khi ra không khí bị khúc xạ lệch xa pháp tuyến, mắt nhìn theo phương tia ló nên thấy đáy bể ở vị trí cao hơn."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Mắt nhận tia ló và quy chiếu ngược theo phương của tia ló đó. Giao điểm của các phương này nằm cao hơn đáy bể thật, nên đáy bể được nhìn thấy nông hơn."
+    },
+    {
+     "ma_cau": "K09020106001",
+     "loai": "trac_nghiem",
+     "de": "Cắm một chiếc đũa nghiêng vào cốc nước, nhìn từ ngoài vào ta thấy chiếc đũa như bị gãy khúc ngay tại mặt nước. Nguyên nhân là",
+     "lua_chon": [
+      "nước làm chiếc đũa bị cong đi.",
+      "ánh sáng từ phần đũa trong nước bị khúc xạ khi đi ra không khí, làm phần đũa đó được nhìn thấy ở vị trí lệch đi.",
+      "ánh sáng bị nước hấp thu một phần nên hình ảnh bị đứt đoạn.",
+      "mắt người không nhìn rõ vật ở dưới nước."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Phần đũa trên mặt nước được nhìn qua không khí, phần dưới nước được nhìn qua tia sáng đã khúc xạ nên lệch vị trí. Hai phần không nối liền nhau tạo cảm giác gãy khúc. Bản thân chiếc đũa không hề thay đổi hình dạng."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01132",
+   "nhom_id": "KNB00445",
+   "thu_tu": 2,
+   "dang": "TÍNH ĐỘ SÂU BIỂU KIẾN CỦA BỂ NƯỚC",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020106010",
+     "loai": "trac_nghiem",
+     "de": "Một bể nước sâu 160 cm, chiết suất của nước bằng 4/3. Nhìn gần vuông góc với mặt nước, độ sâu nhìn thấy của bể bằng",
+     "lua_chon": [
+      "160 cm.",
+      "213 cm.",
+      "40 cm.",
+      "120 cm."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Độ sâu nhìn thấy: $h' = 160 \\cdot 3/4 = 120$ cm."
+    },
+    {
+     "ma_cau": "K09020106015",
+     "loai": "trac_nghiem",
+     "de": "Một bể nước sâu 140 cm, chiết suất của nước bằng 4/3. Nhìn gần vuông góc với mặt nước, độ sâu nhìn thấy của bể bằng",
+     "lua_chon": [
+      "105 cm.",
+      "140 cm.",
+      "187 cm.",
+      "35 cm."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đáp án chi tiết: $h' = 140 \\cdot 3/4 = 105$ cm."
+    },
+    {
+     "ma_cau": "K09020106014",
+     "loai": "trac_nghiem",
+     "de": "Một chậu nước sâu 100 cm, chiết suất của nước bằng 4/3. Nhìn gần vuông góc với mặt nước, độ sâu nhìn thấy của chậu bằng",
+     "lua_chon": [
+      "100 cm.",
+      "133 cm.",
+      "25 cm.",
+      "75 cm."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đáp án chi tiết: $h' = 100 \\cdot 3/4 = 75$ cm."
+    },
+    {
+     "ma_cau": "K09020106016",
+     "loai": "trac_nghiem",
+     "de": "Một bể nước sâu 180 cm, chiết suất của nước bằng 4/3. Nhìn gần vuông góc với mặt nước, độ sâu nhìn thấy của bể bằng",
+     "lua_chon": [
+      "180 cm.",
+      "240 cm.",
+      "135 cm.",
+      "45 cm."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đáp án chi tiết: $h' = 180 \\cdot 3/4 = 135$ cm."
+    },
+    {
+     "ma_cau": "K09020106013",
+     "loai": "trac_nghiem",
+     "de": "Một bể nước sâu 240 cm, chiết suất của nước bằng 4/3. Nhìn gần vuông góc với mặt nước, độ sâu nhìn thấy của bể bằng",
+     "lua_chon": [
+      "240 cm.",
+      "180 cm.",
+      "320 cm.",
+      "60 cm."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đáp án chi tiết: $h' = 240 \\cdot 3/4 = 180$ cm."
+    },
+    {
+     "ma_cau": "K09020106009",
+     "loai": "trac_nghiem",
+     "de": "Một bể nước sâu 120 cm, chiết suất của nước bằng 4/3. Nhìn gần vuông góc với mặt nước, độ sâu nhìn thấy của bể bằng",
+     "lua_chon": [
+      "120 cm.",
+      "90 cm.",
+      "160 cm.",
+      "30 cm."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Độ sâu nhìn thấy: $h' = h / n = 120 : (4/3) = 90$ cm. Phương án $160$ cm là kết quả của việc nhân thay vì chia, cho độ sâu nhìn thấy lớn hơn độ sâu thật, trái với hiện tượng."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01133",
+   "nhom_id": "KNB00445",
+   "thu_tu": 3,
+   "dang": "TÍNH ĐỘ NÂNG CỦA ẢNH SO VỚI ĐÁY",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020106017",
+     "loai": "tra_loi_ngan",
+     "de": "Một chậu chứa chất lỏng chiết suất $1,5$, mực chất lỏng cao $90 \\, \\mathrm{cm}$. Nhìn gần vuông góc với mặt chất lỏng, ảnh của đáy chậu được nâng lên so với đáy thật một đoạn bằng",
+     "lua_chon": [
+      "60 cm.",
+      "90 cm.",
+      "45 cm.",
+      "30 cm."
+     ],
+     "dap_an": "30",
+     "loi_giai": "Độ sâu biểu kiến: $h' = 90 / 1,5 = 60 \\, \\mathrm{cm}$.\nĐộ nâng $\\Delta h = 90 - 60 = 30 \\, \\mathrm{cm}$.\nPhương án $60 \\, \\mathrm{cm}$ là độ sâu nhìn thấy, không phải độ nâng."
+    },
+    {
+     "ma_cau": "K09020106018",
+     "loai": "tra_loi_ngan",
+     "de": "Một chậu chứa chất lỏng chiết suất $1,5$, mực chất lỏng cao $150 \\, \\mathrm{cm}$. Nhìn gần vuông góc với mặt chất lỏng, ảnh của đáy chậu được nâng lên so với đáy thật một đoạn bằng",
+     "lua_chon": [
+      "100 cm.",
+      "50 cm.",
+      "150 cm.",
+      "75 cm."
+     ],
+     "dap_an": "50",
+     "loi_giai": "$h' = 150 / 1,5 = 100 \\, \\mathrm{cm}$; $\\Delta h = 150 - 100 = 50 \\, \\mathrm{cm}$."
+    },
+    {
+     "ma_cau": "K09020106023",
+     "loai": "tra_loi_ngan",
+     "de": "Một chậu chứa chất lỏng chiết suất 1,5, mực chất lỏng cao 60 cm. Nhìn gần vuông góc với mặt chất lỏng, ảnh của đáy chậu được nâng lên so với đáy thật một đoạn bằng",
+     "lua_chon": [
+      "40 cm.",
+      "60 cm.",
+      "20 cm.",
+      "30 cm."
+     ],
+     "dap_an": "20",
+     "loi_giai": "h' = 60 / 1,5 = 40 cm;\n$\\Delta$h = 60 - 40 = 20 cm."
+    },
+    {
+     "ma_cau": "K09020106019",
+     "loai": "tra_loi_ngan",
+     "de": "Một chậu chứa chất lỏng chiết suất $1,25$, mực chất lỏng cao $100 \\, \\mathrm{cm}$. Nhìn gần vuông góc với mặt chất lỏng, ảnh của đáy chậu được nâng lên so với đáy thật một đoạn bằng",
+     "lua_chon": [
+      "80 cm.",
+      "100 cm.",
+      "20 cm.",
+      "25 cm."
+     ],
+     "dap_an": "20",
+     "loi_giai": "$h' = 100 / 1,25 = 80 \\, \\mathrm{cm}$; $\\Delta h = 100 - 80 = 20 \\, \\mathrm{cm}$."
+    },
+    {
+     "ma_cau": "K09020106020",
+     "loai": "tra_loi_ngan",
+     "de": "Một chậu chứa chất lỏng chiết suất $1,25$, mực chất lỏng cao $200 \\, \\mathrm{cm}$. Nhìn gần vuông góc với mặt chất lỏng, ảnh của đáy chậu được nâng lên so với đáy thật một đoạn bằng",
+     "lua_chon": [
+      "40 cm.",
+      "160 cm.",
+      "200 cm.",
+      "50 cm."
+     ],
+     "dap_an": "40",
+     "loi_giai": "$h' = 200 / 1,25 = 160 \\, \\mathrm{cm}$; $\\Delta h = 200 - 160 = 40 \\, \\mathrm{cm}$."
+    },
+    {
+     "ma_cau": "K09020106022",
+     "loai": "tra_loi_ngan",
+     "de": "Một chậu chứa chất lỏng chiết suất 1,2, mực chất lỏng cao 240 cm. Nhìn gần vuông góc với mặt chất lỏng, ảnh của đáy chậu được nâng lên so với đáy thật một đoạn bằng",
+     "lua_chon": [
+      "200 cm.",
+      "40 cm.",
+      "240 cm.",
+      "48 cm."
+     ],
+     "dap_an": "40",
+     "loi_giai": "h' = 240 / 1,2 = 200 cm;\n$\\Delta$h = 240 - 200 = 40 cm."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01134",
+   "nhom_id": "KNB00445",
+   "thu_tu": 4,
+   "dang": "CÁC HIỆN TƯỢNG VÀ ỨNG DỤNG KHÁC CỦA KHÚC XẠ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020106029",
+     "loai": "trac_nghiem",
+     "de": "Thấu kính hội tụ trong kính lúp làm chùm tia sáng song song hội tụ tại một điểm. Hoạt động này dựa trên hiện tượng",
+     "lua_chon": [
+      "phản xạ ánh sáng.",
+      "tán xạ ánh sáng.",
+      "hấp thu ánh sáng.",
+      "khúc xạ ánh sáng."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tia sáng khúc xạ hai lần, tại mặt vào và mặt ra của thấu kính. Do hai mặt cong, các tia ở vị trí khác nhau bị lệch khác nhau và cùng đi qua một điểm."
+    },
+    {
+     "ma_cau": "K09020106025",
+     "loai": "trac_nghiem",
+     "de": "Trên mặt đường nhựa vào ngày nắng gắt, người lái xe nhìn thấy phía xa như có vũng nước. Hiện tượng này xảy ra vì",
+     "lua_chon": [
+      "mặt đường nhựa thực sự đọng nước do hơi nóng.",
+      "mặt đường nhựa phản xạ ánh sáng như một tấm gương.",
+      "mắt người bị chói nắng nên nhìn nhầm.",
+      "lớp không khí sát mặt đường bị nung nóng có chiết suất nhỏ hơn lớp phía trên, ánh sáng bị khúc xạ liên tục và uốn cong về phía mắt."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Không khí nóng loãng hơn nên chiết suất nhỏ hơn. Tia sáng đi qua các lớp không khí có chiết suất giảm dần bị bẻ cong dần, tới mắt theo hướng như đi lên từ mặt đường, tạo cảm giác có vũng nước phản chiếu bầu trời."
+    },
+    {
+     "ma_cau": "K09020106030",
+     "loai": "trac_nghiem",
+     "de": "Sợi quang dùng để truyền tín hiệu đi xa giữ được ánh sáng bên trong lõi nhờ",
+     "lua_chon": [
+      "lớp vỏ kim loại bọc ngoài phản xạ ánh sáng.",
+      "lõi sợi có chiết suất lớn hơn vỏ, ánh sáng đi tới mặt phân cách với góc tới lớn nên bị giữ lại trong lõi.",
+      "ánh sáng trong sợi quang truyền theo đường cong tự nhiên.",
+      "không khí trong sợi quang được hút hết nên ánh sáng không thoát ra được."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Lõi có chiết suất lớn hơn vỏ. Khi ánh sáng đi từ lõi tới vỏ với góc tới đủ lớn, nó không khúc xạ ra ngoài mà bị hắt trở lại lõi, nhờ đó tín hiệu truyền được rất xa mà ít hao hụt."
+    },
+    {
+     "ma_cau": "K09020106024",
+     "loai": "trac_nghiem",
+     "de": "Cầu vồng xuất hiện sau cơn mưa là kết quả của",
+     "lua_chon": [
+      "ánh sáng Mặt Trời bị khúc xạ và tách thành các màu khi đi vào rồi đi ra khỏi các giọt nước trong không khí.",
+      "các giọt nước tự phát ra ánh sáng nhiều màu.",
+      "bầu trời phản chiếu màu của mặt đất sau mưa.",
+      "ánh sáng Mặt Trời bị các giọt nước hấp thu rồi phát lại."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Mỗi giọt nước hoạt động như một lăng kính nhỏ. Các màu trong ánh sáng trắng bị khúc xạ với mức độ khác nhau nên tách ra thành dải màu."
+    },
+    {
+     "ma_cau": "K09020106026",
+     "loai": "trac_nghiem",
+     "de": "Nhìn lên bầu trời đêm, ta thấy các ngôi sao nhấp nháy. Nguyên nhân là",
+     "lua_chon": [
+      "các ngôi sao phát sáng lúc mạnh lúc yếu.",
+      "các lớp không khí trong khí quyển luôn chuyển động, chiết suất thay đổi liên tục nên hướng tia sáng tới mắt thay đổi liên tục.",
+      "mắt người không nhìn được vật ở xa trong thời gian dài.",
+      "các ngôi sao chuyển động rất nhanh trên bầu trời."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Ánh sáng từ ngôi sao đi qua nhiều lớp khí quyển có nhiệt độ và mật độ thay đổi. Chiết suất các lớp thay đổi liên tục làm hướng và cường độ tia sáng tới mắt dao động, ta thấy sao nhấp nháy. Các hành tinh gần hơn, nhìn thấy như một đĩa nhỏ nên ít nhấp nháy hơn."
+    },
+    {
+     "ma_cau": "K09020106027",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một chùm ánh sáng trắng hẹp qua một lăng kính thủy tinh, ta thu được dải màu từ đỏ đến tím. Hiện tượng này chứng tỏ",
+     "lua_chon": [
+      "lăng kính tự phát ra các màu.",
+      "ánh sáng trắng bị lăng kính hấp thu một phần.",
+      "các màu trong ánh sáng trắng bị lăng kính làm lệch với mức độ khác nhau, tức chiết suất của thuỷ tinh khác nhau với mỗi màu.",
+      "ánh sáng trắng đổi màu khi đi qua thủy tinh."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Chiết suất của một môi trường phụ thuộc màu của ánh sáng. Ánh sáng tím bị lệch nhiều nhất, ánh sáng đỏ lệch ít nhất, nên chùm sáng trắng bị tách thành dải màu."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01135",
+   "nhom_id": "KNB00445",
+   "thu_tu": 5,
+   "dang": "TÍNH ĐỘ SÂU THẬT KHI BIẾT ĐỘ SÂU NHÌN THẤY",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020106033",
+     "loai": "tra_loi_ngan",
+     "de": "Nhìn gần vuông góc với mặt một chất lỏng có chiết suất 1,5, ta thấy đáy chậu ở độ sâu 90 cm. Tính mực chất lỏng thật trong chậu (đơn vị cm).",
+     "dap_an": "135",
+     "loi_giai": "Độ sâu thật: $h = 90 \\cdot 1,5 = 135$ cm."
+    },
+    {
+     "ma_cau": "K09020106032",
+     "loai": "tra_loi_ngan",
+     "de": "Nhìn gần vuông góc với mặt nước một bể chứa, ta thấy đáy bể ở độ sâu 105 cm. Chiết suất của nước bằng $4/3$. Tính độ sâu thật của bể (đơn vị cm).",
+     "dap_an": "140",
+     "loi_giai": "Độ sâu thật: $h = 105 \\cdot 4/3 = 140$ cm."
+    },
+    {
+     "ma_cau": "K09020106031",
+     "loai": "tra_loi_ngan",
+     "de": "Nhìn gần vuông góc với mặt nước một bể bơi, ta thấy đáy bể ở độ sâu 90 cm. Chiết suất của nước bằng $4/3$. Tính độ sâu thật của bể (đơn vị cm).",
+     "dap_an": "120",
+     "loi_giai": "Từ $h' = h/n$ suy ra $h = h' \\cdot n = 90 \\cdot 4/3 = 120$ cm. Độ sâu thật luôn lớn hơn độ sâu nhìn thấy."
+    },
+    {
+     "ma_cau": "K09020106034",
+     "loai": "tra_loi_ngan",
+     "de": "Nhìn gần vuông góc với mặt một chất lỏng có chiết suất 1,25, ta thấy đáy chậu ở độ sâu 64 cm. Tính mực chất lỏng thật trong chậu (đơn vị cm).",
+     "dap_an": "80",
+     "loi_giai": "Độ sâu thật: $h = 64 \\cdot 1,25 = 80$ cm."
+    },
+    {
+     "ma_cau": "K09020106035",
+     "loai": "tra_loi_ngan",
+     "de": "Nhìn gần vuông góc với mặt một chất lỏng có chiết suất 1,2, ta thấy đáy chậu ở độ sâu 125 cm. Tính mực chất lỏng thật trong chậu (đơn vị cm).",
+     "dap_an": "150",
+     "loi_giai": "Độ sâu thật: $h = 125 \\cdot 1,2 = 150$ cm."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01136",
+   "nhom_id": "KNB00445",
+   "thu_tu": 6,
+   "dang": "XÁC ĐỊNH CHIẾT SUẤT TỪ ĐỘ SÂU THẬT VÀ ĐỘ SÂU NHÌN THẤY",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020106038",
+     "loai": "tra_loi_ngan",
+     "de": "Một chậu chứa chất lỏng sâu 100 cm. Nhìn gần vuông góc với mặt chất lỏng, ta thấy đáy chậu ở độ sâu 80 cm. Tính chiết suất của chất lỏng (làm tròn đến chữ số thập phân thứ hai).",
+     "dap_an": "1.25",
+     "loi_giai": "$n = 100 / 80 = 1,25$."
+    },
+    {
+     "ma_cau": "K09020106039",
+     "loai": "tra_loi_ngan",
+     "de": "Một bể chứa chất lỏng sâu 180 cm. Nhìn gần vuông góc với mặt chất lỏng, ta thấy đáy bể ở độ sâu 150 cm. Tính chiết suất của chất lỏng (làm tròn đến chữ số thập phân thứ hai).",
+     "dap_an": "1.20",
+     "loi_giai": "$n = 180 / 150 = 1,20$."
+    },
+    {
+     "ma_cau": "K09020106036",
+     "loai": "tra_loi_ngan",
+     "de": "Một bể chứa chất lỏng sâu 160 cm. Nhìn gần vuông góc với mặt chất lỏng, ta thấy đáy bể ở độ sâu 120 cm. Tính chiết suất của chất lỏng (làm tròn đến chữ số thập phân thứ hai).",
+     "dap_an": "1.33",
+     "loi_giai": "Chiết suất: $n = h/h' = 160 / 120 = 1,33$. Chất lỏng này là nước."
+    },
+    {
+     "ma_cau": "K09020106040",
+     "loai": "tra_loi_ngan",
+     "de": "Một bể chứa chất lỏng sâu 224 cm. Nhìn gần vuông góc với mặt chất lỏng, ta thấy đáy bể ở độ sâu 140 cm. Tính chiết suất của chất lỏng (làm tròn đến chữ số thập phân thứ hai).",
+     "dap_an": "1.60",
+     "loi_giai": "$n = 224 / 140 = 1,60$."
+    },
+    {
+     "ma_cau": "K09020106037",
+     "loai": "tra_loi_ngan",
+     "de": "Một chậu chứa chất lỏng sâu 90 cm. Nhìn gần vuông góc với mặt chất lỏng, ta thấy đáy chậu ở độ sâu 60 cm. Tính chiết suất của chất lỏng (làm tròn đến chữ số thập phân thứ hai).",
+     "dap_an": "1.50",
+     "loi_giai": "$n = 90 / 60 = 1,50$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01137",
+   "nhom_id": "KNB00445",
+   "thu_tu": 7,
+   "dang": "ĐỘ SÂU NHÌN THẤY KHI MỰC NƯỚC THAY ĐỔI",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020106042",
+     "loai": "tra_loi_ngan",
+     "de": "Một bể đang chứa nước ở mực 52 cm. Người ta đổ thêm nước để mực nước dâng thêm 44 cm. Chiết suất của nước bằng $4/3$. Tính độ sâu nhìn thấy của đáy bể sau khi đổ thêm nước (đơn vị cm).",
+     "dap_an": "72",
+     "loi_giai": "$h = 52 + 44 = 96$ cm;\n$h' = 96 \\cdot 3/4 = 72$ cm."
+    },
+    {
+     "ma_cau": "K09020106043",
+     "loai": "tra_loi_ngan",
+     "de": "Một bể đang chứa nước ở mực 68 cm. Người ta đổ thêm nước để mực nước dâng thêm 44 cm. Chiết suất của nước bằng $4/3$. Tính độ sâu nhìn thấy của đáy bể sau khi đổ thêm nước (đơn vị cm).",
+     "dap_an": "84",
+     "loi_giai": "$h = 68 + 44 = 112$ cm;\n$h' = 112 \\cdot 3/4 = 84$ cm."
+    },
+    {
+     "ma_cau": "K09020106041",
+     "loai": "tra_loi_ngan",
+     "de": "Một bể đang chứa nước ở mực 40 cm. Người ta đổ thêm nước để mực nước dâng thêm 32 cm. Chiết suất của nước bằng $4/3$. Tính độ sâu nhìn thấy của đáy bể sau khi đổ thêm nước (đơn vị cm).",
+     "dap_an": "54",
+     "loi_giai": "Mực nước mới $h = 40 + 32 = 72$ cm.\nĐộ sâu nhìn thấy $h' = 72 \\cdot 3/4 = 54$ cm."
+    },
+    {
+     "ma_cau": "K09020106044",
+     "loai": "tra_loi_ngan",
+     "de": "Một bể đang chứa nước ở mực 76 cm. Người ta đổ thêm nước để mực nước dâng thêm 52 cm. Chiết suất của nước bằng $4/3$. Tính độ sâu nhìn thấy của đáy bể sau khi đổ thêm nước (đơn vị cm).",
+     "dap_an": "96",
+     "loi_giai": "$h = 76 + 52 = 128$ cm;\n$h' = 128 \\cdot 3/4 = 96$ cm."
+    },
+    {
+     "ma_cau": "K09020106045",
+     "loai": "tra_loi_ngan",
+     "de": "Một bể đang chứa nước ở mực 84 cm. Người ta đổ thêm nước để mực nước dâng thêm 60 cm. Chiết suất của nước bằng $4/3$. Tính độ sâu nhìn thấy của đáy bể sau khi đổ thêm nước (đơn vị cm).",
+     "dap_an": "108",
+     "loi_giai": "$h = 84 + 60 = 144$ cm;\n$h' = 144 \\cdot 3/4 = 108$ cm."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01138",
+   "nhom_id": "KNB00445",
+   "thu_tu": 8,
+   "dang": "SO SÁNH ĐỘ SÂU NHÌN THẤY TRONG HAI CHẤT LỎNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020106046",
+     "loai": "tra_loi_ngan",
+     "de": "Hai chậu giống nhau cùng chứa chất lỏng đến độ cao 120 cm, một chậu chứa nước (chiết suất $4/3$), chậu kia chứa chất lỏng chiết suất 1,5. Tính hiệu giữa hai độ sâu nhìn thấy của đáy hai chậu (đơn vị cm).",
+     "dap_an": "10",
+     "loi_giai": "Với nước: $h' = 120 \\cdot 3/4 = 90$ cm. Với chất lỏng chiết suất 1,5: $h' = 120 / 1,5 = 80$ cm. Hiệu bằng $90 - 80 = 10$ cm. Chất lỏng chiết suất lớn hơn cho đáy trông nông hơn."
+    },
+    {
+     "ma_cau": "K09020106050",
+     "loai": "tra_loi_ngan",
+     "de": "Hai chậu giống nhau cùng chứa chất lỏng đến độ cao 160 cm, một chậu chứa nước (chiết suất $4/3$), chậu kia chứa chất lỏng chiết suất 1,25. Tính hiệu giữa hai độ sâu nhìn thấy của đáy hai chậu (đơn vị cm).",
+     "dap_an": "8",
+     "loi_giai": "Với nước: $h' = 160 \\cdot 3/4 = 120$ cm. Với chất lỏng chiết suất 1,25: $h' = 160 / 1,25 = 128$ cm. Hiệu bằng $128 - 120 = 8$ cm."
+    },
+    {
+     "ma_cau": "K09020106049",
+     "loai": "tra_loi_ngan",
+     "de": "Hai chậu giống nhau cùng chứa chất lỏng đến độ cao 210 cm, một chậu chứa chất lỏng chiết suất 1,25, chậu kia chứa chất lỏng chiết suất 1,5. Tính hiệu giữa hai độ sâu nhìn thấy của đáy hai chậu (đơn vị cm).",
+     "dap_an": "28",
+     "loi_giai": "$h'_1 = 210 / 1,25 = 168$ cm; $h'_2 = 210 / 1,5 = 140$ cm. Hiệu bằng 28 cm."
+    },
+    {
+     "ma_cau": "K09020106047",
+     "loai": "tra_loi_ngan",
+     "de": "Hai chậu giống nhau cùng chứa chất lỏng đến độ cao 150 cm, một chậu chứa chất lỏng chiết suất 1,25, chậu kia chứa chất lỏng chiết suất 1,5. Tính hiệu giữa hai độ sâu nhìn thấy của đáy hai chậu (đơn vị cm).",
+     "dap_an": "20",
+     "loi_giai": "$h'_1 = 150 / 1,25 = 120$ cm; $h'_2 = 150 / 1,5 = 100$ cm. Hiệu bằng 20 cm."
+    },
+    {
+     "ma_cau": "K09020106048",
+     "loai": "tra_loi_ngan",
+     "de": "Hai chậu giống nhau cùng chứa chất lỏng đến độ cao 180 cm, một chậu chứa chất lỏng chiết suất 1,2, chậu kia chứa chất lỏng chiết suất 1,5. Tính hiệu giữa hai độ sâu nhìn thấy của đáy hai chậu (đơn vị cm).",
+     "dap_an": "30",
+     "loi_giai": "$h'_1 = 180 / 1,2 = 150$ cm; $h'_2 = 180 / 1,5 = 120$ cm. Hiệu bằng 30 cm."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01143",
+   "nhom_id": "KNB00447",
+   "thu_tu": 1,
+   "dang": "ÁNH SÁNG TRUYỀN TỪ KHÔNG KHÍ VÀO NƯỚC",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020108008",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào nước (chiết suất 1,33) với góc tới $80^\\circ$. Góc khúc xạ xấp xỉ bằng",
+     "lua_chon": [
+      "$\\mathrm{80^\\circ}$",
+      "$\\mathrm{48^\\circ}$",
+      "$\\mathrm{42^\\circ}$",
+      "$\\mathrm{60^\\circ}$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đáp án chi tiết: $\\sin r = \\sin 80^\\circ / 1,33 = 0,985 / 1,33 = 0,740$, suy ra $r \\approx 48^\\circ$. Dù góc tới rất lớn, góc khúc xạ trong nước không vượt quá $49^\\circ$."
+    },
+    {
+     "ma_cau": "K09020108006",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào nước (chiết suất 1,33) với góc tới $60^\\circ$. Góc khúc xạ xấp xỉ bằng",
+     "lua_chon": [
+      "$41^\\circ$.",
+      "$60^\\circ$.",
+      "$49^\\circ$.",
+      "$45^\\circ$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đáp án chi tiết: $\\sin r = \\sin 60^\\circ / 1,33 = 0,866 / 1,33 = 0,651$, suy ra $r \\approx 41^\\circ$. Phương án $49^\\circ$ là góc hợp bởi tia khúc xạ và mặt nước."
+    },
+    {
+     "ma_cau": "K09020108007",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào nước (chiết suất 1,33) với góc tới $70^\\circ$. Góc khúc xạ xấp xỉ bằng",
+     "lua_chon": [
+      "$\\mathrm{70^\\circ}$",
+      "$\\mathrm{63^\\circ}$",
+      "$\\mathrm{20^\\circ}$",
+      "$\\mathrm{45^\\circ}$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đáp án chi tiết: $\\sin r = \\sin 70^\\circ / 1,33 = 0,940 / 1,33 = 0,707$, suy ra $r \\approx 45^\\circ$."
+    },
+    {
+     "ma_cau": "K09020108005",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào nước (chiết suất 1,33) với góc tới $55^\\circ$. Góc khúc xạ xấp xỉ bằng",
+     "lua_chon": [
+      "$55^\\circ$.",
+      "$52^\\circ$.",
+      "$38^\\circ$.",
+      "$45^\\circ$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đáp án chi tiết: $\\sin r = \\sin 55^\\circ / 1,33 = 0,819 / 1,33 = 0,616$, suy ra $r \\approx 38^\\circ$."
+    },
+    {
+     "ma_cau": "K09020108004",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào nước (chiết suất 1,33) với góc tới $50^\\circ$. Góc khúc xạ xấp xỉ bằng",
+     "lua_chon": [
+      "$50^\\circ$.",
+      "$35^\\circ$.",
+      "$55^\\circ$.",
+      "$40^\\circ$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đáp án chi tiết: $\\sin r = \\sin 50^\\circ / 1,33 = 0,766 / 1,33 = 0,576$, suy ra $r \\approx 35^\\circ$. Phương án $55^\\circ$ là góc hợp bởi tia khúc xạ và mặt nước."
+    },
+    {
+     "ma_cau": "K09020108001",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào nước (chiết suất 1,33) với góc tới $30^\\circ$. Góc khúc xạ xấp xỉ bằng",
+     "lua_chon": [
+      "$30^\\circ$",
+      "$42^\\circ$",
+      "$22^\\circ$",
+      "$68^\\circ$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đáp án chi tiết: $\\sin r = \\sin 30^\\circ / 1,33 = 0,500 / 1,33 = 0,376$, suy ra $r \\approx 22^\\circ$. Phương án $42^\\circ$ là kết quả của việc nhân thay vì chia, cho góc khúc xạ lớn hơn góc tới, trái với hiện tượng khi ánh sáng đi vào nước."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01144",
+   "nhom_id": "KNB00447",
+   "thu_tu": 2,
+   "dang": "ÁNH SÁNG TRUYỀN TỪ KHÔNG KHÍ VÀO CÁC MÔI TRƯỜNG KHÁC NHAU",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020108010",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào thuỷ tinh (chiết suất 1,50) với góc tới $60^\\circ$. Góc khúc xạ xấp xỉ bằng",
+     "lua_chon": [
+      "$60^\\circ$.",
+      "$40^\\circ$.",
+      "$35^\\circ$.",
+      "$55^\\circ$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đáp án chi tiết: $\\sin r = \\sin 60^\\circ / 1,50 = 0,866 / 1,50 = 0,577$, suy ra $r \\approx 35^\\circ$. Phương án $40^\\circ$ là kết quả của việc lấy $60^\\circ$ chia cho $1,5$."
+    },
+    {
+     "ma_cau": "K09020108009",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào thuỷ tinh (chiết suất 1,50) với góc tới $45^\\circ$. Góc khúc xạ xấp xỉ bằng",
+     "lua_chon": [
+      "$28^\\circ$.",
+      "$45^\\circ$.",
+      "$62^\\circ$.",
+      "$30^\\circ$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đáp án chi tiết: $\\sin r = \\sin 45^\\circ / 1,50 = 0,707 / 1,50 = 0,471$, suy ra $r \\approx 28^\\circ$. Phương án $30^\\circ$ là kết quả của việc lấy $45^\\circ$ chia cho $1,5$, tức chia số đo góc thay vì chia sin của góc."
+    },
+    {
+     "ma_cau": "K09020108013",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào dầu (chiết suất $1,47$) với góc tới $40^\\circ$. Góc khúc xạ xấp xỉ bằng",
+     "lua_chon": [
+      "$26^\\circ$.",
+      "$40^\\circ$.",
+      "$64^\\circ$.",
+      "$27^\\circ$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đáp án chi tiết: $\\sin r = \\sin 40^\\circ / 1,47 = 0,643 / 1,47 = 0,437$, suy ra $r \\approx 26^\\circ$. Phương án $27^\\circ$ là kết quả của việc lấy $40^\\circ$ chia cho $1,47$."
+    },
+    {
+     "ma_cau": "K09020108016",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào kim cương (chiết suất 2,42) với góc tới 60°. Góc khúc xạ xấp xỉ bằng",
+     "lua_chon": [
+      "60°.",
+      "25°.",
+      "69°.",
+      "21°."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Định luật khúc xạ ánh sáng:\\n$n_1\\sin i = n_2\\sin r \\Rightarrow 1.\\sin 60^\\circ = 2,42.\\sin r \\Rightarrow \\sin r = \\dfrac{\\sin 60^\\circ}{2,42} = \\dfrac{0,866}{2,42} \\approx 0,358 \\Rightarrow r \\approx 21^\\circ$.\\nPhương án $25^\\circ$ là kết quả của việc lấy $60^\\circ$ chia cho $2,42$."
+    },
+    {
+     "ma_cau": "K09020108015",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào kim cương (chiết suất 2,42) với góc tới 45°. Góc khúc xạ xấp xỉ bằng",
+     "lua_chon": [
+      "45°.",
+      "17°.",
+      "73°.",
+      "19°."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Định luật khúc xạ ánh sáng:\\n$n_1\\sin i = n_2\\sin r \\Rightarrow 1.\\sin 45^\\circ = 2,42.\\sin r \\Rightarrow \\sin r = \\dfrac{\\sin 45^\\circ}{2,42} = \\dfrac{0,707}{2,42} \\approx 0,292 \\Rightarrow r \\approx 17^\\circ$.\\nChiết suất rất lớn nên tia sáng bị kéo mạnh về phía pháp tuyến. Phương án $19^\\circ$ là kết quả của việc lấy $45^\\circ$ chia cho $2,42$."
+    },
+    {
+     "ma_cau": "K09020108012",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào rượu (chiết suất $1,36$) với góc tới $70^\\circ$. Góc khúc xạ xấp xỉ bằng",
+     "lua_chon": [
+      "$70^\\circ$.",
+      "$46^\\circ$.",
+      "$35^\\circ$.",
+      "$44^\\circ$."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Đáp án chi tiết: $\\sin r = \\sin 70^\\circ / 1,36 = 0,940 / 1,36 = 0,691$, suy ra $r \\approx 44^\\circ$. Phương án $46^\\circ$ là góc hợp bởi tia khúc xạ và mặt phân cách."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01145",
+   "nhom_id": "KNB00447",
+   "thu_tu": 3,
+   "dang": "ÁNH SÁNG TRUYỀN TỪ MÔI TRƯỜNG TRONG SUỐT RA KHÔNG KHÍ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020108022",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ kim cương (chiết suất 2,42) ra không khí với góc tới $15^o$. Góc khúc xạ xấp xỉ bằng",
+     "lua_chon": [
+      "$15^o$.",
+      "$6^o$.",
+      "$51^o$.",
+      "$39^o$."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\sin r = 2,42 \\cdot \\sin 15^o = 2,42 \\cdot 0,259 = 0,626$, suy ra $r \\approx 39^o$. Kim cương có chiết suất lớn nên chỉ cần góc tới nhỏ đã cho góc khúc xạ khá lớn."
+    },
+    {
+     "ma_cau": "K09020108023",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ nước (chiết suất 1,33) ra không khí với góc tới $40^\\circ$. Góc khúc xạ xấp xỉ bằng",
+     "lua_chon": [
+      "$59^\\circ$.",
+      "$40^\\circ$.",
+      "$29^\\circ$.",
+      "$31^\\circ$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đáp án chi tiết: $\\sin r = 1,33 \\cdot \\sin 40^\\circ = 1,33 \\cdot 0,643 = 0,855$, suy ra $r \\approx 59^\\circ$. Phương án $29^\\circ$ là kết quả của việc chia thay vì nhân."
+    },
+    {
+     "ma_cau": "K09020108018",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ nước (chiết suất 1,33) ra không khí với góc tới 30°. Góc khúc xạ xấp xỉ bằng",
+     "lua_chon": [
+      "30°.",
+      "22°.",
+      "48°.",
+      "42°."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\sin r = 1,33 \\cdot \\sin 30° = 1,33 \\cdot 0,500 = 0,665$, suy ra $r \\approx 42°$. Phương án $22°$ là kết quả của việc chia thay vì nhân."
+    },
+    {
+     "ma_cau": "K09020108019",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ thủy tinh (chiết suất 1,50) ra không khí với góc tới 25°. Góc khúc xạ xấp xỉ bằng",
+     "lua_chon": [
+      "39°.",
+      "25°.",
+      "16°.",
+      "51°."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\sin r = 1,50 \\cdot \\sin 25° = 1,50 \\cdot 0,423 = 0,634$, suy ra $r \\approx 39°$. Phương án $16°$ là kết quả của việc chia thay vì nhân."
+    },
+    {
+     "ma_cau": "K09020108020",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ rượu (chiết suất 1,36) ra không khí với góc tới $35^o$. Góc khúc xạ xấp xỉ bằng",
+     "lua_chon": [
+      "$35^o$.",
+      "$25^o$.",
+      "$51^o$.",
+      "$39^o$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\sin r = 1,36 \\cdot \\sin 35^o = 1,36 \\cdot 0,574 = 0,780$, suy ra $r \\approx 51^o$. Phương án $25^o$ là kết quả của việc chia thay vì nhân."
+    },
+    {
+     "ma_cau": "K09020108021",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ dầu (chiết suất 1,47) ra không khí với góc tới $28^o$. Góc khúc xạ xấp xỉ bằng",
+     "lua_chon": [
+      "$28^o$.",
+      "$44^o$.",
+      "$19^o$.",
+      "$46^o$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\sin r = 1,47 \\cdot \\sin 28^o = 1,47 \\cdot 0,469 = 0,690$, suy ra $r \\approx 44^o$. Phương án $19^o$ là kết quả của việc chia thay vì nhân."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01146",
+   "nhom_id": "KNB00447",
+   "thu_tu": 4,
+   "dang": "TÍNH GÓC KHÚC XẠ KHI ĐỀ CHO GÓC HỢP VỚI MẶT PHÂN CÁCH",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020108024",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào nước (chiết suất 1,33). Tia tới hợp với mặt nước một góc $32^\\circ$. Góc khúc xạ xấp xỉ bằng",
+     "lua_chon": [
+      "$32^\\circ$.",
+      "$23^\\circ$.",
+      "$40^\\circ$.",
+      "$58^\\circ$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Góc tới $i = 90^\\circ - 32^\\circ = 58^\\circ$. Khi đó $\\sin r = \\sin 58^\\circ / 1,33 = 0,848 / 1,33 = 0,638$, suy ra $r \\approx 40^\\circ$. Phương án $23^\\circ$ là kết quả của việc lấy luôn $32^\\circ$ làm góc tới."
+    },
+    {
+     "ma_cau": "K09020108028",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào rượu (chiết suất 1,36). Tia tới hợp với mặt rượu một góc $25^\\circ$. Góc khúc xạ xấp xỉ bằng",
+     "lua_chon": [
+      "$25^\\circ$.",
+      "$18^\\circ$.",
+      "$42^\\circ$.",
+      "$65^\\circ$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đáp án chi tiết: $i = 90^\\circ - 25^\\circ = 65^\\circ$; $\\sin r = \\sin 65^\\circ / 1,36 = 0,906 / 1,36 = 0,666$, suy ra $r \\approx 42^\\circ$. Phương án $18^\\circ$ là kết quả của việc lấy luôn $25^\\circ$ làm góc tới."
+    },
+    {
+     "ma_cau": "K09020108027",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào dầu (chiết suất 1,47). Tia tới hợp với mặt dầu một góc $32^\\circ$. Góc khúc xạ xấp xỉ bằng",
+     "lua_chon": [
+      "$32^\\circ$.",
+      "$35^\\circ$.",
+      "$21^\\circ$.",
+      "$58^\\circ$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "Đáp án chi tiết: $i = 90^\\circ - 32^\\circ = 58^\\circ$; $\\sin r = \\sin 58^\\circ / 1,47 = 0,848 / 1,47 = 0,577$, suy ra $r \\approx 35^\\circ$. Phương án $21^\\circ$ là kết quả của việc lấy luôn $32^\\circ$ làm góc tới."
+    },
+    {
+     "ma_cau": "K09020108026",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào nước (chiết suất 1,33). Tia tới hợp với mặt nước một góc $28^\\circ$. Góc khúc xạ xấp xỉ bằng",
+     "lua_chon": [
+      "$28^\\circ$.",
+      "$21^\\circ$.",
+      "$62^\\circ$.",
+      "$42^\\circ$."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Góc tới $i = 90^\\circ - 28^\\circ = 62^\\circ$; $\\sin r = \\sin 62^\\circ / 1,33 = 0,883 / 1,33 = 0,664$, suy ra $r \\approx 42^\\circ$. Phương án $21^\\circ$ là kết quả của việc lấy luôn $28^\\circ$ làm góc tới."
+    },
+    {
+     "ma_cau": "K09020108025",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào thuỷ tinh (chiết suất 1,50). Tia tới hợp với mặt thuỷ tinh một góc $40^\\circ$. Góc khúc xạ xấp xỉ bằng",
+     "lua_chon": [
+      "$31^\\circ$.",
+      "$40^\\circ$.",
+      "$25^\\circ$.",
+      "$59^\\circ$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Góc tới $i = 90^\\circ - 40^\\circ = 50^\\circ$; $\\sin r = \\sin 50^\\circ / 1,50 = 0,511$, suy ra $r \\approx 31^\\circ$. Phương án $25^\\circ$ là kết quả của việc lấy luôn $40^\\circ$ làm góc tới."
+    },
+    {
+     "ma_cau": "K09020108029",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào kim cương (chiết suất 2,42). Tia tới hợp với mặt kim cương một góc $35^\\circ$. Góc khúc xạ xấp xỉ bằng",
+     "lua_chon": [
+      "$20^\\circ$.",
+      "$35^\\circ$.",
+      "$14^\\circ$.",
+      "$55^\\circ$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Đáp án chi tiết: $i = 90^\\circ - 35^\\circ = 55^\\circ$; $\\sin r = \\sin 55^\\circ / 2,42 = 0,819 / 2,42 = 0,339$, suy ra $r \\approx 20^\\circ$. Phương án $14^\\circ$ là kết quả của việc lấy luôn $35^\\circ$ làm góc tới."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01147",
+   "nhom_id": "KNB00447",
+   "thu_tu": 5,
+   "dang": "TÍNH GÓC HỢP BỞI TIA KHÚC XẠ VÀ MẶT PHÂN CÁCH",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020108033",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào rượu (chiết suất 1,36) với góc tới 60°. Tính góc hợp bởi tia khúc xạ và mặt rượu (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "50",
+     "loi_giai": "sin r = sin 60° / 1,36 = 0,866 / 1,36 = 0,637, suy ra r \\approx 40°. Góc cần tìm bằng 90° - 40° = 50°."
+    },
+    {
+     "ma_cau": "K09020108035",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào kim cương (chiết suất 2,42) với góc tới 70°. Tính góc hợp bởi tia khúc xạ và mặt kim cương (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "67",
+     "loi_giai": "sin r = sin 70° / 2,42 = 0,940 / 2,42 = 0,388, suy ra r \\approx 23°. Góc cần tìm bằng 90° - 23° = 67°."
+    },
+    {
+     "ma_cau": "K09020108034",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào dầu (chiết suất 1,47) với góc tới 55°. Tính góc hợp bởi tia khúc xạ và mặt dầu (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "56",
+     "loi_giai": "sin r = sin 55° / 1,47 = 0,819 / 1,47 = 0,557, suy ra r \\approx 34°. Góc cần tìm bằng 90° - 34° = 56°."
+    },
+    {
+     "ma_cau": "K09020108031",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào nước (chiết suất 1,33) với góc tới 65°. Tính góc hợp bởi tia khúc xạ và mặt nước (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "47",
+     "loi_giai": "sin r = sin 65° / 1,33 = 0,906 / 1,33 = 0,681, suy ra r \\approx 43°. Góc hợp bởi tia khúc xạ và mặt nước bằng 90° - 43° = 47°."
+    },
+    {
+     "ma_cau": "K09020108032",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào thuỷ tinh (chiết suất 1,50) với góc tới 70°. Tính góc hợp bởi tia khúc xạ và mặt thuỷ tinh (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "51",
+     "loi_giai": "sin r = sin 70° / 1,50 = 0,940 / 1,50 = 0,627, suy ra r \\approx 39°. Góc cần tìm bằng 90° - 39° = 51°."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01148",
+   "nhom_id": "KNB00447",
+   "thu_tu": 6,
+   "dang": "TÍNH GÓC LỆCH GIỮA TIA KHÚC XẠ VÀ PHƯƠNG TIA TỚI",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020108039",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào dầu (chiết suất 1,47) với góc tới $50^{\\circ}$. Tính góc lệch giữa tia khúc xạ và phương của tia tới (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "19",
+     "loi_giai": "$\\sin r = \\sin 50^{\\circ} / 1,47 = 0,766 / 1,47 = 0,521$, suy ra $r \\approx 31^{\\circ}$. Góc lệch $D = 50^{\\circ} - 31^{\\circ} = 19^{\\circ}$."
+    },
+    {
+     "ma_cau": "K09020108036",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào nước (chiết suất 1,33) với góc tới $75^{\\circ}$. Tính góc lệch giữa tia khúc xạ và phương của tia tới (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "28",
+     "loi_giai": "$\\sin r = \\sin 75^{\\circ} / 1,33 = 0,966 / 1,33 = 0,726$, suy ra $r \\approx 47^{\\circ}$. Góc lệch $D = i - r = 75^{\\circ} - 47^{\\circ} = 28^{\\circ}$."
+    },
+    {
+     "ma_cau": "K09020108038",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào rượu (chiết suất 1,36) với góc tới $45^{\\circ}$. Tính góc lệch giữa tia khúc xạ và phương của tia tới (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "14",
+     "loi_giai": "$\\sin r = \\sin 45^{\\circ} / 1,36 = 0,707 / 1,36 = 0,520$, suy ra $r \\approx 31^{\\circ}$. Góc lệch $D = 45^{\\circ} - 31^{\\circ} = 14^{\\circ}$."
+    },
+    {
+     "ma_cau": "K09020108040",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào kim cương (chiết suất 2,42) với góc tới $80^{\\circ}$. Tính góc lệch giữa tia khúc xạ và phương của tia tới (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "56",
+     "loi_giai": "$\\sin r = \\sin 80^{\\circ} / 2,42 = 0,985 / 2,42 = 0,407$, suy ra $r \\approx 24^{\\circ}$. Góc lệch $D = 80^{\\circ} - 24^{\\circ} = 56^{\\circ}$. Đây là độ lệch rất lớn, giải thích vì sao kim cương lấp lánh mạnh."
+    },
+    {
+     "ma_cau": "K09020108037",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào thuỷ tinh (chiết suất 1,50) với góc tới $40^{\\circ}$. Tính góc lệch giữa tia khúc xạ và phương của tia tới (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "15",
+     "loi_giai": "$\\sin r = \\sin 40^{\\circ} / 1,50 = 0,643 / 1,50 = 0,429$, suy ra $r \\approx 25^{\\circ}$. Góc lệch $D = 40^{\\circ} - 25^{\\circ} = 15^{\\circ}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01149",
+   "nhom_id": "KNB00447",
+   "thu_tu": 7,
+   "dang": "TÍNH GÓC KHÚC XẠ KHI ĐỀ CHO GÓC GIỮA TIA TỚI VÀ TIA PHẢN XẠ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020108044",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí tới mặt dầu (chiết suất 1,47). Góc hợp bởi tia tới và tia phản xạ bằng $140^\\circ$. Tính góc khúc xạ (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "40",
+     "loi_giai": "$i = 140^\\circ : 2 = 70^\\circ$; $\\sin r = \\sin 70^\\circ / 1,47 = 0,940 / 1,47 = 0,639$, suy ra $r \\approx 40^\\circ$."
+    },
+    {
+     "ma_cau": "K09020108045",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí tới mặt một viên kim cương (chiết suất 2,42). Góc hợp bởi tia tới và tia phản xạ bằng $100^\\circ$. Tính góc khúc xạ (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "18",
+     "loi_giai": "$i = 100^\\circ : 2 = 50^\\circ$; $\\sin r = \\sin 50^\\circ / 2,42 = 0,766 / 2,42 = 0,317$, suy ra $r \\approx 18^\\circ$."
+    },
+    {
+     "ma_cau": "K09020108041",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí tới mặt nước (chiết suất 1,33). Góc hợp bởi tia tới và tia phản xạ bằng $96^\\circ$. Tính góc khúc xạ (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "34",
+     "loi_giai": "Góc giữa tia tới và tia phản xạ bằng $2i$ nên $i = 96^\\circ : 2 = 48^\\circ$. Khi đó $\\sin r = \\sin 48^\\circ / 1,33 = 0,743 / 1,33 = 0,559$, suy ra $r \\approx 34^\\circ$."
+    },
+    {
+     "ma_cau": "K09020108042",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí tới mặt một khối thuỷ tinh (chiết suất 1,50). Góc hợp bởi tia tới và tia phản xạ bằng $130^\\circ$. Tính góc khúc xạ (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "37",
+     "loi_giai": "$i = 130^\\circ : 2 = 65^\\circ$; $\\sin r = \\sin 65^\\circ / 1,50 = 0,906 / 1,50 = 0,604$, suy ra $r \\approx 37^\\circ$."
+    },
+    {
+     "ma_cau": "K09020108043",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí tới mặt rượu (chiết suất 1,36). Góc hợp bởi tia tới và tia phản xạ bằng $160^\\circ$. Tính góc khúc xạ (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "46",
+     "loi_giai": "$i = 160^\\circ : 2 = 80^\\circ$; $\\sin r = \\sin 80^\\circ / 1,36 = 0,985 / 1,36 = 0,724$, suy ra $r \\approx 46^\\circ$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01150",
+   "nhom_id": "KNB00447",
+   "thu_tu": 8,
+   "dang": "TÍNH GÓC KHÚC XẠ KHI ĐỀ CHO CHIẾT SUẤT TỈ ĐỐI NGHỊCH ĐẢO",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020108046",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào một chất lỏng trong suốt với góc tới $68^\\circ$. Biết chiết suất tỉ đối của không khí đối với chất lỏng đó bằng $0,75$. Tính góc khúc xạ (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "44",
+     "loi_giai": "Chiết suất của chất lỏng đối với không khí là $n = 1 / 0,75 = 1,33$. Khi đó $\\sin r = \\sin 68^\\circ / 1,33 = 0,927 / 1,33 = 0,697$, suy ra $r \\approx 44^\\circ$."
+    },
+    {
+     "ma_cau": "K09020108050",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào một khối chất rắn trong suốt với góc tới $65^\\circ$. Biết chiết suất tỉ đối của không khí đối với khối chất đó bằng $0,41$. Tính góc khúc xạ (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "22",
+     "loi_giai": "$n = 1 / 0,41 = 2,44$; $\\sin r = \\sin 65^\\circ / 2,44 = 0,906 / 2,44 = 0,371$, suy ra $r \\approx 22^\\circ$."
+    },
+    {
+     "ma_cau": "K09020108048",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào một chất lỏng trong suốt với góc tới $35^\\circ$. Biết chiết suất tỉ đối của không khí đối với chất lỏng đó bằng $0,74$. Tính góc khúc xạ (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "25",
+     "loi_giai": "$n = 1 / 0,74 = 1,35$; $\\sin r = \\sin 35^\\circ / 1,35 = 0,574 / 1,35 = 0,425$, suy ra $r \\approx 25^\\circ$."
+    },
+    {
+     "ma_cau": "K09020108047",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào một khối chất trong suốt với góc tới $45^\\circ$. Biết chiết suất tỉ đối của không khí đối với khối chất đó bằng $0,67$. Tính góc khúc xạ (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "28",
+     "loi_giai": "$n = 1 / 0,67 = 1,49$; $\\sin r = \\sin 45^\\circ / 1,49 = 0,707 / 1,49 = 0,474$, suy ra $r \\approx 28^\\circ$."
+    },
+    {
+     "ma_cau": "K09020108049",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào một chất lỏng trong suốt với góc tới $35^\\circ$. Biết chiết suất tỉ đối của không khí đối với chất lỏng đó bằng $0,68$. Tính góc khúc xạ (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "23",
+     "loi_giai": "$n = 1 / 0,68 = 1,47$; $\\sin r = \\sin 35^\\circ / 1,47 = 0,574 / 1,47 = 0,390$, suy ra $r \\approx 23^\\circ$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01151",
+   "nhom_id": "KNB00448",
+   "thu_tu": 1,
+   "dang": "ÁNH SÁNG TRUYỀN TỪ KHÔNG KHÍ VÀO NƯỚC",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020109008",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào nước (chiết suất 1,33), đo được góc khúc xạ $48^\\circ$. Góc tới xấp xỉ bằng",
+     "lua_chon": [
+      "$48^\\circ$.",
+      "$34^\\circ$.",
+      "$81^\\circ$.",
+      "$9^\\circ$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\sin i = 1,33 \\cdot \\sin 48^\\circ = 1,33 \\cdot 0,743 = 0,988$, suy ra $i \\approx 81^\\circ$. Giá trị $\\sin i$ đã rất gần 1, nghĩa là góc khúc xạ trong nước không thể vượt quá khoảng $49^\\circ$."
+    },
+    {
+     "ma_cau": "K09020109005",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào nước (chiết suất 1,33), đo được góc khúc xạ $32^\\circ$. Góc tới xấp xỉ bằng",
+     "lua_chon": [
+      "$32^\\circ$",
+      "$45^\\circ$",
+      "$23^\\circ$",
+      "$58^\\circ$"
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\sin i = 1,33 \\cdot \\sin 32^\\circ = 1,33 \\cdot 0,530 = 0,705$, suy ra $i \\approx 45^\\circ$. Phương án $23^\\circ$ là kết quả của việc chia thay vì nhân."
+    },
+    {
+     "ma_cau": "K09020109004",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào nước (chiết suất 1,33), đo được góc khúc xạ $25^\\circ$. Góc tới xấp xỉ bằng",
+     "lua_chon": [
+      "$25^\\circ$",
+      "$19^\\circ$",
+      "$34^\\circ$",
+      "$56^\\circ$"
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\sin i = 1,33 \\cdot \\sin 25^\\circ = 1,33 \\cdot 0,423 = 0,562$, suy ra $i \\approx 34^\\circ$. Phương án $19^\\circ$ là kết quả của việc chia thay vì nhân."
+    },
+    {
+     "ma_cau": "K09020109002",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào nước (chiết suất $1,33$), đo được góc khúc xạ $18^o$. Góc tới xấp xỉ bằng",
+     "lua_chon": [
+      "$18^o$",
+      "$13^o$",
+      "$42^o$",
+      "$24^o$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "sin $i = 1,33 \\cdot \\sin 18^o = 1,33 \\cdot 0,309 = 0,411$, suy ra $i \\approx 24^o$.\nPhương án $13^o$ là kết quả của việc chia thay vì nhân, cho góc tới nhỏ hơn góc khúc xạ, trái với hiện tượng."
+    },
+    {
+     "ma_cau": "K09020109006",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào nước (chiết suất 1,33), đo được góc khúc xạ $35^\\circ$. Góc tới xấp xỉ bằng",
+     "lua_chon": [
+      "$35^\\circ$",
+      "$26^\\circ$",
+      "$40^\\circ$",
+      "$50^\\circ$"
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\sin i = 1,33 \\cdot \\sin 35^\\circ = 1,33 \\cdot 0,574 = 0,763$, suy ra $i \\approx 50^\\circ$. Phương án $26^\\circ$ là kết quả của việc chia thay vì nhân."
+    },
+    {
+     "ma_cau": "K09020109007",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào nước (chiết suất 1,33), đo được góc khúc xạ $45^\\circ$. Góc tới xấp xỉ bằng",
+     "lua_chon": [
+      "$70^\\circ$.",
+      "$45^\\circ$.",
+      "$32^\\circ$.",
+      "$20^\\circ$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\sin i = 1,33 \\cdot \\sin 45^\\circ = 1,33 \\cdot 0,707 = 0,940$, suy ra $i \\approx 70^\\circ$. Phương án $32^\\circ$ là kết quả của việc chia thay vì nhân."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01152",
+   "nhom_id": "KNB00448",
+   "thu_tu": 2,
+   "dang": "ÁNH SÁNG TRUYỀN TỪ KHÔNG KHÍ VÀO CÁC MÔI TRƯỜNG KHÁC NHAU",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020109014",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ kim cương (chiết suất 2,42) ra không khí, do được góc khúc xạ $52^o$. Góc tới xấp xỉ bằng",
+     "lua_chon": [
+      "$52^o$.",
+      "$19^o$.",
+      "$38^o$.",
+      "$71^o$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\sin i = \\sin 52^o / 2,42 = 0,788 / 2,42 = 0,326$, suy ra $i \\approx 19^o$. Với kim cương, chỉ một góc tới rất nhỏ cũng cho góc khúc xạ lớn khi ánh sáng đi ra không khí."
+    },
+    {
+     "ma_cau": "K09020109012",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ rượu (chiết suất 1,36) ra không khí, do được góc khúc xạ $56^o$. Góc tới xấp xỉ bằng",
+     "lua_chon": [
+      "$38^o$.",
+      "$56^o$.",
+      "$34^o$.",
+      "$52^o$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\sin i = \\sin 56^o / 1,36 = 0,829 / 1,36 = 0,610$, suy ra $i \\approx 38^o$."
+    },
+    {
+     "ma_cau": "K09020109013",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ dầu (chiết suất 1,47) ra không khí, do được góc khúc xạ $72^o$. Góc tới xấp xỉ bằng",
+     "lua_chon": [
+      "$72^o$.",
+      "$18^o$.",
+      "$49^o$.",
+      "$40^o$."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\sin i = \\sin 72^o / 1,47 = 0,951 / 1,47 = 0,647$, suy ra $i \\approx 40^o$. Phương án $49^o$ là kết quả của việc chia thẳng số đo góc: $72 : 1,47 \\approx 49$."
+    },
+    {
+     "ma_cau": "K09020109010",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ nước (chiết suất 1,33) ra không khí, do được góc khúc xạ $52^{\\circ}$. Góc tới xấp xỉ bằng",
+     "lua_chon": [
+      "$52^{\\circ}$.",
+      "$36^{\\circ}$.",
+      "$39^{\\circ}$.",
+      "$68^{\\circ}$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\sin i = \\dfrac{\\sin 52^{\\circ}}{1,33} = \\dfrac{0,788}{1,33} = 0,593$, suy ra $i \\approx 36^{\\circ}$. Phương án $39^{\\circ}$ là kết quả của việc chia thẳng số đo góc: $52 : 1,33 \\approx 39$, tức chia số đo góc thay vì chia sin của góc."
+    },
+    {
+     "ma_cau": "K09020109015",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ nước (chiết suất $1,33$) ra không khí, đo được góc khúc xạ $66^{\\circ}$. Góc tới xấp xỉ bằng",
+     "lua_chon": [
+      "$66^{\\circ}$.",
+      "$24^{\\circ}$.",
+      "$43^{\\circ}$.",
+      "$47^{\\circ}$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\sin i = \\sin 66^{\\circ} / 1,33 = 0,914 / 1,33 = 0,687$, suy ra $i \\approx 43^{\\circ}$."
+    },
+    {
+     "ma_cau": "K09020109009",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ nước (chiết suất 1,33) ra không khí, do được góc khúc xạ $36^{\\circ}$. Góc tới xấp xỉ bằng",
+     "lua_chon": [
+      "$36^{\\circ}$.",
+      "$51^{\\circ}$.",
+      "$54^{\\circ}$.",
+      "$26^{\\circ}$."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ánh sáng đi ra môi trường chiết quang kém nên góc tới nhỏ hơn góc khúc xạ: $\\sin i = \\dfrac{\\sin 36^{\\circ}}{1,33} = \\dfrac{0,588}{1,33} = 0,442$, suy ra $i \\approx 26^{\\circ}$. Phương án $51^{\\circ}$ là kết quả của việc nhân thay vì chia."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01153",
+   "nhom_id": "KNB00448",
+   "thu_tu": 3,
+   "dang": "TÍNH GÓC TỚI KHI ĐỀ CHO GÓC HỢP BỞI TIA KHÚC XẠ VÀ MẶT PHÂN CÁCH",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020109018",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào nước (chiết suất 1,33). Tia khúc xạ hợp với mặt nước một góc $68^\\circ$. Góc tới xấp xỉ bằng",
+     "lua_chon": [
+      "$68^\\circ$.",
+      "$30^\\circ$.",
+      "$22^\\circ$.",
+      "$60^\\circ$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$r = 90^\\circ - 68^\\circ = 22^\\circ; \\sin i = 1,33 \\cdot \\sin 22^\\circ = 1,33 \\cdot 0,375 = 0,498$, suy ra $i \\approx 30^\\circ$. Phương án $22^\\circ$ là góc khúc xạ."
+    },
+    {
+     "ma_cau": "K09020109020",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào dầu (chiết suất 1,47). Tia khúc xạ hợp với mặt dầu một góc 60°. Góc tới xấp xỉ bằng",
+     "lua_chon": [
+      "47°.",
+      "60°.",
+      "30°.",
+      "43°."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$r = 90° - 60° = 30°$; $\\sin i = 1,47 \\cdot \\sin 30° = 0,735$, suy ra $i \\approx 47°$. Phương án $43°$ là góc hợp bởi tia tới và mặt dầu."
+    },
+    {
+     "ma_cau": "K09020109021",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào kim cương (chiết suất 2,42). Tia khúc xạ hợp với mặt kim cương một góc 72°. Góc tới xấp xỉ bằng",
+     "lua_chon": [
+      "72°.",
+      "18°.",
+      "42°.",
+      "48°."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$r = 90° - 72° = 18°$; $\\sin i = 2,42 \\cdot \\sin 18° = 2,42 \\cdot 0,309 = 0,748$, suy ra $i \\approx 48°$."
+    },
+    {
+     "ma_cau": "K09020109017",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào thuỷ tinh (chiết suất 1,50). Tia khúc xạ hợp với mặt thuỷ tinh một góc $58^\\circ$. Góc tới xấp xỉ bằng",
+     "lua_chon": [
+      "$58^\\circ$.",
+      "$32^\\circ$.",
+      "$37^\\circ$.",
+      "$53^\\circ$."
+     ],
+     "dap_an": "D",
+     "loi_giai": "${r} = 90^\\circ - 58^\\circ = 32^\\circ; \\sin \\text{i} = 1,50 \\cdot \\sin 32^\\circ = 1,50 \\cdot 0,530 = 0,795$, suy ra $\\text{i} \\approx 53^\\circ$. Phương án $32^\\circ$ là góc khúc xạ, không phải góc tới."
+    },
+    {
+     "ma_cau": "K09020109016",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào nước (chiết suất 1,33). Tia khúc xạ hợp với mặt nước một góc $52^\\circ$. Góc tới xấp xỉ bằng",
+     "lua_chon": [
+      "$55^\\circ$.",
+      "$52^\\circ$.",
+      "$38^\\circ$.",
+      "$62^\\circ$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "Góc khúc xạ $r = 90^\\circ - 52^\\circ = 38^\\circ$. Khi đó $\\sin i = 1,33 \\cdot \\sin 38^\\circ = 1,33 \\cdot 0,616 = 0,819$, suy ra $i \\approx 55^\\circ$. Nếu lấy luôn $52^\\circ$ làm góc khúc xạ thì $\\sin i = 1,33 \\cdot \\sin 52^\\circ = 1,048 > 1$, bài toán vô nghiệm - dấu hiệu cho thấy đã quên bước đổi góc."
+    },
+    {
+     "ma_cau": "K09020109019",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào rượu (chiết suất 1,36). Tia khúc xạ hợp với mặt rượu một góc 55°. Góc tới xấp xỉ bằng",
+     "lua_chon": [
+      "55°.",
+      "35°.",
+      "51°.",
+      "39°."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$r = 90° - 55° = 35°$; $\\sin i = 1,36 \\cdot \\sin 35° = 1,36 \\cdot 0,574 = 0,780$, suy ra $i \\approx 51°$. Phương án $39°$ là góc hợp bởi tia tới và mặt rượu."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01154",
+   "nhom_id": "KNB00448",
+   "thu_tu": 4,
+   "dang": "ÁNH SÁNG TRUYỀN TỪ MÔI TRƯỜNG TRONG SUỐT RA KHÔNG KHÍ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020109026",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ rượu (chiết suất 1,36) ra không khí, đo được góc khúc xạ $56^\\circ$. Góc tới xấp xỉ bằng",
+     "lua_chon": [
+      "38\\circ.",
+      "56\\circ.",
+      "34\\circ.",
+      "52\\circ."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$\\sin i = \\sin 56^\\circ / 1,36 = 0,829 / 1,36 = 0,610$, suy ra $i \\approx 38^\\circ$."
+    },
+    {
+     "ma_cau": "K09020109027",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ dầu (chiết suất 1,47) ra không khí, đo được góc khúc xạ $72^\\circ$. Góc tới xấp xỉ bằng",
+     "lua_chon": [
+      "72\\circ.",
+      "18\\circ.",
+      "49\\circ.",
+      "40\\circ."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$\\sin i = \\sin 72^\\circ / 1,47 = 0,951 / 1,47 = 0,647$, suy ra $i \\approx 40^\\circ$. Phương án $49^\\circ$ là kết quả của việc chia thẳng số đo góc: $72 : 1,47 \\approx 49$."
+    },
+    {
+     "ma_cau": "K09020109029",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ nước (chiết suất $1,33$) ra không khí, đo được góc khúc xạ $66^{\\circ}$. Góc tới xấp xỉ bằng",
+     "lua_chon": [
+      "$66^{\\circ}$.",
+      "$24^{\\circ}$.",
+      "$43^{\\circ}$.",
+      "$47^{\\circ}$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\sin i = \\sin 66^{\\circ} / 1,33 = 0,914 / 1,33 = 0,687$, suy ra $i \\approx 43^{\\circ}$."
+    },
+    {
+     "ma_cau": "K09020109025",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ thuỷ tinh (chiết suất 1,50) ra không khí, do được góc khúc xạ $58^{\\circ}$. Góc tới xấp xỉ bằng",
+     "lua_chon": [
+      "$58^{\\circ}$.",
+      "$32^{\\circ}$.",
+      "$34^{\\circ}$.",
+      "$56^{\\circ}$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$\\sin i = \\sin 58^{\\circ} / 1,50 = 0,848 / 1,50 = 0,565$, suy ra $i \\approx 34^{\\circ}$. Ở đây không thể nhân với chiết suất, vì $1,50 \\cdot \\sin 58^{\\circ} = 1,27$ lớn hơn $1$, không ứng với góc nào cả — dấu hiệu cho thấy phải chia chứ không nhân."
+    },
+    {
+     "ma_cau": "K09020109023",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ nước (chiết suất 1,33) ra không khí, do được góc khúc xạ $36^{\\circ}$. Góc tới xấp xỉ bằng",
+     "lua_chon": [
+      "$36^{\\circ}$.",
+      "$51^{\\circ}$.",
+      "$54^{\\circ}$.",
+      "$26^{\\circ}$."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Ánh sáng đi ra môi trường chiết quang kém nên góc tới nhỏ hơn góc khúc xạ: $\\sin i = \\sin 36^{\\circ} / 1,33 = 0,588 / 1,33 = 0,442$, suy ra $i \\approx 26^{\\circ}$. Phương án $51^{\\circ}$ là kết quả của việc nhân thay vì chia."
+    },
+    {
+     "ma_cau": "K09020109028",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ kim cương (chiết suất 2,42) ra không khí, đo được góc khúc xạ $52^\\circ$. Góc tới xấp xỉ bằng",
+     "lua_chon": [
+      "52\\circ.",
+      "19\\circ.",
+      "38\\circ.",
+      "71\\circ."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$\\sin i = \\sin 52^\\circ / 2,42 = 0,788 / 2,42 = 0,326$, suy ra $i \\approx 19^\\circ$. Với kim cương, chỉ một góc tới rất nhỏ cũng cho góc khúc xạ lớn khi ánh sáng đi ra không khí."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01155",
+   "nhom_id": "KNB00448",
+   "thu_tu": 5,
+   "dang": "TÍNH GÓC HỢP BỞI TIA TỚI VÀ MẶT PHÂN CÁCH",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020109031",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào thuỷ tinh (chiết suất 1,50), do được góc khúc xạ $25^o$. Tính góc hợp bởi tia tới và mặt thuỷ tinh (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "51",
+     "loi_giai": "$\\sin i = 1,50 \\cdot \\sin 25^o = 1,50 \\cdot 0,423 = 0,634$, suy ra $i \\approx 39^o$.\nGóc cần tìm bằng $90^o - 39^o = 51^o$."
+    },
+    {
+     "ma_cau": "K09020109033",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào dầu (chiết suất 1,47), do được góc khúc xạ $32^o$. Tính góc hợp bởi tia tới và mặt dầu (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "39",
+     "loi_giai": "$\\sin i = 1,47 \\cdot \\sin 32^o = 1,47 \\cdot 0,530 = 0,779$, suy ra $i \\approx 51^o$.\nGóc cần tìm bằng $90^o - 51^o = 39^o$."
+    },
+    {
+     "ma_cau": "K09020109030",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào nước (chiết suất 1,33), do được góc khúc xạ $33^o$. Tính góc hợp bởi tia tới và mặt nước (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "44",
+     "loi_giai": "$\\sin i = 1,33 \\cdot \\sin 33^o = 1,33 \\cdot 0,545 = 0,724$, suy ra $i \\approx 46^o$.\nGóc hợp bởi tia tới và mặt nước bằng $90^o - 46^o = 44^o$."
+    },
+    {
+     "ma_cau": "K09020109034",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào kim cương (chiết suất 2,42), do được góc khúc xạ $22^o$. Tính góc hợp bởi tia tới và mặt kim cương (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "25",
+     "loi_giai": "$\\sin i = 2,42 \\cdot \\sin 22^o = 2,42 \\cdot 0,375 = 0,907$, suy ra $i \\approx 65^o$.\nGóc cần tìm bằng $90^o - 65^o = 25^o$."
+    },
+    {
+     "ma_cau": "K09020109032",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào rượu (chiết suất 1,36), do được góc khúc xạ $30^o$. Tính góc hợp bởi tia tới và mặt rượu (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "47",
+     "loi_giai": "$\\sin i = 1,36 \\cdot \\sin 30^o = 0,680$, suy ra $i \\approx 43^o$.\nGóc cần tìm bằng $90^o - 43^o = 47^o$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01156",
+   "nhom_id": "KNB00448",
+   "thu_tu": 6,
+   "dang": "TÍNH GÓC LỆCH GIỮA TIA KHÚC XẠ VÀ PHƯƠNG TIA TỚI",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020109035",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào nước (chiết suất $1,33$), đo được góc khúc xạ $42^\\circ$. Tính góc lệch giữa tia khúc xạ và phương của tia tới (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "21",
+     "loi_giai": "$\\sin i = 1,33 \\cdot \\sin 42^\\circ = 1,33 \\cdot 0,669 = 0,890$, suy ra $i \\approx 63^\\circ$. Góc lệch $D = i - r = 63^\\circ - 42^\\circ = 21^\\circ$."
+    },
+    {
+     "ma_cau": "K09020109038",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào dầu (chiết suất $1,47$), đo được góc khúc xạ $34^\\circ$. Tính góc lệch giữa tia khúc xạ và phương của tia tới (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "21",
+     "loi_giai": "$\\sin i = 1,47 \\cdot \\sin 34^\\circ = 1,47 \\cdot 0,559 = 0,822$, suy ra $i \\approx 55^\\circ$. Góc lệch $D = 55^\\circ - 34^\\circ = 21^\\circ$."
+    },
+    {
+     "ma_cau": "K09020109039",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào kim cương (chiết suất $2,42$), đo được góc khúc xạ $24^\\circ$. Tính góc lệch giữa tia khúc xạ và phương của tia tới (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "56",
+     "loi_giai": "$\\sin i = 2,42 \\cdot \\sin 24^\\circ = 2,42 \\cdot 0,407 = 0,985$, suy ra $i \\approx 80^\\circ$. Góc lệch $D = 80^\\circ - 24^\\circ = 56^\\circ$."
+    },
+    {
+     "ma_cau": "K09020109036",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào thuỷ tinh (chiết suất $1,50$), đo được góc khúc xạ $36^\\circ$. Tính góc lệch giữa tia khúc xạ và phương của tia tới (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "26",
+     "loi_giai": "$\\sin i = 1,50 \\cdot \\sin 36^\\circ = 1,50 \\cdot 0,588 = 0,882$, suy ra $i \\approx 62^\\circ$. Góc lệch $D = 62^\\circ - 36^\\circ = 26^\\circ$."
+    },
+    {
+     "ma_cau": "K09020109037",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào rượu (chiết suất $1,36$), đo được góc khúc xạ $38^\\circ$. Tính góc lệch giữa tia khúc xạ và phương của tia tới (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "19",
+     "loi_giai": "$\\sin i = 1,36 \\cdot \\sin 38^\\circ = 1,36 \\cdot 0,616 = 0,837$, suy ra $i \\approx 57^\\circ$. Góc lệch $D = 57^\\circ - 38^\\circ = 19^\\circ$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01157",
+   "nhom_id": "KNB00448",
+   "thu_tu": 7,
+   "dang": "TÍNH GÓC GIỮA TIA TỚI VÀ TIA PHẢN XẠ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020109040",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào nước (chiết suất 1,33), đo được góc khúc xạ $28^\\circ$. Tại mặt nước một phần ánh sáng bị phản xạ. Tính góc hợp bởi tia tới và tia phản xạ (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "78",
+     "loi_giai": "$\\sin i = 1,33 \\cdot \\sin 28^\\circ = 1,33 \\cdot 0,469 = 0,624$, suy ra $i \\approx 39^\\circ$. Tia tới và tia phản xạ đối xứng qua pháp tuyến nên góc giữa chúng bằng $2i = 78^\\circ$."
+    },
+    {
+     "ma_cau": "K09020109043",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào dầu (chiết suất 1,47), đo được góc khúc xạ $27^\\circ$. Tại mặt dầu một phần ánh sáng bị phản xạ. Tính góc hợp bởi tia tới và tia phản xạ (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "84",
+     "loi_giai": "$\\sin i = 1,47 \\cdot \\sin 27^\\circ = 1,47 \\cdot 0,454 = 0,667$, suy ra $i \\approx 42^\\circ$. Góc cần tìm bằng $2i = 84^\\circ$."
+    },
+    {
+     "ma_cau": "K09020109041",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào thuỷ tinh (chiết suất 1,50), đo được góc khúc xạ $33^\\circ$. Tại mặt thuỷ tinh một phần ánh sáng bị phản xạ. Tính góc hợp bởi tia tới và tia phản xạ (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "110",
+     "loi_giai": "$\\sin i = 1,50 \\cdot \\sin 33^\\circ = 1,50 \\cdot 0,545 = 0,817$, suy ra $i \\approx 55^\\circ$. Góc cần tìm bằng $2i = 110^\\circ$."
+    },
+    {
+     "ma_cau": "K09020109044",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào kim cương (chiết suất 2,42), đo được góc khúc xạ $17^\\circ$. Tại mặt kim cương một phần ánh sáng bị phản xạ. Tính góc hợp bởi tia tới và tia phản xạ (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "90",
+     "loi_giai": "$\\sin i = 2,42 \\cdot \\sin 17^\\circ = 2,42 \\cdot 0,292 = 0,708$, suy ra $i \\approx 45^\\circ$. Góc cần tìm bằng $2i = 90^\\circ$."
+    },
+    {
+     "ma_cau": "K09020109042",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào rượu (chiết suất 1,36), đo được góc khúc xạ $33^\\circ$. Tại mặt rượu một phần ánh sáng bị phản xạ. Tính góc hợp bởi tia tới và tia phản xạ (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "96",
+     "loi_giai": "$\\sin i = 1,36 \\cdot \\sin 33^\\circ = 1,36 \\cdot 0,545 = 0,741$, suy ra $i \\approx 48^\\circ$. Góc cần tìm bằng $2i = 96^\\circ$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01158",
+   "nhom_id": "KNB00448",
+   "thu_tu": 8,
+   "dang": "TÍNH GÓC TỚI KHI ĐỀ CHO CHIẾT SUẤT TỈ ĐỐI NGHỊCH ĐẢO",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020109046",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào một khối chất trong suốt, đo được góc khúc xạ $29^\\circ$. Biết chiết suất tỉ đối của không khí đối với khối chất đó bằng $0.67$. Tính góc tới (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "46",
+     "loi_giai": "$n = 1 / 0.67 = 1.49$; $\\sin i = 1.49 \\cdot \\sin 29^\\circ = 1.49 \\cdot 0.485 = 0.723$, suy ra $i \\approx 46^\\circ$."
+    },
+    {
+     "ma_cau": "K09020109045",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào một chất lỏng trong suốt, đo được góc khúc xạ $36^\\circ$. Biết chiết suất tỉ đối của không khí đối với chất lỏng đó bằng $0.75$. Tính góc tới (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "52",
+     "loi_giai": "Chiết suất của chất lỏng đối với không khí là $n = 1 / 0.75 = 1.33$.\nKhi đó $\\sin i = 1.33 \\cdot \\sin 36^\\circ = 1.33 \\cdot 0.588 = 0.782$, suy ra $i \\approx 52^\\circ$."
+    },
+    {
+     "ma_cau": "K09020109047",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào một chất lỏng trong suốt, đo được góc khúc xạ $31^\\circ$. Biết chiết suất tỉ đối của không khí đối với chất lỏng đó bằng $0.74$. Tính góc tới (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "44",
+     "loi_giai": "$n = 1 / 0.74 = 1.35$; $\\sin i = 1.35 \\cdot \\sin 31^\\circ = 1.35 \\cdot 0.515 = 0.695$, suy ra $i \\approx 44^\\circ$."
+    },
+    {
+     "ma_cau": "K09020109049",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào một khối chất rắn trong suốt, đo được góc khúc xạ $16^\\circ$. Biết chiết suất tỉ đối của không khí đối với khối chất đó bằng $0.41$. Tính góc tới (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "42",
+     "loi_giai": "$n = 1 / 0.41 = 2.44$; $\\sin i = 2.44 \\cdot \\sin 16^\\circ = 2.44 \\cdot 0.276 = 0.672$, suy ra $i \\approx 42^\\circ$."
+    },
+    {
+     "ma_cau": "K09020109048",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào một chất lỏng trong suốt, đo được góc khúc xạ $26^\\circ$. Biết chiết suất tỉ đối của không khí đối với chất lỏng đó bằng $0.68$. Tính góc tới (đơn vị độ, làm tròn đến hàng đơn vị).",
+     "dap_an": "40",
+     "loi_giai": "$n = 1 / 0.68 = 1.47$; $\\sin i = 1.47 \\cdot \\sin 26^\\circ = 1.47 \\cdot 0.438 = 0.644$, suy ra $i \\approx 40^\\circ$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01159",
+   "nhom_id": "KNB00449",
+   "thu_tu": 1,
+   "dang": "TÍNH TỐC ĐỘ ÁNH SÁNG KHI BIẾT CHIẾT SUẤT",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020110004",
+     "loai": "trac_nghiem",
+     "de": "Chiết suất của một môi trường trong suốt bằng 1,2. Biết tốc độ ánh sáng trong chân không là $3 \\cdot 10^8$ m/s. Tốc độ truyền ánh sáng trong môi trường đó bằng",
+     "lua_chon": [
+      "$3,6 \\cdot 10^8$ m/s.",
+      "2,5 $\\cdot 10^8$ m/s.",
+      "1,2 $\\cdot 10^8$ m/s.",
+      "2,4 $\\cdot 10^8$ m/s."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$v = 3 \\cdot 10^8 / 1,2 = 2,5 \\cdot 10^8$ m/s."
+    },
+    {
+     "ma_cau": "K09020110005",
+     "loai": "trac_nghiem",
+     "de": "Chiết suất của nước bằng $4/3$. Biết tốc độ ánh sáng trong chân không là $3 \\cdot 10^8 \\text{ m/s}$. Tốc độ truyền ánh sáng trong nước bằng",
+     "lua_chon": [
+      "$4 \\cdot 10^8 \\text{ m/s}$.",
+      "$1,33 \\cdot 10^8 \\text{ m/s}$.",
+      "$2,25 \\cdot 10^8 \\text{ m/s}$.",
+      "$2,5 \\cdot 10^8 \\text{ m/s}$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$v = 3 \\cdot 10^8 \\cdot (4/3) = 3 \\cdot 10^8 \\cdot 3/4 = 2,25 \\cdot 10^8 \\text{ m/s}$."
+    },
+    {
+     "ma_cau": "K09020110001",
+     "loai": "trac_nghiem",
+     "de": "Chiết suất của một môi trường trong suốt bằng 1,5. Biết tốc độ ánh sáng trong chân không là $3 \\cdot 10^8$ m/s. Tốc độ truyền ánh sáng trong môi trường đó bằng",
+     "lua_chon": [
+      "$4,5 \\cdot 10^8$ m/s.",
+      "3 $\\cdot 10^8$ m/s.",
+      "2 $\\cdot 10^8$ m/s.",
+      "1,5 $\\cdot 10^8$ m/s."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$v = c / n = 3 \\cdot 10^8 / 1,5 = 2 \\cdot 10^8$ m/s. Phương án $4,5 \\cdot 10^8$ m/s là kết quả của việc nhân thay vì chia, cho tốc độ lớn hơn tốc độ ánh sáng trong chân không, điều không thể xảy ra."
+    },
+    {
+     "ma_cau": "K09020110008",
+     "loai": "trac_nghiem",
+     "de": "Chiết suất của một môi trường trong suốt bằng $2,4$. Biết tốc độ ánh sáng trong chân không là $3 \\cdot 10^8 \\text{ m/s}$. Tốc độ truyền ánh sáng trong môi trường đó bằng",
+     "lua_chon": [
+      "$7,2 \\cdot 10^8 \\text{ m/s}$.",
+      "$1,25 \\cdot 10^8 \\text{ m/s}$.",
+      "$2,4 \\cdot 10^8 \\text{ m/s}$.",
+      "$0,8 \\cdot 10^8 \\text{ m/s}$."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$v = 3 \\cdot 10^8 / 2,4 = 1,25 \\cdot 10^8 \\text{ m/s}$."
+    },
+    {
+     "ma_cau": "K09020110002",
+     "loai": "trac_nghiem",
+     "de": "Chiết suất của một môi trường trong suốt bằng 1,25. Biết tốc độ ánh sáng trong chân không là $3 \\cdot 10^8$ m/s. Tốc độ truyền ánh sáng trong môi trường đó bằng",
+     "lua_chon": [
+      "$2,4 \\cdot 10^8$ m/s.",
+      "3,75 $\\cdot 10^8$ m/s.",
+      "1,25 $\\cdot 10^8$ m/s.",
+      "2,5 $\\cdot 10^8$ m/s."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$v = 3 \\cdot 10^8 / 1,25 = 2,4 \\cdot 10^8$ m/s. Phương án $3,75 \\cdot 10^8$ m/s là kết quả của phép nhân."
+    },
+    {
+     "ma_cau": "K09020110006",
+     "loai": "trac_nghiem",
+     "de": "Chiết suất của một môi trường trong suốt bằng $2,5$. Biết tốc độ ánh sáng trong chân không là $3 \\cdot 10^8 \\text{ m/s}$. Tốc độ truyền ánh sáng trong môi trường đó bằng",
+     "lua_chon": [
+      "$1,2 \\cdot 10^8 \\text{ m/s}$.",
+      "$7,5 \\cdot 10^8 \\text{ m/s}$.",
+      "$2,5 \\cdot 10^8 \\text{ m/s}$.",
+      "$0,5 \\cdot 10^8 \\text{ m/s}$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$v = 3 \\cdot 10^8 / 2,5 = 1,2 \\cdot 10^8 \\text{ m/s}$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01160",
+   "nhom_id": "KNB00449",
+   "thu_tu": 2,
+   "dang": "TÍNH CHIẾT SUẤT KHI BIẾT TỐC ĐỘ ÁNH SÁNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 8,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020110014",
+     "loai": "trac_nghiem",
+     "de": "Tốc độ truyền ánh sáng trong một môi trường trong suốt là $2,05\\cdot 10^8$ m/s. Biết tốc độ ánh sáng trong chân không là $3\\cdot 10^8$ m/s. Chiết suất của môi trường đó bằng",
+     "lua_chon": [
+      "0,68.",
+      "2,05.",
+      "1,46.",
+      "6,15."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$n = 3 / 2,05 = 1,46$."
+    },
+    {
+     "ma_cau": "K09020110011",
+     "loai": "trac_nghiem",
+     "de": "Tốc độ truyền ánh sáng trong một môi trường trong suốt là $1,6\\cdot 10^8$ m/s. Biết tốc độ ánh sáng trong chân không là $3\\cdot 10^8$ m/s. Chiết suất của môi trường đó bằng",
+     "lua_chon": [
+      "0,53.",
+      "1,88.",
+      "1,60.",
+      "4,80."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$n = 3 / 1,6 = 1,88$."
+    },
+    {
+     "ma_cau": "K09020110012",
+     "loai": "trac_nghiem",
+     "de": "Tốc độ truyền ánh sáng trong một môi trường trong suốt là $2,6\\cdot 10^8$ m/s. Biết tốc độ ánh sáng trong chân không là $3\\cdot 10^8$ m/s. Chiết suất của môi trường đó bằng",
+     "lua_chon": [
+      "0,87.",
+      "2,60.",
+      "7,80.",
+      "1,15."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$n = 3 / 2,6 = 1,15$. Chiết suất gần $1$ cho thấy môi trường làm chậm ánh sáng rất ít."
+    },
+    {
+     "ma_cau": "K09020110015",
+     "loai": "trac_nghiem",
+     "de": "Tốc độ truyền ánh sáng trong một môi trường trong suốt là $1,75\\cdot 10^8$ m/s. Biết tốc độ ánh sáng trong chân không là $3\\cdot 10^8$ m/s. Chiết suất của môi trường đó bằng",
+     "lua_chon": [
+      "0,58.",
+      "1,71.",
+      "1,75.",
+      "5,25."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$n = 3 / 1,75 = 1,71$."
+    },
+    {
+     "ma_cau": "K09020110009",
+     "loai": "trac_nghiem",
+     "de": "Tốc độ truyền ánh sáng trong một môi trường trong suốt là $1,8\\cdot 10^8$ m/s. Biết tốc độ ánh sáng trong chân không là $3\\cdot 10^8$ m/s. Chiết suất của môi trường đó bằng",
+     "lua_chon": [
+      "1,67.",
+      "0,60.",
+      "1,80.",
+      "5,40."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$n = \\mathrm{c} / \\mathrm{v} = 3\\cdot 10^8 / 1,8\\cdot 10^8 = 1,67$. Phương án $0,60$ là kết quả của việc lập tỉ số ngược $\\mathrm{v}$/c, cho chiết suất nhỏ hơn $1$, điều không thể xảy ra với mọi trường vật chất."
+    },
+    {
+     "ma_cau": "K09020110013",
+     "loai": "trac_nghiem",
+     "de": "Tốc độ truyền ánh sáng trong một môi trường trong suốt là $1,4\\cdot 10^8$ m/s. Biết tốc độ ánh sáng trong chân không là $3\\cdot 10^8$ m/s. Chiết suất của môi trường đó bằng",
+     "lua_chon": [
+      "2,14.",
+      "0,47.",
+      "1,40.",
+      "4,20."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$n = 3 / 1,4 = 2,14$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01161",
+   "nhom_id": "KNB00449",
+   "thu_tu": 3,
+   "dang": "SO SÁNH TỐC ĐỘ ÁNH SÁNG TRONG HAI MÔI TRƯỜNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020110019",
+     "loai": "trac_nghiem",
+     "de": "Rượu có chiết suất 1,36, dầu có chiết suất 1,47. Tỉ số giữa tốc độ ánh sáng trong rượu và tốc độ ánh sáng trong dầu bằng",
+     "lua_chon": [
+      "0,93.",
+      "1,47.",
+      "1,08.",
+      "2,00."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$v_{\\text{rượu}} / v_{\\text{dầu}} = 1,47 / 1,36 = 1,08$."
+    },
+    {
+     "ma_cau": "K09020110018",
+     "loai": "trac_nghiem",
+     "de": "Nước có chiết suất 1,33, kim cương có chiết suất 2,42. Tỉ số giữa tốc độ ánh sáng trong nước và tốc độ ánh sáng trong kim cương bằng",
+     "lua_chon": [
+      "0,55.",
+      "1,82.",
+      "2,42.",
+      "3,22."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$v_{\\text{nước}} / v_{\\text{kim cương}} = 2,42 / 1,33 = 1,82$."
+    },
+    {
+     "ma_cau": "K09020110017",
+     "loai": "trac_nghiem",
+     "de": "Nước có chiết suất 1,33, thuỷ tinh có chiết suất 1,50. Tỉ số giữa tốc độ ánh sáng trong nước và tốc độ ánh sáng trong thuỷ tinh bằng",
+     "lua_chon": [
+      "0,89.",
+      "2,00.",
+      "1,50.",
+      "1,13."
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tỉ số tốc độ nghịch đảo với tỉ số chiết suất, nên phải lấy chiết suất của thuỷ tinh chia cho chiết suất của nước. Phương án 0,89 là kết quả của việc lập tỉ số cùng chiều $1,33 / 1,50$."
+    },
+    {
+     "ma_cau": "K09020110023",
+     "loai": "trac_nghiem",
+     "de": "Hai môi trường trong suốt có chiết suất lần lượt là $1,50$ và $2,40$. Tỉ số giữa tốc độ ánh sáng trong môi trường thứ nhất và tốc độ ánh sáng trong môi trường thứ hai bằng",
+     "lua_chon": [
+      "$0,63$.",
+      "$3,60$.",
+      "$1,60$.",
+      "$0,90$."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$v_1 / v_2 = 2,40 / 1,50 = 1,60$."
+    },
+    {
+     "ma_cau": "K09020110021",
+     "loai": "trac_nghiem",
+     "de": "Hai môi trường trong suốt có chiết suất lần lượt là $1,2$ và $1,8$. Tỉ số giữa tốc độ ánh sáng trong môi trường thứ nhất và tốc độ ánh sáng trong môi trường thứ hai bằng",
+     "lua_chon": [
+      "$0,67$.",
+      "$2,16$.",
+      "$3,00$.",
+      "$1,50$."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$v_1 / v_2 = n_2 / n_1 = 1,8 / 1,2 = 1,50$."
+    },
+    {
+     "ma_cau": "K09020110020",
+     "loai": "trac_nghiem",
+     "de": "Thủy tinh có chiết suất $1,50$, kim cương có chiết suất $2,42$. Tỉ số giữa tốc độ ánh sáng trong thủy tinh và tốc độ ánh sáng trong kim cương bằng",
+     "lua_chon": [
+      "$1,61$.",
+      "$0,62$.",
+      "$3,63$.",
+      "$0,92$."
+     ],
+     "dap_an": "A",
+     "loi_giai": "$v_{\\text{thủy tinh}} / v_{\\text{kim cương}} = 2,42 / 1,50 = 1,61$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01162",
+   "nhom_id": "KNB00449",
+   "thu_tu": 4,
+   "dang": "TÍNH TỐC ĐỘ ÁNH SÁNG TỪ GÓC TỚI VÀ GÓC KHÚC XẠ",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 7,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020110029",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $50^\\circ$, đo được góc khúc xạ $35^\\circ$. Biết tốc độ ánh sáng trong chân không là $3 \\cdot 10^8$ m/s. Tốc độ truyền ánh sáng trong môi trường đó bằng",
+     "lua_chon": [
+      "$1,34 \\cdot 10^8$ m/s.",
+      "$4,02 \\cdot 10^8$ m/s.",
+      "$2,24 \\cdot 10^8$ m/s.",
+      "$2,10 \\cdot 10^8$ m/s."
+     ],
+     "dap_an": "C",
+     "loi_giai": "$n = \\sin 50^\\circ / \\sin 35^\\circ = 1,34$; $v = 3 \\cdot 10^8 / 1,34 = 2,24 \\cdot 10^8$ m/s."
+    },
+    {
+     "ma_cau": "K09020110026",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $60^\\circ$, đo được góc khúc xạ $45^\\circ$. Biết tốc độ ánh sáng trong chân không là $3\\cdot 10^8\\ \\mathrm{m/s}$. Tốc độ truyền ánh sáng trong môi trường đó bằng",
+     "lua_chon": [
+      "$1,22\\cdot 10^8\\ \\mathrm{m/s}$.",
+      "$3,66\\cdot 10^8\\ \\mathrm{m/s}$.",
+      "$2,25\\cdot 10^8\\ \\mathrm{m/s}$.",
+      "$2,45\\cdot 10^8\\ \\mathrm{m/s}$. "
+     ],
+     "dap_an": "D",
+     "loi_giai": "$n = \\sin 60^\\circ / \\sin 45^\\circ = 1,22$; $v = 3\\cdot 10^8 / 1,22 = 2,45\\cdot 10^8\\ \\mathrm{m/s}$."
+    },
+    {
+     "ma_cau": "K09020110030",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $56^\\circ$, đo được góc khúc xạ $20^\\circ$. Biết tốc độ ánh sáng trong chân không là $3\\cdot10^8$ m/s. Tốc độ truyền ánh sáng trong môi trường đó bằng",
+     "lua_chon": [
+      "2,42$\\cdot10^8$ m/s.",
+      "7,26$\\cdot10^8$ m/s.",
+      "2,00$\\cdot10^8$ m/s.",
+      "1,24$\\cdot10^8$ m/s."
+     ],
+     "dap_an": "D",
+     "loi_giai": "$n = \\sin 56^\\circ / \\sin 20^\\circ = 2,42$; $v = 3\\cdot10^8 / 2,42 = 1,24\\cdot10^8$ m/s. Đây là kim cương, môi trường làm ánh sáng chậm nhất trong bảng."
+    },
+    {
+     "ma_cau": "K09020110024",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $60^\\circ$, đo được góc khúc xạ $30^\\circ$. Biết tốc độ ánh sáng trong chân không là $3\\cdot 10^8\\ \\mathrm{m/s}$. Tốc độ truyền ánh sáng trong môi trường đó bằng",
+     "lua_chon": [
+      "$1,73\\cdot 10^8\\ \\mathrm{m/s}$.",
+      "$5,19\\cdot 10^8\\ \\mathrm{m/s}$.",
+      "$1,50\\cdot 10^8\\ \\mathrm{m/s}$.",
+      "$2,00\\cdot 10^8\\ \\mathrm{m/s}$. "
+     ],
+     "dap_an": "A",
+     "loi_giai": "$n = \\sin 60^\\circ / \\sin 30^\\circ = 1,73$; $v = 3\\cdot 10^8 / 1,73 = 1,73\\cdot 10^8\\ \\mathrm{m/s}$. Phương án $1,50\\cdot 10^8\\ \\mathrm{m/s}$ ứng với việc lấy tỉ số hai góc $60^\\circ / 30^\\circ = 2$ làm chiết suất."
+    },
+    {
+     "ma_cau": "K09020110025",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $45^\\circ$, đo được góc khúc xạ $30^\\circ$. Biết tốc độ ánh sáng trong chân không là $3\\cdot 10^8\\ \\mathrm{m/s}$. Tốc độ truyền ánh sáng trong môi trường đó bằng",
+     "lua_chon": [
+      "$4,23\\cdot 10^8\\ \\mathrm{m/s}$.",
+      "$1,41\\cdot 10^8\\ \\mathrm{m/s}$.",
+      "$2,12\\cdot 10^8\\ \\mathrm{m/s}$.",
+      "$2,00\\cdot 10^8\\ \\mathrm{m/s}$. "
+     ],
+     "dap_an": "C",
+     "loi_giai": "$n = \\sin 45^\\circ / \\sin 30^\\circ = 1,41$; $v = 3\\cdot 10^8 / 1,41 = 2,12\\cdot 10^8\\ \\mathrm{m/s}$."
+    },
+    {
+     "ma_cau": "K09020110027",
+     "loai": "trac_nghiem",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $60^\\circ$, đo được góc khúc xạ $35^\\circ$. Biết tốc độ ánh sáng trong chân không là $3 \\cdot 10^8$ m/s. Tốc độ truyền ánh sáng trong môi trường đó bằng",
+     "lua_chon": [
+      "$1,51 \\cdot 10^8$ m/s.",
+      "$1,99 \\cdot 10^8$ m/s.",
+      "$4,53 \\cdot 10^8$ m/s.",
+      "$2,25 \\cdot 10^8$ m/s."
+     ],
+     "dap_an": "B",
+     "loi_giai": "$n = \\sin 60^\\circ / \\sin 35^\\circ = 1,51$; $v = 3 \\cdot 10^8 / 1,51 = 1,99 \\cdot 10^8$ m/s."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01163",
+   "nhom_id": "KNB00449",
+   "thu_tu": 5,
+   "dang": "TÍNH QUÃNG ĐƯỜNG ÁNH SÁNG ĐI ĐƯỢC TRONG MỘT KHOẢNG THỜI GIAN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020110034",
+     "loai": "tra_loi_ngan",
+     "de": "Ánh sáng truyền thẳng qua một khối chất trong suốt dài $900 \\ \\mathrm{m}$ có chiết suất $2$. Biết tốc độ ánh sáng trong chân không là $3 \\cdot 10^8 \\ \\mathrm{m/s}$. Tính thời gian ánh sáng đi hết quãng đường đó (đơn vị $\\mu s$).",
+     "dap_an": "6",
+     "loi_giai": "$v = 3 \\cdot 10^8 / 2 = 1,5 \\cdot 10^8 \\ \\mathrm{m/s}$; $t = 900 / (1,5 \\cdot 10^8) = 6 \\cdot 10^{-6} \\ \\mathrm{s} = 6 \\ \\mu s$."
+    },
+    {
+     "ma_cau": "K09020110031",
+     "loai": "tra_loi_ngan",
+     "de": "Ánh sáng truyền thẳng qua một khối chất trong suốt dài $600 \\ \\mathrm{m}$ có chiết suất $1,5$. Biết tốc độ ánh sáng trong chân không là $3 \\cdot 10^8 \\ \\mathrm{m/s}$. Tính thời gian ánh sáng đi hết quãng đường đó (đơn vị $\\mu s$).",
+     "dap_an": "3",
+     "loi_giai": "$v = 3 \\cdot 10^8 / 1,5 = 2 \\cdot 10^8 \\ \\mathrm{m/s}$; $t = 600 / (2 \\cdot 10^8) = 3 \\cdot 10^{-6} \\ \\mathrm{s} = 3 \\ \\mu s$."
+    },
+    {
+     "ma_cau": "K09020110033",
+     "loai": "tra_loi_ngan",
+     "de": "Ánh sáng truyền thẳng qua một khối chất trong suốt dài $1250 \\ \\mathrm{m}$ có chiết suất $1,2$. Biết tốc độ ánh sáng trong chân không là $3 \\cdot 10^8 \\ \\mathrm{m/s}$. Tính thời gian ánh sáng đi hết quãng đường đó (đơn vị $\\mu s$).",
+     "dap_an": "5",
+     "loi_giai": "$v = 3 \\cdot 10^8 / 1,2 = 2,5 \\cdot 10^8 \\ \\mathrm{m/s}$; $t = 1250 / (2,5 \\cdot 10^8) = 5 \\cdot 10^{-6} \\ \\mathrm{s} = 5 \\ \\mu s$."
+    },
+    {
+     "ma_cau": "K09020110035",
+     "loai": "tra_loi_ngan",
+     "de": "Ánh sáng truyền thẳng qua một khối chất trong suốt dài $1800 \\ \\mathrm{m}$ có chiết suất $1,25$. Biết tốc độ ánh sáng trong chân không là $3 \\cdot 10^8 \\ \\mathrm{m/s}$. Tính thời gian ánh sáng đi hết quãng đường đó (đơn vị $\\mu s$).",
+     "dap_an": "7,5",
+     "loi_giai": "$v = 3 \\cdot 10^8 / 1,25 = 2,4 \\cdot 10^8 \\ \\mathrm{m/s}$; $t = 1800 / (2,4 \\cdot 10^8) = 7,5 \\cdot 10^{-6} \\ \\mathrm{s} = 7,5 \\ \\mu s$."
+    },
+    {
+     "ma_cau": "K09020110032",
+     "loai": "tra_loi_ngan",
+     "de": "Ánh sáng truyền thẳng qua một khối chất trong suốt dài $800 \\ \\mathrm{m}$ có chiết suất $1,5$. Biết tốc độ ánh sáng trong chân không là $3 \\cdot 10^8 \\ \\mathrm{m/s}$. Tính thời gian ánh sáng đi hết quãng đường đó (đơn vị $\\mu s$).",
+     "dap_an": "4",
+     "loi_giai": "$v = 2 \\cdot 10^8 \\ \\mathrm{m/s}$; $t = 800 / (2 \\cdot 10^8) = 4 \\cdot 10^{-6} \\ \\mathrm{s} = 4 \\ \\mu s$."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01164",
+   "nhom_id": "KNB00449",
+   "thu_tu": 6,
+   "dang": "TÍNH QUÃNG ĐƯỜNG ÁNH SÁNG ĐI ĐƯỢC TRONG MỘT KHOẢNG THỜI GIAN",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020110038",
+     "loai": "tra_loi_ngan",
+     "de": "Trong một môi trường trong suốt có chiết suất 2, ánh sáng truyền thẳng trong 3 $\\mu$s. Biết tốc độ ánh sáng trong chân không là $3\\cdot10^8$ m/s. Tính quãng đường ánh sáng đi được (đơn vị mét).",
+     "dap_an": "450",
+     "loi_giai": "Vận tốc ánh sáng trong môi trường có chiết suất n là: $v = \\dfrac{c}{n} = \\dfrac{3\\cdot10^8}{2} = 1,5\\cdot10^8$ m/s.\nQuãng đường ánh sáng đi được là: $s = v\\cdot t = 1,5\\cdot10^8 \\cdot 3\\cdot10^{-6} = 450$ m."
+    },
+    {
+     "ma_cau": "K09020110040",
+     "loai": "tra_loi_ngan",
+     "de": "Trong một môi trường trong suốt có chiết suất 2,5, ánh sáng truyền thẳng trong 10 $\\mu$s. Biết tốc độ ánh sáng trong chân không là $3\\cdot10^8$ m/s. Tính quãng đường ánh sáng đi được (đơn vị mét).",
+     "dap_an": "1200",
+     "loi_giai": "Vận tốc ánh sáng trong môi trường có chiết suất n là: $v = \\dfrac{c}{n} = \\dfrac{3\\cdot10^8}{2,5} = 1,2\\cdot10^8$ m/s.\nQuãng đường ánh sáng đi được là: $s = v\\cdot t = 1,2\\cdot10^8 \\cdot 10\\cdot10^{-6} = 1200$ m."
+    },
+    {
+     "ma_cau": "K09020110037",
+     "loai": "tra_loi_ngan",
+     "de": "Trong một môi trường trong suốt có chiết suất 1,2, ánh sáng truyền thẳng trong 6 $\\mu$s. Biết tốc độ ánh sáng trong chân không là $3\\cdot10^8$ m/s. Tính quãng đường ánh sáng đi được (đơn vị mét).",
+     "dap_an": "1500",
+     "loi_giai": "Vận tốc ánh sáng trong môi trường có chiết suất n là: $v = \\dfrac{c}{n} = \\dfrac{3\\cdot10^8}{1,2} = 2,5\\cdot10^8$ m/s.\nQuãng đường ánh sáng đi được là: $s = v\\cdot t = 2,5\\cdot10^8 \\cdot 6\\cdot10^{-6} = 1500$ m."
+    },
+    {
+     "ma_cau": "K09020110039",
+     "loai": "tra_loi_ngan",
+     "de": "Trong một môi trường trong suốt có chiết suất 1,25, ánh sáng truyền thẳng trong 4 $\\mu$s. Biết tốc độ ánh sáng trong chân không là $3\\cdot10^8$ m/s. Tính quãng đường ánh sáng đi được (đơn vị mét).",
+     "dap_an": "960",
+     "loi_giai": "Vận tốc ánh sáng trong môi trường có chiết suất n là: $v = \\dfrac{c}{n} = \\dfrac{3\\cdot10^8}{1,25} = 2,4\\cdot10^8$ m/s.\nQuãng đường ánh sáng đi được là: $s = v\\cdot t = 2,4\\cdot10^8 \\cdot 4\\cdot10^{-6} = 960$ m."
+    },
+    {
+     "ma_cau": "K09020110036",
+     "loai": "tra_loi_ngan",
+     "de": "Trong một môi trường trong suốt có chiết suất 1,5, ánh sáng truyền thẳng trong 2 $\\mu$s. Biết tốc độ ánh sáng trong chân không là $3\\cdot10^8$ m/s. Tính quãng đường ánh sáng đi được (đơn vị mét).",
+     "dap_an": "400",
+     "loi_giai": "Vận tốc ánh sáng trong môi trường có chiết suất n là: $v = \\dfrac{c}{n} = \\dfrac{3\\cdot10^8}{1,5} = 2\\cdot10^8$ m/s.\nQuãng đường ánh sáng đi được là: $s = v\\cdot t = 2\\cdot10^8 \\cdot 2\\cdot10^{-6} = 400$ m."
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01165",
+   "nhom_id": "KNB00449",
+   "thu_tu": 7,
+   "dang": "TÍNH TỐC ĐỘ ÁNH SÁNG TỪ SỐ LIỆU ĐO GÓC",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020110042",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $65^\\circ$, đo được góc khúc xạ $40^\\circ$. Biết tốc độ ánh sáng trong chân không là $3\\cdot 10^8\\ \\mathrm{m/s}$. Tính tốc độ truyền ánh sáng trong môi trường đó (đơn vị $10^8\\ \\mathrm{m/s}$, làm tròn đến chữ số thập phân thứ hai).",
+     "dap_an": "2.13",
+     "loi_giai": "Độ lớn chiết suất của môi trường đó là: $n = \\dfrac{\\sin i}{\\sin r} = \\dfrac{\\sin 65^\\circ}{\\sin 40^\\circ} = \\dfrac{0.906}{0.643} = 1.41$\nTốc độ truyền ánh sáng trong môi trường là: $v = \\dfrac{c}{n} = \\dfrac{3\\cdot 10^8}{1.41} = 2.13\\cdot 10^8\\ \\mathrm{m/s}$"
+    },
+    {
+     "ma_cau": "K09020110044",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $53^\\circ$, đo được góc khúc xạ $37^\\circ$. Biết tốc độ ánh sáng trong chân không là $3\\cdot 10^8\\ \\mathrm{m/s}$. Tính tốc độ truyền ánh sáng trong môi trường đó (đơn vị $10^8\\ \\mathrm{m/s}$, làm tròn đến chữ số thập phân thứ hai).",
+     "dap_an": "2.26",
+     "loi_giai": "Độ lớn chiết suất của môi trường đó là: $n = \\dfrac{\\sin i}{\\sin r} = \\dfrac{\\sin 53^\\circ}{\\sin 37^\\circ} = \\dfrac{0.799}{0.602} = 1.33$\nTốc độ truyền ánh sáng trong môi trường là: $v = \\dfrac{c}{n} = \\dfrac{3\\cdot 10^8}{1.33} = 2.26\\cdot 10^8\\ \\mathrm{m/s}$"
+    },
+    {
+     "ma_cau": "K09020110041",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $48^\\circ$, đo được góc khúc xạ $30^\\circ$. Biết tốc độ ánh sáng trong chân không là $3\\cdot 10^8\\ \\mathrm{m/s}$. Tính tốc độ truyền ánh sáng trong môi trường đó (đơn vị $10^8\\ \\mathrm{m/s}$, làm tròn đến chữ số thập phân thứ hai).",
+     "dap_an": "2.02",
+     "loi_giai": "Độ lớn chiết suất của môi trường đó là: $n = \\dfrac{\\sin i}{\\sin r} = \\dfrac{\\sin 48^\\circ}{\\sin 30^\\circ} = \\dfrac{0.743}{0.500} = 1.49$\nTốc độ truyền ánh sáng trong môi trường là: $v = \\dfrac{c}{n} = \\dfrac{3\\cdot 10^8}{1.49} = 2.02\\cdot 10^8\\ \\mathrm{m/s}$"
+    },
+    {
+     "ma_cau": "K09020110043",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $75^\\circ$, đo được góc khúc xạ $40^\\circ$. Biết tốc độ ánh sáng trong chân không là $3\\cdot 10^8\\ \\mathrm{m/s}$. Tính tốc độ truyền ánh sáng trong môi trường đó (đơn vị $10^8\\ \\mathrm{m/s}$, làm tròn đến chữ số thập phân thứ hai).",
+     "dap_an": "2.00",
+     "loi_giai": "Độ lớn chiết suất của môi trường đó là: $n = \\dfrac{\\sin i}{\\sin r} = \\dfrac{\\sin 75^\\circ}{\\sin 40^\\circ} = \\dfrac{0.966}{0.643} = 1.50$\nTốc độ truyền ánh sáng trong môi trường là: $v = \\dfrac{c}{n} = \\dfrac{3\\cdot 10^8}{1.50} = 2.00\\cdot 10^8\\ \\mathrm{m/s}$. Môi trường này là thủy tinh."
+    },
+    {
+     "ma_cau": "K09020110045",
+     "loai": "tra_loi_ngan",
+     "de": "Chiếu một tia sáng từ không khí vào một môi trường trong suốt với góc tới $35^\\circ$, đo được góc khúc xạ $25^\\circ$. Biết tốc độ ánh sáng trong chân không là $3\\cdot 10^8\\ \\mathrm{m/s}$. Tính tốc độ truyền ánh sáng trong môi trường đó (đơn vị $10^8\\ \\mathrm{m/s}$, làm tròn đến chữ số thập phân thứ hai).",
+     "dap_an": "2.21",
+     "loi_giai": "Độ lớn chiết suất của môi trường đó là: $n = \\dfrac{\\sin i}{\\sin r} = \\dfrac{\\sin 35^\\circ}{\\sin 25^\\circ} = \\dfrac{0.574}{0.423} = 1.36$\nTốc độ truyền ánh sáng trong môi trường là: $v = \\dfrac{c}{n} = \\dfrac{3\\cdot 10^8}{1.36} = 2.21\\cdot 10^8\\ \\mathrm{m/s}$"
+    }
+   ]
+  },
+  {
+   "dang_id": "KDB01166",
+   "nhom_id": "KNB00449",
+   "thu_tu": 8,
+   "dang": "TÍNH HIỆU TỐC ĐỘ ÁNH SÁNG TRONG HAI MÔI TRƯỜNG",
+   "mo_ta_hien_co": "",
+   "ly_thuyet_hien_co": "",
+   "vi_du_hien_co": "",
+   "can_dien_mo_ta": true,
+   "can_dien_ly_thuyet": true,
+   "can_dien_vi_du": true,
+   "so_cau_da_gan": 5,
+   "cau_mau": [
+    {
+     "ma_cau": "K09020110046",
+     "loai": "tra_loi_ngan",
+     "de": "Hai môi trường trong suốt có chiết suất lần lượt là $1,5$ và $2,5$. Biết tốc độ ánh sáng trong chân không là $3\\cdot10^8$ m/s. Tính hiệu giữa tốc độ ánh sáng trong môi trường thứ nhất và trong môi trường thứ hai (đơn vị $10^8$ m/s).",
+     "dap_an": "0.8",
+     "loi_giai": "$v_1 = 3\\cdot10^8 / 1,5 = 2,0\\cdot10^8$ m/s;\n$v_2 = 3\\cdot10^8 / 2,5 = 1,2\\cdot10^8$ m/s.\nHiệu bằng $2,0\\cdot10^8 - 1,2\\cdot10^8 = 0,8\\cdot10^8$ m/s."
+    },
+    {
+     "ma_cau": "K09020110048",
+     "loai": "tra_loi_ngan",
+     "de": "Hai môi trường trong suốt có chiết suất lần lượt là $1,25$ và $1,5$. Biết tốc độ ánh sáng trong chân không là $3\\cdot10^8$ m/s. Tính hiệu giữa tốc độ ánh sáng trong môi trường thứ nhất và trong môi trường thứ hai (đơn vị $10^8$ m/s).",
+     "dap_an": "0.4",
+     "loi_giai": "$v_1 = 2,4\\cdot10^8$ m/s;\n$v_2 = 2,0\\cdot10^8$ m/s.\nHiệu bằng $0,4\\cdot10^8$ m/s."
+    },
+    {
+     "ma_cau": "K09020110049",
+     "loai": "tra_loi_ngan",
+     "de": "Hai môi trường trong suốt có chiết suất lần lượt là $1,25$ và $2,4$. Biết tốc độ ánh sáng trong chân không là $3\\cdot10^8$ m/s. Tính hiệu giữa tốc độ ánh sáng trong môi trường thứ nhất và trong môi trường thứ hai (đơn vị $10^8$ m/s).",
+     "dap_an": "1.15",
+     "loi_giai": "$v_1 = 2,4\\cdot10^8$ m/s;\n$v_2 = 1,25\\cdot10^8$ m/s.\nHiệu bằng $1,15\\cdot10^8$ m/s."
+    },
+    {
+     "ma_cau": "K09020110050",
+     "loai": "tra_loi_ngan",
+     "de": "Hai môi trường trong suốt có chiết suất lần lượt là $1,2$ và $2,5$. Biết tốc độ ánh sáng trong chân không là $3\\cdot10^8$ m/s. Tính hiệu giữa tốc độ ánh sáng trong môi trường thứ nhất và trong môi trường thứ hai (đơn vị $10^8$ m/s).",
+     "dap_an": "1.3",
+     "loi_giai": "$v_1 = 2,5\\cdot10^8$ m/s;\n$v_2 = 1,2\\cdot10^8$ m/s.\nHiệu bằng $1,3\\cdot10^8$ m/s."
+    },
+    {
+     "ma_cau": "K09020110047",
+     "loai": "tra_loi_ngan",
+     "de": "Hai môi trường trong suốt có chiết suất lần lượt là $1,2$ và $2,0$. Biết tốc độ ánh sáng trong chân không là $3\\cdot10^8$ m/s. Tính hiệu giữa tốc độ ánh sáng trong môi trường thứ nhất và trong môi trường thứ hai (đơn vị $10^8$ m/s).",
+     "dap_an": "1.0",
+     "loi_giai": "$v_1 = 2,5\\cdot10^8$ m/s;\n$v_2 = 1,5\\cdot10^8$ m/s.\nHiệu bằng $1,0\\cdot10^8$ m/s."
+    }
+   ]
+  }
+ ]
+}

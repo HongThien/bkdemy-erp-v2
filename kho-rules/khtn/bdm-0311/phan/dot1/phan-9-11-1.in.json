@@ -1,0 +1,558 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00565",
+   "chu_de": "Di truyền học",
+   "chuyen_de": "Tái bản DNA và phiên mã tạo RNA",
+   "nhom": "TÍNH SỐ LIỆU GENE CON SAU K LẦN TÁI BẢN",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nTái bản DNA (nhân đôi DNA) là quá trình từ một phân tử DNA mẹ tạo ra hai phân tử DNA con giống nhau và giống DNA mẹ.\nQuá trình diễn ra theo nguyên tắc bổ sung (A–T, G–C) và nguyên tắc bán bảo toàn: mỗi DNA con có một mạch cũ của DNA mẹ và một mạch mới tổng hợp.\nNguyên tắc bổ sung trong gene: A = T, G = C, $N = 2(A + G)$, số liên kết hydrogen $H = 2A + 3G$ (cặp A–T có 2 liên kết, cặp G–C có 3 liên kết).\nGene tái bản liên tiếp k lần:\n- Số gene con: $2^k$.\n- Số gene con mang nguyên liệu hoàn toàn mới (không chứa mạch cũ của gene mẹ): $2^k - 2$ (luôn có đúng 2 gene con chứa mạch cũ).\n- Nguyên liệu môi trường cung cấp: $N_{mt} = N \\cdot (2^k - 1)$; từng loại $A_{mt} = T_{mt} = A \\cdot (2^k - 1)$, $G_{mt} = C_{mt} = G \\cdot (2^k - 1)$.\n- Tổng số liên kết hydrogen bị phá vỡ: $H_{pv} = H \\cdot (2^k - 1)$.\n\n##PP 2. Các bước làm bài\nXác định các đại lượng đề cho (N, A, G, H, k hoặc số gene con) và đại lượng cần tìm.\nTính hệ số $2^k$, $2^k - 1$ hoặc $2^k - 2$ tuỳ đề hỏi số gene con, nguyên liệu môi trường hay gene con nguyên liệu mới.\nNhân hệ số với đại lượng của một gene (N, A, G hoặc H); nếu đề cho nguyên liệu môi trường và hỏi N hay k thì giải ngược bằng phép chia hoặc viết $2^k$ dưới dạng luỹ thừa của 2.\n\n##CY 3. Lưu ý\nGene mẹ ban đầu không do môi trường cung cấp nguyên liệu nên nguyên liệu môi trường dùng hệ số $2^k - 1$, không phải $2^k$.\nSố gene con mang nguyên liệu hoàn toàn mới là $2^k - 2$ (trừ 2 gene còn mạch cũ), không phải $2^k - 1$.\nTổng số gene con $2^k$ gồm cả hai gene còn mang mạch cũ.\nCần phân biệt N (số nucleotide) với H (số liên kết hydrogen) của gene.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01299",
+     "thu_tu": 1,
+     "ten": "CHO N, K, TÍNH TỔNG NUCLEOTIDE MÔI TRƯỜNG CUNG CẤP",
+     "mo_ta": "Đề cho tổng số nucleotide N của một gene và số lần tái bản liên tiếp k; hỏi tổng số nucleotide môi trường nội bào cung cấp cho cả quá trình.\nLàm bằng cách lấy N nhân với (2^k − 1), trong đó gene mẹ ban đầu không được môi trường cung cấp nguyên liệu.\nLưu ý: đề chỉ cho A, G (từng loại) và hỏi từng loại nucleotide ⇒ thuộc dạng \"CHO A, G, K, TÍNH NGUYÊN LIỆU MÔI TRƯỜNG TỪNG LOẠI\".",
+     "ly_thuyet": "##TC Công thức nguyên liệu môi trường cung cấp\nGene tái bản liên tiếp k lần tạo ra $2^k$ gene con; trong đó 1 gene mẹ ban đầu không do môi trường cung cấp.\n$N_{mt} = N \\cdot (2^k - 1)$\n\n##PP\nXác định N (tổng số nucleotide của gene) và số lần tái bản k.\nTính $2^k - 1$.\nNhân N với $(2^k - 1)$ để được số nucleotide môi trường cung cấp.\n\n##CY\nPhải trừ 1 vì gene mẹ ban đầu đã có sẵn, không phải do môi trường cung cấp; nếu dùng $N \\cdot 2^k$ là tính cả nguyên liệu của gene mẹ.\nĐáp án nhiễu hay gặp: $N \\cdot 2^k$ hoặc $N \\cdot (2^k - 2)$ hoặc $N \\cdot k$.",
+     "vi_du": "##VD\nMột gene có N = 1.800 nucleotide, tái bản (nhân đôi) liên tiếp 2 lần. Tổng số nucleotide môi trường nội bào cung cấp cho quá trình tái bản này là bao nhiêu?\nA. 7.200 nucleotide.\nB. 1.800 nucleotide.\nC. 5.400 nucleotide.\nD. 3.600 nucleotide.\n\nBài giải:\nQua 2 lần tái bản, tổng số gene con là $2^2 = 4$, trong đó gene mẹ ban đầu không do môi trường cung cấp nguyên liệu.\nSố nucleotide môi trường cung cấp: $N_{mt} = N \\cdot (2^2 - 1)$\n$N_{mt} = 1.800 \\cdot (4 - 1) = 1.800 \\cdot 3 = 5.400$ (nucleotide)\nChọn C.\n\n##VD\nMột gene có N = 1.600 nucleotide, tái bản (nhân đôi) liên tiếp 4 lần. Tổng số nucleotide môi trường nội bào cung cấp cho quá trình tái bản này là bao nhiêu?\nA. 25.600 nucleotide.\nB. 11.200 nucleotide.\nC. 22.400 nucleotide.\nD. 24.000 nucleotide.\n\nBài giải:\nQua 4 lần tái bản, tổng số gene con là $2^4 = 16$, trong đó gene mẹ ban đầu không do môi trường cung cấp nguyên liệu.\nSố nucleotide môi trường cung cấp: $N_{mt} = N \\cdot (2^4 - 1)$\n$N_{mt} = 1.600 \\cdot (16 - 1) = 1.600 \\cdot 15 = 24.000$ (nucleotide)\nChọn D."
+    },
+    {
+     "dang_id": "KDB01300",
+     "thu_tu": 2,
+     "ten": "CHO K, TÍNH SỐ GENE CON",
+     "mo_ta": "Đề chỉ cho số lần tái bản liên tiếp k của một gene; hỏi tổng số gene con được tạo thành.\nLàm bằng cách tính 2^k (mỗi lần tái bản số gene tăng gấp đôi), không cần dữ kiện về N hay các loại nucleotide.\nLưu ý: nếu đề hỏi số gene con \"mang nguyên liệu hoàn toàn mới\" ⇒ thuộc dạng \"CHO K, TÍNH SỐ GENE CON NGUYÊN LIỆU HOÀN TOÀN MỚI\".",
+     "ly_thuyet": "##TC Số gene con sau k lần tái bản\nMỗi lần tái bản, mỗi gene tạo ra 2 gene con nên số gene tăng gấp đôi.\nSố gene con sau k lần tái bản liên tiếp: $2^k$\n\n##PP\nXác định số lần tái bản liên tiếp k.\nTính $2^k$ để được số gene con.\n\n##CY\nPhân biệt số lần tái bản k với số gene con $2^k$; k lần tái bản không cho ra k hay $2k$ gene.\nKhông trừ gene mẹ: số gene con $2^k$ gồm cả 2 gene còn mang mạch khuôn cũ.",
+     "vi_du": "##VD\nMột gene tái bản (nhân đôi) liên tiếp 4 lần. Số gene con được tạo thành là bao nhiêu?\nA. 12 gene con.\nB. 16 gene con.\nC. 14 gene con.\nD. 32 gene con.\n\nBài giải:\nMỗi lần tái bản, số gene tăng gấp đôi.\nQua 4 lần tái bản liên tiếp, số gene con là $2^4 = 16$ (gene con).\nChọn B.\n\n##VD\nMột gene tái bản (nhân đôi) liên tiếp 5 lần. Số gene con được tạo thành là bao nhiêu?\nA. 15 gene con.\nB. 32 gene con.\nC. 30 gene con.\nD. 64 gene con.\n\nBài giải:\nMỗi lần tái bản, số gene tăng gấp đôi.\nQua 5 lần tái bản liên tiếp, số gene con là $2^5 = 32$ (gene con).\nChọn B."
+    },
+    {
+     "dang_id": "KDB01301",
+     "thu_tu": 3,
+     "ten": "CHO K, TÍNH SỐ GENE CON NGUYÊN LIỆU HOÀN TOÀN MỚI",
+     "mo_ta": "Đề cho số lần tái bản liên tiếp k của một gene; hỏi số gene con mang nguyên liệu hoàn toàn mới (không chứa mạch khuôn nào của gene ban đầu).\nLàm bằng cách lấy tổng số gene con 2^k trừ đi 2 gene con còn mang một mạch cũ của gene mẹ.\nLưu ý: đề hỏi tổng số gene con (kể cả gene có mạch cũ) ⇒ thuộc dạng \"CHO K, TÍNH SỐ GENE CON\".",
+     "ly_thuyet": "##TC Nguyên tắc bán bảo toàn và gene con có nguyên liệu mới\nTheo nguyên tắc bán bảo toàn, mỗi gene con có một mạch cũ của gene mẹ và một mạch mới.\nHai mạch của gene mẹ ban đầu chỉ nằm trong đúng 2 gene con, dù tái bản bao nhiêu lần.\nSố gene con mang nguyên liệu hoàn toàn mới: $2^k - 2$\n\n##PP\nXác định số lần tái bản k.\nTính tổng số gene con $2^k$.\nTrừ đi 2 gene con có chứa mạch khuôn cũ để được số gene mang nguyên liệu hoàn toàn mới.\n\n##CY\nLuôn trừ 2 (không phải trừ 1) vì có hai mạch cũ, mỗi mạch nằm trong một gene con khác nhau.\nVới k = 1 thì $2^1 - 2 = 0$: lần tái bản đầu tiên chưa có gene nào hoàn toàn mới.",
+     "vi_du": "##VD\nMột gene tái bản (nhân đôi) liên tiếp 3 lần. Số gene con mang nguyên liệu hoàn toàn mới (không chứa mạch khuôn nào của gene ban đầu) là bao nhiêu?\nA. 8 gene con.\nB. 6 gene con.\nC. 7 gene con.\nD. 2 gene con.\n\nBài giải:\nTheo nguyên tắc bán bảo toàn, luôn có đúng 2 gene con mang một mạch khuôn cũ của gene ban đầu, dù tái bản bao nhiêu lần.\nTổng số gene con sau 3 lần tái bản: $2^3 = 8$\nSố gene con mang nguyên liệu hoàn toàn mới: $2^3 - 2 = 8 - 2 = 6$ (gene con)\nChọn B.\n\n##VD\nMột gene tái bản (nhân đôi) liên tiếp 4 lần. Số gene con mang nguyên liệu hoàn toàn mới (không chứa mạch khuôn nào của gene ban đầu) là bao nhiêu?\nA. 16 gene con.\nB. 15 gene con.\nC. 6 gene con.\nD. 14 gene con.\n\nBài giải:\nTheo nguyên tắc bán bảo toàn, luôn có đúng 2 gene con mang một mạch khuôn cũ của gene ban đầu, dù tái bản bao nhiêu lần.\nTổng số gene con sau 4 lần tái bản: $2^4 = 16$\nSố gene con mang nguyên liệu hoàn toàn mới: $2^4 - 2 = 16 - 2 = 14$ (gene con)\nChọn D."
+    },
+    {
+     "dang_id": "KDB01302",
+     "thu_tu": 4,
+     "ten": "CHO H, K, TÍNH TỔNG LIÊN KẾT HYDROGEN BỊ PHÁ VỠ",
+     "mo_ta": "Đề cho số liên kết hydrogen H của một gene và số lần tái bản liên tiếp k; hỏi tổng số liên kết hydrogen bị phá vỡ qua cả quá trình.\nLàm bằng cách lấy H nhân với (2^k − 1), vì mỗi lần tái bản mọi gene đang có đều bị tách mạch.\nLưu ý: đề hỏi cả nucleotide môi trường lẫn liên kết hydrogen bị phá vỡ ⇒ thuộc dạng \"CHO N, H, K, TÍNH NGUYÊN LIỆU MÔI TRƯỜNG VÀ LIÊN KẾT HYDROGEN BỊ PHÁ VỠ\".",
+     "ly_thuyet": "##TC Liên kết hydrogen bị phá vỡ khi tái bản\nCặp A–T có 2 liên kết hydrogen, cặp G–C có 3 liên kết hydrogen; số liên kết hydrogen của gene: $H = 2A + 3G$.\nMỗi lần tái bản, toàn bộ liên kết hydrogen của các gene đang có tại thời điểm đó bị phá vỡ để tách hai mạch.\nQua k lần tái bản liên tiếp, tổng số liên kết hydrogen bị phá vỡ: $H_{pv} = H \\cdot (2^k - 1)$\n\n##PP\nXác định H (số liên kết hydrogen của một gene) và số lần tái bản k.\nTính $2^k - 1$.\nNhân H với $(2^k - 1)$ để được tổng số liên kết hydrogen bị phá vỡ.\n\n##CY\nCác lần tái bản phá vỡ lần lượt $H, 2H, 4H, \\dots, 2^{k-1}H$ liên kết; cộng lại được $H \\cdot (2^k - 1)$.\nĐáp án nhiễu hay gặp: $H \\cdot 2^k$ hoặc $H \\cdot k$.",
+     "vi_du": "##VD\nMột gene có H = 2.900 liên kết hydrogen, tái bản (nhân đôi) liên tiếp 2 lần. Tổng số liên kết hydrogen bị phá vỡ qua cả quá trình là bao nhiêu?\nA. 11.600 liên kết.\nB. 8.700 liên kết.\nC. 2.900 liên kết.\nD. 5.800 liên kết.\n\nBài giải:\nMỗi lần tái bản, tất cả các gene đang có tại thời điểm đó đều bị phá vỡ liên kết hydrogen để tách mạch.\nTổng số liên kết hydrogen bị phá vỡ qua 2 lần: $H_{pv} = H \\cdot (2^2 - 1)$\n$H_{pv} = 2.900 \\cdot 3 = 8.700$ (liên kết)\nChọn B.\n\n##VD\nMột gene có H = 1.700 liên kết hydrogen, tái bản (nhân đôi) liên tiếp 4 lần. Tổng số liên kết hydrogen bị phá vỡ qua cả quá trình là bao nhiêu?\nA. 27.200 liên kết.\nB. 11.900 liên kết.\nC. 23.800 liên kết.\nD. 25.500 liên kết.\n\nBài giải:\nMỗi lần tái bản, tất cả các gene đang có tại thời điểm đó đều bị phá vỡ liên kết hydrogen để tách mạch.\nTổng số liên kết hydrogen bị phá vỡ qua 4 lần: $H_{pv} = H \\cdot (2^4 - 1)$\n$H_{pv} = 1.700 \\cdot 15 = 25.500$ (liên kết)\nChọn D."
+    },
+    {
+     "dang_id": "KDB01303",
+     "thu_tu": 5,
+     "ten": "CHO A, G, K, TÍNH NGUYÊN LIỆU MÔI TRƯỜNG TỪNG LOẠI",
+     "mo_ta": "Đề cho số nucleotide loại A và loại G của một gene và số lần tái bản liên tiếp k; yêu cầu tính số nucleotide từng loại và tổng số nucleotide mà môi trường cung cấp.\nLàm bằng cách lấy từng loại nhân với (2^k − 1); tổng N môi trường tính từ 2(A + G) nhân (2^k − 1).\nLưu ý: đề chỉ cho tổng N và hỏi tổng nucleotide ⇒ thuộc dạng \"CHO N, K, TÍNH TỔNG NUCLEOTIDE MÔI TRƯỜNG CUNG CẤP\".",
+     "ly_thuyet": "##TC Nguyên liệu môi trường theo từng loại nucleotide\nTheo nguyên tắc bổ sung: A = T, G = C và $N = 2(A + G)$.\nSố nucleotide từng loại môi trường cung cấp qua k lần tái bản: $A_{mt} = T_{mt} = A \\cdot (2^k - 1)$; $G_{mt} = C_{mt} = G \\cdot (2^k - 1)$.\nTổng nucleotide môi trường cung cấp: $N_{mt} = N \\cdot (2^k - 1) = 2(A + G) \\cdot (2^k - 1)$\n\n##PP\nTính hệ số $2^k - 1$ từ số lần tái bản k.\nNhân hệ số với A để được $A_{mt}$ và nhân với G để được $G_{mt}$.\nTính N của gene: $N = 2(A + G)$, rồi $N_{mt} = N \\cdot (2^k - 1)$.\n\n##CY\nPhải tính N bằng $2(A + G)$, không lấy $A + G$ làm N (A + G chỉ bằng một nửa N).\nSố nucleotide loại T môi trường cung cấp bằng A môi trường, loại C bằng G.",
+     "vi_du": "##VD\nMột gene có A = 420 nucleotide, G = 380 nucleotide, tái bản (nhân đôi) liên tiếp 2 lần. Xác định số nucleotide mỗi loại (A, G) và tổng số nucleotide (N) mà môi trường nội bào cung cấp cho cả quá trình.\n\nBài giải:\nQua 2 lần tái bản, hệ số nguyên liệu môi trường cung cấp là $2^2 - 1 = 3$.\n$A_{mt} = A \\cdot 3 = 420 \\cdot 3 = 1.260$ (nucleotide)\n$G_{mt} = G \\cdot 3 = 380 \\cdot 3 = 1.140$ (nucleotide)\nTổng số nucleotide của gene: $N = 2(A + G) = 2 \\cdot (420 + 380) = 1.600$\n$N_{mt} = N \\cdot 3 = 1.600 \\cdot 3 = 4.800$ (nucleotide)\nĐáp án: 1.260; 1.140; 4.800.\n\n##VD\nMột gene có A = 300 nucleotide, G = 450 nucleotide, tái bản (nhân đôi) liên tiếp 3 lần. Xác định số nucleotide mỗi loại (A, G) và tổng số nucleotide (N) mà môi trường nội bào cung cấp cho cả quá trình.\n\nBài giải:\nQua 3 lần tái bản, hệ số nguyên liệu môi trường cung cấp là $2^3 - 1 = 7$.\n$A_{mt} = A \\cdot 7 = 300 \\cdot 7 = 2.100$ (nucleotide)\n$G_{mt} = G \\cdot 7 = 450 \\cdot 7 = 3.150$ (nucleotide)\nTổng số nucleotide của gene: $N = 2(A + G) = 2 \\cdot (300 + 450) = 1.500$\n$N_{mt} = N \\cdot 7 = 1.500 \\cdot 7 = 10.500$ (nucleotide)\nĐáp án: 2.100; 3.150; 10.500."
+    },
+    {
+     "dang_id": "KDB01304",
+     "thu_tu": 6,
+     "ten": "CHO N, H, K, TÍNH NGUYÊN LIỆU MÔI TRƯỜNG VÀ LIÊN KẾT HYDROGEN BỊ PHÁ VỠ",
+     "mo_ta": "Đề cho tổng số nucleotide N, số liên kết hydrogen H của một gene và số lần tái bản liên tiếp k; yêu cầu tính cả tổng nucleotide môi trường cung cấp và tổng liên kết hydrogen bị phá vỡ.\nLàm bằng cách tính hệ số (2^k − 1) rồi nhân với N và với H.\nLưu ý: đề chỉ hỏi một trong hai đại lượng ⇒ thuộc dạng \"CHO N, K, TÍNH TỔNG NUCLEOTIDE MÔI TRƯỜNG CUNG CẤP\" hoặc \"CHO H, K, TÍNH TỔNG LIÊN KẾT HYDROGEN BỊ PHÁ VỠ\".",
+     "ly_thuyet": "##TC Hai đại lượng cùng hệ số $(2^k - 1)$\nNucleotide môi trường cung cấp: $N_{mt} = N \\cdot (2^k - 1)$.\nLiên kết hydrogen bị phá vỡ: $H_{pv} = H \\cdot (2^k - 1)$.\nHệ số $(2^k - 1)$ tính một lần dùng cho cả hai đại lượng.\n\n##PP\nTính hệ số $2^k - 1$ từ số lần tái bản k.\nNhân hệ số với N để được nucleotide môi trường cung cấp.\nNhân hệ số với H để được tổng liên kết hydrogen bị phá vỡ.\n\n##CY\nKhông nhầm N với H: N là số nucleotide, H là số liên kết hydrogen của gene.\nKhông dùng hệ số $2^k$; nguyên liệu của gene mẹ ban đầu không do môi trường cung cấp.",
+     "vi_du": "##VD\nMột gene có N = 1.600 nucleotide, H = 2.050 liên kết hydrogen, tái bản (nhân đôi) liên tiếp 2 lần. Xác định tổng số nucleotide môi trường cung cấp và tổng số liên kết hydrogen bị phá vỡ qua cả quá trình.\n\nBài giải:\nHệ số: $2^2 - 1 = 3$.\nSố nucleotide môi trường cung cấp: $N_{mt} = N \\cdot 3 = 1.600 \\cdot 3 = 4.800$ (nucleotide)\nTổng số liên kết hydrogen bị phá vỡ: $H_{pv} = H \\cdot 3 = 2.050 \\cdot 3 = 6.150$ (liên kết)\nĐáp án: 4.800; 6.150.\n\n##VD\nMột gene có N = 1.200 nucleotide, H = 1.560 liên kết hydrogen, tái bản (nhân đôi) liên tiếp 3 lần. Xác định tổng số nucleotide môi trường cung cấp và tổng số liên kết hydrogen bị phá vỡ qua cả quá trình.\n\nBài giải:\nHệ số: $2^3 - 1 = 7$.\nSố nucleotide môi trường cung cấp: $N_{mt} = N \\cdot 7 = 1.200 \\cdot 7 = 8.400$ (nucleotide)\nTổng số liên kết hydrogen bị phá vỡ: $H_{pv} = H \\cdot 7 = 1.560 \\cdot 7 = 10.920$ (liên kết)\nĐáp án: 8.400; 10.920."
+    },
+    {
+     "dang_id": "KDB01305",
+     "thu_tu": 7,
+     "ten": "CHO NGUYÊN LIỆU MÔI TRƯỜNG VÀ K, TÍNH NGƯỢC N BAN ĐẦU",
+     "mo_ta": "Đề cho số lần tái bản liên tiếp k và tổng số nucleotide môi trường đã cung cấp; hỏi tổng số nucleotide N của gene ban đầu.\nLàm bằng cách lấy tổng nucleotide môi trường chia cho (2^k − 1) (giải ngược công thức nguyên liệu môi trường).\nLưu ý: đề cho N và k, hỏi nguyên liệu môi trường ⇒ thuộc dạng \"CHO N, K, TÍNH TỔNG NUCLEOTIDE MÔI TRƯỜNG CUNG CẤP\".",
+     "ly_thuyet": "##TC Tính ngược N từ nguyên liệu môi trường\nTừ $N_{mt} = N \\cdot (2^k - 1)$ suy ra $N = \\dfrac{N_{mt}}{2^k - 1}$.\n\n##PP\nXác định tổng nucleotide môi trường cung cấp $N_{mt}$ và số lần tái bản k.\nTính hệ số $2^k - 1$.\nChia $N_{mt}$ cho hệ số để được N của gene ban đầu.\n\n##CY\nPhải chia cho $(2^k - 1)$, không chia cho $2^k$.\nKết quả N phải là số nguyên chẵn; nếu không thì kiểm tra lại k hoặc phép tính.",
+     "vi_du": "##VD\nMột gene tái bản (nhân đôi) liên tiếp 3 lần, môi trường nội bào đã cung cấp tổng cộng 22.400 nucleotide. Xác định tổng số nucleotide (N) của gene ban đầu.\n\nBài giải:\nSố nucleotide môi trường cung cấp: $N_{mt} = N \\cdot (2^3 - 1) = N \\cdot 7$\nSuy ra $N = \\dfrac{22.400}{7} = 3.200$ (nucleotide)\nĐáp án: 3.200.\n\n##VD\nMột gene tái bản (nhân đôi) liên tiếp 4 lần, môi trường nội bào đã cung cấp tổng cộng 37.200 nucleotide. Xác định tổng số nucleotide (N) của gene ban đầu.\n\nBài giải:\nSố nucleotide môi trường cung cấp: $N_{mt} = N \\cdot (2^4 - 1) = N \\cdot 15$\nSuy ra $N = \\dfrac{37.200}{15} = 2.480$ (nucleotide)\nĐáp án: 2.480."
+    },
+    {
+     "dang_id": "KDB01306",
+     "thu_tu": 8,
+     "ten": "CHO SỐ GENE CON NGUYÊN LIỆU MỚI VÀ N, TÍNH K VÀ NGUYÊN LIỆU MÔI TRƯỜNG",
+     "mo_ta": "Đề cho tổng số nucleotide N của gene và số gene con mang nguyên liệu hoàn toàn mới; yêu cầu tìm số lần tái bản k rồi tính tổng nucleotide môi trường đã cung cấp.\nLàm bằng cách giải 2^k − 2 = số gene con mới để tìm k, sau đó dùng N nhân (2^k − 1).\nLưu ý: đề cho sẵn k ⇒ thuộc dạng \"CHO N, K, TÍNH TỔNG NUCLEOTIDE MÔI TRƯỜNG CUNG CẤP\".",
+     "ly_thuyet": "##TC Tìm k từ số gene con nguyên liệu mới\nSố gene con mang nguyên liệu hoàn toàn mới: $2^k - 2$, suy ra $2^k$ bằng số gene con mới cộng 2.\nNucleotide môi trường cung cấp: $N_{mt} = N \\cdot (2^k - 1)$.\n\n##PP\nCộng 2 vào số gene con mang nguyên liệu mới để được $2^k$.\nViết $2^k$ dưới dạng luỹ thừa của 2 để suy ra k.\nTính $N_{mt} = N \\cdot (2^k - 1)$.\n\n##CY\nPhải cộng 2 (không cộng 1) khi suy $2^k$ từ số gene con mới.\nKiểm tra lại k bằng cách tính $2^k - 2$ phải khớp số gene con đề cho.",
+     "vi_du": "##VD\nMột gene có N = 1.600 nucleotide, tái bản (nhân đôi) liên tiếp một số lần, tạo ra 6 gene con mang nguyên liệu hoàn toàn mới. Xác định số lần tái bản (k) và tổng số nucleotide môi trường đã cung cấp.\n\nBài giải:\nSố gene con mang nguyên liệu hoàn toàn mới: $2^k - 2 = 6$, suy ra $2^k = 8 = 2^3$, vậy $k = 3$.\nTổng số nucleotide môi trường đã cung cấp: $N_{mt} = N \\cdot (2^3 - 1) = 1.600 \\cdot 7 = 11.200$ (nucleotide)\nĐáp án: k = 3; 11.200.\n\n##VD\nMột gene có N = 2.200 nucleotide, tái bản (nhân đôi) liên tiếp một số lần, tạo ra 14 gene con mang nguyên liệu hoàn toàn mới. Xác định số lần tái bản (k) và tổng số nucleotide môi trường đã cung cấp.\n\nBài giải:\nSố gene con mang nguyên liệu hoàn toàn mới: $2^k - 2 = 14$, suy ra $2^k = 16 = 2^4$, vậy $k = 4$.\nTổng số nucleotide môi trường đã cung cấp: $N_{mt} = N \\cdot (2^4 - 1) = 2.200 \\cdot 15 = 33.000$ (nucleotide)\nĐáp án: k = 4; 33.000."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00566",
+   "chu_de": "Di truyền học",
+   "chuyen_de": "Tái bản DNA và phiên mã tạo RNA",
+   "nhom": "TÍNH SỐ RIBONUCLEOTIDE VÀ CHIỀU DÀI mRNA KHI PHIÊN MÃ",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nPhiên mã là quá trình tổng hợp RNA dựa trên mạch khuôn (mạch mã gốc) của gene theo nguyên tắc bổ sung.\nNguyên tắc bổ sung khi phiên mã: A (mạch khuôn) – rU; T (mạch khuôn) – rA; G (mạch khuôn) – rC; C (mạch khuôn) – rG.\nPhân tử mRNA có một mạch, chỉ chứa 4 loại ribonucleotide A, U, G, C và tổng $rN = rA + rU + rG + rC$.\nSố ribonucleotide của mRNA bằng số nucleotide của mạch khuôn: $rN = \\dfrac{N}{2}$, suy ra $N = 2 \\cdot rN$.\nChiều dài mRNA bằng chiều dài gene: $L = rN \\cdot 3,4\\ \\mathring{A}$, mỗi nucleotide dài 3,4 Å.\nLiên hệ số lượng nucleotide của gene với số ribonucleotide của mRNA: $A_{gene} = T_{gene} = rA + rU$; $G_{gene} = C_{gene} = rG + rC$.\n\n##PP 2. Các bước làm bài\nXác định đại lượng đề cho (N, rN, L, rA, rU, rG, rC hoặc các tỉ lệ %) và đại lượng cần tìm.\nĐổi qua lại giữa N, rN và L bằng các công thức $rN = \\dfrac{N}{2}$, $L = rN \\cdot 3,4$.\nDùng liên hệ $A_{gene} = rA + rU$ và $G_{gene} = rG + rC$ khi chuyển giữa gene và mRNA; với số lượng từng loại theo tỉ lệ %, nhân rN với tỉ lệ rồi lấy loại còn lại bằng hiệu.\n\n##CY 3. Lưu ý\nChỉ một mạch của gene làm khuôn phiên mã nên rN = N/2, không phải rN = N.\nmRNA một mạch không có nguyên tắc bổ sung nội tại: rA không nhất thiết bằng rU, rG không nhất thiết bằng rC.\nChiều dài tính bằng ångström (Å); không quên chia hoặc nhân với 3,4.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01307",
+     "thu_tu": 1,
+     "ten": "CHO N, TÍNH SỐ RIBONUCLEOTIDE mRNA",
+     "mo_ta": "Đề cho tổng số nucleotide N của một gene phiên mã tạo mRNA; hỏi số ribonucleotide của phân tử mRNA.\nLàm bằng cách lấy N chia 2, vì mRNA được tổng hợp từ một mạch khuôn của gene.\nLưu ý: đề cho số ribonucleotide của mRNA và hỏi N của gene ⇒ thuộc dạng \"CHO rN, TÍNH TỔNG SỐ NUCLEOTIDE N CỦA GENE\".",
+     "ly_thuyet": "##TC Số ribonucleotide của mRNA\nmRNA được tổng hợp từ một mạch khuôn của gene theo nguyên tắc bổ sung nên số ribonucleotide của mRNA bằng số nucleotide của một mạch gene.\n$rN = \\dfrac{N}{2}$\n\n##PP\nXác định N của gene.\nChia N cho 2 để được rN.\n\n##CY\nKhông lấy $rN = N$: gene có hai mạch nhưng chỉ một mạch làm khuôn phiên mã.",
+     "vi_du": "##VD\nMột gene có N = 2.400 nucleotide, thực hiện phiên mã tạo mRNA. Số ribonucleotide của phân tử mRNA này là bao nhiêu?\nA. 1.200 ribonucleotide.\nB. 2.400 ribonucleotide.\nC. 600 ribonucleotide.\nD. 4.800 ribonucleotide.\n\nBài giải:\nmRNA được tổng hợp từ một mạch khuôn của gene nên số ribonucleotide của mRNA bằng số nucleotide của mạch khuôn.\n$rN = \\dfrac{N}{2} = \\dfrac{2.400}{2} = 1.200$ (ribonucleotide)\nChọn A.\n\n##VD\nMột gene có N = 3.200 nucleotide, thực hiện phiên mã tạo mRNA. Số ribonucleotide của phân tử mRNA này là bao nhiêu?\nA. 3.200 ribonucleotide.\nB. 800 ribonucleotide.\nC. 1.600 ribonucleotide.\nD. 6.400 ribonucleotide.\n\nBài giải:\nmRNA được tổng hợp từ một mạch khuôn của gene nên số ribonucleotide của mRNA bằng số nucleotide của mạch khuôn.\n$rN = \\dfrac{N}{2} = \\dfrac{3.200}{2} = 1.600$ (ribonucleotide)\nChọn C."
+    },
+    {
+     "dang_id": "KDB01308",
+     "thu_tu": 2,
+     "ten": "CHO rN, TÍNH TỔNG SỐ NUCLEOTIDE N CỦA GENE",
+     "mo_ta": "Đề cho số ribonucleotide rN của phân tử mRNA; hỏi tổng số nucleotide N của gene đã phiên mã ra mRNA đó.\nLàm bằng cách lấy rN nhân 2 (suy ngược từ rN = N/2).\nLưu ý: đề cho N và hỏi rN ⇒ thuộc dạng \"CHO N, TÍNH SỐ RIBONUCLEOTIDE mRNA\".",
+     "ly_thuyet": "##TC Tính N từ số ribonucleotide\nSố ribonucleotide của mRNA bằng số nucleotide của mạch khuôn: $rN = \\dfrac{N}{2}$, suy ra $N = 2 \\cdot rN$.\n\n##PP\nXác định rN của mRNA.\nNhân rN với 2 để được N của gene.\n\n##CY\nKhông nhầm N = rN; N là tổng số nucleotide cả hai mạch của gene nên gấp đôi rN.",
+     "vi_du": "##VD\nMột phân tử mRNA có 1.500 ribonucleotide, được phiên mã từ một gene. Tổng số nucleotide (N) của gene này là bao nhiêu?\nA. 1.500 nucleotide.\nB. 6.000 nucleotide.\nC. 3.000 nucleotide.\nD. 750 nucleotide.\n\nBài giải:\nSố ribonucleotide của mRNA bằng số nucleotide của mạch khuôn, tức bằng $\\dfrac{N}{2}$.\nSuy ra $N = 2 \\cdot rN = 2 \\cdot 1.500 = 3.000$ (nucleotide)\nChọn C.\n\n##VD\nMột phân tử mRNA có 2.100 ribonucleotide, được phiên mã từ một gene. Tổng số nucleotide (N) của gene này là bao nhiêu?\nA. 2.100 nucleotide.\nB. 8.400 nucleotide.\nC. 4.200 nucleotide.\nD. 1.050 nucleotide.\n\nBài giải:\nSố ribonucleotide của mRNA bằng số nucleotide của mạch khuôn, tức bằng $\\dfrac{N}{2}$.\nSuy ra $N = 2 \\cdot rN = 2 \\cdot 2.100 = 4.200$ (nucleotide)\nChọn C."
+    },
+    {
+     "dang_id": "KDB01309",
+     "thu_tu": 3,
+     "ten": "CHO rA, rU, TÍNH SỐ NUCLEOTIDE LOẠI A CỦA GENE",
+     "mo_ta": "Đề cho số ribonucleotide loại A (rA) và loại U (rU) của mRNA; hỏi số nucleotide loại A của gene tổng hợp ra mRNA đó.\nLàm bằng cách cộng rA với rU, vì A của gene gồm A mạch khuôn (bắt cặp với rU) và A mạch bổ sung (bằng rA).\nLưu ý: đề cho rG, rC và hỏi G của gene ⇒ thuộc dạng \"CHO rG, rC, TÍNH SỐ NUCLEOTIDE LOẠI G CỦA GENE\".",
+     "ly_thuyet": "##TC A của gene từ rA và rU\nNguyên tắc bổ sung khi phiên mã: A (mạch khuôn) – rU; T (mạch khuôn) – rA.\nSố A của gene bằng tổng A hai mạch: $A = T = rA + rU$.\n\n##PP\nXác định rA và rU của mRNA.\nCộng rA và rU để được số nucleotide loại A (bằng loại T) của gene.\n\n##CY\nKhông lấy A của gene bằng rA hay rU riêng lẻ; phải cộng cả hai.\nKhông nhân đôi tổng rA + rU: số đó đã là A của cả hai mạch của gene.",
+     "vi_du": "##VD\nMột phân tử mRNA có 300 ribonucleotide loại A và 250 ribonucleotide loại U. Số nucleotide loại A của gene tổng hợp ra mRNA này là bao nhiêu?\nA. 50 nucleotide.\nB. 600 nucleotide.\nC. 550 nucleotide.\nD. 250 nucleotide.\n\nBài giải:\nRibonucleotide A của mRNA bắt cặp với T trên mạch khuôn, ribonucleotide U bắt cặp với A trên mạch khuôn.\nVì vậy $A_{gene} = T_{gene} = rA + rU = 300 + 250 = 550$ (nucleotide)\nChọn C.\n\n##VD\nMột phân tử mRNA có 180 ribonucleotide loại A và 420 ribonucleotide loại U. Số nucleotide loại A của gene tổng hợp ra mRNA này là bao nhiêu?\nA. 240 nucleotide.\nB. 360 nucleotide.\nC. 420 nucleotide.\nD. 600 nucleotide.\n\nBài giải:\nRibonucleotide A của mRNA bắt cặp với T trên mạch khuôn, ribonucleotide U bắt cặp với A trên mạch khuôn.\nVì vậy $A_{gene} = T_{gene} = rA + rU = 180 + 420 = 600$ (nucleotide)\nChọn D."
+    },
+    {
+     "dang_id": "KDB01310",
+     "thu_tu": 4,
+     "ten": "CHO rG, rC, TÍNH SỐ NUCLEOTIDE LOẠI G CỦA GENE",
+     "mo_ta": "Đề cho số ribonucleotide loại G (rG) và loại C (rC) của mRNA; hỏi số nucleotide loại G của gene tổng hợp ra mRNA đó.\nLàm bằng cách cộng rG với rC, vì G của gene gồm G mạch khuôn (bắt cặp với rC) và G mạch bổ sung (bằng rG).\nLưu ý: đề cho rA, rU và hỏi A của gene ⇒ thuộc dạng \"CHO rA, rU, TÍNH SỐ NUCLEOTIDE LOẠI A CỦA GENE\".",
+     "ly_thuyet": "##TC G của gene từ rG và rC\nNguyên tắc bổ sung khi phiên mã: G (mạch khuôn) – rC; C (mạch khuôn) – rG.\nSố G của gene bằng tổng G hai mạch: $G = C = rG + rC$.\n\n##PP\nXác định rG và rC của mRNA.\nCộng rG và rC để được số nucleotide loại G (bằng loại C) của gene.\n\n##CY\nKhông lấy G của gene bằng rG hay rC riêng lẻ; phải cộng cả hai.\nPhân biệt với A của gene: A gắn với rA + rU, còn G gắn với rG + rC.",
+     "vi_du": "##VD\nMột phân tử mRNA có 400 ribonucleotide loại G và 180 ribonucleotide loại C. Số nucleotide loại G của gene tổng hợp ra mRNA này là bao nhiêu?\nA. 580 nucleotide.\nB. 220 nucleotide.\nC. 800 nucleotide.\nD. 180 nucleotide.\n\nBài giải:\nRibonucleotide G của mRNA bắt cặp với C trên mạch khuôn, ribonucleotide C bắt cặp với G trên mạch khuôn.\nVì vậy $G_{gene} = C_{gene} = rG + rC = 400 + 180 = 580$ (nucleotide)\nChọn A.\n\n##VD\nMột phân tử mRNA có 370 ribonucleotide loại G và 240 ribonucleotide loại C. Số nucleotide loại G của gene tổng hợp ra mRNA này là bao nhiêu?\nA. 130 nucleotide.\nB. 740 nucleotide.\nC. 610 nucleotide.\nD. 240 nucleotide.\n\nBài giải:\nRibonucleotide G của mRNA bắt cặp với C trên mạch khuôn, ribonucleotide C bắt cặp với G trên mạch khuôn.\nVì vậy $G_{gene} = C_{gene} = rG + rC = 370 + 240 = 610$ (nucleotide)\nChọn C."
+    },
+    {
+     "dang_id": "KDB01311",
+     "thu_tu": 5,
+     "ten": "CHO ĐẦY ĐỦ rA, rU, rG, rC, TÍNH rN, N, L",
+     "mo_ta": "Đề cho đầy đủ số ribonucleotide bốn loại rA, rU, rG, rC của mRNA; yêu cầu tính tổng số ribonucleotide rN, tổng số nucleotide N và chiều dài L của gene.\nLàm bằng cách cộng bốn loại để được rN, N = 2rN, L = rN × 3,4 Å.\nLưu ý: đề chỉ cho chiều dài L và hỏi rN, N ⇒ thuộc dạng \"CHO CHIỀU DÀI mRNA, TÍNH NGƯỢC rN VÀ N\" (KDB01313).",
+     "ly_thuyet": "##TC Tính rN, N, L từ số ribonucleotide từng loại\n$rN = rA + rU + rG + rC$\n$N = 2 \\cdot rN$\nChiều dài gene bằng chiều dài mRNA: $L = rN \\cdot 3,4\\ \\mathring{A}$ (mỗi nucleotide dài 3,4 Å).\n\n##PP\nCộng rA, rU, rG, rC để được rN.\nNhân rN với 2 để được N của gene.\nTính $L = rN \\cdot 3,4$ rồi ghi đơn vị Å.\n\n##CY\nCông thức $L = \\dfrac{N}{2} \\cdot 3,4$ chính là $rN \\cdot 3,4$; không nhân 3,4 với N.\nKhông quên đơn vị: kết quả L tính bằng ångström (Å).",
+     "vi_du": "##VD\nMột phân tử mRNA có 340 ribonucleotide loại A, 180 ribonucleotide loại U, 260 ribonucleotide loại G và 270 ribonucleotide loại C. Xác định tổng số ribonucleotide của mRNA (rN), tổng số nucleotide (N) và chiều dài (L) của gene đã phiên mã ra mRNA này.\n\nBài giải:\nTổng số ribonucleotide của mRNA: $rN = rA + rU + rG + rC = 340 + 180 + 260 + 270 = 1.050$\nSố ribonucleotide của mRNA bằng số nucleotide của mạch khuôn nên $N = 2 \\cdot rN = 2 \\cdot 1.050 = 2.100$ (nucleotide)\nChiều dài của gene: $L = \\dfrac{N}{2} \\cdot 3,4 = 1.050 \\cdot 3,4 = 3.570\\ \\mathring{A}$\nĐáp án: rN = 1.050; N = 2.100; L = 3.570 Å.\n\n##VD\nMột phân tử mRNA có 150 ribonucleotide loại A, 390 ribonucleotide loại U, 220 ribonucleotide loại G và 340 ribonucleotide loại C. Xác định tổng số ribonucleotide của mRNA (rN), tổng số nucleotide (N) và chiều dài (L) của gene đã phiên mã ra mRNA này.\n\nBài giải:\nTổng số ribonucleotide của mRNA: $rN = rA + rU + rG + rC = 150 + 390 + 220 + 340 = 1.100$\nSố ribonucleotide của mRNA bằng số nucleotide của mạch khuôn nên $N = 2 \\cdot rN = 2 \\cdot 1.100 = 2.200$ (nucleotide)\nChiều dài của gene: $L = \\dfrac{N}{2} \\cdot 3,4 = 1.100 \\cdot 3,4 = 3.740\\ \\mathring{A}$\nĐáp án: rN = 1.100; N = 2.200; L = 3.740 Å."
+    },
+    {
+     "dang_id": "KDB01312",
+     "thu_tu": 6,
+     "ten": "CHO CHIỀU DÀI mRNA, TÍNH NGƯỢC rN VÀ N",
+     "mo_ta": "Đề cho N của gene, tỉ lệ % nucleotide loại A của gene và số ribonucleotide loại A (rA) của mRNA; yêu cầu tính số nucleotide loại A, loại G của gene và số ribonucleotide loại U của mRNA.\nLàm bằng cách tính A = N × %A, G = N/2 − A, rồi rU = A − rA.\nLưu ý: đề chỉ cho rA, rU và hỏi A của gene ⇒ thuộc dạng \"CHO rA, rU, TÍNH SỐ NUCLEOTIDE LOẠI A CỦA GENE\".",
+     "ly_thuyet": "##TC Tính A, G của gene và rU từ N, %A, rA\nSố nucleotide loại A của gene: $A = N \\cdot \\%A$.\nNguyên tắc bổ sung: $A + G = \\dfrac{N}{2}$, suy ra $G = \\dfrac{N}{2} - A$.\nKhi phiên mã: $A_{gene} = rA + rU$, suy ra $rU = A - rA$.\n\n##PP\nTính $A = N \\cdot \\%A$.\nTính $G = \\dfrac{N}{2} - A$.\nTính $rU = A - rA$.\n\n##CY\n%A là tỉ lệ trên tổng N của gene (cả hai mạch), không phải trên số ribonucleotide.\nPhải dùng $\\dfrac{N}{2}$ (không phải N) khi tính G từ A.",
+     "vi_du": "##VD\nMột gene có N = 2.000 nucleotide, trong đó A chiếm 15% tổng số nucleotide, phiên mã tạo ra mRNA có 180 ribonucleotide loại A. Xác định số nucleotide loại A, loại G của gene và số ribonucleotide loại U của mRNA.\n\nBài giải:\nSố nucleotide loại A của gene: $A = N \\cdot \\%A = 2.000 \\cdot 15\\% = 300$\nSố nucleotide loại G của gene: $G = \\dfrac{N}{2} - A = \\dfrac{2.000}{2} - 300 = 700$\nMặt khác $A_{gene} = rA + rU$ nên $rU = A - rA = 300 - 180 = 120$ (ribonucleotide)\nĐáp án: A = 300; G = 700; rU = 120.\n\n##VD\nMột gene có N = 3.000 nucleotide, trong đó A chiếm 9% tổng số nucleotide, phiên mã tạo ra mRNA có 150 ribonucleotide loại A. Xác định số nucleotide loại A, loại G của gene và số ribonucleotide loại U của mRNA.\n\nBài giải:\nSố nucleotide loại A của gene: $A = N \\cdot \\%A = 3.000 \\cdot 9\\% = 270$\nSố nucleotide loại G của gene: $G = \\dfrac{N}{2} - A = \\dfrac{3.000}{2} - 270 = 1.230$\nMặt khác $A_{gene} = rA + rU$ nên $rU = A - rA = 270 - 150 = 120$ (ribonucleotide)\nĐáp án: A = 270; G = 1.230; rU = 120."
+    },
+    {
+     "dang_id": "KDB01313",
+     "thu_tu": 7,
+     "ten": "CHO CHIỀU DÀI mRNA, TÍNH NGƯỢC rN VÀ N",
+     "mo_ta": "Đề cho chiều dài L (đơn vị Å) của phân tử mRNA; yêu cầu tính số ribonucleotide rN của mRNA và tổng số nucleotide N của gene.\nLàm bằng cách lấy rN = L : 3,4 (chiều dài mRNA bằng chiều dài gene) rồi N = 2rN.\nLưu ý: đề cho số ribonucleotide từng loại và hỏi L ⇒ thuộc dạng \"CHO ĐẦY ĐỦ rA, rU, rG, rC, TÍNH rN, N, L\".",
+     "ly_thuyet": "##TC Tính ngược rN và N từ chiều dài\nChiều dài mRNA bằng chiều dài gene: $L = rN \\cdot 3,4\\ \\mathring{A}$, suy ra $rN = \\dfrac{L}{3,4}$.\nTổng số nucleotide của gene: $N = 2 \\cdot rN$.\n\n##PP\nChia L cho 3,4 để được rN.\nNhân rN với 2 để được N.\n\n##CY\nPhải chia cho 3,4 Å (chiều dài một nucleotide), không chia cho 3,4 rồi coi kết quả là N.\nKết quả rN chỉ là số ribonucleotide của mRNA; N của gene gấp đôi rN.",
+     "vi_du": "##VD\nMột phân tử mRNA có chiều dài L = 2.720 Å. Xác định số ribonucleotide (rN) của mRNA và tổng số nucleotide (N) của gene đã phiên mã ra mRNA này.\nA. rN = 1.000; N = 2.000\nB. rN = 1.350; N = 2.700\nC. rN = 800; N = 1.600\nD. rN = 1.500; N = 3.000\n\nBài giải:\nVì mRNA có chiều dài bằng chiều dài gene nên $rN = \\dfrac{L}{3,4} = \\dfrac{2.720}{3,4} = 800$ (ribonucleotide)\nTổng số nucleotide của gene: $N = 2 \\cdot rN = 2 \\cdot 800 = 1.600$ (nucleotide)\nChọn C.\n\n##VD\nMột phân tử mRNA có chiều dài L = 4.590 Å. Xác định số ribonucleotide (rN) của mRNA và tổng số nucleotide (N) của gene đã phiên mã ra mRNA này.\nA. rN = 1.000; N = 2.000\nB. rN = 1.350; N = 2.700\nC. rN = 800; N = 1.600\nD. rN = 1.500; N = 3.000\n\nBài giải:\nVì mRNA có chiều dài bằng chiều dài gene nên $rN = \\dfrac{L}{3,4} = \\dfrac{4.590}{3,4} = 1.350$ (ribonucleotide)\nTổng số nucleotide của gene: $N = 2 \\cdot rN = 2 \\cdot 1.350 = 2.700$ (nucleotide)\nChọn B."
+    },
+    {
+     "dang_id": "KDB01314",
+     "thu_tu": 8,
+     "ten": "CHO rN VÀ BA TỈ LỆ %rA, %rU, %rG, TÍNH CẢ BỐN LOẠI RIBONUCLEOTIDE",
+     "mo_ta": "Đề cho tổng số ribonucleotide rN của mRNA và tỉ lệ % của ba loại ribonucleotide (A, U, G); yêu cầu tính số ribonucleotide cả bốn loại A, U, G, C.\nLàm bằng cách nhân rN với từng tỉ lệ đã cho; loại còn lại (C) tính bằng hiệu rN trừ ba loại kia.\nLưu ý: đề cho số lượng ribonucleotide từng loại và hỏi N, L ⇒ thuộc dạng \"CHO ĐẦY ĐỦ rA, rU, rG, rC, TÍNH rN, N, L\".",
+     "ly_thuyet": "##TC Số ribonucleotide từng loại theo tỉ lệ %\nSố ribonucleotide loại X: $rX = rN \\cdot \\%rX$.\nmRNA chỉ có một mạch nên bốn loại không tuân theo nguyên tắc bổ sung nội tại (rA không nhất thiết bằng rU, rG không nhất thiết bằng rC).\nTổng bốn tỉ lệ bằng 100%: $\\%rC = 100\\% - (\\%rA + \\%rU + \\%rG)$.\n\n##PP\nNhân rN với từng tỉ lệ % để được rA, rU, rG.\nTính rC = rN − (rA + rU + rG), hoặc tính %rC rồi nhân với rN.\nKiểm tra tổng bốn loại bằng rN.\n\n##CY\nKhông dùng nguyên tắc bổ sung để suy rC = rG hay rA = rU trong mRNA.\nPhải đổi % ra số (nhân rN với tỉ lệ) trước khi cộng trừ.",
+     "vi_du": "##VD\nMột phân tử mRNA có 1.800 ribonucleotide, trong đó ribonucleotide loại A chiếm 25%, loại U chiếm 15%, loại G chiếm 35% tổng số ribonucleotide. Xác định số ribonucleotide mỗi loại (A, U, G, C) của mRNA này.\n\nBài giải:\n$rA = rN \\cdot 25\\% = 1.800 \\cdot 25\\% = 450$\n$rU = rN \\cdot 15\\% = 1.800 \\cdot 15\\% = 270$\n$rG = rN \\cdot 35\\% = 1.800 \\cdot 35\\% = 630$\nVì mRNA chỉ có một mạch nên không dùng nguyên tắc bổ sung giữa các loại, do đó $rC = rN - rA - rU - rG = 1.800 - 450 - 270 - 630 = 450$ (ribonucleotide), ứng với tỉ lệ 25%.\nĐáp án: rA = 450; rU = 270; rG = 630; rC = 450.\n\n##VD\nMột phân tử mRNA có 2.400 ribonucleotide, trong đó ribonucleotide loại A chiếm 10%, loại U chiếm 35%, loại G chiếm 25% tổng số ribonucleotide. Xác định số ribonucleotide mỗi loại (A, U, G, C) của mRNA này.\n\nBài giải:\n$rA = rN \\cdot 10\\% = 2.400 \\cdot 10\\% = 240$\n$rU = rN \\cdot 35\\% = 2.400 \\cdot 35\\% = 840$\n$rG = rN \\cdot 25\\% = 2.400 \\cdot 25\\% = 600$\nVì mRNA chỉ có một mạch nên không dùng nguyên tắc bổ sung giữa các loại, do đó $rC = rN - rA - rU - rG = 2.400 - 240 - 840 - 600 = 720$ (ribonucleotide), ứng với tỉ lệ 30%.\nĐáp án: rA = 240; rU = 840; rG = 600; rC = 720."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K09110504051",
+   "nhom_id": "KNB00565",
+   "loai": "trac_nghiem",
+   "de": "Một phân tử DNA tái bản liên tiếp 3 lần. Số phân tử DNA con được tạo thành là bao nhiêu?",
+   "lua_chon": [
+    "6 phân tử",
+    "8 phân tử",
+    "9 phân tử",
+    "16 phân tử"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Số DNA con sau k lần tái bản = 2^k. Với k = 3, số DNA con = 2³ = 8 phân tử.\n\nVì sao các phương án khác sai:\n- A: Sai: nhầm lấy k nhân 2 (3 × 2 = 6), không phải công thức 2^k.\n- C: Sai: 9 không phải kết quả của 2^k với k = 3.\n- D: Sai: 16 = 2⁴, ứng với 4 lần tái bản, không phải 3 lần."
+  },
+  {
+   "ma_cau": "K09110504052",
+   "nhom_id": "KNB00565",
+   "loai": "trac_nghiem",
+   "de": "Một phân tử DNA tái bản liên tiếp 4 lần. Số phân tử DNA con được tạo thành là bao nhiêu?",
+   "lua_chon": [
+    "16 phân tử",
+    "8 phân tử",
+    "4 phân tử",
+    "12 phân tử"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Số DNA con sau k lần tái bản = 2^k. Với k = 4, số DNA con = 2⁴ = 16 phân tử.\n\nVì sao các phương án khác sai:\n- B: Sai: 8 = 2³, ứng với 3 lần tái bản, không phải 4 lần.\n- C: Sai: 4 chính là số lần tái bản (k), không phải số DNA con tạo thành.\n- D: Sai: nhầm lấy k nhân 3 (4 × 3 = 12), không đúng công thức 2^k."
+  },
+  {
+   "ma_cau": "K09110504053",
+   "nhom_id": "KNB00565",
+   "loai": "trac_nghiem",
+   "de": "Một phân tử DNA tái bản liên tiếp 5 lần. Số phân tử DNA con được tạo thành là bao nhiêu?",
+   "lua_chon": [
+    "32",
+    "10",
+    "25",
+    "16"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Số DNA con sau k lần tái bản = 2^k = 2⁵ = 32.\n\nVì sao các phương án khác sai:\n- B: 10 tính nhầm theo 2 × 5 (nhân), không phải 2⁵ (luỹ thừa).\n- C: 25 tính nhầm theo 5², đổi ngược cơ số và số mũ.\n- D: 16 = 2⁴, thiếu một lần tái bản so với đề cho (5 lần)."
+  },
+  {
+   "ma_cau": "K09110504054",
+   "nhom_id": "KNB00565",
+   "loai": "trac_nghiem",
+   "de": "Một gene có 3000 nucleotide tái bản liên tiếp 3 lần. Số nucleotide tự do môi trường nội bào cung cấp là",
+   "lua_chon": [
+    "24 000",
+    "9 000",
+    "21 000",
+    "6 000"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Số nucleotide cung cấp = N × (2^k − 1) = 3000 × (8 − 1) = 21 000.\n\nVì sao các phương án khác sai:\n- A: Đã tính N × 2³; phải trừ số nucleotide của DNA mẹ ban đầu: N × (2³ − 1).\n- B: Đã nhân N với số lần tái bản; số DNA con tăng theo 2 mũ k.\n- D: Đã tính N × (3 − 1); số DNA con là 2³ = 8."
+  },
+  {
+   "ma_cau": "K09110504055",
+   "nhom_id": "KNB00565",
+   "loai": "trac_nghiem",
+   "de": "Một gene có 2000 nucleotide tái bản liên tiếp 2 lần. Số nucleotide tự do môi trường nội bào cung cấp là",
+   "lua_chon": [
+    "6 000",
+    "8 000",
+    "4 000",
+    "2 000"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Số nucleotide cung cấp = N × (2^k − 1) = 2000 × (4 − 1) = 6000.\n\nVì sao các phương án khác sai:\n- B: Đã tính N × 2²; phải trừ số nucleotide của DNA mẹ: N × (2² − 1).\n- C: Đã nhân N với số lần tái bản.\n- D: Đã tính N × (2 − 1); số DNA con là 2² = 4."
+  },
+  {
+   "ma_cau": "K09110504056",
+   "nhom_id": "KNB00565",
+   "loai": "trac_nghiem",
+   "de": "Một gene có 2400 nucleotide tái bản liên tiếp 4 lần. Số nucleotide tự do môi trường nội bào cung cấp là bao nhiêu?",
+   "lua_chon": [
+    "38400",
+    "18000",
+    "9600",
+    "36000"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Số nucleotide môi trường cung cấp = N × (2^k − 1) = 2400 × (2⁴ − 1) = 2400 × 15 = 36 000.\n\nVì sao các phương án khác sai:\n- A: 38400 = N × 2⁴, quên trừ đi 1 DNA mẹ ban đầu (không cần cung cấp mới).\n- B: 18000 chỉ bằng một nửa kết quả đúng, tính nhầm khi chia đôi không cần thiết.\n- C: 9600 tính theo N × k (nhân với số lần), không đúng công thức N × (2^k − 1)."
+  },
+  {
+   "ma_cau": "K09110504057",
+   "nhom_id": "KNB00565",
+   "loai": "trac_nghiem",
+   "de": "Một phân tử DNA tái bản liên tiếp một số lần, tạo ra 32 phân tử DNA con. Gene đã tái bản mấy lần?",
+   "lua_chon": [
+    "4 lần",
+    "5 lần",
+    "6 lần",
+    "16 lần"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Số DNA con = 2^k = 32, suy ra k = 5 vì 2⁵ = 32.\n\nVì sao các phương án khác sai:\n- A: Sai: 2⁴ = 16, chưa đủ 32 phân tử DNA con.\n- C: Sai: 2⁶ = 64, nhiều hơn 32 phân tử DNA con đã cho.\n- D: Sai: 16 là kết quả của phép chia 32 : 2, không phải số lần tái bản k."
+  },
+  {
+   "ma_cau": "K09110504058",
+   "nhom_id": "KNB00565",
+   "loai": "trac_nghiem",
+   "de": "Một phân tử DNA tái bản liên tiếp một số lần, tạo ra tổng cộng 64 phân tử DNA con; trong đó theo nguyên tắc bán bảo toàn, luôn có đúng 2 phân tử còn giữ một mạch của DNA mẹ ban đầu. Gene đã tái bản mấy lần?",
+   "lua_chon": [
+    "5 lần",
+    "7 lần",
+    "32 lần",
+    "6 lần"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Số DNA con sau k lần tái bản = 2^k. Từ 2^k = 64, suy ra k = 6 vì 2⁶ = 64.\n\nVì sao các phương án khác sai:\n- A: 2⁵ = 32, chưa đủ 64 phân tử DNA con.\n- B: 2⁷ = 128, nhiều hơn 64 phân tử DNA con đã cho.\n- C: 32 là kết quả phép chia 64 : 2, không phải số lần tái bản k."
+  },
+  {
+   "ma_cau": "K09110504059",
+   "nhom_id": "KNB00565",
+   "loai": "trac_nghiem",
+   "de": "Một phân tử DNA tái bản liên tiếp một số lần, tạo ra 16 phân tử DNA con. Gene đã tái bản mấy lần?",
+   "lua_chon": [
+    "8",
+    "16",
+    "4",
+    "3"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Số DNA con = 2^k = 16 → k = 4 lần tái bản.\n\nVì sao các phương án khác sai:\n- A: 8 không phải số lần tái bản; 2⁴ = 16 mới đúng với số DNA con đề cho.\n- B: 16 là số DNA con, không phải số lần tái bản.\n- D: 2³ = 8 phân tử, chưa đủ 16 như đề bài; phải tái bản đủ 4 lần."
+  },
+  {
+   "ma_cau": "K09110504060",
+   "nhom_id": "KNB00565",
+   "loai": "trac_nghiem",
+   "de": "Một phân tử DNA ban đầu tiến hành tái bản liên tiếp 3 lần. Tổng số phân tử DNA con được tạo ra là",
+   "lua_chon": [
+    "3 phân tử",
+    "6 phân tử",
+    "8 phân tử",
+    "9 phân tử"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Mỗi lần tái bản, số phân tử DNA tăng gấp đôi so với trước đó (tái bản theo cấp số nhân): sau k lần tái bản, số DNA con = 2^k. Với k = 3, số DNA con = 2³ = 8 phân tử.\n\nVì sao các phương án khác sai:\n- A: Đây là kết quả khi tính 3 lần tái bản = 3 phân tử (không nhân đôi từng lần), không đúng bản chất tái bản theo cấp số nhân.\n- B: Đây là kết quả khi tính 3 × 2 = 6 (nhân với 2 một lần cho 3 lần tái bản), không đúng vì mỗi lần tái bản nhân đôi số DNA hiện có, không phải chỉ nhân một lần.\n- D: Đây là kết quả khi tính 3² = 9 (bình phương số lần tái bản), không đúng công thức 2^k."
+  },
+  {
+   "ma_cau": "K09110504061",
+   "nhom_id": "KNB00565",
+   "loai": "trac_nghiem",
+   "de": "Một gene có N = 2400 nucleotide, tiến hành tái bản liên tiếp 3 lần. Tổng số nucleotide môi trường nội bào cần cung cấp cho quá trình tái bản này là",
+   "lua_chon": [
+    "16800 nucleotide",
+    "7200 nucleotide",
+    "2400 nucleotide",
+    "19200 nucleotide"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Tổng số nucleotide môi trường cung cấp cho k lần tái bản = N × (2^k − 1), vì gene ban đầu (N nucleotide) luôn được giữ lại nguyên vẹn trong một mạch của các DNA con (theo nguyên tắc bán bảo toàn), chỉ cần tổng hợp thêm phần còn lại. Với N = 2400, k = 3: số nucleotide cần cung cấp = 2400 × (2³ − 1) = 2400 × 7 = 16800 nucleotide.\n\nVì sao các phương án khác sai:\n- B: Đây là kết quả khi tính N × 3 = 7200 (nhân số lần tái bản một cách đơn giản), không đúng vì số DNA tăng theo cấp số nhân (2^k), không phải theo phép nhân tuyến tính với k.\n- C: Đây chỉ là số nucleotide của gene ban đầu, chưa nhân với số lần tái bản và chưa trừ đi phần gene gốc được giữ lại.\n- D: Đây là kết quả khi tính N × 2^k = 2400 × 8 = 19200 mà QUÊN TRỪ ĐI N (phần của gene ban đầu vẫn được giữ nguyên, không cần môi trường cun …"
+  },
+  {
+   "ma_cau": "K09110504062",
+   "nhom_id": "KNB00565",
+   "loai": "trac_nghiem",
+   "de": "Một gene tái bản liên tiếp một số lần, tạo ra tổng số 64 phân tử DNA con. Số lần tái bản của gene này là",
+   "lua_chon": [
+    "32 lần",
+    "8 lần",
+    "64 lần",
+    "6 lần"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Số DNA con sau k lần tái bản = 2^k. Với số DNA con = 64 = 2⁶, suy ra k = 6 lần tái bản.\n\nVì sao các phương án khác sai:\n- A: Đây là một nửa của 64, không đúng công thức tìm số lần tái bản từ số DNA con.\n- B: 8 là căn bậc hai của 64, không phải số lần tái bản; công thức đúng phải dùng 2^k = 64 để tìm k.\n- C: Đây là nhầm lẫn giữa số phân tử DNA con (64) với số lần tái bản (k); hai đại lượng này không bằng nhau."
+  },
+  {
+   "ma_cau": "K09110504063",
+   "nhom_id": "KNB00565",
+   "loai": "trac_nghiem",
+   "de": "Một gene có N = 3600 nucleotide, trong đó A chiếm 20%. Gene tái bản liên tiếp 2 lần. Tổng số nucleotide loại A mà môi trường cần cung cấp là bao nhiêu?",
+   "lua_chon": [
+    "2880",
+    "2160",
+    "1440",
+    "720"
+   ],
+   "dap_an": "B",
+   "loi_giai": "A = 20% × 3600 = 720. Môi trường cung cấp thêm A = A × (2² − 1) = 720 × 3 = 2160.\n\nVì sao các phương án khác sai:\n- A: 2880 = A × 2², quên trừ đi phần đã có ở DNA mẹ ban đầu.\n- C: 1440 = A × 2 (nhân với số lần tái bản), không đúng công thức A × (2^k − 1).\n- D: 720 là số nucleotide loại A ban đầu của một DNA, chưa nhân với (2^k − 1) để ra số môi trường cần cung cấp thêm."
+  },
+  {
+   "ma_cau": "K09110504064",
+   "nhom_id": "KNB00565",
+   "loai": "trac_nghiem",
+   "de": "Một gene dài 4080 Å tái bản liên tiếp 3 lần. Tổng số nucleotide môi trường nội bào cần cung cấp cho quá trình này là bao nhiêu?",
+   "lua_chon": [
+    "19200",
+    "8400",
+    "16800",
+    "7200"
+   ],
+   "dap_an": "C",
+   "loi_giai": "N = 2×(4080:3,4) = 2400. Môi trường cung cấp = N×(2³⁻¹) = 2400×7 = 16800.\n\nVì sao các phương án khác sai:\n- A: 19200 = N × 2³, quên trừ đi 1 DNA mẹ ban đầu.\n- B: 8400 chỉ bằng một nửa kết quả đúng, tính nhầm khi chia đôi không cần thiết.\n- D: 7200 = N × 3 (nhân với số lần tái bản), không đúng công thức N × (2³ − 1)."
+  },
+  {
+   "ma_cau": "K09110504065",
+   "nhom_id": "KNB00565",
+   "loai": "trac_nghiem",
+   "de": "Một phân tử DNA tái bản liên tiếp 4 lần. Trong số các phân tử DNA con tạo thành, có bao nhiêu phân tử được cấu tạo hoàn toàn từ nguyên liệu mới (không chứa mạch nào của DNA mẹ ban đầu)?",
+   "lua_chon": [
+    "16",
+    "8",
+    "2",
+    "14"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Tổng số DNA con = 2⁴ = 16. Theo bán bảo toàn, luôn có đúng 2 phân tử còn giữ 1 mạch của DNA mẹ ban đầu → số phân tử hoàn toàn mới = 16 − 2 = 14.\n\nVì sao các phương án khác sai:\n- A: 16 là tổng số DNA con; nhưng luôn có 2 phân tử còn giữ lại 1 mạch của DNA mẹ (bán bảo toàn), không phải tất cả đều hoàn toàn mới.\n- B: 8 tính nhầm khi chia đôi tổng số DNA con, không đúng cách.\n- C: 2 là số phân tử vẫn còn giữ mạch của DNA mẹ, ngược với yêu cầu đề bài (hoàn toàn mới)."
+  },
+  {
+   "ma_cau": "K09110505051",
+   "nhom_id": "KNB00566",
+   "loai": "trac_nghiem",
+   "de": "Một bạn giải bài toán: \"Gene có N = 3000 nucleotide, làm khuôn tổng hợp mRNA. Bạn tính số ribonucleotide của mRNA là 3000 : 2 : 2 = 750.\" Bạn đã sai ở bước nào?",
+   "lua_chon": [
+    "Sai: chỉ chia 2 một lần, mRNA có 1500 ribonucleotide",
+    "Không sai: mRNA có 750 ribonucleotide",
+    "Sai: mRNA có 3000 ribonucleotide, bằng N",
+    "Sai: mRNA có 1000 ribonucleotide, bằng N : 3"
+   ],
+   "dap_an": "A",
+   "loi_giai": "mRNA là một mạch đơn được tổng hợp dựa trên một mạch khuôn của gene (mạch kép); vì vậy số ribonucleotide của mRNA bằng số nucleotide của MỘT mạch gene, tức N/2 = 3000/2 = 1500, chỉ cần chia N cho 2 một lần, không phải chia hai lần.\n\nVì sao các phương án khác sai:\n- B: mRNA bằng một mạch gene: N : 2 = 1500.\n- C: mRNA chỉ tổng hợp từ một mạch khuôn nên bằng N : 2.\n- D: Chia 3 là tính số codon; số ribonucleotide là N : 2."
+  },
+  {
+   "ma_cau": "K09110505052",
+   "nhom_id": "KNB00566",
+   "loai": "trac_nghiem",
+   "de": "Một gene có tổng số 1800 nucleotide. Phân tử mRNA được phiên mã từ gene này có bao nhiêu ribonucleotide?",
+   "lua_chon": [
+    "1800 ribonucleotide",
+    "3600 ribonucleotide",
+    "900 ribonucleotide",
+    "450 ribonucleotide"
+   ],
+   "dap_an": "C",
+   "loi_giai": "mRNA chỉ được tổng hợp từ một mạch của gene nên số ribonucleotide = N/2 = 1800/2 = 900.\n\nVì sao các phương án khác sai:\n- A: Sai: 1800 là tổng số nucleotide của cả gene (hai mạch), không phải số ribonucleotide của mRNA (một mạch).\n- B: Sai: 1800 × 2 đi ngược công thức, nhân đôi thay vì chia đôi N.\n- D: Sai: 1800 : 4 chia nhầm cho 4 thay vì chia cho 2."
+  },
+  {
+   "ma_cau": "K09110505053",
+   "nhom_id": "KNB00566",
+   "loai": "trac_nghiem",
+   "de": "Một gene có tổng số 3000 nucleotide. Phân tử mRNA được phiên mã từ gene này có bao nhiêu ribonucleotide?",
+   "lua_chon": [
+    "3000 ribonucleotide",
+    "750 ribonucleotide",
+    "6000 ribonucleotide",
+    "1500 ribonucleotide"
+   ],
+   "dap_an": "D",
+   "loi_giai": "mRNA chỉ được tổng hợp từ một mạch của gene nên số ribonucleotide = N/2 = 3000/2 = 1500.\n\nVì sao các phương án khác sai:\n- A: Sai: 3000 là tổng số nucleotide của cả gene, không phải riêng mRNA.\n- B: Sai: 3000 : 4 chia nhầm cho 4 thay vì chia cho 2.\n- C: Sai: 3000 × 2 đi ngược công thức, nhân đôi thay vì chia đôi N."
+  },
+  {
+   "ma_cau": "K09110505054",
+   "nhom_id": "KNB00566",
+   "loai": "trac_nghiem",
+   "de": "Phân tử mRNA được phiên mã từ một gene có 1200 ribonucleotide. Tổng số nucleotide của gene này là bao nhiêu?",
+   "lua_chon": [
+    "1200",
+    "2400",
+    "600",
+    "4800"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Số ribonucleotide của mRNA bằng một nửa tổng số nucleotide của gene (N:2) → N = 1200 × 2 = 2400.\n\nVì sao các phương án khác sai:\n- A: 1200 là số ribonucleotide của mRNA (bằng một nửa N), không phải tổng số nucleotide của gene.\n- C: 600 tính nhầm khi chia đôi số ribonucleotide thay vì nhân đôi.\n- D: 4800 tính nhầm khi nhân bốn thay vì nhân đôi."
+  },
+  {
+   "ma_cau": "K09110505055",
+   "nhom_id": "KNB00566",
+   "loai": "trac_nghiem",
+   "de": "Mạch gốc của một gene có A = 150, T = 250, G = 300, C = 200 nucleotide. Số ribonucleotide loại A trong mRNA được tổng hợp là bao nhiêu?",
+   "lua_chon": [
+    "150 ribonucleotide",
+    "200 ribonucleotide",
+    "250 ribonucleotide",
+    "300 ribonucleotide"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Ribonucleotide loại A trên mRNA bắt cặp bổ sung với T trên mạch gốc, nên rA = T (mạch gốc) = 250.\n\nVì sao các phương án khác sai:\n- A: Sai: 150 là số A trên chính mạch gốc, không phải số A của mRNA (rA lấy theo T mạch gốc).\n- B: Sai: 200 là số C trên mạch gốc, không liên quan tới rA.\n- D: Sai: 300 là số G trên mạch gốc, không phải cơ sở tính rA."
+  },
+  {
+   "ma_cau": "K09110505056",
+   "nhom_id": "KNB00566",
+   "loai": "trac_nghiem",
+   "de": "Mạch gốc của một gene có A = 180, T = 120, G = 210, C = 390 nucleotide. Số ribonucleotide loại C trong mRNA được tổng hợp là bao nhiêu?",
+   "lua_chon": [
+    "210 ribonucleotide",
+    "390 ribonucleotide",
+    "180 ribonucleotide",
+    "120 ribonucleotide"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Ribonucleotide loại C trên mRNA bắt cặp bổ sung với G trên mạch gốc, nên rC = G (mạch gốc) = 210.\n\nVì sao các phương án khác sai:\n- B: Sai: 390 là số C trên chính mạch gốc, không phải số C của mRNA (rC lấy theo G mạch gốc).\n- C: Sai: 180 là số A trên mạch gốc, không liên quan tới rC.\n- D: Sai: 120 là số T trên mạch gốc, không phải cơ sở tính rC."
+  },
+  {
+   "ma_cau": "K09110505057",
+   "nhom_id": "KNB00566",
+   "loai": "trac_nghiem",
+   "de": "Mạch gốc của một gene có A = 200, T = 400, G = 350, C = 250 nucleotide. Số ribonucleotide loại U trong mRNA được tổng hợp là bao nhiêu?",
+   "lua_chon": [
+    "200",
+    "400",
+    "350",
+    "250"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Trong mRNA, U bổ sung với A trên mạch gốc → số ribonucleotide loại U = số nucleotide loại A trên mạch gốc = 200.\n\nVì sao các phương án khác sai:\n- B: 400 là số nucleotide loại T trên mạch gốc; U trong mRNA bổ sung với A, không phải T.\n- C: 350 là số nucleotide loại G trên mạch gốc, không liên quan đến số U trong mRNA.\n- D: 250 là số nucleotide loại C trên mạch gốc, không liên quan đến số U trong mRNA."
+  },
+  {
+   "ma_cau": "K09110505058",
+   "nhom_id": "KNB00566",
+   "loai": "trac_nghiem",
+   "de": "Một gene phiên mã liên tiếp 5 lần. Số phân tử mRNA được tạo thành là bao nhiêu?",
+   "lua_chon": [
+    "10 phân tử",
+    "5 phân tử",
+    "25 phân tử",
+    "32 phân tử"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Mỗi lần phiên mã tạo ra một phân tử mRNA mới, không nhân đôi số bản như tái bản DNA, nên số mRNA = số lần phiên mã = 5.\n\nVì sao các phương án khác sai:\n- A: Sai: 5 × 2 = 10 áp nhầm công thức nhân đôi giống tái bản DNA.\n- C: Sai: 25 = 5², không đúng với số lần phiên mã tạo mRNA.\n- D: Sai: 2⁵ = 32 là công thức tính số DNA con trong tái bản, không áp dụng cho phiên mã."
+  },
+  {
+   "ma_cau": "K09110505059",
+   "nhom_id": "KNB00566",
+   "loai": "trac_nghiem",
+   "de": "Một gene có 1200 nucleotide, phiên mã liên tiếp 4 lần. Tổng số ribonucleotide môi trường cần cung cấp là bao nhiêu?",
+   "lua_chon": [
+    "600 ribonucleotide",
+    "1200 ribonucleotide",
+    "4800 ribonucleotide",
+    "2400 ribonucleotide"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Mỗi lần phiên mã cần rN = N/2 = 600 ribonucleotide; phiên mã 4 lần cần 4 × 600 = 2400 ribonucleotide.\n\nVì sao các phương án khác sai:\n- A: Sai: 600 chỉ là số ribonucleotide cho một lần phiên mã, chưa nhân với 4 lần.\n- B: Sai: 1200 là tổng số nucleotide của cả gene, không phải số ribonucleotide cần cung cấp.\n- C: Sai: 1200 × 4 = 4800 quên chia đôi N trước khi nhân với số lần phiên mã."
+  },
+  {
+   "ma_cau": "K09110505060",
+   "nhom_id": "KNB00566",
+   "loai": "trac_nghiem",
+   "de": "Một gene có 1800 nucleotide, phiên mã một số lần, môi trường cung cấp tổng số 5400 ribonucleotide. Gene đã phiên mã bao nhiêu lần?",
+   "lua_chon": [
+    "3",
+    "12",
+    "1800",
+    "6"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Mỗi lần phiên mã cần N:2 = 1800:2 = 900 ribonucleotide. Số lần phiên mã = 5400 : 900 = 6.\n\nVì sao các phương án khác sai:\n- A: 3 là kết quả nếu dùng N (1800) làm số ribonucleotide mỗi lần, thay vì N:2 = 900.\n- B: 12 là kết quả nếu nhân đôi số lần một cách không cần thiết.\n- C: 1800 là tổng số nucleotide của gene, không phải số lần phiên mã."
+  },
+  {
+   "ma_cau": "K09110505061",
+   "nhom_id": "KNB00566",
+   "loai": "trac_nghiem",
+   "de": "Một gene có N = 3000 nucleotide tiến hành phiên mã liên tiếp 5 lần, tạo ra 5 phân tử mRNA. Tổng số ribonucleotide môi trường cần cung cấp cho cả 5 lần phiên mã này là",
+   "lua_chon": [
+    "3000 ribonucleotide",
+    "7500 ribonucleotide",
+    "1500 ribonucleotide",
+    "15000 ribonucleotide"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Mỗi lần phiên mã tạo ra một phân tử mRNA có số ribonucleotide bằng N/2 (bằng số nucleotide của một mạch khuôn) = 3000/2 = 1500. Với 5 lần phiên mã, tổng số ribonucleotide cần cung cấp = 1500 × 5 = 7500 ribonucleotide.\n\nVì sao các phương án khác sai:\n- A: Đây chỉ là số nucleotide của gene, chưa tính đến việc phiên mã 5 lần.\n- C: Đây chỉ là số ribonucleotide của MỘT phân tử mRNA (N/2 = 1500), chưa nhân với số lần phiên mã (5 lần).\n- D: Đây là kết quả khi nhân N (3000, cả hai mạch gene) với 5 lần, thay vì chỉ nhân N/2 (một mạch khuôn) với 5 lần; mỗi lần phiên mã chỉ tạo ra một mRNA có số ribonucleotide bằng N/2, không phải N."
+  },
+  {
+   "ma_cau": "K09110505062",
+   "nhom_id": "KNB00566",
+   "loai": "trac_nghiem",
+   "de": "Một phân tử mRNA có 1200 ribonucleotide, trong đó A chiếm 30%, U chiếm 20%, G chiếm 25%. Số ribonucleotide loại C của mRNA này là",
+   "lua_chon": [
+    "300 ribonucleotide",
+    "240 ribonucleotide",
+    "360 ribonucleotide",
+    "600 ribonucleotide"
+   ],
+   "dap_an": "A",
+   "loi_giai": "mRNA là mạch đơn nên %A + %U + %G + %C = 100%. %C = 100% − 30% − 20% − 25% = 25%. Số C = 25% × 1200 = 300 ribonucleotide.\n\nVì sao các phương án khác sai:\n- B: Đây là số U (20%).\n- C: Đây là số A (30%).\n- D: Đã lấy 50% như với DNA; mRNA là mạch đơn nên %C = 100% − %A − %U − %G."
+  },
+  {
+   "ma_cau": "K09110505063",
+   "nhom_id": "KNB00566",
+   "loai": "trac_nghiem",
+   "de": "Một gene có N = 2400 nucleotide phiên mã một số lần, môi trường đã cung cấp tổng cộng 6000 ribonucleotide. Số lần phiên mã của gene là",
+   "lua_chon": [
+    "5 lần",
+    "2,5 lần",
+    "3 lần",
+    "4 lần"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Mỗi mRNA có N : 2 = 1200 ribonucleotide. Số lần phiên mã = 6000 : 1200 = 5 lần.\n\nVì sao các phương án khác sai:\n- B: Đã lấy 6000 : N; mỗi mRNA chỉ có N : 2 ribonucleotide.\n- C: Đã chia cho 2000 do tính sai số ribonucleotide mỗi mRNA.\n- D: Đã chia 6000 cho 1500 do nhầm N = 3000."
+  },
+  {
+   "ma_cau": "K09110505064",
+   "nhom_id": "KNB00566",
+   "loai": "trac_nghiem",
+   "de": "Một gene dài 3060 Å phiên mã liên tiếp một số lần, môi trường đã cung cấp tổng cộng 5400 ribonucleotide. Số lần phiên mã của gene là bao nhiêu?",
+   "lua_chon": [
+    "6",
+    "3",
+    "12",
+    "900"
+   ],
+   "dap_an": "A",
+   "loi_giai": "N = 2×(3060:3,4) = 1800. Mỗi lần phiên mã cần N:2 = 900 ribonucleotide. Số lần phiên mã = 5400:900 = 6.\n\nVì sao các phương án khác sai:\n- B: 3 là kết quả nếu dùng N (1800) làm số ribonucleotide mỗi lần, thay vì N:2 = 900.\n- C: 12 là kết quả nếu nhân đôi số lần một cách không cần thiết.\n- D: 900 là số ribonucleotide mỗi lần phiên mã, không phải số lần phiên mã."
+  }
+ ]
+}

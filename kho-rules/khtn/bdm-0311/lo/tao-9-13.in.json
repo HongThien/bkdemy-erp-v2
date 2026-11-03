@@ -1,0 +1,730 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00583",
+   "khoi": "9",
+   "chu_de": "Di truyền học với con người và đời sống",
+   "chuyen_de": "Di truyền học với con người và đời sống",
+   "nhom": "Lý thuyết di truyền học với con người và đời sống",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K09130101001",
+     "loai": "trac_nghiem",
+     "de": "Bệnh bạch tạng (da, tóc, mắt thiếu sắc tố) ở người là hậu quả của dạng biến đổi vật chất di truyền nào?",
+     "lua_chon": [
+      "Đột biến gene",
+      "Đột biến nhiễm sắc thể",
+      "Biến dị tổ hợp",
+      "Thường biến"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Bạch tạng do đột biến gene quy định tổng hợp sắc tố melanin, làm cơ thể không tạo được sắc tố này.\n\nVì sao các phương án khác sai:\n- B: Đột biến NST làm thay đổi cấu trúc hoặc số lượng NST, không phải nguyên nhân gây bạch tạng.\n- C: Biến dị tổ hợp là sự tổ hợp lại các gene có sẵn qua sinh sản hữu tính, không tạo ra allele mới gây bệnh.\n- D: Thường biến là biến đổi kiểu hình do môi trường, không di truyền được, không phải nguyên nhân của bạch tạng."
+    },
+    {
+     "ma_cau": "K09130101002",
+     "loai": "trac_nghiem",
+     "de": "Gene gây bệnh bạch tạng ở người có đặc điểm di truyền như thế nào?",
+     "lua_chon": [
+      "Trội, nằm trên NST thường",
+      "Lặn, nằm trên NST thường",
+      "Lặn, nằm trên NST giới tính X",
+      "Trội, nằm trên NST giới tính X"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Bạch tạng do allele lặn nằm trên NST thường quy định nên cả nam và nữ đều có thể mắc với tỉ lệ như nhau.\n\nVì sao các phương án khác sai:\n- A: Nếu là gene trội, người mang gene sẽ luôn biểu hiện bệnh, không thể \"ẩn\" qua các thế hệ như bạch tạng.\n- C: Gene trên NST giới tính X thường làm bệnh gặp ở nam nhiều hơn nữ, khác với bạch tạng.\n- D: Bạch tạng không liên kết giới tính và không phải gene trội."
+    },
+    {
+     "ma_cau": "K09130101003",
+     "loai": "trac_nghiem",
+     "de": "Bệnh máu khó đông do gene lặn nằm trên NST nào quy định?",
+     "lua_chon": [
+      "NST giới tính Y",
+      "Cả NST giới tính X và NST thường",
+      "NST giới tính X",
+      "NST thường"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Gene gây bệnh máu khó đông là gene lặn nằm trên NST giới tính X.\n\nVì sao các phương án khác sai:\n- A: NST Y ở người mang rất ít gene và không quy định bệnh máu khó đông.\n- B: Gene gây bệnh máu khó đông chỉ nằm trên NST X, không đồng thời nằm trên NST thường.\n- D: Nếu gene nằm trên NST thường thì tỉ lệ mắc bệnh ở nam và nữ sẽ như nhau, không đúng thực tế."
+    },
+    {
+     "ma_cau": "K09130101004",
+     "loai": "trac_nghiem",
+     "de": "Vì sao bệnh mù màu gặp ở nam giới nhiều hơn ở nữ giới?",
+     "lua_chon": [
+      "Nam mang NST Y có gene gây bệnh mù màu",
+      "Nữ giới không mang allele gây bệnh mù màu",
+      "Mù màu là đột biến mới, chỉ phát sinh ở nam giới",
+      "Nam chỉ có 1 NST X nên allele lặn biểu hiện ngay"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Nam có kiểu NST giới tính XY, chỉ có 1 NST X; nếu NST X đó mang allele lặn gây mù màu thì bệnh biểu hiện ngay.\n\nVì sao các phương án khác sai:\n- A: NST Y không mang gene quy định mù màu, gene này nằm trên NST X.\n- B: Nữ vẫn có thể mang allele gây mù màu ở dạng dị hợp, không biểu hiện bệnh.\n- C: Mù màu do allele lặn có sẵn, di truyền qua các thế hệ, không phải đột biến mới."
+    },
+    {
+     "ma_cau": "K09130101005",
+     "loai": "trac_nghiem",
+     "de": "Tật di truyền khác với bệnh di truyền chủ yếu ở điểm nào?",
+     "lua_chon": [
+      "Biểu hiện thành dị dạng ở hình thái cơ thể",
+      "Có nguyên nhân khác, không phải đột biến gene hay NST",
+      "Gặp riêng ở nữ giới, không gặp ở nam",
+      "Khó quan sát được bằng mắt thường trên cơ thể"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tật di truyền là những dị dạng về hình thái cơ thể (ví dụ thừa ngón, khe hở môi - hàm) do đột biến gene hoặc NST gây ra.\n\nVì sao các phương án khác sai:\n- B: Tật di truyền vẫn có nguyên nhân từ đột biến gene hoặc NST, giống như bệnh di truyền.\n- C: Tật di truyền có thể gặp ở cả nam và nữ, không giới hạn ở một giới.\n- D: Nhiều tật di truyền biểu hiện ra hình thái nên có thể quan sát được bằng mắt thường."
+    },
+    {
+     "ma_cau": "K09130101006",
+     "loai": "trac_nghiem",
+     "de": "Vì sao các bệnh di truyền do gene lặn trên NST thường thường gặp với tần số thấp hơn ở những quần thể không có hôn nhân cận huyết?",
+     "lua_chon": [
+      "Vì xác suất hai người cùng mang allele lặn kết hôn thấp hơn khi không cận huyết",
+      "Vì gene lặn chỉ xuất hiện ở những quần thể có hôn nhân cận huyết",
+      "Vì hôn nhân không cận huyết làm allele lặn tự biến mất khỏi quần thể",
+      "Vì gene lặn đột biến thành gene trội khi không có hôn nhân cận huyết"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Hôn nhân cận huyết làm tăng khả năng hai người có quan hệ huyết thống cùng mang một allele lặn giống nhau, dễ sinh con đồng hợp lặn (biểu hiện bệnh) hơn so với hôn nhân không cận huyết.\n\nVì sao các phương án khác sai:\n- B: Gene lặn vẫn có thể tồn tại ở mọi quần thể, chỉ là tần số biểu hiện bệnh thấp hơn khi không cận huyết.\n- C: Allele lặn không tự biến mất hoàn toàn, chỉ ít có cơ hội gặp nhau ở trạng thái đồng hợp hơn.\n- D: Gene lặn không tự đột biến thành gene trội chỉ vì không có hôn nhân cận huyết."
+    },
+    {
+     "ma_cau": "K09130101007",
+     "loai": "trac_nghiem",
+     "de": "Hội chứng Down ở người là hậu quả của dạng đột biến nhiễm sắc thể nào?",
+     "lua_chon": [
+      "Mất một đoạn của NST số 21 (đột biến cấu trúc)",
+      "Thừa 1 NST ở cặp số 21 (đột biến số lượng)",
+      "Thiếu 1 NST giới tính (đột biến số lượng)",
+      "Một gene trên NST số 21 bị đột biến"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Hội chứng Down do đột biến số lượng NST: người bệnh có 3 NST số 21 (thừa 1 chiếc) thay vì 2 chiếc như bình thường.\n\nVì sao các phương án khác sai:\n- A: Down là đột biến số lượng NST (thừa cả một NST), không phải mất một đoạn NST (đột biến cấu trúc).\n- C: Thiếu 1 NST giới tính là đặc điểm của hội chứng Turner, không phải Down.\n- D: Down do thừa nguyên một NST số 21, không phải do một gene trên NST đó bị đột biến."
+    },
+    {
+     "ma_cau": "K09130101008",
+     "loai": "trac_nghiem",
+     "de": "Người mắc hội chứng Down có bao nhiêu nhiễm sắc thể trong mỗi tế bào sinh dưỡng?",
+     "lua_chon": [
+      "46 NST",
+      "48 NST",
+      "47 NST",
+      "45 NST"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Người bình thường có 46 NST (2n); người mắc Down thừa 1 NST ở cặp 21 nên có 47 NST.\n\nVì sao các phương án khác sai:\n- A: 46 NST là bộ NST của người bình thường, không phải người mắc hội chứng Down.\n- B: Down chỉ thừa 1 NST (47 NST), không phải thừa 2 NST.\n- D: 45 NST là số NST ít hơn bình thường, đặc trưng cho hội chứng Turner (thiếu 1 NST), không phải Down."
+    },
+    {
+     "ma_cau": "K09130101009",
+     "loai": "trac_nghiem",
+     "de": "Hội chứng Turner ở người nữ là hậu quả của dạng đột biến nhiễm sắc thể nào?",
+     "lua_chon": [
+      "Thừa 1 NST giới tính X (đột biến số lượng)",
+      "Thay đổi cấu trúc của NST giới tính X",
+      "Một NST thường bị thay đổi số lượng",
+      "Còn lại 1 NST giới tính X (đột biến số lượng)"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Hội chứng Turner do đột biến số lượng NST: người bệnh chỉ còn lại 1 NST giới tính X (kí hiệu XO) thay vì 2 chiếc.\n\nVì sao các phương án khác sai:\n- A: Turner là thiếu (chỉ còn 1) NST X, không phải thừa thêm 1 NST X.\n- B: Turner là thay đổi số lượng NST giới tính, không phải thay đổi cấu trúc của NST X.\n- C: Turner liên quan đến NST giới tính, không phải NST thường."
+    },
+    {
+     "ma_cau": "K09130101010",
+     "loai": "trac_nghiem",
+     "de": "Người mắc hội chứng Turner có bao nhiêu nhiễm sắc thể trong mỗi tế bào sinh dưỡng?",
+     "lua_chon": [
+      "45 NST",
+      "46 NST",
+      "47 NST",
+      "44 NST"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Người mắc Turner thiếu 1 NST giới tính (chỉ có 1 NST X) nên có 45 NST, ít hơn bộ NST bình thường 1 chiếc.\n\nVì sao các phương án khác sai:\n- B: 46 NST là số NST của người bình thường, không phải người mắc Turner.\n- C: 47 NST là số NST ở người thừa 1 NST, đặc trưng cho hội chứng Down, không phải Turner.\n- D: Turner chỉ thiếu 1 NST (45 NST), không thiếu 2 NST."
+    },
+    {
+     "ma_cau": "K09130101011",
+     "loai": "trac_nghiem",
+     "de": "Điểm giống nhau giữa hội chứng Down và hội chứng Turner là gì?",
+     "lua_chon": [
+      "Do đột biến gene gây ra ở cả hai hội chứng",
+      "Đều do đột biến số lượng nhiễm sắc thể gây ra",
+      "Riêng gặp ở nam giới, không gặp ở nữ",
+      "Làm thừa một nhiễm sắc thể giới tính ở cả hai"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Cả hội chứng Down (thừa 1 NST số 21) và Turner (thiếu 1 NST X) đều là dạng đột biến số lượng nhiễm sắc thể.\n\nVì sao các phương án khác sai:\n- A: Cả hai hội chứng đều do thay đổi số lượng NST, không phải do đột biến gene.\n- C: Turner chỉ gặp ở nữ, Down có thể gặp ở cả nam và nữ; không phải đều chỉ gặp ở nam.\n- D: Down thừa NST thường (số 21); Turner lại thiếu (không phải thừa) NST giới tính."
+    },
+    {
+     "ma_cau": "K09130101012",
+     "loai": "trac_nghiem",
+     "de": "Một người có 47 NST trong tế bào sinh dưỡng, cặp NST giới tính là XXY. Người này mắc hội chứng nào?",
+     "lua_chon": [
+      "Hội chứng Down",
+      "Hội chứng Klinefelter",
+      "Hội chứng Turner",
+      "Bệnh máu khó đông"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Thừa một NST X ở cặp giới tính (XXY, tổng 47 NST) là đặc điểm của hội chứng Klinefelter.\n\nVì sao các phương án khác sai:\n- A: Hội chứng Down do thừa một NST số 21, cặp giới tính bình thường.\n- C: Hội chứng Turner chỉ có một NST X (XO), tổng 45 NST.\n- D: Bệnh máu khó đông do đột biến gene, số NST bình thường (46)."
+    },
+    {
+     "ma_cau": "K09130101013",
+     "loai": "trac_nghiem",
+     "de": "Hội chứng Down và hội chứng Klinefelter đều là thể ba (2n + 1). Hai hội chứng khác nhau ở điểm nào?",
+     "lua_chon": [
+      "Down thừa NST X; Klinefelter thừa NST số 21",
+      "Down thiếu NST số 21; Klinefelter thiếu NST X",
+      "Down thừa NST số 21; Klinefelter thừa NST X",
+      "Down chỉ gặp ở nam; Klinefelter chỉ gặp ở nữ"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Down: thừa một NST ở cặp số 21 (NST thường); Klinefelter: thừa một NST X ở cặp NST giới tính (XXY).\n\nVì sao các phương án khác sai:\n- A: Nhầm ngược: Down thừa NST 21, Klinefelter thừa NST X.\n- B: Cả hai đều là thể ba (thừa 1 NST), không phải thiếu.\n- D: Down gặp ở cả hai giới; Klinefelter gặp ở nam (XXY)."
+    },
+    {
+     "ma_cau": "K09130101014",
+     "loai": "trac_nghiem",
+     "de": "Pháp luật hôn nhân và gia đình ở Việt Nam quy định cấm kết hôn giữa những người có quan hệ huyết thống trong phạm vi ba đời. Cơ sở di truyền học của quy định này là gì?",
+     "lua_chon": [
+      "Người cùng huyết thống gần luôn mang gene trội gây bệnh",
+      "Kết hôn cận huyết chủ yếu ảnh hưởng chiều cao con cái",
+      "Cùng huyết thống dễ mang chung allele lặn gây bệnh",
+      "Kết hôn cận huyết làm tăng số NST ở đời con"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Những người cùng huyết thống gần có thể cùng mang một số allele lặn từ tổ tiên chung; kết hôn cận huyết làm tăng khả năng con nhận đủ hai allele lặn (đồng hợp lặn) và biểu hiện bệnh.\n\nVì sao các phương án khác sai:\n- A: Gene trội thường biểu hiện ngay ở người mang, khó \"ẩn\" qua nhiều thế hệ như gene lặn.\n- B: Nguy cơ chính của hôn nhân cận huyết là tăng bệnh, tật di truyền do gene lặn, không chỉ là chiều cao.\n- D: Kết hôn cận huyết không làm thay đổi số lượng NST ở đời con."
+    },
+    {
+     "ma_cau": "K09130101015",
+     "loai": "trac_nghiem",
+     "de": "Một cặp anh chị em họ (con của hai anh chị em ruột) dự định kết hôn. Vì sao đây được xem là hôn nhân cận huyết cần hạn chế?",
+     "lua_chon": [
+      "Cận huyết tạo đột biến gene mới ở con",
+      "Cùng huyết thống có bộ NST khác thường",
+      "Cận huyết làm giảm số lượng gene ở con",
+      "Họ có thể cùng mang allele lặn từ ông bà chung"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Hai anh chị em họ có chung ông bà nên có thể cùng mang một số allele lặn giống nhau; nếu kết hôn, con dễ nhận đủ hai allele lặn giống nhau (đồng hợp lặn) và mắc bệnh hơn so với người không cùng huyết thống.\n\nVì sao các phương án khác sai:\n- A: Hôn nhân cận huyết làm bộc lộ allele lặn có sẵn ở dạng đồng hợp, không tạo đột biến gene mới.\n- B: Người cùng huyết thống vẫn có bộ NST bình thường, không có gì khác thường về cấu trúc, số lượng NST.\n- C: Hôn nhân cận huyết không làm thay đổi số lượng gene ở đời con."
+    },
+    {
+     "ma_cau": "K09130101016",
+     "loai": "trac_nghiem",
+     "de": "Vì sao hôn nhân cận huyết làm tăng đáng kể tỉ lệ trẻ sinh ra mắc bệnh di truyền do gene lặn, so với hôn nhân giữa người không có quan hệ huyết thống?",
+     "lua_chon": [
+      "Người cùng huyết thống gần thường mang chung allele lặn, dễ tạo con đồng hợp lặn",
+      "Hôn nhân cận huyết luôn tạo ra đột biến gene mới ở con ngay từ khi thụ tinh",
+      "Người có quan hệ huyết thống gần luôn có nhóm máu giống hệt nhau, gây xung đột miễn dịch",
+      "Hôn nhân cận huyết làm số lượng nhiễm sắc thể của con giảm đi một nửa"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Những người có quan hệ huyết thống gần thường cùng mang một số allele lặn giống nhau do thừa hưởng từ tổ tiên chung, nên dễ kết hợp tạo thể đồng hợp lặn (biểu hiện bệnh) ở con hơn so với hôn nhân không cận huyết.\n\nVì sao các phương án khác sai:\n- B: Cận huyết làm tăng khả năng đồng hợp lặn từ các allele có sẵn, không phải tạo ra đột biến mới.\n- C: Nhóm máu không nhất thiết giống nhau giữa những người có quan hệ huyết thống, đây không phải cơ sở chính của vấn đề.\n- D: Con vẫn nhận đủ bộ NST bình thường (2n) từ bố và mẹ, không giảm đi một nửa."
+    },
+    {
+     "ma_cau": "K09130101017",
+     "loai": "trac_nghiem",
+     "de": "Công nghệ di truyền là gì?",
+     "lua_chon": [
+      "Lai giống giữa hai cá thể cùng loài",
+      "Chọn lọc cá thể có đột biến tự nhiên có lợi",
+      "Chuyển gene từ loài này sang loài khác",
+      "Nhân giống vô tính từ một tế bào ban đầu"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Công nghệ di truyền là công nghệ ứng dụng kĩ thuật hiện đại để chuyển gene mong muốn từ loài này sang loài khác.\n\nVì sao các phương án khác sai:\n- A: Lai giống truyền thống cho hai cá thể giao phối, không phải chuyển gene ở mức phân tử.\n- B: Chọn lọc đột biến tự nhiên là phương pháp chọn giống cổ điển, không phải kĩ thuật chuyển gene.\n- D: Nhân giống vô tính tạo cá thể giống hệt cá thể gốc, không chuyển gene giữa các loài."
+    },
+    {
+     "ma_cau": "K09130101018",
+     "loai": "trac_nghiem",
+     "de": "Sinh vật biến đổi gene (GMO) là sinh vật như thế nào?",
+     "lua_chon": [
+      "Xuất hiện đột biến gene một cách ngẫu nhiên",
+      "Lai giữa hai loài bằng phương pháp hữu tính",
+      "Được nhân giống vô tính từ một cá thể gốc",
+      "Có hệ gene được con người làm biến đổi"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Sinh vật biến đổi gene là sinh vật có hệ gene đã được con người chủ động làm biến đổi (thường bằng cách chuyển thêm gene).\n\nVì sao các phương án khác sai:\n- A: Đột biến ngẫu nhiên trong tự nhiên không do con người chủ động tạo ra như sinh vật biến đổi gene.\n- B: Lai hữu tính là phương pháp truyền thống, khác với kĩ thuật chuyển gene ở mức phân tử.\n- C: Nhân giống vô tính chỉ tạo cá thể giống hệt cá thể gốc, không làm thay đổi hệ gene."
+    },
+    {
+     "ma_cau": "K09130101019",
+     "loai": "trac_nghiem",
+     "de": "Trong kĩ thuật sản xuất insulin người, gene tổng hợp insulin thường được chuyển vào sinh vật nào để sản xuất với số lượng lớn?",
+     "lua_chon": [
+      "Vi khuẩn",
+      "Virus",
+      "Cây trồng",
+      "Tế bào thần kinh người"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Gene tổng hợp insulin người được chuyển vào vi khuẩn (ví dụ E. coli); vi khuẩn sinh sản nhanh giúp sản xuất insulin với số lượng lớn.\n\nVì sao các phương án khác sai:\n- B: Virus không tự sinh sản độc lập và không được dùng làm \"nhà máy\" sản xuất protein như vi khuẩn.\n- C: Cây trồng sinh trưởng chậm hơn nhiều so với vi khuẩn, không phù hợp sản xuất insulin số lượng lớn trong thời gian ngắn.\n- D: Tế bào thần kinh người không phân chia và không thể nuôi cấy để sản xuất protein như vi khuẩn."
+    },
+    {
+     "ma_cau": "K09130101020",
+     "loai": "trac_nghiem",
+     "de": "Mục đích chính của công nghệ di truyền khi tạo ra sinh vật biến đổi gene là gì?",
+     "lua_chon": [
+      "Làm tăng số lượng nhiễm sắc thể trong tế bào sinh vật",
+      "Tạo sinh vật mang đặc điểm mới theo mục đích sử dụng",
+      "Thay thế toàn bộ hệ gene ban đầu của sinh vật đó",
+      "Ngăn sinh vật đó sinh sản, tránh lai tạp loài khác"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Công nghệ di truyền tạo sinh vật biến đổi gene nhằm mang lại đặc điểm mới (kháng sâu bệnh, tăng năng suất, sản xuất dược phẩm) theo mục đích sử dụng.\n\nVì sao các phương án khác sai:\n- A: Chuyển thêm một hoặc vài gene không làm thay đổi số lượng NST của sinh vật.\n- C: Kĩ thuật chuyển gene thường chỉ thêm hoặc thay vài gene, không thay thế toàn bộ hệ gene.\n- D: Mục đích của công nghệ di truyền là tạo đặc điểm mới có lợi, không phải ngăn sinh sản."
+    },
+    {
+     "ma_cau": "K09130101021",
+     "loai": "trac_nghiem",
+     "de": "Điểm khác biệt nổi bật của công nghệ di truyền so với phương pháp lai giống truyền thống là gì?",
+     "lua_chon": [
+      "Không làm thay đổi hệ gene của sinh vật nhận gene chuyển",
+      "Không cần dùng đến kĩ thuật ở mức phân tử",
+      "Có thể chuyển gene giữa các loài không giao phối được",
+      "Thường tạo giống có năng suất thấp hơn giống gốc"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Công nghệ di truyền cho phép chuyển gene giữa các loài xa nhau, kể cả loài không giao phối được, khác với lai giống truyền thống.\n\nVì sao các phương án khác sai:\n- A: Khi nhận gene chuyển, hệ gene sinh vật nhận có thêm gene mới, tức là đã thay đổi.\n- B: Công nghệ di truyền thao tác trực tiếp trên gene (mức phân tử), khác lai giống truyền thống.\n- D: Công nghệ di truyền thường tạo giống có đặc điểm tốt hơn, không phải làm giảm năng suất."
+    },
+    {
+     "ma_cau": "K09130101022",
+     "loai": "trac_nghiem",
+     "de": "Kĩ thuật cơ bản để chuyển một gene mong muốn từ sinh vật này sang sinh vật khác trong công nghệ di truyền được gọi là gì?",
+     "lua_chon": [
+      "Kĩ thuật lai giống truyền thống",
+      "Kĩ thuật nhân bản vô tính, không chuyển gene mới nào",
+      "Kĩ thuật chuyển gene",
+      "Kĩ thuật gây đột biến bằng hoá chất"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Kĩ thuật chuyển gene là kĩ thuật cơ bản trong công nghệ di truyền, dùng để đưa một gene mong muốn từ sinh vật này sang sinh vật khác.\n\nVì sao các phương án khác sai:\n- A: Lai giống truyền thống dựa trên sinh sản hữu tính giữa các cá thể cùng loài, khác với việc chuyển trực tiếp một gene.\n- B: Nhân bản vô tính tạo ra cá thể giống hệt về mặt di truyền, không phải kĩ thuật chuyển một gene cụ thể.\n- D: Gây đột biến hoá chất tạo ra thay đổi ngẫu nhiên trong bộ gene, không phải chuyển gene có chủ đích."
+    },
+    {
+     "ma_cau": "K09130101023",
+     "loai": "trac_nghiem",
+     "de": "Vì sao vi khuẩn thường được chọn làm sinh vật nhận gene để sản xuất các sản phẩm như insulin, hormone tăng trưởng với số lượng lớn?",
+     "lua_chon": [
+      "Vi khuẩn có bộ gene giống hệt bộ gene người",
+      "Vi khuẩn không bao giờ bị đột biến trong quá trình nuôi cấy",
+      "Vi khuẩn có kích thước lớn nên dễ dàng thao tác chuyển gene",
+      "Vi khuẩn nhân lên rất nhanh, dễ nuôi cấy nhiều trong thời gian ngắn"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Vi khuẩn sinh sản rất nhanh và dễ nuôi cấy với số lượng lớn trong thời gian ngắn, thuận lợi để sản xuất sản phẩm protein mong muốn với quy mô công nghiệp.\n\nVì sao các phương án khác sai:\n- A: Bộ gene vi khuẩn khác biệt lớn so với người; chỉ có gene được chuyển vào mới tạo protein mong muốn.\n- B: Vi khuẩn vẫn có thể xảy ra đột biến như mọi sinh vật khác trong quá trình nuôi cấy.\n- C: Vi khuẩn có kích thước rất nhỏ (tế bào đơn giản), không phải kích thước lớn."
+    },
+    {
+     "ma_cau": "K09130101024",
+     "loai": "trac_nghiem",
+     "de": "Sinh vật biến đổi gene (GMO) khác với sinh vật được tạo ra bằng phương pháp lai giống truyền thống ở điểm nào?",
+     "lua_chon": [
+      "GMO có thể mang gene được chuyển trực tiếp từ một loài khác xa về mặt tiến hoá, không cần qua sinh sản hữu tính",
+      "GMO không mang bất kì gene nào từ loài khác",
+      "GMO chỉ có thể tạo ra ở thực vật, không tạo được ở động vật hay vi sinh vật",
+      "GMO luôn có hại và không được phép sử dụng ở bất kì quốc gia nào"
+     ],
+     "dap_an": "A",
+     "loi_giai": "GMO có thể mang gene được chuyển trực tiếp từ một loài khác xa về mặt tiến hoá (ví dụ gene người chuyển vào vi khuẩn), điều mà lai giống truyền thống (chỉ trong cùng loài hoặc loài gần) không thể làm được.\n\nVì sao các phương án khác sai:\n- B: GMO thường mang thêm gene được chuyển từ loài khác, đó là đặc điểm cơ bản của sinh vật biến đổi gene.\n- C: Công nghệ chuyển gene tạo được sinh vật biến đổi gene ở cả thực vật, động vật và vi sinh vật.\n- D: Nhiều loại GMO được các cơ quan chức năng đánh giá an toàn và cho phép sử dụng ở nhiều quốc gia."
+    },
+    {
+     "ma_cau": "K09130101025",
+     "loai": "trac_nghiem",
+     "de": "Tạo giống bông chuyển gene có khả năng kháng sâu bệnh là ứng dụng của công nghệ di truyền trong lĩnh vực nào?",
+     "lua_chon": [
+      "Y học",
+      "Pháp y",
+      "Bảo vệ môi trường",
+      "Nông nghiệp"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tạo giống cây trồng (như bông) kháng sâu bệnh, tăng năng suất là ứng dụng công nghệ di truyền trong lĩnh vực nông nghiệp.\n\nVì sao các phương án khác sai:\n- A: Y học liên quan đến sản xuất thuốc, vaccine, không phải tạo giống cây trồng kháng sâu bệnh.\n- B: Pháp y liên quan đến giám định gene để xác định danh tính, không liên quan giống cây trồng.\n- C: Đây là ứng dụng trực tiếp trong trồng trọt (nông nghiệp), không phải hoạt động bảo vệ môi trường."
+    },
+    {
+     "ma_cau": "K09130101026",
+     "loai": "trac_nghiem",
+     "de": "Chuyển gene tổng hợp insulin người vào vi khuẩn để sản xuất insulin dùng chữa bệnh tiểu đường là ứng dụng công nghệ di truyền trong lĩnh vực nào?",
+     "lua_chon": [
+      "Y học",
+      "Nông nghiệp",
+      "Pháp y",
+      "Công nghiệp thực phẩm"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Sản xuất insulin, vaccine hay các dược phẩm nhờ chuyển gene vào vi sinh vật là ứng dụng công nghệ di truyền trong lĩnh vực y học.\n\nVì sao các phương án khác sai:\n- B: Nông nghiệp liên quan đến giống cây trồng, vật nuôi, không phải sản xuất thuốc chữa bệnh cho người.\n- C: Pháp y dùng để xác định danh tính, huyết thống, không liên quan đến sản xuất insulin.\n- D: Đây là sản xuất dược phẩm chữa bệnh, không phải chế biến thực phẩm."
+    },
+    {
+     "ma_cau": "K09130101027",
+     "loai": "trac_nghiem",
+     "de": "Phân tích hệ gene (ADN) để xác định huyết thống hoặc nhận dạng cá nhân trong điều tra là ứng dụng công nghệ di truyền trong lĩnh vực nào?",
+     "lua_chon": [
+      "Chọn giống vật nuôi",
+      "Pháp y",
+      "Nông nghiệp",
+      "Y học điều trị bệnh"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Phân tích ADN để xác định huyết thống, nhận dạng cá nhân phục vụ điều tra là ứng dụng công nghệ di truyền trong lĩnh vực pháp y (giám định gene).\n\nVì sao các phương án khác sai:\n- A: Chọn giống vật nuôi nhằm cải thiện năng suất, không liên quan đến giám định gene phục vụ điều tra.\n- C: Nông nghiệp liên quan đến tạo giống cây trồng, vật nuôi, không phải xác định huyết thống, nhận dạng cá nhân.\n- D: Y học điều trị bệnh liên quan đến sản xuất thuốc, không phải giám định huyết thống, danh tính."
+    },
+    {
+     "ma_cau": "K09130101028",
+     "loai": "trac_nghiem",
+     "de": "Tạo giống ngô chuyển gene có khả năng kháng sâu đục thân là ứng dụng của công nghệ di truyền trong lĩnh vực nào?",
+     "lua_chon": [
+      "Pháp y",
+      "Xử lí ô nhiễm môi trường",
+      "Nông nghiệp",
+      "Y học"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Tạo giống ngô kháng sâu đục thân giúp tăng năng suất cây trồng, đây là ứng dụng công nghệ di truyền trong nông nghiệp.\n\nVì sao các phương án khác sai:\n- A: Pháp y liên quan đến giám định gene người, không liên quan giống cây trồng.\n- B: Đây là cải tạo giống cây trồng, không phải hoạt động xử lí ô nhiễm môi trường.\n- D: Y học liên quan đến sản xuất thuốc, vaccine cho người, không phải giống cây trồng."
+    },
+    {
+     "ma_cau": "K09130101029",
+     "loai": "trac_nghiem",
+     "de": "Sản xuất vaccine hoặc hormone tăng trưởng nhờ vi sinh vật mang gene chuyển là ứng dụng công nghệ di truyền chủ yếu trong lĩnh vực nào?",
+     "lua_chon": [
+      "Nông nghiệp",
+      "Pháp y",
+      "Xử lí rác thải",
+      "Y học"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Sản xuất vaccine, hormone hay các dược phẩm khác nhờ vi sinh vật mang gene chuyển là ứng dụng công nghệ di truyền trong lĩnh vực y học.\n\nVì sao các phương án khác sai:\n- A: Nông nghiệp liên quan đến giống cây trồng, vật nuôi, không phải sản xuất vaccine, hormone cho người.\n- B: Pháp y liên quan giám định gene, không liên quan sản xuất vaccine, hormone.\n- C: Đây là sản xuất dược phẩm, không liên quan đến việc xử lí rác thải."
+    },
+    {
+     "ma_cau": "K09130101030",
+     "loai": "trac_nghiem",
+     "de": "Xét nghiệm DNA để xác định quan hệ cha con trong các vụ tranh chấp pháp lí là ứng dụng công nghệ di truyền trong lĩnh vực nào?",
+     "lua_chon": [
+      "Nông nghiệp",
+      "Y học",
+      "Bảo tồn động vật hoang dã",
+      "Pháp y"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Xét nghiệm DNA để xác định quan hệ huyết thống (như cha con) phục vụ tranh chấp pháp lí là ứng dụng công nghệ di truyền trong lĩnh vực pháp y.\n\nVì sao các phương án khác sai:\n- A: Xác định huyết thống không liên quan trực tiếp đến trồng trọt hay chăn nuôi.\n- B: Đây là xác định quan hệ huyết thống phục vụ pháp lí, thuộc lĩnh vực pháp y, không phải chữa bệnh.\n- C: Bảo tồn động vật hoang dã là một lĩnh vực khác, không liên quan việc xác định cha con ở người."
+    },
+    {
+     "ma_cau": "K09130101031",
+     "loai": "trac_nghiem",
+     "de": "Tạo ra giống cà chua chuyển gene có thời gian bảo quản lâu hơn, chậm hư hỏng là ứng dụng của công nghệ di truyền trong lĩnh vực nào?",
+     "lua_chon": [
+      "Nông nghiệp",
+      "Y học",
+      "Pháp y",
+      "Xử lí môi trường"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Tạo giống cà chua chuyển gene có đặc tính bảo quản tốt hơn là ứng dụng công nghệ di truyền trong lĩnh vực nông nghiệp (cải tiến giống cây trồng).\n\nVì sao các phương án khác sai:\n- B: Đây là cải tiến giống cây trồng, không phải ứng dụng trong chữa bệnh.\n- C: Đây không liên quan đến việc xác định huyết thống hay nhận dạng cá nhân.\n- D: Đây là cải tiến giống cây trồng, không phải xử lí ô nhiễm môi trường."
+    },
+    {
+     "ma_cau": "K09130101032",
+     "loai": "trac_nghiem",
+     "de": "Sản xuất hormone tăng trưởng ở người (điều trị bệnh chậm phát triển) nhờ vi khuẩn mang gene chuyển là ứng dụng công nghệ di truyền trong lĩnh vực nào?",
+     "lua_chon": [
+      "Nông nghiệp",
+      "Y học",
+      "Pháp y",
+      "Chọn giống vật nuôi"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Sản xuất hormone tăng trưởng người nhờ vi khuẩn mang gene chuyển để điều trị bệnh là ứng dụng công nghệ di truyền trong lĩnh vực y học.\n\nVì sao các phương án khác sai:\n- A: Đây là sản xuất dược phẩm dùng trong điều trị bệnh cho người, không liên quan trồng trọt.\n- C: Đây không liên quan đến xác định huyết thống hay nhận dạng cá nhân.\n- D: Đây là sản xuất hormone dùng điều trị bệnh ở người, không phải cải tạo giống vật nuôi."
+    },
+    {
+     "ma_cau": "K09130101033",
+     "loai": "trac_nghiem",
+     "de": "Người nông dân trồng giống đậu tương chuyển gene kháng thuốc diệt cỏ, giúp diệt cỏ dại dễ dàng mà không hại cây trồng. Việc đưa giống cây này ra trồng đại trà cần đi kèm điều gì để bảo đảm an toàn?",
+     "lua_chon": [
+      "Đánh giá an toàn sinh học và an toàn thực phẩm",
+      "Không cần đánh giá gì thêm vì đã thử nghiệm thành công",
+      "Tăng liều lượng thuốc diệt cỏ để đạt hiệu quả cao nhất",
+      "Ngừng trồng toàn bộ các giống cây khác trên cùng khu vực"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Trước khi đưa sinh vật biến đổi gene ra sử dụng rộng rãi, cần đánh giá an toàn sinh học (ảnh hưởng môi trường, đa dạng sinh học) và an toàn thực phẩm cho người dùng.\n\nVì sao các phương án khác sai:\n- B: Thử nghiệm thành công trong phòng thí nghiệm chưa đủ bảo đảm an toàn khi dùng ở quy mô rộng.\n- C: Tăng thuốc diệt cỏ không liên quan đến đánh giá an toàn của giống cây chuyển gene.\n- D: Chỉ cần đánh giá an toàn của riêng giống cây chuyển gene, không phải ngừng trồng giống khác."
+    },
+    {
+     "ma_cau": "K09130101034",
+     "loai": "trac_nghiem",
+     "de": "Việc chỉnh sửa gene ở phôi người để phòng ngừa bệnh di truyền hiện nay được nhìn nhận như thế nào về mặt đạo đức sinh học?",
+     "lua_chon": [
+      "Nên áp dụng ngay vì mang lại lợi ích y học",
+      "Cần cân nhắc kĩ, có kiểm soát pháp luật và đạo đức",
+      "Là vấn đề khoa học thuần túy, không cần luật đi kèm",
+      "Không cần quan tâm vì công nghệ đã rất an toàn"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Chỉnh sửa gene ở phôi người tác động trực tiếp đến con người nên cần được cân nhắc kĩ, có sự kiểm soát của pháp luật và đạo đức trước khi áp dụng.\n\nVì sao các phương án khác sai:\n- A: Áp dụng ngay mà không đánh giá kĩ có thể gây rủi ro về sức khoẻ, đạo đức chưa được kiểm soát.\n- C: Kĩ thuật tác động đến con người vẫn cần quy định pháp luật, đạo đức đi kèm, không chỉ là khoa học.\n- D: Công nghệ chỉnh sửa gene ở người vẫn tiềm ẩn rủi ro, cần kiểm soát chặt chẽ."
+    },
+    {
+     "ma_cau": "K09130101035",
+     "loai": "trac_nghiem",
+     "de": "Việc nhân bản vô tính hoặc chỉnh sửa gene ở người đặt ra vấn đề gì cần được xã hội, pháp luật xem xét?",
+     "lua_chon": [
+      "Không có gì cần xem xét vì đây là khoa học",
+      "Vấn đề này thuộc y học, không cần luật quy định",
+      "Vấn đề đạo đức, quyền con người cần quy định chặt chẽ",
+      "Phụ thuộc vào mong muốn cá nhân của người thực hiện"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Nhân bản vô tính, chỉnh sửa gene ở người tác động trực tiếp đến con người nên đặt ra vấn đề đạo đức, quyền con người, nguy cơ bị lạm dụng cần được pháp luật quy định chặt chẽ.\n\nVì sao các phương án khác sai:\n- A: Kĩ thuật tác động đến con người không chỉ đơn thuần là vấn đề khoa học.\n- B: Đây là vấn đề liên quan cả pháp luật và đạo đức, không chỉ thuộc riêng y học.\n- D: Kĩ thuật tác động đến con người cần được xã hội, pháp luật xem xét, không thể chỉ dựa vào mong muốn cá nhân."
+    },
+    {
+     "ma_cau": "K09130101036",
+     "loai": "trac_nghiem",
+     "de": "Một giống bông biến đổi gene mang thêm gene kháng sâu đục quả giúp giảm đáng kể lượng thuốc trừ sâu cần sử dụng, nhưng cũng cần được đánh giá về khả năng ảnh hưởng lâu dài đến hệ sinh thái và sức khoẻ trước khi đưa vào sản xuất rộng rãi. Cách đánh giá hợp lí nhất về công nghệ này là",
+     "lua_chon": [
+      "Chỉ có lợi, trồng đại trà ngay không cần đánh giá",
+      "Chỉ có rủi ro, cần cấm hẳn công nghệ này",
+      "Cân nhắc cả lợi ích và rủi ro, đánh giá kĩ trước",
+      "Không thể đánh giá bằng phương pháp khoa học"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Công nghệ di truyền (như tạo giống cây biến đổi gene) thường mang lại cả lợi ích (như giảm thuốc trừ sâu, tăng năng suất) và những rủi ro tiềm ẩn cần được đánh giá kỹ (ảnh hưởng hệ sinh thái, sức khoẻ lâu dài); cách tiếp cận khoa học, hợp lí là cân nhắc cả hai mặt trước khi quyết định ứng dụng rộng rãi.\n\nVì sao các phương án khác sai:\n- A: Cần đánh giá rủi ro với hệ sinh thái và sức khoẻ.\n- B: Công nghệ có lợi ích rõ như giảm thuốc trừ sâu.\n- D: Lợi ích, rủi ro đánh giá được bằng nghiên cứu khoa học."
+    },
+    {
+     "ma_cau": "K09130101037",
+     "loai": "trac_nghiem",
+     "de": "Trong điều tra pháp y, xét nghiệm DNA thu được từ hiện trường thường được so sánh với DNA của nghi phạm để xác định có liên quan hay không. Cơ sở khoa học của phương pháp này là",
+     "lua_chon": [
+      "DNA mỗi người (trừ sinh đôi cùng trứng) có điểm riêng",
+      "DNA của mọi người giống hệt nhau",
+      "DNA chỉ khác nhau giữa nam và nữ",
+      "DNA chỉ cho biết màu tóc, màu da"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Mỗi người (trừ trường hợp sinh đôi cùng trứng) có những đặc điểm DNA riêng biệt do sự khác biệt trong trình tự nucleotide ở một số vùng DNA; nhờ đó, việc so sánh DNA thu được từ hiện trường với DNA của nghi phạm có thể giúp xác định mối liên quan giữa hai mẫu DNA này với độ chính xác cao.\n\nVì sao các phương án khác sai:\n- B: Trình tự một số vùng DNA khác nhau giữa các người.\n- C: DNA khác nhau giữa từng người, không chỉ giữa nam và nữ.\n- D: So sánh DNA giúp phân biệt người này với người khác."
+    },
+    {
+     "ma_cau": "K09130101038",
+     "loai": "trac_nghiem",
+     "de": "Công nghệ chỉnh sửa gene hiện đại về mặt kỹ thuật có thể can thiệp vào một số gene ở người. Quan điểm phù hợp nhất khi xem xét việc ứng dụng công nghệ này ở người là",
+     "lua_chon": [
+      "Làm được về kĩ thuật thì nên áp dụng ngay",
+      "Công nghệ này không có rủi ro hay vấn đề đạo đức",
+      "Đạo đức sinh học có thể bỏ qua khi ứng dụng",
+      "Cân nhắc đạo đức, an toàn, pháp luật, không chỉ kĩ thuật"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Việc ứng dụng công nghệ chỉnh sửa gene ở người không chỉ phụ thuộc vào khả năng kỹ thuật mà còn cần cân nhắc kỹ các vấn đề đạo đức sinh học, an toàn, hệ quả lâu dài đối với cá nhân và xã hội, đồng thời phải tuân thủ các quy định pháp luật liên quan.\n\nVì sao các phương án khác sai:\n- A: Cần cân nhắc đạo đức, an toàn, pháp luật.\n- B: Chỉnh sửa gene ở người có nhiều rủi ro và vấn đề đạo đức.\n- C: Đạo đức sinh học là yêu cầu bắt buộc khi ứng dụng ở người."
+    },
+    {
+     "ma_cau": "K09130101039",
+     "loai": "trac_nghiem",
+     "de": "Luật Hôn nhân và Gia đình Việt Nam quy định cấm kết hôn giữa những người có quan hệ huyết thống gần (như anh chị em ruột, anh chị em họ trong phạm vi ba đời). Cơ sở di truyền học hợp lí nhất của quy định này là",
+     "lua_chon": [
+      "Họ hàng gần dễ cùng mang allele lặn, con dễ mắc bệnh",
+      "Vì dễ sinh con có bộ NST thừa hoặc thiếu",
+      "Kết hôn cận huyết làm con khoẻ mạnh hơn",
+      "Chỉ vì lí do phong tục, không có cơ sở khoa học"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Những người có quan hệ huyết thống gần thường mang nhiều allele giống nhau (kể cả allele lặn gây bệnh) do cùng nguồn gốc gia đình; nếu họ kết hôn với nhau, xác suất con cái nhận được cả hai allele lặn giống nhau (đồng hợp lặn) từ cả bố và mẹ sẽ tăng lên, làm tăng nguy cơ mắc các bệnh, tật di truyền so với kết hôn giữa những người không có quan hệ huyết thống gần.\n\nVì sao các phương án khác sai:\n- B: Nguy cơ chính là con nhận hai allele lặn gây bệnh (đồng hợp lặn), không phải thừa, thiếu NST.\n- C: Kết hôn cận huyết làm tăng nguy cơ con mắc bệnh di truyền.\n- D: Quy định dựa trên cơ sở di truyền học."
+    },
+    {
+     "ma_cau": "K09130101040",
+     "loai": "trac_nghiem",
+     "de": "Một công ty quảng cáo thực phẩm 'không biến đổi gene' (Non-GMO) như tiêu chuẩn an toàn tuyệt đối, ngụ ý mọi thực phẩm biến đổi gene đều nguy hiểm. Đánh giá nào hợp lí nhất theo góc nhìn khoa học?",
+     "lua_chon": [
+      "Hợp lí, vì thực phẩm biến đổi gene nói chung đều nguy hiểm cho sức khoẻ",
+      "Không thể đánh giá được vì khoa học chưa từng nghiên cứu về an toàn thực phẩm biến đổi gene",
+      "Chưa hợp lí, cần đánh giá cụ thể từng sản phẩm bằng bằng chứng khoa học",
+      "Hợp lí vì thực phẩm Non-GMO thường giàu dinh dưỡng hơn thực phẩm GMO"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Đánh giá khoa học cần dựa trên bằng chứng cụ thể cho từng sản phẩm; không thể quy chụp mọi thực phẩm biến đổi gene đều nguy hiểm mà không có cơ sở, cũng như không nên coi Non-GMO mặc nhiên an toàn tuyệt đối hơn.\n\nVì sao các phương án khác sai:\n- A: Không có cơ sở khoa học cho việc mọi GMO đều chắc chắn gây hại; mỗi sản phẩm cần đánh giá riêng dựa trên bằng chứng cụ thể.\n- B: Đã có nhiều nghiên cứu, quy trình đánh giá an toàn sinh học và an toàn thực phẩm cho các sản phẩm GMO trước khi lưu hành.\n- D: Hàm lượng dinh dưỡng phụ thuộc vào từng sản phẩm cụ thể, không phải cứ Non-GMO là giàu dinh dưỡng hơn GMO."
+    },
+    {
+     "ma_cau": "K09130101041",
+     "loai": "trac_nghiem",
+     "de": "Một cặp vợ chồng đã có một con mắc bệnh di truyền do gene lặn hiếm gặp. Trước khi sinh con tiếp theo, bác sĩ đề nghị tư vấn di truyền và xét nghiệm sàng lọc trước sinh. Mục đích chính của việc này là gì?",
+     "lua_chon": [
+      "Bắt buộc cặp vợ chồng phải chấm dứt thai kì nếu phát hiện nguy cơ mắc bệnh",
+      "Đảm bảo rằng đứa con tiếp theo sẽ khoẻ mạnh",
+      "Thay đổi kiểu gene của cặp vợ chồng để họ không còn mang allele gây bệnh",
+      "Cung cấp thông tin để gia đình chủ động hiểu rõ nguy cơ và quyết định phù hợp"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Tư vấn di truyền và xét nghiệm sàng lọc trước sinh nhằm cung cấp thông tin khoa học về nguy cơ di truyền, giúp cặp vợ chồng chủ động hiểu rõ và đưa ra quyết định phù hợp, không mang tính áp đặt.\n\nVì sao các phương án khác sai:\n- A: Tư vấn di truyền cung cấp thông tin để gia đình tự quyết định, không mang tính bắt buộc phải chấm dứt thai kì.\n- B: Xét nghiệm chỉ cung cấp thông tin về nguy cơ, không thể đảm bảo chắc chắn tuyệt đối mọi khía cạnh sức khoẻ của con.\n- C: Tư vấn và xét nghiệm không làm thay đổi được kiểu gene vốn có của bố mẹ."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00584",
+   "khoi": "9",
+   "chu_de": "Di truyền học với con người và đời sống",
+   "chuyen_de": "Di truyền học với con người và đời sống",
+   "nhom": "Bài toán phả hệ và nhóm máu",
+   "nhom_mo_ta": "",
+   "nhom_ly_thuyet_hien_co": "",
+   "can_dien_ly_thuyet_nhom": true,
+   "cau": [
+    {
+     "ma_cau": "K09130102001",
+     "loai": "trac_nghiem",
+     "de": "Một bệnh do gene lặn trên NST thường quy định. Bố mẹ đều không biểu hiện bệnh nhưng sinh con mắc bệnh. Điều này cho biết gì về kiểu gene của bố mẹ?",
+     "lua_chon": [
+      "Bố hoặc mẹ chắc chắn phải biểu hiện bệnh mới có thể truyền cho con",
+      "Đây là hiện tượng đột biến mới phát sinh ở con, không phải do bố mẹ truyền lại",
+      "Bố mẹ chắc chắn đều có kiểu gene đồng hợp lặn (aa)",
+      "Cả bố và mẹ đều mang kiểu gene dị hợp (mang allele gây bệnh nhưng không biểu hiện)"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Bố mẹ không biểu hiện bệnh nhưng sinh con mắc bệnh (do gene lặn trên NST thường) → cả hai đều mang kiểu gene dị hợp (Aa), mang allele gây bệnh ở trạng thái ẩn.\n\nVì sao các phương án khác sai:\n- A: Gene lặn có thể tồn tại ở trạng thái dị hợp (mang allele bệnh) mà không biểu hiện ra kiểu hình.\n- B: Đây là hiện tượng gene lặn được truyền từ cả bố và mẹ, không phải đột biến mới phát sinh.\n- C: Nếu bố mẹ đồng hợp lặn (aa) thì bản thân họ đã biểu hiện bệnh, trái với đề bài."
+    },
+    {
+     "ma_cau": "K09130102002",
+     "loai": "trac_nghiem",
+     "de": "Quan sát sơ đồ phả hệ sau: ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S130102-01-001-de.png) . Trong ba người con của cặp vợ chồng I₁, I₂, có bao nhiêu người biểu hiện bệnh?",
+     "lua_chon": [
+      "1 người (II₂, nam)",
+      "2 người",
+      "1 người (II₁, nữ)",
+      "Không có ai bị bệnh"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Trong phả hệ, chỉ II₁ (hình tròn tô đậm) biểu hiện bệnh; hình tròn là nữ nên người bị bệnh là nữ, kí hiệu II₁.\n\nVì sao các phương án khác sai:\n- A: II₂ là hình vuông không tô đậm (nam, không bệnh), không phải người biểu hiện bệnh.\n- B: Chỉ có một hình tô đậm (II₁) trong ba người con, không phải hai người.\n- D: Có một người con (II₁) mang kí hiệu tô đậm, thể hiện biểu hiện bệnh."
+    },
+    {
+     "ma_cau": "K09130102003",
+     "loai": "trac_nghiem",
+     "de": "Quan sát sơ đồ phả hệ sau: ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S130102-01-002-de.png) . Trong 4 người thuộc thế hệ II, người nào không phải là con của cặp vợ chồng I₁, I₂?",
+     "lua_chon": [
+      "II₁",
+      "II₂",
+      "II₃",
+      "II₄"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Trên sơ đồ, chỉ II₁, II₂, II₃ được nối với cặp vợ chồng I₁-I₂ bằng đường phả hệ; II₄ không có đường nối nên không phải con của I₁, I₂ (có thể là người kết hôn vào gia đình).\n\nVì sao các phương án khác sai:\n- A: II₁ được nối trực tiếp với cặp vợ chồng I₁-I₂ bằng đường phả hệ, là con của họ.\n- B: II₂ cũng được nối với cặp vợ chồng I₁-I₂, là con của họ.\n- C: II₃ cũng được nối với cặp vợ chồng I₁-I₂, là con của họ."
+    },
+    {
+     "ma_cau": "K09130102004",
+     "loai": "trac_nghiem",
+     "de": "Quan sát sơ đồ phả hệ sau: ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S130102-01-003-de.png) . Trong 4 người con của cặp vợ chồng I₁, I₂, có bao nhiêu người biểu hiện bệnh?",
+     "lua_chon": [
+      "2 người",
+      "3 người",
+      "1 người",
+      "4 người (tất cả)"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Quan sát thế hệ II: trong 4 người con chỉ có 1 người (II₂) được kí hiệu là mắc bệnh (tô đậm).\n\nVì sao các phương án khác sai:\n- A: Chỉ có 1 kí hiệu viết hoa (F ở II₂) trong 4 người con, không phải 2 người.\n- B: Chỉ có đúng 1 người con được kí hiệu viết hoa (biểu hiện bệnh).\n- D: Không phải tất cả 4 người con đều biểu hiện bệnh; chỉ 1 người (II₂) được kí hiệu viết hoa."
+    },
+    {
+     "ma_cau": "K09130102005",
+     "loai": "trac_nghiem",
+     "de": "Quan sát sơ đồ phả hệ sau: ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S130102-02-001-de.png) . Bố (I₁) và mẹ (I₂) đều không biểu hiện bệnh nhưng sinh con gái (II₂) bị bệnh. Bệnh này do gene có đặc điểm di truyền nào?",
+     "lua_chon": [
+      "Gene lặn",
+      "Gene trội",
+      "Đột biến nhiễm sắc thể",
+      "Ảnh hưởng của môi trường sống (thường biến)"
+     ],
+     "dap_an": "A",
+     "loi_giai": "Bố mẹ đều không biểu hiện bệnh nhưng con lại mắc bệnh, chứng tỏ bố mẹ mang gene gây bệnh ở trạng thái ẩn (dị hợp); đây là đặc điểm của gene lặn.\n\nVì sao các phương án khác sai:\n- B: Nếu là gene trội, người mang gene sẽ biểu hiện bệnh ngay; bố mẹ không biểu hiện bệnh nên không thể mang gene trội gây bệnh.\n- C: Đột biến NST không giải thích được vì sao bố mẹ hoàn toàn bình thường mà con lại mắc bệnh theo quy luật này.\n- D: Thường biến là biến đổi kiểu hình không di truyền được qua các thế hệ, không phù hợp với việc bệnh xuất hiện ở đời con."
+    },
+    {
+     "ma_cau": "K09130102006",
+     "loai": "trac_nghiem",
+     "de": "Quan sát sơ đồ phả hệ sau: ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S130102-02-002-de.png) . Biết bệnh do allele lặn a trên NST thường quy định (A: không bệnh). Bố, mẹ không bệnh nhưng con trai II₂ bị bệnh (aa). Kiểu gene của bố và mẹ là gì?",
+     "lua_chon": [
+      "Cả hai đều có kiểu gene đồng hợp AA",
+      "Cả hai đều có kiểu gene dị hợp Aa",
+      "Bố AA, mẹ Aa",
+      "Bố Aa, mẹ đồng hợp aa"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Con có kiểu gene aa phải nhận 1 allele a từ mỗi bên bố mẹ; vì bố mẹ không biểu hiện bệnh nên không thể là aa, vậy cả hai đều có kiểu gene dị hợp Aa.\n\nVì sao các phương án khác sai:\n- A: Nếu cả hai bố mẹ đều AA thì không thể tạo giao tử mang allele a, con không thể có kiểu gene aa.\n- C: Nếu bố là AA thì bố chỉ tạo giao tử mang allele A, không thể truyền allele a cho con aa.\n- D: Nếu mẹ là aa thì mẹ phải biểu hiện bệnh, trái với dữ kiện mẹ không bị bệnh."
+    },
+    {
+     "ma_cau": "K09130102007",
+     "loai": "trac_nghiem",
+     "de": "Quan sát sơ đồ phả hệ sau: ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S130102-02-003-de.png) . Bố (I₁), mẹ (I₂) đều không mắc bệnh, con trai II₁ mắc bệnh. Bệnh này do gene trội hay gene lặn quy định?",
+     "lua_chon": [
+      "Gene trội",
+      "Gene lặn",
+      "Không đủ dữ kiện để kết luận",
+      "Cả gene trội và gene lặn đều có thể đúng như nhau"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Bố mẹ đều không biểu hiện bệnh nhưng con mắc bệnh → bệnh do gene lặn quy định (bố mẹ mang gene ở trạng thái dị hợp, ẩn không biểu hiện).\n\nVì sao các phương án khác sai:\n- A: Nếu là gene trội, ít nhất một trong hai bố mẹ phải biểu hiện bệnh mới truyền được cho con; ở đây cả hai đều không mắc bệnh.\n- C: Dữ kiện bố mẹ không bệnh nhưng con mắc bệnh đã đủ để kết luận đây là gene lặn.\n- D: Chỉ có khả năng gene lặn là hợp lí với dữ kiện đề bài, không phải cả hai khả năng như nhau."
+    },
+    {
+     "ma_cau": "K09130102008",
+     "loai": "trac_nghiem",
+     "de": "Cặp vợ chồng đã có một con trai mắc bệnh do gene lặn nằm trên NST thường, cả hai vợ chồng đều không biểu hiện bệnh. Tư vấn di truyền cho biết xác suất con tiếp theo của họ cũng mắc bệnh này là bao nhiêu?",
+     "lua_chon": [
+      "50%",
+      "25%",
+      "0%, vì đã có con mắc bệnh trước đó",
+      "100%, vì đã có con mắc bệnh trước đó"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Cả hai vợ chồng đều có kiểu gene dị hợp Aa; mỗi lần sinh con là một sự kiện độc lập nên xác suất con tiếp theo mắc bệnh (aa) vẫn luôn là 25%, không phụ thuộc vào các lần sinh trước.\n\nVì sao các phương án khác sai:\n- A: 50% là tỉ lệ kiểu gene dị hợp Aa ở con, không phải tỉ lệ con mắc bệnh.\n- C: Xác suất mỗi lần sinh là độc lập; đã có một con mắc bệnh không làm giảm khả năng mắc bệnh của lần sinh sau.\n- D: Xác suất mỗi lần sinh là độc lập; đã có một con mắc bệnh không làm tăng khả năng mắc bệnh của lần sinh sau lên 100%."
+    },
+    {
+     "ma_cau": "K09130102009",
+     "loai": "trac_nghiem",
+     "de": "Phả hệ dưới đây mô tả một gia đình, trong đó ô vuông là nam, vòng tròn là nữ, tô đậm là người mắc bệnh. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S130106-01-001-de.png) Cả I₁ và I₂ đều không mắc bệnh nhưng con trai II₁ của họ mắc bệnh. Từ đó có thể kết luận gì về tính trạng bệnh này?",
+     "lua_chon": [
+      "Gene trội, vì bố mẹ không bệnh vẫn sinh con bệnh",
+      "Gene lặn, vì bố mẹ không bệnh vẫn sinh con bệnh",
+      "Không xác định được từ phả hệ này",
+      "Do đột biến NST, không do gene"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Vì cả bố (I₁) và mẹ (I₂) đều không biểu hiện bệnh nhưng sinh ra con trai (II₁) mắc bệnh, nên bệnh phải do gene lặn quy định: cả bố và mẹ đều mang gene gây bệnh ở trạng thái dị hợp (không biểu hiện ra ngoài), con nhận đủ hai allele lặn (một từ bố, một từ mẹ) nên biểu hiện bệnh.\n\nVì sao các phương án khác sai:\n- A: Bệnh do gene trội thì con bệnh phải có ít nhất bố hoặc mẹ bệnh.\n- C: Bố mẹ bình thường sinh con bệnh đủ để kết luận gene lặn.\n- D: Phả hệ cho thấy bệnh di truyền theo kiểu gene lặn."
+    },
+    {
+     "ma_cau": "K09130102010",
+     "loai": "trac_nghiem",
+     "de": "Phả hệ dưới đây: ô vuông là nam, vòng tròn là nữ, tô đậm là người mắc bệnh. ![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S130106-01-002-de.png) Bệnh do allele lặn a quy định, allele trội A quy định không mắc bệnh. Kiểu gene của I₁ và I₂ là",
+     "lua_chon": [
+      "AA ở cả hai người",
+      "aa ở cả hai người",
+      "Một người AA, một người Aa",
+      "Aa ở cả hai người"
+     ],
+     "dap_an": "D",
+     "loi_giai": "Con II₁ mắc bệnh có kiểu gene aa, nhận một allele a từ bố và một allele a từ mẹ; vì cả bố (I₁) và mẹ (I₂) đều không mắc bệnh (không phải aa) nhưng vẫn có allele a để truyền cho con, nên kiểu gene của cả hai đều phải là dị hợp Aa.\n\nVì sao các phương án khác sai:\n- A: Bố mẹ AA không thể sinh con aa.\n- B: Người aa mắc bệnh; I₁, I₂ không mắc bệnh.\n- C: Con aa phải nhận a từ cả bố và mẹ."
+    },
+    {
+     "ma_cau": "K09130102011",
+     "loai": "trac_nghiem",
+     "de": "Một cặp vợ chồng đều không mắc một bệnh do allele lặn a quy định nhưng đã sinh một người con mắc bệnh. Xác suất đứa con tiếp theo của họ mắc bệnh này là",
+     "lua_chon": [
+      "50%",
+      "0%",
+      "25%",
+      "75%"
+     ],
+     "dap_an": "C",
+     "loi_giai": "Con mắc bệnh (aa) nên bố mẹ đều là Aa. Aa × Aa → 1 AA : 2 Aa : 1 aa. Xác suất con mắc bệnh (aa) = 1/4 = 25%.\n\nVì sao các phương án khác sai:\n- A: Đã coi một trong hai người là aa.\n- B: Bố mẹ Aa vẫn có thể sinh con aa.\n- D: 75% là tỉ lệ con không mắc bệnh."
+    },
+    {
+     "ma_cau": "K09130102012",
+     "loai": "trac_nghiem",
+     "de": "Trong một gia đình, bố mẹ đều không mắc một bệnh do allele lặn a quy định nhưng có một con mắc bệnh. Hai người con còn lại không mắc bệnh cho rằng: \"Con của chúng tôi sau này chắc chắn không mắc bệnh này.\" Nhận định này chưa hợp lí vì",
+     "lua_chon": [
+      "Vì họ chắc chắn có kiểu gene aa",
+      "Vì họ có thể mang allele a (Aa) mà không biểu hiện",
+      "Vì bệnh do gene trội nên con chắc chắn mắc",
+      "Vì kiểu hình luôn cho biết chính xác kiểu gene"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Bố mẹ đều là Aa nên người con không mắc bệnh có thể là AA hoặc Aa. Nếu người đó là Aa và kết hôn với người cũng mang a, con vẫn có thể mắc bệnh (aa); vì vậy nên được tư vấn di truyền.\n\nVì sao các phương án khác sai:\n- A: Người aa mắc bệnh; hai người này không mắc bệnh.\n- C: Bố mẹ bình thường sinh con bệnh nên bệnh do gene lặn.\n- D: Người không bệnh có thể là AA hoặc Aa, kiểu hình không cho biết chắc."
+    },
+    {
+     "ma_cau": "K09130102013",
+     "loai": "trac_nghiem",
+     "de": "Bố mẹ đều không mắc bệnh do gene lặn trên NST thường (kiểu gene Aa). Họ đã sinh 2 người con đều không mắc bệnh. Xác suất để cả hai người con này đều có kiểu gene dị hợp (Aa) là bao nhiêu?",
+     "lua_chon": [
+      "1/4",
+      "4/9",
+      "2/3",
+      "1/9"
+     ],
+     "dap_an": "B",
+     "loi_giai": "Trong nhóm con không mắc bệnh (1AA:2Aa), xác suất một người là Aa = 2/3. Hai người con độc lập đều là Aa: (2/3)² = 4/9.\n\nVì sao các phương án khác sai:\n- A: 1/4 sai vì không tính đúng tỉ lệ Aa trong riêng nhóm không mắc bệnh (phải là 2/3, không phải 1/2).\n- C: 2/3 là xác suất của một người con, chưa nhân đủ hai lần cho cả hai người con.\n- D: 1/9 = (1/3)² ứng với xác suất kiểu gene AA, không phải Aa."
+    }
+   ]
+  }
+ ]
+}

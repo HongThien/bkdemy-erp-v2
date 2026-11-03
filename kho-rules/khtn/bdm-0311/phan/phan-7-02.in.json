@@ -1,0 +1,1754 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00307",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Phân tử - Đơn chất & Hợp chất",
+   "nhom": "Phân loại đơn chất và hợp chất",
+   "nhom_ly_thuyet": "Đơn chất được tạo nên từ một nguyên tố hóa học; hợp chất được tạo nên từ hai nguyên tố hóa học trở lên. Vì vậy, phải đếm số loại kí hiệu nguyên tố trong công thức, không đếm tổng số nguyên tử.\nĐếm số loại kí hiệu nguyên tố, không đếm tổng số nguyên tử\n\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/3886e6b4-1d9d-4bf6-889b-0a484a757f6b.png)\n\nCÁC BƯỚC GIẢI / 3 bước\nBƯỚC 1: Đọc công thức hóa học và liệt kê các kí hiệu nguyên tố xuất hiện.\nBƯỚC 2: Đếm số loại nguyên tố khác nhau; không tính số nguyên tử lặp lại của cùng một nguyên tố.\nBƯỚC 3: Có 1 loại nguyên tố: đơn chất. Có từ 2 loại nguyên tố trở lên: hợp chất.\nVÍ DỤ MINH HỌA\nĐề bài | Xác định các chất sau là đơn chất hay hợp chất: $N_2$, $CO_2$, $Al$.\nLời giải | $N_2$ chỉ chứa kí hiệu N nên là đơn chất. $CO_2$ chứa hai kí hiệu C và O nên là hợp chất. $Al$ chỉ chứa kí hiệu $Al$ nên là đơn chất.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB00681",
+     "thu_tu": 1,
+     "ten": "Hợp chất",
+     "mo_ta": "Đề cho một chất hoặc một dãy chất (công thức hoặc tên) và yêu cầu chọn chất là hợp chất, hoặc chọn dãy gồm toàn hợp chất.\nLàm bằng cách đếm số loại kí hiệu nguyên tố trong từng công thức; từ 2 loại trở lên là hợp chất.\nBiến thể: chọn 1 hợp chất trong 4 chất; chọn dãy gồm toàn hợp chất.\nLưu ý: đề hỏi chất nào là đơn chất ⇒ thuộc dạng \"Đơn chất\"; đề cho một dãy chất rồi yêu cầu phân loại từng chất ⇒ thuộc dạng \"Phân biệt đơn chất - hợp chất\".",
+     "ly_thuyet": "##TC Hợp chất\nHợp chất là chất được tạo nên từ hai nguyên tố hóa học trở lên, nên công thức hóa học chứa từ 2 loại kí hiệu nguyên tố khác nhau.\nSố nguyên tử của mỗi nguyên tố được ghi bằng chỉ số ở chân bên phải kí hiệu.\n\n##PP Nhận biết hợp chất\nViết ra các kí hiệu nguyên tố có trong công thức của từng chất.\nĐếm số loại kí hiệu khác nhau, không tính số nguyên tử lặp lại.\nChất có từ 2 loại kí hiệu trở lên là hợp chất; chọn đáp án thỏa yêu cầu đề.\n\n##CY Lỗi hay mắc\nCác chất $\\mathrm{O_3}$, $\\mathrm{Cl_2}$ có nhiều nguyên tử nhưng chỉ có 1 loại kí hiệu nên vẫn là đơn chất.\nVới đề hỏi dãy toàn hợp chất, chỉ cần một đơn chất lẫn trong dãy là loại cả dãy.",
+     "vi_du": "##VD\nChất nào sau đây là hợp chất?\nA. $\\mathrm{H_2O}$\nB. $\\mathrm{Fe}$\nC. $\\mathrm{Cu}$\nD. $\\mathrm{Al}$\n\nBài giải:\nXét kí hiệu nguyên tố trong từng chất: $\\mathrm{H_2O}$ có H và O (2 loại); Fe, Cu, Al mỗi chất chỉ có 1 loại.\nChất có từ 2 loại kí hiệu trở lên là hợp chất, nên $\\mathrm{H_2O}$ là hợp chất; Fe, Cu, Al là đơn chất.\nChọn A.\n\n##VD\nDãy nào sau đây gồm toàn hợp chất?\nA. $\\mathrm{MgO}$, $\\mathrm{Cu}$\nB. $\\mathrm{SO_2}$, $\\mathrm{SO_3}$\nC. $\\mathrm{CaO}$, $\\mathrm{Al}$\nD. $\\mathrm{HCl}$, $\\mathrm{Zn}$\n\nBài giải:\nPhân loại từng chất: $\\mathrm{MgO}$ (Mg, O) là hợp chất, Cu là đơn chất; $\\mathrm{SO_2}$ và $\\mathrm{SO_3}$ đều có S và O nên là hợp chất.\n$\\mathrm{CaO}$ là hợp chất nhưng Al là đơn chất; $\\mathrm{HCl}$ là hợp chất nhưng Zn là đơn chất.\nDãy A, C, D đều lẫn đơn chất, chỉ dãy B toàn hợp chất.\nChọn B."
+    },
+    {
+     "dang_id": "KDB00682",
+     "thu_tu": 2,
+     "ten": "Đơn chất",
+     "mo_ta": "Đề cho một chất hoặc một dãy chất và yêu cầu chọn chất là đơn chất, hoặc chọn dãy gồm toàn đơn chất.\nLàm bằng cách đếm số loại kí hiệu nguyên tố trong công thức; chỉ có 1 loại là đơn chất.\nBiến thể: chọn 1 đơn chất trong 4 chất; chọn dãy gồm toàn đơn chất.\nLưu ý: đề hỏi chất nào là hợp chất ⇒ thuộc dạng \"Hợp chất\"; đề hỏi đơn chất kim loại hoặc phi kim ⇒ thuộc dạng \"Đơn chất kim loại - phi kim\".",
+     "ly_thuyet": "##TC Đơn chất\nĐơn chất là chất được tạo nên từ một nguyên tố hóa học, nên công thức chỉ có 1 loại kí hiệu nguyên tố.\nĐơn chất có thể gồm 1 nguyên tử (Fe, Na, Ag…) hoặc nhiều nguyên tử cùng loại ($\\mathrm{O_2}$, $\\mathrm{N_2}$, $\\mathrm{O_3}$…).\n\n##PP Nhận biết đơn chất\nViết ra các kí hiệu nguyên tố có trong công thức của từng chất.\nĐếm số loại kí hiệu khác nhau.\nChất chỉ có 1 loại kí hiệu là đơn chất; với dãy chất, mọi chất trong dãy đều phải là đơn chất.\n\n##CY Lỗi hay mắc\nChỉ số lớn (như $\\mathrm{O_2}$, $\\mathrm{S_8}$) không làm chất thành hợp chất vì vẫn chỉ có 1 loại kí hiệu.\nCác phương án nhiễu thường là oxide, muối, acid, base (nhiều loại kí hiệu) nên là hợp chất.",
+     "vi_du": "##VD\nChất nào sau đây là đơn chất?\nA. $\\mathrm{SO_3}$\nB. $\\mathrm{MgO}$\nC. $\\mathrm{Al}$\nD. $\\mathrm{CaO}$\n\nBài giải:\n$\\mathrm{SO_3}$ có S và O; $\\mathrm{MgO}$ có Mg và O; $\\mathrm{CaO}$ có Ca và O; cả ba chất đều có 2 loại kí hiệu nên là hợp chất.\nAl chỉ có 1 loại kí hiệu nên là đơn chất.\nChọn C.\n\n##VD\nDãy nào sau đây gồm toàn các đơn chất?\nA. Fe, Cu, Al, S\nB. Fe, $H_2O$, Al, S\nC. Fe, Cu, NaCl, S\nD. $CO_2$, $H_2O$, $NH_3$, HCl\n\nBài giải:\nDãy A: Fe, Cu, Al, S đều chỉ có 1 loại kí hiệu nên đều là đơn chất.\nDãy B lẫn $H_2O$ (H, O), dãy C lẫn NaCl (Na, Cl) nên có hợp chất.\nDãy D gồm toàn hợp chất.\nChọn A."
+    },
+    {
+     "dang_id": "KDB00683",
+     "thu_tu": 3,
+     "ten": "Đơn chất kim loại - phi kim",
+     "mo_ta": "Đề hỏi chất nào là đơn chất kim loại hoặc đơn chất phi kim trong 4 chất cho sẵn.\nLàm bằng cách loại các hợp chất (từ 2 loại kí hiệu), rồi xác định đơn chất còn lại là kim loại (Fe, Al, Zn, Ag…) hay phi kim ($\\mathrm{Cl_2}$, $\\mathrm{N_2}$, $\\mathrm{O_2}$, S…).\nBiến thể: hỏi đơn chất kim loại; hỏi đơn chất phi kim.\nLưu ý: đề chỉ hỏi đơn chất, hợp chất nói chung, không phân kim loại hay phi kim ⇒ thuộc dạng \"Đơn chất\" hoặc \"Hợp chất\".",
+     "ly_thuyet": "##TC Đơn chất kim loại và đơn chất phi kim\nĐơn chất chia thành đơn chất kim loại và đơn chất phi kim.\nKim loại thường gặp: Na, K, Mg, Ca, Al, Zn, Fe, Cu, Ag.\nPhi kim thường gặp: $\\mathrm{H_2}$, $\\mathrm{O_2}$, $\\mathrm{N_2}$, $\\mathrm{Cl_2}$, C, S, P.\n\n##PP Chọn đơn chất kim loại hoặc phi kim\nLoại các chất có từ 2 loại kí hiệu nguyên tố (hợp chất).\nTrong các đơn chất còn lại, xác định chất nào là kim loại, chất nào là phi kim theo kí hiệu.\nChọn chất đúng loại đề yêu cầu.\n\n##CY Lỗi hay mắc\nKhí như $\\mathrm{H_2}$, $\\mathrm{Cl_2}$, $\\mathrm{N_2}$ là đơn chất phi kim, không nhầm với hợp chất vì có chỉ số 2.\nHợp chất như $\\mathrm{NaCl}$, $\\mathrm{CaCO_3}$ chứa kim loại nhưng không phải đơn chất kim loại.",
+     "vi_du": "##VD\nChất nào sau đây là đơn chất kim loại?\nA. $\\mathrm{H_2}$\nB. $\\mathrm{Cl_2}$\nC. $\\mathrm{Al}$\nD. $\\mathrm{NaCl}$\n\nBài giải:\n$\\mathrm{NaCl}$ có 2 loại kí hiệu (Na, Cl) nên là hợp chất, loại D.\n$\\mathrm{H_2}$ và $\\mathrm{Cl_2}$ chỉ có 1 loại kí hiệu nhưng là phi kim, loại A và B.\nAl chỉ có 1 loại kí hiệu và là kim loại nên là đơn chất kim loại.\nChọn C.\n\n##VD\nChất nào sau đây là đơn chất phi kim?\nA. Zn\nB. Ag\nC. $\\mathrm{CaCO_3}$\nD. $\\mathrm{Cl_2}$\n\nBài giải:\n$\\mathrm{CaCO_3}$ có 3 loại kí hiệu nên là hợp chất, loại C.\nZn và Ag là đơn chất kim loại, loại A và B.\n$\\mathrm{Cl_2}$ chỉ có 1 loại kí hiệu và Cl là phi kim nên là đơn chất phi kim.\nChọn D."
+    },
+    {
+     "dang_id": "KDB00684",
+     "thu_tu": 4,
+     "ten": "Phân biệt đơn chất - hợp chất",
+     "mo_ta": "Đề cho một nhóm chất (thường 3–4 công thức hoặc tên) và yêu cầu cho biết chất nào là đơn chất, chất nào là hợp chất.\nLàm bằng cách đếm số loại kí hiệu nguyên tố của từng chất rồi liệt kê hai nhóm, kể cả khi một nhóm không có chất nào.\nBiến thể: nhóm chất có cả đơn chất lẫn hợp chất; nhóm toàn hợp chất; nhóm toàn đơn chất. Dạng trả lời ngắn hoặc tự luận.\nLưu ý: đề chỉ chọn một chất là hợp chất hoặc đơn chất trong 4 phương án ⇒ thuộc dạng \"Hợp chất\" hoặc \"Đơn chất\".",
+     "ly_thuyet": "##TC Phân loại đơn chất và hợp chất\nChất có 1 loại kí hiệu nguyên tố là đơn chất; chất có từ 2 loại kí hiệu trở lên là hợp chất.\nPhải phân loại đủ mọi chất đề cho, chất nào cũng thuộc đúng một trong hai nhóm.\n\n##PP Phân loại các chất\nViết ra các kí hiệu nguyên tố của từng chất.\nĐếm số loại kí hiệu khác nhau của từng chất.\nXếp chất có 1 loại vào nhóm đơn chất, chất có từ 2 loại trở lên vào nhóm hợp chất.\nTrả lời đủ hai nhóm; nhóm nào không có chất thì ghi rõ \"không có\".\n\n##CY Lưu ý\nĐếm số loại kí hiệu, không đếm tổng số nguyên tử.\nCó thể cả dãy đều là hợp chất hoặc đều là đơn chất; không ép phải có đủ hai nhóm.",
+     "vi_du": "##VD\nCho các chất: khí ozone ($O_3$), đá vôi ($CaCO_3$), khí argon (Ar). Hãy cho biết chất nào là đơn chất, chất nào là hợp chất.\n\nBài giải:\n$O_3$ chỉ có kí hiệu O nên là đơn chất.\nAr chỉ có kí hiệu Ar nên là đơn chất.\n$CaCO_3$ có ba kí hiệu Ca, C, O nên là hợp chất.\nVậy đơn chất: $O_3$, Ar; hợp chất: $CaCO_3$.\n\n##VD\nCho các chất: $\\mathrm{O_3}$, $\\mathrm{H_2O}$, $\\mathrm{CO_2}$, $\\mathrm{NaCl}$. Hãy cho biết chất nào là đơn chất, chất nào là hợp chất.\n\nBài giải:\n$\\mathrm{O_3}$ chỉ có kí hiệu O nên là đơn chất.\n$\\mathrm{H_2O}$ có H và O; $\\mathrm{CO_2}$ có C và O; $\\mathrm{NaCl}$ có Na và Cl; cả ba đều có 2 loại kí hiệu nên là hợp chất.\nVậy đơn chất: $\\mathrm{O_3}$; hợp chất: $\\mathrm{H_2O}$, $\\mathrm{CO_2}$, $\\mathrm{NaCl}$."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00313",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Liên kết Hóa học",
+   "nhom": "QUY TẮC OCTET VÀ XU HƯỚNG LIÊN KẾT HÓA HỌC",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nNguyên tử khí hiếm (helium, neon, argon…) có lớp electron ngoài cùng đạt cấu hình bền: 8 electron, riêng helium có 2 electron.\nQuy tắc octet: nguyên tử của các nguyên tố có xu hướng liên kết với nguyên tử khác để lớp electron ngoài cùng có 8 electron giống khí hiếm (nguyên tử chỉ có một lớp electron thì có 2 electron).\nNguyên tử kim loại thường có 1, 2, 3 electron ở lớp ngoài cùng nên có xu hướng nhường electron.\nNguyên tử phi kim thường có 5, 6, 7 electron ở lớp ngoài cùng nên có xu hướng nhận thêm electron, hoặc góp chung electron với nguyên tử phi kim khác.\n\n##PP 2. Các bước làm bài\nXác định số electron ở lớp ngoài cùng của nguyên tử.\nSo sánh với 8 (hoặc 2 nếu chỉ có một lớp electron) để biết còn thiếu hay thừa.\nÍt electron ngoài cùng thì nhường; gần đủ thì nhận thêm hoặc góp chung electron.\nSố electron cần nhận thêm là $8 - n$ (n là số electron lớp ngoài cùng).\n\n##CY 3. Lưu ý\nHelium là ngoại lệ: lớp ngoài cùng bền khi có 2 electron.\nHạt nhân nguyên tử (số proton, neutron) không thay đổi khi nhường, nhận hay góp chung electron.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB00690",
+     "thu_tu": 1,
+     "ten": "Nhận biết tính bền của nguyên tử khí hiếm",
+     "mo_ta": "Đề hỏi về khí hiếm và tính bền của lớp electron ngoài cùng: khí hiếm gồm nguyên tố nào, số electron lớp ngoài cùng bền (8, riêng helium là 2), vì sao khí hiếm rất khó liên kết.\nLàm bằng cách nhớ khái niệm, không cần tính toán.\nBiến thể: chọn nguyên tố khí hiếm; số electron bền của helium; giải thích vì sao khí hiếm ít tham gia liên kết; helium là ngoại lệ.\nLưu ý: đề cho số electron lớp ngoài cùng của một nguyên tử bất kì rồi hỏi cần thêm bao nhiêu electron hoặc phát biểu quy tắc octet ⇒ thuộc dạng \"Phát biểu và áp dụng quy tắc octet\".",
+     "ly_thuyet": "##TC Tính bền của khí hiếm\nKhí hiếm (helium, neon, argon…) có lớp electron ngoài cùng đã đạt cấu hình bền: 8 electron, riêng helium chỉ có 2 electron vì chỉ có một lớp electron.\nVì cấu hình đã bền nên nguyên tử khí hiếm hầu như không nhường, nhận hay góp chung electron, rất khó tham gia liên kết hóa học.\n\n##CY Lỗi hay mắc\nKhông phải khí hiếm nào cũng có 8 electron ngoài cùng; helium chỉ có 2.\nChlorine, oxygen, sodium không phải khí hiếm; khí hiếm ít liên kết vì cấu hình đã bền, không phải vì tồn tại ở thể khí hay có khối lượng nhỏ.",
+     "vi_du": "##VD\nNguyên tố nào sau đây thuộc nhóm khí hiếm?\nA. Chlorine.\nB. Neon.\nC. Oxygen.\nD. Sodium.\n\nBài giải:\nKhí hiếm gồm helium, neon, argon… có lớp electron ngoài cùng đã bền.\nChlorine, oxygen, sodium không thuộc nhóm khí hiếm.\nNeon là khí hiếm, lớp ngoài cùng có 8 electron.\nChọn B.\n\n##VD\nVì sao nguyên tử khí hiếm rất khó tham gia liên kết hóa học với nguyên tử của nguyên tố khác?\nA. Vì khí hiếm không có electron ở lớp ngoài cùng.\nB. Vì khí hiếm chỉ tồn tại ở thể khí.\nC. Vì lớp electron ngoài cùng đã đạt cấu hình electron bền.\nD. Vì khí hiếm có khối lượng nguyên tử rất nhỏ.\n\nBài giải:\nLớp electron ngoài cùng của khí hiếm đã đủ electron bền (8 electron, riêng helium là 2).\nVì vậy nguyên tử khí hiếm không có xu hướng nhường, nhận hay góp chung electron với nguyên tử khác.\nPhương án A sai vì khí hiếm có electron ở lớp ngoài cùng; B và D không phải nguyên nhân.\nChọn C."
+    },
+    {
+     "dang_id": "KDB00691",
+     "thu_tu": 2,
+     "ten": "Phát biểu và áp dụng quy tắc octet",
+     "mo_ta": "Đề hỏi phát biểu quy tắc octet hoặc dùng quy tắc octet: số electron tối đa lớp ngoài cùng, cần thêm bao nhiêu electron để đạt cấu hình bền, quy tắc dùng để giải thích điều gì.\nLàm bằng cách nhớ quy tắc (8 electron, helium 2) và trừ số electron hiện có khỏi 8 khi cần tính.\nBiến thể: câu lí thuyết chọn phát biểu đúng; câu tính số electron cần thêm; nhận định nguyên tử có 8 electron lớp ngoài cùng đã bền.\nLưu ý: đề chỉ hỏi về khí hiếm (tên nguyên tố, vì sao khó liên kết) ⇒ thuộc dạng \"Nhận biết tính bền của nguyên tử khí hiếm\".",
+     "ly_thuyet": "##TC Quy tắc octet\nNguyên tử của các nguyên tố có xu hướng liên kết với nhau để lớp electron ngoài cùng có 8 electron giống khí hiếm; nguyên tử chỉ có một lớp electron thì có 2 electron.\nĐể đạt cấu hình bền, nguyên tử nhường, nhận hoặc góp chung electron; hạt nhân (số proton, neutron) không thay đổi.\n\n##PP Tính số electron cần thêm\nXác định số electron ở lớp ngoài cùng của nguyên tử.\nLấy 8 trừ số electron đó (với nguyên tử chỉ có một lớp thì lấy 2) để được số electron cần thêm.\n\n##CY Lỗi hay mắc\nQuy tắc octet giải thích xu hướng nhường, nhận hoặc góp chung electron, không giải thích số neutron hay khối lượng nguyên tử.\nNguyên tử có lớp ngoài cùng (không phải lớp duy nhất) đủ 8 electron là đã bền.",
+     "vi_du": "##VD\nQuy tắc octet được dùng để giải thích điều gì trong quá trình hình thành liên kết hóa học?\nA. Số neutron trong hạt nhân nguyên tử.\nB. Xu hướng nhường, nhận hoặc góp chung electron của nguyên tử.\nC. Khối lượng nguyên tử của các nguyên tố.\nD. Vị trí của nguyên tố trong bảng tuần hoàn.\n\nBài giải:\nQuy tắc octet nói nguyên tử có xu hướng đạt cấu hình electron bền (8 electron ở lớp ngoài cùng, riêng helium là 2).\nMuốn vậy nguyên tử nhường, nhận hoặc góp chung electron với nguyên tử khác.\nQuy tắc này không liên quan đến số neutron, khối lượng nguyên tử hay vị trí trong bảng tuần hoàn.\nChọn B.\n\n##VD\nMột nguyên tử có lớp electron ngoài cùng chứa 6 electron. Theo quy tắc octet, nguyên tử này cần thêm bao nhiêu electron để đạt cấu hình bền?\nA. 1\nB. 2\nC. 3\nD. 4\n\nBài giải:\nTheo quy tắc octet, lớp ngoài cùng cần đủ 8 electron.\nNguyên tử đang có 6 electron nên cần thêm $8 - 6 = 2$ electron.\nChọn B."
+    },
+    {
+     "dang_id": "KDB00692",
+     "thu_tu": 3,
+     "ten": "Phân loại xu hướng nhường/nhận electron theo nhóm nguyên tố",
+     "mo_ta": "Đề hỏi số electron lớp ngoài cùng và xu hướng của nguyên tử kim loại (nhường electron) và phi kim (nhận electron), lí do và mục đích chung.\nLàm bằng cách nhớ kim loại có 1–3 electron ngoài cùng nên nhường, phi kim có 5–7 electron nên nhận.\nBiến thể: chọn xu hướng của kim loại hoặc phi kim; chọn số electron ngoài cùng thường gặp; giải thích vì sao nhường hoặc nhận; mục đích chung đạt cấu hình bền.\nLưu ý: đề nói về hai nguyên tử phi kim cùng góp chung electron ⇒ thuộc dạng \"Nhận biết xu hướng góp chung electron\"; đề cho một nguyên tử cụ thể và hỏi điện tích ion ⇒ thuộc nhóm \"Liên kết ion\".",
+     "ly_thuyet": "##TC Xu hướng nhường, nhận electron\nNguyên tử kim loại thường có 1, 2 hoặc 3 electron ở lớp ngoài cùng nên có xu hướng nhường electron; sau khi nhường, lớp electron sát bên trong đã đủ electron bền trở thành lớp ngoài cùng mới.\nNguyên tử phi kim thường có 5, 6 hoặc 7 electron ở lớp ngoài cùng, gần đủ 8 nên có xu hướng nhận thêm electron.\nCả hai xu hướng đều nhằm đạt cấu hình electron bền giống khí hiếm gần nhất.\n\n##CY Lỗi hay mắc\nKhông nhầm: kim loại nhường electron, phi kim nhận electron.\nNhường hay nhận electron không làm đổi số neutron, số proton hay tăng số lớp electron.",
+     "vi_du": "##VD\nNguyên tử kim loại có xu hướng nào sau đây để đạt cấu hình electron bền?\nA. Nhận thêm electron vào lớp ngoài cùng.\nB. Không thay đổi số electron.\nC. Góp chung electron với nguyên tử kim loại khác.\nD. Nhường electron ở lớp ngoài cùng.\n\nBài giải:\nNguyên tử kim loại thường có ít electron (1 đến 3) ở lớp ngoài cùng.\nVì vậy nguyên tử kim loại có xu hướng nhường bớt electron này để đạt cấu hình electron bền.\nChọn D.\n\n##VD\nNguyên tử phi kim nhận thêm electron ở lớp ngoài cùng chủ yếu vì lí do nào sau đây?\nA. Nhận electron giúp nguyên tử tăng thêm một lớp electron mới.\nB. Lớp ngoài cùng cũng có quá nhiều electron nên cần bớt đi.\nC. Nhận electron giúp giảm số proton trong hạt nhân.\nD. Lớp ngoài cùng đã gần đủ 8 electron, chỉ cần nhận thêm một số electron là đạt cấu hình bền.\n\nBài giải:\nNguyên tử phi kim thường có 5, 6 hoặc 7 electron ở lớp ngoài cùng, gần đạt 8 electron.\nChỉ cần nhận thêm một vài electron là lớp ngoài cùng đủ 8 electron, đạt cấu hình bền.\nNhận electron không tăng lớp electron và không làm đổi số proton.\nChọn D."
+    },
+    {
+     "dang_id": "KDB00693",
+     "thu_tu": 4,
+     "ten": "Nhận biết xu hướng góp chung electron",
+     "mo_ta": "Đề hỏi về việc góp chung electron của các nguyên tử phi kim: loại liên kết tạo thành, cặp electron dùng chung hình thành thế nào, số nguyên tử tối thiểu, số cặp electron có thể dùng chung, mục đích.\nLàm bằng cách nhớ khái niệm, không tính toán.\nBiến thể: gọi tên loại liên kết khi hai nguyên tử phi kim góp electron; mỗi nguyên tử góp một electron cho một cặp; vì sao phi kim không nhường hẳn electron.\nLưu ý: đề hỏi định nghĩa liên kết cộng hóa trị, liên kết đơn hoặc ba, hoặc số cặp electron của một phân tử cụ thể ⇒ thuộc nhóm \"Liên kết cộng hóa trị\".",
+     "ly_thuyet": "##TC Góp chung electron\nHai nguyên tử phi kim đều có xu hướng nhận electron nên không nguyên tử nào nhường hẳn electron; chúng góp chung electron để cùng đạt cấu hình bền.\nMỗi cặp electron dùng chung gồm 1 electron của mỗi nguyên tử; cặp này chịu lực hút của cả hai hạt nhân.\nSự góp chung electron giữa các nguyên tử phi kim tạo thành liên kết cộng hóa trị; hai nguyên tử có thể dùng chung 1, 2 hoặc 3 cặp electron.\n\n##CY Lỗi hay mắc\nKhông gọi là liên kết ion: liên kết ion do nhường – nhận electron.\nCặp electron dùng chung không thuộc riêng một nguyên tử và không tách ra từ hạt nhân.",
+     "vi_du": "##VD\nLoại liên kết hóa học được hình thành khi hai nguyên tử phi kim góp chung electron gọi là gì?\nA. Liên kết cộng hóa trị.\nB. Liên kết kim loại.\nC. Liên kết hydrogen.\nD. Liên kết ion.\n\nBài giải:\nHai nguyên tử phi kim đều có xu hướng nhận electron nên chúng góp chung electron để cùng đạt cấu hình bền.\nSự góp chung electron giữa các nguyên tử phi kim tạo thành liên kết cộng hóa trị.\nLiên kết ion do nhường – nhận electron, nên không phù hợp.\nChọn A.\n\n##VD\nCặp electron dùng chung trong liên kết cộng hóa trị được hình thành như thế nào?\nA. Do cặp electron này tách ra từ hạt nhân của một nguyên tử.\nB. Do mỗi nguyên tử tham gia liên kết góp một electron.\nC. Do cặp electron này không thuộc về nguyên tử nào cả.\nD. Do một nguyên tử góp cả hai electron của cặp.\n\nBài giải:\nMỗi cặp electron dùng chung gồm 2 electron.\nTrong đó mỗi nguyên tử tham gia liên kết góp 1 electron; cặp electron này chịu lực hút của cả hai hạt nhân.\nChọn B."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00308",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Phân tử - Đơn chất & Hợp chất",
+   "nhom": "Tính khối lượng phân tử",
+   "nhom_ly_thuyet": "Khối lượng phân tử bằng tổng khối lượng của tất cả các nguyên tử có trong phân tử. Với mỗi nguyên tố, lấy số nguyên tử nhân với khối lượng nguyên tử rồi cộng các kết quả; đơn vị là amu.\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/55612788-1786-4012-ae85-ab2ce6000c7e.png)\n\nCÁC BƯỚC GIẢI / 4 bước\nBƯỚC 1: Xác định số nguyên tử của từng nguyên tố trong công thức.\nBƯỚC 2: Tra hoặc sử dụng khối lượng nguyên tử đã cho.\nBƯỚC 3: Tính từng phần: số nguyên tử $\\times$ khối lượng nguyên tử.\nBƯỚC 4: Cộng các phần và ghi đơn vị amu.\n\nVÍ DỤ MINH HỌA\nĐề bài | Tính khối lượng phân tử của $CO_2$, biết C = 12 amu và O = 16 amu.\nLời giải | Trong $CO_2$ có 1 C và 2 O.\nKhối lượng phân tử $CO_2 = 1 \\times 12 + 2 \\times 16 = 44$ amu.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB00685",
+     "thu_tu": 1,
+     "ten": "Tính M phân tử",
+     "mo_ta": "Đề cho công thức hóa học của một chất kèm khối lượng nguyên tử các nguyên tố, yêu cầu tính khối lượng phân tử (amu).\nLàm bằng cách lấy số nguyên tử của từng nguyên tố nhân khối lượng nguyên tử rồi cộng lại.\nBiến thể: tự luận hoặc trả lời ngắn; trắc nghiệm chọn đáp án số; công thức có chỉ số (như $\\mathrm{K_2O}$, $\\mathrm{H_2SO_4}$) hoặc không có chỉ số (như NaCl).\nLưu ý: đề cho khối lượng phân tử và yêu cầu tìm khối lượng nguyên tử chưa biết ⇒ thuộc dạng \"Tìm khối lượng nguyên tử từ M phân tử\".",
+     "ly_thuyet": "##TC Khối lượng phân tử\nKhối lượng phân tử bằng tổng khối lượng của tất cả các nguyên tử có trong một phân tử, tính bằng amu.\nVới mỗi nguyên tố: lấy số nguyên tử nhân khối lượng nguyên tử, rồi cộng các kết quả lại.\n\n##PP Tính khối lượng phân tử\nĐọc công thức, xác định số nguyên tử của từng nguyên tố (chỉ số 1 không viết).\nLấy khối lượng nguyên tử của từng nguyên tố từ dữ kiện đề cho.\nTính từng phần: số nguyên tử $\\times$ khối lượng nguyên tử.\nCộng các phần lại và ghi đơn vị amu.\n\n##CY Lỗi hay mắc\nQuên nhân chỉ số, nhất là nguyên tố có chỉ số 2, 3, 4 như O trong $\\mathrm{H_2SO_4}$.\nChỉ số đứng sau kí hiệu nào thì chỉ nhân cho nguyên tố đó; các phương án nhiễu thường là kết quả quên nhân hoặc nhân nhầm.",
+     "vi_du": "##VD\nKhối lượng phân tử của zinc oxide ($\\mathrm{ZnO}$) là bao nhiêu? Biết $\\mathrm{Zn} = 65$ amu, $\\mathrm{O} = 16$ amu.\nA. 83 amu\nB. 79 amu\nC. 81 amu\nD. 89 amu\n\nBài giải:\nTrong ZnO có 1 nguyên tử Zn và 1 nguyên tử O.\nKhối lượng phân tử $\\mathrm{ZnO} = 65 + 16 = 81$ (amu).\nChọn C.\n\n##VD\nTính khối lượng phân tử của sulfuric acid ($H_2SO_4$), biết $H = 1$ amu, $S = 32$ amu, $O = 16$ amu.\n\nBài giải:\nTrong $H_2SO_4$ có 2 nguyên tử H, 1 nguyên tử S và 4 nguyên tử O.\nKhối lượng phân tử $H_2SO_4 = 2 \\times 1 + 32 + 4 \\times 16 = 2 + 32 + 64 = 98$ (amu)."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00314",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Liên kết Hóa học",
+   "nhom": "SO SÁNH, PHÂN BIỆT LIÊN KẾT ION VÀ LIÊN KẾT CỘNG HÓA TRỊ",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nLiên kết ion: nguyên tử kim loại nhường electron tạo cation, nguyên tử phi kim nhận electron tạo anion; hai ion trái dấu hút nhau bằng lực hút tĩnh điện. Thường gặp giữa kim loại điển hình và phi kim điển hình.\nLiên kết cộng hóa trị: các nguyên tử góp chung electron tạo cặp electron dùng chung, chịu lực hút của cả hai hạt nhân. Thường gặp giữa các nguyên tử phi kim.\nCả hai loại liên kết đều giúp nguyên tử đạt cấu hình bền giống khí hiếm gần nhất (quy tắc octet).\nHợp chất ion thường là chất rắn, nhiệt độ nóng chảy và sôi cao; chất cộng hóa trị có thể rắn, lỏng hoặc khí, nhiệt độ nóng chảy và sôi thường thấp hơn.\n\n##PP 2. Các bước làm bài\nXác định các nguyên tố trong chất và phân loại kim loại hay phi kim.\nCó kim loại và phi kim thì thường là liên kết ion; chỉ có phi kim thì là liên kết cộng hóa trị.\nĐối chiếu bản chất (nhường – nhận hay góp chung) và tính chất vật lí để kết luận.\n\n##CY 3. Lưu ý\nKhí hiếm hầu như không tham gia liên kết ion hay cộng hóa trị.\nKhông nói tuyệt đối: một số chất cộng hóa trị tan trong nước vẫn tạo dung dịch dẫn điện.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB00694",
+     "thu_tu": 1,
+     "ten": "So sánh bản chất hình thành hai loại liên kết",
+     "mo_ta": "Đề so sánh cách hình thành liên kết ion và liên kết cộng hóa trị: nhường – nhận hay góp chung electron, sản phẩm tạo thành, lực hút tác dụng lên electron.\nLàm bằng cách nhớ hai cơ chế và dấu hiệu của từng loại liên kết, không tính toán.\nBiến thể: điểm khác nhau cơ bản; sản phẩm của nhường – nhận electron (ion trái dấu); điểm chung (cùng nhằm đạt cấu hình bền); electron dùng chung chịu lực hút của cả hai hạt nhân.\nLưu ý: đề so sánh loại nguyên tố (kim loại, phi kim) tạo mỗi liên kết ⇒ thuộc dạng \"So sánh loại nguyên tố tham gia\"; đề so sánh nhiệt độ nóng chảy, thể, dẫn điện ⇒ thuộc dạng \"Phân biệt qua tính chất vật lí của hợp chất tạo thành\".",
+     "ly_thuyet": "##TC Bản chất hình thành hai loại liên kết\nLiên kết ion: nguyên tử kim loại nhường electron tạo cation, nguyên tử phi kim nhận electron tạo anion; hai ion trái dấu hút nhau.\nLiên kết cộng hóa trị: các nguyên tử góp chung electron tạo cặp electron dùng chung, chịu lực hút của cả hai hạt nhân.\nĐiểm chung: cả hai đều giúp nguyên tử đạt cấu hình electron bền giống khí hiếm gần nhất (quy tắc octet).\n\n##CY Lỗi hay mắc\nKhông đảo lẫn: ion là nhường – nhận, cộng hóa trị là góp chung.\nSản phẩm của nhường – nhận electron là các ion trái dấu, không phải cặp electron dùng chung.",
+     "vi_du": "##VD\nSản phẩm trực tiếp của quá trình nhường – nhận electron trong liên kết ion là gì?\nA. Các cặp electron dùng chung.\nB. Các ion mang điện tích trái dấu.\nC. Các phân tử khí hiếm.\nD. Các nguyên tử trung hòa không đổi.\n\nBài giải:\nTrong liên kết ion, một nguyên tử nhường electron trở thành cation (mang điện dương), nguyên tử kia nhận electron trở thành anion (mang điện âm).\nVậy sản phẩm trực tiếp là các ion mang điện tích trái dấu, chúng hút nhau tạo liên kết ion.\nCặp electron dùng chung thuộc liên kết cộng hóa trị.\nChọn B.\n\n##VD\nĐiểm khác nhau cơ bản nhất về bản chất hình thành giữa liên kết ion và liên kết cộng hóa trị là gì?\nA. Cả hai loại liên kết đều hình thành do nhường – nhận electron.\nB. Liên kết ion hình thành do nhường – nhận electron giữa các nguyên tử; liên kết cộng hóa trị hình thành do góp chung electron giữa các nguyên tử.\nC. Cả hai loại liên kết đều hình thành do góp chung electron.\nD. Liên kết ion hình thành do góp chung electron; liên kết cộng hóa trị hình thành do nhường – nhận electron.\n\nBài giải:\nLiên kết ion: một nguyên tử nhường electron cho nguyên tử khác, tạo hai ion trái dấu hút nhau.\nLiên kết cộng hóa trị: các nguyên tử góp chung electron, tạo cặp electron dùng chung.\nPhương án A và C cho hai liên kết giống nhau nên sai; phương án D đảo ngược hai cơ chế nên sai.\nChọn B."
+    },
+    {
+     "dang_id": "KDB00695",
+     "thu_tu": 2,
+     "ten": "So sánh loại nguyên tố tham gia",
+     "mo_ta": "Đề hỏi loại nguyên tố tham gia mỗi loại liên kết: kim loại điển hình với phi kim điển hình tạo liên kết ion, hai nguyên tử phi kim tạo liên kết cộng hóa trị, khí hiếm hầu như không liên kết.\nLàm bằng cách nhớ xu hướng nhường, nhận của kim loại, phi kim, không tính toán.\nBiến thể: chọn loại nguyên tố nhường hoặc nhận electron trong liên kết ion; giải thích vì sao hai phi kim tạo liên kết cộng hóa trị; vai trò của khí hiếm.\nLưu ý: đề cho một chất cụ thể (NaCl, CO2…) và hỏi loại liên kết ⇒ thuộc dạng \"Vận dụng nhận diện loại liên kết trong hợp chất cho trước\".",
+     "ly_thuyet": "##TC Loại nguyên tố tạo mỗi loại liên kết\nLiên kết ion thường hình thành giữa nguyên tử kim loại điển hình (nhường hẳn electron, tạo cation) và nguyên tử phi kim điển hình (nhận hẳn electron, tạo anion).\nLiên kết cộng hóa trị thường hình thành giữa hai nguyên tử phi kim, vì cả hai đều có xu hướng nhận electron nên góp chung electron.\nNguyên tử khí hiếm đã bền nên hầu như không tham gia liên kết ion hay cộng hóa trị.\n\n##CY Lỗi hay mắc\nKhông nói kim loại – phi kim cùng nhận electron; kim loại nhường, phi kim nhận.\nKhí hiếm không \"luôn\" tạo liên kết nào cả.",
+     "vi_du": "##VD\nLoại nguyên tố nào có xu hướng nhường electron, thường gặp ở một bên trong liên kết ion?\nA. Phi kim.\nB. Kim loại.\nC. Khí hiếm.\nD. Cả kim loại và phi kim như nhau.\n\nBài giải:\nTrong liên kết ion, một bên nhường electron và một bên nhận electron.\nNguyên tử kim loại có ít electron ở lớp ngoài cùng nên nhường electron, tạo cation.\nPhi kim nhận electron, còn khí hiếm không nhường hay nhận.\nChọn B.\n\n##VD\nVì sao liên kết giữa hai nguyên tử phi kim thường là liên kết cộng hóa trị chứ không phải liên kết ion?\nA. Vì cả hai nguyên tử đều có xu hướng nhường electron.\nB. Vì hai nguyên tử phi kim không có electron lớp ngoài cùng.\nC. Vì hai nguyên tử phi kim luôn có số proton bằng nhau.\nD. Vì cả hai nguyên tử đều có xu hướng nhận electron, không nguyên tử nào nhường hẳn electron cho nguyên tử còn lại.\n\nBài giải:\nHai nguyên tử phi kim đều có xu hướng nhận thêm electron để đạt cấu hình bền.\nKhông nguyên tử nào nhường hẳn electron nên không tạo được ion trái dấu.\nChúng góp chung electron, tạo liên kết cộng hóa trị.\nChọn D."
+    },
+    {
+     "dang_id": "KDB00696",
+     "thu_tu": 3,
+     "ten": "Phân biệt qua tính chất vật lí của hợp chất tạo thành",
+     "mo_ta": "Đề so sánh hoặc nhận biết hợp chất ion với chất cộng hóa trị qua tính chất vật lí: thể ở nhiệt độ thường, nhiệt độ nóng chảy, nhiệt độ sôi, khả năng dẫn điện.\nLàm bằng cách nhớ tính chất đặc trưng của từng loại, kèm lí do về lực hút tĩnh điện giữa các ion và lực tương tác giữa các phân tử.\nBiến thể: vì sao hợp chất ion nóng chảy cao hơn; so sánh thể tồn tại; dẫn điện khi tan hoặc khi nóng chảy; dấu hiệu phân biệt nhanh.\nLưu ý: đề chỉ hỏi tính chất của riêng hợp chất ion ⇒ thuộc dạng \"Nhận biết tính chất vật lí của hợp chất ion\"; chỉ hỏi chất cộng hóa trị ⇒ thuộc dạng \"Nhận biết tính chất vật lí của chất cộng hóa trị\".",
+     "ly_thuyet": "##TC So sánh tính chất vật lí\nHợp chất ion: thường ở thể rắn ở nhiệt độ thường, nhiệt độ nóng chảy và sôi cao; nhiều chất tan trong nước tạo dung dịch dẫn điện, nóng chảy cũng dẫn điện.\nChất cộng hóa trị: có thể ở thể rắn, lỏng hoặc khí; nhiệt độ nóng chảy và sôi thường thấp hơn; ở trạng thái tinh khiết thường không dẫn điện.\nNguyên nhân: lực hút tĩnh điện giữa các ion trái dấu thường mạnh hơn lực tương tác giữa các phân tử cộng hóa trị.\n\n##CY Lỗi hay mắc\nKhông phải chất cộng hóa trị nào cũng ở thể khí; cũng không phải chất nào cũng tan và dẫn điện như nhau.\nMột số chất cộng hóa trị tan trong nước vẫn có thể tạo dung dịch dẫn điện.",
+     "vi_du": "##VD\nVề thể tồn tại ở nhiệt độ thường, hợp chất ion và chất cộng hóa trị khác nhau như thế nào?\nA. Hợp chất ion luôn ở thể khí; chất cộng hóa trị luôn ở thể rắn.\nB. Cả hai đều đa dạng về thể như nhau.\nC. Hợp chất ion thường ở thể rắn; chất cộng hóa trị đa dạng hơn, có thể ở thể rắn, lỏng hoặc khí.\nD. Cả hai đều luôn ở thể rắn.\n\nBài giải:\nLực hút giữa các ion trái dấu khá mạnh nên hợp chất ion thường ở thể rắn ở nhiệt độ thường.\nChất cộng hóa trị đa dạng hơn, có thể ở thể rắn, lỏng hoặc khí tùy chất.\nCác phương án A, B, D đều đưa ra nhận định tuyệt đối hoặc sai.\nChọn C.\n\n##VD\nVì sao hợp chất ion thường có nhiệt độ nóng chảy cao hơn chất cộng hóa trị?\nA. Vì lực hút tĩnh điện giữa các ion trong hợp chất ion thường mạnh hơn lực tương tác giữa các phân tử trong chất cộng hóa trị.\nB. Vì chất cộng hóa trị luôn ở thể khí.\nC. Vì hợp chất ion luôn có khối lượng phân tử lớn hơn.\nD. Vì hợp chất ion chỉ gồm các nguyên tử phi kim.\n\nBài giải:\nMuốn làm nóng chảy chất cần năng lượng để phá lực hút giữa các hạt.\nLực hút tĩnh điện giữa các ion trái dấu trong hợp chất ion thường mạnh hơn lực tương tác giữa các phân tử cộng hóa trị, nên cần nhiều năng lượng hơn, nhiệt độ nóng chảy cao hơn.\nPhương án D sai vì hợp chất ion gồm kim loại và phi kim.\nChọn A."
+    },
+    {
+     "dang_id": "KDB00697",
+     "thu_tu": 4,
+     "ten": "Vận dụng nhận diện loại liên kết trong hợp chất cho trước",
+     "mo_ta": "Đề cho một hợp chất hoặc phân tử cụ thể (tên, công thức, hoặc nguyên tố tạo thành), yêu cầu xác định loại liên kết: ion hay cộng hóa trị.\nLàm bằng cách xét loại nguyên tố tạo thành: kim loại với phi kim thường là liên kết ion; chỉ gồm phi kim là liên kết cộng hóa trị.\nBiến thể: chọn loại liên kết của 1 chất; đếm trong dãy chất có bao nhiêu chất liên kết ion.\nLưu ý: đề hỏi vì sao hoặc so sánh khái quát loại nguyên tố tham gia ⇒ thuộc dạng \"So sánh loại nguyên tố tham gia\".",
+     "ly_thuyet": "##TC Nhận biết loại liên kết trong chất cụ thể\nHợp chất tạo bởi kim loại và phi kim thường có liên kết ion (như $\\mathrm{NaCl}$, $\\mathrm{MgO}$, $\\mathrm{CaCl_2}$, $\\mathrm{KCl}$).\nPhân tử chỉ gồm các nguyên tử phi kim có liên kết cộng hóa trị (như $\\mathrm{H_2O}$, $\\mathrm{CO_2}$, $\\mathrm{NH_3}$, $\\mathrm{N_2}$).\n\n##PP Nhận biết loại liên kết\nXác định các nguyên tố trong chất.\nPhân loại từng nguyên tố là kim loại hay phi kim.\nCó kim loại và phi kim thì là liên kết ion; chỉ có phi kim thì là liên kết cộng hóa trị.\nVới đề cho cả dãy chất, xét từng chất rồi đếm theo yêu cầu.\n\n##CY Lỗi hay mắc\nĐơn chất phi kim như $\\mathrm{N_2}$ cũng là liên kết cộng hóa trị.\nĐếm đúng số chất liên kết ion, không đếm lẫn chất cộng hóa trị.",
+     "vi_du": "##VD\nPhân tử carbon dioxide ($\\mathrm{CO_2}$) được hình thành từ nguyên tử phi kim carbon và nguyên tử phi kim oxygen. Phân tử này có loại liên kết nào?\nA. Liên kết ion.\nB. Cả liên kết ion và liên kết cộng hóa trị với tỉ lệ như nhau.\nC. Liên kết cộng hóa trị.\nD. Không có liên kết hóa học.\n\nBài giải:\n$\\mathrm{CO_2}$ gồm hai nguyên tố carbon và oxygen đều là phi kim.\nHai nguyên tử phi kim góp chung electron nên tạo liên kết cộng hóa trị.\nChọn C.\n\n##VD\nTrong bốn hợp chất/phân tử: $\\mathrm{CaCl_2}$, $\\mathrm{H_2O}$, $\\mathrm{KCl}$, $\\mathrm{N_2}$, có bao nhiêu chất được hình thành nhờ liên kết ion?\nA. 1\nB. 2\nC. 3\nD. 4\n\nBài giải:\n$\\mathrm{CaCl_2}$ gồm kim loại Ca và phi kim Cl nên có liên kết ion.\n$\\mathrm{KCl}$ gồm kim loại K và phi kim Cl nên có liên kết ion.\n$\\mathrm{H_2O}$ gồm H và O, $\\mathrm{N_2}$ gồm N, đều chỉ có phi kim nên là liên kết cộng hóa trị.\nVậy có 2 chất liên kết ion.\nChọn B."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00309",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Phân tử - Đơn chất & Hợp chất",
+   "nhom": "Đọc mô hình phân tử để xác định công thức và tên gọi",
+   "nhom_ly_thuyet": "Mô hình phân tử cho biết loại và số lượng nguyên tử trong một phân tử. Mỗi loại nguyên tử được viết bằng kí hiệu hóa học; số nguyên tử được ghi bằng chỉ số ở phía dưới, bên phải kí hiệu. Chỉ số 1 không viết.\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/bc37624a-e446-4af8-aa73-dc90d84fc58d.png)\nCÁC BƯỚC GIẢI / 4 bước\nBƯỚC 1: Đọc chú giải để xác định từng loại nguyên tử trong mô hình.\nBƯỚC 2: Đếm số nguyên tử của từng loại.\nBƯỚC 3: Viết các kí hiệu nguyên tố kèm chỉ số tương ứng; bỏ chỉ số 1.\nBƯỚC 4: Đếm số loại nguyên tố trong công thức để phân loại đơn chất hoặc hợp chất; gọi tên nếu đã biết chất.\nVÍ DỤ MINH HỌA\nĐề bài | Một mô hình gồm 1 nguyên tử C liên kết với 2 nguyên tử O. Viết công thức hóa học và phân loại chất.\nLời giải | Mô hình có 1 C và 2 O nên công thức là $CO_2$. Công thức chứa hai loại nguyên tố C và O, vì vậy đây là hợp chất carbon dioxide.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB00686",
+     "thu_tu": 1,
+     "ten": "Xác định CTPT",
+     "mo_ta": "Đề mô tả một phân tử gồm bao nhiêu nguyên tử của mỗi nguyên tố liên kết với nhau, yêu cầu viết hoặc chọn công thức hóa học đúng.\nLàm bằng cách ghi kí hiệu từng nguyên tố kèm chỉ số bằng số nguyên tử, bỏ chỉ số 1.\nBiến thể: trắc nghiệm chọn công thức (phương án nhiễu sai chỉ số); tự luận viết công thức rồi nhận xét đơn chất hay hợp chất, gọi tên.\nLưu ý: đề bắt buộc cả viết công thức lẫn kết luận đơn chất hay hợp chất bằng trả lời ngắn ⇒ thuộc dạng \"Xác định CTPT, đơn/hợp chất\".",
+     "ly_thuyet": "##TC Viết công thức hóa học từ mô tả phân tử\nCông thức hóa học gồm kí hiệu các nguyên tố trong phân tử, mỗi kí hiệu có chỉ số ở chân bên phải cho biết số nguyên tử.\nChỉ số 1 không viết; công thức có từ 2 loại kí hiệu trở lên là công thức của hợp chất.\n\n##PP Viết công thức từ số nguyên tử\nLiệt kê từng nguyên tố trong phân tử và số nguyên tử của nó.\nViết kí hiệu từng nguyên tố kèm chỉ số bằng số nguyên tử, bỏ chỉ số 1.\nĐối chiếu với các phương án (nếu trắc nghiệm) hoặc đếm số loại kí hiệu để kết luận đơn chất hay hợp chất (nếu đề yêu cầu).\n\n##CY Lỗi hay mắc\nCác phương án nhiễu thường đổi chỉ số (như $\\mathrm{Cu_2O}$, $\\mathrm{CuO_2}$ cho 1 Cu và 1 O); không được viết chỉ số 1.\nSố nguyên tử viết ở chỉ số, không viết thành hệ số đứng trước.",
+     "vi_du": "##VD\nMột phân tử được mô tả gồm 1 nguyên tử $\\mathrm{Cu}$ và 1 nguyên tử $\\mathrm{O}$ liên kết với nhau. Công thức hoá học đúng của phân tử này là\nA. $\\mathrm{Cu_2O}$\nB. $\\mathrm{CuO}$\nC. $\\mathrm{CuO_2}$\nD. $\\mathrm{Cu_3O}$\n\nBài giải:\nPhân tử có 1 nguyên tử Cu và 1 nguyên tử O.\nChỉ số 1 không viết nên công thức là $\\mathrm{CuO}$.\nChọn B.\n\n##VD\nMột phân tử được mô tả gồm 1 nguyên tử Mg và 2 nguyên tử Cl liên kết với nhau. Công thức hoá học đúng của phân tử này là\nA. $\\mathrm{MgCl_2}$\nB. $\\mathrm{Mg_2Cl_2}$\nC. $\\mathrm{MgCl_3}$\nD. $\\mathrm{Mg_2Cl}$\n\nBài giải:\nPhân tử có 1 nguyên tử Mg (không viết chỉ số) và 2 nguyên tử Cl (chỉ số 2).\nVậy công thức là $\\mathrm{MgCl_2}$.\nChọn A."
+    },
+    {
+     "dang_id": "KDB00687",
+     "thu_tu": 2,
+     "ten": "Xác định CTPT, đơn/hợp chất",
+     "mo_ta": "Đề mô tả một phân tử gồm số nguyên tử của các nguyên tố, yêu cầu viết công thức hóa học và cho biết đây là đơn chất hay hợp chất.\nLàm bằng cách viết công thức theo số nguyên tử, sau đó đếm số loại kí hiệu để kết luận (từ 2 loại trở lên là hợp chất).\nBiến thể: phân tử 2 nguyên tố; phân tử 3 nguyên tố như KOH; trả lời ngắn.\nLưu ý: đề chỉ yêu cầu chọn hoặc viết công thức, không hỏi phân loại ⇒ thuộc dạng \"Xác định CTPT\".",
+     "ly_thuyet": "##TC Công thức và phân loại chất\nCông thức hóa học ghi kí hiệu nguyên tố kèm chỉ số là số nguyên tử, chỉ số 1 không viết.\nCông thức chỉ có 1 loại kí hiệu là đơn chất; có từ 2 loại kí hiệu trở lên là hợp chất.\n\n##PP Viết công thức rồi phân loại\nGhi kí hiệu từng nguyên tố và số nguyên tử tương ứng.\nViết công thức: kí hiệu kèm chỉ số, bỏ chỉ số 1.\nĐếm số loại kí hiệu trong công thức vừa viết.\nKết luận đơn chất (1 loại) hay hợp chất (từ 2 loại); trả lời đủ cả công thức và phân loại.\n\n##CY Lưu ý\nPhải trả lời cả hai ý: công thức và đơn chất hay hợp chất.\nPhân tử có 3 nguyên tố (như KOH) vẫn là hợp chất.",
+     "vi_du": "##VD\nMột phân tử gồm 2 nguyên tử $\\mathrm{H}$ và 1 nguyên tử $\\mathrm{O}$. Viết công thức hoá học và cho biết đây là đơn chất hay hợp chất.\n\nBài giải:\nPhân tử có 2 nguyên tử H và 1 nguyên tử O nên công thức là $\\mathrm{H_2O}$.\nCông thức có 2 loại kí hiệu là H và O nên đây là hợp chất.\n\n##VD\nMột phân tử gồm 1 nguyên tử $\\mathrm{K}$, 1 nguyên tử $\\mathrm{O}$ và 1 nguyên tử $\\mathrm{H}$. Viết công thức hoá học và cho biết đây là đơn chất hay hợp chất.\n\nBài giải:\nPhân tử có 1 K, 1 O và 1 H; các chỉ số đều là 1 nên không viết, công thức là $\\mathrm{KOH}$.\nCông thức có 3 loại kí hiệu là K, O, H nên đây là hợp chất."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00315",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Liên kết Hóa học",
+   "nhom": "LIÊN KẾT ION",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nIon là phần tử mang điện, tạo thành khi nguyên tử nhường hoặc nhận electron.\nCation là ion dương (nguyên tử nhường electron); anion là ion âm (nguyên tử nhận electron). Điện tích ion có giá trị bằng số electron nhường hoặc nhận.\nKí hiệu ion ghi điện tích ở phía trên bên phải kí hiệu nguyên tố, như $\\mathrm{Na^+}$, $\\mathrm{Mg^{2+}}$, $\\mathrm{Cl^-}$, $\\mathrm{O^{2-}}$.\nLiên kết ion là liên kết tạo bởi lực hút tĩnh điện giữa cation và anion; hợp chất tạo thành trung hòa về điện.\nHợp chất ion thường là chất rắn, nhiệt độ nóng chảy và sôi cao, nhiều chất tan trong nước tạo dung dịch dẫn điện.\n\n##PP 2. Các bước làm bài\nXác định số electron ngoài cùng của mỗi nguyên tử để biết nguyên tử nhường (ít electron) hay nhận (nhiều electron).\nTính số electron nhường hoặc nhận ($8 - n$ với phi kim) để có điện tích ion.\nChọn số cation, số anion sao cho tổng điện tích dương bằng tổng điện tích âm.\nViết công thức hợp chất ion, chỉ số là số ion, bỏ chỉ số 1.\n\n##CY 3. Lưu ý\nChỉ số trong công thức lấy từ tỉ lệ số ion, không phải số electron nhường hoặc nhận của từng nguyên tử.\nNhường electron cho điện dương, nhận electron cho điện âm.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB00698",
+     "thu_tu": 1,
+     "ten": "Khái niệm ion, cation, anion, liên kết ion",
+     "mo_ta": "Đề hỏi khái niệm về ion: ion, cation, anion là gì, điện tích ion do đâu mà có, vì sao cation và anion hút nhau tạo liên kết ion.\nLàm bằng cách nhớ định nghĩa, không tính toán.\nBiến thể: định nghĩa ion; định nghĩa cation; định nghĩa anion; điện tích cation, anion bằng số electron nhường, nhận; nguyên nhân hút nhau.\nLưu ý: đề cho một nguyên tử cụ thể (Na, Cl…) và hỏi ion tạo thành ⇒ thuộc dạng \"Xác định electron nhường/nhận và điện tích ion của một nguyên tử cho trước\".",
+     "ly_thuyet": "##TC Ion, cation, anion\nIon là phần tử mang điện, tạo thành khi nguyên tử nhường hoặc nhận electron để đạt cấu hình electron bền.\nCation: ion mang điện tích dương, tạo khi nguyên tử nhường electron (thường là kim loại).\nAnion: ion mang điện tích âm, tạo khi nguyên tử nhận electron (thường là phi kim).\nGiá trị điện tích của ion bằng số electron đã nhường hoặc đã nhận.\nCation và anion mang điện tích trái dấu nên hút nhau tạo thành liên kết ion.\n\n##CY Lỗi hay mắc\nNhường electron ⇒ số electron ít hơn số proton ⇒ điện dương (cation); nhận electron ⇒ điện âm (anion).\nĐiện tích ion không phụ thuộc số lớp electron hay số neutron.",
+     "vi_du": "##VD\nCation là\nA. nguyên tử trung hòa về điện.\nB. ion mang điện tích dương, hình thành khi nguyên tử nhường electron.\nC. ion mang điện tích âm, hình thành khi nguyên tử nhận electron.\nD. phân tử gồm hai nguyên tử liên kết với nhau.\n\nBài giải:\nKhi nguyên tử nhường electron, số electron còn lại ít hơn số proton.\nNguyên tử khi đó mang điện dương, gọi là cation.\nPhương án C là định nghĩa anion; A và D không phải ion.\nChọn B.\n\n##VD\nĐiện tích của một cation được xác định bằng\nA. số electron mà nguyên tử đã nhường.\nB. số electron mà nguyên tử đã nhận.\nC. tổng số proton và neutron trong hạt nhân.\nD. số lớp electron của nguyên tử.\n\nBài giải:\nCation hình thành do nguyên tử nhường electron.\nĐiện tích dương của cation có giá trị bằng đúng số electron đã nhường.\nChọn A."
+    },
+    {
+     "dang_id": "KDB00699",
+     "thu_tu": 2,
+     "ten": "Xác định electron nhường/nhận và điện tích ion của một nguyên tử cho trước",
+     "mo_ta": "Đề cho nguyên tử một nguyên tố và số electron lớp ngoài cùng, yêu cầu chọn xu hướng nhường hay nhận, số electron, kí hiệu và điện tích ion tạo thành (trắc nghiệm).\nLàm bằng cách so số electron ngoài cùng với 8: ít (1–3) thì nhường, nhiều (5–7) thì nhận; điện tích bằng số electron nhường hoặc nhận.\nBiến thể: chọn mô tả đúng nhường hoặc nhận bao nhiêu electron và tạo ion nào; chọn kí hiệu ion; chọn số electron nhường.\nLưu ý: cùng kiểu đề nhưng yêu cầu viết kí hiệu, điện tích hoặc số electron bằng trả lời ngắn ⇒ thuộc dạng \"Xác định electron nhường/nhận và điện tích ion của một nguyên tử cho trước\" (dạng trả lời ngắn).",
+     "ly_thuyet": "##TC Ion tạo thành từ nguyên tử\nNguyên tử có 1, 2, 3 electron ngoài cùng nhường hết số electron này tạo cation mang điện tích $1+$, $2+$, $3+$.\nNguyên tử có 7, 6, 5 electron ngoài cùng nhận thêm $8 - n$ electron tạo anion mang điện tích $1-$, $2-$, $3-$.\nKí hiệu ion: kí hiệu nguyên tố kèm điện tích ở phía trên bên phải, ví dụ $\\mathrm{Na^+}$, $\\mathrm{Ca^{2+}}$, $\\mathrm{Cl^-}$.\n\n##PP Xác định ion tạo thành\nĐọc số electron ở lớp ngoài cùng của nguyên tử.\nNếu ít (1, 2, 3) thì nhường hết các electron đó; nếu nhiều (5, 6, 7) thì nhận thêm $8 - n$ electron.\nĐiện tích ion có độ lớn bằng số electron nhường hoặc nhận; nhường là dấu $+$, nhận là dấu $-$.\nViết kí hiệu ion và chọn đáp án khớp.\n\n##CY Lỗi hay mắc\nKhông nhầm số electron nhường với số electron ngoài cùng của phi kim: $\\mathrm{Cl}$ nhận 1 electron (tạo $\\mathrm{Cl^-}$), không nhận 7.\nDấu điện tích đi theo xu hướng: nhường ra dương, nhận vào âm.",
+     "vi_du": "##VD\nNguyên tử sodium ($\\mathrm{Na}$) có $1$ electron ở lớp ngoài cùng. Để đạt cấu hình electron bền, nguyên tử sodium\nA. nhận $7$ electron, tạo thành ion $\\mathrm{Na^{7-}}$.\nB. nhận $1$ electron, tạo thành ion $\\mathrm{Na^-}$.\nC. nhường $2$ electron, tạo thành ion $\\mathrm{Na^{2+}}$.\nD. nhường $1$ electron, tạo thành ion $\\mathrm{Na^+}$.\n\nBài giải:\nSodium có 1 electron ở lớp ngoài cùng, rất ít so với 8 nên có xu hướng nhường.\nNhường 1 electron thì tạo ion mang điện tích $1+$, kí hiệu $\\mathrm{Na^+}$.\nChọn D.\n\n##VD\nNguyên tử chlorine ($\\mathrm{Cl}$) có 7 electron ở lớp ngoài cùng. Để đạt cấu hình electron bền, nguyên tử chlorine\nA. nhường 1 electron, tạo thành ion $\\mathrm{Cl^+}$.\nB. nhận 1 electron, tạo thành ion $\\mathrm{Cl^-}$.\nC. nhận 7 electron, tạo thành ion $\\mathrm{Cl^{7-}}$.\nD. nhường 7 electron, tạo thành ion $\\mathrm{Cl^{7+}}$.\n\nBài giải:\nChlorine có 7 electron ở lớp ngoài cùng, gần đủ 8 nên có xu hướng nhận thêm electron.\nSố electron cần nhận là $8 - 7 = 1$, tạo ion mang điện tích $1-$, kí hiệu $\\mathrm{Cl^-}$.\nChọn B."
+    },
+    {
+     "dang_id": "KDB00700",
+     "thu_tu": 3,
+     "ten": "Mô tả quá trình hình thành hợp chất ion cụ thể",
+     "mo_ta": "Đề cho nguyên tử A nhường bao nhiêu electron, nguyên tử B nhận bao nhiêu electron, yêu cầu chọn công thức hợp chất ion tạo thành (trắc nghiệm).\nLàm bằng cách xác định điện tích hai ion rồi chọn tỉ lệ số ion để tổng điện tích bằng 0.\nBiến thể: tỉ lệ 1:1 (NaCl, MgO) hoặc khác 1:1 (CaCl2, K2O).\nLưu ý: cùng kiểu đề nhưng yêu cầu tự viết công thức ⇒ thuộc dạng \"Mô tả quá trình hình thành hợp chất ion cụ thể\" (dạng trả lời ngắn); đề chỉ cho số electron lớp ngoài cùng, chưa cho nhường – nhận ⇒ thuộc dạng \"Trình bày quá trình hình thành hợp chất ion từ một cặp nguyên tử cho trước\".",
+     "ly_thuyet": "##TC Công thức hợp chất ion\nHợp chất ion trung hòa về điện: tổng điện tích dương của các cation bằng tổng điện tích âm của các anion.\nNếu cation mang điện tích $a+$ và anion mang điện tích $b-$ thì tỉ lệ số ion là (số cation) : (số anion) $= b : a$ (rút gọn).\n\n##PP Viết công thức hợp chất ion\nXác định điện tích mỗi ion: số electron nhường là điện tích dương, số electron nhận là điện tích âm.\nTìm số cation và số anion sao cho tổng điện tích dương bằng tổng điện tích âm.\nViết công thức: kí hiệu cation trước, anion sau, chỉ số là số ion tương ứng (chỉ số 1 không viết).\n\n##CY Lỗi hay mắc\nChỉ số lấy từ tỉ lệ số ion, không phải từ số electron của từng nguyên tử: $\\mathrm{Mg^{2+}}$ và $\\mathrm{O^{2-}}$ tạo $\\mathrm{MgO}$, không phải $\\mathrm{Mg_2O_2}$.\nPhải rút gọn tỉ lệ về số nguyên nhỏ nhất.",
+     "vi_du": "##VD\nNguyên tử sodium (Na) nhường 1 electron, nguyên tử chlorine (Cl) nhận 1 electron. Công thức hợp chất ion tạo thành giữa hai nguyên tử này là\nA. $\\mathrm{Na_2Cl}$\nB. $\\mathrm{Na_2Cl_2}$\nC. $\\mathrm{NaCl_2}$\nD. $\\mathrm{NaCl}$\n\nBài giải:\nNa nhường 1 electron tạo $\\mathrm{Na^+}$ (điện tích $1+$); Cl nhận 1 electron tạo $\\mathrm{Cl^-}$ (điện tích $1-$).\nĐiện tích hai ion bằng nhau về độ lớn nên 1 ion $\\mathrm{Na^+}$ kết hợp với 1 ion $\\mathrm{Cl^-}$.\nCông thức hợp chất là $\\mathrm{NaCl}$.\nChọn D.\n\n##VD\nNguyên tử calcium (Ca) nhường 2 electron, nguyên tử chlorine (Cl) nhận 1 electron. Công thức hợp chất ion tạo thành giữa hai nguyên tử này là\nA. $\\mathrm{CaCl_2}$\nB. $\\mathrm{Ca_2Cl}$\nC. $\\mathrm{CaCl}$\nD. $\\mathrm{Ca_2Cl_2}$\n\nBài giải:\nCa nhường 2 electron tạo $\\mathrm{Ca^{2+}}$; Cl nhận 1 electron tạo $\\mathrm{Cl^-}$.\nĐể trung hòa điện cần 2 ion $\\mathrm{Cl^-}$ (tổng $2-$) cho 1 ion $\\mathrm{Ca^{2+}}$.\nCông thức hợp chất là $\\mathrm{CaCl_2}$.\nChọn A."
+    },
+    {
+     "dang_id": "KDB00701",
+     "thu_tu": 4,
+     "ten": "Nhận biết tính chất vật lí của hợp chất ion",
+     "mo_ta": "Đề hỏi tính chất vật lí của hợp chất ion: thể ở nhiệt độ thường, nhiệt độ nóng chảy và sôi, tính tan và khả năng dẫn điện của dung dịch, lực hút giữa các ion.\nLàm bằng cách nhớ tính chất đặc trưng của hợp chất ion, không tính toán.\nBiến thể: chọn thể tồn tại; chọn tính chất không phải của hợp chất ion; so sánh nhiệt độ nóng chảy hoặc sôi; lực hút giữa các ion; dẫn điện khi tan trong nước.\nLưu ý: đề so sánh trực tiếp hợp chất ion với chất cộng hóa trị ở nhiều tính chất ⇒ thuộc dạng \"Phân biệt qua tính chất vật lí của hợp chất tạo thành\".",
+     "ly_thuyet": "##TC Tính chất vật lí của hợp chất ion\nỞ nhiệt độ thường, hợp chất ion thường là chất rắn.\nNhiệt độ nóng chảy và nhiệt độ sôi cao, vì lực hút tĩnh điện giữa các ion trái dấu mạnh.\nNhiều hợp chất ion tan tốt trong nước; khi tan, các ion tách ra chuyển động tự do nên dung dịch dẫn được điện.\n\n##CY Lỗi hay mắc\nHợp chất ion không phải thể khí ở nhiệt độ thường.\nKhông phải hợp chất ion nào cũng tan, nhưng các hợp chất ion tan đều tạo dung dịch dẫn điện (không nói \"không bao giờ tan\").",
+     "vi_du": "##VD\nỞ nhiệt độ thường, hợp chất ion thường tồn tại ở thể nào?\nA. Thể lỏng.\nB. Thể plasma.\nC. Thể khí.\nD. Thể rắn.\n\nBài giải:\nLực hút tĩnh điện giữa các ion trái dấu trong hợp chất ion khá mạnh.\nCác ion bị giữ chặt nên hợp chất ion thường tồn tại ở thể rắn ở nhiệt độ thường.\nChọn D.\n\n##VD\nĐặc điểm nào sau đây không phải là tính chất chung thường gặp của hợp chất ion?\nA. Nhiều hợp chất tan tốt trong nước.\nB. Tồn tại chủ yếu ở thể khí tại nhiệt độ thường.\nC. Thể rắn ở nhiệt độ thường.\nD. Nhiệt độ nóng chảy cao.\n\nBài giải:\nHợp chất ion thường là chất rắn, nhiệt độ nóng chảy cao và nhiều chất tan tốt trong nước.\nVậy A, C, D đúng.\nHợp chất ion không tồn tại chủ yếu ở thể khí nên B là đặc điểm không đúng.\nChọn B."
+    },
+    {
+     "dang_id": "KDB00702",
+     "thu_tu": 5,
+     "ten": "Xác định electron nhường/nhận và điện tích ion của một nguyên tử cho trước",
+     "mo_ta": "Đề cho nguyên tử một nguyên tố và số electron lớp ngoài cùng, yêu cầu điền ngắn gọn: điện tích ion, kí hiệu ion hoặc số electron cần nhường hay nhận.\nLàm bằng cách so số electron ngoài cùng với 8: ít thì nhường, nhiều thì nhận $8 - n$ electron; điện tích bằng số electron nhường hoặc nhận.\nBiến thể: hỏi điện tích ion; hỏi viết kí hiệu ion; hỏi số electron cần nhận thêm.\nLưu ý: cùng kiểu đề nhưng có 4 phương án trắc nghiệm ⇒ thuộc dạng \"Xác định electron nhường/nhận và điện tích ion của một nguyên tử cho trước\" (dạng trắc nghiệm).",
+     "ly_thuyet": "##TC Ion tạo thành từ nguyên tử\nNguyên tử có 1, 2, 3 electron ngoài cùng nhường electron tạo cation mang điện tích $1+$, $2+$, $3+$.\nNguyên tử có 7, 6, 5 electron ngoài cùng nhận thêm $8 - n$ electron tạo anion mang điện tích $1-$, $2-$, $3-$.\nKí hiệu ion: kí hiệu nguyên tố kèm điện tích ở phía trên bên phải, như $\\mathrm{Li^+}$, $\\mathrm{P^{3-}}$.\n\n##PP Xác định ion tạo thành\nĐọc số electron ở lớp ngoài cùng của nguyên tử.\nÍt (1–3) thì nhường hết; nhiều (5–7) thì nhận thêm $8 - n$ electron.\nĐiện tích có độ lớn bằng số electron nhường hoặc nhận; nhường là dấu $+$, nhận là dấu $-$.\nTrả lời đúng cái đề hỏi: điện tích (dạng $2+$, $2-$), kí hiệu ion hoặc số electron.\n\n##CY Lưu ý\nGhi đúng số trước dấu: $2-$, không viết $-2$ khi đề dùng dạng $2-$.\nVới phi kim, số electron nhận là $8 - n$ chứ không phải $n$.",
+     "vi_du": "##VD\nNguyên tử lithium (Li) có 1 electron ở lớp ngoài cùng. Viết kí hiệu của ion được tạo thành khi nguyên tử lithium nhường electron để đạt cấu hình bền.\n\nBài giải:\nLithium có 1 electron ở lớp ngoài cùng nên nhường 1 electron.\nIon tạo thành mang điện tích $1+$.\nKí hiệu ion là $\\mathrm{Li^+}$.\n\n##VD\nNguyên tử sulfur (S) có 6 electron ở lớp ngoài cùng. Ion tạo thành khi nguyên tử sulfur đạt cấu hình electron bền mang điện tích bao nhiêu?\n\nBài giải:\nSulfur có 6 electron ở lớp ngoài cùng, gần đủ 8 nên nhận thêm electron.\nSố electron cần nhận là $8 - 6 = 2$.\nIon tạo thành mang điện tích $2-$."
+    },
+    {
+     "dang_id": "KDB00703",
+     "thu_tu": 6,
+     "ten": "Mô tả quá trình hình thành hợp chất ion cụ thể",
+     "mo_ta": "Đề cho nguyên tử A nhường bao nhiêu electron, nguyên tử B nhận bao nhiêu electron, yêu cầu viết công thức hợp chất ion tạo thành (trả lời ngắn).\nLàm bằng cách xác định điện tích hai ion rồi chọn tỉ lệ số ion để tổng điện tích bằng 0, viết công thức.\nBiến thể: tỉ lệ 1:1 (CaO, MgS, KCl) hoặc khác 1:1 (AlCl3, Na2S).\nLưu ý: cùng kiểu đề nhưng có 4 phương án trắc nghiệm ⇒ thuộc dạng \"Mô tả quá trình hình thành hợp chất ion cụ thể\" (trắc nghiệm); đề chỉ cho số electron lớp ngoài cùng, chưa cho nhường – nhận, và yêu cầu trình bày quá trình ⇒ thuộc dạng \"Trình bày quá trình hình thành hợp chất ion từ một cặp nguyên tử cho trước\".",
+     "ly_thuyet": "##TC Công thức hợp chất ion\nHợp chất ion trung hòa về điện: tổng điện tích dương bằng tổng điện tích âm.\nNếu cation mang điện tích $a+$ và anion mang điện tích $b-$ thì tỉ lệ số cation : số anion $= b : a$ (rút gọn).\n\n##PP Viết công thức hợp chất ion\nXác định điện tích mỗi ion theo số electron nhường (dương) hoặc nhận (âm).\nTìm số cation và số anion để tổng điện tích dương bằng tổng điện tích âm.\nViết công thức: cation trước, anion sau, chỉ số là số ion, bỏ chỉ số 1.\n\n##CY Lỗi hay mắc\nChỉ số lấy từ tỉ lệ số ion; $\\mathrm{Al^{3+}}$ và $\\mathrm{Cl^-}$ tạo $\\mathrm{AlCl_3}$ (3 ion $\\mathrm{Cl^-}$), không đổi vị trí chỉ số thành $\\mathrm{Al_3Cl}$.\nĐiện tích bằng nhau về độ lớn thì tỉ lệ 1:1, không viết $\\mathrm{Ca_2O_2}$.",
+     "vi_du": "##VD\nNguyên tử potassium (K) nhường 1 electron, nguyên tử chlorine (Cl) nhận 1 electron. Viết công thức hợp chất ion tạo thành giữa hai nguyên tử này.\n\nBài giải:\nK nhường 1 electron tạo $\\mathrm{K^+}$; Cl nhận 1 electron tạo $\\mathrm{Cl^-}$.\nHai ion có điện tích bằng nhau về độ lớn nên kết hợp theo tỉ lệ $1:1$.\nCông thức hợp chất là $\\mathrm{KCl}$.\n\n##VD\nNguyên tử aluminium (Al) nhường 3 electron, nguyên tử chlorine (Cl) nhận 1 electron. Viết công thức hợp chất ion tạo thành giữa hai nguyên tử này.\n\nBài giải:\nAl nhường 3 electron tạo $\\mathrm{Al^{3+}}$; Cl nhận 1 electron tạo $\\mathrm{Cl^-}$.\nĐể trung hòa điện cần 3 ion $\\mathrm{Cl^-}$ (tổng $3-$) cho 1 ion $\\mathrm{Al^{3+}}$.\nCông thức hợp chất là $\\mathrm{AlCl_3}$."
+    },
+    {
+     "dang_id": "KDB00704",
+     "thu_tu": 7,
+     "ten": "Trình bày quá trình hình thành hợp chất ion từ một cặp nguyên tử cho trước",
+     "mo_ta": "Đề cho số electron lớp ngoài cùng của hai nguyên tử (một kim loại, một phi kim), yêu cầu trình bày quá trình hình thành liên kết ion giữa chúng và viết công thức hợp chất ion tạo thành.\nLàm bằng cách xác định nguyên tử nào nhường, nguyên tử nào nhận bao nhiêu electron, viết hai ion, chọn tỉ lệ ion để tổng điện tích bằng 0, viết công thức.\nBiến thể: tỉ lệ 1:1 (KF, LiCl) hoặc khác 1:1 (CaF2, K2S, Li2O, BeCl2).\nLưu ý: đề đã cho sẵn số electron nhường, nhận và chỉ yêu cầu chọn hoặc viết công thức ⇒ thuộc dạng \"Mô tả quá trình hình thành hợp chất ion cụ thể\".",
+     "ly_thuyet": "##TC Quá trình hình thành liên kết ion\nNguyên tử kim loại có ít electron ngoài cùng nhường electron tạo cation; nguyên tử phi kim có nhiều electron ngoài cùng nhận electron tạo anion.\nSố electron nhận của phi kim là $8 - n$ (n là số electron ngoài cùng).\nCation và anion hút nhau bằng lực hút tĩnh điện tạo hợp chất ion trung hòa về điện.\n\n##PP Trình bày quá trình hình thành liên kết ion\nTừ số electron ngoài cùng, xác định nguyên tử nào nhường electron (tạo cation), nguyên tử nào nhận electron (tạo anion) và số electron tương ứng.\nViết hai ion với điện tích tương ứng.\nChọn số ion mỗi loại để tổng điện tích dương bằng tổng điện tích âm.\nViết công thức hợp chất ion, kèm giải thích các ion hút nhau bằng lực hút tĩnh điện.\n\n##CY Lỗi hay mắc\nNếu số electron nhường của một nguyên tử không bằng số electron cần nhận (như K và S) thì cần nhiều nguyên tử của một bên: 2 nguyên tử K cho 1 nguyên tử S.\nPhải nêu đủ quá trình (nhường, nhận, hút nhau) chứ không chỉ viết công thức.",
+     "vi_du": "##VD\nNguyên tử lithium (Li) có 1 electron ở lớp ngoài cùng, nguyên tử chlorine (Cl) có 7 electron ở lớp ngoài cùng. Trình bày quá trình hình thành liên kết ion giữa hai nguyên tử này và viết công thức hợp chất ion tạo thành.\n\nBài giải:\nNguyên tử Li có 1 electron ở lớp ngoài cùng nên nhường 1 electron, tạo thành ion $\\mathrm{Li^+}$.\nNguyên tử Cl có 7 electron ở lớp ngoài cùng nên nhận 1 electron, tạo thành ion $\\mathrm{Cl^-}$.\nHai ion mang điện tích trái dấu, bằng nhau về độ lớn, hút nhau bằng lực hút tĩnh điện theo tỉ lệ $1:1$.\nCông thức hợp chất ion là $\\mathrm{LiCl}$.\n\n##VD\nNguyên tử calcium (Ca) có 2 electron ở lớp ngoài cùng, nguyên tử fluorine (F) có 7 electron ở lớp ngoài cùng. Trình bày quá trình hình thành liên kết ion giữa hai nguyên tử này và viết công thức hợp chất ion tạo thành.\n\nBài giải:\nNguyên tử Ca có 2 electron ở lớp ngoài cùng nên nhường 2 electron, tạo thành ion $\\mathrm{Ca^{2+}}$.\nMỗi nguyên tử F có 7 electron ở lớp ngoài cùng nên nhận 1 electron, tạo thành ion $\\mathrm{F^-}$.\nĐể trung hòa điện, cần 2 nguyên tử F nhận electron từ 1 nguyên tử Ca; 2 ion $\\mathrm{F^-}$ hút 1 ion $\\mathrm{Ca^{2+}}$ bằng lực hút tĩnh điện.\nCông thức hợp chất ion là $\\mathrm{CaF_2}$."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00316",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Liên kết Hóa học",
+   "nhom": "LIÊN KẾT CỘNG HÓA TRỊ",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nLiên kết cộng hóa trị là liên kết tạo bởi các cặp electron dùng chung giữa các nguyên tử, thường giữa các nguyên tử phi kim; mỗi nguyên tử góp 1 electron cho mỗi cặp.\nMột cặp electron dùng chung tạo liên kết đơn, hai cặp tạo liên kết đôi, ba cặp tạo liên kết ba.\nCông thức electron biểu diễn các cặp electron dùng chung; công thức cấu tạo thay mỗi cặp bằng một gạch nối, như $\\mathrm{H-H}$, $\\mathrm{O=O}$, $\\mathrm{N \\equiv N}$.\nChất cộng hóa trị có thể ở thể rắn, lỏng hoặc khí; nhiệt độ nóng chảy và sôi thường thấp; ở trạng thái tinh khiết thường không dẫn điện.\n\n##PP 2. Các bước làm bài\nXác định số electron ngoài cùng và số electron còn thiếu để đủ 8 (hydrogen thiếu 1) của từng nguyên tử.\nXác định số cặp electron dùng chung giữa các nguyên tử, từ đó biết liên kết đơn, đôi hay ba.\nTính tổng số cặp electron dùng chung hoặc số liên kết theo yêu cầu.\nViết công thức electron hoặc công thức cấu tạo nếu đề yêu cầu.\n\n##CY 3. Lưu ý\nLiên kết đôi tính 2 cặp, liên kết ba tính 3 cặp.\nMột số cặp electron có thể không tham gia liên kết (cặp electron riêng) và không vẽ thành gạch nối.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB00705",
+     "thu_tu": 1,
+     "ten": "Khái niệm liên kết cộng hóa trị, cặp electron dùng chung",
+     "mo_ta": "Đề hỏi khái niệm về liên kết cộng hóa trị: cặp electron dùng chung, liên kết đơn, đôi, ba, loại nguyên tố tạo liên kết, phân tử đơn chất hay hợp chất.\nLàm bằng cách nhớ định nghĩa và số cặp electron ứng với từng loại liên kết, không tính toán.\nBiến thể: số cặp electron dùng chung có thể là 1, 2, 3; gọi tên liên kết tạo bởi 1 hoặc 3 cặp; cặp electron được hình thành thế nào; nguyên tử tham gia là phi kim.\nLưu ý: đề cho một phân tử cụ thể và hỏi số cặp electron dùng chung ⇒ thuộc dạng \"Xác định số cặp electron dùng chung trong phân tử cụ thể\".",
+     "ly_thuyet": "##TC Liên kết cộng hóa trị\nLiên kết cộng hóa trị được tạo thành giữa các nguyên tử phi kim bằng cách góp chung electron.\nMỗi cặp electron dùng chung gồm 1 electron của mỗi nguyên tử.\nMột cặp electron dùng chung tạo liên kết đơn; hai cặp tạo liên kết đôi; ba cặp tạo liên kết ba.\nLiên kết cộng hóa trị có thể tạo phân tử đơn chất (như $\\mathrm{H_2}$, $\\mathrm{O_2}$) hoặc phân tử hợp chất (như $\\mathrm{H_2O}$, $\\mathrm{CO_2}$).\n\n##CY Lỗi hay mắc\nKhông nhầm với liên kết ion (do kim loại nhường electron cho phi kim).\nSố cặp electron dùng chung giữa hai nguyên tử chỉ là 1, 2 hoặc 3, tùy từng cặp nguyên tử.",
+     "vi_du": "##VD\nLiên kết được tạo thành từ một cặp electron dùng chung gọi là\nA. liên kết đôi.\nB. liên kết ion.\nC. liên kết đơn.\nD. liên kết ba.\n\nBài giải:\nMột cặp electron dùng chung tạo thành một liên kết đơn giữa hai nguyên tử.\nLiên kết đôi gồm 2 cặp, liên kết ba gồm 3 cặp; liên kết ion không có cặp electron dùng chung.\nChọn C.\n\n##VD\nPhân tử được hình thành bởi liên kết cộng hóa trị có thể là\nA. chỉ hình thành giữa hai nguyên tử kim loại.\nB. phân tử đơn chất hoặc phân tử hợp chất, đều gồm các nguyên tử phi kim liên kết với nhau.\nC. chỉ có thể là phân tử hợp chất.\nD. chỉ có thể là phân tử đơn chất.\n\nBài giải:\nLiên kết cộng hóa trị hình thành giữa các nguyên tử phi kim, nên A sai.\nHai nguyên tử của cùng một nguyên tố phi kim tạo phân tử đơn chất; các nguyên tử phi kim khác nguyên tố tạo phân tử hợp chất.\nVậy C và D sai vì đều giới hạn chỉ một loại.\nChọn B."
+    },
+    {
+     "dang_id": "KDB00706",
+     "thu_tu": 2,
+     "ten": "Xác định số cặp electron dùng chung trong phân tử cụ thể",
+     "mo_ta": "Đề cho tên và thành phần một phân tử (như $\\mathrm{NH_3}$, $\\mathrm{O_2}$, $\\mathrm{CO_2}$), yêu cầu chọn số cặp electron dùng chung (trắc nghiệm).\nLàm bằng cách xác định loại liên kết giữa các nguyên tử (đơn, đôi, ba) rồi cộng số cặp electron dùng chung.\nBiến thể: phân tử toàn liên kết đơn ($\\mathrm{H_2}$, $\\mathrm{NH_3}$, $\\mathrm{CH_4}$); phân tử có liên kết đôi ($\\mathrm{O_2}$, $\\mathrm{CO_2}$); phân tử có liên kết ba ($\\mathrm{N_2}$).\nLưu ý: cùng kiểu đề nhưng yêu cầu điền kết quả ngắn ⇒ thuộc dạng \"Xác định số cặp electron dùng chung trong phân tử cụ thể\" (dạng trả lời ngắn); đề hỏi số liên kết đơn trong công thức cấu tạo ⇒ thuộc dạng \"Công thức electron, công thức cấu tạo và liên kết đơn/đôi/ba\".",
+     "ly_thuyet": "##TC Số cặp electron dùng chung\nMỗi nguyên tử cần đủ 8 electron ở lớp ngoài cùng (hydrogen cần 2) nên góp chung electron với nguyên tử khác.\nSố cặp electron dùng chung giữa hai nguyên tử: liên kết đơn có 1 cặp, liên kết đôi có 2 cặp, liên kết ba có 3 cặp.\nTổng số cặp dùng chung của phân tử bằng tổng số cặp của mọi liên kết trong phân tử.\n\n##PP Tính số cặp electron dùng chung\nXác định số electron ngoài cùng của mỗi nguyên tử và số electron còn thiếu để đủ 8 (hydrogen thiếu 1).\nXác định số cặp dùng chung giữa mỗi cặp nguyên tử sao cho mỗi nguyên tử đủ electron.\nCộng số cặp của tất cả các liên kết để được tổng số cặp dùng chung của phân tử.\n\n##CY Lỗi hay mắc\nLiên kết đôi tính 2 cặp, liên kết ba tính 3 cặp, không tính mỗi liên kết là 1 cặp.\nTrong $\\mathrm{CO_2}$ có 2 liên kết đôi nên có $2 \\times 2 = 4$ cặp electron dùng chung.",
+     "vi_du": "##VD\nPhân tử hydrogen ($\\mathrm{H_2}$) được hình thành từ hai nguyên tử hydrogen góp chung electron với nhau. Số cặp electron dùng chung trong phân tử hydrogen là\nA. 1\nB. 2\nC. 3\nD. 4\n\nBài giải:\nMỗi nguyên tử hydrogen có 1 electron và cần thêm 1 electron để đạt cấu hình bền (2 electron).\nHai nguyên tử góp chung 1 cặp electron, tạo 1 liên kết đơn.\nVậy có 1 cặp electron dùng chung.\nChọn A.\n\n##VD\nPhân tử carbon dioxide ($\\mathrm{CO_2}$) gồm một nguyên tử carbon liên kết với hai nguyên tử oxygen. Số cặp electron dùng chung trong phân tử carbon dioxide là\nA. 2\nB. 4\nC. 6\nD. 8\n\nBài giải:\nNguyên tử carbon có 4 electron ngoài cùng, mỗi nguyên tử oxygen có 6 electron ngoài cùng nên cần thêm 2 electron.\nCarbon tạo liên kết đôi với mỗi nguyên tử oxygen, mỗi liên kết đôi gồm 2 cặp electron dùng chung.\nTổng số cặp electron dùng chung là $2 \\times 2 = 4$.\nChọn B."
+    },
+    {
+     "dang_id": "KDB00707",
+     "thu_tu": 3,
+     "ten": "Công thức electron, công thức cấu tạo và liên kết đơn/đôi/ba",
+     "mo_ta": "Đề cho công thức cấu tạo hoặc công thức electron của một phân tử (hoặc cho biết các liên kết đều là liên kết đơn), yêu cầu chọn số liên kết đơn, ý nghĩa của gạch nối hoặc số cặp electron dùng chung (trắc nghiệm).\nLàm bằng cách đếm số gạch nối trong công thức cấu tạo (mỗi gạch là một cặp electron dùng chung).\nBiến thể: số liên kết đơn trong công thức cấu tạo; ý nghĩa của kí hiệu gạch nối; số cặp electron dùng chung trong công thức electron.\nLưu ý: đề chỉ cho tên phân tử đơn giản và hỏi số cặp electron dùng chung mà không nhắc công thức cấu tạo ⇒ thuộc dạng \"Xác định số cặp electron dùng chung trong phân tử cụ thể\".",
+     "ly_thuyet": "##TC Công thức electron và công thức cấu tạo\nCông thức electron biểu diễn các electron lớp ngoài cùng, trong đó các cặp electron dùng chung nằm giữa hai nguyên tử.\nCông thức cấu tạo thay mỗi cặp electron dùng chung bằng một gạch nối: một gạch là liên kết đơn, hai gạch là liên kết đôi, ba gạch là liên kết ba.\nMỗi liên kết đơn ứng với 1 cặp electron dùng chung.\n\n##PP Đếm liên kết từ công thức\nXác định các nguyên tử liên kết với nhau và loại liên kết giữa từng cặp (đề thường cho sẵn).\nĐếm số gạch nối (liên kết đơn) trong công thức cấu tạo.\nQuy đổi: số liên kết đơn bằng số cặp electron dùng chung nếu mọi liên kết là liên kết đơn.\n\n##CY Lỗi hay mắc\nMột nguyên tử trung tâm liên kết với n nguyên tử khác bằng liên kết đơn thì có n liên kết đơn (như $\\mathrm{CCl_4}$ có 4).\nGạch nối chỉ biểu diễn cặp electron dùng chung, không biểu diễn liên kết ion.",
+     "vi_du": "##VD\nCông thức cấu tạo của phân tử chlorine ($\\mathrm{Cl_2}$) được viết là $\\mathrm{Cl-Cl}$. Kí hiệu '$\\mathrm{-}$' trong công thức này biểu diễn\nA. 1 liên kết ion.\nB. 1 liên kết đơn, tương ứng với 1 cặp electron dùng chung.\nC. 1 liên kết đôi, tương ứng với 2 cặp electron dùng chung.\nD. 1 liên kết ba, tương ứng với 3 cặp electron dùng chung.\n\nBài giải:\nTrong công thức cấu tạo, mỗi gạch nối biểu diễn một cặp electron dùng chung.\nCông thức $\\mathrm{Cl-Cl}$ chỉ có một gạch nối nên biểu diễn 1 liên kết đơn, ứng với 1 cặp electron dùng chung.\nChọn B.\n\n##VD\nPhân tử carbon tetrachloride ($\\mathrm{CCl_4}$) gồm một nguyên tử carbon liên kết với bốn nguyên tử chlorine, mỗi liên kết đều là liên kết đơn. Công thức cấu tạo của phân tử này có tổng cộng bao nhiêu liên kết đơn?\nA. 2\nB. 3\nC. 4\nD. 8\n\nBài giải:\nNguyên tử carbon liên kết với 4 nguyên tử chlorine, mỗi liên kết là liên kết đơn.\nMỗi nguyên tử chlorine tạo 1 liên kết đơn với carbon nên công thức cấu tạo có 4 gạch nối.\nVậy có 4 liên kết đơn.\nChọn C."
+    },
+    {
+     "dang_id": "KDB00708",
+     "thu_tu": 4,
+     "ten": "Nhận biết tính chất vật lí của chất cộng hóa trị",
+     "mo_ta": "Đề hỏi tính chất vật lí của chất cộng hóa trị: thể tồn tại ở nhiệt độ thường, nhiệt độ nóng chảy và sôi, khả năng dẫn điện, so sánh với hợp chất ion.\nLàm bằng cách nhớ tính chất đặc trưng, không tính toán.\nBiến thể: thể rắn, lỏng, khí; nhiệt độ nóng chảy và sôi thấp hơn hợp chất ion; tinh khiết không dẫn điện; một số chất tan trong nước tạo dung dịch dẫn điện.\nLưu ý: đề hỏi tính chất của hợp chất ion hoặc so sánh nhiều mặt hai loại chất ⇒ thuộc dạng \"Nhận biết tính chất vật lí của hợp chất ion\" hoặc \"Phân biệt qua tính chất vật lí của hợp chất tạo thành\".",
+     "ly_thuyet": "##TC Tính chất vật lí của chất cộng hóa trị\nỞ nhiệt độ thường, chất cộng hóa trị có thể ở thể rắn, lỏng hoặc khí, tùy từng chất.\nNhiệt độ nóng chảy và nhiệt độ sôi thường thấp hơn hợp chất ion, vì lực tương tác giữa các phân tử yếu hơn lực hút giữa các ion.\nỞ trạng thái tinh khiết thường không dẫn điện vì không có ion tự do.\nMột số chất cộng hóa trị khi tan trong nước phân li hoặc tương tác với nước tạo ion nên dung dịch dẫn điện; không phải mọi chất đều như vậy.\n\n##CY Lỗi hay mắc\nKhông có thể tồn tại cố định: chất cộng hóa trị không luôn là thể khí hay thể rắn.\nKhông nói mọi chất cộng hóa trị tan trong nước đều tạo ion.",
+     "vi_du": "##VD\nỞ nhiệt độ thường, các chất cộng hóa trị có thể tồn tại ở những thể nào?\nA. Chỉ tồn tại ở thể lỏng.\nB. Chỉ tồn tại ở thể rắn.\nC. Có thể tồn tại ở thể rắn, lỏng hoặc khí, tùy chất.\nD. Chỉ tồn tại ở thể khí.\n\nBài giải:\nLực tương tác giữa các phân tử cộng hóa trị phụ thuộc từng chất nên thể tồn tại đa dạng.\nCó chất ở thể rắn, có chất ở thể lỏng, có chất ở thể khí.\nCác phương án A, B, D giới hạn chỉ một thể nên sai.\nChọn C.\n\n##VD\nSo với nhiều hợp chất ion, các chất cộng hóa trị thường có đặc điểm nào sau đây về nhiệt độ nóng chảy và nhiệt độ sôi?\nA. Cao hơn.\nB. Bằng nhau.\nC. Thấp hơn.\nD. Không xác định được.\n\nBài giải:\nLực tương tác giữa các phân tử trong chất cộng hóa trị thường yếu hơn lực hút tĩnh điện giữa các ion trong hợp chất ion.\nCần ít năng lượng hơn để phá các lực này nên nhiệt độ nóng chảy và nhiệt độ sôi của chất cộng hóa trị thường thấp hơn.\nChọn C."
+    },
+    {
+     "dang_id": "KDB00709",
+     "thu_tu": 5,
+     "ten": "Xác định số cặp electron dùng chung trong phân tử cụ thể",
+     "mo_ta": "Đề cho tên và thành phần một phân tử (như $\\mathrm{H_2S}$, $\\mathrm{F_2}$, $\\mathrm{CS_2}$, $\\mathrm{SiH_4}$), yêu cầu điền số cặp electron dùng chung (trả lời ngắn).\nLàm bằng cách xác định loại liên kết giữa các nguyên tử (đơn, đôi, ba) rồi cộng số cặp electron dùng chung.\nBiến thể: phân tử toàn liên kết đơn; phân tử có liên kết đôi (đề cho sẵn); phân tử đơn chất hai nguyên tử.\nLưu ý: cùng kiểu đề nhưng có 4 phương án trắc nghiệm ⇒ thuộc dạng \"Xác định số cặp electron dùng chung trong phân tử cụ thể\" (trắc nghiệm).",
+     "ly_thuyet": "##TC Số cặp electron dùng chung\nMỗi nguyên tử cần đủ 8 electron ở lớp ngoài cùng (hydrogen cần 2) nên góp chung electron với nguyên tử khác.\nLiên kết đơn có 1 cặp electron dùng chung, liên kết đôi có 2 cặp, liên kết ba có 3 cặp.\nTổng số cặp dùng chung của phân tử là tổng số cặp của mọi liên kết.\n\n##PP Tính số cặp electron dùng chung\nXác định số electron còn thiếu của mỗi nguyên tử để đủ 8 (hydrogen thiếu 1).\nXác định loại liên kết giữa từng cặp nguyên tử (đề có thể cho sẵn).\nCộng số cặp của các liên kết và ghi kết quả là một số.\n\n##CY Lưu ý\nLiên kết đôi tính 2 cặp: $\\mathrm{CS_2}$ có 2 liên kết đôi nên có 4 cặp.\nỞ dạng trả lời ngắn chỉ cần ghi số (không kèm đơn vị).",
+     "vi_du": "##VD\nPhân tử hydrogen sulfide ($\\mathrm{H_2S}$) gồm một nguyên tử sulfur liên kết với hai nguyên tử hydrogen. Số cặp electron dùng chung trong phân tử hydrogen sulfide là bao nhiêu?\n\nBài giải:\nNguyên tử sulfur có 6 electron ngoài cùng, cần thêm 2 electron; mỗi nguyên tử hydrogen cần thêm 1 electron.\nSulfur góp chung 1 electron với mỗi nguyên tử hydrogen, tạo 2 liên kết đơn.\nMỗi liên kết đơn có 1 cặp electron dùng chung nên có 2 cặp.\n\n##VD\nPhân tử carbon disulfide ($\\mathrm{CS_2}$) gồm một nguyên tử carbon liên kết với hai nguyên tử sulfur, mỗi liên kết là liên kết đôi. Số cặp electron dùng chung trong phân tử carbon disulfide là bao nhiêu?\n\nBài giải:\nPhân tử có 2 liên kết đôi giữa carbon và hai nguyên tử sulfur.\nMỗi liên kết đôi gồm 2 cặp electron dùng chung.\nTổng số cặp electron dùng chung là $2 \\times 2 = 4$."
+    },
+    {
+     "dang_id": "KDB00710",
+     "thu_tu": 6,
+     "ten": "Công thức electron, công thức cấu tạo và liên kết đơn/đôi/ba",
+     "mo_ta": "Đề cho công thức cấu tạo hoặc công thức electron của một phân tử (hoặc cho biết các liên kết đều là liên kết đơn), yêu cầu điền số liên kết đơn hoặc số cặp electron dùng chung (trả lời ngắn).\nLàm bằng cách đếm số gạch nối trong công thức cấu tạo, mỗi gạch là một cặp electron dùng chung.\nBiến thể: công thức cấu tạo có một gạch (H−F, I−I); phân tử một nguyên tử trung tâm liên kết đơn với 2, 3, 4 nguyên tử (OCl2, PF3, SiCl4).\nLưu ý: cùng kiểu đề nhưng có 4 phương án ⇒ thuộc dạng \"Công thức electron, công thức cấu tạo và liên kết đơn/đôi/ba\" (trắc nghiệm).",
+     "ly_thuyet": "##TC Công thức electron và công thức cấu tạo\nCông thức electron biểu diễn các cặp electron dùng chung giữa các nguyên tử.\nCông thức cấu tạo thay mỗi cặp electron dùng chung bằng một gạch nối: một gạch là liên kết đơn, hai gạch là liên kết đôi, ba gạch là liên kết ba.\nMỗi liên kết đơn ứng với 1 cặp electron dùng chung.\n\n##PP Đếm liên kết từ công thức\nXác định nguyên tử trung tâm và số nguyên tử liên kết với nó (hoặc đếm gạch nối).\nMỗi liên kết đơn tính là 1; cộng lại thành tổng số liên kết đơn.\nNếu hỏi số cặp electron dùng chung của phân tử toàn liên kết đơn thì bằng số liên kết đơn.\n\n##CY Lưu ý\nChỉ ghi một số; không cộng thêm cặp electron không tham gia liên kết.\nMỗi nguyên tử liên kết với nguyên tử trung tâm là một liên kết đơn.",
+     "vi_du": "##VD\nCông thức cấu tạo của phân tử hydrogen fluoride được viết là $\\mathrm{H-F}$. Công thức này biểu diễn bao nhiêu liên kết đơn giữa hai nguyên tử?\n\nBài giải:\nCông thức cấu tạo $\\mathrm{H-F}$ có một gạch nối.\nMỗi gạch nối biểu diễn một liên kết đơn giữa nguyên tử hydrogen và nguyên tử fluorine.\nVậy công thức biểu diễn 1 liên kết đơn.\n\n##VD\nPhân tử silicon tetrachloride ($\\mathrm{SiCl_4}$) gồm một nguyên tử silicon liên kết với bốn nguyên tử chlorine, mỗi liên kết đều là liên kết đơn. Công thức electron của phân tử này có tổng cộng bao nhiêu cặp electron dùng chung?\n\nBài giải:\nNguyên tử silicon liên kết đơn với 4 nguyên tử chlorine nên có 4 liên kết đơn.\nMỗi liên kết đơn ứng với 1 cặp electron dùng chung.\nVậy có tổng cộng 4 cặp electron dùng chung."
+    },
+    {
+     "dang_id": "KDB00711",
+     "thu_tu": 7,
+     "ten": "Trình bày quá trình hình thành liên kết cộng hóa trị và biểu diễn công thức",
+     "mo_ta": "Đề cho thành phần một phân tử cộng hóa trị (thường có số electron ngoài cùng), yêu cầu trình bày quá trình hình thành liên kết cộng hóa trị và viết công thức cấu tạo (tự luận).\nLàm bằng cách nêu số electron mỗi nguyên tử cần thêm, các nguyên tử góp chung mấy cặp, tạo liên kết đơn, đôi hay ba, rồi viết công thức cấu tạo.\nBiến thể: phân tử hai nguyên tử (HI, Br2); phân tử một nguyên tử trung tâm liên kết với 2, 3, 4 nguyên tử (SCl2, NF3, SF2, CF4).\nLưu ý: đề chỉ hỏi số cặp electron dùng chung hoặc số liên kết đơn, không yêu cầu trình bày quá trình ⇒ thuộc dạng \"Xác định số cặp electron dùng chung trong phân tử cụ thể\" hoặc \"Công thức electron, công thức cấu tạo và liên kết đơn/đôi/ba\".",
+     "ly_thuyet": "##TC Quá trình hình thành liên kết cộng hóa trị\nNguyên tử phi kim cần đủ 8 electron ở lớp ngoài cùng (hydrogen cần 2); mỗi nguyên tử góp chung electron để cùng đạt cấu hình bền.\nSố electron cần thêm của nguyên tử là $8 - n$ (n là số electron ngoài cùng), cũng là số cặp electron nó cần dùng chung.\nCông thức cấu tạo biểu diễn mỗi cặp electron dùng chung bằng một gạch nối.\n\n##PP Trình bày quá trình hình thành liên kết\nNêu số electron lớp ngoài cùng và số electron còn thiếu của từng nguyên tử.\nNêu số cặp electron mỗi nguyên tử góp chung với nguyên tử kia (mỗi nguyên tử góp 1 electron cho một cặp).\nKết luận loại liên kết (đơn, đôi, ba) và việc các nguyên tử đều đạt cấu hình bền.\nViết công thức cấu tạo bằng các gạch nối.\n\n##CY Lưu ý\nPhải trình bày quá trình bằng lời trước khi viết công thức cấu tạo.\nTrong $\\mathrm{NF_3}$, nitrogen còn 1 cặp electron riêng không tham gia liên kết, công thức cấu tạo chỉ vẽ 3 gạch nối.",
+     "vi_du": "##VD\nTrình bày quá trình hình thành liên kết cộng hóa trị trong phân tử hydrogen iodide ($\\mathrm{HI}$), gồm một nguyên tử hydrogen và một nguyên tử iodine. Viết công thức cấu tạo của phân tử này.\n\nBài giải:\nNguyên tử hydrogen có 1 electron, cần thêm 1 electron để đạt cấu hình bền giống helium (2 electron).\nNguyên tử iodine có 7 electron ở lớp ngoài cùng, cần thêm 1 electron để đủ 8 electron.\nHai nguyên tử góp chung 1 cặp electron, mỗi nguyên tử góp 1 electron; nhờ đó cả hai đều đạt cấu hình bền.\nLiên kết tạo thành là 1 liên kết đơn, công thức cấu tạo là $\\mathrm{H-I}$.\n\n##VD\nTrình bày quá trình hình thành liên kết cộng hóa trị trong phân tử sulfur dichloride ($\\mathrm{SCl_2}$), gồm một nguyên tử sulfur liên kết với hai nguyên tử chlorine. Viết công thức cấu tạo của phân tử này.\n\nBài giải:\nNguyên tử sulfur có 6 electron ở lớp ngoài cùng, cần thêm 2 electron để đủ 8.\nMỗi nguyên tử chlorine có 7 electron ở lớp ngoài cùng, cần thêm 1 electron.\nNguyên tử sulfur góp chung 1 cặp electron với mỗi nguyên tử chlorine, tạo 2 liên kết đơn $\\mathrm{S-Cl}$.\nNhờ đó sulfur và cả hai nguyên tử chlorine đều đạt đủ 8 electron ở lớp ngoài cùng.\nCông thức cấu tạo là $\\mathrm{Cl-S-Cl}$."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00312",
+   "chu_de": "Liên kết Hóa học",
+   "chuyen_de": "Phân tử - Đơn chất & Hợp chất",
+   "nhom": "Tìm khối lượng nguyên tử chưa biết từ khối lượng phân tử",
+   "nhom_ly_thuyet": "Khi tổng khối lượng phân tử đã biết, có thể tìm phần chưa biết bằng cách lập biểu thức tổng, trừ đi phần khối lượng đã biết rồi chia cho số nguyên tử của nguyên tố cần tìm nếu số đó lớn hơn 1.\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/940674a1-3027-4ac0-b402-bb6c50e9e320.png)\nCÁC BƯỚC GIẢI | 4 bước\nBƯỚC 1: Gọi khối lượng nguyên tử cần tìm và viết biểu thức khối lượng phân tử.\nBƯỚC 2: Thay khối lượng phân tử cùng các khối lượng nguyên tử đã biết.\nBƯỚC 3: Thực hiện phép tính ngược; nếu có nhiều nguyên tử chưa biết cùng loại, chia tiếp cho số nguyên tử đó.\nBƯỚC 4: Đối chiếu bảng khối lượng nguyên tử để xác định nguyên tố nếu đề yêu cầu.\nVÍ DỤ MINH HỌA\nĐề bài | Một oxide của sulfur có công thức $SO_3$ và khối lượng phân tử $80$ amu. Biết $O = 16$ amu. Tìm khối lượng nguyên tử S.\nLời giải | Gọi khối lượng nguyên tử S là A. Ta có $A + 3 \\times 16 = 80$.\nSuy ra $A = 80 - 48 = 32$ amu. Vậy khối lượng nguyên tử S là $32$ amu.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB00688",
+     "thu_tu": 1,
+     "ten": "Tìm khối lượng nguyên tử từ M phân tử",
+     "mo_ta": "Đề cho công thức của một hợp chất có nguyên tố chưa biết (ví dụ $XO_2$, $\\mathrm{YCl_3}$, $\\mathrm{H_2X}$), cho khối lượng phân tử, yêu cầu chọn khối lượng nguyên tử của nguyên tố đó (trắc nghiệm).\nLàm bằng cách lập biểu thức khối lượng phân tử, trừ phần khối lượng đã biết, chia cho số nguyên tử của nguyên tố cần tìm nếu chỉ số lớn hơn 1.\nBiến thể: nguyên tố chưa biết có chỉ số 1 hoặc chỉ số lớn hơn 1.\nLưu ý: đề yêu cầu tính bằng tự luận và nêu tên nguyên tố ⇒ thuộc dạng \"Tìm nguyên tử dựa vào khối lượng phân tử\"; đề cho khối lượng nguyên tử rồi tính khối lượng phân tử ⇒ thuộc dạng \"Tính M phân tử\".",
+     "ly_thuyet": "##TC Tìm khối lượng nguyên tử chưa biết\nKhối lượng phân tử bằng tổng khối lượng các nguyên tử trong phân tử, nên khi biết khối lượng phân tử và khối lượng các nguyên tử còn lại thì tìm được phần chưa biết.\nBiểu thức: khối lượng phân tử = (số nguyên tử X $\\times$ khối lượng nguyên tử X) + phần đã biết.\n\n##PP Tìm khối lượng nguyên tử X\nGọi khối lượng nguyên tử cần tìm là X và viết biểu thức khối lượng phân tử theo công thức đã cho.\nThay khối lượng phân tử và các khối lượng nguyên tử đã biết vào biểu thức.\nChuyển vế: lấy khối lượng phân tử trừ phần đã biết.\nNếu X có chỉ số lớn hơn 1 thì chia kết quả cho chỉ số đó; chọn đáp án khớp.\n\n##CY Lỗi hay mắc\nQuên nhân chỉ số của nguyên tố đã biết (như $2 \\times 35,5$ với $\\mathrm{Cl}$ trong $\\mathrm{MCl_2}$).\nQuên chia cho chỉ số khi nguyên tố chưa biết có chỉ số lớn hơn 1 (như $\\mathrm{Y_2O_3}$).\nCác phương án nhiễu thường lệch vài đơn vị so với đáp án đúng.",
+     "vi_du": "##VD\nHợp chất $XO_2$ có khối lượng phân tử là 60 amu ($O=16$). Khối lượng nguyên tử $X$ là\nA. 28 amu\nB. 32 amu\nC. 44 amu\nD. 12 amu\n\nBài giải:\nKhối lượng phân tử của $XO_2$ là $X + 2 \\times 16 = 60$.\nSuy ra $X = 60 - 32 = 28$ (amu).\nKhối lượng này ứng với silicon (Si).\nChọn A.\n\n##VD\nHợp chất $\\mathrm{YCl_3}$ có khối lượng phân tử $162,5$ amu (biết $\\mathrm{Cl} = 35,5$ amu). Khối lượng nguyên tử $\\mathrm{Y}$ là\nA. 58 amu\nB. 56 amu\nC. 54 amu\nD. 64 amu\n\nBài giải:\nKhối lượng phân tử của $\\mathrm{YCl_3}$ là $\\mathrm{Y} + 3 \\times 35,5 = 162,5$.\nSuy ra $\\mathrm{Y} = 162,5 - 106,5 = 56$ (amu).\nKhối lượng này ứng với iron (Fe).\nChọn B."
+    },
+    {
+     "dang_id": "KDB00689",
+     "thu_tu": 2,
+     "ten": "Tìm nguyên tử dựa vào khối lượng phân tử",
+     "mo_ta": "Đề cho công thức hợp chất có nguyên tố chưa biết (như $RO$, $MCl_2$, $XH_4$), cho khối lượng phân tử, yêu cầu tính khối lượng nguyên tử và thường cho biết nguyên tố đó có thể là gì (tự luận).\nLàm bằng cách lập biểu thức khối lượng phân tử, tính phần chưa biết, đối chiếu khối lượng nguyên tử để gọi tên nguyên tố.\nBiến thể: chỉ tính khối lượng nguyên tử; tính rồi nêu tên nguyên tố.\nLưu ý: đề dạng trắc nghiệm chọn khối lượng nguyên tử ⇒ thuộc dạng \"Tìm khối lượng nguyên tử từ M phân tử\".",
+     "ly_thuyet": "##TC Xác định nguyên tố từ khối lượng nguyên tử\nKhi tìm được khối lượng nguyên tử, đối chiếu với khối lượng nguyên tử đã biết để suy ra nguyên tố.\nMột số giá trị thường gặp: $\\mathrm{C} = 12$, $\\mathrm{O} = 16$, $\\mathrm{Mg} = 24$, $\\mathrm{S} = 32$, $\\mathrm{Fe} = 56$ (amu).\n\n##PP Tìm khối lượng nguyên tử và gọi tên nguyên tố\nViết biểu thức khối lượng phân tử theo công thức hợp chất, gọi khối lượng nguyên tử cần tìm là ẩn.\nThay số và tính phần chưa biết bằng phép trừ; chia cho chỉ số nếu ẩn có chỉ số lớn hơn 1.\nĐối chiếu kết quả với khối lượng nguyên tử đã biết để kết luận nguyên tố.\n\n##CY Lưu ý\nNhớ nhân chỉ số của nguyên tố đã biết khi trừ (như $2 \\times 35,5$ trong $MCl_2$).\nGhi đơn vị amu và nêu rõ nguyên tố tìm được nếu đề hỏi.",
+     "vi_du": "##VD\nHợp chất $RO$ có khối lượng phân tử 40 amu ($O = 16$). Tính khối lượng nguyên tử R và cho biết R có thể là nguyên tố nào.\n\nBài giải:\nKhối lượng phân tử của $RO$ là $R + 16 = 40$.\nSuy ra $R = 40 - 16 = 24$ (amu).\nKhối lượng này gần với magnesium ($Mg = 24$ amu), nên R có thể là magnesium.\n\n##VD\nHợp chất $MCl_2$ có khối lượng phân tử 127 amu ($Cl = 35,5$). Tính khối lượng nguyên tử M và cho biết M có thể là nguyên tố nào.\n\nBài giải:\nKhối lượng phân tử của $MCl_2$ là $M + 2 \\times 35,5 = 127$.\nSuy ra $M = 127 - 71 = 56$ (amu).\nKhối lượng này gần với iron ($Fe = 56$ amu), nên M có thể là iron."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K07020101050",
+   "nhom_id": "KNB00307",
+   "loai": "trac_nghiem",
+   "de": "Đơn chất là chất được tạo nên từ",
+   "lua_chon": [
+    "hai nguyên tố hóa học trở lên",
+    "một nguyên tố hóa học",
+    "một nguyên tử duy nhất",
+    "nhiều chất trộn lẫn với nhau"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Đơn chất là chất do một nguyên tố hóa học tạo nên, dù phân tử có thể gồm 1 hay nhiều nguyên tử.\n\nVì sao các phương án khác sai:\n- A: Chất tạo nên từ hai nguyên tố trở lên là hợp chất.\n- C: Đơn chất có thể gồm nhiều nguyên tử, ví dụ O₂ có 2 nguyên tử O.\n- D: Nhiều chất trộn lẫn là hỗn hợp, không phải đơn chất."
+  },
+  {
+   "ma_cau": "K07020101051",
+   "nhom_id": "KNB00307",
+   "loai": "trac_nghiem",
+   "de": "Chất nào sau đây là đơn chất?",
+   "lua_chon": [
+    "H₂O",
+    "CO₂",
+    "NaCl",
+    "O₂"
+   ],
+   "dap_an": "D",
+   "loi_giai": "O₂ chỉ do một nguyên tố oxygen tạo nên nên là đơn chất.\n\nVì sao các phương án khác sai:\n- A: H₂O tạo từ 2 nguyên tố H và O nên là hợp chất.\n- B: CO₂ tạo từ 2 nguyên tố C và O nên là hợp chất.\n- C: NaCl tạo từ 2 nguyên tố Na và Cl nên là hợp chất."
+  },
+  {
+   "ma_cau": "K07020101052",
+   "nhom_id": "KNB00307",
+   "loai": "trac_nghiem",
+   "de": "Khí oxygen (O₂) được phân loại là gì?",
+   "lua_chon": [
+    "Hợp chất",
+    "Hỗn hợp",
+    "Nguyên tố hóa học",
+    "Đơn chất"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Đơn chất là chất tạo bởi một nguyên tố hóa học; O₂ chỉ gồm nguyên tử oxygen nên là đơn chất, dù phân tử có 2 nguyên tử.\n\nVì sao các phương án khác sai:\n- A: Hai nguyên tử trong phân tử O₂ đều là oxygen (cùng một nguyên tố), không đủ điều kiện là hợp chất.\n- B: Hỗn hợp gồm nhiều chất trộn lẫn, không phải khái niệm chỉ một chất như O₂.\n- C: Nguyên tố hóa học chỉ tập hợp nguyên tử cùng loại; O₂ là một chất cụ thể, tức đơn chất."
+  },
+  {
+   "ma_cau": "K07020101053",
+   "nhom_id": "KNB00307",
+   "loai": "trac_nghiem",
+   "de": "Chất nào sau đây là hợp chất?",
+   "lua_chon": [
+    "Nước (H₂O)",
+    "Khí nitrogen (N₂)",
+    "Không khí",
+    "Sắt (Fe)"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Nước tạo từ 2 nguyên tố H và O liên kết với nhau nên là hợp chất.\n\nVì sao các phương án khác sai:\n- B: N₂ chỉ do nguyên tố nitrogen tạo nên nên là đơn chất.\n- C: Không khí là hỗn hợp nhiều chất (N₂, O₂, CO₂…), không phải hợp chất.\n- D: Sắt chỉ do nguyên tố Fe tạo nên nên là đơn chất."
+  },
+  {
+   "ma_cau": "K07020101054",
+   "nhom_id": "KNB00307",
+   "loai": "trac_nghiem",
+   "de": "Vì sao nước (H₂O) là hợp chất còn khí hydrogen (H₂) là đơn chất?",
+   "lua_chon": [
+    "Vì hợp chất phải có từ 3 nguyên tử trở lên",
+    "Vì hợp chất luôn ở thể lỏng, đơn chất luôn ở thể khí",
+    "Vì H₂O tạo từ 2 nguyên tố, còn H₂ chỉ tạo từ 1 nguyên tố",
+    "Vì phân tử H₂ chỉ có 1 nguyên tử"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Phân tử H₂O có 2 nguyên tố (H, O) nên là hợp chất; phân tử H₂ chỉ có nguyên tố H nên là đơn chất.\n\nVì sao các phương án khác sai:\n- A: Phân biệt dựa vào số nguyên tố, không dựa vào số nguyên tử; ví dụ HCl chỉ có 2 nguyên tử vẫn là hợp chất.\n- B: Thể của chất không quyết định đơn chất hay hợp chất; CO₂ là hợp chất ở thể khí.\n- D: Phân tử H₂ có 2 nguyên tử H."
+  },
+  {
+   "ma_cau": "K07020101055",
+   "nhom_id": "KNB00307",
+   "loai": "trac_nghiem",
+   "de": "Phân tử ozone (O₃) gồm 3 nguyên tử oxygen liên kết với nhau. Vì sao ozone vẫn là đơn chất?",
+   "lua_chon": [
+    "Vì phân tử ozone có số nguyên tử là số lẻ",
+    "Vì ba nguyên tử trong phân tử đều cùng một nguyên tố oxygen",
+    "Vì ozone tồn tại ở thể khí",
+    "Vì ozone có trong khí quyển Trái Đất"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Đơn chất là chất do MỘT nguyên tố tạo nên; ba nguyên tử trong phân tử ozone đều là oxygen (cùng một nguyên tố) nên ozone là đơn chất, dù phân tử có 3 nguyên tử.\n\nVì sao các phương án khác sai:\n- A: Số nguyên tử chẵn hay lẻ không quyết định đơn chất hay hợp chất.\n- C: Thể của chất (rắn, lỏng, khí) không quyết định đơn chất hay hợp chất.\n- D: Nơi tồn tại của chất không quyết định đơn chất hay hợp chất."
+  },
+  {
+   "ma_cau": "K07020101056",
+   "nhom_id": "KNB00307",
+   "loai": "trac_nghiem",
+   "de": "Dãy nào sau đây gồm toàn đơn chất?",
+   "lua_chon": [
+    "H₂, H₂O, Fe",
+    "O₂, CO₂, N₂",
+    "H₂, O₂, Fe",
+    "Cl₂, HCl, Cu"
+   ],
+   "dap_an": "C",
+   "loi_giai": "H₂, O₂, Fe mỗi chất chỉ do một nguyên tố tạo nên nên đều là đơn chất.\n\nVì sao các phương án khác sai:\n- A: H₂O tạo từ 2 nguyên tố nên là hợp chất.\n- B: CO₂ tạo từ 2 nguyên tố nên là hợp chất.\n- D: HCl tạo từ 2 nguyên tố nên là hợp chất."
+  },
+  {
+   "ma_cau": "K07020101057",
+   "nhom_id": "KNB00307",
+   "loai": "trac_nghiem",
+   "de": "Dãy nào sau đây gồm toàn hợp chất?",
+   "lua_chon": [
+    "H₂O, NaCl, CO₂",
+    "O₂, NaCl, CO₂",
+    "H₂O, không khí, CO₂",
+    "NH₃, N₂, HCl"
+   ],
+   "dap_an": "A",
+   "loi_giai": "H₂O, NaCl, CO₂ mỗi chất đều tạo từ 2 nguyên tố nên đều là hợp chất.\n\nVì sao các phương án khác sai:\n- B: O₂ chỉ có nguyên tố oxygen nên là đơn chất, dù phân tử có 2 nguyên tử.\n- C: Không khí là hỗn hợp, không phải hợp chất.\n- D: N₂ chỉ có nguyên tố nitrogen nên là đơn chất."
+  },
+  {
+   "ma_cau": "K07020101058",
+   "nhom_id": "KNB00307",
+   "loai": "trac_nghiem",
+   "de": "Cho các chất: Fe, O₂, N₂, NaCl, H₂O, CO₂. Số đơn chất và số hợp chất lần lượt là bao nhiêu?",
+   "lua_chon": [
+    "1 và 5",
+    "2 và 4",
+    "4 và 2",
+    "3 và 3"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Đơn chất: Fe, O₂, N₂ (mỗi chất 1 nguyên tố); hợp chất: NaCl, H₂O, CO₂ (mỗi chất 2 nguyên tố) → 3 và 3.\n\nVì sao các phương án khác sai:\n- A: Em đã xếp O₂ và N₂ vào hợp chất vì có 2 nguyên tử; mỗi chất chỉ có 1 nguyên tố nên là đơn chất.\n- B: Em đã xếp nhầm một trong hai chất O₂, N₂ vào hợp chất; cả hai đều chỉ có 1 nguyên tố.\n- C: NaCl, H₂O, CO₂ đều có từ 2 nguyên tố nên đều là hợp chất; chỉ có 2 hợp chất là thiếu."
+  },
+  {
+   "ma_cau": "K07020101059",
+   "nhom_id": "KNB00307",
+   "loai": "trac_nghiem",
+   "de": "Cho các chất: Cl₂, HCl, Ag, AgCl. Số đơn chất trong dãy này là bao nhiêu?",
+   "lua_chon": [
+    "1",
+    "2",
+    "3",
+    "4"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Cl₂ và Ag chỉ do một nguyên tố tạo nên (đơn chất); HCl và AgCl do 2 nguyên tố tạo nên (hợp chất) nên có 2 đơn chất.\n\nVì sao các phương án khác sai:\n- A: Có 2 đơn chất là Cl₂ và Ag, không phải 1.\n- C: Chỉ có 2 đơn chất (Cl₂, Ag); HCl và AgCl là hợp chất vì có 2 nguyên tố.\n- D: Không phải cả 4 chất đều là đơn chất; HCl và AgCl có 2 nguyên tố nên là hợp chất."
+  },
+  {
+   "ma_cau": "K07020201032",
+   "nhom_id": "KNB00313",
+   "loai": "trac_nghiem",
+   "de": "Lớp electron ngoài cùng của nguyên tử neon (Z = 10) có bao nhiêu electron?",
+   "lua_chon": [
+    "2",
+    "8",
+    "10",
+    "18"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Neon xếp electron 2, 8: lớp ngoài cùng có 8 electron.\n\nVì sao các phương án khác sai:\n- A: 2 là số electron ở lớp thứ nhất của neon.\n- C: 10 là tổng số electron của neon.\n- D: 18 là tổng số electron của argon."
+  },
+  {
+   "ma_cau": "K07020201033",
+   "nhom_id": "KNB00313",
+   "loai": "trac_nghiem",
+   "de": "Lớp electron ngoài cùng của nguyên tử helium (Z = 2) có bao nhiêu electron?",
+   "lua_chon": [
+    "8",
+    "1",
+    "4",
+    "2"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Helium chỉ có 1 lớp với 2 electron; lớp này đã bão hòa nên helium bền.\n\nVì sao các phương án khác sai:\n- A: Không phải khí hiếm nào cũng có 8 electron lớp ngoài cùng; helium chỉ có 2.\n- B: Helium có 2 electron, đều ở lớp thứ nhất.\n- C: 4 là khối lượng nguyên tử của helium (amu), không phải số electron."
+  },
+  {
+   "ma_cau": "K07020201034",
+   "nhom_id": "KNB00313",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử của khí hiếm nào có 2 electron ở lớp ngoài cùng thay vì 8?",
+   "lua_chon": [
+    "Neon",
+    "Helium",
+    "Argon",
+    "Krypton"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Helium chỉ có 2 electron (cũng là lớp duy nhất), là ngoại lệ so với quy luật 8 electron lớp ngoài cùng của các khí hiếm khác.\n\nVì sao các phương án khác sai:\n- A: Neon có lớp ngoài cùng đủ 8 electron, không phải ngoại lệ.\n- C: Argon cũng có 8 electron ở lớp ngoài cùng như quy luật chung.\n- D: Krypton cũng tuân theo quy luật 8 electron ở lớp ngoài cùng."
+  },
+  {
+   "ma_cau": "K07020201035",
+   "nhom_id": "KNB00313",
+   "loai": "trac_nghiem",
+   "de": "Vì sao các khí hiếm hầu như không tham gia phản ứng hóa học?",
+   "lua_chon": [
+    "Chúng không có electron ở lớp ngoài cùng",
+    "Chúng không có hạt nhân bền",
+    "Lớp electron ngoài cùng đã đạt trạng thái bền",
+    "Chúng có quá ít electron toàn nguyên tử"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Lớp electron ngoài cùng của khí hiếm có 8 electron (helium có 2), đạt cấu hình bền vững nên khó nhường/nhận thêm electron để phản ứng.\n\nVì sao các phương án khác sai:\n- A: Sai, khí hiếm vẫn có electron ở lớp ngoài cùng (2 hoặc 8), chỉ là lớp đó đã bền.\n- B: Độ bền của hạt nhân không liên quan đến khả năng phản ứng hóa học của nguyên tử.\n- D: Số electron toàn nguyên tử không phải nguyên nhân; nguyên nhân là lớp ngoài cùng đã bền."
+  },
+  {
+   "ma_cau": "K07020201036",
+   "nhom_id": "KNB00313",
+   "loai": "trac_nghiem",
+   "de": "Mô hình nào sau đây là của một nguyên tử khí hiếm?",
+   "lua_chon": [
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07H020201-01-005-A.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07H020201-01-005-B.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07H020201-01-005-C.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07H020201-01-005-D.png)"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Khí hiếm có lớp ngoài cùng bão hòa; mô hình 2, 8, 8 (argon) có 8 electron lớp ngoài cùng.\n\nVì sao các phương án khác sai:\n- B: Lớp ngoài cùng có 7 electron, chưa bền; đây là chlorine (halogen).\n- C: Lớp thứ ba có 8 electron nhưng lớp ngoài cùng là lớp thứ tư chỉ có 1 electron; đây là potassium.\n- D: Lớp ngoài cùng chỉ có 2 electron và nguyên tử có 3 lớp; đây là magnesium, không phải helium."
+  },
+  {
+   "ma_cau": "K07020201037",
+   "nhom_id": "KNB00313",
+   "loai": "trac_nghiem",
+   "de": "Ở điều kiện thường, các khí hiếm tồn tại ở dạng nào?",
+   "lua_chon": [
+    "Phân tử gồm 2 nguyên tử, như O₂",
+    "Hợp chất với oxygen",
+    "Nguyên tử riêng rẽ",
+    "Ion mang điện tích dương"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Nguyên tử khí hiếm có lớp vỏ bền nên tồn tại ở dạng nguyên tử riêng rẽ.\n\nVì sao các phương án khác sai:\n- A: Nguyên tử khí hiếm đã bền nên không cần liên kết với nhau thành phân tử.\n- B: Khí hiếm hầu như không phản ứng nên không tồn tại ở dạng hợp chất với oxygen.\n- D: Nguyên tử khí hiếm không cần nhường electron nên không tạo ion."
+  },
+  {
+   "ma_cau": "K07020201038",
+   "nhom_id": "KNB00313",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử neon (Z = 10) rất khó tham gia phản ứng hóa học vì lí do nào?",
+   "lua_chon": [
+    "Neon có số electron là số chẵn",
+    "Neon là chất khí ở điều kiện thường",
+    "Lớp electron ngoài cùng có 8 electron, đã bền vững",
+    "Neon chỉ có 2 lớp electron"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Neon xếp 2, 8: lớp ngoài cùng đủ 8 electron, bền vững nên neon hầu như không phản ứng.\n\nVì sao các phương án khác sai:\n- A: Oxygen (8 electron) cũng có số electron chẵn nhưng phản ứng rất mạnh.\n- B: Oxygen, chlorine cũng là chất khí nhưng tham gia phản ứng dễ dàng.\n- D: Fluorine cũng có 2 lớp electron nhưng là phi kim rất hoạt động."
+  },
+  {
+   "ma_cau": "K07020201039",
+   "nhom_id": "KNB00313",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử argon (Z = 18) rất khó tham gia phản ứng hóa học vì lí do nào?",
+   "lua_chon": [
+    "Argon có số electron là số chẵn",
+    "Argon là chất khí ở điều kiện thường",
+    "Lớp electron ngoài cùng có 8 electron, đã bền vững",
+    "Argon chỉ có 3 lớp electron"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Argon xếp 2, 8, 8: lớp ngoài cùng đủ 8 electron, bền vững nên argon hầu như không phản ứng.\n\nVì sao các phương án khác sai:\n- A: Calcium cũng có số electron chẵn (20) nhưng vẫn phản ứng dễ dàng.\n- B: Chlorine, oxygen cũng là chất khí nhưng tham gia phản ứng dễ dàng.\n- D: Neon chỉ có 2 lớp electron nhưng cũng là khí hiếm bền."
+  },
+  {
+   "ma_cau": "K07020201040",
+   "nhom_id": "KNB00313",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử fluorine (2, 7) và nguyên tử neon (2, 8) khác nhau ở điểm nào khiến neon bền còn fluorine dễ phản ứng?",
+   "lua_chon": [
+    "Neon có nhiều electron hơn nên nặng hơn, bền hơn",
+    "Neon có lớp ngoài cùng đủ 8 electron, fluorine còn thiếu 1 electron",
+    "Neon có nhiều lớp electron hơn fluorine",
+    "Fluorine có hạt nhân kém bền hơn neon"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Neon có lớp ngoài cùng đủ 8 electron (bền); fluorine còn thiếu 1 electron nên dễ nhận thêm để đạt cấu hình bền, do đó dễ phản ứng hơn.\n\nVì sao các phương án khác sai:\n- A: Độ bền hóa học không phụ thuộc vào khối lượng hay số electron nhiều ít, mà vào lớp ngoài cùng đã đủ 8 hay chưa.\n- C: Cả fluorine và neon đều có 2 lớp electron (2,7 và 2,8), không khác nhau về số lớp.\n- D: Độ bền của hạt nhân không liên quan đến khả năng phản ứng hóa học."
+  },
+  {
+   "ma_cau": "K07020201041",
+   "nhom_id": "KNB00313",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử sodium (2, 8, 1) có xu hướng như thế nào để đạt lớp vỏ bền như khí hiếm?",
+   "lua_chon": [
+    "Nhường 1 electron",
+    "Nhận 1 electron",
+    "Nhận 7 electron",
+    "Nhường 8 electron"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Sodium nhường 1 electron lớp ngoài cùng, còn lại 2, 8 giống khí hiếm neon.\n\nVì sao các phương án khác sai:\n- B: Sodium là kim loại, có xu hướng nhường electron, không nhận.\n- C: Nhận 7 electron rất khó; sodium chỉ cần nhường 1 electron lớp ngoài cùng.\n- D: Chỉ nhường 1 electron lớp ngoài cùng, lớp 8 electron bên trong giữ nguyên."
+  },
+  {
+   "ma_cau": "K07020201042",
+   "nhom_id": "KNB00313",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử chlorine (2, 8, 7) có xu hướng như thế nào để đạt lớp vỏ bền như khí hiếm?",
+   "lua_chon": [
+    "Nhường 1 electron",
+    "Nhường 7 electron",
+    "Nhận 7 electron",
+    "Nhận 1 electron"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Chlorine nhận thêm 1 electron để lớp ngoài cùng đủ 8 (2, 8, 8), giống khí hiếm argon.\n\nVì sao các phương án khác sai:\n- A: Chlorine là phi kim, cần nhận thêm 1 electron chứ không nhường.\n- B: Nhường 7 electron rất khó; chlorine chỉ cần nhận thêm 1 electron.\n- C: Lớp ngoài cùng đã có 7 electron, chỉ cần thêm 1 để đủ 8."
+  },
+  {
+   "ma_cau": "K07020201043",
+   "nhom_id": "KNB00313",
+   "loai": "trac_nghiem",
+   "de": "Khi tạo liên kết ion, nguyên tử kim loại có xu hướng gì để đạt lớp vỏ bền như khí hiếm?",
+   "lua_chon": [
+    "Nhận thêm electron lớp ngoài cùng",
+    "Nhường proton trong hạt nhân",
+    "Dùng chung electron với nguyên tử khác",
+    "Nhường electron lớp ngoài cùng"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Nguyên tử kim loại có ít electron lớp ngoài cùng nên dễ nhường bớt electron để đạt cấu hình bền như khí hiếm gần nhất.\n\nVì sao các phương án khác sai:\n- A: Kim loại có ít electron lớp ngoài cùng nên có xu hướng NHƯỜNG, không phải nhận thêm.\n- B: Trong phản ứng hóa học, hạt nhân (proton, neutron) không thay đổi, chỉ electron di chuyển.\n- C: Dùng chung electron là đặc điểm của liên kết cộng hóa trị, không phải liên kết ion."
+  },
+  {
+   "ma_cau": "K07020201044",
+   "nhom_id": "KNB00313",
+   "loai": "trac_nghiem",
+   "de": "Khi tạo liên kết ion, nguyên tử phi kim có xu hướng gì để đạt lớp vỏ bền như khí hiếm?",
+   "lua_chon": [
+    "Nhận thêm electron lớp ngoài cùng",
+    "Nhường bớt electron lớp ngoài cùng",
+    "Nhận thêm proton vào hạt nhân",
+    "Góp chung electron với nguyên tử khác"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Phi kim có nhiều electron lớp ngoài cùng (5–7) nên có xu hướng nhận thêm electron cho đủ 8, đạt cấu hình bền như khí hiếm.\n\nVì sao các phương án khác sai:\n- B: Phi kim có nhiều electron lớp ngoài cùng (5–7) nên có xu hướng NHẬN thêm, không nhường.\n- C: Hạt nhân không thay đổi số proton trong phản ứng hóa học tạo liên kết.\n- D: Góp chung electron là đặc điểm của liên kết cộng hóa trị, không phải liên kết ion."
+  },
+  {
+   "ma_cau": "K07020201045",
+   "nhom_id": "KNB00313",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử oxygen (2, 6) có xu hướng như thế nào để đạt lớp vỏ bền như khí hiếm?",
+   "lua_chon": [
+    "Nhường 2 electron",
+    "Nhận 2 electron",
+    "Nhường 6 electron",
+    "Nhận 6 electron"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Oxygen nhận thêm 2 electron để lớp ngoài cùng đủ 8 (2, 8), giống khí hiếm neon.\n\nVì sao các phương án khác sai:\n- A: Oxygen là phi kim, cần nhận thêm electron chứ không nhường.\n- C: Nhường 6 electron rất khó; oxygen chỉ cần nhận thêm 2 electron.\n- D: 6 là số electron đang có ở lớp ngoài cùng; chỉ cần thêm 2 để đủ 8."
+  },
+  {
+   "ma_cau": "K07020201046",
+   "nhom_id": "KNB00313",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử magnesium (2, 8, 2) có xu hướng như thế nào để đạt lớp vỏ bền như khí hiếm?",
+   "lua_chon": [
+    "Nhường 2 electron",
+    "Nhận 2 electron",
+    "Nhận 6 electron",
+    "Nhường 8 electron"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Magnesium nhường 2 electron lớp ngoài cùng, còn lại 2, 8 giống khí hiếm neon.\n\nVì sao các phương án khác sai:\n- B: Magnesium là kim loại, có xu hướng nhường electron, không nhận.\n- C: Nhận 6 electron rất khó; magnesium chỉ cần nhường 2 electron lớp ngoài cùng.\n- D: Chỉ nhường 2 electron lớp ngoài cùng, lớp 8 electron bên trong giữ nguyên."
+  },
+  {
+   "ma_cau": "K07020201047",
+   "nhom_id": "KNB00313",
+   "loai": "trac_nghiem",
+   "de": "Vì sao nguyên tử sodium (2, 8, 1) dễ nhường 1 electron khi tham gia phản ứng?",
+   "lua_chon": [
+    "Vì sau khi nhận thêm 1 electron, sodium có 12 electron giống magnesium",
+    "Vì sau khi nhường 1 electron, sodium có 2 electron lớp ngoài cùng giống helium",
+    "Vì electron lớp ngoài cùng của sodium không mang điện",
+    "Vì sau khi nhường, lớp ngoài cùng còn lại có 8 electron giống khí hiếm neon"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Sodium nhường 1 electron lớp ngoài cùng → còn 2, 8, giống lớp vỏ bền của neon.\n\nVì sao các phương án khác sai:\n- A: Sodium nhường chứ không nhận electron; magnesium cũng không phải khí hiếm.\n- B: Sau khi nhường còn 2, 8: lớp ngoài cùng là lớp 2 với 8 electron, giống neon.\n- C: Mọi electron đều mang điện tích âm."
+  },
+  {
+   "ma_cau": "K07020201048",
+   "nhom_id": "KNB00313",
+   "loai": "trac_nghiem",
+   "de": "Vì sao nguyên tử potassium (2, 8, 8, 1) dễ nhường 1 electron khi tham gia phản ứng?",
+   "lua_chon": [
+    "Vì sau khi nhận thêm 1 electron, potassium có 20 electron giống calcium",
+    "Vì sau khi nhường, lớp ngoài cùng còn lại có 8 electron giống khí hiếm argon",
+    "Vì electron lớp ngoài cùng của potassium không mang điện",
+    "Vì sau khi nhường 1 electron, potassium có 18 electron giống neon"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Potassium nhường 1 electron lớp ngoài cùng → còn 2, 8, 8, giống lớp vỏ bền của khí hiếm argon.\n\nVì sao các phương án khác sai:\n- A: Potassium nhường chứ không nhận electron; calcium cũng không phải khí hiếm.\n- C: Mọi electron đều mang điện tích âm.\n- D: Potassium còn 18 electron sau khi nhường là đúng, nhưng khí hiếm có 18 electron là argon, không phải neon."
+  },
+  {
+   "ma_cau": "K07020201049",
+   "nhom_id": "KNB00313",
+   "loai": "trac_nghiem",
+   "de": "Vì sao nguyên tử fluorine (2, 7) dễ nhận 1 electron khi tham gia phản ứng?",
+   "lua_chon": [
+    "Vì sau khi nhận thêm 1 electron, fluorine có 10 electron giống khí hiếm neon",
+    "Vì sau khi nhường 7 electron, fluorine có 2 electron giống helium",
+    "Vì electron lớp ngoài cùng của fluorine không mang điện",
+    "Vì sau khi nhận thêm 1 electron, fluorine có 9 electron giống neon"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Fluorine nhận thêm 1 electron lớp ngoài cùng → có 2, 8 = 10 electron, giống khí hiếm neon.\n\nVì sao các phương án khác sai:\n- B: Fluorine là phi kim, có xu hướng nhận thêm electron chứ không nhường 7 electron (rất khó).\n- C: Mọi electron đều mang điện tích âm.\n- D: Sau khi nhận thêm 1 electron, fluorine có 10 electron (9 + 1), không phải 9."
+  },
+  {
+   "ma_cau": "K07020102054",
+   "nhom_id": "KNB00308",
+   "loai": "trac_nghiem",
+   "de": "Khối lượng nguyên tử của oxygen là bao nhiêu?",
+   "lua_chon": [
+    "8 amu",
+    "16 amu",
+    "32 amu",
+    "12 amu"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Khối lượng nguyên tử của oxygen là 16 amu.\n\nVì sao các phương án khác sai:\n- A: 8 là số hiệu nguyên tử của oxygen, không phải khối lượng nguyên tử.\n- C: 32 amu là khối lượng phân tử O₂, gồm 2 nguyên tử O.\n- D: 12 amu là khối lượng nguyên tử của carbon."
+  },
+  {
+   "ma_cau": "K07020102055",
+   "nhom_id": "KNB00308",
+   "loai": "trac_nghiem",
+   "de": "Khối lượng phân tử được tính bằng cách nào?",
+   "lua_chon": [
+    "Cộng số nguyên tử có trong phân tử",
+    "Lấy khối lượng của nguyên tử nặng nhất trong phân tử",
+    "Cộng khối lượng nguyên tử của các nguyên tố, không nhân chỉ số",
+    "Cộng khối lượng của tất cả các nguyên tử trong phân tử"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Khối lượng phân tử bằng tổng khối lượng các nguyên tử trong phân tử (nhân khối lượng nguyên tử với chỉ số rồi cộng lại).\n\nVì sao các phương án khác sai:\n- A: Đếm số nguyên tử không cho khối lượng; phải cộng khối lượng các nguyên tử.\n- B: Phải cộng khối lượng của mọi nguyên tử, không chỉ nguyên tử nặng nhất.\n- C: Phải nhân khối lượng nguyên tử với số nguyên tử (chỉ số) của mỗi nguyên tố."
+  },
+  {
+   "ma_cau": "K07020102056",
+   "nhom_id": "KNB00308",
+   "loai": "trac_nghiem",
+   "de": "Khối lượng nguyên tử của carbon là bao nhiêu?",
+   "lua_chon": [
+    "6 amu",
+    "12 amu",
+    "14 amu",
+    "24 amu"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Khối lượng nguyên tử của carbon là 12 amu.\n\nVì sao các phương án khác sai:\n- A: 6 là số hiệu nguyên tử của carbon, không phải khối lượng nguyên tử.\n- C: 14 amu là khối lượng nguyên tử của nitrogen, không phải carbon.\n- D: 24 amu là khối lượng nếu có 2 nguyên tử carbon, không phải khối lượng 1 nguyên tử."
+  },
+  {
+   "ma_cau": "K07020102057",
+   "nhom_id": "KNB00308",
+   "loai": "trac_nghiem",
+   "de": "Tính khối lượng phân tử H₂O (H = 1, O = 16).",
+   "lua_chon": [
+    "18 amu",
+    "17 amu",
+    "34 amu",
+    "3 amu"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Khối lượng phân tử H₂O = 2 × 1 + 16 = 18 amu.\n\nVì sao các phương án khác sai:\n- B: Em đã quên nhân chỉ số 2 của H.\n- C: Chỉ số 2 chỉ thuộc về H, không nhân cả O.\n- D: 3 là số nguyên tử; phải cộng khối lượng các nguyên tử."
+  },
+  {
+   "ma_cau": "K07020102058",
+   "nhom_id": "KNB00308",
+   "loai": "trac_nghiem",
+   "de": "Tính khối lượng phân tử CO₂ (C = 12, O = 16).",
+   "lua_chon": [
+    "28 amu",
+    "56 amu",
+    "3 amu",
+    "44 amu"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Khối lượng phân tử CO₂ = 12 + 2 × 16 = 44 amu.\n\nVì sao các phương án khác sai:\n- A: Em đã quên nhân chỉ số 2 của O.\n- B: Chỉ số 2 chỉ thuộc về O, không nhân cả C.\n- C: 3 là số nguyên tử; phải cộng khối lượng các nguyên tử."
+  },
+  {
+   "ma_cau": "K07020102059",
+   "nhom_id": "KNB00308",
+   "loai": "trac_nghiem",
+   "de": "Tính khối lượng phân tử MgCl₂ (Mg = 24, Cl = 35,5).",
+   "lua_chon": [
+    "59,5 amu",
+    "95 amu",
+    "119 amu",
+    "3 amu"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Khối lượng phân tử MgCl₂ = 24 + 2 × 35,5 = 95 amu.\n\nVì sao các phương án khác sai:\n- A: Em đã quên nhân chỉ số 2 của Cl.\n- C: Chỉ số 2 chỉ thuộc về Cl, không nhân cả Mg.\n- D: 3 là số nguyên tử; phải cộng khối lượng các nguyên tử."
+  },
+  {
+   "ma_cau": "K07020102060",
+   "nhom_id": "KNB00308",
+   "loai": "trac_nghiem",
+   "de": "Tính khối lượng phân tử Al₂O₃ (Al = 27, O = 16).",
+   "lua_chon": [
+    "102 amu",
+    "43 amu",
+    "75 amu",
+    "70 amu"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Khối lượng phân tử Al₂O₃ = 2 × 27 + 3 × 16 = 102 amu.\n\nVì sao các phương án khác sai:\n- B: Em đã quên nhân cả hai chỉ số.\n- C: Em đã quên nhân chỉ số 2 của Al.\n- D: Em đã quên nhân chỉ số 3 của O."
+  },
+  {
+   "ma_cau": "K07020102061",
+   "nhom_id": "KNB00308",
+   "loai": "trac_nghiem",
+   "de": "Tính khối lượng phân tử Fe₂O₃ (Fe = 56, O = 16).",
+   "lua_chon": [
+    "72 amu",
+    "104 amu",
+    "128 amu",
+    "160 amu"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Khối lượng phân tử Fe₂O₃ = 2 × 56 + 3 × 16 = 160 amu.\n\nVì sao các phương án khác sai:\n- A: Em đã quên nhân cả hai chỉ số.\n- B: Em đã quên nhân chỉ số 2 của Fe.\n- C: Em đã quên nhân chỉ số 3 của O."
+  },
+  {
+   "ma_cau": "K07020102062",
+   "nhom_id": "KNB00308",
+   "loai": "trac_nghiem",
+   "de": "Tính khối lượng phân tử P₂O₅ (P = 31, O = 16).",
+   "lua_chon": [
+    "47 amu",
+    "142 amu",
+    "111 amu",
+    "78 amu"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Khối lượng phân tử P₂O₅ = 2 × 31 + 5 × 16 = 142 amu.\n\nVì sao các phương án khác sai:\n- A: Em đã quên nhân cả hai chỉ số.\n- C: Em đã quên nhân chỉ số 2 của P.\n- D: Em đã quên nhân chỉ số 5 của O."
+  },
+  {
+   "ma_cau": "K07020102063",
+   "nhom_id": "KNB00308",
+   "loai": "trac_nghiem",
+   "de": "Tính khối lượng phân tử Al₂S₃ (Al = 27, S = 32).",
+   "lua_chon": [
+    "150 amu",
+    "59 amu",
+    "123 amu",
+    "86 amu"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Khối lượng phân tử Al₂S₃ = 2 × 27 + 3 × 32 = 150 amu.\n\nVì sao các phương án khác sai:\n- B: Em đã quên nhân cả hai chỉ số.\n- C: Em đã quên nhân chỉ số 2 của Al.\n- D: Em đã quên nhân chỉ số 3 của S."
+  },
+  {
+   "ma_cau": "K07020102064",
+   "nhom_id": "KNB00308",
+   "loai": "trac_nghiem",
+   "de": "Tính khối lượng phân tử Ca₃N₂ (Ca = 40, N = 14).",
+   "lua_chon": [
+    "54 amu",
+    "148 amu",
+    "68 amu",
+    "134 amu"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Khối lượng phân tử Ca₃N₂ = 3 × 40 + 2 × 14 = 148 amu.\n\nVì sao các phương án khác sai:\n- A: Em đã quên nhân cả hai chỉ số.\n- C: Em đã quên nhân chỉ số 3 của Ca.\n- D: Em đã quên nhân chỉ số 2 của N."
+  },
+  {
+   "ma_cau": "K07020102065",
+   "nhom_id": "KNB00308",
+   "loai": "trac_nghiem",
+   "de": "Tính khối lượng phân tử Mg₃P₂ (Mg = 24, P = 31).",
+   "lua_chon": [
+    "86 amu",
+    "55 amu",
+    "134 amu",
+    "103 amu"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Khối lượng phân tử Mg₃P₂ = 3 × 24 + 2 × 31 = 134 amu.\n\nVì sao các phương án khác sai:\n- A: Em đã quên nhân chỉ số 3 của Mg.\n- B: Em đã quên nhân cả hai chỉ số.\n- D: Em đã quên nhân chỉ số 2 của P."
+  },
+  {
+   "ma_cau": "K07020102066",
+   "nhom_id": "KNB00308",
+   "loai": "trac_nghiem",
+   "de": "Tính khối lượng phân tử NaOH (H = 1, O = 16, Na = 23).",
+   "lua_chon": [
+    "39 amu",
+    "20 amu",
+    "40 amu",
+    "3 amu"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Khối lượng phân tử NaOH = 23 + 16 + 1 = 40 amu.\n\nVì sao các phương án khác sai:\n- A: Em đã quên nguyên tử H.\n- B: Em đã dùng số hiệu nguyên tử (11 + 8 + 1) thay cho khối lượng nguyên tử.\n- D: 3 là số nguyên tử; phải cộng khối lượng các nguyên tử."
+  },
+  {
+   "ma_cau": "K07020102067",
+   "nhom_id": "KNB00308",
+   "loai": "trac_nghiem",
+   "de": "Tính khối lượng phân tử KOH (H = 1, O = 16, K = 39).",
+   "lua_chon": [
+    "55 amu",
+    "28 amu",
+    "3 amu",
+    "56 amu"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Khối lượng phân tử KOH = 39 + 16 + 1 = 56 amu.\n\nVì sao các phương án khác sai:\n- A: Em đã quên nguyên tử H.\n- B: Em đã dùng số hiệu nguyên tử (19 + 8 + 1) thay cho khối lượng nguyên tử.\n- C: 3 là số nguyên tử; phải cộng khối lượng các nguyên tử."
+  },
+  {
+   "ma_cau": "K07020102068",
+   "nhom_id": "KNB00308",
+   "loai": "trac_nghiem",
+   "de": "Tính khối lượng phân tử NaNO₂ (N = 14, O = 16, Na = 23).",
+   "lua_chon": [
+    "53 amu",
+    "69 amu",
+    "34 amu",
+    "4 amu"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Khối lượng phân tử NaNO₂ = 23 + 14 + 2 × 16 = 69 amu.\n\nVì sao các phương án khác sai:\n- A: Em đã quên nhân chỉ số 2 của O.\n- C: Em đã dùng số hiệu nguyên tử (11 + 7 + 2 × 8) thay cho khối lượng nguyên tử.\n- D: 4 là số nguyên tử; phải cộng khối lượng các nguyên tử."
+  },
+  {
+   "ma_cau": "K07020102069",
+   "nhom_id": "KNB00308",
+   "loai": "trac_nghiem",
+   "de": "Tính khối lượng phân tử H₂SO₄ (H = 1, O = 16, S = 32).",
+   "lua_chon": [
+    "97 amu",
+    "50 amu",
+    "98 amu",
+    "49 amu"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Khối lượng phân tử H₂SO₄ = 2 × 1 + 32 + 4 × 16 = 98 amu.\n\nVì sao các phương án khác sai:\n- A: Em đã quên nhân chỉ số 2 của H.\n- B: Em đã quên nhân chỉ số 4 của O.\n- D: Em đã quên nhân cả hai chỉ số."
+  },
+  {
+   "ma_cau": "K07020102070",
+   "nhom_id": "KNB00308",
+   "loai": "trac_nghiem",
+   "de": "Tính khối lượng phân tử CaCO₃ (C = 12, O = 16, Ca = 40).",
+   "lua_chon": [
+    "100 amu",
+    "68 amu",
+    "50 amu",
+    "5 amu"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Khối lượng phân tử CaCO₃ = 40 + 12 + 3 × 16 = 100 amu.\n\nVì sao các phương án khác sai:\n- B: Em đã quên nhân chỉ số 3 của O.\n- C: Em đã dùng số hiệu nguyên tử (20 + 6 + 3 × 8) thay cho khối lượng nguyên tử.\n- D: 5 là số nguyên tử; phải cộng khối lượng các nguyên tử."
+  },
+  {
+   "ma_cau": "K07020102071",
+   "nhom_id": "KNB00308",
+   "loai": "trac_nghiem",
+   "de": "Tính khối lượng phân tử Na₂CO₃ (C = 12, O = 16, Na = 23).",
+   "lua_chon": [
+    "83 amu",
+    "106 amu",
+    "74 amu",
+    "51 amu"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Khối lượng phân tử Na₂CO₃ = 2 × 23 + 12 + 3 × 16 = 106 amu.\n\nVì sao các phương án khác sai:\n- A: Em đã quên nhân chỉ số 2 của Na.\n- C: Em đã quên nhân chỉ số 3 của O.\n- D: Em đã quên nhân cả hai chỉ số."
+  },
+  {
+   "ma_cau": "K07020102072",
+   "nhom_id": "KNB00308",
+   "loai": "trac_nghiem",
+   "de": "Biểu thức nào tính đúng khối lượng phân tử Ca(OH)₂ (Ca = 40, O = 16, H = 1)?",
+   "lua_chon": [
+    "40 + 16 + 1 × 2",
+    "2 × (40 + 16 + 1)",
+    "40 + 16 + 1",
+    "40 + 2 × (16 + 1)"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Chỉ số ngoài ngoặc nhân cho cả nhóm trong ngoặc: 40 + 2 × (16 + 1) = 74 amu.\n\nVì sao các phương án khác sai:\n- A: Chỉ số 2 ngoài ngoặc phải nhân cho cả O và H, không chỉ H.\n- B: Chỉ số 2 chỉ áp dụng cho nhóm OH trong ngoặc, không nhân Ca.\n- C: Em đã quên chỉ số 2 ngoài ngoặc."
+  },
+  {
+   "ma_cau": "K07020102073",
+   "nhom_id": "KNB00308",
+   "loai": "trac_nghiem",
+   "de": "Biểu thức nào tính đúng khối lượng phân tử Mg(NO₃)₂ (Mg = 24, N = 14, O = 16)?",
+   "lua_chon": [
+    "24 + 2 × (14 + 3 × 16)",
+    "24 + 14 + 2 × 3 × 16",
+    "2 × (24 + 14 + 3 × 16)",
+    "24 + 14 + 3 × 16"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Chỉ số ngoài ngoặc nhân cho cả nhóm trong ngoặc: 24 + 2 × (14 + 3 × 16) = 148 amu.\n\nVì sao các phương án khác sai:\n- B: Chỉ số 2 ngoài ngoặc phải nhân cho cả N và O trong nhóm NO₃.\n- C: Chỉ số 2 chỉ áp dụng cho nhóm NO₃ trong ngoặc, không nhân Mg.\n- D: Em đã quên chỉ số 2 ngoài ngoặc."
+  },
+  {
+   "ma_cau": "K07020102074",
+   "nhom_id": "KNB00308",
+   "loai": "trac_nghiem",
+   "de": "Tính khối lượng phân tử Mg(OH)₂ (Mg = 24, O = 16, H = 1).",
+   "lua_chon": [
+    "42 amu",
+    "82 amu",
+    "58 amu",
+    "41 amu"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Chỉ số ngoài ngoặc nhân cho cả nhóm: 24 + 2 × (16 + 1) = 58 amu.\n\nVì sao các phương án khác sai:\n- A: Chỉ số 2 ngoài ngoặc phải nhân cho cả O và H, không chỉ H.\n- B: Chỉ số 2 chỉ áp dụng cho nhóm OH, không nhân Mg.\n- D: Em đã quên chỉ số 2 ngoài ngoặc."
+  },
+  {
+   "ma_cau": "K07020102075",
+   "nhom_id": "KNB00308",
+   "loai": "trac_nghiem",
+   "de": "Tính khối lượng phân tử Al₂(SO₄)₃ (Al = 27, S = 32, O = 16).",
+   "lua_chon": [
+    "150 amu",
+    "315 amu",
+    "342 amu",
+    "198 amu"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Chỉ số ngoài ngoặc nhân cho cả nhóm: 2 × 27 + 3 × (32 + 4 × 16) = 342 amu.\n\nVì sao các phương án khác sai:\n- A: Em đã quên nhân nhóm SO₄ với chỉ số 3 ngoài ngoặc.\n- B: Em đã quên nhân chỉ số 2 của Al.\n- D: Em đã quên nhân chỉ số 4 của O trong nhóm SO₄."
+  },
+  {
+   "ma_cau": "K07020102076",
+   "nhom_id": "KNB00308",
+   "loai": "trac_nghiem",
+   "de": "Tính khối lượng phân tử Ba(NO₃)₂ (Ba = 137, N = 14, O = 16).",
+   "lua_chon": [
+    "261 amu",
+    "199 amu",
+    "247 amu",
+    "197 amu"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Chỉ số ngoài ngoặc nhân cho cả nhóm: 137 + 2 × (14 + 3 × 16) = 261 amu.\n\nVì sao các phương án khác sai:\n- B: Em đã quên nhân nhóm NO₃ với chỉ số 2 ngoài ngoặc.\n- C: Chỉ số 2 ngoài ngoặc phải nhân cho cả N, không chỉ cho O.\n- D: Em đã quên nhân chỉ số 3 của O trong nhóm NO₃."
+  },
+  {
+   "ma_cau": "K07020102077",
+   "nhom_id": "KNB00308",
+   "loai": "trac_nghiem",
+   "de": "Tính khối lượng phân tử Fe₂(SO₄)₃ (Fe = 56, S = 32, O = 16).",
+   "lua_chon": [
+    "208 amu",
+    "344 amu",
+    "256 amu",
+    "400 amu"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Chỉ số ngoài ngoặc nhân cho cả nhóm: 2 × 56 + 3 × (32 + 4 × 16) = 400 amu.\n\nVì sao các phương án khác sai:\n- A: Em đã quên nhân nhóm SO₄ với chỉ số 3 ngoài ngoặc.\n- B: Em đã quên nhân chỉ số 2 của Fe.\n- C: Em đã quên nhân chỉ số 4 của O trong nhóm SO₄."
+  },
+  {
+   "ma_cau": "K07020102078",
+   "nhom_id": "KNB00308",
+   "loai": "trac_nghiem",
+   "de": "Tính khối lượng phân tử Zn(NO₃)₂ (Zn = 65, N = 14, O = 16).",
+   "lua_chon": [
+    "141 amu",
+    "127 amu",
+    "175 amu",
+    "189 amu"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Khối lượng nhóm NO₃ = 14+3×16 = 62. Zn(NO₃)₂ có 2 nhóm NO₃: M = 65+2×62 = 189 amu.\n\nVì sao các phương án khác sai:\n- A: Chỉ nhân đôi N mà quên nhân đôi O trong nhóm NO₃.\n- B: Quên nhân hệ số 2 với cả nhóm NO₃, chỉ tính Zn + 1 nhóm NO₃.\n- C: Chỉ nhân đôi O mà quên nhân đôi N trong nhóm NO₃."
+  },
+  {
+   "ma_cau": "K07020202031",
+   "nhom_id": "KNB00314",
+   "loai": "trac_nghiem",
+   "de": "Liên kết trong phân tử HCl thuộc loại nào?",
+   "lua_chon": [
+    "Ion, vì HCl là hợp chất",
+    "Ion, vì H ở nhóm IA như các kim loại",
+    "Ion, vì Cl nhận electron của H",
+    "Cộng hóa trị, vì H và Cl đều là phi kim"
+   ],
+   "dap_an": "D",
+   "loi_giai": "H và Cl đều là phi kim, mỗi nguyên tử góp 1 electron tạo 1 cặp electron dùng chung → liên kết cộng hóa trị.\n\nVì sao các phương án khác sai:\n- A: Không phải hợp chất nào cũng là chất ion; hợp chất của hai phi kim có liên kết cộng hóa trị.\n- B: H ở nhóm IA nhưng là phi kim.\n- C: H và Cl đều là phi kim nên dùng chung electron, không cho – nhận."
+  },
+  {
+   "ma_cau": "K07020202032",
+   "nhom_id": "KNB00314",
+   "loai": "trac_nghiem",
+   "de": "Liên kết trong hợp chất NaCl thuộc loại nào?",
+   "lua_chon": [
+    "Ion, vì Na là kim loại, Cl là phi kim",
+    "Cộng hóa trị, vì Na và Cl dùng chung electron",
+    "Cộng hóa trị, vì NaCl chỉ gồm 2 nguyên tố",
+    "Ion, vì Na nhận electron của Cl"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Na (kim loại) nhường 1 electron cho Cl (phi kim) tạo Na⁺ và Cl⁻, hai ion hút nhau → liên kết ion.\n\nVì sao các phương án khác sai:\n- B: Na nhường hẳn 1 electron cho Cl, không dùng chung.\n- C: Số nguyên tố không quyết định kiểu liên kết; phải xét kim loại hay phi kim.\n- D: Kim loại Na nhường electron, phi kim Cl nhận electron."
+  },
+  {
+   "ma_cau": "K07020202033",
+   "nhom_id": "KNB00314",
+   "loai": "trac_nghiem",
+   "de": "Liên kết trong phân tử CO₂ thuộc loại nào?",
+   "lua_chon": [
+    "Ion, vì CO₂ là hợp chất",
+    "Ion, vì O nhận electron của C",
+    "Cộng hóa trị, vì C và O đều là phi kim",
+    "Ion, vì O có nhiều electron lớp ngoài cùng hơn C"
+   ],
+   "dap_an": "C",
+   "loi_giai": "C và O đều là phi kim, liên kết với nhau bằng các cặp electron dùng chung → liên kết cộng hóa trị.\n\nVì sao các phương án khác sai:\n- A: Không phải hợp chất nào cũng là chất ion; C và O đều là phi kim.\n- B: Hai phi kim dùng chung electron, không cho – nhận.\n- D: Cả C và O đều là phi kim nên tạo liên kết cộng hóa trị."
+  },
+  {
+   "ma_cau": "K07020202034",
+   "nhom_id": "KNB00314",
+   "loai": "trac_nghiem",
+   "de": "Liên kết trong hợp chất MgO thuộc loại nào?",
+   "lua_chon": [
+    "Cộng hóa trị, vì Mg và O dùng chung electron",
+    "Cộng hóa trị, vì Mg và O cùng ở chu kì 3",
+    "Ion, vì Mg là kim loại, O là phi kim",
+    "Ion, vì O nhường 2 electron cho Mg"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Mg nhường 2 electron cho O tạo Mg²⁺ và O²⁻, hai ion hút nhau → liên kết ion.\n\nVì sao các phương án khác sai:\n- A: Mg nhường hẳn 2 electron cho O, không dùng chung.\n- B: Mg ở chu kì 3, O ở chu kì 2; và chu kì không quyết định kiểu liên kết.\n- D: Chiều ngược lại: Mg (kim loại) nhường 2 electron cho O (phi kim)."
+  },
+  {
+   "ma_cau": "K07020202035",
+   "nhom_id": "KNB00314",
+   "loai": "trac_nghiem",
+   "de": "Dãy nào sau đây gồm toàn chất ion?",
+   "lua_chon": [
+    "NaCl, HCl, MgO",
+    "KCl, CO₂, CaO",
+    "H₂O, MgO, Na₂O",
+    "NaCl, MgO, CaCl₂"
+   ],
+   "dap_an": "D",
+   "loi_giai": "NaCl, MgO, CaCl₂ đều tạo từ kim loại (nhóm IA, IIA) và phi kim (nhóm VIA, VIIA) nên là chất ion.\n\nVì sao các phương án khác sai:\n- A: HCl tạo từ hai phi kim nên là chất cộng hóa trị.\n- B: CO₂ tạo từ hai phi kim nên là chất cộng hóa trị.\n- C: H₂O tạo từ hai phi kim nên là chất cộng hóa trị."
+  },
+  {
+   "ma_cau": "K07020202036",
+   "nhom_id": "KNB00314",
+   "loai": "trac_nghiem",
+   "de": "Dãy nào sau đây gồm toàn chất cộng hóa trị?",
+   "lua_chon": [
+    "H₂O, NaCl, CH₄",
+    "H₂O, CO₂, NH₃",
+    "Cl₂, KCl, HCl",
+    "N₂, CaO, CO₂"
+   ],
+   "dap_an": "B",
+   "loi_giai": "H₂O, CO₂, NH₃ đều tạo từ các phi kim, liên kết bằng cặp electron dùng chung nên là chất cộng hóa trị.\n\nVì sao các phương án khác sai:\n- A: NaCl tạo từ kim loại và phi kim nên là chất ion.\n- C: KCl tạo từ kim loại và phi kim nên là chất ion.\n- D: CaO tạo từ kim loại và phi kim nên là chất ion."
+  },
+  {
+   "ma_cau": "K07020202037",
+   "nhom_id": "KNB00314",
+   "loai": "trac_nghiem",
+   "de": "Chất nào sau đây có nhiệt độ nóng chảy cao nhất?",
+   "lua_chon": [
+    "Muối ăn (NaCl)",
+    "Nước (H₂O)",
+    "Methane (CH₄)",
+    "Carbon dioxide (CO₂)"
+   ],
+   "dap_an": "A",
+   "loi_giai": "NaCl là chất ion nên có nhiệt độ nóng chảy cao; ba chất còn lại là chất cộng hóa trị.\n\nVì sao các phương án khác sai:\n- B: Nước là chất cộng hóa trị, nóng chảy ở 0 °C, thấp hơn nhiều so với chất ion.\n- C: Methane là chất cộng hóa trị, ở thể khí ở điều kiện thường.\n- D: Carbon dioxide là chất cộng hóa trị, ở thể khí ở điều kiện thường."
+  },
+  {
+   "ma_cau": "K07020202038",
+   "nhom_id": "KNB00314",
+   "loai": "trac_nghiem",
+   "de": "Dung dịch nào sau đây dẫn điện được?",
+   "lua_chon": [
+    "Dung dịch đường",
+    "Nước cất",
+    "Dung dịch rượu (ethanol)",
+    "Dung dịch muối ăn (NaCl)"
+   ],
+   "dap_an": "D",
+   "loi_giai": "NaCl là chất ion, tan trong nước tạo các ion Na⁺ và Cl⁻ nên dung dịch dẫn điện.\n\nVì sao các phương án khác sai:\n- A: Đường là chất cộng hóa trị, tan trong nước không tạo ion nên dung dịch không dẫn điện.\n- B: Nước cất gần như không chứa ion nên hầu như không dẫn điện.\n- C: Ethanol là chất cộng hóa trị, dung dịch không dẫn điện."
+  },
+  {
+   "ma_cau": "K07020202039",
+   "nhom_id": "KNB00314",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tố X có Z = 19, nguyên tố Y có Z = 9. Liên kết giữa X và Y thuộc loại nào?",
+   "lua_chon": [
+    "Liên kết cộng hóa trị, vì X và Y đều là phi kim",
+    "Liên kết ion, vì X là kim loại, Y là phi kim",
+    "Liên kết cộng hóa trị, vì X và Y dùng chung electron",
+    "Liên kết ion, vì Y nhường electron cho X"
+   ],
+   "dap_an": "B",
+   "loi_giai": "X (2, 8, 8, 1) là kim loại K, Y (2, 7) là phi kim F → X nhường 1 electron cho Y → liên kết ion.\n\nVì sao các phương án khác sai:\n- A: X (2, 8, 8, 1) ở nhóm IA là kim loại potassium.\n- C: Kim loại X nhường hẳn electron cho phi kim Y, không dùng chung.\n- D: Chiều ngược lại: X (kim loại) nhường 1 electron cho Y (phi kim)."
+  },
+  {
+   "ma_cau": "K07020202040",
+   "nhom_id": "KNB00314",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tố X có Z = 6, nguyên tố Y có Z = 17. Liên kết giữa X và Y thuộc loại nào?",
+   "lua_chon": [
+    "Liên kết ion, vì X nhường 4 electron cho Y",
+    "Liên kết ion, vì mọi hợp chất đều là chất ion",
+    "Liên kết ion, vì Y nhận electron của X",
+    "Liên kết cộng hóa trị, vì X và Y đều là phi kim"
+   ],
+   "dap_an": "D",
+   "loi_giai": "X (2, 4) là carbon, Y (2, 8, 7) là chlorine, đều là phi kim → liên kết cộng hóa trị.\n\nVì sao các phương án khác sai:\n- A: X (2, 4) và Y (2, 8, 7) đều là phi kim nên dùng chung electron.\n- B: Hợp chất giữa hai phi kim có liên kết cộng hóa trị.\n- C: Hai phi kim không cho – nhận mà dùng chung electron."
+  },
+  {
+   "ma_cau": "K07020103054",
+   "nhom_id": "KNB00309",
+   "loai": "trac_nghiem",
+   "de": "Phân tử nước (H₂O) gồm những nguyên tử nào?",
+   "lua_chon": [
+    "1 nguyên tử H và 2 nguyên tử O",
+    "2 nguyên tử H và 1 nguyên tử O",
+    "2 nguyên tử H và 2 nguyên tử O",
+    "1 nguyên tử H và 1 nguyên tử O"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Chỉ số viết ngay sau kí hiệu nào thì cho biết số nguyên tử của nguyên tố đó: H₂O có 2 H và 1 O.\n\nVì sao các phương án khác sai:\n- A: Chỉ số 2 viết sau H nên thuộc về H, không thuộc về O.\n- C: Chỉ số 2 chỉ áp dụng cho H đứng ngay trước nó; O không có chỉ số nên là 1.\n- D: Em đã bỏ qua chỉ số 2 của H."
+  },
+  {
+   "ma_cau": "K07020103055",
+   "nhom_id": "KNB00309",
+   "loai": "trac_nghiem",
+   "de": "Phân tử CO₂ có tổng cộng bao nhiêu nguyên tử?",
+   "lua_chon": [
+    "3",
+    "2",
+    "4",
+    "1"
+   ],
+   "dap_an": "A",
+   "loi_giai": "CO₂ có 1 nguyên tử C và 2 nguyên tử O, tổng 3 nguyên tử.\n\nVì sao các phương án khác sai:\n- B: 2 là số nguyên tố (C và O), không phải số nguyên tử.\n- C: Chỉ số 2 chỉ thuộc về O; C chỉ có 1 nguyên tử.\n- D: Em đã bỏ qua các nguyên tử O."
+  },
+  {
+   "ma_cau": "K07020103056",
+   "nhom_id": "KNB00309",
+   "loai": "trac_nghiem",
+   "de": "Phân tử NH₃ gồm bao nhiêu nguyên tử N và H?",
+   "lua_chon": [
+    "1 N và 3 H",
+    "3 N và 1 H",
+    "1 N và 1 H, còn 3 là số phân tử",
+    "3 N và 3 H"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Trong công thức NH₃, chỉ số viết sau mỗi kí hiệu cho biết số nguyên tử của nguyên tố đó trong một phân tử: N không ghi chỉ số nên có 1 nguyên tử, H có chỉ số 3.\n\nVì sao các phương án khác sai:\n- B: Chỉ số 3 chỉ đứng sau kí hiệu H nên chỉ H có 3 nguyên tử, không phải N.\n- C: Chỉ số 3 trong công thức là số nguyên tử H trong một phân tử, không phải số phân tử.\n- D: Kí hiệu N không có chỉ số, nghĩa là chỉ có 1 nguyên tử N, không phải 3."
+  },
+  {
+   "ma_cau": "K07020103057",
+   "nhom_id": "KNB00309",
+   "loai": "trac_nghiem",
+   "de": "Phân tử CH₄ có tổng cộng bao nhiêu nguyên tử?",
+   "lua_chon": [
+    "4",
+    "2",
+    "8",
+    "5"
+   ],
+   "dap_an": "D",
+   "loi_giai": "CH₄ có 1 nguyên tử C và 4 nguyên tử H, tổng 5 nguyên tử.\n\nVì sao các phương án khác sai:\n- A: Em đã quên nguyên tử C; phải cộng 1 C và 4 H.\n- B: 2 là số nguyên tố (C và H), không phải số nguyên tử.\n- C: Chỉ số 4 chỉ thuộc về H; C chỉ có 1 nguyên tử."
+  },
+  {
+   "ma_cau": "K07020103058",
+   "nhom_id": "KNB00309",
+   "loai": "trac_nghiem",
+   "de": "Phân tử Ca(OH)₂ có tổng cộng bao nhiêu nguyên tử?",
+   "lua_chon": [
+    "3",
+    "5",
+    "4",
+    "6"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Ca(OH)₂ có 1 Ca, 2 × 1 = 2 O, 2 × 1 = 2 H, tổng 5 nguyên tử.\n\nVì sao các phương án khác sai:\n- A: Em đã quên nhân chỉ số 2 ngoài ngoặc cho cả nhóm OH.\n- C: Chỉ số 2 ngoài ngoặc nhân cho cả O và H, không chỉ cho H.\n- D: Chỉ số 2 ngoài ngoặc chỉ áp dụng cho nhóm OH, không áp dụng cho Ca."
+  },
+  {
+   "ma_cau": "K07020103059",
+   "nhom_id": "KNB00309",
+   "loai": "trac_nghiem",
+   "de": "Phân tử Mg(OH)₂ có tổng cộng bao nhiêu nguyên tử?",
+   "lua_chon": [
+    "3",
+    "4",
+    "6",
+    "5"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Mg(OH)₂ có 1 Mg, 2 × 1 = 2 O, 2 × 1 = 2 H, tổng 1 + 2 + 2 = 5 nguyên tử.\n\nVì sao các phương án khác sai:\n- A: Quên nhân chỉ số 2 ngoài ngoặc cho cả nhóm OH; đúng ra là 1 + 2 + 2 = 5.\n- B: Chỉ số 2 ngoài ngoặc nhân cho CẢ O và H trong nhóm OH, không chỉ một nguyên tố.\n- C: Chỉ số 2 ngoài ngoặc chỉ nhân cho nhóm OH, không nhân cho Mg (Mg không có trong ngoặc)."
+  },
+  {
+   "ma_cau": "K07020103060",
+   "nhom_id": "KNB00309",
+   "loai": "trac_nghiem",
+   "de": "Phân tử Al₂(SO₄)₃ có tổng cộng bao nhiêu nguyên tử?",
+   "lua_chon": [
+    "7",
+    "9",
+    "17",
+    "16"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Al₂(SO₄)₃ có 2 Al, 3 × 1 = 3 S, 3 × 4 = 12 O, tổng 2 + 3 + 12 = 17 nguyên tử.\n\nVì sao các phương án khác sai:\n- A: Quên nhân chỉ số 3 ngoài ngoặc cho cả nhóm SO₄; đúng ra là 2 + 3 + 12 = 17.\n- B: Chỉ số 3 ngoài ngoặc nhân cho CẢ S và O trong nhóm SO₄, không chỉ một nguyên tố.\n- D: Quên nhân chỉ số 2 của Al; đúng ra có 2 nguyên tử Al."
+  },
+  {
+   "ma_cau": "K07020103061",
+   "nhom_id": "KNB00309",
+   "loai": "trac_nghiem",
+   "de": "Gỉ sắt chứa chủ yếu chất có công thức Fe₂O₃. Trong công thức Fe₂O₃ có bao nhiêu nguyên tử oxygen?",
+   "lua_chon": [
+    "2",
+    "5",
+    "6",
+    "3"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Chỉ số viết ngay sau kí hiệu nào thì cho biết số nguyên tử của nguyên tố đó: O₃ → 3 nguyên tử oxygen.\n\nVì sao các phương án khác sai:\n- A: 2 là chỉ số đứng sau Fe nên thuộc về Fe.\n- B: 5 là tổng số nguyên tử Fe và O.\n- C: KHÔNG nhân hai chỉ số với nhau; mỗi chỉ số chỉ thuộc nguyên tố đứng ngay trước nó."
+  },
+  {
+   "ma_cau": "K07020103062",
+   "nhom_id": "KNB00309",
+   "loai": "trac_nghiem",
+   "de": "Một phân tử methane (CH₄) có bao nhiêu nguyên tử carbon?",
+   "lua_chon": [
+    "4",
+    "1",
+    "2",
+    "5"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Trong công thức CH₄, C không có chỉ số nên có 1 nguyên tử carbon; chỉ số 4 là số nguyên tử hydrogen.\n\nVì sao các phương án khác sai:\n- A: Chỉ số 4 viết sau kí hiệu H, cho biết số nguyên tử hydrogen, không phải carbon.\n- C: Kí hiệu C không có chỉ số nghĩa là chỉ có 1 nguyên tử, không phải 2.\n- D: 5 không tương ứng với chỉ số nào của carbon trong công thức CH₄."
+  },
+  {
+   "ma_cau": "K07020103063",
+   "nhom_id": "KNB00309",
+   "loai": "trac_nghiem",
+   "de": "Diphosphorus pentoxide P₂O₅ được dùng làm chất hút ẩm. Một phân tử P₂O₅ có tổng cộng bao nhiêu nguyên tử?",
+   "lua_chon": [
+    "7",
+    "2",
+    "5",
+    "10"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Cộng số nguyên tử của từng nguyên tố: 2 nguyên tử P + 5 nguyên tử O = 7 nguyên tử.\n\nVì sao các phương án khác sai:\n- B: 2 là số nguyên tố (P và O), KHÔNG phải số nguyên tử.\n- C: 5 mới chỉ là số nguyên tử O, còn thiếu 2 nguyên tử P.\n- D: KHÔNG nhân hai chỉ số; phải cộng số nguyên tử của từng nguyên tố."
+  },
+  {
+   "ma_cau": "K07020103064",
+   "nhom_id": "KNB00309",
+   "loai": "trac_nghiem",
+   "de": "Ammonium sulfate (NH₄)₂SO₄ là phân bón phổ biến. Trong công thức này có bao nhiêu nguyên tử hydrogen?",
+   "lua_chon": [
+    "4",
+    "2",
+    "8",
+    "6"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Nhóm NH₄ có 4 H, chỉ số ngoài ngoặc là 2 nên số nguyên tử H = 4 × 2 = 8.\n\nVì sao các phương án khác sai:\n- A: Quên nhân 4 (số H trong nhóm NH₄) với chỉ số 2 ngoài ngoặc.\n- B: 2 là chỉ số ngoài ngoặc, không phải số nguyên tử H.\n- D: Không cộng chỉ số trong và ngoài ngoặc; phải nhân: 4 × 2 = 8."
+  },
+  {
+   "ma_cau": "K07020103065",
+   "nhom_id": "KNB00309",
+   "loai": "trac_nghiem",
+   "de": "Calcium phosphate có trong xương và răng, công thức Ca₃(PO₄)₂. Trong công thức này có bao nhiêu nguyên tử oxygen?",
+   "lua_chon": [
+    "4",
+    "8",
+    "12",
+    "13"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Mỗi nhóm PO₄ có 4 nguyên tử O, nhóm được lặp 2 lần: 4 × 2 = 8 nguyên tử O.\n\nVì sao các phương án khác sai:\n- A: Quên nhân 4 nguyên tử O trong nhóm với chỉ số 2 ngoài ngoặc.\n- C: Nhân nhầm với chỉ số 3 của Ca; chỉ số ngoài ngoặc là 2.\n- D: 13 là tổng số nguyên tử (3 + 2 + 8), KHÔNG phải số nguyên tử O."
+  },
+  {
+   "ma_cau": "K07020203051",
+   "nhom_id": "KNB00315",
+   "loai": "trac_nghiem",
+   "de": "Liên kết ion được hình thành do đâu?",
+   "lua_chon": [
+    "Sự dùng chung electron giữa các nguyên tử",
+    "Sự cho và nhận electron giữa các nguyên tử",
+    "Sự dùng chung proton giữa các nguyên tử",
+    "Sự hút nhau giữa hai hạt nhân nguyên tử"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Liên kết ion hình thành khi kim loại nhường electron, phi kim nhận electron, tạo ion trái dấu hút nhau.\n\nVì sao các phương án khác sai:\n- A: Dùng chung electron tạo liên kết cộng hóa trị.\n- C: Proton nằm trong hạt nhân, không tham gia tạo liên kết.\n- D: Hai hạt nhân đều mang điện dương nên đẩy nhau; liên kết ion là lực hút giữa hai ion trái dấu."
+  },
+  {
+   "ma_cau": "K07020203052",
+   "nhom_id": "KNB00315",
+   "loai": "trac_nghiem",
+   "de": "Ở điều kiện thường, chất ion thường tồn tại ở thể nào?",
+   "lua_chon": [
+    "Thể rắn",
+    "Thể lỏng",
+    "Thể khí",
+    "Thể khí hoặc thể lỏng"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Chất ion thường là chất rắn ở điều kiện thường, có nhiệt độ nóng chảy cao.\n\nVì sao các phương án khác sai:\n- B: Chất ion như muối ăn ở điều kiện thường là chất rắn.\n- C: Chất ion không ở thể khí; nhiều chất cộng hóa trị mới ở thể khí.\n- D: Đó là đặc điểm thường gặp của chất cộng hóa trị."
+  },
+  {
+   "ma_cau": "K07020203053",
+   "nhom_id": "KNB00315",
+   "loai": "trac_nghiem",
+   "de": "Ion sodium được kí hiệu như thế nào?",
+   "lua_chon": [
+    "Na⁻",
+    "Na⁺",
+    "Na²⁺",
+    "Na"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Nguyên tử Na nhường 1 electron tạo ion mang điện tích 1+, kí hiệu Na⁺.\n\nVì sao các phương án khác sai:\n- A: Sodium nhường electron nên ion mang điện dương, không phải âm.\n- C: Sodium chỉ nhường 1 electron nên điện tích là 1+.\n- D: Na là kí hiệu nguyên tử, chưa ghi điện tích của ion."
+  },
+  {
+   "ma_cau": "K07020203054",
+   "nhom_id": "KNB00315",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử magnesium (2, 8, 2) nhường hoặc nhận electron để có lớp vỏ giống khí hiếm. Ion tạo thành được kí hiệu như thế nào?",
+   "lua_chon": [
+    "Mg⁺",
+    "Mg²⁻",
+    "Mg²⁺",
+    "Mg⁶⁻"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Mg nhường 2 electron lớp ngoài cùng tạo ion Mg²⁺ (2, 8).\n\nVì sao các phương án khác sai:\n- A: Mg nhường 2 electron nên điện tích là 2+, không phải 1+.\n- B: Mg nhường electron nên ion mang điện dương.\n- D: Mg là kim loại, nhường 2 electron chứ không nhận 6 electron."
+  },
+  {
+   "ma_cau": "K07020203055",
+   "nhom_id": "KNB00315",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử oxygen (2, 6) nhường hoặc nhận electron để có lớp vỏ giống khí hiếm. Ion tạo thành được kí hiệu như thế nào?",
+   "lua_chon": [
+    "O⁻",
+    "O²⁺",
+    "O⁶⁺",
+    "O²⁻"
+   ],
+   "dap_an": "D",
+   "loi_giai": "O nhận thêm 2 electron tạo ion O²⁻ (2, 8).\n\nVì sao các phương án khác sai:\n- A: O nhận 2 electron nên điện tích là 2−, không phải 1−.\n- B: O nhận electron nên ion mang điện âm.\n- C: O là phi kim, nhận 2 electron chứ không nhường 6 electron."
+  },
+  {
+   "ma_cau": "K07020203056",
+   "nhom_id": "KNB00315",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử chlorine (2, 8, 7) nhường hoặc nhận electron để có lớp vỏ giống khí hiếm. Ion tạo thành được kí hiệu như thế nào?",
+   "lua_chon": [
+    "Cl⁺",
+    "Cl⁻",
+    "Cl⁷⁺",
+    "Cl²⁻"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Cl nhận thêm 1 electron tạo ion Cl⁻ (2, 8, 8).\n\nVì sao các phương án khác sai:\n- A: Cl nhận electron nên ion mang điện âm.\n- C: Cl là phi kim, nhận 1 electron chứ không nhường 7 electron.\n- D: Cl chỉ cần nhận 1 electron nên điện tích là 1−."
+  },
+  {
+   "ma_cau": "K07020203057",
+   "nhom_id": "KNB00315",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử calcium (2, 8, 8, 2) nhường hoặc nhận electron để có lớp vỏ giống khí hiếm. Ion tạo thành được kí hiệu như thế nào?",
+   "lua_chon": [
+    "Ca⁺",
+    "Ca²⁻",
+    "Ca²⁺",
+    "Ca⁶⁻"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Ca nhường 2 electron lớp ngoài cùng tạo ion Ca²⁺ (2, 8, 8).\n\nVì sao các phương án khác sai:\n- A: Ca nhường 2 electron nên điện tích là 2+, không phải 1+.\n- B: Ca nhường electron nên ion mang điện dương.\n- D: Ca là kim loại, nhường 2 electron chứ không nhận 6 electron."
+  },
+  {
+   "ma_cau": "K07020203058",
+   "nhom_id": "KNB00315",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử potassium (2, 8, 8, 1) nhường 1 electron. Mô hình nào đúng với ion tạo thành?",
+   "lua_chon": [
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07H020203-01-003-A.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07H020203-01-003-B.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07H020203-01-003-C.png)",
+    "![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k7/K07H020203-01-003-D.png)"
+   ],
+   "dap_an": "B",
+   "loi_giai": "K nhường 1 electron lớp ngoài cùng → ion K⁺ có 2, 8, 8 electron, giống khí hiếm argon.\n\nVì sao các phương án khác sai:\n- A: Potassium nhường electron chứ không nhận thêm; ion có 18 electron, không phải 20.\n- C: Chỉ electron lớp ngoài cùng (lớp 4) bị nhường; lớp 3 vẫn giữ 8 electron.\n- D: Sau khi nhường, lớp thứ tư không còn electron; ion chỉ còn 3 lớp (2, 8, 8)."
+  },
+  {
+   "ma_cau": "K07020203059",
+   "nhom_id": "KNB00315",
+   "loai": "trac_nghiem",
+   "de": "Trong sự hình thành MgCl₂, mỗi nguyên tử Mg (2, 8, 2) nhường 2 electron. Các electron này được nhận như thế nào?",
+   "lua_chon": [
+    "1 nguyên tử Cl nhận cả 2 electron",
+    "2 nguyên tử Cl, mỗi nguyên tử nhận 2 electron",
+    "1 nguyên tử Cl nhận 1 electron, electron còn lại trở về Mg",
+    "2 nguyên tử Cl, mỗi nguyên tử nhận 1 electron"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Mỗi Cl chỉ nhận 1 electron, nên 2 electron của Mg chia cho 2 nguyên tử Cl → công thức MgCl₂.\n\nVì sao các phương án khác sai:\n- A: Cl (2, 8, 7) chỉ cần nhận 1 electron; nhận 2 sẽ thành Cl²⁻, sai.\n- B: Mg chỉ nhường 2 electron tổng cộng; mỗi Cl chỉ cần 1 electron.\n- C: Mg nhường cả 2 electron để có lớp vỏ bền; cần 2 nguyên tử Cl nhận."
+  },
+  {
+   "ma_cau": "K07020203060",
+   "nhom_id": "KNB00315",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tố X có Z = 20, nguyên tố Y có Z = 17. Công thức của hợp chất tạo bởi X và Y là",
+   "lua_chon": [
+    "XY",
+    "X₂Y",
+    "XY₇",
+    "XY₂"
+   ],
+   "dap_an": "D",
+   "loi_giai": "X (2, 8, 8, 2) nhường 2 electron → X²⁺; Y (2, 8, 7) nhận 1 electron → Y⁻; cân bằng điện tích cần 2 Y → XY₂ (CaCl₂).\n\nVì sao các phương án khác sai:\n- A: X nhường 2 electron mà mỗi Y chỉ nhận 1, nên cần 2 nguyên tử Y.\n- B: Em đã đảo chỉ số; cần 2 nguyên tử Y cho mỗi X.\n- C: 7 là số electron lớp ngoài cùng của Y, không phải chỉ số trong công thức."
+  },
+  {
+   "ma_cau": "K07020203061",
+   "nhom_id": "KNB00315",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tố X có Z = 11, nguyên tố Y có Z = 8. Công thức của hợp chất tạo bởi X và Y là",
+   "lua_chon": [
+    "XY",
+    "X₂Y",
+    "XY₂",
+    "X₆Y"
+   ],
+   "dap_an": "B",
+   "loi_giai": "X (2, 8, 1) nhường 1 electron → X⁺; Y (2, 6) nhận 2 electron → Y²⁻; cần 2 X cho 1 Y → X₂Y (Na₂O).\n\nVì sao các phương án khác sai:\n- A: X chỉ nhường 1 electron mà Y cần nhận 2, nên cần 2 nguyên tử X.\n- C: Em đã đảo chỉ số; cần 2 nguyên tử X cho mỗi Y.\n- D: 6 là số electron lớp ngoài cùng của Y; Y chỉ cần nhận 2 electron."
+  },
+  {
+   "ma_cau": "K07020203062",
+   "nhom_id": "KNB00315",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tố X ở chu kì 3, nhóm VIIA; nguyên tố Y ở chu kì 3, nhóm IA. Phát biểu nào đúng về hợp chất tạo bởi X và Y?",
+   "lua_chon": [
+    "Công thức YX, là chất cộng hóa trị, là chất khí ở điều kiện thường",
+    "Công thức YX₇, là chất ion, rắn ở điều kiện thường",
+    "Công thức Y₂X, là chất ion, rắn ở điều kiện thường",
+    "Công thức YX, là chất ion, rắn ở điều kiện thường"
+   ],
+   "dap_an": "D",
+   "loi_giai": "X (2, 8, 7) là chlorine, Y (2, 8, 1) là sodium; Y nhường 1 electron cho X → chất ion YX (NaCl), rắn ở điều kiện thường.\n\nVì sao các phương án khác sai:\n- A: Y (kim loại) và X (phi kim) tạo chất ion, là chất rắn.\n- B: 7 là số thứ tự nhóm của X; mỗi X chỉ nhận 1 electron từ 1 nguyên tử Y.\n- C: Y nhường 1 electron, X nhận 1 electron nên tỉ lệ 1 : 1."
+  },
+  {
+   "ma_cau": "K07020203063",
+   "nhom_id": "KNB00315",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử X có 3 lớp electron, lớp ngoài cùng có 1 electron; nguyên tử Y có 2 lớp electron với 7 electron ở lớp ngoài cùng. Hợp chất tạo bởi X và Y có công thức và đặc điểm nào?",
+   "lua_chon": [
+    "NaF, chất cộng hóa trị, dễ bay hơi",
+    "NaF₂, chất ion, nóng chảy ở nhiệt độ cao",
+    "NaF, chất ion, nóng chảy ở nhiệt độ cao",
+    "Na₂F, chất ion, nóng chảy ở nhiệt độ cao"
+   ],
+   "dap_an": "C",
+   "loi_giai": "X (2,8,1) là kim loại kiềm nhường 1 electron; Y (2,7) là phi kim nhận 1 electron. Tỉ lệ 1:1 → NaF, liên kết ion, nóng chảy ở nhiệt độ cao.\n\nVì sao các phương án khác sai:\n- A: Hợp chất giữa kim loại điển hình và phi kim điển hình là liên kết ion, không phải cộng hóa trị.\n- B: Na nhường 1 electron, F chỉ cần nhận 1 electron nên tỉ lệ 1:1 (NaF), không phải NaF₂.\n- D: Nhầm vị trí chỉ số: X nhường electron nên đứng trước, đúng phải là NaF chứ không phải Na₂F."
+  },
+  {
+   "ma_cau": "K07020204052",
+   "nhom_id": "KNB00316",
+   "loai": "trac_nghiem",
+   "de": "Trong phân tử HCl, liên kết được hình thành như thế nào?",
+   "lua_chon": [
+    "H và Cl mỗi nguyên tử góp 1 electron, tạo 1 cặp electron dùng chung",
+    "H nhường 1 electron cho Cl, tạo ion H⁺ và Cl⁻",
+    "Cl nhường 1 electron cho H",
+    "H và Cl mỗi nguyên tử góp 2 electron, tạo 2 cặp electron dùng chung"
+   ],
+   "dap_an": "A",
+   "loi_giai": "H thiếu 1 electron (để giống helium), Cl thiếu 1 electron (để đủ 8): mỗi nguyên tử góp 1 electron → 1 cặp dùng chung.\n\nVì sao các phương án khác sai:\n- B: H và Cl đều là phi kim nên dùng chung electron, không cho – nhận.\n- C: Hai phi kim không cho – nhận electron; hơn nữa Cl cần thêm chứ không nhường electron.\n- D: H chỉ có 1 electron và mỗi nguyên tử chỉ thiếu 1 electron nên chỉ góp 1."
+  },
+  {
+   "ma_cau": "K07020204053",
+   "nhom_id": "KNB00316",
+   "loai": "trac_nghiem",
+   "de": "Trong phân tử CH₄, nguyên tử C (2, 4) liên kết với 4 nguyên tử H như thế nào?",
+   "lua_chon": [
+    "C góp 1 electron, tạo 1 cặp electron dùng chung",
+    "C góp 4 electron, tạo 2 cặp electron dùng chung",
+    "C góp 4 electron, tạo 4 cặp electron dùng chung với 4 nguyên tử H",
+    "C nhận 4 electron từ 4 nguyên tử H, tạo ion C⁴⁻"
+   ],
+   "dap_an": "C",
+   "loi_giai": "C có 4 electron lớp ngoài cùng, thiếu 4: góp 4 electron, mỗi H góp 1 → 4 cặp dùng chung; C đủ 8, mỗi H đủ 2.\n\nVì sao các phương án khác sai:\n- A: C thiếu 4 electron nên phải tạo 4 cặp dùng chung, mỗi cặp với 1 nguyên tử H.\n- B: Mỗi cặp gồm 1 electron của C và 1 electron của H; 4 electron của C tạo 4 cặp.\n- D: C và H đều là phi kim nên dùng chung electron, không cho – nhận."
+  },
+  {
+   "ma_cau": "K07020204054",
+   "nhom_id": "KNB00316",
+   "loai": "trac_nghiem",
+   "de": "Trong phân tử O₂, liên kết được hình thành như thế nào?",
+   "lua_chon": [
+    "Mỗi O góp 2 electron, tạo 2 cặp electron dùng chung",
+    "Một O nhường 2 electron cho O còn lại, tạo ion O²⁺ và O²⁻",
+    "Mỗi O góp 1 electron, tạo 1 cặp electron dùng chung",
+    "O và O đều là kim loại nên nhường electron cho nhau"
+   ],
+   "dap_an": "A",
+   "loi_giai": "O có 6 electron lớp ngoài cùng, thiếu 2: mỗi O góp 2 electron → 2 cặp electron dùng chung; mỗi O đủ 8 electron.\n\nVì sao các phương án khác sai:\n- B: Hai nguyên tử cùng loại (đều là phi kim O) không cho – nhận electron, mà góp chung.\n- C: Mỗi O (2, 6) thiếu 2 electron nên phải góp 2, không phải 1.\n- D: Oxygen là phi kim, không phải kim loại; hai phi kim giống nhau dùng chung electron."
+  },
+  {
+   "ma_cau": "K07020204055",
+   "nhom_id": "KNB00316",
+   "loai": "trac_nghiem",
+   "de": "Phân tử O₂ có bao nhiêu cặp electron dùng chung?",
+   "lua_chon": [
+    "1 cặp",
+    "4 cặp",
+    "2 cặp",
+    "6 cặp"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Mỗi O thiếu 2 electron → mỗi O góp 2 electron → 2 cặp electron dùng chung.\n\nVì sao các phương án khác sai:\n- A: Mỗi O (2, 6) thiếu 2 electron nên phải góp 2 electron, tạo 2 cặp dùng chung.\n- B: 4 là tổng số electron dùng chung; cứ 2 electron tạo 1 cặp.\n- D: 6 là số electron lớp ngoài cùng của mỗi O, không phải số cặp dùng chung."
+  },
+  {
+   "ma_cau": "K07020204056",
+   "nhom_id": "KNB00316",
+   "loai": "trac_nghiem",
+   "de": "Phân tử N₂ có bao nhiêu cặp electron dùng chung?",
+   "lua_chon": [
+    "3 cặp",
+    "1 cặp",
+    "2 cặp",
+    "5 cặp"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Mỗi N thiếu 3 electron → mỗi N góp 3 electron → 3 cặp electron dùng chung.\n\nVì sao các phương án khác sai:\n- B: Mỗi N (2, 5) thiếu 3 electron nên phải tạo 3 cặp dùng chung.\n- C: 2 là số nguyên tử trong phân tử, không phải số cặp dùng chung.\n- D: 5 là số electron lớp ngoài cùng của N."
+  },
+  {
+   "ma_cau": "K07020204057",
+   "nhom_id": "KNB00316",
+   "loai": "trac_nghiem",
+   "de": "Phân tử CO₂ có bao nhiêu cặp electron dùng chung?",
+   "lua_chon": [
+    "2 cặp",
+    "3 cặp",
+    "8 cặp",
+    "4 cặp"
+   ],
+   "dap_an": "D",
+   "loi_giai": "C (2, 4) thiếu 4, mỗi O (2, 6) thiếu 2 → C tạo 2 cặp với mỗi O → tổng 4 cặp electron dùng chung.\n\nVì sao các phương án khác sai:\n- A: Mỗi O thiếu 2 electron nên tạo 2 cặp với C; có 2 nguyên tử O nên tổng là 4 cặp.\n- B: 3 là số nguyên tử trong phân tử, không phải số cặp dùng chung.\n- C: 8 là số electron dùng chung; cứ 2 electron tạo 1 cặp."
+  },
+  {
+   "ma_cau": "K07020204058",
+   "nhom_id": "KNB00316",
+   "loai": "trac_nghiem",
+   "de": "Phân tử H₂O có bao nhiêu cặp electron dùng chung?",
+   "lua_chon": [
+    "3 cặp",
+    "2 cặp",
+    "1 cặp",
+    "4 cặp"
+   ],
+   "dap_an": "B",
+   "loi_giai": "O (2, 6) thiếu 2 electron → tạo 1 cặp với mỗi H → 2 cặp electron dùng chung.\n\nVì sao các phương án khác sai:\n- A: 3 là số nguyên tử trong phân tử, không phải số cặp dùng chung.\n- C: O thiếu 2 electron, liên kết với 2 nguyên tử H nên có 2 cặp dùng chung.\n- D: 4 là số electron dùng chung; cứ 2 electron tạo 1 cặp."
+  },
+  {
+   "ma_cau": "K07020204059",
+   "nhom_id": "KNB00316",
+   "loai": "trac_nghiem",
+   "de": "Phân tử NH₃ có bao nhiêu cặp electron dùng chung?",
+   "lua_chon": [
+    "3 cặp",
+    "4 cặp",
+    "6 cặp",
+    "1 cặp"
+   ],
+   "dap_an": "A",
+   "loi_giai": "N (2, 5) thiếu 3 electron → tạo 1 cặp với mỗi H → 3 cặp electron dùng chung.\n\nVì sao các phương án khác sai:\n- B: 4 là số nguyên tử trong phân tử, không phải số cặp dùng chung.\n- C: 6 là số electron dùng chung; cứ 2 electron tạo 1 cặp.\n- D: N thiếu 3 electron, liên kết với 3 nguyên tử H nên có 3 cặp dùng chung."
+  },
+  {
+   "ma_cau": "K07020204060",
+   "nhom_id": "KNB00316",
+   "loai": "trac_nghiem",
+   "de": "Phân tử F₂ có bao nhiêu cặp electron dùng chung?",
+   "lua_chon": [
+    "2 cặp",
+    "1 cặp",
+    "7 cặp",
+    "14 cặp"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Mỗi F (2, 7) thiếu 1 electron → mỗi F góp 1 electron → 1 cặp electron dùng chung.\n\nVì sao các phương án khác sai:\n- A: Mỗi F (2, 7) chỉ thiếu 1 electron, không phải 2, nên chỉ tạo 1 cặp dùng chung.\n- C: 7 là số electron lớp ngoài cùng của mỗi F, không phải số cặp dùng chung.\n- D: 14 là tổng số electron lớp ngoài cùng của 2 nguyên tử F, không phải số cặp dùng chung."
+  },
+  {
+   "ma_cau": "K07020204061",
+   "nhom_id": "KNB00316",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tử X có 2 lớp electron, lớp ngoài cùng có 6 electron; nguyên tử Y có 1 lớp electron với 1 electron. Hợp chất tạo bởi X và Y có công thức và kiểu liên kết nào?",
+   "lua_chon": [
+    "Y₂X, liên kết ion",
+    "Y₂X, liên kết cộng hóa trị",
+    "YX₂, liên kết cộng hóa trị",
+    "YX, liên kết cộng hóa trị"
+   ],
+   "dap_an": "B",
+   "loi_giai": "X (2, 6) là oxygen, thiếu 2 electron; Y là hydrogen, thiếu 1 → 2 Y góp chung với 1 X → Y₂X (H₂O), liên kết cộng hóa trị.\n\nVì sao các phương án khác sai:\n- A: Y là hydrogen, một phi kim; hai phi kim tạo liên kết cộng hóa trị.\n- C: X thiếu 2 electron nên cần 2 nguyên tử Y, không phải 2 nguyên tử X.\n- D: X thiếu 2 electron, mỗi Y chỉ góp 1 nên cần 2 nguyên tử Y."
+  },
+  {
+   "ma_cau": "K07020106049",
+   "nhom_id": "KNB00312",
+   "loai": "trac_nghiem",
+   "de": "Một oxide có công thức R₂O₅, khối lượng phân tử 142 amu. Nguyên tố R là",
+   "lua_chon": [
+    "Nitrogen",
+    "Sulfur",
+    "Chlorine",
+    "Phosphorus"
+   ],
+   "dap_an": "D",
+   "loi_giai": "2R + 5×16 = 142 → 2R = 62 → R = 31 → phosphorus (P₂O₅).\n\nVì sao các phương án khác sai:\n- A: Nitrogen cho M = 2×14+80 = 108, không khớp 142.\n- B: Sulfur cho M = 2×32+80 = 144, gần nhưng không khớp 142.\n- C: Chlorine cho M = 2×35,5+80 = 151, không khớp 142."
+  },
+  {
+   "ma_cau": "K07020106050",
+   "nhom_id": "KNB00312",
+   "loai": "trac_nghiem",
+   "de": "Khí X có công thức XO₂, khối lượng phân tử 64 amu, có mùi hắc và là một nguyên nhân gây mưa acid. X là",
+   "lua_chon": [
+    "sulfur",
+    "copper",
+    "carbon",
+    "nitrogen"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Khối lượng nguyên tử X = 64 − 16 × 2 = 32 amu, nên X là sulfur (SO₂).\n\nVì sao các phương án khác sai:\n- B: 64 amu là khối lượng cả phân tử; phải trừ khối lượng 2 nguyên tử O.\n- C: CO₂ có khối lượng phân tử 44 amu, KHÔNG phải 64 amu.\n- D: NO₂ có khối lượng phân tử 46 amu, KHÔNG phải 64 amu."
+  },
+  {
+   "ma_cau": "K07020106051",
+   "nhom_id": "KNB00312",
+   "loai": "trac_nghiem",
+   "de": "Trước khi chụp X-quang dạ dày, bệnh nhân uống một chất cản quang có công thức RSO₄, khối lượng phân tử 233 amu. Nguyên tố R là",
+   "lua_chon": [
+    "calcium",
+    "barium",
+    "zinc",
+    "copper"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Nhóm SO₄ = 32 + 16 × 4 = 96 amu; khối lượng nguyên tử R = 233 − 96 = 137 amu, nên R là barium (BaSO₄).\n\nVì sao các phương án khác sai:\n- A: CaSO₄ có khối lượng phân tử 136 amu, KHÔNG phải 233 amu.\n- C: ZnSO₄ có khối lượng phân tử 161 amu, KHÔNG phải 233 amu.\n- D: CuSO₄ có khối lượng phân tử 160 amu, KHÔNG phải 233 amu."
+  },
+  {
+   "ma_cau": "K07020106052",
+   "nhom_id": "KNB00312",
+   "loai": "trac_nghiem",
+   "de": "Nguyên tố X tạo với chlorine một hợp chất có công thức XCl₃, khối lượng phân tử 133,5 amu. X là",
+   "lua_chon": [
+    "iron",
+    "phosphorus",
+    "aluminium",
+    "nitrogen"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Khối lượng 3 nguyên tử Cl = 35,5 × 3 = 106,5 amu; khối lượng nguyên tử X = 133,5 − 106,5 = 27 amu, nên X là aluminium (AlCl₃).\n\nVì sao các phương án khác sai:\n- A: FeCl₃ có khối lượng phân tử 162,5 amu, KHÔNG phải 133,5 amu.\n- B: PCl₃ có khối lượng phân tử 137,5 amu, KHÔNG phải 133,5 amu.\n- D: NCl₃ có khối lượng phân tử 120,5 amu, KHÔNG phải 133,5 amu."
+  }
+ ]
+}

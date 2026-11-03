@@ -1,0 +1,1643 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00554",
+   "chu_de": "Di truyền học",
+   "chuyen_de": "Nucleic acid và gene",
+   "nhom": "Lý thuyết cơ bản về nucleic acid và gene",
+   "nhom_ly_thuyet": "I. Lý thuyết dạng bài\n–  Nucleic acid là đại phân tử sinh học, cấu tạo theo nguyên tắc đa phân, đơn phân là nucleotide; gồm hai loại: DNA và RNA.\n–  Mỗi nucleotide gồm ba thành phần: đường 5 carbon, nhóm phosphate và một loại base nitrogen (DNA: A, T, G, C; RNA: A, U, G, C).\n–  DNA có cấu trúc hai mạch polynucleotide song song, ngược chiều, xoắn quanh một trục (xoắn kép); các base giữa hai mạch liên kết theo nguyên tắc bổ sung: A liên kết với T bằng 2 liên kết hydrogen, G liên kết với C bằng 3 liên kết hydrogen.\n–  Chức năng của DNA: lưu giữ, bảo quản và truyền đạt thông tin di truyền.\n–  Gene là một đoạn của phân tử DNA mang thông tin quy định một sản phẩm nhất định (một phân tử RNA hoặc một chuỗi polypeptide).\n–  RNA thường có một mạch, gồm ba loại: mRNA (truyền thông tin), tRNA (vận chuyển amino acid), rRNA (cấu tạo nên ribosome).\nCÁC BƯỚC GIẢI\nBước 1: Đọc kĩ phát biểu, xác định đối tượng được nhắc đến (DNA, RNA, gene hay nucleotide).\nBước 2: Đối chiếu với đặc điểm cấu trúc và chức năng đã học của từng đối tượng.\nBước 3: Kết luận phát biểu đúng/sai hoặc chọn phương án phù hợp.\nII. Ví dụ minh hoạ\nPhát biểu nào sau đây về DNA là đúng? \nA. DNA có cấu trúc một mạch. \nB. Hai mạch của DNA liên kết với nhau bằng liên kết cộng hoá trị. \nC. Các base giữa hai mạch của DNA liên kết theo nguyên tắc bổ sung: A – T, G – C. \nD. DNA chỉ có chức năng cấu tạo nên ribosome.\nHướng dẫn giải:\nXét từng phương án:\n–  A sai: DNA có cấu trúc hai mạch (mạch kép), không phải một mạch.\n–  B sai: hai mạch DNA liên kết với nhau bằng liên kết hydrogen giữa các base, không phải liên kết cộng hoá trị (liên kết cộng hoá trị chỉ có giữa các nucleotide trên cùng một mạch).\n–  C đúng: đây chính là nguyên tắc bổ sung giữa hai mạch của DNA.\n–  D sai: cấu tạo nên ribosome là chức năng của rRNA, không phải DNA.\nĐáp án: C.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01546",
+     "thu_tu": 1,
+     "ten": "Nhận biết thành phần, cấu trúc và vị trí của nucleotide, DNA",
+     "mo_ta": "Đề hỏi một chi tiết cấu tạo của nucleotide hoặc của phân tử DNA: thành phần, đơn phân, số mạch, kiểu xoắn, loại liên kết, vị trí của DNA trong tế bào.\nGồm câu hỏi trực tiếp một ý và câu chọn phát biểu đúng/sai tổng hợp nhiều ý về cấu trúc.\nLưu ý: hỏi quy tắc bắt cặp A – T, G – C ⇒ thuộc dạng \"Nguyên tắc bổ sung giữa các base trong DNA\"; hỏi chức năng hoặc lí do cấu trúc phù hợp chức năng ⇒ thuộc dạng \"Giải thích mối liên hệ giữa cấu trúc và chức năng của DNA\".",
+     "ly_thuyet": "##TC Cấu tạo của nucleotide và DNA\nNucleotide gồm đường 5 carbon (deoxyribose ở DNA), nhóm phosphate và một base nitrogen; DNA có 4 loại nucleotide (A, T, G, C) khác nhau ở base.\nDNA gồm hai mạch polynucleotide song song, ngược chiều, xoắn quanh một trục (xoắn kép); các base quay vào phía trong.\nCác nucleotide trên cùng một mạch nối nhau bằng liên kết cộng hoá trị (phosphate – đường); hai mạch nối nhau bằng liên kết hydrogen giữa các base.\nDNA tập trung chủ yếu ở nhân tế bào, một lượng nhỏ ở ti thể và lục lạp.\n\n##PP Cách làm\nXác định đối tượng được hỏi (nucleotide, một mạch hay cả phân tử DNA).\nNhớ lại đặc điểm cấu trúc tương ứng của đối tượng đó.\nLoại các phương án nhầm với RNA hoặc protein rồi chọn đáp án.\n\n##CY Lỗi hay mắc\nNhầm liên kết cộng hoá trị (cùng một mạch) với liên kết hydrogen (giữa hai mạch).\nNhầm nucleotide (đơn phân) với nucleic acid (cả đại phân tử).\nNhầm DNA với RNA: DNA hai mạch, đường deoxyribose, có base T.",
+     "vi_du": "##VD\nCác nucleotide trên cùng một mạch của phân tử DNA liên kết với nhau bằng loại liên kết nào?\nA. Liên kết hydrogen.\nB. Liên kết cộng hoá trị.\nC. Liên kết ion.\nD. Liên kết peptide.\n\nBài giải:\nTrên cùng một mạch, nhóm phosphate của nucleotide này nối với đường của nucleotide kế tiếp bằng liên kết cộng hoá trị.\nLiên kết hydrogen chỉ có giữa các base của hai mạch; liên kết peptide có ở protein; liên kết ion không có trong cấu trúc DNA.\nChọn B.\n\n##VD\nCho các phát biểu sau:\n(1) DNA có trong nhân, ti thể và lục lạp.\n(2) Đơn phân của DNA và RNA đều là nucleotide.\n(3) Base nitrogen là thành phần quyết định tên gọi của nucleotide.\n(4) Mọi loại RNA đều có cấu trúc mạch thẳng, không cuộn gấp.\nSố phát biểu đúng là\nA. 1\nB. 2\nC. 3\nD. 4\n\nBài giải:\n(1) đúng: DNA có chủ yếu trong nhân và một lượng nhỏ trong ti thể, lục lạp.\n(2) đúng: cả DNA và RNA đều cấu tạo theo nguyên tắc đa phân, đơn phân là nucleotide.\n(3) đúng: đường và nhóm phosphate giống nhau, chỉ base nitrogen khác nhau nên base quyết định tên nucleotide.\n(4) sai: tRNA có cấu trúc cuộn gấp đặc trưng.\nVậy có 3 phát biểu đúng.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01547",
+     "thu_tu": 2,
+     "ten": "Nguyên tắc bổ sung giữa các base trong DNA",
+     "mo_ta": "Đề hỏi base nào bắt cặp với base nào, số liên kết hydrogen của mỗi cặp, hoặc so sánh số lượng các loại nucleotide theo nguyên tắc bổ sung.\nChỉ vận dụng quy tắc A – T, G – C ở mức nhận biết, chưa có phép tính số lượng cụ thể.\nLưu ý: có số liệu tính N, H, L, M ⇒ thuộc nhóm bài tập tính toán nucleic acid và gene.",
+     "ly_thuyet": "##TC Nguyên tắc bổ sung\nBase trên hai mạch bắt cặp bổ sung: A liên kết với T bằng 2 liên kết hydrogen; G liên kết với C bằng 3 liên kết hydrogen.\nHệ quả: số nucleotide loại A bằng số loại T, số loại G bằng số loại C trong phân tử DNA.\nBase U không có trong DNA, chỉ có ở RNA.\n\n##CY Lỗi hay mắc\nKhông có ngoại lệ trong DNA bình thường: A chỉ bắt cặp với T, không bắt cặp với G, C hay U.\nNhớ nhầm số liên kết: A – T có 2, G – C có 3 (không phải ngược lại).",
+     "vi_du": "##VD\nTheo nguyên tắc bổ sung, cặp nucleotide A – T liên kết với nhau bằng bao nhiêu liên kết hydrogen?\nA. 1 liên kết\nB. 3 liên kết\nC. 2 liên kết\nD. 4 liên kết\n\nBài giải:\nTheo nguyên tắc bổ sung, A liên kết với T bằng 2 liên kết hydrogen, còn G liên kết với C bằng 3 liên kết hydrogen.\nChọn C.\n\n##VD\nPhát biểu nào sau đây là SAI khi nói về nguyên tắc bổ sung trong phân tử DNA?\nA. A luôn liên kết với T bằng 2 liên kết hydrogen.\nB. G luôn liên kết với C bằng 3 liên kết hydrogen.\nC. Một base lớn luôn liên kết với một base nhỏ.\nD. A có thể liên kết với C nếu phân tử bị xoắn mạnh.\n\nBài giải:\nNguyên tắc bổ sung là quy luật chặt chẽ: A chỉ bắt cặp với T, G chỉ bắt cặp với C.\nCác phương án A, B, C đúng; phương án D sai vì A không bao giờ bắt cặp với C trong cấu trúc DNA bình thường.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01548",
+     "thu_tu": 3,
+     "ten": "Phân biệt DNA với RNA và chức năng của ba loại RNA",
+     "mo_ta": "Đề hỏi đặc điểm của RNA (số mạch, đường, base), chức năng của mRNA, tRNA, rRNA, hoặc so sánh DNA với RNA.\nGồm câu nhận biết một loại RNA, câu chọn phát biểu đúng/sai về RNA và câu so sánh DNA – RNA.\nLưu ý: chỉ hỏi cấu trúc, chức năng của DNA ⇒ thuộc dạng \"Nhận biết thành phần, cấu trúc và vị trí của nucleotide, DNA\".",
+     "ly_thuyet": "##TC DNA và RNA\nRNA thường có một mạch, chứa đường ribose, có base U (uracil) thay cho T; đơn phân cũng là nucleotide.\nBa loại RNA: mRNA (truyền thông tin di truyền, làm khuôn tổng hợp protein), tRNA (vận chuyển amino acid, cấu trúc cuộn gấp), rRNA (kết hợp với protein tạo nên ribosome).\nMột số virus (virus cúm, SARS-CoV-2) có vật chất di truyền là RNA; DNA là vật chất di truyền của đa số sinh vật.\n\n##CY Lỗi hay mắc\nPhương án nhiễu thường gắn đặc điểm riêng của DNA (hai mạch, deoxyribose, base T) cho RNA.\nĐiểm giống nhau của DNA và RNA là cấu tạo đa phân từ nucleotide và có chung các base A, G, C.",
+     "vi_du": "##VD\nLoại RNA nào làm khuôn trực tiếp để tổng hợp protein tại ribosome?\nA. mRNA\nB. tRNA\nC. rRNA\nD. Cả ba loại\n\nBài giải:\nmRNA mang bản sao thông tin di truyền từ gene ra tế bào chất và làm khuôn trực tiếp cho tổng hợp protein.\ntRNA chỉ vận chuyển amino acid, rRNA là thành phần cấu tạo ribosome.\nChọn A.\n\n##VD\nPhát biểu nào sau đây về RNA là ĐÚNG?\nA. RNA có cấu trúc hai mạch giống DNA.\nB. RNA chứa đường ribose và có base U thay cho T.\nC. RNA chỉ có trong nhân tế bào.\nD. RNA là vật chất di truyền của mọi sinh vật.\n\nBài giải:\nRNA thường chỉ có một mạch nên A sai.\nRNA chứa đường ribose và dùng base uracil (U) thay cho thymine (T) nên B đúng.\nRNA được tổng hợp trong nhân nhưng hoạt động chủ yếu ở tế bào chất nên C sai.\nVật chất di truyền của đa số sinh vật là DNA nên D sai.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01549",
+     "thu_tu": 4,
+     "ten": "Khái niệm gene và quan hệ giữa gene với DNA",
+     "mo_ta": "Đề hỏi định nghĩa gene, gene quy định điều gì, hoặc phân biệt gene với DNA, nhiễm sắc thể, nucleotide.\nGồm câu nhận biết và câu phân tích nhận định sai (ví dụ cho rằng gene và DNA là một).\nLưu ý: đề nói về tính đặc thù, số trình tự DNA ⇒ thuộc dạng \"Tính đa dạng, đặc thù của DNA và số trình tự có thể có\".",
+     "ly_thuyet": "##TC Gene\nGene là một đoạn của phân tử DNA mang thông tin quy định một sản phẩm nhất định (một phân tử RNA hoặc một chuỗi polypeptide).\nMột phân tử DNA chứa rất nhiều gene; tính trạng của cơ thể do nhiều gene cùng với môi trường quy định.\n\n##CY Lỗi hay mắc\nKhông đồng nhất gene với cả phân tử DNA, với nhiễm sắc thể hay với nucleotide.\nMột gene không quy định toàn bộ tính trạng của cơ thể mà chỉ quy định một sản phẩm.",
+     "vi_du": "##VD\nPhát biểu nào sau đây đúng về gene?\nA. Gene là một đoạn của phân tử DNA mang thông tin di truyền.\nB. Một loại protein cấu tạo nên nhiễm sắc thể được gọi là gene.\nC. Toàn bộ phân tử DNA có trong nhân tế bào chính là một gene.\nD. Đơn phân cấu tạo nên phân tử DNA được gọi là gene.\n\nBài giải:\nGene là một đoạn của phân tử DNA mang thông tin quy định một sản phẩm nhất định nên A đúng.\nGene là DNA chứ không phải protein nên B sai; một phân tử DNA chứa rất nhiều gene nên C sai; đơn phân của DNA là nucleotide nên D sai.\nChọn A.\n\n##VD\nNhận định nào sau đây về mối quan hệ giữa DNA và gene là ĐÚNG?\nA. Gene và DNA là hai tên gọi của cùng một chất.\nB. Mỗi phân tử DNA chỉ chứa duy nhất một gene.\nC. Gene là một đoạn của phân tử DNA, một phân tử DNA chứa rất nhiều gene.\nD. Gene lớn hơn phân tử DNA.\n\nBài giải:\nGene chỉ là một đoạn của phân tử DNA nên A và D sai.\nMột phân tử DNA rất dài, chứa rất nhiều gene nên B sai, C đúng.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01550",
+     "thu_tu": 5,
+     "ten": "Tính đa dạng, đặc thù của DNA và số trình tự có thể có",
+     "mo_ta": "Đề hỏi vì sao DNA vừa đa dạng vừa đặc thù với mỗi cá thể, ứng dụng xét nghiệm DNA, hoặc tính số trình tự nucleotide có thể có.\nGồm câu giải thích dựa trên trình tự sắp xếp nucleotide và câu tính số trình tự bằng công thức luỹ thừa.\nLưu ý: chỉ hỏi cấu tạo nucleotide hoặc cấu trúc xoắn kép ⇒ thuộc dạng \"Nhận biết thành phần, cấu trúc và vị trí của nucleotide, DNA\".",
+     "ly_thuyet": "##TC Tính đa dạng và đặc thù\nThông tin di truyền nằm ở số lượng và đặc biệt là trình tự sắp xếp của các nucleotide, không nằm ở số loại nucleotide.\nMỗi vị trí trên mạch có 4 khả năng (A, T, G, C) nên đoạn mạch có $n$ nucleotide có $4^n$ trình tự khác nhau.\nTrình tự DNA ở mỗi cá thể là đặc thù (trừ sinh đôi cùng trứng), là cơ sở của xét nghiệm DNA xác định huyết thống và giám định pháp y.\n\n##PP Tính số trình tự\nĐếm số vị trí nucleotide $n$ trên một mạch.\nMỗi vị trí có 4 lựa chọn, các vị trí độc lập nhau.\nSố trình tự là $4^n$.\n\n##CY Lỗi hay mắc\nKhông viết $4 \\times n$ hay $n^4$: phải là $4$ mũ $n$.\nÍt loại đơn phân không có nghĩa là ít thông tin vì thông tin nằm ở trình tự.",
+     "vi_du": "##VD\nVì sao mỗi người (trừ trường hợp sinh đôi cùng trứng) đều có trình tự DNA riêng, không ai giống ai?\nA. Vì số lượng nucleotide ở mỗi người khác nhau hoàn toàn.\nB. Vì trình tự sắp xếp các nucleotide ở mỗi người là khác nhau, tạo nên tính đặc thù.\nC. Vì mỗi người có số loại base nitrogen khác nhau.\nD. Vì DNA của mỗi người nằm ở vị trí khác nhau trong tế bào.\n\nBài giải:\nMọi người đều dùng chung 4 loại nucleotide, số loại base nitrogen như nhau nên A, C sai.\nĐiểm khác nhau là trình tự sắp xếp các nucleotide ở mỗi cá thể, tạo nên tính đặc thù của DNA.\nChọn B.\n\n##VD\nMột đoạn mạch đơn của DNA gồm 5 nucleotide. Về lí thuyết có bao nhiêu trình tự sắp xếp khác nhau có thể có?\n\nBài giải:\nMỗi vị trí có 4 lựa chọn (A, T, G, C) và có 5 vị trí độc lập nhau.\nSố trình tự khác nhau là $4^5 = 1\\ 024$.\nĐáp án: 1 024."
+    },
+    {
+     "dang_id": "KDB01551",
+     "thu_tu": 6,
+     "ten": "Giải thích mối liên hệ giữa cấu trúc và chức năng của DNA",
+     "mo_ta": "Đề hỏi vì sao một đặc điểm cấu trúc của DNA giúp thực hiện chức năng bảo quản, truyền đạt thông tin di truyền, hoặc vì sao con giống bố mẹ.\nGồm câu trắc nghiệm chọn lí do đúng và câu trả lời ngắn yêu cầu phân biệt, phân tích, giải thích.\nLưu ý: chỉ hỏi cấu trúc mà không yêu cầu giải thích chức năng ⇒ thuộc dạng \"Nhận biết thành phần, cấu trúc và vị trí của nucleotide, DNA\".",
+     "ly_thuyet": "##TC Chức năng của DNA\nDNA lưu giữ, bảo quản và truyền đạt thông tin di truyền.\nBảo quản: các base nằm phía trong, được khung đường – phosphate bền vững bao ngoài; cấu trúc xoắn kép bền do rất nhiều liên kết hydrogen.\nTruyền đạt: DNA nhân đôi chính xác theo nguyên tắc bổ sung nên thông tin được truyền từ tế bào mẹ sang tế bào con và từ bố mẹ sang con.\nMỗi liên kết hydrogen yếu nên hai mạch vẫn tách được khi nhân đôi.\n\n##PP Cách làm\nXác định chức năng được hỏi (bảo quản hay truyền đạt).\nTìm đặc điểm cấu trúc gắn trực tiếp với chức năng đó.\nLoại các phương án nêu đặc điểm không liên quan.\n\n##CY Lỗi hay mắc\nNhầm đặc điểm không liên quan (khối lượng lớn, tan trong nước) với đặc điểm giúp bảo quản thông tin.",
+     "vi_du": "##VD\nVì sao liên kết hydrogen giữa hai mạch của DNA tuy yếu nhưng vẫn giúp phân tử bền vững?\nA. Vì mỗi liên kết hydrogen rất mạnh.\nB. Vì số lượng liên kết hydrogen trong phân tử rất lớn nên tổng lực liên kết mạnh.\nC. Vì liên kết hydrogen được bảo vệ bởi nhóm phosphate.\nD. Vì hai mạch còn được nối thêm bằng liên kết ion.\n\nBài giải:\nTừng liên kết hydrogen riêng lẻ rất yếu nên A sai.\nMột phân tử DNA có rất nhiều liên kết hydrogen nên tổng lực liên kết đủ lớn để giữ hai mạch gắn bó.\nChọn B.\n\n##VD\nĐặc điểm nào sau đây giúp DNA thực hiện tốt chức năng BẢO QUẢN thông tin di truyền?\nA. Có khối lượng phân tử lớn.\nB. Cấu trúc xoắn kép với các base nằm phía trong và được bảo vệ bởi khung đường – phosphate.\nC. Có khả năng di chuyển tự do trong tế bào.\nD. Có thể tan tốt trong nước.\n\nBài giải:\nCác base mang thông tin được giấu vào phía trong chuỗi xoắn.\nKhung đường – phosphate bền vững bao bên ngoài nên thông tin ít bị tác nhân bên ngoài làm hư hại.\nChọn B."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00558",
+   "chu_de": "Di truyền học",
+   "chuyen_de": "Đột biến gene",
+   "nhom": "Lý thuyết cơ bản về đột biến gene",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nĐột biến gene là biến đổi trong cấu trúc của gene, liên quan tới một hoặc một số cặp nucleotide; xảy ra ở cấp độ phân tử và tạo ra allele mới.\nĐột biến điểm có ba dạng: mất, thêm hoặc thay thế một cặp nucleotide.\nĐột biến ở tế bào sinh dục di truyền được cho đời sau; đột biến ở tế bào sinh dưỡng không di truyền qua sinh sản hữu tính.\nTác nhân gây đột biến: vật lí (tia UV, tia X, tia phóng xạ), hoá học (5-bromouracil, EMS, dioxin), sinh học (một số virus); đột biến cũng phát sinh tự nhiên do rối loạn khi tái bản DNA.\nĐột biến có thể có lợi, có hại hoặc trung tính tuỳ ảnh hưởng đến sức sống và sinh sản; là nguyên liệu cho tiến hoá và chọn giống.\n\n##CY 2. Lưu ý\nMất hoặc thêm một cặp nucleotide làm dịch khung đọc nên hậu quả nặng hơn thay thế.\nĐột biến gene khác biến dị tổ hợp: đột biến tạo allele mới, biến dị tổ hợp chỉ tổ hợp lại allele có sẵn.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01554",
+     "thu_tu": 1,
+     "ten": "Khái niệm, đặc điểm và sự di truyền của đột biến gene",
+     "mo_ta": "Đề hỏi định nghĩa đột biến gene, cấp độ xảy ra, đột biến điểm, kết quả trực tiếp, tần số tự nhiên.\nGồm câu hỏi đột biến ở tế bào sinh dục hay sinh dưỡng thì có di truyền cho đời sau không và câu phân biệt với biến dị tổ hợp.\nLưu ý: hỏi từng dạng mất, thêm, thay thế ⇒ thuộc dạng \"Nhận biết các dạng đột biến điểm\".",
+     "ly_thuyet": "##TC Đặc điểm của đột biến gene\nĐột biến gene là biến đổi cấu trúc gene liên quan tới một hoặc một số cặp nucleotide, xảy ra ở cấp độ phân tử, tạo ra allele mới.\nĐột biến điểm là đột biến liên quan tới một cặp nucleotide.\nTần số đột biến tự nhiên rất thấp.\nĐột biến ở tế bào sinh dục di truyền được cho thế hệ sau; ở tế bào sinh dưỡng không di truyền qua sinh sản hữu tính.\n\n##CY Lỗi hay mắc\nNhầm đột biến gene (phân tử) với đột biến nhiễm sắc thể (cấp tế bào).\nNhầm đột biến gene với biến dị tổ hợp: chỉ đột biến gene tạo allele mới.",
+     "vi_du": "##VD\nĐột biến gene xảy ra ở cấp độ nào?\nA. Cấp độ tế bào, trong cấu trúc nhiễm sắc thể.\nB. Ở cấp độ phân tử, trong cấu trúc DNA.\nC. Làm thay đổi hình dạng bên ngoài cơ thể.\nD. Quần thể thay đổi tỉ lệ kiểu gene.\n\nBài giải:\nĐột biến gene là biến đổi trong cấu trúc của gene nên xảy ra ở cấp độ phân tử, trong cấu trúc DNA.\nChọn B.\n\n##VD\nĐột biến gene có thể di truyền cho thế hệ sau khi nào?\nA. Xảy ra ở bất kì tế bào nào trong cơ thể.\nB. Tế bào não cũng xảy ra đột biến này.\nC. Cơ thể mang đột biến còn nhỏ tuổi.\nD. Khi xảy ra ở tế bào sinh dục.\n\nBài giải:\nĐột biến gene chỉ di truyền được cho thế hệ sau khi xảy ra ở tế bào sinh dục, tham gia tạo giao tử.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01555",
+     "thu_tu": 2,
+     "ten": "Nhận biết các dạng đột biến điểm",
+     "mo_ta": "Đề hỏi khái niệm từng dạng mất, thêm, thay thế một cặp nucleotide hoặc dạng nào làm thay đổi tổng số cặp nucleotide.\nChỉ nhận biết dạng đột biến, không hỏi hậu quả lên chuỗi amino acid.\nLưu ý: hỏi hậu quả dịch khung hay đổi amino acid ⇒ thuộc dạng \"Hậu quả của đột biến điểm đối với khung đọc và chuỗi amino acid\".",
+     "ly_thuyet": "##TC Ba dạng đột biến điểm\nMất một cặp nucleotide: một cặp bị loại khỏi mạch DNA, tổng số cặp giảm 1.\nThêm một cặp nucleotide: một cặp mới được chèn vào, tổng số cặp tăng 1.\nThay thế một cặp nucleotide: một cặp được đổi thành cặp khác, tổng số cặp không đổi.\nĐột biến điểm xảy ra ở bất kì vị trí nào trong gene.\n\n##CY Lỗi hay mắc\nNhầm thay thế với mất hoặc thêm: chỉ thay thế không đổi tổng số cặp nucleotide.",
+     "vi_du": "##VD\nĐột biến gene dạng thêm một cặp nucleotide là gì?\nA. Một cặp nucleotide này đổi thành cặp khác.\nB. Một cặp nucleotide bị loại bỏ khỏi mạch DNA.\nC. Hai gene khác nhau được ghép nối thành một.\nD. Một cặp nucleotide mới được chèn thêm vào.\n\nBài giải:\nThêm một cặp nucleotide là chèn thêm một cặp nucleotide mới vào mạch DNA.\nPhương án A là thay thế, B là mất, C không phải đột biến điểm.\nChọn D.\n\n##VD\nDạng đột biến gene nào KHÔNG làm đổi tổng số cặp nucleotide của gene?\nA. Mất một cặp nucleotide.\nB. Thêm một cặp nucleotide.\nC. Thay thế một cặp nucleotide.\nD. Mất nhiều cặp nucleotide liên tiếp.\n\nBài giải:\nMất làm giảm tổng số cặp, thêm làm tăng tổng số cặp.\nThay thế chỉ đổi loại nucleotide tại một vị trí nên tổng số cặp nucleotide không đổi.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01556",
+     "thu_tu": 3,
+     "ten": "Hậu quả của đột biến điểm đối với khung đọc và chuỗi amino acid",
+     "mo_ta": "Đề hỏi một đột biến điểm làm chuỗi amino acid thay đổi thế nào: đổi một amino acid, dịch khung đọc, cắt ngắn chuỗi.\nGồm câu so sánh mức ảnh hưởng của thay thế với mất/thêm và câu cho trình tự bộ ba mRNA cụ thể.\nLưu ý: chỉ hỏi định nghĩa dạng đột biến ⇒ thuộc dạng \"Nhận biết các dạng đột biến điểm\".",
+     "ly_thuyet": "##TC Hậu quả lên chuỗi amino acid\nThay thế một cặp nucleotide chỉ làm đổi một bộ ba nên thường chỉ đổi một amino acid, khung đọc không đổi.\nMất hoặc thêm một cặp nucleotide làm lệch cách chia bộ ba (dịch khung đọc) từ vị trí đột biến trở đi nên đổi hầu hết amino acid phía sau.\nNếu thay thế tạo bộ ba kết thúc sớm thì chuỗi polypeptide bị cắt ngắn.\nMất hoặc thêm bội số của 3 cặp nucleotide không làm lệch khung đọc, chỉ mất hoặc thêm vài amino acid.\n\n##PP Cách làm\nXác định dạng đột biến (thay thế, mất hay thêm).\nXét bộ ba bị đổi và xem khung đọc có bị lệch không.\nKết luận ảnh hưởng lên chuỗi amino acid.\n\n##CY Lỗi hay mắc\nCho rằng thêm hay mất một nucleotide chỉ ảnh hưởng một amino acid.",
+     "vi_du": "##VD\nVì sao đột biến mất hoặc thêm một cặp nucleotide thường gây hậu quả nặng hơn đột biến thay thế?\nA. Toàn bộ gene trên nhiễm sắc thể sẽ mất đi.\nB. Hiện tượng này chỉ xảy ra ở tế bào sinh dục.\nC. Vì làm lệch khung đọc từ vị trí đột biến.\nD. Số lượng nhiễm sắc thể trong tế bào sẽ tăng.\n\nBài giải:\nThay thế chỉ đổi một bộ ba, có thể chỉ đổi một amino acid.\nMất hoặc thêm một cặp làm lệch cách chia bộ ba từ vị trí đột biến trở đi nên ảnh hưởng nhiều bộ ba.\nChọn C.\n\n##VD\nmRNA đọc bộ ba: AUG-GGA-UCA-UAU... Đột biến thay thế đổi UCA thành UAA (bộ ba kết thúc). Hậu quả với chuỗi polypeptide là gì?\nA. Chỉ đổi đúng một amino acid tại vị trí đó.\nB. Không thay đổi vì đây chỉ là đột biến thay thế.\nC. Dài thêm vì có thêm bộ ba kết thúc mới.\nD. Bị cắt ngắn ngay từ vị trí đó, mất toàn bộ phần còn lại.\n\nBài giải:\nUAA là bộ ba kết thúc nên ribosome dừng dịch mã ngay tại đó.\nChuỗi polypeptide bị cắt ngắn, mất phần phía sau.\nChọn D."
+    },
+    {
+     "dang_id": "KDB01557",
+     "thu_tu": 4,
+     "ten": "Phân loại tác nhân gây đột biến gene",
+     "mo_ta": "Đề cho một tác nhân (tia UV, 5-bromouracil, virus, thuốc trừ sâu…) và hỏi thuộc nhóm vật lí, hoá học hay sinh học.\nGồm câu về nguyên nhân phát sinh tự nhiên và câu về lí do cần hạn chế tiếp xúc tác nhân.\nLưu ý: hỏi đột biến có lợi/có hại, vai trò ⇒ thuộc dạng \"Vai trò và ý nghĩa của đột biến gene\".",
+     "ly_thuyet": "##TC Tác nhân gây đột biến\nTác nhân vật lí: tia UV, tia X, tia phóng xạ, sốc nhiệt.\nTác nhân hoá học: 5-bromouracil (5BU), EMS, dioxin, thuốc trừ sâu.\nTác nhân sinh học: một số loại virus.\nĐột biến cũng phát sinh tự nhiên do rối loạn ngẫu nhiên khi tái bản DNA.\n\n##CY Lỗi hay mắc\nNhầm nhóm tác nhân: tia UV là vật lí, virus là sinh học, hoá chất là hoá học.",
+     "vi_du": "##VD\nTác nhân nào sau đây thuộc nhóm HOÁ HỌC gây đột biến gene?\nA. Chất 5-bromouracil (5BU).\nB. Tia phóng xạ.\nC. Sốc nhiệt đột ngột.\nD. Một số loại virus.\n\nBài giải:\n5-bromouracil là hoá chất gây đột biến nên thuộc nhóm hoá học.\nTia phóng xạ và sốc nhiệt là tác nhân vật lí, virus là tác nhân sinh học.\nChọn A.\n\n##VD\nĐột biến gene có thể phát sinh tự nhiên ngay cả khi không có tác nhân rõ ràng, do đâu?\nA. Cơ thể chủ động tạo ra đột biến để thích nghi.\nB. Nhiễm sắc thể tự nhân đôi thêm một lần.\nC. Do rối loạn ngẫu nhiên khi tái bản DNA.\nD. Tế bào ngừng hẳn quá trình phân chia.\n\nBài giải:\nNgay cả khi không có tác nhân, quá trình tái bản DNA vẫn có thể xảy ra rối loạn ngẫu nhiên.\nĐiều đó làm phát sinh đột biến gene.\nChọn C."
+    },
+    {
+     "dang_id": "KDB01558",
+     "thu_tu": 5,
+     "ten": "Vai trò và ý nghĩa của đột biến gene",
+     "mo_ta": "Đề hỏi đột biến có hại, có lợi hay trung tính, điều quyết định tính chất của đột biến, vai trò với tiến hoá và chọn giống.\nGồm câu nhận định và câu giải thích ý nghĩa thực tiễn của đột biến.\nLưu ý: hỏi tác nhân gây đột biến ⇒ thuộc dạng \"Phân loại tác nhân gây đột biến gene\".",
+     "ly_thuyet": "##TC Vai trò của đột biến gene\nĐa số đột biến có hại vì phá vỡ sự hài hoà giữa các gene đã qua chọn lọc.\nĐột biến có lợi, có hại hay trung tính tuỳ mức độ ảnh hưởng đến sức sống và khả năng sinh sản.\nĐột biến tạo allele mới nên là nguyên liệu cho tiến hoá và chọn giống.\nTrong chọn giống, có thể chủ động gây đột biến bằng tác nhân vật lí, hoá học để tạo nguồn biến dị.\n\n##CY Lỗi hay mắc\nKhông phải mọi đột biến đều có lợi hay đều có hại.",
+     "vi_du": "##VD\nĐột biến gene được xem là TRUNG TÍNH khi nào?\nA. Sinh vật chết ngay sau khi sinh ra.\nB. Sức sống và khả năng sinh sản vượt trội hẳn.\nC. Khi không ảnh hưởng rõ rệt sức sống, sinh sản.\nD. Xuất hiện thêm một nhiễm sắc thể mới.\n\nBài giải:\nĐột biến trung tính là đột biến không ảnh hưởng rõ rệt đến sức sống và khả năng sinh sản.\nChọn C.\n\n##VD\nĐột biến gene có vai trò gì với quá trình tiến hoá?\nA. Không có vai trò vì phần lớn có hại.\nB. Có vai trò trong chọn giống, không trong tiến hoá.\nC. Làm quá trình tiến hoá bị dừng lại.\nD. Cung cấp nguyên liệu (allele mới) cho tiến hoá.\n\nBài giải:\nĐột biến gene tạo ra các allele mới.\nCác allele mới là nguồn nguyên liệu cho tiến hoá và chọn giống.\nChọn D."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00559",
+   "chu_de": "Di truyền học",
+   "chuyen_de": "Đột biến gene",
+   "nhom": "Giải thích sự thay đổi chiều dài, số liên kết H và nguyên nhân dẫn tới đột biến",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nMất một cặp nucleotide: số cặp giảm 1, chiều dài giảm 3,4 Å.\nThêm một cặp nucleotide: số cặp tăng 1, chiều dài tăng 3,4 Å.\nThay thế một cặp nucleotide: số cặp và chiều dài không đổi.\nCặp A – T có 2 liên kết hydrogen, cặp G – C có 3 liên kết hydrogen.\nThay A – T bằng G – C: số liên kết hydrogen tăng 1; thay G – C bằng A – T: giảm 1.\n\n##PP 2. Các bước làm bài\nSo sánh số cặp nucleotide (hoặc chiều dài) trước và sau đột biến để xác định thay thế, mất hay thêm.\nDựa vào độ thay đổi số liên kết hydrogen để xác định loại cặp A – T hay G – C.\nĐối chiếu với các phương án rồi chọn đáp án.\n\n##CY 3. Lưu ý\nSố cặp nucleotide là dấu hiệu chắc chắn để phân biệt thay thế với mất/thêm.\nMỗi cặp thay thế làm đổi 1 liên kết hydrogen; thay thế 2 cặp thì đổi 2.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01559",
+     "thu_tu": 1,
+     "ten": "Xác định dạng đột biến khi biết số cặp nucleotide và số liên kết hydrogen thay đổi",
+     "mo_ta": "Đề cho sự thay đổi số cặp nucleotide (giữ nguyên, tăng hoặc giảm 1) và sự thay đổi số liên kết hydrogen.\nHỏi đột biến thuộc dạng nào và liên quan cặp A – T hay G – C.\nLưu ý: đề cho chiều dài thay đổi thay vì số cặp ⇒ thuộc dạng \"Xác định dạng đột biến khi biết chiều dài và số liên kết hydrogen thay đổi\".",
+     "ly_thuyet": "##PP Cách làm\nSố cặp nucleotide không đổi ⇒ thay thế; tăng 1 ⇒ thêm; giảm 1 ⇒ mất.\nVới mất hoặc thêm: H đổi 2 là cặp A – T, đổi 3 là cặp G – C.\nVới thay thế: H tăng 1 là A – T thành G – C, H giảm 1 là G – C thành A – T.\n\n##CY Lỗi hay mắc\nChọn sai chiều: thêm làm tăng, mất làm giảm số liên kết hydrogen.",
+     "vi_du": "##VD\nMột gene bị đột biến. So với gene ban đầu, gene sau đột biến có số cặp nucleotide KHÔNG đổi nhưng số liên kết hydrogen tăng thêm 1. Đột biến này thuộc dạng nào?\nA. Mất một cặp nucleotide.\nB. Thêm một cặp nucleotide.\nC. Thay thế một cặp G-C bằng một cặp A-T.\nD. Thay thế một cặp A-T bằng một cặp G-C.\n\nBài giải:\nSố cặp nucleotide không đổi nên đây là đột biến thay thế (loại A, B).\nSố liên kết hydrogen tăng 1 nên cặp A – T (2 liên kết) đã đổi thành cặp G – C (3 liên kết); phương án C làm H giảm.\nChọn D.\n\n##VD\nMột gene bị đột biến. So với gene ban đầu, gene sau đột biến có số cặp nucleotide giảm đi 1 và số liên kết hydrogen giảm đi 3. Đột biến này thuộc dạng nào?\nA. Mất một cặp A-T.\nB. Mất một cặp G-C.\nC. Thêm một cặp G-C.\nD. Thay thế một cặp A-T bằng một cặp G-C.\n\nBài giải:\nSố cặp nucleotide giảm 1 nên đây là đột biến mất (loại C, D).\nSố liên kết hydrogen giảm 3 nên cặp bị mất là G – C (mất A – T chỉ giảm 2).\nChọn B."
+    },
+    {
+     "dang_id": "KDB01560",
+     "thu_tu": 2,
+     "ten": "Xác định dạng đột biến khi biết chiều dài và số liên kết hydrogen thay đổi",
+     "mo_ta": "Đề cho chiều dài gene không đổi hoặc thay đổi 3,4 Å, kèm sự thay đổi số liên kết hydrogen.\nHỏi đột biến thuộc dạng nào, kể cả thay thế nhiều cặp.\nLưu ý: đề nói về số cặp nucleotide ⇒ thuộc dạng \"Xác định dạng đột biến khi biết số cặp nucleotide và số liên kết hydrogen thay đổi\".",
+     "ly_thuyet": "##PP Cách làm\nĐổi chiều dài sang số cặp: mỗi cặp nucleotide dài 3,4 Å.\nChiều dài không đổi ⇒ thay thế; giảm 3,4 Å ⇒ mất 1 cặp; tăng 3,4 Å ⇒ thêm 1 cặp.\nDựa vào độ thay đổi số liên kết hydrogen để xác định loại cặp và số cặp bị thay.\n\n##CY Lỗi hay mắc\nThay thế nhiều cặp: H tăng 2 có thể do thay 2 cặp A – T bằng 2 cặp G – C.",
+     "vi_du": "##VD\nMột gene bị đột biến. So với gene ban đầu, gene sau đột biến có chiều dài giảm 3,4 Å và số liên kết hydrogen giảm 2. Đột biến này thuộc dạng nào?\nA. Mất một cặp G-C.\nB. Thêm một cặp A-T.\nC. Thay thế một cặp A-T bằng một cặp G-C.\nD. Mất một cặp A-T.\n\nBài giải:\nChiều dài giảm 3,4 Å ứng với mất đúng 1 cặp nucleotide (loại B, C).\nSố liên kết hydrogen giảm 2 nên cặp bị mất là A – T (mất G – C sẽ giảm 3).\nChọn D.\n\n##VD\nMột gene bị đột biến. So với gene ban đầu, gene sau đột biến có chiều dài KHÔNG đổi nhưng số liên kết hydrogen tăng thêm 2. Đột biến này thuộc dạng nào?\nA. Thay thế 1 cặp A-T bằng 1 cặp G-C.\nB. Mất 1 cặp A-T.\nC. Thay thế 2 cặp A-T bằng 2 cặp G-C.\nD. Thêm 1 cặp G-C.\n\nBài giải:\nChiều dài không đổi nên đây là đột biến thay thế (loại B, D).\nMỗi cặp A – T thay bằng G – C làm H tăng 1; H tăng 2 nên phải thay 2 cặp.\nChọn C."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00560",
+   "chu_de": "Di truyền học",
+   "chuyen_de": "Đột biến gene",
+   "nhom": "Các dạng bài tập tính toán cơ bản về đột biến gene",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nMất một cặp: $H$ giảm 2 (A – T) hoặc 3 (G – C).\nThêm một cặp: $H$ tăng 2 (A – T) hoặc 3 (G – C).\nThay thế A – T bằng G – C: $H$ tăng 1; thay thế G – C bằng A – T: $H$ giảm 1.\n$H = 2A + 3G$.\n\n##PP 2. Các bước làm bài\nXác định dạng đột biến và loại cặp nucleotide bị tác động.\nXác định $H$ của gene ban đầu (cho sẵn hoặc tính bằng $2A + 3G$).\nCộng hoặc trừ độ thay đổi của từng đột biến để ra $H$ sau đột biến.\n\n##CY 3. Lưu ý\nChú ý chiều thay đổi: mất làm giảm, thêm làm tăng.\nĐột biến liên tiếp phải tính lần lượt từng bước, đừng bỏ sót bước nào.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01561",
+     "thu_tu": 1,
+     "ten": "Tính số liên kết hydrogen sau một đột biến điểm khi biết số liên kết ban đầu",
+     "mo_ta": "Đề cho tổng số liên kết hydrogen của gene và một đột biến điểm (mất, thêm hoặc thay thế một cặp xác định).\nHỏi số liên kết hydrogen của gene sau đột biến.\nCách làm: áp độ thay đổi 2, 3 hoặc 1 tương ứng với dạng và loại cặp.\nLưu ý: phải tìm $H$ ban đầu qua $N$ và tỉ lệ %, hoặc có hai đột biến liên tiếp ⇒ thuộc dạng \"Tính số liên kết hydrogen khi phải tìm H ban đầu hoặc có nhiều đột biến\".",
+     "ly_thuyet": "##PP Cách làm\nXác định đột biến làm $H$ tăng hay giảm, và bao nhiêu.\nMất hoặc thêm A – T đổi 2; mất hoặc thêm G – C đổi 3; thay thế đổi 1.\nTính $H_2 = H_1 \\pm$ độ đổi.\n\n##CY Lỗi hay mắc\nNhầm A – T với G – C khi lấy độ đổi 2 hay 3.\nThay thế đổi 1 liên kết (3 − 2), không phải 2 hay 3.",
+     "vi_du": "##VD\nMột gene có tổng số 1200 liên kết hydrogen. Nếu gene này bị đột biến mất một cặp G-C, thì số liên kết hydrogen của gene sau đột biến là bao nhiêu?\nA. 1198\nB. 1202\nC. 1197\nD. 1203\n\nBài giải:\nMất một cặp G – C làm giảm 3 liên kết hydrogen.\n$H_2 = 1200 - 3 = 1197$.\nChọn C.\n\n##VD\nMột gene có tổng số 3000 liên kết hydrogen. Nếu gene này bị đột biến thay thế một cặp A-T bằng một cặp G-C, thì số liên kết hydrogen của gene sau đột biến là bao nhiêu?\nA. 2998\nB. 3001\nC. 2999\nD. 3002\n\nBài giải:\nCặp G – C (3 liên kết) nhiều hơn cặp A – T (2 liên kết) đúng 1 liên kết.\n$H_2 = 3000 + 1 = 3001$.\nChọn B."
+    },
+    {
+     "dang_id": "KDB01562",
+     "thu_tu": 2,
+     "ten": "Tính số liên kết hydrogen khi phải tìm H ban đầu hoặc có nhiều đột biến",
+     "mo_ta": "Đề không cho sẵn $H$ ban đầu mà cho $N$ và tỉ lệ % một loại nucleotide, hoặc cho hai đột biến xảy ra liên tiếp.\nHỏi số liên kết hydrogen sau đột biến.\nLưu ý: đề cho $H$ ban đầu và chỉ một đột biến ⇒ thuộc dạng \"Tính số liên kết hydrogen sau một đột biến điểm khi biết số liên kết ban đầu\".",
+     "ly_thuyet": "##PP Cách làm\nNếu chưa biết $H$: tính $A = T$, $G = C$ từ $N$ và %, rồi $H = 2A + 3G$.\nVới nhiều đột biến: tính lần lượt từng bước, lấy kết quả bước trước làm số ban đầu cho bước sau.\nKết luận $H$ sau đột biến.\n\n##CY Lỗi hay mắc\nChỉ tính một đột biến hoặc trừ cả hai bước mà quên đổi dấu cho đột biến thêm.",
+     "vi_du": "##VD\nMột gene có 3000 liên kết hydrogen. Gene này lần lượt bị đột biến mất một cặp G-C rồi thêm một cặp A-T. Số liên kết hydrogen của gene sau hai lần đột biến này là bao nhiêu?\nA. 2999\nB. 2995\nC. 3001\nD. 2997\n\nBài giải:\nMất một cặp G – C: $H$ giảm 3, còn $3000 - 3 = 2997$.\nThêm một cặp A – T: $H$ tăng 2, được $2997 + 2 = 2999$.\nChọn A.\n\n##VD\nMột gene có N = 3000 nucleotide, trong đó A chiếm 30%. Gene bị đột biến thay thế một cặp A-T bằng một cặp G-C. Số liên kết hydrogen của gene sau đột biến là bao nhiêu?\nA. 3600\nB. 3601\nC. 3603\nD. 3599\n\nBài giải:\n$A = T = 30\\% \\times 3000 = 900$, $G = C = 600$.\n$H_1 = 2 \\times 900 + 3 \\times 600 = 3600$.\nThay một cặp A – T bằng G – C làm $H$ tăng 1 nên $H_2 = 3601$.\nChọn B."
+    }
+   ]
+  },
+  {
+   "nhom_id": "KNB00557",
+   "chu_de": "Di truyền học",
+   "chuyen_de": "Nucleic acid và gene",
+   "nhom": "Các dạng bài tập tính toán nâng cao về nucleic acid và gene",
+   "nhom_ly_thuyet": "##TC 1. Kiến thức cần nhớ\nTổng số nucleotide của gene: $N = A + T + G + C = 2A + 2G$.\nTheo nguyên tắc bổ sung: $A = T$, $G = C$, nên $\\%A + \\%G = 50\\%$.\nSố liên kết hydrogen: $H = 2A + 3G$ (A – T có 2 liên kết, G – C có 3 liên kết).\nChiều dài gene: $L = \\dfrac{N}{2} \\times 3{,}4\\ \\text{Å}$ (mỗi cặp nucleotide dài 3,4 Å).\nKhối lượng gene: $M = N \\times 300$ amu (mỗi nucleotide nặng trung bình 300 amu).\n\n##PP 2. Các bước làm bài\nViết các đại lượng đề cho (tỉ lệ %, số liên kết hydrogen, chiều dài hoặc khối lượng).\nDùng $\\%A + \\%G = 50\\%$ để tìm tỉ lệ của loại còn lại.\nBiểu diễn $H$, $L$ hoặc $M$ theo $N$ rồi giải ra $N$.\nTừ $N$ và tỉ lệ % tính số nucleotide từng loại hoặc đại lượng đề hỏi.\n\n##CY 3. Lưu ý\nChiều dài chỉ tính theo một mạch: lấy $N : 2$ rồi nhân 3,4 Å.\nKhông nhầm $\\%A$ với $\\%(A + T)$: $\\%A + \\%G = 50\\%$ chứ không phải 100%.",
+   "dang_bai": [
+    {
+     "dang_id": "KDB01552",
+     "thu_tu": 1,
+     "ten": "Tìm N, chiều dài, khối lượng hoặc số nucleotide khi biết tỉ lệ % một loại và số liên kết hydrogen",
+     "mo_ta": "Đề cho tỉ lệ phần trăm của một loại nucleotide và tổng số liên kết hydrogen của gene.\nHỏi tổng số nucleotide, số nucleotide một loại, chiều dài hoặc khối lượng của gene.\nCách làm: tìm tỉ lệ loại còn lại, lập $H$ theo $N$, giải ra $N$ rồi tính đại lượng cần tìm.\nLưu ý: đề cho chiều dài hoặc khối lượng để tìm $N$ trước ⇒ thuộc dạng \"Tính số liên kết hydrogen hoặc số nucleotide khi biết chiều dài, khối lượng\".",
+     "ly_thuyet": "##PP Cách làm\nTừ $\\%A$ (hoặc $\\%G$) tính loại còn lại: $\\%G = 50\\% - \\%A$.\nViết $H = 2A + 3G$ theo $N$, ví dụ $H = 2(0{,}2N) + 3(0{,}3N) = 1{,}3N$.\nGiải ra $N$ rồi tính số nucleotide, $L = \\dfrac{N}{2} \\times 3{,}4$ hoặc $M = 300N$ theo yêu cầu.\n\n##CY Lỗi hay mắc\nQuên chia 2 khi tính chiều dài, hoặc quên nhân 300 khi tính khối lượng.\nTính nhầm $\\%G$ khi lấy $100\\% - \\%A$ thay vì $50\\% - \\%A$.",
+     "vi_du": "##VD\nMột gene có A chiếm 20% tổng số nucleotide và có tổng số liên kết hydrogen là 3900. Số nucleotide loại G của gene này là\nA. 600 nucleotide\nB. 1500 nucleotide\nC. 450 nucleotide\nD. 900 nucleotide\n\nBài giải:\n$A = 20\\%$ nên $\\%G = 50\\% - 20\\% = 30\\%$.\n$H = 2A + 3G = 2(0{,}2N) + 3(0{,}3N) = 1{,}3N = 3900$ nên $N = 3000$.\nSố nucleotide loại G là $30\\% \\times 3000 = 900$.\nChọn D.\n\n##VD\nMột gene có A chiếm 30% tổng số nucleotide và có 3120 liên kết hydrogen. Biết mỗi cặp nucleotide dài 3,4 Å. Chiều dài của gene này là\nA. 4420 Å\nB. 8840 Å\nC. 5304 Å\nD. 2210 Å\n\nBài giải:\n$\\%G = 50\\% - 30\\% = 20\\%$.\n$H = 2(0{,}3N) + 3(0{,}2N) = 1{,}2N = 3120$ nên $N = 2600$.\nChiều dài $L = \\dfrac{2600}{2} \\times 3{,}4 = 4420$ Å.\nChọn A."
+    },
+    {
+     "dang_id": "KDB01553",
+     "thu_tu": 2,
+     "ten": "Tính số liên kết hydrogen hoặc số nucleotide khi biết chiều dài, khối lượng",
+     "mo_ta": "Đề cho chiều dài hoặc khối lượng của gene cùng số nucleotide một loại (hoặc tỉ lệ %).\nHỏi tổng số liên kết hydrogen hoặc số nucleotide loại còn lại.\nCách làm: từ $L$ hoặc $M$ tính $N$, rồi tính số nucleotide từng loại và $H$.\nLưu ý: đề cho số liên kết hydrogen để tìm $N$ ⇒ thuộc dạng \"Tìm N, chiều dài, khối lượng hoặc số nucleotide khi biết tỉ lệ % một loại và số liên kết hydrogen\".",
+     "ly_thuyet": "##PP Cách làm\nTừ chiều dài: $N = \\dfrac{2L}{3{,}4}$; từ khối lượng: $N = \\dfrac{M}{300}$.\nTính số nucleotide các loại: $A = T$, $G = C = \\dfrac{N - 2A}{2}$.\nTính $H = 2A + 3G$ nếu đề hỏi liên kết hydrogen.\n\n##CY Lỗi hay mắc\nQuên nhân 2 khi đổi chiều dài thành $N$.\nTính $G$ bằng $N - 2A$ mà quên chia 2 (G và C mỗi loại bằng một nửa).",
+     "vi_du": "##VD\nMột gene có A chiếm 25% tổng số nucleotide và có chiều dài 4080 Å. Tổng số liên kết hydrogen của gene này là bao nhiêu?\nA. 3000\nB. 2400\nC. 3600\nD. 6000\n\nBài giải:\n$N = 2 \\times \\dfrac{4080}{3{,}4} = 2400$.\n$A = T = 25\\% \\times 2400 = 600$, $G = C = 600$.\n$H = 2 \\times 600 + 3 \\times 600 = 3000$.\nChọn A.\n\n##VD\nMột gene có khối lượng 720 000 amu và có 720 nucleotide loại A. Số nucleotide loại G của gene này là bao nhiêu?\nA. 720\nB. 960\nC. 480\nD. 1200\n\nBài giải:\n$N = \\dfrac{720000}{300} = 2400$.\n$G = C = \\dfrac{N - 2A}{2} = \\dfrac{2400 - 1440}{2} = 480$.\nChọn C."
+    }
+   ]
+  }
+ ],
+ "cau": [
+  {
+   "ma_cau": "K09110201017",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Trong tế bào nhân thực, DNA tập trung chủ yếu ở",
+   "lua_chon": [
+    "màng sinh chất.",
+    "nhân tế bào.",
+    "ribosome.",
+    "bộ máy Golgi."
+   ],
+   "dap_an": "B",
+   "loi_giai": "DNA tập trung chủ yếu trong nhân tế bào, nơi nó liên kết với protein tạo nên nhiễm sắc thể. Ngoài ra còn một lượng nhỏ DNA nằm trong ti thể và lục lạp."
+  },
+  {
+   "ma_cau": "K09110201018",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Các nucleotide trong cùng một phân tử DNA khác nhau ở thành phần nào?",
+   "lua_chon": [
+    "Đường 5 carbon.",
+    "Nhóm phosphate.",
+    "Base nitrogen.",
+    "Cả ba thành phần trên."
+   ],
+   "dap_an": "C",
+   "loi_giai": "Mọi nucleotide của DNA đều có chung đường deoxyribose và nhóm phosphate. Chỉ base nitrogen có 4 loại khác nhau (A, T, G, C), và chính base quyết định tên gọi của nucleotide."
+  },
+  {
+   "ma_cau": "K09110201019",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Các nucleotide trên cùng một mạch của phân tử DNA liên kết với nhau bằng loại liên kết nào?",
+   "lua_chon": [
+    "Liên kết hydrogen.",
+    "Liên kết cộng hoá trị.",
+    "Liên kết ion.",
+    "Liên kết peptide."
+   ],
+   "dap_an": "B",
+   "loi_giai": "Trên cùng một mạch, nhóm phosphate của nucleotide này nối với đường của nucleotide kế tiếp bằng liên kết cộng hoá trị, tạo nên bộ khung đường – phosphate bền vững. Liên kết hydrogen chỉ xuất hiện giữa hai mạch."
+  },
+  {
+   "ma_cau": "K09110201020",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Vì sao liên kết hydrogen giữa hai mạch của DNA tuy yếu nhưng vẫn giúp phân tử bền vững?",
+   "lua_chon": [
+    "Vì mỗi liên kết hydrogen rất mạnh.",
+    "Vì số lượng liên kết hydrogen trong phân tử rất lớn nên tổng lực liên kết mạnh.",
+    "Vì liên kết hydrogen được bảo vệ bởi nhóm phosphate.",
+    "Vì hai mạch còn được nối thêm bằng liên kết ion."
+   ],
+   "dap_an": "B",
+   "loi_giai": "Từng liên kết hydrogen riêng lẻ rất yếu, nhưng một phân tử DNA có hàng nghìn tới hàng triệu liên kết như vậy nên tổng lực liên kết đủ lớn để giữ hai mạch gắn bó với nhau. Đồng thời, vì mỗi liên kết yếu nên hai mạch vẫn tách ra được khi cần nhân đôi — một sự cân bằng rất hợp lí."
+  },
+  {
+   "ma_cau": "K09110201021",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Hai mạch của phân tử DNA được gọi là đối song song vì",
+   "lua_chon": [
+    "hai mạch có chiều dài khác nhau.",
+    "đầu 3' của mạch này nằm đối diện đầu 5' của mạch kia.",
+    "hai mạch có số nucleotide khác nhau.",
+    "hai mạch xoắn theo hai chiều ngược nhau quanh trục."
+   ],
+   "dap_an": "B",
+   "loi_giai": "Mỗi mạch polynucleotide có hai đầu khác nhau về cấu trúc hoá học, quy ước là đầu 3' và đầu 5'. Khi hai mạch bắt cặp, đầu 3' của mạch này luôn đối diện đầu 5' của mạch kia — đó là ý nghĩa của thuật ngữ đối song song."
+  },
+  {
+   "ma_cau": "K09110201022",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Mô hình cấu trúc không gian của phân tử DNA được công bố năm 1953 bởi",
+   "lua_chon": [
+    "A. Mendel và Morgan.",
+    "B. Watson và Crick.",
+    "C. Darwin và Wallace.",
+    "D. Pasteur và Koch."
+   ],
+   "dap_an": "B",
+   "loi_giai": "James Watson và Francis Crick công bố mô hình xoắn kép của DNA năm 1953, dựa trên dữ liệu nhiễu xạ tia X do Rosalind Franklin thực hiện. Đây được xem là một trong những phát hiện quan trọng nhất của sinh học thế kỉ XX."
+  },
+  {
+   "ma_cau": "K09110201023",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Một đoạn phân tử DNA gồm n nucleotide trên mỗi mạch. Về lí thuyết, số trình tự sắp xếp khác nhau có thể có trên một mạch là",
+   "lua_chon": [
+    "4n",
+    "n^4",
+    "4^n",
+    "2n"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Ở mỗi vị trí có 4 khả năng lựa chọn (A, T, G, C), và có n vị trí độc lập nhau, nên tổng số trình tự khác nhau là $4 \\times 4 \\times \\dots \\times 4$ ($n$ lần) = $4^n$. Con số này giải thích vì sao chỉ 4 loại nucleotide vẫn tạo nên tính đa dạng không lồ."
+  },
+  {
+   "ma_cau": "K09110201024",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Loại RNA nào làm khuôn trực tiếp để tổng hợp protein tại ribosome?",
+   "lua_chon": [
+    "mRNA",
+    "tRNA",
+    "rRNA",
+    "Cả ba loại"
+   ],
+   "dap_an": "A",
+   "loi_giai": "mRNA (RNA thông tin) mang bản sao thông tin di truyền từ gene ra tế bào chất và làm khuôn trực tiếp cho quá trình tổng hợp protein. tRNA vận chuyển amino acid, còn rRNA là thành phần cấu tạo ribosome."
+  },
+  {
+   "ma_cau": "K09110201025",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Loại RNA có nhiệm vụ vận chuyển amino acid tới ribosome là",
+   "lua_chon": [
+    "mRNA",
+    "tRNA",
+    "rRNA",
+    "DNA"
+   ],
+   "dap_an": "B",
+   "loi_giai": "tRNA (RNA vận chuyển) có cấu trúc cuộn gấp đặc trưng, một đầu gắn amino acid và mang tới ribosome để lắp ráp thành chuỗi polypeptide."
+  },
+  {
+   "ma_cau": "K09110201026",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Điểm giống nhau giữa DNA và RNA là",
+   "lua_chon": [
+    "đều có cấu trúc hai mạch xoắn kép.",
+    "đều được cấu tạo theo nguyên tắc đa phân với đơn phân là nucleotide.",
+    "đều chứa đường deoxyribose.",
+    "đều có base thymine."
+   ],
+   "dap_an": "B",
+   "loi_giai": "Cả hai đều là nucleic acid, cấu tạo theo nguyên tắc đa phân, đơn phân là nucleotide, và cũng có ba loại base chung là A, G, C. Các phương án còn lại đều nêu đặc điểm riêng chỉ có ở DNA."
+  },
+  {
+   "ma_cau": "K09110201027",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Gene là một đoạn của phân tử DNA mang thông tin quy định",
+   "lua_chon": [
+    "toàn bộ tính trạng của cơ thể.",
+    "một sản phẩm nhất định (một phân tử RNA hoặc một chuỗi polypeptide).",
+    "cấu tạo của toàn bộ nhiễm sắc thể.",
+    "số lượng nhiễm sắc thể trong tế bào."
+   ],
+   "dap_an": "B",
+   "loi_giai": "Mỗi gene chỉ quy định một sản phẩm nhất định. Toàn bộ tính trạng của cơ thể là kết quả hoạt động của rất nhiều gene khác nhau kết hợp với ảnh hưởng của môi trường."
+  },
+  {
+   "ma_cau": "K09110201028",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Phát biểu nào sau đây về RNA là ĐÚNG?",
+   "lua_chon": [
+    "RNA có cấu trúc hai mạch giống DNA.",
+    "RNA chứa đường ribose và có base U thay cho T.",
+    "RNA chỉ có trong nhân tế bào.",
+    "RNA là vật chất di truyền của mọi sinh vật."
+   ],
+   "dap_an": "B",
+   "loi_giai": "RNA thường chỉ có một mạch, chứa đường ribose và dùng base uracil thay cho thymine. RNA được tổng hợp trong nhân nhưng hoạt động chủ yếu ở tế bào chất; vật chất di truyền của đa số sinh vật là DNA chứ không phải RNA."
+  },
+  {
+   "ma_cau": "K09110201029",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Cho các phát biểu sau:\n(1) DNA có trong nhân, ti thể và lục lạp.\n(2) Đơn phân của DNA và RNA đều là nucleotide.\n(3) Base nitrogen là thành phần quyết định tên gọi của nucleotide.\n(4) Mọi loại RNA đều có cấu trúc mạch thẳng, không cuộn gấp.\nSố phát biểu đúng là",
+   "lua_chon": [
+    "1",
+    "2",
+    "3",
+    "4"
+   ],
+   "dap_an": "C",
+   "loi_giai": "(1), (2), (3) đều đúng. Riêng (4) sai vì tRNA có cấu trúc cuộn gấp đặc trưng chứ không phải mạch thẳng. Vậy có 3 phát biểu đúng."
+  },
+  {
+   "ma_cau": "K09110201030",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Cơ sở phân tử giúp giải thích vì sao con cái sinh ra mang những đặc điểm giống bố mẹ là",
+   "lua_chon": [
+    "số lượng tế bào của con giống bố mẹ.",
+    "DNA của bố mẹ được truyền lại cho con nhờ khả năng nhân đôi chính xác.",
+    "con và bố mẹ sống trong cùng môi trường.",
+    "con ăn cùng loại thức ăn với bố mẹ."
+   ],
+   "dap_an": "B",
+   "loi_giai": "Thông tin di truyền nằm trong trình tự nucleotide của DNA. Nhờ DNA nhân đôi chính xác theo nguyên tắc bổ sung, thông tin này được truyền từ bố mẹ sang con qua giao tử, làm con mang những đặc điểm giống bố mẹ."
+  },
+  {
+   "ma_cau": "K09110201031",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Vì sao mỗi người (trừ trường hợp sinh đôi cùng trứng) đều có trình tự DNA riêng, không ai giống ai?",
+   "lua_chon": [
+    "Vì số lượng nucleotide ở mỗi người khác nhau hoàn toàn.",
+    "Vì trình tự sắp xếp các nucleotide ở mỗi người là khác nhau, tạo nên tính đặc thù.",
+    "Vì mỗi người có số loại base nitrogen khác nhau.",
+    "Vì DNA của mỗi người nằm ở vị trí khác nhau trong tế bào."
+   ],
+   "dap_an": "B",
+   "loi_giai": "Mọi người đều dùng chung 4 loại nucleotide, nhưng trật tự sắp xếp của chúng ở mỗi cá thể lại khác nhau. Chính tính đặc thù này là cơ sở khoa học của xét nghiệm ADN trong giám định huyết thống và pháp y."
+  },
+  {
+   "ma_cau": "K09110201032",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Trong phân tử DNA, các base nitrogen nằm ở vị trí nào của chuỗi xoắn kép?",
+   "lua_chon": [
+    "Phía ngoài, hướng ra môi trường.",
+    "Phía trong, hướng vào trục của chuỗi xoắn.",
+    "Xen kẽ trong và ngoài.",
+    "Nằm ở hai đầu mút của phân tử."
+   ],
+   "dap_an": "B",
+   "loi_giai": "Bộ khung đường – phosphate nằm phía ngoài, còn các base quay vào phía trong và bắt cặp với nhau theo nguyên tắc bổ sung. Cách sắp xếp này giúp bảo vệ thông tin di truyền khỏi tác động của môi trường."
+  },
+  {
+   "ma_cau": "K09110201033",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Phát biểu nào sau đây là SAI khi nói về nguyên tắc bổ sung trong phân tử DNA?",
+   "lua_chon": [
+    "A luôn liên kết với T bằng 2 liên kết hydrogen.",
+    "G luôn liên kết với C bằng 3 liên kết hydrogen.",
+    "Một base lớn luôn liên kết với một base nhỏ.",
+    "A có thể liên kết với C nếu phân tử bị xoắn mạnh."
+   ],
+   "dap_an": "D",
+   "loi_giai": "Nguyên tắc bổ sung là quy luật chặt chẽ: A chỉ bắt cặp với T, G chỉ bắt cặp với C, không có ngoại lệ trong cấu trúc DNA bình thường. Nếu bắt cặp sai thì sẽ dẫn tới biến đổi thông tin di truyền."
+  },
+  {
+   "ma_cau": "K09110201034",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Ứng dụng nào sau đây dựa trực tiếp trên tính đặc thù về trình tự DNA của mỗi cá thể?",
+   "lua_chon": [
+    "Sản xuất phân bón vi sinh.",
+    "Xét nghiệm ADN xác định huyết thống và giám định pháp y.",
+    "Nhân giống cây trồng bằng giâm cành.",
+    "Bảo quản thực phẩm bằng đông lạnh."
+   ],
+   "dap_an": "B",
+   "loi_giai": "Vì mỗi cá thể có trình tự DNA riêng, người ta so sánh mẫu DNA để xác định quan hệ huyết thống hoặc nhận dạng cá nhân trong điều tra. Các ứng dụng còn lại không dựa trên đặc điểm này."
+  },
+  {
+   "ma_cau": "K09110201035",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Nhận định nào sau đây về mối quan hệ giữa DNA và gene là ĐÚNG?",
+   "lua_chon": [
+    "Gene và DNA là hai tên gọi của cùng một chất.",
+    "Mỗi phân tử DNA chỉ chứa duy nhất một gene.",
+    "Gene là một đoạn của phân tử DNA, một phân tử DNA chứa rất nhiều gene.",
+    "Gene lớn hơn phân tử DNA."
+   ],
+   "dap_an": "C",
+   "loi_giai": "Có thể hình dung phân tử DNA như một cuốn sách rất dày, còn mỗi gene là một đoạn văn bản mang một thông tin cụ thể trong cuốn sách đó."
+  },
+  {
+   "ma_cau": "K09110201036",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Chức năng nào sau đây thể hiện rõ nhất vai trò 'truyền đạt thông tin di truyền' của DNA?",
+   "lua_chon": [
+    "DNA có cấu trúc xoắn kép bền vững.",
+    "DNA nhân đôi chính xác trước khi tế bào phân chia.",
+    "DNA có các base nằm phía trong chuỗi xoắn.",
+    "DNA có khối lượng phân tử rất lớn."
+   ],
+   "dap_an": "B",
+   "loi_giai": "Nhờ nhân đôi chính xác theo nguyên tắc bổ sung, mỗi tế bào con nhận được bản sao DNA giống hệt tế bào mẹ. Đó chính là cơ chế truyền đạt thông tin di truyền qua các thế hệ tế bào và cơ thể."
+  },
+  {
+   "ma_cau": "K09110201037",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Ở một số virus như virus cúm hay SARS-CoV-2, vật chất di truyền là",
+   "lua_chon": [
+    "DNA mạch kép.",
+    "RNA.",
+    "protein.",
+    "lipid."
+   ],
+   "dap_an": "B",
+   "loi_giai": "Một số virus có vật chất di truyền là RNA thay vì DNA. Việc giải trình tự RNA của virus giúp các nhà khoa học nhanh chóng phát triển vaccine và bộ kit xét nghiệm \\text{ --- } một ứng dụng nổi bật của kiến thức về nucleic acid."
+  },
+  {
+   "ma_cau": "K09110201038",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Một học sinh nói: 'Vì DNA chỉ có 4 loại nucleotide nên thông tin di truyền mà nó lưu giữ rất hạn chế.' Nhận xét đúng về ý kiến này là",
+   "lua_chon": [
+    "đúng, vì càng ít loại đơn phân thì càng ít thông tin.",
+    "sai, vì thông tin nằm ở số lượng và đặc biệt là TRÌNH TỰ sắp xếp của các nucleotide, nên khả năng lưu trữ là khổng lồ.",
+    "đúng, vì 4 loại nucleotide chỉ tạo được 4 loại gene.",
+    "sai, vì thực tế DNA có tới 20 loại nucleotide."
+   ],
+   "dap_an": "B",
+   "loi_giai": "Có thể liên hệ với bảng chữ cái: chỉ 29 chữ cái nhưng viết được vô số cuốn sách khác nhau, vì thông tin nằm ở cách sắp xếp chữ không phải số lượng kí tự. Tương tự, một đoạn DNA n nucleotide đã có $4^n$ trình tự khả dĩ."
+  },
+  {
+   "ma_cau": "K09110201039",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Đặc điểm nào sau đây giúp DNA thực hiện tốt chức năng BẢO QUẢN thông tin di truyền?",
+   "lua_chon": [
+    "Có khối lượng phân tử lớn.",
+    "Cấu trúc xoắn kép với các base nằm phía trong và được bảo vệ bởi khung đường \\text{ --- } phosphate.",
+    "Có khả năng di chuyển tự do trong tế bào.",
+    "Có thể tan tốt trong nước."
+   ],
+   "dap_an": "B",
+   "loi_giai": "Các base \\text{ --- } nơi lưu giữ thông tin \\text{ --- } được giấu vào phía trong chuỗi xoắn, còn bộ khung đường \\text{ --- } phosphate bền vững bao bên ngoài. Nhờ đó thông tin di truyền ít bị tác nhân bên ngoài làm hư hại."
+  },
+  {
+   "ma_cau": "K09110201040",
+   "nhom_id": "KNB00554",
+   "loai": "tra_loi_ngan",
+   "de": "Trong ba thành phần của nucleotide, thành phần nào quyết định tên gọi của nucleotide đó?",
+   "dap_an": "Base nitrogen",
+   "loi_giai": "Đường 5 carbon và nhóm phosphate giống nhau ở mọi nucleotide của cùng một loại nucleic acid; chỉ base nitrogen thay đổi và quyết định đó là nucleotide loại A, T, G hay C."
+  },
+  {
+   "ma_cau": "K09110201041",
+   "nhom_id": "KNB00554",
+   "loai": "tra_loi_ngan",
+   "de": "Kể tên loại liên kết nối các nucleotide trên cùng một mạch của phân tử DNA.",
+   "dap_an": "Liên kết cộng hoá trị",
+   "loi_giai": "Liên kết cộng hoá trị nối nhóm phosphate của nucleotide này với đường của nucleotide kế tiếp, tạo nên bộ khung đường – phosphate rất bền vững."
+  },
+  {
+   "ma_cau": "K09110201042",
+   "nhom_id": "KNB00554",
+   "loai": "tra_loi_ngan",
+   "de": "Một đoạn mạch đơn của DNA gồm 5 nucleotide. Về lí thuyết có bao nhiêu trình tự sắp xếp khác nhau có thể có?",
+   "dap_an": "1024",
+   "loi_giai": "Mỗi vị trí có 4 lựa chọn và có 5 vị trí độc lập, nên số trình tự khác nhau là $4^5 = 1\\ 024$. Con số này cho thấy khả năng tạo ra tính đa dạng của DNA là rất lớn."
+  },
+  {
+   "ma_cau": "K09110201043",
+   "nhom_id": "KNB00554",
+   "loai": "tra_loi_ngan",
+   "de": "Trong ba loại RNA, loại nào là thành phần cấu tạo nên ribosome?",
+   "dap_an": "rRNA",
+   "loi_giai": "rRNA (RNA ribosome) kết hợp với protein tạo nên ribosome — bào quan thực hiện quá trình tổng hợp protein của tế bào."
+  },
+  {
+   "ma_cau": "K09110201044",
+   "nhom_id": "KNB00554",
+   "loai": "tra_loi_ngan",
+   "de": "Ngoài nhân tế bào, ADN còn có mặt ở những bào quan nào?",
+   "dap_an": "Ti thể và lục lạp",
+   "loi_giai": "Ti thể (ở mọi tế bào nhân thực) và lục lạp (ở tế bào thực vật) đều chứa một lượng nhỏ ADN riêng, ngoài phần ADN chính nằm trong nhân."
+  },
+  {
+   "ma_cau": "K09110201045",
+   "nhom_id": "KNB00554",
+   "loai": "tra_loi_ngan",
+   "de": "Cho các phát biểu: (1) Đơn phân của RNA là nucleotide; (2) RNA có base T; (3) tRNA vận chuyển amino acid; (4) rRNA cấu tạo nên ribosome. Có bao nhiêu phát biểu đúng?",
+   "dap_an": "3",
+   "loi_giai": "Các phát biểu (1), (3), (4) đều đúng. Riêng (2) sai vì RNA có base U (uracil) thay cho T; base T chỉ có ở ADN."
+  },
+  {
+   "ma_cau": "K09110201046",
+   "nhom_id": "KNB00554",
+   "loai": "tra_loi_ngan",
+   "de": "Nêu tên loại liên kết giữ hai mạch của phân tử ADN gắn với nhau.",
+   "dap_an": "Liên kết hydrogen",
+   "loi_giai": "Các base trên hai mạch liên kết với nhau bằng liên kết hydrogen theo nguyên tắc bổ sung: $\\mathrm{A - T}$ có 2 liên kết, $\\mathrm{G - C}$ có 3 liên kết."
+  },
+  {
+   "ma_cau": "K09110201047",
+   "nhom_id": "KNB00554",
+   "loai": "tra_loi_ngan",
+   "de": "Trình bày cấu tạo của một nucleotide. Vì sao nói base nitrogen là thành phần quan trọng nhất trong việc tạo nên tính đa dạng của DNA?",
+   "loi_giai": "Mỗi nucleotide gồm ba thành phần liên kết chặt chẽ với nhau:\n1. Một phân tử đường 5 carbon (ở DNA là deoxyribose, ở RNA là ribose).\n2. Một nhóm phosphate.\n3. Một base nitrogen (ở DNA gồm A, T, G, C; ở RNA gồm A, U, G, C).\nVai trò đặc biệt của base nitrogen:\n– Đường và nhóm phosphate hoàn toàn giống nhau ở mọi nucleotide của cùng một loại nucleic acid, nên chúng không tạo ra sự khác biệt.\n– Chỉ base nitrogen có nhiều loại khác nhau, do đó nó quyết định tên gọi của nucleotide và tạo nên bốn \"chữ cái\" của bộ mã di truyền.\n– Chính trật tự sắp xếp của bốn loại base dọc theo mạch mới là nội dung thông tin di truyền. Một đoạn n nucleotide có tới $4^n$ trình tự khả dĩ, tạo nên tính đa dạng gần như vô hạn.\nNgoài ra, base còn quyết định khả năng bắt cặp bổ sung giữa hai mạch, nhờ đó DNA nhân đôi chí …"
+  },
+  {
+   "ma_cau": "K09110201048",
+   "nhom_id": "KNB00554",
+   "loai": "tra_loi_ngan",
+   "de": "Phân biệt liên kết cộng hoá trị và liên kết hydrogen trong phân tử DNA về vị trí, độ bền và ý nghĩa sinh học của mỗi loại.",
+   "loi_giai": "Đáp án chi tiết:\nHai loại liên kết này giữ hai vai trò khác nhau và bổ sung cho nhau.\na) Liên kết cộng hoá trị:\n– Vị trí: nối các nucleotide TRÊN CÙNG một mạch, giữa nhóm phosphate của nucleotide này với đường của nucleotide kế tiếp.\n– Độ bền: rất bền, khó bị phá vỡ.\n– Ý nghĩa: tạo bộ khung đường – phosphate vững chắc, giữ cho trình tự nucleotide trên mỗi mạch không bị xáo trộn.\nb) Liên kết hydrogen:\n– Vị trí: nối các base ở HAI MẠCH đối diện, theo nguyên tắc bổ sung $\\mathrm{A – T}$ ($2$ liên kết) và $\\mathrm{G – C}$ ($3$ liên kết).\n– Độ bền: từng liên kết rất yếu, nhưng vì số lượng cực lớn nên tổng lực liên kết đủ mạnh để giữ hai mạch gắn bó.\n– Ý nghĩa: chính vì yếu nên hai mạch có thể tách ra khi tế bào cần nhân đôi $\\mathrm{DNA}$, rồi lại bắt cặp trở lại. Nếu liên kết này quá bền thì $ …"
+  },
+  {
+   "ma_cau": "K09110201049",
+   "nhom_id": "KNB00554",
+   "loai": "tra_loi_ngan",
+   "de": "Giải thích vì sao chỉ với 4 loại nucleotide mà DNA lại có thể lưu giữ được lượng thông tin di truyền khổng lồ. Hãy lấy một ví dụ so sánh để làm rõ.",
+   "loi_giai": "Đáp án chi tiết:\nNguyên nhân nằm ở chỗ: thông tin di truyền không nằm ở SỐ LOẠI đơn phân mà nằm ở SỐ LƯỢNG và đặc biệt là TRÌNH TỰ SẮP XẾP của chúng.\nXét về mặt số học: ở mỗi vị trí trên mạch có 4 khả năng lựa chọn, các vị trí lại độc lập với nhau, nên với một đoạn gồm $n$ nucleotide, số trình tự khác nhau có thể có là:\nSố trình tự $= 4^n$\n- Với $n = 10$, đã có $4^{10} \\approx 1,05$ triệu trình tự khác nhau.\n- Với $n = 20$, con số này lên tới khoảng một nghìn tỉ.\n- Trong khi đó, một phân tử $\\mathrm{DNA}$ thực tế có tới hàng triệu, hàng trăm triệu nucleotide.\nVí dụ so sánh: bảng chữ cái tiếng Việt chỉ có 29 chữ cái, nhưng nhờ sắp xếp theo vô số trật tự khác nhau mà người ta viết được toàn bộ kho tàng sách báo. $\\mathrm{DNA}$ cũng vậy, chỉ khác là 'bảng chữ cái' của nó chỉ gồm 4 kí tự $\\mat …"
+  },
+  {
+   "ma_cau": "K09110201050",
+   "nhom_id": "KNB00554",
+   "loai": "tra_loi_ngan",
+   "de": "So sánh ADN và ARN theo bốn tiêu chí: số mạch, loại đường, loại base và chức năng chính.\nVì sao ADN phù hợp hợp hơn ARN trong vai trò lưu giữ thông tin di truyền lâu dài?",
+   "loi_giai": "Bảng so sánh ADN theo bốn tiêu chí:\n– Số mạch: ADN có hai mạch xoắn kép; ARN thường chỉ có một mạch.\n– Loại đường: ADN chứa deoxyribose; ARN chứa ribose.\n– Loại base: ADN có A, T, G, C; ARN có A, U, G, C (U thay cho T).\n– Chức năng chính: ADN lưu giữ, bảo quản và truyền đạt thông tin di truyền; ARN tham gia trực tiếp vào quá trình tổng hợp protein.\nVì sao ADN phù hợp hơn cho việc lưu giữ lâu dài:\n1. Cấu trúc hai mạch giúp thông tin được lưu ở dạng “bản chính và bản sao lưu”: nếu một mạch bị hỏng, tế bào vẫn có thể dựa vào mạch còn lại để sửa chữa.\n2. Các base được giấu vào phía trong chuỗi xoắn, được bộ khung đường – phosphate che chắn nên ít bị tác nhân môi trường phá hủy.\n3. Phân tử ADN bền vững hơn và có kích thước lớn hơn nhiều so với ARN, phù hợp để chứa lượng thông tin lớn.\nNgược lại …"
+  },
+  {
+   "ma_cau": "K09110201051",
+   "nhom_id": "KNB00554",
+   "loai": "tra_loi_ngan",
+   "de": "Nêu ba loại RNA và chức năng của mỗi loại. Hãy chỉ ra mối liên hệ giữa ba loại RNA này trong quá trình tổng hợp protein.",
+   "loi_giai": "Ba loại RNA và chức năng:\n1. mRNA (RNA thông tin): mang bản sao thông tin di truyền từ gene trong nhân ra tế bào chất, làm khuôn trực tiếp để tổng hợp protein.\n2. tRNA (RNA vận chuyển): có cấu trúc cuộn gấp đặc trưng, nhận diện và vận chuyển amino acid tới ribosome.\n3. rRNA (RNA ribosome): kết hợp với protein tạo nên ribosome, nơi diễn ra quá trình tổng hợp protein.\nMối liên hệ giữa ba loại RNA: cả ba phối hợp với nhau như một dây chuyền sản xuất.\n— rRNA tạo nên ribosome — đóng vai trò 'nhà xưởng', nơi lắp ráp diễn ra.\n— mRNA đóng vai trò 'bản thiết kế', quy định thứ tự các amino acid cần lắp ráp.\n— tRNA đóng vai trò 'xe vận chuyển', đưa đúng loại amino acid tới đúng vị trí trên bản thiết kế.\nThiếu bất kì loại nào thì quá trình tổng hợp protein cũng không thể diễn ra. Điều này cho thấy các …"
+  },
+  {
+   "ma_cau": "K09110201052",
+   "nhom_id": "KNB00554",
+   "loai": "tra_loi_ngan",
+   "de": "Vì sao xét nghiệm ADN có thể dùng để xác định quan hệ huyết thống và nhận dạng cá nhân trong điều tra hình sự? Hãy giải thích dựa trên đặc điểm của phân tử ADN.",
+   "loi_giai": "Cơ sở khoa học của xét nghiệm ADN nằm ở hai đặc điểm quan trọng của phân tử ADN.\na) Tính đặc thù: tuy mọi người đều dùng chung $4$ loại nucleotide, nhưng trình tự sắp xếp của chúng ở mỗi cá thể lại khác nhau. Vì số trình tự khả dĩ là cực lớn nên xác suất hai người không có quan hệ họ hàng có trình tự trùng nhau là gần như bằng không (trừ trường hợp sinh đôi cùng trứng).\nb) Tính di truyền ổn định: ADN nhân đôi chính xác theo nguyên tắc bổ sung và được truyền từ bố mẹ sang con qua giao tử. Do đó con mang một nửa thông tin di truyền từ bố và một nửa từ mẹ.\nTừ hai đặc điểm trên suy ra hai ứng dụng:\n— Xác định huyết thống: so sánh trình tự ADN của con với của người cha (hoặc mẹ) giả định. Nếu con thực sự là con ruột thì phải mang những đoạn trình tự trùng khớp với người đó theo quy luật di truy …"
+  },
+  {
+   "ma_cau": "K09110201053",
+   "nhom_id": "KNB00554",
+   "loai": "tra_loi_ngan",
+   "de": "Một bạn học sinh cho rằng: 'Gene và ADN là một, vì gene cũng được cấu tạo từ các nucleotide.' Hãy phân tích chỗ chưa chính xác trong nhận định này.",
+   "loi_giai": "Nhận định này đúng ở một ý nhưng sai ở ý quan trọng hơn.\nPhần đúng: gene quả thực được cấu tạo từ các nucleotide, vì gene chính là một đoạn của phân tử ADN.\nPhần sai: không thể đồng nhất gene với ADN. Gene chỉ là một ĐOẠN của phân tử ADN, còn phân tử ADN thì chứa rất nhiều gene khác nhau nằm nối tiếp nhau.\nCách hiểu đúng có thể hình dung như sau: phân tử ADN giống một cuốn sách rất dày, mỗi gene là một đoạn văn bản mang một thông tin cụ thể trong cuốn sách đó. Nói gene và ADN là một cũng giống như nói một đoạn văn và cả cuốn sách là một.\nNgoài ra cần phân biệt thêm về mặt chức năng: mỗi gene mang thông tin quy định MỘT sản phẩm nhất định (một phân tử ARN hoặc một chuỗi polypeptide), trong khi phân tử ADN mang toàn bộ thông tin di truyền của tế bào.\nPhát biểu chính xác phải là: 'Gene là một …"
+  },
+  {
+   "ma_cau": "K09110201054",
+   "nhom_id": "KNB00554",
+   "loai": "tra_loi_ngan",
+   "de": "Phân tích vì sao ADN vừa phải bền vững lại vừa phải có khả năng tách hai mạch. Hai yêu cầu tương như trái ngược này được giải quyết bằng cách nào trong cấu trúc của ADN?",
+   "loi_giai": "Đáp án chi tiết:\nHai yêu cầu này xuất phát từ hai chức năng khác nhau của ADN.\n— Cần BỀN VỮNG để bảo quản thông tin di truyền, tránh bị biến đổi hay hư hại theo thời gian và qua nhiều thế hệ tế bào.\n— Cần TÁCH ĐƯỢC HAI MẠCH để phục vụ nhân đôi ADN trước khi tế bào phân chia, và để làm khuôn tổng hợp RNA.\nCách cấu trúc ADN giải quyết mâu thuẫn này rất tinh tế: dùng hai loại liên kết có độ bền khác nhau theo hai phương khác nhau.\n1. Theo chiều DỌC mỗi mạch: dùng liên kết cộng hoá trị rất bền để nối các nucleotide. Nhờ đó trình tự nucleotide — tức nội dung thông tin — không bao giờ bị xáo trộn.\n2. Theo chiều NGANG giữa hai mạch: dùng liên kết hydrogen yếu. Từng liên kết yếu nên dễ tách, nhưng vì số lượng rất lớn nên tổng lực vẫn đủ giữ hai mạch gắn bó ở trạng thái bình thường.\nKết quả: khi cầ …"
+  },
+  {
+   "ma_cau": "K09110201055",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Quan sát sơ đồ. Khi hai chuỗi polynucleotide liên kết với nhau theo nguyên tắc bổ sung, chúng tạo thành cấu trúc nào (ô có dấu ?)?\n![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S110201-01-001-hinh.png)",
+   "lua_chon": [
+    "Phân tử DNA",
+    "Protein",
+    "Nhiễm sắc thể",
+    "Amino acid"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Hai chuỗi polynucleotide liên kết bổ sung với nhau, xoắn quanh một trục tạo thành phân tử DNA mạch kép.\n\nVì sao các phương án khác sai:\n- B: Protein được cấu tạo từ các amino acid, không phải từ hai mạch polynucleotide.\n- C: Nhiễm sắc thể là cấu trúc gồm DNA liên kết với protein, không phải kết quả trực tiếp của việc hai mạch polynucleotide bắt cặp.\n- D: Amino acid là đơn phân cấu tạo nên protein, không liên quan đến polynucleotide."
+  },
+  {
+   "ma_cau": "K09110201056",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Phân tử DNA có cấu trúc gồm mấy mạch polynucleotide và các mạch sắp xếp với nhau như thế nào?",
+   "lua_chon": [
+    "Một mạch, cuộn lại thành vòng tròn khép kín",
+    "Hai mạch, song song và xoắn quanh một trục",
+    "Ba mạch, xoắn vào nhau quanh một trục",
+    "Hai mạch, xếp song song nhưng không xoắn"
+   ],
+   "dap_an": "B",
+   "loi_giai": "DNA gồm hai mạch polynucleotide song song, liên kết bổ sung và xoắn đều quanh một trục tạo cấu trúc xoắn kép.\n\nVì sao các phương án khác sai:\n- A: DNA có hai mạch, không phải một mạch cuộn vòng như một số phân tử RNA đặc biệt.\n- C: DNA chỉ gồm hai mạch, không có cấu trúc ba mạch.\n- D: Hai mạch của DNA xoắn quanh nhau chứ không xếp song song rồi để yên."
+  },
+  {
+   "ma_cau": "K09110201057",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Đơn phân cấu tạo nên phân tử DNA được gọi là gì?",
+   "lua_chon": [
+    "Amino acid",
+    "Nucleic acid",
+    "Nucleotide",
+    "Glucose"
+   ],
+   "dap_an": "C",
+   "loi_giai": "DNA được cấu tạo từ nhiều đơn phân nucleotide liên kết với nhau thành chuỗi polynucleotide.\n\nVì sao các phương án khác sai:\n- A: Amino acid là đơn phân cấu tạo nên protein, không phải DNA.\n- B: Nucleic acid là tên gọi của cả đại phân tử (DNA, RNA), không phải đơn phân.\n- D: Glucose là đơn phân cấu tạo nên tinh bột, cellulose, không liên quan đến DNA."
+  },
+  {
+   "ma_cau": "K09110201058",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Phân tử DNA được cấu tạo từ bao nhiêu loại nucleotide?",
+   "lua_chon": [
+    "3 loại: A, T, G",
+    "5 loại: A, T, G, C, U",
+    "20 loại, mỗi loại ứng với một amino acid",
+    "4 loại: A, T, G, C"
+   ],
+   "dap_an": "D",
+   "loi_giai": "DNA gồm 4 loại nucleotide phân biệt nhau ở base nitơ: adenine (A), thymine (T), guanine (G), cytosine (C).\n\nVì sao các phương án khác sai:\n- A: DNA có đủ 4 loại nucleotide, thiếu C là chưa đủ.\n- B: Uracil (U) chỉ có ở RNA, DNA không chứa nucleotide loại U.\n- C: 20 loại là số loại amino acid cấu tạo protein, không phải số loại nucleotide của DNA."
+  },
+  {
+   "ma_cau": "K09110201059",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Phân tử DNA có cấu trúc không gian dạng gì?",
+   "lua_chon": [
+    "Mạch thẳng đơn",
+    "Xoắn kép",
+    "Vòng đơn khép kín",
+    "Xoắn đơn"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Phân tử DNA có cấu trúc không gian xoắn kép, gồm hai mạch polynucleotide xoắn quanh một trục theo chiều ngược nhau.\n\nVì sao các phương án khác sai:\n- A: DNA gồm hai mạch xoắn với nhau, không phải mạch thẳng đơn.\n- C: DNA ở sinh vật nhân thực là mạch thẳng, không phải dạng vòng khép kín.\n- D: DNA có hai mạch xoắn kép, không phải chỉ một mạch xoắn đơn (đặc điểm của RNA)."
+  },
+  {
+   "ma_cau": "K09110201060",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Trong phân tử DNA, nucleotide loại A trên một mạch liên kết bổ sung với loại nucleotide nào ở mạch còn lại?",
+   "lua_chon": [
+    "T",
+    "G",
+    "C",
+    "U"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Theo nguyên tắc bổ sung của DNA, A trên mạch này luôn liên kết với T ở mạch đối diện.\n\nVì sao các phương án khác sai:\n- B: A không bắt cặp với G; G bắt cặp bổ sung với C.\n- C: A không bắt cặp với C; C bắt cặp bổ sung với G.\n- D: Nucleotide loại U chỉ có ở RNA, không xuất hiện trong phân tử DNA."
+  },
+  {
+   "ma_cau": "K09110201061",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Trong phân tử DNA, nucleotide loại G trên một mạch liên kết bổ sung với loại nucleotide nào ở mạch còn lại?",
+   "lua_chon": [
+    "A",
+    "C",
+    "T",
+    "U"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Theo nguyên tắc bổ sung của DNA, G trên mạch này luôn liên kết với C ở mạch đối diện.\n\nVì sao các phương án khác sai:\n- A: G không bắt cặp với A; A bắt cặp bổ sung với T.\n- C: G không bắt cặp với T; T bắt cặp bổ sung với A.\n- D: Nucleotide loại U chỉ có ở RNA, không xuất hiện trong phân tử DNA."
+  },
+  {
+   "ma_cau": "K09110201062",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Theo nguyên tắc bổ sung, cặp nucleotide A – T liên kết với nhau bằng bao nhiêu liên kết hydrogen?",
+   "lua_chon": [
+    "1 liên kết",
+    "3 liên kết",
+    "2 liên kết",
+    "4 liên kết"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Theo nguyên tắc bổ sung, A liên kết với T bằng 2 liên kết hydrogen, G liên kết với C bằng 3 liên kết hydrogen.\n\nVì sao các phương án khác sai:\n- A: Cặp A–T liên kết bằng 2 liên kết hydrogen, không phải 1.\n- B: 3 liên kết hydrogen là số liên kết của cặp G–C, không phải A–T.\n- D: Không có cặp nucleotide nào liên kết bằng 4 liên kết hydrogen."
+  },
+  {
+   "ma_cau": "K09110201063",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Theo nguyên tắc bổ sung, tổng số nucleotide loại A trong phân tử DNA luôn bằng tổng số nucleotide loại nào?",
+   "lua_chon": [
+    "G",
+    "C",
+    "U",
+    "T"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Theo nguyên tắc bổ sung, A liên kết với T nên số nucleotide loại A luôn bằng số nucleotide loại T trong DNA.\n\nVì sao các phương án khác sai:\n- A: A bổ sung với T, không phải G (G bổ sung với C).\n- B: C là loại bổ sung với G, không phải với A.\n- C: U chỉ có ở RNA, không xuất hiện trong phân tử DNA."
+  },
+  {
+   "ma_cau": "K09110201064",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Quan sát sơ đồ. Đối tượng được mô tả bên trái mũi tên được gọi tên là gì (ô có dấu ?)?\n![Hình](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hat_mam/k9/K09S110202-01-001-hinh.png)",
+   "lua_chon": [
+    "Nhiễm sắc thể (NST)",
+    "Nucleotide",
+    "Bộ gene (genome)",
+    "Gene"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Một đoạn DNA mang thông tin di truyền quy định một tính trạng được gọi là một gene.\n\nVì sao các phương án khác sai:\n- A: NST là cấu trúc gồm DNA liên kết với protein, không phải chỉ một đoạn DNA nhỏ mang thông tin về một tính trạng.\n- B: Nucleotide là đơn phân cấu tạo DNA, không mang đủ thông tin quy định một tính trạng.\n- C: Bộ gene (genome) là toàn bộ thông tin di truyền của một loài, không phải chỉ một đoạn DNA nhỏ."
+  },
+  {
+   "ma_cau": "K09110201065",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Phát biểu nào sau đây đúng về gene?",
+   "lua_chon": [
+    "Gene là một đoạn của phân tử DNA mang thông tin di truyền",
+    "Một loại protein cấu tạo nên nhiễm sắc thể được gọi là gene",
+    "Toàn bộ phân tử DNA có trong nhân tế bào chính là một gene",
+    "Đơn phân cấu tạo nên phân tử DNA được gọi là gene"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Gene là một đoạn của phân tử DNA, mang thông tin di truyền quy định một tính trạng cụ thể.\n\nVì sao các phương án khác sai:\n- B: Gene là một đoạn DNA, không phải protein; protein do gene quy định tổng hợp.\n- C: Một phân tử DNA chứa rất nhiều gene, gene chỉ là một đoạn nhỏ của DNA.\n- D: Nucleotide mới là đơn phân cấu tạo DNA; gene là một đoạn DNA gồm nhiều nucleotide."
+  },
+  {
+   "ma_cau": "K09110201066",
+   "nhom_id": "KNB00554",
+   "loai": "trac_nghiem",
+   "de": "Mỗi gene thường mang thông tin quy định điều gì?",
+   "lua_chon": [
+    "Toàn bộ các tính trạng của cơ thể sinh vật",
+    "Một loại protein hoặc RNA cụ thể",
+    "Cấu trúc của mọi loại protein có trong tế bào",
+    "Toàn bộ trình tự của nhiễm sắc thể"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Mỗi gene mang thông tin quy định một loại protein hoặc RNA nhất định, liên quan đến một tính trạng cụ thể.\n\nVì sao các phương án khác sai:\n- A: Toàn bộ tính trạng của cơ thể do rất nhiều gene cùng quy định, không phải một gene.\n- C: Mỗi gene chỉ quy định một loại protein cụ thể, không phải mọi loại protein trong tế bào.\n- D: NST gồm nhiều gene khác nhau; một gene chỉ là một đoạn nhỏ của NST."
+  },
+  {
+   "ma_cau": "K09110401001",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Đột biến gene là gì?",
+   "lua_chon": [
+    "Biến đổi trong cấu trúc của gene, liên quan cặp nucleotide",
+    "Số lượng nhiễm sắc thể trong tế bào bị đổi",
+    "Hình dạng của nhiễm sắc thể bị biến đổi",
+    "Xuất hiện thêm cả bộ nhiễm sắc thể mới (đa bội)"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Đột biến gene là những biến đổi trong cấu trúc của gene, liên quan tới một hoặc một số cặp nucleotide trên phân tử DNA.\n\nVì sao các phương án khác sai:\n- B: Đây là đột biến số lượng nhiễm sắc thể, không phải đột biến gene.\n- C: Đây là đột biến cấu trúc nhiễm sắc thể, không phải đột biến gene.\n- D: Đây là thể đa bội, một dạng đột biến số lượng nhiễm sắc thể, không phải đột biến gene."
+  },
+  {
+   "ma_cau": "K09110401002",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Đột biến gene xảy ra ở cấp độ nào?",
+   "lua_chon": [
+    "Cấp độ tế bào, trong cấu trúc nhiễm sắc thể",
+    "Ở cấp độ phân tử, trong cấu trúc DNA",
+    "Làm thay đổi hình dạng bên ngoài cơ thể",
+    "Quần thể thay đổi tỉ lệ kiểu gene"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Đột biến gene xảy ra ở cấp độ phân tử, là những biến đổi trong cấu trúc của DNA.\n\nVì sao các phương án khác sai:\n- A: Thay đổi cấu trúc nhiễm sắc thể là đột biến nhiễm sắc thể, không phải đột biến gene.\n- C: Đột biến gene xảy ra ở cấp phân tử, không phải trực tiếp làm đổi hình dạng cơ thể.\n- D: Thay đổi tỉ lệ kiểu gene trong quần thể là kết quả của chọn lọc, không phải bản chất của đột biến gene."
+  },
+  {
+   "ma_cau": "K09110401003",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Đột biến \"điểm\" trong đột biến gene nghĩa là gì?",
+   "lua_chon": [
+    "Đột biến xảy ra ở một vị trí trên nhiễm sắc thể",
+    "Đột biến gene chỉ xảy ra ở một loài nhất định",
+    "Đột biến liên quan một cặp nucleotide trong gene",
+    "Đột biến gene chỉ truyền cho một người con duy nhất"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Đột biến điểm là đột biến gene chỉ liên quan tới một cặp nucleotide trên phân tử DNA.\n\nVì sao các phương án khác sai:\n- A: Đột biến điểm nói về vị trí trên gene (DNA), không phải một điểm trên nhiễm sắc thể.\n- B: Đột biến điểm nói về quy mô biến đổi trên gene, không liên quan đến phạm vi loài.\n- D: Đột biến điểm mô tả quy mô biến đổi trong gene, không liên quan số người con nhận được."
+  },
+  {
+   "ma_cau": "K09110401004",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Đột biến gene có thể di truyền cho thế hệ sau khi nào?",
+   "lua_chon": [
+    "Xảy ra ở bất kì tế bào nào trong cơ thể",
+    "Tế bào não cũng xảy ra đột biến này",
+    "Cơ thể mang đột biến còn nhỏ tuổi",
+    "Khi xảy ra ở tế bào sinh dục"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Đột biến gene chỉ di truyền được cho thế hệ sau khi xảy ra ở tế bào sinh dục, tham gia tạo giao tử.\n\nVì sao các phương án khác sai:\n- A: Đột biến ở tế bào sinh dưỡng thường không truyền qua sinh sản hữu tính cho đời sau.\n- B: Tế bào não không tham gia tạo giao tử nên không truyền đột biến cho thế hệ sau.\n- C: Khả năng di truyền của đột biến phụ thuộc loại tế bào xảy ra, không phụ thuộc tuổi cơ thể."
+  },
+  {
+   "ma_cau": "K09110401005",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Biến dị tổ hợp khác với đột biến gene ở điểm nào?",
+   "lua_chon": [
+    "Biến dị tổ hợp chỉ tổ hợp lại allele có sẵn",
+    "Tạo ra một allele mới chưa từng có",
+    "Không thể di truyền cho thế hệ sau",
+    "Giới hạn ở loài động vật, không ở thực vật"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Biến dị tổ hợp là sự tổ hợp lại các allele vốn đã có ở bố mẹ, khác với đột biến gene tạo ra allele mới chưa từng có.\n\nVì sao các phương án khác sai:\n- B: Tạo allele mới là đặc điểm của đột biến gene, biến dị tổ hợp chỉ tổ hợp lại allele có sẵn.\n- C: Biến dị tổ hợp vẫn di truyền được qua sinh sản hữu tính như bình thường.\n- D: Biến dị tổ hợp xảy ra ở cả động vật lẫn thực vật sinh sản hữu tính."
+  },
+  {
+   "ma_cau": "K09110401006",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Kết quả trực tiếp của đột biến gene là gì?",
+   "lua_chon": [
+    "Nhiễm sắc thể bị đổi sang hình dạng khác",
+    "Tạo ra allele mới của gene ban đầu",
+    "Một loài sinh vật mới xuất hiện ngay lập tức",
+    "Thêm hẳn một bộ nhiễm sắc thể trong tế bào"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Đột biến gene làm biến đổi cấu trúc của gene, tạo ra allele mới so với allele ban đầu.\n\nVì sao các phương án khác sai:\n- A: Thay đổi hình dạng nhiễm sắc thể là đột biến cấu trúc nhiễm sắc thể, không phải đột biến gene.\n- C: Đột biến gene không trực tiếp tạo loài mới, mà chỉ tạo allele mới trong loài.\n- D: Thêm cả bộ nhiễm sắc thể là đột biến đa bội, không phải đột biến gene."
+  },
+  {
+   "ma_cau": "K09110401007",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Tần số đột biến gene tự nhiên (không có tác nhân gây đột biến) thường ở mức nào?",
+   "lua_chon": [
+    "Rất cao, xảy ra liên tục ở mọi gene",
+    "Bằng 100%, mọi gene đều đột biến mỗi thế hệ",
+    "Chỉ xảy ra khi cơ thể đã trưởng thành",
+    "Rất thấp"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Đột biến gene tự nhiên (không có tác nhân gây đột biến) xảy ra với tần số rất thấp.\n\nVì sao các phương án khác sai:\n- A: Đột biến gene tự nhiên có tần số rất thấp, không xảy ra liên tục ở mọi gene.\n- B: Không phải mọi gene đều đột biến; tần số đột biến tự nhiên rất thấp.\n- C: Đột biến gene có thể xảy ra ở bất kì giai đoạn nào của tế bào, không chỉ khi cơ thể trưởng thành."
+  },
+  {
+   "ma_cau": "K09110401008",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Đột biến gene xảy ra ở tế bào sinh dưỡng (tế bào soma) thì được di truyền như thế nào?",
+   "lua_chon": [
+    "Không di truyền cho thế hệ sau qua sinh sản hữu tính, chỉ biểu hiện ở một phần cơ thể",
+    "Luôn di truyền cho toàn bộ thế hệ con qua sinh sản hữu tính",
+    "Di truyền cho thế hệ sau giống hệt như đột biến ở tế bào sinh dục",
+    "Làm toàn bộ cơ thể biểu hiện tính trạng đột biến ngay lập tức"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Đột biến gene ở tế bào sinh dưỡng (soma) không di truyền cho thế hệ sau qua sinh sản hữu tính, chỉ biểu hiện ở mô hoặc cơ quan chứa các tế bào mang đột biến đó.\n\nVì sao các phương án khác sai:\n- B: Chỉ đột biến ở tế bào sinh dục (giao tử) mới có thể di truyền qua sinh sản hữu tính, không phải đột biến ở tế bào soma.\n- C: Đột biến ở tế bào soma không di truyền qua sinh sản hữu tính như đột biến ở tế bào sinh dục.\n- D: Đột biến ở tế bào soma chỉ ảnh hưởng đến các tế bào được sinh ra từ tế bào đó, không phải toàn bộ cơ thể ngay lập tức."
+  },
+  {
+   "ma_cau": "K09110401009",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Đột biến gene dạng mất một cặp nucleotide là gì?",
+   "lua_chon": [
+    "Một cặp nucleotide mới được chèn thêm vào",
+    "Một cặp nucleotide này đổi thành cặp khác",
+    "Một cặp nucleotide bị loại bỏ khỏi mạch DNA",
+    "Toàn bộ gene bị loại bỏ khỏi nhiễm sắc thể"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Đột biến mất một cặp nucleotide là dạng đột biến gene trong đó một cặp nucleotide bị loại bỏ khỏi mạch DNA.\n\nVì sao các phương án khác sai:\n- A: Đây là mô tả dạng đột biến THÊM, không phải MẤT.\n- B: Đây là mô tả dạng đột biến THAY THẾ, không phải MẤT.\n- D: Mất một cặp nucleotide chỉ loại bỏ một cặp trong gene, không loại bỏ toàn bộ gene."
+  },
+  {
+   "ma_cau": "K09110401010",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Đột biến gene dạng thêm một cặp nucleotide là gì?",
+   "lua_chon": [
+    "Một cặp nucleotide này đổi thành cặp khác",
+    "Một cặp nucleotide bị loại bỏ khỏi mạch DNA",
+    "Hai gene khác nhau được ghép nối thành một",
+    "Một cặp nucleotide mới được chèn thêm vào"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Đột biến thêm một cặp nucleotide là dạng đột biến gene trong đó một cặp nucleotide mới được chèn thêm vào mạch DNA.\n\nVì sao các phương án khác sai:\n- A: Đây là mô tả dạng đột biến THAY THẾ, không phải THÊM.\n- B: Đây là mô tả dạng đột biến MẤT, không phải THÊM.\n- C: Ghép nối hai gene không phải dạng đột biến gene đã học (mất, thêm, thay thế một cặp nucleotide)."
+  },
+  {
+   "ma_cau": "K09110401011",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Đột biến gene dạng thay thế một cặp nucleotide là gì?",
+   "lua_chon": [
+    "Một cặp nucleotide này đổi thành cặp khác",
+    "Một cặp nucleotide bị loại bỏ khỏi mạch DNA",
+    "Một cặp nucleotide mới được chèn thêm vào",
+    "Số cặp nucleotide của gene tăng gấp đôi"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Đột biến thay thế một cặp nucleotide là dạng đột biến gene trong đó một cặp nucleotide này được đổi thành một cặp nucleotide khác.\n\nVì sao các phương án khác sai:\n- B: Đây là mô tả dạng đột biến MẤT, không phải THAY THẾ.\n- C: Đây là mô tả dạng đột biến THÊM, không phải THAY THẾ.\n- D: Tăng gấp đôi số cặp nucleotide không phải dạng đột biến gene đã học."
+  },
+  {
+   "ma_cau": "K09110401012",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Đột biến gene gồm những dạng nào theo chương trình đã học?",
+   "lua_chon": [
+    "Mất hoặc nhân đôi một đoạn nhiễm sắc thể",
+    "Mất, thêm hoặc thay thế một cặp nucleotide",
+    "Đảo hoặc chuyển đoạn trên nhiễm sắc thể",
+    "Tăng hoặc giảm cả bộ nhiễm sắc thể"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Đột biến gene gồm ba dạng: mất, thêm hoặc thay thế một cặp nucleotide trong gene.\n\nVì sao các phương án khác sai:\n- A: Đây là các dạng đột biến cấu trúc nhiễm sắc thể, không phải đột biến gene.\n- C: Đảo đoạn, chuyển đoạn là dạng đột biến cấu trúc nhiễm sắc thể, không phải đột biến gene.\n- D: Tăng giảm cả bộ nhiễm sắc thể là đột biến số lượng nhiễm sắc thể, không phải đột biến gene."
+  },
+  {
+   "ma_cau": "K09110401013",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Dạng đột biến gene nào KHÔNG làm đổi tổng số cặp nucleotide của gene?",
+   "lua_chon": [
+    "Mất một cặp nucleotide",
+    "Thêm một cặp nucleotide",
+    "Thay thế một cặp nucleotide",
+    "Mất nhiều cặp nucleotide liên tiếp"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Thay thế một cặp nucleotide chỉ đổi loại nucleotide tại một vị trí, không làm thay đổi tổng số cặp nucleotide của gene.\n\nVì sao các phương án khác sai:\n- A: Mất một cặp nucleotide làm giảm tổng số cặp nucleotide của gene.\n- B: Thêm một cặp nucleotide làm tăng tổng số cặp nucleotide của gene.\n- D: Mất nhiều cặp nucleotide liên tiếp vẫn làm giảm tổng số cặp nucleotide của gene."
+  },
+  {
+   "ma_cau": "K09110401014",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Trong 3 dạng đột biến điểm, dạng nào làm THAY ĐỔI tổng số cặp nucleotide của gene?",
+   "lua_chon": [
+    "Chỉ dạng thay thế",
+    "Dạng mất và dạng thêm",
+    "Chỉ dạng mất",
+    "Cả 3 dạng đều làm thay đổi"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Dạng mất (giảm 1 cặp) và dạng thêm (tăng 1 cặp) đều làm thay đổi tổng số cặp nucleotide; riêng dạng thay thế thì không.\n\nVì sao các phương án khác sai:\n- A: Dạng thay thế không làm đổi tổng số cặp nucleotide, chỉ đổi loại nucleotide ở một vị trí.\n- C: Dạng thêm cũng làm thay đổi tổng số cặp nucleotide, không chỉ riêng dạng mất.\n- D: Dạng thay thế không làm thay đổi tổng số cặp nucleotide của gene."
+  },
+  {
+   "ma_cau": "K09110401015",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Đột biến điểm (mất, thêm hoặc thay thế một cặp nucleotide) có thể xảy ra ở vị trí nào trong gene?",
+   "lua_chon": [
+    "Chỉ xảy ra ở codon mở đầu",
+    "Chỉ xảy ra ở bộ ba kết thúc",
+    "Ở bất kì vị trí nào trong gene",
+    "Thường chỉ xảy ra ở đầu mút của gene"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Đột biến điểm (mất, thêm hoặc thay thế một cặp nucleotide) có thể xảy ra ở bất kì vị trí nào trong gene.\n\nVì sao các phương án khác sai:\n- A: Đột biến điểm có thể xảy ra ở bất kì vị trí nào, không chỉ riêng codon mở đầu.\n- B: Đột biến điểm có thể xảy ra ở bất kì vị trí nào, không chỉ riêng bộ ba kết thúc.\n- D: Đột biến điểm không giới hạn ở hai đầu mút, có thể xảy ra ở giữa gene."
+  },
+  {
+   "ma_cau": "K09110401016",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Đột biến thay thế một cặp nucleotide thường ảnh hưởng gì đến chuỗi amino acid?",
+   "lua_chon": [
+    "Dịch khung đọc kể từ vị trí đột biến",
+    "Có thể đổi một amino acid, khung đọc không đổi",
+    "Gene không còn phiên mã được nữa",
+    "Số amino acid của chuỗi tăng gấp đôi"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Đột biến thay thế một cặp nucleotide chỉ làm đổi một bộ ba tương ứng, có thể làm đổi một amino acid mà không làm lệch khung đọc các bộ ba khác.\n\nVì sao các phương án khác sai:\n- A: Dịch khung là hậu quả của đột biến MẤT hoặc THÊM, không phải THAY THẾ.\n- C: Thay thế một cặp nucleotide thường không ngăn cản phiên mã, gene vẫn được phiên mã bình thường.\n- D: Thay thế một cặp nucleotide không làm đổi số nucleotide nên không làm tăng số amino acid."
+  },
+  {
+   "ma_cau": "K09110401017",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Vì sao đột biến mất hoặc thêm một cặp nucleotide thường gây hậu quả nặng hơn đột biến thay thế?",
+   "lua_chon": [
+    "Toàn bộ gene trên nhiễm sắc thể sẽ mất đi",
+    "Hiện tượng này chỉ xảy ra ở tế bào sinh dục",
+    "Vì làm lệch khung đọc từ vị trí đột biến",
+    "Số lượng nhiễm sắc thể trong tế bào sẽ tăng"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Mất hoặc thêm một cặp nucleotide làm lệch cách chia bộ ba từ vị trí đột biến trở đi, nên ảnh hưởng nhiều bộ ba và nhiều amino acid hơn.\n\nVì sao các phương án khác sai:\n- A: Mất hoặc thêm một cặp nucleotide chỉ ảnh hưởng một phần gene, không làm mất toàn bộ gene.\n- B: Đột biến gene có thể xảy ra ở cả tế bào sinh dưỡng lẫn tế bào sinh dục.\n- D: Đột biến gene không làm thay đổi số lượng nhiễm sắc thể trong tế bào."
+  },
+  {
+   "ma_cau": "K09110401018",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "mRNA đọc theo bộ ba AUG - GGA - UCA -... Nếu mất một nucleotide ngay tại bộ ba thứ hai, các bộ ba từ đó trở đi bị ảnh hưởng thế nào?",
+   "lua_chon": [
+    "Vẫn giữ nguyên như trước khi đột biến",
+    "Bộ ba đó đổi, các bộ ba sau vẫn giữ nguyên",
+    "Toàn bộ mRNA ngừng được tổng hợp ngay",
+    "Bị đọc lệch thành các bộ ba mới"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Mất một nucleotide làm lệch cách chia bộ ba (dịch khung đọc), khiến tất cả các bộ ba từ vị trí đó trở về sau đều bị đọc sai khác so với ban đầu.\n\nVì sao các phương án khác sai:\n- A: Mất một nucleotide làm lệch khung đọc, các bộ ba từ đó về sau đều khác so với ban đầu.\n- B: Không chỉ bộ ba tại vị trí mất mà tất cả bộ ba phía sau đều bị đọc lệch.\n- C: Mất một nucleotide không ngăn quá trình dịch mã dừng ngay, mRNA vẫn được đọc tiếp nhưng lệch khung."
+  },
+  {
+   "ma_cau": "K09110401019",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "So với đột biến mất hoặc thêm, đột biến thay thế một cặp nucleotide thường ảnh hưởng chuỗi amino acid ở mức nào?",
+   "lua_chon": [
+    "Thường chỉ đổi một amino acid tương ứng",
+    "Làm đổi toàn bộ amino acid từ vị trí đó",
+    "Sẽ không làm thay đổi amino acid nào",
+    "Làm chuỗi polypeptide dài thêm ra"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Đột biến thay thế một cặp nucleotide chỉ làm đổi một bộ ba, nên thường chỉ làm đổi một amino acid tương ứng trong chuỗi polypeptide.\n\nVì sao các phương án khác sai:\n- B: Đổi toàn bộ trình tự từ vị trí đó là hậu quả của đột biến MẤT hoặc THÊM (dịch khung), không phải THAY THẾ.\n- C: Thay thế một cặp nucleotide vẫn có thể làm đổi bộ ba, từ đó ảnh hưởng amino acid tương ứng.\n- D: Thay thế một cặp nucleotide không làm đổi số nucleotide nên không làm dài thêm chuỗi polypeptide."
+  },
+  {
+   "ma_cau": "K09110401020",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Đột biến thêm một cặp nucleotide vào giữa gene ảnh hưởng gì đến các bộ ba phía sau vị trí đó?",
+   "lua_chon": [
+    "Không ảnh hưởng vì chỉ thêm một nucleotide",
+    "Làm lệch khung, đổi hầu hết bộ ba phía sau",
+    "Làm đổi đúng một amino acid duy nhất",
+    "Làm dừng tổng hợp protein ngay tại vị trí đó"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Thêm một cặp nucleotide làm lệch khung đọc từ vị trí đó trở đi, khiến hầu hết các bộ ba phía sau bị đọc khác so với ban đầu.\n\nVì sao các phương án khác sai:\n- A: Thêm dù chỉ một nucleotide cũng làm lệch khung đọc bộ ba, ảnh hưởng nhiều bộ ba phía sau.\n- C: Đổi đúng một amino acid là hậu quả của đột biến THAY THẾ, không phải THÊM (gây dịch khung).\n- D: Đột biến thêm một cặp nucleotide không nhất thiết làm dừng dịch mã ngay, chuỗi polypeptide khác thường vẫn có thể được tổng hợp tiếp."
+  },
+  {
+   "ma_cau": "K09110401021",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Vì sao đột biến mất hoặc thêm một cặp nucleotide gây dịch khung đọc?",
+   "lua_chon": [
+    "Vị trí của gene trên nhiễm sắc thể bị đổi",
+    "Nhiễm sắc thể bị đứt gãy thành nhiều đoạn",
+    "Làm lệch cách chia bộ ba từ vị trí đột biến",
+    "Số lượng nhiễm sắc thể trong tế bào bị đổi"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Mất hoặc thêm một cặp nucleotide làm lệch cách chia các nucleotide thành từng bộ ba kể từ vị trí đột biến trở đi, gọi là dịch khung đọc.\n\nVì sao các phương án khác sai:\n- A: Dịch khung đọc là hiện tượng ở mức phân tử (cách đọc bộ ba), không phải đổi vị trí gene trên nhiễm sắc thể.\n- B: Đứt gãy nhiễm sắc thể là đột biến cấu trúc nhiễm sắc thể, không phải hậu quả của đột biến gene.\n- D: Đột biến gene không làm thay đổi số lượng nhiễm sắc thể trong tế bào."
+  },
+  {
+   "ma_cau": "K09110401022",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "mRNA đọc bộ ba: AUG-GGA-UCA-UAU... Đột biến thay thế đổi UCA thành UAA (bộ ba kết thúc). Hậu quả với chuỗi polypeptide là gì?",
+   "lua_chon": [
+    "Chỉ đổi đúng một amino acid tại vị trí đó",
+    "Không thay đổi vì đây chỉ là đột biến thay thế",
+    "Dài thêm vì có thêm bộ ba kết thúc mới",
+    "Bị cắt ngắn ngay từ vị trí đó, mất toàn bộ phần còn lại"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Khi đột biến thay thế tạo ra bộ ba kết thúc sớm, ribosome dừng dịch mã ngay tại đó, làm chuỗi polypeptide bị cắt ngắn, mất toàn bộ phần còn lại — hậu quả có thể nghiêm trọng dù chỉ là đột biến thay thế 1 cặp nucleotide.\n\nVì sao các phương án khác sai:\n- A: Vì UCA đổi thành bộ ba kết thúc, ribosome dừng lại ngay, không chỉ đổi một amino acid.\n- B: Dù là đột biến thay thế, việc tạo ra bộ ba kết thúc sớm vẫn làm thay đổi lớn đến chuỗi polypeptide.\n- C: Bộ ba kết thúc làm ribosome dừng dịch mã, khiến chuỗi ngắn lại chứ không dài thêm."
+  },
+  {
+   "ma_cau": "K09110401023",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "mRNA đọc bộ ba: AUG-AAG-CCU-GGA... Mất một nucleotide ở đầu bộ ba AAG. Các bộ ba từ đó trở đi sẽ thế nào?",
+   "lua_chon": [
+    "Khung đọc bị lệch, các bộ ba từ đó trở đi bị đọc sai",
+    "Chỉ riêng bộ ba AAG bị mất, các bộ ba còn lại giữ nguyên",
+    "Toàn bộ chuỗi mRNA ngừng được dịch mã ngay lập tức",
+    "Các bộ ba phía sau tự động dịch chuyển để bù lại nucleotide đã mất"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Mất một nucleotide làm lệch khung đọc (dịch khung): tất cả các bộ ba từ vị trí đó trở đi được đọc lại theo nhóm ba nucleotide mới, khác hoàn toàn với trình tự ban đầu.\n\nVì sao các phương án khác sai:\n- B: Mất 1 nucleotide làm lệch khung đọc từ đó trở đi, không chỉ ảnh hưởng riêng bộ ba AAG.\n- C: Dịch mã vẫn tiếp tục nhưng đọc sai khung, không dừng lại ngay lập tức.\n- D: Không có cơ chế tự động bù lại nucleotide đã mất; khung đọc bị lệch vĩnh viễn từ vị trí đó."
+  },
+  {
+   "ma_cau": "K09110401024",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Vì sao đột biến mất hoặc thêm 3 cặp nucleotide (hoặc bội số của 3) thường gây hậu quả nhẹ hơn so với mất hoặc thêm 1 hoặc 2 cặp?",
+   "lua_chon": [
+    "Vì mất/thêm bội số của 3 luôn xảy ra ở bộ ba kết thúc",
+    "Vì mất/thêm đúng bội số của 3 không làm lệch khung đọc các bộ ba phía sau",
+    "Vì mất/thêm bội số của 3 không phải là đột biến gene thật sự",
+    "Vì mất/thêm bội số của 3 làm gene ngừng phiên mã"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Mất hoặc thêm đúng bội số của 3 nucleotide chỉ làm mất/thêm một số amino acid tương ứng mà không làm lệch khung đọc các bộ ba phía sau, nên hậu quả thường nhẹ hơn.\n\nVì sao các phương án khác sai:\n- A: Vị trí xảy ra đột biến không nhất thiết là bộ ba kết thúc; điều quan trọng là số nucleotide mất/thêm có là bội số của 3 hay không.\n- C: Đây vẫn là đột biến gene thật sự, chỉ là ít gây dịch khung hơn.\n- D: Đột biến này chỉ làm thay đổi một vài amino acid, không làm ngừng phiên mã."
+  },
+  {
+   "ma_cau": "K09110401025",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Tác nhân nào sau đây thuộc nhóm VẬT LÍ gây đột biến gene?",
+   "lua_chon": [
+    "Chất 5-bromouracil (5BU)",
+    "Virus viêm gan B",
+    "Chất độc dioxin",
+    "Tia tử ngoại (tia UV)"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Tia tử ngoại (tia UV) là tác nhân vật lí có thể gây đột biến gene.\n\nVì sao các phương án khác sai:\n- A: 5-bromouracil là một chất hoá học, thuộc nhóm tác nhân hoá học.\n- B: Virus là tác nhân sinh học, không phải tác nhân vật lí.\n- C: Dioxin là một chất hoá học độc hại, thuộc nhóm tác nhân hoá học."
+  },
+  {
+   "ma_cau": "K09110401026",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Tác nhân nào sau đây thuộc nhóm HOÁ HỌC gây đột biến gene?",
+   "lua_chon": [
+    "Chất 5-bromouracil (5BU)",
+    "Tia phóng xạ",
+    "Sốc nhiệt đột ngột",
+    "Một số loại virus"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Chất 5-bromouracil (5BU) là một hoá chất có thể gây đột biến gene, thuộc nhóm tác nhân hoá học.\n\nVì sao các phương án khác sai:\n- B: Tia phóng xạ là tác nhân vật lí, không phải hoá học.\n- C: Sốc nhiệt là tác nhân vật lí (thay đổi nhiệt độ), không phải hoá học.\n- D: Virus là tác nhân sinh học, không phải hoá học."
+  },
+  {
+   "ma_cau": "K09110401027",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Tác nhân nào sau đây thuộc nhóm SINH HỌC gây đột biến gene?",
+   "lua_chon": [
+    "Tia X",
+    "Một số loại virus",
+    "Sốc nhiệt đột ngột",
+    "Chất ethyl methanesulfonate (EMS)"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Một số loại virus là tác nhân sinh học có thể gây đột biến gene ở tế bào chủ.\n\nVì sao các phương án khác sai:\n- A: Tia X là tác nhân vật lí, không phải sinh học.\n- C: Sốc nhiệt là tác nhân vật lí, không phải sinh học.\n- D: EMS là một chất hoá học, thuộc nhóm tác nhân hoá học."
+  },
+  {
+   "ma_cau": "K09110401028",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Đột biến gene có thể phát sinh tự nhiên ngay cả khi không có tác nhân rõ ràng, do đâu?",
+   "lua_chon": [
+    "Cơ thể chủ động tạo ra đột biến để thích nghi",
+    "Nhiễm sắc thể tự nhân đôi thêm một lần",
+    "Do rối loạn ngẫu nhiên khi tái bản DNA",
+    "Tế bào ngừng hẳn quá trình phân chia"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Ngay cả khi không có tác nhân rõ ràng, đột biến gene vẫn có thể phát sinh do rối loạn ngẫu nhiên trong quá trình tái bản DNA của tế bào.\n\nVì sao các phương án khác sai:\n- A: Đột biến phát sinh ngẫu nhiên, cơ thể không thể chủ động tạo đột biến theo ý muốn để thích nghi ngay.\n- B: Nhân đôi thêm nhiễm sắc thể là đột biến số lượng nhiễm sắc thể, không phải nguyên nhân gây đột biến gene tự phát.\n- D: Đột biến gene phát sinh trong quá trình tái bản DNA, không liên quan việc tế bào ngừng phân chia."
+  },
+  {
+   "ma_cau": "K09110401029",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Tiếp xúc lâu dài với thuốc trừ sâu làm tăng nguy cơ gì?",
+   "lua_chon": [
+    "Ảnh hưởng riêng nhiễm sắc thể giới tính",
+    "Làm tăng số nhiễm sắc thể mọi tế bào",
+    "Không gây ảnh hưởng nếu tiếp xúc ngắn",
+    "Tăng nguy cơ đột biến gene do hoá chất"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Thuốc trừ sâu là hoá chất độc hại, tiếp xúc lâu dài làm tăng nguy cơ phát sinh đột biến gene.\n\nVì sao các phương án khác sai:\n- A: Hoá chất độc hại có thể tác động đến gene trên nhiều loại nhiễm sắc thể, không riêng nhiễm sắc thể giới tính.\n- B: Hoá chất là tác nhân gây đột biến gene, không trực tiếp làm tăng số lượng nhiễm sắc thể trong tế bào.\n- C: Ngay cả tiếp xúc trong thời gian ngắn, hoá chất độc hại vẫn có thể gây đột biến gene nếu đủ liều lượng."
+  },
+  {
+   "ma_cau": "K09110401030",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Vì sao cần hạn chế tiếp xúc tia phóng xạ và hoá chất độc hại?",
+   "lua_chon": [
+    "Vì đây là tác nhân gây đột biến gene",
+    "Tác động này chỉ ảnh hưởng đến môi trường xung quanh",
+    "Mức độ ảnh hưởng chỉ là làm chậm sinh trưởng",
+    "Đối tượng ảnh hưởng chỉ là thực vật, không phải động vật"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Tia phóng xạ và hoá chất độc hại là các tác nhân có thể gây đột biến gene, ảnh hưởng đến sức khoẻ và khả năng di truyền.\n\nVì sao các phương án khác sai:\n- B: Tia phóng xạ và hoá chất độc hại có thể tác động trực tiếp đến gene của con người, không chỉ môi trường xung quanh.\n- C: Tia phóng xạ, hoá chất độc hại có thể gây đột biến gene thật sự, không chỉ đơn thuần làm chậm sinh trưởng.\n- D: Tia phóng xạ và hoá chất độc hại có thể gây đột biến gene ở cả thực vật, động vật và con người."
+  },
+  {
+   "ma_cau": "K09110401031",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Tia tử ngoại (UV) từ ánh nắng mặt trời là tác nhân gây đột biến gene thuộc nhóm nào?",
+   "lua_chon": [
+    "Vật lí",
+    "Hoá học",
+    "Sinh học",
+    "Không phải tác nhân gây đột biến"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Tia tử ngoại (UV) là một dạng bức xạ, thuộc nhóm tác nhân vật lí gây đột biến gene.\n\nVì sao các phương án khác sai:\n- B: Tia tử ngoại là một dạng bức xạ, thuộc tác nhân vật lí, không phải hoá học.\n- C: Tác nhân sinh học là virus hoặc vi sinh vật, không phải bức xạ.\n- D: Tia tử ngoại có khả năng gây đột biến gene, là một tác nhân thật sự."
+  },
+  {
+   "ma_cau": "K09110401032",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Một số loại virus có thể gây đột biến gene ở tế bào vật chủ. Đây là tác nhân thuộc nhóm nào?",
+   "lua_chon": [
+    "Vật lí",
+    "Sinh học",
+    "Hoá học",
+    "Không phải tác nhân gây đột biến"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Virus xâm nhập tế bào và có thể làm thay đổi vật chất di truyền, là tác nhân gây đột biến thuộc nhóm sinh học.\n\nVì sao các phương án khác sai:\n- A: Virus là sinh vật, không phải tác nhân vật lí (như bức xạ, nhiệt độ).\n- C: Virus là sinh vật, không phải hoá chất.\n- D: Virus có thể xâm nhập và làm thay đổi vật chất di truyền của tế bào chủ, là tác nhân gây đột biến thật sự."
+  },
+  {
+   "ma_cau": "K09110401033",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Vì sao phần lớn đột biến gene khi biểu hiện thường có hại cho sinh vật?",
+   "lua_chon": [
+    "Nhiễm sắc thể sẽ bị đứt gãy",
+    "Vì phá vỡ hài hoà giữa các gene qua chọn lọc",
+    "Sinh vật sẽ ngừng sinh sản ngay lập tức",
+    "Hiện tượng này chỉ xảy ra ở loài nguy cơ tuyệt chủng"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Đột biến gene phá vỡ mối quan hệ hài hoà giữa các gene đã qua chọn lọc tự nhiên lâu dài, nên phần lớn khi biểu hiện thường có hại.\n\nVì sao các phương án khác sai:\n- A: Đột biến gene không làm đứt gãy nhiễm sắc thể, đó là đột biến cấu trúc nhiễm sắc thể.\n- C: Đột biến gene không nhất thiết làm sinh vật ngừng sinh sản, nhiều đột biến vẫn cho sinh vật sống, sinh sản bình thường.\n- D: Đột biến gene có thể xảy ra ở bất kì loài nào, không riêng loài có nguy cơ tuyệt chủng."
+  },
+  {
+   "ma_cau": "K09110401034",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Đột biến gene được xem là TRUNG TÍNH khi nào?",
+   "lua_chon": [
+    "Sinh vật chết ngay sau khi sinh ra",
+    "Sức sống và khả năng sinh sản vượt trội hẳn",
+    "Khi không ảnh hưởng rõ rệt sức sống, sinh sản",
+    "Xuất hiện thêm một nhiễm sắc thể mới"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Đột biến gene trung tính là đột biến không ảnh hưởng rõ rệt đến sức sống và khả năng sinh sản của sinh vật.\n\nVì sao các phương án khác sai:\n- A: Làm sinh vật chết là đột biến CÓ HẠI, không phải trung tính.\n- B: Làm sinh vật vượt trội hẳn là đột biến CÓ LỢI, không phải trung tính.\n- D: Trung tính nói về mức độ ảnh hưởng đến sức sống, không liên quan số lượng nhiễm sắc thể."
+  },
+  {
+   "ma_cau": "K09110401035",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Đột biến gene có vai trò gì với quá trình tiến hoá?",
+   "lua_chon": [
+    "Không có vai trò vì phần lớn có hại",
+    "Có vai trò trong chọn giống, không trong tiến hoá",
+    "Làm quá trình tiến hoá bị dừng lại",
+    "Cung cấp nguyên liệu (allele mới) cho tiến hoá"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Đột biến gene tạo ra các allele mới, cung cấp nguồn nguyên liệu di truyền cho quá trình tiến hoá và chọn giống.\n\nVì sao các phương án khác sai:\n- A: Dù phần lớn có hại nhưng đột biến vẫn tạo allele mới, là nguyên liệu cho tiến hoá và chọn giống.\n- B: Đột biến gene là nguyên liệu cho cả tiến hoá tự nhiên lẫn chọn giống, không chỉ riêng chọn giống.\n- C: Đột biến gene tạo biến dị di truyền, thúc đẩy chứ không làm dừng quá trình tiến hoá."
+  },
+  {
+   "ma_cau": "K09110401036",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Vì sao đột biến gene là nguyên liệu quan trọng cho chọn giống cây trồng, vật nuôi?",
+   "lua_chon": [
+    "Vì tạo allele mới, có thể mang đặc điểm có lợi",
+    "Mọi đột biến đều tạo giống tốt hơn hẳn",
+    "Số cá thể trong đàn sẽ tăng lên ngay",
+    "Hiện tượng này chỉ xảy ra khi con người chủ động lai"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Đột biến gene tạo ra các allele mới, trong đó có thể có allele mang đặc điểm có lợi để con người chọn lọc, tạo giống mới.\n\nVì sao các phương án khác sai:\n- B: Không phải mọi đột biến đều có lợi, phần lớn đột biến có hại hoặc trung tính.\n- C: Đột biến gene tạo ra allele mới, không trực tiếp làm tăng số lượng cá thể ngay lập tức.\n- D: Đột biến gene có thể phát sinh tự nhiên, không nhất thiết phải do con người chủ động lai giống."
+  },
+  {
+   "ma_cau": "K09110401037",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Một đột biến gene làm cây trồng cho năng suất cao hơn hẳn giống gốc. Đột biến này thuộc loại nào?",
+   "lua_chon": [
+    "Đột biến có hại",
+    "Đột biến có lợi",
+    "Đột biến trung tính",
+    "Đột biến không di truyền được"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Đột biến làm tăng rõ rệt năng suất so với giống gốc là một đột biến có lợi cho sinh vật (và cho con người).\n\nVì sao các phương án khác sai:\n- A: Đột biến có hại làm giảm sức sống hoặc năng suất, không phù hợp với tình huống năng suất tăng cao hơn hẳn.\n- C: Đột biến trung tính không ảnh hưởng rõ rệt, trong khi ở đây năng suất tăng rõ rệt.\n- D: Đột biến gene xảy ra ở tế bào sinh dục vẫn có thể di truyền được cho đời sau."
+  },
+  {
+   "ma_cau": "K09110401038",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Đột biến gene có thể có lợi, có hại hoặc trung tính. Điều gì quyết định một đột biến là có lợi hay có hại?",
+   "lua_chon": [
+    "Đột biến xảy ra ở tế bào sinh dục hay tế bào sinh dưỡng của cơ thể",
+    "Mức độ ảnh hưởng đến sức sống và sinh sản của sinh vật",
+    "Đột biến thuộc dạng mất, thêm hay thay thế một cặp nucleotide",
+    "Đột biến do tác nhân vật lí, hoá học hay sinh học gây ra"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Một đột biến được coi là có lợi hay có hại tuỳ theo mức độ ảnh hưởng của nó đến sức sống và khả năng sinh sản của sinh vật trong điều kiện môi trường sống cụ thể.\n\nVì sao các phương án khác sai:\n- A: Vị trí xảy ra đột biến (soma hay sinh dục) quyết định khả năng di truyền, không quyết định lợi hay hại.\n- C: Dạng đột biến (mất, thêm, thay thế) không quyết định trực tiếp việc đột biến có lợi hay hại.\n- D: Loại tác nhân gây đột biến không quyết định đột biến đó có lợi hay có hại."
+  },
+  {
+   "ma_cau": "K09110401039",
+   "nhom_id": "KNB00558",
+   "loai": "trac_nghiem",
+   "de": "Trong chọn giống, các nhà khoa học có thể chủ động gây đột biến bằng tác nhân vật lí hoặc hoá học để làm gì?",
+   "lua_chon": [
+    "Đảm bảo mọi đột biến tạo ra đều có lợi ngay lập tức",
+    "Thay thế phương pháp lai giống truyền thống",
+    "Ngăn không cho đột biến tự nhiên xảy ra thêm",
+    "Tạo nguồn biến dị để chọn lọc ra đột biến có lợi"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Gây đột biến nhân tạo giúp tạo ra nguồn biến dị phong phú, làm nguyên liệu để các nhà chọn giống chọn lọc ra những đột biến có lợi cho sản xuất.\n\nVì sao các phương án khác sai:\n- A: Gây đột biến nhân tạo vẫn tạo ra cả đột biến có lợi, có hại và trung tính; cần chọn lọc sau đó.\n- B: Gây đột biến là một phương pháp bổ sung, không thay thế hoàn toàn lai giống truyền thống.\n- C: Gây đột biến nhân tạo không ngăn được đột biến tự nhiên tiếp tục xảy ra."
+  },
+  {
+   "ma_cau": "K09110402001",
+   "nhom_id": "KNB00559",
+   "loai": "trac_nghiem",
+   "de": "Một gene bị đột biến. So với gene ban đầu, gene sau đột biến có số cặp nucleotide KHÔNG đổi nhưng số liên kết hydrogen tăng thêm 1. Đột biến này thuộc dạng nào?",
+   "lua_chon": [
+    "Mất một cặp nucleotide",
+    "Thêm một cặp nucleotide",
+    "Thay thế một cặp G-C bằng một cặp A-T",
+    "Thay thế một cặp A-T bằng một cặp G-C"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Số cặp nucleotide không đổi cho biết đây là đột biến thay thế; số liên kết hydrogen tăng 1 cho biết A–T (2 liên kết) đã đổi thành G–C (3 liên kết).\n\nVì sao các phương án khác sai:\n- A: Mất một cặp nucleotide làm số cặp nucleotide GIẢM đi 1, ở đây số cặp nucleotide không đổi.\n- B: Thêm một cặp nucleotide làm số cặp nucleotide TĂNG thêm 1, ở đây số cặp nucleotide không đổi.\n- C: Thay G–C bằng A–T làm số liên kết hydrogen GIẢM đi 1, ở đây số liên kết hydrogen lại tăng."
+  },
+  {
+   "ma_cau": "K09110402002",
+   "nhom_id": "KNB00559",
+   "loai": "trac_nghiem",
+   "de": "Một gene bị đột biến. So với gene ban đầu, gene sau đột biến có số cặp nucleotide KHÔNG đổi nhưng số liên kết hydrogen giảm đi 1. Đột biến này thuộc dạng nào?",
+   "lua_chon": [
+    "Thay thế một cặp G-C bằng một cặp A-T",
+    "Mất một cặp nucleotide",
+    "Thêm một cặp nucleotide",
+    "Thay thế một cặp A-T bằng một cặp G-C"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Số cặp nucleotide không đổi cho biết đây là đột biến thay thế; số liên kết hydrogen giảm 1 cho biết G–C (3 liên kết) đã đổi thành A–T (2 liên kết).\n\nVì sao các phương án khác sai:\n- B: Mất một cặp nucleotide làm số cặp nucleotide GIẢM đi 1, ở đây số cặp nucleotide không đổi.\n- C: Thêm một cặp nucleotide làm số cặp nucleotide TĂNG thêm 1, ở đây số cặp nucleotide không đổi.\n- D: Thay A–T bằng G–C làm số liên kết hydrogen TĂNG thêm 1, ở đây số liên kết hydrogen lại giảm."
+  },
+  {
+   "ma_cau": "K09110402003",
+   "nhom_id": "KNB00559",
+   "loai": "trac_nghiem",
+   "de": "Một gene bị đột biến. So với gene ban đầu, gene sau đột biến có số cặp nucleotide giảm đi 1 và số liên kết hydrogen giảm đi 3. Đột biến này thuộc dạng nào?",
+   "lua_chon": [
+    "Mất một cặp A-T",
+    "Mất một cặp G-C",
+    "Thêm một cặp G-C",
+    "Thay thế một cặp A-T bằng một cặp G-C"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Số cặp nucleotide giảm 1 cho biết đây là đột biến mất; số liên kết hydrogen giảm 3 cho biết cặp bị mất là G–C.\n\nVì sao các phương án khác sai:\n- A: Mất một cặp A–T chỉ làm giảm 2 liên kết hydrogen, ở đây số liên kết hydrogen giảm tới 3.\n- C: Thêm một cặp nucleotide làm số cặp nucleotide TĂNG lên, ở đây số cặp nucleotide lại giảm.\n- D: Thay thế một cặp nucleotide không làm đổi số cặp nucleotide, ở đây số cặp nucleotide đã giảm."
+  },
+  {
+   "ma_cau": "K09110402004",
+   "nhom_id": "KNB00559",
+   "loai": "trac_nghiem",
+   "de": "Một gene bị đột biến. So với gene ban đầu, gene sau đột biến có số cặp nucleotide tăng thêm 1 và số liên kết hydrogen tăng thêm 2. Đột biến này thuộc dạng nào?",
+   "lua_chon": [
+    "Thêm một cặp G-C",
+    "Mất một cặp A-T",
+    "Thêm một cặp A-T",
+    "Thay thế một cặp G-C bằng một cặp A-T"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Số cặp nucleotide tăng 1 cho biết đây là đột biến thêm; số liên kết hydrogen tăng 2 cho biết cặp được thêm là A–T.\n\nVì sao các phương án khác sai:\n- A: Thêm một cặp G–C làm số liên kết hydrogen tăng thêm 3, ở đây chỉ tăng thêm 2.\n- B: Mất một cặp nucleotide làm số cặp nucleotide GIẢM đi, ở đây số cặp nucleotide lại tăng.\n- D: Thay thế một cặp nucleotide không làm đổi số cặp nucleotide, ở đây số cặp nucleotide đã tăng."
+  },
+  {
+   "ma_cau": "K09110402005",
+   "nhom_id": "KNB00559",
+   "loai": "trac_nghiem",
+   "de": "Khi phân tích một gene đột biến, muốn biết đột biến thuộc dạng thay thế hay dạng mất/thêm một cặp nucleotide, người ta dựa vào dấu hiệu nào là chắc chắn nhất?",
+   "lua_chon": [
+    "Số liên kết hydrogen của gene là số chẵn hay không",
+    "Gene sau đột biến có tiếp tục phiên mã được hay không",
+    "Gene sau đột biến nằm ở nhiễm sắc thể nào",
+    "Số cặp nucleotide của gene có đổi hay không"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Nếu số cặp nucleotide của gene không đổi thì đó là đột biến thay thế; nếu số cặp nucleotide tăng hoặc giảm 1 thì đó là đột biến thêm hoặc mất.\n\nVì sao các phương án khác sai:\n- A: Số liên kết hydrogen chẵn hay lẻ không phải dấu hiệu phân biệt dạng đột biến gene.\n- B: Khả năng tiếp tục phiên mã không phải dấu hiệu chắc chắn để phân biệt thay thế với mất/thêm.\n- C: Vị trí nhiễm sắc thể chứa gene không liên quan đến việc xác định dạng đột biến gene."
+  },
+  {
+   "ma_cau": "K09110402006",
+   "nhom_id": "KNB00559",
+   "loai": "trac_nghiem",
+   "de": "Một gene bị đột biến. So với gene ban đầu, gene sau đột biến có chiều dài KHÔNG đổi nhưng số liên kết hydrogen tăng thêm 2. Đột biến này thuộc dạng nào?",
+   "lua_chon": [
+    "Thay thế 1 cặp A-T bằng 1 cặp G-C",
+    "Mất 1 cặp A-T",
+    "Thay thế 2 cặp A-T bằng 2 cặp G-C",
+    "Thêm 1 cặp G-C"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Chiều dài không đổi → tổng số cặp nucleotide không đổi → là đột biến dạng thay thế. H tăng 2 chỉ có thể do thay thế 2 cặp A-T bằng 2 cặp G-C (mỗi cặp thay thế làm H tăng 1).\n\nVì sao các phương án khác sai:\n- A: Thay thế 1 cặp A-T bằng G-C chỉ làm H tăng 1, không đủ tăng 2 như đề bài.\n- B: Mất một cặp nucleotide làm giảm chiều dài gene, không phù hợp vì chiều dài ở đây không đổi.\n- D: Thêm một cặp nucleotide làm tăng chiều dài gene, không phù hợp vì chiều dài ở đây không đổi."
+  },
+  {
+   "ma_cau": "K09110402007",
+   "nhom_id": "KNB00559",
+   "loai": "trac_nghiem",
+   "de": "Một gene bị đột biến. So với gene ban đầu, gene sau đột biến có chiều dài giảm 3,4 Å và số liên kết hydrogen giảm 2. Đột biến này thuộc dạng nào?",
+   "lua_chon": [
+    "Mất một cặp G-C",
+    "Thêm một cặp A-T",
+    "Thay thế một cặp A-T bằng một cặp G-C",
+    "Mất một cặp A-T"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Giảm 3,4 Å tương ứng mất đúng 1 cặp nucleotide (chiều dài); giảm 2 liên kết hydrogen cho biết cặp bị mất là A-T (mất G-C sẽ giảm 3).\n\nVì sao các phương án khác sai:\n- A: Mất một cặp G-C làm giảm 3 liên kết hydrogen, không phải 2 như đề bài.\n- B: Thêm một cặp làm TĂNG chiều dài, không phù hợp vì chiều dài ở đây giảm.\n- C: Thay thế không làm đổi chiều dài gene, không phù hợp vì chiều dài ở đây đã giảm."
+  },
+  {
+   "ma_cau": "K09110403001",
+   "nhom_id": "KNB00560",
+   "loai": "trac_nghiem",
+   "de": "Một gene có tổng số 1200 liên kết hydrogen. Nếu gene này bị đột biến mất một cặp G-C, thì số liên kết hydrogen của gene sau đột biến là bao nhiêu?",
+   "lua_chon": [
+    "1198",
+    "1202",
+    "1197",
+    "1203"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Mất một cặp G–C làm giảm 3 liên kết hydrogen: 1200 − 3 = 1197.\n\nVì sao các phương án khác sai:\n- A: Mất một cặp G–C làm giảm đúng 3 liên kết hydrogen, không phải 2 (2 là số liên kết của cặp A–T).\n- B: Mất một cặp nucleotide làm GIẢM số liên kết hydrogen, không phải tăng.\n- D: Mất một cặp nucleotide làm GIẢM số liên kết hydrogen, không phải tăng."
+  },
+  {
+   "ma_cau": "K09110403002",
+   "nhom_id": "KNB00560",
+   "loai": "trac_nghiem",
+   "de": "Một gene có tổng số 2400 liên kết hydrogen. Nếu gene này bị đột biến mất một cặp A-T, thì số liên kết hydrogen của gene sau đột biến là bao nhiêu?",
+   "lua_chon": [
+    "2397",
+    "2402",
+    "2403",
+    "2398"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Mất một cặp A–T làm giảm 2 liên kết hydrogen: 2400 − 2 = 2398.\n\nVì sao các phương án khác sai:\n- A: Mất một cặp A–T làm giảm đúng 2 liên kết hydrogen, không phải 3 (3 là số liên kết của cặp G–C).\n- B: Mất một cặp nucleotide làm GIẢM số liên kết hydrogen, không phải tăng.\n- C: Mất một cặp nucleotide làm GIẢM số liên kết hydrogen, không phải tăng."
+  },
+  {
+   "ma_cau": "K09110403003",
+   "nhom_id": "KNB00560",
+   "loai": "trac_nghiem",
+   "de": "Một gene có tổng số 1800 liên kết hydrogen. Nếu gene này bị đột biến thêm một cặp G-C, thì số liên kết hydrogen của gene sau đột biến là bao nhiêu?",
+   "lua_chon": [
+    "1803",
+    "1797",
+    "1798",
+    "1802"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Thêm một cặp G–C làm tăng 3 liên kết hydrogen: 1800 + 3 = 1803.\n\nVì sao các phương án khác sai:\n- B: Thêm một cặp nucleotide làm TĂNG số liên kết hydrogen, không phải giảm.\n- C: Thêm một cặp nucleotide làm TĂNG số liên kết hydrogen, không phải giảm.\n- D: Thêm một cặp G–C làm tăng đúng 3 liên kết hydrogen, không phải 2 (2 là số liên kết của cặp A–T)."
+  },
+  {
+   "ma_cau": "K09110403004",
+   "nhom_id": "KNB00560",
+   "loai": "trac_nghiem",
+   "de": "Một gene có tổng số 3000 liên kết hydrogen. Nếu gene này bị đột biến thay thế một cặp A-T bằng một cặp G-C, thì số liên kết hydrogen của gene sau đột biến là bao nhiêu?",
+   "lua_chon": [
+    "2998",
+    "3001",
+    "2999",
+    "3002"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Cặp G–C (3 liên kết) nhiều hơn cặp A–T (2 liên kết) đúng 1 liên kết hydrogen, nên: 3000 + 1 = 3001.\n\nVì sao các phương án khác sai:\n- A: Thay A–T bằng G–C làm TĂNG liên kết hydrogen (vì G–C nhiều liên kết hơn A–T), không phải giảm.\n- C: Thay A–T bằng G–C làm tăng đúng 1 liên kết hydrogen, không phải giảm.\n- D: Thay A–T bằng G–C chỉ làm tăng đúng 1 liên kết hydrogen (3 − 2 = 1), không phải tăng 2."
+  },
+  {
+   "ma_cau": "K09110403005",
+   "nhom_id": "KNB00560",
+   "loai": "trac_nghiem",
+   "de": "Một gene có tổng số 2600 liên kết hydrogen. Nếu gene này bị đột biến thay thế một cặp G-C bằng một cặp A-T, thì số liên kết hydrogen của gene sau đột biến là bao nhiêu?",
+   "lua_chon": [
+    "2597",
+    "2601",
+    "2599",
+    "2603"
+   ],
+   "dap_an": "C",
+   "loi_giai": "Cặp G–C (3 liên kết) nhiều hơn cặp A–T (2 liên kết) đúng 1 liên kết hydrogen, nên: 2600 − 1 = 2599.\n\nVì sao các phương án khác sai:\n- A: Thay G–C bằng A–T chỉ làm giảm đúng 1 liên kết hydrogen (3 − 2 = 1), không phải giảm 3.\n- B: Thay G–C bằng A–T làm GIẢM liên kết hydrogen (vì A–T ít liên kết hơn G–C), không phải tăng.\n- D: Thay G–C bằng A–T làm GIẢM liên kết hydrogen, không phải tăng."
+  },
+  {
+   "ma_cau": "K09110403006",
+   "nhom_id": "KNB00560",
+   "loai": "trac_nghiem",
+   "de": "Một gene có N = 2400 nucleotide và 3120 liên kết hydrogen. Gene này bị đột biến mất một cặp A-T. Số liên kết hydrogen của gene sau đột biến là bao nhiêu?",
+   "lua_chon": [
+    "3117",
+    "3122",
+    "3120",
+    "3118"
+   ],
+   "dap_an": "D",
+   "loi_giai": "Mất một cặp A-T làm giảm 2 liên kết hydrogen: H sau đột biến = 3120 − 2 = 3118.\n\nVì sao các phương án khác sai:\n- A: Mất một cặp A-T làm giảm 2 liên kết hydrogen (mỗi cặp A-T có 2 liên kết), không phải giảm 3.\n- B: Mất một cặp nucleotide làm giảm liên kết hydrogen, không phải tăng.\n- C: Đột biến mất một cặp A-T chắc chắn làm giảm số liên kết hydrogen, không giữ nguyên."
+  },
+  {
+   "ma_cau": "K09110403007",
+   "nhom_id": "KNB00560",
+   "loai": "trac_nghiem",
+   "de": "Một gene có 3000 liên kết hydrogen. Gene này lần lượt bị đột biến mất một cặp G-C rồi thêm một cặp A-T. Số liên kết hydrogen của gene sau hai lần đột biến này là bao nhiêu?",
+   "lua_chon": [
+    "2999",
+    "2995",
+    "3001",
+    "2997"
+   ],
+   "dap_an": "A",
+   "loi_giai": "Mất một cặp G-C: H giảm 3 → 3000−3=2997. Thêm một cặp A-T: H tăng 2 → 2997+2=2999.\n\nVì sao các phương án khác sai:\n- B: 2995 do trừ cả hai bước; nhưng đột biến thêm A-T phải làm TĂNG 2 liên kết, không phải giảm.\n- C: 3001 do đổi ngược dấu hai bước; mất G-C phải làm GIẢM 3, thêm A-T phải làm TĂNG 2.\n- D: 2997 mới chỉ tính bước mất G-C, còn thiếu bước thêm A-T (+2) tiếp theo."
+  },
+  {
+   "ma_cau": "K09110403008",
+   "nhom_id": "KNB00560",
+   "loai": "trac_nghiem",
+   "de": "Một gene có N = 3000 nucleotide, trong đó A chiếm 30%. Gene bị đột biến thay thế một cặp A-T bằng một cặp G-C. Số liên kết hydrogen của gene sau đột biến là bao nhiêu?",
+   "lua_chon": [
+    "3600",
+    "3601",
+    "3603",
+    "3599"
+   ],
+   "dap_an": "B",
+   "loi_giai": "A=T=900, G=C=600 → H trước đột biến = 2×900+3×600=3600. Thay 1 cặp A-T bằng G-C làm H tăng 1 → H sau = 3601.\n\nVì sao các phương án khác sai:\n- A: 3600 là H trước đột biến; thay một cặp A-T bằng G-C làm H tăng thêm 1, không giữ nguyên.\n- C: 3603 tính nhầm mức tăng là 3 thay vì đúng 1 liên kết hydrogen.\n- D: 3599 tính nhầm chiều: thay A-T bằng G-C làm TĂNG liên kết hydrogen, không phải giảm."
+  },
+  {
+   "ma_cau": "K09110209001",
+   "nhom_id": "KNB00557",
+   "loai": "trac_nghiem",
+   "de": "Một gene có A chiếm 20% tổng số nucleotide và có tổng số liên kết hydrogen là 3900. Tổng số nucleotide (N) của gene này là",
+   "lua_chon": [
+    "2000 nucleotide",
+    "3000 nucleotide",
+    "3900 nucleotide",
+    "1500 nucleotide"
+   ],
+   "dap_an": "B",
+   "loi_giai": "Vì A = 20% nên theo nguyên tắc bổ sung %A + %G = 50%, suy ra %G = 30%. Số liên kết hydrogen H = 2A + 3G = 2(0,2N) + 3(0,3N) = 1,3N. Từ H = 3900, ta có 1,3N = 3900 → N = 3000 nucleotide.\n\nVì sao các phương án khác sai:\n- A: Kết quả này có thể do tính nhầm phần trăm G (lấy G = 20% thay vì suy ra G = 30% từ A + G = 50%), dẫn đến sai số liên kết hydrogen trên mỗi nucleotide.\n- C: Đây là nhầm lẫn giữa số liên kết hydrogen (3900) với tổng số nucleotide N; hai đại lượng này không bằng nhau.\n- D: Kết quả này có thể do tính thiếu hệ số khi tính số nucleotide loại A, T từ phần trăm, dẫn đến N bị tính nhỏ hơn thực tế."
+  },
+  {
+   "ma_cau": "K09110209002",
+   "nhom_id": "KNB00557",
+   "loai": "trac_nghiem",
+   "de": "Một gene có A chiếm 30% tổng số nucleotide và có 3120 liên kết hydrogen. Biết mỗi cặp nucleotide dài 3,4 Å. Chiều dài của gene này là",
+   "lua_chon": [
+    "4420 Å",
+    "8840 Å",
+    "5304 Å",
+    "2210 Å"
+   ],
+   "dap_an": "A",
+   "loi_giai": "%G = 50% − 30% = 20%. H = 2A + 3G = 2(0,3N) + 3(0,2N) = 1,2N = 3120 → N = 2600. L = (N : 2) × 3,4 = 1300 × 3,4 = 4420 Å.\n\nVì sao các phương án khác sai:\n- B: Đã lấy N × 3,4, quên chia N cho 2.\n- C: Đã lấy số liên kết hydrogen chia 2 làm số cặp nucleotide.\n- D: Đã chia N cho 4 thay vì cho 2."
+  },
+  {
+   "ma_cau": "K09110209003",
+   "nhom_id": "KNB00557",
+   "loai": "trac_nghiem",
+   "de": "Một gene có G chiếm 35% tổng số nucleotide và có 3240 liên kết hydrogen. Biết khối lượng trung bình 1 nucleotide là 300 amu. Khối lượng của gene này là",
+   "lua_chon": [
+    "360 000 amu",
+    "972 000 amu",
+    "720 000 amu",
+    "1 440 000 amu"
+   ],
+   "dap_an": "C",
+   "loi_giai": "%A = 50% − 35% = 15%. H = 2(0,15N) + 3(0,35N) = 1,35N = 3240 → N = 2400. M = N × 300 = 2400 × 300 = 720 000 amu.\n\nVì sao các phương án khác sai:\n- A: Đã chỉ tính một mạch (N : 2).\n- B: Đã nhân số liên kết hydrogen với 300.\n- D: Đã nhân đôi N một lần nữa."
+  },
+  {
+   "ma_cau": "K09110209004",
+   "nhom_id": "KNB00557",
+   "loai": "trac_nghiem",
+   "de": "Một gene có A chiếm 20% tổng số nucleotide và có 3900 liên kết hydrogen. Số nucleotide loại G của gene này là",
+   "lua_chon": [
+    "600 nucleotide",
+    "1500 nucleotide",
+    "450 nucleotide",
+    "900 nucleotide"
+   ],
+   "dap_an": "D",
+   "loi_giai": "%G = 50% − 20% = 30%. H = 2(0,2N) + 3(0,3N) = 1,3N = 3900 → N = 3000. G = 30% × 3000 = 900 nucleotide.\n\nVì sao các phương án khác sai:\n- A: Đây là số nucleotide loại A (20%).\n- B: Đây là N : 2, số nucleotide một mạch.\n- C: Đã lấy 30% của N : 2."
+  },
+  {
+   "ma_cau": "K09110209005",
+   "nhom_id": "KNB00557",
+   "loai": "trac_nghiem",
+   "de": "Một gene có A chiếm 25% tổng số nucleotide và có chiều dài 4080 Å. Tổng số liên kết hydrogen của gene này là bao nhiêu?",
+   "lua_chon": [
+    "3000",
+    "2400",
+    "3600",
+    "6000"
+   ],
+   "dap_an": "A",
+   "loi_giai": "N = 2×(4080:3,4) = 2400 → A = T = 25%×2400 = 600, G = C = 600. H = 2×600 + 3×600 = 3000.\n\nVì sao các phương án khác sai:\n- B: 2400 là tổng số nucleotide N, không phải số liên kết hydrogen H.\n- C: 3600 tính nhầm theo 3A + 3G, đúng ra A liên kết 2, chỉ G liên kết 3 (H = 2A + 3G).\n- D: 6000 do nhân đôi N một cách không có căn cứ, không đúng công thức tính H."
+  },
+  {
+   "ma_cau": "K09110209006",
+   "nhom_id": "KNB00557",
+   "loai": "trac_nghiem",
+   "de": "Một gene có 2400 liên kết hydrogen, trong đó nucleotide loại A chiếm 30% tổng số nucleotide. Chiều dài của gene này tính theo Å là bao nhiêu?",
+   "lua_chon": [
+    "6800",
+    "3400",
+    "2000",
+    "1700"
+   ],
+   "dap_an": "B",
+   "loi_giai": "H = 2A + 3G = 1,2N = 2400 → N = 2000. L = (N:2) × 3,4 = 1000 × 3,4 = 3400 Å.\n\nVì sao các phương án khác sai:\n- A: 6800 do quên chia đôi N trước khi nhân với 3,4 Å.\n- C: 2000 là tổng số nucleotide N, chưa chuyển sang đơn vị chiều dài.\n- D: 1700 do chia N cho 4 thay vì 2 trước khi nhân với 3,4 Å."
+  },
+  {
+   "ma_cau": "K09110209007",
+   "nhom_id": "KNB00557",
+   "loai": "trac_nghiem",
+   "de": "Một gene có khối lượng 720 000 amu và có 720 nucleotide loại A. Số nucleotide loại G của gene này là bao nhiêu?",
+   "lua_chon": [
+    "720",
+    "960",
+    "480",
+    "1200"
+   ],
+   "dap_an": "C",
+   "loi_giai": "N = M:300 = 720000:300 = 2400. G = C = (N − 2A)/2 = (2400 − 1440)/2 = 480.\n\nVì sao các phương án khác sai:\n- A: 720 là số nucleotide loại A (=T), không phải loại G (G bổ sung với C, không phải A).\n- B: 960 là tổng G + C, chưa chia đôi để ra riêng số nucleotide loại G.\n- D: 1200 là N:2, chưa trừ đi số nucleotide loại A trước khi chia cho G và C."
+  }
+ ]
+}

@@ -1,0 +1,206 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "KNB00545",
+   "ly_thuyet": "##TC 1. Kiến thức cần nhớ\nThành phần vỏ Trái Đất: oxygen nhiều nhất, tiếp theo là silicon, aluminium, iron. Oxygen và silicon tạo nên phần lớn các khoáng vật silicate. Aluminium là kim loại có hàm lượng lớn nhất trong vỏ Trái Đất; vàng có hàm lượng rất nhỏ.\nTài nguyên khoáng sản gồm khoáng sản kim loại (quặng hematite chứa $\\mathrm{Fe_2O_3}$ để luyện iron, bauxite để sản xuất aluminium), khoáng sản phi kim (đá vôi, cát, đất sét) và nhiên liệu hoá thạch (than đá, dầu mỏ, khí thiên nhiên). Đây là tài nguyên hữu hạn, không tái tạo nhanh.\nGốm, sứ: nguyên liệu chính là đất sét; tạo hình đất sét dẻo rồi nung ở nhiệt độ cao.\nThuỷ tinh: nguyên liệu là cát ($\\mathrm{SiO_2}$), đá vôi ($\\mathrm{CaCO_3}$), soda ($\\mathrm{Na_2CO_3}$); nung nóng chảy hỗn hợp rồi làm nguội tạo khối rắn trong suốt, có thể tái chế.\nXi măng portland: nung hỗn hợp đá vôi và đất sét tạo clinker, nghiền mịn clinker với thạch cao. Thạch cao điều chỉnh tốc độ đông cứng.\n\n##CY 2. Lưu ý\nCác tình huống \"chỉ cần một nguyên liệu\" (chỉ cát làm thuỷ tinh, chỉ đá vôi làm xi măng, cát thay đất sét làm gốm) đều sai vì thiếu nguyên liệu hoặc tính chất không phù hợp.",
+   "ghi_chu": "Tên nhóm là \"các dạng bài cơ bản\" nhưng nội dung gồm hai mảng: thành phần vỏ Trái Đất và công nghiệp silicate (gốm, thuỷ tinh, xi măng).",
+   "dang_bai": [
+    {
+     "ten": "Thành phần và hàm lượng các nguyên tố trong vỏ Trái Đất",
+     "mo_ta": "Đề hỏi nguyên tố phổ biến nhất, thứ hai, kim loại nhiều nhất, thứ tự hàm lượng giữa oxygen, silicon, aluminium, iron.\nGồm nhận định đúng/sai về thành phần vỏ Trái Đất và giải thích vì sao có nhiều khoáng vật silicate.\nLưu ý: câu hỏi quặng nào luyện kim loại nào hoặc phân loại khoáng sản ⇒ thuộc dạng \"Phân loại khoáng sản, quặng và nguyên liệu của kim loại\".",
+     "ly_thuyet": "##TC Hàm lượng nguyên tố trong vỏ Trái Đất\nThứ tự hàm lượng giảm dần của bốn nguyên tố chính: oxygen, silicon, aluminium, iron.\nOxygen và silicon chiếm phần lớn khối lượng vỏ Trái Đất nên tạo nên phần lớn khoáng vật silicate.\nAluminium là kim loại phổ biến nhất; vàng là kim loại quý hiếm, hàm lượng rất nhỏ.\n\n##CY Chú ý\nĐọc kĩ đề hỏi \"lớn nhất\" hay \"nhỏ nhất\", \"giảm dần\" hay \"tăng dần\" trước khi chọn.",
+     "vi_du": "##VD\nSắp xếp bốn nguyên tố oxygen, silicon, aluminium, iron theo thứ tự hàm lượng GIẢM DẦN trong vỏ Trái Đất là\nA. Oxygen, silicon, aluminium, iron\nB. Silicon, oxygen, iron, aluminium\nC. Oxygen, aluminium, silicon, iron\nD. Iron, aluminium, silicon, oxygen\n\nBài giải:\nThứ tự hàm lượng giảm dần trong vỏ Trái Đất là oxygen, silicon, aluminium, iron.\nOxygen đứng đầu (loại B), silicon nhiều hơn aluminium (loại C), D là thứ tự đảo ngược.\nChọn A.\n\n##VD\nMột bạn giải thích: vỏ Trái Đất có nhiều khoáng vật silicate vì oxygen và silicon là hai nguyên tố có hàm lượng lớn nhất trong vỏ Trái Đất. Nhận xét đúng về giải thích này là\nA. Đúng, vì O và Si là hai nguyên tố nhiều nhất vỏ Trái Đất\nB. Sai, vì silicate hình thành chủ yếu từ iron và aluminium\nC. Sai, vì silicate chỉ được tạo ra trong nhà máy\nD. Sai, vì nguyên tố nhiều nhất vỏ Trái Đất là iron\n\nBài giải:\nOxygen và silicon là hai nguyên tố chiếm phần lớn khối lượng vỏ Trái Đất.\nHai nguyên tố này dễ kết hợp tạo nên phần lớn các khoáng vật silicate, nên giải thích của bạn đúng.\nChọn A.",
+     "nguon_vi_du": "K09100101007, K09100101029",
+     "cau": [
+      "K09100101001",
+      "K09100101002",
+      "K09100101003",
+      "K09100101004",
+      "K09100101005",
+      "K09100101006",
+      "K09100101007",
+      "K09100101029"
+     ]
+    },
+    {
+     "ten": "Phân loại khoáng sản, quặng và nguyên liệu sản xuất kim loại, vôi",
+     "mo_ta": "Đề hỏi quặng nào là nguyên liệu để sản xuất kim loại nào (hematite - iron, bauxite - aluminium); nhóm của tài nguyên (khoáng sản kim loại, phi kim, nhiên liệu hoá thạch); đặc điểm hữu hạn của khoáng sản.\nGồm công thức và tên của vôi sống, và giải thích vì sao nhôm phổ biến hơn sắt nhưng được dùng muộn hơn.\nLưu ý: câu hỏi hàm lượng các nguyên tố trong vỏ Trái Đất ⇒ thuộc dạng \"Thành phần và hàm lượng các nguyên tố trong vỏ Trái Đất\".",
+     "ly_thuyet": "##TC Khoáng sản và quặng\nKhoáng sản kim loại: quặng hematite ($\\mathrm{Fe_2O_3}$) dùng sản xuất iron, quặng bauxite dùng sản xuất aluminium.\nKhoáng sản phi kim: đá vôi, cát, đất sét. Nhiên liệu hoá thạch: than đá, dầu mỏ, khí thiên nhiên.\nVôi sống là $\\mathrm{CaO}$ (calcium oxide), thu được khi nung đá vôi $\\mathrm{CaCO_3}$; vôi tôi là $\\mathrm{Ca(OH)_2}$.\nKhoáng sản là tài nguyên hữu hạn, không tái tạo nhanh. Nhôm tách khỏi quặng khó, tốn nhiều năng lượng hơn sắt nên được dùng rộng rãi muộn hơn.\n\n##CY Chú ý\nĐá vôi ($\\mathrm{CaCO_3}$), vôi sống ($\\mathrm{CaO}$), vôi tôi ($\\mathrm{Ca(OH)_2}$) là ba chất khác nhau, đừng nhầm.",
+     "vi_du": "##VD\nQuặng hematite (chứa Fe₂O₃) là nguyên liệu chính để sản xuất kim loại nào?\nA. aluminium\nB. copper\nC. calcium\nD. iron\n\nBài giải:\nHematite chứa hợp chất $\\mathrm{Fe_2O_3}$ của iron.\nĐây là nguyên liệu chính để sản xuất kim loại iron; aluminium sản xuất từ bauxite.\nChọn D.\n\n##VD\nVôi sống có công thức hoá học và tên gọi là\nA. Ca(OH)₂ — calcium hydroxide\nB. CaCO₃ — calcium carbonate\nC. CaCl₂ — calcium chloride\nD. CaO — calcium oxide\n\nBài giải:\nVôi sống là chất rắn thu được khi nung đá vôi: $\\mathrm{CaCO_3 \\xrightarrow{t^\\circ} CaO + CO_2}$.\nVậy vôi sống có công thức CaO, tên calcium oxide; $\\mathrm{Ca(OH)_2}$ là vôi tôi, $\\mathrm{CaCO_3}$ là đá vôi.\nChọn D.",
+     "nguon_vi_du": "K09100101009, K09100101015",
+     "cau": [
+      "K09100101008",
+      "K09100101009",
+      "K09100101010",
+      "K09100101011",
+      "K09100101012",
+      "K09100101013",
+      "K09100101014",
+      "K09100101015",
+      "K09100101031"
+     ]
+    },
+    {
+     "ten": "Sản xuất gốm, sứ từ đất sét",
+     "mo_ta": "Đề hỏi nguyên liệu chính, công đoạn cơ bản, giải thích tính chất của gốm sứ sau khi nung, sản phẩm làm từ đất sét.\nGồm tình huống đề xuất thay đất sét bằng nguyên liệu khác.\nLưu ý: câu về cát, đá vôi, soda và nung chảy ⇒ thuộc dạng \"Sản xuất và ứng dụng thuỷ tinh\".",
+     "ly_thuyet": "##TC Gốm, sứ\nNguyên liệu chính là đất sét. Quy trình: nhào đất sét thành khối dẻo, tạo hình, rồi nung ở nhiệt độ cao.\nKhi nung, khoáng vật trong đất sét biến đổi cấu trúc, kết dính chặt tạo vật liệu cứng, bền, không tan trong nước. Sản phẩm: bát, đĩa, gạch ngói.\n\n##CY Chú ý\nCát không có độ dẻo, không tạo hình được nên không thay hoàn toàn đất sét. Chai thuỷ tinh, kính là thuỷ tinh; xi măng là vật liệu xây dựng, đều không phải gốm sứ.",
+     "vi_du": "##VD\nCông đoạn cơ bản để sản xuất gốm, sứ từ đất sét là\nA. nung đất sét ở nhiệt độ thường rồi để khô tự nhiên\nB. hoà tan đất sét trong nước rồi cô cạn\nC. tạo hình đất sét dẻo, rồi nung ở nhiệt độ cao\nD. trộn đất sét với xi măng rồi để đông cứng\n\nBài giải:\nQuy trình cơ bản: nhào đất sét thành khối dẻo, tạo hình sản phẩm rồi nung ở nhiệt độ cao để hoá cứng.\nĐể khô tự nhiên (A) chưa cứng bền; đất sét không tan để cô cạn (B); không trộn xi măng (D).\nChọn C.\n\n##VD\nVì sao sản phẩm gốm, sứ sau khi nung ở nhiệt độ cao trở nên cứng, bền, không tan trong nước?\nA. Vì đất sét sau khi nung biến đổi thành vật liệu rắn chắc, không tan trong nước\nB. Vì đất sét được trộn thêm xi măng trước khi nung\nC. Vì nhiệt độ cao làm đất sét bốc hơi hết nước, không còn tính chất gì\nD. Vì gốm sứ chỉ cứng khi còn nóng, sẽ mềm trở lại khi nguội\n\nBài giải:\nKhi nung ở nhiệt độ cao, các khoáng vật trong đất sét biến đổi cấu trúc, kết dính chặt tạo vật liệu rắn chắc.\nVì vậy gốm sứ cứng, bền, không tan trong nước, giữ độ cứng cả khi nguội.\nChọn A.",
+     "nguon_vi_du": "K09100101017, K09100101018",
+     "cau": [
+      "K09100101016",
+      "K09100101017",
+      "K09100101018",
+      "K09100101019",
+      "K09100101030"
+     ]
+    },
+    {
+     "ten": "Sản xuất và ứng dụng thuỷ tinh",
+     "mo_ta": "Đề hỏi nguyên liệu, cách xử lí hỗn hợp nguyên liệu, tính chất ứng dụng và cách tái chế thuỷ tinh.\nGồm tình huống đề xuất chỉ dùng cát để làm thuỷ tinh.\nLưu ý: câu về xi măng, clinker, thạch cao ⇒ thuộc dạng \"Sản xuất xi măng và vai trò các nguyên liệu\".",
+     "ly_thuyet": "##TC Thuỷ tinh\nNguyên liệu chính: cát ($\\mathrm{SiO_2}$), đá vôi ($\\mathrm{CaCO_3}$), soda ($\\mathrm{Na_2CO_3}$).\nNung nóng chảy hỗn hợp ở nhiệt độ cao rồi làm lạnh tạo khối rắn.\nThuỷ tinh trong suốt nên dùng làm cửa kính, chai lọ; có thể tái chế bằng cách nghiền nhỏ, nung chảy lại.\n\n##CY Chú ý\nChỉ nung cát thì không thu được thuỷ tinh thường, phải thêm đá vôi và soda.",
+     "vi_du": "##VD\nBa nguyên liệu chính để sản xuất thuỷ tinh thường là\nA. đất sét, cát và than đá\nB. đá vôi, đất sét và thạch cao\nC. cát, muối ăn (NaCl) và nước\nD. cát (SiO₂), đá vôi (CaCO₃) và soda (Na₂CO₃)\n\nBài giải:\nThuỷ tinh thường sản xuất từ cát ($\\mathrm{SiO_2}$), đá vôi ($\\mathrm{CaCO_3}$) và soda ($\\mathrm{Na_2CO_3}$).\nBộ nguyên liệu ở A, B, C không đúng với thuỷ tinh.\nChọn D.\n\n##VD\nTrong sản xuất thuỷ tinh, hỗn hợp nguyên liệu được xử lí như thế nào để tạo thành thuỷ tinh?\nA. nung nóng chảy ở nhiệt độ cao, làm lạnh tạo khối rắn\nB. nghiền mịn rồi ép thành khối ở nhiệt độ thường\nC. hoà tan trong acid rồi kết tinh lại\nD. lên men ở nhiệt độ thường trong thời gian dài\n\nBài giải:\nHỗn hợp nguyên liệu được nung nóng chảy ở nhiệt độ cao.\nSau đó làm lạnh để tạo thành khối thuỷ tinh rắn.\nChọn A.",
+     "nguon_vi_du": "K09100101020, K09100101021",
+     "cau": [
+      "K09100101020",
+      "K09100101021",
+      "K09100101022",
+      "K09100101023",
+      "K09100101027"
+     ]
+    },
+    {
+     "ten": "Sản xuất xi măng và vai trò các nguyên liệu",
+     "mo_ta": "Đề hỏi nguyên liệu chính, vai trò thạch cao, quá trình đông cứng của xi măng khi trộn với nước.\nGồm tình huống đề xuất chỉ dùng một nguyên liệu để làm xi măng.\nLưu ý: câu về cát, soda, nung chảy ⇒ thuộc dạng \"Sản xuất và ứng dụng thuỷ tinh\".",
+     "ly_thuyet": "##TC Xi măng\nNguyên liệu chính: đá vôi và đất sét. Nung hỗn hợp ở nhiệt độ cao tạo clinker, nghiền mịn clinker và trộn thạch cao được xi măng.\nThạch cao chiếm tỉ lệ nhỏ, có vai trò điều chỉnh (làm chậm) tốc độ đông cứng.\nXi măng trộn nước, cát, đá tạo bê tông; xi măng phản ứng với nước tạo chất rắn kết dính nên hỗn hợp rắn chắc lại.\n\n##CY Chú ý\nVôi sống (CaO) không phải xi măng; đá vôi nung một mình không thu được xi măng.",
+     "vi_du": "##VD\nVai trò của thạch cao khi trộn vào clinker nghiền mịn để sản xuất xi măng là gì?\nA. Điều chỉnh tốc độ đông cứng của xi măng khi trộn với nước\nB. Làm xi măng có màu trắng đẹp hơn\nC. Là nguyên liệu chính cung cấp phần lớn khối lượng xi măng\nD. Giúp xi măng cứng lại ngay cả khi không có nước\n\nBài giải:\nThạch cao được trộn vào clinker nghiền mịn với tỉ lệ nhỏ.\nVai trò chính là điều chỉnh tốc độ đông cứng của xi măng khi trộn với nước.\nChọn A.\n\n##VD\nMột nhà máy đề xuất: sản xuất xi măng chỉ cần nung đá vôi một mình ở nhiệt độ cao, không cần đất sét. Nhận xét đúng về đề xuất này là\nA. Đúng, vì đá vôi là nguyên liệu duy nhất của xi măng\nB. Sai, vì xi măng cần cả đá vôi và đất sét\nC. Sai, vì chỉ cần đất sét, không cần đá vôi\nD. Đúng, vì nung đá vôi tạo vôi sống chính là xi măng\n\nBài giải:\nXi măng sản xuất chủ yếu từ đá vôi và đất sét.\nChỉ nung đá vôi thu được vôi sống, không phải xi măng, nên đề xuất sai vì cần cả đá vôi và đất sét.\nChọn B.",
+     "nguon_vi_du": "K09100101025, K09100101028",
+     "cau": [
+      "K09100101024",
+      "K09100101025",
+      "K09100101026",
+      "K09100101028"
+     ]
+    }
+   ],
+   "khong_hop": []
+  },
+  {
+   "nhom_id": "KNB00546",
+   "ly_thuyet": "##TC 1. Kiến thức cần nhớ\nNung đá vôi: $\\mathrm{CaCO_3 \\xrightarrow{t^\\circ} CaO + CO_2}$. Đây là phản ứng phân huỷ, thu nhiệt, cần nhiệt độ cao.\nSản phẩm gồm vôi sống CaO (calcium oxide) và khí $\\mathrm{CO_2}$; khí $\\mathrm{CO_2}$ làm đục nước vôi trong.\n\n##PP 2. Các bước làm bài\nViết đúng công thức chất phản ứng và sản phẩm.\nCân bằng số nguyên tử mỗi nguyên tố hai vế.\nGhi điều kiện nhiệt độ và xác định loại phản ứng.\n\n##CY 3. Lưu ý\nSản phẩm là CaO và $\\mathrm{CO_2}$, không phải $\\mathrm{CaO_2}$, CO hay đơn chất Ca.",
+   "ghi_chu": "Nhóm chỉ có 3 câu, đề xuất 1 dạng.",
+   "dang_bai": [
+    {
+     "ten": "Viết và nhận biết phương trình hoá học nung đá vôi",
+     "mo_ta": "Đề hỏi phương trình nung đá vôi viết đúng, loại phản ứng và điều kiện, khí sinh ra và cách nhận biết.\nChỉ xét phản ứng nung đá vôi, không có tính toán khối lượng.\nLưu ý: câu tính khối lượng CaO hoặc thể tích $\\mathrm{CO_2}$ ⇒ thuộc nhóm bài toán tính theo phương trình nung đá vôi.",
+     "ly_thuyet": "##TC Phản ứng nung đá vôi\n$\\mathrm{CaCO_3 \\xrightarrow{t^\\circ} CaO + CO_2}$: từ một chất sinh ra hai chất nên là phản ứng phân huỷ, cần cung cấp nhiệt liên tục nên là phản ứng thu nhiệt.\nKhí $\\mathrm{CO_2}$ sinh ra làm đục nước vôi trong.\n\n##PP Cách làm\nXác định chất phản ứng và sản phẩm.\nKiểm tra hệ số cân bằng các nguyên tử Ca, C, O.\nChọn phương án đúng công thức và điều kiện.",
+     "vi_du": "##VD\nPhương trình hoá học nào sau đây viết đúng khi nung đá vôi (calcium carbonate) ở nhiệt độ cao?\nA. CaCO₃ →(t°) CaO₂ + CO\nB. 2CaCO₃ →(t°) 2CaO + CO₂\nC. CaCO₃ →(t°) Ca + CO₃\nD. CaCO₃ →(t°) CaO + CO₂\n\nBài giải:\nNung đá vôi: $\\mathrm{CaCO_3 \\xrightarrow{t^\\circ} CaO + CO_2}$, hai vế đều có 1 Ca, 1 C, 3 O nên đã cân bằng.\nPhương án A sai công thức sản phẩm, B chưa cân bằng số C, C sai vì không tạo đơn chất Ca.\nChọn D.\n\n##VD\nPhản ứng nung đá vôi (CaCO₃ →(t°) CaO + CO₂) thuộc loại phản ứng nào và cần điều kiện gì?\nA. phản ứng phân huỷ, thu nhiệt, cần nung ở nhiệt độ cao\nB. phản ứng phân huỷ, toả nhiệt, xảy ra ở nhiệt độ thường\nC. phản ứng thế, cần chất xúc tác\nD. phản ứng trao đổi, không cần nhiệt độ cao\n\nBài giải:\nTừ một chất $\\mathrm{CaCO_3}$ sinh ra hai chất CaO và $\\mathrm{CO_2}$ nên là phản ứng phân huỷ.\nPhản ứng cần cung cấp nhiệt liên tục ở nhiệt độ cao nên là phản ứng thu nhiệt.\nChọn A.",
+     "nguon_vi_du": "K09100102001, K09100102002",
+     "cau": [
+      "K09100102001",
+      "K09100102002",
+      "K09100102003"
+     ]
+    }
+   ],
+   "khong_hop": []
+  },
+  {
+   "nhom_id": "KNB00547",
+   "ly_thuyet": "##TC 1. Kiến thức cần nhớ\nKhai thác khoáng sản quá mức, không phục hồi gây mất thảm thực vật, xói mòn đất, giảm đa dạng sinh học, ô nhiễm nguồn nước và không khí (bụi, khí thải).\nBiện pháp bền vững: khai thác theo quy hoạch, tái chế kim loại, xử lí chất thải, san lấp cải tạo đất và trồng lại cây sau khai thác.\nVôi tôi $\\mathrm{Ca(OH)_2}$ là base nên dùng khử chua đất.\n\n##CY 2. Lưu ý\nKhoáng sản là tài nguyên hữu hạn; các phương án \"khai thác tối đa\", \"bỏ hoang mỏ\", \"xả thải trực tiếp\" đều không bền vững.",
+   "ghi_chu": "Nhóm 10 câu, đề xuất 2 dạng.",
+   "dang_bai": [
+    {
+     "ten": "Ứng dụng của vôi và tác động của khai thác, chế biến khoáng sản tới môi trường",
+     "mo_ta": "Đề hỏi tác động tiêu cực của khai thác mỏ (than lộ thiên, đá vôi, quặng) và bụi, khí thải chế biến tới đất, hệ sinh thái, không khí, nguồn nước.\nGồm câu về ứng dụng vôi tôi khử chua đất.\nLưu ý: câu hỏi biện pháp giảm tác động, khai thác bền vững ⇒ thuộc dạng \"Biện pháp khai thác và sử dụng khoáng sản bền vững\".",
+     "ly_thuyet": "##TC Tác động đến môi trường\nKhai thác lộ thiên đào bới trên diện rộng tạo hố sâu, phá thảm thực vật, gây xói mòn đất, giảm đa dạng sinh học, có thể ô nhiễm nguồn nước.\nBụi và khí thải khi khai thác, nung vôi, luyện kim làm giảm chất lượng không khí, ảnh hưởng sức khoẻ người dân.\nVôi tôi $\\mathrm{Ca(OH)_2}$ là base, trung hoà acid trong đất nên dùng khử chua đất trồng.",
+     "vi_du": "##VD\nViệc khai thác than đá lộ thiên trên diện rộng có thể gây ra hậu quả nào rõ rệt đối với cảnh quan và môi trường xung quanh?\nA. Tạo hố sâu, phá thảm thực vật, ô nhiễm nguồn nước\nB. Làm tăng diện tích rừng quanh khu mỏ\nC. Không ảnh hưởng vì than nằm sâu dưới đất\nD. Làm đất quanh mỏ màu mỡ hơn ngay\n\nBài giải:\nKhai thác than đá lộ thiên đào bới bề mặt trên diện rộng, tạo hố sâu và phá huỷ thảm thực vật.\nNước thải, bụi than có thể làm ô nhiễm nguồn nước xung quanh.\nChọn A.\n\n##VD\nBụi và khí thải sinh ra trong quá trình khai thác, chế biến khoáng sản (như nung vôi, luyện kim) ảnh hưởng trực tiếp đến thành phần môi trường nào?\nA. Chỉ ảnh hưởng đến khoáng sản còn lại trong lòng đất\nB. Chất lượng không khí xung quanh khu vực khai thác\nC. Chỉ ảnh hưởng đến các loài sinh vật dưới đáy đại dương\nD. Không ảnh hưởng gì đến sức khoẻ con người\n\nBài giải:\nBụi và khí thải như $\\mathrm{CO_2}$, $\\mathrm{SO_2}$, bụi đá phát tán vào không khí.\nVì vậy chúng làm giảm chất lượng không khí quanh khu vực khai thác và ảnh hưởng sức khoẻ người dân.\nChọn B.",
+     "nguon_vi_du": "K09100103003, K09100103004",
+     "cau": [
+      "K09100103001",
+      "K09100103002",
+      "K09100103003",
+      "K09100103004"
+     ]
+    },
+    {
+     "ten": "Biện pháp khai thác và sử dụng khoáng sản bền vững",
+     "mo_ta": "Đề hỏi biện pháp giúp khai thác bền vững, vì sao tái chế kim loại và lập quy hoạch là cần thiết, cách xử lí mỏ sau khai thác.\nGồm tình huống đề xuất của công ty hoặc địa phương cần nhận xét đúng/sai.\nLưu ý: câu chỉ hỏi hậu quả của khai thác ⇒ thuộc dạng \"Ứng dụng của vôi và tác động của khai thác, chế biến khoáng sản tới môi trường\".",
+     "ly_thuyet": "##TC Khai thác bền vững\nKhoáng sản là tài nguyên hữu hạn nên cần khai thác theo quy hoạch (xác định khu vực, trữ lượng, thời gian), tái chế kim loại để giảm khai thác quặng mới và giảm ô nhiễm, phục hồi môi trường sau khai thác (san lấp, cải tạo đất, trồng cây).\n\n##CY Chú ý\nKhông chọn phương án khai thác tối đa, bỏ hoang mỏ, xả thải trực tiếp hay dừng hẳn khai thác để nhập khẩu.",
+     "vi_du": "##VD\nBiện pháp nào giúp khai thác và sử dụng tài nguyên khoáng sản (đá vôi, quặng kim loại) bền vững hơn?\nA. khai thác tối đa mọi mỏ, đáp ứng nhu cầu trước mắt\nB. dừng khai thác, chuyển hết sang nhập khẩu\nC. xả thẳng nước thải, bụi ra môi trường để giảm chi phí\nD. khai thác theo quy hoạch, tái chế và phục hồi môi trường\n\nBài giải:\nKhai thác bền vững cần có quy hoạch hợp lí, tái chế kim loại và phục hồi môi trường sau khai thác.\nKhai thác tối đa, xả thải trực tiếp hay chỉ nhập khẩu đều không giải quyết vấn đề bền vững.\nChọn D.\n\n##VD\nMột công ty khai thác đá vôi và quặng kim loại đề xuất: khai thác tối đa, không cần lập kế hoạch phục hồi đất sau khai thác vì tài nguyên khoáng sản là vô hạn. Nhận xét đúng về đề xuất này là\nA. Đúng, vì trữ lượng khoáng sản của Trái Đất là vô hạn\nB. Sai, vì chỉ khai thác quặng kim loại mới cần phục hồi\nC. Sai, vì khoáng sản hữu hạn, khai thác bừa gây hại đất\nD. Đúng, vì đất sau khai thác tự phục hồi nhanh\n\nBài giải:\nKhoáng sản là tài nguyên hữu hạn, không phải vô hạn.\nKhai thác bừa mà không phục hồi sẽ làm hỏng đất và hệ sinh thái nên đề xuất sai.\nChọn C.",
+     "nguon_vi_du": "K09100103005, K09100103009",
+     "cau": [
+      "K09100103005",
+      "K09100103006",
+      "K09100103007",
+      "K09100103008",
+      "K09100103009",
+      "K09100103010"
+     ]
+    }
+   ],
+   "khong_hop": []
+  },
+  {
+   "nhom_id": "KNB00548",
+   "ly_thuyet": "##TC 1. Kiến thức cần nhớ\nPTHH nung đá vôi: $\\mathrm{CaCO_3 \\xrightarrow{t^\\circ} CaO + CO_2}$, tỉ lệ mol 1 : 1 : 1.\nKhối lượng mol: $M_{\\mathrm{CaCO_3}} = 100$ g/mol, $M_{\\mathrm{CaO}} = 56$ g/mol, $M_{\\mathrm{CO_2}} = 44$ g/mol.\nSố mol: $n = \\dfrac{m}{M}$. Thể tích khí ở điều kiện chuẩn: $V = n \\times 24{,}79$ (L).\nKhối lượng chất tinh khiết trong đá vôi: $m_{\\mathrm{CaCO_3}} = m_{\\mathrm{dv}} \\times \\%\\mathrm{CaCO_3}$.\nHiệu suất: $H = \\dfrac{m_{\\mathrm{tt}}}{m_{\\mathrm{lt}}} \\times 100\\%$.\n\n##PP 2. Các bước làm bài\nTính khối lượng $\\mathrm{CaCO_3}$ nguyên chất (nếu có tạp chất).\nĐổi ra số mol và tính theo PTHH.\nTính khối lượng CaO hoặc thể tích $\\mathrm{CO_2}$ lí thuyết.\nNhân hiệu suất để có giá trị thực tế (hoặc chia hiệu suất khi tính ngược).\n\n##CY 3. Lưu ý\nKhông dùng khối lượng đá vôi thay cho khối lượng $\\mathrm{CaCO_3}$ khi có tạp chất. Dùng đúng $M_{\\mathrm{CaO}} = 56$, không dùng 40.",
+   "ghi_chu": "18 câu, đề xuất 4 dạng theo thứ tự độ khó. Số đã tính lại bằng tay đều khớp đáp án.",
+   "dang_bai": [
+    {
+     "ten": "Tính khối lượng vôi sống thu được khi nung đá vôi nguyên chất",
+     "mo_ta": "Đề cho khối lượng đá vôi nguyên chất, hiệu suất 100%, hỏi khối lượng CaO thu được.\nLàm theo PTHH: đổi ra mol $\\mathrm{CaCO_3}$, suy ra mol CaO, nhân với $M_{\\mathrm{CaO}}$.\nLưu ý: đá vôi có tạp chất hoặc hiệu suất nhỏ hơn 100% ⇒ thuộc dạng \"Tính khối lượng CaO thực tế khi đá vôi có tạp chất và hiệu suất < 100%\".",
+     "ly_thuyet": "##TC Tính theo PTHH\n$\\mathrm{CaCO_3 \\xrightarrow{t^\\circ} CaO + CO_2}$: $n_{\\mathrm{CaO}} = n_{\\mathrm{CaCO_3}}$.\n$n = \\dfrac{m}{M}$, $m_{\\mathrm{CaO}} = n \\times 56$.\n\n##PP Cách làm\nTính $n_{\\mathrm{CaCO_3}} = \\dfrac{m}{100}$.\nTheo PTHH suy ra $n_{\\mathrm{CaO}}$.\nTính $m_{\\mathrm{CaO}} = n \\times 56$.\n\n##CY Chú ý\nĐáp án 22 g ứng với khối lượng $\\mathrm{CO_2}$ (nhầm sản phẩm); dùng 40 thay 56 là nhầm khối lượng mol CaO.",
+     "vi_du": "##VD\nNung hoàn toàn 50 g đá vôi (CaCO₃, coi là nguyên chất), hiệu suất phản ứng 100%. Tính khối lượng vôi sống (CaO) thu được.\nA. 22 g\nB. 50 g\nC. 28 g\nD. 20 g\n\nBài giải:\n$n_{\\mathrm{CaCO_3}} = 50 : 100 = 0{,}5$ mol.\n$\\mathrm{CaCO_3 \\xrightarrow{t^\\circ} CaO + CO_2}$ nên $n_{\\mathrm{CaO}} = 0{,}5$ mol.\n$m_{\\mathrm{CaO}} = 0{,}5 \\times 56 = 28$ g.\nChọn C.\n\n##VD\nNung hoàn toàn 20 g đá vôi (CaCO₃, coi là nguyên chất), hiệu suất phản ứng 100%. Tính khối lượng vôi sống (CaO) thu được.\nA. 11,2 g\nB. 8,8 g\nC. 20 g\nD. 8 g\n\nBài giải:\n$n_{\\mathrm{CaCO_3}} = 20 : 100 = 0{,}2$ mol, nên $n_{\\mathrm{CaO}} = 0{,}2$ mol.\n$m_{\\mathrm{CaO}} = 0{,}2 \\times 56 = 11{,}2$ g.\nChọn A.",
+     "nguon_vi_du": "K09100104001, K09100104003",
+     "cau": [
+      "K09100104001",
+      "K09100104002",
+      "K09100104003"
+     ]
+    },
+    {
+     "ten": "Tính khối lượng CaO thực tế khi đá vôi có tạp chất và hiệu suất nhỏ hơn 100%",
+     "mo_ta": "Đề cho khối lượng đá vôi chứa x% $\\mathrm{CaCO_3}$ và hiệu suất phản ứng, hỏi khối lượng CaO thực tế thu được.\nCần trừ tạp chất trước, tính CaO lí thuyết rồi nhân hiệu suất.\nLưu ý: đề cho khối lượng CaO thực tế, hỏi khối lượng đá vôi cần dùng ⇒ thuộc dạng \"Tính khối lượng đá vôi cần dùng khi biết khối lượng CaO thực tế\".",
+     "ly_thuyet": "##TC Đá vôi không nguyên chất và hiệu suất (lt: lí thuyết, tt: thực tế, dv: đá vôi)\n$m_{\\mathrm{CaCO_3}} = m_{\\mathrm{dv}} \\times \\%\\mathrm{CaCO_3}$.\n$m_{\\mathrm{CaO,tt}} = m_{\\mathrm{CaO,lt}} \\times H$.\n\n##PP Cách làm\nTính khối lượng $\\mathrm{CaCO_3}$ nguyên chất.\nTính số mol và khối lượng CaO lí thuyết theo PTHH.\nNhân hiệu suất để được khối lượng thực tế.\n\n##CY Chú ý\nQuên nhân hiệu suất thì ra giá trị lí thuyết; quên trừ tạp chất thì dùng nhầm cả khối lượng đá vôi.",
+     "vi_du": "##VD\nNung 250 g đá vôi chứa 80% CaCO₃ (còn lại là tạp chất không bị phân huỷ), hiệu suất phản ứng đạt 75%. Tính khối lượng CaO thực tế thu được.\nA. 84 g\nB. 112 g\nC. 105 g\nD. 21 g\n\nBài giải:\n$m_{\\mathrm{CaCO_3}} = 250 \\times 80\\% = 200$ g, $n = 200 : 100 = 2$ mol.\n$n_{\\mathrm{CaO}} = 2$ mol nên $m_{\\mathrm{CaO}}$ lí thuyết $= 2 \\times 56 = 112$ g.\n$m_{\\mathrm{CaO}}$ thực tế $= 112 \\times 75\\% = 84$ g.\nChọn A.\n\n##VD\nNung 500 g đá vôi chứa 80% CaCO₃ (còn lại là tạp chất không bị phân huỷ), hiệu suất phản ứng đạt 50%. Tính khối lượng CaO thực tế thu được.\nA. 224 g\nB. 140 g\nC. 112 g\nD. 28 g\n\nBài giải:\n$m_{\\mathrm{CaCO_3}} = 500 \\times 80\\% = 400$ g, $n = 400 : 100 = 4$ mol.\n$m_{\\mathrm{CaO}}$ lí thuyết $= 4 \\times 56 = 224$ g.\n$m_{\\mathrm{CaO}}$ thực tế $= 224 \\times 50\\% = 112$ g.\nChọn C.",
+     "nguon_vi_du": "K09100104004, K09100104006",
+     "cau": [
+      "K09100104004",
+      "K09100104005",
+      "K09100104006"
+     ]
+    },
+    {
+     "ten": "Tính thể tích khí CO₂ thoát ra khi nung đá vôi",
+     "mo_ta": "Đề cho khối lượng đá vôi nguyên chất, hiệu suất 100%, hỏi thể tích khí $\\mathrm{CO_2}$ ở điều kiện chuẩn (24,79 L/mol).\nLàm theo PTHH: mol $\\mathrm{CaCO_3}$ bằng mol $\\mathrm{CO_2}$, nhân 24,79.\nLưu ý: đề hỏi khối lượng CaO ⇒ thuộc dạng \"Tính khối lượng vôi sống thu được khi nung đá vôi nguyên chất\".",
+     "ly_thuyet": "##TC Thể tích khí\n$n_{\\mathrm{CO_2}} = n_{\\mathrm{CaCO_3}}$.\nỞ điều kiện chuẩn, 1 mol khí chiếm 24,79 L: $V = n \\times 24{,}79$.\n\n##PP Cách làm\nTính $n_{\\mathrm{CaCO_3}} = \\dfrac{m}{100}$.\nSuy ra $n_{\\mathrm{CO_2}}$ theo PTHH.\nTính $V = n \\times 24{,}79$.\n\n##CY Chú ý\nKhông dùng 22,4 L/mol; tính mol theo $M_{\\mathrm{CaCO_3}} = 100$, không theo 56.",
+     "vi_du": "##VD\nNung hoàn toàn 100 g đá vôi (CaCO₃, coi là nguyên chất), hiệu suất 100%. Tính thể tích khí CO₂ thoát ra (đkc, 24,79 L/mol).\nA. 22,4 L\nB. 12,4 L\nC. 44,27 L\nD. 24,79 L\n\nBài giải:\n$n_{\\mathrm{CaCO_3}} = 100 : 100 = 1$ mol.\nTheo PTHH, $n_{\\mathrm{CO_2}} = 1$ mol.\n$V_{\\mathrm{CO_2}} = 1 \\times 24{,}79 = 24{,}79$ L.\nChọn D.\n\n##VD\nNung hoàn toàn 250 g đá vôi (CaCO₃, coi là nguyên chất), hiệu suất 100%. Tính thể tích khí CO₂ thoát ra (đkc, 24,79 L/mol).\nA. 56 L\nB. 123,95 L\nC. 30,9875 L\nD. 61,975 L\n\nBài giải:\n$n_{\\mathrm{CaCO_3}} = 250 : 100 = 2{,}5$ mol, nên $n_{\\mathrm{CO_2}} = 2{,}5$ mol.\n$V_{\\mathrm{CO_2}} = 2{,}5 \\times 24{,}79 = 61{,}975$ L.\nChọn D.",
+     "nguon_vi_du": "K09100104007, K09100104010",
+     "cau": [
+      "K09100104007",
+      "K09100104008",
+      "K09100104009",
+      "K09100104010"
+     ]
+    },
+    {
+     "ten": "Tính khối lượng đá vôi cần dùng khi biết khối lượng CaO thực tế",
+     "mo_ta": "Đề cho khối lượng CaO thực tế cần sản xuất, phần trăm $\\mathrm{CaCO_3}$ trong đá vôi và hiệu suất, hỏi khối lượng đá vôi cần dùng.\nTính ngược: chia hiệu suất, đổi sang $\\mathrm{CaCO_3}$ nguyên chất rồi chia phần trăm $\\mathrm{CaCO_3}$.\nLưu ý: đề cho khối lượng đá vôi, hỏi CaO thu được ⇒ thuộc dạng \"Tính khối lượng CaO thực tế khi đá vôi có tạp chất và hiệu suất nhỏ hơn 100%\".",
+     "ly_thuyet": "##TC Tính ngược (lt: lí thuyết, tt: thực tế, dv: đá vôi)\n$m_{\\mathrm{CaO,lt}} = \\dfrac{m_{\\mathrm{CaO,tt}}}{H}$.\nTheo PTHH: $100$ phần khối lượng $\\mathrm{CaCO_3}$ tạo $56$ phần khối lượng CaO.\n$m_{\\mathrm{dv}} = \\dfrac{m_{\\mathrm{CaCO_3}}}{\\%\\mathrm{CaCO_3}}$.\n\n##PP Cách làm\nChia khối lượng CaO thực tế cho hiệu suất để được lí thuyết.\nTính $m_{\\mathrm{CaCO_3}} = m_{\\mathrm{CaO}} \\times \\dfrac{100}{56}$.\nChia cho phần trăm $\\mathrm{CaCO_3}$ để ra khối lượng đá vôi.\n\n##CY Chú ý\nQuên chia hiệu suất hoặc quên chia phần trăm $\\mathrm{CaCO_3}$ sẽ ra đáp án nhiễu.",
+     "vi_du": "##VD\nMột lò nung cần sản xuất được 40,32 tấn vôi sống (CaO) THỰC TẾ. Biết đá vôi dùng chứa 80% CaCO₃ (còn lại là tạp chất trơ) và hiệu suất phản ứng nung chỉ đạt 90%. Khối lượng đá vôi cần dùng là\nA. 100 tấn\nB. 90 tấn\nC. 80 tấn\nD. 56 tấn\n\nBài giải:\n$m_{\\mathrm{CaO}}$ lí thuyết $= 40{,}32 : 90\\% = 44{,}8$ tấn.\nTheo PTHH, $m_{\\mathrm{CaCO_3}} = 44{,}8 \\times \\dfrac{100}{56} = 80$ tấn.\nĐá vôi chứa 80% $\\mathrm{CaCO_3}$ nên $m_{\\mathrm{dv}} = 80 : 80\\% = 100$ tấn.\nChọn A.\n\n##VD\nMột lò nung cần sản xuất được 33,6 tấn vôi sống (CaO) THỰC TẾ. Biết đá vôi dùng chứa 80% CaCO₃ (còn lại là tạp chất trơ) và hiệu suất phản ứng nung chỉ đạt 60%. Khối lượng đá vôi cần dùng là\nA. 70 tấn\nB. 125 tấn\nC. 75 tấn\nD. 100 tấn\n\nBài giải:\n$m_{\\mathrm{CaO}}$ lí thuyết $= 33{,}6 : 60\\% = 56$ tấn.\n$m_{\\mathrm{CaCO_3}} = 56 \\times \\dfrac{100}{56} = 100$ tấn.\n$m_{\\mathrm{dv}} = 100 : 80\\% = 125$ tấn.\nChọn B.",
+     "nguon_vi_du": "K09100104011, K09100104014",
+     "cau": [
+      "K09100104011",
+      "K09100104012",
+      "K09100104013",
+      "K09100104014",
+      "K09100104015",
+      "K09100104016",
+      "K09100104017",
+      "K09100104018"
+     ]
+    }
+   ],
+   "khong_hop": []
+  }
+ ]
+}
