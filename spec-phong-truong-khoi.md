@@ -108,7 +108,9 @@ Cổng quyền 4 hàm `fn_hsta_*` nới thêm đúng một ca: trưởng khối 
 **Định nghĩa việc (tạm, sửa ở `_phong_viec_ta` là đổi mọi nơi):** việc = chấm BTVN · chấm ET (trừ ET online) từ `fn_viec_buoi_thuong`; trạng thái theo
 **lần đóng đầu** (như Gậy): đang làm · xong đúng hạn · xong trễ · quá hạn. "Tuần" = buổi T2→CN tuần này + việc tồn quá hạn 30 ngày trước. Gậy = `fn_gay_bang_khoang` tháng.
 
-**Còn treo:** đầu tháng hiệu suất tháng hầu hết "—" (chưa có task đã đóng) — có nên hiện tháng trước khi tháng này chưa có số? · thêm task phát triển vào "việc"?
+**Task phát triển KHÔNG thuộc việc của TA** (Thùy 03/11): chỉ trưởng khối có task phát triển — nó nằm ở việc của chính trưởng khối, không đưa vào chi tiết TA.
+
+**Còn treo:** đầu tháng hiệu suất tháng hầu hết "—" (chưa có task đã đóng) — có nên hiện tháng trước khi tháng này chưa có số?
 
 ## 5. Bản thử đã dựng (01/11) — mig `202611011822`
 
