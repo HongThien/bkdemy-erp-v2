@@ -188,6 +188,18 @@ Vì $x>0$ và $8-x>0$ nên $5x=3(8-x)\Leftrightarrow x=3$.
 $T'(x)<0$ khi $0<x<3$ và $T'(x)>0$ khi $3<x<8$ nên $T$ nhỏ nhất tại $x=3$, $T(3)=6+10=16$.
 Vậy mỗi ngày An dùng $3$ lít, Bình dùng $5$ lít; tổng số ngày nhỏ nhất là $16$ ngày (An $6$ ngày, Bình $10$ ngày).
 
+##VD
+Một nhóm làm nội dung truyền thông có đúng $9$ ngày để đăng bài trên hai kênh: kênh A và kênh B. Mỗi ngày chỉ đăng trên một kênh. Nếu dành $x$ ngày cho kênh A thì thu được $P_A=x^2+4x$ (nghìn lượt xem); nếu dành $y$ ngày cho kênh B thì thu được $P_B=200y-15y^2$ (nghìn lượt xem), với $x,y$ là số ngày nguyên không âm.
+a) Nếu không có điều kiện gì thêm, nên dành mấy ngày cho mỗi kênh để tổng lượt xem lớn nhất?
+b) Nếu do quy định của nền tảng, kênh B được đăng không quá $5$ ngày thì nên phân bổ thế nào, và tổng lượt xem lớn nhất là bao nhiêu?
+
+Bài giải:
+Vì $x+y=9$ nên $y=9-x$, tổng lượt xem là $P(x)=x^2+4x+200(9-x)-15(9-x)^2=-14x^2+74x+585$ (nghìn lượt xem), với $x\in\mathbb{N}$, $0\le x\le9$.
+$P'(x)=-28x+74=0\Leftrightarrow x=\dfrac{37}{14}\approx2{,}64$; $P$ tăng trên $\left[0;\dfrac{37}{14}\right]$ và giảm trên $\left[\dfrac{37}{14};9\right]$.
+a) $x$ phải nguyên nên so sánh hai số sát nghiệm: $P(2)=677$, $P(3)=681$. Vậy $x=3$ cho giá trị lớn hơn: dành $3$ ngày cho kênh A và $6$ ngày cho kênh B, tổng $681$ nghìn lượt xem.
+b) Điều kiện $y\le5$ tương đương $x\ge4$, nên miền mới là $x\in\{4;5;\dots;9\}$. Nghiệm $\dfrac{37}{14}$ nằm ngoài miền này, $P$ giảm trên miền nên lớn nhất ở đầu mút $x=4$: $P(4)=-224+296+585=657$.
+Vậy ở câu a) dành $3$ ngày cho kênh A và $6$ ngày cho kênh B; ở câu b) dành $4$ ngày cho kênh A, $5$ ngày cho kênh B, tổng lượt xem lớn nhất là $657$ nghìn.
+
 === C4.4.5   (dạng "Chọn mức thuế để tiền thuế thu được lớn nhất" — mô tả: hai tầng, với mỗi t doanh nghiệp chọn sản lượng tối ưu Q(t); rồi tối ưu tiền thuế t·Q(t))
 @ly_thuyet:
 ##TC Bài toán hai tầng: doanh nghiệp rồi nhà nước
@@ -286,3 +298,5 @@ Vậy câu a) tàu chạy $10$ km/h so với nước, chi phí nhỏ nhất $9\,
 - C4.4.2: đề thật có câu cho chi phí biên và HỎI GIÁ TRỊ lợi nhuận (T1120000001127, cần nguyên hàm để tìm $C(x)$, ngoài chương) nên ví dụ chỉ hỏi sản lượng.
 - C4.4.3: câu "chi phí trung bình không thấp hơn $a$" (hàm $a+c/x$) là giới hạn, không có giá trị nhỏ nhất đạt được; T112020401365 lại hỏi "chi phí trung bình TỐI ĐA" với đáp 250 (chính là giới hạn) — đề viết sai chữ.
 - C4.4.6 chỉ có 2 câu đề trong ánh xạ hiện tại; lý thuyết đã bổ sung các kiểu của 7 câu vận tốc đang nằm nhầm ở C4.4.2/C4.4.3 (chi phí theo km, đi rồi về, lợi nhuận tiền vé, đổi W sang kWh).
+- C4.4.4: ví dụ 2 viết mới theo khuôn "hai người" (A/x + B/(S−x)); ví dụ 3 bổ sung kiểu "chia tổng x+y cố định có chặn" (biến nguyên, nghiệm ngoài miền nên lấy đầu mút, kiểu câu T112020401286).
+- Kiểu đề KHÔNG bổ sung: C4.4.3 T112020401296 (cho sẵn C(v)) thuộc C4.1.1, ánh xạ lệch; C4.4.2 chi phí biên hỏi giá trị lợi nhuận cần nguyên hàm (ngoài chương); T112020401365 và T1120000004411 đã loại khỏi kho.

@@ -345,14 +345,27 @@ $AH\perp BC$ nên $\overrightarrow{AH}\cdot\overrightarrow{BC}=3(3t-1)+6(6t-1)+3
 Do đó $H(2;4;0)$ và $\overrightarrow{AH}=(0;1;-2)$ nên $AH=\sqrt{0+1+4}=\sqrt{5}$.
 Vậy $H(2;4;0)$ và $AH=\sqrt{5}$.
 
-=== C3.4.3   (dạng "Tính tích có hướng, diện tích, thể tích bằng toạ độ" — mô tả: Đề hỏi [a,b], vectơ vuông góc với hai vectơ, diện tích tam giác/hình bình hành, thể tích tứ diện/hình hộp, xét đồng phẳng. Dùng định thức cấp hai và công thức ½|[AB,AC]|, |[AB,AC]·AD|.)
+##VD
+a) Trong không gian $Oxyz$, cho $A(1;2;2)$ và $B(-2;1;-2)$. Gọi $M$ là điểm thuộc tia $Oy$ sao cho tam giác $ABM$ vuông tại $M$. Tìm toạ độ $M$ và tính diện tích tam giác $ABM$.
+b) Cho $P(3;0;0)$, $Q(0;3;0)$, $R(0;0;3)$. Điểm $N(x;y;z)$ khác $O$ thoả mãn $\widehat{PNQ}=\widehat{QNR}=\widehat{RNP}=90^\circ$. Tính $x+y+z$.
+
+Bài giải:
+a) Gọi $M(0;t;0)$ với $t>0$. Ta có $\overrightarrow{MA}=(1;2-t;2)$ và $\overrightarrow{MB}=(-2;1-t;-2)$.
+Vuông tại $M$ nên $\overrightarrow{MA}\cdot\overrightarrow{MB}=-2+(2-t)(1-t)-4=t^2-3t-4=0$, suy ra $t=4$ hoặc $t=-1$. Do $M$ thuộc tia $Oy$ nên $t>0$, vậy $M(0;4;0)$.
+Khi đó $\overrightarrow{MA}=(1;-2;2)$ và $\overrightarrow{MB}=(-2;-3;-2)$ nên $MA=3$, $MB=\sqrt{17}$. Tam giác vuông tại $M$ nên $S_{ABM}=\dfrac{1}{2}MA\cdot MB=\dfrac{3\sqrt{17}}{2}$.
+b) $\overrightarrow{NP}\cdot\overrightarrow{NQ}=(3-x)(-x)+(-y)(3-y)+z^2=x^2+y^2+z^2-3x-3y$. Đặt $s=x^2+y^2+z^2$, ba điều kiện vuông góc thành
+$s-3x-3y=0$, $s-3y-3z=0$, $s-3z-3x=0$.
+Trừ từng cặp phương trình được $x=z$ và $y=x$, nên $x=y=z=t$. Thay vào: $3t^2-6t=0$, suy ra $t=0$ (là điểm $O$, bị loại) hoặc $t=2$. Vậy $N(2;2;2)$ và $x+y+z=6$.
+Vậy $M(0;4;0)$, $S_{ABM}=\dfrac{3\sqrt{17}}{2}$ và $x+y+z=6$.
+
+=== C3.4.3   (dạng "Tính tích có hướng, diện tích, thể tích bằng toạ độ" — mô tả: Đề hỏi [a,b], vectơ vuông góc với hai vectơ, diện tích tam giác/hình bình hành, thể tích tứ diện, xét đồng phẳng. Dùng định thức cấp hai và công thức ½|[AB,AC]|, |[AB,AC]·AD|.)
 @ly_thuyet:
 ##TC Diện tích, thể tích và đồng phẳng bằng tích có hướng
 - Diện tích tam giác: $S_{ABC}=\dfrac{1}{2}\left|[\overrightarrow{AB},\overrightarrow{AC}]\right|$; diện tích hình bình hành $ABCD$: $S=\left|[\overrightarrow{AB},\overrightarrow{AD}]\right|$.
-- Thể tích tứ diện: $V_{ABCD}=\dfrac{1}{6}\left|[\overrightarrow{AB},\overrightarrow{AC}]\cdot\overrightarrow{AD}\right|$; thể tích hình hộp: $V=\left|[\overrightarrow{AB},\overrightarrow{AD}]\cdot\overrightarrow{AA'}\right|$.
+- Thể tích tứ diện: $V_{ABCD}=\dfrac{1}{6}\left|[\overrightarrow{AB},\overrightarrow{AC}]\cdot\overrightarrow{AD}\right|$.
 - $[\vec{a},\vec{b}]=\vec{0}$ khi và chỉ khi $\vec{a}$, $\vec{b}$ cùng phương; ba điểm $A,B,C$ thẳng hàng khi và chỉ khi $[\overrightarrow{AB},\overrightarrow{AC}]=\vec{0}$.
 - Bốn điểm $A,B,C,D$ đồng phẳng khi và chỉ khi $[\overrightarrow{AB},\overrightarrow{AC}]\cdot\overrightarrow{AD}=0$.
-- Nếu $\vec{a}$, $\vec{b}$ không cùng phương thì mọi vectơ vuông góc với cả hai đều có dạng $k[\vec{a},\vec{b}]$. Đặc biệt $[\overrightarrow{AB},\overrightarrow{AC}]$ (và mọi bội khác $\vec{0}$ của nó) vuông góc với mặt phẳng $(ABC)$, nên chọn làm vectơ pháp tuyến của $(ABC)$.
+- Nếu $\vec{a}$, $\vec{b}$ không cùng phương thì mọi vectơ vuông góc với cả hai đều có dạng $k[\vec{a},\vec{b}]$. Đặc biệt $[\overrightarrow{AB},\overrightarrow{AC}]$ (khác $\vec{0}$) vuông góc với cả $\overrightarrow{AB}$ và $\overrightarrow{AC}$; vì vậy $[\overrightarrow{AB},\overrightarrow{AC}]$ là một vectơ pháp tuyến của $(ABC)$ (mọi bội khác $\vec{0}$ của nó cũng vậy).
 - Đường cao kẻ từ $A$ của tam giác $ABC$: $AH=\dfrac{2S_{ABC}}{BC}$.
 
 ##PP Dùng tích có hướng
@@ -362,7 +375,7 @@ Nhân hệ số $\dfrac{1}{2}$ (tam giác) hay $\dfrac{1}{6}$ (tứ diện), nh�
 Với bài tìm vectơ vuông góc với hai vectơ: lấy tích có hướng, hoặc đặt $k[\vec{a},\vec{b}]$ rồi dùng giả thiết bổ sung (độ dài, một thành phần cho trước).
 
 ##CY
-- Thể tích tứ diện có hệ số $\dfrac{1}{6}$, thể tích hình hộp không có hệ số này; diện tích tam giác có $\dfrac{1}{2}$, hình bình hành thì không.
+- Thể tích tứ diện có hệ số $\dfrac{1}{6}$; diện tích tam giác có hệ số $\dfrac{1}{2}$, diện tích hình bình hành thì không.
 - Kết quả tích hỗn tạp phải lấy giá trị tuyệt đối khi tính thể tích, nhưng khi xét đồng phẳng thì chỉ cần bằng $0$.
 
 @vi_du:
@@ -393,7 +406,7 @@ Vậy $V=\dfrac{5}{6}$ và $m=1$.
 ## GHI CHÚ CHO CEO
 - Sách đã đối chiếu (trạm soạn + trạm soát): PNL chương 2 (bài 2 dạng 1, dạng 2; bài 3 dạng 1, dạng 2, bản GV), Từ Tâm chương 2 (bài 1 P1, P2; bài 3 P1, P2), NBV 12-9 "Toạ độ của vectơ" (A. Lý thuyết, B. Tự luận, C. Trắc nghiệm, E. Trả lời ngắn — bản trích ở thư mục tạm `sach\vt-nbv`).Công thức trong cả ba bộ là ảnh WMF nên chỉ đối chiếu được khung bài, cách phân dạng và ý ví dụ; công thức viết theo kiến thức chuẩn.
 - C3.4.3: NBV 12-9 (bám SGK Cánh Diều) có mục "Cách tìm toạ độ của một vectơ vuông góc với hai vectơ cho trước" và gọi vectơ đó là tích có hướng; PNL bài 3 cũng có "Biểu thức toạ độ tích có hướng". Vậy tích có hướng CÓ trong SGK (ít nhất một bộ), chỉ các công thức diện tích, thể tích, đồng phẳng bằng tích có hướng là ngoài SGK — đề thi và cả ba sách đều dùng nên giữ. Câu T112020302060 ("Đồ thị ở hình sau là đồ thị của hàm số nào") là câu Hàm số gắn nhầm vào dạng này.
-- C3.4.3: lý thuyết có "vectơ pháp tuyến của (ABC)" vì đề thi xếp vào dạng này 2 câu hỏi đúng tên gọi đó; không dùng phương trình mặt phẳng.
+- C3.4.3: "vectơ pháp tuyến của (ABC)" chỉ nêu như kết quả của tích có hướng (đề xếp vào dạng 2 câu hỏi đúng tên gọi đó); không dùng phương trình mặt phẳng. Đã bỏ "thể tích hình hộp" theo quyết định 03/11.
 - C3.3.2: đề thi thật có 7 câu, 3 câu là bài thực tế (camera sân bóng, drone); ví dụ dùng bài thuần toạ độ, phần b) ví dụ 2 mô phỏng kiểu "cách không quá R, đếm tham số nguyên" của câu drone.
-- C3.4.2: đề thi có 2 câu khó (điểm M với ba góc vuông; trực tâm khi C chạy trên trục); lý thuyết nêu cách đặt điều kiện, không có ví dụ riêng.
+- C3.4.2: đã thêm ví dụ 3 (M thuộc tia Oy, tam giác vuông tại M; ba góc vuông tại N). KHÔNG thêm: trực tâm H khi C chạy trên trục (tập hợp điểm là đường tròn, 1 câu, quá lẻ) và bài thực tế góc ACB = 90° với b = 2a (1 câu tự luận, đáp số có căn lẻ).
 - C3.2.3: "điểm thuộc đường thẳng AB cắt trục/mặt phẳng toạ độ" chỉ dùng dạng $A+t\overrightarrow{AB}$ của vectơ, không dùng phương trình đường thẳng.

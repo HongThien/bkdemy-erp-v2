@@ -69,6 +69,7 @@ Kết luận: hàm số ở câu a) có ba cực trị ($y_{\text{CĐ}}=3$ tại
 ##TC Hàm phân thức, căn, mũ, logarit, lượng giác, hàm có điểm không khả vi
 - Hàm $y=\dfrac{ax+b}{cx+d}$ $(c\ne0,\ ad-bc\ne0)$ có $y'=\dfrac{ad-bc}{(cx+d)^2}$ không đổi dấu nên không có cực trị.
 - Hàm $y=\dfrac{ax^2+bx+c}{dx+e}$ ($d\ne0$, tử và mẫu không có nghiệm chung) có $y'=\dfrac{P(x)}{(dx+e)^2}$ với $P$ là tam thức bậc hai, dấu của $y'$ là dấu của $P(x)$. Nếu $P(x)=0$ có hai nghiệm phân biệt thì hàm số có hai cực trị; nếu $P$ vô nghiệm hoặc có nghiệm kép thì không có cực trị. Có thể viết $y=\alpha x+\beta+\dfrac{\gamma}{x-x_1}$ để tính $y'=\alpha-\dfrac{\gamma}{(x-x_1)^2}$ nhanh hơn.
+- Khi đề hỏi hai điểm cực trị $A$, $B$ của đồ thị (hoặc $x_1,x_2$ của hàm phân thức): giải $y'=0$ (tử của $y'$ là tam thức bậc hai, có thể dùng Vi-ét cho $x_1+x_2$), thay vào $y$ để có $A,B$ rồi tính độ dài $AB$ hoặc trung điểm.
 - Hàm chứa căn, mũ, logarit, lượng giác: tìm tập xác định trước, chỉ nhận nghiệm của $y'=0$ thuộc tập xác định; với hàm mũ vì $e^{u}>0$ nên dấu của $y'$ là dấu của nhân tử còn lại.
 - Hàm $y=e^{u(x)}$ có $y'=u'e^{u}$ cùng dấu với $u'$; hàm $y=\log_a u(x)$ có $y'=\dfrac{u'}{u\ln a}$ (với $u>0$) cùng dấu với $u'$ khi $a>1$ và trái dấu với $u'$ khi $0<a<1$.
 - Hàm có điểm làm $y'$ không tồn tại (hàm chứa trị tuyệt đối, hàm chia khúc) nhưng hàm số xác định và liên tục tại đó vẫn có thể đạt cực trị: xét dấu $y'$ ở hai bên điểm đó.
@@ -103,17 +104,27 @@ Vậy hàm số ở câu a) có $y_{\text{CĐ}}=-5$ tại $x=-2$ và $y_{\text{C
 ##VD
 Tìm cực trị của mỗi hàm số sau:
 a) $y=x^2e^{-x}$
-b) $y=|x^2-4x+3|$
+b) $y=\log_{0{,}5}(-x^2+2x+15)$
 
 Bài giải:
 a) Hàm số xác định trên $\mathbb{R}$ và $y'=2xe^{-x}-x^2e^{-x}=x(2-x)e^{-x}$.
 Vì $e^{-x}>0$ nên $y'=0\Leftrightarrow x=0$ hoặc $x=2$; $y'<0$ trên $(-\infty;0)$, $y'>0$ trên $(0;2)$, $y'<0$ trên $(2;+\infty)$.
 Hàm số đạt cực tiểu tại $x=0$ với $y_{\text{CT}}=0$ và đạt cực đại tại $x=2$ với $y_{\text{CĐ}}=4e^{-2}=\dfrac{4}{e^2}$.
-b) Vì $x^2-4x+3=(x-1)(x-3)$ nên $y=x^2-4x+3$ khi $x\le1$ hoặc $x\ge3$, và $y=-x^2+4x-3$ khi $1<x<3$. Hàm số liên tục trên $\mathbb{R}$.
-Với $x<1$: $y'=2x-4<0$. Với $1<x<3$: $y'=-2x+4$, dương trên $(1;2)$ và âm trên $(2;3)$. Với $x>3$: $y'=2x-4>0$.
-Tại $x=1$ và $x=3$ đạo hàm hai bên khác nhau (chẳng hạn $y'$ bên trái $x=1$ bằng $-2$, bên phải bằng $2$) nên $y'$ không tồn tại, nhưng hàm số xác định tại đó và $y'$ đổi dấu.
-$y'$ đổi dấu từ $-$ sang $+$ qua $x=1$ và $x=3$: hàm số đạt cực tiểu tại $x=1$, $x=3$ với $y_{\text{CT}}=0$; $y'$ đổi dấu từ $+$ sang $-$ qua $x=2$: hàm số đạt cực đại tại $x=2$ với $y_{\text{CĐ}}=1$.
-Vậy hàm số ở câu a) có $y_{\text{CT}}=0$ tại $x=0$ và $y_{\text{CĐ}}=\dfrac{4}{e^2}$ tại $x=2$; hàm số ở câu b) có ba cực trị: cực tiểu $0$ tại $x=1$ và $x=3$, cực đại $1$ tại $x=2$.
+b) Điều kiện $-x^2+2x+15>0\Leftrightarrow -3<x<5$, tập xác định $D=(-3;5)$. Có $y'=\dfrac{-2x+2}{(-x^2+2x+15)\ln0{,}5}$ và $\ln0{,}5<0$ nên $y'$ trái dấu với $-2x+2$.
+$y'=0\Leftrightarrow x=1$; $y'<0$ trên $(-3;1)$ và $y'>0$ trên $(1;5)$ (cơ số $0{,}5<1$ nên $y$ ngược chiều với $u=-x^2+2x+15$).
+$y'$ đổi dấu từ $-$ sang $+$ qua $x=1$ nên hàm số đạt cực tiểu tại $x=1$ với $y_{\text{CT}}=\log_{0{,}5}16=-4$; hàm số không có cực đại.
+Vậy hàm số ở câu a) có $y_{\text{CT}}=0$ tại $x=0$ và $y_{\text{CĐ}}=\dfrac{4}{e^2}$ tại $x=2$; hàm số ở câu b) chỉ có một cực trị là cực tiểu $y_{\text{CT}}=-4$ tại $x=1$.
+
+##VD
+Cho hàm số $y=\dfrac{x^2-2x+5}{x-1}$ có đồ thị $(C)$. Biết $(C)$ có hai điểm cực trị $A$ và $B$. Tìm tổng hoành độ hai điểm cực trị, tính độ dài đoạn $AB$ và tìm toạ độ trung điểm $I$ của $AB$.
+
+Bài giải:
+Tập xác định $D=\mathbb{R}\setminus\{1\}$, $y'=\dfrac{(2x-2)(x-1)-(x^2-2x+5)}{(x-1)^2}=\dfrac{x^2-2x-3}{(x-1)^2}=\dfrac{(x-3)(x+1)}{(x-1)^2}$.
+$y'=0\Leftrightarrow x=-1$ hoặc $x=3$; $y'>0$ trên $(-\infty;-1)$ và $(3;+\infty)$, $y'<0$ trên $(-1;1)$ và $(1;3)$ nên $y'$ đổi dấu qua cả hai nghiệm.
+Hoành độ hai điểm cực trị là $x_1=-1$, $x_2=3$ nên tổng $x_1+x_2=2$ (cũng là tổng hai nghiệm của $x^2-2x-3=0$ theo Vi-ét).
+Có $y(-1)=\dfrac{1+2+5}{-2}=-4$ và $y(3)=\dfrac{9-6+5}{2}=4$ nên hai điểm cực trị của đồ thị là $A(-1;-4)$ và $B(3;4)$.
+$AB=\sqrt{(3+1)^2+(4+4)^2}=\sqrt{16+64}=4\sqrt5$ và trung điểm $I\left(\dfrac{-1+3}{2};\dfrac{-4+4}{2}\right)=(1;0)$.
+Vậy $x_1+x_2=2$, $AB=4\sqrt5$ và $I(1;0)$.
 
 === C1.2.3
 @ly_thuyet:
@@ -278,7 +289,7 @@ Vậy hàm số có $3$ điểm cực trị: cực đại tại $x=-1$ và $x=3$
 
 ## GHI CHÚ CHO CEO
 - Nhóm C1.2 có đủ 6 dạng; mô tả dạng nào cũng rõ, không phải tự đoán.
-- Đã bỏ "quy tắc II" ($f''$) khỏi lý thuyết: câu đề thi trong 6 dạng này chỉ hỏi bằng xét dấu $y'$ (CT 2018 không có quy tắc II). Đã bỏ các ý tham số $m$, đường thẳng qua hai cực trị, tam giác cực trị: đó là dạng khác, không thuộc nhóm giao.
-- (Trạm soát sửa) 53 câu đề thi dạng C1.2.2: đa số phân thức bậc hai/bậc nhất, còn lại hàm mũ ($x^2e^{x+1}$, $e^{x^2-2x+2024}$), căn ($\sqrt{4-x^2}$, $2x\sqrt{8-x^2}$), logarit ($\log_{0{,}5}(-x^2+4x)$, $\log_3(x^2-2x+3)$); KHÔNG có câu hàm trị tuyệt đối/chia khúc. Ý "hàm có điểm không khả vi" và ví dụ 2b) $|x^2-4x+3|$ giữ lại vì mô tả dạng ghi rõ; nếu bám đề tuyệt đối thì có thể thay 2b) bằng hàm logarit — CEO quyết. Đã thêm dòng lý thuyết cho $e^{u}$, $\log_a u$ (đề có hỏi).
+- Không dùng $f''$ (quy tắc II/điều kiện đủ qua đạo hàm cấp hai) trong nhóm: đề thi 6 dạng này không hỏi. Đã bỏ các ý tham số $m$, đường thẳng qua hai cực trị, tam giác cực trị: đó là dạng khác.
+- C1.2.2 (đã áp quyết định): ví dụ 2b) đổi từ $|x^2-4x+3|$ sang $\log_{0{,}5}(-x^2+2x+15)$ (kiểu logarit cơ số nhỏ hơn $1$ đề có hỏi, số liệu khác đề; 53 câu đề không có trị tuyệt đối/chia khúc). Ý "hàm có điểm không khả vi" trong lý thuyết dạng giữ vì mô tả dạng ghi rõ, nhưng không còn ví dụ minh hoạ. Bổ sung ví dụ 3: điểm cực trị $A$, $B$ của đồ thị phân thức, tổng $x_1+x_2$, độ dài $AB$, trung điểm (kiểu đề có ≥7 câu).
 - Tất cả ví dụ đã tính lại bằng node (quét lưới đổi chiều biến thiên và đổi dấu $f'$): khớp đáp số; hình đồ thị vẽ từ công thức, đọc được các điểm nguyên.
-- Sách đã dùng: văn bản sách đã trích trong `k12-hs/ho-so/` (hoso-nbv-1-2.md: NBV 12-2; hoso-tutam.md: Từ Tâm; hoso-pnl-1-2.md: PNL Bài 1 cực trị) và bản v1 đã soát `k12-hs/ra/J2.txt` (H2.1.1, H2.1.3, H2.1.4, H2.2.1, H2.2.2, H2.3.1, H2.3.2). Thư mục `scratchpad\txt\nbv|tutam` rỗng; trạm soát đã đối chiếu thêm lý thuyết SGK trong `scratchpad\sach\hsd\nbv-ct-lt.md` (định nghĩa cực trị "xác định và liên tục trên khoảng", định lí xét dấu, 4 bước tìm cực trị) — khớp. Ví dụ đã viết lại cho đúng dạng mới (thêm trùng phương/bậc cao vào C1.2.1, hàm khúc/trị tuyệt đối vào C1.2.2, ví dụ đồ thị trùng phương cho C1.2.4, nhân tử $(3-x)^3$ cho C1.2.6).
+- Sách đã dùng: văn bản sách đã trích trong `k12-hs/ho-so/` (hoso-nbv-1-2.md: NBV 12-2; hoso-tutam.md: Từ Tâm; hoso-pnl-1-2.md: PNL Bài 1 cực trị) và bản v1 đã soát `k12-hs/ra/J2.txt` (H2.1.1, H2.1.3, H2.1.4, H2.2.1, H2.2.2, H2.3.1, H2.3.2). Thư mục `scratchpad\txt\nbv|tutam` rỗng; trạm soát đã đối chiếu thêm lý thuyết SGK trong `scratchpad\sach\hsd\nbv-ct-lt.md` (định nghĩa cực trị "xác định và liên tục trên khoảng", định lí xét dấu, 4 bước tìm cực trị) — khớp. Ví dụ đã viết lại cho đúng dạng mới (thêm trùng phương/bậc cao vào C1.2.1, hàm căn/mũ/logarit vào C1.2.2, ví dụ đồ thị trùng phương cho C1.2.4, nhân tử $(3-x)^3$ cho C1.2.6).

@@ -151,11 +151,13 @@ Vậy $P=9$.
 - Diện tích tam giác $OAB$: $S_{OAB}=\dfrac{1}{2}\left|x_Ay_B-x_By_A\right|$.
 - Đường thẳng $AB:y=rx+s$ ($r\ne0$, $s\ne0$) cắt $Ox$ tại $\left(-\dfrac{s}{r};0\right)$, cắt $Oy$ tại $(0;s)$; tam giác tạo bởi $AB$ và hai trục toạ độ có diện tích $\dfrac{s^2}{2|r|}$.
 - Tam giác $OAB$ vuông tại $O$ ⇔ $\overrightarrow{OA}\cdot\overrightarrow{OB}=x_Ax_B+y_Ay_B=0$, với $A$, $B$ khác $O$.
+- Đường thẳng $AB$ hay được dùng làm đường thẳng $d:\alpha x+\beta y+\gamma=0$ cho bài "$MP+MQ$ nhỏ nhất với $M\in d$" (đối xứng qua đường thẳng). Đặt $f(X)=\alpha x_X+\beta y_X+\gamma$: nếu $f(P)f(Q)>0$ ($P,Q$ cùng phía của $d$) thì lấy $P'$ đối xứng với $P$ qua $d$, $P'=P-\dfrac{2f(P)}{\alpha^2+\beta^2}(\alpha;\beta)$; khi đó $MP+MQ=MP'+MQ\ge P'Q$, dấu bằng khi $M$ là giao điểm của $P'Q$ và $d$. Nếu $f(P)f(Q)<0$ ($P,Q$ khác phía) thì $M=PQ\cap d$ và giá trị nhỏ nhất là $PQ$.
 
 ##PP Giải bài về hai điểm cực trị
 Tìm điều kiện có hai cực trị ($\Delta'>0$) và toạ độ $A,B$ (theo $m$ nếu đề có tham số).
 Tính phần đề hỏi: độ dài $AB$ bằng công thức khoảng cách, diện tích $OAB$ bằng $\dfrac{1}{2}|x_Ay_B-x_By_A|$, đường thẳng $AB$ bằng phần dư hoặc đường thẳng qua hai điểm, giao điểm của $AB$ với hai trục.
 Với điều kiện theo $m$ (như tam giác $OAB$ vuông tại $O$): dịch thành phương trình theo toạ độ $A,B$.
+Bài "$MP+MQ$ nhỏ nhất, $M$ thuộc đường thẳng $AB$": viết $AB$, xét $P,Q$ cùng phía hay khác phía, lấy điểm đối xứng $P'$ (nếu cùng phía), viết $P'Q$ rồi tìm giao điểm với $AB$.
 Giải theo $m$ (nếu có), đối chiếu điều kiện có hai cực trị và đáp án làm tròn theo yêu cầu.
 
 ##CY
@@ -186,6 +188,17 @@ Tam giác $OAB$ vuông tại $O$ ⇔ $x_Ax_B+y_Ay_B=0$ ⇔ $0\cdot2m+4m\left(4m-
 Loại $m=0$ (khi đó $y=x^3$ không có cực trị).
 Thử lại: $m=1$ cho $A(0;4)$, $B(2;0)$; $m=-1$ cho $A(0;-4)$, $B(-2;0)$; cả hai trường hợp $A$, $B$ khác $O$ và $OA\perp OB$.
 Vậy $m=1$ hoặc $m=-1$.
+
+##VD
+Cho hàm số $y=\dfrac{1}{2}x^3-\dfrac{3}{2}x+1$ có đồ thị $(C)$; đường thẳng $d$ đi qua hai điểm cực trị của $(C)$; cho hai điểm $P(0;3)$, $Q(6;-3)$. Gọi $M(a;b)$ là điểm thuộc $d$ sao cho $MP+MQ$ nhỏ nhất. Tính $a-b$.
+
+Bài giải:
+Ta có $y'=\dfrac{3}{2}x^2-\dfrac{3}{2}=\dfrac{3}{2}(x-1)(x+1)$ nên hai điểm cực trị là $A(-1;2)$ và $B(1;0)$.
+Đường thẳng $d=AB$ có phương trình $x+y-1=0$. Đặt $f(X)=x_X+y_X-1$: $f(P)=2>0$ và $f(Q)=6-3-1=2>0$ nên $P$, $Q$ cùng phía với $d$.
+Điểm $P'$ đối xứng với $P$ qua $d$: $P'=P-\dfrac{2f(P)}{1^2+1^2}(1;1)=(0;3)-2(1;1)=(-2;1)$.
+Khi đó $MP+MQ=MP'+MQ\ge P'Q$, dấu bằng xảy ra khi $M$ là giao điểm của $P'Q$ và $d$. Đường thẳng $P'Q$ đi qua $(-2;1)$ và $(6;-3)$ có hệ số góc $\dfrac{-3-1}{6+2}=-\dfrac{1}{2}$ nên $P'Q:x+2y=0$.
+Giải hệ $x+y=1$ và $x+2y=0$ được $x=2$, $y=-1$, tức $M(2;-1)$.
+Vậy $a=2$, $b=-1$ và $a-b=3$.
 
 === C2.2.5
 @ly_thuyet:
@@ -236,6 +249,7 @@ Vậy $m\ge0$.
 - Hàm bậc ba có hai cực trị thoả hệ thức giữa $x_1,x_2$: dùng Viète $S=x_1+x_2$, $P=x_1x_2$, với $x_1^2+x_2^2=S^2-2P$ và $(x_1-x_2)^2=S^2-4P$; hệ thức không đối xứng (như $x_1+2x_2=1$) thì ghép với $x_1+x_2=S$ để tính $x_1,x_2$ theo $m$ rồi thay vào $x_1x_2=P$; luôn đối chiếu $\Delta'>0$.
 - Hai điểm cực trị nằm trong khoảng $(\alpha;\beta)$: khi $y'=0$ có hai nghiệm viết được theo $m$ thì đặt điều kiện hai nghiệm khác nhau và cùng thuộc $(\alpha;\beta)$.
 - Hàm trùng phương chứa tham số: số cực trị theo dấu của $ab$ (hệ số $a$, $b$ chứa $m$); điều kiện $a\ne0$ vẫn phải giữ.
+- Bài xác suất có hai hàm trùng phương $y=Ax^4+Bx^2+C$ (hệ số chứa $a,b$ lấy từ một tập số): mỗi hàm có ba cực trị ⇔ $AB<0$; các điểm cực trị là $(0;C)$ và $\left(\pm\sqrt{-\dfrac{B}{2A}};\,y\right)$. Hai đồ thị có cực trị chung khi trùng nhau ở điểm $x=0$ (cùng tung độ $C$) hoặc ở điểm có $x\ne0$ (cùng $x^2$ và cùng tung độ); đếm số cặp $(a,b)$ thoả rồi chia cho tổng số cặp.
 - Đa thức có dạng $y=y(0)+cx^k+\dots$ với $c\ne0$ là hạng tử bậc thấp nhất khác $0$ của $y-y(0)$: nếu $k$ chẵn thì $x=0$ là cực tiểu khi $c>0$, cực đại khi $c<0$; nếu $k$ lẻ thì $x=0$ không phải điểm cực trị.
 
 ##PP Tìm $m$ để hàm đa thức có cực trị thoả điều kiện
@@ -275,8 +289,35 @@ Cho bằng $18$: $4m^2+6m-28=0$ nên $2m^2+3m-14=0$, suy ra $m=2$ hoặc $m=-\df
 Đối chiếu điều kiện ở câu a): $m=2$ không thoả (khi đó $y'=3(x-3)^2$ không đổi dấu, hàm không có cực trị), còn $m=-\dfrac{7}{2}<-3$ thoả.
 Vậy a) $m<-3$ hoặc $m>2$; b) $m=-\dfrac{7}{2}$.
 
+##VD
+Cho hàm số $y=2x^3-3(m+2)x^2+12mx-1$ ($m$ là tham số). Có bao nhiêu giá trị nguyên của $m$ để hàm số có hai điểm cực trị đều thuộc khoảng $(-1;5)$?
+
+Bài giải:
+Ta có $y'=6x^2-6(m+2)x+12m=6(x-2)(x-m)$ nên $y'=0\Leftrightarrow x=2$ hoặc $x=m$.
+Hàm có hai cực trị ⇔ hai nghiệm phân biệt ⇔ $m\ne2$.
+Hai điểm cực trị đều thuộc $(-1;5)$: $x=2$ đã thuộc khoảng nên chỉ cần $-1<m<5$.
+Kết hợp $m\ne2$, các giá trị nguyên là $0;1;3;4$.
+Vậy có $4$ giá trị nguyên của $m$.
+
+##VD
+a) Có bao nhiêu giá trị nguyên của tham số $m$ để hàm số $y=x^{10}+(m-3)x^5+\left(m^2-9\right)x^4+2$ đạt cực đại tại $x=0$?
+b) Gọi $S$ là tập hợp các số nguyên có giá trị tuyệt đối không vượt quá $5$. Chọn lần lượt hai số $a$, $b$ phân biệt từ $S$ (số đầu là $a$, số sau là $b$). Tính xác suất để hai đồ thị $(C_1):y=x^4+2ax^2+b$ và $(C_2):y=-x^4+2bx^2-a$ đều có ba điểm cực trị và có một điểm cực trị chung.
+
+Bài giải:
+a) Hạng tử bậc thấp nhất của $y-y(0)=y-2$ phụ thuộc $m$.
+Nếu $m^2-9\ne0$ thì hạng tử bậc thấp nhất là $\left(m^2-9\right)x^4$ (bậc $4$ chẵn): $x=0$ là cực đại ⇔ $m^2-9<0$ ⇔ $-3<m<3$.
+Nếu $m=3$: $y=x^{10}+2$, $x=0$ là cực tiểu, loại. Nếu $m=-3$: $y=x^{10}-6x^5+2$, hạng tử bậc thấp nhất là $-6x^5$ (bậc lẻ), $x=0$ không là cực trị, loại.
+Các giá trị nguyên là $-2;-1;0;1;2$. Vậy có $5$ giá trị.
+b) $S$ có $11$ phần tử, số cặp có thứ tự $(a,b)$ phân biệt là $11\cdot10=110$.
+$(C_1)$ có ba cực trị ⇔ $1\cdot2a<0$ ⇔ $a<0$; $(C_2)$ có ba cực trị ⇔ $(-1)\cdot2b<0$ ⇔ $b>0$.
+Điểm cực trị $x=0$ của $(C_1)$ là $(0;b)$, của $(C_2)$ là $(0;-a)$: chung khi $b=-a$.
+Cực trị ngoài $x=0$ của $(C_1)$ có $x^2=-a$, của $(C_2)$ có $x^2=b$; hai giá trị này bằng nhau cũng cho $b=-a$, và khi đó tung độ là $-a^2-a$ và $a^2-a$ khác nhau (vì $a\ne0$) nên không thêm cực trị chung nào.
+Vậy cần $a<0$ và $b=-a$: $a\in\{-5;-4;-3;-2;-1\}$, có $5$ cặp (đều thoả $a\ne b$).
+Xác suất là $\dfrac{5}{110}=\dfrac{1}{22}$.
+Vậy a) $5$ giá trị; b) $\dfrac{1}{22}$.
+
 ## GHI CHÚ CHO CEO
 - Nguồn: hồ sơ NBV 12-5 và Từ Tâm (thư mục ho-so của k12-hs), PNL Bài 1 Dạng 03 bản GV; trạm soát đã trích thêm Word NBV 12-1, 12-2, 12-5 (A. LÝ THUYẾT) và 12-5 (B. TỰ LUẬN). Công thức trong Word là ảnh WMF nên chỉ đối chiếu được lời văn: tâm đối xứng là điểm có hoành độ nghiệm $y''=0$ (khớp); cực trị theo dấu $y'$ (khớp). Điều kiện đủ bằng $y''$ không có trong phần lý thuyết NBV nhưng PNL dùng, nên giữ.
 - C2.2.5: lý thuyết chỉ nói đơn điệu, đúng mô tả. Khi gắn lại câu, cần chuyển khỏi C2.2.5: khoảng 11 câu cực trị theo $m$ sang C2.2.6; 2 câu "góc $OAB$ nhọn" sang C2.2.4; 2 câu GTLN theo $m$ (T1120000006683, T112010402127) sang chương GTLN–GTNN.
-- C2.2.6 chỉ có 3 câu đề thi thật (xác suất hai trùng phương, cực tiểu $A(2;-2)$ của hàm bậc bốn, cực đại tại $0$ của $x^{12}+\dots$). Lý thuyết đã có luật hạng tử bậc thấp nhất (đã thử bằng máy với câu $x^{12}$: đúng 9 giá trị) nhưng chưa có ví dụ cho kiểu này.
-- C2.2.4: đề có 1 câu "$MA+MB$ nhỏ nhất với $M$ trên đường thẳng qua hai cực trị" (dùng điểm đối xứng, kiến thức lớp 10), lý thuyết chưa có.
+- (03/11 bổ sung) C2.2.6: đã thêm 2 ví dụ: ví dụ 3 (hai cực trị cùng nằm trong khoảng cho trước, kiểu đề T1120000006638 đang gắn ở C2.2.5) và ví dụ 4 (a: cực đại tại x=0 kiểu x^10; b: xác suất hai hàm trùng phương có cực trị chung); trạm soát 2 đổi thứ tự để ví dụ khó đứng sau. Cả 3 ví dụ mới đã tự thử bằng máy.
+- (03/11 bổ sung) C2.2.4: đã thêm ý đối xứng qua đường thẳng (MP+MQ nhỏ nhất, M thuộc AB) vào lý thuyết, bước phương pháp và ví dụ 3 (thử bằng máy: M(2;-1), a-b=3). Đề chỉ có 1 câu kiểu này nên ví dụ chỉ 1 bài.

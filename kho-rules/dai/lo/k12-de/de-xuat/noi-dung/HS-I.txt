@@ -86,7 +86,7 @@ Vậy $a=1$, $b=10$ và việc nâng mức loại bỏ từ $90\%$ lên $95\%$ t
 
 ##VD
 a) Trong $6$ phút đầu tiên kể từ khi xuất phát từ mặt đất, độ cao $h$ (mét) của một khinh khí cầu tại phút thứ $t$ được cho bởi $h(t)=at^3+bt^2+ct+d$ ($a\ne0$). Đồ thị của $h(t)$ như hình vẽ: đi qua gốc toạ độ, đạt cực đại tại điểm $A(2;20)$ và đạt cực tiểu tại điểm $B(4;16)$. Tính độ cao của khinh khí cầu ở phút thứ $6$.
-[[HINH {"loai":"dothi","x":[-1,7],"y":[-5,40],"f":[{"e":"x^3-9*x^2+24*x","x":[0,6],"ten":"h(t)"}],"diem":[{"x":2,"y":20,"nhan":"A"},{"x":4,"y":16,"nhan":"B"}]}]]
+[[HINH {"loai":"dothi","tyle":"tudo","x":[-1,7],"y":[-5,40],"f":[{"e":"x^3-9*x^2+24*x","x":[0,6],"ten":"h(t)"}],"diem":[{"x":2,"y":20,"nhan":"A"},{"x":4,"y":16,"nhan":"B"}]}]]
 b) Chi phí trung bình (triệu đồng/sản phẩm) khi một xưởng sản xuất $x$ trăm sản phẩm được mô hình hoá bởi $C(x)=\dfrac{x^2-mx+25}{x-m}$ với $x>m$, trong đó $m$ là tham số nguyên dương. Tính tổng các giá trị của $m$ để chi phí trung bình giảm liên tục khi số sản phẩm tăng từ $1000$ đến $1200$ (tức $x\in(10;12)$).
 
 Bài giải:
@@ -111,6 +111,9 @@ Vậy ở phút thứ $6$ khinh khí cầu ở độ cao $36$ m; có $4$ giá tr
 - **Khoảng tăng, giảm:** lập bảng xét dấu $f'$ trong miền thực tế của biến. Đề thường hỏi khoảng $(a;b)$ dài nhất mà đại lượng tăng (giảm) rồi tính một biểu thức như $a+b$ hoặc $a+2b$; hoặc hỏi "bắt đầu tăng từ lúc nào" (mút trái của khoảng tăng).
 - **Ngưỡng của biến:** giải bất phương trình $f(x)\ge m$ hoặc $f(x)\le M$ rồi lấy phần giao với miền thực tế. Với hàm bậc hai chỉ cần xét dấu tam thức, không cần đạo hàm; với phân thức có mẫu dương (như $\dfrac{k}{v}+av$, $v>0$) thì nhân hai vế với mẫu để đưa về tam thức.
 - **Kinh tế:** lợi nhuận $P(x)=R(x)-C(x)$ (doanh thu trừ chi phí). **Hoà vốn** là $P(x)=0$; **có lãi** là $P(x)>0$; **lợi nhuận tối thiểu** $m$ là $P(x)\ge m$.
+- **Hàm chứa căn:** $\sqrt{v}$ chỉ có nghĩa khi $v\ge0$ và $(\sqrt v)'=\dfrac{1}{2\sqrt v}$ với $v>0$, nên khoảng tăng (giảm) lấy trong $(0;+\infty)$ giao miền thực tế; ví dụ $N(x)=a\sqrt x-x$ có $N'(x)=\dfrac{a}{2\sqrt x}-1$.
+- **Thuế (giá) chia khúc:** hàm được cho bằng nhiều công thức tuỳ khoảng của $x$. Viết $P(x)$ riêng cho từng khúc, giải bất phương trình trong từng khúc rồi **giao với đúng khúc đó**; ngưỡng nhỏ nhất là nghiệm nguyên nhỏ nhất của khúc đầu tiên có nghiệm.
+- **Chi phí hàm mũ:** $C(x)=ae^{kx}$ có $C'(x)=ake^{kx}$. Với $P(x)=R(x)-C(x)$ mà bất phương trình $P(x)\ge m$ không giải được bằng biến đổi đại số: chứng minh $P'(x)>0$ trên miền (đồng biến) nên chỉ có một ngưỡng, rồi dùng máy tính tìm nghiệm của $P(x)=m$ hoặc tìm số nguyên $n$ để $P(n)<m\le P(n+1)$.
 
 ##PP Tìm khoảng tăng giảm và ngưỡng
 Khoảng tăng giảm: tính $f'$, giải $f'=0$, lập bảng xét dấu trong miền thực tế rồi đọc các khoảng; nếu đề hỏi biểu thức của $a$, $b$ thì tính sau khi có khoảng.
@@ -122,6 +125,8 @@ Lấy giao với miền thực tế của biến; kết luận bằng ngữ cả
 - Khoảng tăng giảm chỉ xét trong miền thực tế; không đưa các khoảng nằm ngoài miền vào đáp án.
 - Biến là số lượng thì kết quả phải làm tròn hợp lí ("ít nhất" thì làm tròn lên).
 - Hoà vốn là lợi nhuận bằng $0$, không phải doanh thu bằng $0$.
+- Hàm chia khúc: nghiệm tìm được ở khúc nào phải thuộc khúc đó (mức thuế đổi theo khúc nên cùng một $x$ chỉ dùng một công thức); không ghép nghiệm các khúc lại rồi lấy chung.
+- Hàm mũ: khi dùng máy tính tìm ngưỡng phải thử lại cả hai số nguyên liền kề (ví dụ $P(n)<m\le P(n+1)$), không làm tròn nghiệm thực rồi kết luận ngay.
 
 @vi_du:
 ##VD
@@ -144,6 +149,24 @@ b) Với $0<v\le120$: $C(v)\le420\Leftrightarrow18000+2v^2\le420v\Leftrightarrow
 Phương trình $v^2-210v+9000=0$ có $\Delta=44100-36000=8100$ nên có hai nghiệm $v=60$ và $v=150$. Do đó $60\le v\le150$.
 Kết hợp với miền thực tế $0<v\le120$ được $60\le v\le120$.
 Vậy xưởng có lãi khi sản xuất trong khoảng từ $30$ đến $50$ nghìn sản phẩm, lợi nhuận đạt từ $75$ triệu đồng trở lên khi sản xuất từ $35$ đến $45$ nghìn sản phẩm, tức là ít nhất $35$ nghìn sản phẩm; xe tải phải chạy với tốc độ trung bình thấp nhất là $60$ km/h.
+
+##VD
+a) Năng suất lúa (tạ/ha) khi bón $x$ kg phân đạm cho một sào thí nghiệm được mô hình hoá bởi $N(x)=18\sqrt x-x+40$ với $0\le x\le100$. Năng suất tăng khi $x\in(a;b)$. Tính $a+b$.
+b) Một doanh nghiệp bán mỗi sản phẩm với giá $5$ triệu đồng, chi phí biến đổi $2$ triệu đồng mỗi sản phẩm và chi phí cố định $300$ triệu đồng mỗi tháng. Thuế tính theo doanh thu với thuế suất giảm dần theo sản lượng: bán dưới $80$ sản phẩm thì thuế suất $10\%$; từ $80$ đến dưới $200$ sản phẩm thì $6\%$; từ $200$ sản phẩm trở lên thì $4\%$. Tìm số sản phẩm ít nhất (nguyên dương) trong một tháng để doanh nghiệp bắt đầu có lãi.
+c) Doanh thu tháng khi sản xuất và bán $x$ sản phẩm ($100\le x\le3000$, $x\in\mathbb N$) là $R(x)=150x$ (triệu đồng); tổng chi phí tăng theo hàm mũ $C(x)=60e^{0{,}002x}$ (triệu đồng). Để lợi nhuận tháng đạt tối thiểu $30$ tỉ đồng thì cần sản xuất ít nhất bao nhiêu sản phẩm?
+
+Bài giải:
+a) Hàm $N$ xác định trên $[0;100]$ và với $x\in(0;100]$: $N'(x)=\dfrac{9}{\sqrt x}-1$.
+$N'(x)>0\Leftrightarrow\sqrt x<9\Leftrightarrow x<81$. Vậy $N'>0$ trên $(0;81)$ và $N'<0$ trên $(81;100)$.
+Năng suất tăng khi $x\in(0;81)$ nên $a=0$, $b=81$ và $a+b=81$.
+b) Lợi nhuận mỗi tháng $P(x)=5x-\text{thuế}-2x-300$.
+Khúc $1\le x<80$: thuế $=10\%\cdot5x=0{,}5x$ nên $P(x)=2{,}5x-300$. $P(x)>0\Leftrightarrow x>120$, không có nghiệm trong khúc này (vì $x<80$).
+Khúc $80\le x<200$: thuế $=6\%\cdot5x=0{,}3x$ nên $P(x)=2{,}7x-300$. $P(x)>0\Leftrightarrow x>\dfrac{3000}{27}\approx111{,}1$, nên $x\ge112$ (thuộc khúc này). Kiểm tra: $P(111)=-0{,}3<0$ và $P(112)=2{,}4>0$.
+Vậy doanh nghiệp bắt đầu có lãi từ $112$ sản phẩm mỗi tháng.
+c) Lợi nhuận $P(x)=150x-60e^{0{,}002x}$ (triệu đồng), cần $P(x)\ge30000$ (vì $30$ tỉ đồng $=30000$ triệu).
+$P'(x)=150-0{,}12e^{0{,}002x}\ge150-0{,}12e^{6}>150-0{,}12\cdot404>0$ với $x\le3000$ (vì $e^{0{,}002x}\le e^6<404$), nên $P$ đồng biến trên $[100;3000]$ và chỉ có một ngưỡng.
+Bằng máy tính: $P(200)\approx29\,910{,}5<30000$ và $P(201)\approx30\,060{,}3\ge30000$.
+Vậy cần sản xuất ít nhất $201$ sản phẩm.
 
 === C4.1.4   (dạng "Giá trị ngưỡng dài hạn của mô hình (tiệm cận)" — mô tả: Mô hình bão hoà cho sẵn hoặc tự lập hàm nồng độ, chi phí trung bình; tìm tiệm cận ngang để kết luận giá trị dài hạn.)
 @ly_thuyet:
@@ -263,7 +286,8 @@ Vậy thể tích lớn nhất khi $x=\dfrac{16\sqrt2}{5}\approx4{,}53$ dm, và 
 - Trang sách có hai kích thước $x$ và $y$, lề trái và phải mỗi bên $a$, lề trên và dưới mỗi bên $b$: phần in có hai kích thước $x-2a$ và $y-2b$. Trang có diện tích $S$ cố định thì $y=\dfrac{S}{x}$.
 - Cắt sợi dây dài $L$ thành hai đoạn $x$ và $L-x$ ($0<x<L$), mỗi đoạn uốn thành một hình. Diện tích **theo chu vi $p$**: hình vuông $\dfrac{p^2}{16}$, hình tròn $\dfrac{p^2}{4\pi}$, tam giác đều $\dfrac{\sqrt3p^2}{36}$.
 - Hình chữ nhật nội tiếp nửa đường tròn bán kính $R$, đáy nằm trên đường kính: nửa đáy $x$ thì chiều cao $\sqrt{R^2-x^2}$; nếu chọn ẩn là góc $\alpha$ ($0<\alpha<\dfrac{\pi}{2}$) thì nửa đáy $R\cos\alpha$, chiều cao $R\sin\alpha$, diện tích $S=R^2\sin2\alpha$.
-- Đường thẳng đi qua điểm $M(a;b)$ ($a,b>0$) cắt $Ox$, $Oy$ tại $(m;0)$, $(0;n)$ thì $\dfrac{a}{m}+\dfrac{b}{n}=1$, và tam giác tạo thành có diện tích $\dfrac12mn$.
+- Đường thẳng đi qua điểm $M(a;b)$ ($a,b>0$) cắt $Ox$, $Oy$ tại $(m;0)$, $(0;n)$ thì $\dfrac{a}{m}+\dfrac{b}{n}=1$, và tam giác tạo thành có diện tích $\dfrac12mn$. Chọn ẩn $m$ (hoành độ giao điểm với $Ox$, $m>a$) thì $n=\dfrac{bm}{m-a}$ và $S(m)=\dfrac{bm^2}{2(m-a)}$.
+- Máng nước gập từ tấm tôn bề ngang $3a$: chia ba phần bằng nhau mỗi phần $a$, gập hai bên lên một góc $\theta$ ($0<\theta<\dfrac{\pi}{2}$) thì mặt cắt là hình thang cân có đáy nhỏ $a$, hai cạnh bên $a$, đáy lớn $a+2a\cos\theta$, đường cao $a\sin\theta$; diện tích $S=a^2\sin\theta\,(1+\cos\theta)$. Với ẩn là góc, $S'(\theta)$ chứa $\cos\theta$, $\cos2\theta$: đưa về phương trình bậc hai theo $\cos\theta$ rồi lấy nghiệm thuộc miền của $\theta$.
 
 ##PP Tối ưu diện tích, chu vi
 Chọn ẩn là một cạnh (hoặc một đoạn, một góc) và nêu điều kiện của ẩn.
@@ -300,6 +324,25 @@ $S'(x)$ là hàm bậc nhất có hệ số của $x$ dương nên đổi dấu 
 Khi đó đoạn uốn hình vuông dài $36-20{,}34\approx15{,}66$ và $S_{\min}=\dfrac{324\sqrt3}{4\sqrt3+9}\approx35{,}23$.
 Vậy đoạn uốn tam giác đều dài khoảng $20{,}34$ m, đoạn uốn hình vuông dài khoảng $15{,}66$ m; tổng diện tích nhỏ nhất khoảng $35{,}23\ \text{m}^2$.
 
+##VD
+a) Người ta giăng lưới nuôi cá ở một góc hồ: lưới căng theo một đường thẳng từ một điểm trên bờ ngang đến một điểm trên bờ dọc (hai bờ vuông góc) và phải đi qua cọc $A$ đã cắm sẵn, cách bờ ngang $3$ m và cách bờ dọc $4$ m. Tìm diện tích nhỏ nhất của phần mặt nước được giăng lưới bao quanh.
+b) Một tấm tôn hình chữ nhật rộng $60$ cm được chia chiều rộng thành ba phần bằng nhau, mỗi phần $20$ cm, rồi gập hai phần bên lên một góc $\theta$ ($0<\theta<\dfrac{\pi}{2}$) để làm máng thoát nước có mặt cắt ngang là hình thang cân. Tìm $\theta$ để diện tích mặt cắt ngang lớn nhất và tính diện tích đó.
+
+Bài giải:
+a) Đặt hệ trục $Oxy$ với $O$ là góc hồ, $Ox$ trùng bờ ngang, $Oy$ trùng bờ dọc; khi đó $A(4;3)$. Đường thẳng cắt $Ox$ tại $B(t;0)$ và $Oy$ tại $C(0;n)$ với $t>4$ (để $n>0$).
+Vì $A$ thuộc đường thẳng nên $\dfrac4t+\dfrac3n=1$, suy ra $n=\dfrac{3t}{t-4}$.
+Diện tích tam giác $OBC$ là $S(t)=\dfrac12t\cdot\dfrac{3t}{t-4}=\dfrac{3t^2}{2(t-4)}$ với $t>4$.
+$S'(t)=\dfrac{3}{2}\cdot\dfrac{2t(t-4)-t^2}{(t-4)^2}=\dfrac{3t(t-8)}{2(t-4)^2}$, nên $S'(t)=0\Leftrightarrow t=8$ (thuộc $(4;+\infty)$).
+$S'<0$ trên $(4;8)$ và $S'>0$ trên $(8;+\infty)$ nên $S$ nhỏ nhất tại $t=8$, khi đó $n=\dfrac{24}{4}=6$ và $S(8)=\dfrac{3\cdot64}{2\cdot4}=24$.
+Vậy diện tích nhỏ nhất là $24\ \text{m}^2$, khi lưới cắt bờ ngang ở cách góc hồ $8$ m và cắt bờ dọc ở cách góc hồ $6$ m.
+b) Mặt cắt là hình thang cân có đáy nhỏ $20$, hai cạnh bên $20$, đáy lớn $20+2\cdot20\cos\theta=20+40\cos\theta$ và đường cao $20\sin\theta$ (cm).
+Diện tích $S(\theta)=\dfrac12(20+20+40\cos\theta)\cdot20\sin\theta=400\sin\theta\,(1+\cos\theta)$ với $0<\theta<\dfrac{\pi}{2}$.
+$S'(\theta)=400\left[\cos\theta(1+\cos\theta)-\sin^2\theta\right]=400(\cos\theta+\cos2\theta)=400(2\cos^2\theta+\cos\theta-1)=400(2\cos\theta-1)(\cos\theta+1)$.
+Vì $\cos\theta+1>0$ nên $S'(\theta)=0\Leftrightarrow\cos\theta=\dfrac12\Leftrightarrow\theta=\dfrac{\pi}{3}$ (thuộc $\left(0;\dfrac{\pi}{2}\right)$).
+$S'>0$ trên $\left(0;\dfrac{\pi}{3}\right)$ (vì $\cos\theta>\dfrac12$) và $S'<0$ trên $\left(\dfrac{\pi}{3};\dfrac{\pi}{2}\right)$ nên $S$ lớn nhất tại $\theta=\dfrac{\pi}{3}$.
+$S\left(\dfrac{\pi}{3}\right)=400\cdot\dfrac{\sqrt3}{2}\cdot\dfrac32=300\sqrt3\approx519{,}6$.
+Vậy $\theta=\dfrac{\pi}{3}$ (tức $60^\circ$) thì mặt cắt máng có diện tích lớn nhất, bằng $300\sqrt3\approx519{,}6\ \text{cm}^2$.
+
 === C4.2.3   (dạng "Tối ưu trên parabol, đồ thị đặt trong hệ toạ độ" — mô tả: Hình (cổng, mái vòm, mặt cắt) mô hình bằng parabol/bậc ba trong hệ trục; lập hàm theo toạ độ điểm rồi tối ưu.)
 @ly_thuyet:
 ##TC Đặt hệ trục toạ độ cho cổng, mái vòm, sườn đồi
@@ -308,6 +351,7 @@ Vậy đoạn uốn tam giác đều dài khoảng $20{,}34$ m, đoạn uốn h�
 - Hàm bậc ba $y=ax^3+bx^2+cx+d$ (hoặc thiếu hệ số) đi qua các điểm cho trước: thay toạ độ vào để lập hệ phương trình tìm hệ số.
 - Hình chữ nhật nội tiếp parabol đối xứng qua $Oy$ có hai đỉnh $(\pm x;f(x))$ trên parabol và hai đỉnh $(\pm x;0)$ trên $Ox$: cạnh ngang $2x$, cạnh đứng $f(x)$, với $0<x<c$. Nếu hai đỉnh dưới nằm trên thanh ngang $y=k$ (hoặc trên sàn xe cao $k$) thì cạnh đứng là $f(x)-k$.
 - Đoạn thẳng đứng $MN$ (cột đỡ, dây treo) nối điểm $M$ trên đường cong $y=f(x)$ với điểm $N$ trên đường thẳng $y=g(x)$ có cùng hoành độ $x$: $MN=|g(x)-f(x)|$.
+- **Khoảng cách từ điểm trên đường cong:** điểm $M(x;f(x))$ đến đường thẳng $d:ax+by+c=0$ có $d(M,d)=\dfrac{|ax+bf(x)+c|}{\sqrt{a^2+b^2}}$ (kiến thức lớp 10); mẫu là hằng số nên chỉ cần tối ưu tử.
 
 ##PP Lập phương trình đường cong rồi tối ưu
 Đặt hệ trục toạ độ phù hợp và ghi lại toạ độ các điểm đề cho (đỉnh, chân, điểm thuộc đường cong).
@@ -320,6 +364,7 @@ Tìm giá trị lớn nhất (nhỏ nhất) bằng đạo hàm và bảng xét d
 - Điều kiện của $x$ lấy theo vị trí điểm trên đường cong (như $0<x<3$), không lấy nghiệm ngoài khoảng đó.
 - Đoạn $MN$ dài nhất không nằm ở điểm thấp nhất (cao nhất) của đường cong: phải tối ưu hiệu $g(x)-f(x)$, không tối ưu riêng $f$.
 - Đơn vị trên hai trục là mét hay $10$ m, $100$ m tuỳ đề: đổi về đơn vị thực tế khi trả lời.
+- Khoảng cách ngắn nhất từ điểm trên đường cong đến đường thẳng: dấu giá trị tuyệt đối ở tử phải được bỏ đúng (xét dấu $ax+bf(x)+c$ trên miền của $x$) trước khi đạo hàm; kết quả cuối còn phải chia cho $\sqrt{a^2+b^2}$.
 
 @vi_du:
 ##VD
@@ -347,12 +392,22 @@ $g'>0$ trên $(0;4)$ và $g'<0$ trên $(4;6)$ nên $g$ lớn nhất tại $x=4$,
 Khi đó $M(4;-4)$, $N(4;4)$. Đổi đơn vị: $8$ đơn vị ứng với $80$ m, $x=4$ ứng với $40$ m.
 Vậy cột đỡ dài nhất là $80$ m, đặt cách mép $O$ theo phương ngang $40$ m.
 
+##VD
+Bờ một hồ nước là đồ thị hàm số $y=f(x)=\dfrac13x^3-x^2+2x$ với $0\le x\le5$ (đơn vị trên mỗi trục là $100$ m). Trong công viên có một con đường thẳng là đường thẳng $d:y=2x-3$. Người ta muốn đặt một bến thuyền trên bờ hồ sao cho khoảng cách từ bến đến con đường ngắn nhất. Tìm hoành độ của bến thuyền và khoảng cách ngắn nhất đó (theo mét, làm tròn đến hàng đơn vị).
+
+Bài giải:
+Viết $d:2x-y-3=0$. Với điểm $M(x;f(x))$ trên bờ hồ, $d(M,d)=\dfrac{|2x-f(x)-3|}{\sqrt{2^2+1}}=\dfrac{|f(x)-2x+3|}{\sqrt5}$.
+Đặt $g(x)=f(x)-2x+3=\dfrac13x^3-x^2+3$. Ta có $g'(x)=x^2-2x=x(x-2)$ nên trên $[0;5]$: $g'<0$ trên $(0;2)$, $g'>0$ trên $(2;5)$, do đó $g$ nhỏ nhất tại $x=2$ với $g(2)=\dfrac83-4+3=\dfrac53$.
+Vì $g(0)=3$, $g(5)=\dfrac{125}{3}-25+3>0$ nên $g(x)>0$ với mọi $x\in[0;5]$, do đó $|g(x)|=g(x)$ và khoảng cách $\dfrac{g(x)}{\sqrt5}$ nhỏ nhất khi $g$ nhỏ nhất.
+Khoảng cách ngắn nhất là $\dfrac{5/3}{\sqrt5}=\dfrac{\sqrt5}{3}\approx0{,}745$ (đơn vị), tức khoảng $75$ m.
+Vậy bến thuyền đặt tại điểm có hoành độ $x=2$ (tức cách trục tung $200$ m), cách con đường khoảng $75$ m.
+
 ## GHI CHÚ CHO CEO
 - Đã đọc: hồ sơ nguồn `ho-so/hoso-pnl-3-5.md` (các bảng kiểu câu Bài 5, B4-D4, B3-D4), `hoso-nbv-3-4.md`, `hoso-tutam.md` (các dạng thực tế), và bản chữ PNL Bài 5 GV (`txt/pnl/BAI 5. UDDH GIAI BAI THUC TE/..._GV.txt`, phần lý thuyết tốc độ thay đổi và tối ưu); không trích lại Word gốc ba bộ sách vì hồ sơ và bản chữ đã có. Đối chiếu câu đề thi thật bằng `cau-dang.cjs HS C4.1.x/C4.2.x` (tổng 68, 15, 27, 29, 133, 58, 16 câu). Lấy gốc từ bản v1 đã soát `ra/J9.txt` (H7.1, H7.2) và `ra/J10.txt` (H7.8), viết lại theo dạng mới, đổi toàn bộ số liệu và tự thử lại bằng node (`soan/HS/thu-HS-I.mjs`, 20 phép kiểm, tất cả đạt, gồm quét lưới GTLN/GTNN, đối chiếu hình học trực tiếp cho khối chóp và đối chiếu vật lí cho bài nồng độ).
 - Trạm soát (Opus, 03/11) đã đối chiếu thêm Word gốc PNL Bài 5 Dạng 02 (tối ưu đơn giản) và Dạng 03 (tăng trưởng, tiệm cận) bản GV — trích ở `S/sach/hsI/`; bản chữ `txt/pnl/BAI 5` trạm soạn dùng thực ra chỉ có Dạng 01. Quy trình 3 bước của PNL khớp ##PP nhóm C4.2; công thức trong sách là ảnh WMF nên chỉ đối chiếu được kiểu bài và cách đặt ẩn. Từ Tâm không có bài riêng cho toán thực tế; NBV để ở tệp nén `17 CĐ TOÁN THỰC TẾ 12 2026.rar` (không giải nén).
 - C4.1.2: đã thêm ý b) ở ví dụ 2 cho kiểu đề "tham số $m$ nguyên để chi phí giảm liên tục" (1/15 câu đề). Câu đề gốc ($\dfrac{x^2-mx+9}{9x-9m}$, $x\in(50;53)$) cho đáp án $m\in\{50;53\}$, nhưng với $m=53$ chi phí âm khi $x$ gần $53$ (mẫu âm) — đề gốc bỏ qua miền thực tế; ví dụ đã đặt điều kiện $x>m$ để tránh ca này.
-- C4.1.3: một số câu đề thi dùng hàm mũ ($C(x)=100e^{0{,}001x}$, giải bất phương trình mũ bằng lôgarit — kiến thức lớp 11), hàm căn ($10\sqrt v-v$) hoặc thuế suất chia khúc; ví dụ chỉ dùng tam thức và phân thức đưa về tam thức. CEO quyết có cần thêm ví dụ mũ không.
+- C4.1.3 (bổ sung 03/11): đã thêm ví dụ 3 (a căn, b thuế chia khúc, c hàm mũ đồng biến + máy tính); các kiểu này đều có câu đề thật. Phần tìm ngưỡng của hàm mũ dùng máy tính vì không giải đại số được (đúng cách đề yêu cầu).
 - C4.1.4: đề thi có mô hình $e^{-kt}$ (quần thể tảo, nấm men), ví dụ 1 phần a) đã dùng $\lim e^{-kt}=0$; không dùng đạo hàm của hàm mũ trong ví dụ. Câu đề dựa trên phương trình vi phân $y'=-ky^2$ (một câu) để ngoài.
 - C4.2.1: bài khối chóp từ tấm bìa (đề gặp nhiều lần, cạnh 6 dm, đáp án 7,3) là ví dụ 2 với cạnh 8 dm; trạm soát dựng lại bằng toạ độ (E, F trên đoạn nối tâm với trung điểm cạnh, AE = BE, trung đoạn = BM) — khớp $V_{\max}=\dfrac{2048\sqrt{10}}{375}\approx17{,}27$ và khi thu nhỏ về cạnh 6 cho 7,29 ≈ 7,3 như đề. Đề đã viết lại để hiểu được không cần hình (đặt tên tam giác cắt bỏ, vị trí E, F, G, H). Bài tám phần tám khối cầu chỉ ở lý thuyết (1 câu đề).
-- C4.2.2: dạng "đường thẳng qua điểm cố định cắt hai trục/hai bờ, diện tích tam giác nhỏ nhất" (2 câu đề thi) mới có công thức trong lý thuyết, chưa có ví dụ. Ẩn là góc ($S=R^2\sin2\alpha$) chỉ có trong lý thuyết; ví dụ dùng ẩn độ dài.
-- C4.2.3: câu đề cổng parabol tính **chi phí theo diện tích phần parabol** (tích phân) và câu "khoảng cách từ điểm trên bờ hồ đến con đường" (công thức khoảng cách điểm–đường thẳng) chưa có ví dụ. Ví dụ 2 đổi sang kiểu "cột đỡ $MN$ thẳng đứng giữa đường cong và đường thẳng" (đề: cầu qua hẻm núi, dây đèn công viên).
+- C4.2.2 (bổ sung 03/11): thêm ví dụ 3 (a đường thẳng qua điểm cố định cắt hai bờ, diện tích nhỏ nhất; b máng nước ẩn là góc θ). Ẩn góc kiểu "hình chữ nhật nội tiếp nửa đường tròn theo α" (2 câu đề, hỏi khoảng tăng/giảm của S=R²|sin2α|) chỉ ở lý thuyết, không thêm ví dụ vì gần như lặp ý máng nước và quá lẻ.
+- C4.2.3 (bổ sung 03/11): thêm ví dụ 3 (khoảng cách từ điểm trên đường cong bậc ba đến đường thẳng) và ý khoảng cách điểm–đường thẳng vào lý thuyết. Khoảng cách từ điểm trên parabol đến một điểm/đường tròn cố định có câu đề nhưng thuộc C4.3.2, nên không đặt ở đây (trạm soát 2 đã gỡ). Câu chi phí theo diện tích phần parabol cần tích phân (ngoài chương) nên không bổ sung.

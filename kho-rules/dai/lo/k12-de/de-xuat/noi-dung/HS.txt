@@ -186,6 +186,8 @@ Vậy b) và d) đúng; a) và c) sai.
 - Nhìn từ trái sang phải: đồ thị đi lên là hàm đồng biến, đi xuống là hàm nghịch biến.
 - Điểm cao nhất hoặc thấp nhất trong lân cận (đỉnh, đáy) là chỗ đồ thị đổi chiều; hoành độ của chúng là các mốc.
 - Đồ thị có đường tiệm cận đứng: hai bên đường đó là hai khoảng khác nhau.
+- Đồ thị bậc ba có tối đa hai điểm đổi chiều (một đỉnh, một đáy); đồ thị bậc bốn có một hoặc ba điểm đổi chiều (ba điểm thì dạng chữ W hoặc chữ M), nên có thể có bốn khoảng đơn điệu.
+- Tại điểm mà đồ thị đang đi lên thì $f'>0$, đang đi xuống thì $f'<0$, tại đỉnh/đáy thì $f'=0$ (mệnh đề về dấu $f'$ trên một khoảng đúng khi cả khoảng đó đồ thị đi cùng một chiều).
 
 ##PP Đọc từ đồ thị của $f$
 Tìm các đỉnh, đáy của đồ thị và đọc hoành độ của chúng.
@@ -209,6 +211,23 @@ Với $x<0$ đồ thị đi lên; với $0<x<2$ đồ thị đi xuống; với $
 Vậy hàm số đồng biến trên $(-\infty;0)$ và $(2;+\infty)$, nghịch biến trên $(0;2)$.
 
 ##VD
+Cho hàm số bậc bốn $y=f(x)$ có đồ thị như hình vẽ. Mỗi mệnh đề sau đúng hay sai?
+a) Hàm số đồng biến trên khoảng $(-\infty;-1)$.
+b) Hàm số nghịch biến trên khoảng $(-1;1)$.
+c) $f'(x)>0$ với mọi $x\in(0;1)$.
+d) Hàm số có đúng hai khoảng nghịch biến.
+[[HINH {"loai":"dothi","x":[-2,2],"y":[-3,4],"f":[{"e":"-x^4+2*x^2+2","ten":"y=f(x)"}]}]]
+
+Bài giải:
+Đồ thị có hai đỉnh tại các điểm có hoành độ $x=-1$ và $x=1$ (tung độ $3$) và một đáy tại điểm có hoành độ $x=0$ (tung độ $2$).
+Đồ thị đi lên trên $(-\infty;-1)$ và $(0;1)$; đi xuống trên $(-1;0)$ và $(1;+\infty)$.
+a) Đúng: đồ thị đi lên trên $(-\infty;-1)$.
+b) Sai: trên $(-1;0)$ đồ thị đi xuống nhưng trên $(0;1)$ đồ thị đi lên, nên $(-1;1)$ không nằm trọn trong một khoảng nghịch biến.
+c) Đúng: trên $(0;1)$ đồ thị đi lên nên $f'(x)>0$.
+d) Đúng: hàm số nghịch biến trên đúng hai khoảng $(-1;0)$ và $(1;+\infty)$.
+Vậy a), c), d) đúng; b) sai.
+
+##VD
 Cho hàm số $y=f(x)$ có đồ thị như hình vẽ. Tìm các khoảng đồng biến, nghịch biến của hàm số và cho biết hàm số có nghịch biến trên $(0;2)$ hay không.
 [[HINH {"loai":"dothi","x":[-3,5],"y":[-6,6],"f":[{"e":"(x^2-2*x+2)/(x-1)","ten":"y=f(x)"}],"duong":[{"dung":1,"ten":"x=1"}]}]]
 
@@ -227,17 +246,21 @@ Vậy hàm số đồng biến trên $(-\infty;0)$ và $(2;+\infty)$, nghịch b
 - Đề cho công thức $f'(x)$ (như $f'(x)=-x+1$) thì xét dấu biểu thức đó như xét dấu một đa thức.
 - Điểm làm $f'(x)=0$ mà $f'$ không đổi dấu khi qua nó (đồ thị $f'$ tiếp xúc trục hoành) thì không làm $f$ đổi chiều.
 - Nếu $f'(x)<0$ với mọi $x$ thì $f$ nghịch biến trên $\mathbb{R}$, khi đó $f(u)<f(v)\Leftrightarrow u>v$ (đồng biến thì cùng chiều).
+- Cột kẻ đôi ($||$) trong bảng xét dấu $f'$ là điểm $f'$ không xác định. Nếu đề cho $f$ liên tục tại điểm đó thì $x_0$ vẫn nằm trong tập xác định: hai bên cùng dấu thì nối hai khoảng thành một, hai bên trái dấu thì $x_0$ là mốc đổi chiều. Nếu $f$ cũng không xác định tại $x_0$ thì phải tách thành hai khoảng.
 
 ##PP Đọc từ bảng xét dấu hoặc đồ thị của $f'$
 Đọc các hoành độ làm $f'=0$ (cột có số $0$ hoặc giao điểm với $Ox$).
 Xác định dấu của $f'$ trên mỗi khoảng (dấu trong bảng, hoặc đồ thị nằm trên/dưới $Ox$).
 Kết luận khoảng đồng biến ($f'>0$), nghịch biến ($f'<0$).
 Nếu dấu $f'$ không đổi qua một cột có số $0$, nối hai khoảng thành một.
+Cột kẻ đôi ($f'$ không xác định): xem $f$ có liên tục (có xác định) tại điểm đó không rồi mới nối hoặc tách khoảng.
+Bất phương trình dạng $f(u)<f(v)$ với $f$ đơn điệu trên $\mathbb{R}$: bỏ $f$, đổi chiều bất đẳng thức nếu $f$ nghịch biến, rồi giải bất phương trình theo $x$.
 Câu so sánh $f(a)$ với $f(b)$: xác định $a$, $b$ nằm trong khoảng đồng biến hay nghịch biến rồi so sánh.
 
 ##CY
 - Đồ thị chỉ tiếp xúc $Ox$ tại một điểm (không cắt) thì $f'$ không đổi dấu, đừng chia khoảng ở điểm đó.
 - Đề cho đồ thị $f'$ thì đồ thị nằm trên $Ox$ nghĩa là $f$ đồng biến, không phải $f$ nằm trên $Ox$.
+- Cột kẻ đôi chỉ nói $f'$ không xác định tại đó, chưa nói $f$ không xác định: đọc điều kiện "liên tục" hay tập xác định của đề trước khi nối hay tách khoảng.
 - Hình đi lên hay đi xuống của đồ thị $f'$ không nói gì về tính đơn điệu của $f$; chỉ dấu của $f'$ (trên/dưới $Ox$) mới quyết định.
 
 @vi_du:
@@ -265,11 +288,38 @@ Vậy hàm số nghịch biến trên $(-\infty;2)$ và đồng biến trên $(2
 b) Vì $-3<-1<2$ nên $-3$ và $-1$ cùng nằm trong khoảng nghịch biến $(-\infty;2)$.
 Vậy $f(-3)>f(-1)$.
 
+##VD
+Cho hàm số $y=f(x)$ có bảng xét dấu của đạo hàm như hình vẽ ($f'(x)$ không xác định tại $x=0$).
+a) Biết $f$ liên tục trên $\mathbb{R}$. Tìm các khoảng đồng biến, nghịch biến của hàm số.
+b) Biết $f$ xác định trên $\mathbb{R}\setminus\{0\}$. Hàm số có nghịch biến trên khoảng $(-1;2)$ không? Tìm các khoảng nghịch biến.
+[[HINH {"loai":"bbt","hang":"dau","x":["-∞","-1","0","2","+∞"],"dau":["+","-","-","+"],"kd":{"2":"||"},"ten_dao":"f'(x)"}]]
+
+Bài giải:
+Từ bảng: $f'(x)>0$ trên $(-\infty;-1)$ và $(2;+\infty)$; $f'(x)<0$ trên $(-1;0)$ và $(0;2)$; $f'$ không xác định tại $x=0$.
+a) Vì $f$ liên tục tại $x=0$ và $f'$ cùng dấu âm ở hai bên $x=0$, nên $f$ nghịch biến trên $(-1;2)$.
+Vậy $f$ đồng biến trên $(-\infty;-1)$ và $(2;+\infty)$, nghịch biến trên $(-1;2)$.
+b) Vì $f$ không xác định tại $x=0\in(-1;2)$ nên $f$ không nghịch biến trên $(-1;2)$.
+Vậy $f$ nghịch biến trên từng khoảng $(-1;0)$ và $(0;2)$.
+
+##VD
+Cho hàm số $y=f(x)$ có đạo hàm $f'(x)=-(x^2+x+1)$ với mọi $x\in\mathbb{R}$.
+a) Xét tính đơn điệu của hàm số trên $\mathbb{R}$.
+b) Có bao nhiêu số nguyên $x$ thỏa mãn $f(x^2-4x)>f(5-2x)$?
+
+Bài giải:
+a) Tam thức $x^2+x+1$ có $\Delta=1-4=-3<0$ và hệ số $x^2$ dương nên $x^2+x+1>0$ với mọi $x$.
+Do đó $f'(x)<0$ với mọi $x\in\mathbb{R}$, hàm số nghịch biến trên $\mathbb{R}$.
+b) Vì $f$ nghịch biến trên $\mathbb{R}$ nên $f(x^2-4x)>f(5-2x)\Leftrightarrow x^2-4x<5-2x\Leftrightarrow x^2-2x-5<0$.
+Bất phương trình này có nghiệm $1-\sqrt6<x<1+\sqrt6$, tức xấp xỉ $-1{,}45<x<3{,}45$.
+Các số nguyên thỏa mãn là $-1;0;1;2;3$.
+Vậy có $5$ số nguyên $x$.
+
 === C1.1.6
 @ly_thuyet:
 ##TC Dấu của tích nhân tử
 - Nhân tử $(x-a)^k$: nếu $k$ lẻ thì đổi dấu khi $x$ qua $a$; nếu $k$ chẵn thì không đổi dấu.
 - Nhân tử luôn dương (như $x^2+1$) có thể bỏ qua khi xét dấu; nhân tử $(a-x)$ nên đổi về $-(x-a)$.
+- Hàm $g(x)=k\,f(x)$ có $g'(x)=k\,f'(x)$: nếu $k>0$ thì $g$ cùng chiều biến thiên với $f$, nếu $k<0$ thì ngược chiều (đồng biến của $f$ thành nghịch biến của $g$).
 - Khoảng ngoài cùng bên phải có dấu của hệ số bậc cao nhất của $f'$ (sau khi đổi các nhân tử về dạng $(x-a)$).
 
 ##PP Xét dấu $f'$ cho bằng tích nhân tử
@@ -306,6 +356,14 @@ Qua $x=2$ (bội lẻ) dấu đổi nên $f'(x)>0$ trên $(0;2)$; qua $x=0$ (b�
 Do $f'\ge0$ trên $(-2;2)$ và chỉ bằng $0$ tại $x=0$ nên $f$ đồng biến trên $(-2;2)$.
 b) Vì $-2<-1<1<2$ nên $-1$ và $1$ cùng nằm trong khoảng đồng biến $(-2;2)$, do đó $f(-1)<f(1)$.
 Vậy $f$ đồng biến trên $(-2;2)$, nghịch biến trên $(-\infty;-2)$ và $(2;+\infty)$; và $f(-1)<f(1)$.
+
+##VD
+Cho hàm số $y=f(x)$ có đạo hàm $f'(x)=(x-2)(x-4)$ với mọi $x\in\mathbb{R}$. Biết hàm số $g(x)=-3f(x)$ đồng biến trên khoảng $(m;n)$ với $n-m$ lớn nhất. Tính $m\cdot n$.
+
+Bài giải:
+Ta có $g'(x)=-3f'(x)=-3(x-2)(x-4)$.
+$g$ đồng biến khi $g'(x)>0\Leftrightarrow(x-2)(x-4)<0\Leftrightarrow2<x<4$.
+Vậy $g$ đồng biến trên $(2;4)$, đây là khoảng đồng biến duy nhất nên $m=2$, $n=4$ và $m\cdot n=8$.
 
 === N C1.2
 @ly_thuyet:
@@ -378,6 +436,7 @@ Kết luận: hàm số ở câu a) có ba cực trị ($y_{\text{CĐ}}=3$ tại
 ##TC Hàm phân thức, căn, mũ, logarit, lượng giác, hàm có điểm không khả vi
 - Hàm $y=\dfrac{ax+b}{cx+d}$ $(c\ne0,\ ad-bc\ne0)$ có $y'=\dfrac{ad-bc}{(cx+d)^2}$ không đổi dấu nên không có cực trị.
 - Hàm $y=\dfrac{ax^2+bx+c}{dx+e}$ ($d\ne0$, tử và mẫu không có nghiệm chung) có $y'=\dfrac{P(x)}{(dx+e)^2}$ với $P$ là tam thức bậc hai, dấu của $y'$ là dấu của $P(x)$. Nếu $P(x)=0$ có hai nghiệm phân biệt thì hàm số có hai cực trị; nếu $P$ vô nghiệm hoặc có nghiệm kép thì không có cực trị. Có thể viết $y=\alpha x+\beta+\dfrac{\gamma}{x-x_1}$ để tính $y'=\alpha-\dfrac{\gamma}{(x-x_1)^2}$ nhanh hơn.
+- Khi đề hỏi hai điểm cực trị $A$, $B$ của đồ thị (hoặc $x_1,x_2$ của hàm phân thức): giải $y'=0$ (tử của $y'$ là tam thức bậc hai, có thể dùng Vi-ét cho $x_1+x_2$), thay vào $y$ để có $A,B$ rồi tính độ dài $AB$ hoặc trung điểm.
 - Hàm chứa căn, mũ, logarit, lượng giác: tìm tập xác định trước, chỉ nhận nghiệm của $y'=0$ thuộc tập xác định; với hàm mũ vì $e^{u}>0$ nên dấu của $y'$ là dấu của nhân tử còn lại.
 - Hàm $y=e^{u(x)}$ có $y'=u'e^{u}$ cùng dấu với $u'$; hàm $y=\log_a u(x)$ có $y'=\dfrac{u'}{u\ln a}$ (với $u>0$) cùng dấu với $u'$ khi $a>1$ và trái dấu với $u'$ khi $0<a<1$.
 - Hàm có điểm làm $y'$ không tồn tại (hàm chứa trị tuyệt đối, hàm chia khúc) nhưng hàm số xác định và liên tục tại đó vẫn có thể đạt cực trị: xét dấu $y'$ ở hai bên điểm đó.
@@ -412,17 +471,27 @@ Vậy hàm số ở câu a) có $y_{\text{CĐ}}=-5$ tại $x=-2$ và $y_{\text{C
 ##VD
 Tìm cực trị của mỗi hàm số sau:
 a) $y=x^2e^{-x}$
-b) $y=|x^2-4x+3|$
+b) $y=\log_{0{,}5}(-x^2+2x+15)$
 
 Bài giải:
 a) Hàm số xác định trên $\mathbb{R}$ và $y'=2xe^{-x}-x^2e^{-x}=x(2-x)e^{-x}$.
 Vì $e^{-x}>0$ nên $y'=0\Leftrightarrow x=0$ hoặc $x=2$; $y'<0$ trên $(-\infty;0)$, $y'>0$ trên $(0;2)$, $y'<0$ trên $(2;+\infty)$.
 Hàm số đạt cực tiểu tại $x=0$ với $y_{\text{CT}}=0$ và đạt cực đại tại $x=2$ với $y_{\text{CĐ}}=4e^{-2}=\dfrac{4}{e^2}$.
-b) Vì $x^2-4x+3=(x-1)(x-3)$ nên $y=x^2-4x+3$ khi $x\le1$ hoặc $x\ge3$, và $y=-x^2+4x-3$ khi $1<x<3$. Hàm số liên tục trên $\mathbb{R}$.
-Với $x<1$: $y'=2x-4<0$. Với $1<x<3$: $y'=-2x+4$, dương trên $(1;2)$ và âm trên $(2;3)$. Với $x>3$: $y'=2x-4>0$.
-Tại $x=1$ và $x=3$ đạo hàm hai bên khác nhau (chẳng hạn $y'$ bên trái $x=1$ bằng $-2$, bên phải bằng $2$) nên $y'$ không tồn tại, nhưng hàm số xác định tại đó và $y'$ đổi dấu.
-$y'$ đổi dấu từ $-$ sang $+$ qua $x=1$ và $x=3$: hàm số đạt cực tiểu tại $x=1$, $x=3$ với $y_{\text{CT}}=0$; $y'$ đổi dấu từ $+$ sang $-$ qua $x=2$: hàm số đạt cực đại tại $x=2$ với $y_{\text{CĐ}}=1$.
-Vậy hàm số ở câu a) có $y_{\text{CT}}=0$ tại $x=0$ và $y_{\text{CĐ}}=\dfrac{4}{e^2}$ tại $x=2$; hàm số ở câu b) có ba cực trị: cực tiểu $0$ tại $x=1$ và $x=3$, cực đại $1$ tại $x=2$.
+b) Điều kiện $-x^2+2x+15>0\Leftrightarrow -3<x<5$, tập xác định $D=(-3;5)$. Có $y'=\dfrac{-2x+2}{(-x^2+2x+15)\ln0{,}5}$ và $\ln0{,}5<0$ nên $y'$ trái dấu với $-2x+2$.
+$y'=0\Leftrightarrow x=1$; $y'<0$ trên $(-3;1)$ và $y'>0$ trên $(1;5)$ (cơ số $0{,}5<1$ nên $y$ ngược chiều với $u=-x^2+2x+15$).
+$y'$ đổi dấu từ $-$ sang $+$ qua $x=1$ nên hàm số đạt cực tiểu tại $x=1$ với $y_{\text{CT}}=\log_{0{,}5}16=-4$; hàm số không có cực đại.
+Vậy hàm số ở câu a) có $y_{\text{CT}}=0$ tại $x=0$ và $y_{\text{CĐ}}=\dfrac{4}{e^2}$ tại $x=2$; hàm số ở câu b) chỉ có một cực trị là cực tiểu $y_{\text{CT}}=-4$ tại $x=1$.
+
+##VD
+Cho hàm số $y=\dfrac{x^2-2x+5}{x-1}$ có đồ thị $(C)$. Biết $(C)$ có hai điểm cực trị $A$ và $B$. Tìm tổng hoành độ hai điểm cực trị, tính độ dài đoạn $AB$ và tìm toạ độ trung điểm $I$ của $AB$.
+
+Bài giải:
+Tập xác định $D=\mathbb{R}\setminus\{1\}$, $y'=\dfrac{(2x-2)(x-1)-(x^2-2x+5)}{(x-1)^2}=\dfrac{x^2-2x-3}{(x-1)^2}=\dfrac{(x-3)(x+1)}{(x-1)^2}$.
+$y'=0\Leftrightarrow x=-1$ hoặc $x=3$; $y'>0$ trên $(-\infty;-1)$ và $(3;+\infty)$, $y'<0$ trên $(-1;1)$ và $(1;3)$ nên $y'$ đổi dấu qua cả hai nghiệm.
+Hoành độ hai điểm cực trị là $x_1=-1$, $x_2=3$ nên tổng $x_1+x_2=2$ (cũng là tổng hai nghiệm của $x^2-2x-3=0$ theo Vi-ét).
+Có $y(-1)=\dfrac{1+2+5}{-2}=-4$ và $y(3)=\dfrac{9-6+5}{2}=4$ nên hai điểm cực trị của đồ thị là $A(-1;-4)$ và $B(3;4)$.
+$AB=\sqrt{(3+1)^2+(4+4)^2}=\sqrt{16+64}=4\sqrt5$ và trung điểm $I\left(\dfrac{-1+3}{2};\dfrac{-4+4}{2}\right)=(1;0)$.
+Vậy $x_1+x_2=2$, $AB=4\sqrt5$ và $I(1;0)$.
 
 === C1.2.3
 @ly_thuyet:
@@ -664,13 +733,13 @@ So sánh các giá trị (nên quy đồng khi có phân số) và kết luận.
 
 @vi_du:
 ##VD
-Tìm giá trị lớn nhất và giá trị nhỏ nhất của hàm số $y=\dfrac{x-2}{x+1}$ trên đoạn $[0;3]$.
+Tìm giá trị lớn nhất và giá trị nhỏ nhất của hàm số $y=\dfrac{x+3}{x-1}$ trên đoạn $[2;5]$.
 
 Bài giải:
-Mẫu có nghiệm $x=-1$ không thuộc $[0;3]$ nên hàm số liên tục trên đoạn này.
-$y'=\dfrac{1\cdot1-(-2)\cdot1}{(x+1)^2}=\dfrac{3}{(x+1)^2}>0$ nên hàm số đồng biến trên $[0;3]$.
-Do đó $\min y=y(0)=-2$ và $\max y=y(3)=\dfrac{1}{4}$.
-Vậy $\max_{[0;3]}y=\dfrac{1}{4}$ tại $x=3$ và $\min_{[0;3]}y=-2$ tại $x=0$.
+Mẫu có nghiệm $x=1$ không thuộc $[2;5]$ nên hàm số liên tục trên đoạn này.
+$y'=\dfrac{1\cdot(-1)-3\cdot1}{(x-1)^2}=\dfrac{-4}{(x-1)^2}<0$ nên hàm số nghịch biến trên $[2;5]$.
+Do đó $\max y=y(2)=5$ và $\min y=y(5)=2$.
+Vậy $\max_{[2;5]}y=5$ tại $x=2$ và $\min_{[2;5]}y=2$ tại $x=5$.
 
 ##VD
 Gọi $M$, $m$ lần lượt là giá trị lớn nhất, giá trị nhỏ nhất của hàm số $y=\dfrac{x^2-x+4}{x-1}$ trên đoạn $[2;6]$. Tính $5M-m$.
@@ -818,7 +887,7 @@ Vậy $M=3$, $m=-6$ và $M+m=-3$.
 Cho hàm số $y=f(x)$ có đồ thị như hình vẽ.
 a) Gọi $M$, $m$ lần lượt là giá trị lớn nhất, giá trị nhỏ nhất của $f(x)$ trên đoạn $[0;4]$. Tính $M-m$ và cho biết hàm số đạt GTLN tại điểm nào.
 b) Tìm giá trị lớn nhất, giá trị nhỏ nhất (nếu có) của $f(x)$ trên khoảng $(-1;3)$.
-[[HINH {"loai":"dothi","x":[-1,4],"y":[-6,18],"f":[{"e":"x^3-3*x^2","ten":"y=f(x)"}]}]]
+[[HINH {"loai":"dothi","x":[-1,4],"y":[-5,17],"f":[{"e":"x^3-3*x^2","ten":"y=f(x)"}]}]]
 
 Bài giải:
 a) Trên đoạn $[0;4]$, đồ thị đi từ đầu mút $(0;0)$ xuống đáy $(2;-4)$ rồi đi lên đến đầu mút $(4;16)$.
@@ -947,6 +1016,18 @@ TCĐ: $x=-\dfrac{d}{c}=3$. TCN: $y=\dfrac{a}{c}=\dfrac{-2}{-1}=2$.
 Kiểm tra: $\lim_{x\to3^+}\dfrac{-2x+5}{3-x}=+\infty$ (tử $\to-1$, mẫu $\to0^-$) và $\lim_{x\to\pm\infty}\dfrac{-2x+5}{3-x}=\lim\dfrac{-2+\dfrac{5}{x}}{\dfrac{3}{x}-1}=2$.
 Vậy a) TCĐ $x=-2$, TCN $y=-\dfrac{3}{2}$; b) TCĐ $x=3$, TCN $y=2$.
 
+##VD
+a) Tìm tiệm cận ngang của đồ thị hàm số $y=2+\dfrac{x-3}{2x+1}$.
+b) Cho hàm số $y=\dfrac{3x-1}{2-x}$. Gọi $x=a$ và $y=b$ lần lượt là tiệm cận đứng và tiệm cận ngang của đồ thị. Tính $a+3b$.
+c) Tìm các đường tiệm cận của đồ thị hàm số $y=3-\dfrac{4}{x+1}$.
+
+Bài giải:
+a) Gộp phân số: $y=\dfrac{2(2x+1)+x-3}{2x+1}=\dfrac{5x-1}{2x+1}$, có $a=5$, $b=-1$, $c=2$, $d=1$ và $ad-bc=5\cdot1-(-1)\cdot2=7\ne0$. TCN: $y=\dfrac{a}{c}=\dfrac{5}{2}$. (Cách khác: $\dfrac{x-3}{2x+1}\to\dfrac{1}{2}$ nên $y\to2+\dfrac{1}{2}=\dfrac{5}{2}$.)
+b) Hệ số của $x$ ở tử là $3$, ở mẫu là $-1$ (mẫu $2-x=-x+2$), nên TCN là $y=\dfrac{3}{-1}=-3$, tức $b=-3$. Mẫu bằng $0$ khi $x=2$, lúc đó tử bằng $3\cdot2-1=5\ne0$: TCĐ $x=2$, tức $a=2$.
+Vậy $a+3b=2+3\cdot(-3)=-7$.
+c) Viết $y=\dfrac{3(x+1)-4}{x+1}=\dfrac{3x-1}{x+1}$. Mẫu bằng $0$ tại $x=-1$, tử khác $0$ ($3\cdot(-1)-1=-4$): TCĐ $x=-1$. Khi $x\to\pm\infty$ thì $\dfrac{4}{x+1}\to0$ nên $y\to3$: TCN $y=3$.
+Vậy a) $y=\dfrac{5}{2}$; b) $a+3b=-7$; c) TCĐ $x=-1$, TCN $y=3$.
+
 === C1.4.2
 @ly_thuyet:
 ##TC Nghiệm chung của tử và mẫu
@@ -957,6 +1038,8 @@ Vậy a) TCĐ $x=-2$, TCN $y=-\dfrac{3}{2}$; b) TCĐ $x=3$, TCN $y=2$.
 - Khi $x\to+\infty$ (tức $x>0$): $\sqrt{x^2}=|x|=x$. Khi $x\to-\infty$ (tức $x<0$): $\sqrt{x^2}=|x|=-x$.
 - Hai giới hạn tại $+\infty$ và $-\infty$ có thể khác nhau nên đồ thị có thể có **hai** TCN.
 - Dạng $\dfrac{0}{0}$ hoặc $\infty-\infty$ với căn: nhân liên hợp, ví dụ $\sqrt{A}-B=\dfrac{A-B^2}{\sqrt{A}+B}$.
+- Căn ở mẫu (như $\dfrac{2x-4}{\sqrt{x^2-4}}$) hoặc hàm $\ln u(x)$: trước hết tìm tập xác định; chỉ xét giới hạn từ phía **thuộc** tập xác định. Điểm đầu mút $x_0$ của tập xác định là TCĐ khi giới hạn một phía tại $x_0$ bằng $\pm\infty$ (với $\ln u$: khi $u\to0^+$ hoặc $u\to+\infty$); giới hạn hữu hạn thì không.
+- Mẫu là đa thức $f(x)$ cho bằng đồ thị: đọc các nghiệm $x_1,x_2,\ldots$ từ giao điểm với $Ox$, viết $f(x)=a(x-x_1)(x-x_2)\ldots$, tìm $a$ từ một điểm đã biết, rồi rút gọn nhân tử chung với tử.
 
 ##PP Đếm tiệm cận của phân thức bậc cao, hàm chứa căn
 Phân tích tử và mẫu thành nhân tử (hoặc nhân liên hợp nếu có căn), tìm các điểm làm mẫu bằng $0$ hoặc làm căn không xác định.
@@ -995,6 +1078,32 @@ Khi $x\to+\infty$ (có $|x|=x$): $y=\dfrac{x+1}{x-1}=\dfrac{1+\dfrac{1}{x}}{1-\d
 Khi $x\to-\infty$ (có $|x|=-x$): $y=\dfrac{-x+1}{x-1}=\dfrac{-(x-1)}{x-1}=-1$ với mọi $x<0$, nên giới hạn bằng $-1$.
 Vậy a) có $1$ tiệm cận ($y=0$); b) có $3$ tiệm cận ($x=1$, $y=1$, $y=-1$).
 
+##VD
+a) Đồ thị hàm số $y=\dfrac{2x-4}{\sqrt{x^2-4}}$ có bao nhiêu đường tiệm cận (đứng và ngang)?
+b) Đồ thị hàm số $y=\ln\dfrac{(x-1)^2(x+3)}{(x-2)(x+1)}$ có bao nhiêu đường tiệm cận (đứng và ngang)?
+c) Cho hàm đa thức bậc ba $y=f(x)$ có đồ thị như hình vẽ (đồ thị cắt $Ox$ tại $x=-2$, $x=1$, $x=3$ và cắt $Oy$ tại điểm $(0;6)$). Tìm số đường tiệm cận (đứng và ngang) của đồ thị hàm số $y=\dfrac{(x-1)(x^2-4)}{f(x)}$.
+[[HINH {"loai":"dothi","x":[-2.6,3.7],"y":[-10,10],"f":[{"e":"(x+2)*(x-1)*(x-3)","ten":"y=f(x)","xt":3.3}],"diem":[{"x":-2,"y":0},{"x":1,"y":0},{"x":3,"y":0},{"x":0,"y":6}]}]]
+
+Bài giải:
+a) Tập xác định: $x^2-4>0\Leftrightarrow x<-2$ hoặc $x>2$.
+Tại $x=2$ (đầu mút bên phải): $y=\dfrac{2(x-2)}{\sqrt{(x-2)(x+2)}}=\dfrac{2\sqrt{x-2}}{\sqrt{x+2}}\to0$ khi $x\to2^+$, hữu hạn nên $x=2$ không là TCĐ.
+Tại $x=-2$ (đầu mút bên trái): khi $x\to(-2)^-$ tử $\to-8$, mẫu $\to0^+$ nên $y\to-\infty$: $x=-2$ là TCĐ.
+Khi $x\to+\infty$: $y=\dfrac{2-\dfrac{4}{x}}{\sqrt{1-\dfrac{4}{x^2}}}\to2$. Khi $x\to-\infty$ (có $\sqrt{x^2}=-x$): $y=\dfrac{2x-4}{-x\sqrt{1-\dfrac{4}{x^2}}}=\dfrac{-2+\dfrac{4}{x}}{\sqrt{1-\dfrac{4}{x^2}}}\to-2$. Có hai TCN: $y=2$ và $y=-2$.
+Vậy đồ thị có $1+2=3$ đường tiệm cận.
+b) Đặt $u=\dfrac{(x-1)^2(x+3)}{(x-2)(x+1)}$; xét dấu $u$ trên các khoảng chia bởi $-3,-1,1,2$: $u>0$ khi $-3<x<-1$ hoặc $x>2$, $u<0$ ở các khoảng còn lại (kể cả gần $x=1$). Tập xác định là $(-3;-1)\cup(2;+\infty)$.
+$x\to(-3)^+$: $u\to0^+$ nên $y\to-\infty$: $x=-3$ là TCĐ.
+$x\to(-1)^-$: $u\to+\infty$ nên $y\to+\infty$: $x=-1$ là TCĐ.
+$x\to2^+$: $u\to+\infty$ nên $y\to+\infty$: $x=2$ là TCĐ.
+$x=1$ làm $u=0$ nhưng $1$ không thuộc tập xác định (xung quanh $1$ có $u<0$) nên không phải TCĐ.
+$x\to+\infty$: $u\sim x\to+\infty$ nên $y\to+\infty$, không có TCN; hàm không xác định khi $x\to-\infty$.
+Vậy đồ thị có $3$ đường tiệm cận (đều là TCĐ).
+c) Từ đồ thị, $f$ có ba nghiệm $-2,1,3$ nên $f(x)=a(x+2)(x-1)(x-3)$. Vì $f(0)=6$ nên $a\cdot2\cdot(-1)\cdot(-3)=6$, suy ra $a=1$.
+Tử $(x-1)(x^2-4)=(x-1)(x-2)(x+2)$. Do đó $y=\dfrac{(x-1)(x-2)(x+2)}{(x+2)(x-1)(x-3)}=\dfrac{x-2}{x-3}$ với $x\ne-2$, $x\ne1$.
+Tại $x=3$: tử $\to1\ne0$, mẫu $\to0$ nên $x=3$ là TCĐ. Tại $x=1$ giới hạn bằng $\dfrac{1}{2}$, tại $x=-2$ giới hạn bằng $\dfrac{4}{5}$ (đều hữu hạn) nên không là TCĐ.
+Khi $x\to\pm\infty$: $y\to1$ nên $y=1$ là TCN.
+Vậy đồ thị có $1+1=2$ đường tiệm cận.
+Kết quả: a) $3$; b) $3$; c) $2$.
+
 === C1.4.3
 @ly_thuyet:
 ##TC Tiệm cận xiên
@@ -1002,6 +1111,7 @@ Vậy a) có $1$ tiệm cận ($y=0$); b) có $3$ tiệm cận ($x=1$, $y=1$, $y
 - Hàm phân thức $y=\dfrac{ax^2+bx+c}{mx+n}$ ($a\ne0$, $m\ne0$): chia tử cho mẫu được $y=px+q+\dfrac{r}{mx+n}$; nếu số dư $r\ne0$ thì TCX là $y=px+q$ và TCĐ là $x=-\dfrac{n}{m}$. Nếu $r=0$ thì $y=px+q$ với $x\ne-\dfrac{n}{m}$ (đường thẳng khuyết một điểm): không có TCĐ, theo định nghĩa $y=px+q$ vẫn là TCX.
 - Hàm chứa căn: $a=\lim_{x\to\pm\infty}\dfrac{f(x)}{x}$ (hữu hạn, khác $0$), $b=\lim_{x\to\pm\infty}[f(x)-ax]$ (hữu hạn); TCX là $y=ax+b$.
 - Nếu $a=0$ thì đường $y=b$ là tiệm cận ngang, không phải tiệm cận xiên.
+- Dùng phương trình TCX $y=ax+b$ ($a\ne0$, $b\ne0$): cắt $Ox$ tại $A\left(-\dfrac{b}{a};0\right)$, cắt $Oy$ tại $B(0;b)$, diện tích $\triangle OAB=\dfrac{b^2}{2|a|}$; đi qua điểm $M(x_M;y_M)$ khi $y_M=ax_M+b$. Với hệ số chứa tham số $m$: chia đa thức theo $x$, đọc $a,b$ theo $m$ (kiểm tra số dư $\ne0$), rồi áp điều kiện đề cho.
 
 ##PP Tìm tiệm cận xiên
 Hàm phân thức: chia đa thức (hoặc sơ đồ Hoócne khi mẫu dạng $x-x_0$) để được $y=px+q+\dfrac{r}{mx+n}$, kiểm tra $r\ne0$ rồi đọc TCX $y=px+q$.
@@ -1041,6 +1151,22 @@ $b=\lim(y-3x)=\lim\left(\sqrt{x^2-2x}-x\right)=\lim\dfrac{-2x}{\sqrt{x^2-2x}+x}=
 Khi $x\to-\infty$: $\sqrt{x^2-2x}=-x\sqrt{1-\dfrac{2}{x}}$ nên $a=\lim\left(-\sqrt{1-\dfrac{2}{x}}+2\right)=1$.
 $b=\lim(y-x)=\lim\left(\sqrt{x^2-2x}+x\right)=\lim\dfrac{-2x}{\sqrt{x^2-2x}-x}=\lim\dfrac{-2x}{-x\left(\sqrt{1-\dfrac{2}{x}}+1\right)}=\lim\dfrac{2}{\sqrt{1-\dfrac{2}{x}}+1}=1$. TCX khi $x\to-\infty$ là $y=x+1$.
 Vậy a) $a+b=2$; b) đồ thị có hai tiệm cận xiên $y=3x-1$ và $y=x+1$.
+
+##VD
+a) Tiệm cận xiên của đồ thị hàm số $y=\dfrac{3x^2+5x-1}{x+2}$ cắt hai trục toạ độ $Ox$, $Oy$ tại $A$, $B$. Tính diện tích tam giác $OAB$.
+b) Tìm tiệm cận xiên của đồ thị hàm số $y=\dfrac{x^3-x^2+3}{x^2+x}$.
+c) Tìm $m$ để tiệm cận xiên của đồ thị hàm số $y=\dfrac{x^2+mx+1}{x-1}$ đi qua điểm $M(3;5)$.
+
+Bài giải:
+a) Chia tử cho mẫu: $3x^2+5x-1=(x+2)(3x-1)+1$ nên $y=3x-1+\dfrac{1}{x+2}$; số dư $1\ne0$, TCX là $y=3x-1$.
+Giao với $Ox$: $3x-1=0\Rightarrow A\left(\dfrac{1}{3};0\right)$. Giao với $Oy$: $B(0;-1)$.
+Diện tích $S_{OAB}=\dfrac{1}{2}\cdot OA\cdot OB=\dfrac{1}{2}\cdot\dfrac{1}{3}\cdot1=\dfrac{1}{6}$.
+b) Chia tử cho mẫu: $(x^2+x)(x-2)=x^3-x^2-2x$ nên $x^3-x^2+3=(x^2+x)(x-2)+2x+3$, do đó $y=x-2+\dfrac{2x+3}{x^2+x}$.
+Bậc tử của phân số còn lại nhỏ hơn bậc mẫu nên $\dfrac{2x+3}{x^2+x}\to0$ khi $x\to\pm\infty$. TCX là $y=x-2$.
+c) Chia tử cho mẫu: $x^2+mx+1=(x-1)(x+m+1)+m+2$, nên $y=x+m+1+\dfrac{m+2}{x-1}$.
+Với $m\ne-2$ (số dư khác $0$), TCX là $y=x+m+1$ (với $m=-2$ hàm thành $y=x-1$ khuyết điểm $x=1$ — không có TCĐ nhưng $y=x-1$ vẫn là TCX theo quy ước).
+$M(3;5)$ thuộc TCX khi $5=3+m+1$, suy ra $m=1$ (thoả $m\ne-2$).
+Vậy a) $\dfrac{1}{6}$; b) $y=x-2$; c) $m=1$.
 
 === C1.4.4
 @ly_thuyet:
@@ -1124,6 +1250,7 @@ Vậy tổng số tiệm cận đứng và tiệm cận ngang là $1+2=3$.
 - Một trong các giới hạn $\lim_{x\to x_0^\pm}f(x)=\pm\infty$ thì $x=x_0$ là TCĐ; giới hạn hữu hạn thì không.
 - $\lim_{x\to\pm\infty}[f(x)-(ax+b)]=0$ với $a\ne0$ thì $y=ax+b$ là TCX.
 - Hàm $g(x)=kf(x)+m$ ($k\ne0$): $\lim f=L$ thì $\lim g=kL+m$, nên TCN $y=L$ của $f$ chuyển thành TCN $y=kL+m$ của $g$; TCĐ giữ nguyên vì $kf+m$ vẫn tiến tới $\pm\infty$.
+- Hàm $y=\log_ax$ ($a>0$, $a\ne1$) có $\lim_{x\to0^+}\log_ax=\mp\infty$ nên trục $Oy$ ($x=0$) là TCĐ; hàm đa thức, $y=\sin x$, $y=\cos x$, $y=a^x$ liên tục trên $\mathbb{R}$ nên không có giới hạn $\pm\infty$ tại điểm hữu hạn, không có TCĐ.
 
 ##PP Tìm tiệm cận từ các giới hạn cho trước
 Phân loại từng giới hạn: tại $\pm\infty$ hay tại điểm hữu hạn; kết quả hữu hạn, $\pm\infty$, hay hiệu $f(x)-(ax+b)\to0$.
@@ -1134,6 +1261,7 @@ Nếu đề hỏi về hàm $kf(x)+m$ thì tính giới hạn của hàm mới t
 - Chỉ cần một phía bằng $\pm\infty$ là có TCĐ, dù phía còn lại có giới hạn hữu hạn.
 - $\lim_{x\to x_0^-}f(x)=\lim_{x\to x_0^+}f(x)=L$ hữu hạn thì $x=x_0$ **không** là TCĐ, dù $f$ có thể không xác định tại $x_0$.
 - Đọc đúng dấu khi chuyển $\lim[f(x)-2x+5]=0$ thành $f(x)-(2x-5)$: tiệm cận là $y=2x-5$, không phải $y=2x+5$.
+- Giữ đúng loại đường và đúng số: giới hạn tại $x_0$ bằng $\pm\infty$ cho TCĐ $x=x_0$; giới hạn tại $\pm\infty$ bằng $y_0$ cho TCN $y=y_0$. Không đổi dấu ($x=-x_0$, $y=-y_0$ là sai) và không đổi $x$ thành $y$.
 
 @vi_du:
 ##VD
@@ -1156,6 +1284,22 @@ Vì $\lim_{x\to4^+}f(x)=-\infty$ và hệ số $3>0$ nên $\lim_{x\to4^+}h(x)=-\
 b) Ta có $g(x)-2x+5=g(x)-(2x-5)$, và $\lim_{x\to+\infty}[g(x)-(2x-5)]=0$ nên $y=2x-5$ là TCX.
 Vì $\lim_{x\to1^+}g(x)=+\infty$ nên $x=1$ là TCĐ.
 Vậy a) đồ thị $y=h(x)$ có TCN $y=4$ và TCĐ $x=4$; b) có TCX $y=2x-5$ và TCĐ $x=1$.
+
+##VD
+a) Trong các hàm số $y=x^3$, $y=\cos x$, $y=\ln x$, $y=3^x$, hàm số nào có đồ thị nhận trục $Oy$ làm tiệm cận đứng?
+b) Cho hàm số $y=f(x)$ có $\lim_{x\to+\infty}f(x)=-1$ và $\lim_{x\to-\infty}f(x)=+\infty$. Đồ thị hàm số có bao nhiêu tiệm cận ngang? Viết phương trình.
+c) Mỗi mệnh đề sau đúng hay sai? Giải thích.
+(i) Nếu $\lim_{x\to3^+}f(x)=+\infty$ thì đường thẳng $y=3$ là tiệm cận ngang của đồ thị $y=f(x)$.
+(ii) Nếu $\lim_{x\to+\infty}f(x)=-4$ thì đường thẳng $y=-4$ là tiệm cận ngang của đồ thị $y=f(x)$.
+
+Bài giải:
+a) Trục $Oy$ có phương trình $x=0$. Chỉ $y=\ln x$ có $\lim_{x\to0^+}\ln x=-\infty$ nên $x=0$ là TCĐ. Các hàm $y=x^3$, $y=\cos x$, $y=3^x$ đều có giới hạn hữu hạn tại $x=0$ (lần lượt $0$, $1$, $1$) nên không có TCĐ $x=0$.
+Vậy hàm số cần tìm là $y=\ln x$.
+b) Khi $x\to+\infty$: $f(x)\to-1$ nên $y=-1$ là TCN. Khi $x\to-\infty$: $f(x)\to+\infty$ (không hữu hạn) nên phía này không cho TCN.
+Vậy đồ thị có đúng một TCN là $y=-1$.
+c) (i) Sai: giới hạn tại điểm hữu hạn $3$ bằng $+\infty$ cho TCĐ $x=3$, không phải TCN $y=3$.
+(ii) Đúng: giới hạn tại $+\infty$ bằng số hữu hạn $-4$ nên $y=-4$ là TCN (giữ nguyên số, kể cả dấu).
+Vậy a) $y=\ln x$; b) một TCN $y=-1$; c) (i) sai, (ii) đúng.
 
 === N C1.5
 @ly_thuyet:
@@ -1183,7 +1327,7 @@ Ghi vào bảng: dòng $x$, dòng $y'$, dòng $y$ với mũi tên đi lên ($y'>
 - **Định lý:** $f'(x)>0$ với mọi $x\in(a;b)$ thì $f$ đồng biến trên $(a;b)$; $f'(x)<0$ thì nghịch biến. Vẫn đúng nếu $f'(x)\ge0$ và $f'(x)=0$ chỉ tại hữu hạn điểm.
 - Chiều ngược lại **không** đúng: $f$ đồng biến trên $(a;b)$ chỉ suy ra $f'(x)\ge0$, chưa suy ra $f'(x)>0$.
 - **Cực trị, điều kiện cần:** $f$ có đạo hàm tại $x_0$ và đạt cực trị tại $x_0$ thì $f'(x_0)=0$. Chiều ngược lại sai.
-- **Cực trị, điều kiện đủ:** $f'(x_0)=0$ và $f'$ đổi dấu qua $x_0$ (từ $-$ sang $+$: cực tiểu; từ $+$ sang $-$: cực đại); hoặc $f'(x_0)=0$ và $f''(x_0)>0$ (cực tiểu), $f''(x_0)<0$ (cực đại).
+- **Cực trị, điều kiện đủ:** $f'(x_0)=0$ và $f'$ đổi dấu qua $x_0$ (từ $-$ sang $+$: cực tiểu; từ $+$ sang $-$: cực đại). Nếu $f'(x)>0$ (hoặc $f'(x)<0$) với mọi $x$ trên một khoảng thì $f$ không có cực trị trên khoảng đó.
 - **GTLN, GTNN:** $M=\max_Df$ khi $f(x)\le M$ với mọi $x\in D$ **và** tồn tại $x_0\in D$ để $f(x_0)=M$; thiếu một trong hai điều kiện là chưa đủ.
 
 ##PP Xét tính đúng sai của một mệnh đề lý thuyết
@@ -1216,15 +1360,29 @@ Vậy các mệnh đề a) và d) đúng; b) và c) sai.
 Mỗi mệnh đề sau đúng hay sai? Giải thích.
 a) Nếu hàm số $y=f(x)$ có đạo hàm tại $x_0$ và đạt cực trị tại $x_0$ thì $f'(x_0)=0$.
 b) Nếu $f'(x_0)=0$ thì hàm số $y=f(x)$ đạt cực trị tại $x_0$.
-c) Nếu $f'(x_0)=0$ và $f''(x_0)>0$ thì hàm số đạt cực tiểu tại $x_0$.
+c) Nếu $f'(x_0)=0$ và $f'(x)$ đổi dấu từ âm sang dương khi $x$ đi qua $x_0$ thì hàm số đạt cực tiểu tại $x_0$.
 d) Nếu $f(x)\ge m$ với mọi $x\in D$ thì $m$ là giá trị nhỏ nhất của $f$ trên $D$.
 
 Bài giải:
 a) Đúng: đây là điều kiện cần của cực trị (với hàm có đạo hàm tại $x_0$).
 b) Sai: $y=x^3$ có $y'(0)=0$ nhưng $y'=3x^2\ge0$ không đổi dấu nên không có cực trị tại $0$.
-c) Đúng: đây là điều kiện đủ của cực tiểu qua đạo hàm cấp hai.
+c) Đúng: đây là điều kiện đủ của cực tiểu (dấu của $f'$ đổi từ $-$ sang $+$).
 d) Sai: còn thiếu điều kiện tồn tại $x_0\in D$ để $f(x_0)=m$. Ví dụ $f(x)=x^2\ge-1$ với mọi $x\in\mathbb{R}$ nhưng $-1$ không phải GTNN, vì GTNN của $f$ bằng $0$.
 Vậy các mệnh đề a) và c) đúng; b) và d) sai.
+
+##VD
+Mỗi mệnh đề sau đúng hay sai? Giải thích.
+a) Hàm số $y=f(x)$ gọi là nghịch biến trên $K$ nếu với mọi $x_1,x_2\in K$ mà $x_1<x_2$ thì $f(x_1)<f(x_2)$.
+b) Nếu hàm số $y=f(x)$ liên tục trên đoạn $[0;4]$, thoả mãn $f(x)\le5$ với mọi $x\in[0;4]$ và $f(1)=5$ thì giá trị lớn nhất của $f$ trên $[0;4]$ bằng $5$.
+c) Nếu $f'(x)<0$ với mọi $x\in(1;4)$ thì hàm số $y=f(x)$ không có cực trị trên khoảng $(1;4)$.
+d) Nếu hàm số $y=f(x)$ đạt cực đại tại $x_0$ thì $f(x_0)$ là giá trị lớn nhất của hàm số trên tập xác định.
+
+Bài giải:
+a) Sai: điều kiện $x_1<x_2\Rightarrow f(x_1)<f(x_2)$ là định nghĩa của hàm **đồng biến**; nghịch biến là $f(x_1)>f(x_2)$.
+b) Đúng: có $f(x)\le5$ với mọi $x\in[0;4]$ và đạt dấu bằng tại $x=1\in[0;4]$, đủ cả hai điều kiện của giá trị lớn nhất.
+c) Đúng: $f'(x)<0$ với mọi $x\in(1;4)$ thì $f'$ không bằng $0$ tại điểm nào của khoảng, nên không có điểm nào thoả điều kiện cần của cực trị.
+d) Sai: cực đại chỉ là giá trị lớn nhất trong một lân cận. Ví dụ $y=x^3-3x$ đạt cực đại tại $x=-1$ với $y_{\text{CĐ}}=2$, nhưng $f(2)=2$ còn $f(3)=18>2$ (và $f(x)\to+\infty$), nên hàm không có giá trị lớn nhất.
+Vậy các mệnh đề b) và c) đúng; a) và d) sai.
 
 === C1.5.2
 @ly_thuyet:
@@ -1294,6 +1452,7 @@ Vậy đồ thị đi từ trên cao bên trái xuống thấp bên phải, ti�
 Loại các phương án khác LOẠI hàm với hình.
 Trong các phương án còn lại, loại theo dấu của hệ số cao nhất hoặc vị trí tiệm cận.
 Thử toạ độ giao điểm với trục hoặc điểm cực trị để chọn phương án đúng.
+Đề cho công thức và bốn hình, hỏi hình nào: làm ngược lại, từ công thức suy dấu của hệ số cao nhất, số cực trị, tiệm cận, giao với $Oy$ rồi loại hình không khớp.
 
 ##CY
 - Một đặc điểm thường chỉ loại được vài phương án; phải kết hợp nhiều đặc điểm và thử điểm.
@@ -1456,6 +1615,7 @@ Vậy chọn d) $y=\dfrac{x^2-3x+6}{x-1}$.
 Đồ thị đối xứng qua $Oy$, không có tiệm cận, hai đầu cùng phía: nhận ra hàm trùng phương.
 Dấu của $a$ cho bởi hai đầu; số cực trị cho dấu của $ab$ nên loại phương án sai dấu $b$.
 Dùng giao với $Oy$ để loại phương án sai hệ số tự do $c$, rồi kiểm tra hoành độ và giá trị cực trị.
+Đề cho công thức, chọn một trong bốn hình: xét dấu $a$ (hai đầu hướng lên hay xuống), dấu $ab$ (một hay ba cực trị), rồi giao với $Oy$ để loại hình; hình còn lại thử lại bằng cực trị.
 
 ##CY
 - Hàm trùng phương luôn có cực trị tại $x=0$ (cực trị này nằm trên trục tung); số cực trị là $1$ hoặc $3$, không bao giờ là $2$.
@@ -1492,6 +1652,28 @@ Còn a) và c) cùng cực trị tại $x=0,\ x=\pm1$. Giá trị cực tiểu t
 Kiểm tra a): $y'=-4x^3+4x=0$ tại $x=0,\ x=\pm1$; $y(\pm1)=-1+2+3=4$, khớp với bảng.
 Vậy chọn a) $y=-x^4+2x^2+3$.
 
+##VD
+Đồ thị hàm số $y=-x^4+2x^2-1$ có dạng như hình nào dưới đây?
+Hình (I):
+[[HINH {"loai":"dothi","x":[-1.6,1.6],"y":[-3,3],"f":[{"e":"x^4-2*x^2-1"}]}]]
+Hình (II):
+[[HINH {"loai":"dothi","x":[-1.6,1.6],"y":[-3,3],"f":[{"e":"-x^4-2*x^2-1"}]}]]
+Hình (III):
+[[HINH {"loai":"dothi","x":[-1.6,1.6],"y":[-3,3],"f":[{"e":"-x^4+2*x^2-1"}]}]]
+Hình (IV):
+[[HINH {"loai":"dothi","x":[-1.6,1.6],"y":[-3,3],"f":[{"e":"-x^4+2*x^2+1"}]}]]
+a) Hình (I)
+b) Hình (II)
+c) Hình (III)
+d) Hình (IV)
+
+Bài giải:
+Hàm số có $a=-1<0$ nên hai đầu đồ thị cùng đi xuống: loại hình (I) (hai đầu đi lên).
+Có $ab=(-1)\cdot2<0$ nên đồ thị có ba cực trị: loại hình (II) (chỉ có một cực trị).
+Còn hình (III) và hình (IV). Vì $y(0)=-1$ nên đồ thị cắt $Oy$ tại $(0;-1)$: loại hình (IV) (cắt $Oy$ tại $(0;1)$).
+Kiểm tra hình (III): $y'=-4x^3+4x=0$ tại $x=0,\ x=\pm1$; $y(0)=-1$ (cực tiểu), $y(\pm1)=0$ (hai cực đại chạm trục $Ox$), khớp với hình.
+Vậy chọn c) hình (III).
+
 === C2.1.5
 @ly_thuyet:
 ##TC Dấu hiệu nhận ra LOẠI hàm
@@ -1500,6 +1682,7 @@ Vậy chọn a) $y=-x^4+2x^2+3$.
 - Đồ thị không có tiệm cận, đối xứng qua $Oy$: trùng phương; không có tiệm cận, hai đầu ngược phía: bậc ba.
 - Bảng biến thiên: không có cột kẻ đôi thì là đa thức; có cột kẻ đôi và hai đầu hàng $y$ là cùng một số thì là bậc nhất trên bậc nhất; có cột kẻ đôi và hai đầu hàng $y$ là vô cực thì là bậc hai trên bậc nhất.
 - Công thức: bậc nhất trên bậc nhất có tử và mẫu cùng bậc một; bậc hai trên bậc nhất có tử bậc hai, mẫu bậc một; còn lại là đa thức bậc ba hoặc bậc bốn.
+- Phương án nhiễu hay gặp ngoài bốn loại trên: parabol $y=ax^2+bx+c$ (không tiệm cận, một cực trị, không phải hàm bậc ba) và $y=x+\dfrac1x$ (bậc hai trên bậc nhất, tiệm cận đứng $x=0$, tiệm cận xiên $y=x$).
 
 ##PP Nhận LOẠI hàm rồi chọn
 Xác định loại hàm của hình hoặc bảng nhờ có tiệm cận hay không, tiệm cận xiên hay ngang, số cực trị.
@@ -1540,6 +1723,22 @@ Bảng không có cột kẻ đôi nên hàm số xác định trên $\mathbb{R}
 Hàm số có hai cực trị, khi $x\to-\infty$ thì $y\to-\infty$, khi $x\to+\infty$ thì $y\to+\infty$ (hai đầu ngược phía): loại c) (hàm trùng phương có hai đầu cùng phía và có $1$ hoặc $3$ cực trị).
 Chỉ còn b) là hàm bậc ba; kiểm tra: $y'=3x^2-6x=0$ tại $x=0$ và $x=2$; $y(0)=2$, $y(2)=8-12+2=-2$, khớp với bảng.
 Vậy chọn b) $y=x^3-3x^2+2$.
+
+##VD
+Đồ thị trong hình bên là đồ thị của hàm số nào dưới đây?
+[[HINH {"loai":"dothi","x":[-4,6],"y":[-6,8],"f":[{"e":"(x+3)/(x-1)","ten":"y=f(x)","xt":4.5}],"duong":[{"dung":1,"ten":"x=1"},{"ngang":1,"ten":"y=1"}],"diem":[{"x":0,"y":-3,"nhan":"(0;-3)","chi":false},{"x":3,"y":3,"nhan":"(3;3)"}]}]]
+a) $y=x^2+x-3$
+b) $y=\dfrac{x+3}{x+1}$
+c) $y=x+\dfrac1x$
+d) $y=\dfrac{x+3}{x-1}$
+
+Bài giải:
+Đồ thị có tiệm cận đứng $x=1$, tiệm cận ngang $y=1$, không có cực trị, cắt $Oy$ tại $(0;-3)$ và đi qua $(3;3)$.
+Phương án a) là parabol, không có tiệm cận: loại.
+Phương án c) có tiệm cận đứng $x=0$ và tiệm cận xiên $y=x$, không có tiệm cận ngang: loại.
+Còn b) và d) cùng là hàm bậc nhất trên bậc nhất, phải dùng tiệm cận và điểm đi qua để phân biệt: b) có tiệm cận đứng $x=-1$ và $y(0)=3$: loại.
+Với d), tiệm cận đứng $x=1$, tiệm cận ngang $y=1$, $y(0)=-3$ và $y(3)=\dfrac{6}{2}=3$, khớp với hình.
+Vậy chọn d) $y=\dfrac{x+3}{x-1}$.
 
 === N C2.2
 @ly_thuyet:
@@ -1694,11 +1893,13 @@ Vậy $P=9$.
 - Diện tích tam giác $OAB$: $S_{OAB}=\dfrac{1}{2}\left|x_Ay_B-x_By_A\right|$.
 - Đường thẳng $AB:y=rx+s$ ($r\ne0$, $s\ne0$) cắt $Ox$ tại $\left(-\dfrac{s}{r};0\right)$, cắt $Oy$ tại $(0;s)$; tam giác tạo bởi $AB$ và hai trục toạ độ có diện tích $\dfrac{s^2}{2|r|}$.
 - Tam giác $OAB$ vuông tại $O$ ⇔ $\overrightarrow{OA}\cdot\overrightarrow{OB}=x_Ax_B+y_Ay_B=0$, với $A$, $B$ khác $O$.
+- Đường thẳng $AB$ hay được dùng làm đường thẳng $d:\alpha x+\beta y+\gamma=0$ cho bài "$MP+MQ$ nhỏ nhất với $M\in d$" (đối xứng qua đường thẳng). Đặt $f(X)=\alpha x_X+\beta y_X+\gamma$: nếu $f(P)f(Q)>0$ ($P,Q$ cùng phía của $d$) thì lấy $P'$ đối xứng với $P$ qua $d$, $P'=P-\dfrac{2f(P)}{\alpha^2+\beta^2}(\alpha;\beta)$; khi đó $MP+MQ=MP'+MQ\ge P'Q$, dấu bằng khi $M$ là giao điểm của $P'Q$ và $d$. Nếu $f(P)f(Q)<0$ ($P,Q$ khác phía) thì $M=PQ\cap d$ và giá trị nhỏ nhất là $PQ$.
 
 ##PP Giải bài về hai điểm cực trị
 Tìm điều kiện có hai cực trị ($\Delta'>0$) và toạ độ $A,B$ (theo $m$ nếu đề có tham số).
 Tính phần đề hỏi: độ dài $AB$ bằng công thức khoảng cách, diện tích $OAB$ bằng $\dfrac{1}{2}|x_Ay_B-x_By_A|$, đường thẳng $AB$ bằng phần dư hoặc đường thẳng qua hai điểm, giao điểm của $AB$ với hai trục.
 Với điều kiện theo $m$ (như tam giác $OAB$ vuông tại $O$): dịch thành phương trình theo toạ độ $A,B$.
+Bài "$MP+MQ$ nhỏ nhất, $M$ thuộc đường thẳng $AB$": viết $AB$, xét $P,Q$ cùng phía hay khác phía, lấy điểm đối xứng $P'$ (nếu cùng phía), viết $P'Q$ rồi tìm giao điểm với $AB$.
 Giải theo $m$ (nếu có), đối chiếu điều kiện có hai cực trị và đáp án làm tròn theo yêu cầu.
 
 ##CY
@@ -1729,6 +1930,17 @@ Tam giác $OAB$ vuông tại $O$ ⇔ $x_Ax_B+y_Ay_B=0$ ⇔ $0\cdot2m+4m\left(4m-
 Loại $m=0$ (khi đó $y=x^3$ không có cực trị).
 Thử lại: $m=1$ cho $A(0;4)$, $B(2;0)$; $m=-1$ cho $A(0;-4)$, $B(-2;0)$; cả hai trường hợp $A$, $B$ khác $O$ và $OA\perp OB$.
 Vậy $m=1$ hoặc $m=-1$.
+
+##VD
+Cho hàm số $y=\dfrac{1}{2}x^3-\dfrac{3}{2}x+1$ có đồ thị $(C)$; đường thẳng $d$ đi qua hai điểm cực trị của $(C)$; cho hai điểm $P(0;3)$, $Q(6;-3)$. Gọi $M(a;b)$ là điểm thuộc $d$ sao cho $MP+MQ$ nhỏ nhất. Tính $a-b$.
+
+Bài giải:
+Ta có $y'=\dfrac{3}{2}x^2-\dfrac{3}{2}=\dfrac{3}{2}(x-1)(x+1)$ nên hai điểm cực trị là $A(-1;2)$ và $B(1;0)$.
+Đường thẳng $d=AB$ có phương trình $x+y-1=0$. Đặt $f(X)=x_X+y_X-1$: $f(P)=2>0$ và $f(Q)=6-3-1=2>0$ nên $P$, $Q$ cùng phía với $d$.
+Điểm $P'$ đối xứng với $P$ qua $d$: $P'=P-\dfrac{2f(P)}{1^2+1^2}(1;1)=(0;3)-2(1;1)=(-2;1)$.
+Khi đó $MP+MQ=MP'+MQ\ge P'Q$, dấu bằng xảy ra khi $M$ là giao điểm của $P'Q$ và $d$. Đường thẳng $P'Q$ đi qua $(-2;1)$ và $(6;-3)$ có hệ số góc $\dfrac{-3-1}{6+2}=-\dfrac{1}{2}$ nên $P'Q:x+2y=0$.
+Giải hệ $x+y=1$ và $x+2y=0$ được $x=2$, $y=-1$, tức $M(2;-1)$.
+Vậy $a=2$, $b=-1$ và $a-b=3$.
 
 === C2.2.5
 @ly_thuyet:
@@ -1779,6 +1991,7 @@ Vậy $m\ge0$.
 - Hàm bậc ba có hai cực trị thoả hệ thức giữa $x_1,x_2$: dùng Viète $S=x_1+x_2$, $P=x_1x_2$, với $x_1^2+x_2^2=S^2-2P$ và $(x_1-x_2)^2=S^2-4P$; hệ thức không đối xứng (như $x_1+2x_2=1$) thì ghép với $x_1+x_2=S$ để tính $x_1,x_2$ theo $m$ rồi thay vào $x_1x_2=P$; luôn đối chiếu $\Delta'>0$.
 - Hai điểm cực trị nằm trong khoảng $(\alpha;\beta)$: khi $y'=0$ có hai nghiệm viết được theo $m$ thì đặt điều kiện hai nghiệm khác nhau và cùng thuộc $(\alpha;\beta)$.
 - Hàm trùng phương chứa tham số: số cực trị theo dấu của $ab$ (hệ số $a$, $b$ chứa $m$); điều kiện $a\ne0$ vẫn phải giữ.
+- Bài xác suất có hai hàm trùng phương $y=Ax^4+Bx^2+C$ (hệ số chứa $a,b$ lấy từ một tập số): mỗi hàm có ba cực trị ⇔ $AB<0$; các điểm cực trị là $(0;C)$ và $\left(\pm\sqrt{-\dfrac{B}{2A}};\,y\right)$. Hai đồ thị có cực trị chung khi trùng nhau ở điểm $x=0$ (cùng tung độ $C$) hoặc ở điểm có $x\ne0$ (cùng $x^2$ và cùng tung độ); đếm số cặp $(a,b)$ thoả rồi chia cho tổng số cặp.
 - Đa thức có dạng $y=y(0)+cx^k+\dots$ với $c\ne0$ là hạng tử bậc thấp nhất khác $0$ của $y-y(0)$: nếu $k$ chẵn thì $x=0$ là cực tiểu khi $c>0$, cực đại khi $c<0$; nếu $k$ lẻ thì $x=0$ không phải điểm cực trị.
 
 ##PP Tìm $m$ để hàm đa thức có cực trị thoả điều kiện
@@ -1818,6 +2031,33 @@ Cho bằng $18$: $4m^2+6m-28=0$ nên $2m^2+3m-14=0$, suy ra $m=2$ hoặc $m=-\df
 Đối chiếu điều kiện ở câu a): $m=2$ không thoả (khi đó $y'=3(x-3)^2$ không đổi dấu, hàm không có cực trị), còn $m=-\dfrac{7}{2}<-3$ thoả.
 Vậy a) $m<-3$ hoặc $m>2$; b) $m=-\dfrac{7}{2}$.
 
+##VD
+Cho hàm số $y=2x^3-3(m+2)x^2+12mx-1$ ($m$ là tham số). Có bao nhiêu giá trị nguyên của $m$ để hàm số có hai điểm cực trị đều thuộc khoảng $(-1;5)$?
+
+Bài giải:
+Ta có $y'=6x^2-6(m+2)x+12m=6(x-2)(x-m)$ nên $y'=0\Leftrightarrow x=2$ hoặc $x=m$.
+Hàm có hai cực trị ⇔ hai nghiệm phân biệt ⇔ $m\ne2$.
+Hai điểm cực trị đều thuộc $(-1;5)$: $x=2$ đã thuộc khoảng nên chỉ cần $-1<m<5$.
+Kết hợp $m\ne2$, các giá trị nguyên là $0;1;3;4$.
+Vậy có $4$ giá trị nguyên của $m$.
+
+##VD
+a) Có bao nhiêu giá trị nguyên của tham số $m$ để hàm số $y=x^{10}+(m-3)x^5+\left(m^2-9\right)x^4+2$ đạt cực đại tại $x=0$?
+b) Gọi $S$ là tập hợp các số nguyên có giá trị tuyệt đối không vượt quá $5$. Chọn lần lượt hai số $a$, $b$ phân biệt từ $S$ (số đầu là $a$, số sau là $b$). Tính xác suất để hai đồ thị $(C_1):y=x^4+2ax^2+b$ và $(C_2):y=-x^4+2bx^2-a$ đều có ba điểm cực trị và có một điểm cực trị chung.
+
+Bài giải:
+a) Hạng tử bậc thấp nhất của $y-y(0)=y-2$ phụ thuộc $m$.
+Nếu $m^2-9\ne0$ thì hạng tử bậc thấp nhất là $\left(m^2-9\right)x^4$ (bậc $4$ chẵn): $x=0$ là cực đại ⇔ $m^2-9<0$ ⇔ $-3<m<3$.
+Nếu $m=3$: $y=x^{10}+2$, $x=0$ là cực tiểu, loại. Nếu $m=-3$: $y=x^{10}-6x^5+2$, hạng tử bậc thấp nhất là $-6x^5$ (bậc lẻ), $x=0$ không là cực trị, loại.
+Các giá trị nguyên là $-2;-1;0;1;2$. Vậy có $5$ giá trị.
+b) $S$ có $11$ phần tử, số cặp có thứ tự $(a,b)$ phân biệt là $11\cdot10=110$.
+$(C_1)$ có ba cực trị ⇔ $1\cdot2a<0$ ⇔ $a<0$; $(C_2)$ có ba cực trị ⇔ $(-1)\cdot2b<0$ ⇔ $b>0$.
+Điểm cực trị $x=0$ của $(C_1)$ là $(0;b)$, của $(C_2)$ là $(0;-a)$: chung khi $b=-a$.
+Cực trị ngoài $x=0$ của $(C_1)$ có $x^2=-a$, của $(C_2)$ có $x^2=b$; hai giá trị này bằng nhau cũng cho $b=-a$, và khi đó tung độ là $-a^2-a$ và $a^2-a$ khác nhau (vì $a\ne0$) nên không thêm cực trị chung nào.
+Vậy cần $a<0$ và $b=-a$: $a\in\{-5;-4;-3;-2;-1\}$, có $5$ cặp (đều thoả $a\ne b$).
+Xác suất là $\dfrac{5}{110}=\dfrac{1}{22}$.
+Vậy a) $5$ giá trị; b) $\dfrac{1}{22}$.
+
 === N C2.3
 @ly_thuyet:
 ##TC Hàm bậc nhất trên bậc nhất $y=\dfrac{ax+b}{cx+d}$
@@ -1847,6 +2087,8 @@ Xác định hệ số đã biết (giá trị hoặc dấu) từ công thức h
 Hoành độ tiệm cận đứng cho $\dfrac{d}{c}$, tung độ tiệm cận ngang cho $\dfrac{a}{c}$; từ hệ số đã biết suy ra $c$, $d$, $a$.
 Dùng giao điểm với $Oy$ (hoặc $Ox$) để tìm $b$ (qua $\dfrac{b}{d}$ hoặc $-\dfrac{b}{a}$).
 Đề hỏi dấu: suy dấu từ các tỉ số trên, bắt đầu từ hệ số đã biết dấu; đề hỏi giá trị biểu thức thì thay các hệ số vừa tìm.
+Đề cho bảng biến thiên: cột kẻ đôi cho tiệm cận đứng, hai đầu hàng $y$ cho tiệm cận ngang, chiều mũi tên cho dấu của $ad-bc$; làm tiếp như với đồ thị.
+Đề chỉ cho hai tiệm cận bằng chữ (không có hình): viết hai đường theo hệ số rồi lập phương trình như trên.
 
 ##CY
 - Giao $Oy$ là $\dfrac{b}{d}$, không phải $b$; chỉ trùng khi $d=1$.
@@ -1874,18 +2116,34 @@ Tiệm cận đứng là $x=-1$ nên $-\dfrac{d}{c}=-1$, tức $\dfrac{d}{c}=1>0
 Đồ thị cắt $Oy$ tại $(0;2)$ nên $\dfrac{b}{d}=2>0$; vì $d>0$ nên $b>0$.
 Vậy $a<0$, $b>0$, $d>0$ và có $2$ số dương.
 
+##VD
+a) Cho hàm số $y=\dfrac{ax+3}{bx+c}$ ($a,b,c\in\mathbb{R}$) có bảng biến thiên như hình vẽ. Trong các số $a$, $b$, $c$ có bao nhiêu số âm?
+[[HINH {"loai":"bbt","x":["-∞","2","+∞"],"dau":["-","-"],"kd":{"1":"||"},"y":["-1",["-∞","+∞"],"-1"],"ten_ham":"y","ten_dao":"y'"}]]
+b) Biết đồ thị hàm số $y=\dfrac{ax-3}{bx+4}$ có tiệm cận đứng là $x=1$ và tiệm cận ngang là $y=-2$. Tính $a-b$.
+
+Bài giải:
+a) Bảng có cột kẻ đôi tại $x=2$ nên tiệm cận đứng là $x=-\dfrac{c}{b}=2$, suy ra $c=-2b$.
+Hai đầu hàng $y$ đều là $-1$ nên tiệm cận ngang là $y=\dfrac{a}{b}=-1$, suy ra $a=-b$.
+Hàm số nghịch biến trên từng khoảng nên $ad-bc<0$; ở đây tử là $ax+3$, mẫu là $bx+c$ nên điều kiện là $a\cdot c-3b<0$, tức $(-b)(-2b)-3b=2b^2-3b=b(2b-3)<0$, suy ra $0<b<\dfrac32$.
+Vậy $b>0$, từ đó $a=-b<0$ và $c=-2b<0$: có $2$ số âm.
+b) Tiệm cận đứng là $x=-\dfrac{4}{b}=1$ nên $b=-4$.
+Tiệm cận ngang là $y=\dfrac{a}{b}=-2$ nên $a=-2b=8$.
+Kiểm tra: $ad-bc=8\cdot4-(-3)(-4)=20\ne0$ nên hàm số không suy biến.
+Vậy $a-b=8-(-4)=12$.
+Đáp số: a) $2$ số âm; b) $a-b=12$.
+
 === C2.3.2
 @ly_thuyet:
 ##TC Tâm đối xứng của đồ thị hàm nhất biến
 - Đồ thị nhận giao điểm của hai tiệm cận làm tâm đối xứng: $I\left(-\dfrac{d}{c};\dfrac{a}{c}\right)$.
 - Cho bằng đồ thị: $I$ là giao điểm của hai đường tiệm cận vẽ trên hình; cho bằng bảng biến thiên: hoành độ của $I$ là giá trị ở cột kẻ đôi, tung độ là giá trị ở hai đầu hàng $y$.
-- Hai điểm $A$, $B$ đối xứng qua $I$ khi $I$ là trung điểm $AB$: $x_A+x_B=2x_I$ và $y_A+y_B=2y_I$. Nếu $A$ thuộc đồ thị thì điểm đối xứng với $A$ qua $I$ cũng thuộc đồ thị.
+- Hàm đã chia sẵn $y=\alpha+\dfrac{\beta}{x-x_0}$ ($\beta\ne0$): tiệm cận đứng $x=x_0$, tiệm cận ngang $y=\alpha$, tâm $I(x_0;\alpha)$. Hàm $y=\alpha x+\beta+\dfrac{\gamma}{x-x_0}$ ($\gamma\ne0$) cũng nhận giao của tiệm cận đứng $x=x_0$ và tiệm cận xiên $y=\alpha x+\beta$ làm tâm: $I(x_0;\alpha x_0+\beta)$.
 
-##PP Tìm tâm đối xứng và điểm liên quan
+##PP Tìm tâm đối xứng và biểu thức liên quan
 Viết hai tiệm cận từ công thức, hoặc đọc từ đồ thị, bảng biến thiên.
 Giao hai tiệm cận là tâm đối xứng $I(x_I;y_I)$.
-Đề hỏi biểu thức theo toạ độ tâm (như $x_I+y_I$, độ dài $OI$): tính $x_I$, $y_I$ rồi thay.
-Điểm đối xứng với $A$ qua $I$: $x_B=2x_I-x_A$, $y_B=2y_I-y_A$; thay vào hàm số nếu cần kiểm tra $B$ thuộc đồ thị.
+Đề hỏi biểu thức theo toạ độ tâm (như $x_I+y_I$, $x_I\cdot y_I$, độ dài $OI$): tính $x_I$, $y_I$ rồi thay.
+Đề hỏi tâm thuộc đường thẳng nào: thay toạ độ $I$ vào từng phương trình đường thẳng.
 
 ##CY
 - Hàm viết mẫu có $x$ đứng sau như $\dfrac{3x-2}{1-x}$ thì $c=-1$, $d=1$: tâm là $I(1;-3)$, không phải $I(1;3)$.
@@ -1907,14 +2165,27 @@ Vậy tâm đối xứng của hai đồ thị lần lượt là $I\left(-2;-\df
 ##VD
 Cho hàm số $y=\dfrac{4x-1}{x+3}$ có đồ thị $(C)$; gọi $I$ là tâm đối xứng của $(C)$.
 a) Tính độ dài đoạn $OI$.
-b) Điểm $A(-2;-9)$ thuộc $(C)$. Tìm điểm $B$ đối xứng với $A$ qua $I$ và chứng tỏ $B$ cũng thuộc $(C)$.
+b) Gọi $J(a;b)$ là giao điểm hai đường tiệm cận của đồ thị hàm số $y=\dfrac{5-2x}{3x+6}$. Tính $T=a\cdot b$.
 
 Bài giải:
 a) Ta có $ad-bc=4\cdot3-(-1)\cdot1=13\ne0$; tiệm cận đứng $x=-3$, tiệm cận ngang $y=4$ nên $I(-3;4)$.
 $OI=\sqrt{(-3)^2+4^2}=5$.
-b) $B$ đối xứng với $A$ qua $I$ nên $I$ là trung điểm $AB$: $x_B=2\cdot(-3)-(-2)=-4$ và $y_B=2\cdot4-(-9)=17$, tức $B(-4;17)$.
-Thay vào hàm số: $y(-4)=\dfrac{-16-1}{-4+3}=17=y_B$ nên $B\in(C)$.
-Vậy a) $OI=5$; b) $B(-4;17)$ và $B$ thuộc $(C)$.
+b) Viết $y=\dfrac{-2x+5}{3x+6}$ nên $a_h=-2$, $b_h=5$, $c_h=3$, $d_h=6$; $ad-bc=-12-15=-27\ne0$.
+Tiệm cận đứng $x=-\dfrac{6}{3}=-2$, tiệm cận ngang $y=-\dfrac{2}{3}$ nên $J\left(-2;-\dfrac23\right)$, suy ra $T=a\cdot b=(-2)\cdot\left(-\dfrac23\right)=\dfrac43$.
+Vậy a) $OI=5$; b) $T=\dfrac43$.
+
+##VD
+a) Tìm toạ độ tâm đối xứng của đồ thị hàm số $y=-1+\dfrac{3}{x-2}$.
+b) Tìm toạ độ tâm đối xứng của đồ thị hàm số $y=x+3-\dfrac{2}{x-1}$.
+c) Tâm đối xứng $I$ của đồ thị hàm số $y=\dfrac{3x+2}{x-2}$ nằm trên đường thẳng nào trong ba đường thẳng $d_1:2x-y-1=0$, $d_2:x+y-6=0$, $d_3:3x-y+1=0$?
+
+Bài giải:
+a) Hàm đã chia sẵn: tiệm cận đứng $x=2$, tiệm cận ngang $y=-1$ nên tâm đối xứng là $I(2;-1)$.
+b) Tiệm cận đứng $x=1$ và tiệm cận xiên $y=x+3$ (vì $\dfrac{2}{x-1}\to0$ khi $x\to\pm\infty$); giao của hai đường: $x=1$, $y=1+3=4$ nên tâm đối xứng là $I(1;4)$.
+c) Tiệm cận đứng $x=2$, tiệm cận ngang $y=3$ nên $I(2;3)$.
+Thay vào $d_1$: $2\cdot2-3-1=0$ nên $I\in d_1$.
+Thay vào $d_2$: $2+3-6=-1\ne0$; thay vào $d_3$: $6-3+1=4\ne0$.
+Vậy a) $I(2;-1)$; b) $I(1;4)$; c) $I$ nằm trên đường thẳng $d_1$.
 
 === C2.3.3
 @ly_thuyet:
@@ -1964,6 +2235,19 @@ Nếu $m>-1$ thì $y'<0$, hàm số nghịch biến trên $[2;4]$ nên giá tr�
 Nếu $m=-1$ thì $y=-1$ là hằng số, không bằng $-3$: loại.
 Vậy a) $m\in(3;4]$; b) $m=-5$.
 
+##VD
+a) Tìm tất cả giá trị của $m$ để đồ thị hàm số $y=\dfrac{x-m}{x+2}$ cắt trục tung tại điểm có tung độ dương.
+b) Tìm $m$ để giá trị lớn nhất của hàm số $y=\dfrac{mx+3}{m-x}$ trên đoạn $[1;2]$ bằng $3$.
+
+Bài giải:
+a) Điều kiện của hàm: $ad-bc=1\cdot2-(-m)\cdot1=m+2\ne0$, tức $m\ne-2$.
+Giao với $Oy$ là $\left(0;\dfrac{b}{d}\right)=\left(0;-\dfrac{m}{2}\right)$. Tung độ dương khi $-\dfrac{m}{2}>0\Leftrightarrow m<0$.
+Kết hợp $m\ne-2$ ta được $m<0$ và $m\ne-2$.
+b) Hàm số có $a=m$, $b=3$, $c=-1$, $d=m$ nên $ad-bc=m^2+3>0$ với mọi $m$: hàm số đồng biến trên từng khoảng xác định. Hàm số xác định trên $[1;2]$ khi $m\notin[1;2]$ (tiệm cận đứng $x=m$ nằm ngoài đoạn).
+Khi đó hàm đồng biến trên $[1;2]$ nên giá trị lớn nhất là $y(2)=\dfrac{2m+3}{m-2}$.
+Cho $\dfrac{2m+3}{m-2}=3$ ta được $2m+3=3m-6$, suy ra $m=9$ (thoả $m\notin[1;2]$).
+Vậy a) $m<0$, $m\ne-2$; b) $m=9$.
+
 === N C2.4   (nhóm "Hàm bậc hai trên bậc nhất")
 @ly_thuyet:
 ##TC Chia đa thức, hai tiệm cận và tâm đối xứng của $y=\dfrac{ax^2+bx+c}{dx+e}$
@@ -2010,7 +2294,7 @@ Thay lại để kiểm tra tiệm cận, cực trị khớp hình rồi trả l
 @vi_du:
 ##VD
 Cho hàm số $y=\dfrac{ax^2+bx+c}{x+d}$ có đồ thị như hình vẽ (nét đứt là hai tiệm cận). Trong các số $a$, $b$, $c$, $d$ có bao nhiêu số dương?
-[[HINH {"loai":"dothi","x":[-3,7],"y":[-8,10],"f":[{"e":"(x^2-3*x+3)/(x-2)","ten":"y=f(x)","xt":6}],"duong":[{"dung":2},{"xien":[1,-1]}],"diem":[{"x":1,"y":-1,"nhan":"(1;-1)"},{"x":3,"y":3,"nhan":"(3;3)"}]}]]
+[[HINH {"loai":"dothi","x":[-2,6],"y":[-6,7],"f":[{"e":"(x^2-3*x+3)/(x-2)","ten":"y=f(x)","xt":4.6}],"duong":[{"dung":2},{"xien":[1,-1]}],"diem":[{"x":1,"y":-1,"nhan":"(1;-1)"},{"x":3,"y":3,"nhan":"(3;3)"}]}]]
 
 Bài giải:
 Tiệm cận đứng là $x=2$ nên $x+d=x-2$, tức $d=-2$.
@@ -2093,6 +2377,7 @@ Cho hàm số $y=\dfrac{x^2-6x+6}{x-1}$ có đồ thị $(C)$ với hai điểm 
 a) Viết phương trình đường thẳng $AB$.
 b) Tính diện tích tam giác tạo bởi đường thẳng $AB$ với hai trục toạ độ.
 c) Tính khoảng cách từ $A$ đến tiệm cận xiên của $(C)$.
+d) Tính diện tích hình chữ nhật có các cạnh song song với hai trục toạ độ và nhận $AB$ làm đường chéo.
 
 Bài giải:
 Tập xác định $\mathbb{R}\setminus\{1\}$; $y'=\dfrac{(2x-6)(x-1)-(x^2-6x+6)}{(x-1)^2}=\dfrac{x^2-2x}{(x-1)^2}=\dfrac{x(x-2)}{(x-1)^2}$.
@@ -2100,7 +2385,8 @@ $y'=0$ có hai nghiệm $x=0$ và $x=2$ (đều khác $1$, $y'$ đổi dấu), n
 a) Đường thẳng qua hai cực trị là $y=\dfrac{(x^2-6x+6)'}{(x-1)'}=2x-6$ (kiểm tra: $A$, $B$ đều thuộc đường thẳng này).
 b) Đường thẳng $y=2x-6$ cắt $Ox$ tại $(3;0)$ và $Oy$ tại $(0;-6)$ nên $S=\dfrac{1}{2}\cdot3\cdot6=9$.
 c) Chia đa thức: $y=x-5+\dfrac{1}{x-1}$ nên tiệm cận xiên là $x-y-5=0$; khoảng cách từ $A(0;-6)$ là $\dfrac{|0+6-5|}{\sqrt{2}}=\dfrac{\sqrt{2}}{2}$.
-Vậy a) $y=2x-6$; b) $S=9$; c) $\dfrac{\sqrt{2}}{2}$.
+d) Hình chữ nhật có hai kích thước $|x_B-x_A|=2$ và $|y_B-y_A|=|-2-(-6)|=4$ nên diện tích là $2\cdot4=8$.
+Vậy a) $y=2x-6$; b) $S=9$; c) $\dfrac{\sqrt{2}}{2}$; d) $8$.
 
 ##VD
 Tìm $m$ để hàm số $y=\dfrac{x^2+mx+1}{x-1}$ đạt cực tiểu tại $x=3$, và tính giá trị cực tiểu khi đó.
@@ -2112,7 +2398,25 @@ Thử lại với $m=2$: $y'=\dfrac{x^2-2x-3}{(x-1)^2}=\dfrac{(x+1)(x-3)}{(x-1)^
 $y'$ đổi dấu từ $-$ sang $+$ khi qua $x=3$ nên $x=3$ là điểm cực tiểu; giá trị cực tiểu là $y(3)=\dfrac{9+6+1}{2}=8$.
 Vậy $m=2$ và giá trị cực tiểu bằng $8$.
 
-=== N C2.5   (nhóm "Hàm hợp, hàm ẩn, hàm chứa trị tuyệt đối (nâng cao)")
+##VD
+a) Tìm tất cả giá trị của tham số $m$ để hàm số $y=\dfrac{x^2+mx+1}{x-1}$ đồng biến trên khoảng $(2;+\infty)$.
+b) Cho hàm số $f(x)=\dfrac{x^2+ax-2}{x-b}$, trong đó $a$, $b$ lần lượt là số chấm xuất hiện của hai lần gieo một con xúc xắc cân đối đồng chất. Biết xác suất để $f(x)$ nghịch biến trên khoảng $(2;4)$ là $\dfrac{p}{q}$ ($p,q\in\mathbb{N}^*$, $\dfrac{p}{q}$ tối giản). Tính $p+q$.
+
+Bài giải:
+a) Tập xác định $\mathbb{R}\setminus\{1\}$; $y'=\dfrac{(2x+m)(x-1)-(x^2+mx+1)}{(x-1)^2}=\dfrac{x^2-2x-m-1}{(x-1)^2}$.
+Khoảng $(2;+\infty)$ không chứa $x_0=1$ nên hàm đồng biến trên khoảng này ⇔ $g(x)=x^2-2x-m-1\ge0$ với mọi $x>2$ ⇔ $m\le x^2-2x-1$ với mọi $x>2$.
+Hàm $h(x)=x^2-2x-1=(x-1)^2-2$ đồng biến trên $(2;+\infty)$ nên $h(x)>h(2)=-1$; do đó điều kiện là $m\le-1$ (với $m=-1$ ta có $g(x)>0$ trên $(2;+\infty)$, thoả).
+Vậy $m\le-1$.
+b) $f'(x)=\dfrac{(2x+a)(x-b)-(x^2+ax-2)}{(x-b)^2}=\dfrac{g(x)}{(x-b)^2}$ với $g(x)=x^2-2bx-ab+2$.
+Hàm nghịch biến trên $(2;4)$ ⇔ $b\notin(2;4)$ (tức $b\ne3$) và $g(x)\le0$ với mọi $x\in(2;4)$. Vì $g$ là tam thức bậc hai có hệ số cao nhất dương nên điều này tương đương $g(2)\le0$ và $g(4)\le0$, với $g(2)=6-4b-ab$, $g(4)=18-8b-ab$.
+Xét $b\in\{1;2;4;5;6\}$:
+$b=1$: $g(4)=10-a\le0$ cần $a\ge10$, không có $a$ nào thoả.
+$b=2$: $g(2)=-2-2a<0$, $g(4)=2-2a\le0\Leftrightarrow a\ge1$: cả $6$ giá trị của $a$ thoả.
+$b=4$, $b=5$, $b=6$: $g(2)$ và $g(4)$ đều âm với mọi $a$ dương, mỗi giá trị của $b$ có $6$ giá trị của $a$ thoả.
+Số kết quả thuận lợi là $4\cdot6=24$ trên $36$ kết quả, xác suất là $\dfrac{24}{36}=\dfrac{2}{3}$, nên $p=2$, $q=3$.
+Vậy a) $m\le-1$; b) $p+q=5$.
+
+=== N C2.5  (nhóm "Hàm hợp, hàm ẩn, hàm chứa trị tuyệt đối (nâng cao)")
 @ly_thuyet:
 ##TC Đọc dữ kiện về $f$ hoặc $f'$ rồi suy ra hàm cần xét
 - Đồ thị (hoặc bảng xét dấu) của $f'$: $f'(t)=0$ tại các điểm đồ thị cắt $Ox$; đồ thị phía trên $Ox$ thì $f'>0$ ($f$ đồng biến), phía dưới thì $f'<0$ ($f$ nghịch biến). Điểm đồ thị $f'$ chỉ chạm $Ox$ thì $f'$ không đổi dấu.
@@ -2154,7 +2458,7 @@ Bài có tham số: xét dấu $u'$ trên $K$, suy ra dấu cần có của $f'(
 @vi_du:
 ##VD
 Cho hàm số $y=f(x)$ có đồ thị của đạo hàm $y=f'(x)$ như hình vẽ. Tìm các khoảng đồng biến của hàm số $g(x)=f(2x+1)$.
-[[HINH {"loai":"dothi","x":[-3,4],"y":[-10,10],"f":[{"e":"(x+2)*(x-1)*(x-3)","ten":"y=f'(x)","xt":-2.5}],"diem":[{"x":-2,"y":0},{"x":1,"y":0},{"x":3,"y":0}]}]]
+[[HINH {"loai":"dothi","x":[-2.5,3.5],"y":[-6,9],"f":[{"e":"(x+2)*(x-1)*(x-3)","ten":"y=f'(x)","xt":-2.5}],"diem":[{"x":-2,"y":0},{"x":1,"y":0},{"x":3,"y":0}]}]]
 
 Bài giải:
 Ta có $g'(x)=2f'(2x+1)$ nên $g'(x)>0\Leftrightarrow f'(2x+1)>0$.
@@ -2216,29 +2520,55 @@ $\Delta'>0\Leftrightarrow m<-3$ hoặc $m>2$; $S>0\Leftrightarrow m>-1$; $P>0\Le
 Giao các điều kiện được $m>2$.
 Vậy $m>2$.
 
-=== C2.5.3   (dạng "GTLN, GTNN chứa tham số hoặc hàm ẩn")
-@ly_thuyet:
-##TC GTLN, GTNN có tham số và hàm ẩn
-- Trên đoạn $[a;b]$, GTLN và GTNN của hàm liên tục nằm trong số $f(a)$, $f(b)$ và các giá trị cực trị trong đoạn; hàm $y=\dfrac{ax+b}{cx+d}$ đơn điệu trên đoạn không chứa nghiệm của mẫu nên đạt GTLN, GTNN ở hai đầu mút.
-- Có tham số $m$: xét dấu $y'$ theo $m$ (chia trường hợp), viết GTLN hoặc GTNN theo $m$ trong từng trường hợp rồi cho bằng giá trị đề cho; mỗi nghiệm phải thoả điều kiện của trường hợp đang xét.
-- Tham số chỉ cộng thêm ($y=h(x)+m$ hoặc $y=h(x)-m$): khảo sát $h$ (không chứa $m$) trên đoạn, rồi $\max y=\max h+m$, $\min y=\min h+m$; không cần chia trường hợp.
-- Hàm hợp $g(x)=f(u(x))+m$: tìm tập giá trị $T$ của $t=u(x)$ trên đoạn đã cho, rồi $\max g=\max_{T}f+m$, $\min g=\min_{T}f+m$ (đọc $f$ từ đồ thị hoặc bảng biến thiên).
-- Đồ thị $f'$: suy ra chiều biến thiên của $f$ trên đoạn, lập bảng biến thiên để biết GTLN, GTNN nằm trong những giá trị nào; các giá trị nằm ở hai khoảng đơn điệu khác nhau không so được bằng bảng, phải dùng giả thiết đẳng thức (như $f(a)+f(b)=f(c)+f(d)$): chuyển vế thành hiệu hai giá trị cùng một khoảng đơn điệu, hiệu này biết dấu.
-- Phương trình, bất phương trình chứa $m$: cô lập $m$. $f(x)=m$ có nghiệm trên đoạn ⇔ $\min f\le m\le\max f$; $m\ge f(x)$ nghiệm đúng với mọi $x$ ⇔ $m\ge\max f$; $m\ge f(x)$ có nghiệm ⇔ $m\ge\min f$.
-- Biểu thức nhiều biến có ràng buộc: rút một biến theo biến kia (hoặc đặt $t=x+y$), tìm miền của biến mới rồi khảo sát bằng đạo hàm; biến dương có thể dùng bất đẳng thức Cô-si.
+##VD
+Cho hàm số $y=f(x)$ có đạo hàm $f'(x)=(x+1)(x-2)^2(x-3)$ với mọi $x\in\mathbb{R}$.
+a) Tìm số điểm cực trị của hàm số $g(x)=f(x^2-2x)$.
+b) Cho hàm số $h(x)=x^3-3x+1$. Tìm số điểm cực trị của hàm số $y=|h(x)|$.
 
-##PP Giải bài GTLN, GTNN có tham số hoặc hàm ẩn
-Xác định loại dữ kiện (công thức có $m$, đồ thị $f$ hoặc $f'$, bất phương trình chứa $m$, ràng buộc nhiều biến).
-Với công thức có $m$: tính $y'$, chia trường hợp theo dấu $y'$, viết GTLN hoặc GTNN theo $m$.
-Với hàm hợp: đặt $t=u(x)$, tìm miền của $t$ trên đoạn đã cho rồi khảo sát $f$ trên miền đó.
-Cho kết quả bằng giá trị đề cho (hoặc dùng max, min để giải bất phương trình), giải theo $m$ và đối chiếu điều kiện từng trường hợp.
+Bài giải:
+a) Đặt $t=x^2-2x$. Ta có $g'(x)=(2x-2)f'(t)=2(x-1)(t+1)(t-2)^2(t-3)$.
+Vì $t+1=(x-1)^2$, $t-3=(x-3)(x+1)$ và $t-2=x^2-2x-2$ (có hai nghiệm $x=1\pm\sqrt{3}$), nên
+$g'(x)=2(x-1)^3(x^2-2x-2)^2(x-3)(x+1)$.
+Các nghiệm bội lẻ là $x=-1$, $x=1$, $x=3$ (đều làm $g'$ đổi dấu); hai nghiệm $x=1\pm\sqrt{3}$ là nghiệm bội chẵn nên $g'$ không đổi dấu.
+Vậy $g(x)$ có $3$ điểm cực trị.
+b) $h'(x)=3x^2-3=0\Leftrightarrow x=\pm1$ nên $h$ có $p=2$ điểm cực trị, với $h(-1)=3$ và $h(1)=-1$.
+Ta có $h(-2)=-1<0$, $h(-1)=3>0$, $h(1)=-1<0$, $h(2)=3>0$ nên $h(x)=0$ có $3$ nghiệm phân biệt, đều là nghiệm đơn: $q=3$.
+Số điểm cực trị của $|h(x)|$ là $p+q=2+3=5$.
+Vậy a) $3$ điểm cực trị; b) $5$ điểm cực trị.
+
+=== C2.5.3   (dạng "GTLN, GTNN chứa tham số trong công thức")
+@ly_thuyet:
+##TC GTLN, GTNN của hàm có tham số trong công thức
+- Trên đoạn $[a;b]$, GTLN và GTNN của hàm liên tục nằm trong số $f(a)$, $f(b)$ và các giá trị cực trị trong đoạn; hàm $y=\dfrac{ax+b}{cx+d}$ đơn điệu trên đoạn không chứa nghiệm của mẫu nên đạt GTLN, GTNN ở hai đầu mút.
+- Tham số chỉ cộng thêm ($y=h(x)+m$ hoặc $y=h(x)-m$): khảo sát $h$ (không chứa $m$) trên đoạn, rồi $\max y=\max h+m$, $\min y=\min h+m$; không cần chia trường hợp.
+- Tham số nằm trong hệ số ($y=\dfrac{x+m^2}{x+1}$, $y=m\sqrt{x-1}$, hàm bậc ba, bậc bốn có $m$): xét dấu $y'$ theo $m$ (chia trường hợp), viết GTLN hoặc GTNN theo $m$ trong từng trường hợp. Gặp hàm lượng giác (như $\dfrac{\cos x+m}{\cos x+2}$) thì đặt $t=\cos x$ (hoặc $\sin x$), tìm miền của $t$ trên đoạn đã cho rồi làm như hàm phân thức theo $t$.
+- Điều kiện đề cho có thể là một phương trình (GTLN hoặc GTNN bằng $k$; tổng GTLN và GTNN bằng $k$) hoặc một bất phương trình (như $\max y\le k$): giải theo $m$ và đối chiếu với điều kiện của từng trường hợp; mỗi nghiệm phải thoả điều kiện của trường hợp đang xét.
+
+##PP Giải bài GTLN, GTNN có tham số trong công thức
+Xác định tham số nằm ở đâu: chỉ cộng thêm hay nằm trong hệ số.
+Tham số chỉ cộng thêm: lập bảng biến thiên của $h$ trên đoạn, lấy $\max h$, $\min h$ rồi cộng $m$.
+Tham số trong hệ số: tính $y'$, chia trường hợp theo dấu $y'$ (đơn điệu thì GTLN, GTNN ở hai đầu mút), viết GTLN hoặc GTNN theo $m$.
+Cho kết quả bằng giá trị đề cho (hoặc giải bất phương trình), giải theo $m$ và đối chiếu điều kiện từng trường hợp.
 
 ##CY
 - Mỗi trường hợp phải kiểm tra điều kiện của chính nó; trường hợp $y'\equiv0$ (hàm hằng) phải xét riêng.
-- Khi đổi biến, miền của $t$ thường hẹp hơn đoạn ban đầu: đọc GTLN, GTNN của $f$ trên miền của $t$, không phải trên cả đồ thị.
-- "Nghiệm đúng với mọi $x$" dùng $\max$ (cho $\ge$) hoặc $\min$ (cho $\le$); "có nghiệm" thì ngược lại.
+- Khi đổi biến, miền của $t$ thường hẹp hơn đoạn ban đầu: tìm GTLN, GTNN theo $t$ trên miền của $t$.
+- Hệ số của $m$ đổi dấu thì GTLN và GTNN đổi vai (như $m\sqrt{x+2}$ khi $m<0$): xét dấu của hệ số ngay từ đầu.
 
 @vi_du:
+##VD
+Cho hàm số $y=x^3-3x^2-9x+m$ ($m$ là tham số).
+a) Tìm $m$ để giá trị lớn nhất của hàm số trên đoạn $[-2;2]$ bằng $10$.
+b) Tìm $m$ để tổng giá trị lớn nhất và giá trị nhỏ nhất của hàm số trên đoạn $[-2;2]$ bằng $3$.
+
+Bài giải:
+Đặt $h(x)=x^3-3x^2-9x$, khi đó $y=h(x)+m$ và $h'(x)=3x^2-6x-9=3(x+1)(x-3)$. Trên đoạn $[-2;2]$ chỉ có $x=-1$ là nghiệm của $h'$.
+Ta có $h(-2)=-2$, $h(-1)=5$, $h(2)=-22$ nên $\max_{[-2;2]}h=5$ và $\min_{[-2;2]}h=-22$.
+Suy ra $\max y=5+m$ và $\min y=-22+m$.
+a) $5+m=10\Leftrightarrow m=5$.
+b) $(5+m)+(-22+m)=3\Leftrightarrow 2m=20\Leftrightarrow m=10$.
+Vậy a) $m=5$; b) $m=10$.
+
 ##VD
 Tìm tất cả giá trị của tham số $m$ để giá trị nhỏ nhất của hàm số $y=\dfrac{x+m^2}{x+1}$ trên đoạn $[0;3]$ bằng $2$.
 
@@ -2250,15 +2580,15 @@ Nếu $|m|=1$ thì $y=1$ với mọi $x$, GTNN bằng $1\ne2$ (loại).
 Vậy $m=\sqrt{5}$ hoặc $m=-\sqrt{5}$.
 
 ##VD
-Cho hàm số $y=f(x)$ có đạo hàm trên $\mathbb{R}$, đồ thị hàm số $y=f'(x)$ như hình vẽ (đồ thị cắt trục hoành tại $x=1$ và chạm trục hoành tại $x=3$). Biết $f(0)+f(1)=f(3)+f(4)$. Giá trị nhỏ nhất và giá trị lớn nhất của $f(x)$ trên đoạn $[0;4]$ lần lượt đạt tại $x=a$ và $x=b$. Tìm $a$ và $b$.
-[[HINH {"loai":"dothi","x":[-1,5],"y":[-5,3],"f":[{"e":"(x-1)*(x-3)^2/2","ten":"y=f'(x)","xt":4.1}],"diem":[{"x":1,"y":0},{"x":3,"y":0}]}]]
+Cho hàm số $f(x)=m\sqrt{x+2}$ với $m$ là tham số thực. Gọi $m_1$, $m_2$ là hai giá trị của $m$ thoả mãn $\min\limits_{[-1;7]}f(x)+\max\limits_{[-1;7]}f(x)=m^2-5$. Tính $m_1+m_2$.
 
 Bài giải:
-Từ đồ thị: trên $(0;1)$ đồ thị nằm dưới trục hoành nên $f'(x)<0$; trên $(1;4)$ đồ thị nằm trên trục hoành, chỉ chạm trục tại $x=3$, nên $f'(x)\ge0$ và $f$ đồng biến trên $[1;4]$.
-Do đó $f$ nghịch biến trên $[0;1]$, đồng biến trên $[1;4]$: $\min_{[0;4]}f=f(1)$, tức $a=1$, còn $\max_{[0;4]}f$ là số lớn hơn trong hai số $f(0)$ và $f(4)$.
-Từ giả thiết: $f(0)-f(4)=f(3)-f(1)$.
-Vì $f$ đồng biến trên $[1;4]$ và $1<3$ nên $f(3)>f(1)$, suy ra $f(0)-f(4)>0$, tức $f(0)>f(4)$.
-Vậy $\max_{[0;4]}f=f(0)$: $a=1$ và $b=0$.
+Với $x\in[-1;7]$ thì $x+2\in[1;9]$, nên $\sqrt{x+2}$ đồng biến và nhận giá trị từ $1$ đến $3$.
+Nếu $m>0$: $f$ đồng biến nên $\min f=f(-1)=m$ và $\max f=f(7)=3m$.
+Nếu $m<0$: $f$ nghịch biến nên $\min f=f(7)=3m$ và $\max f=f(-1)=m$.
+Nếu $m=0$: $f\equiv0$, tổng bằng $0\ne m^2-5=-5$ (loại).
+Cả hai trường hợp $m\ne0$ đều cho $\min f+\max f=4m$. Giải $4m=m^2-5\Leftrightarrow m^2-4m-5=0\Leftrightarrow m=5$ hoặc $m=-1$; cả hai đều khác $0$ nên thoả.
+Vậy $m_1+m_2=5+(-1)=4$.
 
 === C2.5.4   (dạng "Tiệm cận của hàm hợp hoặc hàm có tham số")
 @ly_thuyet:
@@ -2304,6 +2634,113 @@ Hai nghiệm phân biệt: $\Delta'=1+m>0\Leftrightarrow m>-1$.
 Nghiệm $x=-1$ của tử là nghiệm của mẫu khi $1+2-m=0\Leftrightarrow m=3$; khi đó $y=\dfrac{x+1}{(x+1)(x-3)}=\dfrac{1}{x-3}$ chỉ còn $1$ tiệm cận đứng, nên phải loại $m=3$.
 Với $m\in[-5;5]$ nguyên, $m>-1$ và $m\ne3$ ta được $m\in\{0;1;2;4;5\}$.
 Vậy có $5$ giá trị nguyên của $m$.
+
+
+##VD
+Cho hàm số bậc ba $y=f(x)$ có đồ thị như hình vẽ. Tính tổng số đường tiệm cận đứng và tiệm cận ngang của đồ thị hàm số $g(x)=\dfrac{x^2(x+1)}{f^2(x)-2f(x)-3}$.
+[[HINH {"loai":"dothi","x":[-2,4],"y":[-3,5],"f":[{"e":"x^3-3*x^2+3","ten":"y=f(x)","xt":3.4}],"diem":[{"x":-1,"y":-1,"nhan":"(-1;-1)"},{"x":0,"y":3,"nhan":"(0;3)"},{"x":2,"y":-1,"nhan":"(2;-1)"},{"x":3,"y":3,"nhan":"(3;3)"}],"duong":[{"ngang":3},{"ngang":-1}]}]]
+
+Bài giải:
+Mẫu: $f^2(x)-2f(x)-3=(f(x)-3)(f(x)+1)$.
+Từ đồ thị: $f(x)=3$ có nghiệm kép $x=0$ (đồ thị chạm đường $y=3$ tại cực đại $(0;3)$) và nghiệm đơn $x=3$; $f(x)=-1$ có nghiệm đơn $x=-1$ và nghiệm kép $x=2$ (đồ thị chạm đường $y=-1$ tại cực tiểu $(2;-1)$).
+Vậy mẫu có bội $2$ tại $x=0$, bội $1$ tại $x=3$ và $x=-1$, bội $2$ tại $x=2$.
+So với tử $x^2(x+1)$: tại $x=0$ tử có bội $2$, bằng bội của mẫu nên không là tiệm cận đứng; tại $x=-1$ tử có bội $1$, bằng bội của mẫu nên không là tiệm cận đứng; tại $x=3$ và $x=2$ tử khác $0$ nên là tiệm cận đứng. Có $2$ tiệm cận đứng.
+Tử có bậc $3$, mẫu có bậc $6$ nên $\lim_{x\to\pm\infty}g(x)=0$: có $1$ tiệm cận ngang $y=0$.
+Vậy có $2+1=3$ đường tiệm cận.
+
+##VD
+Có bao nhiêu giá trị nguyên của tham số $m\in[-10;10]$ để đồ thị hàm số $y=\dfrac{x+1}{\sqrt{x^2-6x+m}}$ có đúng hai đường tiệm cận đứng?
+
+Bài giải:
+Hàm xác định khi $x^2-6x+m>0$. Nghiệm của mẫu là nghiệm của $x^2-6x+m=0$.
+Để có hai tiệm cận đứng, phương trình này phải có hai nghiệm phân biệt: $\Delta'=9-m>0\Leftrightarrow m<9$. (Khi $m=9$ phương trình có nghiệm kép $x=3$, hàm xác định trên $\mathbb{R}\setminus\{3\}$ nên chỉ có một tiệm cận đứng; khi $m>9$ không có tiệm cận đứng.)
+Khi có hai nghiệm phân biệt, hàm xác định ở phía ngoài hai nghiệm nên mỗi nghiệm có một phía lân cận thuộc tập xác định. Nghiệm $x_0$ là tiệm cận đứng khi tử khác $0$ tại $x_0$.
+Tử bằng $0$ tại $x=-1$, mà $x=-1$ là nghiệm của mẫu khi $1+6+m=0\Leftrightarrow m=-7$. Khi đó $y=\dfrac{x+1}{\sqrt{(x+1)(x-7)}}$ và với $x<-1$ ta có $y=-\sqrt{\dfrac{|x+1|}{|x-7|}}\to0$ khi $x\to-1^{-}$, nên $x=-1$ không là tiệm cận đứng và chỉ còn $1$ tiệm cận đứng $x=7$: loại $m=-7$.
+Với $m\in[-10;10]$ nguyên, $m<9$ và $m\ne-7$ ta được $m\in\{-10;-9;-8;-6;-5;\ldots;8\}$, tức $19-1=18$ giá trị.
+Vậy có $18$ giá trị nguyên của $m$.
+
+=== C2.5.5   (dạng "GTLN, GTNN của hàm ẩn f(u(x)) từ đồ thị, bảng của f hoặc f′")
+@ly_thuyet:
+##TC GTLN, GTNN của hàm ẩn khi biết đồ thị hoặc bảng của $f$, $f'$
+- Hàm $g(x)=f(u(x))+m$ trên đoạn $[\alpha;\beta]$: tìm tập giá trị $T$ của $t=u(x)$ trên đoạn (khảo sát $u$: đầu mút và cực trị nằm trong đoạn; $u$ liên tục nên $T$ là một đoạn). Khi đó $\max g=\max_{T}f+m$ và $\min g=\min_{T}f+m$; đọc $\max_T f$, $\min_T f$ từ đồ thị hoặc bảng biến thiên của $f$ (xét hai đầu mút của $T$ và các cực trị của $f$ nằm trong $T$).
+- Đồ thị (hoặc bảng xét dấu) của $f'$ trên đoạn $[a;b]$: từ dấu của $f'$ lập bảng biến thiên của $f$ trên đoạn; GTLN, GTNN của $f$ nằm trong số các giá trị tại hai đầu mút và tại các điểm $f'$ đổi dấu.
+- Hai giá trị của $f$ ở hai khoảng đơn điệu khác nhau (như $f(a)$ và $f(b)$) không so sánh được bằng bảng biến thiên; đề cho thêm đẳng thức (như $f(0)+f(1)=f(3)+f(4)$): chuyển vế để được hiệu hai giá trị cùng một khoảng đơn điệu, hiệu này biết dấu.
+- Có thể so sánh bằng diện tích: $f(b)-f(a)=\displaystyle\int_a^b f'(x)\,dx$ là diện tích đại số giữa đồ thị $f'$ và $Ox$ (phần phía trên $Ox$ mang dấu $+$, phần phía dưới mang dấu $-$).
+
+##PP Tìm GTLN, GTNN của hàm ẩn
+Xác định dữ kiện là đồ thị (bảng biến thiên) của $f$ hay đồ thị (bảng xét dấu) của $f'$.
+Với $f(u(x))+m$: tìm miền $T$ của $t=u(x)$ trên đoạn đã cho, đọc $\max_T f$, $\min_T f$ từ đồ thị, cộng $m$ rồi cho bằng giá trị đề cho để tìm $m$.
+Với $f'$: lập bảng biến thiên của $f$ trên đoạn, chỉ ra các giá trị là ứng viên của GTLN, GTNN; dùng giả thiết đẳng thức để so sánh các ứng viên còn lại, rồi kết luận điểm đạt GTLN, GTNN.
+
+##CY
+- Đọc GTLN, GTNN của $f$ trên $T$, không phải trên cả đồ thị; đầu mút của $T$ có thể do cực trị của $u$ chứ không phải do đầu mút của đoạn.
+- Bảng biến thiên của $f$ (lập từ đồ thị $f'$) không cho biết $f(0)$ hay $f(4)$ lớn hơn: phải dùng giả thiết đẳng thức, đừng đoán theo hình.
+- Đọc kỹ đề hỏi điểm đạt ($x=a$, $x=b$) hay giá trị ($f(a)$, $f(b)$).
+
+@vi_du:
+##VD
+Cho hàm số $y=f(x)$ có đồ thị như hình vẽ. Xét hàm số $g(x)=f(x^2-2x-1)+m$ trên đoạn $[-1;2]$ ($m$ là tham số).
+a) Tìm $m$ để giá trị lớn nhất của $g(x)$ trên đoạn $[-1;2]$ bằng $5$.
+b) Với $m$ tìm được, tính giá trị nhỏ nhất của $g(x)$ trên đoạn $[-1;2]$.
+[[HINH {"loai":"dothi","x":[-2.2,2.2],"y":[-4,5],"f":[{"e":"x^3-3*x","ten":"y=f(x)","xt":1.9}],"diem":[{"x":-2,"y":-2,"nhan":"(-2;-2)"},{"x":-1,"y":2,"nhan":"(-1;2)"},{"x":1,"y":-2,"nhan":"(1;-2)"},{"x":2,"y":2,"nhan":"(2;2)"}]}]]
+
+Bài giải:
+Đặt $t=x^2-2x-1=(x-1)^2-2$. Khi $x\in[-1;2]$ thì $x-1\in[-2;1]$ nên $(x-1)^2\in[0;4]$ và $t\in[-2;2]$ ($t=-2$ tại $x=1$, $t=2$ tại $x=-1$).
+Từ đồ thị, trên đoạn $[-2;2]$ hàm $f$ có cực đại $f(-1)=2$, cực tiểu $f(1)=-2$ và các giá trị đầu mút $f(-2)=-2$, $f(2)=2$. Do đó $\max_{[-2;2]}f=2$ và $\min_{[-2;2]}f=-2$.
+Suy ra $\max g=2+m$ và $\min g=-2+m$.
+a) $2+m=5\Leftrightarrow m=3$.
+b) Với $m=3$ thì $\min g=-2+3=1$.
+Vậy a) $m=3$; b) giá trị nhỏ nhất bằng $1$.
+
+##VD
+Cho hàm số $y=f(x)$ có đạo hàm trên $\mathbb{R}$, đồ thị hàm số $y=f'(x)$ như hình vẽ (đồ thị cắt trục hoành tại $x=1$ và chạm trục hoành tại $x=3$). Biết $f(0)+f(1)=f(3)+f(4)$. Giá trị nhỏ nhất và giá trị lớn nhất của $f(x)$ trên đoạn $[0;4]$ lần lượt đạt tại $x=a$ và $x=b$. Tìm $a$ và $b$.
+[[HINH {"loai":"dothi","x":[-1,5],"y":[-5,3],"f":[{"e":"(x-1)*(x-3)^2/2","ten":"y=f'(x)","xt":4.1}],"diem":[{"x":1,"y":0},{"x":3,"y":0}]}]]
+
+Bài giải:
+Từ đồ thị: trên $(0;1)$ đồ thị nằm dưới trục hoành nên $f'(x)<0$; trên $(1;4)$ đồ thị nằm trên trục hoành, chỉ chạm trục tại $x=3$, nên $f'(x)\ge0$ và $f$ đồng biến trên $[1;4]$.
+Do đó $f$ nghịch biến trên $[0;1]$, đồng biến trên $[1;4]$: $\min_{[0;4]}f=f(1)$, tức $a=1$, còn $\max_{[0;4]}f$ là số lớn hơn trong hai số $f(0)$ và $f(4)$.
+Từ giả thiết: $f(0)-f(4)=f(3)-f(1)$.
+Vì $f$ đồng biến trên $[1;4]$ và $1<3$ nên $f(3)>f(1)$, suy ra $f(0)-f(4)>0$, tức $f(0)>f(4)$.
+Vậy $\max_{[0;4]}f=f(0)$: $a=1$ và $b=0$.
+
+=== C2.5.6   (dạng "Ứng dụng max–min: phương trình, bất phương trình chứa m, biểu thức nhiều biến")
+@ly_thuyet:
+##TC Dùng GTLN, GTNN để giải phương trình, bất phương trình chứa $m$ và biểu thức nhiều biến
+- Cô lập $m$ về dạng $f(x)=m$ (hoặc $m\ge f(x)$, $m\le f(x)$) trên tập $K$ với $f$ liên tục. Phương trình $f(x)=m$ có nghiệm trên đoạn $K=[a;b]$ ⇔ $\min_K f\le m\le\max_K f$.
+- Bất phương trình có nghiệm trên đoạn $K$: $m\ge f(x)$ có nghiệm ⇔ $m\ge\min_K f$; $m\le f(x)$ có nghiệm ⇔ $m\le\max_K f$.
+- Biểu thức nhiều biến có ràng buộc: rút một biến theo biến kia (kèm miền của biến còn lại) hoặc đặt ẩn phụ $t=x+y$, $t=xy$, tìm miền của $t$ từ ràng buộc (hoặc bất đẳng thức Cô-si), rồi khảo sát hàm một biến bằng đạo hàm.
+
+##PP Giải bài ứng dụng max–min
+Phương trình, bất phương trình chứa $m$: cô lập $m$, đặt $f(x)$ là vế còn lại, khảo sát $f$ trên $K$ để có $\min_K f$, $\max_K f$.
+Viết điều kiện có nghiệm theo $\min_K f$, $\max_K f$ rồi giải bất phương trình theo $m$; chú ý yêu cầu "nguyên", "nhỏ nhất".
+Biểu thức nhiều biến: đưa về một biến (rút hoặc đặt ẩn phụ), tìm miền xác định chính xác của biến mới, khảo sát bằng đạo hàm và kết luận.
+
+##CY
+- "Có nghiệm" của $m\ge f(x)$ chỉ cần $m$ vượt giá trị NHỎ NHẤT của $f$ (không phải lớn nhất); viết sai chiều là đáp số lệch hẳn.
+- Miền của biến mới phải tìm đúng: $t=xy$ với $x+y=1$ chỉ nhận $t\in\left(0;\dfrac{1}{4}\right]$, không phải mọi giá trị dương.
+- Khi $f$ không đạt max (min) trên khoảng mở thì xét dấu bằng riêng.
+
+@vi_du:
+##VD
+a) Có bao nhiêu giá trị nguyên của tham số $m$ để phương trình $x^3-3x-3m+1=0$ có nghiệm thực trên đoạn $[-2;3]$?
+b) Tìm giá trị nguyên nhỏ nhất của $m$ để bất phương trình $x^3-3x\le3m-1$ có nghiệm trên đoạn $[-2;3]$.
+
+Bài giải:
+Đặt $h(x)=x^3-3x$; $h'(x)=3x^2-3=0\Leftrightarrow x=\pm1$ (cả hai thuộc $[-2;3]$).
+Ta có $h(-2)=-2$, $h(-1)=2$, $h(1)=-2$, $h(3)=18$ nên $\min_{[-2;3]}h=-2$ và $\max_{[-2;3]}h=18$.
+a) Phương trình tương đương $h(x)=3m-1$, có nghiệm trên $[-2;3]$ ⇔ $-2\le3m-1\le18\Leftrightarrow-\dfrac{1}{3}\le m\le\dfrac{19}{3}$. Các số nguyên $m=0;1;\ldots;6$: có $7$ giá trị.
+b) $h(x)\le3m-1$ có nghiệm trên $[-2;3]$ ⇔ $3m-1\ge\min h=-2\Leftrightarrow m\ge-\dfrac{1}{3}$; số nguyên nhỏ nhất là $m=0$.
+Vậy a) $7$; b) $m=0$.
+
+##VD
+Cho các số thực dương $x$, $y$ thoả mãn $x+y=1$. Tìm giá trị nhỏ nhất của biểu thức $P=x^2+y^2+\dfrac{1}{xy}$.
+
+Bài giải:
+Đặt $t=xy$. Vì $x+y=1$ nên $x^2+y^2=(x+y)^2-2xy=1-2t$ và $P=1-2t+\dfrac{1}{t}$.
+Miền của $t$: $t>0$ và $t=xy\le\left(\dfrac{x+y}{2}\right)^2=\dfrac{1}{4}$ (bất đẳng thức Cô-si). Mọi giá trị $t\in\left(0;\dfrac{1}{4}\right]$ đều đạt được vì $x$, $y$ là hai nghiệm của $X^2-X+t=0$ có $\Delta=1-4t\ge0$ và hai nghiệm cùng dương.
+Xét $\varphi(t)=1-2t+\dfrac{1}{t}$ trên $\left(0;\dfrac{1}{4}\right]$: $\varphi'(t)=-2-\dfrac{1}{t^2}<0$ nên $\varphi$ nghịch biến, do đó $\min\varphi=\varphi\left(\dfrac{1}{4}\right)=1-\dfrac{1}{2}+4=\dfrac{9}{2}$.
+Dấu bằng xảy ra khi $t=\dfrac{1}{4}$, tức $x=y=\dfrac{1}{2}$.
+Vậy giá trị nhỏ nhất của $P$ bằng $\dfrac{9}{2}$.
 
 === N C3.1
 @ly_thuyet:
@@ -2363,6 +2800,17 @@ $x+2=-3$: $x=-5$, $y=-4-1=-5$; $x+2=-1$: $x=-3$, $y=-2-3=-5$.
 $x+2=1$: $x=-1$, $y=0+3=3$; $x+2=3$: $x=1$, $y=2+1=3$.
 Vậy có $4$ điểm nguyên: $(-5;-5)$, $(-3;-5)$, $(-1;3)$, $(1;3)$.
 
+##VD
+a) Đồ thị hàm số $y=\dfrac{3x+6}{x-2}$ cắt trục hoành tại $A(a;0)$ và cắt trục tung tại $B(0;b)$. Tính $2a-b$.
+b) Đồ thị hàm số $y=\dfrac{x^2+2x+4}{x+1}$ cắt trục hoành tại bao nhiêu điểm?
+
+Bài giải:
+a) Tập xác định $\mathbb{R}\setminus\{2\}$. Cho $y=0$: $3x+6=0$ cho $x=-2$ (khác $2$) nên $a=-2$.
+Cho $x=0$: $y=\dfrac{6}{-2}=-3$ nên $b=-3$.
+Vậy $2a-b=-4+3=-1$.
+b) Tập xác định $\mathbb{R}\setminus\{-1\}$. Giao với $Ox$: $x^2+2x+4=0$ có $\Delta=4-16=-12<0$ nên vô nghiệm.
+Vậy a) $2a-b=-1$; b) đồ thị không cắt trục hoành (có $0$ giao điểm).
+
 === C3.1.2   (dạng "Đếm nghiệm f(x)=m, số giao điểm từ đồ thị")
 @ly_thuyet:
 ##TC Số nghiệm của phương trình và đường ngang
@@ -2412,6 +2860,18 @@ Vậy tập giá trị là $(-\infty;-6]\cup[6;+\infty)$, đường $y=m$ không
 Các số nguyên $m$ thoả là $-5;-4;\dots;5$, có $11$ giá trị.
 Vậy câu a) có $5$ giá trị nguyên của $m$, câu b) có $11$ giá trị nguyên của $m$.
 
+##VD
+a) Số giao điểm của đồ thị hai hàm số $y=x^3+x^2-2x$ và $y=2x^2-x$ là bao nhiêu?
+b) Có bao nhiêu giá trị nguyên của $m$ để đường thẳng $y=m$ cắt đồ thị hàm số $y=x^4-4x^2+3$ tại bốn điểm phân biệt?
+
+Bài giải:
+a) Phương trình hoành độ giao điểm: $x^3+x^2-2x=2x^2-x\Leftrightarrow x^3-x^2-x=0\Leftrightarrow x(x^2-x-1)=0$.
+Phương trình $x^2-x-1=0$ có $\Delta=5>0$, hai nghiệm phân biệt đều khác $0$, nên phương trình có $3$ nghiệm phân biệt: có $3$ giao điểm.
+b) Ta có $y'=4x^3-8x=4x(x^2-2)$, $y'=0\Leftrightarrow x=0$ hoặc $x=\pm\sqrt{2}$.
+Giá trị cực đại $y(0)=3$, giá trị cực tiểu $y(\pm\sqrt{2})=4-8+3=-1$.
+Đường $y=m$ cắt đồ thị tại bốn điểm phân biệt khi $-1<m<3$; các số nguyên $m$ thoả là $0;1;2$, có $3$ giá trị.
+Vậy a) có $3$ giao điểm; b) có $3$ giá trị nguyên của $m$.
+
 === C3.1.3   (dạng "Giao điểm thoả hệ thức hoặc điều kiện hình học")
 @ly_thuyet:
 ##TC Hệ thức giữa các giao điểm của đồ thị và đường thẳng
@@ -2455,13 +2915,23 @@ Khi đó $na_n=2-a_n^3<2$ nên $0<a_n<\dfrac{2}{n}$.
 Vì $\lim\limits_{n\to+\infty}\dfrac{2}{n}=0$ nên theo nguyên lí kẹp $\lim\limits_{n\to+\infty}a_n=0$.
 Vậy a) $y_1+y_2=-3$; b) $\lim\limits_{n\to+\infty}a_n=0$.
 
+##VD
+a) Đồ thị hàm số $y=\dfrac{x^2-4x-5}{x+3}$ cắt trục hoành tại hai điểm $M$ và $N$. Tính $MN$.
+b) Gọi $M$ là giao điểm của đồ thị hàm số $y=\dfrac{x^2-3x-4}{x-2}$ và đường thẳng $y=x-2$. Tính độ dài $OM$.
+
+Bài giải:
+a) Tập xác định $\mathbb{R}\setminus\{-3\}$. Giao với $Ox$: $x^2-4x-5=0$ cho $x=-1$ hoặc $x=5$, đều khác $-3$.
+Hai giao điểm $M(-1;0)$, $N(5;0)$ nằm trên $Ox$ nên $MN=|5-(-1)|=6$.
+b) Phương trình hoành độ giao điểm: $\dfrac{x^2-3x-4}{x-2}=x-2$ với $x\ne2$, tương đương $x^2-3x-4=(x-2)^2=x^2-4x+4$.
+Hai vế cùng hệ số $x^2$ nên còn phương trình bậc nhất $x=8$ (khác $2$), do đó chỉ có một giao điểm, với $y=8-2=6$: $M(8;6)$.
+$OM=\sqrt{8^2+6^2}=10$.
+Vậy a) $MN=6$; b) $OM=10$.
+
 === N C3.2
 @ly_thuyet:
 ##TC Phương trình tiếp tuyến của đồ thị
 - Tiếp tuyến của $(C):y=f(x)$ tại điểm $M_0(x_0;y_0)\in(C)$ có hệ số góc $k=f'(x_0)$.
 - Phương trình tiếp tuyến tại $M_0$: $y=f'(x_0)(x-x_0)+f(x_0)$; thu gọn về $y=kx+b$.
-- Đường thẳng $y=ax+b$ có hệ số góc $a$; đường thẳng $Ax+By+C=0$ ($B\ne0$) có hệ số góc $-\dfrac{A}{B}$.
-- Hai đường thẳng có hệ số góc $k_1$, $k_2$ song song khi $k_1=k_2$ (và không trùng nhau), vuông góc khi $k_1k_2=-1$.
 - Hàm $y=\dfrac{ax+b}{cx+d}$ có $y'=\dfrac{ad-bc}{(cx+d)^2}$, luôn cùng dấu với $ad-bc$.
 
 ##PP Viết tiếp tuyến
@@ -2478,35 +2948,34 @@ Viết $y=k(x-x_0)+y_0$ rồi thu gọn.
 ##TC Các cách đề cho tiếp điểm hoặc hệ số góc
 - Cho hoành độ $x_0$: tính ngay $y_0=f(x_0)$. Cho tung độ $y_0$: giải $f(x)=y_0$ (có thể có nhiều tiếp điểm).
 - Tiếp tuyến tại giao điểm với $Ox$ thì tiếp điểm có $y_0=0$; tại giao điểm với $Oy$ thì $x_0=0$.
-- Cho hệ số góc $k$ (trực tiếp, hoặc song song/vuông góc đường thẳng): giải $f'(x_0)=k$; song song với $y=ax+b$ thì $k=a$, vuông góc thì $k=-\dfrac{1}{a}$.
+- Cho hệ số góc $k$: giải $f'(x_0)=k$; nghiệm kép của phương trình này cho đúng một tiếp tuyến, hai nghiệm phân biệt cho hai tiếp tuyến. Đề hỏi tiếp tuyến dưới dạng $y=mx+n$ thì thu gọn phương trình tiếp tuyến rồi đọc $m=k$, $n$ là hệ số tự do.
 - Hệ số góc tiếp tuyến lớn nhất (nhỏ nhất) là giá trị lớn nhất (nhỏ nhất) của $f'(x)$ theo $x$, đạt tại tiếp điểm.
 - Tiếp tuyến cắt hai trục tại $A\left(-\dfrac{b}{k};0\right)$ và $B(0;b)$ nên tạo với hai trục tam giác vuông có diện tích $\dfrac{1}{2}\cdot\dfrac{b^2}{|k|}$.
 
 ##PP Tiếp tuyến theo tiếp điểm hoặc hệ số góc
 Từ điều kiện đề tìm các hoành độ tiếp điểm $x_0$ (giải $f(x_0)=y_0$ hoặc $f'(x_0)=k$ nếu cần).
 Với mỗi $x_0$, tính $y_0$ và $k=f'(x_0)$ rồi viết $y=k(x-x_0)+y_0$.
-Với "song song", so sánh hệ số tự do để loại tiếp tuyến trùng với đường thẳng đã cho.
+Đề cho tiếp tuyến tại $x_0$ và hỏi diện tích tam giác với hai trục: tìm hai giao điểm với $Ox$, $Oy$ rồi lấy $\dfrac{1}{2}\cdot\dfrac{b^2}{|k|}$.
 Đề hỏi hệ số góc lớn nhất: viết $f'(x)$ dưới dạng $-A(x-x_1)^2+B$ rồi suy ra giá trị lớn nhất và $x_0$ tương ứng.
 
 ##CY
 - Với hàm phân thức $y'$ luôn cùng dấu với $ad-bc$: hệ số góc trái dấu thì không có tiếp tuyến.
-- Đường thẳng dạng $Ax+By+C=0$ phải đưa về $y=ax+b$ trước khi lấy hệ số góc.
+- Phương trình $f'(x_0)=k$ có nghiệm kép thì chỉ có một tiếp tuyến, đừng viết thành hai.
 
 @vi_du:
 ##VD
 Cho hàm số $y=\dfrac{x-2}{x+1}$ có đồ thị $(C)$. Viết phương trình tiếp tuyến của $(C)$:
 a) tại giao điểm của $(C)$ với trục hoành;
-b) song song với đường thẳng $d:3x-4y+8=0$.
+b) có hệ số góc bằng $\dfrac{3}{4}$.
 
 Bài giải:
 Tập xác định $\mathbb{R}\setminus\{-1\}$ và $y'=\dfrac{1\cdot1-(-2)\cdot1}{(x+1)^2}=\dfrac{3}{(x+1)^2}$.
 a) Giao với $Ox$: $y=0\Leftrightarrow x_0=2$. Hệ số góc $k=y'(2)=\dfrac{3}{9}=\dfrac{1}{3}$.
 Tiếp tuyến là $y=\dfrac{1}{3}(x-2)+0$, tức $y=\dfrac{1}{3}x-\dfrac{2}{3}$.
-b) Đường thẳng $d$ có dạng $y=\dfrac{3}{4}x+2$ nên tiếp tuyến có $k=\dfrac{3}{4}$.
+b) Hệ số góc $k=\dfrac{3}{4}$ nên
 $\dfrac{3}{(x+1)^2}=\dfrac{3}{4}\Leftrightarrow(x+1)^2=4\Leftrightarrow x=1$ hoặc $x=-3$.
 Với $x_0=1$: $y_0=-\dfrac{1}{2}$, tiếp tuyến $y=\dfrac{3}{4}(x-1)-\dfrac{1}{2}=\dfrac{3}{4}x-\dfrac{5}{4}$.
 Với $x_0=-3$: $y_0=\dfrac{5}{2}$, tiếp tuyến $y=\dfrac{3}{4}(x+3)+\dfrac{5}{2}=\dfrac{3}{4}x+\dfrac{19}{4}$.
-Cả hai đều có hệ số tự do khác $2$ nên không trùng $d$.
 Vậy a) $y=\dfrac{1}{3}x-\dfrac{2}{3}$; b) $y=\dfrac{3}{4}x-\dfrac{5}{4}$ và $y=\dfrac{3}{4}x+\dfrac{19}{4}$.
 
 ##VD
@@ -2518,6 +2987,19 @@ Với $x_0=1$: $y_0=-1+3+4-2=4$. Tiếp tuyến $\Delta:y=7(x-1)+4$, tức $y=7x
 $\Delta$ cắt $Ox$ tại $A\left(\dfrac{3}{7};0\right)$ và cắt $Oy$ tại $B(0;-3)$.
 Tam giác $OAB$ vuông tại $O$ có diện tích $\dfrac{1}{2}\cdot\dfrac{3}{7}\cdot3=\dfrac{9}{14}$.
 Vậy $\Delta:y=7x-3$ và diện tích tam giác bằng $\dfrac{9}{14}$.
+
+##VD
+a) Tiếp tuyến của đồ thị hàm số $y=x^3-6x^2+4x-1$ có hệ số góc $k=-8$ có phương trình $y=mx+n$. Tính $m+n$.
+b) Cho hàm số $y=\dfrac{x+1}{x-2}$ có đồ thị $(C)$. Tính diện tích tam giác tạo bởi tiếp tuyến của $(C)$ tại điểm có hoành độ bằng $3$ và hai trục toạ độ.
+
+Bài giải:
+a) Ta có $y'=3x^2-12x+4$. Giải $y'=-8$: $3x^2-12x+12=0\Leftrightarrow3(x-2)^2=0\Leftrightarrow x=2$ (nghiệm kép, chỉ có một tiếp tuyến).
+$y(2)=8-24+8-1=-9$. Tiếp tuyến $y=-8(x-2)-9$, tức $y=-8x+7$ nên $m=-8$, $n=7$ và $m+n=-1$.
+b) Tập xác định $\mathbb{R}\setminus\{2\}$, $y'=\dfrac{1\cdot(-2)-1\cdot1}{(x-2)^2}=-\dfrac{3}{(x-2)^2}$.
+Với $x_0=3$: $y_0=4$, $k=y'(3)=-3$. Tiếp tuyến $y=-3(x-3)+4$, tức $y=-3x+13$.
+Tiếp tuyến cắt $Ox$ tại $A\left(\dfrac{13}{3};0\right)$ và cắt $Oy$ tại $B(0;13)$.
+Diện tích tam giác $OAB$ bằng $\dfrac{1}{2}\cdot\dfrac{13}{3}\cdot13=\dfrac{169}{6}$.
+Vậy a) $m+n=-1$; b) diện tích bằng $\dfrac{169}{6}$.
 
 === C3.2.2   (dạng "Tiếp tuyến cắt hai tiệm cận của hàm nhất biến")
 @ly_thuyet:
@@ -2588,6 +3070,7 @@ Tìm giá trị nhỏ nhất bằng Cô-si khi có tích không đổi, hoặc k
 - Hàm $y=ax+b+\dfrac{r}{x-x_I}$ có tiệm cận xiên: với $M\left(x_I+u;\,a(x_I+u)+b+\dfrac{r}{u}\right)$, khoảng cách tới tiệm cận đứng là $|u|$, tới tiệm cận xiên là $\dfrac{|r|}{|u|\sqrt{1+a^2}}$; tích hai khoảng cách bằng $\dfrac{|r|}{\sqrt{1+a^2}}$ không đổi.
 - Khoảng cách từ $M(t;f(t))$ đến đường thẳng $d:Ax+By+C=0$ là $\dfrac{|h(t)|}{\sqrt{A^2+B^2}}$ với $h(t)=At+Bf(t)+C$; giá trị nhỏ nhất tìm bằng bảng biến thiên của $h$ trên miền của $M$. Khi đồ thị nằm hẳn về một phía của $d$, điểm gần nhất (nếu không ở đầu mút) là tiếp điểm của tiếp tuyến song song với $d$.
 - Bài thực tế (bờ hồ, đảo, đường cong quỹ đạo và một con đường, bờ sông thẳng): bờ cong là một phần đồ thị, con đường là đường thẳng $d$; cây cầu hay đường ống ngắn nhất bằng khoảng cách nhỏ nhất từ điểm trên phần đồ thị đó tới $d$, nhân đơn vị trục để đổi ra mét.
+- Đề cho hàm $y=\dfrac{ax+b}{x+d}$ chưa biết hệ số (cho tiệm cận, điểm đi qua hoặc đồ thị): tìm $a$, $b$, $d$ trước (tiệm cận đứng $x=-d$, tiệm cận ngang $y=a$), rồi đặt $M$ theo $u$; hai điểm $M$ đối xứng qua $I$ thì chọn điểm theo điều kiện của đề (dấu của hoành độ).
 - Khoảng cách tới một điểm $I$ cố định: xét $MI^2$ theo ẩn; với hàm phân thức và $I$ là giao điểm hai tiệm cận, $MI^2$ thường có dạng $\alpha u^2+\dfrac{\beta}{u^2}+\gamma$ ($\alpha,\beta>0$), dùng Cô-si cho hai số hạng đầu.
 
 ##PP Tìm điểm trên đồ thị làm khoảng cách nhỏ nhất
@@ -2627,12 +3110,29 @@ Do đó $h(t)<0$ trên đoạn, $|h(t)|=-h(t)$ nhỏ nhất bằng $10-4\sqrt{2}
 Khoảng cách nhỏ nhất là $\dfrac{10-4\sqrt{2}}{\sqrt{10}}\approx1{,}3734$ đơn vị, tức khoảng $137$ m; khi đó $M\left(\sqrt{2};\,2+\sqrt{2}\right)$.
 Vậy đường ống ngắn nhất dài khoảng $137$ m, nối từ điểm $M\left(\sqrt{2};\,2+\sqrt{2}\right)$ trên bờ hồ.
 
+##VD
+a) Cho hàm số $y=\dfrac{x^2+3x+3}{x+1}$ có đồ thị $(C)$ và $I$ là giao điểm của tiệm cận đứng với tiệm cận xiên. Tìm giá trị nhỏ nhất của $MI$ khi $M$ chạy trên $(C)$.
+b) Cho hàm số $y=\dfrac{ax+b}{x+d}$ có đồ thị $(C)$ với tiệm cận đứng $x=1$, tiệm cận ngang $y=2$ và $(C)$ cắt trục tung tại điểm có tung độ $3$. Điểm $M(m;n)$ thuộc $(C)$ với $m<1$ sao cho tổng khoảng cách từ $M$ đến hai đường tiệm cận nhỏ nhất. Tính $m+n$.
+
+Bài giải:
+a) Chia đa thức: $y=x+2+\dfrac{1}{x+1}$, tiệm cận đứng $x=-1$, tiệm cận xiên $y=x+2$, nên $I(-1;1)$.
+Gọi $M\left(-1+u;\,1+u+\dfrac{1}{u}\right)$ với $u\ne0$. Khi đó $MI^2=u^2+\left(u+\dfrac{1}{u}\right)^2=2u^2+\dfrac{1}{u^2}+2$.
+Theo Cô-si, $2u^2+\dfrac{1}{u^2}\ge2\sqrt{2}$, dấu bằng khi $2u^2=\dfrac{1}{u^2}$, tức $u^4=\dfrac{1}{2}$ (xảy ra được).
+Vậy $MI^2\ge2+2\sqrt{2}$ nên $MI$ nhỏ nhất bằng $\sqrt{2+2\sqrt{2}}$.
+b) Tiệm cận đứng $x=1$ nên $d=-1$, tiệm cận ngang $y=2$ nên $a=2$. Đồ thị qua $(0;3)$: $\dfrac{b}{-1}=3$ nên $b=-3$ và $y=\dfrac{2x-3}{x-1}=2-\dfrac{1}{x-1}$.
+Gọi $M\left(1+u;\,2-\dfrac{1}{u}\right)$: khoảng cách tới tiệm cận đứng là $|u|$, tới tiệm cận ngang là $\dfrac{1}{|u|}$.
+Tổng $|u|+\dfrac{1}{|u|}\ge2$ (Cô-si), dấu bằng khi $|u|=1$.
+Vì $m<1$ nên $u=-1$, $M(0;3)$, do đó $m+n=3$.
+Vậy a) $MI_{\min}=\sqrt{2+2\sqrt{2}}$; b) $m+n=3$.
+
 === C3.3.2   (dạng "Diện tích, góc tạo bởi tiệm cận và trục toạ độ")
 @ly_thuyet:
 ##TC Diện tích và góc của hình tạo bởi tiệm cận
 - Tiệm cận đứng $x=\alpha$, tiệm cận ngang $y=\beta$ cùng $Ox$, $Oy$ tạo hình chữ nhật có hai kích thước $|\alpha|$, $|\beta|$, diện tích $S=|\alpha\beta|$.
 - Tiệm cận xiên $y=kx+b$ ($k\ne0$, $b\ne0$) cắt $Ox$ tại $A\left(-\dfrac{b}{k};0\right)$ và cắt $Oy$ tại $B(0;b)$, tạo với hai trục tam giác vuông $OAB$ có $S=\dfrac{b^2}{2|k|}$.
 - Tiệm cận đứng $x=\alpha$, tiệm cận xiên $y=kx+b$ cùng $Oy$ và $Ox$ có thể tạo hình thang vuông: diện tích bằng tổng hai đáy (độ dài đoạn nằm trên $x=0$ và trên $x=\alpha$) nhân chiều cao $|\alpha|$ rồi chia $2$.
+- Hình chữ nhật tạo bởi tiệm cận đứng $x=\alpha$, tiệm cận ngang $y=\beta$ và hai trục có chu vi $2(|\alpha|+|\beta|)$. Hàm có tham số $m$ trong $\alpha$ hoặc $\beta$: viết $S$ hoặc chu vi theo $m$ rồi giải phương trình (giá trị tuyệt đối cho hai nghiệm $\pm$), kiểm tra $ad-bc\ne0$.
+- Đường thẳng $d$ cắt tiệm cận đứng tại $A$ và tiệm cận ngang tại $B$, $I$ là giao điểm hai tiệm cận: tam giác $IAB$ vuông tại $I$, $S=\dfrac{1}{2}IA\cdot IB$ với $IA=|y_A-y_I|$, $IB=|x_B-x_I|$.
 - Góc giữa hai đường có hệ số góc $k_1$, $k_2$: $\tan\varphi=\left|\dfrac{k_1-k_2}{1+k_1k_2}\right|$; tiệm cận đứng và đường có hệ số góc $k\ne0$ tạo góc $\varphi$ với $\tan\varphi=\dfrac{1}{|k|}$. Tiệm cận đứng và tiệm cận ngang vuông góc.
 
 ##PP Tìm tiệm cận rồi tính diện tích hoặc góc
@@ -2671,6 +3171,20 @@ Hai đáy song song với nhau nằm trên $x=0$ và $x=3$ có độ dài $1$ v�
 b) Hàm có tiệm cận đứng $x=-2$ và tiệm cận xiên $y=3x-1$ có hệ số góc $k=3$.
 Tiệm cận đứng tạo với đường có hệ số góc $3$ một góc $\alpha$ với $\tan\alpha=\dfrac{1}{3}$.
 Vậy diện tích hình thang bằng $\dfrac{15}{2}$ và $\tan\alpha=\dfrac{1}{3}$.
+
+##VD
+a) Các đường tiệm cận của đồ thị hàm số $y=\dfrac{3x-4}{x+5}$ tạo với hai trục toạ độ một hình chữ nhật. Tính chu vi hình chữ nhật đó.
+b) Cho hàm số $y=\dfrac{mx-3}{x+2}$ có đồ thị $(C_m)$. Tiệm cận đứng, tiệm cận ngang của $(C_m)$ cùng hai trục toạ độ tạo thành hình chữ nhật có diện tích bằng $6$. Tính tích các giá trị của $m$.
+c) Cho hàm số $y=\dfrac{2x+1}{x-1}$ có đồ thị $(C)$ và đường thẳng $d:2x+y-7=0$. Đường thẳng $d$ cắt tiệm cận đứng tại $A$ và tiệm cận ngang tại $B$; $I$ là giao điểm hai tiệm cận. Tính diện tích tam giác $IAB$.
+
+Bài giải:
+a) Đồ thị có tiệm cận đứng $x=-5$ và tiệm cận ngang $y=3$. Hình chữ nhật có hai kích thước $5$ và $3$ nên chu vi $2(5+3)=16$.
+b) Tiệm cận đứng $x=-2$; tiệm cận ngang $y=m$ (điều kiện $2m+3\ne0$ để hàm không suy biến). Hình chữ nhật có hai kích thước $2$ và $|m|$ nên $S=2|m|=6\Leftrightarrow m=\pm3$, cả hai thoả $2m+3\ne0$.
+Tích các giá trị của $m$ là $3\cdot(-3)=-9$.
+c) Tiệm cận đứng $x=1$, tiệm cận ngang $y=2$, $I(1;2)$.
+$d$ cắt $x=1$ tại $A(1;5)$ (vì $2+y-7=0$ cho $y=5$) và cắt $y=2$ tại $B\left(\dfrac{5}{2};2\right)$ (vì $2x+2-7=0$ cho $x=\dfrac{5}{2}$).
+$IA=5-2=3$, $IB=\dfrac{5}{2}-1=\dfrac{3}{2}$, tam giác $IAB$ vuông tại $I$ nên $S=\dfrac{1}{2}\cdot3\cdot\dfrac{3}{2}=\dfrac{9}{4}$.
+Vậy a) chu vi bằng $16$; b) tích các giá trị của $m$ bằng $-9$; c) diện tích bằng $\dfrac{9}{4}$.
 
 === N C4.1   (nhóm "Hàm mô hình cho sẵn")
 @ly_thuyet:
@@ -2760,7 +3274,7 @@ Vậy $a=1$, $b=10$ và việc nâng mức loại bỏ từ $90\%$ lên $95\%$ t
 
 ##VD
 a) Trong $6$ phút đầu tiên kể từ khi xuất phát từ mặt đất, độ cao $h$ (mét) của một khinh khí cầu tại phút thứ $t$ được cho bởi $h(t)=at^3+bt^2+ct+d$ ($a\ne0$). Đồ thị của $h(t)$ như hình vẽ: đi qua gốc toạ độ, đạt cực đại tại điểm $A(2;20)$ và đạt cực tiểu tại điểm $B(4;16)$. Tính độ cao của khinh khí cầu ở phút thứ $6$.
-[[HINH {"loai":"dothi","x":[-1,7],"y":[-5,40],"f":[{"e":"x^3-9*x^2+24*x","x":[0,6],"ten":"h(t)"}],"diem":[{"x":2,"y":20,"nhan":"A"},{"x":4,"y":16,"nhan":"B"}]}]]
+[[HINH {"loai":"dothi","tyle":"tudo","x":[-1,7],"y":[-5,40],"f":[{"e":"x^3-9*x^2+24*x","x":[0,6],"ten":"h(t)"}],"diem":[{"x":2,"y":20,"nhan":"A"},{"x":4,"y":16,"nhan":"B"}]}]]
 b) Chi phí trung bình (triệu đồng/sản phẩm) khi một xưởng sản xuất $x$ trăm sản phẩm được mô hình hoá bởi $C(x)=\dfrac{x^2-mx+25}{x-m}$ với $x>m$, trong đó $m$ là tham số nguyên dương. Tính tổng các giá trị của $m$ để chi phí trung bình giảm liên tục khi số sản phẩm tăng từ $1000$ đến $1200$ (tức $x\in(10;12)$).
 
 Bài giải:
@@ -2785,6 +3299,9 @@ Vậy ở phút thứ $6$ khinh khí cầu ở độ cao $36$ m; có $4$ giá tr
 - **Khoảng tăng, giảm:** lập bảng xét dấu $f'$ trong miền thực tế của biến. Đề thường hỏi khoảng $(a;b)$ dài nhất mà đại lượng tăng (giảm) rồi tính một biểu thức như $a+b$ hoặc $a+2b$; hoặc hỏi "bắt đầu tăng từ lúc nào" (mút trái của khoảng tăng).
 - **Ngưỡng của biến:** giải bất phương trình $f(x)\ge m$ hoặc $f(x)\le M$ rồi lấy phần giao với miền thực tế. Với hàm bậc hai chỉ cần xét dấu tam thức, không cần đạo hàm; với phân thức có mẫu dương (như $\dfrac{k}{v}+av$, $v>0$) thì nhân hai vế với mẫu để đưa về tam thức.
 - **Kinh tế:** lợi nhuận $P(x)=R(x)-C(x)$ (doanh thu trừ chi phí). **Hoà vốn** là $P(x)=0$; **có lãi** là $P(x)>0$; **lợi nhuận tối thiểu** $m$ là $P(x)\ge m$.
+- **Hàm chứa căn:** $\sqrt{v}$ chỉ có nghĩa khi $v\ge0$ và $(\sqrt v)'=\dfrac{1}{2\sqrt v}$ với $v>0$, nên khoảng tăng (giảm) lấy trong $(0;+\infty)$ giao miền thực tế; ví dụ $N(x)=a\sqrt x-x$ có $N'(x)=\dfrac{a}{2\sqrt x}-1$.
+- **Thuế (giá) chia khúc:** hàm được cho bằng nhiều công thức tuỳ khoảng của $x$. Viết $P(x)$ riêng cho từng khúc, giải bất phương trình trong từng khúc rồi **giao với đúng khúc đó**; ngưỡng nhỏ nhất là nghiệm nguyên nhỏ nhất của khúc đầu tiên có nghiệm.
+- **Chi phí hàm mũ:** $C(x)=ae^{kx}$ có $C'(x)=ake^{kx}$. Với $P(x)=R(x)-C(x)$ mà bất phương trình $P(x)\ge m$ không giải được bằng biến đổi đại số: chứng minh $P'(x)>0$ trên miền (đồng biến) nên chỉ có một ngưỡng, rồi dùng máy tính tìm nghiệm của $P(x)=m$ hoặc tìm số nguyên $n$ để $P(n)<m\le P(n+1)$.
 
 ##PP Tìm khoảng tăng giảm và ngưỡng
 Khoảng tăng giảm: tính $f'$, giải $f'=0$, lập bảng xét dấu trong miền thực tế rồi đọc các khoảng; nếu đề hỏi biểu thức của $a$, $b$ thì tính sau khi có khoảng.
@@ -2796,6 +3313,8 @@ Lấy giao với miền thực tế của biến; kết luận bằng ngữ cả
 - Khoảng tăng giảm chỉ xét trong miền thực tế; không đưa các khoảng nằm ngoài miền vào đáp án.
 - Biến là số lượng thì kết quả phải làm tròn hợp lí ("ít nhất" thì làm tròn lên).
 - Hoà vốn là lợi nhuận bằng $0$, không phải doanh thu bằng $0$.
+- Hàm chia khúc: nghiệm tìm được ở khúc nào phải thuộc khúc đó (mức thuế đổi theo khúc nên cùng một $x$ chỉ dùng một công thức); không ghép nghiệm các khúc lại rồi lấy chung.
+- Hàm mũ: khi dùng máy tính tìm ngưỡng phải thử lại cả hai số nguyên liền kề (ví dụ $P(n)<m\le P(n+1)$), không làm tròn nghiệm thực rồi kết luận ngay.
 
 @vi_du:
 ##VD
@@ -2818,6 +3337,24 @@ b) Với $0<v\le120$: $C(v)\le420\Leftrightarrow18000+2v^2\le420v\Leftrightarrow
 Phương trình $v^2-210v+9000=0$ có $\Delta=44100-36000=8100$ nên có hai nghiệm $v=60$ và $v=150$. Do đó $60\le v\le150$.
 Kết hợp với miền thực tế $0<v\le120$ được $60\le v\le120$.
 Vậy xưởng có lãi khi sản xuất trong khoảng từ $30$ đến $50$ nghìn sản phẩm, lợi nhuận đạt từ $75$ triệu đồng trở lên khi sản xuất từ $35$ đến $45$ nghìn sản phẩm, tức là ít nhất $35$ nghìn sản phẩm; xe tải phải chạy với tốc độ trung bình thấp nhất là $60$ km/h.
+
+##VD
+a) Năng suất lúa (tạ/ha) khi bón $x$ kg phân đạm cho một sào thí nghiệm được mô hình hoá bởi $N(x)=18\sqrt x-x+40$ với $0\le x\le100$. Năng suất tăng khi $x\in(a;b)$. Tính $a+b$.
+b) Một doanh nghiệp bán mỗi sản phẩm với giá $5$ triệu đồng, chi phí biến đổi $2$ triệu đồng mỗi sản phẩm và chi phí cố định $300$ triệu đồng mỗi tháng. Thuế tính theo doanh thu với thuế suất giảm dần theo sản lượng: bán dưới $80$ sản phẩm thì thuế suất $10\%$; từ $80$ đến dưới $200$ sản phẩm thì $6\%$; từ $200$ sản phẩm trở lên thì $4\%$. Tìm số sản phẩm ít nhất (nguyên dương) trong một tháng để doanh nghiệp bắt đầu có lãi.
+c) Doanh thu tháng khi sản xuất và bán $x$ sản phẩm ($100\le x\le3000$, $x\in\mathbb N$) là $R(x)=150x$ (triệu đồng); tổng chi phí tăng theo hàm mũ $C(x)=60e^{0{,}002x}$ (triệu đồng). Để lợi nhuận tháng đạt tối thiểu $30$ tỉ đồng thì cần sản xuất ít nhất bao nhiêu sản phẩm?
+
+Bài giải:
+a) Hàm $N$ xác định trên $[0;100]$ và với $x\in(0;100]$: $N'(x)=\dfrac{9}{\sqrt x}-1$.
+$N'(x)>0\Leftrightarrow\sqrt x<9\Leftrightarrow x<81$. Vậy $N'>0$ trên $(0;81)$ và $N'<0$ trên $(81;100)$.
+Năng suất tăng khi $x\in(0;81)$ nên $a=0$, $b=81$ và $a+b=81$.
+b) Lợi nhuận mỗi tháng $P(x)=5x-\text{thuế}-2x-300$.
+Khúc $1\le x<80$: thuế $=10\%\cdot5x=0{,}5x$ nên $P(x)=2{,}5x-300$. $P(x)>0\Leftrightarrow x>120$, không có nghiệm trong khúc này (vì $x<80$).
+Khúc $80\le x<200$: thuế $=6\%\cdot5x=0{,}3x$ nên $P(x)=2{,}7x-300$. $P(x)>0\Leftrightarrow x>\dfrac{3000}{27}\approx111{,}1$, nên $x\ge112$ (thuộc khúc này). Kiểm tra: $P(111)=-0{,}3<0$ và $P(112)=2{,}4>0$.
+Vậy doanh nghiệp bắt đầu có lãi từ $112$ sản phẩm mỗi tháng.
+c) Lợi nhuận $P(x)=150x-60e^{0{,}002x}$ (triệu đồng), cần $P(x)\ge30000$ (vì $30$ tỉ đồng $=30000$ triệu).
+$P'(x)=150-0{,}12e^{0{,}002x}\ge150-0{,}12e^{6}>150-0{,}12\cdot404>0$ với $x\le3000$ (vì $e^{0{,}002x}\le e^6<404$), nên $P$ đồng biến trên $[100;3000]$ và chỉ có một ngưỡng.
+Bằng máy tính: $P(200)\approx29\,910{,}5<30000$ và $P(201)\approx30\,060{,}3\ge30000$.
+Vậy cần sản xuất ít nhất $201$ sản phẩm.
 
 === C4.1.4   (dạng "Giá trị ngưỡng dài hạn của mô hình (tiệm cận)" — mô tả: Mô hình bão hoà cho sẵn hoặc tự lập hàm nồng độ, chi phí trung bình; tìm tiệm cận ngang để kết luận giá trị dài hạn.)
 @ly_thuyet:
@@ -2937,7 +3474,8 @@ Vậy thể tích lớn nhất khi $x=\dfrac{16\sqrt2}{5}\approx4{,}53$ dm, và 
 - Trang sách có hai kích thước $x$ và $y$, lề trái và phải mỗi bên $a$, lề trên và dưới mỗi bên $b$: phần in có hai kích thước $x-2a$ và $y-2b$. Trang có diện tích $S$ cố định thì $y=\dfrac{S}{x}$.
 - Cắt sợi dây dài $L$ thành hai đoạn $x$ và $L-x$ ($0<x<L$), mỗi đoạn uốn thành một hình. Diện tích **theo chu vi $p$**: hình vuông $\dfrac{p^2}{16}$, hình tròn $\dfrac{p^2}{4\pi}$, tam giác đều $\dfrac{\sqrt3p^2}{36}$.
 - Hình chữ nhật nội tiếp nửa đường tròn bán kính $R$, đáy nằm trên đường kính: nửa đáy $x$ thì chiều cao $\sqrt{R^2-x^2}$; nếu chọn ẩn là góc $\alpha$ ($0<\alpha<\dfrac{\pi}{2}$) thì nửa đáy $R\cos\alpha$, chiều cao $R\sin\alpha$, diện tích $S=R^2\sin2\alpha$.
-- Đường thẳng đi qua điểm $M(a;b)$ ($a,b>0$) cắt $Ox$, $Oy$ tại $(m;0)$, $(0;n)$ thì $\dfrac{a}{m}+\dfrac{b}{n}=1$, và tam giác tạo thành có diện tích $\dfrac12mn$.
+- Đường thẳng đi qua điểm $M(a;b)$ ($a,b>0$) cắt $Ox$, $Oy$ tại $(m;0)$, $(0;n)$ thì $\dfrac{a}{m}+\dfrac{b}{n}=1$, và tam giác tạo thành có diện tích $\dfrac12mn$. Chọn ẩn $m$ (hoành độ giao điểm với $Ox$, $m>a$) thì $n=\dfrac{bm}{m-a}$ và $S(m)=\dfrac{bm^2}{2(m-a)}$.
+- Máng nước gập từ tấm tôn bề ngang $3a$: chia ba phần bằng nhau mỗi phần $a$, gập hai bên lên một góc $\theta$ ($0<\theta<\dfrac{\pi}{2}$) thì mặt cắt là hình thang cân có đáy nhỏ $a$, hai cạnh bên $a$, đáy lớn $a+2a\cos\theta$, đường cao $a\sin\theta$; diện tích $S=a^2\sin\theta\,(1+\cos\theta)$. Với ẩn là góc, $S'(\theta)$ chứa $\cos\theta$, $\cos2\theta$: đưa về phương trình bậc hai theo $\cos\theta$ rồi lấy nghiệm thuộc miền của $\theta$.
 
 ##PP Tối ưu diện tích, chu vi
 Chọn ẩn là một cạnh (hoặc một đoạn, một góc) và nêu điều kiện của ẩn.
@@ -2974,6 +3512,25 @@ $S'(x)$ là hàm bậc nhất có hệ số của $x$ dương nên đổi dấu 
 Khi đó đoạn uốn hình vuông dài $36-20{,}34\approx15{,}66$ và $S_{\min}=\dfrac{324\sqrt3}{4\sqrt3+9}\approx35{,}23$.
 Vậy đoạn uốn tam giác đều dài khoảng $20{,}34$ m, đoạn uốn hình vuông dài khoảng $15{,}66$ m; tổng diện tích nhỏ nhất khoảng $35{,}23\ \text{m}^2$.
 
+##VD
+a) Người ta giăng lưới nuôi cá ở một góc hồ: lưới căng theo một đường thẳng từ một điểm trên bờ ngang đến một điểm trên bờ dọc (hai bờ vuông góc) và phải đi qua cọc $A$ đã cắm sẵn, cách bờ ngang $3$ m và cách bờ dọc $4$ m. Tìm diện tích nhỏ nhất của phần mặt nước được giăng lưới bao quanh.
+b) Một tấm tôn hình chữ nhật rộng $60$ cm được chia chiều rộng thành ba phần bằng nhau, mỗi phần $20$ cm, rồi gập hai phần bên lên một góc $\theta$ ($0<\theta<\dfrac{\pi}{2}$) để làm máng thoát nước có mặt cắt ngang là hình thang cân. Tìm $\theta$ để diện tích mặt cắt ngang lớn nhất và tính diện tích đó.
+
+Bài giải:
+a) Đặt hệ trục $Oxy$ với $O$ là góc hồ, $Ox$ trùng bờ ngang, $Oy$ trùng bờ dọc; khi đó $A(4;3)$. Đường thẳng cắt $Ox$ tại $B(t;0)$ và $Oy$ tại $C(0;n)$ với $t>4$ (để $n>0$).
+Vì $A$ thuộc đường thẳng nên $\dfrac4t+\dfrac3n=1$, suy ra $n=\dfrac{3t}{t-4}$.
+Diện tích tam giác $OBC$ là $S(t)=\dfrac12t\cdot\dfrac{3t}{t-4}=\dfrac{3t^2}{2(t-4)}$ với $t>4$.
+$S'(t)=\dfrac{3}{2}\cdot\dfrac{2t(t-4)-t^2}{(t-4)^2}=\dfrac{3t(t-8)}{2(t-4)^2}$, nên $S'(t)=0\Leftrightarrow t=8$ (thuộc $(4;+\infty)$).
+$S'<0$ trên $(4;8)$ và $S'>0$ trên $(8;+\infty)$ nên $S$ nhỏ nhất tại $t=8$, khi đó $n=\dfrac{24}{4}=6$ và $S(8)=\dfrac{3\cdot64}{2\cdot4}=24$.
+Vậy diện tích nhỏ nhất là $24\ \text{m}^2$, khi lưới cắt bờ ngang ở cách góc hồ $8$ m và cắt bờ dọc ở cách góc hồ $6$ m.
+b) Mặt cắt là hình thang cân có đáy nhỏ $20$, hai cạnh bên $20$, đáy lớn $20+2\cdot20\cos\theta=20+40\cos\theta$ và đường cao $20\sin\theta$ (cm).
+Diện tích $S(\theta)=\dfrac12(20+20+40\cos\theta)\cdot20\sin\theta=400\sin\theta\,(1+\cos\theta)$ với $0<\theta<\dfrac{\pi}{2}$.
+$S'(\theta)=400\left[\cos\theta(1+\cos\theta)-\sin^2\theta\right]=400(\cos\theta+\cos2\theta)=400(2\cos^2\theta+\cos\theta-1)=400(2\cos\theta-1)(\cos\theta+1)$.
+Vì $\cos\theta+1>0$ nên $S'(\theta)=0\Leftrightarrow\cos\theta=\dfrac12\Leftrightarrow\theta=\dfrac{\pi}{3}$ (thuộc $\left(0;\dfrac{\pi}{2}\right)$).
+$S'>0$ trên $\left(0;\dfrac{\pi}{3}\right)$ (vì $\cos\theta>\dfrac12$) và $S'<0$ trên $\left(\dfrac{\pi}{3};\dfrac{\pi}{2}\right)$ nên $S$ lớn nhất tại $\theta=\dfrac{\pi}{3}$.
+$S\left(\dfrac{\pi}{3}\right)=400\cdot\dfrac{\sqrt3}{2}\cdot\dfrac32=300\sqrt3\approx519{,}6$.
+Vậy $\theta=\dfrac{\pi}{3}$ (tức $60^\circ$) thì mặt cắt máng có diện tích lớn nhất, bằng $300\sqrt3\approx519{,}6\ \text{cm}^2$.
+
 === C4.2.3   (dạng "Tối ưu trên parabol, đồ thị đặt trong hệ toạ độ" — mô tả: Hình (cổng, mái vòm, mặt cắt) mô hình bằng parabol/bậc ba trong hệ trục; lập hàm theo toạ độ điểm rồi tối ưu.)
 @ly_thuyet:
 ##TC Đặt hệ trục toạ độ cho cổng, mái vòm, sườn đồi
@@ -2982,6 +3539,7 @@ Vậy đoạn uốn tam giác đều dài khoảng $20{,}34$ m, đoạn uốn h�
 - Hàm bậc ba $y=ax^3+bx^2+cx+d$ (hoặc thiếu hệ số) đi qua các điểm cho trước: thay toạ độ vào để lập hệ phương trình tìm hệ số.
 - Hình chữ nhật nội tiếp parabol đối xứng qua $Oy$ có hai đỉnh $(\pm x;f(x))$ trên parabol và hai đỉnh $(\pm x;0)$ trên $Ox$: cạnh ngang $2x$, cạnh đứng $f(x)$, với $0<x<c$. Nếu hai đỉnh dưới nằm trên thanh ngang $y=k$ (hoặc trên sàn xe cao $k$) thì cạnh đứng là $f(x)-k$.
 - Đoạn thẳng đứng $MN$ (cột đỡ, dây treo) nối điểm $M$ trên đường cong $y=f(x)$ với điểm $N$ trên đường thẳng $y=g(x)$ có cùng hoành độ $x$: $MN=|g(x)-f(x)|$.
+- **Khoảng cách từ điểm trên đường cong:** điểm $M(x;f(x))$ đến đường thẳng $d:ax+by+c=0$ có $d(M,d)=\dfrac{|ax+bf(x)+c|}{\sqrt{a^2+b^2}}$ (kiến thức lớp 10); mẫu là hằng số nên chỉ cần tối ưu tử.
 
 ##PP Lập phương trình đường cong rồi tối ưu
 Đặt hệ trục toạ độ phù hợp và ghi lại toạ độ các điểm đề cho (đỉnh, chân, điểm thuộc đường cong).
@@ -2994,6 +3552,7 @@ Tìm giá trị lớn nhất (nhỏ nhất) bằng đạo hàm và bảng xét d
 - Điều kiện của $x$ lấy theo vị trí điểm trên đường cong (như $0<x<3$), không lấy nghiệm ngoài khoảng đó.
 - Đoạn $MN$ dài nhất không nằm ở điểm thấp nhất (cao nhất) của đường cong: phải tối ưu hiệu $g(x)-f(x)$, không tối ưu riêng $f$.
 - Đơn vị trên hai trục là mét hay $10$ m, $100$ m tuỳ đề: đổi về đơn vị thực tế khi trả lời.
+- Khoảng cách ngắn nhất từ điểm trên đường cong đến đường thẳng: dấu giá trị tuyệt đối ở tử phải được bỏ đúng (xét dấu $ax+bf(x)+c$ trên miền của $x$) trước khi đạo hàm; kết quả cuối còn phải chia cho $\sqrt{a^2+b^2}$.
 
 @vi_du:
 ##VD
@@ -3020,6 +3579,16 @@ Với $M(x;f(x))$ và $N(x;x)$, $0<x<6$, cột đỡ dài $MN=x-f(x)=-\dfrac14x^
 $g'>0$ trên $(0;4)$ và $g'<0$ trên $(4;6)$ nên $g$ lớn nhất tại $x=4$, và $g(4)=\dfrac14\cdot16\cdot2=8$.
 Khi đó $M(4;-4)$, $N(4;4)$. Đổi đơn vị: $8$ đơn vị ứng với $80$ m, $x=4$ ứng với $40$ m.
 Vậy cột đỡ dài nhất là $80$ m, đặt cách mép $O$ theo phương ngang $40$ m.
+
+##VD
+Bờ một hồ nước là đồ thị hàm số $y=f(x)=\dfrac13x^3-x^2+2x$ với $0\le x\le5$ (đơn vị trên mỗi trục là $100$ m). Trong công viên có một con đường thẳng là đường thẳng $d:y=2x-3$. Người ta muốn đặt một bến thuyền trên bờ hồ sao cho khoảng cách từ bến đến con đường ngắn nhất. Tìm hoành độ của bến thuyền và khoảng cách ngắn nhất đó (theo mét, làm tròn đến hàng đơn vị).
+
+Bài giải:
+Viết $d:2x-y-3=0$. Với điểm $M(x;f(x))$ trên bờ hồ, $d(M,d)=\dfrac{|2x-f(x)-3|}{\sqrt{2^2+1}}=\dfrac{|f(x)-2x+3|}{\sqrt5}$.
+Đặt $g(x)=f(x)-2x+3=\dfrac13x^3-x^2+3$. Ta có $g'(x)=x^2-2x=x(x-2)$ nên trên $[0;5]$: $g'<0$ trên $(0;2)$, $g'>0$ trên $(2;5)$, do đó $g$ nhỏ nhất tại $x=2$ với $g(2)=\dfrac83-4+3=\dfrac53$.
+Vì $g(0)=3$, $g(5)=\dfrac{125}{3}-25+3>0$ nên $g(x)>0$ với mọi $x\in[0;5]$, do đó $|g(x)|=g(x)$ và khoảng cách $\dfrac{g(x)}{\sqrt5}$ nhỏ nhất khi $g$ nhỏ nhất.
+Khoảng cách ngắn nhất là $\dfrac{5/3}{\sqrt5}=\dfrac{\sqrt5}{3}\approx0{,}745$ (đơn vị), tức khoảng $75$ m.
+Vậy bến thuyền đặt tại điểm có hoành độ $x=2$ (tức cách trục tung $200$ m), cách con đường khoảng $75$ m.
 
 === N C4.3   (nhóm "Tối ưu đường đi, khoảng cách, góc")
 @ly_thuyet:
@@ -3048,6 +3617,8 @@ So sánh giá trị tại nghiệm với hai đầu mút (hoặc lập bảng bi
 - Đoạn nghiêng $AM=\sqrt{a^2+x^2}$, đoạn trên bờ $MB=L-x$.
 - Thời gian (vận tốc $v_1$ trên đoạn $AM$, $v_2$ trên đoạn $MB$): $T(x)=\dfrac{\sqrt{a^2+x^2}}{v_1}+\dfrac{L-x}{v_2}$.
 - Chi phí (đơn giá $p_1$ trên đoạn $AM$, $p_2$ trên đoạn $MB$): $C(x)=p_1\sqrt{a^2+x^2}+p_2(L-x)$.
+- Đường thẳng đi qua nhiều vùng (đất, cát…): đường đi là đoạn thẳng từ xuất phát đến đích, ẩn là vị trí đích. Phần nằm trong mỗi vùng tỉ lệ với độ dài cả đoạn; thời gian là tổng (độ dài từng phần $\div$ vận tốc vùng đó). Công thức đổi dạng khi đoạn thẳng bắt đầu cắt cạnh bên của vùng nên phải xét từng khoảng của ẩn.
+- Thời hạn: đề cho giờ phải đến nơi và hỏi giờ xuất phát muộn nhất thì lấy giờ đến nơi trừ thời gian ngắn nhất.
 
 ##PP Chọn điểm rẽ để thời gian (chi phí) nhỏ nhất
 Đặt $x=HM$ (hoặc đặt ẩn là độ dài đoạn trên bờ nếu đề hỏi đoạn đó), nêu điều kiện $0\le x\le L$.
@@ -3059,6 +3630,7 @@ So sánh $T$ tại nghiệm với $T(0)$ và $T(L)$, chọn nhỏ nhất rồi t
 - Đề cho "đi bộ bao nhiêu km" là hỏi độ dài đoạn trên bờ $L-x$, không phải $x$.
 - Nghiệm của $T'(x)=0$ phải thuộc $[0;L]$; nếu lớn hơn $L$ thì giá trị nhỏ nhất ở đầu mút $x=L$.
 - Giờ đổi sang phút (nhân $60$) khi đề hỏi phút; đơn giá và vận tốc phải cùng đơn vị độ dài.
+- Xuất phát **muộn nhất** ứng với thời gian đi **ngắn nhất**; làm tròn giờ xuất phát thì làm tròn xuống để chắc chắn đến kịp.
 
 @vi_du:
 ##VD
@@ -3084,6 +3656,19 @@ Bình phương hai vế (cả hai vế không âm): $25y^2=9\cdot144+9y^2$, suy 
 Tính $C(0)=60+60=120$; $C(9)=3\cdot11+5\cdot15=108$; $C(20)=5\sqrt{544}\approx116{,}6$.
 Giá trị nhỏ nhất là $108$ tại $y=9$, khi đó đoạn dây dọc bờ dài $AM=20-9=11$ km.
 Vậy đoạn dây dọc bờ dài $11$ km thì chi phí thấp nhất, bằng $108$ tỷ đồng.
+
+##VD
+Một robot xuất phát từ điểm $O$ là trung điểm cạnh $AB$ của khu đất hình chữ nhật $ABCD$ ($AB=120$ m, $AD=90$ m), đi theo một đường thẳng đến một điểm $E$ bất kỳ trên cạnh $CD$. Ở giữa khu đất có một bãi cát hình chữ nhật rộng $30$ m (theo chiều song song $AB$), dài $60$ m (theo chiều song song $AD$), cách đều hai cạnh $AB$, $CD$ và nhận đường thẳng đi qua $O$ vuông góc với $AB$ làm trục đối xứng. Vận tốc của robot trên đất là $50$ m/phút, trên cát là $30$ m/phút. Robot phải tới đích chậm nhất lúc $8$ giờ $10$ phút $00$ giây. Hỏi robot xuất phát muộn nhất lúc mấy giờ (làm tròn xuống đến giây)?
+
+Bài giải:
+Đặt hệ trục $Oxy$ với $O$ là gốc, $Ox$ song song $AB$, $Oy$ hướng về $CD$. Bãi cát là $\{|x|\le15;\ 15\le y\le75\}$ và $E(d;90)$ với $0\le d\le60$ (đối xứng nên chỉ xét $d\ge0$). Độ dài đường đi $L=\sqrt{d^2+8100}$; điểm của đường đi có tung độ $y$ có hoành độ $\dfrac{dy}{90}$.
+Trường hợp $0\le d\le18$: đường đi vào bãi cát qua cạnh $y=15$ và ra qua cạnh $y=75$ (hoành độ tại $y=75$ là $\dfrac{5d}{6}\le15$), phần trên cát dài $\dfrac{60}{90}L=\dfrac23L$ nên $T=\dfrac{L/3}{50}+\dfrac{2L/3}{30}=\dfrac{13L}{450}$, tăng theo $d$; nhỏ nhất tại $d=0$ với $T(0)=2{,}6$ phút.
+Trường hợp $18\le d\le60$: đường đi ra khỏi bãi cát qua cạnh bên $x=15$ tại $y=\dfrac{1350}{d}$, phần trên cát dài $s=\left(\dfrac{1350}{d}-15\right)\dfrac{L}{90}=L\left(\dfrac{15}{d}-\dfrac16\right)$. Thời gian
+$T(d)=\dfrac{L-s}{50}+\dfrac{s}{30}=\dfrac{L}{50}+\dfrac{s}{75}=\dfrac{4L}{225}+\dfrac{L}{5d}=\dfrac{4}{225}\sqrt{d^2+8100}+\dfrac15\sqrt{1+\dfrac{8100}{d^2}}$.
+$T'(d)=\dfrac1L\left(\dfrac{4d}{225}-\dfrac{1620}{d^2}\right)=0\Leftrightarrow d^3=91125\Leftrightarrow d=45$ (thuộc $[18;60]$); $T'<0$ trên $[18;45)$ và $T'>0$ trên $(45;60]$.
+$T(45)=\dfrac{4\cdot45\sqrt5}{225}+\dfrac{45\sqrt5}{225}=\sqrt5\approx2{,}2361$ phút, nhỏ hơn $T(18)\approx2{,}6515$, $T(60)\approx2{,}2835$ và $T(0)=2{,}6$.
+Thời gian ngắn nhất là $\sqrt5$ phút $\approx134{,}16$ giây, tức $2$ phút $14{,}16$ giây. Xuất phát muộn nhất lúc $8$ giờ $10$ phút $00$ giây trừ $2$ phút $14{,}16$ giây $=8$ giờ $7$ phút $45{,}84$ giây.
+Vậy robot xuất phát muộn nhất lúc $8$ giờ $7$ phút $45$ giây (làm tròn xuống), khi chọn đích $E$ cách đường $Oy$ là $45$ m.
 
 === C4.3.2   (dạng "Quãng đường, khoảng cách ngắn nhất hoặc dài nhất" — mô tả: Lập hàm khoảng cách/quãng đường theo vị trí, thời gian hoặc góc (hai vật chuyển động, đặt trạm, gấp giấy…) rồi tìm max–min.)
 @ly_thuyet:
@@ -3130,7 +3715,7 @@ Ta có $f'(0)<0$, $f'(12)>0$ và $f'$ chỉ triệt tiêu tại $x=\dfrac83$ nê
 $f\left(\dfrac83\right)=\sqrt{4+\dfrac{64}{9}}+\sqrt{49+\dfrac{784}{9}}=\dfrac{10}{3}+\dfrac{35}{3}=15$ (và $f(0)\approx15{,}9$, $f(12)\approx19{,}2$).
 Vậy đặt trạm bơm cách $A'$ là $\dfrac83\approx2{,}67$ km thì tổng độ dài hai đường ống ngắn nhất, bằng $15$ km.
 
-=== C4.3.3   (dạng "Thang dài nhất qua góc hành lang, góc nhìn lớn nhất" — mô tả: Thang/sào/ống đi qua góc hai hành lang (lập hàm theo góc), góc nhìn hoặc góc chiếu lớn nhất.)
+=== C4.3.3   (dạng "Thang, sào, xe qua góc hành lang; độ chiếu sáng lớn nhất" — mô tả: Thang/sào/ống/xe đi qua góc hai hành lang (lập hàm theo góc hoặc theo toạ độ); gara, hành lang có kích thước cho trước; độ chiếu sáng lớn nhất.)
 @ly_thuyet:
 ##TC Thang, sào qua một điểm cố định
 - Thang (đoạn thẳng) chạm đất và chạm tường thẳng đứng, đi qua một điểm cố định cách tường $d$ và cách mặt đất $h$ (đỉnh hàng rào, mép mái che, điểm góc trong của hành lang chữ L, cọc ở góc hồ, điểm mà con đường phải đi qua).
@@ -3195,6 +3780,17 @@ $g'(\alpha)=5\cos\alpha+\dfrac{-2{,}68\cos^2\alpha+(2-2{,}68\sin\alpha)\sin\alph
 Đặt $h(\alpha)=5\cos^3\alpha+2\sin\alpha-2{,}68$. Với $\sin\alpha_0=0{,}8$, $\cos\alpha_0=0{,}6$ ta có $h(\alpha_0)=5\cdot0{,}216+1{,}6-2{,}68=0$; bảng giá trị của $h$ trên $\left(0;\dfrac{\pi}{2}\right)$ cho thấy $h$ chỉ đổi dấu một lần, từ dương sang âm, tại $\alpha_0$, nên $g$ lớn nhất tại $\alpha_0$ (khi đó $s=1{,}8\in[0;5]$, đúng là $P$ nằm trên cạnh xe).
 $\max g=5\cdot0{,}8+\dfrac{2-2{,}68\cdot0{,}8}{0{,}6}=4-\dfrac{0{,}144}{0{,}6}=4-0{,}24=3{,}76$.
 Vậy đoạn đường thứ nhất phải rộng ít nhất $3{,}76$ m.
+
+##VD
+Một cái hồ rộng có dạng hình chữ nhật. Ở một góc hồ $A$, người ta đóng cọc $K$ cách bờ $AB$ là $2$ m và cách bờ $AD$ là $16$ m, rồi dùng một cây sào thẳng $PQ$ ($P$ thuộc bờ $AB$, $Q$ thuộc bờ $AD$) chạm vào cọc $K$ để ngăn góc hồ làm khu nuôi vịt (tam giác $APQ$). Tính diện tích của khu nuôi vịt khi cây sào $PQ$ ngắn nhất.
+
+Bài giải:
+Đặt hệ trục $Axy$ với $P$ trên $Ax$ (bờ $AB$), $Q$ trên $Ay$ (bờ $AD$) thì $K(16;2)$. Gọi $\alpha\in\left(0;\dfrac{\pi}{2}\right)$ là góc giữa cây sào và bờ $AB$ (góc $\widehat{APQ}$).
+Phần $PK$ có độ cao $2$ nên dài $\dfrac{2}{\sin\alpha}$; phần $KQ$ có hoành độ chênh $16$ nên dài $\dfrac{16}{\cos\alpha}$. Vậy $PQ=\ell(\alpha)=\dfrac{2}{\sin\alpha}+\dfrac{16}{\cos\alpha}$.
+$\ell'(\alpha)=0\Leftrightarrow16\sin^3\alpha=2\cos^3\alpha\Leftrightarrow\tan^3\alpha=\dfrac18\Leftrightarrow\tan\alpha=\dfrac12$; $\ell'<0$ khi $\tan\alpha<\dfrac12$ và $\ell'>0$ khi $\tan\alpha>\dfrac12$ nên $\ell$ nhỏ nhất tại $\tan\alpha=\dfrac12$, khi đó $\sin\alpha=\dfrac{1}{\sqrt5}$, $\cos\alpha=\dfrac{2}{\sqrt5}$ và $PQ_{\min}=2\sqrt5+8\sqrt5=10\sqrt5$ m.
+Đề hỏi diện tích nên tính tiếp: $AQ=PQ\sin\alpha=10\sqrt5\cdot\dfrac1{\sqrt5}=10$ m, $AP=PQ\cos\alpha=10\sqrt5\cdot\dfrac2{\sqrt5}=20$ m. Kiểm tra: đường thẳng $\dfrac{x}{20}+\dfrac{y}{10}=1$ đi qua $K(16;2)$ vì $\dfrac{16}{20}+\dfrac{2}{10}=1$.
+Diện tích khu nuôi vịt $S=\dfrac12\cdot AP\cdot AQ=\dfrac12\cdot20\cdot10=100$ m$^2$.
+Vậy khi sào ngắn nhất ($10\sqrt5\approx22{,}36$ m) thì khu nuôi vịt có diện tích $100$ m$^2$.
 
 === N C4.4
 @ly_thuyet:
@@ -3385,6 +3981,18 @@ $T'(x)=-\dfrac{18}{x^2}+\dfrac{50}{(8-x)^2}=0\Leftrightarrow 50x^2=18(8-x)^2\Lef
 Vì $x>0$ và $8-x>0$ nên $5x=3(8-x)\Leftrightarrow x=3$.
 $T'(x)<0$ khi $0<x<3$ và $T'(x)>0$ khi $3<x<8$ nên $T$ nhỏ nhất tại $x=3$, $T(3)=6+10=16$.
 Vậy mỗi ngày An dùng $3$ lít, Bình dùng $5$ lít; tổng số ngày nhỏ nhất là $16$ ngày (An $6$ ngày, Bình $10$ ngày).
+
+##VD
+Một nhóm làm nội dung truyền thông có đúng $9$ ngày để đăng bài trên hai kênh: kênh A và kênh B. Mỗi ngày chỉ đăng trên một kênh. Nếu dành $x$ ngày cho kênh A thì thu được $P_A=x^2+4x$ (nghìn lượt xem); nếu dành $y$ ngày cho kênh B thì thu được $P_B=200y-15y^2$ (nghìn lượt xem), với $x,y$ là số ngày nguyên không âm.
+a) Nếu không có điều kiện gì thêm, nên dành mấy ngày cho mỗi kênh để tổng lượt xem lớn nhất?
+b) Nếu do quy định của nền tảng, kênh B được đăng không quá $5$ ngày thì nên phân bổ thế nào, và tổng lượt xem lớn nhất là bao nhiêu?
+
+Bài giải:
+Vì $x+y=9$ nên $y=9-x$, tổng lượt xem là $P(x)=x^2+4x+200(9-x)-15(9-x)^2=-14x^2+74x+585$ (nghìn lượt xem), với $x\in\mathbb{N}$, $0\le x\le9$.
+$P'(x)=-28x+74=0\Leftrightarrow x=\dfrac{37}{14}\approx2{,}64$; $P$ tăng trên $\left[0;\dfrac{37}{14}\right]$ và giảm trên $\left[\dfrac{37}{14};9\right]$.
+a) $x$ phải nguyên nên so sánh hai số sát nghiệm: $P(2)=677$, $P(3)=681$. Vậy $x=3$ cho giá trị lớn hơn: dành $3$ ngày cho kênh A và $6$ ngày cho kênh B, tổng $681$ nghìn lượt xem.
+b) Điều kiện $y\le5$ tương đương $x\ge4$, nên miền mới là $x\in\{4;5;\dots;9\}$. Nghiệm $\dfrac{37}{14}$ nằm ngoài miền này, $P$ giảm trên miền nên lớn nhất ở đầu mút $x=4$: $P(4)=-224+296+585=657$.
+Vậy ở câu a) dành $3$ ngày cho kênh A và $6$ ngày cho kênh B; ở câu b) dành $4$ ngày cho kênh A, $5$ ngày cho kênh B, tổng lượt xem lớn nhất là $657$ nghìn.
 
 === C4.4.5   (dạng "Chọn mức thuế để tiền thuế thu được lớn nhất" — mô tả: hai tầng, với mỗi t doanh nghiệp chọn sản lượng tối ưu Q(t); rồi tối ưu tiền thuế t·Q(t))
 @ly_thuyet:
@@ -3578,7 +4186,7 @@ Vậy vận tốc lớn nhất là $53$ m/s lúc $t=4$ giây; khi đó vật đ�
 
 ##VD
 Quãng đường $s$ (km) một người đi xe đạp đi được sau $t$ giờ ($0\le t\le4$) là hàm số $s(t)=at^3+bt^2+ct+d$ ($a\ne0$) có đồ thị như hình vẽ (trục hoành là $t$, trục tung là $s$). Đồ thị đi qua gốc toạ độ $O$, tiếp xúc với trục hoành tại $O$ và có điểm cực đại $(4;32)$. Tìm vận tốc lớn nhất của người đó trong $4$ giờ đầu.
-[[HINH {"loai":"dothi","x":[-1,5],"y":[-4,36],"f":[{"e":"-x^3+6*x^2","x":[0,4],"ten":"s=s(t)"}],"diem":[{"x":4,"y":32,"nhan":"(4;32)"}]}]]
+[[HINH {"loai":"dothi","tyle":"tudo","x":[-1,5],"y":[-4,36],"f":[{"e":"-x^3+6*x^2","x":[0,4],"ten":"s=s(t)"}],"diem":[{"x":4,"y":32,"nhan":"(4;32)"}]}]]
 
 Bài giải:
 Từ đồ thị: $s(0)=0$ nên $d=0$; tiếp xúc trục hoành tại $O$ nên $s'(0)=0$, suy ra $c=0$.
@@ -3701,6 +4309,10 @@ Vậy sau khoảng $3{,}22$ tháng thì tốc độ bán hàng lớn nhất, b�
 - Thang dài $\ell$ dựa tường: $x\,x'+y\,y'=0$ ($x$ là khoảng cách chân thang đến tường, $y$ là độ cao đầu thang).
 - Thể tích nước $V$ là hàm của mực nước $h$, và $h$ là hàm của $t$: lưu lượng bơm (rò) là $V'(t)$, nên $V'(t)=V'(h)\cdot h'(t)$ và $h'(t)=\dfrac{V'(t)}{V'(h)}$.
 - Bể nón đỉnh ở dưới, bán kính đáy $R$, cao $H$: mặt nước ở độ cao $h$ có bán kính $r=\dfrac{R}{H}h$ (đồng dạng) và $V=\dfrac13\pi r^2h$.
+- Tổng quát: thể tích nước $V$ theo mực nước $h$ có $V'(h)=S(h)$ là diện tích mặt nước ở độ cao $h$, nên $h'(t)=\dfrac{V'(t)}{S(h)}$; bể có vật chắn (viên bi, khối cầu) thì $S(h)$ là diện tích mặt cắt **trừ** phần vật chắn bị mặt nước cắt. Hình cầu bán kính $R$ có mặt cắt ở độ cao $h\le2R$ là hình tròn bán kính $r$ với $r^2=h(2R-h)$, thể tích phần cầu dưới mực nước (chỏm cầu) $\dfrac{\pi h^2(3R-h)}{3}$.
+- Bể lăng trụ có mặt cắt là hình thang (đáy nghiêng, thành nghiêng…): bề rộng mặt nước là hàm bậc nhất của $h$, nên $S(h)$ bằng chiều dài bể nhân bề rộng mặt nước.
+- Điểm chuyển động trên vật đang chuyển động (con kiến bò trên thanh đang trượt): viết đại lượng cần xét (độ cao…) trực tiếp theo $t$ rồi tìm giá trị lớn nhất bằng đạo hàm; đây là bài tối ưu theo $t$, không phải quan hệ giữa hai tốc độ tại một thời điểm.
+- Điểm chuyển động thẳng đều so với một điểm cố định: khoảng cách $d=\sqrt{x^2+y^2}$ theo $t$, $d'=\dfrac{xx'+yy'}{d}$.
 
 ##PP Giải bài toán tốc độ liên quan
 Đặt tên các đại lượng thay đổi theo $t$, ghi các tốc độ cho biết và tốc độ cần tìm.
@@ -3739,4 +4351,33 @@ Thể tích nước $V=6\cdot\dfrac{20h^2}{3}=40h^2$, suy ra $V'(h)=80h$.
 Sau $20$ phút thể tích nước là $V=2\cdot20=40$ m$^3$, nên $40h^2=40$, $h=1$ (thoả $h\le1{,}5$).
 Từ $V'(t)=V'(h)\cdot h'(t)$ ta có $2=80h\cdot h'(t)$; với $h=1$ được $h'(t)=\dfrac{2}{80}=\dfrac{1}{40}$.
 Vậy mực nước dâng với tốc độ $\dfrac{1}{40}$ m/phút, tức $a=40$.
+
+##VD
+Một bể nước có dạng lăng trụ đứng đáy hình vuông cạnh $10\sqrt\pi$ dm, cao $20$ dm. Trong bể có gắn cố định một khối cầu đặc bán kính $5$ dm, tiếp xúc với mặt đáy của bể và có tâm nằm trên trục của lăng trụ. Ban đầu bể không có nước; người ta bơm nước vào bể với lưu lượng không đổi $15\pi$ dm$^3$/phút. Tại thời điểm mực nước vừa ngang tâm khối cầu, mực nước dâng với tốc độ bao nhiêu dm/phút?
+
+Bài giải:
+Gọi $h$ (dm) là mực nước, $0<h\le10$ (mặt nước chưa vượt qua đỉnh khối cầu). Diện tích đáy bể $100\pi$ dm$^2$.
+Thể tích nước $V=100\pi h-\dfrac{\pi h^2(15-h)}{3}$ (trừ chỏm cầu bị ngập), suy ra $V'(h)=100\pi-\pi(10h-h^2)=\pi\left(100-10h+h^2\right)$.
+Cách khác: $V'(h)$ là diện tích mặt nước, bằng diện tích đáy trừ hình tròn mặt cắt khối cầu: $100\pi-\pi\cdot h(10-h)$, trùng kết quả trên.
+Từ $V'(t)=V'(h)\cdot h'(t)$ ta có $15\pi=\pi\left(100-10h+h^2\right)h'(t)$.
+Khi mực nước ngang tâm khối cầu thì $h=5$: $100-50+25=75$ nên $15\pi=75\pi\cdot h'(t)$, suy ra $h'(t)=\dfrac15=0{,}2$.
+Vậy mực nước dâng với tốc độ $0{,}2$ dm/phút.
+
+##VD
+Một chiếc thang $AB$ dài $2{,}5$ m dựng sát một bức tường thẳng đứng (đầu $A$ chạm tường, đầu $B$ chạm sàn ngang). Tại thời điểm $t=0$, đầu $B$ bắt đầu trượt ra xa tường theo sàn với tốc độ không đổi $0{,}5$ m/s (đầu $A$ luôn tì lên tường), đồng thời một con kiến đậu ở $B$ bắt đầu bò dọc theo thang về phía $A$ với tốc độ $0{,}3$ m/s đối với thang. Tìm độ cao lớn nhất của con kiến so với sàn và thời điểm đạt độ cao đó.
+
+Bài giải:
+Sau $t$ giây ($0\le t\le5$, khi $t=5$ thang nằm trên sàn), chân thang cách tường $0{,}5t$ m, nên đầu $A$ ở độ cao $\sqrt{6{,}25-0{,}25t^2}$; góc $\theta$ giữa thang và sàn có $\sin\theta=\dfrac{\sqrt{6{,}25-0{,}25t^2}}{2{,}5}$.
+Con kiến cách $B$ đoạn $0{,}3t$ (dọc theo thang) nên độ cao của nó $h(t)=0{,}3t\sin\theta=\dfrac{0{,}3t\sqrt{6{,}25-0{,}25t^2}}{2{,}5}=0{,}12t\sqrt{6{,}25-0{,}25t^2}$. Kiến chưa tới $A$ vì $0{,}3t\le1{,}5<2{,}5$.
+$h^2=0{,}0144t^2\left(6{,}25-0{,}25t^2\right)=0{,}0144\left(6{,}25t^2-0{,}25t^4\right)$; $(h^2)'=0{,}0144\left(12{,}5t-t^3\right)=0\Leftrightarrow t^2=12{,}5$, $t=\dfrac{5}{\sqrt2}\approx3{,}54$ (thuộc $[0;5]$).
+$(h^2)'>0$ khi $t<\dfrac5{\sqrt2}$ và $<0$ khi $t>\dfrac5{\sqrt2}$ nên $h^2$ (cũng là $h$) lớn nhất tại $t=\dfrac5{\sqrt2}$: $h^2=0{,}0144\left(6{,}25\cdot12{,}5-0{,}25\cdot156{,}25\right)=0{,}0144\cdot39{,}0625=0{,}5625$, suy ra $h=0{,}75$.
+Vậy độ cao lớn nhất của con kiến là $0{,}75$ m, đạt lúc $t=\dfrac5{\sqrt2}\approx3{,}54$ giây.
+
+##VD
+Trên hệ trục $Oxyz$ (đơn vị m), một xe điều khiển xuất phát từ $A(0;0;0)$ chạy thẳng đến $B(0;240;0)$ trong $4$ phút. Từ $B$ xe đổi hướng chạy thẳng đến $C(600;240;0)$ với tốc độ không đổi, bằng tốc độ khi đi từ $A$ đến $B$. Ở thời điểm $3$ phút kể từ khi đổi hướng, khoảng cách giữa xe và vị trí xuất phát $A$ đang thay đổi với tốc độ bao nhiêu m/phút?
+
+Bài giải:
+Tốc độ của xe là $\dfrac{240}{4}=60$ m/phút. Sau $t$ phút kể từ khi đổi hướng ($0\le t\le10$ vì $BC=600$), xe ở $M(60t;240;0)$ và khoảng cách đến $A$ là $d(t)=\sqrt{(60t)^2+240^2}$.
+$d'(t)=\dfrac{60t\cdot60}{d}=\dfrac{3600t}{d}$. Khi $t=3$: $M(180;240;0)$, $d=\sqrt{180^2+240^2}=300$, nên $d'(3)=\dfrac{3600\cdot3}{300}=36$.
+Vậy khoảng cách giữa xe và $A$ đang tăng với tốc độ $36$ m/phút.
 

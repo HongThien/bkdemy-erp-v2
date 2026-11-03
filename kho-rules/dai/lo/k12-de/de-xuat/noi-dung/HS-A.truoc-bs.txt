@@ -1,0 +1,315 @@
+=== N C1.1
+@ly_thuyet:
+##TC Đơn điệu và dấu của đạo hàm
+- Hàm số $y=f(x)$ **đồng biến** trên $K$ nếu với mọi $x_1<x_2$ thuộc $K$ thì $f(x_1)<f(x_2)$; **nghịch biến** nếu với mọi $x_1<x_2$ thuộc $K$ thì $f(x_1)>f(x_2)$ ($K$ là khoảng, đoạn hoặc nửa khoảng).
+- Nếu $f'(x)>0$ với mọi $x\in K$ thì $f$ đồng biến trên $K$; nếu $f'(x)<0$ với mọi $x\in K$ thì $f$ nghịch biến trên $K$.
+- Mở rộng: nếu $f'(x)\ge0$ (hoặc $\le0$) trên $K$ và dấu bằng chỉ xảy ra tại hữu hạn điểm thì $f$ vẫn đồng biến (nghịch biến) trên $K$.
+- Đề không nói rõ tập $K$ thì hiểu là xét trên tập xác định.
+
+##TC Đọc đơn điệu từ hình
+- Trên bảng biến thiên: mũi tên đi **lên** (từ trái sang phải) là hàm **đồng biến**, mũi tên đi **xuống** là hàm **nghịch biến**.
+- Trên đồ thị $y=f(x)$: đồ thị đi **lên** từ trái sang phải là đồng biến, đi **xuống** là nghịch biến.
+- Các mốc chia khoảng là hoành độ của điểm đổi chiều (cực trị) hoặc điểm hàm không xác định.
+- Khoảng nằm trọn trong một khoảng đồng biến (nghịch biến) cũng là khoảng đồng biến (nghịch biến).
+
+##PP Xét tính đơn điệu bằng đạo hàm
+Tìm tập xác định của hàm số.
+Tính $y'$; tìm các điểm làm $y'=0$ và các điểm $y'$ không xác định.
+Lập bảng xét dấu $y'$ trên từng khoảng của tập xác định (hoặc xét dấu bằng lời).
+Kết luận: $y'>0$ thì đồng biến, $y'<0$ thì nghịch biến, mỗi khoảng viết riêng.
+
+##CY
+- Chỉ kết luận trong tập xác định: điểm hàm không xác định không bao giờ nằm trong khoảng đơn điệu.
+- Hai khoảng đồng biến rời nhau không được gộp bằng dấu $\cup$ rồi nói "đồng biến trên hợp của chúng"; phải nói đồng biến trên từng khoảng.
+- Khoảng đơn điệu là khoảng của $x$, không phải của $y$.
+
+=== C1.1.1
+@ly_thuyet:
+##TC Dấu của $y'$ với đa thức và phân thức
+- Tam thức $ax^2+bx+c$ có hai nghiệm $x_1<x_2$ thì cùng dấu $a$ khi $x$ nằm ngoài $[x_1;x_2]$ và trái dấu $a$ khi $x_1<x<x_2$.
+- Tam thức $ax^2+bx+c$ với $a>0$ và $\Delta<0$ thì luôn dương; khi đó $y'>0$ với mọi $x$ và hàm bậc ba $y=ax^3+\dots$ đồng biến trên $\mathbb{R}$.
+- Hàm trùng phương $y=ax^4+bx^2+c$ có $y'=4ax^3+2bx=2x(2ax^2+b)$; xét dấu từng nhân tử.
+- Hàm $y=\dfrac{ax+b}{cx+d}$ ($c\ne0$, $ad-bc\ne0$) có $y'=\dfrac{ad-bc}{(cx+d)^2}$: dấu của $y'$ là dấu của $ad-bc$, không đổi, nên hàm số đồng biến (hoặc nghịch biến) trên từng khoảng $\left(-\infty;-\dfrac{d}{c}\right)$ và $\left(-\dfrac{d}{c};+\infty\right)$.
+- Phân thức $y=\dfrac{P(x)}{Q(x)}$ có $y'=\dfrac{P'Q-PQ'}{Q^2}$; vì $Q^2>0$ nên dấu của $y'$ chính là dấu của tử số.
+- Tập xác định của phân thức: bỏ các nghiệm của mẫu.
+
+##PP Hàm đa thức và hàm phân thức
+Tìm tập xác định: đa thức là $\mathbb{R}$, phân thức bỏ các nghiệm của mẫu.
+Tính $y'$, rút gọn tử về nhân tử; giải $y'=0$.
+Xét dấu $y'$: với phân thức chỉ cần xét dấu tử, đánh dấu riêng điểm không xác định.
+Kết luận từng khoảng đồng biến, nghịch biến; hai bên điểm gián đoạn là hai khoảng khác nhau.
+Câu chọn phương án "đồng biến trên $\mathbb{R}$": kiểm tra từng hàm có tập xác định $\mathbb{R}$ và $y'\ge0$ với mọi $x$ (phân thức luôn bị loại vì không xác định tại nghiệm của mẫu).
+
+##CY
+- Nghiệm của mẫu là điểm gián đoạn: không đưa vào khoảng đơn điệu, nhưng cũng không làm đổi dấu của $y'$ (vì $Q^2>0$).
+- Không gộp $(0;1)$ và $(1;2)$ thành $(0;2)$ khi $x=1$ không thuộc tập xác định.
+- Đề hỏi "khoảng cho trước nào là khoảng đồng biến" thì khoảng đó phải nằm **trọn** trong một khoảng đồng biến đã tìm, không chỉ giao nhau một phần.
+
+@vi_du:
+##VD
+a) Tìm các khoảng đơn điệu của hàm số $y=x^3-6x^2+9x+1$. Biết $(a;b)$ là khoảng nghịch biến có độ dài lớn nhất của hàm số, tính $a+b$.
+b) Tìm các khoảng đơn điệu của hàm số $y=\dfrac{2x+1}{x-1}$.
+
+Bài giải:
+a) Tập xác định $D=\mathbb{R}$.
+Ta có $y'=3x^2-12x+9=3(x-1)(x-3)$.
+$y'=0\Leftrightarrow x=1$ hoặc $x=3$.
+Vì hệ số của $x^2$ dương nên $y'>0$ khi $x<1$ hoặc $x>3$, còn $y'<0$ khi $1<x<3$.
+Hàm số đồng biến trên $(-\infty;1)$ và $(3;+\infty)$, nghịch biến trên $(1;3)$.
+Khoảng nghịch biến có độ dài lớn nhất là $(1;3)$ nên $a=1$, $b=3$, do đó $a+b=4$.
+b) Tập xác định $D=\mathbb{R}\setminus\{1\}$.
+Ta có $y'=\dfrac{2\cdot(-1)-1\cdot1}{(x-1)^2}=\dfrac{-3}{(x-1)^2}<0$ với mọi $x\ne1$.
+Vậy câu a): hàm số đồng biến trên $(-\infty;1)$, $(3;+\infty)$, nghịch biến trên $(1;3)$ và $a+b=4$; câu b): hàm số nghịch biến trên từng khoảng $(-\infty;1)$ và $(1;+\infty)$.
+
+##VD
+Cho hàm số $y=\dfrac{x^2-3x+3}{x-1}$.
+a) Tính $y'$.
+b) Tìm các khoảng đơn điệu của hàm số.
+
+Bài giải:
+a) Tập xác định $D=\mathbb{R}\setminus\{1\}$.
+Ta có $y'=\dfrac{(2x-3)(x-1)-(x^2-3x+3)}{(x-1)^2}=\dfrac{x^2-2x}{(x-1)^2}=\dfrac{x(x-2)}{(x-1)^2}$.
+b) $y'=0\Leftrightarrow x=0$ hoặc $x=2$; $y'$ không xác định tại $x=1$.
+Vì $(x-1)^2>0$ nên dấu của $y'$ là dấu của $x(x-2)$: $y'>0$ khi $x<0$ hoặc $x>2$; $y'<0$ khi $0<x<2$ và $x\ne1$.
+Vậy hàm số đồng biến trên $(-\infty;0)$ và $(2;+\infty)$, nghịch biến trên $(0;1)$ và $(1;2)$.
+
+=== C1.1.2
+@ly_thuyet:
+##TC Đạo hàm và điều kiện xác định các hàm thường gặp
+- Căn: $\sqrt{u}$ xác định khi $u\ge0$ và $(\sqrt{u})'=\dfrac{u'}{2\sqrt{u}}$ (tại $u>0$).
+- Logarit: $\log_a u$ cần $u>0$ và $(\log_a u)'=\dfrac{u'}{u\ln a}$, riêng $(\ln u)'=\dfrac{u'}{u}$; với $a>1$ thì dấu của $y'$ là dấu của $u'$ (trên tập xác định).
+- Mũ: $(e^u)'=u'e^u$, $(a^u)'=u'a^u\ln a$; với $0<a<1$ thì $\ln a<0$ nên dấu của $y'$ ngược dấu $u'$.
+- Hàm $y=a^x$ đồng biến trên $\mathbb{R}$ khi $a>1$, nghịch biến khi $0<a<1$; hàm $y=\log_a x$ chỉ xác định trên $(0;+\infty)$.
+- Giá trị tuyệt đối: $|u|=u$ khi $u\ge0$ và $|u|=-u$ khi $u<0$.
+- Lượng giác: $(\sin x)'=\cos x$, $(\cos x)'=-\sin x$, $(\cot x)'=-\dfrac{1}{\sin^2x}$ (hàm $\cot$, $\tan$ chỉ đơn điệu trên từng khoảng xác định).
+
+##PP Hàm chứa căn, mũ, logarit, giá trị tuyệt đối
+Tìm tập xác định bằng điều kiện: biểu thức trong căn không âm, biểu thức trong logarit dương.
+Có dấu giá trị tuyệt đối: xét dấu biểu thức bên trong, viết $y$ theo từng khoảng rồi tính $y'$ trên từng khoảng.
+Giải $y'=0$ và xét dấu $y'$ chỉ trên tập xác định (với mũ: $e^u>0$ nên dấu của $y'$ là dấu của phần còn lại).
+Câu chọn hàm đồng biến trên $\mathbb{R}$: kiểm tra từng phương án có tập xác định là $\mathbb{R}$ và $y'\ge0$ với mọi $x$ (hoặc dùng tính chất hàm mũ).
+
+##CY
+- Xét dấu $y'$ phải đối chiếu với tập xác định: hàm $y=\ln x$ chỉ xét trên $(0;+\infty)$, nên không thể đồng biến trên $\mathbb{R}$.
+- Tại điểm biểu thức trong giá trị tuyệt đối đổi dấu, hàm không có đạo hàm; xét hai bên điểm đó rồi mới kết luận.
+- $y'\ge0$ với dấu bằng chỉ tại các điểm rời rạc (như $y=x-\sin x$) vẫn là đồng biến trên $\mathbb{R}$.
+- Hàm $y=\ln(x^2+1)$ có tập xác định $\mathbb{R}$ nhưng không đồng biến trên $\mathbb{R}$.
+
+@vi_du:
+##VD
+Tìm các khoảng đơn điệu của các hàm số sau:
+a) $y=\sqrt{6x-x^2}$
+b) $y=\log_2(x^2-4x)$
+c) $y=(x-3)e^{x}$
+
+Bài giải:
+a) Điều kiện $6x-x^2\ge0\Leftrightarrow x(6-x)\ge0\Leftrightarrow0\le x\le6$, tập xác định $D=[0;6]$.
+Với $0<x<6$ ta có $y'=\dfrac{6-2x}{2\sqrt{6x-x^2}}=\dfrac{3-x}{\sqrt{6x-x^2}}$.
+$y'=0\Leftrightarrow x=3$; $y'>0$ khi $0<x<3$ và $y'<0$ khi $3<x<6$.
+Vậy hàm số đồng biến trên $(0;3)$ và nghịch biến trên $(3;6)$.
+b) Điều kiện $x^2-4x>0\Leftrightarrow x<0$ hoặc $x>4$, tập xác định $D=(-\infty;0)\cup(4;+\infty)$.
+Ta có $y'=\dfrac{2x-4}{(x^2-4x)\ln2}$.
+Trên $D$ có $(x^2-4x)\ln2>0$ nên dấu của $y'$ là dấu của $2x-4$: $y'<0$ khi $x<0$ và $y'>0$ khi $x>4$.
+Vậy hàm số nghịch biến trên $(-\infty;0)$ và đồng biến trên $(4;+\infty)$ (không phải trên $(-\infty;2)$ và $(2;+\infty)$ vì $[0;4]$ nằm ngoài tập xác định).
+c) Tập xác định $D=\mathbb{R}$.
+Ta có $y'=e^{x}+(x-3)e^{x}=(x-2)e^{x}$.
+Vì $e^{x}>0$ nên dấu của $y'$ là dấu của $x-2$: $y'<0$ khi $x<2$ và $y'>0$ khi $x>2$.
+Vậy hàm số nghịch biến trên $(-\infty;2)$ và đồng biến trên $(2;+\infty)$.
+
+##VD
+a) Tìm các khoảng đơn điệu của hàm số $y=|x^2-4x+3|$.
+b) Trong các hàm số sau, hàm số nào đồng biến trên $\mathbb{R}$? Giải thích.
+- $y=x^3+3x-2$
+- $y=\left(\dfrac{\pi}{3}\right)^x$
+- $y=\ln(x^2+1)$
+- $y=x-\sin x$
+
+Bài giải:
+a) Ta có $x^2-4x+3=(x-1)(x-3)$ nên $y=x^2-4x+3$ khi $x\le1$ hoặc $x\ge3$, còn $y=-x^2+4x-3$ khi $1<x<3$.
+Với $x<1$: $y'=2x-4<0$ nên hàm nghịch biến trên $(-\infty;1)$.
+Với $1<x<3$: $y'=-2x+4$, dương khi $x<2$ và âm khi $x>2$.
+Với $x>3$: $y'=2x-4>0$ nên hàm đồng biến trên $(3;+\infty)$.
+Vậy hàm số đồng biến trên $(1;2)$ và $(3;+\infty)$, nghịch biến trên $(-\infty;1)$ và $(2;3)$.
+b) Hàm $y=x^3+3x-2$ có $y'=3x^2+3>0$ với mọi $x$ nên đồng biến trên $\mathbb{R}$.
+Hàm $y=\left(\dfrac{\pi}{3}\right)^x$ có cơ số $\dfrac{\pi}{3}>1$ nên đồng biến trên $\mathbb{R}$.
+Hàm $y=\ln(x^2+1)$ có $y'=\dfrac{2x}{x^2+1}$ âm khi $x<0$ nên nghịch biến trên $(-\infty;0)$, không đồng biến trên $\mathbb{R}$.
+Hàm $y=x-\sin x$ có $y'=1-\cos x\ge0$ với mọi $x$, dấu bằng chỉ xảy ra tại các điểm rời rạc $x=k2\pi$ ($k\in\mathbb{Z}$) nên hàm đồng biến trên $\mathbb{R}$.
+Vậy các hàm $y=x^3+3x-2$, $y=\left(\dfrac{\pi}{3}\right)^x$, $y=x-\sin x$ đồng biến trên $\mathbb{R}$.
+
+=== C1.1.3
+@ly_thuyet:
+##TC Bảng biến thiên
+- Hàng $y'$ cho cùng kết luận với hàng mũi tên: $y'>0$ là mũi tên lên (đồng biến), $y'<0$ là mũi tên xuống (nghịch biến).
+- Cột kẻ đôi ($||$) là điểm hàm không xác định; hai bên cột này thuộc hai khoảng khác nhau.
+- Giá trị ở hai đầu mũi tên là giá trị của hàm tại hai mốc (hoặc giới hạn tại mốc đó); đó là giá trị $y$, không dùng làm đầu mút khoảng đơn điệu.
+
+##PP Đọc từ bảng biến thiên
+Gạch các mốc ở hàng $x$ (kể cả cột kẻ đôi) để tách các khoảng.
+Với mỗi khoảng, nhìn mũi tên (hoặc dấu $y'$) để biết đồng biến hay nghịch biến.
+Gộp đúng khoảng cùng chiều, tuyệt đối không nối qua cột đổi chiều hoặc cột kẻ đôi.
+Đúng/sai từng mệnh đề: khoảng được nêu phải nằm trọn trong một khoảng đã đọc; câu hỏi số khoảng đồng biến (nghịch biến) thì đếm các khoảng đã tách.
+
+##CY
+- Hai khoảng nghịch biến kề nhau qua cột kẻ đôi, như $(-1;1)$ và $(1;3)$, không gộp thành "nghịch biến trên $(-1;3)$" hay "trên $\mathbb{R}\setminus\{1\}$"; phải nói nghịch biến trên từng khoảng.
+- Chiều mũi tên mới quyết định tính đơn điệu, không phải giá trị $y$ dương hay âm.
+
+@vi_du:
+##VD
+Cho hàm số $y=f(x)$ có bảng biến thiên như hình vẽ. Tìm các khoảng đồng biến và nghịch biến của hàm số.
+[[HINH {"loai":"bbt","x":["-∞","-1","2","+∞"],"dau":["-","+","-"],"y":["+∞","-3","1","-∞"],"ten_ham":"f(x)","ten_dao":"f'(x)"}]]
+
+Bài giải:
+Từ bảng biến thiên: $f'(x)<0$ (mũi tên đi xuống) trên $(-\infty;-1)$ và trên $(2;+\infty)$.
+$f'(x)>0$ (mũi tên đi lên) trên $(-1;2)$.
+Vậy hàm số đồng biến trên $(-1;2)$ và nghịch biến trên $(-\infty;-1)$, $(2;+\infty)$.
+
+##VD
+Cho hàm số $y=f(x)$ có bảng biến thiên như hình vẽ. Mỗi mệnh đề sau đúng hay sai?
+a) Hàm số nghịch biến trên khoảng $(-1;3)$.
+b) Hàm số nghịch biến trên các khoảng $(-1;1)$ và $(1;3)$.
+c) Hàm số đồng biến trên khoảng $(-2;0)$.
+d) Hàm số có đúng hai khoảng đồng biến.
+[[HINH {"loai":"bbt","x":["-∞","-1","1","3","+∞"],"dau":["+","-","-","+"],"kd":{"2":"||"},"y":["-∞","-4",["-∞","+∞"],"4","+∞"],"ten_ham":"f(x)","ten_dao":"f'(x)"}]]
+
+Bài giải:
+Hàm số không xác định tại $x=1$ (cột kẻ đôi).
+Mũi tên đi lên trên $(-\infty;-1)$ và $(3;+\infty)$; mũi tên đi xuống trên $(-1;1)$ và $(1;3)$.
+a) Sai: $x=1$ thuộc $(-1;3)$ nhưng hàm số không xác định tại $x=1$, nên không nối hai khoảng nghịch biến qua cột kẻ đôi.
+b) Đúng: mũi tên đi xuống trên từng khoảng $(-1;1)$ và $(1;3)$.
+c) Sai: trên $(-2;-1)$ hàm số đồng biến nhưng trên $(-1;0)$ hàm số nghịch biến, nên $(-2;0)$ không nằm trọn trong một khoảng đồng biến.
+d) Đúng: hàm số đồng biến trên đúng hai khoảng $(-\infty;-1)$ và $(3;+\infty)$.
+Vậy b) và d) đúng; a) và c) sai.
+
+=== C1.1.4
+@ly_thuyet:
+##TC Đồ thị hàm số
+- Nhìn từ trái sang phải: đồ thị đi lên là hàm đồng biến, đi xuống là hàm nghịch biến.
+- Điểm cao nhất hoặc thấp nhất trong lân cận (đỉnh, đáy) là chỗ đồ thị đổi chiều; hoành độ của chúng là các mốc.
+- Đồ thị có đường tiệm cận đứng: hai bên đường đó là hai khoảng khác nhau.
+
+##PP Đọc từ đồ thị của $f$
+Tìm các đỉnh, đáy của đồ thị và đọc hoành độ của chúng.
+Chia trục hoành thành các khoảng bằng các hoành độ đó.
+Trên mỗi khoảng, đồ thị đi lên thì ghi đồng biến, đi xuống thì ghi nghịch biến.
+Đối chiếu với yêu cầu của đề (khoảng cụ thể, mệnh đề đúng sai).
+
+##CY
+- Hai đầu đồ thị nằm ngoài khung hình vẫn tiếp tục theo xu hướng cũ; khoảng $(-\infty;a)$, $(b;+\infty)$ là khoảng đơn điệu hợp lí.
+- Tại đỉnh/đáy đồ thị đổi chiều, nên không có khoảng đồng biến (nghịch biến) nào kéo dài qua hoành độ của đỉnh/đáy.
+- Chọn đáp án theo hoành độ $x$ của các điểm đổi chiều, không theo tung độ.
+
+@vi_du:
+##VD
+Cho hàm số $y=f(x)$ có đồ thị như hình vẽ. Tìm các khoảng đồng biến và nghịch biến của hàm số.
+[[HINH {"loai":"dothi","x":[-2,4],"y":[-4,4],"f":[{"e":"x^3-3*x^2+2","ten":"y=f(x)"}]}]]
+
+Bài giải:
+Đồ thị có đỉnh tại điểm có hoành độ $x=0$ (tung độ $2$) và đáy tại điểm có hoành độ $x=2$ (tung độ $-2$).
+Với $x<0$ đồ thị đi lên; với $0<x<2$ đồ thị đi xuống; với $x>2$ đồ thị đi lên.
+Vậy hàm số đồng biến trên $(-\infty;0)$ và $(2;+\infty)$, nghịch biến trên $(0;2)$.
+
+##VD
+Cho hàm số $y=f(x)$ có đồ thị như hình vẽ. Tìm các khoảng đồng biến, nghịch biến của hàm số và cho biết hàm số có nghịch biến trên $(0;2)$ hay không.
+[[HINH {"loai":"dothi","x":[-3,5],"y":[-6,6],"f":[{"e":"(x^2-2*x+2)/(x-1)","ten":"y=f(x)"}],"duong":[{"dung":1,"ten":"x=1"}]}]]
+
+Bài giải:
+Đồ thị có tiệm cận đứng $x=1$ nên hàm số không xác định tại $x=1$ và đồ thị gồm hai nhánh ở hai bên đường đó.
+Nhánh bên trái có đỉnh tại điểm có hoành độ $x=0$ (tung độ $-2$); nhánh bên phải có đáy tại điểm có hoành độ $x=2$ (tung độ $2$).
+Đồ thị đi lên trên $(-\infty;0)$ và $(2;+\infty)$; đi xuống trên $(0;1)$ và $(1;2)$.
+Khoảng $(0;2)$ chứa điểm $x=1$ không thuộc tập xác định nên hàm số không nghịch biến trên $(0;2)$.
+Vậy hàm số đồng biến trên $(-\infty;0)$ và $(2;+\infty)$, nghịch biến trên $(0;1)$ và $(1;2)$; hàm số không nghịch biến trên $(0;2)$.
+
+=== C1.1.5
+@ly_thuyet:
+##TC Bảng xét dấu và đồ thị của $f'$
+- Bảng xét dấu $f'$: ô dấu $+$ là $f$ đồng biến, ô dấu $-$ là $f$ nghịch biến; số $0$ ở một cột là $f'(x_0)=0$.
+- Đồ thị $y=f'(x)$: phần nằm **trên** trục hoành là $f'>0$, phần nằm **dưới** trục hoành là $f'<0$, giao điểm với trục hoành là $f'=0$.
+- Đề cho công thức $f'(x)$ (như $f'(x)=-x+1$) thì xét dấu biểu thức đó như xét dấu một đa thức.
+- Điểm làm $f'(x)=0$ mà $f'$ không đổi dấu khi qua nó (đồ thị $f'$ tiếp xúc trục hoành) thì không làm $f$ đổi chiều.
+- Nếu $f'(x)<0$ với mọi $x$ thì $f$ nghịch biến trên $\mathbb{R}$, khi đó $f(u)<f(v)\Leftrightarrow u>v$ (đồng biến thì cùng chiều).
+
+##PP Đọc từ bảng xét dấu hoặc đồ thị của $f'$
+Đọc các hoành độ làm $f'=0$ (cột có số $0$ hoặc giao điểm với $Ox$).
+Xác định dấu của $f'$ trên mỗi khoảng (dấu trong bảng, hoặc đồ thị nằm trên/dưới $Ox$).
+Kết luận khoảng đồng biến ($f'>0$), nghịch biến ($f'<0$).
+Nếu dấu $f'$ không đổi qua một cột có số $0$, nối hai khoảng thành một.
+Câu so sánh $f(a)$ với $f(b)$: xác định $a$, $b$ nằm trong khoảng đồng biến hay nghịch biến rồi so sánh.
+
+##CY
+- Đồ thị chỉ tiếp xúc $Ox$ tại một điểm (không cắt) thì $f'$ không đổi dấu, đừng chia khoảng ở điểm đó.
+- Đề cho đồ thị $f'$ thì đồ thị nằm trên $Ox$ nghĩa là $f$ đồng biến, không phải $f$ nằm trên $Ox$.
+- Hình đi lên hay đi xuống của đồ thị $f'$ không nói gì về tính đơn điệu của $f$; chỉ dấu của $f'$ (trên/dưới $Ox$) mới quyết định.
+
+@vi_du:
+##VD
+Cho hàm số $y=f(x)$ có bảng xét dấu của đạo hàm $f'(x)$ như hình vẽ. Tìm các khoảng đồng biến và nghịch biến của hàm số.
+[[HINH {"loai":"bbt","hang":"dau","x":["-∞","-2","1","3","+∞"],"dau":["-","+","+","-"],"ten_dao":"f'(x)"}]]
+
+Bài giải:
+Từ bảng: $f'(x)<0$ trên $(-\infty;-2)$ và $(3;+\infty)$ nên $f$ nghịch biến trên hai khoảng này.
+$f'(x)>0$ trên $(-2;1)$ và $(1;3)$, còn $f'(1)=0$ nhưng $f'$ không đổi dấu khi qua $x=1$.
+Do đó $f$ đồng biến trên $(-2;1)$ và $(1;3)$, và vì $f$ liên tục tại $x=1$ nên $f$ đồng biến trên $(-2;3)$.
+Vậy hàm số đồng biến trên $(-2;3)$ và nghịch biến trên $(-\infty;-2)$, $(3;+\infty)$.
+
+##VD
+Cho hàm số $y=f(x)$ có đồ thị của đạo hàm $y=f'(x)$ như hình vẽ.
+a) Tìm các khoảng đồng biến và nghịch biến của hàm số $y=f(x)$.
+b) So sánh $f(-3)$ và $f(-1)$.
+[[HINH {"loai":"dothi","x":[-3,3],"y":[-5,5],"f":[{"e":"(x+1)^2*(x-2)","ten":"y=f'(x)"}]}]]
+
+Bài giải:
+a) Đồ thị của $f'$ cắt trục hoành tại $x=2$ và tiếp xúc trục hoành tại $x=-1$.
+Với $x<2$ và $x\ne-1$, đồ thị nằm dưới trục hoành nên $f'(x)<0$; với $x>2$, đồ thị nằm trên trục hoành nên $f'(x)>0$.
+Qua $x=-1$ thì $f'$ không đổi dấu nên $x=-1$ không làm $f$ đổi chiều.
+Vậy hàm số nghịch biến trên $(-\infty;2)$ và đồng biến trên $(2;+\infty)$.
+b) Vì $-3<-1<2$ nên $-3$ và $-1$ cùng nằm trong khoảng nghịch biến $(-\infty;2)$.
+Vậy $f(-3)>f(-1)$.
+
+=== C1.1.6
+@ly_thuyet:
+##TC Dấu của tích nhân tử
+- Nhân tử $(x-a)^k$: nếu $k$ lẻ thì đổi dấu khi $x$ qua $a$; nếu $k$ chẵn thì không đổi dấu.
+- Nhân tử luôn dương (như $x^2+1$) có thể bỏ qua khi xét dấu; nhân tử $(a-x)$ nên đổi về $-(x-a)$.
+- Khoảng ngoài cùng bên phải có dấu của hệ số bậc cao nhất của $f'$ (sau khi đổi các nhân tử về dạng $(x-a)$).
+
+##PP Xét dấu $f'$ cho bằng tích nhân tử
+Tìm các nghiệm của $f'(x)=0$ và bội của từng nghiệm.
+Xác định dấu trên khoảng ngoài cùng bên phải (hệ số bậc cao nhất).
+Đi từ phải sang trái: đổi dấu khi qua nghiệm bội lẻ, giữ nguyên dấu khi qua nghiệm bội chẵn.
+Kết luận khoảng đồng biến, nghịch biến; nối hai khoảng cùng dấu nằm hai bên nghiệm bội chẵn.
+Câu so sánh $f(a)$, $f(b)$: dùng khoảng đơn điệu vừa tìm, hai số phải cùng nằm trong một khoảng đơn điệu.
+
+##CY
+- Nghiệm bội chẵn không đổi dấu $f'$ nên $f$ vẫn đơn điệu qua điểm đó; không chia khoảng ở đó.
+- Dấu ở khoảng ngoài cùng bên phải chỉ phụ thuộc hệ số bậc cao nhất; còn khoảng ngoài cùng bên trái phụ thuộc thêm bậc (tổng các bội): bậc chẵn thì cùng dấu, bậc lẻ thì trái dấu với khoảng ngoài cùng bên phải. Dùng điều này để kiểm tra lại bảng.
+
+@vi_du:
+##VD
+Cho hàm số $y=f(x)$ có đạo hàm $f'(x)=(x+1)(x-2)(x-3)$. Tìm các khoảng đơn điệu của hàm số.
+
+Bài giải:
+$f'(x)=0\Leftrightarrow x=-1$, $x=2$ hoặc $x=3$; cả ba nghiệm đều là nghiệm đơn (bội lẻ).
+Hệ số bậc cao nhất bằng $1>0$ nên $f'(x)>0$ khi $x>3$.
+Qua $x=3$ dấu đổi nên $f'(x)<0$ trên $(2;3)$; qua $x=2$ dấu đổi nên $f'(x)>0$ trên $(-1;2)$; qua $x=-1$ dấu đổi nên $f'(x)<0$ trên $(-\infty;-1)$.
+Vậy hàm số đồng biến trên $(-1;2)$ và $(3;+\infty)$, nghịch biến trên $(-\infty;-1)$ và $(2;3)$.
+
+##VD
+Cho hàm số $y=f(x)$ có đạo hàm $f'(x)=x^2(x+2)^3(2-x)$ với mọi $x\in\mathbb{R}$.
+a) Tìm các khoảng đơn điệu của hàm số.
+b) So sánh $f(-1)$ và $f(1)$.
+
+Bài giải:
+a) Viết lại $f'(x)=-x^2(x+2)^3(x-2)$.
+$f'(x)=0\Leftrightarrow x=-2$ (bội $3$), $x=0$ (bội $2$), $x=2$ (bội $1$).
+Hệ số bậc cao nhất bằng $-1<0$ nên $f'(x)<0$ khi $x>2$.
+Qua $x=2$ (bội lẻ) dấu đổi nên $f'(x)>0$ trên $(0;2)$; qua $x=0$ (bội chẵn) dấu không đổi nên $f'(x)>0$ trên $(-2;0)$; qua $x=-2$ (bội lẻ) dấu đổi nên $f'(x)<0$ trên $(-\infty;-2)$.
+Do $f'\ge0$ trên $(-2;2)$ và chỉ bằng $0$ tại $x=0$ nên $f$ đồng biến trên $(-2;2)$.
+b) Vì $-2<-1<1<2$ nên $-1$ và $1$ cùng nằm trong khoảng đồng biến $(-2;2)$, do đó $f(-1)<f(1)$.
+Vậy $f$ đồng biến trên $(-2;2)$, nghịch biến trên $(-\infty;-2)$ và $(2;+\infty)$; và $f(-1)<f(1)$.
+
+## GHI CHÚ CHO CEO
+- Đã đọc: hồ sơ nguồn `k12-hs/ho-so/` (hoso-nbv-1-2.md, hoso-pnl-1-2.md, hoso-tutam.md) và bản v1 đã soát `k12-hs/ra/J1.txt` (khối H1.1, H1.2, H1.3 — nguồn gốc, đã viết lại cho dạng mới và thêm ý theo đề thi: đồng biến trên R, tổng a+b, hàm lôgarit/mũ, so sánh f(a), f(b)). Chưa trích lại file Word của 3 bộ sách vì văn bản chương này đã có sẵn trong hồ sơ.
+- C1.1.1: mô tả có "kể cả câu chỉ hỏi tính y'" — xử lí bằng ý a) của ví dụ 2 (tính y' phân thức).
+- C1.1.2: ví dụ b) dạng "chọn hàm đồng biến trên R" nằm ở dạng này (đề hay trộn với C1.1.1); có thể chuyển nếu CEO muốn tách.
+- Mọi ví dụ đã thử lại bằng script node (quét dấu y', so sánh giá trị): không phát hiện sai.
+- (Trạm soát 03/11) Đã thay 3 ví dụ trùng gần nguyên câu đề thi trong kho (C1.1.1 vd1 ≈ T112010102062; C1.1.2 vd1 b, c = T112010102049, T1120000005883); thêm công thức $ad-bc$, trùng phương, $\log_a u$, $a^u$ vào lý thuyết vì đề hỏi nhiều. Chi tiết: `HS-A.soat.md`.

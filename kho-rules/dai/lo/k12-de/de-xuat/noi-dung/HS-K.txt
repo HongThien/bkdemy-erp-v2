@@ -25,6 +25,8 @@ So sánh giá trị tại nghiệm với hai đầu mút (hoặc lập bảng bi
 - Đoạn nghiêng $AM=\sqrt{a^2+x^2}$, đoạn trên bờ $MB=L-x$.
 - Thời gian (vận tốc $v_1$ trên đoạn $AM$, $v_2$ trên đoạn $MB$): $T(x)=\dfrac{\sqrt{a^2+x^2}}{v_1}+\dfrac{L-x}{v_2}$.
 - Chi phí (đơn giá $p_1$ trên đoạn $AM$, $p_2$ trên đoạn $MB$): $C(x)=p_1\sqrt{a^2+x^2}+p_2(L-x)$.
+- Đường thẳng đi qua nhiều vùng (đất, cát…): đường đi là đoạn thẳng từ xuất phát đến đích, ẩn là vị trí đích. Phần nằm trong mỗi vùng tỉ lệ với độ dài cả đoạn; thời gian là tổng (độ dài từng phần $\div$ vận tốc vùng đó). Công thức đổi dạng khi đoạn thẳng bắt đầu cắt cạnh bên của vùng nên phải xét từng khoảng của ẩn.
+- Thời hạn: đề cho giờ phải đến nơi và hỏi giờ xuất phát muộn nhất thì lấy giờ đến nơi trừ thời gian ngắn nhất.
 
 ##PP Chọn điểm rẽ để thời gian (chi phí) nhỏ nhất
 Đặt $x=HM$ (hoặc đặt ẩn là độ dài đoạn trên bờ nếu đề hỏi đoạn đó), nêu điều kiện $0\le x\le L$.
@@ -36,6 +38,7 @@ So sánh $T$ tại nghiệm với $T(0)$ và $T(L)$, chọn nhỏ nhất rồi t
 - Đề cho "đi bộ bao nhiêu km" là hỏi độ dài đoạn trên bờ $L-x$, không phải $x$.
 - Nghiệm của $T'(x)=0$ phải thuộc $[0;L]$; nếu lớn hơn $L$ thì giá trị nhỏ nhất ở đầu mút $x=L$.
 - Giờ đổi sang phút (nhân $60$) khi đề hỏi phút; đơn giá và vận tốc phải cùng đơn vị độ dài.
+- Xuất phát **muộn nhất** ứng với thời gian đi **ngắn nhất**; làm tròn giờ xuất phát thì làm tròn xuống để chắc chắn đến kịp.
 
 @vi_du:
 ##VD
@@ -61,6 +64,19 @@ Bình phương hai vế (cả hai vế không âm): $25y^2=9\cdot144+9y^2$, suy 
 Tính $C(0)=60+60=120$; $C(9)=3\cdot11+5\cdot15=108$; $C(20)=5\sqrt{544}\approx116{,}6$.
 Giá trị nhỏ nhất là $108$ tại $y=9$, khi đó đoạn dây dọc bờ dài $AM=20-9=11$ km.
 Vậy đoạn dây dọc bờ dài $11$ km thì chi phí thấp nhất, bằng $108$ tỷ đồng.
+
+##VD
+Một robot xuất phát từ điểm $O$ là trung điểm cạnh $AB$ của khu đất hình chữ nhật $ABCD$ ($AB=120$ m, $AD=90$ m), đi theo một đường thẳng đến một điểm $E$ bất kỳ trên cạnh $CD$. Ở giữa khu đất có một bãi cát hình chữ nhật rộng $30$ m (theo chiều song song $AB$), dài $60$ m (theo chiều song song $AD$), cách đều hai cạnh $AB$, $CD$ và nhận đường thẳng đi qua $O$ vuông góc với $AB$ làm trục đối xứng. Vận tốc của robot trên đất là $50$ m/phút, trên cát là $30$ m/phút. Robot phải tới đích chậm nhất lúc $8$ giờ $10$ phút $00$ giây. Hỏi robot xuất phát muộn nhất lúc mấy giờ (làm tròn xuống đến giây)?
+
+Bài giải:
+Đặt hệ trục $Oxy$ với $O$ là gốc, $Ox$ song song $AB$, $Oy$ hướng về $CD$. Bãi cát là $\{|x|\le15;\ 15\le y\le75\}$ và $E(d;90)$ với $0\le d\le60$ (đối xứng nên chỉ xét $d\ge0$). Độ dài đường đi $L=\sqrt{d^2+8100}$; điểm của đường đi có tung độ $y$ có hoành độ $\dfrac{dy}{90}$.
+Trường hợp $0\le d\le18$: đường đi vào bãi cát qua cạnh $y=15$ và ra qua cạnh $y=75$ (hoành độ tại $y=75$ là $\dfrac{5d}{6}\le15$), phần trên cát dài $\dfrac{60}{90}L=\dfrac23L$ nên $T=\dfrac{L/3}{50}+\dfrac{2L/3}{30}=\dfrac{13L}{450}$, tăng theo $d$; nhỏ nhất tại $d=0$ với $T(0)=2{,}6$ phút.
+Trường hợp $18\le d\le60$: đường đi ra khỏi bãi cát qua cạnh bên $x=15$ tại $y=\dfrac{1350}{d}$, phần trên cát dài $s=\left(\dfrac{1350}{d}-15\right)\dfrac{L}{90}=L\left(\dfrac{15}{d}-\dfrac16\right)$. Thời gian
+$T(d)=\dfrac{L-s}{50}+\dfrac{s}{30}=\dfrac{L}{50}+\dfrac{s}{75}=\dfrac{4L}{225}+\dfrac{L}{5d}=\dfrac{4}{225}\sqrt{d^2+8100}+\dfrac15\sqrt{1+\dfrac{8100}{d^2}}$.
+$T'(d)=\dfrac1L\left(\dfrac{4d}{225}-\dfrac{1620}{d^2}\right)=0\Leftrightarrow d^3=91125\Leftrightarrow d=45$ (thuộc $[18;60]$); $T'<0$ trên $[18;45)$ và $T'>0$ trên $(45;60]$.
+$T(45)=\dfrac{4\cdot45\sqrt5}{225}+\dfrac{45\sqrt5}{225}=\sqrt5\approx2{,}2361$ phút, nhỏ hơn $T(18)\approx2{,}6515$, $T(60)\approx2{,}2835$ và $T(0)=2{,}6$.
+Thời gian ngắn nhất là $\sqrt5$ phút $\approx134{,}16$ giây, tức $2$ phút $14{,}16$ giây. Xuất phát muộn nhất lúc $8$ giờ $10$ phút $00$ giây trừ $2$ phút $14{,}16$ giây $=8$ giờ $7$ phút $45{,}84$ giây.
+Vậy robot xuất phát muộn nhất lúc $8$ giờ $7$ phút $45$ giây (làm tròn xuống), khi chọn đích $E$ cách đường $Oy$ là $45$ m.
 
 === C4.3.2   (dạng "Quãng đường, khoảng cách ngắn nhất hoặc dài nhất" — mô tả: Lập hàm khoảng cách/quãng đường theo vị trí, thời gian hoặc góc (hai vật chuyển động, đặt trạm, gấp giấy…) rồi tìm max–min.)
 @ly_thuyet:
@@ -107,7 +123,7 @@ Ta có $f'(0)<0$, $f'(12)>0$ và $f'$ chỉ triệt tiêu tại $x=\dfrac83$ nê
 $f\left(\dfrac83\right)=\sqrt{4+\dfrac{64}{9}}+\sqrt{49+\dfrac{784}{9}}=\dfrac{10}{3}+\dfrac{35}{3}=15$ (và $f(0)\approx15{,}9$, $f(12)\approx19{,}2$).
 Vậy đặt trạm bơm cách $A'$ là $\dfrac83\approx2{,}67$ km thì tổng độ dài hai đường ống ngắn nhất, bằng $15$ km.
 
-=== C4.3.3   (dạng "Thang dài nhất qua góc hành lang, góc nhìn lớn nhất" — mô tả: Thang/sào/ống đi qua góc hai hành lang (lập hàm theo góc), góc nhìn hoặc góc chiếu lớn nhất.)
+=== C4.3.3   (dạng "Thang, sào, xe qua góc hành lang; độ chiếu sáng lớn nhất" — mô tả: Thang/sào/ống/xe đi qua góc hai hành lang (lập hàm theo góc hoặc theo toạ độ); gara, hành lang có kích thước cho trước; độ chiếu sáng lớn nhất.)
 @ly_thuyet:
 ##TC Thang, sào qua một điểm cố định
 - Thang (đoạn thẳng) chạm đất và chạm tường thẳng đứng, đi qua một điểm cố định cách tường $d$ và cách mặt đất $h$ (đỉnh hàng rào, mép mái che, điểm góc trong của hành lang chữ L, cọc ở góc hồ, điểm mà con đường phải đi qua).
@@ -172,6 +188,17 @@ $g'(\alpha)=5\cos\alpha+\dfrac{-2{,}68\cos^2\alpha+(2-2{,}68\sin\alpha)\sin\alph
 Đặt $h(\alpha)=5\cos^3\alpha+2\sin\alpha-2{,}68$. Với $\sin\alpha_0=0{,}8$, $\cos\alpha_0=0{,}6$ ta có $h(\alpha_0)=5\cdot0{,}216+1{,}6-2{,}68=0$; bảng giá trị của $h$ trên $\left(0;\dfrac{\pi}{2}\right)$ cho thấy $h$ chỉ đổi dấu một lần, từ dương sang âm, tại $\alpha_0$, nên $g$ lớn nhất tại $\alpha_0$ (khi đó $s=1{,}8\in[0;5]$, đúng là $P$ nằm trên cạnh xe).
 $\max g=5\cdot0{,}8+\dfrac{2-2{,}68\cdot0{,}8}{0{,}6}=4-\dfrac{0{,}144}{0{,}6}=4-0{,}24=3{,}76$.
 Vậy đoạn đường thứ nhất phải rộng ít nhất $3{,}76$ m.
+
+##VD
+Một cái hồ rộng có dạng hình chữ nhật. Ở một góc hồ $A$, người ta đóng cọc $K$ cách bờ $AB$ là $2$ m và cách bờ $AD$ là $16$ m, rồi dùng một cây sào thẳng $PQ$ ($P$ thuộc bờ $AB$, $Q$ thuộc bờ $AD$) chạm vào cọc $K$ để ngăn góc hồ làm khu nuôi vịt (tam giác $APQ$). Tính diện tích của khu nuôi vịt khi cây sào $PQ$ ngắn nhất.
+
+Bài giải:
+Đặt hệ trục $Axy$ với $P$ trên $Ax$ (bờ $AB$), $Q$ trên $Ay$ (bờ $AD$) thì $K(16;2)$. Gọi $\alpha\in\left(0;\dfrac{\pi}{2}\right)$ là góc giữa cây sào và bờ $AB$ (góc $\widehat{APQ}$).
+Phần $PK$ có độ cao $2$ nên dài $\dfrac{2}{\sin\alpha}$; phần $KQ$ có hoành độ chênh $16$ nên dài $\dfrac{16}{\cos\alpha}$. Vậy $PQ=\ell(\alpha)=\dfrac{2}{\sin\alpha}+\dfrac{16}{\cos\alpha}$.
+$\ell'(\alpha)=0\Leftrightarrow16\sin^3\alpha=2\cos^3\alpha\Leftrightarrow\tan^3\alpha=\dfrac18\Leftrightarrow\tan\alpha=\dfrac12$; $\ell'<0$ khi $\tan\alpha<\dfrac12$ và $\ell'>0$ khi $\tan\alpha>\dfrac12$ nên $\ell$ nhỏ nhất tại $\tan\alpha=\dfrac12$, khi đó $\sin\alpha=\dfrac{1}{\sqrt5}$, $\cos\alpha=\dfrac{2}{\sqrt5}$ và $PQ_{\min}=2\sqrt5+8\sqrt5=10\sqrt5$ m.
+Đề hỏi diện tích nên tính tiếp: $AQ=PQ\sin\alpha=10\sqrt5\cdot\dfrac1{\sqrt5}=10$ m, $AP=PQ\cos\alpha=10\sqrt5\cdot\dfrac2{\sqrt5}=20$ m. Kiểm tra: đường thẳng $\dfrac{x}{20}+\dfrac{y}{10}=1$ đi qua $K(16;2)$ vì $\dfrac{16}{20}+\dfrac{2}{10}=1$.
+Diện tích khu nuôi vịt $S=\dfrac12\cdot AP\cdot AQ=\dfrac12\cdot20\cdot10=100$ m$^2$.
+Vậy khi sào ngắn nhất ($10\sqrt5\approx22{,}36$ m) thì khu nuôi vịt có diện tích $100$ m$^2$.
 
 === N C4.5   (nhóm "Chuyển động: vận tốc, gia tốc")
 @ly_thuyet:
@@ -273,7 +300,7 @@ Vậy vận tốc lớn nhất là $53$ m/s lúc $t=4$ giây; khi đó vật đ�
 
 ##VD
 Quãng đường $s$ (km) một người đi xe đạp đi được sau $t$ giờ ($0\le t\le4$) là hàm số $s(t)=at^3+bt^2+ct+d$ ($a\ne0$) có đồ thị như hình vẽ (trục hoành là $t$, trục tung là $s$). Đồ thị đi qua gốc toạ độ $O$, tiếp xúc với trục hoành tại $O$ và có điểm cực đại $(4;32)$. Tìm vận tốc lớn nhất của người đó trong $4$ giờ đầu.
-[[HINH {"loai":"dothi","x":[-1,5],"y":[-4,36],"f":[{"e":"-x^3+6*x^2","x":[0,4],"ten":"s=s(t)"}],"diem":[{"x":4,"y":32,"nhan":"(4;32)"}]}]]
+[[HINH {"loai":"dothi","tyle":"tudo","x":[-1,5],"y":[-4,36],"f":[{"e":"-x^3+6*x^2","x":[0,4],"ten":"s=s(t)"}],"diem":[{"x":4,"y":32,"nhan":"(4;32)"}]}]]
 
 Bài giải:
 Từ đồ thị: $s(0)=0$ nên $d=0$; tiếp xúc trục hoành tại $O$ nên $s'(0)=0$, suy ra $c=0$.
@@ -396,6 +423,10 @@ Vậy sau khoảng $3{,}22$ tháng thì tốc độ bán hàng lớn nhất, b�
 - Thang dài $\ell$ dựa tường: $x\,x'+y\,y'=0$ ($x$ là khoảng cách chân thang đến tường, $y$ là độ cao đầu thang).
 - Thể tích nước $V$ là hàm của mực nước $h$, và $h$ là hàm của $t$: lưu lượng bơm (rò) là $V'(t)$, nên $V'(t)=V'(h)\cdot h'(t)$ và $h'(t)=\dfrac{V'(t)}{V'(h)}$.
 - Bể nón đỉnh ở dưới, bán kính đáy $R$, cao $H$: mặt nước ở độ cao $h$ có bán kính $r=\dfrac{R}{H}h$ (đồng dạng) và $V=\dfrac13\pi r^2h$.
+- Tổng quát: thể tích nước $V$ theo mực nước $h$ có $V'(h)=S(h)$ là diện tích mặt nước ở độ cao $h$, nên $h'(t)=\dfrac{V'(t)}{S(h)}$; bể có vật chắn (viên bi, khối cầu) thì $S(h)$ là diện tích mặt cắt **trừ** phần vật chắn bị mặt nước cắt. Hình cầu bán kính $R$ có mặt cắt ở độ cao $h\le2R$ là hình tròn bán kính $r$ với $r^2=h(2R-h)$, thể tích phần cầu dưới mực nước (chỏm cầu) $\dfrac{\pi h^2(3R-h)}{3}$.
+- Bể lăng trụ có mặt cắt là hình thang (đáy nghiêng, thành nghiêng…): bề rộng mặt nước là hàm bậc nhất của $h$, nên $S(h)$ bằng chiều dài bể nhân bề rộng mặt nước.
+- Điểm chuyển động trên vật đang chuyển động (con kiến bò trên thanh đang trượt): viết đại lượng cần xét (độ cao…) trực tiếp theo $t$ rồi tìm giá trị lớn nhất bằng đạo hàm; đây là bài tối ưu theo $t$, không phải quan hệ giữa hai tốc độ tại một thời điểm.
+- Điểm chuyển động thẳng đều so với một điểm cố định: khoảng cách $d=\sqrt{x^2+y^2}$ theo $t$, $d'=\dfrac{xx'+yy'}{d}$.
 
 ##PP Giải bài toán tốc độ liên quan
 Đặt tên các đại lượng thay đổi theo $t$, ghi các tốc độ cho biết và tốc độ cần tìm.
@@ -435,14 +466,43 @@ Sau $20$ phút thể tích nước là $V=2\cdot20=40$ m$^3$, nên $40h^2=40$, $
 Từ $V'(t)=V'(h)\cdot h'(t)$ ta có $2=80h\cdot h'(t)$; với $h=1$ được $h'(t)=\dfrac{2}{80}=\dfrac{1}{40}$.
 Vậy mực nước dâng với tốc độ $\dfrac{1}{40}$ m/phút, tức $a=40$.
 
+##VD
+Một bể nước có dạng lăng trụ đứng đáy hình vuông cạnh $10\sqrt\pi$ dm, cao $20$ dm. Trong bể có gắn cố định một khối cầu đặc bán kính $5$ dm, tiếp xúc với mặt đáy của bể và có tâm nằm trên trục của lăng trụ. Ban đầu bể không có nước; người ta bơm nước vào bể với lưu lượng không đổi $15\pi$ dm$^3$/phút. Tại thời điểm mực nước vừa ngang tâm khối cầu, mực nước dâng với tốc độ bao nhiêu dm/phút?
+
+Bài giải:
+Gọi $h$ (dm) là mực nước, $0<h\le10$ (mặt nước chưa vượt qua đỉnh khối cầu). Diện tích đáy bể $100\pi$ dm$^2$.
+Thể tích nước $V=100\pi h-\dfrac{\pi h^2(15-h)}{3}$ (trừ chỏm cầu bị ngập), suy ra $V'(h)=100\pi-\pi(10h-h^2)=\pi\left(100-10h+h^2\right)$.
+Cách khác: $V'(h)$ là diện tích mặt nước, bằng diện tích đáy trừ hình tròn mặt cắt khối cầu: $100\pi-\pi\cdot h(10-h)$, trùng kết quả trên.
+Từ $V'(t)=V'(h)\cdot h'(t)$ ta có $15\pi=\pi\left(100-10h+h^2\right)h'(t)$.
+Khi mực nước ngang tâm khối cầu thì $h=5$: $100-50+25=75$ nên $15\pi=75\pi\cdot h'(t)$, suy ra $h'(t)=\dfrac15=0{,}2$.
+Vậy mực nước dâng với tốc độ $0{,}2$ dm/phút.
+
+##VD
+Một chiếc thang $AB$ dài $2{,}5$ m dựng sát một bức tường thẳng đứng (đầu $A$ chạm tường, đầu $B$ chạm sàn ngang). Tại thời điểm $t=0$, đầu $B$ bắt đầu trượt ra xa tường theo sàn với tốc độ không đổi $0{,}5$ m/s (đầu $A$ luôn tì lên tường), đồng thời một con kiến đậu ở $B$ bắt đầu bò dọc theo thang về phía $A$ với tốc độ $0{,}3$ m/s đối với thang. Tìm độ cao lớn nhất của con kiến so với sàn và thời điểm đạt độ cao đó.
+
+Bài giải:
+Sau $t$ giây ($0\le t\le5$, khi $t=5$ thang nằm trên sàn), chân thang cách tường $0{,}5t$ m, nên đầu $A$ ở độ cao $\sqrt{6{,}25-0{,}25t^2}$; góc $\theta$ giữa thang và sàn có $\sin\theta=\dfrac{\sqrt{6{,}25-0{,}25t^2}}{2{,}5}$.
+Con kiến cách $B$ đoạn $0{,}3t$ (dọc theo thang) nên độ cao của nó $h(t)=0{,}3t\sin\theta=\dfrac{0{,}3t\sqrt{6{,}25-0{,}25t^2}}{2{,}5}=0{,}12t\sqrt{6{,}25-0{,}25t^2}$. Kiến chưa tới $A$ vì $0{,}3t\le1{,}5<2{,}5$.
+$h^2=0{,}0144t^2\left(6{,}25-0{,}25t^2\right)=0{,}0144\left(6{,}25t^2-0{,}25t^4\right)$; $(h^2)'=0{,}0144\left(12{,}5t-t^3\right)=0\Leftrightarrow t^2=12{,}5$, $t=\dfrac{5}{\sqrt2}\approx3{,}54$ (thuộc $[0;5]$).
+$(h^2)'>0$ khi $t<\dfrac5{\sqrt2}$ và $<0$ khi $t>\dfrac5{\sqrt2}$ nên $h^2$ (cũng là $h$) lớn nhất tại $t=\dfrac5{\sqrt2}$: $h^2=0{,}0144\left(6{,}25\cdot12{,}5-0{,}25\cdot156{,}25\right)=0{,}0144\cdot39{,}0625=0{,}5625$, suy ra $h=0{,}75$.
+Vậy độ cao lớn nhất của con kiến là $0{,}75$ m, đạt lúc $t=\dfrac5{\sqrt2}\approx3{,}54$ giây.
+
+##VD
+Trên hệ trục $Oxyz$ (đơn vị m), một xe điều khiển xuất phát từ $A(0;0;0)$ chạy thẳng đến $B(0;240;0)$ trong $4$ phút. Từ $B$ xe đổi hướng chạy thẳng đến $C(600;240;0)$ với tốc độ không đổi, bằng tốc độ khi đi từ $A$ đến $B$. Ở thời điểm $3$ phút kể từ khi đổi hướng, khoảng cách giữa xe và vị trí xuất phát $A$ đang thay đổi với tốc độ bao nhiêu m/phút?
+
+Bài giải:
+Tốc độ của xe là $\dfrac{240}{4}=60$ m/phút. Sau $t$ phút kể từ khi đổi hướng ($0\le t\le10$ vì $BC=600$), xe ở $M(60t;240;0)$ và khoảng cách đến $A$ là $d(t)=\sqrt{(60t)^2+240^2}$.
+$d'(t)=\dfrac{60t\cdot60}{d}=\dfrac{3600t}{d}$. Khi $t=3$: $M(180;240;0)$, $d=\sqrt{180^2+240^2}=300$, nên $d'(3)=\dfrac{3600\cdot3}{300}=36$.
+Vậy khoảng cách giữa xe và $A$ đang tăng với tốc độ $36$ m/phút.
+
 ## GHI CHÚ CHO CEO
 - Sách đã đọc: hồ sơ trích sẵn `k12-hs/ho-so/hoso-pnl-3-5.md` (PNL Bài 5: B5-D1 tốc độ thay đổi, B5-D2 tối ưu hình học/vật lí, B5-D3 tăng trưởng, B5-D5 tốc độ liên quan), `hoso-nbv-3-4.md` (NBV 12-3: K11 GTLN của đạo hàm, K16 đường đi hai môi trường, K17 thang qua góc L, K18 khoảng cách đến đồ thị), `hoso-nbv-5-6-7.md` (5.12, 6.15), `hoso-tutam.md` (Dạng thực tế Từ Tâm); lý thuyết gốc PNL Bài 5 dạng 01 bản GV `S\txt\pnl\BAI 5. UDDH GIAI BAI THUC TE\…_GV.txt`; bản v1 đã soát `k12-hs/ra/J9.txt`, `J10.txt` (mã H7.3, H7.5, H7.6, H7.7) làm gốc rồi viết lại theo dạng mới. Không trích lại Word gốc.
 - Trạm soát (03/11) đọc thêm sách Word PNL Bài 5 bản GV: Dạng 02 (tối ưu đơn giản — có bài gara, hành lang chữ L), Dạng 03 (tăng trưởng, logistic), Dạng 05 (tốc độ liên quan — có thang trượt, ra đa) — trích ra `S\sach\b5\pnl-d2.md`, `pnl-d3.md`, `pnl-d5.md` (công thức trong sách là ảnh WMF nên chỉ đọc được lời, phần công thức tự dựng lại).
-- C4.3.3: tên/mô tả dạng có "góc nhìn lớn nhất" nhưng 16 câu đề thật của dạng không có câu góc nhìn nào (thang qua hàng rào/mái che ~9, sào hành lang/cọc góc hồ/đường qua điểm ~5, gara ô tô 3, độ chiếu sáng 1). Đã bỏ phần góc nhìn, thêm khung NX + ví dụ 3 cho bài gara (đề thật đáp số $3{,}7$). Đề nghị đổi tên dạng thành "Thang, sào, xe qua góc; độ chiếu sáng lớn nhất".
+- C4.3.3: đã đổi tên theo `HS.json` ("Thang, sào, xe qua góc hành lang; độ chiếu sáng lớn nhất"); lý thuyết/ví dụ khớp tên mới (không còn góc nhìn). Bổ sung (03/11) ví dụ 4 "cọc ở góc hồ" (sào ngắn nhất rồi tính diện tích tam giác, đề thật T1120000006428 cùng mô hình, số liệu khác). Ví dụ 3 (gara) phải dò nghiệm $5\cos^3\alpha+2\sin\alpha=2{,}68$ bằng bảng giá trị máy tính, như đề thật và sách. Khung "độ chiếu sáng" chỉ ở lý thuyết (đề thật chỉ 1 câu, không thêm ví dụ).
 - C4.3.2: dạng gồm nhiều kiểu (trạm bơm/trạm dừng cùng phía bờ ~9 câu, hai vật chuyển động ~5, khoảng cách điểm–đường cong/hai đường cong ~6, cầu qua sông 4, ống dẫn chữ Y 4, gấp giấy 2…). Ví dụ làm 2 kiểu: hai vật (ví dụ 1) và trạm cùng phía cho $AB$ (ví dụ 2, thay ví dụ cầu của bản soạn vì đề hỏi kiểu này nhiều hơn; cầu vẫn nêu ở lý thuyết và chú ý).
 - C4.3.2: không có radar/vùng phủ sóng theo ranh giới VT (Thùy chốt).
-- C4.3.1: đề thi có thêm câu robot đi qua bãi cát chữ nhật (3 vùng, 2 vận tốc) và "xuất phát muộn nhất lúc mấy giờ"; chưa có ví dụ riêng (cùng PP, thêm cộng thời gian).
-- C4.5.1: câu Hubble có hai bộ hệ số. Bản $v(t)=0{,}001302t^3-0{,}09029t^2+23$ (T1120000003566 đáp số $23$; T1120000006707 đáp số $23{,}1$) khớp nguồn Larson ($a'(t)=0\Leftrightarrow t\approx23{,}1$). Bản $-0{,}08029t^2$ (T1120000006168, T112020402008, hỏi độ dài khoảng gia tốc tăng, đáp số $105$) nghi gõ sai hệ số: với $0{,}09029$ thì đáp số phải là $126-23{,}1\approx103$. Ngoài ra cả 4 câu ghi "$+23$" trong khi nguồn là "$+23{,}61t-3{,}083$" (không ảnh hưởng đáp số vì chỉ dùng $v''$). Không dùng mô hình này làm ví dụ; đã thêm vào lý thuyết ý "cho sẵn $v(t)$, gia tốc tăng khi $v''>0$".
+- C4.3.1: đã thêm ví dụ 3 "robot đi qua bãi cát" (đường thẳng qua 3 vùng, 2 vận tốc, hai chế độ của hàm theo vị trí đích, "xuất phát muộn nhất lúc mấy giờ"); số liệu tự chọn (không chép T1120000006062), lý thuyết thêm ý "đường thẳng qua nhiều vùng" và "thời hạn".
+- C4.5.1: các câu Hubble đã loại khỏi kho; lý thuyết giữ ý "cho sẵn $v(t)$, hỏi gia tốc tăng khi nào thì xét dấu $v''$" (không dùng Hubble làm ví dụ).
 - C4.6.2: ví dụ 1 bản soạn dùng $-t^3+15t^2$ trùng đề thật T1120000005872 ($15t^2-t^3$) và có tốc độ âm cuối đoạn (số người nhiễm tích luỹ giảm) — trạm soát đổi thành $-t^3+21t^2$, $0\le t\le14$.
-- C4.6.3 (hiếm): 9 câu đề thật đều là bể/chậu (nón, nón cụt có bi, lăng trụ có khối cầu, đáy nghiêng, thùng parabol) + 1 kiến trên thanh trượt + 1 mô tô trong $Oxyz$; không có câu thang trượt thuần — giữ thang trượt vì mô tả dạng nêu tên. Chưa có ví dụ bể có vật chắn (cần thể tích chỏm cầu).
-- Mọi ví dụ đã thử lại bằng số (trạm soạn: `S\soan\HS\thu-K.mjs`; trạm soát: `S\soat\HS-K\kiem.cjs`, `gara.cjs`); đồ thị ví dụ 2 của C4.5.2 vẽ theo $s=-t^3+6t^2$ (cực đại $(4;32)$).
+- C4.6.3 (hiếm): đã thêm 3 ví dụ cho các kiểu đề thật còn thiếu: bể lăng trụ có khối cầu chắn (ví dụ 3, chỏm cầu; đề T112020402217), kiến bò trên thang đang trượt (ví dụ 4; T1120000002959, số liệu khác: thang $2{,}5$ m, $v=0{,}5$, $u=0{,}3$ ⇒ $h_{\max}=0{,}75$) và xe chuyển động trong $Oxyz$ (ví dụ 5; T312010802028). Dạng không còn câu thang trượt thuần trong đề nhưng giữ ví dụ 1a vì mô tả dạng nêu tên. KHÔNG bổ sung riêng: bể nón cụt có bi / chóp cụt đều / thùng parabol / lăng trụ đáy hình thang (mỗi kiểu 1 câu, cùng công thức $h'=Q/S(h)$ đã nêu ở lý thuyết, tính $S(h)$ quá riêng lẻ).
+- Ví dụ mới bổ sung 03/11 thử bằng `S\bs\HS-K\thu.cjs`, `thu2.cjs`; soát bổ sung tự giải lại bằng `S\soat2\HS-K\giai.cjs` (quét số trực tiếp, khớp cả 5 ví dụ). Mọi ví dụ đã thử lại bằng số (trạm soạn: `S\soan\HS\thu-K.mjs`; trạm soát: `S\soat\HS-K\kiem.cjs`, `gara.cjs`); đồ thị ví dụ 2 của C4.5.2 vẽ theo $s=-t^3+6t^2$ (cực đại $(4;32)$), để `"tyle":"tudo"` vì hai trục khác đơn vị (giờ, km).

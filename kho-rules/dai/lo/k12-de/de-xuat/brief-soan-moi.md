@@ -29,3 +29,5 @@ D. **Ranh giới VT / PP toạ độ (Thùy chốt):** chương VT chỉ thao t�
 E. **Hình:** Hàm số/hình khối cần hình thì dùng `[[HINH {…}]]` như brief-soan.md mục 3 (dạng nhận dạng đồ thị/BBT bắt buộc có hình). Hình khối không vẽ được → mô tả đủ bằng lời (tên đỉnh, độ dài, góc) để làm được không cần hình.
 F. **Khuôn chung toàn chương:** các tệp con của chương sẽ ghép lại theo thứ tự cây; vì vậy mỗi tệp CHỈ chứa các khối của phần mình (nhóm trước dạng của nhóm), không lặp, không lệch mã. Tệp ra của lượt: `noi-dung/<CH>-<JOB>.txt`; chạy `kiem-moi.mjs <CH> <tệp> <danh sách mã giao>`.
 G. **Lý thuyết dạng không lặp lý thuyết nhóm; ví dụ 2 khó hơn ví dụ 1 một bậc; số liệu không tạo ca suy biến/biên không chủ ý** (bài học bản thử: trạm soát bắt 31 chỗ).
+
+H. **Đồ thị tỉ lệ 1:1 (Thùy 03/11):** đơn vị hai trục phải bằng nhau — xem mục "LUẬT ĐỒ THỊ" trong `brief-soat-moi.md` và đầu `kho-rules/dai/lo/k12-hs/ve.mjs`. Máy kiểm báo lỗi nếu khoảng quá rộng.

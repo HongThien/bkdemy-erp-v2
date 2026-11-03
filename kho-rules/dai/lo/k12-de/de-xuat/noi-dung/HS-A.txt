@@ -186,6 +186,8 @@ Vậy b) và d) đúng; a) và c) sai.
 - Nhìn từ trái sang phải: đồ thị đi lên là hàm đồng biến, đi xuống là hàm nghịch biến.
 - Điểm cao nhất hoặc thấp nhất trong lân cận (đỉnh, đáy) là chỗ đồ thị đổi chiều; hoành độ của chúng là các mốc.
 - Đồ thị có đường tiệm cận đứng: hai bên đường đó là hai khoảng khác nhau.
+- Đồ thị bậc ba có tối đa hai điểm đổi chiều (một đỉnh, một đáy); đồ thị bậc bốn có một hoặc ba điểm đổi chiều (ba điểm thì dạng chữ W hoặc chữ M), nên có thể có bốn khoảng đơn điệu.
+- Tại điểm mà đồ thị đang đi lên thì $f'>0$, đang đi xuống thì $f'<0$, tại đỉnh/đáy thì $f'=0$ (mệnh đề về dấu $f'$ trên một khoảng đúng khi cả khoảng đó đồ thị đi cùng một chiều).
 
 ##PP Đọc từ đồ thị của $f$
 Tìm các đỉnh, đáy của đồ thị và đọc hoành độ của chúng.
@@ -209,6 +211,23 @@ Với $x<0$ đồ thị đi lên; với $0<x<2$ đồ thị đi xuống; với $
 Vậy hàm số đồng biến trên $(-\infty;0)$ và $(2;+\infty)$, nghịch biến trên $(0;2)$.
 
 ##VD
+Cho hàm số bậc bốn $y=f(x)$ có đồ thị như hình vẽ. Mỗi mệnh đề sau đúng hay sai?
+a) Hàm số đồng biến trên khoảng $(-\infty;-1)$.
+b) Hàm số nghịch biến trên khoảng $(-1;1)$.
+c) $f'(x)>0$ với mọi $x\in(0;1)$.
+d) Hàm số có đúng hai khoảng nghịch biến.
+[[HINH {"loai":"dothi","x":[-2,2],"y":[-3,4],"f":[{"e":"-x^4+2*x^2+2","ten":"y=f(x)"}]}]]
+
+Bài giải:
+Đồ thị có hai đỉnh tại các điểm có hoành độ $x=-1$ và $x=1$ (tung độ $3$) và một đáy tại điểm có hoành độ $x=0$ (tung độ $2$).
+Đồ thị đi lên trên $(-\infty;-1)$ và $(0;1)$; đi xuống trên $(-1;0)$ và $(1;+\infty)$.
+a) Đúng: đồ thị đi lên trên $(-\infty;-1)$.
+b) Sai: trên $(-1;0)$ đồ thị đi xuống nhưng trên $(0;1)$ đồ thị đi lên, nên $(-1;1)$ không nằm trọn trong một khoảng nghịch biến.
+c) Đúng: trên $(0;1)$ đồ thị đi lên nên $f'(x)>0$.
+d) Đúng: hàm số nghịch biến trên đúng hai khoảng $(-1;0)$ và $(1;+\infty)$.
+Vậy a), c), d) đúng; b) sai.
+
+##VD
 Cho hàm số $y=f(x)$ có đồ thị như hình vẽ. Tìm các khoảng đồng biến, nghịch biến của hàm số và cho biết hàm số có nghịch biến trên $(0;2)$ hay không.
 [[HINH {"loai":"dothi","x":[-3,5],"y":[-6,6],"f":[{"e":"(x^2-2*x+2)/(x-1)","ten":"y=f(x)"}],"duong":[{"dung":1,"ten":"x=1"}]}]]
 
@@ -227,17 +246,21 @@ Vậy hàm số đồng biến trên $(-\infty;0)$ và $(2;+\infty)$, nghịch b
 - Đề cho công thức $f'(x)$ (như $f'(x)=-x+1$) thì xét dấu biểu thức đó như xét dấu một đa thức.
 - Điểm làm $f'(x)=0$ mà $f'$ không đổi dấu khi qua nó (đồ thị $f'$ tiếp xúc trục hoành) thì không làm $f$ đổi chiều.
 - Nếu $f'(x)<0$ với mọi $x$ thì $f$ nghịch biến trên $\mathbb{R}$, khi đó $f(u)<f(v)\Leftrightarrow u>v$ (đồng biến thì cùng chiều).
+- Cột kẻ đôi ($||$) trong bảng xét dấu $f'$ là điểm $f'$ không xác định. Nếu đề cho $f$ liên tục tại điểm đó thì $x_0$ vẫn nằm trong tập xác định: hai bên cùng dấu thì nối hai khoảng thành một, hai bên trái dấu thì $x_0$ là mốc đổi chiều. Nếu $f$ cũng không xác định tại $x_0$ thì phải tách thành hai khoảng.
 
 ##PP Đọc từ bảng xét dấu hoặc đồ thị của $f'$
 Đọc các hoành độ làm $f'=0$ (cột có số $0$ hoặc giao điểm với $Ox$).
 Xác định dấu của $f'$ trên mỗi khoảng (dấu trong bảng, hoặc đồ thị nằm trên/dưới $Ox$).
 Kết luận khoảng đồng biến ($f'>0$), nghịch biến ($f'<0$).
 Nếu dấu $f'$ không đổi qua một cột có số $0$, nối hai khoảng thành một.
+Cột kẻ đôi ($f'$ không xác định): xem $f$ có liên tục (có xác định) tại điểm đó không rồi mới nối hoặc tách khoảng.
+Bất phương trình dạng $f(u)<f(v)$ với $f$ đơn điệu trên $\mathbb{R}$: bỏ $f$, đổi chiều bất đẳng thức nếu $f$ nghịch biến, rồi giải bất phương trình theo $x$.
 Câu so sánh $f(a)$ với $f(b)$: xác định $a$, $b$ nằm trong khoảng đồng biến hay nghịch biến rồi so sánh.
 
 ##CY
 - Đồ thị chỉ tiếp xúc $Ox$ tại một điểm (không cắt) thì $f'$ không đổi dấu, đừng chia khoảng ở điểm đó.
 - Đề cho đồ thị $f'$ thì đồ thị nằm trên $Ox$ nghĩa là $f$ đồng biến, không phải $f$ nằm trên $Ox$.
+- Cột kẻ đôi chỉ nói $f'$ không xác định tại đó, chưa nói $f$ không xác định: đọc điều kiện "liên tục" hay tập xác định của đề trước khi nối hay tách khoảng.
 - Hình đi lên hay đi xuống của đồ thị $f'$ không nói gì về tính đơn điệu của $f$; chỉ dấu của $f'$ (trên/dưới $Ox$) mới quyết định.
 
 @vi_du:
@@ -265,11 +288,38 @@ Vậy hàm số nghịch biến trên $(-\infty;2)$ và đồng biến trên $(2
 b) Vì $-3<-1<2$ nên $-3$ và $-1$ cùng nằm trong khoảng nghịch biến $(-\infty;2)$.
 Vậy $f(-3)>f(-1)$.
 
+##VD
+Cho hàm số $y=f(x)$ có bảng xét dấu của đạo hàm như hình vẽ ($f'(x)$ không xác định tại $x=0$).
+a) Biết $f$ liên tục trên $\mathbb{R}$. Tìm các khoảng đồng biến, nghịch biến của hàm số.
+b) Biết $f$ xác định trên $\mathbb{R}\setminus\{0\}$. Hàm số có nghịch biến trên khoảng $(-1;2)$ không? Tìm các khoảng nghịch biến.
+[[HINH {"loai":"bbt","hang":"dau","x":["-∞","-1","0","2","+∞"],"dau":["+","-","-","+"],"kd":{"2":"||"},"ten_dao":"f'(x)"}]]
+
+Bài giải:
+Từ bảng: $f'(x)>0$ trên $(-\infty;-1)$ và $(2;+\infty)$; $f'(x)<0$ trên $(-1;0)$ và $(0;2)$; $f'$ không xác định tại $x=0$.
+a) Vì $f$ liên tục tại $x=0$ và $f'$ cùng dấu âm ở hai bên $x=0$, nên $f$ nghịch biến trên $(-1;2)$.
+Vậy $f$ đồng biến trên $(-\infty;-1)$ và $(2;+\infty)$, nghịch biến trên $(-1;2)$.
+b) Vì $f$ không xác định tại $x=0\in(-1;2)$ nên $f$ không nghịch biến trên $(-1;2)$.
+Vậy $f$ nghịch biến trên từng khoảng $(-1;0)$ và $(0;2)$.
+
+##VD
+Cho hàm số $y=f(x)$ có đạo hàm $f'(x)=-(x^2+x+1)$ với mọi $x\in\mathbb{R}$.
+a) Xét tính đơn điệu của hàm số trên $\mathbb{R}$.
+b) Có bao nhiêu số nguyên $x$ thỏa mãn $f(x^2-4x)>f(5-2x)$?
+
+Bài giải:
+a) Tam thức $x^2+x+1$ có $\Delta=1-4=-3<0$ và hệ số $x^2$ dương nên $x^2+x+1>0$ với mọi $x$.
+Do đó $f'(x)<0$ với mọi $x\in\mathbb{R}$, hàm số nghịch biến trên $\mathbb{R}$.
+b) Vì $f$ nghịch biến trên $\mathbb{R}$ nên $f(x^2-4x)>f(5-2x)\Leftrightarrow x^2-4x<5-2x\Leftrightarrow x^2-2x-5<0$.
+Bất phương trình này có nghiệm $1-\sqrt6<x<1+\sqrt6$, tức xấp xỉ $-1{,}45<x<3{,}45$.
+Các số nguyên thỏa mãn là $-1;0;1;2;3$.
+Vậy có $5$ số nguyên $x$.
+
 === C1.1.6
 @ly_thuyet:
 ##TC Dấu của tích nhân tử
 - Nhân tử $(x-a)^k$: nếu $k$ lẻ thì đổi dấu khi $x$ qua $a$; nếu $k$ chẵn thì không đổi dấu.
 - Nhân tử luôn dương (như $x^2+1$) có thể bỏ qua khi xét dấu; nhân tử $(a-x)$ nên đổi về $-(x-a)$.
+- Hàm $g(x)=k\,f(x)$ có $g'(x)=k\,f'(x)$: nếu $k>0$ thì $g$ cùng chiều biến thiên với $f$, nếu $k<0$ thì ngược chiều (đồng biến của $f$ thành nghịch biến của $g$).
 - Khoảng ngoài cùng bên phải có dấu của hệ số bậc cao nhất của $f'$ (sau khi đổi các nhân tử về dạng $(x-a)$).
 
 ##PP Xét dấu $f'$ cho bằng tích nhân tử
@@ -307,9 +357,18 @@ Do $f'\ge0$ trên $(-2;2)$ và chỉ bằng $0$ tại $x=0$ nên $f$ đồng bi�
 b) Vì $-2<-1<1<2$ nên $-1$ và $1$ cùng nằm trong khoảng đồng biến $(-2;2)$, do đó $f(-1)<f(1)$.
 Vậy $f$ đồng biến trên $(-2;2)$, nghịch biến trên $(-\infty;-2)$ và $(2;+\infty)$; và $f(-1)<f(1)$.
 
+##VD
+Cho hàm số $y=f(x)$ có đạo hàm $f'(x)=(x-2)(x-4)$ với mọi $x\in\mathbb{R}$. Biết hàm số $g(x)=-3f(x)$ đồng biến trên khoảng $(m;n)$ với $n-m$ lớn nhất. Tính $m\cdot n$.
+
+Bài giải:
+Ta có $g'(x)=-3f'(x)=-3(x-2)(x-4)$.
+$g$ đồng biến khi $g'(x)>0\Leftrightarrow(x-2)(x-4)<0\Leftrightarrow2<x<4$.
+Vậy $g$ đồng biến trên $(2;4)$, đây là khoảng đồng biến duy nhất nên $m=2$, $n=4$ và $m\cdot n=8$.
+
 ## GHI CHÚ CHO CEO
 - Đã đọc: hồ sơ nguồn `k12-hs/ho-so/` (hoso-nbv-1-2.md, hoso-pnl-1-2.md, hoso-tutam.md) và bản v1 đã soát `k12-hs/ra/J1.txt` (khối H1.1, H1.2, H1.3 — nguồn gốc, đã viết lại cho dạng mới và thêm ý theo đề thi: đồng biến trên R, tổng a+b, hàm lôgarit/mũ, so sánh f(a), f(b)). Chưa trích lại file Word của 3 bộ sách vì văn bản chương này đã có sẵn trong hồ sơ.
 - C1.1.1: mô tả có "kể cả câu chỉ hỏi tính y'" — xử lí bằng ý a) của ví dụ 2 (tính y' phân thức).
 - C1.1.2: ví dụ b) dạng "chọn hàm đồng biến trên R" nằm ở dạng này (đề hay trộn với C1.1.1); có thể chuyển nếu CEO muốn tách.
 - Mọi ví dụ đã thử lại bằng script node (quét dấu y', so sánh giá trị): không phát hiện sai.
 - (Trạm soát 03/11) Đã thay 3 ví dụ trùng gần nguyên câu đề thi trong kho (C1.1.1 vd1 ≈ T112010102062; C1.1.2 vd1 b, c = T112010102049, T1120000005883); thêm công thức $ad-bc$, trùng phương, $\log_a u$, $a^u$ vào lý thuyết vì đề hỏi nhiều. Chi tiết: `HS-A.soat.md`.
+- (Bổ sung 03/11, theo quyết định Thùy) C1.1.4: ví dụ 2 đổi sang đồ thị bậc bốn (4 mệnh đề đúng/sai, có "f′>0 trên khoảng"), ví dụ đồ thị phân thức có tiệm cận đứng chuyển thành ví dụ 3 (đề có 2 câu), lý thuyết thêm đồ thị bậc bốn và dấu f′ tại điểm. C1.1.5: lý thuyết + ví dụ 3 (cột kẻ đôi "f′ không xác định", chia ca f liên tục / không xác định), ví dụ 4 (f′<0 mọi x, giải f(u)>f(v), đếm nghiệm nguyên). C1.1.6: ví dụ 3 (g=kf, k<0, "n−m lớn nhất") + ý lý thuyết. Mọi ví dụ mới đã thử bằng script node. Không bổ sung: kiểu "hàm hợp f(u(x))" (không thuộc nhóm C1.1 này).

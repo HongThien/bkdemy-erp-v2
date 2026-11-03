@@ -80,6 +80,9 @@ Vậy đáp số lần lượt là $3$, $7$ và $4$.
 - Quy tắc trừ: $\overrightarrow{OB}-\overrightarrow{OA}=\overrightarrow{AB}$ (hiệu hai vectơ cùng gốc là vectơ nối hai ngọn).
 - Độ dài: $|\overrightarrow{XY}|=XY$. Hình lập phương cạnh $a$ có đường chéo mặt $a\sqrt2$, đường chéo khối $a\sqrt3$. Chóp có $SA\perp(ABCD)$ thì $SC^2=SA^2+AC^2$.
 - Hai đường chéo của hình bình hành cắt nhau tại trung điểm mỗi đường: dựng hình bình hành $SAEC$ thì $\overrightarrow{SA}+\overrightarrow{SC}=\overrightarrow{SE}$ và $SE$ đi qua trung điểm $O$ của $AC$; vậy chóp $S.ABCD$ đáy hình bình hành tâm $O$ có $\overrightarrow{SA}+\overrightarrow{SC}=2\overrightarrow{SO}$, nên $\left|\overrightarrow{SA}+\overrightarrow{SC}\right|=2SO$; tam giác $ABC$ có trung điểm $M$ của $BC$ thì $\left|\overrightarrow{AB}+\overrightarrow{AC}\right|=2AM$.
+- Tứ diện đều cạnh $a$, $G$ là trọng tâm tam giác $BCD$ (tức $\overrightarrow{GB}+\overrightarrow{GC}+\overrightarrow{GD}=\vec 0$): $\overrightarrow{AB}+\overrightarrow{AC}+\overrightarrow{AD}=3\overrightarrow{AG}$ và $AG=\dfrac{a\sqrt6}{3}$ (đường cao tứ diện đều), nên $\left|\overrightarrow{AB}+\overrightarrow{AC}+\overrightarrow{AD}\right|=a\sqrt6$.
+- Tam giác $ABC$ cho hai cạnh và góc $\widehat{BAC}$: dựng hình bình hành $ABDC$ thì $\overrightarrow{AB}+\overrightarrow{AC}=\overrightarrow{AD}$; khi $AB=AC$ và $\widehat{BAC}=120^\circ$ thì $ABDC$ là hình thoi có góc $60^\circ$ tại $B$, tam giác $ABD$ đều và $AD=AB$.
+- Hình hộp chữ nhật ba kích thước $x,y,z$: $\left|\overrightarrow{AC'}\right|=\sqrt{x^2+y^2+z^2}$.
 
 ##PP Tính độ dài của tổng, hiệu vectơ
 Dùng bằng nhau của các cạnh song song để đưa các vectơ về chung gốc hoặc nối đuôi nhau.
@@ -118,6 +121,21 @@ $O$ là trung điểm $AC$ nên $\overrightarrow{SA}+\overrightarrow{SC}=2\overr
 Chóp đều nên $SO\perp(ABCD)$; $OA=\dfrac{AC}{2}=2\sqrt2$, suy ra $SO=\sqrt{SA^2-OA^2}=\sqrt{36-8}=2\sqrt7$.
 Do đó $\left|\overrightarrow{SA}+\overrightarrow{SC}\right|=2SO=4\sqrt7$.
 Vậy các độ dài lần lượt là $5$, $4\sqrt3$, $4\sqrt2$ và $4\sqrt7$.
+
+##VD
+a) Cho tứ diện đều $ABCD$ có cạnh bằng $6$. Tính $\left|\overrightarrow{AB}+\overrightarrow{AC}+\overrightarrow{AD}\right|$.
+b) Cho tam giác $ABC$ có $AB=AC=5$ và $\widehat{BAC}=120^\circ$. Tính $\left|\overrightarrow{AB}+\overrightarrow{AC}\right|$.
+c) Cho hình hộp chữ nhật $ABCD.A'B'C'D'$ có $AB=3$, $AD=4$, $AA'=12$. Tính $\left|\overrightarrow{AB}+\overrightarrow{AD}+\overrightarrow{AA'}\right|$.
+
+Bài giải:
+a) Gọi $G$ là trọng tâm tam giác $BCD$; khi đó $\overrightarrow{GB}+\overrightarrow{GC}+\overrightarrow{GD}=\vec 0$ nên $\overrightarrow{AB}+\overrightarrow{AC}+\overrightarrow{AD}=3\overrightarrow{AG}$.
+$G$ là tâm của tam giác đều $BCD$ cạnh $6$ nên $GB=\dfrac{6\sqrt3}{3}=2\sqrt3$, và $AG\perp(BCD)$ nên $AG=\sqrt{AB^2-GB^2}=\sqrt{36-12}=2\sqrt6$.
+Do đó độ dài bằng $3\cdot2\sqrt6=6\sqrt6$.
+b) Dựng hình bình hành $ABDC$ thì $\overrightarrow{AB}+\overrightarrow{AC}=\overrightarrow{AD}$. Vì $AB=AC$ nên $ABDC$ là hình thoi, có $\widehat{ABD}=180^\circ-120^\circ=60^\circ$ và $AB=BD=5$.
+Tam giác $ABD$ cân có góc $60^\circ$ nên đều, suy ra $AD=5$. Vậy $\left|\overrightarrow{AB}+\overrightarrow{AC}\right|=5$.
+c) $\overrightarrow{AB}+\overrightarrow{AD}+\overrightarrow{AA'}=\overrightarrow{AC'}$ (quy tắc hình hộp).
+$AC'^2=AB^2+AD^2+AA'^2=9+16+144=169$ nên $AC'=13$.
+Vậy các kết quả là $6\sqrt6$, $5$ và $13$.
 
 === N C1.2
 @ly_thuyet:
@@ -175,6 +193,16 @@ c) $\overrightarrow{DD'}=\overrightarrow{CC'}$ nên $\overrightarrow{AC'}-\overr
 Vậy ba kết quả lần lượt là $\overrightarrow{AC'}$, $\overrightarrow{CA'}$ và $\overrightarrow{AC}$.
 
 ##VD
+a) Cho lăng trụ $ABC.A'B'C'$, $M$ là trung điểm của $BC$. Rút gọn $\overrightarrow{A'M}+\dfrac12\overrightarrow{C'B'}$ và $\overrightarrow{CB'}-\overrightarrow{CC'}$.
+b) Cho hình hộp $ABCD.EFGH$ (đáy dưới $ABCD$, cạnh bên $AE,BF,CG,DH$). Rút gọn $\overrightarrow{EF}-\overrightarrow{DH}$.
+
+Bài giải:
+a) $\overrightarrow{C'B'}=\overrightarrow{CB}$ nên $\dfrac12\overrightarrow{C'B'}=\overrightarrow{MB}$. Do đó $\overrightarrow{A'M}+\dfrac12\overrightarrow{C'B'}=\overrightarrow{A'M}+\overrightarrow{MB}=\overrightarrow{A'B}$.
+$\overrightarrow{CB'}-\overrightarrow{CC'}=\overrightarrow{C'B'}$ (quy tắc trừ, hai vectơ cùng gốc $C$) và $\overrightarrow{C'B'}=\overrightarrow{CB}$ (mặt bên $BCC'B'$ là hình bình hành).
+b) $\overrightarrow{EF}=\overrightarrow{AB}$ (mặt $ABFE$ là hình bình hành) và $\overrightarrow{DH}=\overrightarrow{AE}$ (mặt $AEHD$ là hình bình hành) nên $\overrightarrow{EF}-\overrightarrow{DH}=\overrightarrow{AB}-\overrightarrow{AE}=\overrightarrow{EB}$.
+Vậy các kết quả lần lượt là $\overrightarrow{A'B}$, $\overrightarrow{CB}$ và $\overrightarrow{EB}$.
+
+##VD
 Cho hình hộp $ABCD.A'B'C'D'$. Chứng minh rằng $\overrightarrow{AC'}+\overrightarrow{BD'}+\overrightarrow{CA'}+\overrightarrow{DB'}=4\overrightarrow{AA'}$.
 
 Bài giải:
@@ -230,6 +258,17 @@ b) $ABCD$ là hình bình hành nên $\overrightarrow{BA}=\overrightarrow{CD}$, 
 Nối đuôi theo quy tắc ba điểm: $\vec u=\overrightarrow{SD}+\overrightarrow{DB}=\overrightarrow{SB}$.
 Vậy đẳng thức ở a) được chứng minh và $\vec u=\overrightarrow{SB}$.
 
+##VD
+a) Cho tứ diện $ABCD$. Điểm $N$ xác định bởi $\overrightarrow{AN}=\overrightarrow{AC}+\overrightarrow{AD}-\overrightarrow{AB}$. Chứng minh $CNDB$ là hình bình hành và cho biết $N$ là điểm đối xứng của điểm nào qua trung điểm của $CD$.
+b) Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành. Đặt $\overrightarrow{SA}=\vec a$, $\overrightarrow{SB}=\vec b$, $\overrightarrow{SC}=\vec c$. Biểu diễn $\overrightarrow{SD}$ theo $\vec a,\vec b,\vec c$.
+
+Bài giải:
+a) Từ giả thiết $\overrightarrow{AN}-\overrightarrow{AC}=\overrightarrow{AD}-\overrightarrow{AB}$, theo quy tắc trừ $\overrightarrow{CN}=\overrightarrow{BD}$.
+$\overrightarrow{CN}=\overrightarrow{BD}$ nên $CNDB$ là hình bình hành; hai đường chéo $CD$ và $NB$ cắt nhau tại trung điểm mỗi đường, nên $N$ là điểm đối xứng của $B$ qua trung điểm của $CD$.
+b) Ta có $\overrightarrow{AB}=\overrightarrow{DC}$, tức $\overrightarrow{SB}-\overrightarrow{SA}=\overrightarrow{SC}-\overrightarrow{SD}$.
+Suy ra $\overrightarrow{SD}=\overrightarrow{SA}+\overrightarrow{SC}-\overrightarrow{SB}=\vec a+\vec c-\vec b$.
+Vậy $N$ đối xứng với $B$ qua trung điểm $CD$ và $\overrightarrow{SD}=\vec a-\vec b+\vec c$.
+
 === C1.2.3
 @ly_thuyet:
 ##TC Hệ thức trung điểm, trọng tâm, điểm chia đoạn
@@ -283,6 +322,17 @@ Ba vectơ $\overrightarrow{IB},\overrightarrow{IC},\overrightarrow{ID}$ không �
 Do đó $k-2=0$, tức $k=2$.
 Vậy $\dfrac{AI}{AG}=\dfrac34$ và $k=2$.
 
+##VD
+a) Cho tứ diện $ABCD$, $G$ là trọng tâm của tứ diện. Biết $\overrightarrow{AB}+\overrightarrow{AC}+\overrightarrow{AD}=k\overrightarrow{AG}$. Tìm $k$.
+b) Cho tứ diện $ABCD$, $M,N$ lần lượt là trung điểm của $AB$ và $CD$. Biết $\overrightarrow{AC}+\overrightarrow{BD}=k\overrightarrow{MN}$. Tìm $k$.
+c) Cho hai điểm phân biệt $A,B$ và điểm $M$ thoả mãn $\overrightarrow{MA}=-3\overrightarrow{MB}$. Tính $\dfrac{MA}{AB}$.
+
+Bài giải:
+a) $G$ là trọng tâm tứ diện nên với điểm $M$ bất kì: $\overrightarrow{MA}+\overrightarrow{MB}+\overrightarrow{MC}+\overrightarrow{MD}=4\overrightarrow{MG}$. Chọn $M\equiv A$ (khi đó $\overrightarrow{AA}=\vec 0$): $\overrightarrow{AB}+\overrightarrow{AC}+\overrightarrow{AD}=4\overrightarrow{AG}$. Vậy $k=4$.
+b) Có $\overrightarrow{MN}=\dfrac12\left(\overrightarrow{AC}+\overrightarrow{BD}\right)$ (hệ thức hai trung điểm của hai cạnh đối), nên $\overrightarrow{AC}+\overrightarrow{BD}=2\overrightarrow{MN}$ và $k=2$.
+c) $\overrightarrow{MA}=-3\overrightarrow{MB}$ nên hai vectơ ngược hướng và $MA=3MB$, tức $M$ nằm giữa $A,B$. Suy ra $AB=MA+MB=4MB$ và $\dfrac{MA}{AB}=\dfrac{3MB}{4MB}=\dfrac34$.
+Vậy $k=4$, $k=2$ và $\dfrac{MA}{AB}=\dfrac34$.
+
 === C1.2.4
 @ly_thuyet:
 ##TC Ba vectơ không đồng phẳng, phân tích vectơ
@@ -328,6 +378,19 @@ b) Tìm $m,n$ để $\vec z=m\vec x+n\vec y$: $m(\vec a+2\vec b)+n(\vec b-\vec c
 Đồng nhất với $\vec z=\vec a+5\vec b-3\vec c$: $m=1$, $2m+n=5$, $-n=-3$. Hệ có nghiệm $m=1$, $n=3$ (thoả cả ba phương trình).
 Vậy $\vec z=\vec x+3\vec y$ nên ba vectơ $\vec x,\vec y,\vec z$ đồng phẳng.
 Đáp số: $x+y+z=\dfrac53$ và ba vectơ đồng phẳng.
+
+##VD
+a) Cho lăng trụ $ABC.A'B'C'$, $M$ là trung điểm của $A'B'$. Đặt $\overrightarrow{CA}=\vec a$, $\overrightarrow{CB}=\vec b$, $\overrightarrow{AA'}=\vec c$. Phân tích $\overrightarrow{AM}$ theo $\vec a,\vec b,\vec c$.
+b) Cho lăng trụ $ABC.A'B'C'$, $G'$ là trọng tâm tam giác $A'B'C'$. Đặt $\overrightarrow{AA'}=\vec a$, $\overrightarrow{AB}=\vec b$, $\overrightarrow{AC}=\vec c$. Phân tích $\overrightarrow{BG'}$ theo $\vec a,\vec b,\vec c$.
+c) Cho tứ diện $ABCD$ với $\overrightarrow{AB}=\vec a$, $\overrightarrow{AC}=\vec b$, $\overrightarrow{AD}=\vec c$. Điểm $E$ thuộc cạnh $AB$ sao cho $AE=2EB$, $F$ là trung điểm của $CD$. Phân tích $\overrightarrow{EF}$ theo $\vec a,\vec b,\vec c$.
+
+Bài giải:
+a) $\overrightarrow{AM}=\overrightarrow{AA'}+\overrightarrow{A'M}$ với $\overrightarrow{A'M}=\dfrac12\overrightarrow{A'B'}=\dfrac12\overrightarrow{AB}$ và $\overrightarrow{AB}=\overrightarrow{CB}-\overrightarrow{CA}=\vec b-\vec a$.
+Vậy $\overrightarrow{AM}=\vec c+\dfrac12(\vec b-\vec a)=-\dfrac12\vec a+\dfrac12\vec b+\vec c$.
+b) $\overrightarrow{BG'}=\overrightarrow{BA}+\overrightarrow{AA'}+\overrightarrow{A'G'}$ với $\overrightarrow{A'G'}=\dfrac13\left(\overrightarrow{A'B'}+\overrightarrow{A'C'}\right)=\dfrac13\left(\overrightarrow{AB}+\overrightarrow{AC}\right)=\dfrac13(\vec b+\vec c)$.
+Vậy $\overrightarrow{BG'}=-\vec b+\vec a+\dfrac13\vec b+\dfrac13\vec c=\vec a-\dfrac23\vec b+\dfrac13\vec c$.
+c) $AE=2EB$ nên $\overrightarrow{AE}=\dfrac23\overrightarrow{AB}=\dfrac23\vec a$; $F$ là trung điểm $CD$ nên $\overrightarrow{AF}=\dfrac12\left(\overrightarrow{AC}+\overrightarrow{AD}\right)=\dfrac12(\vec b+\vec c)$.
+Vậy $\overrightarrow{EF}=\overrightarrow{AF}-\overrightarrow{AE}=-\dfrac23\vec a+\dfrac12\vec b+\dfrac12\vec c$.
 
 === N C1.3
 @ly_thuyet:
@@ -394,6 +457,17 @@ Trọng lực thẳng đứng hướng xuống, vật đi xuống dọc dốc ng
 $A=|\vec P||\vec d|\cos60^\circ=50\cdot8\cdot\dfrac12=200\ (J)$.
 Vậy kết quả là $-1$, $2\sqrt7$ và công của trọng lực bằng $200\ J$.
 
+##VD
+a) Cho $|\vec a|=5$, $|\vec b|=\sqrt5$ và $\vec a\cdot\vec b=3$. Tính $|\vec a+\vec b|$.
+b) Cho tam giác $ABC$ có $AB=5$, $\widehat{BAC}=120^\circ$ và $\overrightarrow{AB}\cdot\overrightarrow{AC}=-10$. Tính độ dài $AC$.
+c) Cho $|\vec a|=2$, $|\vec b|=3$ và $|3\vec a-\vec b|=3\sqrt3$. Tính $\vec a\cdot\vec b$.
+
+Bài giải:
+a) $|\vec a+\vec b|^2=|\vec a|^2+2\vec a\cdot\vec b+|\vec b|^2=25+6+5=36$ nên $|\vec a+\vec b|=6$.
+b) $\overrightarrow{AB}\cdot\overrightarrow{AC}=AB\cdot AC\cdot\cos120^\circ=5\cdot AC\cdot\left(-\dfrac12\right)=-\dfrac52AC$. Từ $-\dfrac52AC=-10$ suy ra $AC=4$.
+c) $|3\vec a-\vec b|^2=9|\vec a|^2-6\vec a\cdot\vec b+|\vec b|^2$, tức $27=36-6\vec a\cdot\vec b+9$. Suy ra $6\vec a\cdot\vec b=18$ và $\vec a\cdot\vec b=3$.
+Vậy $|\vec a+\vec b|=6$, $AC=4$ và $\vec a\cdot\vec b=3$.
+
 === C1.3.2
 @ly_thuyet:
 ##TC Tích vô hướng thường gặp trên hình
@@ -438,6 +512,21 @@ a) $\overrightarrow{SB}=\vec s+\vec a$, $\overrightarrow{SD}=\vec s+\vec b$ nên
 b) $\overrightarrow{SC}=\vec s+\vec a+\vec b$ nên $\overrightarrow{SC}\cdot\overrightarrow{AB}=\vec s\cdot\vec a+\vec a^{\,2}+\vec b\cdot\vec a=9$.
 c) $\overrightarrow{AC}=\vec a+\vec b$ nên $\overrightarrow{SB}\cdot\overrightarrow{AC}=(\vec s+\vec a)\cdot(\vec a+\vec b)=\vec s\cdot\vec a+\vec s\cdot\vec b+\vec a^{\,2}+\vec a\cdot\vec b=9$.
 Vậy ba tích vô hướng lần lượt bằng $16$, $9$ và $9$.
+
+##VD
+a) Cho hình lập phương $ABCD.A'B'C'D'$ có cạnh bằng $3$. Tính $\overrightarrow{AB'}\cdot\overrightarrow{BC'}$.
+b) Cho hình chóp tứ giác đều $S.ABCD$ có tất cả các cạnh bằng $a$. Tính $\overrightarrow{SB}\cdot\overrightarrow{AD}$.
+c) Với hình chóp ở câu b), gọi $M$ là trung điểm của $SD$. Tính $\overrightarrow{CM}\cdot\overrightarrow{AB}$.
+
+Bài giải:
+a) $\overrightarrow{BC'}=\overrightarrow{AD'}$ nên $\left(\overrightarrow{AB'},\overrightarrow{BC'}\right)=\widehat{B'AD'}$. Tam giác $AB'D'$ có ba cạnh là ba đường chéo mặt bằng $3\sqrt2$ nên đều, suy ra góc $60^\circ$.
+$\overrightarrow{AB'}\cdot\overrightarrow{BC'}=3\sqrt2\cdot3\sqrt2\cdot\cos60^\circ=9$.
+b) $\overrightarrow{AD}=\overrightarrow{BC}$ nên $\overrightarrow{SB}\cdot\overrightarrow{AD}=\overrightarrow{SB}\cdot\overrightarrow{BC}=-\overrightarrow{BS}\cdot\overrightarrow{BC}$. Tam giác $SBC$ đều cạnh $a$ nên $\overrightarrow{BS}\cdot\overrightarrow{BC}=a\cdot a\cdot\cos60^\circ=\dfrac{a^2}{2}$, suy ra $\overrightarrow{SB}\cdot\overrightarrow{AD}=-\dfrac{a^2}{2}$.
+c) $\overrightarrow{CM}=\dfrac12\left(\overrightarrow{CS}+\overrightarrow{CD}\right)$ và $\overrightarrow{AB}=-\overrightarrow{CD}$.
+$\overrightarrow{CD}\cdot\overrightarrow{AB}=-\overrightarrow{CD}^{\,2}=-a^2$.
+$\overrightarrow{CS}\cdot\overrightarrow{AB}=-\overrightarrow{CS}\cdot\overrightarrow{CD}=-a\cdot a\cdot\cos60^\circ=-\dfrac{a^2}{2}$ (tam giác $SCD$ đều).
+Do đó $\overrightarrow{CM}\cdot\overrightarrow{AB}=\dfrac12\left(-\dfrac{a^2}{2}-a^2\right)=-\dfrac{3a^2}{4}$.
+Vậy ba kết quả lần lượt là $9$, $-\dfrac{a^2}{2}$ và $-\dfrac{3a^2}{4}$.
 
 === C1.3.3
 @ly_thuyet:
@@ -486,6 +575,21 @@ b) $\overrightarrow{AM}=\dfrac12\left(\overrightarrow{AB}+\overrightarrow{AC}\ri
 $\overrightarrow{AM}\cdot\overrightarrow{DC}=\dfrac12\left(\overrightarrow{AB}\cdot\overrightarrow{AC}-\overrightarrow{AB}\cdot\overrightarrow{AD}+\overrightarrow{AC}^{\,2}-\overrightarrow{AC}\cdot\overrightarrow{AD}\right)=\dfrac12\left(\dfrac{a^2}{2}-\dfrac{a^2}{2}+a^2-\dfrac{a^2}{2}\right)=\dfrac{a^2}{4}$.
 $AM=\dfrac{a\sqrt3}{2}$ (trung tuyến tam giác đều), $DC=a$ nên $\cos(\overrightarrow{AM},\overrightarrow{DC})=\dfrac{a^2/4}{\frac{a\sqrt3}{2}\cdot a}=\dfrac{1}{2\sqrt3}=\dfrac{\sqrt3}{6}$.
 Vậy $AB\perp CD$ và $\cos(\overrightarrow{AM},\overrightarrow{DC})=\dfrac{\sqrt3}{6}$.
+
+##VD
+a) Cho hai vectơ $\vec a,\vec b$ thoả mãn $|\vec a|=2$, $|\vec b|=4$, $|\vec a-\vec b|=2\sqrt3$. Tính góc giữa $\vec a$ và $\vec b$.
+b) Cho hai vectơ $\vec a,\vec b$ có $|\vec a|=|\vec b|=3$ và $\vec a+2\vec b$ vuông góc với $\vec a$. Tính góc giữa $\vec a$ và $\vec b$.
+c) Cho lăng trụ đều $ABC.A'B'C'$ có $AB=2$ và $AA'=\sqrt2$. Tính góc giữa hai vectơ $\overrightarrow{AB'}$ và $\overrightarrow{BC'}$.
+
+Bài giải:
+a) $\vec a\cdot\vec b=\dfrac{|\vec a|^2+|\vec b|^2-|\vec a-\vec b|^2}{2}=\dfrac{4+16-12}{2}=4$.
+$\cos(\vec a,\vec b)=\dfrac{4}{2\cdot4}=\dfrac12$ nên góc bằng $60^\circ$.
+b) $(\vec a+2\vec b)\cdot\vec a=|\vec a|^2+2\vec a\cdot\vec b=9+2\vec a\cdot\vec b=0$, suy ra $\vec a\cdot\vec b=-\dfrac92$.
+$\cos(\vec a,\vec b)=\dfrac{-9/2}{3\cdot3}=-\dfrac12$ nên góc bằng $120^\circ$.
+c) $\overrightarrow{AB'}=\overrightarrow{AB}+\overrightarrow{AA'}$, $\overrightarrow{BC'}=\overrightarrow{BC}+\overrightarrow{CC'}=\overrightarrow{BC}+\overrightarrow{AA'}$ ($\overrightarrow{AA'}\perp\overrightarrow{AB},\overrightarrow{BC}$).
+$\overrightarrow{AB'}\cdot\overrightarrow{BC'}=\overrightarrow{AB}\cdot\overrightarrow{BC}+\overrightarrow{AA'}^{\,2}=-2+2=0$ (vì $\overrightarrow{AB}\cdot\overrightarrow{BC}=-\overrightarrow{BA}\cdot\overrightarrow{BC}=-2\cdot2\cdot\cos60^\circ=-2$).
+Tích vô hướng bằng $0$ nên góc giữa $\overrightarrow{AB'}$ và $\overrightarrow{BC'}$ bằng $90^\circ$.
+Vậy các góc lần lượt là $60^\circ$, $120^\circ$ và $90^\circ$.
 
 === N C2.1
 @ly_thuyet:
@@ -1189,14 +1293,27 @@ $AH\perp BC$ nên $\overrightarrow{AH}\cdot\overrightarrow{BC}=3(3t-1)+6(6t-1)+3
 Do đó $H(2;4;0)$ và $\overrightarrow{AH}=(0;1;-2)$ nên $AH=\sqrt{0+1+4}=\sqrt{5}$.
 Vậy $H(2;4;0)$ và $AH=\sqrt{5}$.
 
-=== C3.4.3   (dạng "Tính tích có hướng, diện tích, thể tích bằng toạ độ" — mô tả: Đề hỏi [a,b], vectơ vuông góc với hai vectơ, diện tích tam giác/hình bình hành, thể tích tứ diện/hình hộp, xét đồng phẳng. Dùng định thức cấp hai và công thức ½|[AB,AC]|, |[AB,AC]·AD|.)
+##VD
+a) Trong không gian $Oxyz$, cho $A(1;2;2)$ và $B(-2;1;-2)$. Gọi $M$ là điểm thuộc tia $Oy$ sao cho tam giác $ABM$ vuông tại $M$. Tìm toạ độ $M$ và tính diện tích tam giác $ABM$.
+b) Cho $P(3;0;0)$, $Q(0;3;0)$, $R(0;0;3)$. Điểm $N(x;y;z)$ khác $O$ thoả mãn $\widehat{PNQ}=\widehat{QNR}=\widehat{RNP}=90^\circ$. Tính $x+y+z$.
+
+Bài giải:
+a) Gọi $M(0;t;0)$ với $t>0$. Ta có $\overrightarrow{MA}=(1;2-t;2)$ và $\overrightarrow{MB}=(-2;1-t;-2)$.
+Vuông tại $M$ nên $\overrightarrow{MA}\cdot\overrightarrow{MB}=-2+(2-t)(1-t)-4=t^2-3t-4=0$, suy ra $t=4$ hoặc $t=-1$. Do $M$ thuộc tia $Oy$ nên $t>0$, vậy $M(0;4;0)$.
+Khi đó $\overrightarrow{MA}=(1;-2;2)$ và $\overrightarrow{MB}=(-2;-3;-2)$ nên $MA=3$, $MB=\sqrt{17}$. Tam giác vuông tại $M$ nên $S_{ABM}=\dfrac{1}{2}MA\cdot MB=\dfrac{3\sqrt{17}}{2}$.
+b) $\overrightarrow{NP}\cdot\overrightarrow{NQ}=(3-x)(-x)+(-y)(3-y)+z^2=x^2+y^2+z^2-3x-3y$. Đặt $s=x^2+y^2+z^2$, ba điều kiện vuông góc thành
+$s-3x-3y=0$, $s-3y-3z=0$, $s-3z-3x=0$.
+Trừ từng cặp phương trình được $x=z$ và $y=x$, nên $x=y=z=t$. Thay vào: $3t^2-6t=0$, suy ra $t=0$ (là điểm $O$, bị loại) hoặc $t=2$. Vậy $N(2;2;2)$ và $x+y+z=6$.
+Vậy $M(0;4;0)$, $S_{ABM}=\dfrac{3\sqrt{17}}{2}$ và $x+y+z=6$.
+
+=== C3.4.3   (dạng "Tính tích có hướng, diện tích, thể tích bằng toạ độ" — mô tả: Đề hỏi [a,b], vectơ vuông góc với hai vectơ, diện tích tam giác/hình bình hành, thể tích tứ diện, xét đồng phẳng. Dùng định thức cấp hai và công thức ½|[AB,AC]|, |[AB,AC]·AD|.)
 @ly_thuyet:
 ##TC Diện tích, thể tích và đồng phẳng bằng tích có hướng
 - Diện tích tam giác: $S_{ABC}=\dfrac{1}{2}\left|[\overrightarrow{AB},\overrightarrow{AC}]\right|$; diện tích hình bình hành $ABCD$: $S=\left|[\overrightarrow{AB},\overrightarrow{AD}]\right|$.
-- Thể tích tứ diện: $V_{ABCD}=\dfrac{1}{6}\left|[\overrightarrow{AB},\overrightarrow{AC}]\cdot\overrightarrow{AD}\right|$; thể tích hình hộp: $V=\left|[\overrightarrow{AB},\overrightarrow{AD}]\cdot\overrightarrow{AA'}\right|$.
+- Thể tích tứ diện: $V_{ABCD}=\dfrac{1}{6}\left|[\overrightarrow{AB},\overrightarrow{AC}]\cdot\overrightarrow{AD}\right|$.
 - $[\vec{a},\vec{b}]=\vec{0}$ khi và chỉ khi $\vec{a}$, $\vec{b}$ cùng phương; ba điểm $A,B,C$ thẳng hàng khi và chỉ khi $[\overrightarrow{AB},\overrightarrow{AC}]=\vec{0}$.
 - Bốn điểm $A,B,C,D$ đồng phẳng khi và chỉ khi $[\overrightarrow{AB},\overrightarrow{AC}]\cdot\overrightarrow{AD}=0$.
-- Nếu $\vec{a}$, $\vec{b}$ không cùng phương thì mọi vectơ vuông góc với cả hai đều có dạng $k[\vec{a},\vec{b}]$. Đặc biệt $[\overrightarrow{AB},\overrightarrow{AC}]$ (và mọi bội khác $\vec{0}$ của nó) vuông góc với mặt phẳng $(ABC)$, nên chọn làm vectơ pháp tuyến của $(ABC)$.
+- Nếu $\vec{a}$, $\vec{b}$ không cùng phương thì mọi vectơ vuông góc với cả hai đều có dạng $k[\vec{a},\vec{b}]$. Đặc biệt $[\overrightarrow{AB},\overrightarrow{AC}]$ (khác $\vec{0}$) vuông góc với cả $\overrightarrow{AB}$ và $\overrightarrow{AC}$; vì vậy $[\overrightarrow{AB},\overrightarrow{AC}]$ là một vectơ pháp tuyến của $(ABC)$ (mọi bội khác $\vec{0}$ của nó cũng vậy).
 - Đường cao kẻ từ $A$ của tam giác $ABC$: $AH=\dfrac{2S_{ABC}}{BC}$.
 
 ##PP Dùng tích có hướng
@@ -1206,7 +1323,7 @@ Nhân hệ số $\dfrac{1}{2}$ (tam giác) hay $\dfrac{1}{6}$ (tứ diện), nh�
 Với bài tìm vectơ vuông góc với hai vectơ: lấy tích có hướng, hoặc đặt $k[\vec{a},\vec{b}]$ rồi dùng giả thiết bổ sung (độ dài, một thành phần cho trước).
 
 ##CY
-- Thể tích tứ diện có hệ số $\dfrac{1}{6}$, thể tích hình hộp không có hệ số này; diện tích tam giác có $\dfrac{1}{2}$, hình bình hành thì không.
+- Thể tích tứ diện có hệ số $\dfrac{1}{6}$; diện tích tam giác có hệ số $\dfrac{1}{2}$, diện tích hình bình hành thì không.
 - Kết quả tích hỗn tạp phải lấy giá trị tuyệt đối khi tính thể tích, nhưng khi xét đồng phẳng thì chỉ cần bằng $0$.
 
 @vi_du:
@@ -1305,17 +1422,23 @@ Vậy giá trị nhỏ nhất của $T$ bằng $2\cdot16-12=20$.
 - Nếu $A$, $B$ **cùng phía** $(P)$: gọi $A'$ đối xứng của $A$ qua $(P)$, khi đó $MA=MA'$ và $MA+MB=MA'+MB\ge A'B$, dấu bằng khi $M$ là giao điểm của đoạn $A'B$ với $(P)$; giá trị nhỏ nhất là $A'B$.
 - Tìm giao điểm $M$ của đoạn $A'B$ với $(Oxy)$: $A'$, $M$, $B$ thẳng hàng nên $\overrightarrow{A'M}=t\overrightarrow{A'B}$, cho cao độ của $M$ bằng $0$ để tìm $t$ (tương tự với $(Oyz)$, $(Oxz)$).
 - Biểu thức dạng $p\left|\alpha\overrightarrow{MA}+\beta\overrightarrow{MB}+\ldots\right|+q\left|\ldots\right|$: đưa mỗi độ dài vectơ về $|k|\cdot MI$ bằng tâm tỉ cự (dạng trước) để được tổng $c\,(MI+MJ)$, rồi xét như tổng $MA+MB$ ở trên.
+- **Hai điểm** $M$, $N$ cùng di động trên $(P)$ với $MN=d$ không đổi, cần $AM+BN$ nhỏ nhất: nếu $A$, $B$ cùng phía $(P)$ thì thay $A$ bằng $A'$ đối xứng qua $(P)$ để $AM=A'M$. Gọi $A_1$ là ảnh của $A'$ qua phép tịnh tiến theo $\overrightarrow{MN}$ thì $A_1N=A'M$ nên $AM+BN=A_1N+BN\ge A_1B$ (dấu bằng khi $N$ thuộc đoạn $A_1B$; $A_1$, $B$ khác phía $(P)$). $A_1$ cách $A'$ đúng $d$ và cách $(P)$ bằng $A'$. Gọi $h$ là khoảng cách giữa hình chiếu của $A$ và của $B$ lên $(P)$, $v$ là tổng khoảng cách từ $A$ và từ $B$ đến $(P)$. Khi đó $\min(AM+BN)=\sqrt{(h-d)^2+v^2}$.
+- $M$ thuộc **trục toạ độ** (vd $Oy$) và $A$, $B$ nằm trong mặt phẳng toạ độ chứa trục đó (vd $(Oyz)$): làm như bài trong mặt phẳng. Nếu $A$, $B$ cùng phía trục ($z_A$, $z_B$ cùng dấu) thì lấy $A'(0;y_A;-z_A)$ đối xứng với $A$ qua $Oy$, $MA+MB=MA'+MB\ge A'B$, dấu bằng khi $M$ là giao điểm của đoạn $A'B$ với $Oy$; khi đó $y_M=\dfrac{y_A|z_B|+y_B|z_A|}{|z_A|+|z_B|}$.
 
 ##PP Tổng khoảng cách nhỏ nhất khi M thuộc mặt phẳng toạ độ
 Xác định mặt phẳng toạ độ chứa $M$ rồi so dấu toạ độ tương ứng của $A$, $B$ để biết hai điểm cùng phía hay khác phía.
 Khác phía thì giữ nguyên $A$; cùng phía thì thay $A$ bằng điểm đối xứng $A'$ qua mặt phẳng đó.
 Viết $\overrightarrow{A'M}=t\overrightarrow{A'B}$ (hoặc $\overrightarrow{AM}=t\overrightarrow{AB}$) rồi cho toạ độ tương ứng của $M$ bằng $0$ để tìm $t$ và toạ độ $M$.
 Giá trị nhỏ nhất bằng độ dài $AB$ hoặc $A'B$; trả lời đúng điều đề hỏi (giá trị hay toạ độ $M$, khoảng cách từ $M$ đến gốc…).
+Đề có **hai điểm $M$, $N$** với $MN=d$: lấy đối xứng $A$ nếu cùng phía, tịnh tiến $A'$ theo $\overrightarrow{MN}$ về phía $B$ (hướng sao cho $A_1$ gần hình chiếu của $B$ nhất), tính $h$, $v$ rồi $\sqrt{(h-d)^2+v^2}$.
+Đề có **$M$ thuộc trục**: đối xứng $A$ qua trục (trong mặt phẳng toạ độ chứa $A$, $B$) nếu cùng phía, viết $\overrightarrow{A'M}=t\overrightarrow{A'B}$ rồi cho toạ độ khác trục của $M$ bằng $0$.
 
 ##CY
 - Hai điểm khác phía thì **không** lấy đối xứng; lấy đối xứng sẽ ra giá trị sai.
 - Giá trị nhỏ nhất của tổng khi cùng phía là $A'B$, không phải $AB$.
 - Bài thực tế đổi hướng trục (vd $Ox$ hướng Nam, $Oy$ hướng Đông): đọc toạ độ theo đúng hệ trục đề cho, phía Bắc/Tây mang dấu âm.
+- Hai điểm $M$, $N$ với $MN=d$: giá trị nhỏ nhất là $\sqrt{(h-d)^2+v^2}$ chứ không phải $\sqrt{h^2+v^2}-d$.
+- $M$ thuộc trục $Oy$: đối xứng của $A$ qua trục $Oy$ đổi dấu cao độ (cả hoành độ nếu khác $0$), không phải đối xứng qua gốc $O$.
 
 @vi_du:
 ##VD
@@ -1337,6 +1460,27 @@ Gọi $A'$ là điểm đối xứng của $A$ qua $(Oxy)$, tức $A'(3;-2;-1)$.
 $\overrightarrow{A'B}=(-2;-6;3)$ nên $A'B=\sqrt{4+36+9}=7$. Từ $\overrightarrow{A'M}=t\overrightarrow{A'B}$ suy ra $M(3-2t;-2-6t;-1+3t)$.
 Cho $-1+3t=0$ được $t=\dfrac{1}{3}$, suy ra $M\left(\dfrac{7}{3};-4;0\right)$.
 Vậy tổng khoảng cách nhỏ nhất bằng $7$ km và hoành độ của $M$ là $\dfrac{7}{3}$.
+
+##VD
+Trong không gian $Oxyz$, cho $A(1;1;2)$ và $B(1;15;3)$. Hai điểm $M$, $N$ di động trên mặt phẳng $(Oxy)$ sao cho $MN=2$. Tìm giá trị nhỏ nhất của $AM+BN$.
+
+Bài giải:
+$A$ và $B$ đều có cao độ dương nên cùng phía $(Oxy)$. Gọi $A'(1;1;-2)$ là điểm đối xứng của $A$ qua $(Oxy)$, khi đó $AM=A'M$.
+Gọi $A_1$ là ảnh của $A'$ qua phép tịnh tiến theo $\overrightarrow{MN}$, tức $\overrightarrow{A'A_1}=\overrightarrow{MN}$. Khi đó $A_1N=A'M=AM$, nên $AM+BN=A_1N+BN\ge A_1B$.
+$A_1$ có cao độ $-2$ và cách $A'$ đúng $2$. Hình chiếu của $A'$ và $B$ lên $(Oxy)$ là $(1;1)$ và $(1;15)$, cách nhau $h=14>2$. Chênh lệch cao độ giữa $A_1$ và $B$ là $v=3-(-2)=5$.
+Do đó $A_1B$ nhỏ nhất khi $A_1$ nằm trên đoạn nối hình chiếu, tức $A_1(1;3;-2)$ và $A_1B=\sqrt{(15-3)^2+5^2}=13$.
+$A_1$ và $B$ khác phía $(Oxy)$ nên chọn được $N$ là giao điểm của $A_1B$ với $(Oxy)$ và $M=N-\overrightarrow{A'A_1}$, dấu bằng xảy ra.
+Vậy giá trị nhỏ nhất của $AM+BN$ bằng $13$.
+
+##VD
+Hai flycam quan sát vùng lũ đang ở vị trí $A(0;1;6)$ và $B(0;9;9)$ trong hệ trục $Oxyz$ (đơn vị: km). Một con đường thẳng chạy dọc trục $Oy$. Cần đặt một xe trạm phát tín hiệu tại điểm $M$ trên con đường sao cho tổng khoảng cách $MA+MB$ ngắn nhất. Tìm toạ độ $M$ và tổng khoảng cách ngắn nhất đó.
+
+Bài giải:
+$M$ thuộc $Oy$ nên $M(0;y;0)$. Ba điểm $A$, $B$, $M$ cùng nằm trong mặt phẳng $(Oyz)$; cao độ của $A$, $B$ đều dương nên $A$, $B$ cùng phía trục $Oy$.
+Gọi $A'(0;1;-6)$ là điểm đối xứng của $A$ qua trục $Oy$, khi đó $MA=MA'$ nên $MA+MB=MA'+MB\ge A'B$.
+$\overrightarrow{A'B}=(0;8;15)$ nên $A'B=\sqrt{0+64+225}=17$.
+Dấu bằng khi $M$ là giao điểm của đoạn $A'B$ với $Oy$: $\overrightarrow{A'M}=t\overrightarrow{A'B}$ cho $M(0;1+8t;-6+15t)$; cao độ bằng $0$ nên $t=\dfrac{2}{5}$, $y=1+\dfrac{16}{5}=\dfrac{21}{5}$.
+Vậy $M\left(0;\dfrac{21}{5};0\right)$ và tổng khoảng cách ngắn nhất bằng $17$ km.
 
 === N C4.1
 @ly_thuyet:
@@ -1462,16 +1606,19 @@ Trả lời bằng ngữ cảnh thực tế kèm đơn vị.
 - Điểm "cách trần $d$" có cao độ bằng chiều cao phòng trừ $d$; điểm "chính giữa bức tường" có toạ độ ngang bằng một nửa chiều dài bức tường đó và toạ độ còn lại bằng $0$ hoặc bằng kích thước phòng.
 - Lều, mái nhà hình chóp: cạnh bên là độ dài của $\overrightarrow{SA}$, góc ở đỉnh là góc giữa hai vectơ cạnh bên cùng gốc $S$.
 - Dây điện, dây cáp căng thẳng giữa hai điểm có độ dài đúng bằng khoảng cách hai điểm đó.
+- Dây điện đi **dọc các bức tường** (không qua trần, sàn) từ $A$ trên tường này tới $B$ trên tường kề hoặc tường đối diện: dây gấp khúc qua mép chung của các tường (tường kề: $A\to P\to B$; tường đối diện: $A\to P\to Q\to B$ đi qua bức tường ở giữa), mỗi điểm gấp nằm trên một mép đứng (vd mép là trục $Oz$ thì $P(0;0;p)$). Mỗi đoạn ứng với vectơ (khoảng cách ngang trên tường; chênh cao), và $|\overrightarrow{p}|+|\overrightarrow{q}|+|\overrightarrow{r}|\ge|\overrightarrow{p}+\overrightarrow{q}+\overrightarrow{r}|$; dấu bằng khi các vectơ cùng hướng.
 
 ##PP Từ mô tả phòng, nhà đến khoảng cách, góc
 Ghép từng kích thước (dài, rộng, cao) với đúng trục theo hình hoặc lời đề.
 Đọc toạ độ từng điểm đề nhắc (đèn, quạt, ổ điện, đỉnh lều): điểm trên tường nào thì toạ độ tương ứng bằng $0$ hoặc bằng kích thước, "giữa" lấy một nửa, "cách trần" lấy chiều cao trừ đi.
 Lập vectơ nối hai điểm, tính độ dài hoặc $\cos$ của góc giữa hai vectơ.
+Dây điện dọc tường: đặt điểm gấp trên từng mép chung, viết mỗi đoạn thành vectơ (khoảng cách ngang; chênh cao), cộng các vectơ để được độ dài nhỏ nhất, cho các vectơ cùng hướng để tìm cao độ điểm gấp.
 Làm tròn theo đề, trả lời bằng ngữ cảnh (mét, độ).
 
 ##CY
 - Khi "đèn treo giữa phòng" phải tính cả hai toạ độ ngang bằng một nửa kích thước, không chỉ một toạ độ.
 - Góc giữa hai cạnh của hình chóp tính bằng góc giữa **hai vectơ cùng gốc** (cùng xuất phát từ đỉnh), nếu lấy vectơ ngược chiều sẽ ra góc bù.
+- Dây đi dọc tường **không** được nối thẳng $AB$ xuyên qua phòng; phải gấp khúc qua mép chung của các tường, và có thể phải so sánh hai cách đi (vòng qua bức tường bên này hay bên kia) để chọn dây ngắn hơn.
 
 @vi_du:
 ##VD
@@ -1493,6 +1640,17 @@ $\overrightarrow{SA}\cdot\overrightarrow{SC}=4\cdot(-4)+(-4)\cdot4+(-4)\cdot(-4)
 Do đó $\cos\widehat{ASC}=\dfrac{-16}{4\sqrt{3}\cdot4\sqrt{3}}=-\dfrac{1}{3}$.
 Suy ra $\widehat{ASC}\approx109{,}5^\circ$.
 Vậy cạnh bên $SA=4\sqrt{3}$ m và góc $\widehat{ASC}\approx109{,}5^\circ$.
+
+##VD
+Một căn phòng hình hộp chữ nhật dài $6$ m, rộng $4$ m, cao $3$ m. Chọn hệ trục $Oxyz$ có gốc $O$ tại một góc phòng ở sàn, tia $Ox$ theo chiều dài, tia $Oy$ theo chiều rộng, tia $Oz$ hướng lên trần (đơn vị: mét). Bóng đèn gắn trên bức tường thuộc mặt phẳng $(Oxz)$ tại $A(1;0;2{,}75)$; công tắc gắn trên bức tường đối diện tại $B(1;4;0{,}25)$. Dây điện đi từ công tắc tới bóng đèn **dọc theo các bức tường** (không qua trần, sàn). Tìm độ dài ngắn nhất của dây và các điểm dây gấp qua mép tường.
+
+Bài giải:
+$A$ và $B$ nằm trên hai tường đối diện nên dây phải đi qua một bức tường ở giữa. Đi qua tường thuộc $(Oyz)$: dây gấp tại $P(0;0;p)$ trên trục $Oz$ và tại $Q(0;4;q)$ trên mép đứng qua $(0;4;0)$, với $0\le p,q\le3$.
+$\overrightarrow{AP}=(-1;0;p-2{,}75)$, $\overrightarrow{PQ}=(0;4;q-p)$, $\overrightarrow{QB}=(1;0;0{,}25-q)$. Mỗi đoạn có độ dài bằng độ dài vectơ (khoảng cách ngang; chênh cao): $\overrightarrow{u}=(1;\,2{,}75-p)$, $\overrightarrow{v}=(4;\,p-q)$, $\overrightarrow{w}=(1;\,q-0{,}25)$.
+$AP+PQ+QB=|\overrightarrow{u}|+|\overrightarrow{v}|+|\overrightarrow{w}|\ge|\overrightarrow{u}+\overrightarrow{v}+\overrightarrow{w}|=|(6;2{,}5)|=6{,}5$.
+Dấu bằng khi ba vectơ cùng hướng với $(6;2{,}5)$: $2{,}75-p=\dfrac{2{,}5}{6}=\dfrac{5}{12}$ và $q-0{,}25=\dfrac{5}{12}$, suy ra $p=\dfrac{7}{3}$, $q=\dfrac{2}{3}$ (thoả $p-q=\dfrac{5}{3}=4\cdot\dfrac{5}{12}$).
+Nếu đi qua bức tường ở phía kia (tường song song với $(Oyz)$, cách nó $6$ m) thì tổng khoảng cách ngang là $5+4+5=14$, dây dài hơn.
+Vậy dây ngắn nhất dài $6{,}5$ m, gấp tại $P\left(0;0;\dfrac{7}{3}\right)$ và $Q\left(0;4;\dfrac{2}{3}\right)$.
 
 === C4.2.2
 @ly_thuyet:
@@ -1595,12 +1753,14 @@ Vậy khoảng cách nhỏ nhất giữa hai flycam bằng $\sqrt{144}=12$ m, đ
 - Radar đặt tại $I$ có phạm vi theo dõi $R$ thấy được vật ở vị trí $M$ khi $IM\le R$, với $IM=\sqrt{(x_M-x_I)^2+(y_M-y_I)^2+(z_M-z_I)^2}$.
 - Hai vật cùng xuất phát từ gốc $O$ và bay thẳng đều: vị trí sau thời gian $kt_0$ bằng $k$ lần vị trí sau $t_0$ ($\overrightarrow{OA_k}=k\overrightarrow{OA}$), nên khoảng cách giữa chúng cũng gấp $k$ lần.
 - Nhiều vật (drone, flycam): khoảng cách mỗi cặp là độ dài vectơ nối hai vị trí; tổng, so sánh các khoảng cách tính lần lượt từng cặp.
+- Hai vật bay thẳng đều từ $A_0$, $B_0$ với vận tốc $\overrightarrow{v_1}$, $\overrightarrow{v_2}$: $\overrightarrow{A(t)B(t)}=\overrightarrow{A_0B_0}+t\left(\overrightarrow{v_2}-\overrightarrow{v_1}\right)$ và $d(t)^2$ là tam thức bậc hai theo $t$. Khoảng cách nhỏ nhất đạt ở đỉnh. Hỏi "khi nào khoảng cách đạt (hoặc không vượt quá) mốc $D$" (cảnh báo va chạm, radar gắn trên máy bay): giải $d(t)^2=D^2$; lần đầu chạm mốc là nghiệm nhỏ hơn, khoảng thời gian $d(t)\le D$ là hiệu hai nghiệm.
 
 ##PP Radar và khoảng cách giữa các vật
 Đọc dữ kiện thành toạ độ (gốc tại tháp, trạm hoặc điểm xuất phát), nhớ độ cao của radar nếu đặt trên tháp.
 Nếu vật đang bay thì tìm vị trí của nó tại thời điểm đề hỏi (tỉ lệ thời gian hoặc $A+t\overrightarrow{v}$).
 Tính khoảng cách giữa các vật (hoặc từ radar đến vật) bằng công thức độ dài vectơ.
 So sánh với phạm vi $R$ hoặc trả lời khoảng cách theo yêu cầu, kèm đơn vị.
+Hai vật cùng chuyển động: viết $\overrightarrow{A(t)B(t)}$, khai triển $d(t)^2=\alpha t^2+\beta t+\gamma$; nhỏ nhất ở $t=-\dfrac{\beta}{2\alpha}$; hỏi mốc $D$ thì giải $\alpha t^2+\beta t+\gamma=D^2$ rồi chọn nghiệm $t\ge0$ phù hợp.
 
 ##CY
 - Tháp radar có chiều cao: toạ độ radar là $(0;0;\text{chiều cao tháp})$, không phải gốc $O$.
@@ -1625,4 +1785,14 @@ Sau $15$ phút, hai máy bay ở $A(-4;3;2)$ và $B(4;7;3)$.
 Mỗi máy bay bay thẳng đều từ $O$ nên sau $45$ phút ($=3\cdot15$ phút) chúng ở $A_1$, $B_1$ với $\overrightarrow{OA_1}=3\overrightarrow{OA}$, $\overrightarrow{OB_1}=3\overrightarrow{OB}$, tức $A_1(-12;9;6)$ và $B_1(12;21;9)$.
 Ta có $\overrightarrow{A_1B_1}=(24;12;3)$ nên $A_1B_1=\sqrt{24^2+12^2+3^2}=\sqrt{729}=27$.
 Vậy sau $45$ phút hai máy bay cách nhau $27$ km.
+
+##VD
+Hệ thống radar theo dõi hai máy bay bay thẳng đều trong không gian $Oxyz$ (đơn vị độ dài là kilômét, thời gian là phút). Lúc $t=0$, máy bay thứ nhất ở $A_0(0;0;9)$ với vận tốc $\overrightarrow{v_1}=(6;0;0)$ km/phút; máy bay thứ hai ở $B_0(30;-15;9)$ với vận tốc $\overrightarrow{v_2}=(3;4;0)$ km/phút. Quy định an toàn yêu cầu hai máy bay cách nhau không dưới $25$ km. Hỏi sau bao nhiêu phút kể từ $t=0$ thì khoảng cách giữa hai máy bay lần đầu giảm xuống còn $25$ km, và khoảng cách giữa chúng nhỏ hơn $25$ km trong bao lâu?
+
+Bài giải:
+Sau $t$ phút: $A(t)=(6t;0;9)$ và $B(t)=(30+3t;\,-15+4t;\,9)$.
+Suy ra $\overrightarrow{A(t)B(t)}=(30-3t;\,-15+4t;\,0)$ và $d(t)^2=(30-3t)^2+(4t-15)^2=25t^2-300t+1125=25(t-6)^2+225$.
+Khoảng cách bằng $25$ km khi $d(t)^2=625$, tức $25(t-6)^2=400$, $(t-6)^2=16$, suy ra $t=2$ hoặc $t=10$.
+Lúc $t=0$: $d(0)^2=1125>625$ nên hai máy bay còn cách nhau xa hơn $25$ km; $d(t)<25$ khi $2<t<10$.
+Vậy sau $2$ phút khoảng cách lần đầu giảm xuống còn $25$ km, và hai máy bay cách nhau dưới $25$ km trong $10-2=8$ phút (khoảng cách nhỏ nhất là $15$ km lúc $t=6$).
 

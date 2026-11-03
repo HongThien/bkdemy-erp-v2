@@ -478,7 +478,7 @@
       {
        "id": "C2.3.2",
        "ten": "Tâm đối xứng của đồ thị hàm nhất biến",
-       "mo_ta": "Tâm đối xứng = giao hai tiệm cận; điểm đối xứng qua tâm, tính biểu thức theo toạ độ tâm.",
+       "mo_ta": "Tâm đối xứng = giao hai tiệm cận; tính biểu thức theo toạ độ tâm, độ dài từ gốc/điểm đến tâm.",
        "tu": [
         "P2.2.3"
        ],
@@ -574,8 +574,8 @@
       },
       {
        "id": "C2.5.3",
-       "ten": "GTLN, GTNN chứa tham số hoặc hàm ẩn",
-       "mo_ta": "Cho GTLN/GTNN bằng k tìm m; từ đồ thị f′ so sánh f(a), f(b); phương trình–bất phương trình chứa m dùng max–min; biểu thức nhiều biến có ràng buộc.",
+       "ten": "GTLN, GTNN chứa tham số trong công thức",
+       "mo_ta": "Hàm có tham số m (kể cả đa thức bậc cao, hàm chứa căn): cho GTLN/GTNN bằng k tìm m; y=h(x)+m trên đoạn. Câu hàm ẩn từ đồ thị f′ và bài ứng dụng max–min xem C2.5.5, C2.5.6.",
        "tu": [
         "P2.6.1",
         "P2.6.2",
@@ -588,11 +588,27 @@
       {
        "id": "C2.5.4",
        "ten": "Tiệm cận của hàm hợp hoặc hàm có tham số",
-       "mo_ta": "Đếm tiệm cận của g=1/(f(x)+m), g=h(x)/f(x) qua bảng biến thiên của f; tìm m để đồ thị có đúng k tiệm cận.",
+       "mo_ta": "Đếm tiệm cận của g=h(x)/f(x) (mẫu là biểu thức của f) qua bảng biến thiên của f; tìm m để đồ thị có đúng k tiệm cận.",
        "tu": [
         "P2.7.1",
         "P1.7.4"
        ],
+       "moi": [],
+       "hiem": true
+      },
+      {
+       "id": "C2.5.5",
+       "ten": "GTLN, GTNN của hàm ẩn f(u(x)) từ đồ thị, bảng của f hoặc f′",
+       "mo_ta": "Đề cho đồ thị/bảng biến thiên của f (hoặc f′), hỏi GTLN/GTNN của g(x)=f(u(x))+… trên đoạn; so sánh f(a), f(b) từ đồ thị f′; dùng diện tích/nguyên hàm để so các giá trị.",
+       "tu": [],
+       "moi": [],
+       "hiem": false
+      },
+      {
+       "id": "C2.5.6",
+       "ten": "Ứng dụng max–min: phương trình, bất phương trình chứa m, biểu thức nhiều biến",
+       "mo_ta": "Phương trình/bất phương trình chứa m có nghiệm trên khoảng (cô lập m rồi dùng GTLN/GTNN); biểu thức nhiều biến có ràng buộc đưa về một biến.",
+       "tu": [],
        "moi": [],
        "hiem": true
       }
@@ -656,7 +672,7 @@
       {
        "id": "C3.2.1",
        "ten": "Viết tiếp tuyến tại điểm hoặc biết hệ số góc",
-       "mo_ta": "Tiếp tuyến tại điểm cho trước, song song/vuông góc đường thẳng, hệ số góc tiếp tuyến lớn nhất/nhỏ nhất (tìm max–min của y′).",
+       "mo_ta": "Tiếp tuyến tại điểm cho trước, biết hệ số góc; hệ số góc tiếp tuyến lớn nhất/nhỏ nhất (tìm max–min của y′).",
        "tu": [
         "P3.2.1",
         "P3.2.2"
@@ -836,8 +852,8 @@
       },
       {
        "id": "C4.3.3",
-       "ten": "Thang dài nhất qua góc hành lang, góc nhìn lớn nhất",
-       "mo_ta": "Thang/sào/ống đi qua góc hai hành lang (lập hàm theo góc), góc nhìn hoặc góc chiếu lớn nhất.",
+       "ten": "Thang, sào, xe qua góc hành lang; độ chiếu sáng lớn nhất",
+       "mo_ta": "Thang/sào/ống/xe đi qua góc hai hành lang (lập hàm theo góc hoặc theo toạ độ); gara, hành lang có kích thước cho trước; độ chiếu sáng lớn nhất.",
        "tu": [
         "P4.3.3",
         "P4.3.4"

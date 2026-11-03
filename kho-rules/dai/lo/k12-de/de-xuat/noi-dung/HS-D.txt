@@ -65,6 +65,18 @@ TCĐ: $x=-\dfrac{d}{c}=3$. TCN: $y=\dfrac{a}{c}=\dfrac{-2}{-1}=2$.
 Kiểm tra: $\lim_{x\to3^+}\dfrac{-2x+5}{3-x}=+\infty$ (tử $\to-1$, mẫu $\to0^-$) và $\lim_{x\to\pm\infty}\dfrac{-2x+5}{3-x}=\lim\dfrac{-2+\dfrac{5}{x}}{\dfrac{3}{x}-1}=2$.
 Vậy a) TCĐ $x=-2$, TCN $y=-\dfrac{3}{2}$; b) TCĐ $x=3$, TCN $y=2$.
 
+##VD
+a) Tìm tiệm cận ngang của đồ thị hàm số $y=2+\dfrac{x-3}{2x+1}$.
+b) Cho hàm số $y=\dfrac{3x-1}{2-x}$. Gọi $x=a$ và $y=b$ lần lượt là tiệm cận đứng và tiệm cận ngang của đồ thị. Tính $a+3b$.
+c) Tìm các đường tiệm cận của đồ thị hàm số $y=3-\dfrac{4}{x+1}$.
+
+Bài giải:
+a) Gộp phân số: $y=\dfrac{2(2x+1)+x-3}{2x+1}=\dfrac{5x-1}{2x+1}$, có $a=5$, $b=-1$, $c=2$, $d=1$ và $ad-bc=5\cdot1-(-1)\cdot2=7\ne0$. TCN: $y=\dfrac{a}{c}=\dfrac{5}{2}$. (Cách khác: $\dfrac{x-3}{2x+1}\to\dfrac{1}{2}$ nên $y\to2+\dfrac{1}{2}=\dfrac{5}{2}$.)
+b) Hệ số của $x$ ở tử là $3$, ở mẫu là $-1$ (mẫu $2-x=-x+2$), nên TCN là $y=\dfrac{3}{-1}=-3$, tức $b=-3$. Mẫu bằng $0$ khi $x=2$, lúc đó tử bằng $3\cdot2-1=5\ne0$: TCĐ $x=2$, tức $a=2$.
+Vậy $a+3b=2+3\cdot(-3)=-7$.
+c) Viết $y=\dfrac{3(x+1)-4}{x+1}=\dfrac{3x-1}{x+1}$. Mẫu bằng $0$ tại $x=-1$, tử khác $0$ ($3\cdot(-1)-1=-4$): TCĐ $x=-1$. Khi $x\to\pm\infty$ thì $\dfrac{4}{x+1}\to0$ nên $y\to3$: TCN $y=3$.
+Vậy a) $y=\dfrac{5}{2}$; b) $a+3b=-7$; c) TCĐ $x=-1$, TCN $y=3$.
+
 === C1.4.2
 @ly_thuyet:
 ##TC Nghiệm chung của tử và mẫu
@@ -75,6 +87,8 @@ Vậy a) TCĐ $x=-2$, TCN $y=-\dfrac{3}{2}$; b) TCĐ $x=3$, TCN $y=2$.
 - Khi $x\to+\infty$ (tức $x>0$): $\sqrt{x^2}=|x|=x$. Khi $x\to-\infty$ (tức $x<0$): $\sqrt{x^2}=|x|=-x$.
 - Hai giới hạn tại $+\infty$ và $-\infty$ có thể khác nhau nên đồ thị có thể có **hai** TCN.
 - Dạng $\dfrac{0}{0}$ hoặc $\infty-\infty$ với căn: nhân liên hợp, ví dụ $\sqrt{A}-B=\dfrac{A-B^2}{\sqrt{A}+B}$.
+- Căn ở mẫu (như $\dfrac{2x-4}{\sqrt{x^2-4}}$) hoặc hàm $\ln u(x)$: trước hết tìm tập xác định; chỉ xét giới hạn từ phía **thuộc** tập xác định. Điểm đầu mút $x_0$ của tập xác định là TCĐ khi giới hạn một phía tại $x_0$ bằng $\pm\infty$ (với $\ln u$: khi $u\to0^+$ hoặc $u\to+\infty$); giới hạn hữu hạn thì không.
+- Mẫu là đa thức $f(x)$ cho bằng đồ thị: đọc các nghiệm $x_1,x_2,\ldots$ từ giao điểm với $Ox$, viết $f(x)=a(x-x_1)(x-x_2)\ldots$, tìm $a$ từ một điểm đã biết, rồi rút gọn nhân tử chung với tử.
 
 ##PP Đếm tiệm cận của phân thức bậc cao, hàm chứa căn
 Phân tích tử và mẫu thành nhân tử (hoặc nhân liên hợp nếu có căn), tìm các điểm làm mẫu bằng $0$ hoặc làm căn không xác định.
@@ -113,6 +127,32 @@ Khi $x\to+\infty$ (có $|x|=x$): $y=\dfrac{x+1}{x-1}=\dfrac{1+\dfrac{1}{x}}{1-\d
 Khi $x\to-\infty$ (có $|x|=-x$): $y=\dfrac{-x+1}{x-1}=\dfrac{-(x-1)}{x-1}=-1$ với mọi $x<0$, nên giới hạn bằng $-1$.
 Vậy a) có $1$ tiệm cận ($y=0$); b) có $3$ tiệm cận ($x=1$, $y=1$, $y=-1$).
 
+##VD
+a) Đồ thị hàm số $y=\dfrac{2x-4}{\sqrt{x^2-4}}$ có bao nhiêu đường tiệm cận (đứng và ngang)?
+b) Đồ thị hàm số $y=\ln\dfrac{(x-1)^2(x+3)}{(x-2)(x+1)}$ có bao nhiêu đường tiệm cận (đứng và ngang)?
+c) Cho hàm đa thức bậc ba $y=f(x)$ có đồ thị như hình vẽ (đồ thị cắt $Ox$ tại $x=-2$, $x=1$, $x=3$ và cắt $Oy$ tại điểm $(0;6)$). Tìm số đường tiệm cận (đứng và ngang) của đồ thị hàm số $y=\dfrac{(x-1)(x^2-4)}{f(x)}$.
+[[HINH {"loai":"dothi","x":[-2.6,3.7],"y":[-10,10],"f":[{"e":"(x+2)*(x-1)*(x-3)","ten":"y=f(x)","xt":3.3}],"diem":[{"x":-2,"y":0},{"x":1,"y":0},{"x":3,"y":0},{"x":0,"y":6}]}]]
+
+Bài giải:
+a) Tập xác định: $x^2-4>0\Leftrightarrow x<-2$ hoặc $x>2$.
+Tại $x=2$ (đầu mút bên phải): $y=\dfrac{2(x-2)}{\sqrt{(x-2)(x+2)}}=\dfrac{2\sqrt{x-2}}{\sqrt{x+2}}\to0$ khi $x\to2^+$, hữu hạn nên $x=2$ không là TCĐ.
+Tại $x=-2$ (đầu mút bên trái): khi $x\to(-2)^-$ tử $\to-8$, mẫu $\to0^+$ nên $y\to-\infty$: $x=-2$ là TCĐ.
+Khi $x\to+\infty$: $y=\dfrac{2-\dfrac{4}{x}}{\sqrt{1-\dfrac{4}{x^2}}}\to2$. Khi $x\to-\infty$ (có $\sqrt{x^2}=-x$): $y=\dfrac{2x-4}{-x\sqrt{1-\dfrac{4}{x^2}}}=\dfrac{-2+\dfrac{4}{x}}{\sqrt{1-\dfrac{4}{x^2}}}\to-2$. Có hai TCN: $y=2$ và $y=-2$.
+Vậy đồ thị có $1+2=3$ đường tiệm cận.
+b) Đặt $u=\dfrac{(x-1)^2(x+3)}{(x-2)(x+1)}$; xét dấu $u$ trên các khoảng chia bởi $-3,-1,1,2$: $u>0$ khi $-3<x<-1$ hoặc $x>2$, $u<0$ ở các khoảng còn lại (kể cả gần $x=1$). Tập xác định là $(-3;-1)\cup(2;+\infty)$.
+$x\to(-3)^+$: $u\to0^+$ nên $y\to-\infty$: $x=-3$ là TCĐ.
+$x\to(-1)^-$: $u\to+\infty$ nên $y\to+\infty$: $x=-1$ là TCĐ.
+$x\to2^+$: $u\to+\infty$ nên $y\to+\infty$: $x=2$ là TCĐ.
+$x=1$ làm $u=0$ nhưng $1$ không thuộc tập xác định (xung quanh $1$ có $u<0$) nên không phải TCĐ.
+$x\to+\infty$: $u\sim x\to+\infty$ nên $y\to+\infty$, không có TCN; hàm không xác định khi $x\to-\infty$.
+Vậy đồ thị có $3$ đường tiệm cận (đều là TCĐ).
+c) Từ đồ thị, $f$ có ba nghiệm $-2,1,3$ nên $f(x)=a(x+2)(x-1)(x-3)$. Vì $f(0)=6$ nên $a\cdot2\cdot(-1)\cdot(-3)=6$, suy ra $a=1$.
+Tử $(x-1)(x^2-4)=(x-1)(x-2)(x+2)$. Do đó $y=\dfrac{(x-1)(x-2)(x+2)}{(x+2)(x-1)(x-3)}=\dfrac{x-2}{x-3}$ với $x\ne-2$, $x\ne1$.
+Tại $x=3$: tử $\to1\ne0$, mẫu $\to0$ nên $x=3$ là TCĐ. Tại $x=1$ giới hạn bằng $\dfrac{1}{2}$, tại $x=-2$ giới hạn bằng $\dfrac{4}{5}$ (đều hữu hạn) nên không là TCĐ.
+Khi $x\to\pm\infty$: $y\to1$ nên $y=1$ là TCN.
+Vậy đồ thị có $1+1=2$ đường tiệm cận.
+Kết quả: a) $3$; b) $3$; c) $2$.
+
 === C1.4.3
 @ly_thuyet:
 ##TC Tiệm cận xiên
@@ -120,6 +160,7 @@ Vậy a) có $1$ tiệm cận ($y=0$); b) có $3$ tiệm cận ($x=1$, $y=1$, $y
 - Hàm phân thức $y=\dfrac{ax^2+bx+c}{mx+n}$ ($a\ne0$, $m\ne0$): chia tử cho mẫu được $y=px+q+\dfrac{r}{mx+n}$; nếu số dư $r\ne0$ thì TCX là $y=px+q$ và TCĐ là $x=-\dfrac{n}{m}$. Nếu $r=0$ thì $y=px+q$ với $x\ne-\dfrac{n}{m}$ (đường thẳng khuyết một điểm): không có TCĐ, theo định nghĩa $y=px+q$ vẫn là TCX.
 - Hàm chứa căn: $a=\lim_{x\to\pm\infty}\dfrac{f(x)}{x}$ (hữu hạn, khác $0$), $b=\lim_{x\to\pm\infty}[f(x)-ax]$ (hữu hạn); TCX là $y=ax+b$.
 - Nếu $a=0$ thì đường $y=b$ là tiệm cận ngang, không phải tiệm cận xiên.
+- Dùng phương trình TCX $y=ax+b$ ($a\ne0$, $b\ne0$): cắt $Ox$ tại $A\left(-\dfrac{b}{a};0\right)$, cắt $Oy$ tại $B(0;b)$, diện tích $\triangle OAB=\dfrac{b^2}{2|a|}$; đi qua điểm $M(x_M;y_M)$ khi $y_M=ax_M+b$. Với hệ số chứa tham số $m$: chia đa thức theo $x$, đọc $a,b$ theo $m$ (kiểm tra số dư $\ne0$), rồi áp điều kiện đề cho.
 
 ##PP Tìm tiệm cận xiên
 Hàm phân thức: chia đa thức (hoặc sơ đồ Hoócne khi mẫu dạng $x-x_0$) để được $y=px+q+\dfrac{r}{mx+n}$, kiểm tra $r\ne0$ rồi đọc TCX $y=px+q$.
@@ -159,6 +200,22 @@ $b=\lim(y-3x)=\lim\left(\sqrt{x^2-2x}-x\right)=\lim\dfrac{-2x}{\sqrt{x^2-2x}+x}=
 Khi $x\to-\infty$: $\sqrt{x^2-2x}=-x\sqrt{1-\dfrac{2}{x}}$ nên $a=\lim\left(-\sqrt{1-\dfrac{2}{x}}+2\right)=1$.
 $b=\lim(y-x)=\lim\left(\sqrt{x^2-2x}+x\right)=\lim\dfrac{-2x}{\sqrt{x^2-2x}-x}=\lim\dfrac{-2x}{-x\left(\sqrt{1-\dfrac{2}{x}}+1\right)}=\lim\dfrac{2}{\sqrt{1-\dfrac{2}{x}}+1}=1$. TCX khi $x\to-\infty$ là $y=x+1$.
 Vậy a) $a+b=2$; b) đồ thị có hai tiệm cận xiên $y=3x-1$ và $y=x+1$.
+
+##VD
+a) Tiệm cận xiên của đồ thị hàm số $y=\dfrac{3x^2+5x-1}{x+2}$ cắt hai trục toạ độ $Ox$, $Oy$ tại $A$, $B$. Tính diện tích tam giác $OAB$.
+b) Tìm tiệm cận xiên của đồ thị hàm số $y=\dfrac{x^3-x^2+3}{x^2+x}$.
+c) Tìm $m$ để tiệm cận xiên của đồ thị hàm số $y=\dfrac{x^2+mx+1}{x-1}$ đi qua điểm $M(3;5)$.
+
+Bài giải:
+a) Chia tử cho mẫu: $3x^2+5x-1=(x+2)(3x-1)+1$ nên $y=3x-1+\dfrac{1}{x+2}$; số dư $1\ne0$, TCX là $y=3x-1$.
+Giao với $Ox$: $3x-1=0\Rightarrow A\left(\dfrac{1}{3};0\right)$. Giao với $Oy$: $B(0;-1)$.
+Diện tích $S_{OAB}=\dfrac{1}{2}\cdot OA\cdot OB=\dfrac{1}{2}\cdot\dfrac{1}{3}\cdot1=\dfrac{1}{6}$.
+b) Chia tử cho mẫu: $(x^2+x)(x-2)=x^3-x^2-2x$ nên $x^3-x^2+3=(x^2+x)(x-2)+2x+3$, do đó $y=x-2+\dfrac{2x+3}{x^2+x}$.
+Bậc tử của phân số còn lại nhỏ hơn bậc mẫu nên $\dfrac{2x+3}{x^2+x}\to0$ khi $x\to\pm\infty$. TCX là $y=x-2$.
+c) Chia tử cho mẫu: $x^2+mx+1=(x-1)(x+m+1)+m+2$, nên $y=x+m+1+\dfrac{m+2}{x-1}$.
+Với $m\ne-2$ (số dư khác $0$), TCX là $y=x+m+1$ (với $m=-2$ hàm thành $y=x-1$ khuyết điểm $x=1$ — không có TCĐ nhưng $y=x-1$ vẫn là TCX theo quy ước).
+$M(3;5)$ thuộc TCX khi $5=3+m+1$, suy ra $m=1$ (thoả $m\ne-2$).
+Vậy a) $\dfrac{1}{6}$; b) $y=x-2$; c) $m=1$.
 
 === C1.4.4
 @ly_thuyet:
@@ -242,6 +299,7 @@ Vậy tổng số tiệm cận đứng và tiệm cận ngang là $1+2=3$.
 - Một trong các giới hạn $\lim_{x\to x_0^\pm}f(x)=\pm\infty$ thì $x=x_0$ là TCĐ; giới hạn hữu hạn thì không.
 - $\lim_{x\to\pm\infty}[f(x)-(ax+b)]=0$ với $a\ne0$ thì $y=ax+b$ là TCX.
 - Hàm $g(x)=kf(x)+m$ ($k\ne0$): $\lim f=L$ thì $\lim g=kL+m$, nên TCN $y=L$ của $f$ chuyển thành TCN $y=kL+m$ của $g$; TCĐ giữ nguyên vì $kf+m$ vẫn tiến tới $\pm\infty$.
+- Hàm $y=\log_ax$ ($a>0$, $a\ne1$) có $\lim_{x\to0^+}\log_ax=\mp\infty$ nên trục $Oy$ ($x=0$) là TCĐ; hàm đa thức, $y=\sin x$, $y=\cos x$, $y=a^x$ liên tục trên $\mathbb{R}$ nên không có giới hạn $\pm\infty$ tại điểm hữu hạn, không có TCĐ.
 
 ##PP Tìm tiệm cận từ các giới hạn cho trước
 Phân loại từng giới hạn: tại $\pm\infty$ hay tại điểm hữu hạn; kết quả hữu hạn, $\pm\infty$, hay hiệu $f(x)-(ax+b)\to0$.
@@ -252,6 +310,7 @@ Nếu đề hỏi về hàm $kf(x)+m$ thì tính giới hạn của hàm mới t
 - Chỉ cần một phía bằng $\pm\infty$ là có TCĐ, dù phía còn lại có giới hạn hữu hạn.
 - $\lim_{x\to x_0^-}f(x)=\lim_{x\to x_0^+}f(x)=L$ hữu hạn thì $x=x_0$ **không** là TCĐ, dù $f$ có thể không xác định tại $x_0$.
 - Đọc đúng dấu khi chuyển $\lim[f(x)-2x+5]=0$ thành $f(x)-(2x-5)$: tiệm cận là $y=2x-5$, không phải $y=2x+5$.
+- Giữ đúng loại đường và đúng số: giới hạn tại $x_0$ bằng $\pm\infty$ cho TCĐ $x=x_0$; giới hạn tại $\pm\infty$ bằng $y_0$ cho TCN $y=y_0$. Không đổi dấu ($x=-x_0$, $y=-y_0$ là sai) và không đổi $x$ thành $y$.
 
 @vi_du:
 ##VD
@@ -274,6 +333,22 @@ Vì $\lim_{x\to4^+}f(x)=-\infty$ và hệ số $3>0$ nên $\lim_{x\to4^+}h(x)=-\
 b) Ta có $g(x)-2x+5=g(x)-(2x-5)$, và $\lim_{x\to+\infty}[g(x)-(2x-5)]=0$ nên $y=2x-5$ là TCX.
 Vì $\lim_{x\to1^+}g(x)=+\infty$ nên $x=1$ là TCĐ.
 Vậy a) đồ thị $y=h(x)$ có TCN $y=4$ và TCĐ $x=4$; b) có TCX $y=2x-5$ và TCĐ $x=1$.
+
+##VD
+a) Trong các hàm số $y=x^3$, $y=\cos x$, $y=\ln x$, $y=3^x$, hàm số nào có đồ thị nhận trục $Oy$ làm tiệm cận đứng?
+b) Cho hàm số $y=f(x)$ có $\lim_{x\to+\infty}f(x)=-1$ và $\lim_{x\to-\infty}f(x)=+\infty$. Đồ thị hàm số có bao nhiêu tiệm cận ngang? Viết phương trình.
+c) Mỗi mệnh đề sau đúng hay sai? Giải thích.
+(i) Nếu $\lim_{x\to3^+}f(x)=+\infty$ thì đường thẳng $y=3$ là tiệm cận ngang của đồ thị $y=f(x)$.
+(ii) Nếu $\lim_{x\to+\infty}f(x)=-4$ thì đường thẳng $y=-4$ là tiệm cận ngang của đồ thị $y=f(x)$.
+
+Bài giải:
+a) Trục $Oy$ có phương trình $x=0$. Chỉ $y=\ln x$ có $\lim_{x\to0^+}\ln x=-\infty$ nên $x=0$ là TCĐ. Các hàm $y=x^3$, $y=\cos x$, $y=3^x$ đều có giới hạn hữu hạn tại $x=0$ (lần lượt $0$, $1$, $1$) nên không có TCĐ $x=0$.
+Vậy hàm số cần tìm là $y=\ln x$.
+b) Khi $x\to+\infty$: $f(x)\to-1$ nên $y=-1$ là TCN. Khi $x\to-\infty$: $f(x)\to+\infty$ (không hữu hạn) nên phía này không cho TCN.
+Vậy đồ thị có đúng một TCN là $y=-1$.
+c) (i) Sai: giới hạn tại điểm hữu hạn $3$ bằng $+\infty$ cho TCĐ $x=3$, không phải TCN $y=3$.
+(ii) Đúng: giới hạn tại $+\infty$ bằng số hữu hạn $-4$ nên $y=-4$ là TCN (giữ nguyên số, kể cả dấu).
+Vậy a) $y=\ln x$; b) một TCN $y=-1$; c) (i) sai, (ii) đúng.
 
 === N C1.5
 @ly_thuyet:
@@ -301,7 +376,7 @@ Ghi vào bảng: dòng $x$, dòng $y'$, dòng $y$ với mũi tên đi lên ($y'>
 - **Định lý:** $f'(x)>0$ với mọi $x\in(a;b)$ thì $f$ đồng biến trên $(a;b)$; $f'(x)<0$ thì nghịch biến. Vẫn đúng nếu $f'(x)\ge0$ và $f'(x)=0$ chỉ tại hữu hạn điểm.
 - Chiều ngược lại **không** đúng: $f$ đồng biến trên $(a;b)$ chỉ suy ra $f'(x)\ge0$, chưa suy ra $f'(x)>0$.
 - **Cực trị, điều kiện cần:** $f$ có đạo hàm tại $x_0$ và đạt cực trị tại $x_0$ thì $f'(x_0)=0$. Chiều ngược lại sai.
-- **Cực trị, điều kiện đủ:** $f'(x_0)=0$ và $f'$ đổi dấu qua $x_0$ (từ $-$ sang $+$: cực tiểu; từ $+$ sang $-$: cực đại); hoặc $f'(x_0)=0$ và $f''(x_0)>0$ (cực tiểu), $f''(x_0)<0$ (cực đại).
+- **Cực trị, điều kiện đủ:** $f'(x_0)=0$ và $f'$ đổi dấu qua $x_0$ (từ $-$ sang $+$: cực tiểu; từ $+$ sang $-$: cực đại). Nếu $f'(x)>0$ (hoặc $f'(x)<0$) với mọi $x$ trên một khoảng thì $f$ không có cực trị trên khoảng đó.
 - **GTLN, GTNN:** $M=\max_Df$ khi $f(x)\le M$ với mọi $x\in D$ **và** tồn tại $x_0\in D$ để $f(x_0)=M$; thiếu một trong hai điều kiện là chưa đủ.
 
 ##PP Xét tính đúng sai của một mệnh đề lý thuyết
@@ -334,15 +409,29 @@ Vậy các mệnh đề a) và d) đúng; b) và c) sai.
 Mỗi mệnh đề sau đúng hay sai? Giải thích.
 a) Nếu hàm số $y=f(x)$ có đạo hàm tại $x_0$ và đạt cực trị tại $x_0$ thì $f'(x_0)=0$.
 b) Nếu $f'(x_0)=0$ thì hàm số $y=f(x)$ đạt cực trị tại $x_0$.
-c) Nếu $f'(x_0)=0$ và $f''(x_0)>0$ thì hàm số đạt cực tiểu tại $x_0$.
+c) Nếu $f'(x_0)=0$ và $f'(x)$ đổi dấu từ âm sang dương khi $x$ đi qua $x_0$ thì hàm số đạt cực tiểu tại $x_0$.
 d) Nếu $f(x)\ge m$ với mọi $x\in D$ thì $m$ là giá trị nhỏ nhất của $f$ trên $D$.
 
 Bài giải:
 a) Đúng: đây là điều kiện cần của cực trị (với hàm có đạo hàm tại $x_0$).
 b) Sai: $y=x^3$ có $y'(0)=0$ nhưng $y'=3x^2\ge0$ không đổi dấu nên không có cực trị tại $0$.
-c) Đúng: đây là điều kiện đủ của cực tiểu qua đạo hàm cấp hai.
+c) Đúng: đây là điều kiện đủ của cực tiểu (dấu của $f'$ đổi từ $-$ sang $+$).
 d) Sai: còn thiếu điều kiện tồn tại $x_0\in D$ để $f(x_0)=m$. Ví dụ $f(x)=x^2\ge-1$ với mọi $x\in\mathbb{R}$ nhưng $-1$ không phải GTNN, vì GTNN của $f$ bằng $0$.
 Vậy các mệnh đề a) và c) đúng; b) và d) sai.
+
+##VD
+Mỗi mệnh đề sau đúng hay sai? Giải thích.
+a) Hàm số $y=f(x)$ gọi là nghịch biến trên $K$ nếu với mọi $x_1,x_2\in K$ mà $x_1<x_2$ thì $f(x_1)<f(x_2)$.
+b) Nếu hàm số $y=f(x)$ liên tục trên đoạn $[0;4]$, thoả mãn $f(x)\le5$ với mọi $x\in[0;4]$ và $f(1)=5$ thì giá trị lớn nhất của $f$ trên $[0;4]$ bằng $5$.
+c) Nếu $f'(x)<0$ với mọi $x\in(1;4)$ thì hàm số $y=f(x)$ không có cực trị trên khoảng $(1;4)$.
+d) Nếu hàm số $y=f(x)$ đạt cực đại tại $x_0$ thì $f(x_0)$ là giá trị lớn nhất của hàm số trên tập xác định.
+
+Bài giải:
+a) Sai: điều kiện $x_1<x_2\Rightarrow f(x_1)<f(x_2)$ là định nghĩa của hàm **đồng biến**; nghịch biến là $f(x_1)>f(x_2)$.
+b) Đúng: có $f(x)\le5$ với mọi $x\in[0;4]$ và đạt dấu bằng tại $x=1\in[0;4]$, đủ cả hai điều kiện của giá trị lớn nhất.
+c) Đúng: $f'(x)<0$ với mọi $x\in(1;4)$ thì $f'$ không bằng $0$ tại điểm nào của khoảng, nên không có điểm nào thoả điều kiện cần của cực trị.
+d) Sai: cực đại chỉ là giá trị lớn nhất trong một lân cận. Ví dụ $y=x^3-3x$ đạt cực đại tại $x=-1$ với $y_{\text{CĐ}}=2$, nhưng $f(2)=2$ còn $f(3)=18>2$ (và $f(x)\to+\infty$), nên hàm không có giá trị lớn nhất.
+Vậy các mệnh đề b) và c) đúng; a) và d) sai.
 
 === C1.5.2
 @ly_thuyet:
@@ -407,3 +496,5 @@ Vậy đồ thị đi từ trên cao bên trái xuống thấp bên phải, ti�
 - C1.5.1: câu đề T112000000890 không chặt chẽ — đáp án A ("đạt cực trị tại $x_0$ thì đạo hàm đổi dấu khi qua $x_0$") không đúng với mọi hàm, còn B ("đạt cực trị thì $f'(x_0)=0$") đúng khi $f$ có đạo hàm tại $x_0$ ($y=|x|$ là phản ví dụ của B khi không có đạo hàm). Lý thuyết dạng viết theo SGK; ví dụ không dùng câu này. CEO quyết có sửa đáp án/ghi chú câu đề không.
 - C1.5.2: đề thi chỉ có 3 câu, cả ba là hàm bậc ba ⇒ trạm soát đổi ví dụ 2 sang bậc ba $a<0$ ($y=-x^3+3x+2$, có cực tiểu nằm trên $Ox$) và bỏ lý thuyết hàm phân thức. Hình đặt trong lời giải (không phải trong đề) vì bài khảo sát yêu cầu HS tự lập bảng và vẽ.
 - Mọi số liệu đã thử bằng script `S\soan\HS-D\thu.mjs`; trạm soát tự giải lại bằng `S\soat\HS-D\kiem.mjs`.
+- Bổ sung 03/11 (theo duyệt của Thùy; số mới thử bằng `S\bs\HS-D\thu.mjs`): đã bỏ f″ khỏi lý thuyết/ví dụ cực trị C1.5.1 (chỉ dùng dấu f′; ví dụ 2c đổi sang dấu f′). Thêm ví dụ 3 cho C1.4.1 (hàm dạng k+phân thức, a+3b, 3−4/(x+1)), C1.4.2 (căn ở mẫu, hàm ln, mẫu cho bằng đồ thị bậc ba — có 1 hình), C1.4.3 (TCX tạo tam giác với hai trục, tử bậc ba, tham số m qua điểm), C1.4.6 (hàm ln nhận Oy là TCĐ, chỉ một phía bằng vô cực, mệnh đề lẫn TCĐ/TCN và giữ dấu), C1.5.1 (định nghĩa đồng biến, GTNN từ điều kiện, f′>0 không cực trị, cực đại ≠ GTLN); thêm ý lý thuyết tương ứng. KHÔNG bổ sung: C1.4.4 (đề đã phủ bằng ví dụ sẵn: đọc TCĐ/TCN/TCX, đếm), C1.4.5 (kiểu "tìm m để đồ thị có tiệm cận từ BBT" chỉ 1 câu — quá lẻ), C1.5.2 (đề chỉ 3 câu bậc ba, ví dụ đã phủ a>0 và a<0), C1.4.3 kiểu khoảng cách từ điểm đến TCX / hai TCX cắt nhau (ít, khá lặp ý a,b ví dụ 2).
+- Soát bổ sung 03/11 (`S\soat2\HS-D\kiem.mjs`, biên bản `HS-D.soat2.md`): đổi số liệu 6 chỗ ví dụ mới trùng đề thật (C1.4.1 a, C1.4.2 c kèm hình, C1.4.3 a b, C1.4.6 a c, C1.5.1 a b); bỏ 2 ý lý thuyết mới lặp lý thuyết nhóm/dạng (C1.4.3, C1.4.6 — ý "giữ dấu" chuyển sang ##CY).

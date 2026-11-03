@@ -11,3 +11,6 @@ Bạn độc lập với trạm soạn (Sonnet). Đọc `kho-rules/dai/lo/k12-hs
 
 ## Trả lời cuối (≤150 từ)
 Kết luận · số chỗ sửa theo loại lỗi · số ví dụ/hình đã tự giải lại · các điểm cần CEO xem.
+
+## LUẬT ĐỒ THỊ — TỈ LỆ 1:1 (Thùy 03/11)
+Đồ thị hàm số phải có ĐƠN VỊ HAI TRỤC BẰNG NHAU (máy vẽ `ve.mjs` đã ép như vậy; khung hình tự co theo khoảng x, y). Chọn khoảng x, y cân đối (vd cực trị y=±20 mà x chỉ ±3 thì hình thành dải mỏng và máy báo lỗi "tỉ lệ 1:1 quá nhỏ" — thu hẹp khoảng hiển thị). Chỉ khi hai trục là hai đại lượng KHÁC ĐƠN VỊ (quãng đường–thời gian, chi phí–số lượng, nồng độ–thời gian) mới ghi `"tyle":"tudo"` trong JSON hình. Khi soát hình: dựng lại ảnh SAU thay đổi này và nhìn tỉ lệ, đối chiếu giá trị đọc từ hình.

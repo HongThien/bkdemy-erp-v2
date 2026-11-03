@@ -69,17 +69,23 @@ Vậy giá trị nhỏ nhất của $T$ bằng $2\cdot16-12=20$.
 - Nếu $A$, $B$ **cùng phía** $(P)$: gọi $A'$ đối xứng của $A$ qua $(P)$, khi đó $MA=MA'$ và $MA+MB=MA'+MB\ge A'B$, dấu bằng khi $M$ là giao điểm của đoạn $A'B$ với $(P)$; giá trị nhỏ nhất là $A'B$.
 - Tìm giao điểm $M$ của đoạn $A'B$ với $(Oxy)$: $A'$, $M$, $B$ thẳng hàng nên $\overrightarrow{A'M}=t\overrightarrow{A'B}$, cho cao độ của $M$ bằng $0$ để tìm $t$ (tương tự với $(Oyz)$, $(Oxz)$).
 - Biểu thức dạng $p\left|\alpha\overrightarrow{MA}+\beta\overrightarrow{MB}+\ldots\right|+q\left|\ldots\right|$: đưa mỗi độ dài vectơ về $|k|\cdot MI$ bằng tâm tỉ cự (dạng trước) để được tổng $c\,(MI+MJ)$, rồi xét như tổng $MA+MB$ ở trên.
+- **Hai điểm** $M$, $N$ cùng di động trên $(P)$ với $MN=d$ không đổi, cần $AM+BN$ nhỏ nhất: nếu $A$, $B$ cùng phía $(P)$ thì thay $A$ bằng $A'$ đối xứng qua $(P)$ để $AM=A'M$. Gọi $A_1$ là ảnh của $A'$ qua phép tịnh tiến theo $\overrightarrow{MN}$ thì $A_1N=A'M$ nên $AM+BN=A_1N+BN\ge A_1B$ (dấu bằng khi $N$ thuộc đoạn $A_1B$; $A_1$, $B$ khác phía $(P)$). $A_1$ cách $A'$ đúng $d$ và cách $(P)$ bằng $A'$. Gọi $h$ là khoảng cách giữa hình chiếu của $A$ và của $B$ lên $(P)$, $v$ là tổng khoảng cách từ $A$ và từ $B$ đến $(P)$. Khi đó $\min(AM+BN)=\sqrt{(h-d)^2+v^2}$.
+- $M$ thuộc **trục toạ độ** (vd $Oy$) và $A$, $B$ nằm trong mặt phẳng toạ độ chứa trục đó (vd $(Oyz)$): làm như bài trong mặt phẳng. Nếu $A$, $B$ cùng phía trục ($z_A$, $z_B$ cùng dấu) thì lấy $A'(0;y_A;-z_A)$ đối xứng với $A$ qua $Oy$, $MA+MB=MA'+MB\ge A'B$, dấu bằng khi $M$ là giao điểm của đoạn $A'B$ với $Oy$; khi đó $y_M=\dfrac{y_A|z_B|+y_B|z_A|}{|z_A|+|z_B|}$.
 
 ##PP Tổng khoảng cách nhỏ nhất khi M thuộc mặt phẳng toạ độ
 Xác định mặt phẳng toạ độ chứa $M$ rồi so dấu toạ độ tương ứng của $A$, $B$ để biết hai điểm cùng phía hay khác phía.
 Khác phía thì giữ nguyên $A$; cùng phía thì thay $A$ bằng điểm đối xứng $A'$ qua mặt phẳng đó.
 Viết $\overrightarrow{A'M}=t\overrightarrow{A'B}$ (hoặc $\overrightarrow{AM}=t\overrightarrow{AB}$) rồi cho toạ độ tương ứng của $M$ bằng $0$ để tìm $t$ và toạ độ $M$.
 Giá trị nhỏ nhất bằng độ dài $AB$ hoặc $A'B$; trả lời đúng điều đề hỏi (giá trị hay toạ độ $M$, khoảng cách từ $M$ đến gốc…).
+Đề có **hai điểm $M$, $N$** với $MN=d$: lấy đối xứng $A$ nếu cùng phía, tịnh tiến $A'$ theo $\overrightarrow{MN}$ về phía $B$ (hướng sao cho $A_1$ gần hình chiếu của $B$ nhất), tính $h$, $v$ rồi $\sqrt{(h-d)^2+v^2}$.
+Đề có **$M$ thuộc trục**: đối xứng $A$ qua trục (trong mặt phẳng toạ độ chứa $A$, $B$) nếu cùng phía, viết $\overrightarrow{A'M}=t\overrightarrow{A'B}$ rồi cho toạ độ khác trục của $M$ bằng $0$.
 
 ##CY
 - Hai điểm khác phía thì **không** lấy đối xứng; lấy đối xứng sẽ ra giá trị sai.
 - Giá trị nhỏ nhất của tổng khi cùng phía là $A'B$, không phải $AB$.
 - Bài thực tế đổi hướng trục (vd $Ox$ hướng Nam, $Oy$ hướng Đông): đọc toạ độ theo đúng hệ trục đề cho, phía Bắc/Tây mang dấu âm.
+- Hai điểm $M$, $N$ với $MN=d$: giá trị nhỏ nhất là $\sqrt{(h-d)^2+v^2}$ chứ không phải $\sqrt{h^2+v^2}-d$.
+- $M$ thuộc trục $Oy$: đối xứng của $A$ qua trục $Oy$ đổi dấu cao độ (cả hoành độ nếu khác $0$), không phải đối xứng qua gốc $O$.
 
 @vi_du:
 ##VD
@@ -101,6 +107,27 @@ Gọi $A'$ là điểm đối xứng của $A$ qua $(Oxy)$, tức $A'(3;-2;-1)$.
 $\overrightarrow{A'B}=(-2;-6;3)$ nên $A'B=\sqrt{4+36+9}=7$. Từ $\overrightarrow{A'M}=t\overrightarrow{A'B}$ suy ra $M(3-2t;-2-6t;-1+3t)$.
 Cho $-1+3t=0$ được $t=\dfrac{1}{3}$, suy ra $M\left(\dfrac{7}{3};-4;0\right)$.
 Vậy tổng khoảng cách nhỏ nhất bằng $7$ km và hoành độ của $M$ là $\dfrac{7}{3}$.
+
+##VD
+Trong không gian $Oxyz$, cho $A(1;1;2)$ và $B(1;15;3)$. Hai điểm $M$, $N$ di động trên mặt phẳng $(Oxy)$ sao cho $MN=2$. Tìm giá trị nhỏ nhất của $AM+BN$.
+
+Bài giải:
+$A$ và $B$ đều có cao độ dương nên cùng phía $(Oxy)$. Gọi $A'(1;1;-2)$ là điểm đối xứng của $A$ qua $(Oxy)$, khi đó $AM=A'M$.
+Gọi $A_1$ là ảnh của $A'$ qua phép tịnh tiến theo $\overrightarrow{MN}$, tức $\overrightarrow{A'A_1}=\overrightarrow{MN}$. Khi đó $A_1N=A'M=AM$, nên $AM+BN=A_1N+BN\ge A_1B$.
+$A_1$ có cao độ $-2$ và cách $A'$ đúng $2$. Hình chiếu của $A'$ và $B$ lên $(Oxy)$ là $(1;1)$ và $(1;15)$, cách nhau $h=14>2$. Chênh lệch cao độ giữa $A_1$ và $B$ là $v=3-(-2)=5$.
+Do đó $A_1B$ nhỏ nhất khi $A_1$ nằm trên đoạn nối hình chiếu, tức $A_1(1;3;-2)$ và $A_1B=\sqrt{(15-3)^2+5^2}=13$.
+$A_1$ và $B$ khác phía $(Oxy)$ nên chọn được $N$ là giao điểm của $A_1B$ với $(Oxy)$ và $M=N-\overrightarrow{A'A_1}$, dấu bằng xảy ra.
+Vậy giá trị nhỏ nhất của $AM+BN$ bằng $13$.
+
+##VD
+Hai flycam quan sát vùng lũ đang ở vị trí $A(0;1;6)$ và $B(0;9;9)$ trong hệ trục $Oxyz$ (đơn vị: km). Một con đường thẳng chạy dọc trục $Oy$. Cần đặt một xe trạm phát tín hiệu tại điểm $M$ trên con đường sao cho tổng khoảng cách $MA+MB$ ngắn nhất. Tìm toạ độ $M$ và tổng khoảng cách ngắn nhất đó.
+
+Bài giải:
+$M$ thuộc $Oy$ nên $M(0;y;0)$. Ba điểm $A$, $B$, $M$ cùng nằm trong mặt phẳng $(Oyz)$; cao độ của $A$, $B$ đều dương nên $A$, $B$ cùng phía trục $Oy$.
+Gọi $A'(0;1;-6)$ là điểm đối xứng của $A$ qua trục $Oy$, khi đó $MA=MA'$ nên $MA+MB=MA'+MB\ge A'B$.
+$\overrightarrow{A'B}=(0;8;15)$ nên $A'B=\sqrt{0+64+225}=17$.
+Dấu bằng khi $M$ là giao điểm của đoạn $A'B$ với $Oy$: $\overrightarrow{A'M}=t\overrightarrow{A'B}$ cho $M(0;1+8t;-6+15t)$; cao độ bằng $0$ nên $t=\dfrac{2}{5}$, $y=1+\dfrac{16}{5}=\dfrac{21}{5}$.
+Vậy $M\left(0;\dfrac{21}{5};0\right)$ và tổng khoảng cách ngắn nhất bằng $17$ km.
 
 === N C4.1
 @ly_thuyet:
@@ -226,16 +253,19 @@ Trả lời bằng ngữ cảnh thực tế kèm đơn vị.
 - Điểm "cách trần $d$" có cao độ bằng chiều cao phòng trừ $d$; điểm "chính giữa bức tường" có toạ độ ngang bằng một nửa chiều dài bức tường đó và toạ độ còn lại bằng $0$ hoặc bằng kích thước phòng.
 - Lều, mái nhà hình chóp: cạnh bên là độ dài của $\overrightarrow{SA}$, góc ở đỉnh là góc giữa hai vectơ cạnh bên cùng gốc $S$.
 - Dây điện, dây cáp căng thẳng giữa hai điểm có độ dài đúng bằng khoảng cách hai điểm đó.
+- Dây điện đi **dọc các bức tường** (không qua trần, sàn) từ $A$ trên tường này tới $B$ trên tường kề hoặc tường đối diện: dây gấp khúc qua mép chung của các tường (tường kề: $A\to P\to B$; tường đối diện: $A\to P\to Q\to B$ đi qua bức tường ở giữa), mỗi điểm gấp nằm trên một mép đứng (vd mép là trục $Oz$ thì $P(0;0;p)$). Mỗi đoạn ứng với vectơ (khoảng cách ngang trên tường; chênh cao), và $|\overrightarrow{p}|+|\overrightarrow{q}|+|\overrightarrow{r}|\ge|\overrightarrow{p}+\overrightarrow{q}+\overrightarrow{r}|$; dấu bằng khi các vectơ cùng hướng.
 
 ##PP Từ mô tả phòng, nhà đến khoảng cách, góc
 Ghép từng kích thước (dài, rộng, cao) với đúng trục theo hình hoặc lời đề.
 Đọc toạ độ từng điểm đề nhắc (đèn, quạt, ổ điện, đỉnh lều): điểm trên tường nào thì toạ độ tương ứng bằng $0$ hoặc bằng kích thước, "giữa" lấy một nửa, "cách trần" lấy chiều cao trừ đi.
 Lập vectơ nối hai điểm, tính độ dài hoặc $\cos$ của góc giữa hai vectơ.
+Dây điện dọc tường: đặt điểm gấp trên từng mép chung, viết mỗi đoạn thành vectơ (khoảng cách ngang; chênh cao), cộng các vectơ để được độ dài nhỏ nhất, cho các vectơ cùng hướng để tìm cao độ điểm gấp.
 Làm tròn theo đề, trả lời bằng ngữ cảnh (mét, độ).
 
 ##CY
 - Khi "đèn treo giữa phòng" phải tính cả hai toạ độ ngang bằng một nửa kích thước, không chỉ một toạ độ.
 - Góc giữa hai cạnh của hình chóp tính bằng góc giữa **hai vectơ cùng gốc** (cùng xuất phát từ đỉnh), nếu lấy vectơ ngược chiều sẽ ra góc bù.
+- Dây đi dọc tường **không** được nối thẳng $AB$ xuyên qua phòng; phải gấp khúc qua mép chung của các tường, và có thể phải so sánh hai cách đi (vòng qua bức tường bên này hay bên kia) để chọn dây ngắn hơn.
 
 @vi_du:
 ##VD
@@ -257,6 +287,17 @@ $\overrightarrow{SA}\cdot\overrightarrow{SC}=4\cdot(-4)+(-4)\cdot4+(-4)\cdot(-4)
 Do đó $\cos\widehat{ASC}=\dfrac{-16}{4\sqrt{3}\cdot4\sqrt{3}}=-\dfrac{1}{3}$.
 Suy ra $\widehat{ASC}\approx109{,}5^\circ$.
 Vậy cạnh bên $SA=4\sqrt{3}$ m và góc $\widehat{ASC}\approx109{,}5^\circ$.
+
+##VD
+Một căn phòng hình hộp chữ nhật dài $6$ m, rộng $4$ m, cao $3$ m. Chọn hệ trục $Oxyz$ có gốc $O$ tại một góc phòng ở sàn, tia $Ox$ theo chiều dài, tia $Oy$ theo chiều rộng, tia $Oz$ hướng lên trần (đơn vị: mét). Bóng đèn gắn trên bức tường thuộc mặt phẳng $(Oxz)$ tại $A(1;0;2{,}75)$; công tắc gắn trên bức tường đối diện tại $B(1;4;0{,}25)$. Dây điện đi từ công tắc tới bóng đèn **dọc theo các bức tường** (không qua trần, sàn). Tìm độ dài ngắn nhất của dây và các điểm dây gấp qua mép tường.
+
+Bài giải:
+$A$ và $B$ nằm trên hai tường đối diện nên dây phải đi qua một bức tường ở giữa. Đi qua tường thuộc $(Oyz)$: dây gấp tại $P(0;0;p)$ trên trục $Oz$ và tại $Q(0;4;q)$ trên mép đứng qua $(0;4;0)$, với $0\le p,q\le3$.
+$\overrightarrow{AP}=(-1;0;p-2{,}75)$, $\overrightarrow{PQ}=(0;4;q-p)$, $\overrightarrow{QB}=(1;0;0{,}25-q)$. Mỗi đoạn có độ dài bằng độ dài vectơ (khoảng cách ngang; chênh cao): $\overrightarrow{u}=(1;\,2{,}75-p)$, $\overrightarrow{v}=(4;\,p-q)$, $\overrightarrow{w}=(1;\,q-0{,}25)$.
+$AP+PQ+QB=|\overrightarrow{u}|+|\overrightarrow{v}|+|\overrightarrow{w}|\ge|\overrightarrow{u}+\overrightarrow{v}+\overrightarrow{w}|=|(6;2{,}5)|=6{,}5$.
+Dấu bằng khi ba vectơ cùng hướng với $(6;2{,}5)$: $2{,}75-p=\dfrac{2{,}5}{6}=\dfrac{5}{12}$ và $q-0{,}25=\dfrac{5}{12}$, suy ra $p=\dfrac{7}{3}$, $q=\dfrac{2}{3}$ (thoả $p-q=\dfrac{5}{3}=4\cdot\dfrac{5}{12}$).
+Nếu đi qua bức tường ở phía kia (tường song song với $(Oyz)$, cách nó $6$ m) thì tổng khoảng cách ngang là $5+4+5=14$, dây dài hơn.
+Vậy dây ngắn nhất dài $6{,}5$ m, gấp tại $P\left(0;0;\dfrac{7}{3}\right)$ và $Q\left(0;4;\dfrac{2}{3}\right)$.
 
 === C4.2.2
 @ly_thuyet:
@@ -359,12 +400,14 @@ Vậy khoảng cách nhỏ nhất giữa hai flycam bằng $\sqrt{144}=12$ m, đ
 - Radar đặt tại $I$ có phạm vi theo dõi $R$ thấy được vật ở vị trí $M$ khi $IM\le R$, với $IM=\sqrt{(x_M-x_I)^2+(y_M-y_I)^2+(z_M-z_I)^2}$.
 - Hai vật cùng xuất phát từ gốc $O$ và bay thẳng đều: vị trí sau thời gian $kt_0$ bằng $k$ lần vị trí sau $t_0$ ($\overrightarrow{OA_k}=k\overrightarrow{OA}$), nên khoảng cách giữa chúng cũng gấp $k$ lần.
 - Nhiều vật (drone, flycam): khoảng cách mỗi cặp là độ dài vectơ nối hai vị trí; tổng, so sánh các khoảng cách tính lần lượt từng cặp.
+- Hai vật bay thẳng đều từ $A_0$, $B_0$ với vận tốc $\overrightarrow{v_1}$, $\overrightarrow{v_2}$: $\overrightarrow{A(t)B(t)}=\overrightarrow{A_0B_0}+t\left(\overrightarrow{v_2}-\overrightarrow{v_1}\right)$ và $d(t)^2$ là tam thức bậc hai theo $t$. Khoảng cách nhỏ nhất đạt ở đỉnh. Hỏi "khi nào khoảng cách đạt (hoặc không vượt quá) mốc $D$" (cảnh báo va chạm, radar gắn trên máy bay): giải $d(t)^2=D^2$; lần đầu chạm mốc là nghiệm nhỏ hơn, khoảng thời gian $d(t)\le D$ là hiệu hai nghiệm.
 
 ##PP Radar và khoảng cách giữa các vật
 Đọc dữ kiện thành toạ độ (gốc tại tháp, trạm hoặc điểm xuất phát), nhớ độ cao của radar nếu đặt trên tháp.
 Nếu vật đang bay thì tìm vị trí của nó tại thời điểm đề hỏi (tỉ lệ thời gian hoặc $A+t\overrightarrow{v}$).
 Tính khoảng cách giữa các vật (hoặc từ radar đến vật) bằng công thức độ dài vectơ.
 So sánh với phạm vi $R$ hoặc trả lời khoảng cách theo yêu cầu, kèm đơn vị.
+Hai vật cùng chuyển động: viết $\overrightarrow{A(t)B(t)}$, khai triển $d(t)^2=\alpha t^2+\beta t+\gamma$; nhỏ nhất ở $t=-\dfrac{\beta}{2\alpha}$; hỏi mốc $D$ thì giải $\alpha t^2+\beta t+\gamma=D^2$ rồi chọn nghiệm $t\ge0$ phù hợp.
 
 ##CY
 - Tháp radar có chiều cao: toạ độ radar là $(0;0;\text{chiều cao tháp})$, không phải gốc $O$.
@@ -390,13 +433,24 @@ Mỗi máy bay bay thẳng đều từ $O$ nên sau $45$ phút ($=3\cdot15$ phú
 Ta có $\overrightarrow{A_1B_1}=(24;12;3)$ nên $A_1B_1=\sqrt{24^2+12^2+3^2}=\sqrt{729}=27$.
 Vậy sau $45$ phút hai máy bay cách nhau $27$ km.
 
+##VD
+Hệ thống radar theo dõi hai máy bay bay thẳng đều trong không gian $Oxyz$ (đơn vị độ dài là kilômét, thời gian là phút). Lúc $t=0$, máy bay thứ nhất ở $A_0(0;0;9)$ với vận tốc $\overrightarrow{v_1}=(6;0;0)$ km/phút; máy bay thứ hai ở $B_0(30;-15;9)$ với vận tốc $\overrightarrow{v_2}=(3;4;0)$ km/phút. Quy định an toàn yêu cầu hai máy bay cách nhau không dưới $25$ km. Hỏi sau bao nhiêu phút kể từ $t=0$ thì khoảng cách giữa hai máy bay lần đầu giảm xuống còn $25$ km, và khoảng cách giữa chúng nhỏ hơn $25$ km trong bao lâu?
+
+Bài giải:
+Sau $t$ phút: $A(t)=(6t;0;9)$ và $B(t)=(30+3t;\,-15+4t;\,9)$.
+Suy ra $\overrightarrow{A(t)B(t)}=(30-3t;\,-15+4t;\,0)$ và $d(t)^2=(30-3t)^2+(4t-15)^2=25t^2-300t+1125=25(t-6)^2+225$.
+Khoảng cách bằng $25$ km khi $d(t)^2=625$, tức $25(t-6)^2=400$, $(t-6)^2=16$, suy ra $t=2$ hoặc $t=10$.
+Lúc $t=0$: $d(0)^2=1125>625$ nên hai máy bay còn cách nhau xa hơn $25$ km; $d(t)<25$ khi $2<t<10$.
+Vậy sau $2$ phút khoảng cách lần đầu giảm xuống còn $25$ km, và hai máy bay cách nhau dưới $25$ km trong $10-2=8$ phút (khoảng cách nhỏ nhất là $15$ km lúc $t=6$).
+
 ## GHI CHÚ CHO CEO
 - Sách đã đọc/trích (vào `S\sach\vt\`): Từ Tâm C2-B1-P1, C2-B1-P2, C2-B3-P1 (có "Dạng 6. Tâm tỷ cự": VD6.1 điểm trên mặt phẳng, VD6.2 điểm trên trục), C2-B3-P2; PNL Chương 2: Bài 1 Dạng 02 (hợp lực), Bài 2 Dạng 01, Dạng 02 (toạ độ hoá, máy bay/radar), Bài 3 Dạng 01, Dạng 02 (có bài radar giàn khoan, bài hai UAV) và Đề 03 GV (cực trị M thuộc mặt phẳng). Trạm soát đối chiếu thêm NBV 12-9 (bản trạm soạn VT-B/VT-C đã trích ở `S\sach\vt-nbv\`: A. Lý thuyết, B. Tự luận Dạng 3 Ứng dụng, C. Trắc nghiệm, E. Trả lời ngắn) — khớp cách giải của các dạng này (tâm tỉ cự với M thuộc (Oxy), tổng khoảng cách hai flycam bằng đối xứng, chóp đều đèn chùm, ba dây cáp đều, radar). Công thức trong Word là ảnh WMF nên chỉ đối chiếu lời văn/cách giải; mọi ví dụ đã tự giải lại bằng số (trạm soạn `S\soan\VT\thu.mjs`; trạm soát `S\soat\VT-D\kiem.mjs`, 34/34 OK).
 - C3.5.1: nhiều câu đề thật gắn dạng này cho M thuộc mặt phẳng $(P)$ cho bằng phương trình, mặt cầu, đường thẳng (T312000000560, 819, 148, 7080, T312010403001…) — thuộc chương Phương pháp toạ độ nên không đưa; lý thuyết chỉ cho M thuộc mặt phẳng/trục toạ độ hoặc cạnh hình khối gắn hệ trục.
-- Câu T312000000296 (tổng tích vô hướng) và T312000000166 ($(MA/MD)^2$…) đang xếp ở C3.5.2 nhưng giải bằng tâm tỉ cự (đã kiểm bằng số: T296 dùng $I$ với hệ số $5,3,4$ ra $T=12$; T166 dùng tâm tỉ cự trùng hình chiếu của $D$, ra $y=6$) — đề nghị gắn sang C3.5.1. Cũng vậy với T1120000003441, T1120000004026, T1120000004316, T112070307043 (tổng bình phương, đang ở C3.5.2). Lý thuyết C3.5.1 đã thêm ý tổng tích vô hướng.
-- C3.5.2: mô tả có "|MA−MB| lớn nhất" nhưng toàn bộ kho đề không có câu nào hỏi hiệu ⇒ trạm soát đã xoá ý này khỏi lý thuyết (luật "không đề nào hỏi thì không đưa"); đề nghị bỏ khỏi mô tả. Đề có 2 kiểu chưa vào lý thuyết: hai điểm $M$, $N$ trên $(Oxy)$ với $MN$ không đổi (T312000000069, T312000000090; NBV có 1 câu) và $M$ thuộc trục toạ độ (T312000000269) — CEO chốt có đưa không.
+- GẮN LẠI sang C3.5.1 (giải bằng tâm tỉ cự, đã kiểm bằng số): T312000000296 (tổng tích vô hướng, $I=\frac{5A+3B+4C}{12}$, ra $T=12$) và T312000000166 ($(MA/MD)^2$…, tâm tỉ cự $J(4;6;-4)$, ra $y=6$); cùng loại đang ở C3.5.2: T1120000003441, T1120000004026, T1120000004316, T112070307043. Lý thuyết C3.5.1 đã có ý tổng tích vô hướng.
+- C3.5.2: đã bỏ |MA−MB| (mô tả JSON đã đổi). Đã THÊM (bổ sung 03/11): $M$, $N$ trên $(Oxy)$ với $MN$ không đổi (đề thật T312000000069, T312000000090; VD3, 13) và $M$ thuộc trục toạ độ (đề thật chỉ 1 câu T312000000269, hai flycam nằm trong $(Oyz)$; trạm soát lần 2 GIỮ ý vì có câu đề thật và Thùy yêu cầu bổ sung, nhưng thu hẹp về đúng kiểu đề: $A$, $B$ trong mặt phẳng toạ độ chứa trục, đối xứng qua trục — bỏ công thức tổng quát khoảng cách đến trục mà đề không hỏi; VD4 flycam, 17 km). Cả hai VD tự thử bằng quét lưới (trạm soạn và trạm soát).
 - C4.1.2: ví dụ 1 (giá đỡ ba chân) bám T312000000255/T1120000004160 nhưng số liệu khác; công của lực chỉ có trong ##TC (đề ~1 câu). Theo mô tả, các câu dây treo chóp đều/đèn tròn ba dây hiện vẫn nằm ở C4.1.1 (P1.5.1) chờ gắn lại.
-- C4.2.1: các mục "moi" (dây điện ngắn nhất dọc tường, bóng nảy parabol, độ dài cung trên Trái Đất) chưa có ví dụ; bài Trái Đất (T312000000072) cho mặt cầu bằng phương trình — nếu đưa vào thì chỉ nên lấy phần góc giữa hai vectơ. C4.2.2: mục "moi" hình hộp nghiêng (bể nước T312000000213) chưa có trong lý thuyết.
+- C4.2.1: đã THÊM dây điện ngắn nhất dọc tường (đề thật T1120000006474, T312000000142 — cùng một bài phòng 4×3×3, đèn và công tắc trên hai tường ĐỐI DIỆN, có cột nhô ra; T312000000100 — dây LED sân nhiều chặng). Trạm soát lần 2 đổi VD3 từ "hai tường kề, một điểm gấp" sang "hai tường đối diện, hai điểm gấp" cho đúng kiểu đề (6,5 m, thử bằng quét). Chi tiết cột nhô ra chưa đưa (một bài, làm tăng độ lẻ). KHÔNG thêm: bóng nảy parabol (đề thật chỉ 1 câu, cần parabol + tổng cấp số nhân, quá lẻ) và cung Trái Đất (1 câu T312000000072, cho bằng phương trình mặt cầu ⇒ PP toạ độ). C4.2.2 mục moi hình hộp nghiêng (bể nước T312000000213) cũng chỉ 1 câu, cần thể tích + phương trình mặt nước ⇒ không thêm.
 - C4.3.1: đề thật có câu viên đạn cho bằng phương trình tham số đường thẳng (T312000000676) — thuộc PP toạ độ theo ranh giới; ví dụ chỉ dùng $A+t\overrightarrow{v}$.
-- C4.3.2: trạm soát đã thay ví dụ 2 cũ (flycam trong vùng kết nối, giải $OM(t)^2\le R^2$ — thực chất là đường bay cắt hình cầu tâm cố định) bằng ví dụ khoảng cách hai UAV sau 45 phút (27 km), và bỏ ý "vào–ra vùng phủ theo $t$" khỏi lý thuyết. Mô tả dạng trong `VT.json` vẫn ghi "giải |IM(t)| = R, hoặc giải hệ khoảng cách (GPS)" — trái ranh giới Thùy chốt, đề nghị sửa mô tả.
+- C4.3.2: đã khớp tên/mô tả mới trong VT.json (hai vật chuyển động: $M(t)$, $d(t)$, nhỏ nhất, mốc an toàn). Thêm VD3 (hai máy bay: lần đầu còn 25 km sau 2 phút, dưới 25 km trong 8 phút; tự thử bằng số), ý "$d(t)=D$" vào lý thuyết/PP (đề thật T312010802051, T312010802024). KHÔNG đưa "thời điểm gặp $d(t)=0$" vì đề thật không có câu nào. Các ví dụ radar đứng yên + tỉ lệ thời gian giữ nguyên (nhiều câu radar đài kiểm soát, vẫn chỉ dùng độ dài vectơ). Các câu đường bay cắt hình cầu (T312010802048, T312010802063…) thuộc PP toạ độ, gắn lại.
+- (Soát lần 2) C4.3.1 vẫn giữ ý + VD2 "hai flycam, khoảng cách nhỏ nhất" theo mô tả cũ, trùng mô tả MỚI của C4.3.2 — đề nghị chuyển sang C4.3.2 hoặc sửa mô tả C4.3.1; chờ CEO.
 - Gắn nhầm chương: T112010102173 (khảo sát hàm số $y=x^3-3x^2$) và T312000000630 (hải đăng phủ sáng bán kính 4 km, người đi trên đoạn ID — vùng phủ hình cầu, thuộc PP toạ độ) đang xếp ở C4.3.2.

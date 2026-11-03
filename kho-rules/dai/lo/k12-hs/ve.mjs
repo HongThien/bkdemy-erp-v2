@@ -9,12 +9,15 @@
 //     - e: biểu thức theo x (JS: ^ là luỹ thừa, ln, sqrt, abs, sin, cos, tan, exp, pi). Hình VẼ THEO CÔNG THỨC nên luôn khớp đề.
 //     - f[i].x: đoạn vẽ riêng (hàm chia khúc); dut:true = vẽ nét đứt; nhan hiện ở đầu cuối đường cong.
 //     - Hình trong ví dụ KHÔNG ghi hệ trục chi tiết nếu đề không cần; luoi mặc định true.
+//     - TỈ LỆ 1:1 mặc định (đơn vị hai trục bằng nhau — luật của Thùy 03/11). Chọn khoảng x, y cho cân (vd cực trị y=±20 mà x chỉ ±3 thì hình
+//       thành dải mỏng và máy báo lỗi); "tyle":"tudo" CHỈ cho đồ thị mà hai trục khác đơn vị (quãng đường–thời gian, chi phí–số lượng…).
 //  2) BBT:      {"loai":"bbt","x":["-∞","-1","1","+∞"],"dau":["+","-","+"],"y":["-∞","3","-1","+∞"]}
 //               - x: các cột (n); dau: dấu y′ trên n−1 khoảng; y: giá trị tại n cột (chuỗi), cột gián đoạn (hai bên khác nhau/∞) viết cặp ["-∞","+∞"];
 //                 vị trí cao/thấp tự suy từ dấu. "kd":{"2":"||"} đánh dấu cột 2 (chỉ số từ 0) là điểm gián đoạn (kẻ đôi); mặc định cột trong có y′=0 → ghi 0.
 //               - "ten_dao":"f'(x)" · "ten_ham":"f(x)" · "hang":"dau" = chỉ bảng xét dấu (không hàng y).
-const KT = { r: 380, c: 290, le: 34 }
+const KT = { r: 380, c: 290, le: 34, u: 44, pw: 400, ph: 330, umin: 15 } // u = đơn vị tối đa (px) · pw/ph = vùng vẽ tối đa · umin = đơn vị tối thiểu còn đọc được
 
+let SO_HINH = 0 // mã vùng cắt riêng cho từng hình: nhiều hình khác cỡ chung một trang không cắt cụt nhau
 const so = (v) => (Math.round(v * 100) / 100).toString()
 const thoat = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 
@@ -47,12 +50,23 @@ function hamTu(e) {
 
 export function veDoThi(sp) {
   const [x0, x1] = sp.x ?? [-4, 4], [y0, y1] = sp.y ?? [-4, 4]
-  const W = KT.r, H = KT.c, L = KT.le
-  const px = (x) => L + ((x - x0) / (x1 - x0)) * (W - 2 * L), py = (y) => H - L - ((y - y0) / (y1 - y0)) * (H - 2 * L)
+  const L = KT.le, kp = "kp" + (++SO_HINH)
+  // TỈ LỆ 1:1 (Thùy 03/11): một đơn vị trên trục x dài bằng một đơn vị trên trục y; khung hình co theo khoảng x, y.
+  // Đồ thị mà hai trục là hai đại lượng khác đơn vị (t–s, giá–lợi nhuận…) ghi "tyle":"tudo" để mỗi trục tự co.
+  const dx = x1 - x0, dy = y1 - y0
+  let pw, ph
+  if (sp.tyle === 'tudo') { pw = KT.r - 2 * L; ph = KT.c - 2 * L }
+  else {
+    const u = Math.min(KT.u, KT.pw / dx, KT.ph / dy)
+    if (u < KT.umin) throw new Error(`đồ thị tỉ lệ 1:1 quá nhỏ (khoảng x=${dx}, y=${dy}): thu hẹp khoảng hiển thị; nếu hai trục khác đơn vị thì thêm "tyle":"tudo"`)
+    pw = dx * u; ph = dy * u
+  }
+  const W = pw + 2 * L, H = ph + 2 * L
+  const px = (x) => L + ((x - x0) / dx) * pw, py = (y) => H - L - ((y - y0) / dy) * ph
   const o = []
   o.push(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${thoat(sp.mo_ta ?? 'Đồ thị hàm số')}" style="max-width:100%;height:auto;color:currentColor;font-family:system-ui,sans-serif">`)
   o.push(`<defs><marker id="mt" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>`)
-  o.push(`<clipPath id="kp"><rect x="${L - 8}" y="${L - 10}" width="${W - 2 * L + 16}" height="${H - 2 * L + 20}"/></clipPath>`)
+  o.push(`<clipPath id="${kp}"><rect x="${L - 8}" y="${L - 10}" width="${W - 2 * L + 16}" height="${H - 2 * L + 20}"/></clipPath>`)
   if (sp.luoi !== false) {
     for (let x = Math.ceil(x0); x <= x1; x++) o.push(`<line x1="${so(px(x))}" y1="${L - 6}" x2="${so(px(x))}" y2="${H - L + 6}" stroke="currentColor" stroke-opacity=".10"/>`)
     for (let y = Math.ceil(y0); y <= y1; y++) o.push(`<line x1="${L - 6}" y1="${so(py(y))}" x2="${W - L + 6}" y2="${so(py(y))}" stroke="currentColor" stroke-opacity=".10"/>`)
@@ -82,7 +96,7 @@ export function veDoThi(sp) {
       const ok = Number.isFinite(y) && y >= ymin && y <= ymax && !(truoc != null && Math.abs(y - truoc) > nhay)
       if (ok) { d += `${mo ? 'L' : 'M'}${so(px(x))} ${so(py(y))}`; mo = true; truoc = y } else { mo = false; truoc = Number.isFinite(y) ? y : null }
     }
-    o.push(`<path d="${d}" fill="none" stroke="${HUE[i % 4]}" stroke-width="2.2" ${c.dut ? 'stroke-dasharray="6 4"' : ''} stroke-linejoin="round" clip-path="url(#kp)"/>`)
+    o.push(`<path d="${d}" fill="none" stroke="${HUE[i % 4]}" stroke-width="2.2" ${c.dut ? 'stroke-dasharray="6 4"' : ''} stroke-linejoin="round" clip-path="url(#${kp})"/>`)
     if (c.ten) {
       const xt = c.xt ?? b - (b - a) * 0.12, yt = fn(xt)
       if (Number.isFinite(yt)) o.push(`<text x="${so(px(xt) + 6)}" y="${so(Math.min(Math.max(py(yt) - 6, 14), H - 8))}" font-size="12" font-style="italic" fill="${HUE[i % 4]}">${thoat(c.ten)}</text>`)
