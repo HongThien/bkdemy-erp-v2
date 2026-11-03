@@ -3,9 +3,10 @@
 // Danh sách ở dsGame.ts. `GameNhungHS`-kiểu nhúng cho Nông trại: <iframe> cùng origin (public/games/nong-trai/), có nút ‹ để về danh sách.
 // Chỉ VẼ: không số liệu nghiệp vụ. Khung/màu theo skin (KhungHS), chữ trung tính (không giọng game — đây là danh mục).
 // ============================================================================
-import { DauTrangHS, HEAD, MAU, ManHS, NhanHS, TheHS } from '../skin/KhungHS'
+import { DauTrangHS, HEAD, MAU, ManHS, NhanHS, NutHS, THE_TRON, TheHS } from '../skin/KhungHS'
 import { DS_GAME, type GameHS } from './dsGame'
 import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import TangTocToanHS, { type KqTangToc } from './TangTocToanHS'
 import { ntDhtDongBo, ntLuuDoc, ntLuuGhi, ntNhip, ntRpc, ntXuDongBo, type NtNhip } from '../../../lib/nt_luu'
 
@@ -122,5 +123,22 @@ export function GameNongTraiHS({ onBack }: { onBack: () => void }) {
         className="absolute bottom-[calc(10px+env(safe-area-inset-bottom))] right-2.5 z-50 flex h-10 w-10 items-center justify-center rounded-full text-[24px] leading-none active:scale-95"
         style={{ background: 'var(--sk-surface)', color: 'var(--sk-ink)', border: '1.5px solid var(--sk-line)', opacity: 0.92 }}>‹</button>
     </div>
+  )
+}
+
+/** Nông trại đang BẢO TRÌ (công tắc tinh_nang 'nt_bao_tri', Thùy 03/11): em bấm vào chỉ thấy hộp này, không mở game. Server cũng tự chặn chơi/ghi. */
+export function BaoTriNongTraiHS({ onDong }: { onDong: () => void }) {
+  return createPortal(
+    <div className="fixed inset-0 z-[90] flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Nông trại đang bảo trì">
+      <div className="absolute inset-0" style={{ background: 'color-mix(in srgb, var(--sk-bg) 72%, transparent)' }} onClick={onDong} />
+      <div className="relative flex w-full max-w-[420px] flex-col items-center gap-3 p-5 text-center"
+        style={{ ...THE_TRON, background: MAU.bg, color: MAU.ink, fontFamily: 'var(--sk-font)', borderRadius: 'var(--sk-radius)' }}>
+        <div className="text-[44px] leading-none" aria-hidden>🛠️</div>
+        <p className="text-[20px] font-bold" style={HEAD}>Nông trại đang bảo trì</p>
+        <p className="text-[15.5px] leading-snug" style={{ color: MAU.muted }}>Thầy cô đang sửa một chút để nông trại chạy tốt hơn. Vườn của em vẫn được giữ nguyên — em quay lại sau nhé!</p>
+        <NutHS onClick={onDong}>Đã hiểu</NutHS>
+      </div>
+    </div>,
+    document.body,
   )
 }

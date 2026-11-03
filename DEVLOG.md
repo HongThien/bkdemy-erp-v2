@@ -78546,3 +78546,9 @@ Thùy nêu 4 việc, làm được 3:
 - Thùy: "Thách đấu giờ là ngẫu nhiên hoàn toàn tất cả các câu đã học" ⇒ trong app HS (`nhung=1`) màn chọn chủ đề bỏ, vào thẳng màn chế độ với `tron` (máy chủ lọc dạng em đã học qua `_hs_dang_da_hoc`); bản chạy riêng chỉ còn ô "Trộn tất cả" + chọn cấp.
 - Kiểm trên trình duyệt (dautu.html, Tiếng Anh, trận bot): bấm sai ⇒ −50/−100 cho em, bot sai cũng −70; banner "❌ Sai −50 điểm". (Có tạo 1 hồ sơ khách "Thu nghiem" ở dtv_nguoi_choi khi thử.)
 - Nợ §2.0 còn nguyên: điểm trận đua vẫn tính ở trọng tài client (đua tốc độ với bot/đối thủ thời gian thực), chưa xuống Postgres.
+
+## 03/11 (tối) — Nông trại: CÔNG TẮC BẢO TRÌ (Thùy: "báo bảo trì, ko vào được game, hiện thông báo khi click") — mig 202611031900 ĐÃ ÁP, ĐANG BẬT
+- `tinh_nang.nt_bao_tri` (mo_tu 03/11 = đang bảo trì; tắt = `update tinh_nang set mo_tu = null where ma = 'nt_bao_tri'` hoặc màn "Mở tính năng app HS") · `_nt_bao_tri()`.
+- Server (hiệu lực NGAY cả với app cũ): `fn_nt_nhip` trả het=true + bao_tri ⇒ game hiện màn "hết giờ" chặn chơi, không cộng giờ · `fn_nt_luu_ghi` KHÔNG ghi (ok=false, bao_tri). Thử dưới JWT HS (rollback): het=true, ghi bị từ chối, md5 bản lưu không đổi.
+- App (cần deploy): `BaoTriNongTraiHS` (TroChoiHS.tsx) — bấm Nông trại ⇒ hộp "Nông trại đang bảo trì", không mở game; Lộc mời chơi ẩn khi bảo trì. Xem thử: `hs.html?xem=tro_choi&vao=nong_trai&bao_tri=1` (đã soi).
+- Thùy báo "level nông trại bị reset hết": KIỂM DB — 157 vườn, `nn` = `dem.nn` (luỹ kế mọi lần cộng) ở 100% vườn (lệch max 0), `taoLuc` vẫn 23–25/10, không vườn nào tạo lại trong 24h. Cấp thấp (max 4, 97 vườn cấp 1) là do trần 8 điểm nhà nông/ngày (12 ngày ≈ 96 điểm = cấp 4) — không phải mất dữ liệu. Chờ Thùy chỉ tài khoản/màn thấy bị reset.

@@ -80,7 +80,7 @@ import OnThiHS from './OnThiHS'
 import AnhTuLuanHS from './AnhTuLuanHS'
 import { onThiDiem, listAnhTuLuan, kyAnhTuLuan, type AnhTuLuan, type DiemThiThu } from '../../lib/onthi'
 import HuongDanHS from './huongdan/HuongDanHS'
-import TroChoiHS, { GameNongTraiHS } from './trochoi/TroChoiHS'
+import TroChoiHS, { BaoTriNongTraiHS, GameNongTraiHS } from './trochoi/TroChoiHS'
 import { rankBat } from './phieuluu/coBat'
 import GioiThieuYeu from './luyen/GioiThieuYeu'
 import TutorialHS from './tutorial/TutorialHS'
@@ -502,6 +502,9 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [tn, setTn] = useState<TinhNangMo | undefined>(undefined)
   useEffect(() => { if (direct === null) tinhNangMoCuaToi().then(setTn).catch(() => setTn((c) => c ?? 'tat_ca')) }, [direct])
   const moTN = (ma: string) => tn === 'tat_ca' || (!!tn && tn.has(ma))
+  // Nông trại BẢO TRÌ (Thùy 03/11): công tắc 'nt_bao_tri' BẬT ⇒ bấm vào chỉ hiện thông báo. Lỗi đọc công tắc ('tat_ca') thì không coi là bảo trì (server vẫn tự chặn).
+  const ntBaoTri = tn !== 'tat_ca' && !!tn && tn.has('nt_bao_tri')
+  const [baoTriNT, setBaoTriNT] = useState(false)
   const oMo = (id: string) => !MA_TINH_NANG_O[id] || moTN(MA_TINH_NANG_O[id])
   const rankMo = () => rankBat() && moTN('rank')
   // NÚT GÓP Ý NỔI (ở mọi màn): báo cho nút biết em đang ở màn nào + nghe yêu cầu "Xem góp ý của em" từ tấm nhập nhanh.
@@ -681,8 +684,12 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   }
   // TRÒ CHƠI (06/10): danh sách game; Nông trại BK nhúng iframe (public/games/nong-trai — scripts/dong-bo-nong-trai.mjs)
   // Nông trại BK: công tắc riêng `nong_trai` (khoá tạm 12/10 — bản thử chưa lưu theo tài khoản). Đóng ⇒ trong ô Trò chơi hiện "Sắp ra mắt", không vào được.
-  if (direct === 'nong_trai' && moTN('nong_trai')) return <GameNongTraiHS onBack={() => setDirect('tro_choi')} />
-  if (direct === 'tro_choi' || direct === 'nong_trai') return <TroChoiHS onBack={() => setDirect(null)} sapRa={{ nong_trai: !moTN('nong_trai') }} onChoi={(id) => { if (id === 'nong_trai' && moTN('nong_trai')) setDirect('nong_trai') }} />
+  if (direct === 'nong_trai' && moTN('nong_trai') && !ntBaoTri) return <GameNongTraiHS onBack={() => setDirect('tro_choi')} />
+  if (direct === 'tro_choi' || direct === 'nong_trai') return <>
+    <TroChoiHS onBack={() => setDirect(null)} sapRa={{ nong_trai: !moTN('nong_trai') }}
+      onChoi={(id) => { if (id === 'nong_trai' && moTN('nong_trai')) { if (ntBaoTri) setBaoTriNT(true); else setDirect('nong_trai') } }} />
+    {(baoTriNT || (direct === 'nong_trai' && ntBaoTri)) && <BaoTriNongTraiHS onDong={() => { setBaoTriNT(false); setDirect('tro_choi') }} />}
+  </>
   // HƯỚNG DẪN CHƠI (Thùy 03/10): gallery giải thích mọi chức năng — vào từ Thư viện BK.
   if (direct === 'tutorial') {
     const dsT = tutDs ? chuongMo(moTN, tutDs) : undefined
@@ -825,7 +832,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   // Lời mời quay tự hiện (06/10): có lượt (cũ: cap1/cap2 qua mayManHSCuaToi; mới: nvHome.vong_quay) và chưa quay hôm nay — ô May mắn đã ẩn khỏi màn chính
   const coQuay = moTN('nhiem_vu') && (maymanCoLuot || (!!nvHome && nvHome.mo && nvHome.vong_quay.du && !nvHome.vong_quay.da_quay))
   // Lộc báo "Nông trại BK đã mở" (Thùy 23/10): tính năng mở + em đã qua hành trình đầu (tutXong ≠ rỗng) + chưa có dòng 'nong_trai'. Ghi dòng ⇒ không hiện lại.
-  const locMoGame = moTN('nong_trai') && !!tutXong && tutXong.size > 0 && !tutXong.has('nong_trai')
+  const locMoGame = moTN('nong_trai') && !ntBaoTri && !!tutXong && tutXong.size > 0 && !tutXong.has('nong_trai')
   const moiQuay = <><TinMoiKhung lamMoi={direct} /><MoiQuayMayMan coLuot={coQuay} onQuay={() => setDirect('may_man')} />
     <LocMoGame hien={locMoGame} onVao={() => { void tutorialGhi(['nong_trai'], 'bo_qua').catch(() => {}); setTutXong((s) => new Set([...(s ?? []), 'nong_trai'])); setDirect('nong_trai') }}
       onNghe={() => { tutLanDau.current = false; setTutDs(['nong_trai']); setDirect('tutorial') }} />
