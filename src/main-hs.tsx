@@ -7,6 +7,8 @@ import AppHS from './AppHS'
 import './index.css'
 import { ganSkinMacDinh } from './screens/hocsinh/skin/KhungHS'
 import 'katex/dist/katex.min.css'
+import { supabase } from './lib/supabase'
+import { EVT_MAN, layMan } from './screens/hocsinh/gopy/manHienTai'
 import { initErrorBuffer } from './lib/errorBuffer'
 
 initErrorBuffer()
@@ -20,10 +22,12 @@ initErrorBuffer()
 // thì không bao giờ tải lại ⇒ kẹt bản cũ nhiều ngày (dính thật 29/09: bundle 28/09 gọi tranh nền đã đổi tên ⇒ 404, mất nền).
 // ⇒ Tự hỏi mỗi 30 phút + mỗi lần em quay lại app. Có bản mới thì autoUpdate cài xong tự reload như trên.
 const KIEM_BAN_MOI_MS = 30 * 60 * 1000
+let swReg: ServiceWorkerRegistration | undefined
 registerSW({
   immediate: true,
   onRegisteredSW(_url, reg) {
     if (!reg) return
+    swReg = reg
     const kiem = () => { if (navigator.onLine && reg.installing == null) reg.update().catch(() => {}) }
     setInterval(kiem, KIEM_BAN_MOI_MS)
     document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') kiem() })
@@ -51,3 +55,30 @@ createRoot(document.getElementById('root')!).render(
     <AppHS />
   </StrictMode>,
 )
+
+// BẮT BUỘC CẬP NHẬT NGAY (Thùy 03/11, mig 202611032025): Thùy bấm ở Admin → "Mở tính năng app HS" ⇒ server ghi mốc. Máy mở app từ
+// TRƯỚC mốc (hỏi mỗi 30 giây khi màn đang hiện, có đăng nhập) sẽ kiểm bản mới rồi tải lại — CHỈ khi em đang ở MÀN CHÍNH (không làm
+// mất bài đang làm); đang ở màn khác thì đợi em về màn chính. Mốc đã xử lý nhớ trong máy ⇒ đồng hồ máy lệch cũng không tải lại lặp.
+const NAP_LUC = Date.now()
+const KHOA_EP = 'hs_ep_cap_nhat_da'
+let mocEp: string | null = null
+const daXuLy = (m: string) => { try { return localStorage.getItem(KHOA_EP) === m } catch { return false } }
+async function taiLaiNeuDuoc() {
+  if (!mocEp || layMan() !== 'man_chinh') return
+  const m = mocEp; mocEp = null
+  try { localStorage.setItem(KHOA_EP, m) } catch { /* máy chặn lưu: vẫn tải lại 1 lần */ }
+  try { await swReg?.update() } catch { /* mạng lỗi: vẫn tải lại */ }
+  // có bản mới đang cài ⇒ autoUpdate cài xong tự tải lại; chờ tối đa 8 giây rồi tải lại thẳng (đã là bản mới nhất / không có SW)
+  window.setTimeout(() => window.location.reload(), swReg?.installing || swReg?.waiting ? 8000 : 300)
+}
+async function hoiEp() {
+  if (document.visibilityState !== 'visible' || !navigator.onLine || mocEp) return
+  const { data: { session } } = await supabase.auth.getSession()
+  if (!session) return
+  const { data, error } = await supabase.rpc('fn_hs_ep_cap_nhat')
+  if (error || !data) return
+  const m = String(data)
+  if (new Date(m).getTime() > NAP_LUC && !daXuLy(m)) { mocEp = m; void taiLaiNeuDuoc() }
+}
+window.setInterval(() => { void hoiEp().catch(() => {}) }, 30_000)
+window.addEventListener(EVT_MAN, () => { void taiLaiNeuDuoc() })
