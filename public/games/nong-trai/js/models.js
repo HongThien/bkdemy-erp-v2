@@ -740,6 +740,7 @@ function vatIcon(id) { // trả Object3D cho biểu tượng id
     case 'cam_ga': return bao(0xf2d060); case 'cam_bo': return bao(0x9fd46a); case 'cam_heo': return bao(0xf4a7c0);
     case 'banh_mi': return kk('food_ingredient_bun');
     case 'banh_ngo': return tint(kk('food_ingredient_bun'), 0xf7cf4a);
+    case 'khoai_nghien': { const g = new T.Group(); g.add(vua(kk('bowl'), 1)); b.cau(0.4, 0, 0.3, 0, 0xf1dc9a, { x: 1, y: 0.55, z: 1 }); b.cau(0.13, 0.04, 0.5, 0.02, 0xf7c93a, { x: 1.3, y: 0.5, z: 1 }); b.hop(0.05, 0.02, 0.05, -0.15, 0.48, 0.1, 0x5aa83a); b.hop(0.05, 0.02, 0.05, 0.18, 0.47, -0.08, 0x5aa83a); g.add(b.xong()); return g; }
     case 'banh_quy': return kk('cookie');
     case 'kem_tuoi': { const g = new T.Group(); g.add(vua(kk('bowl'), 1)); b.cau(0.38, 0, 0.3, 0, 0xfffbf0, { x: 1, y: 0.6, z: 1 }); b.cau(0.18, 0, 0.5, 0, 0xffffff); g.add(b.xong()); return g; }
     case 'bo': { b.hop(0.7, 0.35, 0.45, 0, 0.2, 0, 0xf7df6e); b.hop(0.9, 0.06, 0.6, 0, 0.03, 0, 0xffffff); b.hop(0.2, 0.05, 0.3, 0.2, 0.4, 0, 0xfbe98f, { z: 0.3 }); return b.xong(); }

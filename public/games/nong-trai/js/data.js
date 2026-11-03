@@ -55,12 +55,16 @@ const VAT = {
 };
 for (const k in VAT) VAT[k].id = k;
 
-// ---------- LÒ BÁNH (spec §5.5): 1 mẻ, sáng hôm sau xong ----------
-const LO_CAP = PHA >= 2 ? 4 : SAU;
+// ---------- MÁY CHẾ BIẾN (Thùy 03/11 — thay "lò bánh 1 mẻ, sáng hôm sau xong" của pha 2; mở cả ở PHA 1) ----------
+// Nguyên liệu → món, chờ vài PHÚT (giờ server) ⇒ em bỏ nguyên liệu vào, đi tưới/giúp bạn rồi quay lại lấy: kéo dài 1 lần vào vườn.
+// gia ≈ giá nguyên liệu nếu bán thẳng × 1,3 (Thùy: "nhiều hơn tầm 30% nhưng phải chờ") · phut = thời gian 1 mẻ · máy làm 1 mẻ một lúc.
+// LO_CAP / BANH / loTT / nuong / layBanh giữ tên cũ ("lò") để khỏi đổi cả scene/ui — trên màn gọi là "Máy chế biến".
+const LO_CAP = 2;
 const BANH = {
-  banh_mi:     { ten: 'Bánh mì',  cap: 4,  can: { lua_mi: 3 }, gia: 12 },
-  banh_ngo:    { ten: 'Bánh ngô', cap: 6,  can: { ngo: 2, trung: 1 }, gia: 18 },
-  banh_bi_ngo: { ten: 'Bánh bí',  cap: 10, can: { bi_ngo: 1, trung: 1, sua: 1 }, gia: 40 },
+  banh_mi:      { ten: 'Bánh mì',          cap: 2,  can: { lua_mi: 5 },                   phut: 3,  gia: 13 },   // nguyên liệu 10 EXP
+  banh_ngo:     { ten: 'Bánh ngô',         cap: 4,  can: { ngo: 3, trung: 1 },            phut: 8,  gia: 23 },   // nguyên liệu 18
+  khoai_nghien: { ten: 'Khoai tây nghiền', cap: 5,  can: { khoai_tay: 4 },                phut: 5,  gia: 16 },   // nguyên liệu 12
+  banh_bi_ngo:  { ten: 'Bánh bí',          cap: 10, can: { bi_ngo: 2, trung: 1, sua: 1 }, phut: 12, gia: 44 },   // nguyên liệu 34
 };
 for (const k in BANH) BANH[k].id = k;
 
@@ -163,6 +167,7 @@ const LUAT = {
   tranXuTuan: null,              // BỎ 30/09 (thay bằng giới hạn hạt mỗi ngày = số ô). Đặt số > 0 để bật lại trần xu tiêu mỗi tuần
   // sang vườn bạn (spec §5.7 — CEO: trộm 3 / giúp 5)
   trom: 3, giup: 5, tromToiDa: 0.2, tromMoiLan: 1,   // CEO 30/09: giảm trộm — mỗi lượt 1 quả, mỗi ô mất tối đa 20%
+  expGiup: 4,                    // Thùy 03/11: giúp bạn 1 lượt +4 EXP (≈ 1/3 phần tưới hộ tạo ra cho bạn; 5 lượt = 20 EXP/ngày). Chơi theo tài khoản: số do server trả (_nt_luat().expGiup)
   choDuoi: [0, 0.2, 0.4, 0.6],   // tỉ lệ chó đuổi trộm theo mốc thiện cảm
   // thú cưng (spec §5.8)
   tcMoi: 5, tcMoc: [20, 50, 100], chimBatSau: 50,

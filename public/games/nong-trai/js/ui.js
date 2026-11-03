@@ -113,7 +113,9 @@ function goiY() {
   if (tts.some(t => t.sau)) return '🐛 Có sâu — chạm vào ô để bắt';
   if (tts.some(t => t.tt === 'lon' && !t.tuoiHom)) return '💧 Ô có giọt nước là chưa tưới — chạm hoặc vuốt để tưới';
   for (const k in D.VAT) if (s.vat[k].con.some(c => E.vatTT(s, k, c) === 'xong')) return '🥚 Chuồng có đồ — chạm để nhặt';
-  if (E.loTT(s).tt === 'xong') return '🍞 Bánh chín rồi — chạm lò bánh để lấy';
+  { const lt = E.loTT(s);
+    if (lt.tt === 'xong') return '🍞 ' + ten(lt.mon) + ' làm xong rồi — chạm máy chế biến để lấy';
+    if (lt.tt === 'trong' && Object.values(D.BANH).some(B => B.cap <= s.cap && Object.keys(B.can).every(k => E.so(s, k) >= B.can[k]))) return '🏭 Đủ nguyên liệu — bỏ vào máy chế biến, làm xong bán được nhiều EXP hơn'; }
   if (tts.some(t => t.tt === 'trong') && (dht() ? s.diem >= 5 : (s.diem >= 2 || s.vi.xu + s.vi.exp / 100 >= 0.05))) return '🌱 Ô trống — chạm để gieo 1 bịch hạt giống cho ngày mai';
   if (s.hom.giup < L.giup || s.hom.trom < L.trom) { const tg = E.banTong(s), co = (s.hom.giup < L.giup ? tg.giup : 0) + (s.hom.trom < L.trom ? tg.hai : 0); if (co) return '👫 Sang vườn bạn: còn ' + (L.giup - s.hom.giup) + ' lượt giúp, ' + (L.trom - s.hom.trom) + ' lượt hái'; }
   return '🌙 Xong việc hôm nay rồi! Mai ghé lại nhé';
@@ -318,22 +320,24 @@ function bongChuong(k) {
   };
 }
 
-// ---------- LÒ BÁNH ----------
+// ---------- MÁY CHẾ BIẾN (tên cũ trong code: lò bánh) ----------
+const dongHoCon = ms => { const g = Math.ceil(ms / 1000); return Math.floor(g / 60) + ':' + String(g % 60).padStart(2, '0'); };
 function chamLo() {
   if (D.LO_CAP > 30) return;
-  const tt = E.loTT(s); if (tt.tt === 'khoa') return thongBao('Lò bánh mở ở cấp ' + D.LO_CAP);
+  const tt = E.loTT(s); if (tt.tt === 'khoa') return thongBao('Máy chế biến mở ở cấp ' + D.LO_CAP);
   dongBong(); if (tt.tt === 'xong') lam(E.layBanh(s), { loai: 'lo' });
-  moBang('Lò bánh', veLo);
+  moBang('Máy chế biến', veLo);
 }
 function veLo() {
-  const tt = E.loTT(s), key = tt.tt + JSON.stringify(s.kho) + s.cap;
-  let html = tt.tt === 'dang' ? `<div class="muc">Đang nướng ${ten(tt.mon).toLowerCase()} — sáng mai lấy nhé</div>` : '<div class="muc">Mỗi ngày nướng 1 mẻ · sáng mai xong</div>';
+  const tt = E.loTT(s), key = tt.tt + (tt.tt === 'dang' ? dongHoCon(tt.con) : '') + JSON.stringify(s.kho) + s.cap;
+  let html = tt.tt === 'dang' ? `<div class="muc">⏳ Đang làm ${ten(tt.mon).toLowerCase()} — còn <b>${dongHoCon(tt.con)}</b>. Em đi tưới, giúp bạn rồi quay lại lấy nhé</div>`
+    : '<div class="muc">Bỏ nguyên liệu vào máy, chờ vài phút ra món mới — bán được hơn bán thẳng khoảng 30%. Máy làm 1 mẻ một lúc.</div>';
   html += '<div class="luoi">';
   for (const id in D.BANH) {
     const B = D.BANH[id];
     if (B.cap > s.cap) { html += `<div class="the khoa">${img(id)}<b>${B.ten}</b><span class="nho">🔒 cấp ${B.cap}</span></div>`; continue; }
     const thieu = Object.keys(B.can).some(k => E.so(s, k) < B.can[k]), von = Object.keys(B.can).reduce((a, k) => a + D.I[k].gia * B.can[k], 0);
-    html += `<div class="the ${tt.tt === 'trong' ? 'duoc' : ''} ${thieu ? 'thieu' : ''}" data-banh="${id}">${img(id)}<b>${B.ten}</b><span class="nho">bán ${B.gia} EXP · nguyên liệu nếu bán ${von} EXP</span><div class="canList">${Object.keys(B.can).map(k => `<span class="can ${E.so(s, k) < B.can[k] ? 'thieu' : ''}">${img(k)}${E.so(s, k)}/${B.can[k]}</span>`).join('')}</div></div>`;
+    html += `<div class="the ${tt.tt === 'trong' ? 'duoc' : ''} ${thieu ? 'thieu' : ''}" data-banh="${id}">${img(id)}<b>${B.ten}</b><span class="nho">⏱ ${B.phut} phút · bán ${B.gia} EXP (nguyên liệu bán thẳng ${von})</span><div class="canList">${Object.keys(B.can).map(k => `<span class="can ${E.so(s, k) < B.can[k] ? 'thieu' : ''}">${img(k)}${E.so(s, k)}/${B.can[k]}</span>`).join('')}</div></div>`;
   }
   html += '</div>';
   return { key, html, gan: el => el.querySelectorAll('[data-banh]').forEach(c => c.onclick = () => { if (lam(E.nuong(s, c.dataset.banh), { loai: 'lo' })) dongBang(); }) };
@@ -438,7 +442,7 @@ function veCho() {
     if (!ds.length) html += '<p class="nho">Kho chưa có gì để bán — thu hoạch đã nhé.</p>';
     for (const id of ds) {
       const P = D.I[id], n = s.kho[id], anVat = Object.values(D.VAT).some(V => V.an[id]) || Object.values(D.BANH).some(B => B.can[id]);
-      html += `<div class="dongBan">${img(id)}<div class="giua"><b>${P.ten}</b> <span class="nho">có ${n} · ${P.gia} EXP/cái${anVat ? ' · giữ lại vài cái cho gà bò / lò bánh' : ''}</span></div>
+      html += `<div class="dongBan">${img(id)}<div class="giua"><b>${P.ten}</b> <span class="nho">có ${n} · ${P.gia} EXP/cái${anVat ? ' · giữ lại vài cái cho gà bò / máy chế biến' : ''}</span></div>
         <button class="nut xam" data-ban="${id}" data-n="1">Bán 1</button><button class="nut vang" data-ban="${id}" data-n="${n}">Bán hết +${P.gia * n}</button></div>`;
     }
   }
@@ -633,7 +637,7 @@ function moLenCap(e) {
   for (const C of Object.values(D.RUONG)) if (C.cap === N) moi.push([C.id, 'Hạt ' + C.ten.toLowerCase() + (C.mua ? ' (mùa ' + D.MUA[C.mua - 1].ten + ')' : '')]);
   const o = L.oMo.findIndex(x => x.cap === N); if (o >= 0) moi.push(['ruong', 'Ô ruộng thứ ' + (o + L.oDau + 1) + ' · ' + L.oMo[o].diem + ' 📘']);
   for (const k in D.VAT) { const V = D.VAT[k], t = V.toiDa.find(x => x[0] === N); if (t) moi.push(['vat_' + k, (V.cap === N ? TEN_CHUONG[k] : 'Nuôi tới ' + t[1] + ' ' + V.ten.toLowerCase())]); }
-  if (N === D.LO_CAP) moi.push(['lo_banh', 'Lò bánh']);
+  if (N === D.LO_CAP) moi.push(['lo_banh', 'Máy chế biến']);
   for (const id in D.BANH) if (D.BANH[id].cap === N && N !== D.LO_CAP) moi.push([id, D.BANH[id].ten]);
   for (const k in D.THU) if (D.THU[k].cap === N && k !== 'cho' && !D.THU[k].ngoai) moi.push(['thu_' + k, D.THU[k].ten]);
   const qua = Object.keys(q).map(id => `<span class="can" style="font-size:16px">${img(id)}+${q[id]}</span>`).join('');

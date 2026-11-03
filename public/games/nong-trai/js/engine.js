@@ -303,21 +303,26 @@ function thuVat(s, k) {
   return xong(su);
 }
 
-// ---------- LÒ BÁNH (1 mẻ, sáng hôm sau xong) ----------
-function loTT(s) { if (s.cap < LO_CAP) return { tt: 'khoa' }; if (!s.lo) return { tt: 'trong' }; return { tt: homNay(s) > s.lo.d ? 'xong' : 'dang', mon: s.lo.mon }; }
+// ---------- MÁY CHẾ BIẾN (tên cũ "lò bánh"): 1 mẻ một lúc, xong sau BANH[mon].phut phút theo giờ game (giờ server khi chơi theo tài khoản) ----------
+// s.lo = { mon, xong: mốc ms } · bản lưu cũ { mon, d } (lò theo ngày) ⇒ xong lúc 5 giờ sáng hôm sau như luật cũ
+function loTT(s) {
+  if (s.cap < LO_CAP) return { tt: 'khoa' }; if (!s.lo) return { tt: 'trong' };
+  const xong = s.lo.xong != null ? s.lo.xong : dauNgay(s.lo.d + 1), con = xong - gio(s);
+  return { tt: con <= 0 ? 'xong' : 'dang', mon: s.lo.mon, con: Math.max(0, con) };
+}
 function nuong(s, id) {
   const B = BANH[id], tt = loTT(s);
   if (!B) return loi('');
-  if (tt.tt === 'khoa') return loi('Lò bánh mở ở cấp ' + LO_CAP);
-  if (tt.tt !== 'trong') return loi(tt.tt === 'xong' ? 'Lấy mẻ bánh cũ ra trước' : 'Lò đang nướng — sáng mai xong');
+  if (tt.tt === 'khoa') return loi('Máy chế biến mở ở cấp ' + LO_CAP);
+  if (tt.tt !== 'trong') return loi(tt.tt === 'xong' ? 'Lấy món đã làm xong ra trước' : 'Máy đang làm — còn ' + Math.ceil(tt.con / 60e3) + ' phút');
   if (s.cap < B.cap) return loi(B.ten + ' mở ở cấp ' + B.cap);
   for (const k in B.can) if (so(s, k) < B.can[k]) return loi('Thiếu ' + ten(k).toLowerCase() + ' (cần ' + B.can[k] + ', có ' + so(s, k) + ')');
   for (const k in B.can) them(s, k, -B.can[k]);
-  s.lo = { mon: id, d: homNay(s) }; dem(s, 'nuong');
+  const t = gio(s); s.lo = { mon: id, bd: t, xong: t + B.phut * 60e3 }; dem(s, 'nuong'); dem(s, 'nuong:' + id);
   return xong([{ loai: 'nuong', mon: id }]);
 }
 function layBanh(s) {
-  const tt = loTT(s); if (tt.tt !== 'xong') return loi('Bánh chưa xong — sáng mai nhé');
+  const tt = loTT(s); if (tt.tt !== 'xong') return loi(tt.tt === 'dang' ? 'Chưa xong — còn ' + Math.ceil(tt.con / 60e3) + ' phút' : 'Máy chưa làm gì');
   const id = s.lo.mon, su = [{ loai: 'layBanh', mon: id }, { loai: 'mon', id, n: 1 }];
   them(s, id, 1); s.lo = null; themNn(s, 2, su); dem(s, 'banh');
   return xong(su);
@@ -486,6 +491,8 @@ function ketQuaBanThat(s, k, j, loaiViec, kq) {
   const F = banThatCua(k), id = F ? F.id : String(k), su = [];
   if (loaiViec === 'giup') {
     dem(s, 'giup'); su.push({ loai: kq.loai === 'tuoi' ? 'giupTuoi' : 'giupBat', ban: k, j });
+    const e = typeof kq.exp === 'number' ? kq.exp : 0;   // thưởng EXP do SERVER quyết (_nt_luat().expGiup) — server cũ không trả thì 0
+    if (e > 0) { nhanExp(s, e, su); dem(s, 'expGiup', e); }
     themNn(s, 1, su); roiDo(s, s.hat + '|giup|' + id + '|' + j + '|' + homNay(s) + '|' + s.hom.giup, LUAT.roiGiup, su);
     return xong(su);
   }
@@ -523,6 +530,7 @@ function giupBan(s, k, j) {
   else if (tt.sau) { my.bat = my.bat || {}; (my.bat[key] = my.bat[key] || []).push(...sauCua(r, st.hat + '|' + j, Dn)); su.push({ loai: 'giupBat', ban: k, j }); }
   else return loi('Ô này không cần giúp');
   s.hom.giup++; dem(s, 'giup');
+  if (LUAT.expGiup) { nhanExp(s, LUAT.expGiup, su); dem(s, 'expGiup', LUAT.expGiup); }
   themNn(s, 1, su); roiDo(s, s.hat + '|giup|' + k + '|' + key + '|' + Dn + '|' + s.hom.giup, LUAT.roiGiup, su);
   return xong(su);
 }

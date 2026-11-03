@@ -789,7 +789,9 @@ function dongBo(st, me) {
   // lò bánh
   { const o = loO, tt = ban ? { tt: st.cap >= D.LO_CAP ? 'trong' : 'khoa' } : E.loTT(st); o.g.visible = D.LO_CAP < 30;
     o.mo.visible = tt.tt !== 'khoa'; o.lo.visible = tt.tt === 'khoa' && !ban && st.cap === D.LO_CAP - 1; o.hoang.visible = tt.tt === 'khoa' && !o.lo.visible;
-    datNhan('lo', o.lo.visible ? new T.Vector3(o.v.x, 0.3, o.v.z) : null, '🔒 Lò bánh · cấp ' + D.LO_CAP, 'mo');
+    datNhan('lo', o.lo.visible ? new T.Vector3(o.v.x, 0.3, o.v.z) : null, '🔒 Máy chế biến · cấp ' + D.LO_CAP, 'mo');
+    // đang làm: đồng hồ đếm ngược trên nóc máy (giây làm tròn lên) — em thấy còn bao lâu mà không phải mở bảng
+    datNhan('lo_dem', tt.tt === 'dang' ? new T.Vector3(o.v.x, CAO_LO + 0.6, o.v.z) : null, tt.tt === 'dang' ? '⏳ ' + Math.floor(Math.ceil(tt.con / 1000) / 60) + ':' + String(Math.ceil(tt.con / 1000) % 60).padStart(2, '0') : '', 'mo');
     datBong(o.g, tt.tt === 'xong' ? 'x' + tt.mon : '', tt.tt === 'xong' ? tt.mon : null, CAO_LO + 0.45);
     o.chay = tt.tt === 'dang'; }
   // chỗ trang trí
