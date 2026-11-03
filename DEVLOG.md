@@ -78529,3 +78529,9 @@ Thùy nêu 4 việc, làm được 3:
 - Thứ tự CÂU giữ nguyên (tháp cần cùng chuỗi cho BXH; trận bot vốn ngẫu nhiên).
 - Kiểm dưới JWT HS (rollback): trận bot 5 câu + Sinh tồn 5 câu — opts đổi chỗ 9/10 câu, chọn đúng/sai theo vị trí hiển thị chấm đúng 10/10, `dung_idx` + nhật ký khớp.
 - Treo: **trừ điểm khi sai** — spec chưa có số (trận đua sai = 0 điểm, chỉ khoá câu; Sinh tồn −3 s; Vô tận sai = thua). Đề xuất trận đua sai −50 (đoán bừa kỳ vọng âm), đã hỏi Thùy + hỏi mục "3." còn bỏ ngỏ. Điểm trận đua hiện tính ở client (`trongTai.ts`) — lệch §2.0, chưa chuyển.
+
+## 03/11 (tối) — Toán khối 3 · 5 sang bản đồ mới: HẾT khối giữ bản đồ cũ (Thùy "chuyển sang dùng bản đồ mới hết đi") — mig 202611031857 ĐÃ ÁP
+- `_bdm_khoi_giu_cu` → `select false` (giữ hàm, một nơi quyết; quay lại = trả khối vào). Theo mẫu bật 4T · 4 · 5T. Danh sách CẤP 1 của luật đo (`_mastery_lan_do_quy`, `fn_tong_quan_hs`, `hs_cap1_cua_toi`) là chính sách khác, không đổi.
+- Đo trước khi bật: câu sống có dạng bài mới — K3 1337/1337 · K5 3572/4327 (kho chuẩn 3488/3744); lượt đo quy được — K3 1374/1374 · K5 14899/15092 (193 lượt bỏ trống ô tới khi câu được xếp). So: lúc bật K4 là 91%, 5T 62%.
+- Sau áp: `_kho_ds_nhanh_khoi('Toán','3'|'5')` = {bdm, hinh_hoc}; `_dgcc_tham_so().khoi_ban_do_cu` = {}; `_hs_dang_da_hoc` các lớp 3A1 · 5A1 · 5A2 · 5B1 · 5B2 chạy (cả lô 0,8 s).
+- ⚠️ PHÁT HIỆN (chưa sửa): `fn_kho_dung_ban_do_cu` trả RỖNG cho mọi môn/khối từ trước bản này — `_kho_ds_nhanh_khoi` trả mảng có phần tử `null` (vd Toán 3 cũ: {null, hinh_gt, hinh_hoc}; KHTN 7: {null}) ⇒ `not ('bdm' = any(...))` = NULL ⇒ lọc mất. Tức lá ET/Giáo trình cũ (Thùy mở lại 28/10 cho tiểu học) đã không hiện; với Toán giờ không còn cần, nhưng KHTN/môn khác (chưa có bản đồ mới) cũng đang bị đóng.
