@@ -1,0 +1,449 @@
+[trước] dai_bdm_gan_cau 23152 (md5 aa326f2e3e) · hgt_bdm_gan_cau 3034 (md5 66c4a44eb0) · dai_bdm_kho_ds 1442 (md5 d4a08a9013) · hgt_bdm_kho_ds 605 (md5 d510179b08) · dai_bdm_log 51251
+Dạng CŨ sẽ bị xoá (HS/VT/XS/SDT, không thuộc ma-moi): 17 — NDB00620,NDB00621,NDB00622,NDB00623,NDB00624,NDB00640,NDB00641,NDB00642,NDB00643,NDB00644,NDB00645,NDB00804,NDB00805,NDB00806,NDB00807,NDB00811,NDB00812
+
+══ THEO CHƯƠNG (dòng nhãn → việc) ══
+chương	dòng tsv	INSERT	MOVE	MOVE_BAN_SAO	MOVE_LECH_AI	GIU	GIU_BAN_SAO	TRUNG_GOC	LECH_GIU_CU	LECH_DANG_MOI	LECH_CHU_DE_KHAC	LECH_BAN_SAO	BO_KHO_RAC	BO_DUNG_SAI	BO_KHO_DS	GOC_LECH	HAI_BANG	KHONG_CO_CAU	CHUA	CHUONG:→	CHUONG:bỏ
+HS	3761	3018	732	0	0	0	0	0	4	0	0	0	0	0	0	0	0	0	2	0	5
+VT	1550	1471	9	0	0	0	0	0	19	0	0	0	0	0	0	0	0	0	4	34	13
+XS	313	311	0	0	0	0	0	0	0	0	0	0	2	0	0	0	0	0	0	0	0
+SDT	381	381	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+NHTP	1065	707	15	0	0	268	0	0	69	0	0	0	0	0	0	0	0	0	6	0	0
+PPTD	1086	742	0	0	0	287	0	0	23	0	0	0	1	0	0	0	0	0	33	0	0
+Ghi trong transaction: INSERT 6630 · UPDATE 756 (dai: +5813/~756 · hgt: +817/~0)
+
+══ THEO DẠNG MỚI / DẠNG ĐÍCH: số câu trong tsv (gốc, duy nhất) vs số dòng gan_cau (dai+hgt) sau khi ghi ══
+dạng	logic	tsv	INSERT	MOVE	GIU	không ghi	gan_cau sau	lệch
+NDB02458	HS:C1.1.1	117	48	69	0	0	117	
+NDB02459	HS:C1.1.2	26	10	16	0	0	26	
+NDB02460	HS:C1.1.3	163	64	99	0	0	163	
+NDB02461	HS:C1.1.4	115	28	87	0	0	115	
+NDB02462	HS:C1.1.5	85	33	52	0	0	85	
+NDB02463	HS:C1.1.6	28	10	18	0	0	28	
+NDB02464	HS:C1.2.1	85	36	49	0	0	85	
+NDB02465	HS:C1.2.2	45	18	27	0	0	45	
+NDB02466	HS:C1.2.3	154	43	111	0	0	154	
+NDB02467	HS:C1.2.4	98	35	63	0	0	98	
+NDB02468	HS:C1.2.5	69	21	48	0	0	69	
+NDB02469	HS:C1.2.6	72	26	46	0	0	72	
+NDB02470	HS:C1.3.1	119	119	0	0	0	119	
+NDB02471	HS:C1.3.2	61	61	0	0	0	61	
+NDB02472	HS:C1.3.3	49	49	0	0	0	49	
+NDB02473	HS:C1.3.4	21	21	0	0	0	21	
+NDB02474	HS:C1.3.5	147	147	0	0	0	147	
+NDB02475	HS:C1.3.6	96	96	0	0	0	96	
+NDB02476	HS:C1.4.1	183	182	1	0	0	183	
+NDB02477	HS:C1.4.2	42	42	0	0	0	42	
+NDB02478	HS:C1.4.3	152	152	0	0	0	152	
+NDB02479	HS:C1.4.4	83	82	1	0	0	83	
+NDB02480	HS:C1.4.5	102	102	0	0	0	102	
+NDB02481	HS:C1.4.6	24	24	0	0	0	24	
+NDB02482	HS:C1.5.1	9	9	0	0	0	9	
+NDB02483	HS:C1.5.2	3	3	0	0	0	3	
+NDB02484	HS:C2.1.1	155	155	0	0	0	155	
+NDB02485	HS:C2.1.2	102	101	1	0	0	102	
+NDB02486	HS:C2.1.3	59	59	0	0	0	59	
+NDB02487	HS:C2.1.4	2	2	0	0	0	2	
+NDB02488	HS:C2.1.5	6	6	0	0	0	6	
+NDB02489	HS:C2.2.1	38	38	0	0	0	38	
+NDB02490	HS:C2.2.2	31	30	1	0	0	31	
+NDB02491	HS:C2.2.3	17	17	0	0	0	17	
+NDB02492	HS:C2.2.4	20	17	3	0	0	20	
+NDB02493	HS:C2.2.5	19	5	14	0	0	19	
+NDB02494	HS:C2.2.6	9	9	0	0	0	9	
+NDB02495	HS:C2.3.1	62	62	0	0	0	62	
+NDB02496	HS:C2.3.2	43	43	0	0	0	43	
+NDB02497	HS:C2.3.3	19	11	8	0	0	19	
+NDB02498	HS:C2.4.1	21	21	0	0	0	21	
+NDB02499	HS:C2.4.2	13	13	0	0	0	13	
+NDB02500	HS:C2.4.3	22	20	2	0	0	22	
+NDB02501	HS:C2.5.1	6	2	4	0	0	6	
+NDB02502	HS:C2.5.2	14	8	6	0	0	14	
+NDB02503	HS:C2.5.3	7	7	0	0	0	7	
+NDB02504	HS:C2.5.4	11	11	0	0	0	11	
+NDB02505	HS:C2.5.5	3	3	0	0	0	3	
+NDB02506	HS:C2.5.6	4	3	1	0	0	4	
+NDB02507	HS:C3.1.1	24	24	0	0	0	24	
+NDB02508	HS:C3.1.2	31	31	0	0	0	31	
+NDB02509	HS:C3.1.3	5	5	0	0	0	5	
+NDB02510	HS:C3.2.1	5	5	0	0	0	5	
+NDB02511	HS:C3.2.2	2	2	0	0	0	2	
+NDB02512	HS:C3.3.1	13	13	0	0	0	13	
+NDB02513	HS:C3.3.2	20	20	0	0	0	20	
+NDB02514	HS:C4.1.1	68	68	0	0	0	68	
+NDB02515	HS:C4.1.2	15	15	0	0	0	15	
+NDB02516	HS:C4.1.3	26	23	3	0	0	26	
+NDB02517	HS:C4.1.4	29	29	0	0	0	29	
+NDB02518	HS:C4.2.1	133	133	0	0	0	133	
+NDB02519	HS:C4.2.2	58	58	0	0	0	58	
+NDB02520	HS:C4.2.3	16	16	0	0	0	16	
+NDB02521	HS:C4.3.1	37	37	0	0	0	37	
+NDB02522	HS:C4.3.2	36	36	0	0	0	36	
+NDB02523	HS:C4.3.3	16	16	0	0	0	16	
+NDB02524	HS:C4.4.1	48	47	1	0	0	48	
+NDB02525	HS:C4.4.2	112	111	0	0	1	111	≠ tsv -1
+NDB02526	HS:C4.4.3	21	21	0	0	0	21	
+NDB02527	HS:C4.4.4	25	25	0	0	0	25	
+NDB02528	HS:C4.4.5	13	13	0	0	0	13	
+NDB02529	HS:C4.4.6	11	11	0	0	0	11	
+NDB02530	HS:C4.5.1	51	49	1	0	1	50	≠ tsv -1
+NDB02531	HS:C4.5.2	46	46	0	0	0	46	
+NDB02532	HS:C4.6.1	18	18	0	0	0	18	
+NDB02533	HS:C4.6.2	36	36	0	0	0	36	
+NDB02534	HS:C4.6.3	8	6	0	0	2	6	≠ tsv -2
+NDB00627	(cũ)	4	3	0	1	0	49	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00628	(cũ)	5	5	0	0	0	43	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00629	(cũ)	19	17	0	2	0	38	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00630	(cũ)	12	10	0	2	0	29	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00631	(cũ)	15	13	0	2	0	46	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00632	(cũ)	10	9	0	0	1	49	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00635	(cũ)	6	4	0	1	1	38	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00636	(cũ)	74	42	0	26	6	93	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00639	(cũ)	1	0	0	1	0	1	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00742	(cũ)	57	39	0	17	1	105	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00743	(cũ)	70	32	0	35	3	174	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00744	(cũ)	17	10	0	6	1	52	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00745	(cũ)	60	22	0	36	2	131	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00746	(cũ)	47	35	0	12	0	138	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00747	(cũ)	58	48	0	8	2	107	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00748	(cũ)	4	3	0	0	1	14	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00749	(cũ)	11	11	0	0	0	50	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00750	(cũ)	5	5	0	0	0	70	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00751	(cũ)	39	27	0	12	0	78	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00752	(cũ)	88	61	0	26	1	178	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00753	(cũ)	27	27	0	0	0	43	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00754	(cũ)	13	8	0	5	0	26	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00755	(cũ)	8	4	0	0	4	11	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00756	(cũ)	12	7	0	3	2	41	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00757	(cũ)	1	1	0	0	0	10	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00758	(cũ)	4	3	0	1	0	27	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00759	(cũ)	3	3	0	0	0	28	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00760	(cũ)	20	16	0	2	2	25	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00761	(cũ)	1	1	0	0	0	2	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00774	(cũ)	62	44	0	17	1	132	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00775	(cũ)	80	51	0	9	20	81	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00777	(cũ)	39	24	0	15	0	66	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00778	(cũ)	28	12	0	5	11	19	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00779	(cũ)	17	15	0	2	0	24	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00780	(cũ)	35	22	0	7	6	31	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00781	(cũ)	9	8	0	1	0	39	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00782	(cũ)	4	3	0	0	1	6	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00786	(cũ)	1	1	0	0	0	1	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00787	(cũ)	32	17	0	13	2	53	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00788	(cũ)	8	6	0	1	1	12	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00835	(cũ)	104	60	0	44	0	191	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00836	(cũ)	82	49	0	33	0	101	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00837	(cũ)	98	70	0	28	0	128	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00838	(cũ)	26	15	0	11	0	57	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00839	(cũ)	37	27	0	9	1	67	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00840	(cũ)	8	7	0	1	0	26	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00841	(cũ)	44	26	0	16	2	119	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00842	(cũ)	3	2	0	1	0	13	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00843	(cũ)	40	28	0	12	0	51	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00844	(cũ)	2	1	0	1	0	5	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00845	(cũ)	1	0	0	1	0	1	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00846	(cũ)	73	48	0	24	1	93	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00848	(cũ)	16	9	0	7	0	41	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00849	(cũ)	28	18	0	10	0	66	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00850	(cũ)	6	6	0	0	0	10	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00851	(cũ)	56	36	0	13	7	92	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00852	(cũ)	23	18	0	5	0	29	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00853	(cũ)	20	13	0	1	6	19	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00854	(cũ)	29	20	0	9	0	38	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00855	(cũ)	4	2	0	2	0	30	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00856	(cũ)	12	12	0	0	0	15	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00857	(cũ)	32	26	0	6	0	53	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00858	(cũ)	31	27	0	4	0	50	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00859	(cũ)	28	25	0	3	0	50	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00860	(cũ)	49	37	0	12	0	101	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00861	(cũ)	10	7	0	2	1	13	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00865	(cũ)	1	1	0	0	0	5	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00866	(cũ)	13	11	0	2	0	39	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00867	(cũ)	12	7	0	4	1	27	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00868	(cũ)	17	14	0	3	0	26	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00869	(cũ)	3	1	0	2	0	10	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00870	(cũ)	1	1	0	0	0	9	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00871	(cũ)	3	1	0	2	0	5	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00872	(cũ)	23	18	0	5	0	37	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00873	(cũ)	9	9	0	0	0	28	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00874	(cũ)	7	5	0	1	1	8	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00876	(cũ)	2	2	0	0	0	5	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00877	(cũ)	16	10	0	6	0	38	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00878	(cũ)	21	15	0	6	0	23	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00879	(cũ)	3	3	0	0	0	3	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00880	(cũ)	1	1	0	0	0	4	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB00881	(cũ)	7	6	0	1	0	16	(dạng có sẵn; gan_cau sau gồm cả câu ngoài tsv)
+NDB02592	NHTP:M1	53	38	15	0	0	53	
+NDB02593	PPTD:M1	15	13	0	0	2	13	≠ tsv -2
+NDB02594	PPTD:M2	3	3	0	0	0	3	
+NDB02595	PPTD:M3	6	6	0	0	0	6	
+NDB02596	PPTD:M4	8	7	0	0	1	7	≠ tsv -1
+NDB02597	PPTD:M5	9	9	0	0	0	9	
+NDB02598	PPTD:M6	7	7	0	0	0	7	
+NDB02599	PPTD:M7	4	3	0	0	1	3	≠ tsv -1
+NDB02582	SDT:C1.1.1	96	96	0	0	0	96	
+NDB02583	SDT:C1.2.1	16	16	0	0	0	16	
+NDB02584	SDT:C1.2.2	16	16	0	0	0	16	
+NDB02585	SDT:C1.2.3	79	79	0	0	0	79	
+NDB02586	SDT:C1.2.4	11	11	0	0	0	11	
+NDB02587	SDT:C1.3.1	105	105	0	0	0	105	
+NDB02588	SDT:C1.3.2	28	28	0	0	0	28	
+NDB02589	SDT:C2.1.1	12	12	0	0	0	12	
+NDB02590	SDT:C2.2.1	8	8	0	0	0	8	
+NDB02591	SDT:C2.3.1	10	10	0	0	0	10	
+NDB02535	VT:C1.1.1	57	57	0	0	0	57	
+NDB02536	VT:C1.1.2	31	31	0	0	0	31	
+NDB02537	VT:C1.2.1	149	145	4	0	0	149	
+NDB02538	VT:C1.2.2	56	53	3	0	0	56	
+NDB02539	VT:C1.2.3	49	49	0	0	0	49	
+NDB02540	VT:C1.2.4	35	35	0	0	0	35	
+NDB02541	VT:C1.3.1	45	45	0	0	0	45	
+NDB02542	VT:C1.3.2	56	56	0	0	0	56	
+NDB02543	VT:C1.3.3	66	66	0	0	0	66	
+NDB02544	VT:C2.1.1	94	92	2	0	0	94	
+NDB02545	VT:C2.1.2	89	78	0	0	11	78	≠ tsv -11
+NDB02546	VT:C2.2.1	20	20	0	0	0	20	
+NDB02547	VT:C2.2.2	13	13	0	0	0	13	
+NDB02548	VT:C3.1.1	78	78	0	0	0	78	
+NDB02549	VT:C3.1.2	61	61	0	0	0	61	
+NDB02550	VT:C3.1.3	13	13	0	0	0	13	
+NDB02551	VT:C3.2.1	68	68	0	0	0	68	
+NDB02552	VT:C3.2.2	57	57	0	0	0	57	
+NDB02553	VT:C3.2.3	29	28	0	0	1	28	≠ tsv -1
+NDB02554	VT:C3.3.1	42	42	0	0	0	42	
+NDB02555	VT:C3.3.2	7	7	0	0	0	7	
+NDB02556	VT:C3.4.1	78	77	0	0	1	77	≠ tsv -1
+NDB02557	VT:C3.4.2	14	14	0	0	0	14	
+NDB02558	VT:C3.4.3	13	13	0	0	0	13	
+NDB02559	VT:C3.5.1	15	15	0	0	0	15	
+NDB02560	VT:C3.5.2	19	19	0	0	0	19	
+NDB02561	VT:C4.1.1	33	33	0	0	0	33	
+NDB02562	VT:C4.1.2	53	53	0	0	0	53	
+NDB02563	VT:C4.2.1	42	42	0	0	0	42	
+NDB02564	VT:C4.2.2	23	23	0	0	0	23	
+NDB02565	VT:C4.3.1	74	69	0	0	5	69	≠ tsv -5
+NDB02566	VT:C4.3.2	20	19	0	0	1	19	≠ tsv -1
+NDB02567	XS:C1.1.1	27	27	0	0	0	27	
+NDB02568	XS:C1.1.2	46	45	0	0	1	45	≠ tsv -1
+NDB02569	XS:C1.1.3	14	14	0	0	0	14	
+NDB02570	XS:C1.2.1	25	25	0	0	0	25	
+NDB02571	XS:C1.2.2	22	22	0	0	0	22	
+NDB02572	XS:C1.3.1	23	23	0	0	0	23	
+NDB02573	XS:C1.3.2	15	14	0	0	1	14	≠ tsv -1
+NDB02574	XS:C2.1.1	13	13	0	0	0	13	
+NDB02575	XS:C2.1.2	20	20	0	0	0	20	
+NDB02576	XS:C2.1.3	20	20	0	0	0	20	
+NDB02577	XS:C2.2.1	10	10	0	0	0	10	
+NDB02578	XS:C2.2.2	10	10	0	0	0	10	
+NDB02579	XS:C2.2.3	5	5	0	0	0	5	
+NDB02580	XS:C2.3.1	48	48	0	0	0	48	
+NDB02581	XS:C2.3.2	15	15	0	0	0	15	
+
+── MOVE NHTP → M1: 15
+  NHTP	T112000000660	dai	cũ NDB00752/ai	→ NDB02592 NHTP:M1
+  NHTP	T1120000001288	dai	cũ NDB00752/ai	→ NDB02592 NHTP:M1
+  NHTP	T112000000126	dai	cũ NDB00747/ai	→ NDB02592 NHTP:M1
+  NHTP	T112000000478	dai	cũ NDB00752/ai	→ NDB02592 NHTP:M1
+  NHTP	T112000000742	dai	cũ NDB00752/ai	→ NDB02592 NHTP:M1
+  NHTP	T112000000393	dai	cũ NDB00752/ai	→ NDB02592 NHTP:M1
+  NHTP	T112000000665	dai	cũ NDB00752/ai	→ NDB02592 NHTP:M1
+  NHTP	T1120000001104	dai	cũ NDB00747/ai	→ NDB02592 NHTP:M1
+  NHTP	T1120000001137	dai	cũ NDB00747/ai	→ NDB02592 NHTP:M1
+  NHTP	T1120000001219	dai	cũ NDB00747/ai	→ NDB02592 NHTP:M1
+  NHTP	T112000000743	dai	cũ NDB00752/ai	→ NDB02592 NHTP:M1
+  NHTP	T112000000562	dai	cũ NDB00752/ai	→ NDB02592 NHTP:M1
+  NHTP	T1120000001305	dai	cũ NDB00752/ai	→ NDB02592 NHTP:M1
+  NHTP	T112000000405	dai	cũ NDB00752/ai	→ NDB02592 NHTP:M1
+  NHTP	T1120000001178	dai	cũ NDB00747/ai	→ NDB02592 NHTP:M1
+
+── LỆCH, dạng cũ KHÔNG bị xoá (NHTP/PPTD) — KHÔNG đụng: 115
+  HS	T112000000615	dai	cũ NDB00781/nguoi	→ NDB02534 HS:C4.6.3
+  HS	T1120000001369	dai	cũ NDB00632/ai	→ NDB02530 HS:C4.5.1
+  HS	T1120000001127	dai	cũ NDB00759/ai	→ NDB02525 HS:C4.4.2
+  HS	T1120000001327	dai	cũ NDB00761/ai	→ NDB02534 HS:C4.6.3
+  VT	T312010107087	hgt	cũ NDB00873/ai	→ NDB02545 VT:C2.1.2
+  VT	T312010603025	hgt	cũ NDB00858/ai	→ NDB02556 VT:C3.4.1
+  VT	T312010107086	hgt	cũ NDB00873/ai	→ NDB02545 VT:C2.1.2
+  VT	T312010802062	hgt	cũ NDB00843/ai	→ NDB02565 VT:C4.3.1
+  VT	T312010201131	hgt	cũ NDB00872/ai	→ NDB02553 VT:C3.2.3
+  VT	T312010101192	hgt	cũ NDB00873/ai	→ NDB02545 VT:C2.1.2
+  VT	T312010107083	hgt	cũ NDB00873/ai	→ NDB02545 VT:C2.1.2
+  VT	T312010802055	hgt	cũ NDB00872/ai	→ NDB02565 VT:C4.3.1
+  VT	T312010802031	hgt	cũ NDB00843/ai	→ NDB02565 VT:C4.3.1
+  VT	T312010802034	hgt	cũ NDB00861/ai	→ NDB02566 VT:C4.3.2
+  VT	T312010107084	hgt	cũ NDB00873/ai	→ NDB02545 VT:C2.1.2
+  VT	T312010107082	hgt	cũ NDB00873/ai	→ NDB02545 VT:C2.1.2
+  VT	T312010101204	hgt	cũ NDB00873/ai	→ NDB02545 VT:C2.1.2
+  VT	T312010107089	hgt	cũ NDB00873/ai	→ NDB02545 VT:C2.1.2
+  VT	T312010107091	hgt	cũ NDB00873/ai	→ NDB02545 VT:C2.1.2
+  VT	T1120000001517	dai	cũ NDB00838/ai	→ NDB02545 VT:C2.1.2
+  VT	T312010802052	hgt	cũ NDB00861/ai	→ NDB02565 VT:C4.3.1
+  VT	T312010107081	hgt	cũ NDB00873/ai	→ NDB02545 VT:C2.1.2
+  VT	T312010802029	hgt	cũ NDB00843/ai	→ NDB02565 VT:C4.3.1
+  NHTP	T1120000001477	dai	cũ NDB00635/nguoi	→ NDB00636 
+  NHTP	T112000000691	dai	cũ NDB00781/nguoi	→ NDB00636 
+  NHTP	T1120000001480	dai	cũ NDB00774/ai	→ NDB00780 
+  NHTP	T1120000001370	dai	cũ NDB00787/ai	→ NDB00788 
+  NHTP	T112000000882	dai	cũ NDB00632/ai	→ NDB00756 
+  NHTP	T112000000917	dai	cũ NDB00745/ai	→ NDB00743 
+  NHTP	T112000000786	dai	cũ NDB00787/ai	→ NDB00775 
+  NHTP	T1120000001031	dai	cũ NDB00752/ai	→ NDB00755 
+  NHTP	T1120000001334	dai	cũ NDB00787/ai	→ NDB00775 
+  NHTP	T1120000001315	dai	cũ NDB00787/ai	→ NDB00775 
+  NHTP	T112000000735	dai	cũ NDB00745/ai	→ NDB00743 
+  NHTP	T112000000425	dai	cũ NDB00781/nguoi	→ NDB00778 
+  NHTP	T112000000410	dai	cũ NDB00788/ai	→ NDB00774 
+  NHTP	T1120000001239	dai	cũ NDB00743/ai	→ NDB00747 
+  NHTP	T112000000381	dai	cũ NDB00787/ai	→ NDB00775 
+  NHTP	T112000000235	dai	cũ NDB00787/ai	→ NDB00775 
+  NHTP	T1120000001107	dai	cũ NDB00787/ai	→ NDB00775 
+  NHTP	T112000000422	dai	cũ NDB00781/nguoi	→ NDB00636 
+  NHTP	T112000000263	dai	cũ NDB00787/ai	→ NDB00775 
+  NHTP	T1120000001406	dai	cũ NDB00779/ai	→ NDB00780 
+  NHTP	T112000000755	dai	cũ NDB00777/ai	→ NDB00755 
+  NHTP	T1120000001366	dai	cũ NDB00781/nguoi	→ NDB00635 
+  NHTP	T112000000664	dai	cũ NDB00781/nguoi	→ NDB00778 
+  NHTP	T1120000001321	dai	cũ NDB00750/ai	→ NDB00760 
+  NHTP	T112000000358	dai	cũ NDB00750/ai	→ NDB00760 
+  NHTP	T112000000874	dai	cũ NDB00779/ai	→ NDB00780 
+  NHTP	T112000000676	dai	cũ NDB00781/nguoi	→ NDB00778 
+  NHTP	T112000000616	dai	cũ NDB00781/nguoi	→ NDB00778 
+  NHTP	T1120000001078	dai	cũ NDB00777/ai	→ NDB00775 
+  NHTP	T112000000258	dai	cũ NDB00788/ai	→ NDB00775 
+  NHTP	T112000000134	dai	cũ NDB00778/nguoi	→ NDB00636 
+  NHTP	T1120000001418	dai	cũ NDB00787/ai	→ NDB00775 
+  NHTP	T1120000001057	dai	cũ NDB00787/ai	→ NDB00775 
+  NHTP	T112000000142	dai	cũ NDB00743/ai	→ NDB00742 
+  NHTP	T112000000628	dai	cũ NDB00747/ai	→ NDB00744 
+  NHTP	T112000000712	dai	cũ NDB00787/ai	→ NDB00775 
+  NHTP	T1120000001476	dai	cũ NDB00744/ai	→ NDB00748 
+  NHTP	T112000000524	dai	cũ NDB00781/nguoi	→ NDB00778 
+  NHTP	T112000000266	dai	cũ NDB00787/ai	→ NDB00775 
+  NHTP	T112000000697	dai	cũ NDB00746/ai	→ NDB00743 
+  NHTP	T112000000587	dai	cũ NDB00635/nguoi	→ NDB00636 
+  NHTP	T112000000317	dai	cũ NDB00781/nguoi	→ NDB00636 
+  NHTP	T112000000541	dai	cũ NDB00752/ai	→ NDB00755 
+  NHTP	T1120000001029	dai	cũ NDB00787/ai	→ NDB00780 
+  NHTP	T112000000340	dai	cũ NDB00775/ai	→ NDB00782 
+  NHTP	T1120000001082	dai	cũ NDB00749/ai	→ NDB00756 
+  NHTP	T112000000217	dai	cũ NDB00777/ai	→ NDB00775 
+  NHTP	T112000000053	dai	cũ NDB00787/ai	→ NDB00775 
+  NHTP	T1120000001323	dai	cũ NDB00747/ai	→ NDB00745 
+  NHTP	T112000000734	dai	cũ NDB00781/nguoi	→ NDB00778 
+  NHTP	T1120000001135	dai	cũ NDB00788/ai	→ NDB00787 
+  NHTP	T112000000155	dai	cũ NDB00787/ai	→ NDB00775 
+  NHTP	T1120000001502	dai	cũ NDB00781/nguoi	→ NDB00778 
+  NHTP	T1120000001411	dai	cũ NDB00781/nguoi	→ NDB00780 
+  NHTP	T1120000001131	dai	cũ NDB00779/ai	→ NDB00780 
+  NHTP	T112000000305	dai	cũ NDB00751/ai	→ NDB00752 
+  NHTP	T1120000001147	dai	cũ NDB00788/ai	→ NDB00787 
+  NHTP	T112000000910	dai	cũ NDB00787/ai	→ NDB00775 
+  NHTP	T112000000408	dai	cũ NDB00781/nguoi	→ NDB00778 
+  NHTP	T112000000591	dai	cũ NDB00788/ai	→ NDB00775 
+  NHTP	T112000000326	dai	cũ NDB00781/nguoi	→ NDB00778 
+  NHTP	T1120000001340	dai	cũ NDB00781/nguoi	→ NDB00778 
+  NHTP	T112000000699	dai	cũ NDB00749/ai	→ NDB00632 
+  NHTP	T112000000897	dai	cũ NDB00742/ai	→ NDB00747 
+  NHTP	T112000000677	dai	cũ NDB00777/ai	→ NDB00755 
+  NHTP	T112000000511	dai	cũ NDB00787/ai	→ NDB00775 
+  NHTP	T112000000210	dai	cũ NDB00747/ai	→ NDB00745 
+  NHTP	T112000000005	dai	cũ NDB00774/ai	→ NDB00775 
+  NHTP	T112000000119	dai	cũ NDB00781/nguoi	→ NDB00778 
+  PPTD	T312010102122	hgt	cũ NDB00841/ai	→ NDB00851 
+  PPTD	T312010102118	hgt	cũ NDB00848/ai	→ NDB00841 
+  PPTD	T312010301087	hgt	cũ NDB00881/ai	→ NDB00861 
+  PPTD	T312010102137	hgt	cũ NDB00841/ai	→ NDB00851 
+  PPTD	T312010101249	hgt	cũ NDB00835/ai	→ NDB02593 PPTD:M1
+  PPTD	T312010803036	hgt	cũ NDB00837/ai	→ NDB00874 
+  PPTD	T312010101207	hgt	cũ NDB00841/ai	→ NDB02593 PPTD:M1
+  PPTD	T312010202036	hgt	cũ NDB00843/ai	→ NDB00853 
+  PPTD	T312010102144	hgt	cũ NDB00848/ai	→ NDB00841 
+  PPTD	T312010202038	hgt	cũ NDB00843/ai	→ NDB00853 
+  PPTD	T312010202040	hgt	cũ NDB00843/ai	→ NDB00853 
+  PPTD	T312010102121	hgt	cũ NDB00841/ai	→ NDB00851 
+  PPTD	T312010801006	hgt	cũ NDB00864/ai	→ NDB00867 
+  PPTD	T312010802071	hgt	cũ NDB00854/ai	→ NDB00839 
+  PPTD	T312010202047	hgt	cũ NDB00843/ai	→ NDB00853 
+  PPTD	T312010102124	hgt	cũ NDB00841/ai	→ NDB00851 
+  PPTD	T312010102134	hgt	cũ NDB00841/ai	→ NDB00851 
+  PPTD	T312010102136	hgt	cũ NDB00841/ai	→ NDB00851 
+  PPTD	T312010202043	hgt	cũ NDB00843/ai	→ NDB00853 
+  PPTD	T312010301085	hgt	cũ NDB00877/ai	→ NDB00846 
+  PPTD	T312010102123	hgt	cũ NDB00841/ai	→ NDB00851 
+  PPTD	T312010201122	hgt	cũ NDB00855/ai	→ NDB00853 
+  PPTD	T312010403001	hgt	cũ NDB00839/ai	→ NDB02599 PPTD:M7
+
+── BỎ: câu trong kho rác (xoa_at): 3
+  XS	T1120000005532	dai	cũ —/—	→ NDB02568 XS:C1.1.2
+  XS	T1120000005624	dai	cũ —/—	→ NDB02573 XS:C1.3.2
+  PPTD	T312000000659	hgt	cũ —/—	→ NDB02596 PPTD:M4
+
+══ MỒ CÔI (dòng gan_cau còn trỏ dạng CŨ sẽ xoá, sau khi ghi): 365 ══
+  HS/cum 94 · HS/ai 9 · HS/doi_ung 117 · VT/cum 114 · VT/ai 31
+  HS	dai	T112010301001	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301002	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301003	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301004	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301005	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301006	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301007	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301008	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301009	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301010	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301011	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301012	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301013	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301014	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301015	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301016	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301017	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301018	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301019	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301020	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301021	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301022	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301023	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301024	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301025	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301026	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301027	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301028	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301029	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301030	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301031	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301032	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301033	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301034	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301035	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301036	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301037	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301038	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010301039	NDB00620	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010305001	NDB00620	ai	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010304001	NDB00621	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010304003	NDB00621	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010304008	NDB00621	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010304010	NDB00621	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010304012	NDB00621	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010304013	NDB00621	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010304019	NDB00621	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010304020	NDB00621	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010304021	NDB00621	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010304022	NDB00621	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010304023	NDB00621	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010304024	NDB00621	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112020201010	NDB00621	ai	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112020202017	NDB00621	ai	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112020302020	NDB00621	ai	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010303001	NDB00622	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010303002	NDB00622	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010303003	NDB00622	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010303004	NDB00622	cum	KHÔNG có trong bảng nhãn nào
+  HS	dai	T112010303006	NDB00622	cum	KHÔNG có trong bảng nhãn nào
+  … (đủ ở db/mo-coi.md)
+
+ℹ FK khác còn trỏ dạng cũ (KHÔNG đụng ở đây, việc B5): dai_de_xuat 352 · hgt_de_xuat 0 · dai_cau_lop 0 · doi_ung_dang 6 · doi_ung_cum 11
+
+[CẢNH BÁO TRIGGER] dai_bdm_log sẽ có thêm: dai_bdm_gan_cau/sua 756 · dai_bdm_gan_cau/them 5813 · hgt_bdm_gan_cau/them 817 — actor NULL (script). _bdm_cam_dung_sai: câu Đ/S đã lọc trước nên không bắn.
+[sau ROLLBACK] dai_bdm_gan_cau 23152 (md5 aa326f2e3e) · hgt_bdm_gan_cau 3034 (md5 66c4a44eb0) · dai_bdm_kho_ds 1442 (md5 d4a08a9013) · hgt_bdm_kho_ds 605 (md5 d510179b08) · dai_bdm_log 51251
+✔ DB KHÔNG ĐỔI: đếm dòng + md5 hai bảng gan_cau, hai kho_ds và số dòng log trước = sau.
+Đã ROLLBACK. --ghi chỉ sau khi Thùy gật.
