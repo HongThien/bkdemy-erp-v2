@@ -20,64 +20,63 @@ const MUC: [Muc, string][] = [['baocao', 'Báo cáo Sư phạm'], ['dangyeu', 'D
 // Rời tab rồi quay lại = đúng mục + khoảng đang xem, không gọi lại (CLAUDE.md §2 React).
 const NHO_MUC: { muc: Muc } = { muc: 'baocao' }
 
+const KHOANG = [7, 14, 30]
+const NHO: { soNgay: number; bc: BaoCaoTroLy | null } = { soNgay: 14, bc: null }
+
+// Thùy 03/11: mọi bộ lọc trên MỘT hàng (mục · nhìn lại · khối quản lý) — trước chiếm 3 dòng.
+// Báo cáo Sư phạm tải ở đây (không ở mục con) để khoảng "Nhìn lại" + dòng khối nằm chung hàng với tab mục.
 export default function BaoCaoCaNhan() {
   const [muc, setMucS] = useState<Muc>(NHO_MUC.muc)
   const setMuc = (m: Muc) => { NHO_MUC.muc = m; setMucS(m) }
   const setStaffLeaf = useStore((s) => s.setStaffLeaf)
-  return (
-    <div>
-      <div className="mb-3 inline-flex rounded-xl border border-slate-200 bg-white p-0.5 text-[13px] font-semibold shadow-sm">
-        {MUC.map(([k, t]) => (
-          <button key={k} onClick={() => setMuc(k)} className={`rounded-lg px-4 py-1.5 ${muc === k ? 'bg-indigo-600 text-white' : 'text-slate-600 hover:bg-slate-50'}`}>{t}</button>
-        ))}
-      </div>
-      {muc === 'baocao' ? <BaoCaoSuPham />
-        : muc === 'dangyeu' ? <WidgetDangYeu onTaoCaNhe={() => { moBoTroTab('nhe'); setStaffLeaf('botro') }} />
-        : <HocTapTuan />}
-    </div>
-  )
-}
-
-const KHOANG = [7, 14, 30]
-const NHO: { soNgay: number; bc: BaoCaoTroLy | null } = { soNgay: 14, bc: null }
-
-function BaoCaoSuPham() {
   const [soNgay, setSoNgay] = useState(NHO.soNgay)
   const [bc, setBc] = useState<BaoCaoTroLy | null>(NHO.bc)
   const [dangTai, setDangTai] = useState(false)
   const [loi, setLoi] = useState<string | null>(null)
 
   useEffect(() => {
+    if (muc !== 'baocao') return
     if (NHO.bc && NHO.soNgay === soNgay) return
     setBc(null); setLoi(null); setDangTai(true)
     getBaoCaoCaNhan(soNgay)
       .then((d) => { NHO.soNgay = soNgay; NHO.bc = d; setBc(d) })
       .catch((e: any) => setLoi(e?.message ?? String(e)))
       .finally(() => setDangTai(false))
-  }, [soNgay])
+  }, [soNgay, muc])
 
   return (
     <div>
-      <div className="mb-3 flex flex-wrap items-center gap-1.5">
-        <span className="text-[12.5px] text-slate-500">Nhìn lại</span>
-        {KHOANG.map((n) => (
-          <button key={n} onClick={() => setSoNgay(n)}
-            className={`rounded-full border px-3 py-1 text-[12.5px] font-medium ${
-              soNgay === n ? 'border-indigo-500 bg-indigo-600 text-white' : 'border-slate-300 bg-white text-slate-600 hover:bg-slate-50'}`}>
-            {n} ngày
-          </button>
-        ))}
-      </div>
-
-      {bc?.khoi && (
-        <div className="mb-3 rounded-xl border border-slate-200 bg-white px-3 py-2 text-[13px] text-slate-700">
-          Khối bạn quản lý: <b>{bc.khoi.join(' · ')}</b> — {bc.so_lop} lớp.
-          <span className="ml-1 text-slate-400">{bc.ghi_chu_bo}</span>
+      <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-2">
+        <div className="inline-flex rounded-xl border border-slate-200 bg-white p-0.5 text-[13px] font-semibold shadow-sm">
+          {MUC.map(([k, t]) => (
+            <button key={k} onClick={() => setMuc(k)} className={`rounded-lg px-4 py-1.5 ${muc === k ? 'bg-indigo-600 text-white' : 'text-slate-600 hover:bg-slate-50'}`}>{t}</button>
+          ))}
         </div>
-      )}
-      {loi && <div className="mb-3 rounded-xl border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-700">Lỗi: {loi}</div>}
-      {!bc && dangTai && <div className="rounded-2xl border border-slate-200 bg-white p-4 text-[13px] text-slate-400">Đang tải báo cáo…</div>}
-      {bc && <BanBaoCao bc={bc} mo={dangTai} />}
+        {muc === 'baocao' && (
+          <div className="flex items-center gap-1.5">
+            <span className="text-[12.5px] text-slate-500">Nhìn lại</span>
+            {KHOANG.map((n) => (
+              <button key={n} onClick={() => setSoNgay(n)}
+                className={`rounded-full border px-3 py-1 text-[12.5px] font-medium ${
+                  soNgay === n ? 'border-indigo-500 bg-indigo-600 text-white' : 'border-slate-300 bg-white text-slate-600 hover:bg-slate-50'}`}>
+                {n} ngày
+              </button>
+            ))}
+          </div>
+        )}
+        {muc === 'baocao' && bc?.khoi && (
+          <span className="ml-auto text-[12.5px] text-slate-600" title={bc.ghi_chu_bo ?? undefined}>
+            Khối quản lý: <b>{bc.khoi.join(' · ')}</b> · {bc.so_lop} lớp <span className="cursor-help text-slate-400">ⓘ</span>
+          </span>
+        )}
+      </div>
+      {muc === 'baocao' ? <>
+          {loi && <div className="mb-3 rounded-xl border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-700">Lỗi: {loi}</div>}
+          {!bc && dangTai && <div className="rounded-2xl border border-slate-200 bg-white p-4 text-[13px] text-slate-400">Đang tải báo cáo…</div>}
+          {bc && <BanBaoCao bc={bc} mo={dangTai} />}
+        </>
+        : muc === 'dangyeu' ? <WidgetDangYeu onTaoCaNhe={() => { moBoTroTab('nhe'); setStaffLeaf('botro') }} />
+        : <HocTapTuan />}
     </div>
   )
 }

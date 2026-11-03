@@ -618,7 +618,7 @@ export default function HomeScreen() {
   }
   const oVitri = (i: number): ReactNode => (hienBox(lon[i]) ? keoBox(lon[i], thanLon(lon[i])) : null)
   const coTrai = hienBox(lon[0]), coCanh = hienBox(lon[1]), coRong = hienBox(lon[2]), coNuaTrai = hienBox(lon[3])
-  // Thùy 29/10: 2 bảng dạng yếu (Đầu tuần · Hiện tại) ở GÓC TRÁI DƯỚI = cột trái của "Tất cả", ngay dưới box nửa trái.
+  // Thùy 29/10: khối dạng yếu (03/11: 2 box số Dạng yếu · Học sinh yếu) ở GÓC TRÁI DƯỚI = cột trái của "Tất cả", ngay dưới box nửa trái.
   // Bố cục chảy (flow) ⇒ các khối nối nhau, không đè. Tự ẩn nếu không quản ô môn × khối nào.
   const coTraiDuoi = coNuaTrai || coDangYeu
   const dangYeu = coDangYeu ? <WidgetDangYeu className={coNuaTrai ? 'mt-4' : ''} onTaoCaNhe={() => { moBoTroTab('nhe'); dh.di('botro') }} /> : null
@@ -713,7 +713,7 @@ function DangYeuNoi({ taoCaNhe }: { taoCaNhe: () => void }) {
   return (
     <div className="absolute right-4 top-4 z-[200] flex flex-col items-end">
       <button onClick={() => setMo((v) => !v)} className="rounded-full bg-rose-500 px-4 py-2 text-[13px] font-bold text-white shadow-lg hover:bg-rose-600">📉 Dạng yếu {mo ? '▴' : '▾'}</button>
-      {mo && <div className="mt-2 max-h-[75vh] w-[min(760px,90vw)] overflow-auto rounded-2xl bg-white p-4 text-slate-800 shadow-2xl"><WidgetDangYeu onTaoCaNhe={taoCaNhe} /></div>}
+      {mo && <div className="mt-2 max-h-[75vh] w-fit max-w-[90vw] overflow-auto rounded-2xl bg-white p-4 text-slate-800 shadow-2xl"><WidgetDangYeu onTaoCaNhe={taoCaNhe} /></div>}
     </div>
   )
 }

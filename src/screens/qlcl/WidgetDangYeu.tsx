@@ -1,5 +1,5 @@
 // WIDGET DẠNG YẾU — màn chính ERP (Việc của tôi), Thùy 29/10, spec-truong-khoi.md §8.4.
-// Mỗi ô (môn × khối) trong phạm vi của tôi: HS có dạng yếu · số dạng yếu. 2 số: đầu tuần (đóng băng lúc Chốt tuần — chờ P3) → hiện tại.
+// Mỗi ô (môn × khối) trong phạm vi của tôi: số dạng yếu · HS có dạng yếu. 2 số: đầu tuần (đóng băng lúc Chốt tuần — chờ P3) | hiện tại.
 // Bấm ô ⇒ bảng chi tiết em yếu + trạng thái xử lý · bấm em ⇒ popup (dạng yếu · ET · BTVN như màn Duyệt bổ trợ).
 // Số tính ở DB, lưu sẵn; widget gọi làm mới lười theo lô cho tới khi hết em cũ (fn_qlcl_lam_moi). Không tự ẩn số cũ khi đang làm mới.
 import { useEffect, useState } from 'react'
@@ -37,9 +37,8 @@ export function useCoDangYeu(): boolean {
   return !!rows && rows.length > 0
 }
 
-// kieu 'bang' (mặc định — Trang chính, Nhân sự, Báo cáo): 2 bảng ô môn × khối.
-// kieu 'so' (Phòng trưởng khối, Thùy 03/11): 2 box ngắn Dạng yếu · Học sinh yếu, mỗi box 2 số đầu tuần → hiện tại — mục tiêu là làm nổi SỐ.
-export default function WidgetDangYeu({ onTaoCaNhe, className, kieu = 'bang' }: { onTaoCaNhe: () => void; className?: string; kieu?: 'bang' | 'so' }) {
+// Thùy 03/11 (thay 2 bảng 29/10): 2 box ngắn Dạng yếu · Học sinh yếu, mỗi box 2 số đầu tuần | hiện tại — mục tiêu là làm nổi SỐ.
+export default function WidgetDangYeu({ onTaoCaNhe, className }: { onTaoCaNhe: () => void; className?: string }) {
   const [rows, setRows] = useState<OTongQuan[] | null>(NHO.rows)
   const [mo, setMo] = useState<OTongQuan | null>(null)
   useEffect(() => {
@@ -50,63 +49,15 @@ export default function WidgetDangYeu({ onTaoCaNhe, className, kieu = 'bang' }: 
   if (!rows || rows.length === 0) return null
 
   const dangCapNhat = rows.reduce((s, o) => s + o.so_can_tinh, 0) // đếm item đang render (badge)
-  if (kieu === 'so') return (
+  return (
     <section className={className ?? 'mb-4'}>
       <HaiBoxSo rows={rows} dangCapNhat={dangCapNhat} onMo={setMo} />
       {mo && <BangChiTiet o={mo} onDong={() => setMo(null)} onTaoCaNhe={onTaoCaNhe} />}
     </section>
   )
-  // Thùy 29/10: 2 BẢNG BOX — Đầu tuần (đóng băng lúc Chốt tuần) · Hiện tại (realtime). Mỗi bảng 1 dòng / ô môn × khối; bấm dòng ⇒ chi tiết.
-  return (
-    <section className={className ?? 'mb-4'}>
-      <div className="grid gap-3 [grid-template-columns:repeat(auto-fit,minmax(250px,1fr))]">
-        <BangBox tieuDe="Dạng yếu · Đầu tuần" phu="đóng băng lúc Chốt tuần (thứ 2)" mau="bg-slate-600" rows={rows} onMo={setMo}
-          so={(o) => (o.dau_tuan_hs_yeu == null ? null : { hs: o.dau_tuan_hs_yeu, dang: o.dau_tuan_dang_yeu ?? 0 })} />
-        <BangBox tieuDe="Dạng yếu · Hiện tại" phu={dangCapNhat > 0 ? `⟳ đang cập nhật ${dangCapNhat} em…` : 'cập nhật liên tục'} mau="bg-rose-500" rows={rows} onMo={setMo}
-          so={(o) => ({ hs: o.so_hs_yeu, dang: o.so_dang_yeu })} />
-      </div>
-      {mo && <BangChiTiet o={mo} onDong={() => setMo(null)} onTaoCaNhe={onTaoCaNhe} />}
-    </section>
-  )
 }
 
-// Card kiểu 1 (CLAUDE.md §6): header màu + thân trắng. Thân = bảng ô môn × khối: HS yếu / tổng · số dạng yếu.
-function BangBox({ tieuDe, phu, mau, rows, so, onMo }: {
-  tieuDe: string; phu: string; mau: string; rows: OTongQuan[]
-  so: (o: OTongQuan) => { hs: number; dang: number } | null; onMo: (o: OTongQuan) => void
-}) {
-  return (
-    <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-      <div className={`px-3.5 py-2 text-white ${mau}`}>
-        <div className="text-[13.5px] font-bold">{tieuDe}</div>
-        <div className="text-[11px] opacity-90">{phu}</div>
-      </div>
-      <div className="max-h-[260px] overflow-auto">
-        <table className="w-full text-[12.5px]">
-          <thead><tr className="text-left text-[10.5px] uppercase tracking-wider text-slate-400">
-            <th className="px-3.5 py-1">Ô</th><th className="py-1">HS yếu</th><th className="py-1 pr-3.5 text-right">Dạng</th>
-          </tr></thead>
-          <tbody>
-            {rows.map((o) => {
-              const x = so(o)
-              return (
-                <tr key={khoaO(o)} onClick={() => onMo(o)} className="cursor-pointer border-t border-slate-100 hover:bg-slate-50">
-                  <td className="px-3.5 py-1.5 font-semibold text-slate-800">{o.mon === 'Toán' ? '' : `${o.mon} `}Khối {o.khoi}</td>
-                  {x == null ? <td colSpan={2} className="pr-3.5 text-slate-400">— chưa chốt</td> : <>
-                    <td><b className="text-slate-800">{x.hs}</b><span className="text-slate-400"> / {o.so_hs}</span></td>
-                    <td className="pr-3.5 text-right font-bold text-rose-600">{x.dang}</td>
-                  </>}
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  )
-}
-
-// Ô đang xem ở kiểu 'so' — sống tới F5 (rời phòng quay lại đúng ô cũ).
+// Ô đang xem — sống tới F5 (rời màn quay lại đúng ô cũ).
 const NHO_O: { khoa: string | null } = { khoa: null }
 
 // Không CỘNG số giữa các ô (cùng 1 em có thể yếu ở 2 môn ⇒ cộng là đếm trùng; và số nghiệp vụ chỉ tính ở DB) —

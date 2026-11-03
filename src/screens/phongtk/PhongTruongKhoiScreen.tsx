@@ -26,14 +26,12 @@ export default function PhongTruongKhoiScreen({ onTaoCaNhe }: { onTaoCaNhe: () =
   const giua = 'mx-auto w-full max-w-[1180px] px-4 md:px-10'
   return (
     <div className="px-1">
-      <div className={`mb-3 flex flex-wrap items-end gap-2 ${giua}`}>
-        <div className="mr-2">
-          <div className="text-[18px] font-bold text-slate-800">Phòng làm việc trưởng khối</div>
-          <div className="text-[12px] text-slate-500">{TABS.find((t) => t.id === tab)?.goi_y}</div>
-        </div>
+      {/* Thùy 03/11: header 1 hàng (tên phòng + tab) — gợi ý tab chuyển vào tooltip, không chiếm thêm dòng. */}
+      <div className={`mb-3 flex flex-wrap items-center gap-2 ${giua}`}>
+        <div className="mr-2 text-[17px] font-bold text-slate-800">Phòng làm việc trưởng khối</div>
         <div className="flex flex-wrap gap-1.5">
           {TABS.map((t) => (
-            <button key={t.id} onClick={() => setTab(t.id)}
+            <button key={t.id} onClick={() => setTab(t.id)} title={t.goi_y}
               className={`rounded-full px-3.5 py-1.5 text-[13px] font-medium transition ${tab === t.id ? 'bg-slate-800 text-white' : 'bg-white text-slate-600 shadow-sm hover:bg-slate-50'}`}>
               {t.ten}
             </button>
@@ -45,7 +43,7 @@ export default function PhongTruongKhoiScreen({ onTaoCaNhe }: { onTaoCaNhe: () =
       {tab === 'ban_do' && <BanDoMoiScreen />}
       {tab === 'quan_tri' && (
         <div className={`space-y-3 ${giua}`}>
-          <WidgetDangYeu kieu="so" onTaoCaNhe={onTaoCaNhe} />
+          <WidgetDangYeu onTaoCaNhe={onTaoCaNhe} />
           <BaoCaoCaNhan />
         </div>
       )}
