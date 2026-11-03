@@ -246,7 +246,9 @@ export type TongQuanHS = {
   // hinhCoBan/hinhNangCao (Thùy 29/09): dạng nhánh Hình học (Bài) + Hình giải tích, CÙNG công thức compPct như
   // Đại. Bài chưa gán độ khó tính Cơ bản (NhanhMon.mucDoThieu). KHÔNG còn đọc Hình Luyện (mô hình).
   hoanThanh: { toanBo: HoanThanhCard; daiCoBan: HoanThanhCard; daiNangCao: HoanThanhCard; hinhCoBan: HoanThanhCard; hinhNangCao: HoanThanhCard }
+  // *Tong (03/11): % trên MỌI lượt đo của môn, tính ở DB — kể cả dạng bài bản đồ mới chưa chốt độ khó (không vào CB/NC).
   hoatDong: {
+    etTong: ActPct; btvnTong: ActPct; mtTong: ActPct
     etCoBan: ActPct; etNangCao: ActPct
     btvnCoBan: ActPct; btvnNangCao: ActPct
     mtCoBan: ActPct; mtNangCao: ActPct

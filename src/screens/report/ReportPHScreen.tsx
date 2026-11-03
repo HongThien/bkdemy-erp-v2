@@ -250,12 +250,6 @@ function BuoiRow({ r }: { r: ReportBuoiRow }) {
 }
 
 type Bucket = { pct: number | null; n: number }
-function tongPct(a: Bucket, b: Bucket): number | null {
-  const parts = [a, b].filter((x) => x.pct != null && x.n > 0)
-  if (!parts.length) return null
-  const N = parts.reduce((s, x) => s + x.n, 0)
-  return Math.round(parts.reduce((s, x) => s + (x.pct as number) * x.n, 0) / N)
-}
 function NumCol({ label, pct, big }: { label: string; pct: number | null; big?: boolean }) {
   return (
     <div className="flex-1 px-3 text-center first:pl-0">
@@ -306,12 +300,12 @@ function DiemRow({ chinh, thiLai, truong }: { chinh: MTDiem; thiLai?: MTDiem | n
     </div>
   )
 }
-function ActCard({ icon, ten, cb, nc, warn, diem }: { icon: string; ten: string; cb: Bucket; nc: Bucket; warn?: string; diem?: { chinh: MTDiem; thiLai?: MTDiem | null; truong?: number | null } }) {
+function ActCard({ icon, ten, tong, cb, nc, warn, diem }: { icon: string; ten: string; tong: Bucket; cb: Bucket; nc: Bucket; warn?: string; diem?: { chinh: MTDiem; thiLai?: MTDiem | null; truong?: number | null } }) {
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
       <div className="mb-3 text-[14px] font-bold text-slate-700">{icon} {ten}</div>
       <div className="flex divide-x divide-slate-100">
-        <NumCol label="Tổng" pct={tongPct(cb, nc)} big />
+        <NumCol label="Tổng" pct={tong.pct} big />
         <NumCol label="Cơ bản" pct={cb.pct} />
         <NumCol label="Nâng cao" pct={nc.pct} />
       </div>
@@ -334,9 +328,9 @@ function TongQuanCards({ tq, missCount, ks }: { tq: TongQuanHS; missCount: numbe
         </div>
         <div className="mt-1.5 text-[11px] text-slate-400">Đã tính cả bài tập về nhà và bổ trợ</div>
       </div>
-      <ActCard icon="📝" ten="Test cuối giờ (ET)" cb={a.etCoBan} nc={a.etNangCao} />
-      <ActCard icon="🏠" ten="Bài tập về nhà" cb={a.btvnCoBan} nc={a.btvnNangCao} warn={missCount > 0 ? `Chưa hoàn thành BTVN ${missCount} lần trong tháng này` : undefined} />
-      <ActCard icon="📅" ten="Test tháng (MT)" cb={a.mtCoBan} nc={a.mtNangCao}
+      <ActCard icon="📝" ten="Test cuối giờ (ET)" tong={a.etTong} cb={a.etCoBan} nc={a.etNangCao} />
+      <ActCard icon="🏠" ten="Bài tập về nhà" tong={a.btvnTong} cb={a.btvnCoBan} nc={a.btvnNangCao} warn={missCount > 0 ? `Chưa hoàn thành BTVN ${missCount} lần trong tháng này` : undefined} />
+      <ActCard icon="📅" ten="Test tháng (MT)" tong={a.mtTong} cb={a.mtCoBan} nc={a.mtNangCao}
         diem={{
           chinh: { tong: tq.diem.mt.tb, pctCB: tq.diem.mt.pctCoBan, pctNC: tq.diem.mt.pctNangCao },
           thiLai: tl.n || tl.nCoBan || tl.nNangCao ? { tong: tl.tb, pctCB: tl.pctCoBan, pctNC: tl.pctNangCao } : null,

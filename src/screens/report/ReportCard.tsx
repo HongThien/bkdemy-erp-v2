@@ -16,12 +16,8 @@ import { uploadReportImage } from '../../lib/ph-login'
 const SKILL_MUC = ['Cần cố gắng', 'Trung bình', 'Khá', 'Tốt', 'Xuất sắc'] as const
 
 // Bucket = { pct, n } — copy đồng bộ với ReportPHScreen (số HS đúng/số HS chấm) để render card.
+// Cột "Tổng" lấy thẳng *Tong từ fn_tong_quan_hs (03/11) — không ghép CB+NC ở client (dạng chưa có độ khó sẽ rơi mất).
 type Bucket = { pct: number | null; n: number }
-export function tongPct(a: Bucket, b: Bucket): number | null {
-  const nT = a.n + b.n; if (!nT) return null
-  const s = (a.pct != null ? a.pct * a.n : 0) + (b.pct != null ? b.pct * b.n : 0)
-  return Math.round(s / nT)
-}
 
 
 // ── ẢNH GỬI PHỤ HUYNH — thẻ inline-hex (né oklch Tailwind v4), layout kiểu tab Kết quả app PH ──
@@ -84,10 +80,10 @@ export const ReportCardView = forwardRef<HTMLDivElement, ReportCardProps>(functi
     </div>
   )
   const cell = (lb: string, pct: number | null, sz: number) => <div><span style={{ fontSize: 7.5, color: '#94a3b8', display: 'block' }}>{lb}</span><span style={{ fontSize: sz, fontWeight: 900, color: hexPct(pct) }}>{s10(pct)}</span></div>
-  const assessRow = (ten: string, hx: string, cb: Bucket, nc: Bucket, first?: boolean) => (
+  const assessRow = (ten: string, hx: string, tong: Bucket, cb: Bucket, nc: Bucket, first?: boolean) => (
     <div style={{ display: 'grid', gridTemplateColumns: '1.25fr .6fr .6fr .6fr', gap: 6, alignItems: 'center', minHeight: 46, borderTop: first ? 'none' : '1px dashed #e9edf4' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 10.5, fontWeight: 800, color: '#15233b' }}><span style={{ width: 9, height: 9, borderRadius: 5, background: hx, boxShadow: `0 0 0 4px ${hx}22` }} />{ten}</div>
-      {cell('Tổng', tongPct(cb, nc), 16)}{cell('Cơ bản', cb.pct, 15)}{cell('Nâng cao', nc.pct, 15)}
+      {cell('Tổng', tong.pct, 16)}{cell('Cơ bản', cb.pct, 15)}{cell('Nâng cao', nc.pct, 15)}
     </div>
   )
   const hexDiem = (v: number | null) => v == null ? '#cbd5e1' : v >= 8 ? '#059669' : v >= 5 ? '#d97706' : '#e11d48'
@@ -175,8 +171,8 @@ export const ReportCardView = forwardRef<HTMLDivElement, ReportCardProps>(functi
             <span style={{ width: 31, height: 31, borderRadius: 11, display: 'grid', placeItems: 'center', background: '#eef0ff', fontSize: 14 }}>📊</span>
             <div><div style={{ fontSize: 13, fontWeight: 800, color: '#15233b' }}>Kết quả đánh giá trong tháng</div><div style={{ fontSize: 9, color: '#70809b' }}>Thang điểm 10</div></div>
           </div>
-          {assessRow('Test cuối giờ', '#315fdd', a.etCoBan, a.etNangCao, true)}
-          {assessRow('Bài tập về nhà', '#12a875', a.btvnCoBan, a.btvnNangCao)}
+          {assessRow('Test cuối giờ', '#315fdd', a.etTong, a.etCoBan, a.etNangCao, true)}
+          {assessRow('Bài tập về nhà', '#12a875', a.btvnTong, a.btvnCoBan, a.btvnNangCao)}
           {assessRowDiem('Test tháng', '#e29a23', tq.diem.mt.tb, tq.diem.mt.pctCoBan, tq.diem.mt.pctNangCao,
             (tq.diem.mt.thiLai.n || tq.diem.mt.thiLai.nCoBan || tq.diem.mt.thiLai.nNangCao)
               ? { tong: tq.diem.mt.thiLai.tb, pctCB: tq.diem.mt.thiLai.pctCoBan, pctNC: tq.diem.mt.thiLai.pctNangCao }
