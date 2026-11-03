@@ -3,13 +3,11 @@
 ##TC Mẫu số liệu ghép nhóm và khoảng biến thiên
 - Mẫu số liệu ghép nhóm gồm các nhóm $[u_1;u_2),[u_2;u_3),\dots,[u_k;u_{k+1})$ cùng **tần số** $n_1,n_2,\dots,n_k$; cỡ mẫu $n=n_1+n_2+\dots+n_k$. Nhóm cuối có thể viết dạng đoạn $[u_k;u_{k+1}]$ để chứa cả giá trị lớn nhất; cách tính không đổi.
 - Đề có thể cho bằng **biểu đồ tần số dạng cột**: mỗi cột là một nhóm, chiều cao cột là tần số của nhóm đó.
-- Số liệu rời rạc ghép thành các nhóm như $40\text{–}44$; $45\text{–}49$; … (hai nhóm liền nhau cách nhau $1$ đơn vị) thì phải **hiệu chỉnh** thành $[39{,}5;44{,}5)$; $[44{,}5;49{,}5)$; … (lùi đầu mút trái, tăng đầu mút phải $0{,}5$ đơn vị) rồi mới tính các số đặc trưng.
 - **Khoảng biến thiên** $R$ của mẫu số liệu ghép nhóm là hiệu giữa đầu mút phải của nhóm cuối cùng chứa dữ liệu và đầu mút trái của nhóm đầu tiên chứa dữ liệu.
 - $R$ của mẫu ghép nhóm xấp xỉ khoảng biến thiên của mẫu số liệu gốc và luôn lớn hơn hoặc bằng nó; $R$ càng lớn thì mẫu càng phân tán, nhưng $R$ chỉ dựa vào hai đầu nên dễ bị giá trị ngoại lệ làm tăng vọt.
 
 ##PP Đọc một bảng (biểu đồ) ghép nhóm
 Xác định đại lượng, đơn vị, các nhóm (đầu mút trái, đầu mút phải, độ dài nhóm) và tần số tương ứng.
-Nếu các nhóm là số nguyên rời rạc kiểu $40\text{–}44$; $45\text{–}49$ thì hiệu chỉnh đầu mút trước.
 Cộng các tần số để có cỡ mẫu $n$, đối chiếu với số liệu đề cho (nếu có).
 Đánh dấu các nhóm có tần số $0$ ở hai đầu bảng để biết phần bảng thật sự chứa dữ liệu.
 
@@ -549,6 +547,7 @@ Vậy số trung bình khoảng $4{,}67$ điểm và nhóm có tần số lớn 
 
 ## GHI CHÚ CHO CEO
 - Mọi ví dụ đã tính lại bằng node hai lần độc lập (trạm soạn và trạm soát), khớp đáp số.
-- Trạm soát đã đối chiếu sách NBV (12-14), Từ Tâm (C3-B1, C3-B2), PNL (Chương 3): công thức tứ phân vị, phương sai, giá trị đại diện, khoảng biến thiên khớp. Đã bổ sung vào lý thuyết các ý sách có: hiệu chỉnh nhóm số liệu rời rạc, biểu đồ cột, R ghép nhóm ≥ R gốc, giá trị ngoại lệ (Q1 − 1,5ΔQ; Q3 + 1,5ΔQ), độ rủi ro đầu tư đo bằng độ lệch chuẩn.
-- Ca biên "tích luỹ đúng bằng kn/4": giá trị Q_k không đổi dù tính theo nhóm nào, nhưng câu hỏi "nhóm chứa Q_k" khi đó phụ thuộc quy ước sách (sách theo cách x_(vị trí) có thể chọn nhóm kế tiếp). Ví dụ đã đổi số liệu để tránh ca này.
-- C2.3.1 giữ trong SDT theo đề xuất H1 (CEO chưa chốt).
+- Trạm soát đã đối chiếu sách NBV (12-14), Từ Tâm (C3-B1, C3-B2), PNL (Chương 3): công thức tứ phân vị, phương sai, giá trị đại diện, khoảng biến thiên khớp. Đã bổ sung vào lý thuyết các ý sách có: biểu đồ cột, R ghép nhóm ≥ R gốc, giá trị ngoại lệ (Q1 − 1,5ΔQ; Q3 + 1,5ΔQ), độ rủi ro đầu tư đo bằng độ lệch chuẩn.
+- Ca biên "tích luỹ đúng bằng kn/4": theo SGK — nhóm chứa Q_k là nhóm ĐẦU TIÊN có tích luỹ ≥ kn/4 (CEO chốt 03/11). Ví dụ đã đổi số liệu để tránh ca này.
+- C2.3.1 giữ trong SDT (CEO chốt SDT-H1 03/11).
+- Bỏ phần "hiệu chỉnh nhóm số liệu rời rạc" (CEO 03/11: không đề thi nào hỏi thì không đưa vào).
