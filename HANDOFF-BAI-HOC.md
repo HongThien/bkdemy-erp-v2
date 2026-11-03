@@ -8,6 +8,7 @@
 
 - dòng 36 — ⭐⭐⭐ LUẬT DUYỆT (Thùy 14/10, "nói bao lần rồi") — MỌI KHỐI, MỌI LÔ: muốn Thùy duy�
 - Bài học 03/11 — K9 đề cương / đề thi HK1 → Hình–Luyện + tiếp tuyến (ngay dưới mục lục ②)
+- Bài học 03/11 — Nông trại · tăng tốc bằng Toán · push (ngay dưới mục lục ②)
 - Bài học 03/11 — Phòng làm việc · Báo cáo tuần · thử nghiệm trên DB thật (ngay dưới mục lục ②)
 - Bài học 23/10 — Dashboard học tập · mastery · push (ngay dưới mục lục ②)
 - Bài học 12→23/10 — Nông trại + app HS (cuối file)
@@ -40,6 +41,13 @@
 ---
 
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
+
+## Bài học 03/11 — Nông trại · tăng tốc bằng Toán · push
+- **KHÔNG chạy truy vấn nặng trên DB thật 17–22h VN** (giờ HS chơi). 03/11 đo tăng tốc (>40s/truy vấn) đúng giờ cao điểm ⇒ cùng lúc HS báo nông trại "về cấp 1", Thùy phải bật bảo trì. Đo diện rộng để sáng/khuya.
+- **Game nhúng: lỗi kết nối phải BÁO, không lặng lẽ dùng bản lưu máy.** Fallback "hết 4s thì dùng localStorage" biến DB chậm thành "mất tiến trình" trong mắt HS (dữ liệu server vẫn nguyên). Nhúng ⇒ chỉ tin server; hỏng thì màn "Chưa kết nối được" + Thử lại.
+- **Chọn câu từ kho: lấy ID trước, lấy nội dung sau.** `_hs_dang_da_hoc` + kéo nội dung cả kho vượt trần 8s PostgREST; tách 2 bước (lọc id theo dạng em đã làm → `_dtv_kho_cau_tim` cho vài ứng viên) xuống ~3s.
+- **Test thời gian chờ trong 1 transaction: `now()` đứng yên** ⇒ cột mốc dùng `clock_timestamp()`.
+- **Push: nối commit + push bằng `&&` cùng lệnh với bước giải xung đột.** 03/11 script giải xung đột DEVLOG fail nhưng commit/push chạy dòng riêng ⇒ lên origin với dấu `<<<<<<<` (vá ở `ffd4ee0c`). `sed -i` trên Git Bash xoá CR ⇒ sửa file CRLF bằng Python mức byte.
 
 ## Bài học 03/11 — K9 đề cương / đề thi HK1 → Hình–Luyện + tiếp tuyến (đừng đạp lại)
 
