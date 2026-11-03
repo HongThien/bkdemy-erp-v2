@@ -2,8 +2,8 @@
 // Kỳ = T2 → CN tuần trước. Nháp: số tính trực tiếp ở DB. Bấm NỘP: DB tính + ghi SNAP cùng transaction — từ đó chỉ đọc bản đã snap.
 // Client KHÔNG tính số nào: mọi tỉ lệ / tổng / trend đến từ fn_bctk_so · fn_bctk_trend. Màn chỉ hiển thị + nhận phần chữ / phần cá nhân.
 // Laptop thấp ⇒ dàn NGANG: hàng 5 ô chỉ số · (bảng từng lớp | HS còn yếu) · (cá nhân | tự viết).
-import { useEffect, useState } from 'react'
-import { layBaoCaoTuan, luuNhapBaoCao, nopBaoCao, type BaoCaoTuan, type DongCaNhan, type TuViet } from '../../lib/baoCaoTuan'
+import { useEffect, useState, type Dispatch, type SetStateAction } from 'react'
+import { layBaoCaoTuan, luuNhapBaoCao, nopBaoCao, type BaoCaoTuan, type DongCaNhan, type SoBaoCao, type TuViet } from '../../lib/baoCaoTuan'
 import { congNgay, ddmmVN } from '../../lib/tuan'
 
 const NHO: { tuan: string | null } = { tuan: null }   // tuần đang xem — sống tới F5
@@ -59,7 +59,6 @@ export default function BaoCaoTuanTK() {
   if (loi && !bc) return <p className="text-[13px] text-rose-600">Lỗi: {loi}</p>
   if (!bc) return <p className="text-[13px] text-slate-400">Đang tính báo cáo…</p>
   if (!bc.co_bao_cao) return <p className="text-[13px] text-slate-500">Bạn chưa được phân công làm trưởng khối ô nào, nên không có báo cáo tuần.</p>
-  const t = bc.so.tong
   const ten = (o: { mon: string; khoi: string }) => `${o.mon === 'Toán' ? '' : `${o.mon} `}${o.khoi}`
   return (
     <div className="space-y-3">
@@ -92,21 +91,36 @@ export default function BaoCaoTuanTK() {
         {!bc.so.co_anh_dau && ' · Chưa có ảnh dạng yếu đầu tuần (hệ chụp tự động 00:00 thứ 2 — bắt đầu từ tuần này) nên chưa so được dạng yếu / HS yếu.'}
       </p>
 
+      <NoiDungBaoCao duLieu={bc.so} caNhan={caNhan} setCaNhan={setCaNhan} tuViet={tuViet} setTuViet={setTuViet} sua={sua} />
+    </div>
+  )
+}
+
+// Phần NỘI DUNG một báo cáo khối (5 ô chỉ số · từng lớp · HS còn yếu · cá nhân · tự viết) — dùng chung cho trưởng khối soạn (sua) và
+// trưởng bộ môn xem / duyệt (chỉ đọc). Chỉ hiển thị số DB trả về.
+export function NoiDungBaoCao({ duLieu, caNhan, setCaNhan, tuViet, setTuViet, sua, anChu }: {
+  duLieu: SoBaoCao; caNhan: DongCaNhan[]; setCaNhan: Dispatch<SetStateAction<DongCaNhan[]>>; tuViet: TuViet; setTuViet: Dispatch<SetStateAction<TuViet>>; sua: boolean
+  anChu?: boolean   // báo cáo môn: chỉ phần số, không có cá nhân / tự viết của một khối
+}) {
+  const t = duLieu.tong
+  const uuTien = [0, 1, 2].map((i) => tuViet.uu_tien?.[i] ?? '')
+  return (
+    <>
       {/* HÀNG 1 — 5 nhóm chỉ số toàn khối + trend 4 tuần */}
       <div className="grid gap-2.5 [grid-template-columns:repeat(auto-fit,minmax(200px,1fr))]">
         <O ten="Chấm ET" chinh={so(t.et.ti_le_dung_han, '%')} nhanChinh="đúng hạn" phu={`Điểm TB ${so(t.et.diem_tb)} · ${t.et.dung_han}/${t.et.so_viec} buổi`}
-          trend={bc.so.trend.map((w) => w.tong.et.ti_le_dung_han)} mau="text-sky-600" />
+          trend={duLieu.trend.map((w) => w.tong.et.ti_le_dung_han)} mau="text-sky-600" />
         <O ten="BTVN" chinh={so(t.btvn.ti_le_nop, '%')} nhanChinh="nộp" phu={`Điểm TB ${so(t.btvn.diem_tb)} · đúng hạn ${so(t.btvn.ti_le_dung_han, '%')}`}
-          trend={bc.so.trend.map((w) => w.tong.btvn.ti_le_nop)} mau="text-teal-600" />
+          trend={duLieu.trend.map((w) => w.tong.btvn.ti_le_nop)} mau="text-teal-600" />
         <O ten="Dạng yếu" chinh={`${so(t.dang_yeu.dau)} → ${so(t.dang_yeu.cuoi)}`} nhanChinh="đầu → cuối"
           phu={`Giảm ${so(t.dang_yeu.giam)} (${so(t.dang_yeu.ti_le_giam, '%')})${t.dong_chay ? ` · Vào ${t.dong_chay.vao} · Ra ${t.dong_chay.ra_bang_chung} có bằng chứng · ${t.dong_chay.ra_cua_so} rớt cửa sổ` : ''} · Độ phủ đo ${so(t.do_phu.ti_le, '%')}`}
-          trend={bc.so.trend.map((w) => w.tong.dang_yeu.cuoi)} mau="text-rose-600" />
+          trend={duLieu.trend.map((w) => w.tong.dang_yeu.cuoi)} mau="text-rose-600" />
         <O ten="Học sinh yếu" chinh={`${so(t.hs_yeu.dau)} → ${so(t.hs_yeu.cuoi)}`} nhanChinh={`/ ${t.hs_yeu.si_so} em`}
           phu={`Giảm ${so(t.hs_yeu.giam)} (${so(t.hs_yeu.ti_le_giam, '%')})`}
-          trend={bc.so.trend.map((w) => w.tong.hs_yeu.cuoi)} mau="text-violet-600" />
+          trend={duLieu.trend.map((w) => w.tong.hs_yeu.cuoi)} mau="text-violet-600" />
         <O ten="Bổ trợ" chinh={`${t.bo_tro.ca_yeu} + ${t.bo_tro.ca_nhe}`} nhanChinh="ca Yếu + Nhẹ"
           phu={`${t.bo_tro.luot_hs} lượt em · độ phủ ${so(t.bo_tro.do_phu, '%')} · hết yếu sau ca ${so(t.bo_tro.het_yeu_sau_ca)}`}
-          trend={bc.so.trend.map((w) => w.tong.bo_tro.ca_yeu + w.tong.bo_tro.ca_nhe)} mau="text-indigo-600" />
+          trend={duLieu.trend.map((w) => w.tong.bo_tro.ca_yeu + w.tong.bo_tro.ca_nhe)} mau="text-indigo-600" />
       </div>
 
       {/* HÀNG 2 — từng lớp | HS còn yếu */}
@@ -116,7 +130,7 @@ export default function BaoCaoTuanTK() {
             <thead><tr className="text-left text-[10.5px] uppercase tracking-wider text-slate-400">
               <th className="py-1">Lớp</th><th>ET đúng hạn</th><th>ET TB</th><th>BTVN nộp</th><th>BTVN TB</th><th>Dạng yếu</th><th>HS yếu</th>
             </tr></thead>
-            <tbody>{bc.so.lop.map((l) => (
+            <tbody>{duLieu.lop.map((l) => (
               <tr key={l.lop_id} className="border-t border-slate-100">
                 <td className="py-1.5 font-semibold text-slate-800">{l.ten_lop}</td>
                 <td>{so(l.et.ti_le_dung_han, '%')} <span className="text-slate-400">({l.et.dung_han}/{l.et.so_viec})</span></td>
@@ -128,12 +142,12 @@ export default function BaoCaoTuanTK() {
               </tr>
             ))}</tbody>
           </table>
-          {bc.so.lop.length === 0 && <p className="py-2 text-[12.5px] text-slate-400">Không có lớp nào trong kỳ.</p>}
+          {duLieu.lop.length === 0 && <p className="py-2 text-[12.5px] text-slate-400">Không có lớp nào trong kỳ.</p>}
         </Khung>
-        <Khung ten={`HS còn yếu cuối tuần (${bc.so.hs_con_yeu.length})`}>
-          {!bc.so.co_anh_cuoi ? <p className="text-[12.5px] text-slate-400">Chưa có ảnh cuối tuần (chụp 00:00 thứ 2 tuần sau).</p>
-            : bc.so.hs_con_yeu.length === 0 ? <p className="text-[12.5px] text-slate-400">Không còn em nào yếu. 👏</p> : (
-            <ul className="max-h-[280px] space-y-1 overflow-auto pr-1">{bc.so.hs_con_yeu.map((h) => (
+        <Khung ten={`HS còn yếu cuối tuần (${duLieu.hs_con_yeu.length})`}>
+          {!duLieu.co_anh_cuoi ? <p className="text-[12.5px] text-slate-400">Chưa có ảnh cuối tuần (chụp 00:00 thứ 2 tuần sau).</p>
+            : duLieu.hs_con_yeu.length === 0 ? <p className="text-[12.5px] text-slate-400">Không còn em nào yếu. 👏</p> : (
+            <ul className="max-h-[280px] space-y-1 overflow-auto pr-1">{duLieu.hs_con_yeu.map((h) => (
               <li key={`${h.hoc_sinh_id}|${h.mon}`} className="flex items-center gap-2 rounded-lg bg-slate-50 px-2.5 py-1 text-[12.5px]">
                 <span className="min-w-0 flex-1 truncate" title={h.dang.join(' · ')}><b className="text-slate-800">{h.ho_ten}</b> <span className="text-slate-500">· {h.ten_lop} · {h.so_dang_yeu} dạng</span></span>
                 <span className={`shrink-0 rounded-full px-2 py-0.5 text-[11px] font-semibold ${XU_LY[h.xu_ly][1]}`}>{XU_LY[h.xu_ly][0]}</span>
@@ -144,7 +158,7 @@ export default function BaoCaoTuanTK() {
       </div>
 
       {/* HÀNG 3 — cá nhân | tự viết */}
-      <div className="grid gap-3 lg:grid-cols-[3fr_2fr]">
+      {!anChu && <div className="grid gap-3 lg:grid-cols-[3fr_2fr]">
         <Khung ten="Cá nhân — việc phát triển được giao">
           {caNhan.length === 0 ? <p className="text-[12.5px] text-slate-400">Không có việc phát triển nào trong kỳ.</p> : (
             <table className="w-full text-[12.5px]">
@@ -184,13 +198,13 @@ export default function BaoCaoTuanTK() {
           <textarea disabled={!sua} value={tuViet.can_ho_tro ?? ''} onChange={(e) => setTuViet((v) => ({ ...v, can_ho_tro: e.target.value }))} rows={2}
             className="w-full rounded-lg border border-slate-200 px-2 py-1 text-[13px] disabled:bg-slate-50" placeholder="Từ trưởng bộ môn / CEO…" />
         </Khung>
-      </div>
-    </div>
+      </div>}
+    </>
   )
 }
 
 // Ô chỉ số: số chính to + dòng phụ + 4 cột trend (chỉ vẽ dãy số DB trả về, không tính gì).
-function O({ ten, chinh, nhanChinh, phu, trend, mau }: { ten: string; chinh: string; nhanChinh: string; phu: string; trend: (number | null)[]; mau: string }) {
+export function O({ ten, chinh, nhanChinh, phu, trend, mau }: { ten: string; chinh: string; nhanChinh: string; phu: string; trend: (number | null)[]; mau: string }) {
   const lon = Math.max(1, ...trend.map((v) => v ?? 0))
   return (
     <div className="flex flex-col rounded-xl border border-slate-200 bg-white px-3 py-2">
@@ -211,7 +225,7 @@ function O({ ten, chinh, nhanChinh, phu, trend, mau }: { ten: string; chinh: str
   )
 }
 
-const Khung = ({ ten, children }: { ten: string; children: React.ReactNode }) => (
+export const Khung = ({ ten, children }: { ten: string; children: React.ReactNode }) => (
   <div className="rounded-xl border border-slate-200 bg-white px-3 py-2">
     <p className="mb-1.5 text-[11.5px] font-bold uppercase tracking-wide text-slate-500">{ten}</p>
     {children}

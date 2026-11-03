@@ -160,6 +160,14 @@ Bắt buộc có trước khi Nộp (nút Nộp chỉ disable khi **thiếu data
   Đo 03/11 (kỳ 26/10–01/11, chưa có ảnh dạng yếu): Hải K9 6 lớp 0,56 s · Hà Giang K6·7 11 lớp 0,8 s · Đạt K10–12 0,48 s · anh Ngọc báo cáo thay KHTN 7·8·9.
   Báo cáo có đủ số dạng yếu đầu → cuối đầu tiên: tuần 09/11–15/11 (cần cron chạy sáng 09/11 và 16/11).
 
+- **P3 — mig `202611031407`** (ĐÃ ÁP) + màn `BaoCaoTuanTBM` (đồ vật "📝 Báo cáo tuần" ở phòng Trưởng bộ môn — 3 tab Các khối · Báo cáo môn · Báo cáo của tôi):
+  `fn_bctk_hang` (người phải báo cáo + trạng thái + ô chưa có trưởng khối) · `fn_bctk_xem` · `fn_bctk_xu_ly` (duyệt / trả lại có lý do; không tự duyệt mình) ·
+  bảng `bao_cao_chuyen_mon_tuan` + log · `fn_bcmt_lay / _luu / _chot` (tổng môn = `fn_bctk_so` trên mọi ô của môn, snap lúc chốt; ghép khối đã duyệt +
+  báo cáo trưởng bộ môn tự nộp; ô thiếu ghi rõ) · `_bctk_de_xuat_tre` (gậy trễ vào `gay_de_xuat`, ref `bctk:<tuần>|<người>`, **chỉ từ kỳ 02/11–08/11** —
+  kỳ trước tính năng chưa có, không gậy oan). Đo 03/11 (phiên giả lập): hàng Trang 0,1 s · báo cáo môn Toán 41 lớp 1,1 s · anh Ngọc thấy KHTN 7·8·9 chưa có trưởng khối.
+  **Treo:** `gay_de_xuat.nguon` CHECK chỉ có `vanhanh · giaoviec` ⇒ đề xuất báo cáo trễ tạm dùng `vanhanh`; muốn giá trị riêng (`bao_cao`) phải alter bảng — chờ CEO gật (Luật xoá).
+- **P4 — Chiếu TV:** chưa làm.
+
 ## 5. Bàn sau (detail — không chặn logic)
 
 - Giờ hạn nộp cụ thể (đề xuất 17:00 T2) · mức gậy trễ.

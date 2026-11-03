@@ -20,6 +20,7 @@ import CanhPhong, { SO_GHE, mauHS, type DoVat, type NguoiCanh } from './CanhPhon
 import ChiTietCapDuoiPopup from './ChiTietCapDuoi'
 import { QuanTriTbm, ChatLuongTbm } from './PhanViecPgd'
 import BaoCaoTuanTK from './BaoCaoTuanTK'
+import BaoCaoTuanTBM from './BaoCaoTuanTBM'
 import { ChonGiaoDien } from '../HomeScreen'
 import { cheDoPhong, listCapDuoi, listCapDuoiCuaGhe, listGheTbm, monTbm, type CapDuoi, type GheTbm } from '../../lib/phongTk'
 import { useSkinErp } from '../../lib/erpSkin'
@@ -144,8 +145,8 @@ export default function PhongTruongKhoiScreen({ onTaoCaNhe }: { onTaoCaNhe: () =
               {mo === 'quan_tri' && (
                 <div className="rounded-2xl bg-white p-4 shadow-sm">{cheDo === 'tbm' ? <QuanTriTbm /> : <BaoCaoCaNhan chiMuc={['baocao']} />}</div>
               )}
-              {/* Báo cáo tuần (spec-bao-cao-tuan, P2): trưởng khối soạn/nộp báo cáo của mình; trưởng bộ môn báo cáo thay ô chưa có trưởng khối. Duyệt/ghép = P3. */}
-              {mo === 'bao_cao' && <div className="rounded-2xl bg-white p-4 shadow-sm"><BaoCaoTuanTK /></div>}
+              {/* Báo cáo tuần (spec-bao-cao-tuan, P2): trưởng khối soạn/nộp báo cáo của mình; trưởng bộ môn báo cáo thay ô chưa có trưởng khối. Phòng trưởng bộ môn: duyệt / trả lại · ghép Báo cáo Chuyên môn tuần (P3). */}
+              {mo === 'bao_cao' && <div className="rounded-2xl bg-white p-4 shadow-sm">{cheDo === 'tbm' ? <BaoCaoTuanTBM /> : <BaoCaoTuanTK />}</div>}
               {mo === 'chat_luong' && (
                 <div className="space-y-4 rounded-2xl bg-white p-4 shadow-sm">
                   {cheDo === 'tbm' ? <ChatLuongTbm onTaoCaNhe={onTaoCaNhe} /> : <>

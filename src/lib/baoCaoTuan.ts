@@ -41,6 +41,54 @@ export async function luuNhapBaoCao(tuan: string, caNhan: DongCaNhan[], tuViet: 
   const { error } = await supabase.rpc('fn_bctk_luu_nhap', { p_tuan: tuan, p_ca_nhan: phanCaNhan(caNhan), p_tu_viet: tuViet })
   if (error) throw error
 }
+// ── P3 — trưởng bộ môn (mig 202611031407) ──
+export type DongHang = {
+  nhan_su_id: string; ho_ten: string; la_toi: boolean; id: string | null
+  trang_thai: 'chua_nop' | 'da_nop' | 'tra_lai' | 'da_duyet'; dang_soan: boolean | null
+  o: { mon: string; khoi: string }[]; nop_at: string | null; tre: boolean | null; tong: TongSo | null
+}
+export type HangBaoCao = {
+  tuan: string; den: string; han: string; qua_han: boolean; ky_xong: boolean; mon: string[]
+  bao_cao: DongHang[]
+  o_chua_co_tk: { mon: string; khoi: string; co_bao_cao: boolean }[]
+  mon_bc: { mon: string; id: string | null; trang_thai: 'chua_co' | 'nhap' | 'da_chot'; chot_at: string | null }[]
+}
+export async function hangBaoCao(tuan?: string): Promise<HangBaoCao> {
+  const { data, error } = await supabase.rpc('fn_bctk_hang', tuan ? { p_tuan: tuan } : {})
+  if (error) throw error
+  return data as HangBaoCao
+}
+export async function xemBaoCao(id: string): Promise<BaoCaoTuan & { ho_ten: string; la_toi: boolean }> {
+  const { data, error } = await supabase.rpc('fn_bctk_xem', { p_id: id })
+  if (error) throw error
+  return data as BaoCaoTuan & { ho_ten: string; la_toi: boolean }
+}
+export async function xuLyBaoCao(id: string, duyet: boolean, lyDo?: string): Promise<{ id: string; trang_thai: 'da_duyet' | 'tra_lai' }> {
+  const { data, error } = await supabase.rpc('fn_bctk_xu_ly', { p_id: id, p_duyet: duyet, p_ly_do: lyDo ?? null })
+  if (error) throw error
+  return data as { id: string; trang_thai: 'da_duyet' | 'tra_lai' }
+}
+export type KhoiGhep = { id: string; ho_ten: string; o: { mon: string; khoi: string }[]; trang_thai: string; tre: boolean | null; so: SoBaoCao; tu_viet: TuViet }
+export type BaoCaoMon = {
+  tuan: string; den: string; mon: string; id: string | null; trang_thai: 'nhap' | 'da_chot'; nhan_xet: string
+  chot_at: string | null; chot_boi: string | null; ky_xong: boolean
+  tong: SoBaoCao; cac_khoi: KhoiGhep[]; o_thieu: { mon: string; khoi: string }[]
+}
+export async function layBaoCaoMon(tuan: string, mon: string): Promise<BaoCaoMon> {
+  const { data, error } = await supabase.rpc('fn_bcmt_lay', { p_tuan: tuan, p_mon: mon })
+  if (error) throw error
+  return data as BaoCaoMon
+}
+export async function luuBaoCaoMon(tuan: string, mon: string, nhanXet: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_bcmt_luu', { p_tuan: tuan, p_mon: mon, p_nhan_xet: nhanXet })
+  if (error) throw error
+}
+export async function chotBaoCaoMon(tuan: string, mon: string, nhanXet: string): Promise<BaoCaoMon> {
+  const { data, error } = await supabase.rpc('fn_bcmt_chot', { p_tuan: tuan, p_mon: mon, p_nhan_xet: nhanXet })
+  if (error) throw error
+  return data as BaoCaoMon
+}
+
 export async function nopBaoCao(tuan: string, caNhan: DongCaNhan[], tuViet: TuViet): Promise<BaoCaoTuan> {
   const { data, error } = await supabase.rpc('fn_bctk_nop', { p_tuan: tuan, p_ca_nhan: phanCaNhan(caNhan), p_tu_viet: tuViet })
   if (error) throw error
