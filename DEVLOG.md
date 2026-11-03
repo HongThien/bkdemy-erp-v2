@@ -78520,3 +78520,12 @@ Thùy nêu 4 việc, làm được 3:
 - Sửa: CTE `cap` (materialized) quy nhóm 1 lần cho mỗi cặp (`coalesce(ma_cau,'')`, ma_dang) rồi nối lại vào sự kiện. Không đụng `_do_o_bdm` (dùng chung mastery; thử viết lại truy vấn anh em bằng min=max chỉ nhanh ~15% ⇒ bỏ).
 - Kiểm: so mảng trả về trước/sau cho 59 lớp — **0 lệch** (thử trong transaction rồi rollback, rồi đo lại sau khi áp thật). Sau áp: 12A1 1,6 / 1,4 s; trận bot 11A1 0,8 s, leo tháp 0,76 s. Lần gọi đầu trên kết nối mới có thể ~2,4 s (7K1, biên dịch kế hoạch plpgsql), lần 2 ≤ 0,45 s.
 - Còn lại: 12A1 ~1,4 s chủ yếu vì nhánh anh em của `_do_o_bdm` cho câu đã xoá — muốn nhanh nữa phải quy các câu đã xoá đó vào bản đồ (hết rơi vào nhánh dò).
+
+## 03/11 (tối) — Đấu trường: XÁO vị trí phương án mỗi đề (HS thuộc vị trí đáp án) — mig 202611031841 ĐÃ ÁP
+- Thùy 03/11: HS thuộc vị trí đáp án ở Đấu trường ⇒ xáo. **Chỉ game Đấu trường**; bài giao / ET / BTVN / bổ trợ giữ luật 29/09 "giấy và app giống hệt, không xáo".
+- Đề chấm ở máy chủ (trận bot · tháp Sinh tồn/Vô tận): cột `dtv_de.xao` (chuỗi ngẫu nhiên lúc sinh đề, không trả client; NULL = đề cũ, không xáo) + `_dtv_hoan_vi(xao, thu_tu, n)`.
+  `fn_dtv_de_lay` phát opts đã xáo; `fn_dtv_cham`/`fn_dtv_cham_tran` nhận `p_chon` = vị trí hiển thị, đổi về chỉ số gốc để chấm, trả `dung_idx` theo vị trí hiển thị ⇒ client không đổi. Nhật ký ghi nội dung phương án.
+- Đường đề KHÔNG qua máy chủ (giải, online, khách — `fn_dtv_kho_bo_cau` vốn đã trả đáp án xuống): `nguon/kho.ts` xáo opts ở client, id giữ chỉ số gốc ⇒ chấm theo id vẫn đúng. Tiếng Anh vốn đã xáo.
+- Thứ tự CÂU giữ nguyên (tháp cần cùng chuỗi cho BXH; trận bot vốn ngẫu nhiên).
+- Kiểm dưới JWT HS (rollback): trận bot 5 câu + Sinh tồn 5 câu — opts đổi chỗ 9/10 câu, chọn đúng/sai theo vị trí hiển thị chấm đúng 10/10, `dung_idx` + nhật ký khớp.
+- Treo: **trừ điểm khi sai** — spec chưa có số (trận đua sai = 0 điểm, chỉ khoá câu; Sinh tồn −3 s; Vô tận sai = thua). Đề xuất trận đua sai −50 (đoán bừa kỳ vọng âm), đã hỏi Thùy + hỏi mục "3." còn bỏ ngỏ. Điểm trận đua hiện tính ở client (`trongTai.ts`) — lệch §2.0, chưa chuyển.

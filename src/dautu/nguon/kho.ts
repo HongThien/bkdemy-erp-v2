@@ -1,7 +1,7 @@
 // NGUỒN CÂU = KHO thật của môn (Toán · KHTN; môn nào có trong registry kho DB đều cắm được). Câu chọn ở DB bằng đúng điều kiện
 // MCQ chung `_kho_dk_mcq_sql` (fn_dtv_kho_bo_cau) — client chỉ gọi hàm, không lọc/tính gì.
 import { sb, coMang } from '../lib/sb'
-import { chuoiNgauNhien } from '../lib/tienich'
+import { chuoiNgauNhien, tron } from '../lib/tienich'
 import { khoHoSo } from '../lib/hoSo'
 import type { Cau, CapNguon, CauHinhBo, ChuDeNguon, CheDoThap, DeMayChu, DeTran, KetThapMayChu, KqCham, NguonCau } from './kieu'
 
@@ -20,13 +20,16 @@ const sangCau = (r: DongKho): Cau => ({
   anh: r.anh,
   nhan: 'Chọn đáp án đúng:',
   phu: r.dang,
-  opts: r.opts.map((t, i) => ({ id: `${r.ma_cau}#${i}`, text: t })),
+  // Đấu trường XÁO vị trí phương án mỗi lần (Thùy 03/11: HS thuộc vị trí đáp án); id giữ chỉ số GỐC ⇒ chấm theo id vẫn đúng.
+  // Bài giao / ET / BTVN / bổ trợ KHÔNG xáo (giấy và app giống hệt) — chỉ game Đấu trường.
+  opts: tron(r.opts.map((t, i) => ({ id: `${r.ma_cau}#${i}`, text: t }))),
   dung: `${r.ma_cau}#${r.dung}`,
   giai: r.giai,
 })
 
 interface DongPhat { thu_tu: number; ma_cau: string; de: string; anh: string | null; dang: string; muc: number | null; opts: string[] }
-// Câu phát từ máy chủ: KHÔNG có đáp án — dung = '' (hiện đáp án đúng sau khi máy chủ chấm xong câu đó)
+// Câu phát từ máy chủ: KHÔNG có đáp án — dung = '' (hiện đáp án đúng sau khi máy chủ chấm xong câu đó).
+// opts đã được MÁY CHỦ xáo theo đề (mig 202611031841); chỉ số gửi lên = vị trí hiển thị, máy chủ tự đổi về gốc.
 const sangCauPhat = (r: DongPhat): Cau => ({
   id: r.ma_cau, de: r.de, anh: r.anh, nhan: 'Chọn đáp án đúng:', phu: r.dang,
   opts: r.opts.map((t, i) => ({ id: `${r.ma_cau}#${i}`, text: t })), dung: '', giai: null,
