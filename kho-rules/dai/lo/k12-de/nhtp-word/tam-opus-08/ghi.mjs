@@ -1,0 +1,9 @@
+import fs from 'fs';
+const L=JSON.parse(fs.readFileSync('../lo-08.json','utf8'));
+const A={W0421:'C',W0422:'B',W0423:'A',W0424:'A',W0425:'D',W0426:['Đ','S','Đ','S'],W0427:'-1392.65',W0428:'A',W0429:'C',W0430:'C',W0431:'B',W0432:'C',W0433:'A',W0434:'C',W0435:['S','Đ','Đ','S'],W0436:'B',W0437:'C',W0438:'C',W0439:'A',W0440:'B',W0441:'B',W0442:'28',W0443:'A',W0444:['Đ','Đ','Đ','S'],W0445:'A',W0446:'D',W0447:'D',W0448:'D',W0449:'C',W0450:'B',W0451:'C',W0452:['Đ','Đ','S','Đ'],W0453:'D',W0454:'B',W0455:'D',W0456:'B',W0457:'B',W0458:'A',W0459:[null,'S','S','S'],W0460:'2029',W0461:['Đ','S','S','Đ'],W0462:'B',W0463:'A',W0464:'A',W0465:'D',W0466:'C',W0467:'D',W0468:['S','Đ','Đ','S'],W0469:'-2',W0470:'B',W0471:['S','Đ','S','S'],W0472:'B',W0473:'4',W0474:'B',W0475:'C',W0476:'B',W0477:'D',W0478:'B',W0479:'B',W0480:'D'};
+const G={W0426:'F(2)=13; ∫0^1 f=3,5 ⇒ k=2; ∫=6+ln9 ⇒ a+b=15 (Simpson khớp)',W0427:'= e²−e+7−2026ln2 ≈ −1392.645; đề không nói làm tròn, lấy 2 chữ số',W0435:'Như W0426 đổi thứ tự ý',W0438:'70−20=50',W0439:'70−20=50; câu thống kê, không thuộc NH-TP',W0438x:'',W0442:'T=t³+1, T(3)=28',W0444:'d sai: là tích phân từ 0 đến 3',W0449:'2025−3·2026=−4053',W0459:'a) F chỉ là "một nguyên hàm", hằng số chưa xác định ⇒ không chắc; b) F(e)=e²/2+2; d) F(1)=−1/2',W0460:'F(1)=2026+e≈2028.72 ⇒ 2029',W0461:'K=1+3=4; H=5e+16',W0468:'d) F=e^x−x²−3, F(1)=e−4',W0469:'F=2x⁴−3x−5 ⇒ 2+4−3−5=−2',W0471:'a) −9/8; c) −cos b+cos a; d) ∫1^0=−11',W0473:'V=4π·tan(π/4)=4π (Simpson khớp)',W0479:'Sai ở ∫_b^c, phải ∫_c^b'};
+const vua=new Set(['W0459']);
+const out=L.map(c=>({id:c.id,dap_an:A[c.id],do_chac:vua.has(c.id)?'vua':'cao',de_sai:false,ghi:G[c.id]||''}));
+if(out.some(o=>o.dap_an===undefined))throw 'thieu';
+fs.writeFileSync('../lo-08.opus.out.json',JSON.stringify(out,null,1));
+console.log(out.length);

@@ -1,0 +1,462 @@
+[
+ {
+  "id": "W0421",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F=ln|x+1|+2; F(1)=2+ln2"
+ },
+ {
+  "id": "W0422",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Diện tích: ∫3^x dx, không có π"
+ },
+ {
+  "id": "W0423",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "4·3−5·2=2"
+ },
+ {
+  "id": "W0424",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "(ln x)'=1/x"
+ },
+ {
+  "id": "W0425",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Diện tích = ∫|f| từ −1 đến 5"
+ },
+ {
+  "id": "W0426",
+  "dap_an": [
+   "Đ",
+   "S",
+   "Đ",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F(0)=3⇒F(2)=13; k=2; ∫=6+ln9⇒a+b=15"
+ },
+ {
+  "id": "W0427",
+  "dap_an": "-1392.65",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "e²−e+7−2026ln2 ≈ −1392.6454; đề không nêu làm tròn"
+ },
+ {
+  "id": "W0428",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Nguyên hàm x^n"
+ },
+ {
+  "id": "W0429",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "f(3)−f(1)=2"
+ },
+ {
+  "id": "W0430",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2−5=−3"
+ },
+ {
+  "id": "W0431",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F'=−3sin x−2"
+ },
+ {
+  "id": "W0432",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "9−(−3)=12"
+ },
+ {
+  "id": "W0433",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "V=π∫f² dx"
+ },
+ {
+  "id": "W0434",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Nguyên hàm x^2026"
+ },
+ {
+  "id": "W0435",
+  "dap_an": [
+   "S",
+   "Đ",
+   "Đ",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F(2)=13≠7; k=2; F(4)−F(1) đúng; a+b=15"
+ },
+ {
+  "id": "W0436",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Diện tích = ∫|f|"
+ },
+ {
+  "id": "W0437",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "f(3)−f(1)=2"
+ },
+ {
+  "id": "W0438",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Khoảng biến thiên 70−20=50"
+ },
+ {
+  "id": "W0439",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Khoảng biến thiên 70−20=50"
+ },
+ {
+  "id": "W0440",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x²+3x+C"
+ },
+ {
+  "id": "W0441",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "S=∫1→2 e^x dx"
+ },
+ {
+  "id": "W0442",
+  "dap_an": "28",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "T=t³+1; T(3)=28"
+ },
+ {
+  "id": "W0443",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Công thức diện tích"
+ },
+ {
+  "id": "W0444",
+  "dap_an": [
+   "Đ",
+   "Đ",
+   "Đ",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "S=F(3)−F(0)=1; d sai: tích phân từ 0 đến 3"
+ },
+ {
+  "id": "W0445",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "f=(x³/3+e^x)'=x²+e^x"
+ },
+ {
+  "id": "W0446",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫sin x=−cos x+C nên D sai"
+ },
+ {
+  "id": "W0447",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "3ln2"
+ },
+ {
+  "id": "W0448",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Newton–Leibniz"
+ },
+ {
+  "id": "W0449",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2025−3·2026=−4053"
+ },
+ {
+  "id": "W0450",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Newton–Leibniz"
+ },
+ {
+  "id": "W0451",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "S=∫1→2 e^x dx"
+ },
+ {
+  "id": "W0452",
+  "dap_an": [
+   "Đ",
+   "Đ",
+   "S",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "c sai: phải là tích phân từ 0 đến 3"
+ },
+ {
+  "id": "W0453",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Công thức diện tích"
+ },
+ {
+  "id": "W0454",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "f=x²+e^x"
+ },
+ {
+  "id": "W0455",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫sin x=−cos x+C nên D sai"
+ },
+ {
+  "id": "W0456",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "3ln2"
+ },
+ {
+  "id": "W0457",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "−4053"
+ },
+ {
+  "id": "W0458",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F=f' sai; đúng là F'=f"
+ },
+ {
+  "id": "W0459",
+  "dap_an": [
+   null,
+   "S",
+   "S",
+   "S"
+  ],
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "a: F chỉ xác định sai khác hằng số (null, nhiều khả năng Đ theo ý đề); F(e)=e²/2+2; F≠f'; F(1)=−1/2"
+ },
+ {
+  "id": "W0460",
+  "dap_an": "2029",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F=x²+e^x+2025; F(1)=2028.718"
+ },
+ {
+  "id": "W0461",
+  "dap_an": [
+   "Đ",
+   "S",
+   "S",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "I=1; K=4; H=5e+16; M=−5"
+ },
+ {
+  "id": "W0462",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "V=π∫ln²x dx"
+ },
+ {
+  "id": "W0463",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x²+4x+C"
+ },
+ {
+  "id": "W0464",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫a→a f=0 nên A sai"
+ },
+ {
+  "id": "W0465",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "x²+4x+C"
+ },
+ {
+  "id": "W0466",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫a→a f=0 nên C sai"
+ },
+ {
+  "id": "W0467",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "V=∫S(x)dx"
+ },
+ {
+  "id": "W0468",
+  "dap_an": [
+   "S",
+   "Đ",
+   "Đ",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫cos=sin+C; F(1)=e−4 nên d sai"
+ },
+ {
+  "id": "W0469",
+  "dap_an": "-2",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F=2x⁴−3x−5; 2+4−3−5=−2"
+ },
+ {
+  "id": "W0470",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F'=f"
+ },
+ {
+  "id": "W0471",
+  "dap_an": [
+   "S",
+   "Đ",
+   "S",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "a=−9/8; b=18; c=cos a−cos b; d=−11"
+ },
+ {
+  "id": "W0472",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "5^x/ln5"
+ },
+ {
+  "id": "W0473",
+  "dap_an": "4",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "V=4π∫sec²=4π tan(π/4)=4π"
+ },
+ {
+  "id": "W0474",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "3−(−1)=4"
+ },
+ {
+  "id": "W0475",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "S=∫|f|"
+ },
+ {
+  "id": "W0476",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "−cot x+C"
+ },
+ {
+  "id": "W0477",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "5·(−2)=−10"
+ },
+ {
+  "id": "W0478",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F(3)−F(0)"
+ },
+ {
+  "id": "W0479",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Sai: phải là ∫a→c + ∫c→b"
+ },
+ {
+  "id": "W0480",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "Tích phân của tích không bằng tích 1 hàm với nguyên hàm kia"
+ }
+]

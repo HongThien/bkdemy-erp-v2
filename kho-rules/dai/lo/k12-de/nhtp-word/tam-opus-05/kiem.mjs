@@ -1,0 +1,12 @@
+const S=(f,a,b,n=20000)=>{const h=(b-a)/n;let s=f(a)+f(b);for(let i=1;i<n;i++)s+=f(a+i*h)*(i%2?4:2);return s*h/3};
+console.log('W0250',S(x=>Math.abs(7*x*x+42*x),-6,0));
+const f=x=>5*x*x-8*x+1;
+console.log('W0255c',S(x=>2*f(x)-1,-2,1),'d',S(x=>10*x-8-2*x*f(x),-1,1),-16/3);
+console.log('W0256',6-S(x=>x*x-4*x,-3,3));
+console.log('W0259',S(x=>(4*x*x-1)/x,1,5),48-Math.log(5));
+console.log('W0265c',S(x=>2*(x*x-1)/x,1,2),3-Math.log(4),'d',S(x=>2*(x*x-1),1,2));
+console.log('W0270a',Math.PI*S(x=>(5*x**4-3*x**5)**2,0,1.5),5*Math.PI,'b',S(x=>Math.abs(5*x**4-3*x**5),2,4));
+console.log('W0271',Math.exp(3)+18+1);
+console.log('W0292d',Math.acos(-1/3),7*Math.PI/12);
+console.log('W0294',S(t=>10+2*t-t*t,0,6)/6);
+console.log('W0300',S(x=>1/(2*x+3),1,2),0.5*Math.log(7/5),'W0262',S(x=>(x-1)/x,1,2),1-Math.log(2));

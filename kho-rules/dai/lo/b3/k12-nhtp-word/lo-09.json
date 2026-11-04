@@ -1,0 +1,852 @@
+[
+ {
+  "ma_cau": "T1120000008178",
+  "loai": "trac_nghiem",
+  "de": "$\\int x^{3}\\,\\text{d}x$ bằng",
+  "lua_chon": [
+   "$\\frac{x^{4}}{4}+C$.",
+   "$x^{5}+C$.",
+   "$\\frac{x^{5}}{5}+C$.",
+   "$\\frac{x^{6}}{6}+C$."
+  ],
+  "dap_an": "A",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008025",
+  "loai": "trac_nghiem",
+  "de": "Tính $\\int\\limits_{0}^{1} 3^{x}dx$ bằng",
+  "lua_chon": [
+   "$2$.",
+   "$\\frac{2}{\\ln 3}$.",
+   "$\\frac{\\ln 3}{2}$.",
+   "$3$."
+  ],
+  "dap_an": "B",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000007913",
+  "loai": "trac_nghiem",
+  "de": "Họ nguyên hàm của hàm số $f\\left( x \\right)=\\cos x+1$ là",
+  "lua_chon": [
+   "$\\sin x+x+C$.",
+   "$-\\sin x+x+C$.",
+   "$-\\cos+x+C$.",
+   "$\\cos x+x+C$."
+  ],
+  "dap_an": "A",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008152",
+  "loai": "trac_nghiem",
+  "de": "Thể tích $V$ của khối tròn xoay được tạo ra khi quay hình thang cong, giới hạn bởi đồ thị hàm số $y=f(x)$, trục $Ox$ và hai đường thẳng $x=a,\\,x=b\\,\\,(a<b)$ xung quanh trục $Ox$ là",
+  "lua_chon": [
+   "$V=\\int\\limits_{a}^{b} f^{2}(x)\\text{d}x$.",
+   "$V=\\pi\\int\\limits_{a}^{b} f(x)\\text{d}x$.",
+   "$V=\\int\\limits_{a}^{b} \\left| f(x) \\right|\\text{d}x$.",
+   "$V=\\pi\\int\\limits_{a}^{b} f^{2}(x)\\text{d}x$."
+  ],
+  "dap_an": "D",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008051",
+  "loai": "trac_nghiem",
+  "de": "Cho hai tích phân $\\int\\limits_{-2}^{5} f\\left( x \\right)\\text{d}x=8$ và $\\int\\limits_{-2}^{5} g\\left( x \\right)\\text{d}x=3$. Tính $I=\\int\\limits_{-2}^{5} \\left( f(x)-g(x) \\right)\\text{d}x$.",
+  "lua_chon": [
+   "$I=77$.",
+   "$I=5$.",
+   "$I=-11$.",
+   "$I=11$."
+  ],
+  "dap_an": "B",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008063",
+  "loai": "trac_nghiem",
+  "de": "Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$\\int \\text{cos }xdx=\\sin x+C$.",
+   "$\\int \\cos xdx=-\\sin x+C$.",
+   "$\\int \\sin xdx=\\cos x+C$.",
+   "$\\int \\sin xdx=\\sin x+C$."
+  ],
+  "dap_an": "A",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008603",
+  "loai": "trac_nghiem",
+  "de": "Nguyên hàm của hàm số $f(x)=3^{x-1}\\cdot 5^{x+1}$ là",
+  "lua_chon": [
+   "$\\frac{3^{x-1}\\cdot 5^{x+1}}{\\ln 3.\\ln 5}+C$.",
+   "$3^{x-1}\\cdot 5^{x+1}+C$.",
+   "$\\frac{5\\cdot 15^{x}}{3\\ln 15}+C$.",
+   "$\\frac{5\\cdot 15^{x}}{3}+C$."
+  ],
+  "dap_an": "C",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000007907",
+  "loai": "trac_nghiem",
+  "de": "Mệnh đề nào dưới đây đúng?",
+  "lua_chon": [
+   "$\\int \\cos x\\text{d}x=-\\sin x+C.$",
+   "$\\int \\cos x\\text{d}x=\\frac{1}{2}\\cos^{2}x+C.$",
+   "$\\int \\cos x\\text{d}x=\\sin x+C.$",
+   "$\\int \\cos x\\text{d}x=-\\cos x+C.$"
+  ],
+  "dap_an": "C",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008235",
+  "loai": "trac_nghiem",
+  "de": "Thời gian truy cập Internet mỗi buổi tối của một số học sinh được cho trong bảng sau:\nThời gian (phút)\n$\\left[ 20;30 \\right)$\n$\\left[ 30;40 \\right)$\n$\\left[ 40;50 \\right)$\n$\\left[ 50;60 \\right)$\n$\\left[ 60;70 \\right)$\nSố học sinh\n$3$\n$12$\n$15$\n$24$\n$26$\nKhoảng biến thiên của mẫu số liệu ghép nhóm này là",
+  "lua_chon": [
+   "$50$.",
+   "$90$.",
+   "$40$.",
+   "$26$."
+  ],
+  "dap_an": "A",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000007956",
+  "loai": "trac_nghiem",
+  "de": "Tích phân $\\int\\limits_{0}^{1} x^{2026}\\text{d}x$ có kết quả là",
+  "lua_chon": [
+   "$\\frac{1}{2027}$.",
+   "2026.",
+   "$\\frac{1}{2026}$.",
+   "2027."
+  ],
+  "dap_an": "A",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008203",
+  "loai": "trac_nghiem",
+  "de": "Nguyên hàm của hàm số $f(x)=e^{x}$ là:",
+  "lua_chon": [
+   "$\\frac{e^{x}}{\\ln x}+C$.",
+   "$\\frac{e^{x+1}}{x+1}+C$.",
+   "$x.e^{x-1}+C$.",
+   "$e^{x}+C$."
+  ],
+  "dap_an": "D",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000007898",
+  "loai": "trac_nghiem",
+  "de": "Tìm nguyên hàm của hàm số $f\\left( x \\right)=x^{2}+3x+2$",
+  "lua_chon": [
+   "$F\\left( x \\right)=\\frac{x^{3}}{3}-\\frac{2}{3}x^{2}+2x+C$.",
+   "$F\\left( x \\right)=\\frac{x^{3}}{3}+\\frac{2}{3}x^{2}+2x+C$.",
+   "$F\\left( x \\right)=2x+3+C$.",
+   "$F\\left( x \\right)=\\frac{x^{3}}{3}+\\frac{3}{2}x^{2}+2x+C$."
+  ],
+  "dap_an": "D",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008351",
+  "loai": "tra_loi_ngan",
+  "de": "Tính diện tích hình phẳng giới hạn bởi đồ thị hàm số $y=6x^{2}-6x-12$, trục $Ox$ và các đường thẳng $x=-9,x=-5$.",
+  "dap_an": "1328",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000007889",
+  "loai": "tra_loi_ngan",
+  "de": "Giả sử hàm số $f(x)=3e^{x}+\\sin x$ có họ nguyên hàm $F(x)=ae^{x}+b\\cos x+C$, trong đó $a,b\\in\\mathbb{R}$. Giá trị của biểu thức $P=ab^{3}$ là bao nhiêu?",
+  "dap_an": "-3",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008286",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $f(x)$ liên tục trên $\\left[ a;\\,b \\right]$. Khẳng định nào sau đây sai?",
+  "lua_chon": [
+   "$\\int\\limits_{a}^{b} f(x)dx=\\int\\limits_{a}^{c} f(x)dx+\\int\\limits_{c}^{b} f(x)dx\\,$$\\left( a<c<b \\right)$.",
+   "$\\int\\limits_{a}^{a} f(x)dx=f\\left( a \\right)$.",
+   "$\\int\\limits_{a}^{b} \\left[ f(x)-g\\left( x \\right) \\right]dx=\\int\\limits_{a}^{b} f(x)\\,dx-\\int\\limits_{a}^{b} g\\left( x \\right)dx$.",
+   "$\\int\\limits_{a}^{b} f(x)dx=\\int\\limits_{a}^{b} f(t)dt$."
+  ],
+  "dap_an": "B",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000007954",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\int\\limits_{0}^{\\frac{\\pi}{2}} f\\left( x \\right)\\text{d}x=5$. Tính $I=\\int\\limits_{0}^{\\frac{\\pi}{2}} \\left[ f\\left( x \\right)+2\\sin x \\right]\\text{d}x.$",
+  "lua_chon": [
+   "$7.$",
+   "$5+\\frac{\\pi}{2}.$",
+   "$3.$",
+   "$5+\\pi.$"
+  ],
+  "dap_an": "A",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008642",
+  "loai": "trac_nghiem",
+  "de": "Nguyên hàm của hàm số $f\\left( x \\right)=2025^{x}$",
+  "lua_chon": [
+   "$\\frac{2025^{x}}{\\ln\\left( 2025 \\right)}+C$.",
+   "$2025^{x}+C$.",
+   "$2025.2024^{x}+C$.",
+   "$2025x+C$."
+  ],
+  "dap_an": "A",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008216",
+  "loai": "trac_nghiem",
+  "de": "Một nguyên hàm của hàm số $\\text{e}^{-x}+x$ là",
+  "lua_chon": [
+   "$\\text{ e}^{-x}+\\frac{x}{2}^{2}+2025.$",
+   "$\\text{ e}^{-x}+2x+2025.$",
+   "$-e^{-x}+\\frac{x^{2}}{2}+2025.$",
+   "$-e^{-x}+2x.$"
+  ],
+  "dap_an": "C",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008082",
+  "loai": "tra_loi_ngan",
+  "de": "Biết rằng tích phân $I=\\int\\limits_{1}^{5} \\frac{4x^{2}-1}{x}dx=a-\\ln b$ với $a,b\\in\\mathbb{N}$. Tính $a-b$.",
+  "dap_an": "43",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008140",
+  "loai": "trac_nghiem",
+  "de": "Nếu $\\int\\limits_{0}^{10} f\\left( t \\right)dt=17$ và $\\int\\limits_{0}^{8} f\\left( y \\right)dy=12$ thì $\\int\\limits_{8}^{10} \\left( -3 \\right)f\\left( x \\right)dx$ bằng",
+  "lua_chon": [
+   "$15$.",
+   "$29$.",
+   "$-15$.",
+   "$5$."
+  ],
+  "dap_an": "C",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008400",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $f\\left( x \\right)=7^{x}$. Khẳng định nào sau đây đúng?",
+  "lua_chon": [
+   "$\\int 7^{x}\\text{d}x=\\frac{7^{x}}{\\ln 7}+C$",
+   "$\\int 7^{x}\\text{d}x=\\frac{7^{x+1}}{x+1}+C$",
+   "$\\int 7^{x}\\text{d}x=7^{x+1}+C$",
+   "$\\int 7^{x}\\text{d}x=7^{x}\\ln 7+C$"
+  ],
+  "dap_an": "A",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008324",
+  "loai": "tra_loi_ngan",
+  "de": "Cho hình phẳng $D$ giới hạn bởi đường cong $y=\\sqrt{e^{x}+1}$, trục hoành và các đường thẳng $x=0$, $x=2$. Khối tròn xoay tạo thành khi quay $D$ quanh trục hoành có thể tích $V$ bằng bao nhiêu (kết quả làm tròn đến hàng phần chục)?",
+  "dap_an": "26.4",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008399",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $f\\left( x \\right)=e^{x}+2x$. Khẳng định nào dưới đây đúng?",
+  "lua_chon": [
+   "$\\int f\\left( x \\right)\\text{d}x=e^{x}+C$.",
+   "$\\int f\\left( x \\right)\\text{d}x=e^{x}+x^{2}+C$.",
+   "$\\int f\\left( x \\right)\\text{d}x=e^{x}+2x^{2}+C$.",
+   "$\\int f\\left( x \\right)\\text{d}x=e^{x}-x^{2}+C$."
+  ],
+  "dap_an": "B",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008218",
+  "loai": "trac_nghiem",
+  "de": "Diện tích của hình phẳng giới hạn bởi đồ thị hàm số $y=3^{x}$,trục hoành và hai đường thẳng $x=0$, $x=2$ là",
+  "lua_chon": [
+   "$S=\\pi\\int\\limits_{0}^{2} 3^{2x}\\text{d}x.$",
+   "$S=\\int\\limits_{0}^{2} 3^{x}\\text{d}x.$",
+   "$S=\\pi\\int\\limits_{0}^{2} 3^{x}\\text{d}x.$",
+   "$S=\\int\\limits_{0}^{2} 3^{2x}\\text{d}x.$"
+  ],
+  "dap_an": "B",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008204",
+  "loai": "tra_loi_ngan",
+  "de": "Tính diện tích hình phẳng giới hạn bởi các đường cong $y=x(1-x)$ và $y=x^{3}-x$ và hai đường thẳng $x=-2,\\text{ }x=1$. (Kết quả làm tròn đến hàng thập phân thứ hai).",
+  "dap_an": "3.08",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008181",
+  "loai": "trac_nghiem",
+  "de": "Biết $\\int\\limits_{-\\frac{\\pi}{2}}^{\\frac{\\pi}{6}} \\left| \\sin x \\right|dx=a-\\sqrt{b}\\,\\,\\,\\left( a,b\\in\\mathbb{Q} \\right)$. Khi đó $a+4b$ bằng",
+  "lua_chon": [
+   "$10$.",
+   "$7$.",
+   "$5$.",
+   "$8$."
+  ],
+  "dap_an": "C",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008067",
+  "loai": "trac_nghiem",
+  "de": "Nguyên hàm của hàm số $f(x)=$ $\\frac{1}{3}x^{3}-2x^{2}+x-2026$ là",
+  "lua_chon": [
+   "$\\frac{1}{12}x^{4}-\\frac{2}{3}x^{3}+\\frac{x^{2}}{2}+C$.",
+   "$\\frac{1}{9}x^{4}-\\frac{2}{3}x^{3}+\\frac{x^{2}}{2}-2026x+C$.",
+   "$\\frac{1}{12}x^{4}-\\frac{2}{3}x^{3}+\\frac{x^{2}}{2}-2026x+C$.",
+   "$\\frac{1}{9}x^{4}+\\frac{2}{3}x^{3}-\\frac{x^{2}}{2}-2026x+C$."
+  ],
+  "dap_an": "C",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008402",
+  "loai": "trac_nghiem",
+  "de": "Giá trị của $\\int\\limits_{0}^{\\frac{\\pi}{2}} \\sin xdx$ bằng",
+  "lua_chon": [
+   "0.",
+   "$\\frac{\\pi}{2}$.",
+   "1.",
+   "-1."
+  ],
+  "dap_an": "C",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008587",
+  "loai": "trac_nghiem",
+  "de": "Cho các số thực $a$, $b$ và các mệnh đề:\nI. $\\int\\limits_{a}^{b} f\\left( x \\right)\\text{d}x=-\\int\\limits_{b}^{a} f\\left( x \\right)\\text{d}x$. II. $\\int\\limits_{a}^{b} 2f\\left( x \\right)\\text{d}x=2\\int\\limits_{b}^{a} f\\left( x \\right)\\text{d}x$.\nIII. $\\int\\limits_{a}^{b} f^{2}\\left( x \\right)\\text{d}x=\\left[ \\int\\limits_{a}^{b} f\\left( x \\right)\\text{d}x \\right]^{2}$. IV. $\\int\\limits_{a}^{b} f\\left( x \\right)\\text{d}x=\\int\\limits_{a}^{b} f\\left( u \\right)\\text{d}u$.\nSố mệnh đề đúng trong $4$ mệnh đề trên là:",
+  "lua_chon": [
+   "$3$.",
+   "$4$.",
+   "$2$.",
+   "$1$."
+  ],
+  "dap_an": "C",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008081",
+  "loai": "trac_nghiem",
+  "de": "Họ nguyên hàm của hàm số $f\\left( x \\right)=4x^{3}-2026$ là",
+  "lua_chon": [
+   "$x^{4}+C$.",
+   "$12x^{3}+C$.",
+   "$x^{4}-2026x+C$.",
+   "$4x^{3}-2026x+C$."
+  ],
+  "dap_an": "C",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000007964",
+  "loai": "trac_nghiem",
+  "de": "Với C là hằng số, $\\int \\left( \\sin\\frac{x}{2}+\\cos\\frac{x}{2} \\right)^{2}\\ \\text{d}x$ bằng:",
+  "lua_chon": [
+   "$\\left( -\\cos\\frac{x}{2}+\\sin\\frac{x}{2} \\right)^{2}+C$.",
+   "$x+\\cos x+C$.",
+   "$x-\\cos x+C$.",
+   "$\\frac{1}{3}\\cdot\\left( \\sin\\frac{x}{2}+\\cos\\frac{x}{2} \\right)^{3}+C$."
+  ],
+  "dap_an": "C",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008717",
+  "loai": "trac_nghiem",
+  "de": "Diện tích $S$ của hình phẳng giới hạn bởi các đường thẳng $y=x^{3}$, $y=x$, $x=0$, $x=2$ được tính bởi công thức nào sau đây?",
+  "lua_chon": [
+   "$S=\\int\\limits_{0}^{2} \\left( x^{3}-x \\right)\\text{d}x$.",
+   "$S=\\int\\limits_{0}^{2} \\left| x^{3}-x \\right|\\text{d}x$.",
+   "$S=\\pi\\int\\limits_{0}^{2} \\left( x^{3}-x \\right)^{2}\\text{d}x$.",
+   "$S=\\pi\\int\\limits_{0}^{2} \\left| x^{3}-x \\right|\\text{d}x$."
+  ],
+  "dap_an": "B",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008269",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left( x \\right)$ liên tục trên đoạn $\\left[ a;\\,\\,b \\right]$. Diện tích $S$ của hình phẳng được giới hạn bởi đồ thị hàm số $y=f\\left( x \\right)$, trục $Ox$ và các đường thẳng $x=a;x=b\\left( a<b \\right)$ là",
+  "lua_chon": [
+   "$S=\\pi\\int\\limits_{a}^{b} f\\left( x \\right)dx$.",
+   "$S=\\pi\\int\\limits_{a}^{b} f^{2}\\left( x \\right)dx$.",
+   "$S=\\int\\limits_{a}^{b} \\left| f\\left( x \\right) \\right|dx$.",
+   "$S=\\int\\limits_{a}^{b} f\\left( x \\right)dx$."
+  ],
+  "dap_an": "C",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008283",
+  "loai": "trac_nghiem",
+  "de": "Cho $f(x),\\,g(x)$ là hai hàm số xác định và liên tục trên tập $K$. Trong các mệnh đề sau, mệnh đề nào sai?",
+  "lua_chon": [
+   "$\\int \\left[ f(x)-g\\left( x \\right) \\right]dx=\\int f(x)\\,dx-\\int g\\left( x \\right)dx$.",
+   "$\\int k\\,f(x)\\,dx=k\\int f(x)\\,dx\\,\\left( k\\in\\mathbb{R},\\,k\\ne 0 \\right)$.",
+   "$\\int \\left[ f(x)+g(x) \\right]dx=\\int f(x)dx+\\int g(x)dx$.",
+   "$\\int \\left[ f(x).g(x) \\right]dx=\\int f(x)dx.\\int g(x)dx$."
+  ],
+  "dap_an": "D",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008073",
+  "loai": "tra_loi_ngan",
+  "de": "Diện tích hình phẳng giới hạn bởi đồ thị các hàm số $y=7x^{2}+46x-4$ và $y=4x-4$ là",
+  "dap_an": "252",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000007933",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\int 5^{x}\\text{d}x\\,=F\\left( x \\right)+C$. Khẳng định nào dưới đây đúng?",
+  "lua_chon": [
+   "$F'\\left( x \\right)=5^{x}+C$.",
+   "$F'\\left( x \\right)=5^{x}\\ln 5$.",
+   "$F'\\left( x \\right)=-5^{x}$.",
+   "$F'\\left( x \\right)=5^{x}$."
+  ],
+  "dap_an": "D",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008407",
+  "loai": "tra_loi_ngan",
+  "de": "Cho $F(x)$ là 1 nguyên hàm của hàm số $f(x)=4x^{3}+1$ và $F(0)=1$. Tính giá trị của $F(1)$.",
+  "dap_an": "3",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008588",
+  "loai": "trac_nghiem",
+  "de": "Biết rằng $\\int\\limits_{2}^{3} \\frac{3\\text{x}+1}{2\\text{x}^{2}-x-1}d\\text{x}=a\\ln 2+b\\ln 5+c\\ln 7$ trong đó $a,b,c\\in\\mathbb{Q}$. Tính $P=a+b+c?$",
+  "lua_chon": [
+   "$\\frac{4}{3}$.",
+   "$\\frac{3}{2}$.",
+   "$\\frac{5}{3}$.",
+   "$\\frac{7}{6}$"
+  ],
+  "dap_an": "A",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008138",
+  "loai": "trac_nghiem",
+  "de": "Giá trị của $\\int\\limits_{0}^{10} \\text{d}x$ bằng",
+  "lua_chon": [
+   "$10$.",
+   "$0$.",
+   "$5$.",
+   "$1$."
+  ],
+  "dap_an": "A",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008724",
+  "loai": "trac_nghiem",
+  "de": "Trong không gian với hệ trục tọa độ $Oxyz$, một vật thể nằm giữa hai mặt phẳng $x=a;\\,\\,x=b$ với $a<b$, thiết diện của vật thể bị cắt bởi mặt phẳng vuông góc với trục $Ox$ tại điểm có hoành độ $x$$\\left( a\\le x\\le b \\right)$ là một hình phẳng có diện tích bằng $S\\left( x \\right)$,$S\\left( x \\right)$ là một hàm liên tục trên $\\text{[}a;b\\text{]}$. Thể tích vật thể được tính bằng công thức",
+  "lua_chon": [
+   "$\\int\\limits_{a}^{b} \\left( S\\left( x \\right) \\right)^{2}\\text{d}x$.",
+   "$\\pi\\int\\limits_{a}^{b} \\left( S\\left( x \\right) \\right)^{2}\\text{d}x$.",
+   "$\\pi\\int\\limits_{a}^{b} S\\left( x \\right)\\text{d}x$.",
+   "$\\int\\limits_{a}^{b} S\\left( x \\right)\\text{d}x$."
+  ],
+  "dap_an": "D",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000007874",
+  "loai": "trac_nghiem",
+  "de": "Cắt một vật thể bởi hai mặt phẳng vuông góc với trục $Ox$ tại $x=1$ và $x=3$. Một mặt phẳng tuỳ ý vuông góc với trục $Ox$ tại điểm có hoành độ $x\\,\\,\\left( 1\\le x\\le 3 \\right)$ cắt vật thể đó theo thiết diện là một hình chữ nhật có độ dài hai cạnh là $3x$ và $3x^{2}-2$. Tính thể tích của phần vật thể giới hạn bởi hai mặt phẳng trên.",
+  "lua_chon": [
+   "$V=156$.",
+   "$V=156\\pi$.",
+   "$V=312$.",
+   "$V=312\\pi$."
+  ],
+  "dap_an": "A",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008663",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $f\\left( x \\right)=2x-e^{x}$. Nguyên hàm $F\\left( x \\right)$ của hàm số $f\\left( x \\right)$ trên $\\mathbb{R}$ sao cho $F\\left( 0 \\right)=2025$ là:",
+  "lua_chon": [
+   "$F\\left( x \\right)=x^{2}-e^{x}+2024$.",
+   "$F\\left( x \\right)=x^{2}-e^{x}+2026$.",
+   "$F\\left( x \\right)=x^{2}-e^{x}+2025$.",
+   "$F\\left( x \\right)=x^{2}-e^{x}$."
+  ],
+  "dap_an": "B",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000007974",
+  "loai": "trac_nghiem",
+  "de": "Với C là hằng số, họ các nguyên hàm của hàm số $f(x)=x^{2}+\\frac{2}{x^{2}}$ là",
+  "lua_chon": [
+   "$\\int f\\left( x \\right)dx=\\frac{x^{3}}{3}-\\frac{1}{x}+C$.",
+   "$\\int f\\left( x \\right)dx=\\frac{x^{3}}{3}-\\frac{2}{x}+C$.",
+   "$\\int f\\left( x \\right)dx=\\frac{x^{3}}{3}+\\frac{2}{x}+C$.",
+   "$\\int f\\left( x \\right)dx=\\frac{x^{3}}{3}+\\frac{1}{x}+C$."
+  ],
+  "dap_an": "B",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008160",
+  "loai": "trac_nghiem",
+  "de": "Tính tích phân $I=\\int\\limits_{0}^{2} \\left| x-2 \\right|dx$.",
+  "lua_chon": [
+   "$I=0$.",
+   "$I=4$.",
+   "$I=2$.",
+   "$I=-2$."
+  ],
+  "dap_an": "C",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008036",
+  "loai": "trac_nghiem",
+  "de": "(TD 1.1) Nguyên hàm của hàm số $y=5^{x}$ là",
+  "lua_chon": [
+   "$\\int 5^{x}\\text{d}x=\\ln 5.5^{x}+C$.",
+   "$\\int 5^{x}\\text{dx=5}^{x}+C$.",
+   "$\\int 5^{x}\\text{d}x=\\frac{5^{x}}{\\ln 5}+C$.",
+   "$\\int 5^{x}\\text{d}x=\\frac{5^{x}}{x+1}+C$."
+  ],
+  "dap_an": "C",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008246",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left( x \\right)$ liên tục trên đoạn $\\left[ a;b \\right]$. Gọi $F\\left( x \\right)$ là một nguyên hàm của hàm số $f\\left( x \\right)$ trên đoạn $\\left[ a;b \\right]$. Chọn mệnh đề đúng.",
+  "lua_chon": [
+   "$\\int\\limits_{a}^{b} f\\left( x \\right)\\text{d}x=F\\left( b \\right)+F\\left( a \\right)$.",
+   "$\\int\\limits_{a}^{b} f\\left( x \\right)\\text{d}x=F\\left( b \\right)-F\\left( a \\right)$.",
+   "$\\int\\limits_{a}^{b} f\\left( x \\right)\\text{d}x=F\\left( a \\right)-F\\left( b \\right)$.",
+   "$\\int\\limits_{a}^{b} f\\left( x \\right)\\text{d}x=F^{2}\\left( b \\right)-F^{2}\\left( a \\right)$."
+  ],
+  "dap_an": "B",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008727",
+  "loai": "trac_nghiem",
+  "de": "Thời gian (phút) truy cập Internet mỗi buổi tối của một số học sinh được cho trong bảng sau:\nThời gian (phút)\n$[9,5;12,5)$\n$[12,5;15,5)$\n$[15,5;18,5)$\n$[18,5;21,5)$\n$[21,5;24,5)$\nSố học sinh\n3\n12\n15\n24\n2\nTổng số học sinh là",
+  "lua_chon": [
+   "24.",
+   "56.",
+   "2.",
+   "22."
+  ],
+  "dap_an": "B",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008658",
+  "loai": "trac_nghiem",
+  "de": "Họ các nguyên hàm của hàm số $f(x)=2\\sin x+1$ trên $\\mathbb{R}$ là",
+  "lua_chon": [
+   "$-2\\cos x+1+C.$",
+   "$2\\cos x+x+C.$",
+   "$-2\\cos x+x+C.$",
+   "$2\\,\\cos x.$"
+  ],
+  "dap_an": "C",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008495",
+  "loai": "trac_nghiem",
+  "de": "Hàm số $F\\left( x \\right)=e^{-2x}$ là một nguyên hàm của hàm số nào sau đây?",
+  "lua_chon": [
+   "$f_{1}\\left( x \\right)=\\frac{e^{-2x}}{-2}.$",
+   "$f_{2}\\left( x \\right)=-e^{-2x}.$",
+   "$f_{3}\\left( x \\right)=2e^{-2x}.$",
+   "$f_{4}\\left( x \\right)=-2e^{-2x}.$"
+  ],
+  "dap_an": "D",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008615",
+  "loai": "trac_nghiem",
+  "de": "Biết $f\\left( x \\right)$ là hàm số liên tục trên $\\mathbb{R},$$a$ là số thực thỏa mãn $0<a<\\pi$ và $\\int\\limits_{0}^{a} f\\left( x \\right)dx=\\int\\limits_{a}^{\\pi} f\\left( x \\right)dx=1.$ Giá trị $\\int\\limits_{0}^{\\pi} f\\left( x \\right)dx$ bằng",
+  "lua_chon": [
+   "$0.$",
+   "$2.$",
+   "$\\frac{1}{2}.$",
+   "$1.$"
+  ],
+  "dap_an": "B",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008323",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\int\\limits_{0}^{2} f\\left( x \\right)\\text{d}x=3$. Khi đó, $\\int\\limits_{0}^{2} \\left( f\\left( x \\right)+1 \\right)\\text{d}x$ có giá trị bằng",
+  "lua_chon": [
+   "$5$.",
+   "$4$.",
+   "$7$.",
+   "$1$."
+  ],
+  "dap_an": "A",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000007945",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\int\\limits_{0}^{5} f\\left( x \\right)dx=3.$ Giá trị $\\int\\limits_{0}^{5} \\left[ f\\left( x \\right)+5 \\right]dx$ bằng",
+  "lua_chon": [
+   "$8$.",
+   "$28$.",
+   "$30$.",
+   "$6$."
+  ],
+  "dap_an": "B",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008066",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $f\\left( x \\right)=1-\\frac{1}{\\cos^{2}x}$. Khẳng định nào dưới đây đúng?",
+  "lua_chon": [
+   "$\\int f\\left( x \\right)\\text{d}x=x+\\tan x+C$.",
+   "$\\int f\\left( x \\right)\\text{d}x=x+\\cot x+C$.",
+   "$\\int f\\left( x \\right)\\text{d}x=x-\\cot x+C$.",
+   "$\\int f\\left( x \\right)\\text{d}x=x-\\tan x+C$."
+  ],
+  "dap_an": "D",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008581",
+  "loai": "trac_nghiem",
+  "de": "Nguyên hàm của hàm số $f(x)=\\frac{1}{x}+2^{x}-3\\sin x$ là",
+  "lua_chon": [
+   "$\\ln\\left| x \\right|+\\frac{2^{x}}{\\ln 2}-3\\cos x+C$.",
+   "$-\\frac{1}{x^{2}}+\\frac{2^{x+1}}{x+1}-3\\cos x+C$.",
+   "$\\ln\\left| x \\right|+\\frac{2^{x}}{\\ln 2}+3\\cos x+C$.",
+   "$\\ln\\left| x \\right|+2^{x}\\ln 2-3\\cos x+C$."
+  ],
+  "dap_an": "C",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000007987",
+  "loai": "tra_loi_ngan",
+  "de": "Tích phân $\\int\\limits_{1}^{e} \\frac{x^{2}+2x}{x^{3}}dx=a+\\frac{b}{e}$. Tính $a+b$",
+  "dap_an": "1",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000007884",
+  "loai": "trac_nghiem",
+  "de": "Cho $\\int\\limits_{-2}^{2} f\\left( x \\right)dx=-1$ và $\\int\\limits_{-2}^{2} g\\left( x \\right)dx=3$. Mệnh đề nào sau đây đúng?",
+  "lua_chon": [
+   "$\\int\\limits_{-2}^{2} \\left[ f\\left( x \\right)+g\\left( x \\right) \\right]dx=8$.",
+   "$\\int\\limits_{-2}^{2} \\left[ f\\left( x \\right)-g\\left( x \\right) \\right]dx=4$.",
+   "$\\int\\limits_{-2}^{2} 5f\\left( x \\right)dx=5$.",
+   "$\\int\\limits_{-2}^{2} \\left[ 3f\\left( x \\right)-4g\\left( x \\right) \\right]dx=-15$."
+  ],
+  "dap_an": "D",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008099",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $f\\left( x \\right)$ liên tục trên đoạn $\\left[ -3;4 \\right]$ và $\\int\\limits_{-3}^{1} f\\left( x \\right)dx=6$, $\\int\\limits_{1}^{4} f\\left( x \\right)dx=-2$. Tính $I=\\int\\limits_{-3}^{4} f\\left( x \\right)dx.$",
+  "lua_chon": [
+   "$I=8$.",
+   "$I=12$.",
+   "$I=-12$.",
+   "$I=4$."
+  ],
+  "dap_an": "D",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008549",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f(x)$ liên tục trên đoạn $\\text{[}2;\\,7].$ Hình phẳng giới hạn bởi đồ thị hàm số $y=f(x),$ trục hoành và hai đường thẳng $x=2,\\,x=7$ có diện tích là:",
+  "lua_chon": [
+   "$S=\\left| \\int\\limits_{2}^{7} f(x)\\text{d}x \\right|.$",
+   "$S=\\text{π}\\int\\limits_{2}^{7} \\left| f(x) \\right|\\text{d}x.$",
+   "$S=\\text{π}\\int\\limits_{2}^{7} f^{2}(x)\\text{d}x.$",
+   "$S=\\int\\limits_{2}^{7} \\left| f(x) \\right|\\text{d}x.$"
+  ],
+  "dap_an": "D",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008360",
+  "loai": "trac_nghiem",
+  "de": "Cho tích phân $\\int\\limits_{8}^{13} f(x)\\ \\text{d}x=9$. Tính tích phân $\\int\\limits_{8}^{13} \\left[ 3f(x)-6 \\right]\\ \\text{d}x$.",
+  "lua_chon": [
+   "$-59$.",
+   "$-3$.",
+   "$57$.",
+   "$21$."
+  ],
+  "dap_an": "B",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008550",
+  "loai": "trac_nghiem",
+  "de": "Nguyên hàm của hàm số $f(x)=\\sin x$ là:",
+  "lua_chon": [
+   "$\\cos x+C.$",
+   "$\\cot x+C.$",
+   "$-\\cos x+C.$",
+   "$-\\cot x+C.$"
+  ],
+  "dap_an": "C",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008641",
+  "loai": "trac_nghiem",
+  "de": "Nguyên hàm của hàm số $f\\left( x \\right)=2025^{x}$",
+  "lua_chon": [
+   "$2025^{x}+C$.",
+   "$\\frac{2025^{x}}{\\ln\\left( 2025 \\right)}+C$.",
+   "$2025.2024^{x}+C$.",
+   "$2025x+C$."
+  ],
+  "dap_an": "B",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008604",
+  "loai": "trac_nghiem",
+  "de": "Nguyên hàm của hàm số $f(x)=\\sin x$ là",
+  "lua_chon": [
+   "$-\\sin x+C$.",
+   "$\\cos x+C$.",
+   "$\\sin x+C$.",
+   "$-\\cos x+C$."
+  ],
+  "dap_an": "D",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008388",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f\\left( x \\right)$ liên tục trên đoạn $\\left[ 1;13 \\right]$ thỏa mãn $\\int\\limits_{1}^{13} f\\left( x \\right)\\,\\text{d}x=16,\\,\\,\\int\\limits_{1}^{4} f\\left( x \\right)\\,\\text{d}x=2.$ Giá trị $\\int\\limits_{4}^{13} f\\left( x \\right)\\,dx$ bằng",
+  "lua_chon": [
+   "$10$.",
+   "$18$.",
+   "$12$.",
+   "$14$."
+  ],
+  "dap_an": "D",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008288",
+  "loai": "trac_nghiem",
+  "de": "Cho hàm số $y=f(x)$ liên tục và nhận giá trị dương trên đoạn $[a;b]$. Xét hình phẳng $(H)$ giới hạn bởi đồ thị hàm số $y=f(x)$, trục hoành và hai đường thẳng $x=a$, $x=b$. Thể tích khối tròn xoay được tạo thành khi quay hình phẳng $(H)$ quanh trục $Ox$ được tính bởi",
+  "lua_chon": [
+   "$V=\\pi\\int\\limits_{a}^{b} \\left| f\\left( x \\right) \\right|\\text{d}x$.",
+   "$V=\\pi^{2}\\int\\limits_{a}^{b} f\\left( x \\right)\\text{d}x$.",
+   "$V=\\pi^{2}\\int\\limits_{a}^{b} \\left[ f\\left( x \\right) \\right]^{2}\\text{d}x$.",
+   "$V=\\pi\\int\\limits_{a}^{b} \\left[ f\\left( x \\right) \\right]^{2}\\text{d}x$."
+  ],
+  "dap_an": "D",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008050",
+  "loai": "trac_nghiem",
+  "de": "Diện tích hình phẳng giới hạn bởi hai đường thẳng $x=0,x=\\pi$, đồ thị hàm số $y=\\cos x$ và trục $Ox$ là:",
+  "lua_chon": [
+   "$S=-\\int\\limits_{0}^{\\pi} \\cos xdx$.",
+   "$S=\\int\\limits_{0}^{\\pi} \\left| \\cos x \\right|dx$.",
+   "$S=\\pi\\int\\limits_{0}^{\\pi} \\cos^{2}xdx$",
+   "$S=\\int\\limits_{0}^{\\pi} \\cos xdx$"
+  ],
+  "dap_an": "B",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008044",
+  "loai": "tra_loi_ngan",
+  "de": "Giá trị tích phân $\\int\\limits_{0}^{\\frac{\\pi}{4}} 4\\sin x\\text{d}x$ bằng? (kết quả làm tròn đến chữ số thập phân thứ nhất).",
+  "dap_an": "1.2",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008447",
+  "loai": "tra_loi_ngan",
+  "de": "Biết $\\int\\limits_{1}^{2} \\frac{x+2}{x}=a+b\\ln 2$, $\\left( a,b\\in\\mathbb{Z} \\right)$. Giá trị biểu thức $P=2a-b$ bằng?",
+  "dap_an": "0",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000007971",
+  "loai": "trac_nghiem",
+  "de": "Với C là hằng số, họ các nguyên hàm của hàm số $f(x)=x^{2}+\\frac{2}{x^{2}}$ là",
+  "lua_chon": [
+   "$\\int f\\left( x \\right)dx=\\frac{x^{3}}{3}+\\frac{1}{x}+C$.",
+   "$\\int f\\left( x \\right)dx=\\frac{x^{3}}{3}-\\frac{1}{x}+C$.",
+   "$\\int f\\left( x \\right)dx=\\frac{x^{3}}{3}+\\frac{2}{x}+C$.",
+   "$\\int f\\left( x \\right)dx=\\frac{x^{3}}{3}-\\frac{2}{x}+C$."
+  ],
+  "dap_an": "D",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008017",
+  "loai": "trac_nghiem",
+  "de": "Tích phân $\\int\\limits_{0}^{1} \\left( e^{x}+5x^{4} \\right)\\text{d}x$ bằng",
+  "lua_chon": [
+   "$e$.",
+   "$e^{}+\\frac{3}{2}$.",
+   "$\\frac{e^{}+2}{3}$.",
+   "$e^{3}$."
+  ],
+  "dap_an": "A",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T1120000008451",
+  "loai": "trac_nghiem",
+  "de": "Nguyên hàm của hàm số $f(x)=2^{x}$ là",
+  "lua_chon": [
+   "$\\frac{2^{x+1}}{x+1}+C$.",
+   "$\\frac{2^{x}}{\\ln 2}+C$.",
+   "$\\frac{2^{x}}{x}+C$.",
+   "$x.2^{x-1}+C$."
+  ],
+  "dap_an": "B",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

@@ -1,0 +1,15 @@
+const S=(f,a,b,n=200000)=>{const h=(b-a)/n;let s=f(a)+f(b);for(let i=1;i<n;i++)s+=f(a+i*h)*(i%2?4:2);return s*h/3};
+const P=Math.PI;
+console.log('383',S(x=>Math.abs(Math.sin(x)),-P/2,P/6),2-Math.sqrt(3)/2);
+console.log('384a',S(x=>Math.abs(4*x**3+x),-2,1),39/2,'c',S(x=>4*x**3+x,3,5));
+console.log('386',S(x=>x<=-1?x+2:x*x,-3,3),28/3);
+console.log('389',S(x=>Math.abs(x**3-6*x-x*x),-2,3),253/12);
+console.log('396',S(x=>Math.sqrt(3)/4*x*x*(3-x),0,3));
+console.log('408',S(x=>Math.abs(x*(1-x)-(x**3-x)),-2,1));
+console.log('394',P*S(x=>2+Math.sin(x),0,P),2*P*(P+1));
+console.log('398',S(x=>3/Math.sin(x)**2,P/4,2*P/3),3+Math.sqrt(3));
+console.log('412',S(x=>1/x**2-3/x+2,0.5,1),2-3*Math.log(2));
+console.log('405b',S(x=>2*Math.exp(x),0,2),2*(Math.exp(2)-1),'d',P*S(x=>4*Math.exp(2*x),0,1),P*(2*Math.exp(2)-2));
+console.log('381',S(x=>Math.sqrt(3)/4*x*x,0,1),Math.sqrt(3)/12);
+console.log('402c',P*S(x=>x**4,0,1),P/5);
+console.log('416',P*S(x=>x,0,1));

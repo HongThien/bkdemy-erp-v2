@@ -1,0 +1,482 @@
+[
+ {
+  "id": "W0481",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "|x²−3x+2|"
+ },
+ {
+  "id": "W0482",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0483",
+  "dap_an": [
+   "Đ",
+   "Đ",
+   "S",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫sin=−cos"
+ },
+ {
+  "id": "W0484",
+  "dap_an": [
+   "Đ",
+   "S",
+   "Đ",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "b=−7/8; c=8; d=16"
+ },
+ {
+  "id": "W0485",
+  "dap_an": "9",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "π·9∫csc²=9π"
+ },
+ {
+  "id": "W0486",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0487",
+  "dap_an": "-2",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F=2x³−5x−2"
+ },
+ {
+  "id": "W0488",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0489",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0490",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "tích không tách"
+ },
+ {
+  "id": "W0491",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0492",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0493",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫ₐᵃ=0"
+ },
+ {
+  "id": "W0494",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0495",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0496",
+  "dap_an": "64",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F=e^(3x+1)/3, ln e⁴=4"
+ },
+ {
+  "id": "W0497",
+  "dap_an": [
+   "Đ",
+   "Đ",
+   "S",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "menh_de gộp a+b, c+d; c sai nguyên hàm x²−2x; d=5/6"
+ },
+ {
+  "id": "W0498",
+  "dap_an": "125",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F=e^(2x+3)/2, ln e⁵=5"
+ },
+ {
+  "id": "W0499",
+  "dap_an": "10",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "3+4+3"
+ },
+ {
+  "id": "W0500",
+  "dap_an": "6.28",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2π"
+ },
+ {
+  "id": "W0501",
+  "dap_an": [
+   "Đ",
+   "Đ",
+   "S",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "menh_de gộp a+b, c+d; tích phân thật 5/6 nên d sai"
+ },
+ {
+  "id": "W0502",
+  "dap_an": [
+   "Đ",
+   "Đ",
+   "S",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "c: 9x+3x²+x³/3; d: F=3x−2"
+ },
+ {
+  "id": "W0503",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0504",
+  "dap_an": [
+   "Đ",
+   "S",
+   "Đ",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫₁³=28 ⇒ I=280"
+ },
+ {
+  "id": "W0505",
+  "dap_an": "1",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F−G=−2m ⇒ S=8m"
+ },
+ {
+  "id": "W0506",
+  "dap_an": [
+   "S",
+   "S",
+   "Đ",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "a hệ số 2 vs 1/2; b phải 2026(b−a)"
+ },
+ {
+  "id": "W0507",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0508",
+  "dap_an": [
+   "S",
+   "S",
+   "S",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "∫₀²x²=8/3; c=38/3"
+ },
+ {
+  "id": "W0509",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0510",
+  "dap_an": "-4",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "a=1,b=1,c=−6"
+ },
+ {
+  "id": "W0511",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0512",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0513",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0514",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0515",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0516",
+  "dap_an": [
+   "S",
+   "S",
+   "Đ",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "G tách theo x>0, x<0; a+b+c=80"
+ },
+ {
+  "id": "W0517",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0518",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "2+8"
+ },
+ {
+  "id": "W0519",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "45/4"
+ },
+ {
+  "id": "W0520",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "7/(3ln2)"
+ },
+ {
+  "id": "W0521",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0522",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "5−(−4)"
+ },
+ {
+  "id": "W0523",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "5−2=3"
+ },
+ {
+  "id": "W0524",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F=x²−cotx−π²/16"
+ },
+ {
+  "id": "W0525",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0526",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0527",
+  "dap_an": null,
+  "do_chac": "vua",
+  "de_sai": false,
+  "ghi": "cần hình; đề gộp lẫn 2 câu (khẳng định sai D + Câu 3 đồ thị)"
+ },
+ {
+  "id": "W0528",
+  "dap_an": [
+   "Đ",
+   "S",
+   "Đ",
+   "S"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "b=a/6; d: a<−6"
+ },
+ {
+  "id": "W0529",
+  "dap_an": "B",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F=−cosx+2"
+ },
+ {
+  "id": "W0530",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0531",
+  "dap_an": [
+   "Đ",
+   "Đ",
+   "S",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "f=2x−5sinx+10; d: ∫₋½⁰(2x+1)=1/4"
+ },
+ {
+  "id": "W0532",
+  "dap_an": "3",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "(b−1)(3(b+1)/2−6)=0"
+ },
+ {
+  "id": "W0533",
+  "dap_an": [
+   "S",
+   "Đ",
+   "S",
+   "Đ"
+  ],
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "c=−16/3; d: a<6/5"
+ },
+ {
+  "id": "W0534",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0535",
+  "dap_an": "26.4",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "π(e²+1)=26.35"
+ },
+ {
+  "id": "W0536",
+  "dap_an": "A",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0537",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": "F=−cosx+2"
+ },
+ {
+  "id": "W0538",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0539",
+  "dap_an": "D",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ },
+ {
+  "id": "W0540",
+  "dap_an": "C",
+  "do_chac": "cao",
+  "de_sai": false,
+  "ghi": ""
+ }
+]

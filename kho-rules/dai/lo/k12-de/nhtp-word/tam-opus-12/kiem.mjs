@@ -1,0 +1,12 @@
+const S=(f,a,b,n=2000)=>{const h=(b-a)/n;let s=f(a)+f(b);for(let i=1;i<n;i++)s+=(i%2?4:2)*f(a+i*h);return s*h/3};
+console.log('670',S(x=>x<=1?3*x*x:4-x,0,1)+S(x=>4-x,1,2));
+console.log('671',S(x=>(x+2)/x,1,2),1+2*Math.log(2));
+const f80=x=>2*x+5*Math.cos(x)+5;console.log('680',f80(Math.PI),2*Math.PI,S(x=>Math.abs(f80(x)-5*Math.cos(x)-9),0,2),S(x=>(2-5*Math.sin(x))/f80(x)**2,0,Math.PI/2));
+const f85=x=>x-5*Math.sin(x)+10;console.log('685',f85(Math.PI),S(x=>Math.abs(f85(x)-12+5*Math.sin(x)),0,2));
+console.log('683',S(x=>(2*x+1)/(x-2),3,5),4+5*Math.log(3));
+const v94=t=>t*t-7*t+6;console.log('694',v94(7),S(v94,1,7));let best=-1e9,bt=0;for(let t=0;t<=8;t+=0.001){const x=S(v94,0,t,200);if(x>best){best=x;bt=t}}console.log('694d',bt,best);
+console.log('699',S(x=>Math.abs(3*x*x+2*x-1),-1,1/3));
+let a=10/9;console.log('700',50+S(t=>a*t+10,0,12),(a*20+10)*3.6);
+a=175/98;console.log('717',50+S(t=>a*t+12.5,0,14),(a*21+12.5)*3.6);
+console.log('703',2*25+3*(-23),'704',S(x=>2026*x,1,2));
+for(const s of[0.25,0.75]){const p=[16*s,20-32*s,6-12*s];console.log('720',p,Math.hypot(...p))}console.log(0.5*Math.hypot(16,32,12)*1000);

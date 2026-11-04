@@ -1,0 +1,14 @@
+const simp=(f,a,b,n=200000)=>{const h=(b-a)/n;let s=f(a)+f(b);for(let i=1;i<n;i++)s+=f(a+i*h)*(i%2?4:2);return s*h/3};
+const f=x=>5*x**4-3*x**5;
+console.log('V/pi',simp(x=>f(x)**2,0,1.5), 'lt5?',simp(x=>f(x)**2,0,1.5)*Math.PI<5*Math.PI);
+console.log('S 2..4',simp(x=>Math.abs(f(x)),2,4));
+console.log('W250',simp(x=>Math.abs(7*x*x+46*x-4-(4*x-4)),-6,0));
+const F=x=>5*x*x-8*x+1;
+console.log('255c',simp(x=>2*F(x)-1,-2,1),'255d',simp(x=>(10*x-8)-2*x*F(x),-1,1),16/3);
+console.log('255b',simp(x=>10*x-8,0,2));
+console.log('265c',simp(x=>2*Math.abs(x*x-1)/x,1,2),3-Math.log(4),'265d S',simp(x=>2*Math.abs(x*x-1),1,2),8/3);
+console.log('294',simp(t=>10+2*t-t*t,0,6)/6);
+console.log('271',Math.exp(3)+19);
+console.log('292d',Math.acos(-1/3),7*Math.PI/12);
+console.log('259',simp(x=>(4*x*x-1)/x,1,5),48-Math.log(5));
+console.log('256',-12);
