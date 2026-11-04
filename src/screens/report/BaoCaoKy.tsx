@@ -163,7 +163,10 @@ function DongChuyenDe({ u }: { u: BcKyDonVi }) {
   return (
     <div className="flex items-center gap-2.5 py-1.5">
       <div className="min-w-0 flex-1 text-[13px] leading-snug text-slate-700">{u.ten}
-        <small className="block text-[10.5px] text-slate-400">{u.n === 0 ? 'chưa đo' : `${u.n} lần đánh giá${u.n < u.n_toi_da / 2 ? '*' : ''}`}</small>
+        <div className="mt-0.5 flex items-center gap-1.5">
+          {u.muc && <span className={`rounded-full px-2 py-px text-[10px] font-bold text-white ${u.muc === 'nang_cao' ? 'bg-violet-600' : 'bg-sky-500'}`}>{u.muc === 'nang_cao' ? 'Nâng cao' : 'Cơ bản'}</span>}
+          <small className="text-[10.5px] text-slate-400">{u.n === 0 ? 'chưa đo' : `${u.n} lần đánh giá${u.n < u.n_toi_da / 2 ? '*' : ''}`}</small>
+        </div>
       </div>
       <div className="h-3 w-[72px] shrink-0 overflow-hidden rounded-full bg-slate-200"><div className={`h-full rounded-full ${barCls(u.p)}`} style={{ width: `${u.p ?? 0}%` }} /></div>
       <b className={`w-[42px] shrink-0 text-right text-[13px] tabular-nums ${pctCls(u.p)}`}>{u.p == null ? '—' : `${u.p}%`}</b>
@@ -240,10 +243,10 @@ export function XemTruocKy({ d, congBoAt }: { d: BcKyData; congBoAt: string | nu
       <div className="rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-600 px-5 py-4 text-white shadow-sm">
         <small className="text-[11.5px] uppercase tracking-wider opacity-80">BK Academy · Báo cáo học kì</small>
         <h1 className="mt-0.5 text-[22px] font-bold">{d.hs.ho_ten}</h1>
-        <p className="text-[13px] opacity-90">{d.mon}{d.lop.khoi ? ` ${d.lop.khoi}` : ''} · Lớp {d.lop.ten ?? '—'} · {d.ky.ten} (tháng {thangNhan(d.ky.tu_thang)} → {thangNhan(d.ky.den_thang)}){d.gv ? ` · GV ${d.gv}` : ''}</p>
+        <p className="text-[13px] leading-relaxed opacity-90">{d.mon}{d.lop.khoi ? ` ${d.lop.khoi}` : ''} · Lớp {d.lop.ten ?? '—'}<br />{d.ky.ten} (tháng {thangNhan(d.ky.tu_thang)} → {thangNhan(d.ky.den_thang)}){d.gv && <><br />Giáo viên: {d.gv}</>}</p>
       </div>
 
-      <Phan so={1} ten="Đánh giá kiến thức" mo={`45 ngày cuối kì (${ddmm(d.danh_gia.tu)} → ${ddmm(d.danh_gia.den)}) · chủ đề ${d.danh_gia.n_chu_de} lần, chuyên đề ${d.danh_gia.n_chuyen_de} lần đánh giá gần nhất`}>
+      <Phan so={1} ten="Đánh giá kiến thức">
         {d.danh_gia.chu_de.length
           ? <div className="grid gap-3">{d.danh_gia.chu_de.map((cd) => <CardChuDe key={cd.ma} cd={cd} />)}</div>
           : <p className="text-[13px] text-slate-400">Chưa có lần đánh giá nào trong kì.</p>}

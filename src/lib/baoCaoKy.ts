@@ -5,7 +5,7 @@ import { supabase } from './supabase'
 
 export type KyHoc = { id: string; ten: string; tu_thang: string; den_thang: string }
 
-export type BcKyDonVi = { ma: string; ten: string; p: number | null; n: number; n_toi_da: number }
+export type BcKyDonVi = { ma: string; ten: string; p: number | null; n: number; n_toi_da: number; muc?: 'co_ban' | 'nang_cao' | null }
 export type BcKyChuDe = BcKyDonVi & { chuyen_de: BcKyDonVi[] }
 export type BcKyLanThi = { loai: 'mt_sat_hach' | 'khao_sat_thang'; nhan: string; thang: string; ngay: string; diem: number; tb: number; chenh: number; n_mau: number; hang: number }
 // Khuôn jsonb của fn_bc_ky_tinh (phiên bản 2, mig 202611041727 — 5 phần) = cũng là snapshot lúc công bố (tự đủ để dựng app PH / PDF).
