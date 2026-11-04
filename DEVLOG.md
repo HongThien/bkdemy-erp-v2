@@ -78614,3 +78614,8 @@ Thùy nêu 4 việc, làm được 3:
 - Giờ 9 kiểu trong `models.js` `cayBongGeo`: tròn · cao · **bàng** (3 tầng tán mỏng lệch hai bên, thấy thân giữa tầng) · **bạch dương** (thân trắng vằn đen) · **bách** (thon như ngọn lửa) · thông (4 tầng) · **tre** (8 thân đốt, lá mảnh rủ) · **dừa** (thân cong ngấn, 8 tàu lá) · bụi. Mỗi kiểu 3 bộ màu `LAR` (xanh đậm · xanh vàng · xanh lam); bảng `LA` cũ giữ nguyên cho cây ăn quả/bụi vườn.
 - `rungBong` lệch màu từng bản sao (sáng ±7%, ấm/lạnh ±3,5%, theo nghiên cứu Little Habitats). Rải theo trọng số `chonKieuCay` (scene.js): dừa/tre gần trại, thông/bách ra xa; khoảng cách riêng `CAY_CACH`.
 - Soi 1024×768: đồng quê + thu + tuyết + Tết + Halloween — shader mùa ăn đúng vào cây mới. Bản đầu tre có chỏm tròn như bóng bay, dừa bé lá như sợi, bàng thành khối bánh kem ⇒ đã sửa cả 3.
+
+## 04/11 — Phiên Claude: không xoá dòng NGƯỜI nhập ở hàng chờ duyệt / thiếu dạng (Thùy: "thêm được, không được xoá") — mig 202611041626 ĐÃ ÁP
+- Rà quyền ghi Phiên Claude: chỉ 1 lệnh ghi (`ban-do.mjs`), không lệnh xoá câu/nút bản đồ, câu người gán/kiểm mẫu bị chặn. Lỗ: `_phien_kho_phan1` dọn `*_bdm_de_xuat` + `*_bdm_cau_thieu_dang` bất kể nguồn (đo: dai 1 · hgt 1 dòng thiếu dạng nguon='nguoi') và nhánh 'thieu' upsert đè dòng người.
+- Sửa: câu có dòng chờ duyệt/thiếu dạng nguon <> 'ai' ⇒ Claude bị chặn; mọi lệnh dọn chỉ đụng nguon='ai'. Thử ROLLBACK: T106000000564 (người) bị chặn cả thieu/vua, dòng người nguyên; câu chỉ có dòng AI vẫn phân lại.
+- Còn mở (Thùy chưa quyết): phân lại vẫn gỡ dòng gán AI cũ của chính Claude · ghi đè lý thuyết (log giữ bản cũ) · phiên chỉ mở cho trưởng khối trở lên · Claude chưa thêm được CÂU mới qua phiên · ngoài phiên, RLS kho cho mọi nhân sự xoá/sửa thẳng.

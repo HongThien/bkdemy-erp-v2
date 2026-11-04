@@ -3182,6 +3182,10 @@ END |  |  |
 | ma_chuyen_de | text | Y |  |  |  |
 | ten_chuyen_de | text | Y |  |  |  |
 | chu_de_id | text | Y |  | FK→dai_bdm_chu_de.id |  |
+| mo_ta | text |  | ''::text |  |  |
+| vi_du | text |  | ''::text |  |  |
+| vi_du_file_url | text | Y |  |  |  |
+| vi_du_ten_file | text | Y |  |  |  |
 
 ## hinh_hoc_bai_ly_thuyet
 
@@ -5572,7 +5576,7 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
-| mon | text |  |  | FK→sotay_ct_hinh.mon |  |
+| mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
 | khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
