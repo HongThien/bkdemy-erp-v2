@@ -97,7 +97,8 @@ function TabDuyet({ coGhi, bao }: { coGhi: boolean; bao: (t: string, ok?: boolea
   }, [rows, loc])
 
   // duyệt hàng loạt chỉ trong phạm vi đang lọc (người đang chọn)
-  const choDuyet = (rows ?? []).filter((r) => r.duyet === 'cho_duyet' && (!nguoi || r.nhan_su_id === nguoi) && (r.loai_dong === 'viec' || nhom.cas.some((x) => x.c.id === r.id)))
+  const choDuyet = (rows ?? []).filter((r) => r.duyet === 'cho_duyet' && (!nguoi || r.nhan_su_id === nguoi) && (r.loai_dong === 'viec' || nhom.cas.some((x) => x.c.id === r.id))
+    && !(r.loai_dong === 'viec' && r.co?.includes('ca_bi_tu_choi')))   // việc trong ca đã từ chối: DB chặn duyệt (mig 202611041729) ⇒ không gom vào lô, xử từng dòng
   const dangChon = choDuyet.filter((r) => !boChon.has(r.id))
   const doiChon = (id: string) => setBoChon((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n })
   const vaTrangThai = (ids: string[], duyet: DongCong['duyet'], lyDo: string | null) =>

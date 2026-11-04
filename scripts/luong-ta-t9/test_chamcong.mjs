@@ -99,9 +99,8 @@ try {
   const tg6s1 = l1.chi_tiet.lop.find(x => x.lop === '6S1');
   ok('lương: buổi dạy hộ 6S1 đã duyệt được tính, đi theo lớp 6S1', tg6s1 && tg6s1.tg_lam === 1 && tg6s1.la_chu === false, JSON.stringify(tg6s1 && { tg: tg6s1.tg_lam, chu: tg6s1.la_chu }));
   ok('lương: trông thi bị từ chối không được tính', l1.chi_tiet.ngoai_package.length === 0);
-  await q("select fn_ta_duyet_cong(array[$1::uuid], '{}', 'tu_choi', 'thử: ca bị từ chối')", [ca]);
-  const l2 = (await q('select * from fn_ta_luong_thang($1::date, $2)', [ky, ta.ns]))[0];
-  ok('lương: ca có mặt bị từ chối ⇒ việc trong ca không được tính', !l2.chi_tiet.lop.some(x => x.tg_lam > 0), 'TG còn ' + l2.chi_tiet.lop.reduce((s, x) => s + x.tg_lam, 0));
+  // mig 202611041729: ca còn việc đã duyệt thì KHÔNG từ chối được (trước đây từ chối được ⇒ việc mất lương im lặng)
+  await phaiLoi('từ chối ca còn việc đã duyệt bị chặn', () => q("select fn_ta_duyet_cong(array[$1::uuid], '{}', 'tu_choi', 'thử: ca bị từ chối')", [ca]), 'việc đã duyệt');
   ok('nhật ký có vết mọi thay đổi', (await q('select count(*)::int n from ta_cong_log'))[0].n > 10);
 } catch (e) { fail++; console.log('✘ LỖI NGOÀI DỰ KIẾN:', e.message, e.where ? '\n   ' + e.where.split('\n')[0] : ''); }
 await c.query('rollback'); await c.end();

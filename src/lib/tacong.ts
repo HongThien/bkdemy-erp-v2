@@ -44,7 +44,7 @@ export const NHAN_CO: Record<string, { t: string; nhe?: boolean }> = {
   ca_khong_viec: { t: 'Ca chưa ghi việc' }, buoi_huy: { t: 'Buổi đã huỷ' }, khong_co_buoi: { t: 'Không có buổi trên lịch' },
   hai_ta_cung_buoi: { t: 'Hai TA cùng buổi' }, truoc_gio_vao: { t: 'Trước giờ checkin' }, sau_gio_ra: { t: 'Sau giờ checkout' },
   trung_gio: { t: 'Trùng giờ việc khác (bổ trợ chồng giờ chỉ tính 1 lần)' }, ngoai_gio: { t: 'Ngoài 7h–22h30' }, thieu_gio: { t: 'Thiếu giờ' },
-  chua_don_gia: { t: 'Chưa có đơn giá', nhe: true }, ca_bi_tu_choi: { t: 'Ca bị từ chối' }, lop_chua_co_ta: { t: 'Lớp hôm đó chưa phân TA' },
+  chua_don_gia: { t: 'Chưa có đơn giá', nhe: true }, ca_bi_tu_choi: { t: 'Ca bị từ chối — duyệt lại ca hoặc từ chối việc' }, lop_chua_co_ta: { t: 'Lớp hôm đó chưa phân TA' },
 }
 export const nhanCo = (ma: string) => NHAN_CO[ma] ?? { t: ma }
 
