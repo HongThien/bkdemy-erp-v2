@@ -46,10 +46,11 @@ try {
   ok('TA tự bỏ việc còn chờ duyệt (giữ vết)', (await q('select trang_thai from ta_cong_viec where id=$1', [v4]))[0].trang_thai === 'tu_choi');
   await phaiLoi('TA không tự duyệt được', () => q("select fn_ta_duyet_cong(array[$1::uuid], array[$2::uuid], 'da_duyet')", [ca, v1]), 'Không có quyền');
   await phaiLoi('TA không xem được màn đối chiếu', () => q('select * from fn_ta_doi_chieu($1::date)', [homNay]), 'Không có quyền');
+  await q("update ta_cham_cong set vao_at = now() - interval '1 hour' where id = $1", [ca]);   // trong 1 transaction now() đứng yên ⇒ lùi giờ vào, kẻo dính chặn ca < 1 phút (mig 202611041721)
   await q('select fn_ta_cham_cong_ra()'); ok('ra ca', true);
 
   // ── khai bù ──
-  const caBu = (await q("select fn_ta_cham_cong_khai_bu(now() - interval '20 hours', now() - interval '17 hours') id"))[0].id;
+  const caBu = (await q("select fn_ta_cham_cong_khai_bu(now() - interval '3 hours', now() - interval '2 hours') id"))[0].id;
   ok('khai bù ca trong 24 giờ', (await q('select khai_bu, duyet from ta_cham_cong where id=$1', [caBu]))[0].khai_bu === true);
   await phaiLoi('khai bù ca ngày 20/9 (ngoài đợt, quá 24 giờ) bị chặn', () => q("select fn_ta_cham_cong_khai_bu('2026-09-20 17:00+07', '2026-09-20 19:00+07')"), '24 giờ');
 
