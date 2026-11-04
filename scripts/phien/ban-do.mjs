@@ -38,6 +38,13 @@
 //   HET
 //     cao = CHẮC ⇒ tự gán (hậu kiểm mẫu ~10%) · vua = chưa chắc ⇒ trưởng khối duyệt · thieu = bản đồ thiếu dạng.
 //     Câu NGƯỜI đã quyết thì DB từ chối. Câu lỗi không kéo cả lô — kết quả trả từng câu.
+//   node scripts/phien/ban-do.mjs them_cau <<'HET'                             đưa ≤ 20 BÀI TẬP MỚI vào kho (04/11):
+//   [{"nhanh":"dai","loai_cau":"tu_luan","noi_dung":"...","loi_giai":"...","dap_an":"...","ten_de_goc":"tên tài liệu",
+//     "phan":{"ket_qua":"cao","dang_bai_id":"NDB..."}},
+//    {"nhanh":"hgt","loai_cau":"trac_nghiem","noi_dung":"...","lua_chon":["A","B","C","D"],"dap_an":"B","phan":{"ket_qua":"thieu","ly_do":"..."}}]
+//   HET
+//     nhanh dai | hgt · loai_cau trac_nghiem | tra_loi_ngan | tu_luan | dung_sai (Đ/S không kèm phan). Câu trùng kho ⇒ KHÔNG thêm, trả mã cũ.
+//     Câu vào dạng chờ của khối, chưa duyệt. `phan` (tuỳ chọn) = xếp luôn, cùng luật phan_dang. Không có lệnh xoá.
 // ============================================================================
 import { readFileSync } from 'node:fs'
 import { join, dirname } from 'node:path'
@@ -184,7 +191,7 @@ if (lenh === 'kho-tong') {
 }
 
 let ts
-const thamSo = con[0] ?? (lenh === 'phan_dang' ? await docStdin() : '{}')
+const thamSo = con[0] ?? (lenh === 'phan_dang' || lenh === 'them_cau' ? await docStdin() : '{}')
 try { ts = JSON.parse(thamSo) } catch { loi(`Tham số phải là JSON (trong dấu nháy đơn, hoặc qua heredoc với phan_dang), vd: node scripts/phien/ban-do.mjs ${lenh} '{"ten":"..."}'`) }
 
 if (lenh === 'doc') {
@@ -212,6 +219,18 @@ if (lenh === 'phan_dang') {
   if (error) loi(error.message)
   console.log(`Phân lô: ${data.ok} câu OK · ${data.loi} câu lỗi`)
   for (const x of data.chi_tiet ?? []) if (!x.ok) console.log(`  ✗ ${x.ma_cau}: ${x.loi}`)
+  process.exit(0)
+}
+
+if (lenh === 'them_cau') {
+  if (!Array.isArray(ts)) loi('them_cau cần một MẢNG câu (xem tro-giup).')
+  const { data, error } = await svc.rpc('fn_phien_kho_them', { p_phien: PHIEN, p_ds: ts })
+  if (error) loi(error.message)
+  console.log(`Đưa vào kho: ${data.them} câu mới · ${data.trung} câu trùng (đã có, không thêm) · ${data.loi} câu lỗi`)
+  for (const x of data.chi_tiet ?? []) {
+    if (!x.ok) console.log(`  ✗ "${x.dau_de}…": ${x.loi}`)
+    else console.log(`  ${x.trung ? '= trùng' : '+ mới '} ${x.ma_cau}${x.phan ? ` → ${x.phan.ket_qua}${x.phan.dang_bai_id ? ' ' + x.phan.dang_bai_id : ''}` : ''}`)
+  }
   process.exit(0)
 }
 

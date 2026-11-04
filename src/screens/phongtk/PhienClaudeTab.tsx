@@ -62,10 +62,16 @@ function PhienMoi({ onXong, onHuy }: { onXong: (id: string) => void; onHuy: () =
   const [busy, setBusy] = useState(false)
   const [loi, setLoi] = useState<string | null>(null)
   useEffect(() => {
-    getPhamVi().then((p) => { setPhamVi(p); const d = p.find((x) => x.co_ban_do); if (d) setO(`${d.mon}|${d.khoi}`) })
+    getPhamVi().then((p) => {
+      setPhamVi(p)
+      // nhân sự (không là trưởng khối ở đâu) chỉ mở được Nhập kho ⇒ chọn sẵn loại đó
+      const laTk = p.some((x) => x.tk); if (!laTk) setLoai('nhap_kho')
+      const d = p.find((x) => x.co_ban_do && (x.tk || !laTk)); if (d) setO(`${d.mon}|${d.khoi}`)
+    })
       .catch((e) => setLoi(e.message ?? String(e)))
   }, [])
-  const chon = phamVi?.filter((p) => !LOAI_SUA_BAN_DO.includes(loai) || p.co_ban_do) ?? []
+  const chon = phamVi?.filter((p) => (!LOAI_SUA_BAN_DO.includes(loai) || p.co_ban_do) && (p.tk || loai === 'nhap_kho')) ?? []
+  useEffect(() => { if (phamVi && !chon.some((p) => `${p.mon}|${p.khoi}` === o)) setO(chon[0] ? `${chon[0].mon}|${chon[0].khoi}` : '') }, [loai, phamVi])   // eslint-disable-line react-hooks/exhaustive-deps
   async function tao() {
     const [mon, khoi] = o.split('|')
     if (!mon || !khoi || busy) return
@@ -78,7 +84,7 @@ function PhienMoi({ onXong, onHuy }: { onXong: (id: string) => void; onHuy: () =
       <div className="mb-1 text-[12px] font-medium text-slate-500">Loại việc</div>
       <div className="mb-3 grid gap-2 sm:grid-cols-2">
         {PHIEN_LOAI.map((l) => (
-          <button key={l.id} disabled={!l.mo} onClick={() => setLoai(l.id)}
+          <button key={l.id} disabled={!l.mo || (!!phamVi && l.id !== 'nhap_kho' && !phamVi.some((p) => p.tk))} onClick={() => setLoai(l.id)}
             className={`rounded-xl border px-3 py-2 text-left transition ${loai === l.id ? 'border-indigo-400 bg-indigo-50' : 'border-slate-200 bg-white hover:border-slate-300'} disabled:cursor-not-allowed disabled:opacity-45`}>
             <div className="text-[13.5px] font-semibold text-slate-800">{l.ten}{!l.mo && <span className="ml-1.5 text-[11px] font-normal text-slate-400">· sắp mở</span>}</div>
             <div className="text-[11.5px] text-slate-500">{l.mo_ta}</div>
@@ -87,7 +93,7 @@ function PhienMoi({ onXong, onHuy }: { onXong: (id: string) => void; onHuy: () =
       </div>
       <div className="mb-1 text-[12px] font-medium text-slate-500">Môn · khối</div>
       {phamVi && chon.length === 0 ? (
-        <p className="mb-3 text-[13px] text-amber-700">Bạn chưa là trưởng khối của khối nào có bản đồ mới — nhờ Thùy/Trang phân công ở màn Phân công.</p>
+        <p className="mb-3 text-[13px] text-amber-700">{loai === 'nhap_kho' ? 'Chưa có khối nào chạy bản đồ mới để nhập kho.' : 'Loại việc này chỉ trưởng khối trở lên mở được — nhân sự dùng phiên 📥 Nhập kho & phân dạng.'}</p>
       ) : (
         <select value={o} onChange={(e) => setO(e.target.value)} className="mb-3 w-full rounded-lg border border-slate-200 px-3 py-2 text-[13.5px]">
           {chon.map((p) => <option key={`${p.mon}|${p.khoi}`} value={`${p.mon}|${p.khoi}`}>{p.mon} · khối {p.khoi}</option>)}

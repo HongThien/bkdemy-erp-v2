@@ -10,8 +10,14 @@ bạn phân câu ─┬─ CHẮC        → "cao"   : TỰ GÁN, không chờ a
 → gom câu "vua"/"thieu" thành CỤM theo lý do → đề xuất cho trưởng khối: thêm dạng / sửa mô tả
 → họ gật (hoặc tự sửa tay) → bạn thêm dạng / sửa mô tả → PHÂN LẠI các câu đó → lặp
 ```
-Câu **mới** từ tài liệu (giải + ghi vào kho) KHÔNG làm ở đây — đó là việc Thùy phát động. Trong kho không có câu nào của
-khối thì nói thẳng như vậy.
+**Đưa bài tập MỚI vào kho (Thùy 04/11):** người mở phiên đưa tài liệu / dán đề ⇒ bạn chép từng bài thành câu, giải
+(nếu tài liệu chưa có lời giải), rồi `them_cau` — câu vào dạng chờ của khối, **chưa duyệt**, kèm `phan` để xếp luôn vào dạng
+theo đúng luật cao / vua / thieu bên dưới. Câu trùng câu đã có trong kho thì DB không thêm, trả mã cũ. **Không có lệnh xoá.**
+Câu có hình mà bạn không xem được hình ⇒ ghi rõ trong đề "[có hình — chưa đưa hình]" và không "cao".
+
+**Ai mở phiên:** mọi nhân sự mở được phiên này. Phiên của **nhân sự** (không phải trưởng khối) chỉ được `them_cau` +
+`phan_dang` + các lệnh đọc — KHÔNG thêm/sửa dạng (DB chặn); thiếu dạng thì báo "thieu" và gom cụm để trưởng khối thêm.
+Phiên của trưởng khối trở lên làm được cả vòng xoáy bên dưới.
 
 ## Thế nào là "cao" (chắc) — giữ chặt, vì câu "cao" đi thẳng tới học sinh
 
@@ -37,10 +43,15 @@ node scripts/phien/ban-do.mjs phan_dang <<'HET'
  {"ma_cau":"T107...","ket_qua":"vua","dang_bai_id":"NDB...","ly_do":"..."},
  {"ma_cau":"T107...","ket_qua":"thieu","ly_do":"...","chu_de_id":"NCD..."}]
 HET
+node scripts/phien/ban-do.mjs them_cau <<'HET'                           # ≤ 20 bài tập MỚI vào kho (xem tro-giup để đủ trường)
+[{"nhanh":"dai","loai_cau":"tu_luan","noi_dung":"...","loi_giai":"...","dap_an":"...","ten_de_goc":"tên tài liệu",
+  "phan":{"ket_qua":"cao","dang_bai_id":"NDB..."}}]
+HET
 node scripts/phien/ban-do.mjs them_dang_bai '{"nhom_id":"...","ten":"...","mo_ta":"..."}'   # khi trưởng khối gật thêm dạng
 node scripts/phien/ban-do.mjs sua '{"loai":"dang_bai","id":"...","mo_ta":"..."}'            # khi trưởng khối gật sửa mô tả
 ```
-- Mỗi lô ≤ 50 câu. Câu lỗi không kéo cả lô; đọc kết quả từng câu.
+- Lời giải viết theo đúng định dạng kho (`kho-rules/` của khối nếu có) — đề và lời giải liền dòng, công thức trong `$…$`.
+- Mỗi lô ≤ 50 câu (`them_cau` ≤ 20). Câu lỗi không kéo cả lô; đọc kết quả từng câu.
 - Chỉ phân **câu gốc** (bản sao tự đi theo), không phân câu Đúng/Sai, chỉ câu của đúng khối — DB tự chặn.
 - Câu **NGƯỜI đã quyết** (gán tay / đã kiểm mẫu) DB không cho đổi — đúng như thế, đừng tìm cách vòng.
 - Câu Đại phân vào chủ đề vùng `toan`; câu Hình giải tích (nhánh `hgt`) vào chủ đề vùng `hgt`.

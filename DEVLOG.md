@@ -78624,3 +78624,10 @@ Thùy nêu 4 việc, làm được 3:
 - Sai: anh Đạt (Toán 11, phiên nhập kho 6743f362) nhắn 4 lần đều "error_during_execution". Phiên bắt đầu ở máy nhà (DESKTOP-EV1E49J) ⇒ lịch sử hội thoại Claude Code chỉ nằm ở `~/.claude/projects` máy nhà; máy công ty `--resume` ⇒ "No conversation found". Log không lộ vì bot chỉ ghi `result`, câu lỗi nằm ở stderr.
 - Sửa (`scripts/phien/bot.mjs`): lỗi luôn kèm stderr; gặp "No conversation found" ⇒ `lichSuTuDb` chép lại các tin xong/dung của phiên từ `claude_phien_tin` (tên người qua `tai_khoan`) đặt trước tin mới, mở session cùng id trên máy này. Bot máy công ty đã khởi động lại.
 - Còn hở: hai máy cùng chạy, phiên đi qua lại thì máy kia `--resume` bản CŨ của nó (thiếu lượt chạy ở máy này, không báo lỗi). Tin `loi` không tự chạy lại — người phải nhắn lại.
+
+## 04/11 — Nhân sự dùng Claude đưa bài tập vào kho + bản đồ (Thùy: "nhân sự có quyền dùng Claude để đưa bài tập vào bản đồ và kho") — mig 202611041633 CHƯA ÁP
+- Trước: phiên chỉ trưởng khối trở lên; Claude chỉ xếp câu ĐÃ có, không thêm bài mới.
+- `claude_phien.sua_cau_truc` (người mở là trưởng khối lúc mở). Phiên Nhập kho mở cho MỌI nhân sự (mọi khối Toán chạy bản đồ mới); phiên của nhân sự không khoá "một phiên một bản đồ", không thêm/sửa dạng (`fn_phien_bd_ghi` chặn) — thiếu dạng thì báo thieu cho trưởng khối.
+- `fn_phien_kho_them` (service_role): ≤20 câu/lô, lọc trùng như `_kho_insert.mjs`, vào kho qua đúng `fn_bdm_nhap_cau` (dạng chờ, chưa duyệt), lời giải Claude ⇒ nguon_giai ai, `phan` ⇒ `_phien_kho_phan1`. Lệnh `them_cau` ở `ban-do.mjs`, hướng dẫn `loai/nhap_kho.md`. UI: `fn_phien_pham_vi` thêm `tk`, nhân sự chỉ thấy loại Nhập kho.
+- Thử ROLLBACK (vai TA Lê Thuỳ Giang): mở Bản đồ bị chặn · mở Nhập kho được, 2 TA song song · 3 câu: 1 mới gán cao (T109000000816 → NDB01380, nguon ai, chưa duyệt), 1 trùng trả mã cũ, 1 thiếu dạng · thêm dạng bị chặn · lô 21 bị chặn · authenticated không gọi thẳng được. Bẫy: heredoc python dài bị cắt ⇒ viết file.
+- Đổi tên file mig rỗng 202611041633_ban_do_khoa_theo_khoi (chỉ có khung mẫu) thành file này — bỏ ý khoá theo khối (Thùy: sửa tay không cần quản).
